@@ -1,0 +1,10 @@
+Package: rgbif
+Description: A programmatic interface to the
+ Web Service methods provided by the Global 
+ Biodiversity Information Facility.  
+Title: Interface to the Global Biodiversity Information Facility API methods
+Version: 0.0-1
+License: BSD
+Author: Scott Chamberlain
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com> 
+Imports: RJSONIO, RCurl (>= 1.6), stringr
