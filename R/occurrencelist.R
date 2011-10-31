@@ -1,0 +1,58 @@
+# occurrencelist.R
+
+occurrencelist <- 
+# Args:
+#   sciname: numeric key uniquely identifying the occurrence record within the GBIF
+#     data portal (numeric)
+#   ..........
+#   stylesheet: sets the URL of the stylesheet to be associated with the 
+#     response document.
+#   format: specifies the format in which the records are to be returned, 
+#     one of: brief, darwin or kml (character)
+#   mode: specifies whether the response data should (as far as possible)
+#     be the raw values originally retrieved from the data resource or
+#     processed (normalised) values used within the data portal (character)
+#   latlongdf: return a data.frame of lat/long's for all occurrences (logical)
+# Output: XXXXXX
+# Examples:
+#   occurrencelist(sciname = "Accipiter erythronemius", coordinatestatus = TRUE, maxresults = 100)  
+function(sciname = NA, taxonconceptKey = NA, dataproviderkey = NA, 
+  dataresourcekey = NA, resourcenetworkkey = NA, basisofrecordcode = NA,
+  minlatitude = NA, maxlatitude = NA, minlongitude = NA, maxlongitude = NA,
+  minaltitude = NA, maxaltitude = NA, mindepth = NA, maxdepth = NA, 
+  cellid = NA, centicellid = NA, typesonly = NA, georeferencedonly = NA,
+  coordinatestatus = NA, coordinateissues = NA, hostisocountrycode = NA,
+  originisocountrycode = NA, originregioncode = NA, startdate = NA, enddate = NA,
+  startyear = NA, endyear = NA, year = NA, month = NA, day = NA, 
+  modifiedsince = NA, startindex = NA, maxresults = 10, format = NA, icon = NA,
+  mode = NA, stylesheet = NA, latlongdf = FALSE,
+  url = 'http://data.gbif.org/ws/rest/occurrence/list?',
+  ..., 
+  curl = getCurlHandle() ) 
+{
+  if(!is.na(sciname)) {sciname2 <- paste('scientificname=', gsub(" ", "+", sciname), sep='')} else
+    {sciname2 <- NULL}
+  if(!is.na(coordinatestatus)) {coordinatestatus2 <- paste('&coordinatestatus=', coordinatestatus, sep='')} else
+    {coordinatestatus2 <- NULL}
+  if(!is.na(maxresults)) {maxresults2 <- paste('&maxresults=', maxresults, sep='')} else
+    {maxresults2 <- NULL}
+  args <- paste(sciname2, maxresults2, coordinatestatus2, sep='')
+  query <- paste(url, args, sep='')
+  tt <- getURL(query, 
+    ...,
+    curl = curl)
+  out <- xmlTreeParse(tt)$doc$children$gbifResponse
+  if(latlongdf == TRUE) {
+    latlist <- xpathApply(out, "//to:decimalLatitude")
+    longlist <- xpathApply(out, "//to:decimalLongitude")
+    df <- data.frame(rep(sciname, length(latlist)), 
+      laply(latlist, function(x) as.numeric(xmlValue(x))),
+      laply(longlist, function(x) as.numeric(xmlValue(x))))
+    names(df) <- c("sciname", "latitude", "longitude")
+    df
+  } else {out}
+}
+
+# out <- occurrencelist(sciname = "Aratinga holochlora rubritorquis", coordinatestatus = TRUE, 
+#     maxresults = 10, latlongdf = TRUE)
+# out
