@@ -1,17 +1,23 @@
-# taxoncount.R
-
-taxoncount <-
-# Args:
-#   sciname: scientitic name of taxon, as e.g., "Puma concolor" (character)
-#   rank: taxonomic rank (character)
-#   datakey:  (character)
-# Examples:
-#   taxoncount("Puma concolor")
-#   taxoncount("Helianthus annuus")
-#   taxoncount(rank = "family", datakey = 12)
-#   taxoncount(rank = "family")
-
-function(sciname = NULL, rank = NULL, datakey = NULL,
+#`taxoncount <brief desc>
+#`
+#`<full description>
+#`@param sciname  scientitic name of taxon, as e.g., "Puma concolor" (character)
+#`@param rank   taxonomic rank (character)
+#`@param datakey  character
+#`@param url  <what param does>
+#`@param curl  <what param does>
+#`@keywords
+#`@seealso
+#`@return
+#`@alias
+#`@export
+#`@examples \dontrun{
+#`taxoncount("Puma concolor")
+#`taxoncount("Helianthus annuus")
+#`taxoncount(rank = "family", datakey = 12)
+#` taxoncount(rank = "family")
+#` }
+taxoncount <-function(sciname = NULL, rank = NULL, datakey = NULL,
   url = 'http://data.gbif.org/ws/rest/taxon/count?',
   ...,
   curl = getCurlHandle() )
