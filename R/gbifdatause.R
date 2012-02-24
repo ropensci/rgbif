@@ -1,16 +1,21 @@
-# gbifdatause.R
-
-gbifdatause <- 
-# Args:
-#   NONE
-# Examples:
-#   gbifdatause()
+#`gbifdatause - description
+#`
+#`@param  None
+#`@keywords
+#`@seealso
+#`@return
+#`@alias
+#`@export
+#`@examples \dontrun{
+#` gbifdatause()
+#` }
+gbifdatause <-
 
 function(url = 'http://data.gbif.org/tutorial/datasharingagreement',
-  ..., 
-  curl = getCurlHandle() ) 
+  ...,
+  curl = getCurlHandle() )
 {
   tt <- getURLContent(url)
-#   jsonout <- xmlTreeParse(I(tt))  
+#   jsonout <- xmlTreeParse(I(tt))
   return(tt)
 }

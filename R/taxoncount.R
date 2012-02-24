@@ -1,6 +1,6 @@
 # taxoncount.R
 
-taxoncount <- 
+taxoncount <-
 # Args:
 #   sciname: scientitic name of taxon, as e.g., "Puma concolor" (character)
 #   rank: taxonomic rank (character)
@@ -13,8 +13,8 @@ taxoncount <-
 
 function(sciname = NULL, rank = NULL, datakey = NULL,
   url = 'http://data.gbif.org/ws/rest/taxon/count?',
-  ..., 
-  curl = getCurlHandle() ) 
+  ...,
+  curl = getCurlHandle() )
 {
   if(!is.null(sciname)) {
     sciname2 <- paste("scientificname=", sub(" ", "+", sciname), sep = "")} else
