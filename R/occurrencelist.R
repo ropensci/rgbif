@@ -1,7 +1,7 @@
 #`occurrencelist description
 #`
 #`<full description>
-#`@param  sciname = NA numeric key uniquely identifying the occurrence record within the GBIF
+#`@param  sciname numeric key uniquely identifying the occurrence record within the GBIF
 #`@param  taxonconceptKey  <what param does>
 #`@param  dataproviderkey  <what param does>
 #`@param dataresourcekey  <what param does>
@@ -40,7 +40,7 @@
 #`@param mode  specifies whether the response data should (as far as possible)  be the raw values originally retrieved from the data resource or processed (normalised) values used within the data portal (character)latlongdf: return a data.frame of lat/long's for all occurrences (logical)
 #`@param  stylesheet sets the URL of the stylesheet to be associated with the
 #     response document.
-#`@param  latlongdf = FALSE <what param does>
+#`@param  latlongdf  <what param does>
 #`@keywords
 #`@seealso
 #`@return
