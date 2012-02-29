@@ -1,20 +1,20 @@
-#`getoccurrence - description
-#`
-#`<full description>
-#`@param key numeric key uniquely identifying the occurrence record within the GBIF
-#`@param stylesheet sets the URL of the stylesheet to be associated with the response document
-#`@param format specifies the format in which the records are to be returned, one of: brief, darwin or kml (character)
-#`@param  mode: specifies whether the response data should (as far as possible) be the raw values originally retrieved from the data resource or processed (normalised) values used within the data portal (character)
-#`@param url  internal use
-#`@param  curl internal use
-#`@keywords
-#`@seealso
-#`@return
-#`@alias
-#`@export
-#`@examples \dontrun{
-#`getoccurrence(key = 13749100)
-#` }
+#'getoccurrence - description
+#'
+#'<full description>
+#'@param key numeric key uniquely identifying the occurrence record within the GBIF
+#'@param stylesheet sets the URL of the stylesheet to be associated with the response document
+#'@param format specifies the format in which the records are to be returned, one of: brief, darwin or kml (character)
+#'@param  mode: specifies whether the response data should (as far as possible) be the raw values originally retrieved from the data resource or processed (normalised) values used within the data portal (character)
+#'@param url  internal use
+#'@param  curl internal use
+#'@keywords
+#'@seealso
+#'@return
+#'@alias
+#'@export
+#'@examples \dontrun{
+#'getoccurrence(key = 13749100)
+#' }
 getoccurrence <- function(key = NA, style = NA, format = NA, mode = NA,
   url = 'http://data.gbif.org/ws/rest/occurrence/get?',
   ...,

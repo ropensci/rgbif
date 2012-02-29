@@ -1,14 +1,14 @@
-#`gbifdatause - description
-#`
-#`@param  None
-#`@keywords
-#`@seealso
-#`@return
-#`@alias
-#`@export
-#`@examples \dontrun{
-#` gbifdatause()
-#` }
+#'gbifdatause - description
+#'
+#'@param  None
+#'@keywords
+#'@seealso
+#'@return
+#'@alias
+#'@export
+#'@examples \dontrun{
+#' gbifdatause()
+#' }
 gbifdatause <-
 
 function(url = 'http://data.gbif.org/tutorial/datasharingagreement',

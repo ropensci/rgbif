@@ -1,19 +1,19 @@
-#`taxonsearch <brief desc>
-#`
-#`<full description>
-#`@param sciname  scientitic name of taxon (character, see example)
-#`@param rank  <what param does>
-#`@param maxresults  <what param does>
-#`@param url internal use
-#`@param curl internal use
-#`@keywords
-#`@seealso
-#`@return
-#`@alias
-#`@export
-#`@examples \dontrun{
-#` taxonsearch(sciname = "Puma concolor")
-#` }
+#'taxonsearch <brief desc>
+#'
+#'<full description>
+#'@param sciname  scientitic name of taxon (character, see example)
+#'@param rank  <what param does>
+#'@param maxresults  <what param does>
+#'@param url internal use
+#'@param curl internal use
+#'@keywords
+#'@seealso
+#'@return
+#'@alias
+#'@export
+#'@examples \dontrun{
+#' taxonsearch(sciname = "Puma concolor")
+#' }
 taxonsearch <-function(sciname = NA, rank = NA, maxresults = 10,
   url = 'http://data.gbif.org/ws/rest/taxon/list?',
   ...,
