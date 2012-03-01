@@ -17,7 +17,7 @@
 taxonsearch <-function(sciname = NA, rank = NA, maxresults = 10,
   url = 'http://data.gbif.org/ws/rest/taxon/list?',
   ...,
-  curl = getCurlHandle() )
+  curl = getCurlHandle())
 {
   if(!is.na(sciname)) {sciname2 <- paste('scientificname=', sub(" ", "+", sciname), sep='')} else
     {sciname2 <- NULL}
