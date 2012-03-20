@@ -6,32 +6,8 @@
     dataproviderkey = NULL,
     url = "http://data.gbif.org/ws/rest/taxon/count?", ...,
     curl = getCurlHandle())
-
-  taxoncount(sciname = NULL, rank = NULL,
-    dataproviderkey = NULL,
-    url = "http://data.gbif.org/ws/rest/taxon/count?", ...,
-    curl = getCurlHandle())
 }
 \arguments{
-  \item{sciname}{scientitic name of taxon (character, see
-  example)}
-
-  \item{rank}{rank of taxon, see rank() (character)}
-
-  \item{dataproviderkey}{Filter records to those provided
-  by the supplied numeric key for a data provider. See
-  provider(). (character)}
-
-  \item{url}{the base GBIF API url for the function (should
-  be left to default)}
-
-  \item{...}{optional additional curl options (debugging
-  tools mostly)}
-
-  \item{curl}{If using in a loop, call getCurlHandle()
-  first and pass the returned value in here (avoids
-  unnecessary footprint)}
-
   \item{sciname}{scientitic name of taxon (character, see
   example)}
 
@@ -53,16 +29,8 @@
 }
 \description{
   Search by taxon to retrieve number of records in GBIF.
-
-  Search by taxon to retrieve number of records in GBIF.
 }
 \examples{
-\dontrun{
-taxoncount("Puma concolor")
-taxoncount("Helianthus annuus")
-taxoncount(rank = "family", datakey = 12)
-taxoncount(rank = "family")
-}
 \dontrun{
 taxoncount("Puma concolor")
 taxoncount("Helianthus annuus")
