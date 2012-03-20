@@ -1,21 +1,13 @@
-#'gbifdatause - description
-#'
-#'@param  None
-#'@keywords
-#'@seealso
-#'@return
-#'@alias
-#'@export
-#'@examples \dontrun{
+#' gbifdatause - description
+#' @import RCurl
+#' @param  None
+#' @export
+#' @examples \dontrun{
 #' gbifdatause()
 #' }
-gbifdatause <-
-
-function(url = 'http://data.gbif.org/tutorial/datasharingagreement',
+gbifdatause <- function(url = 'http://data.gbif.org/tutorial/datasharingagreement',
   ...,
   curl = getCurlHandle() )
 {
-  tt <- getURLContent(url)
-#   jsonout <- xmlTreeParse(I(tt))
-  return(tt)
+  getURLContent(url)
 }

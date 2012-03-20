@@ -1,5 +1,9 @@
+export(gbifdatause)
+export(getoccurrence)
+export(occurrencelist)
+export(rank)
+export(taxoncount)
+export(taxonsearch)
 import(RCurl)
-import(stringr)
-import(RJSONIO)
-
-export()
+import(XML)
+import(plyr)

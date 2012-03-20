@@ -1,23 +1,21 @@
-#'taxoncount <brief desc>
-#'
-#'<full description>
-#'@param sciname  scientitic name of taxon, as e.g., "Puma concolor" (character)
-#'@param rank   taxonomic rank (character)
-#'@param datakey  character
-#'@param url  <what param does>
-#'@param curl  <what param does>
-#'@keywords
-#'@seealso
-#'@return
-#'@alias
-#'@export
-#'@examples \dontrun{
-#'taxoncount("Puma concolor")
-#'taxoncount("Helianthus annuus")
-#'taxoncount(rank = "family", datakey = 12)
+#' Search by taxon to retrieve number of records in GBIF. 
+#' @import RCurl XML
+#' @param sciname  scientitic name of taxon (character, see example)
+#' @param rank  rank of taxon, see rank() (character)
+#' @param dataproviderkey Filter records to those provided by the supplied 
+#'     numeric key for a data provider. See provider(). (character)
+#' @param url the base GBIF API url for the function (should be left to default)
+#' @param ... optional additional curl options (debugging tools mostly)
+#' @param curl If using in a loop, call getCurlHandle() first and pass 
+#'  the returned value in here (avoids unnecessary footprint)
+#' @export
+#' @examples \dontrun{
+#' taxoncount("Puma concolor")
+#' taxoncount("Helianthus annuus")
+#' taxoncount(rank = "family", datakey = 12)
 #' taxoncount(rank = "family")
 #' }
-taxoncount <-function(sciname = NULL, rank = NULL, datakey = NULL,
+taxoncount <- function(sciname = NULL, rank = NULL, dataproviderkey = NULL,
   url = 'http://data.gbif.org/ws/rest/taxon/count?',
   ...,
   curl = getCurlHandle() )
@@ -35,6 +33,5 @@ taxoncount <-function(sciname = NULL, rank = NULL, datakey = NULL,
   url2 <- paste(url, args, sep = "")
   tt <- getURLContent(url2)
   out <- xmlTreeParse(tt)$doc$children$gbifResponse
-  out2 <- as.numeric(xmlToList(out)[[8]])
-  return(out2)
+  as.numeric(xmlToList(out)[[8]])
 }

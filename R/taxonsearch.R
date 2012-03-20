@@ -1,20 +1,22 @@
-#'taxonsearch <brief desc>
-#'
-#'<full description>
-#'@param sciname  scientitic name of taxon (character, see example)
-#'@param rank  <what param does>
-#'@param maxresults  <what param does>
-#'@param url internal use
-#'@param curl internal use
-#'@keywords
-#'@seealso
-#'@return
-#'@alias
-#'@export
-#'@examples \dontrun{
+#' Search for taxa in GBIF
+#' 
+#' Search for a taxon using scientific name. Optionally, include taxonomic 
+#' rank in the search. 
+#' 
+#' @import XML RCurl
+#' @param sciname  scientitic name of taxon (character, see example)
+#' @param rank  rank of taxon, see rank() (character)
+#' @param maxresults  return at most the specified number of records. The 
+#'    default (and maximum supported) is 1000 records.
+#' @param url the base GBIF API url for the function (should be left to default)
+#' @param ... optional additional curl options (debugging tools mostly)
+#' @param curl If using in a loop, call getCurlHandle() first and pass 
+#'  the returned value in here (avoids unnecessary footprint)
+#' @export
+#' @examples \dontrun{
 #' taxonsearch(sciname = "Puma concolor")
 #' }
-taxonsearch <-function(sciname = NA, rank = NA, maxresults = 10,
+taxonsearch <- function(sciname = NA, rank = NA, maxresults = 10,
   url = 'http://data.gbif.org/ws/rest/taxon/list?',
   ...,
   curl = getCurlHandle())
@@ -32,12 +34,8 @@ taxonsearch <-function(sciname = NA, rank = NA, maxresults = 10,
   xmlTreeParse(tt)$doc$children$gbifResponse
 }
 
-out <- taxonsearch(sciname = "Accipiter erythronemius", maxresults = 1000)
-tt_ <- xmlToList(out)
-tt_$header$statements
-
-
+# out <- taxonsearch(sciname = "Accipiter erythronemius", maxresults = 1000)
+# tt_ <- xmlToList(out)
+# tt_$header$statements
 # url2 <- 'http://data.gbif.org/ws/rest/taxon/list?scientificname=Accipiter+erythronemius&maxresults=10'
 # xmlTreeParse(getURL(url2))
-
-
