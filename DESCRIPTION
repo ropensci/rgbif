@@ -18,10 +18,10 @@ Imports:
     RCurl (>= 1.6),
     stringr
 Collate:
-    'gbifdatause.r'
-    'occurrenceget.r'
-    'occurrencelist.r'
-    'rank.r'
-    'taxoncount.r'
-    'taxonsearch.r'
-    'providers.r'
+    'gbifdatause.R'
+    'occurrenceget.R'
+    'occurrencelist.R'
+    'rank.R'
+    'taxoncount.R'
+    'taxonsearch.R'
+    'providers.R'
