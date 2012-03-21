@@ -1,7 +1,6 @@
 #' occurrenceget - description
 #' @import RCurl XML
 #' @param key numeric key uniquely identifying the occurrence record within the GBIF
-#' @param stylesheet sets the URL of the stylesheet to be associated with the response document
 #' @param format specifies the format in which the records are to be returned, one of: brief, darwin or kml (character)
 #' @param mode specifies whether the response data should (as far as possible) be the raw values originally retrieved from the data resource or processed (normalised) values used within the data portal (character)
 #' @param url the base GBIF API url for the function (should be left to default)
@@ -12,20 +11,18 @@
 #' @examples \dontrun{
 #' occurrenceget(key = 13749100)
 #' }
-occurrenceget <- function(key = NA, style = NA, format = NA, mode = NA,
+occurrenceget <- function(key = NA, format = NA, mode = NA,
   url = 'http://data.gbif.org/ws/rest/occurrence/get?',
   ...,
   curl = getCurlHandle())
 {
   if(!is.na(key)) {key2 <- paste('key=', key, sep='')} else
     {key2 <- NULL}
-  if(!is.na(style)) {style2 <- paste('stylesheet=', style, sep='')} else
-    {style2 <- NULL}
   if(!is.na(format)) {format2 <- paste('format=', format, sep='')} else
     {format2 <- NULL}
   if(!is.na(mode)) {mode2 <- paste('mode=', mode, sep='')} else
     {mode2 <- NULL}
-  args <- paste(key2, style2, format2, mode2, sep='&')
+  args <- paste(key2, format2, mode2, sep='&')
   query <- paste(url, args, sep='')
   tt <- getURL(query,
     ...,

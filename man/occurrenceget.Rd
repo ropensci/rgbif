@@ -2,17 +2,13 @@
 \alias{occurrenceget}
 \title{occurrenceget - description}
 \usage{
-  occurrenceget(key = NA, style = NA, format = NA,
-    mode = NA,
+  occurrenceget(key = NA, format = NA, mode = NA,
     url = "http://data.gbif.org/ws/rest/occurrence/get?",
     ..., curl = getCurlHandle())
 }
 \arguments{
   \item{key}{numeric key uniquely identifying the
   occurrence record within the GBIF}
-
-  \item{stylesheet}{sets the URL of the stylesheet to be
-  associated with the response document}
 
   \item{format}{specifies the format in which the records
   are to be returned, one of: brief, darwin or kml

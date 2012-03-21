@@ -2,11 +2,10 @@
 \alias{gbifdatause}
 \title{gbifdatause - description}
 \usage{
-  gbifdatause(url = "http://data.gbif.org/tutorial/datasharingagreement",
-    ..., curl = getCurlHandle())
+  gbifdatause(url = "http://data.gbif.org/tutorial/datasharingagreement")
 }
 \arguments{
-  \item{None}{}
+  \item{url}{Base url for call, don't change.}
 }
 \description{
   gbifdatause - description

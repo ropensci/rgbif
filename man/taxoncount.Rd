@@ -3,7 +3,7 @@
 \title{Search by taxon to retrieve number of records in GBIF.}
 \usage{
   taxoncount(sciname = NULL, rank = NULL,
-    dataproviderkey = NULL,
+    dataresourcekey = NULL,
     url = "http://data.gbif.org/ws/rest/taxon/count?", ...,
     curl = getCurlHandle())
 }
@@ -13,9 +13,9 @@
 
   \item{rank}{rank of taxon, see taxrank() (character)}
 
-  \item{dataproviderkey}{Filter records to those provided
-  by the supplied numeric key for a data provider. See
-  provider(). (character)}
+  \item{dataresourcekey}{Filter records to those provided
+  by the supplied numeric key for a data resource. See
+  resources(). (character)}
 
   \item{url}{the base GBIF API url for the function (should
   be left to default)}
@@ -34,7 +34,6 @@
 \dontrun{
 taxoncount("Puma concolor")
 taxoncount("Helianthus annuus")
-taxoncount(rank = "family", datakey = 12)
 taxoncount(rank = "family")
 }
 }

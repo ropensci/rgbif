@@ -11,6 +11,16 @@
   searches all data networks by defining name = ""}
 
   \item{maxresults}{max number of results to return}
+
+  \item{url}{the base GBIF API url for the function (should
+  be left to default)}
+
+  \item{...}{optional additional curl options (debugging
+  tools mostly)}
+
+  \item{curl}{If using in a loop, call getCurlHandle()
+  first and pass the returned value in here (avoids
+  unnecessary footprint)}
 }
 \description{
   Beware: It takes a while to retrieve the full list of

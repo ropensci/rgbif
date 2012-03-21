@@ -7,6 +7,10 @@
 #' @param name data provider name search string, by default searches all 
 #'  data providers by defining name = ""
 #' @param maxresults max number of results to return
+#' @param url the base GBIF API url for the function (should be left to default)
+#' @param ... optional additional curl options (debugging tools mostly)
+#' @param curl If using in a loop, call getCurlHandle() first and pass 
+#'  the returned value in here (avoids unnecessary footprint)
 #' @export
 #' @examples \dontrun{
 #' # Test the function for a few providers

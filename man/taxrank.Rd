@@ -4,9 +4,6 @@
 \usage{
   taxrank()
 }
-\arguments{
-  \item{None}{}
-}
 \description{
   Get values to be used for (taxonomic) rank arguments in
   GBIF API methods.

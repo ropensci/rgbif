@@ -1,5 +1,4 @@
 #' Get values to be used for (taxonomic) rank arguments in GBIF API methods. 
-#' @param None
 #' @export
 #' @examples \dontrun{
 #' taxrank()
