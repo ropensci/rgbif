@@ -1,7 +1,7 @@
 #' Search by taxon to retrieve number of records in GBIF. 
 #' @import RCurl XML
 #' @param sciname  scientitic name of taxon (character, see example)
-#' @param rank  rank of taxon, see rank() (character)
+#' @param rank  rank of taxon, see taxrank() (character)
 #' @param dataproviderkey Filter records to those provided by the supplied 
 #'     numeric key for a data provider. See provider(). (character)
 #' @param url the base GBIF API url for the function (should be left to default)

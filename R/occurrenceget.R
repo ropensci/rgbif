@@ -1,4 +1,4 @@
-#' getoccurrence - description
+#' occurrenceget - description
 #' @import RCurl XML
 #' @param key numeric key uniquely identifying the occurrence record within the GBIF
 #' @param stylesheet sets the URL of the stylesheet to be associated with the response document
@@ -10,9 +10,9 @@
 #'  the returned value in here (avoids unnecessary footprint)
 #' @export
 #' @examples \dontrun{
-#' getoccurrence(key = 13749100)
+#' occurrenceget(key = 13749100)
 #' }
-getoccurrence <- function(key = NA, style = NA, format = NA, mode = NA,
+occurrenceget <- function(key = NA, style = NA, format = NA, mode = NA,
   url = 'http://data.gbif.org/ws/rest/occurrence/get?',
   ...,
   curl = getCurlHandle())
@@ -33,7 +33,7 @@ getoccurrence <- function(key = NA, style = NA, format = NA, mode = NA,
   xmlTreeParse(tt)$doc$children$gbifResponse
 }
 
-# tt <- getoccurrence(key = 13850822)
+# tt <- occurrenceget(key = 13850822)
 # tt_ <- xmlTreeParse(tt)
 # xmlTreeParse(tt_)
 # getNodeSet

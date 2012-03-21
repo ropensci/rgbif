@@ -11,7 +11,7 @@
   \item{sciname}{scientitic name of taxon (character, see
   example)}
 
-  \item{rank}{rank of taxon, see rank() (character)}
+  \item{rank}{rank of taxon, see taxrank() (character)}
 
   \item{dataproviderkey}{Filter records to those provided
   by the supplied numeric key for a data provider. See

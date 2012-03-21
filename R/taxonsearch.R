@@ -5,7 +5,7 @@
 #' 
 #' @import XML RCurl
 #' @param sciname  scientitic name of taxon (character, see example)
-#' @param rank  rank of taxon, see rank() (character)
+#' @param rank  rank of taxon, see taxrank() (character)
 #' @param maxresults  return at most the specified number of records. The 
 #'    default (and maximum supported) is 1000 records.
 #' @param url the base GBIF API url for the function (should be left to default)

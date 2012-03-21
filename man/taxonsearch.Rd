@@ -10,7 +10,7 @@
   \item{sciname}{scientitic name of taxon (character, see
   example)}
 
-  \item{rank}{rank of taxon, see rank() (character)}
+  \item{rank}{rank of taxon, see taxrank() (character)}
 
   \item{maxresults}{return at most the specified number of
   records. The default (and maximum supported) is 1000
