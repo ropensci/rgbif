@@ -1,5 +1,9 @@
 # `rgbif`
 
+Install from CRAN:
+install.packages("rgbif")
+require(rgbif)
+
 Install using `install_github` within Hadley's [devtools](https://github.com/hadley/devtools) package.
 
 ```R
