@@ -147,7 +147,6 @@ occurrencelist <- function(sciname = NA, taxonconceptKey = NA,
     } else {
         maxresults2 <- NULL
     }
-
     args <- paste(sciname2, basisofrecordcode2, maxresults2, coordinatestatus2, 
                   minlatitude2, maxlatitude2, minlongitude2, maxlongitude2, 
                   minaltitude2, maxaltitude2, mindepth2, maxdepth2, sep = "")
