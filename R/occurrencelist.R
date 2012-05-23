@@ -71,6 +71,7 @@
 #'@param ... optional additional curl options (debugging tools mostly)
 #'@param curl If using in a loop, call getCurlHandle() first and pass
 #' the returned value in here (avoids unnecessary footprint)
+#' 
 #'@export
 #'@examples \dontrun{
 #'occurrencelist(sciname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100)
