@@ -67,11 +67,11 @@
 #'@param  stylesheet sets the URL of the stylesheet to be associated with the
 #     response document.
 #'@param  latlongdf  return a data.frame of lat/long's for all occurrences (logical)
+#'@param  removeZeros remove records with both Lat Long zero values (logical) 
 #'@param url the base GBIF API url for the function (should be left to default)
 #'@param ... optional additional curl options (debugging tools mostly)
 #'@param curl If using in a loop, call getCurlHandle() first and pass
 #' the returned value in here (avoids unnecessary footprint)
-#' 
 #'@export
 #'@examples \dontrun{
 #'occurrencelist(sciname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100)
@@ -86,8 +86,49 @@ occurrencelist <- function(sciname = NA, taxonconceptKey = NA,
                            originregioncode = NA, startdate = NA, enddate = NA, startyear = NA,
                            endyear = NA, year = NA, month = NA, day = NA, modifiedsince = NA,
                            startindex = NA, maxresults = 10, format = NA, icon = NA,
-                           mode = NA, stylesheet = NA, latlongdf = FALSE, url = "http://data.gbif.org/ws/rest/occurrence/list?",
+                           mode = NA, stylesheet = NA, latlongdf = FALSE, removeZeros = FALSE, 
+                           url = "http://data.gbif.org/ws/rest/occurrence/list?",
                            ..., curl = getCurlHandle()) {
+  # Code based on the `gbifxmlToDataFrame` function from dismo package 
+  # (http://cran.r-project.org/web/packages/dismo/index.html),
+  # by Robert Hijmans, 2012-05-31, License: GPL v3
+  gbifxmlToDataFrame <- function(s,format) {
+    doc = xmlInternalTreeParse(s)
+    nodes <- getNodeSet(doc, "//to:TaxonOccurrence")
+    if (length(nodes) == 0) 
+      return(data.frame())
+    if(!is.na(format) & format=="brief"){
+      varNames <- c("country", "decimalLatitude", "decimalLongitude", 
+                    "catalogNumber", "earliestDateCollected", "latestDateCollected" )
+    }else{
+      varNames <- c("country", "stateProvince", 
+                    "county", "locality", "decimalLatitude", "decimalLongitude", 
+                    "coordinateUncertaintyInMeters", "maximumElevationInMeters", 
+                    "minimumElevationInMeters", "maximumDepthInMeters", 
+                    "minimumDepthInMeters", "institutionCode", "collectionCode", 
+                    "catalogNumber", "basisOfRecordString", "collector", 
+                    "earliestDateCollected", "latestDateCollected", "gbifNotes")
+    }
+    dims <- c(length(nodes), length(varNames))
+    ans <- as.data.frame(replicate(dims[2], rep(as.character(NA), 
+                                                dims[1]), simplify = FALSE), stringsAsFactors = FALSE)
+    names(ans) <- varNames
+    for (i in seq(length = dims[1])) {
+      ans[i, ] <- xmlSApply(nodes[[i]], xmlValue)[varNames]
+    }
+    nodes <- getNodeSet(doc, "//to:Identification")
+    varNames <- c("taxonName")
+    dims = c(length(nodes), length(varNames))
+    tax = as.data.frame(replicate(dims[2], rep(as.character(NA), 
+                                               dims[1]), simplify = FALSE), stringsAsFactors = FALSE)
+    names(tax) = varNames
+    for (i in seq(length = dims[1])) {
+      tax[i, ] = xmlSApply(nodes[[i]], xmlValue)[varNames]
+    }
+    cbind(tax, ans)
+  }
+  #End gbifxmlToDataFrame -----
+  
   if (!is.na(sciname)) {
     sciname2 <- paste("scientificname=", gsub(" ", "+", sciname),
                       sep = "")
@@ -258,18 +299,34 @@ occurrencelist <- function(sciname = NA, taxonconceptKey = NA,
                 originisocountrycode2, originregioncode2, startdate2, enddate2,
                 startyear2, endyear2, year2, month2, day2, modifiedsince2, 
                 startindex2, format2, icon2, mode2, stylesheet2, sep = "")
+  urlct = "http://data.gbif.org/ws/rest/occurrence/count?"
+  queryct <- paste(urlct, args, sep = "")
+  x <- try(readLines(queryct, warn = FALSE))
+  x <- x[grep("totalMatched", x)]
+  n <- as.integer(unlist(strsplit(x, "\""))[2])
+  if (n == 0) {
+    cat("No occurrences found\n")
+    return(invisible(NULL))
+  }
   
   query <<- paste(url, args, sep = "")
   tt <- getURL(query, ..., curl = curl)
   out <- xmlTreeParse(tt)$doc$children$gbifResponse
   if (latlongdf == TRUE) {
-    namelist <- xpathApply(out, "//to:nameComplete")
-    latlist <- xpathApply(out, "//to:decimalLatitude")
-    longlist <- xpathApply(out, "//to:decimalLongitude")
-    df <- data.frame(rep(sciname, length(latlist)), laply(latlist,
-                                                          function(x) as.numeric(xmlValue(x))), laply(longlist,
-                                                                                                      function(x) as.numeric(xmlValue(x))))
-    names(df) <- c("sciname", "latitude", "longitude")
+    df <- gbifxmlToDataFrame (query,format)
+    df[, "decimalLongitude"] <- as.numeric(df[, "decimalLongitude"])
+    df[, "decimalLatitude"] <- as.numeric(df[, "decimalLatitude"])
+    i <- df[, "decimalLongitude"] == 0 & df[, "decimalLatitude"] == 0
+    i
+    if (removeZeros) {
+      df <- df[!i, ]
+    }
+    else {
+      df[i, "decimalLatitude"] <- NA
+      df[i, "decimalLongitude"] <- NA
+      
+    }
+    
     df
   } else {
     out
