@@ -130,10 +130,16 @@ occurrencelist <- function(sciname = NA, taxonconceptKey = NA,
   #End gbifxmlToDataFrame -----
   
   if (!is.na(sciname)) {
-    sciname2 <- paste("scientificname=", gsub(" ", "+", sciname),
-                      sep = "")
+    sciname2 <- paste("scientificname=", gsub(" ", "+", sciname), sep = "")
+    noCount <- FALSE
   } else {
     sciname2 <- NULL
+    noCount <- TRUE
+  }
+  if (!is.na(taxonconceptKey)) {
+    taxonconceptKey2 <- paste("&taxonconceptKey=", taxonconceptKey, sep = "")
+  } else {
+    taxonconceptKey2 <- NULL
   }
   if (!is.na(basisofrecordcode)) {
     basisofrecordcode2 <- paste("&basisofrecordcode=", basisofrecordcode, sep = "")
@@ -292,15 +298,16 @@ occurrencelist <- function(sciname = NA, taxonconceptKey = NA,
   } else {
     maxresults2 <- NULL
   }
-  args <- paste(sciname2, basisofrecordcode2, maxresults2, coordinatestatus2, 
+  args <- paste(sciname2, taxonconceptKey2, basisofrecordcode2, maxresults2, coordinatestatus2, 
                 minlatitude2, maxlatitude2, minlongitude2, maxlongitude2, 
                 minaltitude2, maxaltitude2, mindepth2, maxdepth2, cellid2,
                 centicellid2, typesonly2, coordinateissues2, hostisocountrycode2,
                 originisocountrycode2, originregioncode2, startdate2, enddate2,
                 startyear2, endyear2, year2, month2, day2, modifiedsince2, 
                 startindex2, format2, icon2, mode2, stylesheet2, sep = "")
+  if(!noCount){
   urlct = "http://data.gbif.org/ws/rest/occurrence/count?"
-  queryct <- paste(urlct, args, sep = "")
+  queryct <<- paste(urlct, args, sep = "")
   x <- try(readLines(queryct, warn = FALSE))
   x <- x[grep("totalMatched", x)]
   n <- as.integer(unlist(strsplit(x, "\""))[2])
@@ -308,9 +315,11 @@ occurrencelist <- function(sciname = NA, taxonconceptKey = NA,
     cat("No occurrences found\n")
     return(invisible(NULL))
   }
-  
+  }
   query <<- paste(url, args, sep = "")
   tt <- getURL(query, ..., curl = curl)
+  #tt <- getURL(query, curl = curl)
+  
   out <- xmlTreeParse(tt)$doc$children$gbifResponse
   if (latlongdf == TRUE) {
     df <- gbifxmlToDataFrame (query,format)
