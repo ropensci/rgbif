@@ -16,7 +16,7 @@
     endyear = NA, year = NA, month = NA, day = NA,
     modifiedsince = NA, startindex = NA, maxresults = 10,
     format = NA, icon = NA, mode = NA, stylesheet = NA,
-    latlongdf = FALSE,
+    latlongdf = FALSE, removeZeros = FALSE,
     url = "http://data.gbif.org/ws/rest/occurrence/list?",
     ..., curl = getCurlHandle())
 }
@@ -36,61 +36,106 @@
 
   \item{resourcenetworkkey}{<what param does>}
 
-  \item{basisofrecordcode}{<what param does>}
+  \item{basisofrecordcode}{return only records with the
+  specified basis of record.  Supported values are:
+  "specimen, observation, living, germplasm, fossil,
+  unknown".  (character)}
 
-  \item{minlatitude}{<what param does>}
+  \item{minlatitude}{return only records from locations
+  with latitudes greater than the supplied value (southern
+  hemisphere with negative latitudes). (numeric)}
 
-  \item{maxlatitude}{<what param does>}
+  \item{maxlatitude}{return only records from locations
+  with latitudes lower than the supplied value (southern
+  hemisphere with negative latitudes). (numeric)}
 
-  \item{minlongitude}{<what param does>}
+  \item{minlongitude}{return only records from locations
+  with longitudes greater than the supplied value (western
+  hemisphere with negative longitudes). (numeric)}
 
-  \item{maxlongitude}{<what param does>}
+  \item{maxlongitude}{return only records from locations
+  with longitudes lower than the supplied value (western
+  hemisphere with negative longitudes). (numeric)}
 
-  \item{minaltitude}{<what param does>}
+  \item{minaltitude}{return only records from altitudes
+  greater than or equal to the supplied value. (integer)}
 
-  \item{maxaltitude}{<what param does>}
+  \item{maxaltitude}{return only records from altitudes
+  less than or equals to the supplied value. (integer)}
 
-  \item{mindepth}{<what param does>}
+  \item{mindepth}{return only records from depth greater
+  than or equal to the supplied value. (numeric 2 decimal
+  places)}
 
-  \item{maxdepth}{<what param does>}
+  \item{maxdepth}{return only records from depth less than
+  or equals to the supplied value. (numeric 2 decimal
+  places)}
 
-  \item{cellid}{<what param does>}
+  \item{cellid}{identifier for a one degree cell (O -
+  64,799)}
 
-  \item{centicellid}{<what param does>}
+  \item{centicellid}{identifier for a 0.1 degree cell
+  within a one degree cell}
 
-  \item{typesonly}{<what param does>}
+  \item{typesonly}{if set to "true", return only records
+  with a type status specified.}
 
-  \item{georeferencedonly}{<what param does>}
+  \item{georeferencedonly}{This option is deprecated.}
 
-  \item{coordinatestatus}{<what param does>}
+  \item{coordinatestatus}{if set to "true", return only
+  records with coordinates.  If set to "false", return only
+  records without coordinates.}
 
-  \item{coordinateissues}{<what param does>}
+  \item{coordinateissues}{if set to "true", return only
+  records for which the portal has detected possible issues
+  in georeferencing. If set to "false", return only records
+  for which the portal has not detected any such issues.}
 
-  \item{hostisocountrycode}{<what param does>}
+  \item{hostisocountrycode}{return only records served by
+  providers from the country identified by the supplied
+  2-letter ISO code.}
 
-  \item{originisocountrycode}{<what param does>}
+  \item{originisocountrycode}{return only records of
+  occurrences which occurred within the country identified
+  by the supplied 2-letter ISO code.}
 
-  \item{originregioncode}{<what param does>}
+  \item{originregioncode}{return only records of
+  occurrences which occurred within the region identified
+  by the supplied 3-letter code.}
 
-  \item{startdate}{<what param does>}
+  \item{startdate}{return only records occurring on or
+  after the supplied date (format YYYY-MM-DD, e.g.
+  2006-11-28).}
 
-  \item{enddate}{<what param does>}
+  \item{enddate}{return only records occurring on or before
+  the supplied date (format YYYY-MM-DD, e.g. 2006-11-28).}
 
-  \item{startyear}{<what param does>}
+  \item{startyear}{return only records from during or after
+  the supplied year.}
 
-  \item{endyear}{<what param does>}
+  \item{endyear}{return only records from during or before
+  the supplied year.}
 
-  \item{year}{<what param does>}
+  \item{year}{return only records from during the supplied
+  year.}
 
-  \item{month}{<what param does>}
+  \item{month}{return only records from during the supplied
+  month (expressed as an integer in the range 1 to 12).}
 
-  \item{day}{<what param does>}
+  \item{day}{return only records from during the supplied
+  day of month (expressed as an integer in the range 1 to
+  31).}
 
-  \item{modifiedsince}{<what param does>}
+  \item{modifiedsince}{return only records which have been
+  indexed or modified in the GBIF data portal index on or
+  after the supplied date (format YYYY-MM-DD, e.g.
+  2006-11-28).}
 
-  \item{startindex}{<what param does>}
+  \item{startindex}{return the subset of the matching
+  records that starts at the supplied (zero-based index).}
 
-  \item{maxresults}{max number of results}
+  \item{maxresults}{max number of results (integer)
+  (1-10000)}
 
   \item{format}{specifies the format in which the records
   are to be returned,}
@@ -101,13 +146,16 @@
   (as far as possible) be the raw values originally
   retrieved from the data resource or processed
   (normalised) values used within the data portal
-  (character)latlongdf: return a data.frame of lat/long's
-  for all occurrences (logical)}
+  (character)}
 
   \item{stylesheet}{sets the URL of the stylesheet to be
   associated with the}
 
-  \item{latlongdf}{<what param does>}
+  \item{latlongdf}{return a data.frame of lat/long's for
+  all occurrences (logical)}
+
+  \item{removeZeros}{remove records with both Lat Long zero
+  values (logical)}
 
   \item{url}{the base GBIF API url for the function (should
   be left to default)}
@@ -124,7 +172,7 @@
 }
 \examples{
 \dontrun{
-occurrencelist(sciname = "Accipiter erythronemius", coordinatestatus = TRUE, maxresults = 100)
+occurrencelist(sciname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100)
 }
 }
 

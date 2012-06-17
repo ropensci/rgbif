@@ -32,7 +32,7 @@
 }
 \examples{
 \dontrun{
-taxonsearch(sciname = "Puma concolor")
+taxonsearch(sciname = 'Puma concolor')
 }
 }
 

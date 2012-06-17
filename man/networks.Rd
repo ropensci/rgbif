@@ -8,7 +8,7 @@
 }
 \arguments{
   \item{name}{data network name search string, by default
-  searches all data networks by defining name = ""}
+  searches all data networks by defining name = ''}
 
   \item{maxresults}{max number of results to return}
 
@@ -30,8 +30,7 @@
 \dontrun{
 # Test the function for a few networks
 networks(maxresults=10)
-
-# All data providers
+#'# All data providers
 networks()
 }
 }

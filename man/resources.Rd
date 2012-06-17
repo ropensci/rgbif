@@ -8,7 +8,7 @@
 }
 \arguments{
   \item{name}{data provider name search string, by default
-  searches all data resources by defining name = ""}
+  searches all data resources by defining name = ''}
 
   \item{maxresults}{max number of results to return}
 
@@ -30,8 +30,7 @@
 \dontrun{
 # Test the function for a few resources
 resources(maxresults=10)
-
-# All data providers
+#'# All data providers
 resources()
 }
 }

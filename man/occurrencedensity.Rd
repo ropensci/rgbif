@@ -1,7 +1,7 @@
 \name{occurrencedensity}
 \alias{occurrencedensity}
 \title{returns summary counts of occurrence records by one-degree cell for a single
- taxon, country, dataset, data publisher or data network}
+taxon, country, dataset, data publisher or data network}
 \usage{
   occurrencedensity(taxonconceptkey = NA,
     dataproviderkey = NA, dataresourcekey = NA,
@@ -47,7 +47,7 @@
 }
 \examples{
 \dontrun{
-occurrencedensity(originisocountrycode="CA")
+occurrencedensity(originisocountrycode='CA')
 occurrencedensity(taxonconceptkey=45)
 }
 }

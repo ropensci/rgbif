@@ -8,7 +8,7 @@
 }
 \arguments{
   \item{name}{data provider name search string, by default
-  searches all data providers by defining name = ""}
+  searches all data providers by defining name = ''}
 
   \item{maxresults}{max number of results to return}
 
@@ -24,14 +24,13 @@
 }
 \description{
   Beware: It takes a while to retrieve the full list of
-  providers - so go get more coffee.
+  providers - so go get more coffee. #'
 }
 \examples{
 \dontrun{
 # Test the function for a few providers
 providers(maxresults=10)
-
-# All data providers
+#'# All data providers
 providers()
 }
 }
