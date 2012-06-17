@@ -9,6 +9,10 @@ Install using `install_github` within Hadley's [devtools](https://github.com/had
 ```R
 install.packages("devtools")
 require(devtools)
+# Install this developmental branch
+install_github("rgbif", "vijaybarve")
+require(rgbif)
+# Install stable version from rOpenSci repository
 install_github("rgbif", "ropensci")
 require(rgbif)
 ```
