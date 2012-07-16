@@ -1,30 +1,38 @@
-\name{occurrencelist}
-\alias{occurrencelist}
-\title{occurrencelist search for taxon concept records matching a range of filters}
+\name{occurrencecount}
+\alias{occurrencecount}
+\title{occurrencecount count taxon concept records matching a range of filters}
 \usage{
-  occurrencelist(sciname = NA, taxonconceptKey = NA,
+  occurrencecount(sciname = NA, taxonconceptKey = NA,
     dataproviderkey = NA, dataresourcekey = NA,
-    resourcenetworkkey = NA, basisofrecordcode = NA,
-    minlatitude = NA, maxlatitude = NA, minlongitude = NA,
-    maxlongitude = NA, minaltitude = NA, maxaltitude = NA,
-    mindepth = NA, maxdepth = NA, cellid = NA,
-    centicellid = NA, typesonly = NA,
-    georeferencedonly = NA, coordinatestatus = NA,
+    institutioncode = NA, collectioncode = NA,
+    catalognumber = NA, resourcenetworkkey = NA,
+    basisofrecordcode = NA, minlatitude = NA,
+    maxlatitude = NA, minlongitude = NA, maxlongitude = NA,
+    minaltitude = NA, maxaltitude = NA, mindepth = NA,
+    maxdepth = NA, cellid = NA, centicellid = NA,
+    typesonly = NA, coordinatestatus = NA,
     coordinateissues = NA, hostisocountrycode = NA,
     originisocountrycode = NA, originregioncode = NA,
     startdate = NA, enddate = NA, startyear = NA,
     endyear = NA, year = NA, month = NA, day = NA,
-    modifiedsince = NA, startindex = NA, maxresults = 10,
-    format = NA, icon = NA, mode = NA, stylesheet = NA,
-    latlongdf = FALSE, removeZeros = FALSE,
-    url = "http://data.gbif.org/ws/rest/occurrence/list?",
+    modifiedsince = NA,
+    url = "http://data.gbif.org/ws/rest/occurrence/count?",
     ..., curl = getCurlHandle())
 }
 \arguments{
-  \item{sciname}{scientitic name of taxon (character, see
-  example)}
+  \item{sciname}{count only records where the scientific
+  name matches that supplied, use an asterisk * for any
+  name starting with preseding string (character). does not
+  make use of extra knowledge of possible synonyms or of
+  child taxa.  For these functions, use taxonconceptkey.
+  May be repeted in single request.}
 
-  \item{taxonconceptKey}{unique key for taxon (numeric)}
+  \item{taxonconceptKey}{unique key for taxon (numeric).
+  Count only records which are for the taxon identified by
+  the supplied numeric key, including any records provided
+  under synonyms of the taxon concerned, and any records
+  for child taxa (e.g. all genera and species within a
+  family).  May be repeted in single request.}
 
   \item{dataproviderkey}{Filter records to those provided
   by the supplied numeric key for a data provider. See
@@ -34,7 +42,18 @@
   by the supplied numeric key for a data resource See
   resource(). (character)}
 
-  \item{resourcenetworkkey}{<what param does>}
+  \item{institutioncode}{Return only records from a given
+  institution code.}
+
+  \item{collectioncode}{Return only records from a given
+  collection code.}
+
+  \item{catalognumber}{Return only records from a given
+  catalog number.}
+
+  \item{resourcenetworkkey}{count only records which have
+  been made available by resources identified as belonging
+  to the network identified by the supplied numeric key.}
 
   \item{basisofrecordcode}{return only records with the
   specified basis of record.  Supported values are:
@@ -72,15 +91,14 @@
   places)}
 
   \item{cellid}{identifier for a one degree cell (O -
-  64,799)}
+  64,799).  Using a cellid is more efficient than using a
+  bounding box for the same cell.}
 
   \item{centicellid}{identifier for a 0.1 degree cell
   within a one degree cell}
 
   \item{typesonly}{if set to "true", return only records
   with a type status specified.}
-
-  \item{georeferencedonly}{This option is deprecated.}
 
   \item{coordinatestatus}{if set to "true", return only
   records with coordinates.  If set to "false", return only
@@ -131,32 +149,6 @@
   after the supplied date (format YYYY-MM-DD, e.g.
   2006-11-28).}
 
-  \item{startindex}{return the subset of the matching
-  records that starts at the supplied (zero-based index).}
-
-  \item{maxresults}{max number of results (integer)
-  (1-10000)}
-
-  \item{format}{specifies the format in which the records
-  are to be returned,}
-
-  \item{icon}{<what param does>}
-
-  \item{mode}{specifies whether the response data should
-  (as far as possible) be the raw values originally
-  retrieved from the data resource or processed
-  (normalised) values used within the data portal
-  (character)}
-
-  \item{stylesheet}{sets the URL of the stylesheet to be
-  associated with the}
-
-  \item{latlongdf}{return a data.frame of lat/long's for
-  all occurrences (logical)}
-
-  \item{removeZeros}{remove records with both Lat Long zero
-  values (logical)}
-
   \item{url}{the base GBIF API url for the function (should
   be left to default)}
 
@@ -168,12 +160,12 @@
   unnecessary footprint)}
 }
 \description{
-  occurrencelist search for taxon concept records matching
-  a range of filters
+  occurrencecount count taxon concept records matching a
+  range of filters
 }
 \examples{
 \dontrun{
-occurrencelist(sciname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100)
+occurrencecount(sciname = 'Accipiter erythronemius', coordinatestatus = TRUE)
 }
 }
 

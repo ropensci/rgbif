@@ -9,7 +9,6 @@ out2 <- occurrencelist(sciname = sname, coordinatestatus = TRUE, latlongdf = TRU
 out2
 
 sname = 'Danaus plexippus' # Monarch butterfly
-# Get records of sname (which is wrong )
 out3 <- occurrencelist(sciname = sname, coordinatestatus = TRUE, latlongdf = TRUE, format = 'brief' )
 out3
 

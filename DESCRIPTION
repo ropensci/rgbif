@@ -3,7 +3,7 @@ Description: A programmatic interface to the
     Web Service methods provided by the Global
     Biodiversity Information Facility.
 Title: Interface to the Global Biodiversity Information Facility API methods
-Version: 0.0.1
+Version: 0.0.2
 License: CC0
 Date: 2012-3-21
 Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
@@ -27,3 +27,4 @@ Collate:
     'resources.r'
     'networks.r'
     'occurrencedensity.r'
+    'occurrencecount.R'

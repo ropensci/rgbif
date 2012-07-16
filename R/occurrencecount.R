@@ -1,12 +1,22 @@
-#'occurrencelist search for taxon concept records matching a range of filters
+#'occurrencecount count taxon concept records matching a range of filters
 #'@import RCurl XML plyr
-#' @param  sciname scientitic name of taxon (character, see example)
-#' @param  taxonconceptKey unique key for taxon (numeric)
+#' @param  sciname count only records where the scientific name matches 
+#'  	that supplied, use an asterisk * for any name starting with preseding 
+#'		string (character). does not make use of extra knowledge of possible synonyms 
+#'		or of child taxa.  For these functions, use taxonconceptkey. May be repeted in single request.
+#' @param  taxonconceptKey unique key for taxon (numeric). Count only records which are 
+#'		for the taxon identified by the supplied numeric key, including any records provided 
+#'		under synonyms of the taxon concerned, and any records for child taxa 
+#'		(e.g. all genera and species within a family).  May be repeted in single request.
 #' @param  dataproviderkey Filter records to those provided by the supplied
 #'    numeric key for a data provider. See provider(). (character)
 #' @param  dataresourcekey Filter records to those provided by the supplied
 #'    numeric key for a data resource See resource(). (character)
-#' @param  resourcenetworkkey  <what param does>
+#' @param  institutioncode Return only records from a given institution code.
+#' @param  collectioncode Return only records from a given collection code.
+#' @param  catalognumber Return only records from a given catalog number.                 
+#' @param  resourcenetworkkey  count only records which have been made available by 
+#'		resources identified as belonging to the network identified by the supplied numeric key.
 #' @param  basisofrecordcode  return only records with the specified basis of record.
 #'    Supported values are: "specimen, observation, living, germplasm, fossil, unknown".
 #'    (character)
@@ -26,10 +36,10 @@
 #'    value. (numeric 2 decimal places)
 #' @param  maxdepth  return only records from depth less than or equals to the supplied 
 #'    value. (numeric 2 decimal places)
-#' @param  cellid  identifier for a one degree cell (O - 64,799)
+#' @param  cellid  identifier for a one degree cell (O - 64,799). 
+#'		Using a cellid is more efficient than using a bounding box for the same cell.
 #' @param  centicellid  identifier for a 0.1 degree cell within a one degree cell 
 #' @param  typesonly  if set to "true", return only records with a type status specified.
-#' @param  georeferencedonly  This option is deprecated.
 #' @param  coordinatestatus  if set to "true", return only records with coordinates. 
 #'    If set to "false", return only records without coordinates.
 #' @param  coordinateissues  if set to "true", return only records for which the portal 
@@ -55,79 +65,26 @@
 #' @param modifiedsince  return only records which have been indexed or modified 
 #'    in the GBIF data portal index on or after the supplied date 
 #'    (format YYYY-MM-DD, e.g. 2006-11-28). 
-#' @param  startindex  return the subset of the matching records that starts at 
-#'    the supplied (zero-based index). 
-#' @param  maxresults  max number of results (integer) (1-10000)
-#' @param  format  specifies the format in which the records are to be returned,
-#     one of: brief, darwin or kml (character)
-#' @param  icon  <what param does>
-#' @param mode  specifies whether the response data should (as far as possible)  
-#'    be the raw values originally retrieved from the data resource or processed 
-#'    (normalised) values used within the data portal (character)
-#' @param  stylesheet sets the URL of the stylesheet to be associated with the
-#     response document.
-#' @param  latlongdf  return a data.frame of lat/long's for all occurrences (logical)
-#' @param  removeZeros remove records with both Lat Long zero values (logical) 
 #' @param url the base GBIF API url for the function (should be left to default)
 #' @param ... optional additional curl options (debugging tools mostly)
 #' @param curl If using in a loop, call getCurlHandle() first and pass
-#' the returned value in here (avoids unnecessary footprint)
+#'		the returned value in here (avoids unnecessary footprint)
 #'@export
 #'@examples \dontrun{
-#'occurrencelist(sciname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100)
+#'occurrencecount(sciname = 'Accipiter erythronemius', coordinatestatus = TRUE)
 #'}
-occurrencelist <- function(sciname = NA, taxonconceptKey = NA,
-                           dataproviderkey = NA, dataresourcekey = NA, resourcenetworkkey = NA,
-                           basisofrecordcode = NA, minlatitude = NA, maxlatitude = NA,
-                           minlongitude = NA, maxlongitude = NA, minaltitude = NA, maxaltitude = NA,
-                           mindepth = NA, maxdepth = NA, cellid = NA, centicellid = NA,
-                           typesonly = NA, georeferencedonly = NA, coordinatestatus = NA,
-                           coordinateissues = NA, hostisocountrycode = NA, originisocountrycode = NA,
-                           originregioncode = NA, startdate = NA, enddate = NA, startyear = NA,
-                           endyear = NA, year = NA, month = NA, day = NA, modifiedsince = NA,
-                           startindex = NA, maxresults = 10, format = NA, icon = NA,
-                           mode = NA, stylesheet = NA, latlongdf = FALSE, removeZeros = FALSE, 
-                           url = "http://data.gbif.org/ws/rest/occurrence/list?",
-                           ..., curl = getCurlHandle()) {
-  # Code based on the `gbifxmlToDataFrame` function from dismo package 
-  # (http://cran.r-project.org/web/packages/dismo/index.html),
-  # by Robert Hijmans, 2012-05-31, License: GPL v3
-  gbifxmlToDataFrame <- function(s,format) {
-    doc = xmlInternalTreeParse(s)
-    nodes <- getNodeSet(doc, "//to:TaxonOccurrence")
-    if (length(nodes) == 0) 
-      return(data.frame())
-    if(!is.na(format) & format=="brief"){
-      varNames <- c("country", "decimalLatitude", "decimalLongitude", 
-                    "catalogNumber", "earliestDateCollected", "latestDateCollected" )
-    }else{
-      varNames <- c("country", "stateProvince", 
-                    "county", "locality", "decimalLatitude", "decimalLongitude", 
-                    "coordinateUncertaintyInMeters", "maximumElevationInMeters", 
-                    "minimumElevationInMeters", "maximumDepthInMeters", 
-                    "minimumDepthInMeters", "institutionCode", "collectionCode", 
-                    "catalogNumber", "basisOfRecordString", "collector", 
-                    "earliestDateCollected", "latestDateCollected", "gbifNotes")
-    }
-    dims <- c(length(nodes), length(varNames))
-    ans <- as.data.frame(replicate(dims[2], rep(as.character(NA), 
-                                                dims[1]), simplify = FALSE), stringsAsFactors = FALSE)
-    names(ans) <- varNames
-    for (i in seq(length = dims[1])) {
-      ans[i, ] <- xmlSApply(nodes[[i]], xmlValue)[varNames]
-    }
-    nodes <- getNodeSet(doc, "//to:Identification")
-    varNames <- c("taxonName")
-    dims = c(length(nodes), length(varNames))
-    tax = as.data.frame(replicate(dims[2], rep(as.character(NA), 
-                                               dims[1]), simplify = FALSE), stringsAsFactors = FALSE)
-    names(tax) = varNames
-    for (i in seq(length = dims[1])) {
-      tax[i, ] = xmlSApply(nodes[[i]], xmlValue)[varNames]
-    }
-    cbind(tax, ans)
-  }
-  #End gbifxmlToDataFrame -----
+occurrencecount <- function(sciname = NA, taxonconceptKey = NA,
+                            dataproviderkey = NA, dataresourcekey = NA, institutioncode =NA ,
+                            collectioncode = NA, catalognumber = NA, resourcenetworkkey = NA,
+                            basisofrecordcode = NA, minlatitude = NA, maxlatitude = NA,
+                            minlongitude = NA, maxlongitude = NA, minaltitude = NA, maxaltitude = NA,
+                            mindepth = NA, maxdepth = NA, cellid = NA, centicellid = NA,
+                            typesonly = NA, coordinatestatus = NA,
+                            coordinateissues = NA, hostisocountrycode = NA, originisocountrycode = NA,
+                            originregioncode = NA, startdate = NA, enddate = NA, startyear = NA,
+                            endyear = NA, year = NA, month = NA, day = NA, modifiedsince = NA,
+                            url = "http://data.gbif.org/ws/rest/occurrence/count?",
+                            ..., curl = getCurlHandle()) {
   
   if (!is.na(sciname)) {
     sciname2 <- paste("scientificname=", gsub(" ", "+", sciname), sep = "")
@@ -140,6 +97,36 @@ occurrencelist <- function(sciname = NA, taxonconceptKey = NA,
     taxonconceptKey2 <- paste("&taxonconceptKey=", taxonconceptKey, sep = "")
   } else {
     taxonconceptKey2 <- NULL
+  }
+  if (!is.na(dataproviderkey)) {
+    dataproviderkey2 <- paste("&dataproviderkey=", dataproviderkey, sep = "")
+  } else {
+    dataproviderkey2 <- NULL
+  }
+  if (!is.na(dataresourcekey)) {
+    dataresourcekey2 <- paste("&dataresourcekey=", dataresourcekey, sep = "")
+  } else {
+    dataresourcekey2 <- NULL
+  }
+  if (!is.na(institutioncode)) {
+    institutioncode2 <- paste("&institutioncode=", institutioncode, sep = "")
+  } else {
+    institutioncode2 <- NULL
+  }
+  if (!is.na(collectioncode)) {
+    collectioncode2 <- paste("&collectioncode=", collectioncode, sep = "")
+  } else {
+    collectioncode2 <- NULL
+  }
+  if (!is.na(catalognumber)) {
+    catalognumber2 <- paste("&catalognumber=", catalognumber, sep = "")
+  } else {
+    catalognumber2 <- NULL
+  }
+  if (!is.na(resourcenetworkkey)) {
+    resourcenetworkkey2 <- paste("&resourcenetworkkey=", resourcenetworkkey, sep = "")
+  } else {
+    resourcenetworkkey2 <- NULL
   }
   if (!is.na(basisofrecordcode)) {
     basisofrecordcode2 <- paste("&basisofrecordcode=", basisofrecordcode, sep = "")
@@ -267,80 +254,23 @@ occurrencelist <- function(sciname = NA, taxonconceptKey = NA,
   } else {
     modifiedsince2 <- NULL
   }
-  if (!is.na(startindex)) {
-    startindex2 <- paste("&startindex=", startindex, sep = "")
-  } else {
-    startindex2 <- NULL
-  }
-  if (!is.na(format)) {
-    format2 <- paste("&format=", format, sep = "")
-  } else {
-    format2 <- NULL
-  }
-  if (!is.na(icon)) {
-    icon2 <- paste("&icon=", icon, sep = "")
-  } else {
-    icon2 <- NULL
-  }
-  if (!is.na(mode)) {
-    mode2 <- paste("&mode=", mode, sep = "")
-  } else {
-    mode2 <- NULL
-  }
-  if (!is.na(stylesheet)) {
-    stylesheet2 <- paste("&stylesheet=", stylesheet, sep = "")
-  } else {
-    stylesheet2 <- NULL
-  }
   
-  if (!is.na(maxresults)) {
-    maxresults2 <- paste("&maxresults=", maxresults, sep = "")
-  } else {
-    maxresults2 <- NULL
-  }
-  args <- paste(sciname2, taxonconceptKey2, basisofrecordcode2, maxresults2, coordinatestatus2, 
+  args <- paste(sciname2, taxonconceptKey2, basisofrecordcode2, coordinatestatus2, 
+                dataproviderkey2, dataresourcekey2, institutioncode2,
+                collectioncode2, catalognumber2, resourcenetworkkey2,
                 minlatitude2, maxlatitude2, minlongitude2, maxlongitude2, 
                 minaltitude2, maxaltitude2, mindepth2, maxdepth2, cellid2,
                 centicellid2, typesonly2, coordinateissues2, hostisocountrycode2,
                 originisocountrycode2, originregioncode2, startdate2, enddate2,
                 startyear2, endyear2, year2, month2, day2, modifiedsince2, 
-                startindex2, format2, icon2, mode2, stylesheet2, sep = "")
-  if(!noCount){
-  urlct = "http://data.gbif.org/ws/rest/occurrence/count?"
-  queryct <- paste(urlct, args, sep = "")
+                sep = "")
+  
+  
+  queryct <- paste(url, args, sep = "")
   x <- try(readLines(queryct, warn = FALSE))
   x <- x[grep("totalMatched", x)]
-  n <- as.integer(unlist(strsplit(x, "\""))[2])
-  if (n == 0) {
-    cat("No occurrences found\n")
-    return(invisible(NULL))
-  }
-  }
-  query <- paste(url, args, sep = "")
-  tt <- getURL(query, ..., curl = curl)
-  #tt <- getURL(query, curl = curl)
+  out <- as.integer(unlist(strsplit(x, "\""))[2])
   
-  out <- xmlTreeParse(tt)$doc$children$gbifResponse
-  if (latlongdf == TRUE) {
-    df <- gbifxmlToDataFrame (query,format)
-    df[, "decimalLongitude"] <- as.numeric(df[, "decimalLongitude"])
-    df[, "decimalLatitude"] <- as.numeric(df[, "decimalLatitude"])
-    i <- df[, "decimalLongitude"] == 0 & df[, "decimalLatitude"] == 0
-    i
-    if (removeZeros) {
-      df <- df[!i, ]
-    }
-    else {
-      df[i, "decimalLatitude"] <- NA
-      df[i, "decimalLongitude"] <- NA
-      
-    }
-    
-    df
-  } else {
-    out
-  }
 }
-# out <- occurrencelist(sciname = 'Aratinga holochlora rubritorquis', coordinatestatus = TRUE,
-#     maxresults = 10, latlongdf = TRUE)
+# out <- occurrencecount(sciname = 'Aratinga holochlora rubritorquis', coordinatestatus = TRUE)
 # out
