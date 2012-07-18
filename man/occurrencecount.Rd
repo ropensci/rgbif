@@ -1,22 +1,24 @@
 \name{occurrencecount}
 \alias{occurrencecount}
-\title{occurrencecount count taxon concept records matching a range of filters}
+\title{Counts taxon concept records matching a range of filters.}
 \usage{
-  occurrencecount(sciname = NA, taxonconceptKey = NA,
-    dataproviderkey = NA, dataresourcekey = NA,
-    institutioncode = NA, collectioncode = NA,
-    catalognumber = NA, resourcenetworkkey = NA,
-    basisofrecordcode = NA, minlatitude = NA,
-    maxlatitude = NA, minlongitude = NA, maxlongitude = NA,
-    minaltitude = NA, maxaltitude = NA, mindepth = NA,
-    maxdepth = NA, cellid = NA, centicellid = NA,
-    typesonly = NA, coordinatestatus = NA,
-    coordinateissues = NA, hostisocountrycode = NA,
-    originisocountrycode = NA, originregioncode = NA,
-    startdate = NA, enddate = NA, startyear = NA,
-    endyear = NA, year = NA, month = NA, day = NA,
-    modifiedsince = NA,
-    url = "http://data.gbif.org/ws/rest/occurrence/count?",
+  occurrencecount(scientificname = NULL,
+    taxonconceptKey = NULL, dataproviderkey = NULL,
+    dataresourcekey = NULL, institutioncode = NULL,
+    collectioncode = NULL, catalognumber = NULL,
+    resourcenetworkkey = NULL, basisofrecordcode = NULL,
+    minlatitude = NULL, maxlatitude = NULL,
+    minlongitude = NULL, maxlongitude = NULL,
+    minaltitude = NULL, maxaltitude = NULL,
+    mindepth = NULL, maxdepth = NULL, cellid = NULL,
+    centicellid = NULL, typesonly = NULL,
+    coordinatestatus = NULL, coordinateissues = NULL,
+    hostisocountrycode = NULL, originisocountrycode = NULL,
+    originregioncode = NULL, startdate = NULL,
+    enddate = NULL, startyear = NULL, endyear = NULL,
+    year = NULL, month = NULL, day = NULL,
+    modifiedsince = NULL,
+    url = "http://data.gbif.org/ws/rest/occurrence/count",
     ..., curl = getCurlHandle())
 }
 \arguments{
@@ -160,12 +162,13 @@
   unnecessary footprint)}
 }
 \description{
-  occurrencecount count taxon concept records matching a
-  range of filters
+  Counts taxon concept records matching a range of filters.
 }
 \examples{
 \dontrun{
-occurrencecount(sciname = 'Accipiter erythronemius', coordinatestatus = TRUE)
+occurrencecount(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE)
+occurrencecount(scientificname = 'Helianthus annuus', coordinatestatus = TRUE, year=2009)
+occurrencecount(scientificname = 'Helianthus annuus', coordinatestatus = TRUE, year=2005, maxlatitude=20)
 }
 }
 

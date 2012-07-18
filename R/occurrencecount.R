@@ -1,5 +1,6 @@
-#'occurrencecount count taxon concept records matching a range of filters
-#'@import RCurl XML plyr
+#' Counts taxon concept records matching a range of filters.
+#' 
+#' @import XML httr
 #' @param  sciname count only records where the scientific name matches 
 #'  	that supplied, use an asterisk * for any name starting with preseding 
 #'		string (character). does not make use of extra knowledge of possible synonyms 
@@ -69,208 +70,38 @@
 #' @param ... optional additional curl options (debugging tools mostly)
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #'		the returned value in here (avoids unnecessary footprint)
-#'@export
-#'@examples \dontrun{
-#'occurrencecount(sciname = 'Accipiter erythronemius', coordinatestatus = TRUE)
-#'}
-occurrencecount <- function(sciname = NA, taxonconceptKey = NA,
-                            dataproviderkey = NA, dataresourcekey = NA, institutioncode =NA ,
-                            collectioncode = NA, catalognumber = NA, resourcenetworkkey = NA,
-                            basisofrecordcode = NA, minlatitude = NA, maxlatitude = NA,
-                            minlongitude = NA, maxlongitude = NA, minaltitude = NA, maxaltitude = NA,
-                            mindepth = NA, maxdepth = NA, cellid = NA, centicellid = NA,
-                            typesonly = NA, coordinatestatus = NA,
-                            coordinateissues = NA, hostisocountrycode = NA, originisocountrycode = NA,
-                            originregioncode = NA, startdate = NA, enddate = NA, startyear = NA,
-                            endyear = NA, year = NA, month = NA, day = NA, modifiedsince = NA,
-                            url = "http://data.gbif.org/ws/rest/occurrence/count?",
-                            ..., curl = getCurlHandle()) {
-  
-  if (!is.na(sciname)) {
-    sciname2 <- paste("scientificname=", gsub(" ", "+", sciname), sep = "")
-    noCount <- FALSE
-  } else {
-    sciname2 <- NULL
-    noCount <- TRUE
-  }
-  if (!is.na(taxonconceptKey)) {
-    taxonconceptKey2 <- paste("&taxonconceptKey=", taxonconceptKey, sep = "")
-  } else {
-    taxonconceptKey2 <- NULL
-  }
-  if (!is.na(dataproviderkey)) {
-    dataproviderkey2 <- paste("&dataproviderkey=", dataproviderkey, sep = "")
-  } else {
-    dataproviderkey2 <- NULL
-  }
-  if (!is.na(dataresourcekey)) {
-    dataresourcekey2 <- paste("&dataresourcekey=", dataresourcekey, sep = "")
-  } else {
-    dataresourcekey2 <- NULL
-  }
-  if (!is.na(institutioncode)) {
-    institutioncode2 <- paste("&institutioncode=", institutioncode, sep = "")
-  } else {
-    institutioncode2 <- NULL
-  }
-  if (!is.na(collectioncode)) {
-    collectioncode2 <- paste("&collectioncode=", collectioncode, sep = "")
-  } else {
-    collectioncode2 <- NULL
-  }
-  if (!is.na(catalognumber)) {
-    catalognumber2 <- paste("&catalognumber=", catalognumber, sep = "")
-  } else {
-    catalognumber2 <- NULL
-  }
-  if (!is.na(resourcenetworkkey)) {
-    resourcenetworkkey2 <- paste("&resourcenetworkkey=", resourcenetworkkey, sep = "")
-  } else {
-    resourcenetworkkey2 <- NULL
-  }
-  if (!is.na(basisofrecordcode)) {
-    basisofrecordcode2 <- paste("&basisofrecordcode=", basisofrecordcode, sep = "")
-  } else {
-    basisofrecordcode2 <- NULL
-  }
-  if (!is.na(coordinatestatus)) {
-    coordinatestatus2 <- paste("&coordinatestatus=", coordinatestatus,
-                               sep = "")
-  } else {
-    coordinatestatus2 <- NULL
-  }
-  if (!is.na(minlatitude)) {
-    minlatitude2 <- paste("&minlatitude=", minlatitude, sep = "")
-  } else {
-    minlatitude2 <- NULL
-  }
-  if (!is.na(maxlatitude)) {
-    maxlatitude2 <- paste("&maxlatitude=", maxlatitude, sep = "")
-  } else {
-    maxlatitude2 <- NULL
-  }
-  if (!is.na(minlongitude)) {
-    minlongitude2 <- paste("&minlongitude=", minlongitude, sep = "")
-  } else {
-    minlongitude2 <- NULL
-  }
-  if (!is.na(maxlongitude)) {
-    maxlongitude2 <- paste("&maxlongitude=", maxlongitude, sep = "")
-  } else {
-    maxlongitude2 <- NULL
-  }
-  if (!is.na(minaltitude)) {
-    minaltitude2 <- paste("&minaltitude=", minaltitude, sep = "")
-  } else {
-    minaltitude2 <- NULL
-  }
-  if (!is.na(maxaltitude)) {
-    maxaltitude2 <- paste("&maxaltitude=", maxaltitude, sep = "")
-  } else {
-    maxaltitude2 <- NULL
-  }
-  if (!is.na(mindepth)) {
-    mindepth2 <- paste("&mindepth=", mindepth, sep = "")
-  } else {
-    mindepth2 <- NULL
-  }
-  if (!is.na(maxdepth)) {
-    maxdepth2 <- paste("&maxdepth=", maxdepth, sep = "")
-  } else {
-    maxdepth2 <- NULL
-  }
-  if (!is.na(cellid)) {
-    cellid2 <- paste("&cellid=", cellid, sep = "")
-  } else {
-    cellid2 <- NULL
-  }
-  if (!is.na(centicellid)) {
-    centicellid2 <- paste("&centicellid=", centicellid, sep = "")
-  } else {
-    centicellid2 <- NULL
-  }
-  if (!is.na(typesonly)) {
-    typesonly2 <- paste("&typesonly=", typesonly, sep = "")
-  } else {
-    typesonly2 <- NULL
-  }
-  if (!is.na(coordinateissues)) {
-    coordinateissues2 <- paste("&coordinateissues=", coordinateissues, sep = "")
-  } else {
-    coordinateissues2 <- NULL
-  }
-  if (!is.na(hostisocountrycode)) {
-    hostisocountrycode2 <- paste("&hostisocountrycode=", hostisocountrycode, sep = "")
-  } else {
-    hostisocountrycode2 <- NULL
-  }
-  if (!is.na(originisocountrycode)) {
-    originisocountrycode2 <- paste("&originisocountrycode=", originisocountrycode, sep = "")
-  } else {
-    originisocountrycode2 <- NULL
-  }
-  if (!is.na(originregioncode)) {
-    originregioncode2 <- paste("&originregioncode=", originregioncode, sep = "")
-  } else {
-    originregioncode2 <- NULL
-  }
-  if (!is.na(startdate)) {
-    startdate2 <- paste("&startdate=", startdate, sep = "")
-  } else {
-    startdate2 <- NULL
-  }
-  if (!is.na(enddate)) {
-    enddate2 <- paste("&enddate=", enddate, sep = "")
-  } else {
-    enddate2 <- NULL
-  }
-  if (!is.na(startyear)) {
-    startyear2 <- paste("&startyear=", startyear, sep = "")
-  } else {
-    startyear2 <- NULL
-  }
-  if (!is.na(endyear)) {
-    endyear2 <- paste("&endyear=", endyear, sep = "")
-  } else {
-    endyear2 <- NULL
-  }
-  if (!is.na(year)) {
-    year2 <- paste("&year=", year, sep = "")
-  } else {
-    year2 <- NULL
-  }
-  if (!is.na(month)) {
-    month2 <- paste("&month=", month, sep = "")
-  } else {
-    month2 <- NULL
-  }
-  if (!is.na(day)) {
-    day2 <- paste("&day=", day, sep = "")
-  } else {
-    day2 <- NULL
-  }
-  if (!is.na(modifiedsince)) {
-    modifiedsince2 <- paste("&modifiedsince=", modifiedsince, sep = "")
-  } else {
-    modifiedsince2 <- NULL
-  }
-  
-  args <- paste(sciname2, taxonconceptKey2, basisofrecordcode2, coordinatestatus2, 
-                dataproviderkey2, dataresourcekey2, institutioncode2,
-                collectioncode2, catalognumber2, resourcenetworkkey2,
-                minlatitude2, maxlatitude2, minlongitude2, maxlongitude2, 
-                minaltitude2, maxaltitude2, mindepth2, maxdepth2, cellid2,
-                centicellid2, typesonly2, coordinateissues2, hostisocountrycode2,
-                originisocountrycode2, originregioncode2, startdate2, enddate2,
-                startyear2, endyear2, year2, month2, day2, modifiedsince2, 
-                sep = "")
-  
-  
-  queryct <- paste(url, args, sep = "")
-  x <- try(readLines(queryct, warn = FALSE))
-  x <- x[grep("totalMatched", x)]
-  out <- as.integer(unlist(strsplit(x, "\""))[2])
-  
+#' @export
+#' @examples \dontrun{
+#' occurrencecount(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE)
+#' occurrencecount(scientificname = 'Helianthus annuus', coordinatestatus = TRUE, year=2009)
+#' occurrencecount(scientificname = 'Helianthus annuus', coordinatestatus = TRUE, year=2005, maxlatitude=20)
+#' }
+occurrencecount <- function(scientificname = NULL, taxonconceptKey = NULL,
+	dataproviderkey = NULL, dataresourcekey = NULL, institutioncode = NULL ,
+	collectioncode = NULL, catalognumber = NULL, resourcenetworkkey = NULL,
+	basisofrecordcode = NULL, minlatitude = NULL, maxlatitude = NULL,
+	minlongitude = NULL, maxlongitude = NULL, minaltitude = NULL, maxaltitude = NULL,
+	mindepth = NULL, maxdepth = NULL, cellid = NULL, centicellid = NULL,
+	typesonly = NULL, coordinatestatus = NULL,
+	coordinateissues = NULL, hostisocountrycode = NULL, originisocountrycode = NULL,
+	originregioncode = NULL, startdate = NULL, enddate = NULL, startyear = NULL,
+	endyear = NULL, year = NULL, month = NULL, day = NULL, modifiedsince = NULL,
+	url = "http://data.gbif.org/ws/rest/occurrence/count", ..., 
+	curl = getCurlHandle()) 
+{  
+	query <- compact(list(scientificname = scientificname, taxonconceptKey = taxonconceptKey,
+		dataproviderkey = dataproviderkey, dataresourcekey = dataresourcekey, 
+		institutioncode = institutioncode,	 collectioncode = collectioncode, catalognumber = catalognumber, 
+		resourcenetworkkey = resourcenetworkkey,	basisofrecordcode = basisofrecordcode, 
+		minlatitude = minlatitude, maxlatitude = maxlatitude, minlongitude = minlongitude, 
+		maxlongitude = maxlongitude, minaltitude = minaltitude, maxaltitude = maxaltitude,
+		mindepth = mindepth, maxdepth = maxdepth, cellid = cellid, centicellid = centicellid,
+		typesonly = typesonly, coordinatestatus = coordinatestatus, coordinateissues = coordinateissues, 
+		hostisocountrycode = hostisocountrycode, originisocountrycode = originisocountrycode,
+		originregioncode = originregioncode, startdate = startdate, enddate = enddate, startyear = startyear,
+		endyear = endyear, year = year, month = month, day = day, modifiedsince = modifiedsince))
+	
+	temp <- GET(url, query = query)
+	out <- parsed_content(temp)$doc$children$gbifResponse
+	as.numeric(xmlGetAttr(getNodeSet(out, "//gbif:summary")[[1]], "totalMatched"))
 }
-# out <- occurrencecount(sciname = 'Aratinga holochlora rubritorquis', coordinatestatus = TRUE)
-# out
