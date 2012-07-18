@@ -15,7 +15,8 @@ Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
 Imports:
     XML,
     RCurl (>= 1.6),
-    plyr
+    plyr,
+    httr
 Collate:
     'gbifdatause.R'
     'occurrenceget.R'
