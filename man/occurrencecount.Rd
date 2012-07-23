@@ -22,12 +22,12 @@
     ..., curl = getCurlHandle())
 }
 \arguments{
-  \item{sciname}{count only records where the scientific
-  name matches that supplied, use an asterisk * for any
-  name starting with preseding string (character). does not
-  make use of extra knowledge of possible synonyms or of
-  child taxa.  For these functions, use taxonconceptkey.
-  May be repeted in single request.}
+  \item{scientificname}{count only records where the
+  scientific name matches that supplied, use an asterisk *
+  for any name starting with preseding string (character).
+  does not make use of extra knowledge of possible synonyms
+  or of child taxa.  For these functions, use
+  taxonconceptkey. May be repeted in single request.}
 
   \item{taxonconceptKey}{unique key for taxon (numeric).
   Count only records which are for the taxon identified by

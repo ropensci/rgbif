@@ -1,7 +1,7 @@
 #' Counts taxon concept records matching a range of filters.
 #' 
 #' @import XML httr
-#' @param  sciname count only records where the scientific name matches 
+#' @param  scientificname count only records where the scientific name matches 
 #'  	that supplied, use an asterisk * for any name starting with preseding 
 #'		string (character). does not make use of extra knowledge of possible synonyms 
 #'		or of child taxa.  For these functions, use taxonconceptkey. May be repeted in single request.
@@ -89,7 +89,7 @@ occurrencecount <- function(scientificname = NULL, taxonconceptKey = NULL,
 	url = "http://data.gbif.org/ws/rest/occurrence/count", ..., 
 	curl = getCurlHandle()) 
 {  
-	query <- compact(list(scientificname = scientificname, taxonconceptKey = taxonconceptKey,
+	querystr <- compact(list(scientificname = scientificname, taxonconceptKey = taxonconceptKey,
 		dataproviderkey = dataproviderkey, dataresourcekey = dataresourcekey, 
 		institutioncode = institutioncode,	 collectioncode = collectioncode, catalognumber = catalognumber, 
 		resourcenetworkkey = resourcenetworkkey,	basisofrecordcode = basisofrecordcode, 
@@ -101,7 +101,7 @@ occurrencecount <- function(scientificname = NULL, taxonconceptKey = NULL,
 		originregioncode = originregioncode, startdate = startdate, enddate = enddate, startyear = startyear,
 		endyear = endyear, year = year, month = month, day = day, modifiedsince = modifiedsince))
 	
-	temp <- GET(url, query = query)
+	temp <- GET(url, query = querystr)
 	out <- parsed_content(temp)$doc$children$gbifResponse
 	as.numeric(xmlGetAttr(getNodeSet(out, "//gbif:summary")[[1]], "totalMatched"))
 }
