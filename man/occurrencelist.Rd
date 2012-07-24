@@ -4,19 +4,21 @@
 \usage{
   occurrencelist(sciname = NA, taxonconceptKey = NA,
     dataproviderkey = NA, dataresourcekey = NA,
-    resourcenetworkkey = NA, basisofrecordcode = NA,
-    minlatitude = NA, maxlatitude = NA, minlongitude = NA,
-    maxlongitude = NA, minaltitude = NA, maxaltitude = NA,
-    mindepth = NA, maxdepth = NA, cellid = NA,
-    centicellid = NA, typesonly = NA,
-    georeferencedonly = NA, coordinatestatus = NA,
-    coordinateissues = NA, hostisocountrycode = NA,
-    originisocountrycode = NA, originregioncode = NA,
-    startdate = NA, enddate = NA, startyear = NA,
-    endyear = NA, year = NA, month = NA, day = NA,
-    modifiedsince = NA, startindex = NA, maxresults = 10,
-    format = NA, icon = NA, mode = NA, stylesheet = NA,
-    latlongdf = FALSE, removeZeros = FALSE,
+    institutioncode = NA, collectioncode = NA,
+    catalognumber = NA, resourcenetworkkey = NA,
+    basisofrecordcode = NA, minlatitude = NA,
+    maxlatitude = NA, minlongitude = NA, maxlongitude = NA,
+    minaltitude = NA, maxaltitude = NA, mindepth = NA,
+    maxdepth = NA, cellid = NA, centicellid = NA,
+    typesonly = NA, georeferencedonly = NA,
+    coordinatestatus = NA, coordinateissues = NA,
+    hostisocountrycode = NA, originisocountrycode = NA,
+    originregioncode = NA, startdate = NA, enddate = NA,
+    startyear = NA, endyear = NA, year = NA, month = NA,
+    day = NA, modifiedsince = NA, startindex = NA,
+    maxresults = 10, format = NA, icon = NA, mode = NA,
+    stylesheet = NA, latlongdf = FALSE,
+    removeZeros = FALSE,
     url = "http://data.gbif.org/ws/rest/occurrence/list?",
     ..., curl = getCurlHandle())
 }
@@ -34,7 +36,18 @@
   by the supplied numeric key for a data resource See
   resource(). (character)}
 
-  \item{resourcenetworkkey}{<what param does>}
+  \item{institutioncode}{Return only records from a given
+  institution code.}
+
+  \item{collectioncode}{Return only records from a given
+  collection code.}
+
+  \item{catalognumber}{Return only records from a given
+  catalog number.}
+
+  \item{resourcenetworkkey}{count only records which have
+  been made available by resources identified as belonging
+  to the network identified by the supplied numeric key.}
 
   \item{basisofrecordcode}{return only records with the
   specified basis of record.  Supported values are:
@@ -140,7 +153,8 @@
   \item{format}{specifies the format in which the records
   are to be returned,}
 
-  \item{icon}{<what param does>}
+  \item{icon}{(only when format is set to kml) specified
+  the URL for an icon to be used for the KML Placemarks.}
 
   \item{mode}{specifies whether the response data should
   (as far as possible) be the raw values originally

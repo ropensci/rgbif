@@ -12,7 +12,6 @@ sname = 'Danaus plexippus' # Monarch butterfly
 out3 <- occurrencelist(sciname = sname, coordinatestatus = TRUE, latlongdf = TRUE, format = 'brief' )
 out3
 
-
 sname = 'Aratinga holochlora rubritorquis'
 # Basis of Record : Specimen 
 outsp <- occurrencelist(sciname = sname, coordinatestatus = TRUE, maxresults = 10, latlongdf = TRUE, basisofrecordcode="specimen")

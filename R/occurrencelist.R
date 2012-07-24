@@ -6,7 +6,11 @@
 #'    numeric key for a data provider. See provider(). (character)
 #' @param  dataresourcekey Filter records to those provided by the supplied
 #'    numeric key for a data resource See resource(). (character)
-#' @param  resourcenetworkkey  <what param does>
+#' @param  institutioncode Return only records from a given institution code.
+#' @param  collectioncode Return only records from a given collection code.
+#' @param  catalognumber Return only records from a given catalog number.                 
+#' @param  resourcenetworkkey  count only records which have been made available by 
+#'    resources identified as belonging to the network identified by the supplied numeric key.
 #' @param  basisofrecordcode  return only records with the specified basis of record.
 #'    Supported values are: "specimen, observation, living, germplasm, fossil, unknown".
 #'    (character)
@@ -59,8 +63,9 @@
 #'    the supplied (zero-based index). 
 #' @param  maxresults  max number of results (integer) (1-10000)
 #' @param  format  specifies the format in which the records are to be returned,
-#     one of: brief, darwin or kml (character)
-#' @param  icon  <what param does>
+#     one of: brief or darwin (character) default is brief.
+#' @param  icon  (only when format is set to kml) specified the URL for an icon
+#'    to be used for the KML Placemarks.
 #' @param mode  specifies whether the response data should (as far as possible)  
 #'    be the raw values originally retrieved from the data resource or processed 
 #'    (normalised) values used within the data portal (character)
@@ -77,7 +82,8 @@
 #'occurrencelist(sciname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100)
 #'}
 occurrencelist <- function(sciname = NA, taxonconceptKey = NA,
-                           dataproviderkey = NA, dataresourcekey = NA, resourcenetworkkey = NA,
+                           dataproviderkey = NA, dataresourcekey = NA, institutioncode = NA ,
+                           collectioncode = NA, catalognumber = NA, resourcenetworkkey = NA,
                            basisofrecordcode = NA, minlatitude = NA, maxlatitude = NA,
                            minlongitude = NA, maxlongitude = NA, minaltitude = NA, maxaltitude = NA,
                            mindepth = NA, maxdepth = NA, cellid = NA, centicellid = NA,
@@ -97,10 +103,7 @@ occurrencelist <- function(sciname = NA, taxonconceptKey = NA,
     nodes <- getNodeSet(doc, "//to:TaxonOccurrence")
     if (length(nodes) == 0) 
       return(data.frame())
-    if(!is.na(format) & format=="brief"){
-      varNames <- c("country", "decimalLatitude", "decimalLongitude", 
-                    "catalogNumber", "earliestDateCollected", "latestDateCollected" )
-    }else{
+    if(!is.na(format) & format=="darwin"){
       varNames <- c("country", "stateProvince", 
                     "county", "locality", "decimalLatitude", "decimalLongitude", 
                     "coordinateUncertaintyInMeters", "maximumElevationInMeters", 
@@ -108,6 +111,9 @@ occurrencelist <- function(sciname = NA, taxonconceptKey = NA,
                     "minimumDepthInMeters", "institutionCode", "collectionCode", 
                     "catalogNumber", "basisOfRecordString", "collector", 
                     "earliestDateCollected", "latestDateCollected", "gbifNotes")
+    }else{
+      varNames <- c("country", "decimalLatitude", "decimalLongitude", 
+                    "catalogNumber", "earliestDateCollected", "latestDateCollected" )
     }
     dims <- c(length(nodes), length(varNames))
     ans <- as.data.frame(replicate(dims[2], rep(as.character(NA), 
@@ -135,6 +141,31 @@ occurrencelist <- function(sciname = NA, taxonconceptKey = NA,
   } else {
     sciname2 <- NULL
     noCount <- TRUE
+  }
+  if (!is.na(dataproviderkey)) {
+    dataproviderkey2 <- paste("&dataproviderkey=", dataproviderkey, sep = "")
+  } else {
+    dataproviderkey2 <- NULL
+  }
+  if (!is.na(dataresourcekey)) {
+    dataresourcekey2 <- paste("&dataresourcekey=", dataresourcekey, sep = "")
+  } else {
+    dataresourcekey2 <- NULL
+  }
+  if (!is.na(institutioncode)) {
+    institutioncode2 <- paste("&institutioncode=", institutioncode, sep = "")
+  } else {
+    institutioncode2 <- NULL
+  }
+  if (!is.na(collectioncode)) {
+    collectioncode2 <- paste("&collectioncode=", collectioncode, sep = "")
+  } else {
+    collectioncode2 <- NULL
+  }
+  if (!is.na(catalognumber)) {
+    catalognumber2 <- paste("&catalognumber=", catalognumber, sep = "")
+  } else {
+    catalognumber2 <- NULL
   }
   if (!is.na(taxonconceptKey)) {
     taxonconceptKey2 <- paste("&taxonconceptKey=", taxonconceptKey, sep = "")
@@ -298,7 +329,9 @@ occurrencelist <- function(sciname = NA, taxonconceptKey = NA,
   } else {
     maxresults2 <- NULL
   }
-  args <- paste(sciname2, taxonconceptKey2, basisofrecordcode2, maxresults2, coordinatestatus2, 
+  args <- paste(sciname2, taxonconceptKey2, basisofrecordcode2, maxresults2, 
+                dataproviderkey2, dataresourcekey2, institutioncode2,
+                collectioncode2, catalognumber2, coordinatestatus2, 
                 minlatitude2, maxlatitude2, minlongitude2, maxlongitude2, 
                 minaltitude2, maxaltitude2, mindepth2, maxdepth2, cellid2,
                 centicellid2, typesonly2, coordinateissues2, hostisocountrycode2,
@@ -306,19 +339,18 @@ occurrencelist <- function(sciname = NA, taxonconceptKey = NA,
                 startyear2, endyear2, year2, month2, day2, modifiedsince2, 
                 startindex2, format2, icon2, mode2, stylesheet2, sep = "")
   if(!noCount){
-  urlct = "http://data.gbif.org/ws/rest/occurrence/count?"
-  queryct <- paste(urlct, args, sep = "")
-  x <- try(readLines(queryct, warn = FALSE))
-  x <- x[grep("totalMatched", x)]
-  n <- as.integer(unlist(strsplit(x, "\""))[2])
-  if (n == 0) {
-    cat("No occurrences found\n")
-    return(invisible(NULL))
-  }
+    urlct = "http://data.gbif.org/ws/rest/occurrence/count?"
+    queryct <- paste(urlct, args, sep = "")
+    x <- try(readLines(queryct, warn = FALSE))
+    x <- x[grep("totalMatched", x)]
+    n <- as.integer(unlist(strsplit(x, "\""))[2])
+    if (n == 0) {
+      cat("No occurrences found\n")
+      return(invisible(NULL))
+    }
   }
   query <- paste(url, args, sep = "")
   tt <- getURL(query, ..., curl = curl)
-  #tt <- getURL(query, curl = curl)
   
   out <- xmlTreeParse(tt)$doc$children$gbifResponse
   if (latlongdf == TRUE) {
