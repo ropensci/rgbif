@@ -338,17 +338,22 @@ occurrencelist <- function(sciname = NA, taxonconceptKey = NA,
                 originisocountrycode2, originregioncode2, startdate2, enddate2,
                 startyear2, endyear2, year2, month2, day2, modifiedsince2, 
                 startindex2, format2, icon2, mode2, stylesheet2, sep = "")
-  if(!noCount){
+#  if(!noCount){
     urlct = "http://data.gbif.org/ws/rest/occurrence/count?"
     queryct <- paste(urlct, args, sep = "")
     x <- try(readLines(queryct, warn = FALSE))
+    if (class(x) == "try-error") {
+        cat("Connection problem\n")
+        n = 0
+    } else {
     x <- x[grep("totalMatched", x)]
     n <- as.integer(unlist(strsplit(x, "\""))[2])
+    }
     if (n == 0) {
       cat("No occurrences found\n")
       return(invisible(NULL))
     }
-  }
+#  }
   query <- paste(url, args, sep = "")
   tt <- getURL(query, ..., curl = curl)
   

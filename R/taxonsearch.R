@@ -3,6 +3,8 @@
 #'Search for a taxon using scientific name. Optionally, include taxonomic
 #'rank in the search.
 #'
+#'Returns list of TaxonConcept key values
+#'
 #'@import XML RCurl
 #'@param sciname  scientitic name of taxon (character, see example)
 #'@param rank  rank of taxon, see taxrank() (character)
@@ -32,11 +34,16 @@ taxonsearch <- function(sciname = NA, rank = NA, maxresults = 10,
     maxresults2 <- paste("&maxresults=", maxresults, sep = "")
     args <- paste(sciname2, rank2, maxresults2, sep = "")
     query <- paste(url, args, sep = "")
-    tt <- getURL(query, ..., curl = curl)
-    xmlTreeParse(tt)$doc$children$gbifResponse
+    doc = xmlInternalTreeParse(query)
+    nodes <- getNodeSet(doc, "//tc:TaxonConcept")
+    out <- NULL
+    if (length(nodes) < 1){
+      cat("No results found")
+      return(invisible(NULL))
+    }
+    for (i in 1:length(nodes)){
+      out[i] <- xmlGetAttr(nodes[[i]],"gbifKey")
+    }
+    out
 }
 # out <- taxonsearch(sciname = 'Accipiter erythronemius', maxresults = 1000)
-# tt_ <- xmlToList(out)
-# tt_$header$statements
-# url2 <- 'http://data.gbif.org/ws/rest/taxon/list?scientificname=Accipiter+erythronemius&maxresults=10'
-# xmlTreeParse(getURL(url2))
