@@ -171,8 +171,8 @@
   \item{removeZeros}{remove records with both Lat Long zero
   values (logical)}
 
-  \item{writecsv}{If path to folder given, a text file is
-  written out and a success message is returned to the
+  \item{writecsv}{If path to a file is given, a text file
+  is written out and a success message is returned to the
   console (logical)}
 
   \item{url}{the base GBIF API url for the function (should
@@ -192,7 +192,7 @@
 \examples{
 \dontrun{
 occurrencelist(sciname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100)
-occurrencelist(sciname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, latlongdf=T)
+occurrencelist(sciname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, latlongdf=F)
 occurrencelist(sciname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, latlongdf=T, writecsv="~/myyyy.csv")
 }
 }
