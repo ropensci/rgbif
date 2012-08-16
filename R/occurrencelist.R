@@ -41,7 +41,7 @@
 #'@param mode  specifies whether the response data should (as far as possible)  be the raw values originally retrieved from the data resource or processed (normalised) values used within the data portal (character)latlongdf: return a data.frame of lat/long's for all occurrences (logical)
 #'@param  stylesheet sets the URL of the stylesheet to be associated with the
 #     response document.
-#'@param  latlongdf  <what param does>
+#'@param  summarydf  <what param does>
 #'@param url the base GBIF API url for the function (should be left to default)
 #'@param ... optional additional curl options (debugging tools mostly)
 #'@param curl If using in a loop, call getCurlHandle() first and pass
@@ -60,8 +60,12 @@ occurrencelist <- function(sciname = NA, taxonconceptKey = NA,
     originregioncode = NA, startdate = NA, enddate = NA, startyear = NA,
     endyear = NA, year = NA, month = NA, day = NA, modifiedsince = NA,
     startindex = NA, maxresults = 10, format = NA, icon = NA,
-    mode = NA, stylesheet = NA, latlongdf = FALSE, url = "http://data.gbif.org/ws/rest/occurrence/list?",
+    mode = NA, stylesheet = NA, summarydf = FALSE, url = "http://data.gbif.org/ws/rest/occurrence/list?",
     ..., curl = getCurlHandle()) {
+    require(RCurl)
+	require(XML)
+	require(plyr)
+
     if (!is.na(sciname)) {
         sciname2 <- paste("scientificname=", gsub(" ", "+", sciname),
             sep = "")
@@ -79,22 +83,38 @@ occurrencelist <- function(sciname = NA, taxonconceptKey = NA,
     } else {
         maxresults2 <- NULL
     }
-    args <- paste(sciname2, maxresults2, coordinatestatus2, sep = "")
+#IB added startdate params
+    if (!is.na(startdate)) {
+        startdate2 <- paste("&startdate=", startdate, sep = "")
+    }
+    else {
+        startdate2 <- NULL
+    }
+    args <- paste(sciname2, maxresults2, coordinatestatus2, startdate2, sep = "")
     query <- paste(url, args, sep = "")
     tt <- getURL(query, ..., curl = curl)
     out <- xmlTreeParse(tt)$doc$children$gbifResponse
-    if (latlongdf == TRUE) {
+    if (summarydf == TRUE) {
+    	idlist <- xpathApply(out, "//to:catalogNumber")
+        countrylist <- xpathApply(out, "//to:country")
         latlist <- xpathApply(out, "//to:decimalLatitude")
         longlist <- xpathApply(out, "//to:decimalLongitude")
-        df <- data.frame(rep(sciname, length(latlist)), laply(latlist,
-            function(x) as.numeric(xmlValue(x))), laply(longlist,
-            function(x) as.numeric(xmlValue(x))))
-        names(df) <- c("sciname", "latitude", "longitude")
+        idatelist <- xpathApply(out, "//to:earliestDateCollected")
+        fdatelist <- xpathApply(out, "//to:latestDateCollected")
+        df <- data.frame(rep(sciname, length(latlist)), laply(idlist, 
+            function(x) (xmlValue(x))), laply(countrylist, 
+            function(x) (xmlValue(x))), laply(latlist, 
+            function(x) as.numeric(xmlValue(x))), laply(longlist, 
+            function(x) as.numeric(xmlValue(x))), laply(idatelist, 
+            function(x) (xmlValue(x))), laply(fdatelist, 
+            function(x) (xmlValue(x))))
+        names(df) <- c("sciname","id", "country", "latitude", "longitude", "idate", "fdate")
         df
-    } else {
+    }
+    else {
         out
     }
 }
-# out <- occurrencelist(sciname = 'Aratinga holochlora rubritorquis', coordinatestatus = TRUE,
-#     maxresults = 10, latlongdf = TRUE)
-# out
+
+#out <- occurrencelist(sciname = "Andrena banksi", coordinatestatus = TRUE, maxresults = 1000, summarydf = TRUE, startdate = "1900-01-01")
+#out
