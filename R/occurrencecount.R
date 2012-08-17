@@ -10,9 +10,9 @@
 #'		under synonyms of the taxon concerned, and any records for child taxa 
 #'		(e.g. all genera and species within a family).  May be repeted in single request.
 #' @param  dataproviderkey Filter records to those provided by the supplied
-#'    numeric key for a data provider. See provider(). (character)
+#'    numeric key for a data provider. See \link{providers}. (character)
 #' @param  dataresourcekey Filter records to those provided by the supplied
-#'    numeric key for a data resource See resource(). (character)
+#'    numeric key for a data resource See \link{resources}. (character)
 #' @param  institutioncode Return only records from a given institution code.
 #' @param  collectioncode Return only records from a given collection code.
 #' @param  catalognumber Return only records from a given catalog number.                 

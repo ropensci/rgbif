@@ -3,9 +3,9 @@
 #' @param  sciname scientitic name of taxon (character, see example)
 #' @param  taxonconceptKey unique key for taxon (numeric)
 #' @param  dataproviderkey Filter records to those provided by the supplied
-#'    numeric key for a data provider. See provider(). (character)
+#'    numeric key for a data provider. See \link{providers}. (character)
 #' @param  dataresourcekey Filter records to those provided by the supplied
-#'    numeric key for a data resource See resource(). (character)
+#'    numeric key for a data resource See \link{resources}. (character)
 #' @param  institutioncode Return only records from a given institution code.
 #' @param  collectioncode Return only records from a given collection code.
 #' @param  catalognumber Return only records from a given catalog number.                 
@@ -166,6 +166,11 @@ occurrencelist <- function(sciname = NA, taxonconceptKey = NA,
     catalognumber2 <- paste("&catalognumber=", catalognumber, sep = "")
   } else {
     catalognumber2 <- NULL
+  }
+  if (!is.na(resourcenetworkkey)) {
+    resourcenetworkkey2 <- paste("&resourcenetworkkey=", resourcenetworkkey, sep = "")
+  } else {
+    resourcenetworkkey2 <- NULL
   }
   if (!is.na(taxonconceptKey)) {
     taxonconceptKey2 <- paste("&taxonconceptKey=", taxonconceptKey, sep = "")
@@ -331,29 +336,39 @@ occurrencelist <- function(sciname = NA, taxonconceptKey = NA,
   }
   args <- paste(sciname2, taxonconceptKey2, basisofrecordcode2, maxresults2, 
                 dataproviderkey2, dataresourcekey2, institutioncode2,
-                collectioncode2, catalognumber2, coordinatestatus2, 
+                collectioncode2, catalognumber2, resourcenetworkkey2, coordinatestatus2, 
                 minlatitude2, maxlatitude2, minlongitude2, maxlongitude2, 
                 minaltitude2, maxaltitude2, mindepth2, maxdepth2, cellid2,
                 centicellid2, typesonly2, coordinateissues2, hostisocountrycode2,
                 originisocountrycode2, originregioncode2, startdate2, enddate2,
                 startyear2, endyear2, year2, month2, day2, modifiedsince2, 
                 startindex2, format2, icon2, mode2, stylesheet2, sep = "")
-#  if(!noCount){
-    urlct = "http://data.gbif.org/ws/rest/occurrence/count?"
-    queryct <- paste(urlct, args, sep = "")
-    x <- try(readLines(queryct, warn = FALSE))
-    if (class(x) == "try-error") {
-        cat("Connection problem\n")
-        n = 0
-    } else {
+  argsct <- paste(sciname2, taxonconceptKey2, basisofrecordcode2,  
+                  dataproviderkey2, dataresourcekey2, institutioncode2,
+                  collectioncode2, catalognumber2, resourcenetworkkey2, coordinatestatus2, 
+                  minlatitude2, maxlatitude2, minlongitude2, maxlongitude2, 
+                  minaltitude2, maxaltitude2, mindepth2, maxdepth2, cellid2,
+                  centicellid2, typesonly2, coordinateissues2, hostisocountrycode2,
+                  originisocountrycode2, originregioncode2, startdate2, enddate2,
+                  startyear2, endyear2, year2, month2, day2, modifiedsince2, 
+                  sep = "")
+  
+  #  if(!noCount){
+  urlct = "http://data.gbif.org/ws/rest/occurrence/count?"
+  queryct <- paste(urlct, argsct, sep = "")
+  x <- try(readLines(queryct, warn = FALSE))
+  if (class(x) == "try-error") {
+    cat("Connection problem\n")
+    n = 0
+  } else {
     x <- x[grep("totalMatched", x)]
     n <- as.integer(unlist(strsplit(x, "\""))[2])
-    }
-    if (n == 0) {
-      cat("No occurrences found\n")
-      return(invisible(NULL))
-    }
-#  }
+  }
+  if (n == 0) {
+    cat("No occurrences found\n")
+    return(invisible(NULL))
+  }
+  #  }
   query <- paste(url, args, sep = "")
   tt <- getURL(query, ..., curl = curl)
   

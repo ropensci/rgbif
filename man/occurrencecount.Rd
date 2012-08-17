@@ -38,11 +38,11 @@
 
   \item{dataproviderkey}{Filter records to those provided
   by the supplied numeric key for a data provider. See
-  provider(). (character)}
+  \link{providers}. (character)}
 
   \item{dataresourcekey}{Filter records to those provided
   by the supplied numeric key for a data resource See
-  resource(). (character)}
+  \link{resources}. (character)}
 
   \item{institutioncode}{Return only records from a given
   institution code.}

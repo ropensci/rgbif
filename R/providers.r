@@ -42,7 +42,6 @@ providers <- function(name = "", isocountrycode = NA,
     tt <- xmlParse(out)
     names_ <- xpathSApply(tt, "//gbif:dataProvider/gbif:name",
         xmlValue)
-    dataproviderkey <- xpathSApply(tt, "//gbif:dataProvider", xmlAttrs)[1,
-        ]
+    dataproviderkey <- xpathSApply(tt, "//gbif:dataProvider", xmlAttrs)[1,]
     data.frame(names_, dataproviderkey)
 }

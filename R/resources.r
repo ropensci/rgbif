@@ -48,7 +48,6 @@ resources <- function(name = "", providerkey = NA, basisofrecordcode = NA,
   tt <- xmlParse(out)
   names_ <- xpathSApply(tt, "//gbif:dataResource/gbif:name",
                         xmlValue)
-  resourcekey <- xpathSApply(tt, "//gbif:dataResource", xmlAttrs)[2,
-                                                                  ]
+  resourcekey <- xpathSApply(tt, "//gbif:dataResource", xmlAttrs)[2,]
   data.frame(names_, resourcekey)
 }
