@@ -102,6 +102,6 @@ occurrencecount <- function(scientificname = NULL, taxonconceptKey = NULL,
 		endyear = endyear, year = year, month = month, day = day, modifiedsince = modifiedsince))
 	
 	temp <- GET(url, query = querystr)
-	out <- parsed_content(temp)$doc$children$gbifResponse
-	out1 <- as.numeric(xmlGetAttr(getNodeSet(out, "//gbif:summary")[[1]], "totalMatched"))
+	out <- content(temp)$doc$children$gbifResponse
+	as.numeric(xmlGetAttr(getNodeSet(out, "//gbif:summary")[[1]], "totalMatched"))
 }

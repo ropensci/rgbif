@@ -1,6 +1,6 @@
 \name{occurrencelist}
 \alias{occurrencelist}
-\title{occurrencelist search for taxon concept records matching a range of filters}
+\title{Occurrencelist searches for taxon concept records matching a range of filters.}
 \usage{
   occurrencelist(sciname = NA, taxonconceptKey = NA,
     dataproviderkey = NA, dataresourcekey = NA,
@@ -18,7 +18,7 @@
     day = NA, modifiedsince = NA, startindex = NA,
     maxresults = 10, format = NA, icon = NA, mode = NA,
     stylesheet = NA, latlongdf = FALSE,
-    removeZeros = FALSE,
+    removeZeros = FALSE, writecsv = NULL,
     url = "http://data.gbif.org/ws/rest/occurrence/list?",
     ..., curl = getCurlHandle())
 }
@@ -156,20 +156,24 @@
   \item{icon}{(only when format is set to kml) specified
   the URL for an icon to be used for the KML Placemarks.}
 
-  \item{mode}{specifies whether the response data should
+  \item{mode}{Specifies whether the response data should
   (as far as possible) be the raw values originally
   retrieved from the data resource or processed
   (normalised) values used within the data portal
   (character)}
 
-  \item{stylesheet}{sets the URL of the stylesheet to be
+  \item{stylesheet}{Sets the URL of the stylesheet to be
   associated with the}
 
-  \item{latlongdf}{return a data.frame of lat/long's for
+  \item{latlongdf}{Return a data.frame of lat/long's for
   all occurrences (logical)}
 
   \item{removeZeros}{remove records with both Lat Long zero
   values (logical)}
+
+  \item{writecsv}{If path to a file is given, a text file
+  is written out and a success message is returned to the
+  console (logical)}
 
   \item{url}{the base GBIF API url for the function (should
   be left to default)}
@@ -182,12 +186,14 @@
   unnecessary footprint)}
 }
 \description{
-  occurrencelist search for taxon concept records matching
-  a range of filters
+  Occurrencelist searches for taxon concept records
+  matching a range of filters.
 }
 \examples{
 \dontrun{
 occurrencelist(sciname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100)
+occurrencelist(sciname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, latlongdf=F)
+occurrencelist(sciname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, latlongdf=T, writecsv="~/myyyy.csv")
 }
 }
 

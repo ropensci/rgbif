@@ -1,5 +1,6 @@
-#'occurrencelist search for taxon concept records matching a range of filters
-#'@import RCurl XML plyr
+#' Occurrencelist searches for taxon concept records matching a range of filters.
+#'
+#' @import RCurl XML plyr
 #' @param  sciname scientitic name of taxon (character, see example)
 #' @param  taxonconceptKey unique key for taxon (numeric)
 #' @param  dataproviderkey Filter records to those provided by the supplied
@@ -66,35 +67,39 @@
 #     one of: brief or darwin (character) default is brief.
 #' @param  icon  (only when format is set to kml) specified the URL for an icon
 #'    to be used for the KML Placemarks.
-#' @param mode  specifies whether the response data should (as far as possible)  
+#' @param mode Specifies whether the response data should (as far as possible)  
 #'    be the raw values originally retrieved from the data resource or processed 
 #'    (normalised) values used within the data portal (character)
-#' @param  stylesheet sets the URL of the stylesheet to be associated with the
+#' @param stylesheet Sets the URL of the stylesheet to be associated with the
 #     response document.
-#' @param  latlongdf  return a data.frame of lat/long's for all occurrences (logical)
-#' @param  removeZeros remove records with both Lat Long zero values (logical) 
+#' @param latlongdf Return a data.frame of lat/long's for all occurrences (logical)
+#' @param removeZeros remove records with both Lat Long zero values (logical) 
+#' @param writecsv If path to a file is given, a text file is written out and 
+#' 		a success message is returned to the console (logical)
 #' @param url the base GBIF API url for the function (should be left to default)
 #' @param ... optional additional curl options (debugging tools mostly)
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #' the returned value in here (avoids unnecessary footprint)
-#'@export
-#'@examples \dontrun{
-#'occurrencelist(sciname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100)
-#'}
+#' @examples \dontrun{
+#' occurrencelist(sciname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100)
+#' occurrencelist(sciname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, latlongdf=F)
+#' occurrencelist(sciname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, latlongdf=T, writecsv="~/myyyy.csv")
+#' }
+#' @export
 occurrencelist <- function(sciname = NA, taxonconceptKey = NA,
-                           dataproviderkey = NA, dataresourcekey = NA, institutioncode = NA ,
-                           collectioncode = NA, catalognumber = NA, resourcenetworkkey = NA,
-                           basisofrecordcode = NA, minlatitude = NA, maxlatitude = NA,
-                           minlongitude = NA, maxlongitude = NA, minaltitude = NA, maxaltitude = NA,
-                           mindepth = NA, maxdepth = NA, cellid = NA, centicellid = NA,
-                           typesonly = NA, georeferencedonly = NA, coordinatestatus = NA,
-                           coordinateissues = NA, hostisocountrycode = NA, originisocountrycode = NA,
-                           originregioncode = NA, startdate = NA, enddate = NA, startyear = NA,
-                           endyear = NA, year = NA, month = NA, day = NA, modifiedsince = NA,
-                           startindex = NA, maxresults = 10, format = NA, icon = NA,
-                           mode = NA, stylesheet = NA, latlongdf = FALSE, removeZeros = FALSE, 
-                           url = "http://data.gbif.org/ws/rest/occurrence/list?",
-                           ..., curl = getCurlHandle()) {
+  dataproviderkey = NA, dataresourcekey = NA, institutioncode = NA ,
+  collectioncode = NA, catalognumber = NA, resourcenetworkkey = NA,
+  basisofrecordcode = NA, minlatitude = NA, maxlatitude = NA,
+  minlongitude = NA, maxlongitude = NA, minaltitude = NA, maxaltitude = NA,
+  mindepth = NA, maxdepth = NA, cellid = NA, centicellid = NA,
+  typesonly = NA, georeferencedonly = NA, coordinatestatus = NA,
+  coordinateissues = NA, hostisocountrycode = NA, originisocountrycode = NA,
+  originregioncode = NA, startdate = NA, enddate = NA, startyear = NA,
+  endyear = NA, year = NA, month = NA, day = NA, modifiedsince = NA,
+  startindex = NA, maxresults = 10, format = NA, icon = NA,
+  mode = NA, stylesheet = NA, latlongdf = FALSE, removeZeros = FALSE, writecsv = NULL,
+  url = "http://data.gbif.org/ws/rest/occurrence/list?", ..., curl = getCurlHandle()) 
+{
   # Code based on the `gbifxmlToDataFrame` function from dismo package 
   # (http://cran.r-project.org/web/packages/dismo/index.html),
   # by Robert Hijmans, 2012-05-31, License: GPL v3
@@ -369,15 +374,14 @@ occurrencelist <- function(sciname = NA, taxonconceptKey = NA,
     }
     else {
       df[i, "decimalLatitude"] <- NA
-      df[i, "decimalLongitude"] <- NA
-      
+      df[i, "decimalLongitude"] <- NA 
     }
-    
     df
+    	if(!is.null(writecsv)){
+    		write.csv(df, file=writecsv)
+    		message("Success! CSV file written")
+    	}
   } else {
     out
   }
 }
-# out <- occurrencelist(sciname = 'Aratinga holochlora rubritorquis', coordinatestatus = TRUE,
-#     maxresults = 10, latlongdf = TRUE)
-# out

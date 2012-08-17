@@ -1,7 +1,7 @@
 \name{occurrencedensity}
 \alias{occurrencedensity}
-\title{returns summary counts of occurrence records by one-degree cell for a single
-taxon, country, dataset, data publisher or data network}
+\title{Returns summary counts of occurrence records by one-degree cell for a single
+		taxon, country, dataset, data publisher or data network.}
 \usage{
   occurrencedensity(taxonconceptkey = NA,
     dataproviderkey = NA, dataresourcekey = NA,
@@ -41,9 +41,9 @@ taxon, country, dataset, data publisher or data network}
   unnecessary footprint)}
 }
 \description{
-  returns summary counts of occurrence records by
+  Returns summary counts of occurrence records by
   one-degree cell for a single taxon, country, dataset,
-  data publisher or data network
+  data publisher or data network.
 }
 \examples{
 \dontrun{
