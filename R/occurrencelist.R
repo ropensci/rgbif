@@ -1,7 +1,7 @@
 #' Occurrencelist searches for taxon concept records matching a range of filters.
 #'
-#' @import RCurl XML plyr
-#' @param  sciname scientitic name of taxon (character, see example)
+#' @import RCurl XML plyr httr
+#' @param  scientificname scientitic name of taxon (character, see example)
 #' @param  taxonconceptKey unique key for taxon (numeric)
 #' @param  dataproviderkey Filter records to those provided by the supplied
 #'    numeric key for a data provider. See \link{providers}. (character)
@@ -81,322 +81,128 @@
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #' the returned value in here (avoids unnecessary footprint)
 #' @examples \dontrun{
-#' occurrencelist(sciname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100)
-#' occurrencelist(sciname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, latlongdf=F)
-#' occurrencelist(sciname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, latlongdf=T, writecsv="~/myyyy.csv")
+#' occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, latlongdf = T)
+#' occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, latlongdf=F)
+#' occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, latlongdf=T, writecsv="~/myyyy.csv")
 #' }
 #' @export
-occurrencelist <- function(sciname = NA, taxonconceptKey = NA,
-  dataproviderkey = NA, dataresourcekey = NA, institutioncode = NA ,
-  collectioncode = NA, catalognumber = NA, resourcenetworkkey = NA,
-  basisofrecordcode = NA, minlatitude = NA, maxlatitude = NA,
-  minlongitude = NA, maxlongitude = NA, minaltitude = NA, maxaltitude = NA,
-  mindepth = NA, maxdepth = NA, cellid = NA, centicellid = NA,
-  typesonly = NA, georeferencedonly = NA, coordinatestatus = NA,
-  coordinateissues = NA, hostisocountrycode = NA, originisocountrycode = NA,
-  originregioncode = NA, startdate = NA, enddate = NA, startyear = NA,
-  endyear = NA, year = NA, month = NA, day = NA, modifiedsince = NA,
-  startindex = NA, maxresults = 10, format = NA, icon = NA,
-  mode = NA, stylesheet = NA, latlongdf = FALSE, removeZeros = FALSE, writecsv = NULL,
-  url = "http://data.gbif.org/ws/rest/occurrence/list?", ..., curl = getCurlHandle()) 
+occurrencelist <- function(scientificname = NULL, taxonconceptKey = NULL,
+		dataproviderkey = NULL, dataresourcekey = NULL, institutioncode = NULL,
+		collectioncode = NULL, catalognumber = NULL, resourcenetworkkey = NULL,
+		basisofrecordcode = NULL, minlatitude = NULL, maxlatitude = NULL,
+		minlongitude = NULL, maxlongitude = NULL, minaltitude = NULL, maxaltitude = NULL,
+		mindepth = NULL, maxdepth = NULL, cellid = NULL, centicellid = NULL,
+		typesonly = NULL, georeferencedonly = NULL, coordinatestatus = NULL,
+		coordinateissues = NULL, hostisocountrycode = NULL, originisocountrycode = NULL,
+		originregioncode = NULL, startdate = NULL, enddate = NULL, startyear = NULL,
+		endyear = NULL, year = NULL, month = NULL, day = NULL, modifiedsince = NULL,
+		startindex = NULL, maxresults = 10, format = NA, icon = NULL,
+		mode = NULL, stylesheet = NULL, latlongdf = FALSE, removeZeros = FALSE, writecsv = NULL,
+		url = "http://data.gbif.org/ws/rest/occurrence/list", ..., curl = getCurlHandle()) 
 {
-  # Code based on the `gbifxmlToDataFrame` function from dismo package 
-  # (http://cran.r-project.org/web/packages/dismo/index.html),
-  # by Robert Hijmans, 2012-05-31, License: GPL v3
-  gbifxmlToDataFrame <- function(s,format) {
-    doc = xmlInternalTreeParse(s)
-    nodes <- getNodeSet(doc, "//to:TaxonOccurrence")
-    if (length(nodes) == 0) 
-      return(data.frame())
-    if(!is.na(format) & format=="darwin"){
-      varNames <- c("country", "stateProvince", 
-                    "county", "locality", "decimalLatitude", "decimalLongitude", 
-                    "coordinateUncertaintyInMeters", "maximumElevationInMeters", 
-                    "minimumElevationInMeters", "maximumDepthInMeters", 
-                    "minimumDepthInMeters", "institutionCode", "collectionCode", 
-                    "catalogNumber", "basisOfRecordString", "collector", 
-                    "earliestDateCollected", "latestDateCollected", "gbifNotes")
-    }else{
-      varNames <- c("country", "decimalLatitude", "decimalLongitude", 
-                    "catalogNumber", "earliestDateCollected", "latestDateCollected" )
-    }
-    dims <- c(length(nodes), length(varNames))
-    ans <- as.data.frame(replicate(dims[2], rep(as.character(NA), 
-                                                dims[1]), simplify = FALSE), stringsAsFactors = FALSE)
-    names(ans) <- varNames
-    for (i in seq(length = dims[1])) {
-      ans[i, ] <- xmlSApply(nodes[[i]], xmlValue)[varNames]
-    }
-    nodes <- getNodeSet(doc, "//to:Identification")
-    varNames <- c("taxonName")
-    dims = c(length(nodes), length(varNames))
-    tax = as.data.frame(replicate(dims[2], rep(as.character(NA), 
-                                               dims[1]), simplify = FALSE), stringsAsFactors = FALSE)
-    names(tax) = varNames
-    for (i in seq(length = dims[1])) {
-      tax[i, ] = xmlSApply(nodes[[i]], xmlValue)[varNames]
-    }
-    cbind(tax, ans)
-  }
-  #End gbifxmlToDataFrame -----
-  
-  if (!is.na(sciname)) {
-    sciname2 <- paste("scientificname=", gsub(" ", "+", sciname), sep = "")
-    noCount <- FALSE
-  } else {
-    sciname2 <- NULL
-    noCount <- TRUE
-  }
-  if (!is.na(dataproviderkey)) {
-    dataproviderkey2 <- paste("&dataproviderkey=", dataproviderkey, sep = "")
-  } else {
-    dataproviderkey2 <- NULL
-  }
-  if (!is.na(dataresourcekey)) {
-    dataresourcekey2 <- paste("&dataresourcekey=", dataresourcekey, sep = "")
-  } else {
-    dataresourcekey2 <- NULL
-  }
-  if (!is.na(institutioncode)) {
-    institutioncode2 <- paste("&institutioncode=", institutioncode, sep = "")
-  } else {
-    institutioncode2 <- NULL
-  }
-  if (!is.na(collectioncode)) {
-    collectioncode2 <- paste("&collectioncode=", collectioncode, sep = "")
-  } else {
-    collectioncode2 <- NULL
-  }
-  if (!is.na(catalognumber)) {
-    catalognumber2 <- paste("&catalognumber=", catalognumber, sep = "")
-  } else {
-    catalognumber2 <- NULL
-  }
-  if (!is.na(resourcenetworkkey)) {
-    resourcenetworkkey2 <- paste("&resourcenetworkkey=", resourcenetworkkey, sep = "")
-  } else {
-    resourcenetworkkey2 <- NULL
-  }
-  if (!is.na(taxonconceptKey)) {
-    taxonconceptKey2 <- paste("&taxonconceptKey=", taxonconceptKey, sep = "")
-  } else {
-    taxonconceptKey2 <- NULL
-  }
-  if (!is.na(basisofrecordcode)) {
-    basisofrecordcode2 <- paste("&basisofrecordcode=", basisofrecordcode, sep = "")
-  } else {
-    basisofrecordcode2 <- NULL
-  }
-  if (!is.na(coordinatestatus)) {
-    coordinatestatus2 <- paste("&coordinatestatus=", coordinatestatus,
-                               sep = "")
-  } else {
-    coordinatestatus2 <- NULL
-  }
-  if (!is.na(minlatitude)) {
-    minlatitude2 <- paste("&minlatitude=", minlatitude, sep = "")
-  } else {
-    minlatitude2 <- NULL
-  }
-  if (!is.na(maxlatitude)) {
-    maxlatitude2 <- paste("&maxlatitude=", maxlatitude, sep = "")
-  } else {
-    maxlatitude2 <- NULL
-  }
-  if (!is.na(minlongitude)) {
-    minlongitude2 <- paste("&minlongitude=", minlongitude, sep = "")
-  } else {
-    minlongitude2 <- NULL
-  }
-  if (!is.na(maxlongitude)) {
-    maxlongitude2 <- paste("&maxlongitude=", maxlongitude, sep = "")
-  } else {
-    maxlongitude2 <- NULL
-  }
-  if (!is.na(minaltitude)) {
-    minaltitude2 <- paste("&minaltitude=", minaltitude, sep = "")
-  } else {
-    minaltitude2 <- NULL
-  }
-  if (!is.na(maxaltitude)) {
-    maxaltitude2 <- paste("&maxaltitude=", maxaltitude, sep = "")
-  } else {
-    maxaltitude2 <- NULL
-  }
-  if (!is.na(mindepth)) {
-    mindepth2 <- paste("&mindepth=", mindepth, sep = "")
-  } else {
-    mindepth2 <- NULL
-  }
-  if (!is.na(maxdepth)) {
-    maxdepth2 <- paste("&maxdepth=", maxdepth, sep = "")
-  } else {
-    maxdepth2 <- NULL
-  }
-  if (!is.na(cellid)) {
-    cellid2 <- paste("&cellid=", cellid, sep = "")
-  } else {
-    cellid2 <- NULL
-  }
-  if (!is.na(centicellid)) {
-    centicellid2 <- paste("&centicellid=", centicellid, sep = "")
-  } else {
-    centicellid2 <- NULL
-  }
-  if (!is.na(typesonly)) {
-    typesonly2 <- paste("&typesonly=", typesonly, sep = "")
-  } else {
-    typesonly2 <- NULL
-  }
-  if (!is.na(coordinateissues)) {
-    coordinateissues2 <- paste("&coordinateissues=", coordinateissues, sep = "")
-  } else {
-    coordinateissues2 <- NULL
-  }
-  if (!is.na(hostisocountrycode)) {
-    hostisocountrycode2 <- paste("&hostisocountrycode=", hostisocountrycode, sep = "")
-  } else {
-    hostisocountrycode2 <- NULL
-  }
-  if (!is.na(originisocountrycode)) {
-    originisocountrycode2 <- paste("&originisocountrycode=", originisocountrycode, sep = "")
-  } else {
-    originisocountrycode2 <- NULL
-  }
-  if (!is.na(originregioncode)) {
-    originregioncode2 <- paste("&originregioncode=", originregioncode, sep = "")
-  } else {
-    originregioncode2 <- NULL
-  }
-  if (!is.na(startdate)) {
-    startdate2 <- paste("&startdate=", startdate, sep = "")
-  } else {
-    startdate2 <- NULL
-  }
-  if (!is.na(enddate)) {
-    enddate2 <- paste("&enddate=", enddate, sep = "")
-  } else {
-    enddate2 <- NULL
-  }
-  if (!is.na(startyear)) {
-    startyear2 <- paste("&startyear=", startyear, sep = "")
-  } else {
-    startyear2 <- NULL
-  }
-  if (!is.na(endyear)) {
-    endyear2 <- paste("&endyear=", endyear, sep = "")
-  } else {
-    endyear2 <- NULL
-  }
-  if (!is.na(year)) {
-    year2 <- paste("&year=", year, sep = "")
-  } else {
-    year2 <- NULL
-  }
-  if (!is.na(month)) {
-    month2 <- paste("&month=", month, sep = "")
-  } else {
-    month2 <- NULL
-  }
-  if (!is.na(day)) {
-    day2 <- paste("&day=", day, sep = "")
-  } else {
-    day2 <- NULL
-  }
-  if (!is.na(modifiedsince)) {
-    modifiedsince2 <- paste("&modifiedsince=", modifiedsince, sep = "")
-  } else {
-    modifiedsince2 <- NULL
-  }
-  if (!is.na(startindex)) {
-    startindex2 <- paste("&startindex=", startindex, sep = "")
-  } else {
-    startindex2 <- NULL
-  }
-  if (!is.na(format)) {
-    format2 <- paste("&format=", format, sep = "")
-  } else {
-    format2 <- NULL
-  }
-  if (!is.na(icon)) {
-    icon2 <- paste("&icon=", icon, sep = "")
-  } else {
-    icon2 <- NULL
-  }
-  if (!is.na(mode)) {
-    mode2 <- paste("&mode=", mode, sep = "")
-  } else {
-    mode2 <- NULL
-  }
-  if (!is.na(stylesheet)) {
-    stylesheet2 <- paste("&stylesheet=", stylesheet, sep = "")
-  } else {
-    stylesheet2 <- NULL
-  }
-  
-  if (!is.na(maxresults)) {
-    maxresults2 <- paste("&maxresults=", maxresults, sep = "")
-  } else {
-    maxresults2 <- NULL
-  }
-  args <- paste(sciname2, taxonconceptKey2, basisofrecordcode2, maxresults2, 
-                dataproviderkey2, dataresourcekey2, institutioncode2,
-                collectioncode2, catalognumber2, resourcenetworkkey2, coordinatestatus2, 
-                minlatitude2, maxlatitude2, minlongitude2, maxlongitude2, 
-                minaltitude2, maxaltitude2, mindepth2, maxdepth2, cellid2,
-                centicellid2, typesonly2, coordinateissues2, hostisocountrycode2,
-                originisocountrycode2, originregioncode2, startdate2, enddate2,
-                startyear2, endyear2, year2, month2, day2, modifiedsince2, 
-                startindex2, format2, icon2, mode2, stylesheet2, sep = "")
-  argsct <- paste(sciname2, taxonconceptKey2, basisofrecordcode2,  
-                  dataproviderkey2, dataresourcekey2, institutioncode2,
-                  collectioncode2, catalognumber2, resourcenetworkkey2, coordinatestatus2, 
-                  minlatitude2, maxlatitude2, minlongitude2, maxlongitude2, 
-                  minaltitude2, maxaltitude2, mindepth2, maxdepth2, cellid2,
-                  centicellid2, typesonly2, coordinateissues2, hostisocountrycode2,
-                  originisocountrycode2, originregioncode2, startdate2, enddate2,
-                  startyear2, endyear2, year2, month2, day2, modifiedsince2, 
-                  sep = "")
-  
-  #  if(!noCount){
-  urlct = "http://data.gbif.org/ws/rest/occurrence/count?"
-  queryct <- paste(urlct, argsct, sep = "")
-  x <- try(readLines(queryct, warn = FALSE))
-  if (class(x) == "try-error") {
-    cat("Connection problem\n")
-    n = 0
-  } else {
-    x <- x[grep("totalMatched", x)]
-    n <- as.integer(unlist(strsplit(x, "\""))[2])
-  }
-  if (n == 0) {
-    cat("No occurrences found\n")
-    return(invisible(NULL))
-  }
-  #  }
-  query <- paste(url, args, sep = "")
-  tt <- getURL(query, ..., curl = curl)
-  
-  out <- xmlTreeParse(tt)$doc$children$gbifResponse
-  if (latlongdf == TRUE) {
-    df <- gbifxmlToDataFrame (query,format)
-    df[, "decimalLongitude"] <- as.numeric(df[, "decimalLongitude"])
-    df[, "decimalLatitude"] <- as.numeric(df[, "decimalLatitude"])
-    i <- df[, "decimalLongitude"] == 0 & df[, "decimalLatitude"] == 0
-    i
-    if (removeZeros) {
-      df <- df[!i, ]
-    }
-    else {
-      df[i, "decimalLatitude"] <- NA
-      df[i, "decimalLongitude"] <- NA 
-    }
-    df
-    	if(!is.null(writecsv)){
-    		write.csv(df, file=writecsv)
-    		message("Success! CSV file written")
-    	}
-  } else {
-    out
-  }
+	# Code based on the `gbifxmlToDataFrame` function from dismo package 
+	# (http://cran.r-project.org/web/packages/dismo/index.html),
+	# by Robert Hijmans, 2012-05-31, License: GPL v3
+	gbifxmlToDataFrame <- function(doc, format) {
+		nodes <- getNodeSet(doc, "//to:TaxonOccurrence")
+		if (length(nodes) == 0) 
+			return(data.frame())
+		if(!is.na(format) & format=="darwin"){
+			varNames <- c("country", "stateProvince", 
+										"county", "locality", "decimalLatitude", "decimalLongitude", 
+										"coordinateUncertaintyInMeters", "maximumElevationInMeters", 
+										"minimumElevationInMeters", "maximumDepthInMeters", 
+										"minimumDepthInMeters", "institutionCode", "collectionCode", 
+										"catalogNumber", "basisOfRecordString", "collector", 
+										"earliestDateCollected", "latestDateCollected", "gbifNotes")
+		}else{
+			varNames <- c("country", "decimalLatitude", "decimalLongitude", 
+										"catalogNumber", "earliestDateCollected", "latestDateCollected" )
+		}
+		dims <- c(length(nodes), length(varNames))
+		ans <- as.data.frame(replicate(dims[2], rep(as.character(NA), 
+										dims[1]), simplify = FALSE), stringsAsFactors = FALSE)
+		names(ans) <- varNames
+		for (i in seq(length = dims[1])) {
+			ans[i, ] <- xmlSApply(nodes[[i]], xmlValue)[varNames]
+		}
+		nodes <- getNodeSet(doc, "//to:Identification")
+		varNames <- c("taxonName")
+		dims = c(length(nodes), length(varNames))
+		tax = as.data.frame(replicate(dims[2], rep(as.character(NA), 
+										dims[1]), simplify = FALSE), stringsAsFactors = FALSE)
+		names(tax) = varNames
+		for (i in seq(length = dims[1])) {
+			tax[i, ] = xmlSApply(nodes[[i]], xmlValue)[varNames]
+		}
+		cbind(tax, ans)
+	}
+	#End gbifxmlToDataFrame -----
+	
+	args <- compact(
+		list(
+			scientificname=scientificname, dataproviderkey=dataproviderkey,
+			dataresourcekey=dataresourcekey, institutioncode=institutioncode,
+			collectioncode=collectioncode, catalognumber=catalognumber,
+			resourcenetworkkey=resourcenetworkkey, taxonconceptKey=taxonconceptKey,
+			basisofrecordcode=basisofrecordcode, coordinatestatus=coordinatestatus, 
+			minlatitude=minlatitude, maxlatitude=maxlatitude, minlongitude=minlongitude, 
+			maxlongitude=maxlongitude, minaltitude=minaltitude, maxaltitude=maxaltitude, 
+			mindepth=mindepth, maxdepth=maxdepth, cellid=cellid, centicellid=centicellid,
+			typesonly=typesonly, coordinateissues=coordinateissues,
+			hostisocountrycode=hostisocountrycode, originisocountrycode=originisocountrycode,
+			originregioncode=originregioncode, startdate=startdate, enddate=enddate,
+			startyear=startyear, endyear=endyear, year=year, month=month, day=day,
+			modifiedsince=modifiedsince, startindex=startindex, format=format,
+			icon=icon, mode=mode, stylesheet=stylesheet, maxresults=maxresults
+		))
+	argsct <- compact(
+		list(
+			scientificname=scientificname, dataproviderkey=dataproviderkey,
+			dataresourcekey=dataresourcekey, institutioncode=institutioncode,
+			collectioncode=collectioncode, catalognumber=catalognumber,
+			resourcenetworkkey=resourcenetworkkey, taxonconceptKey=taxonconceptKey,
+			basisofrecordcode=basisofrecordcode,
+			coordinatestatus=coordinatestatus, minlatitude=minlatitude,
+			maxlatitude=maxlatitude, minlongitude=minlongitude, maxlongitude=maxlongitude,
+			minaltitude=minaltitude, maxaltitude=maxaltitude, mindepth=mindepth,
+			maxdepth=maxdepth, cellid=cellid, centicellid=centicellid,
+			typesonly=typesonly, coordinateissues=coordinateissues,
+			hostisocountrycode=hostisocountrycode, originisocountrycode=originisocountrycode,
+			originregioncode=originregioncode, startdate=startdate, enddate=enddate,
+			startyear=startyear, endyear=endyear, year=year, month=month, day=day,
+			modifiedsince=modifiedsince
+		))
+	
+	# number of occurrences
+	urlct <- "http://data.gbif.org/ws/rest/occurrence/count"
+	tt_ <- content(GET(urlct, query=argsct))
+	found <- as.numeric(xmlToList(tt_$doc$children$gbifResponse)[[9]][[1]])
+	message(paste("Found ", found, " occurrences", "\n", sep=""))
+
+	# the query itself
+# 	query <- paste(url, args, sep = "")
+# 	tt <- getURL(query, ..., curl = curl)
+	
+# 	tt <- content(GET(url, query=args), as="text")	
+	tt <- getForm(url, .params = args, curl = curl)
+	out <- xmlParse(tt)
+	if (latlongdf == TRUE) {
+		df <- gbifxmlToDataFrame(out, format)
+		df[, "decimalLongitude"] <- as.numeric(df[, "decimalLongitude"])
+		df[, "decimalLatitude"] <- as.numeric(df[, "decimalLatitude"])
+		i <- df[, "decimalLongitude"] == 0 & df[, "decimalLatitude"] == 0
+		if (removeZeros) {
+			df <- df[!i, ]
+		} else 
+			{
+				df[i, "decimalLatitude"] <- NA
+				df[i, "decimalLongitude"] <- NA 
+			}
+		if(!is.null(writecsv)){
+			write.csv(df, file=writecsv)
+			message("Success! CSV file written")
+		}
+		df
+	} else { out }
 }

@@ -2,29 +2,31 @@
 \alias{occurrencelist}
 \title{Occurrencelist searches for taxon concept records matching a range of filters.}
 \usage{
-  occurrencelist(sciname = NA, taxonconceptKey = NA,
-    dataproviderkey = NA, dataresourcekey = NA,
-    institutioncode = NA, collectioncode = NA,
-    catalognumber = NA, resourcenetworkkey = NA,
-    basisofrecordcode = NA, minlatitude = NA,
-    maxlatitude = NA, minlongitude = NA, maxlongitude = NA,
-    minaltitude = NA, maxaltitude = NA, mindepth = NA,
-    maxdepth = NA, cellid = NA, centicellid = NA,
-    typesonly = NA, georeferencedonly = NA,
-    coordinatestatus = NA, coordinateissues = NA,
-    hostisocountrycode = NA, originisocountrycode = NA,
-    originregioncode = NA, startdate = NA, enddate = NA,
-    startyear = NA, endyear = NA, year = NA, month = NA,
-    day = NA, modifiedsince = NA, startindex = NA,
-    maxresults = 10, format = NA, icon = NA, mode = NA,
-    stylesheet = NA, latlongdf = FALSE,
+  occurrencelist(scientificname = NULL,
+    taxonconceptKey = NULL, dataproviderkey = NULL,
+    dataresourcekey = NULL, institutioncode = NULL,
+    collectioncode = NULL, catalognumber = NULL,
+    resourcenetworkkey = NULL, basisofrecordcode = NULL,
+    minlatitude = NULL, maxlatitude = NULL,
+    minlongitude = NULL, maxlongitude = NULL,
+    minaltitude = NULL, maxaltitude = NULL,
+    mindepth = NULL, maxdepth = NULL, cellid = NULL,
+    centicellid = NULL, typesonly = NULL,
+    georeferencedonly = NULL, coordinatestatus = NULL,
+    coordinateissues = NULL, hostisocountrycode = NULL,
+    originisocountrycode = NULL, originregioncode = NULL,
+    startdate = NULL, enddate = NULL, startyear = NULL,
+    endyear = NULL, year = NULL, month = NULL, day = NULL,
+    modifiedsince = NULL, startindex = NULL,
+    maxresults = 10, format = NA, icon = NULL, mode = NULL,
+    stylesheet = NULL, latlongdf = FALSE,
     removeZeros = FALSE, writecsv = NULL,
-    url = "http://data.gbif.org/ws/rest/occurrence/list?",
+    url = "http://data.gbif.org/ws/rest/occurrence/list",
     ..., curl = getCurlHandle())
 }
 \arguments{
-  \item{sciname}{scientitic name of taxon (character, see
-  example)}
+  \item{scientificname}{scientitic name of taxon
+  (character, see example)}
 
   \item{taxonconceptKey}{unique key for taxon (numeric)}
 
@@ -191,9 +193,9 @@
 }
 \examples{
 \dontrun{
-occurrencelist(sciname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100)
-occurrencelist(sciname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, latlongdf=F)
-occurrencelist(sciname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, latlongdf=T, writecsv="~/myyyy.csv")
+occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, latlongdf = T)
+occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, latlongdf=F)
+occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, latlongdf=T, writecsv="~/myyyy.csv")
 }
 }
 
