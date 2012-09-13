@@ -156,35 +156,6 @@ occurrencelist <- function(scientificname = NULL, taxonconceptKey = NULL,
 			modifiedsince=modifiedsince, startindex=startindex, format=format,
 			icon=icon, mode=mode, stylesheet=stylesheet, maxresults=maxresults
 		))
-	argsct <- compact(
-		list(
-			scientificname=scientificname, dataproviderkey=dataproviderkey,
-			dataresourcekey=dataresourcekey, institutioncode=institutioncode,
-			collectioncode=collectioncode, catalognumber=catalognumber,
-			resourcenetworkkey=resourcenetworkkey, taxonconceptKey=taxonconceptKey,
-			basisofrecordcode=basisofrecordcode,
-			coordinatestatus=coordinatestatus, minlatitude=minlatitude,
-			maxlatitude=maxlatitude, minlongitude=minlongitude, maxlongitude=maxlongitude,
-			minaltitude=minaltitude, maxaltitude=maxaltitude, mindepth=mindepth,
-			maxdepth=maxdepth, cellid=cellid, centicellid=centicellid,
-			typesonly=typesonly, coordinateissues=coordinateissues,
-			hostisocountrycode=hostisocountrycode, originisocountrycode=originisocountrycode,
-			originregioncode=originregioncode, startdate=startdate, enddate=enddate,
-			startyear=startyear, endyear=endyear, year=year, month=month, day=day,
-			modifiedsince=modifiedsince
-		))
-	
-	# number of occurrences
-	urlct <- "http://data.gbif.org/ws/rest/occurrence/count"
-	tt_ <- content(GET(urlct, query=argsct))
-	found <- as.numeric(xmlToList(tt_$doc$children$gbifResponse)[[9]][[1]])
-	message(paste("Found ", found, " occurrences", "\n", sep=""))
-
-	# the query itself
-# 	query <- paste(url, args, sep = "")
-# 	tt <- getURL(query, ..., curl = curl)
-	
-# 	tt <- content(GET(url, query=args), as="text")	
 	tt <- getForm(url, .params = args, curl = curl)
 	out <- xmlParse(tt)
 	if (latlongdf == TRUE) {
