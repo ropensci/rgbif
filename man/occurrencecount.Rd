@@ -1,8 +1,8 @@
-\name{occurrencelist}
-\alias{occurrencelist}
-\title{Occurrencelist searches for taxon concept records matching a range of filters.}
+\name{occurrencecount}
+\alias{occurrencecount}
+\title{Counts taxon concept records matching a range of filters.}
 \usage{
-  occurrencelist(scientificname = NULL,
+  occurrencecount(scientificname = NULL,
     taxonconceptKey = NULL, dataproviderkey = NULL,
     dataresourcekey = NULL, institutioncode = NULL,
     collectioncode = NULL, catalognumber = NULL,
@@ -12,23 +12,29 @@
     minaltitude = NULL, maxaltitude = NULL,
     mindepth = NULL, maxdepth = NULL, cellid = NULL,
     centicellid = NULL, typesonly = NULL,
-    georeferencedonly = NULL, coordinatestatus = NULL,
-    coordinateissues = NULL, hostisocountrycode = NULL,
-    originisocountrycode = NULL, originregioncode = NULL,
-    startdate = NULL, enddate = NULL, startyear = NULL,
-    endyear = NULL, year = NULL, month = NULL, day = NULL,
-    modifiedsince = NULL, startindex = NULL,
-    maxresults = 10, format = NA, icon = NULL, mode = NULL,
-    stylesheet = NULL, latlongdf = FALSE,
-    removeZeros = FALSE, writecsv = NULL,
-    url = "http://data.gbif.org/ws/rest/occurrence/list",
+    coordinatestatus = NULL, coordinateissues = NULL,
+    hostisocountrycode = NULL, originisocountrycode = NULL,
+    originregioncode = NULL, startdate = NULL,
+    enddate = NULL, startyear = NULL, endyear = NULL,
+    year = NULL, month = NULL, day = NULL,
+    modifiedsince = NULL,
+    url = "http://data.gbif.org/ws/rest/occurrence/count",
     ..., curl = getCurlHandle())
 }
 \arguments{
-  \item{scientificname}{scientitic name of taxon
-  (character, see example)}
+  \item{scientificname}{count only records where the
+  scientific name matches that supplied, use an asterisk *
+  for any name starting with preseding string (character).
+  does not make use of extra knowledge of possible synonyms
+  or of child taxa.  For these functions, use
+  taxonconceptkey. May be repeted in single request.}
 
-  \item{taxonconceptKey}{unique key for taxon (numeric)}
+  \item{taxonconceptKey}{unique key for taxon (numeric).
+  Count only records which are for the taxon identified by
+  the supplied numeric key, including any records provided
+  under synonyms of the taxon concerned, and any records
+  for child taxa (e.g. all genera and species within a
+  family).  May be repeted in single request.}
 
   \item{dataproviderkey}{Filter records to those provided
   by the supplied numeric key for a data provider. See
@@ -87,15 +93,14 @@
   places)}
 
   \item{cellid}{identifier for a one degree cell (O -
-  64,799)}
+  64,799).  Using a cellid is more efficient than using a
+  bounding box for the same cell.}
 
   \item{centicellid}{identifier for a 0.1 degree cell
   within a one degree cell}
 
   \item{typesonly}{if set to "true", return only records
   with a type status specified.}
-
-  \item{georeferencedonly}{This option is deprecated.}
 
   \item{coordinatestatus}{if set to "true", return only
   records with coordinates.  If set to "false", return only
@@ -146,37 +151,6 @@
   after the supplied date (format YYYY-MM-DD, e.g.
   2006-11-28).}
 
-  \item{startindex}{return the subset of the matching
-  records that starts at the supplied (zero-based index).}
-
-  \item{maxresults}{max number of results (integer)
-  (1-10000)}
-
-  \item{format}{specifies the format in which the records
-  are to be returned,}
-
-  \item{icon}{(only when format is set to kml) specified
-  the URL for an icon to be used for the KML Placemarks.}
-
-  \item{mode}{Specifies whether the response data should
-  (as far as possible) be the raw values originally
-  retrieved from the data resource or processed
-  (normalised) values used within the data portal
-  (character)}
-
-  \item{stylesheet}{Sets the URL of the stylesheet to be
-  associated with the}
-
-  \item{latlongdf}{Return a data.frame of lat/long's for
-  all occurrences (logical)}
-
-  \item{removeZeros}{remove records with both Lat Long zero
-  values (logical)}
-
-  \item{writecsv}{If path to a file is given, a text file
-  is written out and a success message is returned to the
-  console (logical)}
-
   \item{url}{the base GBIF API url for the function (should
   be left to default)}
 
@@ -188,14 +162,13 @@
   unnecessary footprint)}
 }
 \description{
-  Occurrencelist searches for taxon concept records
-  matching a range of filters.
+  Counts taxon concept records matching a range of filters.
 }
 \examples{
 \dontrun{
-occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, latlongdf = T)
-occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, latlongdf=F)
-occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, latlongdf=T, writecsv="~/myyyy.csv")
+occurrencecount(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE)
+occurrencecount(scientificname = 'Helianthus annuus', coordinatestatus = TRUE, year=2009)
+occurrencecount(scientificname = 'Helianthus annuus', coordinatestatus = TRUE, year=2005, maxlatitude=20)
 }
 }
 
