@@ -1,12 +1,10 @@
-## ! THIS IS NOT THE MOST UP TO DATE BRANCH OF `rgbif`. GO [HERE](https://github.com/vijaybarve/rgbif) ! 
-
 # `rgbif`
 
-Install from CRAN:
+Install the version from CRAN:
 install.packages("rgbif")
 require(rgbif)
 
-Install using `install_github` within Hadley's [devtools](https://github.com/hadley/devtools) package.
+Install the development version using `install_github` within Hadley's [devtools](https://github.com/hadley/devtools) package.
 
 ```R
 install.packages("devtools")
