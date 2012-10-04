@@ -32,9 +32,9 @@
 }
 \examples{
 \dontrun{
-taxoncount("Puma concolor")
-taxoncount("Helianthus annuus")
-taxoncount(rank = "family")
+taxoncount('Puma concolor')
+taxoncount('Helianthus annuus')
+taxoncount(rank = 'family')
 }
 }
 
