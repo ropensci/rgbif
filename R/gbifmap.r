@@ -40,7 +40,7 @@ gbifmap <- function(input = NULL)
 	message(paste("Rendering map...plotting ", nrow(input_), " points", sep=""))
 	ggplot(world, aes(long, lat)) + # make the plot
 		geom_polygon(aes(group=group), fill="white", color="gray40", size=0.2) +
-		geom_jitter(data=input_, aes(decimalLongitude, decimalLatitude), alpha=0.6, size=3, colour="darkblue") +
+		geom_jitter(data=input_, aes(decimalLongitude, decimalLatitude), alpha=0.4, size=3, colour="darkblue") +
 		labs(x="", y="") +
 		theme_bw(base_size=14)
 }
