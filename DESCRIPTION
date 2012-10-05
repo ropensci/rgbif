@@ -20,15 +20,15 @@ Imports:
     plyr,
     httr (>= 0.1.1)
 Collate:
-    'gbifdatause.r'
+    'gbifdatause.R'
     'gbifmap.r'
     'networks.r'
-    'occurrencecount.r'
+    'occurrencecount.R'
     'occurrencedensity.r'
-    'occurrenceget.r'
-    'occurrencelist.r'
+    'occurrenceget.R'
+    'occurrencelist.R'
     'providers.r'
     'resources.r'
-    'taxoncount.r'
-    'taxonsearch.r'
+    'taxoncount.R'
+    'taxonsearch.R'
     'taxrank.r'
