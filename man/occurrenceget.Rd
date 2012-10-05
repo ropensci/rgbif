@@ -1,10 +1,9 @@
 \name{occurrenceget}
 \alias{occurrenceget}
-\title{occurrenceget - description}
+\title{Get individual records for a given occurrence record.}
 \usage{
-  occurrenceget(key = NA, format = NA, mode = NA,
-    url = "http://data.gbif.org/ws/rest/occurrence/get?",
-    ..., curl = getCurlHandle())
+  occurrenceget(key = NULL, format = NULL, mode = NULL,
+    url = "http://data.gbif.org/ws/rest/occurrence/get")
 }
 \arguments{
   \item{key}{numeric key uniquely identifying the
@@ -22,16 +21,13 @@
 
   \item{url}{the base GBIF API url for the function (should
   be left to default)}
-
-  \item{...}{optional additional curl options (debugging
-  tools mostly)}
-
-  \item{curl}{If using in a loop, call getCurlHandle()
-  first and pass the returned value in here (avoids
-  unnecessary footprint)}
 }
 \description{
-  occurrenceget - description
+  Get individual records for a given occurrence record.
+}
+\details{
+  Currently, the function returns the record as a list,
+  hopefully in future will return a data.frame.
 }
 \examples{
 \dontrun{

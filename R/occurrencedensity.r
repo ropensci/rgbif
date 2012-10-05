@@ -1,7 +1,7 @@
 #' Returns summary counts of occurrence records by one-degree cell for a single
 #' 		taxon, country, dataset, data publisher or data network.
 #' 		
-#' @import RCurl XML
+#' @import httr XML plyr
 #' @param taxonconceptkey numeric key uniquely identifying the taxon
 #' @param dataproviderkey numeric key uniquely identifying the data provider
 #' @param dataresourcekey numeric key uniquely identifying the data resource
@@ -18,31 +18,23 @@
 #' occurrencedensity(taxonconceptkey=45)
 #' }
 #' @export
-occurrencedensity <- function(taxonconceptkey = NA,
-    dataproviderkey = NA, dataresourcekey = NA, resourcenetworkkey = NA,
-    originisocountrycode = NA, format = NA, url = "http://data.gbif.org/ws/rest/density/list",
-    ..., curl = getCurlHandle()) 
+occurrencedensity <- function(taxonconceptkey = NULL,
+    dataproviderkey = NULL, dataresourcekey = NULL, resourcenetworkkey = NULL,
+    originisocountrycode = NULL, format = NULL, 
+		url = "http://data.gbif.org/ws/rest/density/list") 
 {
-    args <- list()
-    if (!is.na(taxonconceptkey))
-        args$taxonconceptkey <- taxonconceptkey
-    if (!is.na(dataproviderkey))
-        args$dataproviderkey <- dataproviderkey
-    if (!is.na(dataresourcekey))
-        args$dataresourcekey <- dataresourcekey
-    if (!is.na(resourcenetworkkey))
-        args$resourcenetworkkey <- resourcenetworkkey
-    if (!is.na(originisocountrycode))
-        args$originisocountrycode <- originisocountrycode
-    if (!is.na(format))
-        args$format <- format
-    out <- getForm(url, .params = args, ..., curl = curl)
+    args <- compact(list(taxonconceptkey=taxonconceptkey, 
+    	dataproviderkey=dataproviderkey,dataresourcekey=dataresourcekey,
+    	resourcenetworkkey=resourcenetworkkey,
+    	originisocountrycode=originisocountrycode,format=format))
+    temp <- GET(url, query = args)
+    out <- content(temp, as="text")
     tt <- xmlParse(out)
-    data.frame(cellid = xpathSApply(tt, "//gbif:densityRecord",
-        xmlAttrs), minlat = xpathSApply(tt, "//gbif:densityRecord/gbif:minLatitude",
-        xmlValue), maxlat = xpathSApply(tt, "//gbif:densityRecord/gbif:maxLatitude",
-        xmlValue), minlong = xpathSApply(tt, "//gbif:densityRecord/gbif:minLongitude",
-        xmlValue), maxlong = xpathSApply(tt, "//gbif:densityRecord/gbif:maxLongitude",
-        xmlValue), count = xpathSApply(tt, "//gbif:densityRecord/gbif:count",
-        xmlValue))
+    data.frame(cellid = xpathSApply(tt, "//gbif:densityRecord", xmlAttrs), 
+    	minlat = xpathSApply(tt, "//gbif:densityRecord/gbif:minLatitude", xmlValue), 
+    	maxlat = xpathSApply(tt, "//gbif:densityRecord/gbif:maxLatitude", xmlValue), 
+    	minlong = xpathSApply(tt, "//gbif:densityRecord/gbif:minLongitude", xmlValue), 
+    	maxlong = xpathSApply(tt, "//gbif:densityRecord/gbif:maxLongitude", xmlValue), 
+    	count = xpathSApply(tt, "//gbif:densityRecord/gbif:count", xmlValue)
+    )
 }

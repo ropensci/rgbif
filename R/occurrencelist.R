@@ -1,6 +1,6 @@
 #' Occurrencelist searches for taxon concept records matching a range of filters.
 #'
-#' @import RCurl XML plyr httr
+#' @import RCurl XML plyr
 #' @param  scientificname scientitic name of taxon (character, see example)
 #' @param  taxonconceptKey unique key for taxon (numeric)
 #' @param  dataproviderkey Filter records to those provided by the supplied

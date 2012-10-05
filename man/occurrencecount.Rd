@@ -18,8 +18,7 @@
     enddate = NULL, startyear = NULL, endyear = NULL,
     year = NULL, month = NULL, day = NULL,
     modifiedsince = NULL,
-    url = "http://data.gbif.org/ws/rest/occurrence/count",
-    ..., curl = getCurlHandle())
+    url = "http://data.gbif.org/ws/rest/occurrence/count")
 }
 \arguments{
   \item{scientificname}{count only records where the

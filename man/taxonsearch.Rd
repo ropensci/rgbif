@@ -1,17 +1,16 @@
 \name{taxonsearch}
 \alias{taxonsearch}
-\title{Search for taxa in GBIF}
+\title{Search for taxa in GBIF.}
 \usage{
-  taxonsearch(sciname = NA, rank = NA, maxresults = 10,
-    dataproviderkey = NA, dataresourcekey = NA,
-    resourcenetworkkey = NA, hostisocountrycode = NA,
-    startindex = NA,
-    url = "http://data.gbif.org/ws/rest/taxon/list?", ...,
-    curl = getCurlHandle())
+  taxonsearch(scientificname = NULL, rank = NULL,
+    maxresults = 10, dataproviderkey = NULL,
+    dataresourcekey = NULL, resourcenetworkkey = NULL,
+    hostisocountrycode = NULL, startindex = NULL,
+    url = "http://data.gbif.org/ws/rest/taxon/list")
 }
 \arguments{
-  \item{sciname}{scientitic name of taxon (character, see
-  example)}
+  \item{scientificname}{scientific name of taxon
+  (character, see example)}
 
   \item{rank}{rank of taxon, see taxrank() (character)}
 
@@ -40,24 +39,18 @@
 
   \item{url}{the base GBIF API url for the function (should
   be left to default)}
-
-  \item{...}{optional additional curl options (debugging
-  tools mostly)}
-
-  \item{curl}{If using in a loop, call getCurlHandle()
-  first and pass the returned value in here (avoids
-  unnecessary footprint)}
+}
+\value{
+  List of TaxonConcept key values.
 }
 \description{
   Search for a taxon using scientific name. Optionally,
-  include taxonomic rank in the search.
-}
-\details{
-  Returns list of TaxonConcept key values
+  include taxonomic rank in the search. Returns list of
+  TaxonConcept key values.
 }
 \examples{
 \dontrun{
-taxonsearch(sciname = 'Puma concolor')
+taxonsearch(scientificname = 'Puma concolor')
 }
 }
 

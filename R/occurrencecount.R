@@ -1,6 +1,6 @@
 #' Counts taxon concept records matching a range of filters.
 #' 
-#' @import XML httr
+#' @import httr XML plyr
 #' @param  scientificname count only records where the scientific name matches 
 #'  	that supplied, use an asterisk * for any name starting with preseding 
 #'		string (character). does not make use of extra knowledge of possible synonyms 
@@ -70,12 +70,12 @@
 #' @param ... optional additional curl options (debugging tools mostly)
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #'		the returned value in here (avoids unnecessary footprint)
-#' @export
 #' @examples \dontrun{
 #' occurrencecount(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE)
 #' occurrencecount(scientificname = 'Helianthus annuus', coordinatestatus = TRUE, year=2009)
 #' occurrencecount(scientificname = 'Helianthus annuus', coordinatestatus = TRUE, year=2005, maxlatitude=20)
 #' }
+#' @export
 occurrencecount <- function(scientificname = NULL, taxonconceptKey = NULL,
 	dataproviderkey = NULL, dataresourcekey = NULL, institutioncode = NULL ,
 	collectioncode = NULL, catalognumber = NULL, resourcenetworkkey = NULL,
@@ -86,8 +86,7 @@ occurrencecount <- function(scientificname = NULL, taxonconceptKey = NULL,
 	coordinateissues = NULL, hostisocountrycode = NULL, originisocountrycode = NULL,
 	originregioncode = NULL, startdate = NULL, enddate = NULL, startyear = NULL,
 	endyear = NULL, year = NULL, month = NULL, day = NULL, modifiedsince = NULL,
-	url = "http://data.gbif.org/ws/rest/occurrence/count", ..., 
-	curl = getCurlHandle()) 
+	url = "http://data.gbif.org/ws/rest/occurrence/count") 
 {  
 	querystr <- compact(list(scientificname = scientificname, taxonconceptKey = taxonconceptKey,
 		dataproviderkey = dataproviderkey, dataresourcekey = dataresourcekey, 
@@ -103,5 +102,5 @@ occurrencecount <- function(scientificname = NULL, taxonconceptKey = NULL,
 	
 	temp <- GET(url, query = querystr)
 	out <- content(temp)$doc$children$gbifResponse
-	as.numeric(xmlGetAttr(getNodeSet(out, "//gbif:summary")[[1]], "totalMatched"))
+	as.numeric(xmlGetAttr(getNodeSet(out, "//gbif:summary", namespaces="gbif")[[1]], "totalMatched"))
 }

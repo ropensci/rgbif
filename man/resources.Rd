@@ -2,11 +2,10 @@
 \alias{resources}
 \title{Get data resources and their unique keys.}
 \usage{
-  resources(name = "", providerkey = NA,
-    basisofrecordcode = NA, modifiedsince = NA,
-    startindex = NA, maxresults = NA,
-    url = "http://data.gbif.org/ws/rest/resource/list",
-    ..., curl = getCurlHandle())
+  resources(name = "", providerkey = NULL,
+    basisofrecordcode = NULL, modifiedsince = NULL,
+    startindex = NULL, maxresults = NULL,
+    url = "http://data.gbif.org/ws/rest/resource/list")
 }
 \arguments{
   \item{name}{data provider name search string, by default
@@ -32,13 +31,6 @@
 
   \item{url}{the base GBIF API url for the function (should
   be left to default)}
-
-  \item{...}{optional additional curl options (debugging
-  tools mostly)}
-
-  \item{curl}{If using in a loop, call getCurlHandle()
-  first and pass the returned value in here (avoids
-  unnecessary footprint)}
 }
 \description{
   Beware: It takes a while to retrieve the full list of
@@ -47,8 +39,12 @@
 \examples{
 \dontrun{
 # Test the function for a few resources
-resources(maxresults=10)
-#'# All data providers
+resources(maxresults=30)
+
+# By name
+resources('Flora')
+
+# All data providers
 resources()
 }
 }

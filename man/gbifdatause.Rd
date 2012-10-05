@@ -1,6 +1,6 @@
 \name{gbifdatause}
 \alias{gbifdatause}
-\title{gbifdatause - description}
+\title{GBIF datause descriptiom.}
 \usage{
   gbifdatause(url = "http://data.gbif.org/tutorial/datasharingagreement")
 }
@@ -8,7 +8,7 @@
   \item{url}{Base url for call, don't change.}
 }
 \description{
-  gbifdatause - description
+  GBIF datause descriptiom.
 }
 \examples{
 \dontrun{

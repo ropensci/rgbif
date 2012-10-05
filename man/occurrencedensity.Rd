@@ -3,12 +3,11 @@
 \title{Returns summary counts of occurrence records by one-degree cell for a single
 		taxon, country, dataset, data publisher or data network.}
 \usage{
-  occurrencedensity(taxonconceptkey = NA,
-    dataproviderkey = NA, dataresourcekey = NA,
-    resourcenetworkkey = NA, originisocountrycode = NA,
-    format = NA,
-    url = "http://data.gbif.org/ws/rest/density/list", ...,
-    curl = getCurlHandle())
+  occurrencedensity(taxonconceptkey = NULL,
+    dataproviderkey = NULL, dataresourcekey = NULL,
+    resourcenetworkkey = NULL, originisocountrycode = NULL,
+    format = NULL,
+    url = "http://data.gbif.org/ws/rest/density/list")
 }
 \arguments{
   \item{taxonconceptkey}{numeric key uniquely identifying
