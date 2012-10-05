@@ -42,4 +42,4 @@ out <- lapply(splist, function(x) occurrencelist(x, coordinatestatus = T, maxres
 gbifmap(out)
 ```
 
-<a href="http://www.flickr.com/photos/recology_/8057000598/" title="gbifmap_manyspecies by scottlus, on Flickr"><img src="http://farm9.staticflickr.com/8038/8057000598_9542052842.jpg" width="500" height="303" alt="gbifmap_manyspecies"></a>
+<a href="http://www.flickr.com/photos/recology_/8057000598/" title="gbifmap_manyspecies by scottlus, on Flickr"><img src="http://farm9.staticflickr.com/8038/8057000598_9542052842_z.jpg" width="640" height="388" alt="gbifmap_manyspecies"></a>
