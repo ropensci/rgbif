@@ -32,3 +32,4 @@ Collate:
     'taxoncount.R'
     'taxonsearch.R'
     'taxrank.r'
+    'zzz.r'
