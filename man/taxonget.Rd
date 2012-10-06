@@ -7,10 +7,16 @@
     url = "http://data.gbif.org/ws/rest/taxon/get")
 }
 \arguments{
-  \item{key}{Key for a taxon.}
+  \item{key}{A single key, or many keys in a vector, for a
+  taxon.}
+
+  \item{url}{the base GBIF API url for the function (leave
+  to default).}
 }
 \value{
-  Data.frame of taxonomic information.
+  A single data.frame of taxonomic information if single
+  data.frame is supplied, or a list of data.frame's if a
+  list of keys is supplied.
 }
 \description{
   Get taxonomic information on a specific taxon or taxa in
@@ -19,7 +25,7 @@
 \examples{
 \dontrun{
 keys <- taxonsearch(scientificname = 'Puma concolor')
-taxonget(key = keys[[1]])
+taxonget(keys)
 }
 }
 
