@@ -23,18 +23,19 @@ occurrencedensity <- function(taxonconceptkey = NULL,
     originisocountrycode = NULL, format = NULL, 
 		url = "http://data.gbif.org/ws/rest/density/list") 
 {
-    args <- compact(list(taxonconceptkey=taxonconceptkey, 
-    	dataproviderkey=dataproviderkey,dataresourcekey=dataresourcekey,
-    	resourcenetworkkey=resourcenetworkkey,
-    	originisocountrycode=originisocountrycode,format=format))
-    temp <- GET(url, query = args)
-    out <- content(temp, as="text")
-    tt <- xmlParse(out)
-    data.frame(cellid = xpathSApply(tt, "//gbif:densityRecord", xmlAttrs), 
-    	minlat = xpathSApply(tt, "//gbif:densityRecord/gbif:minLatitude", xmlValue), 
-    	maxlat = xpathSApply(tt, "//gbif:densityRecord/gbif:maxLatitude", xmlValue), 
-    	minlong = xpathSApply(tt, "//gbif:densityRecord/gbif:minLongitude", xmlValue), 
-    	maxlong = xpathSApply(tt, "//gbif:densityRecord/gbif:maxLongitude", xmlValue), 
-    	count = xpathSApply(tt, "//gbif:densityRecord/gbif:count", xmlValue)
-    )
+#     args <- compact(list(taxonconceptkey=taxonconceptkey, 
+#     	dataproviderkey=dataproviderkey,dataresourcekey=dataresourcekey,
+#     	resourcenetworkkey=resourcenetworkkey,
+#     	originisocountrycode=originisocountrycode,format=format))
+#     temp <- GET(url, query = args)
+#     out <- content(temp, as="text")
+#     tt <- xmlParse(out)
+#     data.frame(cellid = xpathSApply(tt, "//gbif:densityRecord", xmlAttrs), 
+#     	minlat = xpathSApply(tt, "//gbif:densityRecord/gbif:minLatitude", xmlValue), 
+#     	maxlat = xpathSApply(tt, "//gbif:densityRecord/gbif:maxLatitude", xmlValue), 
+#     	minlong = xpathSApply(tt, "//gbif:densityRecord/gbif:minLongitude", xmlValue), 
+#     	maxlong = xpathSApply(tt, "//gbif:densityRecord/gbif:maxLongitude", xmlValue), 
+#     	count = xpathSApply(tt, "//gbif:densityRecord/gbif:count", xmlValue)
+#     )
+	message("deprecated - now densitylist")
 }

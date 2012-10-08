@@ -46,7 +46,7 @@
 #' @export
 density_spplist <- function(taxonconceptKey = NULL, dataproviderkey = NULL,
 	dataresourcekey = NULL, resourcenetworkkey = NULL, originisocountrycode = NULL,
-	format = NULL, spplist = c("none","random","greatest","all"), 
+	format = NULL, spplist = c("none","random","greatest","all"), listcount = "list",
 	url = "http://data.gbif.org/ws/rest/density/list") 
 {
 	args <- compact(list(taxonconceptKey = taxonconceptKey, 

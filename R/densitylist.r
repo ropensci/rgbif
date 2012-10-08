@@ -32,7 +32,7 @@ densitylist <- function(taxonconceptKey = NULL, dataproviderkey = NULL,
 	temp <- GET(url, query = args)
 	out <- content(temp, as="text")
 	tt <- xmlParse(out)	
-	cellid <- as.numeric(sapply(getNodeSet(tt, "//gbif:densityRecord"), xmlValue))
+	cellid <- as.numeric(xpathSApply(tt, "//gbif:densityRecord", xmlAttrs))
 	minLatitude <- as.numeric(sapply(getNodeSet(tt, "//gbif:minLatitude"), xmlValue))
 	maxLatitude <- as.numeric(sapply(getNodeSet(tt, "//gbif:maxLatitude"), xmlValue))
 	minLongitude <- as.numeric(sapply(getNodeSet(tt, "//gbif:minLongitude"), xmlValue))

@@ -8,6 +8,7 @@
     resourcenetworkkey = NULL, originisocountrycode = NULL,
     format = NULL,
     spplist = c("none", "random", "greatest", "all"),
+    listcount = "list",
     url = "http://data.gbif.org/ws/rest/density/list")
 }
 \arguments{

@@ -44,7 +44,7 @@ gbifmap <- function(input = NULL, region = ".")
 {
 	if(class(input)=="data.frame"){nn<-names(input)} else{nn<-names(input[[1]])}
 	if(all(
-		nn %in% c("minLatitude","maxLatitude","minLongitude","maxLongitude","count")
+		nn %in% c("cellid","minLatitude","maxLatitude","minLongitude","maxLongitude","count")
 	)==TRUE){ 
 		middf <- data.frame(
 			lat = input$minLatitude+0.5,

@@ -47,7 +47,7 @@ splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa', 'Buteo re
 out <- lapply(splist, function(x) occurrencelist(x, coordinatestatus = T, maxresults = 100, latlongdf = T))
 gbifmap(out)
 
-# Tile map, using gbifdensity, Canada
+# Tile map, using output from densitylist, Canada
 out2 <- densitylist(originisocountrycode = "CA") # data for Canada
 gbifmap(out2) # on world map
 gbifmap(out2, "Canada") # on Canada map
