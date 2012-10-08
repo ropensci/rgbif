@@ -1,3 +1,5 @@
+export(density_spplist)
+export(densitylist)
 export(gbifdatause)
 export(gbifmap)
 export(networks)

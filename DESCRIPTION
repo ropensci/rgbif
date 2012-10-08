@@ -34,3 +34,5 @@ Collate:
     'taxrank.r'
     'zzz.r'
     'taxonget.r'
+    'densitylist.r'
+    'density_spplist.r'
