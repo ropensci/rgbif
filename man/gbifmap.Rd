@@ -2,7 +2,9 @@
 \alias{gbifmap}
 \title{Make a simple map to visualize GBIF data.}
 \usage{
-  gbifmap(input = NULL, region = ".")
+  gbifmap(input = NULL, mapdatabase = "world",
+    region = ".", pointtype = geom_point,
+    jitterposition = NULL)
 }
 \arguments{
   \item{input}{Either a single data.frame or a list of
@@ -11,10 +13,24 @@
   columns named exactly "decimalLatitude" and
   "decimalLongitude".}
 
+  \item{mapdatabase}{The map database to use in mapping.
+  What you choose here determines what you can choose in
+  the region parameter. One of: county, state, usa, world,
+  world2, france, italy, or nz.}
+
   \item{region}{The region of the world to map. From the
   maps package, run
   \code{sort(unique(map_data("world")$region))} to see
-  region names.}
+  region names for the world database layer, or e.g.,
+  \code{sort(unique(map_data("state")$region))} for the
+  state layer.}
+
+  \item{pointtype}{The geom to use, one of geom_point or
+  geom_jitter. Don't quote them.}
+
+  \item{jitterposition}{If you use jitterposition, the
+  amount by which to jitter points in width, height, or
+  both.}
 }
 \value{
   Map (using ggplot2 package) of points or tiles on a world
@@ -56,6 +72,19 @@ gbifmap(out2, "Canada") # on Canada map
 # 191 for 'University of Texas at El Paso'
 out2 <- densitylist(dataproviderkey = 191) # data for the US
 gbifmap(out2) # on world map
+
+Get occurrences or density by area, using min/max lat/long coordinates
+out <- occurrencelist(minlatitude=30, maxlatitude=35, minlongitude=-100, maxlongitude=-95,
+		coordinatestatus = T, maxresults = 5000, latlongdf = T)
+
+# Using `geom_point`
+gbifmap(out, "state", "texas", geom_point)
+
+# Using geom_jitter to move the points apart from one another
+gbifmap(out, "state", "texas", geom_jitter, position_jitter(width = 0.3, height = 0.3))
+
+# And move points a lot
+gbifmap(out, "state", "texas", geom_jitter, position_jitter(width = 1, height = 1))
 }
 }
 

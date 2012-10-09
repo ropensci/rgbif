@@ -6,8 +6,17 @@
 #' @param input Either a single data.frame or a list of data.frame's (e.g., from
 #' 		different speies). The data.frame has to have, in addition to any other 
 #' 		columns, columns named exactly "decimalLatitude" and "decimalLongitude".
+#' @param mapdatabase The map database to use in mapping. What you choose here 
+#' 		determines what you can choose in the region parameter. One of: county, 
+#' 		state, usa, world, world2, france, italy, or nz. 
 #' @param region The region of the world to map. From the maps package, run 
-#' 		\code{sort(unique(map_data("world")$region))} to see region names.
+#' 		\code{sort(unique(map_data("world")$region))} to see region names for the
+#' 		world database layer, or e.g., \code{sort(unique(map_data("state")$region))}
+#' 		for the state layer.
+#' @param pointtype The geom to use, one of geom_point or geom_jitter. Don't 
+#' 		quote them. 
+#' @param jitterposition If you use jitterposition, the amount by which to jitter 
+#' 		points in width, height, or both. 
 #' @return Map (using ggplot2 package) of points or tiles on a world map.
 #' @details gbifmap takes care of cleaning up the data.frame (removing NA's, etc.) 
 #' 		returned from rgbif functions, and creating the map. This function
@@ -38,9 +47,23 @@
 #' # 191 for 'University of Texas at El Paso'
 #' out2 <- densitylist(dataproviderkey = 191) # data for the US
 #' gbifmap(out2) # on world map
+#' 
+#' Get occurrences or density by area, using min/max lat/long coordinates
+#' out <- occurrencelist(minlatitude=30, maxlatitude=35, minlongitude=-100, maxlongitude=-95, 
+#' 		coordinatestatus = T, maxresults = 5000, latlongdf = T)
+#' 
+#' # Using `geom_point`
+#' gbifmap(out, "state", "texas", geom_point)
+#' 
+#' # Using geom_jitter to move the points apart from one another
+#' gbifmap(out, "state", "texas", geom_jitter, position_jitter(width = 0.3, height = 0.3))
+#' 
+#' # And move points a lot
+#' gbifmap(out, "state", "texas", geom_jitter, position_jitter(width = 1, height = 1))
 #' }
 #' @export
-gbifmap <- function(input = NULL, region = ".")
+gbifmap <- function(input = NULL, mapdatabase = "world", region = ".", 
+										pointtype = geom_point, jitterposition = NULL)
 {
 	if(class(input)=="data.frame"){nn<-names(input)} else{nn<-names(input[[1]])}
 	if(all(
@@ -51,13 +74,13 @@ gbifmap <- function(input = NULL, region = ".")
 			long = input$minLongitude+0.5,
 			count = input$count
 		)
-		mapp <- map_data("world", region=region)
+		mapp <- map_data(map=mapdatabase, region=region)
 		numtiles <- nrow(input)
 		message(paste("Rendering map...plotting ", numtiles, " tiles", sep=""))
 		ggplot(mapp, aes(long, lat)) + # make the plot
+			geom_polygon(aes(group=group), fill="white", alpha=0, color="gray80", size=0.8) +
 			geom_raster(data=middf, aes(long, lat, fill=log10(count), width=1, height=1)) +
 			scale_fill_gradient2(low = "white", mid="blue", high = "black") +
-			geom_polygon(aes(group=group), fill="white", alpha=0, color="gray80", size=0.8) +
 			labs(x="", y="") +
 			theme_bw(base_size=14)
 	}	else
@@ -84,13 +107,15 @@ gbifmap <- function(input = NULL, region = ".")
 			}
 			tomap <- lapply(input3, mapp)
 			
-			world <- map_data("world", region=region) # get world map data
+			world <- map_data(map=mapdatabase, region=region) # get world map data
 			numpoints <- sum(sapply(tomap, nrow, USE.NAMES=F))
 			message(paste("Rendering map...plotting ", numpoints, " points", sep=""))
 			if(length(tomap) == 1){
+				position2 <- jitterposition
 				ggplot(world, aes(long, lat)) + # make the plot
 					geom_polygon(aes(group=group), fill="white", color="gray40", size=0.2) +
-					geom_point(data=tomap[[1]], aes(decimalLongitude, decimalLatitude), alpha=0.4, size=3, colour="darkblue") +
+					pointtype(data=tomap[[1]], aes(decimalLongitude, decimalLatitude), 
+										alpha=0.4, size=3, colour="darkblue", position=position2) +
 					labs(x="", y="") +
 					theme_bw(base_size=14)
 			} else
@@ -99,7 +124,8 @@ gbifmap <- function(input = NULL, region = ".")
 				tomapdf$taxonName <- as.factor(capwords(tomapdf$taxonName, onlyfirst=T))
 				ggplot(world, aes(long, lat)) + # make the plot
 					geom_polygon(aes(group=group), fill="white", color="gray40", size=0.2) +
-					geom_point(data=tomapdf, aes(decimalLongitude, decimalLatitude, colour=taxonName), alpha=0.4, size=3) +
+					pointtype(data=tomapdf, aes(decimalLongitude, decimalLatitude, colour=taxonName), 
+										 alpha=0.4, size=3) +
 					labs(x="", y="") +
 					theme_bw(base_size=14)
 			}
