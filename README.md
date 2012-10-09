@@ -29,8 +29,8 @@ require(rgbif)
 + XML
 + RCurl (>= 1.6)
 + plyr
-+ httr (>= 0.2)
-	+ Install httr from github by:
++ httr
+	+ Install httr from github by (this should ):
 
 	```R
 	install_github("httr")
