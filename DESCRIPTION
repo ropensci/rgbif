@@ -18,7 +18,7 @@ Imports:
     XML,
     RCurl (>= 1.6),
     plyr,
-    httr (>= 0.1.1)
+    httr
 Collate:
     'gbifdatause.R'
     'gbifmap.r'
