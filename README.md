@@ -25,6 +25,19 @@ install_github("rgbif", "ropensci")
 require(rgbif)
 ```
 
+### Packages `rgbif` depends on
++ XML
++ RCurl (>= 1.6)
++ plyr
++ httr (>= 0.2)
+	+ Install httr from github by:
+
+	```R
+	install_github("httr")
+	library(httr)
+	```
+
+
 ## Visualize occurrence data
 
 ```R
