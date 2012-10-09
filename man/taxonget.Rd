@@ -26,6 +26,9 @@
 \dontrun{
 keys <- taxonsearch(scientificname = 'Puma concolor')
 taxonget(keys)
+
+# Just for one key
+taxonget(51780668) # taxonconceptkey for Puma concolor
 }
 }
 

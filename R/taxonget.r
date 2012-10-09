@@ -9,6 +9,9 @@
 #' @examples \dontrun{
 #' keys <- taxonsearch(scientificname = 'Puma concolor')
 #' taxonget(keys)
+#' 
+#' # Just for one key
+#' taxonget(51780668) # taxonconceptkey for Puma concolor
 #' }
 #' @export
 taxonget <- function(key = NULL, url = "http://data.gbif.org/ws/rest/taxon/get") 
@@ -18,10 +21,10 @@ taxonget <- function(key = NULL, url = "http://data.gbif.org/ws/rest/taxon/get")
 		temp <- GET(url, query = args)
 		out <- content(temp, as="text")
 		tt <- xmlParse(out)	
-		gbifkeys <- sapply(getNodeSet(tt, "//tc:TaxonConcept[@gbifKey]"), xmlGetAttr, "gbifKey")
+		taxonconceptkeys <- sapply(getNodeSet(tt, "//tc:TaxonConcept[@gbifKey]"), xmlGetAttr, "gbifKey")
 		sciname <- sapply(getNodeSet(tt, "//tn:nameComplete"), xmlValue)
 		rank <- sapply(getNodeSet(tt, "//tn:rankString"), xmlValue)
-		data.frame(sciname, gbifkeys, rank)
+		data.frame(sciname, taxonconceptkeys, rank)
 	}
 	lapply(key, doit)
 }
