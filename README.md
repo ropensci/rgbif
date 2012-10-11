@@ -25,6 +25,8 @@ install_github("rgbif", "ropensci")
 require(rgbif)
 ```
 
+Note: Windows users have to first install [Rtools](http://cran.r-project.org/bin/windows/Rtools/).
+
 ### Packages `rgbif` depends on
 + XML
 + RCurl (>= 1.6)
