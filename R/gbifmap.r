@@ -78,9 +78,9 @@ gbifmap <- function(input = NULL, mapdatabase = "world", region = ".",
 		numtiles <- nrow(input)
 		message(paste("Rendering map...plotting ", numtiles, " tiles", sep=""))
 		ggplot(mapp, aes(long, lat)) + # make the plot
-			geom_polygon(aes(group=group), fill="white", alpha=0, color="gray80", size=0.8) +
 			geom_raster(data=middf, aes(long, lat, fill=log10(count), width=1, height=1)) +
 			scale_fill_gradient2(low = "white", mid="blue", high = "black") +
+			geom_polygon(aes(group=group), fill="white", alpha=0, color="gray80", size=0.8) +
 			labs(x="", y="") +
 			theme_bw(base_size=14)
 	}	else
