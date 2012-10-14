@@ -37,9 +37,6 @@ providers(maxresults=10)
 
 # By data provider name
 providers('University of Texas-Austin')
-
-# All data providers
-providers()
 }
 }
 

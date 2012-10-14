@@ -5,7 +5,7 @@
 #' 		of results as densitylist with this function, but you can also get a 
 #' 		species list or data.frame of species and their counts for any degree cell.
 #'
-#' @import httr XML plyr
+#' @import RCurl XML plyr
 #' @param taxonconceptKey Unique key for taxon (numeric). Count only records 
 #' 		which are for the taxon identified by the supplied numeric key, including 
 #' 		any records provided under synonyms of the taxon concerned, and any 
@@ -53,9 +53,10 @@ density_spplist <- function(taxonconceptKey = NULL, dataproviderkey = NULL,
 		dataproviderkey = dataproviderkey, dataresourcekey = dataresourcekey, 
 		resourcenetworkkey = resourcenetworkkey, 
 		originisocountrycode = originisocountrycode, format = format))
-	temp <- GET(url, query = args)
-	out <- content(temp, as="text")
-	tt <- xmlParse(out)	
+# 	temp <- GET(url, query = args)
+# 	out <- content(temp, as="text")
+	temp <- getForm(url, .params=args)
+	tt <- xmlParse(temp)
 	minLatitude <- as.numeric(sapply(getNodeSet(tt, "//gbif:minLatitude"), xmlValue))
 	maxLatitude <- as.numeric(sapply(getNodeSet(tt, "//gbif:maxLatitude"), xmlValue))
 	minLongitude <- as.numeric(sapply(getNodeSet(tt, "//gbif:minLongitude"), xmlValue))
@@ -69,7 +70,8 @@ density_spplist <- function(taxonconceptKey = NULL, dataproviderkey = NULL,
 									 several.ok=F)	
 	
 	gett <- function(x, listcount) {
-		bbb<-xmlParse(content(GET(x),as="text"))
+# 		bbb<-xmlParse(content(GET(x),as="text"))
+		bbb<-xmlParse(getURL(x))
 		if(listcount == 'list'){
 			sort(unique(sapply(getNodeSet(bbb, "//tn:nameComplete"), xmlValue)))
 		} else
