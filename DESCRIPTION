@@ -17,7 +17,9 @@ Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
 Imports:
     XML,
     RCurl (>= 1.6),
-    plyr
+    plyr,
+    ggplot2,
+    maps
 Collate:
     'gbifmap.r'
     'networks.r'

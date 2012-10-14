@@ -31,6 +31,8 @@ Note: Windows users have to first install [Rtools](http://cran.r-project.org/bin
 + XML
 + RCurl (>= 1.6)
 + plyr
++ ggplot2
++ maps
 
 ## Visualize occurrence data
 
