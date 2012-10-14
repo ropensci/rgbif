@@ -35,6 +35,9 @@
 
   \item{format}{Specifies the format in which the records
   are to be returned, one of: brief or kml (character)}
+
+  \item{url}{the base GBIF API url for the function (should
+  be left to default)}
 }
 \value{
   A data.frame with results.

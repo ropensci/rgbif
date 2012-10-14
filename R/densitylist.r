@@ -16,6 +16,7 @@
 #' 		occurred within the country identified by the supplied 2-letter ISO code.
 #' @param format Specifies the format in which the records are to be returned,
 #' 		one of: brief or kml (character)
+#' @param url the base GBIF API url for the function (should be left to default)
 #' @return A data.frame with results.
 #' @examples \dontrun{
 #' head( densitylist(originisocountrycode = "CA") )

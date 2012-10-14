@@ -1,10 +1,10 @@
-rgbif 0.0.1
+rgbif 0.1.0
+===============
+* Changed all functions to use RCurl instead of httr.
+
+rgbif 0.1.0
 ===============
 
 NEW FEATURES 
 
 * released to CRAN
-
-BUG FIXES
-
-* 

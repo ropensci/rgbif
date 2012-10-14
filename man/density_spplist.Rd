@@ -51,6 +51,9 @@
   \item{listcount}{Return a species list ('splist') or a
   data.frame of the species and the count for each species
   ('counts').}
+
+  \item{url}{the base GBIF API url for the function (should
+  be left to default)}
 }
 \value{
   A vector of scientific species names for one degree grid

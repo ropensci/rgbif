@@ -31,6 +31,7 @@
 #' 		calling "all" could take quite a while, so plan accordingly.
 #' @param listcount Return a species list ('splist') or a data.frame of the 
 #' 		species and the count for each species ('counts').
+#' @param url the base GBIF API url for the function (should be left to default)
 #' @return A vector of scientific species names for one degree grid cells.
 #' @examples \dontrun{
 #' # Just return the data.frame of counts by cells.

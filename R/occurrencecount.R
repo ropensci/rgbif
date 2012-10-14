@@ -67,9 +67,6 @@
 #'    in the GBIF data portal index on or after the supplied date 
 #'    (format YYYY-MM-DD, e.g. 2006-11-28). 
 #' @param url the base GBIF API url for the function (should be left to default)
-#' @param ... optional additional curl options (debugging tools mostly)
-#' @param curl If using in a loop, call getCurlHandle() first and pass
-#'		the returned value in here (avoids unnecessary footprint)
 #' @examples \dontrun{
 #' occurrencecount(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE)
 #' occurrencecount(scientificname = 'Helianthus annuus', coordinatestatus = TRUE, year=2009)
