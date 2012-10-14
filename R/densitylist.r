@@ -1,7 +1,7 @@
 #' The density web service provides access to records showing the density
 #' 		of occurrence records from the GBIF Network by one-degree cell.
 #'
-#' @import httr XML plyr
+#' @import RCurl XML plyr
 #' @param taxonconceptKey Unique key for taxon (numeric). Count only records which are 
 #'		for the taxon identified by the supplied numeric key, including any records provided 
 #'		under synonyms of the taxon concerned, and any records for child taxa 
@@ -29,9 +29,8 @@ densitylist <- function(taxonconceptKey = NULL, dataproviderkey = NULL,
 		dataproviderkey = dataproviderkey, dataresourcekey = dataresourcekey, 
 		resourcenetworkkey = resourcenetworkkey, 
 		originisocountrycode = originisocountrycode, format = format))
-	temp <- GET(url, query = args)
-	out <- content(temp, as="text")
-	tt <- xmlParse(out)	
+	temp <- getForm(url, .params=args)
+	tt <- xmlParse(temp)	
 	cellid <- as.numeric(xpathSApply(tt, "//gbif:densityRecord", xmlAttrs))
 	minLatitude <- as.numeric(sapply(getNodeSet(tt, "//gbif:minLatitude"), xmlValue))
 	maxLatitude <- as.numeric(sapply(getNodeSet(tt, "//gbif:maxLatitude"), xmlValue))

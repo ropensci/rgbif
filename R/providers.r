@@ -3,7 +3,7 @@
 #' Beware: It takes a while to retrieve the full list of providers - so
 #' go get more coffee.
 #' 
-#' @import httr XML plyr
+#' @import RCurl XML plyr
 #' @param name data provider name search string, by default searches all
 #' 		data providers by defining name = ''
 #' @param isocountrycode return only providers from the country identified by 
@@ -20,7 +20,8 @@
 #' 
 #' # By data provider name
 #' providers('University of Texas-Austin')
-#' 
+#' }
+#' @examples \dontest{
 #' # All data providers
 #' providers()
 #' }
@@ -31,9 +32,11 @@ providers <- function(name = "", isocountrycode = NULL, modifiedsince = NULL,
 {
 	args <- compact(list(name = name, isocountrycode=isocountrycode, modifiedsince=modifiedsince,
 											 startindex=startindex, maxresults=maxresults))
-	temp <- GET(url, query = args)
-	out <- content(temp, as="text")
-	tt <- xmlParse(out)
+# 	temp <- GET(url, query = args)
+# 	out <- content(temp, as="text")
+# 	tt <- xmlParse(out)	
+	temp <- getForm(url, .params=args)
+	tt <- xmlParse(temp)
 	names_ <- xpathSApply(tt, "//gbif:dataProvider/gbif:name",
 												xmlValue)
 	dataproviderkey <- xpathSApply(tt, "//gbif:dataProvider", xmlAttrs)[1,]

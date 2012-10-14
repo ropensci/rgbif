@@ -7,6 +7,7 @@
 #' @examples 
 #' capwords(c("using AIC for model selection"))
 #' capwords(c("using AIC for model selection"), strict=TRUE)
+#' @export
 capwords <- function(s, strict = FALSE, onlyfirst = FALSE) {
 	cap <- function(s) paste(toupper(substring(s,1,1)),
 		{s <- substring(s,2); if(strict) tolower(s) else s}, sep = "", collapse = " " )

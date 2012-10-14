@@ -3,7 +3,7 @@
 #' Search for a taxon using scientific name. Optionally, include taxonomic
 #' 		rank in the search. Returns list of TaxonConcept key values.
 #'
-#' @import httr XML plyr
+#' @import RCurl XML plyr
 #' @param scientificname  scientific name of taxon (character, see example)
 #' @param rank  rank of taxon, see taxrank() (character)
 #' @param maxresults  return at most the specified number of records. The
@@ -34,9 +34,11 @@ taxonsearch <- function(scientificname = NULL, rank = NULL, maxresults = 10,
 		dataresourcekey = dataresourcekey,  resourcenetworkkey = resourcenetworkkey,	
 		hostisocountrycode = hostisocountrycode, rank=rank, maxresults=maxresults, 
 		startindex=startindex))
-	temp <- GET(url, query = args)
-	out <- content(temp, as="text")
-	tt <- xmlParse(out)	
+# 	temp <- GET(url, query = args)
+# 	out <- content(temp, as="text")
+# 	tt <- xmlParse(out)	
+	temp <- getForm(url, .params=args)
+	tt <- xmlParse(temp)
 	nodes <- getNodeSet(tt, "//tc:TaxonConcept")
 	out2 <- NULL
 	if (length(nodes) < 1){

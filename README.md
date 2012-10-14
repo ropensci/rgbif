@@ -31,14 +31,6 @@ Note: Windows users have to first install [Rtools](http://cran.r-project.org/bin
 + XML
 + RCurl (>= 1.6)
 + plyr
-+ httr
-	+ Install httr from github by (this should ):
-
-	```R
-	install_github("httr")
-	library(httr)
-	```
-
 
 ## Visualize occurrence data
 

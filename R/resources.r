@@ -3,7 +3,7 @@
 #' Beware: It takes a while to retrieve the full list of resources - so
 #' go get more coffee.
 #'
-#' @import httr XML plyr
+#' @import RCurl XML plyr
 #' @param name data provider name search string, by default searches all
 #' 		data resources by defining name = ''
 #' @param  providerkey Filter records to those provided by the supplied
@@ -23,7 +23,8 @@
 #' 
 #' # By name
 #' resources('Flora')
-#'
+#' }
+#' @examples \dontest{
 #' # All data providers
 #' resources()
 #' }
@@ -36,9 +37,11 @@ resources <- function(name = "", providerkey = NULL, basisofrecordcode = NULL,
 											 basisofrecordcode=basisofrecordcode,
 											 modifiedsince=modifiedsince, startindex=startindex, 
 											 maxresults=maxresults))
-	temp <- GET(url, query = args)
-	out <- content(temp, as="text")
-	tt <- xmlParse(out)
+# 	temp <- GET(url, query = args)
+# 	out <- content(temp, as="text")
+# 	tt <- xmlParse(out)
+	temp <- getForm(url, .params=args)
+	tt <- xmlParse(temp)
 	names_ <- xpathSApply(tt, "//gbif:dataResource/gbif:name",
 												xmlValue)
 	resourcekey <- xpathSApply(tt, "//gbif:dataResource", xmlAttrs)[2,]
