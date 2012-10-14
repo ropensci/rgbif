@@ -41,14 +41,14 @@
 #' # Tile map, using output from densitylist, Canada
 #' out2 <- densitylist(originisocountrycode = "CA") # data for Canada
 #' gbifmap(out2) # on world map
-#' gbifmap(out2, "Canada") # on Canada map
+#' gbifmap(out2, region="Canada") # on Canada map
 #' 
 #' # Tile map, using gbifdensity, a specific data provider key
 #' # 191 for 'University of Texas at El Paso'
 #' out2 <- densitylist(dataproviderkey = 191) # data for the US
 #' gbifmap(out2) # on world map
 #' 
-#' Get occurrences or density by area, using min/max lat/long coordinates
+#' # Get occurrences or density by area, using min/max lat/long coordinates
 #' out <- occurrencelist(minlatitude=30, maxlatitude=35, minlongitude=-100, maxlongitude=-95, 
 #' 		coordinatestatus = T, maxresults = 5000, latlongdf = T)
 #' 

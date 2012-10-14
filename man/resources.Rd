@@ -43,9 +43,6 @@ resources(maxresults=30)
 
 # By name
 resources('Flora')
-
-# All data providers
-resources()
 }
 }
 

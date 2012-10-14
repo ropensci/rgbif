@@ -3,7 +3,7 @@
 #' Beware: It takes a while to retrieve the full list of networks - so
 #'  go get more coffee.
 #'
-#' @import httr XML plyr
+#' @import RCurl XML plyr
 #' @param name data network name search string, by default searches all
 #'    data networks by defining name = ''
 #' @param code return networks identified by the supplied short identifier code.
@@ -30,9 +30,8 @@ networks <- function(name = "", code = NULL, modifiedsince = NULL,
 {
 	args <- compact(list(name = name, code=code, modifiedsince=modifiedsince, 
 											 startindex=startindex, maxresults=maxresults))
-	temp <- GET(url, query = args)
-	out <- content(temp, as="text")
-	tt <- xmlParse(out)
+	temp <- getForm(url, .params=args)
+	tt <- xmlParse(temp)
 	names_ <- xpathSApply(tt, "//gbif:resourceNetwork/gbif:name",
 												xmlValue)
 	networkkey <- xpathSApply(tt, "//gbif:resourceNetwork", xmlAttrs)[1,]

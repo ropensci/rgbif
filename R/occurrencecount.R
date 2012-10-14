@@ -1,6 +1,6 @@
 #' Counts taxon concept records matching a range of filters.
 #' 
-#' @import httr XML plyr
+#' @import RCurl XML plyr
 #' @param  scientificname count only records where the scientific name matches 
 #'  	that supplied, use an asterisk * for any name starting with preseding 
 #'		string (character). does not make use of extra knowledge of possible synonyms 
@@ -100,7 +100,7 @@ occurrencecount <- function(scientificname = NULL, taxonconceptKey = NULL,
 		originregioncode = originregioncode, startdate = startdate, enddate = enddate, startyear = startyear,
 		endyear = endyear, year = year, month = month, day = day, modifiedsince = modifiedsince))
 	
-	temp <- GET(url, query = querystr)
-	out <- content(temp)$doc$children$gbifResponse
+	temp <- getForm(url, .params=querystr)
+	out <- xmlParse(temp)
 	as.numeric(xmlGetAttr(getNodeSet(out, "//gbif:summary", namespaces="gbif")[[1]], "totalMatched"))
 }

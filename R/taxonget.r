@@ -1,7 +1,7 @@
 #' Get taxonomic information on a specific taxon or taxa in GBIF by their taxon 
 #' 		concept keys.
 #'
-#' @import httr XML plyr
+#' @import RCurl XML plyr
 #' @param key A single key, or many keys in a vector, for a taxon.
 #' @param url the base GBIF API url for the function (leave to default).
 #' @return A single data.frame of taxonomic information if  single data.frame is
@@ -18,9 +18,11 @@ taxonget <- function(key = NULL, url = "http://data.gbif.org/ws/rest/taxon/get")
 {
 	doit <- function(x) {
 		args <- compact(list(key = x))
-		temp <- GET(url, query = args)
-		out <- content(temp, as="text")
-		tt <- xmlParse(out)	
+# 		temp <- GET(url, query = args)
+# 		out <- content(temp, as="text")
+# 		tt <- xmlParse(out)	
+		temp <- getForm(url, .params=args)
+		tt <- xmlParse(temp)
 		taxonconceptkeys <- sapply(getNodeSet(tt, "//tc:TaxonConcept[@gbifKey]"), xmlGetAttr, "gbifKey")
 		sciname <- sapply(getNodeSet(tt, "//tn:nameComplete"), xmlValue)
 		rank <- sapply(getNodeSet(tt, "//tn:rankString"), xmlValue)
