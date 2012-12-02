@@ -3,9 +3,9 @@ Description: A programmatic interface to the
     Web Service methods provided by the Global
     Biodiversity Information Facility.
 Title: Interface to the Global Biodiversity Information Facility API methods
-Version: 0.1.1
+Version: 0.1.5
 License: CC0
-Date: 2012-10-14
+Date: 2012-12-01
 Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com"),
     person("Carl", "Boettiger", role = "aut",
@@ -14,12 +14,15 @@ Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "karthik.ram@gmail.com"),
     person("Vijay", "Barve", role = "aut",
     email = "vijay.barve@gmail.com"))
+URL: https://github.com/ropensci/rgbif
 Imports:
     XML,
     RCurl (>= 1.6),
     plyr,
     ggplot2,
     maps
+Suggests:
+    roxygen2
 Collate:
     'gbifmap.r'
     'networks.r'

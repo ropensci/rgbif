@@ -33,6 +33,7 @@ Note: Windows users have to first install [Rtools](http://cran.r-project.org/bin
 + plyr
 + ggplot2
 + maps
++ roxygen2 (as a suggest)
 
 ## Visualize occurrence data
 

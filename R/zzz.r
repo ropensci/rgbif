@@ -21,3 +21,44 @@ capwords <- function(s, strict = FALSE, onlyfirst = FALSE) {
 							sep="", collapse=" "), USE.NAMES=F)
 		}
 }
+
+#' Code based on the `gbifxmlToDataFrame` function from dismo package 
+#' (http://cran.r-project.org/web/packages/dismo/index.html),
+#' by Robert Hijmans, 2012-05-31, License: GPL v3
+#' @param doc A parsed XML document.
+#' @param format Format to use.
+#' @export
+gbifxmlToDataFrame <- function(doc, format) {
+	nodes <- getNodeSet(doc, "//to:TaxonOccurrence")
+	if (length(nodes) == 0) 
+		return(data.frame())
+	if(!is.na(format) & format=="darwin"){
+		varNames <- c("country", "stateProvince", 
+									"county", "locality", "decimalLatitude", "decimalLongitude", 
+									"coordinateUncertaintyInMeters", "maximumElevationInMeters", 
+									"minimumElevationInMeters", "maximumDepthInMeters", 
+									"minimumDepthInMeters", "institutionCode", "collectionCode", 
+									"catalogNumber", "basisOfRecordString", "collector", 
+									"earliestDateCollected", "latestDateCollected", "gbifNotes")
+	}else{
+		varNames <- c("country", "decimalLatitude", "decimalLongitude", 
+									"catalogNumber", "earliestDateCollected", "latestDateCollected" )
+	}
+	dims <- c(length(nodes), length(varNames))
+	ans <- as.data.frame(replicate(dims[2], rep(as.character(NA), 
+									dims[1]), simplify = FALSE), stringsAsFactors = FALSE)
+	names(ans) <- varNames
+	for (i in seq(length = dims[1])) {
+		ans[i, ] <- xmlSApply(nodes[[i]], xmlValue)[varNames]
+	}
+	nodes <- getNodeSet(doc, "//to:Identification")
+	varNames <- c("taxonName")
+	dims = c(length(nodes), length(varNames))
+	tax = as.data.frame(replicate(dims[2], rep(as.character(NA), 
+									dims[1]), simplify = FALSE), stringsAsFactors = FALSE)
+	names(tax) = varNames
+	for (i in seq(length = dims[1])) {
+		tax[i, ] = xmlSApply(nodes[[i]], xmlValue)[varNames]
+	}
+	cbind(tax, ans)
+}

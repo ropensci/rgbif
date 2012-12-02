@@ -1,6 +1,22 @@
-rgbif 0.1.0
+rgbif 0.1.5
 ===============
-* Changed all functions to use RCurl instead of httr.
+
+IMPROVEMENTS
+
+* Changed all functions to use RCurl instead of httr as httr was presenting some problems.
+* Two function, capwords and gbifxmlToDataFrame, added with documentation as internal functions. 
+
+NEW FEATURES
+
+* Added function density_spplist to get a species list or data.frame of species and their counts for any degree cell.
+* Added function densitylist to access to records showing the density of occurrence records from the GBIF Network by one-degree cell.
+* Added function gbifmap to make a simple map to visualize GBIF data.
+* Added function occurrencecount to count taxon concept records matching a range of filters.
+
+DEPRECATED
+
+* gbifdatause removed, was just a function to return the data sharing agreement from GBIF.
+
 
 rgbif 0.1.0
 ===============
