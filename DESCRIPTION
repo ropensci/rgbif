@@ -5,7 +5,7 @@ Description: A programmatic interface to the
 Title: Interface to the Global Biodiversity Information Facility API methods
 Version: 0.1.5
 License: CC0
-Date: 2012-12-01
+Date: 2012-12-03
 Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com"),
     person("Carl", "Boettiger", role = "aut",

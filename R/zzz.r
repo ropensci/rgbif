@@ -27,7 +27,6 @@ capwords <- function(s, strict = FALSE, onlyfirst = FALSE) {
 #' by Robert Hijmans, 2012-05-31, License: GPL v3
 #' @param doc A parsed XML document.
 #' @param format Format to use.
-#' @export
 gbifxmlToDataFrame <- function(doc, format) {
 	nodes <- getNodeSet(doc, "//to:TaxonOccurrence")
 	if (length(nodes) == 0) 
