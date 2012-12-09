@@ -20,4 +20,5 @@
 capwords(c("using AIC for model selection"))
 capwords(c("using AIC for model selection"), strict=TRUE)
 }
+\keyword{internal}
 

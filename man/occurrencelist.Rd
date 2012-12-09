@@ -19,8 +19,8 @@
     endyear = NULL, year = NULL, month = NULL, day = NULL,
     modifiedsince = NULL, startindex = NULL,
     maxresults = 10, format = NA, icon = NULL, mode = NULL,
-    stylesheet = NULL, latlongdf = FALSE,
-    removeZeros = FALSE, writecsv = NULL,
+    stylesheet = NULL, removeZeros = FALSE,
+    writecsv = NULL, parallel = FALSE,
     url = "http://data.gbif.org/ws/rest/occurrence/list",
     ..., curl = getCurlHandle())
 }
@@ -193,13 +193,23 @@
 }
 \examples{
 \dontrun{
-occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, latlongdf = T)
-occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, latlongdf=F)
-occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, latlongdf=T, writecsv="~/myyyy.csv")
+occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100)
+occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 5)
+occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, writecsv="~/myyyy.csv")
 
 # Many species
+library(doMC)
+registerDoMC(cores=4)
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
-out <- lapply(splist, function(x) occurrencelist(x, coordinatestatus = T, maxresults = 100, latlongdf = T))
+out <- llply(splist, function(x) occurrencelist(x, coordinatestatus = T, maxresults = 100), .parallel=T)
+lapply(out, head)
+
+# In parallel, register a parallel backend according to your OS, on Mac I use doMC
+system.time( occurrencelist(scientificname = 'Erebia gorge*', coordinatestatus = TRUE, maxresults = 2000, parallel=F) )
+
+library(doMC)
+registerDoMC(cores=4)
+system.time( occurrencelist(scientificname = 'Erebia gorge*', coordinatestatus = TRUE, maxresults = 2000, parallel=T) )
 }
 }
 

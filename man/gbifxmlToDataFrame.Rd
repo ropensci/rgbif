@@ -17,4 +17,5 @@ by Robert Hijmans, 2012-05-31, License: GPL v3}
   (http://cran.r-project.org/web/packages/dismo/index.html),
   by Robert Hijmans, 2012-05-31, License: GPL v3
 }
+\keyword{internal}
 
