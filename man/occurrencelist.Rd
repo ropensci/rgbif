@@ -20,7 +20,7 @@
     modifiedsince = NULL, startindex = NULL,
     maxresults = 10, format = NA, icon = NULL, mode = NULL,
     stylesheet = NULL, removeZeros = FALSE,
-    writecsv = NULL, parallel = FALSE,
+    writecsv = NULL,
     url = "http://data.gbif.org/ws/rest/occurrence/list",
     ..., curl = getCurlHandle())
 }
@@ -193,23 +193,20 @@
 }
 \examples{
 \dontrun{
+# Query for a single species
 occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100)
 occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 5)
-occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, writecsv="~/myyyy.csv")
 
-# Many species
+# Query for many species, in this case using parallel fuctionality with plyr::llply
 library(doMC)
 registerDoMC(cores=4)
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 out <- llply(splist, function(x) occurrencelist(x, coordinatestatus = T, maxresults = 100), .parallel=T)
 lapply(out, head)
 
-# In parallel, register a parallel backend according to your OS, on Mac I use doMC
-system.time( occurrencelist(scientificname = 'Erebia gorge*', coordinatestatus = TRUE, maxresults = 2000, parallel=F) )
-
-library(doMC)
-registerDoMC(cores=4)
-system.time( occurrencelist(scientificname = 'Erebia gorge*', coordinatestatus = TRUE, maxresults = 2000, parallel=T) )
+# Write the output to csv file
+occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, writecsv="~/myyyy.csv")
+occurrencelist(scientificname = 'Erebia gorge*', coordinatestatus = TRUE, maxresults = 2000, writecsv="~/adsdf.csv")
 }
 }
 

@@ -1,6 +1,6 @@
 #' Occurrencelist searches for taxon concept records matching a range of filters.
 #'
-#' @import RCurl XML plyr doMC
+#' @import RCurl XML
 #' @param  scientificname scientitic name of taxon (character, see example)
 #' @param  taxonconceptKey unique key for taxon (numeric)
 #' @param  dataproviderkey Filter records to those provided by the supplied
@@ -81,23 +81,20 @@
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #' the returned value in here (avoids unnecessary footprint)
 #' @examples \dontrun{
+#' # Query for a single species
 #' occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100)
 #' occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 5)
-#' occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, writecsv="~/myyyy.csv")
 #' 
-#' # Many species
+#' # Query for many species, in this case using parallel fuctionality with plyr::llply
 #' library(doMC)
 #' registerDoMC(cores=4)
 #' splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 #' out <- llply(splist, function(x) occurrencelist(x, coordinatestatus = T, maxresults = 100), .parallel=T)
 #' lapply(out, head)
-#' 
-#' # In parallel, register a parallel backend according to your OS, on Mac I use doMC
-#' system.time( occurrencelist(scientificname = 'Erebia gorge*', coordinatestatus = TRUE, maxresults = 2000, parallel=F) )
-#' 
-#' library(doMC)
-#' registerDoMC(cores=4)
-#' system.time( occurrencelist(scientificname = 'Erebia gorge*', coordinatestatus = TRUE, maxresults = 2000, parallel=T) )
+#'
+#' # Write the output to csv file
+#' occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, writecsv="~/myyyy.csv") 
+#' occurrencelist(scientificname = 'Erebia gorge*', coordinatestatus = TRUE, maxresults = 2000, writecsv="~/adsdf.csv")
 #' }
 #' @export
 occurrencelist <- function(scientificname = NULL, taxonconceptKey = NULL,
@@ -111,7 +108,7 @@ occurrencelist <- function(scientificname = NULL, taxonconceptKey = NULL,
 		originregioncode = NULL, startdate = NULL, enddate = NULL, startyear = NULL,
 		endyear = NULL, year = NULL, month = NULL, day = NULL, modifiedsince = NULL,
 		startindex = NULL, maxresults = 10, format = NA, icon = NULL,
-		mode = NULL, stylesheet = NULL, removeZeros = FALSE, writecsv = NULL, parallel = FALSE,
+		mode = NULL, stylesheet = NULL, removeZeros = FALSE, writecsv = NULL,
 		url = "http://data.gbif.org/ws/rest/occurrence/list", ..., curl = getCurlHandle()) 
 {	
 	args <- compact(
@@ -146,7 +143,7 @@ occurrencelist <- function(scientificname = NULL, taxonconceptKey = NULL,
 				tt <- getForm(url, .params = args, curl = curl)
 				xmlParse(tt)
 			}
-			outlist <- llply(from, doit, .parallel=parallel)
+			outlist <- lapply(from, doit)
 		}
 	parseresults <- function(x) {
 		df <- gbifxmlToDataFrame(x, format)
@@ -160,15 +157,23 @@ occurrencelist <- function(scientificname = NULL, taxonconceptKey = NULL,
 			df[i, "decimalLatitude"] <- NA
 			df[i, "decimalLongitude"] <- NA 
 		}
-		if(!is.null(writecsv)){
-			write.csv(df, file=writecsv)
-			message("Success! CSV file written")
-		}
 		df		
 	}
-	if(length(outlist)==1){parseresults(outlist)} else 
+	if(length(outlist)==1){
+		dd <- parseresults(outlist)
+		if(!is.null(writecsv)){
+			write.csv(dd, file=writecsv, row.names=F)
+			message("Success! CSV file written")
+		} else
+			{ dd }
+	} else 
 		{
-			outt <- llply(outlist, parseresults, .parallel=parallel)
-			do.call(rbind, outt)	
+			outt <- lapply(outlist, parseresults)
+			dd <- do.call(rbind, outt)	
+			if(!is.null(writecsv)){
+				write.csv(dd, file=writecsv, row.names=F)
+				message("Success! CSV file written")
+			} else
+			 { dd }
 		}
 }
