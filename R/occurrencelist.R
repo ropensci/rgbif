@@ -72,7 +72,6 @@
 #'    (normalised) values used within the data portal (character)
 #' @param stylesheet Sets the URL of the stylesheet to be associated with the
 #     response document.
-#' @param latlongdf Return a data.frame of lat/long's for all occurrences (logical)
 #' @param removeZeros remove records with both Lat Long zero values (logical) 
 #' @param writecsv If path to a file is given, a text file is written out and 
 #' 		a success message is returned to the console (logical)

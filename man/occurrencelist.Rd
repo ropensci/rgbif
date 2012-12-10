@@ -167,9 +167,6 @@
   \item{stylesheet}{Sets the URL of the stylesheet to be
   associated with the}
 
-  \item{latlongdf}{Return a data.frame of lat/long's for
-  all occurrences (logical)}
-
   \item{removeZeros}{remove records with both Lat Long zero
   values (logical)}
 
