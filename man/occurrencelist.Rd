@@ -19,8 +19,8 @@
     endyear = NULL, year = NULL, month = NULL, day = NULL,
     modifiedsince = NULL, startindex = NULL,
     maxresults = 10, format = NA, icon = NULL, mode = NULL,
-    stylesheet = NULL, latlongdf = FALSE,
-    removeZeros = FALSE, writecsv = NULL,
+    stylesheet = NULL, removeZeros = FALSE,
+    writecsv = NULL,
     url = "http://data.gbif.org/ws/rest/occurrence/list",
     ..., curl = getCurlHandle())
 }
@@ -167,9 +167,6 @@
   \item{stylesheet}{Sets the URL of the stylesheet to be
   associated with the}
 
-  \item{latlongdf}{Return a data.frame of lat/long's for
-  all occurrences (logical)}
-
   \item{removeZeros}{remove records with both Lat Long zero
   values (logical)}
 
@@ -193,13 +190,20 @@
 }
 \examples{
 \dontrun{
-occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, latlongdf = T)
-occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, latlongdf=F)
-occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, latlongdf=T, writecsv="~/myyyy.csv")
+# Query for a single species
+occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100)
+occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 5)
 
-# Many species
+# Query for many species, in this case using parallel fuctionality with plyr::llply
+library(doMC)
+registerDoMC(cores=4)
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
-out <- lapply(splist, function(x) occurrencelist(x, coordinatestatus = T, maxresults = 100, latlongdf = T))
+out <- llply(splist, function(x) occurrencelist(x, coordinatestatus = T, maxresults = 100), .parallel=T)
+lapply(out, head)
+
+# Write the output to csv file
+occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, writecsv="~/myyyy.csv")
+occurrencelist(scientificname = 'Erebia gorge*', coordinatestatus = TRUE, maxresults = 2000, writecsv="~/adsdf.csv")
 }
 }
 

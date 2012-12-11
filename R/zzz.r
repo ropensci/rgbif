@@ -8,6 +8,7 @@
 #' capwords(c("using AIC for model selection"))
 #' capwords(c("using AIC for model selection"), strict=TRUE)
 #' @export
+#' @keywords internal
 capwords <- function(s, strict = FALSE, onlyfirst = FALSE) {
 	cap <- function(s) paste(toupper(substring(s,1,1)),
 		{s <- substring(s,2); if(strict) tolower(s) else s}, sep = "", collapse = " " )
@@ -27,6 +28,8 @@ capwords <- function(s, strict = FALSE, onlyfirst = FALSE) {
 #' by Robert Hijmans, 2012-05-31, License: GPL v3
 #' @param doc A parsed XML document.
 #' @param format Format to use.
+#' @export
+#' @keywords internal
 gbifxmlToDataFrame <- function(doc, format) {
 	nodes <- getNodeSet(doc, "//to:TaxonOccurrence")
 	if (length(nodes) == 0) 
