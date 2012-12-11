@@ -3,8 +3,8 @@
 \title{Make a simple map to visualize GBIF data.}
 \usage{
   gbifmap(input = NULL, mapdatabase = "world",
-    region = ".", pointtype = geom_point,
-    jitterposition = NULL)
+    region = ".", geom = geom_point, jitter = NULL,
+    customize = NULL)
 }
 \arguments{
   \item{input}{Either a single data.frame or a list of
@@ -31,6 +31,8 @@
   \item{jitterposition}{If you use jitterposition, the
   amount by which to jitter points in width, height, or
   both.}
+
+  \item{customize}{Further arguments passed on to ggplot.}
 }
 \value{
   Map (using ggplot2 package) of points or tiles on a world
@@ -50,17 +52,17 @@
 \examples{
 \dontrun{
 # Point map, using output from occurrencelist, example 1
-out <- occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, latlongdf = T)
+out <- occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100)
 gbifmap(input = out) # make a map using vertmap
 
 # Point map, using output from occurrencelist, example 2, a species with more data
-out <- occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE, maxresults = 100, latlongdf = T)
+out <- occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE, maxresults = 100)
 gbifmap(input = out) # make a map
 gbifmap(input = out, region = 'USA') # make a map, just plotting data for
 
 # Point map, using output from occurrencelist, many species
-splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa', 'Buteo regalis')
-out <- lapply(splist, function(x) occurrencelist(x, coordinatestatus = T, maxresults = 100, latlongdf = T))
+splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
+out <- llply(splist, function(x) occurrencelist(x, coordinatestatus = T, maxresults = 100))
 gbifmap(out)
 
 # Tile map, using output from densitylist, Canada
@@ -85,6 +87,13 @@ gbifmap(out, "state", "texas", geom_jitter, position_jitter(width = 0.3, height 
 
 # And move points a lot
 gbifmap(out, "state", "texas", geom_jitter, position_jitter(width = 1, height = 1))
+
+# Customize the plot by passing options to `ggplot()`
+mycustom <- function(){
+		list(geom_point(size=9)
+				)}
+out <- occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100)
+gbifmap(out, customize = mycustom())
 }
 }
 

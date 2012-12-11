@@ -198,7 +198,7 @@ occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TR
 library(doMC)
 registerDoMC(cores=4)
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
-out <- llply(splist, function(x) occurrencelist(x, coordinatestatus = T, maxresults = 100), .parallel=T)
+out <- llply(splist, function(x) occurrencelist(x, coordinatestatus = T, maxresults = 100), .parallel=F)
 lapply(out, head)
 
 # Write the output to csv file

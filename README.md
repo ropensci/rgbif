@@ -39,7 +39,7 @@ Note: Windows users have to first install [Rtools](http://cran.r-project.org/bin
 
 ```R
 # A single species
-out <- occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE, maxresults = 100, latlongdf = T)
+out <- occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE, maxresults = 100)
 gbifmap(input = out) # make a map using vertmap
 ```
 
@@ -48,7 +48,7 @@ gbifmap(input = out) # make a map using vertmap
 ```R
 # Many species, colored by species on map
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa', 'Buteo regalis')
-out <- lapply(splist, function(x) occurrencelist(x, coordinatestatus = T, maxresults = 100, latlongdf = T))
+out <- lapply(splist, function(x) occurrencelist(x, coordinatestatus = T, maxresults = 100))
 gbifmap(out)
 ```
 
