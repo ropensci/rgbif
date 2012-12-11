@@ -1,4 +1,4 @@
-#' Get taxonomic information on a specific taxon or taxa in GBIF by their taxon 
+#' Get taxonomic information on a specific taxon or taxa in GBIF by their taxon
 #' 		concept keys.
 #'
 #' @import RCurl XML plyr
@@ -9,18 +9,15 @@
 #' @examples \dontrun{
 #' keys <- taxonsearch(scientificname = 'Puma concolor')
 #' taxonget(keys)
-#' 
+#'
 #' # Just for one key
 #' taxonget(51780668) # taxonconceptkey for Puma concolor
 #' }
 #' @export
-taxonget <- function(key = NULL, url = "http://data.gbif.org/ws/rest/taxon/get") 
+taxonget <- function(key = NULL, url = "http://data.gbif.org/ws/rest/taxon/get")
 {
 	doit <- function(x) {
 		args <- compact(list(key = x))
-# 		temp <- GET(url, query = args)
-# 		out <- content(temp, as="text")
-# 		tt <- xmlParse(out)	
 		temp <- getForm(url, .params=args)
 		tt <- xmlParse(temp)
 		taxonconceptkeys <- sapply(getNodeSet(tt, "//tc:TaxonConcept[@gbifKey]"), xmlGetAttr, "gbifKey")
