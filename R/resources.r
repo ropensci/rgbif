@@ -13,14 +13,14 @@
 #'    (character)
 #' @param modifiedsince return only records which have been indexed or modified
 #'    on or after the supplied date (format YYYY-MM-DD, e.g. 2006-11-28)
-#' @param  startindex  return the subset of the matching records that starts at 
-#'    the supplied (zero-based index). 
+#' @param  startindex  return the subset of the matching records that starts at
+#'    the supplied (zero-based index).
 #' @param maxresults max number of results to return
 #' @param url the base GBIF API url for the function (should be left to default)
 #' @examples \dontrun{
 #' # Test the function for a few resources
 #' resources(maxresults=30)
-#' 
+#'
 #' # By name
 #' resources('Flora')
 #' }
@@ -29,21 +29,19 @@
 #' resources()
 #' }
 #' @export
-resources <- function(name = "", providerkey = NULL, basisofrecordcode = NULL, 
+resources <- function(name = "", providerkey = NULL, basisofrecordcode = NULL,
    modifiedsince = NULL,  startindex = NULL, maxresults = NULL,
-   url = "http://data.gbif.org/ws/rest/resource/list") 
+   url = "http://data.gbif.org/ws/rest/resource/list")
 {
-	args <- compact(list(name = name, providerkey=providerkey, 
-											 basisofrecordcode=basisofrecordcode,
-											 modifiedsince=modifiedsince, startindex=startindex, 
-											 maxresults=maxresults))
-# 	temp <- GET(url, query = args)
-# 	out <- content(temp, as="text")
-# 	tt <- xmlParse(out)
+	args <- compact(list(name = name, providerkey = providerkey,
+											 basisofrecordcode = basisofrecordcode,
+											 modifiedsince = modifiedsince, startindex = startindex,
+											 maxresults = maxresults))
+
 	temp <- getForm(url, .params=args)
 	tt <- xmlParse(temp)
 	names_ <- xpathSApply(tt, "//gbif:dataResource/gbif:name",
 												xmlValue)
 	resourcekey <- xpathSApply(tt, "//gbif:dataResource", xmlAttrs)[2,]
-	data.frame(names_, resourcekey)	
+	data.frame(names_, resourcekey)
 }

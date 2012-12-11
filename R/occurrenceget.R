@@ -1,5 +1,5 @@
 #' Get individual records for a given occurrence record.
-#' 
+#'
 #' @import RCurl XML plyr
 #' @param key numeric key uniquely identifying the occurrence record within the GBIF
 #' @param format specifies the format in which the records are to be returned, one of: brief, darwin or kml (character)
@@ -12,11 +12,9 @@
 #' }
 #' @export
 occurrenceget <- function(key = NULL, format = NULL, mode = NULL,
-    url = "http://data.gbif.org/ws/rest/occurrence/get") 
+    url = "http://data.gbif.org/ws/rest/occurrence/get")
 {
-	args <- compact(list(key=key, format=format, mode=mode))
-# 	temp <- GET(url, query = args)
-# 	out <- content(temp, as="text")
+	args <- compact(list(key = key, format = format, mode = mode))
 	temp <- getForm(url, .params=args)
 	tt <- xmlParse(temp)
 	xmlToList(tt)$data
