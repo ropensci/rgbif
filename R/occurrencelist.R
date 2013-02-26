@@ -125,7 +125,7 @@ occurrencelist <- function(scientificname = NULL, taxonconceptKey = NULL,
 			originregioncode=originregioncode, startdate=startdate, enddate=enddate,
 			startyear=startyear, endyear=endyear, year=year, month=month, day=day,
 			modifiedsince=modifiedsince, startindex=startindex, format=format,
-			icon=icon, mode=mode, stylesheet=stylesheet, maxresults=maxresults
+			icon=icon, mode=mode, stylesheet=stylesheet, maxresults=as.integer(maxresults)
 		))
 	counted <- getForm("http://data.gbif.org/ws/rest/occurrence/count", .params = args, curl = curl)
 	num <- as.numeric(xmlGetAttr(getNodeSet(xmlParse(counted), "//gbif:summary", namespaces="gbif")[[1]], "totalMatched"))
