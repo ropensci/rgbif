@@ -1,8 +1,3 @@
-sname = 'Turdus migratorius' # American Robin
-# Get 20 records of sname
-out1 <- occurrencelist(sciname = sname, coordinatestatus = TRUE, maxresults = 20, latlongdf = TRUE )
-out1
-
 sname = 'Aratinga holochlore'  # Wrong name
 # Get records of sname (which is wrong )
 out2 <- occurrencelist(sciname = sname, coordinatestatus = TRUE, latlongdf = TRUE )

@@ -13,9 +13,9 @@
 #' 		\code{sort(unique(map_data("world")$region))} to see region names for the
 #' 		world database layer, or e.g., \code{sort(unique(map_data("state")$region))}
 #' 		for the state layer.
-#' @param pointtype The geom to use, one of geom_point or geom_jitter. Don't 
+#' @param geom The geom to use, one of geom_point or geom_jitter. Don't 
 #' 		quote them. 
-#' @param jitterposition If you use jitterposition, the amount by which to jitter 
+#' @param jitter If you use jitterposition, the amount by which to jitter 
 #' 		points in width, height, or both. 
 #' @param customize Further arguments passed on to ggplot. 
 #' @return Map (using ggplot2 package) of points or tiles on a world map.
@@ -36,7 +36,7 @@
 #' 
 #' # Point map, using output from occurrencelist, many species
 #' splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
-#' out <- llply(splist, function(x) occurrencelist(x, coordinatestatus = T, maxresults = 100))
+#' out <- llply(splist, function(x) occurrencelist(x, coordinatestatus = T, maxresults = 20))
 #' gbifmap(out)
 #' 
 #' # Tile map, using output from densitylist, Canada
