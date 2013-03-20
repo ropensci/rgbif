@@ -20,9 +20,7 @@
     modifiedsince = NULL, startindex = NULL,
     maxresults = 10, format = NA, icon = NULL, mode = NULL,
     stylesheet = NULL, removeZeros = FALSE,
-    writecsv = NULL,
-    url = "http://data.gbif.org/ws/rest/occurrence/list",
-    ..., curl = getCurlHandle())
+    writecsv = NULL, ..., curl = getCurlHandle())
 }
 \arguments{
   \item{scientificname}{scientitic name of taxon

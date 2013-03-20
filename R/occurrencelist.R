@@ -108,8 +108,10 @@ occurrencelist <- function(scientificname = NULL, taxonconceptKey = NULL,
 		endyear = NULL, year = NULL, month = NULL, day = NULL, modifiedsince = NULL,
 		startindex = NULL, maxresults = 10, format = NA, icon = NULL,
 		mode = NULL, stylesheet = NULL, removeZeros = FALSE, writecsv = NULL,
-		url = "http://data.gbif.org/ws/rest/occurrence/list", ..., curl = getCurlHandle()) 
+		..., curl = getCurlHandle()) 
 {	
+	url = "http://data.gbif.org/ws/rest/occurrence/list"
+	
 	args <- compact(
 		list(
 			scientificname=scientificname, dataproviderkey=dataproviderkey,
@@ -130,10 +132,15 @@ occurrencelist <- function(scientificname = NULL, taxonconceptKey = NULL,
 	counted <- getForm("http://data.gbif.org/ws/rest/occurrence/count", .params = args, curl = curl)
 	num <- as.numeric(xmlGetAttr(getNodeSet(xmlParse(counted), "//gbif:summary", namespaces="gbif")[[1]], "totalMatched"))
 	num <- min(c(num, maxresults))
-	if(num<=1000){
-		tt <- getForm(url, .params = args, curl = curl)
-		outlist <- xmlParse(tt)
+	if(num==0){
+		return( 
+			data.frame(taxonName=NA,country=NA,decimalLatitude=NA,decimalLongitude=NA,catalogNumber=NA,earliestDateCollected=NA,latestDateCollected=NA) 
+			)
 	} else
+		if(num<=1000){
+			tt <- getForm(url, .params = args, curl = curl)
+			outlist <- xmlParse(tt)
+		} else
 		{
 			from <- seq(from=0, to=num, by=1000)
 			doit <- function(from) {
@@ -144,6 +151,7 @@ occurrencelist <- function(scientificname = NULL, taxonconceptKey = NULL,
 			}
 			outlist <- lapply(from, doit)
 		}
+	
 	parseresults <- function(x) {
 		df <- gbifxmlToDataFrame(x, format)
 		df[, "decimalLongitude"] <- as.numeric(df[, "decimalLongitude"])
@@ -158,13 +166,14 @@ occurrencelist <- function(scientificname = NULL, taxonconceptKey = NULL,
 		}
 		df		
 	}
+	
 	if(length(outlist)==1){
 		dd <- parseresults(outlist)
 		if(!is.null(writecsv)){
 			write.csv(dd, file=writecsv, row.names=F)
 			message("Success! CSV file written")
 		} else
-			{ dd }
+			{ return( dd ) }
 	} else 
 		{
 			outt <- lapply(outlist, parseresults)
@@ -173,6 +182,6 @@ occurrencelist <- function(scientificname = NULL, taxonconceptKey = NULL,
 				write.csv(dd, file=writecsv, row.names=F)
 				message("Success! CSV file written")
 			} else
-			 { dd }
+				{ return( dd ) }
 		}
 }
