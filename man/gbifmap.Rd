@@ -75,8 +75,7 @@ out2 <- densitylist(dataproviderkey = 191) # data for the US
 gbifmap(out2) # on world map
 
 # Get occurrences or density by area, using min/max lat/long coordinates
-out <- occurrencelist(minlatitude=30, maxlatitude=35, minlongitude=-100, maxlongitude=-95,
-		coordinatestatus = T, maxresults = 5000, latlongdf = T)
+out <- occurrencelist2(minlatitude=30, maxlatitude=35, minlongitude=-100, maxlongitude=-95, coordinatestatus = TRUE, maxresults = 2)
 
 # Using `geom_point`
 gbifmap(out, "state", "texas", geom_point)

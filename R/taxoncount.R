@@ -5,7 +5,6 @@
 #' @param rank Rank of taxon, see taxrank() (character)
 #' @param dataresourcekey Filter records to those provided by the supplied
 #'    numeric key for a data resource. See resources(). (character)
-#' @param url The base GBIF API url for the function (should be left to default).
 #' @examples \dontrun{
 #' taxoncount(scientificname = 'Puma concolor')
 #' taxoncount(scientificname = 'Helianthus annuus')
@@ -13,8 +12,9 @@
 #' }
 #' @export
 taxoncount <- function(scientificname = NULL, rank = NULL,
-    dataresourcekey = NULL, url = "http://data.gbif.org/ws/rest/taxon/count")
+    dataresourcekey = NULL)
 {
+	url = "http://data.gbif.org/ws/rest/taxon/count"
 	args <- compact(list(scientificname = scientificname, rank = rank,
 											 dataresourcekey = dataresourcekey))
 	temp <- getForm(url, .params=args)

@@ -2,8 +2,7 @@
 \alias{occurrenceget}
 \title{Get individual records for a given occurrence record.}
 \usage{
-  occurrenceget(key = NULL, format = NULL, mode = NULL,
-    url = "http://data.gbif.org/ws/rest/occurrence/get")
+  occurrenceget(key = NULL, format = NULL, mode = NULL)
 }
 \arguments{
   \item{key}{numeric key uniquely identifying the
@@ -18,9 +17,6 @@
   retrieved from the data resource or processed
   (normalised) values used within the data portal
   (character)}
-
-  \item{url}{the base GBIF API url for the function (should
-  be left to default)}
 }
 \description{
   Get individual records for a given occurrence record.

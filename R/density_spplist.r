@@ -31,7 +31,6 @@
 #' 		calling "all" could take quite a while, so plan accordingly.
 #' @param listcount Return a species list ('splist') or a data.frame of the
 #' 		species and the count for each species ('counts').
-#' @param url the base GBIF API url for the function (should be left to default)
 #' @return A vector of scientific species names for one degree grid cells.
 #' @examples \dontrun{
 #' # Just return the data.frame of counts by cells.
@@ -43,13 +42,16 @@
 #'
 #' # Get a species list by cell, choosing the one with the greatest no. of records
 #' density_spplist(originisocountrycode = "CO", spplist = "great")
+#' 
+#' # Instead of a list, get back a data.frame with species names and counts
+#' density_spplist(originisocountrycode = "CO", spplist = "great", listcount='counts')
 #' }
 #' @export
 density_spplist <- function(taxonconceptKey = NULL, dataproviderkey = NULL,
 	dataresourcekey = NULL, resourcenetworkkey = NULL, originisocountrycode = NULL,
-	format = NULL, spplist = c("none","random","greatest","all"), listcount = "list",
-	url = "http://data.gbif.org/ws/rest/density/list")
+	format = NULL, spplist = c("none","random","greatest","all"), listcount = "list")
 {
+	url = "http://data.gbif.org/ws/rest/density/list"
 	args <- compact(list(taxonconceptKey = taxonconceptKey,
 		dataproviderkey = dataproviderkey, dataresourcekey = dataresourcekey,
 		resourcenetworkkey = resourcenetworkkey,

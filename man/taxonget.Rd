@@ -3,15 +3,11 @@
 \title{Get taxonomic information on a specific taxon or taxa in GBIF by their taxon
 		concept keys.}
 \usage{
-  taxonget(key = NULL,
-    url = "http://data.gbif.org/ws/rest/taxon/get")
+  taxonget(key = NULL)
 }
 \arguments{
   \item{key}{A single key, or many keys in a vector, for a
   taxon.}
-
-  \item{url}{the base GBIF API url for the function (leave
-  to default).}
 }
 \value{
   A single data.frame of taxonomic information if single

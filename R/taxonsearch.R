@@ -18,7 +18,6 @@
 #'    identified by the supplied 2-letter ISO code.
 #' @param startindex  return the subset of the matching records that starts at
 #'    the supplied (zero-based index).
-#' @param url the base GBIF API url for the function (should be left to default)
 #' @return List of TaxonConcept key values.
 #' @examples \dontrun{
 #' taxonsearch(scientificname = 'Puma concolor')
@@ -26,9 +25,9 @@
 #' @export
 taxonsearch <- function(scientificname = NULL, rank = NULL, maxresults = 10,
    dataproviderkey = NULL, dataresourcekey = NULL, resourcenetworkkey = NULL,
-   hostisocountrycode = NULL, startindex = NULL,
-   url = "http://data.gbif.org/ws/rest/taxon/list")
+   hostisocountrycode = NULL, startindex = NULL)
 {
+	url = "http://data.gbif.org/ws/rest/taxon/list"
 	args <- compact(list(
 		scientificname = scientificname, dataproviderkey = dataproviderkey,
 		dataresourcekey = dataresourcekey,  resourcenetworkkey = resourcenetworkkey,

@@ -8,8 +8,7 @@
     resourcenetworkkey = NULL, originisocountrycode = NULL,
     format = NULL,
     spplist = c("none", "random", "greatest", "all"),
-    listcount = "list",
-    url = "http://data.gbif.org/ws/rest/density/list")
+    listcount = "list")
 }
 \arguments{
   \item{taxonconceptKey}{Unique key for taxon (numeric).
@@ -51,9 +50,6 @@
   \item{listcount}{Return a species list ('splist') or a
   data.frame of the species and the count for each species
   ('counts').}
-
-  \item{url}{the base GBIF API url for the function (should
-  be left to default)}
 }
 \value{
   A vector of scientific species names for one degree grid
@@ -77,6 +73,9 @@ density_spplist(originisocountrycode = "CO", spplist = "r") # can abbr. spplist
 
 # Get a species list by cell, choosing the one with the greatest no. of records
 density_spplist(originisocountrycode = "CO", spplist = "great")
+
+# Instead of a list, get back a data.frame with species names and counts
+density_spplist(originisocountrycode = "CO", spplist = "great", listcount='counts')
 }
 }
 

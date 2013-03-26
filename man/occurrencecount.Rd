@@ -17,8 +17,7 @@
     originregioncode = NULL, startdate = NULL,
     enddate = NULL, startyear = NULL, endyear = NULL,
     year = NULL, month = NULL, day = NULL,
-    modifiedsince = NULL,
-    url = "http://data.gbif.org/ws/rest/occurrence/count")
+    modifiedsince = NULL)
 }
 \arguments{
   \item{scientificname}{count only records where the
@@ -149,9 +148,10 @@
   indexed or modified in the GBIF data portal index on or
   after the supplied date (format YYYY-MM-DD, e.g.
   2006-11-28).}
-
-  \item{url}{the base GBIF API url for the function (should
-  be left to default)}
+}
+\value{
+  A single numeric value - the number of records found in
+  GBIF matching the query.
 }
 \description{
   Counts taxon concept records matching a range of filters.

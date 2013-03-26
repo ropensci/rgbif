@@ -79,18 +79,18 @@
 #' the returned value in here (avoids unnecessary footprint)
 #' @examples \dontrun{
 #' # Query for a single species
-#' occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE, maxresults = 4000)
+#' occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100)
 #' occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 5)
 #' 
 #' # Query for many species, in this case using parallel fuctionality with plyr::llply
 #' library(doMC)
 #' registerDoMC(cores=4)
 #' splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
-#' out <- llply(splist, function(x) occurrencelist(x, coordinatestatus = T, maxresults = 100), .parallel=T)
+#' out <- llply(splist, function(x) occurrencelist(x, coordinatestatus = T, maxresults = 100), .parallel=F)
 #' lapply(out, head)
 #'
 #' # Write the output to csv file
-#' occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, writecsv="~/myyyy.csv")
+#' occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, writecsv="~/myyyy.csv") 
 #' occurrencelist(scientificname = 'Erebia gorge*', coordinatestatus = TRUE, maxresults = 2000, writecsv="~/adsdf.csv")
 #' }
 #' @export
@@ -104,43 +104,10 @@ occurrencelist <- function(scientificname = NULL, taxonconceptKey = NULL,
 		coordinateissues = NULL, hostisocountrycode = NULL, originisocountrycode = NULL,
 		originregioncode = NULL, startdate = NULL, enddate = NULL, startyear = NULL,
 		endyear = NULL, year = NULL, month = NULL, day = NULL, modifiedsince = NULL,
-		startindex = NULL, maxresults = 10, format = NULL, icon = NULL,
+		startindex = NULL, maxresults = 10, format = NA, icon = NULL,
 		mode = NULL, stylesheet = NULL, removeZeros = FALSE, writecsv = NULL,
 		curl = getCurlHandle()) 
 {	
-	parseresults <- function(x) {
-		df <- gbifxmlToDataFrame(x, format=NA)
-		
-		if(nrow(na.omit(df))==0){
-			return( df )	
-		} else
-		{			
-			commas_to_periods <- function(dataframe){
-				dataframe$decimalLatitude <- gsub("\\,", ".", dataframe$decimalLatitude)
-				dataframe$decimalLongitude <- gsub("\\,", ".", dataframe$decimalLongitude)
-				return( dataframe )
-			}
-			
-			df <- commas_to_periods(df)
-			
-			df_num <- df[!is.na(df$decimalLatitude),]
-			df_nas <- df[is.na(df$decimalLatitude),]
-			
-			df_num[, "decimalLongitude"] <- as.numeric(df_num[, "decimalLongitude"])
-			df_num[, "decimalLatitude"] <- as.numeric(df_num[, "decimalLatitude"])
-			i <- df_num[, "decimalLongitude"] == 0 & df_num[, "decimalLatitude"] == 0
-			if (removeZeros) {
-				df_num <- df_num[!i, ]
-			} else 
-			{
-				df_num[i, "decimalLatitude"] <- NA
-				df_num[i, "decimalLongitude"] <- NA 
-			}
-			temp <- rbind(df_num, df_nas)
-			return( colClasses(temp, c("character","character","numeric","numeric","character","character","character")) )
-		}
-	}
-	
 	url = "http://data.gbif.org/ws/rest/occurrence/list"
 	
 	args <- compact(
@@ -160,35 +127,59 @@ occurrencelist <- function(scientificname = NULL, taxonconceptKey = NULL,
 			modifiedsince=modifiedsince, startindex=startindex, format=format,
 			icon=icon, mode=mode, stylesheet=stylesheet, maxresults=as.integer(maxresults)
 		))
-	
-	if(maxresults < 1000)
-		args$maxresults <- maxresults
-	
-	iter <- 0
-	sumreturned <- 0
-	outout <- list()
-	while(sumreturned < maxresults){
-		iter <- iter + 1
-		if(is.null(args)){ tt <- getURL(url) } else
-			{ tt <- getForm(url, .params = args, curl = curl) }
-		outlist <- xmlParse(tt)
-		numreturned <- as.numeric(xpathSApply(outlist, "//gbif:summary/@totalReturned", namespaces="gbif"))
-		ss <- tryCatch(xpathApply(outlist, "//gbif:nextRequestUrl", xmlValue)[[1]], error = function(e) e$message)	
-		if(ss=="subscript out of bounds"){url <- NULL} else {
-			url <- sub("&maxresults=[0-9]+", paste("&maxresults=",maxresults-sumreturned,sep=''), ss)
-		}
-		args <- NULL
-		sumreturned <- sumreturned + numreturned
-		if(is.null(url))
-			maxresults <- sumreturned
-		outout[[iter]] <- outlist
-	}
-	outt <- lapply(outout, parseresults)
-	dd <- do.call(rbind, outt)
-	
-	if(!is.null(writecsv)){
-		write.csv(dd, file=writecsv, row.names=F)
-		message("Success! CSV file written")
+	counted <- getForm("http://data.gbif.org/ws/rest/occurrence/count", .params = args, curl = curl)
+	num <- as.numeric(xmlGetAttr(getNodeSet(xmlParse(counted), "//gbif:summary", namespaces="gbif")[[1]], "totalMatched"))
+	num <- min(c(num, maxresults))
+	if(num==0){
+		return( 
+			data.frame(taxonName=NA,country=NA,decimalLatitude=NA,decimalLongitude=NA,catalogNumber=NA,earliestDateCollected=NA,latestDateCollected=NA) 
+			)
 	} else
-		{ return( dd ) }
+		if(num<=1000){
+			tt <- getForm(url, .params = args, curl = curl)
+			outlist <- xmlParse(tt)
+		} else
+		{
+			from <- seq(from=0, to=num, by=1000)
+			doit <- function(from) {
+				args$maxresults <- 1000
+				args$startindex <- from
+				tt <- getForm(url, .params = args, curl = curl)
+				xmlParse(tt)
+			}
+			outlist <- lapply(from, doit)
+		}
+	
+	parseresults <- function(x) {
+		df <- gbifxmlToDataFrame(x, format)
+		df[, "decimalLongitude"] <- as.numeric(df[, "decimalLongitude"])
+		df[, "decimalLatitude"] <- as.numeric(df[, "decimalLatitude"])
+		i <- df[, "decimalLongitude"] == 0 & df[, "decimalLatitude"] == 0
+		if (removeZeros) {
+			df <- df[!i, ]
+		} else 
+		{
+			df[i, "decimalLatitude"] <- NA
+			df[i, "decimalLongitude"] <- NA 
+		}
+		df		
+	}
+	
+	if(length(outlist)==1){
+		dd <- parseresults(outlist)
+		if(!is.null(writecsv)){
+			write.csv(dd, file=writecsv, row.names=F)
+			message("Success! CSV file written")
+		} else
+			{ return( dd ) }
+	} else 
+		{
+			outt <- lapply(outlist, parseresults)
+			dd <- do.call(rbind, outt)	
+			if(!is.null(writecsv)){
+				write.csv(dd, file=writecsv, row.names=F)
+				message("Success! CSV file written")
+			} else
+				{ return( dd ) }
+		}
 }

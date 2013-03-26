@@ -3,7 +3,6 @@
 #'
 #' @import RCurl XML plyr
 #' @param key A single key, or many keys in a vector, for a taxon.
-#' @param url the base GBIF API url for the function (leave to default).
 #' @return A single data.frame of taxonomic information if  single data.frame is
 #' 		supplied, or a list of data.frame's if a list of keys is supplied.
 #' @examples \dontrun{
@@ -14,8 +13,9 @@
 #' taxonget(51780668) # taxonconceptkey for Puma concolor
 #' }
 #' @export
-taxonget <- function(key = NULL, url = "http://data.gbif.org/ws/rest/taxon/get")
+taxonget <- function(key = NULL)
 {
+	url = "http://data.gbif.org/ws/rest/taxon/get"
 	doit <- function(x) {
 		args <- compact(list(key = x))
 		temp <- getForm(url, .params=args)

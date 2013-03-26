@@ -18,9 +18,9 @@
     startdate = NULL, enddate = NULL, startyear = NULL,
     endyear = NULL, year = NULL, month = NULL, day = NULL,
     modifiedsince = NULL, startindex = NULL,
-    maxresults = 10, format = NA, icon = NULL, mode = NULL,
-    stylesheet = NULL, removeZeros = FALSE,
-    writecsv = NULL, ..., curl = getCurlHandle())
+    maxresults = 10, format = NULL, icon = NULL,
+    mode = NULL, stylesheet = NULL, removeZeros = FALSE,
+    writecsv = NULL, curl = getCurlHandle())
 }
 \arguments{
   \item{scientificname}{scientitic name of taxon
@@ -172,12 +172,6 @@
   is written out and a success message is returned to the
   console (logical)}
 
-  \item{url}{the base GBIF API url for the function (should
-  be left to default)}
-
-  \item{...}{optional additional curl options (debugging
-  tools mostly)}
-
   \item{curl}{If using in a loop, call getCurlHandle()
   first and pass the returned value in here (avoids
   unnecessary footprint)}
@@ -189,14 +183,14 @@
 \examples{
 \dontrun{
 # Query for a single species
-occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100)
+occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE, maxresults = 4000)
 occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 5)
 
 # Query for many species, in this case using parallel fuctionality with plyr::llply
 library(doMC)
 registerDoMC(cores=4)
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
-out <- llply(splist, function(x) occurrencelist(x, coordinatestatus = T, maxresults = 100), .parallel=F)
+out <- llply(splist, function(x) occurrencelist(x, coordinatestatus = T, maxresults = 100), .parallel=T)
 lapply(out, head)
 
 # Write the output to csv file

@@ -5,8 +5,7 @@
   taxonsearch(scientificname = NULL, rank = NULL,
     maxresults = 10, dataproviderkey = NULL,
     dataresourcekey = NULL, resourcenetworkkey = NULL,
-    hostisocountrycode = NULL, startindex = NULL,
-    url = "http://data.gbif.org/ws/rest/taxon/list")
+    hostisocountrycode = NULL, startindex = NULL)
 }
 \arguments{
   \item{scientificname}{scientific name of taxon
@@ -36,9 +35,6 @@
 
   \item{startindex}{return the subset of the matching
   records that starts at the supplied (zero-based index).}
-
-  \item{url}{the base GBIF API url for the function (should
-  be left to default)}
 }
 \value{
   List of TaxonConcept key values.

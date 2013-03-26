@@ -13,7 +13,6 @@
 #' @param  startindex  return the subset of the matching records that starts at
 #'    the supplied (zero-based index).
 #' @param maxresults max number of results to return
-#' @param url the base GBIF API url for the function (should be left to default)
 #' @examples \dontrun{
 #' # Test the function for a few providers
 #' providers(maxresults=10)
@@ -27,9 +26,9 @@
 #' }
 #' @export
 providers <- function(name = "", isocountrycode = NULL, modifiedsince = NULL,
-		startindex = NULL, maxresults = NULL,
-    url = "http://data.gbif.org/ws/rest/provider/list")
+		startindex = NULL, maxresults = NULL)
 {
+	url = "http://data.gbif.org/ws/rest/provider/list"
 	args <- compact(list(name = name, isocountrycode=isocountrycode, modifiedsince=modifiedsince,
 											 startindex=startindex, maxresults=maxresults))
 

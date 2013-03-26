@@ -66,7 +66,7 @@
 #' @param modifiedsince  return only records which have been indexed or modified 
 #'    in the GBIF data portal index on or after the supplied date 
 #'    (format YYYY-MM-DD, e.g. 2006-11-28). 
-#' @param url the base GBIF API url for the function (should be left to default)
+#' @return A single numeric value - the number of records found in GBIF matching the query.
 #' @examples \dontrun{
 #' occurrencecount(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE)
 #' occurrencecount(scientificname = 'Helianthus annuus', coordinatestatus = TRUE, year=2009)
@@ -82,9 +82,9 @@ occurrencecount <- function(scientificname = NULL, taxonconceptKey = NULL,
 	typesonly = NULL, coordinatestatus = NULL,
 	coordinateissues = NULL, hostisocountrycode = NULL, originisocountrycode = NULL,
 	originregioncode = NULL, startdate = NULL, enddate = NULL, startyear = NULL,
-	endyear = NULL, year = NULL, month = NULL, day = NULL, modifiedsince = NULL,
-	url = "http://data.gbif.org/ws/rest/occurrence/count") 
+	endyear = NULL, year = NULL, month = NULL, day = NULL, modifiedsince = NULL) 
 {  
+	url = "http://data.gbif.org/ws/rest/occurrence/count"
 	querystr <- compact(list(scientificname = scientificname, taxonconceptKey = taxonconceptKey,
 		dataproviderkey = dataproviderkey, dataresourcekey = dataresourcekey, 
 		institutioncode = institutioncode,	 collectioncode = collectioncode, catalognumber = catalognumber, 

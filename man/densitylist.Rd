@@ -6,8 +6,7 @@
   densitylist(taxonconceptKey = NULL,
     dataproviderkey = NULL, dataresourcekey = NULL,
     resourcenetworkkey = NULL, originisocountrycode = NULL,
-    format = NULL,
-    url = "http://data.gbif.org/ws/rest/density/list")
+    format = NULL)
 }
 \arguments{
   \item{taxonconceptKey}{Unique key for taxon (numeric).
@@ -35,12 +34,14 @@
 
   \item{format}{Specifies the format in which the records
   are to be returned, one of: brief or kml (character)}
-
-  \item{url}{the base GBIF API url for the function (should
-  be left to default)}
 }
 \value{
-  A data.frame with results.
+  A data.frame with the columns \itemize{
+  \item{"minLatitude"}{Minimum latitude of the cell}
+  \item{"maxLatitude"}{Maximum latitude of the cell}
+  \item{"minLongitude"}{Minimum longitude of the cell}
+  \item{"maxLongitude"}{Maximum longitude of the cell}
+  \item{"count"}{Number of occurrences found} }
 }
 \description{
   The density web service provides access to records

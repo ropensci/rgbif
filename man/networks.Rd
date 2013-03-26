@@ -3,8 +3,7 @@
 \title{Get data networks and their unique keys.}
 \usage{
   networks(name = "", code = NULL, modifiedsince = NULL,
-    startindex = NULL, maxresults = NULL,
-    url = "http://data.gbif.org/ws/rest/network/list")
+    startindex = NULL, maxresults = NULL)
 }
 \arguments{
   \item{name}{data network name search string, by default
@@ -21,9 +20,6 @@
   records that starts at the supplied (zero-based index).}
 
   \item{maxresults}{max number of results to return}
-
-  \item{url}{the base GBIF API url for the function (should
-  be left to default)}
 }
 \description{
   Beware: It takes a while to retrieve the full list of
