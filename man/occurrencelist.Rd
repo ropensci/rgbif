@@ -21,7 +21,7 @@
     maxresults = 10, format = NULL, icon = NULL,
     mode = NULL, stylesheet = NULL, removeZeros = FALSE,
     writecsv = NULL, curl = getCurlHandle(),
-    fixnames = c("matchorig", "changealltoorig", "none"))
+    fixnames = "none")
 }
 \arguments{
   \item{scientificname}{scientitic name of taxon
@@ -176,6 +176,12 @@
   \item{curl}{If using in a loop, call getCurlHandle()
   first and pass the returned value in here (avoids
   unnecessary footprint)}
+
+  \item{fixnames}{One of
+  "matchorig","changealltoorig","none", just keep those
+  records that match original search term, change all names
+  to the original search term, or do nothing,
+  respectively.}
 }
 \description{
   Occurrencelist searches for taxon concept records

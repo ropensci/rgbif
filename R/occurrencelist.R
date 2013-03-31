@@ -76,7 +76,10 @@
 #' @param writecsv If path to a file is given, a text file is written out and 
 #' 		a success message is returned to the console (logical)
 #' @param curl If using in a loop, call getCurlHandle() first and pass
-#' the returned value in here (avoids unnecessary footprint)
+#' 		the returned value in here (avoids unnecessary footprint)
+#' @param fixnames One of "matchorig","changealltoorig","none", just keep those 
+#' 		records that match original search term, change all names to the original 
+#' 		search term, or do nothing, respectively.
 #' @examples \dontrun{
 #' # Query for a single species
 #' occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE, maxresults = 4000)
@@ -106,7 +109,7 @@ occurrencelist <- function(scientificname = NULL, taxonconceptKey = NULL,
 		endyear = NULL, year = NULL, month = NULL, day = NULL, modifiedsince = NULL,
 		startindex = NULL, maxresults = 10, format = NULL, icon = NULL,
 		mode = NULL, stylesheet = NULL, removeZeros = FALSE, writecsv = NULL,
-		curl = getCurlHandle(), fixnames = c("matchorig","changealltoorig","none")) 
+		curl = getCurlHandle(), fixnames = "none") 
 {	
 	parseresults <- function(x) {
 		df <- gbifxmlToDataFrame(x, format=NA)
