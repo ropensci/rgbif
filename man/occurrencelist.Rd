@@ -20,7 +20,8 @@
     modifiedsince = NULL, startindex = NULL,
     maxresults = 10, format = NULL, icon = NULL,
     mode = NULL, stylesheet = NULL, removeZeros = FALSE,
-    writecsv = NULL, curl = getCurlHandle())
+    writecsv = NULL, curl = getCurlHandle(),
+    fixnames = c("matchorig", "changealltoorig", "none"))
 }
 \arguments{
   \item{scientificname}{scientitic name of taxon

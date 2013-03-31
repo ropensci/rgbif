@@ -106,7 +106,7 @@ occurrencelist <- function(scientificname = NULL, taxonconceptKey = NULL,
 		endyear = NULL, year = NULL, month = NULL, day = NULL, modifiedsince = NULL,
 		startindex = NULL, maxresults = 10, format = NULL, icon = NULL,
 		mode = NULL, stylesheet = NULL, removeZeros = FALSE, writecsv = NULL,
-		curl = getCurlHandle()) 
+		curl = getCurlHandle(), fixnames = c("matchorig","changealltoorig","none")) 
 {	
 	parseresults <- function(x) {
 		df <- gbifxmlToDataFrame(x, format=NA)
@@ -185,6 +185,14 @@ occurrencelist <- function(scientificname = NULL, taxonconceptKey = NULL,
 	}
 	outt <- lapply(outout, parseresults)
 	dd <- do.call(rbind, outt)
+	
+	if(fixnames == "matchorig"){
+		dd <- dd[ dd$taxonName %in% scientificname, ]
+	} else
+		if(fixnames == "changealltoorig"){
+			dd$taxonName <- scientificname
+	} else
+		{ NULL } 
 	
 	if(!is.null(writecsv)){
 		write.csv(dd, file=writecsv, row.names=F)
