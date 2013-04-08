@@ -1,0 +1,21 @@
+# modified from Yihui's code for knitr
+language: python
+
+# environment variables
+env:
+  - R_LIBS_USER=~/R
+
+# install dependencies
+install:
+  - sudo apt-add-repository -y ppa:marutter/rdev
+  - sudo apt-get update
+  - sudo apt-get install r-base-dev libxml2-dev libcurl-devel
+  - "[ ! -d ~/R ] && mkdir ~/R"
+  - R --version
+  - R -e '.libPaths(); sessionInfo()'
+  - Rscript -e 'install.packages("rgbif", dep = TRUE, repos = "http://cran.rstudio.org")'
+
+# run tests
+script:
+  - make install
+  - make check
