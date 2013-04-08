@@ -1,5 +1,7 @@
 # `rgbif`
 
+[![Build Status](https://api.travis-ci.org/ropensci/rgbif.png)](https://api.travis-ci.org/ropensci/rgbif.png)
+
 ## About
 This set of functions/package will access data from [GBIF](http://www.gbif.org/) using their API methods. 
 
