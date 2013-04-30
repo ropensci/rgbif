@@ -1,8 +1,8 @@
-\name{occurrencelist}
-\alias{occurrencelist}
+\name{occurrencelist_many}
+\alias{occurrencelist_many}
 \title{Occurrencelist searches for taxon concept records matching a range of filters.}
 \usage{
-  occurrencelist(scientificname = NULL,
+  occurrencelist_many(scientificname = NULL,
     taxonconceptKey = NULL, dataproviderkey = NULL,
     dataresourcekey = NULL, institutioncode = NULL,
     collectioncode = NULL, catalognumber = NULL,
@@ -190,19 +190,19 @@
 \examples{
 \dontrun{
 # Query for a single species
-occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE, maxresults = 4000)
-occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 5)
+occurrencelist_many(scientificname = 'Puma concolor', coordinatestatus = TRUE, maxresults = 4000)
+occurrencelist_many(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 5)
 
 # Query for many species, in this case using parallel fuctionality with plyr::llply
 library(doMC)
 registerDoMC(cores=4)
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
-out <- llply(splist, function(x) occurrencelist(x, coordinatestatus = T, maxresults = 100), .parallel=T)
+out <- llply(splist, function(x) occurrencelist_many(x, coordinatestatus = T, maxresults = 100), .parallel=T)
 lapply(out, head)
 
 # Write the output to csv file
-occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, writecsv="~/myyyy.csv")
-occurrencelist(scientificname = 'Erebia gorge*', coordinatestatus = TRUE, maxresults = 2000, writecsv="~/adsdf.csv")
+occurrencelist_many(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, writecsv="~/myyyy.csv")
+occurrencelist_many(scientificname = 'Erebia gorge*', coordinatestatus = TRUE, maxresults = 2000, writecsv="~/adsdf.csv")
 }
 }
 

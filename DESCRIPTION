@@ -25,7 +25,6 @@ Imports:
 Suggests:
     roxygen2
 Collate:
-    'gbifmap.r'
     'networks.r'
     'occurrencecount.R'
     'occurrencedensity.r'
@@ -40,3 +39,6 @@ Collate:
     'taxonget.r'
     'densitylist.r'
     'density_spplist.r'
+    'methods.r'
+    'map.r'
+    'occurrencelist_many.R'

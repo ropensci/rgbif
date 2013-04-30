@@ -34,7 +34,7 @@ gbifxmlToDataFrame <- function(doc, format) {
 	nodes <- getNodeSet(doc, "//to:TaxonOccurrence")
 	if (length(nodes) == 0) 
 		return(data.frame())
-	if(!is.na(format) & format=="darwin"){
+	if(!is.null(format) & format=="darwin"){
 		varNames <- c("country", "stateProvince", 
 									"county", "locality", "decimalLatitude", "decimalLongitude", 
 									"coordinateUncertaintyInMeters", "maximumElevationInMeters", 
@@ -42,7 +42,7 @@ gbifxmlToDataFrame <- function(doc, format) {
 									"minimumDepthInMeters", "institutionCode", "collectionCode", 
 									"catalogNumber", "basisOfRecordString", "collector", 
 									"earliestDateCollected", "latestDateCollected", "gbifNotes")
-	}else{
+	} else{
 		varNames <- c("country", "decimalLatitude", "decimalLongitude", 
 									"catalogNumber", "earliestDateCollected", "latestDateCollected" )
 	}

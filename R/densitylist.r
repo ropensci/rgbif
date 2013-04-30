@@ -25,7 +25,7 @@
 #'  \item{"count"}{Number of occurrences found}
 #' }
 #' @examples \dontrun{
-#' head( densitylist(originisocountrycode = "CA") )
+#' head( out <- densitylist(originisocountrycode = "CA") )
 #' }
 #' @export
 densitylist <- function(taxonconceptKey = NULL, dataproviderkey = NULL,
@@ -45,7 +45,9 @@ densitylist <- function(taxonconceptKey = NULL, dataproviderkey = NULL,
 	minLongitude <- as.numeric(sapply(getNodeSet(tt, "//gbif:minLongitude"), xmlValue))
 	maxLongitude <- as.numeric(sapply(getNodeSet(tt, "//gbif:maxLongitude"), xmlValue))
 	count <- as.numeric(sapply(getNodeSet(tt, "//gbif:count"), xmlValue))
-	data.frame(cellid=cellid, minLatitude=minLatitude, maxLatitude=maxLatitude, 
+	out <- data.frame(cellid=cellid, minLatitude=minLatitude, maxLatitude=maxLatitude, 
 						 minLongitude=minLongitude, maxLongitude=maxLongitude,
 						 count=count)
+  class(out) <- c("gbifdens","data.frame")
+  return( out )
 }

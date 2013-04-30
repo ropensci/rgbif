@@ -5,7 +5,8 @@
   taxonsearch(scientificname = NULL, rank = NULL,
     maxresults = 10, dataproviderkey = NULL,
     dataresourcekey = NULL, resourcenetworkkey = NULL,
-    hostisocountrycode = NULL, startindex = NULL)
+    hostisocountrycode = NULL, startindex = NULL,
+    accepted_status = TRUE)
 }
 \arguments{
   \item{scientificname}{scientific name of taxon
@@ -46,7 +47,8 @@
 }
 \examples{
 \dontrun{
-taxonsearch(scientificname = 'Puma concolor')
+taxonsearch(scientificname = 'Puma concolor', rank="species", maxresults=2000)
+taxonsearch(scientificname = 'Puma concolor', rank="species", dataproviderkey=1)
 }
 }
 

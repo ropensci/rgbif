@@ -62,7 +62,7 @@
 #'    (format YYYY-MM-DD, e.g. 2006-11-28). 
 #' @param  startindex  return the subset of the matching records that starts at 
 #'    the supplied (zero-based index). 
-#' @param  maxresults  max number of results (integer) (1-10000)
+#' @param  maxresults  max number of results (integer) (1-10000); defaults to 10
 #' @param  format  specifies the format in which the records are to be returned,
 #     one of: brief or darwin (character) default is brief.
 #' @param  icon  (only when format is set to kml) specified the URL for an icon
@@ -107,15 +107,15 @@ occurrencelist <- function(scientificname = NULL, taxonconceptKey = NULL,
 		coordinateissues = NULL, hostisocountrycode = NULL, originisocountrycode = NULL,
 		originregioncode = NULL, startdate = NULL, enddate = NULL, startyear = NULL,
 		endyear = NULL, year = NULL, month = NULL, day = NULL, modifiedsince = NULL,
-		startindex = NULL, maxresults = 10, format = NULL, icon = NULL,
+		startindex = NULL, maxresults = 10, format = "brief", icon = NULL,
 		mode = NULL, stylesheet = NULL, removeZeros = FALSE, writecsv = NULL,
 		curl = getCurlHandle(), fixnames = "none") 
 {	
 	parseresults <- function(x) {
-		df <- gbifxmlToDataFrame(x, format=NA)
+		df <- gbifxmlToDataFrame(x, format=format)
 		
-		if(nrow(na.omit(df))==0){
-			return( df )	
+		if(nrow(df[!is.na(df$decimalLatitude),])==0){
+			return( df )
 		} else
 		{			
 			commas_to_periods <- function(dataframe){
@@ -129,9 +129,11 @@ occurrencelist <- function(scientificname = NULL, taxonconceptKey = NULL,
 			df_num <- df[!is.na(df$decimalLatitude),]
 			df_nas <- df[is.na(df$decimalLatitude),]
 			
-			df_num[, "decimalLongitude"] <- as.numeric(df_num[, "decimalLongitude"])
-			df_num[, "decimalLatitude"] <- as.numeric(df_num[, "decimalLatitude"])
-			i <- df_num[, "decimalLongitude"] == 0 & df_num[, "decimalLatitude"] == 0
+			df_num$decimalLongitude <- as.numeric(df_num$decimalLongitude)
+			df_num$decimalLatitude <- as.numeric(df_num$decimalLatitude)
+# 			df_num[, "decimalLongitude"] <- as.numeric(df_num[, "decimalLongitude"])
+# 			df_num[, "decimalLatitude"] <- as.numeric(df_num[, "decimalLatitude"])
+			i <- df_num$decimalLongitude == 0 & df_num$decimalLatitude == 0
 			if (removeZeros) {
 				df_num <- df_num[!i, ]
 			} else 
@@ -140,7 +142,8 @@ occurrencelist <- function(scientificname = NULL, taxonconceptKey = NULL,
 				df_num[i, "decimalLongitude"] <- NA 
 			}
 			temp <- rbind(df_num, df_nas)
-			return( colClasses(temp, c("character","character","numeric","numeric","character","character","character")) )
+			return( colClasses(temp, c(rep("character",5),rep("numeric",7),rep("character",8))) )
+# 			return( temp )
 		}
 	}
 	
@@ -201,5 +204,8 @@ occurrencelist <- function(scientificname = NULL, taxonconceptKey = NULL,
 		write.csv(dd, file=writecsv, row.names=F)
 		message("Success! CSV file written")
 	} else
-		{ return( dd ) }
+		{ 
+      class(dd) <- c("gbiflist","data.frame")
+      return( dd )
+		}
 }

@@ -20,12 +20,13 @@
 #'    the supplied (zero-based index).
 #' @return List of TaxonConcept key values.
 #' @examples \dontrun{
-#' taxonsearch(scientificname = 'Puma concolor')
+#' taxonsearch(scientificname = 'Puma concolor', rank="species", maxresults=2000)
+#' taxonsearch(scientificname = 'Puma concolor', rank="species", dataproviderkey=1)
 #' }
 #' @export
 taxonsearch <- function(scientificname = NULL, rank = NULL, maxresults = 10,
    dataproviderkey = NULL, dataresourcekey = NULL, resourcenetworkkey = NULL,
-   hostisocountrycode = NULL, startindex = NULL)
+   hostisocountrycode = NULL, startindex = NULL, accepted_status = TRUE)
 {
 	url = "http://data.gbif.org/ws/rest/taxon/list"
 	args <- compact(list(
@@ -36,13 +37,25 @@ taxonsearch <- function(scientificname = NULL, rank = NULL, maxresults = 10,
 	temp <- getForm(url, .params=args)
 	tt <- xmlParse(temp)
 	nodes <- getNodeSet(tt, "//tc:TaxonConcept")
-	out2 <- NULL
 	if (length(nodes) < 1){
 		cat("No results found")
 		return(invisible(NULL))
 	}
+  
+	out2 <- NULL
 	for (i in 1:length(nodes)){
 		out2[i] <- xmlGetAttr(nodes[[i]],"gbifKey")
 	}
-	out2
+  
+	status2 <- NULL
+	for (i in 1:length(nodes)){
+	  status2[i] <- xmlGetAttr(nodes[[i]],"status")
+	}
+  
+	df <- data.frame(taxonconceptkey=out2, status=status2)
+  
+  if(accepted_status)
+    as.numeric(as.character(df[df$status %in% "accepted","taxonconceptkey"]))
+  else
+    as.numeric(as.character(df$taxonconceptkey))
 }

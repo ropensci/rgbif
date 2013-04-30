@@ -50,7 +50,7 @@
 }
 \examples{
 \dontrun{
-head( densitylist(originisocountrycode = "CA") )
+head( out <- densitylist(originisocountrycode = "CA") )
 }
 }
 

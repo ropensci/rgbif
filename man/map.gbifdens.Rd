@@ -1,8 +1,8 @@
-\name{gbifmap}
-\alias{gbifmap}
-\title{Make a simple map to visualize GBIF data.}
+\name{map.gbifdens}
+\alias{map.gbifdens}
+\title{Make a simple map to visualize GBIF data density data}
 \usage{
-  gbifmap(input = NULL, mapdatabase = "world",
+  map.gbifdens(input = NULL, mapdatabase = "world",
     region = ".", geom = geom_point, jitter = NULL,
     customize = NULL)
 }
@@ -50,20 +50,6 @@
 }
 \examples{
 \dontrun{
-# Point map, using output from occurrencelist, example 1
-out <- occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100)
-gbifmap(input = out) # make a map using vertmap
-
-# Point map, using output from occurrencelist, example 2, a species with more data
-out <- occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE, maxresults = 100)
-gbifmap(input = out) # make a map
-gbifmap(input = out, region = 'USA') # make a map, just plotting data for
-
-# Point map, using output from occurrencelist, many species
-splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
-out <- llply(splist, function(x) occurrencelist(x, coordinatestatus = T, maxresults = 20))
-gbifmap(out)
-
 # Tile map, using output from densitylist, Canada
 out2 <- densitylist(originisocountrycode = "CA") # data for Canada
 gbifmap(out2) # on world map
@@ -76,6 +62,7 @@ gbifmap(out2) # on world map
 
 # Get occurrences or density by area, using min/max lat/long coordinates
 # Setting scientificname="*" so we just get any species
+# CHANGE TO A DENSITY EXAMPLE
 out <- occurrencelist(scientificname="*", minlatitude=30, maxlatitude=35, minlongitude=-100, maxlongitude=-95, coordinatestatus = TRUE, maxresults = 500)
 
 # Using `geom_point`
