@@ -1,7 +1,8 @@
 #' Plot a class of gbiflist, gbifdensity
-#' @param x input
+#' @param input Input data.frame
+#' @param ... Additional parameters passed on to gbifmap.gbiflist or gbifmap.gbifdens
 #' @export
-gbifmap <- function() UseMethod("gbifmap")
+gbifmap <- function(input, ...) UseMethod("gbifmap")
 
 #' Make a simple map to visualize GBIF data.
 #' 
