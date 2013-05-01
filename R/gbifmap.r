@@ -1,14 +1,14 @@
 #' Plot a class of gbiflist, gbifdensity
 #' @param x input
 #' @export
-map <- function(x, ...) UseMethod("map")
+gbifmap <- function() UseMethod("gbifmap")
 
 #' Make a simple map to visualize GBIF data.
 #' 
 #' Basic function to plot your lat/long data on a map.
 #' 
 #' @import ggplot2 maps
-#' @S3method map gbiflist
+#' @S3method gbifmap gbiflist
 #' @param input Either a single data.frame or a list of data.frame's (e.g., from
 #'     different speies). The data.frame has to have, in addition to any other 
 #' 		columns, columns named exactly "decimalLatitude" and "decimalLongitude".
@@ -24,7 +24,7 @@ map <- function(x, ...) UseMethod("map")
 #' @param jitter If you use jitterposition, the amount by which to jitter 
 #' 		points in width, height, or both. 
 #' @param customize Further arguments passed on to ggplot. 
-#' @return Map (using ggplot2 package) of points or tiles on a world map.
+#' @return Map (using ggplot2 package) of points on a map.
 #' @details gbifmap takes care of cleaning up the data.frame (removing NA's, etc.) 
 #' 		returned from rgbif functions, and creating the map. This function
 #' 		gives a simple map of your data.  You can look at the code behing the 
@@ -42,7 +42,7 @@ map <- function(x, ...) UseMethod("map")
 #' 
 #' # Point map, using output from occurrencelist, many species
 #' splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
-#' out <- llply(splist, function(x) occurrencelist(x, coordinatestatus = T, maxresults = 20))
+#' out <- occurrencelist_many(splist, coordinatestatus = T, maxresults = 20)
 #' gbifmap(out)
 #' 
 #' # Get occurrences or density by area, using min/max lat/long coordinates
@@ -65,7 +65,7 @@ map <- function(x, ...) UseMethod("map")
 #' out <- occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100)
 #' gbifmap(out, customize = mycustom())
 #' }
-map.gbiflist <- function(input = NULL, mapdatabase = "world", region = ".", 
+gbifmap.gbiflist <- function(input = NULL, mapdatabase = "world", region = ".", 
                      geom = geom_point, jitter = NULL, customize = NULL)
 {
   if(!is.gbiflist(input))
@@ -75,20 +75,23 @@ map.gbiflist <- function(input = NULL, mapdatabase = "world", region = ".",
   input$decimalLatitude <- as.numeric(input$decimalLatitude)
   input$decimalLongitude <- as.numeric(input$decimalLongitude)
   
-  if(is(input, "list"))
-    input <- ldply(input, data.frame)
-  
   tomap <- input[complete.cases(input$decimalLatitude, input$decimalLatitude), ]
   tomap <- input[-(which(tomap$decimalLatitude <=90 || tomap$decimalLongitude <=180)), ]
+  tomap$taxonName <- as.factor(capwords(tomap$taxonName, onlyfirst=TRUE))
+  
+  if(length(unique(tomap$taxonName))==1){ theme2 <- theme(legend.position="none") } else 
+  { theme2 <- NULL }
+  
   world <- map_data(map=mapdatabase, region=region) # get world map data
   message(paste("Rendering map...plotting ", nrow(tomap), " points", sep=""))
-  tomap$taxonName <- as.factor(capwords(tomap$taxonName, onlyfirst=T))
+  
   ggplot(world, aes(long, lat)) + # make the plot
     geom_polygon(aes(group=group), fill="white", color="gray40", size=0.2) +
     geom(data=tomap, aes(decimalLongitude, decimalLatitude, colour=taxonName), 
          alpha=0.4, size=3, position=jitter) +
     labs(x="", y="") +
-    theme_bw(base_size=14) + 
+    theme_bw(base_size=14) +
+    theme2 + 
     customize
 }
 
@@ -98,7 +101,7 @@ map.gbiflist <- function(input = NULL, mapdatabase = "world", region = ".",
 #' Basic function to plot your lat/long data on a map.
 #' 
 #' @import ggplot2 maps
-#' @S3method map gbifdens
+#' @S3method gbifmap gbifdens
 #' @param input Either a single data.frame or a list of data.frame's (e.g., from
 #'     different speies). The data.frame has to have, in addition to any other 
 #'   	columns, columns named exactly "decimalLatitude" and "decimalLongitude".
@@ -109,12 +112,8 @@ map.gbiflist <- function(input = NULL, mapdatabase = "world", region = ".",
 #' 		\code{sort(unique(map_data("world")$region))} to see region names for the
 #' 		world database layer, or e.g., \code{sort(unique(map_data("state")$region))}
 #' 		for the state layer.
-#' @param geom The geom to use, one of geom_point or geom_jitter. Don't 
-#' 		quote them. 
-#' @param jitter If you use jitterposition, the amount by which to jitter 
-#' 		points in width, height, or both. 
 #' @param customize Further arguments passed on to ggplot. 
-#' @return Map (using ggplot2 package) of points or tiles on a world map.
+#' @return Map (using ggplot2 package) of tiles on a map.
 #' @details gbifmap takes care of cleaning up the data.frame (removing NA's, etc.) 
 #' 		returned from rgbif functions, and creating the map. This function
 #' 		gives a simple map of your data.  You can look at the code behing the 
@@ -131,40 +130,16 @@ map.gbiflist <- function(input = NULL, mapdatabase = "world", region = ".",
 #' out2 <- densitylist(dataproviderkey = 191) # data for the US
 #' gbifmap(out2) # on world map
 #' 
-#' # Get occurrences or density by area, using min/max lat/long coordinates
-#' # Setting scientificname="*" so we just get any species
-#' # CHANGE TO A DENSITY EXAMPLE
-#' out <- occurrencelist(scientificname="*", minlatitude=30, maxlatitude=35, minlongitude=-100, maxlongitude=-95, coordinatestatus = TRUE, maxresults = 500)
-#' 
-#' # Using `geom_point`
-#' gbifmap(out, "state", "texas", geom_point)
-#' 
-#' # Using geom_jitter to move the points apart from one another
-#' gbifmap(out, "state", "texas", geom_jitter, position_jitter(width = 0.3, height = 0.3))
-#' 
-#' # And move points a lot
-#' gbifmap(out, "state", "texas", geom_jitter, position_jitter(width = 1, height = 1))
-#' 
-#' # Customize the plot by passing options to `ggplot()`
-#' mycustom <- function(){
-#'		list(geom_point(size=9)
-#'				)}
-#' out <- occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100)
-#' gbifmap(out, customize = mycustom())
+#' # Modify the plotting region
+#' out <- densitylist(originisocountrycode="US")
+#' gbifmap(out, mapdatabase="usa")
 #' }
-map.gbifdens <- function(input = NULL, mapdatabase = "world", region = ".", 
-                         geom = geom_point, jitter = NULL, customize = NULL)
+gbifmap.gbifdens <- function(input = NULL, mapdatabase = "world", region = ".", customize = NULL)
 {
   if(!is.gbifdens(input))
     stop("Input is not of class gbifdens")
   
   input <- data.frame(input)
-  input$decimalLatitude <- as.numeric(input$decimalLatitude)
-  input$decimalLongitude <- as.numeric(input$decimalLongitude)
-  
-  if(is(input, "list"))
-    input <- ldply(input, data.frame)
-  
   middf <- data.frame(
     lat = input$minLatitude+0.5,
     long = input$minLongitude+0.5,

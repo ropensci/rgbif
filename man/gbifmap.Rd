@@ -1,8 +1,8 @@
-\name{map}
-\alias{map}
+\name{gbifmap}
+\alias{gbifmap}
 \title{Plot a class of gbiflist, gbifdensity}
 \usage{
-  map(x, ...)
+  gbifmap()
 }
 \arguments{
   \item{x}{input}

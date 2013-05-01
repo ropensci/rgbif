@@ -1,0 +1,60 @@
+\name{gbifmap.gbifdens}
+\alias{gbifmap.gbifdens}
+\title{Make a simple map to visualize GBIF data density data}
+\usage{
+  gbifmap.gbifdens(input = NULL, mapdatabase = "world",
+    region = ".", customize = NULL)
+}
+\arguments{
+  \item{input}{Either a single data.frame or a list of
+  data.frame's (e.g., from different speies). The
+  data.frame has to have, in addition to any other columns,
+  columns named exactly "decimalLatitude" and
+  "decimalLongitude".}
+
+  \item{mapdatabase}{The map database to use in mapping.
+  What you choose here determines what you can choose in
+  the region parameter. One of: county, state, usa, world,
+  world2, france, italy, or nz.}
+
+  \item{region}{The region of the world to map. From the
+  maps package, run
+  \code{sort(unique(map_data("world")$region))} to see
+  region names for the world database layer, or e.g.,
+  \code{sort(unique(map_data("state")$region))} for the
+  state layer.}
+
+  \item{customize}{Further arguments passed on to ggplot.}
+}
+\value{
+  Map (using ggplot2 package) of tiles on a map.
+}
+\description{
+  Basic function to plot your lat/long data on a map.
+}
+\details{
+  gbifmap takes care of cleaning up the data.frame
+  (removing NA's, etc.)  returned from rgbif functions, and
+  creating the map. This function gives a simple map of
+  your data.  You can look at the code behing the function
+  itself if you want to build on it to make a map according
+  to your specfications.
+}
+\examples{
+\dontrun{
+# Tile map, using output from densitylist, Canada
+out2 <- densitylist(originisocountrycode = "CA") # data for Canada
+gbifmap(out2) # on world map
+gbifmap(out2, region="Canada") # on Canada map
+
+# Tile map, using gbifdensity, a specific data provider key
+# 191 for 'University of Texas at El Paso'
+out2 <- densitylist(dataproviderkey = 191) # data for the US
+gbifmap(out2) # on world map
+
+# Modify the plotting region
+out <- densitylist(originisocountrycode="US")
+gbifmap(out, mapdatabase="usa")
+}
+}
+

@@ -40,5 +40,5 @@ Collate:
     'densitylist.r'
     'density_spplist.r'
     'methods.r'
-    'map.r'
     'occurrencelist_many.R'
+    'gbifmap.r'

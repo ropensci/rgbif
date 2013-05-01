@@ -206,7 +206,7 @@ occurrencelist_many <- function(scientificname = NULL, taxonconceptKey = NULL,
     if(fixnames == "matchorig"){
       dd[ dd$taxonName %in% sciname, ]
     } else
-      if(fixnames == "changealltoorig"){
+      if(fixnames == "changealltorig"){
         dd$taxonName <- sciname
         dd
       } else
