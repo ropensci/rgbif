@@ -1,6 +1,5 @@
 #' Occurrencelist searches for taxon concept records matching a range of filters.
 #'
-#' @import RCurl XML
 #' @param  scientificname scientitic name of taxon (character, see example)
 #' @param  taxonconceptKey unique key for taxon (numeric)
 #' @param  dataproviderkey Filter records to those provided by the supplied
@@ -86,6 +85,8 @@
 #' occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 5)
 #' 
 #' # Query for many species, in this case using parallel fuctionality with plyr::llply
+#' # Also, see \code{\link{occurrencelist_many}} as an alternative way to search for many species, 
+#' # which is better for going straight to a map with the output data.
 #' library(doMC)
 #' registerDoMC(cores=4)
 #' splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
@@ -93,8 +94,8 @@
 #' lapply(out, head)
 #'
 #' # Write the output to csv file
-#' occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, writecsv="~/myyyy.csv")
-#' occurrencelist(scientificname = 'Erebia gorge*', coordinatestatus = TRUE, maxresults = 2000, writecsv="~/adsdf.csv")
+#' occurrencelist(scientificname = 'Erebia gorge*', 
+#'    coordinatestatus = TRUE, maxresults = 2000, writecsv="~/adsdf.csv")
 #' }
 #' @export
 occurrencelist <- function(scientificname = NULL, taxonconceptKey = NULL,

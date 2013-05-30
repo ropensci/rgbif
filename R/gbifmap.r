@@ -43,7 +43,7 @@ gbifmap <- function(input, ...) UseMethod("gbifmap")
 #' 
 #' # Point map, using output from occurrencelist, many species
 #' splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
-#' out <- occurrencelist_many(splist, coordinatestatus = T, maxresults = 20)
+#' out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 20)
 #' gbifmap(out)
 #' 
 #' # Get occurrences or density by area, using min/max lat/long coordinates

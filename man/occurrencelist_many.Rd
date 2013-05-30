@@ -1,6 +1,6 @@
 \name{occurrencelist_many}
 \alias{occurrencelist_many}
-\title{Occurrencelist searches for taxon concept records matching a range of filters.}
+\title{occurrencelist_many is the same as occurrencelist, but takes in a vector of species names.}
 \usage{
   occurrencelist_many(scientificname = NULL,
     taxonconceptKey = NULL, dataproviderkey = NULL,
@@ -184,25 +184,16 @@
   respectively.}
 }
 \description{
-  Occurrencelist searches for taxon concept records
-  matching a range of filters.
+  occurrencelist_many is the same as occurrencelist, but
+  takes in a vector of species names.
 }
 \examples{
 \dontrun{
-# Query for a single species
-occurrencelist_many(scientificname = 'Puma concolor', coordinatestatus = TRUE, maxresults = 4000)
-occurrencelist_many(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 5)
-
-# Query for many species, in this case using parallel fuctionality with plyr::llply
-library(doMC)
-registerDoMC(cores=4)
+# Query for a many species
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
-out <- llply(splist, function(x) occurrencelist_many(x, coordinatestatus = T, maxresults = 100), .parallel=T)
-lapply(out, head)
-
-# Write the output to csv file
-occurrencelist_many(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100, writecsv="~/myyyy.csv")
-occurrencelist_many(scientificname = 'Erebia gorge*', coordinatestatus = TRUE, maxresults = 2000, writecsv="~/adsdf.csv")
+out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 100))
+head(out)
+gbifmap(out)
 }
 }
 
