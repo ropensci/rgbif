@@ -1,19 +1,54 @@
-#' Prints the minimal results of the call.
+#' Get data.frame from occurrencelist, occurrencelist_many, or densitylist.
 #' 
-#' @param x input
-#' @param ... more stuff
+#' @param input Input object from a call to occurrencelist, occurrencelist_many, or densitylist.
+#' @param minimal Only applies to occurrencelist data. If TRUE, returns only name, lat, long fields; defaults to TRUE. 
+#' @details A convienence function to get the raw data in a data.frame format from 
+#'    occurrencelist, occurrencelist_many, and densitylist functions.
 #' @export
-#' @examples
-#' out <- occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE, maxresults = 4000)
-#' minimal(out)
-minimal <- function(x, ...) UseMethod("minimal")
+#' @examples \dontrun{
+#' # occurrencelist
+#' out <- occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE, maxresults = 40)
+#' gbifdata(out)
+#' gbifdata(out, minimal=FALSE)
+#' 
+#' occurrencelist_many
+#' splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
+#' out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 20)
+#' gbifdata(out)
+#' gbifdata(out, minimal=FALSE)
+#' 
+#' # densitylist (the minimal parameter doesn't apply with densitylist data)
+#' out <- densitylist(originisocountrycode="US")
+#' gbifdata(out)
+#' }
+gbifdata <- function(input, minimal=TRUE) UseMethod("gbifdata")
 
-#' @S3method minimal gbiflist
-minimal.gbiflist <- function(x){
-  if(!is.gbiflist(x))
+#' @S3method gbifdata gbiflist
+gbifdata.gbiflist <- function(input, minimal=TRUE)
+{  
+  if(!is.gbiflist(input))
     stop("Input is not of class gbiflist")  
-  output <- data.frame(x)[,c("taxonName","decimalLatitude","decimalLongitude")]
-  return( output )
+  
+  input <- data.frame(input)
+  input$decimalLatitude <- as.numeric(input$decimalLatitude)
+  input$decimalLongitude <- as.numeric(input$decimalLongitude)
+  
+  input2 <- input[complete.cases(input$decimalLatitude, input$decimalLatitude), ]
+  tomap <- input2[-(which(input2$decimalLatitude <=90 || input2$decimalLongitude <=180)), ]
+  input2$taxonName <- as.factor(capwords(input2$taxonName, onlyfirst=TRUE))
+  
+  if(minimal)
+    input2 <- input2[,c("taxonName","decimalLatitude","decimalLongitude")]
+  return( input2 )
+}
+
+#' @S3method gbifdata gbifdens
+gbifdata.gbifdens <- function(input)
+{
+  if(!is.gbifdens(input))
+    stop("Input is not of class gbifdens")  
+  
+  return( data.frame(input) )
 }
 
 #' Print summary of gbifdens class

@@ -76,9 +76,10 @@
 #' 		a success message is returned to the console (logical)
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #' 		the returned value in here (avoids unnecessary footprint)
-#' @param fixnames One of "matchorig","changealltoorig","none", just keep those 
+#' @param fixnames One of "match","change","none", just keep those 
 #' 		records that match original search term, change all names to the original 
-#' 		search term, or do nothing, respectively.
+#' 		search term (beware using this option), or do nothing, respectively. Default is
+#'   	"none".
 #' @examples \dontrun{
 #' # Query for a single species
 #' occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE, maxresults = 4000)
@@ -193,10 +194,10 @@ occurrencelist <- function(scientificname = NULL, taxonconceptKey = NULL,
 	outt <- lapply(outout, parseresults)
 	dd <- do.call(rbind, outt)
 	
-	if(fixnames == "matchorig"){
+	if(fixnames == "match"){
 		dd <- dd[ dd$taxonName %in% scientificname, ]
 	} else
-		if(fixnames == "changealltoorig"){
+		if(fixnames == "change"){
 			dd$taxonName <- scientificname
 	} else
 		{ NULL } 

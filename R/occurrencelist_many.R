@@ -115,10 +115,10 @@ occurrencelist_many <- function(scientificname = NULL, taxonconceptKey = NULL,
     outt <- lapply(outout, parseresults)
     dd <- do.call(rbind, outt)
     
-    if(fixnames == "matchorig"){
+    if(fixnames == "match"){
       dd[ dd$taxonName %in% sciname, ]
     } else
-      if(fixnames == "changealltorig"){
+      if(fixnames == "change"){
         dd$taxonName <- sciname
         dd
       } else

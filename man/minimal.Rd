@@ -2,12 +2,10 @@
 \alias{minimal}
 \title{Prints the minimal results of the call.}
 \usage{
-  minimal(x, ...)
+  minimal(x)
 }
 \arguments{
   \item{x}{input}
-
-  \item{...}{more stuff}
 }
 \description{
   Prints the minimal results of the call.

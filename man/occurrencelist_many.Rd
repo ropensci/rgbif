@@ -177,11 +177,10 @@
   first and pass the returned value in here (avoids
   unnecessary footprint)}
 
-  \item{fixnames}{One of
-  "matchorig","changealltoorig","none", just keep those
-  records that match original search term, change all names
-  to the original search term, or do nothing,
-  respectively.}
+  \item{fixnames}{One of "match","change","none", just keep
+  those records that match original search term, change all
+  names to the original search term (beware using this
+  option), or do nothing, respectively. Default is "none".}
 }
 \description{
   occurrencelist_many is the same as occurrencelist, but
