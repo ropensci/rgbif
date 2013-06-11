@@ -1,10 +1,12 @@
 #' occurrencelist_many is the same as occurrencelist, but takes in a vector of species names.
 #'
 #' @inheritParams occurrencelist
+#' @param parallel Do calls in parallel or not. (default is FALSE)
+#' @param cores Number of cores to use in parallel call option (only used if parallel=TRUE)
 #' @examples \dontrun{
 #' # Query for a many species
 #' splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
-#' out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 100))
+#' out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 100)
 #' head(out)
 #' gbifmap(out)
 #' }
@@ -21,7 +23,7 @@ occurrencelist_many <- function(scientificname = NULL, taxonconceptKey = NULL,
     endyear = NULL, year = NULL, month = NULL, day = NULL, modifiedsince = NULL,
     startindex = NULL, maxresults = 10, format = "brief", icon = NULL,
     mode = NULL, stylesheet = NULL, removeZeros = FALSE, writecsv = NULL,
-    curl = getCurlHandle(), fixnames = "none") 
+    curl = getCurlHandle(), fixnames = "none", parallel = FALSE, cores=4) 
 {	
   
   parseresults <- function(x) {
@@ -131,7 +133,13 @@ occurrencelist_many <- function(scientificname = NULL, taxonconceptKey = NULL,
     out <- getdata(itervec)
   } else
   {
-    out <- ldply(itervec, getdata)
+    if(parallel){
+      registerDoMC(cores=cores)
+      out <- ldply(itervec, getdata, .parallel=TRUE)
+    } else
+    {
+      out <- ldply(itervec, getdata)
+    }
   }
   
   if(!is.null(writecsv)){

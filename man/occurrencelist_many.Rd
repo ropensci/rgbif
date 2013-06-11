@@ -21,9 +21,15 @@
     maxresults = 10, format = "brief", icon = NULL,
     mode = NULL, stylesheet = NULL, removeZeros = FALSE,
     writecsv = NULL, curl = getCurlHandle(),
-    fixnames = "none")
+    fixnames = "none", parallel = FALSE, cores = 4)
 }
 \arguments{
+  \item{parallel}{Do calls in parallel or not. (default is
+  FALSE)}
+
+  \item{cores}{Number of cores to use in parallel call
+  option (only used if parallel=TRUE)}
+
   \item{scientificname}{scientitic name of taxon
   (character, see example)}
 
@@ -190,7 +196,7 @@
 \dontrun{
 # Query for a many species
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
-out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 100))
+out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 100)
 head(out)
 gbifmap(out)
 }
