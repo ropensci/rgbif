@@ -1,5 +1,6 @@
 export(capwords)
 export(colClasses)
+export(country_codes)
 export(density_spplist)
 export(densitylist)
 export(gbifdata)

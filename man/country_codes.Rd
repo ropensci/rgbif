@@ -16,6 +16,6 @@
   Look up 2 character ISO country codes
 }
 \examples{
-country_codes(country_name="United", )
+country_codes(country_name="United")
 }
 
