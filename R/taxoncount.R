@@ -1,6 +1,6 @@
 #' Search by taxon to retrieve number of records in GBIF.
 #'
-#' @import RCurl XML plyr
+#' @import httr XML plyr
 #' @param scientificname Scientitic name of taxon (character, see example)
 #' @param rank Rank of taxon, see taxrank() (character)
 #' @param dataresourcekey Filter records to those provided by the supplied
@@ -8,16 +8,16 @@
 #' @examples \dontrun{
 #' taxoncount(scientificname = 'Puma concolor')
 #' taxoncount(scientificname = 'Helianthus annuus')
+#' }
+#' \donttest{
 #' taxoncount(rank = 'family')
 #' }
 #' @export
-taxoncount <- function(scientificname = NULL, rank = NULL,
-    dataresourcekey = NULL)
+taxoncount <- function(scientificname = NULL, rank = NULL, dataresourcekey = NULL)
 {
-	url = "http://data.gbif.org/ws/rest/taxon/count"
+	url <- "http://data.gbif.org/ws/rest/taxon/count"
 	args <- compact(list(scientificname = scientificname, rank = rank,
 											 dataresourcekey = dataresourcekey))
-	temp <- getForm(url, .params=args)
-	tt <- xmlParse(temp)
+	tt <- content(GET(url, query=args))
 	as.numeric(xmlGetAttr(getNodeSet(tt, "//gbif:summary", namespaces="gbif")[[1]], "totalMatched"))
 }

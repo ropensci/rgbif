@@ -3,7 +3,7 @@
 #' Search for a taxon using scientific name. Optionally, include taxonomic
 #' 		rank in the search. Returns list of TaxonConcept key values.
 #'
-#' @import RCurl XML plyr
+#' @import httr XML plyr
 #' @param scientificname  scientific name of taxon (character, see example)
 #' @param rank  rank of taxon, see taxrank() (character)
 #' @param maxresults  return at most the specified number of records. The
@@ -18,7 +18,8 @@
 #'    identified by the supplied 2-letter ISO code.
 #' @param startindex  return the subset of the matching records that starts at
 #'    the supplied (zero-based index).
-#' @return List of TaxonConcept key values.
+#' @param accepted_status Status in the GIBF portal
+#' @return A data.frame.
 #' @examples \dontrun{
 #' taxonsearch(scientificname = 'Puma concolor', rank="species", maxresults=2000)
 #' taxonsearch(scientificname = 'Puma concolor', rank="species", dataproviderkey=1)
@@ -26,7 +27,7 @@
 #' @export
 taxonsearch <- function(scientificname = NULL, rank = NULL, maxresults = 10,
    dataproviderkey = NULL, dataresourcekey = NULL, resourcenetworkkey = NULL,
-   hostisocountrycode = NULL, startindex = NULL, accepted_status = TRUE)
+   hostisocountrycode = NULL, startindex = NULL, accepted_status = FALSE)
 {
 	url = "http://data.gbif.org/ws/rest/taxon/list"
 	args <- compact(list(
@@ -34,28 +35,24 @@ taxonsearch <- function(scientificname = NULL, rank = NULL, maxresults = 10,
 		dataresourcekey = dataresourcekey,  resourcenetworkkey = resourcenetworkkey,
 		hostisocountrycode = hostisocountrycode, rank=rank, maxresults=maxresults,
 		startindex=startindex))
-	temp <- getForm(url, .params=args)
-	tt <- xmlParse(temp)
-	nodes <- getNodeSet(tt, "//tc:TaxonConcept")
-	if (length(nodes) < 1){
-		cat("No results found")
-		return(invisible(NULL))
-	}
+  tt <- content(GET(url, query=args))
+  nodes <- getNodeSet(tt, "//tc:TaxonConcept")
+
+  if (length(nodes) < 1)
+	  stop("No results found")
   
-	out2 <- NULL
-	for (i in 1:length(nodes)){
-		out2[i] <- xmlGetAttr(nodes[[i]],"gbifKey")
-	}
-  
-	status2 <- NULL
-	for (i in 1:length(nodes)){
-	  status2[i] <- xmlGetAttr(nodes[[i]],"status")
-	}
-  
-	df <- data.frame(taxonconceptkey=out2, status=status2)
-  
+  gbifkey <- sapply(nodes, function(x) xmlGetAttr(x, "gbifKey"))
+	status <- sapply(nodes, function(x) xmlGetAttr(x, "status"))
+	name <- xpathSApply(tt, "//tn:nameComplete", xmlValue)
+	rank <- xpathSApply(tt, "//tn:rankString", xmlValue)
+	sci <- xpathSApply(tt, "//tn:scientific", xmlValue)
+	accordingto <- xpathSApply(tt, "//tc:accordingToString", xmlValue)
+	primary <- xpathSApply(tt, "//tc:primary", xmlValue)
+	
+  out <- data.frame(gbifkey=gbifkey,status=status,name=name,rank=rank,sci=sci,source=accordingto,primary=primary)
+     
   if(accepted_status)
-    as.numeric(as.character(df[df$status %in% "accepted","taxonconceptkey"]))
+    as.numeric(as.character(out[out$status %in% "accepted",]))
   else
-    as.numeric(as.character(df$taxonconceptkey))
+    out
 }

@@ -6,7 +6,7 @@
     maxresults = 10, dataproviderkey = NULL,
     dataresourcekey = NULL, resourcenetworkkey = NULL,
     hostisocountrycode = NULL, startindex = NULL,
-    accepted_status = TRUE)
+    accepted_status = FALSE)
 }
 \arguments{
   \item{scientificname}{scientific name of taxon
@@ -36,9 +36,11 @@
 
   \item{startindex}{return the subset of the matching
   records that starts at the supplied (zero-based index).}
+
+  \item{accepted_status}{Status in the GIBF portal}
 }
 \value{
-  List of TaxonConcept key values.
+  A data.frame.
 }
 \description{
   Search for a taxon using scientific name. Optionally,

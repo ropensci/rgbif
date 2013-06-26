@@ -22,6 +22,8 @@
 \dontrun{
 taxoncount(scientificname = 'Puma concolor')
 taxoncount(scientificname = 'Helianthus annuus')
+}
+\donttest{
 taxoncount(rank = 'family')
 }
 }

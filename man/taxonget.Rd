@@ -21,7 +21,7 @@
 \examples{
 \dontrun{
 keys <- taxonsearch(scientificname = 'Puma concolor')
-taxonget(keys)
+taxonget(keys$gbifkey)
 
 # Just for one key
 taxonget(51780668) # taxonconceptkey for Puma concolor
