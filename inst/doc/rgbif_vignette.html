@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>rgbif vignette - Seach and retrieve data from the Global Biodiverity Information Facilty (GBIF)</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+</head>
+
+<body>
+<!--
+%\VignetteEngine{knitr}
+%\VignetteIndexEntry{An R Markdown Vignette made with knitr}
+-->
+
+<h1>rgbif vignette - Seach and retrieve data from the Global Biodiverity Information Facilty (GBIF)</h1>
+
+<h3>About the package</h3>
+
+<p><code>rgbif</code> is an R package to search and retrieve data from the Global Biodiverity Information Facilty (GBIF). <code>rgbif</code> wraps R code around the <a href="http://data.gbif.org/tutorial/services">GBIF API</a> to allow you to talk to the BISON database from R. </p>
+
+<hr/>
+
+<h3>Info</h3>
+
+<p>XXXX</p>
+
+<hr/>
+
+<h4>Install rgbif</h4>
+
+<pre><code class="r"># install.packages(&#39;devtools&#39;); library(devtools);
+# install_github(&#39;rbison&#39;, &#39;ropensci&#39;)
+library(rgbif)
+library(XML)
+library(RCurl)
+</code></pre>
+
+<pre><code>Loading required package: bitops
+</code></pre>
+
+<pre><code class="r">library(plyr)
+library(ggplot2)
+library(maps)
+</code></pre>
+
+<hr/>
+
+<h4>Get a list of the data networks in GBIF - and you can use the networkkey number to seach for occurrences for the specific provider in other functions</h4>
+
+<pre><code class="r"># Test the function for a few networks
+networks(maxresults = 5)
+</code></pre>
+
+<pre><code>                                           names_ networkkey
+1 Biological Collection Access Service for Europe          4
+2                                         HerpNET          6
+3             Mammal Networked Information System          1
+4          Ocean Biogeographic Information System          3
+5                         Plant Genetic Resources          2
+</code></pre>
+
+<pre><code class="r">
+# By name
+networks(&quot;ORNIS&quot;)
+</code></pre>
+
+<pre><code>        names_ networkkey
+gbifKey  ORNIS          8
+</code></pre>
+
+<hr/>
+
+<h4>Get a list of the data providers in GBIF - and you can use the dataproviderkey number to seach for occurrences for the specific provider in other functions</h4>
+
+<pre><code class="r"># Test the function for a few providers
+providers(maxresults = 5)
+</code></pre>
+
+<pre><code>                                                       names_
+1                                    Białowieża National Park
+2                                 Harvard University Herbaria
+3 National Museum of Natural History, Smithsonian Institution
+4 Reserva Natural de la Sociedad Civil Tenasucá de Pedro Palo
+5                                    Université de Strasbourg
+  dataproviderkey
+1             219
+2             214
+3             220
+4             533
+5             215
+</code></pre>
+
+<pre><code class="r">
+# By data provider name
+providers(&quot;University of Texas-Austin&quot;)
+</code></pre>
+
+<pre><code>                            names_ dataproviderkey
+gbifKey University of Texas-Austin             192
+</code></pre>
+
+<hr/>
+
+<h4>Get a list of the data resources in GBIF - and you can use the resourcekey number to seach for occurrences for the specific resource in other functions</h4>
+
+<pre><code class="r"># Test the function for a few resources
+resources(maxresults = 5)
+</code></pre>
+
+<pre><code>                                                                                                          names_
+1                 FADA Nematomorpha: World checklist of freshwater Nematomorpha species in the Catalogue of Life
+2 HymIS Rhopalosomatidae: Hymenoptera Information System, Rhopalosomatidae of the world in the Catalogue of Life
+3                                  WoRMS Gnathostomulida: World list of Gnathostomulida in the Catalogue of Life
+4                                           Lista de especies de animales Reserva Natural Tenasucá de Pedro Palo
+5                                            Lista de especies de plantas Reserva Natural Tenasucá de Pedro Palo
+  resourcekey
+1       14909
+2       14908
+3       14910
+4       14906
+5       14907
+</code></pre>
+
+<pre><code class="r">
+# By name
+head(resources(&quot;Flora&quot;))
+</code></pre>
+
+<pre><code>                                                                                                                                         names_
+1                                                                                                                              Flora Costa Rica
+2                                                                                                              Flora of Japan Specimen Database
+3                                                                                                                     Flora of the Stołowe Mts.
+4                                                                                                                      Flora Mycologica Iberica
+5                                                                                                                   Flora acuática de Querétaro
+6 Flora acuática vascular de las regiones hidrológicas R66 (Lagos Cráter del Nevado de Toluca) y R67 (Río Amacuzac-Lagunas de Zempoala), México
+  resourcekey
+1        8134
+2       14644
+3       11324
+4         252
+5       13190
+6       13193
+</code></pre>
+
+<hr/>
+
+<h4>Get number of occurrences for a set of search parameters</h4>
+
+<pre><code class="r">occurrencecount(scientificname = &quot;Accipiter erythronemius&quot;, coordinatestatus = TRUE)
+</code></pre>
+
+<pre><code>[1] 12
+</code></pre>
+
+<pre><code class="r">occurrencecount(scientificname = &quot;Helianthus annuus&quot;, coordinatestatus = TRUE, 
+    year = 2005, maxlatitude = 20)
+</code></pre>
+
+<pre><code>[1] 129
+</code></pre>
+
+<hr/>
+
+<h4>Get possible values to be used in taxonomic rank arguments in functions</h4>
+
+<pre><code class="r">taxrank()
+</code></pre>
+
+<pre><code>[1] &quot;kingdom&quot;       &quot;phylum&quot;        &quot;class&quot;         &quot;order&quot;        
+[5] &quot;family&quot;        &quot;genus&quot;         &quot;species&quot;       &quot;infraspecific&quot;
+</code></pre>
+
+<hr/>
+
+<h4>Seach by taxon to retrieve number of records per taxon found in GBIF</h4>
+
+<pre><code class="r">taxoncount(scientificname = &quot;Puma concolor&quot;)
+</code></pre>
+
+<pre><code>[1] 87
+</code></pre>
+
+<pre><code class="r">taxoncount(scientificname = &quot;Helianthus annuus&quot;)
+</code></pre>
+
+<pre><code>[1] 138
+</code></pre>
+
+<pre><code class="r">taxoncount(rank = &quot;family&quot;)
+</code></pre>
+
+<pre><code>[1] 474730
+</code></pre>
+
+<hr/>
+
+<h4>Get taxonomic information on a specific taxon or taxa in GBIF by their taxon concept keys</h4>
+
+<pre><code class="r">out &lt;- taxonsearch(scientificname = &quot;Puma concolor&quot;)
+head(taxonget(out$gbifkey[[3]]))
+</code></pre>
+
+<pre><code>      sciname taxonconceptkeys    rank
+1    Protozoa                7 kingdom
+2  Acritarcha              107  phylum
+3 Apicomplexa               57  phylum
+4    Cercozoa               38  phylum
+5   Choanozoa               97  phylum
+6  Ciliophora               10  phylum
+</code></pre>
+
+<hr/>
+
+<h4>Search for taxa in GBIF</h4>
+
+<pre><code class="r">taxonsearch(scientificname = &quot;Puma concolor&quot;, rank = &quot;species&quot;, maxresults = 10)
+</code></pre>
+
+<pre><code>    gbifkey      status          name    rank  sci
+1  51665069 unconfirmed Puma concolor species true
+2  50010499 unconfirmed Puma concolor species true
+3  51680225 unconfirmed Puma concolor species true
+4  51043628 unconfirmed Puma concolor species true
+5  51697831 unconfirmed Puma Concolor species true
+6  61655924 unconfirmed Puma Concolor species true
+7  61655934 unconfirmed Puma Concolor species true
+8  51052820 unconfirmed Puma concolor species true
+9  50374614 unconfirmed Puma Concolor species true
+10 50289443 unconfirmed Puma concolor species true
+                                        source primary
+1                            Mammals Specimens    true
+2                Macaulay Library - Audio Data    true
+3                            Mammals specimens    true
+4                         Vertebrate specimens    true
+5                             Mammal specimens    true
+6  Mammalogy Collection - Royal Ontario Museum    true
+7  Mammalogy Collection - Royal Ontario Museum    true
+8                             Mammal specimens    true
+9                                      mammals    true
+10                            Mammal Specimens    true
+</code></pre>
+
+<pre><code class="r">taxonsearch(scientificname = &quot;Puma concolor&quot;, rank = &quot;species&quot;, dataproviderkey = 1)
+</code></pre>
+
+<pre><code>  gbifkey   status          name    rank  sci                 source
+1 2435099 accepted Puma concolor species true GBIF Backbone Taxonomy
+  primary
+1    true
+</code></pre>
+
+<hr/>
+
+<h4>Get data for a single occurrence. Note that data is returned as a list, so you have to convert to a data.frame, etc. as you wish</h4>
+
+<pre><code class="r">occurrenceget(key = 13749100)
+</code></pre>
+
+<pre><code>$dataProvider
+$dataProvider$name
+[1] &quot;Biologiezentrum Linz Oberoesterreich&quot;
+
+$dataProvider$dataResources
+$dataProvider$dataResources$dataResource
+$dataProvider$dataResources$dataResource$name
+[1] &quot;Biologiezentrum Linz&quot;
+
+$dataProvider$dataResources$dataResource$rights
+[1] &quot;free&quot;
+
+$dataProvider$dataResources$dataResource$citation
+[1] &quot;Biologiezentrum Linz Oberoesterreich: Biologiezentrum Linz&quot;
+
+$dataProvider$dataResources$dataResource$occurrenceRecords
+$dataProvider$dataResources$dataResource$occurrenceRecords$TaxonOccurrence
+$dataProvider$dataResources$dataResource$occurrenceRecords$TaxonOccurrence$catalogNumber
+[1] &quot;1687588&quot;
+
+$dataProvider$dataResources$dataResource$occurrenceRecords$TaxonOccurrence$collectionCode
+[1] &quot;Biologiezentrum Linz&quot;
+
+$dataProvider$dataResources$dataResource$occurrenceRecords$TaxonOccurrence$coordinateUncertaintyInMeters
+[1] &quot;500&quot;
+
+$dataProvider$dataResources$dataResource$occurrenceRecords$TaxonOccurrence$country
+[1] &quot;AUT&quot;
+
+$dataProvider$dataResources$dataResource$occurrenceRecords$TaxonOccurrence$decimalLatitude
+[1] &quot;47.81&quot;
+
+$dataProvider$dataResources$dataResource$occurrenceRecords$TaxonOccurrence$decimalLongitude
+[1] &quot;13.98&quot;
+
+$dataProvider$dataResources$dataResource$occurrenceRecords$TaxonOccurrence$institutionCode
+[1] &quot;LI&quot;
+
+$dataProvider$dataResources$dataResource$occurrenceRecords$TaxonOccurrence$minimumElevationInMeters
+[1] &quot;1506&quot;
+
+$dataProvider$dataResources$dataResource$occurrenceRecords$TaxonOccurrence$earliestDateCollected
+[1] &quot;1947-09-27&quot;
+
+$dataProvider$dataResources$dataResource$occurrenceRecords$TaxonOccurrence$latestDateCollected
+[1] &quot;1947-09-27&quot;
+
+$dataProvider$dataResources$dataResource$occurrenceRecords$TaxonOccurrence$identifiedTo
+$dataProvider$dataResources$dataResource$occurrenceRecords$TaxonOccurrence$identifiedTo$Identification
+$dataProvider$dataResources$dataResource$occurrenceRecords$TaxonOccurrence$identifiedTo$Identification$taxon
+$dataProvider$dataResources$dataResource$occurrenceRecords$TaxonOccurrence$identifiedTo$Identification$taxon$TaxonConcept
+$dataProvider$dataResources$dataResource$occurrenceRecords$TaxonOccurrence$identifiedTo$Identification$taxon$TaxonConcept$hasName
+$dataProvider$dataResources$dataResource$occurrenceRecords$TaxonOccurrence$identifiedTo$Identification$taxon$TaxonConcept$hasName$TaxonName
+$dataProvider$dataResources$dataResource$occurrenceRecords$TaxonOccurrence$identifiedTo$Identification$taxon$TaxonConcept$hasName$TaxonName$nameComplete
+[1] &quot;Oxytelus laqueatus Marsham&quot;
+
+$dataProvider$dataResources$dataResource$occurrenceRecords$TaxonOccurrence$identifiedTo$Identification$taxon$TaxonConcept$hasName$TaxonName$scientific
+[1] &quot;true&quot;
+
+
+
+$dataProvider$dataResources$dataResource$occurrenceRecords$TaxonOccurrence$identifiedTo$Identification$taxon$TaxonConcept$.attrs
+                                         gbifKey 
+                                       &quot;1039975&quot; 
+                                           about 
+&quot;http://data.gbif.org/ws/rest/taxon/get/1039975&quot; 
+attr(,&quot;namespaces&quot;)
+
+                                         &quot;&quot; 
+http://www.w3.org/1999/02/22-rdf-syntax-ns# 
+                                      &quot;rdf&quot; 
+
+
+
+$dataProvider$dataResources$dataResource$occurrenceRecords$TaxonOccurrence$identifiedTo$Identification$taxonName
+[1] &quot;Oxytelus laqueatus Marsham&quot;
+
+
+
+$dataProvider$dataResources$dataResource$occurrenceRecords$TaxonOccurrence$locality
+[1] &quot;Kasberghütte= E484&quot;
+
+$dataProvider$dataResources$dataResource$occurrenceRecords$TaxonOccurrence$gbifNotes
+[1] &quot;Data from GBIF data index - original values.&quot;
+
+$dataProvider$dataResources$dataResource$occurrenceRecords$TaxonOccurrence$.attrs
+                                               gbifKey 
+                                            &quot;13749100&quot; 
+                                                 about 
+&quot;http://data.gbif.org/ws/rest/occurrence/get/13749100&quot; 
+attr(,&quot;namespaces&quot;)
+
+                                         &quot;&quot; 
+http://www.w3.org/1999/02/22-rdf-syntax-ns# 
+                                      &quot;rdf&quot; 
+
+
+
+$dataProvider$dataResources$dataResource$.attrs
+                                         gbifKey 
+                                          &quot;1104&quot; 
+                                           about 
+&quot;http://data.gbif.org/ws/rest/resource/get/1104&quot; 
+attr(,&quot;namespaces&quot;)
+
+                                         &quot;&quot; 
+http://www.w3.org/1999/02/22-rdf-syntax-ns# 
+                                      &quot;rdf&quot; 
+
+
+
+$dataProvider$.attrs
+                                       gbifKey 
+                                          &quot;16&quot; 
+                                         about 
+&quot;http://data.gbif.org/ws/rest/provider/get/16&quot; 
+attr(,&quot;namespaces&quot;)
+
+                                         &quot;&quot; 
+http://www.w3.org/1999/02/22-rdf-syntax-ns# 
+                                      &quot;rdf&quot; 
+</code></pre>
+
+<hr/>
+
+<pre><code class="r">out &lt;- occurrencelist(scientificname = &quot;Puma concolor&quot;, coordinatestatus = TRUE, 
+    maxresults = 20)
+</code></pre>
+
+<p>Note that the default object printed from a call to <code>occurrencelist</code> is a list that contains:</p>
+
+<ul>
+<li>NumberFound: number of occurrences found in search results.</li>
+<li>TaxonNames: Unique list of taxonomic names in search results.</li>
+<li>Coordinates: Min and max latitude and longitude of all occurrences.</li>
+<li>Countries: Countries contained in results set.</li>
+</ul>
+
+<pre><code class="r">out
+</code></pre>
+
+<pre><code>$NumberFound
+[1] 20
+
+$TaxonNames
+[1] &quot;PUMA CONCOLOR&quot;     &quot;PUMA ? CONCOLOR ?&quot;
+
+$Coordinates
+         Stats         numbers
+1  MinLatitude         2.58333
+2  MaxLatitude       6.3166667
+3 MinLongitude -121.4166666667
+4 MaxLongitude           -71.9
+
+$Countries
+[1] &quot;GUYANA&quot; &quot;CANADA&quot;
+</code></pre>
+
+<p>Where do you get data after a call to the <code>occurrencelist</code> function? This is where <code>gbifdata</code> comes in. By default a call to <code>gbifdata</code> prints a minimal data.frame with just rows <em>name</em>, <em>latitude</em>, and <em>longitude</em>.</p>
+
+<pre><code class="r">gbifdata(out)
+</code></pre>
+
+<pre><code>           taxonName decimalLatitude decimalLongitude
+1      Puma concolor           2.833           -59.52
+2      Puma concolor          49.017          -122.78
+3      Puma concolor          45.383           -71.90
+4      Puma concolor           6.317           -60.27
+5      Puma concolor           2.583           -59.93
+6      Puma concolor           6.317           -60.27
+7      Puma concolor          45.383           -71.90
+8      Puma concolor          49.750          -126.75
+9      Puma concolor          52.333          -121.42
+10     Puma concolor           2.833           -59.52
+11     Puma concolor           2.833           -59.52
+12     Puma concolor          49.600          -126.62
+13 Puma ? concolor ?          45.850           -66.23
+14     Puma concolor           2.833           -59.52
+15     Puma concolor          49.600          -126.57
+16     Puma concolor           2.945           -59.25
+17     Puma concolor           6.317           -60.27
+18     Puma concolor           2.833           -59.52
+19     Puma concolor           2.583           -59.93
+20     Puma concolor           3.091           -59.26
+</code></pre>
+
+<p>Though you can get more detailed data by calling <em>minimal=FALSE</em>.</p>
+
+<pre><code class="r">gbifdata(out, minimal = FALSE)
+</code></pre>
+
+<pre><code>           taxonName country decimalLatitude decimalLongitude
+1      Puma concolor  GUYANA           2.833           -59.52
+2      Puma concolor  CANADA          49.017          -122.78
+3      Puma concolor  CANADA          45.383           -71.90
+4      Puma concolor  GUYANA           6.317           -60.27
+5      Puma concolor  GUYANA           2.583           -59.93
+6      Puma concolor  GUYANA           6.317           -60.27
+7      Puma concolor  CANADA          45.383           -71.90
+8      Puma concolor  CANADA          49.750          -126.75
+9      Puma concolor  CANADA          52.333          -121.42
+10     Puma concolor  GUYANA           2.833           -59.52
+11     Puma concolor  GUYANA           2.833           -59.52
+12     Puma concolor  CANADA          49.600          -126.62
+13 Puma ? concolor ?  CANADA          45.850           -66.23
+14     Puma concolor  GUYANA           2.833           -59.52
+15     Puma concolor  CANADA          49.600          -126.57
+16     Puma concolor  GUYANA           2.945           -59.25
+17     Puma concolor  GUYANA           6.317           -60.27
+18     Puma concolor  GUYANA           2.833           -59.52
+19     Puma concolor  GUYANA           2.583           -59.93
+20     Puma concolor  GUYANA           3.091           -59.26
+   catalogNumber earliestDateCollected latestDateCollected
+1          50431                    NA                  NA
+2     3502070001                    NA                  NA
+3          15709                    NA                  NA
+4          34303                    NA                  NA
+5          46326                    NA                  NA
+6          34302                    NA                  NA
+7          15709                    NA                  NA
+8     3409210005                    NA                  NA
+9          30415                    NA                  NA
+10         32234                    NA                  NA
+11         32499                    NA                  NA
+12    3309250001                    NA                  NA
+13         25844                    NA                  NA
+14         32233                    NA                  NA
+15    3305050003                    NA                  NA
+16         32083                    NA                  NA
+17         34301                    NA                  NA
+18         50431                    NA                  NA
+19         46324                    NA                  NA
+20         32395                    NA                  NA
+</code></pre>
+
+<p>And you can get all possible data by specifying <em>format=darwin</em>.</p>
+
+<pre><code class="r">out &lt;- occurrencelist(scientificname = &quot;Puma concolor&quot;, coordinatestatus = TRUE, 
+    format = &quot;darwin&quot;, maxresults = 20)
+gbifdata(out, minimal = FALSE)
+</code></pre>
+
+<pre><code>           taxonName country                stateProvince  county
+1      Puma concolor  GUYANA UPPER TAKUTU-UPPER ESSEQUIBO    &lt;NA&gt;
+2      Puma concolor  GUYANA UPPER TAKUTU-UPPER ESSEQUIBO    &lt;NA&gt;
+3      Puma concolor  CANADA             BRITISH COLUMBIA    &lt;NA&gt;
+4  Puma ? concolor ?  CANADA                NEW BRUNSWICK SUNBURY
+5      Puma concolor  GUYANA UPPER TAKUTU-UPPER ESSEQUIBO    &lt;NA&gt;
+6      Puma concolor  CANADA                       QUEBEC    &lt;NA&gt;
+7      Puma concolor  CANADA             BRITISH COLUMBIA CARIBOO
+8      Puma concolor  GUYANA UPPER TAKUTU-UPPER ESSEQUIBO    &lt;NA&gt;
+9      Puma concolor  CANADA             BRITISH COLUMBIA    &lt;NA&gt;
+10     Puma concolor  GUYANA UPPER TAKUTU-UPPER ESSEQUIBO    &lt;NA&gt;
+11     Puma concolor  GUYANA UPPER TAKUTU-UPPER ESSEQUIBO    &lt;NA&gt;
+12     Puma concolor  GUYANA UPPER TAKUTU-UPPER ESSEQUIBO    &lt;NA&gt;
+13     Puma concolor  CANADA             BRITISH COLUMBIA    &lt;NA&gt;
+14     Puma concolor  GUYANA UPPER TAKUTU-UPPER ESSEQUIBO    &lt;NA&gt;
+15     Puma concolor  GUYANA UPPER TAKUTU-UPPER ESSEQUIBO    &lt;NA&gt;
+16     Puma concolor  GUYANA UPPER TAKUTU-UPPER ESSEQUIBO    &lt;NA&gt;
+17     Puma concolor  GUYANA UPPER TAKUTU-UPPER ESSEQUIBO    &lt;NA&gt;
+18     Puma concolor  CANADA                       QUEBEC    &lt;NA&gt;
+19     Puma concolor  GUYANA UPPER TAKUTU-UPPER ESSEQUIBO    &lt;NA&gt;
+20     Puma concolor  CANADA             BRITISH COLUMBIA    &lt;NA&gt;
+         locality decimalLatitude decimalLongitude
+1            &lt;NA&gt;           2.833           -59.52
+2            &lt;NA&gt;           3.091           -59.26
+3            &lt;NA&gt;          49.600          -126.62
+4            &lt;NA&gt;          45.850           -66.23
+5            &lt;NA&gt;           2.833           -59.52
+6            &lt;NA&gt;          45.383           -71.90
+7            &lt;NA&gt;          52.333          -121.42
+8            &lt;NA&gt;           6.317           -60.27
+9            &lt;NA&gt;          49.600          -126.57
+10           &lt;NA&gt;           2.583           -59.93
+11           &lt;NA&gt;           6.317           -60.27
+12           &lt;NA&gt;           2.833           -59.52
+13           &lt;NA&gt;          49.750          -126.75
+14           &lt;NA&gt;           2.945           -59.25
+15           &lt;NA&gt;           6.317           -60.27
+16           &lt;NA&gt;           2.583           -59.93
+17           &lt;NA&gt;           2.833           -59.52
+18     SHERBROOKE          45.383           -71.90
+19 DADANAWA RANCH           2.833           -59.52
+20 CAMPBELL RIVER          49.017          -122.78
+   coordinateUncertaintyInMeters maximumElevationInMeters
+1                          2.143                       NA
+2                          9.978                       NA
+3                             NA                       NA
+4                             NA                       NA
+5                          2.143                       NA
+6                             NA                       NA
+7                             NA                       NA
+8                         57.262                       NA
+9                             NA                       NA
+10                         2.857                       NA
+11                        57.262                       NA
+12                         2.143                       NA
+13                            NA                       NA
+14                         4.935                       NA
+15                        57.262                       NA
+16                         2.857                       NA
+17                         2.143                       NA
+18                            NA                       NA
+19                      3772.302                       NA
+20                            NA                       NA
+   minimumElevationInMeters maximumDepthInMeters minimumDepthInMeters
+1                        NA                   NA                   NA
+2                        NA                   NA                   NA
+3                        NA                   NA                   NA
+4                        NA                   NA                   NA
+5                        NA                   NA                   NA
+6                        NA                   NA                   NA
+7                        NA                   NA                   NA
+8                        NA                   NA                   NA
+9                        NA                   NA                   NA
+10                       NA                   NA                   NA
+11                       NA                   NA                   NA
+12                       NA                   NA                   NA
+13                       NA                   NA                   NA
+14                       NA                   NA                   NA
+15                       NA                   NA                   NA
+16                       NA                   NA                   NA
+17                       NA                   NA                   NA
+18                       NA                   NA                   NA
+19                       NA                   NA                   NA
+20                       NA                   NA                   NA
+             institutionCode collectionCode catalogNumber
+1  Royal Ontario Museum: ROM        Mammals         50431
+2  Royal Ontario Museum: ROM        Mammals         32395
+3  Royal Ontario Museum: ROM        Mammals    3309250001
+4  Royal Ontario Museum: ROM        Mammals         25844
+5  Royal Ontario Museum: ROM        Mammals         32499
+6  Royal Ontario Museum: ROM        Mammals         15709
+7  Royal Ontario Museum: ROM        Mammals         30415
+8  Royal Ontario Museum: ROM        Mammals         34301
+9  Royal Ontario Museum: ROM        Mammals    3305050003
+10 Royal Ontario Museum: ROM        Mammals         46324
+11 Royal Ontario Museum: ROM        Mammals         34302
+12 Royal Ontario Museum: ROM        Mammals         32233
+13 Royal Ontario Museum: ROM        Mammals    3409210005
+14 Royal Ontario Museum: ROM        Mammals         32083
+15 Royal Ontario Museum: ROM        Mammals         34303
+16 Royal Ontario Museum: ROM        Mammals         46326
+17 Royal Ontario Museum: ROM        Mammals         32234
+18                       ROM        Mammals         15709
+19                       ROM        Mammals         50431
+20                       ROM        Mammals    3502070001
+   basisOfRecordString          collector earliestDateCollected
+1    PreservedSpecimen         MARQUES, J                  &lt;NA&gt;
+2    PreservedSpecimen          BROCK, SE                  &lt;NA&gt;
+3    PreservedSpecimen           HART, JL                  &lt;NA&gt;
+4    PreservedSpecimen         WRIGHT, BS                  &lt;NA&gt;
+5    PreservedSpecimen          BROCK, SE                  &lt;NA&gt;
+6    PreservedSpecimen        FLEMING, JH                  &lt;NA&gt;
+7    PreservedSpecimen          MUNRO, JA                  &lt;NA&gt;
+8    PreservedSpecimen          BROCK, SE                  &lt;NA&gt;
+9    PreservedSpecimen            UNKNOWN                  &lt;NA&gt;
+10   PreservedSpecimen          BROCK, SE                  &lt;NA&gt;
+11   PreservedSpecimen          BROCK, SE                  &lt;NA&gt;
+12   PreservedSpecimen          BROCK, SE                  &lt;NA&gt;
+13   PreservedSpecimen WALSH, W; HART, JL                  &lt;NA&gt;
+14   PreservedSpecimen          BROCK, SE                  &lt;NA&gt;
+15   PreservedSpecimen          BROCK, SE                  &lt;NA&gt;
+16   PreservedSpecimen          BROCK, SE                  &lt;NA&gt;
+17   PreservedSpecimen          BROCK, SE                  &lt;NA&gt;
+18             voucher        FLEMING, JH                  &lt;NA&gt;
+19             voucher         MARQUES, J                  &lt;NA&gt;
+20             voucher            UNKNOWN                  &lt;NA&gt;
+   latestDateCollected                                    gbifNotes
+1                 &lt;NA&gt; Data from GBIF data index - original values.
+2                 &lt;NA&gt; Data from GBIF data index - original values.
+3                 &lt;NA&gt; Data from GBIF data index - original values.
+4                 &lt;NA&gt; Data from GBIF data index - original values.
+5                 &lt;NA&gt; Data from GBIF data index - original values.
+6                 &lt;NA&gt; Data from GBIF data index - original values.
+7                 &lt;NA&gt; Data from GBIF data index - original values.
+8                 &lt;NA&gt; Data from GBIF data index - original values.
+9                 &lt;NA&gt; Data from GBIF data index - original values.
+10                &lt;NA&gt; Data from GBIF data index - original values.
+11                &lt;NA&gt; Data from GBIF data index - original values.
+12                &lt;NA&gt; Data from GBIF data index - original values.
+13                &lt;NA&gt; Data from GBIF data index - original values.
+14                &lt;NA&gt; Data from GBIF data index - original values.
+15                &lt;NA&gt; Data from GBIF data index - original values.
+16                &lt;NA&gt; Data from GBIF data index - original values.
+17                &lt;NA&gt; Data from GBIF data index - original values.
+18                &lt;NA&gt; Data from GBIF data index - original values.
+19                &lt;NA&gt; Data from GBIF data index - original values.
+20                &lt;NA&gt; Data from GBIF data index - original values.
+</code></pre>
+
+<hr/>
+
+<h4>Maps</h4>
+
+<h5>inspect summary</h5>
+
+<hr/>
+
+</body>
+
+</html>
+

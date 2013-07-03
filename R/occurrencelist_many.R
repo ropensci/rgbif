@@ -1,17 +1,17 @@
 #' occurrencelist_many is the same as occurrencelist, but takes in a vector of species names.
 #'
-#' @inheritParams occurrencelist
+#' @template oclist
 #' @param parallel Do calls in parallel or not. (default is FALSE)
 #' @param cores Number of cores to use in parallel call option (only used if parallel=TRUE)
 #' @examples \dontrun{
 #' # Query for a many species
 #' splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 #' out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 100)
-#' head(out)
+#' gbifdata(out)
 #' gbifmap(out)
 #' }
 #' @export
-occurrencelist_many <- function(scientificname = NULL, taxonconceptKey = NULL,
+occurrencelist_many <- function(scientificname = NULL, taxonconceptkey = NULL,
     dataproviderkey = NULL, dataresourcekey = NULL, institutioncode = NULL,
     collectioncode = NULL, catalognumber = NULL, resourcenetworkkey = NULL,
     basisofrecordcode = NULL, minlatitude = NULL, maxlatitude = NULL,
@@ -24,44 +24,7 @@ occurrencelist_many <- function(scientificname = NULL, taxonconceptKey = NULL,
     startindex = NULL, maxresults = 10, format = "brief", icon = NULL,
     mode = NULL, stylesheet = NULL, removeZeros = FALSE, writecsv = NULL,
     curl = getCurlHandle(), fixnames = "none", parallel = FALSE, cores=4) 
-{	
-  
-  parseresults <- function(x) {
-    df <- gbifxmlToDataFrame(x, format=format)
-    
-    if(nrow(df[!is.na(df$decimalLatitude),])==0){
-      return( df )
-    } else
-    {			
-      commas_to_periods <- function(dataframe){
-        dataframe$decimalLatitude <- gsub("\\,", ".", dataframe$decimalLatitude)
-        dataframe$decimalLongitude <- gsub("\\,", ".", dataframe$decimalLongitude)
-        return( dataframe )
-      }
-      
-      df <- commas_to_periods(df)
-      
-      df_num <- df[!is.na(df$decimalLatitude),]
-      df_nas <- df[is.na(df$decimalLatitude),]
-      
-      df_num$decimalLongitude <- as.numeric(df_num$decimalLongitude)
-      df_num$decimalLatitude <- as.numeric(df_num$decimalLatitude)
-      # 			df_num[, "decimalLongitude"] <- as.numeric(df_num[, "decimalLongitude"])
-      # 			df_num[, "decimalLatitude"] <- as.numeric(df_num[, "decimalLatitude"])
-      i <- df_num$decimalLongitude == 0 & df_num$decimalLatitude == 0
-      if (removeZeros) {
-        df_num <- df_num[!i, ]
-      } else 
-      {
-        df_num[i, "decimalLatitude"] <- NA
-        df_num[i, "decimalLongitude"] <- NA 
-      }
-      temp <- rbind(df_num, df_nas)
-      return( colClasses(temp, c(rep("character",5),rep("numeric",7),rep("character",8))) )
-      # 			return( temp )
-    }
-  }
-  
+{	  
   url = "http://data.gbif.org/ws/rest/occurrence/list"
   
   getdata <- function(x){
@@ -76,7 +39,7 @@ occurrencelist_many <- function(scientificname = NULL, taxonconceptKey = NULL,
     
     args <- compact(
       list(
-        scientificname=sciname, taxonconceptKey=taxonkey,
+        scientificname=sciname, taxonconceptkey=taxonkey,
         dataresourcekey=dataresourcekey, institutioncode=institutioncode,
         collectioncode=collectioncode, catalognumber=catalognumber,
         resourcenetworkkey=resourcenetworkkey, dataproviderkey=dataproviderkey,
@@ -114,7 +77,7 @@ occurrencelist_many <- function(scientificname = NULL, taxonconceptKey = NULL,
         maxresults <- sumreturned
       outout[[iter]] <- outlist
     }
-    outt <- lapply(outout, parseresults)
+    outt <- lapply(outout, parseresults, format=format, removeZeros=removeZeros)
     dd <- do.call(rbind, outt)
     
     if(fixnames == "match"){
@@ -127,9 +90,9 @@ occurrencelist_many <- function(scientificname = NULL, taxonconceptKey = NULL,
         { dd } 
   }
   
-  if(is.null(scientificname)){itervec <- taxonconceptKey} else {itervec <- scientificname}
+  if(is.null(scientificname)){itervec <- taxonconceptkey} else {itervec <- scientificname}
   
-  if(length(scientificname)==1 | length(taxonconceptKey)==1){
+  if(length(scientificname)==1 | length(taxonconceptkey)==1){
     out <- getdata(itervec)
   } else
   {

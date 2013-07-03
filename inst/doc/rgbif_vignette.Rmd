@@ -91,8 +91,7 @@ taxoncount(rank = 'family')
 #### Get taxonomic information on a specific taxon or taxa in GBIF by their taxon concept keys
 
 ```{r taxonget, comment=NA, warning=FALSE}
-out <- taxonsearch(scientificname = 'Puma concolor')
-head(taxonget(out$gbifkey[[3]]))
+(out <- taxonsearch(scientificname = 'Puma concolor'))
 ```
 
 ********************

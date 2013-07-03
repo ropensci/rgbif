@@ -76,6 +76,7 @@ gbifxmlToDataFrame <- function(doc, format) {
 #' str(dat)
 #' str(colClasses(dat, c("factor","factor")))
 #' @export
+#' @keywords internal
 colClasses <- function(d, colClasses) {
   colClasses <- rep(colClasses, len=length(d))
   d[] <- lapply(seq_along(d), function(i) switch(colClasses[i], 
@@ -86,4 +87,54 @@ colClasses <- function(d, colClasses) {
       factor=as.factor(d[[i]]),
       as(d[[i]], colClasses[i]) ))
   d
+}
+
+
+#' Convert commas to periods in lat/long data
+#' 
+#' @param dataframe A data.frame
+#' @export
+#' @keywords internal
+commas_to_periods <- function(dataframe)
+{
+	dataframe$decimalLatitude <- gsub("\\,", ".", dataframe$decimalLatitude)
+	dataframe$decimalLongitude <- gsub("\\,", ".", dataframe$decimalLongitude)
+	return( dataframe )
+}
+		
+
+#' Parse results from call to occurrencelist endpoint
+#' 
+#' @param x A list
+#' @param ... Further args passed on to gbifxmlToDataFrame
+#' @param removeZeros remove zeros or not
+#' @export
+#' @keywords internal
+parseresults <- function(x, ..., removeZeros=removeZeros)
+{
+	df <- gbifxmlToDataFrame(x, ...)
+	
+	if(nrow(df[!is.na(df$decimalLatitude),])==0){
+		return( df )
+	} else
+	{			
+		df <- commas_to_periods(df)
+		
+		df_num <- df[!is.na(df$decimalLatitude),]
+		df_nas <- df[is.na(df$decimalLatitude),]
+		
+		df_num$decimalLongitude <- as.numeric(df_num$decimalLongitude)
+		df_num$decimalLatitude <- as.numeric(df_num$decimalLatitude)
+		i <- df_num$decimalLongitude == 0 & df_num$decimalLatitude == 0
+		if (removeZeros) {
+			df_num <- df_num[!i, ]
+		} else 
+		{
+			df_num[i, "decimalLatitude"] <- NA
+			df_num[i, "decimalLongitude"] <- NA 
+		}
+		temp <- rbind(df_num, df_nas)
+# 			temp <- colClasses(temp, c(rep("character",5),rep("numeric",7),rep("character",8)))
+		return( temp )
+	}
 }

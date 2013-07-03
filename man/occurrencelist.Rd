@@ -3,7 +3,7 @@
 \title{Occurrencelist searches for taxon concept records matching a range of filters.}
 \usage{
   occurrencelist(scientificname = NULL,
-    taxonconceptKey = NULL, dataproviderkey = NULL,
+    taxonconceptkey = NULL, dataproviderkey = NULL,
     dataresourcekey = NULL, institutioncode = NULL,
     collectioncode = NULL, catalognumber = NULL,
     resourcenetworkkey = NULL, basisofrecordcode = NULL,
@@ -27,7 +27,7 @@
   \item{scientificname}{scientitic name of taxon
   (character, see example)}
 
-  \item{taxonconceptKey}{unique key for taxon (numeric)}
+  \item{taxonconceptkey}{unique key for taxon (numeric)}
 
   \item{dataproviderkey}{Filter records to those provided
   by the supplied numeric key for a data provider. See
@@ -189,7 +189,7 @@
 \examples{
 \dontrun{
 # Query for a single species
-occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE, maxresults = 4000)
+occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE, maxresults = 40)
 occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 5)
 
 # Query for many species, in this case using parallel fuctionality with plyr::llply
@@ -198,12 +198,12 @@ occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TR
 library(doMC)
 registerDoMC(cores=4)
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
-out <- llply(splist, function(x) occurrencelist(x, coordinatestatus = T, maxresults = 100), .parallel=T)
+out <- llply(splist, function(x) occurrencelist(x, coordinatestatus = TRUE, maxresults = 100), .parallel=T)
 lapply(out, head)
 
 # Write the output to csv file
 occurrencelist(scientificname = 'Erebia gorge*',
-   coordinatestatus = TRUE, maxresults = 2000, writecsv="~/adsdf.csv")
+   coordinatestatus = TRUE, maxresults = 200, writecsv="~/adsdf.csv")
 }
 }
 

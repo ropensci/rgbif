@@ -19,14 +19,25 @@
 #' @param startindex  return the subset of the matching records that starts at
 #'    the supplied (zero-based index).
 #' @param accepted_status Status in the GIBF portal
+#' @description 
+#' When searching for taxa, keep in mind that unless you want taxon identifiers for a specific
+#' data source, leave dataproviderkey as the default of 1, which is the GBIF backbone 
+#' taxonomy. Also, always specify the taxonomic rank you are searching for - GBIF says 
+#' the search is more efficient if rank is given.
 #' @return A data.frame.
 #' @examples \dontrun{
-#' taxonsearch(scientificname = 'Puma concolor', rank="species", maxresults=2000)
-#' taxonsearch(scientificname = 'Puma concolor', rank="species", dataproviderkey=1)
+#' # Do specify the taxonomic rank the you are searching for, rank of species here
+#' taxonsearch(scientificname = 'Puma concolor', rank="species")
+#' 
+#' # Fabaceae (rank of genus)
+#' taxonsearch(scientificname = 'Abies', rank="genus")
+#' 
+#' # Fabaceae (rank of family)
+#' taxonsearch(scientificname = 'Fabaceae', rank="family")
 #' }
 #' @export
 taxonsearch <- function(scientificname = NULL, rank = NULL, maxresults = 10,
-   dataproviderkey = NULL, dataresourcekey = NULL, resourcenetworkkey = NULL,
+   dataproviderkey = 1, dataresourcekey = NULL, resourcenetworkkey = NULL,
    hostisocountrycode = NULL, startindex = NULL, accepted_status = FALSE)
 {
 	url = "http://data.gbif.org/ws/rest/taxon/list"

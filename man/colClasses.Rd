@@ -18,4 +18,5 @@ dat <- data.frame(xvar = seq(1:10), yvar = rep(c("a","b"),5)) # make a data.fram
 str(dat)
 str(colClasses(dat, c("factor","factor")))
 }
+\keyword{internal}
 

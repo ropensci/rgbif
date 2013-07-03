@@ -3,7 +3,7 @@
 \title{occurrencelist_many is the same as occurrencelist, but takes in a vector of species names.}
 \usage{
   occurrencelist_many(scientificname = NULL,
-    taxonconceptKey = NULL, dataproviderkey = NULL,
+    taxonconceptkey = NULL, dataproviderkey = NULL,
     dataresourcekey = NULL, institutioncode = NULL,
     collectioncode = NULL, catalognumber = NULL,
     resourcenetworkkey = NULL, basisofrecordcode = NULL,
@@ -24,16 +24,10 @@
     fixnames = "none", parallel = FALSE, cores = 4)
 }
 \arguments{
-  \item{parallel}{Do calls in parallel or not. (default is
-  FALSE)}
-
-  \item{cores}{Number of cores to use in parallel call
-  option (only used if parallel=TRUE)}
-
   \item{scientificname}{scientitic name of taxon
   (character, see example)}
 
-  \item{taxonconceptKey}{unique key for taxon (numeric)}
+  \item{taxonconceptkey}{unique key for taxon (numeric)}
 
   \item{dataproviderkey}{Filter records to those provided
   by the supplied numeric key for a data provider. See
@@ -187,6 +181,12 @@
   those records that match original search term, change all
   names to the original search term (beware using this
   option), or do nothing, respectively. Default is "none".}
+
+  \item{parallel}{Do calls in parallel or not. (default is
+  FALSE)}
+
+  \item{cores}{Number of cores to use in parallel call
+  option (only used if parallel=TRUE)}
 }
 \description{
   occurrencelist_many is the same as occurrencelist, but
@@ -197,7 +197,7 @@
 # Query for a many species
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 100)
-head(out)
+gbifdata(out)
 gbifmap(out)
 }
 }
