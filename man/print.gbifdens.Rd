@@ -4,6 +4,9 @@
 \usage{
   \method{print}{gbifdens} (x)
 }
+\arguments{
+  \item{x}{an object of class gbifdens}
+}
 \description{
   Print summary of gbifdens class
 }

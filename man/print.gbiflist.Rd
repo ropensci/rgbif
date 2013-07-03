@@ -4,6 +4,9 @@
 \usage{
   \method{print}{gbiflist} (x)
 }
+\arguments{
+  \item{x}{an object of class gbiflist}
+}
 \description{
   Print summary of gbiflist class
 }

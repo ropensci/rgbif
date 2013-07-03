@@ -1,0 +1,4 @@
+.gitignore
+^Makefile$
+.travis.yml
+man-roxygen

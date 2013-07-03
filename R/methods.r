@@ -52,6 +52,7 @@ gbifdata.gbifdens <- function(input)
 }
 
 #' Print summary of gbifdens class
+#' @param x an object of class gbifdens
 #' @method print gbifdens
 #' @S3method print gbifdens
 #' @export
@@ -72,6 +73,7 @@ print.gbifdens <- function(x){
 }
 
 #' Print summary of gbiflist class
+#' @param x an object of class gbiflist
 #' @method print gbiflist
 #' @S3method print gbiflist
 #' @export
