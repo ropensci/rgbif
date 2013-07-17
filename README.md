@@ -39,22 +39,29 @@ Windows users have to first install [Rtools](http://cran.r-project.org/bin/windo
 + maps
 + roxygen2 (as a suggest)
 
-## Visualize occurrence data
+### Visualize occurrence data
 
-```R
-# A single species
+#### A single species
+
+```coffee
 out <- occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE, maxresults = 100)
 gbifmap(input = out) # make a map using vertmap
 ```
 
 ![](inst/assets/img/occurrencelist.png)
 
+#### Many species, colored by species on map
 
-```R
-# Many species, colored by species on map
+```coffee
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 20)
 gbifmap(out)
 ```
 
 ![](inst/assets/img/occurrencelist_many.png)
+
+### Create an interactive map on Github
+
+```coffee
+
+```

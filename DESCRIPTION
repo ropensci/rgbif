@@ -48,3 +48,5 @@ Collate:
     'gbifmap.r'
     'country_codes.r'
     'rgbif-package.R'
+    'stylegeojson.r'
+    'togeojson.r'
