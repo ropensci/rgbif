@@ -1,9 +1,10 @@
-\name{gbifmap.gbifdens}
-\alias{gbifmap.gbifdens}
+\name{gbifmap_dens}
+\alias{gbifmap_dens}
 \title{Make a simple map to visualize GBIF data density data}
 \usage{
-  gbifmap.gbifdens(input = NULL, mapdatabase = "world",
-    region = ".", customize = NULL)
+  gbifmap_dens(input = NULL, mapdatabase = "world",
+    region = ".", geom = geom_point, jitter = NULL,
+    customize = NULL)
 }
 \arguments{
   \item{input}{Either a single data.frame or a list of
@@ -24,13 +25,20 @@
   \code{sort(unique(map_data("state")$region))} for the
   state layer.}
 
+  \item{geom}{The geom to use, one of geom_point or
+  geom_jitter. Don't quote them.}
+
+  \item{jitter}{If you use jitterposition, the amount by
+  which to jitter points in width, height, or both.}
+
   \item{customize}{Further arguments passed on to ggplot.}
 }
 \value{
-  Map (using ggplot2 package) of tiles on a map.
+  Map (using ggplot2 package) of points on a map or tiles
+  on a map.
 }
 \description{
-  Basic function to plot your lat/long data on a map.
+  Make a simple map to visualize GBIF data density data
 }
 \details{
   gbifmap takes care of cleaning up the data.frame
@@ -44,17 +52,17 @@
 \dontrun{
 # Tile map, using output from densitylist, Canada
 out2 <- densitylist(originisocountrycode = "CA") # data for Canada
-gbifmap(out2) # on world map
-gbifmap(out2, region="Canada") # on Canada map
+gbifmap_dens(out2) # on world map
+gbifmap_dens(out2, region="Canada") # on Canada map
 
 # Tile map, using gbifdensity, a specific data provider key
 # 191 for 'University of Texas at El Paso'
 out2 <- densitylist(dataproviderkey = 191) # data for the US
-gbifmap(out2) # on world map
+gbifmap_dens(out2) # on world map
 
 # Modify the plotting region
 out <- densitylist(originisocountrycode="US")
-gbifmap(out, mapdatabase="usa")
+gbifmap_dens(out, mapdatabase="usa")
 }
 }
 

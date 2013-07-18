@@ -101,7 +101,7 @@ taxonsearch(scientificname = 'Puma concolor', rank="species", dataproviderkey=1)
 
 #### Get data for a single occurrence. Note that data is returned as a list, so you have to convert to a data.frame, etc. as you wish
 ```{r occurrenceget, comment=NA, warning=FALSE}
-occurrenceget(key = 13749100)
+occurrenceget(key = 13749100)$dataProvider$dataResources$dataResource$occurrenceRecords$TaxonOccurrence[1:10]
 ```
 
 ********************
@@ -130,14 +130,14 @@ gbifdata(out)
 Though you can get more detailed data by calling *minimal=FALSE*.
 
 ```{r minimalfalse, comment=NA, warning=FALSE}
-gbifdata(out, minimal=FALSE)
+head( gbifdata(out, minimal=FALSE)[,1:6] )
 ```
 
 And you can get all possible data by specifying *format=darwin*.
 
 ```{r occurrencelistdarwin, comment=NA, warning=FALSE}
 out <- occurrencelist(scientificname = 'Puma concolor', coordinatestatus=TRUE, format="darwin", maxresults=20)
-gbifdata(out, minimal=FALSE)
+head( gbifdata(out, minimal=FALSE)[,1:6] )
 ```
 
 ********************
@@ -147,14 +147,14 @@ gbifdata(out, minimal=FALSE)
 ```{r gbifmap1, comment=NA, warning=FALSE}
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa', 'Ceyx fallax', 'Picoides lignarius', 'Campephilus leucopogon')
 out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 20)
-gbifmap(out)
+gbifmap_list(out)
 ```
 
 Another example, setting scientificname="*" so we just get any species, and then mapping points only within the state of Texas in the US.
 
 ```{r gbifmap2, comment=NA, warning=FALSE}
 out <- occurrencelist(scientificname="*", minlatitude=30, maxlatitude=35, minlongitude=-100, maxlongitude=-95, coordinatestatus = TRUE, maxresults = 200)
-gbifmap(input=out, mapdatabase="state", region="texas", geom=geom_jitter, jitter=position_jitter(width = 0.3, height = 0.3))
+gbifmap_list(input=out, mapdatabase="state", region="texas", geom=geom_jitter, jitter=position_jitter(width = 0.3, height = 0.3))
 ```
 
 ********************

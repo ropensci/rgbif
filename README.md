@@ -45,7 +45,7 @@ Windows users have to first install [Rtools](http://cran.r-project.org/bin/windo
 
 ```coffee
 out <- occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE, maxresults = 100)
-gbifmap(input = out) # make a map using vertmap
+gbifmap_list(input = out) # make a map using vertmap
 ```
 
 ![](inst/assets/img/occurrencelist.png)
@@ -55,13 +55,7 @@ gbifmap(input = out) # make a map using vertmap
 ```coffee
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 20)
-gbifmap(out)
+gbifmap_list(out)
 ```
 
 ![](inst/assets/img/occurrencelist_many.png)
-
-### Create an interactive map on Github
-
-```coffee
-
-```

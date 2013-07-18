@@ -29,8 +29,9 @@ providers <- function(name = "", isocountrycode = NULL, modifiedsince = NULL,
 		startindex = NULL, maxresults = NULL)
 {
 	url = "http://data.gbif.org/ws/rest/provider/list"
-	args <- compact(list(name = name, isocountrycode=isocountrycode, modifiedsince=modifiedsince,
-											 startindex=startindex, maxresults=maxresults))
+	args <- compact(list(name = name, isocountrycode=isocountrycode, 
+                       modifiedsince=modifiedsince,startindex=startindex,
+                       maxresults=maxresults))
 
 	temp <- getForm(url, .params=args)
 	tt <- xmlParse(temp)

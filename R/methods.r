@@ -1,13 +1,15 @@
 #' Get data.frame from occurrencelist, occurrencelist_many, or densitylist.
 #' 
-#' @param input Input object from a call to occurrencelist, occurrencelist_many, or densitylist.
-#' @param minimal Only applies to occurrencelist data. If TRUE, returns only name, lat, long fields; defaults to TRUE. 
+#' @param input Input object from a call to occurrencelist, occurrencelist_many, 
+#'    or densitylist.
+#' @param ... further arguments
 #' @details A convienence function to get the raw data in a data.frame format from 
 #'    occurrencelist, occurrencelist_many, and densitylist functions.
 #' @export
 #' @examples \dontrun{
 #' # occurrencelist
-#' out <- occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE, maxresults = 40)
+#' out <- occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE, 
+#'    maxresults = 40)
 #' gbifdata(out)
 #' gbifdata(out, minimal=FALSE)
 #' 
@@ -21,10 +23,16 @@
 #' out <- densitylist(originisocountrycode="US")
 #' gbifdata(out)
 #' }
-gbifdata <- function(input, minimal=TRUE) UseMethod("gbifdata")
+gbifdata <- function(input, ...) UseMethod("gbifdata")
 
-#' @S3method gbifdata gbiflist
-gbifdata.gbiflist <- function(input, minimal=TRUE)
+#' Gbiflist method
+#' @param input Input object from a call to occurrencelist, occurrencelist_many, or densitylist.
+#' @param minimal Only applies to occurrencelist data. If TRUE, returns only name, lat, 
+#'    long fields; defaults to TRUE. 
+#' @param ... further arguments
+#' @method gbifdata gbiflist
+#' @export
+gbifdata.gbiflist <- function(input, minimal=TRUE, ...)
 {  
   if(!is.gbiflist(input))
     stop("Input is not of class gbiflist")  
@@ -42,8 +50,12 @@ gbifdata.gbiflist <- function(input, minimal=TRUE)
   return( input2 )
 }
 
-#' @S3method gbifdata gbifdens
-gbifdata.gbifdens <- function(input)
+#' Gbifdens method
+#' @param input Input object from a call to occurrencelist, occurrencelist_many, or densitylist.
+#' @param ... further arguments
+#' @method gbifdata gbifdens
+#' @export
+gbifdata.gbifdens <- function(input, ...)
 {
   if(!is.gbifdens(input))
     stop("Input is not of class gbifdens")  
@@ -53,14 +65,15 @@ gbifdata.gbifdens <- function(input)
 
 #' Print summary of gbifdens class
 #' @param x an object of class gbifdens
+#' @param ... further arguments passed to or from other methods.
 #' @method print gbifdens
-#' @S3method print gbifdens
 #' @export
-print.gbifdens <- function(x){
+print.gbifdens <- function(x, ...){
   if(!is.gbifdens(x))
     stop("Input is not of class gbifdens")  
   
-  Stats = c("NumberCells","MinLatitude","MaxLatitude","MinLongitude","MaxLongitude","MinPerCell","MaxPercell")
+  Stats = c("NumberCells","MinLatitude","MaxLatitude","MinLongitude",
+    "MaxLongitude","MinPerCell","MaxPercell")
   records <- nrow(x)
   minlat = min(x$minLatitude, na.rm=TRUE)
   maxlat = max(x$maxLatitude, na.rm=TRUE)
@@ -69,15 +82,16 @@ print.gbifdens <- function(x){
   minpercell = min(x$count)
   maxpercell = max(x$count)
   
-  print(data.frame(Stats, numbers=c(records,minlat,maxlat,minlong,maxlong,minpercell,maxpercell)))
+  print(data.frame(Stats, numbers=c(records,minlat,maxlat,minlong,
+    maxlong,minpercell,maxpercell)))
 }
 
 #' Print summary of gbiflist class
 #' @param x an object of class gbiflist
+#' @param ... further arguments passed to or from other methods.
 #' @method print gbiflist
-#' @S3method print gbiflist
 #' @export
-print.gbiflist <- function(x){
+print.gbiflist <- function(x, ...){
   if(!is.gbiflist(x))
     stop("Input is not of class gbiflist")
   
@@ -92,7 +106,7 @@ print.gbiflist <- function(x){
   
   print(list(NumberFound = records, 
              TaxonNames = names2, 
-             Coordinates = data.frame(Stats, numbers=c(minlat,maxlat,minlong,maxlong)), 
+             Coordinates = data.frame(Stats, numbers=c(minlat,maxlat,minlong,maxlong)),
              Countries = countries))
 }
 

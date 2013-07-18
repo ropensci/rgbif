@@ -1,14 +1,16 @@
-#' occurrencelist_many is the same as occurrencelist, but takes in a vector of species names.
+#' occurrencelist_many is the same as occurrencelist, but takes in a vector 
+#' of species names.
 #'
 #' @template oclist
 #' @param parallel Do calls in parallel or not. (default is FALSE)
-#' @param cores Number of cores to use in parallel call option (only used if parallel=TRUE)
+#' @param cores Number of cores to use in parallel call option (only used 
+#'    if parallel=TRUE)
 #' @examples \dontrun{
 #' # Query for a many species
 #' splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 #' out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 100)
 #' gbifdata(out)
-#' gbifmap(out)
+#' gbifmap_list(out)
 #' }
 #' @export
 occurrencelist_many <- function(scientificname = NULL, taxonconceptkey = NULL,
@@ -26,6 +28,7 @@ occurrencelist_many <- function(scientificname = NULL, taxonconceptkey = NULL,
     curl = getCurlHandle(), fixnames = "none", parallel = FALSE, cores=4) 
 {	  
   url = "http://data.gbif.org/ws/rest/occurrence/list"
+  registerDoMC = NULL
   
   getdata <- function(x){
     
@@ -66,10 +69,13 @@ occurrencelist_many <- function(scientificname = NULL, taxonconceptkey = NULL,
       if(is.null(args)){ tt <- getURL(url) } else
       { tt <- getForm(url, .params = args, curl = curl) }
       outlist <- xmlParse(tt)
-      numreturned <- as.numeric(xpathSApply(outlist, "//gbif:summary/@totalReturned", namespaces="gbif"))
-      ss <- tryCatch(xpathApply(outlist, "//gbif:nextRequestUrl", xmlValue)[[1]], error = function(e) e$message)	
+      numreturned <- as.numeric(xpathSApply(outlist, "//gbif:summary/@totalReturned", 
+                                            namespaces="gbif"))
+      ss <- tryCatch(xpathApply(outlist, "//gbif:nextRequestUrl", xmlValue)[[1]], 
+                     error = function(e) e$message)	
       if(ss=="subscript out of bounds"){url <- NULL} else {
-        url <- sub("&maxresults=[0-9]+", paste("&maxresults=",maxresults-sumreturned,sep=''), ss)
+        url <- sub("&maxresults=[0-9]+", 
+                   paste("&maxresults=",maxresults-sumreturned,sep=''), ss)
       }
       args <- NULL
       sumreturned <- sumreturned + numreturned
@@ -90,7 +96,8 @@ occurrencelist_many <- function(scientificname = NULL, taxonconceptkey = NULL,
         { dd } 
   }
   
-  if(is.null(scientificname)){itervec <- taxonconceptkey} else {itervec <- scientificname}
+  if(is.null(scientificname)){itervec <- taxonconceptkey} else 
+  {itervec <- scientificname}
   
   if(length(scientificname)==1 | length(taxonconceptkey)==1){
     out <- getdata(itervec)

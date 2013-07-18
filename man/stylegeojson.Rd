@@ -31,7 +31,15 @@
 }
 \examples{
 \dontrun{
-stylegeojson(input=dat, var="taxonName", color=c("#A06D34", "#E09B33", "#DBAC6A"), symbol="circle")
+# Get data and save map data
+splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
+out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 50)
+dat <- gbifdata(out)
+names(dat)[names(dat) \%in\%
+   c("decimalLatitude","decimalLongitude")] <- c("latitude","longitude")
+dat2 <- stylegeojson(input=dat, var="taxonName", color=c("#976AAE","#6B944D","#BD5945"),
+   size=c("small","medium","large"))
+head(dat2)
 }
 }
 \seealso{

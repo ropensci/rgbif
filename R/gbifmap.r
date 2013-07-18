@@ -1,79 +1,63 @@
-#' Plot a class of gbiflist, gbifdensity
-#' @param input Input data.frame
-#' @param ... Additional parameters passed on to gbifmap.gbiflist or gbifmap.gbifdens
-#' @export
-gbifmap <- function(...) UseMethod("gbifmap")
-
-#' Make a simple map to visualize GBIF data.
+#' Make a simple map to visualize GBIF point data.
 #' 
-#' Basic function to plot your lat/long data on a map.
-#' 
-#' @import ggplot2 maps
-#' @S3method gbifmap gbiflist
-#' @param input Either a single data.frame or a list of data.frame's (e.g., from
-#'     different speies). The data.frame has to have, in addition to any other 
-#' 		columns, columns named exactly "decimalLatitude" and "decimalLongitude".
-#' @param mapdatabase The map database to use in mapping. What you choose here 
-#' 		determines what you can choose in the region parameter. One of: county, 
-#' 		state, usa, world, world2, france, italy, or nz. 
-#' @param region The region of the world to map. From the maps package, run 
-#' 		\code{sort(unique(map_data("world")$region))} to see region names for the
-#' 		world database layer, or e.g., \code{sort(unique(map_data("state")$region))}
-#' 		for the state layer.
-#' @param geom The geom to use, one of geom_point or geom_jitter. Don't 
-#' 		quote them. 
-#' @param jitter If you use jitterposition, the amount by which to jitter 
-#' 		points in width, height, or both. 
-#' @param customize Further arguments passed on to ggplot. 
-#' @return Map (using ggplot2 package) of points on a map.
-#' @details gbifmap takes care of cleaning up the data.frame (removing NA's, etc.) 
-#' 		returned from rgbif functions, and creating the map. This function
-#' 		gives a simple map of your data.  You can look at the code behing the 
-#' 		function itself if you want to build on it to make a map according 
-#' 		to your specfications.
+#' @template map
 #' @examples \dontrun{
 #' # Point map, using output from occurrencelist, example 1
-#' out <- occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100)
-#' gbifmap(input = out) # make a map using vertmap
+#' out <- occurrencelist(scientificname = 'Accipiter erythronemius',
+#'    coordinatestatus = TRUE, maxresults = 100)
+#' gbifmap_list(input = out) # make a map using vertmap
 #' 
 #' # Point map, using output from occurrencelist, example 2, a species with more data
-#' out <- occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE, maxresults = 100)
-#' gbifmap(input = out) # make a map
-#' gbifmap(input = out, region = 'USA') # make a map, just using the US map
+#' out <- occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE, 
+#'    maxresults = 100)
+#' gbifmap_list(input = out) # make a map
+#' gbifmap_list(input = out, region = 'USA') # make a map, just using the US map
 #' 
 #' # Point map, using output from occurrencelist, many species
 #' splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 #' out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 20)
-#' gbifmap(out)
+#' gbifmap_list(out)
 #' 
 #' # Point map, using output from occurrencelist, many species
-#' splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa', 'Ceyx fallax', 'Picoides lignarius', 'Campephilus leucopogon')
+#' splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa', 'Ceyx fallax', 
+#'    'Picoides lignarius', 'Campephilus leucopogon')
 #' out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 100)
-#' gbifmap(out)
+#' gbifmap_list(out)
 #' 
 #' # Get occurrences or density by area, using min/max lat/long coordinates
 #' # Setting scientificname="*" so we just get any species
-#' out <- occurrencelist(scientificname="*", minlatitude=30, maxlatitude=35, minlongitude=-100, maxlongitude=-95, coordinatestatus = TRUE, maxresults = 500)
+#' out <- occurrencelist(scientificname="*", minlatitude=30, maxlatitude=35,
+#'    minlongitude=-100, maxlongitude=-95, coordinatestatus = TRUE, maxresults = 500)
 #' 
 #' # Using `geom_point`
-#' gbifmap(out, "state", "texas", geom_point)
+#' gbifmap_list(out, "state", "texas", geom_point)
 #' 
 #' # Using geom_jitter to move the points apart from one another
-#' gbifmap(out, "state", "texas", geom_jitter, position_jitter(width = 0.3, height = 0.3))
+#' gbifmap_list(out, "state", "texas", geom_jitter, position_jitter(width = 0.3, 
+#'    height = 0.3))
 #' 
 #' # And move points a lot
-#' gbifmap(out, "state", "texas", geom_jitter, position_jitter(width = 1, height = 1))
+#' gbifmap_list(out, "state", "texas", geom_jitter, position_jitter(width = 1, height = 1))
 #' 
 #' # Customize the plot by passing options to `ggplot()`
 #' mycustom <- function(){
-#'		list(geom_point(size=9)
-#'				)}
-#' out <- occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100)
-#' gbifmap(out, customize = mycustom())
+#'    list(geom_point(size=9)
+#'        )}
+#' out <- occurrencelist(scientificname = 'Accipiter erythronemius', 
+#'    coordinatestatus = TRUE, maxresults = 100)
+#' gbifmap_list(out, customize = mycustom())
 #' }
-gbifmap.gbiflist <- function(input = NULL, mapdatabase = "world", region = ".", 
+#' @export
+gbifmap_list <- function(input = NULL, mapdatabase = "world", region = ".", 
                      geom = geom_point, jitter = NULL, customize = NULL)
 {
+  long = NULL
+  lat = NULL
+  group = NULL
+  decimalLongitude = NULL
+  decimalLatitude = NULL
+  taxonName = NULL
+  
   if(!is.gbiflist(input))
     stop("Input is not of class gbiflist")
   
@@ -99,6 +83,7 @@ gbifmap.gbiflist <- function(input = NULL, mapdatabase = "world", region = ".",
     labs(x="", y="") +
     theme_bw(base_size=14) +
     theme(legend.position = "bottom", legend.key = element_blank()) +
+    guides(col = guide_legend(nrow=2)) +
     blanktheme() +
     theme2 + 
     customize
@@ -107,44 +92,30 @@ gbifmap.gbiflist <- function(input = NULL, mapdatabase = "world", region = ".",
 
 #' Make a simple map to visualize GBIF data density data
 #' 
-#' Basic function to plot your lat/long data on a map.
-#' 
-#' @import ggplot2 maps
-#' @S3method gbifmap gbifdens
-#' @param input Either a single data.frame or a list of data.frame's (e.g., from
-#'     different speies). The data.frame has to have, in addition to any other 
-#'   	columns, columns named exactly "decimalLatitude" and "decimalLongitude".
-#' @param mapdatabase The map database to use in mapping. What you choose here 
-#' 		determines what you can choose in the region parameter. One of: county, 
-#' 		state, usa, world, world2, france, italy, or nz. 
-#' @param region The region of the world to map. From the maps package, run 
-#' 		\code{sort(unique(map_data("world")$region))} to see region names for the
-#' 		world database layer, or e.g., \code{sort(unique(map_data("state")$region))}
-#' 		for the state layer.
-#' @param customize Further arguments passed on to ggplot. 
-#' @return Map (using ggplot2 package) of tiles on a map.
-#' @details gbifmap takes care of cleaning up the data.frame (removing NA's, etc.) 
-#' 		returned from rgbif functions, and creating the map. This function
-#' 		gives a simple map of your data.  You can look at the code behing the 
-#' 		function itself if you want to build on it to make a map according 
-#' 		to your specfications.
+#' @template map
 #' @examples \dontrun{
 #' # Tile map, using output from densitylist, Canada
 #' out2 <- densitylist(originisocountrycode = "CA") # data for Canada
-#' gbifmap(out2) # on world map
-#' gbifmap(out2, region="Canada") # on Canada map
+#' gbifmap_dens(out2) # on world map
+#' gbifmap_dens(out2, region="Canada") # on Canada map
 #' 
 #' # Tile map, using gbifdensity, a specific data provider key
 #' # 191 for 'University of Texas at El Paso'
 #' out2 <- densitylist(dataproviderkey = 191) # data for the US
-#' gbifmap(out2) # on world map
+#' gbifmap_dens(out2) # on world map
 #' 
 #' # Modify the plotting region
 #' out <- densitylist(originisocountrycode="US")
-#' gbifmap(out, mapdatabase="usa")
+#' gbifmap_dens(out, mapdatabase="usa")
 #' }
-gbifmap.gbifdens <- function(input = NULL, mapdatabase = "world", region = ".", customize = NULL)
+#' @export
+gbifmap_dens <- function(input = NULL, mapdatabase = "world", region = ".", 
+                             geom = geom_point, jitter = NULL, customize = NULL)
 {
+  long = NULL
+  lat = NULL
+  group = NULL
+  
   if(!is.gbifdens(input))
     stop("Input is not of class gbifdens")
   
@@ -162,5 +133,7 @@ gbifmap.gbifdens <- function(input = NULL, mapdatabase = "world", region = ".", 
     geom_polygon(aes(group=group), fill="white", alpha=0, color="gray80", size=0.8) +
     labs(x="", y="") +
     theme_bw(base_size=14) + 
+    theme(legend.position = "bottom", legend.key = element_blank()) +
+    blanktheme() +
     customize
 }

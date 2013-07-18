@@ -19,7 +19,8 @@ taxonget <- function(key = NULL)
 	doit <- function(x) {
 		args <- compact(list(key = x))
 		tt <- content(GET(url, query=args))
-		taxonconceptkeys <- sapply(getNodeSet(tt, "//tc:TaxonConcept[@gbifKey]"), xmlGetAttr, "gbifKey")
+		taxonconceptkeys <- sapply(getNodeSet(tt, "//tc:TaxonConcept[@gbifKey]"), 
+                               xmlGetAttr, "gbifKey")
 		sciname <- sapply(getNodeSet(tt, "//tn:nameComplete"), xmlValue)
 		rank <- sapply(getNodeSet(tt, "//tn:rankString"), xmlValue)
 		data.frame(sciname, taxonconceptkeys, rank)

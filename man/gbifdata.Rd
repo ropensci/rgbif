@@ -2,15 +2,13 @@
 \alias{gbifdata}
 \title{Get data.frame from occurrencelist, occurrencelist_many, or densitylist.}
 \usage{
-  gbifdata(input, minimal = TRUE)
+  gbifdata(input, ...)
 }
 \arguments{
   \item{input}{Input object from a call to occurrencelist,
   occurrencelist_many, or densitylist.}
 
-  \item{minimal}{Only applies to occurrencelist data. If
-  TRUE, returns only name, lat, long fields; defaults to
-  TRUE.}
+  \item{...}{further arguments}
 }
 \description{
   Get data.frame from occurrencelist, occurrencelist_many,
@@ -24,7 +22,8 @@
 \examples{
 \dontrun{
 # occurrencelist
-out <- occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE, maxresults = 40)
+out <- occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE,
+   maxresults = 40)
 gbifdata(out)
 gbifdata(out, minimal=FALSE)
 

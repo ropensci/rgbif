@@ -1,15 +1,17 @@
 #' Convert spatial data files to GeoJSON from various formats.
 #' 
-#' You can use a web interface called Ogre, or do conversions locally using the rgdal package.
+#' You can use a web interface called Ogre, or do conversions locally using the 
+#' rgdal package.
 #' 
 #' @import httr rgdal maptools
-#' @param upload The file being uploaded, path to the file on your machine.
+#' @param input The file being uploaded, path to the file on your machine.
 #' @param method One of web or local. Matches on partial strings.
-#' @param destpath Destination for output geojson file. Defaults to your root directory ("~/").
+#' @param destpath Destination for output geojson file. Defaults to your root 
+#'    directory ("~/").
 #' @param outfilename The output file name, without file extension.
 #' @description 
 #' The web option uses the Ogre web API. Ogre currently has an output size limit of 15MB.
-#' See here \link{http://ogre.adc4gis.com/} for info on the Ogre web API.
+#' See here \url{http://ogre.adc4gis.com/} for info on the Ogre web API.
 #' The local option uses the function \code{\link{writeOGR}} from the package rgdal.
 #' 
 #' Note that for Shapefiles, GML, MapInfo, and VRT, you need to send zip files
@@ -40,11 +42,14 @@
 #' splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 #' out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 50)
 #' dat <- gbifdata(out)
-#' names(dat)[names(dat) %in% c("decimalLatitude","decimalLongitude")] <- c("latitude","longitude")
-#' dat <- stylegeojson(input=dat, var="taxonName", color=c("#976AAE", "#6B944D", "#BD5945"), size=c("small","medium","large"))
+#' names(dat)[names(dat) %in% c("decimalLatitude","decimalLongitude")] 
+#'    <- c("latitude","longitude")
+#' dat <- stylegeojson(input=dat, var="taxonName", color=c("#976AAE","#6B944D","#BD5945"), 
+#'    size=c("small","medium","large"))
 #' write.csv(dat, "~/github/sac/mygeojson/rgbif_data.csv")
 #' file <- "~/github/sac/mygeojson/rgbif_data.csv"
-#' togeojson(file, method = "web", destpath = "~/github/sac/mygeojson/", outfilename = "rgbif_data")
+#' togeojson(file, method = "web", destpath = "~/github/sac/mygeojson/", 
+#'    outfilename = "rgbif_data")
 #' }
 #' @export
 #' @seealso \code{\link{stylegeojson}}

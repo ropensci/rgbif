@@ -159,8 +159,10 @@
 \examples{
 \dontrun{
 occurrencecount(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE)
-occurrencecount(scientificname = 'Helianthus annuus', coordinatestatus = TRUE, year=2009)
-occurrencecount(scientificname = 'Helianthus annuus', coordinatestatus = TRUE, year=2005, maxlatitude=20)
+occurrencecount(scientificname = 'Helianthus annuus', coordinatestatus = TRUE,
+   year=2009)
+occurrencecount(scientificname = 'Helianthus annuus', coordinatestatus = TRUE,
+   year=2005, maxlatitude=20)
 }
 }
 

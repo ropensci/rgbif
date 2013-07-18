@@ -3,6 +3,10 @@ rgbif 0.3.0
 
 IMPROVEMENTS
 
+* Added S3 objects: Output from calls to occurrencelist() and occurrence list_many() now of class gbiflist, and output from calls to densitylist() now of class gbifdens. 
+* Slight changes to gbifmaps() function.
+* url parameter in all functions moved into the function itself as the base GBIF API url doesn't need to be specified by user. 
+* Vignette added.
 * 
 
 NEW FEATURES
@@ -10,10 +14,8 @@ NEW FEATURES
 * Added function country_codes() to look up 2 character ISO country codes for use in searches.
 * Added function occurrencelist_many() to handle searches of many species. 
 * Added functions togeojson() and stylegeosjon() to convert a data.frame with lat/long columns to geojson file format, and to add styling to data.frames before using togeojson() . 
-* 
-* 
-
-BUG FIXES
+* occurrencelist() and occurrencelist_many() gain argument fixnames, which lets user change species names in output data.frame according to a variety of scenarios.
+* taxonsearch() gains argument accepted_status to accept only those names that have a status of accepted. In addition, this function has significant changes, and examples, to improve performance.
 
 
 rgbif 0.2.0

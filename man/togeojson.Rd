@@ -6,8 +6,8 @@
     outfilename = "myfile")
 }
 \arguments{
-  \item{upload}{The file being uploaded, path to the file
-  on your machine.}
+  \item{input}{The file being uploaded, path to the file on
+  your machine.}
 
   \item{method}{One of web or local. Matches on partial
   strings.}
@@ -21,7 +21,7 @@
 \description{
   The web option uses the Ogre web API. Ogre currently has
   an output size limit of 15MB. See here
-  \link{http://ogre.adc4gis.com/} for info on the Ogre web
+  \url{http://ogre.adc4gis.com/} for info on the Ogre web
   API. The local option uses the function
   \code{\link{writeOGR}} from the package rgdal.
 
@@ -61,11 +61,14 @@ togeojson(file, method='local', outfilename="shp_local")
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 50)
 dat <- gbifdata(out)
-names(dat)[names(dat) \%in\% c("decimalLatitude","decimalLongitude")] <- c("latitude","longitude")
-dat <- stylegeojson(input=dat, var="taxonName", color=c("#976AAE", "#6B944D", "#BD5945"), size=c("small","medium","large"))
+names(dat)[names(dat) \%in\% c("decimalLatitude","decimalLongitude")]
+   <- c("latitude","longitude")
+dat <- stylegeojson(input=dat, var="taxonName", color=c("#976AAE","#6B944D","#BD5945"),
+   size=c("small","medium","large"))
 write.csv(dat, "~/github/sac/mygeojson/rgbif_data.csv")
 file <- "~/github/sac/mygeojson/rgbif_data.csv"
-togeojson(file, method = "web", destpath = "~/github/sac/mygeojson/", outfilename = "rgbif_data")
+togeojson(file, method = "web", destpath = "~/github/sac/mygeojson/",
+   outfilename = "rgbif_data")
 }
 }
 \seealso{

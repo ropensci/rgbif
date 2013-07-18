@@ -134,13 +134,13 @@ parseresults <- function(x, ..., removeZeros=removeZeros)
 			df_num[i, "decimalLongitude"] <- NA 
 		}
 		temp <- rbind(df_num, df_nas)
-# 			temp <- colClasses(temp, c(rep("character",5),rep("numeric",7),rep("character",8)))
 		return( temp )
 	}
 }
 
 
 #' Custom ggplot2 theme
+#' @import ggplot2 grid
 #' @export
 #' @keywords internal
 blanktheme <- function(){

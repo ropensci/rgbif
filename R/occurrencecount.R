@@ -4,9 +4,10 @@
 #' @param  scientificname count only records where the scientific name matches 
 #'  	that supplied, use an asterisk * for any name starting with preseding 
 #'		string (character). does not make use of extra knowledge of possible synonyms 
-#'		or of child taxa.  For these functions, use taxonconceptkey. May be repeted in single request.
+#'		or of child taxa.  For these functions, use taxonconceptkey. May be repeted in 
+#'		single request.
 #' @param  taxonconceptKey unique key for taxon (numeric). Count only records which are 
-#'		for the taxon identified by the supplied numeric key, including any records provided 
+#'		for the taxon identified by the supplied numeric key, including any records provided
 #'		under synonyms of the taxon concerned, and any records for child taxa 
 #'		(e.g. all genera and species within a family).  May be repeted in single request.
 #' @param  dataproviderkey Filter records to those provided by the supplied
@@ -17,7 +18,8 @@
 #' @param  collectioncode Return only records from a given collection code.
 #' @param  catalognumber Return only records from a given catalog number.                 
 #' @param  resourcenetworkkey  count only records which have been made available by 
-#'		resources identified as belonging to the network identified by the supplied numeric key.
+#'		resources identified as belonging to the network identified by the supplied 
+#'  	numeric key.
 #' @param  basisofrecordcode  return only records with the specified basis of record.
 #'    Supported values are: "specimen, observation, living, germplasm, fossil, unknown".
 #'    (character)
@@ -33,7 +35,7 @@
 #'    the supplied value. (integer)
 #' @param  maxaltitude  return only records from altitudes less than or equals to 
 #'    the supplied value. (integer)
-#' @param  mindepth  return only records from depth greater than or equal to the supplied 
+#' @param  mindepth  return only records from depth greater than or equal to the supplied
 #'    value. (numeric 2 decimal places)
 #' @param  maxdepth  return only records from depth less than or equals to the supplied 
 #'    value. (numeric 2 decimal places)
@@ -66,11 +68,14 @@
 #' @param modifiedsince  return only records which have been indexed or modified 
 #'    in the GBIF data portal index on or after the supplied date 
 #'    (format YYYY-MM-DD, e.g. 2006-11-28). 
-#' @return A single numeric value - the number of records found in GBIF matching the query.
+#' @return A single numeric value - the number of records found in GBIF matching 
+#'    the query.
 #' @examples \dontrun{
 #' occurrencecount(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE)
-#' occurrencecount(scientificname = 'Helianthus annuus', coordinatestatus = TRUE, year=2009)
-#' occurrencecount(scientificname = 'Helianthus annuus', coordinatestatus = TRUE, year=2005, maxlatitude=20)
+#' occurrencecount(scientificname = 'Helianthus annuus', coordinatestatus = TRUE, 
+#'    year=2009)
+#' occurrencecount(scientificname = 'Helianthus annuus', coordinatestatus = TRUE, 
+#'    year=2005, maxlatitude=20)
 #' }
 #' @export
 occurrencecount <- function(scientificname = NULL, taxonconceptKey = NULL,
@@ -85,19 +90,23 @@ occurrencecount <- function(scientificname = NULL, taxonconceptKey = NULL,
 	endyear = NULL, year = NULL, month = NULL, day = NULL, modifiedsince = NULL) 
 {  
 	url = "http://data.gbif.org/ws/rest/occurrence/count"
-	querystr <- compact(list(scientificname = scientificname, taxonconceptKey = taxonconceptKey,
-		dataproviderkey = dataproviderkey, dataresourcekey = dataresourcekey, 
-		institutioncode = institutioncode,	 collectioncode = collectioncode, catalognumber = catalognumber, 
-		resourcenetworkkey = resourcenetworkkey,	basisofrecordcode = basisofrecordcode, 
-		minlatitude = minlatitude, maxlatitude = maxlatitude, minlongitude = minlongitude, 
-		maxlongitude = maxlongitude, minaltitude = minaltitude, maxaltitude = maxaltitude,
-		mindepth = mindepth, maxdepth = maxdepth, cellid = cellid, centicellid = centicellid,
-		typesonly = typesonly, coordinatestatus = coordinatestatus, coordinateissues = coordinateissues, 
-		hostisocountrycode = hostisocountrycode, originisocountrycode = originisocountrycode,
-		originregioncode = originregioncode, startdate = startdate, enddate = enddate, startyear = startyear,
-		endyear = endyear, year = year, month = month, day = day, modifiedsince = modifiedsince))
+	querystr <- compact(list(scientificname=scientificname,taxonconceptKey=taxonconceptKey,
+		dataproviderkey=dataproviderkey,dataresourcekey=dataresourcekey,
+		institutioncode=institutioncode,collectioncode=collectioncode,
+    	catalognumber=catalognumber,resourcenetworkkey=resourcenetworkkey,	
+    	basisofrecordcode=basisofrecordcode,minlatitude=minlatitude,
+    	maxlatitude=maxlatitude,minlongitude=minlongitude,maxlongitude=maxlongitude,
+    	minaltitude=minaltitude,maxaltitude=maxaltitude,mindepth=mindepth,
+    	maxdepth=maxdepth,cellid=cellid,centicellid=centicellid,typesonly=typesonly,
+    	coordinatestatus=coordinatestatus,coordinateissues=coordinateissues,
+		hostisocountrycode=hostisocountrycode,originisocountrycode=originisocountrycode,
+		originregioncode=originregioncode,startdate=startdate,enddate=enddate,
+		startyear=startyear,endyear=endyear,year=year,month=month,day=day,
+		modifiedsince=modifiedsince))
 	
 	temp <- getForm(url, .params=querystr)
 	out <- xmlParse(temp)
-	as.numeric(xmlGetAttr(getNodeSet(out, "//gbif:summary", namespaces="gbif")[[1]], "totalMatched"))
+	as.numeric(
+		xmlGetAttr(
+			getNodeSet(out, "//gbif:summary", namespaces="gbif")[[1]], "totalMatched"))
 }

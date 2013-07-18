@@ -28,7 +28,7 @@ networks <- function(name = "", code = NULL, modifiedsince = NULL,
 {
 	url = "http://data.gbif.org/ws/rest/network/list"
 	args <- compact(list(name = name, code=code, modifiedsince = modifiedsince,
-											 startindex = startindex, maxresults = maxresults))
+						 startindex = startindex, maxresults = maxresults))
 	temp <- getForm(url, .params=args)
 	tt <- xmlParse(temp)
 	names_ <- xpathSApply(tt, "//gbif:resourceNetwork/gbif:name",

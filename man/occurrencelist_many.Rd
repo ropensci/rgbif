@@ -1,6 +1,7 @@
 \name{occurrencelist_many}
 \alias{occurrencelist_many}
-\title{occurrencelist_many is the same as occurrencelist, but takes in a vector of species names.}
+\title{occurrencelist_many is the same as occurrencelist, but takes in a vector
+of species names.}
 \usage{
   occurrencelist_many(scientificname = NULL,
     taxonconceptkey = NULL, dataproviderkey = NULL,
@@ -198,7 +199,7 @@
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 100)
 gbifdata(out)
-gbifmap(out)
+gbifmap_list(out)
 }
 }
 

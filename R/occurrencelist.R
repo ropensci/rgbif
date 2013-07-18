@@ -3,16 +3,19 @@
 #' @template oclist
 #' @examples \dontrun{
 #' # Query for a single species
-#' occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE, maxresults = 40)
-#' occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 5)
+#' occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE, 
+#'    maxresults = 40)
+#' occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, 
+#'    maxresults = 5)
 #' 
 #' # Query for many species, in this case using parallel fuctionality with plyr::llply
-#' # Also, see \code{\link{occurrencelist_many}} as an alternative way to search for many species, 
-#' # which is better for going straight to a map with the output data.
+#' # Also, see \code{\link{occurrencelist_many}} as an alternative way to search for 
+#' # many species, which is better for going straight to a map with the output data.
 #' library(doMC)
 #' registerDoMC(cores=4)
 #' splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
-#' out <- llply(splist, function(x) occurrencelist(x, coordinatestatus = TRUE, maxresults = 100), .parallel=T)
+#' out <- llply(splist, function(x) occurrencelist(x, coordinatestatus = TRUE, 
+#'    maxresults = 100), .parallel=T)
 #' lapply(out, head)
 #'
 #' # Write the output to csv file
@@ -65,10 +68,13 @@ occurrencelist <- function(scientificname = NULL, taxonconceptkey = NULL,
 		if(is.null(args)){ tt <- getURL(url) } else
 			{ tt <- getForm(url, .params = args, curl = curl) }
 		outlist <- xmlParse(tt)
-		numreturned <- as.numeric(xpathSApply(outlist, "//gbif:summary/@totalReturned", namespaces="gbif"))
-		ss <- tryCatch(xpathApply(outlist, "//gbif:nextRequestUrl", xmlValue)[[1]], error = function(e) e$message)	
+		numreturned <- as.numeric(xpathSApply(outlist, "//gbif:summary/@totalReturned", 
+                                          namespaces="gbif"))
+		ss <- tryCatch(xpathApply(outlist, "//gbif:nextRequestUrl", xmlValue)[[1]], 
+                   error = function(e) e$message)	
 		if(ss=="subscript out of bounds"){url <- NULL} else {
-			url <- sub("&maxresults=[0-9]+", paste("&maxresults=",maxresults-sumreturned,sep=''), ss)
+			url <- sub("&maxresults=[0-9]+", 
+                 paste("&maxresults=",maxresults-sumreturned,sep=''), ss)
 		}
 		args <- NULL
 		sumreturned <- sumreturned + numreturned

@@ -19,5 +19,6 @@ taxoncount <- function(scientificname = NULL, rank = NULL, dataresourcekey = NUL
 	args <- compact(list(scientificname = scientificname, rank = rank,
 											 dataresourcekey = dataresourcekey))
 	tt <- content(GET(url, query=args))
-	as.numeric(xmlGetAttr(getNodeSet(tt, "//gbif:summary", namespaces="gbif")[[1]], "totalMatched"))
+	as.numeric(xmlGetAttr(getNodeSet(tt, "//gbif:summary", 
+                                   namespaces="gbif")[[1]], "totalMatched"))
 }
