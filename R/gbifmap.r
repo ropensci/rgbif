@@ -2,7 +2,7 @@
 #' @param input Input data.frame
 #' @param ... Additional parameters passed on to gbifmap.gbiflist or gbifmap.gbifdens
 #' @export
-gbifmap <- function(input, ...) UseMethod("gbifmap")
+gbifmap <- function(...) UseMethod("gbifmap")
 
 #' Make a simple map to visualize GBIF data.
 #' 
@@ -39,11 +39,16 @@ gbifmap <- function(input, ...) UseMethod("gbifmap")
 #' # Point map, using output from occurrencelist, example 2, a species with more data
 #' out <- occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE, maxresults = 100)
 #' gbifmap(input = out) # make a map
-#' gbifmap(input = out, region = 'USA') # make a map, just plotting data for 
+#' gbifmap(input = out, region = 'USA') # make a map, just using the US map
 #' 
 #' # Point map, using output from occurrencelist, many species
 #' splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 #' out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 20)
+#' gbifmap(out)
+#' 
+#' # Point map, using output from occurrencelist, many species
+#' splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa', 'Ceyx fallax', 'Picoides lignarius', 'Campephilus leucopogon')
+#' out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 100)
 #' gbifmap(out)
 #' 
 #' # Get occurrences or density by area, using min/max lat/long coordinates
@@ -90,8 +95,11 @@ gbifmap.gbiflist <- function(input = NULL, mapdatabase = "world", region = ".",
     geom_polygon(aes(group=group), fill="white", color="gray40", size=0.2) +
     geom(data=tomap, aes(decimalLongitude, decimalLatitude, colour=taxonName), 
          alpha=0.4, size=3, position=jitter) +
+    scale_color_brewer("", type="qual", palette=6) +
     labs(x="", y="") +
     theme_bw(base_size=14) +
+    theme(legend.position = "bottom", legend.key = element_blank()) +
+    blanktheme() +
     theme2 + 
     customize
 }

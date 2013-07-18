@@ -1,3 +1,4 @@
+export(blanktheme)
 export(capwords)
 export(colClasses)
 export(commas_to_periods)

@@ -59,8 +59,8 @@ togeojson(file, method='local', outfilename="shp_local")
 
 # Get data and save map data
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
-out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 100)
-dat <- gbifdata(out, FALSE)
+out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 50)
+dat <- gbifdata(out)
 names(dat)[names(dat) \%in\% c("decimalLatitude","decimalLongitude")] <- c("latitude","longitude")
 dat <- stylegeojson(input=dat, var="taxonName", color=c("#976AAE", "#6B944D", "#BD5945"), size=c("small","medium","large"))
 write.csv(dat, "~/github/sac/mygeojson/rgbif_data.csv")

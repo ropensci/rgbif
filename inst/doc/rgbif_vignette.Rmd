@@ -12,12 +12,6 @@ rgbif vignette - Seach and retrieve data from the Global Biodiverity Information
 
 ********************
 
-### Info
-
-XXXX
-
-********************
-
 #### Install rgbif
 
 ```{r install, comment=NA, warning=FALSE}
@@ -150,7 +144,18 @@ gbifdata(out, minimal=FALSE)
 
 #### Maps
 
-##### inspect summary
+```{r gbifmap1, comment=NA, warning=FALSE}
+splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa', 'Ceyx fallax', 'Picoides lignarius', 'Campephilus leucopogon')
+out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 20)
+gbifmap(out)
+```
+
+Another example, setting scientificname="*" so we just get any species, and then mapping points only within the state of Texas in the US.
+
+```{r gbifmap2, comment=NA, warning=FALSE}
+out <- occurrencelist(scientificname="*", minlatitude=30, maxlatitude=35, minlongitude=-100, maxlongitude=-95, coordinatestatus = TRUE, maxresults = 200)
+gbifmap(input=out, mapdatabase="state", region="texas", geom=geom_jitter, jitter=position_jitter(width = 0.3, height = 0.3))
+```
 
 ********************
 

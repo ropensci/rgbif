@@ -2,7 +2,7 @@
 \alias{gbifmap}
 \title{Plot a class of gbiflist, gbifdensity}
 \usage{
-  gbifmap(input, ...)
+  gbifmap(...)
 }
 \arguments{
   \item{input}{Input data.frame}
