@@ -35,23 +35,24 @@ gbifxmlToDataFrame <- function(doc, format) {
 	if (length(nodes) == 0) 
 		return(data.frame())
 	if(!is.null(format) & format=="darwin"){
-		varNames <- c("country", "stateProvince", 
-									"county", "locality", "decimalLatitude", "decimalLongitude", 
-									"coordinateUncertaintyInMeters", "maximumElevationInMeters", 
-									"minimumElevationInMeters", "maximumDepthInMeters", 
-									"minimumDepthInMeters", "institutionCode", "collectionCode", 
-									"catalogNumber", "basisOfRecordString", "collector", 
-									"earliestDateCollected", "latestDateCollected", "gbifNotes")
+	  varNames <- c("occurrenceID", "country", "stateProvince", 
+	                "county", "locality", "decimalLatitude", "decimalLongitude", 
+	                "coordinateUncertaintyInMeters", "maximumElevationInMeters", 
+	                "minimumElevationInMeters", "maximumDepthInMeters", 
+	                "minimumDepthInMeters", "institutionCode", "collectionCode", 
+	                "catalogNumber", "basisOfRecordString", "collector", 
+	                "earliestDateCollected", "latestDateCollected", "gbifNotes")
 	} else{
-		varNames <- c("country", "decimalLatitude", "decimalLongitude", 
-									"catalogNumber", "earliestDateCollected", "latestDateCollected" )
+	  varNames <- c("occurrenceID", "country", "decimalLatitude", "decimalLongitude",
+	                "catalogNumber", "earliestDateCollected", "latestDateCollected" )
 	}
 	dims <- c(length(nodes), length(varNames))
 	ans <- as.data.frame(replicate(dims[2], rep(as.character(NA), 
-									dims[1]), simplify = FALSE), stringsAsFactors = FALSE)
+	                                            dims[1]), simplify = FALSE), stringsAsFactors = FALSE)
 	names(ans) <- varNames
 	for (i in seq(length = dims[1])) {
-		ans[i, ] <- xmlSApply(nodes[[i]], xmlValue)[varNames]
+	  ans[i, 1] <- xmlAttrs(nodes[[i]])[['gbifKey']]
+	  ans[i, -1] <- xmlSApply(nodes[[i]], xmlValue)[varNames[-1]]
 	}
 	nodes <- getNodeSet(doc, "//to:Identification")
 	varNames <- c("taxonName")
