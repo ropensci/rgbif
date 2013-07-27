@@ -35,7 +35,7 @@ gbifxmlToDataFrame <- function(doc, format) {
 	if (length(nodes) == 0) 
 		return(data.frame())
 	if(!is.null(format) & format=="darwin"){
-	  varNames <- c("gbifKey", "country", "stateProvince", 
+	  varNames <- c("occurrenceID", "country", "stateProvince", 
 	                "county", "locality", "decimalLatitude", "decimalLongitude", 
 	                "coordinateUncertaintyInMeters", "maximumElevationInMeters", 
 	                "minimumElevationInMeters", "maximumDepthInMeters", 
@@ -43,7 +43,7 @@ gbifxmlToDataFrame <- function(doc, format) {
 	                "catalogNumber", "basisOfRecordString", "collector", 
 	                "earliestDateCollected", "latestDateCollected", "gbifNotes")
 	} else{
-	  varNames <- c("gbifKey", "country", "decimalLatitude", "decimalLongitude",
+	  varNames <- c("occurrenceID", "country", "decimalLatitude", "decimalLongitude",
 	                "catalogNumber", "earliestDateCollected", "latestDateCollected" )
 	}
 	dims <- c(length(nodes), length(varNames))
