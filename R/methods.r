@@ -29,25 +29,29 @@ gbifdata <- function(input, ...) UseMethod("gbifdata")
 #' @param input Input object from a call to occurrencelist, occurrencelist_many, or densitylist.
 #' @param minimal Only applies to occurrencelist data. If TRUE, returns only name, lat, 
 #'    long fields; defaults to TRUE. 
+#' @param coordinatestatus Return only rows of data.frame that have lat and long data.
 #' @param ... further arguments
 #' @method gbifdata gbiflist
 #' @export
-gbifdata.gbiflist <- function(input, minimal=TRUE, ...)
+gbifdata.gbiflist <- function(input, coordinatestatus=FALSE, minimal=TRUE, ...)
 {  
   if(!is.gbiflist(input))
-    stop("Input is not of class gbiflist")  
+    stop("Input is not of class gbiflist")
   
   input <- data.frame(input)
   input$decimalLatitude <- as.numeric(input$decimalLatitude)
   input$decimalLongitude <- as.numeric(input$decimalLongitude)
   
-  input2 <- input[complete.cases(input$decimalLatitude, input$decimalLatitude), ]
-  tomap <- input2[-(which(input2$decimalLatitude <=90 || input2$decimalLongitude <=180)), ]
-  input2$taxonName <- as.factor(capwords(input2$taxonName, onlyfirst=TRUE))
+  if(coordinatestatus){
+    input <- input[complete.cases(input$decimalLatitude, input$decimalLatitude), ]
+  }
+  
+  input$taxonName <- as.factor(capwords(input$taxonName, onlyfirst=TRUE))
   
   if(minimal)
-    input2 <- input2[,c("taxonName","decimalLatitude","decimalLongitude")]
-  return( input2 )
+    input <- input[,c("taxonName","decimalLatitude","decimalLongitude")]
+  
+  return( input )
 }
 
 #' Gbifdens method
