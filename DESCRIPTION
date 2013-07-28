@@ -51,3 +51,4 @@ Collate:
     'rgbif-package.R'
     'stylegeojson.r'
     'togeojson.r'
+    'occurrencelist_all.R'

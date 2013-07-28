@@ -1,27 +1,8 @@
-\name{occurrencelist}
-\alias{occurrencelist}
-\title{Occurrencelist searches for taxon concept records matching a range of filters.}
+\name{occurrencelist_all}
+\alias{occurrencelist_all}
+\title{Occurrencelist_all carries out an occurrencelist query for a single name and all its name variants according to GBIF's name matching.}
 \usage{
-  occurrencelist(scientificname = NULL,
-    taxonconceptkey = NULL, dataproviderkey = NULL,
-    dataresourcekey = NULL, institutioncode = NULL,
-    collectioncode = NULL, catalognumber = NULL,
-    resourcenetworkkey = NULL, basisofrecordcode = NULL,
-    minlatitude = NULL, maxlatitude = NULL,
-    minlongitude = NULL, maxlongitude = NULL,
-    minaltitude = NULL, maxaltitude = NULL,
-    mindepth = NULL, maxdepth = NULL, cellid = NULL,
-    centicellid = NULL, typesonly = NULL,
-    coordinatestatus = NULL, coordinateissues = NULL,
-    hostisocountrycode = NULL, originisocountrycode = NULL,
-    originregioncode = NULL, startdate = NULL,
-    enddate = NULL, startyear = NULL, endyear = NULL,
-    year = NULL, month = NULL, day = NULL,
-    modifiedsince = NULL, startindex = NULL,
-    maxresults = 10, format = "brief", icon = NULL,
-    mode = NULL, stylesheet = NULL, removeZeros = FALSE,
-    writecsv = NULL, curl = getCurlHandle(),
-    fixnames = "none")
+  occurrencelist_all(scientificname, ...)
 }
 \arguments{
   \item{scientificname}{scientitic name of taxon. See
@@ -182,8 +163,9 @@
   option), or do nothing, respectively. Default is "none".}
 }
 \description{
-  Occurrencelist searches for taxon concept records
-  matching a range of filters.
+  Occurrencelist_all carries out an occurrencelist query
+  for a single name and all its name variants according to
+  GBIF's name matching.
 }
 \details{
   Including many possible values for a particular
@@ -237,23 +219,12 @@
 \examples{
 \dontrun{
 # Query for a single species
-occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE,
+# compare the names returned by occurrencelist to occurrencelist_all
+occurrencelist(scientificname = 'Aristolochia serpentaria', coordinatestatus = TRUE,
    maxresults = 40)
-occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE,
-   maxresults = 5)
+occurrencelist_all(scientificname = 'Aristolochia serpentaria', coordinatestatus = TRUE,
+   maxresults = 40)
 
-# Query for many species, in this case using parallel fuctionality with plyr::llply
-# Also, see \\code{\\link{occurrencelist_many}} as an alternative way to search for
-# many species, which is better for going straight to a map with the output data.
-library(doMC)
-registerDoMC(cores=4)
-splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
-out <- llply(splist, function(x) occurrencelist(x, coordinatestatus = TRUE, maxresults = 100), .parallel=T)
-lapply(out, function(x) head(gbifdata(x)))
-
-# Write the output to csv file
-occurrencelist(scientificname = 'Erebia gorge*',
-   coordinatestatus = TRUE, maxresults = 200, writecsv="~/adsdf.csv")
 }
 }
 
