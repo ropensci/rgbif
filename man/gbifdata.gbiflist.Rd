@@ -3,7 +3,7 @@
 \title{Gbiflist method}
 \usage{
   \method{gbifdata}{gbiflist} (input,
-    coordinatestatus = TRUE, minimal = TRUE, ...)
+    coordinatestatus = FALSE, minimal = TRUE, ...)
 }
 \arguments{
   \item{input}{Input object from a call to occurrencelist,

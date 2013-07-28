@@ -14,16 +14,12 @@
 #' library(doMC)
 #' registerDoMC(cores=4)
 #' splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
-#' out <- llply(splist, function(x) occurrencelist(x, coordinatestatus = TRUE, 
-#'    maxresults = 100), .parallel=T)
-#' lapply(out, head)
+#' out <- llply(splist, function(x) occurrencelist(x, coordinatestatus = TRUE, maxresults = 100), .parallel=T)
+#' lapply(out, function(x) head(gbifdata(x)))
 #'
 #' # Write the output to csv file
 #' occurrencelist(scientificname = 'Erebia gorge*', 
 #'    coordinatestatus = TRUE, maxresults = 200, writecsv="~/adsdf.csv")
-#'    
-#' # Query for many species in the same string
-#' occurrencelist(scientificname = c('Puma concolor','Accipiter erythronemius'), coordinatestatus = TRUE)
 #' }
 #' @export
 occurrencelist <- function(scientificname = NULL, taxonconceptkey = NULL,
