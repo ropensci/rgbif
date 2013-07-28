@@ -4,10 +4,10 @@
 #' @examples \dontrun{
 #' # Query for a single species
 #' # compare the names returned by occurrencelist to occurrencelist_all
- occurrencelist(scientificname = 'Aristolochia serpentaria', coordinatestatus = TRUE, 
-    maxresults = 40)
- occurrencelist_all(scientificname = 'Aristolochia serpentaria', coordinatestatus = TRUE, 
-    maxresults = 40)
+#' occurrencelist(scientificname = 'Aristolochia serpentaria', coordinatestatus = TRUE, 
+#'    maxresults = 40)
+#' occurrencelist_all(scientificname = 'Aristolochia serpentaria', coordinatestatus = TRUE, 
+#'    maxresults = 40)
 #' 
 #' }
 #' @export
