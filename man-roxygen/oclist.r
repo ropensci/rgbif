@@ -1,5 +1,5 @@
-#' @param  scientificname scientitic name of taxon (character, see example)
-#' @param  taxonconceptkey unique key for taxon (numeric)
+#' @param  scientificname scientitic name of taxon. See details. (character)
+#' @param  taxonconceptkey unique key for taxon. See details (numeric)
 #' @param  dataproviderkey Filter records to those provided by the supplied
 #'    numeric key for a data provider. See \link{providers}. (character)
 #' @param  dataresourcekey Filter records to those provided by the supplied
@@ -31,7 +31,6 @@
 #' @param  cellid  identifier for a one degree cell (O - 64,799)
 #' @param  centicellid  identifier for a 0.1 degree cell within a one degree cell 
 #' @param  typesonly  if set to "true", return only records with a type status specified.
-#' @param  georeferencedonly  This option is deprecated.
 #' @param  coordinatestatus  if set to "true", return only records with coordinates. 
 #'    If set to "false", return only records without coordinates.
 #' @param  coordinateissues  if set to "true", return only records for which the portal 
@@ -64,9 +63,10 @@
 #     one of: brief or darwin (character) default is brief.
 #' @param  icon  (only when format is set to kml) specified the URL for an icon
 #'    to be used for the KML Placemarks.
-#' @param mode Specifies whether the response data should (as far as possible)  
-#'    be the raw values originally retrieved from the data resource or processed 
-#'    (normalised) values used within the data portal (character)
+#' @param mode One of processed or raw. Specifies whether the response data 
+#'    should (as far as possible) be the raw values originally retrieved from 
+#'    the data resource or processed (normalised) values used within the data 
+#'    portal (character)
 #' @param stylesheet Sets the URL of the stylesheet to be associated with the
 #     response document.
 #' @param removeZeros remove records with both Lat Long zero values (logical) 
@@ -78,3 +78,39 @@
 #' 		records that match original search term, change all names to the original 
 #' 		search term (beware using this option), or do nothing, respectively. Default is
 #'   	"none".
+#' @details
+#' Including many possible values for a particular parameter: The following 
+#' parameters may have many values passed to them (e.g., like parameter=c('a','b')):
+#' scientificname, taxonconceptkey, dataproviderkey, dataresourcekey, 
+#' resourcenetworkkey, basisofrecordcode, cellid, centicellid, hostisocountrycode, 
+#' originisocountrycode, originregioncode, year, month, and day.
+#' 
+#' More on scientificname: Returns only records where the scientific name matches 
+#' that supplied - this is based on the scientific name found in the original 
+#' record from the data provider and does not make use of extra knowledge of 
+#' possible synonyms or of child taxa.  For these functions, use taxonconceptkey. 
+#' Including an asterisk '*' in the search string causes the service to return 
+#' records for any name starting with the string preceding the asterisk. There 
+#' must be at least three characters preceding the asterisk. The scientificname 
+#' parameter may be repeated within a single request - the results will include 
+#' records matching any of the supplied scientific names.
+#' 
+#' More on taxonconceptkey: Returns only records which are for the taxon identified
+#' by the supplied numeric key, including any records provided under synonyms of 
+#' the taxon concerned, and any records for child taxa (e.g. all genera and 
+#' species within a family).  Values for taxonconceptkey can be found through the 
+#' taxon web service (see http://data.gbif.org/ws/rest/taxon).  Note that the 
+#' service will always search using the corresponding concept in the synthetic 
+#' generated "PORTAL" taxonomy (even if the taxonconceptkey is for a concept from
+#' a specific resource.  Use dataresourcekey to limit the search to a single data 
+#' resource.  The most efficient and thorough way to search will be to limit 
+#' searches to taxa belonging to the following ranks: kingdom, phylum, class, 
+#' order, family, genus, species, any infraspecific rank. Each record returned 
+#' from this action (and from the get action) also includes a taxonKey attribute 
+#' which can be used in the taxonconceptkey parameter on subsequent invocations 
+#' of the list and count actions. The taxonconceptkey parameter may be repeated 
+#' within a single request - the results will include records for any of the 
+#' specified taxa.
+#' 
+#' See the GBIF API docs for more details on each parameter:
+#' http://data.gbif.org/ws/rest/occurrence

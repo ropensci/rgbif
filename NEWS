@@ -1,3 +1,11 @@
+rgbif 0.3.2
+===============
+
+BUG FIXES
+
+* Removed georeferencedonly parameter - is deprecated in the GBIF API
+
+
 rgbif 0.3.0
 ===============
 

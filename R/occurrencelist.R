@@ -21,6 +21,9 @@
 #' # Write the output to csv file
 #' occurrencelist(scientificname = 'Erebia gorge*', 
 #'    coordinatestatus = TRUE, maxresults = 200, writecsv="~/adsdf.csv")
+#'    
+#' # Query for many species in the same string
+#' occurrencelist(scientificname = c('Puma concolor','Accipiter erythronemius'), coordinatestatus = TRUE)
 #' }
 #' @export
 occurrencelist <- function(scientificname = NULL, taxonconceptkey = NULL,
@@ -29,13 +32,12 @@ occurrencelist <- function(scientificname = NULL, taxonconceptkey = NULL,
 		basisofrecordcode = NULL, minlatitude = NULL, maxlatitude = NULL,
 		minlongitude = NULL, maxlongitude = NULL, minaltitude = NULL, maxaltitude = NULL,
 		mindepth = NULL, maxdepth = NULL, cellid = NULL, centicellid = NULL,
-		typesonly = NULL, georeferencedonly = NULL, coordinatestatus = NULL,
-		coordinateissues = NULL, hostisocountrycode = NULL, originisocountrycode = NULL,
-		originregioncode = NULL, startdate = NULL, enddate = NULL, startyear = NULL,
-		endyear = NULL, year = NULL, month = NULL, day = NULL, modifiedsince = NULL,
-		startindex = NULL, maxresults = 10, format = "brief", icon = NULL,
-		mode = NULL, stylesheet = NULL, removeZeros = FALSE, writecsv = NULL,
-		curl = getCurlHandle(), fixnames = "none") 
+		typesonly = NULL, coordinatestatus = NULL, coordinateissues = NULL, 
+    hostisocountrycode = NULL, originisocountrycode = NULL,originregioncode = NULL, 
+    startdate = NULL, enddate = NULL, startyear = NULL,endyear = NULL, year = NULL, 
+    month = NULL, day = NULL, modifiedsince = NULL, startindex = NULL, maxresults = 10, 
+    format = "brief", icon = NULL, mode = NULL, stylesheet = NULL, removeZeros = FALSE, 
+    writecsv = NULL, curl = getCurlHandle(), fixnames = "none") 
 {	
 	url = "http://data.gbif.org/ws/rest/occurrence/list"
 	
@@ -65,7 +67,7 @@ occurrencelist <- function(scientificname = NULL, taxonconceptkey = NULL,
 	outout <- list()
 	while(sumreturned < maxresults){
 		iter <- iter + 1
-		if(is.null(args)){ tt <- getURL(url) } else
+		if(is.null(args)){ tt <- getURL(url, curl = curl) } else
 			{ tt <- getForm(url, .params = args, curl = curl) }
 		outlist <- xmlParse(tt)
 		numreturned <- as.numeric(xpathSApply(outlist, "//gbif:summary/@totalReturned", 
