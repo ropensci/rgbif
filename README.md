@@ -5,8 +5,30 @@
 ## About
 This set of functions/package will access data from [GBIF](http://www.gbif.org/) using their API methods. 
 
-See documentation the GBIF API here:  
-http://data.gbif.org/tutorial/services
+## Transitioning to the new GBIF API
+
++ The old GBIF API
+	+ See documentation here: http://data.gbif.org/tutorial/services
++ The new GBIF API
+	+ See documentation here: http://dev.gbif.org/wiki/display/POR/Webservice+API
+
+The rgbif branch `newapi` will have development code to use the new GBIF API, and will be folded into the master branch at some later point. You can use code on the `newapi` branch, but be nice, don't hit it too hard. 
+
+Changes in the new GBIF API from last with respect to `rgbif`:
+
++ asdf
++ adf
++ asdf
++ asdf
++ af
++ af
++ f
++ f
++ af
++ asdf
++ asf
++ af
++ f
 
 ## Install
 
