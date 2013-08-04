@@ -39,19 +39,23 @@ gbifdata.gbiflist <- function(input, coordinatestatus=FALSE, minimal=TRUE, ...)
     stop("Input is not of class gbiflist")
   
   input <- data.frame(input)
-  input$decimalLatitude <- as.numeric(input$decimalLatitude)
-  input$decimalLongitude <- as.numeric(input$decimalLongitude)
   
-  if(coordinatestatus){
-    input <- input[complete.cases(input$decimalLatitude, input$decimalLatitude), ]
+  if(nrow(input) == 0){
+    warning("no data for that taxon, sorry")
+    return( NULL )
+  } else
+  {
+    input$decimalLatitude <- as.numeric(input$decimalLatitude)
+    input$decimalLongitude <- as.numeric(input$decimalLongitude)
+    
+    if(coordinatestatus){
+      input <- input[complete.cases(input$decimalLatitude, input$decimalLatitude), ]
+    }
+    input$taxonName <- as.factor(capwords(input$taxonName, onlyfirst=TRUE))
+    if(minimal)
+      input <- input[,c("taxonName","decimalLatitude","decimalLongitude")]
+    return( input )
   }
-  
-  input$taxonName <- as.factor(capwords(input$taxonName, onlyfirst=TRUE))
-  
-  if(minimal)
-    input <- input[,c("taxonName","decimalLatitude","decimalLongitude")]
-  
-  return( input )
 }
 
 #' Gbifdens method
