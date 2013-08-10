@@ -35,7 +35,7 @@ gbifdata <- function(input, ...) UseMethod("gbifdata")
 #' @export
 gbifdata.gbiflist <- function(input, coordinatestatus=FALSE, minimal=TRUE, ...)
 {  
-  if(!is.gbiflist(input))
+  if(!is.gbiflist(input)) 
     stop("Input is not of class gbiflist")
   
   input <- data.frame(input)
