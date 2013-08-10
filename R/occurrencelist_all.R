@@ -1,6 +1,7 @@
 #' Occurrencelist_all carries out an occurrencelist query for a single name and all its name variants according to GBIF's name matching.
 #'
-#' @template oclist
+#' @param scientificname A scientific name. (character)
+#' @param ... Further arguments passed on to occurrencelist_many
 #' @examples \dontrun{
 #' # Query for a single species
 #' # compare the names returned by occurrencelist to occurrencelist_all
