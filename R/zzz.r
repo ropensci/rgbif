@@ -45,3 +45,25 @@ ldfast <- function(x, convertvec=FALSE){
   else
     do.call(rbind.fill, x)
 }
+
+#' Parser for gbif data
+#' @param input A list
+#' @param minimal Get minimal input, default to TRUE
+#' @export
+#' @keywords internal
+datasetparser <- function(input, minimal=TRUE){
+  parse <- function(x){
+    x[sapply(x, length) == 0] <- "none"
+    contacts <- ldfast(x$contacts, TRUE)
+    endpoints <- ldfast(x$endpoints, TRUE)
+    identifiers <- ldfast(x$identifiers, TRUE)
+    rest <- x[!names(x) %in% c('contacts','endpoints','identifiers')]
+    list(other=rest, contacts=contacts, endpoints=endpoints, identifiers=identifiers)
+  }
+  if(is.character(input[[1]])){
+    parse(input)
+  } else
+  {
+    lapply(input, parse)
+  }
+}

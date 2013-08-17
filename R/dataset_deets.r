@@ -2,9 +2,16 @@
 #' 
 #' @import 
 #' @param uuid A dataset UUID.
+#' @param return One of data, hier, meta, or all. If data, a data.frame with the 
+#'    data. hier returns the classifications in a list for each record. meta 
+#'    returns the metadata for the entire call. all gives all data back in a list.
+#' @param callopts Pass on options to GET 
 #' @examples \dontrun{
 #' dataset_deets(uuid='28573c0a-b833-41b1-9999-56c6b9bce519')
-#' dataset_deets(uuid=c('28573c0a-b833-41b1-9999-56c6b9bce519','3f8a1297-3259-4700-91fc-acc4170b27ce'), 'endpoints')
+#' dataset_deets(uuid=c('28573c0a-b833-41b1-9999-56c6b9bce519',
+#'    '3f8a1297-3259-4700-91fc-acc4170b27ce'), 'endpoints')
+#' dataset_deets(uuid=c('28573c0a-b833-41b1-9999-56c6b9bce519',
+#'    '3f8a1297-3259-4700-91fc-acc4170b27ce'), 'contacts')
 #' }
 dataset_deets <- function(uuid, return='all', callopts=list())
 {
@@ -48,25 +55,3 @@ dataset_deets <- function(uuid, return='all', callopts=list())
       { data }
 }
 # http://api.gbif.org/dataset/28573c0a-b833-41b1-9999-56c6b9bce519
-
-#' Parser for gbif data
-#' @param input A list
-#' @param minimal Get minimal input, default to TRUE
-#' @export
-#' @keywords internal
-datasetparser <- function(input, minimal=TRUE){
-  parse <- function(x){
-    x[sapply(x, length) == 0] <- "none"
-    contacts <- ldfast(x$contacts, TRUE)
-    endpoints <- ldfast(x$endpoints, TRUE)
-    identifiers <- ldfast(x$identifiers, TRUE)
-    rest <- x[!names(x) %in% c('contacts','endpoints','identifiers')]
-    list(other=rest, contacts=contacts, endpoints=endpoints, identifiers=identifiers)
-  }
-  if(is.character(input[[1]])){
-    parse(input)
-  } else
-  {
-    lapply(input, parse)
-  }
-}
