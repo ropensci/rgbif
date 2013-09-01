@@ -15,7 +15,14 @@ gbifparser <- function(input, minimal=TRUE){
     #     geog <- data.frame(name=usename, x[!names(x) %in% c(h1,h2)])
     alldata <- data.frame(name=usename, x)
     if(minimal)
-      alldata <- alldata[c('name','longitude','latitude')]
+      if(all(c('latitude','longitude') %in% names(alldata)))
+      {
+        alldata <- alldata[c('name','longitude','latitude')]
+      } else
+      {
+        alldata <- alldata['name']
+        alldata <- data.frame(alldata, latitude=NA, longitude=NA)
+      }
     list(hierarch=hier, data=alldata)
   }
   if(is.numeric(input[[1]])){
