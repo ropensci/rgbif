@@ -23,17 +23,17 @@
 #' }
 #' @export
 occurrencelist <- function(scientificname = NULL, taxonconceptkey = NULL,
-		dataproviderkey = NULL, dataresourcekey = NULL, institutioncode = NULL,
-		collectioncode = NULL, catalognumber = NULL, resourcenetworkkey = NULL,
-		basisofrecordcode = NULL, minlatitude = NULL, maxlatitude = NULL,
-		minlongitude = NULL, maxlongitude = NULL, minaltitude = NULL, maxaltitude = NULL,
-		mindepth = NULL, maxdepth = NULL, cellid = NULL, centicellid = NULL,
-		typesonly = NULL, coordinatestatus = NULL, coordinateissues = NULL, 
-    hostisocountrycode = NULL, originisocountrycode = NULL,originregioncode = NULL, 
-    startdate = NULL, enddate = NULL, startyear = NULL,endyear = NULL, year = NULL, 
-    month = NULL, day = NULL, modifiedsince = NULL, startindex = NULL, maxresults = 10, 
-    format = "brief", icon = NULL, mode = NULL, stylesheet = NULL, removeZeros = FALSE, 
-    writecsv = NULL, curl = getCurlHandle(), fixnames = "none") 
+	dataproviderkey = NULL, dataresourcekey = NULL, institutioncode = NULL,
+	collectioncode = NULL, catalognumber = NULL, resourcenetworkkey = NULL,
+	basisofrecordcode = NULL, minlatitude = NULL, maxlatitude = NULL,
+	minlongitude = NULL, maxlongitude = NULL, minaltitude = NULL, maxaltitude = NULL,
+	mindepth = NULL, maxdepth = NULL, cellid = NULL, centicellid = NULL,
+	typesonly = NULL, coordinatestatus = NULL, coordinateissues = NULL, 
+  hostisocountrycode = NULL, originisocountrycode = NULL,originregioncode = NULL, 
+  startdate = NULL, enddate = NULL, startyear = NULL,endyear = NULL, year = NULL, 
+  month = NULL, day = NULL, modifiedsince = NULL, startindex = NULL, maxresults = 10, 
+  format = "brief", icon = NULL, mode = NULL, stylesheet = NULL, removeZeros = FALSE, 
+  writecsv = NULL, curl = getCurlHandle(), fixnames = "none") 
 {	
 	url = "http://data.gbif.org/ws/rest/occurrence/list"
 	
@@ -72,12 +72,13 @@ occurrencelist <- function(scientificname = NULL, taxonconceptkey = NULL,
                    error = function(e) e$message)	
 		if(ss=="subscript out of bounds"){url <- NULL} else {
 			url <- sub("&maxresults=[0-9]+", 
-                 paste("&maxresults=",maxresults-sumreturned,sep=''), ss)
+                 paste("&maxresults=",maxresults-numreturned,sep=''), ss)
+# 			         paste("&maxresults=",maxresults-sumreturned,sep=''), ss)
 		}
 		args <- NULL
 		sumreturned <- sumreturned + numreturned
-		if(is.null(url))
-			maxresults <- sumreturned
+# 		if(is.null(url))
+# 			maxresults <- sumreturned
 		outout[[iter]] <- outlist
 	}
 	
