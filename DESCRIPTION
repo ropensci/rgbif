@@ -33,3 +33,8 @@ Collate:
     'name_lookup.r'
     'occ_get.r'
     'occ_search.r'
+    'country_codes.r'
+    'dataset_deets.r'
+    'dataset_metrics.r'
+    'gbif_lookup.r'
+    'zzz.r'

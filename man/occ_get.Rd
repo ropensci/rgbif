@@ -1,6 +1,6 @@
 \name{occ_get}
 \alias{occ_get}
-\title{Get a GBIF occurrence.}
+\title{Get data for a GBIF occurrence.}
 \usage{
   occ_get(key = NULL, return = "all", minimal = TRUE,
     callopts = list())
@@ -20,7 +20,7 @@
   \item{callopts}{Pass on options to GET}
 }
 \description{
-  Get a GBIF occurrence.
+  Get data for a GBIF occurrence.
 }
 \examples{
 \dontrun{

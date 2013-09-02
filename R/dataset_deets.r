@@ -1,6 +1,6 @@
 #' Geta details on a dataset.
 #' 
-#' @import 
+#' @import httr
 #' @param uuid A dataset UUID.
 #' @param return One of data, hier, meta, or all. If data, a data.frame with the 
 #'    data. hier returns the classifications in a list for each record. meta 

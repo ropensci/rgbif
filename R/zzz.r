@@ -33,6 +33,37 @@ gbifparser <- function(input, minimal=TRUE){
   }
 }
 
+#' Parser for gbif data
+#' @param input A list
+#' @param minimal Get minimal input, default to TRUE
+#' @export
+#' @keywords internal
+gbifparser_verbatim <- function(input, minimal=TRUE){
+  parse <- function(x){
+    alldata <- data.frame(key=x$key, x$fields)
+    if(minimal){
+      if(all(c('verbatimLatitude','verbatimLongitude') %in% names(alldata)))
+      {
+        alldata[c('scientificName','verbatimLatitude','verbatimLongitude')]
+      } else
+      {
+        name <- alldata['scientificName']
+        data.frame(name, verbatimLatitude=NA, verbatimLongitude=NA)
+      }
+    } else
+    {
+      alldata
+    }
+  }
+  if(is.numeric(input[[1]])){
+    parse(input)
+  } else
+  {
+    rbind.fill(lapply(input, parse))
+  }
+}
+
+
 #' Replacement function for ldply that should be faster.
 #'
 #' @importFrom plyr rbind.fill

@@ -1,3 +1,5 @@
+export(country_codes)
+export(datasetparser)
 export(gbif_lookup)
 export(gbifparser)
 export(ldfast)
