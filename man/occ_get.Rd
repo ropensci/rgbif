@@ -2,8 +2,8 @@
 \alias{occ_get}
 \title{Get data for a GBIF occurrence.}
 \usage{
-  occ_get(key = NULL, return = "all", minimal = TRUE,
-    callopts = list())
+  occ_get(key = NULL, return = "all", verbatim = FALSE,
+    minimal = TRUE, callopts = list())
 }
 \arguments{
   \item{key}{Occurrence key}
@@ -24,12 +24,15 @@
 }
 \examples{
 \dontrun{
-occ_get(key=773433533, 'data')
+occ_get(key=773433533, return='data')
 occ_get(key=773433533, 'hier')
 occ_get(key=773433533, 'all')
 
 # many occurrences
-occ_get(key=c(773433533,767047552,756083505,754201727,686550585), 'data')
+occ_get(key=c(773433533,767047552,756083505,754201727), 'data')
+
+# Verbatim data
+occ_get(key=c(773433533,767047552,756083505,754201727), verbatim=TRUE)
 }
 }
 

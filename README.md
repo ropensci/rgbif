@@ -16,19 +16,7 @@ The rgbif branch `newapi` will have development code to use the new GBIF API, an
 
 Changes in the new GBIF API from last with respect to `rgbif`:
 
-+ asdf
-+ adf
-+ asdf
-+ asdf
-+ af
-+ af
-+ f
-+ f
-+ af
-+ asdf
-+ asf
-+ af
-+ f
++ ...
 
 ## Install
 
