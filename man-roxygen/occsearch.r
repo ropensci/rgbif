@@ -16,4 +16,3 @@
 #'    data. hier returns the classifications in a list for each record. meta 
 #'    returns the metadata for the entire call. all gives all data back in a list. 
 #' @return A data.frame or list
-#' @export

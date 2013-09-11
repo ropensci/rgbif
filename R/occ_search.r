@@ -31,6 +31,7 @@
 #' # Pass in curl options for extra fun
 #' occ_search(taxonKey=key, limit=20, return='hier', callopts=verbose())
 #' }
+#' @export
 occ_search <- function(taxonKey=NULL, boundingBox=NULL, collectorName=NULL, 
   basisOfRecord=NULL, datasetKey=NULL, date=NULL, catalogNumber=NULL, 
   callopts=list(), limit=20, start=NULL, minimal=TRUE, return='all')
