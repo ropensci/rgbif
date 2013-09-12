@@ -46,3 +46,4 @@ Collate:
     'organizations.r'
     'gbifmap.r'
     'occ_count.r'
+    'deprecated.r'
