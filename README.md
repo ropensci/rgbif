@@ -20,34 +20,17 @@ Changes in the new GBIF API from last with respect to `rgbif`:
 
 ## Install
 
-### Install the version from CRAN:
-
-```R
-install.packages("rgbif")
-require(rgbif)
-```
-
-### Install the development version using `install_github` within Hadley's [devtools](https://github.com/hadley/devtools) package.
+### Install the development version on the `newapi` branch using `install_github`.
 
 ```R
 install.packages("devtools")
 require(devtools)
 
-install_github("rgbif", "ropensci")
+install_github("rgbif", "ropensci", ref="newapi")
 require(rgbif)
 ```
 
-Note: 
-
-Windows users have to first install [Rtools](http://cran.r-project.org/bin/windows/Rtools/).
-
-### Packages `rgbif` depends on
-+ XML
-+ RCurl (>= 1.6)
-+ plyr
-+ ggplot2
-+ maps
-+ roxygen2 (as a suggest)
+Note: Windows users have to first install [Rtools](http://cran.r-project.org/bin/windows/Rtools/).
 
 ### Visualize occurrence data
 
