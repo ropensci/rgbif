@@ -45,3 +45,4 @@ Collate:
     'nodes.r'
     'organizations.r'
     'gbifmap.r'
+    'occ_count.r'

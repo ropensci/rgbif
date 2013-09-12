@@ -7,6 +7,8 @@
 #' @importFrom plyr compact
 #' @template occsearch
 #' @template occ
+#' @param georeferenced Return only occurence records with lat/long data (TRUE) or
+#' all records (FALSE, default).
 #' @examples \dontrun{
 #' # Search by species name, using \code{gbif_lookup} first to get key
 #' key <- gbif_lookup(name='Helianthus annuus', kingdom='plants')$speciesKey

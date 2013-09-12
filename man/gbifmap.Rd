@@ -54,9 +54,15 @@
 }
 \examples{
 \dontrun{
-key <- gbif_lookup(name='Accipiter erythronemius', kingdom='plants')$speciesKey
+# Make a map of Puma concolor occurrences
+key <- gbif_lookup(name='Puma concolor', kingdom='plants')$speciesKey
 dat <- occ_search(taxonKey=key, return='data', limit=300)
-gbifmap(dat)
+gbifmap(input=dat)
+
+# Plot more Puma concolor occurrences
+dat <- occ_search(taxonKey=key, return='data', limit=1200)
+nrow(dat)
+gbifmap(input=dat)
 }
 }
 

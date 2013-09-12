@@ -38,6 +38,9 @@
   \item{limit}{Number of records to return}
 
   \item{start}{Record number to start at}
+
+  \item{georeferenced}{Return only occurence records with
+  lat/long data (TRUE) or all records (FALSE, default).}
 }
 \value{
   A data.frame or list
