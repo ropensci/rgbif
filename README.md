@@ -36,7 +36,7 @@ require(rgbif)
 
 Note: Windows users have to first install [Rtools](http://cran.r-project.org/bin/windows/Rtools/).
 
-### Visualize occurrence data
+### Search for occurrence data
 
 #### A single species. Get the taxonKey first with `gbif_lookup`.
 
@@ -100,6 +100,8 @@ $`2498387`
 4 Aix sponsa -120.47935 37.31153
 5 Aix sponsa  -76.70940 38.74238
 ```
+
+### Maps
 
 #### Make a simple map of species occurrences. 
 
