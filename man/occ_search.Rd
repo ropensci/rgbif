@@ -47,7 +47,10 @@
 }
 \description{
   See details for information about the sources. Paging is
-  supported
+  supported. Note that you can pass in a vector to one of
+  taxonkey, datasetKey, and catalogNumber parameters in a
+  function call, but not a vector >1 of the three
+  parameters at the same time.
 }
 \examples{
 \dontrun{
@@ -74,6 +77,11 @@ occ_search(taxonKey=key, limit=20, return='hier')
 
 # Pass in curl options for extra fun
 occ_search(taxonKey=key, limit=20, return='hier', callopts=verbose())
+
+# Search for many species
+splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
+keys <- sapply(splist, function(x) gbif_lookup(name=x, kingdom='plants')$speciesKey, USE.NAMES=FALSE)
+occ_search(taxonKey=keys, limit=5, return='data')
 }
 }
 \references{
