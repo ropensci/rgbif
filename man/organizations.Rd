@@ -14,10 +14,10 @@
 
   \item{query}{Query nodes. Only used when data='all'}
 
-  \item{isocode}{A 2 letter country code. Only used if
-  data='country'.}
-
   \item{callopts}{Further args passed on to GET.}
+}
+\value{
+  A list.
 }
 \description{
   Organizations metadata.
@@ -25,9 +25,13 @@
 \examples{
 \dontrun{
 organizations()
+organizations(query="france")
 organizations(uuid="4b4b2111-ee51-45f5-bf5e-f535f4a1c9dc")
 organizations(data='contact', uuid="4b4b2111-ee51-45f5-bf5e-f535f4a1c9dc")
 organizations(data='pending')
 }
+}
+\references{
+  \url{http://dev.gbif.org/wiki/display/POR/Webservice+API}
 }
 

@@ -2,7 +2,11 @@
 #' 
 #' See details for information about the sources. Paging is supported
 #' 
+#' @template all
+#' @importFrom httr GET content verbose
+#' @importFrom plyr compact
 #' @template occsearch
+#' @template occ
 #' @examples \dontrun{
 #' # Search by species name, using \code{gbif_lookup} first to get key
 #' key <- gbif_lookup(name='Helianthus annuus', kingdom='plants')$speciesKey
@@ -32,19 +36,32 @@
 #' occ_search(taxonKey=key, limit=20, return='hier', callopts=verbose())
 #' }
 #' @export
-occ_search <- function(taxonKey=NULL, boundingBox=NULL, collectorName=NULL, 
-  basisOfRecord=NULL, datasetKey=NULL, date=NULL, catalogNumber=NULL, 
+occ_search <- function(taxonKey=NULL, georeferenced=NULL, boundingBox=NULL, 
+  collectorName=NULL, basisOfRecord=NULL, datasetKey=NULL, date=NULL, catalogNumber=NULL, 
   callopts=list(), limit=20, start=NULL, minimal=TRUE, return='all')
 {
   url = 'http://api.gbif.org/occurrence/search'
-  args <- compact(list(taxonKey=taxonKey, boundingBox=boundingBox, 
-                       collectorName=collectorName, 
-                       basisOfRecord=basisOfRecord, datasetKey=datasetKey, 
-                       date=date, catalogNumber=catalogNumber, limit=limit, 
-                       offset=start))
-  tt <- content(GET(url, query=args, callopts))
-  meta <- tt[c('offset','limit','endOfRecords','count')]
-  data <- tt$results
+  args <- compact(list(taxonKey=taxonKey, georeferenced=georeferenced, 
+                       boundingBox=boundingBox, collectorName=collectorName, 
+                       basisOfRecord=basisOfRecord, datasetKey=datasetKey, date=date, 
+                       catalogNumber=catalogNumber, limit=limit, offset=start))  
+  iter <- 0
+  sumreturned <- 0
+  outout <- list()
+  while(sumreturned < limit){
+    iter <- iter + 1
+    tt <- content(GET(url, query=args, callopts))
+    numreturned <- length(tt$results)
+    sumreturned <- sumreturned + numreturned
+    if(sumreturned<limit){
+      args$limit <- limit-numreturned
+      args$offset <- sumreturned
+    }
+    outout[[iter]] <- tt
+  }
+  
+  meta <- outout[[length(outout)]][c('offset','limit','endOfRecords','count')]
+  data <- sapply(outout, "[[", "results")
   data <- gbifparser(data, minimal=minimal)
   if(return=='data'){
     ldfast(lapply(data, "[[", "data"))

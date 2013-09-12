@@ -1,6 +1,7 @@
 #' Networks metadata.
 #' 
-#' @import httr
+#' @template all
+#' @importFrom httr GET content verbose
 #' @importFrom plyr compact
 #' @param data The type of data to get. Default is all data.
 #' @param uuid UUID of the data network provider. This must be specified if data

@@ -39,4 +39,7 @@ uuids = c("8cb55387-7802-40e8-86d6-d357a583c596","02c40d2a-1cba-4633-90b7-e36e5e
 sapply(uuids, nodes, data='identifier')
 }
 }
+\references{
+  \url{http://dev.gbif.org/wiki/display/POR/Webservice+API}
+}
 

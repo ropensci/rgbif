@@ -2,11 +2,11 @@
 \alias{occ_search}
 \title{Lookup names in all taxonomies.}
 \usage{
-  occ_search(taxonKey = NULL, boundingBox = NULL,
-    collectorName = NULL, basisOfRecord = NULL,
-    datasetKey = NULL, date = NULL, catalogNumber = NULL,
-    callopts = list(), limit = 20, start = NULL,
-    minimal = TRUE, return = "all")
+  occ_search(taxonKey = NULL, georeferenced = NULL,
+    boundingBox = NULL, collectorName = NULL,
+    basisOfRecord = NULL, datasetKey = NULL, date = NULL,
+    catalogNumber = NULL, callopts = list(), limit = 20,
+    start = NULL, minimal = TRUE, return = "all")
 }
 \arguments{
   \item{taxonKey}{Scientific name}
@@ -23,12 +23,6 @@
 
   \item{catalogNumber}{Catalog number}
 
-  \item{callopts}{Pass on options to GET}
-
-  \item{limit}{Number of records to return}
-
-  \item{start}{Record number to start at}
-
   \item{minimal}{Return just taxon name, latitude, and
   longitute if TRUE, otherwise all data. Default is TRUE.}
 
@@ -37,6 +31,13 @@
   classifications in a list for each record. meta returns
   the metadata for the entire call. all gives all data back
   in a list.}
+
+  \item{callopts}{Pass on options to httr::GET for more
+  refined control of http calls, and error handling}
+
+  \item{limit}{Number of records to return}
+
+  \item{start}{Record number to start at}
 }
 \value{
   A data.frame or list
@@ -74,5 +75,8 @@ unique(occ_search(taxonKey=key, limit=20, return='hier'))
 # Pass in curl options for extra fun
 occ_search(taxonKey=key, limit=20, return='hier', callopts=verbose())
 }
+}
+\references{
+  \url{http://dev.gbif.org/wiki/display/POR/Webservice+API}
 }
 

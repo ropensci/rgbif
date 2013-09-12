@@ -2,6 +2,9 @@
 #' 
 #' See details for information about the sources.
 #'
+#' @template all
+#' @importFrom httr GET content
+#' @importFrom plyr compact
 #' @template namelkup
 #' @export
 #' @examples \dontrun{
@@ -26,4 +29,3 @@ name_lookup <- function(query=NULL, canonical_name=NULL, class=NULL,
   data <- tt$results
   list(meta=meta, data=data)
 }
-# http://api.gbif.org/name_usage/search?class=mammalia

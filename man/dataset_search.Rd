@@ -9,51 +9,44 @@
     pretty = FALSE, description = FALSE)
 }
 \arguments{
-  \item{taxonKey}{Scientific name}
-
-  \item{boundingBox}{Location}
-
-  \item{collectorName}{Collector}
-
-  \item{basisOfRecord}{Basis of record}
-
-  \item{datasetKey}{Dataset}
-
-  \item{date}{Collection date}
-
-  \item{catalogNumber}{Catalog number}
-
-  \item{callopts}{Pass on options to GET}
+  \item{callopts}{Pass on options to httr::GET for more
+  refined control of http calls, and error handling}
 
   \item{limit}{Number of records to return}
 
   \item{start}{Record number to start at}
 
-  \item{minimal}{Return just taxon name, latitude, and
-  longitute if TRUE, otherwise all data. Default is TRUE.}
+  \item{query}{Query term(s) for full text search.}
 
-  \item{return}{One of data, hier, meta, or all. If data, a
-  data.frame with the data. hier returns the
-  classifications in a list for each record. meta returns
-  the metadata for the entire call. all gives all data back
-  in a list.}
+  \item{type}{Type of dataset, options include OCCURRENCE,
+  etc.}
 
-  \item{type}{}
+  \item{keyword}{Keyword to search by. Datasets can be
+  tagged by keywords, which you can search on.}
 
-  \item{keyword}{}
+  \item{owningOrg}{Hosting organization. A uuid string. See
+  \code{\link{organizations}}}
 
-  \item{owningOrg}{}
+  \item{networkOrigin}{Hosting organization. A uuid string.
+  See \code{\link{organizations}}}
 
-  \item{networkOrigin}{}
+  \item{hostingOrg}{Hosting organization. A uuid string.
+  See \code{\link{organizations}}}
 
-  \item{hostingOrg}{}
+  \item{decade}{Decade, e.g., 1980}
 
-  \item{decade}{}
+  \item{country}{Limit search to a country using isocodes.
+  See example.}
 
-  \item{country}{}
+  \item{pretty}{Print informative metadata using
+  \code{\link{cat}}. Not easy to manipulate output though.}
+
+  \item{description}{Return descriptions only (TRUE) or all
+  data (FALSE, default)}
 }
 \value{
-  A data.frame or list
+  A data.frame, list, or message printed to console (using
+  pretty=TRUE).
 }
 \description{
   This function does not search occurrence data, only the
@@ -84,6 +77,16 @@ dataset_search(type="OCCURRENCE", description=TRUE)
 
 # Return metadata in a more human readable way (hard to manipulate though)
 dataset_search(type="OCCURRENCE", pretty=TRUE)
+
+# Search by country code. Lookup isocodes first, and use US for United States
+isocodes[agrep("united", isocodes$name),]
+dataset_search(country="US")
+
+# Search by decade
+dataset_search(decade=1980)
 }
+}
+\references{
+  \url{http://dev.gbif.org/wiki/display/POR/Webservice+API}
 }
 

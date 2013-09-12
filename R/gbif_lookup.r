@@ -1,19 +1,40 @@
 #' Lookup names in the GBIF backbone taxonomy.
 #' 
-#' @import httr
+#' @template all
+#' @importFrom httr GET content verbose
 #' @importFrom plyr compact
-#' @param name
-#' @param kingdom
-#' 
+#' @param name Full scientific name potentially with authorship
+#' @param rank The rank given as our rank enum.
+#' @param kingdom If provided default matching will also try to match against this 
+#'    if no direct match is found for the name alone.
+#' @param phylum If provided default matching will also try to match against this 
+#'    if no direct match is found for the name alone.
+#' @param class If provided default matching will also try to match against this 
+#'    if no direct match is found for the name alone.
+#' @param order If provided default matching will also try to match against this 
+#'    if no direct match is found for the name alone.
+#' @param family If provided default matching will also try to match against this 
+#'    if no direct match is found for the name alone.
+#' @param genus If provided default matching will also try to match against this 
+#'    if no direct match is found for the name alone.
+#' @param strict If TRUE it (fuzzy) matches only the given name, but never a 
+#'    taxon in the upper classification
+#' @param verbose If TRUE show alternative matches considered which had been rejected.
+#' @param callopts Further args passed on to GET.
+#' @return A list.
 #' @export
 #' @examples \dontrun{
 #' gbif_lookup(name='Helianthus annuus', kingdom='plants')
+#' gbif_lookup(name='Helianthus', rank='genus', kingdom='plants')
 #' }
-gbif_lookup <- function(name, kingdom=NULL)
+gbif_lookup <- function(name, rank=NULL, kingdom=NULL, phylum=NULL, class=NULL, 
+                        order=NULL, family=NULL, genus=NULL, strict=FALSE, 
+                        verbose=FALSE, callopts=list())
 {
   url = 'http://api.gbif.org/lookup/name_usage'
-  args <- compact(list(name=name, kingdom=kingdom))
-  tt <- content(GET(url, query=args))
-  tt
+  args <- compact(list(name=name, rank=rank, kingdom=kingdom, phylum=phylum, 
+                       class=class, order=order, family=family, genus=genus, 
+                       strict=strict, verbose=verbose))
+  content(GET(url, query=args, callopts))
 }
 # http://api.gbif.org/lookup/name_usage/?name=helianthus%20annuus&kingdom=plants

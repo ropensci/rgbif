@@ -1,14 +1,17 @@
 #' Get data for a GBIF occurrence.
 #' 
-#' @import httr
+#' @template all
+#' @importFrom httr GET content verbose
 #' @importFrom plyr compact
 #' @param key Occurrence key
 #' @param return One of data, hier, meta, or all. If data, a data.frame with the 
 #'    data. hier returns the classifications in a list for each record. meta 
 #'    returns the metadata for the entire call. all gives all data back in a list. 
+#' @param verbatim Return verbatim object (TRUE) or cleaned up object (FALSE, default).
 #' @param minimal Return just taxon name, latitude, and longitute if TRUE, 
 #'    otherwise all data. Default is TRUE.
-#' @param callopts Pass on options to GET 
+#' @param callopts Further arguments passed on to the \code{\link{GET}} request.
+#' @return A data.frame or list.
 #' @export
 #' @examples \dontrun{
 #' occ_get(key=773433533, return='data')

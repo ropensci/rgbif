@@ -1,16 +1,18 @@
 #' Organizations metadata.
 #' 
-#' @import httr
-#' @importFrom plyr compact
+#' @template all
+#' @importFrom httr GET content verbose
+#' @importFrom plyr compact 
 #' @param data The type of data to get. Default is all data.
 #' @param uuid UUID of the data node provider. This must be specified if data
 #'    is anything other than 'all'.
 #' @param query Query nodes. Only used when data='all'
-#' @param isocode A 2 letter country code. Only used if data='country'.    
 #' @param callopts Further args passed on to GET.
+#' @return A list.
 #' @export
 #' @examples \dontrun{
 #' organizations()
+#' organizations(query="france")
 #' organizations(uuid="4b4b2111-ee51-45f5-bf5e-f535f4a1c9dc")
 #' organizations(data='contact', uuid="4b4b2111-ee51-45f5-bf5e-f535f4a1c9dc")
 #' organizations(data='pending')

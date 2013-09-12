@@ -5,7 +5,7 @@ Description: A programmatic interface to the
 Title: Interface to the Global Biodiversity Information Facility API methods
 Version: 0.3.0
 License: CC0
-Date: 2013-07-18
+Date: 2013-09-11
 Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com"),
     person("Carl", "Boettiger", role = "aut",
@@ -13,7 +13,9 @@ Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
     person("Karthik", "Ram", role = "aut",
     email = "karthik.ram@gmail.com"),
     person("Vijay", "Barve", role = "aut",
-    email = "vijay.barve@gmail.com"))
+    email = "vijay.barve@gmail.com"),
+    person("Dan", "Mcglinn", role = "aut",
+    email = "danmcglinn@gmail.com"))
 URL: https://github.com/ropensci/rgbif
 BugReports: https://github.com/ropensci/rgbif/issues
 LazyLoad: yes
@@ -42,3 +44,4 @@ Collate:
     'networks.r'
     'nodes.r'
     'organizations.r'
+    'gbifmap.r'

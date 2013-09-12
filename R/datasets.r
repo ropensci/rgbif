@@ -1,25 +1,30 @@
-#' Dataset metadata.
+#' Search for datasets and dataset metadata.
 #' 
-#' @import httr
+#' @template all
+#' @importFrom httr GET content verbose
 #' @importFrom plyr compact
 #' @param data The type of data to get. Default is all data.
+#' @param type Type of dataset, options include OCCURRENCE, etc.
 #' @param uuid UUID of the data node provider. This must be specified if data
 #'    is anything other than 'all'.
-#' @param query Query nodes. Only used when data='all'
-#' @param isocode A 2 letter country code. Only used if data='country'.    
+#' @param query Query term(s). Only used when data='all'
+#' @param id A metadata document id.
 #' @param callopts Further args passed on to GET.
+#' @return A list.
 #' @export
 #' @examples \dontrun{
 #' datasets()
+#' datasets(type="OCCURRENCE")
 #' datasets(uuid="a6998220-7e3a-485d-9cd6-73076bd85657")
 #' datasets(data='contact', uuid="a6998220-7e3a-485d-9cd6-73076bd85657")
 #' datasets(data='metadata', uuid="a6998220-7e3a-485d-9cd6-73076bd85657")
 #' datasets(data='metadata', uuid="a6998220-7e3a-485d-9cd6-73076bd85657", id=598)
 #' datasets(data=c('deleted','duplicate'))
 #' }
-datasets <- function(data = 'all', uuid = NULL, query = NULL, id = NULL, callopts=list())
+datasets <- function(data = 'all', type = NULL, uuid = NULL, query = NULL, id = NULL, 
+                     callopts=list())
 {
-  args <- compact(list(q = query))
+  args <- compact(list(q = query, type = type))
   
   data <- match.arg(data, choices=c('all', 'organization', 'contact', 'endpoint', 
                                     'identifier', 'tag', 'machinetag', 'comment', 

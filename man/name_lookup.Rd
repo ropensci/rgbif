@@ -10,6 +10,8 @@
     callopts = list())
 }
 \arguments{
+  \item{query}{Query term(s) for full text search.}
+
   \item{canonical_name}{Canonical name}
 
   \item{class}{Taxonomic class}
@@ -32,6 +34,8 @@
 
   \item{subgenus}{Taxonomic subgenus}
 
+  \item{rank}{Taxonomic rank}
+
   \item{vernacularName}{Vernacular (common) name}
 
   \item{callopts}{Further arguments passed on to the
@@ -47,5 +51,8 @@ out <- name_lookup('Helianthus annuus', rank="species")
 out$data[[1]][!names(out$data[[1]]) \%in\% c("descriptions","descriptionsSerialized")]
 llply(out$data, function(x) x[!names(x) \%in\% c("descriptions","descriptionsSerialized")])
 }
+}
+\references{
+  \url{http://dev.gbif.org/wiki/display/POR/Webservice+API}
 }
 

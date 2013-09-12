@@ -3,16 +3,23 @@
 #' This function does not search occurrence data, only the datasets that may
 #' contain occurrence data
 #' 
-#' @import httr
+#' @template all
+#' @importFrom httr GET content verbose
 #' @importFrom plyr compact
-#' @template occsearch
-#' @param type 
-#' @param keyword 
-#' @param owningOrg
-#' @param networkOrigin
-#' @param hostingOrg
-#' @param decade
-#' @param country
+#' @template occ
+#' @param query Query term(s) for full text search.
+#' @param type Type of dataset, options include OCCURRENCE, etc.
+#' @param keyword Keyword to search by. Datasets can be tagged by keywords, which
+#'    you can search on.
+#' @param owningOrg Hosting organization. A uuid string. See \code{\link{organizations}}
+#' @param networkOrigin Hosting organization. A uuid string. See \code{\link{organizations}}
+#' @param hostingOrg Hosting organization. A uuid string. See \code{\link{organizations}}
+#' @param decade Decade, e.g., 1980
+#' @param country Limit search to a country using isocodes. See example.
+#' @param pretty Print informative metadata using \code{\link{cat}}. Not easy to 
+#'    manipulate output though.
+#' @param description Return descriptions only (TRUE) or all data (FALSE, default)
+#' @return A data.frame, list, or message printed to console (using pretty=TRUE).
 #' @export
 #' @examples \dontrun{
 #' # Gets all datasets of type "OCCURRENCE".
@@ -38,6 +45,13 @@
 #' 
 #' # Return metadata in a more human readable way (hard to manipulate though)
 #' dataset_search(type="OCCURRENCE", pretty=TRUE)
+#' 
+#' # Search by country code. Lookup isocodes first, and use US for United States
+#' isocodes[agrep("united", isocodes$name),]
+#' dataset_search(country="US")
+#' 
+#' # Search by decade
+#' dataset_search(decade=1980)
 #' }
 dataset_search <- function(query= NULL, type = NULL, keyword = NULL,
   owningOrg = NULL, networkOrigin = NULL, hostingOrg = NULL, decade = NULL, 
@@ -47,7 +61,8 @@ dataset_search <- function(query= NULL, type = NULL, keyword = NULL,
   url <- 'http://api.gbif.org/dataset/search'
   args <- compact(list(q=query,type=type,keyword=keyword,owningOrg=owningOrg,
                        networkOrigin=networkOrigin,hostingOrg=hostingOrg,
-                       decade=decade,country=country,limit=limit,offset=start))
+                       decade=decade,iso_country_code=country,limit=limit,
+                       offset=start))
   tt <- content(GET(url, query=args, callopts))
   meta <- tt[!names(tt) == 'results']
   tt$results[[1]]
