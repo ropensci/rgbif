@@ -20,7 +20,7 @@
 #' occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a', return='data')
 #' 
 #' # Search by catalog number
-#' occ_search(catalogNumber='PlantAndMushroom.6845144', minimal=FALSE)
+#' occ_search(catalogNumber="49366")
 #' 
 #' # Occurrence data: lat/long data, and associated metadata with occurrences
 #' ## If return='data' the output is a data.frame of all data together 
@@ -31,48 +31,79 @@
 #' ## If return='meta' the output is a list of the hierarch for each record
 #' occ_search(taxonKey=key, limit=20, return='hier')
 #' 
-#' ## You can get the unique hiearchies easily using \code{unique}
-#' unique(occ_search(taxonKey=key, limit=20, return='hier'))
-#' 
 #' # Pass in curl options for extra fun
 #' occ_search(taxonKey=key, limit=20, return='hier', callopts=verbose())
 #' }
 #' @export
 occ_search <- function(taxonKey=NULL, georeferenced=NULL, boundingBox=NULL, 
-  collectorName=NULL, basisOfRecord=NULL, datasetKey=NULL, date=NULL, catalogNumber=NULL, 
-  callopts=list(), limit=20, start=NULL, minimal=TRUE, return='all')
+                       collectorName=NULL, basisOfRecord=NULL, datasetKey=NULL, date=NULL, catalogNumber=NULL, 
+                       callopts=list(), limit=20, start=NULL, minimal=TRUE, return='all')
 {
   url = 'http://api.gbif.org/occurrence/search'
-  args <- compact(list(taxonKey=taxonKey, georeferenced=georeferenced, 
-                       boundingBox=boundingBox, collectorName=collectorName, 
-                       basisOfRecord=basisOfRecord, datasetKey=datasetKey, date=date, 
-                       catalogNumber=catalogNumber, limit=limit, offset=start))  
-  iter <- 0
-  sumreturned <- 0
-  outout <- list()
-  while(sumreturned < limit){
-    iter <- iter + 1
-    tt <- content(GET(url, query=args, callopts))
-    numreturned <- length(tt$results)
-    sumreturned <- sumreturned + numreturned
-    if(sumreturned<limit){
-      args$limit <- limit-numreturned
-      args$offset <- sumreturned
+  
+  getdata <- function(x){
+    
+    if(is.null(taxonKey) && is.null(catalogNumber)){
+      datasetKey <- x
+      taxonKey <- catalogNumber <- NULL
+    } else 
+      if(is.null(taxonKey) && is.null(datasetKey)){
+        catalogNumber <- x
+        taxonKey <- datasetKey <- NULL
+      } else   
+        if(is.null(catalogNumber) && is.null(datasetKey)){
+          taxonKey <- x
+          datasetKey <- catalogNumber <- NULL
+        }
+    
+    args <- compact(list(taxonKey=taxonKey, georeferenced=georeferenced, 
+                         boundingBox=boundingBox, collectorName=collectorName, 
+                         basisOfRecord=basisOfRecord, datasetKey=datasetKey, date=date, 
+                         catalogNumber=catalogNumber, limit=limit, offset=start))  
+    iter <- 0
+    sumreturned <- 0
+    outout <- list()
+    while(sumreturned < limit){
+      iter <- iter + 1
+      tt <- content(GET(url, query=args, callopts))
+      numreturned <- length(tt$results)
+      sumreturned <- sumreturned + numreturned
+      if(sumreturned<limit){
+        args$limit <- limit-numreturned
+        args$offset <- sumreturned
+      }
+      outout[[iter]] <- tt
     }
-    outout[[iter]] <- tt
+    
+    meta <- outout[[length(outout)]][c('offset','limit','endOfRecords','count')]
+    data <- sapply(outout, "[[", "results")
+    data <- gbifparser(data, minimal=minimal)
+    
+    if(return=='data'){
+      ldfast(lapply(data, "[[", "data"))
+    } else
+      if(return=='hier'){
+        unique(lapply(data, "[[", "hierarch"))
+      } else
+        if(return=='meta'){ 
+          data.frame(meta) 
+        } else
+        {
+          list(meta=meta, data=data)
+        }
   }
   
-  meta <- outout[[length(outout)]][c('offset','limit','endOfRecords','count')]
-  data <- sapply(outout, "[[", "results")
-  data <- gbifparser(data, minimal=minimal)
-  if(return=='data'){
-    ldfast(lapply(data, "[[", "data"))
+  if(is.null(taxonKey) && is.null(catalogNumber)){itervec <- datasetKey} else 
+    if(is.null(taxonKey) && is.null(datasetKey)){itervec <- catalogNumber} else   
+      if(is.null(catalogNumber) && is.null(datasetKey)){itervec <- taxonKey}
+  
+  if(length(taxonKey)==1|length(catalogNumber)==1|length(datasetKey)==1){ 
+    out <- getdata(itervec)
   } else
-    if(return=='hier'){
-      lapply(data, "[[", "hierarch")
-    } else
-      if(return=='meta'){ data.frame(meta) } else
-      {
-        list(meta=meta, data=data)
-      }
+  { 
+    out <- lapply(itervec, getdata) 
+    names(out) <- itervec
+  }
+  
+  out
 }
