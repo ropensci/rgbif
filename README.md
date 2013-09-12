@@ -18,9 +18,35 @@ The rgbif branch `newapi` will have development code to use the new GBIF API, an
 
 Changes in the new GBIF API from last with respect to `rgbif`:
 
-+ Coming soon....
+| Function in old API | New API | Notes |
+| ------ | ------- | ------ |
+| country_codes | same | none |
+| density_spplist | deprecated | service not provided anymore |
+| densitylist | deprecated | service not provided anymore |
+| gbifdata | deprecated | not needed |
+| gbifmap_dens | deprecated | none |
+| gbifmap_list | deprecated | none |
+| gbifxmlToDataFrame | deprecated | JSON only in new API |
+| is.gbifdens | deprecated | none |
+| is.gbiflist | deprecated | none |
+| networks | same | some parameters differ |
+| occurrencecount | occ_count | some parameters differ |
+| occurrencedensity | deprecated | service not provided anymore |
+| occurrenceget | occ_get | none |
+| occurrencelist | occ_search | none |
+| occurrencelist_all | occ_search | none |
+| occurrencelist_many | occ_search | none |
+| providers | deprecated | see note 1 |
+| resources | deprecated | see note 1 |
+| stylegeojson | same | not implemented yet |
+| taxoncount | deprecated | See ?occ_count |
+| taxonget | deprecated | See ?name_lookup |
+| taxonsearch | deprecated | See note 2 |
+| taxrank | same | none |
+| togeojson | same | not implemented yet |
 
-I'll also try to include lots of helpful messages to direct users to new functions that they likely want and new parameters. 
+* Note 1: See ?datasets, ?networks, ?nodes, and ?organizations
+* Note 2: See ?name_lookup for names across all of GBIF and ?gbif_lookup for names only in the GBIF backbone taxonomy
 
 ## Install
 
