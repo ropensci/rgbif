@@ -101,16 +101,16 @@ occ_search <- function(taxonKey=NULL, georeferenced=NULL, boundingBox=NULL,
     if(return=='data'){
       ldfast(lapply(data, "[[", "data"))
     } else
-      if(return=='hier'){
-        unique(lapply(data, "[[", "hierarch"))
-      } else
-        if(return=='meta'){ 
-          data.frame(meta) 
-        } else
-        {
-          list(meta=meta, hierarchy=unique(lapply(data, "[[", "hierarch")), 
-               data=ldfast(lapply(data, "[[", "data")))
-        }
+    if(return=='hier'){
+      unique(lapply(data, "[[", "hierarch"))
+    } else
+    if(return=='meta'){ 
+      data.frame(meta) 
+    } else
+    {
+      list(meta=meta, hierarchy=unique(lapply(data, "[[", "hierarch")), 
+           data=ldfast(lapply(data, "[[", "data")))
+    }
   }
   
   params <- list(taxonKey=taxonKey,datasetKey=datasetKey,
