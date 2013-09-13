@@ -6,6 +6,7 @@
 #' @importFrom httr GET content
 #' @importFrom plyr compact
 #' @template namelkup
+#' @return A list.
 #' @export
 #' @examples \dontrun{
 #' name_lookup(class='mammalia')

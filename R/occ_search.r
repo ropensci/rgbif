@@ -97,7 +97,8 @@ occ_search <- function(taxonKey=NULL, georeferenced=NULL, boundingBox=NULL,
           data.frame(meta) 
         } else
         {
-          list(meta=meta, data=data)
+          list(meta=meta, hierarchy=unique(lapply(data, "[[", "hierarch")), 
+               data=ldfast(lapply(data, "[[", "data")))
         }
   }
   

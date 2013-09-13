@@ -16,6 +16,8 @@ This set of functions/package will access data from [GBIF](http://www.gbif.org/)
 
 The rgbif branch `newapi` will have development code to use the new GBIF API, and will be folded into the master branch at some later point. You can use code on the `newapi` branch, but be nice, don't hit it too hard. 
 
+The new GBIF API only uses JSON as a data format, so no more XML.
+
 Changes in the new GBIF API from last with respect to `rgbif`:
 
 | Function in old API | New API | Notes |
@@ -26,7 +28,6 @@ Changes in the new GBIF API from last with respect to `rgbif`:
 | gbifdata | deprecated | not needed |
 | gbifmap_dens | deprecated | none |
 | gbifmap_list | deprecated | none |
-| gbifxmlToDataFrame | deprecated | JSON only in new API |
 | is.gbifdens | deprecated | none |
 | is.gbiflist | deprecated | none |
 | networks | same | some parameters differ |
