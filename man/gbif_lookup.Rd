@@ -55,6 +55,7 @@
 \dontrun{
 gbif_lookup(name='Helianthus annuus', kingdom='plants')
 gbif_lookup(name='Helianthus', rank='genus', kingdom='plants')
+gbif_lookup(name='Helianthus annuus', kingdom='plants', verbose=TRUE)
 }
 }
 \references{

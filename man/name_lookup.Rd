@@ -1,13 +1,13 @@
 \name{name_lookup}
 \alias{name_lookup}
-\title{Lookup names in all taxonomies.}
+\title{Lookup names in all taxonomies in GBIF.}
 \usage{
   name_lookup(query = NULL, canonical_name = NULL,
     class = NULL, description = NULL, family = NULL,
     genus = NULL, kingdom = NULL, order = NULL,
     phylum = NULL, scientificName = NULL, species = NULL,
     rank = NULL, subgenus = NULL, vernacularName = NULL,
-    callopts = list())
+    callopts = list(), verbose = FALSE, return = "all")
 }
 \arguments{
   \item{query}{Query term(s) for full text search.}
@@ -40,16 +40,51 @@
 
   \item{callopts}{Further arguments passed on to the
   \code{\link{GET}} request.}
+
+  \item{verbose}{If TRUE, all data is returned as a list
+  for each element. If FALSE (default) a subset of the data
+  that is thought to be most essential is organized into a
+  data.frame.}
+
+  \item{return}{One of data, hier, meta, or all. If data, a
+  data.frame with the data. hier returns the
+  classifications in a list for each record. meta returns
+  the metadata for the entire call. all gives all data back
+  in a list.}
+}
+\value{
+  A list of length two. The first element is metadata. The
+  second is either a data.frame (verbose=FALSE, default) or
+  a list (verbose=TRUE)
 }
 \description{
-  See details for information about the sources.
+  This service uses fuzzy lookup so that you can put in
+  partial names and you should get back those things that
+  match. See examples below.
 }
 \examples{
 \dontrun{
+# Look up names like mammalia
 name_lookup(class='mammalia')
+
+# Look up sunflowers
 out <- name_lookup('Helianthus annuus', rank="species")
-out$data[[1]][!names(out$data[[1]]) \%in\% c("descriptions","descriptionsSerialized")]
+
+# Get all data and parse it, removing descriptions which can be quite long
+out <- name_lookup('Helianthus annuus', rank="species", verbose=TRUE)
 llply(out$data, function(x) x[!names(x) \%in\% c("descriptions","descriptionsSerialized")])
+
+# Search for a genus, returning just data
+name_lookup(query='Cnaemidophorus', rank="genus", return="data")
+
+# Just metadata
+name_lookup(query='Cnaemidophorus', rank="genus", return="meta")
+
+# Fuzzy searching
+name_lookup(query='Cnaemidophor', rank="genus")
+
+# Get more data from the API call
+name_lookup(query='Cnaemidophorus', rank="genus", callopts=verbose())
 }
 }
 \references{

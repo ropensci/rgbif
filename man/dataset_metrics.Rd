@@ -10,7 +10,9 @@
   \item{callopts}{Pass on options to GET.}
 }
 \description{
-  Geta details on a dataset.
+  You should be able to pass in more than one uuid to this
+  function, but I have not yet found more than the one uuid
+  below in the example that actually has data available.
 }
 \examples{
 \dontrun{

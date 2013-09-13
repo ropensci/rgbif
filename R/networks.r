@@ -20,7 +20,7 @@ networks <- function(data = 'all', uuid = NULL, callopts=list())
   
   # Define function to get data
   getdata <- function(x){
-    if(!data == 'all' && is.null(uuid))
+    if(!x == 'all' && is.null(uuid))
       stop('You must specify a uuid if data does not equal "all"')
     
     if(is.null(uuid)){

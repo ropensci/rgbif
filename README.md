@@ -7,6 +7,8 @@ This set of functions/package will access data from [GBIF](http://www.gbif.org/)
 
 ## Transitioning to the new GBIF API
 
+*Note that development is rapid at this point so expect changes, but changes should slow down with time...*
+
 + The old GBIF API
 	+ See documentation here: http://data.gbif.org/tutorial/services
 	+ is accessible from the `master` branch of this repo, check it out there if you want that. 

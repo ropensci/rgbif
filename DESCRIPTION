@@ -47,3 +47,4 @@ Collate:
     'gbifmap.r'
     'occ_count.r'
     'deprecated.r'
+    'name_usage.r'
