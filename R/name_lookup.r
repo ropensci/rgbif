@@ -1,6 +1,4 @@
-#' Lookup names in all taxonomies.
-#' 
-#' See details for information about the sources.
+#' Lookup names in all taxonomies in GBIF.
 #'
 #' @template all
 #' @importFrom httr GET content
@@ -8,6 +6,9 @@
 #' @template namelkup
 #' @return A list of length two. The first element is metadata. The second is 
 #' either a data.frame (verbose=FALSE, default) or a list (verbose=TRUE)
+#' @description
+#' This service uses fuzzy lookup so that you can put in partial names and 
+#' you should get back those things that match. See examples below.
 #' @export
 #' @examples \dontrun{
 #' # Look up names like mammalia
@@ -26,8 +27,8 @@
 #' # Just metadata
 #' name_lookup(query='Cnaemidophorus', rank="genus", return="meta")
 #' 
-#' # Just metadata
-#' name_lookup(query='Cnaemidophorus', rank="genus")
+#' # Fuzzy searching
+#' name_lookup(query='Cnaemidophor', rank="genus")
 #' 
 #' # Get more data from the API call
 #' name_lookup(query='Cnaemidophorus', rank="genus", callopts=verbose())
@@ -37,13 +38,6 @@ name_lookup <- function(query=NULL, canonical_name=NULL, class=NULL,
   phylum=NULL, scientificName=NULL, species=NULL, rank=NULL, subgenus=NULL, 
   vernacularName=NULL, callopts=list(), verbose=FALSE, return="all")
 {
-  namelkupparser <- function(x){
-    data.frame(
-      compact(
-        x[c('key','nubKey','parentKey','parent','kingdom','phylum',"clazz","order","family",
-            "genus","kingdomKey","phylumKey","classKey","orderKey","familyKey","genusKey",
-            "canonicalName","authorship","nameType","rank","numOccurrences")]))
-  }
   url = 'http://api.gbif.org/name_usage/search'
   args <- compact(list(q=query, rank=rank, canonical_name=canonical_name, 
                        description=description, family=family, genus=genus, 
@@ -58,14 +52,7 @@ name_lookup <- function(query=NULL, canonical_name=NULL, class=NULL,
   {
     data <- tt$results
   }
-  
-  if(!verbose){
-    data <- do.call(rbind.fill, lapply(tt$results, namelkupparser))
-  } else
-  {
-    data <- tt$results
-  }
-  
+
   if(return=='meta'){ 
     data.frame(meta)
   } else

@@ -169,3 +169,18 @@ taxrank <- function()
   c("kingdom", "phylum", "class", "order", "family", "genus","species", 
     "infraspecific")
 }
+
+#' Parser for name_usage endpoints, for fxns name_lookup and gbif_lookup
+#' 
+#' @param x A list.
+#' @export
+#' @keywords internal
+namelkupparser <- function(x){
+  data.frame(
+    compact(
+      x[c('key','nubKey','parentKey','parent','kingdom','phylum',"clazz","order","family",
+          "genus","kingdomKey","phylumKey","classKey","orderKey","familyKey","genusKey",
+          "canonicalName","authorship","nameType","rank","numOccurrences")]
+    )
+  )
+}

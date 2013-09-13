@@ -26,15 +26,23 @@
 #' @examples \dontrun{
 #' gbif_lookup(name='Helianthus annuus', kingdom='plants')
 #' gbif_lookup(name='Helianthus', rank='genus', kingdom='plants')
+#' gbif_lookup(name='Helianthus annuus', kingdom='plants', verbose=TRUE)
 #' }
 gbif_lookup <- function(name, rank=NULL, kingdom=NULL, phylum=NULL, class=NULL, 
-                        order=NULL, family=NULL, genus=NULL, strict=FALSE, 
-                        verbose=FALSE, callopts=list())
+  order=NULL, family=NULL, genus=NULL, strict=FALSE, verbose=FALSE, callopts=list())
 {
   url = 'http://api.gbif.org/lookup/name_usage'
   args <- compact(list(name=name, rank=rank, kingdom=kingdom, phylum=phylum, 
                        class=class, order=order, family=family, genus=genus, 
                        strict=strict, verbose=verbose))
-  content(GET(url, query=args, callopts))
+  tt <- content(GET(url, query=args, callopts))
+  
+  if(verbose){ 
+    alt <- do.call(rbind.fill, lapply(tt$alternatives, namelkupparser))
+    dat <- data.frame(tt[!names(tt) %in% c("alternatives","note")])
+    list(data=dat, alternatives=alt)
+  } else
+  {
+    tt[!names(tt) %in% c("alternatives","note")]
+  }
 }
-# http://api.gbif.org/lookup/name_usage/?name=helianthus%20annuus&kingdom=plants
