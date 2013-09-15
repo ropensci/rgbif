@@ -35,7 +35,7 @@ networks <- function(data = 'all', uuid = NULL, callopts=list())
       }
     }
     temp <- GET(url, callopts)
-    stop_for_satus(temp)
+    stop_for_status(temp)
     content(temp)
   }
   
