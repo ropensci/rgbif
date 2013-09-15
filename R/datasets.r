@@ -59,7 +59,9 @@ datasets <- function(data = 'all', type = NULL, uuid = NULL, query = NULL, id = 
         url <- sprintf('http://api.gbif.org/dataset/%s/%s', uuid, x)        
       }
     }
-    content(GET(url, query=args, callopts))
+    tt <- GET(url, query=args, callopts)
+    stop_for_status(tt)
+    content(tt)
   }
   
   # Get data

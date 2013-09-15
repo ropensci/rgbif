@@ -37,7 +37,9 @@ occ_get <- function(key=NULL, return='all', verbatim=FALSE, minimal=TRUE, callop
     {
       url <- sprintf('http://api.gbif.org/occurrence/%s', x)
     }
-    content(GET(url, callopts))
+    temp <- GET(url, callopts)
+    stop_for_status(temp)
+    content(temp)
   }
   
   # Get data

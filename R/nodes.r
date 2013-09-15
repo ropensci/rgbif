@@ -60,7 +60,9 @@ nodes <- function(data = 'all', uuid = NULL, query = NULL, isocode = NULL, callo
         url <- sprintf('http://api.gbif.org/node/%s/%s', uuid, x)        
       }
     }
-    content(GET(url, query=args, callopts))
+    temp <- GET(url, query=args, callopts)
+    stop_for_status(temp)
+    content(temp)
   }
   
   # Get data

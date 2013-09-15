@@ -44,7 +44,9 @@ name_lookup <- function(query=NULL, canonical_name=NULL, class=NULL,
                        kingdom=kingdom, order=order, phylum=phylum, class=class,
                        scientificName=scientificName, species=species, 
                        subgenus=subgenus, vernacularName=vernacularName))
-  tt <- content(GET(url, query=args, callopts))
+  temp <- GET(url, query=args, callopts)
+  stop_for_status(temp)
+  tt <- content(temp)
   meta <- tt[c('offset','limit','endOfRecords','count')]
   if(!verbose){
     data <- do.call(rbind.fill, lapply(tt$results, namelkupparser))

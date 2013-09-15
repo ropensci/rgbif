@@ -48,7 +48,9 @@ organizations <- function(data = 'all', uuid = NULL, query = NULL, callopts=list
         url <- sprintf('http://api.gbif.org/organization/%s/%s', uuid, x)        
       }
     }
-    content(GET(url, query=args, callopts))
+    temp <- GET(url, query=args, callopts)
+    stop_for_status(temp)
+    content(temp)
   }
   
   # Get data

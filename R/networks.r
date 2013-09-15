@@ -34,7 +34,9 @@ networks <- function(data = 'all', uuid = NULL, callopts=list())
         url <- sprintf('http://api.gbif.org/network/%s/%s', uuid, x)        
       }
     }
-    content(GET(url, callopts))
+    temp <- GET(url, callopts)
+    stop_for_satus(temp)
+    content(temp)
   }
   
   # Get data

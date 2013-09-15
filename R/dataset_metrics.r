@@ -18,7 +18,9 @@ dataset_metrics <- function(uuid, callopts=list())
   # Define function to get data
   getdata <- function(x){
     url <- sprintf('http://api.gbif.org/dataset_metrics/%s', x)
-    content(GET(url, callopts))
+    tt <- GET(url, callopts)
+    stop_for_status(tt)
+    content(tt)
   }
   
   # Get data

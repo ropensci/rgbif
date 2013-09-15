@@ -81,11 +81,12 @@ occ_search <- function(taxonKey=NULL, georeferenced=NULL, boundingBox=NULL,
                          catalogNumber=catalogNumber, limit=limit, offset=start))  
     iter <- 0
     sumreturned <- 0
-#     count <- 99999999999999
     outout <- list()
     while(sumreturned < limit){
       iter <- iter + 1
-      tt <- content(GET(url, query=args, callopts))
+      temp <- GET(url, query=args, callopts)
+      stop_for_status(temp)
+      tt <- content(temp)
       numreturned <- length(tt$results)
       sumreturned <- sumreturned + numreturned
       

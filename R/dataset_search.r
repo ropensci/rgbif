@@ -63,7 +63,9 @@ dataset_search <- function(query= NULL, type = NULL, keyword = NULL,
                        networkOrigin=networkOrigin,hostingOrg=hostingOrg,
                        decade=decade,iso_country_code=country,limit=limit,
                        offset=start))
-  tt <- content(GET(url, query=args, callopts))
+  temp <- GET(url, query=args, callopts)
+  stop_for_status(temp)
+  tt <- content(temp)
   meta <- tt[!names(tt) == 'results']
   tt$results[[1]]
   
