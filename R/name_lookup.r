@@ -1,8 +1,8 @@
 #' Lookup names in all taxonomies in GBIF.
 #'
 #' @template all
-#' @importFrom httr GET content
-#' @importFrom plyr compact rbind.fill
+#' @import httr
+#' @import plyr
 #' @template namelkup
 #' @return A list of length two. The first element is metadata. The second is 
 #' either a data.frame (verbose=FALSE, default) or a list (verbose=TRUE)

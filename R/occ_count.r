@@ -1,8 +1,8 @@
 #' Get number of occurrence records.
 #' 
 #' @template all
-#' @importFrom httr GET content verbose
-#' @importFrom plyr compact
+#' @import httr
+#' @import plyr
 #' @param nubKey Species key
 #' @param georeferenced Return only occurence records with lat/long data (TRUE) or
 #'    all records (FALSE, default). 
@@ -30,13 +30,15 @@
 #' }
 #' @export
 occ_count <- function(nubKey=NULL, georeferenced=NULL, basisOfRecord=NULL, 
-                      datasetKey=NULL, date=NULL, catalogNumber=NULL, country=NULL,
-                      hostCountry=NULL, year=NULL, callopts=list())
+  datasetKey=NULL, date=NULL, catalogNumber=NULL, country=NULL, hostCountry=NULL, 
+  year=NULL, callopts=list())
 {
   url = 'http://api.gbif.org/occurrence/count'
   args <- compact(list(nubKey=nubKey, georeferenced=georeferenced, 
                        basisOfRecord=basisOfRecord, datasetKey=datasetKey, 
                        date=date, catalogNumber=catalogNumber, country=country,
                        hostCountry=hostCountry, year=year))
-  content(GET(url, query=args, callopts))
+  tt <- GET(url, query=args, callopts)
+  stop_for_status(tt)
+  as.numeric(content(tt, as="text"))
 }

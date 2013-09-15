@@ -1,8 +1,8 @@
 #' Lookup names in the GBIF backbone taxonomy.
 #' 
 #' @template all
-#' @importFrom httr GET content verbose
-#' @importFrom plyr compact
+#' @import httr
+#' @import plyr
 #' @param name Full scientific name potentially with authorship
 #' @param rank The rank given as our rank enum.
 #' @param kingdom If provided default matching will also try to match against this 

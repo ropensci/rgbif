@@ -1,8 +1,8 @@
 #' Get data for a GBIF occurrence.
 #' 
 #' @template all
-#' @importFrom httr GET content verbose
-#' @importFrom plyr compact
+#' @import httr
+#' @import plyr
 #' @param key Occurrence key
 #' @param return One of data, hier, meta, or all. If data, a data.frame with the 
 #'    data. hier returns the classifications in a list for each record. meta 

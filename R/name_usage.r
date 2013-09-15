@@ -1,8 +1,8 @@
 #' Lookup details for specific names in all taxonomies in GBIF.
 #'
 #' @template all
-#' @importFrom httr GET content
-#' @importFrom plyr compact rbind.fill
+#' @import httr
+#' @import plyr
 #' @param key A key for a taxon
 #' @param data Specify an option to select what data is returned. See Description
 #'    below.

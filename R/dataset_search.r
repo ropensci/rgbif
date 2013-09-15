@@ -4,8 +4,8 @@
 #' contain occurrence data
 #' 
 #' @template all
-#' @importFrom httr GET content verbose
-#' @importFrom plyr compact
+#' @import httr
+#' @import plyr
 #' @template occ
 #' @param query Query term(s) for full text search.
 #' @param type Type of dataset, options include OCCURRENCE, etc.

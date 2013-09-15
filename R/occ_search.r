@@ -1,8 +1,8 @@
 #' Search for GBIF occurrences.
 #' 
 #' @template all
-#' @importFrom httr GET content verbose
-#' @importFrom plyr compact
+#' @import httr
+#' @import plyr
 #' @template occsearch
 #' @template occ
 #' @param georeferenced Return only occurence records with lat/long data (TRUE) or
@@ -81,13 +81,18 @@ occ_search <- function(taxonKey=NULL, georeferenced=NULL, boundingBox=NULL,
                          catalogNumber=catalogNumber, limit=limit, offset=start))  
     iter <- 0
     sumreturned <- 0
+#     count <- 99999999999999
     outout <- list()
     while(sumreturned < limit){
       iter <- iter + 1
       tt <- content(GET(url, query=args, callopts))
       numreturned <- length(tt$results)
       sumreturned <- sumreturned + numreturned
-      if(sumreturned<limit){
+      
+      if(tt$count < limit)
+        sumreturned <- 999999
+      
+      if(sumreturned < limit){
         args$limit <- limit-numreturned
         args$offset <- sumreturned
       }

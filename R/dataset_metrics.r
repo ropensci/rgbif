@@ -1,8 +1,8 @@
 #' Geta details on a dataset.
 #' 
 #' @template all
-#' @importFrom httr GET content verbose
-#' @importFrom plyr compact
+#' @import httr
+#' @import plyr
 #' @param uuid A dataset UUID.
 #' @param callopts Pass on options to GET.
 #' @description 

@@ -1,7 +1,7 @@
 #' Make a map to visualize GBIF occurrence data.
 #' 
 #' @template map
-#' @importFrom grid unit
+#' @import grid
 #' @examples \dontrun{
 #' # Make a map of Puma concolor occurrences
 #' key <- gbif_lookup(name='Puma concolor', kingdom='plants')$speciesKey

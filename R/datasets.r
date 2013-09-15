@@ -1,8 +1,8 @@
 #' Search for datasets and dataset metadata.
 #' 
 #' @template all
-#' @importFrom httr GET content verbose
-#' @importFrom plyr compact
+#' @import httr
+#' @import plyr
 #' @param data The type of data to get. Default is all data.
 #' @param type Type of dataset, options include OCCURRENCE, etc.
 #' @param uuid UUID of the data node provider. This must be specified if data
