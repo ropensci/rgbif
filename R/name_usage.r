@@ -74,7 +74,7 @@ name_usage <- function(key=NULL, data='all', language=NULL, datasetKey=NULL,
         url <- sprintf('http://api.gbif.org/name_usage/%s/%s', key, x)
       } else
       if(x == 'root'){
-        url <- sprintf('http://api.gbif.org/name_usage/root/%s|%s', uuid, shortname)
+        url <- sprintf('http://api.gbif.org/name_usage/root/%s/%s', uuid, shortname)
       }
     }
     tt <- GET(url, query=args, callopts)

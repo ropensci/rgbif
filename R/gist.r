@@ -2,10 +2,21 @@
 #' 
 #' @import httr
 #' @param gist An object
-#' @param ... 
+#' @param description brief description of gist (optional)
+#' @param public whether gist is public (default: TRUE)
 #' @description 
 #' You will be asked ot enter you Github credentials (username, password) during
-#' each session, but only once for each session.
+#' each session, but only once for each session. Alternatively, you could enter
+#' your credentials into your .Rprofile file with the entries
+#' 
+#' options(github.username = "your_github_username")
+#' options(github.password = "your_github_password")
+#' 
+#' then \code{gist} will simply read those options.
+#' 
+#' \code{gist} was modified from code in the rCharts package by Ramnath Vaidyanathan 
+#' @return Posts your file as a gist on your account, and prints out the url for the 
+#' gist itself in the console.
 #' @examples \dontrun{
 #' library(plyr)
 #' splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
@@ -18,9 +29,9 @@
 #' gist("~/my.geojson", description = "Occurrences of three bird species mapped")
 #' }
 #' @export
-gist <- function(gist, ...)
+gist <- function(gist, description = "", public = TRUE)
 {
-  dat <- create_gist(gist, ...)
+  dat <- create_gist(gist, description = description, public = public)
   credentials = get_credentials()
   response = POST(
     url = 'https://api.github.com/gists',
@@ -34,6 +45,7 @@ gist <- function(gist, ...)
       add_headers("User-Agent" = "Dummy")
     )
   )
+  stop_for_status(response)
   html_url = content(response)$html_url
   message('Your gist has been published')
   message('View gist at ', 

@@ -2,17 +2,32 @@
 \alias{gist}
 \title{Post a file as a Github gist}
 \usage{
-  gist(gist, ...)
+  gist(gist, description = "", public = TRUE)
 }
 \arguments{
   \item{gist}{An object}
 
-  \item{...}{}
+  \item{description}{brief description of gist (optional)}
+
+  \item{public}{whether gist is public (default: TRUE)}
+}
+\value{
+  Posts your file as a gist on your account, and prints out
+  the url for the gist itself in the console.
 }
 \description{
   You will be asked ot enter you Github credentials
   (username, password) during each session, but only once
-  for each session.
+  for each session. Alternatively, you could enter your
+  credentials into your .Rprofile file with the entries
+
+  options(github.username = "your_github_username")
+  options(github.password = "your_github_password")
+
+  then \code{gist} will simply read those options.
+
+  \code{gist} was modified from code in the rCharts package
+  by Ramnath Vaidyanathan
 }
 \examples{
 \dontrun{

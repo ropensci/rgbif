@@ -28,7 +28,8 @@ Imports:
     maps,
     httr,
     maptools,
-    rgdal
+    rgdal,
+    RJSONIO
 Suggests:
     roxygen2
 Collate:
