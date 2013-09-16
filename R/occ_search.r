@@ -15,10 +15,6 @@
 #' # Return 20 results, this is the default by the way
 #' occ_search(taxonKey=key, limit=20)
 #' 
-#' # Get a lot of data, here 1500 records for Helianthus annuus
-#' out <- occ_search(taxonKey=key, limit=1500, return="data")
-#' nrow(out)
-#' 
 #' # Return just metadata for the search
 #' occ_search(taxonKey=key, return='meta')
 #' 
@@ -54,9 +50,6 @@
 #' # Many collector names
 #' occ_search(collectorName=c("smith","BJ Stacey"))
 #' 
-#' # If you try multiple values for two different parameters you are wacked on the hand
-#' occ_search(taxonKey=c(2482598,2492010), collectorName=c("smith","BJ Stacey"))
-#' 
 #' # Pass in curl options for extra fun
 #' occ_search(taxonKey=key, limit=20, return='hier', callopts=verbose())
 #' 
@@ -64,6 +57,14 @@
 #' splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
 #' keys <- sapply(splist, function(x) gbif_lookup(name=x, kingdom='plants')$speciesKey, USE.NAMES=FALSE)
 #' occ_search(taxonKey=keys, limit=5, return='data')
+#' }
+#' \donttest{
+#' # If you try multiple values for two different parameters you are wacked on the hand
+#' occ_search(taxonKey=c(2482598,2492010), collectorName=c("smith","BJ Stacey"))
+#' 
+#' # Get a lot of data, here 1500 records for Helianthus annuus
+#' out <- occ_search(taxonKey=key, limit=1500, return="data")
+#' nrow(out)
 #' }
 #' @export
 occ_search <- function(taxonKey=NULL, georeferenced=NULL, boundingBox=NULL, 

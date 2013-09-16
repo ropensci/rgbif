@@ -1,7 +1,7 @@
-#' Search datasets.
+#' Search datasets in GBIF.
 #' 
-#' This function does not search occurrence data, only the datasets that may
-#' contain occurrence data
+#' This function does not search occurrence data, only metadata on the datasets 
+#' that contain occurrence data.
 #' 
 #' @template all
 #' @import httr

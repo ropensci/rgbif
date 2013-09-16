@@ -125,9 +125,6 @@ occ_search(collectorName="smith")
 # Many collector names
 occ_search(collectorName=c("smith","BJ Stacey"))
 
-# If you try multiple values for two different parameters you are wacked on the hand
-occ_search(taxonKey=c(2482598,2492010), collectorName=c("smith","BJ Stacey"))
-
 # Pass in curl options for extra fun
 occ_search(taxonKey=key, limit=20, return='hier', callopts=verbose())
 
@@ -135,6 +132,10 @@ occ_search(taxonKey=key, limit=20, return='hier', callopts=verbose())
 splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
 keys <- sapply(splist, function(x) gbif_lookup(name=x, kingdom='plants')$speciesKey, USE.NAMES=FALSE)
 occ_search(taxonKey=keys, limit=5, return='data')
+}
+\donttest{
+# If you try multiple values for two different parameters you are wacked on the hand
+occ_search(taxonKey=c(2482598,2492010), collectorName=c("smith","BJ Stacey"))
 }
 }
 \references{

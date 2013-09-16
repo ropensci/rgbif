@@ -10,10 +10,10 @@ This set of functions/package will access data from [GBIF](http://www.gbif.org/)
 *Note that development is rapid at this point so expect changes, but changes should slow down with time...*
 
 + The old GBIF API
-	+ See documentation here: http://data.gbif.org/tutorial/services
+	+ See documentation here: [http://data.gbif.org/tutorial/services](http://data.gbif.org/tutorial/services)
 	+ is accessible from the `master` branch of this repo, check it out there if you want that. 
 + The new GBIF API
-	+ See documentation here: http://dev.gbif.org/wiki/display/POR/Webservice+API
+	+ See documentation here: [http://dev.gbif.org/wiki/display/POR/Webservice+API](http://dev.gbif.org/wiki/display/POR/Webservice+API)
 	+ Is being developed on the `newapi` branch of this repo.
 
 The rgbif branch `newapi` will have development code to use the new GBIF API, and will be folded into the master branch at some later point. You can use code on the `newapi` branch, but be nice, don't hit it too hard. 
