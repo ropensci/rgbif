@@ -153,10 +153,10 @@ gbifmap_dens <- function(input = NULL, mapdatabase = "world", region = ".",
 #'    \code{sort(unique(map_data("world")$region))} to see region names for the
 #'    world database layer, or e.g., \code{sort(unique(map_data("state")$region))}
 #'    for the state layer.
-#' @param pointtype The geom to use, one of geom_point or geom_jitter. Don't 
-#'    quote them. 
-#' @param jitterposition If you use jitterposition, the amount by which to jitter 
-#'    points in width, height, or both. 
+#' @param geom The geom to use, one of geom_point or geom_jitter. Don't 
+#'   	quote them. 
+#' @param jitter If you use jitterposition, the amount by which to jitter 
+#' 		points in width, height, or both. 
 #' @param customize Further arguments passed on to ggplot. 
 #' @return Map (using ggplot2 package) of points or tiles on a world map.
 #' @details gbifmap takes care of cleaning up the data.frame (removing NA's, etc.) 
@@ -215,6 +215,8 @@ gbifmap <- function(input = NULL, mapdatabase = "world", region = ".",
 {
   stop("This function is deprecated. See ?gbifmap_list and ?gbifmap_dens")
 
+  long <- lat <- group <- decimalLongitude <- decimalLatitude <- taxonName <- NULL
+  
   if(is(input, "list"))
     input <- ldply(input, data.frame)
 

@@ -62,7 +62,7 @@ taxonsearch <- function(scientificname = NULL, rank = NULL, maxresults = 10,
 	primary <- xpathSApply(tt, "//tc:primary", xmlValue)
 	
   out <- data.frame(gbifkey=gbifkey,status=status,name=name,rank=rank,sci=sci,
-                    source=accordingto,primary=primary)
+                    source=accordingto,primary=primary,stringsAsFactors=FALSE)
      
   if(accepted_status)
     as.numeric(as.character(out[out$status %in% "accepted",]))

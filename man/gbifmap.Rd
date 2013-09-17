@@ -25,12 +25,11 @@
   \code{sort(unique(map_data("state")$region))} for the
   state layer.}
 
-  \item{pointtype}{The geom to use, one of geom_point or
+  \item{geom}{The geom to use, one of geom_point or
   geom_jitter. Don't quote them.}
 
-  \item{jitterposition}{If you use jitterposition, the
-  amount by which to jitter points in width, height, or
-  both.}
+  \item{jitter}{If you use jitterposition, the amount by
+  which to jitter points in width, height, or both.}
 
   \item{customize}{Further arguments passed on to ggplot.}
 }
