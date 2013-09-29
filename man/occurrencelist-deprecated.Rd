@@ -182,8 +182,7 @@
   option), or do nothing, respectively. Default is "none".}
 }
 \description{
-  Occurrencelist searches for taxon concept records
-  matching a range of filters.
+  This function is deprecated.
 }
 \details{
   Including many possible values for a particular
@@ -255,5 +254,8 @@ lapply(out, function(x) head(gbifdata(x)))
 occurrencelist(scientificname = 'Erebia gorge*',
    coordinatestatus = TRUE, maxresults = 200, writecsv="~/adsdf.csv")
 }
+}
+\seealso{
+  occ_search
 }
 

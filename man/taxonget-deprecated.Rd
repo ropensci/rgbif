@@ -15,8 +15,7 @@
   list of keys is supplied.
 }
 \description{
-  Get taxonomic information on a specific taxon or taxa in
-  GBIF by their taxon concept keys.
+  This function is deprecated.
 }
 \examples{
 \dontrun{
@@ -26,5 +25,8 @@ taxonget(keys$gbifkey)
 # Just for one key
 taxonget(51780668) # taxonconceptkey for Puma concolor
 }
+}
+\seealso{
+  name_usage
 }
 

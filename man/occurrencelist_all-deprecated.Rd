@@ -11,9 +11,7 @@
   occurrencelist_many}
 }
 \description{
-  Occurrencelist_all carries out an occurrencelist query
-  for a single name and all its name variants according to
-  GBIF's name matching.
+  This function is deprecated.
 }
 \examples{
 \dontrun{
@@ -25,5 +23,8 @@ occurrencelist_all(scientificname = 'Aristolochia serpentaria', coordinatestatus
 maxresults = 40)
 
 }
+}
+\seealso{
+  occ_search
 }
 

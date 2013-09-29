@@ -4,6 +4,11 @@ rgbif 0.3.6
 IMPROVEMENTS
 
 * Added back in functions, and .Rd files, from old version or rgbif that interacts with the old GBIF API.
+* Updated vignette to work with new GBIF API and fxns.
+
+NEW FEATURES
+
+* Added functions to interact with the new GBIF API, notably: country_codes(), dataset_metrics(), dataset_search(), datasets(), gbif_lookup(), gbifmap(), gist(), name_lookup(), name_usage(), networks(), nodes(), occ_count(), occ_get(), occ_search(), organizations(), rgbif-package(), stylegeojson(), togeojson(). See the README for a crosswalk from old functions to new ones. 
 * 
 
 rgbif 0.3.2
@@ -23,7 +28,6 @@ IMPROVEMENTS
 * Slight changes to gbifmaps() function.
 * url parameter in all functions moved into the function itself as the base GBIF API url doesn't need to be specified by user. 
 * Vignette added.
-* 
 
 NEW FEATURES
 

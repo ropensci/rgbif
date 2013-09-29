@@ -49,7 +49,7 @@
 #' density_spplist(originisocountrycode = "CO", spplist = "great", listcount='counts')
 #' }
 #' @export
-#' @rdname pkg-deprecated
+#' @rdname density_spplist-deprecated
 density_spplist <- function(taxonconceptKey = NULL, dataproviderkey = NULL,
   dataresourcekey = NULL, resourcenetworkkey = NULL, originisocountrycode = NULL,
   format = NULL, spplist = c("none","random","greatest","all"), listcount = "list")
@@ -141,7 +141,7 @@ density_spplist <- function(taxonconceptKey = NULL, dataproviderkey = NULL,
 #' head( out <- densitylist(originisocountrycode = "CA") )
 #' }
 #' @export
-#' @rdname pkg-deprecated
+#' @rdname densitylist-deprecated
 densitylist <- function(taxonconceptKey = NULL, dataproviderkey = NULL,
                         dataresourcekey = NULL, resourcenetworkkey = NULL, originisocountrycode = NULL,
                         format = NULL) 
@@ -250,7 +250,7 @@ densitylist <- function(taxonconceptKey = NULL, dataproviderkey = NULL,
 #'    year=2005, maxlatitude=20)
 #' }
 #' @export
-#' @rdname pkg-deprecated
+#' @rdname occurrencecount-deprecated
 #' @seealso occ_count
 occurrencecount <- function(scientificname = NULL, taxonconceptKey = NULL,
                             dataproviderkey = NULL, dataresourcekey = NULL, institutioncode = NULL ,
@@ -293,7 +293,7 @@ occurrencecount <- function(scientificname = NULL, taxonconceptKey = NULL,
 #' This function is deprecated.
 #'
 #' @export
-#' @rdname pkg-deprecated
+#' @rdname occurrencedensity-deprecated
 #' @seealso densitylist
 occurrencedensity <- function()
 {
@@ -316,7 +316,7 @@ occurrencedensity <- function()
 #' occurrenceget(key = 13749100)
 #' }
 #' @export
-#' @rdname pkg-deprecated
+#' @rdname occurrenceget-deprecated
 #' @seealso occ_get
 occurrenceget <- function(key = NULL, format = NULL, mode = NULL)
 {
@@ -355,7 +355,7 @@ occurrenceget <- function(key = NULL, format = NULL, mode = NULL)
 #'    coordinatestatus = TRUE, maxresults = 200, writecsv="~/adsdf.csv")
 #' }
 #' @export
-#' @rdname pkg-deprecated
+#' @rdname occurrencelist-deprecated
 #' @seealso occ_search
 occurrencelist <- function(scientificname = NULL, taxonconceptkey = NULL,
                            dataproviderkey = NULL, dataresourcekey = NULL, institutioncode = NULL,
@@ -456,7 +456,7 @@ occurrencelist <- function(scientificname = NULL, taxonconceptkey = NULL,
 #'
 #' }
 #' @export
-#' @rdname pkg-deprecated
+#' @rdname occurrencelist_all-deprecated
 #' @seealso occ_search
 occurrencelist_all <- function(scientificname, ...)
 {  
@@ -489,7 +489,7 @@ occurrencelist_all <- function(scientificname, ...)
 #' gbifmap_list(out)
 #' }
 #' @export
-#' @rdname pkg-deprecated
+#' @rdname occurrencelist_many-deprecated
 #' @seealso occ_search
 occurrencelist_many <- function(scientificname = NULL, taxonconceptkey = NULL,
                                 dataproviderkey = NULL, dataresourcekey = NULL, institutioncode = NULL,
@@ -631,7 +631,7 @@ occurrencelist_many <- function(scientificname = NULL, taxonconceptkey = NULL,
 #' providers()
 #' }
 #' @export
-#' @rdname pkg-deprecated
+#' @rdname providers-deprecated
 #' @seealso networks organizations datasets
 providers <- function(name = "", isocountrycode = NULL, modifiedsince = NULL,
                       startindex = NULL, maxresults = NULL)
@@ -683,7 +683,7 @@ providers <- function(name = "", isocountrycode = NULL, modifiedsince = NULL,
 #' resources()
 #' }
 #' @export
-#' @rdname pkg-deprecated
+#' @rdname resources-deprecated
 #' @seealso networks organizations datasets
 resources <- function(name = "", providerkey = NULL, basisofrecordcode = NULL,
                       modifiedsince = NULL,  startindex = NULL, maxresults = NULL)
@@ -722,7 +722,7 @@ resources <- function(name = "", providerkey = NULL, basisofrecordcode = NULL,
 #' taxoncount(rank = 'family')
 #' }
 #' @export
-#' @rdname pkg-deprecated
+#' @rdname taxoncount-deprecated
 #' @seealso occ_count
 taxoncount <- function(scientificname = NULL, rank = NULL, dataresourcekey = NULL)
 {
@@ -753,7 +753,7 @@ taxoncount <- function(scientificname = NULL, rank = NULL, dataresourcekey = NUL
 #' taxonget(51780668) # taxonconceptkey for Puma concolor
 #' }
 #' @export
-#' @rdname pkg-deprecated
+#' @rdname taxonget-deprecated
 #' @seealso name_usage
 taxonget <- function(key = NULL)
 {
@@ -815,7 +815,7 @@ taxonget <- function(key = NULL)
 #' taxonsearch(scientificname = 'Fabaceae', rank="family")
 #' }
 #' @export
-#' @rdname pkg-deprecated
+#' @rdname taxonsearch-deprecated
 #' @seealso occ_search
 taxonsearch <- function(scientificname = NULL, rank = NULL, maxresults = 10,
                         dataproviderkey = 1, dataresourcekey = NULL, resourcenetworkkey = NULL,
@@ -873,7 +873,7 @@ taxonsearch <- function(scientificname = NULL, rank = NULL, maxresults = 10,
 #' gbifmap_dens(out, mapdatabase="usa")
 #' }
 #' @export
-#' @rdname pkg-deprecated
+#' @rdname gbifmap_dens-deprecated
 #' @seealso gbifmap
 gbifmap_dens <- function(input = NULL, mapdatabase = "world", region = ".", 
                          geom = geom_point, jitter = NULL, customize = NULL)
@@ -958,7 +958,7 @@ gbifmap_dens <- function(input = NULL, mapdatabase = "world", region = ".",
 #' gbifmap_list(out, customize = mycustom())
 #' }
 #' @export
-#' @rdname pkg-deprecated
+#' @rdname gbifmap_list-deprecated
 #' @seealso gbifmap
 gbifmap_list <- function(input = NULL, mapdatabase = "world", region = ".", 
                          geom = geom_point, jitter = NULL, customize = NULL)
@@ -1038,7 +1038,7 @@ gbifdata <- function(input, ...) UseMethod("gbifdata")
 #' @param ... further arguments
 #' @method gbifdata gbiflist
 #' @export
-#' @rdname pkg-deprecated
+#' @rdname gbifdata.gbiflist-deprecated
 gbifdata.gbiflist <- function(input, coordinatestatus=FALSE, minimal=TRUE, ...)
 {  
   if(!is.gbiflist(input)) 
@@ -1069,7 +1069,7 @@ gbifdata.gbiflist <- function(input, coordinatestatus=FALSE, minimal=TRUE, ...)
 #' @param ... further arguments
 #' @method gbifdata gbifdens
 #' @export
-#' @rdname pkg-deprecated
+#' @rdname gbifdata.gbifdens-deprecated
 gbifdata.gbifdens <- function(input, ...)
 {
   if(!is.gbifdens(input))
@@ -1083,7 +1083,7 @@ gbifdata.gbifdens <- function(input, ...)
 #' @param ... further arguments passed to or from other methods.
 #' @method print gbifdens
 #' @export
-#' @rdname pkg-deprecated
+#' @rdname print.gbifdens-deprecated
 print.gbifdens <- function(x, ...){
   if(!is.gbifdens(x))
     stop("Input is not of class gbifdens")  
@@ -1107,7 +1107,7 @@ print.gbifdens <- function(x, ...){
 #' @param ... further arguments passed to or from other methods.
 #' @method print gbiflist
 #' @export
-#' @rdname pkg-deprecated
+#' @rdname print.gbiflist-deprecated
 print.gbiflist <- function(x, ...){
   if(!is.gbiflist(x))
     stop("Input is not of class gbiflist")
@@ -1130,11 +1130,11 @@ print.gbiflist <- function(x, ...){
 #' Check if object is of class gbiflist
 #' @param x input
 #' @export
-#' @rdname pkg-deprecated
+#' @rdname is.gbiflist-deprecated
 is.gbiflist <- function(x) inherits(x, "gbiflist")
 
 #' Check if object is of class gbifdens
 #' @param x input
 #' @export
-#' @rdname pkg-deprecated
+#' @rdname is.gbifdens-deprecated
 is.gbifdens <- function(x) inherits(x, "gbifdens")

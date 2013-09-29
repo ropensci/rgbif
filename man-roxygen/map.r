@@ -1,4 +1,3 @@
-#' @import ggplot2 maps
 #' @param input Either a single data.frame or a list of data.frame's (e.g., from
 #'     different speies). The data.frame has to have, in addition to any other 
 #'     columns, columns named exactly "decimalLatitude" and "decimalLongitude".

@@ -189,8 +189,7 @@ of species names.}
   option (only used if parallel=TRUE)}
 }
 \description{
-  occurrencelist_many is the same as occurrencelist, but
-  takes in a vector of species names.
+  This function is deprecated.
 }
 \details{
   Including many possible values for a particular
@@ -249,5 +248,8 @@ out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 100)
 gbifdata(out)
 gbifmap_list(out)
 }
+}
+\seealso{
+  occ_search
 }
 

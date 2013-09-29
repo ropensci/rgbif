@@ -29,6 +29,9 @@
   \item{maxresults}{max number of results to return}
 }
 \description{
+  This function is deprecated.
+}
+\details{
   Beware: It takes a while to retrieve the full list of
   resources - so go get more coffee.
 }
@@ -40,5 +43,8 @@ resources(maxresults=30)
 # By name
 resources('Flora')
 }
+}
+\seealso{
+  networks organizations datasets
 }
 

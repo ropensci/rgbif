@@ -56,6 +56,9 @@
   cells.
 }
 \description{
+  This function is deprecated.
+}
+\details{
   This is similar to the densitylist function. You can get
   the same data.frame of results as densitylist with this
   function, but you can also get a species list or

@@ -30,4 +30,7 @@
 occurrenceget(key = 13749100)
 }
 }
+\seealso{
+  occ_get
+}
 

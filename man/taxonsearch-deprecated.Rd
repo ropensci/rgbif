@@ -51,6 +51,8 @@
   efficient if rank is given.
 }
 \details{
+  This function is deprecated.
+
   Search for a taxon using scientific name. Optionally,
   include taxonomic rank in the search. Returns list of
   TaxonConcept key values.
@@ -66,5 +68,8 @@ taxonsearch(scientificname = 'Abies', rank="genus")
 # Fabaceae (rank of family)
 taxonsearch(scientificname = 'Fabaceae', rank="family")
 }
+}
+\seealso{
+  occ_search
 }
 

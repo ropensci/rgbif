@@ -23,6 +23,9 @@
   \item{maxresults}{max number of results to return}
 }
 \description{
+  This function is deprecated.
+}
+\details{
   Beware: It takes a while to retrieve the full list of
   providers - so go get more coffee.
 }
@@ -34,5 +37,8 @@ providers(maxresults=10)
 # By data provider name
 providers('University of Texas-Austin')
 }
+}
+\seealso{
+  networks organizations datasets
 }
 

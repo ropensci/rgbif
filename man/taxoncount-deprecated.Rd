@@ -16,7 +16,7 @@
   resources(). (character)}
 }
 \description{
-  Search by taxon to retrieve number of records in GBIF.
+  This function is deprecated.
 }
 \examples{
 \dontrun{
@@ -26,5 +26,8 @@ taxoncount(scientificname = 'Helianthus annuus')
 \donttest{
 taxoncount(rank = 'family')
 }
+}
+\seealso{
+  occ_count
 }
 

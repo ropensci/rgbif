@@ -154,7 +154,7 @@
   GBIF matching the query.
 }
 \description{
-  Counts taxon concept records matching a range of filters.
+  This function is deprecated.
 }
 \examples{
 \dontrun{
@@ -164,5 +164,8 @@ occurrencecount(scientificname = 'Helianthus annuus', coordinatestatus = TRUE,
 occurrencecount(scientificname = 'Helianthus annuus', coordinatestatus = TRUE,
    year=2005, maxlatitude=20)
 }
+}
+\seealso{
+  occ_count
 }
 
