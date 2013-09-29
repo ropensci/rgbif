@@ -86,10 +86,6 @@ occ_search(taxonKey=key, limit=2)
 # Return 20 results, this is the default by the way
 occ_search(taxonKey=key, limit=20)
 
-# Get a lot of data, here 1500 records for Helianthus annuus
-out <- occ_search(taxonKey=key, limit=1500, return="data")
-nrow(out)
-
 # Return just metadata for the search
 occ_search(taxonKey=key, return='meta')
 
@@ -136,6 +132,10 @@ occ_search(taxonKey=keys, limit=5, return='data')
 \donttest{
 # If you try multiple values for two different parameters you are wacked on the hand
 occ_search(taxonKey=c(2482598,2492010), collectorName=c("smith","BJ Stacey"))
+
+# Get a lot of data, here 1500 records for Helianthus annuus
+out <- occ_search(taxonKey=key, limit=1500, return="data")
+nrow(out)
 }
 }
 \references{

@@ -1,6 +1,6 @@
 \name{dataset_search}
 \alias{dataset_search}
-\title{Search datasets.}
+\title{Search datasets in GBIF.}
 \usage{
   dataset_search(query = NULL, type = NULL, keyword = NULL,
     owningOrg = NULL, networkOrigin = NULL,
@@ -49,8 +49,8 @@
   pretty=TRUE).
 }
 \description{
-  This function does not search occurrence data, only the
-  datasets that may contain occurrence data
+  This function does not search occurrence data, only
+  metadata on the datasets that contain occurrence data.
 }
 \examples{
 \dontrun{
