@@ -2,7 +2,7 @@
 #' 
 #' This function does not search occurrence data, only metadata on the datasets 
 #' that contain occurrence data.
-#' 
+#'
 #' @template all
 #' @import httr
 #' @import plyr

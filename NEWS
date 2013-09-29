@@ -1,3 +1,11 @@
+rgbif 0.3.6
+===============
+
+IMPROVEMENTS
+
+* Added back in functions, and .Rd files, from old version or rgbif that interacts with the old GBIF API.
+* 
+
 rgbif 0.3.2
 ===============
 

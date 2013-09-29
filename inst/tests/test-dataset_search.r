@@ -28,7 +28,7 @@ test_that("owningOrg query returns the correct class", {
   expect_is(tt[1,1], "factor")
 })
 test_that("owningOrg query returns the correct value", {
-  expect_equal(as.character(tt[9,1]), "The Bat Conservation Trust - Hibernation Survey")
+  expect_equal(as.character(tt[9,1]), "Herts Bird Club - Hertfordshire Breeding Bird Atlas : 1967-1973")
 })
 
 # Fulltext search for all datasets having the word "amsterdam" somewhere in 
@@ -39,7 +39,7 @@ test_that("search query returns the correct class", {
   expect_is(tt[1,1], "factor")
 })
 test_that("search query returns the correct value", {
-  expect_equal(as.character(tt[1,1]), "Fauna Europaea")
+  expect_equal(as.character(tt[1,1]), "University of Amsterdam (NL) - Páramo vegetation research, Venezuela.")
 })
  
 # Limited search

@@ -1,6 +1,8 @@
 #' The density web service provides access to records showing the density
 #'    of occurrence records from the GBIF Network by one-degree cell.
 #'
+#' This function is deprecated.
+#'
 #' This is similar to the densitylist function. You can get the same data.frame
 #'    of results as densitylist with this function, but you can also get a
 #'    species list or data.frame of species and their counts for any degree cell.
@@ -47,6 +49,7 @@
 #' density_spplist(originisocountrycode = "CO", spplist = "great", listcount='counts')
 #' }
 #' @export
+#' @rdname pkg-deprecated
 density_spplist <- function(taxonconceptKey = NULL, dataproviderkey = NULL,
   dataresourcekey = NULL, resourcenetworkkey = NULL, originisocountrycode = NULL,
   format = NULL, spplist = c("none","random","greatest","all"), listcount = "list")
@@ -108,6 +111,8 @@ density_spplist <- function(taxonconceptKey = NULL, dataproviderkey = NULL,
 
 #' The density web service provides access to records showing the density
 #'   	of occurrence records from the GBIF Network by one-degree cell.
+#' 
+#' This function is deprecated.
 #'
 #' @import RCurl XML plyr
 #' @param taxonconceptKey Unique key for taxon (numeric). Count only records which are 
@@ -136,6 +141,7 @@ density_spplist <- function(taxonconceptKey = NULL, dataproviderkey = NULL,
 #' head( out <- densitylist(originisocountrycode = "CA") )
 #' }
 #' @export
+#' @rdname pkg-deprecated
 densitylist <- function(taxonconceptKey = NULL, dataproviderkey = NULL,
                         dataresourcekey = NULL, resourcenetworkkey = NULL, originisocountrycode = NULL,
                         format = NULL) 
@@ -164,6 +170,8 @@ densitylist <- function(taxonconceptKey = NULL, dataproviderkey = NULL,
 
 #' Counts taxon concept records matching a range of filters.
 #' 
+#' This function is deprecated.
+#'
 #' @import RCurl XML plyr
 #' @param  scientificname count only records where the scientific name matches 
 #'    that supplied, use an asterisk * for any name starting with preseding 
@@ -242,6 +250,8 @@ densitylist <- function(taxonconceptKey = NULL, dataproviderkey = NULL,
 #'    year=2005, maxlatitude=20)
 #' }
 #' @export
+#' @rdname pkg-deprecated
+#' @seealso occ_count
 occurrencecount <- function(scientificname = NULL, taxonconceptKey = NULL,
                             dataproviderkey = NULL, dataresourcekey = NULL, institutioncode = NULL ,
                             collectioncode = NULL, catalognumber = NULL, resourcenetworkkey = NULL,
@@ -279,8 +289,12 @@ occurrencecount <- function(scientificname = NULL, taxonconceptKey = NULL,
 
 #' Returns summary counts of occurrence records by one-degree cell for a single
 #'   	taxon, country, dataset, data publisher or data network.
+#' 
+#' This function is deprecated.
 #'
 #' @export
+#' @rdname pkg-deprecated
+#' @seealso densitylist
 occurrencedensity <- function()
 {
   .Deprecated(new="densitylist", package="rgbif", msg="This function is deprecated, and will be removed in a future version. See ?densitylist")
@@ -302,6 +316,8 @@ occurrencedensity <- function()
 #' occurrenceget(key = 13749100)
 #' }
 #' @export
+#' @rdname pkg-deprecated
+#' @seealso occ_get
 occurrenceget <- function(key = NULL, format = NULL, mode = NULL)
 {
   .Deprecated(new="occ_get", package="rgbif", msg="This function is deprecated, and will be removed in a future version. See ?occ_get")
@@ -314,6 +330,8 @@ occurrenceget <- function(key = NULL, format = NULL, mode = NULL)
 }
 
 #' Occurrencelist searches for taxon concept records matching a range of filters.
+#' 
+#' This function is deprecated.
 #'
 #' @template oclist
 #' @examples \dontrun{
@@ -337,6 +355,8 @@ occurrenceget <- function(key = NULL, format = NULL, mode = NULL)
 #'    coordinatestatus = TRUE, maxresults = 200, writecsv="~/adsdf.csv")
 #' }
 #' @export
+#' @rdname pkg-deprecated
+#' @seealso occ_search
 occurrencelist <- function(scientificname = NULL, taxonconceptkey = NULL,
                            dataproviderkey = NULL, dataresourcekey = NULL, institutioncode = NULL,
                            collectioncode = NULL, catalognumber = NULL, resourcenetworkkey = NULL,
@@ -421,6 +441,8 @@ occurrencelist <- function(scientificname = NULL, taxonconceptkey = NULL,
 }
 
 #' Occurrencelist_all carries out an occurrencelist query for a single name and all its name variants according to GBIF's name matching.
+#' 
+#' This function is deprecated.
 #'
 #' @param scientificname A scientific name. (character)
 #' @param ... Further arguments passed on to occurrencelist_many
@@ -434,6 +456,8 @@ occurrencelist <- function(scientificname = NULL, taxonconceptkey = NULL,
 #'
 #' }
 #' @export
+#' @rdname pkg-deprecated
+#' @seealso occ_search
 occurrencelist_all <- function(scientificname, ...)
 {  
   .Deprecated(new="occ_search", package="rgbif", msg="This function is deprecated, and will be removed in a future version. See ?occ_search")
@@ -450,6 +474,8 @@ occurrencelist_all <- function(scientificname, ...)
 
 #' occurrencelist_many is the same as occurrencelist, but takes in a vector 
 #' of species names.
+#' 
+#' This function is deprecated.
 #'
 #' @template oclist
 #' @param parallel Do calls in parallel or not. (default is FALSE)
@@ -463,6 +489,8 @@ occurrencelist_all <- function(scientificname, ...)
 #' gbifmap_list(out)
 #' }
 #' @export
+#' @rdname pkg-deprecated
+#' @seealso occ_search
 occurrencelist_many <- function(scientificname = NULL, taxonconceptkey = NULL,
                                 dataproviderkey = NULL, dataresourcekey = NULL, institutioncode = NULL,
                                 collectioncode = NULL, catalognumber = NULL, resourcenetworkkey = NULL,
@@ -575,6 +603,8 @@ occurrencelist_many <- function(scientificname = NULL, taxonconceptkey = NULL,
 }
 
 #' Get data providers and their unique keys.
+#' 
+#' This function is deprecated.
 #'
 #' Beware: It takes a while to retrieve the full list of providers - so
 #' go get more coffee.
@@ -601,6 +631,8 @@ occurrencelist_many <- function(scientificname = NULL, taxonconceptkey = NULL,
 #' providers()
 #' }
 #' @export
+#' @rdname pkg-deprecated
+#' @seealso networks organizations datasets
 providers <- function(name = "", isocountrycode = NULL, modifiedsince = NULL,
                       startindex = NULL, maxresults = NULL)
 {
@@ -620,6 +652,8 @@ providers <- function(name = "", isocountrycode = NULL, modifiedsince = NULL,
 }
 
 #' Get data resources and their unique keys.
+#' 
+#' This function is deprecated.
 #'
 #' Beware: It takes a while to retrieve the full list of resources - so
 #' go get more coffee.
@@ -649,6 +683,8 @@ providers <- function(name = "", isocountrycode = NULL, modifiedsince = NULL,
 #' resources()
 #' }
 #' @export
+#' @rdname pkg-deprecated
+#' @seealso networks organizations datasets
 resources <- function(name = "", providerkey = NULL, basisofrecordcode = NULL,
                       modifiedsince = NULL,  startindex = NULL, maxresults = NULL)
 {
@@ -670,6 +706,8 @@ resources <- function(name = "", providerkey = NULL, basisofrecordcode = NULL,
 
 
 #' Search by taxon to retrieve number of records in GBIF.
+#' 
+#' This function is deprecated.
 #'
 #' @import httr XML plyr
 #' @param scientificname Scientitic name of taxon (character, see example)
@@ -684,6 +722,8 @@ resources <- function(name = "", providerkey = NULL, basisofrecordcode = NULL,
 #' taxoncount(rank = 'family')
 #' }
 #' @export
+#' @rdname pkg-deprecated
+#' @seealso occ_count
 taxoncount <- function(scientificname = NULL, rank = NULL, dataresourcekey = NULL)
 {
   .Deprecated(new="occ_count", package="rgbif", msg="This function is deprecated, and will be removed in a future version. See ?occ_count")
@@ -698,6 +738,8 @@ taxoncount <- function(scientificname = NULL, rank = NULL, dataresourcekey = NUL
 
 #' Get taxonomic information on a specific taxon or taxa in GBIF by their taxon
 #'   	concept keys.
+#' 
+#' This function is deprecated.
 #'
 #' @import httr XML plyr
 #' @param key A single key, or many keys in a vector, for a taxon.
@@ -711,6 +753,8 @@ taxoncount <- function(scientificname = NULL, rank = NULL, dataresourcekey = NUL
 #' taxonget(51780668) # taxonconceptkey for Puma concolor
 #' }
 #' @export
+#' @rdname pkg-deprecated
+#' @seealso name_usage
 taxonget <- function(key = NULL)
 {
   .Deprecated(new="name_usage", package="rgbif", msg="This function is deprecated, and will be removed in a future version. See ?name_usage")
@@ -731,6 +775,8 @@ taxonget <- function(key = NULL)
 
 
 #' Search for taxa in GBIF.
+#' 
+#' This function is deprecated.
 #'
 #' Search for a taxon using scientific name. Optionally, include taxonomic
 #'   	rank in the search. Returns list of TaxonConcept key values.
@@ -769,6 +815,8 @@ taxonget <- function(key = NULL)
 #' taxonsearch(scientificname = 'Fabaceae', rank="family")
 #' }
 #' @export
+#' @rdname pkg-deprecated
+#' @seealso occ_search
 taxonsearch <- function(scientificname = NULL, rank = NULL, maxresults = 10,
                         dataproviderkey = 1, dataresourcekey = NULL, resourcenetworkkey = NULL,
                         hostisocountrycode = NULL, startindex = NULL, accepted_status = FALSE)
@@ -806,6 +854,8 @@ taxonsearch <- function(scientificname = NULL, rank = NULL, maxresults = 10,
 
 #' Make a simple map to visualize GBIF data density data
 #' 
+#' This function is deprecated.
+#'
 #' @template map
 #' @examples \dontrun{
 #' # Tile map, using output from densitylist, Canada
@@ -823,6 +873,8 @@ taxonsearch <- function(scientificname = NULL, rank = NULL, maxresults = 10,
 #' gbifmap_dens(out, mapdatabase="usa")
 #' }
 #' @export
+#' @rdname pkg-deprecated
+#' @seealso gbifmap
 gbifmap_dens <- function(input = NULL, mapdatabase = "world", region = ".", 
                          geom = geom_point, jitter = NULL, customize = NULL)
 {
@@ -856,6 +908,8 @@ gbifmap_dens <- function(input = NULL, mapdatabase = "world", region = ".",
 
 #' Make a simple map to visualize GBIF point data.
 #' 
+#' This function is deprecated.
+#'
 #' @template map
 #' @examples \dontrun{
 #' # Point map, using output from occurrencelist, example 1
@@ -904,6 +958,8 @@ gbifmap_dens <- function(input = NULL, mapdatabase = "world", region = ".",
 #' gbifmap_list(out, customize = mycustom())
 #' }
 #' @export
+#' @rdname pkg-deprecated
+#' @seealso gbifmap
 gbifmap_list <- function(input = NULL, mapdatabase = "world", region = ".", 
                          geom = geom_point, jitter = NULL, customize = NULL)
 {
@@ -946,3 +1002,139 @@ gbifmap_list <- function(input = NULL, mapdatabase = "world", region = ".",
     theme2 + 
     customize
 }
+
+#' Get data.frame from occurrencelist, occurrencelist_many, or densitylist.
+#' 
+#' @param input Input object from a call to occurrencelist, occurrencelist_many, 
+#'    or densitylist.
+#' @param ... further arguments
+#' @details A convienence function to get the raw data in a data.frame format from 
+#'    occurrencelist, occurrencelist_many, and densitylist functions.
+#' @export
+#' @examples \dontrun{
+#' # occurrencelist
+#' out <- occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE, 
+#'    maxresults = 40)
+#' gbifdata(out)
+#' gbifdata(out, minimal=FALSE)
+#' 
+#' occurrencelist_many
+#' splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
+#' out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 20)
+#' gbifdata(out)
+#' gbifdata(out, minimal=FALSE)
+#' 
+#' # densitylist (the minimal parameter doesn't apply with densitylist data)
+#' out <- densitylist(originisocountrycode="US")
+#' gbifdata(out)
+#' }
+gbifdata <- function(input, ...) UseMethod("gbifdata")
+
+#' Gbiflist method
+#' @param input Input object from a call to occurrencelist, occurrencelist_many, or densitylist.
+#' @param minimal Only applies to occurrencelist data. If TRUE, returns only name, lat, 
+#'    long fields; defaults to TRUE. 
+#' @param coordinatestatus Return only rows of data.frame that have lat and long data.
+#' @param ... further arguments
+#' @method gbifdata gbiflist
+#' @export
+#' @rdname pkg-deprecated
+gbifdata.gbiflist <- function(input, coordinatestatus=FALSE, minimal=TRUE, ...)
+{  
+  if(!is.gbiflist(input)) 
+    stop("Input is not of class gbiflist")
+  
+  input <- data.frame(input)
+  
+  if(nrow(input) == 0){
+    warning("no data for that taxon, sorry")
+    return( NULL )
+  } else
+  {
+    input$decimalLatitude <- as.numeric(input$decimalLatitude)
+    input$decimalLongitude <- as.numeric(input$decimalLongitude)
+    
+    if(coordinatestatus){
+      input <- input[complete.cases(input$decimalLatitude, input$decimalLatitude), ]
+    }
+    input$taxonName <- as.factor(capwords(input$taxonName, onlyfirst=TRUE))
+    if(minimal)
+      input <- input[,c("taxonName","decimalLatitude","decimalLongitude")]
+    return( input )
+  }
+}
+
+#' Gbifdens method
+#' @param input Input object from a call to occurrencelist, occurrencelist_many, or densitylist.
+#' @param ... further arguments
+#' @method gbifdata gbifdens
+#' @export
+#' @rdname pkg-deprecated
+gbifdata.gbifdens <- function(input, ...)
+{
+  if(!is.gbifdens(input))
+    stop("Input is not of class gbifdens")  
+  
+  return( data.frame(input) )
+}
+
+#' Print summary of gbifdens class
+#' @param x an object of class gbifdens
+#' @param ... further arguments passed to or from other methods.
+#' @method print gbifdens
+#' @export
+#' @rdname pkg-deprecated
+print.gbifdens <- function(x, ...){
+  if(!is.gbifdens(x))
+    stop("Input is not of class gbifdens")  
+  
+  Stats = c("NumberCells","MinLatitude","MaxLatitude","MinLongitude",
+    "MaxLongitude","MinPerCell","MaxPercell")
+  records <- nrow(x)
+  minlat = min(x$minLatitude, na.rm=TRUE)
+  maxlat = max(x$maxLatitude, na.rm=TRUE)
+  minlong = min(x$minLongitude, na.rm=TRUE)
+  maxlong = max(x$maxLongitude, na.rm=TRUE)
+  minpercell = min(x$count)
+  maxpercell = max(x$count)
+  
+  print(data.frame(Stats, numbers=c(records,minlat,maxlat,minlong,
+    maxlong,minpercell,maxpercell)))
+}
+
+#' Print summary of gbiflist class
+#' @param x an object of class gbiflist
+#' @param ... further arguments passed to or from other methods.
+#' @method print gbiflist
+#' @export
+#' @rdname pkg-deprecated
+print.gbiflist <- function(x, ...){
+  if(!is.gbiflist(x))
+    stop("Input is not of class gbiflist")
+  
+  records <- nrow(x)
+  names2 <- unique(x$taxonName)
+  Stats = c("MinLatitude","MaxLatitude","MinLongitude","MaxLongitude")
+  minlat = min(x$decimalLatitude, na.rm=TRUE)
+  maxlat = max(x$decimalLatitude, na.rm=TRUE)
+  minlong = min(x$decimalLongitude, na.rm=TRUE)
+  maxlong = max(x$decimalLongitude, na.rm=TRUE)
+  countries = unique(x$country)
+  
+  print(list(NumberFound = records, 
+             TaxonNames = names2, 
+             Coordinates = data.frame(Stats, numbers=c(minlat,maxlat,minlong,maxlong)),
+             Countries = countries))
+}
+
+#' Check if object is of class gbiflist
+#' @param x input
+#' @export
+#' @rdname pkg-deprecated
+is.gbiflist <- function(x) inherits(x, "gbiflist")
+
+#' Check if object is of class gbifdens
+#' @param x input
+#' @export
+#' @rdname pkg-deprecated
+is.gbifdens <- function(x) inherits(x, "gbifdens")

@@ -1,4 +1,4 @@
-context("nodes")
+context("organizations")
 
 tt <- organizations()
 uu <- organizations(uuid="4b4b2111-ee51-45f5-bf5e-f535f4a1c9dc")
@@ -20,7 +20,7 @@ test_that("returns the correct value", {
   expect_identical(tt$results[[1]]$tags, list())
   expect_equal(uu$endorsingNodeKey, "1f94b3ca-9345-4d65-afe2-4bace93aa0fe")
   expect_equal(vv[[1]]$key, 20006)
-  expect_equal(vv[[1]]$modifiedBy, "ADMIN")
+  expect_equal(vv[[1]]$modifiedBy, "registry-migration.gbif.org")
 })
 
 test_that("returns the correct dimensions", {

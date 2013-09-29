@@ -3,9 +3,9 @@ Description: A programmatic interface to the
     Web Service methods provided by the Global
     Biodiversity Information Facility.
 Title: Interface to the Global Biodiversity Information Facility API methods
-Version: 0.3.5
+Version: 0.3.6
 License: CC0
-Date: 2013-09-14
+Date: 2013-09-29
 Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com"),
     person("Carl", "Boettiger", role = "aut",
@@ -52,3 +52,4 @@ Collate:
     'gist.r'
     'stylegeojson.r'
     'togeojson.r'
+    'rgbif-package.r'
