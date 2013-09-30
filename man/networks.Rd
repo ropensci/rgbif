@@ -3,7 +3,7 @@
 \title{Networks metadata.}
 \usage{
   networks(data = "all", uuid = NULL, callopts = list(),
-    name = "", code = NULL, modifiedsince = NULL,
+    name = NULL, code = NULL, modifiedsince = NULL,
     startindex = NULL, maxresults = NULL)
 }
 \arguments{
@@ -43,9 +43,6 @@
 networks()
 networks(uuid='16ab5405-6c94-4189-ac71-16ca3b753df7')
 networks(data='endpoint', uuid='16ab5405-6c94-4189-ac71-16ca3b753df7')
-
-# should throw error message saying params are deprecated
-networks(maxresults=10)
 }
 }
 \references{

@@ -22,11 +22,12 @@
 #' networks()
 #' networks(uuid='16ab5405-6c94-4189-ac71-16ca3b753df7')
 #' networks(data='endpoint', uuid='16ab5405-6c94-4189-ac71-16ca3b753df7')
-#' 
+#' }
+#' @examples \donttest{
 #' # should throw error message saying params are deprecated
 #' networks(maxresults=10)
 #' }
-networks <- function(data = 'all', uuid = NULL, callopts=list(), name = "", code = NULL, 
+networks <- function(data = 'all', uuid = NULL, callopts=list(), name = NULL, code = NULL, 
   modifiedsince = NULL, startindex = NULL, maxresults = NULL)
 {
   calls <- deparse(sys.calls())

@@ -8,26 +8,25 @@ rgbif vignette - Seach and retrieve data from the Global Biodiverity Information
 
 ### About the package
 
-`rgbif` is an R package to search and retrieve data from the Global Biodiverity Information Facilty (GBIF). `rgbif` wraps R code around the [GBIF API][gbifapi] to allow you to talk to the BISON database from R. 
+`rgbif` is an R package to search and retrieve data from the Global Biodiverity Information Facilty (GBIF). `rgbif` wraps R code around the [GBIF API][gbifapi] to allow you to talk to GBIF from R. 
 
 ********************
 
-#### Install rgbif
+#### Install rgbif and dependencies
 
 
 ```r
-# install.packages('devtools'); library(devtools);
-# install_github('rbison', 'ropensci')
+install.packages("rgbif")
+```
+
+
+#### Load rgbif and dependencies
+
+
+```r
 library(rgbif)
 library(XML)
 library(RCurl)
-```
-
-```
-Loading required package: bitops
-```
-
-```r
 library(plyr)
 library(ggplot2)
 library(maps)
@@ -36,134 +35,101 @@ library(maps)
 
 ********************
 
-#### Get a list of the data networks in GBIF - and you can use the networkkey number to seach for occurrences for the specific provider in other functions
-
-
-```r
-# Test the function for a few networks
-networks(maxresults = 5)
-```
-
-```
-                                           names_ networkkey
-1 Biological Collection Access Service for Europe          4
-2                                         HerpNET          6
-3             Mammal Networked Information System          1
-4          Ocean Biogeographic Information System          3
-5                         Plant Genetic Resources          2
-```
-
-```r
-
-# By name
-networks("ORNIS")
-```
-
-```
-        names_ networkkey
-gbifKey  ORNIS          8
-```
-
-
-********************
-
-#### Get a list of the data providers in GBIF - and you can use the dataproviderkey number to seach for occurrences for the specific provider in other functions
-
-
-```r
-# Test the function for a few providers
-providers(maxresults = 5)
-```
-
-```
-                                                             names_
-1                                          Białowieża National Park
-2                                 Borror Laboratory of Bioacoustics
-3                                                    Index Fungorum
-4 Leibniz Institute of Plant Genetics and Crop Plant Research (IPK)
-5       National Museum of Natural History, Smithsonian Institution
-  dataproviderkey
-1             219
-2             221
-3             223
-4             222
-5             220
-```
-
-```r
-
-# By data provider name
-providers("University of Texas-Austin")
-```
-
-```
-                            names_ dataproviderkey
-gbifKey University of Texas-Austin             192
-```
-
-
-********************
-
-#### Get a list of the data resources in GBIF - and you can use the resourcekey number to seach for occurrences for the specific resource in other functions
-
-
-```r
-# Test the function for a few resources
-resources(maxresults = 5)
-```
-
-```
-                         names_ resourcekey
-1                          IPNI          40
-2                         eBird          43
-3 Macaulay Library - Audio Data          41
-4 Macaulay Library - Video Data          42
-5        GBIF Backbone Taxonomy           1
-```
-
-```r
-
-# By name
-head(resources("Flora"))
-```
-
-```
-                                                                                                                                         names_
-1                                                                                                                              Flora Costa Rica
-2                                                                                                              Flora of Japan Specimen Database
-3                                                                                                                     Flora of the Stołowe Mts.
-4                                                                                                                      Flora Mycologica Iberica
-5                                                                                                                   Flora acuática de Querétaro
-6 Flora acuática vascular de las regiones hidrológicas R66 (Lagos Cráter del Nevado de Toluca) y R67 (Río Amacuzac-Lagunas de Zempoala), México
-  resourcekey
-1        8134
-2       14644
-3       11324
-4         252
-5       13190
-6       13193
-```
-
-
-********************
-
 #### Get number of occurrences for a set of search parameters
 
-```r
-occurrencecount(scientificname = "Accipiter erythronemius", coordinatestatus = TRUE)
-```
+##### Search by type of record, all observational in this case
 
-```
-[1] 10
-```
 
 ```r
-occurrencecount(scientificname = "Helianthus annuus", coordinatestatus = TRUE, 
-    year = 2005, maxlatitude = 20)
+occ_count(basisOfRecord = "OBSERVATION")
 ```
 
 ```
-[1] 140
+[1] 286071783
+```
+
+
+##### Records for **Puma concolor** with lat/long data (georeferened) only
+
+
+```r
+occ_count(nubKey = 2435099, georeferenced = TRUE)
+```
+
+```
+[1] 2541
+```
+
+
+##### All georeferenced records in GBIF
+
+
+```r
+occ_count(georeferenced = TRUE)
+```
+
+```
+[1] 3.55e+08
+```
+
+
+##### Records from Denmark
+
+
+```r
+occ_count(country = "DENMARK")
+```
+
+```
+[1] 8628822
+```
+
+
+##### Records from France
+
+
+```r
+occ_count(hostCountry = "FRANCE")
+```
+
+```
+[1] 17272175
+```
+
+
+##### Number of records in a particular dataset
+
+
+```r
+occ_count(datasetKey = "9e7ea106-0bf8-4087-bb61-dfe4f29e0f17")
+```
+
+```
+[1] 4591
+```
+
+
+##### All records from 2012
+
+
+```r
+occ_count(year = 2012)
+```
+
+```
+[1] 31483292
+```
+
+
+##### Records for a particular dataset, and only for preserved specimens
+
+
+```r
+occ_count(datasetKey = "8626bd3a-f762-11e1-a439-00145eb45e9a", basisOfRecord = "PRESERVED_SPECIMEN")
+```
+
+```
+[1] 550849
 ```
 
 
@@ -184,240 +150,378 @@ taxrank()
 
 ********************
 
-#### Seach by taxon to retrieve number of records per taxon found in GBIF
+#### Search for taxon information
+
+##### Search for a genus 
+
 
 ```r
-taxoncount(scientificname = "Puma concolor")
+name_lookup(query = "Cnaemidophorus", rank = "genus", return = "data")
 ```
 
 ```
-[1] 90
+         key  nubKey parentKey        parent  kingdom        phylum
+1  116755723 1858636 110614854 Pterophoridae Animalia    Arthropoda
+2    1858636 1858636      8863 Pterophoridae Animalia    Arthropoda
+3  125802004 1858636 125793784 Pterophoridae     <NA>          <NA>
+4  124531302 1858636        NA          <NA>     <NA>          <NA>
+5  126862804 1858636 126783981 Pterophoridae Animalia    Arthropoda
+6  115123697 1858636        NA          <NA>     <NA>          <NA>
+7  121309232 1858636 124484006         :) ia    :) ia          <NA>
+8  101053441 1858636 100725398 Pterophoridae Animalia    Arthropoda
+9  107119486 1858636 107119872 Pterophoridae     <NA>          <NA>
+10 107889106 1858636 107894685 Pterophoridae Animalia    Arthropoda
+11 115090188 1858636 115103956 Pterophoridae Animalia    Arthropoda
+12 103267214 1858636 103295754 Pterophorinae     <NA>          <NA>
+13 107119489 6114874 107119872 Pterophoridae     <NA>          <NA>
+14   6114874 6114874      8863 Pterophoridae Animalia    Arthropoda
+15 107119488 4705260 107119872 Pterophoridae     <NA>          <NA>
+16 102383618 3257276 100725398 Pterophoridae Animalia    Arthropoda
+17 107119487 3257276 107119872 Pterophoridae     <NA>          <NA>
+18   3257276 3257276      8863 Pterophoridae Animalia    Arthropoda
+19 125802820 3002148 125806863      Rosaceae     <NA>          <NA>
+20   3002148 3002148      5015      Rosaceae  Plantae Magnoliophyta
+           clazz       order        family          genus kingdomKey
+1        Insecta Lepidoptera Pterophoridae Cnaemidophorus  116630539
+2        Insecta Lepidoptera Pterophoridae Cnaemidophorus          1
+3        Insecta Lepidoptera Pterophoridae Cnaemidophorus         NA
+4           <NA>        <NA>          <NA> Cnaemidophorus         NA
+5        Insecta Lepidoptera Pterophoridae Cnaemidophorus  126774927
+6           <NA>        <NA>          <NA> Cnaemidophorus         NA
+7           <NA>        <NA>          <NA> Cnaemidophorus  124484006
+8        Insecta Lepidoptera Pterophoridae Cnaemidophorus  101719444
+9           <NA>        <NA> Pterophoridae Cnaemidophorus         NA
+10       Insecta Lepidoptera Pterophoridae Cnaemidophorus  107895884
+11       Insecta Lepidoptera Pterophoridae Cnaemidophorus  115107543
+12          <NA>        <NA>          <NA> Cnaemidophorus         NA
+13          <NA>        <NA> Pterophoridae Cnaemidophorus         NA
+14       Insecta Lepidoptera Pterophoridae Cnaemidophorus          1
+15          <NA>        <NA> Pterophoridae Cnaemidophorus         NA
+16       Insecta Lepidoptera Pterophoridae Cnaemidophorus  101719444
+17          <NA>        <NA> Pterophoridae Cnaemidophorus         NA
+18       Insecta Lepidoptera Pterophoridae Cnaemidophorus          1
+19          <NA>     Rosales      Rosaceae           Rosa         NA
+20 Magnoliopsida     Rosales      Rosaceae           Rosa          6
+   phylumKey  classKey  orderKey familyKey  genusKey   canonicalName
+1  116762374 116686069 116843281 110614854 116755723  Cnaemidophorus
+2         54       216       797      8863   1858636  Cnaemidophorus
+3         NA 125831175 125810165 125793784 125802004  Cnaemidophorus
+4         NA        NA        NA        NA 124531302  Cnaemidophorus
+5  126774928 126775138 126775421 126783981 126862804  Cnaemidophorus
+6         NA        NA        NA        NA 115123697  Cnaemidophorus
+7         NA        NA        NA        NA 121309232  Cnaemidophorus
+8  102545136 101674726 102306154 100725398 101053441  Cnaemidophorus
+9         NA        NA        NA 107119872 107119486  Cnaemidophorus
+10 107895861 107895809 107895457 107894685 107889106  Cnaemidophorus
+11 115107571 115107384 115106690 115103956 115090188  Cnaemidophorus
+12        NA        NA        NA        NA 103267214  Cnaemidophorus
+13        NA        NA        NA 107119872 107119486 Euenemidophorus
+14        54       216       797      8863   1858636 Euenemidophorus
+15        NA        NA        NA 107119872 107119486 Eucnemidophorus
+16 102545136 101674726 102306154 100725398 101053441   Cnemidophorus
+17        NA        NA        NA 107119872 107119486   Cnemidophorus
+18        54       216       797      8863   1858636   Cnemidophorus
+19        NA        NA 125837937 125806863 125802820            Rosa
+20        49       220       691      5015   3002148            Rosa
+                authorship   nameType  rank numOccurrences
+1         Wallengren, 1862 WELLFORMED GENUS              0
+2         Wallengren, 1862 WELLFORMED GENUS              0
+3         Wallengren, 1862 WELLFORMED GENUS              0
+4                          WELLFORMED GENUS              0
+5                          WELLFORMED GENUS              0
+6                          WELLFORMED GENUS              0
+7                          WELLFORMED GENUS              0
+8         Wallengren, 1860 WELLFORMED GENUS              0
+9         Wallengren, 1862 WELLFORMED GENUS              0
+10        Wallengren, 1862 WELLFORMED GENUS              0
+11        Wallengren, 1862 WELLFORMED GENUS              0
+12        Wallengren, 1862 WELLFORMED GENUS              0
+13 Pierce & Metcalfe, 1938 WELLFORMED GENUS              0
+14 Pierce & Metcalfe, 1938 WELLFORMED GENUS              0
+15        Wallengren, 1881 WELLFORMED GENUS              0
+16            Zeller, 1867 WELLFORMED GENUS              0
+17            Zeller, 1867 WELLFORMED GENUS              0
+18            Zeller, 1867 WELLFORMED GENUS              0
+19                      L. WELLFORMED GENUS              0
+20                      L. WELLFORMED GENUS              0
 ```
+
+
+##### Search for the class mammalia
+
 
 ```r
-taxoncount(scientificname = "Helianthus annuus")
+# Look up names like mammalia
+name_lookup(class = "mammalia")
 ```
 
 ```
-[1] 141
+$meta
+  offset limit endOfRecords    count
+1      0    20        FALSE 20362854
+
+$data
+         key nubKey  kingdom kingdomKey      canonicalName
+1          1      1 Animalia          1           Animalia
+2  115219148     NA  Plantae  115219148            Plantae
+3         54     54 Animalia          1         Arthropoda
+4  101719444      1 Animalia  101719444           Animalia
+5  126774927      1 Animalia  126774927           Animalia
+6        216    216 Animalia          1            Insecta
+7  124484006     NA    :) ia  124484006               <NA>
+8  105901881     NA     <NA>         NA               <NA>
+9  102545136     54 Animalia  101719444         Arthropoda
+10 126774928     54 Animalia  126774927         Arthropoda
+11         6      6  Plantae          6            Plantae
+12 105961965     NA     <NA>         NA Cellular organisms
+13 126775138    216 Animalia  126774927            Insecta
+14        49     49  Plantae          6      Magnoliophyta
+15 101674726    216 Animalia  101719444            Insecta
+16       220    220  Plantae          6      Magnoliopsida
+17 106094935     NA     <NA>         NA          Eukaryota
+18 106147866     NA     <NA>         NA       Opisthokonta
+19 106148414     NA  Metazoa  106148414            Metazoa
+20 106404692     NA  Metazoa  106148414          Eumetazoa
+                                   authorship   nameType     rank
+1                                             WELLFORMED  KINGDOM
+2                                             WELLFORMED  KINGDOM
+3                                             WELLFORMED   PHYLUM
+4                                             WELLFORMED  KINGDOM
+5                                             WELLFORMED  KINGDOM
+6                                             WELLFORMED    CLASS
+7                                                SCINAME  KINGDOM
+8                                                SCINAME UNRANKED
+9                                             WELLFORMED   PHYLUM
+10                                            WELLFORMED   PHYLUM
+11                                            WELLFORMED  KINGDOM
+12                                               SCINAME UNRANKED
+13                                            WELLFORMED    CLASS
+14 Cronquist, Takhtajan & W. Zimmermann, 1966 WELLFORMED   PHYLUM
+15                                            WELLFORMED    CLASS
+16                                            WELLFORMED    CLASS
+17                                            WELLFORMED   DOMAIN
+18                                            WELLFORMED UNRANKED
+19                                            WELLFORMED  KINGDOM
+20                                            WELLFORMED UNRANKED
+   numOccurrences parentKey             parent        phylum phylumKey
+1               0        NA               <NA>          <NA>        NA
+2               0        NA               <NA>          <NA>        NA
+3               0         1           Animalia    Arthropoda        54
+4               0        NA               <NA>          <NA>        NA
+5               0        NA               <NA>          <NA>        NA
+6               0        54         Arthropoda    Arthropoda        54
+7               0        NA               <NA>          <NA>        NA
+8               0        NA               <NA>          <NA>        NA
+9               0 101719444           Animalia    Arthropoda 102545136
+10              0 126774927           Animalia    Arthropoda 126774928
+11              0        NA               <NA>          <NA>        NA
+12              0 105901881               root          <NA>        NA
+13              0 126774928         Arthropoda    Arthropoda 126774928
+14              0         6            Plantae Magnoliophyta        49
+15              0 102545136         Arthropoda    Arthropoda 102545136
+16              0        49      Magnoliophyta Magnoliophyta        49
+17              0 105961965 Cellular organisms          <NA>        NA
+18              0 106094935          Eukaryota          <NA>        NA
+19              0 106147866       Opisthokonta          <NA>        NA
+20              0 106148414            Metazoa          <NA>        NA
+           clazz  classKey
+1           <NA>        NA
+2           <NA>        NA
+3           <NA>        NA
+4           <NA>        NA
+5           <NA>        NA
+6        Insecta       216
+7           <NA>        NA
+8           <NA>        NA
+9           <NA>        NA
+10          <NA>        NA
+11          <NA>        NA
+12          <NA>        NA
+13       Insecta 126775138
+14          <NA>        NA
+15       Insecta 101674726
+16 Magnoliopsida       220
+17          <NA>        NA
+18          <NA>        NA
+19          <NA>        NA
+20          <NA>        NA
 ```
+
+
+##### Look up the species Helianthus annuus
+
 
 ```r
-taxoncount(rank = "family")
+name_lookup("Helianthus annuus", rank = "species")
 ```
 
 ```
-[1] 477094
+$meta
+  offset limit endOfRecords count
+1      0    20        FALSE    69
+
+$data
+         key  nubKey parentKey                    parent       kingdom
+1  116845199 3119195 116853573                Helianthus       Plantae
+2    3119195 3119195   3119134                Helianthus       Plantae
+3  125790787 3119195 125809269                Helianthus          <NA>
+4  106239436 3119195 106239325                Helianthus Viridiplantae
+5  121635316 3119195 124573711                Helianthus          <NA>
+6  111449704 3119195 111449703                Helianthus       Plantae
+7  108157198      NA 108086589                Asteraceae       Plantae
+8  108157199      NA 108086589                Asteraceae       Plantae
+9  108157200      NA 108086589                Asteraceae       Plantae
+10 115043868 3119195 115091988                Helianthus       Plantae
+11 107290518      NA 107290513                Helianthus       Plantae
+12 107001935      NA 107105089                Helianthus       Plantae
+13 117214133 3119195 117208777                     Virus         Virus
+14 117075019 3119195 117061550                Helianthus       Plantae
+15 110853779 3119195 116128567                Helianthus       Plantae
+16 125879180 3119195 126824197                Helianthus       Plantae
+17 124780276 3119195 124852643                Helianthus       Plantae
+18 100837541 3119195 102425010                Helianthus       Plantae
+19 100019171 3119195 100009008                Helianthus          <NA>
+20 125587214 3119195 106573315 unclassified phytoplasmas          <NA>
+               order             family      genus kingdomKey  orderKey
+1          Asterales         Asteraceae Helianthus  116668764 110610447
+2          Asterales         Asteraceae Helianthus          6       414
+3          Asterales         Asteraceae Helianthus         NA 125833882
+4          Asterales         Asteraceae Helianthus  106147210 106237428
+5               <NA>               <NA> Helianthus         NA        NA
+6               <NA>         Compositae Helianthus  111449174        NA
+7               <NA>         Asteraceae       <NA>  115219148        NA
+8               <NA>         Asteraceae       <NA>  115219148        NA
+9               <NA>         Asteraceae       <NA>  115219148        NA
+10         Asterales         Asteraceae Helianthus  115107585 115106969
+11         Asterales         Asteraceae Helianthus  107264512 107289189
+12              <NA>         Asteraceae Helianthus  124856107        NA
+13              <NA>               <NA>       <NA>  117208777        NA
+14         Asterales         Compositae Helianthus  117067772 117058422
+15         Asterales         Compositae Helianthus  116127234 116128510
+16         Asterales         Asteraceae Helianthus  126775066 126779356
+17         Asterales         Compositae Helianthus  124850847 124852488
+18         Asterales         Asteraceae Helianthus  102545045 100614495
+19         Asterales         Asteraceae Helianthus         NA 100023079
+20 Acholeplasmatales Acholeplasmataceae Candidatus         NA 106013100
+   familyKey  genusKey     canonicalName authorship   nameType    rank
+1  116856030 116853573 Helianthus annuus         L. WELLFORMED SPECIES
+2       3065   3119134 Helianthus annuus         L. WELLFORMED SPECIES
+3  125799038 125809269 Helianthus annuus         L. WELLFORMED SPECIES
+4  106237535 106239325 Helianthus annuus            WELLFORMED SPECIES
+5         NA 124573711 Helianthus annuus            WELLFORMED SPECIES
+6  111442813 111449703 Helianthus annuus         L. WELLFORMED SPECIES
+7  108086589        NA Helianthus annuus         L. WELLFORMED SPECIES
+8  108086589        NA Helianthus annuus         L. WELLFORMED SPECIES
+9  108086589        NA Helianthus annuus         L. WELLFORMED SPECIES
+10 115105473 115091988 Helianthus annuus         L. WELLFORMED SPECIES
+11 107289191 107290513 Helianthus annuus         L. WELLFORMED SPECIES
+12 107079268 107105089 Helianthus annuus         L. WELLFORMED SPECIES
+13        NA        NA Helianthus annuus         L. WELLFORMED SPECIES
+14 117068545 117061550 Helianthus annuus         L. WELLFORMED SPECIES
+15 116128511 116128567 Helianthus annuus         L. WELLFORMED SPECIES
+16 126781795 126824197 Helianthus annuus         L. WELLFORMED SPECIES
+17 124852489 124852643 Helianthus annuus         L. WELLFORMED SPECIES
+18 102234418 102425010 Helianthus annuus   Linnaeus WELLFORMED SPECIES
+19 100025154 100009008 Helianthus annuus   Linnaeus WELLFORMED SPECIES
+20 106039581 106155719 Helianthus annuus               SCINAME SPECIES
+   numOccurrences        phylum         clazz phylumKey  classKey
+1               0          <NA>          <NA>        NA        NA
+2               0 Magnoliophyta Magnoliopsida        49       220
+3               0          <NA>          <NA>        NA        NA
+4               0  Streptophyta          <NA> 106171079        NA
+5               0          <NA>          <NA>        NA        NA
+6               0 Spermatophyta Dicotyledones 111449175 111449177
+7               0          <NA>          <NA>        NA        NA
+8               0          <NA>          <NA>        NA        NA
+9               0          <NA>          <NA>        NA        NA
+10              0 Magnoliophyta Magnoliopsida 115107589 115107444
+11              0 Magnoliophyta Magnoliopsida 107240291 107240313
+12              0          <NA>          <NA>        NA        NA
+13              0          <NA>          <NA>        NA        NA
+14              0 Spermatophyta Magnoliopsida 117080124 117074792
+15              0 Magnoliophyta Magnoliopsida 116127951 116128467
+16              0  Tracheophyta Magnoliopsida 126775067 126775068
+17              0  Tracheophyta Magnoliopsida 124851364 124852364
+18              0 Magnoliophyta Magnoliopsida 102545123 101741810
+19              0          <NA> Equisetopsida        NA 100023390
+20              0   Tenericutes    Mollicutes 106355900 106136190
 ```
 
 
 ********************
 
-#### Get taxonomic information on a specific taxon or taxa in GBIF by their taxon concept keys
+#### Get data for a single occurrence. Note that data is returned as a list, with slots for metadata and data, or as a hierarchy, or just data.
+
+##### Just data 
 
 
 ```r
-(out <- taxonsearch(scientificname = "Puma concolor"))
+occ_get(key = 773433533, return = "data")
 ```
 
 ```
-  gbifkey   status          name    rank  sci                 source
-1 2435099 accepted Puma concolor species true GBIF Backbone Taxonomy
-  primary
-1    true
+                  name longitude latitude
+1 Helianthus annuus L.      -117    32.85
 ```
 
 
-********************
-
-#### Search for taxa in GBIF
+##### Just taxonomic hierarchy
 
 
 ```r
-taxonsearch(scientificname = "Puma concolor", rank = "species", maxresults = 10)
+occ_get(key = 773433533, return = "hier")
 ```
 
 ```
-  gbifkey   status          name    rank  sci                 source
-1 2435099 accepted Puma concolor species true GBIF Backbone Taxonomy
-  primary
-1    true
-```
-
-```r
-taxonsearch(scientificname = "Puma concolor", rank = "species", dataproviderkey = 1)
-```
-
-```
-  gbifkey   status          name    rank  sci                 source
-1 2435099 accepted Puma concolor species true GBIF Backbone Taxonomy
-  primary
-1    true
+                  name     key    rank
+1              Plantae       6 kingdom
+2        Magnoliophyta      49  phylum
+3        Magnoliopsida     220   clazz
+4            Asterales     414   order
+5           Asteraceae    3065  family
+6           Helianthus 3119134   genus
+7 Helianthus annuus L. 3119195 species
 ```
 
 
-********************
-
-#### Get data for a single occurrence. Note that data is returned as a list, so you have to convert to a data.frame, etc. as you wish
-
-```r
-occurrenceget(key = 13749100)$dataProvider$dataResources$dataResource$occurrenceRecords$TaxonOccurrence[1:10]
-```
-
-```
-$catalogNumber
-[1] "1687588"
-
-$collectionCode
-[1] "Biologiezentrum Linz"
-
-$coordinateUncertaintyInMeters
-[1] "500"
-
-$country
-[1] "AUT"
-
-$decimalLatitude
-[1] "47.81"
-
-$decimalLongitude
-[1] "13.98"
-
-$institutionCode
-[1] "LI"
-
-$minimumElevationInMeters
-[1] "1506"
-
-$earliestDateCollected
-[1] "1947-09-27"
-
-$latestDateCollected
-[1] "1947-09-27"
-```
-
-
-********************
+##### All data, or leave return parameter blank
 
 
 ```r
-out <- occurrencelist(scientificname = "Puma concolor", coordinatestatus = TRUE, 
-    maxresults = 20)
+occ_get(key = 773433533, return = "all")
+```
+
+```
+$hierarch
+                  name     key    rank
+1              Plantae       6 kingdom
+2        Magnoliophyta      49  phylum
+3        Magnoliopsida     220   clazz
+4            Asterales     414   order
+5           Asteraceae    3065  family
+6           Helianthus 3119134   genus
+7 Helianthus annuus L. 3119195 species
+
+$data
+                  name longitude latitude
+1 Helianthus annuus L.      -117    32.85
 ```
 
 
-Note that the default object printed from a call to `occurrencelist` is a list that contains:
-
-+ NumberFound: number of occurrences found in search results.
-+ TaxonNames: Unique list of taxonomic names in search results.
-+ Coordinates: Min and max latitude and longitude of all occurrences.
-+ Countries: Countries contained in results set.
+##### Get many occurrences. `occ_get` is vectorized
 
 
 ```r
-out
+occ_get(key = c(773433533, 101010, 240713150, 855998194, 49819470), return = "data")
 ```
 
 ```
-$NumberFound
-[1] 20
-
-$TaxonNames
-[1] "PUMA CONCOLOR"     "PUMA ? CONCOLOR ?"
-
-$Coordinates
-         Stats  numbers
-1  MinLatitude    2.583
-2  MaxLatitude   49.683
-3 MinLongitude -126.617
-4 MaxLongitude  -59.249
-
-$Countries
-[1] "CANADA" "GUYANA"
-```
-
-
-Where do you get data after a call to the `occurrencelist` function? This is where `gbifdata` comes in. By default a call to `gbifdata` prints a minimal data.frame with just rows *name*, *latitude*, and *longitude*.
-
-
-```r
-gbifdata(out)
-```
-
-```
-           taxonName decimalLatitude decimalLongitude
-1      Puma concolor          49.017          -122.78
-2      Puma concolor           6.317           -60.27
-3      Puma concolor          49.683          -125.05
-4      Puma concolor           6.317           -60.27
-5      Puma concolor           2.833           -59.52
-6      Puma concolor           2.833           -59.52
-7      Puma concolor           2.945           -59.25
-8      Puma concolor           2.833           -59.52
-9      Puma concolor           3.091           -59.26
-10     Puma concolor          45.383           -71.90
-11 Puma ? concolor ?          45.850           -66.23
-12     Puma concolor          49.600          -126.57
-13     Puma concolor           2.833           -59.52
-14     Puma concolor          49.017          -122.78
-15     Puma concolor           2.583           -59.93
-16     Puma concolor           2.833           -59.52
-17     Puma concolor           2.833           -59.52
-18     Puma concolor           6.317           -60.27
-19     Puma concolor           2.833           -59.52
-20     Puma concolor          49.600          -126.62
-```
-
-
-Though you can get more detailed data by calling *minimal=FALSE*.
-
-
-```r
-head(gbifdata(out, minimal = FALSE)[, 1:6])
-```
-
-```
-      taxonName country decimalLatitude decimalLongitude catalogNumber
-1 Puma concolor  CANADA          49.017          -122.78    3502070001
-2 Puma concolor  GUYANA           6.317           -60.27         34302
-3 Puma concolor  CANADA          49.683          -125.05         27564
-4 Puma concolor  GUYANA           6.317           -60.27         34303
-5 Puma concolor  GUYANA           2.833           -59.52         32266
-6 Puma concolor  GUYANA           2.833           -59.52         32234
-  earliestDateCollected
-1                  <NA>
-2                  <NA>
-3                  <NA>
-4                  <NA>
-5                  <NA>
-6                  <NA>
-```
-
-
-And you can get all possible data by specifying *format=darwin*.
-
-
-```r
-out <- occurrencelist(scientificname = "Puma concolor", coordinatestatus = TRUE, 
-    format = "darwin", maxresults = 20)
-head(gbifdata(out, minimal = FALSE)[, 1:6])
-```
-
-```
-          taxonName country                stateProvince  county
-1     Puma concolor  CANADA             BRITISH COLUMBIA    <NA>
-2     Puma concolor  GUYANA UPPER TAKUTU-UPPER ESSEQUIBO    <NA>
-3     Puma concolor  CANADA             BRITISH COLUMBIA    <NA>
-4 Puma ? concolor ?  CANADA                NEW BRUNSWICK SUNBURY
-5     Puma concolor  CANADA             BRITISH COLUMBIA    <NA>
-6     Puma concolor  GUYANA UPPER TAKUTU-UPPER ESSEQUIBO    <NA>
-        locality decimalLatitude
-1 CAMPBELL RIVER          49.017
-2           <NA>           6.317
-3           <NA>          49.600
-4           <NA>          45.850
-5           <NA>          49.683
-6           <NA>           3.091
+                                   name longitude latitude
+1                  Helianthus annuus L.   -117.00    32.85
+2  Platydoras costatus (Linnaeus, 1758)    -70.07    -4.35
+3                              Pelosina    163.58   -77.57
+4       Sciurus vulgaris Linnaeus, 1758     12.04    58.41
+5 Phlogophora meticulosa Linnaeus, 1758     13.28    55.72
 ```
 
 
@@ -425,38 +529,16 @@ head(gbifdata(out, minimal = FALSE)[, 1:6])
 
 #### Maps
 
+Make a map of **Puma concolor** occurrences
+
 
 ```r
-splist <- c("Accipiter erythronemius", "Junco hyemalis", "Aix sponsa", "Ceyx fallax", 
-    "Picoides lignarius", "Campephilus leucopogon")
-out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 20)
-gbifmap_list(out)
-```
-
-```
-Rendering map...plotting 99 points
+key <- gbif_lookup(name = "Puma concolor", kingdom = "plants")$speciesKey
+dat <- occ_search(taxonKey = key, return = "data", limit = 300, minimal = FALSE)
+gbifmap(input = dat)
 ```
 
 ![plot of chunk gbifmap1](figure/gbifmap1.png) 
 
-
-Another example, setting scientificname="*" so we just get any species, and then mapping points only within the state of Texas in the US.
-
-
-```r
-out <- occurrencelist(scientificname = "*", minlatitude = 30, maxlatitude = 35, 
-    minlongitude = -100, maxlongitude = -95, coordinatestatus = TRUE, maxresults = 200)
-gbifmap_list(input = out, mapdatabase = "state", region = "texas", geom = geom_jitter, 
-    jitter = position_jitter(width = 0.3, height = 0.3))
-```
-
-```
-Rendering map...plotting 199 points
-```
-
-![plot of chunk gbifmap2](figure/gbifmap2.png) 
-
-
-********************
 
 [gbifapi]: http://data.gbif.org/tutorial/services

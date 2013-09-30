@@ -12,151 +12,139 @@ rgbif vignette - Seach and retrieve data from the Global Biodiverity Information
 
 ********************
 
-#### Install rgbif
+#### Install rgbif and dependencies
 
-```{r install, comment=NA, warning=FALSE}
-# install.packages("devtools"); library(devtools); install_github("rbison", "ropensci")
+```{r install, eval=FALSE}
+install.packages("rgbif")
+```
+
+#### Load rgbif and dependencies
+
+```{r load, comment=NA, warning=FALSE}
 library(rgbif); library(XML); library(RCurl); library(plyr); library(ggplot2); library(maps)
 ```
 
 ********************
 
-#### Get a list of the data networks in GBIF - and you can use the networkkey number to seach for occurrences for the specific provider in other functions
-
-```{r networks, comment=NA, warning=FALSE}
-# Test the function for a few networks
-networks(maxresults=5)
-
-# By name
-networks('ORNIS')
-```
-
-********************
-
-#### Get a list of the data providers in GBIF - and you can use the dataproviderkey number to seach for occurrences for the specific provider in other functions
-
-```{r providers, comment=NA, warning=FALSE}
-# Test the function for a few providers
-providers(maxresults=5)
-
-# By data provider name
-providers('University of Texas-Austin')
-```
-
-********************
-
-#### Get a list of the data resources in GBIF - and you can use the resourcekey number to seach for occurrences for the specific resource in other functions
-
-```{r resources, comment=NA, warning=FALSE}
-# Test the function for a few resources
-resources(maxresults=5)
-
-# By name
-head(resources('Flora'))
-```
-
-********************
-
 #### Get number of occurrences for a set of search parameters
-```{r occurrencecount, comment=NA, warning=FALSE}
-occurrencecount(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE)
-occurrencecount(scientificname = 'Helianthus annuus', coordinatestatus = TRUE, year=2005, maxlatitude=20)
+
+##### Search by type of record, all observational in this case
+
+```{r occ_count1, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
+occ_count(basisOfRecord='OBSERVATION')
+```
+
+##### Records for **Puma concolor** with lat/long data (georeferened) only
+
+```{r occ_count2, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
+occ_count(nubKey=2435099, georeferenced=TRUE)
+```
+
+##### All georeferenced records in GBIF
+
+```{r occ_count3, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
+occ_count(georeferenced=TRUE)
+```
+
+##### Records from Denmark
+
+```{r occ_count4, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
+occ_count(country='DENMARK')
+```
+
+##### Records from France
+
+```{r occ_count5, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
+occ_count(hostCountry='FRANCE')
+```
+
+##### Number of records in a particular dataset
+
+```{r occ_count6, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
+occ_count(datasetKey='9e7ea106-0bf8-4087-bb61-dfe4f29e0f17')
+```
+
+##### All records from 2012
+
+```{r occ_count7, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
+occ_count(year=2012)
+```
+
+##### Records for a particular dataset, and only for preserved specimens
+
+```{r occ_count8, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
+occ_count(datasetKey='8626bd3a-f762-11e1-a439-00145eb45e9a', basisOfRecord='PRESERVED_SPECIMEN')
 ```
 
 ********************
 
 #### Get possible values to be used in taxonomic rank arguments in functions
 
-```{r taxrank, comment=NA, warning=FALSE}
+```{r taxrank, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
 taxrank()
 ```
 
 ********************
 
-#### Seach by taxon to retrieve number of records per taxon found in GBIF
-```{r taxoncount, comment=NA, warning=FALSE}
-taxoncount(scientificname = 'Puma concolor')
-taxoncount(scientificname = 'Helianthus annuus')
-taxoncount(rank = 'family')
+#### Search for taxon information
+
+##### Search for a genus 
+
+```{r name_lookup1, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
+head(name_lookup(query='Cnaemidophorus', rank="genus", return="data"))
+```
+
+##### Search for the class mammalia
+
+```{r name_lookup2, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
+# Look up names like mammalia
+name_lookup(class='mammalia')
+```
+
+##### Look up the species Helianthus annuus
+
+```{r name_lookup3, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
+name_lookup('Helianthus annuus', rank="species")
 ```
 
 ********************
 
-#### Get taxonomic information on a specific taxon or taxa in GBIF by their taxon concept keys
+#### Get data for a single occurrence. Note that data is returned as a list, with slots for metadata and data, or as a hierarchy, or just data.
 
-```{r taxonget, comment=NA, warning=FALSE}
-(out <- taxonsearch(scientificname = 'Puma concolor'))
+##### Just data 
+
+```{r occ_get1, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
+occ_get(key=773433533, return='data')
 ```
 
-********************
+##### Just taxonomic hierarchy
 
-#### Search for taxa in GBIF
-
-```{r taxonsearch, comment=NA, warning=FALSE}
-taxonsearch(scientificname = 'Puma concolor', rank="species", maxresults=10)
-taxonsearch(scientificname = 'Puma concolor', rank="species", dataproviderkey=1)
+```{r occ_get2, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
+occ_get(key=773433533, return='hier')
 ```
 
-********************
+##### All data, or leave return parameter blank
 
-#### Get data for a single occurrence. Note that data is returned as a list, so you have to convert to a data.frame, etc. as you wish
-```{r occurrenceget, comment=NA, warning=FALSE}
-occurrenceget(key = 13749100)$dataProvider$dataResources$dataResource$occurrenceRecords$TaxonOccurrence[1:10]
+```{r occ_get3, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
+occ_get(key=773433533, return='all')
 ```
 
-********************
+##### Get many occurrences. `occ_get` is vectorized
 
-```{r occurrencelist, comment=NA, warning=FALSE}
-out <- occurrencelist(scientificname = 'Puma concolor', coordinatestatus=TRUE, maxresults=20)
-```
-
-Note that the default object printed from a call to `occurrencelist` is a list that contains:
-
-+ NumberFound: number of occurrences found in search results.
-+ TaxonNames: Unique list of taxonomic names in search results.
-+ Coordinates: Min and max latitude and longitude of all occurrences.
-+ Countries: Countries contained in results set.
-
-```{r defaultoccurencelist, comment=NA, warning=FALSE}
-out
-```
-
-Where do you get data after a call to the `occurrencelist` function? This is where `gbifdata` comes in. By default a call to `gbifdata` prints a minimal data.frame with just rows *name*, *latitude*, and *longitude*.
-
-```{r minimaltrue, comment=NA, warning=FALSE}
-gbifdata(out)
-```
-
-Though you can get more detailed data by calling *minimal=FALSE*.
-
-```{r minimalfalse, comment=NA, warning=FALSE}
-head( gbifdata(out, minimal=FALSE)[,1:6] )
-```
-
-And you can get all possible data by specifying *format=darwin*.
-
-```{r occurrencelistdarwin, comment=NA, warning=FALSE}
-out <- occurrencelist(scientificname = 'Puma concolor', coordinatestatus=TRUE, format="darwin", maxresults=20)
-head( gbifdata(out, minimal=FALSE)[,1:6] )
+```{r occ_get4, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
+occ_get(key=c(773433533,101010,240713150,855998194,49819470), return='data')
 ```
 
 ********************
 
 #### Maps
 
-```{r gbifmap1, comment=NA, warning=FALSE}
-splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa', 'Ceyx fallax', 'Picoides lignarius', 'Campephilus leucopogon')
-out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 20)
-gbifmap_list(out)
+Make a map of **Puma concolor** occurrences
+
+```{r gbifmap1, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
+key <- gbif_lookup(name='Puma concolor', kingdom='plants')$speciesKey
+dat <- occ_search(taxonKey=key, return='data', limit=300, minimal=FALSE)
+gbifmap(input=dat)
 ```
-
-Another example, setting scientificname="*" so we just get any species, and then mapping points only within the state of Texas in the US.
-
-```{r gbifmap2, comment=NA, warning=FALSE}
-out <- occurrencelist(scientificname="*", minlatitude=30, maxlatitude=35, minlongitude=-100, maxlongitude=-95, coordinatestatus = TRUE, maxresults = 200)
-gbifmap_list(input=out, mapdatabase="state", region="texas", geom=geom_jitter, jitter=position_jitter(width = 0.3, height = 0.3))
-```
-
-********************
 
 [gbifapi]: http://data.gbif.org/tutorial/services

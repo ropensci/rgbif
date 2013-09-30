@@ -821,7 +821,7 @@ taxonsearch <- function(scientificname = NULL, rank = NULL, maxresults = 10,
                         dataproviderkey = 1, dataresourcekey = NULL, resourcenetworkkey = NULL,
                         hostisocountrycode = NULL, startindex = NULL, accepted_status = FALSE)
 {
-  .Deprecated(new="occ_search", package="rgbif", msg="This function is deprecated, and will be removed in a future version. See ?occ_search")
+  .Deprecated(new="name_lookup", package="rgbif", msg="This function is deprecated, and will be removed in a future version. See ?name_lookup")
   
   url = "http://data.gbif.org/ws/rest/taxon/list"
   args <- compact(list(
