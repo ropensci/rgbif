@@ -3,7 +3,7 @@
 <!-- [![Build Status](https://api.travis-ci.org/ropensci/rgbif.png)](https://travis-ci.org/ropensci/rgbif) -->
 
 ## About
-This set of functions/package will access data from [GBIF](http://www.gbif.org/) using their API methods. 
+This package gives you access to data from [GBIF](http://www.gbif.org/) via their API.
 
 ## Transitioning to the new GBIF API
 
@@ -16,9 +16,9 @@ This set of functions/package will access data from [GBIF](http://www.gbif.org/)
 	+ See documentation here: [http://dev.gbif.org/wiki/display/POR/Webservice+API](http://dev.gbif.org/wiki/display/POR/Webservice+API)
 	+ Is being developed on the `newapi` branch of this repo.
 
-The rgbif branch `newapi` will have development code to use the new GBIF API, and will be folded into the master branch at some later point. You can use code on the `newapi` branch, but be nice, don't hit it too hard. 
+The rgbif branch `newapi` will have development code to use the new GBIF API, and will be folded into the master branch at some later point. You can use functions to get data via the new GBIF API and old GBIF API in the `newapi` branch. The functions for the old GBIF API give deprecation messages, signaling that they are on their way out. A future version of `rgbif` will remove functions for the old API, so do transition to the functions for the new API soon.
 
-The new GBIF API only uses JSON as a data format, so no more XML.
+The new GBIF API only uses JSON as a data format - no more XML. Of course this probably doesn't matter to you unless you are a hacker...
 
 Changes in the new GBIF API from last with respect to `rgbif`:
 
