@@ -34,18 +34,18 @@ organizations <- function(data = 'all', uuid = NULL, query = NULL, callopts=list
     
     if(is.null(uuid)){
       if(x=='all'){
-        url <- 'http://api.gbif.org/organization'
+        url <- 'http://api.gbif.org/v0.9/organization'
       } else
       {
-        url <- sprintf('http://api.gbif.org/organization/%s', x)
+        url <- sprintf('http://api.gbif.org/v0.9/organization/%s', x)
       }
     } else
     {
       if(x=='all'){
-        url <- sprintf('http://api.gbif.org/organization/%s', uuid)
+        url <- sprintf('http://api.gbif.org/v0.9/organization/%s', uuid)
       } else
       {
-        url <- sprintf('http://api.gbif.org/organization/%s/%s', uuid, x)        
+        url <- sprintf('http://api.gbif.org/v0.9/organization/%s/%s', uuid, x)        
       }
     }
     temp <- GET(url, query=args, callopts)

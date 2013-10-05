@@ -33,7 +33,7 @@ occ_count <- function(nubKey=NULL, georeferenced=NULL, basisOfRecord=NULL,
   datasetKey=NULL, date=NULL, catalogNumber=NULL, country=NULL, hostCountry=NULL, 
   year=NULL, callopts=list())
 {
-  url = 'http://api.gbif.org/occurrence/count'
+  url = 'http://api.gbif.org/v0.9/occurrence/count'
   args <- compact(list(nubKey=nubKey, georeferenced=georeferenced, 
                        basisOfRecord=basisOfRecord, datasetKey=datasetKey, 
                        date=date, catalogNumber=catalogNumber, country=country,

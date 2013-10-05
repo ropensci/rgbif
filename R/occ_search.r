@@ -71,7 +71,7 @@ occ_search <- function(taxonKey=NULL, georeferenced=NULL, boundingBox=NULL,
   collectorName=NULL, basisOfRecord=NULL, datasetKey=NULL, date=NULL, catalogNumber=NULL,
   callopts=list(), limit=20, start=NULL, minimal=TRUE, return='all')
 {
-  url = 'http://api.gbif.org/occurrence/search'  
+  url = 'http://api.gbif.org/v0.9/occurrence/search'  
   getdata <- function(x=NULL, itervar=NULL){
     if(!is.null(x))
       assign(itervar, x)

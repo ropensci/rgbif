@@ -15,7 +15,9 @@ rgbif vignette - Seach and retrieve data from the Global Biodiverity Information
 ## Install rgbif and dependencies
 
 ```{r install, eval=FALSE}
-install.packages("rgbif")
+install.packages("devtools")
+library(devtools)
+install_github("rgbif", "ropensci", ref="newapi")
 ```
 
 ## Load rgbif and dependencies
@@ -97,7 +99,6 @@ head(name_lookup(query='Cnaemidophorus', rank="genus", return="data"))
 ### Search for the class mammalia
 
 ```{r name_lookup2, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
-# Look up names like mammalia
 name_lookup(class='mammalia')
 ```
 

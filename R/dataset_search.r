@@ -58,7 +58,7 @@ dataset_search <- function(query= NULL, type = NULL, keyword = NULL,
   country = NULL, limit=20, start=NULL, callopts=list(), pretty=FALSE, 
   description=FALSE)
 {
-  url <- 'http://api.gbif.org/dataset/search'
+  url <- 'http://api.gbif.org/v0.9/dataset/search'
   args <- compact(list(q=query,type=type,keyword=keyword,owningOrg=owningOrg,
                        networkOrigin=networkOrigin,hostingOrg=hostingOrg,
                        decade=decade,iso_country_code=country,limit=limit,

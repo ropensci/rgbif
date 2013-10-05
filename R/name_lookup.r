@@ -38,7 +38,7 @@ name_lookup <- function(query=NULL, canonical_name=NULL, class=NULL,
   phylum=NULL, scientificName=NULL, species=NULL, rank=NULL, subgenus=NULL, 
   vernacularName=NULL, callopts=list(), verbose=FALSE, return="all")
 {
-  url = 'http://api.gbif.org/name_usage/search'
+  url = 'http://api.gbif.org/v0.9/species/search'
   args <- compact(list(q=query, rank=rank, canonical_name=canonical_name, 
                        description=description, family=family, genus=genus, 
                        kingdom=kingdom, order=order, phylum=phylum, class=class,

@@ -36,7 +36,7 @@ occ_get(key=773433533, 'hier')
 occ_get(key=773433533, 'all')
 
 # many occurrences
-occ_get(key=c(773433533,767047552,756083505,754201727), return='data')
+occ_get(key=c(773433533,101010,240713150,855998194,49819470), return='data')
 
 # Verbatim data
 occ_get(key=c(773433533,767047552,756083505,754201727), verbatim=TRUE)

@@ -32,10 +32,10 @@ occ_get <- function(key=NULL, return='all', verbatim=FALSE, minimal=TRUE, callop
   # Define function to get data
   getdata <- function(x){
     if(verbatim){
-      url <- sprintf('http://api.gbif.org/occurrence/%s/verbatim', x)
+      url <- sprintf('http://api.gbif.org/v0.9/occurrence/%s/verbatim', x)
     } else
     {
-      url <- sprintf('http://api.gbif.org/occurrence/%s', x)
+      url <- sprintf('http://api.gbif.org/v0.9/occurrence/%s', x)
     }
     temp <- GET(url, callopts)
     stop_for_status(temp)
@@ -68,4 +68,4 @@ occ_get <- function(key=NULL, return='all', verbatim=FALSE, minimal=TRUE, callop
       { data }
   }
 }
-# http://api.gbif.org/occurrence/773433533
+# http://api.gbif.org/v0.9/occurrence/773433533
