@@ -336,6 +336,7 @@ occurrenceget <- function(key = NULL, format = NULL, mode = NULL)
 #' @template oclist
 #' @examples \dontrun{
 #' # Query for a single species
+#' occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE)
 #' occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE, 
 #'    maxresults = 40)
 #' occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, 
@@ -344,7 +345,7 @@ occurrenceget <- function(key = NULL, format = NULL, mode = NULL)
 #' # Query for many species, in this case using parallel fuctionality with plyr::llply
 #' # Also, see \code{\link{occurrencelist_many}} as an alternative way to search for 
 #' # many species, which is better for going straight to a map with the output data.
-#' library(doMC)
+#' library(doMC); library(plyr)
 #' registerDoMC(cores=4)
 #' splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 #' out <- llply(splist, function(x) occurrencelist(x, coordinatestatus = TRUE, maxresults = 100), .parallel=T)
@@ -398,6 +399,7 @@ occurrencelist <- function(scientificname = NULL, taxonconceptkey = NULL,
   iter <- 0
   sumreturned <- 0
   outout <- list()
+#   mess <- "cool"
   while(sumreturned < maxresults){
     iter <- iter + 1
     if(is.null(args)){ tt <- getURL(url, curl = curl) } else
@@ -405,38 +407,61 @@ occurrencelist <- function(scientificname = NULL, taxonconceptkey = NULL,
     outlist <- xmlParse(tt)
     numreturned <- as.numeric(xpathSApply(outlist, "//gbif:summary/@totalReturned", 
                                           namespaces="gbif"))
+    nummatched <- as.numeric(xpathSApply(outlist, "//gbif:summary/@totalMatched", 
+                                          namespaces="gbif"))
+    if(identical(nummatched, numeric(0)))
+      nummatched <- 0
+#     if(numreturned==0)
+#       stop(sprintf("No results found for %s", scientificname))
     ss <- tryCatch(xpathApply(outlist, "//gbif:nextRequestUrl", xmlValue)[[1]], 
                    error = function(e) e$message)	
-    if(ss=="subscript out of bounds"){url <- NULL} else {
+    if(ss=="subscript out of bounds"){
+      url <- NULL
+#       mess <- sprintf("No results found for %s", scientificname)
+#       maxresults <- 0
+    } else {
       url <- sub("&maxresults=[0-9]+", 
                  paste("&maxresults=",maxresults-numreturned,sep=''), ss)
-      # 			         paste("&maxresults=",maxresults-sumreturned,sep=''), ss)
     }
     args <- NULL
     sumreturned <- sumreturned + numreturned
-    # 		if(is.null(url))
-    # 			maxresults <- sumreturned
+    if(sumreturned >= nummatched)
+      maxresults <- sumreturned
     outout[[iter]] <- outlist
   }
   
-  outt <- lapply(outout, parseresults, format=format, removeZeros=removeZeros)
-  dd <- do.call(rbind, outt)
-  
-  if(fixnames == "match"){
-    dd <- dd[ dd$taxonName %in% scientificname, ]
+  if(sumreturned == 0){
+    mess <- sprintf("No results found for %s", scientificname)
   } else
-    if(fixnames == "change"){
-      dd$taxonName <- scientificname
+  {
+    mess <- "cool"
+  }
+  
+  if(grepl("No results found", mess))
+  {
+    class(mess) <- "gbiflist_na"
+    return( mess )
+  } else
+  {
+    outt <- lapply(outout, parseresults, format=format, removeZeros=removeZeros)
+    dd <- do.call(rbind, outt)
+    
+    if(fixnames == "match"){
+      dd <- dd[ dd$taxonName %in% scientificname, ]
     } else
-    { NULL } 
-  
-  if(!is.null(writecsv)){
-    write.csv(dd, file=writecsv, row.names=F)
-    message("Success! CSV file written")
-  } else
-  { 
-    class(dd) <- c("gbiflist","data.frame")
-    return( dd )
+      if(fixnames == "change"){
+        dd$taxonName <- scientificname
+      } else
+      { NULL } 
+    
+    if(!is.null(writecsv)){
+      write.csv(dd, file=writecsv, row.names=F)
+      message("Success! CSV file written")
+    } else
+    { 
+      class(dd) <- c("gbiflist","data.frame")
+      return( dd )
+    }
   }
 }
 
@@ -445,28 +470,40 @@ occurrencelist <- function(scientificname = NULL, taxonconceptkey = NULL,
 #' This function is deprecated.
 #'
 #' @param scientificname A scientific name. (character)
+#' @param ranktoget You must specify the taxonomic rank you are searching for 
+#'    so that we can select the correct names.
 #' @param ... Further arguments passed on to occurrencelist_many
 #' @examples \dontrun{
 #' # Query for a single species
 #' # compare the names returned by occurrencelist to occurrencelist_all
-#' occurrencelist(scientificname = 'Aristolochia serpentaria', coordinatestatus = TRUE,
-#' maxresults = 40)
-#' occurrencelist_all(scientificname = 'Aristolochia serpentaria', coordinatestatus = TRUE,
-#' maxresults = 40)
+#' occurrencelist(scientificname = 'Aristolochia serpentaria', coordinatestatus = TRUE, maxresults=40)
+#' occurrencelist_all(scientificname = 'Aristolochia serpentaria', coordinatestatus = TRUE, maxresults=40)
 #'
 #' }
 #' @export
 #' @rdname occurrencelist_all-deprecated
 #' @seealso occ_search
-occurrencelist_all <- function(scientificname, ...)
+occurrencelist_all <- function(scientificname, ranktoget = 'species', ...)
 {  
   .Deprecated(new="occ_search", package="rgbif", msg="This function is deprecated, and will be removed in a future version. See ?occ_search")
   
   gbifkey <- taxonsearch(scientificname=scientificname)$gbifkey
+  if(length(gbifkey)==0 | is.null(gbifkey) | is.na(gbifkey)){
+    stop(sprintf("No GBIF key found for %s", scientificname))
+  } else
+    if(length(gbifkey)>1) {
+      gbifkey <- gbifkey[[1]]
+    } else
+    { NULL }
   name_lkup <- taxonget(key = as.numeric(as.character(gbifkey)))
-  sciname <- unique(as.character(subset(name_lkup, select='sciname',
-                                        subset=rank == 'species' |
-                                          rank == 'variety')[ , 1]))
+  if(ranktoget=='species'){    
+    sciname <- unique(as.character(subset(name_lkup, select='sciname',
+                                          subset= rank == 'species' | rank == 'variety')[ , 1]))
+  } else
+  {  
+    sciname <- unique(as.character(subset(name_lkup, select='sciname',
+                                          subset= rank == ranktoget)[ , 1]))
+  }
   sciname <- paste(sciname, '*', sep='')
   out <- occurrencelist_many(scientificname = sciname, ...)
   return(out)
@@ -484,7 +521,7 @@ occurrencelist_all <- function(scientificname, ...)
 #' @examples \dontrun{
 #' # Query for a many species
 #' splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
-#' out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 100)
+#' out <- occurrencelist_many(scientificname=splist, coordinatestatus = TRUE, maxresults = 100)
 #' gbifdata(out)
 #' gbifmap_list(out)
 #' }
@@ -544,36 +581,61 @@ occurrencelist_many <- function(scientificname = NULL, taxonconceptkey = NULL,
     iter <- 0
     sumreturned <- 0
     outout <- list()
+#     mess <- "cool"
     while(sumreturned < maxresults){
       iter <- iter + 1
-      if(is.null(args)){ tt <- getURL(url) } else
+      if(is.null(args)){ tt <- getURL(url, curl = curl) } else
       { tt <- getForm(url, .params = args, curl = curl) }
       outlist <- xmlParse(tt)
       numreturned <- as.numeric(xpathSApply(outlist, "//gbif:summary/@totalReturned", 
                                             namespaces="gbif"))
+      nummatched <- as.numeric(xpathSApply(outlist, "//gbif:summary/@totalMatched", 
+                                           namespaces="gbif"))
+      if(identical(nummatched, numeric(0)))
+        nummatched <- 0
+      #     if(numreturned==0)
+      #       stop(sprintf("No results found for %s", scientificname))
       ss <- tryCatch(xpathApply(outlist, "//gbif:nextRequestUrl", xmlValue)[[1]], 
-                     error = function(e) e$message)	
-      if(ss=="subscript out of bounds"){url <- NULL} else {
+                     error = function(e) e$message)  
+      if(ss=="subscript out of bounds"){
+        url <- NULL
+        #       mess <- sprintf("No results found for %s", scientificname)
+        #       maxresults <- 0
+      } else {
         url <- sub("&maxresults=[0-9]+", 
-                   paste("&maxresults=",maxresults-sumreturned,sep=''), ss)
+                   paste("&maxresults=",maxresults-numreturned,sep=''), ss)
       }
       args <- NULL
       sumreturned <- sumreturned + numreturned
-      if(is.null(url))
+      if(sumreturned >= nummatched)
         maxresults <- sumreturned
       outout[[iter]] <- outlist
     }
-    outt <- lapply(outout, parseresults, format=format, removeZeros=removeZeros)
-    dd <- do.call(rbind, outt)
     
-    if(fixnames == "match"){
-      dd[ dd$taxonName %in% sciname, ]
+    if(sumreturned == 0){
+      mess <- sprintf("No results found for %s", x)
     } else
-      if(fixnames == "change"){
-        dd$taxonName <- sciname
-        dd
+    {
+      mess <- "cool"
+    }
+    
+    if(grepl("No results found", mess))
+    {
+      mess
+    } else
+    {
+      outt <- lapply(outout, parseresults, format=format, removeZeros=removeZeros)
+      dd <- do.call(rbind, outt)
+      
+      if(fixnames == "match"){
+        dd[ dd$taxonName %in% sciname, ]
       } else
-      { dd } 
+        if(fixnames == "change"){
+          dd$taxonName <- sciname
+          dd
+        } else
+        { dd } 
+    }
   }
   
   if(is.null(scientificname)){itervec <- taxonconceptkey} else 
@@ -585,20 +647,24 @@ occurrencelist_many <- function(scientificname = NULL, taxonconceptkey = NULL,
   {
     if(parallel){
       registerDoMC(cores=cores)
-      out <- ldply(itervec, getdata, .parallel=TRUE)
+      out <- llply(itervec, getdata, .parallel=TRUE)
     } else
     {
-      out <- ldply(itervec, getdata)
+      out <- llply(itervec, getdata)
     }
+    # remove those with no results
+    out2 <- out[!sapply(out, is.character)]
+    out3 <- do.call(rbind, out2)
   }
   
   if(!is.null(writecsv)){
-    write.csv(out, file=writecsv, row.names=F)
+    write.csv(out3, file=writecsv, row.names=FALSE)
     message("Success! CSV file written")
   } else
   { 
-    class(out) <- c("gbiflist","data.frame")
-    return( out )
+    class(out3) <- c("gbiflist","data.frame")
+    attr(out3, "notfound") <- itervec[sapply(out, is.character)]
+    return( out3 )
   }
 }
 
@@ -1007,6 +1073,10 @@ gbifmap_list <- function(input = NULL, mapdatabase = "world", region = ".",
 #' 
 #' @param input Input object from a call to occurrencelist, occurrencelist_many, 
 #'    or densitylist.
+#' @param minimal Only applies to occurrencelist data. If TRUE, returns only name, lat, 
+#'    long fields; defaults to TRUE. Use with gbifdata.gbiflist only. 
+#' @param coordinatestatus Return only rows of data.frame that have lat and long data. 
+#'     Use with gbifdata.gbiflist only. 
 #' @param ... further arguments
 #' @details A convienence function to get the raw data in a data.frame format from 
 #'    occurrencelist, occurrencelist_many, and densitylist functions.
@@ -1035,11 +1105,11 @@ gbifdata <- function(input, ...) UseMethod("gbifdata")
 #' @param minimal Only applies to occurrencelist data. If TRUE, returns only name, lat, 
 #'    long fields; defaults to TRUE. 
 #' @param coordinatestatus Return only rows of data.frame that have lat and long data.
-#' @param ... further arguments
 #' @method gbifdata gbiflist
 #' @export
+#' @seealso gbifdata.gbifdens
 #' @rdname gbifdata.gbiflist-deprecated
-gbifdata.gbiflist <- function(input, coordinatestatus=FALSE, minimal=TRUE, ...)
+gbifdata.gbiflist <- function(input, coordinatestatus=FALSE, minimal=FALSE)
 {  
   if(!is.gbiflist(input)) 
     stop("Input is not of class gbiflist")
@@ -1066,17 +1136,31 @@ gbifdata.gbiflist <- function(input, coordinatestatus=FALSE, minimal=TRUE, ...)
 
 #' Gbifdens method
 #' @param input Input object from a call to occurrencelist, occurrencelist_many, or densitylist.
-#' @param ... further arguments
 #' @method gbifdata gbifdens
 #' @export
 #' @rdname gbifdata.gbifdens-deprecated
-gbifdata.gbifdens <- function(input, ...)
+gbifdata.gbifdens <- function(input)
 {
   if(!is.gbifdens(input))
     stop("Input is not of class gbifdens")  
   
   return( data.frame(input) )
 }
+
+#' Gbiflist NA method for when there's no data returned by occurrencelist fxn
+#' @param input Input object from a call to occurrencelist, occurrencelist_many, or densitylist.
+#' @method gbifdata gbiflist_na
+#' @export
+#' @seealso gbifdata.gbiflist
+#' @rdname gbifdata.gbiflist_na-deprecated
+gbifdata.gbiflist_na <- function(input)
+{  
+  if(!is.gbiflist_na(input)) 
+    stop("Input is not of class gbiflist_na")
+  
+  message("You can't pass an object of class gbiflist_na (i.e., no data found for species X) to gbifdata")
+}
+
 
 #' Print summary of gbifdens class
 #' @param x an object of class gbifdens
@@ -1120,11 +1204,27 @@ print.gbiflist <- function(x, ...){
   minlong = min(x$decimalLongitude, na.rm=TRUE)
   maxlong = max(x$decimalLongitude, na.rm=TRUE)
   countries = unique(x$country)
+  if(is.null(attr(x, "notfound"))){ nf <- "All taxa found" } else
+    { nf <- attr(x, "notfound") }
   
   print(list(NumberFound = records, 
              TaxonNames = names2, 
              Coordinates = data.frame(Stats, numbers=c(minlat,maxlat,minlong,maxlong)),
-             Countries = countries))
+             Countries = countries,
+             NamesNotFound = nf))
+}
+
+#' Print summary of gbiflist_na class
+#' @param x an object of class gbiflist_na
+#' @param ... further arguments passed to or from other methods.
+#' @method print gbiflist_na
+#' @export
+#' @rdname print.gbiflist_na-deprecated
+print.gbiflist_na <- function(x, ...){
+  if(!is.gbiflist_na(x))
+    stop("Input is not of class gbiflist_na")
+  
+  print(paste0(x, ". You may have spelled the taxon name wrong, or GBIF has a different spelling"))
 }
 
 #' Check if object is of class gbiflist
@@ -1132,6 +1232,12 @@ print.gbiflist <- function(x, ...){
 #' @export
 #' @rdname is.gbiflist-deprecated
 is.gbiflist <- function(x) inherits(x, "gbiflist")
+
+#' Check if object is of class gbiflist_na
+#' @param x input
+#' @export
+#' @rdname is.gbiflist_na-deprecated
+is.gbiflist_na <- function(x) inherits(x, "gbiflist_na")
 
 #' Check if object is of class gbifdens
 #' @param x input

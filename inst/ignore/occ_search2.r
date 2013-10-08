@@ -1,3 +1,12 @@
+# occ <- function(gbifopts=list())
+# {
+#   do.call(occ_search, gbifopts)
+# }
+# 
+# occ(gbifopts=list(taxonKey=1858636, limit=2))
+
+# occ_search(taxonKey=1858636, limit=2)
+#
 occ_search <- function(taxonKey=NULL, georeferenced=NULL, boundingBox=NULL, 
   collectorName=NULL, basisOfRecord=NULL, datasetKey=NULL, date=NULL, catalogNumber=NULL,
   callopts=list(), limit=20, start=NULL, minimal=TRUE, return='all', pars=list())
@@ -8,9 +17,9 @@ occ_search <- function(taxonKey=NULL, georeferenced=NULL, boundingBox=NULL,
       assign(itervar, x)
     
     args <- compact(list(taxonKey=pars$taxonKey, georeferenced=pars$georeferenced, 
-                         boundingBox=pars$boundingBox, collectorName=pars$collectorName, 
-                         basisOfRecord=pars$basisOfRecord, datasetKey=pars$datasetKey, date=pars$date, 
-                         catalogNumber=pars$catalogNumber, limit=pars$limit, offset=pars$start))  
+              boundingBox=pars$boundingBox, collectorName=pars$collectorName, 
+              basisOfRecord=pars$basisOfRecord, datasetKey=pars$datasetKey, date=pars$date, 
+              catalogNumber=pars$catalogNumber, limit=pars$limit, offset=pars$start))  
     iter <- 0
     sumreturned <- 0
     outout <- list()
@@ -54,8 +63,7 @@ occ_search <- function(taxonKey=NULL, georeferenced=NULL, boundingBox=NULL,
   params <- list(taxonKey=pars$taxonKey,datasetKey=pars$datasetKey,
                  catalogNumber=pars$catalogNumber,collectorName=pars$collectorName)
   if(!any(sapply(params, length)>0))
-    stop("at least one of the parmaters taxonKey, datasetKey, catalogNumber, collectorName
-         must have a value")
+    stop("at least one of the parmaters taxonKey, datasetKey, catalogNumber, collectorName must have a value")
   iter <- params[which(sapply(params, length)>1)]
   if(length(names(iter))>1)
     stop("You can have multiple values for only one of taxonKey, datasetKey, catalogNumber, or collectorName")

@@ -31,7 +31,7 @@
 gbif_lookup <- function(name, rank=NULL, kingdom=NULL, phylum=NULL, class=NULL, 
   order=NULL, family=NULL, genus=NULL, strict=FALSE, verbose=FALSE, callopts=list())
 {
-  url = 'http://api.gbif.org/v0.9/lookup/species'
+  url = 'http://api.gbif.org/v0.9/species/match'
   args <- compact(list(name=name, rank=rank, kingdom=kingdom, phylum=phylum, 
                        class=class, order=order, family=family, genus=genus, 
                        strict=strict, verbose=verbose))

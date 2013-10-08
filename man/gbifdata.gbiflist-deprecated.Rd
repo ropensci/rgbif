@@ -3,7 +3,7 @@
 \title{Gbiflist method}
 \usage{
   \method{gbifdata}{gbiflist} (input,
-    coordinatestatus = FALSE, minimal = TRUE, ...)
+    coordinatestatus = FALSE, minimal = FALSE)
 }
 \arguments{
   \item{input}{Input object from a call to occurrencelist,
@@ -15,10 +15,11 @@
 
   \item{coordinatestatus}{Return only rows of data.frame
   that have lat and long data.}
-
-  \item{...}{further arguments}
 }
 \description{
   Gbiflist method
+}
+\seealso{
+  gbifdata.gbifdens
 }
 

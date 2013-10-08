@@ -6,7 +6,7 @@
     boundingBox = NULL, collectorName = NULL,
     basisOfRecord = NULL, datasetKey = NULL, date = NULL,
     catalogNumber = NULL, callopts = list(), limit = 20,
-    start = NULL, minimal = TRUE, return = "all")
+    start = NULL, minimal = TRUE, return = "all", ...)
 }
 \arguments{
   \item{taxonKey}{Scientific name}

@@ -236,6 +236,7 @@
 \examples{
 \dontrun{
 # Query for a single species
+occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE)
 occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE,
    maxresults = 40)
 occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE,
@@ -244,7 +245,7 @@ occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TR
 # Query for many species, in this case using parallel fuctionality with plyr::llply
 # Also, see \\code{\\link{occurrencelist_many}} as an alternative way to search for
 # many species, which is better for going straight to a map with the output data.
-library(doMC)
+library(doMC); library(plyr)
 registerDoMC(cores=4)
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 out <- llply(splist, function(x) occurrencelist(x, coordinatestatus = TRUE, maxresults = 100), .parallel=T)

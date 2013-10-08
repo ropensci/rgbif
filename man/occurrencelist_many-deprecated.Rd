@@ -244,7 +244,7 @@ of species names.}
 \dontrun{
 # Query for a many species
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
-out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 100)
+out <- occurrencelist_many(scientificname=splist, coordinatestatus = TRUE, maxresults = 100)
 gbifdata(out)
 gbifmap_list(out)
 }

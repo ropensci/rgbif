@@ -41,7 +41,7 @@ test_that("returns the correct class", {
   expect_is(out, "data.frame")
 })
 test_that("returns the correct value", {
-  expect_equal(as.character(out[1,1]), "Epistominella exigua (Brady)")
+  expect_equal(as.character(out[1,1]), "Rhabdammina cornuta")
 })
 test_that("returns the correct dimensions", {
   expect_equal(dim(out), c(20,3))
