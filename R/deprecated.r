@@ -1047,7 +1047,7 @@ gbifmap_list <- function(input = NULL, mapdatabase = "world", region = ".",
   
   tomap <- input[complete.cases(input$decimalLatitude, input$decimalLatitude), ]
   tomap <- input[-(which(tomap$decimalLatitude <=90 || tomap$decimalLongitude <=180)), ]
-  tomap$taxonName <- as.factor(capwords(tomap$taxonName, onlyfirst=TRUE))
+  tomap$taxonName <- as.factor(gbif_capwords(tomap$taxonName, onlyfirst=TRUE))
   
   if(length(unique(tomap$taxonName))==1){ theme2 <- theme(legend.position="none") } else 
   { theme2 <- NULL }
@@ -1127,7 +1127,7 @@ gbifdata.gbiflist <- function(input, coordinatestatus=FALSE, minimal=FALSE)
     if(coordinatestatus){
       input <- input[complete.cases(input$decimalLatitude, input$decimalLatitude), ]
     }
-    input$taxonName <- as.factor(capwords(input$taxonName, onlyfirst=TRUE))
+    input$taxonName <- as.factor(gbif_capwords(input$taxonName, onlyfirst=TRUE))
     if(minimal)
       input <- input[,c("taxonName","decimalLatitude","decimalLongitude")]
     return( input )

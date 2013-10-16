@@ -1,8 +1,8 @@
-\name{capwords}
-\alias{capwords}
+\name{gbif_capwords}
+\alias{gbif_capwords}
 \title{Capitalize the first letter of a character string.}
 \usage{
-  capwords(s, strict = FALSE, onlyfirst = FALSE)
+  gbif_capwords(s, strict = FALSE, onlyfirst = FALSE)
 }
 \arguments{
   \item{s}{A character string}
@@ -17,8 +17,8 @@
   Capitalize the first letter of a character string.
 }
 \examples{
-capwords(c("using AIC for model selection"))
-capwords(c("using AIC for model selection"), strict=TRUE)
+gbif_capwords(c("using AIC for model selection"))
+gbif_capwords(c("using AIC for model selection"), strict=TRUE)
 }
 \keyword{internal}
 

@@ -12,6 +12,10 @@
 \arguments{
   \item{taxonKey}{Scientific name}
 
+  \item{country}{Country, a two letter ISO country code.
+  See here
+  \url{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}}
+
   \item{boundingBox}{Location}
 
   \item{collectorName}{Collector}
