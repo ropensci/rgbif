@@ -67,7 +67,7 @@
 #' nrow(out)
 #' }
 #' @export
-occ_search <- function(taxonKey=NULL, georeferenced=NULL, boundingBox=NULL, 
+occ_search <- function(taxonKey=NULL, country=NULL, georeferenced=NULL, boundingBox=NULL, 
   collectorName=NULL, basisOfRecord=NULL, datasetKey=NULL, date=NULL, catalogNumber=NULL,
   callopts=list(), limit=20, start=NULL, minimal=TRUE, return='all', ...)
 {
@@ -76,7 +76,7 @@ occ_search <- function(taxonKey=NULL, georeferenced=NULL, boundingBox=NULL,
     if(!is.null(x))
       assign(itervar, x)
     
-    args <- compact(list(taxonKey=taxonKey, georeferenced=georeferenced, 
+    args <- compact(list(taxonKey=taxonKey, country=country, georeferenced=georeferenced, 
                          boundingBox=boundingBox, collectorName=collectorName, 
                          basisOfRecord=basisOfRecord, datasetKey=datasetKey, date=date, 
                          catalogNumber=catalogNumber, limit=limit, offset=start))  
@@ -102,19 +102,24 @@ occ_search <- function(taxonKey=NULL, georeferenced=NULL, boundingBox=NULL,
     }
     
     meta <- outout[[length(outout)]][c('offset','limit','endOfRecords','count')]
-    data <- sapply(outout, "[[", "results")
-    data <- gbifparser(data, minimal=minimal)
+#     data <- sapply(outout, "[[", "results")
+#     data <- do.call(c, data)
+    data <- do.call(c, lapply(outout, "[[", "results"))
+#     data <- gbifparser(input=data, minimal=minimal)
     
     if(return=='data'){
+      data <- gbifparser(input=data, minimal=minimal)
       ldfast(lapply(data, "[[", "data"))
     } else
     if(return=='hier'){
+      data <- gbifparser(input=data, minimal=minimal)
       unique(lapply(data, "[[", "hierarch"))
     } else
     if(return=='meta'){ 
       data.frame(meta) 
     } else
     {
+      data <- gbifparser(input=data, minimal=minimal)
       list(meta=meta, hierarchy=unique(lapply(data, "[[", "hierarch")), 
            data=ldfast(lapply(data, "[[", "data")))
     }

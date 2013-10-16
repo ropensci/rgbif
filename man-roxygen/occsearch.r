@@ -1,4 +1,6 @@
 #' @param taxonKey Scientific name 
+#' @param country Country, a two letter ISO country code. See here
+#'    \url{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}
 #' @param boundingBox Location
 #' @param collectorName Collector 
 #' @param basisOfRecord Basis of record
