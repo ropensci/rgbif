@@ -108,20 +108,37 @@ occ_search <- function(taxonKey=NULL, country=NULL, georeferenced=NULL, bounding
 #     data <- gbifparser(input=data, minimal=minimal)
     
     if(return=='data'){
-      data <- gbifparser(input=data, minimal=minimal)
-      ldfast(lapply(data, "[[", "data"))
+      if(identical(data, list())){
+        paste("no data found, try a different search")
+      } else
+      {
+        data <- gbifparser(input=data, minimal=minimal)        
+        ldfast(lapply(data, "[[", "data"))
+      }
     } else
     if(return=='hier'){
-      data <- gbifparser(input=data, minimal=minimal)
-      unique(lapply(data, "[[", "hierarch"))
+      if(identical(data, list())){
+        paste("no data found, try a different search")
+      } else
+      {
+        data <- gbifparser(input=data, minimal=minimal)
+        unique(lapply(data, "[[", "hierarch"))
+      }
     } else
     if(return=='meta'){ 
       data.frame(meta) 
     } else
     {
-      data <- gbifparser(input=data, minimal=minimal)
-      list(meta=meta, hierarchy=unique(lapply(data, "[[", "hierarch")), 
-           data=ldfast(lapply(data, "[[", "data")))
+      if(identical(data, list())){
+        dat2 <- paste("no data found, try a different search")
+        hier2 <- paste("no data found, try a different search")
+      } else
+      {
+        data <- gbifparser(input=data, minimal=minimal)
+        dat2 <- ldfast(lapply(data, "[[", "data"))
+        hier2 <- unique(lapply(data, "[[", "hierarch"))
+      }
+      list(meta=meta, hierarchy=hier2, data=dat2)
     }
   }
   
