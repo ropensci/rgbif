@@ -32,18 +32,23 @@
 #' 
 #' # Get more data from the API call
 #' name_lookup(query='Cnaemidophorus', rank="genus", callopts=verbose())
+#' 
+#' # Limit records to certain number
+#' name_lookup('Helianthus annuus', rank="species", limit=2)
 #' }
 name_lookup <- function(query=NULL, canonical_name=NULL, class=NULL,
   description=NULL, family=NULL, genus=NULL, kingdom=NULL, order=NULL, 
   phylum=NULL, scientificName=NULL, species=NULL, rank=NULL, subgenus=NULL, 
-  vernacularName=NULL, callopts=list(), verbose=FALSE, return="all")
+  vernacularName=NULL, limit=20, callopts=list(), 
+  verbose=FALSE, return="all")
 {
   url = 'http://api.gbif.org/v0.9/species/search'
   args <- compact(list(q=query, rank=rank, canonical_name=canonical_name, 
                        description=description, family=family, genus=genus, 
                        kingdom=kingdom, order=order, phylum=phylum, class=class,
                        scientificName=scientificName, species=species, 
-                       subgenus=subgenus, vernacularName=vernacularName))
+                       subgenus=subgenus, vernacularName=vernacularName, 
+                       limit=limit))
   temp <- GET(url, query=args, callopts)
   stop_for_status(temp)
   tt <- content(temp)

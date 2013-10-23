@@ -12,6 +12,7 @@
 #' @param subgenus Taxonomic subgenus
 #' @param rank Taxonomic rank
 #' @param vernacularName Vernacular (common) name
+#' @param limit Number of records to return
 #' @param callopts Further arguments passed on to the \code{\link{GET}} request.
 #' @param verbose If TRUE, all data is returned as a list for each element. If 
 #'    FALSE (default) a subset of the data that is thought to be most essential is

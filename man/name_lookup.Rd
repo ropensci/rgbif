@@ -7,7 +7,8 @@
     genus = NULL, kingdom = NULL, order = NULL,
     phylum = NULL, scientificName = NULL, species = NULL,
     rank = NULL, subgenus = NULL, vernacularName = NULL,
-    callopts = list(), verbose = FALSE, return = "all")
+    limit = 20, callopts = list(), verbose = FALSE,
+    return = "all")
 }
 \arguments{
   \item{query}{Query term(s) for full text search.}
@@ -37,6 +38,8 @@
   \item{rank}{Taxonomic rank}
 
   \item{vernacularName}{Vernacular (common) name}
+
+  \item{limit}{Number of records to return}
 
   \item{callopts}{Further arguments passed on to the
   \code{\link{GET}} request.}
@@ -85,6 +88,9 @@ name_lookup(query='Cnaemidophor', rank="genus")
 
 # Get more data from the API call
 name_lookup(query='Cnaemidophorus', rank="genus", callopts=verbose())
+
+# Limit records to certain number
+name_lookup('Helianthus annuus', rank="species", limit=2)
 }
 }
 \references{
