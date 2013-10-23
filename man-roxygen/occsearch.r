@@ -1,4 +1,6 @@
-#' @param taxonKey Scientific name 
+#' @param taxonKey Taxonomic key. This is the GBIF backbone taxonomic key for a 
+#'    single taxon. You can pass many keys by passing occ_search in a call to an 
+#'    lapply-family function (see last example below).
 #' @param country Country, a two letter ISO country code. See here
 #'    \url{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}
 #' @param boundingBox Location
@@ -36,4 +38,6 @@
 #' of rgbif that wrapped that API, you could search the equivalent of this function
 #' with a species name, which was convenient. However, names are messy right. So 
 #' it sorta makes sense to sort out the species key numbers you want exactly, 
-#' and then get your occurrence data with this function. 
+#' and then get your occurrence data with this function. UPDATE - GBIF folks say 
+#' that they are planning to allow using actual scientific names in this API endpoint, 
+#' so eventually it will happen.

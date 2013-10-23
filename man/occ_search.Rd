@@ -10,7 +10,10 @@
     minimal = TRUE, return = "all", ...)
 }
 \arguments{
-  \item{taxonKey}{Scientific name}
+  \item{taxonKey}{Taxonomic key. This is the GBIF backbone
+  taxonomic key for a single taxon. You can pass many keys
+  by passing occ_search in a call to an lapply-family
+  function (see last example below).}
 
   \item{country}{Country, a two letter ISO country code.
   See here
@@ -80,7 +83,10 @@
   species name, which was convenient. However, names are
   messy right. So it sorta makes sense to sort out the
   species key numbers you want exactly, and then get your
-  occurrence data with this function.
+  occurrence data with this function. UPDATE - GBIF folks
+  say that they are planning to allow using actual
+  scientific names in this API endpoint, so eventually it
+  will happen.
 }
 \examples{
 \dontrun{
