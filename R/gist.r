@@ -9,8 +9,10 @@
 #' each session, but only once for each session. Alternatively, you could enter
 #' your credentials into your .Rprofile file with the entries
 #' 
-#' options(github.username = "your_github_username")
-#' options(github.password = "your_github_password")
+#' \enumerate{
+#'  \item options(github.username = "your_github_username")
+#'  \item options(github.password = "your_github_password")
+#' }
 #' 
 #' then \code{gist} will simply read those options.
 #' 

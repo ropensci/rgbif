@@ -84,9 +84,9 @@ togeojson <- function(input, method="web", destpath="~/", outfilename="myfile")
     } else
       if(fileext == 'shp'){  
         x <- readShapeSpatial(input)
-        unlink(paste0(destpath, outfilename, '.geojson'))
-        writeOGR(x, paste0(outfilename, '.geojson'), outfilename, driver = "GeoJSON")
-        message(paste0("Success! File is at ", destpath, outfilename, '.geojson'))
+        unlink(paste0(path.expand(destpath), outfilename, '.geojson'))
+        writeOGR(x, paste0(path.expand(destpath), outfilename, '.geojson'), outfilename, driver = "GeoJSON")
+        message(paste0("Success! File is at ", path.expand(destpath), outfilename, '.geojson'))
       } else
       { stop('only .shp and .kml files supported for now') }
   }
