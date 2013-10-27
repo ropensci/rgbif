@@ -19,11 +19,14 @@
 }
 \examples{
 \dontrun{
-parsenames('x Agropogon littoralis')
+parsenames(scientificname='x Agropogon littoralis')
 parsenames(c('Arrhenatherum elatius var. elatius',
              'Secale cereale subsp. cereale', 'Secale cereale ssp. cereale',
              'Vanessa atalanta (Linnaeus, 1758)'))
 }
+}
+\author{
+  John Baumgartner (johnbb@student.unimelb.edu.au)
 }
 \references{
   \url{http://dev.gbif.org/wiki/display/POR/Webservice+API}

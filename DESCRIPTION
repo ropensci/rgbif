@@ -54,3 +54,4 @@ Collate:
     'stylegeojson.r'
     'togeojson.r'
     'rgbif-package.r'
+    'parsenames.R'
