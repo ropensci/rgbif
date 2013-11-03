@@ -1,18 +1,9 @@
 #' Lookup details for specific names in all taxonomies in GBIF.
 #'
 #' @template all
-#' @import httr
-#' @import plyr
-#' @param key A key for a taxon
-#' @param data Specify an option to select what data is returned. See Description
-#'    below.
-#' @param language Language, default is english
-#' @param datasetKey Dataset key
-#' @param sourceId Source id
-#' @param rank Taxonomic rank
-#' @param uuid A uuid for a dataset.
-#' @param shortname A short name..need more info on this...
-#' @param callopts Options passed on to GET
+#' @template occ
+#' @template nameusage
+#' @import httr plyr
 #' @return A list of length two. The first element is metadata. The second is 
 #' either a data.frame (verbose=FALSE, default) or a list (verbose=TRUE)
 #' @description
@@ -35,6 +26,9 @@
 #' # A single name usage
 #' name_usage(key=1)
 #' 
+#' # Name usage for a taxonomic name
+#' name_usage(name='Puma concolor')
+#' 
 #' # References for a name usage
 #' name_usage(key=3119195, data='references')
 #' 
@@ -44,16 +38,16 @@
 #' # Select many options
 #' name_usage(key=3119195, data=c('images','synonyms'))
 #' }
-name_usage <- function(key=NULL, data='all', language=NULL, datasetKey=NULL,
-  sourceId=NULL, rank=NULL, uuid=NULL, shortname=NULL, callopts=list())
+name_usage <- function(key=NULL, name=NULL, data='all', language=NULL, datasetKey=NULL,
+  sourceId=NULL, rank=NULL, uuid=NULL, shortname=NULL, start=NULL, limit=20, callopts=list())
 {
-  args <- compact(list(language=language, datasetKey=datasetKey, 
-                       sourceId=sourceId, rank=rank))  
+  args <- compact(list(language=language, name=name, datasetKey=datasetKey, 
+                       sourceId=sourceId, rank=rank, offset=start, limit=limit))  
   data <- match.arg(data, 
-                    choices=c('all', 'verbatim', 'name', 'parents', 'children', 
-                              'descendants', 'related', 'synonyms', 'descriptions',
-                              'distributions', 'images', 'references', 'species_profiles',
-                              'vernacular_names', 'type_specimens', 'root'), several.ok=TRUE)
+      choices=c('all', 'verbatim', 'name', 'parents', 'children', 
+                'descendants', 'related', 'synonyms', 'descriptions',
+                'distributions', 'images', 'references', 'species_profiles',
+                'vernacular_names', 'type_specimens', 'root'), several.ok=TRUE)
   
   # Define function to get data
   getdata <- function(x){

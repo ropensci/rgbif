@@ -1,13 +1,21 @@
-\name{gbif_lookup}
-\alias{gbif_lookup}
+\name{name_backbone}
+\alias{name_backbone}
 \title{Lookup names in the GBIF backbone taxonomy.}
 \usage{
-  gbif_lookup(name, rank = NULL, kingdom = NULL,
+  name_backbone(name, rank = NULL, kingdom = NULL,
     phylum = NULL, class = NULL, order = NULL,
     family = NULL, genus = NULL, strict = FALSE,
-    verbose = FALSE, callopts = list())
+    verbose = FALSE, start = NULL, limit = 20,
+    callopts = list())
 }
 \arguments{
+  \item{callopts}{Pass on options to httr::GET for more
+  refined control of http calls, and error handling}
+
+  \item{limit}{Number of records to return}
+
+  \item{start}{Record number to start at}
+
   \item{name}{Full scientific name potentially with
   authorship}
 
@@ -42,8 +50,6 @@
 
   \item{verbose}{If TRUE show alternative matches
   considered which had been rejected.}
-
-  \item{callopts}{Further args passed on to GET.}
 }
 \value{
   A list.
@@ -53,9 +59,9 @@
 }
 \examples{
 \dontrun{
-gbif_lookup(name='Helianthus annuus', kingdom='plants')
-gbif_lookup(name='Helianthus', rank='genus', kingdom='plants')
-gbif_lookup(name='Helianthus annuus', kingdom='plants', verbose=TRUE)
+name_backbone(name='Helianthus annuus', kingdom='plants')
+name_backbone(name='Helianthus', rank='genus', kingdom='plants')
+name_backbone(name='Helianthus annuus', kingdom='plants', verbose=TRUE)
 }
 }
 \references{

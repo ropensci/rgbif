@@ -2,29 +2,47 @@
 \alias{name_usage}
 \title{Lookup details for specific names in all taxonomies in GBIF.}
 \usage{
-  name_usage(key = NULL, data = "all", language = NULL,
-    datasetKey = NULL, sourceId = NULL, rank = NULL,
-    uuid = NULL, shortname = NULL, callopts = list())
+  name_usage(key = NULL, name = NULL, data = "all",
+    language = NULL, datasetKey = NULL, sourceId = NULL,
+    rank = NULL, uuid = NULL, shortname = NULL,
+    start = NULL, limit = 20, callopts = list())
 }
 \arguments{
-  \item{key}{A key for a taxon}
+  \item{callopts}{Pass on options to httr::GET for more
+  refined control of http calls, and error handling}
+
+  \item{limit}{Number of records to return}
+
+  \item{start}{Record number to start at}
+
+  \item{rank}{Taxonomic rank. Filters by taxonomic rank as
+  one of: CLASS, CULTIVAR, CULTIVAR_GROUP, DOMAIN, FAMILY,
+  FORM, GENUS, INFORMAL, INFRAGENERIC_NAME, INFRAORDER,
+  INFRASPECIFIC_NAME, INFRASUBSPECIFIC_NAME, KINGDOM,
+  ORDER, PHYLUM, SECTION, SERIES, SPECIES, STRAIN,
+  SUBCLASS, SUBFAMILY, SUBFORM, SUBGENUS, SUBKINGDOM,
+  SUBORDER, SUBPHYLUM, SUBSECTION, SUBSERIES, SUBSPECIES,
+  SUBTRIBE, SUBVARIETY, SUPERCLASS, SUPERFAMILY,
+  SUPERORDER, SUPERPHYLUM, SUPRAGENERIC_NAME, TRIBE,
+  UNRANKED, VARIETY}
+
+  \item{datasetKey}{Filters by the dataset's key (a uuid)}
+
+  \item{key}{A GBIF key for a taxon}
+
+  \item{name}{Filters by a case insensitive, canonical
+  namestring, e.g. 'Puma concolor'}
 
   \item{data}{Specify an option to select what data is
   returned. See Description below.}
 
   \item{language}{Language, default is english}
 
-  \item{datasetKey}{Dataset key}
-
-  \item{sourceId}{Source id}
-
-  \item{rank}{Taxonomic rank}
+  \item{sourceId}{Filters by the source identifier}
 
   \item{uuid}{A uuid for a dataset.}
 
-  \item{shortname}{A short name..need more info on this...}
-
-  \item{callopts}{Options passed on to GET}
+  \item{shortname}{A short name..need more info on this?}
 }
 \value{
   A list of length two. The first element is metadata. The
@@ -55,6 +73,9 @@ name_usage()
 
 # A single name usage
 name_usage(key=1)
+
+# Name usage for a taxonomic name
+name_usage(name='Puma concolor')
 
 # References for a name usage
 name_usage(key=3119195, data='references')

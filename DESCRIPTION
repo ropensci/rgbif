@@ -34,12 +34,10 @@ Imports:
 Suggests:
     roxygen2
 Collate:
-    'name_lookup.r'
     'occ_get.r'
     'occ_search.r'
     'country_codes.r'
     'dataset_metrics.r'
-    'gbif_lookup.r'
     'zzz.r'
     'dataset_search.r'
     'datasets.r'
@@ -55,3 +53,6 @@ Collate:
     'togeojson.r'
     'rgbif-package.r'
     'parsenames.R'
+    'name_suggest.r'
+    'name_backbone.r'
+    'occ_metadata.r'
