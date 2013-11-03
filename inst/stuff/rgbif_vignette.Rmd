@@ -92,19 +92,19 @@ taxrank()
 
 ### Search for a genus 
 
-```{r name_lookup1, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
+```{r name_lookup1, comment=NA, warning=FALSE, message=FALSE}
 head(name_lookup(query='Cnaemidophorus', rank="genus", return="data"))
 ```
 
 ### Search for the class mammalia
 
-```{r name_lookup2, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
+```{r name_lookup2, comment=NA, warning=FALSE, message=FALSE}
 name_lookup(class='mammalia')
 ```
 
 ### Look up the species Helianthus annuus
 
-```{r name_lookup3, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
+```{r name_lookup3, comment=NA, warning=FALSE, message=FALSE}
 name_lookup('Helianthus annuus', rank="species")
 ```
 
@@ -145,7 +145,7 @@ occ_get(key=c(773433533,101010,240713150,855998194,49819470), return='data')
 Make a map of **Puma concolor** occurrences
 
 ```{r gbifmap1, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
-key <- gbif_lookup(name='Puma concolor', kingdom='plants')$speciesKey
+key <- name_backbone(name='Puma concolor', kingdom='plants')$speciesKey
 dat <- occ_search(taxonKey=key, return='data', limit=300, minimal=FALSE)
 gbifmap(input=dat)
 ```
@@ -155,7 +155,7 @@ gbifmap(input=dat)
 ```{r gbifmap2, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
 library(plyr)
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
-keys <- sapply(splist, function(x) gbif_lookup(name=x, kingdom='plants')$speciesKey, USE.NAMES=FALSE)
+keys <- sapply(splist, function(x) name_backbone(name=x, kingdom='plants')$speciesKey, USE.NAMES=FALSE)
 out <- occ_search(keys, georeferenced=TRUE, limit=50, return="data")
 dat <- ldply(out)
 datgeojson <- stylegeojson(input=dat, var="name", color=c("#976AAE","#6B944D","#BD5945"), size=c("small","medium","large"))

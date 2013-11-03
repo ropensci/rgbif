@@ -4,12 +4,14 @@
 -->
 
 <h1 id="rgbif-vignette---seach-and-retrieve-data-from-the-global-biodiverity-information-facilty-gbif">rgbif vignette - Seach and retrieve data from the Global Biodiverity Information Facilty (GBIF)</h1>
-<h3 id="about-the-package">About the package</h3>
+<h2 id="about-the-package">About the package</h2>
 <p><code>rgbif</code> is an R package to search and retrieve data from the Global Biodiverity Information Facilty (GBIF). <code>rgbif</code> wraps R code around the <a href="http://data.gbif.org/tutorial/services">GBIF API</a> to allow you to talk to GBIF from R.</p>
 <hr />
-<h4 id="install-rgbif-and-dependencies">Install rgbif and dependencies</h4>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;rgbif&quot;</span>)</code></pre>
-<h4 id="load-rgbif-and-dependencies">Load rgbif and dependencies</h4>
+<h2 id="install-rgbif-and-dependencies">Install rgbif and dependencies</h2>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)
+<span class="kw">library</span>(devtools)
+<span class="kw">install_github</span>(<span class="st">&quot;rgbif&quot;</span>, <span class="st">&quot;ropensci&quot;</span>, <span class="dt">ref =</span> <span class="st">&quot;newapi&quot;</span>)</code></pre>
+<h2 id="load-rgbif-and-dependencies">Load rgbif and dependencies</h2>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rgbif)
 <span class="kw">library</span>(XML)
 <span class="kw">library</span>(RCurl)
@@ -17,127 +19,70 @@
 <span class="kw">library</span>(ggplot2)
 <span class="kw">library</span>(maps)</code></pre>
 <hr />
-<h4 id="get-number-of-occurrences-for-a-set-of-search-parameters">Get number of occurrences for a set of search parameters</h4>
-<h5 id="search-by-type-of-record-all-observational-in-this-case">Search by type of record, all observational in this case</h5>
+<h2 id="get-number-of-occurrences-for-a-set-of-search-parameters">Get number of occurrences for a set of search parameters</h2>
+<h3 id="search-by-type-of-record-all-observational-in-this-case">Search by type of record, all observational in this case</h3>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">occ_count</span>(<span class="dt">basisOfRecord =</span> <span class="st">&quot;OBSERVATION&quot;</span>)</code></pre>
 <pre><code>[1] 286071783</code></pre>
-<h5 id="records-for-puma-concolor-with-latlong-data-georeferened-only">Records for <strong>Puma concolor</strong> with lat/long data (georeferened) only</h5>
+<h3 id="records-for-puma-concolor-with-latlong-data-georeferened-only">Records for <strong>Puma concolor</strong> with lat/long data (georeferened) only</h3>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">occ_count</span>(<span class="dt">nubKey =</span> <span class="dv">2435099</span>, <span class="dt">georeferenced =</span> <span class="ot">TRUE</span>)</code></pre>
 <pre><code>[1] 2541</code></pre>
-<h5 id="all-georeferenced-records-in-gbif">All georeferenced records in GBIF</h5>
+<h3 id="all-georeferenced-records-in-gbif">All georeferenced records in GBIF</h3>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">occ_count</span>(<span class="dt">georeferenced =</span> <span class="ot">TRUE</span>)</code></pre>
 <pre><code>[1] 3.55e+08</code></pre>
-<h5 id="records-from-denmark">Records from Denmark</h5>
+<h3 id="records-from-denmark">Records from Denmark</h3>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">occ_count</span>(<span class="dt">country =</span> <span class="st">&quot;DENMARK&quot;</span>)</code></pre>
 <pre><code>[1] 8628822</code></pre>
-<h5 id="records-from-france">Records from France</h5>
+<h3 id="records-from-france">Records from France</h3>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">occ_count</span>(<span class="dt">hostCountry =</span> <span class="st">&quot;FRANCE&quot;</span>)</code></pre>
 <pre><code>[1] 17272175</code></pre>
-<h5 id="number-of-records-in-a-particular-dataset">Number of records in a particular dataset</h5>
+<h3 id="number-of-records-in-a-particular-dataset">Number of records in a particular dataset</h3>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">occ_count</span>(<span class="dt">datasetKey =</span> <span class="st">&quot;9e7ea106-0bf8-4087-bb61-dfe4f29e0f17&quot;</span>)</code></pre>
 <pre><code>[1] 4591</code></pre>
-<h5 id="all-records-from-2012">All records from 2012</h5>
+<h3 id="all-records-from-2012">All records from 2012</h3>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">occ_count</span>(<span class="dt">year =</span> <span class="dv">2012</span>)</code></pre>
 <pre><code>[1] 31483292</code></pre>
-<h5 id="records-for-a-particular-dataset-and-only-for-preserved-specimens">Records for a particular dataset, and only for preserved specimens</h5>
+<h3 id="records-for-a-particular-dataset-and-only-for-preserved-specimens">Records for a particular dataset, and only for preserved specimens</h3>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">occ_count</span>(<span class="dt">datasetKey =</span> <span class="st">&quot;8626bd3a-f762-11e1-a439-00145eb45e9a&quot;</span>, <span class="dt">basisOfRecord =</span> <span class="st">&quot;PRESERVED_SPECIMEN&quot;</span>)</code></pre>
 <pre><code>[1] 550849</code></pre>
 <hr />
-<h4 id="get-possible-values-to-be-used-in-taxonomic-rank-arguments-in-functions">Get possible values to be used in taxonomic rank arguments in functions</h4>
+<h2 id="get-possible-values-to-be-used-in-taxonomic-rank-arguments-in-functions">Get possible values to be used in taxonomic rank arguments in functions</h2>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">taxrank</span>()</code></pre>
 <pre><code>[1] &quot;kingdom&quot;       &quot;phylum&quot;        &quot;class&quot;         &quot;order&quot;        
 [5] &quot;family&quot;        &quot;genus&quot;         &quot;species&quot;       &quot;infraspecific&quot;</code></pre>
 <hr />
-<h4 id="search-for-taxon-information">Search for taxon information</h4>
-<h5 id="search-for-a-genus">Search for a genus</h5>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">name_lookup</span>(<span class="dt">query =</span> <span class="st">&quot;Cnaemidophorus&quot;</span>, <span class="dt">rank =</span> <span class="st">&quot;genus&quot;</span>, <span class="dt">return =</span> <span class="st">&quot;data&quot;</span>)</code></pre>
-<pre><code>         key  nubKey parentKey        parent  kingdom        phylum
-1  116755723 1858636 110614854 Pterophoridae Animalia    Arthropoda
-2    1858636 1858636      8863 Pterophoridae Animalia    Arthropoda
-3  125802004 1858636 125793784 Pterophoridae     &lt;NA&gt;          &lt;NA&gt;
-4  124531302 1858636        NA          &lt;NA&gt;     &lt;NA&gt;          &lt;NA&gt;
-5  126862804 1858636 126783981 Pterophoridae Animalia    Arthropoda
-6  115123697 1858636        NA          &lt;NA&gt;     &lt;NA&gt;          &lt;NA&gt;
-7  121309232 1858636 124484006         :) ia    :) ia          &lt;NA&gt;
-8  101053441 1858636 100725398 Pterophoridae Animalia    Arthropoda
-9  107119486 1858636 107119872 Pterophoridae     &lt;NA&gt;          &lt;NA&gt;
-10 107889106 1858636 107894685 Pterophoridae Animalia    Arthropoda
-11 115090188 1858636 115103956 Pterophoridae Animalia    Arthropoda
-12 103267214 1858636 103295754 Pterophorinae     &lt;NA&gt;          &lt;NA&gt;
-13 107119489 6114874 107119872 Pterophoridae     &lt;NA&gt;          &lt;NA&gt;
-14   6114874 6114874      8863 Pterophoridae Animalia    Arthropoda
-15 107119488 4705260 107119872 Pterophoridae     &lt;NA&gt;          &lt;NA&gt;
-16 102383618 3257276 100725398 Pterophoridae Animalia    Arthropoda
-17 107119487 3257276 107119872 Pterophoridae     &lt;NA&gt;          &lt;NA&gt;
-18   3257276 3257276      8863 Pterophoridae Animalia    Arthropoda
-19 125802820 3002148 125806863      Rosaceae     &lt;NA&gt;          &lt;NA&gt;
-20   3002148 3002148      5015      Rosaceae  Plantae Magnoliophyta
-           clazz       order        family          genus kingdomKey
-1        Insecta Lepidoptera Pterophoridae Cnaemidophorus  116630539
-2        Insecta Lepidoptera Pterophoridae Cnaemidophorus          1
-3        Insecta Lepidoptera Pterophoridae Cnaemidophorus         NA
-4           &lt;NA&gt;        &lt;NA&gt;          &lt;NA&gt; Cnaemidophorus         NA
-5        Insecta Lepidoptera Pterophoridae Cnaemidophorus  126774927
-6           &lt;NA&gt;        &lt;NA&gt;          &lt;NA&gt; Cnaemidophorus         NA
-7           &lt;NA&gt;        &lt;NA&gt;          &lt;NA&gt; Cnaemidophorus  124484006
-8        Insecta Lepidoptera Pterophoridae Cnaemidophorus  101719444
-9           &lt;NA&gt;        &lt;NA&gt; Pterophoridae Cnaemidophorus         NA
-10       Insecta Lepidoptera Pterophoridae Cnaemidophorus  107895884
-11       Insecta Lepidoptera Pterophoridae Cnaemidophorus  115107543
-12          &lt;NA&gt;        &lt;NA&gt;          &lt;NA&gt; Cnaemidophorus         NA
-13          &lt;NA&gt;        &lt;NA&gt; Pterophoridae Cnaemidophorus         NA
-14       Insecta Lepidoptera Pterophoridae Cnaemidophorus          1
-15          &lt;NA&gt;        &lt;NA&gt; Pterophoridae Cnaemidophorus         NA
-16       Insecta Lepidoptera Pterophoridae Cnaemidophorus  101719444
-17          &lt;NA&gt;        &lt;NA&gt; Pterophoridae Cnaemidophorus         NA
-18       Insecta Lepidoptera Pterophoridae Cnaemidophorus          1
-19          &lt;NA&gt;     Rosales      Rosaceae           Rosa         NA
-20 Magnoliopsida     Rosales      Rosaceae           Rosa          6
-   phylumKey  classKey  orderKey familyKey  genusKey   canonicalName
-1  116762374 116686069 116843281 110614854 116755723  Cnaemidophorus
-2         54       216       797      8863   1858636  Cnaemidophorus
-3         NA 125831175 125810165 125793784 125802004  Cnaemidophorus
-4         NA        NA        NA        NA 124531302  Cnaemidophorus
-5  126774928 126775138 126775421 126783981 126862804  Cnaemidophorus
-6         NA        NA        NA        NA 115123697  Cnaemidophorus
-7         NA        NA        NA        NA 121309232  Cnaemidophorus
-8  102545136 101674726 102306154 100725398 101053441  Cnaemidophorus
-9         NA        NA        NA 107119872 107119486  Cnaemidophorus
-10 107895861 107895809 107895457 107894685 107889106  Cnaemidophorus
-11 115107571 115107384 115106690 115103956 115090188  Cnaemidophorus
-12        NA        NA        NA        NA 103267214  Cnaemidophorus
-13        NA        NA        NA 107119872 107119486 Euenemidophorus
-14        54       216       797      8863   1858636 Euenemidophorus
-15        NA        NA        NA 107119872 107119486 Eucnemidophorus
-16 102545136 101674726 102306154 100725398 101053441   Cnemidophorus
-17        NA        NA        NA 107119872 107119486   Cnemidophorus
-18        54       216       797      8863   1858636   Cnemidophorus
-19        NA        NA 125837937 125806863 125802820            Rosa
-20        49       220       691      5015   3002148            Rosa
-                authorship   nameType  rank numOccurrences
-1         Wallengren, 1862 WELLFORMED GENUS              0
-2         Wallengren, 1862 WELLFORMED GENUS              0
-3         Wallengren, 1862 WELLFORMED GENUS              0
-4                          WELLFORMED GENUS              0
-5                          WELLFORMED GENUS              0
-6                          WELLFORMED GENUS              0
-7                          WELLFORMED GENUS              0
-8         Wallengren, 1860 WELLFORMED GENUS              0
-9         Wallengren, 1862 WELLFORMED GENUS              0
-10        Wallengren, 1862 WELLFORMED GENUS              0
-11        Wallengren, 1862 WELLFORMED GENUS              0
-12        Wallengren, 1862 WELLFORMED GENUS              0
-13 Pierce &amp; Metcalfe, 1938 WELLFORMED GENUS              0
-14 Pierce &amp; Metcalfe, 1938 WELLFORMED GENUS              0
-15        Wallengren, 1881 WELLFORMED GENUS              0
-16            Zeller, 1867 WELLFORMED GENUS              0
-17            Zeller, 1867 WELLFORMED GENUS              0
-18            Zeller, 1867 WELLFORMED GENUS              0
-19                      L. WELLFORMED GENUS              0
-20                      L. WELLFORMED GENUS              0</code></pre>
-<h5 id="search-for-the-class-mammalia">Search for the class mammalia</h5>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Look up names like mammalia</span>
-<span class="kw">name_lookup</span>(<span class="dt">class =</span> <span class="st">&quot;mammalia&quot;</span>)</code></pre>
+<h2 id="search-for-taxon-information">Search for taxon information</h2>
+<h3 id="search-for-a-genus">Search for a genus</h3>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">name_lookup</span>(<span class="dt">query =</span> <span class="st">&quot;Cnaemidophorus&quot;</span>, <span class="dt">rank =</span> <span class="st">&quot;genus&quot;</span>, <span class="dt">return =</span> <span class="st">&quot;data&quot;</span>))</code></pre>
+<pre><code>        key  nubKey parentKey        parent  kingdom     phylum   clazz
+1 116755723 1858636 110614854 Pterophoridae Animalia Arthropoda Insecta
+2   1858636 1858636      8863 Pterophoridae Animalia Arthropoda Insecta
+3 125802004 1858636 125793784 Pterophoridae     &lt;NA&gt;       &lt;NA&gt; Insecta
+4 124531302 1858636        NA          &lt;NA&gt;     &lt;NA&gt;       &lt;NA&gt;    &lt;NA&gt;
+5 126862804 1858636 126783981 Pterophoridae Animalia Arthropoda Insecta
+6 115123697 1858636        NA          &lt;NA&gt;     &lt;NA&gt;       &lt;NA&gt;    &lt;NA&gt;
+        order        family          genus kingdomKey phylumKey  classKey
+1 Lepidoptera Pterophoridae Cnaemidophorus  116630539 116762374 116686069
+2 Lepidoptera Pterophoridae Cnaemidophorus          1        54       216
+3 Lepidoptera Pterophoridae Cnaemidophorus         NA        NA 125831175
+4        &lt;NA&gt;          &lt;NA&gt; Cnaemidophorus         NA        NA        NA
+5 Lepidoptera Pterophoridae Cnaemidophorus  126774927 126774928 126775138
+6        &lt;NA&gt;          &lt;NA&gt; Cnaemidophorus         NA        NA        NA
+   orderKey familyKey  genusKey  canonicalName       authorship   nameType
+1 116843281 110614854 116755723 Cnaemidophorus Wallengren, 1862 WELLFORMED
+2       797      8863   1858636 Cnaemidophorus Wallengren, 1862 WELLFORMED
+3 125810165 125793784 125802004 Cnaemidophorus Wallengren, 1862 WELLFORMED
+4        NA        NA 124531302 Cnaemidophorus                  WELLFORMED
+5 126775421 126783981 126862804 Cnaemidophorus                  WELLFORMED
+6        NA        NA 115123697 Cnaemidophorus                  WELLFORMED
+   rank numOccurrences
+1 GENUS              0
+2 GENUS              0
+3 GENUS              0
+4 GENUS              0
+5 GENUS              0
+6 GENUS              0</code></pre>
+<h3 id="search-for-the-class-mammalia">Search for the class mammalia</h3>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">name_lookup</span>(<span class="dt">class =</span> <span class="st">&quot;mammalia&quot;</span>)</code></pre>
 <pre><code>$meta
   offset limit endOfRecords    count
 1      0    20        FALSE 20362854
@@ -227,7 +172,7 @@ $data
 18          &lt;NA&gt;        NA
 19          &lt;NA&gt;        NA
 20          &lt;NA&gt;        NA</code></pre>
-<h5 id="look-up-the-species-helianthus-annuus">Look up the species Helianthus annuus</h5>
+<h3 id="look-up-the-species-helianthus-annuus">Look up the species Helianthus annuus</h3>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">name_lookup</span>(<span class="st">&quot;Helianthus annuus&quot;</span>, <span class="dt">rank =</span> <span class="st">&quot;species&quot;</span>)</code></pre>
 <pre><code>$meta
   offset limit endOfRecords count
@@ -319,12 +264,12 @@ $data
 19              0          &lt;NA&gt; Equisetopsida        NA 100023390
 20              0   Tenericutes    Mollicutes 106355900 106136190</code></pre>
 <hr />
-<h4 id="get-data-for-a-single-occurrence.-note-that-data-is-returned-as-a-list-with-slots-for-metadata-and-data-or-as-a-hierarchy-or-just-data.">Get data for a single occurrence. Note that data is returned as a list, with slots for metadata and data, or as a hierarchy, or just data.</h4>
-<h5 id="just-data">Just data</h5>
+<h2 id="get-data-for-a-single-occurrence.-note-that-data-is-returned-as-a-list-with-slots-for-metadata-and-data-or-as-a-hierarchy-or-just-data.">Get data for a single occurrence. Note that data is returned as a list, with slots for metadata and data, or as a hierarchy, or just data.</h2>
+<h3 id="just-data">Just data</h3>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">occ_get</span>(<span class="dt">key =</span> <span class="dv">773433533</span>, <span class="dt">return =</span> <span class="st">&quot;data&quot;</span>)</code></pre>
-<pre><code>                  name longitude latitude
-1 Helianthus annuus L.      -117    32.85</code></pre>
-<h5 id="just-taxonomic-hierarchy">Just taxonomic hierarchy</h5>
+<pre><code>                  name       key longitude latitude
+1 Helianthus annuus L. 773433533      -117    32.85</code></pre>
+<h3 id="just-taxonomic-hierarchy">Just taxonomic hierarchy</h3>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">occ_get</span>(<span class="dt">key =</span> <span class="dv">773433533</span>, <span class="dt">return =</span> <span class="st">&quot;hier&quot;</span>)</code></pre>
 <pre><code>                  name     key    rank
 1              Plantae       6 kingdom
@@ -334,7 +279,7 @@ $data
 5           Asteraceae    3065  family
 6           Helianthus 3119134   genus
 7 Helianthus annuus L. 3119195 species</code></pre>
-<h5 id="all-data-or-leave-return-parameter-blank">All data, or leave return parameter blank</h5>
+<h3 id="all-data-or-leave-return-parameter-blank">All data, or leave return parameter blank</h3>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">occ_get</span>(<span class="dt">key =</span> <span class="dv">773433533</span>, <span class="dt">return =</span> <span class="st">&quot;all&quot;</span>)</code></pre>
 <pre><code>$hierarch
                   name     key    rank
@@ -347,22 +292,35 @@ $data
 7 Helianthus annuus L. 3119195 species
 
 $data
-                  name longitude latitude
-1 Helianthus annuus L.      -117    32.85</code></pre>
-<h5 id="get-many-occurrences.-occ_get-is-vectorized">Get many occurrences. <code>occ_get</code> is vectorized</h5>
+                  name       key longitude latitude
+1 Helianthus annuus L. 773433533      -117    32.85</code></pre>
+<h3 id="get-many-occurrences.-occ_get-is-vectorized">Get many occurrences. <code>occ_get</code> is vectorized</h3>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">occ_get</span>(<span class="dt">key =</span> <span class="kw">c</span>(<span class="dv">773433533</span>, <span class="dv">101010</span>, <span class="dv">240713150</span>, <span class="dv">855998194</span>, <span class="dv">49819470</span>), <span class="dt">return =</span> <span class="st">&quot;data&quot;</span>)</code></pre>
-<pre><code>                                   name longitude latitude
-1                  Helianthus annuus L.   -117.00    32.85
-2  Platydoras costatus (Linnaeus, 1758)    -70.07    -4.35
-3                              Pelosina    163.58   -77.57
-4       Sciurus vulgaris Linnaeus, 1758     12.04    58.41
-5 Phlogophora meticulosa Linnaeus, 1758     13.28    55.72</code></pre>
+<pre><code>                                   name       key longitude latitude
+1                  Helianthus annuus L. 773433533   -117.00    32.85
+2  Platydoras costatus (Linnaeus, 1758)    101010    -70.07    -4.35
+3                              Pelosina 240713150    163.58   -77.57
+4       Sciurus vulgaris Linnaeus, 1758 855998194     12.04    58.41
+5 Phlogophora meticulosa Linnaeus, 1758  49819470     13.28    55.72</code></pre>
 <hr />
-<h4 id="maps">Maps</h4>
+<h2 id="maps">Maps</h2>
+<h3 id="static-map-using-the-ggplot2-package">Static map using the ggplot2 package</h3>
 <p>Make a map of <strong>Puma concolor</strong> occurrences</p>
-<pre class="sourceCode r"><code class="sourceCode r">key &lt;-<span class="st"> </span><span class="kw">gbif_lookup</span>(<span class="dt">name =</span> <span class="st">&quot;Puma concolor&quot;</span>, <span class="dt">kingdom =</span> <span class="st">&quot;plants&quot;</span>)$speciesKey
+<pre class="sourceCode r"><code class="sourceCode r">key &lt;-<span class="st"> </span><span class="kw">name_backbone</span>(<span class="dt">name =</span> <span class="st">&quot;Puma concolor&quot;</span>, <span class="dt">kingdom =</span> <span class="st">&quot;plants&quot;</span>)$speciesKey
 dat &lt;-<span class="st"> </span><span class="kw">occ_search</span>(<span class="dt">taxonKey =</span> key, <span class="dt">return =</span> <span class="st">&quot;data&quot;</span>, <span class="dt">limit =</span> <span class="dv">300</span>, <span class="dt">minimal =</span> <span class="ot">FALSE</span>)
 <span class="kw">gbifmap</span>(<span class="dt">input =</span> dat)</code></pre>
 <div class="figure">
 <img src="figure/gbifmap1.png" alt="plot of chunk gbifmap1" /><p class="caption">plot of chunk gbifmap1</p>
 </div>
+<h3 id="interactive-map-using-a-geojson-file-with-your-github-account">Interactive map using a geoJSON file with your Github account</h3>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(plyr)
+splist &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Accipiter erythronemius&quot;</span>, <span class="st">&quot;Junco hyemalis&quot;</span>, <span class="st">&quot;Aix sponsa&quot;</span>)
+keys &lt;-<span class="st"> </span><span class="kw">sapply</span>(splist, function(x) <span class="kw">name_backbone</span>(<span class="dt">name =</span> x, <span class="dt">kingdom =</span> <span class="st">&quot;plants&quot;</span>)$speciesKey, 
+    <span class="dt">USE.NAMES =</span> <span class="ot">FALSE</span>)
+out &lt;-<span class="st"> </span><span class="kw">occ_search</span>(keys, <span class="dt">georeferenced =</span> <span class="ot">TRUE</span>, <span class="dt">limit =</span> <span class="dv">50</span>, <span class="dt">return =</span> <span class="st">&quot;data&quot;</span>)
+dat &lt;-<span class="st"> </span><span class="kw">ldply</span>(out)
+datgeojson &lt;-<span class="st"> </span><span class="kw">stylegeojson</span>(<span class="dt">input =</span> dat, <span class="dt">var =</span> <span class="st">&quot;name&quot;</span>, <span class="dt">color =</span> <span class="kw">c</span>(<span class="st">&quot;#976AAE&quot;</span>, <span class="st">&quot;#6B944D&quot;</span>, 
+    <span class="st">&quot;#BD5945&quot;</span>), <span class="dt">size =</span> <span class="kw">c</span>(<span class="st">&quot;small&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;large&quot;</span>))
+<span class="kw">write.csv</span>(datgeojson, <span class="st">&quot;~/my.csv&quot;</span>)
+<span class="kw">togeojson</span>(<span class="dt">input =</span> <span class="st">&quot;~/my.csv&quot;</span>, <span class="dt">method =</span> <span class="st">&quot;web&quot;</span>, <span class="dt">outfilename =</span> <span class="st">&quot;my&quot;</span>)
+<span class="kw">gist</span>(<span class="st">&quot;~/my.geojson&quot;</span>, <span class="dt">description =</span> <span class="st">&quot;Occurrences of three bird species mapped&quot;</span>)</code></pre>

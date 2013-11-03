@@ -6,21 +6,23 @@
 rgbif vignette - Seach and retrieve data from the Global Biodiverity Information Facilty (GBIF)
 ======
 
-### About the package
+## About the package
 
 `rgbif` is an R package to search and retrieve data from the Global Biodiverity Information Facilty (GBIF). `rgbif` wraps R code around the [GBIF API][gbifapi] to allow you to talk to GBIF from R. 
 
 ********************
 
-#### Install rgbif and dependencies
+## Install rgbif and dependencies
 
 
 ```r
-install.packages("rgbif")
+install.packages("devtools")
+library(devtools)
+install_github("rgbif", "ropensci", ref = "newapi")
 ```
 
 
-#### Load rgbif and dependencies
+## Load rgbif and dependencies
 
 
 ```r
@@ -35,9 +37,9 @@ library(maps)
 
 ********************
 
-#### Get number of occurrences for a set of search parameters
+## Get number of occurrences for a set of search parameters
 
-##### Search by type of record, all observational in this case
+### Search by type of record, all observational in this case
 
 
 ```r
@@ -49,7 +51,7 @@ occ_count(basisOfRecord = "OBSERVATION")
 ```
 
 
-##### Records for **Puma concolor** with lat/long data (georeferened) only
+### Records for **Puma concolor** with lat/long data (georeferened) only
 
 
 ```r
@@ -61,7 +63,7 @@ occ_count(nubKey = 2435099, georeferenced = TRUE)
 ```
 
 
-##### All georeferenced records in GBIF
+### All georeferenced records in GBIF
 
 
 ```r
@@ -73,7 +75,7 @@ occ_count(georeferenced = TRUE)
 ```
 
 
-##### Records from Denmark
+### Records from Denmark
 
 
 ```r
@@ -85,7 +87,7 @@ occ_count(country = "DENMARK")
 ```
 
 
-##### Records from France
+### Records from France
 
 
 ```r
@@ -97,7 +99,7 @@ occ_count(hostCountry = "FRANCE")
 ```
 
 
-##### Number of records in a particular dataset
+### Number of records in a particular dataset
 
 
 ```r
@@ -109,7 +111,7 @@ occ_count(datasetKey = "9e7ea106-0bf8-4087-bb61-dfe4f29e0f17")
 ```
 
 
-##### All records from 2012
+### All records from 2012
 
 
 ```r
@@ -121,7 +123,7 @@ occ_count(year = 2012)
 ```
 
 
-##### Records for a particular dataset, and only for preserved specimens
+### Records for a particular dataset, and only for preserved specimens
 
 
 ```r
@@ -135,7 +137,7 @@ occ_count(datasetKey = "8626bd3a-f762-11e1-a439-00145eb45e9a", basisOfRecord = "
 
 ********************
 
-#### Get possible values to be used in taxonomic rank arguments in functions
+## Get possible values to be used in taxonomic rank arguments in functions
 
 
 ```r
@@ -150,108 +152,51 @@ taxrank()
 
 ********************
 
-#### Search for taxon information
+## Search for taxon information
 
-##### Search for a genus 
-
-
-```r
-name_lookup(query = "Cnaemidophorus", rank = "genus", return = "data")
-```
-
-```
-         key  nubKey parentKey        parent  kingdom        phylum
-1  116755723 1858636 110614854 Pterophoridae Animalia    Arthropoda
-2    1858636 1858636      8863 Pterophoridae Animalia    Arthropoda
-3  125802004 1858636 125793784 Pterophoridae     <NA>          <NA>
-4  124531302 1858636        NA          <NA>     <NA>          <NA>
-5  126862804 1858636 126783981 Pterophoridae Animalia    Arthropoda
-6  115123697 1858636        NA          <NA>     <NA>          <NA>
-7  121309232 1858636 124484006         :) ia    :) ia          <NA>
-8  101053441 1858636 100725398 Pterophoridae Animalia    Arthropoda
-9  107119486 1858636 107119872 Pterophoridae     <NA>          <NA>
-10 107889106 1858636 107894685 Pterophoridae Animalia    Arthropoda
-11 115090188 1858636 115103956 Pterophoridae Animalia    Arthropoda
-12 103267214 1858636 103295754 Pterophorinae     <NA>          <NA>
-13 107119489 6114874 107119872 Pterophoridae     <NA>          <NA>
-14   6114874 6114874      8863 Pterophoridae Animalia    Arthropoda
-15 107119488 4705260 107119872 Pterophoridae     <NA>          <NA>
-16 102383618 3257276 100725398 Pterophoridae Animalia    Arthropoda
-17 107119487 3257276 107119872 Pterophoridae     <NA>          <NA>
-18   3257276 3257276      8863 Pterophoridae Animalia    Arthropoda
-19 125802820 3002148 125806863      Rosaceae     <NA>          <NA>
-20   3002148 3002148      5015      Rosaceae  Plantae Magnoliophyta
-           clazz       order        family          genus kingdomKey
-1        Insecta Lepidoptera Pterophoridae Cnaemidophorus  116630539
-2        Insecta Lepidoptera Pterophoridae Cnaemidophorus          1
-3        Insecta Lepidoptera Pterophoridae Cnaemidophorus         NA
-4           <NA>        <NA>          <NA> Cnaemidophorus         NA
-5        Insecta Lepidoptera Pterophoridae Cnaemidophorus  126774927
-6           <NA>        <NA>          <NA> Cnaemidophorus         NA
-7           <NA>        <NA>          <NA> Cnaemidophorus  124484006
-8        Insecta Lepidoptera Pterophoridae Cnaemidophorus  101719444
-9           <NA>        <NA> Pterophoridae Cnaemidophorus         NA
-10       Insecta Lepidoptera Pterophoridae Cnaemidophorus  107895884
-11       Insecta Lepidoptera Pterophoridae Cnaemidophorus  115107543
-12          <NA>        <NA>          <NA> Cnaemidophorus         NA
-13          <NA>        <NA> Pterophoridae Cnaemidophorus         NA
-14       Insecta Lepidoptera Pterophoridae Cnaemidophorus          1
-15          <NA>        <NA> Pterophoridae Cnaemidophorus         NA
-16       Insecta Lepidoptera Pterophoridae Cnaemidophorus  101719444
-17          <NA>        <NA> Pterophoridae Cnaemidophorus         NA
-18       Insecta Lepidoptera Pterophoridae Cnaemidophorus          1
-19          <NA>     Rosales      Rosaceae           Rosa         NA
-20 Magnoliopsida     Rosales      Rosaceae           Rosa          6
-   phylumKey  classKey  orderKey familyKey  genusKey   canonicalName
-1  116762374 116686069 116843281 110614854 116755723  Cnaemidophorus
-2         54       216       797      8863   1858636  Cnaemidophorus
-3         NA 125831175 125810165 125793784 125802004  Cnaemidophorus
-4         NA        NA        NA        NA 124531302  Cnaemidophorus
-5  126774928 126775138 126775421 126783981 126862804  Cnaemidophorus
-6         NA        NA        NA        NA 115123697  Cnaemidophorus
-7         NA        NA        NA        NA 121309232  Cnaemidophorus
-8  102545136 101674726 102306154 100725398 101053441  Cnaemidophorus
-9         NA        NA        NA 107119872 107119486  Cnaemidophorus
-10 107895861 107895809 107895457 107894685 107889106  Cnaemidophorus
-11 115107571 115107384 115106690 115103956 115090188  Cnaemidophorus
-12        NA        NA        NA        NA 103267214  Cnaemidophorus
-13        NA        NA        NA 107119872 107119486 Euenemidophorus
-14        54       216       797      8863   1858636 Euenemidophorus
-15        NA        NA        NA 107119872 107119486 Eucnemidophorus
-16 102545136 101674726 102306154 100725398 101053441   Cnemidophorus
-17        NA        NA        NA 107119872 107119486   Cnemidophorus
-18        54       216       797      8863   1858636   Cnemidophorus
-19        NA        NA 125837937 125806863 125802820            Rosa
-20        49       220       691      5015   3002148            Rosa
-                authorship   nameType  rank numOccurrences
-1         Wallengren, 1862 WELLFORMED GENUS              0
-2         Wallengren, 1862 WELLFORMED GENUS              0
-3         Wallengren, 1862 WELLFORMED GENUS              0
-4                          WELLFORMED GENUS              0
-5                          WELLFORMED GENUS              0
-6                          WELLFORMED GENUS              0
-7                          WELLFORMED GENUS              0
-8         Wallengren, 1860 WELLFORMED GENUS              0
-9         Wallengren, 1862 WELLFORMED GENUS              0
-10        Wallengren, 1862 WELLFORMED GENUS              0
-11        Wallengren, 1862 WELLFORMED GENUS              0
-12        Wallengren, 1862 WELLFORMED GENUS              0
-13 Pierce & Metcalfe, 1938 WELLFORMED GENUS              0
-14 Pierce & Metcalfe, 1938 WELLFORMED GENUS              0
-15        Wallengren, 1881 WELLFORMED GENUS              0
-16            Zeller, 1867 WELLFORMED GENUS              0
-17            Zeller, 1867 WELLFORMED GENUS              0
-18            Zeller, 1867 WELLFORMED GENUS              0
-19                      L. WELLFORMED GENUS              0
-20                      L. WELLFORMED GENUS              0
-```
-
-
-##### Search for the class mammalia
+### Search for a genus 
 
 
 ```r
-# Look up names like mammalia
+head(name_lookup(query = "Cnaemidophorus", rank = "genus", return = "data"))
+```
+
+```
+        key  nubKey parentKey        parent  kingdom     phylum   clazz
+1 116755723 1858636 110614854 Pterophoridae Animalia Arthropoda Insecta
+2   1858636 1858636      8863 Pterophoridae Animalia Arthropoda Insecta
+3 125802004 1858636 125793784 Pterophoridae     <NA>       <NA> Insecta
+4 124531302 1858636        NA          <NA>     <NA>       <NA>    <NA>
+5 126862804 1858636 126783981 Pterophoridae Animalia Arthropoda Insecta
+6 115123697 1858636        NA          <NA>     <NA>       <NA>    <NA>
+        order        family          genus kingdomKey phylumKey  classKey
+1 Lepidoptera Pterophoridae Cnaemidophorus  116630539 116762374 116686069
+2 Lepidoptera Pterophoridae Cnaemidophorus          1        54       216
+3 Lepidoptera Pterophoridae Cnaemidophorus         NA        NA 125831175
+4        <NA>          <NA> Cnaemidophorus         NA        NA        NA
+5 Lepidoptera Pterophoridae Cnaemidophorus  126774927 126774928 126775138
+6        <NA>          <NA> Cnaemidophorus         NA        NA        NA
+   orderKey familyKey  genusKey  canonicalName       authorship   nameType
+1 116843281 110614854 116755723 Cnaemidophorus Wallengren, 1862 WELLFORMED
+2       797      8863   1858636 Cnaemidophorus Wallengren, 1862 WELLFORMED
+3 125810165 125793784 125802004 Cnaemidophorus Wallengren, 1862 WELLFORMED
+4        NA        NA 124531302 Cnaemidophorus                  WELLFORMED
+5 126775421 126783981 126862804 Cnaemidophorus                  WELLFORMED
+6        NA        NA 115123697 Cnaemidophorus                  WELLFORMED
+   rank numOccurrences
+1 GENUS              0
+2 GENUS              0
+3 GENUS              0
+4 GENUS              0
+5 GENUS              0
+6 GENUS              0
+```
+
+
+### Search for the class mammalia
+
+
+```r
 name_lookup(class = "mammalia")
 ```
 
@@ -348,7 +293,7 @@ $data
 ```
 
 
-##### Look up the species Helianthus annuus
+### Look up the species Helianthus annuus
 
 
 ```r
@@ -450,9 +395,9 @@ $data
 
 ********************
 
-#### Get data for a single occurrence. Note that data is returned as a list, with slots for metadata and data, or as a hierarchy, or just data.
+## Get data for a single occurrence. Note that data is returned as a list, with slots for metadata and data, or as a hierarchy, or just data.
 
-##### Just data 
+### Just data 
 
 
 ```r
@@ -460,12 +405,12 @@ occ_get(key = 773433533, return = "data")
 ```
 
 ```
-                  name longitude latitude
-1 Helianthus annuus L.      -117    32.85
+                  name       key longitude latitude
+1 Helianthus annuus L. 773433533      -117    32.85
 ```
 
 
-##### Just taxonomic hierarchy
+### Just taxonomic hierarchy
 
 
 ```r
@@ -484,7 +429,7 @@ occ_get(key = 773433533, return = "hier")
 ```
 
 
-##### All data, or leave return parameter blank
+### All data, or leave return parameter blank
 
 
 ```r
@@ -503,12 +448,12 @@ $hierarch
 7 Helianthus annuus L. 3119195 species
 
 $data
-                  name longitude latitude
-1 Helianthus annuus L.      -117    32.85
+                  name       key longitude latitude
+1 Helianthus annuus L. 773433533      -117    32.85
 ```
 
 
-##### Get many occurrences. `occ_get` is vectorized
+### Get many occurrences. `occ_get` is vectorized
 
 
 ```r
@@ -516,29 +461,49 @@ occ_get(key = c(773433533, 101010, 240713150, 855998194, 49819470), return = "da
 ```
 
 ```
-                                   name longitude latitude
-1                  Helianthus annuus L.   -117.00    32.85
-2  Platydoras costatus (Linnaeus, 1758)    -70.07    -4.35
-3                              Pelosina    163.58   -77.57
-4       Sciurus vulgaris Linnaeus, 1758     12.04    58.41
-5 Phlogophora meticulosa Linnaeus, 1758     13.28    55.72
+                                   name       key longitude latitude
+1                  Helianthus annuus L. 773433533   -117.00    32.85
+2  Platydoras costatus (Linnaeus, 1758)    101010    -70.07    -4.35
+3                              Pelosina 240713150    163.58   -77.57
+4       Sciurus vulgaris Linnaeus, 1758 855998194     12.04    58.41
+5 Phlogophora meticulosa Linnaeus, 1758  49819470     13.28    55.72
 ```
 
 
 ********************
 
-#### Maps
+## Maps
+
+### Static map using the ggplot2 package
 
 Make a map of **Puma concolor** occurrences
 
 
 ```r
-key <- gbif_lookup(name = "Puma concolor", kingdom = "plants")$speciesKey
+key <- name_backbone(name = "Puma concolor", kingdom = "plants")$speciesKey
 dat <- occ_search(taxonKey = key, return = "data", limit = 300, minimal = FALSE)
 gbifmap(input = dat)
 ```
 
 ![plot of chunk gbifmap1](figure/gbifmap1.png) 
+
+
+### Interactive map using a geoJSON file with your Github account
+
+
+```r
+library(plyr)
+splist <- c("Accipiter erythronemius", "Junco hyemalis", "Aix sponsa")
+keys <- sapply(splist, function(x) name_backbone(name = x, kingdom = "plants")$speciesKey, 
+    USE.NAMES = FALSE)
+out <- occ_search(keys, georeferenced = TRUE, limit = 50, return = "data")
+dat <- ldply(out)
+datgeojson <- stylegeojson(input = dat, var = "name", color = c("#976AAE", "#6B944D", 
+    "#BD5945"), size = c("small", "medium", "large"))
+write.csv(datgeojson, "~/my.csv")
+togeojson(input = "~/my.csv", method = "web", outfilename = "my")
+gist("~/my.geojson", description = "Occurrences of three bird species mapped")
+```
 
 
 [gbifapi]: http://data.gbif.org/tutorial/services
