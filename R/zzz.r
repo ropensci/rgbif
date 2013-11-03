@@ -17,7 +17,7 @@ gbifparser <- function(input, minimal=TRUE){
     if(minimal)
       if(all(c('latitude','longitude') %in% names(alldata)))
       {
-        alldata <- alldata[c('name','longitude','latitude')]
+        alldata <- alldata[c('name','key','longitude','latitude')]
       } else
       {
         alldata <- alldata['name']
@@ -44,7 +44,7 @@ gbifparser_verbatim <- function(input, minimal=TRUE){
     if(minimal){
       if(all(c('verbatimLatitude','verbatimLongitude') %in% names(alldata)))
       {
-        alldata[c('scientificName','verbatimLatitude','verbatimLongitude')]
+        alldata[c('scientificName','key','verbatimLatitude','verbatimLongitude')]
       } else
       {
         name <- alldata['scientificName']

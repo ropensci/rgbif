@@ -53,7 +53,7 @@
 #' 
 #' # Search for many species
 #' splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
-#' keys <- sapply(splist, function(x) gbif_lookup(name=x, kingdom='plants')$speciesKey, USE.NAMES=FALSE)
+#' keys <- sapply(splist, function(x) name_backbone(name=x, kingdom='plants')$speciesKey, USE.NAMES=FALSE)
 #' occ_search(taxonKey=keys, limit=5, return='data')
 #' 
 #' # Search on latitidue and longitude
@@ -61,7 +61,7 @@
 #' 
 #' # Search on a bounding box (in well known text format)
 #' occ_search(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))')
-#' key <- gbif_lookup(name='Aesculus hippocastanum', kingdom='plants')$speciesKey
+#' key <- name_backbone(name='Aesculus hippocastanum', kingdom='plants')$speciesKey
 #' occ_search(taxonKey=key, geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))')
 #' 
 #' # Search on country
@@ -82,13 +82,14 @@
 #' occ_search(taxonKey=key, month="6")
 #' occ_search(taxonKey=key, from=2006, to=2007)
 #' occ_search(taxonKey=key, modified="2013-06")
+#'
+#' # Get occurrences based on depth
+#' key <- name_backbone(name='Salmo salar', kingdom='animals')$speciesKey
+#' occ_search(taxonKey=key, depth="5")
 #' 
 #' # Get occurrences based on altitude
-#' occ_search(taxonKey=key, altitude="1000")
-#' 
-#' # Get occurrences based on depth
-#' key <- gbif_lookup(name='Salmo salar', kingdom='animals')$speciesKey
-#' occ_search(taxonKey=key, depth="5")
+#' key <- name_backbone(name='Puma concolor', kingdom='animals')$speciesKey
+#' occ_search(taxonKey=key, altitude=2000)
 #' 
 #' # Get occurrences based on institutioncode
 #' occ_search(institutioncode="TLMF")
@@ -103,8 +104,6 @@
 #' 
 #' # Search using a query string
 #' occ_search(search="kingfisher")
-#' 
-#' # Search by collectorName
 #' }
 #' \donttest{
 #' # If you try multiple values for two different parameters you are wacked on the hand
@@ -167,7 +166,7 @@ occ_search <- function(taxonKey=NULL, country=NULL, publishingCountry=NULL, geor
         paste("no data found, try a different search")
       } else
       {
-        data <- gbifparser(input=data, minimal=minimal)        
+        data <- gbifparser(input=data, minimal=minimal)
         ldfast(lapply(data, "[[", "data"))
       }
     } else

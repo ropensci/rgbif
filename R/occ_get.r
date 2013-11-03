@@ -1,4 +1,4 @@
-#' Get data for a GBIF occurrence.
+#' Get data for specific GBIF occurrences.
 #' 
 #' @template all
 #' @import httr
@@ -22,7 +22,7 @@
 #' occ_get(key=c(773433533,101010,240713150,855998194,49819470), return='data')
 #' 
 #' # Verbatim data
-#' occ_get(key=c(773433533,767047552,756083505,754201727), verbatim=TRUE)
+#' occ_get(key=c(773433533,766766824,620594291,766420684), verbatim=TRUE)
 #' }
 occ_get <- function(key=NULL, return='all', verbatim=FALSE, minimal=TRUE, callopts=list())
 {
@@ -68,4 +68,3 @@ occ_get <- function(key=NULL, return='all', verbatim=FALSE, minimal=TRUE, callop
       { data }
   }
 }
-# http://api.gbif.org/v0.9/occurrence/773433533
