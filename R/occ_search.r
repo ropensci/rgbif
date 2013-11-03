@@ -91,9 +91,9 @@
 #' key <- name_backbone(name='Puma concolor', kingdom='animals')$speciesKey
 #' occ_search(taxonKey=key, altitude=2000)
 #' 
-#' # Get occurrences based on institutioncode
-#' occ_search(institutioncode="TLMF")
-#' occ_search(institutioncode=c("TLMF","ArtDatabanken"))
+#' # Get occurrences based on institutionCode
+#' occ_search(institutionCode="TLMF")
+#' occ_search(institutionCode=c("TLMF","ArtDatabanken"))
 #' 
 #' # Get occurrences based on collectionCode
 #' occ_search(collectionCode="Floristic Databases MV - Higher Plants")
@@ -117,7 +117,7 @@
 occ_search <- function(taxonKey=NULL, country=NULL, publishingCountry=NULL, georeferenced=NULL, 
   geometry=NULL, collectorName=NULL, basisOfRecord=NULL, datasetKey=NULL, date=NULL, 
   catalogNumber=NULL, year=NULL, month=NULL, modified=NULL, latitude=NULL, longitude=NULL, 
-  altitude=NULL, depth=NULL, institutioncode=NULL, collectionCode=NULL, 
+  altitude=NULL, depth=NULL, institutionCode=NULL, collectionCode=NULL, 
   spatialIssues=NULL, search=NULL, from=NULL, to=NULL, callopts=list(), limit=20, start=NULL, 
   minimal=TRUE, return='all')
 {
@@ -131,7 +131,7 @@ occ_search <- function(taxonKey=NULL, country=NULL, publishingCountry=NULL, geor
        georeferenced=georeferenced, geometry=geometry, collectorName=collectorName, 
        basisOfRecord=basisOfRecord, datasetKey=datasetKey, date=date, catalogNumber=catalogNumber,
        year=year, month=month, modified=modified, latitude=latitude, longitude=longitude, 
-       altitude=altitude, depth=depth, institutioncode=institutioncode, 
+       altitude=altitude, depth=depth, institutionCode=institutionCode, 
        collectionCode=collectionCode, spatialIssues=spatialIssues, q=search, from=from, 
        to=to, limit=limit, offset=start))
     iter <- 0
@@ -198,7 +198,7 @@ occ_search <- function(taxonKey=NULL, country=NULL, publishingCountry=NULL, geor
   
   params <- list(taxonKey=taxonKey,datasetKey=datasetKey,catalogNumber=catalogNumber,
                  collectorName=collectorName,geometry=geometry,country=country,
-                 search=search,institutioncode=institutioncode,collectionCode=collectionCode)
+                 search=search,institutionCode=institutionCode,collectionCode=collectionCode)
   if(!any(sapply(params, length)>0))
     stop("at least one of the parmaters taxonKey, datasetKey, catalogNumber, collectorName, or geometry 
          must have a value")

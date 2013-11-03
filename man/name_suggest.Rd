@@ -30,6 +30,9 @@ doing prefix matching against the scientific name. Results are ordered by releva
 
   \item{verbose}{If TRUE show alternative matches
   considered which had been rejected.}
+
+  \item{fields}{Fields to return in output data.frame
+  (simply prunes columns off)}
 }
 \value{
   A data.frame with fields selected by fields arg.

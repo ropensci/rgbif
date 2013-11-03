@@ -12,8 +12,6 @@
 #'    the physical collection or digital dataset uniquely within the text of an institution.
 #' @param institutionCode An identifier of any form assigned by the source to identify 
 #'    the institution the record belongs to. Not guaranteed to be que.
-#' @param q Simple search parameter. The value for this parameter can be a simple 
-#'    word or a phrase.
 #' @param country The 2-letter country code (as per ISO-3166-1) of the country in 
 #'    which the occurrence was recorded. See here
 #'    \url{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}
@@ -37,6 +35,7 @@
 #' @param month The month of the year, starting with 1 for January.
 #' @param modified Occurrence modification date in ISO 8601 format: yyyy, yyyy-MM, 
 #'    yyyy-MM-dd, or MM-dd.
+#' @param search Query terms. The value for this parameter can be a simple word or a phrase.
 #' @param from The minimum year for which to return occurrences.
 #' @param to The maximum year for which to return occurrences.
 #' @param latitude Latitude in decimals between -90 and 90 based on WGS 84.

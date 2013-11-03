@@ -12,6 +12,7 @@
 #' @param strict If TRUE it (fuzzy) matches only the given name, but never a 
 #'    taxon in the upper classification
 #' @param verbose If TRUE show alternative matches considered which had been rejected.
+#' @param fields Fields to return in output data.frame (simply prunes columns off)
 #' @return A data.frame with fields selected by fields arg.
 #' @export
 #' @examples \dontrun{

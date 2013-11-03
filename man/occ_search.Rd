@@ -8,7 +8,7 @@
     basisOfRecord = NULL, datasetKey = NULL, date = NULL,
     catalogNumber = NULL, year = NULL, month = NULL,
     modified = NULL, latitude = NULL, longitude = NULL,
-    altitude = NULL, depth = NULL, institutioncode = NULL,
+    altitude = NULL, depth = NULL, institutionCode = NULL,
     collectionCode = NULL, spatialIssues = NULL,
     search = NULL, from = NULL, to = NULL,
     callopts = list(), limit = 20, start = NULL,
@@ -43,9 +43,6 @@
   by the source to identify the institution the record
   belongs to. Not guaranteed to be que.}
 
-  \item{q}{Simple search parameter. The value for this
-  parameter can be a simple word or a phrase.}
-
   \item{country}{The 2-letter country code (as per
   ISO-3166-1) of the country in which the occurrence was
   recorded. See here
@@ -78,6 +75,9 @@
 
   \item{modified}{Occurrence modification date in ISO 8601
   format: yyyy, yyyy-MM, yyyy-MM-dd, or MM-dd.}
+
+  \item{search}{Query terms. The value for this parameter
+  can be a simple word or a phrase.}
 
   \item{from}{The minimum year for which to return
   occurrences.}
@@ -261,9 +261,9 @@ occ_search(taxonKey=key, depth="5")
 key <- name_backbone(name='Puma concolor', kingdom='animals')$speciesKey
 occ_search(taxonKey=key, altitude=2000)
 
-# Get occurrences based on institutioncode
-occ_search(institutioncode="TLMF")
-occ_search(institutioncode=c("TLMF","ArtDatabanken"))
+# Get occurrences based on institutionCode
+occ_search(institutionCode="TLMF")
+occ_search(institutionCode=c("TLMF","ArtDatabanken"))
 
 # Get occurrences based on collectionCode
 occ_search(collectionCode="Floristic Databases MV - Higher Plants")
