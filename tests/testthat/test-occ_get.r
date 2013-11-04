@@ -26,9 +26,9 @@ test_that("returns the correct value", {
 })
 
 test_that("returns the correct dimensions", {
-  expect_equal(dim(tt), c(1,3))
+  expect_equal(dim(tt), c(1,4))
   expect_equal(dim(uu), c(7,3))
   expect_equal(dim(vv), NULL)
   expect_equal(dim(vv[[1]]), c(7,3))
-  expect_equal(dim(vv[[2]]), c(1,3))
+  expect_equal(dim(vv[[2]]), c(1,4))
 })

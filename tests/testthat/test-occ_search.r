@@ -28,8 +28,8 @@ test_that("returns the correct value", {
 test_that("returns the correct dimensions", {
   expect_equal(length(tt), 3)
   expect_equal(length(tt$meta), 4)
-  expect_equal(dim(tt$data), c(2,3))
-  expect_equal(length(uu$data), 3)
+  expect_equal(dim(tt$data), c(2,4))
+  expect_equal(length(uu$data), 4)
   expect_equal(nrow(uu$data), 20)
   expect_equal(ncol(vv), 4)
 })
@@ -44,7 +44,7 @@ test_that("returns the correct value", {
   expect_equal(as.character(out[1,1]), "Rhabdammina cornuta")
 })
 test_that("returns the correct dimensions", {
-  expect_equal(dim(out), c(20,3))
+  expect_equal(dim(out), c(20,4))
 })
 
 # # Search by catalog number
@@ -78,7 +78,7 @@ test_that("returns the correct value", {
   expect_equal(as.character(out[1,1]), "Helianthus annuus L.")
 })
 test_that("returns the correct dimensions", {
-  expect_equal(dim(out), c(20,3))
+  expect_equal(dim(out), c(20,4))
 })
 
 # Taxonomic hierarchy data

@@ -6,7 +6,7 @@ test_that("type query returns the correct class", {
   expect_is(tt[1,1], "factor")
 })
 test_that("type query returns the correct value", {
-  expect_equal(as.character(tt[1,1]), "WAHerb")
+  expect_equal(as.character(tt[1,1]), "UTEP Vertebrates")
 })
 
 # Gets all datasets tagged with keyword "france".
@@ -43,7 +43,7 @@ test_that("limited search returns the correct class", {
   expect_is(tt[1,1], "factor")
 })
 test_that("limited search returns the correct value", {
-  expect_equal(as.character(tt[1,"owningOrganization"]), "Western Australian Herbarium")
+  expect_equal(as.character(tt[1,"owningOrganization"]), "University of Texas at El Paso")
 })
 test_that("limited search returns the correct dims", {
   expect_equal(dim(tt), c(2,8))
