@@ -10,4 +10,4 @@ before_script:
   - ./travis-tool.sh bootstrap
   - ./travis-tool.sh install_deps
   - ./travis-tool.sh github_package assertthat
-  - ./travis-tool.sh aptget_install gdal-bin
+  - ./travis-tool.sh aptget_install gdal-bin libgdal1
