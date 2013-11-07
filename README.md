@@ -1,6 +1,7 @@
-# `rgbif`
+rgbif
+=====
 
-<!-- [![Build Status](https://api.travis-ci.org/ropensci/rgbif.png)](https://travis-ci.org/ropensci/rgbif) -->
+[![Build Status](https://api.travis-ci.org/ropensci/rgbif.png)](https://travis-ci.org/ropensci/rgbif)
 
 ## About
 This package gives you access to data from [GBIF](http://www.gbif.org/) via their API.

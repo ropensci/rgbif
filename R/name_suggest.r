@@ -20,6 +20,7 @@
 #' name_suggest(q='Puma')
 #' name_suggest(q='Puma', limit=2)
 #' name_suggest(q='Puma', fields=c('key','canonicalName'))
+#' name_suggest(q='Puma', rank="GENUS")
 #' }
 name_suggest <- function(q=NULL, rank=NULL, name=NULL, strict=NULL, verbose=FALSE, 
                          fields=NULL, start=NULL, limit=20, callopts=list())
