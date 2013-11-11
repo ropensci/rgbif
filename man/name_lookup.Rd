@@ -173,6 +173,7 @@ name_lookup(query='Cnaemidophorus', rank="genus", return="meta")
 name_lookup(query='Cnaemidophor', rank="genus")
 
 # Get more data from the API call
+library(httr)
 name_lookup(query='Cnaemidophorus', rank="genus", callopts=verbose())
 
 # Limit records to certain number
