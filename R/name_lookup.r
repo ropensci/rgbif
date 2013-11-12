@@ -34,10 +34,9 @@
 #' name_lookup(facet='status', facet_only=TRUE, facet_mincount='7000000')
 #' name_lookup(facet=c('status','highertaxon_key'), facet_only=TRUE, facet_mincount='700000')
 #' }
-name_lookup <- function(query=NULL, canonical_name=NULL, class=NULL,
-  description=NULL, family=NULL, genus=NULL, kingdom=NULL, order=NULL, 
-  phylum=NULL, scientificName=NULL, species=NULL, rank=NULL, subgenus=NULL, 
-  vernacularName=NULL, limit=20, facet=NULL, facet_only=NULL, facet_mincount=NULL, 
+name_lookup <- function(query=NULL, rank=NULL, highertaxon_key=NULL, status=NULL, extinct=NULL, 
+  habitat=NULL, name_type=NULL, dataset_key=NULL, nomenclatural_status=NULL,
+  limit=20, facet=NULL, facet_only=NULL, facet_mincount=NULL, 
   facet_multiselect=NULL, callopts=list(), verbose=FALSE, return="all")
 {
   if(!is.null(facet_mincount) && inherits(facet_mincount, "numeric"))
@@ -48,13 +47,11 @@ name_lookup <- function(query=NULL, canonical_name=NULL, class=NULL,
   } else { facetbyname <- NULL }
   
   url = 'http://api.gbif.org/v0.9/species/search'
-  args <- as.list(compact(c(q=query, rank=rank, canonical_name=canonical_name, 
-                       description=description, family=family, genus=genus, 
-                       kingdom=kingdom, order=order, phylum=phylum, class=class,
-                       scientificName=scientificName, species=species, 
-                       subgenus=subgenus, vernacularName=vernacularName, 
-                       limit=limit, facetbyname, facet_only=facet_only, 
-                       facet_mincount=facet_mincount, facet_multiselect=facet_multiselect)))
+  args <- as.list(compact(c(q=query, rank=rank, highertaxon_key=highertaxon_key, status=status, 
+                        extinct=extinct, habitat=habitat, name_type=name_type, dataset_key=dataset_key, 
+                        nomenclatural_status=nomenclatural_status, limit=limit, facetbyname, 
+                        facet_only=facet_only, facet_mincount=facet_mincount, 
+                        facet_multiselect=facet_multiselect)))
   temp <- GET(url, query=args, callopts)
   stop_for_status(temp)
   tt <- content(temp)

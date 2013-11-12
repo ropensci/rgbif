@@ -175,7 +175,7 @@
 }
 \examples{
 \dontrun{
-# Search by species name, using \\code{gbif_lookup} first to get key
+# Search by species name, using \\code{\\link{name_backbone}} first to get key
 key <- name_backbone(name='Helianthus annuus', kingdom='plants')$speciesKey
 occ_search(taxonKey=key, limit=2)
 

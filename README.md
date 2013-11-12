@@ -49,8 +49,8 @@ Changes in the new GBIF API from last with respect to `rgbif`:
 | taxrank | same | none |
 | togeojson | same | not implemented yet |
 
-* Note 1: See ?datasets, ?networks, ?nodes, and ?organizations
-* Note 2: See ?name_lookup for names across all of GBIF and ?gbif_lookup for names only in the GBIF backbone taxonomy
+* Note 1: See `?datasets`, `?networks`, `?nodes`, and `?organizations`
+* Note 2: See `?name_lookup` for names across all of GBIF and `name_backbone` for names only in the GBIF backbone taxonomy
 
 ## Install
 
@@ -68,10 +68,10 @@ Note: Windows users have to first install [Rtools](http://cran.r-project.org/bin
 
 ### Search for occurrence data
 
-#### A single species. Get the taxonKey first with `gbif_lookup`.
+#### A single species. Get the taxonKey first with `name_backbone`.
 
 ```coffee
-key <- gbif_lookup(name='Helianthus annuus', kingdom='plants')$speciesKey
+key <- name_backbone(name='Helianthus annuus', kingdom='plants')$speciesKey
 
 occ_search(taxonKey=key, limit=20, return='data')
 
@@ -98,11 +98,11 @@ occ_search(taxonKey=key, limit=20, return='data')
 20 Helianthus annuus   16.41930 56.57470
 ```
 
-#### Search for many species. Get the keys first with `gbif_lookup`, then pass to `occ_search`
+#### Search for many species. Get the keys first with `name_backbone`, then pass to `occ_search`
 
 ```coffee
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
-keys <- sapply(splist, function(x) gbif_lookup(name=x, kingdom='plants')$speciesKey, USE.NAMES=FALSE)
+keys <- sapply(splist, function(x) name_backbone(name=x, kingdom='plants')$speciesKey, USE.NAMES=FALSE)
 
 occ_search(taxonKey=keys, limit=5, return='data', georeferenced=TRUE)
 
@@ -137,7 +137,7 @@ $`2498387`
 
 ```coffee
 splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
-keys <- sapply(splist, function(x) gbif_lookup(name=x, kingdom='plants')$speciesKey, USE.NAMES=FALSE)
+keys <- sapply(splist, function(x) name_backbone(name=x, kingdom='plants')$speciesKey, USE.NAMES=FALSE)
 dat <- occ_search(taxonKey=keys, limit=100, return='data', georeferenced=TRUE)
 library(plyr)
 datdf <- ldply(dat)

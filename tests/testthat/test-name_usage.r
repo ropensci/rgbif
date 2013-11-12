@@ -16,7 +16,7 @@ test_that("name_usage returns the correct class", {
 })
 
 test_that("name_usage returns the correct value", {
-  expect_equal(as.character(tt$data$kingdom[[1]]), "Animalia")
+  expect_equal(as.character(tt$kingdom), "Animalia")
   expect_equal(as.character(uu$results[[1]]$citation), "Allan Herbarium 2007: New Zealand Plant Names Database Concepts - Asterales.")
 })
 

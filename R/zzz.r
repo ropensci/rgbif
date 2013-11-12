@@ -170,7 +170,7 @@ taxrank <- function()
     "infraspecific")
 }
 
-#' Parser for name_usage endpoints, for fxns name_lookup and gbif_lookup
+#' Parser for name_usage endpoints, for fxns name_lookup and name_backbone
 #' 
 #' @param x A list.
 #' @export

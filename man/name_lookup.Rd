@@ -2,22 +2,21 @@
 \alias{name_lookup}
 \title{Lookup names in all taxonomies in GBIF.}
 \usage{
-  name_lookup(query = NULL, canonical_name = NULL,
-    class = NULL, description = NULL, family = NULL,
-    genus = NULL, kingdom = NULL, order = NULL,
-    phylum = NULL, scientificName = NULL, species = NULL,
-    rank = NULL, subgenus = NULL, vernacularName = NULL,
-    limit = 20, callopts = list(), verbose = FALSE,
-    return = "all")
+  name_lookup(query = NULL, rank = NULL,
+    highertaxon_key = NULL, status = NULL, extinct = NULL,
+    habitat = NULL, name_type = NULL, dataset_key = NULL,
+    nomenclatural_status = NULL, limit = 20, facet = NULL,
+    facet_only = NULL, facet_mincount = NULL,
+    facet_multiselect = NULL, callopts = list(),
+    verbose = FALSE, return = "all")
 }
 \arguments{
   \item{query}{Query term(s) for full text search.}
 
-  \item{rank}{Taxonomic rank. Filters by taxonomic rank as
-  one of: CLASS, CULTIVAR, CULTIVAR_GROUP, DOMAIN, FAMILY,
-  FORM, GENUS, INFORMAL, INFRAGENERIC_NAME, INFRAORDER,
-  INFRASPECIFIC_NAME, INFRASUBSPECIFIC_NAME, KINGDOM,
-  ORDER, PHYLUM, SECTION, SERIES, SPECIES, STRAIN,
+  \item{rank}{CLASS, CULTIVAR, CULTIVAR_GROUP, DOMAIN,
+  FAMILY, FORM, GENUS, INFORMAL, INFRAGENERIC_NAME,
+  INFRAORDER, INFRASPECIFIC_NAME, INFRASUBSPECIFIC_NAME,
+  KINGDOM, ORDER, PHYLUM, SECTION, SERIES, SPECIES, STRAIN,
   SUBCLASS, SUBFAMILY, SUBFORM, SUBGENUS, SUBKINGDOM,
   SUBORDER, SUBPHYLUM, SUBSECTION, SUBSERIES, SUBSPECIES,
   SUBTRIBE, SUBVARIETY, SUPERCLASS, SUPERFAMILY,
@@ -49,9 +48,6 @@
   only as boolean marine or not-marine (i.e. habitat=true
   means marine, false means not-marine)}
 
-  \item{threat}{Not yet implemented, but will eventually
-  allow for filtering by a threat status enum}
-
   \item{name_type}{Filters by the name type as one of:
   \itemize{ \item BLACKLISTED surely not a scientific name.
   \item CANDIDATUS Candidatus is a component of the
@@ -71,11 +67,6 @@
   \item{nomenclatural_status}{Not yet implemented, but will
   eventually allow for filtering by a nomenclatural status
   enum}
-
-  \item{hl}{Set hl=true to highlight terms matching the
-  query when in fulltext search fields. The highlight will
-  be an emphasis tag of class 'gbifH1' e.g.
-  http://api.gbif.org/species/search?q=plant&hl=true.}
 
   \item{facet}{A list of facet names used to retrieve the
   100 most frequent values for a field. Allowed facets are:
@@ -100,30 +91,6 @@
   e.g. http://bit.ly/19YLXPO still shows all status values
   even though status is being filtered by status=ACCEPTED}
 
-  \item{canonical_name}{Canonical name}
-
-  \item{class}{Taxonomic class}
-
-  \item{description}{Description}
-
-  \item{family}{Taxonomic family}
-
-  \item{genus}{Taxonomic genus}
-
-  \item{kingdom}{Taxonomic kingdom}
-
-  \item{order}{Taxonomic order}
-
-  \item{phylum}{Taxonomic phylum}
-
-  \item{scientificName}{Scientific name}
-
-  \item{species}{Species name}
-
-  \item{subgenus}{Taxonomic subgenus}
-
-  \item{vernacularName}{Vernacular (common) name}
-
   \item{limit}{Number of records to return}
 
   \item{callopts}{Further arguments passed on to the
@@ -135,28 +102,31 @@
   data.frame.}
 
   \item{return}{One of data, meta, facets, or all. If data,
-  a data.frame with the data. hier returns the
-  classifications in a list for each record. meta returns
+  a data.frame with the data. facets returns the facets, if
+  facets=TRUE, or empy list if facets=FALSE. meta returns
   the metadata for the entire call. all gives all data back
   in a list.}
 }
 \value{
-  A list of length two. The first element is metadata. The
-  second is either a data.frame (verbose=FALSE, default) or
-  a list (verbose=TRUE)
+  A list of length three. The first element is metadata.
+  The second is either a data.frame (verbose=FALSE,
+  default) or a list (verbose=TRUE), and the third element
+  is the facet data.
 }
 \description{
   This service uses fuzzy lookup so that you can put in
   partial names and you should get back those things that
   match. See examples below.
+
+  Faceting: If facet=FALSE or left to the default (NULL),
+  no faceting is done. And therefore, all parameters with
+  facet in their name are ignored (facet_only,
+  facet_mincount, facet_multiselect).
 }
 \examples{
 \dontrun{
 # Look up names like mammalia
 name_lookup(class='mammalia')
-
-# Look up sunflowers
-out <- name_lookup('Helianthus annuus', rank="species")
 
 # Get all data and parse it, removing descriptions which can be quite long
 out <- name_lookup('Helianthus annuus', rank="species", verbose=TRUE)
@@ -178,6 +148,10 @@ name_lookup(query='Cnaemidophorus', rank="genus", callopts=verbose())
 
 # Limit records to certain number
 name_lookup('Helianthus annuus', rank="species", limit=2)
+
+# Using faceting
+name_lookup(facet='status', facet_only=TRUE, facet_mincount='7000000')
+name_lookup(facet=c('status','highertaxon_key'), facet_only=TRUE, facet_mincount='700000')
 }
 }
 \references{

@@ -1098,17 +1098,13 @@ gbifmap_list <- function(input = NULL, mapdatabase = "world", region = ".",
 #' out <- densitylist(originisocountrycode="US")
 #' gbifdata(out)
 #' }
-gbifdata <- function(input, ...) UseMethod("gbifdata")
+#' @rdname gbifdata-deprecated
+gbifdata <- function(...) UseMethod("gbifdata")
 
-#' Gbiflist method
-#' @param input Input object from a call to occurrencelist, occurrencelist_many, or densitylist.
-#' @param minimal Only applies to occurrencelist data. If TRUE, returns only name, lat, 
-#'    long fields; defaults to TRUE. 
-#' @param coordinatestatus Return only rows of data.frame that have lat and long data.
 #' @method gbifdata gbiflist
 #' @export
 #' @seealso gbifdata.gbifdens
-#' @rdname gbifdata.gbiflist-deprecated
+#' @rdname gbifdata-deprecated
 gbifdata.gbiflist <- function(input, coordinatestatus=FALSE, minimal=FALSE)
 {  
   if(!is.gbiflist(input)) 
@@ -1134,11 +1130,9 @@ gbifdata.gbiflist <- function(input, coordinatestatus=FALSE, minimal=FALSE)
   }
 }
 
-#' Gbifdens method
-#' @param input Input object from a call to occurrencelist, occurrencelist_many, or densitylist.
 #' @method gbifdata gbifdens
 #' @export
-#' @rdname gbifdata.gbifdens-deprecated
+#' @rdname gbifdata-deprecated
 gbifdata.gbifdens <- function(input)
 {
   if(!is.gbifdens(input))

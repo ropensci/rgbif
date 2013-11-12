@@ -71,7 +71,7 @@
 #' and \code{\link{organizations}}
 #' 
 #' Note 2: See \code{\link{name_lookup}} for names across all of GBIF and 
-#' \code{\link{gbif_lookup}} for names only in the GBIF backbone taxonomy.
+#' \code{\link{name_backbone}} for names only in the GBIF backbone taxonomy.
 #' 
 #' @docType package
 #' @name rgbif

@@ -1,6 +1,6 @@
 context("name_lookup")
 
-tt <- name_lookup(class='mammalia')
+tt <- name_lookup(query='mammalia')
 uu <- name_lookup(query='Cnaemidophorus', rank="genus", return="data")
 
 test_that("returns the correct class", {
@@ -14,7 +14,7 @@ test_that("returns the correct class", {
 })
 
 test_that("returns the correct value", {
-  expect_equal(as.character(tt$data$kingdom[[1]]), "Animalia")
+  expect_equal(as.character(tt$data$kingdom[[2]]), "Animalia")
 })
 
 test_that("returns the correct dimensions", {

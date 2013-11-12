@@ -81,26 +81,7 @@ Global Biodiversity Information Facility.}
   \code{\link{organizations}}
 
   Note 2: See \code{\link{name_lookup}} for names across
-  all of GBIF and \code{\link{gbif_lookup}} for names only
-  in the GBIF backbone taxonomy.
-}
-
-\section{List of deprecated functions}{
-  \itemize{ \item \code{\link{density_spplist}}: service no
-  longer provided \item \code{\link{densitylist}}: service
-  no longer provided \item \code{\link{gbifdata}}: service
-  no longer provided \item \code{\link{gbifmap_dens}}:
-  service no longer provided \item
-  \code{\link{gbifmap_list}}: service no longer provided
-  \item \code{\link{is.gbifdens}}: service no longer
-  provided \item \code{\link{is.gbiflist}}: service no
-  longer provided \item \code{\link{occurrencedensity}}:
-  service no longer provided \item \code{\link{providers}}:
-  service no longer provided \item \code{\link{resources}}:
-  service no longer provided \item
-  \code{\link{taxoncount}}: service no longer provided
-  \item \code{\link{taxonget}}: service no longer provided
-  \item \code{\link{taxonsearch}}: service no longer
-  provided }
+  all of GBIF and \code{\link{name_backbone}} for names
+  only in the GBIF backbone taxonomy.
 }
 

@@ -1,11 +1,10 @@
 #' @param query Query term(s) for full text search.
-#' @param rank Taxonomic rank. Filters by taxonomic rank as one of:
-#' 		CLASS, CULTIVAR, CULTIVAR_GROUP, DOMAIN, FAMILY, FORM, GENUS, INFORMAL, 
-#'   	INFRAGENERIC_NAME, INFRAORDER, INFRASPECIFIC_NAME, INFRASUBSPECIFIC_NAME, 
-#'     KINGDOM, ORDER, PHYLUM, SECTION, SERIES, SPECIES, STRAIN, SUBCLASS, SUBFAMILY, 
-#'     SUBFORM, SUBGENUS, SUBKINGDOM, SUBORDER, SUBPHYLUM, SUBSECTION, SUBSERIES, 
-#'     SUBSPECIES, SUBTRIBE, SUBVARIETY, SUPERCLASS, SUPERFAMILY, SUPERORDER, 
-#'     SUPERPHYLUM, SUPRAGENERIC_NAME, TRIBE, UNRANKED, VARIETY
+#' @param rank CLASS, CULTIVAR, CULTIVAR_GROUP, DOMAIN, FAMILY, FORM, GENUS, INFORMAL, 
+#'   INFRAGENERIC_NAME, INFRAORDER, INFRASPECIFIC_NAME, INFRASUBSPECIFIC_NAME, KINGDOM, 
+#'   ORDER, PHYLUM, SECTION, SERIES, SPECIES, STRAIN, SUBCLASS, SUBFAMILY, SUBFORM, 
+#'   SUBGENUS, SUBKINGDOM, SUBORDER, SUBPHYLUM, SUBSECTION, SUBSERIES, SUBSPECIES, 
+#'   SUBTRIBE, SUBVARIETY, SUPERCLASS, SUPERFAMILY, SUPERORDER, SUPERPHYLUM, 
+#'   SUPRAGENERIC_NAME, TRIBE, UNRANKED, VARIETY 
 #' @param highertaxon_key Filters by any of the higher Linnean rank keys. Note this 
 #'    is within the respective checklist and not searching nub keys across all checklists.
 #' @param status Filters by the taxonomic status as one of:
@@ -23,8 +22,6 @@
 #' @param extinct Filters by extinction status (a boolean, e.g. extinct=true)
 #' @param habitat Filters by the habitat, though currently only as boolean marine 
 #'      or not-marine (i.e. habitat=true means marine, false means not-marine)
-#' @param threat Not yet implemented, but will eventually allow for filtering by a 
-#'    threat status enum
 #' @param name_type	Filters by the name type as one of:
 #' \itemize{
 #'  \item BLACKLISTED surely not a scientific name.
@@ -56,23 +53,12 @@
 #'    facet_multiselect=true to still return counts for values that are not currently 
 #'    filtered, e.g. http://bit.ly/19YLXPO still shows all status values even though 
 #'    status is being filtered by status=ACCEPTED
-#' @param canonical_name Canonical name
-#' @param class Taxonomic class
-#' @param description Description
-#' @param family Taxonomic family
-#' @param genus Taxonomic genus
-#' @param kingdom Taxonomic kingdom
-#' @param order Taxonomic order
-#' @param phylum Taxonomic phylum
-#' @param scientificName Scientific name
-#' @param species Species name
-#' @param subgenus Taxonomic subgenus
-#' @param vernacularName Vernacular (common) name
 #' @param limit Number of records to return
 #' @param callopts Further arguments passed on to the \code{\link{GET}} request.
 #' @param verbose If TRUE, all data is returned as a list for each element. If 
 #'    FALSE (default) a subset of the data that is thought to be most essential is
 #'    organized into a data.frame.
+#'
 #' @param return One of data, meta, facets, or all. If data, a data.frame with the 
 #'    data. facets returns the facets, if facets=TRUE, or empy list if facets=FALSE. meta 
 #'    returns the metadata for the entire call. all gives all data back in a list. 

@@ -1,8 +1,15 @@
 \name{gbifdata}
 \alias{gbifdata}
+\alias{gbifdata.gbifdens}
+\alias{gbifdata.gbiflist}
 \title{Get data.frame from occurrencelist, occurrencelist_many, or densitylist.}
 \usage{
-  gbifdata(input, ...)
+  gbifdata(...)
+
+  \method{gbifdata}{gbiflist} (input,
+    coordinatestatus = FALSE, minimal = FALSE)
+
+  \method{gbifdata}{gbifdens} (input)
 }
 \arguments{
   \item{input}{Input object from a call to occurrencelist,
@@ -45,5 +52,8 @@ gbifdata(out, minimal=FALSE)
 out <- densitylist(originisocountrycode="US")
 gbifdata(out)
 }
+}
+\seealso{
+  gbifdata.gbifdens
 }
 
