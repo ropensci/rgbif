@@ -42,9 +42,6 @@
 #' @param dataset_key Filters by the dataset's key (a uuid)
 #' @param nomenclatural_status	Not yet implemented, but will eventually allow for 
 #'    filtering by a nomenclatural status enum
-#' @param hl Set hl=true to highlight terms matching the query when in fulltext 
-#'    search fields. The highlight will be an emphasis tag of class 'gbifH1' e.g. 
-#'    http://api.gbif.org/species/search?q=plant&hl=true.
 #' @param facet	A list of facet names used to retrieve the 100 most frequent values 
 #'    for a field. Allowed facets are: dataset_key, highertaxon_key, rank, status, 
 #'    extinct, habitat, and name_type. Additionally threat and nomenclatural_status 
@@ -77,5 +74,14 @@
 #'    FALSE (default) a subset of the data that is thought to be most essential is
 #'    organized into a data.frame.
 #' @param return One of data, meta, facets, or all. If data, a data.frame with the 
-#'    data. hier returns the classifications in a list for each record. meta 
+#'    data. facets returns the facets, if facets=TRUE, or empy list if facets=FALSE. meta 
 #'    returns the metadata for the entire call. all gives all data back in a list. 
+#' @return A list of length three. The first element is metadata. The second is 
+#' 	  either a data.frame (verbose=FALSE, default) or a list (verbose=TRUE), and the third
+#' 	  element is the facet data.
+#' @description
+#' This service uses fuzzy lookup so that you can put in partial names and 
+#' you should get back those things that match. See examples below.
+#' 
+#' Faceting: If facet=FALSE or left to the default (NULL), no faceting is done. And therefore,
+#' all parameters with facet in their name are ignored (facet_only, facet_mincount, facet_multiselect). 
