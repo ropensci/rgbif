@@ -67,6 +67,7 @@ occ_count <- function(nubKey=NULL, georeferenced=NULL, basisOfRecord=NULL,
                 countries = compact(list(publishingCountry=publishingCountry)),
                 year = compact(list(from=from, to=to)))
   tt <- GET(url, query=args, callopts)
-  stop_for_status(tt)
+#   stop_for_status(tt)
+  warn_for_status(tt)
   content(tt)
 }
