@@ -155,6 +155,6 @@ name_lookup(facet=c('status','highertaxon_key'), facet_only=TRUE, facet_mincount
 }
 }
 \references{
-  \url{http://dev.gbif.org/wiki/display/POR/Webservice+API}
+  \url{http://www.gbif.org/developer/summary}
 }
 

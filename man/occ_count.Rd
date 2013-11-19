@@ -76,6 +76,6 @@ occ_count(type='year', from=2000, to=2012)
 }
 }
 \references{
-  \url{http://dev.gbif.org/wiki/display/POR/Webservice+API}
+  \url{http://www.gbif.org/developer/summary}
 }
 

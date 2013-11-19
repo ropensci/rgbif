@@ -43,6 +43,6 @@ occ_get(key=c(773433533,766766824,620594291,766420684), verbatim=TRUE)
 }
 }
 \references{
-  \url{http://dev.gbif.org/wiki/display/POR/Webservice+API}
+  \url{http://www.gbif.org/developer/summary}
 }
 

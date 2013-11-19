@@ -20,6 +20,6 @@ dataset_metrics(uuid='3f8a1297-3259-4700-91fc-acc4170b27ce')
 }
 }
 \references{
-  \url{http://dev.gbif.org/wiki/display/POR/Webservice+API}
+  \url{http://www.gbif.org/developer/summary}
 }
 

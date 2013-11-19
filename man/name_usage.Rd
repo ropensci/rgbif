@@ -88,6 +88,6 @@ name_usage(key=3119195, data=c('images','synonyms'))
 }
 }
 \references{
-  \url{http://dev.gbif.org/wiki/display/POR/Webservice+API}
+  \url{http://www.gbif.org/developer/summary}
 }
 

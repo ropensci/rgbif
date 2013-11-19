@@ -57,3 +57,4 @@ Collate:
     'name_backbone.r'
     'occ_metadata.r'
     'name_lookup.r'
+    'dataset_suggest.r'

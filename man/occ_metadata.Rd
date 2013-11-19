@@ -48,6 +48,6 @@ occ_metadata(type = "cat", q=122)
 }
 }
 \references{
-  \url{http://dev.gbif.org/wiki/display/POR/Webservice+API}
+  \url{http://www.gbif.org/developer/summary}
 }
 

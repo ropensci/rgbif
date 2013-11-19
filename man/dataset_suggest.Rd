@@ -1,0 +1,111 @@
+\name{dataset_suggest}
+\alias{dataset_suggest}
+\title{Suggest datasets in GBIF.}
+\usage{
+  dataset_suggest(query = NULL, country = NULL,
+    type = NULL, subtype = NULL, keyword = NULL,
+    owning_org = NULL, hosting_org = NULL,
+    publishing_country = NULL, decade = NULL,
+    continent = NULL, limit = 20, start = NULL,
+    callopts = list(), pretty = FALSE, description = FALSE)
+}
+\arguments{
+  \item{callopts}{Pass on options to httr::GET for more
+  refined control of http calls, and error handling}
+
+  \item{limit}{Number of records to return}
+
+  \item{start}{Record number to start at}
+
+  \item{query}{Query term(s) for full text search.  The
+  value for this parameter can be a simple word or a
+  phrase. Wildcards can be added to the simple word
+  parameters only, e.g. q=*puma*}
+
+  \item{country}{NOT YET IMPLEMENTED. Filters by country as
+  given in \code{\link{isocodes$gbif_name}}, e.g.
+  country=CANADA.}
+
+  \item{type}{Type of dataset, options include OCCURRENCE,
+  METADATA, and CHECKLIST.}
+
+  \item{subtype}{NOT YET IMPLEMENTED. Will allow filtering
+  of datasets by their dataset subtypes, DC or EML.}
+
+  \item{keyword}{Keyword to search by. Datasets can be
+  tagged by keywords, which you can search on. The search
+  is done on the merged collection of tags, the dataset
+  keywordCollections and temporalCoverages.}
+
+  \item{owning_org}{Owning organization. A uuid string. See
+  \code{\link{organizations}}}
+
+  \item{hosting_org}{Hosting organization. A uuid string.
+  See \code{\link{organizations}}}
+
+  \item{publishing_country}{Publishing country. See options
+  at \code{\link{isocodes$gbif_name}}}
+
+  \item{decade}{Decade, e.g., 1980. Filters datasets by
+  their temporal coverage broken down to decades. Decades
+  are given as a full year, e.g. 1880, 1960, 2000, etc, and
+  will return datasets wholly contained in the decade as
+  well as those that cover the entire decade or more. Facet
+  by decade to get the break down, e.g.
+  /search?facet=DECADE&facet_only=true (see example below)}
+
+  \item{continent}{A continent. NOT YET IMPLEMENTED.}
+
+  \item{pretty}{Print informative metadata using
+  \code{\link{cat}}. Not easy to manipulate output though -
+  just for viewing in console.}
+
+  \item{description}{Return descriptions only (TRUE) or all
+  data without the description (FALSE, default)}
+}
+\value{
+  A data.frame, list, or message printed to console (using
+  pretty=TRUE).
+}
+\description{
+  Search that returns up to 20 matching datasets. Results
+  are ordered by relevance.
+}
+\examples{
+\dontrun{
+# Suggest datasets of type "OCCURRENCE".
+dataset_suggest(query="Amazon", type="OCCURRENCE")
+
+# Suggest datasets tagged with keyword "france".
+dataset_suggest(keyword="france")
+
+# Suggest datasets owned by the organization with key
+# "07f617d0-c688-11d8-bf62-b8a03c50a862" (UK NBN).
+dataset_suggest(owningOrg="07f617d0-c688-11d8-bf62-b8a03c50a862")
+
+# Fulltext search for all datasets having the word "amsterdam" somewhere in
+# its metadata (title, description, etc).
+dataset_suggest(query="amsterdam")
+
+# Limited search
+dataset_suggest(type="OCCURRENCE", limit=2)
+dataset_suggest(type="OCCURRENCE", limit=2, start=10)
+
+# Return just descriptions
+dataset_suggest(type="OCCURRENCE", description=TRUE)
+
+# Return metadata in a more human readable way (hard to manipulate though)
+dataset_suggest(type="OCCURRENCE", pretty=TRUE)
+
+# Search by country code. Lookup isocodes first, and use US for United States
+isocodes[agrep("united", isocodes$name),]
+dataset_suggest(country="US")
+
+# Search by decade
+dataset_suggest(decade=1980)
+}
+}
+\references{
+  \url{http://www.gbif.org/developer/summary}
+}
+

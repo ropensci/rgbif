@@ -3,8 +3,7 @@
 #' Search that returns up to 20 matching datasets. Results are ordered by relevance.
 #' 
 #' @template all
-#' @import httr
-#' @import plyr
+#' @import httr plyr
 #' @template occ
 #' @param query Query term(s) for full text search.  The value for this parameter 
 #'    can be a simple word or a phrase. Wildcards can be added to the simple word 
@@ -41,7 +40,7 @@
 #' 
 #' # Suggest datasets owned by the organization with key 
 #' # "07f617d0-c688-11d8-bf62-b8a03c50a862" (UK NBN).
-#' dataset_suggest(owningOrg="07f617d0-c688-11d8-bf62-b8a03c50a862")
+#' dataset_suggest(owning_org="07f617d0-c688-11d8-bf62-b8a03c50a862")
 #' 
 #' # Fulltext search for all datasets having the word "amsterdam" somewhere in 
 #' # its metadata (title, description, etc).
@@ -58,8 +57,8 @@
 #' dataset_suggest(type="OCCURRENCE", pretty=TRUE)
 #' 
 #' # Search by country code. Lookup isocodes first, and use US for United States
-#' isocodes[agrep("united", isocodes$name),]
-#' dataset_suggest(country="US")
+#' isocodes[agrep("UNITED", isocodes$gbif_name),]
+#' dataset_suggest(country="UNITED_STATES")
 #' 
 #' # Search by decade
 #' dataset_suggest(decade=1980)

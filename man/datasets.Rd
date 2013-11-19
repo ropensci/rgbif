@@ -39,6 +39,6 @@ datasets(data=c('deleted','duplicate'))
 }
 }
 \references{
-  \url{http://dev.gbif.org/wiki/display/POR/Webservice+API}
+  \url{http://www.gbif.org/developer/summary}
 }
 

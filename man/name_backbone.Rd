@@ -65,6 +65,6 @@ name_backbone(name='Helianthus annuus', kingdom='plants', verbose=TRUE)
 }
 }
 \references{
-  \url{http://dev.gbif.org/wiki/display/POR/Webservice+API}
+  \url{http://www.gbif.org/developer/summary}
 }
 

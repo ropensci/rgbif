@@ -46,6 +46,6 @@ networks(data='endpoint', uuid='16ab5405-6c94-4189-ac71-16ca3b753df7')
 }
 }
 \references{
-  \url{http://dev.gbif.org/wiki/display/POR/Webservice+API}
+  \url{http://www.gbif.org/developer/summary}
 }
 
