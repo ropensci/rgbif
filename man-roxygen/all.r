@@ -1,1 +1,1 @@
-#' @references \url{http://dev.gbif.org/wiki/display/POR/Webservice+API}
+#' @references \url{http://www.gbif.org/developer/summary}
