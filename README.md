@@ -8,16 +8,12 @@ This package gives you access to data from [GBIF](http://www.gbif.org/) via thei
 
 ## Transitioning to the new GBIF API
 
-*Note that development is rapid at this point so expect changes, but changes should slow down with time...*
-
 + The old GBIF API
 	+ See documentation here: [http://data.gbif.org/tutorial/services](http://data.gbif.org/tutorial/services)
-	+ is accessible from the `master` branch of this repo, check it out there if you want that. 
 + The new GBIF API
 	+ See documentation here: [http://www.gbif.org/developer/summary](http://www.gbif.org/developer/summary)
-	+ Is being developed on the `newapi` branch of this repo.
 
-The rgbif branch `newapi` will have development code to use the new GBIF API, and will be folded into the master branch at some later point. You can use functions to get data via the new GBIF API and old GBIF API in the `newapi` branch. The functions for the old GBIF API give deprecation messages, signaling that they are on their way out. A future version of `rgbif` will remove functions for the old API, so do transition to the functions for the new API soon.
+The functions for the old GBIF API give deprecation messages, signaling that they are on their way out. A future version of `rgbif` will remove functions for the old API, so do transition to the functions for the new API soon.
 
 The new GBIF API only uses JSON as a data format - no more XML. Of course this probably doesn't matter to you unless you are a hacker...
 
@@ -60,7 +56,7 @@ Changes in the new GBIF API from last with respect to `rgbif`:
 install.packages("devtools")
 require(devtools)
 
-install_github("rgbif", "ropensci", ref="newapi")
+install_github("rgbif", "ropensci")
 require(rgbif)
 ```
 
