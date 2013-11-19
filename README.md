@@ -14,7 +14,7 @@ This package gives you access to data from [GBIF](http://www.gbif.org/) via thei
 	+ See documentation here: [http://data.gbif.org/tutorial/services](http://data.gbif.org/tutorial/services)
 	+ is accessible from the `master` branch of this repo, check it out there if you want that. 
 + The new GBIF API
-	+ See documentation here: [http://dev.gbif.org/wiki/display/POR/Webservice+API](http://dev.gbif.org/wiki/display/POR/Webservice+API)
+	+ See documentation here: [http://www.gbif.org/developer/summary](http://www.gbif.org/developer/summary)
 	+ Is being developed on the `newapi` branch of this repo.
 
 The rgbif branch `newapi` will have development code to use the new GBIF API, and will be folded into the master branch at some later point. You can use functions to get data via the new GBIF API and old GBIF API in the `newapi` branch. The functions for the old GBIF API give deprecation messages, signaling that they are on their way out. A future version of `rgbif` will remove functions for the old API, so do transition to the functions for the new API soon.
@@ -49,8 +49,8 @@ Changes in the new GBIF API from last with respect to `rgbif`:
 | taxrank | same | none |
 | togeojson | same | not implemented yet |
 
-* Note 1: See `?datasets`, `?networks`, `?nodes`, and `?organizations`
-* Note 2: See `?name_lookup` for names across all of GBIF and `name_backbone` for names only in the GBIF backbone taxonomy
+* Note 1: See `?datasets`, `?networks`, `?nodes`, and `?organizations`.
+* Note 2: See `?name_lookup` for names across all of GBIF and `name_backbone` for names only in the GBIF backbone taxonomy.
 
 ## Install
 
