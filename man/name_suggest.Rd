@@ -3,9 +3,9 @@
 \title{A quick and simple autocomplete service that returns up to 20 name usages by
 doing prefix matching against the scientific name. Results are ordered by relevance.}
 \usage{
-  name_suggest(q = NULL, rank = NULL, name = NULL,
-    strict = NULL, verbose = FALSE, fields = NULL,
-    start = NULL, limit = 20, callopts = list())
+  name_suggest(q = NULL, datasetKey = NULL, rank = NULL,
+    fields = NULL, start = NULL, limit = 20,
+    callopts = list())
 }
 \arguments{
   \item{callopts}{Pass on options to httr::GET for more
@@ -20,16 +20,10 @@ doing prefix matching against the scientific name. Results are ordered by releva
   be added to the simple word parameters only, e.g.
   q=*puma*}
 
+  \item{datasetKey}{Filters by the checklist dataset key (a
+  uuid, see examples)}
+
   \item{rank}{The rank given as our rank enum.}
-
-  \item{name}{Filters by a case insensitive, canonical
-  namestring, e.g. 'Puma concolor'}
-
-  \item{strict}{If TRUE it (fuzzy) matches only the given
-  name, but never a taxon in the upper classification}
-
-  \item{verbose}{If TRUE show alternative matches
-  considered which had been rejected.}
 
   \item{fields}{Fields to return in output data.frame
   (simply prunes columns off)}

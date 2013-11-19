@@ -33,11 +33,7 @@
 #'    MM-dd.
 #' @param year The 4 digit year. A year of 98 will be interpreted as AD 98.
 #' @param month The month of the year, starting with 1 for January.
-#' @param modified Occurrence modification date in ISO 8601 format: yyyy, yyyy-MM, 
-#'    yyyy-MM-dd, or MM-dd.
 #' @param search Query terms. The value for this parameter can be a simple word or a phrase.
-#' @param from The minimum year for which to return occurrences.
-#' @param to The maximum year for which to return occurrences.
 #' @param latitude Latitude in decimals between -90 and 90 based on WGS 84.
 #' @param longitude Longitude in decimals between -180 and 180 based on WGS 84.
 #' @param publishingCountry The 2-letter country code (as per ISO-3166-1) of the 

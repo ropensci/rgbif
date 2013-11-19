@@ -7,11 +7,8 @@
 #' @param q Simple search parameter. The value for this parameter can be a simple 
 #'    word or a phrase. Wildcards can be added to the simple word parameters only, 
 #'    e.g. q=*puma*
+#' @param datasetKey Filters by the checklist dataset key (a uuid, see examples)
 #' @param rank The rank given as our rank enum.
-#' @param name Filters by a case insensitive, canonical namestring, e.g. 'Puma concolor'
-#' @param strict If TRUE it (fuzzy) matches only the given name, but never a 
-#'    taxon in the upper classification
-#' @param verbose If TRUE show alternative matches considered which had been rejected.
 #' @param fields Fields to return in output data.frame (simply prunes columns off)
 #' @return A data.frame with fields selected by fields arg.
 #' @export
@@ -22,39 +19,21 @@
 #' name_suggest(q='Puma', fields=c('key','canonicalName'))
 #' name_suggest(q='Puma', rank="GENUS")
 #' }
-name_suggest <- function(q=NULL, rank=NULL, name=NULL, strict=NULL, verbose=FALSE, 
-                         fields=NULL, start=NULL, limit=20, callopts=list())
+name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL, start=NULL, limit=20, callopts=list())
 {
   url = 'http://api.gbif.org/v0.9/species/suggest'
-  args <- compact(list(q=q, rank=rank, name=name, strict=strict, verbose=verbose,
-                       offset=start, limit=limit))
+  args <- compact(list(q=q, rank=rank, offset=start, limit=limit))
   temp <- GET(url, query=args, callopts)
   stop_for_status(temp)
   tt <- content(temp)
-  
-  if(verbose){ 
-    #     alt <- do.call(rbind.fill, lapply(tt$alternatives, namelkupparser))
-    #     dat <- data.frame(tt[!names(tt) %in% c("alternatives","note")])
-    #     list(data=dat, alternatives=alt)
-    if(is.null(fields)){
-      toget <- c("key","scientificName","rank")
-    } else { toget <- fields }
-    matched <- sapply(toget, function(x) x %in% suggestfields())
-    if(!any(matched))
-      stop(sprintf("the fields %s are not valid", paste0(names(matched[matched == FALSE]),collapse=",")))
-    out <- lapply(tt, function(x) x[names(x) %in% toget])
-    do.call(rbind.fill, lapply(out,data.frame))
-  } else
-  {
-    if(is.null(fields)){
-      toget <- c("key","scientificName","rank")
-    } else { toget <- fields }
-    matched <- sapply(toget, function(x) x %in% suggestfields())
-    if(!any(matched))
-      stop(sprintf("the fields %s are not valid", paste0(names(matched[matched == FALSE]),collapse=",")))
-    out <- lapply(tt, function(x) x[names(x) %in% toget])
-    do.call(rbind.fill, lapply(out,data.frame))
-  }
+  if(is.null(fields)){
+    toget <- c("key","scientificName","rank")
+  } else { toget <- fields }
+  matched <- sapply(toget, function(x) x %in% suggestfields())
+  if(!any(matched))
+    stop(sprintf("the fields %s are not valid", paste0(names(matched[matched == FALSE]),collapse=",")))
+  out <- lapply(tt, function(x) x[names(x) %in% toget])
+  do.call(rbind.fill, lapply(out,data.frame))
 }
 
 #' Fields available in gbif_suggest function

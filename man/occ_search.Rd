@@ -7,12 +7,11 @@
     geometry = NULL, collectorName = NULL,
     basisOfRecord = NULL, datasetKey = NULL, date = NULL,
     catalogNumber = NULL, year = NULL, month = NULL,
-    modified = NULL, latitude = NULL, longitude = NULL,
-    altitude = NULL, depth = NULL, institutionCode = NULL,
+    latitude = NULL, longitude = NULL, altitude = NULL,
+    depth = NULL, institutionCode = NULL,
     collectionCode = NULL, spatialIssues = NULL,
-    search = NULL, from = NULL, to = NULL,
-    callopts = list(), limit = 20, start = NULL,
-    minimal = TRUE, return = "all")
+    search = NULL, callopts = list(), limit = 20,
+    start = NULL, minimal = TRUE, return = "all")
 }
 \arguments{
   \item{taxonKey}{A taxon key from the GBIF backbone. All
@@ -73,17 +72,8 @@
   \item{month}{The month of the year, starting with 1 for
   January.}
 
-  \item{modified}{Occurrence modification date in ISO 8601
-  format: yyyy, yyyy-MM, yyyy-MM-dd, or MM-dd.}
-
   \item{search}{Query terms. The value for this parameter
   can be a simple word or a phrase.}
-
-  \item{from}{The minimum year for which to return
-  occurrences.}
-
-  \item{to}{The maximum year for which to return
-  occurrences.}
 
   \item{latitude}{Latitude in decimals between -90 and 90
   based on WGS 84.}
@@ -250,8 +240,6 @@ occ_search(taxonKey=key, basisOfRecord="LIVING_SPECIMEN")
 occ_search(taxonKey=key, date="2013")
 occ_search(taxonKey=key, year="2013")
 occ_search(taxonKey=key, month="6")
-occ_search(taxonKey=key, from=2006, to=2007)
-occ_search(taxonKey=key, modified="2013-06")
 
 # Get occurrences based on depth
 key <- name_backbone(name='Salmo salar', kingdom='animals')$speciesKey

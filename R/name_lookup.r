@@ -48,10 +48,10 @@ name_lookup <- function(query=NULL, rank=NULL, highertaxon_key=NULL, status=NULL
   
   url = 'http://api.gbif.org/v0.9/species/search'
   args <- as.list(compact(c(q=query, rank=rank, highertaxon_key=highertaxon_key, status=status, 
-                        extinct=extinct, habitat=habitat, name_type=name_type, dataset_key=dataset_key, 
-                        nomenclatural_status=nomenclatural_status, limit=limit, facetbyname, 
-                        facet_only=facet_only, facet_mincount=facet_mincount, 
-                        facet_multiselect=facet_multiselect)))
+            extinct=extinct, habitat=habitat, name_type=name_type, dataset_key=dataset_key, 
+            nomenclatural_status=nomenclatural_status, limit=limit, facetbyname, 
+            facet_only=facet_only, facet_mincount=facet_mincount, 
+            facet_multiselect=facet_multiselect)))
   temp <- GET(url, query=args, callopts)
   stop_for_status(temp)
   tt <- content(temp)

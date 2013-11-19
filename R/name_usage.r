@@ -42,10 +42,10 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL, datasetKe
   sourceId=NULL, rank=NULL, uuid=NULL, shortname=NULL, start=NULL, limit=20, callopts=list())
 {
   args <- compact(list(language=language, name=name, datasetKey=datasetKey, 
-                       sourceId=sourceId, rank=rank, offset=start, limit=limit))  
+                       rank=rank, offset=start, limit=limit, sourceId=sourceId))
   data <- match.arg(data, 
-      choices=c('all', 'verbatim', 'name', 'parents', 'children', 
-                'descendants', 'related', 'synonyms', 'descriptions',
+      choices=c('all', 'verbatim', 'name', 'parents', 'children',
+                'related', 'synonyms', 'descriptions',
                 'distributions', 'images', 'references', 'species_profiles',
                 'vernacular_names', 'type_specimens', 'root'), several.ok=TRUE)
   
@@ -62,7 +62,7 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL, datasetKe
         url <- sprintf('http://api.gbif.org/v0.9/species/%s', key)
       } else
       if(x %in% c('verbatim', 'name', 'parents', 'children', 
-         'descendants', 'related', 'synonyms', 'descriptions',
+         'related', 'synonyms', 'descriptions',
          'distributions', 'images', 'references', 'species_profiles',
          'vernacular_names', 'type_specimens')){
         url <- sprintf('http://api.gbif.org/v0.9/species/%s/%s', key, x)

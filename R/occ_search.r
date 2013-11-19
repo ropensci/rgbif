@@ -80,8 +80,6 @@
 #' occ_search(taxonKey=key, date="2013")
 #' occ_search(taxonKey=key, year="2013")
 #' occ_search(taxonKey=key, month="6")
-#' occ_search(taxonKey=key, from=2006, to=2007)
-#' occ_search(taxonKey=key, modified="2013-06")
 #'
 #' # Get occurrences based on depth
 #' key <- name_backbone(name='Salmo salar', kingdom='animals')$speciesKey
@@ -116,9 +114,9 @@
 #' @export
 occ_search <- function(taxonKey=NULL, country=NULL, publishingCountry=NULL, georeferenced=NULL, 
   geometry=NULL, collectorName=NULL, basisOfRecord=NULL, datasetKey=NULL, date=NULL, 
-  catalogNumber=NULL, year=NULL, month=NULL, modified=NULL, latitude=NULL, longitude=NULL, 
+  catalogNumber=NULL, year=NULL, month=NULL, latitude=NULL, longitude=NULL, 
   altitude=NULL, depth=NULL, institutionCode=NULL, collectionCode=NULL, 
-  spatialIssues=NULL, search=NULL, from=NULL, to=NULL, callopts=list(), limit=20, start=NULL, 
+  spatialIssues=NULL, search=NULL, callopts=list(), limit=20, start=NULL, 
   minimal=TRUE, return='all')
 {
   url = 'http://api.gbif.org/v0.9/occurrence/search'
@@ -130,10 +128,10 @@ occ_search <- function(taxonKey=NULL, country=NULL, publishingCountry=NULL, geor
     args <- compact(list(taxonKey=taxonKey, country=country, publishingCountry=publishingCountry, 
        georeferenced=georeferenced, geometry=geometry, collectorName=collectorName, 
        basisOfRecord=basisOfRecord, datasetKey=datasetKey, date=date, catalogNumber=catalogNumber,
-       year=year, month=month, modified=modified, latitude=latitude, longitude=longitude, 
+       year=year, month=month, latitude=latitude, longitude=longitude, 
        altitude=altitude, depth=depth, institutionCode=institutionCode, 
-       collectionCode=collectionCode, spatialIssues=spatialIssues, q=search, from=from, 
-       to=to, limit=limit, offset=start))
+       collectionCode=collectionCode, spatialIssues=spatialIssues, q=search, limit=limit, 
+       offset=start))
     iter <- 0
     sumreturned <- 0
     outout <- list()

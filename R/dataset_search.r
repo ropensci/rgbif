@@ -55,7 +55,7 @@
 #' }
 dataset_search <- function(query= NULL, type = NULL, keyword = NULL,
   owningOrg = NULL, networkOrigin = NULL, hostingOrg = NULL, decade = NULL, 
-  country = NULL, limit=20, start=NULL, callopts=list(), pretty=FALSE, 
+  country = NULL, limit=20, start=NULL, callopts=list(), pretty=FALSE,
   description=FALSE)
 {
   url <- 'http://api.gbif.org/v0.9/dataset/search'
@@ -67,14 +67,17 @@ dataset_search <- function(query= NULL, type = NULL, keyword = NULL,
   stop_for_status(temp)
   tt <- content(temp)
   meta <- tt[!names(tt) == 'results']
-  tt$results[[1]]
   
   parse_dataset <- function(x){
-    data.frame(title=x$title,hostingOrganization=x$hostingOrganizationTitle,
+    tmp <- compact(list(title=x$title,
+               hostingOrganization=x$hostingOrganizationTitle,
                owningOrganization=x$owningOrganizationTitle,
-               type=x$type,publishingCountry=x$publishingCountry,key=x$key,
+               type=x$type,
+               publishingCountry=x$publishingCountry,
+               key=x$key,
                hostingOrganizationKey=x$hostingOrganizationKey,
-               owningOrganizationKey=x$owningOrganizationKey)
+               owningOrganizationKey=x$owningOrganizationKey))
+    data.frame(tmp)
   }
   
   if(description){
@@ -86,7 +89,7 @@ dataset_search <- function(query= NULL, type = NULL, keyword = NULL,
       out <- parse_dataset(x=tt$results)
     } else
     {
-      out <- do.call(rbind, lapply(tt$results, parse_dataset))
+      out <- do.call(rbind.fill, lapply(tt$results, parse_dataset))
     }
   }
   
