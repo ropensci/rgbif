@@ -1,6 +1,6 @@
 <!--
 %\VignetteEngine{knitr}
-%\VignetteIndexEntry{Tutorial for the new GBIF API}
+%\VignetteIndexEntry{An R Markdown Vignette made with knitr}
 -->
 
 rgbif vignette - Seach and retrieve data from the Global Biodiverity Information Facilty (GBIF)

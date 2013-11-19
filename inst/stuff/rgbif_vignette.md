@@ -201,95 +201,7 @@ name_lookup(class = "mammalia")
 ```
 
 ```
-$meta
-  offset limit endOfRecords    count
-1      0    20        FALSE 20362854
-
-$data
-         key nubKey  kingdom kingdomKey      canonicalName
-1          1      1 Animalia          1           Animalia
-2  115219148     NA  Plantae  115219148            Plantae
-3         54     54 Animalia          1         Arthropoda
-4  101719444      1 Animalia  101719444           Animalia
-5  126774927      1 Animalia  126774927           Animalia
-6        216    216 Animalia          1            Insecta
-7  124484006     NA    :) ia  124484006               <NA>
-8  105901881     NA     <NA>         NA               <NA>
-9  102545136     54 Animalia  101719444         Arthropoda
-10 126774928     54 Animalia  126774927         Arthropoda
-11         6      6  Plantae          6            Plantae
-12 105961965     NA     <NA>         NA Cellular organisms
-13 126775138    216 Animalia  126774927            Insecta
-14        49     49  Plantae          6      Magnoliophyta
-15 101674726    216 Animalia  101719444            Insecta
-16       220    220  Plantae          6      Magnoliopsida
-17 106094935     NA     <NA>         NA          Eukaryota
-18 106147866     NA     <NA>         NA       Opisthokonta
-19 106148414     NA  Metazoa  106148414            Metazoa
-20 106404692     NA  Metazoa  106148414          Eumetazoa
-                                   authorship   nameType     rank
-1                                             WELLFORMED  KINGDOM
-2                                             WELLFORMED  KINGDOM
-3                                             WELLFORMED   PHYLUM
-4                                             WELLFORMED  KINGDOM
-5                                             WELLFORMED  KINGDOM
-6                                             WELLFORMED    CLASS
-7                                                SCINAME  KINGDOM
-8                                                SCINAME UNRANKED
-9                                             WELLFORMED   PHYLUM
-10                                            WELLFORMED   PHYLUM
-11                                            WELLFORMED  KINGDOM
-12                                               SCINAME UNRANKED
-13                                            WELLFORMED    CLASS
-14 Cronquist, Takhtajan & W. Zimmermann, 1966 WELLFORMED   PHYLUM
-15                                            WELLFORMED    CLASS
-16                                            WELLFORMED    CLASS
-17                                            WELLFORMED   DOMAIN
-18                                            WELLFORMED UNRANKED
-19                                            WELLFORMED  KINGDOM
-20                                            WELLFORMED UNRANKED
-   numOccurrences parentKey             parent        phylum phylumKey
-1               0        NA               <NA>          <NA>        NA
-2               0        NA               <NA>          <NA>        NA
-3               0         1           Animalia    Arthropoda        54
-4               0        NA               <NA>          <NA>        NA
-5               0        NA               <NA>          <NA>        NA
-6               0        54         Arthropoda    Arthropoda        54
-7               0        NA               <NA>          <NA>        NA
-8               0        NA               <NA>          <NA>        NA
-9               0 101719444           Animalia    Arthropoda 102545136
-10              0 126774927           Animalia    Arthropoda 126774928
-11              0        NA               <NA>          <NA>        NA
-12              0 105901881               root          <NA>        NA
-13              0 126774928         Arthropoda    Arthropoda 126774928
-14              0         6            Plantae Magnoliophyta        49
-15              0 102545136         Arthropoda    Arthropoda 102545136
-16              0        49      Magnoliophyta Magnoliophyta        49
-17              0 105961965 Cellular organisms          <NA>        NA
-18              0 106094935          Eukaryota          <NA>        NA
-19              0 106147866       Opisthokonta          <NA>        NA
-20              0 106148414            Metazoa          <NA>        NA
-           clazz  classKey
-1           <NA>        NA
-2           <NA>        NA
-3           <NA>        NA
-4           <NA>        NA
-5           <NA>        NA
-6        Insecta       216
-7           <NA>        NA
-8           <NA>        NA
-9           <NA>        NA
-10          <NA>        NA
-11          <NA>        NA
-12          <NA>        NA
-13       Insecta 126775138
-14          <NA>        NA
-15       Insecta 101674726
-16 Magnoliopsida       220
-17          <NA>        NA
-18          <NA>        NA
-19          <NA>        NA
-20          <NA>        NA
+Error: unused argument (class = "mammalia")
 ```
 
 
@@ -390,6 +302,9 @@ $data
 18              0 Magnoliophyta Magnoliopsida 102545123 101741810
 19              0          <NA> Equisetopsida        NA 100023390
 20              0   Tenericutes    Mollicutes 106355900 106136190
+
+$facets
+NULL
 ```
 
 

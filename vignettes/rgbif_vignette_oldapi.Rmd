@@ -1,6 +1,6 @@
 <!--
 %\VignetteEngine{knitr}
-%\VignetteIndexEntry{Tutorial for using the old GBIF API}
+%\VignetteIndexEntry{An R Markdown Vignette made with knitr}
 -->
 
 rgbif tutorial
