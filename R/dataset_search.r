@@ -3,23 +3,11 @@
 #' This function does not search occurrence data, only metadata on the datasets 
 #' that contain occurrence data.
 #'
+#' @import httr plyr
 #' @template all
-#' @import httr
-#' @import plyr
 #' @template occ
-#' @param query Query term(s) for full text search.
-#' @param type Type of dataset, options include OCCURRENCE, etc.
-#' @param keyword Keyword to search by. Datasets can be tagged by keywords, which
-#'    you can search on.
-#' @param owningOrg Hosting organization. A uuid string. See \code{\link{organizations}}
-#' @param networkOrigin Hosting organization. A uuid string. See \code{\link{organizations}}
-#' @param hostingOrg Hosting organization. A uuid string. See \code{\link{organizations}}
-#' @param decade Decade, e.g., 1980
-#' @param country Limit search to a country using isocodes. See example.
-#' @param pretty Print informative metadata using \code{\link{cat}}. Not easy to 
-#'    manipulate output though.
-#' @param description Return descriptions only (TRUE) or all data (FALSE, default)
-#' @return A data.frame, list, or message printed to console (using pretty=TRUE).
+#' @template dataset
+#' @template dataset_facet
 #' @export
 #' @examples \dontrun{
 #' # Gets all datasets of type "OCCURRENCE".
@@ -27,11 +15,7 @@
 #' 
 #' # Gets all datasets tagged with keyword "france".
 #' dataset_search(keyword="france")
-#' 
-#' # Gets all datasets owned by the organization with key 
-#' # "07f617d0-c688-11d8-bf62-b8a03c50a862" (UK NBN).
-#' dataset_search(owningOrg="07f617d0-c688-11d8-bf62-b8a03c50a862")
-#' 
+#'
 #' # Fulltext search for all datasets having the word "amsterdam" somewhere in 
 #' # its metadata (title, description, etc).
 #' dataset_search(query="amsterdam")
@@ -41,32 +25,49 @@
 #' dataset_search(type="OCCURRENCE", limit=2, start=10)
 #' 
 #' # Return just descriptions
-#' dataset_search(type="OCCURRENCE", description=TRUE)
+#' dataset_search(type="OCCURRENCE", return="descriptions")
 #' 
 #' # Return metadata in a more human readable way (hard to manipulate though)
 #' dataset_search(type="OCCURRENCE", pretty=TRUE)
 #' 
 #' # Search by country code. Lookup isocodes first, and use US for United States
-#' isocodes[agrep("united", isocodes$name),]
-#' dataset_search(country="US")
+#' isocodes[agrep("UNITED", isocodes$gbif_name),]
+#' dataset_search(country="UNITED_STATES")
 #' 
 #' # Search by decade
 #' dataset_search(decade=1980)
+#' 
+#' # Faceting
+#' ## just facets
+#' dataset_search(facet="decade", facet_only=TRUE, facet_mincount="10")
+#' 
+#' ## data and facets
+#' dataset_search(facet="decade", facet_mincount="10")
 #' }
-dataset_search <- function(query= NULL, type = NULL, keyword = NULL,
-  owningOrg = NULL, networkOrigin = NULL, hostingOrg = NULL, decade = NULL, 
-  country = NULL, limit=20, start=NULL, callopts=list(), pretty=FALSE,
-  description=FALSE)
+dataset_search <- function(query= NULL, country = NULL, type = NULL, keyword = NULL,
+  owning_org = NULL, hosting_org = NULL, publishing_country = NULL, decade = NULL, 
+  facet=NULL, facet_only=NULL, facet_mincount=NULL, facet_multiselect=NULL, limit=20, 
+  start=NULL, callopts=list(), pretty=FALSE, return="all")
 {
+  if(!is.null(facet_mincount) && inherits(facet_mincount, "numeric"))
+    stop("Make sure facet_mincount is character")
+  if(!is.null(facet)) {
+    facetbyname <- facet
+    names(facetbyname) <- rep('facet', length(facet))
+  } else { facetbyname <- NULL }
+  
   url <- 'http://api.gbif.org/v0.9/dataset/search'
-  args <- compact(list(q=query,type=type,keyword=keyword,owningOrg=owningOrg,
-                       networkOrigin=networkOrigin,hostingOrg=hostingOrg,
-                       decade=decade,iso_country_code=country,limit=limit,
-                       offset=start))
+  args <- as.list(compact(c(q=query,type=type,keyword=keyword,owning_org=owning_org,
+                       hosting_org=hosting_org,publishing_country=publishing_country,
+                       decade=decade,limit=limit,offset=start,facetbyname, 
+                       facet_only=facet_only, facet_mincount=facet_mincount, 
+                       facet_multiselect=facet_multiselect)))
   temp <- GET(url, query=args, callopts)
   stop_for_status(temp)
   tt <- content(temp)
-  meta <- tt[!names(tt) == 'results']
+  
+  # metadata
+  meta <- tt[c('offset','limit','endOfRecords','count')]
   
   parse_dataset <- function(x){
     tmp <- compact(list(title=x$title,
@@ -80,19 +81,7 @@ dataset_search <- function(query= NULL, type = NULL, keyword = NULL,
     data.frame(tmp)
   }
   
-  if(description){
-    out <- lapply(tt$results, "[[", "description")
-    names(out) <- sapply(tt$results, "[[", "title")
-  } else
-  {
-    if(length(tt$results)==1){
-      out <- parse_dataset(x=tt$results)
-    } else
-    {
-      out <- do.call(rbind.fill, lapply(tt$results, parse_dataset))
-    }
-  }
-  
+  # if pretty
   if(pretty){
     printdata <- function(x){    
       cat(paste("title:", x$title),
@@ -112,6 +101,33 @@ dataset_search <- function(query= NULL, type = NULL, keyword = NULL,
     }
   } else
   {
-    return( out )
+    # facets
+    facets <- tt$facets
+    if(!length(facets) == 0){
+      facetsdat <- lapply(facets, function(x) do.call(rbind, lapply(x$counts, data.frame, stringsAsFactors=FALSE)))
+      names(facetsdat) <- facet
+    } else { facetsdat <- NULL  }
+    
+    # descriptions
+    descs <- lapply(tt$results, "[[", "description")
+    names(descs) <- sapply(tt$results, "[[", "title")
+    
+    # data
+    if(length(tt$results)==0){
+      out <- "no results"
+    } else if(length(tt$results)==1){
+      out <- parse_dataset(x=tt$results)
+    } else
+    {
+      out <- do.call(rbind.fill, lapply(tt$results, parse_dataset))
+    }
+    
+    # select output
+    switch(return, 
+           meta = data.frame(meta),
+           descriptions = descs,
+           data = out,
+           facets = facetsdat,
+           all = list(meta=data.frame(meta), data=out, facets=facetsdat, descriptions=descs))
   }
 }

@@ -27,10 +27,7 @@
   country=CANADA.}
 
   \item{type}{Type of dataset, options include OCCURRENCE,
-  METADATA, and CHECKLIST.}
-
-  \item{subtype}{NOT YET IMPLEMENTED. Will allow filtering
-  of datasets by their dataset subtypes, DC or EML.}
+  etc.}
 
   \item{keyword}{Keyword to search by. Datasets can be
   tagged by keywords, which you can search on. The search
@@ -54,14 +51,14 @@
   by decade to get the break down, e.g.
   /search?facet=DECADE&facet_only=true (see example below)}
 
-  \item{continent}{A continent. NOT YET IMPLEMENTED.}
-
   \item{pretty}{Print informative metadata using
-  \code{\link{cat}}. Not easy to manipulate output though -
-  just for viewing in console.}
+  \code{\link{cat}}. Not easy to manipulate output though.}
 
   \item{description}{Return descriptions only (TRUE) or all
-  data without the description (FALSE, default)}
+  data (FALSE, default)}
+
+  \item{subtype}{NOT YET IMPLEMENTED. Will allow filtering
+  of datasets by their dataset subtypes, DC or EML.}
 }
 \value{
   A data.frame, list, or message printed to console (using
@@ -81,7 +78,7 @@ dataset_suggest(keyword="france")
 
 # Suggest datasets owned by the organization with key
 # "07f617d0-c688-11d8-bf62-b8a03c50a862" (UK NBN).
-dataset_suggest(owningOrg="07f617d0-c688-11d8-bf62-b8a03c50a862")
+dataset_suggest(owning_org="07f617d0-c688-11d8-bf62-b8a03c50a862")
 
 # Fulltext search for all datasets having the word "amsterdam" somewhere in
 # its metadata (title, description, etc).
@@ -98,8 +95,8 @@ dataset_suggest(type="OCCURRENCE", description=TRUE)
 dataset_suggest(type="OCCURRENCE", pretty=TRUE)
 
 # Search by country code. Lookup isocodes first, and use US for United States
-isocodes[agrep("united", isocodes$name),]
-dataset_suggest(country="US")
+isocodes[agrep("UNITED", isocodes$gbif_name),]
+dataset_suggest(country="UNITED_STATES")
 
 # Search by decade
 dataset_suggest(decade=1980)
