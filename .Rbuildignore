@@ -1,6 +1,7 @@
 .gitignore
 ^Makefile$
 .travis.yml
+travis-tool.sh
 man-roxygen
 ^.*\.Rproj$
 ^\.Rproj\.user$
