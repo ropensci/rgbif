@@ -1,3 +1,21 @@
+rgbif 0.4.0
+===============
+
+IMPROVEMENTS
+
+* Data object isocodes gains new column gbif_names, the GBIF specific names for countries.
+* Added in deprecation messages throughtout package for functions and arguments that are deprecated.
+* tests moved to tests/testthat from inst/tests.
+* Vignettes now in vignettes/ directory.
+
+NEW FEATURES
+
+* New function dataset_suggest(), a quick autocomplete service that returns up to 20 datasets.
+* New function name_backbone() looks up names against the GBIF backbone taxonomy.
+* New function name_suggest(), a quick autocomplete service that returns up to 20 name usages.
+* New function occ_metadata() to search dataset metadata.
+* New function parsenames() that parses taxonomic names and returns their components.
+
 rgbif 0.3.9
 ===============
 
@@ -11,6 +29,7 @@ NEW FEATURES
 * Added functions to interact with the new GBIF API, notably: country_codes(), dataset_metrics(), dataset_search(), datasets(), name_lookup(), gbifmap(), gist(), name_lookup(), name_usage(), networks(), nodes(), occ_count(), occ_get(), occ_search(), organizations(), stylegeojson(), togeojson(). See the README for a crosswalk from old functions to new ones. 
 
 BUG FIXES
+
 * test files moved from inst/tests/ to tests/testthat/
 
 rgbif 0.3.2
