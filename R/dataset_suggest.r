@@ -8,6 +8,9 @@
 #' @template dataset
 #' @param subtype NOT YET IMPLEMENTED. Will allow filtering of datasets by their 
 #'    dataset subtypes, DC or EML.
+#' @param continent Not yet implemented, but will eventually allow filtering datasets
+#'    by their continent(s) as given in our Continent enum.
+#' @param description Return descriptions only (TRUE) or all data (FALSE, default)
 #' @export
 #' @examples \dontrun{
 #' # Suggest datasets of type "OCCURRENCE".

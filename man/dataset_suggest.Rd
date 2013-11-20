@@ -23,8 +23,7 @@
   parameters only, e.g. q=*puma*}
 
   \item{country}{NOT YET IMPLEMENTED. Filters by country as
-  given in \code{\link{isocodes$gbif_name}}, e.g.
-  country=CANADA.}
+  given in isocodes$gbif_name, e.g. country=CANADA.}
 
   \item{type}{Type of dataset, options include OCCURRENCE,
   etc.}
@@ -41,7 +40,7 @@
   See \code{\link{organizations}}}
 
   \item{publishing_country}{Publishing country. See options
-  at \code{\link{isocodes$gbif_name}}}
+  at isocodes$gbif_name}
 
   \item{decade}{Decade, e.g., 1980. Filters datasets by
   their temporal coverage broken down to decades. Decades
@@ -54,11 +53,15 @@
   \item{pretty}{Print informative metadata using
   \code{\link{cat}}. Not easy to manipulate output though.}
 
-  \item{description}{Return descriptions only (TRUE) or all
-  data (FALSE, default)}
-
   \item{subtype}{NOT YET IMPLEMENTED. Will allow filtering
   of datasets by their dataset subtypes, DC or EML.}
+
+  \item{continent}{Not yet implemented, but will eventually
+  allow filtering datasets by their continent(s) as given
+  in our Continent enum.}
+
+  \item{description}{Return descriptions only (TRUE) or all
+  data (FALSE, default)}
 }
 \value{
   A data.frame, list, or message printed to console (using

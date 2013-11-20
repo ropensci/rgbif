@@ -19,7 +19,8 @@
 #' name_suggest(q='Puma', fields=c('key','canonicalName'))
 #' name_suggest(q='Puma', rank="GENUS")
 #' }
-name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL, start=NULL, limit=20, callopts=list())
+name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL, start=NULL, 
+                         limit=20, callopts=list())
 {
   url = 'http://api.gbif.org/v0.9/species/suggest'
   args <- compact(list(q=q, rank=rank, offset=start, limit=limit))

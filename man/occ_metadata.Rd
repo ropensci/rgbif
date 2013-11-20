@@ -1,6 +1,7 @@
 \name{occ_metadata}
 \alias{occ_metadata}
-\title{Search for catalog numbers, collection codes, collector names, and institution codes.}
+\title{Search for catalog numbers, collection codes, collector names, and institution
+codes.}
 \usage{
   occ_metadata(type = "catalog_number", q = NULL,
     limit = 5, callopts = list(), pretty = TRUE)

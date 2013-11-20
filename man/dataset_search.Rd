@@ -23,8 +23,7 @@
   parameters only, e.g. q=*puma*}
 
   \item{country}{NOT YET IMPLEMENTED. Filters by country as
-  given in \code{\link{isocodes$gbif_name}}, e.g.
-  country=CANADA.}
+  given in isocodes$gbif_name, e.g. country=CANADA.}
 
   \item{type}{Type of dataset, options include OCCURRENCE,
   etc.}
@@ -41,7 +40,7 @@
   See \code{\link{organizations}}}
 
   \item{publishing_country}{Publishing country. See options
-  at \code{\link{isocodes$gbif_name}}}
+  at isocodes$gbif_name}
 
   \item{decade}{Decade, e.g., 1980. Filters datasets by
   their temporal coverage broken down to decades. Decades
@@ -53,9 +52,6 @@
 
   \item{pretty}{Print informative metadata using
   \code{\link{cat}}. Not easy to manipulate output though.}
-
-  \item{description}{Return descriptions only (TRUE) or all
-  data (FALSE, default)}
 
   \item{facet}{A list of facet names used to retrieve the
   100 most frequent values for a field. Allowed facets are:
@@ -79,6 +75,9 @@
   return counts for values that are not currently filtered,
   e.g. http://bit.ly/19YLXPO still shows all status values
   even though status is being filtered by status=ACCEPTED}
+
+  \item{return}{What to return. One of meta, descriptions,
+  data, facets, or all (Default).}
 }
 \value{
   A data.frame, list, or message printed to console (using

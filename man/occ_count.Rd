@@ -59,8 +59,10 @@ occ_count(datasetKey='9e7ea106-0bf8-4087-bb61-dfe4f29e0f17')
 occ_count(year=2012)
 occ_count(nubKey=2435099)
 occ_count(nubKey=2435099, georeferenced=TRUE)
-occ_count(datasetKey='8626bd3a-f762-11e1-a439-00145eb45e9a', basisOfRecord='PRESERVED_SPECIMEN')
-occ_count(datasetKey='8626bd3a-f762-11e1-a439-00145eb45e9a', nubKey=2435099, basisOfRecord='PRESERVED_SPECIMEN')
+occ_count(datasetKey='8626bd3a-f762-11e1-a439-00145eb45e9a',
+   basisOfRecord='PRESERVED_SPECIMEN')
+occ_count(datasetKey='8626bd3a-f762-11e1-a439-00145eb45e9a', nubKey=2435099,
+   basisOfRecord='PRESERVED_SPECIMEN')
 
 # Just schema
 occ_count(type='schema')

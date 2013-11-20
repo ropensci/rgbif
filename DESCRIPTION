@@ -20,7 +20,6 @@ URL: https://github.com/ropensci/rgbif
 BugReports: https://github.com/ropensci/rgbif/issues
 LazyLoad: yes
 LazyData: yes
-VignetteBuilder: knitr
 Imports:
     XML,
     RCurl (>= 1.6),
@@ -32,7 +31,8 @@ Imports:
     rgdal,
     RJSONIO
 Suggests:
-    roxygen2
+    roxygen2,
+    testthat
 Collate:
     'occ_get.r'
     'occ_search.r'

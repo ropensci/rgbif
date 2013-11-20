@@ -6,6 +6,6 @@ man-roxygen
 ^.*\.Rproj$
 ^\.Rproj\.user$
 inst/stuff
-inst/doc
-inst/ignore
 inst/assets
+inst/doc
+tests/test-all.R

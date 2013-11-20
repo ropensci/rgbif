@@ -187,11 +187,14 @@ occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a', minimal=FALSE)
 
 # Use paging parameters (limit and start) to page. Note the different results
 # for the two queries below.
-occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a',start=10,limit=5,return="data")
-occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a',start=20,limit=5,return="data")
+occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a',start=10,limit=5,
+   return="data")
+occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a',start=20,limit=5,
+   return="data")
 
 # Many dataset keys
-occ_search(datasetKey=c("50c9509d-22c7-4a22-a47d-8c48425ef4a7","7b5d6a48-f762-11e1-a439-00145eb45e9a"))
+occ_search(datasetKey=c("50c9509d-22c7-4a22-a47d-8c48425ef4a7",
+   "7b5d6a48-f762-11e1-a439-00145eb45e9a"))
 
 # Occurrence data: lat/long data, and associated metadata with occurrences
 ## If return='data' the output is a data.frame of all data together
@@ -213,7 +216,8 @@ occ_search(taxonKey=key, limit=20, return='hier', callopts=verbose())
 
 # Search for many species
 splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
-keys <- sapply(splist, function(x) name_backbone(name=x, kingdom='plants')$speciesKey, USE.NAMES=FALSE)
+keys <- sapply(splist, function(x) name_backbone(name=x, kingdom='plants')$speciesKey,
+   USE.NAMES=FALSE)
 occ_search(taxonKey=keys, limit=5, return='data')
 
 # Search on latitidue and longitude

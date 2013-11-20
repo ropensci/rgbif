@@ -143,8 +143,8 @@ density_spplist <- function(taxonconceptKey = NULL, dataproviderkey = NULL,
 #' @export
 #' @rdname densitylist-deprecated
 densitylist <- function(taxonconceptKey = NULL, dataproviderkey = NULL,
-                        dataresourcekey = NULL, resourcenetworkkey = NULL, originisocountrycode = NULL,
-                        format = NULL) 
+  dataresourcekey = NULL, resourcenetworkkey = NULL, originisocountrycode = NULL,
+  format = NULL)
 {
   .Deprecated(msg="This function is deprecated, and will be removed in a future version. There is no longer a similar function.")
   
@@ -348,7 +348,8 @@ occurrenceget <- function(key = NULL, format = NULL, mode = NULL)
 #' library(doMC); library(plyr)
 #' registerDoMC(cores=4)
 #' splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
-#' out <- llply(splist, function(x) occurrencelist(x, coordinatestatus = TRUE, maxresults = 100), .parallel=T)
+#' out <- llply(splist, function(x) occurrencelist(x, coordinatestatus = TRUE, 
+#'              maxresults = 100), .parallel=T)
 #' lapply(out, function(x) head(gbifdata(x)))
 #'
 #' # Write the output to csv file
@@ -359,17 +360,17 @@ occurrenceget <- function(key = NULL, format = NULL, mode = NULL)
 #' @rdname occurrencelist-deprecated
 #' @seealso occ_search
 occurrencelist <- function(scientificname = NULL, taxonconceptkey = NULL,
-                           dataproviderkey = NULL, dataresourcekey = NULL, institutioncode = NULL,
-                           collectioncode = NULL, catalognumber = NULL, resourcenetworkkey = NULL,
-                           basisofrecordcode = NULL, minlatitude = NULL, maxlatitude = NULL,
-                           minlongitude = NULL, maxlongitude = NULL, minaltitude = NULL, maxaltitude = NULL,
-                           mindepth = NULL, maxdepth = NULL, cellid = NULL, centicellid = NULL,
-                           typesonly = NULL, coordinatestatus = NULL, coordinateissues = NULL, 
-                           hostisocountrycode = NULL, originisocountrycode = NULL,originregioncode = NULL, 
-                           startdate = NULL, enddate = NULL, startyear = NULL,endyear = NULL, year = NULL, 
-                           month = NULL, day = NULL, modifiedsince = NULL, startindex = NULL, maxresults = 10, 
-                           format = "brief", icon = NULL, mode = NULL, stylesheet = NULL, removeZeros = FALSE, 
-                           writecsv = NULL, curl = getCurlHandle(), fixnames = "none") 
+  dataproviderkey = NULL, dataresourcekey = NULL, institutioncode = NULL,
+  collectioncode = NULL, catalognumber = NULL, resourcenetworkkey = NULL,
+  basisofrecordcode = NULL, minlatitude = NULL, maxlatitude = NULL,
+  minlongitude = NULL, maxlongitude = NULL, minaltitude = NULL, maxaltitude = NULL,
+  mindepth = NULL, maxdepth = NULL, cellid = NULL, centicellid = NULL,
+  typesonly = NULL, coordinatestatus = NULL, coordinateissues = NULL, 
+  hostisocountrycode = NULL, originisocountrycode = NULL,originregioncode = NULL, 
+  startdate = NULL, enddate = NULL, startyear = NULL,endyear = NULL, year = NULL, 
+  month = NULL, day = NULL, modifiedsince = NULL, startindex = NULL, maxresults = 10, 
+  format = "brief", icon = NULL, mode = NULL, stylesheet = NULL, removeZeros = FALSE, 
+  writecsv = NULL, curl = getCurlHandle(), fixnames = "none") 
 {	
   .Deprecated(new="occ_search", package="rgbif", msg="This function is deprecated, and will be removed in a future version. See ?occ_search")
   
@@ -465,7 +466,8 @@ occurrencelist <- function(scientificname = NULL, taxonconceptkey = NULL,
   }
 }
 
-#' Occurrencelist_all carries out an occurrencelist query for a single name and all its name variants according to GBIF's name matching.
+#' Occurrencelist_all carries out an occurrencelist query for a single name and 
+#' all its name variants according to GBIF's name matching.
 #' 
 #' This function is deprecated.
 #'
@@ -476,8 +478,10 @@ occurrencelist <- function(scientificname = NULL, taxonconceptkey = NULL,
 #' @examples \dontrun{
 #' # Query for a single species
 #' # compare the names returned by occurrencelist to occurrencelist_all
-#' occurrencelist(scientificname = 'Aristolochia serpentaria', coordinatestatus = TRUE, maxresults=40)
-#' occurrencelist_all(scientificname = 'Aristolochia serpentaria', coordinatestatus = TRUE, maxresults=40)
+#' occurrencelist(scientificname = 'Aristolochia serpentaria', 
+#'    coordinatestatus = TRUE, maxresults=40)
+#' occurrencelist_all(scientificname = 'Aristolochia serpentaria', 
+#'    coordinatestatus = TRUE, maxresults=40)
 #'
 #' }
 #' @export
@@ -521,7 +525,8 @@ occurrencelist_all <- function(scientificname, ranktoget = 'species', ...)
 #' @examples \dontrun{
 #' # Query for a many species
 #' splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
-#' out <- occurrencelist_many(scientificname=splist, coordinatestatus = TRUE, maxresults = 100)
+#' out <- occurrencelist_many(scientificname=splist, coordinatestatus = TRUE, 
+#'    maxresults = 100)
 #' gbifdata(out)
 #' gbifmap_list(out)
 #' }
@@ -529,18 +534,18 @@ occurrencelist_all <- function(scientificname, ranktoget = 'species', ...)
 #' @rdname occurrencelist_many-deprecated
 #' @seealso occ_search
 occurrencelist_many <- function(scientificname = NULL, taxonconceptkey = NULL,
-                                dataproviderkey = NULL, dataresourcekey = NULL, institutioncode = NULL,
-                                collectioncode = NULL, catalognumber = NULL, resourcenetworkkey = NULL,
-                                basisofrecordcode = NULL, minlatitude = NULL, maxlatitude = NULL,
-                                minlongitude = NULL, maxlongitude = NULL, minaltitude = NULL, maxaltitude = NULL,
-                                mindepth = NULL, maxdepth = NULL, cellid = NULL, centicellid = NULL,
-                                typesonly = NULL, coordinatestatus = NULL,
-                                coordinateissues = NULL, hostisocountrycode = NULL, originisocountrycode = NULL,
-                                originregioncode = NULL, startdate = NULL, enddate = NULL, startyear = NULL,
-                                endyear = NULL, year = NULL, month = NULL, day = NULL, modifiedsince = NULL,
-                                startindex = NULL, maxresults = 10, format = "brief", icon = NULL,
-                                mode = NULL, stylesheet = NULL, removeZeros = FALSE, writecsv = NULL,
-                                curl = getCurlHandle(), fixnames = "none", parallel = FALSE, cores=4) 
+  dataproviderkey = NULL, dataresourcekey = NULL, institutioncode = NULL,
+  collectioncode = NULL, catalognumber = NULL, resourcenetworkkey = NULL,
+  basisofrecordcode = NULL, minlatitude = NULL, maxlatitude = NULL,
+  minlongitude = NULL, maxlongitude = NULL, minaltitude = NULL, maxaltitude = NULL,
+  mindepth = NULL, maxdepth = NULL, cellid = NULL, centicellid = NULL,
+  typesonly = NULL, coordinatestatus = NULL,
+  coordinateissues = NULL, hostisocountrycode = NULL, originisocountrycode = NULL,
+  originregioncode = NULL, startdate = NULL, enddate = NULL, startyear = NULL,
+  endyear = NULL, year = NULL, month = NULL, day = NULL, modifiedsince = NULL,
+  startindex = NULL, maxresults = 10, format = "brief", icon = NULL,
+  mode = NULL, stylesheet = NULL, removeZeros = FALSE, writecsv = NULL,
+  curl = getCurlHandle(), fixnames = "none", parallel = FALSE, cores=4) 
 {    
   .Deprecated(new="occ_search", package="rgbif", msg="This function is deprecated, and will be removed in a future version. See ?occ_search")
   
@@ -1103,9 +1108,8 @@ gbifdata <- function(...) UseMethod("gbifdata")
 
 #' @method gbifdata gbiflist
 #' @export
-#' @seealso gbifdata.gbifdens
 #' @rdname gbifdata-deprecated
-gbifdata.gbiflist <- function(input, coordinatestatus=FALSE, minimal=FALSE)
+gbifdata.gbiflist <- function(input, coordinatestatus=FALSE, minimal=FALSE, ...)
 {  
   if(!is.gbiflist(input)) 
     stop("Input is not of class gbiflist")
@@ -1133,7 +1137,7 @@ gbifdata.gbiflist <- function(input, coordinatestatus=FALSE, minimal=FALSE)
 #' @method gbifdata gbifdens
 #' @export
 #' @rdname gbifdata-deprecated
-gbifdata.gbifdens <- function(input)
+gbifdata.gbifdens <- function(input, ...)
 {
   if(!is.gbifdens(input))
     stop("Input is not of class gbifdens")  
@@ -1141,13 +1145,10 @@ gbifdata.gbifdens <- function(input)
   return( data.frame(input) )
 }
 
-#' Gbiflist NA method for when there's no data returned by occurrencelist fxn
-#' @param input Input object from a call to occurrencelist, occurrencelist_many, or densitylist.
 #' @method gbifdata gbiflist_na
 #' @export
-#' @seealso gbifdata.gbiflist
-#' @rdname gbifdata.gbiflist_na-deprecated
-gbifdata.gbiflist_na <- function(input)
+#' @rdname gbifdata-deprecated
+gbifdata.gbiflist_na <- function(input, ...)
 {  
   if(!is.gbiflist_na(input)) 
     stop("Input is not of class gbiflist_na")

@@ -1,6 +1,6 @@
 <!--
 %\VignetteEngine{knitr}
-%\VignetteIndexEntry{An R Markdown Vignette made with knitr}
+%\VignetteIndexEntry{Tutorial for the new GBIF API}
 -->
 
 rgbif vignette - Seach and retrieve data from the Global Biodiverity Information Facilty (GBIF)
@@ -197,11 +197,31 @@ head(name_lookup(query = "Cnaemidophorus", rank = "genus", return = "data"))
 
 
 ```r
-name_lookup(class = "mammalia")
+head(name_lookup(query = "mammalia")$data)
 ```
 
 ```
-Error: unused argument (class = "mammalia")
+        key nubKey parentKey        parent   phylum         clazz
+1 125798198    359 125828859      Chordata Chordata      Mammalia
+2 116665331    359 116842680      Chordata Chordata      Mammalia
+3       359    359        44      Chordata Chordata      Mammalia
+4 125826646    359 125828859      Chordata Chordata      Mammalia
+5 125775548    359 125775547 Macroscelidea Chordata Macroscelidea
+6 102402290    359 102545028      Chordata Chordata      Mammalia
+  phylumKey  classKey canonicalName     authorship   nameType  rank
+1 125828859 125798198      Mammalia                WELLFORMED CLASS
+2 116842680 116665331      Mammalia Linnaeus, 1758 WELLFORMED CLASS
+3        44       359      Mammalia Linnaeus, 1758 WELLFORMED CLASS
+4 125828859 125826646      Mammalia Linnaeus, 1758 WELLFORMED CLASS
+5 116842680 125775547      Mammalia                WELLFORMED ORDER
+6 102545028 102402290      Mammalia                WELLFORMED CLASS
+  numOccurrences  kingdom kingdomKey    order  orderKey
+1              0     <NA>         NA     <NA>        NA
+2              0 Animalia  116630539     <NA>        NA
+3              0 Animalia          1     <NA>        NA
+4              0     <NA>         NA     <NA>        NA
+5              0 Animalia  116630539 Mammalia 125775548
+6              0 Animalia  101719444     <NA>        NA
 ```
 
 
@@ -209,102 +229,38 @@ Error: unused argument (class = "mammalia")
 
 
 ```r
-name_lookup("Helianthus annuus", rank = "species")
+head(name_lookup("Helianthus annuus", rank = "species")$data)
 ```
 
 ```
-$meta
-  offset limit endOfRecords count
-1      0    20        FALSE    69
-
-$data
-         key  nubKey parentKey                    parent       kingdom
-1  116845199 3119195 116853573                Helianthus       Plantae
-2    3119195 3119195   3119134                Helianthus       Plantae
-3  125790787 3119195 125809269                Helianthus          <NA>
-4  106239436 3119195 106239325                Helianthus Viridiplantae
-5  121635316 3119195 124573711                Helianthus          <NA>
-6  111449704 3119195 111449703                Helianthus       Plantae
-7  108157198      NA 108086589                Asteraceae       Plantae
-8  108157199      NA 108086589                Asteraceae       Plantae
-9  108157200      NA 108086589                Asteraceae       Plantae
-10 115043868 3119195 115091988                Helianthus       Plantae
-11 107290518      NA 107290513                Helianthus       Plantae
-12 107001935      NA 107105089                Helianthus       Plantae
-13 117214133 3119195 117208777                     Virus         Virus
-14 117075019 3119195 117061550                Helianthus       Plantae
-15 110853779 3119195 116128567                Helianthus       Plantae
-16 125879180 3119195 126824197                Helianthus       Plantae
-17 124780276 3119195 124852643                Helianthus       Plantae
-18 100837541 3119195 102425010                Helianthus       Plantae
-19 100019171 3119195 100009008                Helianthus          <NA>
-20 125587214 3119195 106573315 unclassified phytoplasmas          <NA>
-               order             family      genus kingdomKey  orderKey
-1          Asterales         Asteraceae Helianthus  116668764 110610447
-2          Asterales         Asteraceae Helianthus          6       414
-3          Asterales         Asteraceae Helianthus         NA 125833882
-4          Asterales         Asteraceae Helianthus  106147210 106237428
-5               <NA>               <NA> Helianthus         NA        NA
-6               <NA>         Compositae Helianthus  111449174        NA
-7               <NA>         Asteraceae       <NA>  115219148        NA
-8               <NA>         Asteraceae       <NA>  115219148        NA
-9               <NA>         Asteraceae       <NA>  115219148        NA
-10         Asterales         Asteraceae Helianthus  115107585 115106969
-11         Asterales         Asteraceae Helianthus  107264512 107289189
-12              <NA>         Asteraceae Helianthus  124856107        NA
-13              <NA>               <NA>       <NA>  117208777        NA
-14         Asterales         Compositae Helianthus  117067772 117058422
-15         Asterales         Compositae Helianthus  116127234 116128510
-16         Asterales         Asteraceae Helianthus  126775066 126779356
-17         Asterales         Compositae Helianthus  124850847 124852488
-18         Asterales         Asteraceae Helianthus  102545045 100614495
-19         Asterales         Asteraceae Helianthus         NA 100023079
-20 Acholeplasmatales Acholeplasmataceae Candidatus         NA 106013100
-   familyKey  genusKey     canonicalName authorship   nameType    rank
-1  116856030 116853573 Helianthus annuus         L. WELLFORMED SPECIES
-2       3065   3119134 Helianthus annuus         L. WELLFORMED SPECIES
-3  125799038 125809269 Helianthus annuus         L. WELLFORMED SPECIES
-4  106237535 106239325 Helianthus annuus            WELLFORMED SPECIES
-5         NA 124573711 Helianthus annuus            WELLFORMED SPECIES
-6  111442813 111449703 Helianthus annuus         L. WELLFORMED SPECIES
-7  108086589        NA Helianthus annuus         L. WELLFORMED SPECIES
-8  108086589        NA Helianthus annuus         L. WELLFORMED SPECIES
-9  108086589        NA Helianthus annuus         L. WELLFORMED SPECIES
-10 115105473 115091988 Helianthus annuus         L. WELLFORMED SPECIES
-11 107289191 107290513 Helianthus annuus         L. WELLFORMED SPECIES
-12 107079268 107105089 Helianthus annuus         L. WELLFORMED SPECIES
-13        NA        NA Helianthus annuus         L. WELLFORMED SPECIES
-14 117068545 117061550 Helianthus annuus         L. WELLFORMED SPECIES
-15 116128511 116128567 Helianthus annuus         L. WELLFORMED SPECIES
-16 126781795 126824197 Helianthus annuus         L. WELLFORMED SPECIES
-17 124852489 124852643 Helianthus annuus         L. WELLFORMED SPECIES
-18 102234418 102425010 Helianthus annuus   Linnaeus WELLFORMED SPECIES
-19 100025154 100009008 Helianthus annuus   Linnaeus WELLFORMED SPECIES
-20 106039581 106155719 Helianthus annuus               SCINAME SPECIES
-   numOccurrences        phylum         clazz phylumKey  classKey
-1               0          <NA>          <NA>        NA        NA
-2               0 Magnoliophyta Magnoliopsida        49       220
-3               0          <NA>          <NA>        NA        NA
-4               0  Streptophyta          <NA> 106171079        NA
-5               0          <NA>          <NA>        NA        NA
-6               0 Spermatophyta Dicotyledones 111449175 111449177
-7               0          <NA>          <NA>        NA        NA
-8               0          <NA>          <NA>        NA        NA
-9               0          <NA>          <NA>        NA        NA
-10              0 Magnoliophyta Magnoliopsida 115107589 115107444
-11              0 Magnoliophyta Magnoliopsida 107240291 107240313
-12              0          <NA>          <NA>        NA        NA
-13              0          <NA>          <NA>        NA        NA
-14              0 Spermatophyta Magnoliopsida 117080124 117074792
-15              0 Magnoliophyta Magnoliopsida 116127951 116128467
-16              0  Tracheophyta Magnoliopsida 126775067 126775068
-17              0  Tracheophyta Magnoliopsida 124851364 124852364
-18              0 Magnoliophyta Magnoliopsida 102545123 101741810
-19              0          <NA> Equisetopsida        NA 100023390
-20              0   Tenericutes    Mollicutes 106355900 106136190
-
-$facets
-NULL
+        key  nubKey parentKey     parent       kingdom     order
+1 116845199 3119195 116853573 Helianthus       Plantae Asterales
+2   3119195 3119195   3119134 Helianthus       Plantae Asterales
+3 125790787 3119195 125809269 Helianthus          <NA> Asterales
+4 106239436 3119195 106239325 Helianthus Viridiplantae Asterales
+5 121635316 3119195 124573711 Helianthus          <NA>      <NA>
+6 111449704 3119195 111449703 Helianthus       Plantae      <NA>
+      family      genus kingdomKey  orderKey familyKey  genusKey
+1 Asteraceae Helianthus  116668764 110610447 116856030 116853573
+2 Asteraceae Helianthus          6       414      3065   3119134
+3 Asteraceae Helianthus         NA 125833882 125799038 125809269
+4 Asteraceae Helianthus  106147210 106237428 106237535 106239325
+5       <NA> Helianthus         NA        NA        NA 124573711
+6 Compositae Helianthus  111449174        NA 111442813 111449703
+      canonicalName authorship   nameType    rank numOccurrences
+1 Helianthus annuus         L. WELLFORMED SPECIES              0
+2 Helianthus annuus         L. WELLFORMED SPECIES              0
+3 Helianthus annuus         L. WELLFORMED SPECIES              0
+4 Helianthus annuus            WELLFORMED SPECIES              0
+5 Helianthus annuus            WELLFORMED SPECIES              0
+6 Helianthus annuus         L. WELLFORMED SPECIES              0
+         phylum         clazz phylumKey  classKey
+1          <NA>          <NA>        NA        NA
+2 Magnoliophyta Magnoliopsida        49       220
+3          <NA>          <NA>        NA        NA
+4  Streptophyta          <NA> 106171079        NA
+5          <NA>          <NA>        NA        NA
+6 Spermatophyta Dicotyledones 111449175 111449177
 ```
 
 
@@ -401,24 +357,6 @@ gbifmap(input = dat)
 ```
 
 ![plot of chunk gbifmap1](figure/gbifmap1.png) 
-
-
-### Interactive map using a geoJSON file with your Github account
-
-
-```r
-library(plyr)
-splist <- c("Accipiter erythronemius", "Junco hyemalis", "Aix sponsa")
-keys <- sapply(splist, function(x) name_backbone(name = x, kingdom = "plants")$speciesKey, 
-    USE.NAMES = FALSE)
-out <- occ_search(keys, georeferenced = TRUE, limit = 50, return = "data")
-dat <- ldply(out)
-datgeojson <- stylegeojson(input = dat, var = "name", color = c("#976AAE", "#6B944D", 
-    "#BD5945"), size = c("small", "medium", "large"))
-write.csv(datgeojson, "~/my.csv")
-togeojson(input = "~/my.csv", method = "web", outfilename = "my")
-gist("~/my.geojson", description = "Occurrences of three bird species mapped")
-```
 
 
 [gbifapi]: http://data.gbif.org/tutorial/services

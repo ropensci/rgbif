@@ -1,4 +1,5 @@
-#' Search for catalog numbers, collection codes, collector names, and institution codes.
+#' Search for catalog numbers, collection codes, collector names, and institution 
+#' codes.
 #' 
 #' @import httr plyr
 #' @template all
