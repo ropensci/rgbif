@@ -26,7 +26,10 @@
 stylegeojson <- function(input, var = NULL, var_col = NULL, var_sym = NULL, 
                          var_size = NULL, color = NULL, symbol = NULL, size = NULL)
 {
-  if(nrow(input)==0) stop("Your data.frame has now rows...")
+  if(!inherits(input,"data.frame"))
+    stop("Your input object needs to be a data.frame")
+  if(nrow(input)==0) 
+    stop("Your data.frame has no rows...")
   
   if(is.null(var_col) & is.null(var_sym) & is.null(var_size))
     var_col <- var_sym <- var_size <- var

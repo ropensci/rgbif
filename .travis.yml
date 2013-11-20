@@ -1,21 +1,13 @@
-# modified from Yihui's code for knitr
-language: python
-
-# environment variables
-env:
-  - R_LIBS_USER=~/R
-
-# install dependencies
-install:
-  - sudo apt-add-repository -y ppa:marutter/rdev
-  - sudo apt-get update
-  - sudo apt-get install r-base-dev libxml2-dev libcurl4-gnutls-dev qpdf texinfo texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra
-  - "[ ! -d ~/R ] && mkdir ~/R"
-  - R --version
-  - R -e '.libPaths(); sessionInfo()'
-  - Rscript -e 'install.packages("rgbif", dep = TRUE, repos = "http://cran.rstudio.org")'
-
-# run tests
-script:
-  - make install
-  - make check
+language: c
+script: ./travis-tool.sh run_tests
+before_script:
+- curl -OL http://raw.github.com/craigcitro/r-travis/master/scripts/travis-tool.sh
+- chmod 755 ./travis-tool.sh
+- ./travis-tool.sh aptget install gdal-bin
+- ./travis-tool.sh bootstrap
+- ./travis-tool.sh install_deps
+- ./travis-tool.sh github_package assertthat
+notifications:
+  hipchat:
+    rooms:
+      secure: D5PGL1YrI9uu4QBAHKb7WnmZ4vdmZIfyqHZp6tpe+pfyFEUx1i/MQSadYzaRRWBOY8uXlRjH1ESxY1VzmMnFTU/ba782qUFsz/9O8JMwu+hvl56v0hrjmtrajnvAv7WLLZWwf6GO4Q1wT9n41mAzC/WHSQBk4SlDXpIb55xy37k=

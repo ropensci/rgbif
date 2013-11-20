@@ -1,10 +1,8 @@
 #' Make a simple map to visualize GBIF point data.
 #' 
 #' @template map
+#' @import grid ggplot2 maps
 #' @examples \dontrun{
-#' # Point map, using output from occurrencelist, example 1
-#' out <- occurrencelist(scientificname = 'Accipiter erythronemius',
-#'    coordinatestatus = TRUE, maxresults = 100)
 #' gbifmap_list(input = out) # make a map using vertmap
 #' 
 #' # Point map, using output from occurrencelist, example 2, a species with more data

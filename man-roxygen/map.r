@@ -1,7 +1,6 @@
-#' @import ggplot2 maps
 #' @param input Either a single data.frame or a list of data.frame's (e.g., from
 #'     different speies). The data.frame has to have, in addition to any other 
-#'   	columns, columns named exactly "decimalLatitude" and "decimalLongitude".
+#'     columns, columns named exactly "decimalLatitude" and "decimalLongitude".
 #' @param mapdatabase The map database to use in mapping. What you choose here 
 #' 		determines what you can choose in the region parameter. One of: county, 
 #' 		state, usa, world, world2, france, italy, or nz. 

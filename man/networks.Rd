@@ -1,40 +1,51 @@
 \name{networks}
 \alias{networks}
-\title{Get data networks and their unique keys.}
+\title{Networks metadata.}
 \usage{
-  networks(name = "", code = NULL, modifiedsince = NULL,
+  networks(data = "all", uuid = NULL, callopts = list(),
+    name = NULL, code = NULL, modifiedsince = NULL,
     startindex = NULL, maxresults = NULL)
 }
 \arguments{
-  \item{name}{data network name search string, by default
-  searches all data networks by defining name = ''}
+  \item{data}{The type of data to get. Default is all
+  data.}
 
-  \item{code}{return networks identified by the supplied
-  short identifier code.}
+  \item{uuid}{UUID of the data network provider. This must
+  be specified if data is anything other than 'all'.}
 
-  \item{modifiedsince}{return only records which have been
-  indexed or modified on or after the supplied date (format
-  YYYY-MM-DD, e.g. 2006-11-28)}
+  \item{callopts}{Further args passed on to GET.}
 
-  \item{startindex}{return the subset of the matching
-  records that starts at the supplied (zero-based index).}
+  \item{name}{THIS IS A DEPRECATED ARGUMENT. data network
+  name search string, by default searches all data networks
+  by defining name = ''}
 
-  \item{maxresults}{max number of results to return}
+  \item{code}{THIS IS A DEPRECATED ARGUMENT. return
+  networks identified by the supplied short identifier
+  code.}
+
+  \item{modifiedsince}{THIS IS A DEPRECATED ARGUMENT.
+  return only records which have been indexed or modified
+  on or after the supplied date (format YYYY-MM-DD, e.g.
+  2006-11-28)}
+
+  \item{startindex}{THIS IS A DEPRECATED ARGUMENT. return
+  the subset of the matching records that starts at the
+  supplied (zero-based index).}
+
+  \item{maxresults}{THIS IS A DEPRECATED ARGUMENT. max
+  number of results to return}
 }
 \description{
-  Beware: It takes a while to retrieve the full list of
-  networks - so go get more coffee.
+  Networks metadata.
 }
 \examples{
 \dontrun{
-# Test the function for a few networks
-networks(maxresults=10)
-
-# By name
-networks('ORNIS')
-
-# All data providers
 networks()
+networks(uuid='16ab5405-6c94-4189-ac71-16ca3b753df7')
+networks(data='endpoint', uuid='16ab5405-6c94-4189-ac71-16ca3b753df7')
 }
+}
+\references{
+  \url{http://www.gbif.org/developer/summary}
 }
 

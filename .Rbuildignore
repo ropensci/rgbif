@@ -1,4 +1,11 @@
 .gitignore
 ^Makefile$
 .travis.yml
+travis-tool.sh
 man-roxygen
+^.*\.Rproj$
+^\.Rproj\.user$
+inst/stuff
+inst/doc
+inst/ignore
+inst/assets

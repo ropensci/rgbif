@@ -59,16 +59,21 @@ togeojson(file, method='local', outfilename="shp_local")
 
 # Get data and save map data
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
-out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 50)
-dat <- gbifdata(out)
-names(dat)[names(dat) \%in\% c("decimalLatitude","decimalLongitude")]
-   <- c("latitude","longitude")
-dat <- stylegeojson(input=dat, var="taxonName", color=c("#976AAE","#6B944D","#BD5945"),
-   size=c("small","medium","large"))
-write.csv(dat, "~/github/sac/mygeojson/rgbif_data.csv")
+keys <- sapply(splist, function(x) name_backbone(name=x, kingdom='plants')$speciesKey, USE.NAMES=FALSE)
+out <- occ_search(keys, georeferenced=TRUE, limit=50, return="data")
+dat <- ldply(out)
+datgeojson <- stylegeojson(input=dat, var="name", color=c("#976AAE","#6B944D","#BD5945"), size=c("small","medium","large"))
+
+# Put into a github repo to view on the web
+write.csv(datgeojson, "~/github/sac/mygeojson/rgbif_data.csv")
 file <- "~/github/sac/mygeojson/rgbif_data.csv"
-togeojson(file, method = "web", destpath = "~/github/sac/mygeojson/",
-   outfilename = "rgbif_data")
+togeojson(file, method="web", destpath="~/github/sac/mygeojson/", outfilename="rgbif_data")
+
+# Using rCharts' function create_gist
+write.csv(datgeojson, "~/my.csv")
+file <- "~/my.csv"
+togeojson(input=file, method="web", outfilename="my")
+create_gist("~/my.geojson", description = "Map of three bird species occurrences")
 }
 }
 \seealso{

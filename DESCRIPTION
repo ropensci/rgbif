@@ -2,10 +2,10 @@ Package: rgbif
 Description: A programmatic interface to the
     Web Service methods provided by the Global
     Biodiversity Information Facility.
-Title: Interface to the Global Biodiversity Information Facility API methods
-Version: 0.3.0
+Title: Interface to the Global Biodiversity Information Facility API
+Version: 0.3.9
 License: CC0
-Date: 2013-07-18
+Date: 2013-11-19
 Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com"),
     person("Carl", "Boettiger", role = "aut",
@@ -13,11 +13,14 @@ Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
     person("Karthik", "Ram", role = "aut",
     email = "karthik.ram@gmail.com"),
     person("Vijay", "Barve", role = "aut",
-    email = "vijay.barve@gmail.com"))
+    email = "vijay.barve@gmail.com"),
+    person("Dan", "Mcglinn", role = "aut",
+    email = "danmcglinn@gmail.com"))
 URL: https://github.com/ropensci/rgbif
 BugReports: https://github.com/ropensci/rgbif/issues
 LazyLoad: yes
 LazyData: yes
+VignetteBuilder: knitr
 Imports:
     XML,
     RCurl (>= 1.6),
@@ -26,29 +29,32 @@ Imports:
     maps,
     httr,
     maptools,
-    rgdal
+    rgdal,
+    RJSONIO
 Suggests:
     roxygen2
 Collate:
-    'networks.r'
-    'occurrencecount.R'
-    'occurrencedensity.r'
-    'occurrenceget.R'
-    'occurrencelist.R'
-    'providers.r'
-    'resources.r'
-    'taxoncount.R'
-    'taxonsearch.R'
-    'taxrank.r'
-    'zzz.r'
-    'taxonget.r'
-    'densitylist.r'
-    'density_spplist.r'
-    'methods.r'
-    'occurrencelist_many.R'
-    'gbifmap.r'
+    'occ_get.r'
+    'occ_search.r'
     'country_codes.r'
-    'rgbif-package.R'
+    'dataset_metrics.r'
+    'zzz.r'
+    'dataset_search.r'
+    'datasets.r'
+    'networks.r'
+    'nodes.r'
+    'organizations.r'
+    'gbifmap.r'
+    'occ_count.r'
+    'deprecated.r'
+    'name_usage.r'
+    'gist.r'
     'stylegeojson.r'
     'togeojson.r'
-    'occurrencelist_all.R'
+    'rgbif-package.r'
+    'parsenames.R'
+    'name_suggest.r'
+    'name_backbone.r'
+    'occ_metadata.r'
+    'name_lookup.r'
+    'dataset_suggest.r'

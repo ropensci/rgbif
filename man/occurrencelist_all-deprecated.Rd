@@ -1,0 +1,33 @@
+\name{occurrencelist_all}
+\alias{occurrencelist_all}
+\title{Occurrencelist_all carries out an occurrencelist query for a single name and all its name variants according to GBIF's name matching.}
+\usage{
+  occurrencelist_all(scientificname, ranktoget = "species",
+    ...)
+}
+\arguments{
+  \item{scientificname}{A scientific name. (character)}
+
+  \item{ranktoget}{You must specify the taxonomic rank you
+  are searching for so that we can select the correct
+  names.}
+
+  \item{...}{Further arguments passed on to
+  occurrencelist_many}
+}
+\description{
+  This function is deprecated.
+}
+\examples{
+\dontrun{
+# Query for a single species
+# compare the names returned by occurrencelist to occurrencelist_all
+occurrencelist(scientificname = 'Aristolochia serpentaria', coordinatestatus = TRUE, maxresults=40)
+occurrencelist_all(scientificname = 'Aristolochia serpentaria', coordinatestatus = TRUE, maxresults=40)
+
+}
+}
+\seealso{
+  occ_search
+}
+
