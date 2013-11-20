@@ -50,9 +50,15 @@ Changes in the new GBIF API from last with respect to `rgbif`:
 
 ## Install
 
-### Install the development version on the `newapi` branch using `install_github`.
+### Install stable version on CRAN
 
-```R
+```coffee
+install.packages("rgbif")
+```
+
+### Install development version
+
+```coffee
 install.packages("devtools")
 require(devtools)
 
