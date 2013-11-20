@@ -1,6 +1,6 @@
 \name{gbifmap}
 \alias{gbifmap}
-\title{Make a simple map to visualize GBIF data.}
+\title{Make a map to visualize GBIF occurrence data.}
 \usage{
   gbifmap(input = NULL, mapdatabase = "world",
     region = ".", geom = geom_point, jitter = NULL,
@@ -34,11 +34,11 @@
   \item{customize}{Further arguments passed on to ggplot.}
 }
 \value{
-  Map (using ggplot2 package) of points or tiles on a world
-  map.
+  Map (using ggplot2 package) of points on a map or tiles
+  on a map.
 }
 \description{
-  Basic function to plot your lat/long data on a map.
+  Make a map to visualize GBIF occurrence data.
 }
 \details{
   gbifmap takes care of cleaning up the data.frame
@@ -47,52 +47,22 @@
   your data.  You can look at the code behing the function
   itself if you want to build on it to make a map according
   to your specfications.
+
+  Note that this function removes values that are
+  impossible on the globe, and those rows that have both
+  lat and long as NA or zeros.
 }
 \examples{
 \dontrun{
-# Point map, using output from occurrencelist, example 1
-out <- occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100)
-gbifmap(input = out) # make a map using vertmap
+# Make a map of Puma concolor occurrences
+key <- gbif_lookup(name='Puma concolor', kingdom='plants')$speciesKey
+dat <- occ_search(taxonKey=key, return='data', limit=300)
+gbifmap(input=dat)
 
-# Point map, using output from occurrencelist, example 2, a species with more data
-out <- occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE, maxresults = 100)
-gbifmap(input = out) # make a map
-gbifmap(input = out, region = 'USA') # make a map, just plotting data for
-
-# Point map, using output from occurrencelist, many species
-splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
-out <- llply(splist, function(x) occurrencelist(x, coordinatestatus = T, maxresults = 100))
-gbifmap(out)
-
-# Tile map, using output from densitylist, Canada
-out2 <- densitylist(originisocountrycode = "CA") # data for Canada
-gbifmap(out2) # on world map
-gbifmap(out2, region="Canada") # on Canada map
-
-# Tile map, using gbifdensity, a specific data provider key
-# 191 for 'University of Texas at El Paso'
-out2 <- densitylist(dataproviderkey = 191) # data for the US
-gbifmap(out2) # on world map
-
-# Get occurrences or density by area, using min/max lat/long coordinates
-out <- occurrencelist(minlatitude=30, maxlatitude=35, minlongitude=-100, maxlongitude=-95,
-   coordinatestatus = T, maxresults = 5000, latlongdf = T)
-
-# Using `geom_point`
-gbifmap(out, "state", "texas", geom_point)
-
-# Using geom_jitter to move the points apart from one another
-gbifmap(out, "state", "texas", geom_jitter, position_jitter(width = 0.3, height = 0.3))
-
-# And move points a lot
-gbifmap(out, "state", "texas", geom_jitter, position_jitter(width = 1, height = 1))
-
-# Customize the plot by passing options to `ggplot()`
-mycustom <- function(){
-   list(geom_point(size=9)
-       )}
-out <- occurrencelist(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE, maxresults = 100)
-gbifmap(out, customize = mycustom())
+# Plot more Puma concolor occurrences
+dat <- occ_search(taxonKey=key, return='data', limit=1200)
+nrow(dat)
+gbifmap(input=dat)
 }
 }
 
