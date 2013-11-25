@@ -15,9 +15,7 @@ rgbif vignette - Seach and retrieve data from the Global Biodiverity Information
 ## Install rgbif and dependencies
 
 ```{r install, eval=FALSE}
-install.packages("devtools")
-library(devtools)
-install_github("rgbif", "ropensci", ref="newapi")
+install.packages("rgbif")
 ```
 
 ## Load rgbif and dependencies
