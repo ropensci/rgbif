@@ -148,6 +148,35 @@ gbifmap(datdf)
 
 ![](inst/assets/img/gbifmap.png)
 
-<br><br>
+Please report any issues or bugs](https://github.com/ropensci/rgbif/issues).
+
+License: CC0
+
+This package is part of the [rOpenSci](http://ropensci.org/packages) project.
+
+To cite package `rgbif` in publications use:
+
+```coffee
+To cite package ‘rgbif’ in publications use:
+
+  Scott Chamberlain, Carl Boettiger, Karthik Ram, Vijay Barve and Dan
+  Mcglinn (2013). rgbif: Interface to the Global Biodiversity
+  Information Facility API. R package version 0.4.0.
+  http://CRAN.R-project.org/package=rgbif
+
+A BibTeX entry for LaTeX users is
+
+  @Manual{,
+    title = {rgbif: Interface to the Global Biodiversity Information Facility API},
+    author = {Scott Chamberlain and Carl Boettiger and Karthik Ram and Vijay Barve and Dan Mcglinn},
+    year = {2013},
+    note = {R package version 0.4.0},
+    url = {http://CRAN.R-project.org/package=rgbif},
+  }
+```
+
+Get citation information for `rgbif` in R doing `citation(package = 'rgbif')`
+
+<br>
 
 [![](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
