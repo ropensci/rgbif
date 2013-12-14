@@ -1,0 +1,115 @@
+#' Facetted count occurrence search.
+#' 
+#' @import plyr
+#' @param keys (numeric) GBIF keys, a vector.
+#' @param by (character) One of georeferenced, basisOfRecord, country, hostCountry, or
+#' publishingCountry.
+#' @param countries (numeric) Number of countries to facet on, or a vector of country names
+#' @param removezeros (logical) Default is FALSE
+#' @export
+#' @examples \dontrun{
+#' spplist <- c('Geothlypis trichas','Tiaris olivacea','Pterodroma axillaris',
+#'              'Calidris ferruginea','Pterodroma macroptera','Gallirallus australis',
+#'              'Falco cenchroides','Telespiza cantans','Oreomystis bairdi',
+#'              'Cistothorus palustris')
+#' keys <- sapply(spplist, function(x) name_backbone(x, rank="species")$usageKey)
+#' keys <- compact(keys)
+#' count_facet(keys, by='country', countries=3, removezeros = TRUE)
+#' count_facet(by='country', countries=3, removezeros = TRUE)
+#' count_facet(by='country', countries=20, removezeros = TRUE)
+#' 
+#' # Pass in country names instead
+#' countries <- isocodes$gbif_name[1:10]
+#' count_facet(by='country', countries=countries, removezeros = TRUE)
+#' 
+#' # get occurrences by georeferenced state
+#' ## across all records
+#' count_facet(by='georeferenced')
+#' 
+#' ## by keys
+#' out <- count_facet(keys, by='georeferenced')
+#' library(reshape2)
+#' dcast(out, .id ~ georefernced)
+#' 
+#' # by basisOfRecord
+#' count_facet(by="basisOfRecord")
+#' 
+#' # throws error, you can't use basisOfRecord and keys in the same call
+#' count_facet(keys, by="basisOfRecord")
+#' }
+
+count_facet <- function(keys = NULL, by = 'country', countries = 10, removezeros = FALSE)
+{
+  # can't do both keys and basisofrecord
+  if(!is.null(keys) && by=='basisOfRecord')
+    stop("you can't pass in both keys and have by='basisOfRecord'")
+  
+  # faceting data vectors
+  if(is.numeric(countries))
+    countrynames <- list(country=as.character(isocodes$gbif_name)[1:countries])
+  else
+    countrynames <- list(country=as.character(countries))
+  georefvals <- list(georeferenced = c(TRUE, FALSE))
+  basisvals <- list(basisOfRecord = 
+                      c("FOSSIL_SPECIMEN", "HUMAN_OBSERVATION", "LITERATURE", 
+                        "LIVING_SPECIMEN", "MACHINE_OBSERVATION", "OBSERVATION",
+                        "PRESERVED_SPECIMEN", "UNKNOWN"))
+  byvar <- switch(by,
+                  georeferenced = georefvals,
+                  basisOfRecord = basisvals,
+                  country = countrynames, 
+                  hostCountry = countrynames, 
+                  publishingCountry = countrynames)
+  
+  if(!is.null(keys)){
+    out <- lapply(keys, occ_by_keys, tt=byvar)
+    names(out) <- keys
+    df <- ldply(out, function(x){
+      tmp <- ldply(x)
+      names(tmp)[1] <- by
+      tmp
+    })
+  } else
+  {
+    out <- occ_by(byvar)
+    df <- ldply(out)
+    names(df)[1] <- by
+    df
+  }
+  
+  # remove NAs (which were caused by errors in country names)
+  df <- na.omit(df)
+  
+  if(removezeros)
+    df[!df$V1==0,]
+  else
+    df
+}
+
+# Function to get data for each name
+occ_by_keys <- function(spkey=NULL, tt){
+  occ_count_safe <- plyr::failwith(NULL, occ_count)
+  tmp <- lapply(tt[[1]], function(x){
+    xx <- list(x)
+    names(xx) <- names(tt)
+    if(!is.null(keys))
+      xx$nubKey <- spkey
+    do.call(occ_count_safe, xx)
+  })
+  names(tmp) <- tt[[1]]
+  tmp[grep("No enum", tmp)] <- NA
+  tmp
+}
+
+# Function to get data for each name
+occ_by <- function(tt){
+  occ_count_safe <- plyr::failwith(NULL, occ_count)
+  tmp <- lapply(tt[[1]], function(x){
+    xx <- list(x)
+    names(xx) <- names(tt)
+    do.call(occ_count_safe, xx)
+  })
+  names(tmp) <- tt[[1]]
+  tmp[grep("No enum", tmp)] <- NA
+  tmp
+}

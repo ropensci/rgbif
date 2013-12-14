@@ -1,0 +1,55 @@
+\name{count_facet}
+\alias{count_facet}
+\title{Facetted count occurrence search.}
+\usage{
+count_facet(keys = NULL, by = "country", countries = 10,
+  removezeros = FALSE)
+}
+\arguments{
+  \item{keys}{(numeric) GBIF keys, a vector.}
+
+  \item{by}{(character) One of georeferenced,
+  basisOfRecord, country, hostCountry, or
+  publishingCountry.}
+
+  \item{countries}{(numeric) Number of countries to facet
+  on, or a vector of country names}
+
+  \item{removezeros}{(logical) Default is FALSE}
+}
+\description{
+Facetted count occurrence search.
+}
+\examples{
+\dontrun{
+spplist <- c('Geothlypis trichas','Tiaris olivacea','Pterodroma axillaris',
+             'Calidris ferruginea','Pterodroma macroptera','Gallirallus australis',
+             'Falco cenchroides','Telespiza cantans','Oreomystis bairdi',
+             'Cistothorus palustris')
+keys <- sapply(spplist, function(x) name_backbone(x, rank="species")$usageKey)
+keys <- compact(keys)
+count_facet(keys, by='country', countries=3, removezeros = TRUE)
+count_facet(by='country', countries=3, removezeros = TRUE)
+count_facet(by='country', countries=20, removezeros = TRUE)
+
+# Pass in country names instead
+countries <- isocodes$gbif_name[1:10]
+count_facet(by='country', countries=countries, removezeros = TRUE)
+
+# get occurrences by georeferenced state
+## across all records
+count_facet(by='georeferenced')
+
+## by keys
+out <- count_facet(keys, by='georeferenced')
+library(reshape2)
+dcast(out, .id ~ georefernced)
+
+# by basisOfRecord
+count_facet(by="basisOfRecord")
+
+# throws error, you can't use basisOfRecord and keys in the same call
+count_facet(keys, by="basisOfRecord")
+}
+}
+

@@ -3,7 +3,7 @@
 \title{Search for datasets and dataset metadata.}
 \usage{
 datasets(data = "all", type = NULL, uuid = NULL, query = NULL,
-  id = NULL, callopts = list())
+  id = NULL, limit = 20, callopts = list())
 }
 \arguments{
   \item{data}{The type of data to get. Default is all

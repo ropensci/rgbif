@@ -22,9 +22,9 @@
 #' datasets(data=c('deleted','duplicate'))
 #' }
 datasets <- function(data = 'all', type = NULL, uuid = NULL, query = NULL, id = NULL, 
-                     callopts=list())
+                     limit = 20, callopts=list())
 {
-  args <- compact(list(q = query, type = type))
+  args <- compact(list(q = query, type = type, limit = limit))
   
   data <- match.arg(data, choices=c('all', 'organization', 'contact', 'endpoint', 
                                     'identifier', 'tag', 'machinetag', 'comment', 
