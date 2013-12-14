@@ -33,28 +33,3 @@ Imports:
 Suggests:
     roxygen2,
     testthat
-Collate:
-    'occ_get.r'
-    'occ_search.r'
-    'country_codes.r'
-    'dataset_metrics.r'
-    'zzz.r'
-    'dataset_search.r'
-    'datasets.r'
-    'networks.r'
-    'nodes.r'
-    'organizations.r'
-    'gbifmap.r'
-    'occ_count.r'
-    'deprecated.r'
-    'name_usage.r'
-    'gist.r'
-    'stylegeojson.r'
-    'togeojson.r'
-    'rgbif-package.r'
-    'parsenames.R'
-    'name_suggest.r'
-    'name_backbone.r'
-    'occ_metadata.r'
-    'name_lookup.r'
-    'dataset_suggest.r'

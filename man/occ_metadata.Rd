@@ -3,8 +3,8 @@
 \title{Search for catalog numbers, collection codes, collector names, and institution
 codes.}
 \usage{
-  occ_metadata(type = "catalog_number", q = NULL,
-    limit = 5, callopts = list(), pretty = TRUE)
+occ_metadata(type = "catalog_number", q = NULL, limit = 5,
+  callopts = list(), pretty = TRUE)
 }
 \arguments{
   \item{type}{Type of data, one of catalog_number,
@@ -21,8 +21,8 @@ codes.}
   data, FALSE gives character strings.}
 }
 \description{
-  Search for catalog numbers, collection codes, collector
-  names, and institution codes.
+Search for catalog numbers, collection codes, collector
+names, and institution codes.
 }
 \examples{
 \dontrun{
@@ -49,6 +49,6 @@ occ_metadata(type = "cat", q=122)
 }
 }
 \references{
-  \url{http://www.gbif.org/developer/summary}
+\url{http://www.gbif.org/developer/summary}
 }
 

@@ -3,12 +3,12 @@
 \title{Returns summary counts of occurrence records by one-degree cell for a single
   	taxon, country, dataset, data publisher or data network.}
 \usage{
-  occurrencedensity()
+occurrencedensity()
 }
 \description{
-  This function is deprecated.
+This function is deprecated.
 }
 \seealso{
-  densitylist
+densitylist
 }
 

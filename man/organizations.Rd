@@ -2,8 +2,8 @@
 \alias{organizations}
 \title{Organizations metadata.}
 \usage{
-  organizations(data = "all", uuid = NULL, query = NULL,
-    callopts = list())
+organizations(data = "all", uuid = NULL, query = NULL,
+  callopts = list())
 }
 \arguments{
   \item{data}{The type of data to get. Default is all
@@ -17,10 +17,10 @@
   \item{callopts}{Further args passed on to GET.}
 }
 \value{
-  A list.
+A list.
 }
 \description{
-  Organizations metadata.
+Organizations metadata.
 }
 \examples{
 \dontrun{
@@ -32,6 +32,6 @@ organizations(data='pending')
 }
 }
 \references{
-  \url{http://www.gbif.org/developer/summary}
+\url{http://www.gbif.org/developer/summary}
 }
 

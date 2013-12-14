@@ -2,12 +2,12 @@
 \alias{dataset_search}
 \title{Search datasets in GBIF.}
 \usage{
-  dataset_search(query = NULL, country = NULL, type = NULL,
-    keyword = NULL, owning_org = NULL, hosting_org = NULL,
-    publishing_country = NULL, decade = NULL, facet = NULL,
-    facet_only = NULL, facet_mincount = NULL,
-    facet_multiselect = NULL, limit = 20, start = NULL,
-    callopts = list(), pretty = FALSE, return = "all")
+dataset_search(query = NULL, country = NULL, type = NULL,
+  keyword = NULL, owning_org = NULL, hosting_org = NULL,
+  publishing_country = NULL, decade = NULL, facet = NULL,
+  facet_only = NULL, facet_mincount = NULL, facet_multiselect = NULL,
+  limit = 20, start = NULL, callopts = list(), pretty = FALSE,
+  return = "all")
 }
 \arguments{
   \item{callopts}{Pass on options to httr::GET for more
@@ -80,12 +80,12 @@
   data, facets, or all (Default).}
 }
 \value{
-  A data.frame, list, or message printed to console (using
-  pretty=TRUE).
+A data.frame, list, or message printed to console (using
+pretty=TRUE).
 }
 \description{
-  This function does not search occurrence data, only
-  metadata on the datasets that contain occurrence data.
+This function does not search occurrence data, only
+metadata on the datasets that contain occurrence data.
 }
 \examples{
 \dontrun{
@@ -125,6 +125,6 @@ dataset_search(facet="decade", facet_mincount="10")
 }
 }
 \references{
-  \url{http://www.gbif.org/developer/summary}
+\url{http://www.gbif.org/developer/summary}
 }
 

@@ -3,10 +3,9 @@
 \title{The density web service provides access to records showing the density
   	of occurrence records from the GBIF Network by one-degree cell.}
 \usage{
-  densitylist(taxonconceptKey = NULL,
-    dataproviderkey = NULL, dataresourcekey = NULL,
-    resourcenetworkkey = NULL, originisocountrycode = NULL,
-    format = NULL)
+densitylist(taxonconceptKey = NULL, dataproviderkey = NULL,
+  dataresourcekey = NULL, resourcenetworkkey = NULL,
+  originisocountrycode = NULL, format = NULL)
 }
 \arguments{
   \item{taxonconceptKey}{Unique key for taxon (numeric).
@@ -36,15 +35,15 @@
   are to be returned, one of: brief or kml (character)}
 }
 \value{
-  A data.frame with the columns \itemize{
-  \item{"minLatitude"}{Minimum latitude of the cell}
-  \item{"maxLatitude"}{Maximum latitude of the cell}
-  \item{"minLongitude"}{Minimum longitude of the cell}
-  \item{"maxLongitude"}{Maximum longitude of the cell}
-  \item{"count"}{Number of occurrences found} }
+A data.frame with the columns \itemize{
+\item{"minLatitude"}{Minimum latitude of the cell}
+\item{"maxLatitude"}{Maximum latitude of the cell}
+\item{"minLongitude"}{Minimum longitude of the cell}
+\item{"maxLongitude"}{Maximum longitude of the cell}
+\item{"count"}{Number of occurrences found} }
 }
 \description{
-  This function is deprecated.
+This function is deprecated.
 }
 \examples{
 \dontrun{

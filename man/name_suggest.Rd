@@ -3,9 +3,8 @@
 \title{A quick and simple autocomplete service that returns up to 20 name usages by
 doing prefix matching against the scientific name. Results are ordered by relevance.}
 \usage{
-  name_suggest(q = NULL, datasetKey = NULL, rank = NULL,
-    fields = NULL, start = NULL, limit = 20,
-    callopts = list())
+name_suggest(q = NULL, datasetKey = NULL, rank = NULL, fields = NULL,
+  start = NULL, limit = 20, callopts = list())
 }
 \arguments{
   \item{callopts}{Pass on options to httr::GET for more
@@ -29,12 +28,12 @@ doing prefix matching against the scientific name. Results are ordered by releva
   (simply prunes columns off)}
 }
 \value{
-  A data.frame with fields selected by fields arg.
+A data.frame with fields selected by fields arg.
 }
 \description{
-  A quick and simple autocomplete service that returns up
-  to 20 name usages by doing prefix matching against the
-  scientific name. Results are ordered by relevance.
+A quick and simple autocomplete service that returns up to
+20 name usages by doing prefix matching against the
+scientific name. Results are ordered by relevance.
 }
 \examples{
 \dontrun{
@@ -46,6 +45,6 @@ name_suggest(q='Puma', rank="GENUS")
 }
 }
 \references{
-  \url{http://www.gbif.org/developer/summary}
+\url{http://www.gbif.org/developer/summary}
 }
 

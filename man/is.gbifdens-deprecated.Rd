@@ -2,12 +2,12 @@
 \alias{is.gbifdens}
 \title{Check if object is of class gbifdens}
 \usage{
-  is.gbifdens(x)
+is.gbifdens(x)
 }
 \arguments{
   \item{x}{input}
 }
 \description{
-  Check if object is of class gbifdens
+Check if object is of class gbifdens
 }
 

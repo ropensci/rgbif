@@ -2,20 +2,19 @@
 \alias{parsenames}
 \title{Parse taxon names using the GBIF name parser.}
 \usage{
-  parsenames(scientificname)
+parsenames(scientificname)
 }
 \arguments{
   \item{scientificname}{A character vector of scientific
   names.}
 }
 \value{
-  A \code{data.frame} containing fields extracted from
-  parsed taxon names. Fields returned are the union of
-  fields extracted from all species names in
-  \code{scientificname}.
+A \code{data.frame} containing fields extracted from parsed
+taxon names. Fields returned are the union of fields
+extracted from all species names in \code{scientificname}.
 }
 \description{
-  Parse taxon names using the GBIF name parser.
+Parse taxon names using the GBIF name parser.
 }
 \examples{
 \dontrun{
@@ -26,9 +25,9 @@ parsenames(c('Arrhenatherum elatius var. elatius',
 }
 }
 \author{
-  John Baumgartner (johnbb@student.unimelb.edu.au)
+John Baumgartner (johnbb@student.unimelb.edu.au)
 }
 \references{
-  \url{http://www.gbif.org/developer/summary}
+\url{http://www.gbif.org/developer/summary}
 }
 

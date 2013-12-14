@@ -2,11 +2,9 @@
 \alias{taxonsearch}
 \title{Search for taxa in GBIF.}
 \usage{
-  taxonsearch(scientificname = NULL, rank = NULL,
-    maxresults = 10, dataproviderkey = 1,
-    dataresourcekey = NULL, resourcenetworkkey = NULL,
-    hostisocountrycode = NULL, startindex = NULL,
-    accepted_status = FALSE)
+taxonsearch(scientificname = NULL, rank = NULL, maxresults = 10,
+  dataproviderkey = 1, dataresourcekey = NULL, resourcenetworkkey = NULL,
+  hostisocountrycode = NULL, startindex = NULL, accepted_status = FALSE)
 }
 \arguments{
   \item{scientificname}{scientific name of taxon
@@ -40,22 +38,22 @@
   \item{accepted_status}{Status in the GIBF portal}
 }
 \value{
-  A data.frame.
+A data.frame.
 }
 \description{
-  When searching for taxa, keep in mind that unless you
-  want taxon identifiers for a specific data source, leave
-  dataproviderkey as the default of 1, which is the GBIF
-  backbone taxonomy. Also, always specify the taxonomic
-  rank you are searching for - GBIF says the search is more
-  efficient if rank is given.
+When searching for taxa, keep in mind that unless you want
+taxon identifiers for a specific data source, leave
+dataproviderkey as the default of 1, which is the GBIF
+backbone taxonomy. Also, always specify the taxonomic rank
+you are searching for - GBIF says the search is more
+efficient if rank is given.
 }
 \details{
-  This function is deprecated.
+This function is deprecated.
 
-  Search for a taxon using scientific name. Optionally,
-  include taxonomic rank in the search. Returns list of
-  TaxonConcept key values.
+Search for a taxon using scientific name. Optionally,
+include taxonomic rank in the search. Returns list of
+TaxonConcept key values.
 }
 \examples{
 \dontrun{
@@ -70,6 +68,6 @@ taxonsearch(scientificname = 'Fabaceae', rank="family")
 }
 }
 \seealso{
-  occ_search
+occ_search
 }
 

@@ -5,9 +5,8 @@
 \title{rgbif: A programmatic interface to the Web Service methods provided by the
 Global Biodiversity Information Facility.}
 \description{
-  rgbif: A programmatic interface to the Web Service
-  methods provided by the Global Biodiversity Information
-  Facility.
+rgbif: A programmatic interface to the Web Service methods
+provided by the Global Biodiversity Information Facility.
 }
 \section{About}{
   This package gives you access to data from GBIF
@@ -45,7 +44,7 @@ Global Biodiversity Information Facility.}
   second column giving the state of the function in the new
   package version, and any reasoning in the third column.
 
-  \tabular{lll}{ country_codes \tab same \tab none \cr
+  \tabular{lll}{ rgb_country_codes \tab same \tab none \cr
   density_spplist \tab deprecated \tab service no longer
   provided \cr densitylist \tab deprecated \tab service not
   provided anymore \cr gbifdata \tab deprecated \tab not

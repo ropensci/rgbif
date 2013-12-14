@@ -2,8 +2,7 @@
 \alias{togeojson}
 \title{Convert spatial data files to GeoJSON from various formats.}
 \usage{
-  togeojson(input, method = "web", destpath = "~/",
-    outfilename = "myfile")
+togeojson(input, method = "web", destpath = "~/", outfilename = "myfile")
 }
 \arguments{
   \item{input}{The file being uploaded, path to the file on
@@ -19,25 +18,25 @@
   extension.}
 }
 \description{
-  The web option uses the Ogre web API. Ogre currently has
-  an output size limit of 15MB. See here
-  \url{http://ogre.adc4gis.com/} for info on the Ogre web
-  API. The local option uses the function
-  \code{\link{writeOGR}} from the package rgdal.
+The web option uses the Ogre web API. Ogre currently has an
+output size limit of 15MB. See here
+\url{http://ogre.adc4gis.com/} for info on the Ogre web
+API. The local option uses the function
+\code{\link{writeOGR}} from the package rgdal.
 
-  Note that for Shapefiles, GML, MapInfo, and VRT, you need
-  to send zip files to Ogre. For other file types (.bna,
-  .csv, .dgn, .dxf, .gxt, .txt, .json, .geojson, .rss,
-  .georss, .xml, .gmt, .kml, .kmz) you send the actual file
-  with that file extension.
+Note that for Shapefiles, GML, MapInfo, and VRT, you need
+to send zip files to Ogre. For other file types (.bna,
+.csv, .dgn, .dxf, .gxt, .txt, .json, .geojson, .rss,
+.georss, .xml, .gmt, .kml, .kmz) you send the actual file
+with that file extension.
 
-  If you're having trouble rendering geoJSON files, ensure
-  you have a valid geoJSON file by running it through a
-  geoJSON linter \url{http://geojsonlint.com/}.
+If you're having trouble rendering geoJSON files, ensure
+you have a valid geoJSON file by running it through a
+geoJSON linter \url{http://geojsonlint.com/}.
 }
 \details{
-  You can use a web interface called Ogre, or do
-  conversions locally using the rgdal package.
+You can use a web interface called Ogre, or do conversions
+locally using the rgdal package.
 }
 \examples{
 \dontrun{
@@ -79,6 +78,6 @@ create_gist("~/my.geojson", description = "Map of three bird species occurrences
 }
 }
 \seealso{
-  \code{\link{stylegeojson}}
+\code{\link{stylegeojson}}
 }
 

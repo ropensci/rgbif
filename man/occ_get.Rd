@@ -2,8 +2,8 @@
 \alias{occ_get}
 \title{Get data for specific GBIF occurrences.}
 \usage{
-  occ_get(key = NULL, return = "all", verbatim = FALSE,
-    minimal = TRUE, callopts = list())
+occ_get(key = NULL, return = "all", verbatim = FALSE, minimal = TRUE,
+  callopts = list())
 }
 \arguments{
   \item{key}{Occurrence key}
@@ -24,10 +24,10 @@
   \code{\link{GET}} request.}
 }
 \value{
-  A data.frame or list.
+A data.frame or list.
 }
 \description{
-  Get data for specific GBIF occurrences.
+Get data for specific GBIF occurrences.
 }
 \examples{
 \dontrun{
@@ -43,6 +43,6 @@ occ_get(key=c(773433533,766766824,620594291,766420684), verbatim=TRUE)
 }
 }
 \references{
-  \url{http://www.gbif.org/developer/summary}
+\url{http://www.gbif.org/developer/summary}
 }
 

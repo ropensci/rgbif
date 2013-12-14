@@ -5,14 +5,14 @@
 \alias{gbifdata.gbiflist_na}
 \title{Get data.frame from occurrencelist, occurrencelist_many, or densitylist.}
 \usage{
-  gbifdata(...)
+gbifdata(...)
 
-  \method{gbifdata}{gbiflist} (input,
-    coordinatestatus = FALSE, minimal = FALSE, ...)
+\method{gbifdata}{gbiflist}(input, coordinatestatus = FALSE,
+  minimal = FALSE, ...)
 
-  \method{gbifdata}{gbifdens} (input, ...)
+\method{gbifdata}{gbifdens}(input, ...)
 
-  \method{gbifdata}{gbiflist_na} (input, ...)
+\method{gbifdata}{gbiflist_na}(input, ...)
 }
 \arguments{
   \item{input}{Input object from a call to occurrencelist,
@@ -29,13 +29,13 @@
   \item{...}{further arguments}
 }
 \description{
-  Get data.frame from occurrencelist, occurrencelist_many,
-  or densitylist.
+Get data.frame from occurrencelist, occurrencelist_many, or
+densitylist.
 }
 \details{
-  A convienence function to get the raw data in a
-  data.frame format from occurrencelist,
-  occurrencelist_many, and densitylist functions.
+A convienence function to get the raw data in a data.frame
+format from occurrencelist, occurrencelist_many, and
+densitylist functions.
 }
 \examples{
 \dontrun{

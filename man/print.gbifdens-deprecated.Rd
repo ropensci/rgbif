@@ -2,7 +2,7 @@
 \alias{print.gbifdens}
 \title{Print summary of gbifdens class}
 \usage{
-  \method{print}{gbifdens} (x, ...)
+\method{print}{gbifdens}(x, ...)
 }
 \arguments{
   \item{x}{an object of class gbifdens}
@@ -11,6 +11,6 @@
   methods.}
 }
 \description{
-  Print summary of gbifdens class
+Print summary of gbifdens class
 }
 

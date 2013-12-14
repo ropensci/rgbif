@@ -2,7 +2,7 @@
 \alias{parseresults}
 \title{Parse results from call to occurrencelist endpoint}
 \usage{
-  parseresults(x, ..., removeZeros = removeZeros)
+parseresults(x, ..., removeZeros = removeZeros)
 }
 \arguments{
   \item{x}{A list}
@@ -12,7 +12,7 @@
   \item{removeZeros}{remove zeros or not}
 }
 \description{
-  Parse results from call to occurrencelist endpoint
+Parse results from call to occurrencelist endpoint
 }
 \keyword{internal}
 

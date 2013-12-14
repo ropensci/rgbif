@@ -2,9 +2,8 @@
 \alias{providers}
 \title{Get data providers and their unique keys.}
 \usage{
-  providers(name = "", isocountrycode = NULL,
-    modifiedsince = NULL, startindex = NULL,
-    maxresults = NULL)
+providers(name = "", isocountrycode = NULL, modifiedsince = NULL,
+  startindex = NULL, maxresults = NULL)
 }
 \arguments{
   \item{name}{data provider name search string, by default
@@ -23,11 +22,11 @@
   \item{maxresults}{max number of results to return}
 }
 \description{
-  This function is deprecated.
+This function is deprecated.
 }
 \details{
-  Beware: It takes a while to retrieve the full list of
-  providers - so go get more coffee.
+Beware: It takes a while to retrieve the full list of
+providers - so go get more coffee.
 }
 \examples{
 \dontrun{
@@ -39,6 +38,6 @@ providers('University of Texas-Austin')
 }
 }
 \seealso{
-  networks organizations datasets
+networks organizations datasets
 }
 

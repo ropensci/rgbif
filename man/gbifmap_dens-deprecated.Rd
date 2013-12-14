@@ -2,9 +2,8 @@
 \alias{gbifmap_dens}
 \title{Make a simple map to visualize GBIF data density data}
 \usage{
-  gbifmap_dens(input = NULL, mapdatabase = "world",
-    region = ".", geom = geom_point, jitter = NULL,
-    customize = NULL)
+gbifmap_dens(input = NULL, mapdatabase = "world", region = ".",
+  geom = geom_point, jitter = NULL, customize = NULL)
 }
 \arguments{
   \item{input}{Either a single data.frame or a list of
@@ -34,23 +33,23 @@
   \item{customize}{Further arguments passed on to ggplot.}
 }
 \value{
-  Map (using ggplot2 package) of points on a map or tiles
-  on a map.
+Map (using ggplot2 package) of points on a map or tiles on
+a map.
 }
 \description{
-  This function is deprecated.
+This function is deprecated.
 }
 \details{
-  gbifmap takes care of cleaning up the data.frame
-  (removing NA's, etc.)  returned from rgbif functions, and
-  creating the map. This function gives a simple map of
-  your data.  You can look at the code behing the function
-  itself if you want to build on it to make a map according
-  to your specfications.
+gbifmap takes care of cleaning up the data.frame (removing
+NA's, etc.)  returned from rgbif functions, and creating
+the map. This function gives a simple map of your data.
+You can look at the code behing the function itself if you
+want to build on it to make a map according to your
+specfications.
 
-  Note that this function removes values that are
-  impossible on the globe, and those rows that have both
-  lat and long as NA or zeros.
+Note that this function removes values that are impossible
+on the globe, and those rows that have both lat and long as
+NA or zeros.
 }
 \examples{
 \dontrun{
@@ -70,6 +69,6 @@ gbifmap_dens(out, mapdatabase="usa")
 }
 }
 \seealso{
-  gbifmap
+gbifmap
 }
 

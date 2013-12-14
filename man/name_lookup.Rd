@@ -2,13 +2,12 @@
 \alias{name_lookup}
 \title{Lookup names in all taxonomies in GBIF.}
 \usage{
-  name_lookup(query = NULL, rank = NULL,
-    highertaxon_key = NULL, status = NULL, extinct = NULL,
-    habitat = NULL, name_type = NULL, dataset_key = NULL,
-    nomenclatural_status = NULL, limit = 20, facet = NULL,
-    facet_only = NULL, facet_mincount = NULL,
-    facet_multiselect = NULL, callopts = list(),
-    verbose = FALSE, return = "all")
+name_lookup(query = NULL, rank = NULL, highertaxon_key = NULL,
+  status = NULL, extinct = NULL, habitat = NULL, name_type = NULL,
+  dataset_key = NULL, nomenclatural_status = NULL, limit = 20,
+  facet = NULL, facet_only = NULL, facet_mincount = NULL,
+  facet_multiselect = NULL, callopts = list(), verbose = FALSE,
+  return = "all")
 }
 \arguments{
   \item{query}{Query term(s) for full text search.}
@@ -108,20 +107,20 @@
   in a list.}
 }
 \value{
-  A list of length three. The first element is metadata.
-  The second is either a data.frame (verbose=FALSE,
-  default) or a list (verbose=TRUE), and the third element
-  is the facet data.
+A list of length three. The first element is metadata. The
+second is either a data.frame (verbose=FALSE, default) or a
+list (verbose=TRUE), and the third element is the facet
+data.
 }
 \description{
-  This service uses fuzzy lookup so that you can put in
-  partial names and you should get back those things that
-  match. See examples below.
+This service uses fuzzy lookup so that you can put in
+partial names and you should get back those things that
+match. See examples below.
 
-  Faceting: If facet=FALSE or left to the default (NULL),
-  no faceting is done. And therefore, all parameters with
-  facet in their name are ignored (facet_only,
-  facet_mincount, facet_multiselect).
+Faceting: If facet=FALSE or left to the default (NULL), no
+faceting is done. And therefore, all parameters with facet
+in their name are ignored (facet_only, facet_mincount,
+facet_multiselect).
 }
 \examples{
 \dontrun{
@@ -155,6 +154,6 @@ name_lookup(facet=c('status','highertaxon_key'), facet_only=TRUE, facet_mincount
 }
 }
 \references{
-  \url{http://www.gbif.org/developer/summary}
+\url{http://www.gbif.org/developer/summary}
 }
 

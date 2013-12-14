@@ -3,8 +3,7 @@
 \title{Occurrencelist_all carries out an occurrencelist query for a single name and
 all its name variants according to GBIF's name matching.}
 \usage{
-  occurrencelist_all(scientificname, ranktoget = "species",
-    ...)
+occurrencelist_all(scientificname, ranktoget = "species", ...)
 }
 \arguments{
   \item{scientificname}{A scientific name. (character)}
@@ -17,7 +16,7 @@ all its name variants according to GBIF's name matching.}
   occurrencelist_many}
 }
 \description{
-  This function is deprecated.
+This function is deprecated.
 }
 \examples{
 \dontrun{
@@ -31,6 +30,6 @@ occurrencelist_all(scientificname = 'Aristolochia serpentaria',
 }
 }
 \seealso{
-  occ_search
+occ_search
 }
 

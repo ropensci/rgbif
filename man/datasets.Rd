@@ -2,8 +2,8 @@
 \alias{datasets}
 \title{Search for datasets and dataset metadata.}
 \usage{
-  datasets(data = "all", type = NULL, uuid = NULL,
-    query = NULL, id = NULL, callopts = list())
+datasets(data = "all", type = NULL, uuid = NULL, query = NULL,
+  id = NULL, callopts = list())
 }
 \arguments{
   \item{data}{The type of data to get. Default is all
@@ -22,10 +22,10 @@
   \item{callopts}{Further args passed on to GET.}
 }
 \value{
-  A list.
+A list.
 }
 \description{
-  Search for datasets and dataset metadata.
+Search for datasets and dataset metadata.
 }
 \examples{
 \dontrun{
@@ -39,6 +39,6 @@ datasets(data=c('deleted','duplicate'))
 }
 }
 \references{
-  \url{http://www.gbif.org/developer/summary}
+\url{http://www.gbif.org/developer/summary}
 }
 

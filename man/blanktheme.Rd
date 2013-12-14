@@ -2,10 +2,10 @@
 \alias{blanktheme}
 \title{Custom ggplot2 theme}
 \usage{
-  blanktheme()
+blanktheme()
 }
 \description{
-  Custom ggplot2 theme
+Custom ggplot2 theme
 }
 \keyword{internal}
 

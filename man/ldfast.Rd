@@ -2,7 +2,7 @@
 \alias{ldfast}
 \title{Replacement function for ldply that should be faster.}
 \usage{
-  ldfast(x, convertvec = FALSE)
+ldfast(x, convertvec = FALSE)
 }
 \arguments{
   \item{x}{A list.}
@@ -11,7 +11,7 @@
   rbind is called.}
 }
 \description{
-  Replacement function for ldply that should be faster.
+Replacement function for ldply that should be faster.
 }
 \keyword{internal}
 

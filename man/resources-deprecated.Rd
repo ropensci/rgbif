@@ -2,9 +2,8 @@
 \alias{resources}
 \title{Get data resources and their unique keys.}
 \usage{
-  resources(name = "", providerkey = NULL,
-    basisofrecordcode = NULL, modifiedsince = NULL,
-    startindex = NULL, maxresults = NULL)
+resources(name = "", providerkey = NULL, basisofrecordcode = NULL,
+  modifiedsince = NULL, startindex = NULL, maxresults = NULL)
 }
 \arguments{
   \item{name}{data provider name search string, by default
@@ -29,11 +28,11 @@
   \item{maxresults}{max number of results to return}
 }
 \description{
-  This function is deprecated.
+This function is deprecated.
 }
 \details{
-  Beware: It takes a while to retrieve the full list of
-  resources - so go get more coffee.
+Beware: It takes a while to retrieve the full list of
+resources - so go get more coffee.
 }
 \examples{
 \dontrun{
@@ -45,6 +44,6 @@ resources('Flora')
 }
 }
 \seealso{
-  networks organizations datasets
+networks organizations datasets
 }
 

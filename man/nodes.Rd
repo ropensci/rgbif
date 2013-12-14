@@ -2,8 +2,8 @@
 \alias{nodes}
 \title{Nodes metadata.}
 \usage{
-  nodes(data = "all", uuid = NULL, query = NULL,
-    isocode = NULL, callopts = list())
+nodes(data = "all", uuid = NULL, query = NULL, isocode = NULL,
+  callopts = list())
 }
 \arguments{
   \item{data}{The type of data to get. Default is all
@@ -20,7 +20,7 @@
   \item{callopts}{Further args passed on to GET.}
 }
 \description{
-  Nodes metadata.
+Nodes metadata.
 }
 \examples{
 \dontrun{
@@ -43,6 +43,6 @@ sapply(uuids, nodes, data='identifier')
 }
 }
 \references{
-  \url{http://www.gbif.org/developer/summary}
+\url{http://www.gbif.org/developer/summary}
 }
 

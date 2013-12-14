@@ -2,11 +2,10 @@
 \alias{name_backbone}
 \title{Lookup names in the GBIF backbone taxonomy.}
 \usage{
-  name_backbone(name, rank = NULL, kingdom = NULL,
-    phylum = NULL, class = NULL, order = NULL,
-    family = NULL, genus = NULL, strict = FALSE,
-    verbose = FALSE, start = NULL, limit = 20,
-    callopts = list())
+name_backbone(name, rank = NULL, kingdom = NULL, phylum = NULL,
+  class = NULL, order = NULL, family = NULL, genus = NULL,
+  strict = FALSE, verbose = FALSE, start = NULL, limit = 20,
+  callopts = list())
 }
 \arguments{
   \item{callopts}{Pass on options to httr::GET for more
@@ -52,10 +51,10 @@
   considered which had been rejected.}
 }
 \value{
-  A list.
+A list.
 }
 \description{
-  Lookup names in the GBIF backbone taxonomy.
+Lookup names in the GBIF backbone taxonomy.
 }
 \examples{
 \dontrun{
@@ -65,6 +64,6 @@ name_backbone(name='Helianthus annuus', kingdom='plants', verbose=TRUE)
 }
 }
 \references{
-  \url{http://www.gbif.org/developer/summary}
+\url{http://www.gbif.org/developer/summary}
 }
 

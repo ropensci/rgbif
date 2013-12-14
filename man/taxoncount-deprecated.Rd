@@ -2,8 +2,7 @@
 \alias{taxoncount}
 \title{Search by taxon to retrieve number of records in GBIF.}
 \usage{
-  taxoncount(scientificname = NULL, rank = NULL,
-    dataresourcekey = NULL)
+taxoncount(scientificname = NULL, rank = NULL, dataresourcekey = NULL)
 }
 \arguments{
   \item{scientificname}{Scientitic name of taxon
@@ -16,7 +15,7 @@
   resources(). (character)}
 }
 \description{
-  This function is deprecated.
+This function is deprecated.
 }
 \examples{
 \dontrun{
@@ -28,6 +27,6 @@ taxoncount(rank = 'family')
 }
 }
 \seealso{
-  occ_count
+occ_count
 }
 

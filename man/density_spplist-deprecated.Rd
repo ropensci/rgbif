@@ -3,12 +3,10 @@
 \title{The density web service provides access to records showing the density
    of occurrence records from the GBIF Network by one-degree cell.}
 \usage{
-  density_spplist(taxonconceptKey = NULL,
-    dataproviderkey = NULL, dataresourcekey = NULL,
-    resourcenetworkkey = NULL, originisocountrycode = NULL,
-    format = NULL,
-    spplist = c("none", "random", "greatest", "all"),
-    listcount = "list")
+density_spplist(taxonconceptKey = NULL, dataproviderkey = NULL,
+  dataresourcekey = NULL, resourcenetworkkey = NULL,
+  originisocountrycode = NULL, format = NULL, spplist = c("none",
+  "random", "greatest", "all"), listcount = "list")
 }
 \arguments{
   \item{taxonconceptKey}{Unique key for taxon (numeric).
@@ -52,18 +50,17 @@
   ('counts').}
 }
 \value{
-  A vector of scientific species names for one degree grid
-  cells.
+A vector of scientific species names for one degree grid
+cells.
 }
 \description{
-  This function is deprecated.
+This function is deprecated.
 }
 \details{
-  This is similar to the densitylist function. You can get
-  the same data.frame of results as densitylist with this
-  function, but you can also get a species list or
-  data.frame of species and their counts for any degree
-  cell.
+This is similar to the densitylist function. You can get
+the same data.frame of results as densitylist with this
+function, but you can also get a species list or data.frame
+of species and their counts for any degree cell.
 }
 \examples{
 \dontrun{

@@ -21,7 +21,7 @@ Changes in the new GBIF API from last with respect to `rgbif`:
 
 | Function in old API | New API | Notes |
 | ------ | ------- | ------ |
-| country_codes | same | none |
+| rgb_country_codes | same | none |
 | density_spplist | deprecated | service not provided anymore |
 | densitylist | deprecated | service not provided anymore |
 | gbifdata | deprecated | not needed |

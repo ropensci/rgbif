@@ -2,9 +2,9 @@
 \alias{networks}
 \title{Networks metadata.}
 \usage{
-  networks(data = "all", uuid = NULL, callopts = list(),
-    name = NULL, code = NULL, modifiedsince = NULL,
-    startindex = NULL, maxresults = NULL)
+networks(data = "all", uuid = NULL, callopts = list(), name = NULL,
+  code = NULL, modifiedsince = NULL, startindex = NULL,
+  maxresults = NULL)
 }
 \arguments{
   \item{data}{The type of data to get. Default is all
@@ -36,7 +36,7 @@
   number of results to return}
 }
 \description{
-  Networks metadata.
+Networks metadata.
 }
 \examples{
 \dontrun{
@@ -46,6 +46,6 @@ networks(data='endpoint', uuid='16ab5405-6c94-4189-ac71-16ca3b753df7')
 }
 }
 \references{
-  \url{http://www.gbif.org/developer/summary}
+\url{http://www.gbif.org/developer/summary}
 }
 

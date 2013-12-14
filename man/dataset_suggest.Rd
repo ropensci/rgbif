@@ -2,12 +2,11 @@
 \alias{dataset_suggest}
 \title{Suggest datasets in GBIF.}
 \usage{
-  dataset_suggest(query = NULL, country = NULL,
-    type = NULL, subtype = NULL, keyword = NULL,
-    owning_org = NULL, hosting_org = NULL,
-    publishing_country = NULL, decade = NULL,
-    continent = NULL, limit = 20, start = NULL,
-    callopts = list(), pretty = FALSE, description = FALSE)
+dataset_suggest(query = NULL, country = NULL, type = NULL,
+  subtype = NULL, keyword = NULL, owning_org = NULL, hosting_org = NULL,
+  publishing_country = NULL, decade = NULL, continent = NULL,
+  limit = 20, start = NULL, callopts = list(), pretty = FALSE,
+  description = FALSE)
 }
 \arguments{
   \item{callopts}{Pass on options to httr::GET for more
@@ -64,12 +63,12 @@
   data (FALSE, default)}
 }
 \value{
-  A data.frame, list, or message printed to console (using
-  pretty=TRUE).
+A data.frame, list, or message printed to console (using
+pretty=TRUE).
 }
 \description{
-  Search that returns up to 20 matching datasets. Results
-  are ordered by relevance.
+Search that returns up to 20 matching datasets. Results are
+ordered by relevance.
 }
 \examples{
 \dontrun{
@@ -106,6 +105,6 @@ dataset_suggest(decade=1980)
 }
 }
 \references{
-  \url{http://www.gbif.org/developer/summary}
+\url{http://www.gbif.org/developer/summary}
 }
 

@@ -3,26 +3,21 @@
 \title{occurrencelist_many is the same as occurrencelist, but takes in a vector
 of species names.}
 \usage{
-  occurrencelist_many(scientificname = NULL,
-    taxonconceptkey = NULL, dataproviderkey = NULL,
-    dataresourcekey = NULL, institutioncode = NULL,
-    collectioncode = NULL, catalognumber = NULL,
-    resourcenetworkkey = NULL, basisofrecordcode = NULL,
-    minlatitude = NULL, maxlatitude = NULL,
-    minlongitude = NULL, maxlongitude = NULL,
-    minaltitude = NULL, maxaltitude = NULL,
-    mindepth = NULL, maxdepth = NULL, cellid = NULL,
-    centicellid = NULL, typesonly = NULL,
-    coordinatestatus = NULL, coordinateissues = NULL,
-    hostisocountrycode = NULL, originisocountrycode = NULL,
-    originregioncode = NULL, startdate = NULL,
-    enddate = NULL, startyear = NULL, endyear = NULL,
-    year = NULL, month = NULL, day = NULL,
-    modifiedsince = NULL, startindex = NULL,
-    maxresults = 10, format = "brief", icon = NULL,
-    mode = NULL, stylesheet = NULL, removeZeros = FALSE,
-    writecsv = NULL, curl = getCurlHandle(),
-    fixnames = "none", parallel = FALSE, cores = 4)
+occurrencelist_many(scientificname = NULL, taxonconceptkey = NULL,
+  dataproviderkey = NULL, dataresourcekey = NULL, institutioncode = NULL,
+  collectioncode = NULL, catalognumber = NULL, resourcenetworkkey = NULL,
+  basisofrecordcode = NULL, minlatitude = NULL, maxlatitude = NULL,
+  minlongitude = NULL, maxlongitude = NULL, minaltitude = NULL,
+  maxaltitude = NULL, mindepth = NULL, maxdepth = NULL, cellid = NULL,
+  centicellid = NULL, typesonly = NULL, coordinatestatus = NULL,
+  coordinateissues = NULL, hostisocountrycode = NULL,
+  originisocountrycode = NULL, originregioncode = NULL, startdate = NULL,
+  enddate = NULL, startyear = NULL, endyear = NULL, year = NULL,
+  month = NULL, day = NULL, modifiedsince = NULL, startindex = NULL,
+  maxresults = 10, format = "brief", icon = NULL, mode = NULL,
+  stylesheet = NULL, removeZeros = FALSE, writecsv = NULL,
+  curl = getCurlHandle(), fixnames = "none", parallel = FALSE,
+  cores = 4)
 }
 \arguments{
   \item{scientificname}{scientitic name of taxon. See
@@ -189,56 +184,54 @@ of species names.}
   option (only used if parallel=TRUE)}
 }
 \description{
-  This function is deprecated.
+This function is deprecated.
 }
 \details{
-  Including many possible values for a particular
-  parameter: The following parameters may have many values
-  passed to them (e.g., like parameter=c('a','b')):
-  scientificname, taxonconceptkey, dataproviderkey,
-  dataresourcekey, resourcenetworkkey, basisofrecordcode,
-  cellid, centicellid, hostisocountrycode,
-  originisocountrycode, originregioncode, year, month, and
-  day.
+Including many possible values for a particular parameter:
+The following parameters may have many values passed to
+them (e.g., like parameter=c('a','b')): scientificname,
+taxonconceptkey, dataproviderkey, dataresourcekey,
+resourcenetworkkey, basisofrecordcode, cellid, centicellid,
+hostisocountrycode, originisocountrycode, originregioncode,
+year, month, and day.
 
-  More on scientificname: Returns only records where the
-  scientific name matches that supplied - this is based on
-  the scientific name found in the original record from the
-  data provider and does not make use of extra knowledge of
-  possible synonyms or of child taxa.  For these functions,
-  use taxonconceptkey. Including an asterisk '*' in the
-  search string causes the service to return records for
-  any name starting with the string preceding the asterisk.
-  There must be at least three characters preceding the
-  asterisk. The scientificname parameter may be repeated
-  within a single request - the results will include
-  records matching any of the supplied scientific names.
+More on scientificname: Returns only records where the
+scientific name matches that supplied - this is based on
+the scientific name found in the original record from the
+data provider and does not make use of extra knowledge of
+possible synonyms or of child taxa.  For these functions,
+use taxonconceptkey. Including an asterisk '*' in the
+search string causes the service to return records for any
+name starting with the string preceding the asterisk. There
+must be at least three characters preceding the asterisk.
+The scientificname parameter may be repeated within a
+single request - the results will include records matching
+any of the supplied scientific names.
 
-  More on taxonconceptkey: Returns only records which are
-  for the taxon identified by the supplied numeric key,
-  including any records provided under synonyms of the
-  taxon concerned, and any records for child taxa (e.g. all
-  genera and species within a family).  Values for
-  taxonconceptkey can be found through the taxon web
-  service (see http://data.gbif.org/ws/rest/taxon).  Note
-  that the service will always search using the
-  corresponding concept in the synthetic generated "PORTAL"
-  taxonomy (even if the taxonconceptkey is for a concept
-  from a specific resource.  Use dataresourcekey to limit
-  the search to a single data resource.  The most efficient
-  and thorough way to search will be to limit searches to
-  taxa belonging to the following ranks: kingdom, phylum,
-  class, order, family, genus, species, any infraspecific
-  rank. Each record returned from this action (and from the
-  get action) also includes a taxonKey attribute which can
-  be used in the taxonconceptkey parameter on subsequent
-  invocations of the list and count actions. The
-  taxonconceptkey parameter may be repeated within a single
-  request - the results will include records for any of the
-  specified taxa.
+More on taxonconceptkey: Returns only records which are for
+the taxon identified by the supplied numeric key, including
+any records provided under synonyms of the taxon concerned,
+and any records for child taxa (e.g. all genera and species
+within a family).  Values for taxonconceptkey can be found
+through the taxon web service (see
+http://data.gbif.org/ws/rest/taxon).  Note that the service
+will always search using the corresponding concept in the
+synthetic generated "PORTAL" taxonomy (even if the
+taxonconceptkey is for a concept from a specific resource.
+Use dataresourcekey to limit the search to a single data
+resource.  The most efficient and thorough way to search
+will be to limit searches to taxa belonging to the
+following ranks: kingdom, phylum, class, order, family,
+genus, species, any infraspecific rank. Each record
+returned from this action (and from the get action) also
+includes a taxonKey attribute which can be used in the
+taxonconceptkey parameter on subsequent invocations of the
+list and count actions. The taxonconceptkey parameter may
+be repeated within a single request - the results will
+include records for any of the specified taxa.
 
-  See the GBIF API docs for more details on each parameter:
-  http://data.gbif.org/ws/rest/occurrence
+See the GBIF API docs for more details on each parameter:
+http://data.gbif.org/ws/rest/occurrence
 }
 \examples{
 \dontrun{
@@ -251,6 +244,6 @@ gbifmap_list(out)
 }
 }
 \seealso{
-  occ_search
+occ_search
 }
 

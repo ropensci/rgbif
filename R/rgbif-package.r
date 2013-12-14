@@ -36,7 +36,7 @@
 #' in the new package version, and any reasoning in the third column.
 #' 
 #' \tabular{lll}{
-#'   country_codes \tab same \tab none \cr
+#'   rgb_country_codes \tab same \tab none \cr
 #'   density_spplist \tab deprecated \tab service no longer provided \cr
 #'   densitylist \tab deprecated \tab service not provided anymore \cr
 #'   gbifdata \tab deprecated \tab not needed \cr

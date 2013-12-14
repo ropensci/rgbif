@@ -2,22 +2,17 @@
 \alias{occurrencecount}
 \title{Counts taxon concept records matching a range of filters.}
 \usage{
-  occurrencecount(scientificname = NULL,
-    taxonconceptKey = NULL, dataproviderkey = NULL,
-    dataresourcekey = NULL, institutioncode = NULL,
-    collectioncode = NULL, catalognumber = NULL,
-    resourcenetworkkey = NULL, basisofrecordcode = NULL,
-    minlatitude = NULL, maxlatitude = NULL,
-    minlongitude = NULL, maxlongitude = NULL,
-    minaltitude = NULL, maxaltitude = NULL,
-    mindepth = NULL, maxdepth = NULL, cellid = NULL,
-    centicellid = NULL, typesonly = NULL,
-    coordinatestatus = NULL, coordinateissues = NULL,
-    hostisocountrycode = NULL, originisocountrycode = NULL,
-    originregioncode = NULL, startdate = NULL,
-    enddate = NULL, startyear = NULL, endyear = NULL,
-    year = NULL, month = NULL, day = NULL,
-    modifiedsince = NULL)
+occurrencecount(scientificname = NULL, taxonconceptKey = NULL,
+  dataproviderkey = NULL, dataresourcekey = NULL, institutioncode = NULL,
+  collectioncode = NULL, catalognumber = NULL, resourcenetworkkey = NULL,
+  basisofrecordcode = NULL, minlatitude = NULL, maxlatitude = NULL,
+  minlongitude = NULL, maxlongitude = NULL, minaltitude = NULL,
+  maxaltitude = NULL, mindepth = NULL, maxdepth = NULL, cellid = NULL,
+  centicellid = NULL, typesonly = NULL, coordinatestatus = NULL,
+  coordinateissues = NULL, hostisocountrycode = NULL,
+  originisocountrycode = NULL, originregioncode = NULL, startdate = NULL,
+  enddate = NULL, startyear = NULL, endyear = NULL, year = NULL,
+  month = NULL, day = NULL, modifiedsince = NULL)
 }
 \arguments{
   \item{scientificname}{count only records where the
@@ -150,11 +145,11 @@
   2006-11-28).}
 }
 \value{
-  A single numeric value - the number of records found in
-  GBIF matching the query.
+A single numeric value - the number of records found in
+GBIF matching the query.
 }
 \description{
-  This function is deprecated.
+This function is deprecated.
 }
 \examples{
 \dontrun{
@@ -166,6 +161,6 @@ occurrencecount(scientificname = 'Helianthus annuus', coordinatestatus = TRUE,
 }
 }
 \seealso{
-  occ_count
+occ_count
 }
 

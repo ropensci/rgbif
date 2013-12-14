@@ -4,7 +4,7 @@
 (http://cran.r-project.org/web/packages/dismo/index.html),
 by Robert Hijmans, 2012-05-31, License: GPL v3}
 \usage{
-  gbifxmlToDataFrame(doc, format)
+gbifxmlToDataFrame(doc, format)
 }
 \arguments{
   \item{doc}{A parsed XML document.}
@@ -12,10 +12,10 @@ by Robert Hijmans, 2012-05-31, License: GPL v3}
   \item{format}{Format to use.}
 }
 \description{
-  Code based on the `gbifxmlToDataFrame` function from
-  dismo package
-  (http://cran.r-project.org/web/packages/dismo/index.html),
-  by Robert Hijmans, 2012-05-31, License: GPL v3
+Code based on the `gbifxmlToDataFrame` function from dismo
+package
+(http://cran.r-project.org/web/packages/dismo/index.html),
+by Robert Hijmans, 2012-05-31, License: GPL v3
 }
 \keyword{internal}
 
