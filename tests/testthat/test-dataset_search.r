@@ -16,7 +16,7 @@ test_that("keyword query returns the correct class", {
   expect_is(tt$data[1,1], "factor")
 })
 test_that("keyword query returns the correct value", {
-  expect_equal(as.character(tt$data[2,1]), "Carnet en Ligne")
+  expect_equal(as.character(tt$data$publishingCountry[1]), "FR")
   expect_equal(as.character(tt$data[1,4]), "OCCURRENCE")
 })
  
