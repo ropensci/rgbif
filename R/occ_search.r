@@ -200,9 +200,10 @@ occ_search <- function(taxonKey=NULL, country=NULL, publishingCountry=NULL, geor
   
   params <- list(taxonKey=taxonKey,datasetKey=datasetKey,catalogNumber=catalogNumber,
                  collectorName=collectorName,geometry=geometry,country=country,
-                 search=search,institutionCode=institutionCode,collectionCode=collectionCode)
+                 search=search,institutionCode=institutionCode,collectionCode=collectionCode,
+                 latitude=latitude,longitude=longitude)
   if(!any(sapply(params, length)>0))
-    stop("at least one of the parmaters taxonKey, datasetKey, catalogNumber, collectorName, or geometry 
+    stop("at least one of the parmaters taxonKey, datasetKey, catalogNumber, collectorName, geometry, latitude, or longitude 
          must have a value")
   iter <- params[which(sapply(params, length)>1)]
   if(length(names(iter))>1)
