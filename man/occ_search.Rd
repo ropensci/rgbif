@@ -227,9 +227,6 @@ occ_search(taxonKey=key, geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1
 # Search on country
 occ_search(country='US')
 
-# Search on publishingCountry
-occ_search(country='DE')
-
 # Get only occurrences with lat/long data (i.e. georeferenced)
 occ_search(taxonKey=key, georeferenced=TRUE)
 
@@ -247,7 +244,7 @@ occ_search(taxonKey=key, depth="5")
 
 # Get occurrences based on altitude
 key <- name_backbone(name='Puma concolor', kingdom='animals')$speciesKey
-occ_search(taxonKey=key, altitude=2000)
+occ_search(taxonKey=key, altitude=2000, georeferenced=TRUE)
 
 # Get occurrences based on institutionCode
 occ_search(institutionCode="TLMF")

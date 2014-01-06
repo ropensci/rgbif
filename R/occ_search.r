@@ -70,10 +70,7 @@
 #' 
 #' # Search on country
 #' occ_search(country='US')
-#' 
-#' # Search on publishingCountry
-#' occ_search(country='DE')
-#' 
+#'
 #' # Get only occurrences with lat/long data (i.e. georeferenced)
 #' occ_search(taxonKey=key, georeferenced=TRUE)
 #' 
@@ -91,7 +88,7 @@
 #' 
 #' # Get occurrences based on altitude
 #' key <- name_backbone(name='Puma concolor', kingdom='animals')$speciesKey
-#' occ_search(taxonKey=key, altitude=2000)
+#' occ_search(taxonKey=key, altitude=2000, georeferenced=TRUE)
 #' 
 #' # Get occurrences based on institutionCode
 #' occ_search(institutionCode="TLMF")
@@ -134,8 +131,8 @@ occ_search <- function(taxonKey=NULL, country=NULL, publishingCountry=NULL, geor
        basisOfRecord=basisOfRecord, datasetKey=datasetKey, date=date, catalogNumber=catalogNumber,
        year=year, month=month, latitude=latitude, longitude=longitude, 
        altitude=altitude, depth=depth, institutionCode=institutionCode, 
-       collectionCode=collectionCode, spatialIssues=spatialIssues, q=search, limit=limit, 
-       offset=start))
+       collectionCode=collectionCode, spatialIssues=spatialIssues, q=search, 
+       limit=as.integer(limit), offset=start))
     iter <- 0
     sumreturned <- 0
     outout <- list()
@@ -148,10 +145,11 @@ occ_search <- function(taxonKey=NULL, country=NULL, publishingCountry=NULL, geor
       sumreturned <- sumreturned + numreturned
       
       if(tt$count < limit)
-        sumreturned <- 999999
+        limit <- tt$count
+#         sumreturned <- 999999999
       
       if(sumreturned < limit){
-        args$limit <- limit-numreturned
+        args$limit <- limit-sumreturned
         args$offset <- sumreturned
       }
       outout[[iter]] <- tt

@@ -1,3 +1,15 @@
+rgbif 0.4.1
+===============
+
+BUG FIXES
+
+* Improved handling of limit parameter in occ_search() so that the correct number of occurrences are returned.
+* Fixed various tests that were broken.
+
+IMPROVEMENTS
+
+* Added missing limit argument in datasets() function man file. 
+
 rgbif 0.4.0
 ===============
 

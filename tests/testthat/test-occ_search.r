@@ -20,7 +20,7 @@ test_that("returns the correct value", {
   expect_equal(as.character(tt$hierarchy[[1]][1,1]), "Plantae")
   
   expect_equal(as.character(uu$hierarchy[[1]][1,1]), "Plantae")
-  expect_equal(as.character(uu$data[1,1]), "Helianthus annuus L.")
+  expect_equal(as.character(uu$data[1,1]), "Helianthus annuus")
   expect_equal(uu$meta$limit, 20)
   expect_equal(vv$limit, 20)
 })
@@ -72,7 +72,7 @@ test_that("returns the correct class", {
   expect_is(out[1,2], "numeric")
 })
 test_that("returns the correct value", {
-  expect_equal(as.character(out[1,1]), "Helianthus annuus L.")
+  expect_equal(as.character(out[1,1]), "Helianthus annuus")
 })
 test_that("returns the correct dimensions", {
   expect_equal(dim(out), c(20,4))
@@ -86,6 +86,6 @@ test_that("returns the correct class", {
   expect_is(out[[1]], "data.frame")
 })
 test_that("returns the correct dimensions", {
-  expect_equal(length(out), 1)
+  expect_equal(length(out), 2)
   expect_equal(dim(out[[1]]), c(7,3))
 })

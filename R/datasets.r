@@ -9,6 +9,7 @@
 #'    is anything other than 'all'.
 #' @param query Query term(s). Only used when data='all'
 #' @param id A metadata document id.
+#' @param limit Number of records to return
 #' @param callopts Further args passed on to GET.
 #' @return A list.
 #' @export

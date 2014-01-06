@@ -19,6 +19,8 @@ datasets(data = "all", type = NULL, uuid = NULL, query = NULL,
 
   \item{id}{A metadata document id.}
 
+  \item{limit}{Number of records to return}
+
   \item{callopts}{Further args passed on to GET.}
 }
 \value{
