@@ -23,7 +23,12 @@
 #' occ_search(catalogNumber=c("49366","Bird.27847588"))
 #' 
 #' # Get all data, not just lat/long and name
-#' occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a', minimal=FALSE)
+#' occ_search(taxonKey=key, fields='all')
+#' 
+#' # Or get specific fields. Note that this isn't done on GBIF's side of things. This
+#' # is done in R, but before you get the return object, so other fields are garbage
+#' # collected
+#' occ_search(taxonKey=key, fields=c('name','basisOfRecord','protocol'))
 #' 
 #' # Use paging parameters (limit and start) to page. Note the different results 
 #' # for the two queries below.
@@ -118,7 +123,7 @@ occ_search <- function(taxonKey=NULL, country=NULL, publishingCountry=NULL, geor
   catalogNumber=NULL, year=NULL, month=NULL, latitude=NULL, longitude=NULL, 
   altitude=NULL, depth=NULL, institutionCode=NULL, collectionCode=NULL, 
   spatialIssues=NULL, search=NULL, callopts=list(), limit=20, start=NULL, 
-  minimal=TRUE, return='all')
+  fields = 'minimal', return='all')
 {
   url = 'http://api.gbif.org/v0.9/occurrence/search'
   getdata <- function(x=NULL, itervar=NULL)
@@ -166,7 +171,8 @@ occ_search <- function(taxonKey=NULL, country=NULL, publishingCountry=NULL, geor
         paste("no data found, try a different search")
       } else
       {
-        data <- gbifparser(input=data, minimal=minimal)
+#         data <- gbifparser(input=data, minimal=minimal)
+        data <- gbifparser(input=data, fields=fields)
         ldfast(lapply(data, "[[", "data"))
       }
     } else
@@ -175,7 +181,8 @@ occ_search <- function(taxonKey=NULL, country=NULL, publishingCountry=NULL, geor
         paste("no data found, try a different search")
       } else
       {
-        data <- gbifparser(input=data, minimal=minimal)
+#         data <- gbifparser(input=data, minimal=minimal)
+        data <- gbifparser(input=data, fields=fields)
         unique(lapply(data, "[[", "hierarch"))
       }
     } else
@@ -188,7 +195,8 @@ occ_search <- function(taxonKey=NULL, country=NULL, publishingCountry=NULL, geor
         hier2 <- paste("no data found, try a different search")
       } else
       {
-        data <- gbifparser(input=data, minimal=minimal)
+#         data <- gbifparser(input=data, minimal=minimal)
+        data <- gbifparser(input=data, fields=fields)
         dat2 <- ldfast(lapply(data, "[[", "data"))
         hier2 <- unique(lapply(data, "[[", "hierarch"))
       }

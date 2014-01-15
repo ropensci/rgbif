@@ -52,8 +52,9 @@
 #'    record with or without spatial issues.
 #' @param georeferenced Return only occurence records with lat/long data (TRUE) or
 #'    all records (FALSE, default).
-#' @param minimal Return just taxon name, latitude, and longitute if TRUE, otherwise
-#'    all data. Default is TRUE.
+#' @param fields (character) Default ('minimal') will return just taxon name, key, latitude, and 
+#'    longitute. 'all' returns all fields. Or specify each field you want returned by name, e.g.
+#'    fields = c('name','latitude','altitude').
 #' @param return One of data, hier, meta, or all. If data, a data.frame with the 
 #'    data. hier returns the classifications in a list for each record. meta 
 #'    returns the metadata for the entire call. all gives all data back in a list. 
