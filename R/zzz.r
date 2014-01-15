@@ -14,7 +14,20 @@ gbifparser <- function(input, fields='minimal'){
     name <- t(data.frame(x[names(x) %in% h1]))
     key <- t(data.frame(x[names(x) %in% h2]))
     hier <- data.frame(name=name, key=key, rank=row.names(name), row.names=NULL)
-    usename <- hier[[nrow(hier),"name"]]
+    if(nrow(hier) == 0){
+      if(!is.null(x[['species']])){
+        usename <- x[['species']]       
+      } else if(!is.null(x[['scientificName']]))
+      {
+        usename <- x[['scientificName']]
+      } else
+      {
+        usename <- "none"
+      }
+    } else
+    {
+      usename <- hier[[nrow(hier),"name"]]      
+    }
     #     geog <- data.frame(name=usename, x[!names(x) %in% c(h1,h2)])
     alldata <- data.frame(name=usename, x)
     if(any(fields=='minimal')){
@@ -24,7 +37,7 @@ gbifparser <- function(input, fields='minimal'){
       } else
       {
         alldata <- alldata['name']
-        alldata <- data.frame(alldata, latitude=NA, longitude=NA)
+        alldata <- data.frame(alldata, key=NA, latitude=NA, longitude=NA)
       }
     } else if(any(fields == 'all')) 
     { 
@@ -33,7 +46,7 @@ gbifparser <- function(input, fields='minimal'){
     {
       alldata <- alldata[names(alldata) %in% fields]
     }
-    list(hierarch=hier, data=alldata)
+    list(hierarchy=hier, data=alldata)
   }
   if(is.numeric(input[[1]])){
     parse(input)

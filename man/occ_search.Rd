@@ -9,7 +9,7 @@ occ_search(taxonKey = NULL, country = NULL, publishingCountry = NULL,
   longitude = NULL, altitude = NULL, depth = NULL,
   institutionCode = NULL, collectionCode = NULL, spatialIssues = NULL,
   search = NULL, callopts = list(), limit = 20, start = NULL,
-  minimal = TRUE, fields = "minimal", return = "all")
+  fields = "minimal", return = "all")
 }
 \arguments{
   \item{taxonKey}{A taxon key from the GBIF backbone. All
@@ -107,9 +107,6 @@ occ_search(taxonKey = NULL, country = NULL, publishingCountry = NULL,
   \item{georeferenced}{Return only occurence records with
   lat/long data (TRUE) or all records (FALSE, default).}
 
-  \item{minimal}{Return just taxon name, latitude, and
-  longitute if TRUE, otherwise all data. Default is TRUE.}
-
   \item{fields}{(character) Default ('minimal') will return
   just taxon name, key, latitude, and longitute. 'all'
   returns all fields. Or specify each field you want
@@ -185,12 +182,12 @@ occ_search(catalogNumber="49366")
 occ_search(catalogNumber=c("49366","Bird.27847588"))
 
 # Get all data, not just lat/long and name
-occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a', fields='all')
+occ_search(taxonKey=key, fields='all')
 
 # Or get specific fields. Note that this isn't done on GBIF's side of things. This
 # is done in R, but before you get the return object, so other fields are garbage
 # collected
-occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a', fields=c('name','basisOfRecord','protocol'))
+occ_search(taxonKey=key, fields=c('name','basisOfRecord','protocol'))
 
 # Use paging parameters (limit and start) to page. Note the different results
 # for the two queries below.
