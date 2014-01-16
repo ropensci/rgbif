@@ -1,13 +1,13 @@
 #' Organizations metadata.
 #' 
 #' @template all
+#' @template occ
 #' @import httr
 #' @import plyr 
 #' @param data The type of data to get. Default is all data.
 #' @param uuid UUID of the data node provider. This must be specified if data
 #'    is anything other than 'all'.
 #' @param query Query nodes. Only used when data='all'
-#' @param callopts Further args passed on to GET.
 #' @return A list.
 #' @export
 #' @examples \dontrun{
@@ -17,9 +17,10 @@
 #' organizations(data='contact', uuid="4b4b2111-ee51-45f5-bf5e-f535f4a1c9dc")
 #' organizations(data='pending')
 #' }
-organizations <- function(data = 'all', uuid = NULL, query = NULL, callopts=list())
+organizations <- function(data = 'all', uuid = NULL, query = NULL, limit=20, 
+                          start=NULL, callopts=list())
 {
-  args <- compact(list(q = query))
+  args <- compact(list(q = query, limit=as.integer(limit), offset=start))
   
   data <- match.arg(data, choices=c('all', 'organization', 'contact', 'endpoint', 
                                     'identifier', 'tag', 'machinetag', 'comment', 

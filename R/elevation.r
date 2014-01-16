@@ -1,7 +1,6 @@
 #' Make a map to visualize GBIF occurrence data.
 #' 
-#' @import httr data.table
-#' @importFrom plyr compact
+#' @import httr data.table plyr
 #' @importFrom stringr str_trim
 #' @param input A data.frame of lat/long data.
 #' @param latitude A vector of latitude's. Must be the same length as the longitude 
