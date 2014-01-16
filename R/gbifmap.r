@@ -24,14 +24,7 @@
 #' @export
 gbifmap <- function(input = NULL, mapdatabase = "world", region = ".", 
                     geom = geom_point, jitter = NULL, customize = NULL)
-{
-  long = NULL
-  lat = NULL
-  group = NULL
-  longitude = NULL
-  latitude = NULL
-  name = NULL
-  
+{  
   tomap <- input[complete.cases(input$latitude, input$latitude), ]
   tomap <- tomap[!tomap$longitude==0 & !tomap$latitude==0,]
   tomap <- input[-(which(tomap$latitude <=90 || tomap$longitude <=180)), ]
