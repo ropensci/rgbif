@@ -54,14 +54,22 @@ NA or zeros.
 \examples{
 \dontrun{
 # Make a map of Puma concolor occurrences
-key <- gbif_lookup(name='Puma concolor', kingdom='plants')$speciesKey
-dat <- occ_search(taxonKey=key, return='data', limit=300)
+key <- name_backbone(name='Puma concolor', kingdom='plants')$speciesKey
+dat <- occ_search(taxonKey=key, return='data', limit=100)
 gbifmap(input=dat)
 
 # Plot more Puma concolor occurrences
 dat <- occ_search(taxonKey=key, return='data', limit=1200)
 nrow(dat)
 gbifmap(input=dat)
+
+# More than 1 species
+library(plyr)
+splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
+keys <- sapply(splist, function(x) name_backbone(name=x, kingdom='plants')$speciesKey,
+   USE.NAMES=FALSE)
+dat <- occ_search(taxonKey=keys, return='data', limit=50)
+gbifmap(ldply(dat))
 }
 }
 
