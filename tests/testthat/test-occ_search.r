@@ -86,6 +86,6 @@ test_that("returns the correct class", {
   expect_is(out[[1]], "data.frame")
 })
 test_that("returns the correct dimensions", {
-  expect_equal(length(out), 2)
+  expect_equal(length(out), 1)
   expect_equal(dim(out[[1]]), c(7,3))
 })
