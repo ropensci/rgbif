@@ -207,7 +207,7 @@ occ_search(taxonKey=key, return='data')
 
 # Taxonomic hierarchy data
 ## If return='meta' the output is a list of the hierarch for each record
-occ_search(taxonKey=key, limit=20, return='hier')
+occ_search(taxonKey=key, return='hier')
 
 # Search by collector name
 occ_search(collectorName="smith")
@@ -216,6 +216,7 @@ occ_search(collectorName="smith")
 occ_search(collectorName=c("smith","BJ Stacey"))
 
 # Pass in curl options for extra fun
+library(httr)
 occ_search(taxonKey=key, limit=20, return='hier', callopts=verbose())
 
 # Search for many species
@@ -239,7 +240,7 @@ occ_search(country='US')
 occ_search(taxonKey=key, georeferenced=TRUE)
 
 # Get only occurrences that were recorded as living specimens
-occ_search(taxonKey=key, basisOfRecord="LIVING_SPECIMEN")
+occ_search(taxonKey=key, basisOfRecord="LIVING_SPECIMEN", georeferenced=TRUE)
 
 # Get occurrences for a particular date
 occ_search(taxonKey=key, date="2013")
