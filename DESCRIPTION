@@ -30,7 +30,9 @@ Imports:
     maptools,
     rgdal,
     RJSONIO,
-    data.table
+    data.table,
+    stringr,
+    assertthat
 Suggests:
     roxygen2,
     testthat

@@ -8,8 +8,9 @@
 #'    data. hier returns the classifications in a list for each record. meta 
 #'    returns the metadata for the entire call. all gives all data back in a list. 
 #' @param verbatim Return verbatim object (TRUE) or cleaned up object (FALSE, default).
-#' @param minimal Return just taxon name, latitude, and longitute if TRUE, 
-#'    otherwise all data. Default is TRUE.
+#' @param fields (character) Default ('minimal') will return just taxon name, key, latitude, and 
+#'    longitute. 'all' returns all fields. Or specify each field you want returned by name, e.g.
+#'    fields = c('name','latitude','altitude').
 #' @param callopts Further arguments passed on to the \code{\link{GET}} request.
 #' @return A data.frame or list.
 #' @export
@@ -24,7 +25,7 @@
 #' # Verbatim data
 #' occ_get(key=c(773433533,766766824,620594291,766420684), verbatim=TRUE)
 #' }
-occ_get <- function(key=NULL, return='all', verbatim=FALSE, minimal=TRUE, callopts=list())
+occ_get <- function(key=NULL, return='all', verbatim=FALSE, fields='minimal', callopts=list())
 {
   if(!is.numeric(key))
     stop('key must be numeric')
@@ -48,10 +49,10 @@ occ_get <- function(key=NULL, return='all', verbatim=FALSE, minimal=TRUE, callop
   
   # parse data
   if(verbatim){
-    gbifparser_verbatim(out, minimal=minimal)
+    gbifparser_verbatim(out, fields=fields)
   } else
   {
-    data <- gbifparser(out, minimal=minimal)
+    data <- gbifparser(out, fields=fields)
     
     if(return=='data'){
       if(length(key)==1){ data$data } else
