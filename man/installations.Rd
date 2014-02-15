@@ -3,9 +3,17 @@
 \title{Installations metadata.}
 \usage{
 installations(data = "all", uuid = NULL, query = NULL,
-  identifier = NULL, identifierType = NULL, callopts = list())
+  identifier = NULL, identifierType = NULL, limit = 20, start = NULL,
+  callopts = list())
 }
 \arguments{
+  \item{callopts}{Pass on options to httr::GET for more
+  refined control of http calls, and error handling}
+
+  \item{limit}{Number of records to return}
+
+  \item{start}{Record number to start at}
+
   \item{data}{The type of data to get. Default is all
   data.}
 
@@ -22,8 +30,6 @@ installations(data = "all", uuid = NULL, query = NULL,
   identifier parameter to filter identifiers by identifier
   type. See details. This parameter doesn't seem to be
   useful right now.}
-
-  \item{callopts}{Further args passed on to GET.}
 }
 \value{
 A list.
@@ -43,9 +49,11 @@ identifierType options:
 \dontrun{
 installations()
 installations(query="france")
-installations(uuid="4b4b2111-ee51-45f5-bf5e-f535f4a1c9dc")
-installations(data='contact', uuid="4b4b2111-ee51-45f5-bf5e-f535f4a1c9dc")
-installations(data='pending')
+installations(uuid="b77901f9-d9b0-47fa-94e0-dd96450aa2b4")
+installations(data='contact', uuid="b77901f9-d9b0-47fa-94e0-dd96450aa2b4")
+installations(data='deleted')
+installations(data='deleted', limit=2)
+installations(data=c('deleted','nonPublishing'), limit=2)
 }
 }
 \references{
