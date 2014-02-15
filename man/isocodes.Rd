@@ -1,9 +1,12 @@
 \docType{data}
 \name{isocodes}
 \alias{isocodes}
-\title{Lookup-table for 2 character country ISO codes}
+\title{Table of country two character ISO codes, and GBIF names}
 \description{
-Lookup-table for 2 character country ISO codes
+\itemize{ \item code. Two character ISO country code.
+\item name. Name of country.  \item gbif_name. Name of
+country used by GBIF - this is the name you want to use
+when searching by country in this package. }
 
 Lookup-table for 2 character country ISO codes
 }

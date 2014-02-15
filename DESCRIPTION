@@ -29,7 +29,10 @@ Imports:
     httr,
     maptools,
     rgdal,
-    RJSONIO
+    RJSONIO,
+    data.table,
+    stringr,
+    assertthat
 Suggests:
     roxygen2,
     testthat

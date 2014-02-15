@@ -2,8 +2,8 @@
 \alias{occ_get}
 \title{Get data for specific GBIF occurrences.}
 \usage{
-occ_get(key = NULL, return = "all", verbatim = FALSE, minimal = TRUE,
-  callopts = list())
+occ_get(key = NULL, return = "all", verbatim = FALSE,
+  fields = "minimal", callopts = list())
 }
 \arguments{
   \item{key}{Occurrence key}
@@ -17,8 +17,11 @@ occ_get(key = NULL, return = "all", verbatim = FALSE, minimal = TRUE,
   \item{verbatim}{Return verbatim object (TRUE) or cleaned
   up object (FALSE, default).}
 
-  \item{minimal}{Return just taxon name, latitude, and
-  longitute if TRUE, otherwise all data. Default is TRUE.}
+  \item{fields}{(character) Default ('minimal') will return
+  just taxon name, key, latitude, and longitute. 'all'
+  returns all fields. Or specify each field you want
+  returned by name, e.g.  fields =
+  c('name','latitude','altitude').}
 
   \item{callopts}{Further arguments passed on to the
   \code{\link{GET}} request.}

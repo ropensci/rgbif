@@ -1,10 +1,15 @@
 rgbif
 =====
 
-<!-- [![Build Status](https://api.travis-ci.org/ropensci/rgbif.png?branch=newapi)](https://travis-ci.org/ropensci/rgbif) -->
+<!-- master branch [![Build Status](https://api.travis-ci.org/ropensci/rgbif.png?branch=master)](https://travis-ci.org/ropensci/rgbif) -->
+<!-- dev branch [![Build Status](https://api.travis-ci.org/ropensci/rgbif.png?branch=dev)](https://travis-ci.org/ropensci/rgbif) -->
 
 ## About
 This package gives you access to data from [GBIF](http://www.gbif.org/) via their API.
+
+## Branches
+
+Note: The most recent changes are now on the `dev` branch, and thus code may have more bugs. The `master` branch should always be stable. 
 
 ## Transitioning to the new GBIF API
 

@@ -37,6 +37,10 @@
 #' installations(query="france")
 #' installations(uuid="b77901f9-d9b0-47fa-94e0-dd96450aa2b4")
 #' installations(data='contact', uuid="b77901f9-d9b0-47fa-94e0-dd96450aa2b4")
+#' installations(data='contact', uuid="2e029a0c-87af-42e6-87d7-f38a50b78201")
+#' installations(data='endpoint', uuid="b77901f9-d9b0-47fa-94e0-dd96450aa2b4")
+#' installations(data='dataset', uuid="b77901f9-d9b0-47fa-94e0-dd96450aa2b4")
+#' installations(data='comment', uuid="b77901f9-d9b0-47fa-94e0-dd96450aa2b4")
 #' installations(data='deleted')
 #' installations(data='deleted', limit=2)
 #' installations(data=c('deleted','nonPublishing'), limit=2)
@@ -46,7 +50,7 @@ installations <- function(data = 'all', uuid = NULL, query = NULL, identifier=NU
 {
   args <- compact(list(q = query, limit=as.integer(limit), offset=start))
   
-  data <- match.arg(data, choices=c('all', 'contact', 'endpoint', 
+  data <- match.arg(data, choices=c('all', 'contact', 'endpoint', 'dataset', 
                                     'identifier', 'tag', 'machinetag', 'comment', 
                                     'deleted', 'nonPublishing'), several.ok=TRUE)
   
