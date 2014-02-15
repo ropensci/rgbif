@@ -1,6 +1,7 @@
 #' Search for datasets and dataset metadata.
 #' 
 #' @template all
+#' @template occ
 #' @import httr
 #' @import plyr
 #' @param data The type of data to get. Default is all data.
@@ -9,8 +10,6 @@
 #'    is anything other than 'all'.
 #' @param query Query term(s). Only used when data='all'
 #' @param id A metadata document id.
-#' @param limit Number of records to return
-#' @param callopts Further args passed on to GET.
 #' @return A list.
 #' @export
 #' @examples \dontrun{
@@ -21,11 +20,12 @@
 #' datasets(data='metadata', uuid="a6998220-7e3a-485d-9cd6-73076bd85657")
 #' datasets(data='metadata', uuid="a6998220-7e3a-485d-9cd6-73076bd85657", id=598)
 #' datasets(data=c('deleted','duplicate'))
+#' datasets(data=c('deleted','duplicate'), limit=1)
 #' }
 datasets <- function(data = 'all', type = NULL, uuid = NULL, query = NULL, id = NULL, 
-                     limit = 20, callopts=list())
+                     limit = 20, start=NULL, callopts=list())
 {
-  args <- compact(list(q = query, type = type, limit = limit))
+  args <- compact(list(q = query, limit=as.integer(limit), offset=start))
   
   data <- match.arg(data, choices=c('all', 'organization', 'contact', 'endpoint', 
                                     'identifier', 'tag', 'machinetag', 'comment', 
