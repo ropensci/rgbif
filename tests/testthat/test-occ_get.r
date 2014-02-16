@@ -19,10 +19,10 @@ test_that("returns the correct class", {
 })
 
 test_that("returns the correct value", {
-  expect_equal(as.character(tt$name), "Helianthus annuus L.")
+  expect_equal(as.character(tt$name), "Helianthus annuus")
   expect_equal(as.character(uu[1,'name']), "Plantae")
   expect_equal(vv[[1]][1,'key'], 6)
-  expect_equal(as.character(vv[[2]]$name), "Helianthus annuus L.")
+  expect_equal(as.character(vv[[2]]$name), "Helianthus annuus")
 })
 
 test_that("returns the correct dimensions", {

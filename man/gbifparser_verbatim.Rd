@@ -2,12 +2,16 @@
 \alias{gbifparser_verbatim}
 \title{Parser for gbif data}
 \usage{
-gbifparser_verbatim(input, minimal = TRUE)
+gbifparser_verbatim(input, fields = "minimal")
 }
 \arguments{
   \item{input}{A list}
 
-  \item{minimal}{Get minimal input, default to TRUE}
+  \item{fields}{(character) Default ('minimal') will return
+  just taxon name, key, latitude, and longitute. 'all'
+  returns all fields. Or specify each field you want
+  returned by name, e.g.  fields =
+  c('name','latitude','altitude').}
 }
 \description{
 Parser for gbif data

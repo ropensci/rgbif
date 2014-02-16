@@ -45,7 +45,7 @@ test_that("search for deleted and duplicate datasets returns the correct class",
   expect_is(tt, "list")
 })
 test_that("search for deleted and duplicate datasets returns the dimensions", {
-  expect_equal(tt[[1]]$results[[1]]$type, "METADATA")
+  expect_equal(tt[[1]]$results[[1]]$type, "OCCURRENCE")
   expect_equal(length(tt), 2)
   expect_equal(length(tt[[1]]), 5)
 })

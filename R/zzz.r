@@ -5,7 +5,6 @@
 #'    fields = c('name','latitude','altitude').
 #' @export
 #' @keywords internal
-# gbifparser <- function(input, minimal=TRUE){
 gbifparser <- function(input, fields='minimal'){
   parse <- function(x){
     x[sapply(x, length) == 0] <- "none"
@@ -58,13 +57,15 @@ gbifparser <- function(input, fields='minimal'){
 
 #' Parser for gbif data
 #' @param input A list
-#' @param minimal Get minimal input, default to TRUE
+#' @param fields (character) Default ('minimal') will return just taxon name, key, latitude, and 
+#'    longitute. 'all' returns all fields. Or specify each field you want returned by name, e.g.
+#'    fields = c('name','latitude','altitude').
 #' @export
 #' @keywords internal
-gbifparser_verbatim <- function(input, minimal=TRUE){
+gbifparser_verbatim <- function(input, fields='minimal'){
   parse <- function(x){
     alldata <- data.frame(key=x$key, x$fields)
-    if(minimal){
+    if(any(fields=='minimal')){
       if(all(c('verbatimLatitude','verbatimLongitude') %in% names(alldata)))
       {
         alldata[c('scientificName','key','verbatimLatitude','verbatimLongitude')]
@@ -73,9 +74,12 @@ gbifparser_verbatim <- function(input, minimal=TRUE){
         name <- alldata['scientificName']
         data.frame(name, verbatimLatitude=NA, verbatimLongitude=NA)
       }
-    } else
+    } else if(any(fields == 'all'))
     {
       alldata
+    } else
+    {
+      alldata[names(alldata) %in% fields]
     }
   }
   if(is.numeric(input[[1]])){

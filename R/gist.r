@@ -60,7 +60,6 @@ gist <- function(gist, description = "", public = TRUE)
 }
 
 #' Function that takes a list of files and creates payload for API
-#' @import RJSONIO
 #' @param filenames names of files to post
 #' @param description brief description of gist (optional)
 #' @param public whether gist is public (defaults to TRUE)
@@ -72,7 +71,7 @@ create_gist <- function(filenames, description = "", public = TRUE){
   })
   names(files) = basename(filenames)
   body = list(description = description, public = public, files = files)
-  toJSON(body)
+  RJSONIO::toJSON(body)
 }
 
 #' Get Github credentials from use in console

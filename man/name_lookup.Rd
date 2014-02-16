@@ -125,7 +125,7 @@ facet_multiselect).
 \examples{
 \dontrun{
 # Look up names like mammalia
-name_lookup(class='mammalia')
+name_lookup(query='mammalia')
 
 # Get all data and parse it, removing descriptions which can be quite long
 out <- name_lookup('Helianthus annuus', rank="species", verbose=TRUE)
