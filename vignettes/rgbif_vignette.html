@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  \usepackage[vmargin=1in,hmargin=1in]{geometry}
+</head>
+<body>
+<!--
+%\VignetteEngine{knitr}
+%\VignetteIndexEntry{Tutorial for the new GBIF API}
+-->
+
+<h1 id="rgbif-vignette---seach-and-retrieve-data-from-the-global-biodiverity-information-facilty-gbif">rgbif vignette - Seach and retrieve data from the Global Biodiverity Information Facilty (GBIF)</h1>
+<h2 id="about-the-package">About the package</h2>
+<p><code>rgbif</code> is an R package to search and retrieve data from the Global Biodiverity Information Facilty (GBIF). <code>rgbif</code> wraps R code around the <a href="http://data.gbif.org/tutorial/services">GBIF API</a> to allow you to talk to GBIF from R.</p>
+<hr />
+<h2 id="install-rgbif-and-dependencies">Install rgbif and dependencies</h2>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;rgbif&quot;</span>)</code></pre>
+<h2 id="load-rgbif-and-dependencies">Load rgbif and dependencies</h2>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rgbif)
+<span class="kw">library</span>(XML)
+<span class="kw">library</span>(RCurl)
+<span class="kw">library</span>(plyr)
+<span class="kw">library</span>(ggplot2)
+<span class="kw">library</span>(maps)</code></pre>
+<hr />
+<h2 id="get-number-of-occurrences-for-a-set-of-search-parameters">Get number of occurrences for a set of search parameters</h2>
+<h3 id="search-by-type-of-record-all-observational-in-this-case">Search by type of record, all observational in this case</h3>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">occ_count</span>(<span class="dt">basisOfRecord =</span> <span class="st">&quot;OBSERVATION&quot;</span>)</code></pre>
+<pre><code>[1] 286071783</code></pre>
+<h3 id="records-for-puma-concolor-with-latlong-data-georeferened-only">Records for <strong>Puma concolor</strong> with lat/long data (georeferened) only</h3>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">occ_count</span>(<span class="dt">nubKey =</span> <span class="dv">2435099</span>, <span class="dt">georeferenced =</span> <span class="ot">TRUE</span>)</code></pre>
+<pre><code>[1] 2541</code></pre>
+<h3 id="all-georeferenced-records-in-gbif">All georeferenced records in GBIF</h3>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">occ_count</span>(<span class="dt">georeferenced =</span> <span class="ot">TRUE</span>)</code></pre>
+<pre><code>[1] 3.55e+08</code></pre>
+<h3 id="records-from-denmark">Records from Denmark</h3>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">occ_count</span>(<span class="dt">country =</span> <span class="st">&quot;DENMARK&quot;</span>)</code></pre>
+<pre><code>[1] 8628822</code></pre>
+<h3 id="records-from-france">Records from France</h3>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">occ_count</span>(<span class="dt">hostCountry =</span> <span class="st">&quot;FRANCE&quot;</span>)</code></pre>
+<pre><code>[1] 17272175</code></pre>
+<h3 id="number-of-records-in-a-particular-dataset">Number of records in a particular dataset</h3>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">occ_count</span>(<span class="dt">datasetKey =</span> <span class="st">&quot;9e7ea106-0bf8-4087-bb61-dfe4f29e0f17&quot;</span>)</code></pre>
+<pre><code>[1] 4591</code></pre>
+<h3 id="all-records-from-2012">All records from 2012</h3>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">occ_count</span>(<span class="dt">year =</span> <span class="dv">2012</span>)</code></pre>
+<pre><code>[1] 31483292</code></pre>
+<h3 id="records-for-a-particular-dataset-and-only-for-preserved-specimens">Records for a particular dataset, and only for preserved specimens</h3>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">occ_count</span>(<span class="dt">datasetKey =</span> <span class="st">&quot;8626bd3a-f762-11e1-a439-00145eb45e9a&quot;</span>, <span class="dt">basisOfRecord =</span> <span class="st">&quot;PRESERVED_SPECIMEN&quot;</span>)</code></pre>
+<pre><code>[1] 550849</code></pre>
+<hr />
+<h2 id="get-possible-values-to-be-used-in-taxonomic-rank-arguments-in-functions">Get possible values to be used in taxonomic rank arguments in functions</h2>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">taxrank</span>()</code></pre>
+<pre><code>[1] &quot;kingdom&quot;       &quot;phylum&quot;        &quot;class&quot;         &quot;order&quot;        
+[5] &quot;family&quot;        &quot;genus&quot;         &quot;species&quot;       &quot;infraspecific&quot;</code></pre>
+<hr />
+<h2 id="search-for-taxon-information">Search for taxon information</h2>
+<h3 id="search-for-a-genus">Search for a genus</h3>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">name_lookup</span>(<span class="dt">query =</span> <span class="st">&quot;Cnaemidophorus&quot;</span>, <span class="dt">rank =</span> <span class="st">&quot;genus&quot;</span>, <span class="dt">return =</span> <span class="st">&quot;data&quot;</span>))</code></pre>
+<pre><code>        key  nubKey parentKey        parent  kingdom     phylum   clazz
+1 116755723 1858636 110614854 Pterophoridae Animalia Arthropoda Insecta
+2   1858636 1858636      8863 Pterophoridae Animalia Arthropoda Insecta
+3 125802004 1858636 125793784 Pterophoridae     &lt;NA&gt;       &lt;NA&gt; Insecta
+4 131295800 1858636        NA          &lt;NA&gt;     &lt;NA&gt;       &lt;NA&gt;    &lt;NA&gt;
+5 127882857 1858636 127804516 Pterophoridae Animalia Arthropoda Insecta
+6 115123697 1858636        NA          &lt;NA&gt;     &lt;NA&gt;       &lt;NA&gt;    &lt;NA&gt;
+        order        family          genus kingdomKey phylumKey  classKey
+1 Lepidoptera Pterophoridae Cnaemidophorus  116630539 116762374 131743724
+2 Lepidoptera Pterophoridae Cnaemidophorus          1        54       216
+3 Lepidoptera Pterophoridae Cnaemidophorus         NA        NA 131714461
+4        &lt;NA&gt;          &lt;NA&gt; Cnaemidophorus         NA        NA        NA
+5 Lepidoptera Pterophoridae Cnaemidophorus  127795487 127795488 127795683
+6        &lt;NA&gt;          &lt;NA&gt; Cnaemidophorus         NA        NA        NA
+   orderKey familyKey  genusKey  canonicalName       authorship   nameType
+1 116843281 110614854 116755723 Cnaemidophorus Wallengren, 1862 WELLFORMED
+2       797      8863   1858636 Cnaemidophorus Wallengren, 1862 WELLFORMED
+3 125810165 125793784 125802004 Cnaemidophorus Wallengren, 1862 WELLFORMED
+4        NA        NA 131295800 Cnaemidophorus                  WELLFORMED
+5 127795981 127804516 127882857 Cnaemidophorus                  WELLFORMED
+6        NA        NA 115123697 Cnaemidophorus                  WELLFORMED
+   rank numOccurrences
+1 GENUS              0
+2 GENUS              0
+3 GENUS              0
+4 GENUS              0
+5 GENUS              0
+6 GENUS              0</code></pre>
+<h3 id="search-for-the-class-mammalia">Search for the class mammalia</h3>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">name_lookup</span>(<span class="dt">query =</span> <span class="st">&quot;mammalia&quot;</span>)$data)</code></pre>
+<pre><code>        key nubKey parentKey        parent   phylum         clazz
+1 125798198    359 131712102      Chordata Chordata      Mammalia
+2 116665331    359 116842680      Chordata Chordata      Mammalia
+3       359    359        44      Chordata Chordata      Mammalia
+4 125826646    359 131712102      Chordata Chordata      Mammalia
+5 131754503    359 131754502 Macroscelidea Chordata Macroscelidea
+6 102402290    359 102545028      Chordata Chordata      Mammalia
+  phylumKey  classKey canonicalName     authorship   nameType  rank
+1 131712102 125798198      Mammalia                WELLFORMED CLASS
+2 116842680 116665331      Mammalia Linnaeus, 1758 WELLFORMED CLASS
+3        44       359      Mammalia Linnaeus, 1758 WELLFORMED CLASS
+4 131712102 125826646      Mammalia Linnaeus, 1758 WELLFORMED CLASS
+5 116842680 131754502      Mammalia                WELLFORMED ORDER
+6 102545028 102402290      Mammalia                WELLFORMED CLASS
+  numOccurrences  kingdom kingdomKey    order  orderKey
+1              0     &lt;NA&gt;         NA     &lt;NA&gt;        NA
+2              0 Animalia  116630539     &lt;NA&gt;        NA
+3              0 Animalia          1     &lt;NA&gt;        NA
+4              0     &lt;NA&gt;         NA     &lt;NA&gt;        NA
+5              0 Animalia  116630539 Mammalia 131754503
+6              0 Animalia  101719444     &lt;NA&gt;        NA</code></pre>
+<h3 id="look-up-the-species-helianthus-annuus">Look up the species Helianthus annuus</h3>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">name_lookup</span>(<span class="st">&quot;Helianthus annuus&quot;</span>, <span class="dt">rank =</span> <span class="st">&quot;species&quot;</span>)$data)</code></pre>
+<pre><code>        key  nubKey parentKey     parent       kingdom     order
+1 116845199 3119195 116853573 Helianthus       Plantae Asterales
+2   3119195 3119195   3119134 Helianthus       Plantae Asterales
+3 125790787 3119195 125809269 Helianthus          &lt;NA&gt; Asterales
+4 106239436 3119195 106239325 Helianthus Viridiplantae Asterales
+5 128399814 3119195 131338207 Helianthus          &lt;NA&gt;      &lt;NA&gt;
+6 111449704 3119195 111449703 Helianthus       Plantae      &lt;NA&gt;
+      family      genus kingdomKey  orderKey familyKey  genusKey
+1 Asteraceae Helianthus  116668764 116852024 116856030 116853573
+2 Asteraceae Helianthus          6       414      3065   3119134
+3 Asteraceae Helianthus         NA 131717243 125799038 125809269
+4 Asteraceae Helianthus  106147210 106237428 106237535 106239325
+5       &lt;NA&gt; Helianthus         NA        NA        NA 131338207
+6 Compositae Helianthus  111449174        NA 111442813 111449703
+      canonicalName authorship   nameType    rank numOccurrences
+1 Helianthus annuus         L. WELLFORMED SPECIES              0
+2 Helianthus annuus         L. WELLFORMED SPECIES              0
+3 Helianthus annuus         L. WELLFORMED SPECIES              0
+4 Helianthus annuus            WELLFORMED SPECIES              0
+5 Helianthus annuus            WELLFORMED SPECIES              0
+6 Helianthus annuus         L. WELLFORMED SPECIES              0
+         phylum         clazz phylumKey  classKey
+1          &lt;NA&gt;          &lt;NA&gt;        NA        NA
+2 Magnoliophyta Magnoliopsida        49       220
+3          &lt;NA&gt;          &lt;NA&gt;        NA        NA
+4  Streptophyta          &lt;NA&gt; 106171079        NA
+5          &lt;NA&gt;          &lt;NA&gt;        NA        NA
+6 Spermatophyta Dicotyledones 111449175 111449177</code></pre>
+<hr />
+<h2 id="get-data-for-a-single-occurrence.-note-that-data-is-returned-as-a-list-with-slots-for-metadata-and-data-or-as-a-hierarchy-or-just-data.">Get data for a single occurrence. Note that data is returned as a list, with slots for metadata and data, or as a hierarchy, or just data.</h2>
+<h3 id="just-data">Just data</h3>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">occ_get</span>(<span class="dt">key =</span> <span class="dv">773433533</span>, <span class="dt">return =</span> <span class="st">&quot;data&quot;</span>)</code></pre>
+<pre><code>                  name       key longitude latitude
+1 Helianthus annuus L. 773433533      -117    32.85</code></pre>
+<h3 id="just-taxonomic-hierarchy">Just taxonomic hierarchy</h3>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">occ_get</span>(<span class="dt">key =</span> <span class="dv">773433533</span>, <span class="dt">return =</span> <span class="st">&quot;hier&quot;</span>)</code></pre>
+<pre><code>                  name     key    rank
+1              Plantae       6 kingdom
+2        Magnoliophyta      49  phylum
+3        Magnoliopsida     220   clazz
+4            Asterales     414   order
+5           Asteraceae    3065  family
+6           Helianthus 3119134   genus
+7 Helianthus annuus L. 3119195 species</code></pre>
+<h3 id="all-data-or-leave-return-parameter-blank">All data, or leave return parameter blank</h3>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">occ_get</span>(<span class="dt">key =</span> <span class="dv">773433533</span>, <span class="dt">return =</span> <span class="st">&quot;all&quot;</span>)</code></pre>
+<pre><code>$hierarch
+                  name     key    rank
+1              Plantae       6 kingdom
+2        Magnoliophyta      49  phylum
+3        Magnoliopsida     220   clazz
+4            Asterales     414   order
+5           Asteraceae    3065  family
+6           Helianthus 3119134   genus
+7 Helianthus annuus L. 3119195 species
+
+$data
+                  name       key longitude latitude
+1 Helianthus annuus L. 773433533      -117    32.85</code></pre>
+<h3 id="get-many-occurrences.-occ_get-is-vectorized">Get many occurrences. <code>occ_get</code> is vectorized</h3>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">occ_get</span>(<span class="dt">key =</span> <span class="kw">c</span>(<span class="dv">773433533</span>, <span class="dv">101010</span>, <span class="dv">240713150</span>, <span class="dv">855998194</span>, <span class="dv">49819470</span>), <span class="dt">return =</span> <span class="st">&quot;data&quot;</span>)</code></pre>
+<pre><code>                                   name       key longitude latitude
+1                  Helianthus annuus L. 773433533   -117.00    32.85
+2  Platydoras costatus (Linnaeus, 1758)    101010    -70.07    -4.35
+3                              Pelosina 240713150    163.58   -77.57
+4       Sciurus vulgaris Linnaeus, 1758 855998194     12.04    58.41
+5 Phlogophora meticulosa Linnaeus, 1758  49819470     13.28    55.72</code></pre>
+<hr />
+<h2 id="maps">Maps</h2>
+<h3 id="static-map-using-the-ggplot2-package">Static map using the ggplot2 package</h3>
+<p>Make a map of <strong>Puma concolor</strong> occurrences</p>
+<pre class="sourceCode r"><code class="sourceCode r">key &lt;-<span class="st"> </span><span class="kw">name_backbone</span>(<span class="dt">name =</span> <span class="st">&quot;Puma concolor&quot;</span>, <span class="dt">kingdom =</span> <span class="st">&quot;plants&quot;</span>)$speciesKey
+dat &lt;-<span class="st"> </span><span class="kw">occ_search</span>(<span class="dt">taxonKey =</span> key, <span class="dt">return =</span> <span class="st">&quot;data&quot;</span>, <span class="dt">limit =</span> <span class="dv">300</span>, <span class="dt">minimal =</span> <span class="ot">FALSE</span>)
+<span class="kw">gbifmap</span>(<span class="dt">input =</span> dat)</code></pre>
+<div class="figure">
+<img src="figure/gbifmap1.png" alt="plot of chunk gbifmap1" /><p class="caption">plot of chunk gbifmap1</p>
+</div>
+</body>
+</html>

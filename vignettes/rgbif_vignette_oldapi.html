@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  \usepackage[vmargin=1in,hmargin=1in]{geometry}
+</head>
+<body>
+<!--
+%\VignetteEngine{knitr}
+%\VignetteIndexEntry{Tutorial for using the old GBIF API}
+-->
+
+<h2 id="rgbif-tutorial">rgbif tutorial</h2>
+<p><em>Note: this vignette works with the current version on CRAN that works with the old GBIF API.</em></p>
+<p>The <code>rgbif</code> package interacts with the API services of the Global Biodiversity Information Facility <a href="http://www.gbif.org/">GBIF</a>. GBIF currently holds 377,177,914 indexed records, ~10K datasets, and 419 publishers (i.e., dataset submitters).</p>
+<p>This tutorial will go through three use cases to demonstrate the kinds of things possible in <code>rgbif</code>.</p>
+<ul>
+<li>Counts taxon concept records matching a range of filters.</li>
+<li>Returns summary counts of occurrence records by one-degree cell.</li>
+<li>occurrencelist searches for taxon concept records matching a range of filters.</li>
+<li>densitylist gets density of occurrence records by one-degree cell.</li>
+<li>Search by taxon to retrieve number of records in GBIF.</li>
+</ul>
+<h2 id="install-and-load-package-from-github">Install and load package from GitHub</h2>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;rgbif&quot;</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rgbif)</code></pre>
+<h2 id="counts-taxon-concept-records-matching-a-range-of-filters.">Counts taxon concept records matching a range of filters.</h2>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">occurrencecount</span>(<span class="dt">scientificname =</span> <span class="st">&quot;Helianthus annuus&quot;</span>, <span class="dt">coordinatestatus =</span> <span class="ot">TRUE</span>, 
+    <span class="dt">year =</span> <span class="dv">2005</span>, <span class="dt">maxlatitude =</span> <span class="dv">20</span>)</code></pre>
+<pre><code>[1] 138</code></pre>
+<p>Count many taxa</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lapply</span>(<span class="kw">c</span>(<span class="st">&quot;Helianthus debilis&quot;</span>, <span class="st">&quot;Abies procera&quot;</span>, <span class="st">&quot;Astragalus&quot;</span>), function(x) <span class="kw">occurrencecount</span>(<span class="dt">scientificname =</span> x, 
+    <span class="dt">coordinatestatus =</span> <span class="ot">TRUE</span>))</code></pre>
+<pre><code>[[1]]
+[1] 26
+
+[[2]]
+[1] 573
+
+[[3]]
+[1] 945</code></pre>
+<h2 id="return-summary-counts-of-occurrence-records-by-one-degree-cell-for-a-single-taxon-country-dataset-data-publisher-or-data-network">Return summary counts of occurrence records by one-degree cell for a single taxon, country, dataset, data publisher or data network</h2>
+<pre class="sourceCode r"><code class="sourceCode r">out &lt;-<span class="st"> </span><span class="kw">densitylist</span>(<span class="dt">originisocountrycode =</span> <span class="st">&quot;CA&quot;</span>)
+<span class="kw">head</span>(<span class="kw">gbifdata</span>(out))</code></pre>
+<pre><code>  cellid minLatitude maxLatitude minLongitude maxLongitude count
+1  46913          40          41          -67          -66    44
+2  46914          40          41          -66          -65   519
+3  46915          40          41          -65          -64   475
+4  46916          40          41          -64          -63   432
+5  46917          40          41          -63          -62    55
+6  46918          40          41          -62          -61   143</code></pre>
+<h2 id="occurrencelist-searches-for-taxon-concept-records-matching-a-range-of-filters.">Occurrencelist searches for taxon concept records matching a range of filters.</h2>
+<p>A simple example</p>
+<pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">occurrencelist</span>(<span class="dt">scientificname =</span> <span class="st">&quot;Accipiter erythronemius&quot;</span>, <span class="dt">coordinatestatus =</span> <span class="ot">TRUE</span>, 
+    <span class="dt">maxresults =</span> <span class="dv">10</span>)
+<span class="kw">gbifdata</span>(dat)</code></pre>
+<pre><code>                 taxonName occurrenceID     country decimalLatitude
+1  Accipiter erythronemius    699199198   Argentina         -25.911
+2  Accipiter erythronemius    621073310   Argentina         -27.352
+3  Accipiter erythronemius    621073311   Argentina         -27.352
+4  Accipiter erythronemius    699199204   Argentina         -25.861
+5  Accipiter erythronemius    621073312   Argentina         -27.352
+6  Accipiter erythronemius    699199195   Argentina         -25.861
+7  Accipiter erythronemius    213206174 W. Colombia           3.767
+8  Accipiter erythronemius    352220558   Argentina         -31.133
+9  Accipiter erythronemius    699417490      Guyana           5.267
+10 Accipiter erythronemius    686297260      Guyana           5.267
+   decimalLongitude  catalogNumber earliestDateCollected
+1            -54.36          38199                  &lt;NA&gt;
+2            -65.60          42229                  &lt;NA&gt;
+3            -65.60          42228                  &lt;NA&gt;
+4            -54.52          38015                  &lt;NA&gt;
+5            -65.60          42227                  &lt;NA&gt;
+6            -54.52          39196                  &lt;NA&gt;
+7            -76.75    Skin-470489                  &lt;NA&gt;
+8            -59.02 YPM ORN 065671            1961-04-30
+9            -60.73           3998            2001-04-03
+10           -60.73          93439            2001-04-03
+   latestDateCollected
+1                 &lt;NA&gt;
+2                 &lt;NA&gt;
+3                 &lt;NA&gt;
+4                 &lt;NA&gt;
+5                 &lt;NA&gt;
+6                 &lt;NA&gt;
+7                 &lt;NA&gt;
+8           1961-04-30
+9           2001-04-03
+10          2001-04-03</code></pre>
+<p>Search for many species and make a map</p>
+<pre class="sourceCode r"><code class="sourceCode r">splist &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Accipiter erythronemius&quot;</span>, <span class="st">&quot;Junco hyemalis&quot;</span>, <span class="st">&quot;Aix sponsa&quot;</span>)
+out &lt;-<span class="st"> </span><span class="kw">occurrencelist_many</span>(splist, <span class="dt">coordinatestatus =</span> <span class="ot">TRUE</span>, <span class="dt">maxresults =</span> <span class="dv">20</span>)
+<span class="kw">gbifmap_list</span>(out)</code></pre>
+<div class="figure">
+<img src="figure/occurrencelist_many.png" alt="plot of chunk occurrencelist_many" /><p class="caption">plot of chunk occurrencelist_many</p>
+</div>
+<h2 id="densitylist-provides-access-to-records-showing-the-density-of-occurrence-records-from-the-gbif-network-by-one-degree-cell.">densitylist provides access to records showing the density of occurrence records from the GBIF Network by one-degree cell.</h2>
+<p>A simple example</p>
+<pre class="sourceCode r"><code class="sourceCode r">out &lt;-<span class="st"> </span><span class="kw">densitylist</span>(<span class="dt">originisocountrycode =</span> <span class="st">&quot;US&quot;</span>)
+<span class="kw">gbifmap_dens</span>(out)</code></pre>
+<div class="figure">
+<img src="figure/densitylist2.png" alt="plot of chunk densitylist2" /><p class="caption">plot of chunk densitylist2</p>
+</div>
+<h2 id="search-by-taxon-to-retrieve-number-of-records-in-gbif.">Search by taxon to retrieve number of records in GBIF.</h2>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">taxoncount</span>(<span class="st">&quot;Puma concolor&quot;</span>)</code></pre>
+<pre><code>[1] 91</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">taxoncount</span>(<span class="st">&quot;Helianthus annuus&quot;</span>)</code></pre>
+<pre><code>[1] 142</code></pre>
+</body>
+</html>
