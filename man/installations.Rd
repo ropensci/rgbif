@@ -14,13 +14,15 @@ installations(data = "all", uuid = NULL, query = NULL,
 
   \item{start}{Record number to start at}
 
-  \item{data}{The type of data to get. Default is all
-  data.}
+  \item{data}{The type of data to get. Default is all data.
+  If not 'all', then one or more of 'contact', 'endpoint',
+  'dataset', 'comment', 'deleted', 'nonPublishing'.}
 
   \item{uuid}{UUID of the data node provider. This must be
   specified if data is anything other than 'all'.}
 
-  \item{query}{Query nodes. Only used when data='all'}
+  \item{query}{Query nodes. Only used when data='all'.
+  Ignored otherwise.}
 
   \item{identifier}{The value for this parameter can be a
   simple string or integer, e.g. identifier=120. This
@@ -58,6 +60,7 @@ installations(data='comment', uuid="b77901f9-d9b0-47fa-94e0-dd96450aa2b4")
 installations(data='deleted')
 installations(data='deleted', limit=2)
 installations(data=c('deleted','nonPublishing'), limit=2)
+installations(identifierType='DOI', limit=2)
 }
 }
 \references{

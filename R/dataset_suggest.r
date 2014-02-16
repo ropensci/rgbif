@@ -3,6 +3,7 @@
 #' Search that returns up to 20 matching datasets. Results are ordered by relevance.
 #' 
 #' @import httr plyr
+#' @importFrom rjson fromJSON
 #' @template all
 #' @template occ
 #' @template dataset
@@ -72,8 +73,8 @@ dataset_suggest <- function(query = NULL, country = NULL, type = NULL, subtype =
   }
   
   if(description){
-    out <- lapply(tt, "[[", "description")
-    names(out) <- sapply(tt, "[[", "title")
+    out <- vapply(tt, "[[", "", "title")
+#     names(out) <- sapply(tt, "[[", "title")
   } else
   {
     if(length(tt)==1){

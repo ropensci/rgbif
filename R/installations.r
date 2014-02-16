@@ -4,10 +4,11 @@
 #' @template occ
 #' @import httr
 #' @import plyr 
-#' @param data The type of data to get. Default is all data.
+#' @param data The type of data to get. Default is all data. If not 'all', then one 
+#'    or more of 'contact', 'endpoint', 'dataset', 'comment', 'deleted', 'nonPublishing'.
 #' @param uuid UUID of the data node provider. This must be specified if data
 #'    is anything other than 'all'.
-#' @param query Query nodes. Only used when data='all'
+#' @param query Query nodes. Only used when data='all'. Ignored otherwise.
 #' @param identifier The value for this parameter can be a simple string or integer, 
 #'    e.g. identifier=120. This parameter doesn't seem to be useful right now.
 #' @param identifierType Used in combination with the identifier parameter to filter 
@@ -44,6 +45,7 @@
 #' installations(data='deleted')
 #' installations(data='deleted', limit=2)
 #' installations(data=c('deleted','nonPublishing'), limit=2)
+#' installations(identifierType='DOI', limit=2)
 #' }
 installations <- function(data = 'all', uuid = NULL, query = NULL, identifier=NULL,
                           identifierType=NULL, limit=20, start=NULL, callopts=list())
@@ -85,5 +87,5 @@ installations <- function(data = 'all', uuid = NULL, query = NULL, identifier=NU
   if(length(data)==1){ out <- getdata(data) } else
   { out <- lapply(data, getdata) }
   
-  out
+  return( out )
 }

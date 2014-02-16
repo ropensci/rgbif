@@ -32,7 +32,8 @@ Imports:
     RJSONIO,
     data.table,
     stringr,
-    assertthat
+    assertthat,
+    rjson
 Suggests:
     roxygen2,
     testthat

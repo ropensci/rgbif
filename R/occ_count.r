@@ -15,7 +15,8 @@
 #' @param publishingCountry Publishing country, two letter ISO country code
 #' @param from Year to start at
 #' @param to Year to end at
-#' @param type One of count (default), schema, basis_of_record, countries, year
+#' @param type One of count (default), schema, basis_of_record, countries, year,
+#'    or publishingCountry.
 #' @param callopts Pass on options to httr::GET for more refined control of 
 #'    http calls, and error handling
 #' @return A single numeric value
@@ -43,6 +44,9 @@
 #' # Counts by countries. publishingCountry must be supplied (default to US)
 #' occ_count(type='countries')
 #' 
+#' # Counts by publishingCountry, must supply a country (default to US)
+#' occ_count(type='publishingCountry')
+#' 
 #' # Counts by year. from and to years have to be supplied, default to 2000 and 2012 
 #' occ_count(type='year', from=2000, to=2012)
 #' }
@@ -55,21 +59,22 @@ occ_count <- function(nubKey=NULL, georeferenced=NULL, basisOfRecord=NULL,
                        basisOfRecord=basisOfRecord, datasetKey=datasetKey, 
                        date=date, catalogNumber=catalogNumber, country=country,
                        hostCountry=hostCountry, year=year))
-  type <- match.arg(type, choices=c("count","schema","basis_of_record","countries","year"))
+  type <- match.arg(type, choices=c("count","schema","basis_of_record","countries","year","publishingCountry"))
   url <- switch(type, 
                 count = 'http://api.gbif.org/v0.9/occurrence/count',
                 schema = 'http://api.gbif.org/v0.9/occurrence/count/schema',
                 basis_of_record = 'http://api.gbif.org/v0.9/occurrence/counts/basis_of_record',
                 countries = 'http://api.gbif.org/v0.9/occurrence/counts/countries',
-                year = 'http://api.gbif.org/v0.9/occurrence/counts/year')
+                year = 'http://api.gbif.org/v0.9/occurrence/counts/year',
+                publishingCountry = 'http://api.gbif.org/v0.9/occurrence/counts/publishing_countries')
   args <- switch(type,
                 count = args,
                 schema = list(),
                 basis_of_record = list(),
                 countries = compact(list(publishingCountry=publishingCountry)),
-                year = compact(list(from=from, to=to)))
+                year = compact(list(from=from, to=to)),
+                publishingCountry = compact(list(country=country)))
   tt <- GET(url, query=args, callopts)
-#   stop_for_status(tt)
   warn_for_status(tt)
   content(tt)
 }

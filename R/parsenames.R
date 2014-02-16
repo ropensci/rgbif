@@ -3,7 +3,7 @@
 #' @template all
 #' @import httr
 #' @import plyr
-#' @import RJSONIO
+#' @importFrom RJSONIO toJSON
 #' @param scientificname A character vector of scientific names.
 #' @return A \code{data.frame} containing fields extracted from parsed 
 #' taxon names. Fields returned are the union of fields extracted from
