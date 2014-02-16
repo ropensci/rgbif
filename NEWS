@@ -1,15 +1,25 @@
 rgbif 0.5.0
 ===============
 
+IMPROVEMENTS
+
+* Changed name of country_codes() function to gbif_country_codes() to avoid conflicts with other packages.
+* Replaced sapply() with vapply() throughout the package as it is more robust and can be faster.
+* Added a startup message to the package.
+* gbifmap() now plots a map with ggplot2::coord_fixed(ratio=1) so that you don't get wonky maps.
+* occ_count() now accepts a call to query publishingCountry with a single parameter (country), to list occurrence counts by publishing country.
+* occ_get() and occ_search() lose parameter minimal, and in its place gains parameter fields, in which you can request fields='minimal' to get just name, taxon key, lat and long. Or set to 'all' to get all fields, or selection the fields you want by passing in a vector of field names.
+
 BUG FIXES
 
-* asdf
-* asdf
-
+* Updated base url for the GIBF parser function parsenames()
+* isocodes dataset now with documentation.
 
 NEW FEATURES
 
-* 
+* New function count_facet() to do facetted count search, as GBIF doesn't allow faceted searches against the count API.
+* New function elevation() to get elevation data for a data.frame of lat/long points, or a list of lat/long points. This function uses the Google Elevation API (https://developers.google.com/maps/documentation/elevation/).
+* New function installations() to get metadata on installations.
 
 rgbif 0.4.1
 ===============
@@ -21,7 +31,7 @@ BUG FIXES
 
 IMPROVEMENTS
 
-* Added missing limit argument in datasets() function man file. 
+* Added missing limit argument in datasets() function man file, also function gains start and callopts parameters. 
 
 rgbif 0.4.0
 ===============

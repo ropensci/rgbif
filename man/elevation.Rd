@@ -1,6 +1,6 @@
 \name{elevation}
 \alias{elevation}
-\title{Make a map to visualize GBIF occurrence data.}
+\title{Get elevation for lat/long points from a data.frame or list of points.}
 \usage{
 elevation(input = NULL, latitude = NULL, longitude = NULL,
   latlong = NULL, callopts = list())
@@ -20,11 +20,12 @@ elevation(input = NULL, latitude = NULL, longitude = NULL,
   options for debugging.}
 }
 \value{
-A new data.frame or vector with elevation of each location
-in meters.
+A new column in the supplied data.frame or a vector with
+elevation of each location in meters.
 }
 \description{
-Make a map to visualize GBIF occurrence data.
+Get elevation for lat/long points from a data.frame or list
+of points.
 }
 \examples{
 \dontrun{

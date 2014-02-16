@@ -1,4 +1,4 @@
-#' Make a map to visualize GBIF occurrence data.
+#' Get elevation for lat/long points from a data.frame or list of points.
 #' 
 #' @import httr data.table plyr
 #' @importFrom stringr str_trim
@@ -10,7 +10,8 @@
 #' vector.
 #' @param latlong A vector of lat/long pairs. See examples.
 #' @param callopts Options passed on to httr::GET, like curl options for debugging.
-#' @return A new data.frame or vector with elevation of each location in meters.
+#' @return A new column in the supplied data.frame or a vector with elevation of 
+#' each location in meters. 
 #' @references Uses the Google Elevation API at the following link
 #' \url{https://developers.google.com/maps/documentation/elevation/}
 #' @export
