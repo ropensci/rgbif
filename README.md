@@ -1,7 +1,7 @@
 rgbif
 =====
 
-<!-- master branch [![Build Status](https://api.travis-ci.org/ropensci/rgbif.png?branch=master)](https://travis-ci.org/ropensci/rgbif) -->
+[![Build Status](https://api.travis-ci.org/ropensci/rgbif.png?branch=master)](https://travis-ci.org/ropensci/rgbif)
 <!-- dev branch [![Build Status](https://api.travis-ci.org/ropensci/rgbif.png?branch=dev)](https://travis-ci.org/ropensci/rgbif) -->
 
 ## About
@@ -164,19 +164,18 @@ To cite package `rgbif` in publications use:
 ```coffee
 To cite package ‘rgbif’ in publications use:
 
-  Scott Chamberlain, Carl Boettiger, Karthik Ram, Vijay Barve and Dan
-  Mcglinn (2013). rgbif: Interface to the Global Biodiversity
-  Information Facility API. R package version 0.4.0.
-  http://CRAN.R-project.org/package=rgbif
+  Scott Chamberlain, Carl Boettiger, Karthik Ram, Vijay Barve and Dan Mcglinn (2014). rgbif: Interface
+  to the Global Biodiversity Information Facility API. R package version 0.5.0.
+  https://github.com/ropensci/rgbif
 
 A BibTeX entry for LaTeX users is
 
   @Manual{,
     title = {rgbif: Interface to the Global Biodiversity Information Facility API},
     author = {Scott Chamberlain and Carl Boettiger and Karthik Ram and Vijay Barve and Dan Mcglinn},
-    year = {2013},
-    note = {R package version 0.4.0},
-    url = {http://CRAN.R-project.org/package=rgbif},
+    year = {2014},
+    note = {R package version 0.5.0},
+    url = {https://github.com/ropensci/rgbif},
   }
 ```
 
