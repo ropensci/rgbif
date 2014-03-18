@@ -2,6 +2,7 @@
 #' 
 #' @template all
 #' @import httr plyr
+#' @export
 #' @param nubKey Species key
 #' @param georeferenced Return only occurence records with lat/long data (TRUE) or
 #'    all records (FALSE, default). 
@@ -50,7 +51,7 @@
 #' # Counts by year. from and to years have to be supplied, default to 2000 and 2012 
 #' occ_count(type='year', from=2000, to=2012)
 #' }
-#' @export
+
 occ_count <- function(nubKey=NULL, georeferenced=NULL, basisOfRecord=NULL, 
   datasetKey=NULL, date=NULL, catalogNumber=NULL, country=NULL, hostCountry=NULL, 
   year=NULL, from=2000, to=2012, type='count', publishingCountry='US', callopts=list())
@@ -76,5 +77,6 @@ occ_count <- function(nubKey=NULL, georeferenced=NULL, basisOfRecord=NULL,
                 publishingCountry = compact(list(country=country)))
   tt <- GET(url, query=args, callopts)
   warn_for_status(tt)
-  content(tt)
+  res <- content(tt, as = 'text')
+  as.numeric(res)
 }
