@@ -16,8 +16,7 @@
 #' @param publishingCountry Publishing country, two letter ISO country code
 #' @param from Year to start at
 #' @param to Year to end at
-#' @param type One of count (default), schema, basis_of_record, countries, year,
-#'    or publishingCountry.
+#' @param type One of count (default), schema, basis_of_record, countries, or year.
 #' @param callopts Pass on options to httr::GET for more refined control of 
 #'    http calls, and error handling
 #' @return A single numeric value
@@ -53,9 +52,8 @@
 
 occ_count <- function(nubKey=NULL, georeferenced=NULL, basisOfRecord=NULL, 
   datasetKey=NULL, date=NULL, catalogNumber=NULL, country=NULL, hostCountry=NULL, 
-  year=NULL, from=2000, to=2012, type='count', callopts=list())
+  year=NULL, from=2000, to=2012, type='count', publishingCountry='US', callopts=list())
 {
-#   publishingCountry='US', 
   args <- compact(list(nubKey=nubKey, georeferenced=georeferenced, 
                        basisOfRecord=basisOfRecord, datasetKey=datasetKey, 
                        date=date, catalogNumber=catalogNumber, country=country,

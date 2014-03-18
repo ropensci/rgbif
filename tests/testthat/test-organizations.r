@@ -16,13 +16,6 @@ test_that("returns the correct class", {
   expect_is(vv[[1]]$createdBy, "character")
 })
 
-test_that("returns the correct value", {
-  expect_identical(tt$results[[1]]$tags, list())
-  expect_equal(uu$endorsingNodeKey, "1f94b3ca-9345-4d65-afe2-4bace93aa0fe")
-  expect_equal(vv[[1]]$key, 20006)
-  expect_equal(vv[[1]]$modifiedBy, "registry-migration.gbif.org")
-})
-
 test_that("returns the correct dimensions", {
   expect_equal(length(tt), 5)
   expect_equal(length(tt$results), 20)

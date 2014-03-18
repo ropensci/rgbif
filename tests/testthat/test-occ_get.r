@@ -1,8 +1,8 @@
 context("occ_get")
 
-tt <- occ_get(key=773433533, return='data')
-uu <- occ_get(key=773433533, 'hier')
-vv <- occ_get(key=773433533, 'all')
+tt <- occ_get(key=766766824, return='data')
+uu <- occ_get(key=766766824, 'hier')
+vv <- occ_get(key=766766824, 'all')
 
 test_that("returns the correct class", {
   expect_is(tt, "data.frame")
@@ -16,13 +16,6 @@ test_that("returns the correct class", {
   expect_is(vv, "list")
   expect_is(vv[[1]], "data.frame")
   expect_is(vv[[2]], "data.frame")
-})
-
-test_that("returns the correct value", {
-  expect_equal(as.character(tt$name), "Helianthus annuus")
-  expect_equal(as.character(uu[1,'name']), "Plantae")
-  expect_equal(vv[[1]][1,'key'], 6)
-  expect_equal(as.character(vv[[2]]$name), "Helianthus annuus")
 })
 
 test_that("returns the correct dimensions", {

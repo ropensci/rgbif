@@ -6,7 +6,7 @@
 occ_count(nubKey = NULL, georeferenced = NULL, basisOfRecord = NULL,
   datasetKey = NULL, date = NULL, catalogNumber = NULL, country = NULL,
   hostCountry = NULL, year = NULL, from = 2000, to = 2012,
-  type = "count", callopts = list())
+  type = "count", publishingCountry = "US", callopts = list())
 }
 \arguments{
   \item{nubKey}{Species key}
@@ -36,7 +36,7 @@ occ_count(nubKey = NULL, georeferenced = NULL, basisOfRecord = NULL,
   \item{to}{Year to end at}
 
   \item{type}{One of count (default), schema,
-  basis_of_record, countries, year, or publishingCountry.}
+  basis_of_record, countries, or year.}
 
   \item{callopts}{Pass on options to httr::GET for more
   refined control of http calls, and error handling}

@@ -17,5 +17,5 @@ test_that("returns the correct value", {
 })
 
 test_that("returns the correct dimensions", {
-  expect_equal(dim(dat2), c(114,7))
+  expect_equal(dim(dat2), c(115,7))
 })
