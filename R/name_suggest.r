@@ -19,6 +19,7 @@
 #' name_suggest(q='Puma', fields=c('key','canonicalName'))
 #' name_suggest(q='Puma', rank="GENUS")
 #' }
+
 name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL, start=NULL, 
                          limit=20, callopts=list())
 {
@@ -26,7 +27,10 @@ name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL, start=
   args <- compact(list(q=q, rank=rank, offset=start, limit=limit))
   temp <- GET(url, query=args, callopts)
   stop_for_status(temp)
-  tt <- content(temp)
+  assert_that(temp$headers$`content-type`=='application/json')
+  res <- content(temp, as = 'text', encoding = "UTF-8")
+  tt <- RJSONIO::fromJSON(res, simplifyWithNames = FALSE)
+  
   if(is.null(fields)){
     toget <- c("key","scientificName","rank")
   } else { toget <- fields }

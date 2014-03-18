@@ -22,6 +22,7 @@
 #' datasets(data=c('deleted','duplicate'))
 #' datasets(data=c('deleted','duplicate'), limit=1)
 #' }
+
 datasets <- function(data = 'all', type = NULL, uuid = NULL, query = NULL, id = NULL, 
                      limit = 20, start=NULL, callopts=list())
 {
@@ -62,7 +63,9 @@ datasets <- function(data = 'all', type = NULL, uuid = NULL, query = NULL, id = 
     }
     tt <- GET(url, query=args, callopts)
     stop_for_status(tt)
-    content(tt)
+    assert_that(tt$headers$`content-type`=='application/json')
+    res <- content(tt, as = 'text', encoding = "UTF-8")
+    RJSONIO::fromJSON(res, simplifyWithNames = FALSE)
   }
   
   # Get data

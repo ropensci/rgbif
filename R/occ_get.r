@@ -1,8 +1,9 @@
 #' Get data for specific GBIF occurrences.
 #' 
 #' @template all
-#' @import httr
+#' @import httr assertthat
 #' @import plyr
+#' @importFrom RJSONIO fromJSON
 #' @param key Occurrence key
 #' @param return One of data, hier, meta, or all. If data, a data.frame with the 
 #'    data. hier returns the classifications in a list for each record. meta 
@@ -15,20 +16,19 @@
 #' @return A data.frame or list.
 #' @export
 #' @examples \dontrun{
-#' occ_get(key=773433533, return='data')
-#' occ_get(key=773433533, 'hier')
-#' occ_get(key=773433533, 'all')
+#' occ_get(key=766766824, return='data')
+#' occ_get(key=766766824, 'hier')
+#' occ_get(key=766766824, 'all')
 #' 
 #' # many occurrences
-#' occ_get(key=c(773433533,101010,240713150,855998194,49819470), return='data')
+#' occ_get(key=c(101010,240713150,855998194,49819470), return='data')
 #' 
 #' # Verbatim data
-#' occ_get(key=c(773433533,766766824,620594291,766420684), verbatim=TRUE)
+#' occ_get(key=c(766766824,620594291,766420684), verbatim=TRUE)
 #' }
 occ_get <- function(key=NULL, return='all', verbatim=FALSE, fields='minimal', callopts=list())
 {
-  if(!is.numeric(key))
-    stop('key must be numeric')
+  assert_that(is.numeric(key))
   
   # Define function to get data
   getdata <- function(x){
@@ -40,7 +40,9 @@ occ_get <- function(key=NULL, return='all', verbatim=FALSE, fields='minimal', ca
     }
     temp <- GET(url, callopts)
     stop_for_status(temp)
-    content(temp)
+    assert_that(temp$headers$`content-type`=='application/json')
+    res <- content(temp, as = 'text', encoding = "UTF-8")
+    RJSONIO::fromJSON(res, simplifyWithNames = FALSE)
   }
   
   # Get data

@@ -17,6 +17,7 @@
 #' organizations(data='contact', uuid="4b4b2111-ee51-45f5-bf5e-f535f4a1c9dc")
 #' organizations(data='pending')
 #' }
+
 organizations <- function(data = 'all', uuid = NULL, query = NULL, limit=20, 
                           start=NULL, callopts=list())
 {
@@ -51,7 +52,9 @@ organizations <- function(data = 'all', uuid = NULL, query = NULL, limit=20,
     }
     temp <- GET(url, query=args, callopts)
     stop_for_status(temp)
-    content(temp)
+    assert_that(temp$headers$`content-type`=='application/json')
+    res <- content(temp, as = 'text', encoding = "UTF-8")
+    RJSONIO::fromJSON(res, simplifyWithNames = FALSE)
   }
   
   # Get data

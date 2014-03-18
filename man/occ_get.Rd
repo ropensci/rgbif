@@ -35,15 +35,15 @@ Get data for specific GBIF occurrences.
 }
 \examples{
 \dontrun{
-occ_get(key=773433533, return='data')
-occ_get(key=773433533, 'hier')
-occ_get(key=773433533, 'all')
+occ_get(key=766766824, return='data')
+occ_get(key=766766824, 'hier')
+occ_get(key=766766824, 'all')
 
 # many occurrences
-occ_get(key=c(773433533,101010,240713150,855998194,49819470), return='data')
+occ_get(key=c(101010,240713150,855998194,49819470), return='data')
 
 # Verbatim data
-occ_get(key=c(773433533,766766824,620594291,766420684), verbatim=TRUE)
+occ_get(key=c(766766824,620594291,766420684), verbatim=TRUE)
 }
 }
 \references{

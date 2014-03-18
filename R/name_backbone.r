@@ -27,6 +27,7 @@
 #' name_backbone(name='Helianthus', rank='genus', kingdom='plants')
 #' name_backbone(name='Helianthus annuus', kingdom='plants', verbose=TRUE)
 #' }
+
 name_backbone <- function(name, rank=NULL, kingdom=NULL, phylum=NULL, class=NULL, 
   order=NULL, family=NULL, genus=NULL, strict=FALSE, verbose=FALSE, 
   start=NULL, limit=20, callopts=list())
@@ -37,7 +38,9 @@ name_backbone <- function(name, rank=NULL, kingdom=NULL, phylum=NULL, class=NULL
                        strict=strict, verbose=verbose, offset=start, limit=limit))
   temp <- GET(url, query=args, callopts)
   stop_for_status(temp)
-  tt <- content(temp)
+  assert_that(temp$headers$`content-type`=='application/json')
+  res <- content(temp, as = 'text', encoding = "UTF-8")
+  tt <- RJSONIO::fromJSON(res, simplifyWithNames = FALSE)
   
   if(verbose){ 
     alt <- do.call(rbind.fill, lapply(tt$alternatives, namelkupparser))

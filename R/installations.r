@@ -80,7 +80,9 @@ installations <- function(data = 'all', uuid = NULL, query = NULL, identifier=NU
     }
     temp <- GET(url, query=args, callopts)
     stop_for_status(temp)
-    content(temp)
+    assert_that(temp$headers$`content-type`=='application/json')
+    res <- content(temp, as = 'text', encoding = "UTF-8")
+    RJSONIO::fromJSON(res, simplifyWithNames = FALSE)
   }
   
   # Get data

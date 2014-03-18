@@ -38,6 +38,7 @@
 #' # Select many options
 #' name_usage(key=3119195, data=c('images','synonyms'))
 #' }
+
 name_usage <- function(key=NULL, name=NULL, data='all', language=NULL, datasetKey=NULL,
   sourceId=NULL, rank=NULL, uuid=NULL, shortname=NULL, start=NULL, limit=20, callopts=list())
 {
@@ -73,7 +74,9 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL, datasetKe
     }
     tt <- GET(url, query=args, callopts)
     stop_for_status(tt)
-    content(tt)
+    assert_that(tt$headers$`content-type`=='application/json')
+    res <- content(tt, as = 'text', encoding = "UTF-8")
+    RJSONIO::fromJSON(res, simplifyWithNames = FALSE)
   }
   
   # Get data

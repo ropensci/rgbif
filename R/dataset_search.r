@@ -66,7 +66,10 @@ dataset_search <- function(query= NULL, country = NULL, type = NULL, keyword = N
                        facet_multiselect=facet_multiselect)))
   temp <- GET(url, query=args, callopts)
   stop_for_status(temp)
-  tt <- content(temp)
+#   tt <- content(temp)  
+  assert_that(temp$headers$`content-type`=='application/json')
+  res <- content(temp, as = 'text', encoding = "UTF-8")
+  tt <- RJSONIO::fromJSON(res, simplifyWithNames = FALSE)
   
   # metadata
   meta <- tt[c('offset','limit','endOfRecords','count')]

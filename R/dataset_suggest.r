@@ -3,7 +3,7 @@
 #' Search that returns up to 20 matching datasets. Results are ordered by relevance.
 #' 
 #' @import httr plyr
-#' @importFrom rjson fromJSON
+#' @importFrom RJSONIO fromJSON
 #' @template all
 #' @template occ
 #' @template dataset
@@ -45,6 +45,7 @@
 #' # Search by decade
 #' dataset_suggest(decade=1980)
 #' }
+
 dataset_suggest <- function(query = NULL, country = NULL, type = NULL, subtype = NULL, 
   keyword = NULL, owning_org = NULL, hosting_org = NULL, publishing_country = NULL, 
   decade = NULL, continent = NULL, limit=20, start=NULL, callopts=list(), 
@@ -56,7 +57,9 @@ dataset_suggest <- function(query = NULL, country = NULL, type = NULL, subtype =
                        decade=decade,limit=limit,offset=start))
   temp <- GET(url, query=args, callopts)
   stop_for_status(temp)
-  tt <- content(temp)
+  assert_that(temp$headers$`content-type`=='application/json')
+  res <- content(temp, as = 'text', encoding = "UTF-8")
+  tt <- RJSONIO::fromJSON(res, simplifyWithNames = FALSE)
   
   parse_dataset <- function(x){
     tmp <- compact(list(

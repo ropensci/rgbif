@@ -28,6 +28,7 @@
 #' 
 #' sapply(uuids, nodes, data='identifier')
 #' }
+
 nodes <- function(data = 'all', uuid = NULL, query = NULL, isocode = NULL, callopts=list())
 {
   args <- compact(list(q = query))
@@ -65,7 +66,9 @@ nodes <- function(data = 'all', uuid = NULL, query = NULL, isocode = NULL, callo
     }
     temp <- GET(url, query=args, callopts)
     stop_for_status(temp)
-    content(temp)
+    assert_that(temp$headers$`content-type`=='application/json')
+    res <- content(temp, as = 'text', encoding = "UTF-8")
+    RJSONIO::fromJSON(res, simplifyWithNames = FALSE)
   }
   
   # Get data

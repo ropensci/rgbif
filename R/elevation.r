@@ -1,8 +1,7 @@
 #' Get elevation for lat/long points from a data.frame or list of points.
 #' 
-#' @import httr data.table plyr
+#' @import httr data.table plyr assertthat
 #' @importFrom stringr str_trim
-#' @importFrom assertthat assert_that
 #' @param input A data.frame of lat/long data.
 #' @param latitude A vector of latitude's. Must be the same length as the longitude 
 #' vector.
@@ -27,6 +26,7 @@
 #' pairs <- list(c(31.8496,-110.576060), c(29.15503,-103.59828))
 #' elevation(latlong=pairs)
 #' }
+
 elevation <- function(input=NULL, latitude=NULL, longitude=NULL, latlong=NULL, 
                       callopts=list())
 {
@@ -51,7 +51,10 @@ elevation <- function(input=NULL, latitude=NULL, longitude=NULL, latlong=NULL,
       args <- compact(list(locations=locations[[i]], sensor='false'))
       tt <- GET(url, query=args, callopts)
       stop_for_status(tt)
-      out <- content(tt)
+      assert_that(tt$headers$`content-type`=='application/json; charset=UTF-8')
+      res <- content(tt, as = 'text', encoding = "UTF-8")
+      out <- RJSONIO::fromJSON(res, simplifyWithNames = FALSE)
+      
       df <- data.frame(elevation=sapply(out$results, '[[', 'elevation'))
       outout[[i]] <- df
     }

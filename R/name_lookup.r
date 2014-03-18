@@ -34,6 +34,7 @@
 #' name_lookup(facet='status', facet_only=TRUE, facet_mincount='7000000')
 #' name_lookup(facet=c('status','highertaxon_key'), facet_only=TRUE, facet_mincount='700000')
 #' }
+
 name_lookup <- function(query=NULL, rank=NULL, highertaxon_key=NULL, status=NULL, extinct=NULL, 
   habitat=NULL, name_type=NULL, dataset_key=NULL, nomenclatural_status=NULL,
   limit=20, facet=NULL, facet_only=NULL, facet_mincount=NULL, 
@@ -54,7 +55,9 @@ name_lookup <- function(query=NULL, rank=NULL, highertaxon_key=NULL, status=NULL
             facet_multiselect=facet_multiselect)))
   temp <- GET(url, query=args, callopts)
   stop_for_status(temp)
-  tt <- content(temp)
+  assert_that(temp$headers$`content-type`=='application/json')
+  res <- content(temp, as = 'text', encoding = "UTF-8")
+  tt <- RJSONIO::fromJSON(res, simplifyWithNames = FALSE)
   
   # metadata
   meta <- tt[c('offset','limit','endOfRecords','count')]

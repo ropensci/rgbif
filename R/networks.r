@@ -27,6 +27,7 @@
 #' # should throw error message saying params are deprecated
 #' networks(maxresults=10)
 #' }
+
 networks <- function(data = 'all', uuid = NULL, callopts=list(), name = NULL, code = NULL, 
   modifiedsince = NULL, startindex = NULL, maxresults = NULL)
 {
@@ -57,7 +58,9 @@ networks <- function(data = 'all', uuid = NULL, callopts=list(), name = NULL, co
     }
     temp <- GET(url, callopts)
     stop_for_status(temp)
-    content(temp)
+    assert_that(temp$headers$`content-type`=='application/json')
+    res <- content(temp, as = 'text', encoding = "UTF-8")
+    RJSONIO::fromJSON(res, simplifyWithNames = FALSE)
   }
   
   # Get data

@@ -1,7 +1,9 @@
 #' Search for catalog numbers, collection codes, collector names, and institution 
 #' codes.
 #' 
-#' @import httr plyr
+#' @import httr plyr assertthat
+#' @importFrom RJSONIO fromJSON
+#' @export
 #' @template all
 #' @param type Type of data, one of catalog_number, collection_code, collector_name, 
 #' institution_code. Unique partial strings work too, like 'cat' for catalog_number
@@ -32,7 +34,7 @@
 #' # Partial unique type strings work too
 #' occ_metadata(type = "cat", q=122)
 #' }
-#' @export
+
 occ_metadata <- function(type = "catalog_number", q=NULL, limit=5, 
                          callopts=list(), pretty=TRUE)
 {
@@ -42,8 +44,12 @@ occ_metadata <- function(type = "catalog_number", q=NULL, limit=5,
   args <- compact(list(q = q, limit = limit))
   tt <- GET(url, query=args, callopts)
   stop_for_status(tt)
+  assert_that(tt$headers$`content-type`=='application/json')
+  res <- content(tt, as = 'text', encoding = "UTF-8")
+  out <- RJSONIO::fromJSON(res, simplifyWithNames = FALSE)
+  
   if(pretty){
-    cat(content(tt), sep="\n")
+    cat(out, sep="\n")
   } else
-  { content(tt) }
+  { out }
 }
