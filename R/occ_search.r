@@ -148,9 +148,6 @@ occ_search <- function(taxonKey=NULL, country=NULL, publishingCountry=NULL, geor
       temp <- GET(url, query=args, callopts)
       stop_for_status(temp)
       assert_that(temp$headers$`content-type`=='application/json')
-#       res <- content(temp, as = 'text')
-#       tt <- RJSONIO::fromJSON(res)
-      
       res <- content(temp, as = 'text', encoding = "UTF-8")
       tt <- RJSONIO::fromJSON(res, simplifyWithNames = FALSE)
       

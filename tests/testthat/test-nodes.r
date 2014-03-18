@@ -17,7 +17,7 @@ test_that("returns the correct class", {
 })
 
 test_that("returns the correct value", {
-  expect_identical(tt$results[[1]]$tags, list())
+  expect_true(typeof(tt$results[[1]]$tags)=="list")
   expect_equal(uu$title, "Republic of Congo")
   expect_equal(vv[[1]]$key, 13587)
   expect_equal(vv[[1]]$modifiedBy, NULL)

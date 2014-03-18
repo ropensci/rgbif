@@ -31,10 +31,6 @@
 #' occ_count(year=2012)
 #' occ_count(nubKey=2435099)
 #' occ_count(nubKey=2435099, georeferenced=TRUE)
-#' occ_count(datasetKey='8626bd3a-f762-11e1-a439-00145eb45e9a', 
-#'    basisOfRecord='PRESERVED_SPECIMEN')
-#' occ_count(datasetKey='8626bd3a-f762-11e1-a439-00145eb45e9a', nubKey=2435099,
-#'    basisOfRecord='PRESERVED_SPECIMEN')
 #' 
 #' # Just schema
 #' occ_count(type='schema')
@@ -45,38 +41,44 @@
 #' # Counts by countries. publishingCountry must be supplied (default to US)
 #' occ_count(type='countries')
 #' 
-#' # Counts by publishingCountry, must supply a country (default to US)
-#' occ_count(type='publishingCountry')
-#' 
 #' # Counts by year. from and to years have to be supplied, default to 2000 and 2012 
 #' occ_count(type='year', from=2000, to=2012)
+#' }
+#' 
+#' @examples \donttest{
+#' # Counts by publishingCountry, must supply a country (default to US)
+#' ## NOT WORKING RIGHT NOW
+#' occ_count(type='publishingCountry')
 #' }
 
 occ_count <- function(nubKey=NULL, georeferenced=NULL, basisOfRecord=NULL, 
   datasetKey=NULL, date=NULL, catalogNumber=NULL, country=NULL, hostCountry=NULL, 
-  year=NULL, from=2000, to=2012, type='count', publishingCountry='US', callopts=list())
+  year=NULL, from=2000, to=2012, type='count', callopts=list())
 {
+#   publishingCountry='US', 
   args <- compact(list(nubKey=nubKey, georeferenced=georeferenced, 
                        basisOfRecord=basisOfRecord, datasetKey=datasetKey, 
                        date=date, catalogNumber=catalogNumber, country=country,
                        hostCountry=hostCountry, year=year))
-  type <- match.arg(type, choices=c("count","schema","basis_of_record","countries","year","publishingCountry"))
+  type <- match.arg(type, choices=c("count","schema","basis_of_record","countries","year"))
+#   ,"publishingCountry"
   url <- switch(type, 
                 count = 'http://api.gbif.org/v0.9/occurrence/count',
                 schema = 'http://api.gbif.org/v0.9/occurrence/count/schema',
                 basis_of_record = 'http://api.gbif.org/v0.9/occurrence/counts/basis_of_record',
                 countries = 'http://api.gbif.org/v0.9/occurrence/counts/countries',
-                year = 'http://api.gbif.org/v0.9/occurrence/counts/year',
-                publishingCountry = 'http://api.gbif.org/v0.9/occurrence/counts/publishing_countries')
+                year = 'http://api.gbif.org/v0.9/occurrence/counts/year')
+#                 publishingCountry = 'http://api.gbif.org/v0.9/occurrence/counts/publishing_countries')
   args <- switch(type,
                 count = args,
                 schema = list(),
                 basis_of_record = list(),
                 countries = compact(list(publishingCountry=publishingCountry)),
-                year = compact(list(from=from, to=to)),
-                publishingCountry = compact(list(country=country)))
+                year = compact(list(from=from, to=to)))
+#                 publishingCountry = compact(list(country=country))
   tt <- GET(url, query=args, callopts)
   warn_for_status(tt)
-  res <- content(tt, as = 'text')
-  as.numeric(res)
+  assert_that(tt$headers$`content-type`=='application/json')
+  res <- content(tt, as = 'text', encoding = "UTF-8")
+  if(type=='count'){ as.numeric(res) } else{ RJSONIO::fromJSON(res, simplifyWithNames = FALSE) }
 }

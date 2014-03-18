@@ -6,7 +6,7 @@
 occ_count(nubKey = NULL, georeferenced = NULL, basisOfRecord = NULL,
   datasetKey = NULL, date = NULL, catalogNumber = NULL, country = NULL,
   hostCountry = NULL, year = NULL, from = 2000, to = 2012,
-  type = "count", publishingCountry = "US", callopts = list())
+  type = "count", callopts = list())
 }
 \arguments{
   \item{nubKey}{Species key}
@@ -58,10 +58,6 @@ occ_count(datasetKey='9e7ea106-0bf8-4087-bb61-dfe4f29e0f17')
 occ_count(year=2012)
 occ_count(nubKey=2435099)
 occ_count(nubKey=2435099, georeferenced=TRUE)
-occ_count(datasetKey='8626bd3a-f762-11e1-a439-00145eb45e9a',
-   basisOfRecord='PRESERVED_SPECIMEN')
-occ_count(datasetKey='8626bd3a-f762-11e1-a439-00145eb45e9a', nubKey=2435099,
-   basisOfRecord='PRESERVED_SPECIMEN')
 
 # Just schema
 occ_count(type='schema')
@@ -71,9 +67,6 @@ occ_count(type='basis_of_record')
 
 # Counts by countries. publishingCountry must be supplied (default to US)
 occ_count(type='countries')
-
-# Counts by publishingCountry, must supply a country (default to US)
-occ_count(type='publishingCountry')
 
 # Counts by year. from and to years have to be supplied, default to 2000 and 2012
 occ_count(type='year', from=2000, to=2012)
