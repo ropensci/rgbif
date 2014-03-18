@@ -7,7 +7,6 @@ man-roxygen
 ^\.Rproj\.user$
 inst/vign
 inst/assets
-tests/test-all.R
 Makefile
 vignettes/margins.sty
 vignettes/figure
