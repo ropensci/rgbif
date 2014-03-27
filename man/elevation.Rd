@@ -7,18 +7,17 @@ elevation(input = NULL, latitude = NULL, longitude = NULL,
   latlong = NULL, callopts = list())
 }
 \arguments{
-  \item{input}{A data.frame of lat/long data.}
+\item{input}{A data.frame of lat/long data.}
 
-  \item{latitude}{A vector of latitude's. Must be the same
-  length as the longitude vector.}
+\item{latitude}{A vector of latitude's. Must be the same length as the longitude
+vector.}
 
-  \item{longitude}{A vector of longitude's. Must be the
-  same length as the latitude vector.}
+\item{longitude}{A vector of longitude's. Must be the same length as the latitude
+vector.}
 
-  \item{latlong}{A vector of lat/long pairs. See examples.}
+\item{latlong}{A vector of lat/long pairs. See examples.}
 
-  \item{callopts}{Options passed on to httr::GET, like curl
-  options for debugging.}
+\item{callopts}{Options passed on to httr::GET, like curl options for debugging.}
 }
 \value{
 A new column in the supplied data.frame or a vector with elevation of

@@ -8,31 +8,27 @@ installations(data = "all", uuid = NULL, query = NULL,
   callopts = list())
 }
 \arguments{
-  \item{callopts}{Pass on options to httr::GET for more
-  refined control of http calls, and error handling}
+\item{callopts}{Pass on options to httr::GET for more refined control of
+http calls, and error handling}
 
-  \item{limit}{Number of records to return}
+\item{limit}{Number of records to return}
 
-  \item{start}{Record number to start at}
+\item{start}{Record number to start at}
 
-  \item{data}{The type of data to get. Default is all data.
-  If not 'all', then one or more of 'contact', 'endpoint',
-  'dataset', 'comment', 'deleted', 'nonPublishing'.}
+\item{data}{The type of data to get. Default is all data. If not 'all', then one
+or more of 'contact', 'endpoint', 'dataset', 'comment', 'deleted', 'nonPublishing'.}
 
-  \item{uuid}{UUID of the data node provider. This must be
-  specified if data is anything other than 'all'.}
+\item{uuid}{UUID of the data node provider. This must be specified if data
+is anything other than 'all'.}
 
-  \item{query}{Query nodes. Only used when data='all'.
-  Ignored otherwise.}
+\item{query}{Query nodes. Only used when data='all'. Ignored otherwise.}
 
-  \item{identifier}{The value for this parameter can be a
-  simple string or integer, e.g. identifier=120. This
-  parameter doesn't seem to be useful right now.}
+\item{identifier}{The value for this parameter can be a simple string or integer,
+e.g. identifier=120. This parameter doesn't seem to be useful right now.}
 
-  \item{identifierType}{Used in combination with the
-  identifier parameter to filter identifiers by identifier
-  type. See details. This parameter doesn't seem to be
-  useful right now.}
+\item{identifierType}{Used in combination with the identifier parameter to filter
+identifiers by identifier type. See details. This parameter doesn't seem to
+be useful right now.}
 }
 \value{
 A list.

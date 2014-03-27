@@ -6,17 +6,14 @@
 togeojson(input, method = "web", destpath = "~/", outfilename = "myfile")
 }
 \arguments{
-  \item{input}{The file being uploaded, path to the file on
-  your machine.}
+\item{input}{The file being uploaded, path to the file on your machine.}
 
-  \item{method}{One of web or local. Matches on partial
-  strings.}
+\item{method}{One of web or local. Matches on partial strings.}
 
-  \item{destpath}{Destination for output geojson file.
-  Defaults to your root directory ("~/").}
+\item{destpath}{Destination for output geojson file. Defaults to your root
+directory ("~/").}
 
-  \item{outfilename}{The output file name, without file
-  extension.}
+\item{outfilename}{The output file name, without file extension.}
 }
 \description{
 The web option uses the Ogre web API. Ogre currently has an output size limit of 15MB.

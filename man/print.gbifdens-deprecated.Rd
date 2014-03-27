@@ -6,10 +6,9 @@
 \method{print}{gbifdens}(x, ...)
 }
 \arguments{
-  \item{x}{an object of class gbifdens}
+\item{x}{an object of class gbifdens}
 
-  \item{...}{further arguments passed to or from other
-  methods.}
+\item{...}{further arguments passed to or from other methods.}
 }
 \description{
 Print summary of gbifdens class

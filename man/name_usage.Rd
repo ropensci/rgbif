@@ -8,41 +8,37 @@ name_usage(key = NULL, name = NULL, data = "all", language = NULL,
   shortname = NULL, start = NULL, limit = 20, callopts = list())
 }
 \arguments{
-  \item{callopts}{Pass on options to httr::GET for more
-  refined control of http calls, and error handling}
+\item{callopts}{Pass on options to httr::GET for more refined control of
+http calls, and error handling}
 
-  \item{limit}{Number of records to return}
+\item{limit}{Number of records to return}
 
-  \item{start}{Record number to start at}
+\item{start}{Record number to start at}
 
-  \item{rank}{Taxonomic rank. Filters by taxonomic rank as
-  one of: CLASS, CULTIVAR, CULTIVAR_GROUP, DOMAIN, FAMILY,
-  FORM, GENUS, INFORMAL, INFRAGENERIC_NAME, INFRAORDER,
-  INFRASPECIFIC_NAME, INFRASUBSPECIFIC_NAME, KINGDOM,
-  ORDER, PHYLUM, SECTION, SERIES, SPECIES, STRAIN,
-  SUBCLASS, SUBFAMILY, SUBFORM, SUBGENUS, SUBKINGDOM,
-  SUBORDER, SUBPHYLUM, SUBSECTION, SUBSERIES, SUBSPECIES,
-  SUBTRIBE, SUBVARIETY, SUPERCLASS, SUPERFAMILY,
-  SUPERORDER, SUPERPHYLUM, SUPRAGENERIC_NAME, TRIBE,
-  UNRANKED, VARIETY}
+\item{rank}{Taxonomic rank. Filters by taxonomic rank as one of:
+    CLASS, CULTIVAR, CULTIVAR_GROUP, DOMAIN, FAMILY, FORM, GENUS, INFORMAL,
+  INFRAGENERIC_NAME, INFRAORDER, INFRASPECIFIC_NAME, INFRASUBSPECIFIC_NAME,
+KINGDOM, ORDER, PHYLUM, SECTION, SERIES, SPECIES, STRAIN, SUBCLASS, SUBFAMILY,
+SUBFORM, SUBGENUS, SUBKINGDOM, SUBORDER, SUBPHYLUM, SUBSECTION, SUBSERIES,
+SUBSPECIES, SUBTRIBE, SUBVARIETY, SUPERCLASS, SUPERFAMILY, SUPERORDER,
+SUPERPHYLUM, SUPRAGENERIC_NAME, TRIBE, UNRANKED, VARIETY}
 
-  \item{datasetKey}{Filters by the dataset's key (a uuid)}
+\item{datasetKey}{Filters by the dataset's key (a uuid)}
 
-  \item{key}{A GBIF key for a taxon}
+\item{key}{A GBIF key for a taxon}
 
-  \item{name}{Filters by a case insensitive, canonical
-  namestring, e.g. 'Puma concolor'}
+\item{name}{Filters by a case insensitive, canonical namestring, e.g. 'Puma concolor'}
 
-  \item{data}{Specify an option to select what data is
-  returned. See Description below.}
+\item{data}{Specify an option to select what data is returned. See Description
+below.}
 
-  \item{language}{Language, default is english}
+\item{language}{Language, default is english}
 
-  \item{sourceId}{Filters by the source identifier}
+\item{sourceId}{Filters by the source identifier}
 
-  \item{uuid}{A uuid for a dataset.}
+\item{uuid}{A uuid for a dataset.}
 
-  \item{shortname}{A short name..need more info on this?}
+\item{shortname}{A short name..need more info on this?}
 }
 \value{
 A list of length two. The first element is metadata. The second is

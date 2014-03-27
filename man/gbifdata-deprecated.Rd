@@ -16,18 +16,16 @@ gbifdata(...)
 \method{gbifdata}{gbiflist_na}(input, ...)
 }
 \arguments{
-  \item{input}{Input object from a call to occurrencelist,
-  occurrencelist_many, or densitylist.}
+\item{input}{Input object from a call to occurrencelist, occurrencelist_many,
+or densitylist.}
 
-  \item{minimal}{Only applies to occurrencelist data. If
-  TRUE, returns only name, lat, long fields; defaults to
-  TRUE. Use with gbifdata.gbiflist only.}
+\item{minimal}{Only applies to occurrencelist data. If TRUE, returns only name, lat,
+long fields; defaults to TRUE. Use with gbifdata.gbiflist only.}
 
-  \item{coordinatestatus}{Return only rows of data.frame
-  that have lat and long data.  Use with gbifdata.gbiflist
-  only.}
+\item{coordinatestatus}{Return only rows of data.frame that have lat and long data.
+Use with gbifdata.gbiflist only.}
 
-  \item{...}{further arguments}
+\item{...}{further arguments}
 }
 \description{
 Get data.frame from occurrencelist, occurrencelist_many, or densitylist.

@@ -6,8 +6,7 @@
 parsenames(scientificname)
 }
 \arguments{
-  \item{scientificname}{A character vector of scientific
-  names.}
+\item{scientificname}{A character vector of scientific names.}
 }
 \value{
 A \code{data.frame} containing fields extracted from parsed

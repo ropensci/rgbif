@@ -6,7 +6,7 @@
 is.gbifdens(x)
 }
 \arguments{
-  \item{x}{input}
+\item{x}{input}
 }
 \description{
 Check if object is of class gbifdens

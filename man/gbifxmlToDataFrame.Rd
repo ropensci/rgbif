@@ -8,9 +8,9 @@ by Robert Hijmans, 2012-05-31, License: GPL v3}
 gbifxmlToDataFrame(doc, format)
 }
 \arguments{
-  \item{doc}{A parsed XML document.}
+\item{doc}{A parsed XML document.}
 
-  \item{format}{Format to use.}
+\item{format}{Format to use.}
 }
 \description{
 Code based on the `gbifxmlToDataFrame` function from dismo package

@@ -6,9 +6,9 @@
 dataset_metrics(uuid, callopts = list())
 }
 \arguments{
-  \item{uuid}{A dataset UUID.}
+\item{uuid}{A dataset UUID.}
 
-  \item{callopts}{Pass on options to GET.}
+\item{callopts}{Pass on options to GET.}
 }
 \description{
 You should be able to pass in more than one uuid to this function, but I have

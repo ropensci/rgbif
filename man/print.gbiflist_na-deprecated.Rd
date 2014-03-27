@@ -6,10 +6,9 @@
 \method{print}{gbiflist_na}(x, ...)
 }
 \arguments{
-  \item{x}{an object of class gbiflist_na}
+\item{x}{an object of class gbiflist_na}
 
-  \item{...}{further arguments passed to or from other
-  methods.}
+\item{...}{further arguments passed to or from other methods.}
 }
 \description{
 Print summary of gbiflist_na class

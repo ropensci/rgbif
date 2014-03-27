@@ -6,7 +6,7 @@
 commas_to_periods(dataframe)
 }
 \arguments{
-  \item{dataframe}{A data.frame}
+\item{dataframe}{A data.frame}
 }
 \description{
 Convert commas to periods in lat/long data

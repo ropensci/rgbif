@@ -7,14 +7,12 @@ all its name variants according to GBIF's name matching.}
 occurrencelist_all(scientificname, ranktoget = "species", ...)
 }
 \arguments{
-  \item{scientificname}{A scientific name. (character)}
+\item{scientificname}{A scientific name. (character)}
 
-  \item{ranktoget}{You must specify the taxonomic rank you
-  are searching for so that we can select the correct
-  names.}
+\item{ranktoget}{You must specify the taxonomic rank you are searching for
+so that we can select the correct names.}
 
-  \item{...}{Further arguments passed on to
-  occurrencelist_many}
+\item{...}{Further arguments passed on to occurrencelist_many}
 }
 \description{
 This function is deprecated.

@@ -8,25 +8,22 @@ name_suggest(q = NULL, datasetKey = NULL, rank = NULL, fields = NULL,
   start = NULL, limit = 20, callopts = list())
 }
 \arguments{
-  \item{callopts}{Pass on options to httr::GET for more
-  refined control of http calls, and error handling}
+\item{callopts}{Pass on options to httr::GET for more refined control of
+http calls, and error handling}
 
-  \item{limit}{Number of records to return}
+\item{limit}{Number of records to return}
 
-  \item{start}{Record number to start at}
+\item{start}{Record number to start at}
 
-  \item{q}{Simple search parameter. The value for this
-  parameter can be a simple word or a phrase. Wildcards can
-  be added to the simple word parameters only, e.g.
-  q=*puma*}
+\item{q}{Simple search parameter. The value for this parameter can be a simple
+word or a phrase. Wildcards can be added to the simple word parameters only,
+e.g. q=*puma*}
 
-  \item{datasetKey}{Filters by the checklist dataset key (a
-  uuid, see examples)}
+\item{datasetKey}{Filters by the checklist dataset key (a uuid, see examples)}
 
-  \item{rank}{The rank given as our rank enum.}
+\item{rank}{The rank given as our rank enum.}
 
-  \item{fields}{Fields to return in output data.frame
-  (simply prunes columns off)}
+\item{fields}{Fields to return in output data.frame (simply prunes columns off)}
 }
 \value{
 A data.frame with fields selected by fields arg.

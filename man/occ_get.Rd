@@ -7,25 +7,19 @@ occ_get(key = NULL, return = "all", verbatim = FALSE,
   fields = "minimal", callopts = list())
 }
 \arguments{
-  \item{key}{Occurrence key}
+\item{key}{Occurrence key}
 
-  \item{return}{One of data, hier, meta, or all. If data, a
-  data.frame with the data. hier returns the
-  classifications in a list for each record. meta returns
-  the metadata for the entire call. all gives all data back
-  in a list.}
+\item{return}{One of data, hier, meta, or all. If data, a data.frame with the
+data. hier returns the classifications in a list for each record. meta
+returns the metadata for the entire call. all gives all data back in a list.}
 
-  \item{verbatim}{Return verbatim object (TRUE) or cleaned
-  up object (FALSE, default).}
+\item{verbatim}{Return verbatim object (TRUE) or cleaned up object (FALSE, default).}
 
-  \item{fields}{(character) Default ('minimal') will return
-  just taxon name, key, latitude, and longitute. 'all'
-  returns all fields. Or specify each field you want
-  returned by name, e.g.  fields =
-  c('name','latitude','altitude').}
+\item{fields}{(character) Default ('minimal') will return just taxon name, key, latitude, and
+longitute. 'all' returns all fields. Or specify each field you want returned by name, e.g.
+fields = c('name','latitude','altitude').}
 
-  \item{callopts}{Further arguments passed on to the
-  \code{\link{GET}} request.}
+\item{callopts}{Further arguments passed on to the \code{\link{GET}} request.}
 }
 \value{
 A data.frame or list.

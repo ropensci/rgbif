@@ -9,37 +9,35 @@ occ_count(nubKey = NULL, georeferenced = NULL, basisOfRecord = NULL,
   type = "count", publishingCountry = "US", callopts = list())
 }
 \arguments{
-  \item{nubKey}{Species key}
+\item{nubKey}{Species key}
 
-  \item{georeferenced}{Return only occurence records with
-  lat/long data (TRUE) or all records (FALSE, default).}
+\item{georeferenced}{Return only occurence records with lat/long data (TRUE) or
+all records (FALSE, default).}
 
-  \item{basisOfRecord}{Basis of record}
+\item{basisOfRecord}{Basis of record}
 
-  \item{datasetKey}{Dataset key}
+\item{datasetKey}{Dataset key}
 
-  \item{date}{Collection date}
+\item{date}{Collection date}
 
-  \item{year}{Year data were collected in}
+\item{year}{Year data were collected in}
 
-  \item{catalogNumber}{Catalog number}
+\item{catalogNumber}{Catalog number}
 
-  \item{country}{Country data was collected in}
+\item{country}{Country data was collected in}
 
-  \item{hostCountry}{Country that hosted the data}
+\item{hostCountry}{Country that hosted the data}
 
-  \item{publishingCountry}{Publishing country, two letter
-  ISO country code}
+\item{publishingCountry}{Publishing country, two letter ISO country code}
 
-  \item{from}{Year to start at}
+\item{from}{Year to start at}
 
-  \item{to}{Year to end at}
+\item{to}{Year to end at}
 
-  \item{type}{One of count (default), schema,
-  basis_of_record, countries, or year.}
+\item{type}{One of count (default), schema, basis_of_record, countries, or year.}
 
-  \item{callopts}{Pass on options to httr::GET for more
-  refined control of http calls, and error handling}
+\item{callopts}{Pass on options to httr::GET for more refined control of
+http calls, and error handling}
 }
 \value{
 A single numeric value

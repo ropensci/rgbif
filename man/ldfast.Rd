@@ -6,10 +6,9 @@
 ldfast(x, convertvec = FALSE)
 }
 \arguments{
-  \item{x}{A list.}
+\item{x}{A list.}
 
-  \item{convertvec}{Convert a vector to a data.frame before
-  rbind is called.}
+\item{convertvec}{Convert a vector to a data.frame before rbind is called.}
 }
 \description{
 Replacement function for ldply that should be faster.

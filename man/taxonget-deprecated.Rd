@@ -7,8 +7,7 @@
 taxonget(key = NULL)
 }
 \arguments{
-  \item{key}{A single key, or many keys in a vector, for a
-  taxon.}
+\item{key}{A single key, or many keys in a vector, for a taxon.}
 }
 \value{
 A single data.frame of taxonomic information if  single data.frame is

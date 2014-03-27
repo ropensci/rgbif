@@ -6,14 +6,12 @@
 taxoncount(scientificname = NULL, rank = NULL, dataresourcekey = NULL)
 }
 \arguments{
-  \item{scientificname}{Scientitic name of taxon
-  (character, see example)}
+\item{scientificname}{Scientitic name of taxon (character, see example)}
 
-  \item{rank}{Rank of taxon, see taxrank() (character)}
+\item{rank}{Rank of taxon, see taxrank() (character)}
 
-  \item{dataresourcekey}{Filter records to those provided
-  by the supplied numeric key for a data resource. See
-  resources(). (character)}
+\item{dataresourcekey}{Filter records to those provided by the supplied
+numeric key for a data resource. See resources(). (character)}
 }
 \description{
 This function is deprecated.

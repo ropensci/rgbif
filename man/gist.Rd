@@ -6,11 +6,11 @@
 gist(gist, description = "", public = TRUE)
 }
 \arguments{
-  \item{gist}{An object}
+\item{gist}{An object}
 
-  \item{description}{brief description of gist (optional)}
+\item{description}{brief description of gist (optional)}
 
-  \item{public}{whether gist is public (default: TRUE)}
+\item{public}{whether gist is public (default: TRUE)}
 }
 \value{
 Posts your file as a gist on your account, and prints out the url for the
