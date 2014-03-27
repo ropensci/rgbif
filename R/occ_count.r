@@ -42,12 +42,10 @@
 #' 
 #' # Counts by year. from and to years have to be supplied, default to 2000 and 2012 
 #' occ_count(type='year', from=2000, to=2012)
-#' }
 #' 
-#' @examples \donttest{
 #' # Counts by publishingCountry, must supply a country (default to US)
-#' ## NOT WORKING RIGHT NOW
 #' occ_count(type='publishingCountry')
+#' occ_count(type='publishingCountry', country='BZ')
 #' }
 
 occ_count <- function(nubKey=NULL, georeferenced=NULL, basisOfRecord=NULL, 
@@ -58,22 +56,21 @@ occ_count <- function(nubKey=NULL, georeferenced=NULL, basisOfRecord=NULL,
                        basisOfRecord=basisOfRecord, datasetKey=datasetKey, 
                        date=date, catalogNumber=catalogNumber, country=country,
                        hostCountry=hostCountry, year=year))
-  type <- match.arg(type, choices=c("count","schema","basis_of_record","countries","year"))
-#   ,"publishingCountry"
+  type <- match.arg(type, choices=c("count","schema","basis_of_record","countries","year","publishingCountry"))
   url <- switch(type, 
                 count = 'http://api.gbif.org/v0.9/occurrence/count',
                 schema = 'http://api.gbif.org/v0.9/occurrence/count/schema',
                 basis_of_record = 'http://api.gbif.org/v0.9/occurrence/counts/basis_of_record',
                 countries = 'http://api.gbif.org/v0.9/occurrence/counts/countries',
-                year = 'http://api.gbif.org/v0.9/occurrence/counts/year')
-#                 publishingCountry = 'http://api.gbif.org/v0.9/occurrence/counts/publishing_countries')
+                year = 'http://api.gbif.org/v0.9/occurrence/counts/year',
+                publishingCountry = 'http://api.gbif.org/v0.9/occurrence/counts/publishing_countries')
   args <- switch(type,
                 count = args,
                 schema = list(),
                 basis_of_record = list(),
                 countries = compact(list(publishingCountry=publishingCountry)),
-                year = compact(list(from=from, to=to)))
-#                 publishingCountry = compact(list(country=country))
+                year = compact(list(from=from, to=to)),
+                publishingCountry = compact(list(country=ifelse(is.null(country), "US", country) )))
   tt <- GET(url, query=args, callopts)
   warn_for_status(tt)
   assert_that(tt$headers$`content-type`=='application/json')
