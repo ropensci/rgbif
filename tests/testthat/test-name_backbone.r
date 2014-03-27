@@ -1,14 +1,10 @@
 context("name_backbone")
 
-tt <- name_backbone(name='Helianthus annuus', kingdom='plants')
+tt <- name_backbone(name='Helianthus annuus', rank='species')
+uu <- name_backbone(name='Helianthus annuus', rank='species', verbose = TRUE)
 
 test_that("name_backbone returns the correct class", {
   expect_is(tt, "list")
-  expect_is(tt$usageKey, "numeric")
-  expect_is(tt$family, "character")
-})
-
-test_that("name_backbone returns the correct value", {
-  expect_equal(tt$family, "Asteraceae")
-  expect_equal(tt$speciesKey, 3119195)
+  expect_is(uu$alternatives$phylumKey, "numeric")
+  expect_is(uu$alternatives$canonicalName, "factor")
 })

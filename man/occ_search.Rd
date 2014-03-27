@@ -74,9 +74,9 @@ country in which the occurrence was recorded.}
 lake surface with given altitude.}
 
 \item{geometry}{Searches for occurrences inside a polygon described in Well Known
-Text (WKT) format. A WKT shape written as POLYGON
-((30.1 10.1, 20, 20 40, 40 40, 30.1 10.1)) would be queried as is, i.e.
-\url{http://bit.ly/HwUSif}.}
+Text (WKT) format. A WKT shape written as either POINT, LINESTRING, LINEARRING
+or POLYGON. Example of a polygon: ((30.1 10.1, 20, 20 40, 40 40, 30.1 10.1))
+ would be queried as \url{http://bit.ly/HwUSif}.}
 
 \item{spatialIssues}{Includes/excludes occurrence records which contain spatial
 issues (as determined in our record interpretation), i.e. spatialIssues=TRUE
@@ -131,11 +131,19 @@ it sorta makes sense to sort out the species key numbers you want exactly,
 and then get your occurrence data with this function. UPDATE - GBIF folks say
 that they are planning to allow using actual scientific names in this API endpoint,
 so eventually it will happen.
+
+Examples of valid WKT objects:
+\itemize{
+ \item 'POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))'
+ \item 'POINT(30.1 10.1)'
+ \item 'LINESTRING(3 4,10 50,20 25)'
+ \item 'LINEARRING' ???'
+}
 }
 \examples{
 \dontrun{
 # Search by species name, using \\code{\\link{name_backbone}} first to get key
-key <- name_backbone(name='Helianthus annuus', kingdom='plants')$speciesKey
+key <- name_suggest(q='Helianthus annuus', rank='species')$key[1]
 occ_search(taxonKey=key, limit=2)
 
 # Return 20 results, this is the default by the way
@@ -191,8 +199,7 @@ occ_search(taxonKey=key, limit=20, return='hier', callopts=verbose())
 
 # Search for many species
 splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
-keys <- sapply(splist, function(x) name_backbone(name=x, kingdom='plants')$speciesKey,
-   USE.NAMES=FALSE)
+keys <- sapply(splist, function(x) name_suggest(x)$key[1], USE.NAMES=FALSE)
 occ_search(taxonKey=keys, limit=5, return='data')
 
 # Search on latitidue and longitude
@@ -200,7 +207,7 @@ occ_search(taxonKey=key, latitude=40, longitude=-120)
 
 # Search on a bounding box (in well known text format)
 occ_search(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))')
-key <- name_backbone(name='Aesculus hippocastanum', kingdom='plants')$speciesKey
+key <- name_suggest(q='Aesculus hippocastanum')$key[1]
 occ_search(taxonKey=key, geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))')
 
 # Search on country

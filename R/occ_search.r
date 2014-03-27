@@ -7,7 +7,7 @@
 #' @template all
 #' @examples \dontrun{
 #' # Search by species name, using \code{\link{name_backbone}} first to get key
-#' key <- name_backbone(name='Helianthus annuus', kingdom='plants')$speciesKey
+#' key <- name_suggest(q='Helianthus annuus', rank='species')$key[1]
 #' occ_search(taxonKey=key, limit=2)
 #' 
 #' # Return 20 results, this is the default by the way
@@ -63,8 +63,7 @@
 #' 
 #' # Search for many species
 #' splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
-#' keys <- sapply(splist, function(x) name_backbone(name=x, kingdom='plants')$speciesKey,
-#'    USE.NAMES=FALSE)
+#' keys <- sapply(splist, function(x) name_suggest(x)$key[1], USE.NAMES=FALSE)
 #' occ_search(taxonKey=keys, limit=5, return='data')
 #' 
 #' # Search on latitidue and longitude
@@ -72,7 +71,7 @@
 #' 
 #' # Search on a bounding box (in well known text format)
 #' occ_search(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))')
-#' key <- name_backbone(name='Aesculus hippocastanum', kingdom='plants')$speciesKey
+#' key <- name_suggest(q='Aesculus hippocastanum')$key[1]
 #' occ_search(taxonKey=key, geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))')
 #' 
 #' # Search on country
@@ -132,6 +131,9 @@ occ_search <- function(taxonKey=NULL, country=NULL, publishingCountry=NULL, geor
   {
     if(!is.null(x))
       assign(itervar, x)
+    
+    # check that wkt is proper format and of 1 of 4 allowed types
+    geometry <- check_wkt(geometry)
     
     args <- compact(list(taxonKey=taxonKey, country=country, publishingCountry=publishingCountry, 
        georeferenced=georeferenced, geometry=geometry, collectorName=collectorName, 
