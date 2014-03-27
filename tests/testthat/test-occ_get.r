@@ -6,11 +6,11 @@ vv <- occ_get(key=766766824, 'all')
 
 test_that("returns the correct class", {
   expect_is(tt, "data.frame")
-  expect_is(tt[1,1], "factor")
+  expect_is(tt[1,1], "character")
   expect_is(tt[1,2], "numeric")
   
   expect_is(uu, "data.frame")
-  expect_is(uu[1,1], "factor")
+  expect_is(uu[1,1], "character")
   expect_is(uu[1,2], "numeric")
   
   expect_is(vv, "list")

@@ -11,8 +11,8 @@ test_that("name_suggest returns the correct class", {
   expect_is(c, "data.frame")
   expect_is(d, "data.frame")
   expect_is(a$key, "numeric")
-  expect_is(c$scientificName, "factor")
-  expect_is(d$canonicalName, "factor")
+  expect_is(c$scientificName, "character")
+  expect_is(d$canonicalName, "character")
 })
 
 test_that("name_suggest returns the correct dimensions", {

@@ -10,7 +10,7 @@ test_that("returns the correct class", {
   expect_is(tt$meta, "list")
   expect_is(tt$meta$endOfRecords, "logical")
   expect_is(tt$data, "data.frame")
-  expect_is(tt$data$name, "factor")
+  expect_is(tt$data$name, "character")
   expect_is(vv, "data.frame")
 })
 
@@ -68,7 +68,7 @@ out <- occ_search(taxonKey=key, return='data')
 
 test_that("returns the correct class", {
   expect_is(out, "data.frame")
-  expect_is(out[1,1], "factor")
+  expect_is(out[1,1], "character")
   expect_is(out[1,2], "numeric")
 })
 test_that("returns the correct value", {
