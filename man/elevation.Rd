@@ -28,7 +28,7 @@ Get elevation for lat/long points from a data.frame or list of points.
 }
 \examples{
 \dontrun{
-key <- name_backbone(name='Puma concolor', kingdom='plants')$speciesKey
+key <- name_suggest('Puma concolor')$key[1]
 dat <- occ_search(taxonKey=key, return='data', limit=300, georeferenced=TRUE)
 elevation(dat)
 

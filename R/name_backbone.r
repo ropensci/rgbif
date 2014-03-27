@@ -44,7 +44,7 @@ name_backbone <- function(name, rank=NULL, kingdom=NULL, phylum=NULL, class=NULL
   
   if(verbose){ 
     alt <- do.call(rbind.fill, lapply(tt$alternatives, namelkupparser))
-    dat <- data.frame(tt[!names(tt) %in% c("alternatives","note")])
+    dat <- data.frame(tt[!names(tt) %in% c("alternatives","note")], stringsAsFactors=FALSE)
     list(data=dat, alternatives=alt)
   } else
   {

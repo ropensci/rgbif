@@ -72,7 +72,7 @@ dataset_suggest <- function(query = NULL, country = NULL, type = NULL, subtype =
       owningOrganizationKey=x$owningOrganizationKey,
       publishingCountry=x$publishingCountry
     ))
-    data.frame(tmp)
+    data.frame(tmp, stringsAsFactors=FALSE)
   }
   
   if(description){

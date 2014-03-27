@@ -79,8 +79,8 @@ name_lookup <- function(query=NULL, rank=NULL, highertaxon_key=NULL, status=NULL
 
   # select output
   switch(return, 
-         meta = data.frame(meta),
+         meta = data.frame(meta, stringsAsFactors=FALSE),
          data = data,
          facets = facetsdat,
-         all = list(meta=data.frame(meta), data=data, facets=facetsdat))
+         all = list(meta=data.frame(meta, stringsAsFactors=FALSE), data=data, facets=facetsdat))
 }

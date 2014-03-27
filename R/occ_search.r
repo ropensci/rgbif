@@ -194,7 +194,7 @@ occ_search <- function(taxonKey=NULL, country=NULL, publishingCountry=NULL, geor
       }
     } else
     if(return=='meta'){ 
-      data.frame(meta) 
+      data.frame(meta, stringsAsFactors=FALSE)
     } else
     {
       if(identical(data, list())){

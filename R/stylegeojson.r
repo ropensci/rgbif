@@ -39,7 +39,7 @@ stylegeojson <- function(input, var = NULL, var_col = NULL, var_sym = NULL,
       color_vec <- rep(color, nrow(input))
     } else
     {
-      mapping <- data.frame(var=unique(input[[var_col]]), col2=color)
+      mapping <- data.frame(var=unique(input[[var_col]]), col2=color, stringsAsFactors=FALSE)
       stuff <- input[[var_col]]
       color_vec <- with(mapping, col2[match(stuff, var)])
     }
@@ -50,7 +50,7 @@ stylegeojson <- function(input, var = NULL, var_col = NULL, var_sym = NULL,
       symbol_vec <- rep(symbol, nrow(input))
     } else
     {
-      mapping <- data.frame(var=unique(input[[var_sym]]), symb=symbol)
+      mapping <- data.frame(var=unique(input[[var_sym]]), symb=symbol, stringsAsFactors=FALSE)
       stuff <- input[[var_sym]]
       symbol_vec <- with(mapping, symb[match(stuff, var)])
     }
@@ -61,7 +61,7 @@ stylegeojson <- function(input, var = NULL, var_col = NULL, var_sym = NULL,
       size_vec <- rep(size, nrow(input))
     } else
     {
-      mapping <- data.frame(var=unique(input[[var_size]]), sz=size)
+      mapping <- data.frame(var=unique(input[[var_size]]), sz=size, stringsAsFactors=FALSE)
       stuff <- input[[var_size]]
       size_vec <- with(mapping, sz[match(stuff, var)])
     }

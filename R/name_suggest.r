@@ -38,7 +38,7 @@ name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL, start=
   if(!any(matched))
     stop(sprintf("the fields %s are not valid", paste0(names(matched[matched == FALSE]),collapse=",")))
   out <- lapply(tt, function(x) x[names(x) %in% toget])
-  do.call(rbind.fill, lapply(out,data.frame))
+  do.call(rbind.fill, lapply(out, data.frame, stringsAsFactors = FALSE))
 }
 
 #' Fields available in gbif_suggest function

@@ -15,7 +15,7 @@
 #' \url{https://developers.google.com/maps/documentation/elevation/}
 #' @export
 #' @examples \dontrun{
-#' key <- name_backbone(name='Puma concolor', kingdom='plants')$speciesKey
+#' key <- name_suggest('Puma concolor')$key[1]
 #' dat <- occ_search(taxonKey=key, return='data', limit=300, georeferenced=TRUE)
 #' elevation(dat)
 #' 
@@ -55,10 +55,10 @@ elevation <- function(input=NULL, latitude=NULL, longitude=NULL, latlong=NULL,
       res <- content(tt, as = 'text', encoding = "UTF-8")
       out <- RJSONIO::fromJSON(res, simplifyWithNames = FALSE)
       
-      df <- data.frame(elevation=sapply(out$results, '[[', 'elevation'))
+      df <- data.frame(elevation=sapply(out$results, '[[', 'elevation'), stringsAsFactors=FALSE)
       outout[[i]] <- df
     }
-    datdf <- data.frame(rbindlist(outout))
+    datdf <- data.frame(rbindlist(outout), stringsAsFactors=FALSE)
     return( cbind(x, datdf) )
   }
   
@@ -68,13 +68,13 @@ elevation <- function(input=NULL, latitude=NULL, longitude=NULL, latlong=NULL,
   {
     if(!is.null(input)) stop("If you use latitude and longitude, input must be left as default")
     assert_that(length(latitude)==length(longitude))
-    dat <- data.frame(latitude=latitude, longitude=longitude)
+    dat <- data.frame(latitude=latitude, longitude=longitude, stringsAsFactors=FALSE)
     getdata(dat)
   } else
   {
     dat <- data.frame(rbindlist(
       lapply(latlong, function(x) data.frame(t(x)))
-    ))
+    ), stringsAsFactors=FALSE)
     names(dat) <- c("latitude","longitude")
     getdata(dat)
   }

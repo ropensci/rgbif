@@ -10,9 +10,9 @@ gbifparser <- function(input, fields='minimal'){
     x[sapply(x, length) == 0] <- "none"
     h1 <- c('kingdom','phylum','clazz','order','family','genus','species')
     h2 <- c('kingdomKey','phylumKey','classKey','orderKey','familyKey','genusKey','speciesKey')
-    name <- t(data.frame(x[names(x) %in% h1]))
-    key <- t(data.frame(x[names(x) %in% h2]))
-    hier <- data.frame(name=name, key=key, rank=row.names(name), row.names=NULL)
+    name <- t(data.frame(x[names(x) %in% h1], stringsAsFactors=FALSE))
+    key <- t(data.frame(x[names(x) %in% h2], stringsAsFactors=FALSE))
+    hier <- data.frame(name=name, key=key, rank=row.names(name), row.names=NULL, stringsAsFactors=FALSE)
     if(nrow(hier) == 0){
       if(!is.null(x[['species']])){
         usename <- x[['species']]       
@@ -28,7 +28,7 @@ gbifparser <- function(input, fields='minimal'){
       usename <- hier[[nrow(hier),"name"]]      
     }
     #     geog <- data.frame(name=usename, x[!names(x) %in% c(h1,h2)])
-    alldata <- data.frame(name=usename, x)
+    alldata <- data.frame(name=usename, x, stringsAsFactors=FALSE)
     if(any(fields=='minimal')){
       if(all(c('latitude','longitude') %in% names(alldata)))
       {
@@ -36,7 +36,7 @@ gbifparser <- function(input, fields='minimal'){
       } else
       {
         alldata <- alldata['name']
-        alldata <- data.frame(alldata, key=NA, latitude=NA, longitude=NA)
+        alldata <- data.frame(alldata, key=NA, latitude=NA, longitude=NA, stringsAsFactors=FALSE)
       }
     } else if(any(fields == 'all')) 
     { 
@@ -64,7 +64,7 @@ gbifparser <- function(input, fields='minimal'){
 #' @keywords internal
 gbifparser_verbatim <- function(input, fields='minimal'){
   parse <- function(x){
-    alldata <- data.frame(key=x$key, x$fields)
+    alldata <- data.frame(key=x$key, x$fields, stringsAsFactors=FALSE)
     if(any(fields=='minimal')){
       if(all(c('verbatimLatitude','verbatimLongitude') %in% names(alldata)))
       {
@@ -72,7 +72,7 @@ gbifparser_verbatim <- function(input, fields='minimal'){
       } else
       {
         name <- alldata['scientificName']
-        data.frame(name, verbatimLatitude=NA, verbatimLongitude=NA)
+        data.frame(name, verbatimLatitude=NA, verbatimLongitude=NA, stringsAsFactors=FALSE)
       }
     } else if(any(fields == 'all'))
     {
@@ -101,7 +101,7 @@ gbifparser_verbatim <- function(input, fields='minimal'){
 ldfast <- function(x, convertvec=FALSE){
   convert2df <- function(x){
     if(!inherits(x, "data.frame"))
-      data.frame(rbind(x))
+      data.frame(rbind(x), stringsAsFactors=FALSE)
     else
       x
   }
@@ -208,8 +208,7 @@ namelkupparser <- function(x){
       x[c('key','nubKey','parentKey','parent','kingdom','phylum',"clazz","order","family",
           "genus","kingdomKey","phylumKey","classKey","orderKey","familyKey","genusKey",
           "canonicalName","authorship","nameType","rank","numOccurrences")]
-    )
-  )
+    ), stringsAsFactors=FALSE)
 }
 
 
