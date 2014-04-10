@@ -26,7 +26,7 @@ test_that("returns the correct dimensions", {
   expect_equal(length(a), 1)
   expect_equal(length(b), 1)
   expect_equal(length(c), 1)
-  expect_equal(length(d), 33)
+  expect_equal(length(d), 42)
   expect_equal(length(e), 249)
   expect_equal(length(f), 12)
 })

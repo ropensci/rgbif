@@ -26,7 +26,7 @@ test_that("returns the correct value", {
 test_that("returns the correct dimensions", {
   expect_equal(length(tt), 5)
   expect_equal(length(tt$results), 20)
-  expect_equal(length(uu), 28)
+  expect_equal(length(uu), 29)
   expect_equal(length(vv), 1)
   expect_equal(length(vv[[1]]), 5)
 })

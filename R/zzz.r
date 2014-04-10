@@ -8,7 +8,7 @@
 gbifparser <- function(input, fields='minimal'){
   parse <- function(x){
     x[sapply(x, length) == 0] <- "none"
-    h1 <- c('kingdom','phylum','clazz','order','family','genus','species')
+    h1 <- c('kingdom','phylum','class','order','family','genus','species')
     h2 <- c('kingdomKey','phylumKey','classKey','orderKey','familyKey','genusKey','speciesKey')
     name <- t(data.frame(x[names(x) %in% h1], stringsAsFactors=FALSE))
     key <- t(data.frame(x[names(x) %in% h2], stringsAsFactors=FALSE))
@@ -28,19 +28,20 @@ gbifparser <- function(input, fields='minimal'){
       usename <- hier[[nrow(hier),"name"]]      
     }
     #     geog <- data.frame(name=usename, x[!names(x) %in% c(h1,h2)])
+    x[names(x) %in% "issues"] <- paste(x[names(x) %in% "issues"][[1]], collapse=",")
     alldata <- data.frame(name=usename, x, stringsAsFactors=FALSE)
     if(any(fields=='minimal')){
-      if(all(c('latitude','longitude') %in% names(alldata)))
+      if(all(c('decimalLatitude','decimalLongitude') %in% names(alldata)))
       {
-        alldata <- alldata[c('name','key','longitude','latitude')]
+        alldata <- alldata[c('name','key','decimalLatitude','decimalLongitude')]
       } else
       {
         alldata <- alldata['name']
-        alldata <- data.frame(alldata, key=NA, latitude=NA, longitude=NA, stringsAsFactors=FALSE)
+        alldata <- data.frame(alldata, key=NA, decimalLatitude=NA, decimalLongitude=NA, stringsAsFactors=FALSE)
       }
     } else if(any(fields == 'all')) 
     { 
-      NULL 
+      NULL
     } else
     {
       alldata <- alldata[names(alldata) %in% fields]
