@@ -20,7 +20,7 @@ test_that("returns the correct value", {
   expect_equal(as.character(tt$hierarchy[[1]][1,1]), "Plantae")
   
   expect_equal(as.character(uu$hierarchy[[1]][1,1]), "Plantae")
-  expect_equal(as.character(uu$data[1,1]), "Helianthus annuus")
+  expect_equal(as.character(uu$data[1,1]), "Magnoliopsida")
   expect_equal(uu$meta$limit, 20)
   expect_equal(vv$limit, 20)
 })

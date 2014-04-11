@@ -2,6 +2,7 @@
 #' 
 #' @import httr plyr assertthat
 #' @importFrom RJSONIO fromJSON
+#' @export
 #' @template occsearch
 #' @template occ
 #' @template all
@@ -118,7 +119,7 @@
 #' out <- occ_search(taxonKey=key, limit=1500, return="data")
 #' nrow(out)
 #' }
-#' @export
+
 occ_search <- function(taxonKey=NULL, country=NULL, publishingCountry=NULL, georeferenced=NULL, 
   geometry=NULL, collectorName=NULL, basisOfRecord=NULL, datasetKey=NULL, date=NULL, 
   catalogNumber=NULL, year=NULL, month=NULL, latitude=NULL, longitude=NULL, 
