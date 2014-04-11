@@ -160,7 +160,6 @@ occ_search <- function(taxonKey=NULL, country=NULL, publishingCountry=NULL, geor
       
       if(tt$count < limit)
         limit <- tt$count
-#         sumreturned <- 999999999
       
       if(sumreturned < limit){
         args$limit <- limit-sumreturned
@@ -170,17 +169,13 @@ occ_search <- function(taxonKey=NULL, country=NULL, publishingCountry=NULL, geor
     }
     
     meta <- outout[[length(outout)]][c('offset','limit','endOfRecords','count')]
-#     data <- sapply(outout, "[[", "results")
-#     data <- do.call(c, data)
     data <- do.call(c, lapply(outout, "[[", "results"))
-#     data <- gbifparser(input=data, minimal=minimal)
     
     if(return=='data'){
       if(identical(data, list())){
         paste("no data found, try a different search")
       } else
       {
-#         data <- gbifparser(input=data, minimal=minimal)
         data <- gbifparser(input=data, fields=fields)
         ldfast(lapply(data, "[[", "data"))
       }
@@ -190,7 +185,6 @@ occ_search <- function(taxonKey=NULL, country=NULL, publishingCountry=NULL, geor
         paste("no data found, try a different search")
       } else
       {
-#         data <- gbifparser(input=data, minimal=minimal)
         data <- gbifparser(input=data, fields=fields)
         unique(lapply(data, "[[", "hierarchy"))
       }
@@ -204,7 +198,6 @@ occ_search <- function(taxonKey=NULL, country=NULL, publishingCountry=NULL, geor
         hier2 <- paste("no data found, try a different search")
       } else
       {
-#         data <- gbifparser(input=data, minimal=minimal)
         data <- gbifparser(input=data, fields=fields)
         dat2 <- ldfast(lapply(data, "[[", "data"))
         hier2 <- unique(lapply(data, "[[", "hierarchy"))
