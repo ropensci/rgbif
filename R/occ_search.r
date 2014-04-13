@@ -78,14 +78,14 @@
 #' # Search on country
 #' occ_search(country='US')
 #'
-#' # Get only occurrences with lat/long data (i.e. georeferenced)
-#' occ_search(taxonKey=key, georeferenced=TRUE)
+#' # Get only occurrences with lat/long data
+#' occ_search(taxonKey=key, hasCoordinate=TRUE)
 #' 
 #' # Get only occurrences that were recorded as living specimens
-#' occ_search(taxonKey=key, basisOfRecord="LIVING_SPECIMEN", georeferenced=TRUE)
+#' occ_search(taxonKey=key, basisOfRecord="LIVING_SPECIMEN", hasCoordinate=TRUE)
 #' 
-#' # Get occurrences for a particular date
-#' occ_search(taxonKey=key, date="2013")
+#' # Get occurrences for a particular eventDate
+#' occ_search(taxonKey=key, eventDate="2013")
 #' occ_search(taxonKey=key, year="2013")
 #' occ_search(taxonKey=key, month="6")
 #'
@@ -95,7 +95,7 @@
 #' 
 #' # Get occurrences based on altitude
 #' key <- name_backbone(name='Puma concolor', kingdom='animals')$speciesKey
-#' occ_search(taxonKey=key, altitude=2000, georeferenced=TRUE)
+#' occ_search(taxonKey=key, altitude=2000, hasCoordinate=TRUE)
 #' 
 #' # Get occurrences based on institutionCode
 #' occ_search(institutionCode="TLMF")
@@ -120,9 +120,10 @@
 #' nrow(out)
 #' }
 
-occ_search <- function(taxonKey=NULL, country=NULL, publishingCountry=NULL, georeferenced=NULL, 
-  geometry=NULL, collectorName=NULL, basisOfRecord=NULL, datasetKey=NULL, date=NULL, 
-  catalogNumber=NULL, year=NULL, month=NULL, latitude=NULL, longitude=NULL, 
+occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publishingCountry=NULL, 
+  hasCoordinate=NULL, typeStatus=NULL, recordNumber=NULL, lastInterpreted=NULL, continent=NULL,
+  geometry=NULL, collectorName=NULL, basisOfRecord=NULL, datasetKey=NULL, eventDate=NULL, 
+  catalogNumber=NULL, year=NULL, month=NULL, decimalLatitude=NULL, decimalLongitude=NULL, 
   altitude=NULL, depth=NULL, institutionCode=NULL, collectionCode=NULL, 
   spatialIssues=NULL, search=NULL, callopts=list(), limit=20, start=NULL, 
   fields = 'minimal', return='all')
@@ -137,9 +138,10 @@ occ_search <- function(taxonKey=NULL, country=NULL, publishingCountry=NULL, geor
     geometry <- check_wkt(geometry)
     
     args <- compact(list(taxonKey=taxonKey, country=country, publishingCountry=publishingCountry, 
-       georeferenced=georeferenced, geometry=geometry, collectorName=collectorName, 
-       basisOfRecord=basisOfRecord, datasetKey=datasetKey, date=date, catalogNumber=catalogNumber,
-       year=year, month=month, latitude=latitude, longitude=longitude, 
+       hasCoordinate=hasCoordinate, typeStatus=typeStatus, recordNumber=recordNumber, 
+       lastInterpreted=lastInterpreted, continent=continent,geometry=geometry, collectorName=collectorName, 
+       basisOfRecord=basisOfRecord, datasetKey=datasetKey, eventDate=eventDate, catalogNumber=catalogNumber,
+       year=year, month=month, decimalLatitude=decimalLatitude, decimalLongitude=decimalLongitude, 
        altitude=altitude, depth=depth, institutionCode=institutionCode, 
        collectionCode=collectionCode, spatialIssues=spatialIssues, q=search, 
        limit=as.integer(limit), offset=start))
@@ -206,17 +208,16 @@ occ_search <- function(taxonKey=NULL, country=NULL, publishingCountry=NULL, geor
     }
   }
   
-  params <- list(taxonKey=taxonKey,datasetKey=datasetKey,catalogNumber=catalogNumber,
-                 collectorName=collectorName,geometry=geometry,country=country,
-                 search=search,institutionCode=institutionCode,collectionCode=collectionCode,
-                 latitude=latitude,longitude=longitude)
+  params <- list(taxonKey=taxonKey,scientificName=scientificName,datasetKey=datasetKey,catalogNumber=catalogNumber,
+                 collectorName=collectorName,geometry=geometry,country=country,recordNumber=recordNumber,
+                 q=search,institutionCode=institutionCode,collectionCode=collectionCode,
+                 decimalLatitude=decimalLatitude,decimalLongitude=decimalLongitude)
   if(!any(sapply(params, length)>0))
-    stop("at least one of the parmaters taxonKey, datasetKey, catalogNumber, collectorName, geometry, latitude, or longitude 
+    stop("at least one of the parmaters taxonKey, scientificName, datasetKey, catalogNumber, collectorName, geometry, country, recordNumber, search, institutionCode, collectionCode, decimalLatitude, or decimalLongitude 
          must have a value")
   iter <- params[which(sapply(params, length)>1)]
   if(length(names(iter))>1)
-    stop("You can have multiple values for only one of taxonKey, datasetKey, catalogNumber, collectorName,
-         collectionCode, institutionCode")
+    stop("You can have multiple values for only one of taxonKey, scientificName, datasetKey, catalogNumber, collectorName, geometry, country, recordNumber, search, institutionCode, collectionCode, decimalLatitude, or decimalLongitude")
   
   if(length(iter)==0){
     out <- getdata()

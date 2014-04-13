@@ -3,6 +3,8 @@
 #'    (i.e. /occurrence/search?taxonKey=212) will match all birds, no matter which 
 #'    species. You can pass many keys by passing occ_search in a call to an 
 #'    lapply-family function (see last example below).
+#' @param scientificName A scientific name from the GBIF backbone. All included and synonym 
+#' 	  taxa are included in the search.
 #' @param datasetKey The occurrence dataset key (a uuid)
 #' @param catalogNumber An identifier of any form assigned by the source within a 
 #'    physical collection or digital dataset for the record which may not unique, 
@@ -34,8 +36,10 @@
 #' @param year The 4 digit year. A year of 98 will be interpreted as AD 98.
 #' @param month The month of the year, starting with 1 for January.
 #' @param search Query terms. The value for this parameter can be a simple word or a phrase.
-#' @param latitude Latitude in decimals between -90 and 90 based on WGS 84.
-#' @param longitude Longitude in decimals between -180 and 180 based on WGS 84.
+#' @param decimallatitude Latitude in decimals between -90 and 90 based on WGS 84. 
+#'    Supports range queries.
+#' @param decimalLongitude Longitude in decimals between -180 and 180 based on WGS 84.  
+#'    Supports range queries.
 #' @param publishingCountry The 2-letter country code (as per ISO-3166-1) of the 
 #'    country in which the occurrence was recorded.
 #' @param altitude Altitude/elevation in meters above sea level.
@@ -50,8 +54,16 @@
 #'    returns only those records with spatial issues while spatialIssues=FALSE includes 
 #'    only records without spatial issues. The absence of this parameter returns any 
 #'    record with or without spatial issues.
-#' @param georeferenced Return only occurence records with lat/long data (TRUE) or
+#' @param hasCoordinate Return only occurence records with lat/long data (TRUE) or
 #'    all records (FALSE, default).
+#' @param typeStatus Type status of the specimen. One of many options. See ?typestatus
+#' @param recordedNumber Number recorded by collector of the data, different from GBIF record
+#'    number. See \url{http://rs.tdwg.org/dwc/terms/#recordNumber} for more info
+#' @param lastInterpreted Date the record was last modified in GBIF, in ISO 8601 format: 
+#'    yyyy, yyyy-MM, yyyy-MM-dd, or MM-dd. Supports range queries.
+#' @param continent Continent. One of 'AFRICA', 'ANTARCTICA', 'ASIA', 'EUROPE' 'NORTH_AMERICA' 
+#'    (North America includes the Caribbean and reachies down and includes Panama), 'OCEANIA', 
+#'    or 'SOUTH_AMERICA'
 #' @param fields (character) Default ('minimal') will return just taxon name, key, latitude, and 
 #'    longitute. 'all' returns all fields. Or specify each field you want returned by name, e.g.
 #'    fields = c('name','latitude','altitude').

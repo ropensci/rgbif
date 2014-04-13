@@ -105,3 +105,15 @@ NULL
 #' @docType data
 #' @keywords data
 NULL
+
+#' Type status options for GBIF searching
+#' 
+#' \itemize{
+#'   \item name. Name of type.
+#'   \item description. Description of the type.
+#' }
+#' 
+#' @name typestatus
+#' @docType data
+#' @keywords data
+NULL

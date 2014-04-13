@@ -2,11 +2,13 @@
 \alias{occ_search}
 \title{Search for GBIF occurrences.}
 \usage{
-occ_search(taxonKey = NULL, country = NULL, publishingCountry = NULL,
-  georeferenced = NULL, geometry = NULL, collectorName = NULL,
-  basisOfRecord = NULL, datasetKey = NULL, date = NULL,
-  catalogNumber = NULL, year = NULL, month = NULL, latitude = NULL,
-  longitude = NULL, altitude = NULL, depth = NULL,
+occ_search(taxonKey = NULL, scientificName = NULL, country = NULL,
+  publishingCountry = NULL, hasCoordinate = NULL, typeStatus = NULL,
+  recordNumber = NULL, lastInterpreted = NULL, continent = NULL,
+  geometry = NULL, collectorName = NULL, basisOfRecord = NULL,
+  datasetKey = NULL, eventDate = NULL, catalogNumber = NULL,
+  year = NULL, month = NULL, decimalLatitude = NULL,
+  decimalLongitude = NULL, altitude = NULL, depth = NULL,
   institutionCode = NULL, collectionCode = NULL, spatialIssues = NULL,
   search = NULL, callopts = list(), limit = 20, start = NULL,
   fields = "minimal", return = "all")
@@ -19,6 +21,10 @@ occ_search(taxonKey = NULL, country = NULL, publishingCountry = NULL,
   matter which species. You can pass many keys by passing
   occ_search in a call to an lapply-family function (see
   last example below).}
+
+  \item{scientificName}{A scientific name from the GBIF
+  backbone. All included and synonym taxa are included in
+  the search.}
 
   \item{datasetKey}{The occurrence dataset key (a uuid)}
 
@@ -73,11 +79,11 @@ occ_search(taxonKey = NULL, country = NULL, publishingCountry = NULL,
   \item{search}{Query terms. The value for this parameter
   can be a simple word or a phrase.}
 
-  \item{latitude}{Latitude in decimals between -90 and 90
-  based on WGS 84.}
+  \item{decimallatitude}{Latitude in decimals between -90
+  and 90 based on WGS 84.  Supports range queries.}
 
-  \item{longitude}{Longitude in decimals between -180 and
-  180 based on WGS 84.}
+  \item{decimalLongitude}{Longitude in decimals between
+  -180 and 180 based on WGS 84.  Supports range queries.}
 
   \item{publishingCountry}{The 2-letter country code (as
   per ISO-3166-1) of the country in which the occurrence
@@ -105,8 +111,25 @@ occ_search(taxonKey = NULL, country = NULL, publishingCountry = NULL,
   issues. The absence of this parameter returns any record
   with or without spatial issues.}
 
-  \item{georeferenced}{Return only occurence records with
+  \item{hasCoordinate}{Return only occurence records with
   lat/long data (TRUE) or all records (FALSE, default).}
+
+  \item{typeStatus}{Type status of the specimen. One of
+  many options. See ?typestatus}
+
+  \item{recordedNumber}{Number recorded by collector of the
+  data, different from GBIF record number. See
+  \url{http://rs.tdwg.org/dwc/terms/#recordNumber} for more
+  info}
+
+  \item{lastInterpreted}{Date the record was last modified
+  in GBIF, in ISO 8601 format: yyyy, yyyy-MM, yyyy-MM-dd,
+  or MM-dd. Supports range queries.}
+
+  \item{continent}{Continent. One of 'AFRICA',
+  'ANTARCTICA', 'ASIA', 'EUROPE' 'NORTH_AMERICA' (North
+  America includes the Caribbean and reachies down and
+  includes Panama), 'OCEANIA', or 'SOUTH_AMERICA'}
 
   \item{fields}{(character) Default ('minimal') will return
   just taxon name, key, latitude, and longitute. 'all'
@@ -241,14 +264,14 @@ occ_search(taxonKey=key, geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1
 # Search on country
 occ_search(country='US')
 
-# Get only occurrences with lat/long data (i.e. georeferenced)
-occ_search(taxonKey=key, georeferenced=TRUE)
+# Get only occurrences with lat/long data
+occ_search(taxonKey=key, hasCoordinate=TRUE)
 
 # Get only occurrences that were recorded as living specimens
-occ_search(taxonKey=key, basisOfRecord="LIVING_SPECIMEN", georeferenced=TRUE)
+occ_search(taxonKey=key, basisOfRecord="LIVING_SPECIMEN", hasCoordinate=TRUE)
 
-# Get occurrences for a particular date
-occ_search(taxonKey=key, date="2013")
+# Get occurrences for a particular eventDate
+occ_search(taxonKey=key, eventDate="2013")
 occ_search(taxonKey=key, year="2013")
 occ_search(taxonKey=key, month="6")
 
@@ -258,7 +281,7 @@ occ_search(taxonKey=key, depth="5")
 
 # Get occurrences based on altitude
 key <- name_backbone(name='Puma concolor', kingdom='animals')$speciesKey
-occ_search(taxonKey=key, altitude=2000, georeferenced=TRUE)
+occ_search(taxonKey=key, altitude=2000, hasCoordinate=TRUE)
 
 # Get occurrences based on institutionCode
 occ_search(institutionCode="TLMF")
