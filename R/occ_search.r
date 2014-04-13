@@ -110,6 +110,17 @@
 #' 
 #' # Search using a query string
 #' occ_search(search="kingfisher")
+#' 
+#' # Range queries
+#' ## See Detail for parameters that support range queries
+#' occ_search(depth='50,100') # this is a range depth, with lower/upper limits in character string
+#' occ_search(depth=c(50,100)) # this is not a range search, but does two searches for each depth
+#' 
+#' ## Range search with year
+#' occ_search(year='1999,2000')
+#' 
+#'#' ## Range search with latitude
+#' occ_search(decimalLatitude='29.59,29.6')
 #' }
 #' \donttest{
 #' # If you try multiple values for two different parameters you are wacked on the hand
@@ -145,6 +156,8 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
        altitude=altitude, depth=depth, institutionCode=institutionCode, 
        collectionCode=collectionCode, spatialIssues=spatialIssues, q=search, 
        limit=as.integer(limit), offset=start))
+#     args <- range_query_concat(args)
+    
     iter <- 0
     sumreturned <- 0
     outout <- list()
@@ -211,13 +224,13 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
   params <- list(taxonKey=taxonKey,scientificName=scientificName,datasetKey=datasetKey,catalogNumber=catalogNumber,
                  collectorName=collectorName,geometry=geometry,country=country,recordNumber=recordNumber,
                  q=search,institutionCode=institutionCode,collectionCode=collectionCode,
-                 decimalLatitude=decimalLatitude,decimalLongitude=decimalLongitude)
+                 decimalLatitude=decimalLatitude,decimalLongitude=decimalLongitude,depth=depth,year=year)
   if(!any(sapply(params, length)>0))
-    stop("at least one of the parmaters taxonKey, scientificName, datasetKey, catalogNumber, collectorName, geometry, country, recordNumber, search, institutionCode, collectionCode, decimalLatitude, or decimalLongitude 
+    stop("at least one of the parmaters taxonKey, scientificName, datasetKey, catalogNumber, collectorName, geometry, country, recordNumber, search, institutionCode, collectionCode, decimalLatitude, decimalLongitude, depth, or year
          must have a value")
   iter <- params[which(sapply(params, length)>1)]
   if(length(names(iter))>1)
-    stop("You can have multiple values for only one of taxonKey, scientificName, datasetKey, catalogNumber, collectorName, geometry, country, recordNumber, search, institutionCode, collectionCode, decimalLatitude, or decimalLongitude")
+    stop("You can have multiple values for only one of taxonKey, scientificName, datasetKey, catalogNumber, collectorName, geometry, country, recordNumber, search, institutionCode, collectionCode, decimalLatitude, decimalLongitude, depth, or year")
   
   if(length(iter)==0){
     out <- getdata()
@@ -229,3 +242,13 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
   
   out
 }
+
+# range_query_concat <- function(x){
+#   poss <- c('decimalLatitude','decimalLongitude','depth','elevation','eventDate',
+#             'lastInterpreted','month','year')
+#   nn <- names(x)
+#   concat <- function(y){
+#     if(y %in% poss) paste(x[[y]],collapse = ",") else x[[y]]
+#   }
+#   as.list(sapply(nn, concat))
+# }

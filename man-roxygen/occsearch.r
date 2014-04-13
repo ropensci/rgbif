@@ -76,32 +76,47 @@
 #' catalogNumber parameters in a function call, but not a vector >1 of the three 
 #' parameters at the same time
 #' 
-#' Hierarchies: hierarchies are returned wih each occurrence object. There is no
+#' \bold{Hierarchies:} hierarchies are returned wih each occurrence object. There is no
 #' option no to return them from the API. However, within the \code{occ_search}
 #' function you can select whether to return just hierarchies, just data, all of 
 #' data and hiearchies and metadata, or just metadata. If all hierarchies are the 
 #' same we just return one for you. 
 #' 
-#' Data: By default only three data fields are returned: name (the species name),
-#' latitude, and longitude. Set parameter minimal=FALSE if you want more data.
+#' \bold{Data:} By default only three data fields are returned: name (the species name),
+#' decimallatitude, and decimallongitude. Set parameter minimal=FALSE if you want more data.
 #' 
-#' Nerds: You can pass parameters not defined in this function into the call to 
+#' \bold{Nerds:} You can pass parameters not defined in this function into the call to 
 #' the GBIF API to control things about the call itself using the \code{callopts} 
 #' function. See an example below that passes in the \code{verbose} function to 
 #' get details on the http call.
 #' 
-#' Why can't I search by species name? In the previous GBIF API and the version
-#' of rgbif that wrapped that API, you could search the equivalent of this function
-#' with a species name, which was convenient. However, names are messy right. So 
-#' it sorta makes sense to sort out the species key numbers you want exactly, 
-#' and then get your occurrence data with this function. UPDATE - GBIF folks say 
-#' that they are planning to allow using actual scientific names in this API endpoint, 
-#' so eventually it will happen.
+#' \bold{Scientific names vs. taxon keys:} In the previous GBIF API and the version of rgbif that wrapped 
+#' that API, you could search the equivalent of this function with a species name, which was 
+#' convenient. However, names are messy right. So it sorta makes sense to sort out the species 
+#' key numbers you want exactly, and then get your occurrence data with this function. GBIF has 
+#' added a parameter scientificName to allow searches by scientific names in this function - which 
+#' includes synonym taxa.
 #' 
-#' Examples of valid WKT objects:
+#' \bold{WKT:} Examples of valid WKT objects:
 #' \itemize{
 #'  \item 'POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))'
 #'  \item 'POINT(30.1 10.1)'
 #'  \item 'LINESTRING(3 4,10 50,20 25)'
-#'  \item 'LINEARRING' ???'
+#'  \item 'LINEARRING' ???' - Not sure how to specify this. Anyone?
+#' }
+#' 
+#' \bold{Range queries:} A range query is as it sounds - you query on a range of values defined by
+#' a lower and upper limit. Do a range query by specifying the lower and upper limit in a vector 
+#' like \code{depth='50,100'}. It would be more R like to specify the range in a vector like 
+#' \code{c(50,100)}, but that sort of syntax allows you to do many searches, one for each element in 
+#' the vector - thus range queries have to differ. The following parameters support range queries.
+#' \itemize{
+#'  \item decimalLatitude
+#'  \item decimalLongitude
+#'  \item depth
+#'  \item elevation
+#'  \item eventDate
+#'  \item lastInterpreted
+#'  \item month
+#'  \item year
 #' }
