@@ -20,7 +20,7 @@ test_that("returns the correct value", {
   expect_equal(as.character(tt$hierarchy[[1]][1,1]), "Plantae")
   
   expect_equal(as.character(uu$hierarchy[[1]][1,1]), "Plantae")
-  expect_equal(as.character(uu$data[1,1]), "Magnoliopsida")
+  expect_equal(as.character(uu$data[1,1]), "Helianthus annuus")
   expect_equal(uu$meta$limit, 20)
   expect_equal(vv$limit, 20)
 })
@@ -45,23 +45,19 @@ test_that("returns the correct dimensions", {
 })
 
 # # Search by catalog number
-# out <- occ_search(catalogNumber='PlantAndMushroom.6845144', minimal=FALSE)
-# 
-# test_that("returns the correct class", {
-#   expect_is(out, "list")
-#   expect_is(out$meta, "list")
-#   expect_is(out$data, "data.frame")
-#   expect_is(out$data$phylum, "factor")
-#   expect_is(out$data$occurrenceDate, "factor")
-# })
-# test_that("returns the correct value", {
-#   expect_true(out$meta$endOfRecords)
-#   expect_equal(as.character(out$data[1,1]), "Helianthus annuus")
-# })
-# test_that("returns the correct dimensions", {
-#   expect_equal(length(out), 3)
-#   expect_equal(dim(out$data), c(1,47))
-# })
+out <- occ_search(catalogNumber='PlantAndMushroom.6845144', fields='all')
+
+test_that("returns the correct class", {
+  expect_is(out, "list")
+  expect_is(out$meta, "list")
+  expect_is(out$data, "character")
+})
+test_that("returns the correct value", {
+  expect_true(out$meta$endOfRecords)
+})
+test_that("returns the correct dimensions", {
+  expect_equal(length(out), 3)
+})
 
 # Occurrence data: lat/long data, and associated metadata with occurrences
 out <- occ_search(taxonKey=key, return='data')
