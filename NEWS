@@ -1,9 +1,23 @@
-rgbif 0.5.2
+rgbif 0.6.0
 ===============
+
+BUG FIXES
+
+* A number of variables changed names to better follow the Darwin Core standard. `latitude` is now `decimalLatitude`. `longitude` is now `decimalLongitude`. `clazz` is now `class`. Code in this package changed to accomodate these changes. `date` is now `eventDate`. `georeferenced` is now `hasCoordinate`. Beware of these changes in your own code using `rgbif` - find and replace for these should be easy.
 
 IMPROVEMENTS
 
-* changes..
+* Better checking and parsing of response data from GBIF: Across all functions, we now check that the response content type is `application/json`, then parse JSON ourselves using `RJSONIO::fromJSON` (instead of httr doing it).
+* Across all functions, we now return all potenital character class columns as character class (instead of factor), by passing `simplifyWithNames = FALSE` to all `data.frame()` calls.
+* Now using assertthat package in various places to give better error messages when the wrong input is passed to a function.
+
+NEW FEATURES
+
+* New function `check_wkt()` to check that well known text string is the right format. #68
+* New dataset typestatus to look up possible specimen typeStatus values. See #74 for more information.
+* GBIF added some new parameters for use in the `occ_search()` function. `scientificName`: search for a species by name (instead of `taxonKey`). `continent`: search by continent. `lastInterpreted`: search by last time GBIF modified the record. `recordNumber`: search by the data collector's specimen record number - this is different from the GBIF record number. `typeStatus`: search by specimen type status. #74
+* Note that given the new parameters many more options are available for implicit faceted search in which you can pass many values in a vector to do multiple searches like `parameterName = c(x, y, z)`. These parameters are: `taxonKey`, `scientificName`, `datasetKey`, `catalogNumber`, `collectorName`, `geometry`, `country`, `recordNumber`, `search`, `institutionCode`, `collectionCode`, `decimalLatitude`, `decimalLongitude`, `depth`, `year`, `typeStatus`, `lastInterpreted`, and `continent`. This isn't faceted search server side - this is just looping your different values of the parameter against the GBIF API.
+* Range queries are a new feature in the GBIF API. Some parameters in `occ_search()` now support range queries: `decimalLatitude`,`decimalLongitude`,`depth`,`elevation`,`eventDate`,`lastInterpreted`,`month`, and `year`. Do a range query for example by `depth=50,100` to ask for occurrences where depth was recorded between 50 and 100 meters. Note that this syntax `depth=c(50,100)` will perform two separate searches, one for `depth=50` and one for `depth=100`. 
 
 rgbif 0.5.0
 ===============
