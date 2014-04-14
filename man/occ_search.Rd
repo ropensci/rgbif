@@ -8,7 +8,7 @@ occ_search(taxonKey = NULL, scientificName = NULL, country = NULL,
   geometry = NULL, collectorName = NULL, basisOfRecord = NULL,
   datasetKey = NULL, eventDate = NULL, catalogNumber = NULL,
   year = NULL, month = NULL, decimalLatitude = NULL,
-  decimalLongitude = NULL, altitude = NULL, depth = NULL,
+  decimalLongitude = NULL, elevation = NULL, depth = NULL,
   institutionCode = NULL, collectionCode = NULL, spatialIssues = NULL,
   search = NULL, callopts = list(), limit = 20, start = NULL,
   fields = "minimal", return = "all")
@@ -89,12 +89,11 @@ occ_search(taxonKey = NULL, scientificName = NULL, country = NULL,
   per ISO-3166-1) of the country in which the occurrence
   was recorded.}
 
-  \item{altitude}{Altitude/elevation in meters above sea
-  level.}
+  \item{elevation}{Elevation in meters above sea level.}
 
-  \item{depth}{Depth in meters relative to altitude. For
+  \item{depth}{Depth in meters relative to elevation. For
   example 10 meters below a lake surface with given
-  altitude.}
+  elevation.}
 
   \item{geometry}{Searches for occurrences inside a polygon
   described in Well Known Text (WKT) format. A WKT shape
@@ -103,16 +102,18 @@ occ_search(taxonKey = NULL, scientificName = NULL, country = NULL,
   40, 30.1 10.1)) would be queried as
   \url{http://bit.ly/HwUSif}.}
 
-  \item{spatialIssues}{Includes/excludes occurrence records
-  which contain spatial issues (as determined in our record
-  interpretation), i.e. spatialIssues=TRUE returns only
-  those records with spatial issues while
-  spatialIssues=FALSE includes only records without spatial
-  issues. The absence of this parameter returns any record
-  with or without spatial issues.}
+  \item{spatialIssues}{(logical) Includes/excludes
+  occurrence records which contain spatial issues (as
+  determined in our record interpretation), i.e.
+  spatialIssues=TRUE returns only those records with
+  spatial issues while spatialIssues=FALSE includes only
+  records without spatial issues. The absence of this
+  parameter returns any record with or without spatial
+  issues.}
 
-  \item{hasCoordinate}{Return only occurence records with
-  lat/long data (TRUE) or all records (FALSE, default).}
+  \item{hasCoordinate}{(logical) Return only occurence
+  records with lat/long data (TRUE) or all records (FALSE,
+  default).}
 
   \item{typeStatus}{Type status of the specimen. One of
   many options. See ?typestatus}
@@ -135,7 +136,7 @@ occ_search(taxonKey = NULL, scientificName = NULL, country = NULL,
   just taxon name, key, latitude, and longitute. 'all'
   returns all fields. Or specify each field you want
   returned by name, e.g.  fields =
-  c('name','latitude','altitude').}
+  c('name','latitude','elevation').}
 
   \item{return}{One of data, hier, meta, or all. If data, a
   data.frame with the data. hier returns the
@@ -303,9 +304,9 @@ occ_search(taxonKey=key, month="6")
 key <- name_backbone(name='Salmo salar', kingdom='animals')$speciesKey
 occ_search(taxonKey=key, depth="5")
 
-# Get occurrences based on altitude
+# Get occurrences based on elevation
 key <- name_backbone(name='Puma concolor', kingdom='animals')$speciesKey
-occ_search(taxonKey=key, altitude=2000, hasCoordinate=TRUE)
+occ_search(taxonKey=key, elevation=2000, hasCoordinate=TRUE)
 
 # Get occurrences based on institutionCode
 occ_search(institutionCode="TLMF")

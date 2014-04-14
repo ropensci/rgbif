@@ -102,9 +102,9 @@
 #' key <- name_backbone(name='Salmo salar', kingdom='animals')$speciesKey
 #' occ_search(taxonKey=key, depth="5")
 #' 
-#' # Get occurrences based on altitude
+#' # Get occurrences based on elevation
 #' key <- name_backbone(name='Puma concolor', kingdom='animals')$speciesKey
-#' occ_search(taxonKey=key, altitude=2000, hasCoordinate=TRUE)
+#' occ_search(taxonKey=key, elevation=2000, hasCoordinate=TRUE)
 #' 
 #' # Get occurrences based on institutionCode
 #' occ_search(institutionCode="TLMF")
@@ -165,7 +165,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
   hasCoordinate=NULL, typeStatus=NULL, recordNumber=NULL, lastInterpreted=NULL, continent=NULL,
   geometry=NULL, collectorName=NULL, basisOfRecord=NULL, datasetKey=NULL, eventDate=NULL, 
   catalogNumber=NULL, year=NULL, month=NULL, decimalLatitude=NULL, decimalLongitude=NULL, 
-  altitude=NULL, depth=NULL, institutionCode=NULL, collectionCode=NULL, 
+  elevation=NULL, depth=NULL, institutionCode=NULL, collectionCode=NULL, 
   spatialIssues=NULL, search=NULL, callopts=list(), limit=20, start=NULL, 
   fields = 'minimal', return='all')
 {
@@ -178,15 +178,15 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
     # check that wkt is proper format and of 1 of 4 allowed types
     geometry <- check_wkt(geometry)
     
+    # Make arg list
     args <- compact(list(taxonKey=taxonKey, scientificName=scientificName, country=country, 
       publishingCountry=publishingCountry, hasCoordinate=hasCoordinate, typeStatus=typeStatus, recordNumber=recordNumber, 
-       lastInterpreted=lastInterpreted, continent=continent,geometry=geometry, collectorName=collectorName, 
-       basisOfRecord=basisOfRecord, datasetKey=datasetKey, eventDate=eventDate, catalogNumber=catalogNumber,
-       year=year, month=month, decimalLatitude=decimalLatitude, decimalLongitude=decimalLongitude, 
-       altitude=altitude, depth=depth, institutionCode=institutionCode, 
-       collectionCode=collectionCode, spatialIssues=spatialIssues, q=search, 
-       limit=as.integer(limit), offset=start))
-#     args <- range_query_concat(args)
+      lastInterpreted=lastInterpreted, continent=continent,geometry=geometry, collectorName=collectorName, 
+      basisOfRecord=basisOfRecord, datasetKey=datasetKey, eventDate=eventDate, catalogNumber=catalogNumber,
+      year=year, month=month, decimalLatitude=decimalLatitude, decimalLongitude=decimalLongitude, 
+      elevation=elevation, depth=depth, institutionCode=institutionCode, 
+      collectionCode=collectionCode, spatialIssues=spatialIssues, q=search, 
+      limit=as.integer(limit), offset=start))
     
     iter <- 0
     sumreturned <- 0
@@ -271,13 +271,3 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
   
   out
 }
-
-# range_query_concat <- function(x){
-#   poss <- c('decimalLatitude','decimalLongitude','depth','elevation','eventDate',
-#             'lastInterpreted','month','year')
-#   nn <- names(x)
-#   concat <- function(y){
-#     if(y %in% poss) paste(x[[y]],collapse = ",") else x[[y]]
-#   }
-#   as.list(sapply(nn, concat))
-# }

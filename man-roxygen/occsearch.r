@@ -42,19 +42,19 @@
 #'    Supports range queries.
 #' @param publishingCountry The 2-letter country code (as per ISO-3166-1) of the 
 #'    country in which the occurrence was recorded.
-#' @param altitude Altitude/elevation in meters above sea level.
-#' @param depth Depth in meters relative to altitude. For example 10 meters below a 
-#'    lake surface with given altitude.
+#' @param elevation Elevation in meters above sea level.
+#' @param depth Depth in meters relative to elevation. For example 10 meters below a 
+#'    lake surface with given elevation.
 #' @param geometry Searches for occurrences inside a polygon described in Well Known 
 #'    Text (WKT) format. A WKT shape written as either POINT, LINESTRING, LINEARRING 
 #'    or POLYGON. Example of a polygon: ((30.1 10.1, 20, 20 40, 40 40, 30.1 10.1))
 #'     would be queried as \url{http://bit.ly/HwUSif}.
-#' @param spatialIssues Includes/excludes occurrence records which contain spatial 
+#' @param spatialIssues (logical) Includes/excludes occurrence records which contain spatial 
 #'    issues (as determined in our record interpretation), i.e. spatialIssues=TRUE 
 #'    returns only those records with spatial issues while spatialIssues=FALSE includes 
 #'    only records without spatial issues. The absence of this parameter returns any 
 #'    record with or without spatial issues.
-#' @param hasCoordinate Return only occurence records with lat/long data (TRUE) or
+#' @param hasCoordinate (logical) Return only occurence records with lat/long data (TRUE) or
 #'    all records (FALSE, default).
 #' @param typeStatus Type status of the specimen. One of many options. See ?typestatus
 #' @param recordNumber Number recorded by collector of the data, different from GBIF record
@@ -66,7 +66,7 @@
 #'    or south_america
 #' @param fields (character) Default ('minimal') will return just taxon name, key, latitude, and 
 #'    longitute. 'all' returns all fields. Or specify each field you want returned by name, e.g.
-#'    fields = c('name','latitude','altitude').
+#'    fields = c('name','latitude','elevation').
 #' @param return One of data, hier, meta, or all. If data, a data.frame with the 
 #'    data. hier returns the classifications in a list for each record. meta 
 #'    returns the metadata for the entire call. all gives all data back in a list. 
