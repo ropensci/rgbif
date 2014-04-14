@@ -197,7 +197,6 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
       stop_for_status(temp)
       assert_that(temp$headers$`content-type`=='application/json')
       res <- content(temp, as = 'text', encoding = "UTF-8")
-#       tt <- jsonlite::fromJSON(res, simplifyWithNames = FALSE)
       tt <- RJSONIO::fromJSON(res)
       
       numreturned <- length(tt$results)
