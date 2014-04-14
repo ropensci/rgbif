@@ -1,6 +1,7 @@
 #' Post a file as a Github gist
 #' 
 #' @import httr
+#' @export
 #' @param gist An object
 #' @param description brief description of gist (optional)
 #' @param public whether gist is public (default: TRUE)
@@ -24,7 +25,7 @@
 #' splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 #' keys <- sapply(splist, function(x) name_backbone(name=x, kingdom='plants')$speciesKey, 
 #'    USE.NAMES=FALSE)
-#' out <- occ_search(keys, georeferenced=TRUE, limit=50, return="data")
+#' out <- occ_search(keys, hasCoordinate=TRUE, limit=50, return="data")
 #' dat <- ldply(out)
 #' datgeojson <- stylegeojson(input=dat, var="name", color=c("#976AAE","#6B944D","#BD5945"),
 #'    size=c("small","medium","large"))
@@ -32,7 +33,7 @@
 #' togeojson(input="~/my.csv", method="web", outfilename="my")
 #' gist("~/my.geojson", description = "Occurrences of three bird species mapped")
 #' }
-#' @export
+
 gist <- function(gist, description = "", public = TRUE)
 {
   dat <- create_gist(gist, description = description, public = public)

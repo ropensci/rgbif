@@ -36,8 +36,10 @@ occ_count(basisOfRecord='OBSERVATION')
 
 ### Records for **Puma concolor** with lat/long data (georeferened) only
 
+Note that `hasCoordinate` in `occ_search()` is the same as `georeferenced` in `occ_count()`.
+
 ```{r occ_count2, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
-occ_count(nubKey=2435099, georeferenced=TRUE)
+occ_count(nubKey=2435099, hasCoordinate=TRUE)
 ```
 
 ### All georeferenced records in GBIF

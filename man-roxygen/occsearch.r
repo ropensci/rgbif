@@ -31,12 +31,12 @@
 #'      \item PRESERVED_SPECIMEN An occurrence record describing a preserved specimen.
 #'      \item UNKNOWN Unknown basis for the record.
 #'    }
-#' @param date Occurrence date in ISO 8601 format: yyyy, yyyy-MM, yyyy-MM-dd, or 
+#' @param eventDate Occurrence date in ISO 8601 format: yyyy, yyyy-MM, yyyy-MM-dd, or 
 #'    MM-dd.
 #' @param year The 4 digit year. A year of 98 will be interpreted as AD 98.
 #' @param month The month of the year, starting with 1 for January.
 #' @param search Query terms. The value for this parameter can be a simple word or a phrase.
-#' @param decimallatitude Latitude in decimals between -90 and 90 based on WGS 84. 
+#' @param decimalLatitude Latitude in decimals between -90 and 90 based on WGS 84. 
 #'    Supports range queries.
 #' @param decimalLongitude Longitude in decimals between -180 and 180 based on WGS 84.  
 #'    Supports range queries.
@@ -57,7 +57,7 @@
 #' @param hasCoordinate Return only occurence records with lat/long data (TRUE) or
 #'    all records (FALSE, default).
 #' @param typeStatus Type status of the specimen. One of many options. See ?typestatus
-#' @param recordedNumber Number recorded by collector of the data, different from GBIF record
+#' @param recordNumber Number recorded by collector of the data, different from GBIF record
 #'    number. See \url{http://rs.tdwg.org/dwc/terms/#recordNumber} for more info
 #' @param lastInterpreted Date the record was last modified in GBIF, in ISO 8601 format: 
 #'    yyyy, yyyy-MM, yyyy-MM-dd, or MM-dd. Supports range queries.

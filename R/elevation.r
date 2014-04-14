@@ -16,7 +16,7 @@
 #' @export
 #' @examples \dontrun{
 #' key <- name_suggest('Puma concolor')$key[1]
-#' dat <- occ_search(taxonKey=key, return='data', limit=300, georeferenced=TRUE)
+#' dat <- occ_search(taxonKey=key, return='data', limit=300, hasCoordinate=TRUE)
 #' elevation(dat)
 #' 
 #' # Pass in a vector of lat's and a vector of long's

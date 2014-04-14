@@ -67,8 +67,8 @@ occ_search(taxonKey = NULL, scientificName = NULL, country = NULL,
   preserved specimen.  \item UNKNOWN Unknown basis for the
   record.  }}
 
-  \item{date}{Occurrence date in ISO 8601 format: yyyy,
-  yyyy-MM, yyyy-MM-dd, or MM-dd.}
+  \item{eventDate}{Occurrence date in ISO 8601 format:
+  yyyy, yyyy-MM, yyyy-MM-dd, or MM-dd.}
 
   \item{year}{The 4 digit year. A year of 98 will be
   interpreted as AD 98.}
@@ -79,7 +79,7 @@ occ_search(taxonKey = NULL, scientificName = NULL, country = NULL,
   \item{search}{Query terms. The value for this parameter
   can be a simple word or a phrase.}
 
-  \item{decimallatitude}{Latitude in decimals between -90
+  \item{decimalLatitude}{Latitude in decimals between -90
   and 90 based on WGS 84.  Supports range queries.}
 
   \item{decimalLongitude}{Longitude in decimals between
@@ -117,7 +117,7 @@ occ_search(taxonKey = NULL, scientificName = NULL, country = NULL,
   \item{typeStatus}{Type status of the specimen. One of
   many options. See ?typestatus}
 
-  \item{recordedNumber}{Number recorded by collector of the
+  \item{recordNumber}{Number recorded by collector of the
   data, different from GBIF record number. See
   \url{http://rs.tdwg.org/dwc/terms/#recordNumber} for more
   info}

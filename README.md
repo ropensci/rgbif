@@ -111,7 +111,7 @@ occ_search(taxonKey=key, limit=20, return='data')
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 keys <- sapply(splist, function(x) name_backbone(name=x, kingdom='plants')$speciesKey, USE.NAMES=FALSE)
 
-occ_search(taxonKey=keys, limit=5, return='data', georeferenced=TRUE)
+occ_search(taxonKey=keys, limit=5, return='data', hasCoordinate=TRUE)
 
 $`2480598`
                      name longitude   latitude
@@ -145,7 +145,7 @@ $`2498387`
 ```coffee
 splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
 keys <- sapply(splist, function(x) name_backbone(name=x, kingdom='plants')$speciesKey, USE.NAMES=FALSE)
-dat <- occ_search(taxonKey=keys, limit=100, return='data', georeferenced=TRUE)
+dat <- occ_search(taxonKey=keys, limit=100, return='data', hasCoordinate=TRUE)
 library(plyr)
 datdf <- ldply(dat)
 gbifmap(datdf)
