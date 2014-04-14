@@ -61,9 +61,9 @@
 #'    number. See \url{http://rs.tdwg.org/dwc/terms/#recordNumber} for more info
 #' @param lastInterpreted Date the record was last modified in GBIF, in ISO 8601 format: 
 #'    yyyy, yyyy-MM, yyyy-MM-dd, or MM-dd. Supports range queries.
-#' @param continent Continent. One of 'AFRICA', 'ANTARCTICA', 'ASIA', 'EUROPE' 'NORTH_AMERICA' 
-#'    (North America includes the Caribbean and reachies down and includes Panama), 'OCEANIA', 
-#'    or 'SOUTH_AMERICA'
+#' @param continent Continent. One of africa, antarctica, asia, europe, north_america 
+#'    (North America includes the Caribbean and reachies down and includes Panama), oceania, 
+#'    or south_america
 #' @param fields (character) Default ('minimal') will return just taxon name, key, latitude, and 
 #'    longitute. 'all' returns all fields. Or specify each field you want returned by name, e.g.
 #'    fields = c('name','latitude','altitude').

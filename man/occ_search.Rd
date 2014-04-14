@@ -126,10 +126,10 @@ occ_search(taxonKey = NULL, scientificName = NULL, country = NULL,
   in GBIF, in ISO 8601 format: yyyy, yyyy-MM, yyyy-MM-dd,
   or MM-dd. Supports range queries.}
 
-  \item{continent}{Continent. One of 'AFRICA',
-  'ANTARCTICA', 'ASIA', 'EUROPE' 'NORTH_AMERICA' (North
-  America includes the Caribbean and reachies down and
-  includes Panama), 'OCEANIA', or 'SOUTH_AMERICA'}
+  \item{continent}{Continent. One of africa, antarctica,
+  asia, europe, north_america (North America includes the
+  Caribbean and reachies down and includes Panama),
+  oceania, or south_america}
 
   \item{fields}{(character) Default ('minimal') will return
   just taxon name, key, latitude, and longitute. 'all'
@@ -217,6 +217,15 @@ occ_search(taxonKey=key, limit=20)
 
 # Return just metadata for the search
 occ_search(taxonKey=key, return='meta')
+
+# Instead of getting a taxon key first, you can search for a name directly
+## However, note that using this approach (with \\code{scientificName="..."})
+## you are getting synonyms too. The results for using \\code{scientifcName} and
+## \\code{taxonKey} parameters are the same in this case, but I wouldn't be surprised if for some
+## names they return different results
+occ_search(scientificName = 'Ursus americanus')
+key <- name_backbone(name = 'Ursus americanus', rank='species')$usageKey
+occ_search(taxonKey = key)
 
 # Search by dataset key
 occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a', return='data')
@@ -320,8 +329,29 @@ occ_search(depth=c(50,100)) # this is not a range search, but does two searches 
 ## Range search with year
 occ_search(year='1999,2000')
 
-#' ## Range search with latitude
+## Range search with latitude
 occ_search(decimalLatitude='29.59,29.6')
+
+# Search by specimen type status
+## Look for possible values of the \\code{typeStatus} parameter looking at the typestatus dataset
+occ_search(typeStatus = 'allotype', fields = c('name','typeStatus'))
+
+# Search by specimen record number
+## This is the record number of the person/group that submitted the data, not GBIF's numbers
+## You can see that many different groups have record number 1, so not super helpful
+occ_search(recordNumber = 1, fields = c('name','recordNumber','recordedBy'))
+
+# Search by last time interpreted: Date the record was last modified in GBIF
+## The \\code{lastInterpreted} parameter accepts ISO 8601 format dates, including
+## yyyy, yyyy-MM, yyyy-MM-dd, or MM-dd. Range queries are accepted for \\code{lastInterpreted}
+occ_search(lastInterpreted = '2014-04-02', fields = c('name','lastInterpreted'))
+
+# Search by continent
+## One of africa, antarctica, asia, europe, north_america, oceania, or south_america
+occ_search(continent = 'south_america', return = 'meta')
+occ_search(continent = 'africa', return = 'meta')
+occ_search(continent = 'oceania', return = 'meta')
+occ_search(continent = 'antarctica', return = 'meta')
 }
 \donttest{
 # If you try multiple values for two different parameters you are wacked on the hand
