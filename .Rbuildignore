@@ -10,3 +10,4 @@ inst/assets
 Makefile
 vignettes/margins.sty
 vignettes/figure
+.Rhistory
