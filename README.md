@@ -5,11 +5,8 @@ rgbif
 <!-- dev branch [![Build Status](https://api.travis-ci.org/ropensci/rgbif.png?branch=dev)](https://travis-ci.org/ropensci/rgbif) -->
 
 ## About
-This package gives you access to data from [GBIF](http://www.gbif.org/) via their API.
 
-## Branches
-
-Note: The most recent changes are now on the `dev` branch, and thus code may have more bugs. The `master` branch should always be stable. 
+This package gives you access to data from [GBIF](http://www.gbif.org/) via their REST API.
 
 ## Transitioning to the new GBIF API
 
@@ -53,7 +50,7 @@ Changes in the new GBIF API from last with respect to `rgbif`:
 * Note 1: See `?datasets`, `?networks`, `?nodes`, and `?organizations`.
 * Note 2: See `?name_lookup` for names across all of GBIF and `name_backbone` for names only in the GBIF backbone taxonomy.
 
-## Install
+## Quick start
 
 ### Install stable version on CRAN
 
@@ -65,10 +62,10 @@ install.packages("rgbif")
 
 ```coffee
 install.packages("devtools")
-require(devtools)
+library("devtools")
 
-install_github("rgbif", "ropensci")
-require(rgbif)
+install_github("ropensci/rgbif")
+library("rgbif")
 ```
 
 Note: Windows users have to first install [Rtools](http://cran.r-project.org/bin/windows/Rtools/).
