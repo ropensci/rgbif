@@ -161,7 +161,7 @@
 #' nrow(out)
 #' }
 
-occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publishingCountry=NULL, 
+occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publishingCountry=NULL,
   hasCoordinate=NULL, typeStatus=NULL, recordNumber=NULL, lastInterpreted=NULL, continent=NULL,
   geometry=NULL, collectorName=NULL, basisOfRecord=NULL, datasetKey=NULL, eventDate=NULL, 
   catalogNumber=NULL, year=NULL, month=NULL, decimalLatitude=NULL, decimalLongitude=NULL, 
@@ -169,6 +169,11 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
   spatialIssues=NULL, search=NULL, callopts=list(), limit=20, start=NULL, 
   fields = 'minimal', return='all')
 {
+  calls <- names(sapply(match.call(), deparse))[-1]
+  calls_vec <- c("georeferenced","altitude","latitude","longitude") %in% calls
+  if(any(calls_vec))
+    stop("Parameter name changes: \n georeferenced -> hasCoordinate\n altitude -> elevation\n latitude -> decimalLatitude\n longitude - > decimalLongitude")
+  
   url = 'http://api.gbif.org/v0.9/occurrence/search'
   getdata <- function(x=NULL, itervar=NULL)
   {
