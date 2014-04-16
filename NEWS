@@ -5,14 +5,14 @@ BUG FIXES
 
 * A number of variables changed names to better follow the Darwin Core standard. `latitude` is now `decimalLatitude`. `longitude` is now `decimalLongitude`. `clazz` is now `class`. Code in this package changed to accomodate these changes. `date` is now `eventDate`. `georeferenced` is now `hasCoordinate`. Beware of these changes in your own code using `rgbif` - find and replace for these should be easy.
 * Changed `altitude` parameter in `occ_search()` to `elevation` - should have been `elevation` the whole time. 
-* `occ_count()` function with parameter changes: `nubKey` parameter in changed to `taxonKey`. New parameter `protocol`. Parameter `catalogNumber` gone. Parameter `hostCountry` gone.
+* `occ_count()` function with parameter changes: `nubKey` parameter in changed to `taxonKey`. New parameter `protocol`. Parameter `catalogNumber` gone. Parameter `hostCountry` gone. These parameters are still in the function definition, but if called they throw a useful warning telling you the correct parameter names. (#76)
 
 IMPROVEMENTS
 
 * Better checking and parsing of response data from GBIF: Across all functions, we now check that the response content type is `application/json`, then parse JSON ourselves using `RJSONIO::fromJSON` (instead of httr doing it).
 * Across all functions, we now return all potenital character class columns as character class (instead of factor), by passing `stringsAsFactors = FALSE` to all `data.frame()` calls.
 * Now using assertthat package in various places to give better error messages when the wrong input is passed to a function.
-* Four parameters have name changes. These parameters are still in the function definition, but if called they throw a useful warning telling you the correct parameter names. (#75)
+* Four parameters have name changes in the `occ_search()` function. These parameters are still in the function definition, but if called they throw a useful warning telling you the correct parameter names. (#75)
 
 NEW FEATURES
 

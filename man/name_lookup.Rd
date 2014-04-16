@@ -7,8 +7,8 @@ name_lookup(query = NULL, rank = NULL, highertaxon_key = NULL,
   status = NULL, extinct = NULL, habitat = NULL, name_type = NULL,
   dataset_key = NULL, nomenclatural_status = NULL, limit = 20,
   facet = NULL, facet_only = NULL, facet_mincount = NULL,
-  facet_multiselect = NULL, callopts = list(), verbose = FALSE,
-  return = "all")
+  facet_multiselect = NULL, type = NULL, callopts = list(),
+  verbose = FALSE, return = "all")
 }
 \arguments{
 \item{query}{Query term(s) for full text search.}
@@ -66,7 +66,7 @@ for a field. Allowed facets are: dataset_key, highertaxon_key, rank, status,
 extinct, habitat, and name_type. Additionally threat and nomenclatural_status
 are legal values but not yet implemented, so data will not yet be returned for them.}
 
-\item{facet_only}{Used in combination with the facet parameter. Set facet_only=true
+\item{facet_only}{Used in combination with the facet parameter. Set \code{facet_only=true}
 to exclude search results.}
 
 \item{facet_mincount}{Used in combination with the facet parameter. Set
@@ -75,9 +75,11 @@ http://bit.ly/1bMdByP only shows the type value 'ACCEPTED' because the other
 statuses have counts less than 7,000,000}
 
 \item{facet_multiselect}{Used in combination with the facet parameter. Set
-facet_multiselect=true to still return counts for values that are not currently
+\code{facet_multiselect=TRUE} to still return counts for values that are not currently
 filtered, e.g. http://bit.ly/19YLXPO still shows all status values even though
-status is being filtered by status=ACCEPTED}
+status is being filtered by \code{status=ACCEPTED}}
+
+\item{type}{Type of name.}
 
 \item{limit}{Number of records to return}
 
@@ -110,7 +112,7 @@ name_lookup(query='mammalia')
 
 # Get all data and parse it, removing descriptions which can be quite long
 out <- name_lookup('Helianthus annuus', rank="species", verbose=TRUE)
-library(plyr)
+library("plyr")
 llply(out$data, function(x) x[!names(x) \%in\% c("descriptions","descriptionsSerialized")])
 
 # Search for a genus, returning just data
@@ -123,15 +125,21 @@ name_lookup(query='Cnaemidophorus', rank="genus", return="meta")
 name_lookup(query='Cnaemidophor', rank="genus")
 
 # Get more data from the API call
-library(httr)
+library("httr")
 name_lookup(query='Cnaemidophorus', rank="genus", callopts=verbose())
 
 # Limit records to certain number
 name_lookup('Helianthus annuus', rank="species", limit=2)
 
 # Using faceting
-name_lookup(facet='status', facet_only=TRUE, facet_mincount='7000000')
+name_lookup(facet='status', facet_only=TRUE, facet_mincount='70000')
 name_lookup(facet=c('status','highertaxon_key'), facet_only=TRUE, facet_mincount='700000')
+
+name_lookup(facet='name_type', facet_only=TRUE)
+name_lookup(facet='habitat', facet_only=TRUE)
+name_lookup(facet='dataset_key', facet_only=TRUE)
+name_lookup(facet='rank', facet_only=TRUE)l
+name_lookup(facet='extinct', facet_only=TRUE)
 }
 }
 \references{

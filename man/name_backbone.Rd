@@ -16,44 +16,60 @@ http calls, and error handling}
 
 \item{start}{Record number to start at}
 
-\item{name}{Full scientific name potentially with authorship}
+\item{name}{(character) Full scientific name potentially with authorship (required)}
 
-\item{rank}{The rank given as our rank enum.}
+\item{rank}{(character) The rank given as our rank enum. (optional)}
 
-\item{kingdom}{If provided default matching will also try to match against this
-if no direct match is found for the name alone.}
+\item{kingdom}{(character) If provided default matching will also try to match against this
+if no direct match is found for the name alone. (optional)}
 
-\item{phylum}{If provided default matching will also try to match against this
-if no direct match is found for the name alone.}
+\item{phylum}{(character) If provided default matching will also try to match against this
+if no direct match is found for the name alone. (optional)}
 
-\item{class}{If provided default matching will also try to match against this
-if no direct match is found for the name alone.}
+\item{class}{(character) If provided default matching will also try to match against this
+if no direct match is found for the name alone. (optional)}
 
-\item{order}{If provided default matching will also try to match against this
-if no direct match is found for the name alone.}
+\item{order}{(character) If provided default matching will also try to match against this
+if no direct match is found for the name alone. (optional)}
 
-\item{family}{If provided default matching will also try to match against this
-if no direct match is found for the name alone.}
+\item{family}{(character) If provided default matching will also try to match against this
+if no direct match is found for the name alone. (optional)}
 
-\item{genus}{If provided default matching will also try to match against this
-if no direct match is found for the name alone.}
+\item{genus}{(character) If provided default matching will also try to match against this
+if no direct match is found for the name alone. (optional)}
 
-\item{strict}{If TRUE it (fuzzy) matches only the given name, but never a
-taxon in the upper classification}
+\item{strict}{(logical) If TRUE it (fuzzy) matches only the given name, but never a
+taxon in the upper classification (optional)}
 
-\item{verbose}{If TRUE show alternative matches considered which had been rejected.}
+\item{verbose}{(logical) If TRUE show alternative matches considered which had been rejected.}
 }
 \value{
-A list.
+A list for a single taxon with many slots (with \code{verbose=FALSE} - default), or a
+list of length two, first element for the suggested taxon match, and a data.frame
+with alternative name suggestions resulting from fuzzy matching (with \code{verbose=TRUE}).
 }
 \description{
 Lookup names in the GBIF backbone taxonomy.
+}
+\details{
+If you don't get a match GBIF gives back a list of length 3 with slots synonym,
+confidence, and matchType='NONE'.
 }
 \examples{
 \dontrun{
 name_backbone(name='Helianthus annuus', kingdom='plants')
 name_backbone(name='Helianthus', rank='genus', kingdom='plants')
+name_backbone(name='Poa', rank='genus', family='Poaceae')
+
+# Verbose - gives back alternatives
 name_backbone(name='Helianthus annuus', kingdom='plants', verbose=TRUE)
+
+# Strictness
+name_backbone(name='Poa', kingdom='plants', verbose=TRUE, strict=FALSE)
+name_backbone(name='Helianthus annuus', kingdom='plants', verbose=TRUE, strict=TRUE)
+
+# Non-existent name - returns list of lenght 3 stating no match
+name_backbone(name='Aso')
 }
 }
 \references{
