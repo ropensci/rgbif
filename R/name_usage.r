@@ -17,7 +17,7 @@
 #' 
 #' Options for the data parameter are: 'all', 'verbatim', 'name', 'parents', 'children', 
 #' 'descendants', 'related', 'synonyms', 'descriptions','distributions', 'images', 
-#' 'references', 'species_profiles', 'vernacular_names', 'type_specimens', 'root'
+#' 'references', 'species_profiles', 'vernacular_names', 'type_specimens'
 #' @export
 #' @examples \dontrun{
 #' # All name usages
@@ -32,16 +32,37 @@
 #' # References for a name usage
 #' name_usage(key=3119195, data='references')
 #' 
+#' # Species profiles, descriptions
+#' name_usage(key=3119195, data='species_profiles')
+#' name_usage(key=3119195, data='descriptions')
+#' res <- name_usage(key=2435099, data='children')
+#' sapply(res$results, "[[", "scientificName")
+#' 
 #' # Vernacular names for a name usage
 #' name_usage(key=3119195, data='vernacular_names')
 #' 
 #' # Select many options
 #' name_usage(key=3119195, data=c('images','synonyms'))
+#' 
+#' # Limit number of results returned
+#' name_usage(key=3119195, data='vernacular_names', limit=3)
+#' 
+#' # Search for names by dataset with datasetKey parameter
+#' name_usage(datasetKey="d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
+#' 
+#' # Search for a particular language
+#' name_usage(key=3119195, language="FRENCH", data='vernacular_names')
 #' }
 
-name_usage <- function(key=NULL, name=NULL, data='all', language=NULL, datasetKey=NULL,
-  sourceId=NULL, rank=NULL, uuid=NULL, shortname=NULL, start=NULL, limit=20, callopts=list())
+name_usage <- function(key=NULL, name=NULL, data='all', language=NULL, datasetKey=NULL, uuid=NULL,
+  sourceId=NULL, rank=NULL, shortname=NULL, start=NULL, limit=20, callopts=list())
 {
+  calls <- names(sapply(match.call(), deparse))[-1]
+  calls_vec <- c("sourceId") %in% calls
+  if(any(calls_vec))
+    stop("Parameters not currently accepted: \n sourceId")
+  
+  
   args <- compact(list(language=language, name=name, datasetKey=datasetKey, 
                        rank=rank, offset=start, limit=limit, sourceId=sourceId))
   data <- match.arg(data, 

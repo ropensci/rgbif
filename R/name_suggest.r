@@ -1,15 +1,15 @@
 #' A quick and simple autocomplete service that returns up to 20 name usages by 
-#' doing prefix matching against the scientific name. Results are ordered by relevance. 
+#' doing prefix matching against the scientific name. Results are ordered by relevance.
 #' 
 #' @template all
 #' @template occ
 #' @import httr plyr
-#' @param q Simple search parameter. The value for this parameter can be a simple 
-#'    word or a phrase. Wildcards can be added to the simple word parameters only, 
+#' @param q (character, required) Simple search parameter. The value for this parameter can be a 
+#'    simple word or a phrase. Wildcards can be added to the simple word parameters only, 
 #'    e.g. q=*puma*
-#' @param datasetKey Filters by the checklist dataset key (a uuid, see examples)
-#' @param rank The rank given as our rank enum.
-#' @param fields Fields to return in output data.frame (simply prunes columns off)
+#' @param datasetKey (character) Filters by the checklist dataset key (a uuid, see examples)
+#' @param rank (character) The rank given as our rank enum.
+#' @param fields (character) Fields to return in output data.frame (simply prunes columns off)
 #' @return A data.frame with fields selected by fields arg.
 #' @export
 #' @examples \dontrun{
