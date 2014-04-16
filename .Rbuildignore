@@ -7,7 +7,5 @@ man-roxygen
 ^\.Rproj\.user$
 inst/vign
 inst/assets
-Makefile
 vignettes/margins.sty
-vignettes/figure
 .Rhistory
