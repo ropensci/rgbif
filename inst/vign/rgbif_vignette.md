@@ -51,13 +51,15 @@ occ_count(basisOfRecord = "OBSERVATION")
 
 ### Records for **Puma concolor** with lat/long data (georeferened) only
 
+Note that `hasCoordinate` in `occ_search()` is the same as `georeferenced` in `occ_count()`.
+
 
 ```r
 occ_count(nubKey = 2435099, georeferenced = TRUE)
 ```
 
 ```
-[1] 2541
+Error: tt$headers$`content-type` not equal to "application/json"
 ```
 
 
@@ -68,9 +70,7 @@ occ_count(nubKey = 2435099, georeferenced = TRUE)
 occ_count(georeferenced = TRUE)
 ```
 
-```
-[1] 3.55e+08
-```
+[1] 376881077
 
 
 ### Records from Denmark

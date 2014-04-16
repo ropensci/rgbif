@@ -3,13 +3,16 @@
 \alias{occ_count}
 \title{Get number of occurrence records.}
 \usage{
-occ_count(nubKey = NULL, georeferenced = NULL, basisOfRecord = NULL,
+occ_count(taxonKey = NULL, georeferenced = NULL, basisOfRecord = NULL,
   datasetKey = NULL, date = NULL, catalogNumber = NULL, country = NULL,
   hostCountry = NULL, year = NULL, from = 2000, to = 2012,
-  type = "count", publishingCountry = "US", callopts = list())
+  type = "count", publishingCountry = "US", callopts = list(),
+  nubKey = NULL, protocol = NULL)
 }
 \arguments{
-\item{nubKey}{Species key}
+\item{nubKey}{Species key. PARAMETER NAME CHANGED TO taxonKey.}
+
+\item{taxonKey}{Species key}
 
 \item{georeferenced}{Return only occurence records with lat/long data (TRUE) or
 all records (FALSE, default).}
@@ -22,11 +25,13 @@ all records (FALSE, default).}
 
 \item{year}{Year data were collected in}
 
-\item{catalogNumber}{Catalog number}
+\item{catalogNumber}{Catalog number. PARAMETER GONE.}
 
 \item{country}{Country data was collected in}
 
-\item{hostCountry}{Country that hosted the data}
+\item{protocol}{Protocol. E.g., 'DWC_ARCHIVE'}
+
+\item{hostCountry}{Country that hosted the data. PARAMETER GONE.}
 
 \item{publishingCountry}{Publishing country, two letter ISO country code}
 
@@ -51,11 +56,11 @@ occ_count(basisOfRecord='OBSERVATION')
 occ_count(georeferenced=TRUE)
 occ_count(country='DENMARK')
 occ_count(country='CANADA', georeferenced=TRUE, basisOfRecord='OBSERVATION')
-occ_count(hostCountry='FRANCE')
 occ_count(datasetKey='9e7ea106-0bf8-4087-bb61-dfe4f29e0f17')
 occ_count(year=2012)
-occ_count(nubKey=2435099)
-occ_count(nubKey=2435099, georeferenced=TRUE)
+occ_count(taxonKey=2435099)
+occ_count(taxonKey=2435099, georeferenced=TRUE)
+occ_count(protocol='DWC_ARCHIVE')
 
 # Just schema
 occ_count(type='schema')

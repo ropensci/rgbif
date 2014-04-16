@@ -3,16 +3,18 @@
 #' @template all
 #' @import httr plyr
 #' @export
-#' @param nubKey Species key
+#' @param nubKey Species key. PARAMETER NAME CHANGED TO taxonKey.
+#' @param taxonKey Species key
 #' @param georeferenced Return only occurence records with lat/long data (TRUE) or
 #'    all records (FALSE, default). 
 #' @param basisOfRecord Basis of record
 #' @param datasetKey Dataset key
 #' @param date Collection date
 #' @param year Year data were collected in
-#' @param catalogNumber Catalog number
+#' @param catalogNumber Catalog number. PARAMETER GONE.
 #' @param country Country data was collected in
-#' @param hostCountry Country that hosted the data
+#' @param protocol Protocol. E.g., 'DWC_ARCHIVE'
+#' @param hostCountry Country that hosted the data. PARAMETER GONE.
 #' @param publishingCountry Publishing country, two letter ISO country code
 #' @param from Year to start at
 #' @param to Year to end at
@@ -25,11 +27,11 @@
 #' occ_count(georeferenced=TRUE)
 #' occ_count(country='DENMARK')
 #' occ_count(country='CANADA', georeferenced=TRUE, basisOfRecord='OBSERVATION')
-#' occ_count(hostCountry='FRANCE')
 #' occ_count(datasetKey='9e7ea106-0bf8-4087-bb61-dfe4f29e0f17')
 #' occ_count(year=2012)
-#' occ_count(nubKey=2435099)
-#' occ_count(nubKey=2435099, georeferenced=TRUE)
+#' occ_count(taxonKey=2435099)
+#' occ_count(taxonKey=2435099, georeferenced=TRUE)
+#' occ_count(protocol='DWC_ARCHIVE')
 #' 
 #' # Just schema
 #' occ_count(type='schema')
@@ -48,14 +50,20 @@
 #' occ_count(type='publishingCountry', country='BZ')
 #' }
 
-occ_count <- function(nubKey=NULL, georeferenced=NULL, basisOfRecord=NULL, 
+occ_count <- function(taxonKey=NULL, georeferenced=NULL, basisOfRecord=NULL, 
   datasetKey=NULL, date=NULL, catalogNumber=NULL, country=NULL, hostCountry=NULL, 
-  year=NULL, from=2000, to=2012, type='count', publishingCountry='US', callopts=list())
+  year=NULL, from=2000, to=2012, type='count', publishingCountry='US', callopts=list(), 
+  nubKey=NULL, protocol=NULL)
 {
-  args <- compact(list(nubKey=nubKey, georeferenced=georeferenced, 
+  calls <- names(sapply(match.call(), deparse))[-1]
+  calls_vec <- c("nubKey","hostCountry","catalogNumber") %in% calls
+  if(any(calls_vec))
+    stop("Parameter name changes: \n nubKey -> taxonKey\nParameters gone: \n hostCountry\n catalogNumber")
+  
+  args <- compact(list(taxonKey=taxonKey, georeferenced=georeferenced, 
                        basisOfRecord=basisOfRecord, datasetKey=datasetKey, 
                        date=date, catalogNumber=catalogNumber, country=country,
-                       hostCountry=hostCountry, year=year))
+                       hostCountry=hostCountry, year=year, protocol=protocol))
   type <- match.arg(type, choices=c("count","schema","basis_of_record","countries","year","publishingCountry"))
   url <- switch(type, 
                 count = 'http://api.gbif.org/v0.9/occurrence/count',

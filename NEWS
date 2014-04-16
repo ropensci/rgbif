@@ -5,6 +5,7 @@ BUG FIXES
 
 * A number of variables changed names to better follow the Darwin Core standard. `latitude` is now `decimalLatitude`. `longitude` is now `decimalLongitude`. `clazz` is now `class`. Code in this package changed to accomodate these changes. `date` is now `eventDate`. `georeferenced` is now `hasCoordinate`. Beware of these changes in your own code using `rgbif` - find and replace for these should be easy.
 * Changed `altitude` parameter in `occ_search()` to `elevation` - should have been `elevation` the whole time. 
+* `occ_count()` function with parameter changes: `nubKey` parameter in changed to `taxonKey`. New parameter `protocol`. Parameter `catalogNumber` gone. Parameter `hostCountry` gone.
 
 IMPROVEMENTS
 
