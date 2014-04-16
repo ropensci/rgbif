@@ -6,6 +6,7 @@ BUG FIXES
 * A number of variables changed names to better follow the Darwin Core standard. `latitude` is now `decimalLatitude`. `longitude` is now `decimalLongitude`. `clazz` is now `class`. Code in this package changed to accomodate these changes. `date` is now `eventDate`. `georeferenced` is now `hasCoordinate`. Beware of these changes in your own code using `rgbif` - find and replace for these should be easy.
 * Changed `altitude` parameter in `occ_search()` to `elevation` - should have been `elevation` the whole time. 
 * `occ_count()` function with parameter changes: `nubKey` parameter in changed to `taxonKey`. New parameter `protocol`. Parameter `catalogNumber` gone. Parameter `hostCountry` gone. These parameters are still in the function definition, but if called they throw a useful warning telling you the correct parameter names. (#76)
+* Fixed bug in `name_lookup()` function that was labeling facet outputs incorrectly. (#77)
 
 IMPROVEMENTS
 
@@ -14,7 +15,7 @@ IMPROVEMENTS
 * Now using assertthat package in various places to give better error messages when the wrong input is passed to a function.
 * Four parameters have name changes in the `occ_search()` function. These parameters are still in the function definition, but if called they throw a useful warning telling you the correct parameter names. (#75)
 * Updated docs in `name_usage`, `name_backbone`, `name_lookup`, and `name_suggest` functions. 
-* 
+* `sourceId` parameter in `name_usage()` function doesn't work so error message is thrown when used.
 
 NEW FEATURES
 
