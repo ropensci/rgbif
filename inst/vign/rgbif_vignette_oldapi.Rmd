@@ -32,19 +32,19 @@ library(rgbif)
 
 ## Counts taxon concept records matching a range of filters.
 
-```{r occurrencecount1, message=FALSE, warning=FALSE, comment=NA, cache=TRUE}
+```{r occurrencecount1, message=FALSE, warning=FALSE, comment=NA, cache=FALSE}
 occurrencecount(scientificname = "Helianthus annuus", coordinatestatus = TRUE, year = 2005, maxlatitude = 20)
 ```
 
 Count many taxa
 
-```{r occurrencecount2, message=FALSE, warning=FALSE, comment=NA, cache=TRUE}
+```{r occurrencecount2, message=FALSE, warning=FALSE, comment=NA, cache=FALSE}
 lapply(c("Helianthus debilis", "Abies procera", "Astragalus"), function(x) occurrencecount(scientificname = x, coordinatestatus = TRUE))
 ```
 
 ## Return summary counts of occurrence records by one-degree cell for a single taxon, country, dataset, data publisher or data network
 
-```{r densitylist, message=FALSE, warning=FALSE, comment=NA, cache=TRUE}
+```{r densitylist, message=FALSE, warning=FALSE, comment=NA, cache=FALSE}
 out <- densitylist(originisocountrycode = "CA")
 head(gbifdata(out))
 ```
@@ -53,14 +53,14 @@ head(gbifdata(out))
 
 A simple example
 
-```{r occurrencelist, message=FALSE, warning=FALSE, comment=NA, cache=TRUE}
+```{r occurrencelist, message=FALSE, warning=FALSE, comment=NA, cache=FALSE}
 dat <- occurrencelist(scientificname = "Accipiter erythronemius", coordinatestatus = TRUE, maxresults = 10)
 gbifdata(dat)
 ```
 
 Search for many species and make a map
 
-```{r occurrencelist_many, message=FALSE, warning=FALSE, comment=NA, cache=TRUE}
+```{r occurrencelist_many, message=FALSE, warning=FALSE, comment=NA, cache=FALSE}
 splist <- c("Accipiter erythronemius", "Junco hyemalis", "Aix sponsa")
 out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 20)
 gbifmap_list(out)
@@ -70,17 +70,17 @@ gbifmap_list(out)
 
 A simple example
 
-```{r densitylist2, message=FALSE, warning=FALSE, comment=NA, cache=TRUE}
+```{r densitylist2, message=FALSE, warning=FALSE, comment=NA, cache=FALSE}
 out <- densitylist(originisocountrycode="US")
 gbifmap_dens(out)
 ```
 
 ## Search by taxon to retrieve number of records in GBIF.
 
-```{r taxoncount1, message=FALSE, warning=FALSE, comment=NA, cache=TRUE}
+```{r taxoncount1, message=FALSE, warning=FALSE, comment=NA, cache=FALSE}
 taxoncount("Puma concolor")
 ```
 
-```{r taxoncount2, message=FALSE, warning=FALSE, comment=NA, cache=TRUE}
+```{r taxoncount2, message=FALSE, warning=FALSE, comment=NA, cache=FALSE}
 taxoncount("Helianthus annuus")
 ```

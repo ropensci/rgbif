@@ -55,11 +55,11 @@ Note that `hasCoordinate` in `occ_search()` is the same as `georeferenced` in `o
 
 
 ```r
-occ_count(nubKey = 2435099, georeferenced = TRUE)
+occ_count(taxonKey = 2435099, georeferenced = TRUE)
 ```
 
 ```
-Error: tt$headers$`content-type` not equal to "application/json"
+[1] 2604
 ```
 
 

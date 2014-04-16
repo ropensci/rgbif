@@ -78,38 +78,38 @@ code > span.er { color: #ff0000; font-weight: bold; }
     <span class="dt">maxresults =</span> <span class="dv">10</span>)
 <span class="kw">gbifdata</span>(dat)</code></pre>
 <pre><code>                 taxonName occurrenceID     country decimalLatitude
-1  Accipiter erythronemius    699199198   Argentina         -25.911
-2  Accipiter erythronemius    621073310   Argentina         -27.352
-3  Accipiter erythronemius    621073311   Argentina         -27.352
-4  Accipiter erythronemius    699199204   Argentina         -25.861
-5  Accipiter erythronemius    621073312   Argentina         -27.352
+1  Accipiter erythronemius    699417490      Guyana           5.267
+2  Accipiter erythronemius    686297260      Guyana           5.267
+3  Accipiter erythronemius    621073310   Argentina         -27.352
+4  Accipiter erythronemius    621073311   Argentina         -27.352
+5  Accipiter erythronemius    699199204   Argentina         -25.861
 6  Accipiter erythronemius    699199195   Argentina         -25.861
-7  Accipiter erythronemius    213206174 W. Colombia           3.767
-8  Accipiter erythronemius    352220558   Argentina         -31.133
-9  Accipiter erythronemius    699417490      Guyana           5.267
-10 Accipiter erythronemius    686297260      Guyana           5.267
+7  Accipiter erythronemius    621073312   Argentina         -27.352
+8  Accipiter erythronemius    699199198   Argentina         -25.911
+9  Accipiter erythronemius    213206174 W. Colombia           3.767
+10 Accipiter erythronemius    352220558   Argentina         -31.133
    decimalLongitude  catalogNumber earliestDateCollected
-1            -54.36          38199                  &lt;NA&gt;
-2            -65.60          42229                  &lt;NA&gt;
-3            -65.60          42228                  &lt;NA&gt;
-4            -54.52          38015                  &lt;NA&gt;
-5            -65.60          42227                  &lt;NA&gt;
+1            -60.73           3998            2001-04-03
+2            -60.73          93439            2001-04-03
+3            -65.60          42229                  &lt;NA&gt;
+4            -65.60          42228                  &lt;NA&gt;
+5            -54.52          38015                  &lt;NA&gt;
 6            -54.52          39196                  &lt;NA&gt;
-7            -76.75    Skin-470489                  &lt;NA&gt;
-8            -59.02 YPM ORN 065671            1961-04-30
-9            -60.73           3998            2001-04-03
-10           -60.73          93439            2001-04-03
+7            -65.60          42227                  &lt;NA&gt;
+8            -54.36          38199                  &lt;NA&gt;
+9            -76.75    Skin-470489                  &lt;NA&gt;
+10           -59.02 YPM ORN 065671            1961-04-30
    latestDateCollected
-1                 &lt;NA&gt;
-2                 &lt;NA&gt;
+1           2001-04-03
+2           2001-04-03
 3                 &lt;NA&gt;
 4                 &lt;NA&gt;
 5                 &lt;NA&gt;
 6                 &lt;NA&gt;
 7                 &lt;NA&gt;
-8           1961-04-30
-9           2001-04-03
-10          2001-04-03</code></pre>
+8                 &lt;NA&gt;
+9                 &lt;NA&gt;
+10          1961-04-30</code></pre>
 <p>Search for many species and make a map</p>
 <pre class="sourceCode r"><code class="sourceCode r">splist &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Accipiter erythronemius&quot;</span>, <span class="st">&quot;Junco hyemalis&quot;</span>, <span class="st">&quot;Aix sponsa&quot;</span>)
 out &lt;-<span class="st"> </span><span class="kw">occurrencelist_many</span>(splist, <span class="dt">coordinatestatus =</span> <span class="ot">TRUE</span>, <span class="dt">maxresults =</span> <span class="dv">20</span>)

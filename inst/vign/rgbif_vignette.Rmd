@@ -39,7 +39,7 @@ occ_count(basisOfRecord='OBSERVATION')
 Note that `hasCoordinate` in `occ_search()` is the same as `georeferenced` in `occ_count()`.
 
 ```{r occ_count2, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
-occ_count(nubKey=2435099, georeferenced=TRUE)
+occ_count(taxonKey=2435099, georeferenced=TRUE)
 ```
 
 ### All georeferenced records in GBIF

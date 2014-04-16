@@ -99,38 +99,38 @@ gbifdata(dat)
 
 ```
                  taxonName occurrenceID     country decimalLatitude
-1  Accipiter erythronemius    699199198   Argentina         -25.911
-2  Accipiter erythronemius    621073310   Argentina         -27.352
-3  Accipiter erythronemius    621073311   Argentina         -27.352
-4  Accipiter erythronemius    699199204   Argentina         -25.861
-5  Accipiter erythronemius    621073312   Argentina         -27.352
+1  Accipiter erythronemius    699417490      Guyana           5.267
+2  Accipiter erythronemius    686297260      Guyana           5.267
+3  Accipiter erythronemius    621073310   Argentina         -27.352
+4  Accipiter erythronemius    621073311   Argentina         -27.352
+5  Accipiter erythronemius    699199204   Argentina         -25.861
 6  Accipiter erythronemius    699199195   Argentina         -25.861
-7  Accipiter erythronemius    213206174 W. Colombia           3.767
-8  Accipiter erythronemius    352220558   Argentina         -31.133
-9  Accipiter erythronemius    699417490      Guyana           5.267
-10 Accipiter erythronemius    686297260      Guyana           5.267
+7  Accipiter erythronemius    621073312   Argentina         -27.352
+8  Accipiter erythronemius    699199198   Argentina         -25.911
+9  Accipiter erythronemius    213206174 W. Colombia           3.767
+10 Accipiter erythronemius    352220558   Argentina         -31.133
    decimalLongitude  catalogNumber earliestDateCollected
-1            -54.36          38199                  <NA>
-2            -65.60          42229                  <NA>
-3            -65.60          42228                  <NA>
-4            -54.52          38015                  <NA>
-5            -65.60          42227                  <NA>
+1            -60.73           3998            2001-04-03
+2            -60.73          93439            2001-04-03
+3            -65.60          42229                  <NA>
+4            -65.60          42228                  <NA>
+5            -54.52          38015                  <NA>
 6            -54.52          39196                  <NA>
-7            -76.75    Skin-470489                  <NA>
-8            -59.02 YPM ORN 065671            1961-04-30
-9            -60.73           3998            2001-04-03
-10           -60.73          93439            2001-04-03
+7            -65.60          42227                  <NA>
+8            -54.36          38199                  <NA>
+9            -76.75    Skin-470489                  <NA>
+10           -59.02 YPM ORN 065671            1961-04-30
    latestDateCollected
-1                 <NA>
-2                 <NA>
+1           2001-04-03
+2           2001-04-03
 3                 <NA>
 4                 <NA>
 5                 <NA>
 6                 <NA>
 7                 <NA>
-8           1961-04-30
-9           2001-04-03
-10          2001-04-03
+8                 <NA>
+9                 <NA>
+10          1961-04-30
 ```
 
 
