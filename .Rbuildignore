@@ -5,7 +5,5 @@ travis-tool.sh
 man-roxygen
 ^.*\.Rproj$
 ^\.Rproj\.user$
-inst/vign
-inst/assets
 vignettes/margins.sty
 .Rhistory

@@ -13,6 +13,8 @@ IMPROVEMENTS
 * Across all functions, we now return all potenital character class columns as character class (instead of factor), by passing `stringsAsFactors = FALSE` to all `data.frame()` calls.
 * Now using assertthat package in various places to give better error messages when the wrong input is passed to a function.
 * Four parameters have name changes in the `occ_search()` function. These parameters are still in the function definition, but if called they throw a useful warning telling you the correct parameter names. (#75)
+* Updated docs in `name_usage`, `name_backbone`, `name_lookup`, and `name_suggest` functions. 
+* 
 
 NEW FEATURES
 
