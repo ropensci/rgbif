@@ -9,5 +9,10 @@ before_script:
 - ./travis-tool.sh bootstrap
 - ./travis-tool.sh install_deps
 - ./travis-tool.sh github_package assertthat
+env:
+   global:
+     - R_BUILD_ARGS=" " 
+     - R_CHECK_ARGS="--as-cran"
+     - BOOTSTRAP_LATEX="1"
 notifications:
  slack: ropensci:wh30e1MP9Am3wXb2wJx1ZRFi
