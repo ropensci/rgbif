@@ -15,7 +15,7 @@
 #' gbifmap(input=dat)
 #' 
 #' # More than 1 species
-#' library(plyr)
+#' library("plyr")
 #' splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
 #' keys <- sapply(splist, function(x) name_backbone(name=x, kingdom='plants')$speciesKey,
 #'    USE.NAMES=FALSE)

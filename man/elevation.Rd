@@ -7,7 +7,8 @@ elevation(input = NULL, latitude = NULL, longitude = NULL,
   latlong = NULL, callopts = list())
 }
 \arguments{
-\item{input}{A data.frame of lat/long data.}
+\item{input}{A data.frame of lat/long data. There must be columns decimalLatitude and
+decimalLongitude.}
 
 \item{latitude}{A vector of latitude's. Must be the same length as the longitude
 vector.}
@@ -17,10 +18,10 @@ vector.}
 
 \item{latlong}{A vector of lat/long pairs. See examples.}
 
-\item{callopts}{Options passed on to httr::GET, like curl options for debugging.}
+\item{callopts}{Options passed on to \code{httr::GET}, like curl options for debugging.}
 }
 \value{
-A new column in the supplied data.frame or a vector with elevation of
+A new column named elevation in the supplied data.frame or a vector with elevation of
 each location in meters.
 }
 \description{
@@ -33,7 +34,7 @@ dat <- occ_search(taxonKey=key, return='data', limit=300, hasCoordinate=TRUE)
 elevation(dat)
 
 # Pass in a vector of lat's and a vector of long's
-elevation(latitude=dat$latitude, longitude=dat$longitude)
+elevation(latitude=dat$decimalLatitude, longitude=dat$decimalLongitude)
 
 # Pass in lat/long pairs in a single vector
 pairs <- list(c(31.8496,-110.576060), c(29.15503,-103.59828))

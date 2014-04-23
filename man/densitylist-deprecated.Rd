@@ -43,7 +43,7 @@ A data.frame with the columns
 This function is deprecated.
 }
 \examples{
-\dontrun{
+\donttest{
 head( out <- densitylist(originisocountrycode = "CA") )
 }
 }

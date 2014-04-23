@@ -34,7 +34,7 @@
 #' @param listcount Return a species list ('splist') or a data.frame of the
 #'    species and the count for each species ('counts').
 #' @return A vector of scientific species names for one degree grid cells.
-#' @examples \dontrun{
+#' @examples \donttest{
 #' # Just return the data.frame of counts by cells.
 #' density_spplist(originisocountrycode = "CO")
 #'
@@ -137,7 +137,7 @@ density_spplist <- function(taxonconceptKey = NULL, dataproviderkey = NULL,
 #'  \item{"maxLongitude"}{Maximum longitude of the cell}
 #'  \item{"count"}{Number of occurrences found}
 #' }
-#' @examples \dontrun{
+#' @examples \donttest{
 #' head( out <- densitylist(originisocountrycode = "CA") )
 #' }
 #' @export
@@ -242,7 +242,7 @@ densitylist <- function(taxonconceptKey = NULL, dataproviderkey = NULL,
 #'    (format YYYY-MM-DD, e.g. 2006-11-28). 
 #' @return A single numeric value - the number of records found in GBIF matching 
 #'    the query.
-#' @examples \dontrun{
+#' @examples \donttest{
 #' occurrencecount(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE)
 #' occurrencecount(scientificname = 'Helianthus annuus', coordinatestatus = TRUE, 
 #'    year=2009)
@@ -312,7 +312,7 @@ occurrencedensity <- function()
 #' 		(normalised) values used within the data portal (character)
 #' @details Currently, the function returns the record as a list, hopefully
 #' 		in future will return a data.frame.
-#' @examples \dontrun{
+#' @examples \donttest{
 #' occurrenceget(key = 13749100)
 #' }
 #' @export
@@ -334,7 +334,7 @@ occurrenceget <- function(key = NULL, format = NULL, mode = NULL)
 #' This function is deprecated.
 #'
 #' @template oclist
-#' @examples \dontrun{
+#' @examples \donttest{
 #' # Query for a single species
 #' occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE)
 #' occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE, 
@@ -475,7 +475,7 @@ occurrencelist <- function(scientificname = NULL, taxonconceptkey = NULL,
 #' @param ranktoget You must specify the taxonomic rank you are searching for 
 #'    so that we can select the correct names.
 #' @param ... Further arguments passed on to occurrencelist_many
-#' @examples \dontrun{
+#' @examples \donttest{
 #' # Query for a single species
 #' # compare the names returned by occurrencelist to occurrencelist_all
 #' occurrencelist(scientificname = 'Aristolochia serpentaria', 
@@ -522,7 +522,7 @@ occurrencelist_all <- function(scientificname, ranktoget = 'species', ...)
 #' @param parallel Do calls in parallel or not. (default is FALSE)
 #' @param cores Number of cores to use in parallel call option (only used 
 #'    if parallel=TRUE)
-#' @examples \dontrun{
+#' @examples \donttest{
 #' # Query for a many species
 #' splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 #' out <- occurrencelist_many(scientificname=splist, coordinatestatus = TRUE, 
@@ -690,7 +690,7 @@ occurrencelist_many <- function(scientificname = NULL, taxonconceptkey = NULL,
 #' @param  startindex  return the subset of the matching records that starts at
 #'    the supplied (zero-based index).
 #' @param maxresults max number of results to return
-#' @examples \dontrun{
+#' @examples \donttest{
 #' # Test the function for a few providers
 #' providers(maxresults=10)
 #'
@@ -742,7 +742,7 @@ providers <- function(name = "", isocountrycode = NULL, modifiedsince = NULL,
 #' @param  startindex  return the subset of the matching records that starts at
 #'    the supplied (zero-based index).
 #' @param maxresults max number of results to return
-#' @examples \dontrun{
+#' @examples \donttest{
 #' # Test the function for a few resources
 #' resources(maxresults=30)
 #'
@@ -785,7 +785,7 @@ resources <- function(name = "", providerkey = NULL, basisofrecordcode = NULL,
 #' @param rank Rank of taxon, see taxrank() (character)
 #' @param dataresourcekey Filter records to those provided by the supplied
 #'    numeric key for a data resource. See resources(). (character)
-#' @examples \dontrun{
+#' @examples \donttest{
 #' taxoncount(scientificname = 'Puma concolor')
 #' taxoncount(scientificname = 'Helianthus annuus')
 #' }
@@ -816,7 +816,7 @@ taxoncount <- function(scientificname = NULL, rank = NULL, dataresourcekey = NUL
 #' @param key A single key, or many keys in a vector, for a taxon.
 #' @return A single data.frame of taxonomic information if  single data.frame is
 #' 		supplied, or a list of data.frame's if a list of keys is supplied.
-#' @examples \dontrun{
+#' @examples \donttest{
 #' keys <- taxonsearch(scientificname = 'Puma concolor')
 #' taxonget(keys$gbifkey)
 #'
@@ -875,7 +875,7 @@ taxonget <- function(key = NULL)
 #' is the GBIF backbone taxonomy. Also, always specify the taxonomic rank you 
 #' are searching for - GBIF says the search is more efficient if rank is given.
 #' @return A data.frame.
-#' @examples \dontrun{
+#' @examples \donttest{
 #' # Do specify the taxonomic rank the you are searching for, rank of species here
 #' taxonsearch(scientificname = 'Puma concolor', rank="species")
 #' 
@@ -928,7 +928,7 @@ taxonsearch <- function(scientificname = NULL, rank = NULL, maxresults = 10,
 #' This function is deprecated.
 #'
 #' @template map
-#' @examples \dontrun{
+#' @examples \donttest{
 #' # Tile map, using output from densitylist, Canada
 #' out2 <- densitylist(originisocountrycode = "CA") # data for Canada
 #' gbifmap_dens(out2) # on world map
@@ -982,7 +982,7 @@ gbifmap_dens <- function(input = NULL, mapdatabase = "world", region = ".",
 #' This function is deprecated.
 #'
 #' @template map
-#' @examples \dontrun{
+#' @examples \donttest{
 #' # Point map, using output from occurrencelist, example 1
 #' out <- occurrencelist(scientificname = 'Accipiter erythronemius',
 #'    coordinatestatus = TRUE, maxresults = 100)
@@ -1086,7 +1086,7 @@ gbifmap_list <- function(input = NULL, mapdatabase = "world", region = ".",
 #' @details A convienence function to get the raw data in a data.frame format from 
 #'    occurrencelist, occurrencelist_many, and densitylist functions.
 #' @export
-#' @examples \dontrun{
+#' @examples \donttest{
 #' # occurrencelist
 #' out <- occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE, 
 #'    maxresults = 40)
@@ -1257,7 +1257,7 @@ is.gbifdens <- function(x) inherits(x, "gbifdens")
 #'    a single alphanumeric character (a-z or 0-9).
 #' @param size One of "small", "medium", or "large"
 #' @seealso \code{\link{togeojson}}
-#' @examples \dontrun{
+#' @examples \donttest{
 #' # Get data and save map data
 #' splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 #' out <- occ_search(scientificName = splist, hasCoordinate = TRUE, limit = 50)
@@ -1268,6 +1268,7 @@ is.gbifdens <- function(x) inherits(x, "gbifdens")
 #'    size=c("small","medium","large"))
 #' head(dat2)
 #' }
+#' @rdname stylegeojson-deprecated
 
 stylegeojson <- function(input, var = NULL, var_col = NULL, var_sym = NULL, 
                          var_size = NULL, color = NULL, symbol = NULL, size = NULL)
@@ -1349,7 +1350,7 @@ stylegeojson <- function(input, var = NULL, var_col = NULL, var_sym = NULL,
 #' 
 #' If you're having trouble rendering geoJSON files, ensure you have a valid 
 #' geoJSON file by running it through a geoJSON linter \url{http://geojsonlint.com/}.
-#' @examples \dontrun{
+#' @examples \donttest{
 #' file <- '~/Downloads/taxon-placemarks-2441176.kml'
 #' 
 #' # KML type file - using the web method
@@ -1386,6 +1387,7 @@ stylegeojson <- function(input, var = NULL, var_col = NULL, var_sym = NULL,
 #' togeojson(input=file, method="web", outfilename="my")
 #' create_gist("~/my.geojson", description = "Map of three bird species occurrences")
 #' }
+#' @rdname togeojson-deprecated
 
 togeojson <- function(input, method="web", destpath="~/", outfilename="myfile")
 {
@@ -1447,7 +1449,7 @@ togeojson <- function(input, method="web", destpath="~/", outfilename="myfile")
 #' \code{gist} was modified from code in the rCharts package by Ramnath Vaidyanathan 
 #' @return Posts your file as a gist on your account, and prints out the url for the 
 #' gist itself in the console.
-#' @examples \dontrun{
+#' @examples \donttest{
 #' library(plyr)
 #' splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 #' keys <- sapply(splist, function(x) name_backbone(name=x, kingdom='plants')$speciesKey, 
@@ -1460,6 +1462,7 @@ togeojson <- function(input, method="web", destpath="~/", outfilename="myfile")
 #' togeojson(input="~/my.csv", method="web", outfilename="my")
 #' gist("~/my.geojson", description = "Occurrences of three bird species mapped")
 #' }
+#' @rdname gist-deprecated
 
 gist <- function(gist, description = "", public = TRUE)
 {
@@ -1497,6 +1500,7 @@ gist <- function(gist, description = "", public = TRUE)
 #' @param public whether gist is public (defaults to TRUE)
 #' @export
 #' @keywords internal
+#' @rdname create_gist-deprecated
 create_gist <- function(filenames, description = "", public = TRUE){
   .Deprecated(msg="This function is deprecated, and will be removed in a future version. There is no longer a similar function. See the package spocc for similar functionality.")
   files = lapply(filenames, function(file){
@@ -1513,6 +1517,7 @@ create_gist <- function(filenames, description = "", public = TRUE){
 #' 
 #' @export
 #' @keywords internal
+#' @rdname get_credentials-deprecated
 get_credentials = function(){
   .Deprecated(msg="This function is deprecated, and will be removed in a future version. There is no longer a similar function. See the package spocc for similar functionality.")
   if (is.null(getOption('github.username'))){

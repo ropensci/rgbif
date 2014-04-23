@@ -17,7 +17,7 @@ numeric key for a data resource. See resources(). (character)}
 This function is deprecated.
 }
 \examples{
-\dontrun{
+\donttest{
 taxoncount(scientificname = 'Puma concolor')
 taxoncount(scientificname = 'Helianthus annuus')
 }

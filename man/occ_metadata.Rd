@@ -32,9 +32,6 @@ occ_metadata(type = "catalog_number", q=122)
 # collection code
 occ_metadata(type = "collection_code", q=12)
 
-# collector name
-occ_metadata(type = "collector_name", q='juan')
-
 # institution code
 occ_metadata(type = "institution_code", q='GB')
 

@@ -6,18 +6,22 @@
 dataset_metrics(uuid, callopts = list())
 }
 \arguments{
-\item{uuid}{A dataset UUID.}
+\item{uuid}{(character) One or more dataset UUIDs. See examples.}
 
 \item{callopts}{Pass on options to GET.}
 }
 \description{
-You should be able to pass in more than one uuid to this function, but I have
-not yet found more than the one uuid below in the example that actually has
-data available.
+Geta details on a dataset.
 }
 \examples{
 \dontrun{
 dataset_metrics(uuid='3f8a1297-3259-4700-91fc-acc4170b27ce')
+dataset_metrics(uuid='66dd0960-2d7d-46ee-a491-87b9adcfe7b1')
+dataset_metrics(uuid=c('3f8a1297-3259-4700-91fc-acc4170b27ce',
+'66dd0960-2d7d-46ee-a491-87b9adcfe7b1'))
+
+library("httr")
+dataset_metrics(uuid='66dd0960-2d7d-46ee-a491-87b9adcfe7b1', verbose())
 }
 }
 \references{

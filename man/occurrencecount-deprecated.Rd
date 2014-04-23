@@ -124,7 +124,7 @@ A single numeric value - the number of records found in GBIF matching
 This function is deprecated.
 }
 \examples{
-\dontrun{
+\donttest{
 occurrencecount(scientificname = 'Accipiter erythronemius', coordinatestatus = TRUE)
 occurrencecount(scientificname = 'Helianthus annuus', coordinatestatus = TRUE,
    year=2009)

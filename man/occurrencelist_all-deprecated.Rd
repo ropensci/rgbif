@@ -18,7 +18,7 @@ so that we can select the correct names.}
 This function is deprecated.
 }
 \examples{
-\dontrun{
+\donttest{
 # Query for a single species
 # compare the names returned by occurrencelist to occurrencelist_all
 occurrencelist(scientificname = 'Aristolochia serpentaria',

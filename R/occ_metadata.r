@@ -19,9 +19,6 @@
 #' # collection code
 #' occ_metadata(type = "collection_code", q=12)
 #' 
-#' # collector name
-#' occ_metadata(type = "collector_name", q='juan')
-#' 
 #' # institution code
 #' occ_metadata(type = "institution_code", q='GB')
 #' 
@@ -33,6 +30,11 @@
 #' 
 #' # Partial unique type strings work too
 #' occ_metadata(type = "cat", q=122)
+#' }
+#' 
+#' @examples \donttest{
+#' # collector name - collector_name endpoint down on 2014-04-23
+#' occ_metadata(type = "collector_name", q='jane')
 #' }
 
 occ_metadata <- function(type = "catalog_number", q=NULL, limit=5, 

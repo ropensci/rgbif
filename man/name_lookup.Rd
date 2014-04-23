@@ -138,7 +138,7 @@ name_lookup(facet=c('status','highertaxon_key'), facet_only=TRUE, facet_mincount
 name_lookup(facet='name_type', facet_only=TRUE)
 name_lookup(facet='habitat', facet_only=TRUE)
 name_lookup(facet='dataset_key', facet_only=TRUE)
-name_lookup(facet='rank', facet_only=TRUE)l
+name_lookup(facet='rank', facet_only=TRUE)
 name_lookup(facet='extinct', facet_only=TRUE)
 }
 }

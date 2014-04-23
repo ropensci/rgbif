@@ -29,7 +29,7 @@ Beware: It takes a while to retrieve the full list of providers - so
 go get more coffee.
 }
 \examples{
-\dontrun{
+\donttest{
 # Test the function for a few providers
 providers(maxresults=10)
 

@@ -181,7 +181,7 @@ See the GBIF API docs for more details on each parameter:
 http://data.gbif.org/ws/rest/occurrence
 }
 \examples{
-\dontrun{
+\donttest{
 # Query for a single species
 occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE)
 occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE,

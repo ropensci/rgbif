@@ -35,7 +35,7 @@ You can use a web interface called Ogre, or do conversions locally using the
 rgdal package.
 }
 \examples{
-\dontrun{
+\donttest{
 file <- '~/Downloads/taxon-placemarks-2441176.kml'
 
 # KML type file - using the web method

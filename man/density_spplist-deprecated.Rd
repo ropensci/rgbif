@@ -55,7 +55,7 @@ This is similar to the densitylist function. You can get the same data.frame
    species list or data.frame of species and their counts for any degree cell.
 }
 \examples{
-\dontrun{
+\donttest{
 # Just return the data.frame of counts by cells.
 density_spplist(originisocountrycode = "CO")
 

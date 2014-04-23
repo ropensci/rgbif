@@ -2,7 +2,7 @@
 #' 
 #' @import plyr
 #' @param keys (numeric) GBIF keys, a vector.
-#' @param by (character) One of georeferenced, basisOfRecord, country, hostCountry, or
+#' @param by (character) One of georeferenced, basisOfRecord, country, or
 #' publishingCountry.
 #' @param countries (numeric) Number of countries to facet on, or a vector of country names
 #' @param removezeros (logical) Default is FALSE
@@ -13,7 +13,6 @@
 #'              'Falco cenchroides','Telespiza cantans','Oreomystis bairdi',
 #'              'Cistothorus palustris')
 #' keys <- sapply(spplist, function(x) name_backbone(x, rank="species")$usageKey)
-#' keys <- compact(keys)
 #' count_facet(keys, by='country', countries=3, removezeros = TRUE)
 #' count_facet(by='country', countries=3, removezeros = TRUE)
 #' count_facet(by='country', countries=20, removezeros = TRUE)
@@ -28,12 +27,14 @@
 #' 
 #' ## by keys
 #' out <- count_facet(keys, by='georeferenced')
-#' library(reshape2)
-#' dcast(out, .id ~ georefernced)
+#' library("reshape2")
+#' dcast(out, .id ~ georeferenced)
 #' 
 #' # by basisOfRecord
 #' count_facet(by="basisOfRecord")
+#' }
 #' 
+#' @examples \donttest{
 #' # throws error, you can't use basisOfRecord and keys in the same call
 #' count_facet(keys, by="basisOfRecord")
 #' }
@@ -45,10 +46,11 @@ count_facet <- function(keys = NULL, by = 'country', countries = 10, removezeros
     stop("you can't pass in both keys and have by='basisOfRecord'")
   
   # faceting data vectors
-  if(is.numeric(countries))
+  if(is.numeric(countries)){
     countrynames <- list(country=as.character(isocodes$gbif_name)[1:countries])
-  else
+  } else{
     countrynames <- list(country=as.character(countries))
+  }
   georefvals <- list(georeferenced = c(TRUE, FALSE))
   basisvals <- list(basisOfRecord = 
                       c("FOSSIL_SPECIMEN", "HUMAN_OBSERVATION", "LITERATURE", 
@@ -57,8 +59,7 @@ count_facet <- function(keys = NULL, by = 'country', countries = 10, removezeros
   byvar <- switch(by,
                   georeferenced = georefvals,
                   basisOfRecord = basisvals,
-                  country = countrynames, 
-                  hostCountry = countrynames, 
+                  country = countrynames,
                   publishingCountry = countrynames)
   
   if(!is.null(keys)){
@@ -93,7 +94,7 @@ occ_by_keys <- function(spkey=NULL, tt){
     xx <- list(x)
     names(xx) <- names(tt)
     if(!is.null(keys))
-      xx$nubKey <- spkey
+      xx$taxonKey <- spkey
     do.call(occ_count_safe, xx)
   })
   names(tmp) <- tt[[1]]

@@ -45,7 +45,7 @@ gbifmap takes care of cleaning up the data.frame (removing NA's, etc.)
    and those rows that have both lat and long as NA or zeros.
 }
 \examples{
-\dontrun{
+\donttest{
 # Point map, using output from occurrencelist, example 1
 out <- occurrencelist(scientificname = 'Accipiter erythronemius',
    coordinatestatus = TRUE, maxresults = 100)

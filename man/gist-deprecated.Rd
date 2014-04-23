@@ -33,7 +33,7 @@ then \code{gist} will simply read those options.
 \code{gist} was modified from code in the rCharts package by Ramnath Vaidyanathan
 }
 \examples{
-\dontrun{
+\donttest{
 library(plyr)
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 keys <- sapply(splist, function(x) name_backbone(name=x, kingdom='plants')$speciesKey,

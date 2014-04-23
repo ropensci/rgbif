@@ -9,7 +9,7 @@ count_facet(keys = NULL, by = "country", countries = 10,
 \arguments{
 \item{keys}{(numeric) GBIF keys, a vector.}
 
-\item{by}{(character) One of georeferenced, basisOfRecord, country, hostCountry, or
+\item{by}{(character) One of georeferenced, basisOfRecord, country, or
 publishingCountry.}
 
 \item{countries}{(numeric) Number of countries to facet on, or a vector of country names}
@@ -26,7 +26,6 @@ spplist <- c('Geothlypis trichas','Tiaris olivacea','Pterodroma axillaris',
              'Falco cenchroides','Telespiza cantans','Oreomystis bairdi',
              'Cistothorus palustris')
 keys <- sapply(spplist, function(x) name_backbone(x, rank="species")$usageKey)
-keys <- compact(keys)
 count_facet(keys, by='country', countries=3, removezeros = TRUE)
 count_facet(by='country', countries=3, removezeros = TRUE)
 count_facet(by='country', countries=20, removezeros = TRUE)
@@ -41,14 +40,11 @@ count_facet(by='georeferenced')
 
 ## by keys
 out <- count_facet(keys, by='georeferenced')
-library(reshape2)
-dcast(out, .id ~ georefernced)
+library("reshape2")
+dcast(out, .id ~ georeferenced)
 
 # by basisOfRecord
 count_facet(by="basisOfRecord")
-
-# throws error, you can't use basisOfRecord and keys in the same call
-count_facet(keys, by="basisOfRecord")
 }
 }
 

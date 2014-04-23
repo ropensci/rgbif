@@ -23,7 +23,7 @@ Currently, the function returns the record as a list, hopefully
 		in future will return a data.frame.
 }
 \examples{
-\dontrun{
+\donttest{
 occurrenceget(key = 13749100)
 }
 }

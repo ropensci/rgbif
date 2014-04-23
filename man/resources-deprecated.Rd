@@ -33,7 +33,7 @@ Beware: It takes a while to retrieve the full list of resources - so
 go get more coffee.
 }
 \examples{
-\dontrun{
+\donttest{
 # Test the function for a few resources
 resources(maxresults=30)
 

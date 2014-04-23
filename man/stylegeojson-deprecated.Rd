@@ -28,7 +28,7 @@ a single alphanumeric character (a-z or 0-9).}
 This function is deprecated.  See the package spocc for similar functionality.
 }
 \examples{
-\dontrun{
+\donttest{
 # Get data and save map data
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 out <- occ_search(scientificName = splist, hasCoordinate = TRUE, limit = 50)

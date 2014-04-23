@@ -35,7 +35,7 @@ A convienence function to get the raw data in a data.frame format from
    occurrencelist, occurrencelist_many, and densitylist functions.
 }
 \examples{
-\dontrun{
+\donttest{
 # occurrencelist
 out <- occurrencelist(scientificname = 'Puma concolor', coordinatestatus = TRUE,
    maxresults = 40)

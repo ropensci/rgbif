@@ -77,7 +77,7 @@
 #' occ_search(taxonKey=keys, limit=5, return='data')
 #' 
 #' # Search on latitidue and longitude
-#' occ_search(taxonKey=key, latitude=40, longitude=-120)
+#' occ_search(search="kingfisher", decimalLatitude=50, decimalLongitude=-10)
 #' 
 #' # Search on a bounding box (in well known text format)
 #' occ_search(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))')
@@ -104,7 +104,7 @@
 #' 
 #' # Get occurrences based on elevation
 #' key <- name_backbone(name='Puma concolor', kingdom='animals')$speciesKey
-#' occ_search(taxonKey=key, elevation=2000, hasCoordinate=TRUE)
+#' occ_search(taxonKey=key, elevation=50, hasCoordinate=TRUE)
 #' 
 #' # Get occurrences based on institutionCode
 #' occ_search(institutionCode="TLMF")

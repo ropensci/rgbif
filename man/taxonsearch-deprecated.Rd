@@ -49,7 +49,7 @@ Search for a taxon using scientific name. Optionally, include taxonomic
   	rank in the search. Returns list of TaxonConcept key values.
 }
 \examples{
-\dontrun{
+\donttest{
 # Do specify the taxonomic rank the you are searching for, rank of species here
 taxonsearch(scientificname = 'Puma concolor', rank="species")
 

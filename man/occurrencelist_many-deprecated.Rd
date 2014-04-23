@@ -188,7 +188,7 @@ See the GBIF API docs for more details on each parameter:
 http://data.gbif.org/ws/rest/occurrence
 }
 \examples{
-\dontrun{
+\donttest{
 # Query for a many species
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 out <- occurrencelist_many(scientificname=splist, coordinatestatus = TRUE,

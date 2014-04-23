@@ -17,7 +17,7 @@ A single data.frame of taxonomic information if  single data.frame is
 This function is deprecated.
 }
 \examples{
-\dontrun{
+\donttest{
 keys <- taxonsearch(scientificname = 'Puma concolor')
 taxonget(keys$gbifkey)
 

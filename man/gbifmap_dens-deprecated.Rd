@@ -45,7 +45,7 @@ gbifmap takes care of cleaning up the data.frame (removing NA's, etc.)
    and those rows that have both lat and long as NA or zeros.
 }
 \examples{
-\dontrun{
+\donttest{
 # Tile map, using output from densitylist, Canada
 out2 <- densitylist(originisocountrycode = "CA") # data for Canada
 gbifmap_dens(out2) # on world map
