@@ -21,6 +21,7 @@ BugReports: https://github.com/ropensci/rgbif/issues
 LazyLoad: yes
 LazyData: yes
 VignetteBuilder: knitr
+Roxygen: list(wrap = FALSE)
 Imports:
     XML,
     RCurl (>= 1.6),
