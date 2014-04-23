@@ -71,36 +71,44 @@ gbifparser <- function(input, fields='minimal'){
 
 #' Parser for gbif data
 #' @param input A list
-#' @param fields (character) Default ('minimal') will return just taxon name, key, latitude, and 
-#'    longitute. 'all' returns all fields. Or specify each field you want returned by name, e.g.
-#'    fields = c('name','latitude','altitude').
+#' @param fields (character) Default ('minimal') will return just taxon name, key, decimalLatitude, and 
+#'    decimalLongitute. 'all' returns all fields. Or specify each field you want returned by name, e.g.
+#'    fields = c('name','decimalLatitude','altitude').
 #' @export
 #' @keywords internal
 gbifparser_verbatim <- function(input, fields='minimal'){
   parse <- function(x){
-    alldata <- data.frame(key=x$key, x$fields, stringsAsFactors=FALSE)
+#     alldata <- data.frame(key=x$key, x$fields, stringsAsFactors=FALSE)
+    nn <- vapply(names(x), function(z){
+      tmp <- strsplit(z, "/")[[1]]
+      tmp[length(tmp)]
+    }, "", USE.NAMES = FALSE)
+    
+    names(x) <- nn
+    
     if(any(fields=='minimal')){
-      if(all(c('verbatimLatitude','verbatimLongitude') %in% names(alldata)))
+      if(all(c('decimalLatitude','decimalLongitude') %in% names(x)))
       {
-        alldata[c('scientificName','key','verbatimLatitude','verbatimLongitude')]
+        x[c('scientificName','key','decimalLatitude','decimalLongitude')]
       } else
       {
-        name <- alldata['scientificName']
-        data.frame(name, verbatimLatitude=NA, verbatimLongitude=NA, stringsAsFactors=FALSE)
+        list(scientificName=x[['scientificName']], key=x[['key']], decimalLatitude=NA, decimalLongitude=NA, stringsAsFactors=FALSE)
       }
     } else if(any(fields == 'all'))
     {
-      alldata
+      x[vapply(x, length, 0) == 0] <- "none"
+      x
     } else
     {
-      alldata[names(alldata) %in% fields]
+      x[vapply(x, length, 0) == 0] <- "none"
+      x[names(x) %in% fields]
     }
   }
   if(is.numeric(input[[1]])){
-    parse(input)
+    data.frame(parse(input), stringsAsFactors = FALSE)
   } else
   {
-    rbind.fill(lapply(input, parse))
+    do.call(rbind.fill, lapply(input, function(w) data.frame(parse(w), stringsAsFactors = FALSE)))
   }
 }
 

@@ -45,7 +45,7 @@ occ_count(basisOfRecord = "OBSERVATION")
 ```
 
 ```
-[1] 286071783
+[1] 100241780
 ```
 
 
@@ -70,7 +70,7 @@ occ_count(taxonKey = 2435099, georeferenced = TRUE)
 occ_count(georeferenced = TRUE)
 ```
 
-[1] 376881077
+[1] 377074461
 
 
 ### Records from Denmark
@@ -81,19 +81,7 @@ occ_count(country = "DENMARK")
 ```
 
 ```
-[1] 8628822
-```
-
-
-### Records from France
-
-
-```r
-occ_count(hostCountry = "FRANCE")
-```
-
-```
-[1] 17272175
+[1] 8645654
 ```
 
 
@@ -117,7 +105,7 @@ occ_count(year = 2012)
 ```
 
 ```
-[1] 31483292
+[1] 32234053
 ```
 
 
@@ -125,11 +113,11 @@ occ_count(year = 2012)
 
 
 ```r
-occ_count(datasetKey = "8626bd3a-f762-11e1-a439-00145eb45e9a", basisOfRecord = "PRESERVED_SPECIMEN")
+occ_count(datasetKey = "e707e6da-e143-445d-b41d-529c4a777e8b", basisOfRecord = "OBSERVATION")
 ```
 
 ```
-[1] 550849
+[1] 2120907
 ```
 
 
@@ -270,12 +258,12 @@ head(name_lookup("Helianthus annuus", rank = "species")$data)
 
 
 ```r
-occ_get(key = 773433533, return = "data")
+occ_get(key = 766766824, return = "data")
 ```
 
 ```
-                  name       key longitude latitude
-1 Helianthus annuus L. 773433533      -117    32.85
+             name       key decimalLatitude decimalLongitude
+1 Corvus monedula 766766824           59.46            17.91
 ```
 
 
@@ -283,18 +271,18 @@ occ_get(key = 773433533, return = "data")
 
 
 ```r
-occ_get(key = 773433533, return = "hier")
+occ_get(key = 766766824, return = "hier")
 ```
 
 ```
-                  name     key    rank
-1              Plantae       6 kingdom
-2        Magnoliophyta      49  phylum
-3        Magnoliopsida     220   clazz
-4            Asterales     414   order
-5           Asteraceae    3065  family
-6           Helianthus 3119134   genus
-7 Helianthus annuus L. 3119195 species
+             name     key    rank
+1        Animalia       1 kingdom
+2        Chordata      44  phylum
+3            Aves     212   class
+4   Passeriformes     729   order
+5        Corvidae    5235  family
+6          Corvus 2482468   genus
+7 Corvus monedula 2482473 species
 ```
 
 
@@ -302,23 +290,23 @@ occ_get(key = 773433533, return = "hier")
 
 
 ```r
-occ_get(key = 773433533, return = "all")
+occ_get(key = 766766824, return = "all")
 ```
 
 ```
-$hierarch
-                  name     key    rank
-1              Plantae       6 kingdom
-2        Magnoliophyta      49  phylum
-3        Magnoliopsida     220   clazz
-4            Asterales     414   order
-5           Asteraceae    3065  family
-6           Helianthus 3119134   genus
-7 Helianthus annuus L. 3119195 species
+$hierarchy
+             name     key    rank
+1        Animalia       1 kingdom
+2        Chordata      44  phylum
+3            Aves     212   class
+4   Passeriformes     729   order
+5        Corvidae    5235  family
+6          Corvus 2482468   genus
+7 Corvus monedula 2482473 species
 
 $data
-                  name       key longitude latitude
-1 Helianthus annuus L. 773433533      -117    32.85
+             name       key decimalLatitude decimalLongitude
+1 Corvus monedula 766766824           59.46            17.91
 ```
 
 
@@ -326,16 +314,16 @@ $data
 
 
 ```r
-occ_get(key = c(773433533, 101010, 240713150, 855998194, 49819470), return = "data")
+occ_get(key = c(766766824, 101010, 240713150, 855998194, 49819470), return = "data")
 ```
 
 ```
-                                   name       key longitude latitude
-1                  Helianthus annuus L. 773433533   -117.00    32.85
-2  Platydoras costatus (Linnaeus, 1758)    101010    -70.07    -4.35
-3                              Pelosina 240713150    163.58   -77.57
-4       Sciurus vulgaris Linnaeus, 1758 855998194     12.04    58.41
-5 Phlogophora meticulosa Linnaeus, 1758  49819470     13.28    55.72
+                    name       key decimalLatitude decimalLongitude
+1        Corvus monedula 766766824           59.46            17.91
+2    Platydoras costatus    101010           -4.35           -70.07
+3                   <NA> 240713150          -77.57           163.58
+4       Sciurus vulgaris 855998194           58.41            12.04
+5 Phlogophora meticulosa  49819470           55.72            13.28
 ```
 
 
@@ -350,7 +338,7 @@ Make a map of **Puma concolor** occurrences
 
 ```r
 key <- name_backbone(name = "Puma concolor", kingdom = "plants")$speciesKey
-dat <- occ_search(taxonKey = key, return = "data", limit = 300, minimal = FALSE)
+dat <- occ_search(taxonKey = key, return = "data", limit = 300)
 gbifmap(input = dat)
 ```
 

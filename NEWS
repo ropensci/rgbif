@@ -1,3 +1,15 @@
+rgbif 0.6.2
+===============
+
+BUG FIXES
+
+* `gbifmap()` was throwing an error because it was looking for two variables `latitude` and `longitude`, which had been changed to `decimalLatitude` and `decimalLongitude`, respectively, in other functions in this package. Fixed. Added a quick sanity test for gbifmap. (#81)
+* `occ_get()` was updated to include changes in the GBIF API for this endpoint. 
+
+IMPROVEMENTS
+
+* `gist()`, `stylegeojson()`, and `togeojson()` functions now listed as deprecated. Their functionality moved to the `spocc` package (http://cran.r-project.org/web/packages/spocc/index.html). These functions will be removed from this package in a future version. (#82)
+
 rgbif 0.6.0
 ===============
 

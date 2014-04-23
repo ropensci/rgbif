@@ -30,7 +30,7 @@ library(rgbif); library(XML); library(RCurl); library(plyr); library(ggplot2); l
 
 ### Search by type of record, all observational in this case
 
-```{r occ_count1, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
+```{r occ_count1, comment=NA, warning=FALSE, message=FALSE, cache=FALSE}
 occ_count(basisOfRecord='OBSERVATION')
 ```
 
@@ -38,51 +38,45 @@ occ_count(basisOfRecord='OBSERVATION')
 
 Note that `hasCoordinate` in `occ_search()` is the same as `georeferenced` in `occ_count()`.
 
-```{r occ_count2, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
+```{r occ_count2, comment=NA, warning=FALSE, message=FALSE, cache=FALSE}
 occ_count(taxonKey=2435099, georeferenced=TRUE)
 ```
 
 ### All georeferenced records in GBIF
 
-```{r occ_count3, comment=NA, warning=FALSE, message=FALSE, cache=TRUE, results='asis'}
+```{r occ_count3, comment=NA, warning=FALSE, message=FALSE, cache=FALSE, results='asis'}
 occ_count(georeferenced=TRUE)
 ```
 
 ### Records from Denmark
 
-```{r occ_count4, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
+```{r occ_count4, comment=NA, warning=FALSE, message=FALSE, cache=FALSE}
 occ_count(country='DENMARK')
-```
-
-### Records from France
-
-```{r occ_count5, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
-occ_count(hostCountry='FRANCE')
 ```
 
 ### Number of records in a particular dataset
 
-```{r occ_count6, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
+```{r occ_count6, comment=NA, warning=FALSE, message=FALSE, cache=FALSE}
 occ_count(datasetKey='9e7ea106-0bf8-4087-bb61-dfe4f29e0f17')
 ```
 
 ### All records from 2012
 
-```{r occ_count7, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
+```{r occ_count7, comment=NA, warning=FALSE, message=FALSE, cache=FALSE}
 occ_count(year=2012)
 ```
 
 ### Records for a particular dataset, and only for preserved specimens
 
-```{r occ_count8, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
-occ_count(datasetKey='8626bd3a-f762-11e1-a439-00145eb45e9a', basisOfRecord='PRESERVED_SPECIMEN')
+```{r occ_count8, comment=NA, warning=FALSE, message=FALSE, cache=FALSE}
+occ_count(datasetKey='e707e6da-e143-445d-b41d-529c4a777e8b', basisOfRecord='OBSERVATION')
 ```
 
 ********************
 
 ## Get possible values to be used in taxonomic rank arguments in functions
 
-```{r taxrank, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
+```{r taxrank, comment=NA, warning=FALSE, message=FALSE, cache=FALSE}
 taxrank()
 ```
 
@@ -114,26 +108,26 @@ head(name_lookup('Helianthus annuus', rank="species")$data)
 
 ### Just data 
 
-```{r occ_get1, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
-occ_get(key=773433533, return='data')
+```{r occ_get1, comment=NA, warning=FALSE, message=FALSE, cache=FALSE}
+occ_get(key=766766824, return='data')
 ```
 
 ### Just taxonomic hierarchy
 
-```{r occ_get2, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
-occ_get(key=773433533, return='hier')
+```{r occ_get2, comment=NA, warning=FALSE, message=FALSE, cache=FALSE}
+occ_get(key=766766824, return='hier')
 ```
 
 ### All data, or leave return parameter blank
 
-```{r occ_get3, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
-occ_get(key=773433533, return='all')
+```{r occ_get3, comment=NA, warning=FALSE, message=FALSE, cache=FALSE}
+occ_get(key=766766824, return='all')
 ```
 
 ### Get many occurrences. `occ_get` is vectorized
 
-```{r occ_get4, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
-occ_get(key=c(773433533,101010,240713150,855998194,49819470), return='data')
+```{r occ_get4, comment=NA, warning=FALSE, message=FALSE, cache=FALSE}
+occ_get(key=c(766766824,101010,240713150,855998194,49819470), return='data')
 ```
 
 ********************
@@ -144,9 +138,9 @@ occ_get(key=c(773433533,101010,240713150,855998194,49819470), return='data')
 
 Make a map of **Puma concolor** occurrences
 
-```{r gbifmap1, comment=NA, warning=FALSE, message=FALSE, cache=TRUE}
+```{r gbifmap1, comment=NA, warning=FALSE, message=FALSE, cache=FALSE}
 key <- name_backbone(name='Puma concolor', kingdom='plants')$speciesKey
-dat <- occ_search(taxonKey=key, return='data', limit=300, minimal=FALSE)
+dat <- occ_search(taxonKey=key, return='data', limit=300)
 gbifmap(input=dat)
 ```
 

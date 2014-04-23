@@ -9,20 +9,21 @@ occ_get(key = NULL, return = "all", verbatim = FALSE,
 \arguments{
 \item{key}{Occurrence key}
 
-\item{return}{One of data, hier, meta, or all. If data, a data.frame with the
-data. hier returns the classifications in a list for each record. meta
-returns the metadata for the entire call. all gives all data back in a list.}
+\item{return}{One of data, hier, meta, or all. If 'data', a data.frame with the
+data. 'hier' returns the classifications in a list for each record. meta
+returns the metadata for the entire call. 'all' gives all data back in a list. Ignored if
+\code{verbatim=TRUE}.}
 
 \item{verbatim}{Return verbatim object (TRUE) or cleaned up object (FALSE, default).}
 
 \item{fields}{(character) Default ('minimal') will return just taxon name, key, latitude, and
 longitute. 'all' returns all fields. Or specify each field you want returned by name, e.g.
-fields = c('name','latitude','altitude').}
+fields = c('name','decimalLatitude','altitude').}
 
 \item{callopts}{Further arguments passed on to the \code{\link{GET}} request.}
 }
 \value{
-A data.frame or list.
+A data.frame or list of data.frame's.
 }
 \description{
 Get data for specific GBIF occurrences.
@@ -37,7 +38,18 @@ occ_get(key=766766824, 'all')
 occ_get(key=c(101010,240713150,855998194,49819470), return='data')
 
 # Verbatim data
+occ_get(key=766766824, verbatim=TRUE)
+occ_get(key=766766824, fields='all', verbatim=TRUE)
+occ_get(key=766766824, fields=c('scientificName','lastCrawled','county'), verbatim=TRUE)
 occ_get(key=c(766766824,620594291,766420684), verbatim=TRUE)
+occ_get(key=c(766766824,620594291,766420684), fields='all', verbatim=TRUE)
+occ_get(key=c(766766824,620594291,766420684),
+   fields=c('scientificName','decimalLatitude','basisOfRecord'), verbatim=TRUE)
+
+# Pass in curl options
+library("httr")
+occ_get(key=766766824, callopts=verbose())
+occ_get(key=766766824, callopts=timeout(1))
 }
 }
 \references{
