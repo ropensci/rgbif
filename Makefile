@@ -12,10 +12,10 @@ move:
 
 pandoc:
 		cd vignettes;\
-		pandoc -H margins.sty rgbif_vignette.md -o rgbif_vignette.html;\
-		pandoc -H margins.sty rgbif_vignette.md -o rgbif_vignette.pdf;\
-		pandoc -H margins.sty rgbif_vignette_oldapi.md -o rgbif_vignette_oldapi.html;\
-		pandoc -H margins.sty rgbif_vignette_oldapi.md -o rgbif_vignette_oldapi.pdf
+		pandoc -H margins.sty rgbif_vignette.md -o rgbif_vignette.html --highlight-style=tango;\
+		pandoc -H margins.sty rgbif_vignette.md -o rgbif_vignette.pdf --highlight-style=tango;\
+		pandoc -H margins.sty rgbif_vignette_oldapi.md -o rgbif_vignette_oldapi.html --highlight-style=tango;\
+		pandoc -H margins.sty rgbif_vignette_oldapi.md -o rgbif_vignette_oldapi.pdf --highlight-style=tango
 
 rmd2md:
 		cd vignettes;\
