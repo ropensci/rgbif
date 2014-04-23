@@ -70,7 +70,7 @@ occ_count(taxonKey = 2435099, georeferenced = TRUE)
 occ_count(georeferenced = TRUE)
 ```
 
-[1] 377074461
+[1] 377072639
 
 
 ### Records from Denmark
@@ -105,7 +105,7 @@ occ_count(year = 2012)
 ```
 
 ```
-[1] 32234053
+[1] 32234054
 ```
 
 
