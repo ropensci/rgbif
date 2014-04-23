@@ -7,3 +7,4 @@ man-roxygen
 ^\.Rproj\.user$
 vignettes/margins.sty
 .Rhistory
+tests/test-all.R

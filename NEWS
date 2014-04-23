@@ -7,7 +7,6 @@ BUG FIXES
 * `occ_get()` was updated to include changes in the GBIF API for this endpoint. The fix included fixing the parser for verbatim results, see `rgbif::gbifparser_verbatim`. (#83)
 * Fixed bugs in `elevation()` - it was expecting column names to be latitude and longitude, whereas inputs from other `rgbif` functions have changed to decimalLatitude and decimalLongitude. 
 * Fixed bug in `count_facet()` introduced b/c GBIF no longer accepts hostCountry or nubKey parameters. 
-* 
 
 IMPROVEMENTS
 
