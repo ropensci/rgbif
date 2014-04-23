@@ -25,17 +25,17 @@ a single alphanumeric character (a-z or 0-9).}
 \item{size}{One of "small", "medium", or "large"}
 }
 \description{
-Style a data.frame prior to converting to geojson.
+This function is deprecated.  See the package spocc for similar functionality.
 }
 \examples{
 \dontrun{
 # Get data and save map data
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
-out <- occurrencelist_many(splist, coordinatestatus = TRUE, maxresults = 50)
-dat <- gbifdata(out)
-names(dat)[names(dat) \%in\%
-   c("decimalLatitude","decimalLongitude")] <- c("latitude","longitude")
-dat2 <- stylegeojson(input=dat, var="taxonName", color=c("#976AAE","#6B944D","#BD5945"),
+out <- occ_search(scientificName = splist, hasCoordinate = TRUE, limit = 50)
+library("plyr")
+dat <- ldply(out, "[[", "data")
+names(dat)[names(dat) \%in\% c("decimalLatitude","decimalLongitude")] <- c("latitude","longitude")
+dat2 <- stylegeojson(input=dat, var="name", color=c("#976AAE","#6B944D","#BD5945"),
    size=c("small","medium","large"))
 head(dat2)
 }

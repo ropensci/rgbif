@@ -16,6 +16,8 @@ directory ("~/").}
 \item{outfilename}{The output file name, without file extension.}
 }
 \description{
+This function is deprecated.  See the package spocc for similar functionality.
+
 The web option uses the Ogre web API. Ogre currently has an output size limit of 15MB.
 See here \url{http://ogre.adc4gis.com/} for info on the Ogre web API.
 The local option uses the function \code{\link{writeOGR}} from the package rgdal.
@@ -34,7 +36,7 @@ rgdal package.
 }
 \examples{
 \dontrun{
-file <- '/Users/scottmac2/Downloads/taxon-placemarks-2441176.kml'
+file <- '~/Downloads/taxon-placemarks-2441176.kml'
 
 # KML type file - using the web method
 togeojson(file, method='web', outfilename="kml_web")

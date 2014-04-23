@@ -13,7 +13,7 @@ create_gist(filenames, description = "", public = TRUE)
 \item{public}{whether gist is public (defaults to TRUE)}
 }
 \description{
-Function that takes a list of files and creates payload for API
+This function is deprecated.  See the package spocc for similar functionality.
 }
 \keyword{internal}
 

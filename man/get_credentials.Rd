@@ -6,7 +6,7 @@
 get_credentials()
 }
 \description{
-Get Github credentials from use in console
+This function is deprecated.  See the package spocc for similar functionality.
 }
 \keyword{internal}
 

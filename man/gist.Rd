@@ -17,6 +17,8 @@ Posts your file as a gist on your account, and prints out the url for the
 gist itself in the console.
 }
 \description{
+This function is deprecated.  See the package spocc for similar functionality.
+
 You will be asked ot enter you Github credentials (username, password) during
 each session, but only once for each session. Alternatively, you could enter
 your credentials into your .Rprofile file with the entries

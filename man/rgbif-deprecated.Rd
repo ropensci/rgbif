@@ -17,6 +17,15 @@
  \item \code{\link{taxoncount}}: service no longer provided
  \item \code{\link{taxonget}}: service no longer provided
  \item \code{\link{taxonsearch}}: service no longer provided
+ \item \code{\link{stylegeojson}}: moving this functionality to spocc package, will be removed soon
+ \item \code{\link{togeojson}}: moving this functionality to spocc package, will be removed soon
+ \item \code{\link{gist}}: moving this functionality to spocc package, will be removed soon
 }
+}
+\details{
+The function \code{gist} to put an interactive map on Github from R has been deprecated. That is,
+you can stil use the function, but the same, but better, functionality has been moved to the
+spocc package. In addition, the helper functions \code{stylegeojson} and \code{togeojson} are also
+deprecated, and similar functions are in the spocc package.
 }
 
