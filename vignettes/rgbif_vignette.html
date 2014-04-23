@@ -40,13 +40,8 @@ code > span.er { font-weight: bold; }
 <hr />
 <h2 id="install-rgbif-and-dependencies">Install rgbif and dependencies</h2>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;rgbif&quot;</span>)</code></pre>
-<h2 id="load-rgbif-and-dependencies">Load rgbif and dependencies</h2>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rgbif)
-<span class="kw">library</span>(XML)
-<span class="kw">library</span>(RCurl)
-<span class="kw">library</span>(plyr)
-<span class="kw">library</span>(ggplot2)
-<span class="kw">library</span>(maps)</code></pre>
+<h2 id="load-rgbif">Load rgbif</h2>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rgbif)</code></pre>
 <hr />
 <h2 id="get-number-of-occurrences-for-a-set-of-search-parameters">Get number of occurrences for a set of search parameters</h2>
 <h3 id="search-by-type-of-record-all-observational-in-this-case">Search by type of record, all observational in this case</h3>
@@ -58,7 +53,7 @@ code > span.er { font-weight: bold; }
 <pre><code>[1] 2604</code></pre>
 <h3 id="all-georeferenced-records-in-gbif">All georeferenced records in GBIF</h3>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">occ_count</span>(<span class="dt">georeferenced =</span> <span class="ot">TRUE</span>)</code></pre>
-<p>[1] 377067865</p>
+<p>[1] 377067550</p>
 <h3 id="records-from-denmark">Records from Denmark</h3>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">occ_count</span>(<span class="dt">country =</span> <span class="st">&quot;DENMARK&quot;</span>)</code></pre>
 <pre><code>[1] 8645654</code></pre>

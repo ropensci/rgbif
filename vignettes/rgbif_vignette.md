@@ -20,16 +20,11 @@ install.packages("rgbif")
 ```
 
 
-## Load rgbif and dependencies
+## Load rgbif
 
 
 ```r
 library(rgbif)
-library(XML)
-library(RCurl)
-library(plyr)
-library(ggplot2)
-library(maps)
 ```
 
 
@@ -70,7 +65,7 @@ occ_count(taxonKey = 2435099, georeferenced = TRUE)
 occ_count(georeferenced = TRUE)
 ```
 
-[1] 377067865
+[1] 377067550
 
 
 ### Records from Denmark

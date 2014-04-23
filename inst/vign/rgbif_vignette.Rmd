@@ -18,10 +18,10 @@ rgbif vignette - Seach and retrieve data from the Global Biodiverity Information
 install.packages("rgbif")
 ```
 
-## Load rgbif and dependencies
+## Load rgbif
 
 ```{r load, comment=NA, warning=FALSE, message=FALSE}
-library(rgbif); library(XML); library(RCurl); library(plyr); library(ggplot2); library(maps)
+library(rgbif)
 ```
 
 ********************
