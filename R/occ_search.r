@@ -79,10 +79,16 @@
 #' # Search on latitidue and longitude
 #' occ_search(search="kingfisher", decimalLatitude=50, decimalLongitude=-10)
 #' 
-#' # Search on a bounding box (in well known text format)
+#' # Search on a bounding box 
+#' ## in well known text format
 #' occ_search(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))')
 #' key <- name_suggest(q='Aesculus hippocastanum')$key[1]
 #' occ_search(taxonKey=key, geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))')
+#' ## or using bounding box, converted to WKT internally
+#' occ_search(geometry=c(-125.0,38.4,-121.8,40.9))
+#' ## Visualize a WKT area
+#' library('rgeos')
+#' plot(readWKT('POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))'))
 #' 
 #' # Search on country
 #' occ_search(country='US')
@@ -173,6 +179,8 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
   calls_vec <- c("georeferenced","altitude","latitude","longitude") %in% calls
   if(any(calls_vec))
     stop("Parameter name changes: \n georeferenced -> hasCoordinate\n altitude -> elevation\n latitude -> decimalLatitude\n longitude - > decimalLongitude")
+  
+  geometry <- geometry_handler(geometry)
   
   url = 'http://api.gbif.org/v0.9/occurrence/search'
   getdata <- function(x=NULL, itervar=NULL)
@@ -275,4 +283,12 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
   }
   
   out
+}
+
+geometry_handler <- function(x){
+  if(!is.null(x)){
+    if(!is.character(x)){
+      gbif_bbox2wkt(bbox=x)
+    } else { x }
+  } else { x }
 }

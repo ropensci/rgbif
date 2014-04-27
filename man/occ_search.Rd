@@ -248,10 +248,16 @@ occ_search(taxonKey=keys, limit=5, return='data')
 # Search on latitidue and longitude
 occ_search(search="kingfisher", decimalLatitude=50, decimalLongitude=-10)
 
-# Search on a bounding box (in well known text format)
+# Search on a bounding box
+## in well known text format
 occ_search(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))')
 key <- name_suggest(q='Aesculus hippocastanum')$key[1]
 occ_search(taxonKey=key, geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))')
+## or using bounding box, converted to WKT internally
+occ_search(geometry=c(-125.0,38.4,-121.8,40.9))
+## Visualize a WKT area
+gbif_wkt2bbox('POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))')
+
 
 # Search on country
 occ_search(country='US')
