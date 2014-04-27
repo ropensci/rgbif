@@ -32,6 +32,7 @@ Imports:
     maptools,
     rgdal,
     rgeos,
+    sp,
     RJSONIO,
     data.table,
     stringr,

@@ -256,8 +256,8 @@ occ_search(taxonKey=key, geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1
 ## or using bounding box, converted to WKT internally
 occ_search(geometry=c(-125.0,38.4,-121.8,40.9))
 ## Visualize a WKT area
-gbif_wkt2bbox('POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))')
-
+library('rgeos')
+plot(readWKT('POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))'))
 
 # Search on country
 occ_search(country='US')
