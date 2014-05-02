@@ -334,6 +334,41 @@ occ_search(taxonKey=c(2482598,2492010), collectorName=c("smith","BJ Stacey"))
 # Get a lot of data, here 1500 records for Helianthus annuus
 out <- occ_search(taxonKey=key, limit=1500, return="data")
 nrow(out)
+
+# If you pass in an invalid polygon you get hopefully informative errors
+
+### the WKT string is fine, but GBIF says bad polygon
+wkt <- 'POLYGON((-178.59375 64.83258989321493,-165.9375 59.24622380205539,
+-147.3046875 59.065977905449806,-130.78125 51.04484764446178,-125.859375 36.70806354647625,
+-112.1484375 23.367471303759686,-105.1171875 16.093320185359257,-86.8359375 9.23767076398516,
+-82.96875 2.9485268155066175,-82.6171875 -14.812060061226388,-74.8828125 -18.849111862023985,
+-77.34375 -47.661687803329166,-84.375 -49.975955187343295,174.7265625 -50.649460483096114,
+179.296875 -42.19189902447192,-176.8359375 -35.634976650677295,176.8359375 -31.835565983656227,
+163.4765625 -6.528187613695323,152.578125 1.894796132058301,135.703125 4.702353722559447,
+127.96875 15.077427674847987,127.96875 23.689804541429606,139.921875 32.06861069132688,
+149.4140625 42.65416193033991,159.2578125 48.3160811030533,168.3984375 57.019804336633165,
+178.2421875 59.95776046458139,-179.6484375 61.16708631440347,-178.59375 64.83258989321493))'
+
+occ_search(geometry = gsub("\\n", '', wkt))
+
+### unable to parse due to last number pair needing two numbers, not one
+wkt <- 'POLYGON((-178.5 64.8,-165.9 59.2,-147.3 59.0,-130.7 51.0,-125.8))'
+occ_search(geometry = wkt)
+
+### unable to parse due to unclosed string
+wkt <- 'POLYGON((-178.5 64.8,-165.9 59.2,-147.3 59.0,-130.7 51.0))'
+occ_search(geometry = wkt)
+### another of the same
+wkt <- 'POLYGON((-178.5 64.8,-165.9 59.2,-147.3 59.0,-130.7 51.0,-125.8 36.7))'
+occ_search(geometry = wkt)
+
+### returns no results
+wkt <- 'LINESTRING(3 4,10 50,20 25)'
+occ_search(geometry = wkt)
+
+### Apparently a point is allowed, but haven't successfully retrieved data, so returns nothing
+wkt <- 'POINT(45 -122)'
+occ_search(geometry = wkt)
 }
 }
 \references{

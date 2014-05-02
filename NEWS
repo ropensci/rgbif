@@ -4,6 +4,7 @@ rgbif 0.6.3
 IMPROVEMENTS
 
 * Added functions `gbif_bbox2wkt()` and `gbif_wkt2bbox()` to convert a bounding box to wkt and a wkt object to a bounding box, respectively. Copied from the `spocc` package. Prefixes to fxn names will avoid conflicts.
+* Now spitting out more informative error messages when WKT strings passed in are not properly formed, either from `rgeos::readWKT` or from the returned response from GBIF.
 
 rgbif 0.6.2
 ===============
