@@ -6,7 +6,7 @@ before_script:
 - curl -OL http://raw.github.com/craigcitro/r-travis/master/scripts/travis-tool.sh
 - chmod 755 ./travis-tool.sh
 - sudo apt-get update
-- sudo apt-get install gdal-bin libgdal1 libgdal1-dev netcdf-bin libproj-dev
+- sudo apt-get install libgdal1h gdal-bin libgdal1 libgdal-dev libgdal1-dev netcdf-bin libproj-dev
 - ./travis-tool.sh install_aptget gdal-bin
 - ./travis-tool.sh bootstrap
 - ./travis-tool.sh install_deps
@@ -14,7 +14,7 @@ before_script:
 
 env:
    global:
-     - R_BUILD_ARGS=" " 
+     - R_BUILD_ARGS=" "
      - R_CHECK_ARGS="--as-cran"
      - BOOTSTRAP_LATEX="1"
 
