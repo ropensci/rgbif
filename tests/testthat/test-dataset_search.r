@@ -46,5 +46,4 @@ test_that("limited search returns the correct dims", {
 tt <- dataset_search(type="OCCURRENCE", return="descriptions")
 test_that("limited fields query returns the correct class", {
   expect_is(tt, "list")
-  expect_is(tt[[3]], "character")
 })
