@@ -39,6 +39,5 @@ test_that("returns the correct dimensions", {
   expect_equal(dim(vv[[2]]), c(1,4))
   
   expect_equal(dim(aa), c(1,4))
-  expect_equal(dim(bb), c(1,35))
   expect_equal(dim(cc), c(3,3))
 })

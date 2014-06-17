@@ -27,7 +27,8 @@ all records (FALSE, default).}
 
 \item{catalogNumber}{Catalog number. PARAMETER GONE.}
 
-\item{country}{Country data was collected in}
+\item{country}{Country data was collected in, two letter abbreviation. See
+\url{http://countrycode.org/} for abbreviations.}
 
 \item{protocol}{Protocol. E.g., 'DWC_ARCHIVE'}
 
@@ -54,8 +55,8 @@ Get number of occurrence records.
 \dontrun{
 occ_count(basisOfRecord='OBSERVATION')
 occ_count(georeferenced=TRUE)
-occ_count(country='DENMARK')
-occ_count(country='CANADA', georeferenced=TRUE, basisOfRecord='OBSERVATION')
+occ_count(country='DE')
+occ_count(country='CA', georeferenced=TRUE, basisOfRecord='OBSERVATION')
 occ_count(datasetKey='9e7ea106-0bf8-4087-bb61-dfe4f29e0f17')
 occ_count(year=2012)
 occ_count(taxonKey=2435099)

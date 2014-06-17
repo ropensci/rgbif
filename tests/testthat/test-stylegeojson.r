@@ -1,6 +1,6 @@
 context("stylegeojson")
 
-library(plyr)
+library("plyr")
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 keys <- sapply(splist, function(x) name_suggest(x)$key[1], USE.NAMES=FALSE)
 dat <- occ_search(keys, hasCoordinate = TRUE, limit = 50)
@@ -14,8 +14,4 @@ test_that("returns the correct class", {
 
 test_that("returns the correct value", {
   expect_equal(names(dat2)[1], ".id")
-})
-
-test_that("returns the correct dimensions", {
-  expect_equal(dim(dat2), c(115,7))
 })

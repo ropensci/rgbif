@@ -12,7 +12,8 @@
 #' @param date Collection date
 #' @param year Year data were collected in
 #' @param catalogNumber Catalog number. PARAMETER GONE.
-#' @param country Country data was collected in
+#' @param country Country data was collected in, two letter abbreviation. See 
+#' \url{http://countrycode.org/} for abbreviations.
 #' @param protocol Protocol. E.g., 'DWC_ARCHIVE'
 #' @param hostCountry Country that hosted the data. PARAMETER GONE.
 #' @param publishingCountry Publishing country, two letter ISO country code
@@ -25,8 +26,8 @@
 #' @examples \dontrun{
 #' occ_count(basisOfRecord='OBSERVATION')
 #' occ_count(georeferenced=TRUE)
-#' occ_count(country='DENMARK')
-#' occ_count(country='CANADA', georeferenced=TRUE, basisOfRecord='OBSERVATION')
+#' occ_count(country='DE')
+#' occ_count(country='CA', georeferenced=TRUE, basisOfRecord='OBSERVATION')
 #' occ_count(datasetKey='9e7ea106-0bf8-4087-bb61-dfe4f29e0f17')
 #' occ_count(year=2012)
 #' occ_count(taxonKey=2435099)
@@ -60,7 +61,7 @@ occ_count <- function(taxonKey=NULL, georeferenced=NULL, basisOfRecord=NULL,
   if(any(calls_vec))
     stop("Parameter name changes: \n nubKey -> taxonKey\nParameters gone: \n hostCountry\n catalogNumber")
   
-  args <- compact(list(taxonKey=taxonKey, georeferenced=georeferenced, 
+  args <- compact(list(taxonKey=taxonKey, isGeoreferenced=georeferenced, 
                        basisOfRecord=basisOfRecord, datasetKey=datasetKey, 
                        date=date, catalogNumber=catalogNumber, country=country,
                        hostCountry=hostCountry, year=year, protocol=protocol))

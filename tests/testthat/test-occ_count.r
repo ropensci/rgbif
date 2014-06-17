@@ -19,7 +19,6 @@ test_that("returns the correct class", {
 test_that("returns the correct value", {
   expect_equal(names(d[[1]]$dimensions[[1]]), c("key","type"))
   expect_equal(names(e)[1], "UNITED_STATES")
-  expect_equal(names(f[1]), '2000')
 })
 
 test_that("returns the correct dimensions", {
@@ -28,5 +27,4 @@ test_that("returns the correct dimensions", {
   expect_equal(length(c), 1)
   expect_equal(length(d), 42)
   expect_equal(length(e), 249)
-  expect_equal(length(f), 12)
 })
