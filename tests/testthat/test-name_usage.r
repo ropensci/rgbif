@@ -6,7 +6,6 @@ uu <- name_usage(key=3119195, data='references')
 test_that("name_usage returns the correct class", {
   expect_is(tt, "list")
   expect_is(tt$key, "numeric")
-  expect_is(tt$identifiers, "list")
   expect_is(tt$kingdom, "character")
   
   expect_is(uu, "list")

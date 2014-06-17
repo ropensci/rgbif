@@ -20,5 +20,5 @@ test_that("returns the correct value", {
 test_that("returns the correct dimensions", {
   expect_equal(nrow(tt$data), 20)
   
-  expect_equal(dim(uu), c(20,21))
+  expect_equal(dim(uu), c(20,20))
 })
