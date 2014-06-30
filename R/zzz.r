@@ -42,6 +42,19 @@ gbifparser <- function(input, fields='minimal'){
     }
     #     geog <- data.frame(name=usename, x[!names(x) %in% c(h1,h2)])
     x[names(x) %in% "issues"] <- paste(x[names(x) %in% "issues"][[1]], collapse=",")
+    media <- x[names(x) %in% "media"]
+    media <- lapply(media$media, as.list)
+    media2 <- list()
+    iter <- seq(1, length(media), 2)
+    for(i in iter){ 
+      media2[[i]] <- as.list(unlist(c(media[i], media[i+1]))) 
+    }
+    media2 <- compact(media2)
+    media2$key <- x$key
+    media2$species <- x$species
+    media2 <- list(media2)
+    names(media2) <- x$key
+    x <- x[!names(x) %in% "media"] # remove images
     alldata <- data.frame(name=usename, x, stringsAsFactors=FALSE)
     if(any(fields=='minimal')){
       if(all(c('decimalLatitude','decimalLongitude') %in% names(alldata)))
@@ -59,7 +72,7 @@ gbifparser <- function(input, fields='minimal'){
     {
       alldata <- alldata[names(alldata) %in% fields]
     }
-    list(hierarchy=hier, data=alldata)
+    list(hierarchy=hier, media=media2, data=alldata)
   }
   if(is.numeric(input[[1]])){
     parse(input)

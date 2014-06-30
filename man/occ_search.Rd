@@ -11,8 +11,8 @@ occ_search(taxonKey = NULL, scientificName = NULL, country = NULL,
   year = NULL, month = NULL, decimalLatitude = NULL,
   decimalLongitude = NULL, elevation = NULL, depth = NULL,
   institutionCode = NULL, collectionCode = NULL, spatialIssues = NULL,
-  search = NULL, callopts = list(), limit = 20, start = NULL,
-  fields = "minimal", return = "all")
+  search = NULL, mediatype = NULL, callopts = list(), limit = 20,
+  start = NULL, fields = "minimal", return = "all")
 }
 \arguments{
 \item{taxonKey}{A taxon key from the GBIF backbone. All included and synonym taxa
@@ -114,6 +114,9 @@ fields = c('name','latitude','elevation').}
 data. hier returns the classifications in a list for each record. meta
 returns the metadata for the entire call. all gives all data back in a list.}
 
+\item{mediatype}{Media type. Default is NULL, so no filtering on mediatype. Options:
+NULL, 'MovingImage', 'Sound', and 'StillImage'.}
+
 \item{callopts}{Pass on options to httr::GET for more refined control of
 http calls, and error handling}
 
@@ -177,7 +180,7 @@ the vector - thus range queries have to differ. The following parameters support
 \examples{
 \dontrun{
 # Search by species name, using \\code{\\link{name_backbone}} first to get key
-key <- name_suggest(q='Helianthus annuus', rank='species')$key[1]
+(key <- name_suggest(q='Helianthus annuus', rank='species')$key[1])
 occ_search(taxonKey=key, limit=2)
 
 # Return 20 results, this is the default by the way
@@ -326,7 +329,13 @@ occ_search(continent = 'south_america', return = 'meta')
 occ_search(continent = 'africa', return = 'meta')
 occ_search(continent = 'oceania', return = 'meta')
 occ_search(continent = 'antarctica', return = 'meta')
+
+# Search for occurrences with images
+occ_search(mediatype = 'StillImage', return='media')
+occ_search(mediatype = 'MovingImage', return='media')
+occ_search(mediatype = 'Sound', return='media')
 }
+
 \donttest{
 # If you try multiple values for two different parameters you are wacked on the hand
 occ_search(taxonKey=c(2482598,2492010), collectorName=c("smith","BJ Stacey"))
