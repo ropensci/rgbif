@@ -40,21 +40,28 @@ gbifparser <- function(input, fields='minimal'){
     {
       usename <- hier[[nrow(hier),"name"]]
     }
-    #     geog <- data.frame(name=usename, x[!names(x) %in% c(h1,h2)])
+    
+    # issues
     x[names(x) %in% "issues"] <- paste(x[names(x) %in% "issues"][[1]], collapse=",")
-    media <- x[names(x) %in% "media"]
-    media <- lapply(media$media, as.list)
-    media2 <- list()
-    iter <- seq(1, length(media), 2)
-    for(i in iter){ 
-      media2[[i]] <- as.list(unlist(c(media[i], media[i+1]))) 
-    }
-    media2 <- compact(media2)
-    media2$key <- x$key
-    media2$species <- x$species
-    media2 <- list(media2)
-    names(media2) <- x$key
-    x <- x[!names(x) %in% "media"] # remove images
+    
+    # media
+    if("media" %in% names(x)){
+      media <- x[names(x) %in% "media"]
+      media <- lapply(media$media, as.list)
+      media2 <- list()
+      iter <- seq(1, length(media), 2)
+      for(i in iter){ 
+        media2[[i]] <- as.list(unlist(c(media[i], media[i+1]))) 
+      }
+      media2 <- compact(media2)
+      media2$key <- x$key
+      media2$species <- x$species
+      media2 <- list(media2)
+      names(media2) <- x$key
+      x <- x[!names(x) %in% "media"] # remove images
+    } else { media2 <- list() }
+    
+    # all other data
     alldata <- data.frame(name=usename, x, stringsAsFactors=FALSE)
     if(any(fields=='minimal')){
       if(all(c('decimalLatitude','decimalLongitude') %in% names(alldata)))
