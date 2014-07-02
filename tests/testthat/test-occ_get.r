@@ -20,7 +20,7 @@ test_that("returns the correct class", {
   
   expect_is(vv, "list")
   expect_is(vv[[1]], "data.frame")
-  expect_is(vv[[2]], "data.frame")
+  expect_is(vv[[2]], "list")
   
   expect_is(aa, "data.frame")
   expect_is(aa[1,1], "character")
@@ -36,7 +36,7 @@ test_that("returns the correct dimensions", {
   expect_equal(dim(uu), c(7,3))
   expect_equal(dim(vv), NULL)
   expect_equal(dim(vv[[1]]), c(7,3))
-  expect_equal(dim(vv[[2]]), c(1,4))
+  expect_equal(length(vv[[2]]), 0)
   
   expect_equal(dim(aa), c(1,4))
   expect_equal(dim(cc), c(3,3))
