@@ -1,13 +1,12 @@
 context("gbifmap")
 
-key <- name_backbone(name='Puma concolor', kingdom='plants')$speciesKey
+key <- name_backbone(name='Puma concolor')$speciesKey
 dat <- occ_search(taxonKey=key, return='data', limit=100)
 tt <- suppressMessages(gbifmap(input=dat))
 
 library("plyr")
 splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
-keys <- sapply(splist, function(x) name_backbone(name=x, kingdom='plants')$speciesKey,
-   USE.NAMES=FALSE)
+keys <- sapply(splist, function(x) name_backbone(name=x)$speciesKey, USE.NAMES=FALSE)
 dat <- occ_search(taxonKey=keys, return='data', limit=50)
 uu <- suppressMessages(gbifmap(ldply(dat)))
 
