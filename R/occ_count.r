@@ -67,12 +67,12 @@ occ_count <- function(taxonKey=NULL, georeferenced=NULL, basisOfRecord=NULL,
                        hostCountry=hostCountry, year=year, protocol=protocol))
   type <- match.arg(type, choices=c("count","schema","basis_of_record","countries","year","publishingCountry"))
   url <- switch(type, 
-                count = 'http://api.gbif.org/v0.9/occurrence/count',
-                schema = 'http://api.gbif.org/v0.9/occurrence/count/schema',
-                basis_of_record = 'http://api.gbif.org/v0.9/occurrence/counts/basis_of_record',
-                countries = 'http://api.gbif.org/v0.9/occurrence/counts/countries',
-                year = 'http://api.gbif.org/v0.9/occurrence/counts/year',
-                publishingCountry = 'http://api.gbif.org/v0.9/occurrence/counts/publishing_countries')
+                count = 'http://api.gbif.org/v1/occurrence/count',
+                schema = 'http://api.gbif.org/v1/occurrence/count/schema',
+                basis_of_record = 'http://api.gbif.org/v1/occurrence/counts/basis_of_record',
+                countries = 'http://api.gbif.org/v1/occurrence/counts/countries',
+                year = 'http://api.gbif.org/v1/occurrence/counts/year',
+                publishingCountry = 'http://api.gbif.org/v1/occurrence/counts/publishing_countries')
   args <- switch(type,
                 count = args,
                 schema = list(),

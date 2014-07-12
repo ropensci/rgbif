@@ -46,10 +46,10 @@ occ_get <- function(key=NULL, return='all', verbatim=FALSE, fields='minimal', ca
   # Define function to get data
   getdata <- function(x){
     if(verbatim){
-      url <- sprintf('http://api.gbif.org/v0.9/occurrence/%s/verbatim', x)
+      url <- sprintf('http://api.gbif.org/v1/occurrence/%s/verbatim', x)
     } else
     {
-      url <- sprintf('http://api.gbif.org/v0.9/occurrence/%s', x)
+      url <- sprintf('http://api.gbif.org/v1/occurrence/%s', x)
     }
     temp <- GET(url, callopts)
     stop_for_status(temp)

@@ -42,23 +42,23 @@ datasets <- function(data = 'all', type = NULL, uuid = NULL, query = NULL, id = 
     
     if(is.null(uuid)){
       if(x=='all'){
-        url <- 'http://api.gbif.org/v0.9/dataset'
+        url <- 'http://api.gbif.org/v1/dataset'
       } else
       {
         if(!is.null(id) && x=='metadata'){
-          url <- sprintf('http://api.gbif.org/v0.9/dataset/metadata/%s/document', id)
+          url <- sprintf('http://api.gbif.org/v1/dataset/metadata/%s/document', id)
         } else
         {
-          url <- sprintf('http://api.gbif.org/v0.9/dataset/%s', x)          
+          url <- sprintf('http://api.gbif.org/v1/dataset/%s', x)          
         }
       }
     } else
     {
       if(x=='all'){
-        url <- sprintf('http://api.gbif.org/v0.9/dataset/%s', uuid)
+        url <- sprintf('http://api.gbif.org/v1/dataset/%s', uuid)
       } else
       {
-        url <- sprintf('http://api.gbif.org/v0.9/dataset/%s/%s', uuid, x)        
+        url <- sprintf('http://api.gbif.org/v1/dataset/%s/%s', uuid, x)        
       }
     }
     tt <- GET(url, query=args, callopts)

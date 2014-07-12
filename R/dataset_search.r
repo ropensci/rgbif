@@ -58,7 +58,7 @@ dataset_search <- function(query= NULL, country = NULL, type = NULL, keyword = N
     names(facetbyname) <- rep('facet', length(facet))
   } else { facetbyname <- NULL }
   
-  url <- 'http://api.gbif.org/v0.9/dataset/search'
+  url <- 'http://api.gbif.org/v1/dataset/search'
   args <- as.list(compact(c(q=query,type=type,keyword=keyword,owning_org=owning_org,
                        hosting_org=hosting_org,publishing_country=publishing_country,
                        decade=decade,limit=limit,offset=start,facetbyname, 

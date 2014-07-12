@@ -42,7 +42,7 @@ occ_metadata <- function(type = "catalogNumber", q=NULL, limit=5,
 {
   type <- match.arg(type, choices=c("catalogNumber","collectionCode",
                                     "collectorName","institutionCode"))
-  url <- sprintf('http://api.gbif.org/v0.9/occurrence/search/%s', type)
+  url <- sprintf('http://api.gbif.org/v1/occurrence/search/%s', type)
   args <- compact(list(q = q, limit = limit))
   tt <- GET(url, query=args, callopts)
   stop_for_status(tt)

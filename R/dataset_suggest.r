@@ -51,7 +51,7 @@ dataset_suggest <- function(query = NULL, country = NULL, type = NULL, subtype =
   decade = NULL, continent = NULL, limit=20, start=NULL, callopts=list(), 
   pretty=FALSE, description=FALSE)
 {
-  url <- 'http://api.gbif.org/v0.9/dataset/suggest'
+  url <- 'http://api.gbif.org/v1/dataset/suggest'
   args <- compact(list(q=query,type=type,keyword=keyword,owning_org=owning_org,
                        hosting_org=hosting_org,publishing_country=publishing_country,
                        decade=decade,limit=limit,offset=start))
