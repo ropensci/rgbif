@@ -54,6 +54,8 @@
 #'    returns only those records with spatial issues while spatialIssues=FALSE includes
 #'    only records without spatial issues. The absence of this parameter returns any
 #'    record with or without spatial issues.
+#' @param issue (character) One of many possible issues with each occurrence record. See
+#'    Details.
 #' @param hasCoordinate (logical) Return only occurence records with lat/long data (TRUE) or
 #'    all records (FALSE, default).
 #' @param typeStatus Type status of the specimen. One of many options. See ?typestatus
@@ -121,4 +123,76 @@
 #'  \item lastInterpreted
 #'  \item month
 #'  \item year
+#' }
+#'
+#' \bold{Issue:} The options for the issue parameter (from 
+#' http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html):
+#' \itemize{
+#'  \item BASIS_OF_RECORD_INVALID The given basis of record is impossible to interpret or seriously 
+#'  different from the recommended vocabulary.
+#'  \item CONTINENT_COUNTRY_MISMATCH The interpreted continent and country do not match up.
+#'  \item CONTINENT_DERIVED_FROM_COORDINATES The interpreted continent is based on the coordinates, 
+#'  not the verbatim string information.
+#'  \item CONTINENT_INVALID Uninterpretable continent values found.
+#'  \item COORDINATE_INVALID Coordinate value given in some form but GBIF is unable to interpret it.
+#'  \item COORDINATE_OUT_OF_RANGE Coordinate has invalid lat/lon values out of their decimal max 
+#'  range.
+#'  \item COORDINATE_REPROJECTED The original coordinate was successfully reprojected from a 
+#'  different geodetic datum to WGS84.
+#'  \item COORDINATE_REPROJECTION_FAILED The given decimal latitude and longitude could not be 
+#'  reprojected to WGS84 based on the provided datum.
+#'  \item COORDINATE_REPROJECTION_SUSPICIOUS Indicates successful coordinate reprojection according 
+#'  to provided datum, but which results in a datum shift larger than 0.1 decimal degrees.
+#'  \item COORDINATE_ROUNDED Original coordinate modified by rounding to 5 decimals.
+#'  \item COUNTRY_COORDINATE_MISMATCH The interpreted occurrence coordinates fall outside of the 
+#'  indicated country.
+#'  \item COUNTRY_DERIVED_FROM_COORDINATES The interpreted country is based on the coordinates, not 
+#'  the verbatim string information.
+#'  \item COUNTRY_INVALID Uninterpretable country values found.
+#'  \item COUNTRY_MISMATCH Interpreted country for dwc:country and dwc:countryCode contradict each 
+#'  other.
+#'  \item DEPTH_MIN_MAX_SWAPPED Set if supplied min>max
+#'  \item DEPTH_NON_NUMERIC Set if depth is a non numeric value
+#'  \item DEPTH_NOT_METRIC Set if supplied depth is not given in the metric system, for example 
+#'  using feet instead of meters
+#'  \item DEPTH_UNLIKELY Set if depth is larger than 11.000m or negative.
+#'  \item ELEVATION_MIN_MAX_SWAPPED Set if supplied min > max elevation
+#'  \item ELEVATION_NON_NUMERIC Set if elevation is a non numeric value
+#'  \item ELEVATION_NOT_METRIC Set if supplied elevation is not given in the metric system, for 
+#'  example using feet instead of meters
+#'  \item ELEVATION_UNLIKELY Set if elevation is above the troposphere (17km) or below 11km 
+#'  (Mariana Trench).
+#'  \item GEODETIC_DATUM_ASSUMED_WGS84 Indicating that the interpreted coordinates assume they are 
+#'  based on WGS84 datum as the datum was either not indicated or interpretable.
+#'  \item GEODETIC_DATUM_INVALID The geodetic datum given could not be interpreted.
+#'  \item IDENTIFIED_DATE_INVALID The date given for dwc:dateIdentified is invalid and cant be 
+#'  interpreted at all.
+#'  \item IDENTIFIED_DATE_UNLIKELY The date given for dwc:dateIdentified is in the future or before 
+#'  Linnean times (1700).
+#'  \item MODIFIED_DATE_INVALID A (partial) invalid date is given for dc:modified, such as a non 
+#'  existing date, invalid zero month, etc.
+#'  \item MODIFIED_DATE_UNLIKELY The date given for dc:modified is in the future or predates unix 
+#'  time (1970).
+#'  \item MULTIMEDIA_DATE_INVALID An invalid date is given for dc:created of a multimedia object.
+#'  \item MULTIMEDIA_URI_INVALID An invalid uri is given for a multimedia object.
+#'  \item PRESUMED_NEGATED_LATITUDE Latitude appears to be negated, e.g.
+#'  \item PRESUMED_NEGATED_LONGITUDE Longitude appears to be negated, e.g.
+#'  \item PRESUMED_SWAPPED_COORDINATE Latitude and longitude appear to be swapped.
+#'  \item RECORDED_DATE_INVALID A (partial) invalid date is given, such as a non existing date, 
+#'  invalid zero month, etc.
+#'  \item RECORDED_DATE_MISMATCH The recording date specified as the eventDate string and the 
+#'  individual year, month, day are contradicting.
+#'  \item RECORDED_DATE_UNLIKELY The recording date is highly unlikely, falling either into the 
+#'  future or represents a very old date before 1600 that predates modern taxonomy.
+#'  \item REFERENCES_URI_INVALID An invalid uri is given for dc:references.
+#'  \item TAXON_MATCH_FUZZY Matching to the taxonomic backbone can only be done using a fuzzy, non 
+#'  exact match.
+#'  \item TAXON_MATCH_HIGHERRANK Matching to the taxonomic backbone can only be done on a higher 
+#'  rank and not the scientific name.
+#'  \item TAXON_MATCH_NONE Matching to the taxonomic backbone cannot be done cause there was no 
+#'  match at all or several matches with too little information to keep them apart (homonyms).
+#'  \item TYPE_STATUS_INVALID The given type status is impossible to interpret or seriously 
+#'  different from the recommended vocabulary.
+#'  \item ZERO_COORDINATE Coordinate is the exact 0/0 coordinate, often indicating a bad null 
+#'  coordinate.
 #' }

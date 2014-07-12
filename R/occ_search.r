@@ -162,8 +162,12 @@
 #' occ_search(mediatype = 'StillImage', return='media')
 #' occ_search(mediatype = 'MovingImage', return='media')
 #' occ_search(mediatype = 'Sound', return='media')
+#' 
+#' # Query based on issues - see Details for options
+#' occ_search(taxonKey=1, issue='DEPTH_UNLIKELY', fields = 
+#'    c('name','key','decimalLatitude','decimalLongitude','depth'))
 #' }
-#'
+#' 
 #' \donttest{
 #' # If you try multiple values for two different parameters you are wacked on the hand
 #' occ_search(taxonKey=c(2482598,2492010), collectorName=c("smith","BJ Stacey"))
@@ -213,7 +217,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
   geometry=NULL, collectorName=NULL, basisOfRecord=NULL, datasetKey=NULL, eventDate=NULL,
   catalogNumber=NULL, year=NULL, month=NULL, decimalLatitude=NULL, decimalLongitude=NULL,
   elevation=NULL, depth=NULL, institutionCode=NULL, collectionCode=NULL,
-  spatialIssues=NULL, search=NULL, mediatype=NULL, callopts=list(), limit=20, start=NULL,
+  spatialIssues=NULL, issue=NULL, search=NULL, mediatype=NULL, callopts=list(), limit=20, start=NULL,
   fields = 'minimal', return='all')
 {
   calls <- names(sapply(match.call(), deparse))[-1]
@@ -239,7 +243,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
       basisOfRecord=basisOfRecord, datasetKey=datasetKey, eventDate=eventDate, catalogNumber=catalogNumber,
       year=year, month=month, decimalLatitude=decimalLatitude, decimalLongitude=decimalLongitude,
       elevation=elevation, depth=depth, institutionCode=institutionCode,
-      collectionCode=collectionCode, spatialIssues=spatialIssues, q=search, mediaType=mediatype,
+      collectionCode=collectionCode, spatialIssues=spatialIssues, issue=issue, q=search, mediaType=mediatype,
       limit=as.integer(limit), offset=start))
 
     iter <- 0
