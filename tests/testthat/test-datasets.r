@@ -4,7 +4,7 @@ tt <- datasets()
 test_that("query all datasets returns the correct class", {
   expect_is(tt, "list")
   expect_is(tt$results[[1]], "list")
-  expect_is(tt$results[[1]]$owningOrganizationKey, "character")
+  expect_is(tt$results[[1]]$publishingOrganizationKey, "character")
 })
 
 tt <- datasets(uuid="a6998220-7e3a-485d-9cd6-73076bd85657")

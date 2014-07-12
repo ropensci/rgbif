@@ -32,7 +32,7 @@ name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL, start=
   tt <- RJSONIO::fromJSON(res, simplifyWithNames = FALSE)
   
   if(is.null(fields)){
-    toget <- c("key","scientificName","rank")
+    toget <- c("key","canonicalName","rank")
   } else { toget <- fields }
   matched <- sapply(toget, function(x) x %in% suggestfields())
   if(!any(matched))
@@ -48,7 +48,7 @@ suggestfields <- function(){
   c("key","datasetTitle","datasetKey","nubKey","parentKey","parent",
     "kingdom","phylum","clazz","order","family","genus","species",
     "kingdomKey","phylumKey","classKey","orderKey","familyKey","genusKey",
-    "speciesKey","scientificName","canonicalName","authorship",
+    "speciesKey","species","canonicalName","authorship",
     "accordingTo","nameType","taxonomicStatus","rank","numDescendants",
     "numOccurrences","sourceId","nomenclaturalStatus","threatStatuses",
     "synonym")
