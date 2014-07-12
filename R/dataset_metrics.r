@@ -17,7 +17,7 @@
 dataset_metrics <- function(uuid, callopts=list())
 {
   getdata <- function(x){
-    url <- sprintf('http://api.gbif.org/v0.9/dataset_metrics/%s', x)
+    url <- sprintf('http://api.gbif.org/v0.9/dataset/%s/metrics', x)
     tt <- GET(url, callopts)
     stop_for_status(tt)
     assert_that(tt$headers$`content-type`=='application/json')

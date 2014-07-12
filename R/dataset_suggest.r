@@ -40,7 +40,7 @@
 #' 
 #' # Search by country code. Lookup isocodes first, and use US for United States
 #' isocodes[agrep("UNITED", isocodes$gbif_name),]
-#' dataset_suggest(country="UNITED_STATES")
+#' dataset_suggest(country="US")
 #' 
 #' # Search by decade
 #' dataset_suggest(decade=1980)
