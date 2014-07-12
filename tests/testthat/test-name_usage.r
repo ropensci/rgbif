@@ -10,7 +10,7 @@ test_that("name_usage returns the correct class", {
   
   expect_is(uu, "list")
   expect_is(uu$results, "list")
-  expect_is(uu$results[[1]]$key, "numeric")
+  expect_is(uu$results[[1]]$sourceTaxonKey, "numeric")
   expect_is(uu$results[[1]]$citation, "character")
 })
 
@@ -20,10 +20,10 @@ test_that("name_usage returns the correct value", {
 })
 
 test_that("name_usage returns the correct dimensions", {
-  expect_equal(length(tt), 18)
+  expect_equal(length(tt), 17)
   
   expect_equal(length(uu), 4)
   expect_equal(length(uu$results), 6)
-  expect_equal(length(uu$results[[1]]), 4)
-  expect_equal(length(uu$results[[1]]$usageKey), 1)
+  expect_equal(length(uu$results[[1]]), 2)
+  expect_equal(length(uu$results[[1]]$sourceTaxonKey), 1)
 })

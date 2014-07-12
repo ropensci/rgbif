@@ -1,11 +1,11 @@
 context("occ_metadata")
 
-a <- occ_metadata(type = "catalog_number", q=122, pretty=FALSE)
-b <- occ_metadata(type = "collection_code", q=12, pretty=FALSE)
+a <- occ_metadata(type = "catalogNumber", q=122, pretty=FALSE)
+b <- occ_metadata(type = "collectionCode", q=12, pretty=FALSE)
 # c <- occ_metadata(type = "collector_name", q='juan', pretty=FALSE)
-d <- occ_metadata(type = "institution_code", q='GB', pretty=FALSE)
-e <- occ_metadata(type = "catalog_number", q=122, pretty=FALSE)
-f <- occ_metadata(type = "catalog_number", q=122, limit=10, pretty=FALSE)
+d <- occ_metadata(type = "institutionCode", q='GB', pretty=FALSE)
+e <- occ_metadata(type = "catalogNumber", q=122, pretty=FALSE)
+f <- occ_metadata(type = "catalogNumber", q=122, limit=10, pretty=FALSE)
 g <- occ_metadata(type = "cat", q=122, pretty=FALSE)
 
 test_that("returns the correct class", {

@@ -4,7 +4,7 @@
 \title{Search for catalog numbers, collection codes, collector names, and institution
 codes.}
 \usage{
-occ_metadata(type = "catalog_number", q = NULL, limit = 5,
+occ_metadata(type = "catalogNumber", q = NULL, limit = 5,
   callopts = list(), pretty = TRUE)
 }
 \arguments{
@@ -27,19 +27,19 @@ codes.
 \examples{
 \dontrun{
 # catalog number
-occ_metadata(type = "catalog_number", q=122)
+occ_metadata(type = "catalogNumber", q=122)
 
 # collection code
-occ_metadata(type = "collection_code", q=12)
+occ_metadata(type = "collectionCode", q=12)
 
 # institution code
-occ_metadata(type = "institution_code", q='GB')
+occ_metadata(type = "institutionCode", q='GB')
 
 # data as character strings
-occ_metadata(type = "catalog_number", q=122, pretty=FALSE)
+occ_metadata(type = "catalogNumber", q=122, pretty=FALSE)
 
 # Change number of results returned
-occ_metadata(type = "catalog_number", q=122, limit=10)
+occ_metadata(type = "catalogNumber", q=122, limit=10)
 
 # Partial unique type strings work too
 occ_metadata(type = "cat", q=122)
