@@ -338,7 +338,10 @@ library('rgeos')
 plot(readWKT('POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))'))
 
 # Search on country
-occ_search(country='US')
+isocodes[grep("France", isocodes$name),"code"]
+occ_search(country='US', fields=c('name','country'))
+occ_search(country='FR', fields=c('name','country'))
+occ_search(country='DE', fields=c('name','country'))
 
 # Get only occurrences with lat/long data
 occ_search(taxonKey=key, hasCoordinate=TRUE)
