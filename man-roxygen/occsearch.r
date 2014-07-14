@@ -73,7 +73,7 @@
 #'    data. hier returns the classifications in a list for each record. meta
 #'    returns the metadata for the entire call. all gives all data back in a list.
 #' @param mediatype Media type. Default is NULL, so no filtering on mediatype. Options:
-#'    NULL, 'MovingImage', 'Sound', and 'StillImage'.
+#'    NULL, 'MovingImage', 'Sound', and 'StillImage'.``
 #' @return A data.frame or list
 #' @description
 #' Note that you can pass in a vector to one of taxonkey, datasetKey, and

@@ -26,7 +26,7 @@ test_that("returns the correct value", {
 })
 
 test_that("returns the correct dimensions", {
-  expect_equal(length(tt), 3)
+  expect_equal(length(tt), 4)
   expect_equal(length(tt$meta), 4)
   expect_equal(length(uu$data), 4)
   expect_equal(ncol(vv), 4)
@@ -54,7 +54,7 @@ test_that("returns the correct value", {
   expect_true(out$meta$endOfRecords)
 })
 test_that("returns the correct dimensions", {
-  expect_equal(length(out), 3)
+  expect_equal(length(out), 4)
 })
 
 # Occurrence data: lat/long data, and associated metadata with occurrences

@@ -351,6 +351,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
 
 #   class(out) <- "gbif"
 #   return(out)
+  out
 }
 
 geometry_handler <- function(x){
