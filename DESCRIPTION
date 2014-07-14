@@ -36,7 +36,8 @@ Imports:
     RJSONIO,
     data.table,
     stringr,
-    assertthat
+    assertthat,
+    whisker
 Suggests:
     roxygen2,
     testthat,

@@ -47,7 +47,7 @@ gbifmap takes care of cleaning up the data.frame (removing NA's, etc.)
 \examples{
 \dontrun{
 # Make a map of Puma concolor occurrences
-key <- name_backbone(name='Puma concolor', kingdom='plants')$speciesKey
+key <- name_backbone(name='Puma concolor')$speciesKey
 dat <- occ_search(taxonKey=key, return='data', limit=100)
 gbifmap(input=dat)
 

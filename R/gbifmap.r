@@ -5,9 +5,9 @@
 #' @export
 #' @examples \dontrun{
 #' # Make a map of Puma concolor occurrences
-#' key <- name_backbone(name='Puma concolor', kingdom='plants')$speciesKey
+#' key <- name_backbone(name='Puma concolor')$speciesKey
 #' dat <- occ_search(taxonKey=key, return='data', limit=100)
-#' gbifmap(input=dat)
+#' gbifmap(input=dat) 
 #'
 #' # Plot more Puma concolor occurrences
 #' dat <- occ_search(taxonKey=key, return='data', limit=1200)

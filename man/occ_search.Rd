@@ -416,6 +416,11 @@ occ_search(mediatype = 'Sound', return='media')
 # Query based on issues - see Details for options
 occ_search(taxonKey=1, issue='DEPTH_UNLIKELY', fields =
    c('name','key','decimalLatitude','decimalLongitude','depth'))
+
+# Show all records in the Arizona State Lichen Collection that cant be matched to the GBIF
+# backbone properly:
+occ_search(datasetKey='84c0e1a0-f762-11e1-a439-00145eb45e9a',
+   issue=c('TAXON_MATCH_NONE','TAXON_MATCH_HIGHERRANK'))
 }
 
 \donttest{

@@ -169,6 +169,11 @@
 #' # Query based on issues - see Details for options
 #' occ_search(taxonKey=1, issue='DEPTH_UNLIKELY', fields = 
 #'    c('name','key','decimalLatitude','decimalLongitude','depth'))
+#'    
+#' # Show all records in the Arizona State Lichen Collection that cant be matched to the GBIF 
+#' # backbone properly:
+#' occ_search(datasetKey='84c0e1a0-f762-11e1-a439-00145eb45e9a', 
+#'    issue=c('TAXON_MATCH_NONE','TAXON_MATCH_HIGHERRANK'))
 #' }
 #' 
 #' \donttest{
@@ -313,13 +318,15 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
       if(identical(data, list())){
         dat2 <- paste("no data found, try a different search")
         hier2 <- paste("no data found, try a different search")
+        media <- paste("no data found, try a different search")
       } else
       {
         data <- gbifparser(input=data, fields=fields)
         dat2 <- ldfast(lapply(data, "[[", "data"))
         hier2 <- unique(lapply(data, "[[", "hierarchy"))
+        media <- unique(lapply(data, "[[", "media"))
       }
-      list(meta=meta, hierarchy=hier2, data=dat2)
+      list(meta=meta, hierarchy=hier2, data=dat2, media=media)
     }
   }
 
@@ -342,7 +349,8 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
     names(out) <- iter[[1]]
   }
 
-  out
+#   class(out) <- "gbif"
+#   return(out)
 }
 
 geometry_handler <- function(x){
@@ -352,3 +360,37 @@ geometry_handler <- function(x){
     } else { x }
   } else { x }
 }
+
+# #' @method print gbif
+# #' @export
+# #' @rdname occ_search
+# print.gbif <- function(x, ...)
+# {
+# #   if(all(names(x) %in% c('meta', 'hierarchy', 'data', 'media'))){
+# #     x <- x[!names(x) %in% 'media']
+# #   }
+#   
+#   function (x, ..., n = 10) 
+#   {
+#     cat(spocc_wrap(sprintf("Species [%s]", pastemax(x$data))), 
+#         "\n")
+#     cat(sprintf("First 10 rows of [%s]\n\n", names(x$data)[1]))
+#     trunc_mat(occinddf(x), n = n)
+#   }
+# # 
+# #   rows <- lapply(x, function(y) vapply(y$data, nrow, numeric(1)))
+# #   perspp <- lapply(rows, function(z) c(sum(z), length(z)))
+# #   cat("Summary of results - occurrences found for:", "\n")
+# #   cat(" gbif  :", perspp$gbif[1], "records across", perspp$gbif[2], "species", 
+# #       "\n")
+# #   cat(" bison : ", perspp$bison[1], "records across", perspp$bison[2], "species", 
+# #       "\n")
+# #   cat(" inat  : ", perspp$inat[1], "records across", perspp$inat[2], "species", 
+# #       "\n")
+# #   cat(" ebird : ", perspp$ebird[1], "records across", perspp$ebird[2], "species", 
+# #       "\n")
+# #   cat(" ecoengine : ", perspp$ecoengine[1], "records across", perspp$ecoengine[2], 
+# #       "species", "\n")
+# #   cat(" antweb : ", perspp$antweb[1], "records across", perspp$antweb[2], 
+# #       "species", "\n")
+# }

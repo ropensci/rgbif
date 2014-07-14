@@ -56,6 +56,9 @@ gbifparser <- function(input, fields='minimal'){
       media2 <- compact(media2)
       media2$key <- x$key
       media2$species <- x$species
+      media2$decimalLatitude <- x$decimalLatitude
+      media2$decimalLongitude <- x$decimalLongitude
+      media2$country <- x$country 
       media2 <- list(media2)
       names(media2) <- x$key
       x <- x[!names(x) %in% "media"] # remove images
