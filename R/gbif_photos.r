@@ -12,7 +12,7 @@
 #' res <- occ_search(scientificName = "Helianthus", mediatype = 'StillImage', return = "media")
 #' gbif_photos(res)
 #' 
-#' res <- occ_search(scientificName = "Helianthus", mediatype = 'StillImage', return = "media", limit=400)
+#' res <- occ_search(scientificName = "Aves", mediatype = 'StillImage', return = "media", limit=150)
 #' gbif_photos(res)
 #' }
 
