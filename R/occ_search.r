@@ -169,14 +169,15 @@
 #' # Query based on issues - see Details for options
 #' occ_search(taxonKey=1, issue='DEPTH_UNLIKELY', fields = 
 #'    c('name','key','decimalLatitude','decimalLongitude','depth'))
-#'    
+#' }
+#' 
+#' \donttest{
+#' #### FIXME: ISSUES NEED TO BE PASSED IN AS MULTIPLE ISSUE PARAMETERS, FIX THIS
 #' # Show all records in the Arizona State Lichen Collection that cant be matched to the GBIF 
 #' # backbone properly:
 #' occ_search(datasetKey='84c0e1a0-f762-11e1-a439-00145eb45e9a', 
 #'    issue=c('TAXON_MATCH_NONE','TAXON_MATCH_HIGHERRANK'))
-#' }
-#' 
-#' \donttest{
+#'    
 #' # If you try multiple values for two different parameters you are wacked on the hand
 #' occ_search(taxonKey=c(2482598,2492010), collectorName=c("smith","BJ Stacey"))
 #'
@@ -349,9 +350,12 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
     names(out) <- iter[[1]]
   }
 
-#   class(out) <- "gbif"
-#   return(out)
-  out
+  if(is(out, "data.frame")){
+    class(out) <- c('data.frame','gbif')
+  } else { class(out) <- "gbif" }
+  
+  return(out)
+#   out
 }
 
 geometry_handler <- function(x){
@@ -362,36 +366,150 @@ geometry_handler <- function(x){
   } else { x }
 }
 
-# #' @method print gbif
-# #' @export
-# #' @rdname occ_search
-# print.gbif <- function(x, ...)
-# {
-# #   if(all(names(x) %in% c('meta', 'hierarchy', 'data', 'media'))){
-# #     x <- x[!names(x) %in% 'media']
-# #   }
-#   
-#   function (x, ..., n = 10) 
-#   {
-#     cat(spocc_wrap(sprintf("Species [%s]", pastemax(x$data))), 
-#         "\n")
-#     cat(sprintf("First 10 rows of [%s]\n\n", names(x$data)[1]))
-#     trunc_mat(occinddf(x), n = n)
-#   }
-# # 
-# #   rows <- lapply(x, function(y) vapply(y$data, nrow, numeric(1)))
-# #   perspp <- lapply(rows, function(z) c(sum(z), length(z)))
-# #   cat("Summary of results - occurrences found for:", "\n")
-# #   cat(" gbif  :", perspp$gbif[1], "records across", perspp$gbif[2], "species", 
-# #       "\n")
-# #   cat(" bison : ", perspp$bison[1], "records across", perspp$bison[2], "species", 
-# #       "\n")
-# #   cat(" inat  : ", perspp$inat[1], "records across", perspp$inat[2], "species", 
-# #       "\n")
-# #   cat(" ebird : ", perspp$ebird[1], "records across", perspp$ebird[2], "species", 
-# #       "\n")
-# #   cat(" ecoengine : ", perspp$ecoengine[1], "records across", perspp$ecoengine[2], 
-# #       "species", "\n")
-# #   cat(" antweb : ", perspp$antweb[1], "records across", perspp$antweb[2], 
-# #       "species", "\n")
-# }
+#' @method print gbif
+#' @export
+#' @rdname occ_search
+print.gbif <- function (x, ..., n = 10)
+{
+  if(all(c('meta','data','hierarchy','media') %in% names(x))){  
+    cat(rgbif_wrap(sprintf("Records found [%s]", x$meta$count)), "\n")
+    cat(rgbif_wrap(sprintf("No. unique hierarchies [%s]", length(x$hierarchy))), "\n")
+    cat(rgbif_wrap(sprintf("No. media records [%s]", length(x$media))), "\n")
+    cat(sprintf("First 10 rows of data\n\n"))
+    if(is(x$data, "data.frame")) trunc_mat(x$data, n = n) else cat(x$data)
+  } else {
+    if(is(x, "gbif")) x <- unclass(x)
+    print(x)
+  }
+} 
+
+trunc_mat <- function(x, n = NULL){
+  rows <- nrow(x)
+  if (!is.na(rows) && rows == 0)
+    return()
+  if (is.null(n)) {
+    if (is.na(rows) || rows > 100) { n <- 10 }
+    else { n <- rows }
+  }
+  df <- as.data.frame(head(x, n))
+  if (nrow(df) == 0)
+    return()
+  #   is_list <- vapply(df, is.list, logical(1))
+  #   df[is_list] <- lapply(df[is_list], function(x) vapply(x, obj_type, character(1)))
+  mat <- format(df, justify = "left")
+  width <- getOption("width")
+  values <- c(format(rownames(mat))[[1]], unlist(mat[1, ]))
+  names <- c("", colnames(mat))
+  w <- pmax(nchar(values), nchar(names))
+  cumw <- cumsum(w + 1)
+  too_wide <- cumw[-1] > width
+  if (all(too_wide)) {
+    too_wide[1] <- FALSE
+    df[[1]] <- substr(df[[1]], 1, width)
+  }
+  shrunk <- format(df[, !too_wide, drop = FALSE])
+  needs_dots <- is.na(rows) || rows > n
+  if (needs_dots) {
+    dot_width <- pmin(w[-1][!too_wide], 3)
+    dots <- vapply(dot_width, function(i) paste(rep(".", i), collapse = ""), FUN.VALUE = character(1))
+    shrunk <- rbind(shrunk, .. = dots)
+  }
+  print(shrunk)
+  if (any(too_wide)) {
+    vars <- colnames(mat)[too_wide]
+    types <- vapply(df[too_wide], type_sum, character(1))
+    var_types <- paste0(vars, " (", types, ")", collapse = ", ")
+    cat(spocc_wrap("Variables not shown: ", var_types), "\n", sep = "")
+  }
+}
+
+rgbif_wrap <- function (..., indent = 0, width = getOption("width")){
+  x <- paste0(..., collapse = "")
+  wrapped <- strwrap(x, indent = indent, exdent = indent + 5, width = width)
+  paste0(wrapped, collapse = "\n")
+}
+
+#' Type summary
+#' @export
+#' @keywords internal
+type_sum <- function (x) UseMethod("type_sum")
+
+#' @method type_sum default
+#' @export
+#' @rdname type_sum
+type_sum.default <- function (x) unname(abbreviate(class(x)[1], 4))
+
+#' @method type_sum character
+#' @export
+#' @rdname type_sum
+type_sum.character <- function (x) "chr"
+
+#' @method type_sum Date
+#' @export
+#' @rdname type_sum
+type_sum.Date <- function (x) "date"
+
+#' @method type_sum factor
+#' @export
+#' @rdname type_sum
+type_sum.factor <- function (x) "fctr"  
+
+#' @method type_sum integer
+#' @export
+#' @rdname type_sum
+type_sum.integer <- function (x) "int"
+
+#' @method type_sum logical
+#' @export
+#' @rdname type_sum
+type_sum.logical <- function (x) "lgl"
+
+#' @method type_sum array
+#' @export
+#' @rdname type_sum
+type_sum.array <- function (x){
+  paste0(NextMethod(), "[", paste0(dim(x), collapse = ","), 
+         "]")
+}
+
+#' @method type_sum matrix
+#' @export
+#' @rdname type_sum
+type_sum.matrix <- function (x){
+  paste0(NextMethod(), "[", paste0(dim(x), collapse = ","),
+         "]")
+}
+
+#' @method type_sum numeric
+#' @export
+#' @rdname type_sum
+type_sum.numeric <- function (x) "dbl"
+
+#' @method type_sum POSIXt
+#' @export
+#' @rdname type_sum
+type_sum.POSIXt <- function (x) "time"
+
+obj_type <- function (x)
+{
+  if (!is.object(x)) {
+    paste0("<", type_sum(x), if (!is.array(x))
+      paste0("[", length(x), "]"), ">")
+  }
+  else if (!isS4(x)) {
+    paste0("<S3:", paste0(class(x), collapse = ", "), ">")
+  }
+  else {
+    paste0("<S4:", paste0(is(x), collapse = ", "), ">")
+  }
+}
+
+pastemax <- function (z, n = 10){
+    rrows <- vapply(z, nrow, integer(1))
+    tt <- list()
+    for (i in seq_along(rrows)) {
+      tt[[i]] <- sprintf("%s (%s)", gsub("_", " ", names(rrows[i])), 
+                         rrows[[i]])
+    }
+    paste0(tt, collapse = ", ")
+}
