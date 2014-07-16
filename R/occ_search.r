@@ -419,7 +419,7 @@ trunc_mat <- function(x, n = NULL){
     vars <- colnames(mat)[too_wide]
     types <- vapply(df[too_wide], type_sum, character(1))
     var_types <- paste0(vars, " (", types, ")", collapse = ", ")
-    cat(spocc_wrap("Variables not shown: ", var_types), "\n", sep = "")
+    cat(rgbif_wrap("Variables not shown: ", var_types), "\n", sep = "")
   }
 }
 
