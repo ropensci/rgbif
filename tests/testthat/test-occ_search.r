@@ -46,7 +46,7 @@ test_that("returns the correct dimensions", {
 out <- occ_search(catalogNumber='PlantAndMushroom.6845144', fields='all')
 
 test_that("returns the correct class", {
-  expect_is(out, "list")
+  expect_is(out, "gbif")
   expect_is(out$meta, "list")
   expect_is(out$data, "character")
 })
@@ -73,7 +73,7 @@ test_that("returns the correct value", {
 out <- occ_search(taxonKey=key, limit=20, return='hier')
 
 test_that("returns the correct class", {
-  expect_is(out, "list")
+  expect_is(out, "gbif")
   expect_is(out[[1]], "data.frame")
 })
 test_that("returns the correct dimensions", {
@@ -92,7 +92,7 @@ test_that("dates work correctly", {
   expect_equal(a$data$year[1], 2013)
   expect_equal(b$data$month[1], 6)
   
-  expect_is(occ_search(taxonKey=key, year="1990,1991"), "list")
+  expect_is(occ_search(taxonKey=key, year="1990,1991"), "gbif")
 })
 
 test_that("make sure things that should throw errors do", {
@@ -105,8 +105,8 @@ test_that("make sure things that should throw errors do", {
 ######### Get occurrences based on depth
 test_that("returns the correct stuff", {
   key <- name_backbone(name='Salmo salar', kingdom='animals')$speciesKey
-  expect_is(occ_search(taxonKey=key, depth="5"), "list")
-  expect_is(occ_search(taxonKey=key, depth=5), "list")
+  expect_is(occ_search(taxonKey=key, depth="5"), "gbif")
+  expect_is(occ_search(taxonKey=key, depth=5), "gbif")
   # does range search correctly - THROWS ERROR NOW, BUT SHOULD WORK
   expect_error(occ_search(taxonKey=key, depth="5-10"))  
 })
