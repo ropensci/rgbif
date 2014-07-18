@@ -3,13 +3,15 @@
 #' @template all
 #' @import httr
 #' @import plyr
+#' @export
+#' 
 #' @param data The type of data to get. Default is all data.
 #' @param uuid UUID of the data node provider. This must be specified if data
 #'    is anything other than 'all'.
 #' @param query Query nodes. Only used when data='all'
 #' @param isocode A 2 letter country code. Only used if data='country'.    
 #' @param callopts Further args passed on to GET.
-#' @export
+#' 
 #' @examples \dontrun{
 #' nodes()
 #' nodes(uuid="1193638d-32d1-43f0-a855-8727c94299d8")
@@ -34,7 +36,7 @@ nodes <- function(data = 'all', uuid = NULL, query = NULL, isocode = NULL, callo
   args <- compact(list(q = query))
   
   data <- match.arg(data, choices=c('all', 'organization', 'endpoint', 
-                                    'identifier', 'tag', 'machinetag', 'comment', 
+                                    'identifier', 'tag', 'machineTag', 'comment', 
                                     'pendingEndorsement', 'country', 'dataset',
                                     'installation'))
   

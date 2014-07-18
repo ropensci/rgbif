@@ -3,6 +3,8 @@
 #' @template all
 #' @import httr
 #' @import plyr
+#' @export
+#' 
 #' @param data The type of data to get. Default is all data.
 #' @param uuid UUID of the data network provider. This must be specified if data
 #'    is anything other than 'all'.
@@ -17,11 +19,12 @@
 #' @param startindex THIS IS A DEPRECATED ARGUMENT. return the subset of the matching 
 #'    records that starts at the supplied (zero-based index).
 #' @param maxresults THIS IS A DEPRECATED ARGUMENT. max number of results to return
-#' @export
+#' 
 #' @examples \dontrun{
 #' networks()
 #' networks(uuid='16ab5405-6c94-4189-ac71-16ca3b753df7')
 #' networks(data='endpoint', uuid='16ab5405-6c94-4189-ac71-16ca3b753df7')
+#' networks(data='comment', uuid='16ab5405-6c94-4189-ac71-16ca3b753df7')
 #' }
 #' @examples \donttest{
 #' # should throw error message saying params are deprecated
@@ -38,7 +41,7 @@ networks <- function(data = 'all', uuid = NULL, callopts=list(), name = NULL, co
     stop("The parameters name, code, modifiedsince, startindex, and maxresults \nhave been removed, and were only relavant in the old GBIF API. \n\nPlease see documentation for this function ?networks.")
 
   data <- match.arg(data, choices=c('all', 'contact', 'endpoint', 'identifier', 
-                                    'tag', 'machinetag', 'comment'))
+                                    'tag', 'machineTag', 'comment', 'constituents'))
   
   # Define function to get data
   getdata <- function(x){

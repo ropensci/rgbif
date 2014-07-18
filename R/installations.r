@@ -4,6 +4,8 @@
 #' @template occ
 #' @import httr
 #' @import plyr 
+#' @export
+#' 
 #' @param data The type of data to get. Default is all data. If not 'all', then one 
 #'    or more of 'contact', 'endpoint', 'dataset', 'comment', 'deleted', 'nonPublishing'.
 #' @param uuid UUID of the data node provider. This must be specified if data
@@ -14,25 +16,27 @@
 #' @param identifierType Used in combination with the identifier parameter to filter 
 #'    identifiers by identifier type. See details. This parameter doesn't seem to 
 #'    be useful right now.
+#' 
 #' @return A list.
 #' @details
 #' identifierType options:
 #' 
 #' \itemize{
-#'  \item {DOI}
-#'  \item {FTP}
-#'  \item {GBIF_NODE}
-#'  \item {GBIF_PARTICIPANT}
-#'  \item {GBIF_PORTAL}
-#'  \item {HANDLER}
-#'  \item {LSID}
-#'  \item {SOURCE_ID}
-#'  \item {UNKNOWN}
-#'  \item {URI}
-#'  \item {URL}
-#'  \item {UUID}
+#'  \item {DOI} No description.
+#'  \item {FTP} No description.
+#'  \item {GBIF_NODE} Identifies the node (e.g: 'DK' for Denmark, 'sp2000' for Species 2000).
+#'  \item {GBIF_PARTICIPANT} Participant identifier from the GBIF IMS Filemaker system.
+#'  \item {GBIF_PORTAL} Indicates the identifier originated from an auto_increment column in the 
+#'  portal.data_provider or portal.data_resource table respectively.
+#'  \item {HANDLER} No description.
+#'  \item {LSID} Reference controlled by a separate system, used for example by DOI.
+#'  \item {SOURCE_ID} No description.
+#'  \item {UNKNOWN} No description.
+#'  \item {URI} No description.
+#'  \item {URL} No description.
+#'  \item {UUID} No description.
 #' }
-#' @export
+#' 
 #' @examples \dontrun{
 #' installations()
 #' installations(query="france")
@@ -42,17 +46,18 @@
 #' installations(data='endpoint', uuid="b77901f9-d9b0-47fa-94e0-dd96450aa2b4")
 #' installations(data='dataset', uuid="b77901f9-d9b0-47fa-94e0-dd96450aa2b4")
 #' installations(data='deleted')
-#' installations(data='deleted', limit=2)
+#' installations(data='deleted', limit2=2)
 #' installations(data=c('deleted','nonPublishing'), limit=2)
 #' installations(identifierType='DOI', limit=2)
 #' }
+
 installations <- function(data = 'all', uuid = NULL, query = NULL, identifier=NULL,
                           identifierType=NULL, limit=20, start=NULL, callopts=list())
 {
   args <- compact(list(q = query, limit=as.integer(limit), offset=start))
   
   data <- match.arg(data, choices=c('all', 'contact', 'endpoint', 'dataset', 
-                                    'identifier', 'tag', 'machinetag', 'comment', 
+                                    'identifier', 'tag', 'machineTag', 'comment', 
                                     'deleted', 'nonPublishing'), several.ok=TRUE)
   
   # Define function to get data
