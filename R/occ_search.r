@@ -6,6 +6,9 @@
 #' @template occsearch
 #' @template occ
 #' @template all
+#' @param x Output from a call to occ_search
+#' @param ... Further print args not used.
+#' @param n Number of rows of the data to print.
 #' @examples \dontrun{
 #' # Search by species name, using \code{\link{name_backbone}} first to get key
 #' (key <- name_suggest(q='Helianthus annuus', rank='species')$key[1])

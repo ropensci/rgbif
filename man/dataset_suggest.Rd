@@ -29,11 +29,11 @@ e.g. country=CANADA.}
 you can search on. The search is done on the merged collection of tags, the
 dataset keywordCollections and temporalCoverages.}
 
-\item{owning_org}{Owning organization. A uuid string. See \code{\link{organizations}}}
+\item{owningOrg}{Owning organization. A uuid string. See \code{\link{organizations}}}
 
-\item{hosting_org}{Hosting organization. A uuid string. See \code{\link{organizations}}}
+\item{hostingOrg}{Hosting organization. A uuid string. See \code{\link{organizations}}}
 
-\item{publishing_country}{Publishing country. See options at isocodes$gbif_name}
+\item{publishingCountry}{Publishing country. See options at isocodes$gbif_name}
 
 \item{decade}{Decade, e.g., 1980. Filters datasets by their temporal coverage
 broken down to decades. Decades are given as a full year, e.g. 1880, 1960, 2000,

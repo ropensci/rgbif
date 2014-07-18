@@ -129,6 +129,12 @@ http calls, and error handling}
 \item{limit}{Number of records to return}
 
 \item{start}{Record number to start at}
+
+\item{x}{Output from a call to occ_search}
+
+\item{...}{Further print args not used.}
+
+\item{n}{Number of rows of the data to print.}
 }
 \value{
 A data.frame or list
