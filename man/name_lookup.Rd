@@ -6,9 +6,8 @@
 name_lookup(query = NULL, rank = NULL, highertaxon_key = NULL,
   status = NULL, extinct = NULL, habitat = NULL, name_type = NULL,
   dataset_key = NULL, nomenclatural_status = NULL, limit = 20,
-  facet = NULL, facet_only = NULL, facet_mincount = NULL,
-  facet_multiselect = NULL, type = NULL, callopts = list(),
-  verbose = FALSE, return = "all")
+  facet = NULL, facetMincount = NULL, facetMultiselect = NULL,
+  type = NULL, callopts = list(), verbose = FALSE, return = "all")
 }
 \arguments{
 \item{query}{Query term(s) for full text search.}
@@ -66,15 +65,12 @@ for a field. Allowed facets are: dataset_key, highertaxon_key, rank, status,
 extinct, habitat, and name_type. Additionally threat and nomenclatural_status
 are legal values but not yet implemented, so data will not yet be returned for them.}
 
-\item{facet_only}{Used in combination with the facet parameter. Set \code{facet_only=true}
-to exclude search results.}
-
-\item{facet_mincount}{Used in combination with the facet parameter. Set
+\item{facetMincount}{Used in combination with the facet parameter. Set
 facet_mincount={#} to exclude facets with a count less than {#}, e.g.
 http://bit.ly/1bMdByP only shows the type value 'ACCEPTED' because the other
 statuses have counts less than 7,000,000}
 
-\item{facet_multiselect}{Used in combination with the facet parameter. Set
+\item{facetMultiselect}{Used in combination with the facet parameter. Set
 \code{facet_multiselect=TRUE} to still return counts for values that are not currently
 filtered, e.g. http://bit.ly/19YLXPO still shows all status values even though
 status is being filtered by \code{status=ACCEPTED}}
@@ -132,14 +128,14 @@ name_lookup(query='Cnaemidophorus', rank="genus", callopts=verbose())
 name_lookup('Helianthus annuus', rank="species", limit=2)
 
 # Using faceting
-name_lookup(facet='status', facet_only=TRUE, facet_mincount='70000')
-name_lookup(facet=c('status','highertaxon_key'), facet_only=TRUE, facet_mincount='700000')
+name_lookup(facet='status', limit=0, facetMincount='70000')
+name_lookup(facet=c('status','highertaxon_key'), limit=0, facetMincount='700000')
 
-name_lookup(facet='name_type', facet_only=TRUE)
-name_lookup(facet='habitat', facet_only=TRUE)
-name_lookup(facet='dataset_key', facet_only=TRUE)
-name_lookup(facet='rank', facet_only=TRUE)
-name_lookup(facet='extinct', facet_only=TRUE)
+name_lookup(facet='name_type', limit=0)
+name_lookup(facet='habitat', limit=0)
+name_lookup(facet='dataset_key')
+name_lookup(facet='rank', limit=0)
+name_lookup(facet='extinct', limit=0)
 }
 }
 \references{

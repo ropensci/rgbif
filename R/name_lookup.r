@@ -30,23 +30,23 @@
 #' name_lookup('Helianthus annuus', rank="species", limit=2)
 #' 
 #' # Using faceting
-#' name_lookup(facet='status', facet_only=TRUE, facet_mincount='70000')
-#' name_lookup(facet=c('status','highertaxon_key'), facet_only=TRUE, facet_mincount='700000')
+#' name_lookup(facet='status', limit=0, facetMincount='70000')
+#' name_lookup(facet=c('status','highertaxon_key'), limit=0, facetMincount='700000')
 #' 
-#' name_lookup(facet='name_type', facet_only=TRUE)
-#' name_lookup(facet='habitat', facet_only=TRUE)
-#' name_lookup(facet='dataset_key', facet_only=TRUE)
-#' name_lookup(facet='rank', facet_only=TRUE)
-#' name_lookup(facet='extinct', facet_only=TRUE)
+#' name_lookup(facet='name_type', limit=0)
+#' name_lookup(facet='habitat', limit=0)
+#' name_lookup(facet='dataset_key')
+#' name_lookup(facet='rank', limit=0)
+#' name_lookup(facet='extinct', limit=0)
 #' }
 
 name_lookup <- function(query=NULL, rank=NULL, highertaxon_key=NULL, status=NULL, extinct=NULL, 
   habitat=NULL, name_type=NULL, dataset_key=NULL, nomenclatural_status=NULL,
-  limit=20, facet=NULL, facet_only=NULL, facet_mincount=NULL, 
-  facet_multiselect=NULL, type=NULL, callopts=list(), verbose=FALSE, return="all")
+  limit=20, facet=NULL, facetMincount=NULL, 
+  facetMultiselect=NULL, type=NULL, callopts=list(), verbose=FALSE, return="all")
 {
-  if(!is.null(facet_mincount) && inherits(facet_mincount, "numeric"))
-    stop("Make sure facet_mincount is character")
+  if(!is.null(facetMincount) && inherits(facetMincount, "numeric"))
+    stop("Make sure facetMincount is character")
   if(!is.null(facet)) {
     facetbyname <- facet
     names(facetbyname) <- rep('facet', length(facet))
@@ -56,8 +56,8 @@ name_lookup <- function(query=NULL, rank=NULL, highertaxon_key=NULL, status=NULL
   args <- as.list(compact(c(q=query, rank=rank, highertaxon_key=highertaxon_key, status=status, 
             extinct=extinct, habitat=habitat, name_type=name_type, dataset_key=dataset_key, 
             nomenclatural_status=nomenclatural_status, limit=limit, facetbyname, 
-            facet_only=facet_only, facet_mincount=facet_mincount, 
-            facet_multiselect=facet_multiselect, type=type)))
+            facetMincount=facetMincount, 
+            facetMultiselect=facetMultiselect, type=type)))
   temp <- GET(url, query=args, callopts)
   stop_for_status(temp)
   assert_that(temp$headers$`content-type`=='application/json')
