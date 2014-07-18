@@ -4,12 +4,15 @@
 #' @template occ
 #' @import httr
 #' @import plyr 
+#' @export
+#' 
 #' @param data The type of data to get. Default is all data.
 #' @param uuid UUID of the data node provider. This must be specified if data
 #'    is anything other than 'all'.
 #' @param query Query nodes. Only used when data='all'
+#' 
 #' @return A list.
-#' @export
+#' 
 #' @examples \dontrun{
 #' organizations()
 #' organizations(query="france")
@@ -24,7 +27,7 @@ organizations <- function(data = 'all', uuid = NULL, query = NULL, limit=20,
   args <- compact(list(q = query, limit=as.integer(limit), offset=start))
   
   data <- match.arg(data, choices=c('all', 'organization', 'contact', 'endpoint', 
-                                    'identifier', 'tag', 'machinetag', 'comment', 
+                                    'identifier', 'tag', 'machineTag', 'comment', 
                                     'hostedDataset', 'ownedDataset', 'deleted', 
                                     'pending', 'nonPublishing'))
   
