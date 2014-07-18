@@ -65,7 +65,7 @@ filtered, e.g. http://bit.ly/19YLXPO still shows all status values even though
 status is being filtered by status=ACCEPTED}
 
 \item{return}{What to return. One of meta, descriptions, data, facets,
-or all (Default).}
+   or all (Default).}
 }
 \value{
 A data.frame, list, or message printed to console (using pretty=TRUE).

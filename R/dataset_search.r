@@ -4,13 +4,14 @@
 #' that contain occurrence data.
 #'
 #' @import httr plyr
+#' @export
 #' @template all
 #' @template occ
 #' @template dataset
 #' @template dataset_facet
 #' @param return What to return. One of meta, descriptions, data, facets, 
 #'    or all (Default).
-#' @export
+#' 
 #' @examples \dontrun{
 #' # Gets all datasets of type "OCCURRENCE".
 #' dataset_search(type="OCCURRENCE")

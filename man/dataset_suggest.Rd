@@ -4,10 +4,9 @@
 \title{Suggest datasets in GBIF.}
 \usage{
 dataset_suggest(query = NULL, country = NULL, type = NULL,
-  subtype = NULL, keyword = NULL, owning_org = NULL, hosting_org = NULL,
-  publishing_country = NULL, decade = NULL, continent = NULL,
-  limit = 20, start = NULL, callopts = list(), pretty = FALSE,
-  description = FALSE)
+  subtype = NULL, keyword = NULL, owningOrg = NULL, hostingOrg = NULL,
+  publishingCountry = NULL, decade = NULL, continent = NULL, limit = 20,
+  start = NULL, callopts = list(), pretty = FALSE, description = FALSE)
 }
 \arguments{
 \item{callopts}{Pass on options to httr::GET for more refined control of
@@ -69,7 +68,7 @@ dataset_suggest(keyword="france")
 
 # Suggest datasets owned by the organization with key
 # "07f617d0-c688-11d8-bf62-b8a03c50a862" (UK NBN).
-dataset_suggest(owning_org="07f617d0-c688-11d8-bf62-b8a03c50a862")
+dataset_suggest(owningOrg="07f617d0-c688-11d8-bf62-b8a03c50a862")
 
 # Fulltext search for all datasets having the word "amsterdam" somewhere in
 # its metadata (title, description, etc).

@@ -4,14 +4,17 @@
 #' @template occ
 #' @import httr
 #' @import plyr
+#' @export
+#' 
 #' @param data The type of data to get. Default is all data.
 #' @param type Type of dataset, options include OCCURRENCE, etc.
 #' @param uuid UUID of the data node provider. This must be specified if data
 #'    is anything other than 'all'.
 #' @param query Query term(s). Only used when data='all'
 #' @param id A metadata document id.
+#' 
 #' @return A list.
-#' @export
+#' 
 #' @examples \dontrun{
 #' datasets()
 #' datasets(type="OCCURRENCE")
