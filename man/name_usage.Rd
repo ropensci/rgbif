@@ -73,25 +73,22 @@ name_usage(name='Puma concolor')
 name_usage(key=3119195, data='references')
 
 # Species profiles, descriptions
-name_usage(key=3119195, data='species_profiles')
+name_usage(key=3119195, data='speciesProfiles')
 name_usage(key=3119195, data='descriptions')
 res <- name_usage(key=2435099, data='children')
 sapply(res$results, "[[", "scientificName")
 
 # Vernacular names for a name usage
-name_usage(key=3119195, data='vernacular_names')
-
-# Select many options
-name_usage(key=3119195, data=c('images','synonyms'))
+name_usage(key=3119195, data='vernacularNames')
 
 # Limit number of results returned
-name_usage(key=3119195, data='vernacular_names', limit=3)
+name_usage(key=3119195, data='vernacularNames', limit=3)
 
 # Search for names by dataset with datasetKey parameter
 name_usage(datasetKey="d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
 
 # Search for a particular language
-name_usage(key=3119195, language="FRENCH", data='vernacular_names')
+name_usage(key=3119195, language="FRENCH", data='vernacularNames')
 }
 }
 \references{
