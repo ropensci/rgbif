@@ -14,11 +14,12 @@
 #'              'Cistothorus palustris')
 #' keys <- sapply(spplist, function(x) name_backbone(x, rank="species")$usageKey)
 #' count_facet(keys, by='country', countries=3, removezeros = TRUE)
+#' count_facet(keys, by='country', countries=3, removezeros = FALSE)
 #' count_facet(by='country', countries=3, removezeros = TRUE)
 #' count_facet(by='country', countries=20, removezeros = TRUE)
 #' 
 #' # Pass in country names instead
-#' countries <- isocodes$gbif_name[1:10]
+#' countries <- isocodes$code[1:10]
 #' count_facet(by='country', countries=countries, removezeros = TRUE)
 #' 
 #' # get occurrences by georeferenced state
@@ -47,7 +48,7 @@ count_facet <- function(keys = NULL, by = 'country', countries = 10, removezeros
   
   # faceting data vectors
   if(is.numeric(countries)){
-    countrynames <- list(country=as.character(isocodes$gbif_name)[1:countries])
+    countrynames <- list(country=as.character(isocodes$code)[1:countries])
   } else{
     countrynames <- list(country=as.character(countries))
   }
