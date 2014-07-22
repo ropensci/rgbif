@@ -46,7 +46,7 @@ all records (FALSE, default).}
 http calls, and error handling}
 }
 \value{
-A single numeric value
+A single numeric value, or a list of numerics.
 }
 \description{
 Get number of occurrence records.
@@ -67,7 +67,7 @@ occ_count(protocol='DWC_ARCHIVE')
 occ_count(type='schema')
 
 # Counts by basisOfRecord types
-occ_count(type='basis_of_record')
+occ_count(type='basisOfRecord')
 
 # Counts by countries. publishingCountry must be supplied (default to US)
 occ_count(type='countries')

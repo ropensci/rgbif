@@ -22,7 +22,7 @@
 #' @param type One of count (default), schema, basis_of_record, countries, or year.
 #' @param callopts Pass on options to httr::GET for more refined control of 
 #'    http calls, and error handling
-#' @return A single numeric value
+#' @return A single numeric value, or a list of numerics.
 #' @examples \dontrun{
 #' occ_count(basisOfRecord='OBSERVATION')
 #' occ_count(georeferenced=TRUE)
@@ -38,7 +38,7 @@
 #' occ_count(type='schema')
 #' 
 #' # Counts by basisOfRecord types
-#' occ_count(type='basis_of_record')
+#' occ_count(type='basisOfRecord')
 #' 
 #' # Counts by countries. publishingCountry must be supplied (default to US)
 #' occ_count(type='countries')
@@ -65,18 +65,18 @@ occ_count <- function(taxonKey=NULL, georeferenced=NULL, basisOfRecord=NULL,
                        basisOfRecord=basisOfRecord, datasetKey=datasetKey, 
                        date=date, catalogNumber=catalogNumber, country=country,
                        hostCountry=hostCountry, year=year, protocol=protocol))
-  type <- match.arg(type, choices=c("count","schema","basis_of_record","countries","year","publishingCountry"))
+  type <- match.arg(type, choices=c("count","schema","basisOfRecord","countries","year","publishingCountry"))
   url <- switch(type, 
                 count = 'http://api.gbif.org/v1/occurrence/count',
                 schema = 'http://api.gbif.org/v1/occurrence/count/schema',
-                basis_of_record = 'http://api.gbif.org/v1/occurrence/counts/basis_of_record',
+                basisOfRecord = 'http://api.gbif.org/v1/occurrence/counts/basisOfRecord',
                 countries = 'http://api.gbif.org/v1/occurrence/counts/countries',
                 year = 'http://api.gbif.org/v1/occurrence/counts/year',
-                publishingCountry = 'http://api.gbif.org/v1/occurrence/counts/publishing_countries')
+                publishingCountry = 'http://api.gbif.org/v1/occurrence/counts/publishingCountries')
   args <- switch(type,
                 count = args,
                 schema = list(),
-                basis_of_record = list(),
+                basisofRecord = list(),
                 countries = compact(list(publishingCountry=publishingCountry)),
                 year = compact(list(from=from, to=to)),
                 publishingCountry = compact(list(country=ifelse(is.null(country), "US", country) )))
