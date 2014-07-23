@@ -21,7 +21,12 @@ e.g. q=*puma*}
 
 \item{datasetKey}{(character) Filters by the checklist dataset key (a uuid, see examples)}
 
-\item{rank}{(character) The rank given as our rank enum.}
+\item{rank}{(character) A taxonomic rank. One of class, cultivar, cultivar_group, domain, family,
+form, genus, informal, infrageneric_name, infraorder, infraspecific_name,
+infrasubspecific_name, kingdom, order, phylum, section, series, species, strain, subclass,
+subfamily, subform, subgenus, subkingdom, suborder, subphylum, subsection, subseries,
+subspecies, subtribe, subvariety, superclass, superfamily, superorder, superphylum,
+suprageneric_name, tribe, unranked, or variety.}
 
 \item{fields}{(character) Fields to return in output data.frame (simply prunes columns off)}
 }
@@ -36,9 +41,13 @@ doing prefix matching against the scientific name. Results are ordered by releva
 \dontrun{
 name_suggest(q='Puma concolor')
 name_suggest(q='Puma')
+name_suggest(q='Puma', rank="genus")
+name_suggest(q='Puma', rank="subspecies")
+name_suggest(q='Puma', rank="species")
+name_suggest(q='Puma', rank="infraspecific_name")
+
 name_suggest(q='Puma', limit=2)
 name_suggest(q='Puma', fields=c('key','canonicalName'))
-name_suggest(q='Puma', rank="GENUS")
 }
 }
 \references{
