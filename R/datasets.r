@@ -29,7 +29,7 @@
 datasets <- function(data = 'all', type = NULL, uuid = NULL, query = NULL, id = NULL, 
                      limit = 20, start=NULL, callopts=list())
 {
-  args <- compact(list(q = query, limit=as.integer(limit), offset=start))
+  args <- rgbif_compact(list(q = query, limit=as.integer(limit), offset=start))
   
   data <- match.arg(data, choices=c('all', 'organization', 'contact', 'endpoint', 
                                     'identifier', 'tag', 'machinetag', 'comment', 

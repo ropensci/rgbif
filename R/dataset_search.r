@@ -61,7 +61,7 @@ dataset_search <- function(query= NULL, country = NULL, type = NULL, keyword = N
   } else { facetbyname <- NULL }
 
   url <- 'http://api.gbif.org/v1/dataset/search'
-  args <- as.list(compact(c(q=query,type=type,keyword=keyword,owningOrg=owningOrg,
+  args <- as.list(rgbif_compact(c(q=query,type=type,keyword=keyword,owningOrg=owningOrg,
                        hostingOrg=hostingOrg,publishingCountry=publishingCountry,
                        decade=decade,limit=limit,offset=start,facetbyname,
                        facetMincount=facetMincount,
@@ -117,7 +117,7 @@ dataset_search <- function(query= NULL, country = NULL, type = NULL, keyword = N
 }
 
 parse_dataset <- function(x){
-  tmp <- compact(list(title=x$title,
+  tmp <- rgbif_compact(list(title=x$title,
                       hostingOrganization=x$hostingOrganizationTitle,
                       owningOrganization=x$owningOrganizationTitle,
                       type=x$type,

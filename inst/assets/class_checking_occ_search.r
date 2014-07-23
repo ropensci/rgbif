@@ -42,7 +42,7 @@ check_params <- function(){
   # logicals
   e <- ifnotnullcheck(hasCoordinate, "is.logical")
   x <- ifnotnullcheck(spatialIssues, "is.logical")
-  out <- compact(list(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,aa))
+  out <- rgbif_compact(list(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,aa))
   if(length(out)==0){ NULL } else {
     res <- paste(out, collapse = "\n")
     stop(res)

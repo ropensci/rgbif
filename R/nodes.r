@@ -33,7 +33,7 @@
 
 nodes <- function(data = 'all', uuid = NULL, query = NULL, isocode = NULL, callopts=list())
 {
-  args <- compact(list(q = query))
+  args <- rgbif_compact(list(q = query))
   
   data <- match.arg(data, choices=c('all', 'organization', 'endpoint', 
                                     'identifier', 'tag', 'machineTag', 'comment', 

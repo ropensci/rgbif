@@ -54,7 +54,7 @@ dataset_suggest <- function(query = NULL, country = NULL, type = NULL, subtype =
   pretty=FALSE, description=FALSE)
 {
   url <- 'http://api.gbif.org/v1/dataset/suggest'
-  args <- compact(list(q=query,type=type,keyword=keyword,owningOrg=owningOrg,
+  args <- rgbif_compact(list(q=query,type=type,keyword=keyword,owningOrg=owningOrg,
                        hostingOrg=hostingOrg,publishingCountry=publishingCountry,
                        decade=decade,limit=limit,offset=start))
   temp <- GET(url, query=args, callopts)
@@ -64,7 +64,7 @@ dataset_suggest <- function(query = NULL, country = NULL, type = NULL, subtype =
   tt <- RJSONIO::fromJSON(res, simplifyWithNames = FALSE)
   
   parse_dataset <- function(x){
-    tmp <- compact(list(
+    tmp <- rgbif_compact(list(
       key=x$key,
       type=x$type,
       title=x$title,

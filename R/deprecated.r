@@ -59,7 +59,7 @@ density_spplist <- function(taxonconceptKey = NULL, dataproviderkey = NULL,
   names_ = NULL
   
   url = "http://data.gbif.org/ws/rest/density/list"
-  args <- compact(list(taxonconceptKey = taxonconceptKey,
+  args <- rgbif_compact(list(taxonconceptKey = taxonconceptKey,
     dataproviderkey = dataproviderkey, dataresourcekey = dataresourcekey,
     resourcenetworkkey = resourcenetworkkey,
     originisocountrycode = originisocountrycode, format = format))
@@ -149,7 +149,7 @@ densitylist <- function(taxonconceptKey = NULL, dataproviderkey = NULL,
   .Deprecated(msg="This function is deprecated, and will be removed in a future version. There is no longer a similar function.")
   
   url = "http://data.gbif.org/ws/rest/density/list"
-  args <- compact(list(taxonconceptKey = taxonconceptKey, 
+  args <- rgbif_compact(list(taxonconceptKey = taxonconceptKey, 
                        dataproviderkey = dataproviderkey, dataresourcekey = dataresourcekey, 
                        resourcenetworkkey = resourcenetworkkey, 
                        originisocountrycode = originisocountrycode, format = format))
@@ -266,7 +266,7 @@ occurrencecount <- function(scientificname = NULL, taxonconceptKey = NULL,
   .Deprecated(new="occ_count", package="rgbif", msg="This function is deprecated, and will be removed in a future version. See ?occ_count")
   
   url = "http://data.gbif.org/ws/rest/occurrence/count"
-  querystr <- compact(list(scientificname=scientificname,taxonconceptKey=taxonconceptKey,
+  querystr <- rgbif_compact(list(scientificname=scientificname,taxonconceptKey=taxonconceptKey,
                            dataproviderkey=dataproviderkey,dataresourcekey=dataresourcekey,
                            institutioncode=institutioncode,collectioncode=collectioncode,
                            catalognumber=catalognumber,resourcenetworkkey=resourcenetworkkey,	
@@ -323,7 +323,7 @@ occurrenceget <- function(key = NULL, format = NULL, mode = NULL)
   .Deprecated(new="occ_get", package="rgbif", msg="This function is deprecated, and will be removed in a future version. See ?occ_get")
   
   url = "http://data.gbif.org/ws/rest/occurrence/get"
-  args <- compact(list(key = key, format = format, mode = mode))
+  args <- rgbif_compact(list(key = key, format = format, mode = mode))
   temp <- getForm(url, .params=args)
   tt <- xmlParse(temp)
   xmlToList(tt)$data
@@ -376,7 +376,7 @@ occurrencelist <- function(scientificname = NULL, taxonconceptkey = NULL,
   
   url = "http://data.gbif.org/ws/rest/occurrence/list"
   
-  args <- compact(
+  args <- rgbif_compact(
     list(
       scientificname=scientificname, dataproviderkey=dataproviderkey,
       dataresourcekey=dataresourcekey, institutioncode=institutioncode,
@@ -562,7 +562,7 @@ occurrencelist_many <- function(scientificname = NULL, taxonconceptkey = NULL,
       taxonkey <- NULL
     }
     
-    args <- compact(
+    args <- rgbif_compact(
       list(
         scientificname=sciname, taxonconceptkey=taxonkey,
         dataresourcekey=dataresourcekey, institutioncode=institutioncode,
@@ -710,7 +710,7 @@ providers <- function(name = "", isocountrycode = NULL, modifiedsince = NULL,
   .Deprecated(new="networks", package="rgbif", msg="This function is deprecated, and will be removed in a future version. See ?networks, ?organizations, and ?datasets")
   
   url = "http://data.gbif.org/ws/rest/provider/list"
-  args <- compact(list(name = name, isocountrycode=isocountrycode, 
+  args <- rgbif_compact(list(name = name, isocountrycode=isocountrycode, 
                        modifiedsince=modifiedsince,startindex=startindex,
                        maxresults=maxresults))
   
@@ -762,7 +762,7 @@ resources <- function(name = "", providerkey = NULL, basisofrecordcode = NULL,
   .Deprecated(new="networks", package="rgbif", msg="This function is deprecated, and will be removed in a future version. See ?networks, ?organizations, and ?datasets")
   
   url = "http://data.gbif.org/ws/rest/resource/list"
-  args <- compact(list(name = name, providerkey = providerkey,
+  args <- rgbif_compact(list(name = name, providerkey = providerkey,
                        basisofrecordcode = basisofrecordcode,
                        modifiedsince = modifiedsince, startindex = startindex,
                        maxresults = maxresults))
@@ -800,7 +800,7 @@ taxoncount <- function(scientificname = NULL, rank = NULL, dataresourcekey = NUL
   .Deprecated(new="occ_count", package="rgbif", msg="This function is deprecated, and will be removed in a future version. See ?occ_count")
   
   url <- "http://data.gbif.org/ws/rest/taxon/count"
-  args <- compact(list(scientificname = scientificname, rank = rank,
+  args <- rgbif_compact(list(scientificname = scientificname, rank = rank,
                        dataresourcekey = dataresourcekey))
   tt <- content(GET(url, query=args))
   as.numeric(xmlGetAttr(getNodeSet(tt, "//gbif:summary", 
@@ -832,7 +832,7 @@ taxonget <- function(key = NULL)
   
   url = "http://data.gbif.org/ws/rest/taxon/get"
   doit <- function(x) {
-    args <- compact(list(key = x))
+    args <- rgbif_compact(list(key = x))
     tt <- content(GET(url, query=args))
     taxonconceptkeys <- sapply(getNodeSet(tt, "//tc:TaxonConcept[@gbifKey]"), 
                                xmlGetAttr, "gbifKey")
@@ -895,7 +895,7 @@ taxonsearch <- function(scientificname = NULL, rank = NULL, maxresults = 10,
   .Deprecated(new="name_lookup", package="rgbif", msg="This function is deprecated, and will be removed in a future version. See ?name_lookup")
   
   url = "http://data.gbif.org/ws/rest/taxon/list"
-  args <- compact(list(
+  args <- rgbif_compact(list(
     scientificname = scientificname, dataproviderkey = dataproviderkey,
     dataresourcekey = dataresourcekey,  resourcenetworkkey = resourcenetworkkey,
     hostisocountrycode = hostisocountrycode, rank=rank, maxresults=maxresults,
@@ -1316,7 +1316,7 @@ stylegeojson <- function(input, var = NULL, var_col = NULL, var_sym = NULL,
     }
   } else { size_vec <- NULL }
   
-  output <- do.call(cbind, compact(list(input, `marker-color` = color_vec, 
+  output <- do.call(cbind, rgbif_compact(list(input, `marker-color` = color_vec, 
                                         `marker-symbol` = symbol_vec, 
                                         `marker-size` = size_vec)))
   return( output )

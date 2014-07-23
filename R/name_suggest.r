@@ -27,7 +27,7 @@ name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL, start=
                          limit=20, callopts=list())
 {
   url = 'http://api.gbif.org/v1/species/suggest'
-  args <- compact(list(q=q, rank=rank, offset=start, limit=limit))
+  args <- rgbif_compact(list(q=q, rank=rank, offset=start, limit=limit))
   temp <- GET(url, query=args, callopts)
   stop_for_status(temp)
   assert_that(temp$headers$`content-type`=='application/json')

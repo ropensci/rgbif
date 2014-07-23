@@ -49,7 +49,7 @@ elevation <- function(input=NULL, latitude=NULL, longitude=NULL, latlong=NULL,
     
     outout <- list()
     for(i in seq_along(locations)){  
-      args <- compact(list(locations=locations[[i]], sensor='false'))
+      args <- rgbif_compact(list(locations=locations[[i]], sensor='false'))
       tt <- GET(url, query=args, callopts)
       stop_for_status(tt)
       assert_that(tt$headers$`content-type`=='application/json; charset=UTF-8')

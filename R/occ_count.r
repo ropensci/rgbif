@@ -61,7 +61,7 @@ occ_count <- function(taxonKey=NULL, georeferenced=NULL, basisOfRecord=NULL,
   if(any(calls_vec))
     stop("Parameter name changes: \n nubKey -> taxonKey\nParameters gone: \n hostCountry\n catalogNumber")
   
-  args <- compact(list(taxonKey=taxonKey, isGeoreferenced=georeferenced, 
+  args <- rgbif_compact(list(taxonKey=taxonKey, isGeoreferenced=georeferenced, 
                        basisOfRecord=basisOfRecord, datasetKey=datasetKey, 
                        date=date, catalogNumber=catalogNumber, country=country,
                        hostCountry=hostCountry, year=year, protocol=protocol))
@@ -77,9 +77,9 @@ occ_count <- function(taxonKey=NULL, georeferenced=NULL, basisOfRecord=NULL,
                 count = args,
                 schema = list(),
                 basisofRecord = list(),
-                countries = compact(list(publishingCountry=publishingCountry)),
-                year = compact(list(from=from, to=to)),
-                publishingCountry = compact(list(country=ifelse(is.null(country), "US", country) )))
+                countries = rgbif_compact(list(publishingCountry=publishingCountry)),
+                year = rgbif_compact(list(from=from, to=to)),
+                publishingCountry = rgbif_compact(list(country=ifelse(is.null(country), "US", country) )))
   tt <- GET(url, query=args, callopts)
   warn_for_status(tt)
   assert_that(tt$headers$`content-type`=='application/json')

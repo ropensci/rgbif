@@ -66,7 +66,7 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL, datasetKe
     stop("Parameters not currently accepted: \n sourceId")
   
   
-  args <- compact(list(language=language, name=name, datasetKey=datasetKey, 
+  args <- rgbif_compact(list(language=language, name=name, datasetKey=datasetKey, 
                        rank=rank, offset=start, limit=limit, sourceId=sourceId))
   data <- match.arg(data, 
       choices=c('all', 'verbatim', 'name', 'parents', 'children',

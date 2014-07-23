@@ -53,7 +53,7 @@ gbifparser <- function(input, fields='minimal'){
       for(i in iter){ 
         media2[[i]] <- as.list(unlist(c(media[i], media[i+1]))) 
       }
-      media2 <- compact(media2)
+      media2 <- rgbif_compact(media2)
       media2$key <- x$key
       media2$species <- x$species
       media2$decimalLatitude <- x$decimalLatitude
@@ -249,7 +249,7 @@ taxrank <- function()
 #' @keywords internal
 namelkupparser <- function(x){
   data.frame(
-    compact(
+    rgbif_compact(
       x[c('key','nubKey','parentKey','parent','kingdom','phylum',"clazz","order","family",
           "genus","kingdomKey","phylumKey","classKey","orderKey","familyKey","genusKey",
           "canonicalName","authorship","nameType","rank","numOccurrences")]
@@ -404,3 +404,5 @@ gbif_wkt2bbox <- function(wkt=NULL){
   tmp <- bbox(readWKT(wkt))
   as.vector(tmp)
 }
+
+rgbif_compact <- function (l) Filter(Negate(is.null), l)

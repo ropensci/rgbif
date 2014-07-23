@@ -54,7 +54,7 @@
 installations <- function(data = 'all', uuid = NULL, query = NULL, identifier=NULL,
                           identifierType=NULL, limit=20, start=NULL, callopts=list())
 {
-  args <- compact(list(q = query, limit=as.integer(limit), offset=start))
+  args <- rgbif_compact(list(q = query, limit=as.integer(limit), offset=start))
   
   data <- match.arg(data, choices=c('all', 'contact', 'endpoint', 'dataset', 
                                     'identifier', 'tag', 'machineTag', 'comment', 

@@ -55,7 +55,7 @@ name_backbone <- function(name, rank=NULL, kingdom=NULL, phylum=NULL, class=NULL
   start=NULL, limit=20, callopts=list())
 {
   url = 'http://api.gbif.org/v1/species/match'
-  args <- compact(list(name=name, rank=rank, kingdom=kingdom, phylum=phylum, 
+  args <- rgbif_compact(list(name=name, rank=rank, kingdom=kingdom, phylum=phylum, 
                        class=class, order=order, family=family, genus=genus, 
                        strict=strict, verbose=verbose, offset=start, limit=limit))
   temp <- GET(url, query=args, callopts)

@@ -249,7 +249,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
     geometry <- check_wkt(geometry)
 
     # Make arg list
-    args <- compact(list(taxonKey=taxonKey, scientificName=scientificName, country=country,
+    args <- rgbif_compact(list(taxonKey=taxonKey, scientificName=scientificName, country=country,
       publishingCountry=publishingCountry, hasCoordinate=hasCoordinate, typeStatus=typeStatus, recordNumber=recordNumber,
       lastInterpreted=lastInterpreted, continent=continent,geometry=geometry, collectorName=collectorName,
       basisOfRecord=basisOfRecord, datasetKey=datasetKey, eventDate=eventDate, catalogNumber=catalogNumber,
