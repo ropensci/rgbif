@@ -85,9 +85,13 @@ status is being filtered by \code{status=ACCEPTED}}
    FALSE (default) a subset of the data that is thought to be most essential is
    organized into a data.frame.}
 
-\item{return}{One of data, meta, facets, or all. If data, a data.frame with the
+\item{return}{One of data, meta, facets, names, or all. If data, a data.frame with the
 data. facets returns the facets, if facets=TRUE, or empy list if facets=FALSE. meta
-returns the metadata for the entire call. all gives all data back in a list.}
+returns the metadata for the entire call. names returns the vernacular (common) names
+for each taxon. all gives all data back in a list. Each element is NULL if there is
+no contents in that element. hierarchies and names slots are named by the GBIF key,
+which matches the first column of the data.frame in the data slot. So if you wanted to
+combine those somehow, you could easily do so using the key.}
 }
 \value{
 A list of length three. The first element is metadata. The second is
@@ -116,6 +120,12 @@ name_lookup(query='Cnaemidophorus', rank="genus", return="data")
 
 # Just metadata
 name_lookup(query='Cnaemidophorus', rank="genus", return="meta")
+
+# Just hierarchies
+name_lookup(query='Cnaemidophorus', rank="genus", return="hierarchy")
+
+# Just vernacular (common) names
+name_lookup(query='Cnaemidophorus', rank="genus", return="names")
 
 # Fuzzy searching
 name_lookup(query='Cnaemidophor', rank="genus")

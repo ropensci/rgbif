@@ -406,3 +406,8 @@ gbif_wkt2bbox <- function(wkt=NULL){
 }
 
 rgbif_compact <- function (l) Filter(Negate(is.null), l)
+
+compact_null <- function (l){
+  tmp <- Filter(Negate(is.null), l)
+  if(length(tmp) == 0) NULL else tmp
+}

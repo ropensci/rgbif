@@ -48,6 +48,7 @@ name_suggest(q='Puma', rank="infraspecific_name")
 
 name_suggest(q='Puma', limit=2)
 name_suggest(q='Puma', fields=c('key','canonicalName'))
+name_suggest(q='Puma', fields=c('key','canonicalName','higherClassificationMap'))
 }
 }
 \references{

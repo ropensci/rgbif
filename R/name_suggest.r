@@ -30,13 +30,13 @@
 #' 
 #' name_suggest(q='Puma', limit=2)
 #' name_suggest(q='Puma', fields=c('key','canonicalName'))
+#' name_suggest(q='Puma', fields=c('key','canonicalName','higherClassificationMap'))
 #' }
 
 name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL, start=NULL, 
                          limit=20, callopts=list())
 {
   url = 'http://api.gbif.org/v1/species/suggest'
-  rank <- tolower(rank)
   args <- rgbif_compact(list(q=q, rank=rank, offset=start, limit=limit))
   temp <- GET(url, query=args, callopts)
   stop_for_status(temp)
@@ -50,8 +50,24 @@ name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL, start=
   matched <- sapply(toget, function(x) x %in% suggestfields())
   if(!any(matched))
     stop(sprintf("the fields %s are not valid", paste0(names(matched[matched == FALSE]),collapse=",")))
-  out <- lapply(tt, function(x) x[names(x) %in% toget])
-  do.call(rbind.fill, lapply(out, data.frame, stringsAsFactors = FALSE))
+  if(any(fields %in% "higherClassificationMap")){
+    for(i in seq_along(tt)){  
+      temp <- tt[[i]]
+      temp <- temp$higherClassificationMap
+      tt[[i]][['higherClassificationMap']] <- data.frame(id=names(temp), name=do.call(c, unname(temp)), stringsAsFactors = FALSE)
+    }
+    out <- lapply(tt, function(x) x[names(x) %in% toget])
+    df <- do.call(rbind.fill, lapply(out, function(x){
+      data.frame(x[ !names(x) %in% "higherClassificationMap" ], stringsAsFactors = FALSE)
+    }))
+    hier <- sapply(tt, function(x) x[ names(x) %in% "higherClassificationMap" ])
+    hier <- unname(hier)
+    names(hier) <- vapply(tt, "[[", numeric(1), "key")
+    list(data=df, hierarchy=hier)
+  } else {
+    out <- lapply(tt, function(x) x[names(x) %in% toget])
+    do.call(rbind.fill, lapply(out, data.frame, stringsAsFactors = FALSE))
+  }
 }
 
 #' Fields available in gbif_suggest function
@@ -59,10 +75,10 @@ name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL, start=
 #' @keywords internal
 suggestfields <- function(){  
   c("key","datasetTitle","datasetKey","nubKey","parentKey","parent",
-    "kingdom","phylum","clazz","order","family","genus","species",
+    "kingdom","phylum","class","order","family","genus","species",
     "kingdomKey","phylumKey","classKey","orderKey","familyKey","genusKey",
     "speciesKey","species","canonicalName","authorship",
     "accordingTo","nameType","taxonomicStatus","rank","numDescendants",
     "numOccurrences","sourceId","nomenclaturalStatus","threatStatuses",
-    "synonym")
+    "synonym","higherClassificationMap")
 }
