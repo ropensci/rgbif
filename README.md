@@ -74,13 +74,39 @@ Note: Windows users have to first install [Rtools](http://cran.r-project.org/bin
 
 ### Search for occurrence data
 
-#### A single species. Get the taxonKey first with `name_backbone`.
+```coffee
+occ_search(scientificName = "Ursus americanus")
+```
+
+```coffee
+Records found [8330]
+Records returned [20]
+No. unique hierarchies [1]
+No. media records [20]
+Args [scientificName=Ursus americanus, limit=20, fields=minimal]
+First 10 rows of data
+               name       key decimalLatitude decimalLongitude
+1  Ursus americanus 891034709        29.23322       -103.29468
+2  Ursus americanus 891045574        43.73511        -72.52534
+3  Ursus americanus 891041363        29.28284       -103.28908
+4  Ursus americanus 891056344        29.27444       -103.31536
+5  Ursus americanus 911496466        29.27817       -103.30167
+6  Ursus americanus 911500351        37.39940        -79.98851
+7  Ursus americanus 911503296        32.96132       -108.47295
+8  Ursus americanus 911503052        37.79479       -119.86651
+9  Ursus americanus 911501579        47.78411       -122.96344
+10 Ursus americanus 911504089        38.74011        -78.30654
+..              ...       ...             ...              ...
+```
+
+Or you can get the taxon key first with `name_backbone()`. Here, we select to only return the occurrence data.
 
 ```coffee
 key <- name_backbone(name='Helianthus annuus', kingdom='plants')$speciesKey
-
 occ_search(taxonKey=key, limit=20, return='data')
+```
 
+```coffee
                 name  longitude latitude
 1  Helianthus annuus   16.42280 56.57660
 2  Helianthus annuus -116.99648 32.84967
