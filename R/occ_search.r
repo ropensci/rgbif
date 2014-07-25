@@ -429,9 +429,9 @@ pastemax <- function(z, type='counts', n=10){
   xnames <- sapply(xnames, function(x) if(nchar(x)>8) paste0(substr(x, 1, 6), "..", collapse = "") else x, USE.NAMES = FALSE)
   yep <- switch(type, 
          counts = vapply(z, function(y) y$meta$count, numeric(1), USE.NAMES = FALSE),
-         returned = vapply(x, function(y) NROW(y$data), numeric(1), USE.NAMES = FALSE),
-         hier = vapply(x, function(y) length(y$hierarchy), numeric(1), USE.NAMES = FALSE),
-         media = vapply(x, function(y) length(y$media), numeric(1), USE.NAMES = FALSE)
+         returned = vapply(z, function(y) NROW(y$data), numeric(1), USE.NAMES = FALSE),
+         hier = vapply(z, function(y) length(y$hierarchy), numeric(1), USE.NAMES = FALSE),
+         media = vapply(z, function(y) length(y$media), numeric(1), USE.NAMES = FALSE)
   )
   tt <- list(); for(i in seq_along(xnames)){ tt[[i]] <- sprintf("%s (%s)", xnames[i], yep[[i]]) }
   paste0(tt, collapse = ", ")
