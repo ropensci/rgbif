@@ -203,7 +203,7 @@ Most parameters are vectorized, so you can pass in more than one value:
 splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
 keys <- sapply(splist, function(x) name_suggest(x)$key[1], USE.NAMES=FALSE)
 out <- occ_search(taxonKey=keys, limit=5)
-out['2482598']
+out
 ```
 
 
