@@ -358,6 +358,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
   if(any(names(argscoll) %in% names(iter))){
     argscoll[[names(iter)]] <- iter[[names(iter)]]
   }
+  argscoll$fields <- fields
 
   if(is(out, "data.frame")){
     class(out) <- c('data.frame','gbif')
