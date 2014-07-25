@@ -6,7 +6,9 @@ rgbif
 
 ## About
 
-This package gives you access to data from [GBIF](http://www.gbif.org/) via their REST API.
+This package gives you access to data from [GBIF](http://www.gbif.org/) via their REST API. GBIF versions their API - we are currently using `v1` of their API. Though you can still access their API of the form `http://data.gbif.org/ws/rest/...` through older functions - see `?rgbif-deprecated` and see below for a comparison between old and new.
+
+Note that `rgbif` is being integrated with many other sources of species occurrence data in the package `spocc`. [Check it out](https://github.com/ropensci/spocc).
 
 ## Transitioning to the new GBIF API
 
@@ -106,7 +108,7 @@ occ_search(taxonKey=key, limit=20, return='data')
 
 ```coffee
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
-keys <- sapply(splist, function(x) name_backbone(name=x, kingdom='plants')$speciesKey, USE.NAMES=FALSE)
+keys <- sapply(splist, function(x) name_backbone(name=x)$speciesKey, USE.NAMES=FALSE)
 
 occ_search(taxonKey=keys, limit=5, return='data', hasCoordinate=TRUE)
 
@@ -137,13 +139,13 @@ $`2498387`
 
 ### Maps
 
-#### Make a simple map of species occurrences. 
+#### Make a simple map of species occurrences.
 
 ```coffee
 splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
-keys <- sapply(splist, function(x) name_backbone(name=x, kingdom='plants')$speciesKey, USE.NAMES=FALSE)
+keys <- sapply(splist, function(x) name_backbone(name=x)$speciesKey, USE.NAMES=FALSE)
 dat <- occ_search(taxonKey=keys, limit=100, return='data', hasCoordinate=TRUE)
-library(plyr)
+library('plyr')
 datdf <- ldply(dat)
 gbifmap(datdf)
 ```
@@ -156,14 +158,11 @@ License: CC0
 
 This package is part of the [rOpenSci](http://ropensci.org/packages) project.
 
-To cite package `rgbif` in publications use:
-
 ```coffee
 To cite package ‘rgbif’ in publications use:
 
-  Scott Chamberlain, Carl Boettiger, Karthik Ram, Vijay Barve and Dan Mcglinn (2014). rgbif: Interface
-  to the Global Biodiversity Information Facility API. R package version 0.5.0.
-  https://github.com/ropensci/rgbif
+  Scott Chamberlain, Carl Boettiger, Karthik Ram, Vijay Barve and Dan Mcglinn (2014). rgbif: Interface to the Global
+  Biodiversity Information Facility API. R package version 0.6.9.99. https://github.com/ropensci/rgbif
 
 A BibTeX entry for LaTeX users is
 
@@ -171,7 +170,7 @@ A BibTeX entry for LaTeX users is
     title = {rgbif: Interface to the Global Biodiversity Information Facility API},
     author = {Scott Chamberlain and Carl Boettiger and Karthik Ram and Vijay Barve and Dan Mcglinn},
     year = {2014},
-    note = {R package version 0.5.0},
+    note = {R package version 0.6.9.99},
     url = {https://github.com/ropensci/rgbif},
   }
 ```
