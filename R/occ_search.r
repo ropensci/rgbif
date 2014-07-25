@@ -418,6 +418,7 @@ print.gbif <- function (x, ..., n = 10)
 
 pasteargs <- function(b){
   arrrgs <- attr(b, "args")
+  arrrgs <- rgbif_compact(arrrgs)
   tt <- list(); for(i in seq_along(arrrgs)){ tt[[i]] <- sprintf("%s=%s", names(arrrgs)[i], 
           if(length(arrrgs[[i]]) > 1) paste0(arrrgs[[i]], collapse = ",") else arrrgs[[i]]) }
   paste0(tt, collapse = ", ")
