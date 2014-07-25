@@ -347,10 +347,11 @@ library('rgeos')
 plot(readWKT('POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))'))
 
 # Search on country
-isocodes[grep("France", isocodes$name),"code"]
 occ_search(country='US', fields=c('name','country'))
+isocodes[grep("France", isocodes$name),"code"]
 occ_search(country='FR', fields=c('name','country'))
 occ_search(country='DE', fields=c('name','country'))
+occ_search(country=c('US','DE'), fields=c('name','country'))
 
 # Get only occurrences with lat/long data
 occ_search(taxonKey=key, hasCoordinate=TRUE)
@@ -397,7 +398,7 @@ occ_search(year='1999,2000')
 occ_search(decimalLatitude='29.59,29.6')
 
 # Search by specimen type status
-## Look for possible values of the \\code{typeStatus} parameter looking at the typestatus dataset
+## Look for possible values of the typeStatus parameter looking at the typestatus dataset
 occ_search(typeStatus = 'allotype', fields = c('name','typeStatus'))
 
 # Search by specimen record number
@@ -406,8 +407,8 @@ occ_search(typeStatus = 'allotype', fields = c('name','typeStatus'))
 occ_search(recordNumber = 1, fields = c('name','recordNumber','recordedBy'))
 
 # Search by last time interpreted: Date the record was last modified in GBIF
-## The \\code{lastInterpreted} parameter accepts ISO 8601 format dates, including
-## yyyy, yyyy-MM, yyyy-MM-dd, or MM-dd. Range queries are accepted for \\code{lastInterpreted}
+## The lastInterpreted parameter accepts ISO 8601 format dates, including
+## yyyy, yyyy-MM, yyyy-MM-dd, or MM-dd. Range queries are accepted for lastInterpreted
 occ_search(lastInterpreted = '2014-04-02', fields = c('name','lastInterpreted'))
 
 # Search by continent

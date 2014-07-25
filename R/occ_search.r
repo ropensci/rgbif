@@ -94,10 +94,11 @@
 #' plot(readWKT('POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))'))
 #'
 #' # Search on country
-#' isocodes[grep("France", isocodes$name),"code"]
 #' occ_search(country='US', fields=c('name','country'))
+#' isocodes[grep("France", isocodes$name),"code"]
 #' occ_search(country='FR', fields=c('name','country'))
 #' occ_search(country='DE', fields=c('name','country'))
+#' occ_search(country=c('US','DE'), fields=c('name','country'))
 #'
 #' # Get only occurrences with lat/long data
 #' occ_search(taxonKey=key, hasCoordinate=TRUE)
@@ -144,7 +145,7 @@
 #' occ_search(decimalLatitude='29.59,29.6')
 #'
 #' # Search by specimen type status
-#' ## Look for possible values of the \code{typeStatus} parameter looking at the typestatus dataset
+#' ## Look for possible values of the typeStatus parameter looking at the typestatus dataset
 #' occ_search(typeStatus = 'allotype', fields = c('name','typeStatus'))
 #'
 #' # Search by specimen record number
@@ -153,8 +154,8 @@
 #' occ_search(recordNumber = 1, fields = c('name','recordNumber','recordedBy'))
 #'
 #' # Search by last time interpreted: Date the record was last modified in GBIF
-#' ## The \code{lastInterpreted} parameter accepts ISO 8601 format dates, including
-#' ## yyyy, yyyy-MM, yyyy-MM-dd, or MM-dd. Range queries are accepted for \code{lastInterpreted}
+#' ## The lastInterpreted parameter accepts ISO 8601 format dates, including
+#' ## yyyy, yyyy-MM, yyyy-MM-dd, or MM-dd. Range queries are accepted for lastInterpreted
 #' occ_search(lastInterpreted = '2014-04-02', fields = c('name','lastInterpreted'))
 #'
 #' # Search by continent
@@ -257,6 +258,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
       elevation=elevation, depth=depth, institutionCode=institutionCode,
       collectionCode=collectionCode, spatialIssues=spatialIssues, issue=issue, q=search, mediaType=mediatype,
       limit=as.integer(limit), offset=start))
+    argscoll <<- args 
 
     iter <- 0
     sumreturned <- 0
@@ -353,12 +355,20 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
     names(out) <- iter[[1]]
   }
 
+  if(any(names(argscoll) %in% names(iter))){
+    argscoll[[names(iter)]] <- iter[[names(iter)]]
+  }
+
   if(is(out, "data.frame")){
     class(out) <- c('data.frame','gbif')
-  } else { class(out) <- "gbif" }
+  } else { 
+    class(out) <- "gbif"
+    attr(out, 'type') <- if(length(iter)==0) "single" else "many"
+  }
+  attr(out, 'return') <- return
+  attr(out, 'args') <- argscoll
   
   return(out)
-#   out
 }
 
 geometry_handler <- function(x){
@@ -374,17 +384,56 @@ geometry_handler <- function(x){
 #' @rdname occ_search
 print.gbif <- function (x, ..., n = 10)
 {
-  if(all(c('meta','data','hierarchy','media') %in% names(x))){  
+  if(attr(x, "type") == "single" & all(c('meta','data','hierarchy','media') %in% names(x))){  
     cat(rgbif_wrap(sprintf("Records found [%s]", x$meta$count)), "\n")
+    cat(rgbif_wrap(sprintf("Records returned [%s]", NROW(x$data))), "\n")
     cat(rgbif_wrap(sprintf("No. unique hierarchies [%s]", length(x$hierarchy))), "\n")
     cat(rgbif_wrap(sprintf("No. media records [%s]", length(x$media))), "\n")
+    cat(rgbif_wrap(sprintf("Args [%s]", pasteargs(x))), "\n")
     cat(sprintf("First 10 rows of data\n\n"))
     if(is(x$data, "data.frame")) trunc_mat(x$data, n = n) else cat(x$data)
+  } else if(attr(x, "type") == "many") {
+    if(!attr(x, "return") == "all"){
+      if(is(x, "gbif")) x <- unclass(x)
+      attr(x, "type") <- NULL
+      attr(x, "return") <- NULL
+      print(x)
+    } else {
+      cat(rgbif_wrap(sprintf("Occ. found [%s]", pastemax(x))), "\n")
+      cat(rgbif_wrap(sprintf("Occ. returned [%s]", pastemax(x, "returned"))), "\n")
+      cat(rgbif_wrap(sprintf("No. unique hierarchies [%s]", pastemax(x, "hier"))), "\n")
+      cat(rgbif_wrap(sprintf("No. media records [%s]", pastemax(x, "media"))), "\n")
+      cat(rgbif_wrap(sprintf("Args [%s]", pasteargs(x))), "\n")
+      cat(sprintf("First 10 rows of data from %s\n\n", names(x)[1]))
+      if(is(x[[1]]$data, "data.frame")) trunc_mat(x[[1]]$data, n = n) else cat(x[[1]]$data)
+    }
   } else {
     if(is(x, "gbif")) x <- unclass(x)
+    attr(x, "type") <- NULL
+    attr(x, "return") <- NULL
     print(x)
   }
 } 
+
+pasteargs <- function(b){
+  arrrgs <- attr(b, "args")
+  tt <- list(); for(i in seq_along(arrrgs)){ tt[[i]] <- sprintf("%s=%s", names(arrrgs)[i], 
+          if(length(arrrgs[[i]]) > 1) paste0(arrrgs[[i]], collapse = ",") else arrrgs[[i]]) }
+  paste0(tt, collapse = ", ")
+}
+
+pastemax <- function(z, type='counts', n=10){
+  xnames <- names(z)
+  xnames <- sapply(xnames, function(x) if(nchar(x)>8) paste0(substr(x, 1, 6), "..", collapse = "") else x, USE.NAMES = FALSE)
+  yep <- switch(type, 
+         counts = vapply(z, function(y) y$meta$count, numeric(1), USE.NAMES = FALSE),
+         returned = vapply(x, function(y) NROW(y$data), numeric(1), USE.NAMES = FALSE),
+         hier = vapply(x, function(y) length(y$hierarchy), numeric(1), USE.NAMES = FALSE),
+         media = vapply(x, function(y) length(y$media), numeric(1), USE.NAMES = FALSE)
+  )
+  tt <- list(); for(i in seq_along(xnames)){ tt[[i]] <- sprintf("%s (%s)", xnames[i], yep[[i]]) }
+  paste0(tt, collapse = ", ")
+}
 
 trunc_mat <- function(x, n = NULL){
   rows <- nrow(x)
@@ -507,12 +556,12 @@ obj_type <- function (x)
   }
 }
 
-pastemax <- function (z, n = 10){
-    rrows <- vapply(z, nrow, integer(1))
-    tt <- list()
-    for (i in seq_along(rrows)) {
-      tt[[i]] <- sprintf("%s (%s)", gsub("_", " ", names(rrows[i])), 
-                         rrows[[i]])
-    }
-    paste0(tt, collapse = ", ")
-}
+# pastemax <- function (z, n = 10){
+#     rrows <- vapply(z, nrow, integer(1))
+#     tt <- list()
+#     for (i in seq_along(rrows)) {
+#       tt[[i]] <- sprintf("%s (%s)", gsub("_", " ", names(rrows[i])), 
+#                          rrows[[i]])
+#     }
+#     paste0(tt, collapse = ", ")
+# }
