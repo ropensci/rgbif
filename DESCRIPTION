@@ -8,8 +8,6 @@ License: MIT
 Date: 2014-07-25
 Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com"),
-    person("Carl", "Boettiger", role = "aut",
-    email = "cboettig@gmail.com"),
     person("Karthik", "Ram", role = "aut",
     email = "karthik.ram@gmail.com"),
     person("Vijay", "Barve", role = "aut",
