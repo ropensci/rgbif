@@ -8,3 +8,4 @@ man-roxygen
 vignettes/margins.sty
 .Rhistory
 inst/ignore
+cran-comments.md
