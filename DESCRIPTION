@@ -4,7 +4,7 @@ Description: A programmatic interface to the
     Biodiversity Information Facility.
 Title: Interface to the Global Biodiversity Information Facility API
 Version: 0.7.0
-License: MIT
+License: MIT + file LICENSE
 Date: 2014-07-30
 Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com"),
