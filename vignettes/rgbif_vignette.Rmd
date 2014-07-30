@@ -8,7 +8,7 @@ rgbif vignette - Seach and retrieve data from the Global Biodiverity Information
 
 ## About the package
 
-`rgbif` is an R package to search and retrieve data from the Global Biodiverity Information Facilty (GBIF). `rgbif` wraps R code around the [GBIF API][gbifapi] to allow you to talk to GBIF from R. 
+`rgbif` is an R package to search and retrieve data from the Global Biodiverity Information Facilty (GBIF). `rgbif` wraps R code around the [GBIF API][gbifapi] to allow you to talk to GBIF from R.
 
 ********************
 
@@ -132,13 +132,13 @@ taxrank()
 ```
 
 ```
-[1] "kingdom"       "phylum"        "class"         "order"        
+[1] "kingdom"       "phylum"        "class"         "order"
 [5] "family"        "genus"         "species"       "infraspecific"
 ```
 
 `name_lookup()` does full text search of name usages covering the scientific and vernacular name, the species description, distribution and the entire classification across all name usages of all or some checklists. Results are ordered by relevance as this search usually returns a lot of results.
 
-By default `name_lookup()` returns five slots of information: meta, data, facets, hierarchies, and names. hierarchies and names elements are named by their matching GBIF key in the `data.frame` in the data slot. 
+By default `name_lookup()` returns five slots of information: meta, data, facets, hierarchies, and names. hierarchies and names elements are named by their matching GBIF key in the `data.frame` in the data slot.
 
 
 ```r
@@ -203,7 +203,7 @@ out$hierarchies[1:2]
 ## $`125798198`
 ##     rankkey     name
 ## 1 137006861 Chordata
-## 
+##
 ## $`116665331`
 ##     rankkey     name
 ## 1 116630539 Animalia
@@ -219,18 +219,16 @@ out$names[1:2]
 ##   vernacularName   language
 ## 1    Triconodont    CATALAN
 ## 2   Triconodonta      CZECH
-## 3     Säugetiere     GERMAN
 ## 4   Triconodonta      DUTCH
 ## 5   Trykonodonty     POLISH
 ## 6   Triconodonta PORTUGUESE
-## 7   Триконодонты    RUSSIAN
-## 
+##
 ## $`116665331`
 ##   vernacularName language
 ## 1        Mammals  ENGLISH
 ```
 
-Search for a genus 
+Search for a genus
 
 
 ```r
@@ -337,7 +335,7 @@ head(name_lookup('Helianthus annuus', rank="species", return = 'data'))
 6 Spermatophyta 111449175 111449177
 ```
 
-The function `name_usage()` works with lots of different name endpoints in GBIF, listed at \url{http://www.gbif.org/developer/species#nameUsages}. 
+The function `name_usage()` works with lots of different name endpoints in GBIF, listed at \url{http://www.gbif.org/developer/species#nameUsages}.
 
 
 ```r
@@ -350,41 +348,41 @@ compact(lapply(out$results, function(x) if(x$language=="FRENCH") x else NULL))
 ## [[1]]
 ## [[1]]$vernacularName
 ## [1] "grand soleil"
-## 
+##
 ## [[1]]$language
 ## [1] "FRENCH"
-## 
+##
 ## [[1]]$sourceTaxonKey
 ## [1] 1.07e+08
-## 
+##
 ## [[1]]$preferred
 ## [1] FALSE
-## 
-## 
+##
+##
 ## [[2]]
 ## [[2]]$vernacularName
 ## [1] "grand soleil"
-## 
+##
 ## [[2]]$language
 ## [1] "FRENCH"
-## 
+##
 ## [[2]]$sourceTaxonKey
 ## [1] 1e+08
-## 
+##
 ## [[2]]$preferred
 ## [1] FALSE
-## 
-## 
+##
+##
 ## [[3]]
 ## [[3]]$vernacularName
-## [1] "hélianthe annuel"
-## 
+## [1] "helianthe annuel"
+##
 ## [[3]]$language
 ## [1] "FRENCH"
-## 
+##
 ## [[3]]$sourceTaxonKey
 ## [1] 1e+08
-## 
+##
 ## [[3]]$preferred
 ## [1] FALSE
 ```
@@ -399,63 +397,63 @@ name_backbone(name='Helianthus', rank='genus', kingdom='plants')
 ```
 ## $usageKey
 ## [1] 3119134
-## 
+##
 ## $scientificName
 ## [1] "Helianthus L."
-## 
+##
 ## $canonicalName
 ## [1] "Helianthus"
-## 
+##
 ## $rank
 ## [1] "GENUS"
-## 
+##
 ## $synonym
 ## [1] FALSE
-## 
+##
 ## $confidence
 ## [1] 97
-## 
+##
 ## $matchType
 ## [1] "EXACT"
-## 
+##
 ## $kingdom
 ## [1] "Plantae"
-## 
+##
 ## $phylum
 ## [1] "Magnoliophyta"
-## 
+##
 ## $order
 ## [1] "Asterales"
-## 
+##
 ## $family
 ## [1] "Asteraceae"
-## 
+##
 ## $genus
 ## [1] "Helianthus"
-## 
+##
 ## $kingdomKey
 ## [1] 6
-## 
+##
 ## $phylumKey
 ## [1] 49
-## 
+##
 ## $classKey
 ## [1] 220
-## 
+##
 ## $orderKey
 ## [1] 414
-## 
+##
 ## $familyKey
 ## [1] 3065
-## 
+##
 ## $genusKey
 ## [1] 3119134
-## 
+##
 ## $class
 ## [1] "Magnoliopsida"
 ```
 
-The function `name_suggest()` is optimized for speed, and gives back suggested names based on query parameters. 
+The function `name_suggest()` is optimized for speed, and gives back suggested names based on query parameters.
 
 
 ```r
@@ -491,7 +489,7 @@ name_suggest(q='Puma concolor')
 
 ## Get data for a single occurrence. Note that data is returned as a list, with slots for metadata and data, or as a hierarchy, or just data.
 
-Just data 
+Just data
 
 
 ```r
@@ -575,13 +573,13 @@ occ_search(scientificName = "Ursus americanus")
 ```
 
 ```
-## Records found [8330] 
-## Records returned [20] 
-## No. unique hierarchies [1] 
-## No. media records [20] 
-## Args [scientificName=Ursus americanus, limit=20, fields=minimal] 
+## Records found [8330]
+## Records returned [20]
+## No. unique hierarchies [1]
+## No. media records [20]
+## Args [scientificName=Ursus americanus, limit=20, fields=minimal]
 ## First 10 rows of data
-## 
+##
 ##                name       key decimalLatitude decimalLongitude
 ## 1  Ursus americanus 891034709           29.23          -103.29
 ## 2  Ursus americanus 891045574           43.74           -72.53
@@ -612,13 +610,13 @@ occ_search(taxonKey=key, limit=2)
 ```
 
 ```
-## Records found [19536] 
-## Records returned [2] 
-## No. unique hierarchies [1] 
-## No. media records [2] 
-## Args [taxonKey=3119195, limit=2, fields=minimal] 
+## Records found [19536]
+## Records returned [2]
+## No. unique hierarchies [1]
+## No. media records [2]
+## Args [taxonKey=3119195, limit=2, fields=minimal]
 ## First 10 rows of data
-## 
+##
 ##                name       key decimalLatitude decimalLongitude
 ## 1 Helianthus annuus 899948224           1.279           103.80
 ## 2 Helianthus annuus 922042404          -3.281            37.52
@@ -636,7 +634,7 @@ occ_search(taxonKey=key, return='meta')
 ## 1      0    20        FALSE 19536
 ```
 
-You can choose what fields to return. This isn't passed on to the API query to GBIF as they don't allow that, but we filter out the columns before we give the data back to you. 
+You can choose what fields to return. This isn't passed on to the API query to GBIF as they don't allow that, but we filter out the columns before we give the data back to you.
 
 
 ```r
@@ -644,14 +642,14 @@ occ_search(scientificName = "Ursus americanus", fields=c('name','basisOfRecord',
 ```
 
 ```
-## Records found [8330] 
-## Records returned [20] 
-## No. unique hierarchies [1] 
-## No. media records [20] 
+## Records found [8330]
+## Records returned [20]
+## No. unique hierarchies [1]
+## No. media records [20]
 ## Args [scientificName=Ursus americanus, limit=20,
-##      fields=name,basisOfRecord,protocol] 
+##      fields=name,basisOfRecord,protocol]
 ## First 10 rows of data
-## 
+##
 ##                name    protocol     basisOfRecord
 ## 1  Ursus americanus DWC_ARCHIVE HUMAN_OBSERVATION
 ## 2  Ursus americanus DWC_ARCHIVE HUMAN_OBSERVATION
@@ -677,13 +675,13 @@ out
 ```
 
 ```
-## Occ. found [2482598 (255927), 2492010 (1436233), 2498387 (416768)] 
-## Occ. returned [2482598 (5), 2492010 (5), 2498387 (5)] 
-## No. unique hierarchies [2482598 (1), 2492010 (1), 2498387 (1)] 
-## No. media records [2482598 (5), 2492010 (5), 2498387 (5)] 
-## Args [taxonKey=2482598,2492010,2498387, limit=5, fields=minimal] 
+## Occ. found [2482598 (255927), 2492010 (1436233), 2498387 (416768)]
+## Occ. returned [2482598 (5), 2492010 (5), 2498387 (5)]
+## No. unique hierarchies [2482598 (1), 2492010 (1), 2498387 (1)]
+## No. media records [2482598 (5), 2492010 (5), 2498387 (5)]
+## Args [taxonKey=2482598,2492010,2498387, limit=5, fields=minimal]
 ## First 10 rows of data from 2482598
-## 
+##
 ##                  name       key decimalLatitude decimalLongitude
 ## 1 Cyanocitta stelleri 891781350           37.74           -122.5
 ## 2 Cyanocitta stelleri 891051562           38.94           -120.0
@@ -697,7 +695,7 @@ out
 
 ## Maps
 
-Static map using the ggplot2 package. Make a map of *Puma concolor* occurrences. 
+Static map using the ggplot2 package. Make a map of *Puma concolor* occurrences.
 
 
 ```r
@@ -706,6 +704,6 @@ dat <- occ_search(taxonKey=key, return='data', limit=300)
 gbifmap(input=dat)
 ```
 
-![plot of chunk gbifmap1](figure/gbifmap1.png) 
+![plot of chunk gbifmap1](figure/gbifmap1.png)
 
 [gbifapi]: http://data.gbif.org/tutorial/services
