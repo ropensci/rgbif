@@ -187,16 +187,16 @@ This package is part of the [rOpenSci](http://ropensci.org/packages) project.
 ```coffee
 To cite package ‘rgbif’ in publications use:
 
-  Scott Chamberlain, Carl Boettiger, Karthik Ram, Vijay Barve and Dan Mcglinn (2014). rgbif: Interface to the Global
-  Biodiversity Information Facility API. R package version 0.6.9.99. https://github.com/ropensci/rgbif
+  Scott Chamberlain, Karthik Ram, Vijay Barve and Dan Mcglinn (2014). rgbif: Interface to the Global
+  Biodiversity Information Facility API. R package version 0.7.0. https://github.com/ropensci/rgbif
 
 A BibTeX entry for LaTeX users is
 
   @Manual{,
     title = {rgbif: Interface to the Global Biodiversity Information Facility API},
-    author = {Scott Chamberlain and Carl Boettiger and Karthik Ram and Vijay Barve and Dan Mcglinn},
+    author = {Scott Chamberlain and Karthik Ram and Vijay Barve and Dan Mcglinn},
     year = {2014},
-    note = {R package version 0.6.9.99},
+    note = {R package version 0.7.0},
     url = {https://github.com/ropensci/rgbif},
   }
 ```
