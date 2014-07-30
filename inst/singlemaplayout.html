@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>rgbif photo viewer</title>
+<meta name="viewport"" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+<script src="https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js"></script>
+<link href="https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.css" rel="stylesheet"/>
+<link rel="shortcut icon" href="http://ropensci.org/assets/flat-ui/images/favicon.ico">
+<style>
+body { margin:0; padding:0; }
+#map { position:absolute; top:0; bottom:0; width:100%; }
+</style>
+</head>
+<body>
+
+  <div id="map"></div>
+
+  <script>
+    var map = L.mapbox.map("map", "examples.map-i86nkdio")
+    .setView([0, 0], 2);
+
+    var myLayer = L.mapbox.featureLayer().addTo(map);
+
+    var geoJson = [
+      {{#photos}}
+      {
+        type: "Feature",
+          "geometry": { "type": "Point", "coordinates": [ {{decimalLongitude}}, {{decimalLatitude}} ]},
+          "properties": {
+              "image": "{{{identifier}}}",
+              "url": "{{{references}}}",
+              "marker-color": "#FB8A24",
+              "name": "{{species}}"
+          }
+      },
+      {{/photos}}
+    ];
+
+    myLayer.on("layeradd", function(e) {
+      var marker = e.layer,
+      feature = marker.feature;
+
+    var popupContent =  '<a target="_blank" class="popup" href="' + feature.properties.url + '">' +
+      '<img src="' + feature.properties.image + '"  height="200" style="border-radius: 10px 10px 10px 10px;" />\n' + feature.properties.name + '</a>';
+
+
+    marker.bindPopup(popupContent,{
+          closeButton: false,
+          minWidth: 320
+        });
+    });
+
+    myLayer.setGeoJSON(geoJson);
+  </script>
+
+</body>
+</html>
+'

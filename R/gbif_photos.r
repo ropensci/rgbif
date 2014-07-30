@@ -1,50 +1,78 @@
-#' View photos
-#' 
+#' View photos from GBIF.
+#'
 #' @import whisker
 #' @export
 #' @param input Input output from occ_search
-#' @param output Output file name and path
-#' @param browse (logical) Browse output
+#' @param output Output folder path. If not given uses temporary folder.
+#' @param which One of map or table (default).
+#' @param browse (logical) Browse output (default: TRUE)
+#' @details The max number of photos you can see when which="map" is ~160, so cycle through 
+#' if you have more than that. 
 #' @examples \dontrun{
 #' (res <- occ_search(mediatype = 'StillImage', return = "media"))
 #' gbif_photos(res)
-#' 
-#' res <- occ_search(scientificName = "Helianthus", mediatype = 'StillImage', return = "media")
-#' gbif_photos(res)
-#' 
+#' gbif_photos(res, which='map')
+#'
 #' res <- occ_search(scientificName = "Aves", mediatype = 'StillImage', return = "media", limit=150)
 #' gbif_photos(res)
+#' gbif_photos(res, output = '~/barfoo')
 #' }
 
-gbif_photos <- function(input = NULL, output = NULL, browse = TRUE)
+gbif_photos <- function(input = NULL, output = NULL, which='table', browse = TRUE)
 {
   if(is.null(input))
      stop("Please supply some input")
-  
-  if(length(input) > 20){
-    input <- split(input, ceiling(seq_along(input)/20))
-    filenames <- replicate(length(input), tempfile(fileext=".html"))
-    filenames <- as.list(filenames)
-    links <- list()
-    for(i in seq_along(filenames)) links[[i]] <- list(url=filenames[[i]], pagenum=i)
-    
-    for(i in seq_along(input)){
-      photos <- foo(input[[i]])
-      rendered <- whisker.render(template)
-      paginated <- whisker.render(pagination)
-      rendered <- paste0(rendered, paginated, footer)
-      write(rendered, file = filenames[[i]])
-    }
-    
-    if(browse) browseURL(filenames[[1]])
-  } else {
+
+  if(which=='map'){
     photos <- foo(input)
-    rendered <- whisker.render(template)
-    rendered <- paste0(rendered, footer)
-    if(is.null(output))
-      output <- tempfile(fileext=".html")
-    write(rendered, file = output)
-    if(browse) browseURL(output)
+    outfile <- dirhandler(output)
+    filepath <- system.file("singlemaplayout.html", package = "rgbif")
+    ff <- paste(readLines(filepath), collapse = "\n")
+    rr <- whisker.render(ff)
+    write(rr, file = outfile)
+    if(browse) browseURL(outfile)
+  } else {
+    if(length(input) > 20){
+      outdir <- dirhandler(output, 'dir')
+      input <- split(input, ceiling(seq_along(input)/20))
+      filenames <- replicate(length(input), path.expand(tempfile(fileext=".html", tmpdir = outdir)))
+      filenames <- as.list(filenames)
+      links <- list()
+      for(i in seq_along(filenames)) links[[i]] <- list(url=filenames[[i]], pagenum=i)
+      
+      for(i in seq_along(input)){
+        photos <- foo(input[[i]])
+        mappaths <- makemapfiles(photos, outdir)
+        photos <- Map(function(x,y) c(x, mappath=y), photos, mappaths)
+        rendered <- whisker.render(template)
+        paginated <- whisker.render(pagination)
+        rendered <- paste0(rendered, paginated, footer)
+        write(rendered, file = filenames[[i]])
+      }
+      
+      if(browse) browseURL(filenames[[1]])
+    } else {
+      outfile <- dirhandler(output)
+      outdir <- dirname(outfile)
+      photos <- foo(input)
+      mappaths <- makemapfiles(photos, outdir)
+      photos <- Map(function(x,y) c(x, mappath=y), photos, mappaths)
+      rendered <- whisker.render(template)
+      rendered <- paste0(rendered, footer)
+      write(rendered, file = outfile)
+      if(browse) browseURL(outfile)
+    }
+  }
+}
+
+dirhandler <- function(x, which="file"){
+  if(is.null(x)){
+    dir <- tempdir()
+    dir.create(dir, recursive = TRUE, showWarnings = FALSE)
+    switch(which, file=file.path(dir, "index.html"), dir=dir)
+  } else {
+    if(!file.exists(x)) dir.create(x, recursive = TRUE, showWarnings = FALSE)
+    switch(which, file=file.path(x, "index.html"), dir=x)
   }
 }
 
@@ -56,7 +84,7 @@ foo <- function(x){
     list(c(tmp, y[!names(y) %in% c('key','species','decimalLatitude','decimalLongitude','country')][[1]][c(3:4)]))
   })
   do.call(c, unname(photos))
-} 
+}
 
 template <- '
 <!DOCTYPE html>
@@ -81,19 +109,17 @@ template <- '
 <table class="table table-striped table-hover" align="center">
 <thead>
 <tr>
-<th>Photo</th>
 <th>Species</th>
-<th>Country</th>
+<th>Photo</th>
 <th>Location</th>
 </tr>
 </thead>
 <tbody>
 {{#photos}}
 <tr>
-<td><a href="{{{references}}}"><img src="{{{identifier}}}" height="250"></a></td>
-<td>{{species}}</td>
-<td>{{country}}</td>
-<td><a href="https://www.google.com/maps/@{{decimalLatitude}},{{decimalLongitude}},15z" class="btn btn-primary btn-sm">Map</a></td>
+<td><i>{{species}}</i></td>
+<td><a href="{{{references}}}"><img src="{{{identifier}}}" height="200" style="border-radius: 10px 10px 10px 10px; max-width: 400px"></a></td>
+<td><iframe src="{{mappath}}" width="400" height="200" frameborder="0"></iframe></td>
 </tr>
 {{/photos}}
 </tbody>
@@ -117,3 +143,55 @@ footer <- '
 
 </body>
 </html>'
+
+makemapfiles <- function(x, dir){
+  mapfiles <- list()
+  for(i in seq_along(x)){
+    file <- path.expand(tempfile("map", tmpdir = dir, fileext = ".html"))
+    mapfiles[[i]] <- file
+    tmp <- whisker.render(map, data = x[[i]])
+    write(tmp, file = file)
+  }
+  mapfiles
+}
+
+map <- '
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Single marker</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+<script src="https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js"></script>
+<link href="https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.css" rel="stylesheet" />
+<style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; width:100%; }
+</style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<script>
+var map = L.mapbox.map("map", "examples.map-i86nkdio")
+    .setView([{{decimalLatitude}}, {{decimalLongitude}}], 5);
+
+L.mapbox.featureLayer({
+    type: "Feature",
+    geometry: {
+        type: "Point",
+        coordinates: [ {{decimalLongitude}}, {{decimalLatitude}} ]
+    },
+    properties: {
+        "title": "{{species}}",
+        "marker-size": "large",
+        "marker-color": "#FB8A24",
+        "marker-symbol": "garden"
+}
+}).addTo(map);
+</script>
+
+  </body>
+  </html>
+'
