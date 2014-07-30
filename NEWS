@@ -1,3 +1,31 @@
+rgbif 0.7.0
+===============
+
+NEW FEATURES
+
+* `occ_search()` now has a `dplyr` like summary output when `return='all'`. See `?occ_search` for examples. You can still easily access all data, by indexing to `meta`, `hierarchy`, `data`, or `media` via e.g., `$data`, `['data']`, or `[['data']]`. (#95)
+* Media now returned from the GBIF API. Thus, in `occ_search()`, we now return a media slot in the output list by default.
+* New function `gbif_photos()` to view media files (photos in the wild or of museum specimens). Two options are available, `which='map'` creates a single map which presents the image when the user clicks on the point, and `which='table'` in which a table has one row for each image, presenting the image and an interactive map with the single point. (#88)
+* Two new packages are imported: `sp` and `whisker`
+
+IMPROVEMENTS
+
+* GBIF updated their API, now at v1. URL endpoints in `rgbif` changed accordingly. (#92)
+* GBIF switched to using 2-letter country codes. Take note. (#90)
+* GBIF switched all parameters to `camelCase` from `under_score` style - changed accordingly in `rgbif`.
+* Using package custom version of `plyr::compact()` instead of importing from `plyr`.
+* In `name_lookup()` removed `facet_only` parameter as it doesn't do anything - use `limit=0` instead. Further, added two new slots of output: `hierarchy` and `names` (for common/vernacular names) (#96). The output can be determined by user via the `return` parameter.
+* In `name_suggest()`, if the field `higherClassificationMap` is selected to be returned via the `fields` parameter, a list is returned with a data frame, and a list of the hierarchies separately. If `higherClassificationMap` is not selected, only a data frame is returned.
+* `occ_search()` gains new parameters  `mediatype` and `issue` (#93), with detailed list of possible options for the `issue` parameter. Gains new examples for searching for images, examples of calls that will throw errors.
+* Updated the vignette.
+
+BUG FIXES
+
+* Added better error message to `check_wkt()`.
+* `facet_only` parameter removed from `dataset_search()` function as it doesn't do anything - use `limit=0` instead.
+* Fixed some examples that didn't work correctly.
+*
+
 rgbif 0.6.3
 ===============
 
