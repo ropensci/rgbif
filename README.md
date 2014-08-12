@@ -2,6 +2,7 @@ rgbif
 =====
 
 [![Build Status](https://api.travis-ci.org/ropensci/rgbif.png?branch=master)](https://travis-ci.org/ropensci/rgbif)
+[![Build status](https://ci.appveyor.com/api/projects/status/0jrf2x052778rgk3/branch/master)](https://ci.appveyor.com/project/sckott/rgbif/branch/master)
 <!-- dev branch [![Build Status](https://api.travis-ci.org/ropensci/rgbif.png?branch=dev)](https://travis-ci.org/ropensci/rgbif) -->
 
 ## About
