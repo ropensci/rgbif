@@ -178,7 +178,7 @@ gbifmap(datdf)
 
 ![](inst/assets/img/gbifmap.png)
 
-Please report any issues or bugs](https://github.com/ropensci/rgbif/issues).
+Please [report any issues or bugs](https://github.com/ropensci/rgbif/issues).
 
 License: CC0
 
