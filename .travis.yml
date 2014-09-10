@@ -1,25 +1,22 @@
 language: c
-
-script: ./travis-tool.sh run_tests
-
+script: "./travis-tool.sh run_tests"
 before_script:
 - curl -OL http://raw.github.com/craigcitro/r-travis/master/scripts/travis-tool.sh
 - chmod 755 ./travis-tool.sh
 - sudo apt-get update -qq
-- sudo apt-get install -y gdal-bin libgdal-dev libgdal1-dev netcdf-bin libproj-dev libgdal1h
-- ./travis-tool.sh install_aptget gdal-bin
-- ./travis-tool.sh bootstrap
-- ./travis-tool.sh install_deps
-- ./travis-tool.sh github_package assertthat
-
+- sudo apt-get install -y gdal-bin libgdal-dev libgdal1-dev netcdf-bin libproj-dev
+  libgdal1h
+- "./travis-tool.sh install_aptget gdal-bin"
+- "./travis-tool.sh bootstrap"
+- "./travis-tool.sh install_deps"
+- "./travis-tool.sh github_package assertthat"
 env:
-   global:
-     - R_BUILD_ARGS=" "
-     - R_CHECK_ARGS="--as-cran"
-     - BOOTSTRAP_LATEX="1"
-
+  global:
+  - R_BUILD_ARGS=" "
+  - R_CHECK_ARGS="--as-cran"
+  - BOOTSTRAP_LATEX="1"
 after_failure:
-  - ./travis-tool.sh dump_logs
-
+- "./travis-tool.sh dump_logs"
 notifications:
- slack: ropensci:wh30e1MP9Am3wXb2wJx1ZRFi
+  slack:
+    secure: Aq1LGZJWf7MbXbVNaWC2YWUwG4+da3SjmmGfiZGArzdwR9ZOxxx7AO6dOZs8pTbxVg8xnViqMp08PQQOB2JxDByJlrf8XtK4ZMtTak+8kceQ6iw0MMjkb46zIMQTi/LhkhkgXiD93Z2f8nq5ZcXu5W609tqbPRaqqhDPH6v6YNI=
