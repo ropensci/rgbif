@@ -28,7 +28,7 @@ gbifmap <- function(input = NULL, mapdatabase = "world", region = ".",
 {  
   tomap <- input[complete.cases(input$decimalLatitude, input$decimalLatitude), ]
   tomap <- tomap[!tomap$decimalLongitude==0 & !tomap$decimalLatitude==0,]
-  tomap <- input[-(which(tomap$decimalLatitude <=90 || tomap$decimalLongitude <=180)), ]
+  tomap <- tomap[-(which(tomap$decimalLatitude <=90 || tomap$decimalLongitude <=180)), ]
   tomap$name <- as.factor(gbif_capwords(tomap$name, onlyfirst=TRUE))
   
   if(length(unique(tomap$name))==1){ theme2 <- theme(legend.position="none") } else 
