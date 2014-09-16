@@ -280,7 +280,6 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
     while(sumreturned < limit){
       iter <- iter + 1
       temp <- GET(url, query=args, callopts)
-#       stop_for_status(temp)
       if(temp$status_code > 200){
         stop(content(temp, as = "text"))
       }
