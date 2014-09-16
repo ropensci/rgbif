@@ -125,3 +125,12 @@ NULL
 #' @docType data
 #' @keywords data
 NULL
+
+#' Vector of fields in the output for the function \code{occ_search}
+#' 
+#' These fields can be specified in the \code{fields} parameer in the \code{occ_search} function.
+#' 
+#' @name occ_fields
+#' @docType data
+#' @keywords data
+NULL
