@@ -94,12 +94,15 @@
 #' function. See an example below that passes in the \code{verbose} function to
 #' get details on the http call.
 #'
-#' \bold{Scientific names vs. taxon keys:} In the previous GBIF API and the version of rgbif that wrapped
-#' that API, you could search the equivalent of this function with a species name, which was
-#' convenient. However, names are messy right. So it sorta makes sense to sort out the species
+#' \bold{Scientific names vs. taxon keys:} In the previous GBIF API and the version of rgbif that 
+#' wrapped that API, you could search the equivalent of this function with a species name, which 
+#' was convenient. However, names are messy right. So it sorta makes sense to sort out the species
 #' key numbers you want exactly, and then get your occurrence data with this function. GBIF has
 #' added a parameter scientificName to allow searches by scientific names in this function - which
-#' includes synonym taxa.
+#' includes synonym taxa. \emph{Note:} that if you do use the scientificName parameter, we will 
+#' check internally that it's not a synonym of an accepted name, and if it is, we'll search on the 
+#' accepted name. If you want to force searching by a synonym do so by finding the GBIF identifier
+#' first with any \code{name_*} functions, then pass that ID to the \code{taxonKey} parameter. 
 #'
 #' \bold{WKT:} Examples of valid WKT objects:
 #' \itemize{

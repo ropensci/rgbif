@@ -71,13 +71,17 @@
 #' occ_search(collectorName=c("smith","BJ Stacey"))
 #'
 #' # Pass in curl options for extra fun
-#' library(httr)
+#' library('httr')
 #' occ_search(taxonKey=key, limit=20, return='hier', callopts=verbose())
 #'
 #' # Search for many species
 #' splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
 #' keys <- sapply(splist, function(x) name_suggest(x)$key[1], USE.NAMES=FALSE)
 #' occ_search(taxonKey=keys, limit=5, return='data')
+#' 
+#' # Search using a synonym name
+#' #  Note that you'll see a message printing out that the accepted name will be used
+#' occ_search(scientificName = 'Pulsatilla patens', fields = c('name','scientificName'), limit=5)
 #'
 #' # Search on latitidue and longitude
 #' occ_search(search="kingfisher", decimalLatitude=50, decimalLongitude=-10)
@@ -248,12 +252,17 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
 
     # check that wkt is proper format and of 1 of 4 allowed types
     geometry <- check_wkt(geometry)
+    
     # Check synonym if scientificName was given
     if (!is.null(scientificName)) {
-        namecheck <- name_backbone(scientificName)
-        if (namecheck$synonym)
-            scientificName <- unlist(namecheck[[tolower(namecheck$rank)]])
+      sciname_old <- scientificName
+      namecheck <- name_backbone(scientificName)
+      if (namecheck$synonym){
+        scientificName <- namecheck[[tolower(namecheck$rank)]]
+        message(sprintf("%s is a synonym of %s \n the latter used & will include synonym records", sciname_old, scientificName))
+      }
     }
+    
     # Make arg list
     args <- rgbif_compact(list(taxonKey=taxonKey, scientificName=scientificName, country=country,
       publishingCountry=publishingCountry, hasCoordinate=hasCoordinate, typeStatus=typeStatus, recordNumber=recordNumber,
