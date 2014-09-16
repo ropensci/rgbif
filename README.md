@@ -176,7 +176,7 @@ datdf <- ldply(dat)
 gbifmap(datdf)
 ```
 
-![](inst/assets/img/gbifmap2.png)
+![](inst/assets/img/gbifmap.png)
 
 Please [report any issues or bugs](https://github.com/ropensci/rgbif/issues).
 
