@@ -248,7 +248,12 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
 
     # check that wkt is proper format and of 1 of 4 allowed types
     geometry <- check_wkt(geometry)
-
+    # Check synonym if scientificName was given
+    if (!is.null(scientificName)) {
+        namecheck <- name_backbone(scientificName)
+        if (namecheck$synonym)
+            scientificName <- unlist(namecheck[[tolower(namecheck$rank)]])
+    }
     # Make arg list
     args <- rgbif_compact(list(taxonKey=taxonKey, scientificName=scientificName, country=country,
       publishingCountry=publishingCountry, hasCoordinate=hasCoordinate, typeStatus=typeStatus, recordNumber=recordNumber,
@@ -567,3 +572,4 @@ obj_type <- function (x)
 #     }
 #     paste0(tt, collapse = ", ")
 # }
+
