@@ -242,8 +242,8 @@ http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.h
  time (1970).
  \item MULTIMEDIA_DATE_INVALID An invalid date is given for dc:created of a multimedia object.
  \item MULTIMEDIA_URI_INVALID An invalid uri is given for a multimedia object.
- \item PRESUMED_NEGATED_LATITUDE Latitude appears to be negated, e.g.
- \item PRESUMED_NEGATED_LONGITUDE Longitude appears to be negated, e.g.
+ \item PRESUMED_NEGATED_LATITUDE Latitude appears to be negated, e.g. 32.3 instead of -32.3
+ \item PRESUMED_NEGATED_LONGITUDE Longitude appears to be negated, e.g. 32.3 instead of -32.3
  \item PRESUMED_SWAPPED_COORDINATE Latitude and longitude appear to be swapped.
  \item RECORDED_DATE_INVALID A (partial) invalid date is given, such as a non existing date,
  invalid zero month, etc.
@@ -433,6 +433,23 @@ occ_search(mediatype = 'Sound', return='media')
 # Query based on issues - see Details for options
 occ_search(taxonKey=1, issue='DEPTH_UNLIKELY', fields =
    c('name','key','decimalLatitude','decimalLongitude','depth'))
+
+# Parsing output by issue
+res <- occ_search(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))', limit = 50)
+## what do issues mean, can print whole table, or search for matches
+head(gbifissues)
+gbifissues[ gbifissues$code \%in\% c('cdround','cudc','gass84','txmathi'), ]
+## or parse issues in various ways
+### remove data rows with certain issue classes
+res \%>\% occ_issues(-gass84, -mdatunl)
+### split issues into separate columns
+res \%>\% occ_issues(mutate = "split")
+### expand issues to more descriptive names
+res \%>\% occ_issues(mutate = "expand")
+### split and expand
+res \%>\% occ_issues(mutate = "split_expand")
+### split, expand, and remove an issue class
+res \%>\% occ_issues(-gass84, mutate = "split_expand")
 }
 
 \donttest{

@@ -15,7 +15,7 @@ get_hier <- function(x, h1, h2){
 
 #' Parser for gbif data
 #' @param input A list
-#' @param fields (character) Default ('minimal') will return just taxon name, key, latitude, and 
+#' @param fields (character) Default ('minimal') will return just taxon name, key, latitude, and
 #'    longitute. 'all' returns all fields. Or specify each field you want returned by name, e.g.
 #'    fields = c('name','latitude','altitude').
 #' @export
@@ -40,30 +40,30 @@ gbifparser <- function(input, fields='minimal'){
     {
       usename <- hier[[nrow(hier),"name"]]
     }
-    
+
     # issues
-    x[names(x) %in% "issues"] <- paste(x[names(x) %in% "issues"][[1]], collapse=",")
-    
+    x[names(x) %in% "issues"] <- parse_issues(x)
+
     # media
     if("media" %in% names(x)){
       media <- x[names(x) %in% "media"]
       media <- lapply(media$media, as.list)
       media2 <- list()
       iter <- seq(1, length(media), 2)
-      for(i in iter){ 
-        media2[[i]] <- as.list(unlist(c(media[i], media[i+1]))) 
+      for(i in iter){
+        media2[[i]] <- as.list(unlist(c(media[i], media[i+1])))
       }
       media2 <- rgbif_compact(media2)
       media2$key <- x$key
       media2$species <- x$species
       media2$decimalLatitude <- x$decimalLatitude
       media2$decimalLongitude <- x$decimalLongitude
-      media2$country <- x$country 
+      media2$country <- x$country
       media2 <- list(media2)
       names(media2) <- x$key
       x <- x[!names(x) %in% "media"] # remove images
     } else { media2 <- list() }
-    
+
     # all other data
     alldata <- data.frame(name=usename, x, stringsAsFactors=FALSE)
     if(any(fields=='minimal')){
@@ -73,10 +73,10 @@ gbifparser <- function(input, fields='minimal'){
       } else
       {
         alldata <- alldata['name']
-        alldata <- data.frame(alldata, key=NA, decimalLatitude=NA, decimalLongitude=NA, stringsAsFactors=FALSE)
+        alldata <- data.frame(alldata, key=NA, decimalLatitude=NA, decimalLongitude=NA, issues=NA, stringsAsFactors=FALSE)
       }
-    } else if(any(fields == 'all')) 
-    { 
+    } else if(any(fields == 'all'))
+    {
       NULL
     } else
     {
@@ -94,7 +94,7 @@ gbifparser <- function(input, fields='minimal'){
 
 #' Parser for gbif data
 #' @param input A list
-#' @param fields (character) Default ('minimal') will return just taxon name, key, decimalLatitude, and 
+#' @param fields (character) Default ('minimal') will return just taxon name, key, decimalLatitude, and
 #'    decimalLongitute. 'all' returns all fields. Or specify each field you want returned by name, e.g.
 #'    fields = c('name','decimalLatitude','altitude').
 #' @export
@@ -106,9 +106,9 @@ gbifparser_verbatim <- function(input, fields='minimal'){
       tmp <- strsplit(z, "/")[[1]]
       tmp[length(tmp)]
     }, "", USE.NAMES = FALSE)
-    
+
     names(x) <- nn
-    
+
     if(any(fields=='minimal')){
       if(all(c('decimalLatitude','decimalLongitude') %in% names(x)))
       {
@@ -205,12 +205,12 @@ blanktheme <- function(){
 
 
 #' Capitalize the first letter of a character string.
-#' 
+#'
 #' @param s A character string
 #' @param strict Should the algorithm be strict about capitalizing. Defaults to FALSE.
-#' @param onlyfirst Capitalize only first word, lowercase all others. Useful for 
+#' @param onlyfirst Capitalize only first word, lowercase all others. Useful for
 #'   	taxonomic names.
-#' @examples 
+#' @examples
 #' gbif_capwords(c("using AIC for model selection"))
 #' gbif_capwords(c("using AIC for model selection"), strict=TRUE)
 #' @export
@@ -222,28 +222,28 @@ if(!onlyfirst){
   sapply(strsplit(s, split = " "), cap, USE.NAMES = !is.null(names(s)))
 } else
 {
-  sapply(s, function(x) 
-    paste(toupper(substring(x,1,1)), 
-          tolower(substring(x,2)), 
+  sapply(s, function(x)
+    paste(toupper(substring(x,1,1)),
+          tolower(substring(x,2)),
           sep="", collapse=" "), USE.NAMES=F)
 }
 }
 
-#' Get the possible values to be used for (taxonomic) rank arguments in GBIF 
+#' Get the possible values to be used for (taxonomic) rank arguments in GBIF
 #'   	API methods.
-#' 
+#'
 #' @examples \dontrun{
 #' taxrank()
 #' }
 #' @export
-taxrank <- function() 
+taxrank <- function()
 {
-  c("kingdom", "phylum", "class", "order", "family", "genus","species", 
+  c("kingdom", "phylum", "class", "order", "family", "genus","species",
     "infraspecific")
 }
 
 #' Parser for name_usage endpoints, for fxns name_lookup and name_backbone
-#' 
+#'
 #' @param x A list.
 #' @export
 #' @keywords internal
@@ -267,16 +267,16 @@ namelkupparser <- function(x){
 parseresults <- function(x, ..., removeZeros=removeZeros)
 {
   df <- gbifxmlToDataFrame(x, ...)
-  
+
   if(nrow(df[!is.na(df$decimalLatitude),])==0){
     return( df )
   } else
-  { 
+  {
     df <- commas_to_periods(df)
-    
+
     df_num <- df[!is.na(df$decimalLatitude),]
     df_nas <- df[is.na(df$decimalLatitude),]
-    
+
     df_num$decimalLongitude <- as.numeric(df_num$decimalLongitude)
     df_num$decimalLatitude <- as.numeric(df_num$decimalLatitude)
     i <- df_num$decimalLongitude == 0 & df_num$decimalLatitude == 0
@@ -350,33 +350,33 @@ gbifxmlToDataFrame <- function(doc, format) {
 }
 
 #' Convert a bounding box to a Well Known Text polygon, and a WKT to a bounding box
-#' 
+#'
 #' @import rgeos
 #' @importFrom sp bbox
 #' @param minx Minimum x value, or the most western longitude
 #' @param miny Minimum y value, or the most southern latitude
-#' @param maxx Maximum x value, or the most eastern longitude 
+#' @param maxx Maximum x value, or the most eastern longitude
 #' @param maxy Maximum y value, or the most northern latitude
 #' @param bbox A vector of length 4, with the elements: minx, miny, maxx, maxy
 #' @return gbif_bbox2wkt returns an object of class charactere, a Well Known Text string
-#' of the form 'POLYGON((minx miny, maxx miny, maxx maxy, minx maxy, minx miny))'. 
-#' 
+#' of the form 'POLYGON((minx miny, maxx miny, maxx maxy, minx maxy, minx miny))'.
+#'
 #' gbif_wkt2bbox returns a numeric vector of length 4, like c(minx, miny, maxx, maxy).
 #' @export
 #' @examples \dontrun{
 #' # Convert a bounding box to a WKT
 #' library("rgeos")
-#' 
+#'
 #' ## Pass in a vector of length 4 with all values
 #' mm <- gbif_bbox2wkt(bbox=c(38.4,-125.0,40.9,-121.8))
 #' plot(readWKT(mm))
-#' 
+#'
 #' ## Or pass in each value separately
 #' mm <- gbif_bbox2wkt(minx=38.4, miny=-125.0, maxx=40.9, maxy=-121.8)
 #' plot(readWKT(mm))
-#' 
+#'
 #' ========================================
-#' 
+#'
 #' # Convert a WKT object to a bounding box
 #' wkt <- "POLYGON((38.4 -125,40.9 -125,40.9 -121.8,38.4 -121.8,38.4 -125))"
 #' gbif_wkt2bbox(wkt)
@@ -384,14 +384,14 @@ gbifxmlToDataFrame <- function(doc, format) {
 
 gbif_bbox2wkt <- function(minx=NA, miny=NA, maxx=NA, maxy=NA, bbox=NULL){
   if(is.null(bbox)) bbox <- c(minx, miny, maxx, maxy)
-  
+
   assert_that(length(bbox)==4) #check for 4 digits
   assert_that(noNA(bbox)) #check for NAs
   assert_that(is.numeric(as.numeric(bbox))) #check for numeric-ness
-  paste('POLYGON((', 
-        sprintf('%s %s',bbox[1],bbox[2]), ',', sprintf(' %s %s',bbox[3],bbox[2]), ',', 
-        sprintf(' %s %s',bbox[3],bbox[4]), ',', sprintf(' %s %s',bbox[1],bbox[4]), ',', 
-        sprintf(' %s %s',bbox[1],bbox[2]), 
+  paste('POLYGON((',
+        sprintf('%s %s',bbox[1],bbox[2]), ',', sprintf(' %s %s',bbox[3],bbox[2]), ',',
+        sprintf(' %s %s',bbox[3],bbox[4]), ',', sprintf(' %s %s',bbox[1],bbox[4]), ',',
+        sprintf(' %s %s',bbox[1],bbox[2]),
         '))', sep="")
 }
 
@@ -410,4 +410,65 @@ rgbif_compact <- function (l) Filter(Negate(is.null), l)
 compact_null <- function (l){
   tmp <- Filter(Negate(is.null), l)
   if(length(tmp) == 0) NULL else tmp
+}
+
+parse_issues <- function(x){
+  tmp <- x[names(x) %in% "issues"][[1]]
+  tmp <- gbifissues[ gbifissues$issue %in% tmp, "code" ]
+  paste(tmp, collapse=",")
+}
+
+occ_issues <- function(.data, ..., mutate=NULL){
+  assert_that(is(.data, "gbif"))
+  tmp <- .data$data
+
+  if(!is.null(filter)){
+    filters <- parse_input(...)
+    if(length(filters$neg) > 0){
+      tmp <- tmp[ !grepl(paste(filters$neg, collapse = "|"), tmp$issues), ]
+    }
+    if(length(filters$pos) > 0){
+      tmp <- tmp[ grepl(paste(filters$pos, collapse = "|"), tmp$issues), ]
+    }
+  }
+
+  if(!is.null(mutate)){
+    if(mutate == 'split'){
+      tmp <- split_iss(tmp)
+    } else if(mutate == 'split_expand') {
+      tmp <- mutate_iss(tmp)
+      tmp <- split_iss(tmp)
+    } else if(mutate == 'expand') {
+      tmp <- mutate_iss(tmp)
+    }
+  }
+
+  .data$data <- tmp
+  return( .data )
+}
+
+
+mutate_iss <- function(w){
+  w$issues <- sapply(strsplit(w$issues, split=","), function(z) paste(gbifissues[ gbifissues$code %in% z, "issue" ], collapse = ",") )
+  return( w )
+}
+
+split_iss <- function(m){
+  unq <- unique(unlist(strsplit(m$issues, split=",")))
+  df <- data.frame(rbindlist(lapply(strsplit(m$issues, split=","), function(b) { v <- unq %in% b; data.frame(rbind(ifelse(v, "y", "n")), stringsAsFactors = FALSE) } )), stringsAsFactors = FALSE)
+  names(df) <- unq
+  m$issues <- NULL
+  m <- cbind(m, df)
+  return( m )
+}
+
+dots <- function(...){
+  eval(substitute(alist(...)))
+}
+
+parse_input <- function(...){
+  x <- as.character(dots(...))
+  neg <- gsub('-', '', x[grepl("-", x)])
+  pos <- x[!grepl("-", x, )]
+  list(neg=neg, pos=pos)
 }
