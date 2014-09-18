@@ -28,7 +28,7 @@ test_that("returns the correct value", {
 test_that("returns the correct dimensions", {
   expect_equal(length(tt), 4)
   expect_equal(length(tt$meta), 4)
-  expect_equal(length(uu$data), 4)
+  expect_equal(length(uu$data), 5)
   expect_equal(ncol(vv), 4)
 })
 
@@ -39,7 +39,7 @@ test_that("returns the correct class", {
   expect_is(out, "data.frame")
 })
 test_that("returns the correct dimensions", {
-  expect_equal(dim(out), c(20,4))
+  expect_equal(dim(out), c(20,5))
 })
 
 ## Search by catalog number

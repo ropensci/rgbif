@@ -32,7 +32,7 @@ test_that("returns the correct class", {
 })
 
 test_that("returns the correct dimensions", {
-  expect_equal(dim(tt), c(1,4))
+  expect_equal(dim(tt), c(1,5))
   expect_equal(dim(uu), c(7,3))
   expect_equal(dim(vv), NULL)
   expect_equal(dim(vv[[1]]), c(7,3))
