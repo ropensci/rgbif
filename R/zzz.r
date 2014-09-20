@@ -413,6 +413,7 @@ compact_null <- function (l){
 }
 
 parse_issues <- function(x){
+  data(gbifissues, package="rgbif")
   tmp <- x[names(x) %in% "issues"][[1]]
   tmp <- gbifissues[ gbifissues$issue %in% tmp, "code" ]
   paste(tmp, collapse=",")
