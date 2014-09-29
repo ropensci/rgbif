@@ -1,0 +1,131 @@
+#' Spin up a download request for GBIF occurrence data.
+#'
+#' @importFrom jsonlite unbox fromJSON
+#' @export
+#'
+#' @template occsearch
+#' @param limit Number of records to return
+#' @param start Record number to start at
+#' @param type (charcter) One of equals (=), and (&), or (|), lessThan (<), lessThanOrEquals (<=),
+#' greaterThan (>), greaterThanOrEquals (>=), in, within, not (!), like
+#' @param user (character) User name within GBIF's website. Required.
+#' @param pwd (character) User password within GBIF's website. Required.
+#' @param email (character) Email address to recieve download notice done email. Requried.
+#' @param ... Further named arguments passed on to \code{\link[httr]{POST}}
+#'
+#' @references See the API docs \url{http://www.gbif.org/developer/occurrence#download} for
+#' more info, and the predicates docs \url{http://www.gbif.org/developer/occurrence#predicates}.
+#'
+#' @examples \donttest{
+#' occ_download("basisOfRecord = LITERATURE")
+#' occ_download('taxonKey = 3119195')
+#' occ_download('decimalLatitude > 50')
+#' occ_download('elevation >= 9000')
+#' occ_download('decimalLatitude >= 65')
+#' occ_download("country = US")
+#' occ_download("institutionCode = TLMF")
+#' occ_download("catalogNumber = Bird.27847588")
+#'
+#' # pass output directly, or later, to occ_download_meta for more information
+#' occ_download('decimalLatitude > 75') %>% occ_download_meta
+#'
+#' # Multiple queries
+#' occ_download('decimalLatitude >= 65', 'decimalLatitude <= -65', type="or")
+#' gg <- occ_download('depth = 80', 'taxonKey = 2343454', type="or")
+#' }
+
+occ_download <- function(...,
+   type = "and", user=getOption("gbif_user"), pwd=getOption("gbif_pwd"),
+   email="myrmecocystus@gmail.com", callopts=list())
+{
+  url = 'http://api.gbif.org/v1/occurrence/download/request'
+  assert_that(!is.null(user), !is.null(email))
+
+  args <- list(...)
+  keyval <- lapply(args, parse_args)
+
+  req <- if(length(keyval) > 1){
+    list(creator = unbox(user),
+         notification_address = email,
+         predicate = list(
+           type = unbox(type),
+           predicates = keyval
+         )
+    )
+  } else {
+    if(type=="within" | "within" %in% sapply(keyval, "[[", "type")){
+      tmp <- list(creator = unbox(user),
+           notification_address = email,
+           predicate = list(
+             type = keyval[[1]]$type,
+             value = keyval[[1]]$value
+           )
+      )
+      names(tmp$predicate)[2] <- tolower(keyval[[1]]$key)
+      tmp
+    } else {
+      list(creator = unbox(user),
+           notification_address = email,
+           predicate = list(
+             type = keyval[[1]]$type,
+             key = keyval[[1]]$key,
+             value = keyval[[1]]$value
+           )
+      )
+    }
+  }
+
+  out <- rg_POST(url, req = req, user = user, pwd = pwd, callopts)
+  structure(out, class = "occ_download", user=user, email=email)
+}
+
+rg_POST <- function(url, req, user, pwd, callopts){
+  tmp <- POST(url, config = c(
+    content_type_json(),
+    accept_json(),
+    authenticate(user=user, password=pwd),
+    callopts),
+    body = req, encode = "json")
+  if(tmp$status_code > 203) stop(content(tmp, as = "text"))
+  assert_that(tmp$header$`content-type` == 'application/json')
+  content(tmp, as = "text")
+}
+
+process_keyval <- function(args, type){
+  out <- list()
+  for(i in seq_along(args)){
+    out[[i]] <- list(type=unbox(type), key=unbox(names(args[i])), value=unbox(args[[i]]))
+  }
+  out
+}
+
+#' @export
+print.occ_download <- function (x, ...){
+  assert_that(is(x, 'occ_download'))
+  cat("<<gbif download>>", "\n", sep = "")
+  cat("  Username: ", attr(x, "user"), "\n", sep = "")
+  cat("  E-mail: ", attr(x, "email"), "\n", sep = "")
+  cat("  Download key: ", x, "\n", sep = "")
+}
+
+parse_args <- function(x){
+  tmp <- strsplit(x, "\\s")[[1]]
+  type <- operator_lkup[[ tmp[2] ]]
+  key <- key_lkup[[ tmp[1] ]]
+  list(type=unbox(type), key=unbox(key), value=unbox(tmp[3]))
+}
+
+operator_lkup <- list(`=` = 'equals', `&` = 'and', `|` = 'or', `<` = 'lessThan',
+    `<=` = 'lessThanOrEquals', `>` = 'greaterThan',
+    `>=` = 'greaterThanOrEquals', `!` = 'not',
+    'in' = 'in', 'within' = 'within', 'like' = 'like')
+
+key_lkup <- list(taxonKey='TAXON_KEY', scientificName='SCIENTIFIC_NAME', country='COUNTRY',
+     publishingCountry='PUBLISHING_COUNTRY', hasCoordinate='HAS_COORDINATE',
+     hasGeospatialIssue='HAS_GEOSPATIAL_ISSUE', typeStatus='TYPE_STATUS',
+     recordNumber='RECORD_NUMBER', lastInterpreted='LAST_INTERPRETED', continent='CONTINENT',
+     geometry='GEOMETRY', basisOfRecord='BASIS_OF_RECORD', datasetKey='DATASET_KEY',
+     eventDate='EVENT_DATE', catalogNumber='CATALOG_NUMBER', year='YEAR', month='MONTH',
+     decimalLatitude='DECIMAL_LATITUDE', decimalLongitude='DECIMAL_LONGITUDE', elevation='ELEVATION',
+     depth='DEPTH', institutionCode='INSTITUTION_CODE', collectionCode='COLLECTION_CODE',
+     issue='ISSUE', mediatype='MEDIA_TYPE', recordedBy='RECORDED_BY')
