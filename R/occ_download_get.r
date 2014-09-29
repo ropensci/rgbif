@@ -38,7 +38,7 @@ occ_download_get <- function(key, path="~/", overwrite=FALSE, ...)
 }
 
 #' @export
-print.occ_download_file <- function (x, ...){
+print.occ_download_get <- function (x, ...){
   assert_that(is(x, 'occ_download_get'))
   cat("<<gbif downloaded get>>", "\n", sep = "")
   cat("  Path: ", x, "\n", sep = "")

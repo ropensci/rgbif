@@ -12,11 +12,11 @@ cc <- occ_get(key=c(766766824,620594291,766420684),
 test_that("returns the correct class", {
   expect_is(tt, "data.frame")
   expect_is(tt[1,1], "character")
-  expect_is(tt[1,2], "numeric")
+  expect_is(tt[1,2], "integer")
   
   expect_is(uu, "data.frame")
   expect_is(uu[1,1], "character")
-  expect_is(uu[1,2], "numeric")
+  expect_is(uu[1,2], "integer")
   
   expect_is(vv, "list")
   expect_is(vv[[1]], "data.frame")
@@ -24,7 +24,7 @@ test_that("returns the correct class", {
   
   expect_is(aa, "data.frame")
   expect_is(aa[1,1], "character")
-  expect_is(aa[1,2], "numeric")
+  expect_is(aa[1,2], "integer")
   
   expect_is(bb, "data.frame")
   expect_is(bb[1,10], "character")

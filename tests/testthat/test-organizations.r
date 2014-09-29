@@ -6,7 +6,7 @@ vv <- organizations(data='contact', uuid="4b4b2111-ee51-45f5-bf5e-f535f4a1c9dc")
 
 test_that("returns the correct class", {
   expect_is(tt, "list")
-  expect_is(tt$limit, "numeric")
+  expect_is(tt$limit, "integer")
   expect_is(tt$endOfRecords, "logical")
   
   expect_is(uu, "list")

@@ -63,7 +63,7 @@ out <- occ_search(taxonKey=key, return='data')
 test_that("returns the correct class", {
   expect_is(out, "data.frame")
   expect_is(out[1,1], "character")
-  expect_is(out[1,2], "numeric")
+  expect_is(out[1,2], "integer")
 })
 test_that("returns the correct value", {
   expect_equal(as.character(out[1,1]), "Helianthus annuus")
