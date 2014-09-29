@@ -1,5 +1,7 @@
 language: c
+
 script: "./travis-tool.sh run_tests"
+
 before_script:
 - curl -OL http://raw.github.com/craigcitro/r-travis/master/scripts/travis-tool.sh
 - chmod 755 ./travis-tool.sh
@@ -9,14 +11,16 @@ before_script:
 - "./travis-tool.sh install_aptget gdal-bin"
 - "./travis-tool.sh bootstrap"
 - "./travis-tool.sh install_deps"
-- "./travis-tool.sh github_package assertthat"
+
 env:
   global:
   - R_BUILD_ARGS=" "
   - R_CHECK_ARGS="--as-cran"
   - BOOTSTRAP_LATEX="1"
+
 after_failure:
 - "./travis-tool.sh dump_logs"
+
 notifications:
   slack:
     secure: Y7ly6rxiG4EBAKKREFovZ1LPQp2ghrN7ThIfkMaQ1XCQLRV0D39a3Uuf1UigS6gpqrtaedXakbtZwG3CIhICILRRiQSZch3gGZUNMRkVrG/0wZDn7HwWOquTxPJEeH1AUlKYToxiI6rRqd/c3U4FwisKuIUHmvqDRA1NEtdiqJY=
