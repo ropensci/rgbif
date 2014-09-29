@@ -35,9 +35,10 @@ Imports:
     data.table,
     stringr,
     assertthat,
-    whisker
+    whisker,
+    magrittr,
+    jsonlite
 Suggests:
     roxygen2,
     testthat,
-    jsonlite,
     knitr
