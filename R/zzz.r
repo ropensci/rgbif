@@ -418,3 +418,13 @@ parse_issues <- function(x){
   tmp <- gbifissues[ gbifissues$issue %in% tmp, "code" ]
   paste(tmp, collapse=",")
 }
+
+#' Pipe operator
+#'
+#' @name %>%
+#' @rdname pipe
+#' @keywords internal
+#' @export
+#' @importFrom magrittr %>%
+#' @usage lhs \%>\% rhs
+NULL
