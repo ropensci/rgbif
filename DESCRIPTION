@@ -31,7 +31,6 @@ Imports:
     rgdal,
     rgeos,
     sp,
-    RJSONIO,
     data.table,
     stringr,
     assertthat,

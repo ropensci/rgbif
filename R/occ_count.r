@@ -1,8 +1,8 @@
 #' Get number of occurrence records.
 #' 
-#' @template all
-#' @import httr plyr
 #' @export
+#' 
+#' @template all
 #' @param nubKey Species key. PARAMETER NAME CHANGED TO taxonKey.
 #' @param taxonKey Species key
 #' @param georeferenced Return only occurence records with lat/long data (TRUE) or
@@ -84,5 +84,5 @@ occ_count <- function(taxonKey=NULL, georeferenced=NULL, basisOfRecord=NULL,
   warn_for_status(tt)
   assert_that(tt$headers$`content-type`=='application/json')
   res <- content(tt, as = 'text', encoding = "UTF-8")
-  if(type=='count'){ as.numeric(res) } else{ RJSONIO::fromJSON(res, simplifyWithNames = FALSE) }
+  if(type=='count'){ as.numeric(res) } else{ jsonlite::fromJSON(res, FALSE) }
 }

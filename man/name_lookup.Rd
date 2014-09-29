@@ -112,8 +112,7 @@ name_lookup(query='mammalia')
 
 # Get all data and parse it, removing descriptions which can be quite long
 out <- name_lookup('Helianthus annuus', rank="species", verbose=TRUE)
-library("plyr")
-llply(out$data, function(x) x[!names(x) \%in\% c("descriptions","descriptionsSerialized")])
+lapply(out$data, function(x) x[!names(x) \%in\% c("descriptions","descriptionsSerialized")])
 
 # Search for a genus, returning just data
 name_lookup(query='Cnaemidophorus', rank="genus", return="data")

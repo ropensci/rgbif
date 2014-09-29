@@ -1,8 +1,8 @@
 #' Search for GBIF occurrences.
 #'
-#' @import httr plyr assertthat
-#' @importFrom RJSONIO fromJSON
 #' @export
+#' @import httr plyr assertthat
+#' 
 #' @template occsearch
 #' @template occ
 #' @template all
@@ -303,7 +303,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
       }
       assert_that(temp$headers$`content-type`=='application/json')
       res <- content(temp, as = 'text', encoding = "UTF-8")
-      tt <- RJSONIO::fromJSON(res)
+      tt <- jsonlite::fromJSON(res, FALSE)
 
       numreturned <- length(tt$results)
       sumreturned <- sumreturned + numreturned

@@ -3,7 +3,6 @@
 #' 
 #' @template all
 #' @template occ
-#' @import httr plyr
 #' @export
 #' 
 #' @param q (character, required) Simple search parameter. The value for this parameter can be a 
@@ -42,7 +41,7 @@ name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL, start=
   stop_for_status(temp)
   assert_that(temp$headers$`content-type`=='application/json')
   res <- content(temp, as = 'text', encoding = "UTF-8")
-  tt <- RJSONIO::fromJSON(res, simplifyWithNames = FALSE)
+  tt <- jsonlite::fromJSON(res, FALSE)
   
   if(is.null(fields)){
     toget <- c("key","canonicalName","rank")

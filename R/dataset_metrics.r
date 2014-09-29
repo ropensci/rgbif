@@ -24,7 +24,7 @@ dataset_metrics <- function(uuid, callopts=list())
     stop_for_status(tt)
     assert_that(tt$headers$`content-type`=='application/json')
     res <- content(tt, as = 'text', encoding = "UTF-8")
-    RJSONIO::fromJSON(res, simplifyWithNames = FALSE)
+    jsonlite::fromJSON(res, FALSE)
   }
   
   if(length(uuid)==1){ out <- getdata(uuid) } else

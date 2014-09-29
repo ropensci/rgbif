@@ -1,8 +1,6 @@
 #' Networks metadata.
 #' 
 #' @template all
-#' @import httr
-#' @import plyr
 #' @export
 #' 
 #' @param data The type of data to get. Default is all data.
@@ -63,7 +61,7 @@ networks <- function(data = 'all', uuid = NULL, callopts=list(), name = NULL, co
     stop_for_status(temp)
     assert_that(temp$headers$`content-type`=='application/json')
     res <- content(temp, as = 'text', encoding = "UTF-8")
-    RJSONIO::fromJSON(res, simplifyWithNames = FALSE)
+    jsonlite::fromJSON(res, FALSE)
   }
   
   # Get data

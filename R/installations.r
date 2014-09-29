@@ -1,9 +1,7 @@
 #' Installations metadata.
 #' 
 #' @template all
-#' @template occ
-#' @import httr
-#' @import plyr 
+#' @template occ 
 #' @export
 #' 
 #' @param data The type of data to get. Default is all data. If not 'all', then one 
@@ -46,7 +44,7 @@
 #' installations(data='endpoint', uuid="b77901f9-d9b0-47fa-94e0-dd96450aa2b4")
 #' installations(data='dataset', uuid="b77901f9-d9b0-47fa-94e0-dd96450aa2b4")
 #' installations(data='deleted')
-#' installations(data='deleted', limit2=2)
+#' installations(data='deleted', limit=2)
 #' installations(data=c('deleted','nonPublishing'), limit=2)
 #' installations(identifierType='DOI', limit=2)
 #' }
@@ -86,7 +84,7 @@ installations <- function(data = 'all', uuid = NULL, query = NULL, identifier=NU
     stop_for_status(temp)
     assert_that(temp$headers$`content-type`=='application/json')
     res <- content(temp, as = 'text', encoding = "UTF-8")
-    RJSONIO::fromJSON(res, simplifyWithNames = FALSE)
+    jsonlite::fromJSON(res, FALSE)
   }
   
   # Get data

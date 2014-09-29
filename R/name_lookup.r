@@ -2,7 +2,6 @@
 #'
 #' @template all
 #' @template namelkup
-#' @import httr plyr
 #' @export
 #' @examples \dontrun{
 #' # Look up names like mammalia
@@ -10,8 +9,7 @@
 #' 
 #' # Get all data and parse it, removing descriptions which can be quite long
 #' out <- name_lookup('Helianthus annuus', rank="species", verbose=TRUE)
-#' library("plyr")
-#' llply(out$data, function(x) x[!names(x) %in% c("descriptions","descriptionsSerialized")])
+#' lapply(out$data, function(x) x[!names(x) %in% c("descriptions","descriptionsSerialized")])
 #' 
 #' # Search for a genus, returning just data
 #' name_lookup(query='Cnaemidophorus', rank="genus", return="data")
@@ -68,7 +66,7 @@ name_lookup <- function(query=NULL, rank=NULL, highertaxon_key=NULL, status=NULL
   stop_for_status(temp)
   assert_that(temp$headers$`content-type`=='application/json')
   res <- content(temp, as = 'text', encoding = "UTF-8")
-  tt <- RJSONIO::fromJSON(res, simplifyWithNames = FALSE)
+  tt <- jsonlite::fromJSON(res, FALSE)
   
   # metadata
   meta <- tt[c('offset','limit','endOfRecords','count')]

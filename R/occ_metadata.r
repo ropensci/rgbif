@@ -2,8 +2,8 @@
 #' codes.
 #' 
 #' @import httr plyr assertthat
-#' @importFrom RJSONIO fromJSON
 #' @export
+#' 
 #' @template all
 #' @param type Type of data, one of catalog_number, collection_code, collector_name, 
 #' institution_code. Unique partial strings work too, like 'cat' for catalog_number
@@ -48,7 +48,7 @@ occ_metadata <- function(type = "catalogNumber", q=NULL, limit=5,
   stop_for_status(tt)
   assert_that(tt$headers$`content-type`=='application/json')
   res <- content(tt, as = 'text', encoding = "UTF-8")
-  out <- RJSONIO::fromJSON(res, simplifyWithNames = FALSE)
+  out <- jsonlite::fromJSON(res, TRUE)
   
   if(pretty){
     cat(out, sep="\n")

@@ -1,9 +1,9 @@
 #' Get data for specific GBIF occurrences.
 #' 
-#' @template all
+#' @export
 #' @import httr assertthat
-#' @import plyr
-#' @importFrom RJSONIO fromJSON
+#' 
+#' @template all
 #' @param key Occurrence key
 #' @param return One of data, hier, meta, or all. If 'data', a data.frame with the 
 #'    data. 'hier' returns the classifications in a list for each record. meta 
@@ -15,7 +15,7 @@
 #'    fields = c('name','decimalLatitude','altitude').
 #' @param callopts Further arguments passed on to the \code{\link{GET}} request.
 #' @return A data.frame or list of data.frame's.
-#' @export
+#' 
 #' @examples \dontrun{
 #' occ_get(key=766766824, return='data')
 #' occ_get(key=766766824, 'hier')
@@ -55,7 +55,7 @@ occ_get <- function(key=NULL, return='all', verbatim=FALSE, fields='minimal', ca
     stop_for_status(temp)
     assert_that(temp$headers$`content-type`=='application/json')
     res <- content(temp, as = 'text', encoding = "UTF-8")
-    RJSONIO::fromJSON(res, simplifyWithNames = FALSE)
+    jsonlite::fromJSON(res, FALSE)
   }
   
   # Get data

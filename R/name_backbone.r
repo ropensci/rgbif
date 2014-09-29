@@ -2,7 +2,6 @@
 #' 
 #' @template all
 #' @template occ
-#' @import httr plyr
 #' @export
 #' 
 #' @param name (character) Full scientific name potentially with authorship (required)
@@ -62,7 +61,7 @@ name_backbone <- function(name, rank=NULL, kingdom=NULL, phylum=NULL, class=NULL
   stop_for_status(temp)
   assert_that(temp$headers$`content-type`=='application/json')
   res <- content(temp, as = 'text', encoding = "UTF-8")
-  tt <- RJSONIO::fromJSON(res, simplifyWithNames = FALSE)
+  tt <- jsonlite::fromJSON(res, FALSE)
   
   if(verbose){ 
     alt <- do.call(rbind.fill, lapply(tt$alternatives, namelkupparser))

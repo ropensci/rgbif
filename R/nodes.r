@@ -1,8 +1,6 @@
 #' Nodes metadata.
 #' 
 #' @template all
-#' @import httr
-#' @import plyr
 #' @export
 #' 
 #' @param data The type of data to get. Default is all data.
@@ -70,7 +68,7 @@ nodes <- function(data = 'all', uuid = NULL, query = NULL, isocode = NULL, callo
     stop_for_status(temp)
     assert_that(temp$headers$`content-type`=='application/json')
     res <- content(temp, as = 'text', encoding = "UTF-8")
-    RJSONIO::fromJSON(res, simplifyWithNames = FALSE)
+    jsonlite::fromJSON(res, FALSE)
   }
   
   # Get data

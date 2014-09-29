@@ -3,7 +3,6 @@
 #' @template all
 #' @template occ
 #' @template nameusage
-#' @import httr plyr
 #' @return A list of length two. The first element is metadata. The second is 
 #' either a data.frame (verbose=FALSE, default) or a list (verbose=TRUE)
 #' @description
@@ -100,7 +99,7 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL, datasetKe
     stop_for_status(tt)
     assert_that(tt$headers$`content-type`=='application/json')
     res <- content(tt, as = 'text', encoding = "UTF-8")
-    RJSONIO::fromJSON(res, simplifyWithNames = FALSE)
+    jsonlite::fromJSON(res, FALSE)
   }
   
   # Get data

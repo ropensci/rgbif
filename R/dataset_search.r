@@ -3,7 +3,6 @@
 #' This function does not search occurrence data, only metadata on the datasets
 #' that contain occurrence data.
 #'
-#' @import httr plyr
 #' @export
 #' @template all
 #' @template occ
@@ -70,7 +69,7 @@ dataset_search <- function(query= NULL, country = NULL, type = NULL, keyword = N
   stop_for_status(temp)
   assert_that(temp$headers$`content-type`=='application/json')
   res <- content(temp, as = 'text', encoding = "UTF-8")
-  tt <- RJSONIO::fromJSON(res, simplifyWithNames = FALSE)
+  tt <- jsonlite::fromJSON(res, FALSE)
 
   # metadata
   meta <- tt[c('offset','limit','endOfRecords','count')]

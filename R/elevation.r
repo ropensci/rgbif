@@ -55,7 +55,7 @@ elevation <- function(input=NULL, latitude=NULL, longitude=NULL, latlong=NULL,
       stop_for_status(tt)
       assert_that(tt$headers$`content-type`=='application/json; charset=UTF-8')
       res <- content(tt, as = 'text', encoding = "UTF-8")
-      out <- RJSONIO::fromJSON(res, simplifyWithNames = FALSE)
+      out <- jsonlite::fromJSON(res, FALSE)
 
       df <- data.frame(elevation=sapply(out$results, '[[', 'elevation'), stringsAsFactors=FALSE)
       outout[[i]] <- df

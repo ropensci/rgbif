@@ -2,8 +2,6 @@
 #' 
 #' @template all
 #' @template occ
-#' @import httr
-#' @import plyr
 #' @export
 #' 
 #' @param data The type of data to get. Default is all data.
@@ -68,7 +66,7 @@ datasets <- function(data = 'all', type = NULL, uuid = NULL, query = NULL, id = 
     stop_for_status(tt)
     assert_that(tt$headers$`content-type`=='application/json')
     res <- content(tt, as = 'text', encoding = "UTF-8")
-    RJSONIO::fromJSON(res, simplifyWithNames = FALSE)
+    jsonlite::fromJSON(res, FALSE)
   }
   
   # Get data
