@@ -1508,7 +1508,7 @@ create_gist <- function(filenames, description = "", public = TRUE){
   })
   names(files) = basename(filenames)
   body = list(description = description, public = public, files = files)
-  RJSONIO::toJSON(body)
+  jsonlite::toJSON(body)
 }
 
 #' Get Github credentials from use in console
