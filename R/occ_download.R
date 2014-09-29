@@ -3,15 +3,47 @@
 #' @importFrom jsonlite unbox fromJSON
 #' @export
 #'
-#' @template occsearch
-#' @param limit Number of records to return
-#' @param start Record number to start at
+#' @param ... One or more of query arguments to kick of a download job. See Details.
 #' @param type (charcter) One of equals (=), and (&), or (|), lessThan (<), lessThanOrEquals (<=),
 #' greaterThan (>), greaterThanOrEquals (>=), in, within, not (!), like
 #' @param user (character) User name within GBIF's website. Required.
 #' @param pwd (character) User password within GBIF's website. Required.
 #' @param email (character) Email address to recieve download notice done email. Requried.
-#' @param ... Further named arguments passed on to \code{\link[httr]{POST}}
+#' @param callopts Further named arguments passed on to \code{\link[httr]{POST}}
+#'
+#' @details Argument passed have to be passed as character (e.g., 'country = US'), with a space 
+#' between key ('country'), operator ('='), and value ('US'). See the \code{type} parameter for 
+#' possible options for the operator.  This character string is parsed internally.
+#' 
+#' Acceptable arguments to \code{...} are:
+#' \itemize{
+#'  \item taxonKey = 'TAXON_KEY'
+#'  \item scientificName = 'SCIENTIFIC_NAME'
+#'  \item country = 'COUNTRY'
+#'  \item publishingCountry = 'PUBLISHING_COUNTRY'
+#'  \item hasCoordinate = 'HAS_COORDINATE'
+#'  \item hasGeospatialIssue = 'HAS_GEOSPATIAL_ISSUE'
+#'  \item typeStatus = 'TYPE_STATUS'
+#'  \item recordNumber = 'RECORD_NUMBER'
+#'  \item lastInterpreted = 'LAST_INTERPRETED'
+#'  \item continent = 'CONTINENT'
+#'  \item geometry = 'GEOMETRY'
+#'  \item basisOfRecord = 'BASIS_OF_RECORD'
+#'  \item datasetKey = 'DATASET_KEY'
+#'  \item eventDate = 'EVENT_DATE'
+#'  \item catalogNumber = 'CATALOG_NUMBER'
+#'  \item year = 'YEAR'
+#'  \item month = 'MONTH'
+#'  \item decimalLatitude = 'DECIMAL_LATITUDE'
+#'  \item decimalLongitude = 'DECIMAL_LONGITUDE'
+#'  \item elevation = 'ELEVATION'
+#'  \item depth = 'DEPTH'
+#'  \item institutionCode = 'INSTITUTION_CODE'
+#'  \item collectionCode = 'COLLECTION_CODE'
+#'  \item issue = 'ISSUE'
+#'  \item mediatype = 'MEDIA_TYPE'
+#'  \item recordedBy = 'RECORDED_BY'
+#' }
 #'
 #' @references See the API docs \url{http://www.gbif.org/developer/occurrence#download} for
 #' more info, and the predicates docs \url{http://www.gbif.org/developer/occurrence#predicates}.

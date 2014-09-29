@@ -21,6 +21,7 @@ occ_download_cancel <- function(key, user=getOption("gbif_user"), pwd=getOption(
 }
 
 #' @export
+#' @rdname occ_download_cancel
 occ_download_cancel_staged <- function(){
   hh <- occ_download_list()$results
   run_or_prep <- hh[ hh$status %in% c("RUNNING","PREPARING"), "key" ]
