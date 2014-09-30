@@ -245,6 +245,9 @@
 #' ### Apparently a point is allowed, but haven't successfully retrieved data, so returns nothing
 #' wkt <- 'POINT(45 -122)'
 #' occ_search(geometry = wkt)
+#' 
+#' ## Fails as of 2014-09-30
+#' occ_search(scientificName = 'Ipomoea temascaltepecensis')
 #' }
 
 occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publishingCountry=NULL,
@@ -304,6 +307,9 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
       assert_that(temp$headers$`content-type`=='application/json')
       res <- content(temp, as = 'text', encoding = "UTF-8")
       tt <- jsonlite::fromJSON(res, FALSE)
+      
+      # if no results, assign count var with 0
+      if(identical(tt$results, list())) tt$count <- 0
 
       numreturned <- length(tt$results)
       sumreturned <- sumreturned + numreturned

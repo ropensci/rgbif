@@ -501,6 +501,9 @@ occ_search(geometry = wkt)
 ### Apparently a point is allowed, but haven't successfully retrieved data, so returns nothing
 wkt <- 'POINT(45 -122)'
 occ_search(geometry = wkt)
+
+## Fails as of 2014-09-30
+occ_search(scientificName = 'Ipomoea temascaltepecensis')
 }
 }
 \references{
