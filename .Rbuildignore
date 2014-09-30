@@ -10,3 +10,4 @@ vignettes/margins.sty
 inst/ignore
 cran-comments.md
 ^appveyor\.yml$
+gist_downloads.md
