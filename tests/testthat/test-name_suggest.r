@@ -10,7 +10,7 @@ test_that("name_suggest returns the correct class", {
   expect_is(b, "data.frame")
   expect_is(c, "data.frame")
   expect_is(d, "data.frame")
-  expect_is(a$key, "numeric")
+  expect_is(a$key, "integer")
   expect_is(c$canonicalName, "character")
   expect_is(d$canonicalName, "character")
 })

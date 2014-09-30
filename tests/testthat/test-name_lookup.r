@@ -8,7 +8,7 @@ test_that("returns the correct class", {
   expect_is(tt$meta, "data.frame")
   expect_is(tt$meta$endOfRecords, "logical")
   expect_is(tt$data$canonicalName, "character")
-  expect_is(tt$data$classKey, "numeric")
+  expect_is(tt$data$classKey, "integer")
   
   expect_is(uu, "data.frame")
 })

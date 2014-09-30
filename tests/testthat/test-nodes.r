@@ -6,7 +6,7 @@ vv <- nodes(data='identifier', uuid="1193638d-32d1-43f0-a855-8727c94299d8")
 
 test_that("returns the correct class", {
   expect_is(tt, "list")
-  expect_is(tt$limit, "numeric")
+  expect_is(tt$limit, "integer")
   expect_is(tt$endOfRecords, "logical")
   
   expect_is(uu, "list")

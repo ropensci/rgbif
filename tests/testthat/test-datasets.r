@@ -33,7 +33,7 @@ tt <- datasets(data='metadata', uuid="a6998220-7e3a-485d-9cd6-73076bd85657")
 test_that("metadata returns the correct class", {
   expect_is(tt, "list")
   expect_is(tt[[1]], "list")
-  expect_is(tt[[1]]$key, "numeric")
+  expect_is(tt[[1]]$key, "integer")
 })
 test_that("metadata returns the correct value", {
   expect_equal(tt[[1]]$type, "EML")
