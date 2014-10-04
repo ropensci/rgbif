@@ -429,10 +429,17 @@ parse_issues <- function(x){
 #' @usage lhs \%>\% rhs
 NULL
 
-gbif_GET <- function(url, args, opts){
+gbif_GET <- function(url, args, opts, parse=FALSE){
   temp <- GET(url, query=args, opts)
-  stop_for_status(temp)
+  if(temp$status_code > 200) stop(content(temp, as = "text"))
   assert_that(temp$headers$`content-type`=='application/json')
   res <- content(temp, as = 'text', encoding = "UTF-8")
-  jsonlite::fromJSON(res, FALSE)
+  jsonlite::fromJSON(res, parse)
+}
+
+gbif_GET_content <- function(url, args, opts){
+  temp <- GET(url, query=args, opts)
+  if(temp$status_code > 200) warning(content(temp, as = "text"))
+  assert_that(temp$headers$`content-type`=='application/json')
+  content(temp, as = 'text', encoding = "UTF-8")
 }
