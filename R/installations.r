@@ -80,11 +80,7 @@ installations <- function(data = 'all', uuid = NULL, query = NULL, identifier=NU
         url <- sprintf('http://api.gbif.org/v1/installation/%s/%s', uuid, x)        
       }
     }
-    temp <- GET(url, query=args, callopts)
-    stop_for_status(temp)
-    assert_that(temp$headers$`content-type`=='application/json')
-    res <- content(temp, as = 'text', encoding = "UTF-8")
-    jsonlite::fromJSON(res, FALSE)
+    gbif_GET(url, args, callopts)
   }
   
   # Get data

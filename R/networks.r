@@ -22,7 +22,7 @@
 #' networks()
 #' networks(uuid='16ab5405-6c94-4189-ac71-16ca3b753df7')
 #' networks(data='endpoint', uuid='16ab5405-6c94-4189-ac71-16ca3b753df7')
-#' networks(data='comment', uuid='16ab5405-6c94-4189-ac71-16ca3b753df7')
+#' networks(data='identifier', uuid='16ab5405-6c94-4189-ac71-16ca3b753df7')
 #' }
 #' @examples \donttest{
 #' # should throw error message saying params are deprecated
@@ -57,11 +57,7 @@ networks <- function(data = 'all', uuid = NULL, callopts=list(), name = NULL, co
         url <- sprintf('http://api.gbif.org/v1/network/%s/%s', uuid, x)        
       }
     }
-    temp <- GET(url, callopts)
-    stop_for_status(temp)
-    assert_that(temp$headers$`content-type`=='application/json')
-    res <- content(temp, as = 'text', encoding = "UTF-8")
-    jsonlite::fromJSON(res, FALSE)
+    gbif_GET(url, list(), callopts)
   }
   
   # Get data

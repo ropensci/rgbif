@@ -51,11 +51,7 @@ organizations <- function(data = 'all', uuid = NULL, query = NULL, limit=20,
         url <- sprintf('http://api.gbif.org/v1/organization/%s/%s', uuid, x)        
       }
     }
-    temp <- GET(url, query=args, callopts)
-    stop_for_status(temp)
-    assert_that(temp$headers$`content-type`=='application/json')
-    res <- content(temp, as = 'text', encoding = "UTF-8")
-    jsonlite::fromJSON(res, FALSE)
+    gbif_GET(url, args, callopts)
   }
   
   # Get data
