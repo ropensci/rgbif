@@ -70,6 +70,7 @@ name_backbone(name='Helianthus annuus', kingdom='plants', verbose=TRUE, strict=T
 
 # Non-existent name - returns list of lenght 3 stating no match
 name_backbone(name='Aso')
+name_backbone(name='Oenante')
 }
 }
 \references{

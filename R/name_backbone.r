@@ -42,6 +42,7 @@
 #' 
 #' # Non-existent name - returns list of lenght 3 stating no match
 #' name_backbone(name='Aso')
+#' name_backbone(name='Oenante')
 #' }
 #' 
 #' @examples \donttest{
@@ -53,22 +54,17 @@ name_backbone <- function(name, rank=NULL, kingdom=NULL, phylum=NULL, class=NULL
   order=NULL, family=NULL, genus=NULL, strict=FALSE, verbose=FALSE, 
   start=NULL, limit=20, callopts=list())
 {
-  url = 'http://api.gbif.org/v1/species/match'
+  url <- 'http://api.gbif.org/v1/species/match'
   args <- rgbif_compact(list(name=name, rank=rank, kingdom=kingdom, phylum=phylum, 
                        class=class, order=order, family=family, genus=genus, 
                        strict=strict, verbose=verbose, offset=start, limit=limit))
-  temp <- GET(url, query=args, callopts)
-  stop_for_status(temp)
-  assert_that(temp$headers$`content-type`=='application/json')
-  res <- content(temp, as = 'text', encoding = "UTF-8")
-  tt <- jsonlite::fromJSON(res, FALSE)
-  
+  tt <- gbif_GET(url, args, callopts)
   if(verbose){ 
     alt <- do.call(rbind.fill, lapply(tt$alternatives, namelkupparser))
     dat <- data.frame(tt[!names(tt) %in% c("alternatives","note")], stringsAsFactors=FALSE)
-    list(data=dat, alternatives=alt)
+    structure(list(data=dat, alternatives=alt), note=tt$note)
   } else
   {
-    tt[!names(tt) %in% c("alternatives","note")]
+    structure(tt[!names(tt) %in% c("alternatives","note")], note=tt$note)
   }
 }
