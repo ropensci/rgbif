@@ -20,6 +20,9 @@ SUBGENUS, SUBKINGDOM, SUBORDER, SUBPHYLUM, SUBSECTION, SUBSERIES, SUBSPECIES,
 SUBTRIBE, SUBVARIETY, SUPERCLASS, SUPERFAMILY, SUPERORDER, SUPERPHYLUM,
 SUPRAGENERIC_NAME, TRIBE, UNRANKED, VARIETY}
 
+\item{higherTaxonKey}{Filters by any of the higher Linnean rank keys. Note this
+is within the respective checklist and not searching nub keys across all checklists.}
+
 \item{status}{Filters by the taxonomic status as one of:
 \itemize{
  \item ACCEPTED
@@ -32,6 +35,8 @@ SUPRAGENERIC_NAME, TRIBE, UNRANKED, VARIETY}
  \item PROPARTE_SYNONYM More specific subclass of SYNONYM.
  \item SYNONYM A general synonym, the exact type is unknown.
 }}
+
+\item{extinct}{Filters by extinction status (a boolean, e.g. isExtinct=true)}
 
 \item{habitat}{Filters by the habitat, though currently only as boolean marine
 or not-marine (i.e. habitat=true means marine, false means not-marine)}
@@ -95,11 +100,6 @@ for each taxon. all gives all data back in a list. Each element is NULL if there
 no contents in that element. hierarchies and names slots are named by the GBIF key,
 which matches the first column of the data.frame in the data slot. So if you wanted to
 combine those somehow, you could easily do so using the key.}
-
-\item{highertaxon_key}{Filters by any of the higher Linnean rank keys. Note this
-is within the respective checklist and not searching nub keys across all checklists.}
-
-\item{isExtinct}{Filters by extinction status (a boolean, e.g. isExtinct=true)}
 }
 \value{
 A list of length three. The first element is metadata. The second is

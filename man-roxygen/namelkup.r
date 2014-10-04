@@ -5,7 +5,7 @@
 #'   SUBGENUS, SUBKINGDOM, SUBORDER, SUBPHYLUM, SUBSECTION, SUBSERIES, SUBSPECIES,
 #'   SUBTRIBE, SUBVARIETY, SUPERCLASS, SUPERFAMILY, SUPERORDER, SUPERPHYLUM,
 #'   SUPRAGENERIC_NAME, TRIBE, UNRANKED, VARIETY
-#' @param highertaxon_key Filters by any of the higher Linnean rank keys. Note this
+#' @param higherTaxonKey Filters by any of the higher Linnean rank keys. Note this
 #'    is within the respective checklist and not searching nub keys across all checklists.
 #' @param status Filters by the taxonomic status as one of:
 #' \itemize{
@@ -19,7 +19,7 @@
 #'  \item PROPARTE_SYNONYM More specific subclass of SYNONYM.
 #'  \item SYNONYM A general synonym, the exact type is unknown.
 #' }
-#' @param isExtinct Filters by extinction status (a boolean, e.g. isExtinct=true)
+#' @param extinct Filters by extinction status (a boolean, e.g. isExtinct=true)
 #' @param habitat Filters by the habitat, though currently only as boolean marine
 #'      or not-marine (i.e. habitat=true means marine, false means not-marine)
 #' @param nameType	Filters by the name type as one of:
