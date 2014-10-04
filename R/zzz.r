@@ -428,3 +428,11 @@ parse_issues <- function(x){
 #' @importFrom magrittr %>%
 #' @usage lhs \%>\% rhs
 NULL
+
+gbif_GET <- function(url, args, opts){
+  temp <- GET(url, query=args, opts)
+  stop_for_status(temp)
+  assert_that(temp$headers$`content-type`=='application/json')
+  res <- content(temp, as = 'text', encoding = "UTF-8")
+  jsonlite::fromJSON(res, FALSE)
+}
