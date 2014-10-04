@@ -20,15 +20,7 @@ dataset_metrics <- function(uuid, callopts=list())
 {
   getdata <- function(x){
     url <- sprintf('http://api.gbif.org/v1/dataset/%s/metrics', x)
-    tt <- GET(url, callopts)
-    stop_for_status(tt)
-    assert_that(tt$headers$`content-type`=='application/json')
-    res <- content(tt, as = 'text', encoding = "UTF-8")
-    jsonlite::fromJSON(res, FALSE)
+    gbif_GET(url, list(), callopts)
   }
-  
-  if(length(uuid)==1){ out <- getdata(uuid) } else
-    { out <- lapply(uuid, getdata) }
-  
-  return( out )
+  if(length(uuid)==1) getdata(uuid) else lapply(uuid, getdata)
 }

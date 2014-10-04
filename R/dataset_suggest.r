@@ -55,11 +55,7 @@ dataset_suggest <- function(query = NULL, country = NULL, type = NULL, subtype =
   args <- rgbif_compact(list(q=query,type=type,keyword=keyword,owningOrg=owningOrg,
                        hostingOrg=hostingOrg,publishingCountry=publishingCountry,
                        decade=decade,limit=limit,offset=start))
-  temp <- GET(url, query=args, callopts)
-  stop_for_status(temp)
-  assert_that(temp$headers$`content-type`=='application/json')
-  res <- content(temp, as = 'text', encoding = "UTF-8")
-  tt <- jsonlite::fromJSON(res, FALSE)
+  tt <- gbif_GET(url, args, callopts)
   
   parse_dataset <- function(x){
     tmp <- rgbif_compact(list(

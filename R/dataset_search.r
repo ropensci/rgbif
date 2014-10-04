@@ -65,11 +65,7 @@ dataset_search <- function(query= NULL, country = NULL, type = NULL, keyword = N
                        decade=decade,limit=limit,offset=start,facetbyname,
                        facetMincount=facetMincount,
                        facetMultiselect=facetMultiselect)))
-  temp <- GET(url, query=args, callopts)
-  stop_for_status(temp)
-  assert_that(temp$headers$`content-type`=='application/json')
-  res <- content(temp, as = 'text', encoding = "UTF-8")
-  tt <- jsonlite::fromJSON(res, FALSE)
+  tt <- gbif_GET(url, args, callopts)
 
   # metadata
   meta <- tt[c('offset','limit','endOfRecords','count')]
