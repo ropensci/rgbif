@@ -65,11 +65,7 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
             nomenclatural_status=nomenclatural_status, limit=limit, facetbyname,
             facetMincount=facetMincount,
             facetMultiselect=facetMultiselect, hl=hl, type=type)))
-  temp <- GET(url, query=args, callopts)
-  stop_for_status(temp)
-  assert_that(temp$headers$`content-type`=='application/json')
-  res <- content(temp, as = 'text', encoding = "UTF-8")
-  tt <- jsonlite::fromJSON(res, FALSE)
+  tt <- gbif_GET(url, args, callopts)
 
   # metadata
   meta <- tt[c('offset','limit','endOfRecords','count')]

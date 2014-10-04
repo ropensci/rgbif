@@ -37,11 +37,7 @@ name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL, start=
 {
   url = 'http://api.gbif.org/v1/species/suggest'
   args <- rgbif_compact(list(q=q, rank=rank, offset=start, limit=limit))
-  temp <- GET(url, query=args, callopts)
-  stop_for_status(temp)
-  assert_that(temp$headers$`content-type`=='application/json')
-  res <- content(temp, as = 'text', encoding = "UTF-8")
-  tt <- jsonlite::fromJSON(res, FALSE)
+  tt <- gbif_GET(url, args, callopts)
   
   if(is.null(fields)){
     toget <- c("key","canonicalName","rank")

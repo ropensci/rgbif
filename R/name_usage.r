@@ -95,11 +95,8 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL, datasetKe
         url <- sprintf('http://api.gbif.org/v1/species/root/%s/%s', uuid, shortname)
       }
     }
-    tt <- GET(url, query=args, callopts)
-    stop_for_status(tt)
-    assert_that(tt$headers$`content-type`=='application/json')
-    res <- content(tt, as = 'text', encoding = "UTF-8")
-    jsonlite::fromJSON(res, FALSE)
+    
+    gbif_GET(url, args, callopts)
   }
   
   # Get data
