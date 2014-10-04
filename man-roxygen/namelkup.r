@@ -19,10 +19,10 @@
 #'  \item PROPARTE_SYNONYM More specific subclass of SYNONYM.
 #'  \item SYNONYM A general synonym, the exact type is unknown.
 #' }
-#' @param extinct Filters by extinction status (a boolean, e.g. extinct=true)
+#' @param isExtinct Filters by extinction status (a boolean, e.g. isExtinct=true)
 #' @param habitat Filters by the habitat, though currently only as boolean marine
 #'      or not-marine (i.e. habitat=true means marine, false means not-marine)
-#' @param name_type	Filters by the name type as one of:
+#' @param nameType	Filters by the name type as one of:
 #' \itemize{
 #'  \item BLACKLISTED surely not a scientific name.
 #'  \item CANDIDATUS Candidatus is a component of the taxonomic name for a bacterium
@@ -40,18 +40,24 @@
 #' @param nomenclatural_status	Not yet implemented, but will eventually allow for
 #'    filtering by a nomenclatural status enum
 #' @param facet	A list of facet names used to retrieve the 100 most frequent values
-#'    for a field. Allowed facets are: dataset_key, highertaxon_key, rank, status,
-#'    extinct, habitat, and name_type. Additionally threat and nomenclatural_status
+#'    for a field. Allowed facets are: datasetKey, higherTaxonKey, rank, status,
+#'    isExtinct, habitat, and nameType. Additionally threat and nomenclaturalStatus
 #'    are legal values but not yet implemented, so data will not yet be returned for them.
 #' @param facetMincount Used in combination with the facet parameter. Set
-#'    facet_mincount={#} to exclude facets with a count less than {#}, e.g.
+#'    facetMincount={#} to exclude facets with a count less than {#}, e.g.
 #'    http://bit.ly/1bMdByP only shows the type value 'ACCEPTED' because the other
 #'    statuses have counts less than 7,000,000
 #' @param facetMultiselect	Used in combination with the facet parameter. Set
-#'    \code{facet_multiselect=TRUE} to still return counts for values that are not currently
+#'    \code{facetMultiselect=TRUE} to still return counts for values that are not currently
 #'    filtered, e.g. http://bit.ly/19YLXPO still shows all status values even though
 #'    status is being filtered by \code{status=ACCEPTED}
-#' @param type Type of name.
+#' @param type Type of name. One of occurrence, checklist, or metadata.
+#' @param hl Set \code{hl=TRUE} to highlight terms matching the query when in fulltext
+#'    search fields. The highlight will be an emphasis tag of class 'gbifH1' e.g. 
+#'    \code{query='plant', hl=TRUE}. Fulltext search fields include: title, keyword, country, 
+#'    publishing country, publishing organization title, hosting organization title, and 
+#'    description. One additional full text field is searched which includes information from 
+#'    metadata documents, but the text of this field is not returned in the response.
 #' @param limit Number of records to return
 #' @param callopts Further arguments passed on to the \code{\link{GET}} request.
 #' @param verbose If TRUE, all data is returned as a list for each element. If
@@ -61,9 +67,9 @@
 #' @param return One of data, meta, facets, names, or all. If data, a data.frame with the
 #'    data. facets returns the facets, if facets=TRUE, or empy list if facets=FALSE. meta
 #'    returns the metadata for the entire call. names returns the vernacular (common) names
-#'    for each taxon. all gives all data back in a list. Each element is NULL if there is 
-#'    no contents in that element. hierarchies and names slots are named by the GBIF key, 
-#'    which matches the first column of the data.frame in the data slot. So if you wanted to 
+#'    for each taxon. all gives all data back in a list. Each element is NULL if there is
+#'    no contents in that element. hierarchies and names slots are named by the GBIF key,
+#'    which matches the first column of the data.frame in the data slot. So if you wanted to
 #'    combine those somehow, you could easily do so using the key.
 #' @return A list of length three. The first element is metadata. The second is
 #' 	  either a data.frame (verbose=FALSE, default) or a list (verbose=TRUE), and the third
@@ -72,5 +78,5 @@
 #' This service uses fuzzy lookup so that you can put in partial names and
 #' you should get back those things that match. See examples below.
 #'
-#' Faceting: If facet=FALSE or left to the default (NULL), no faceting is done. And therefore,
-#' all parameters with facet in their name are ignored (facet_only, facet_mincount, facet_multiselect).
+#' Faceting: If \code{facet=FALSE} or left to the default (NULL), no faceting is done. And therefore,
+#' all parameters with facet in their name are ignored (facetOnly, facetMincount, facetMultiselect).

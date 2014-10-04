@@ -3,11 +3,12 @@
 \alias{name_lookup}
 \title{Lookup names in all taxonomies in GBIF.}
 \usage{
-name_lookup(query = NULL, rank = NULL, highertaxon_key = NULL,
-  status = NULL, extinct = NULL, habitat = NULL, name_type = NULL,
+name_lookup(query = NULL, rank = NULL, higherTaxonKey = NULL,
+  status = NULL, extinct = NULL, habitat = NULL, nameType = NULL,
   dataset_key = NULL, nomenclatural_status = NULL, limit = 20,
   facet = NULL, facetMincount = NULL, facetMultiselect = NULL,
-  type = NULL, callopts = list(), verbose = FALSE, return = "all")
+  type = NULL, hl = NULL, callopts = list(), verbose = FALSE,
+  return = "all")
 }
 \arguments{
 \item{query}{Query term(s) for full text search.}
@@ -18,9 +19,6 @@ ORDER, PHYLUM, SECTION, SERIES, SPECIES, STRAIN, SUBCLASS, SUBFAMILY, SUBFORM,
 SUBGENUS, SUBKINGDOM, SUBORDER, SUBPHYLUM, SUBSECTION, SUBSERIES, SUBSPECIES,
 SUBTRIBE, SUBVARIETY, SUPERCLASS, SUPERFAMILY, SUPERORDER, SUPERPHYLUM,
 SUPRAGENERIC_NAME, TRIBE, UNRANKED, VARIETY}
-
-\item{highertaxon_key}{Filters by any of the higher Linnean rank keys. Note this
-is within the respective checklist and not searching nub keys across all checklists.}
 
 \item{status}{Filters by the taxonomic status as one of:
 \itemize{
@@ -35,12 +33,10 @@ is within the respective checklist and not searching nub keys across all checkli
  \item SYNONYM A general synonym, the exact type is unknown.
 }}
 
-\item{extinct}{Filters by extinction status (a boolean, e.g. extinct=true)}
-
 \item{habitat}{Filters by the habitat, though currently only as boolean marine
 or not-marine (i.e. habitat=true means marine, false means not-marine)}
 
-\item{name_type}{Filters by the name type as one of:
+\item{nameType}{Filters by the name type as one of:
 \itemize{
  \item BLACKLISTED surely not a scientific name.
  \item CANDIDATUS Candidatus is a component of the taxonomic name for a bacterium
@@ -63,21 +59,28 @@ filtering by a nomenclatural status enum}
 \item{limit}{Number of records to return}
 
 \item{facet}{A list of facet names used to retrieve the 100 most frequent values
-for a field. Allowed facets are: dataset_key, highertaxon_key, rank, status,
-extinct, habitat, and name_type. Additionally threat and nomenclatural_status
+for a field. Allowed facets are: datasetKey, higherTaxonKey, rank, status,
+isExtinct, habitat, and nameType. Additionally threat and nomenclaturalStatus
 are legal values but not yet implemented, so data will not yet be returned for them.}
 
 \item{facetMincount}{Used in combination with the facet parameter. Set
-facet_mincount={#} to exclude facets with a count less than {#}, e.g.
+facetMincount={#} to exclude facets with a count less than {#}, e.g.
 http://bit.ly/1bMdByP only shows the type value 'ACCEPTED' because the other
 statuses have counts less than 7,000,000}
 
 \item{facetMultiselect}{Used in combination with the facet parameter. Set
-\code{facet_multiselect=TRUE} to still return counts for values that are not currently
+\code{facetMultiselect=TRUE} to still return counts for values that are not currently
 filtered, e.g. http://bit.ly/19YLXPO still shows all status values even though
 status is being filtered by \code{status=ACCEPTED}}
 
-\item{type}{Type of name.}
+\item{type}{Type of name. One of occurrence, checklist, or metadata.}
+
+\item{hl}{Set \code{hl=TRUE} to highlight terms matching the query when in fulltext
+search fields. The highlight will be an emphasis tag of class 'gbifH1' e.g.
+\code{query='plant', hl=TRUE}. Fulltext search fields include: title, keyword, country,
+publishing country, publishing organization title, hosting organization title, and
+description. One additional full text field is searched which includes information from
+metadata documents, but the text of this field is not returned in the response.}
 
 \item{callopts}{Further arguments passed on to the \code{\link{GET}} request.}
 
@@ -92,6 +95,11 @@ for each taxon. all gives all data back in a list. Each element is NULL if there
 no contents in that element. hierarchies and names slots are named by the GBIF key,
 which matches the first column of the data.frame in the data slot. So if you wanted to
 combine those somehow, you could easily do so using the key.}
+
+\item{highertaxon_key}{Filters by any of the higher Linnean rank keys. Note this
+is within the respective checklist and not searching nub keys across all checklists.}
+
+\item{isExtinct}{Filters by extinction status (a boolean, e.g. isExtinct=true)}
 }
 \value{
 A list of length three. The first element is metadata. The second is
@@ -102,8 +110,8 @@ A list of length three. The first element is metadata. The second is
 This service uses fuzzy lookup so that you can put in partial names and
 you should get back those things that match. See examples below.
 
-Faceting: If facet=FALSE or left to the default (NULL), no faceting is done. And therefore,
-all parameters with facet in their name are ignored (facet_only, facet_mincount, facet_multiselect).
+Faceting: If \code{facet=FALSE} or left to the default (NULL), no faceting is done. And therefore,
+all parameters with facet in their name are ignored (facetOnly, facetMincount, facetMultiselect).
 }
 \examples{
 \dontrun{
@@ -138,13 +146,16 @@ name_lookup('Helianthus annuus', rank="species", limit=2)
 
 # Using faceting
 name_lookup(facet='status', limit=0, facetMincount='70000')
-name_lookup(facet=c('status','highertaxon_key'), limit=0, facetMincount='700000')
+name_lookup(facet=c('status','higherTaxonKey'), limit=0, facetMincount='700000')
 
-name_lookup(facet='name_type', limit=0)
+name_lookup(facet='nameType', limit=0)
 name_lookup(facet='habitat', limit=0)
-name_lookup(facet='dataset_key')
+name_lookup(facet='datasetKey')
 name_lookup(facet='rank', limit=0)
 name_lookup(facet='extinct', limit=0)
+
+# text highlighting
+name_lookup(query='canada', hl=TRUE, limit=5, return='data')
 }
 }
 \references{
