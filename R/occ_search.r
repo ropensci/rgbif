@@ -300,13 +300,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
     outout <- list()
     while(sumreturned < limit){
       iter <- iter + 1
-      temp <- GET(url, query=args, callopts)
-      if(temp$status_code > 200){
-        stop(content(temp, as = "text"))
-      }
-      assert_that(temp$headers$`content-type`=='application/json')
-      res <- content(temp, as = 'text', encoding = "UTF-8")
-      tt <- jsonlite::fromJSON(res, FALSE)
+      tt <- gbif_GET(url, args, callopts)
       
       # if no results, assign count var with 0
       if(identical(tt$results, list())) tt$count <- 0

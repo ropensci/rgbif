@@ -80,9 +80,6 @@ occ_count <- function(taxonKey=NULL, georeferenced=NULL, basisOfRecord=NULL,
                 countries = rgbif_compact(list(publishingCountry=publishingCountry)),
                 year = rgbif_compact(list(from=from, to=to)),
                 publishingCountry = rgbif_compact(list(country=ifelse(is.null(country), "US", country) )))
-  tt <- GET(url, query=args, callopts)
-  warn_for_status(tt)
-  assert_that(tt$headers$`content-type`=='application/json')
-  res <- content(tt, as = 'text', encoding = "UTF-8")
+  res <- gbif_GET_content(url, args, callopts)
   if(type=='count'){ as.numeric(res) } else{ jsonlite::fromJSON(res, FALSE) }
 }

@@ -51,11 +51,7 @@ occ_get <- function(key=NULL, return='all', verbatim=FALSE, fields='minimal', ca
     {
       url <- sprintf('http://api.gbif.org/v1/occurrence/%s', x)
     }
-    temp <- GET(url, callopts)
-    stop_for_status(temp)
-    assert_that(temp$headers$`content-type`=='application/json')
-    res <- content(temp, as = 'text', encoding = "UTF-8")
-    jsonlite::fromJSON(res, FALSE)
+    gbif_GET(url, list(), callopts)
   }
   
   # Get data

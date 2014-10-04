@@ -37,21 +37,15 @@
 #' occ_metadata(type = "collector_name", q='jane')
 #' }
 
-occ_metadata <- function(type = "catalogNumber", q=NULL, limit=5, 
-                         callopts=list(), pretty=TRUE)
+occ_metadata <- function(type = "catalogNumber", q=NULL, limit=5, callopts=list(), pretty=TRUE)
 {
-  type <- match.arg(type, choices=c("catalogNumber","collectionCode",
-                                    "collectorName","institutionCode"))
+  type <- match.arg(type, c("catalogNumber","collectionCode","collectorName","institutionCode"))
   url <- sprintf('http://api.gbif.org/v1/occurrence/search/%s', type)
   args <- rgbif_compact(list(q = q, limit = limit))
-  tt <- GET(url, query=args, callopts)
-  stop_for_status(tt)
-  assert_that(tt$headers$`content-type`=='application/json')
-  res <- content(tt, as = 'text', encoding = "UTF-8")
-  out <- jsonlite::fromJSON(res, TRUE)
+  out <- gbif_GET(url, args, callopts, TRUE)
   
-  if(pretty){
+  if(pretty)
     cat(out, sep="\n")
-  } else
-  { out }
+  else
+    out
 }
