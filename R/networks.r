@@ -1,68 +1,47 @@
 #' Networks metadata.
 #' 
 #' @template all
+#' @template occ
+#' @template identifierargs
 #' @export
 #' 
 #' @param data The type of data to get. Default is all data.
 #' @param uuid UUID of the data network provider. This must be specified if data
 #'    is anything other than 'all'.
-#' @param callopts Further args passed on to GET.
-#' @param name THIS IS A DEPRECATED ARGUMENT. data network name search string, 
-#'    by default searches all data networks by defining name = ''
-#' @param code THIS IS A DEPRECATED ARGUMENT. return networks identified by the 
-#'    supplied short identifier code.
-#' @param modifiedsince THIS IS A DEPRECATED ARGUMENT. return only records which 
-#'    have been indexed or modified on or after the supplied date (format YYYY-MM-DD, 
-#'    e.g. 2006-11-28)
-#' @param startindex THIS IS A DEPRECATED ARGUMENT. return the subset of the matching 
-#'    records that starts at the supplied (zero-based index).
-#' @param maxresults THIS IS A DEPRECATED ARGUMENT. max number of results to return
+#' @param query Query nodes. Only used when data='all'. Ignored otherwise.
+#' @param identifier The value for this parameter can be a simple string or integer, 
+#'    e.g. identifier=120. This parameter doesn't seem to work right now.
+#' @param identifierType Used in combination with the identifier parameter to filter 
+#'    identifiers by identifier type. See details. This parameter doesn't seem to 
+#'    work right now.
 #' 
 #' @examples \dontrun{
-#' networks()
+#' networks(limit=5)
 #' networks(uuid='16ab5405-6c94-4189-ac71-16ca3b753df7')
 #' networks(data='endpoint', uuid='16ab5405-6c94-4189-ac71-16ca3b753df7')
-#' networks(data='identifier', uuid='16ab5405-6c94-4189-ac71-16ca3b753df7')
-#' }
-#' @examples \donttest{
-#' # should throw error message saying params are deprecated
-#' networks(maxresults=10)
 #' }
 
-networks <- function(data = 'all', uuid = NULL, callopts=list(), name = NULL, code = NULL, 
-  modifiedsince = NULL, startindex = NULL, maxresults = NULL)
+networks <- function(data = 'all', uuid = NULL, query = NULL, identifier=NULL,
+                     identifierType=NULL, limit=100, start=NULL, callopts=list())
 {
-  calls <- deparse(sys.calls())
-  calls_vec <- sapply(c("name", "code", "modifiedsince", "startindex", "maxresults"), 
-                      function(x) grepl(x, calls))
-  if(any(calls_vec))
-    stop("The parameters name, code, modifiedsince, startindex, and maxresults \nhave been removed, and were only relavant in the old GBIF API. \n\nPlease see documentation for this function ?networks.")
-
+  args <- rgbif_compact(list(q = query, limit=as.integer(limit), offset=start))
   data <- match.arg(data, choices=c('all', 'contact', 'endpoint', 'identifier', 
-                                    'tag', 'machineTag', 'comment', 'constituents'))
+                                    'tag', 'machineTag', 'comment', 'constituents'), several.ok = TRUE)
   
   # Define function to get data
   getdata <- function(x){
     if(!x == 'all' && is.null(uuid))
       stop('You must specify a uuid if data does not equal "all"')
     
-    if(is.null(uuid)){
-      url <- paste0(gbif_base(), '/network')
-    } else
-    {
-      if(x=='all'){
-        url <- sprintf('%s/network/%s', gbif_base(), uuid)
-      } else
-      {
-        url <- sprintf('%s/network/%s/%s', gbif_base(), uuid, x)
+    url <- if(is.null(uuid)){ paste0(gbif_base(), '/network') } else {
+      if(x=='all'){ sprintf('%s/network/%s', gbif_base(), uuid) } else {
+        sprintf('%s/network/%s/%s', gbif_base(), uuid, x)
       }
     }
-    gbif_GET(url, list(), callopts)
+    res <- gbif_GET(url, args, callopts, TRUE)
+    structure(list(meta=get_meta(res), data=parse_results(res, uuid)))
   }
   
   # Get data
-  if(length(data)==1){ out <- getdata(data) } else
-    { out <- lapply(data, getdata) }
-  
-  out
+  if(length(data)==1) getdata(data) else lapply(data, getdata)
 }

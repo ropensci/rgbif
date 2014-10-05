@@ -3,7 +3,8 @@
 \alias{nodes}
 \title{Nodes metadata.}
 \usage{
-nodes(data = "all", uuid = NULL, query = NULL, isocode = NULL,
+nodes(data = "all", uuid = NULL, query = NULL, identifier = NULL,
+  identifierType = NULL, limit = 100, start = NULL, isocode = NULL,
   callopts = list())
 }
 \arguments{
@@ -14,18 +15,51 @@ is anything other than 'all'.}
 
 \item{query}{Query nodes. Only used when data='all'}
 
+\item{identifier}{The value for this parameter can be a simple string or integer,
+e.g. identifier=120. This parameter doesn't seem to work right now.}
+
+\item{identifierType}{Used in combination with the identifier parameter to filter
+   identifiers by identifier type. See details. This parameter doesn't seem to
+   work right now.}
+
+\item{limit}{Number of records to return. For \code{occ_search} this is 500, for others
+its 100}
+
+\item{start}{Record number to start at}
+
 \item{isocode}{A 2 letter country code. Only used if data='country'.}
 
-\item{callopts}{Further args passed on to GET.}
+\item{callopts}{Pass on options to httr::GET for more refined control of
+http calls, and error handling}
 }
 \description{
 Nodes metadata.
 }
+\details{
+identifierType options:
+
+\itemize{
+ \item {DOI} No description.
+ \item {FTP} No description.
+ \item {GBIF_NODE} Identifies the node (e.g: 'DK' for Denmark, 'sp2000' for Species 2000).
+ \item {GBIF_PARTICIPANT} Participant identifier from the GBIF IMS Filemaker system.
+ \item {GBIF_PORTAL} Indicates the identifier originated from an auto_increment column in the
+ portal.data_provider or portal.data_resource table respectively.
+ \item {HANDLER} No description.
+ \item {LSID} Reference controlled by a separate system, used for example by DOI.
+ \item {SOURCE_ID} No description.
+ \item {UNKNOWN} No description.
+ \item {URI} No description.
+ \item {URL} No description.
+ \item {UUID} No description.
+}
+}
 \examples{
 \dontrun{
-nodes()
+nodes(limit=5)
 nodes(uuid="1193638d-32d1-43f0-a855-8727c94299d8")
-nodes(data='identifier', uuid="1193638d-32d1-43f0-a855-8727c94299d8")
+nodes(data='identifier', uuid="03e816b3-8f58-49ae-bc12-4e18b358d6d9")
+nodes(data=c('identifier','organization','comment'), uuid="03e816b3-8f58-49ae-bc12-4e18b358d6d9")
 
 uuids = c("8cb55387-7802-40e8-86d6-d357a583c596","02c40d2a-1cba-4633-90b7-e36e5e97aba8",
 "7a17efec-0a6a-424c-b743-f715852c3c1f","b797ce0f-47e6-4231-b048-6b62ca3b0f55",
@@ -38,7 +72,10 @@ uuids = c("8cb55387-7802-40e8-86d6-d357a583c596","02c40d2a-1cba-4633-90b7-e36e5e
 "109aea14-c252-4a85-96e2-f5f4d5d088f4","169eb292-376b-4cc6-8e31-9c2c432de0ad",
 "1e789bc9-79fc-4e60-a49e-89dfc45a7188","1f94b3ca-9345-4d65-afe2-4bace93aa0fe")
 
-sapply(uuids, nodes, data='identifier')
+library('plyr')
+res <- lapply(uuids, function(x) nodes(x, data='identifier')$data)
+res <- res[!sapply(res, length)==0]
+ldply(res)
 }
 }
 \references{

@@ -34,7 +34,7 @@ Search for datasets and dataset metadata.
 }
 \examples{
 \dontrun{
-datasets()
+datasets(limit=5)
 datasets(type="OCCURRENCE")
 datasets(uuid="a6998220-7e3a-485d-9cd6-73076bd85657")
 datasets(data='contact', uuid="a6998220-7e3a-485d-9cd6-73076bd85657")

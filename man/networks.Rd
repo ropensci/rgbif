@@ -3,9 +3,8 @@
 \alias{networks}
 \title{Networks metadata.}
 \usage{
-networks(data = "all", uuid = NULL, callopts = list(), name = NULL,
-  code = NULL, modifiedsince = NULL, startindex = NULL,
-  maxresults = NULL)
+networks(data = "all", uuid = NULL, query = NULL, identifier = NULL,
+  identifierType = NULL, limit = 100, start = NULL, callopts = list())
 }
 \arguments{
 \item{data}{The type of data to get. Default is all data.}
@@ -13,32 +12,57 @@ networks(data = "all", uuid = NULL, callopts = list(), name = NULL,
 \item{uuid}{UUID of the data network provider. This must be specified if data
 is anything other than 'all'.}
 
-\item{callopts}{Further args passed on to GET.}
+\item{query}{Query nodes. Only used when data='all'. Ignored otherwise.}
 
-\item{name}{THIS IS A DEPRECATED ARGUMENT. data network name search string,
-by default searches all data networks by defining name = ''}
+\item{identifier}{The value for this parameter can be a simple string or integer,
+e.g. identifier=120. This parameter doesn't seem to work right now.}
 
-\item{code}{THIS IS A DEPRECATED ARGUMENT. return networks identified by the
-supplied short identifier code.}
+\item{identifierType}{Used in combination with the identifier parameter to filter
+   identifiers by identifier type. See details. This parameter doesn't seem to
+   work right now.}
 
-\item{modifiedsince}{THIS IS A DEPRECATED ARGUMENT. return only records which
-have been indexed or modified on or after the supplied date (format YYYY-MM-DD,
-e.g. 2006-11-28)}
+\item{limit}{Number of records to return. For \code{occ_search} this is 500, for others
+its 100}
 
-\item{startindex}{THIS IS A DEPRECATED ARGUMENT. return the subset of the matching
-records that starts at the supplied (zero-based index).}
+\item{start}{Record number to start at}
 
-\item{maxresults}{THIS IS A DEPRECATED ARGUMENT. max number of results to return}
+\item{callopts}{Pass on options to httr::GET for more refined control of
+http calls, and error handling}
+
+\item{identifier}{The value for this parameter can be a simple string or integer,
+e.g. identifier=120. This parameter doesn't seem to work right now.}
+
+\item{identifierType}{Used in combination with the identifier parameter to filter
+   identifiers by identifier type. See details. This parameter doesn't seem to
+   work right now.}
 }
 \description{
 Networks metadata.
 }
+\details{
+identifierType options:
+
+\itemize{
+ \item {DOI} No description.
+ \item {FTP} No description.
+ \item {GBIF_NODE} Identifies the node (e.g: 'DK' for Denmark, 'sp2000' for Species 2000).
+ \item {GBIF_PARTICIPANT} Participant identifier from the GBIF IMS Filemaker system.
+ \item {GBIF_PORTAL} Indicates the identifier originated from an auto_increment column in the
+ portal.data_provider or portal.data_resource table respectively.
+ \item {HANDLER} No description.
+ \item {LSID} Reference controlled by a separate system, used for example by DOI.
+ \item {SOURCE_ID} No description.
+ \item {UNKNOWN} No description.
+ \item {URI} No description.
+ \item {URL} No description.
+ \item {UUID} No description.
+}
+}
 \examples{
 \dontrun{
-networks()
+networks(limit=5)
 networks(uuid='16ab5405-6c94-4189-ac71-16ca3b753df7')
 networks(data='endpoint', uuid='16ab5405-6c94-4189-ac71-16ca3b753df7')
-networks(data='identifier', uuid='16ab5405-6c94-4189-ac71-16ca3b753df7')
 }
 }
 \references{

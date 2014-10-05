@@ -17,11 +17,11 @@ is anything other than 'all'.}
 \item{query}{Query nodes. Only used when data='all'. Ignored otherwise.}
 
 \item{identifier}{The value for this parameter can be a simple string or integer,
-e.g. identifier=120. This parameter doesn't seem to be useful right now.}
+e.g. identifier=120. This parameter doesn't seem to work right now.}
 
 \item{identifierType}{Used in combination with the identifier parameter to filter
    identifiers by identifier type. See details. This parameter doesn't seem to
-   be useful right now.}
+   work right now.}
 
 \item{limit}{Number of records to return. For \code{occ_search} this is 500, for others
 its 100}
@@ -30,9 +30,6 @@ its 100}
 
 \item{callopts}{Pass on options to httr::GET for more refined control of
 http calls, and error handling}
-}
-\value{
-A list.
 }
 \description{
 Installations metadata.
@@ -58,7 +55,7 @@ identifierType options:
 }
 \examples{
 \dontrun{
-installations()
+installations(limit=5)
 installations(query="france")
 installations(uuid="b77901f9-d9b0-47fa-94e0-dd96450aa2b4")
 installations(data='contact', uuid="b77901f9-d9b0-47fa-94e0-dd96450aa2b4")

@@ -14,7 +14,7 @@
 #' @return A list.
 #' 
 #' @examples \dontrun{
-#' datasets()
+#' datasets(limit=5)
 #' datasets(type="OCCURRENCE")
 #' datasets(uuid="a6998220-7e3a-485d-9cd6-73076bd85657")
 #' datasets(data='contact', uuid="a6998220-7e3a-485d-9cd6-73076bd85657")
@@ -41,33 +41,27 @@ datasets <- function(data = 'all', type = NULL, uuid = NULL, query = NULL, id = 
       stop('You must specify a uuid if data does not equal all and 
        data does not equal of deleted, duplicate, subDataset, or withNoEndpoint')
     
-    if(is.null(uuid)){
-      if(x=='all'){
-        url <- paste0(gbif_base(), '/dataset')
-      } else
-      {
+    url <- if(is.null(uuid)){
+      if(x=='all'){ paste0(gbif_base(), '/dataset') } else {
         if(!is.null(id) && x=='metadata'){
-          url <- sprintf('%s/dataset/metadata/%s/document', gbif_base(), id)
+          sprintf('%s/dataset/metadata/%s/document', gbif_base(), id)
         } else
         {
-          url <- sprintf('%s/dataset/%s', gbif_base(), x)
+          sprintf('%s/dataset/%s', gbif_base(), x)
         }
       }
-    } else
-    {
+    } else {
       if(x=='all'){
-        url <- sprintf('%s/dataset/%s', gbif_base(), uuid)
+        sprintf('%s/dataset/%s', gbif_base(), uuid)
       } else
       {
-        url <- sprintf('%s/dataset/%s/%s', gbif_base(), uuid, x)
+        sprintf('%s/dataset/%s/%s', gbif_base(), uuid, x)
       }
     }
-    gbif_GET(url, args, callopts)
+    res <- gbif_GET(url, args, callopts, TRUE)
+    structure(list(meta=get_meta(res), data=parse_results(res, uuid)))
   }
   
   # Get data
-  if(length(data)==1){ out <- getdata(data) } else
-  { out <- lapply(data, getdata) }
-  
-  out
+  if(length(data)==1) getdata(data) else lapply(data, getdata)
 }
