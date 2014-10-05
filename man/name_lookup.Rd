@@ -5,7 +5,7 @@
 \usage{
 name_lookup(query = NULL, rank = NULL, higherTaxonKey = NULL,
   status = NULL, extinct = NULL, habitat = NULL, nameType = NULL,
-  dataset_key = NULL, nomenclatural_status = NULL, limit = 20,
+  dataset_key = NULL, nomenclatural_status = NULL, limit = 100,
   facet = NULL, facetMincount = NULL, facetMultiselect = NULL,
   type = NULL, hl = NULL, callopts = list(), verbose = FALSE,
   return = "all")

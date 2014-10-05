@@ -49,7 +49,7 @@
 
 name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL, extinct=NULL,
   habitat=NULL, nameType=NULL, dataset_key=NULL, nomenclatural_status=NULL,
-  limit=20, facet=NULL, facetMincount=NULL, facetMultiselect=NULL, type = NULL, hl=NULL,
+  limit=100, facet=NULL, facetMincount=NULL, facetMultiselect=NULL, type = NULL, hl=NULL,
   callopts=list(), verbose=FALSE, return="all")
 {
   if(!is.null(facetMincount) && inherits(facetMincount, "numeric"))
