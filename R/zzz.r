@@ -26,7 +26,7 @@ gbifparser <- function(input, fields='minimal'){
     h1 <- c('kingdom','phylum','class','order','family','genus','species')
     h2 <- c('kingdomKey','phylumKey','classKey','orderKey','familyKey','genusKey','speciesKey')
     hier <- get_hier(x, h1, h2)
-    if(nrow(hier) == 0){
+    if(nrow(na.omit(hier)) == 0){
       if(!is.null(x[['species']])){
         usename <- x[['species']]
       } else if(!is.null(x[['scientificName']]))
@@ -42,7 +42,7 @@ gbifparser <- function(input, fields='minimal'){
     }
 
     # issues
-    x[names(x) %in% "issues"] <- parse_issues(x)
+    x[names(x) %in% "issues"] <- collapse_issues(x)
 
     # media
     if("media" %in% names(x)){
@@ -72,8 +72,9 @@ gbifparser <- function(input, fields='minimal'){
         alldata <- alldata[c('name','key','decimalLatitude','decimalLongitude','issues')]
       } else
       {
-        alldata <- alldata['name']
-        alldata <- data.frame(alldata, key=NA, decimalLatitude=NA, decimalLongitude=NA, issues=NA, stringsAsFactors=FALSE)
+        alldata <- data.frame(alldata['name'], alldata['key'], 
+                              decimalLatitude=NA, decimalLongitude=NA, 
+                              alldata['issues'], stringsAsFactors=FALSE)
       }
     } else if(any(fields == 'all'))
     {
@@ -412,7 +413,7 @@ compact_null <- function (l){
   if(length(tmp) == 0) NULL else tmp
 }
 
-parse_issues <- function(x){
+collapse_issues <- function(x){
   data(gbifissues, package="rgbif")
   tmp <- x[names(x) %in% "issues"][[1]]
   tmp <- gbifissues[ gbifissues$issue %in% tmp, "code" ]
