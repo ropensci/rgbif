@@ -6,11 +6,9 @@ rgbif
 
 ## About
 
-This package gives you access to data from [GBIF](http://www.gbif.org/) via their REST API. GBIF versions their API - we are currently using `v1` of their API. Though you can still access their API of the form `http://data.gbif.org/ws/rest/...` through older functions - see `?rgbif-deprecated` and see below for a comparison between old and new.
+This package gives you access to data from [GBIF](http://www.gbif.org/) via their REST API. GBIF versions their API - we are currently using `v1` of their API. Though you can still access their API of the form `http://data.gbif.org/ws/rest/...` through older functions - see `?rgbif-deprecated`.
 
-Note that `rgbif` is being integrated with many other sources of species occurrence data in the package `spocc`. [Check it out](https://github.com/ropensci/spocc).
-
-## Transitioning to the new GBIF API
+<!-- ## Transitioning to the new GBIF API
 
 + The old GBIF API
 	+ See documentation here: [http://data.gbif.org/tutorial/services](http://data.gbif.org/tutorial/services)
@@ -50,7 +48,7 @@ Changes in the new GBIF API from last with respect to `rgbif`:
 | togeojson | same | not implemented yet |
 
 * Note 1: See `?datasets`, `?networks`, `?nodes`, and `?organizations`.
-* Note 2: See `?name_lookup` for names across all of GBIF and `name_backbone` for names only in the GBIF backbone taxonomy.
+* Note 2: See `?name_lookup` for names across all of GBIF and `name_backbone` for names only in the GBIF backbone taxonomy. -->
 
 ## Quick start
 
@@ -60,7 +58,7 @@ Changes in the new GBIF API from last with respect to `rgbif`:
 install.packages("rgbif")
 ```
 
-### Install development version
+### Alternatively, install development version
 
 ```coffee
 install.packages("devtools")
@@ -178,33 +176,16 @@ gbifmap(datdf)
 
 ![](inst/assets/img/gbifmap.png)
 
-Please [report any issues or bugs](https://github.com/ropensci/rgbif/issues).
+## Meta
 
-License: CC0
-
-This package is part of the [rOpenSci](http://ropensci.org/packages) project.
-
-```coffee
-To cite package ‘rgbif’ in publications use:
-
-  Scott Chamberlain, Karthik Ram, Vijay Barve and Dan Mcglinn (2014). rgbif: Interface to the Global
-  Biodiversity Information Facility API. R package version 0.7.0. https://github.com/ropensci/rgbif
-
-A BibTeX entry for LaTeX users is
-
-  @Manual{,
-    title = {rgbif: Interface to the Global Biodiversity Information Facility API},
-    author = {Scott Chamberlain and Karthik Ram and Vijay Barve and Dan Mcglinn},
-    year = {2014},
-    note = {R package version 0.7.0},
-    url = {https://github.com/ropensci/rgbif},
-  }
-```
-Get citation information for `rgbif` in R doing `citation(package = 'rgbif')`
+* Please [report any issues or bugs](https://github.com/ropensci/rgbif/issues).
+* License: MIT
+* This package is part of the [rOpenSci](http://ropensci.org/packages) project.
+* Get citation information for `rgbif` in R doing `citation(package = 'rgbif')`
 
 ---
-  
-This package is part of a richer suite called [SPOCC Species Occurrence Data](https://github.com/ropensci/spocc), along with several other packages, that provide access to occurrence records from multiple databases. We recommend using SPOCC as the primary R interface to rgbif unless your needs are limited to this single source.    
+
+This package is part of a richer suite called [SPOCC Species Occurrence Data](https://github.com/ropensci/spocc), along with several other packages, that provide access to occurrence records from multiple databases. We recommend using SPOCC as the primary R interface to rgbif unless your needs are limited to this single source.
 
 ---
 
