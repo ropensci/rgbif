@@ -78,7 +78,10 @@ gbifparser <- function(input, fields='minimal'){
       }
     } else if(any(fields == 'all'))
     {
-      NULL
+      # rearrange columns
+      firstnames <- c('name','key','decimalLatitude','decimalLongitude','issues')
+      alldata <- alldata[c(firstnames[firstnames %in% names(alldata)], 
+                names(alldata)[-unlist(rgbif_compact(sapply(firstnames, function(z) { tmp <- grep(z, names(alldata)); if(!length(tmp) == 0) tmp }, USE.NAMES = FALSE)))] ) ]
     } else
     {
       alldata <- alldata[names(alldata) %in% fields]
