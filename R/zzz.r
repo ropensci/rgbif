@@ -431,7 +431,7 @@ NULL
 
 gbif_GET <- function(url, args, opts, parse=FALSE){
   temp <- GET(url, query=args, opts)
-  if(temp$status_code > 200) stop(content(temp, as = "text"))
+  if(temp$status_code > 200) stop(error_parse(content(temp, as = "text")))
   assert_that(temp$headers$`content-type`=='application/json')
   res <- content(temp, as = 'text', encoding = "UTF-8")
   jsonlite::fromJSON(res, parse)
@@ -445,3 +445,13 @@ gbif_GET_content <- function(url, args, opts){
 }
 
 gbif_base <- function() 'http://api.gbif.org/v1'
+
+error_parse <- function(x){
+  if(grepl("html", x)){
+    parsed <- XML::htmlParse(x)
+    aslist <- xpathApply(parsed, "//p", xmlToList)
+    aslist[sapply(aslist, "[[", "b") == "message"][[1]]$u
+  } else {
+    x
+  }
+}
