@@ -588,16 +588,6 @@ obj_type <- function (x)
   }
 }
 
-# pastemax <- function (z, n = 10){
-#     rrows <- vapply(z, nrow, integer(1))
-#     tt <- list()
-#     for (i in seq_along(rrows)) {
-#       tt[[i]] <- sprintf("%s (%s)", gsub("_", " ", names(rrows[i])), 
-#                          rrows[[i]])
-#     }
-#     paste0(tt, collapse = ", ")
-# }
-
 parse_issues <- function(x){
   sapply(x, function(y) list(issue = y), USE.NAMES = FALSE)
 }
