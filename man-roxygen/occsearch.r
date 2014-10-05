@@ -66,8 +66,8 @@
 #' @param continent Continent. One of africa, antarctica, asia, europe, north_america
 #'    (North America includes the Caribbean and reachies down and includes Panama), oceania,
 #'    or south_america
-#' @param fields (character) Default ('minimal') will return just taxon name, key, latitude, and
-#'    longitute. 'all' returns all fields. Or specify each field you want returned by name, e.g.
+#' @param fields (character) Default ('all') returns all fields. 'minimal' returns just taxon name, 
+#'    key, latitude, and longitute. Or specify each field you want returned by name, e.g.
 #'    fields = c('name','latitude','elevation').
 #' @param return One of data, hier, meta, or all. If data, a data.frame with the
 #'    data. hier returns the classifications in a list for each record. meta

@@ -13,7 +13,7 @@ occ_search(taxonKey = NULL, scientificName = NULL, country = NULL,
   decimalLongitude = NULL, elevation = NULL, depth = NULL,
   institutionCode = NULL, collectionCode = NULL, spatialIssues = NULL,
   issue = NULL, search = NULL, mediatype = NULL, callopts = list(),
-  limit = 500, start = NULL, fields = "minimal", return = "all")
+  limit = 500, start = NULL, fields = "all", return = "all")
 
 \method{print}{gbif}(x, ..., n = 10)
 }
@@ -123,8 +123,8 @@ its 100}
 
 \item{start}{Record number to start at}
 
-\item{fields}{(character) Default ('minimal') will return just taxon name, key, latitude, and
-longitute. 'all' returns all fields. Or specify each field you want returned by name, e.g.
+\item{fields}{(character) Default ('all') returns all fields. 'minimal' returns just taxon name,
+key, latitude, and longitute. Or specify each field you want returned by name, e.g.
 fields = c('name','latitude','elevation').}
 
 \item{return}{One of data, hier, meta, or all. If data, a data.frame with the
@@ -287,19 +287,19 @@ key <- name_backbone(name = 'Ursus americanus', rank='species')$usageKey
 occ_search(taxonKey = key)
 
 # Search by dataset key
-occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a', return='data')
+occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a', return='data', limit=20)
 
 # Search by catalog number
-occ_search(catalogNumber="49366")
-occ_search(catalogNumber=c("49366","Bird.27847588"))
+occ_search(catalogNumber="49366", limit=20)
+occ_search(catalogNumber=c("49366","Bird.27847588"), limit=20)
 
 # Get all data, not just lat/long and name
-occ_search(taxonKey=key, fields='all')
+occ_search(taxonKey=key, fields='all', limit=20)
 
 # Or get specific fields. Note that this isn't done on GBIF's side of things. This
 # is done in R, but before you get the return object, so other fields are garbage
 # collected
-occ_search(taxonKey=key, fields=c('name','basisOfRecord','protocol'))
+occ_search(taxonKey=key, fields=c('name','basisOfRecord','protocol'), limit=20)
 
 # Use paging parameters (limit and start) to page. Note the different results
 # for the two queries below.
@@ -310,22 +310,22 @@ occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a',start=20,limit=5,
 
 # Many dataset keys
 occ_search(datasetKey=c("50c9509d-22c7-4a22-a47d-8c48425ef4a7",
-   "7b5d6a48-f762-11e1-a439-00145eb45e9a"))
+   "7b5d6a48-f762-11e1-a439-00145eb45e9a"), limit=20)
 
 # Occurrence data: lat/long data, and associated metadata with occurrences
 ## If return='data' the output is a data.frame of all data together
 ## for easy manipulation
-occ_search(taxonKey=key, return='data')
+occ_search(taxonKey=key, return='data', limit=20)
 
 # Taxonomic hierarchy data
 ## If return='meta' the output is a list of the hierarch for each record
-occ_search(taxonKey=key, return='hier')
+occ_search(taxonKey=key, return='hier', limit=10)
 
 # Search by collector name
-occ_search(collectorName="smith")
+occ_search(collectorName="smith", limit=20)
 
 # Many collector names
-occ_search(collectorName=c("smith","BJ Stacey"))
+occ_search(collectorName=c("smith","BJ Stacey"), limit=20)
 
 # Pass in curl options for extra fun
 library('httr')
@@ -345,54 +345,55 @@ occ_search(search="kingfisher", decimalLatitude=50, decimalLongitude=-10)
 
 # Search on a bounding box
 ## in well known text format
-occ_search(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))')
+occ_search(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))', limit=20)
 key <- name_suggest(q='Aesculus hippocastanum')$key[1]
-occ_search(taxonKey=key, geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))')
+occ_search(taxonKey=key, geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))',
+   limit=20)
 ## or using bounding box, converted to WKT internally
-occ_search(geometry=c(-125.0,38.4,-121.8,40.9))
+occ_search(geometry=c(-125.0,38.4,-121.8,40.9), limit=20)
 ## Visualize a WKT area
 library('rgeos')
 plot(readWKT('POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))'))
 
 # Search on country
-occ_search(country='US', fields=c('name','country'))
+occ_search(country='US', fields=c('name','country'), limit=20)
 isocodes[grep("France", isocodes$name),"code"]
-occ_search(country='FR', fields=c('name','country'))
-occ_search(country='DE', fields=c('name','country'))
-occ_search(country=c('US','DE'), fields=c('name','country'))
+occ_search(country='FR', fields=c('name','country'), limit=20)
+occ_search(country='DE', fields=c('name','country'), limit=20)
+occ_search(country=c('US','DE'), fields=c('name','country'), limit=20)
 
 # Get only occurrences with lat/long data
-occ_search(taxonKey=key, hasCoordinate=TRUE)
+occ_search(taxonKey=key, hasCoordinate=TRUE, limit=20)
 
 # Get only occurrences that were recorded as living specimens
-occ_search(taxonKey=key, basisOfRecord="LIVING_SPECIMEN", hasCoordinate=TRUE)
+occ_search(taxonKey=key, basisOfRecord="LIVING_SPECIMEN", hasCoordinate=TRUE, limit=20)
 
 # Get occurrences for a particular eventDate
-occ_search(taxonKey=key, eventDate="2013")
-occ_search(taxonKey=key, year="2013")
-occ_search(taxonKey=key, month="6")
+occ_search(taxonKey=key, eventDate="2013", limit=20)
+occ_search(taxonKey=key, year="2013", limit=20)
+occ_search(taxonKey=key, month="6", limit=20)
 
 # Get occurrences based on depth
 key <- name_backbone(name='Salmo salar', kingdom='animals')$speciesKey
-occ_search(taxonKey=key, depth="5")
+occ_search(taxonKey=key, depth="5", limit=20)
 
 # Get occurrences based on elevation
 key <- name_backbone(name='Puma concolor', kingdom='animals')$speciesKey
-occ_search(taxonKey=key, elevation=50, hasCoordinate=TRUE)
+occ_search(taxonKey=key, elevation=50, hasCoordinate=TRUE, limit=20)
 
 # Get occurrences based on institutionCode
-occ_search(institutionCode="TLMF")
-occ_search(institutionCode=c("TLMF","ArtDatabanken"))
+occ_search(institutionCode="TLMF", limit=20)
+occ_search(institutionCode=c("TLMF","ArtDatabanken"), limit=20)
 
 # Get occurrences based on collectionCode
-occ_search(collectionCode="Floristic Databases MV - Higher Plants")
+occ_search(collectionCode="Floristic Databases MV - Higher Plants", limit=20)
 occ_search(collectionCode=c("Floristic Databases MV - Higher Plants","Artport"))
 
 # Get only those occurrences with spatial issues
-occ_search(taxonKey=key, spatialIssues=TRUE)
+occ_search(taxonKey=key, spatialIssues=TRUE, limit=20)
 
 # Search using a query string
-occ_search(search="kingfisher")
+occ_search(search="kingfisher", limit=20)
 
 # Range queries
 ## See Detail for parameters that support range queries
@@ -400,7 +401,7 @@ occ_search(depth='50,100') # this is a range depth, with lower/upper limits in c
 occ_search(depth=c(50,100)) # this is not a range search, but does two searches for each depth
 
 ## Range search with year
-occ_search(year='1999,2000')
+occ_search(year='1999,2000', limit=20)
 
 ## Range search with latitude
 occ_search(decimalLatitude='29.59,29.6')
