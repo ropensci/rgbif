@@ -28,13 +28,6 @@ its 100}
 
 \item{callopts}{Pass on options to httr::GET for more refined control of
 http calls, and error handling}
-
-\item{identifier}{The value for this parameter can be a simple string or integer,
-e.g. identifier=120. This parameter doesn't seem to work right now.}
-
-\item{identifierType}{Used in combination with the identifier parameter to filter
-   identifiers by identifier type. See details. This parameter doesn't seem to
-   work right now.}
 }
 \description{
 Networks metadata.

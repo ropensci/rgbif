@@ -9,11 +9,6 @@
 #' @param uuid UUID of the data network provider. This must be specified if data
 #'    is anything other than 'all'.
 #' @param query Query nodes. Only used when data='all'. Ignored otherwise.
-#' @param identifier The value for this parameter can be a simple string or integer, 
-#'    e.g. identifier=120. This parameter doesn't seem to work right now.
-#' @param identifierType Used in combination with the identifier parameter to filter 
-#'    identifiers by identifier type. See details. This parameter doesn't seem to 
-#'    work right now.
 #' 
 #' @examples \dontrun{
 #' networks(limit=5)
