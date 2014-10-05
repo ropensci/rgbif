@@ -35,7 +35,7 @@
 name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL, start=NULL, 
                          limit=20, callopts=list())
 {
-  url = 'http://api.gbif.org/v1/species/suggest'
+  url <- paste0(gbif_base(), '/species/suggest')
   args <- rgbif_compact(list(q=q, rank=rank, offset=start, limit=limit))
   tt <- gbif_GET(url, args, callopts)
   

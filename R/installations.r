@@ -66,18 +66,18 @@ installations <- function(data = 'all', uuid = NULL, query = NULL, identifier=NU
     
     if(is.null(uuid)){
       if(x=='all'){
-        url <- 'http://api.gbif.org/v1/installation'
+        url <- paste0(gbif_base(), '/installation')
       } else
       {
-        url <- sprintf('http://api.gbif.org/v1/installation/%s', x)
+        url <- sprintf('%s/installation/%s', gbif_base(), x)
       }
     } else
     {
       if(x=='all'){
-        url <- sprintf('http://api.gbif.org/v1/installation/%s', uuid)
+        url <- sprintf('%s/installation/%s', gbif_base(), uuid)
       } else
       {
-        url <- sprintf('http://api.gbif.org/v1/installation/%s/%s', uuid, x)        
+        url <- sprintf('%s/installation/%s/%s', gbif_base(), uuid, x)
       }
     }
     gbif_GET(url, args, callopts)

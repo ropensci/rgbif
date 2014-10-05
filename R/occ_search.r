@@ -265,7 +265,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
 
   geometry <- geometry_handler(geometry)
 
-  url = 'http://api.gbif.org/v1/occurrence/search'
+  url <- paste0(gbif_base(), '/occurrence/search')
   getdata <- function(x=NULL, itervar=NULL)
   {
     if(!is.null(x))

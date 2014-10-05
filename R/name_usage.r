@@ -79,20 +79,20 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL, datasetKe
       stop('You must specify a key if data does not equal "all"')
     
     if(x == 'all' && is.null(key)){
-      url <- 'http://api.gbif.org/v1/species'
+      url <- paste0(gbif_base(), '/species')
     } else
     {
       if(x=='all' && !is.null(key)){
-        url <- sprintf('http://api.gbif.org/v1/species/%s', key)
+        url <- sprintf('%s/species/%s', gbif_base(), key)
       } else
       if(x %in% c('verbatim', 'name', 'parents', 'children', 
          'related', 'synonyms', 'descriptions',
          'distributions', 'images', 'references', 'speciesProfiles',
          'vernacularNames', 'typeSpecimens')){
-        url <- sprintf('http://api.gbif.org/v1/species/%s/%s', key, x)
+        url <- sprintf('%s/species/%s/%s', gbif_base(), key, x)
       } else
       if(x == 'root'){
-        url <- sprintf('http://api.gbif.org/v1/species/root/%s/%s', uuid, shortname)
+        url <- sprintf('%s/species/root/%s/%s', gbif_base(), uuid, shortname)
       }
     }
     

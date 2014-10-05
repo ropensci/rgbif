@@ -59,7 +59,7 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
     names(facetbyname) <- rep('facet', length(facet))
   } else { facetbyname <- NULL }
 
-  url = 'http://api.gbif.org/v1/species/search'
+  url <- paste0(gbif_base(), '/species/search')
   args <- as.list(rgbif_compact(c(q=query, rank=rank, higherTaxonKey=higherTaxonKey, status=status,
             extinct=extinct, habitat=habitat, nameType=nameType, dataset_key=dataset_key,
             nomenclatural_status=nomenclatural_status, limit=limit, facetbyname,

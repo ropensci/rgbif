@@ -47,14 +47,14 @@ networks <- function(data = 'all', uuid = NULL, callopts=list(), name = NULL, co
       stop('You must specify a uuid if data does not equal "all"')
     
     if(is.null(uuid)){
-      url <- 'http://api.gbif.org/v1/network'
+      url <- paste0(gbif_base(), '/network')
     } else
     {
       if(x=='all'){
-        url <- sprintf('http://api.gbif.org/v1/network/%s', uuid)
+        url <- sprintf('%s/network/%s', gbif_base(), uuid)
       } else
       {
-        url <- sprintf('http://api.gbif.org/v1/network/%s/%s', uuid, x)        
+        url <- sprintf('%s/network/%s/%s', gbif_base(), uuid, x)
       }
     }
     gbif_GET(url, list(), callopts)

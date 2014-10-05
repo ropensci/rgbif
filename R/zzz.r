@@ -443,3 +443,5 @@ gbif_GET_content <- function(url, args, opts){
   assert_that(temp$headers$`content-type`=='application/json')
   content(temp, as = 'text', encoding = "UTF-8")
 }
+
+gbif_base <- function() 'http://api.gbif.org/v1'

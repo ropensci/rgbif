@@ -45,23 +45,23 @@ nodes <- function(data = 'all', uuid = NULL, query = NULL, isocode = NULL, callo
     
     if(is.null(uuid)){
       if(x=='all'){
-        url <- 'http://api.gbif.org/v1/node'
+        url <- paste0(gbif_base(), '/node')
       } else
       {
         if(!is.null(isocode) && x=='country'){
-          url <- sprintf('http://api.gbif.org/v1/node/country/%s', isocode)
+          url <- sprintf('%s/node/country/%s', gbif_base(), isocode)
         } else
         {
-          url <- sprintf('http://api.gbif.org/v1/node/%s', x)          
+          url <- sprintf('%s/node/%s', gbif_base(), x)          
         }
       }
     } else
     {
       if(x=='all'){
-        url <- sprintf('http://api.gbif.org/v1/node/%s', uuid)
+        url <- sprintf('%s/node/%s', gbif_base(), uuid)
       } else
       {
-        url <- sprintf('http://api.gbif.org/v1/node/%s/%s', uuid, x)        
+        url <- sprintf('%s/node/%s/%s', gbif_base(), uuid, x)
       }
     }
     gbif_GET(url, args, callopts)

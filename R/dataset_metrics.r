@@ -19,7 +19,7 @@
 dataset_metrics <- function(uuid, callopts=list())
 {
   getdata <- function(x){
-    url <- sprintf('http://api.gbif.org/v1/dataset/%s/metrics', x)
+    url <- sprintf('%s/dataset/%s/metrics', gbif_base(), x)
     gbif_GET(url, list(), callopts)
   }
   if(length(uuid)==1) getdata(uuid) else lapply(uuid, getdata)
