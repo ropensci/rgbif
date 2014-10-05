@@ -107,8 +107,8 @@ returns only those records with spatial issues while spatialIssues=FALSE include
 only records without spatial issues. The absence of this parameter returns any
 record with or without spatial issues.}
 
-\item{issue}{(character) One of many possible issues with each occurrence record. See
-Details.}
+\item{issue}{(character) One or more of many possible issues with each occurrence record. See
+Details. Issues passed to this parameter filter results by the issue.}
 
 \item{search}{Query terms. The value for this parameter can be a simple word or a phrase.}
 
@@ -432,8 +432,15 @@ occ_search(mediatype = 'MovingImage', return='media')
 occ_search(mediatype = 'Sound', return='media')
 
 # Query based on issues - see Details for options
+## one issue
 occ_search(taxonKey=1, issue='DEPTH_UNLIKELY', fields =
    c('name','key','decimalLatitude','decimalLongitude','depth'))
+## two issues
+occ_search(taxonKey=1, issue=c('DEPTH_UNLIKELY','COORDINATE_ROUNDED'))
+# Show all records in the Arizona State Lichen Collection that cant be matched to the GBIF
+# backbone properly:
+occ_search(datasetKey='84c0e1a0-f762-11e1-a439-00145eb45e9a',
+   issue=c('TAXON_MATCH_NONE','TAXON_MATCH_HIGHERRANK'))
 
 # Parsing output by issue
 (res <- occ_search(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))', limit = 50))
@@ -455,12 +462,6 @@ res \%>\% occ_issues(-gass84, mutate = "split_expand")
 }
 
 \donttest{
-#### FIXME: ISSUES NEED TO BE PASSED IN AS MULTIPLE ISSUE PARAMETERS, FIX THIS
-# Show all records in the Arizona State Lichen Collection that cant be matched to the GBIF
-# backbone properly:
-occ_search(datasetKey='84c0e1a0-f762-11e1-a439-00145eb45e9a',
-   issue=c('TAXON_MATCH_NONE','TAXON_MATCH_HIGHERRANK'))
-
 # If you try multiple values for two different parameters you are wacked on the hand
 occ_search(taxonKey=c(2482598,2492010), collectorName=c("smith","BJ Stacey"))
 

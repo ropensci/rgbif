@@ -54,8 +54,8 @@
 #'    returns only those records with spatial issues while spatialIssues=FALSE includes
 #'    only records without spatial issues. The absence of this parameter returns any
 #'    record with or without spatial issues.
-#' @param issue (character) One of many possible issues with each occurrence record. See
-#'    Details.
+#' @param issue (character) One or more of many possible issues with each occurrence record. See
+#'    Details. Issues passed to this parameter filter results by the issue.
 #' @param hasCoordinate (logical) Return only occurence records with lat/long data (TRUE) or
 #'    all records (FALSE, default).
 #' @param typeStatus Type status of the specimen. One of many options. See ?typestatus
