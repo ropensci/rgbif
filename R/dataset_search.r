@@ -49,7 +49,7 @@
 
 dataset_search <- function(query= NULL, country = NULL, type = NULL, keyword = NULL,
   owningOrg = NULL, hostingOrg = NULL, publishingCountry = NULL, decade = NULL,
-  facet=NULL, facetMincount=NULL, facetMultiselect=NULL, limit=20,
+  facet=NULL, facetMincount=NULL, facetMultiselect=NULL, limit=100,
   start=NULL, callopts=list(), pretty=FALSE, return="all")
 {
   if(!is.null(facetMincount) && inherits(facetMincount, "numeric"))

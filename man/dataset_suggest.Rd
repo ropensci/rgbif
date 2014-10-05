@@ -5,8 +5,9 @@
 \usage{
 dataset_suggest(query = NULL, country = NULL, type = NULL,
   subtype = NULL, keyword = NULL, owningOrg = NULL, hostingOrg = NULL,
-  publishingCountry = NULL, decade = NULL, continent = NULL, limit = 20,
-  start = NULL, callopts = list(), pretty = FALSE, description = FALSE)
+  publishingCountry = NULL, decade = NULL, continent = NULL,
+  limit = 100, start = NULL, callopts = list(), pretty = FALSE,
+  description = FALSE)
 }
 \arguments{
 \item{query}{Query term(s) for full text search.  The value for this parameter
@@ -40,7 +41,8 @@ e.g. /search?facet=DECADE&facet_only=true (see example below)}
 \item{continent}{Not yet implemented, but will eventually allow filtering datasets
 by their continent(s) as given in our Continent enum.}
 
-\item{limit}{Number of records to return}
+\item{limit}{Number of records to return. For \code{occ_search} this is 500, for others
+its 100}
 
 \item{start}{Record number to start at}
 

@@ -5,7 +5,7 @@
 doing prefix matching against the scientific name. Results are ordered by relevance.}
 \usage{
 name_suggest(q = NULL, datasetKey = NULL, rank = NULL, fields = NULL,
-  start = NULL, limit = 20, callopts = list())
+  start = NULL, limit = 100, callopts = list())
 }
 \arguments{
 \item{q}{(character, required) Simple search parameter. The value for this parameter can be a
@@ -25,7 +25,8 @@ suprageneric_name, tribe, unranked, or variety.}
 
 \item{start}{Record number to start at}
 
-\item{limit}{Number of records to return}
+\item{limit}{Number of records to return. For \code{occ_search} this is 500, for others
+its 100}
 
 \item{callopts}{Pass on options to httr::GET for more refined control of
 http calls, and error handling}

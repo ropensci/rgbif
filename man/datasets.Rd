@@ -4,7 +4,7 @@
 \title{Search for datasets and dataset metadata.}
 \usage{
 datasets(data = "all", type = NULL, uuid = NULL, query = NULL,
-  id = NULL, limit = 20, start = NULL, callopts = list())
+  id = NULL, limit = 100, start = NULL, callopts = list())
 }
 \arguments{
 \item{data}{The type of data to get. Default is all data.}
@@ -18,7 +18,8 @@ is anything other than 'all'.}
 
 \item{id}{A metadata document id.}
 
-\item{limit}{Number of records to return}
+\item{limit}{Number of records to return. For \code{occ_search} this is 500, for others
+its 100}
 
 \item{start}{Record number to start at}
 

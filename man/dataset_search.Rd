@@ -6,7 +6,7 @@
 dataset_search(query = NULL, country = NULL, type = NULL,
   keyword = NULL, owningOrg = NULL, hostingOrg = NULL,
   publishingCountry = NULL, decade = NULL, facet = NULL,
-  facetMincount = NULL, facetMultiselect = NULL, limit = 20,
+  facetMincount = NULL, facetMultiselect = NULL, limit = 100,
   start = NULL, callopts = list(), pretty = FALSE, return = "all")
 }
 \arguments{
@@ -50,7 +50,8 @@ facetMultiselect=true to still return counts for values that are not currently
 filtered, e.g. http://bit.ly/19YLXPO still shows all status values even though
 status is being filtered by status=ACCEPTED}
 
-\item{limit}{Number of records to return}
+\item{limit}{Number of records to return. For \code{occ_search} this is 500, for others
+its 100}
 
 \item{start}{Record number to start at}
 

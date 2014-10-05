@@ -19,7 +19,7 @@
 #' organizations(data='pending')
 #' }
 
-organizations <- function(data = 'all', uuid = NULL, query = NULL, limit=20, 
+organizations <- function(data = 'all', uuid = NULL, query = NULL, limit=100, 
                           start=NULL, callopts=list())
 {
   args <- rgbif_compact(list(q = query, limit=as.integer(limit), offset=start))

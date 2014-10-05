@@ -5,7 +5,7 @@
 \usage{
 name_usage(key = NULL, name = NULL, data = "all", language = NULL,
   datasetKey = NULL, uuid = NULL, sourceId = NULL, rank = NULL,
-  shortname = NULL, start = NULL, limit = 20, callopts = list())
+  shortname = NULL, start = NULL, limit = 100, callopts = list())
 }
 \arguments{
 \item{key}{(numeric) A GBIF key for a taxon}
@@ -36,7 +36,8 @@ SUPERPHYLUM, SUPRAGENERIC_NAME, TRIBE, UNRANKED, VARIETY}
 
 \item{start}{Record number to start at}
 
-\item{limit}{Number of records to return}
+\item{limit}{Number of records to return. For \code{occ_search} this is 500, for others
+its 100}
 
 \item{callopts}{Pass on options to httr::GET for more refined control of
 http calls, and error handling}

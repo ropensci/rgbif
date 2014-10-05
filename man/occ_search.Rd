@@ -13,7 +13,7 @@ occ_search(taxonKey = NULL, scientificName = NULL, country = NULL,
   decimalLongitude = NULL, elevation = NULL, depth = NULL,
   institutionCode = NULL, collectionCode = NULL, spatialIssues = NULL,
   issue = NULL, search = NULL, mediatype = NULL, callopts = list(),
-  limit = 20, start = NULL, fields = "minimal", return = "all")
+  limit = 500, start = NULL, fields = "minimal", return = "all")
 
 \method{print}{gbif}(x, ..., n = 10)
 }
@@ -118,7 +118,8 @@ NULL, 'MovingImage', 'Sound', and 'StillImage'.``}
 \item{callopts}{Pass on options to httr::GET for more refined control of
 http calls, and error handling}
 
-\item{limit}{Number of records to return}
+\item{limit}{Number of records to return. For \code{occ_search} this is 500, for others
+its 100}
 
 \item{start}{Record number to start at}
 

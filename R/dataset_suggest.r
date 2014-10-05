@@ -48,7 +48,7 @@
 
 dataset_suggest <- function(query = NULL, country = NULL, type = NULL, subtype = NULL, 
   keyword = NULL, owningOrg = NULL, hostingOrg = NULL, publishingCountry = NULL, 
-  decade = NULL, continent = NULL, limit=20, start=NULL, callopts=list(), 
+  decade = NULL, continent = NULL, limit=100, start=NULL, callopts=list(), 
   pretty=FALSE, description=FALSE)
 {
   url <- paste0(gbif_base(), '/dataset/suggest')

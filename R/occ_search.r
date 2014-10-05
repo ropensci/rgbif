@@ -255,7 +255,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
   geometry=NULL, collectorName=NULL, basisOfRecord=NULL, datasetKey=NULL, eventDate=NULL,
   catalogNumber=NULL, year=NULL, month=NULL, decimalLatitude=NULL, decimalLongitude=NULL,
   elevation=NULL, depth=NULL, institutionCode=NULL, collectionCode=NULL,
-  spatialIssues=NULL, issue=NULL, search=NULL, mediatype=NULL, callopts=list(), limit=20, start=NULL,
+  spatialIssues=NULL, issue=NULL, search=NULL, mediatype=NULL, callopts=list(), limit=500, start=NULL,
   fields = 'minimal', return='all')
 {
   calls <- names(sapply(match.call(), deparse))[-1]

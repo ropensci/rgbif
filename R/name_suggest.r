@@ -33,7 +33,7 @@
 #' }
 
 name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL, start=NULL, 
-                         limit=20, callopts=list())
+                         limit=100, callopts=list())
 {
   url <- paste0(gbif_base(), '/species/suggest')
   args <- rgbif_compact(list(q=q, rank=rank, offset=start, limit=limit))

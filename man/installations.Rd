@@ -4,7 +4,7 @@
 \title{Installations metadata.}
 \usage{
 installations(data = "all", uuid = NULL, query = NULL,
-  identifier = NULL, identifierType = NULL, limit = 20, start = NULL,
+  identifier = NULL, identifierType = NULL, limit = 100, start = NULL,
   callopts = list())
 }
 \arguments{
@@ -23,7 +23,8 @@ e.g. identifier=120. This parameter doesn't seem to be useful right now.}
    identifiers by identifier type. See details. This parameter doesn't seem to
    be useful right now.}
 
-\item{limit}{Number of records to return}
+\item{limit}{Number of records to return. For \code{occ_search} this is 500, for others
+its 100}
 
 \item{start}{Record number to start at}
 

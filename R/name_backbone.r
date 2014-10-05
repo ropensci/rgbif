@@ -52,7 +52,7 @@
 
 name_backbone <- function(name, rank=NULL, kingdom=NULL, phylum=NULL, class=NULL, 
   order=NULL, family=NULL, genus=NULL, strict=FALSE, verbose=FALSE, 
-  start=NULL, limit=20, callopts=list())
+  start=NULL, limit=100, callopts=list())
 {
   url <- paste0(gbif_base(), '/species/match')
   args <- rgbif_compact(list(name=name, rank=rank, kingdom=kingdom, phylum=phylum, 

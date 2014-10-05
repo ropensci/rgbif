@@ -3,7 +3,7 @@
 \alias{organizations}
 \title{Organizations metadata.}
 \usage{
-organizations(data = "all", uuid = NULL, query = NULL, limit = 20,
+organizations(data = "all", uuid = NULL, query = NULL, limit = 100,
   start = NULL, callopts = list())
 }
 \arguments{
@@ -14,7 +14,8 @@ is anything other than 'all'.}
 
 \item{query}{Query nodes. Only used when data='all'}
 
-\item{limit}{Number of records to return}
+\item{limit}{Number of records to return. For \code{occ_search} this is 500, for others
+its 100}
 
 \item{start}{Record number to start at}
 

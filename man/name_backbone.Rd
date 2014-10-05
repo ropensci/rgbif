@@ -5,7 +5,7 @@
 \usage{
 name_backbone(name, rank = NULL, kingdom = NULL, phylum = NULL,
   class = NULL, order = NULL, family = NULL, genus = NULL,
-  strict = FALSE, verbose = FALSE, start = NULL, limit = 20,
+  strict = FALSE, verbose = FALSE, start = NULL, limit = 100,
   callopts = list())
 }
 \arguments{
@@ -38,7 +38,8 @@ taxon in the upper classification (optional)}
 
 \item{start}{Record number to start at}
 
-\item{limit}{Number of records to return}
+\item{limit}{Number of records to return. For \code{occ_search} this is 500, for others
+its 100}
 
 \item{callopts}{Pass on options to httr::GET for more refined control of
 http calls, and error handling}

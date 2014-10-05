@@ -25,7 +25,7 @@
 #' }
 
 datasets <- function(data = 'all', type = NULL, uuid = NULL, query = NULL, id = NULL, 
-                     limit = 20, start=NULL, callopts=list())
+                     limit = 100, start=NULL, callopts=list())
 {
   args <- rgbif_compact(list(q = query, limit=as.integer(limit), offset=start))
   

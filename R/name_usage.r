@@ -57,7 +57,7 @@
 #' }
 
 name_usage <- function(key=NULL, name=NULL, data='all', language=NULL, datasetKey=NULL, uuid=NULL,
-  sourceId=NULL, rank=NULL, shortname=NULL, start=NULL, limit=20, callopts=list())
+  sourceId=NULL, rank=NULL, shortname=NULL, start=NULL, limit=100, callopts=list())
 {
   calls <- names(sapply(match.call(), deparse))[-1]
   calls_vec <- c("sourceId") %in% calls
