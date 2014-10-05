@@ -36,7 +36,7 @@ Imports:
     assertthat,
     whisker,
     magrittr,
-    jsonlite
+    jsonlite (>= 0.9.12)
 Suggests:
     roxygen2,
     testthat,

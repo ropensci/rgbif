@@ -9,7 +9,8 @@
 #'    is anything other than 'all'.
 #' @param query Query nodes. Only used when data='all'
 #' 
-#' @return A list.
+#' @return A list of length one or two. If \code{uuid} is NULL, then a data.frame with
+#' call metadata, and a data.frame, but if \code{uuid} given, then a list.
 #' 
 #' @examples \dontrun{
 #' organizations()
@@ -17,6 +18,7 @@
 #' organizations(uuid="4b4b2111-ee51-45f5-bf5e-f535f4a1c9dc")
 #' organizations(data='contact', uuid="4b4b2111-ee51-45f5-bf5e-f535f4a1c9dc")
 #' organizations(data='pending')
+#' organizations(data=c('contact','endpoint'), uuid="4b4b2111-ee51-45f5-bf5e-f535f4a1c9dc")
 #' }
 
 organizations <- function(data = 'all', uuid = NULL, query = NULL, limit=100, 
@@ -27,7 +29,7 @@ organizations <- function(data = 'all', uuid = NULL, query = NULL, limit=100,
   data <- match.arg(data, choices=c('all', 'organization', 'contact', 'endpoint', 
                                     'identifier', 'tag', 'machineTag', 'comment', 
                                     'hostedDataset', 'ownedDataset', 'deleted', 
-                                    'pending', 'nonPublishing'))
+                                    'pending', 'nonPublishing'), several.ok = TRUE)
   
   # Define function to get data
   getdata <- function(x){
@@ -51,12 +53,43 @@ organizations <- function(data = 'all', uuid = NULL, query = NULL, limit=100,
         url <- sprintf('%s/organization/%s/%s', gbif_base(), uuid, x)
       }
     }
-    gbif_GET(url, args, callopts)
+    res <- gbif_GET(url, args, callopts, TRUE)
+    structure(list(meta=get_meta(res, uuid), data=parse_results(res, uuid)))
   }
   
   # Get data
-  if(length(data)==1){ out <- getdata(data) } else
-  { out <- lapply(data, getdata) }
-  
-  out
+  if(length(data)==1) getdata(data) else lapply(data, getdata)
+}
+
+get_meta <- function(x, y){
+  if(is.null(y))
+    data.frame(x[!names(x) == 'results'], stringsAsFactors = FALSE)
+  else
+    NULL
+}
+
+list0tochar <- function(x){
+  if(class(x) == 'list'){
+    tmp <- vapply(x, length, numeric(1))
+    if(sum(tmp) == 0) NA else x
+  } else { x }
+}
+
+parse_results <- function(x, y){
+  if(!is.null(y)){  x } else  {
+    dat <- x$results
+    for(i in seq_along(dat)){
+      if(class(dat[[i]]) == 'list'){
+        tmp <- vapply(dat[[i]], length, numeric(1))
+        dat[[i]] <- 
+          if(sum(tmp) == 0) { 
+            NA 
+          } else if(max(tmp) == 1){
+            dat[[i]][sapply(dat[[i]], is.null)] <- NA
+            unlist(dat[[i]])
+          } else { dat[[i]] }
+      } else { dat[[i]] <- dat[[i]] }
+    }
+    dat
+  }
 }
