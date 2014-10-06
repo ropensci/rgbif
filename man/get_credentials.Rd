@@ -3,10 +3,10 @@
 \alias{get_credentials}
 \title{Get Github credentials from use in console}
 \usage{
-get_credentials()
+get_credentials(...)
 }
 \description{
-This function is deprecated.  See the package spocc for similar functionality.
+This function is defunct.  See the package gistr for similar functionality.
 }
 \keyword{internal}
 

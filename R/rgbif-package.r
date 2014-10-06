@@ -5,73 +5,33 @@
 #' 
 #' This package gives you access to data from GBIF \url{http://www.gbif.org/} via their API.
 #' 
-#' @section Transitioning to the new GBIF API:
+#' @section A note about the old GBIF API:
 #' 
-#' Note that development is rapid at this point so expect changes, but changes should 
-#' slow down with time...
+#' If you still want to use the old GBIF API, described at 
+#' \url{http://data.gbif.org/tutorial/services} let us know at 
+#' \url{https://github.com/ropensci/rgbif}, or email Scott at \url{mailto:myrmecocystus@@gmail.com}
 #' 
-#' The old GBIF API
-#' 
-#' \itemize{
-#'   \item See documentation here \url{http://data.gbif.org/tutorial/services}
-#' }
-#'   
-#' The new GBIF API
+#' @section Documentation for the GBIF API:
 #' 
 #' \itemize{
-#'   \item See documentation here: \url{http://www.gbif.org/developer/summary}
+#'   \item summary \url{http://www.gbif.org/developer/summary}
+#'   \item registry \url{http://www.gbif.org/developer/registry}
+#'   \item species names \url{http://www.gbif.org/developer/species}
+#'   \item occurrences \url{http://www.gbif.org/developer/occurrence}
+#'   \item maps \url{http://www.gbif.org/developer/maps}
 #' }
 #' 
-#' The functions for the old GBIF API give deprecation messages, signaling that they are on 
-#' their way out. A future version of \code{rgbif} will remove functions for the old API, 
-#' so do transition to the functions for the new API soon.
-#' 
-#' The new GBIF API only uses JSON as a data format - no more XML. Of course this probably 
-#' doesn't matter to you unless you are a hacker...
-#' 
-#' @section Function changes:
-#' 
-#' Changes in the new GBIF API from last with respect to rgbif, the first 
-#' column giving the function name, the second column giving the state of the function 
-#' in the new package version, and any reasoning in the third column.
-#' 
-#' \tabular{lll}{
-#'   rgb_country_codes \tab same \tab none \cr
-#'   density_spplist \tab deprecated \tab service no longer provided \cr
-#'   densitylist \tab deprecated \tab service not provided anymore \cr
-#'   gbifdata \tab deprecated \tab not needed \cr
-#'   gbifmap_dens \tab deprecated \tab none \cr
-#'   gbifmap_list \tab deprecated \tab none \cr
-#'   is.gbifdens \tab deprecated \tab none \cr
-#'   is.gbiflist \tab deprecated \tab none \cr
-#'   networks \tab same \tab some parameters differ \cr
-#'   occurrencecount \tab occ_count \tab some parameters differ \cr
-#'   occurrencedensity \tab deprecated \tab service not provided anymore \cr
-#'   occurrenceget \tab occ_get \tab none \cr
-#'   occurrencelist \tab occ_search \tab none \cr
-#'   occurrencelist_all \tab occ_search \tab none \cr
-#'   occurrencelist_many \tab occ_search \tab none \cr
-#'   providers \tab deprecated \tab see note 1 \cr
-#'   resources \tab deprecated \tab see note 1 \cr
-#'   stylegeojson \tab same \tab not implemented yet \cr
-#'   taxoncount \tab deprecated \tab See ?occ_count \cr
-#'   taxonget \tab deprecated \tab See ?name_lookup \cr
-#'   taxonsearch \tab deprecated \tab See note 2 \cr
-#'   taxrank \tab same \tab none \cr
-#'   togeojson \tab same \tab not implemented yet
-#' }
-#' 
-#' Note 1: See \code{\link{datasets}}, \code{\link{networks}}, \code{\link{nodes}}, 
-#' and \code{\link{organizations}}
-#' 
-#' Note 2: See \code{\link{name_lookup}} for names across all of GBIF and 
-#' \code{\link{name_backbone}} for names only in the GBIF backbone taxonomy.
-#' 
+#' @name rgbif-package
+#' @aliases rgbif
 #' @docType package
-#' @name rgbif
+#' @title Interface to the Global Biodiversity Information Facility API.
+#' @author Scott Chamberlain \email{myrmecocystus@@gmail.com}
+#' @author Karthik Ram \email{karthik@@ropensci.org}
+#' @author Dan Mcglinn \email{danmcglinn@@gmail.com}
+#' @author Vijay Barve \email{vijay.barve@@gmail.com}
 NULL 
 
-#' Deprecated functions in rgbif
+#' Defunct functions in rgbif
 #' 
 #' \itemize{
 #'  \item \code{\link{density_spplist}}: service no longer provided
@@ -92,12 +52,11 @@ NULL
 #'  \item \code{\link{gist}}: moving this functionality to spocc package, will be removed soon
 #' }
 #' 
-#' The function \code{gist} to put an interactive map on Github from R has been deprecated. That is, 
-#' you can stil use the function, but the same, but better, functionality has been moved to the 
-#' spocc package. In addition, the helper functions \code{stylegeojson} and \code{togeojson} are also
-#' deprecated, and similar functions are in the spocc package. 
+#' The above functions have been removed. See \url{https://github.com/ropensci/rgbif} and poke 
+#' around the code if you want to find the old functions in previous versions of the package, or 
+#' email Scott at \url{mailto:myrmecocystus@@gmail.com}
 #' 
-#' @name rgbif-deprecated
+#' @name rgbif-defunct
 NULL
 
 #' Table of country two character ISO codes, and GBIF names

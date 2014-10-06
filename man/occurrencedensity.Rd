@@ -7,9 +7,7 @@
 occurrencedensity()
 }
 \description{
-This function is deprecated.
+This function is defunct.
 }
-\seealso{
-densitylist
-}
+\keyword{internal}
 
