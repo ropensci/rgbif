@@ -19,7 +19,7 @@ This package gives you access to data from GBIF \url{http://www.gbif.org/} via t
 
 If you still want to use the old GBIF API, described at
 \url{http://data.gbif.org/tutorial/services} let us know at
-\url{https://github.com/ropensci/rgbif}, or email Scott at \url{mailto:myrmecocystus@gmail.com}
+\url{https://github.com/ropensci/rgbif}, or email Scott \email{myrmecocystus@gmail.com}
 }
 
 \section{Documentation for the GBIF API}{

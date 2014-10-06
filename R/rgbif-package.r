@@ -9,7 +9,7 @@
 #' 
 #' If you still want to use the old GBIF API, described at 
 #' \url{http://data.gbif.org/tutorial/services} let us know at 
-#' \url{https://github.com/ropensci/rgbif}, or email Scott at \url{mailto:myrmecocystus@@gmail.com}
+#' \url{https://github.com/ropensci/rgbif}, or email Scott \email{myrmecocystus@@gmail.com}
 #' 
 #' @section Documentation for the GBIF API:
 #' 
@@ -52,7 +52,7 @@ NULL
 #' 
 #' The above functions have been removed. See \url{https://github.com/ropensci/rgbif} and poke 
 #' around the code if you want to find the old functions in previous versions of the package, or 
-#' email Scott at \url{mailto:myrmecocystus@@gmail.com}
+#' email Scott at \email{myrmecocystus@@gmail.com}
 #' 
 #' @name rgbif-defunct
 NULL
