@@ -22,13 +22,13 @@ test_that("returns the correct value", {
   expect_equal(as.character(uu$hierarchy[[1]][1,1]), "Plantae")
   expect_equal(as.character(uu$data[1,1]), "Helianthus annuus")
   expect_equal(uu$meta$limit, 20)
-  expect_equal(vv$limit, 20)
+  expect_equal(vv$limit, 200)
 })
 
 test_that("returns the correct dimensions", {
   expect_equal(length(tt), 4)
   expect_equal(length(tt$meta), 4)
-  expect_equal(length(uu$data), 5)
+  expect_equal(length(uu$data), 71)
   expect_equal(ncol(vv), 4)
 })
 
@@ -39,7 +39,7 @@ test_that("returns the correct class", {
   expect_is(out, "data.frame")
 })
 test_that("returns the correct dimensions", {
-  expect_equal(dim(out), c(20,5))
+  expect_equal(dim(out), c(177,42))
 })
 
 ## Search by catalog number

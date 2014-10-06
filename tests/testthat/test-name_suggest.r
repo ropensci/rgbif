@@ -16,10 +16,10 @@ test_that("name_suggest returns the correct class", {
 })
 
 test_that("name_suggest returns the correct dimensions", {
-  expect_equal(dim(a), c(20,3))
-  expect_equal(dim(b), c(20,3))
+  expect_equal(dim(a), c(100,3))
+  expect_equal(dim(b), c(100,3))
   expect_equal(dim(c), c(2,3))
-  expect_equal(dim(d), c(20,2))
+  expect_equal(dim(d), c(100,2))
   expect_equal(names(d), c("key","canonicalName"))
 })
 
