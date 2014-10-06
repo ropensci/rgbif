@@ -207,15 +207,6 @@ print.gbiflist_na <- function(...){
   .Defunct(msg="This function is defunct.")
 }
 
-#' @keywords internal
-is.gbiflist <- function(...) .Defunct(msg="This function is defunct.")
-
-#' @keywords internal
-is.gbiflist_na <- function(...) .Defunct(msg="This function is defunct.")
-
-#' @keywords internal
-is.gbifdens <- function(...) .Defunct(msg="This function is defunct.")
-
 #' Style a data.frame prior to converting to geojson.
 #'
 #' This function is defunct.  See the package spocc for similar functionality.

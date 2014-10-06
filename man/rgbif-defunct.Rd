@@ -9,8 +9,6 @@
  \item \code{\link{gbifdata}}: service no longer provided
  \item \code{\link{gbifmap_dens}}: service no longer provided
  \item \code{\link{gbifmap_list}}: service no longer provided
- \item \code{\link{is.gbifdens}}: service no longer provided
- \item \code{\link{is.gbiflist}}: service no longer provided
  \item \code{\link{occurrencedensity}}: service no longer provided
  \item \code{\link{providers}}: service no longer provided
  \item \code{\link{resources}}: service no longer provided

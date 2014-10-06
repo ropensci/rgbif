@@ -310,13 +310,9 @@ commas_to_periods <- function(dataframe)
 }
 
 
-#' Code based on the `gbifxmlToDataFrame` function from dismo package
-#' (http://cran.r-project.org/web/packages/dismo/index.html),
-#' by Robert Hijmans, 2012-05-31, License: GPL v3
-#' @param doc A parsed XML document.
-#' @param format Format to use.
-#' @export
-#' @keywords internal
+# Code based on the `gbifxmlToDataFrame` function from dismo package
+# (http://cran.r-project.org/web/packages/dismo/index.html),
+# by Robert Hijmans, 2012-05-31, License: GPL v3
 gbifxmlToDataFrame <- function(doc, format) {
   nodes <- getNodeSet(doc, "//to:TaxonOccurrence")
   if (length(nodes) == 0)
@@ -453,7 +449,7 @@ gbif_base <- function() 'http://api.gbif.org/v1'
 error_parse <- function(x){
   if(grepl("html", x)){
     parsed <- XML::htmlParse(x)
-    aslist <- xpathApply(parsed, "//p", xmlToList)
+    aslist <- XML::xpathApply(parsed, "//p", XML::xmlToList)
     aslist[sapply(aslist, "[[", "b") == "message"][[1]]$u
   } else {
     x

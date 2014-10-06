@@ -22,13 +22,10 @@ VignetteBuilder: knitr
 Roxygen: list(wrap = FALSE)
 Imports:
     XML,
-    RCurl (>= 1.6),
     plyr,
     ggplot2,
     maps,
     httr,
-    maptools,
-    rgdal,
     rgeos,
     sp,
     data.table,

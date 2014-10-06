@@ -2,6 +2,7 @@
 #'
 #' @export
 #' @import httr plyr assertthat
+#' @importFrom XML getNodeSet xmlAttrs xmlSApply xmlValue htmlParse xpathApply xmlToList
 #' 
 #' @template occsearch
 #' @template occ
