@@ -44,7 +44,13 @@
 #' name_lookup(facet='extinct', limit=0)
 #' 
 #' # text highlighting
-#' name_lookup(query='canada', hl=TRUE, limit=5, return='data')
+#' ## turn on highlighting
+#' res <- name_lookup(query='canada', hl=TRUE, limit=5)
+#' res$data
+#' name_lookup(query='canada', hl=TRUE, limit=45, return='data')
+#' ## and you can pass the output to gbif_names() function
+#' res <- name_lookup(query='canada', hl=TRUE, limit=5)
+#' gbif_names(res)
 #' }
 
 name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL, extinct=NULL,
