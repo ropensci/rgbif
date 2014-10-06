@@ -3,11 +3,9 @@ all: move rmd2md
 vignettes:
 		cd inst/vign;\
 		Rscript --vanilla -e 'library(knitr); knit("rgbif_vignette.Rmd"); knit("rgbif_vignette.Rmd")'
-		Rscript --vanilla -e 'library(knitr); knit("rgbif_vignette_oldapi.Rmd"); knit("rgbif_vignette_oldapi.Rmd")'
 
 move:
 		cp inst/vign/rgbif_vignette.md vignettes;\
-		cp inst/vign/rgbif_vignette_oldapi.md vignettes;\
 		cp -r inst/vign/figure/ vignettes/figure/
 
 # pandoc:
@@ -19,8 +17,7 @@ move:
 
 rmd2md:
 		cd vignettes;\
-		mv rgbif_vignette.md rgbif_vignette.Rmd;\
-		mv rgbif_vignette_oldapi.md rgbif_vignette_oldapi.Rmd
+		mv rgbif_vignette.md rgbif_vignette.Rmd
 
 # cleanup:
 # 		cd inst/vign;\
