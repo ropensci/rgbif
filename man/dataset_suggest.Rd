@@ -53,6 +53,8 @@ http calls, and error handling}
 manipulate output though.}
 
 \item{description}{Return descriptions only (TRUE) or all data (FALSE, default)}
+
+\item{publishingOrg}{Publishing organization. A uuid string. See \code{\link{organizations}}}
 }
 \value{
 A data.frame, list, or message printed to console (using pretty=TRUE).

@@ -47,9 +47,9 @@
 #' dataset_search(facet="decade", facetMincount="10", limit=2)
 #' }
 
-dataset_search <- function(query= NULL, country = NULL, type = NULL, keyword = NULL,
-  owningOrg = NULL, hostingOrg = NULL, publishingCountry = NULL, decade = NULL,
-  facet=NULL, facetMincount=NULL, facetMultiselect=NULL, limit=100,
+dataset_search <- function(query = NULL, country = NULL, type = NULL, keyword = NULL,
+  owningOrg = NULL, publishingOrg = NULL, hostingOrg = NULL, publishingCountry = NULL, 
+  decade = NULL, facet=NULL, facetMincount=NULL, facetMultiselect=NULL, limit=100,
   start=NULL, callopts=list(), pretty=FALSE, return="all")
 {
   if(!is.null(facetMincount) && inherits(facetMincount, "numeric"))
@@ -61,6 +61,7 @@ dataset_search <- function(query= NULL, country = NULL, type = NULL, keyword = N
 
   url <- paste0(gbif_base(), '/dataset/search')
   args <- as.list(rgbif_compact(c(q=query,type=type,keyword=keyword,owningOrg=owningOrg,
+                       publishingOrg=publishingOrg,
                        hostingOrg=hostingOrg,publishingCountry=publishingCountry,
                        decade=decade,limit=limit,offset=start,facetbyname,
                        facetMincount=facetMincount,
@@ -112,24 +113,26 @@ dataset_search <- function(query= NULL, country = NULL, type = NULL, keyword = N
 }
 
 parse_dataset <- function(x){
-  tmp <- rgbif_compact(list(title=x$title,
-                      hostingOrganization=x$hostingOrganizationTitle,
-                      owningOrganization=x$owningOrganizationTitle,
+  tmp <- rgbif_compact(list(datasetTitle=x$title,
+                      datasetKey=x$key,
                       type=x$type,
-                      publishingCountry=x$publishingCountry,
-                      key=x$key,
+                      hostingOrganization=x$hostingOrganizationTitle,
                       hostingOrganizationKey=x$hostingOrganizationKey,
-                      owningOrganizationKey=x$owningOrganizationKey))
+                      publishingOrganization=x$publishingOrganizationTitle,
+                      publishingOrganizationKey=x$publishingOrganizationKey,
+                      publishingCountry=x$publishingCountry))
   data.frame(tmp, stringsAsFactors=FALSE)
 }
 
 printdata <- function(x){
-  cat(paste("title:", x$title),
-      paste("hostingOrganization:", x$hostingOrganizationTitle),
-      paste("owningOrganization:", x$owningOrganizationTitle),
+  cat(paste("datasetTitle:", x$title),
+      paste("datasetKey:", x$key),
       paste("type:", x$type),
-      paste("publishingCountry:", x$publishingCountry),
+      paste("hostingOrganization:", x$hostingOrganizationTitle),
       paste("hostingOrganizationKey:", x$hostingOrganizationKey),
-      paste("owningOrganizationKey:", x$owningOrganizationKey),
+      paste("publishingOrganization:", x$publishingOrganizationTitle),
+      paste("publishingOrganizationKey:", x$publishingOrganizationKey),
+      paste("publishingCountry:", x$publishingCountry),
       paste("description:", x$description), "\n", sep="\n")
+  invisible(TRUE)
 }
