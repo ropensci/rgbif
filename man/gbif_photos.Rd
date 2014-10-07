@@ -3,7 +3,7 @@
 \alias{gbif_photos}
 \title{View photos from GBIF.}
 \usage{
-gbif_photos(input = NULL, output = NULL, which = "table", browse = TRUE)
+gbif_photos(input, output = NULL, which = "table", browse = TRUE)
 }
 \arguments{
 \item{input}{Input output from occ_search}

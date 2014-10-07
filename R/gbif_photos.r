@@ -18,11 +18,8 @@
 #' gbif_photos(res, output = '~/barfoo')
 #' }
 
-gbif_photos <- function(input = NULL, output = NULL, which='table', browse = TRUE)
+gbif_photos <- function(input, output = NULL, which='table', browse = TRUE)
 {
-  if(is.null(input))
-     stop("Please supply some input")
-
   if(which=='map'){
     photos <- foo(input)
     outfile <- dirhandler(output)
@@ -78,12 +75,14 @@ dirhandler <- function(x, which="file"){
 
 foo <- function(x){
   photos <- lapply(x, function(y){
-    tmp <- y[c('key','species','decimalLatitude','decimalLongitude','country')]
-    tmp[sapply(tmp, is.null)] <- "none"
-    names(tmp) <- c('key','species','decimalLatitude','decimalLongitude','country')
-    list(c(tmp, y[!names(y) %in% c('key','species','decimalLatitude','decimalLongitude','country')][[1]][c(3:4)]))
+    if(is.null(y$decimalLatitude) || is.null(y$decimalLongitude)){ NULL } else {
+      tmp <- y[c('key','species','decimalLatitude','decimalLongitude','country')]
+      tmp[sapply(tmp, is.null)] <- "none"
+      names(tmp) <- c('key','species','decimalLatitude','decimalLongitude','country')
+      list(c(tmp, y[!names(y) %in% c('key','species','decimalLatitude','decimalLongitude','country')][[1]][c(3:4)]))
+    }
   })
-  do.call(c, unname(photos))
+  do.call(c, unname(rgbif_compact(photos)))
 }
 
 template <- '
