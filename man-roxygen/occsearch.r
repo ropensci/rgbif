@@ -32,19 +32,24 @@
 #'      \item UNKNOWN Unknown basis for the record.
 #'    }
 #' @param eventDate Occurrence date in ISO 8601 format: yyyy, yyyy-MM, yyyy-MM-dd, or
-#'    MM-dd.
-#' @param year The 4 digit year. A year of 98 will be interpreted as AD 98.
-#' @param month The month of the year, starting with 1 for January.
+#'    MM-dd. Supports range queries, smaller,larger (e.g., '1990,1991', whereas '1991,1990' 
+#'    wouldn't work)
+#' @param year The 4 digit year. A year of 98 will be interpreted as AD 98. Supports range queries,
+#'    smaller,larger (e.g., '1990,1991', whereas '1991,1990' wouldn't work)
+#' @param month The month of the year, starting with 1 for January. Supports range queries, 
+#'    smaller,larger (e.g., '1,2', whereas '2,1' wouldn't work)
 #' @param search Query terms. The value for this parameter can be a simple word or a phrase.
 #' @param decimalLatitude Latitude in decimals between -90 and 90 based on WGS 84.
-#'    Supports range queries.
+#'    Supports range queries, smaller,larger (e.g., '25,30', whereas '30,25' wouldn't work)
 #' @param decimalLongitude Longitude in decimals between -180 and 180 based on WGS 84.
-#'    Supports range queries.
+#'    Supports range queries (e.g., '-0.4,-0.2', whereas '-0.2,-0.4' wouldn't work).
 #' @param publishingCountry The 2-letter country code (as per ISO-3166-1) of the
 #'    country in which the occurrence was recorded.
-#' @param elevation Elevation in meters above sea level.
+#' @param elevation Elevation in meters above sea level. Supports range queries, smaller,larger 
+#'    (e.g., '5,30', whereas '30,5' wouldn't work)
 #' @param depth Depth in meters relative to elevation. For example 10 meters below a
-#'    lake surface with given elevation.
+#'    lake surface with given elevation. Supports range queries, smaller,larger (e.g., '5,30', 
+#'    whereas '30,5' wouldn't work)
 #' @param geometry Searches for occurrences inside a polygon described in Well Known
 #'    Text (WKT) format. A WKT shape written as either POINT, LINESTRING, LINEARRING
 #'    or POLYGON. Example of a polygon: ((30.1 10.1, 20, 20 40, 40 40, 30.1 10.1))
@@ -62,7 +67,8 @@
 #' @param recordNumber Number recorded by collector of the data, different from GBIF record
 #'    number. See \url{http://rs.tdwg.org/dwc/terms/#recordNumber} for more info
 #' @param lastInterpreted Date the record was last modified in GBIF, in ISO 8601 format:
-#'    yyyy, yyyy-MM, yyyy-MM-dd, or MM-dd. Supports range queries.
+#'    yyyy, yyyy-MM, yyyy-MM-dd, or MM-dd.  Supports range queries, smaller,larger (e.g., 
+#'    '1990,1991', whereas '1991,1990' wouldn't work)
 #' @param continent Continent. One of africa, antarctica, asia, europe, north_america
 #'    (North America includes the Caribbean and reachies down and includes Panama), oceania,
 #'    or south_america

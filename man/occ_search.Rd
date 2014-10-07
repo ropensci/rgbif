@@ -43,7 +43,8 @@ all records (FALSE, default).}
 number. See \url{http://rs.tdwg.org/dwc/terms/#recordNumber} for more info}
 
 \item{lastInterpreted}{Date the record was last modified in GBIF, in ISO 8601 format:
-yyyy, yyyy-MM, yyyy-MM-dd, or MM-dd. Supports range queries.}
+yyyy, yyyy-MM, yyyy-MM-dd, or MM-dd.  Supports range queries, smaller,larger (e.g.,
+'1990,1991', whereas '1991,1990' wouldn't work)}
 
 \item{continent}{Continent. One of africa, antarctica, asia, europe, north_america
 (North America includes the Caribbean and reachies down and includes Panama), oceania,
@@ -74,26 +75,31 @@ or POLYGON. Example of a polygon: ((30.1 10.1, 20, 20 40, 40 40, 30.1 10.1))
 \item{datasetKey}{The occurrence dataset key (a uuid)}
 
 \item{eventDate}{Occurrence date in ISO 8601 format: yyyy, yyyy-MM, yyyy-MM-dd, or
-MM-dd.}
+MM-dd. Supports range queries, smaller,larger (e.g., '1990,1991', whereas '1991,1990'
+wouldn't work)}
 
 \item{catalogNumber}{An identifier of any form assigned by the source within a
 physical collection or digital dataset for the record which may not unique,
 but should be fairly unique in combination with the institution and collection code.}
 
-\item{year}{The 4 digit year. A year of 98 will be interpreted as AD 98.}
+\item{year}{The 4 digit year. A year of 98 will be interpreted as AD 98. Supports range queries,
+smaller,larger (e.g., '1990,1991', whereas '1991,1990' wouldn't work)}
 
-\item{month}{The month of the year, starting with 1 for January.}
+\item{month}{The month of the year, starting with 1 for January. Supports range queries,
+smaller,larger (e.g., '1,2', whereas '2,1' wouldn't work)}
 
 \item{decimalLatitude}{Latitude in decimals between -90 and 90 based on WGS 84.
-Supports range queries.}
+Supports range queries, smaller,larger (e.g., '25,30', whereas '30,25' wouldn't work)}
 
 \item{decimalLongitude}{Longitude in decimals between -180 and 180 based on WGS 84.
-Supports range queries.}
+Supports range queries (e.g., '-0.4,-0.2', whereas '-0.2,-0.4' wouldn't work).}
 
-\item{elevation}{Elevation in meters above sea level.}
+\item{elevation}{Elevation in meters above sea level. Supports range queries, smaller,larger
+(e.g., '5,30', whereas '30,5' wouldn't work)}
 
 \item{depth}{Depth in meters relative to elevation. For example 10 meters below a
-lake surface with given elevation.}
+lake surface with given elevation. Supports range queries, smaller,larger (e.g., '5,30',
+whereas '30,5' wouldn't work)}
 
 \item{institutionCode}{An identifier of any form assigned by the source to identify
 the institution the record belongs to. Not guaranteed to be que.}
