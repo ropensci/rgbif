@@ -4,10 +4,10 @@
 \title{Suggest datasets in GBIF.}
 \usage{
 dataset_suggest(query = NULL, country = NULL, type = NULL,
-  subtype = NULL, keyword = NULL, owningOrg = NULL, hostingOrg = NULL,
-  publishingCountry = NULL, decade = NULL, continent = NULL,
-  limit = 100, start = NULL, callopts = list(), pretty = FALSE,
-  description = FALSE)
+  subtype = NULL, keyword = NULL, owningOrg = NULL,
+  publishingOrg = NULL, hostingOrg = NULL, publishingCountry = NULL,
+  decade = NULL, continent = NULL, limit = 100, start = NULL,
+  callopts = list(), pretty = FALSE, description = FALSE)
 }
 \arguments{
 \item{query}{Query term(s) for full text search.  The value for this parameter
@@ -27,6 +27,8 @@ you can search on. The search is done on the merged collection of tags, the
 dataset keywordCollections and temporalCoverages.}
 
 \item{owningOrg}{Owning organization. A uuid string. See \code{\link{organizations}}}
+
+\item{publishingOrg}{Publishing organization. A uuid string. See \code{\link{organizations}}}
 
 \item{hostingOrg}{Hosting organization. A uuid string. See \code{\link{organizations}}}
 
@@ -53,8 +55,6 @@ http calls, and error handling}
 manipulate output though.}
 
 \item{description}{Return descriptions only (TRUE) or all data (FALSE, default)}
-
-\item{publishingOrg}{Publishing organization. A uuid string. See \code{\link{organizations}}}
 }
 \value{
 A data.frame, list, or message printed to console (using pretty=TRUE).
@@ -72,11 +72,11 @@ dataset_suggest(keyword="france")
 
 # Suggest datasets owned by the organization with key
 # "07f617d0-c688-11d8-bf62-b8a03c50a862" (UK NBN).
-dataset_suggest(owningOrg="07f617d0-c688-11d8-bf62-b8a03c50a862")
+head(dataset_suggest(owningOrg="07f617d0-c688-11d8-bf62-b8a03c50a862"))
 
 # Fulltext search for all datasets having the word "amsterdam" somewhere in
 # its metadata (title, description, etc).
-dataset_suggest(query="amsterdam")
+head(dataset_suggest(query="amsterdam"))
 
 # Limited search
 dataset_suggest(type="OCCURRENCE", limit=2)
@@ -90,10 +90,10 @@ dataset_suggest(type="OCCURRENCE", pretty=TRUE)
 
 # Search by country code. Lookup isocodes first, and use US for United States
 isocodes[agrep("UNITED", isocodes$gbif_name),]
-dataset_suggest(country="US")
+head(dataset_suggest(country="US"))
 
 # Search by decade
-dataset_suggest(decade=1980)
+head(dataset_suggest(decade=1980))
 }
 }
 \references{
