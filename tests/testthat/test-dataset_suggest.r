@@ -26,6 +26,6 @@ test_that("limited search returns the correct class", {
 # Return just descriptions
 tt <- dataset_suggest(type="OCCURRENCE", description=TRUE)
 test_that("limited fields query returns the correct class", {
-  expect_is(tt, "character")
+  expect_is(tt, "list")
   expect_is(tt[[1]], "character")
 })
