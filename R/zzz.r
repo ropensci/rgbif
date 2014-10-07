@@ -431,7 +431,8 @@ NULL
 
 gbif_GET <- function(url, args, opts, parse=FALSE){
   temp <- GET(url, query=args, opts)
-  if(temp$status_code > 200) stop(error_parse(content(temp, as = "text")))
+  if(temp$status_code == 204) stop("Status: 204 - not found", call. = FALSE)
+  if(temp$status_code > 200) stop(error_parse(content(temp, as = "text")), call. = FALSE)
   assert_that(temp$headers$`content-type`=='application/json')
   res <- content(temp, as = 'text', encoding = "UTF-8")
   jsonlite::fromJSON(res, parse)

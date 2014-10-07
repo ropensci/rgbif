@@ -1,4 +1,4 @@
-#' Geta details on a dataset.
+#' Get details on a GBIF dataset.
 #' 
 #' @template all
 #' @export
