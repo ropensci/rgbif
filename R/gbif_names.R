@@ -19,16 +19,16 @@
 gbif_names <- function(input, output = NULL, browse = TRUE)
 {
   input <- input$data
-  elements <- foo(input)
-  outfile <- dirhandler(output)
-  rr <- whisker.render(template)
+  elements <- gn_tolist(input)
+  outfile <- gn_dirhandler(output)
+  rr <- whisker.render(gn_template)
   rr <- gsub("&lt;em class=&quot;gbifHl&quot;&gt;", "<b>", rr)
   rr <- gsub("&lt;/em&gt;", "</b>", rr)
   write(rr, file = outfile)
   if(browse) browseURL(outfile)
 }
 
-dirhandler <- function(x, which="file"){
+gn_dirhandler <- function(x, which="file"){
   if(is.null(x)){
     dir <- tempdir()
     dir.create(dir, recursive = TRUE, showWarnings = FALSE)
@@ -39,7 +39,7 @@ dirhandler <- function(x, which="file"){
   }
 }
 
-foo <- function(x){
+gn_tolist <- function(x){
   out <- apply(x, 1, function(y){
     tmp <- as.list(y[c('key','canonicalName','parent','rank','kingdom','phylum','order','family','nubKey')])
     tmp[sapply(tmp, function(x) is.null(x) || is.na(x))] <- "none"
@@ -54,7 +54,7 @@ foo <- function(x){
   Map(addurl, out)
 }
 
-template <- '
+gn_template <- '
 <!DOCTYPE html>
 <head>
 <meta charset="utf-8">

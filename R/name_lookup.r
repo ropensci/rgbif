@@ -92,7 +92,7 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
   }
 
   # hierarchies
-  hierdat <- sapply(tt$results, function(x){
+  hierdat <- lapply(tt$results, function(x){
     tmp <- x[ names(x) %in% "higherClassificationMap" ]
     tmpdf <- data.frame(rankkey=names(tmp[[1]]), name=unlist(unname(tmp[[1]])), stringsAsFactors = FALSE)
     if(NROW(tmpdf) == 0) NULL else tmpdf
