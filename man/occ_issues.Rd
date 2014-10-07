@@ -45,7 +45,4 @@ res \%>\% occ_issues(-gass84, mutate = "split_expand")
 occ_issues(res, -gass84, mutate = "split_expand")
 }
 }
-\references{
-\url{http://www.gbif.org/developer/summary}
-}
 

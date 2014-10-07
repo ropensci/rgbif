@@ -165,6 +165,6 @@ gbif_names(res)
 }
 }
 \references{
-\url{http://www.gbif.org/developer/summary}
+\url{http://www.gbif.org/developer/species#searching}
 }
 

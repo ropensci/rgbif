@@ -2,7 +2,6 @@
 #' 
 #' @export
 #' 
-#' @template all
 #' @param nubKey Species key. PARAMETER NAME CHANGED TO taxonKey.
 #' @param taxonKey Species key
 #' @param georeferenced Return only occurence records with lat/long data (TRUE) or
@@ -23,6 +22,7 @@
 #' @param callopts Pass on options to httr::GET for more refined control of 
 #'    http calls, and error handling
 #' @return A single numeric value, or a list of numerics.
+#' @references \url{http://www.gbif.org/developer/occurrence#metrics}
 #' @examples \dontrun{
 #' occ_count(basisOfRecord='OBSERVATION')
 #' occ_count(georeferenced=TRUE)

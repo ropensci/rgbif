@@ -1,6 +1,5 @@
 #' Lookup names in the GBIF backbone taxonomy.
 #' 
-#' @template all
 #' @template occ
 #' @export
 #' 
@@ -27,6 +26,8 @@
 #' with alternative name suggestions resulting from fuzzy matching (with \code{verbose=TRUE}).
 #' @details If you don't get a match GBIF gives back a list of length 3 with slots synonym, 
 #' confidence, and matchType='NONE'.
+#' 
+#' @references \url{http://www.gbif.org/developer/species#searching}
 #' 
 #' @examples \dontrun{
 #' name_backbone(name='Helianthus annuus', kingdom='plants')

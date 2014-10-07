@@ -4,7 +4,6 @@
 #' @import httr plyr assertthat
 #' @export
 #' 
-#' @template all
 #' @param type Type of data, one of catalog_number, collection_code, collector_name, 
 #' institution_code. Unique partial strings work too, like 'cat' for catalog_number
 #' @param q Search term
@@ -12,6 +11,9 @@
 #' @param callopts Args passed on to \code{httr::GET}
 #' @param pretty Pretty as true (Default) uses cat to print data, FALSE gives 
 #' character strings.
+#' 
+#' @references \url{http://www.gbif.org/developer/occurrence#search}
+#' 
 #' @examples \dontrun{
 #' # catalog number
 #' occ_metadata(type = "catalogNumber", q=122)

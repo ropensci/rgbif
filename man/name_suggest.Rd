@@ -53,6 +53,6 @@ name_suggest(q='Puma', fields=c('key','canonicalName','higherClassificationMap')
 }
 }
 \references{
-\url{http://www.gbif.org/developer/summary}
+\url{http://www.gbif.org/developer/species#searching}
 }
 

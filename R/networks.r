@@ -1,6 +1,5 @@
 #' Networks metadata.
 #' 
-#' @template all
 #' @template occ
 #' @template identifierargs
 #' @export
@@ -9,6 +8,8 @@
 #' @param uuid UUID of the data network provider. This must be specified if data
 #'    is anything other than 'all'.
 #' @param query Query nodes. Only used when data='all'. Ignored otherwise.
+#' 
+#' @references \url{http://www.gbif.org/developer/registry#networks}
 #' 
 #' @examples \dontrun{
 #' networks(limit=5)

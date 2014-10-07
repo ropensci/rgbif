@@ -25,6 +25,6 @@ dataset_metrics(uuid='66dd0960-2d7d-46ee-a491-87b9adcfe7b1', verbose())
 }
 }
 \references{
-\url{http://www.gbif.org/developer/summary}
+\url{http://www.gbif.org/developer/registry#datasetMetrics}
 }
 

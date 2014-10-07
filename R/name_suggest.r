@@ -1,9 +1,9 @@
 #' A quick and simple autocomplete service that returns up to 20 name usages by 
 #' doing prefix matching against the scientific name. Results are ordered by relevance.
 #' 
-#' @template all
 #' @template occ
 #' @export
+#' @references \url{http://www.gbif.org/developer/species#searching}
 #' 
 #' @param q (character, required) Simple search parameter. The value for this parameter can be a 
 #'    simple word or a phrase. Wildcards can be added to the simple word parameters only, 

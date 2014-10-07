@@ -40,6 +40,6 @@ organizations(data=c('contact','endpoint'), uuid="4b4b2111-ee51-45f5-bf5e-f535f4
 }
 }
 \references{
-\url{http://www.gbif.org/developer/summary}
+\url{http://www.gbif.org/developer/registry#organizations}
 }
 

@@ -3,12 +3,12 @@
 #' @importFrom jsonlite toJSON fromJSON
 #' @export
 #' 
-#' @template all
 #' @param scientificname A character vector of scientific names.
 #' @return A \code{data.frame} containing fields extracted from parsed 
 #' taxon names. Fields returned are the union of fields extracted from
 #' all species names in \code{scientificname}.
 #' @author John Baumgartner (johnbb@@student.unimelb.edu.au)
+#' @references \url{http://www.gbif.org/developer/species#parser}
 #' @examples \dontrun{
 #' parsenames(scientificname='x Agropogon littoralis')
 #' parsenames(c('Arrhenatherum elatius var. elatius', 

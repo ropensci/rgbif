@@ -81,6 +81,6 @@ occ_count(type='publishingCountry', country='BZ')
 }
 }
 \references{
-\url{http://www.gbif.org/developer/summary}
+\url{http://www.gbif.org/developer/occurrence#metrics}
 }
 

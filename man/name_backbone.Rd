@@ -75,6 +75,6 @@ name_backbone(name='Oenante')
 }
 }
 \references{
-\url{http://www.gbif.org/developer/summary}
+\url{http://www.gbif.org/developer/species#searching}
 }
 

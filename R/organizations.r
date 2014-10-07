@@ -2,7 +2,6 @@
 #' 
 #' @export
 #' 
-#' @template all
 #' @template occ 
 #' @param data The type of data to get. Default is all data.
 #' @param uuid UUID of the data node provider. This must be specified if data
@@ -11,6 +10,8 @@
 #' 
 #' @return A list of length one or two. If \code{uuid} is NULL, then a data.frame with
 #' call metadata, and a data.frame, but if \code{uuid} given, then a list.
+#' 
+#' @references \url{http://www.gbif.org/developer/registry#organizations}
 #' 
 #' @examples \dontrun{
 #' organizations(limit=5)

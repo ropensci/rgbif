@@ -93,6 +93,6 @@ name_usage(key=3119195, language="FRENCH", data='vernacularNames')
 }
 }
 \references{
-\url{http://www.gbif.org/developer/summary}
+\url{http://www.gbif.org/developer/species#nameUsages}
 }
 

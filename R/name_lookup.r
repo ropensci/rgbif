@@ -1,8 +1,8 @@
 #' Lookup names in all taxonomies in GBIF.
 #'
-#' @template all
 #' @template namelkup
 #' @export
+#' @references \url{http://www.gbif.org/developer/species#searching}
 #' @examples \dontrun{
 #' # Look up names like mammalia
 #' name_lookup(query='mammalia')

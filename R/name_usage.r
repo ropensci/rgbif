@@ -1,10 +1,10 @@
 #' Lookup details for specific names in all taxonomies in GBIF.
 #'
-#' @template all
 #' @template occ
 #' @template nameusage
 #' @return A list of length two. The first element is metadata. The second is 
 #' either a data.frame (verbose=FALSE, default) or a list (verbose=TRUE)
+#' @references \url{http://www.gbif.org/developer/species#nameUsages}
 #' @description
 #' This service uses fuzzy lookup so that you can put in partial names and 
 #' you should get back those things that match. See examples below.

@@ -6,7 +6,6 @@
 #' 
 #' @template occsearch
 #' @template occ
-#' @template all
 #' @param x Output from a call to occ_search
 #' @param ... Further print args not used.
 #' @param n Number of rows of the data to print.

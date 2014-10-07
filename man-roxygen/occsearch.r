@@ -199,3 +199,5 @@
 #'  \item ZERO_COORDINATE Coordinate is the exact 0/0 coordinate, often indicating a bad null
 #'  coordinate.
 #' }
+#' 
+#' @references \url{http://www.gbif.org/developer/occurrence#search}

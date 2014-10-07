@@ -1,10 +1,11 @@
 #' Get details on a GBIF dataset.
 #' 
-#' @template all
 #' @export
 #' 
 #' @param uuid (character) One or more dataset UUIDs. See examples.
 #' @param callopts Pass on options to GET.
+#' 
+#' @references \url{http://www.gbif.org/developer/registry#datasetMetrics}
 #' 
 #' @examples \dontrun{
 #' dataset_metrics(uuid='3f8a1297-3259-4700-91fc-acc4170b27ce')

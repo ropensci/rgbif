@@ -1,6 +1,5 @@
 #' Installations metadata.
 #' 
-#' @template all
 #' @template occ 
 #' @template identifierargs
 #' @export
@@ -10,6 +9,8 @@
 #' @param uuid UUID of the data node provider. This must be specified if data
 #'    is anything other than 'all'.
 #' @param query Query nodes. Only used when data='all'. Ignored otherwise.
+#' 
+#' @references \url{http://www.gbif.org/developer/registry#installations} 
 #' 
 #' @examples \dontrun{
 #' installations(limit=5)

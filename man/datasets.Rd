@@ -45,6 +45,6 @@ datasets(data=c('deleted','duplicate'), limit=1)
 }
 }
 \references{
-\url{http://www.gbif.org/developer/summary}
+\url{http://www.gbif.org/developer/registry#datasets}
 }
 

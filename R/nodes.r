@@ -1,6 +1,5 @@
 #' Nodes metadata.
 #' 
-#' @template all
 #' @template occ
 #' @template identifierargs
 #' @export
@@ -9,7 +8,9 @@
 #' @param uuid UUID of the data node provider. This must be specified if data
 #'    is anything other than 'all'.
 #' @param query Query nodes. Only used when data='all'
-#' @param isocode A 2 letter country code. Only used if data='country'.    
+#' @param isocode A 2 letter country code. Only used if data='country'.
+#' 
+#' @references \url{http://www.gbif.org/developer/registry#nodes}
 #' 
 #' @examples \dontrun{
 #' nodes(limit=5)

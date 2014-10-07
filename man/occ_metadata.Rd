@@ -46,6 +46,6 @@ occ_metadata(type = "cat", q=122)
 }
 }
 \references{
-\url{http://www.gbif.org/developer/summary}
+\url{http://www.gbif.org/developer/occurrence#search}
 }
 

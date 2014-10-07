@@ -69,6 +69,6 @@ installations(identifierType='DOI', limit=2)
 }
 }
 \references{
-\url{http://www.gbif.org/developer/summary}
+\url{http://www.gbif.org/developer/registry#installations}
 }
 

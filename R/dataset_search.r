@@ -4,12 +4,13 @@
 #' that contain occurrence data.
 #'
 #' @export
-#' @template all
 #' @template occ
 #' @template dataset
 #' @template dataset_facet
 #' @param return What to return. One of meta, descriptions, data, facets,
 #'    or all (Default).
+#'    
+#' @references \url{http://www.gbif.org/developer/registry#datasetSearch} 
 #'
 #' @examples \dontrun{
 #' # Gets all datasets of type "OCCURRENCE".

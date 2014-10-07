@@ -97,6 +97,6 @@ head(dataset_suggest(decade=1980))
 }
 }
 \references{
-\url{http://www.gbif.org/developer/summary}
+\url{http://www.gbif.org/developer/registry#datasetSearch}
 }
 

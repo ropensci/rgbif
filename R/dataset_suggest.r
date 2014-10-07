@@ -3,7 +3,6 @@
 #' Search that returns up to 20 matching datasets. Results are ordered by relevance.
 #' 
 #' @export
-#' @template all
 #' @template occ
 #' @template dataset
 #' 
@@ -12,6 +11,8 @@
 #' @param continent Not yet implemented, but will eventually allow filtering datasets
 #'    by their continent(s) as given in our Continent enum.
 #' @param description Return descriptions only (TRUE) or all data (FALSE, default)
+#' 
+#' @references \url{http://www.gbif.org/developer/registry#datasetSearch} 
 #' 
 #' @examples \dontrun{
 #' # Suggest datasets of type "OCCURRENCE".

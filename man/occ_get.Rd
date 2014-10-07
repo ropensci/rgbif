@@ -53,6 +53,6 @@ occ_get(key=766766824, callopts=timeout(1))
 }
 }
 \references{
-\url{http://www.gbif.org/developer/summary}
+\url{http://www.gbif.org/developer/occurrence#occurrence}
 }
 

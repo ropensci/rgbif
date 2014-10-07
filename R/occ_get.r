@@ -3,7 +3,6 @@
 #' @export
 #' @import httr assertthat
 #' 
-#' @template all
 #' @param key Occurrence key
 #' @param return One of data, hier, meta, or all. If 'data', a data.frame with the 
 #'    data. 'hier' returns the classifications in a list for each record. meta 
@@ -15,6 +14,7 @@
 #'    fields = c('name','decimalLatitude','altitude').
 #' @param callopts Further arguments passed on to the \code{\link{GET}} request.
 #' @return A data.frame or list of data.frame's.
+#' @references \url{http://www.gbif.org/developer/occurrence#occurrence}
 #' 
 #' @examples \dontrun{
 #' occ_get(key=766766824, return='data')

@@ -1,6 +1,5 @@
 #' Search for datasets and dataset metadata.
 #' 
-#' @template all
 #' @template occ
 #' @export
 #' 
@@ -12,6 +11,7 @@
 #' @param id A metadata document id.
 #' 
 #' @return A list.
+#' @references \url{http://www.gbif.org/developer/registry#datasets} 
 #' 
 #' @examples \dontrun{
 #' datasets(limit=5)

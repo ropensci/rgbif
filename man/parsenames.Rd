@@ -28,6 +28,6 @@ parsenames(c('Arrhenatherum elatius var. elatius',
 John Baumgartner (johnbb@student.unimelb.edu.au)
 }
 \references{
-\url{http://www.gbif.org/developer/summary}
+\url{http://www.gbif.org/developer/species#parser}
 }
 
