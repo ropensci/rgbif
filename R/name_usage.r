@@ -12,11 +12,11 @@
 #' This function is different from \code{name_lookup} in that that function 
 #' searches for names, while this function requires that you already have a key.
 #' 
-#' Note that verbatim hasn't been working for me.
+#' Note that verbatim hasn't been working
 #' 
 #' Options for the data parameter are: 'all', 'verbatim', 'name', 'parents', 'children', 
-#' 'descendants', 'related', 'synonyms', 'descriptions','distributions', 'images', 
-#' 'references', 'species_profiles', 'vernacular_names', 'type_specimens'
+#' 'related', 'synonyms', 'descriptions','distributions', 'images', 
+#' 'references', 'speciesProfiles', 'vernacularNames', 'typeSpecimens', 'root'
 #' @export
 #' @examples \dontrun{
 #' # All name usages
@@ -27,6 +27,7 @@
 #' 
 #' # Name usage for a taxonomic name
 #' name_usage(name='Puma concolor')
+#' name_usage(name='Puma', rank="GENUS")
 #' 
 #' # References for a name usage
 #' name_usage(key=3119195, data='references')
