@@ -36,8 +36,8 @@
 #'  \item VIRUS a virus name.
 #'  \item WELLFORMED a well formed scientific name according to present nomenclatural rules.
 #' }
-#' @param dataset_key Filters by the dataset's key (a uuid)
-#' @param nomenclatural_status	Not yet implemented, but will eventually allow for
+#' @param datasetKey Filters by the dataset's key (a uuid)
+#' @param nomenclaturalStatus	Not yet implemented, but will eventually allow for
 #'    filtering by a nomenclatural status enum
 #' @param facet	A list of facet names used to retrieve the 100 most frequent values
 #'    for a field. Allowed facets are: datasetKey, higherTaxonKey, rank, status,

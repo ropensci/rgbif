@@ -5,7 +5,7 @@
 \usage{
 name_lookup(query = NULL, rank = NULL, higherTaxonKey = NULL,
   status = NULL, extinct = NULL, habitat = NULL, nameType = NULL,
-  dataset_key = NULL, nomenclatural_status = NULL, limit = 100,
+  datasetKey = NULL, nomenclaturalStatus = NULL, limit = 100,
   start = NULL, facet = NULL, facetMincount = NULL,
   facetMultiselect = NULL, type = NULL, hl = NULL, callopts = list(),
   verbose = FALSE, return = "all")
@@ -56,9 +56,9 @@ or not-marine (i.e. habitat=true means marine, false means not-marine)}
  \item WELLFORMED a well formed scientific name according to present nomenclatural rules.
 }}
 
-\item{dataset_key}{Filters by the dataset's key (a uuid)}
+\item{datasetKey}{Filters by the dataset's key (a uuid)}
 
-\item{nomenclatural_status}{Not yet implemented, but will eventually allow for
+\item{nomenclaturalStatus}{Not yet implemented, but will eventually allow for
 filtering by a nomenclatural status enum}
 
 \item{limit}{Number of records to return. Maximum: 1000.}
@@ -176,6 +176,9 @@ name_lookup(query='canada', hl=TRUE, limit=45, return='data')
 ## and you can pass the output to gbif_names() function
 res <- name_lookup(query='canada', hl=TRUE, limit=5)
 gbif_names(res)
+
+# Lookup by datasetKey
+name_lookup(datasetKey='3f8a1297-3259-4700-91fc-acc4170b27ce')
 }
 }
 \references{

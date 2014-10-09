@@ -63,10 +63,13 @@
 #' ## and you can pass the output to gbif_names() function
 #' res <- name_lookup(query='canada', hl=TRUE, limit=5)
 #' gbif_names(res)
+#' 
+#' # Lookup by datasetKey
+#' name_lookup(datasetKey='3f8a1297-3259-4700-91fc-acc4170b27ce')
 #' }
 
 name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL, extinct=NULL,
-  habitat=NULL, nameType=NULL, dataset_key=NULL, nomenclatural_status=NULL,
+  habitat=NULL, nameType=NULL, datasetKey=NULL, nomenclaturalStatus=NULL,
   limit=100, start=NULL, facet=NULL, facetMincount=NULL, facetMultiselect=NULL, type = NULL, hl=NULL,
   callopts=list(), verbose=FALSE, return="all")
 {
@@ -79,8 +82,8 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
 
   url <- paste0(gbif_base(), '/species/search')
   args <- as.list(rgbif_compact(c(q=query, rank=rank, higherTaxonKey=higherTaxonKey, status=status,
-            extinct=extinct, habitat=habitat, nameType=nameType, dataset_key=dataset_key,
-            nomenclatural_status=nomenclatural_status, limit=limit, offset=start, facetbyname,
+            extinct=extinct, habitat=habitat, nameType=nameType, datasetKey=datasetKey,
+            nomenclaturalStatus=nomenclaturalStatus, limit=limit, offset=start, facetbyname,
             facetMincount=facetMincount,
             facetMultiselect=facetMultiselect, hl=hl, type=type)))
   tt <- gbif_GET(url, args, callopts)
