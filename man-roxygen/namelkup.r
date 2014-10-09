@@ -58,7 +58,8 @@
 #'    publishing country, publishing organization title, hosting organization title, and 
 #'    description. One additional full text field is searched which includes information from 
 #'    metadata documents, but the text of this field is not returned in the response.
-#' @param limit Number of records to return
+#' @param limit Number of records to return. Maximum: 1000.
+#' @param start Record number to start at.
 #' @param callopts Further arguments passed on to the \code{\link{GET}} request.
 #' @param verbose If TRUE, all data is returned as a list for each element. If
 #'    FALSE (default) a subset of the data that is thought to be most essential is

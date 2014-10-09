@@ -6,6 +6,18 @@
 #' @examples \dontrun{
 #' # Look up names like mammalia
 #' name_lookup(query='mammalia')
+#' 
+#' # Paging
+#' name_lookup(query='mammalia', limit=1)
+#' name_lookup(query='mammalia', limit=1, start=2)
+#' 
+#' # large requests, use start parameter
+#' first <- name_lookup(query='mammalia', limit=1000)
+#' second <- name_lookup(query='mammalia', limit=1000, start=1000)
+#' tail(first$data)
+#' head(second$data)
+#' first$meta
+#' second$meta
 #'
 #' # Get all data and parse it, removing descriptions which can be quite long
 #' out <- name_lookup('Helianthus annuus', rank="species", verbose=TRUE)
@@ -55,7 +67,7 @@
 
 name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL, extinct=NULL,
   habitat=NULL, nameType=NULL, dataset_key=NULL, nomenclatural_status=NULL,
-  limit=100, facet=NULL, facetMincount=NULL, facetMultiselect=NULL, type = NULL, hl=NULL,
+  limit=100, start=NULL, facet=NULL, facetMincount=NULL, facetMultiselect=NULL, type = NULL, hl=NULL,
   callopts=list(), verbose=FALSE, return="all")
 {
   if(!is.null(facetMincount) && inherits(facetMincount, "numeric"))
@@ -68,7 +80,7 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
   url <- paste0(gbif_base(), '/species/search')
   args <- as.list(rgbif_compact(c(q=query, rank=rank, higherTaxonKey=higherTaxonKey, status=status,
             extinct=extinct, habitat=habitat, nameType=nameType, dataset_key=dataset_key,
-            nomenclatural_status=nomenclatural_status, limit=limit, facetbyname,
+            nomenclatural_status=nomenclatural_status, limit=limit, offset=start, facetbyname,
             facetMincount=facetMincount,
             facetMultiselect=facetMultiselect, hl=hl, type=type)))
   tt <- gbif_GET(url, args, callopts)

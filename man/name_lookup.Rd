@@ -6,9 +6,9 @@
 name_lookup(query = NULL, rank = NULL, higherTaxonKey = NULL,
   status = NULL, extinct = NULL, habitat = NULL, nameType = NULL,
   dataset_key = NULL, nomenclatural_status = NULL, limit = 100,
-  facet = NULL, facetMincount = NULL, facetMultiselect = NULL,
-  type = NULL, hl = NULL, callopts = list(), verbose = FALSE,
-  return = "all")
+  start = NULL, facet = NULL, facetMincount = NULL,
+  facetMultiselect = NULL, type = NULL, hl = NULL, callopts = list(),
+  verbose = FALSE, return = "all")
 }
 \arguments{
 \item{query}{Query term(s) for full text search.}
@@ -61,7 +61,9 @@ or not-marine (i.e. habitat=true means marine, false means not-marine)}
 \item{nomenclatural_status}{Not yet implemented, but will eventually allow for
 filtering by a nomenclatural status enum}
 
-\item{limit}{Number of records to return}
+\item{limit}{Number of records to return. Maximum: 1000.}
+
+\item{start}{Record number to start at.}
 
 \item{facet}{A list of facet names used to retrieve the 100 most frequent values
 for a field. Allowed facets are: datasetKey, higherTaxonKey, rank, status,
@@ -117,6 +119,18 @@ all parameters with facet in their name are ignored (facetOnly, facetMincount, f
 \dontrun{
 # Look up names like mammalia
 name_lookup(query='mammalia')
+
+# Paging
+name_lookup(query='mammalia', limit=1)
+name_lookup(query='mammalia', limit=1, start=2)
+
+# large requests, use start parameter
+first <- name_lookup(query='mammalia', limit=1000)
+second <- name_lookup(query='mammalia', limit=1000, start=1000)
+tail(first$data)
+head(second$data)
+first$meta
+second$meta
 
 # Get all data and parse it, removing descriptions which can be quite long
 out <- name_lookup('Helianthus annuus', rank="species", verbose=TRUE)
