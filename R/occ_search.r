@@ -291,7 +291,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
       year=year, month=month, decimalLatitude=decimalLatitude, decimalLongitude=decimalLongitude,
       elevation=elevation, depth=depth, institutionCode=institutionCode,
       collectionCode=collectionCode, spatialIssues=spatialIssues, q=search, mediaType=mediatype,
-      limit=as.integer(limit), offset=start))
+      limit=check_limit(as.integer(limit)), offset=start))
     args <- c(args, parse_issues(issue))
     argscoll <<- args 
 
@@ -591,4 +591,9 @@ obj_type <- function (x)
 
 parse_issues <- function(x){
   sapply(x, function(y) list(issue = y), USE.NAMES = FALSE)
+}
+
+check_limit <- function(x){
+  if(x > 1000000L) 
+    stop("limit maximum is 1 million, use the GBIF web interface for more than 1 million records")
 }
