@@ -6,11 +6,11 @@
 #' @examples \dontrun{
 #' # Look up names like mammalia
 #' name_lookup(query='mammalia')
-#' 
+#'
 #' # Paging
 #' name_lookup(query='mammalia', limit=1)
 #' name_lookup(query='mammalia', limit=1, start=2)
-#' 
+#'
 #' # large requests, use start parameter
 #' first <- name_lookup(query='mammalia', limit=1000)
 #' second <- name_lookup(query='mammalia', limit=1000, start=1000)
@@ -53,8 +53,10 @@
 #' name_lookup(facet='habitat', limit=0)
 #' name_lookup(facet='datasetKey')
 #' name_lookup(facet='rank', limit=0)
-#' name_lookup(facet='extinct', limit=0)
+#' name_lookup(facet='isExtinct', limit=0)
 #' 
+#' name_lookup(isExtinct=TRUE, limit=0)
+#'
 #' # text highlighting
 #' ## turn on highlighting
 #' res <- name_lookup(query='canada', hl=TRUE, limit=5)
@@ -63,12 +65,12 @@
 #' ## and you can pass the output to gbif_names() function
 #' res <- name_lookup(query='canada', hl=TRUE, limit=5)
 #' gbif_names(res)
-#' 
+#'
 #' # Lookup by datasetKey
 #' name_lookup(datasetKey='3f8a1297-3259-4700-91fc-acc4170b27ce')
 #' }
 
-name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL, extinct=NULL,
+name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL, isExtinct=NULL,
   habitat=NULL, nameType=NULL, datasetKey=NULL, nomenclaturalStatus=NULL,
   limit=100, start=NULL, facet=NULL, facetMincount=NULL, facetMultiselect=NULL, type = NULL, hl=NULL,
   callopts=list(), verbose=FALSE, return="all")
@@ -81,11 +83,11 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
   } else { facetbyname <- NULL }
 
   url <- paste0(gbif_base(), '/species/search')
-  args <- as.list(rgbif_compact(c(q=query, rank=rank, higherTaxonKey=higherTaxonKey, status=status,
-            extinct=extinct, habitat=habitat, nameType=nameType, datasetKey=datasetKey,
+  args <- rgbif_compact(list(q=query, rank=rank, higherTaxonKey=higherTaxonKey, status=status,
+            isExtinct=isExtinct, habitat=habitat, nameType=nameType, datasetKey=datasetKey,
             nomenclaturalStatus=nomenclaturalStatus, limit=limit, offset=start, facetbyname,
             facetMincount=facetMincount,
-            facetMultiselect=facetMultiselect, hl=hl, type=type)))
+            facetMultiselect=facetMultiselect, hl=hl, type=type))
   tt <- gbif_GET(url, args, callopts)
 
   # metadata

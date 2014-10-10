@@ -19,7 +19,7 @@
 #'  \item PROPARTE_SYNONYM More specific subclass of SYNONYM.
 #'  \item SYNONYM A general synonym, the exact type is unknown.
 #' }
-#' @param extinct Filters by extinction status (a boolean, e.g. isExtinct=true)
+#' @param isExtinct Filters by extinction status (a boolean, e.g. isExtinct=true)
 #' @param habitat Filters by the habitat, though currently only as boolean marine
 #'      or not-marine (i.e. habitat=true means marine, false means not-marine)
 #' @param nameType	Filters by the name type as one of:

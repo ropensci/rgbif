@@ -4,7 +4,7 @@
 \title{Lookup names in all taxonomies in GBIF.}
 \usage{
 name_lookup(query = NULL, rank = NULL, higherTaxonKey = NULL,
-  status = NULL, extinct = NULL, habitat = NULL, nameType = NULL,
+  status = NULL, isExtinct = NULL, habitat = NULL, nameType = NULL,
   datasetKey = NULL, nomenclaturalStatus = NULL, limit = 100,
   start = NULL, facet = NULL, facetMincount = NULL,
   facetMultiselect = NULL, type = NULL, hl = NULL, callopts = list(),
@@ -36,7 +36,7 @@ is within the respective checklist and not searching nub keys across all checkli
  \item SYNONYM A general synonym, the exact type is unknown.
 }}
 
-\item{extinct}{Filters by extinction status (a boolean, e.g. isExtinct=true)}
+\item{isExtinct}{Filters by extinction status (a boolean, e.g. isExtinct=true)}
 
 \item{habitat}{Filters by the habitat, though currently only as boolean marine
 or not-marine (i.e. habitat=true means marine, false means not-marine)}
@@ -166,7 +166,9 @@ name_lookup(facet='nameType', limit=0)
 name_lookup(facet='habitat', limit=0)
 name_lookup(facet='datasetKey')
 name_lookup(facet='rank', limit=0)
-name_lookup(facet='extinct', limit=0)
+name_lookup(facet='isExtinct', limit=0)
+
+name_lookup(isExtinct=TRUE, limit=0)
 
 # text highlighting
 ## turn on highlighting
