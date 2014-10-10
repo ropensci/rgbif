@@ -85,9 +85,10 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
   url <- paste0(gbif_base(), '/species/search')
   args <- rgbif_compact(list(q=query, rank=rank, higherTaxonKey=higherTaxonKey, status=status,
             isExtinct=isExtinct, habitat=habitat, nameType=nameType, datasetKey=datasetKey,
-            nomenclaturalStatus=nomenclaturalStatus, limit=limit, offset=start, facetbyname,
+            nomenclaturalStatus=nomenclaturalStatus, limit=limit, offset=start,
             facetMincount=facetMincount,
             facetMultiselect=facetMultiselect, hl=hl, type=type))
+  args <- c(args, facetbyname)
   tt <- gbif_GET(url, args, callopts)
 
   # metadata
