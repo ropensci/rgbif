@@ -96,9 +96,8 @@
 #' decimallatitude, and decimallongitude. Set parameter minimal=FALSE if you want more data.
 #'
 #' \bold{Nerds:} You can pass parameters not defined in this function into the call to
-#' the GBIF API to control things about the call itself using the \code{callopts}
-#' function. See an example below that passes in the \code{verbose} function to
-#' get details on the http call.
+#' the GBIF API to control things about the call itself using \code{...}. See an example below 
+#' that passes in the \code{verbose} function to get details on the http call.
 #'
 #' \bold{Scientific names vs. taxon keys:} In the previous GBIF API and the version of rgbif that
 #' wrapped that API, you could search the equivalent of this function with a species name, which

@@ -12,8 +12,8 @@ occ_search(taxonKey = NULL, scientificName = NULL, country = NULL,
   year = NULL, month = NULL, decimalLatitude = NULL,
   decimalLongitude = NULL, elevation = NULL, depth = NULL,
   institutionCode = NULL, collectionCode = NULL, spatialIssues = NULL,
-  issue = NULL, search = NULL, mediatype = NULL, callopts = list(),
-  limit = 500, start = 0, fields = "all", return = "all")
+  issue = NULL, search = NULL, mediatype = NULL, limit = 500,
+  start = 0, fields = "all", return = "all", ...)
 
 \method{print}{gbif}(x, ..., n = 10)
 }
@@ -121,9 +121,6 @@ Details. Issues passed to this parameter filter results by the issue.}
 \item{mediatype}{Media type. Default is NULL, so no filtering on mediatype. Options:
 NULL, 'MovingImage', 'Sound', and 'StillImage'.``}
 
-\item{callopts}{Pass on options to httr::GET for more refined control of
-http calls, and error handling}
-
 \item{limit}{Number of records to return. Defaults: For \code{\link{occ_search}} 500, for others
 100. Maximum: 1,000,000 records for \code{\link{occ_search}}, others, don't know yet.}
 
@@ -139,11 +136,15 @@ fields = c('name','latitude','elevation').}
 data. hier returns the classifications in a list for each record. meta
 returns the metadata for the entire call. all gives all data back in a list.}
 
+\item{...}{Further named parameters, such as \code{query}, \code{path}, etc, passed on to
+\code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will
+be combined with \code{\link[httr]{config}}.}
+
 \item{x}{Output from a call to occ_search}
 
-\item{...}{Further print args not used.}
-
 \item{n}{Number of rows of the data to print.}
+
+\item{...}{Further print args not used.}
 }
 \value{
 A data.frame or list
@@ -163,9 +164,8 @@ same we just return one for you.
 decimallatitude, and decimallongitude. Set parameter minimal=FALSE if you want more data.
 
 \bold{Nerds:} You can pass parameters not defined in this function into the call to
-the GBIF API to control things about the call itself using the \code{callopts}
-function. See an example below that passes in the \code{verbose} function to
-get details on the http call.
+the GBIF API to control things about the call itself using \code{...}. See an example below
+that passes in the \code{verbose} function to get details on the http call.
 
 \bold{Scientific names vs. taxon keys:} In the previous GBIF API and the version of rgbif that
 wrapped that API, you could search the equivalent of this function with a species name, which
@@ -337,7 +337,9 @@ occ_search(collectorName=c("smith","BJ Stacey"), limit=20)
 
 # Pass in curl options for extra fun
 library('httr')
-occ_search(taxonKey=key, limit=20, return='hier', callopts=verbose())
+occ_search(taxonKey=key, limit=20, return='hier', config=verbose())
+occ_search(taxonKey=key, limit=20, return='hier', config=progress())
+occ_search(taxonKey=key, limit=20, return='hier', config=timeout(1))
 
 # Search for many species
 splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')

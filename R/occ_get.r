@@ -12,7 +12,10 @@
 #' @param fields (character) Default ('minimal') will return just taxon name, key, latitude, and 
 #'    longitute. 'all' returns all fields. Or specify each field you want returned by name, e.g.
 #'    fields = c('name','decimalLatitude','altitude').
-#' @param callopts Further arguments passed on to the \code{\link{GET}} request.
+#' @param ... Further named parameters, such as \code{query}, \code{path}, etc, passed on to 
+#' \code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will be 
+#' combined with \code{\link[httr]{config}}.
+#' 
 #' @return A data.frame or list of data.frame's.
 #' @references \url{http://www.gbif.org/developer/occurrence#occurrence}
 #' 
@@ -35,11 +38,12 @@
 #'    
 #' # Pass in curl options
 #' library("httr")
-#' occ_get(key=766766824, callopts=verbose())
-#' occ_get(key=766766824, callopts=timeout(1))
+#' occ_get(key=766766824, config=verbose())
+#' occ_get(key=766766824, config=timeout(1))
+#' occ_get(key=766766824, config=progress())
 #' }
 
-occ_get <- function(key=NULL, return='all', verbatim=FALSE, fields='minimal', callopts=list())
+occ_get <- function(key=NULL, return='all', verbatim=FALSE, fields='minimal', ...)
 {
   assert_that(is.numeric(key))
   
@@ -51,7 +55,7 @@ occ_get <- function(key=NULL, return='all', verbatim=FALSE, fields='minimal', ca
     {
       url <- sprintf('%s/occurrence/%s', gbif_base(), x)
     }
-    gbif_GET(url, list(), callopts)
+    gbif_GET(url, list(), FALSE, ...)
   }
   
   # Get data

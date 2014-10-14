@@ -6,8 +6,8 @@
 occ_count(taxonKey = NULL, georeferenced = NULL, basisOfRecord = NULL,
   datasetKey = NULL, date = NULL, catalogNumber = NULL, country = NULL,
   hostCountry = NULL, year = NULL, from = 2000, to = 2012,
-  type = "count", publishingCountry = "US", callopts = list(),
-  nubKey = NULL, protocol = NULL)
+  type = "count", publishingCountry = "US", nubKey = NULL,
+  protocol = NULL, ...)
 }
 \arguments{
 \item{taxonKey}{Species key}
@@ -38,12 +38,13 @@ all records (FALSE, default).}
 
 \item{publishingCountry}{Publishing country, two letter ISO country code}
 
-\item{callopts}{Pass on options to httr::GET for more refined control of
-http calls, and error handling}
-
 \item{nubKey}{Species key. PARAMETER NAME CHANGED TO taxonKey.}
 
 \item{protocol}{Protocol. E.g., 'DWC_ARCHIVE'}
+
+\item{...}{Further named parameters, such as \code{query}, \code{path}, etc, passed on to
+\code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will be
+combined with \code{\link[httr]{config}}.}
 }
 \value{
 A single numeric value, or a list of numerics.
@@ -78,6 +79,11 @@ occ_count(type='year', from=2000, to=2012)
 # Counts by publishingCountry, must supply a country (default to US)
 occ_count(type='publishingCountry')
 occ_count(type='publishingCountry', country='BZ')
+
+# Pass on options to httr
+library('httr')
+res <- occ_count(type='year', from=2000, to=2012, config=progress())
+res
 }
 }
 \references{

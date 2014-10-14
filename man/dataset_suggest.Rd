@@ -50,13 +50,14 @@ by their continent(s) as given in our Continent enum.}
 Note that in \code{\link{occ_search}} we do the paging internally for you, so there's no
 \code{start} parameeter, but in other functions you have to do paging yourself.}
 
-\item{callopts}{Pass on options to httr::GET for more refined control of
-http calls, and error handling}
-
 \item{pretty}{Print informative metadata using \code{\link{cat}}. Not easy to
 manipulate output though.}
 
 \item{description}{Return descriptions only (TRUE) or all data (FALSE, default)}
+
+\item{...}{Further named parameters, such as \code{query}, \code{path}, etc, passed on to
+\code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will
+be combined with \code{\link[httr]{config}}.}
 }
 \value{
 A data.frame, list, or message printed to console (using pretty=TRUE).

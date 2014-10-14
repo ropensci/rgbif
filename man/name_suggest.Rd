@@ -30,8 +30,9 @@ Note that in \code{\link{occ_search}} we do the paging internally for you, so th
 \item{limit}{Number of records to return. Defaults: For \code{\link{occ_search}} 500, for others
 100. Maximum: 1,000,000 records for \code{\link{occ_search}}, others, don't know yet.}
 
-\item{callopts}{Pass on options to httr::GET for more refined control of
-http calls, and error handling}
+\item{...}{Further named parameters, such as \code{query}, \code{path}, etc, passed on to
+\code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will
+be combined with \code{\link[httr]{config}}.}
 }
 \value{
 A data.frame with fields selected by fields arg.

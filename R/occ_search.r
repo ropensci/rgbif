@@ -72,7 +72,9 @@
 #'
 #' # Pass in curl options for extra fun
 #' library('httr')
-#' occ_search(taxonKey=key, limit=20, return='hier', callopts=verbose())
+#' occ_search(taxonKey=key, limit=20, return='hier', config=verbose())
+#' occ_search(taxonKey=key, limit=20, return='hier', config=progress())
+#' occ_search(taxonKey=key, limit=20, return='hier', config=timeout(1))
 #'
 #' # Search for many species
 #' splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
@@ -254,8 +256,8 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
   geometry=NULL, collectorName=NULL, basisOfRecord=NULL, datasetKey=NULL, eventDate=NULL,
   catalogNumber=NULL, year=NULL, month=NULL, decimalLatitude=NULL, decimalLongitude=NULL,
   elevation=NULL, depth=NULL, institutionCode=NULL, collectionCode=NULL,
-  spatialIssues=NULL, issue=NULL, search=NULL, mediatype=NULL, callopts=list(), limit=500, start=0,
-  fields = 'all', return='all')
+  spatialIssues=NULL, issue=NULL, search=NULL, mediatype=NULL, limit=500, start=0,
+  fields = 'all', return='all', ...)
 {
   calls <- names(sapply(match.call(), deparse))[-1]
   calls_vec <- c("georeferenced","altitude","latitude","longitude") %in% calls
@@ -300,7 +302,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
     outout <- list()
     while(sumreturned < limit){
       iter <- iter + 1
-      tt <- gbif_GET(url, args, callopts)
+      tt <- gbif_GET(url, args, FALSE, ...)
       
       # if no results, assign count var with 0
       if(identical(tt$results, list())) tt$count <- 0

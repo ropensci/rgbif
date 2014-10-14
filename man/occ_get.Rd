@@ -4,7 +4,7 @@
 \title{Get data for specific GBIF occurrences.}
 \usage{
 occ_get(key = NULL, return = "all", verbatim = FALSE,
-  fields = "minimal", callopts = list())
+  fields = "minimal", ...)
 }
 \arguments{
 \item{key}{Occurrence key}
@@ -20,7 +20,9 @@ returns the metadata for the entire call. 'all' gives all data back in a list. I
 longitute. 'all' returns all fields. Or specify each field you want returned by name, e.g.
 fields = c('name','decimalLatitude','altitude').}
 
-\item{callopts}{Further arguments passed on to the \code{\link{GET}} request.}
+\item{...}{Further named parameters, such as \code{query}, \code{path}, etc, passed on to
+\code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will be
+combined with \code{\link[httr]{config}}.}
 }
 \value{
 A data.frame or list of data.frame's.
@@ -48,8 +50,9 @@ occ_get(key=c(766766824,620594291,766420684),
 
 # Pass in curl options
 library("httr")
-occ_get(key=766766824, callopts=verbose())
-occ_get(key=766766824, callopts=timeout(1))
+occ_get(key=766766824, config=verbose())
+occ_get(key=766766824, config=timeout(1))
+occ_get(key=766766824, config=progress())
 }
 }
 \references{

@@ -28,8 +28,9 @@ e.g. identifier=120. This parameter doesn't seem to work right now.}
 Note that in \code{\link{occ_search}} we do the paging internally for you, so there's no
 \code{start} parameeter, but in other functions you have to do paging yourself.}
 
-\item{callopts}{Pass on options to httr::GET for more refined control of
-http calls, and error handling}
+\item{...}{Further named parameters, such as \code{query}, \code{path}, etc, passed on to
+\code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will
+be combined with \code{\link[httr]{config}}.}
 }
 \description{
 Networks metadata.

@@ -60,14 +60,15 @@ status is being filtered by status=ACCEPTED}
 Note that in \code{\link{occ_search}} we do the paging internally for you, so there's no
 \code{start} parameeter, but in other functions you have to do paging yourself.}
 
-\item{callopts}{Pass on options to httr::GET for more refined control of
-http calls, and error handling}
-
 \item{pretty}{Print informative metadata using \code{\link{cat}}. Not easy to
 manipulate output though.}
 
 \item{return}{What to return. One of meta, descriptions, data, facets,
    or all (Default).}
+
+\item{...}{Further named parameters, such as \code{query}, \code{path}, etc, passed on to
+\code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will
+be combined with \code{\link[httr]{config}}.}
 }
 \value{
 A data.frame, list, or message printed to console (using pretty=TRUE).
