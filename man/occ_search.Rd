@@ -13,7 +13,7 @@ occ_search(taxonKey = NULL, scientificName = NULL, country = NULL,
   decimalLongitude = NULL, elevation = NULL, depth = NULL,
   institutionCode = NULL, collectionCode = NULL, spatialIssues = NULL,
   issue = NULL, search = NULL, mediatype = NULL, callopts = list(),
-  limit = 500, start = NULL, fields = "all", return = "all")
+  limit = 500, start = 0, fields = "all", return = "all")
 
 \method{print}{gbif}(x, ..., n = 10)
 }

@@ -254,7 +254,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
   geometry=NULL, collectorName=NULL, basisOfRecord=NULL, datasetKey=NULL, eventDate=NULL,
   catalogNumber=NULL, year=NULL, month=NULL, decimalLatitude=NULL, decimalLongitude=NULL,
   elevation=NULL, depth=NULL, institutionCode=NULL, collectionCode=NULL,
-  spatialIssues=NULL, issue=NULL, search=NULL, mediatype=NULL, callopts=list(), limit=500, start=NULL,
+  spatialIssues=NULL, issue=NULL, search=NULL, mediatype=NULL, callopts=list(), limit=500, start=0,
   fields = 'all', return='all')
 {
   calls <- names(sapply(match.call(), deparse))[-1]
@@ -291,7 +291,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
       year=year, month=month, decimalLatitude=decimalLatitude, decimalLongitude=decimalLongitude,
       elevation=elevation, depth=depth, institutionCode=institutionCode,
       collectionCode=collectionCode, spatialIssues=spatialIssues, q=search, mediaType=mediatype,
-      limit=check_limit(as.integer(limit)), offset=start))
+      limit=check_limit(as.integer(limit)), offset=check_limit(as.integer(start))))
     args <- c(args, parse_issues(issue))
     argscoll <<- args 
 
@@ -595,5 +595,5 @@ parse_issues <- function(x){
 
 check_limit <- function(x){
   if(x > 1000000L) 
-    stop("limit maximum is 1 million, use the GBIF web interface for more than 1 million records")
+    stop("start parameter max is 1 million, use the GBIF web interface for more than 1 million records")
 }
