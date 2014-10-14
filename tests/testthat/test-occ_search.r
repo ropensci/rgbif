@@ -15,14 +15,14 @@ test_that("returns the correct class", {
 })
 
 test_that("returns the correct value", {
-  expect_equal(tt$meta$limit, 2)
+  expect_equal(tt$meta$limit, 20)
   expect_equal(tt$hierarchy[[1]][1,2], 6)
   expect_equal(as.character(tt$hierarchy[[1]][1,1]), "Plantae")
   
   expect_equal(as.character(uu$hierarchy[[1]][1,1]), "Plantae")
   expect_equal(as.character(uu$data[1,1]), "Helianthus annuus")
   expect_equal(uu$meta$limit, 20)
-  expect_equal(vv$limit, 200)
+  expect_equal(vv$limit, 180)
 })
 
 test_that("returns the correct dimensions", {
