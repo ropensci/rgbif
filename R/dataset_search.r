@@ -46,12 +46,16 @@
 #'
 #' ## data and facets
 #' dataset_search(facet="decade", facetMincount="10", limit=2)
+#' 
+#' ## httr options
+#' library('httr')
+#' dataset_search(facet="decade", facetMincount="10", limit=2, config=verbose())
 #' }
 
 dataset_search <- function(query = NULL, country = NULL, type = NULL, keyword = NULL,
   owningOrg = NULL, publishingOrg = NULL, hostingOrg = NULL, publishingCountry = NULL, 
   decade = NULL, facet=NULL, facetMincount=NULL, facetMultiselect=NULL, limit=100,
-  start=NULL, callopts=list(), pretty=FALSE, return="all")
+  start=NULL, pretty=FALSE, return="all", ...)
 {
   if(!is.null(facetMincount) && inherits(facetMincount, "numeric"))
     stop("Make sure facetMincount is character")
@@ -67,7 +71,7 @@ dataset_search <- function(query = NULL, country = NULL, type = NULL, keyword = 
                        decade=decade,limit=limit,offset=start,facetbyname,
                        facetMincount=facetMincount,
                        facetMultiselect=facetMultiselect)))
-  tt <- gbif_GET(url, args, callopts)
+  tt <- gbif_GET(url, args, FALSE, ...)
 
   # metadata
   meta <- tt[c('offset','limit','endOfRecords','count')]

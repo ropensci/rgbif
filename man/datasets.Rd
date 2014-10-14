@@ -4,7 +4,7 @@
 \title{Search for datasets and dataset metadata.}
 \usage{
 datasets(data = "all", type = NULL, uuid = NULL, query = NULL,
-  id = NULL, limit = 100, start = NULL, callopts = list())
+  id = NULL, limit = 100, start = NULL, ...)
 }
 \arguments{
 \item{data}{The type of data to get. Default is all data.}
@@ -45,6 +45,10 @@ datasets(data='metadata', uuid="a6998220-7e3a-485d-9cd6-73076bd85657")
 datasets(data='metadata', uuid="a6998220-7e3a-485d-9cd6-73076bd85657", id=598)
 datasets(data=c('deleted','duplicate'))
 datasets(data=c('deleted','duplicate'), limit=1)
+
+# httr options
+library('httr')
+res <- datasets(data=c('deleted','duplicate'), config=progress())
 }
 }
 \references{

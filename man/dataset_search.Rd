@@ -7,8 +7,7 @@ dataset_search(query = NULL, country = NULL, type = NULL,
   keyword = NULL, owningOrg = NULL, publishingOrg = NULL,
   hostingOrg = NULL, publishingCountry = NULL, decade = NULL,
   facet = NULL, facetMincount = NULL, facetMultiselect = NULL,
-  limit = 100, start = NULL, callopts = list(), pretty = FALSE,
-  return = "all")
+  limit = 100, start = NULL, pretty = FALSE, return = "all", ...)
 }
 \arguments{
 \item{query}{Query term(s) for full text search.  The value for this parameter
@@ -112,6 +111,10 @@ dataset_search(facet="decade", facetMincount="10", limit=0)
 
 ## data and facets
 dataset_search(facet="decade", facetMincount="10", limit=2)
+
+## httr options
+library('httr')
+dataset_search(facet="decade", facetMincount="10", limit=2, config=verbose())
 }
 }
 \references{

@@ -7,7 +7,7 @@ dataset_suggest(query = NULL, country = NULL, type = NULL,
   subtype = NULL, keyword = NULL, owningOrg = NULL,
   publishingOrg = NULL, hostingOrg = NULL, publishingCountry = NULL,
   decade = NULL, continent = NULL, limit = 100, start = NULL,
-  callopts = list(), pretty = FALSE, description = FALSE)
+  pretty = FALSE, description = FALSE, ...)
 }
 \arguments{
 \item{query}{Query term(s) for full text search.  The value for this parameter
@@ -97,6 +97,10 @@ head(dataset_suggest(country="US"))
 
 # Search by decade
 head(dataset_suggest(decade=1980))
+
+# httr options
+library('httr')
+dataset_suggest(type="OCCURRENCE", limit=2, config=verbose())
 }
 }
 \references{

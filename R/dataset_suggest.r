@@ -45,19 +45,23 @@
 #' 
 #' # Search by decade
 #' head(dataset_suggest(decade=1980))
+#' 
+#' # httr options
+#' library('httr')
+#' dataset_suggest(type="OCCURRENCE", limit=2, config=verbose())
 #' }
 
 dataset_suggest <- function(query = NULL, country = NULL, type = NULL, subtype = NULL, 
   keyword = NULL, owningOrg = NULL, publishingOrg = NULL, hostingOrg = NULL, 
-  publishingCountry = NULL, decade = NULL, continent = NULL, limit=100, start=NULL, callopts=list(), 
-  pretty=FALSE, description=FALSE)
+  publishingCountry = NULL, decade = NULL, continent = NULL, limit=100, start=NULL,
+  pretty=FALSE, description=FALSE, ...)
 {
   url <- paste0(gbif_base(), '/dataset/suggest')
   args <- rgbif_compact(list(q=query,type=type,keyword=keyword,owningOrg=owningOrg,
                        publishingOrg=publishingOrg, 
                        hostingOrg=hostingOrg,publishingCountry=publishingCountry,
                        decade=decade,limit=limit,offset=start))
-  tt <- gbif_GET(url, args, callopts)
+  tt <- gbif_GET(url, args, FALSE, ...)
   
   if(description){
     out <- sapply(tt, "[[", "description")

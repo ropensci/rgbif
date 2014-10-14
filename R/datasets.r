@@ -22,10 +22,14 @@
 #' datasets(data='metadata', uuid="a6998220-7e3a-485d-9cd6-73076bd85657", id=598)
 #' datasets(data=c('deleted','duplicate'))
 #' datasets(data=c('deleted','duplicate'), limit=1)
+#' 
+#' # httr options
+#' library('httr')
+#' res <- datasets(data=c('deleted','duplicate'), config=progress())
 #' }
 
 datasets <- function(data = 'all', type = NULL, uuid = NULL, query = NULL, id = NULL, 
-                     limit = 100, start=NULL, callopts=list())
+                     limit = 100, start=NULL, ...)
 {
   args <- rgbif_compact(list(q = query, limit=as.integer(limit), offset=start))
   
@@ -58,7 +62,7 @@ datasets <- function(data = 'all', type = NULL, uuid = NULL, query = NULL, id = 
         sprintf('%s/dataset/%s/%s', gbif_base(), uuid, x)
       }
     }
-    res <- gbif_GET(url, args, callopts, TRUE)
+    res <- gbif_GET(url, args, TRUE, ...)
     structure(list(meta=get_meta(res), data=parse_results(res, uuid)))
   }
   
