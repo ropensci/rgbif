@@ -3,6 +3,9 @@
 \name{gbifissues}
 \alias{gbifissues}
 \title{Table of GBIF issues, with codes used in data output, full issue name, and descriptions.}
+\source{
+\url{http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html}
+}
 \description{
 Table has the following fields:
 }

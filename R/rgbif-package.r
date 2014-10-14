@@ -105,4 +105,5 @@ NULL
 #' @name gbifissues
 #' @docType data
 #' @keywords data
+#' @source \url{http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html}
 NULL
