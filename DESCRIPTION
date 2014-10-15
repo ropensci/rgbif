@@ -16,8 +16,7 @@ Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "danmcglinn@gmail.com"))
 URL: https://github.com/ropensci/rgbif
 BugReports: https://github.com/ropensci/rgbif/issues
-LazyLoad: yes
-LazyData: yes
+LazyData: true
 VignetteBuilder: knitr
 Roxygen: list(wrap = FALSE)
 Imports:

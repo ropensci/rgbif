@@ -1,63 +1,63 @@
 #' Parse and examine further GBIF issues on a dataset.
 #'
 #' @export
-#' 
+#'
 #' @param .data Output from a call to \code{occ_search}
 #' @param ... Named parameters to only get back (e.g., cdround), or to remove (e.g. -cdround).
-#' @param mutate (character) One of: 
+#' @param mutate (character) One of:
 #' \itemize{
 #'  \item split Split issues into new columns.
 #'  \item split_expand Split into new columns, and expand issue names.
 #'  \item expand Expand issue abbreviated codes into descriptive names.
 #' }
 #' For split and split_expand, values in cells become y ("yes") or n ("no").
-#' 
-#' @details See also the vignette \code{Issue handling}. 
-#' 
-#' Note that you can also query pased on issues, e.g., 
+#'
+#' @details See also the vignette \code{Issue handling}.
+#'
+#' Note that you can also query pased on issues, e.g.,
 #' \code{occ_search(taxonKey=1, issue='DEPTH_UNLIKELY')}. However, I imagine it's more likely
 #' that you want to search for occurrences based on a taxonomic name, or geographic area,
-#' not based on issues, so it makes sense to pull data down, then clean as needed 
+#' not based on issues, so it makes sense to pull data down, then clean as needed
 #' using this function.
-#' 
-#' This function only affects the \code{data} element in the \code{gbif} class that is 
+#'
+#' This function only affects the \code{data} element in the \code{gbif} class that is
 #' returned from a call to \code{\link[rgbif]{occ_search}}. Maybe in a future version
 #' we will remove the associated records from the \code{hierarchy} and \code{media}
-#' elements as they are remove from the \code{data} element. 
-#' 
+#' elements as they are remove from the \code{data} element.
+#'
 #' @examples \donttest{
 #' # Parsing output by issue
 #' (res <- occ_search(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))', limit = 50))
-#' 
+#'
 #' ## what do issues mean, can print whole table, or search for matches
-#' head(gbifissues)
-#' gbifissues[ gbifissues$code %in% c('cdround','cudc','gass84','txmathi'), ]
-#' 
+#' head(gbif_issues())
+#' gbif_issues()[ gbif_issues()$code %in% c('cdround','cudc','gass84','txmathi'), ]
+#'
 #' ## or parse issues in various ways
-#' ### inlude only rows with gass84 issue 
+#' ### inlude only rows with gass84 issue
 #' gg <- res %>% occ_issues(gass84)
 #' NROW(res$data)
 #' NROW(gg$data)
 #' head(res$data)[,c(1:5)]
 #' head(gg$data)[,c(1:5)]
-#' 
+#'
 #' ### remove data rows with certain issue classes
 #' res %>% occ_issues(-gass84, -mdatunl)
-#' 
+#'
 #' ### split issues into separate columns
 #' res %>% occ_issues(mutate = "split")
 #' res %>% occ_issues(-gass84, -mdatunl, mutate = "split")
 #' res %>% occ_issues(gass84, mutate = "split")
-#' 
+#'
 #' ### expand issues to more descriptive names
 #' res %>% occ_issues(mutate = "expand")
-#' 
+#'
 #' ### split and expand
 #' res %>% occ_issues(mutate = "split_expand")
-#' 
+#'
 #' ### split, expand, and remove an issue class
 #' res %>% occ_issues(-gass84, mutate = "split_expand")
-#' 
+#'
 #' ## Or you can use occ_issues without %>%
 #' occ_issues(res, -gass84, mutate = "split_expand")
 #' }
@@ -65,7 +65,7 @@
 occ_issues <- function(.data, ..., mutate=NULL){
   assert_that(is(.data, "gbif"))
   tmp <- .data$data
-  
+
   if(!length(dots(...)) == 0){
     filters <- parse_input(...)
     if(length(filters$neg) > 0){
@@ -75,7 +75,7 @@ occ_issues <- function(.data, ..., mutate=NULL){
       tmp <- tmp[ grepl(paste(filters$pos, collapse = "|"), tmp$issues), ]
     }
   }
-  
+
   if(!is.null(mutate)){
     if(mutate == 'split'){
       tmp <- split_iss(tmp)
@@ -86,7 +86,7 @@ occ_issues <- function(.data, ..., mutate=NULL){
       tmp <- mutate_iss(tmp)
     }
   }
-  
+
   .data$data <- tmp
   return( .data )
 }
@@ -121,7 +121,7 @@ dots <- function(...){
 # shit <- function(...){
 #   if(length(dots(...)) == 0) "empty" else "not empty"
 # }
-# 
+#
 # shit <- function(...){
 #   dots(...)
 # }

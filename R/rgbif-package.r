@@ -91,19 +91,3 @@ NULL
 #' @docType data
 #' @keywords data
 NULL
-
-#' Table of GBIF issues, with codes used in data output, full issue name, and descriptions.
-#' 
-#' Table has the following fields:
-#' 
-#' \itemize{
-#'   \item code. Code for issue, making viewing data easier.
-#'   \item issue. Full name of the issue.  
-#'   \item description. Description of the issue.
-#' }
-#' 
-#' @name gbifissues
-#' @docType data
-#' @keywords data
-#' @source \url{http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html}
-NULL
