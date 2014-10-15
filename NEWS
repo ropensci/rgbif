@@ -1,3 +1,43 @@
+rgbif 0.7.7
+===============
+
+NEW FEATURES
+
+* New function `occ_issues()` to subset data from `occ_search()` based on GBIF issues. (#) (#122)
+* Related to the last bullet, GBIF issues now are returned by default in `occ_search()` results, and are intentionally moved to the beginning of the column order of the data to be more obvious. (#102)
+* `occ_search()` now returns all data fields by default. The default setting for the `fields` parameter is `all` - but can be changed. See `?occ_search`
+* New function `gbif_names()` to view highlighted terms in name results from a call to `name_lookup()`. (#114)
+* New functions: `occ_issues_lookup()` to lookup GBIF issues based on code name or full issue name, and `gbif_issues()` to print the entire issues table. 
+
+IMPROVEMENTS
+
+* Completely replaced `RCurl` with `httr`
+* Completely replaced `RJSONIO` with `jsonlite`. Should see slight performance in JSON parsing with `jsonlite`.
+* Default number of records in `occ_search()` now 500; was 25. (#113)
+* Vignette for old version of GBIF API removed.
+* New vignette for cleaning data via GBIF issues added. (#132)
+* Functions for working with old GBIF API removed, now defunct. (#116)
+* Now better parsing for some functions (`organizations()`, `datasets()`, `networks()`, `nodes()`, `installations()`) to data.frames when possible. (#117)
+* Added further help to warn users when searching on ranges in latitude or longitude in `occ_search()` (#123)
+* `callopts` parameter changed to `...` throughout all functions. Now pass on options to `httr` as named lists or functions. (#130)
+* Beware that GBIF data is becoming Darwin Core compliant - so many parameters throughout this package have changed from sentence_case to camelCase.
+* `dataset_search()` and `dataset_suggest()` gain new parameter `publishingOrg`
+* Default for `limit` parameter changed to 100 for dataset functions: `dataset_search()`, `dataset_suggest()`, and `datasets()`. 
+* Default for `limit` parameter changed to 100 for registry functions: `installations()`, `networks()`, `organizations`, and `nodes()`. 
+* Parameter changes in `networks()`: `name`, `code`, `modifiedsince`, `startindex`, and `maxresults` gone; new parameters `query`, `identifier`, `identifierType`, `limit`, and `start`
+* Parameter changes in `nodes()`: new parameters `identifier`, `identifierType`, `limit`, and `start`
+
+BUG FIXES
+
+* `occ_search()` failed sometimes on species that were not found. Fixed. (#112)
+* Added better handling of some server errors to pass on to user. (#115) (#118)
+* Fixed incorrect parsing for some cases in `occ_search()` (#119)
+* Fixed bad parsing on output from `name_lookup()` (#120)
+* Fixed single map option in `gbif_photos()` that caused map with no data. (#121)
+* Fixed some parameter names in `name_()` functions according to changes in the GBIF API spec, and fixed documentation to align with GBIF API changes, and added note about maximum limit. (#124) (#127) (#129) Thanks to @willgearty !
+* Fixed internals of `occ_search()` so that user can pass in multiple values to the `issue` parameter. (#107)
+* Fixed URL to tutorial on ropensci website (#105) Thanks @fxi !
+
 rgbif 0.7.0
 ===============
 
@@ -24,7 +64,6 @@ BUG FIXES
 * Added better error message to `check_wkt()`.
 * `facet_only` parameter removed from `dataset_search()` function as it doesn't do anything - use `limit=0` instead.
 * Fixed some examples that didn't work correctly.
-*
 
 rgbif 0.6.3
 ===============
