@@ -38,10 +38,6 @@
 #' # Fuzzy searching
 #' name_lookup(query='Cnaemidophor', rank="genus")
 #'
-#' # Get more data from the API call
-#' library("httr")
-#' name_lookup(query='Cnaemidophorus', rank="genus", callopts=verbose())
-#'
 #' # Limit records to certain number
 #' name_lookup('Helianthus annuus', rank="species", limit=2)
 #'
@@ -68,12 +64,16 @@
 #'
 #' # Lookup by datasetKey
 #' name_lookup(datasetKey='3f8a1297-3259-4700-91fc-acc4170b27ce')
+#' 
+#' # Pass on httr options
+#' library('httr')
+#' name_lookup(query='Cnaemidophorus', rank="genus", config=verbose())
 #' }
 
 name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL, isExtinct=NULL,
   habitat=NULL, nameType=NULL, datasetKey=NULL, nomenclaturalStatus=NULL,
   limit=100, start=NULL, facet=NULL, facetMincount=NULL, facetMultiselect=NULL, type = NULL, hl=NULL,
-  callopts=list(), verbose=FALSE, return="all")
+  verbose=FALSE, return="all", ...)
 {
   if(!is.null(facetMincount) && inherits(facetMincount, "numeric"))
     stop("Make sure facetMincount is character")
@@ -89,7 +89,7 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
             facetMincount=facetMincount,
             facetMultiselect=facetMultiselect, hl=hl, type=type))
   args <- c(args, facetbyname)
-  tt <- gbif_GET(url, args, callopts)
+  tt <- gbif_GET(url, args, FALSE, ...)
 
   # metadata
   meta <- tt[c('offset','limit','endOfRecords','count')]

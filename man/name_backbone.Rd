@@ -5,8 +5,7 @@
 \usage{
 name_backbone(name, rank = NULL, kingdom = NULL, phylum = NULL,
   class = NULL, order = NULL, family = NULL, genus = NULL,
-  strict = FALSE, verbose = FALSE, start = NULL, limit = 100,
-  callopts = list())
+  strict = FALSE, verbose = FALSE, start = NULL, limit = 100, ...)
 }
 \arguments{
 \item{name}{(character) Full scientific name potentially with authorship (required)}
@@ -75,6 +74,10 @@ name_backbone(name='Helianthus annuus', kingdom='plants', verbose=TRUE, strict=T
 # Non-existent name - returns list of lenght 3 stating no match
 name_backbone(name='Aso')
 name_backbone(name='Oenante')
+
+# Pass on httr options
+library('httr')
+name_backbone(name='Oenante', config=timeout(1))
 }
 }
 \references{

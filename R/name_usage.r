@@ -49,6 +49,10 @@
 #' 
 #' # Search for a particular language
 #' name_usage(key=3119195, language="FRENCH", data='vernacularNames')
+#' 
+#' # Pass on httr options
+#' library('httr')
+#' res <- name_usage(name='Puma concolor', limit=300, config=progress())
 #' }
 #' 
 #' @examples \donttest{
@@ -58,7 +62,7 @@
 #' }
 
 name_usage <- function(key=NULL, name=NULL, data='all', language=NULL, datasetKey=NULL, uuid=NULL,
-  sourceId=NULL, rank=NULL, shortname=NULL, start=NULL, limit=100, callopts=list())
+  sourceId=NULL, rank=NULL, shortname=NULL, start=NULL, limit=100, ...)
 {
   calls <- names(sapply(match.call(), deparse))[-1]
   calls_vec <- c("sourceId") %in% calls
@@ -97,7 +101,7 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL, datasetKe
       }
     }
     
-    gbif_GET(url, args, callopts)
+    gbif_GET(url, args, FALSE, ...)
   }
   
   # Get data

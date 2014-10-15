@@ -30,14 +30,17 @@
 #' name_suggest(q='Puma', limit=2)
 #' name_suggest(q='Puma', fields=c('key','canonicalName'))
 #' name_suggest(q='Puma', fields=c('key','canonicalName','higherClassificationMap'))
+#' 
+#' # Pass on httr options
+#' library('httr')
+#' res <- name_suggest(q='Puma', limit=200, config=progress())
 #' }
 
-name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL, start=NULL, 
-                         limit=100, callopts=list())
+name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL, start=NULL, limit=100, ...)
 {
   url <- paste0(gbif_base(), '/species/suggest')
   args <- rgbif_compact(list(q=q, rank=rank, offset=start, limit=limit))
-  tt <- gbif_GET(url, args, callopts)
+  tt <- gbif_GET(url, args, FALSE, ...)
   
   if(is.null(fields)){
     toget <- c("key","canonicalName","rank")

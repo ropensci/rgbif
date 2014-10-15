@@ -7,8 +7,8 @@ name_lookup(query = NULL, rank = NULL, higherTaxonKey = NULL,
   status = NULL, isExtinct = NULL, habitat = NULL, nameType = NULL,
   datasetKey = NULL, nomenclaturalStatus = NULL, limit = 100,
   start = NULL, facet = NULL, facetMincount = NULL,
-  facetMultiselect = NULL, type = NULL, hl = NULL, callopts = list(),
-  verbose = FALSE, return = "all")
+  facetMultiselect = NULL, type = NULL, hl = NULL, verbose = FALSE,
+  return = "all", ...)
 }
 \arguments{
 \item{query}{Query term(s) for full text search.}
@@ -89,8 +89,6 @@ publishing country, publishing organization title, hosting organization title, a
 description. One additional full text field is searched which includes information from
 metadata documents, but the text of this field is not returned in the response.}
 
-\item{callopts}{Further arguments passed on to the \code{\link{GET}} request.}
-
 \item{verbose}{If TRUE, all data is returned as a list for each element. If
    FALSE (default) a subset of the data that is thought to be most essential is
    organized into a data.frame.}
@@ -102,6 +100,10 @@ for each taxon. all gives all data back in a list. Each element is NULL if there
 no contents in that element. hierarchies and names slots are named by the GBIF key,
 which matches the first column of the data.frame in the data slot. So if you wanted to
 combine those somehow, you could easily do so using the key.}
+
+\item{...}{Further named parameters, such as \code{query}, \code{path}, etc, passed on to
+\code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will
+be combined with \code{\link[httr]{config}}.}
 }
 \value{
 A list of length three. The first element is metadata. The second is
@@ -151,10 +153,6 @@ name_lookup(query='Cnaemidophorus', rank="genus", return="names")
 # Fuzzy searching
 name_lookup(query='Cnaemidophor', rank="genus")
 
-# Get more data from the API call
-library("httr")
-name_lookup(query='Cnaemidophorus', rank="genus", callopts=verbose())
-
 # Limit records to certain number
 name_lookup('Helianthus annuus', rank="species", limit=2)
 
@@ -181,6 +179,10 @@ gbif_names(res)
 
 # Lookup by datasetKey
 name_lookup(datasetKey='3f8a1297-3259-4700-91fc-acc4170b27ce')
+
+# Pass on httr options
+library('httr')
+name_lookup(query='Cnaemidophorus', rank="genus", config=verbose())
 }
 }
 \references{

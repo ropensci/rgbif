@@ -5,7 +5,7 @@
 doing prefix matching against the scientific name. Results are ordered by relevance.}
 \usage{
 name_suggest(q = NULL, datasetKey = NULL, rank = NULL, fields = NULL,
-  start = NULL, limit = 100, callopts = list())
+  start = NULL, limit = 100, ...)
 }
 \arguments{
 \item{q}{(character, required) Simple search parameter. The value for this parameter can be a
@@ -53,6 +53,10 @@ name_suggest(q='Puma', rank="infraspecific_name")
 name_suggest(q='Puma', limit=2)
 name_suggest(q='Puma', fields=c('key','canonicalName'))
 name_suggest(q='Puma', fields=c('key','canonicalName','higherClassificationMap'))
+
+# Pass on httr options
+library('httr')
+res <- name_suggest(q='Puma', limit=200, config=progress())
 }
 }
 \references{

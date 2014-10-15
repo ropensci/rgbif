@@ -5,7 +5,7 @@
 \usage{
 name_usage(key = NULL, name = NULL, data = "all", language = NULL,
   datasetKey = NULL, uuid = NULL, sourceId = NULL, rank = NULL,
-  shortname = NULL, start = NULL, limit = 100, callopts = list())
+  shortname = NULL, start = NULL, limit = 100, ...)
 }
 \arguments{
 \item{key}{(numeric) A GBIF key for a taxon}
@@ -94,6 +94,10 @@ name_usage(datasetKey="d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
 
 # Search for a particular language
 name_usage(key=3119195, language="FRENCH", data='vernacularNames')
+
+# Pass on httr options
+library('httr')
+res <- name_usage(name='Puma concolor', limit=300, config=progress())
 }
 }
 \references{

@@ -44,6 +44,10 @@
 #' # Non-existent name - returns list of lenght 3 stating no match
 #' name_backbone(name='Aso')
 #' name_backbone(name='Oenante')
+#' 
+#' # Pass on httr options
+#' library('httr')
+#' name_backbone(name='Oenante', config=timeout(1))
 #' }
 #' 
 #' @examples \donttest{
@@ -53,13 +57,13 @@
 
 name_backbone <- function(name, rank=NULL, kingdom=NULL, phylum=NULL, class=NULL, 
   order=NULL, family=NULL, genus=NULL, strict=FALSE, verbose=FALSE, 
-  start=NULL, limit=100, callopts=list())
+  start=NULL, limit=100, ...)
 {
   url <- paste0(gbif_base(), '/species/match')
   args <- rgbif_compact(list(name=name, rank=rank, kingdom=kingdom, phylum=phylum, 
                        class=class, order=order, family=family, genus=genus, 
                        strict=strict, verbose=verbose, offset=start, limit=limit))
-  tt <- gbif_GET(url, args, callopts)
+  tt <- gbif_GET(url, args, FALSE, ...)
   if(verbose){ 
     alt <- do.call(rbind.fill, lapply(tt$alternatives, namelkupparser))
     dat <- data.frame(tt[!names(tt) %in% c("alternatives","note")], stringsAsFactors=FALSE)
