@@ -3,10 +3,14 @@
 \alias{parsenames}
 \title{Parse taxon names using the GBIF name parser.}
 \usage{
-parsenames(scientificname)
+parsenames(scientificname, ...)
 }
 \arguments{
 \item{scientificname}{A character vector of scientific names.}
+
+\item{...}{Further named parameters, such as \code{query}, \code{path}, etc, passed on to
+\code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will be
+combined with \code{\link[httr]{config}}.}
 }
 \value{
 A \code{data.frame} containing fields extracted from parsed
@@ -22,6 +26,12 @@ parsenames(scientificname='x Agropogon littoralis')
 parsenames(c('Arrhenatherum elatius var. elatius',
              'Secale cereale subsp. cereale', 'Secale cereale ssp. cereale',
              'Vanessa atalanta (Linnaeus, 1758)'))
+
+# Pass on options to httr
+library('httr')
+res <- parsenames(c('Arrhenatherum elatius var. elatius',
+             'Secale cereale subsp. cereale', 'Secale cereale ssp. cereale',
+             'Vanessa atalanta (Linnaeus, 1758)'), config=progress())
 }
 }
 \author{

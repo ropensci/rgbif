@@ -3,6 +3,7 @@
 #' @import httr plyr assertthat
 #' @importFrom stringr str_trim
 #' @importFrom data.table rbindlist
+#' 
 #' @param input A data.frame of lat/long data. There must be columns decimalLatitude and
 #' decimalLongitude.
 #' @param latitude A vector of latitude's. Must be the same length as the longitude
@@ -10,7 +11,10 @@
 #' @param longitude A vector of longitude's. Must be the same length as the latitude
 #' vector.
 #' @param latlong A vector of lat/long pairs. See examples.
-#' @param callopts Options passed on to \code{httr::GET}, like curl options for debugging.
+#' @param ... Further named parameters, such as \code{query}, \code{path}, etc, passed on to 
+#' \code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will be 
+#' combined with \code{\link[httr]{config}}.
+#' 
 #' @return A new column named elevation in the supplied data.frame or a vector with elevation of
 #' each location in meters.
 #' @references Uses the Google Elevation API at the following link
@@ -19,7 +23,7 @@
 #' @examples \dontrun{
 #' key <- name_suggest('Puma concolor')$key[1]
 #' dat <- occ_search(taxonKey=key, return='data', limit=300, hasCoordinate=TRUE)
-#' elevation(dat)
+#' head( elevation(dat) )
 #'
 #' # Pass in a vector of lat's and a vector of long's
 #' elevation(latitude=dat$decimalLatitude, longitude=dat$decimalLongitude)
@@ -27,10 +31,14 @@
 #' # Pass in lat/long pairs in a single vector
 #' pairs <- list(c(31.8496,-110.576060), c(29.15503,-103.59828))
 #' elevation(latlong=pairs)
+#' 
+#' # Pass on options to httr
+#' library('httr')
+#' pairs <- list(c(31.8496,-110.576060), c(29.15503,-103.59828))
+#' elevation(latlong=pairs, config=verbose())
 #' }
 
-elevation <- function(input=NULL, latitude=NULL, longitude=NULL, latlong=NULL,
-                      callopts=list())
+elevation <- function(input=NULL, latitude=NULL, longitude=NULL, latlong=NULL, ...)
 {
   url <- 'http://maps.googleapis.com/maps/api/elevation/json'
   foo <- function(x) gsub("\\s+", "", str_trim(paste(x['latitude'], x['longitude'], sep=","), "both"))
@@ -51,7 +59,7 @@ elevation <- function(input=NULL, latitude=NULL, longitude=NULL, latlong=NULL,
     outout <- list()
     for(i in seq_along(locations)){
       args <- rgbif_compact(list(locations=locations[[i]], sensor='false'))
-      tt <- GET(url, query=args, callopts)
+      tt <- GET(url, query=args, ...)
       stop_for_status(tt)
       assert_that(tt$headers$`content-type`=='application/json; charset=UTF-8')
       res <- content(tt, as = 'text', encoding = "UTF-8")

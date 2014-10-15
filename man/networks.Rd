@@ -4,7 +4,7 @@
 \title{Networks metadata.}
 \usage{
 networks(data = "all", uuid = NULL, query = NULL, identifier = NULL,
-  identifierType = NULL, limit = 100, start = NULL, callopts = list())
+  identifierType = NULL, limit = 100, start = NULL, ...)
 }
 \arguments{
 \item{data}{The type of data to get. Default is all data.}
@@ -59,6 +59,10 @@ identifierType options:
 networks(limit=5)
 networks(uuid='16ab5405-6c94-4189-ac71-16ca3b753df7')
 networks(data='endpoint', uuid='16ab5405-6c94-4189-ac71-16ca3b753df7')
+
+# Pass on options to httr
+library('httr')
+res <- networks(limit=5, config=progress())
 }
 }
 \references{

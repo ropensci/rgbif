@@ -4,7 +4,7 @@
 \title{Organizations metadata.}
 \usage{
 organizations(data = "all", uuid = NULL, query = NULL, limit = 100,
-  start = NULL, callopts = list())
+  start = NULL, ...)
 }
 \arguments{
 \item{data}{The type of data to get. Default is all data.}
@@ -40,6 +40,10 @@ organizations(uuid="4b4b2111-ee51-45f5-bf5e-f535f4a1c9dc")
 organizations(data='contact', uuid="4b4b2111-ee51-45f5-bf5e-f535f4a1c9dc")
 organizations(data='pending')
 organizations(data=c('contact','endpoint'), uuid="4b4b2111-ee51-45f5-bf5e-f535f4a1c9dc")
+
+# Pass on options to httr
+library('httr')
+res <- organizations(query="spain", config=progress())
 }
 }
 \references{

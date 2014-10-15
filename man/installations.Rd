@@ -5,7 +5,7 @@
 \usage{
 installations(data = "all", uuid = NULL, query = NULL,
   identifier = NULL, identifierType = NULL, limit = 100, start = NULL,
-  callopts = list())
+  ...)
 }
 \arguments{
 \item{data}{The type of data to get. Default is all data. If not 'all', then one
@@ -69,6 +69,10 @@ installations(data='deleted')
 installations(data='deleted', limit=2)
 installations(data=c('deleted','nonPublishing'), limit=2)
 installations(identifierType='DOI', limit=2)
+
+# Pass on options to httr
+library('httr')
+res <- installations(data='deleted', config=progress())
 }
 }
 \references{

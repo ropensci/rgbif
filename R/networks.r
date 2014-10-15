@@ -15,10 +15,14 @@
 #' networks(limit=5)
 #' networks(uuid='16ab5405-6c94-4189-ac71-16ca3b753df7')
 #' networks(data='endpoint', uuid='16ab5405-6c94-4189-ac71-16ca3b753df7')
+#' 
+#' # Pass on options to httr
+#' library('httr')
+#' res <- networks(limit=5, config=progress())
 #' }
 
 networks <- function(data = 'all', uuid = NULL, query = NULL, identifier=NULL,
-                     identifierType=NULL, limit=100, start=NULL, callopts=list())
+                     identifierType=NULL, limit=100, start=NULL, ...)
 {
   args <- rgbif_compact(list(q = query, limit=as.integer(limit), offset=start))
   data <- match.arg(data, choices=c('all', 'contact', 'endpoint', 'identifier', 
@@ -34,7 +38,7 @@ networks <- function(data = 'all', uuid = NULL, query = NULL, identifier=NULL,
         sprintf('%s/network/%s/%s', gbif_base(), uuid, x)
       }
     }
-    res <- gbif_GET(url, args, callopts, TRUE)
+    res <- gbif_GET(url, args, TRUE, ...)
     structure(list(meta=get_meta(res), data=parse_results(res, uuid)))
   }
   

@@ -24,10 +24,14 @@
 #' installations(data='deleted', limit=2)
 #' installations(data=c('deleted','nonPublishing'), limit=2)
 #' installations(identifierType='DOI', limit=2)
+#' 
+#' # Pass on options to httr
+#' library('httr')
+#' res <- installations(data='deleted', config=progress())
 #' }
 
 installations <- function(data = 'all', uuid = NULL, query = NULL, identifier=NULL,
-                          identifierType=NULL, limit=100, start=NULL, callopts=list())
+                          identifierType=NULL, limit=100, start=NULL, ...)
 {
   args <- rgbif_compact(list(q = query, limit=as.integer(limit), offset=start))
   
@@ -50,7 +54,7 @@ installations <- function(data = 'all', uuid = NULL, query = NULL, identifier=NU
         sprintf('%s/installation/%s/%s', gbif_base(), uuid, x)
       }
     }
-    res <- gbif_GET(url, args, callopts, TRUE)
+    res <- gbif_GET(url, args, TRUE, ...)
     structure(list(meta=get_meta(res), data=parse_results(res, uuid)))
   }
   

@@ -4,8 +4,7 @@
 \title{Nodes metadata.}
 \usage{
 nodes(data = "all", uuid = NULL, query = NULL, identifier = NULL,
-  identifierType = NULL, limit = 100, start = NULL, isocode = NULL,
-  callopts = list())
+  identifierType = NULL, limit = 100, start = NULL, isocode = NULL, ...)
 }
 \arguments{
 \item{data}{The type of data to get. Default is all data.}
@@ -79,6 +78,10 @@ library('plyr')
 res <- lapply(uuids, function(x) nodes(x, data='identifier')$data)
 res <- res[!sapply(res, length)==0]
 ldply(res)
+
+# Pass on options to httr
+library('httr')
+res <- nodes(limit=20, config=progress())
 }
 }
 \references{

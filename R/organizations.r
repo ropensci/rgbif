@@ -20,10 +20,13 @@
 #' organizations(data='contact', uuid="4b4b2111-ee51-45f5-bf5e-f535f4a1c9dc")
 #' organizations(data='pending')
 #' organizations(data=c('contact','endpoint'), uuid="4b4b2111-ee51-45f5-bf5e-f535f4a1c9dc")
+#' 
+#' # Pass on options to httr
+#' library('httr')
+#' res <- organizations(query="spain", config=progress())
 #' }
 
-organizations <- function(data = 'all', uuid = NULL, query = NULL, limit=100, 
-                          start=NULL, callopts=list())
+organizations <- function(data = 'all', uuid = NULL, query = NULL, limit=100, start=NULL, ...)
 {
   args <- rgbif_compact(list(q = query, limit=as.integer(limit), offset=start))
   
@@ -54,7 +57,7 @@ organizations <- function(data = 'all', uuid = NULL, query = NULL, limit=100,
         url <- sprintf('%s/organization/%s/%s', gbif_base(), uuid, x)
       }
     }
-    res <- gbif_GET(url, args, callopts, TRUE)
+    res <- gbif_GET(url, args, TRUE, ...)
     structure(list(meta=get_meta(res), data=parse_results(res, uuid)))
   }
   
