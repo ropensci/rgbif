@@ -143,8 +143,6 @@ be combined with \code{\link[httr]{config}}.}
 \item{x}{Output from a call to occ_search}
 
 \item{n}{Number of rows of the data to print.}
-
-\item{...}{Further print args not used.}
 }
 \value{
 A data.frame or list
@@ -456,8 +454,8 @@ occ_search(datasetKey='84c0e1a0-f762-11e1-a439-00145eb45e9a',
 # Parsing output by issue
 (res <- occ_search(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))', limit = 50))
 ## what do issues mean, can print whole table, or search for matches
-head(gbifissues)
-gbifissues[ gbifissues$code \%in\% c('cdround','cudc','gass84','txmathi'), ]
+head(gbif_issues())
+gbif_issues()[ gbif_issues()$code \%in\% c('cdround','cudc','gass84','txmathi'), ]
 ## or parse issues in various ways
 ### remove data rows with certain issue classes
 library('magrittr')

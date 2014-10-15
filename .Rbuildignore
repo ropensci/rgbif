@@ -12,3 +12,4 @@ cran-comments.md
 ^appveyor\.yml$
 gist_downloads.md
 R/deprecated.r
+tests/test-all.R

@@ -12,9 +12,12 @@
 #' }
 #' For split and split_expand, values in cells become y ("yes") or n ("no").
 #'
-#' @details See also the vignette \code{Issue handling}.
+#' @references 
+#' \url{http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html}
+#' 
+#' @details See also the vignette \code{Cleaning data using GBIF issues}.
 #'
-#' Note that you can also query pased on issues, e.g.,
+#' Note that you can also query based on issues, e.g.,
 #' \code{occ_search(taxonKey=1, issue='DEPTH_UNLIKELY')}. However, I imagine it's more likely
 #' that you want to search for occurrences based on a taxonomic name, or geographic area,
 #' not based on issues, so it makes sense to pull data down, then clean as needed

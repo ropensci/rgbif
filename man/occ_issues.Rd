@@ -22,9 +22,9 @@ For split and split_expand, values in cells become y ("yes") or n ("no").}
 Parse and examine further GBIF issues on a dataset.
 }
 \details{
-See also the vignette \code{Issue handling}.
+See also the vignette \code{Cleaning data using GBIF issues}.
 
-Note that you can also query pased on issues, e.g.,
+Note that you can also query based on issues, e.g.,
 \code{occ_search(taxonKey=1, issue='DEPTH_UNLIKELY')}. However, I imagine it's more likely
 that you want to search for occurrences based on a taxonomic name, or geographic area,
 not based on issues, so it makes sense to pull data down, then clean as needed
@@ -41,8 +41,8 @@ elements as they are remove from the \code{data} element.
 (res <- occ_search(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))', limit = 50))
 
 ## what do issues mean, can print whole table, or search for matches
-head(gbifissues)
-gbifissues[ gbifissues$code \%in\% c('cdround','cudc','gass84','txmathi'), ]
+head(gbif_issues())
+gbif_issues()[ gbif_issues()$code \%in\% c('cdround','cudc','gass84','txmathi'), ]
 
 ## or parse issues in various ways
 ### inlude only rows with gass84 issue
@@ -72,5 +72,8 @@ res \%>\% occ_issues(-gass84, mutate = "split_expand")
 ## Or you can use occ_issues without \%>\%
 occ_issues(res, -gass84, mutate = "split_expand")
 }
+}
+\references{
+\url{http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html}
 }
 
