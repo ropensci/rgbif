@@ -119,7 +119,7 @@ out$hierarchies[1:2]
 ```
 
 ```{r}
-out$names[1:2]
+out$names[2]
 ```
 
 Search for a genus

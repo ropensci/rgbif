@@ -177,17 +177,7 @@ out$hierarchies[1:2]
 
 
 ```r
-out$names[1:2]
-#> $`125798198`
-#>   vernacularName   language
-#> 1    Triconodont    CATALAN
-#> 2   Triconodonta      CZECH
-#> 3     Säugetiere     GERMAN
-#> 4   Triconodonta      DUTCH
-#> 5   Trykonodonty     POLISH
-#> 6   Triconodonta PORTUGUESE
-#> 7   Триконодонты    RUSSIAN
-#> 
+out$names[2]
 #> $`116665331`
 #>   vernacularName language
 #> 1        Mammals  ENGLISH
