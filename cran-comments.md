@@ -6,4 +6,7 @@ version of spocc first, another pakage I maintain, that used this package.
 A new version of spocc was submitted, so I am now resubmitting the same 
 version of rgbif.
 
+Note that CRAN checks may fail on Mavericks because there appears to be
+no Mavericks binaries available for two dependencies: rgdal and rgeos.
+
 Thanks! Scott Chamberlain
