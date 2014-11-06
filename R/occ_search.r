@@ -597,4 +597,6 @@ parse_issues <- function(x){
 check_limit <- function(x){
   if(x > 1000000L) 
     stop("start parameter max is 1 million, use the GBIF web interface for more than 1 million records")
+  else
+    x
 }
