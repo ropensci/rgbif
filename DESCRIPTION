@@ -7,9 +7,9 @@ Description: A programmatic interface to the Web Service methods
     taxonomic names, retrieving information on data providers,
     getting species occurrence records, and getting counts of
     occurrence records.
-Version: 0.7.7
+Version: 0.7.7.99
 License: MIT + file LICENSE
-Date: 2014-11-06
+Date: 2014-11-07
 Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com"),
     person("Karthik", "Ram", role = "aut",
