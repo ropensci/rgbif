@@ -28,8 +28,8 @@ test_that("returns the correct value", {
 test_that("returns the correct dimensions", {
   expect_equal(length(tt), 4)
   expect_equal(length(tt$meta), 4)
-  expect_equal(length(uu$data), 71)
-  expect_equal(ncol(vv), 4)
+  expect_equal(NCOL(uu$data), 72)
+  expect_equal(NCOL(vv), 4)
 })
 
 # Search by dataset key
