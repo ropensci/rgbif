@@ -254,7 +254,8 @@ taxrank <- function()
 namelkupparser <- function(x){
   tmp <- x[ ! names(x) %in% c("descriptions","vernacularNames","higherClassificationMap") ]
   tmp <- lapply(tmp, function(x) if(length(x) == 0) NA else x)
-  data.frame(tmp, stringsAsFactors=FALSE)
+  df <- data.frame(tmp, stringsAsFactors=FALSE)
+  movecols(df, c('key','scientificName'))
     # rgbif_compact(
 #       x[c('key','nubKey','parentKey','parent','kingdom','phylum',"clazz","order","family",
 #           "genus","kingdomKey","phylumKey","classKey","orderKey","familyKey","genusKey",
@@ -262,6 +263,10 @@ namelkupparser <- function(x){
     # ), stringsAsFactors=FALSE)
 }
 
+movecols <- function(x, cols){
+  other <- names(x)[ ! names(x) %in% cols ]
+  x[ , c(cols, other) ]
+}
 
 #' Parse results from call to occurrencelist endpoint
 #'
