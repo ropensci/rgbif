@@ -268,6 +268,11 @@ movecols <- function(x, cols){
   x[ , c(cols, other) ]
 }
 
+backbone_parser <- function(x){
+  tmp <- lapply(x, function(x) if(length(x) == 0) NA else x)
+  data.frame(tmp, stringsAsFactors=FALSE)
+}
+
 #' Parse results from call to occurrencelist endpoint
 #'
 #' @param x A list
