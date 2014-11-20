@@ -252,12 +252,14 @@ taxrank <- function()
 #' @export
 #' @keywords internal
 namelkupparser <- function(x){
-  data.frame(
-    rgbif_compact(
-      x[c('key','nubKey','parentKey','parent','kingdom','phylum',"clazz","order","family",
-          "genus","kingdomKey","phylumKey","classKey","orderKey","familyKey","genusKey",
-          "canonicalName","authorship","nameType","rank","numOccurrences")]
-    ), stringsAsFactors=FALSE)
+  tmp <- x[ ! names(x) %in% c("descriptions","vernacularNames","higherClassificationMap") ]
+  tmp <- lapply(tmp, function(x) if(length(x) == 0) NA else x)
+  data.frame(tmp, stringsAsFactors=FALSE)
+    # rgbif_compact(
+#       x[c('key','nubKey','parentKey','parent','kingdom','phylum',"clazz","order","family",
+#           "genus","kingdomKey","phylumKey","classKey","orderKey","familyKey","genusKey",
+#           "canonicalName","authorship","nameType","rank","numOccurrences")]
+    # ), stringsAsFactors=FALSE)
 }
 
 
@@ -528,3 +530,8 @@ gbifissues <- structure(list(
      "The given type status is impossible to interpret or seriously different from the recommended vocabulary.",
      "Coordinate is the exact 0/0 coordinate, often indicating a bad null coordinate."
   )), .Names = c("code", "issue", "description"), class = "data.frame", row.names = c(NA, -42L))
+
+as_log <- function(x){
+  stopifnot(is.logical(x) || is.null(x))
+  if(is.null(x)) NULL else if(x) 'true' else 'false'
+}

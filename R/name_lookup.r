@@ -47,7 +47,7 @@
 #'
 #' name_lookup(facet='nameType', limit=0)
 #' name_lookup(facet='habitat', limit=0)
-#' name_lookup(facet='datasetKey')
+#' name_lookup(facet='datasetKey', limit=0)
 #' name_lookup(facet='rank', limit=0)
 #' name_lookup(facet='isExtinct', limit=0)
 #' 
@@ -72,7 +72,7 @@
 
 name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL, isExtinct=NULL,
   habitat=NULL, nameType=NULL, datasetKey=NULL, nomenclaturalStatus=NULL,
-  limit=100, start=NULL, facet=NULL, facetMincount=NULL, facetMultiselect=NULL, type = NULL, hl=NULL,
+  limit=100, start=NULL, facet=NULL, facetMincount=NULL, facetMultiselect=NULL, type=NULL, hl=NULL,
   verbose=FALSE, return="all", ...)
 {
   if(!is.null(facetMincount) && inherits(facetMincount, "numeric"))
@@ -84,10 +84,10 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
 
   url <- paste0(gbif_base(), '/species/search')
   args <- rgbif_compact(list(q=query, rank=rank, higherTaxonKey=higherTaxonKey, status=status,
-            isExtinct=isExtinct, habitat=habitat, nameType=nameType, datasetKey=datasetKey,
+            isExtinct=as_log(isExtinct), habitat=as_log(habitat), nameType=nameType, datasetKey=datasetKey,
             nomenclaturalStatus=nomenclaturalStatus, limit=limit, offset=start,
             facetMincount=facetMincount,
-            facetMultiselect=facetMultiselect, hl=hl, type=type))
+            facetMultiselect=as_log(facetMultiselect), hl=as_log(hl), type=type))
   args <- c(args, facetbyname)
   tt <- gbif_GET(url, args, FALSE, ...)
 
