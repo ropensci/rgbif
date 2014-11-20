@@ -19,10 +19,10 @@
 #'  \item PROPARTE_SYNONYM More specific subclass of SYNONYM.
 #'  \item SYNONYM A general synonym, the exact type is unknown.
 #' }
-#' @param isExtinct Filters by extinction status (a boolean, e.g. isExtinct=true)
-#' @param habitat Filters by the habitat, though currently only as boolean marine
-#'      or not-marine (i.e. habitat=true means marine, false means not-marine)
-#' @param nameType	Filters by the name type as one of:
+#' @param isExtinct (logical) Filters by extinction status (e.g. isExtinct=TRUE)
+#' @param habitat (logical) Filters by the habitat, though currently only as boolean marine
+#'      or not-marine (i.e. TRUE=marine, FALSE=not-marine)
+#' @param nameType Filters by the name type as one of:
 #' \itemize{
 #'  \item BLACKLISTED surely not a scientific name.
 #'  \item CANDIDATUS Candidatus is a component of the taxonomic name for a bacterium
@@ -47,12 +47,12 @@
 #'    facetMincount={#} to exclude facets with a count less than {#}, e.g.
 #'    http://bit.ly/1bMdByP only shows the type value 'ACCEPTED' because the other
 #'    statuses have counts less than 7,000,000
-#' @param facetMultiselect	Used in combination with the facet parameter. Set
+#' @param facetMultiselect (logical) Used in combination with the facet parameter. Set
 #'    \code{facetMultiselect=TRUE} to still return counts for values that are not currently
 #'    filtered, e.g. http://bit.ly/19YLXPO still shows all status values even though
 #'    status is being filtered by \code{status=ACCEPTED}
 #' @param type Type of name. One of occurrence, checklist, or metadata.
-#' @param hl Set \code{hl=TRUE} to highlight terms matching the query when in fulltext
+#' @param hl (logical) Set \code{hl=TRUE} to highlight terms matching the query when in fulltext
 #'    search fields. The highlight will be an emphasis tag of class 'gbifH1' e.g. 
 #'    \code{query='plant', hl=TRUE}. Fulltext search fields include: title, keyword, country, 
 #'    publishing country, publishing organization title, hosting organization title, and 
@@ -63,7 +63,7 @@
 #' @param ... Further named parameters, such as \code{query}, \code{path}, etc, passed on to 
 #'    \code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will 
 #'    be combined with \code{\link[httr]{config}}.
-#' @param verbose If TRUE, all data is returned as a list for each element. If
+#' @param verbose (logical) If TRUE, all data is returned as a list for each element. If
 #'    FALSE (default) a subset of the data that is thought to be most essential is
 #'    organized into a data.frame.
 #'
