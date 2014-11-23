@@ -20,7 +20,7 @@ test_that("name_usage returns the correct value", {
 })
 
 test_that("name_usage returns the correct dimensions", {
-  expect_equal(length(tt), 17)
+  expect_equal(length(tt), 20)
   
   expect_equal(length(uu), 4)
   expect_equal(length(uu$results), 6)
