@@ -81,7 +81,7 @@
 #' @param mediatype Media type. Default is NULL, so no filtering on mediatype. Options:
 #'    NULL, 'MovingImage', 'Sound', and 'StillImage'.``
 #' @return A data.frame or list
-#' @description
+#' @details
 #' Note that you can pass in a vector to one of taxonkey, datasetKey, and
 #' catalogNumber parameters in a function call, but not a vector >1 of the three
 #' parameters at the same time

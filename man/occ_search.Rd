@@ -148,6 +148,9 @@ be combined with \code{\link[httr]{config}}.}
 A data.frame or list
 }
 \description{
+Search for GBIF occurrences.
+}
+\details{
 Note that you can pass in a vector to one of taxonkey, datasetKey, and
 catalogNumber parameters in a function call, but not a vector >1 of the three
 parameters at the same time
