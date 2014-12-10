@@ -53,12 +53,13 @@ or south_america}
 \item{geometry}{Searches for occurrences inside a polygon described in Well Known
 Text (WKT) format. A WKT shape written as either POINT, LINESTRING, LINEARRING
 or POLYGON. Example of a polygon: ((30.1 10.1, 20, 20 40, 40 40, 30.1 10.1))
- would be queried as \url{http://bit.ly/HwUSif}.}
+ would be queried as \url{http://bit.ly/1BzNwDq}.}
 
 \item{collectorName}{The person who recorded the occurrence.}
 
 \item{basisOfRecord}{Basis of record, as defined in our BasisOfRecord enum here
-\url{http://bit.ly/19kBGhG}. Acceptable values are:
+\url{http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/BasisOfRecord.html}
+Acceptable values are:
 \itemize{
   \item FOSSIL_SPECIMEN An occurrence record describing a fossilized specimen.
   \item HUMAN_OBSERVATION An occurrence record describing an observation made by

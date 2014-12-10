@@ -18,7 +18,8 @@
 #'    which the occurrence was recorded. See here
 #'    \url{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}
 #' @param basisOfRecord Basis of record, as defined in our BasisOfRecord enum here
-#'    \url{http://bit.ly/19kBGhG}. Acceptable values are:
+#'    \url{http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/BasisOfRecord.html} 
+#'    Acceptable values are:
 #'    \itemize{
 #'      \item FOSSIL_SPECIMEN An occurrence record describing a fossilized specimen.
 #'      \item HUMAN_OBSERVATION An occurrence record describing an observation made by
@@ -53,7 +54,7 @@
 #' @param geometry Searches for occurrences inside a polygon described in Well Known
 #'    Text (WKT) format. A WKT shape written as either POINT, LINESTRING, LINEARRING
 #'    or POLYGON. Example of a polygon: ((30.1 10.1, 20, 20 40, 40 40, 30.1 10.1))
-#'     would be queried as \url{http://bit.ly/HwUSif}.
+#'     would be queried as \url{http://bit.ly/1BzNwDq}.
 #' @param spatialIssues (logical) Includes/excludes occurrence records which contain spatial
 #'    issues (as determined in our record interpretation), i.e. spatialIssues=TRUE
 #'    returns only those records with spatial issues while spatialIssues=FALSE includes
