@@ -273,6 +273,10 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
 
     # check that wkt is proper format and of 1 of 4 allowed types
     geometry <- check_wkt(geometry)
+    
+    # check limit and start params
+    check_vals(limit, "limit")
+    check_vals(start, "start")
 
     # Check synonym if scientificName was given
     if (!is.null(scientificName)) {
@@ -369,15 +373,17 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
   }
 
   params <- list(taxonKey=taxonKey,scientificName=scientificName,datasetKey=datasetKey,catalogNumber=catalogNumber,
-                 collectorName=collectorName,geometry=geometry,country=country,recordNumber=recordNumber,
+                 collectorName=collectorName,geometry=geometry,country=country,
+                 publishingCountry=publishingCountry,recordNumber=recordNumber,
                  q=search,institutionCode=institutionCode,collectionCode=collectionCode,continent=continent,
                  decimalLatitude=decimalLatitude,decimalLongitude=decimalLongitude,depth=depth,year=year,
-                 typeStatus=typeStatus,lastInterpreted=lastInterpreted,mediatype=mediatype)
+                 typeStatus=typeStatus,lastInterpreted=lastInterpreted,mediatype=mediatype,
+                 limit=limit)
   if(!any(sapply(params, length)>0))
-    stop("at least one of the parmaters taxonKey, scientificName, datasetKey, catalogNumber, collectorName, geometry, country, recordNumber, search, institutionCode, collectionCode, decimalLatitude, decimalLongitude, depth, year, typeStatus, lastInterpreted, continent, or mediatype must have a value")
+    stop(sprintf("At least one of the parmaters must have a value:\n%s", possparams()), call. = FALSE)
   iter <- params[which(sapply(params, length)>1)]
   if(length(names(iter))>1)
-    stop("You can have multiple values for only one of taxonKey, scientificName, datasetKey, catalogNumber, collectorName, geometry, country, recordNumber, search, institutionCode, collectionCode, decimalLatitude, decimalLongitude, depth, year, typeStatus, lastInterpreted, or continent")
+    stop(sprintf("You can have multiple values for only one of:\n%s", possparams()), call. = FALSE)
 
   if(length(iter)==0){
     out <- getdata()
@@ -478,4 +484,16 @@ check_limit <- function(x){
     stop("start parameter max is 1 million, use the GBIF web interface for more than 1 million records")
   else
     x
+}
+
+possparams <- function(){
+  "   taxonKey, scientificName, datasetKey, catalogNumber, collectorName, geometry, 
+   country, publishingCountry, recordNumber, search, institutionCode, collectionCode, 
+   decimalLatitude, decimalLongitude, depth, year, typeStatus, lastInterpreted, 
+   continent, or mediatype"
+}
+
+check_vals <- function(x, y){
+  if(is.na(x) || is.null(x)) stop(sprintf("%s can not be NA or NULL", y), call. = FALSE)
+  if(length(x) > 1) stop(sprintf("%s has to be length 1", y), call. = FALSE)
 }
