@@ -1,0 +1,86 @@
+rgbif
+=====
+
+```{r echo=FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  fig.path = "inst/assets/img/"
+)
+```
+
+[![Build Status](https://api.travis-ci.org/ropensci/rgbif.png?branch=master)](https://travis-ci.org/ropensci/rgbif)
+[![Build status](https://ci.appveyor.com/api/projects/status/jili6du1ssi4ktbg/branch/master)](https://ci.appveyor.com/project/sckott/rgbif/branch/master)
+
+`rgbif` gives you access to data from [GBIF](http://www.gbif.org/) via their REST API. GBIF versions their API - we are currently using `v1` of their API. You can no longer use their old API in this package - see `?rgbif-defunct`.
+
+## Installation
+
+```{r eval=FALSE}
+install.packages("rgbif")
+```
+
+Alternatively, install development version
+
+```{r eval=FALSE}
+install.packages("devtools")
+devtools::install_github("ropensci/rgbif")
+```
+
+```{r}
+library("rgbif")
+```
+
+> Note: Windows users have to first install [Rtools](http://cran.r-project.org/bin/windows/Rtools/) to use devtools
+
+## Search for occurrence data
+
+```{r}
+occ_search(scientificName = "Ursus americanus", limit = 50)
+```
+
+Or you can get the taxon key first with `name_backbone()`. Here, we select to only return the occurrence data.
+
+```{r}
+key <- name_backbone(name='Helianthus annuus', kingdom='plants')$speciesKey
+occ_search(taxonKey=key, limit=20)
+```
+
+## Search for many species
+
+Get the keys first with `name_backbone()`, then pass to `occ_search()`
+
+```{r}
+splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
+keys <- sapply(splist, function(x) name_backbone(name=x)$speciesKey, USE.NAMES=FALSE)
+occ_search(taxonKey=keys, limit=5, hasCoordinate=TRUE)
+```
+
+## Maps
+
+Make a simple map of species occurrences.
+
+```{r}
+splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
+keys <- sapply(splist, function(x) name_backbone(name=x)$speciesKey, USE.NAMES=FALSE)
+dat <- occ_search(taxonKey=keys, limit=100, return='data', hasCoordinate=TRUE)
+library('plyr')
+datdf <- ldply(dat)
+gbifmap(datdf)
+```
+
+## Meta
+
+* Please [report any issues or bugs](https://github.com/ropensci/rgbif/issues).
+* License: MIT
+* Get citation information for `rgbif` in R doing `citation(package = 'rgbif')`
+
+- - -
+
+This package is part of a richer suite called [SPOCC Species Occurrence Data](https://github.com/ropensci/spocc), along with several other packages, that provide access to occurrence records from multiple databases.
+
+- - -
+
+[![](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
