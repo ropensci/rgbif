@@ -41,6 +41,9 @@ Note that in \code{\link{occ_search}} we do the paging internally for you, so th
 \item{limit}{Number of records to return. Defaults: For \code{\link{occ_search}} 500, for others
 100. Maximum: 1,000,000 records for \code{\link{occ_search}}, others, don't know yet.}
 
+\item{return}{One of data, meta, or all. If data, a data.frame with the
+data. meta returns the metadata for the entire call. all gives all data back in a list.}
+
 \item{...}{Further named parameters, such as \code{query}, \code{path}, etc, passed on to
 \code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will
 be combined with \code{\link[httr]{config}}.}

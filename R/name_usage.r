@@ -3,6 +3,8 @@
 #' @export
 #' @template occ
 #' @template nameusage
+#' @param return One of data, meta, or all. If data, a data.frame with the
+#'    data. meta returns the metadata for the entire call. all gives all data back in a list.
 #' @return A list of length two. The first element is metadata. The second is 
 #' a data.frame
 #' @references \url{http://www.gbif.org/developer/species#nameUsages}
@@ -91,9 +93,9 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL, datasetKe
   return <- match.arg(return, c('meta','data','all'))
   switch(return,
          meta = data.frame(get_meta(out), stringsAsFactors=FALSE),
-         data = name_usage_parse(out, data),
+         data = name_usage_parse(out),
          all = list(meta=data.frame(get_meta(out), stringsAsFactors=FALSE), 
-                    data=name_usage_parse(out, data))
+                    data=name_usage_parse(out))
   )
 }
 
@@ -127,18 +129,10 @@ getdata <- function(x, key, uuid, shortname, ...){
   gbif_GET(url, args, FALSE, ...)
 }
 
-name_usage_parse <- function(x, y){
+name_usage_parse <- function(x){
   if(has_meta(x)){
-    do.call(rbind.fill, lapply(x$results, nameusageparser, data=y))
+    do.call(rbind.fill, lapply(x$results, nameusageparser))
   } else {
-    nameusageparser(x, data=y)
+    nameusageparser(x)
   }
-}
-
-nameusageparser <- function(z, data){
-  tomove <- c('key','scientificName')
-  tmp <- lapply(z, function(y) if(length(y) == 0) NA else y)
-  df <- data.frame(tmp, stringsAsFactors=FALSE)
-  if( all(tomove %in% names(df)) ) movecols(df, tomove) else df
-  # if(data=="all") movecols(df, c('key','scientificName')) else df
 }

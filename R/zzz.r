@@ -265,11 +265,11 @@ namelkupparser <- function(x){
 
 
 nameusageparser <- function(z){
+  tomove <- c('key','scientificName')
   tmp <- lapply(z, function(y) if(length(y) == 0) NA else y)
   df <- data.frame(tmp, stringsAsFactors=FALSE)
-  movecols(df, c('key','scientificName'))
+  if( all(tomove %in% names(df)) ) movecols(df, tomove) else df
 }
-
 
 movecols <- function(x, cols){
   other <- names(x)[ ! names(x) %in% cols ]

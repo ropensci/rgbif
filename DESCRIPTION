@@ -9,7 +9,7 @@ Description: A programmatic interface to the Web Service methods
     occurrence records.
 Version: 0.7.7.99
 License: MIT + file LICENSE
-Date: 2014-12-10
+Date: 2014-12-11
 Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com"),
     person("Karthik", "Ram", role = "aut",
