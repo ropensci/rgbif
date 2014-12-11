@@ -1,9 +1,9 @@
 #' Get elevation for lat/long points from a data.frame or list of points.
 #'
-#' @import httr plyr assertthat
+#' @import httr plyr
 #' @importFrom stringr str_trim
 #' @importFrom data.table rbindlist
-#' 
+#'
 #' @param input A data.frame of lat/long data. There must be columns decimalLatitude and
 #' decimalLongitude.
 #' @param latitude A vector of latitude's. Must be the same length as the longitude
@@ -11,10 +11,10 @@
 #' @param longitude A vector of longitude's. Must be the same length as the latitude
 #' vector.
 #' @param latlong A vector of lat/long pairs. See examples.
-#' @param ... Further named parameters, such as \code{query}, \code{path}, etc, passed on to 
-#' \code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will be 
+#' @param ... Further named parameters, such as \code{query}, \code{path}, etc, passed on to
+#' \code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will be
 #' combined with \code{\link[httr]{config}}.
-#' 
+#'
 #' @return A new column named elevation in the supplied data.frame or a vector with elevation of
 #' each location in meters.
 #' @references Uses the Google Elevation API at the following link
@@ -31,7 +31,7 @@
 #' # Pass in lat/long pairs in a single vector
 #' pairs <- list(c(31.8496,-110.576060), c(29.15503,-103.59828))
 #' elevation(latlong=pairs)
-#' 
+#'
 #' # Pass on options to httr
 #' library('httr')
 #' pairs <- list(c(31.8496,-110.576060), c(29.15503,-103.59828))
@@ -61,7 +61,7 @@ elevation <- function(input=NULL, latitude=NULL, longitude=NULL, latlong=NULL, .
       args <- rgbif_compact(list(locations=locations[[i]], sensor='false'))
       tt <- GET(url, query=args, ...)
       stop_for_status(tt)
-      assert_that(tt$headers$`content-type`=='application/json; charset=UTF-8')
+      stopifnot(tt$headers$`content-type`=='application/json; charset=UTF-8')
       res <- content(tt, as = 'text', encoding = "UTF-8")
       out <- jsonlite::fromJSON(res, FALSE)
 
@@ -73,14 +73,14 @@ elevation <- function(input=NULL, latitude=NULL, longitude=NULL, latlong=NULL, .
   }
 
   if(is(input, "data.frame")){
-    assert_that(all(c('decimalLatitude','decimalLongitude') %in% names(input)))
+    stopifnot(all(c('decimalLatitude','decimalLongitude') %in% names(input)))
     names(input)[names(input) %in% 'decimalLatitude'] <- "latitude"
     names(input)[names(input) %in% 'decimalLongitude'] <- "longitude"
     getdata(input)
   } else if(is.null(latlong))
   {
     if(!is.null(input)) stop("If you use latitude and longitude, input must be left as default")
-    assert_that(length(latitude)==length(longitude))
+    stopifnot(length(latitude)==length(longitude))
     dat <- data.frame(latitude=latitude, longitude=longitude, stringsAsFactors=FALSE)
     getdata(dat)
   } else

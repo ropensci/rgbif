@@ -12,9 +12,9 @@
 #' }
 #' For split and split_expand, values in cells become y ("yes") or n ("no").
 #'
-#' @references 
+#' @references
 #' \url{http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html}
-#' 
+#'
 #' @details See also the vignette \code{Cleaning data using GBIF issues}.
 #'
 #' Note that you can also query based on issues, e.g.,
@@ -66,7 +66,7 @@
 #' }
 
 occ_issues <- function(.data, ..., mutate=NULL){
-  assert_that(is(.data, "gbif"))
+  stopifnot(is(.data, "gbif"))
   tmp <- .data$data
 
   if(!length(dots(...)) == 0){

@@ -1,9 +1,9 @@
 #' Search for GBIF occurrences.
 #'
 #' @export
-#' @import httr plyr assertthat
+#' @import httr plyr
 #' @importFrom XML getNodeSet xmlAttrs xmlSApply xmlValue htmlParse xpathApply xmlToList
-#' 
+#'
 #' @template occsearch
 #' @template occ
 #' @param x Output from a call to occ_search
@@ -79,7 +79,7 @@
 #' splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
 #' keys <- sapply(splist, function(x) name_suggest(x)$key[1], USE.NAMES=FALSE)
 #' occ_search(taxonKey=keys, limit=5, return='data')
-#' 
+#'
 #' # Search using a synonym name
 #' #  Note that you'll see a message printing out that the accepted name will be used
 #' occ_search(scientificName = 'Pulsatilla patens', fields = c('name','scientificName'), limit=5)
@@ -91,7 +91,7 @@
 #' ## in well known text format
 #' occ_search(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))', limit=20)
 #' key <- name_suggest(q='Aesculus hippocastanum')$key[1]
-#' occ_search(taxonKey=key, geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))', 
+#' occ_search(taxonKey=key, geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))',
 #'    limit=20)
 #' ## or using bounding box, converted to WKT internally
 #' occ_search(geometry=c(-125.0,38.4,-121.8,40.9), limit=20)
@@ -175,18 +175,18 @@
 #' occ_search(mediatype = 'StillImage', return='media')
 #' occ_search(mediatype = 'MovingImage', return='media')
 #' occ_search(mediatype = 'Sound', return='media')
-#' 
+#'
 #' # Query based on issues - see Details for options
 #' ## one issue
-#' occ_search(taxonKey=1, issue='DEPTH_UNLIKELY', fields = 
+#' occ_search(taxonKey=1, issue='DEPTH_UNLIKELY', fields =
 #'    c('name','key','decimalLatitude','decimalLongitude','depth'))
 #' ## two issues
 #' occ_search(taxonKey=1, issue=c('DEPTH_UNLIKELY','COORDINATE_ROUNDED'))
-#' # Show all records in the Arizona State Lichen Collection that cant be matched to the GBIF 
+#' # Show all records in the Arizona State Lichen Collection that cant be matched to the GBIF
 #' # backbone properly:
-#' occ_search(datasetKey='84c0e1a0-f762-11e1-a439-00145eb45e9a', 
+#' occ_search(datasetKey='84c0e1a0-f762-11e1-a439-00145eb45e9a',
 #'    issue=c('TAXON_MATCH_NONE','TAXON_MATCH_HIGHERRANK'))
-#'    
+#'
 #' # Parsing output by issue
 #' (res <- occ_search(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))', limit = 50))
 #' ## what do issues mean, can print whole table, or search for matches
@@ -205,7 +205,7 @@
 #' ### split, expand, and remove an issue class
 #' res %>% occ_issues(-gass84, mutate = "split_expand")
 #' }
-#' 
+#'
 #' \donttest{
 #' # If you try multiple values for two different parameters you are wacked on the hand
 #' occ_search(taxonKey=c(2482598,2492010), collectorName=c("smith","BJ Stacey"))
@@ -273,7 +273,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
 
     # check that wkt is proper format and of 1 of 4 allowed types
     geometry <- check_wkt(geometry)
-    
+
     # Check synonym if scientificName was given
     if (!is.null(scientificName)) {
       sciname_old <- scientificName
@@ -283,7 +283,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
         message(sprintf("%s is a synonym of %s \n the latter used & will include synonym records", sciname_old, scientificName))
       }
     }
-    
+
     # Make arg list
     args <- rgbif_compact(list(taxonKey=taxonKey, scientificName=scientificName, country=country,
       publishingCountry=publishingCountry, hasCoordinate=hasCoordinate, typeStatus=typeStatus, recordNumber=recordNumber,
@@ -294,7 +294,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
       collectionCode=collectionCode, spatialIssues=spatialIssues, q=search, mediaType=mediatype,
       limit=check_limit(as.integer(limit)), offset=check_limit(as.integer(start))))
     args <- c(args, parse_issues(issue))
-    argscoll <<- args 
+    argscoll <<- args
 
     iter <- 0
     sumreturned <- 0
@@ -302,7 +302,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
     while(sumreturned < limit){
       iter <- iter + 1
       tt <- gbif_GET(url, args, FALSE, ...)
-      
+
       # if no results, assign count var with 0
       if(identical(tt$results, list())) tt$count <- 0
 
@@ -394,13 +394,13 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
 
   if(is(out, "data.frame")){
     class(out) <- c('data.frame','gbif')
-  } else { 
+  } else {
     class(out) <- "gbif"
     attr(out, 'type') <- if(length(iter)==0) "single" else "many"
   }
   attr(out, 'return') <- return
   attr(out, 'args') <- argscoll
-  
+
   return(out)
 }
 
@@ -417,7 +417,7 @@ geometry_handler <- function(x){
 #' @rdname occ_search
 print.gbif <- function (x, ..., n = 10)
 {
-  if(attr(x, "type") == "single" & all(c('meta','data','hierarchy','media') %in% names(x))){  
+  if(attr(x, "type") == "single" & all(c('meta','data','hierarchy','media') %in% names(x))){
     cat(rgbif_wrap(sprintf("Records found [%s]", x$meta$count)), "\n")
     cat(rgbif_wrap(sprintf("Records returned [%s]", NROW(x$data))), "\n")
     cat(rgbif_wrap(sprintf("No. unique hierarchies [%s]", length(x$hierarchy))), "\n")
@@ -446,12 +446,12 @@ print.gbif <- function (x, ..., n = 10)
     attr(x, "return") <- NULL
     print(x)
   }
-} 
+}
 
 pasteargs <- function(b){
   arrrgs <- attr(b, "args")
   arrrgs <- rgbif_compact(arrrgs)
-  tt <- list(); for(i in seq_along(arrrgs)){ tt[[i]] <- sprintf("%s=%s", names(arrrgs)[i], 
+  tt <- list(); for(i in seq_along(arrrgs)){ tt[[i]] <- sprintf("%s=%s", names(arrrgs)[i],
           if(length(arrrgs[[i]]) > 1) paste0(arrrgs[[i]], collapse = ",") else arrrgs[[i]]) }
   paste0(tt, collapse = ", ")
 }
@@ -459,7 +459,7 @@ pasteargs <- function(b){
 pastemax <- function(z, type='counts', n=10){
   xnames <- names(z)
   xnames <- sapply(xnames, function(x) if(nchar(x)>8) paste0(substr(x, 1, 6), "..", collapse = "") else x, USE.NAMES = FALSE)
-  yep <- switch(type, 
+  yep <- switch(type,
          counts = vapply(z, function(y) y$meta$count, numeric(1), USE.NAMES = FALSE),
          returned = vapply(z, function(y) NROW(y$data), numeric(1), USE.NAMES = FALSE),
          hier = vapply(z, function(y) length(y$hierarchy), numeric(1), USE.NAMES = FALSE),
@@ -474,7 +474,7 @@ parse_issues <- function(x){
 }
 
 check_limit <- function(x){
-  if(x > 1000000L) 
+  if(x > 1000000L)
     stop("start parameter max is 1 million, use the GBIF web interface for more than 1 million records")
   else
     x

@@ -397,9 +397,9 @@ gbifxmlToDataFrame <- function(doc, format) {
 gbif_bbox2wkt <- function(minx=NA, miny=NA, maxx=NA, maxy=NA, bbox=NULL){
   if(is.null(bbox)) bbox <- c(minx, miny, maxx, maxy)
 
-  assert_that(length(bbox)==4) #check for 4 digits
-  assert_that(noNA(bbox)) #check for NAs
-  assert_that(is.numeric(as.numeric(bbox))) #check for numeric-ness
+  stopifnot(length(bbox)==4) #check for 4 digits
+  stopifnot(noNA(bbox)) #check for NAs
+  stopifnot(is.numeric(as.numeric(bbox))) #check for numeric-ness
   paste('POLYGON((',
         sprintf('%s %s',bbox[1],bbox[2]), ',', sprintf(' %s %s',bbox[3],bbox[2]), ',',
         sprintf(' %s %s',bbox[3],bbox[4]), ',', sprintf(' %s %s',bbox[1],bbox[4]), ',',
@@ -412,7 +412,7 @@ gbif_bbox2wkt <- function(minx=NA, miny=NA, maxx=NA, maxy=NA, bbox=NULL){
 #' @rdname gbif_bbox2wkt
 
 gbif_wkt2bbox <- function(wkt=NULL){
-  assert_that(!is.null(wkt))
+  stopifnot(!is.null(wkt))
   tmp <- bbox(readWKT(wkt))
   as.vector(tmp)
 }
@@ -444,7 +444,7 @@ gbif_GET <- function(url, args, parse=FALSE, ...){
   temp <- GET(url, query=args, ...)
   if(temp$status_code == 204) stop("Status: 204 - not found", call. = FALSE)
   if(temp$status_code > 200) stop(error_parse(content(temp, as = "text")), call. = FALSE)
-  assert_that(temp$headers$`content-type`=='application/json')
+  stopifnot(temp$headers$`content-type`=='application/json')
   res <- content(temp, as = 'text', encoding = "UTF-8")
   jsonlite::fromJSON(res, parse)
 }
@@ -452,7 +452,7 @@ gbif_GET <- function(url, args, parse=FALSE, ...){
 gbif_GET_content <- function(url, args, ...){
   temp <- GET(url, query=args, ...)
   if(temp$status_code > 200) warning(content(temp, as = "text"))
-  assert_that(temp$headers$`content-type`=='application/json')
+  stopifnot(temp$headers$`content-type`=='application/json')
   content(temp, as = 'text', encoding = "UTF-8")
 }
 
@@ -469,15 +469,15 @@ error_parse <- function(x){
 }
 
 #' Table of GBIF issues, with codes used in data output, full issue name, and descriptions.
-#' 
+#'
 #' Table has the following fields:
-#' 
+#'
 #' \itemize{
 #'   \item code. Code for issue, making viewing data easier.
-#'   \item issue. Full name of the issue.  
+#'   \item issue. Full name of the issue.
 #'   \item description. Description of the issue.
 #' }
-#' 
+#'
 #' @export
 #' @usage gbif_issues()
 #' @source \url{http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html}
