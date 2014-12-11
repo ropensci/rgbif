@@ -7,7 +7,15 @@
 #' @param countries (numeric) Number of countries to facet on, or a vector of country names
 #' @param removezeros (logical) Default is FALSE
 #' @export
-#' @examples \dontrun{
+#' @examples 
+#' \donttest{
+#' # Select number of countries to facet on
+#' count_facet(by='country', countries=3, removezeros = TRUE)
+#' # Or, pass in country names
+#' count_facet(by='country', countries='AR', removezeros = TRUE)
+#' }
+#' 
+#' \dontrun{
 #' spplist <- c('Geothlypis trichas','Tiaris olivacea','Pterodroma axillaris',
 #'              'Calidris ferruginea','Pterodroma macroptera','Gallirallus australis',
 #'              'Falco cenchroides','Telespiza cantans','Oreomystis bairdi',
@@ -15,7 +23,6 @@
 #' keys <- sapply(spplist, function(x) name_backbone(x, rank="species")$usageKey)
 #' count_facet(keys, by='country', countries=3, removezeros = TRUE)
 #' count_facet(keys, by='country', countries=3, removezeros = FALSE)
-#' count_facet(by='country', countries=3, removezeros = TRUE)
 #' count_facet(by='country', countries=20, removezeros = TRUE)
 #' 
 #' # Pass in country names instead
@@ -33,9 +40,7 @@
 #' 
 #' # by basisOfRecord
 #' count_facet(by="basisOfRecord")
-#' }
 #' 
-#' @examples \donttest{
 #' # throws error, you can't use basisOfRecord and keys in the same call
 #' count_facet(keys, by="basisOfRecord")
 #' }

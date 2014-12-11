@@ -8,7 +8,8 @@
 #' @template occ
 #' @param x Output from a call to occ_search
 #' @param n Number of rows of the data to print.
-#' @examples \dontrun{
+#' @examples 
+#' \donttest{
 #' # Search by species name, using \code{\link{name_backbone}} first to get key
 #' (key <- name_suggest(q='Helianthus annuus', rank='species')$key[1])
 #' occ_search(taxonKey=key, limit=2)
@@ -17,8 +18,10 @@
 #' occ_search(taxonKey=key, limit=20)
 #'
 #' # Return just metadata for the search
-#' occ_search(taxonKey=key, return='meta')
-#'
+#' occ_search(taxonKey=key, limit=100, return='meta')
+#' }
+#' 
+#' \dontrun{
 #' # Instead of getting a taxon key first, you can search for a name directly
 #' ## However, note that using this approach (with \code{scientificName="..."})
 #' ## you are getting synonyms too. The results for using \code{scientifcName} and
@@ -204,9 +207,7 @@
 #' res %>% occ_issues(mutate = "split_expand")
 #' ### split, expand, and remove an issue class
 #' res %>% occ_issues(-gass84, mutate = "split_expand")
-#' }
 #'
-#' \donttest{
 #' # If you try multiple values for two different parameters you are wacked on the hand
 #' occ_search(taxonKey=c(2482598,2492010), collectorName=c("smith","BJ Stacey"))
 #'

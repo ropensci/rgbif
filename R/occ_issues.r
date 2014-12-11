@@ -28,13 +28,20 @@
 #' we will remove the associated records from the \code{hierarchy} and \code{media}
 #' elements as they are remove from the \code{data} element.
 #'
-#' @examples \donttest{
-#' # Parsing output by issue
-#' (res <- occ_search(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))', limit = 50))
-#'
+#' @examples 
+#' \donttest{
 #' ## what do issues mean, can print whole table, or search for matches
 #' head(gbif_issues())
 #' gbif_issues()[ gbif_issues()$code %in% c('cdround','cudc','gass84','txmathi'), ]
+#' 
+#' # compare out data to after occ_issues use
+#' (out <- occ_search(limit=100))
+#' out %>% occ_issues(cudc)
+#' }
+#' 
+#' \dontrun{
+#' # Parsing output by issue
+#' (res <- occ_search(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))', limit = 50))
 #'
 #' ## or parse issues in various ways
 #' ### inlude only rows with gass84 issue

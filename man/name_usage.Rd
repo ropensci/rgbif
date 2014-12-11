@@ -77,16 +77,17 @@ loop over many options for the \code{data} parameter, just use an \code{lapply}
 family function, or a for loop, etc.
 }
 \examples{
-\dontrun{
-# All name usages
-name_usage()
-
+\donttest{
 # A single name usage
 name_usage(key=1)
 
 # Name usage for a taxonomic name
-name_usage(name='Puma concolor')
 name_usage(name='Puma', rank="GENUS")
+}
+
+\dontrun{
+# All name usages
+name_usage()
 
 # References for a name usage
 name_usage(key=3119195, data='references')
@@ -113,6 +114,10 @@ name_usage(key=3119195, language="FRENCH", data='vernacularNames')
 ## here, print progress, notice the progress bar
 library('httr')
 res <- name_usage(name='Puma concolor', limit=300, config=progress())
+
+### Not working right now for some unknown reason
+# Select many options
+name_usage(key=3119195, data=c('images','synonyms'))
 }
 }
 \references{

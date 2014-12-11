@@ -27,13 +27,15 @@ Search for catalog numbers, collection codes, collector names, and institution
 codes.
 }
 \examples{
-\dontrun{
+\donttest{
 # catalog number
 occ_metadata(type = "catalogNumber", q=122)
 
 # collection code
 occ_metadata(type = "collectionCode", q=12)
+}
 
+\dontrun{
 # institution code
 occ_metadata(type = "institutionCode", q='GB')
 
@@ -50,6 +52,9 @@ occ_metadata(type = "cat", q=122)
 library('httr')
 occ_metadata(type = "cat", q=122, config=verbose())
 occ_metadata(type = "cat", q=122, config=progress())
+
+# FAILS: collector name - collector_name endpoint down on 2014-04-23
+occ_metadata(type = "collector_name", q='jane')
 }
 }
 \references{

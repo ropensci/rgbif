@@ -17,6 +17,10 @@ View highlighted terms in name results from GBIF.
 }
 \examples{
 \donttest{
+gbif_names(name_lookup(query='snake', hl=TRUE), browse=FALSE)
+}
+
+\dontrun{
 (out <- name_lookup(query='canada', hl=TRUE, limit=5))
 gbif_names(out)
 gbif_names(name_lookup(query='snake', hl=TRUE))

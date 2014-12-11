@@ -28,16 +28,18 @@
 #' over each option making separate requests. This has been removed. You can still 
 #' loop over many options for the \code{data} parameter, just use an \code{lapply}
 #' family function, or a for loop, etc. 
-#' @examples \dontrun{
-#' # All name usages
-#' name_usage()
-#' 
+#' @examples 
+#' \donttest{
 #' # A single name usage
 #' name_usage(key=1)
 #' 
 #' # Name usage for a taxonomic name
-#' name_usage(name='Puma concolor')
 #' name_usage(name='Puma', rank="GENUS")
+#' }
+#' 
+#' \dontrun{
+#' # All name usages
+#' name_usage()
 #' 
 #' # References for a name usage
 #' name_usage(key=3119195, data='references')
@@ -64,9 +66,7 @@
 #' ## here, print progress, notice the progress bar
 #' library('httr')
 #' res <- name_usage(name='Puma concolor', limit=300, config=progress())
-#' }
 #' 
-#' @examples \donttest{
 #' ### Not working right now for some unknown reason
 #' # Select many options
 #' name_usage(key=3119195, data=c('images','synonyms'))
@@ -92,15 +92,15 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL, datasetKe
   # select output
   return <- match.arg(return, c('meta','data','all'))
   switch(return,
-         meta = data.frame(get_meta(out), stringsAsFactors=FALSE),
+         meta = get_meta(out),
          data = name_usage_parse(out),
-         all = list(meta=data.frame(get_meta(out), stringsAsFactors=FALSE), 
+         all = list(meta=get_meta(out), 
                     data=name_usage_parse(out))
   )
 }
 
 get_meta <- function(x){
-  if(has_meta(x)) x[c('offset','limit','endOfRecords')] else NA
+  if(has_meta(x)) data.frame(x[c('offset','limit','endOfRecords')], stringsAsFactors = FALSE) else NA
 }
 
 has_meta <- function(x) any(c('offset','limit','endOfRecords') %in% names(x))

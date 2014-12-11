@@ -20,6 +20,13 @@ publishingCountry.}
 Facetted count occurrence search.
 }
 \examples{
+\donttest{
+# Select number of countries to facet on
+count_facet(by='country', countries=3, removezeros = TRUE)
+# Or, pass in country names
+count_facet(by='country', countries='AR', removezeros = TRUE)
+}
+
 \dontrun{
 spplist <- c('Geothlypis trichas','Tiaris olivacea','Pterodroma axillaris',
              'Calidris ferruginea','Pterodroma macroptera','Gallirallus australis',
@@ -28,7 +35,6 @@ spplist <- c('Geothlypis trichas','Tiaris olivacea','Pterodroma axillaris',
 keys <- sapply(spplist, function(x) name_backbone(x, rank="species")$usageKey)
 count_facet(keys, by='country', countries=3, removezeros = TRUE)
 count_facet(keys, by='country', countries=3, removezeros = FALSE)
-count_facet(by='country', countries=3, removezeros = TRUE)
 count_facet(by='country', countries=20, removezeros = TRUE)
 
 # Pass in country names instead
@@ -46,6 +52,9 @@ dcast(out, .id ~ georeferenced)
 
 # by basisOfRecord
 count_facet(by="basisOfRecord")
+
+# throws error, you can't use basisOfRecord and keys in the same call
+count_facet(keys, by="basisOfRecord")
 }
 }
 

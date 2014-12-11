@@ -29,11 +29,14 @@
 #' 
 #' @references \url{http://www.gbif.org/developer/species#searching}
 #' 
-#' @examples \dontrun{
+#' @examples 
+#' \donttest{
 #' name_backbone(name='Helianthus annuus', kingdom='plants')
 #' name_backbone(name='Helianthus', rank='genus', kingdom='plants')
 #' name_backbone(name='Poa', rank='genus', family='Poaceae')
+#' }
 #' 
+#' \dontrun{
 #' # Verbose - gives back alternatives
 #' name_backbone(name='Helianthus annuus', kingdom='plants', verbose=TRUE)
 #' 
@@ -48,9 +51,7 @@
 #' # Pass on httr options
 #' library('httr')
 #' name_backbone(name='Oenante', config=timeout(1))
-#' }
 #' 
-#' @examples \donttest{
 #' # Throws error because a name is required in the function call
 #' name_backbone(kingdom='plants')
 #' }

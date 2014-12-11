@@ -16,13 +16,16 @@
 #'
 #' @references \url{http://www.gbif.org/developer/occurrence#search}
 #'
-#' @examples \dontrun{
+#' @examples 
+#' \donttest{
 #' # catalog number
 #' occ_metadata(type = "catalogNumber", q=122)
 #'
 #' # collection code
 #' occ_metadata(type = "collectionCode", q=12)
-#'
+#' }
+#' 
+#' \dontrun{
 #' # institution code
 #' occ_metadata(type = "institutionCode", q='GB')
 #'
@@ -39,10 +42,8 @@
 #' library('httr')
 #' occ_metadata(type = "cat", q=122, config=verbose())
 #' occ_metadata(type = "cat", q=122, config=progress())
-#' }
 #'
-#' @examples \donttest{
-#' # collector name - collector_name endpoint down on 2014-04-23
+#' # FAILS: collector name - collector_name endpoint down on 2014-04-23
 #' occ_metadata(type = "collector_name", q='jane')
 #' }
 

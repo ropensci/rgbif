@@ -14,11 +14,9 @@ occ_issues_lookup(issue = NULL, code = NULL)
 Lookup occurrence issue definitions and short codes
 }
 \examples{
-\donttest{
 occ_issues_lookup(issue = 'CONTINENT_COUNTRY_MISMATCH')
 occ_issues_lookup(issue = 'MULTIMEDIA_DATE_INVALID')
 occ_issues_lookup(issue = 'ZERO_COORDINATE')
 occ_issues_lookup(code = 'cdiv')
-}
 }
 
