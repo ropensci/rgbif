@@ -86,16 +86,15 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL, datasetKe
       choices=c('all', 'verbatim', 'name', 'parents', 'children',
                 'related', 'synonyms', 'descriptions',
                 'distributions', 'images', 'references', 'speciesProfiles',
-                'vernacularNames', 'typeSpecimens', 'root'), several.ok=TRUE)
+                'vernacularNames', 'typeSpecimens', 'root'), several.ok=FALSE)
   # if(length(data)==1) getdata(data) else lapply(data, getdata)
-  out <- getdata(data, key, uuid, shortname, ...)
+  out <- getdata(data, key, uuid, shortname, args, ...)
   # select output
   return <- match.arg(return, c('meta','data','all'))
   switch(return,
          meta = get_meta(out),
          data = name_usage_parse(out),
-         all = list(meta=get_meta(out), 
-                    data=name_usage_parse(out))
+         all = list(meta=get_meta(out), data=name_usage_parse(out))
   )
 }
 
@@ -105,7 +104,7 @@ get_meta <- function(x){
 
 has_meta <- function(x) any(c('offset','limit','endOfRecords') %in% names(x))
 
-getdata <- function(x, key, uuid, shortname, ...){
+getdata <- function(x, key, uuid, shortname, args, ...){
   if(!x == 'all' && is.null(key))
     stop('You must specify a key if data does not equal "all"')
   
