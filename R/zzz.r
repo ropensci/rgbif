@@ -553,3 +553,5 @@ as_log <- function(x){
   stopifnot(is.logical(x) || is.null(x))
   if(is.null(x)) NULL else if(x) 'true' else 'false'
 }
+
+noNA <- function (x) !(any(is.na(x)))
