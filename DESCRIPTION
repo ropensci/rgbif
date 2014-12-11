@@ -39,4 +39,6 @@ Imports:
 Suggests:
     roxygen2,
     testthat,
-    knitr
+    knitr,
+    reshape2,
+    plyr
