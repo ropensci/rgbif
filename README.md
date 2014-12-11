@@ -183,11 +183,11 @@ gbifmap(datdf)
 * This package is part of the [rOpenSci](http://ropensci.org/packages) project.
 * Get citation information for `rgbif` in R doing `citation(package = 'rgbif')`
 
----
+- - -
 
 This package is part of a richer suite called [SPOCC Species Occurrence Data](https://github.com/ropensci/spocc), along with several other packages, that provide access to occurrence records from multiple databases. We recommend using SPOCC as the primary R interface to rgbif unless your needs are limited to this single source.
 
----
+- - -
 
 
 [![](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
