@@ -5,7 +5,7 @@
 \usage{
 name_usage(key = NULL, name = NULL, data = "all", language = NULL,
   datasetKey = NULL, uuid = NULL, sourceId = NULL, rank = NULL,
-  shortname = NULL, start = NULL, limit = 100, ...)
+  shortname = NULL, start = NULL, limit = 100, return = "all", ...)
 }
 \arguments{
 \item{key}{(numeric) A GBIF key for a taxon}
@@ -47,20 +47,31 @@ be combined with \code{\link[httr]{config}}.}
 }
 \value{
 A list of length two. The first element is metadata. The second is
-either a data.frame (verbose=FALSE, default) or a list (verbose=TRUE)
+a data.frame
 }
 \description{
+Lookup details for specific names in all taxonomies in GBIF.
+}
+\details{
 This service uses fuzzy lookup so that you can put in partial names and
 you should get back those things that match. See examples below.
 
 This function is different from \code{name_lookup} in that that function
-searches for names, while this function requires that you already have a key.
+searches for names. This function encompasses a bunch of API endpoints,
+most of which require that you already have a taxon key, but there is one
+endpoint that allows name searches (see examples below).
 
-Note that verbatim hasn't been working
+Note that \code{data="verbatim"} hasn't been working.
 
 Options for the data parameter are: 'all', 'verbatim', 'name', 'parents', 'children',
 'related', 'synonyms', 'descriptions','distributions', 'images',
 'references', 'speciesProfiles', 'vernacularNames', 'typeSpecimens', 'root'
+
+This function used to be vectorized with respect to the \code{data} parameter,
+where you could pass in multiple values and the function internally loops
+over each option making separate requests. This has been removed. You can still
+loop over many options for the \code{data} parameter, just use an \code{lapply}
+family function, or a for loop, etc.
 }
 \examples{
 \dontrun{
@@ -80,8 +91,8 @@ name_usage(key=3119195, data='references')
 # Species profiles, descriptions
 name_usage(key=3119195, data='speciesProfiles')
 name_usage(key=3119195, data='descriptions')
-res <- name_usage(key=2435099, data='children')
-sapply(res$results, "[[", "scientificName")
+name_usage(key=2435099, data='children')
+res$data$scientificName
 
 # Vernacular names for a name usage
 name_usage(key=3119195, data='vernacularNames')
@@ -96,6 +107,7 @@ name_usage(datasetKey="d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
 name_usage(key=3119195, language="FRENCH", data='vernacularNames')
 
 # Pass on httr options
+## here, print progress, notice the progress bar
 library('httr')
 res <- name_usage(name='Puma concolor', limit=300, config=progress())
 }

@@ -263,6 +263,14 @@ namelkupparser <- function(x){
     # ), stringsAsFactors=FALSE)
 }
 
+
+nameusageparser <- function(z){
+  tmp <- lapply(z, function(y) if(length(y) == 0) NA else y)
+  df <- data.frame(tmp, stringsAsFactors=FALSE)
+  movecols(df, c('key','scientificName'))
+}
+
+
 movecols <- function(x, cols){
   other <- names(x)[ ! names(x) %in% cols ]
   x[ , c(cols, other) ]
