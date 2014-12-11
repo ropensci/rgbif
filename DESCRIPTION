@@ -40,5 +40,4 @@ Suggests:
     roxygen2,
     testthat,
     knitr,
-    reshape2,
-    plyr
+    reshape2
