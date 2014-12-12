@@ -479,7 +479,14 @@ parse_issues <- function(x){
 
 check_limit <- function(x){
   if(x > 1000000L)
-    stop("start parameter max is 1 million, use the GBIF web interface for more than 1 million records")
+    stop("
+      Maximum request size is 1 million. As a solution, either use the 
+      GBIF web interface, or in R, split up your request in a way that 
+      makes sense for your use case. E.g., you could split up your
+      request into geographic chunks, by country or by bounding box. Or 
+      you could split up your request taxonomically, e.g., if you want
+      data for all species in a large family of birds, split up by 
+      some higher taxonomic level, like tribe or genus.")
   else
     x
 }
