@@ -405,10 +405,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
     class(out) <- "gbif"
     attr(out, 'type') <- if(length(iter)==0) "single" else "many"
   }
-  attr(out, 'return') <- return
-  attr(out, 'args') <- argscoll
-
-  return(out)
+  structure(out, return=return, args=argscoll)
 }
 
 geometry_handler <- function(x){
