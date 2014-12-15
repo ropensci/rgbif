@@ -451,7 +451,7 @@ NULL
 gbif_GET <- function(url, args, parse=FALSE, ...){
   temp <- GET(url, query=args, ...)
   if(temp$status_code == 204) stop("Status: 204 - not found", call. = FALSE)
-  if(temp$status_code > 200) stop(error_parse(content(temp, as = "text")), call. = FALSE)
+  if(temp$status_code > 200) stop(http_status(x)$message, call. = FALSE)
   stopifnot(temp$headers$`content-type`=='application/json')
   res <- content(temp, as = 'text', encoding = "UTF-8")
   jsonlite::fromJSON(res, parse)
@@ -466,15 +466,16 @@ gbif_GET_content <- function(url, args, ...){
 
 gbif_base <- function() 'http://api.gbif.org/v1'
 
-error_parse <- function(x){
-  if(grepl("html", x)){
-    parsed <- XML::htmlParse(x)
-    aslist <- XML::xpathApply(parsed, "//p", XML::xmlToList)
-    aslist[sapply(aslist, "[[", "b") == "message"][[1]]$u
-  } else {
-    x
-  }
-}
+# error_parse <- function(x){
+#   http_status(x)$message
+# #   if(grepl("html", x)){
+# #     parsed <- XML::htmlParse(x)
+# #     # aslist <- XML::xpathApply(parsed, "//p", XML::xmlToList)
+# #     # aslist[sapply(aslist, "[[", "b") == "message"][[1]]$u
+# #   } else {
+# #     x
+# #   }
+# }
 
 #' Table of GBIF issues, with codes used in data output, full issue name, and descriptions.
 #'
