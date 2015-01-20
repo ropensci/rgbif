@@ -8,7 +8,7 @@
 #' @template occ
 #' @param x Output from a call to occ_search
 #' @param n Number of rows of the data to print.
-#' @examples 
+#' @examples
 #' \donttest{
 #' # Search by species name, using \code{\link{name_backbone}} first to get key
 #' (key <- name_suggest(q='Helianthus annuus', rank='species')$key[1])
@@ -20,7 +20,7 @@
 #' # Return just metadata for the search
 #' occ_search(taxonKey=key, limit=100, return='meta')
 #' }
-#' 
+#'
 #' \dontrun{
 #' # Instead of getting a taxon key first, you can search for a name directly
 #' ## However, note that using this approach (with \code{scientificName="..."})
@@ -274,7 +274,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
 
     # check that wkt is proper format and of 1 of 4 allowed types
     geometry <- check_wkt(geometry)
-    
+
     # check limit and start params
     check_vals(limit, "limit")
     check_vals(start, "start")
@@ -480,21 +480,21 @@ parse_issues <- function(x){
 check_limit <- function(x){
   if(x > 1000000L)
     stop("
-      Maximum request size is 1 million. As a solution, either use the 
-      GBIF web interface, or in R, split up your request in a way that 
+      Maximum request size is 1 million. As a solution, either use the
+      GBIF web interface, or in R, split up your request in a way that
       makes sense for your use case. E.g., you could split up your
-      request into geographic chunks, by country or by bounding box. Or 
+      request into geographic chunks, by country or by bounding box. Or
       you could split up your request taxonomically, e.g., if you want
-      data for all species in a large family of birds, split up by 
+      data for all species in a large family of birds, split up by
       some higher taxonomic level, like tribe or genus.")
   else
     x
 }
 
 possparams <- function(){
-  "   taxonKey, scientificName, datasetKey, catalogNumber, collectorName, geometry, 
-   country, publishingCountry, recordNumber, search, institutionCode, collectionCode, 
-   decimalLatitude, decimalLongitude, depth, year, typeStatus, lastInterpreted, 
+  "   taxonKey, scientificName, datasetKey, catalogNumber, collectorName, geometry,
+   country, publishingCountry, recordNumber, search, institutionCode, collectionCode,
+   decimalLatitude, decimalLongitude, depth, year, typeStatus, lastInterpreted,
    continent, or mediatype"
 }
 
