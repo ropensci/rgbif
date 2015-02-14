@@ -458,11 +458,13 @@ gbif_GET <- function(url, args, parse=FALSE, ...){
 }
 
 gbif_GET_content <- function(url, args, ...){
-  temp <- GET(url, query=args, ...)
+  temp <- GET(url, query=cn(args), ...)
   if(temp$status_code > 200) warning(content(temp, as = "text"))
   stopifnot(temp$headers$`content-type`=='application/json')
   content(temp, as = 'text', encoding = "UTF-8")
 }
+
+cn <- function(x) if(length(x) == 0) NULL else x
 
 gbif_base <- function() 'http://api.gbif.org/v1'
 

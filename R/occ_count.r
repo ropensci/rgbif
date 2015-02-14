@@ -88,5 +88,5 @@ occ_count <- function(taxonKey=NULL, georeferenced=NULL, basisOfRecord=NULL,
                 year = rgbif_compact(list(from=from, to=to)),
                 publishingCountry = rgbif_compact(list(country=ifelse(is.null(country), "US", country) )))
   res <- gbif_GET_content(url, args, ...)
-  if(type=='count'){ as.numeric(res) } else{ jsonlite::fromJSON(res, FALSE) }
+  if(type=='count'){ as.numeric(res) } else { jsonlite::fromJSON(res, FALSE) }
 }
