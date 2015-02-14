@@ -1,3 +1,11 @@
+rgbif 0.8.0
+===============
+
+BUG FIXES
+
+* Fixed bug in internal `GET()` helper function to just pass `NULL` to the `query` parameter when the list of length 0 passed, since it caused requests to fail in some cases.
+
+
 rgbif 0.7.7
 ===============
 
