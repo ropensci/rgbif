@@ -109,6 +109,7 @@ dataset_search <- function(query = NULL, country = NULL, type = NULL, keyword = 
     }
 
     # select output
+    return <- match.arg(return, c("meta", "descriptions", "data", "facets", "all"))
     switch(return,
            meta = data.frame(meta),
            descriptions = descs,
