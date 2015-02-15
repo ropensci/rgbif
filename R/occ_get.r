@@ -6,8 +6,8 @@
 #' @param key Occurrence key
 #' @param return One of data, hier, meta, or all. If 'data', a data.frame with the
 #'    data. 'hier' returns the classifications in a list for each record. meta
-#'    returns the metadata for the entire call. 'all' gives all data back in a list. Ignored if
-#'    \code{verbatim=TRUE}.
+#'    returns the metadata for the entire call. 'all' gives all data back in a list. 
+#'    Ignored if \code{verbatim=TRUE}.
 #' @param verbatim Return verbatim object (TRUE) or cleaned up object (FALSE, default).
 #' @param fields (character) Default ('minimal') will return just taxon name, key, latitude, and
 #'    longitute. 'all' returns all fields. Or specify each field you want returned by name, e.g.
@@ -39,13 +39,14 @@
 #' # Pass in curl options
 #' library("httr")
 #' occ_get(key=766766824, config=verbose())
-#' occ_get(key=766766824, config=timeout(1))
+#' occ_get(key=766766824, config=timeout(0.1))
 #' occ_get(key=766766824, config=progress())
 #' }
 
 occ_get <- function(key=NULL, return='all', verbatim=FALSE, fields='minimal', ...)
 {
   stopifnot(is.numeric(key))
+  return <- match.arg(return, c("meta", "data", "hier", "all"))
 
   # Define function to get data
   getdata <- function(x){

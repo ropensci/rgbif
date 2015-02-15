@@ -12,8 +12,8 @@ occ_get(key = NULL, return = "all", verbatim = FALSE,
 
 \item{return}{One of data, hier, meta, or all. If 'data', a data.frame with the
 data. 'hier' returns the classifications in a list for each record. meta
-returns the metadata for the entire call. 'all' gives all data back in a list. Ignored if
-\code{verbatim=TRUE}.}
+returns the metadata for the entire call. 'all' gives all data back in a list.
+Ignored if \code{verbatim=TRUE}.}
 
 \item{verbatim}{Return verbatim object (TRUE) or cleaned up object (FALSE, default).}
 
@@ -52,7 +52,7 @@ occ_get(key=c(766766824,620594291,766420684),
 # Pass in curl options
 library("httr")
 occ_get(key=766766824, config=verbose())
-occ_get(key=766766824, config=timeout(1))
+occ_get(key=766766824, config=timeout(0.1))
 occ_get(key=766766824, config=progress())
 }
 }
