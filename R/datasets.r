@@ -1,5 +1,6 @@
 #' Search for datasets and dataset metadata.
 #' 
+#' @template otherlimstart
 #' @template occ
 #' @export
 #' 

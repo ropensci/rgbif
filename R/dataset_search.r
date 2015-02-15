@@ -4,13 +4,14 @@
 #' that contain occurrence data.
 #'
 #' @export
+#' @template otherlimstart
 #' @template occ
 #' @template dataset
 #' @template dataset_facet
 #' @param return What to return. One of meta, descriptions, data, facets,
 #'    or all (Default).
-#'    
-#' @references \url{http://www.gbif.org/developer/registry#datasetSearch} 
+#'
+#' @references \url{http://www.gbif.org/developer/registry#datasetSearch}
 #'
 #' @examples \dontrun{
 #' # Gets all datasets of type "OCCURRENCE".
@@ -46,14 +47,14 @@
 #'
 #' ## data and facets
 #' dataset_search(facet="decade", facetMincount="10", limit=2)
-#' 
+#'
 #' ## httr options
 #' library('httr')
 #' dataset_search(facet="decade", facetMincount="10", limit=2, config=verbose())
 #' }
 
 dataset_search <- function(query = NULL, country = NULL, type = NULL, keyword = NULL,
-  owningOrg = NULL, publishingOrg = NULL, hostingOrg = NULL, publishingCountry = NULL, 
+  owningOrg = NULL, publishingOrg = NULL, hostingOrg = NULL, publishingCountry = NULL,
   decade = NULL, facet=NULL, facetMincount=NULL, facetMultiselect=NULL, limit=100,
   start=NULL, pretty=FALSE, return="all", ...)
 {

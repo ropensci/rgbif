@@ -44,12 +44,10 @@ e.g. /search?facet=DECADE&facet_only=true (see example below)}
 \item{continent}{Not yet implemented, but will eventually allow filtering datasets
 by their continent(s) as given in our Continent enum.}
 
-\item{limit}{Number of records to return. Defaults: For \code{\link{occ_search}} 500, for others
-100. Maximum: 1,000,000 records for \code{\link{occ_search}}, others, don't know yet.}
+\item{limit}{Number of records to return. Default: 100. Maximum: 1000.}
 
-\item{start}{Record number to start at. Use in combination with limit to page through results.
-Note that in \code{\link{occ_search}} we do the paging internally for you, so there's no
-\code{start} parameeter, but in other functions you have to do paging yourself.}
+\item{start}{Record number to start at. Default: 0. Use in combination with \code{limit} to
+page through results.}
 
 \item{pretty}{Print informative metadata using \code{\link{cat}}. Not easy to
 manipulate output though.}

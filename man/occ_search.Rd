@@ -123,12 +123,14 @@ Details. Issues passed to this parameter filter results by the issue.}
 \item{mediatype}{Media type. Default is NULL, so no filtering on mediatype. Options:
 NULL, 'MovingImage', 'Sound', and 'StillImage'.``}
 
-\item{limit}{Number of records to return. Defaults: For \code{\link{occ_search}} 500, for others
-100. Maximum: 1,000,000 records for \code{\link{occ_search}}, others, don't know yet.}
+\item{limit}{Number of records to return. Default: 500. Note that the per request maximum is
+300, but since we set it at 500 for the function, we do two requests to get you the 500
+records (if there are that many). Note that there is a hard maximum of 200,000, which is
+calculated as the \code{limit+start}, so \code{start=199,000} and \code{limit=2000} won't work}
 
 \item{start}{Record number to start at. Use in combination with limit to page through results.
-Note that in \code{\link{occ_search}} we do the paging internally for you, so there's no
-\code{start} parameeter, but in other functions you have to do paging yourself.}
+Note that we do the paging internally for you, but you can manually set the \code{start}
+parameter}
 
 \item{fields}{(character) Default ('all') returns all fields. 'minimal' returns just taxon name,
 key, latitude, and longitute. Or specify each field you want returned by name, e.g.

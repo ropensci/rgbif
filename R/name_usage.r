@@ -1,72 +1,73 @@
 #' Lookup details for specific names in all taxonomies in GBIF.
 #'
 #' @export
+#' @template otherlimstart
 #' @template occ
 #' @template nameusage
 #' @param return One of data, meta, or all. If data, a data.frame with the
 #'    data. meta returns the metadata for the entire call. all gives all data back in a list.
-#' @return A list of length two. The first element is metadata. The second is 
+#' @return A list of length two. The first element is metadata. The second is
 #' a data.frame
 #' @references \url{http://www.gbif.org/developer/species#nameUsages}
 #' @details
-#' This service uses fuzzy lookup so that you can put in partial names and 
+#' This service uses fuzzy lookup so that you can put in partial names and
 #' you should get back those things that match. See examples below.
-#' 
-#' This function is different from \code{name_lookup} in that that function 
-#' searches for names. This function encompasses a bunch of API endpoints, 
-#' most of which require that you already have a taxon key, but there is one 
+#'
+#' This function is different from \code{name_lookup} in that that function
+#' searches for names. This function encompasses a bunch of API endpoints,
+#' most of which require that you already have a taxon key, but there is one
 #' endpoint that allows name searches (see examples below).
-#' 
+#'
 #' Note that \code{data="verbatim"} hasn't been working.
-#' 
-#' Options for the data parameter are: 'all', 'verbatim', 'name', 'parents', 'children', 
-#' 'related', 'synonyms', 'descriptions','distributions', 'images', 
+#'
+#' Options for the data parameter are: 'all', 'verbatim', 'name', 'parents', 'children',
+#' 'related', 'synonyms', 'descriptions','distributions', 'images',
 #' 'references', 'speciesProfiles', 'vernacularNames', 'typeSpecimens', 'root'
-#' 
-#' This function used to be vectorized with respect to the \code{data} parameter, 
+#'
+#' This function used to be vectorized with respect to the \code{data} parameter,
 #' where you could pass in multiple values and the function internally loops
-#' over each option making separate requests. This has been removed. You can still 
+#' over each option making separate requests. This has been removed. You can still
 #' loop over many options for the \code{data} parameter, just use an \code{lapply}
-#' family function, or a for loop, etc. 
-#' @examples 
+#' family function, or a for loop, etc.
+#' @examples
 #' \donttest{
 #' # A single name usage
 #' name_usage(key=1)
-#' 
+#'
 #' # Name usage for a taxonomic name
 #' name_usage(name='Puma', rank="GENUS")
 #' }
-#' 
+#'
 #' \dontrun{
 #' # All name usages
 #' name_usage()
-#' 
+#'
 #' # References for a name usage
 #' name_usage(key=3119195, data='references')
-#' 
+#'
 #' # Species profiles, descriptions
 #' name_usage(key=3119195, data='speciesProfiles')
 #' name_usage(key=3119195, data='descriptions')
 #' name_usage(key=2435099, data='children')
 #' res$data$scientificName
-#' 
+#'
 #' # Vernacular names for a name usage
 #' name_usage(key=3119195, data='vernacularNames')
-#' 
+#'
 #' # Limit number of results returned
 #' name_usage(key=3119195, data='vernacularNames', limit=3)
-#' 
+#'
 #' # Search for names by dataset with datasetKey parameter
 #' name_usage(datasetKey="d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
-#' 
+#'
 #' # Search for a particular language
 #' name_usage(key=3119195, language="FRENCH", data='vernacularNames')
-#' 
+#'
 #' # Pass on httr options
 #' ## here, print progress, notice the progress bar
 #' library('httr')
 #' res <- name_usage(name='Puma concolor', limit=300, config=progress())
-#' 
+#'
 #' ### Not working right now for some unknown reason
 #' # Select many options
 #' name_usage(key=3119195, data=c('images','synonyms'))
@@ -79,10 +80,10 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL, datasetKe
   calls_vec <- c("sourceId") %in% calls
   if(any(calls_vec))
     stop("Parameters not currently accepted: \n sourceId")
-   
-  args <- rgbif_compact(list(language=language, name=name, datasetKey=datasetKey, 
+
+  args <- rgbif_compact(list(language=language, name=name, datasetKey=datasetKey,
                        rank=rank, offset=start, limit=limit, sourceId=sourceId))
-  data <- match.arg(data, 
+  data <- match.arg(data,
       choices=c('all', 'verbatim', 'name', 'parents', 'children',
                 'related', 'synonyms', 'descriptions',
                 'distributions', 'images', 'references', 'speciesProfiles',
@@ -107,7 +108,7 @@ has_meta <- function(x) any(c('offset','limit','endOfRecords') %in% names(x))
 getdata <- function(x, key, uuid, shortname, args, ...){
   if(!x == 'all' && is.null(key))
     stop('You must specify a key if data does not equal "all"')
-  
+
   if(x == 'all' && is.null(key)){
     url <- paste0(gbif_base(), '/species')
   } else
@@ -115,7 +116,7 @@ getdata <- function(x, key, uuid, shortname, args, ...){
     if(x=='all' && !is.null(key)){
       url <- sprintf('%s/species/%s', gbif_base(), key)
     } else
-      if(x %in% c('verbatim', 'name', 'parents', 'children', 
+      if(x %in% c('verbatim', 'name', 'parents', 'children',
                   'related', 'synonyms', 'descriptions',
                   'distributions', 'images', 'references', 'speciesProfiles',
                   'vernacularNames', 'typeSpecimens')){

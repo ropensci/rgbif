@@ -24,12 +24,10 @@ e.g. identifier=120. This parameter doesn't seem to work right now.}
    identifiers by identifier type. See details. This parameter doesn't seem to
    work right now.}
 
-\item{limit}{Number of records to return. Defaults: For \code{\link{occ_search}} 500, for others
-100. Maximum: 1,000,000 records for \code{\link{occ_search}}, others, don't know yet.}
+\item{limit}{Number of records to return. Default: 100. Maximum: 1000.}
 
-\item{start}{Record number to start at. Use in combination with limit to page through results.
-Note that in \code{\link{occ_search}} we do the paging internally for you, so there's no
-\code{start} parameeter, but in other functions you have to do paging yourself.}
+\item{start}{Record number to start at. Default: 0. Use in combination with \code{limit} to
+page through results.}
 
 \item{...}{Further named parameters, such as \code{query}, \code{path}, etc, passed on to
 \code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will

@@ -5,6 +5,7 @@
 #' @importFrom XML getNodeSet xmlAttrs xmlSApply xmlValue htmlParse xpathApply xmlToList
 #'
 #' @template occsearch
+#' @template oslimstart
 #' @template occ
 #' @param x Output from a call to occ_search
 #' @param n Number of rows of the data to print.

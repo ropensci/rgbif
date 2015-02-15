@@ -35,12 +35,10 @@ SUPERPHYLUM, SUPRAGENERIC_NAME, TRIBE, UNRANKED, VARIETY}
 
 \item{shortname}{(character) A short name..need more info on this?}
 
-\item{start}{Record number to start at. Use in combination with limit to page through results.
-Note that in \code{\link{occ_search}} we do the paging internally for you, so there's no
-\code{start} parameeter, but in other functions you have to do paging yourself.}
+\item{start}{Record number to start at. Default: 0. Use in combination with \code{limit} to
+page through results.}
 
-\item{limit}{Number of records to return. Defaults: For \code{\link{occ_search}} 500, for others
-100. Maximum: 1,000,000 records for \code{\link{occ_search}}, others, don't know yet.}
+\item{limit}{Number of records to return. Default: 100. Maximum: 1000.}
 
 \item{return}{One of data, meta, or all. If data, a data.frame with the
 data. meta returns the metadata for the entire call. all gives all data back in a list.}
