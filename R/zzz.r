@@ -451,7 +451,11 @@ NULL
 gbif_GET <- function(url, args, parse=FALSE, ...){
   temp <- GET(url, query=args, ...)
   if(temp$status_code == 204) stop("Status: 204 - not found", call. = FALSE)
-  if(temp$status_code > 200) stop(content(temp), call. = FALSE)
+  if(temp$status_code > 200){
+    mssg <- content(temp)
+    if(length(mssg) == 0) mssg <- http_status(temp)$message
+    stop(mssg, call. = FALSE)
+  }
   stopifnot(temp$headers$`content-type`=='application/json')
   res <- content(temp, as = 'text', encoding = "UTF-8")
   jsonlite::fromJSON(res, parse)
