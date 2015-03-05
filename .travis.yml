@@ -1,24 +1,13 @@
-language: c
+language: r
 
-script: "./travis-tool.sh run_tests"
+r_binary_packages:
+  - rgdal
+  
+r_github_packages:  
+  - jimhester/covr
 
-before_script:
-- curl -OL http://raw.github.com/craigcitro/r-travis/master/scripts/travis-tool.sh
-- chmod 755 ./travis-tool.sh
-- sudo apt-get update -qq
-- sudo apt-get install -y gdal-bin libgdal-dev libgdal1-dev netcdf-bin libproj-dev libgdal1h
-- "./travis-tool.sh install_aptget gdal-bin"
-- "./travis-tool.sh bootstrap"
-- "./travis-tool.sh install_deps"
-
-env:
-  global:
-  - R_BUILD_ARGS=" "
-  - R_CHECK_ARGS="--as-cran"
-  - BOOTSTRAP_LATEX="1"
-
-after_failure:
-- "./travis-tool.sh dump_logs"
+after_success:
+  - Rscript -e 'library(covr); coveralls()'
 
 notifications:
   slack:
