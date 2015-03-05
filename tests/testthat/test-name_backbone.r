@@ -8,3 +8,7 @@ test_that("name_backbone returns the correct class", {
   expect_is(uu$alternatives$phylumKey, "integer")
   expect_is(uu$alternatives$canonicalName, "character")
 })
+
+test_that("Throws error because a name is required in the function call", {
+  expect_error(name_backbone(kingdom='plants'), "argument \"name\" is missing")
+})

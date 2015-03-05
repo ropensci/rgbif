@@ -27,3 +27,10 @@ test_that("name_usage returns the correct dimensions", {
   expect_equal(NCOL(uu$meta), 3)
   expect_equal(NCOL(uu$data), 2)
 })
+
+
+test_that("name_usage fails correctly", {
+  ### Not working right now for some unknown reason
+  # Select many options
+  expect_error(name_usage(key=3119195, data=c('images','synonyms')))
+})

@@ -33,3 +33,9 @@ test_that("returns the correct dimensions", {
   expect_equal(length(f), 10)
   expect_equal(length(g), 5)
 })
+
+
+test_that("fails correctly", {
+  # FAILS: collector name - collector_name endpoint down on 2014-04-23
+  expect_error(occ_metadata(type = "collector_name", q='jane'))
+})
