@@ -43,5 +43,5 @@ test_that("returns the correct dimensions", {
 })
 
 test_that("name_usage fails correctly", {
-  expect_error(occ_get(key=766766824, config=timeout(0.1)))
+  expect_error(occ_get(key=766766824, config=timeout(0.001)))
 })
