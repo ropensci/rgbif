@@ -83,4 +83,4 @@ This package is part of a richer suite called [SPOCC Species Occurrence Data](ht
 
 - - -
 
-[![](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
+[![ropensci_footer](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
