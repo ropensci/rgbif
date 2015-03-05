@@ -1,22 +1,19 @@
 #' View highlighted terms in name results from GBIF.
 #'
 #' @export
-#' 
+#'
 #' @param input Input output from occ_search
 #' @param output Output folder path. If not given uses temporary folder.
 #' @param browse (logical) Browse output (default: TRUE)
-#' 
-#' @examples
-#' \donttest{
+#'
+#' @examples \dontrun{
 #' gbif_names(name_lookup(query='snake', hl=TRUE), browse=FALSE)
-#' }
-#' 
-#' \dontrun{
+#'
 #' (out <- name_lookup(query='canada', hl=TRUE, limit=5))
 #' gbif_names(out)
 #' gbif_names(name_lookup(query='snake', hl=TRUE))
 #' gbif_names(name_lookup(query='bird', hl=TRUE))
-#' 
+#'
 #' # or not highlight
 #' gbif_names(name_lookup(query='bird', limit=200))
 #' }
@@ -51,9 +48,9 @@ gn_tolist <- function(x){
     tmp
   })
   addurl <- function(z){
-    if(z$nubKey=="none") 
+    if(z$nubKey=="none")
       c(z, url=paste0("http://www.gbif.org/species/", z$key))
-    else 
+    else
       c(z, url=paste0("http://www.gbif.org/species/", z$nubKey))
   }
   Map(addurl, out)

@@ -30,14 +30,11 @@
 #'
 #' @references \url{http://www.gbif.org/developer/species#searching}
 #'
-#' @examples
-#' \donttest{
+#' @examples \dontrun{
 #' name_backbone(name='Helianthus annuus', kingdom='plants')
 #' name_backbone(name='Helianthus', rank='genus', kingdom='plants')
 #' name_backbone(name='Poa', rank='genus', family='Poaceae')
-#' }
 #'
-#' \dontrun{
 #' # Verbose - gives back alternatives
 #' name_backbone(name='Helianthus annuus', kingdom='plants', verbose=TRUE)
 #'

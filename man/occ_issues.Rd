@@ -37,7 +37,7 @@ we will remove the associated records from the \code{hierarchy} and \code{media}
 elements as they are remove from the \code{data} element.
 }
 \examples{
-\donttest{
+\dontrun{
 ## what do issues mean, can print whole table, or search for matches
 head(gbif_issues())
 gbif_issues()[ gbif_issues()$code \%in\% c('cdround','cudc','gass84','txmathi'), ]

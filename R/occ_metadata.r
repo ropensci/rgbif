@@ -16,16 +16,13 @@
 #'
 #' @references \url{http://www.gbif.org/developer/occurrence#search}
 #'
-#' @examples 
-#' \donttest{
+#' @examples \dontrun{
 #' # catalog number
 #' occ_metadata(type = "catalogNumber", q=122)
 #'
 #' # collection code
 #' occ_metadata(type = "collectionCode", q=12)
-#' }
-#' 
-#' \dontrun{
+#'
 #' # institution code
 #' occ_metadata(type = "institutionCode", q='GB')
 #'

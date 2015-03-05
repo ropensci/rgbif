@@ -279,7 +279,7 @@ http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.h
 }
 }
 \examples{
-\donttest{
+\dontrun{
 # Search by species name, using \\code{\\link{name_backbone}} first to get key
 (key <- name_suggest(q='Helianthus annuus', rank='species')$key[1])
 occ_search(taxonKey=key, limit=2)
@@ -289,9 +289,7 @@ occ_search(taxonKey=key, limit=20)
 
 # Return just metadata for the search
 occ_search(taxonKey=key, limit=100, return='meta')
-}
 
-\dontrun{
 # Instead of getting a taxon key first, you can search for a name directly
 ## However, note that using this approach (with \\code{scientificName="..."})
 ## you are getting synonyms too. The results for using \\code{scientifcName} and

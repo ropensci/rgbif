@@ -21,14 +21,12 @@ publishingCountry.}
 Facetted count occurrence search.
 }
 \examples{
-\donttest{
+\dontrun{
 # Select number of countries to facet on
 count_facet(by='country', countries=3, removezeros = TRUE)
 # Or, pass in country names
 count_facet(by='country', countries='AR', removezeros = TRUE)
-}
 
-\dontrun{
 spplist <- c('Geothlypis trichas','Tiaris olivacea','Pterodroma axillaris',
              'Calidris ferruginea','Pterodroma macroptera','Gallirallus australis',
              'Falco cenchroides','Telespiza cantans','Oreomystis bairdi',

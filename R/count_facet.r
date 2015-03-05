@@ -1,5 +1,5 @@
 #' Facetted count occurrence search.
-#' 
+#'
 #' @import plyr
 #' @param keys (numeric) GBIF keys, a vector.
 #' @param by (character) One of georeferenced, basisOfRecord, country, or
@@ -7,15 +7,12 @@
 #' @param countries (numeric) Number of countries to facet on, or a vector of country names
 #' @param removezeros (logical) Default is FALSE
 #' @export
-#' @examples 
-#' \donttest{
+#' @examples \dontrun{
 #' # Select number of countries to facet on
 #' count_facet(by='country', countries=3, removezeros = TRUE)
 #' # Or, pass in country names
 #' count_facet(by='country', countries='AR', removezeros = TRUE)
-#' }
-#' 
-#' \dontrun{
+#'
 #' spplist <- c('Geothlypis trichas','Tiaris olivacea','Pterodroma axillaris',
 #'              'Calidris ferruginea','Pterodroma macroptera','Gallirallus australis',
 #'              'Falco cenchroides','Telespiza cantans','Oreomystis bairdi',
@@ -24,23 +21,23 @@
 #' count_facet(keys, by='country', countries=3, removezeros = TRUE)
 #' count_facet(keys, by='country', countries=3, removezeros = FALSE)
 #' count_facet(by='country', countries=20, removezeros = TRUE)
-#' 
+#'
 #' # Pass in country names instead
 #' countries <- isocodes$code[1:10]
 #' count_facet(by='country', countries=countries, removezeros = TRUE)
-#' 
+#'
 #' # get occurrences by georeferenced state
 #' ## across all records
 #' count_facet(by='georeferenced')
-#' 
+#'
 #' ## by keys
 #' out <- count_facet(keys, by='georeferenced')
 #' library("reshape2")
 #' dcast(out, .id ~ georeferenced)
-#' 
+#'
 #' # by basisOfRecord
 #' count_facet(by="basisOfRecord")
-#' 
+#'
 #' # throws error, you can't use basisOfRecord and keys in the same call
 #' count_facet(keys, by="basisOfRecord")
 #' }
@@ -50,7 +47,7 @@ count_facet <- function(keys = NULL, by = 'country', countries = 10, removezeros
   # can't do both keys and basisofrecord
   if(!is.null(keys) && by=='basisOfRecord')
     stop("you can't pass in both keys and have by='basisOfRecord'")
-  
+
   # faceting data vectors
   if(is.numeric(countries)){
     countrynames <- list(country=as.character(isocodes$code)[1:countries])
@@ -58,8 +55,8 @@ count_facet <- function(keys = NULL, by = 'country', countries = 10, removezeros
     countrynames <- list(country=as.character(countries))
   }
   georefvals <- list(georeferenced = c(TRUE, FALSE))
-  basisvals <- list(basisOfRecord = 
-                      c("FOSSIL_SPECIMEN", "HUMAN_OBSERVATION", "LITERATURE", 
+  basisvals <- list(basisOfRecord =
+                      c("FOSSIL_SPECIMEN", "HUMAN_OBSERVATION", "LITERATURE",
                         "LIVING_SPECIMEN", "MACHINE_OBSERVATION", "OBSERVATION",
                         "PRESERVED_SPECIMEN", "UNKNOWN"))
   byvar <- switch(by,
@@ -67,7 +64,7 @@ count_facet <- function(keys = NULL, by = 'country', countries = 10, removezeros
                   basisOfRecord = basisvals,
                   country = countrynames,
                   publishingCountry = countrynames)
-  
+
   if(!is.null(keys)){
     out <- lapply(keys, occ_by_keys, tt=byvar)
     names(out) <- keys
@@ -83,10 +80,10 @@ count_facet <- function(keys = NULL, by = 'country', countries = 10, removezeros
     names(df)[1] <- by
     df
   }
-  
+
   # remove NAs (which were caused by errors in country names)
   df <- na.omit(df)
-  
+
   if(removezeros)
     df[!df$V1==0,]
   else
