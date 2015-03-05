@@ -37,9 +37,6 @@
 #'
 #' # by basisOfRecord
 #' count_facet(by="basisOfRecord")
-#'
-#' # throws error, you can't use basisOfRecord and keys in the same call
-#' count_facet(keys, by="basisOfRecord")
 #' }
 
 count_facet <- function(keys = NULL, by = 'country', countries = 10, removezeros = FALSE)
@@ -96,7 +93,7 @@ occ_by_keys <- function(spkey=NULL, tt){
   tmp <- lapply(tt[[1]], function(x){
     xx <- list(x)
     names(xx) <- names(tt)
-    if(!is.null(keys))
+    if(!is.null(spkey))
       xx$taxonKey <- spkey
     do.call(occ_count_safe, xx)
   })

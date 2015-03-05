@@ -39,7 +39,6 @@
 #' # Pass in curl options
 #' library("httr")
 #' occ_get(key=766766824, config=verbose())
-#' occ_get(key=766766824, config=timeout(0.1))
 #' occ_get(key=766766824, config=progress())
 #' }
 

@@ -51,9 +51,6 @@ dcast(out, .id ~ georeferenced)
 
 # by basisOfRecord
 count_facet(by="basisOfRecord")
-
-# throws error, you can't use basisOfRecord and keys in the same call
-count_facet(keys, by="basisOfRecord")
 }
 }
 

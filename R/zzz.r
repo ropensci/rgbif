@@ -394,9 +394,7 @@ gbifxmlToDataFrame <- function(doc, format) {
 #' ## Or pass in each value separately
 #' mm <- gbif_bbox2wkt(minx=38.4, miny=-125.0, maxx=40.9, maxy=-121.8)
 #' plot(readWKT(mm))
-#'
-#' ========================================
-#'
+#' 
 #' # Convert a WKT object to a bounding box
 #' wkt <- "POLYGON((38.4 -125,40.9 -125,40.9 -121.8,38.4 -121.8,38.4 -125))"
 #' gbif_wkt2bbox(wkt)

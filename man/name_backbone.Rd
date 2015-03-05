@@ -77,9 +77,6 @@ name_backbone(name='Oenante')
 # Pass on httr options
 library('httr')
 name_backbone(name='Oenante', config=timeout(1))
-
-# Throws error because a name is required in the function call
-name_backbone(kingdom='plants')
 }
 }
 \references{

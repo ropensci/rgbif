@@ -207,7 +207,7 @@
 #' res %>% occ_issues(-gass84, mutate = "split_expand")
 #'
 #' # If you try multiple values for two different parameters you are wacked on the hand
-#' occ_search(taxonKey=c(2482598,2492010), collectorName=c("smith","BJ Stacey"))
+#' # occ_search(taxonKey=c(2482598,2492010), collectorName=c("smith","BJ Stacey"))
 #'
 #' # Get a lot of data, here 1500 records for Helianthus annuus
 #' out <- occ_search(taxonKey=key, limit=1500, return="data")
@@ -227,26 +227,26 @@
 #' 149.4140625 42.65416193033991,159.2578125 48.3160811030533,168.3984375 57.019804336633165,
 #' 178.2421875 59.95776046458139,-179.6484375 61.16708631440347,-178.59375 64.83258989321493))'
 #'
-#' occ_search(geometry = gsub("\n", '', wkt))
+#' # occ_search(geometry = gsub("\n", '', wkt))
 #'
 #' ### unable to parse due to last number pair needing two numbers, not one
-#' wkt <- 'POLYGON((-178.5 64.8,-165.9 59.2,-147.3 59.0,-130.7 51.0,-125.8))'
-#' occ_search(geometry = wkt)
+#' # wkt <- 'POLYGON((-178.5 64.8,-165.9 59.2,-147.3 59.0,-130.7 51.0,-125.8))'
+#' # occ_search(geometry = wkt)
 #'
 #' ### unable to parse due to unclosed string
-#' wkt <- 'POLYGON((-178.5 64.8,-165.9 59.2,-147.3 59.0,-130.7 51.0))'
-#' occ_search(geometry = wkt)
+#' # wkt <- 'POLYGON((-178.5 64.8,-165.9 59.2,-147.3 59.0,-130.7 51.0))'
+#' # occ_search(geometry = wkt)
 #' ### another of the same
-#' wkt <- 'POLYGON((-178.5 64.8,-165.9 59.2,-147.3 59.0,-130.7 51.0,-125.8 36.7))'
-#' occ_search(geometry = wkt)
+#' # wkt <- 'POLYGON((-178.5 64.8,-165.9 59.2,-147.3 59.0,-130.7 51.0,-125.8 36.7))'
+#' # occ_search(geometry = wkt)
 #'
 #' ### returns no results
-#' wkt <- 'LINESTRING(3 4,10 50,20 25)'
-#' occ_search(geometry = wkt)
+#' # wkt <- 'LINESTRING(3 4,10 50,20 25)'
+#' # occ_search(geometry = wkt)
 #'
 #' ### Apparently a point is allowed, but haven't successfully retrieved data, so returns nothing
-#' wkt <- 'POINT(45 -122)'
-#' occ_search(geometry = wkt)
+#' # wkt <- 'POINT(45 -122)'
+#' # occ_search(geometry = wkt)
 #' }
 
 occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publishingCountry=NULL,

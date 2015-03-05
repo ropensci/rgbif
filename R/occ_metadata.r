@@ -39,9 +39,6 @@
 #' library('httr')
 #' occ_metadata(type = "cat", q=122, config=verbose())
 #' occ_metadata(type = "cat", q=122, config=progress())
-#'
-#' # FAILS: collector name - collector_name endpoint down on 2014-04-23
-#' occ_metadata(type = "collector_name", q='jane')
 #' }
 
 occ_metadata <- function(type = "catalogNumber", q=NULL, limit=5, pretty=TRUE, ...)
