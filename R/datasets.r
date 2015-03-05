@@ -47,7 +47,9 @@ datasets <- function(data = 'all', type = NULL, uuid = NULL, query = NULL, id = 
        data does not equal of deleted, duplicate, subDataset, or withNoEndpoint')
     
     url <- if(is.null(uuid)){
-      if(x=='all'){ paste0(gbif_base(), '/dataset') } else {
+      if(x=='all'){ 
+        paste0(gbif_base(), '/dataset') 
+      } else {
         if(!is.null(id) && x=='metadata'){
           sprintf('%s/dataset/metadata/%s/document', gbif_base(), id)
         } else
@@ -65,6 +67,7 @@ datasets <- function(data = 'all', type = NULL, uuid = NULL, query = NULL, id = 
     }
     res <- gbif_GET(url, args, TRUE, ...)
     structure(list(meta=get_meta(res), data=parse_results(res, uuid)))
+    # parse_results(res, uuid)
   }
   
   # Get data

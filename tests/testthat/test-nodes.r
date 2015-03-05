@@ -17,7 +17,7 @@ test_that("returns the correct class", {
 })
 
 test_that("returns the correct value", {
-  expect_true(typeof(tt$data$tags)=="logical")
+  expect_equal(length(tt$data$tags[[1]]), 0)
   expect_equal(uu$data$title, "Republic of Congo")
   expect_equal(vv$data$key, 13587)
   expect_equal(vv$data$modifiedBy, NULL)

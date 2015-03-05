@@ -86,21 +86,21 @@ parse_results <- function(x, y){
       x[ !names(x) %in% c('offset','limit','endOfRecords','count') ]
     else
       x
-  } else  {
-    dat <- x$results
-    for(i in seq_along(dat)){
-      if(is(dat[[i]], 'list')){
-        tmp <- vapply(dat[[i]], length, numeric(1))
-        dat[[i]] <-
-          if(sum(tmp) == 0) {
-            NA
-          } else if(max(tmp) == 1){
-            dat[[i]][sapply(dat[[i]], function(x) is.null(x) || length(x)==0 )] <- NA
-            unlist(dat[[i]])
-          } else { dat[[i]] }
-      } else { dat[[i]] <- dat[[i]] }
-    }
-    dat
+  } else {
+#     dat <- x$results
+#     for(i in seq_along(dat)){
+#       if(is(dat[[i]], 'list')){
+#         tmp <- vapply(dat[[i]], length, numeric(1))
+#         dat[[i]] <- 
+#           if(sum(tmp) == 0) {
+#             NA
+#           } else if(max(tmp) == 1){
+#             dat[[i]][sapply(dat[[i]], function(x) is.null(x) || length(x)==0 )] <- NA
+#             unlist(dat[[i]])
+#           } else { dat[[i]] }
+#       } else { dat[[i]] <- dat[[i]] }
+#     }
+    x$results
   }
 }
 
