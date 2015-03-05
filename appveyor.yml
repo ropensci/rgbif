@@ -39,7 +39,7 @@ artifacts:
     name: Logs
 
   - path: '\*_*.tar.gz'
-    name: Bits
+    name: tar
 
   - path: '\*_*.zip'
-    name: Bits
+    name: zip
