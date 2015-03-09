@@ -7,18 +7,20 @@
 #' 
 #' @section A note about the old GBIF API:
 #' 
-#' If you still want to use the old GBIF API, described at 
-#' \url{http://data.gbif.org/tutorial/services} let us know at 
-#' \url{https://github.com/ropensci/rgbif}, or email Scott \email{myrmecocystus@@gmail.com}
+#' The old GBIF API was at \url{http://data.gbif.org/tutorial/services}, but is now defunct - 
+#' that is, not available anymore. We used to have functions that worked with the old API, but 
+#' those functions are now not available anymore because GBIF made the old API defunct.
 #' 
 #' @section Documentation for the GBIF API:
 #' 
 #' \itemize{
-#'   \item summary \url{http://www.gbif.org/developer/summary}
-#'   \item registry \url{http://www.gbif.org/developer/registry}
-#'   \item species names \url{http://www.gbif.org/developer/species}
-#'   \item occurrences \url{http://www.gbif.org/developer/occurrence}
-#'   \item maps \url{http://www.gbif.org/developer/maps}
+#'   \item summary \url{http://www.gbif.org/developer/summary} - Summary of the GBIF API
+#'   \item registry \url{http://www.gbif.org/developer/registry} - Metadata on datasets, and
+#'   contributing organizations
+#'   \item species names \url{http://www.gbif.org/developer/species} - Species names and metadata
+#'   \item occurrences \url{http://www.gbif.org/developer/occurrence} - Occurrences
+#'   \item maps \url{http://www.gbif.org/developer/maps} - Maps - these APIs are not implemented
+#'   in \code{rgbif}, and are meant more for intergration with web based maps.
 #' }
 #' 
 #' @name rgbif-package
