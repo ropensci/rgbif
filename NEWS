@@ -1,9 +1,26 @@
 rgbif 0.8.0
 ===============
 
+IMPROVEMENTS
+
+* All example moved to `\dontrun` (#139)
+* README fixes for html (#141)
+* Fixed documentation in `occ_search()` to give correct values for default and max limit
+and start parameters (#145)
+* Changed internal `GET` helper function to properly pass on error message (#144)
+* Replaced `assertthat::assert_that()` with `stopifnot()` to have one less dependency (#134)
+* Fixed `occ_search()` to allow ability to query by only publishingCountry, that is, with no
+other parameters if desired (#137)
+
 BUG FIXES
 
-* Fixed bug in internal `GET()` helper function to just pass `NULL` to the `query` parameter when the list of length 0 passed, since it caused requests to fail in some cases.
+* Fixed bug in internal `GET()` helper function to just pass `NULL` to the `query` parameter when 
+the list of length 0 passed, since it caused requests to fail in some cases.
+* Fix to `name_lookup()` to force a logical entry for certain parameters - before this fix 
+if the correct logical param was not passed, the GBIF API went with its default parameter (#135)
+* Fixed bug in `name_backbone()` due to change in `namelkupparser()` helper function - fixes 
+parsing for verbose output (#136)
+* Fixed some broken URLs in `occ_search()` documentation (#140)
 
 
 rgbif 0.7.7
