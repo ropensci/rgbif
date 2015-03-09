@@ -14,4 +14,3 @@ gist_downloads.md
 R/deprecated.r
 README.Rmd
 ^\.httr-oauth$
-tests/test-all.R
