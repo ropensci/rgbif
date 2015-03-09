@@ -140,7 +140,7 @@ Look up the species Helianthus annuus
 head(name_lookup('Helianthus annuus', rank="species", return = 'data'))
 ```
 
-The function `name_usage()` works with lots of different name endpoints in GBIF, listed at [http://www.gbif.org/developer/species#nameUsages]().
+The function `name_usage()` works with lots of different name endpoints in GBIF, listed at [http://www.gbif.org/developer/species#nameUsages](http://www.gbif.org/developer/species#nameUsages).
 
 ```{r}
 library("plyr")

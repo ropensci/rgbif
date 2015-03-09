@@ -428,7 +428,7 @@ head(name_lookup('Helianthus annuus', rank="species", return = 'data'))
 #> 6            <NA>      NA     NA Magnoliopsida     <NA>
 ```
 
-The function `name_usage()` works with lots of different name endpoints in GBIF, listed at [http://www.gbif.org/developer/species#nameUsages]().
+The function `name_usage()` works with lots of different name endpoints in GBIF, listed at [http://www.gbif.org/developer/species#nameUsages](http://www.gbif.org/developer/species#nameUsages).
 
 
 ```r
