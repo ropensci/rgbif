@@ -10,8 +10,8 @@ dataset_metrics(uuid, ...)
 \item{uuid}{(character) One or more dataset UUIDs. See examples.}
 
 \item{...}{Further named parameters, such as \code{query}, \code{path}, etc, passed on to
-   \code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will
-   be combined with \code{\link[httr]{config}}.}
+\code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will
+be combined with \code{\link[httr]{config}}.}
 }
 \description{
 Get details on a GBIF dataset.
