@@ -5,7 +5,7 @@
 \title{Get elevation for lat/long points from a data.frame or list of points.}
 \usage{
 elevation(input = NULL, latitude = NULL, longitude = NULL,
-  latlong = NULL, ...)
+  latlong = NULL, key, ...)
 }
 \arguments{
 \item{input}{A data.frame of lat/long data. There must be columns decimalLatitude and
@@ -19,6 +19,8 @@ vector.}
 
 \item{latlong}{A vector of lat/long pairs. See examples.}
 
+\item{key}{(character) Required. An API key. See Details.}
+
 \item{...}{Further named parameters, such as \code{query}, \code{path}, etc, passed on to
 \code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will be
 combined with \code{\link[httr]{config}}.}
@@ -30,23 +32,31 @@ each location in meters.
 \description{
 Get elevation for lat/long points from a data.frame or list of points.
 }
+\details{
+To get an API key, see instructions at
+\url{https://developers.google.com/maps/documentation/elevation/#api_key}. It should be an
+easy process. Once you have the key pass it in to the \code{key} parameter. You can store
+the key in your \code{.Rprofile} file and read it in via \code{getOption} as in the
+examples below.
+}
 \examples{
 \dontrun{
+apikey <- getOption("g_elevation_api")
 key <- name_suggest('Puma concolor')$key[1]
 dat <- occ_search(taxonKey=key, return='data', limit=300, hasCoordinate=TRUE)
-head( elevation(dat) )
+head( elevation(dat, key = apikey) )
 
 # Pass in a vector of lat's and a vector of long's
-elevation(latitude=dat$decimalLatitude, longitude=dat$decimalLongitude)
+elevation(latitude=dat$decimalLatitude, longitude=dat$decimalLongitude, key = apikey)
 
 # Pass in lat/long pairs in a single vector
 pairs <- list(c(31.8496,-110.576060), c(29.15503,-103.59828))
-elevation(latlong=pairs)
+elevation(latlong=pairs, key = apikey)
 
 # Pass on options to httr
 library('httr')
 pairs <- list(c(31.8496,-110.576060), c(29.15503,-103.59828))
-elevation(latlong=pairs, config=verbose())
+elevation(latlong=pairs, config=verbose(), key = apikey)
 }
 }
 \references{
