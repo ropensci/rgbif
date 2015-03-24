@@ -256,7 +256,7 @@ namelkupparser <- function(x){
   tmp <- lapply(tmp, function(x) {
     if (length(x) == 0) {
       NA 
-    } else if (length(x) > 1) {
+    } else if (length(x) > 1 || is(x, "list")) {
       paste0(x, collapse = ", ")
     } else {
       x
