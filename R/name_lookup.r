@@ -40,6 +40,11 @@
 #'
 #' # Limit records to certain number
 #' name_lookup('Helianthus annuus', rank="species", limit=2)
+#' 
+#' # Query by habitat
+#' name_lookup(habitat = "terrestrial", limit=2)
+#' name_lookup(habitat = "marine", limit=2)
+#' name_lookup(habitat = "freshwater", limit=2)
 #'
 #' # Using faceting
 #' name_lookup(facet='status', limit=0, facetMincount='70000')
@@ -73,8 +78,8 @@
 name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL, isExtinct=NULL,
   habitat=NULL, nameType=NULL, datasetKey=NULL, nomenclaturalStatus=NULL,
   limit=100, start=NULL, facet=NULL, facetMincount=NULL, facetMultiselect=NULL, type=NULL, hl=NULL,
-  verbose=FALSE, return="all", ...)
-{
+  verbose=FALSE, return="all", ...) {
+  
   if(!is.null(facetMincount) && inherits(facetMincount, "numeric"))
     stop("Make sure facetMincount is character")
   if(!is.null(facet)) {
@@ -84,7 +89,7 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
 
   url <- paste0(gbif_base(), '/species/search')
   args <- rgbif_compact(list(q=query, rank=rank, higherTaxonKey=higherTaxonKey, status=status,
-            isExtinct=as_log(isExtinct), habitat=as_log(habitat), nameType=nameType, datasetKey=datasetKey,
+            isExtinct=as_log(isExtinct), habitat=habitat, nameType=nameType, datasetKey=datasetKey,
             nomenclaturalStatus=nomenclaturalStatus, limit=limit, offset=start,
             facetMincount=facetMincount,
             facetMultiselect=as_log(facetMultiselect), hl=as_log(hl), type=type))

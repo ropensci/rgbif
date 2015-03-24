@@ -39,8 +39,8 @@ is within the respective checklist and not searching nub keys across all checkli
 
 \item{isExtinct}{(logical) Filters by extinction status (e.g. isExtinct=TRUE)}
 
-\item{habitat}{(logical) Filters by the habitat, though currently only as boolean marine
-or not-marine (i.e. TRUE=marine, FALSE=not-marine)}
+\item{habitat}{(character) Filters by habitat. One of: marine, freshwater, or
+terrestrial}
 
 \item{nameType}{Filters by the name type as one of:
 \itemize{
@@ -156,6 +156,11 @@ name_lookup(query='Cnaemidophor', rank="genus")
 
 # Limit records to certain number
 name_lookup('Helianthus annuus', rank="species", limit=2)
+
+# Query by habitat
+name_lookup(habitat = "terrestrial", limit=2)
+name_lookup(habitat = "marine", limit=2)
+name_lookup(habitat = "freshwater", limit=2)
 
 # Using faceting
 name_lookup(facet='status', limit=0, facetMincount='70000')

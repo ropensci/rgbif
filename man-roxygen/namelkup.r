@@ -20,8 +20,8 @@
 #'  \item SYNONYM A general synonym, the exact type is unknown.
 #' }
 #' @param isExtinct (logical) Filters by extinction status (e.g. isExtinct=TRUE)
-#' @param habitat (logical) Filters by the habitat, though currently only as boolean marine
-#'      or not-marine (i.e. TRUE=marine, FALSE=not-marine)
+#' @param habitat (character) Filters by habitat. One of: marine, freshwater, or 
+#'    terrestrial
 #' @param nameType Filters by the name type as one of:
 #' \itemize{
 #'  \item BLACKLISTED surely not a scientific name.
