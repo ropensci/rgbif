@@ -80,12 +80,14 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
   limit=100, start=NULL, facet=NULL, facetMincount=NULL, facetMultiselect=NULL, type=NULL, hl=NULL,
   verbose=FALSE, return="all", ...) {
   
-  if(!is.null(facetMincount) && inherits(facetMincount, "numeric"))
+  if (!is.null(facetMincount) && inherits(facetMincount, "numeric"))
     stop("Make sure facetMincount is character")
-  if(!is.null(facet)) {
+  if (!is.null(facet)) {
     facetbyname <- facet
     names(facetbyname) <- rep('facet', length(facet))
-  } else { facetbyname <- NULL }
+  } else {
+    facetbyname <- NULL 
+  }
 
   url <- paste0(gbif_base(), '/species/search')
   args <- rgbif_compact(list(q=query, rank=rank, higherTaxonKey=higherTaxonKey, status=status,
@@ -97,28 +99,29 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
   tt <- gbif_GET(url, args, FALSE, ...)
 
   # metadata
-  meta <- tt[c('offset','limit','endOfRecords','count')]
+  meta <- tt[c('offset', 'limit', 'endOfRecords', 'count')]
 
   # facets
   facets <- tt$facets
-  if(!length(facets) == 0){
-    facetsdat <- lapply(facets, function(x) do.call(rbind, lapply(x$counts, data.frame, stringsAsFactors=FALSE)))
+  if (!length(facets) == 0) {
+    facetsdat <- lapply(facets, function(x) do.call(rbind, lapply(x$counts, data.frame, stringsAsFactors = FALSE)))
     names(facetsdat) <- tolower(sapply(facets, "[[", "field"))
-  } else { facetsdat <- NULL  }
+  } else {
+    facetsdat <- NULL  
+  }
 
   # actual data
-  if(!verbose){
+  if (!verbose) {
     data <- do.call(rbind.fill, lapply(tt$results, namelkupparser))
-  } else
-  {
+  } else {
     data <- tt$results
   }
 
   # hierarchies
   hierdat <- lapply(tt$results, function(x){
     tmp <- x[ names(x) %in% "higherClassificationMap" ]
-    tmpdf <- data.frame(rankkey=names(tmp[[1]]), name=unlist(unname(tmp[[1]])), stringsAsFactors = FALSE)
-    if(NROW(tmpdf) == 0) NULL else tmpdf
+    tmpdf <- data.frame(rankkey = names(tmp[[1]]), name = unlist(unname(tmp[[1]])), stringsAsFactors = FALSE)
+    if (NROW(tmpdf) == 0) NULL else tmpdf
   })
   names(hierdat) <- vapply(tt$results, "[[", numeric(1), "key")
 
@@ -129,13 +132,13 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
   names(vernames) <- vapply(tt$results, "[[", numeric(1), "key")
 
   # select output
-  return <- match.arg(return, c('meta','data','facets','hierarchy','names','all'))
+  return <- match.arg(return, c('meta', 'data', 'facets', 'hierarchy', 'names', 'all'))
   switch(return,
-         meta = data.frame(meta, stringsAsFactors=FALSE),
+         meta = data.frame(meta, stringsAsFactors = FALSE),
          data = data,
          facets = facetsdat,
          hierarchy = compact_null(hierdat),
          names = compact_null(vernames),
-         all = list(meta=data.frame(meta, stringsAsFactors=FALSE), data=data, facets=facetsdat,
-                    hierarchies=compact_null(hierdat), names=compact_null(vernames)))
+         all = list(meta = data.frame(meta, stringsAsFactors = FALSE), data = data, facets = facetsdat,
+                    hierarchies = compact_null(hierdat), names = compact_null(vernames)))
 }

@@ -252,33 +252,41 @@ taxrank <- function()
 #' @export
 #' @keywords internal
 namelkupparser <- function(x){
-  tmp <- x[ ! names(x) %in% c("descriptions","vernacularNames","higherClassificationMap") ]
-  tmp <- lapply(tmp, function(x) if(length(x) == 0) NA else x)
-  df <- data.frame(tmp, stringsAsFactors=FALSE)
-  movecols(df, c('key','scientificName'))
-    # rgbif_compact(
-#       x[c('key','nubKey','parentKey','parent','kingdom','phylum',"clazz","order","family",
-#           "genus","kingdomKey","phylumKey","classKey","orderKey","familyKey","genusKey",
-#           "canonicalName","authorship","nameType","rank","numOccurrences")]
-    # ), stringsAsFactors=FALSE)
+  tmp <- x[ !names(x) %in% c("descriptions", "vernacularNames", "higherClassificationMap") ]
+  tmp <- lapply(tmp, function(x) {
+    if (length(x) == 0) {
+      NA 
+    } else if (length(x) > 1) {
+      paste0(x, collapse = ", ")
+    } else {
+      x
+    }
+  })
+  df <- data.frame(tmp, stringsAsFactors = FALSE)
+  movecols(df, c('key', 'scientificName'))
 }
 
-
 nameusageparser <- function(z){
-  tomove <- c('key','scientificName')
-  tmp <- lapply(z, function(y) if(length(y) == 0) NA else y)
-  df <- data.frame(tmp, stringsAsFactors=FALSE)
-  if( all(tomove %in% names(df)) ) movecols(df, tomove) else df
+  tomove <- c('key', 'scientificName')
+  tmp <- lapply(z, function(y) {
+    if (length(y) == 0) NA else y
+  })
+  df <- data.frame(tmp, stringsAsFactors = FALSE)
+  if (all(tomove %in% names(df))) {
+    movecols(df, tomove) 
+  } else {
+    df 
+  }
 }
 
 movecols <- function(x, cols){
-  other <- names(x)[ ! names(x) %in% cols ]
+  other <- names(x)[ !names(x) %in% cols ]
   x[ , c(cols, other) ]
 }
 
 backbone_parser <- function(x){
-  tmp <- lapply(x, function(x) if(length(x) == 0) NA else x)
-  data.frame(tmp, stringsAsFactors=FALSE)
+  tmp <- lapply(x, function(x) if (length(x) == 0) NA else x)
+  data.frame(tmp, stringsAsFactors = FALSE)
 }
 
 #' Parse results from call to occurrencelist endpoint
