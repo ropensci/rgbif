@@ -61,8 +61,8 @@
 occ_count <- function(taxonKey=NULL, georeferenced=NULL, basisOfRecord=NULL, 
   datasetKey=NULL, date=NULL, catalogNumber=NULL, country=NULL, hostCountry=NULL, 
   year=NULL, from=2000, to=2012, type='count', publishingCountry='US',
-  nubKey=NULL, protocol=NULL, ...)
-{
+  nubKey=NULL, protocol=NULL, ...) {
+  
   calls <- names(sapply(match.call(), deparse))[-1]
   calls_vec <- c("nubKey","hostCountry","catalogNumber") %in% calls
   if(any(calls_vec))

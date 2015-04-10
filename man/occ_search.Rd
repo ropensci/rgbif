@@ -12,9 +12,10 @@ occ_search(taxonKey = NULL, scientificName = NULL, country = NULL,
   datasetKey = NULL, eventDate = NULL, catalogNumber = NULL,
   year = NULL, month = NULL, decimalLatitude = NULL,
   decimalLongitude = NULL, elevation = NULL, depth = NULL,
-  institutionCode = NULL, collectionCode = NULL, spatialIssues = NULL,
-  issue = NULL, search = NULL, mediatype = NULL, limit = 500,
-  start = 0, fields = "all", return = "all", ...)
+  institutionCode = NULL, collectionCode = NULL,
+  hasGeospatialIssue = NULL, issue = NULL, search = NULL,
+  mediatype = NULL, limit = 500, start = 0, fields = "all",
+  return = "all", ...)
 
 \method{print}{gbif}(x, ..., n = 10)
 }
@@ -109,9 +110,9 @@ the institution the record belongs to. Not guaranteed to be que.}
 \item{collectionCode}{An identifier of any form assigned by the source to identify
 the physical collection or digital dataset uniquely within the text of an institution.}
 
-\item{spatialIssues}{(logical) Includes/excludes occurrence records which contain spatial
-issues (as determined in our record interpretation), i.e. spatialIssues=TRUE
-returns only those records with spatial issues while spatialIssues=FALSE includes
+\item{hasGeospatialIssue}{(logical) Includes/excludes occurrence records which contain spatial
+issues (as determined in our record interpretation), i.e. \code{hasGeospatialIssue=TRUE}
+returns only those records with spatial issues while \code{hasGeospatialIssue=FALSE} includes
 only records without spatial issues. The absence of this parameter returns any
 record with or without spatial issues.}
 
@@ -405,7 +406,7 @@ occ_search(collectionCode="Floristic Databases MV - Higher Plants", limit=20)
 occ_search(collectionCode=c("Floristic Databases MV - Higher Plants","Artport"))
 
 # Get only those occurrences with spatial issues
-occ_search(taxonKey=key, spatialIssues=TRUE, limit=20)
+occ_search(taxonKey=key, hasGeospatialIssue=TRUE, limit=20)
 
 # Search using a query string
 occ_search(search="kingfisher", limit=20)

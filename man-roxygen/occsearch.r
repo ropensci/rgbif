@@ -55,9 +55,9 @@
 #'    Text (WKT) format. A WKT shape written as either POINT, LINESTRING, LINEARRING
 #'    or POLYGON. Example of a polygon: ((30.1 10.1, 20, 20 40, 40 40, 30.1 10.1))
 #'     would be queried as \url{http://bit.ly/1BzNwDq}.
-#' @param spatialIssues (logical) Includes/excludes occurrence records which contain spatial
-#'    issues (as determined in our record interpretation), i.e. spatialIssues=TRUE
-#'    returns only those records with spatial issues while spatialIssues=FALSE includes
+#' @param hasGeospatialIssue (logical) Includes/excludes occurrence records which contain spatial
+#'    issues (as determined in our record interpretation), i.e. \code{hasGeospatialIssue=TRUE}
+#'    returns only those records with spatial issues while \code{hasGeospatialIssue=FALSE} includes
 #'    only records without spatial issues. The absence of this parameter returns any
 #'    record with or without spatial issues.
 #' @param issue (character) One or more of many possible issues with each occurrence record. See

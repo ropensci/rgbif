@@ -135,7 +135,7 @@
 #' occ_search(collectionCode=c("Floristic Databases MV - Higher Plants","Artport"))
 #'
 #' # Get only those occurrences with spatial issues
-#' occ_search(taxonKey=key, spatialIssues=TRUE, limit=20)
+#' occ_search(taxonKey=key, hasGeospatialIssue=TRUE, limit=20)
 #'
 #' # Search using a query string
 #' occ_search(search="kingfisher", limit=20)
@@ -254,9 +254,9 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
   geometry=NULL, collectorName=NULL, basisOfRecord=NULL, datasetKey=NULL, eventDate=NULL,
   catalogNumber=NULL, year=NULL, month=NULL, decimalLatitude=NULL, decimalLongitude=NULL,
   elevation=NULL, depth=NULL, institutionCode=NULL, collectionCode=NULL,
-  spatialIssues=NULL, issue=NULL, search=NULL, mediatype=NULL, limit=500, start=0,
-  fields = 'all', return='all', ...)
-{
+  hasGeospatialIssue=NULL, issue=NULL, search=NULL, mediatype=NULL, limit=500, start=0,
+  fields = 'all', return='all', ...) {
+  
   calls <- names(sapply(match.call(), deparse))[-1]
   calls_vec <- c("georeferenced","altitude","latitude","longitude") %in% calls
   if(any(calls_vec))
@@ -265,8 +265,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
   geometry <- geometry_handler(geometry)
 
   url <- paste0(gbif_base(), '/occurrence/search')
-  getdata <- function(x=NULL, itervar=NULL)
-  {
+  getdata <- function(x=NULL, itervar=NULL) {
     if(!is.null(x))
       assign(itervar, x)
 
@@ -289,12 +288,14 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
 
     # Make arg list
     args <- rgbif_compact(list(taxonKey=taxonKey, scientificName=scientificName, country=country,
-      publishingCountry=publishingCountry, hasCoordinate=hasCoordinate, typeStatus=typeStatus, recordNumber=recordNumber,
-      lastInterpreted=lastInterpreted, continent=continent,geometry=geometry, collectorName=collectorName,
-      basisOfRecord=basisOfRecord, datasetKey=datasetKey, eventDate=eventDate, catalogNumber=catalogNumber,
-      year=year, month=month, decimalLatitude=decimalLatitude, decimalLongitude=decimalLongitude,
-      elevation=elevation, depth=depth, institutionCode=institutionCode,
-      collectionCode=collectionCode, spatialIssues=spatialIssues, q=search, mediaType=mediatype,
+      publishingCountry=publishingCountry, hasCoordinate=hasCoordinate, typeStatus=typeStatus, 
+      recordNumber=recordNumber, lastInterpreted=lastInterpreted, continent=continent,
+      geometry=geometry, collectorName=collectorName, basisOfRecord=basisOfRecord, 
+      datasetKey=datasetKey, eventDate=eventDate, catalogNumber=catalogNumber,
+      year=year, month=month, decimalLatitude=decimalLatitude, 
+      decimalLongitude=decimalLongitude, elevation=elevation, depth=depth, 
+      institutionCode=institutionCode, collectionCode=collectionCode, 
+      hasGeospatialIssue=hasGeospatialIssue, q=search, mediaType=mediatype,
       limit=check_limit(as.integer(limit)), offset=check_limit(as.integer(start))))
     args <- c(args, parse_issues(issue))
     argscoll <<- args
