@@ -440,10 +440,6 @@ NULL
 gbif_GET <- function(url, args, parse=FALSE, ...){
   temp <- GET(url, query=args, ...)
   
-  uurl <- parse_url(url)
-  uurl$query <- args
-  temp <- jsonlite::fromJSON(build_url(uurl))
-  
   if(temp$status_code == 204) stop("Status: 204 - not found", call. = FALSE)
   if(temp$status_code > 200){
     mssg <- content(temp)
