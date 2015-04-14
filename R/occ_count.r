@@ -25,6 +25,13 @@
 #' 
 #' @return A single numeric value, or a list of numerics.
 #' @references \url{http://www.gbif.org/developer/occurrence#metrics}
+#' 
+#' @details There is a slight difference in the way records are counted here vs. 
+#' results from \code{\link{occ_search}}. For equivalent outcomes, in the 
+#' \code{\link{occ_search}} function use \code{hasCoordinate=TRUE}, and 
+#' \code{hasGeospatialIssue=FALSE} to have the same outcome for this function
+#' using \code{isGeoreferenced=TRUE}.
+#' 
 #' @examples \dontrun{
 #' occ_count(basisOfRecord='OBSERVATION')
 #' occ_count(georeferenced=TRUE)

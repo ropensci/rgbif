@@ -278,6 +278,11 @@ http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.h
  \item ZERO_COORDINATE Coordinate is the exact 0/0 coordinate, often indicating a bad null
  coordinate.
 }
+
+\bold{Counts:} There is a slight difference in the way records are counted here vs.
+results from \code{\link{occ_count}}. For equivalent outcomes, in this function
+use \code{hasCoordinate=TRUE}, and \code{hasGeospatialIssue=FALSE} to have the
+same outcome using \code{\link{occ_count}} with \code{isGeoreferenced=TRUE}.
 }
 \examples{
 \dontrun{
