@@ -26,18 +26,15 @@ gbifparser <- function(input, fields='minimal'){
     h1 <- c('kingdom','phylum','class','order','family','genus','species')
     h2 <- c('kingdomKey','phylumKey','classKey','orderKey','familyKey','genusKey','speciesKey')
     hier <- get_hier(x, h1, h2)
-    if(nrow(na.omit(hier)) == 0){
-      if(!is.null(x[['species']])){
+    if (nrow(na.omit(hier)) == 0){
+      if (!is.null(x[['species']])){
         usename <- x[['species']]
-      } else if(!is.null(x[['scientificName']]))
-      {
+      } else if(!is.null(x[['scientificName']])) {
         usename <- x[['scientificName']]
-      } else
-      {
+      } else {
         usename <- "none"
       }
-    } else
-    {
+    } else {
       usename <- hier[[nrow(hier),"name"]]
     }
 
@@ -45,7 +42,7 @@ gbifparser <- function(input, fields='minimal'){
     x[names(x) %in% "issues"] <- collapse_issues(x)
 
     # media
-    if("media" %in% names(x)){
+    if ("media" %in% names(x)) {
       media <- x[names(x) %in% "media"]
       media <- lapply(media$media, as.list)
       media2 <- list()
@@ -70,28 +67,24 @@ gbifparser <- function(input, fields='minimal'){
       if(all(c('decimalLatitude','decimalLongitude') %in% names(alldata)))
       {
         alldata <- alldata[c('name','key','decimalLatitude','decimalLongitude','issues')]
-      } else
-      {
+      } else {
         alldata <- data.frame(alldata['name'], alldata['key'],
                               decimalLatitude=NA, decimalLongitude=NA,
                               alldata['issues'], stringsAsFactors=FALSE)
       }
-    } else if(any(fields == 'all'))
-    {
+    } else if(any(fields == 'all')) {
       # rearrange columns
       firstnames <- c('name','key','decimalLatitude','decimalLongitude','issues')
       alldata <- alldata[c(firstnames[firstnames %in% names(alldata)],
                 names(alldata)[-unlist(rgbif_compact(sapply(firstnames, function(z) { tmp <- grep(z, names(alldata)); if(!length(tmp) == 0) tmp }, USE.NAMES = FALSE)))] ) ]
-    } else
-    {
+    } else {
       alldata <- alldata[names(alldata) %in% fields]
     }
     list(hierarchy=hier, media=media2, data=alldata)
   }
   if(is.numeric(input[[1]])){
     parse(input)
-  } else
-  {
+  } else {
     lapply(input, parse)
   }
 }
@@ -114,27 +107,22 @@ gbifparser_verbatim <- function(input, fields='minimal'){
     names(x) <- nn
 
     if(any(fields=='minimal')){
-      if(all(c('decimalLatitude','decimalLongitude') %in% names(x)))
-      {
+      if(all(c('decimalLatitude','decimalLongitude') %in% names(x))) {
         x[c('scientificName','key','decimalLatitude','decimalLongitude')]
-      } else
-      {
+      } else {
         list(scientificName=x[['scientificName']], key=x[['key']], decimalLatitude=NA, decimalLongitude=NA, stringsAsFactors=FALSE)
       }
-    } else if(any(fields == 'all'))
-    {
+    } else if(any(fields == 'all')) {
       x[vapply(x, length, 0) == 0] <- "none"
       x
-    } else
-    {
+    } else {
       x[vapply(x, length, 0) == 0] <- "none"
       x[names(x) %in% fields]
     }
   }
   if(is.numeric(input[[1]])){
     data.frame(parse(input), stringsAsFactors = FALSE)
-  } else
-  {
+  } else {
     do.call(rbind.fill, lapply(input, function(w) data.frame(parse(w), stringsAsFactors = FALSE)))
   }
 }
@@ -176,8 +164,7 @@ datasetparser <- function(input, minimal=TRUE){
   }
   if(is.character(input[[1]])){
     parse(input)
-  } else
-  {
+  } else {
     lapply(input, parse)
   }
 }
@@ -221,16 +208,15 @@ blanktheme <- function(){
 #' @keywords internal
 gbif_capwords <- function(s, strict = FALSE, onlyfirst = FALSE) {
   cap <- function(s) paste(toupper(substring(s,1,1)),
-{s <- substring(s,2); if(strict) tolower(s) else s}, sep = "", collapse = " " )
-if(!onlyfirst){
-  sapply(strsplit(s, split = " "), cap, USE.NAMES = !is.null(names(s)))
-} else
-{
-  sapply(s, function(x)
-    paste(toupper(substring(x,1,1)),
-          tolower(substring(x,2)),
-          sep="", collapse=" "), USE.NAMES=F)
-}
+  {s <- substring(s,2); if(strict) tolower(s) else s}, sep = "", collapse = " " )
+  if(!onlyfirst){
+    sapply(strsplit(s, split = " "), cap, USE.NAMES = !is.null(names(s)))
+  } else {
+    sapply(s, function(x)
+      paste(toupper(substring(x,1,1)),
+            tolower(substring(x,2)),
+            sep="", collapse=" "), USE.NAMES=F)
+  }
 }
 
 #' Get the possible values to be used for (taxonomic) rank arguments in GBIF
@@ -240,9 +226,8 @@ if(!onlyfirst){
 #' taxrank()
 #' }
 #' @export
-taxrank <- function()
-{
-  c("kingdom", "phylum", "class", "order", "family", "genus","species",
+taxrank <- function() {
+  c("kingdom", "phylum", "class", "order", "family", "genus", "species",
     "infraspecific")
 }
 
@@ -314,8 +299,7 @@ parseresults <- function(x, ..., removeZeros=removeZeros)
     i <- df_num$decimalLongitude == 0 & df_num$decimalLatitude == 0
     if (removeZeros) {
       df_num <- df_num[!i, ]
-    } else
-    {
+    } else {
       df_num[i, "decimalLatitude"] <- NA
       df_num[i, "decimalLongitude"] <- NA
     }
@@ -330,8 +314,7 @@ parseresults <- function(x, ..., removeZeros=removeZeros)
 #' @param dataframe A data.frame
 #' @export
 #' @keywords internal
-commas_to_periods <- function(dataframe)
-{
+commas_to_periods <- function(dataframe) {
   dataframe$decimalLatitude <- gsub("\\,", ".", dataframe$decimalLatitude)
   dataframe$decimalLongitude <- gsub("\\,", ".", dataframe$decimalLongitude)
   return( dataframe )
@@ -345,7 +328,7 @@ gbifxmlToDataFrame <- function(doc, format) {
   nodes <- getNodeSet(doc, "//to:TaxonOccurrence")
   if (length(nodes) == 0)
     return(data.frame())
-  if(!is.null(format) & format=="darwin"){
+  if (!is.null(format) & format == "darwin") {
     varNames <- c("occurrenceID", "country", "stateProvince",
                   "county", "locality", "decimalLatitude", "decimalLongitude",
                   "coordinateUncertaintyInMeters", "maximumElevationInMeters",
@@ -353,7 +336,7 @@ gbifxmlToDataFrame <- function(doc, format) {
                   "minimumDepthInMeters", "institutionCode", "collectionCode",
                   "catalogNumber", "basisOfRecordString", "collector",
                   "earliestDateCollected", "latestDateCollected", "gbifNotes")
-  } else{
+  } else {
     varNames <- c("occurrenceID", "country", "decimalLatitude", "decimalLongitude",
                   "catalogNumber", "earliestDateCollected", "latestDateCollected" )
   }
@@ -456,6 +439,11 @@ NULL
 
 gbif_GET <- function(url, args, parse=FALSE, ...){
   temp <- GET(url, query=args, ...)
+  
+  uurl <- parse_url(url)
+  uurl$query <- args
+  temp <- jsonlite::fromJSON(build_url(uurl))
+  
   if(temp$status_code == 204) stop("Status: 204 - not found", call. = FALSE)
   if(temp$status_code > 200){
     mssg <- content(temp)
@@ -477,17 +465,6 @@ gbif_GET_content <- function(url, args, ...){
 cn <- function(x) if(length(x) == 0) NULL else x
 
 gbif_base <- function() 'http://api.gbif.org/v1'
-
-# error_parse <- function(x){
-#   http_status(x)$message
-# #   if(grepl("html", x)){
-# #     parsed <- XML::htmlParse(x)
-# #     # aslist <- XML::xpathApply(parsed, "//p", XML::xmlToList)
-# #     # aslist[sapply(aslist, "[[", "b") == "message"][[1]]$u
-# #   } else {
-# #     x
-# #   }
-# }
 
 #' Table of GBIF issues, with codes used in data output, full issue name, and descriptions.
 #'
@@ -564,7 +541,9 @@ gbifissues <- structure(list(
 
 as_log <- function(x){
   stopifnot(is.logical(x) || is.null(x))
-  if(is.null(x)) NULL else if(x) 'true' else 'false'
+  if (is.null(x)) NULL else if(x) 'true' else 'false'
 }
 
-noNA <- function (x) !(any(is.na(x)))
+noNA <- function(x) {
+  !(any(is.na(x)))
+}

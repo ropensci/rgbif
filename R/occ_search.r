@@ -303,60 +303,53 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
     iter <- 0
     sumreturned <- 0
     outout <- list()
-    while(sumreturned < limit){
+    while (sumreturned < limit) {
       iter <- iter + 1
       tt <- gbif_GET(url, args, FALSE, ...)
 
       # if no results, assign count var with 0
-      if(identical(tt$results, list())) tt$count <- 0
+      if (identical(tt$results, list())) tt$count <- 0
 
       numreturned <- length(tt$results)
       sumreturned <- sumreturned + numreturned
 
-      if(tt$count < limit)
+      if (tt$count < limit)
         limit <- tt$count
 
-      if(sumreturned < limit){
+      if (sumreturned < limit) {
         args$limit <- limit-sumreturned
         args$offset <- sumreturned
       }
       outout[[iter]] <- tt
     }
 
-    meta <- outout[[length(outout)]][c('offset','limit','endOfRecords','count')]
+    meta <- outout[[length(outout)]][c('offset', 'limit', 'endOfRecords', 'count')]
     data <- do.call(c, lapply(outout, "[[", "results"))
 
-    if(return=='data'){
-      if(identical(data, list())){
+    if (return == 'data'){
+      if (identical(data, list())) {
         paste("no data found, try a different search")
-      } else
-      {
+      } else {
         data <- gbifparser(input=data, fields=fields)
         ldfast(lapply(data, "[[", "data"))
       }
-    } else
-    if(return=='hier'){
+    } else if (return == 'hier') {
       if(identical(data, list())){
         paste("no data found, try a different search")
-      } else
-      {
+      } else {
         data <- gbifparser(input=data, fields=fields)
         unique(lapply(data, "[[", "hierarchy"))
       }
-    } else
-      if(return=='media'){
-        if(identical(data, list())){
-          paste("no data found, try a different search")
-        } else
-        {
-          data <- gbifparser(input=data, fields=fields)
-          sapply(data, "[[", "media")
-        }
-      } else
-    if(return=='meta'){
+    } else if (return == 'media') {
+      if (identical(data, list())){
+        paste("no data found, try a different search")
+      } else {
+        data <- gbifparser(input=data, fields=fields)
+        sapply(data, "[[", "media")
+      }
+    } else if (return == 'meta'){
       data.frame(meta, stringsAsFactors=FALSE)
-    } else
-    {
+    } else {
       if(identical(data, list())){
         dat2 <- paste("no data found, try a different search")
         hier2 <- paste("no data found, try a different search")
@@ -371,7 +364,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
       list(meta=meta, hierarchy=hier2, data=dat2, media=media)
     }
   }
-
+  
   params <- list(taxonKey=taxonKey,scientificName=scientificName,datasetKey=datasetKey,catalogNumber=catalogNumber,
                  collectorName=collectorName,geometry=geometry,country=country,
                  publishingCountry=publishingCountry,recordNumber=recordNumber,
@@ -379,16 +372,15 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
                  decimalLatitude=decimalLatitude,decimalLongitude=decimalLongitude,depth=depth,year=year,
                  typeStatus=typeStatus,lastInterpreted=lastInterpreted,mediatype=mediatype,
                  limit=limit)
-  if(!any(sapply(params, length)>0))
+  if (!any(sapply(params, length) > 0))
     stop(sprintf("At least one of the parmaters must have a value:\n%s", possparams()), call. = FALSE)
-  iter <- params[which(sapply(params, length)>1)]
-  if(length(names(iter))>1)
+  iter <- params[which(sapply(params, length) > 1)]
+  if (length(names(iter)) > 1)
     stop(sprintf("You can have multiple values for only one of:\n%s", possparams()), call. = FALSE)
 
-  if(length(iter)==0){
+  if (length(iter) == 0) {
     out <- getdata()
-  } else
-  {
+  } else {
     out <- lapply(iter[[1]], getdata, itervar = names(iter))
     names(out) <- iter[[1]]
   }
@@ -398,13 +390,13 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
   }
   argscoll$fields <- fields
 
-  if(is(out, "data.frame")){
-    class(out) <- c('data.frame','gbif')
+  if (is(out, "data.frame")) {
+    class(out) <- c('data.frame', 'gbif')
   } else {
     class(out) <- "gbif"
-    attr(out, 'type') <- if(length(iter)==0) "single" else "many"
+    attr(out, 'type') <- if (length(iter) == 0) "single" else "many"
   }
-  structure(out, return=return, args=argscoll)
+  structure(out, return = return, args = argscoll)
 }
 
 geometry_handler <- function(x){
@@ -418,18 +410,17 @@ geometry_handler <- function(x){
 #' @method print gbif
 #' @export
 #' @rdname occ_search
-print.gbif <- function (x, ..., n = 10)
-{
-  if(attr(x, "type") == "single" & all(c('meta','data','hierarchy','media') %in% names(x))){
+print.gbif <- function(x, ..., n = 10) {
+  if (attr(x, "type") == "single" & all(c('meta','data','hierarchy','media') %in% names(x))){
     cat(rgbif_wrap(sprintf("Records found [%s]", x$meta$count)), "\n")
     cat(rgbif_wrap(sprintf("Records returned [%s]", NROW(x$data))), "\n")
     cat(rgbif_wrap(sprintf("No. unique hierarchies [%s]", length(x$hierarchy))), "\n")
     cat(rgbif_wrap(sprintf("No. media records [%s]", length(x$media))), "\n")
     cat(rgbif_wrap(sprintf("Args [%s]", pasteargs(x))), "\n")
     cat(sprintf("First 10 rows of data\n\n"))
-    if(is(x$data, "data.frame")) trunc_mat(x$data, n = n) else cat(x$data)
-  } else if(attr(x, "type") == "many") {
-    if(!attr(x, "return") == "all"){
+    if (is(x$data, "data.frame")) trunc_mat(x$data, n = n) else cat(x$data)
+  } else if (attr(x, "type") == "many") {
+    if (!attr(x, "return") == "all") {
       if(is(x, "gbif")) x <- unclass(x)
       attr(x, "type") <- NULL
       attr(x, "return") <- NULL
