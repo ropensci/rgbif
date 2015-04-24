@@ -22,17 +22,19 @@
 #' 178.2421875 59.95776046458139,-179.6484375 61.16708631440347,-178.59375 64.83258989321493))'
 #' check_wkt(gsub("\n", '', wkt))
 
-check_wkt <- function(wkt=NULL){
-  if(!is.null(wkt)){
+check_wkt <- function(wkt = NULL){
+  if (!is.null(wkt)) {
     stopifnot(is.character(wkt))
     y <- str_extract(wkt, "[A-Z]+")
-    if(!y %in% c('POINT','POLYGON','LINESTRING','LINEARRING'))
+    if (!y %in% c('POINT', 'POLYGON', 'LINESTRING', 'LINEARRING')) {
       stop("WKT must be of type POINT, POLYGON, LINESTRING, or LINEARRING")
-#     res <- try_default(readWKT(wkt), 'notvalid', quiet = TRUE)
-    res <- tryCatch(readWKT(wkt), error = function(e) e)
-    if(!is(res, 'Spatial'))
-#       stop(sprintf("Your WKT malformed somehow:\n%s", res), call. = FALSE)
+    }
+    res <- tryCatch(rgeos::readWKT(wkt), error = function(e) e)
+    if (!is(res, 'Spatial')) {
       stop(res)
-    wkt
-  } else { NULL }
+    }
+    return(wkt)
+  } else { 
+    NULL 
+  }
 }
