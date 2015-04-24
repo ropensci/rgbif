@@ -5,7 +5,7 @@ travis-tool.sh
 man-roxygen
 ^.*\.Rproj$
 ^\.Rproj\.user$
-vignettes/margins.sty
+vignettes/figure
 .Rhistory
 inst/ignore
 cran-comments.md
