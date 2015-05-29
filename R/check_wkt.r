@@ -1,6 +1,6 @@
 #' Check input WKT
 #'
-#' @import rgeos plyr
+#' @import plyr
 #' @importFrom stringr str_extract
 #' @export
 #' @param wkt A Well Known Text object
@@ -29,9 +29,9 @@ check_wkt <- function(wkt = NULL){
     if (!y %in% c('POINT', 'POLYGON', 'LINESTRING', 'LINEARRING')) {
       stop("WKT must be of type POINT, POLYGON, LINESTRING, or LINEARRING")
     }
-    res <- tryCatch(rgeos::readWKT(wkt), error = function(e) e)
-    if (!is(res, 'Spatial')) {
-      stop(res)
+    res <- tryCatch(read_wkt(wkt), error = function(e) e)
+    if (!is(res, 'list')) {
+      stop(res$message, call. = FALSE)
     }
     return(wkt)
   } else { 

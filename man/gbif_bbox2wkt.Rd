@@ -34,15 +34,13 @@ Convert a bounding box to a Well Known Text polygon, and a WKT to a bounding box
 \examples{
 \dontrun{
 # Convert a bounding box to a WKT
-library("rgeos")
-
 ## Pass in a vector of length 4 with all values
 mm <- gbif_bbox2wkt(bbox=c(38.4,-125.0,40.9,-121.8))
-plot(readWKT(mm))
+read_wkt(mm)
 
 ## Or pass in each value separately
 mm <- gbif_bbox2wkt(minx=38.4, miny=-125.0, maxx=40.9, maxy=-121.8)
-plot(readWKT(mm))
+read_wkt(mm)
 
 # Convert a WKT object to a bounding box
 wkt <- "POLYGON((38.4 -125,40.9 -125,40.9 -121.8,38.4 -121.8,38.4 -125))"
