@@ -45,9 +45,7 @@ gbif_issues()[ gbif_issues()$code \%in\% c('cdround','cudc','gass84','txmathi'),
 # compare out data to after occ_issues use
 (out <- occ_search(limit=100))
 out \%>\% occ_issues(cudc)
-}
 
-\dontrun{
 # Parsing output by issue
 (res <- occ_search(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))', limit = 50))
 
@@ -60,11 +58,11 @@ head(res$data)[,c(1:5)]
 head(gg$data)[,c(1:5)]
 
 ### remove data rows with certain issue classes
-res \%>\% occ_issues(-gass84, -mdatunl)
+res \%>\% occ_issues(-cdround, -cudc)
 
 ### split issues into separate columns
 res \%>\% occ_issues(mutate = "split")
-res \%>\% occ_issues(-gass84, -mdatunl, mutate = "split")
+res \%>\% occ_issues(-cudc, -mdatunl, mutate = "split")
 res \%>\% occ_issues(gass84, mutate = "split")
 
 ### expand issues to more descriptive names
@@ -74,10 +72,10 @@ res \%>\% occ_issues(mutate = "expand")
 res \%>\% occ_issues(mutate = "split_expand")
 
 ### split, expand, and remove an issue class
-res \%>\% occ_issues(-gass84, mutate = "split_expand")
+res \%>\% occ_issues(-cudc, mutate = "split_expand")
 
 ## Or you can use occ_issues without \%>\%
-occ_issues(res, -gass84, mutate = "split_expand")
+occ_issues(res, -cudc, mutate = "split_expand")
 }
 }
 \references{

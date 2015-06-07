@@ -469,7 +469,7 @@ gbif_issues()[ gbif_issues()$code \%in\% c('cdround','cudc','gass84','txmathi'),
 ## or parse issues in various ways
 ### remove data rows with certain issue classes
 library('magrittr')
-res \%>\% occ_issues(-gass84, -mdatunl)
+res \%>\% occ_issues(gass84)
 ### split issues into separate columns
 res \%>\% occ_issues(mutate = "split")
 ### expand issues to more descriptive names
@@ -477,7 +477,7 @@ res \%>\% occ_issues(mutate = "expand")
 ### split and expand
 res \%>\% occ_issues(mutate = "split_expand")
 ### split, expand, and remove an issue class
-res \%>\% occ_issues(-gass84, mutate = "split_expand")
+res \%>\% occ_issues(-cudc, mutate = "split_expand")
 
 # If you try multiple values for two different parameters you are wacked on the hand
 # occ_search(taxonKey=c(2482598,2492010), collectorName=c("smith","BJ Stacey"))

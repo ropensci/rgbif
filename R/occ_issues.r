@@ -28,8 +28,7 @@
 #' we will remove the associated records from the \code{hierarchy} and \code{media}
 #' elements as they are remove from the \code{data} element.
 #'
-#' @examples
-#' \dontrun{
+#' @examples \dontrun{
 #' ## what do issues mean, can print whole table, or search for matches
 #' head(gbif_issues())
 #' gbif_issues()[ gbif_issues()$code %in% c('cdround','cudc','gass84','txmathi'), ]
@@ -37,9 +36,7 @@
 #' # compare out data to after occ_issues use
 #' (out <- occ_search(limit=100))
 #' out %>% occ_issues(cudc)
-#' }
-#'
-#' \dontrun{
+#' 
 #' # Parsing output by issue
 #' (res <- occ_search(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))', limit = 50))
 #'
@@ -52,11 +49,11 @@
 #' head(gg$data)[,c(1:5)]
 #'
 #' ### remove data rows with certain issue classes
-#' res %>% occ_issues(-gass84, -mdatunl)
+#' res %>% occ_issues(-cdround, -cudc)
 #'
 #' ### split issues into separate columns
 #' res %>% occ_issues(mutate = "split")
-#' res %>% occ_issues(-gass84, -mdatunl, mutate = "split")
+#' res %>% occ_issues(-cudc, -mdatunl, mutate = "split")
 #' res %>% occ_issues(gass84, mutate = "split")
 #'
 #' ### expand issues to more descriptive names
@@ -66,33 +63,34 @@
 #' res %>% occ_issues(mutate = "split_expand")
 #'
 #' ### split, expand, and remove an issue class
-#' res %>% occ_issues(-gass84, mutate = "split_expand")
+#' res %>% occ_issues(-cudc, mutate = "split_expand")
 #'
 #' ## Or you can use occ_issues without %>%
-#' occ_issues(res, -gass84, mutate = "split_expand")
+#' occ_issues(res, -cudc, mutate = "split_expand")
 #' }
 
-occ_issues <- function(.data, ..., mutate=NULL){
+occ_issues <- function(.data, ..., mutate = NULL) {
+  
   stopifnot(is(.data, "gbif"))
   tmp <- .data$data
 
-  if(!length(dots(...)) == 0){
+  if (!length(dots(...)) == 0) {
     filters <- parse_input(...)
-    if(length(filters$neg) > 0){
+    if (length(filters$neg) > 0) {
       tmp <- tmp[ !grepl(paste(filters$neg, collapse = "|"), tmp$issues), ]
     }
-    if(length(filters$pos) > 0){
+    if (length(filters$pos) > 0) {
       tmp <- tmp[ grepl(paste(filters$pos, collapse = "|"), tmp$issues), ]
     }
   }
 
-  if(!is.null(mutate)){
-    if(mutate == 'split'){
+  if (!is.null(mutate)) {
+    if (mutate == 'split') {
       tmp <- split_iss(tmp)
-    } else if(mutate == 'split_expand') {
+    } else if (mutate == 'split_expand') {
       tmp <- mutate_iss(tmp)
       tmp <- split_iss(tmp)
-    } else if(mutate == 'expand') {
+    } else if (mutate == 'expand') {
       tmp <- mutate_iss(tmp)
     }
   }
@@ -102,36 +100,26 @@ occ_issues <- function(.data, ..., mutate=NULL){
 }
 
 mutate_iss <- function(w){
-  w$issues <- sapply(strsplit(w$issues, split=","), function(z) paste(gbifissues[ gbifissues$code %in% z, "issue" ], collapse = ",") )
+  w$issues <- sapply(strsplit(w$issues, split = ","), function(z) paste(gbifissues[ gbifissues$code %in% z, "issue" ], collapse = ",") )
   return( w )
 }
 
 split_iss <- function(m){
-  unq <- unique(unlist(strsplit(m$issues, split=",")))
-  df <- data.frame(rbindlist(lapply(strsplit(m$issues, split=","), function(b) { v <- unq %in% b; data.frame(rbind(ifelse(v, "y", "n")), stringsAsFactors = FALSE) } )), stringsAsFactors = FALSE)
+  unq <- unique(unlist(strsplit(m$issues, split = ",")))
+  df <- data.frame(rbindlist(lapply(strsplit(m$issues, split = ","), function(b) { v <- unq %in% b; data.frame(rbind(ifelse(v, "y", "n")), stringsAsFactors = FALSE) } )), stringsAsFactors = FALSE)
   names(df) <- unq
   m$issues <- NULL
-#   m <- cbind(m, df)
   first <- c('name','key','decimalLatitude','decimalLongitude')
-  m <- data.frame(m[,first], df, m[,!names(m) %in% first], stringsAsFactors = FALSE)
-  return( m )
+  data.frame(m[,first], df, m[,!names(m) %in% first], stringsAsFactors = FALSE)
 }
 
-parse_input <- function(...){
+parse_input <- function(...) {
   x <- as.character(dots(...))
   neg <- gsub('-', '', x[grepl("-", x)])
-  pos <- x[!grepl("-", x, )]
-  list(neg=neg, pos=pos)
+  pos <- x[!grepl("-", x)]
+  list(neg = neg, pos = pos)
 }
 
 dots <- function(...){
   eval(substitute(alist(...)))
 }
-
-# shit <- function(...){
-#   if(length(dots(...)) == 0) "empty" else "not empty"
-# }
-#
-# shit <- function(...){
-#   dots(...)
-# }

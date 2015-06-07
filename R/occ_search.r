@@ -193,7 +193,7 @@
 #' ## or parse issues in various ways
 #' ### remove data rows with certain issue classes
 #' library('magrittr')
-#' res %>% occ_issues(-gass84, -mdatunl)
+#' res %>% occ_issues(gass84)
 #' ### split issues into separate columns
 #' res %>% occ_issues(mutate = "split")
 #' ### expand issues to more descriptive names
@@ -201,7 +201,7 @@
 #' ### split and expand
 #' res %>% occ_issues(mutate = "split_expand")
 #' ### split, expand, and remove an issue class
-#' res %>% occ_issues(-gass84, mutate = "split_expand")
+#' res %>% occ_issues(-cudc, mutate = "split_expand")
 #'
 #' # If you try multiple values for two different parameters you are wacked on the hand
 #' # occ_search(taxonKey=c(2482598,2492010), collectorName=c("smith","BJ Stacey"))
@@ -253,7 +253,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
   elevation=NULL, depth=NULL, institutionCode=NULL, collectionCode=NULL,
   hasGeospatialIssue=NULL, issue=NULL, search=NULL, mediatype=NULL, limit=500, start=0,
   fields = 'all', return='all', ...) {
-  
+
   calls <- names(sapply(match.call(), deparse))[-1]
   calls_vec <- c("georeferenced","altitude","latitude","longitude") %in% calls
   if(any(calls_vec))
@@ -285,13 +285,13 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
 
     # Make arg list
     args <- rgbif_compact(list(taxonKey=taxonKey, scientificName=scientificName, country=country,
-      publishingCountry=publishingCountry, hasCoordinate=hasCoordinate, typeStatus=typeStatus, 
+      publishingCountry=publishingCountry, hasCoordinate=hasCoordinate, typeStatus=typeStatus,
       recordNumber=recordNumber, lastInterpreted=lastInterpreted, continent=continent,
-      geometry=geometry, collectorName=collectorName, basisOfRecord=basisOfRecord, 
+      geometry=geometry, collectorName=collectorName, basisOfRecord=basisOfRecord,
       datasetKey=datasetKey, eventDate=eventDate, catalogNumber=catalogNumber,
-      year=year, month=month, decimalLatitude=decimalLatitude, 
-      decimalLongitude=decimalLongitude, elevation=elevation, depth=depth, 
-      institutionCode=institutionCode, collectionCode=collectionCode, 
+      year=year, month=month, decimalLatitude=decimalLatitude,
+      decimalLongitude=decimalLongitude, elevation=elevation, depth=depth,
+      institutionCode=institutionCode, collectionCode=collectionCode,
       hasGeospatialIssue=hasGeospatialIssue, q=search, mediaType=mediatype,
       limit=check_limit(as.integer(limit)), offset=check_limit(as.integer(start))))
     args <- c(args, parse_issues(issue))
@@ -361,7 +361,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
       list(meta=meta, hierarchy=hier2, data=dat2, media=media)
     }
   }
-  
+
   params <- list(taxonKey=taxonKey,scientificName=scientificName,datasetKey=datasetKey,catalogNumber=catalogNumber,
                  collectorName=collectorName,geometry=geometry,country=country,
                  publishingCountry=publishingCountry,recordNumber=recordNumber,

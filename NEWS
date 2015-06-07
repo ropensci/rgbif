@@ -3,25 +3,26 @@ rgbif 0.8.4
 
 NEW FEATURES
 
-* New functions for the `/enumerations` GBIF API route: `enumeration()` 
-and `enumeration_country()`. Many parts of the GBIF API make use of 
+* New functions for the `/enumerations` GBIF API route: `enumeration()`
+and `enumeration_country()`. Many parts of the GBIF API make use of
 enumerations, i.e. controlled vocabularies for specific topics - and are
 available via these functions. (#152)
 
 IMPROVEMENTS
 
 * `elevation()` now requires an API key (#148)
-* The `V8` package an Import now, used to do WKT read/create. Replaces 
-packages `sp` and `rgeos` (#155)
-* Changed `occ_search()` parameter `spatialIssues` to 
+* The `V8` package an Import now, used to do WKT read/create with use of
+the Javascript library Terraformer (http://terraformer.io/). Replaces
+packages `sp` and `rgeos`, which are no longer imported (#155)
+* Changed `occ_search()` parameter `spatialIssues` to
 `hasGeospatialIssues` (#151)
-* Added note to docs about difference between `/search` and `/count` 
+* Added note to docs about difference between `/search` and `/count`
 services, and how they work. (#150)
 * Added tests for habitat parameter in `name_lookup()` (#149)
 
 BUG FIXES
 
-* Looping over records with `limit` and `start` parameters was in some 
+* Looping over records with `limit` and `start` parameters was in some
 cases resulting in duplicate records returned. Problem fixed. (#157)
 
 rgbif 0.8.0
@@ -40,11 +41,11 @@ other parameters if desired (#137)
 
 BUG FIXES
 
-* Fixed bug in internal `GET()` helper function to just pass `NULL` to the `query` parameter when 
+* Fixed bug in internal `GET()` helper function to just pass `NULL` to the `query` parameter when
 the list of length 0 passed, since it caused requests to fail in some cases.
-* Fix to `name_lookup()` to force a logical entry for certain parameters - before this fix 
+* Fix to `name_lookup()` to force a logical entry for certain parameters - before this fix
 if the correct logical param was not passed, the GBIF API went with its default parameter (#135)
-* Fixed bug in `name_backbone()` due to change in `namelkupparser()` helper function - fixes 
+* Fixed bug in `name_backbone()` due to change in `namelkupparser()` helper function - fixes
 parsing for verbose output (#136)
 * Fixed some broken URLs in `occ_search()` documentation (#140)
 
@@ -58,7 +59,7 @@ NEW FEATURES
 * Related to the last bullet, GBIF issues now are returned by default in `occ_search()` results, and are intentionally moved to the beginning of the column order of the data to be more obvious. (#102)
 * `occ_search()` now returns all data fields by default. The default setting for the `fields` parameter is `all` - but can be changed. See `?occ_search`
 * New function `gbif_names()` to view highlighted terms in name results from a call to `name_lookup()`. (#114)
-* New functions: `occ_issues_lookup()` to lookup GBIF issues based on code name or full issue name, and `gbif_issues()` to print the entire issues table. 
+* New functions: `occ_issues_lookup()` to lookup GBIF issues based on code name or full issue name, and `gbif_issues()` to print the entire issues table.
 
 IMPROVEMENTS
 
@@ -73,8 +74,8 @@ IMPROVEMENTS
 * `callopts` parameter changed to `...` throughout all functions. Now pass on options to `httr` as named lists or functions. (#130)
 * Beware that GBIF data is becoming Darwin Core compliant - so many parameters throughout this package have changed from sentence_case to camelCase.
 * `dataset_search()` and `dataset_suggest()` gain new parameter `publishingOrg`
-* Default for `limit` parameter changed to 100 for dataset functions: `dataset_search()`, `dataset_suggest()`, and `datasets()`. 
-* Default for `limit` parameter changed to 100 for registry functions: `installations()`, `networks()`, `organizations`, and `nodes()`. 
+* Default for `limit` parameter changed to 100 for dataset functions: `dataset_search()`, `dataset_suggest()`, and `datasets()`.
+* Default for `limit` parameter changed to 100 for registry functions: `installations()`, `networks()`, `organizations`, and `nodes()`.
 * Parameter changes in `networks()`: `name`, `code`, `modifiedsince`, `startindex`, and `maxresults` gone; new parameters `query`, `identifier`, `identifierType`, `limit`, and `start`
 * Parameter changes in `nodes()`: new parameters `identifier`, `identifierType`, `limit`, and `start`
 

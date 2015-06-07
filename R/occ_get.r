@@ -25,16 +25,16 @@
 #' occ_get(key=766766824, 'all')
 #'
 #' # many occurrences
-#' occ_get(key=c(101010,240713150,855998194,49819470), return='data')
+#' occ_get(key=c(101010, 240713150, 855998194), return='data')
 #'
 #' # Verbatim data
 #' occ_get(key=766766824, verbatim=TRUE)
 #' occ_get(key=766766824, fields='all', verbatim=TRUE)
-#' occ_get(key=766766824, fields=c('scientificName','lastCrawled','county'), verbatim=TRUE)
-#' occ_get(key=c(766766824,620594291,766420684), verbatim=TRUE)
-#' occ_get(key=c(766766824,620594291,766420684), fields='all', verbatim=TRUE)
-#' occ_get(key=c(766766824,620594291,766420684),
-#'    fields=c('scientificName','decimalLatitude','basisOfRecord'), verbatim=TRUE)
+#' occ_get(key=766766824, fields=c('scientificName', 'lastCrawled', 'county'), verbatim=TRUE)
+#' occ_get(key=c(766766824, 620594291, 766420684), verbatim=TRUE)
+#' occ_get(key=c(766766824, 620594291, 766420684), fields='all', verbatim=TRUE)
+#' occ_get(key=c(766766824, 620594291, 766420684),
+#'    fields=c('scientificName', 'decimalLatitude', 'basisOfRecord'), verbatim=TRUE)
 #'
 #' # Pass in curl options
 #' library("httr")
@@ -42,45 +42,49 @@
 #' occ_get(key=766766824, config=progress())
 #' }
 
-occ_get <- function(key=NULL, return='all', verbatim=FALSE, fields='minimal', ...)
-{
+occ_get <- function(key=NULL, return='all', verbatim=FALSE, fields='minimal', ...) {
+  
   stopifnot(is.numeric(key))
   return <- match.arg(return, c("meta", "data", "hier", "all"))
 
   # Define function to get data
-  getdata <- function(x){
-    if(verbatim){
+  getdata <- function(x) {
+    if (verbatim) {
       url <- sprintf('%s/occurrence/%s/verbatim', gbif_base(), x)
-    } else
-    {
+    } else {
       url <- sprintf('%s/occurrence/%s', gbif_base(), x)
     }
     gbif_GET(url, list(), FALSE, ...)
   }
 
   # Get data
-  if(length(key)==1){ out <- getdata(key) } else
-  { out <- lapply(key, getdata) }
+  if (length(key) == 1) { 
+    out <- getdata(key) 
+  } else { 
+    out <- lapply(key, getdata) 
+  }
 
   # parse data
-  if(verbatim){
-    gbifparser_verbatim(out, fields=fields)
-  } else
-  {
-    data <- gbifparser(out, fields=fields)
+  if (verbatim) {
+    gbifparser_verbatim(out, fields = fields)
+  } else {
+    data <- gbifparser(out, fields = fields)
 
-    if(return=='data'){
-      if(length(key)==1){ data$data } else
-      {
+    if (return == 'data') {
+      if (length(key) == 1) { 
+        data$data 
+      } else {
         ldfast(lapply(data, "[[", "data"))
       }
     } else
-      if(return=='hier'){
-        if(length(key)==1){ data$hierarch } else
-        {
+      if (return == 'hier') {
+        if (length(key) == 1) { 
+          data$hierarch 
+        } else {
           ldfast(lapply(data, "[[", "hierarchy"))
         }
-      } else
-      { data }
+      } else { 
+        data 
+      }
   }
 }
