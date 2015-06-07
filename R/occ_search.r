@@ -314,8 +314,8 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
         limit <- tt$count
 
       if (sumreturned < limit) {
-        args$limit <- limit-sumreturned
-        args$offset <- sumreturned
+        args$limit <- limit - sumreturned
+        args$offset <- sumreturned + start
       }
       outout[[iter]] <- tt
     }
@@ -323,22 +323,22 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
     meta <- outout[[length(outout)]][c('offset', 'limit', 'endOfRecords', 'count')]
     data <- do.call(c, lapply(outout, "[[", "results"))
 
-    if (return == 'data'){
+    if (return == 'data') {
       if (identical(data, list())) {
         paste("no data found, try a different search")
       } else {
-        data <- gbifparser(input=data, fields=fields)
+        data <- gbifparser(input = data, fields = fields)
         ldfast(lapply(data, "[[", "data"))
       }
     } else if (return == 'hier') {
-      if(identical(data, list())){
+      if (identical(data, list())) {
         paste("no data found, try a different search")
       } else {
-        data <- gbifparser(input=data, fields=fields)
+        data <- gbifparser(input = data, fields = fields)
         unique(lapply(data, "[[", "hierarchy"))
       }
     } else if (return == 'media') {
-      if (identical(data, list())){
+      if (identical(data, list())) {
         paste("no data found, try a different search")
       } else {
         data <- gbifparser(input=data, fields=fields)
