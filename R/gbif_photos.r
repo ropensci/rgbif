@@ -1,13 +1,13 @@
 #' View photos from GBIF.
 #'
-#' @import whisker
+#' @importFrom whisker whisker.render
 #' @export
 #' @param input Input output from occ_search
 #' @param output Output folder path. If not given uses temporary folder.
 #' @param which One of map or table (default).
 #' @param browse (logical) Browse output (default: TRUE)
-#' @details The max number of photos you can see when which="map" is ~160, so cycle through 
-#' if you have more than that. 
+#' @details The max number of photos you can see when which="map" is ~160, so cycle through
+#' if you have more than that.
 #' @examples \dontrun{
 #' (res <- occ_search(mediatype = 'StillImage', return = "media"))
 #' gbif_photos(res)
@@ -18,8 +18,8 @@
 #' gbif_photos(res, output = '~/barfoo')
 #' }
 
-gbif_photos <- function(input, output = NULL, which='table', browse = TRUE)
-{
+gbif_photos <- function(input, output = NULL, which='table', browse = TRUE) {
+
   if(which=='map'){
     photos <- foo(input)
     outfile <- dirhandler(output)
@@ -36,7 +36,7 @@ gbif_photos <- function(input, output = NULL, which='table', browse = TRUE)
       filenames <- as.list(filenames)
       links <- list()
       for(i in seq_along(filenames)) links[[i]] <- list(url=filenames[[i]], pagenum=i)
-      
+
       for(i in seq_along(input)){
         photos <- foo(input[[i]])
         mappaths <- makemapfiles(photos, outdir)
@@ -46,7 +46,7 @@ gbif_photos <- function(input, output = NULL, which='table', browse = TRUE)
         rendered <- paste0(rendered, paginated, footer)
         write(rendered, file = filenames[[i]])
       }
-      
+
       if(browse) browseURL(filenames[[1]])
     } else {
       outfile <- dirhandler(output)

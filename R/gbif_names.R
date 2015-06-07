@@ -18,8 +18,8 @@
 #' gbif_names(name_lookup(query='bird', limit=200))
 #' }
 
-gbif_names <- function(input, output = NULL, browse = TRUE)
-{
+gbif_names <- function(input, output = NULL, browse = TRUE) {
+
   input <- input$data
   elements <- gn_tolist(input)
   outfile <- gn_dirhandler(output)

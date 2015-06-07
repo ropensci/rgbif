@@ -1,12 +1,11 @@
 #' Get data for specific GBIF occurrences.
 #'
 #' @export
-#' @import httr
 #'
 #' @param key Occurrence key
 #' @param return One of data, hier, meta, or all. If 'data', a data.frame with the
 #'    data. 'hier' returns the classifications in a list for each record. meta
-#'    returns the metadata for the entire call. 'all' gives all data back in a list. 
+#'    returns the metadata for the entire call. 'all' gives all data back in a list.
 #'    Ignored if \code{verbatim=TRUE}.
 #' @param verbatim Return verbatim object (TRUE) or cleaned up object (FALSE, default).
 #' @param fields (character) Default ('minimal') will return just taxon name, key, latitude, and
@@ -43,7 +42,7 @@
 #' }
 
 occ_get <- function(key=NULL, return='all', verbatim=FALSE, fields='minimal', ...) {
-  
+
   stopifnot(is.numeric(key))
   return <- match.arg(return, c("meta", "data", "hier", "all"))
 
@@ -58,10 +57,10 @@ occ_get <- function(key=NULL, return='all', verbatim=FALSE, fields='minimal', ..
   }
 
   # Get data
-  if (length(key) == 1) { 
-    out <- getdata(key) 
-  } else { 
-    out <- lapply(key, getdata) 
+  if (length(key) == 1) {
+    out <- getdata(key)
+  } else {
+    out <- lapply(key, getdata)
   }
 
   # parse data
@@ -71,20 +70,20 @@ occ_get <- function(key=NULL, return='all', verbatim=FALSE, fields='minimal', ..
     data <- gbifparser(out, fields = fields)
 
     if (return == 'data') {
-      if (length(key) == 1) { 
-        data$data 
+      if (length(key) == 1) {
+        data$data
       } else {
         ldfast(lapply(data, "[[", "data"))
       }
     } else
       if (return == 'hier') {
-        if (length(key) == 1) { 
-          data$hierarch 
+        if (length(key) == 1) {
+          data$hierarch
         } else {
           ldfast(lapply(data, "[[", "hierarchy"))
         }
-      } else { 
-        data 
+      } else {
+        data
       }
   }
 }

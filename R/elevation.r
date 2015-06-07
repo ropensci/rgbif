@@ -1,6 +1,5 @@
 #' Get elevation for lat/long points from a data.frame or list of points.
 #'
-#' @import httr
 #' @importFrom data.table rbindlist
 #' @export
 #'
