@@ -74,7 +74,7 @@ dataset_suggest <- function(query = NULL, country = NULL, type = NULL, subtype =
       out <- parse_suggest(x=tt$results)
     } else
     {
-      out <- do.call(rbind.fill, lapply(tt, parse_suggest))
+      out <- do.call(rbind_fill, lapply(tt, parse_suggest))
     }
   }
 

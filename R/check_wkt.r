@@ -1,6 +1,5 @@
 #' Check input WKT
 #'
-#' @import plyr
 #' @importFrom stringr str_extract
 #' @export
 #' @param wkt A Well Known Text object
@@ -34,7 +33,7 @@ check_wkt <- function(wkt = NULL){
       stop(res$message, call. = FALSE)
     }
     return(wkt)
-  } else { 
-    NULL 
+  } else {
+    NULL
   }
 }

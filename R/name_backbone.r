@@ -61,7 +61,7 @@ name_backbone <- function(name, rank=NULL, kingdom=NULL, phylum=NULL, class=NULL
                        strict=strict, verbose=verbose, offset=start, limit=limit))
   tt <- gbif_GET(url, args, FALSE, ...)
   if(verbose){
-    alt <- do.call(rbind.fill, lapply(tt$alternatives, backbone_parser))
+    alt <- do.call(rbind_fill, lapply(tt$alternatives, backbone_parser))
     dat <- data.frame(tt[!names(tt) %in% c("alternatives","note")], stringsAsFactors=FALSE)
     structure(list(data=dat, alternatives=alt), note=tt$note)
   } else

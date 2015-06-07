@@ -34,5 +34,5 @@ parsenames <- function(scientificname, ...) {
   stopifnot(tt$headers$`content-type`=='application/json')
   temp <- content(tt, as = 'text', encoding = "UTF-8")
   res <- jsonlite::fromJSON(temp, FALSE)
-  do.call(rbind.fill, lapply(res, as.data.frame))
+  do.call(rbind_fill, lapply(res, as.data.frame))
 }

@@ -58,12 +58,11 @@ nrow(dat)
 gbifmap(input=dat)
 
 # More than 1 species
-library("plyr")
 splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
 keys <- sapply(splist, function(x) name_backbone(x)$speciesKey,
    USE.NAMES=FALSE)
 dat <- occ_search(taxonKey=keys, return='data', limit=50)
-gbifmap(ldply(dat))
+gbifmap(do.call("rbind_fill", dat))
 }
 }
 

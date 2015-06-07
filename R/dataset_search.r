@@ -105,7 +105,7 @@ dataset_search <- function(query = NULL, country = NULL, type = NULL, keyword = 
       out <- parse_dataset(x=tt$results)
     } else
     {
-      out <- do.call(rbind.fill, lapply(tt$results, parse_dataset))
+      out <- do.call(rbind_fill, lapply(tt$results, parse_dataset))
     }
 
     # select output

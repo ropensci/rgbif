@@ -1,7 +1,6 @@
 #' Search for catalog numbers, collection codes, collector names, and institution
 #' codes.
 #'
-#' @import httr plyr
 #' @export
 #'
 #' @param type Type of data, one of catalog_number, collection_code, collector_name,

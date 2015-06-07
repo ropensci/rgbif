@@ -1,7 +1,7 @@
 #' Search for GBIF occurrences.
 #'
 #' @export
-#' @import httr plyr
+#' @import httr
 #' @importFrom XML getNodeSet xmlAttrs xmlSApply xmlValue htmlParse xpathApply xmlToList
 #'
 #' @template occsearch

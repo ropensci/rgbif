@@ -56,7 +56,7 @@ name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL, start=
       tt[[i]][['higherClassificationMap']] <- data.frame(id=names(temp), name=do.call(c, unname(temp)), stringsAsFactors = FALSE)
     }
     out <- lapply(tt, function(x) x[names(x) %in% toget])
-    df <- do.call(rbind.fill, lapply(out, function(x){
+    df <- do.call(rbind_fill, lapply(out, function(x){
       data.frame(x[ !names(x) %in% "higherClassificationMap" ], stringsAsFactors = FALSE)
     }))
     hier <- sapply(tt, function(x) x[ names(x) %in% "higherClassificationMap" ])
@@ -65,7 +65,7 @@ name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL, start=
     list(data=df, hierarchy=hier)
   } else {
     out <- lapply(tt, function(x) x[names(x) %in% toget])
-    do.call(rbind.fill, lapply(out, data.frame, stringsAsFactors = FALSE))
+    do.call(rbind_fill, lapply(out, data.frame, stringsAsFactors = FALSE))
   }
 }
 

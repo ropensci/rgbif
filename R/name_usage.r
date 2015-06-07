@@ -123,7 +123,7 @@ getdata <- function(x, key, uuid, shortname, args, ...){
 
 name_usage_parse <- function(x){
   if(has_meta(x)){
-    do.call(rbind.fill, lapply(x$results, nameusageparser))
+    do.call(rbind_fill, lapply(x$results, nameusageparser))
   } else {
     nameusageparser(x)
   }

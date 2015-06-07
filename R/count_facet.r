@@ -1,6 +1,5 @@
 #' Facetted count occurrence search.
 #'
-#' @import plyr
 #' @param keys (numeric) GBIF keys, a vector.
 #' @param by (character) One of georeferenced, basisOfRecord, country, or
 #' publishingCountry.
@@ -39,17 +38,18 @@
 #' count_facet(by="basisOfRecord")
 #' }
 
-count_facet <- function(keys = NULL, by = 'country', countries = 10, removezeros = FALSE)
-{
+count_facet <- function(keys = NULL, by = 'country', countries = 10, removezeros = FALSE) {
+  
   # can't do both keys and basisofrecord
-  if(!is.null(keys) && by=='basisOfRecord')
+  if (!is.null(keys) && by == 'basisOfRecord') {
     stop("you can't pass in both keys and have by='basisOfRecord'")
+  }
 
   # faceting data vectors
-  if(is.numeric(countries)){
-    countrynames <- list(country=as.character(isocodes$code)[1:countries])
+  if (is.numeric(countries)) {
+    countrynames <- list(country = as.character(isocodes$code)[1:countries])
   } else{
-    countrynames <- list(country=as.character(countries))
+    countrynames <- list(country = as.character(countries))
   }
   georefvals <- list(georeferenced = c(TRUE, FALSE))
   basisvals <- list(basisOfRecord =
@@ -62,18 +62,17 @@ count_facet <- function(keys = NULL, by = 'country', countries = 10, removezeros
                   country = countrynames,
                   publishingCountry = countrynames)
 
-  if(!is.null(keys)){
-    out <- lapply(keys, occ_by_keys, tt=byvar)
+  if (!is.null(keys)) {
+    out <- lapply(keys, occ_by_keys, tt = byvar)
     names(out) <- keys
-    df <- ldply(out, function(x){
-      tmp <- ldply(x)
+    df <- ldfast_names(lapply(out, function(x){
+      tmp <- rbind_rows(x)
       names(tmp)[1] <- by
       tmp
-    })
-  } else
-  {
+    }))
+  } else {
     out <- occ_by(byvar)
-    df <- ldply(out)
+    df <- rbind_rows(out)
     names(df)[1] <- by
     df
   }
@@ -81,20 +80,22 @@ count_facet <- function(keys = NULL, by = 'country', countries = 10, removezeros
   # remove NAs (which were caused by errors in country names)
   df <- na.omit(df)
 
-  if(removezeros)
-    df[!df$V1==0,]
-  else
+  if (removezeros) {
+    df[!df$V1 == 0, ]
+  } else {
     df
+  }
 }
 
 # Function to get data for each name
 occ_by_keys <- function(spkey=NULL, tt){
-  occ_count_safe <- plyr::failwith(NULL, occ_count)
+  occ_count_safe <- fail_with(NULL, occ_count)
   tmp <- lapply(tt[[1]], function(x){
     xx <- list(x)
     names(xx) <- names(tt)
-    if(!is.null(spkey))
+    if (!is.null(spkey)) {
       xx$taxonKey <- spkey
+    }
     do.call(occ_count_safe, xx)
   })
   names(tmp) <- tt[[1]]
@@ -104,7 +105,7 @@ occ_by_keys <- function(spkey=NULL, tt){
 
 # Function to get data for each name
 occ_by <- function(tt){
-  occ_count_safe <- plyr::failwith(NULL, occ_count)
+  occ_count_safe <- fail_with(NULL, occ_count)
   tmp <- lapply(tt[[1]], function(x){
     xx <- list(x)
     names(xx) <- names(tt)

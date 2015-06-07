@@ -123,29 +123,41 @@ gbifparser_verbatim <- function(input, fields='minimal'){
   if(is.numeric(input[[1]])){
     data.frame(parse(input), stringsAsFactors = FALSE)
   } else {
-    do.call(rbind.fill, lapply(input, function(w) data.frame(parse(w), stringsAsFactors = FALSE)))
+    do.call(rbind_fill, lapply(input, function(w) data.frame(parse(w), stringsAsFactors = FALSE)))
   }
 }
 
 
-#' Replacement function for ldply that should be faster.
-#'
-#' @import plyr
-#' @param x A list.
-#' @param convertvec Convert a vector to a data.frame before rbind is called.
-#' @export
-#' @keywords internal
 ldfast <- function(x, convertvec=FALSE){
-  convert2df <- function(x){
-    if(!inherits(x, "data.frame"))
-      data.frame(rbind(x), stringsAsFactors=FALSE)
-    else
-      x
-  }
-  if(convertvec)
-    do.call(rbind.fill, lapply(x, convert2df))
+  if (convertvec)
+    do.call(rbind_fill, lapply(x, convert2df))
   else
-    do.call(rbind.fill, x)
+    do.call(rbind_fill, x)
+}
+
+ldfast_names <- function(x, convertvec=FALSE){
+  for (i in seq_along(x)) {
+    x[[i]] <- data.frame(.id = names(x)[i], x[[i]], stringsAsFactors = FALSE)
+  }
+  if (convertvec) {
+    do.call(rbind_fill, lapply(x, convert2df))
+  } else {
+    do.call(rbind_fill, x)
+  }
+}
+
+convert2df <- function(x){
+  if (!inherits(x, "data.frame"))
+    data.frame(rbind(x), stringsAsFactors = FALSE)
+  else
+    x
+}
+
+rbind_rows <- function(x) {
+  tmp <- unname(do.call("rbind.data.frame", x))
+  tmp <- data.frame(.id = row.names(tmp), V1 = tmp, stringsAsFactors = FALSE)
+  row.names(tmp) <- NULL
+  tmp
 }
 
 #' Parser for gbif data
@@ -240,7 +252,7 @@ namelkupparser <- function(x){
   tmp <- x[ !names(x) %in% c("descriptions", "vernacularNames", "higherClassificationMap") ]
   tmp <- lapply(tmp, function(x) {
     if (length(x) == 0) {
-      NA 
+      NA
     } else if (length(x) > 1 || is(x, "list")) {
       paste0(x, collapse = ", ")
     } else {
@@ -258,9 +270,9 @@ nameusageparser <- function(z){
   })
   df <- data.frame(tmp, stringsAsFactors = FALSE)
   if (all(tomove %in% names(df))) {
-    movecols(df, tomove) 
+    movecols(df, tomove)
   } else {
-    df 
+    df
   }
 }
 
@@ -381,7 +393,7 @@ gbifxmlToDataFrame <- function(doc, format) {
 #' ## Or pass in each value separately
 #' mm <- gbif_bbox2wkt(minx=38.4, miny=-125.0, maxx=40.9, maxy=-121.8)
 #' read_wkt(mm)
-#' 
+#'
 #' # Convert a WKT object to a bounding box
 #' wkt <- "POLYGON((38.4 -125,40.9 -125,40.9 -121.8,38.4 -121.8,38.4 -125))"
 #' gbif_wkt2bbox(wkt)
@@ -435,7 +447,7 @@ NULL
 
 gbif_GET <- function(url, args, parse=FALSE, ...){
   temp <- GET(url, query=args, ...)
-  
+
   if(temp$status_code == 204) stop("Status: 204 - not found", call. = FALSE)
   if(temp$status_code > 200){
     mssg <- content(temp)

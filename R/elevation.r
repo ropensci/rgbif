@@ -1,6 +1,6 @@
 #' Get elevation for lat/long points from a data.frame or list of points.
 #'
-#' @import httr plyr
+#' @import httr
 #' @importFrom stringr str_trim
 #' @importFrom data.table rbindlist
 #' @export
@@ -21,10 +21,10 @@
 #' each location in meters.
 #' @references Uses the Google Elevation API at the following link
 #' \url{https://developers.google.com/maps/documentation/elevation/}
-#' @details To get an API key, see instructions at 
-#' \url{https://developers.google.com/maps/documentation/elevation/#api_key}. It should be an 
-#' easy process. Once you have the key pass it in to the \code{key} parameter. You can store 
-#' the key in your \code{.Rprofile} file and read it in via \code{getOption} as in the 
+#' @details To get an API key, see instructions at
+#' \url{https://developers.google.com/maps/documentation/elevation/#api_key}. It should be an
+#' easy process. Once you have the key pass it in to the \code{key} parameter. You can store
+#' the key in your \code{.Rprofile} file and read it in via \code{getOption} as in the
 #' examples below.
 #' @examples \dontrun{
 #' apikey <- getOption("g_elevation_api")
@@ -46,7 +46,7 @@
 #' }
 
 elevation <- function(input=NULL, latitude=NULL, longitude=NULL, latlong=NULL, key, ...) {
-  
+
   url <- 'https://maps.googleapis.com/maps/api/elevation/json'
   foo <- function(x) gsub("\\s+", "", str_trim(paste(x['latitude'], x['longitude'], sep=","), "both"))
 
