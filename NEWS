@@ -1,9 +1,28 @@
-rgbif 0.9.0
+rgbif 0.8.4
 ===============
+
+NEW FEATURES
+
+* New functions for the `/enumerations` GBIF API route: `enumeration()` 
+and `enumeration_country()`. Many parts of the GBIF API make use of 
+enumerations, i.e. controlled vocabularies for specific topics - and are
+available via these functions. (#152)
 
 IMPROVEMENTS
 
 * `elevation()` now requires an API key (#148)
+* The `V8` package an Import now, used to do WKT read/create. Replaces 
+packages `sp` and `rgeos` (#155)
+* Changed `occ_search()` parameter `spatialIssues` to 
+`hasGeospatialIssues` (#151)
+* Added note to docs about difference between `/search` and `/count` 
+services, and how they work. (#150)
+* Added tests for habitat parameter in `name_lookup()` (#149)
+
+BUG FIXES
+
+* Looping over records with `limit` and `start` parameters was in some 
+cases resulting in duplicate records returned. Problem fixed. (#157)
 
 rgbif 0.8.0
 ===============
