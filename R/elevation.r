@@ -1,7 +1,6 @@
 #' Get elevation for lat/long points from a data.frame or list of points.
 #'
 #' @import httr
-#' @importFrom stringr str_trim
 #' @importFrom data.table rbindlist
 #' @export
 #'
@@ -48,7 +47,7 @@
 elevation <- function(input=NULL, latitude=NULL, longitude=NULL, latlong=NULL, key, ...) {
 
   url <- 'https://maps.googleapis.com/maps/api/elevation/json'
-  foo <- function(x) gsub("\\s+", "", str_trim(paste(x['latitude'], x['longitude'], sep=","), "both"))
+  foo <- function(x) gsub("\\s+", "", strtrim(paste(x['latitude'], x['longitude'], sep=","), "both"))
 
   getdata <- function(x) {
     locations <- apply(x, 1, foo)

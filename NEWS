@@ -20,6 +20,7 @@ packages `sp` and `rgeos`, which are no longer imported (#155)
 services, and how they work. (#150)
 * Added tests for habitat parameter in `name_lookup()` (#149)
 * Dropped plyr from Imports (#159)
+* Dropped stringr from Imports (#160)
 
 BUG FIXES
 

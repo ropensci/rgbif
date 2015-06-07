@@ -1,6 +1,5 @@
 #' Check input WKT
 #'
-#' @importFrom stringr str_extract
 #' @export
 #' @param wkt A Well Known Text object
 #' @examples
@@ -24,7 +23,7 @@
 check_wkt <- function(wkt = NULL){
   if (!is.null(wkt)) {
     stopifnot(is.character(wkt))
-    y <- str_extract(wkt, "[A-Z]+")
+    y <- strextract(wkt, "[A-Z]+")
     if (!y %in% c('POINT', 'POLYGON', 'LINESTRING', 'LINEARRING')) {
       stop("WKT must be of type POINT, POLYGON, LINESTRING, or LINEARRING")
     }
