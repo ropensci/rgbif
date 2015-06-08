@@ -36,14 +36,15 @@ test_that("contact returns the correct", {
   expect_equal(tt$data$type, "TECHNICAL_POINT_OF_CONTACT")
 })
 
-test_that("search for deleted and nonPublishing installations returns the correct class", {
+test_that("search for deleted and nonPublishing installations returns the correct", {
   skip_on_cran()
+  
   tt <- installations(data='deleted', limit=2)
+  
+  # class
   expect_is(tt, "list")
-})
 
-test_that("search for deleted and nonPublishing installations returns the dimensions", {
-  skip_on_cran()
+  # value
   expect_equal(tt$data$type[1], "IPT_INSTALLATION")
   expect_equal(length(tt), 2)
   expect_equal(length(tt$data), 17)

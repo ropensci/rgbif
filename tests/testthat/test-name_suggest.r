@@ -1,6 +1,6 @@
 context("name_suggest")
 
-test_that("name_suggest returns the correct class", {
+test_that("name_suggest returns the correct", {
   skip_on_cran()
 
   a <- name_suggest(q='Puma concolor')
@@ -8,6 +8,7 @@ test_that("name_suggest returns the correct class", {
   c <- name_suggest(q='Puma', limit=2)
   d <- name_suggest(q='Puma', fields=c('key','canonicalName'))
 
+  # class
   expect_is(a, "data.frame")
   expect_is(b, "data.frame")
   expect_is(c, "data.frame")
@@ -22,11 +23,8 @@ test_that("name_suggest returns the correct class", {
   expect_equal(dim(c), c(2,3))
   expect_equal(dim(d), c(100,2))
   expect_equal(names(d), c("key","canonicalName"))
-})
 
-test_that("name_suggest returns the correct value", {
-  skip_on_cran()
-  
+  # value
   expect_equal(a$key[[1]], 2435099)
   expect_equal(as.character(b$canonicalName[[1]]), "Puma")
   expect_equal(as.character(c$rank[[1]]), "GENUS")

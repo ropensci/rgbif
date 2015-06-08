@@ -1,11 +1,11 @@
 context("occ_search")
 
+key <- 3119195
 
 test_that("returns the correct class", {
   skip_on_cran()
 
   # Search by key
-  key <- 3119195
   tt <- occ_search(taxonKey=key, limit=2)
   uu <- occ_search(taxonKey=key, limit=20)
   vv <- occ_search(taxonKey=key, return='meta')
