@@ -115,3 +115,17 @@ test_that("returns the correct dimensions", {
   res <- occ_search(taxonKey=key, elevation=1000, hasCoordinate=TRUE, fields=c('name','elevation'))
   expect_equal(names(res$data), c('name','elevation'))
 })
+
+# test that looping is working correctly
+test_that("looping works correctly", {
+  it <- seq(from=0, to=750, by=250)
+  out <- list()
+  for (i in seq_along(it)) {
+    occdata <- occ_search(taxonKey=3119195, limit=250, start=it[[i]])
+    out[[i]] <- occdata$data
+  }
+  allkeys <- unlist(lapply(out, "[[", "key"))
+  
+  expect_equal(length(allkeys), length(unique(allkeys)))
+  expect_equal(unique(sapply(out, class)), "data.frame")
+})
