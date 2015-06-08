@@ -34,7 +34,7 @@ devtools::install_github("ropensci/rgbif")
 Load rgbif
 
 ```{r load}
-library(rgbif)
+library("rgbif")
 ```
 
 ## Number of occurrences
@@ -145,7 +145,7 @@ The function `name_usage()` works with lots of different name endpoints in GBIF,
 ```{r}
 library("plyr")
 out <- name_usage(key=3119195, language="FRENCH", data='vernacularNames')
-compact(lapply(out$results, function(x) if(x$language=="FRENCH") x else NULL))[1:2]
+head(out$data)
 ```
 
 The function `name_backbone()` is used to search against the GBIF backbone taxonomy
@@ -186,7 +186,7 @@ occ_get(key=766766824, return='all')
 Get many occurrences. `occ_get` is vectorized
 
 ```{r occ_get4}
-occ_get(key=c(766766824,101010,240713150,855998194,49819470), return='data')
+occ_get(key=c(766766824, 101010, 240713150, 855998194), return='data')
 ```
 
 
@@ -235,7 +235,7 @@ Static map using the ggplot2 package. Make a map of *Puma concolor* occurrences.
 ```{r gbifmap1}
 key <- name_backbone(name='Puma concolor')$speciesKey
 dat <- occ_search(taxonKey=key, return='data', limit=300)
-gbifmap(input=dat)
+gbifmap(dat)
 ```
 
 [gbifapi]: http://data.gbif.org/tutorial/services
