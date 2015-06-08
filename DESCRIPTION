@@ -25,7 +25,6 @@ Roxygen: list(wrap = FALSE)
 Imports:
     XML,
     ggplot2,
-    maps,
     httr,
     data.table,
     whisker,

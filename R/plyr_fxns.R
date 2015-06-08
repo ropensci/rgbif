@@ -48,7 +48,7 @@ rbind_fill <- function(...) {
       setters[[var]](rng, df[[var]])
     }
   }
-  quickdf(lapply(getters, function(x) x()))
+  quickdf_(lapply(getters, function(x) x()))
 }
 
 output_template <- function(dfs, nrows) {
@@ -164,7 +164,7 @@ make_assignment_call <- function(ndims) {
   assignment
 }
 
-quickdf <- function(list) {
+quickdf_ <- function(list) {
   rows <- unique(unlist(lapply(list, NROW)))
   stopifnot(length(rows) == 1)
   names(list) <- make_names(list, "X")

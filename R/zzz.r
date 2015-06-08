@@ -188,7 +188,7 @@ datasetparser <- function(input, minimal=TRUE){
 NULL
 
 #' Custom ggplot2 theme
-#' @import ggplot2 grid
+#' @import ggplot2
 #' @export
 #' @keywords internal
 blanktheme <- function(){
@@ -203,7 +203,12 @@ blanktheme <- function(){
         panel.grid.major=element_blank(),
         panel.grid.minor=element_blank(),
         plot.background=element_blank(),
-        plot.margin = rep(unit(0,"null"),4))
+        plot.margin = u_nit())
+}
+
+u_nit <- function() {
+  structure(c(0, 0, 0, 0), unit = c("null", "null", "null", "null"
+  ), valid.unit = c(5L, 5L, 5L, 5L), class = "unit")
 }
 
 
