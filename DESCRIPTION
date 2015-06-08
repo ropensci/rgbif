@@ -35,4 +35,5 @@ Suggests:
     roxygen2,
     testthat,
     knitr,
-    reshape2
+    reshape2,
+    maps

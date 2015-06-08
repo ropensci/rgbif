@@ -25,6 +25,7 @@
 gbifmap <- function(input = NULL, mapdatabase = "world", region = ".",
                     geom = geom_point, jitter = NULL, customize = NULL) {
   
+  check4maps()
   tomap <- input[complete.cases(input$decimalLatitude, input$decimalLatitude), ]
   tomap <- tomap[!tomap$decimalLongitude == 0 & !tomap$decimalLatitude == 0, ]
   tomap <- tomap[-(which(tomap$decimalLatitude <= 90 || tomap$decimalLongitude <= 180)), ]
@@ -52,4 +53,12 @@ gbifmap <- function(input = NULL, mapdatabase = "world", region = ".",
     blanktheme() +
     theme2 +
     customize
+}
+
+check4maps <- function() {
+  if (!requireNamespace("maps", quietly = TRUE)) {
+    stop("Please install maps", call. = FALSE)
+  } else {
+    invisible(TRUE)
+  }
 }

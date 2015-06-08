@@ -1,6 +1,6 @@
 environment:
   R_CHECK_ARGS: --no-build-vignettes --no-manual
-  
+
 init:
   ps: |
         $ErrorActionPreference = "Stop"
@@ -12,6 +12,9 @@ install:
 
 build_script:
   - travis-tool.sh install_deps
+
+r_install:
+  - maps
 
 test_script:
   - travis-tool.sh run_tests
@@ -53,4 +56,4 @@ deploy:
   bucket: ropensci-windows
   artifact: zip
   set_public: true
-  
+

@@ -2,7 +2,10 @@ language: r
 
 before_install:
 - sudo apt-get install libv8-dev
-  
+
+r_packages:
+  - maps
+
 r_github_packages:
   - jimhester/robustr
   - jimhester/covr
