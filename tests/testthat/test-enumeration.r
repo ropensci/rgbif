@@ -1,12 +1,14 @@
 context("enumeration")
 
-a <- enumeration()
-b <- enumeration("NameType")
-c <- enumeration("MetadataType")
-d <- enumeration("TypeStatus")
-e <- enumeration_country()
+test_that("enumeration", {
+  skip_on_cran()
 
-test_that("returns the correct class", {
+  a <- enumeration()
+  b <- enumeration("NameType")
+  c <- enumeration("MetadataType")
+  d <- enumeration("TypeStatus")
+  e <- enumeration_country()
+
   expect_is(a, "character")
   expect_is(b, "character")
   expect_is(c, "character")
@@ -16,6 +18,8 @@ test_that("returns the correct class", {
 })
 
 test_that("fails correctly", {
+  skip_on_cran()
+  
   expect_error(enumeration("asdfadsf"), "Status: 204 - not found")
   expect_error(enumeration_country("asdfadsf"), "is not TRUE")
 })

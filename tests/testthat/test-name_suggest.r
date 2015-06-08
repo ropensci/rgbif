@@ -1,11 +1,13 @@
 context("name_suggest")
 
-a <- name_suggest(q='Puma concolor')
-b <- name_suggest(q='Puma')
-c <- name_suggest(q='Puma', limit=2)
-d <- name_suggest(q='Puma', fields=c('key','canonicalName'))
-
 test_that("name_suggest returns the correct class", {
+  skip_on_cran()
+
+  a <- name_suggest(q='Puma concolor')
+  b <- name_suggest(q='Puma')
+  c <- name_suggest(q='Puma', limit=2)
+  d <- name_suggest(q='Puma', fields=c('key','canonicalName'))
+
   expect_is(a, "data.frame")
   expect_is(b, "data.frame")
   expect_is(c, "data.frame")
@@ -13,9 +15,8 @@ test_that("name_suggest returns the correct class", {
   expect_is(a$key, "integer")
   expect_is(c$canonicalName, "character")
   expect_is(d$canonicalName, "character")
-})
 
-test_that("name_suggest returns the correct dimensions", {
+  # name_suggest returns the correct dimensions
   expect_equal(dim(a), c(100,3))
   expect_equal(dim(b), c(100,3))
   expect_equal(dim(c), c(2,3))
@@ -24,6 +25,8 @@ test_that("name_suggest returns the correct dimensions", {
 })
 
 test_that("name_suggest returns the correct value", {
+  skip_on_cran()
+  
   expect_equal(a$key[[1]], 2435099)
   expect_equal(as.character(b$canonicalName[[1]]), "Puma")
   expect_equal(as.character(c$rank[[1]]), "GENUS")
