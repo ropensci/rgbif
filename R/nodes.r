@@ -32,7 +32,7 @@
 #'
 #' res <- lapply(uuids, function(x) nodes(x, data='identifier')$data)
 #' res <- res[!sapply(res, length)==0]
-#' do.call("rbind_fill", res)
+#' res[1]
 #'
 #' # Pass on options to httr
 #' library('httr')

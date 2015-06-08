@@ -75,7 +75,7 @@ uuids = c("8cb55387-7802-40e8-86d6-d357a583c596","02c40d2a-1cba-4633-90b7-e36e5e
 
 res <- lapply(uuids, function(x) nodes(x, data='identifier')$data)
 res <- res[!sapply(res, length)==0]
-do.call("rbind_fill", res)
+res[1]
 
 # Pass on options to httr
 library('httr')
