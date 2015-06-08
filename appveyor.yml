@@ -12,9 +12,7 @@ install:
 
 build_script:
   - travis-tool.sh install_deps
-
-r_install:
-  - maps
+  - travis-tool.sh r_install maps
 
 test_script:
   - travis-tool.sh run_tests
