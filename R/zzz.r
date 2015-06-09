@@ -457,6 +457,7 @@ gbif_GET <- function(url, args, parse=FALSE, ...){
   if(temp$status_code > 200){
     mssg <- content(temp)
     if(length(mssg) == 0) mssg <- http_status(temp)$message
+    if(temp$status_code == 503) mssg <- http_status(temp)$message
     stop(mssg, call. = FALSE)
   }
   stopifnot(temp$headers$`content-type`=='application/json')
