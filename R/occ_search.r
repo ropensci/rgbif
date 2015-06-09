@@ -1,7 +1,7 @@
 #' Search for GBIF occurrences.
 #'
 #' @export
-#' @importFrom httr GET POST content stop_for_status http_status add_headers
+#' @importFrom httr GET POST DELETE content stop_for_status http_status add_headers authenticate write_disk content_type_json accept_json
 #' @importFrom XML getNodeSet xmlAttrs xmlSApply xmlValue htmlParse xpathApply xmlToList
 #'
 #' @template occsearch
@@ -9,6 +9,7 @@
 #' @template occ
 #' @param x Output from a call to occ_search
 #' @param n Number of rows of the data to print.
+#' @seealso \code{\link{downloads}}
 #' @examples \dontrun{
 #' # Search by species name, using \code{\link{name_backbone}} first to get key
 #' (key <- name_suggest(q='Helianthus annuus', rank='species')$key[1])

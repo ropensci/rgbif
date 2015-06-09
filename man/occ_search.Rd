@@ -525,4 +525,7 @@ wkt <- 'POLYGON((-178.59375 64.83258989321493,-165.9375 59.24622380205539,
 \references{
 \url{http://www.gbif.org/developer/occurrence#search}
 }
+\seealso{
+\code{\link{downloads}}
+}
 
