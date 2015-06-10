@@ -25,12 +25,12 @@
 #' }
 enumeration <- function(x = NULL, ...) {
   url <- paste0(gbif_base(), "/enumeration/basic/", x)
-  gbif_GET(url, list(), parse = TRUE, ...)
+  gbif_GET(url, NULL, parse = TRUE, ...)
 }
 
 #' @export
 #' @rdname enumeration
 enumeration_country <- function(...) {
   url <- paste0(gbif_base(), "/enumeration/country/")
-  gbif_GET(url, list(), parse = TRUE, ...)
+  gbif_GET(url, NULL, parse = TRUE, ...)
 }

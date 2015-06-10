@@ -22,9 +22,9 @@
 dataset_metrics <- function(uuid, ...) {
   getdata <- function(x){
     url <- sprintf('%s/dataset/%s/metrics', gbif_base(), x)
-    gbif_GET(url, list(), FALSE, ...)
+    gbif_GET(url, NULL, FALSE, ...)
   }
-  if(length(uuid) == 1) {
+  if (length(uuid) == 1) {
     getdata(uuid) 
   } else {
     lapply(uuid, getdata)
