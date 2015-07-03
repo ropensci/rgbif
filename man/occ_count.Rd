@@ -90,8 +90,8 @@ occ_count(type='publishingCountry', country='BZ')
 
 # Pass on options to httr
 library('httr')
-res <- occ_count(type='year', from=2000, to=2012, config=progress())
-res
+# res <- occ_count(type='year', from=2000, to=2012, config=progress())
+# res
 }
 }
 \references{

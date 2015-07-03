@@ -71,7 +71,7 @@ installations(identifierType='DOI', limit=2)
 
 # Pass on options to httr
 library('httr')
-res <- installations(data='deleted', config=progress())
+# res <- installations(data='deleted', config=progress())
 }
 }
 \references{

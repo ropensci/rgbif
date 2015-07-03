@@ -37,7 +37,7 @@
 #' # Pass on options to httr
 #' library('httr')
 #' occ_metadata(type = "cat", q=122, config=verbose())
-#' occ_metadata(type = "cat", q=122, config=progress())
+#' # occ_metadata(type = "cat", q=122, config=progress())
 #' }
 
 occ_metadata <- function(type = "catalogNumber", q=NULL, limit=5, pretty=TRUE, ...)

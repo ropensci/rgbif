@@ -34,7 +34,7 @@
 #'
 #' # Pass on httr options
 #' library('httr')
-#' res <- name_suggest(q='Puma', limit=200, config=progress())
+#' # res <- name_suggest(q='Puma', limit=200, config=progress())
 #' }
 
 name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL, start=NULL, limit=100, ...)

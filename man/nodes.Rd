@@ -79,7 +79,7 @@ res[1]
 
 # Pass on options to httr
 library('httr')
-res <- nodes(limit=20, config=progress())
+# res <- nodes(limit=20, config=progress())
 }
 }
 \references{

@@ -349,7 +349,7 @@ occ_search(collectorName=c("smith","BJ Stacey"), limit=20)
 # Pass in curl options for extra fun
 library('httr')
 occ_search(taxonKey=key, limit=20, return='hier', config=verbose())
-occ_search(taxonKey=key, limit=20, return='hier', config=progress())
+# occ_search(taxonKey=key, limit=20, return='hier', config=progress())
 occ_search(taxonKey=key, limit=20, return='hier', config=timeout(1))
 
 # Search for many species

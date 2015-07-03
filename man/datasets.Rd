@@ -47,7 +47,7 @@ datasets(data=c('deleted','duplicate'), limit=1)
 
 # httr options
 library('httr')
-res <- datasets(data=c('deleted','duplicate'), config=progress())
+# res <- datasets(data=c('deleted','duplicate'), config=progress())
 }
 }
 \references{

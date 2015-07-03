@@ -62,7 +62,7 @@
 #' # Pass on httr options
 #' ## here, print progress, notice the progress bar
 #' library('httr')
-#' res <- name_usage(name='Puma concolor', limit=300, config=progress())
+#' # res <- name_usage(name='Puma concolor', limit=300, config=progress())
 #' }
 
 name_usage <- function(key=NULL, name=NULL, data='all', language=NULL, datasetKey=NULL, uuid=NULL,

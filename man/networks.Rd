@@ -61,7 +61,7 @@ networks(data='endpoint', uuid='16ab5405-6c94-4189-ac71-16ca3b753df7')
 
 # Pass on options to httr
 library('httr')
-res <- networks(limit=5, config=progress())
+# res <- networks(limit=5, config=progress())
 }
 }
 \references{

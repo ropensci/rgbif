@@ -36,7 +36,7 @@
 #'
 #' # Pass on options to httr
 #' library('httr')
-#' res <- nodes(limit=20, config=progress())
+#' # res <- nodes(limit=20, config=progress())
 #' }
 
 nodes <- function(data = 'all', uuid = NULL, query = NULL, identifier=NULL,

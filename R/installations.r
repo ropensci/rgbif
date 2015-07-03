@@ -28,7 +28,7 @@
 #'
 #' # Pass on options to httr
 #' library('httr')
-#' res <- installations(data='deleted', config=progress())
+#' # res <- installations(data='deleted', config=progress())
 #' }
 
 installations <- function(data = 'all', uuid = NULL, query = NULL, identifier=NULL,

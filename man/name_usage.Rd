@@ -109,7 +109,7 @@ name_usage(key=3119195, language="FRENCH", data='vernacularNames')
 # Pass on httr options
 ## here, print progress, notice the progress bar
 library('httr')
-res <- name_usage(name='Puma concolor', limit=300, config=progress())
+# res <- name_usage(name='Puma concolor', limit=300, config=progress())
 }
 }
 \references{

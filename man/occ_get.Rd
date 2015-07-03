@@ -52,7 +52,7 @@ occ_get(key=c(766766824, 620594291, 766420684),
 # Pass in curl options
 library("httr")
 occ_get(key=766766824, config=verbose())
-occ_get(key=766766824, config=progress())
+# occ_get(key=766766824, config=progress())
 }
 }
 \references{

@@ -21,9 +21,9 @@
 #'
 #' # Pass on options to httr
 #' library('httr')
-#' res <- parsenames(c('Arrhenatherum elatius var. elatius',
-#'              'Secale cereale subsp. cereale', 'Secale cereale ssp. cereale',
-#'              'Vanessa atalanta (Linnaeus, 1758)'), config=progress())
+#' # res <- parsenames(c('Arrhenatherum elatius var. elatius',
+#' #             'Secale cereale subsp. cereale', 'Secale cereale ssp. cereale',
+#' #             'Vanessa atalanta (Linnaeus, 1758)'), config=progress())
 #' }
 
 parsenames <- function(scientificname, ...) {

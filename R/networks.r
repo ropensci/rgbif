@@ -19,7 +19,7 @@
 #'
 #' # Pass on options to httr
 #' library('httr')
-#' res <- networks(limit=5, config=progress())
+#' # res <- networks(limit=5, config=progress())
 #' }
 
 networks <- function(data = 'all', uuid = NULL, query = NULL, identifier=NULL,

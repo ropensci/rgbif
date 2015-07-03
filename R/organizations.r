@@ -24,7 +24,7 @@
 #'
 #' # Pass on options to httr
 #' library('httr')
-#' res <- organizations(query="spain", config=progress())
+#' # res <- organizations(query="spain", config=progress())
 #' }
 
 organizations <- function(data = 'all', uuid = NULL, query = NULL, limit=100, start=NULL, ...)
@@ -91,7 +91,7 @@ parse_results <- function(x, y){
 #     for(i in seq_along(dat)){
 #       if(is(dat[[i]], 'list')){
 #         tmp <- vapply(dat[[i]], length, numeric(1))
-#         dat[[i]] <- 
+#         dat[[i]] <-
 #           if(sum(tmp) == 0) {
 #             NA
 #           } else if(max(tmp) == 1){
