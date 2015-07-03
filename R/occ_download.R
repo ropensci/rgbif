@@ -11,10 +11,10 @@
 #' @param email (character) Email address to recieve download notice done email. Requried.
 #' @param callopts Further named arguments passed on to \code{\link[httr]{POST}}
 #'
-#' @details Argument passed have to be passed as character (e.g., 'country = US'), with a space 
-#' between key ('country'), operator ('='), and value ('US'). See the \code{type} parameter for 
+#' @details Argument passed have to be passed as character (e.g., 'country = US'), with a space
+#' between key ('country'), operator ('='), and value ('US'). See the \code{type} parameter for
 #' possible options for the operator.  This character string is parsed internally.
-#' 
+#'
 #' Acceptable arguments to \code{...} are:
 #' \itemize{
 #'  \item taxonKey = 'TAXON_KEY'
@@ -57,7 +57,7 @@
 #' occ_download("country = US")
 #' occ_download("institutionCode = TLMF")
 #' occ_download("catalogNumber = Bird.27847588")
-#' 
+#'
 #' res <- occ_download('taxonKey = 7264332', 'hasCoordinate = TRUE')
 #'
 #' # pass output directly, or later, to occ_download_meta for more information
@@ -71,7 +71,7 @@
 occ_download <- function(...,
    type = "and", user=getOption("gbif_user"), pwd=getOption("gbif_pwd"),
    email="myrmecocystus@gmail.com", callopts=list()) {
-  
+
   url <- 'http://api.gbif.org/v1/occurrence/download/request'
   stopifnot(!is.null(user), !is.null(email))
 
@@ -118,8 +118,7 @@ rg_POST <- function(url, req, user, pwd, callopts) {
     content_type_json(),
     accept_json(),
     authenticate(user = user, password = pwd),
-    callopts),
-    body = req, encode = "json")
+    callopts), body = jsonlite::toJSON(req))
   if (tmp$status_code > 203) stop(content(tmp, as = "text"), call. = FALSE)
   stopifnot(tmp$header$`content-type` == 'application/json')
   content(tmp, as = "text")
@@ -147,6 +146,7 @@ parse_args <- function(x){
   type <- operator_lkup[[ tmp[2] ]]
   key <- key_lkup[[ tmp[1] ]]
   list(type = unbox(type), key = unbox(key), value = unbox(tmp[3]))
+  # list(type = type, key = key, value = tmp[3])
 }
 
 operator_lkup <- list(`=` = 'equals', `&` = 'and', `|` = 'or', `<` = 'lessThan',
