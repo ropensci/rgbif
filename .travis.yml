@@ -5,6 +5,7 @@ before_install:
 
 r_packages:
   - maps
+  - scales
 
 r_github_packages:
   - jimhester/robustr
