@@ -12,7 +12,7 @@ install:
 
 build_script:
   - travis-tool.sh install_deps
-  - travis-tool.sh r_install maps
+  - travis-tool.sh r_install maps scales colorspace
 
 test_script:
   - travis-tool.sh run_tests
