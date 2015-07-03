@@ -24,7 +24,7 @@
 #' }
 #'
 #' @importFrom methods is
-#' @importFrom utils browseURL head
+#' @importFrom utils browseURL head unzip
 #' @importFrom stats na.omit complete.cases
 #' @name rgbif-package
 #' @aliases rgbif
