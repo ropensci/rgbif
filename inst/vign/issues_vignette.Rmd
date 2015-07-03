@@ -1,10 +1,16 @@
 <!--
 %\VignetteEngine{knitr::knitr}
 %\VignetteIndexEntry{Cleaning data using GBIF issues}
+%\VignetteEncoding{UTF-8}
 -->
 
 ```{r echo=FALSE}
-knitr::opts_chunk$set(comment = "#>", collapse = TRUE, warning = FALSE, message = FALSE)
+knitr::opts_chunk$set(
+	comment = "#>",
+	collapse = TRUE,
+	warning = FALSE,
+	message = FALSE
+)
 ```
 
 Cleaning data using GBIF issues
@@ -54,7 +60,7 @@ Then pass to `occ_search()`
 
 ## Examine issues
 
-The dataset `gbifissues` can be retrieved using the function `gbif_issues()`. The dataset's first column `code` is a code that is used by default in the results from `occ_search()`, while the second column `issue` is the full issue name given by GBIF. The third column is a full description of the issue. 
+The dataset `gbifissues` can be retrieved using the function `gbif_issues()`. The dataset's first column `code` is a code that is used by default in the results from `occ_search()`, while the second column `issue` is the full issue name given by GBIF. The third column is a full description of the issue.
 
 ```{r}
 head(gbif_issues())
@@ -66,11 +72,11 @@ You can query to get certain issues
 gbif_issues()[ gbif_issues()$code %in% c('cdround','cudc','gass84','txmathi'), ]
 ```
 
-The code `cdround` represents the GBIF issue `COORDINATE_ROUNDED`, which means that 
+The code `cdround` represents the GBIF issue `COORDINATE_ROUNDED`, which means that
 
 > Original coordinate modified by rounding to 5 decimals.
 
-The content for this information comes from [http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html](http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html). 
+The content for this information comes from [http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html](http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html).
 
 ## Parse data based on issues
 
@@ -81,13 +87,13 @@ res %>%
   occ_issues(gass84)
 ```
 
-Note also that we've set up `occ_issues()` so that you can pass in issue names without having to quote them, thereby speeding up data cleaning. 
+Note also that we've set up `occ_issues()` so that you can pass in issue names without having to quote them, thereby speeding up data cleaning.
 
-Next, we can remove data with certain issues just as easily by using a `-` sign in front of the variable, like this, removing data with issues `gass84` and `mdatunl`, leaving us with only 2 records.
+Next, we can remove data with certain issues just as easily by using a `-` sign in front of the variable, like this, removing data with issues `depunl` and `mdatunl`.
 
 ```{r}
-res %>% 
-  occ_issues(-gass84, -mdatunl)
+res %>%
+  occ_issues(-depunl, -mdatunl)
 ```
 
 ## Expand issue codes to full names
@@ -102,7 +108,7 @@ head(out$data[,c(1,5)])
 
 ## Add columns
 
-Sometimes you may want to have each type of issue as a separate column. 
+Sometimes you may want to have each type of issue as a separate column.
 
 Split out each issue type into a separate column, with number of columns equal to number of issue types
 

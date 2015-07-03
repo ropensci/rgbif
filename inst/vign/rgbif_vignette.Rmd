@@ -1,10 +1,16 @@
 <!--
 %\VignetteEngine{knitr::knitr}
 %\VignetteIndexEntry{rgbif introduction}
+%\VignetteEncoding{UTF-8}
 -->
 
 ```{r echo=FALSE}
-knitr::opts_chunk$set(comment = "#>", collapse = TRUE, warning = FALSE, message = FALSE)
+knitr::opts_chunk$set(
+	comment = "#>",
+	collapse = TRUE,
+	warning = FALSE,
+	message = FALSE
+)
 ```
 
 rgbif introduction

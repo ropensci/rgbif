@@ -38,7 +38,7 @@ library("rgbif")
 
 ```r
 occ_search(scientificName = "Ursus americanus", limit = 50)
-#> Records found [6890] 
+#> Records found [7218] 
 #> Records returned [50] 
 #> No. unique hierarchies [1] 
 #> No. media records [50] 
@@ -46,16 +46,16 @@ occ_search(scientificName = "Ursus americanus", limit = 50)
 #> First 10 rows of data
 #> 
 #>                name        key decimalLatitude decimalLongitude
-#> 1  Ursus americanus  891034709        29.23322       -103.29468
-#> 2  Ursus americanus 1024328693        34.20990       -118.14681
-#> 3  Ursus americanus  891045574        43.73511        -72.52534
-#> 4  Ursus americanus  891041363        29.28284       -103.28908
-#> 5  Ursus americanus 1050834838        33.11070       -107.70675
-#> 6  Ursus americanus  891056344        29.27444       -103.31536
-#> 7  Ursus americanus 1042823202        44.34088        -72.46131
-#> 8  Ursus americanus 1024180980        34.56844       -119.16081
-#> 9  Ursus americanus 1024182262        50.09019       -117.46038
-#> 10 Ursus americanus 1024328712        39.51185       -120.16434
+#> 1  Ursus americanus 1065590124        38.36662        -79.68283
+#> 2  Ursus americanus 1065588899        35.73304        -82.42028
+#> 3  Ursus americanus 1065611122        43.94883        -72.77432
+#> 4  Ursus americanus 1098894889        23.69470        -99.14630
+#> 5  Ursus americanus 1088908315        43.86464        -72.34617
+#> 6  Ursus americanus 1088923534        36.93018        -78.25027
+#> 7  Ursus americanus 1088932238        32.65219       -108.53674
+#> 8  Ursus americanus 1088932273        32.65237       -108.53691
+#> 9  Ursus americanus 1088964797        29.27042       -103.30058
+#> 10 Ursus americanus 1088961422        49.72317        -96.03215
 #> ..              ...        ...             ...              ...
 #> Variables not shown: issues (chr), datasetKey (chr), publishingOrgKey
 #>      (chr), publishingCountry (chr), protocol (chr), lastCrawled (chr),
@@ -70,23 +70,11 @@ occ_search(scientificName = "Ursus americanus", limit = 50)
 #>      (chr), relations (chr), geodeticDatum (chr), class (chr), countryCode
 #>      (chr), country (chr), verbatimEventDate (chr),
 #>      http...unknown.org.occurrenceDetails (chr), rights (chr),
-#>      rightsHolder (chr), occurrenceID (chr), collectionCode (chr), taxonID
-#>      (chr), gbifID (chr), institutionCode (chr), datasetName (chr),
-#>      catalogNumber (chr), recordedBy (chr), eventTime (chr), identifier
-#>      (chr), identificationID (chr), infraspecificEpithet (chr),
-#>      verbatimLocality (chr), occurrenceRemarks (chr), lifeStage (chr),
-#>      elevation (dbl), elevationAccuracy (dbl), continent (chr),
-#>      stateProvince (chr), georeferencedDate (chr), institutionID (chr),
-#>      higherGeography (chr), type (chr), georeferenceSources (chr),
-#>      identifiedBy (chr), identificationVerificationStatus (chr),
-#>      samplingProtocol (chr), endDayOfYear (chr), otherCatalogNumbers
-#>      (chr), preparations (chr), georeferenceVerificationStatus (chr),
-#>      individualID (chr), nomenclaturalCode (chr), higherClassification
-#>      (chr), locationAccordingTo (chr), verbatimCoordinateSystem (chr),
-#>      previousIdentifications (chr), georeferenceProtocol (chr),
-#>      identificationQualifier (chr), accessRights (chr), county (chr),
-#>      dynamicProperties (chr), locality (chr), language (chr),
-#>      georeferencedBy (chr), informationWithheld (chr)
+#>      rightsHolder (chr), occurrenceID (chr), taxonID (chr), collectionCode
+#>      (chr), gbifID (chr), occurrenceRemarks (chr), institutionCode (chr),
+#>      datasetName (chr), catalogNumber (chr), recordedBy (chr), eventTime
+#>      (chr), identifier (chr), identificationID (chr), verbatimLocality
+#>      (chr), infraspecificEpithet (chr), informationWithheld (chr)
 ```
 
 Or you can get the taxon key first with `name_backbone()`. Here, we select to only return the occurrence data.
@@ -95,24 +83,24 @@ Or you can get the taxon key first with `name_backbone()`. Here, we select to on
 ```r
 key <- name_backbone(name='Helianthus annuus', kingdom='plants')$speciesKey
 occ_search(taxonKey=key, limit=20)
-#> Records found [20365] 
+#> Records found [20650] 
 #> Records returned [20] 
 #> No. unique hierarchies [1] 
-#> No. media records [11] 
+#> No. media records [18] 
 #> Args [taxonKey=3119195, limit=20, offset=0, fields=all] 
 #> First 10 rows of data
 #> 
 #>                 name        key decimalLatitude decimalLongitude
-#> 1  Helianthus annuus  922042404        -3.28140         37.52415
-#> 2  Helianthus annuus  899948224         1.27890        103.79930
-#> 3  Helianthus annuus  891052261        24.82589        -99.58411
-#> 4  Helianthus annuus 1038317691       -43.52777        172.62544
-#> 5  Helianthus annuus  922044332        21.27114         40.41424
-#> 6  Helianthus annuus  922039507        50.31402          8.52341
-#> 7  Helianthus annuus  998785009        44.10879          4.66839
-#> 8  Helianthus annuus  899970378        32.54041       -117.08731
-#> 9  Helianthus annuus  899969160        24.82901        -99.58257
-#> 10 Helianthus annuus 1054796860        33.74417       -117.38556
+#> 1  Helianthus annuus 1095851641         0.00000          0.00000
+#> 2  Helianthus annuus 1088900309        33.95239       -117.32011
+#> 3  Helianthus annuus 1088933055        25.66564       -100.30348
+#> 4  Helianthus annuus 1088909392        24.72449        -99.54020
+#> 5  Helianthus annuus 1088937716        25.81691       -100.05940
+#> 6  Helianthus annuus 1088944416        26.20518        -98.26725
+#> 7  Helianthus annuus 1090389390        59.96150         17.71060
+#> 8  Helianthus annuus 1092889365        32.71840       -114.75603
+#> 9  Helianthus annuus 1092889645         1.27617        103.79136
+#> 10 Helianthus annuus 1098903927        29.17958       -102.99551
 #> ..               ...        ...             ...              ...
 #> Variables not shown: issues (chr), datasetKey (chr), publishingOrgKey
 #>      (chr), publishingCountry (chr), protocol (chr), lastCrawled (chr),
@@ -121,20 +109,21 @@ occ_search(taxonKey=key, limit=20)
 #>      (int), familyKey (int), genusKey (int), speciesKey (int),
 #>      scientificName (chr), kingdom (chr), phylum (chr), order (chr),
 #>      family (chr), genus (chr), species (chr), genericName (chr),
-#>      specificEpithet (chr), taxonRank (chr), year (int), month (int), day
-#>      (int), eventDate (chr), lastInterpreted (chr), identifiers (chr),
-#>      facts (chr), relations (chr), geodeticDatum (chr), class (chr),
-#>      countryCode (chr), country (chr), gbifID (chr), institutionCode
-#>      (chr), catalogNumber (chr), recordedBy (chr), locality (chr),
-#>      collectionCode (chr), dateIdentified (chr), modified (chr),
-#>      references (chr), verbatimEventDate (chr), verbatimLocality (chr),
-#>      http...unknown.org.occurrenceDetails (chr), rights (chr),
-#>      rightsHolder (chr), occurrenceID (chr), taxonID (chr),
-#>      occurrenceRemarks (chr), datasetName (chr), eventTime (chr),
-#>      identifier (chr), identificationID (chr), county (chr), identifiedBy
-#>      (chr), stateProvince (chr), recordNumber (chr), verbatimElevation
-#>      (chr), georeferenceSources (chr), coordinateAccuracy (dbl), elevation
-#>      (dbl), elevationAccuracy (dbl), depth (dbl), depthAccuracy (dbl)
+#>      specificEpithet (chr), taxonRank (chr), dateIdentified (chr),
+#>      elevation (dbl), elevationAccuracy (dbl), stateProvince (chr), year
+#>      (int), month (int), day (int), eventDate (chr), lastInterpreted
+#>      (chr), identifiers (chr), facts (chr), relations (chr), geodeticDatum
+#>      (chr), class (chr), countryCode (chr), country (chr), recordNumber
+#>      (chr), rights (chr), municipality (chr), rightsHolder (chr),
+#>      ownerInstitutionCode (chr), type (chr), occurrenceID (chr),
+#>      collectionCode (chr), identifiedBy (chr), gbifID (chr),
+#>      occurrenceRemarks (chr), institutionCode (chr), datasetName (chr),
+#>      catalogNumber (chr), recordedBy (chr), locality (chr), language
+#>      (chr), identifier (chr), modified (chr), references (chr),
+#>      verbatimEventDate (chr), verbatimLocality (chr),
+#>      http...unknown.org.occurrenceDetails (chr), taxonID (chr), eventTime
+#>      (chr), identificationID (chr), coordinateAccuracy (dbl), depth (dbl),
+#>      depthAccuracy (dbl), county (chr), informationWithheld (chr)
 ```
 
 ## Search for many species
@@ -146,17 +135,17 @@ Get the keys first with `name_backbone()`, then pass to `occ_search()`
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 keys <- sapply(splist, function(x) name_backbone(name=x)$speciesKey, USE.NAMES=FALSE)
 occ_search(taxonKey=keys, limit=5, hasCoordinate=TRUE)
-#> Occ. found [2480598 (20), 2492010 (1925244), 2498387 (589710)] 
+#> Occ. found [2480598 (20), 2492010 (1925675), 2498387 (589944)] 
 #> Occ. returned [2480598 (5), 2492010 (5), 2498387 (5)] 
 #> No. unique hierarchies [2480598 (1), 2492010 (1), 2498387 (1)] 
-#> No. media records [2480598 (1), 2492010 (5), 2498387 (2)] 
+#> No. media records [2480598 (1), 2492010 (5), 2498387 (5)] 
 #> Args [taxonKey=2480598,2492010,2498387, hasCoordinate=TRUE, limit=5,
 #>      offset=0, fields=all] 
 #> First 10 rows of data from 2480598
 #> 
 #>                      name        key decimalLatitude decimalLongitude
-#> 1 Accipiter erythronemius  920184036       -20.76029        -56.71314
-#> 2 Accipiter erythronemius  920169861       -20.55244        -56.64104
+#> 1 Accipiter erythronemius  920169861       -20.55244        -56.64104
+#> 2 Accipiter erythronemius  920184036       -20.76029        -56.71314
 #> 3 Accipiter erythronemius 1001096527       -27.58000        -58.66000
 #> 4 Accipiter erythronemius 1001096518       -27.92000        -59.14000
 #> 5 Accipiter erythronemius  699417490         5.26667        -60.73333

@@ -1,6 +1,7 @@
 <!--
 %\VignetteEngine{knitr::knitr}
 %\VignetteIndexEntry{rgbif introduction}
+%\VignetteEncoding{UTF-8}
 -->
 
 
@@ -45,7 +46,7 @@ Search by type of record, all observational in this case
 
 ```r
 occ_count(basisOfRecord='OBSERVATION')
-#> [1] 102953457
+#> [1] 100714177
 ```
 
 Records for **Puma concolor** with lat/long data (georeferened) only. Note that `hasCoordinate` in `occ_search()` is the same as `georeferenced` in `occ_count()`.
@@ -53,7 +54,7 @@ Records for **Puma concolor** with lat/long data (georeferened) only. Note that 
 
 ```r
 occ_count(taxonKey=2435099, georeferenced=TRUE)
-#> [1] 2829
+#> [1] 2833
 ```
 
 All georeferenced records in GBIF
@@ -61,7 +62,7 @@ All georeferenced records in GBIF
 
 ```r
 occ_count(georeferenced=TRUE)
-#> [1] 471017002
+#> [1] 471048856
 ```
 
 Records from Denmark
@@ -70,7 +71,7 @@ Records from Denmark
 ```r
 denmark_code <- isocodes[grep("Denmark", isocodes$name), "code"]
 occ_count(country=denmark_code)
-#> [1] 9617026
+#> [1] 9617238
 ```
 
 Number of records in a particular dataset
@@ -86,7 +87,7 @@ All records from 2012
 
 ```r
 occ_count(year=2012)
-#> [1] 37844668
+#> [1] 37859753
 ```
 
 Records for a particular dataset, and only for preserved specimens
@@ -601,7 +602,7 @@ By default `occ_search()` returns a `dplyr` like output summary in which the dat
 
 ```r
 occ_search(scientificName = "Ursus americanus", limit = 20)
-#> Records found [7175] 
+#> Records found [7218] 
 #> Records returned [20] 
 #> No. unique hierarchies [1] 
 #> No. media records [20] 
@@ -609,16 +610,16 @@ occ_search(scientificName = "Ursus americanus", limit = 20)
 #> First 10 rows of data
 #> 
 #>                name        key decimalLatitude decimalLongitude
-#> 1  Ursus americanus 1065588899        35.73304        -82.42028
-#> 2  Ursus americanus 1065590124        38.36662        -79.68283
+#> 1  Ursus americanus 1065590124        38.36662        -79.68283
+#> 2  Ursus americanus 1065588899        35.73304        -82.42028
 #> 3  Ursus americanus 1065611122        43.94883        -72.77432
-#> 4  Ursus americanus 1088923534        36.93018        -78.25027
-#> 5  Ursus americanus 1088932238        32.65219       -108.53674
-#> 6  Ursus americanus 1088932273        32.65237       -108.53691
-#> 7  Ursus americanus 1088908315        43.86464        -72.34617
-#> 8  Ursus americanus 1088964797        29.27042       -103.30058
-#> 9  Ursus americanus 1088961422        49.72317        -96.03215
-#> 10 Ursus americanus 1088962169        43.57600        -72.56047
+#> 4  Ursus americanus 1098894889        23.69470        -99.14630
+#> 5  Ursus americanus 1088908315        43.86464        -72.34617
+#> 6  Ursus americanus 1088923534        36.93018        -78.25027
+#> 7  Ursus americanus 1088932238        32.65219       -108.53674
+#> 8  Ursus americanus 1088932273        32.65237       -108.53691
+#> 9  Ursus americanus 1088964797        29.27042       -103.30058
+#> 10 Ursus americanus 1088961422        49.72317        -96.03215
 #> ..              ...        ...             ...              ...
 #> Variables not shown: issues (chr), datasetKey (chr), publishingOrgKey
 #>      (chr), publishingCountry (chr), protocol (chr), lastCrawled (chr),
@@ -631,17 +632,13 @@ occ_search(scientificName = "Ursus americanus", limit = 20)
 #>      (int), month (int), day (int), eventDate (chr), modified (chr),
 #>      lastInterpreted (chr), references (chr), identifiers (chr), facts
 #>      (chr), relations (chr), geodeticDatum (chr), class (chr), countryCode
-#>      (chr), country (chr), verbatimEventDate (chr), verbatimLocality
-#>      (chr), http...unknown.org.occurrenceDetails (chr), rights (chr),
-#>      rightsHolder (chr), occurrenceID (chr), collectionCode (chr), taxonID
-#>      (chr), gbifID (chr), institutionCode (chr), catalogNumber (chr),
-#>      datasetName (chr), recordedBy (chr), eventTime (chr), identifier
-#>      (chr), identificationID (chr), occurrenceRemarks (chr),
-#>      informationWithheld (chr), sex (chr), establishmentMeans (chr),
-#>      preparations (chr), recordNumber (chr), nomenclaturalCode (chr),
-#>      higherClassification (chr), type (chr), vernacularName (chr),
-#>      accessRights (chr), occurrenceStatus (chr), language (chr),
-#>      disposition (chr)
+#>      (chr), country (chr), verbatimEventDate (chr),
+#>      http...unknown.org.occurrenceDetails (chr), rights (chr),
+#>      rightsHolder (chr), occurrenceID (chr), taxonID (chr), collectionCode
+#>      (chr), gbifID (chr), occurrenceRemarks (chr), institutionCode (chr),
+#>      datasetName (chr), catalogNumber (chr), recordedBy (chr), eventTime
+#>      (chr), identifier (chr), identificationID (chr), verbatimLocality
+#>      (chr), infraspecificEpithet (chr), informationWithheld (chr)
 ```
 
 Or to be more precise, you can search for names first, make sure you have the right name, then pass the GBIF key to the `occ_search()` function:
@@ -650,24 +647,24 @@ Or to be more precise, you can search for names first, make sure you have the ri
 ```r
 key <- name_suggest(q='Helianthus annuus', rank='species')$key[1]
 occ_search(taxonKey=key, limit=20)
-#> Records found [20435] 
+#> Records found [20650] 
 #> Records returned [20] 
 #> No. unique hierarchies [1] 
-#> No. media records [12] 
+#> No. media records [18] 
 #> Args [taxonKey=3119195, limit=20, offset=0, fields=all] 
 #> First 10 rows of data
 #> 
 #>                 name        key decimalLatitude decimalLongitude
-#> 1  Helianthus annuus 1088900309        33.95239       -117.32011
-#> 2  Helianthus annuus 1088933055        25.66564       -100.30348
-#> 3  Helianthus annuus 1088909392        24.72449        -99.54020
-#> 4  Helianthus annuus 1088944416        26.20518        -98.26725
+#> 1  Helianthus annuus 1095851641         0.00000          0.00000
+#> 2  Helianthus annuus 1088900309        33.95239       -117.32011
+#> 3  Helianthus annuus 1088933055        25.66564       -100.30348
+#> 4  Helianthus annuus 1088909392        24.72449        -99.54020
 #> 5  Helianthus annuus 1088937716        25.81691       -100.05940
-#> 6  Helianthus annuus 1090389390        59.96150         17.71060
-#> 7  Helianthus annuus  922042404        -3.28140         37.52415
-#> 8  Helianthus annuus  899948224         1.27890        103.79930
-#> 9  Helianthus annuus  891052261        24.82589        -99.58411
-#> 10 Helianthus annuus 1038317691       -43.52777        172.62544
+#> 6  Helianthus annuus 1088944416        26.20518        -98.26725
+#> 7  Helianthus annuus 1090389390        59.96150         17.71060
+#> 8  Helianthus annuus 1092889365        32.71840       -114.75603
+#> 9  Helianthus annuus 1092889645         1.27617        103.79136
+#> 10 Helianthus annuus 1098903927        29.17958       -102.99551
 #> ..               ...        ...             ...              ...
 #> Variables not shown: issues (chr), datasetKey (chr), publishingOrgKey
 #>      (chr), publishingCountry (chr), protocol (chr), lastCrawled (chr),
@@ -676,20 +673,21 @@ occ_search(taxonKey=key, limit=20)
 #>      (int), familyKey (int), genusKey (int), speciesKey (int),
 #>      scientificName (chr), kingdom (chr), phylum (chr), order (chr),
 #>      family (chr), genus (chr), species (chr), genericName (chr),
-#>      specificEpithet (chr), taxonRank (chr), year (int), month (int), day
-#>      (int), eventDate (chr), modified (chr), lastInterpreted (chr),
-#>      references (chr), identifiers (chr), facts (chr), relations (chr),
-#>      geodeticDatum (chr), class (chr), countryCode (chr), country (chr),
+#>      specificEpithet (chr), taxonRank (chr), dateIdentified (chr),
+#>      elevation (dbl), elevationAccuracy (dbl), stateProvince (chr), year
+#>      (int), month (int), day (int), eventDate (chr), lastInterpreted
+#>      (chr), identifiers (chr), facts (chr), relations (chr), geodeticDatum
+#>      (chr), class (chr), countryCode (chr), country (chr), recordNumber
+#>      (chr), rights (chr), municipality (chr), rightsHolder (chr),
+#>      ownerInstitutionCode (chr), type (chr), occurrenceID (chr),
+#>      collectionCode (chr), identifiedBy (chr), gbifID (chr),
+#>      occurrenceRemarks (chr), institutionCode (chr), datasetName (chr),
+#>      catalogNumber (chr), recordedBy (chr), locality (chr), language
+#>      (chr), identifier (chr), modified (chr), references (chr),
 #>      verbatimEventDate (chr), verbatimLocality (chr),
-#>      http...unknown.org.occurrenceDetails (chr), rights (chr),
-#>      rightsHolder (chr), occurrenceID (chr), collectionCode (chr), taxonID
-#>      (chr), occurrenceRemarks (chr), gbifID (chr), institutionCode (chr),
-#>      catalogNumber (chr), datasetName (chr), recordedBy (chr), eventTime
-#>      (chr), identifier (chr), dateIdentified (chr), identificationID
-#>      (chr), coordinateAccuracy (dbl), elevation (dbl), elevationAccuracy
-#>      (dbl), depth (dbl), depthAccuracy (dbl), stateProvince (chr), county
-#>      (chr), locality (chr), identifiedBy (chr), recordNumber (chr),
-#>      verbatimElevation (chr), georeferenceSources (chr)
+#>      http...unknown.org.occurrenceDetails (chr), taxonID (chr), eventTime
+#>      (chr), identificationID (chr), coordinateAccuracy (dbl), depth (dbl),
+#>      depthAccuracy (dbl), county (chr), informationWithheld (chr)
 ```
 
 Like many functions in `rgbif`, you can choose what to return with the `return` parameter, here, just returning the metadata:
@@ -698,7 +696,7 @@ Like many functions in `rgbif`, you can choose what to return with the `return` 
 ```r
 occ_search(taxonKey=key, return='meta')
 #>   offset limit endOfRecords count
-#> 1    300   200        FALSE 20435
+#> 1    300   200        FALSE 20650
 ```
 
 You can choose what fields to return. This isn't passed on to the API query to GBIF as they don't allow that, but we filter out the columns before we give the data back to you.
@@ -706,7 +704,7 @@ You can choose what fields to return. This isn't passed on to the API query to G
 
 ```r
 occ_search(scientificName = "Ursus americanus", fields=c('name','basisOfRecord','protocol'), limit = 20)
-#> Records found [7175] 
+#> Records found [7218] 
 #> Records returned [20] 
 #> No. unique hierarchies [1] 
 #> No. media records [20] 
@@ -735,7 +733,7 @@ Most parameters are vectorized, so you can pass in more than one value:
 splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
 keys <- sapply(splist, function(x) name_suggest(x)$key[1], USE.NAMES=FALSE)
 occ_search(taxonKey=keys, limit=5)
-#> Occ. found [2482598 (355697), 2492010 (1942412), 2498387 (592181)] 
+#> Occ. found [2482598 (355723), 2492010 (1942477), 2498387 (592249)] 
 #> Occ. returned [2482598 (5), 2492010 (5), 2498387 (5)] 
 #> No. unique hierarchies [2482598 (1), 2492010 (1), 2498387 (1)] 
 #> No. media records [2482598 (5), 2492010 (5), 2498387 (5)] 
@@ -759,13 +757,12 @@ occ_search(taxonKey=keys, limit=5)
 #>      (int), month (int), day (int), eventDate (chr), modified (chr),
 #>      lastInterpreted (chr), references (chr), identifiers (chr), facts
 #>      (chr), relations (chr), geodeticDatum (chr), class (chr), countryCode
-#>      (chr), country (chr), gbifID (chr), verbatimEventDate (chr),
-#>      institutionCode (chr), datasetName (chr), catalogNumber (chr),
-#>      verbatimLocality (chr), recordedBy (chr),
-#>      http...unknown.org.occurrenceDetails (chr), rights (chr),
-#>      rightsHolder (chr), occurrenceID (chr), identifier (chr),
-#>      collectionCode (chr), taxonID (chr), identificationID (chr),
-#>      occurrenceRemarks (chr), eventTime (chr)
+#>      (chr), country (chr), verbatimEventDate (chr), verbatimLocality
+#>      (chr), http...unknown.org.occurrenceDetails (chr), rights (chr),
+#>      rightsHolder (chr), occurrenceID (chr), taxonID (chr), collectionCode
+#>      (chr), gbifID (chr), institutionCode (chr), datasetName (chr),
+#>      catalogNumber (chr), recordedBy (chr), identifier (chr),
+#>      identificationID (chr), occurrenceRemarks (chr), eventTime (chr)
 ```
 
 
