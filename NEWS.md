@@ -1,3 +1,20 @@
+rgbif 0.8.6
+===============
+
+### NEW FEATURES
+
+* New set of functions with names `occ_download*()` for working with the GBIF download API. This is the same service as using the GBIF website, but via an API. See `?downloads`. (#154) (#167)
+
+### MINOR IMPROVEMENTS
+
+* Explicitly import non-base R pkg functions, so importing from `utils`, `methods`, and `stats` (#166)
+
+### BUG FIXES
+
+* Fixed problem with `httr` `v1` where empty list not allowed to pass to 
+the `query` parameter in `GET` (#163)
+
+
 rgbif 0.8.4
 ===============
 
