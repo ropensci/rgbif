@@ -49,23 +49,23 @@
 #' more info, and the predicates docs \url{http://www.gbif.org/developer/occurrence#predicates}.
 #'
 #' @examples \dontrun{
-#' occ_download("basisOfRecord = LITERATURE")
-#' occ_download('taxonKey = 3119195')
-#' occ_download('decimalLatitude > 50')
-#' occ_download('elevation >= 9000')
-#' occ_download('decimalLatitude >= 65')
-#' occ_download("country = US")
-#' occ_download("institutionCode = TLMF")
-#' occ_download("catalogNumber = Bird.27847588")
+#' # occ_download("basisOfRecord = LITERATURE")
+#' # occ_download('taxonKey = 3119195')
+#' # occ_download('decimalLatitude > 50')
+#' # occ_download('elevation >= 9000')
+#' # occ_download('decimalLatitude >= 65')
+#' # occ_download("country = US")
+#' # occ_download("institutionCode = TLMF")
+#' # occ_download("catalogNumber = Bird.27847588")
 #'
-#' res <- occ_download('taxonKey = 7264332', 'hasCoordinate = TRUE')
+#' # res <- occ_download('taxonKey = 7264332', 'hasCoordinate = TRUE')
 #'
 #' # pass output directly, or later, to occ_download_meta for more information
-#' occ_download('decimalLatitude > 75') %>% occ_download_meta
+#' # occ_download('decimalLatitude > 75') %>% occ_download_meta
 #'
 #' # Multiple queries
-#' occ_download('decimalLatitude >= 65', 'decimalLatitude <= -65', type="or")
-#' gg <- occ_download('depth = 80', 'taxonKey = 2343454', type="or")
+#' # occ_download('decimalLatitude >= 65', 'decimalLatitude <= -65', type="or")
+#' # gg <- occ_download('depth = 80', 'taxonKey = 2343454', type="or")
 #' }
 
 occ_download <- function(...,

@@ -29,10 +29,8 @@ took about 26 seconds.
 }
 \examples{
 \dontrun{
-occ_download_get("0000066-140928181241064")
-occ_download_get("0000065-140928181241064")
-occ_download_get("0003983-140910143529206")
-occ_download_get("0003966-140910143529206")
+occ_download_get("0000066-140928181241064", overwrite = TRUE)
+occ_download_get("0003983-140910143529206", overwrite = TRUE)
 }
 }
 

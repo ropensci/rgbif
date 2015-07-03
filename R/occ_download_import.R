@@ -1,21 +1,23 @@
 #' Import a downloaded file from GBIF.
-#' 
+#'
 #' @importFrom data.table fread
 #' @export
 #'
 #' @param x The output of a call to \code{occ_download_get}
 #' @param key A key generated from a request, like that from \code{occ_download}
-#' @param path Path to unzip file to. Default: \code{"."} Writes to folder matching 
+#' @param path Path to unzip file to. Default: \code{"."} Writes to folder matching
 #' zip file name
-#' 
+#'
 #' @details You can provide either x as input, or both key and path.
 #'
 #' @examples \dontrun{
-#' res <- occ_download_get(key="0000066-140928181241064")
+#' # First, kick off at least 1 download, then wait for the job to be complete
+#' # Then use your download keys
+#' res <- occ_download_get(key="0000066-140928181241064", overwrite=TRUE)
 #' occ_download_import(x=res)
-#' 
+#'
 #' occ_download_get(key="0000066-140928181241064", overwrite = TRUE) %>% occ_download_import
-#' 
+#'
 #' # coerce a file path to the right class to feed to occ_download_import
 #' as.download("~/0000066-140928181241064.zip")
 #' as.download(key = "0000066-140928181241064")
@@ -29,7 +31,7 @@ occ_download_import <- function(x=NULL, key=NULL, path=".") {
     key <- attr(x, "key")
   } else {
     stopifnot(!is.null(key), !is.null(path))
-    path <- sprintf("%s/%s.zip", path, key)    
+    path <- sprintf("%s/%s.zip", path, key)
   }
   tmpdir <- file.path(tempdir(), key)
   unzip(path, exdir = tmpdir, overwrite = TRUE)
@@ -48,13 +50,17 @@ as.download <- function(path = ".", key = NULL) {
   UseMethod("as.download")
 }
 
+#' @export
+#' @rdname occ_download_import
 as.download.character <- function(path = ".", key = NULL) {
   stopifnot(!is.null(path))
   if (!is.null(key)) path <- sprintf("%s/%s.zip", path, key)
   if (!file.exists(path)) stop("File does not exist", call. = FALSE)
   size <- getsize(file.info(path)$size)
-  structure(path, class = "occ_download_get", 
+  structure(path, class = "occ_download_get",
             size = size, key = ifelse(is.null(key), "unknown", key))
 }
 
+#' @export
+#' @rdname occ_download_import
 as.download.download <- function(path = ".", key = NULL) as.download(path, key)

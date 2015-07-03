@@ -1,4 +1,4 @@
-#' Cancel a download process.
+#' Cancel a download cretion process.
 #'
 #' @export
 #'
@@ -7,8 +7,11 @@
 #' @param pwd (character) User password within GBIF's website. Required.
 #' @param ... Further args passed to \code{\link[httr]{DELETE}}
 #'
+#' @details Note, this only cancels a job in progress. If your download is already prepared
+#' for you, this won't do anything to change that.
+#'
 #' @examples \dontrun{
-#' occ_download_cancel(key="0003984-140910143529206")
+#' # occ_download_cancel(key="0003984-140910143529206")
 #' }
 
 occ_download_cancel <- function(key, user=getOption("gbif_user"), pwd=getOption("gbif_pwd"), ...) {

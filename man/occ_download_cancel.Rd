@@ -3,7 +3,7 @@
 \name{occ_download_cancel}
 \alias{occ_download_cancel}
 \alias{occ_download_cancel_staged}
-\title{Cancel a download process.}
+\title{Cancel a download cretion process.}
 \usage{
 occ_download_cancel(key, user = getOption("gbif_user"),
   pwd = getOption("gbif_pwd"), ...)
@@ -20,11 +20,15 @@ occ_download_cancel_staged()
 \item{...}{Further args passed to \code{\link[httr]{DELETE}}}
 }
 \description{
-Cancel a download process.
+Cancel a download cretion process.
+}
+\details{
+Note, this only cancels a job in progress. If your download is already prepared
+for you, this won't do anything to change that.
 }
 \examples{
 \dontrun{
-occ_download_cancel(key="0003984-140910143529206")
+# occ_download_cancel(key="0003984-140910143529206")
 }
 }
 

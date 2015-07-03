@@ -2,12 +2,18 @@
 % Please edit documentation in R/occ_download_import.R
 \name{occ_download_import}
 \alias{as.download}
+\alias{as.download.character}
+\alias{as.download.download}
 \alias{occ_download_import}
 \title{Import a downloaded file from GBIF.}
 \usage{
 occ_download_import(x = NULL, key = NULL, path = ".")
 
 as.download(path = ".", key = NULL)
+
+\method{as.download}{character}(path = ".", key = NULL)
+
+\method{as.download}{download}(path = ".", key = NULL)
 }
 \arguments{
 \item{x}{The output of a call to \code{occ_download_get}}
@@ -25,7 +31,9 @@ You can provide either x as input, or both key and path.
 }
 \examples{
 \dontrun{
-res <- occ_download_get(key="0000066-140928181241064")
+# First, kick off at least 1 download, then wait for the job to be complete
+# Then use your download keys
+res <- occ_download_get(key="0000066-140928181241064", overwrite=TRUE)
 occ_download_import(x=res)
 
 occ_download_get(key="0000066-140928181241064", overwrite = TRUE) \%>\% occ_download_import
