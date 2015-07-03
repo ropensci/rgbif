@@ -16,3 +16,4 @@ README.Rmd
 ^\.httr-oauth$
 vignettes/figure
 ^.*\.zip$
+NEWS.md

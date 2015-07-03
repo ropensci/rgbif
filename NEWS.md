@@ -1,14 +1,14 @@
 rgbif 0.8.4
 ===============
 
-NEW FEATURES
+### NEW FEATURES
 
 * New functions for the `/enumerations` GBIF API route: `enumeration()`
 and `enumeration_country()`. Many parts of the GBIF API make use of
 enumerations, i.e. controlled vocabularies for specific topics - and are
 available via these functions. (#152)
 
-IMPROVEMENTS
+### IMPROVEMENTS
 
 * `elevation()` now requires an API key (#148)
 * The `V8` package an Import now, used to do WKT read/create with use of
@@ -23,7 +23,7 @@ services, and how they work. (#150)
 * Dropped `stringr` from Imports (#160)
 * Dropped `maps` and `grid` packages from Imports (#161)
 
-BUG FIXES
+### BUG FIXES
 
 * Looping over records with `limit` and `start` parameters was in some
 cases resulting in duplicate records returned. Problem fixed. (#157)
@@ -31,7 +31,7 @@ cases resulting in duplicate records returned. Problem fixed. (#157)
 rgbif 0.8.0
 ===============
 
-IMPROVEMENTS
+### IMPROVEMENTS
 
 * All example moved to `\dontrun` (#139)
 * README fixes for html (#141)
@@ -42,7 +42,7 @@ and start parameters (#145)
 * Fixed `occ_search()` to allow ability to query by only publishingCountry, that is, with no
 other parameters if desired (#137)
 
-BUG FIXES
+### BUG FIXES
 
 * Fixed bug in internal `GET()` helper function to just pass `NULL` to the `query` parameter when
 the list of length 0 passed, since it caused requests to fail in some cases.
@@ -56,7 +56,7 @@ parsing for verbose output (#136)
 rgbif 0.7.7
 ===============
 
-NEW FEATURES
+### NEW FEATURES
 
 * New function `occ_issues()` to subset data from `occ_search()` based on GBIF issues. (#) (#122)
 * Related to the last bullet, GBIF issues now are returned by default in `occ_search()` results, and are intentionally moved to the beginning of the column order of the data to be more obvious. (#102)
@@ -64,7 +64,7 @@ NEW FEATURES
 * New function `gbif_names()` to view highlighted terms in name results from a call to `name_lookup()`. (#114)
 * New functions: `occ_issues_lookup()` to lookup GBIF issues based on code name or full issue name, and `gbif_issues()` to print the entire issues table.
 
-IMPROVEMENTS
+### IMPROVEMENTS
 
 * Completely replaced `RCurl` with `httr`
 * Completely replaced `RJSONIO` with `jsonlite`. Should see slight performance in JSON parsing with `jsonlite`.
@@ -82,7 +82,7 @@ IMPROVEMENTS
 * Parameter changes in `networks()`: `name`, `code`, `modifiedsince`, `startindex`, and `maxresults` gone; new parameters `query`, `identifier`, `identifierType`, `limit`, and `start`
 * Parameter changes in `nodes()`: new parameters `identifier`, `identifierType`, `limit`, and `start`
 
-BUG FIXES
+### BUG FIXES
 
 * `occ_search()` failed sometimes on species that were not found. Fixed. (#112)
 * Added better handling of some server errors to pass on to user. (#115) (#118)
@@ -96,14 +96,14 @@ BUG FIXES
 rgbif 0.7.0
 ===============
 
-NEW FEATURES
+### NEW FEATURES
 
 * `occ_search()` now has a `dplyr` like summary output when `return='all'`. See `?occ_search` for examples. You can still easily access all data, by indexing to `meta`, `hierarchy`, `data`, or `media` via e.g., `$data`, `['data']`, or `[['data']]`. (#95)
 * Media now returned from the GBIF API. Thus, in `occ_search()`, we now return a media slot in the output list by default.
 * New function `gbif_photos()` to view media files (photos in the wild or of museum specimens). Two options are available, `which='map'` creates a single map which presents the image when the user clicks on the point, and `which='table'` in which a table has one row for each image, presenting the image and an interactive map with the single point. (#88)
 * Two new packages are imported: `sp` and `whisker`
 
-IMPROVEMENTS
+### IMPROVEMENTS
 
 * GBIF updated their API, now at v1. URL endpoints in `rgbif` changed accordingly. (#92)
 * GBIF switched to using 2-letter country codes. Take note. (#90)
@@ -114,7 +114,7 @@ IMPROVEMENTS
 * `occ_search()` gains new parameters  `mediatype` and `issue` (#93), with detailed list of possible options for the `issue` parameter. Gains new examples for searching for images, examples of calls that will throw errors.
 * Updated the vignette.
 
-BUG FIXES
+### BUG FIXES
 
 * Added better error message to `check_wkt()`.
 * `facet_only` parameter removed from `dataset_search()` function as it doesn't do anything - use `limit=0` instead.
@@ -123,7 +123,7 @@ BUG FIXES
 rgbif 0.6.3
 ===============
 
-IMPROVEMENTS
+### IMPROVEMENTS
 
 * Added functions `gbif_bbox2wkt()` and `gbif_wkt2bbox()` to convert a bounding box to wkt and a wkt object to a bounding box, respectively. Copied from the `spocc` package. Prefixes to fxn names will avoid conflicts.
 * Now spitting out more informative error messages when WKT strings passed in are not properly formed, either from `rgeos::readWKT` or from the returned response from GBIF.
@@ -131,14 +131,14 @@ IMPROVEMENTS
 rgbif 0.6.2
 ===============
 
-BUG FIXES
+### BUG FIXES
 
 * `gbifmap()` was throwing an error because it was looking for two variables `latitude` and `longitude`, which had been changed to `decimalLatitude` and `decimalLongitude`, respectively, in other functions in this package. Fixed. (#81)
 * `occ_get()` was updated to include changes in the GBIF API for this endpoint. The fix included fixing the parser for verbatim results, see `rgbif::gbifparser_verbatim`. (#83)
 * Fixed bugs in `elevation()` - it was expecting column names to be latitude and longitude, whereas inputs from other `rgbif` functions have changed to decimalLatitude and decimalLongitude.
 * Fixed bug in `count_facet()` introduced b/c GBIF no longer accepts hostCountry or nubKey parameters.
 
-IMPROVEMENTS
+### IMPROVEMENTS
 
 * `gist()`, `stylegeojson()`, and `togeojson()` functions now listed as deprecated. Their functionality moved to the `spocc` package (http://cran.r-project.org/web/packages/spocc/index.html). These functions will be removed from this package in a future version. (#82)
 * Added a quick sanity test for `gbifmap()`.
@@ -147,14 +147,14 @@ IMPROVEMENTS
 rgbif 0.6.0
 ===============
 
-BUG FIXES
+### BUG FIXES
 
 * A number of variables changed names to better follow the Darwin Core standard. `latitude` is now `decimalLatitude`. `longitude` is now `decimalLongitude`. `clazz` is now `class`. Code in this package changed to accomodate these changes. `date` is now `eventDate`. `georeferenced` is now `hasCoordinate`. Beware of these changes in your own code using `rgbif` - find and replace for these should be easy.
 * Changed `altitude` parameter in `occ_search()` to `elevation` - should have been `elevation` the whole time.
 * `occ_count()` function with parameter changes: `nubKey` parameter in changed to `taxonKey`. New parameter `protocol`. Parameter `catalogNumber` gone. Parameter `hostCountry` gone. These parameters are still in the function definition, but if called they throw a useful warning telling you the correct parameter names. (#76)
 * Fixed bug in `name_lookup()` function that was labeling facet outputs incorrectly. (#77)
 
-IMPROVEMENTS
+### IMPROVEMENTS
 
 * Better checking and parsing of response data from GBIF: Across all functions, we now check that the response content type is `application/json`, then parse JSON ourselves using `RJSONIO::fromJSON` (instead of httr doing it).
 * Across all functions, we now return all potenital character class columns as character class (instead of factor), by passing `stringsAsFactors = FALSE` to all `data.frame()` calls.
@@ -163,7 +163,7 @@ IMPROVEMENTS
 * Updated docs in `name_usage`, `name_backbone`, `name_lookup`, and `name_suggest` functions.
 * `sourceId` parameter in `name_usage()` function doesn't work so error message is thrown when used.
 
-NEW FEATURES
+### NEW FEATURES
 
 * New function `check_wkt()` to check that well known text string is the right format. (#68)
 * New dataset typestatus to look up possible specimen typeStatus values. See #74 for more information.
@@ -174,7 +174,7 @@ NEW FEATURES
 rgbif 0.5.0
 ===============
 
-IMPROVEMENTS
+### IMPROVEMENTS
 
 * Changed name of country_codes() function to gbif_country_codes() to avoid conflicts with other packages.
 * Replaced sapply() with vapply() throughout the package as it is more robust and can be faster.
@@ -183,12 +183,12 @@ IMPROVEMENTS
 * occ_count() now accepts a call to query publishingCountry with a single parameter (country), to list occurrence counts by publishing country.
 * occ_get() and occ_search() lose parameter minimal, and in its place gains parameter fields, in which you can request fields='minimal' to get just name, taxon key, lat and long. Or set to 'all' to get all fields, or selection the fields you want by passing in a vector of field names.
 
-BUG FIXES
+### BUG FIXES
 
 * Updated base url for the GIBF parser function parsenames()
 * isocodes dataset now with documentation.
 
-NEW FEATURES
+### NEW FEATURES
 
 * New function count_facet() to do facetted count search, as GBIF doesn't allow faceted searches against the count API.
 * New function elevation() to get elevation data for a data.frame of lat/long points, or a list of lat/long points. This function uses the Google Elevation API (https://developers.google.com/maps/documentation/elevation/).
@@ -197,26 +197,26 @@ NEW FEATURES
 rgbif 0.4.1
 ===============
 
-BUG FIXES
+### BUG FIXES
 
 * Improved handling of limit parameter in occ_search() so that the correct number of occurrences are returned.
 * Fixed various tests that were broken.
 
-IMPROVEMENTS
+### IMPROVEMENTS
 
 * Added missing limit argument in datasets() function man file, also function gains start and callopts parameters.
 
 rgbif 0.4.0
 ===============
 
-IMPROVEMENTS
+### IMPROVEMENTS
 
 * Data object isocodes gains new column gbif_names, the GBIF specific names for countries.
 * Added in deprecation messages throughtout package for functions and arguments that are deprecated.
 * tests moved to tests/testthat from inst/tests.
 * Vignettes now in vignettes/ directory.
 
-NEW FEATURES
+### NEW FEATURES
 
 * New function dataset_suggest(), a quick autocomplete service that returns up to 20 datasets.
 * New function name_backbone() looks up names against the GBIF backbone taxonomy.
@@ -227,23 +227,23 @@ NEW FEATURES
 rgbif 0.3.9
 ===============
 
-IMPROVEMENTS
+### IMPROVEMENTS
 
 * Added back in functions, and .Rd files, from old version or rgbif that interacts with the old GBIF API.
 * Updated vignette to work with new GBIF API and fxns.
 
-NEW FEATURES
+### NEW FEATURES
 
 * Added functions to interact with the new GBIF API, notably: country_codes(), dataset_metrics(), dataset_search(), datasets(), name_lookup(), gbifmap(), gist(), name_lookup(), name_usage(), networks(), nodes(), occ_count(), occ_get(), occ_search(), organizations(), stylegeojson(), togeojson(). See the README for a crosswalk from old functions to new ones.
 
-BUG FIXES
+### BUG FIXES
 
 * test files moved from inst/tests/ to tests/testthat/
 
 rgbif 0.3.2
 ===============
 
-BUG FIXES
+### BUG FIXES
 
 * Removed georeferencedonly parameter - is deprecated in the GBIF API
 
@@ -251,14 +251,14 @@ BUG FIXES
 rgbif 0.3.0
 ===============
 
-IMPROVEMENTS
+### IMPROVEMENTS
 
 * Added S3 objects: Output from calls to occurrencelist() and occurrence list_many() now of class gbiflist, and output from calls to densitylist() now of class gbifdens.
 * Slight changes to gbifmaps() function.
 * url parameter in all functions moved into the function itself as the base GBIF API url doesn't need to be specified by user.
 * Vignette added.
 
-NEW FEATURES
+### NEW FEATURES
 
 * Added function country_codes() to look up 2 character ISO country codes for use in searches.
 * Added function occurrencelist_many() to handle searches of many species.
@@ -270,16 +270,16 @@ NEW FEATURES
 rgbif 0.2.0
 ===============
 
-IMPROVEMENTS
+### IMPROVEMENTS
 
 * Improved code style, and simplified code in some functions.
 
-NEW FEATURES
+### NEW FEATURES
 
 * occurrencelist() now handles scientific notation when maxresults are given in that form.
 * occurencelist() now can retrieve any number of records; was previously a max of 1000 records.
 
-BUG FIXES
+### BUG FIXES
 
 * Demo "List" was returning incorrect taxon names - corrected now.
 * Removed unused parameter 'latlongdf' in occurencelist().
@@ -288,12 +288,12 @@ BUG FIXES
 rgbif 0.1.5
 ===============
 
-IMPROVEMENTS
+### IMPROVEMENTS
 
 * Changed all functions to use RCurl instead of httr as httr was presenting some problems.
 * Two function, capwords and gbifxmlToDataFrame, added with documentation as internal functions.
 
-NEW FEATURES
+### NEW FEATURES
 
 * Added function density_spplist to get a species list or data.frame of species and their counts for any degree cell.
 * Added function densitylist to access to records showing the density of occurrence records from the GBIF Network by one-degree cell.
@@ -308,6 +308,6 @@ DEPRECATED
 rgbif 0.1.0
 ===============
 
-NEW FEATURES
+### NEW FEATURES
 
 * released to CRAN
