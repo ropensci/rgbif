@@ -5,7 +5,7 @@ rgbif
 
 [![Build Status](https://api.travis-ci.org/ropensci/rgbif.png?branch=master)](https://travis-ci.org/ropensci/rgbif)
 [![Build status](https://ci.appveyor.com/api/projects/status/jili6du1ssi4ktbg/branch/master)](https://ci.appveyor.com/project/sckott/rgbif/branch/master)
-[![Coverage Status](https://coveralls.io/repos/ropensci/rgbif/badge.svg)](https://coveralls.io/r/ropensci/rgbif)
+[![codecov.io](https://codecov.io/github/ropensci/rgbif/coverage.svg?branch=master)](https://codecov.io/github/ropensci/rgbif?branch=master)
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/rgbif)](https://github.com/metacran/cranlogs.app)
 [![cran version](http://www.r-pkg.org/badges/version/rgbif)](http://cran.rstudio.com/web/packages/rgbif)
 

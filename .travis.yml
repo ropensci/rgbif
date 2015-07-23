@@ -9,11 +9,10 @@ r_packages:
   - colorspace
 
 r_github_packages:
-  - jimhester/robustr
   - jimhester/covr
 
 after_success:
-  - Rscript -e 'library(covr); coveralls()'
+  - Rscript -e 'covr::codecov()'
 
 notifications:
   slack:
