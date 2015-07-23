@@ -1,3 +1,14 @@
+rgbif 0.8.8
+===============
+
+### MINOR IMPROVEMENTS
+
+* Additional tests added for `gbif_photos()` and `gbif_names()` (#170)
+
+### BUG FIXES
+
+* Fixed a few tests that were not passing on CRAN.
+
 rgbif 0.8.6
 ===============
 

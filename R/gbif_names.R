@@ -7,6 +7,7 @@
 #' @param browse (logical) Browse output (default: TRUE)
 #'
 #' @examples \dontrun{
+#' # browse=FALSE returns path to file
 #' gbif_names(name_lookup(query='snake', hl=TRUE), browse=FALSE)
 #'
 #' (out <- name_lookup(query='canada', hl=TRUE, limit=5))
@@ -19,6 +20,7 @@
 #' }
 
 gbif_names <- function(input, output = NULL, browse = TRUE) {
+  if (!is(input, "list")) stop("input should be of class list", call. = FALSE)
 
   input <- input$data
   elements <- gn_tolist(input)
@@ -27,17 +29,17 @@ gbif_names <- function(input, output = NULL, browse = TRUE) {
   rr <- gsub("&lt;em class=&quot;gbifHl&quot;&gt;", "<b>", rr)
   rr <- gsub("&lt;/em&gt;", "</b>", rr)
   write(rr, file = outfile)
-  if(browse) browseURL(outfile)
+  if (browse) browseURL(outfile) else outfile
 }
 
 gn_dirhandler <- function(x, which="file"){
-  if(is.null(x)){
+  if (is.null(x)) {
     dir <- tempdir()
     dir.create(dir, recursive = TRUE, showWarnings = FALSE)
-    switch(which, file=file.path(dir, "index.html"), dir=dir)
+    switch(which, file = file.path(dir, "index.html"), dir = dir)
   } else {
-    if(!file.exists(x)) dir.create(x, recursive = TRUE, showWarnings = FALSE)
-    switch(which, file=file.path(x, "index.html"), dir=x)
+    if (!file.exists(x)) dir.create(x, recursive = TRUE, showWarnings = FALSE)
+    switch(which, file = file.path(x, "index.html"), dir = x)
   }
 }
 
@@ -47,11 +49,12 @@ gn_tolist <- function(x){
     tmp[sapply(tmp, function(x) is.null(x) || is.na(x))] <- "none"
     tmp
   })
-  addurl <- function(z){
-    if(z$nubKey=="none")
-      c(z, url=paste0("http://www.gbif.org/species/", z$key))
-    else
-      c(z, url=paste0("http://www.gbif.org/species/", z$nubKey))
+  addurl <- function(z) {
+    if (z$nubKey == "none") {
+      c(z, url = paste0("http://www.gbif.org/species/", z$key))
+    } else {
+      c(z, url = paste0("http://www.gbif.org/species/", z$nubKey))
+    }
   }
   Map(addurl, out)
 }

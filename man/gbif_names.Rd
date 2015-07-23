@@ -18,6 +18,7 @@ View highlighted terms in name results from GBIF.
 }
 \examples{
 \dontrun{
+# browse=FALSE returns path to file
 gbif_names(name_lookup(query='snake', hl=TRUE), browse=FALSE)
 
 (out <- name_lookup(query='canada', hl=TRUE, limit=5))
