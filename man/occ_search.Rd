@@ -350,7 +350,7 @@ occ_search(collectorName=c("smith","BJ Stacey"), limit=20)
 library('httr')
 occ_search(taxonKey=key, limit=20, return='hier', config=verbose())
 # occ_search(taxonKey=key, limit=20, return='hier', config=progress())
-occ_search(taxonKey=key, limit=20, return='hier', config=timeout(1))
+# occ_search(taxonKey=key, limit=20, return='hier', config=timeout(1))
 
 # Search for many species
 splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
@@ -483,8 +483,8 @@ res \%>\% occ_issues(-cudc, mutate = "split_expand")
 # occ_search(taxonKey=c(2482598,2492010), collectorName=c("smith","BJ Stacey"))
 
 # Get a lot of data, here 1500 records for Helianthus annuus
-out <- occ_search(taxonKey=key, limit=1500, return="data")
-nrow(out)
+# out <- occ_search(taxonKey=key, limit=1500, return="data")
+# nrow(out)
 
 # If you pass in an invalid polygon you get hopefully informative errors
 
