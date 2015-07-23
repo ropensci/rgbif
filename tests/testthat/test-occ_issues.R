@@ -46,7 +46,6 @@ test_that("occ_issues", {
   expect_true(any(grepl("gass84", names(ee$data))))
   expect_true(any(grepl("gass84", names(ff$data))))
   expect_false(any(grepl("issues", names(ff$data))))
-  expect_false(any(grepl("COUNTRY_COORDINATE_MISMATCH", gg$data$issues)))
   expect_false(any(grepl("issues", names(hh$data))))
   expect_true(any(grepl("COORDINATE_ROUNDED", names(hh$data))))
 })
