@@ -19,63 +19,67 @@
 #' }
 
 gbif_photos <- function(input, output = NULL, which='table', browse = TRUE) {
+  if (!is(input, "gbif")) stop("input should be of class gbif", call. = FALSE)
 
-  if(which=='map'){
+  which <- match.arg(which, c("map", "table"))
+  if (which == 'map') {
     photos <- foo(input)
     outfile <- dirhandler(output)
     filepath <- system.file("singlemaplayout.html", package = "rgbif")
     ff <- paste(readLines(filepath), collapse = "\n")
     rr <- whisker.render(ff)
     write(rr, file = outfile)
-    if(browse) browseURL(outfile)
+    if (browse) browseURL(outfile) else outfile
   } else {
-    if(length(input) > 20){
+    if (length(input) > 20) {
       outdir <- dirhandler(output, 'dir')
       input <- split(input, ceiling(seq_along(input)/20))
-      filenames <- replicate(length(input), path.expand(tempfile(fileext=".html", tmpdir = outdir)))
+      filenames <- replicate(length(input), path.expand(tempfile(fileext = ".html", tmpdir = outdir)))
       filenames <- as.list(filenames)
       links <- list()
-      for(i in seq_along(filenames)) links[[i]] <- list(url=filenames[[i]], pagenum=i)
+      for (i in seq_along(filenames)) links[[i]] <- list(url = filenames[[i]], pagenum = i)
 
-      for(i in seq_along(input)){
+      for (i in seq_along(input)) {
         photos <- foo(input[[i]])
         mappaths <- makemapfiles(photos, outdir)
-        photos <- Map(function(x,y) c(x, mappath=y), photos, mappaths)
+        photos <- Map(function(x,y) c(x, mappath = y), photos, mappaths)
         rendered <- whisker.render(template)
         paginated <- whisker.render(pagination)
         rendered <- paste0(rendered, paginated, footer)
         write(rendered, file = filenames[[i]])
       }
 
-      if(browse) browseURL(filenames[[1]])
+      if (browse) browseURL(filenames[[1]]) else filenames[[1]]
     } else {
       outfile <- dirhandler(output)
       outdir <- dirname(outfile)
       photos <- foo(input)
       mappaths <- makemapfiles(photos, outdir)
-      photos <- Map(function(x,y) c(x, mappath=y), photos, mappaths)
+      photos <- Map(function(x,y) c(x, mappath = y), photos, mappaths)
       rendered <- whisker.render(template)
       rendered <- paste0(rendered, footer)
       write(rendered, file = outfile)
-      if(browse) browseURL(outfile)
+      if (browse) browseURL(outfile) else outfile
     }
   }
 }
 
 dirhandler <- function(x, which="file"){
-  if(is.null(x)){
+  if (is.null(x)) {
     dir <- tempdir()
     dir.create(dir, recursive = TRUE, showWarnings = FALSE)
-    switch(which, file=file.path(dir, "index.html"), dir=dir)
+    switch(which, file = file.path(dir, "index.html"), dir = dir)
   } else {
-    if(!file.exists(x)) dir.create(x, recursive = TRUE, showWarnings = FALSE)
-    switch(which, file=file.path(x, "index.html"), dir=x)
+    if (!file.exists(x)) dir.create(x, recursive = TRUE, showWarnings = FALSE)
+    switch(which, file = file.path(x, "index.html"), dir = x)
   }
 }
 
 foo <- function(x){
   photos <- lapply(x, function(y){
-    if(is.null(y$decimalLatitude) || is.null(y$decimalLongitude)){ NULL } else {
+    if (is.null(y$decimalLatitude) || is.null(y$decimalLongitude)) {
+      NULL
+    } else {
       tmp <- y[c('key','species','decimalLatitude','decimalLongitude','country')]
       tmp[sapply(tmp, is.null)] <- "none"
       names(tmp) <- c('key','species','decimalLatitude','decimalLongitude','country')
@@ -145,7 +149,7 @@ footer <- '
 
 makemapfiles <- function(x, dir){
   mapfiles <- list()
-  for(i in seq_along(x)){
+  for (i in seq_along(x)) {
     file <- path.expand(tempfile("map", tmpdir = dir, fileext = ".html"))
     mapfiles[[i]] <- file
     tmp <- whisker.render(map, data = x[[i]])
