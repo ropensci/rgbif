@@ -21,7 +21,7 @@
 #' Note that \code{data="verbatim"} hasn't been working.
 #'
 #' Options for the data parameter are: 'all', 'verbatim', 'name', 'parents', 'children',
-#' 'related', 'synonyms', 'descriptions','distributions', 'images',
+#' 'related', 'synonyms', 'descriptions','distributions', 'media',
 #' 'references', 'speciesProfiles', 'vernacularNames', 'typeSpecimens', 'root'
 #'
 #' This function used to be vectorized with respect to the \code{data} parameter,
@@ -40,7 +40,7 @@
 #' name_usage()
 #'
 #' # References for a name usage
-#' name_usage(key=3119195, data='references')
+#' name_usage(key=2435099, data='references')
 #'
 #' # Species profiles, descriptions
 #' name_usage(key=3119195, data='speciesProfiles')
@@ -66,64 +66,69 @@
 #' }
 
 name_usage <- function(key=NULL, name=NULL, data='all', language=NULL, datasetKey=NULL, uuid=NULL,
-  sourceId=NULL, rank=NULL, shortname=NULL, start=NULL, limit=100, return='all', ...)
-{
+  sourceId=NULL, rank=NULL, shortname=NULL, start=NULL, limit=100, return='all', ...) {
+
   calls <- names(sapply(match.call(), deparse))[-1]
   calls_vec <- c("sourceId") %in% calls
-  if(any(calls_vec))
+  if (any(calls_vec)) {
     stop("Parameters not currently accepted: \n sourceId")
+  }
 
-  args <- rgbif_compact(list(language=language, name=name, datasetKey=datasetKey,
-                       rank=rank, offset=start, limit=limit, sourceId=sourceId))
+  args <- rgbif_compact(list(language = language, name = name, datasetKey = datasetKey,
+                       rank = rank, offset = start, limit = limit, sourceId = sourceId))
   data <- match.arg(data,
-      choices=c('all', 'verbatim', 'name', 'parents', 'children',
+      choices = c('all', 'verbatim', 'name', 'parents', 'children',
                 'related', 'synonyms', 'descriptions',
-                'distributions', 'images', 'references', 'speciesProfiles',
-                'vernacularNames', 'typeSpecimens', 'root'), several.ok=FALSE)
-  # if(length(data)==1) getdata(data) else lapply(data, getdata)
+                'distributions', 'media', 'references', 'speciesProfiles',
+                'vernacularNames', 'typeSpecimens', 'root'), several.ok = FALSE)
   out <- getdata(data, key, uuid, shortname, args, ...)
   # select output
   return <- match.arg(return, c('meta','data','all'))
   switch(return,
          meta = get_meta(out),
          data = name_usage_parse(out),
-         all = list(meta=get_meta(out), data=name_usage_parse(out))
+         all = list(meta = get_meta(out), data = name_usage_parse(out, data))
   )
 }
 
-get_meta <- function(x){
-  if(has_meta(x)) data.frame(x[c('offset','limit','endOfRecords')], stringsAsFactors = FALSE) else NA
+get_meta <- function(x) {
+  if (has_meta(x)) data.frame(x[c('offset','limit','endOfRecords')], stringsAsFactors = FALSE) else NA
 }
 
 has_meta <- function(x) any(c('offset','limit','endOfRecords') %in% names(x))
 
 getdata <- function(x, key, uuid, shortname, args, ...){
-  if(!x == 'all' && is.null(key))
-    stop('You must specify a key if data does not equal "all"')
+  if (!x == 'all' && is.null(key)) {
+    stop('You must specify a key if data does not equal "all"', call. = FALSE)
+  }
 
-  if(x == 'all' && is.null(key)){
+  if (x == 'all' && is.null(key)) {
     url <- paste0(gbif_base(), '/species')
-  } else
-  {
-    if(x=='all' && !is.null(key)){
+  } else {
+    if (x == 'all' && !is.null(key)) {
       url <- sprintf('%s/species/%s', gbif_base(), key)
     } else
-      if(x %in% c('verbatim', 'name', 'parents', 'children',
+      if (x %in% c('verbatim', 'name', 'parents', 'children',
                   'related', 'synonyms', 'descriptions',
-                  'distributions', 'images', 'references', 'speciesProfiles',
-                  'vernacularNames', 'typeSpecimens')){
+                  'distributions', 'media', 'references', 'speciesProfiles',
+                  'vernacularNames', 'typeSpecimens')) {
         url <- sprintf('%s/species/%s/%s', gbif_base(), key, x)
       } else
-        if(x == 'root'){
+        if (x == 'root') {
           url <- sprintf('%s/species/root/%s/%s', gbif_base(), uuid, shortname)
         }
   }
   gbif_GET(url, args, FALSE, ...)
 }
 
-name_usage_parse <- function(x){
-  if(has_meta(x)){
-    do.call(rbind_fill, lapply(x$results, nameusageparser))
+name_usage_parse <- function(x, y) {
+  many <- c("parents", "related")
+  if (has_meta(x) || y %in% many) {
+    if (y %in% many) {
+      do.call(rbind_fill, lapply(x, nameusageparser))
+    } else {
+      do.call(rbind_fill, lapply(x$results, nameusageparser))
+    }
   } else {
     nameusageparser(x)
   }

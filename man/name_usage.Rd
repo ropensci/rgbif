@@ -66,7 +66,7 @@ endpoint that allows name searches (see examples below).
 Note that \code{data="verbatim"} hasn't been working.
 
 Options for the data parameter are: 'all', 'verbatim', 'name', 'parents', 'children',
-'related', 'synonyms', 'descriptions','distributions', 'images',
+'related', 'synonyms', 'descriptions','distributions', 'media',
 'references', 'speciesProfiles', 'vernacularNames', 'typeSpecimens', 'root'
 
 This function used to be vectorized with respect to the \code{data} parameter,
@@ -87,7 +87,7 @@ name_usage(name='Puma', rank="GENUS")
 name_usage()
 
 # References for a name usage
-name_usage(key=3119195, data='references')
+name_usage(key=2435099, data='references')
 
 # Species profiles, descriptions
 name_usage(key=3119195, data='speciesProfiles')
