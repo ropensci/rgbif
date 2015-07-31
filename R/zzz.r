@@ -281,6 +281,10 @@ nameusageparser <- function(z){
   }
 }
 
+# if (is(y, "list")) {
+#   lapply(y, function(w) if (length(w) == 0) NA else w)
+# } else {
+
 movecols <- function(x, cols){
   other <- names(x)[ !names(x) %in% cols ]
   x[ , c(cols, other) ]
@@ -451,28 +455,28 @@ collapse_issues <- function(x){
 NULL
 
 gbif_GET <- function(url, args, parse=FALSE, ...){
-  temp <- GET(url, query=args, ...)
+  temp <- GET(url, query = args, ...)
 
-  if(temp$status_code == 204) stop("Status: 204 - not found", call. = FALSE)
-  if(temp$status_code > 200){
+  if (temp$status_code == 204) stop("Status: 204 - not found", call. = FALSE)
+  if (temp$status_code > 200) {
     mssg <- content(temp)
-    if(length(mssg) == 0) mssg <- http_status(temp)$message
-    if(temp$status_code == 503) mssg <- http_status(temp)$message
+    if (length(mssg) == 0) mssg <- http_status(temp)$message
+    if (temp$status_code == 503) mssg <- http_status(temp)$message
     stop(mssg, call. = FALSE)
   }
-  stopifnot(temp$headers$`content-type`=='application/json')
+  stopifnot(temp$headers$`content-type` == 'application/json')
   res <- content(temp, as = 'text', encoding = "UTF-8")
   jsonlite::fromJSON(res, parse)
 }
 
-gbif_GET_content <- function(url, args, ...){
-  temp <- GET(url, query=cn(args), ...)
-  if(temp$status_code > 200) warning(content(temp, as = "text"))
-  stopifnot(temp$headers$`content-type`=='application/json')
+gbif_GET_content <- function(url, args, ...) {
+  temp <- GET(url, query = cn(args), ...)
+  if (temp$status_code > 200) warning(content(temp, as = "text"))
+  stopifnot(temp$headers$`content-type` == 'application/json')
   content(temp, as = 'text', encoding = "UTF-8")
 }
 
-cn <- function(x) if(length(x) == 0) NULL else x
+cn <- function(x) if (length(x) == 0) NULL else x
 
 gbif_base <- function() 'http://api.gbif.org/v1'
 
