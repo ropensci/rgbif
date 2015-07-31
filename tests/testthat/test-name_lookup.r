@@ -16,7 +16,7 @@ test_that("returns the correct class", {
   expect_is(uu, "data.frame")
 
   # returns the correct value
-  expect_equal(as.character(tt$data$kingdom[[2]]), "Animalia")
+  expect_equal(na.omit(tt$data$kingdom)[[2]], "Animalia")
 
   # returns the correct dimensions
   expect_equal(nrow(tt$data), 100)
@@ -37,7 +37,7 @@ test_that("works with habitat parameter", {
   facet_fresh <- name_lookup(habitat = "freshwater", limit=2)
   expect_equal(facet_terr$data$habitats[1], "MARINE, TERRESTRIAL")
   expect_equal(facet_mar$data$habitats[1], "MARINE, TERRESTRIAL")
-  expect_equal(facet_fresh$data$habitats[1], "FRESHWATER")
+  expect_equal(facet_fresh$data$habitats[1], "MARINE, FRESHWATER")
 
   # another test
   out <- name_lookup(query="Vulpes lagopus", rank="species", higherTaxonKey=5219234, habitat="terrestrial", return="data")
