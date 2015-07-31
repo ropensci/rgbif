@@ -30,7 +30,7 @@
 #' results from \code{\link{occ_search}}. For equivalent outcomes, in the
 #' \code{\link{occ_search}} function use \code{hasCoordinate=TRUE}, and
 #' \code{hasGeospatialIssue=FALSE} to have the same outcome for this function
-#' using \code{isGeoreferenced=TRUE}.
+#' using \code{georeferenced=TRUE}.
 #'
 #' @examples \dontrun{
 #' occ_count(basisOfRecord='OBSERVATION')
