@@ -14,11 +14,14 @@ occ_download(..., type = "and", user = getOption("gbif_user"),
 \item{type}{(charcter) One of equals (=), and (&), or (|), lessThan (<), lessThanOrEquals (<=),
 greaterThan (>), greaterThanOrEquals (>=), in, within, not (!), like}
 
-\item{user}{(character) User name within GBIF's website. Required.}
+\item{user}{(character) User name within GBIF's website. Required. Set in your
+\code{.Rprofile} file with the option \code{gbif_user}}
 
-\item{pwd}{(character) User password within GBIF's website. Required.}
+\item{pwd}{(character) User password within GBIF's website. Required. Set in your
+\code{.Rprofile} file with the option \code{gbif_pwd}}
 
-\item{email}{(character) Email address to recieve download notice done email. Requried.}
+\item{email}{(character) Email address to recieve download notice done email. Required.
+Set in your \code{.Rprofile} file with the option \code{gbif_email}}
 
 \item{callopts}{Further named arguments passed on to \code{\link[httr]{POST}}}
 }

@@ -6,9 +6,12 @@
 #' @param ... One or more of query arguments to kick of a download job. See Details.
 #' @param type (charcter) One of equals (=), and (&), or (|), lessThan (<), lessThanOrEquals (<=),
 #' greaterThan (>), greaterThanOrEquals (>=), in, within, not (!), like
-#' @param user (character) User name within GBIF's website. Required.
-#' @param pwd (character) User password within GBIF's website. Required.
+#' @param user (character) User name within GBIF's website. Required. Set in your
+#' \code{.Rprofile} file with the option \code{gbif_user}
+#' @param pwd (character) User password within GBIF's website. Required. Set in your
+#' \code{.Rprofile} file with the option \code{gbif_pwd}
 #' @param email (character) Email address to recieve download notice done email. Required.
+#' Set in your \code{.Rprofile} file with the option \code{gbif_email}
 #' @param callopts Further named arguments passed on to \code{\link[httr]{POST}}
 #'
 #' @details Argument passed have to be passed as character (e.g., 'country = US'), with a space
