@@ -5,7 +5,7 @@
 \title{Spin up a download request for GBIF occurrence data.}
 \usage{
 occ_download(..., type = "and", user = getOption("gbif_user"),
-  pwd = getOption("gbif_pwd"), email = "myrmecocystus@gmail.com",
+  pwd = getOption("gbif_pwd"), email = getOption("gbif_email"),
   callopts = list())
 }
 \arguments{

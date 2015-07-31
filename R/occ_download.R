@@ -8,7 +8,7 @@
 #' greaterThan (>), greaterThanOrEquals (>=), in, within, not (!), like
 #' @param user (character) User name within GBIF's website. Required.
 #' @param pwd (character) User password within GBIF's website. Required.
-#' @param email (character) Email address to recieve download notice done email. Requried.
+#' @param email (character) Email address to recieve download notice done email. Required.
 #' @param callopts Further named arguments passed on to \code{\link[httr]{POST}}
 #'
 #' @details Argument passed have to be passed as character (e.g., 'country = US'), with a space
@@ -69,8 +69,8 @@
 #' }
 
 occ_download <- function(...,
-   type = "and", user=getOption("gbif_user"), pwd=getOption("gbif_pwd"),
-   email="myrmecocystus@gmail.com", callopts=list()) {
+   type = "and", user = getOption("gbif_user"), pwd = getOption("gbif_pwd"),
+   email = getOption("gbif_email"), callopts = list()) {
 
   url <- 'http://api.gbif.org/v1/occurrence/download/request'
   stopifnot(!is.null(user), !is.null(email))
@@ -146,7 +146,6 @@ parse_args <- function(x){
   type <- operator_lkup[[ tmp[2] ]]
   key <- key_lkup[[ tmp[1] ]]
   list(type = unbox(type), key = unbox(key), value = unbox(tmp[3]))
-  # list(type = type, key = key, value = tmp[3])
 }
 
 operator_lkup <- list(`=` = 'equals', `&` = 'and', `|` = 'or', `<` = 'lessThan',
