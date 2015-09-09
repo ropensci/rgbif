@@ -274,16 +274,6 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
     check_vals(limit, "limit")
     check_vals(start, "start")
 
-    # Check synonym if scientificName was given
-    if (!is.null(scientificName)) {
-      sciname_old <- scientificName
-      namecheck <- name_backbone(scientificName)
-      if (namecheck$synonym){
-        scientificName <- namecheck[[tolower(namecheck$rank)]]
-        message(sprintf("%s is a synonym of %s \n the latter used & will include synonym records", sciname_old, scientificName))
-      }
-    }
-
     # Make arg list
     args <- rgbif_compact(list(taxonKey=taxonKey, scientificName=scientificName, country=country,
       publishingCountry=publishingCountry, hasCoordinate=hasCoordinate, typeStatus=typeStatus,
