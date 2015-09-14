@@ -26,6 +26,7 @@
 #' @importFrom methods is
 #' @importFrom utils browseURL head unzip
 #' @importFrom stats na.omit complete.cases
+#' @importFrom data.table rbindlist fread
 #' @name rgbif-package
 #' @aliases rgbif
 #' @docType package

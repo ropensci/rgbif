@@ -1,6 +1,5 @@
 #' Import a downloaded file from GBIF.
 #'
-#' @importFrom data.table fread
 #' @export
 #'
 #' @param x The output of a call to \code{occ_download_get}

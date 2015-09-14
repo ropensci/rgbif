@@ -1,9 +1,9 @@
 context("elevation")
 
+apikey <- Sys.getenv("G_ELEVATION_API")
+
 test_that("elevation", {
   skip_on_cran()
-
-  apikey <- Sys.getenv("G_ELEVATION_API")
 
   # returns the correct class
   key <- name_suggest('Puma concolor')$key[1]
@@ -31,11 +31,25 @@ test_that("elevation", {
 test_that("fails correctly", {
   skip_on_cran()
 
-  expect_error(elevation("aa"), "input must be left as default")
+  # input must be a data.frame
+  expect_error(elevation("aa"), "input must be a data.frame")
 
+  # key is missing
   pairs <- list(c(31.8496, -110.576060), c(29.15503, -103.59828))
   expect_error(elevation(latlong = pairs), "argument \"key\" is missing")
 
   # no input returns empty data.frame
-  expect_equal(NROW(elevation()), 0)
+  expect_error(elevation(), "one of input, lat & long, or latlong must be given")
+
+  # not complete cases
+  dat <- data.frame(decimalLatitude = c(6, NA), decimalLongitude = c(120, -120))
+  expect_error(elevation(dat, key = apikey), "Input data has some missing values")
+
+  # impossible values
+  dat <- data.frame(decimalLatitude = c(6, 600), decimalLongitude = c(120, -120))
+  expect_error(elevation(dat, key = apikey), "Input data has some impossible values")
+
+  # points at zero,zero
+  dat <- data.frame(decimalLatitude = c(0, 45), decimalLongitude = c(0, -120))
+  expect_warning(elevation(dat, key = apikey), "Input data has some points at 0,0")
 })

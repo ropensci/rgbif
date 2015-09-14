@@ -1,6 +1,5 @@
 #' Get elevation for lat/long points from a data.frame or list of points.
 #'
-#' @importFrom data.table rbindlist
 #' @export
 #'
 #' @param input A data.frame of lat/long data. There must be columns decimalLatitude and
@@ -45,51 +44,83 @@
 
 elevation <- function(input=NULL, latitude=NULL, longitude=NULL, latlong=NULL, key, ...) {
 
+  # one of input, lat/long, or latlong must be given
+  all_input <- rgbif_compact(list(input, latitude, longitude, latlong))
+  if (!length(all_input) > 0) {
+    stop("one of input, lat & long, or latlong must be given", call. = FALSE)
+  }
+
   url <- 'https://maps.googleapis.com/maps/api/elevation/json'
-  foo <- function(x) gsub("\\s+", "", strtrim(paste(x['latitude'], x['longitude'], sep=",")))
+  foo <- function(x) gsub("\\s+", "", strtrim(paste(x['latitude'], x['longitude'], sep = ",")))
 
   getdata <- function(x) {
+    check_latlon(x)
+
     locations <- apply(x, 1, foo)
-    if(length(locations) > 1) {
-      if(length(locations) > 50) {
+    if (length(locations) > 1) {
+      if (length(locations) > 50) {
         locations <- split(locations, ceiling(seq_along(locations)/50))
-        locations <- lapply(locations, function(x) paste(x, collapse="|"))
+        locations <- lapply(locations, function(x) paste(x, collapse = "|"))
       } else {
-        locations <- list(paste(locations, collapse="|"))
+        locations <- list(paste(locations, collapse = "|"))
       }
     }
 
     outout <- list()
-    for(i in seq_along(locations)){
-      args <- rgbif_compact(list(locations=locations[[i]], sensor='false', key=key))
-      tt <- GET(url, query=args, ...)
+    for (i in seq_along(locations)) {
+      args <- rgbif_compact(list(locations = locations[[i]], sensor = 'false', key = key))
+      tt <- GET(url, query = args, ...)
       stop_for_status(tt)
-      stopifnot(tt$headers$`content-type`=='application/json; charset=UTF-8')
+      stopifnot(tt$headers$`content-type` == 'application/json; charset=UTF-8')
       res <- content(tt, as = 'text', encoding = "UTF-8")
       out <- jsonlite::fromJSON(res, FALSE)
 
-      df <- data.frame(elevation=sapply(out$results, '[[', 'elevation'), stringsAsFactors=FALSE)
+      df <- data.frame(elevation = sapply(out$results, '[[', 'elevation'), stringsAsFactors = FALSE)
       outout[[i]] <- df
     }
-    datdf <- data.frame(rbindlist(outout), stringsAsFactors=FALSE)
+    datdf <- data.frame(rbindlist(outout), stringsAsFactors = FALSE)
     return( cbind(x, datdf) )
   }
 
-  if(is(input, "data.frame")){
+  if (!is.null(input)) {
+    if (!is(input, "data.frame")) stop("input must be a data.frame",call. = FALSE)
     stopifnot(all(c('decimalLatitude','decimalLongitude') %in% names(input)))
     names(input)[names(input) %in% 'decimalLatitude'] <- "latitude"
     names(input)[names(input) %in% 'decimalLongitude'] <- "longitude"
     getdata(input)
-  } else if(is.null(latlong)) {
-    if(!is.null(input)) stop("If you use latitude and longitude, input must be left as default")
-    stopifnot(length(latitude)==length(longitude))
-    dat <- data.frame(latitude=latitude, longitude=longitude, stringsAsFactors=FALSE)
+  } else if (is.null(latlong)) {
+    if (!is.null(input)) stop("If you use latitude and longitude, input must be left as default")
+    stopifnot(length(latitude) == length(longitude))
+    dat <- data.frame(latitude = latitude, longitude = longitude, stringsAsFactors = FALSE)
     getdata(dat)
   } else {
     dat <- data.frame(rbindlist(
       lapply(latlong, function(x) data.frame(t(x)))
-    ), stringsAsFactors=FALSE)
+    ), stringsAsFactors = FALSE)
     names(dat) <- c("latitude","longitude")
     getdata(dat)
+  }
+}
+
+check_latlon <- function(x) {
+  # missing values
+  not_complete <- x[!complete.cases(x$latitude, x$longitude), ]
+  if (NROW(not_complete) > 0) {
+    stop("Input data has some missing values\n       No lat/long pairs can have missing data",
+         call. = FALSE)
+  }
+
+  # not possible
+  not_possible <- x[!abs(x$latitude) <= 90 | !abs(x$longitude) <= 180, ]
+  if (NROW(not_possible) > 0) {
+    stop("Input data has some impossible values\n       latitude must be between 90 and -90\n       longitude between 180 amd -180",
+         call. = FALSE)
+  }
+
+  # warn about points at 0/0, these are very likely wrong
+  zero_zero <- x[ x$latitude == 0 & x$longitude == 0, ]
+  if (NROW(zero_zero) > 0) {
+    warning("Input data has some points at 0,0\n       These are likely wrong, check them",
+         call. = FALSE)
   }
 }
