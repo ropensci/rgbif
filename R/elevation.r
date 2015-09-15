@@ -113,7 +113,7 @@ check_latlon <- function(x) {
   # not possible
   not_possible <- x[!abs(x$latitude) <= 90 | !abs(x$longitude) <= 180, ]
   if (NROW(not_possible) > 0) {
-    stop("Input data has some impossible values\n       latitude must be between 90 and -90\n       longitude between 180 amd -180",
+    stop("Input data has some impossible values\n       latitude must be between 90 and -90\n       longitude between 180 and -180",
          call. = FALSE)
   }
 
