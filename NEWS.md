@@ -1,3 +1,32 @@
+rgbif 0.8.9
+===============
+
+### MINOR IMPROVEMENTS
+
+* Updated `terraformer.js` javascript code included in the package
+along with an update in that codebase (#156)
+* The `email` parameter now `NULL` by default in the function 
+`occ_download()`, so that if not provided or not set in options, 
+then function fails. (#173)
+* Additional explanation added to the `?downloads` help file.
+* Added internal checks to `elevation()` to check for coordinates that
+are impossible (e.g., latitude > 90), not complete (e.g., lat given, 
+long not given), or points at `0,0` (just warns, doesn't stop). (#176) 
+thanks @luisDVA
+* General code tidying across package
+
+### BUG FIXES
+
+* A route changed for getting images for a taxon within the `/species`
+route, fix to function `name_usage()` (#174)
+* Fix to `occ_search()` to remove a block of code to do synonym checking.
+This block of code was used if the parameter `scientificName` was passed, 
+and checked if the name given was a synonym; if yes, we used the accepted
+name according to the GBIF backbone taxonomy; if no, we proceeded with the
+name given by the user. We removed the block of code because the GBIF
+API now essentially does this behind the scenes server side. See 
+https://github.com/gbif/gbif-api for examples. (#175)
+
 rgbif 0.8.8
 ===============
 
