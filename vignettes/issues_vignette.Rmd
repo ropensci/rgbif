@@ -55,24 +55,24 @@ Then pass to `occ_search()`
 
 ```r
 (res <- occ_search(taxonKey=key, limit=100))
-#> Records found [20650] 
+#> Records found [21517] 
 #> Records returned [100] 
 #> No. unique hierarchies [1] 
-#> No. media records [36] 
+#> No. media records [60] 
 #> Args [taxonKey=3119195, limit=100, offset=0, fields=all] 
 #> First 10 rows of data
 #> 
 #>                 name        key decimalLatitude decimalLongitude
 #> 1  Helianthus annuus 1095851641         0.00000          0.00000
 #> 2  Helianthus annuus 1088900309        33.95239       -117.32011
-#> 3  Helianthus annuus 1088933055        25.66564       -100.30348
-#> 4  Helianthus annuus 1088909392        24.72449        -99.54020
-#> 5  Helianthus annuus 1088937716        25.81691       -100.05940
-#> 6  Helianthus annuus 1088944416        26.20518        -98.26725
-#> 7  Helianthus annuus 1090389390        59.96150         17.71060
-#> 8  Helianthus annuus 1092889365        32.71840       -114.75603
-#> 9  Helianthus annuus 1092889645         1.27617        103.79136
-#> 10 Helianthus annuus 1098903927        29.17958       -102.99551
+#> 3  Helianthus annuus 1135826959              NA               NA
+#> 4  Helianthus annuus 1135523136        33.96709       -117.99769
+#> 5  Helianthus annuus 1088944416        26.20518        -98.26725
+#> 6  Helianthus annuus 1092901911        30.22344        -97.95281
+#> 7  Helianthus annuus 1098903927        29.17958       -102.99551
+#> 8  Helianthus annuus 1135523412        33.96787       -118.00016
+#> 9  Helianthus annuus 1092894334        34.16052       -119.03794
+#> 10 Helianthus annuus 1092889365        32.71840       -114.75603
 #> ..               ...        ...             ...              ...
 #> Variables not shown: issues (chr), datasetKey (chr), publishingOrgKey
 #>      (chr), publishingCountry (chr), protocol (chr), lastCrawled (chr),
@@ -85,19 +85,20 @@ Then pass to `occ_search()`
 #>      elevation (dbl), elevationAccuracy (dbl), stateProvince (chr), year
 #>      (int), month (int), day (int), eventDate (chr), lastInterpreted
 #>      (chr), identifiers (chr), facts (chr), relations (chr), geodeticDatum
-#>      (chr), class (chr), countryCode (chr), country (chr), recordNumber
-#>      (chr), rights (chr), municipality (chr), rightsHolder (chr),
-#>      ownerInstitutionCode (chr), type (chr), occurrenceID (chr),
-#>      collectionCode (chr), identifiedBy (chr), gbifID (chr),
-#>      occurrenceRemarks (chr), institutionCode (chr), datasetName (chr),
-#>      catalogNumber (chr), recordedBy (chr), locality (chr), language
-#>      (chr), identifier (chr), modified (chr), references (chr),
-#>      verbatimEventDate (chr), verbatimLocality (chr),
-#>      http...unknown.org.occurrenceDetails (chr), taxonID (chr), eventTime
-#>      (chr), identificationID (chr), coordinateAccuracy (dbl), depth (dbl),
-#>      depthAccuracy (dbl), county (chr), informationWithheld (chr),
-#>      verbatimElevation (chr), georeferenceSources (chr), habitat (chr),
-#>      fieldNotes (chr)
+#>      (chr), class (chr), countryCode (chr), country (chr), rightsHolder
+#>      (chr), identifier (chr), recordNumber (chr), locality (chr),
+#>      municipality (chr), datasetName (chr), gbifID (chr), collectionCode
+#>      (chr), language (chr), occurrenceID (chr), type (chr), catalogNumber
+#>      (chr), recordedBy (chr), institutionCode (chr), rights (chr),
+#>      ownerInstitutionCode (chr), occurrenceRemarks (chr), identifiedBy
+#>      (chr), modified (chr), references (chr), verbatimEventDate (chr),
+#>      verbatimLocality (chr), taxonID (chr),
+#>      http...unknown.org.occurrenceDetails (chr), eventTime (chr),
+#>      identificationID (chr), informationWithheld (chr), coordinateAccuracy
+#>      (dbl), depth (dbl), depthAccuracy (dbl), county (chr), continent
+#>      (chr), nomenclaturalCode (chr), dataGeneralizations (chr),
+#>      verbatimCoordinateSystem (chr), datasetID (chr), accessRights (chr),
+#>      bibliographicCitation (chr)
 ```
 
 ## Examine issues
@@ -154,24 +155,24 @@ Now that we know a bit about GBIF issues, you can parse your data based on issue
 ```r
 res %>%
   occ_issues(gass84)
-#> Records found [20650] 
-#> Records returned [100] 
+#> Records found [21517] 
+#> Records returned [97] 
 #> No. unique hierarchies [1] 
-#> No. media records [36] 
+#> No. media records [60] 
 #> Args [taxonKey=3119195, limit=100, offset=0, fields=all] 
 #> First 10 rows of data
 #> 
 #>                 name        key decimalLatitude decimalLongitude
 #> 1  Helianthus annuus 1095851641         0.00000          0.00000
 #> 2  Helianthus annuus 1088900309        33.95239       -117.32011
-#> 3  Helianthus annuus 1088933055        25.66564       -100.30348
-#> 4  Helianthus annuus 1088909392        24.72449        -99.54020
-#> 5  Helianthus annuus 1088937716        25.81691       -100.05940
-#> 6  Helianthus annuus 1088944416        26.20518        -98.26725
-#> 7  Helianthus annuus 1090389390        59.96150         17.71060
-#> 8  Helianthus annuus 1092889365        32.71840       -114.75603
-#> 9  Helianthus annuus 1092889645         1.27617        103.79136
-#> 10 Helianthus annuus 1098903927        29.17958       -102.99551
+#> 4  Helianthus annuus 1135523136        33.96709       -117.99769
+#> 5  Helianthus annuus 1088944416        26.20518        -98.26725
+#> 6  Helianthus annuus 1092901911        30.22344        -97.95281
+#> 7  Helianthus annuus 1098903927        29.17958       -102.99551
+#> 8  Helianthus annuus 1135523412        33.96787       -118.00016
+#> 9  Helianthus annuus 1092894334        34.16052       -119.03794
+#> 10 Helianthus annuus 1092889365        32.71840       -114.75603
+#> 11 Helianthus annuus 1090389390        59.96150         17.71060
 #> ..               ...        ...             ...              ...
 #> Variables not shown: issues (chr), datasetKey (chr), publishingOrgKey
 #>      (chr), publishingCountry (chr), protocol (chr), lastCrawled (chr),
@@ -184,19 +185,20 @@ res %>%
 #>      elevation (dbl), elevationAccuracy (dbl), stateProvince (chr), year
 #>      (int), month (int), day (int), eventDate (chr), lastInterpreted
 #>      (chr), identifiers (chr), facts (chr), relations (chr), geodeticDatum
-#>      (chr), class (chr), countryCode (chr), country (chr), recordNumber
-#>      (chr), rights (chr), municipality (chr), rightsHolder (chr),
-#>      ownerInstitutionCode (chr), type (chr), occurrenceID (chr),
-#>      collectionCode (chr), identifiedBy (chr), gbifID (chr),
-#>      occurrenceRemarks (chr), institutionCode (chr), datasetName (chr),
-#>      catalogNumber (chr), recordedBy (chr), locality (chr), language
-#>      (chr), identifier (chr), modified (chr), references (chr),
-#>      verbatimEventDate (chr), verbatimLocality (chr),
-#>      http...unknown.org.occurrenceDetails (chr), taxonID (chr), eventTime
-#>      (chr), identificationID (chr), coordinateAccuracy (dbl), depth (dbl),
-#>      depthAccuracy (dbl), county (chr), informationWithheld (chr),
-#>      verbatimElevation (chr), georeferenceSources (chr), habitat (chr),
-#>      fieldNotes (chr)
+#>      (chr), class (chr), countryCode (chr), country (chr), rightsHolder
+#>      (chr), identifier (chr), recordNumber (chr), locality (chr),
+#>      municipality (chr), datasetName (chr), gbifID (chr), collectionCode
+#>      (chr), language (chr), occurrenceID (chr), type (chr), catalogNumber
+#>      (chr), recordedBy (chr), institutionCode (chr), rights (chr),
+#>      ownerInstitutionCode (chr), occurrenceRemarks (chr), identifiedBy
+#>      (chr), modified (chr), references (chr), verbatimEventDate (chr),
+#>      verbatimLocality (chr), taxonID (chr),
+#>      http...unknown.org.occurrenceDetails (chr), eventTime (chr),
+#>      identificationID (chr), informationWithheld (chr), coordinateAccuracy
+#>      (dbl), depth (dbl), depthAccuracy (dbl), county (chr), continent
+#>      (chr), nomenclaturalCode (chr), dataGeneralizations (chr),
+#>      verbatimCoordinateSystem (chr), datasetID (chr), accessRights (chr),
+#>      bibliographicCitation (chr)
 ```
 
 Note also that we've set up `occ_issues()` so that you can pass in issue names without having to quote them, thereby speeding up data cleaning.
@@ -207,24 +209,24 @@ Next, we can remove data with certain issues just as easily by using a `-` sign 
 ```r
 res %>%
   occ_issues(-depunl, -mdatunl)
-#> Records found [20650] 
-#> Records returned [53] 
+#> Records found [21517] 
+#> Records returned [59] 
 #> No. unique hierarchies [1] 
-#> No. media records [36] 
+#> No. media records [60] 
 #> Args [taxonKey=3119195, limit=100, offset=0, fields=all] 
 #> First 10 rows of data
 #> 
 #>                 name        key decimalLatitude decimalLongitude
 #> 1  Helianthus annuus 1095851641         0.00000          0.00000
 #> 2  Helianthus annuus 1088900309        33.95239       -117.32011
-#> 3  Helianthus annuus 1088933055        25.66564       -100.30348
-#> 4  Helianthus annuus 1088909392        24.72449        -99.54020
-#> 5  Helianthus annuus 1088937716        25.81691       -100.05940
-#> 6  Helianthus annuus 1088944416        26.20518        -98.26725
-#> 8  Helianthus annuus 1092889365        32.71840       -114.75603
-#> 9  Helianthus annuus 1092889645         1.27617        103.79136
-#> 10 Helianthus annuus 1098903927        29.17958       -102.99551
-#> 11 Helianthus annuus 1092901911        30.27181        -97.83409
+#> 3  Helianthus annuus 1135826959              NA               NA
+#> 4  Helianthus annuus 1135523136        33.96709       -117.99769
+#> 5  Helianthus annuus 1088944416        26.20518        -98.26725
+#> 6  Helianthus annuus 1092901911        30.22344        -97.95281
+#> 7  Helianthus annuus 1098903927        29.17958       -102.99551
+#> 8  Helianthus annuus 1135523412        33.96787       -118.00016
+#> 9  Helianthus annuus 1092894334        34.16052       -119.03794
+#> 10 Helianthus annuus 1092889365        32.71840       -114.75603
 #> ..               ...        ...             ...              ...
 #> Variables not shown: issues (chr), datasetKey (chr), publishingOrgKey
 #>      (chr), publishingCountry (chr), protocol (chr), lastCrawled (chr),
@@ -237,19 +239,20 @@ res %>%
 #>      elevation (dbl), elevationAccuracy (dbl), stateProvince (chr), year
 #>      (int), month (int), day (int), eventDate (chr), lastInterpreted
 #>      (chr), identifiers (chr), facts (chr), relations (chr), geodeticDatum
-#>      (chr), class (chr), countryCode (chr), country (chr), recordNumber
-#>      (chr), rights (chr), municipality (chr), rightsHolder (chr),
-#>      ownerInstitutionCode (chr), type (chr), occurrenceID (chr),
-#>      collectionCode (chr), identifiedBy (chr), gbifID (chr),
-#>      occurrenceRemarks (chr), institutionCode (chr), datasetName (chr),
-#>      catalogNumber (chr), recordedBy (chr), locality (chr), language
-#>      (chr), identifier (chr), modified (chr), references (chr),
-#>      verbatimEventDate (chr), verbatimLocality (chr),
-#>      http...unknown.org.occurrenceDetails (chr), taxonID (chr), eventTime
-#>      (chr), identificationID (chr), coordinateAccuracy (dbl), depth (dbl),
-#>      depthAccuracy (dbl), county (chr), informationWithheld (chr),
-#>      verbatimElevation (chr), georeferenceSources (chr), habitat (chr),
-#>      fieldNotes (chr)
+#>      (chr), class (chr), countryCode (chr), country (chr), rightsHolder
+#>      (chr), identifier (chr), recordNumber (chr), locality (chr),
+#>      municipality (chr), datasetName (chr), gbifID (chr), collectionCode
+#>      (chr), language (chr), occurrenceID (chr), type (chr), catalogNumber
+#>      (chr), recordedBy (chr), institutionCode (chr), rights (chr),
+#>      ownerInstitutionCode (chr), occurrenceRemarks (chr), identifiedBy
+#>      (chr), modified (chr), references (chr), verbatimEventDate (chr),
+#>      verbatimLocality (chr), taxonID (chr),
+#>      http...unknown.org.occurrenceDetails (chr), eventTime (chr),
+#>      identificationID (chr), informationWithheld (chr), coordinateAccuracy
+#>      (dbl), depth (dbl), depthAccuracy (dbl), county (chr), continent
+#>      (chr), nomenclaturalCode (chr), dataGeneralizations (chr),
+#>      verbatimCoordinateSystem (chr), datasetID (chr), accessRights (chr),
+#>      bibliographicCitation (chr)
 ```
 
 ## Expand issue codes to full names
@@ -270,7 +273,7 @@ head(out$data[,c(1,5)])
 #>                                                                             issues
 #> 1         COUNTRY_COORDINATE_MISMATCH,GEODETIC_DATUM_ASSUMED_WGS84,ZERO_COORDINATE
 #> 2                    COUNTRY_DERIVED_FROM_COORDINATES,GEODETIC_DATUM_ASSUMED_WGS84
-#> 3 COORDINATE_ROUNDED,COUNTRY_DERIVED_FROM_COORDINATES,GEODETIC_DATUM_ASSUMED_WGS84
+#> 3                                                                                 
 #> 4 COORDINATE_ROUNDED,COUNTRY_DERIVED_FROM_COORDINATES,GEODETIC_DATUM_ASSUMED_WGS84
 #> 5 COORDINATE_ROUNDED,COUNTRY_DERIVED_FROM_COORDINATES,GEODETIC_DATUM_ASSUMED_WGS84
 #> 6 COORDINATE_ROUNDED,COUNTRY_DERIVED_FROM_COORDINATES,GEODETIC_DATUM_ASSUMED_WGS84
@@ -290,7 +293,7 @@ head(out$data[,c(1,5:10)])
 #>                name cucdmis gass84 zerocd cudc cdround depunl
 #> 1 Helianthus annuus       y      y      y    n       n      n
 #> 2 Helianthus annuus       n      y      n    y       n      n
-#> 3 Helianthus annuus       n      y      n    y       y      n
+#> 3 Helianthus annuus       n      n      n    n       n      n
 #> 4 Helianthus annuus       n      y      n    y       y      n
 #> 5 Helianthus annuus       n      y      n    y       y      n
 #> 6 Helianthus annuus       n      y      n    y       y      n
@@ -314,14 +317,14 @@ head(out$data[,c(1,5:10)])
 #>   GEODETIC_DATUM_ASSUMED_WGS84 ZERO_COORDINATE
 #> 1                            y               y
 #> 2                            y               n
-#> 3                            y               n
+#> 3                            n               n
 #> 4                            y               n
 #> 5                            y               n
 #> 6                            y               n
 #>   COUNTRY_DERIVED_FROM_COORDINATES COORDINATE_ROUNDED DEPTH_UNLIKELY
 #> 1                                n                  n              n
 #> 2                                y                  n              n
-#> 3                                y                  y              n
+#> 3                                n                  n              n
 #> 4                                y                  y              n
 #> 5                                y                  y              n
 #> 6                                y                  y              n

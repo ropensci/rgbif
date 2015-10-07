@@ -143,7 +143,7 @@ head(name_lookup(query='mammalia', return = 'data'))
 Look up the species Helianthus annuus
 
 ```{r name_lookup3}
-head(name_lookup('Helianthus annuus', rank="species", return = 'data'))
+head(name_lookup(query = 'Helianthus annuus', rank="species", return = 'data'))
 ```
 
 The function `name_usage()` works with lots of different name endpoints in GBIF, listed at [http://www.gbif.org/developer/species#nameUsages](http://www.gbif.org/developer/species#nameUsages).
