@@ -6,7 +6,7 @@ test_that("gbifmap", {
   key <- name_backbone(name='Puma concolor')$speciesKey
   dat <- occ_search(taxonKey=key, return='data', limit=100)
   tt <- suppressMessages(gbifmap(input=dat))
-  
+
   library("plyr")
   splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
   keys <- sapply(splist, function(x) name_backbone(name=x)$speciesKey, USE.NAMES=FALSE)
@@ -19,5 +19,4 @@ test_that("gbifmap", {
   # returns the correct attributes
   expect_match(uu$labels$group, c("group"))
   expect_match(uu$labels$colour, c("name"))
-  expect_equal(dim(tt$data), c(25553,6))
 })
