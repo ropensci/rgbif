@@ -40,6 +40,7 @@ test_that("works with habitat parameter", {
   expect_equal(facet_fresh$data$habitats[1], "MARINE, FRESHWATER")
 
   # another test
-  out <- name_lookup(query="Vulpes lagopus", rank="species", higherTaxonKey=5219234, habitat="terrestrial", return="data")
+  out <- name_lookup(query="Vulpes lagopus", rank="species",
+                     higherTaxonKey=5219234, habitat="terrestrial", return="data")
   expect_equal(out$habitats, "MARINE, TERRESTRIAL")
 })
