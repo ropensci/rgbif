@@ -1,4 +1,6 @@
-#' rgbif: A programmatic interface to the Web Service methods provided by the
+#' @title Interface to the Global Biodiversity Information Facility API.
+#'
+#' @description rgbif: A programmatic interface to the Web Service methods provided by the
 #' Global Biodiversity Information Facility.
 #'
 #' @section About:
@@ -27,10 +29,12 @@
 #' @importFrom utils browseURL head unzip
 #' @importFrom stats na.omit complete.cases
 #' @importFrom data.table rbindlist fread
+#' @importFrom ggplot2 geom_point position_jitter map_data ggplot
+#' geom_polygon aes scale_color_brewer labs theme_bw theme guides
+#' guide_legend coord_fixed element_blank
 #' @name rgbif-package
 #' @aliases rgbif
 #' @docType package
-#' @title Interface to the Global Biodiversity Information Facility API.
 #' @author Scott Chamberlain \email{myrmecocystus@@gmail.com}
 #' @author Karthik Ram \email{karthik@@ropensci.org}
 #' @author Dan Mcglinn \email{danmcglinn@@gmail.com}

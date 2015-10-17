@@ -1,33 +1,41 @@
 #' Make a map to visualize GBIF occurrence data.
 #'
 #' @template map
-#' @import ggplot2
 #' @export
 #' @examples \dontrun{
 #' # Make a map of Puma concolor occurrences
 #' key <- name_backbone(name='Puma concolor')$speciesKey
 #' dat <- occ_search(taxonKey=key, return='data', limit=100)
-#' gbifmap(input=dat)
+#' gbifmap(dat)
 #'
 #' # Plot more Puma concolor occurrences
 #' dat <- occ_search(taxonKey=key, return='data', limit=1200)
 #' nrow(dat)
-#' gbifmap(input=dat)
+#' gbifmap(dat)
+#'
+#' # Jitter positions, compare the two
+#' library("ggplot2")
+#' gbifmap(dat)
+#' gbifmap(dat, geom = geom_jitter, jitter = position_jitter(1, 6))
 #' }
 
 gbifmap <- function(input = NULL, mapdatabase = "world", region = ".",
                     geom = geom_point, jitter = NULL, customize = NULL) {
-  
+
   check4maps()
   tomap <- input[complete.cases(input$decimalLatitude, input$decimalLatitude), ]
   tomap <- tomap[!tomap$decimalLongitude == 0 & !tomap$decimalLatitude == 0, ]
   tomap <- tomap[-(which(tomap$decimalLatitude <= 90 || tomap$decimalLongitude <= 180)), ]
   tomap$name <- as.factor(gbif_capwords(tomap$name, onlyfirst = TRUE))
 
-  if (length(unique(tomap$name)) == 1) { 
-    theme2 <- theme(legend.position = "none") 
-  } else { 
-    theme2 <- NULL 
+  if (is.null(jitter)) {
+    jitter <- position_jitter()
+  }
+
+  if (length(unique(tomap$name)) == 1) {
+    theme2 <- theme(legend.position = "none")
+  } else {
+    theme2 <- NULL
   }
 
   world <- map_data(map = mapdatabase, region = region)

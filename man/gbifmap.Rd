@@ -50,12 +50,17 @@ gbifmap takes care of cleaning up the data.frame (removing NA's, etc.)
 # Make a map of Puma concolor occurrences
 key <- name_backbone(name='Puma concolor')$speciesKey
 dat <- occ_search(taxonKey=key, return='data', limit=100)
-gbifmap(input=dat)
+gbifmap(dat)
 
 # Plot more Puma concolor occurrences
 dat <- occ_search(taxonKey=key, return='data', limit=1200)
 nrow(dat)
-gbifmap(input=dat)
+gbifmap(dat)
+
+# Jitter positions, compare the two
+library("ggplot2")
+gbifmap(dat)
+gbifmap(dat, geom = geom_jitter, jitter = position_jitter(1, 6))
 }
 }
 

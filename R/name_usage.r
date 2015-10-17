@@ -122,7 +122,8 @@ getdata <- function(x, key, uuid, shortname, args, ...){
 }
 
 name_usage_parse <- function(x, y) {
-  many <- c("parents", "related")
+  # many <- c("parents", "related")
+  many <- "parents"
   if (has_meta(x) || y %in% many) {
     if (y %in% many) {
       do.call(rbind_fill, lapply(x, nameusageparser))

@@ -188,7 +188,6 @@ datasetparser <- function(input, minimal=TRUE){
 NULL
 
 #' Custom ggplot2 theme
-#' @import ggplot2
 #' @export
 #' @keywords internal
 blanktheme <- function(){
