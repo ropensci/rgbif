@@ -195,6 +195,7 @@ gbifmap(datdf)
 * Please [report any issues or bugs](https://github.com/ropensci/rgbif/issues).
 * License: MIT
 * Get citation information for `rgbif` in R doing `citation(package = 'rgbif')`
+* Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 - - -
 
