@@ -13,7 +13,7 @@
 occ_download_meta <- function(key, ...) {
   stopifnot(!is.null(key))
   url <- sprintf('http://api.gbif.org/v1/occurrence/download/%s', key)
-  tmp <- GET(url, ...)
+  tmp <- GET(url, make_ua(), ...)
   if (tmp$status_code > 203) stop(content(tmp, as = "text"), call. = FALSE)
   stopifnot(tmp$header$`content-type` == 'application/json')
   tt <- content(tmp, as = "text")

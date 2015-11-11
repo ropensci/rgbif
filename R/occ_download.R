@@ -121,7 +121,8 @@ rg_POST <- function(url, req, user, pwd, callopts) {
     content_type_json(),
     accept_json(),
     authenticate(user = user, password = pwd),
-    callopts), body = jsonlite::toJSON(req))
+    callopts), body = jsonlite::toJSON(req),
+    make_ua())
   if (tmp$status_code > 203) stop(content(tmp, as = "text"), call. = FALSE)
   stopifnot(tmp$header$`content-type` == 'application/json')
   content(tmp, as = "text")
@@ -136,7 +137,7 @@ process_keyval <- function(args, type) {
 }
 
 #' @export
-print.occ_download <- function(x, ...) {
+print.occ_download <- function(x, ...) {v
   stopifnot(is(x, 'occ_download'))
   cat("<<gbif download>>", "\n", sep = "")
   cat("  Username: ", attr(x, "user"), "\n", sep = "")

@@ -26,7 +26,7 @@ occ_download_get <- function(key, path=".", overwrite=FALSE, ...) {
   message(sprintf('Download file size: %s MB', size))
   url <- sprintf('http://api.gbif.org/v1/occurrence/download/request/%s', key)
   path <- sprintf("%s/%s.zip", path, key)
-  res <- GET(url, write_disk(path = path, overwrite = overwrite), ...)
+  res <- GET(url, write_disk(path = path, overwrite = overwrite), make_ua(), ...)
   if (res$status_code > 203) stop(content(res, as = "text"))
   stopifnot(res$header$`content-type` == "application/octet-stream; qs=0.5")
   options(gbifdownloadpath = path)

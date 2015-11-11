@@ -453,8 +453,24 @@ collapse_issues <- function(x){
 #' @usage lhs \%>\% rhs
 NULL
 
+# REST helpers ---------------------------------------
+rgbif_ua <- function() {
+  versions <- c(paste0("libcurl/", curl::curl_version()$version),
+                paste0("r-curl/", packageVersion("curl")),
+                paste0("httr/", packageVersion("httr")),
+                sprintf("rOpenSci(rgbif/%s)", packageVersion("rgbif")))
+  paste0(versions, collapse = " ")
+}
+
+make_ua <- function() {
+  c(
+    user_agent(getOption("rgbif_user_agent")),
+    add_headers(`X-USER-AGENT` = getOption("rgbif_user_agent"))
+  )
+}
+
 gbif_GET <- function(url, args, parse=FALSE, ...){
-  temp <- GET(url, query = args, ...)
+  temp <- GET(url, query = args, make_ua(), ...)
 
   if (temp$status_code == 204) stop("Status: 204 - not found", call. = FALSE)
   if (temp$status_code > 200) {
@@ -469,7 +485,7 @@ gbif_GET <- function(url, args, parse=FALSE, ...){
 }
 
 gbif_GET_content <- function(url, args, ...) {
-  temp <- GET(url, query = cn(args), ...)
+  temp <- GET(url, query = cn(args), make_ua(), ...)
   if (temp$status_code > 200) warning(content(temp, as = "text"))
   stopifnot(temp$headers$`content-type` == 'application/json')
   content(temp, as = 'text', encoding = "UTF-8")

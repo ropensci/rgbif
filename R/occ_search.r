@@ -1,9 +1,6 @@
 #' Search for GBIF occurrences.
 #'
 #' @export
-#' @importFrom httr GET POST DELETE content stop_for_status http_status add_headers authenticate write_disk content_type_json accept_json
-#' @importFrom XML getNodeSet xmlAttrs xmlSApply xmlValue htmlParse xpathApply xmlToList
-#'
 #' @template occsearch
 #' @template oslimstart
 #' @template occ
@@ -26,7 +23,7 @@
 #' ## you are getting synonyms too. The results for using \code{scientifcName} and
 #' ## \code{taxonKey} parameters are the same in this case, but I wouldn't be surprised if for some
 #' ## names they return different results
-#' occ_search(scientificName = 'Ursus americanus')
+#' occ_search(scientificName = 'Ursus americanus', config=verbose())
 #' key <- name_backbone(name = 'Ursus americanus', rank='species')$usageKey
 #' occ_search(taxonKey = key)
 #'

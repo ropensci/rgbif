@@ -301,7 +301,7 @@ occ_search(taxonKey=key, limit=100, return='meta')
 ## you are getting synonyms too. The results for using \\code{scientifcName} and
 ## \\code{taxonKey} parameters are the same in this case, but I wouldn't be surprised if for some
 ## names they return different results
-occ_search(scientificName = 'Ursus americanus')
+occ_search(scientificName = 'Ursus americanus', config=verbose())
 key <- name_backbone(name = 'Ursus americanus', rank='species')$usageKey
 occ_search(taxonKey = key)
 

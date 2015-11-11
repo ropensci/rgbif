@@ -1,8 +1,6 @@
 #' Parse taxon names using the GBIF name parser.
 #'
-#' @importFrom jsonlite toJSON fromJSON
 #' @export
-#'
 #' @param scientificname A character vector of scientific names.
 #' @param ... Further named parameters, such as \code{query}, \code{path}, etc, passed on to
 #' \code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will be
@@ -29,7 +27,7 @@
 parsenames <- function(scientificname, ...) {
   url <- paste0(gbif_base(), "/parser/name")
   tt <- POST(url, c(add_headers('Content-Type' = 'application/json')), ...,
-             body=jsonlite::toJSON(scientificname))
+             body=jsonlite::toJSON(scientificname), make_ua())
   stop_for_status(tt)
   stopifnot(tt$headers$`content-type`=='application/json')
   temp <- content(tt, as = 'text', encoding = "UTF-8")
