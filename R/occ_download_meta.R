@@ -35,7 +35,10 @@ print.occ_download_meta <- function(x, ...){
 
 gbif_make_list <- function(y){
   if (length(y) > 0) {
-    y <- y[[1]]
+    y <- y$predicate
+    if (!"predicates" %in% names(y)) {
+      y <- list(predicates = list(y))
+    }
     out <- list()
     for (i in seq_along(y$predicates)) {
       tmp <- y$predicates[[i]]

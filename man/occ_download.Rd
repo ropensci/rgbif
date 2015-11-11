@@ -71,7 +71,6 @@ Acceptable arguments to \code{...} are:
 # occ_download('elevation >= 9000')
 # occ_download('decimalLatitude >= 65')
 # occ_download("country = US")
-res <- occ_download('elevation >= 3423', callopts=verbose())
 # occ_download("institutionCode = TLMF")
 # occ_download("catalogNumber = Bird.27847588")
 
