@@ -40,3 +40,4 @@ Suggests:
     knitr,
     reshape2,
     maps
+RoxygenNote: 5.0.1
