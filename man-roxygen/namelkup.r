@@ -20,7 +20,7 @@
 #'  \item SYNONYM A general synonym, the exact type is unknown.
 #' }
 #' @param isExtinct (logical) Filters by extinction status (e.g. isExtinct=TRUE)
-#' @param habitat (character) Filters by habitat. One of: marine, freshwater, or 
+#' @param habitat (character) Filters by habitat. One of: marine, freshwater, or
 #'    terrestrial
 #' @param nameType Filters by the name type as one of:
 #' \itemize{
@@ -53,15 +53,15 @@
 #'    status is being filtered by \code{status=ACCEPTED}
 #' @param type Type of name. One of occurrence, checklist, or metadata.
 #' @param hl (logical) Set \code{hl=TRUE} to highlight terms matching the query when in fulltext
-#'    search fields. The highlight will be an emphasis tag of class 'gbifH1' e.g. 
-#'    \code{query='plant', hl=TRUE}. Fulltext search fields include: title, keyword, country, 
-#'    publishing country, publishing organization title, hosting organization title, and 
-#'    description. One additional full text field is searched which includes information from 
+#'    search fields. The highlight will be an emphasis tag of class 'gbifH1' e.g.
+#'    \code{query='plant', hl=TRUE}. Fulltext search fields include: title, keyword, country,
+#'    publishing country, publishing organization title, hosting organization title, and
+#'    description. One additional full text field is searched which includes information from
 #'    metadata documents, but the text of this field is not returned in the response.
 #' @param limit Number of records to return. Maximum: 1000.
 #' @param start Record number to start at.
-#' @param ... Further named parameters, such as \code{query}, \code{path}, etc, passed on to 
-#'    \code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will 
+#' @param ... Further named parameters, such as \code{query}, \code{path}, etc, passed on to
+#'    \code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will
 #'    be combined with \code{\link[httr]{config}}.
 #' @param verbose (logical) If TRUE, all data is returned as a list for each element. If
 #'    FALSE (default) a subset of the data that is thought to be most essential is

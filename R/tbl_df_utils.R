@@ -67,7 +67,7 @@ type_sum.Date <- function (x) "date"
 #' @method type_sum factor
 #' @export
 #' @rdname type_sum
-type_sum.factor <- function (x) "fctr"  
+type_sum.factor <- function (x) "fctr"
 
 #' @method type_sum integer
 #' @export
@@ -83,7 +83,7 @@ type_sum.logical <- function (x) "lgl"
 #' @export
 #' @rdname type_sum
 type_sum.array <- function (x){
-  paste0(NextMethod(), "[", paste0(dim(x), collapse = ","), 
+  paste0(NextMethod(), "[", paste0(dim(x), collapse = ","),
          "]")
 }
 

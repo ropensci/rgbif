@@ -36,7 +36,7 @@
 #' # compare out data to after occ_issues use
 #' (out <- occ_search(limit=100))
 #' out %>% occ_issues(cudc)
-#' 
+#'
 #' # Parsing output by issue
 #' (res <- occ_search(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))', limit = 50))
 #'
@@ -70,7 +70,7 @@
 #' }
 
 occ_issues <- function(.data, ..., mutate = NULL) {
-  
+
   stopifnot(is(.data, "gbif"))
   tmp <- .data$data
 

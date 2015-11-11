@@ -43,7 +43,7 @@ gbif_make_list <- function(y){
     }
     paste0(paste("\n    type: ", y$type), pc("\n    predicates: ", pc(out)), collapse = ", ")
   } else {
-    "none" 
+    "none"
   }
 }
 

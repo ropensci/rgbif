@@ -18,7 +18,7 @@
 #'    which the occurrence was recorded. See here
 #'    \url{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}
 #' @param basisOfRecord Basis of record, as defined in our BasisOfRecord enum here
-#'    \url{http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/BasisOfRecord.html} 
+#'    \url{http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/BasisOfRecord.html}
 #'    Acceptable values are:
 #'    \itemize{
 #'      \item FOSSIL_SPECIMEN An occurrence record describing a fossilized specimen.
@@ -33,11 +33,11 @@
 #'      \item UNKNOWN Unknown basis for the record.
 #'    }
 #' @param eventDate Occurrence date in ISO 8601 format: yyyy, yyyy-MM, yyyy-MM-dd, or
-#'    MM-dd. Supports range queries, smaller,larger (e.g., '1990,1991', whereas '1991,1990' 
+#'    MM-dd. Supports range queries, smaller,larger (e.g., '1990,1991', whereas '1991,1990'
 #'    wouldn't work)
 #' @param year The 4 digit year. A year of 98 will be interpreted as AD 98. Supports range queries,
 #'    smaller,larger (e.g., '1990,1991', whereas '1991,1990' wouldn't work)
-#' @param month The month of the year, starting with 1 for January. Supports range queries, 
+#' @param month The month of the year, starting with 1 for January. Supports range queries,
 #'    smaller,larger (e.g., '1,2', whereas '2,1' wouldn't work)
 #' @param search Query terms. The value for this parameter can be a simple word or a phrase.
 #' @param decimalLatitude Latitude in decimals between -90 and 90 based on WGS 84.
@@ -46,10 +46,10 @@
 #'    Supports range queries (e.g., '-0.4,-0.2', whereas '-0.2,-0.4' wouldn't work).
 #' @param publishingCountry The 2-letter country code (as per ISO-3166-1) of the
 #'    country in which the occurrence was recorded.
-#' @param elevation Elevation in meters above sea level. Supports range queries, smaller,larger 
+#' @param elevation Elevation in meters above sea level. Supports range queries, smaller,larger
 #'    (e.g., '5,30', whereas '30,5' wouldn't work)
 #' @param depth Depth in meters relative to elevation. For example 10 meters below a
-#'    lake surface with given elevation. Supports range queries, smaller,larger (e.g., '5,30', 
+#'    lake surface with given elevation. Supports range queries, smaller,larger (e.g., '5,30',
 #'    whereas '30,5' wouldn't work)
 #' @param geometry Searches for occurrences inside a polygon described in Well Known
 #'    Text (WKT) format. A WKT shape written as either POINT, LINESTRING, LINEARRING
@@ -68,12 +68,12 @@
 #' @param recordNumber Number recorded by collector of the data, different from GBIF record
 #'    number. See \url{http://rs.tdwg.org/dwc/terms/#recordNumber} for more info
 #' @param lastInterpreted Date the record was last modified in GBIF, in ISO 8601 format:
-#'    yyyy, yyyy-MM, yyyy-MM-dd, or MM-dd.  Supports range queries, smaller,larger (e.g., 
+#'    yyyy, yyyy-MM, yyyy-MM-dd, or MM-dd.  Supports range queries, smaller,larger (e.g.,
 #'    '1990,1991', whereas '1991,1990' wouldn't work)
 #' @param continent Continent. One of africa, antarctica, asia, europe, north_america
 #'    (North America includes the Caribbean and reachies down and includes Panama), oceania,
 #'    or south_america
-#' @param fields (character) Default ('all') returns all fields. 'minimal' returns just taxon name, 
+#' @param fields (character) Default ('all') returns all fields. 'minimal' returns just taxon name,
 #'    key, latitude, and longitute. Or specify each field you want returned by name, e.g.
 #'    fields = c('name','latitude','elevation').
 #' @param return One of data, hier, meta, or all. If data, a data.frame with the
@@ -97,7 +97,7 @@
 #' decimallatitude, and decimallongitude. Set parameter minimal=FALSE if you want more data.
 #'
 #' \bold{Nerds:} You can pass parameters not defined in this function into the call to
-#' the GBIF API to control things about the call itself using \code{...}. See an example below 
+#' the GBIF API to control things about the call itself using \code{...}. See an example below
 #' that passes in the \code{verbose} function to get details on the http call.
 #'
 #' \bold{Scientific names vs. taxon keys:} In the previous GBIF API and the version of rgbif that
@@ -205,10 +205,10 @@
 #'  \item ZERO_COORDINATE Coordinate is the exact 0/0 coordinate, often indicating a bad null
 #'  coordinate.
 #' }
-#' 
-#' \bold{Counts:} There is a slight difference in the way records are counted here vs. 
-#' results from \code{\link{occ_count}}. For equivalent outcomes, in this function 
-#' use \code{hasCoordinate=TRUE}, and \code{hasGeospatialIssue=FALSE} to have the 
+#'
+#' \bold{Counts:} There is a slight difference in the way records are counted here vs.
+#' results from \code{\link{occ_count}}. For equivalent outcomes, in this function
+#' use \code{hasCoordinate=TRUE}, and \code{hasGeospatialIssue=FALSE} to have the
 #' same outcome using \code{\link{occ_count}} with \code{isGeoreferenced=TRUE}.
-#' 
+#'
 #' @references \url{http://www.gbif.org/developer/occurrence#search}

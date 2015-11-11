@@ -39,7 +39,7 @@
 #' }
 
 count_facet <- function(keys = NULL, by = 'country', countries = 10, removezeros = FALSE) {
-  
+
   # can't do both keys and basisofrecord
   if (!is.null(keys) && by == 'basisOfRecord') {
     stop("you can't pass in both keys and have by='basisOfRecord'")
