@@ -25,7 +25,7 @@ occ_download_list <- function(user=getOption("gbif_user"), pwd=getOption("gbif_p
     accept_json(),
     authenticate(user = user, password = pwd),
     list(...)$config),
-    make_ua()
+    make_rgbif_ua()
   )
   tt <- content(res, as = "text")
   out <- jsonlite::fromJSON(tt)

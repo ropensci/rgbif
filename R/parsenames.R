@@ -27,7 +27,7 @@
 parsenames <- function(scientificname, ...) {
   url <- paste0(gbif_base(), "/parser/name")
   tt <- POST(url, c(add_headers('Content-Type' = 'application/json')), ...,
-             body=jsonlite::toJSON(scientificname), make_ua())
+             body=jsonlite::toJSON(scientificname), make_rgbif_ua())
   stop_for_status(tt)
   stopifnot(tt$headers$`content-type`=='application/json')
   temp <- content(tt, as = 'text', encoding = "UTF-8")

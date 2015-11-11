@@ -26,7 +26,7 @@
 #' }
 #'
 #' @importFrom methods is
-#' @importFrom utils browseURL head unzip
+#' @importFrom utils browseURL head unzip packageVersion
 #' @importFrom stats na.omit complete.cases
 #' @importFrom data.table rbindlist fread
 #' @importFrom ggplot2 geom_point position_jitter map_data ggplot
