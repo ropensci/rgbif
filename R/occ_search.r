@@ -254,15 +254,17 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
 
   calls <- names(sapply(match.call(), deparse))[-1]
   calls_vec <- c("georeferenced","altitude","latitude","longitude") %in% calls
-  if(any(calls_vec))
+  if (any(calls_vec)) {
     stop("Parameter name changes: \n georeferenced -> hasCoordinate\n altitude -> elevation\n latitude -> decimalLatitude\n longitude - > decimalLongitude")
+  }
 
   geometry <- geometry_handler(geometry)
 
   url <- paste0(gbif_base(), '/occurrence/search')
   getdata <- function(x=NULL, itervar=NULL) {
-    if(!is.null(x))
+    if (!is.null(x)) {
       assign(itervar, x)
+    }
 
     # check that wkt is proper format and of 1 of 4 allowed types
     geometry <- check_wkt(geometry)
@@ -298,8 +300,9 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
       numreturned <- length(tt$results)
       sumreturned <- sumreturned + numreturned
 
-      if (tt$count < limit)
+      if (tt$count < limit) {
         limit <- tt$count
+      }
 
       if (sumreturned < limit) {
         args$limit <- limit - sumreturned
@@ -350,18 +353,23 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
     }
   }
 
-  params <- list(taxonKey=taxonKey,scientificName=scientificName,datasetKey=datasetKey,catalogNumber=catalogNumber,
-                 collectorName=collectorName,geometry=geometry,country=country,
-                 publishingCountry=publishingCountry,recordNumber=recordNumber,
-                 q=search,institutionCode=institutionCode,collectionCode=collectionCode,continent=continent,
-                 decimalLatitude=decimalLatitude,decimalLongitude=decimalLongitude,depth=depth,year=year,
-                 typeStatus=typeStatus,lastInterpreted=lastInterpreted,mediatype=mediatype,
-                 limit=limit)
-  if (!any(sapply(params, length) > 0))
-    stop(sprintf("At least one of the parmaters must have a value:\n%s", possparams()), call. = FALSE)
+  params <- list(taxonKey=taxonKey,scientificName=scientificName,datasetKey=datasetKey,
+    catalogNumber=catalogNumber,
+    collectorName=collectorName,geometry=geometry,country=country,
+    publishingCountry=publishingCountry,recordNumber=recordNumber,
+    q=search,institutionCode=institutionCode,collectionCode=collectionCode,continent=continent,
+    decimalLatitude=decimalLatitude,decimalLongitude=decimalLongitude,depth=depth,year=year,
+    typeStatus=typeStatus,lastInterpreted=lastInterpreted,mediatype=mediatype,
+    limit=limit)
+  if (!any(sapply(params, length) > 0)) {
+    stop(sprintf("At least one of the parmaters must have a value:\n%s", possparams()),
+         call. = FALSE)
+  }
   iter <- params[which(sapply(params, length) > 1)]
-  if (length(names(iter)) > 1)
-    stop(sprintf("You can have multiple values for only one of:\n%s", possparams()), call. = FALSE)
+  if (length(names(iter)) > 1) {
+    stop(sprintf("You can have multiple values for only one of:\n%s", possparams()),
+         call. = FALSE)
+  }
 
   if (length(iter) == 0) {
     out <- getdata()
@@ -370,16 +378,18 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
     names(out) <- iter[[1]]
   }
 
-  if(any(names(argscoll) %in% names(iter))){
+  if (any(names(argscoll) %in% names(iter))) {
     argscoll[[names(iter)]] <- iter[[names(iter)]]
   }
   argscoll$fields <- fields
 
-  if (is(out, "data.frame")) {
-    class(out) <- c('data.frame', 'gbif')
-  } else {
-    class(out) <- "gbif"
-    attr(out, 'type') <- if (length(iter) == 0) "single" else "many"
+  if (!return %in% c('meta', 'hier')) {
+    if (is(out, "data.frame")) {
+      class(out) <- c('data.frame', 'gbif')
+    } else {
+      class(out) <- "gbif"
+      attr(out, 'type') <- if (length(iter) == 0) "single" else "many"
+    }
   }
   structure(out, return = return, args = argscoll)
 }

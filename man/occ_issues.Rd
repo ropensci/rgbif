@@ -7,7 +7,8 @@
 occ_issues(.data, ..., mutate = NULL)
 }
 \arguments{
-\item{.data}{Output from a call to \code{occ_search}}
+\item{.data}{Output from a call to \code{occ_search}, but only if \code{return="all"},
+or \code{return="data"}, otherwise function stops with error}
 
 \item{...}{Named parameters to only get back (e.g., cdround), or to remove (e.g. -cdround).}
 

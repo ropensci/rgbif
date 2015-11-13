@@ -2,7 +2,8 @@
 #'
 #' @export
 #'
-#' @param .data Output from a call to \code{occ_search}
+#' @param .data Output from a call to \code{occ_search}, but only if \code{return="all"},
+#' or \code{return="data"}, otherwise function stops with error
 #' @param ... Named parameters to only get back (e.g., cdround), or to remove (e.g. -cdround).
 #' @param mutate (character) One of:
 #' \itemize{
@@ -72,7 +73,11 @@
 occ_issues <- function(.data, ..., mutate = NULL) {
 
   stopifnot(is(.data, "gbif"))
-  tmp <- .data$data
+  if ("data" %in% names(.data)) {
+    tmp <- .data$data
+  } else {
+    tmp <- .data
+  }
 
   if (!length(dots(...)) == 0) {
     filters <- parse_input(...)
@@ -95,8 +100,12 @@ occ_issues <- function(.data, ..., mutate = NULL) {
     }
   }
 
-  .data$data <- tmp
-  return( .data )
+  if ("data" %in% names(.data)) {
+    .data$data <- tmp
+    return( .data )
+  } else {
+    return( tmp )
+  }
 }
 
 mutate_iss <- function(w){
