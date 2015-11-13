@@ -15,6 +15,8 @@ test_that("returns the correct class", {
   expect_is(tt$data, "data.frame")
   expect_is(tt$data$name, "character")
   expect_is(vv, "data.frame")
+  # meta no longer has gbif class
+  expect_equal(length(class(vv)), 1)
 
   expect_equal(tt$meta$limit, 2)
   expect_equal(tt$hierarchy[[1]][1,2], 6)
@@ -76,8 +78,10 @@ test_that("returns the correct class", {
   skip_on_cran()
 
   out <- occ_search(taxonKey=key, limit=20, return='hier')
-  expect_is(out, "gbif")
+  expect_is(out, "list")
   expect_is(out[[1]], "data.frame")
+  # hier no longer has gbif class
+  expect_equal(length(class(out)), 1)
 
   # returns the correct dimensions
   expect_equal(length(out), 1)
