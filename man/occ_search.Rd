@@ -8,7 +8,7 @@
 occ_search(taxonKey = NULL, scientificName = NULL, country = NULL,
   publishingCountry = NULL, hasCoordinate = NULL, typeStatus = NULL,
   recordNumber = NULL, lastInterpreted = NULL, continent = NULL,
-  geometry = NULL, collectorName = NULL, basisOfRecord = NULL,
+  geometry = NULL, recordedBy = NULL, basisOfRecord = NULL,
   datasetKey = NULL, eventDate = NULL, catalogNumber = NULL,
   year = NULL, month = NULL, decimalLatitude = NULL,
   decimalLongitude = NULL, elevation = NULL, depth = NULL,
@@ -56,8 +56,6 @@ or south_america}
 Text (WKT) format. A WKT shape written as either POINT, LINESTRING, LINEARRING
 or POLYGON. Example of a polygon: ((30.1 10.1, 20, 20 40, 40 40, 30.1 10.1))
  would be queried as \url{http://bit.ly/1BzNwDq}.}
-
-\item{collectorName}{The person who recorded the occurrence.}
 
 \item{basisOfRecord}{Basis of record, as defined in our BasisOfRecord enum here
 \url{http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/BasisOfRecord.html}
@@ -148,6 +146,8 @@ be combined with \code{\link[httr]{config}}.}
 \item{x}{Output from a call to occ_search}
 
 \item{n}{Number of rows of the data to print.}
+
+\item{collectorName}{The person who recorded the occurrence.}
 }
 \value{
 A data.frame or list
@@ -340,11 +340,11 @@ occ_search(taxonKey=key, return='data', limit=20)
 ## If return='meta' the output is a list of the hierarch for each record
 occ_search(taxonKey=key, return='hier', limit=10)
 
-# Search by collector name
-occ_search(collectorName="smith", limit=20)
+# Search by recorder
+occ_search(recordedBy="smith", limit=20)
 
 # Many collector names
-occ_search(collectorName=c("smith","BJ Stacey"), limit=20)
+occ_search(recordedBy=c("smith","BJ Stacey"), limit=20)
 
 # Pass in curl options for extra fun
 library('httr')
@@ -480,7 +480,7 @@ res \%>\% occ_issues(mutate = "split_expand")
 res \%>\% occ_issues(-cudc, mutate = "split_expand")
 
 # If you try multiple values for two different parameters you are wacked on the hand
-# occ_search(taxonKey=c(2482598,2492010), collectorName=c("smith","BJ Stacey"))
+# occ_search(taxonKey=c(2482598,2492010), recordedBy=c("smith","BJ Stacey"))
 
 # Get a lot of data, here 1500 records for Helianthus annuus
 # out <- occ_search(taxonKey=key, limit=1500, return="data")

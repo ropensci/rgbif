@@ -62,11 +62,11 @@
 #' ## If return='meta' the output is a list of the hierarch for each record
 #' occ_search(taxonKey=key, return='hier', limit=10)
 #'
-#' # Search by collector name
-#' occ_search(collectorName="smith", limit=20)
+#' # Search by recorder
+#' occ_search(recordedBy="smith", limit=20)
 #'
 #' # Many collector names
-#' occ_search(collectorName=c("smith","BJ Stacey"), limit=20)
+#' occ_search(recordedBy=c("smith","BJ Stacey"), limit=20)
 #'
 #' # Pass in curl options for extra fun
 #' library('httr')
@@ -202,7 +202,7 @@
 #' res %>% occ_issues(-cudc, mutate = "split_expand")
 #'
 #' # If you try multiple values for two different parameters you are wacked on the hand
-#' # occ_search(taxonKey=c(2482598,2492010), collectorName=c("smith","BJ Stacey"))
+#' # occ_search(taxonKey=c(2482598,2492010), recordedBy=c("smith","BJ Stacey"))
 #'
 #' # Get a lot of data, here 1500 records for Helianthus annuus
 #' # out <- occ_search(taxonKey=key, limit=1500, return="data")
@@ -246,7 +246,7 @@
 
 occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publishingCountry=NULL,
   hasCoordinate=NULL, typeStatus=NULL, recordNumber=NULL, lastInterpreted=NULL, continent=NULL,
-  geometry=NULL, collectorName=NULL, basisOfRecord=NULL, datasetKey=NULL, eventDate=NULL,
+  geometry=NULL, recordedBy=NULL, basisOfRecord=NULL, datasetKey=NULL, eventDate=NULL,
   catalogNumber=NULL, year=NULL, month=NULL, decimalLatitude=NULL, decimalLongitude=NULL,
   elevation=NULL, depth=NULL, institutionCode=NULL, collectionCode=NULL,
   hasGeospatialIssue=NULL, issue=NULL, search=NULL, mediatype=NULL, limit=500, start=0,
@@ -278,7 +278,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
     args <- rgbif_compact(list(taxonKey=taxonKey, scientificName=scientificName, country=country,
       publishingCountry=publishingCountry, hasCoordinate=hasCoordinate, typeStatus=typeStatus,
       recordNumber=recordNumber, lastInterpreted=lastInterpreted, continent=continent,
-      geometry=geometry, collectorName=collectorName, basisOfRecord=basisOfRecord,
+      geometry=geometry, recordedBy=recordedBy, basisOfRecord=basisOfRecord,
       datasetKey=datasetKey, eventDate=eventDate, catalogNumber=catalogNumber,
       year=year, month=month, decimalLatitude=decimalLatitude,
       decimalLongitude=decimalLongitude, elevation=elevation, depth=depth,
@@ -356,7 +356,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
 
   params <- list(taxonKey=taxonKey,scientificName=scientificName,datasetKey=datasetKey,
     catalogNumber=catalogNumber,
-    collectorName=collectorName,geometry=geometry,country=country,
+    recordedBy=recordedBy,geometry=geometry,country=country,
     publishingCountry=publishingCountry,recordNumber=recordNumber,
     q=search,institutionCode=institutionCode,collectionCode=collectionCode,continent=continent,
     decimalLatitude=decimalLatitude,decimalLongitude=decimalLongitude,depth=depth,year=year,
@@ -448,14 +448,23 @@ pasteargs <- function(b){
 
 pastemax <- function(z, type='counts', n=10){
   xnames <- names(z)
-  xnames <- sapply(xnames, function(x) if(nchar(x)>8) paste0(substr(x, 1, 6), "..", collapse = "") else x, USE.NAMES = FALSE)
+  xnames <- sapply(xnames, function(x) {
+    if (nchar(x) > 8) {
+      paste0(substr(x, 1, 6), "..", collapse = "")
+    } else {
+      x
+    }
+  }, USE.NAMES = FALSE)
   yep <- switch(type,
          counts = vapply(z, function(y) y$meta$count, numeric(1), USE.NAMES = FALSE),
          returned = vapply(z, function(y) NROW(y$data), numeric(1), USE.NAMES = FALSE),
          hier = vapply(z, function(y) length(y$hierarchy), numeric(1), USE.NAMES = FALSE),
          media = vapply(z, function(y) length(y$media), numeric(1), USE.NAMES = FALSE)
   )
-  tt <- list(); for(i in seq_along(xnames)){ tt[[i]] <- sprintf("%s (%s)", xnames[i], yep[[i]]) }
+  tt <- list()
+  for (i in seq_along(xnames)) {
+    tt[[i]] <- sprintf("%s (%s)", xnames[i], yep[[i]])
+  }
   paste0(tt, collapse = ", ")
 }
 
@@ -464,7 +473,7 @@ parse_issues <- function(x){
 }
 
 check_limit <- function(x){
-  if(x > 1000000L)
+  if (x > 1000000L) {
     stop("
       Maximum request size is 1 million. As a solution, either use the
       GBIF web interface, or in R, split up your request in a way that
@@ -473,18 +482,19 @@ check_limit <- function(x){
       you could split up your request taxonomically, e.g., if you want
       data for all species in a large family of birds, split up by
       some higher taxonomic level, like tribe or genus.")
-  else
+  } else {
     x
+  }
 }
 
 possparams <- function(){
-  "   taxonKey, scientificName, datasetKey, catalogNumber, collectorName, geometry,
+  "   taxonKey, scientificName, datasetKey, catalogNumber, recordedBy, geometry,
    country, publishingCountry, recordNumber, search, institutionCode, collectionCode,
    decimalLatitude, decimalLongitude, depth, year, typeStatus, lastInterpreted,
    continent, or mediatype"
 }
 
 check_vals <- function(x, y){
-  if(is.na(x) || is.null(x)) stop(sprintf("%s can not be NA or NULL", y), call. = FALSE)
-  if(length(x) > 1) stop(sprintf("%s has to be length 1", y), call. = FALSE)
+  if (is.na(x) || is.null(x)) stop(sprintf("%s can not be NA or NULL", y), call. = FALSE)
+  if (length(x) > 1) stop(sprintf("%s has to be length 1", y), call. = FALSE)
 }

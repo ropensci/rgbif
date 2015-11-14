@@ -9,8 +9,8 @@ occ_metadata(type = "catalogNumber", q = NULL, limit = 5, pretty = TRUE,
   ...)
 }
 \arguments{
-\item{type}{Type of data, one of catalog_number, collection_code, collector_name,
-institution_code. Unique partial strings work too, like 'cat' for catalog_number}
+\item{type}{Type of data, one of catalogNumber, collectionCode, recordedBy, or
+institutionCode. Unique partial strings work too, like 'cat' for catalogNumber}
 
 \item{q}{Search term}
 
@@ -20,8 +20,8 @@ institution_code. Unique partial strings work too, like 'cat' for catalog_number
 character strings.}
 
 \item{...}{Further named parameters, such as \code{query}, \code{path}, etc, passed on to
-\code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will be
-combined with \code{\link[httr]{config}}.}
+\code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters
+will be combined with \code{\link[httr]{config}}.}
 }
 \description{
 Search for catalog numbers, collection codes, collector names, and institution
@@ -37,6 +37,9 @@ occ_metadata(type = "collectionCode", q=12)
 
 # institution code
 occ_metadata(type = "institutionCode", q='GB')
+
+# recorded by
+occ_metadata(type = "recordedBy", q='scott')
 
 # data as character strings
 occ_metadata(type = "catalogNumber", q=122, pretty=FALSE)
