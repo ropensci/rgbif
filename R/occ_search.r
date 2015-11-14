@@ -261,7 +261,8 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
   geometry <- geometry_handler(geometry)
 
   url <- paste0(gbif_base(), '/occurrence/search')
-  getdata <- function(x=NULL, itervar=NULL) {
+
+  .get_occ_search <- function(x=NULL, itervar=NULL) {
     if (!is.null(x)) {
       assign(itervar, x)
     }
@@ -372,9 +373,9 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
   }
 
   if (length(iter) == 0) {
-    out <- getdata()
+    out <- .get_occ_search()
   } else {
-    out <- lapply(iter[[1]], getdata, itervar = names(iter))
+    out <- lapply(iter[[1]], .get_occ_search, itervar = names(iter))
     names(out) <- iter[[1]]
   }
 
