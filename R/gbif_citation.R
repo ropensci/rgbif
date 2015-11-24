@@ -95,7 +95,7 @@ gbif_citation.numeric <- function(x) {
 #' @export
 gbif_citation.occ_download_get <- function(x) {
   path <- x[1]
-  tmpdir <- file.path(tempdir(), key)
+  tmpdir <- file.path(tempdir(), x)
   unzip(path, exdir = tmpdir, overwrite = TRUE)
   on.exit(unlink(tmpdir))
   dsets <- list.files(file.path(tmpdir, "dataset"), full.names = TRUE)
@@ -122,9 +122,6 @@ print.gbif_citation <- function(x, indent = 3, width = 80, ...) {
 }
 
 as_occ_d_key <- function(x) {
-  # make sure we're dealing with occurrence key or dataset key
-  ## other keys that look like dataset keys can be passed
-  # xor(is_dataset_key(x), is_occ_key(x))
   if (is_dataset_key_pattern(x)) {
     datasets(uuid = x)
   } else {
@@ -142,14 +139,14 @@ is_occ_key <- function(x) {
   res$status_code <= 201
 }
 
-is_dataset_key <- function(x) {
-  does_dataset_key_exist(x) && is_dataset_key_pattern(x)
-}
+# is_dataset_key <- function(x) {
+#   does_dataset_key_exist(x) && is_dataset_key_pattern(x)
+# }
 
-does_dataset_key_exist <- function(x) {
-  res <- HEAD(paste0("http://api.gbif.org/v1/dataset/", x))
-  res$status_code <= 201
-}
+# does_dataset_key_exist <- function(x) {
+#   res <- HEAD(paste0("http://api.gbif.org/v1/dataset/", x))
+#   res$status_code <= 201
+# }
 
 is_dataset_key_pattern <- function(x) {
   grepl("^[A-Za-z0-9]{8}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{12}$", x)

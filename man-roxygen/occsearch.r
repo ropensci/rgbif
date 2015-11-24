@@ -9,7 +9,7 @@
 #' @param catalogNumber An identifier of any form assigned by the source within a
 #'    physical collection or digital dataset for the record which may not unique,
 #'    but should be fairly unique in combination with the institution and collection code.
-#' @param collectorName The person who recorded the occurrence.
+#' @param recordedBy The person who recorded the occurrence.
 #' @param collectionCode An identifier of any form assigned by the source to identify
 #'    the physical collection or digital dataset uniquely within the text of an institution.
 #' @param institutionCode An identifier of any form assigned by the source to identify

@@ -57,6 +57,8 @@ Text (WKT) format. A WKT shape written as either POINT, LINESTRING, LINEARRING
 or POLYGON. Example of a polygon: ((30.1 10.1, 20, 20 40, 40 40, 30.1 10.1))
  would be queried as \url{http://bit.ly/1BzNwDq}.}
 
+\item{recordedBy}{The person who recorded the occurrence.}
+
 \item{basisOfRecord}{Basis of record, as defined in our BasisOfRecord enum here
 \url{http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/BasisOfRecord.html}
 Acceptable values are:
@@ -146,8 +148,6 @@ be combined with \code{\link[httr]{config}}.}
 \item{x}{Output from a call to occ_search}
 
 \item{n}{Number of rows of the data to print.}
-
-\item{collectorName}{The person who recorded the occurrence.}
 }
 \value{
 A data.frame or list

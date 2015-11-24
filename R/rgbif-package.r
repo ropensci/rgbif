@@ -32,11 +32,11 @@
 #' @importFrom ggplot2 geom_point position_jitter map_data ggplot
 #' geom_polygon aes scale_color_brewer labs theme_bw theme guides
 #' guide_legend coord_fixed element_blank
-#' @importFrom httr GET POST DELETE content stop_for_status http_status
+#' @importFrom httr GET POST DELETE HEAD content stop_for_status http_status
 #' add_headers authenticate write_disk content_type_json accept_json
 #' user_agent
-#' @importFrom XML getNodeSet xmlAttrs xmlSApply xmlValue htmlParse
-#' xpathApply xmlToList
+#' @importFrom XML getNodeSet xmlAttrs xmlSApply xmlValue xmlParse htmlParse
+#' xpathApply xpathSApply xmlToList
 #' @importFrom jsonlite toJSON fromJSON
 #' @name rgbif-package
 #' @aliases rgbif
