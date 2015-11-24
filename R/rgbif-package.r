@@ -38,6 +38,8 @@
 #' @importFrom XML getNodeSet xmlAttrs xmlSApply xmlValue xmlParse htmlParse
 #' xpathApply xpathSApply xmlToList
 #' @importFrom jsonlite toJSON fromJSON
+#' @importFrom oai id list_identifiers list_records list_metadataformats
+#' list_sets get_records
 #' @name rgbif-package
 #' @aliases rgbif
 #' @docType package
