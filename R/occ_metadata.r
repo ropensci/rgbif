@@ -2,7 +2,6 @@
 #' codes.
 #'
 #' @export
-#'
 #' @param type Type of data, one of catalogNumber, collectionCode, recordedBy, or
 #' institutionCode. Unique partial strings work too, like 'cat' for catalogNumber
 #' @param q Search term
