@@ -1,3 +1,32 @@
+rgbif 0.9.0
+===============
+
+### NEW FEATURES
+
+* New set of functions (`gbif_oai_*()`) for working with
+GBIF registry OAI-PMH service. Now importing `oai` package to
+make working with GBIF's OAI-PMH service easier (#183)
+* Added code of conduct (#180)
+* Now sending user-agent header with all requests from this
+package to GBIF's servers indicating what version of rgbif
+and that it's an ropensci package. Looks like
+`r-curl/0.9.4 httr/1.0.0 rOpenSci(rgbif/0.9.0)`, with whatever
+versions of each package you're using. We also pass a user-agent
+string with the header `X-USER-AGENT` in case the `useragent`
+header gets stripped somewhere along the line (#185)
+* New function `gbif_citation()` helps get citations for datasets
+eith using the occurrence search API via `occ_search()` or the
+downloads API via `occ_downlad()` (#178) (#179)
+
+### MINOR IMPROVEMENTS
+
+* Using `importFrom` instead of `import` in all cases now.
+* Parameter `collectorName` changed to `recordedBy` (#184)
+
+### BUG FIXES
+
+* Fix to `occ_download_meta()` print method to handle 1 or more predicate results (#186)
+
 rgbif 0.8.9
 ===============
 
@@ -5,13 +34,13 @@ rgbif 0.8.9
 
 * Updated `terraformer.js` javascript code included in the package
 along with an update in that codebase (#156)
-* The `email` parameter now `NULL` by default in the function 
-`occ_download()`, so that if not provided or not set in options, 
+* The `email` parameter now `NULL` by default in the function
+`occ_download()`, so that if not provided or not set in options,
 then function fails. (#173)
 * Additional explanation added to the `?downloads` help file.
 * Added internal checks to `elevation()` to check for coordinates that
-are impossible (e.g., latitude > 90), not complete (e.g., lat given, 
-long not given), or points at `0,0` (just warns, doesn't stop). (#176) 
+are impossible (e.g., latitude > 90), not complete (e.g., lat given,
+long not given), or points at `0,0` (just warns, doesn't stop). (#176)
 thanks @luisDVA
 * General code tidying across package
 
@@ -20,11 +49,11 @@ thanks @luisDVA
 * A route changed for getting images for a taxon within the `/species`
 route, fix to function `name_usage()` (#174)
 * Fix to `occ_search()` to remove a block of code to do synonym checking.
-This block of code was used if the parameter `scientificName` was passed, 
+This block of code was used if the parameter `scientificName` was passed,
 and checked if the name given was a synonym; if yes, we used the accepted
 name according to the GBIF backbone taxonomy; if no, we proceeded with the
 name given by the user. We removed the block of code because the GBIF
-API now essentially does this behind the scenes server side. See 
+API now essentially does this behind the scenes server side. See
 https://github.com/gbif/gbif-api for examples. (#175)
 
 rgbif 0.8.8
@@ -51,7 +80,7 @@ rgbif 0.8.6
 
 ### BUG FIXES
 
-* Fixed problem with `httr` `v1` where empty list not allowed to pass to 
+* Fixed problem with `httr` `v1` where empty list not allowed to pass to
 the `query` parameter in `GET` (#163)
 
 
