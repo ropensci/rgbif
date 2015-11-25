@@ -8,7 +8,7 @@
 \alias{gbif_oai_list_metadataformats}
 \alias{gbif_oai_list_records}
 \alias{gbif_oai_list_sets}
-\title{Get citation for datasets used}
+\title{GBIF registry data via OAI-PMH}
 \usage{
 gbif_oai_identify(...)
 
@@ -27,20 +27,19 @@ gbif_oai_get_records(ids, prefix = "oai_dc", as = "df", ...)
 \arguments{
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 
-\item{prefix}{A character string to specify the metadata format in OAI-PMH requests issued to
+\item{prefix}{(character) A string to specify the metadata format in OAI-PMH requests issued to
 the repository. The default (\code{"oai_dc"}) corresponds to the mandatory OAI unqualified
 Dublin Core metadata schema.}
 
-\item{from}{Character string giving datestamp to be used as lower bound for datestamp-based
+\item{from}{(character) string giving datestamp to be used as lower bound for datestamp-based
 selective harvesting (i.e., only harvest records with datestamps in the given range). Dates
 and times must be encoded using ISO 8601. The trailing Z must be used when including time.
 OAI-PMH implies UTC for data/time specifications.}
 
-\item{until}{Character string giving a datestamp to be used as an upper bound,
-for datestamp-based selective harvesting (i.e., only harvest records with datestamps in
-the given range).}
+\item{until}{(character) Datestamp to be used as an upper bound, for datestamp-based
+selective harvesting (i.e., only harvest records with datestamps in the given range).}
 
-\item{set}{A character string giving a set to be used for selective harvesting (i.e., only
+\item{set}{(character) A set to be used for selective harvesting (i.e., only
 harvest records in the given set).}
 
 \item{token}{(character) a token previously provided by the server to resume a
@@ -53,10 +52,15 @@ loop for you internally to get all the records you asked for.}
 \item{id, ids}{(character) The OAI-PMH identifier for the record. Optional.}
 }
 \value{
-data.frame
+raw text, list or data.frame, depending on requested output via \code{as}
+parameter
 }
 \description{
-Get citation for datasets used
+GBIF registry data via OAI-PMH
+}
+\details{
+These functions only work with GBIF registry data, and do so via the
+OAI-PMH protocol (https://www.openarchives.org/OAI/openarchivesprotocol.html).
 }
 \examples{
 \dontrun{
@@ -72,8 +76,8 @@ gbif_oai_list_records(set = "country:NL")
 gbif_oai_list_metadataformats()
 gbif_oai_list_metadataformats(id = "9c4e36c1-d3f9-49ce-8ec1-8c434fa9e6eb")
 
-list_sets()
-list_sets(as = "list")
+gbif_oai_list_sets()
+gbif_oai_list_sets(as = "list")
 
 gbif_oai_get_records("9c4e36c1-d3f9-49ce-8ec1-8c434fa9e6eb")
 ids <- c("9c4e36c1-d3f9-49ce-8ec1-8c434fa9e6eb",

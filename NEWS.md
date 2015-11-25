@@ -26,6 +26,7 @@ downloads API via `occ_downlad()` (#178) (#179)
 ### BUG FIXES
 
 * Fix to `occ_download_meta()` print method to handle 1 or more predicate results (#186)
+* Fix to `occ_issues()` to work with `return=data` and `return=all` `occ_search()` output (#188)
 
 rgbif 0.8.9
 ===============

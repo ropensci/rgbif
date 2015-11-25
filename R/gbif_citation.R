@@ -26,8 +26,8 @@
 #' res3 <- occ_search(taxonKey=3119195, fields=c('name','basisOfRecord','key'), limit=20)
 #' (xx <- gbif_citation(res3))
 #' ## key field not included - errors
-#' res3 <- occ_search(taxonKey=3119195, fields=c('name','basisOfRecord','protocol'), limit=20)
-#' (xx <- gbif_citation(res3))
+#' # res3 <- occ_search(taxonKey=3119195, fields=c('name','basisOfRecord','protocol'), limit=20)
+#' # (xx <- gbif_citation(res3))
 #'
 #' # character class inputs
 #' ## pass in a dataset key
