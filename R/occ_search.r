@@ -4,9 +4,15 @@
 #' @template occsearch
 #' @template oslimstart
 #' @template occ
+#' @param fields (character) Default ('all') returns all fields. 'minimal' returns just taxon name,
+#'    key, latitude, and longitute. Or specify each field you want returned by name, e.g.
+#'    fields = c('name','latitude','elevation').
+#' @param return One of data, hier, meta, or all. If data, a data.frame with the
+#'    data. hier returns the classifications in a list for each record. meta
+#'    returns the metadata for the entire call. all gives all data back in a list.
 #' @param x Output from a call to occ_search
 #' @param n Number of rows of the data to print.
-#' @seealso \code{\link{downloads}}
+#' @seealso \code{\link{downloads}}, \code{\link{occ_data}}
 #' @examples \dontrun{
 #' # Search by species name, using \code{\link{name_backbone}} first to get key
 #' (key <- name_suggest(q='Helianthus annuus', rank='species')$key[1])

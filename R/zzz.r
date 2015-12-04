@@ -89,6 +89,28 @@ gbifparser <- function(input, fields='minimal'){
   }
 }
 
+clean_data <- function(x){
+  # collapse issues
+  if (!identical(x, list())) x[names(x) %in% "issues"] <- collapse_issues_vec(x)
+
+  # drop media, facts, relations
+  x$media <- NULL
+  x$facts <- NULL
+  x$relations <- NULL
+  x$identifiers <- NULL
+  x$extensions <- NULL
+
+  # move columns
+  x <- move_col(x, 'issues')
+  x <- move_col(x, 'decimalLongitude')
+  x <- move_col(x, 'decimalLatitude')
+  x <- move_col(x, 'key')
+  x <- move_col(x, 'species')
+  names(x)[1] <- 'name'
+
+  return(x)
+}
+
 #' Parser for gbif data
 #' @param input A list
 #' @param fields (character) Default ('minimal') will return just taxon name, key, decimalLatitude, and
@@ -440,18 +462,13 @@ compact_null <- function (l){
 collapse_issues <- function(x){
   tmp <- x[names(x) %in% "issues"][[1]]
   tmp <- gbifissues[ gbifissues$issue %in% tmp, "code" ]
-  paste(tmp, collapse=",")
+  paste(tmp, collapse = ",")
 }
 
-#' Pipe operator
-#'
-#' @name %>%
-#' @rdname pipe
-#' @keywords internal
-#' @export
-#' @importFrom magrittr %>%
-#' @usage lhs \%>\% rhs
-NULL
+collapse_issues_vec <- function(x){
+  tmp <- x[names(x) %in% "issues"][[1]]
+  unlist(lapply(tmp, function(x) paste(gbifissues[ gbifissues$issue %in% x, "code" ], collapse = ",")))
+}
 
 # REST helpers ---------------------------------------
 rgbif_ua <- function() {
@@ -581,3 +598,5 @@ noNA <- function(x) {
 
 strextract <- function(str, pattern) regmatches(str, regexpr(pattern, str))
 strtrim <- function(str) gsub("^\\s+|\\s+$", "", str)
+
+move_col <- function(x, y) x[ c(y, names(x)[-grep(y, names(x))]) ]
