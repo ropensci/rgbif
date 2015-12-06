@@ -3,7 +3,7 @@
 \name{occ_search}
 \alias{occ_search}
 \alias{print.gbif}
-\title{Search for GBIF occurrences.}
+\title{Search for GBIF occurrences}
 \usage{
 occ_search(taxonKey = NULL, scientificName = NULL, country = NULL,
   publishingCountry = NULL, hasCoordinate = NULL, typeStatus = NULL,
@@ -153,7 +153,7 @@ be combined with \code{\link[httr]{config}}.}
 A data.frame or list
 }
 \description{
-Search for GBIF occurrences.
+Search for GBIF occurrences
 }
 \details{
 Note that you can pass in a vector to one of taxonkey, datasetKey, and
