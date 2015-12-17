@@ -27,7 +27,8 @@ zip file name}
 Import a downloaded file from GBIF.
 }
 \details{
-You can provide either x as input, or both key and path.
+You can provide either x as input, or both key and path. We use
+\code{\link[data.table]{fread}} internally to read data.
 }
 \examples{
 \dontrun{

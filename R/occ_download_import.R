@@ -7,7 +7,8 @@
 #' @param path Path to unzip file to. Default: \code{"."} Writes to folder matching
 #' zip file name
 #'
-#' @details You can provide either x as input, or both key and path.
+#' @details You can provide either x as input, or both key and path. We use
+#' \code{\link[data.table]{fread}} internally to read data.
 #'
 #' @examples \dontrun{
 #' # First, kick off at least 1 download, then wait for the job to be complete
@@ -34,7 +35,7 @@ occ_download_import <- function(x=NULL, key=NULL, path=".") {
   }
   tmpdir <- file.path(tempdir(), key)
   unzip(path, exdir = tmpdir, overwrite = TRUE)
-  dat <- data.frame(fread(file.path(tmpdir, "occurrence.txt")))
+  dat <- fread(file.path(tmpdir, "occurrence.txt"), data.table = FALSE)
   structure(dat, class = c("gbif_download", "data.frame"))
 }
 
