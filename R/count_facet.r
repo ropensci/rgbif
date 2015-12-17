@@ -87,10 +87,9 @@ count_facet <- function(keys = NULL, by = 'country', countries = 10, removezeros
   }
 }
 
-occ_count_safe <- fail_with(NULL, occ_count)
-
 # Function to get data for each name
 occ_by_keys <- function(spkey=NULL, tt){
+  occ_count_safe <- fail_with(NULL, occ_count)
   tmp <- lapply(tt[[1]], function(x){
     xx <- list(x)
     names(xx) <- names(tt)
@@ -106,6 +105,7 @@ occ_by_keys <- function(spkey=NULL, tt){
 
 # Function to get data for each name
 occ_by <- function(tt){
+  occ_count_safe <- fail_with(NULL, occ_count)
   tmp <- lapply(tt[[1]], function(x){
     xx <- list(x)
     names(xx) <- names(tt)
