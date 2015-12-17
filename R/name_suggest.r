@@ -37,23 +37,25 @@
 #' # res <- name_suggest(q='Puma', limit=200, config=progress())
 #' }
 
-name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL, start=NULL, limit=100, ...)
-{
+name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL, start=NULL, limit=100, ...){
   url <- paste0(gbif_base(), '/species/suggest')
   args <- rgbif_compact(list(q=q, rank=rank, offset=start, limit=limit))
   tt <- gbif_GET(url, args, FALSE, ...)
 
-  if(is.null(fields)){
+  if (is.null(fields)) {
     toget <- c("key","canonicalName","rank")
-  } else { toget <- fields }
+  } else {
+    toget <- fields
+  }
   matched <- sapply(toget, function(x) x %in% suggestfields())
-  if(!any(matched))
-    stop(sprintf("the fields %s are not valid", paste0(names(matched[matched == FALSE]),collapse=",")))
-  if(any(fields %in% "higherClassificationMap")){
-    for(i in seq_along(tt)){
+  if (!any(matched)) {
+    stop(sprintf("the fields %s are not valid", paste0(names(matched[matched == FALSE]), collapse = ",")))
+  }
+  if (any(fields %in% "higherClassificationMap")) {
+    for (i in seq_along(tt)) {
       temp <- tt[[i]]
       temp <- temp$higherClassificationMap
-      tt[[i]][['higherClassificationMap']] <- data.frame(id=names(temp), name=do.call(c, unname(temp)), stringsAsFactors = FALSE)
+      tt[[i]][['higherClassificationMap']] <- data.frame(id = names(temp), name = do.call(c, unname(temp)), stringsAsFactors = FALSE)
     }
     out <- lapply(tt, function(x) x[names(x) %in% toget])
     df <- do.call(rbind_fill, lapply(out, function(x){
@@ -62,10 +64,11 @@ name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL, start=
     hier <- sapply(tt, function(x) x[ names(x) %in% "higherClassificationMap" ])
     hier <- unname(hier)
     names(hier) <- vapply(tt, "[[", numeric(1), "key")
-    list(data=df, hierarchy=hier)
+    list(data = df, hierarchy = hier)
   } else {
     out <- lapply(tt, function(x) x[names(x) %in% toget])
-    do.call(rbind_fill, lapply(out, data.frame, stringsAsFactors = FALSE))
+    as.data.frame(data.table::rbindlist(out, use.names = TRUE, fill = TRUE))
+    #do.call(rbind_fill, lapply(out, data.frame, stringsAsFactors = FALSE))
   }
 }
 

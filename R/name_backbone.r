@@ -48,24 +48,26 @@
 #'
 #' # Pass on httr options
 #' library('httr')
-#' name_backbone(name='Oenante', config=timeout(1))
+#' x <- name_backbone(name='Oenante', config=progress())
 #' }
 
 name_backbone <- function(name, rank=NULL, kingdom=NULL, phylum=NULL, class=NULL,
   order=NULL, family=NULL, genus=NULL, strict=FALSE, verbose=FALSE,
-  start=NULL, limit=100, ...)
-{
+  start=NULL, limit=100, ...) {
+
   url <- paste0(gbif_base(), '/species/match')
   args <- rgbif_compact(list(name=name, rank=rank, kingdom=kingdom, phylum=phylum,
                        class=class, order=order, family=family, genus=genus,
                        strict=strict, verbose=verbose, offset=start, limit=limit))
   tt <- gbif_GET(url, args, FALSE, ...)
-  if(verbose){
-    alt <- do.call(rbind_fill, lapply(tt$alternatives, backbone_parser))
-    dat <- data.frame(tt[!names(tt) %in% c("alternatives","note")], stringsAsFactors=FALSE)
-    structure(list(data=dat, alternatives=alt), note=tt$note)
-  } else
-  {
-    structure(tt[!names(tt) %in% c("alternatives","note")], note=tt$note)
+  if (verbose) {
+    alt <- as.data.frame(
+      data.table::rbindlist(
+        lapply(tt$alternatives, function(x) lapply(x, function(x) if (length(x) == 0) NA else x)),
+        use.names = TRUE, fill = TRUE))
+    dat <- data.frame(tt[!names(tt) %in% c("alternatives", "note")], stringsAsFactors = FALSE)
+    structure(list(data = dat, alternatives = alt), note = tt$note)
+  } else {
+    structure(tt[!names(tt) %in% c("alternatives", "note")], note = tt$note)
   }
 }

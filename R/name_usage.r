@@ -126,9 +126,13 @@ name_usage_parse <- function(x, y) {
   many <- "parents"
   if (has_meta(x) || y %in% many) {
     if (y %in% many) {
-      do.call(rbind_fill, lapply(x, nameusageparser))
+      # do.call(rbind_fill, lapply(x, nameusageparser))
+      as.data.frame(data.table::rbindlist(x, use.names = TRUE, fill = TRUE))
     } else {
-      do.call(rbind_fill, lapply(x$results, nameusageparser))
+      as.data.frame(
+        data.table::rbindlist(
+          lapply(x$results, function(x) lapply(x, function(x) if (length(x) == 0) NA else x)),
+          use.names = TRUE, fill = TRUE))
     }
   } else {
     nameusageparser(x)

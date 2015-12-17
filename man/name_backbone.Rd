@@ -76,7 +76,7 @@ name_backbone(name='Oenante')
 
 # Pass on httr options
 library('httr')
-name_backbone(name='Oenante', config=timeout(1))
+x <- name_backbone(name='Oenante', config=progress())
 }
 }
 \references{
