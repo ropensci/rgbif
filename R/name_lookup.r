@@ -112,7 +112,12 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
 
   # actual data
   if (!verbose) {
-    data <- do.call(rbind_fill, lapply(tt$results, namelkupparser))
+    # data <- do.call(rbind_fill, lapply(tt$results, namelkupparser))
+    data <- as.data.frame(
+      data.table::rbindlist(
+        lapply(tt$results, namelkupcleaner),
+        use.names = TRUE, fill = TRUE))
+    if (limit > 0) data <- movecols(data, c('key', 'scientificName'))
   } else {
     data <- tt$results
   }

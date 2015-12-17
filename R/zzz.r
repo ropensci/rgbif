@@ -289,6 +289,21 @@ namelkupparser <- function(x){
   movecols(df, c('key', 'scientificName'))
 }
 
+namelkupcleaner <- function(x){
+  tmp <- x[ !names(x) %in% c("descriptions", "vernacularNames", "higherClassificationMap") ]
+  lapply(tmp, function(x) {
+    if (length(x) == 0) {
+      NA
+    } else if (length(x) > 1 || is(x, "list")) {
+      paste0(x, collapse = ", ")
+    } else {
+      x
+    }
+  })
+  # df <- data.frame(tmp, stringsAsFactors = FALSE)
+  # movecols(df, c('key', 'scientificName'))
+}
+
 nameusageparser <- function(z){
   tomove <- c('key', 'scientificName')
   tmp <- lapply(z, function(y) {
