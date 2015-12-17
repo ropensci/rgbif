@@ -83,7 +83,7 @@ test_that("name_usage synonyms route works", {
   expect_is(rte5a, "list")
   expect_is(rte5$meta, "data.frame")
   expect_is(rte5a$meta, "data.frame")
-  expect_null(rte5$data)
+  expect_equal(NROW(rte5$data), 0)
   expect_is(rte5a$data, "data.frame")
 })
 
@@ -167,9 +167,9 @@ test_that("name_usage typeSpecimens route works", {
   expect_is(rte12a, "list")
   expect_is(rte12$meta, "data.frame")
   expect_is(rte12a$meta, "data.frame")
-  expect_null(rte12$data)
+  expect_equal(NROW(rte12$data), 0)
   # this used to be up, seems to be down now, comment on 2015-12-04
-  expect_null(rte12a$data)
+  expect_equal(NROW(rte12a$data), 0)
 })
 
 test_that("name_usage fails correctly", {
