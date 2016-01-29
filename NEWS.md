@@ -1,3 +1,19 @@
+rgbif 0.9.2
+===========
+
+### NEW FEATURES
+
+* New function `occ_data()` - its primary purpose to perform faster data requests. Whereas 
+`occ_search()` gives you lots of data, including taxonomic hierarchies and media records,
+`occ_data()` only gives occurrence data. (#190)
+
+### MINOR IMPROVEMENTS
+
+* Replaced `XML` with `xml2` (#192)
+* Speed ups to the following functions due to use of `data.table::rbindlist()` for 
+fast list to data.frame coercion: `name_lookup()`, `name_backbone()`, `name_suggest()`,
+`name_usage()`, and `parsenames()`
+
 rgbif 0.9.0
 ===============
 

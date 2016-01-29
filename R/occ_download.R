@@ -149,7 +149,8 @@ parse_args <- function(x){
   tmp <- strsplit(x, "\\s")[[1]]
   type <- operator_lkup[[ tmp[2] ]]
   key <- key_lkup[[ tmp[1] ]]
-  list(type = unbox(type), key = unbox(key), value = unbox(tmp[3]))
+  value <- paste0(tmp[3:length(tmp)], collapse = " ")
+  list(type = unbox(type), key = unbox(key), value = unbox(value))
 }
 
 operator_lkup <- list(`=` = 'equals', `&` = 'and', `|` = 'or', `<` = 'lessThan',
