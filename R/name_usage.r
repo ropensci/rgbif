@@ -85,13 +85,13 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL, datasetKe
   # select output
   return <- match.arg(return, c('meta','data','all'))
   switch(return,
-         meta = get_meta(out),
+         meta = get_meta_nu(out),
          data = name_usage_parse(out),
-         all = list(meta = get_meta(out), data = name_usage_parse(out, data))
+         all = list(meta = get_meta_nu(out), data = name_usage_parse(out, data))
   )
 }
 
-get_meta <- function(x) {
+get_meta_nu <- function(x) {
   if (has_meta(x)) data.frame(x[c('offset','limit','endOfRecords')], stringsAsFactors = FALSE) else NA
 }
 
@@ -127,14 +127,16 @@ name_usage_parse <- function(x, y) {
   if (has_meta(x) || y %in% many) {
     if (y %in% many) {
       # do.call(rbind_fill, lapply(x, nameusageparser))
-      as.data.frame(data.table::rbindlist(x, use.names = TRUE, fill = TRUE))
+      (outtt <- setDF(data.table::rbindlist(lapply(x, no_zero), use.names = TRUE, fill = TRUE)))
     } else {
-      as.data.frame(
+      (outtt <- setDF(
         data.table::rbindlist(
           lapply(x$results, function(x) lapply(x, function(x) if (length(x) == 0) NA else x)),
-          use.names = TRUE, fill = TRUE))
+          use.names = TRUE, fill = TRUE)))
     }
   } else {
     nameusageparser(x)
   }
 }
+
+no_zero <- function(x) Filter(function(z) length(z) != 0, x)
