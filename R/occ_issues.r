@@ -115,11 +115,18 @@ mutate_iss <- function(w){
 
 split_iss <- function(m){
   unq <- unique(unlist(strsplit(m$issues, split = ",")))
-  df <- data.frame(rbindlist(lapply(strsplit(m$issues, split = ","), function(b) { v <- unq %in% b; data.frame(rbind(ifelse(v, "y", "n")), stringsAsFactors = FALSE) } )), stringsAsFactors = FALSE)
+  df <- data.table::setDF(
+    data.table::rbindlist(
+      lapply(strsplit(m$issues, split = ","), function(b) {
+        v <- unq %in% b
+        data.frame(rbind(ifelse(v, "y", "n")), stringsAsFactors = FALSE)
+      })
+    )
+  )
   names(df) <- unq
   m$issues <- NULL
   first <- c('name','key','decimalLatitude','decimalLongitude')
-  data.frame(m[,first], df, m[,!names(m) %in% first], stringsAsFactors = FALSE)
+  data.frame(m[, first], df, m[, !names(m) %in% first], stringsAsFactors = FALSE)
 }
 
 parse_input <- function(...) {

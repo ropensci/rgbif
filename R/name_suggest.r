@@ -67,8 +67,8 @@ name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL, start=
     list(data = df, hierarchy = hier)
   } else {
     out <- lapply(tt, function(x) x[names(x) %in% toget])
-    as.data.frame(data.table::rbindlist(out, use.names = TRUE, fill = TRUE))
-    #do.call(rbind_fill, lapply(out, data.frame, stringsAsFactors = FALSE))
+    x <- data.table::setDF(data.table::rbindlist(out, use.names = TRUE, fill = TRUE))
+    x
   }
 }
 

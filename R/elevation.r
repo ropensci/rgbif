@@ -78,7 +78,7 @@ elevation <- function(input=NULL, latitude=NULL, longitude=NULL, latlong=NULL, k
       df <- data.frame(elevation = sapply(out$results, '[[', 'elevation'), stringsAsFactors = FALSE)
       outout[[i]] <- df
     }
-    datdf <- data.frame(rbindlist(outout), stringsAsFactors = FALSE)
+    datdf <- setDF(rbindlist(outout))
     return( cbind(x, datdf) )
   }
 
@@ -94,9 +94,9 @@ elevation <- function(input=NULL, latitude=NULL, longitude=NULL, latlong=NULL, k
     dat <- data.frame(latitude = latitude, longitude = longitude, stringsAsFactors = FALSE)
     getdata(dat)
   } else {
-    dat <- data.frame(rbindlist(
+    dat <- setDF(rbindlist(
       lapply(latlong, function(x) data.frame(t(x)))
-    ), stringsAsFactors = FALSE)
+    ))
     names(dat) <- c("latitude","longitude")
     getdata(dat)
   }

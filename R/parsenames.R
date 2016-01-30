@@ -31,5 +31,5 @@ parsenames <- function(scientificname, ...) {
   stop_for_status(tt)
   stopifnot(tt$headers$`content-type` == 'application/json')
   res <- jsonlite::fromJSON(c_utf8(tt), FALSE)
-  as.data.frame(data.table::rbindlist(res, fill = TRUE, use.names = TRUE))
+  (x <- data.table::setDF(data.table::rbindlist(res, fill = TRUE, use.names = TRUE)))
 }

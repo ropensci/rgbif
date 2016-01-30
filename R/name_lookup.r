@@ -112,7 +112,7 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
 
   # actual data
   if (!verbose) {
-    data <- as.data.frame(
+    data <- data.table::setDF(
       data.table::rbindlist(
         lapply(tt$results, namelkupcleaner),
         use.names = TRUE, fill = TRUE))

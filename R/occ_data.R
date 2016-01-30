@@ -80,7 +80,7 @@ occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publishin
       data <- paste("no data found, try a different search")
     } else {
       data <- lapply(data, clean_data)
-      data <- as.data.frame(data.table::rbindlist(data, use.names = TRUE, fill = TRUE))
+      data <- data.table::setDF(data.table::rbindlist(data, use.names = TRUE, fill = TRUE))
     }
 
     list(meta = meta, data = data)
