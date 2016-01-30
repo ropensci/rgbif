@@ -123,9 +123,9 @@ rg_POST <- function(url, req, user, pwd, callopts) {
     authenticate(user = user, password = pwd),
     callopts), body = jsonlite::toJSON(req),
     make_rgbif_ua())
-  if (tmp$status_code > 203) stop(content(tmp, as = "text"), call. = FALSE)
+  if (tmp$status_code > 203) stop(c_utf8(tmp), call. = FALSE)
   stopifnot(tmp$header$`content-type` == 'application/json')
-  content(tmp, as = "text")
+  c_utf8(tmp)
 }
 
 process_keyval <- function(args, type) {

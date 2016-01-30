@@ -30,7 +30,6 @@ parsenames <- function(scientificname, ...) {
              body = jsonlite::toJSON(scientificname), make_rgbif_ua())
   stop_for_status(tt)
   stopifnot(tt$headers$`content-type` == 'application/json')
-  temp <- content(tt, as = 'text', encoding = "UTF-8")
-  res <- jsonlite::fromJSON(temp, FALSE)
+  res <- jsonlite::fromJSON(c_utf8(tt), FALSE)
   as.data.frame(data.table::rbindlist(res, fill = TRUE, use.names = TRUE))
 }

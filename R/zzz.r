@@ -315,15 +315,14 @@ gbif_GET <- function(url, args, parse=FALSE, ...){
     stop(mssg, call. = FALSE)
   }
   stopifnot(temp$headers$`content-type` == 'application/json')
-  res <- content(temp, as = 'text', encoding = "UTF-8")
-  jsonlite::fromJSON(res, parse)
+  jsonlite::fromJSON(c_utf8(temp), parse)
 }
 
 gbif_GET_content <- function(url, args, ...) {
   temp <- GET(url, query = cn(args), make_rgbif_ua(), ...)
-  if (temp$status_code > 200) warning(content(temp, as = "text"))
+  if (temp$status_code > 200) warning(c_utf8(temp), call. = FALSE)
   stopifnot(temp$headers$`content-type` == 'application/json')
-  content(temp, as = 'text', encoding = "UTF-8")
+  c_utf8(temp)
 }
 
 # other helpers --------------------
@@ -350,3 +349,5 @@ movecols <- function(x, cols){
   other <- names(x)[ !names(x) %in% cols ]
   x[ , c(cols, other) ]
 }
+
+c_utf8 <- function(x) content(x, "text", encoding = "UTF-8")

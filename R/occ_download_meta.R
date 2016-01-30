@@ -14,9 +14,9 @@ occ_download_meta <- function(key, ...) {
   stopifnot(!is.null(key))
   url <- sprintf('http://api.gbif.org/v1/occurrence/download/%s', key)
   tmp <- GET(url, make_rgbif_ua(), ...)
-  if (tmp$status_code > 203) stop(content(tmp, as = "text"), call. = FALSE)
+  if (tmp$status_code > 203) stop(c_utf8(tmp), call. = FALSE)
   stopifnot(tmp$header$`content-type` == 'application/json')
-  tt <- content(tmp, as = "text")
+  tt <- c_utf8(tmp)
   structure(jsonlite::fromJSON(tt, FALSE), class = "occ_download_meta")
 }
 

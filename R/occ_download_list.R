@@ -27,7 +27,7 @@ occ_download_list <- function(user=getOption("gbif_user"), pwd=getOption("gbif_p
     list(...)$config),
     make_rgbif_ua()
   )
-  tt <- content(res, as = "text")
+  tt <- c_utf8(res)
   out <- jsonlite::fromJSON(tt)
   out$results$size <- getsize(out$results$size)
   list(

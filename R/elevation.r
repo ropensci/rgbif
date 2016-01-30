@@ -72,7 +72,7 @@ elevation <- function(input=NULL, latitude=NULL, longitude=NULL, latlong=NULL, k
       tt <- GET(url, query = args, make_rgbif_ua(), ...)
       stop_for_status(tt)
       stopifnot(tt$headers$`content-type` == 'application/json; charset=UTF-8')
-      res <- content(tt, as = 'text', encoding = "UTF-8")
+      res <- c_utf8(tt)
       out <- jsonlite::fromJSON(res, FALSE)
 
       df <- data.frame(elevation = sapply(out$results, '[[', 'elevation'), stringsAsFactors = FALSE)
