@@ -306,11 +306,11 @@ gbif_GET <- function(url, args, parse=FALSE, ...){
 
   if (temp$status_code == 204) stop("Status: 204 - not found", call. = FALSE)
   if (temp$status_code > 200) {
-    mssg <- content(temp)
-    if (is(mssg, "HTMLInternalDocument")) {
+    mssg <- c_utf8(temp)
+    if (grepl("html", mssg)) {
       stop("500 - Server error", call. = FALSE)
     }
-    if (length(mssg) == 0) mssg <- http_status(temp)$message
+    if (length(mssg) == 0 || nchar(mssg) == 0) mssg <- http_status(temp)$message
     if (temp$status_code == 503) mssg <- http_status(temp)$message
     stop(mssg, call. = FALSE)
   }
