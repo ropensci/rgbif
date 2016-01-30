@@ -9,19 +9,16 @@ Description: A programmatic interface to the Web Service methods
     occurrence records.
 Version: 0.9.1.9991
 License: MIT + file LICENSE
-Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
-    email = "myrmecocystus@gmail.com"),
-    person("Karthik", "Ram", role = "aut",
-    email = "karthik.ram@gmail.com"),
-    person("Vijay", "Barve", role = "aut",
-    email = "vijay.barve@gmail.com"),
-    person("Dan", "Mcglinn", role = "aut",
-    email = "danmcglinn@gmail.com"))
+Authors@R: c(
+    person("Scott", "Chamberlain", role = c("aut", "cre"), email = "myrmecocystus@gmail.com"),
+    person("Karthik", "Ram", role = "aut", email = "karthik.ram@gmail.com"),
+    person("Vijay", "Barve", role = "aut", email = "vijay.barve@gmail.com"),
+    person("Dan", "Mcglinn", role = "aut", email = "danmcglinn@gmail.com")
+    )
 URL: https://github.com/ropensci/rgbif
 BugReports: https://github.com/ropensci/rgbif/issues
 LazyData: true
 VignetteBuilder: knitr
-Roxygen: list(wrap = FALSE)
 Imports:
     methods,
     utils,
@@ -36,7 +33,6 @@ Imports:
     V8,
     oai
 Suggests:
-    roxygen2,
     testthat,
     knitr,
     reshape2,

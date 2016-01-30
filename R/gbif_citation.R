@@ -103,11 +103,11 @@ gbif_citation.occ_download_get <- function(x) {
 }
 
 get_cit_rights <- function(x) {
-  xml <- read_xml(x)
+  xml <- xml2::read_xml(x)
   key <- gsub("\\..+", "", basename(x))
-  rights <- xml_text(xml_find_all(xml, "//intellectualRights"))
-  title <- xml_text(xml_find_all(xml, "//title"))
-  citation <- xml_text(xml_find_all(xml, "//citation"))
+  rights <- xml2::xml_text(xml2::xml_find_all(xml, "//intellectualRights"))
+  title <- xml2::xml_text(xml2::xml_find_all(xml, "//title"))
+  citation <- xml2::xml_text(xml2::xml_find_all(xml, "//citation"))
   cit <- list(key = key, title = title, text = citation,
               accessed = paste0("Accessed from R via rgbif (https://github.com/ropensci/rgbif) on ", Sys.Date()))
   cit$citation <- paste(cit$text, cit$accessed, sep = ". ")
