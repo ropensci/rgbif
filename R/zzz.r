@@ -343,7 +343,13 @@ strextract <- function(str, pattern) regmatches(str, regexpr(pattern, str))
 
 strtrim <- function(str) gsub("^\\s+|\\s+$", "", str)
 
-move_col <- function(x, y) x[ c(y, names(x)[-grep(y, names(x))]) ]
+move_col <- function(x, y) {
+  if (y %in% names(x)) {
+    x[ c(y, names(x)[-grep(y, names(x))]) ]
+  } else {
+    x
+  }
+}
 
 movecols <- function(x, cols){
   other <- names(x)[ !names(x) %in% cols ]
