@@ -73,8 +73,8 @@
 #' @param continent Continent. One of africa, antarctica, asia, europe, north_america
 #'    (North America includes the Caribbean and reachies down and includes Panama), oceania,
 #'    or south_america
-#' @param mediatype Media type. Default is NULL, so no filtering on mediatype. Options:
-#'    NULL, 'MovingImage', 'Sound', and 'StillImage'.``
+#' @param mediaType Media type. Default is NULL, so no filtering on mediatype. Options:
+#'    NULL, 'MovingImage', 'Sound', and 'StillImage'.
 #' @return A data.frame or list
 #' @details
 #' Note that you can pass in a vector to one of taxonkey, datasetKey, and

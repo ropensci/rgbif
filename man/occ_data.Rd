@@ -117,6 +117,9 @@ Details. Issues passed to this parameter filter results by the issue.}
 
 \item{search}{Query terms. The value for this parameter can be a simple word or a phrase.}
 
+\item{mediaType}{Media type. Default is NULL, so no filtering on mediatype. Options:
+NULL, 'MovingImage', 'Sound', and 'StillImage'.}
+
 \item{limit}{Number of records to return. Default: 500. Note that the per request maximum is
 300, but since we set it at 500 for the function, we do two requests to get you the 500
 records (if there are that many). Note that there is a hard maximum of 200,000, which is
@@ -129,9 +132,6 @@ parameter}
 \item{...}{Further named parameters, such as \code{query}, \code{path}, etc, passed on to
 \code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will
 be combined with \code{\link[httr]{config}}.}
-
-\item{mediatype}{Media type. Default is NULL, so no filtering on mediatype. Options:
-NULL, 'MovingImage', 'Sound', and 'StillImage'.``}
 }
 \value{
 A data.frame or list
