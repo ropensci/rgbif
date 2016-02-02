@@ -12,7 +12,15 @@ rgbif 0.9.2
 * Replaced `XML` with `xml2` (#192)
 * Speed ups to the following functions due to use of `data.table::rbindlist()` for 
 fast list to data.frame coercion: `name_lookup()`, `name_backbone()`, `name_suggest()`,
-`name_usage()`, and `parsenames()`
+`name_usage()`, and `parsenames()` (#191)
+* Changes to `httr` usage to comply with changes in `httr >= v1.1.0`: now setting 
+encoding explicitly to `UTF-8` and parsing all data manually, using the internal 
+function `function(x) content(x, "text", encoding = "UTF-8")` (#195)
+
+### BUG FIXES
+
+* Fix to internal function `move_col()` to not fail on fields that don't exist.
+Was failing sometimes when no latitude or longitude columns were returned. (#196)
 
 rgbif 0.9.0
 ===============
