@@ -159,9 +159,9 @@
 #' occ_search(continent = 'antarctica', return = 'meta')
 #'
 #' # Search for occurrences with images
-#' occ_search(mediatype = 'StillImage', return='media')
-#' occ_search(mediatype = 'MovingImage', return='media')
-#' occ_search(mediatype = 'Sound', return='media')
+#' occ_search(mediaType = 'StillImage', return='media')
+#' occ_search(mediaType = 'MovingImage', return='media')
+#' occ_search(mediaType = 'Sound', return='media')
 #'
 #' # Query based on issues - see Details for options
 #' ## one issue

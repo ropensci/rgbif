@@ -13,7 +13,7 @@ occ_data(taxonKey = NULL, scientificName = NULL, country = NULL,
   decimalLongitude = NULL, elevation = NULL, depth = NULL,
   institutionCode = NULL, collectionCode = NULL,
   hasGeospatialIssue = NULL, issue = NULL, search = NULL,
-  mediatype = NULL, limit = 500, start = 0, ...)
+  mediaType = NULL, limit = 500, start = 0, ...)
 }
 \arguments{
 \item{taxonKey}{A taxon key from the GBIF backbone. All included and synonym taxa
@@ -117,9 +117,6 @@ Details. Issues passed to this parameter filter results by the issue.}
 
 \item{search}{Query terms. The value for this parameter can be a simple word or a phrase.}
 
-\item{mediatype}{Media type. Default is NULL, so no filtering on mediatype. Options:
-NULL, 'MovingImage', 'Sound', and 'StillImage'.``}
-
 \item{limit}{Number of records to return. Default: 500. Note that the per request maximum is
 300, but since we set it at 500 for the function, we do two requests to get you the 500
 records (if there are that many). Note that there is a hard maximum of 200,000, which is
@@ -132,6 +129,9 @@ parameter}
 \item{...}{Further named parameters, such as \code{query}, \code{path}, etc, passed on to
 \code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will
 be combined with \code{\link[httr]{config}}.}
+
+\item{mediatype}{Media type. Default is NULL, so no filtering on mediatype. Options:
+NULL, 'MovingImage', 'Sound', and 'StillImage'.``}
 }
 \value{
 A data.frame or list
@@ -319,8 +319,8 @@ occ_data(recordedBy=c("smith","BJ Stacey"), limit=20)
 # Pass in curl options for extra fun
 library('httr')
 occ_data(taxonKey=key, limit=20, config=verbose())
-# occ_data(taxonKey=key, limit=20, config=progress())
-# occ_data(taxonKey=key, limit=20, config=timeout(1))
+x <- occ_data(taxonKey=key, limit=50, config=progress())
+# occ_data(taxonKey=key, limit=20, config=timeout(0.01))
 
 # Search for many species
 splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
@@ -407,6 +407,11 @@ head(occ_data(recordNumber = 1)$data[,c('name','recordNumber','recordedBy')])
 ## The lastInterpreted parameter accepts ISO 8601 format dates, including
 ## yyyy, yyyy-MM, yyyy-MM-dd, or MM-dd. Range queries are accepted for lastInterpreted
 occ_data(lastInterpreted = '2015-09-02')
+
+# Search for occurrences with images
+occ_data(mediaType = 'StillImage')
+occ_data(mediaType = 'MovingImage')
+occ_data(mediaType = 'Sound')
 
 # Search by continent
 ## One of africa, antarctica, asia, europe, north_america, oceania, or south_america

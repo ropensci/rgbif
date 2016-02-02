@@ -17,7 +17,7 @@ occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publishin
   geometry=NULL, recordedBy=NULL, basisOfRecord=NULL, datasetKey=NULL, eventDate=NULL,
   catalogNumber=NULL, year=NULL, month=NULL, decimalLatitude=NULL, decimalLongitude=NULL,
   elevation=NULL, depth=NULL, institutionCode=NULL, collectionCode=NULL,
-  hasGeospatialIssue=NULL, issue=NULL, search=NULL, mediatype=NULL, limit=500, start=0, ...) {
+  hasGeospatialIssue=NULL, issue=NULL, search=NULL, mediaType=NULL, limit=500, start=0, ...) {
 
   geometry <- geometry_handler(geometry)
 
@@ -44,7 +44,7 @@ occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publishin
      year=year, month=month, decimalLatitude=decimalLatitude,
      decimalLongitude=decimalLongitude, elevation=elevation, depth=depth,
      institutionCode=institutionCode, collectionCode=collectionCode,
-     hasGeospatialIssue=hasGeospatialIssue, q=search, mediaType=mediatype,
+     hasGeospatialIssue=hasGeospatialIssue, q=search, mediaType=mediaType,
      limit=check_limit(as.integer(limit)), offset=check_limit(as.integer(start))))
     args <- c(args, parse_issues(issue))
     argscoll <<- args
@@ -92,7 +92,7 @@ occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publishin
                  publishingCountry=publishingCountry,recordNumber=recordNumber,
                  q=search,institutionCode=institutionCode,collectionCode=collectionCode,continent=continent,
                  decimalLatitude=decimalLatitude,decimalLongitude=decimalLongitude,depth=depth,year=year,
-                 typeStatus=typeStatus,lastInterpreted=lastInterpreted,mediatype=mediatype,
+                 typeStatus=typeStatus,lastInterpreted=lastInterpreted,mediaType=mediaType,
                  limit=limit)
   if (!any(sapply(params, length) > 0)) {
     stop(sprintf("At least one of the parmaters must have a value:\n%s", possparams()),
@@ -132,7 +132,7 @@ print.gbif_data <- function(x, ..., n = 10) {
     cat(rgbif_wrap(sprintf("Occ. returned [%s]", pastemax(x, "returned"))), "\n")
     cat(rgbif_wrap(sprintf("Args [%s]", pasteargs(x))), "\n")
     cat(sprintf("First 10 rows of data from %s\n\n", names(x)[1]))
-    if(is(x[[1]]$data, "data.frame")) trunc_mat(x[[1]]$data, n = n) else cat(x[[1]]$data)
+    if (is(x[[1]]$data, "data.frame")) trunc_mat(x[[1]]$data, n = n) else cat(x[[1]]$data)
   } else {
     if (is(x, "gbif_data")) x <- unclass(x)
     attr(x, "type") <- NULL

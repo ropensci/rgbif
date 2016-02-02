@@ -20,7 +20,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
   geometry=NULL, recordedBy=NULL, basisOfRecord=NULL, datasetKey=NULL, eventDate=NULL,
   catalogNumber=NULL, year=NULL, month=NULL, decimalLatitude=NULL, decimalLongitude=NULL,
   elevation=NULL, depth=NULL, institutionCode=NULL, collectionCode=NULL,
-  hasGeospatialIssue=NULL, issue=NULL, search=NULL, mediatype=NULL, limit=500, start=0,
+  hasGeospatialIssue=NULL, issue=NULL, search=NULL, mediaType=NULL, limit=500, start=0,
   fields = 'all', return='all', ...) {
 
   calls <- names(sapply(match.call(), deparse))[-1]
@@ -54,7 +54,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
       year=year, month=month, decimalLatitude=decimalLatitude,
       decimalLongitude=decimalLongitude, elevation=elevation, depth=depth,
       institutionCode=institutionCode, collectionCode=collectionCode,
-      hasGeospatialIssue=hasGeospatialIssue, q=search, mediaType=mediatype,
+      hasGeospatialIssue=hasGeospatialIssue, q=search, mediaType=mediaType,
       limit=check_limit(as.integer(limit)), offset=check_limit(as.integer(start))))
     args <- c(args, parse_issues(issue))
     argscoll <<- args
@@ -131,7 +131,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
     publishingCountry=publishingCountry,recordNumber=recordNumber,
     q=search,institutionCode=institutionCode,collectionCode=collectionCode,continent=continent,
     decimalLatitude=decimalLatitude,decimalLongitude=decimalLongitude,depth=depth,year=year,
-    typeStatus=typeStatus,lastInterpreted=lastInterpreted,mediatype=mediatype,
+    typeStatus=typeStatus,lastInterpreted=lastInterpreted,mediaType=mediaType,
     limit=limit)
   if (!any(sapply(params, length) > 0)) {
     stop(sprintf("At least one of the parmaters must have a value:\n%s", possparams()),

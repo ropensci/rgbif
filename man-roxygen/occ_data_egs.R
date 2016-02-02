@@ -42,8 +42,8 @@
 #' # Pass in curl options for extra fun
 #' library('httr')
 #' occ_data(taxonKey=key, limit=20, config=verbose())
-#' # occ_data(taxonKey=key, limit=20, config=progress())
-#' # occ_data(taxonKey=key, limit=20, config=timeout(1))
+#' x <- occ_data(taxonKey=key, limit=50, config=progress())
+#' # occ_data(taxonKey=key, limit=20, config=timeout(0.01))
 #'
 #' # Search for many species
 #' splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
@@ -130,6 +130,11 @@
 #' ## The lastInterpreted parameter accepts ISO 8601 format dates, including
 #' ## yyyy, yyyy-MM, yyyy-MM-dd, or MM-dd. Range queries are accepted for lastInterpreted
 #' occ_data(lastInterpreted = '2015-09-02')
+#'
+#' # Search for occurrences with images
+#' occ_data(mediaType = 'StillImage')
+#' occ_data(mediaType = 'MovingImage')
+#' occ_data(mediaType = 'Sound')
 #'
 #' # Search by continent
 #' ## One of africa, antarctica, asia, europe, north_america, oceania, or south_america

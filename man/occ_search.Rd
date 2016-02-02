@@ -14,7 +14,7 @@ occ_search(taxonKey = NULL, scientificName = NULL, country = NULL,
   decimalLongitude = NULL, elevation = NULL, depth = NULL,
   institutionCode = NULL, collectionCode = NULL,
   hasGeospatialIssue = NULL, issue = NULL, search = NULL,
-  mediatype = NULL, limit = 500, start = 0, fields = "all",
+  mediaType = NULL, limit = 500, start = 0, fields = "all",
   return = "all", ...)
 
 \method{print}{gbif}(x, ..., n = 10)
@@ -121,9 +121,6 @@ Details. Issues passed to this parameter filter results by the issue.}
 
 \item{search}{Query terms. The value for this parameter can be a simple word or a phrase.}
 
-\item{mediatype}{Media type. Default is NULL, so no filtering on mediatype. Options:
-NULL, 'MovingImage', 'Sound', and 'StillImage'.``}
-
 \item{limit}{Number of records to return. Default: 500. Note that the per request maximum is
 300, but since we set it at 500 for the function, we do two requests to get you the 500
 records (if there are that many). Note that there is a hard maximum of 200,000, which is
@@ -148,6 +145,9 @@ be combined with \code{\link[httr]{config}}.}
 \item{x}{Output from a call to occ_search}
 
 \item{n}{Number of rows of the data to print.}
+
+\item{mediatype}{Media type. Default is NULL, so no filtering on mediatype. Options:
+NULL, 'MovingImage', 'Sound', and 'StillImage'.``}
 }
 \value{
 A data.frame or list
@@ -446,9 +446,9 @@ occ_search(continent = 'oceania', return = 'meta')
 occ_search(continent = 'antarctica', return = 'meta')
 
 # Search for occurrences with images
-occ_search(mediatype = 'StillImage', return='media')
-occ_search(mediatype = 'MovingImage', return='media')
-occ_search(mediatype = 'Sound', return='media')
+occ_search(mediaType = 'StillImage', return='media')
+occ_search(mediaType = 'MovingImage', return='media')
+occ_search(mediaType = 'Sound', return='media')
 
 # Query based on issues - see Details for options
 ## one issue
