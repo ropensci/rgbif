@@ -37,7 +37,7 @@
 #' user_agent
 #' @importFrom xml2 read_xml xml_text xml_find_all
 #' @importFrom jsonlite toJSON fromJSON
-#' @importFrom oai id list_identifiers list_records list_metadataformats
+#' @importFrom oai id_entify list_identifiers list_records list_metadataformats
 #' list_sets get_records
 #' @name rgbif-package
 #' @aliases rgbif

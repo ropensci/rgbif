@@ -46,7 +46,7 @@
 #' gbif_oai_get_records(ids)
 #' }
 gbif_oai_identify <- function(...) {
-  as.list(oai::id(url = gboai(), ...))
+  as.list(oai::id_entify(url = gboai(), ...))
 }
 
 #' @export
