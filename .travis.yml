@@ -11,7 +11,7 @@ before_script:
   - ./travis-tool.sh bootstrap
   - ./travis-tool.sh install_deps
   - ./travis-tool.sh r_install maps scales colorspace
-  - ./travis-tool.sh install_github jimhester/covr ropensci/oai
+  - ./travis-tool.sh install_github jimhester/covr
 
 after_failure:
   - ./travis-tool.sh dump_logs

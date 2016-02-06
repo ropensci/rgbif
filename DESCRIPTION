@@ -31,7 +31,7 @@ Imports:
     magrittr,
     jsonlite (>= 0.9.16),
     V8,
-    oai (>= 0.2.0)
+    oai
 Suggests:
     testthat,
     knitr,
