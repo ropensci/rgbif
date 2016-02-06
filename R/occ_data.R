@@ -81,6 +81,7 @@ occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publishin
     } else {
       data <- lapply(data, clean_data)
       data <- data.table::setDF(data.table::rbindlist(data, use.names = TRUE, fill = TRUE))
+      data <- prune_result(data)
     }
 
     list(meta = meta, data = data)

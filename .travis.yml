@@ -1,19 +1,34 @@
-language: r
+language: c
+sudo: required
+dist: trusty
+script: ./travis-tool.sh run_tests
 
-before_install:
-- sudo apt-get install libv8-dev
+before_script:
+  - sudo apt-get --yes --force-yes update -qq
+  - sudo apt-get install -y gdal-bin libgdal-dev libgdal1-dev netcdf-bin libproj-dev libv8-dev
+  - curl -OL http://raw.github.com/craigcitro/r-travis/master/scripts/travis-tool.sh
+  - chmod 755 ./travis-tool.sh
+  - ./travis-tool.sh bootstrap
+  - ./travis-tool.sh install_deps
+  - ./travis-tool.sh r_install maps scales colorspace
+  - ./travis-tool.sh install_github jimhester/covr ropensci/oai
 
-r_packages:
-  - maps
-  - scales
-  - colorspace
-
-r_github_packages:
-  - jimhester/covr
+after_failure:
+  - ./travis-tool.sh dump_logs
 
 after_success:
   - Rscript -e 'covr::codecov()'
 
+env:
+   global:
+     - R_LIBS="http://cran.rstudio.com"
+     - R_BUILD_ARGS="--no-build-vignettes --no-manual"
+     - R_CHECK_ARGS="--no-build-vignettes --no-manual --as-cran"
+     - BOOTSTRAP_LATEX=""
+
 notifications:
+  email:
+    on_success: change
+    on_failure: change
   slack:
     secure: Y7ly6rxiG4EBAKKREFovZ1LPQp2ghrN7ThIfkMaQ1XCQLRV0D39a3Uuf1UigS6gpqrtaedXakbtZwG3CIhICILRRiQSZch3gGZUNMRkVrG/0wZDn7HwWOquTxPJEeH1AUlKYToxiI6rRqd/c3U4FwisKuIUHmvqDRA1NEtdiqJY=
