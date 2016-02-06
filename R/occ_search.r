@@ -117,7 +117,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
         media <- paste("no data found, try a different search")
       } else {
         data <- gbifparser(input = data, fields = fields)
-        dat2 <- ldfast(lapply(data, "[[", "data"))
+        dat2 <- prune_result(ldfast(lapply(data, "[[", "data")))
         hier2 <- unique(lapply(data, "[[", "hierarchy"))
         media <- unique(lapply(data, "[[", "media"))
       }
