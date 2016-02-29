@@ -1,13 +1,16 @@
 geometry_handler <- function(x) {
   if (!is.null(x)) {
-    if (!is.character(x)) {
-      x <- gbif_bbox2wkt(bbox = x)
-    }
-    if (nchar(x) > 1500) {
-      message("geometry is big, querying BBOX, then pruning results to polygon")
-      # set run time option so that we know to prune result once it returns
-      options(rgbif.geometry.original = x)
-      x <- gbif_bbox2wkt(bbox = gbif_wkt2bbox(x))
+
+    for (i in seq_along()) {
+      if (!is.character(x)) {
+        x <- gbif_bbox2wkt(bbox = x)
+      }
+      if (nchar(x) > 1500) {
+        message("geometry is big, querying BBOX, then pruning results to polygon")
+        # set run time option so that we know to prune result once it returns
+        options(rgbif.geometry.original = x)
+        x <- gbif_bbox2wkt(bbox = gbif_wkt2bbox(x))
+      }
     }
   }
   return(x)
