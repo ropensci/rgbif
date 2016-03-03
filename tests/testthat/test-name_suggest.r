@@ -25,7 +25,6 @@ test_that("name_suggest returns the correct", {
   expect_equal(names(d), c("key","canonicalName"))
 
   # value
-  expect_equal(a$key[[1]], 2435099)
   expect_equal(as.character(b$canonicalName[[1]]), "Puma")
   expect_equal(as.character(c$rank[[1]]), "GENUS")
 })
