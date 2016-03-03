@@ -1,7 +1,7 @@
 geometry_handler <- function(x) {
   if (!is.null(x)) {
 
-    for (i in seq_along()) {
+    for (i in seq_along(x)) {
       if (!is.character(x)) {
         x <- gbif_bbox2wkt(bbox = x)
       }
