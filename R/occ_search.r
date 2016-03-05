@@ -17,7 +17,8 @@
 
 occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publishingCountry=NULL,
   hasCoordinate=NULL, typeStatus=NULL, recordNumber=NULL, lastInterpreted=NULL, continent=NULL,
-  geometry=NULL, recordedBy=NULL, basisOfRecord=NULL, datasetKey=NULL, eventDate=NULL,
+  geometry=NULL, geom_big="asis", geom_size=40, geom_n=10, recordedBy=NULL, basisOfRecord=NULL,
+  datasetKey=NULL, eventDate=NULL,
   catalogNumber=NULL, year=NULL, month=NULL, decimalLatitude=NULL, decimalLongitude=NULL,
   elevation=NULL, depth=NULL, institutionCode=NULL, collectionCode=NULL,
   hasGeospatialIssue=NULL, issue=NULL, search=NULL, mediaType=NULL, limit=500, start=0,
@@ -29,7 +30,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
     stop("Parameter name changes: \n georeferenced -> hasCoordinate\n altitude -> elevation\n latitude -> decimalLatitude\n longitude - > decimalLongitude")
   }
 
-  geometry <- geometry_handler(geometry)
+  geometry <- geometry_handler(geometry, geom_big, geom_size, geom_n)
 
   url <- paste0(gbif_base(), '/occurrence/search')
 
@@ -190,7 +191,7 @@ print.gbif <- function(x, ..., n = 10) {
       cat(rgbif_wrap(sprintf("No. unique hierarchies [%s]", pastemax(x, "hier"))), "\n")
       cat(rgbif_wrap(sprintf("No. media records [%s]", pastemax(x, "media"))), "\n")
       cat(rgbif_wrap(sprintf("Args [%s]", pasteargs(x))), "\n")
-      cat(sprintf("First 10 rows of data from %s\n\n", names(x)[1]))
+      cat(sprintf("First 10 rows of data from %s\n\n", substring(names(x)[1], 1, 50)))
       if(is(x[[1]]$data, "data.frame")) trunc_mat(x[[1]]$data, n = n) else cat(x[[1]]$data)
     }
   } else {
@@ -204,8 +205,15 @@ print.gbif <- function(x, ..., n = 10) {
 pasteargs <- function(b){
   arrrgs <- attr(b, "args")
   arrrgs <- rgbif_compact(arrrgs)
-  tt <- list(); for(i in seq_along(arrrgs)){ tt[[i]] <- sprintf("%s=%s", names(arrrgs)[i],
-          if(length(arrrgs[[i]]) > 1) paste0(arrrgs[[i]], collapse = ",") else arrrgs[[i]]) }
+  tt <- list()
+  for (i in seq_along(arrrgs)) {
+    tt[[i]] <- sprintf("%s=%s", names(arrrgs)[i],
+                       if (length(arrrgs[[i]]) > 1) {
+                         substring(paste0(arrrgs[[i]], collapse = ","), 1, 100)
+                       } else {
+                         substring(arrrgs[[i]], 1, 100)
+                       })
+  }
   paste0(tt, collapse = ", ")
 }
 

@@ -72,9 +72,8 @@
 #' occ_data(geometry = wkts, limit=20)
 #'
 #' # Search on a long WKT string - too long for a GBIF search API request
-#' ## We internally convert your WKT string to a bounding box
-#' ##  then do the query
-#' ##  then clip the results down to just those in the original polygon
+#' ## By default, a very long WKT string will likely cause a request failure as
+#' ## GBIF only handles strings up to about 1500 characters long. You can leave as is, or
 #' ##  - Alternatively, you can choose to break up your polygon into many, and do a
 #' ##      data request on each piece, and the output is put back together (see below)
 #' ##  - Or, 2nd alternatively, you could use the GBIF download API
@@ -107,18 +106,28 @@
 #' 49.671505849335254,5.00177800655365 52.32557322466785,7.81427800655365 51.67627099802223,
 #' 7.81427800655365 54.5245591562317,10.97834050655365 51.89375191441792,10.97834050655365
 #' 55.43241335888528,13.26349675655365 52.53991761181831))"
-#' #### default if WKT too long: makes into bounding box
 #' wkt <- gsub("\n", " ", wkt)
-#' res <- occ_data(geometry = gsub("\n", " ", wkt))$data
-#' #### Or, use wkt_pieces = 3 (or any other number) to break it up into pieces
-#' (res <- occ_data(geometry = gsub("\n", " ", wkt, wkt_pieces = 3))$data)
 #'
+#' #### Default option with large WKT string fails
+#' # res <- occ_data(geometry = wkt)$data
+#'
+#' #### if WKT too long, with 'geom_handler=bbox': makes into bounding box
+#' res <- occ_data(geometry = wkt, geom_big = "bbox")$data
 #' library("rgeos")
 #' library("sp")
 #' wktsp <- readWKT(wkt)
 #' plot(wktsp)
 #' coordinates(res) <- ~decimalLongitude+decimalLatitude
 #' points(res)
+#'
+#' #### Or, use 'geom_handler=axe'
+#' (res <- occ_data(geometry = wkt, geom_big = "axe"))
+#' ##### manipulate essentially number of polygons that result, so number of requests
+#' ###### default geom_size is 40
+#' ###### fewer calls
+#' (res <- occ_data(geometry = wkt, geom_big = "axe", geom_size=50))
+#' ###### more calls
+#' (res <- occ_data(geometry = wkt, geom_big = "axe", geom_size=30))
 #'
 #' # Search on country
 #' occ_data(country='US', limit=20)

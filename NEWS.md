@@ -1,3 +1,13 @@
+rgbif 0.9.3
+===========
+
+### MINOR IMPROVEMENTS
+
+* xxx (#197)
+* xxxx (#199)
+* code tidying throughout the package
+
+
 rgbif 0.9.2
 ===========
 

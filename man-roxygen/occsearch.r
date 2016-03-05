@@ -55,6 +55,10 @@
 #'    Text (WKT) format. A WKT shape written as either POINT, LINESTRING, LINEARRING
 #'    or POLYGON. Example of a polygon: ((30.1 10.1, 20, 20 40, 40 40, 30.1 10.1))
 #'     would be queried as \url{http://bit.ly/1BzNwDq}. See also the section \strong{WKT} below.
+#' @param geom_big (character) One of "axe", "bbox", or "asis" (default). See Details.
+#' @param geom_size (integer) An integer indicating size of the cell. Default: 40. See Details.
+#' @param geom_n (integer) An integer indicating number of cells in each dimension. Default: 10.
+#' See Details.
 #' @param hasGeospatialIssue (logical) Includes/excludes occurrence records which contain spatial
 #'    issues (as determined in our record interpretation), i.e. \code{hasGeospatialIssue=TRUE}
 #'    returns only those records with spatial issues while \code{hasGeospatialIssue=FALSE} includes
@@ -114,22 +118,41 @@
 #'  \item 'LINEARRING' ???' - Not sure how to specify this. Anyone?
 #' }
 #'
-#' Note that long WKT strings are specially handled. If using \code{occ_search} or \code{occ_data}
-#' and your WKT string is longer than 1500 characters, we create a bounding box from the WKT,
-#' do the GBIF search with that bounding box, then prune the resulting data to only those
-#' occurrences in your original WKT string. There is a big caveat however. Because we create
-#' a bounding box from the WKT, and the \code{limit} parameter determines some subset of
-#' records to get, then when we prune the resulting data to the WKT, the number of records you
-#' get could be less than what you set with your \code{limit} parameter. However, you could set
-#' the limit to be high enough so that you get all records back found in that bounding box,
-#' then you'll get all the records available within the WKT.
+#' \bold{Long WKT:} Options for handling long WKT strings:
+#' Note that long WKT strings are specially handled when using \code{occ_search} or
+#' \code{occ_data}. Here are the three options for long WKT strings (> 1500 characters),
+#' set one of these three via the parameter \code{geom_big}:
+#' \itemize{
+#'  \item asis - the default setting. This means we don't do anything internally. That is,
+#'  we just pass on your WKT string just as we've done before in this package.
+#'  \item axe - this option uses the \pkg{geoaxe} package to chop up your WKT string in
+#'  to many polygons, which then leads to a separate data request for each polygon piece,
+#'  then we combine all dat back together to give to you. Note that if your WKT string
+#'  is not of type polygon, we drop back to \code{asis} as there's no way to chop up
+#'  linestrings, etc. This option will in most cases be slower than the other two options.
+#'  However, this polygon splitting approach won't have the problem of
+#'  the disconnect between how many records you want and what you actually get back as
+#'  with the bbox option.
 #'
-#' Another approach we hope to try in the future is to break up the given WKT polygon into
-#' many smaller polygons, where you can determine how many polygons, of what size, etc.
-#' So if WKT polygon turns into 5 smaller polygons, then we'd have to do 5 requests to GBIF.
-#' Thus, this process will likely in most cases be slower than the above process of querying
-#' on a bounding box. However, this polygon splitting approach won't have the problem of
-#' the disconnect between how many records you want and what you actually get back.
+#'  This method uses \code{\link[geoaxe]{chop}}, which uses \code{GridTopology} from
+#'  the \code{sp} package, which has two parameters \code{cellsize} and \code{cells.dim}
+#'  that we use to chop up polygons. You can tweak those parameters here by tweaking
+#'  \code{geom_size} and \code{geom_n}. \code{geom_size} seems to be more useful in
+#'  toggling the number of WKT strings you get back.
+#'
+#'  See \code{\link{wkt_parse}} to manually break make WKT bounding box from a larger WKT
+#'  string, or break a larger WKT string into many smaller ones.
+#'
+#'  \item bbox - this option checks whether your WKT string is longer than 1500 characters,
+#'  and if it is we create a bounding box from the WKT, do the GBIF search with that
+#'  bounding box, then prune the resulting data to only those occurrences in your original
+#'  WKT string. There is a big caveat however. Because we create a bounding box from the WKT,
+#'  and the \code{limit} parameter determines some subset of records to get, then when we
+#'  prune the resulting data to the WKT, the number of records you get could be less than
+#'  what you set with your \code{limit} parameter. However, you could set the limit to be
+#'  high enough so that you get all records back found in that bounding box, then you'll
+#'  get all the records available within the WKT.
+#' }
 #'
 #' \bold{Range queries:} A range query is as it sounds - you query on a range of values defined by
 #' a lower and upper limit. Do a range query by specifying the lower and upper limit in a vector

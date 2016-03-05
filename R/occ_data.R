@@ -14,12 +14,13 @@
 
 occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publishingCountry=NULL,
   hasCoordinate=NULL, typeStatus=NULL, recordNumber=NULL, lastInterpreted=NULL, continent=NULL,
-  geometry=NULL, recordedBy=NULL, basisOfRecord=NULL, datasetKey=NULL, eventDate=NULL,
+  geometry=NULL, geom_big="asis", geom_size=40, geom_n=10, recordedBy=NULL, basisOfRecord=NULL,
+  datasetKey=NULL, eventDate=NULL,
   catalogNumber=NULL, year=NULL, month=NULL, decimalLatitude=NULL, decimalLongitude=NULL,
   elevation=NULL, depth=NULL, institutionCode=NULL, collectionCode=NULL,
   hasGeospatialIssue=NULL, issue=NULL, search=NULL, mediaType=NULL, limit=500, start=0, ...) {
 
-  geometry <- geometry_handler(geometry)
+  geometry <- geometry_handler(geometry, geom_big, geom_size, geom_n)
 
   url <- paste0(gbif_base(), '/occurrence/search')
 
@@ -88,13 +89,11 @@ occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publishin
   }
 
   params <- list(taxonKey=taxonKey,scientificName=scientificName,datasetKey=datasetKey,
-                 catalogNumber=catalogNumber,
-                 recordedBy=recordedBy,geometry=geometry,country=country,
-                 publishingCountry=publishingCountry,recordNumber=recordNumber,
-                 q=search,institutionCode=institutionCode,collectionCode=collectionCode,continent=continent,
-                 decimalLatitude=decimalLatitude,decimalLongitude=decimalLongitude,depth=depth,year=year,
-                 typeStatus=typeStatus,lastInterpreted=lastInterpreted,mediaType=mediaType,
-                 limit=limit)
+      catalogNumber=catalogNumber, recordedBy=recordedBy,geometry=geometry,country=country,
+      publishingCountry=publishingCountry,recordNumber=recordNumber,
+      q=search,institutionCode=institutionCode,collectionCode=collectionCode,continent=continent,
+      decimalLatitude=decimalLatitude,decimalLongitude=decimalLongitude,depth=depth,year=year,
+      typeStatus=typeStatus,lastInterpreted=lastInterpreted,mediaType=mediaType, limit=limit)
   if (!any(sapply(params, length) > 0)) {
     stop(sprintf("At least one of the parmaters must have a value:\n%s", possparams()),
          call. = FALSE)
@@ -132,7 +131,7 @@ print.gbif_data <- function(x, ..., n = 10) {
     cat(rgbif_wrap(sprintf("Occ. found [%s]", pastemax(x))), "\n")
     cat(rgbif_wrap(sprintf("Occ. returned [%s]", pastemax(x, "returned"))), "\n")
     cat(rgbif_wrap(sprintf("Args [%s]", pasteargs(x))), "\n")
-    cat(sprintf("First 10 rows of data from %s\n\n", names(x)[1]))
+    cat(sprintf("First 10 rows of data from %s\n\n", substring(names(x)[1], 1, 50)))
     if (is(x[[1]]$data, "data.frame")) trunc_mat(x[[1]]$data, n = n) else cat(x[[1]]$data)
   } else {
     if (is(x, "gbif_data")) x <- unclass(x)
