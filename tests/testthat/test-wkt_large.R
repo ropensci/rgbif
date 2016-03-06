@@ -36,8 +36,11 @@ test_that("wkt is detected/parsed as planned", {
   expect_is(wkt, "character")
   expect_gt(nchar(wkt), 2000)
   expect_match(wkt, "POLYGON")
-  expect_message(geometry_handler(wkt),
+
+  expect_message(geometry_handler(wkt), NA)
+  expect_message(geometry_handler(wkt, geom_big = "bbox"),
                  "geometry is big, querying BBOX, then pruning results to polygon")
+
   expect_is(suppressMessages(geometry_handler(wkt)), "character")
   expect_match(suppressMessages(geometry_handler(wkt)), "POLYGON")
 
@@ -46,7 +49,7 @@ test_that("wkt is detected/parsed as planned", {
   expect_is(wkt, "character")
   expect_lt(nchar(wkt), 100)
   expect_match(wkt, "POLYGON")
-  expect_that(geometry_handler(wkt), not(shows_message()))
+  expect_message(geometry_handler(wkt), NA)
   expect_is(geometry_handler(wkt), "character")
   expect_match(geometry_handler(wkt), "POLYGON")
   expect_equal(geometry_handler(wkt), wkt)
@@ -55,7 +58,7 @@ test_that("wkt is detected/parsed as planned", {
   bbox <- c(-125.0,38.4,-121.8,40.9)
   expect_is(bbox, "numeric")
   expect_equal(length(bbox), 4)
-  expect_that(geometry_handler(bbox), not(shows_message()))
+  expect_message(geometry_handler(bbox), NA)
   expect_is(geometry_handler(bbox), "character")
   expect_match(geometry_handler(bbox), "POLYGON")
 })
@@ -63,7 +66,12 @@ test_that("wkt is detected/parsed as planned", {
 test_that("wkt is used correctly in querying GBIF - occ_data", {
   skip_on_cran()
 
-  res <- suppressMessages(occ_data(geometry = wkt, limit = 100))
+  # by default too large WKT will fail with 413, request entity too large
+  expect_error(occ_data(geometry = wkt, limit = 100),
+               "Request Entity Too Large")
+
+  # setting to bbox will work
+  res <- suppressMessages(occ_data(geometry = wkt, limit = 100, geom_big = "bbox"))
 
   # returns the correct class
   expect_is(res, "gbif_data")
@@ -77,7 +85,12 @@ test_that("wkt is used correctly in querying GBIF - occ_data", {
 test_that("wkt is used correctly in querying GBIF - occ_search", {
   skip_on_cran()
 
-  res <- suppressMessages(occ_search(geometry = wkt, limit = 100))
+  # by default too large WKT will fail with 413, request entity too large
+  expect_error(occ_search(geometry = wkt, limit = 100),
+               "Request Entity Too Large")
+
+  # setting to bbox will work
+  res <- suppressMessages(occ_search(geometry = wkt, limit = 100, geom_big = "bbox"))
 
   # returns the correct class
   expect_is(res, "gbif")

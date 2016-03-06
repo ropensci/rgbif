@@ -130,7 +130,17 @@ name_usage_parse <- function(x, y) {
     } else {
       (outtt <- data.table::setDF(
         data.table::rbindlist(
-          lapply(x$results, function(x) lapply(x, function(x) if (length(x) == 0) NA else x)),
+          lapply(x$results, function(x) {
+            lapply(x, function(x) {
+              if (length(x) == 0) {
+                NA
+              } else if (length(x) > 1) {
+                paste0(x, collapse = ",")
+              } else {
+                x
+              }
+            })
+          }),
           use.names = TRUE, fill = TRUE)))
     }
   } else {
