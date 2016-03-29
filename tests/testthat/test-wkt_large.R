@@ -45,14 +45,14 @@ test_that("wkt is detected/parsed as planned", {
   expect_match(suppressMessages(geometry_handler(wkt)), "POLYGON")
 
   # small wkt
-  wkt <- 'POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))'
-  expect_is(wkt, "character")
-  expect_lt(nchar(wkt), 100)
-  expect_match(wkt, "POLYGON")
-  expect_message(geometry_handler(wkt), NA)
-  expect_is(geometry_handler(wkt), "character")
-  expect_match(geometry_handler(wkt), "POLYGON")
-  expect_equal(geometry_handler(wkt), wkt)
+  wkt2 <- 'POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))'
+  expect_is(wkt2, "character")
+  expect_lt(nchar(wkt2), 100)
+  expect_match(wkt2, "POLYGON")
+  expect_message(geometry_handler(wkt2), NA)
+  expect_is(geometry_handler(wkt2), "character")
+  expect_match(geometry_handler(wkt2), "POLYGON")
+  expect_equal(geometry_handler(wkt2), wkt2)
 
   # bounding box
   bbox <- c(-125.0,38.4,-121.8,40.9)
