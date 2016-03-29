@@ -130,7 +130,7 @@ rg_POST <- function(url, req, user, pwd, callopts) {
 
 catch_err <- function(x) {
   if (httr::has_content(x)) {
-    c_utf8(tmp)
+    c_utf8(x)
   } else {
     httr::http_condition(x, "message")$message
   }
