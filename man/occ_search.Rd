@@ -8,11 +8,11 @@
 occ_search(taxonKey = NULL, scientificName = NULL, country = NULL,
   publishingCountry = NULL, hasCoordinate = NULL, typeStatus = NULL,
   recordNumber = NULL, lastInterpreted = NULL, continent = NULL,
-  geometry = NULL, recordedBy = NULL, basisOfRecord = NULL,
-  datasetKey = NULL, eventDate = NULL, catalogNumber = NULL,
-  year = NULL, month = NULL, decimalLatitude = NULL,
-  decimalLongitude = NULL, elevation = NULL, depth = NULL,
-  institutionCode = NULL, collectionCode = NULL,
+  geometry = NULL, geom_big = "asis", geom_size = 40, geom_n = 10,
+  recordedBy = NULL, basisOfRecord = NULL, datasetKey = NULL,
+  eventDate = NULL, catalogNumber = NULL, year = NULL, month = NULL,
+  decimalLatitude = NULL, decimalLongitude = NULL, elevation = NULL,
+  depth = NULL, institutionCode = NULL, collectionCode = NULL,
   hasGeospatialIssue = NULL, issue = NULL, search = NULL,
   mediaType = NULL, limit = 500, start = 0, fields = "all",
   return = "all", ...)
@@ -56,6 +56,13 @@ or south_america}
 Text (WKT) format. A WKT shape written as either POINT, LINESTRING, LINEARRING
 or POLYGON. Example of a polygon: ((30.1 10.1, 20, 20 40, 40 40, 30.1 10.1))
  would be queried as \url{http://bit.ly/1BzNwDq}. See also the section \strong{WKT} below.}
+
+\item{geom_big}{(character) One of "axe", "bbox", or "asis" (default). See Details.}
+
+\item{geom_size}{(integer) An integer indicating size of the cell. Default: 40. See Details.}
+
+\item{geom_n}{(integer) An integer indicating number of cells in each dimension. Default: 10.
+See Details.}
 
 \item{recordedBy}{The person who recorded the occurrence.}
 
@@ -193,22 +200,41 @@ first with any \code{name_*} functions, then pass that ID to the \code{taxonKey}
  \item 'LINEARRING' ???' - Not sure how to specify this. Anyone?
 }
 
-Note that long WKT strings are specially handled. If using \code{occ_search} or \code{occ_data}
-and your WKT string is longer than 1500 characters, we create a bounding box from the WKT,
-do the GBIF search with that bounding box, then prune the resulting data to only those
-occurrences in your original WKT string. There is a big caveat however. Because we create
-a bounding box from the WKT, and the \code{limit} parameter determines some subset of
-records to get, then when we prune the resulting data to the WKT, the number of records you
-get could be less than what you set with your \code{limit} parameter. However, you could set
-the limit to be high enough so that you get all records back found in that bounding box,
-then you'll get all the records available within the WKT.
+\bold{Long WKT:} Options for handling long WKT strings:
+Note that long WKT strings are specially handled when using \code{occ_search} or
+\code{occ_data}. Here are the three options for long WKT strings (> 1500 characters),
+set one of these three via the parameter \code{geom_big}:
+\itemize{
+ \item asis - the default setting. This means we don't do anything internally. That is,
+ we just pass on your WKT string just as we've done before in this package.
+ \item axe - this option uses the \pkg{geoaxe} package to chop up your WKT string in
+ to many polygons, which then leads to a separate data request for each polygon piece,
+ then we combine all dat back together to give to you. Note that if your WKT string
+ is not of type polygon, we drop back to \code{asis} as there's no way to chop up
+ linestrings, etc. This option will in most cases be slower than the other two options.
+ However, this polygon splitting approach won't have the problem of
+ the disconnect between how many records you want and what you actually get back as
+ with the bbox option.
 
-Another approach we hope to try in the future is to break up the given WKT polygon into
-many smaller polygons, where you can determine how many polygons, of what size, etc.
-So if WKT polygon turns into 5 smaller polygons, then we'd have to do 5 requests to GBIF.
-Thus, this process will likely in most cases be slower than the above process of querying
-on a bounding box. However, this polygon splitting approach won't have the problem of
-the disconnect between how many records you want and what you actually get back.
+ This method uses \code{\link[geoaxe]{chop}}, which uses \code{GridTopology} from
+ the \code{sp} package, which has two parameters \code{cellsize} and \code{cells.dim}
+ that we use to chop up polygons. You can tweak those parameters here by tweaking
+ \code{geom_size} and \code{geom_n}. \code{geom_size} seems to be more useful in
+ toggling the number of WKT strings you get back.
+
+ See \code{\link{wkt_parse}} to manually break make WKT bounding box from a larger WKT
+ string, or break a larger WKT string into many smaller ones.
+
+ \item bbox - this option checks whether your WKT string is longer than 1500 characters,
+ and if it is we create a bounding box from the WKT, do the GBIF search with that
+ bounding box, then prune the resulting data to only those occurrences in your original
+ WKT string. There is a big caveat however. Because we create a bounding box from the WKT,
+ and the \code{limit} parameter determines some subset of records to get, then when we
+ prune the resulting data to the WKT, the number of records you get could be less than
+ what you set with your \code{limit} parameter. However, you could set the limit to be
+ high enough so that you get all records back found in that bounding box, then you'll
+ get all the records available within the WKT.
+}
 
 \bold{Range queries:} A range query is as it sounds - you query on a range of values defined by
 a lower and upper limit. Do a range query by specifying the lower and upper limit in a vector
@@ -396,7 +422,8 @@ occ_search(geometry=c(-125.0,38.4,-121.8,40.9), limit=20)
 ## We internally convert your WKT string to a bounding box
 ##  then do the query
 ##  then clip the results down to just those in the original polygon
-##  - Alternatively, you could use the GBIF download API
+##  - Alternatively, you can set the parameter `geom_big="bbox"`
+##  - An additional alternative is to use the GBIF download API, see ?downloads
 wkt <- "POLYGON((13.26349675655365 52.53991761181831,18.36115300655365 54.11445544219924,
 21.87677800655365 53.80418956368524,24.68927800655365 54.217364774722455,28.20490300655365
 54.320018299365124,30.49005925655365 52.85948216284084,34.70880925655365 52.753220564427814,
@@ -427,14 +454,28 @@ wkt <- "POLYGON((13.26349675655365 52.53991761181831,18.36115300655365 54.114455
 7.81427800655365 54.5245591562317,10.97834050655365 51.89375191441792,10.97834050655365
 55.43241335888528,13.26349675655365 52.53991761181831))"
 wkt <- gsub("\\n", " ", wkt)
-res <- occ_search(geometry = gsub("\\n", " ", wkt), return = "data")
 
+#### Default option with large WKT string fails
+# res <- occ_search(geometry = wkt)
+
+#### if WKT too long, with 'geom_big=bbox': makes into bounding box
+res <- occ_search(geometry = wkt, geom_big = "bbox")$data
 library("rgeos")
 library("sp")
 wktsp <- readWKT(wkt)
 plot(wktsp)
 coordinates(res) <- ~decimalLongitude+decimalLatitude
 points(res)
+
+#### Or, use 'geom_big=axe'
+(res <- occ_search(geometry = wkt, geom_big = "axe"))
+##### manipulate essentially number of polygons that result, so number of requests
+###### default geom_size is 40
+###### fewer calls
+(res <- occ_search(geometry = wkt, geom_big = "axe", geom_size=50))
+###### more calls
+(res <- occ_search(geometry = wkt, geom_big = "axe", geom_size=30))
+
 
 # Search on country
 occ_search(country='US', fields=c('name','country'), limit=20)

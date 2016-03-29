@@ -21,11 +21,6 @@ test_that("elevation", {
   expect_is(bb, "data.frame")
   expect_is(cc, "data.frame")
   expect_is(aa$elevation, "numeric")
-
-  expect_equal(NROW(bb), 20)
-  expect_equal(NCOL(bb), 3)
-  expect_equal(NROW(cc), 2)
-  expect_equal(NCOL(cc), 3)
 })
 
 test_that("fails correctly", {

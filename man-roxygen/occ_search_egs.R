@@ -90,7 +90,8 @@
 #' ## We internally convert your WKT string to a bounding box
 #' ##  then do the query
 #' ##  then clip the results down to just those in the original polygon
-#' ##  - Alternatively, you could use the GBIF download API
+#' ##  - Alternatively, you can set the parameter `geom_big="bbox"`
+#' ##  - An additional alternative is to use the GBIF download API, see ?downloads
 #' wkt <- "POLYGON((13.26349675655365 52.53991761181831,18.36115300655365 54.11445544219924,
 #' 21.87677800655365 53.80418956368524,24.68927800655365 54.217364774722455,28.20490300655365
 #' 54.320018299365124,30.49005925655365 52.85948216284084,34.70880925655365 52.753220564427814,
@@ -121,14 +122,28 @@
 #' 7.81427800655365 54.5245591562317,10.97834050655365 51.89375191441792,10.97834050655365
 #' 55.43241335888528,13.26349675655365 52.53991761181831))"
 #' wkt <- gsub("\n", " ", wkt)
-#' res <- occ_search(geometry = gsub("\n", " ", wkt), return = "data")
 #'
+#' #### Default option with large WKT string fails
+#' # res <- occ_search(geometry = wkt)
+#'
+#' #### if WKT too long, with 'geom_big=bbox': makes into bounding box
+#' res <- occ_search(geometry = wkt, geom_big = "bbox")$data
 #' library("rgeos")
 #' library("sp")
 #' wktsp <- readWKT(wkt)
 #' plot(wktsp)
 #' coordinates(res) <- ~decimalLongitude+decimalLatitude
 #' points(res)
+#'
+#' #### Or, use 'geom_big=axe'
+#' (res <- occ_search(geometry = wkt, geom_big = "axe"))
+#' ##### manipulate essentially number of polygons that result, so number of requests
+#' ###### default geom_size is 40
+#' ###### fewer calls
+#' (res <- occ_search(geometry = wkt, geom_big = "axe", geom_size=50))
+#' ###### more calls
+#' (res <- occ_search(geometry = wkt, geom_big = "axe", geom_size=30))
+#'
 #'
 #' # Search on country
 #' occ_search(country='US', fields=c('name','country'), limit=20)

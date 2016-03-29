@@ -43,7 +43,7 @@ test_that("occ_issues", {
   expect_false(any(grepl("issues", names(dd$data))))
   expect_true(any(grepl("gass84", names(dd$data))))
   expect_false(any(grepl("issues", names(ee$data))))
-  expect_true(any(grepl("gass84", names(ee$data))))
+  expect_true(any(grepl("cdreps", names(ee$data))))
   expect_true(any(grepl("gass84", names(ff$data))))
   expect_false(any(grepl("issues", names(ff$data))))
   expect_false(any(grepl("issues", names(hh$data))))

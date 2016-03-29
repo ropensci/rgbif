@@ -66,11 +66,17 @@
 #' ## or using bounding box, converted to WKT internally
 #' occ_data(geometry=c(-125.0,38.4,-121.8,40.9), limit=20)
 #'
+#' ## you can seaerch on many geometry objects
+#' wkts <- c('POLYGON((-102.2 46.0,-93.9 46.0,-93.9 43.7,-102.2 43.7,-102.2 46.0))',
+#' 'POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))')
+#' occ_data(geometry = wkts, limit=20)
+#'
 #' # Search on a long WKT string - too long for a GBIF search API request
-#' ## We internally convert your WKT string to a bounding box
-#' ##  then do the query
-#' ##  then clip the results down to just those in the original polygon
-#' ##  - Alternatively, you could use the GBIF download API
+#' ## By default, a very long WKT string will likely cause a request failure as
+#' ## GBIF only handles strings up to about 1500 characters long. You can leave as is, or
+#' ##  - Alternatively, you can choose to break up your polygon into many, and do a
+#' ##      data request on each piece, and the output is put back together (see below)
+#' ##  - Or, 2nd alternatively, you could use the GBIF download API
 #' wkt <- "POLYGON((13.26349675655365 52.53991761181831,18.36115300655365 54.11445544219924,
 #' 21.87677800655365 53.80418956368524,24.68927800655365 54.217364774722455,28.20490300655365
 #' 54.320018299365124,30.49005925655365 52.85948216284084,34.70880925655365 52.753220564427814,
@@ -101,14 +107,27 @@
 #' 7.81427800655365 54.5245591562317,10.97834050655365 51.89375191441792,10.97834050655365
 #' 55.43241335888528,13.26349675655365 52.53991761181831))"
 #' wkt <- gsub("\n", " ", wkt)
-#' res <- occ_data(geometry = gsub("\n", " ", wkt))$data
 #'
+#' #### Default option with large WKT string fails
+#' # res <- occ_data(geometry = wkt)$data
+#'
+#' #### if WKT too long, with 'geom_big=bbox': makes into bounding box
+#' res <- occ_data(geometry = wkt, geom_big = "bbox")$data
 #' library("rgeos")
 #' library("sp")
 #' wktsp <- readWKT(wkt)
 #' plot(wktsp)
 #' coordinates(res) <- ~decimalLongitude+decimalLatitude
 #' points(res)
+#'
+#' #### Or, use 'geom_big=axe'
+#' (res <- occ_data(geometry = wkt, geom_big = "axe"))
+#' ##### manipulate essentially number of polygons that result, so number of requests
+#' ###### default geom_size is 40
+#' ###### fewer calls
+#' (res <- occ_data(geometry = wkt, geom_big = "axe", geom_size=50))
+#' ###### more calls
+#' (res <- occ_data(geometry = wkt, geom_big = "axe", geom_size=30))
 #'
 #' # Search on country
 #' occ_data(country='US', limit=20)

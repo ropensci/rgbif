@@ -123,9 +123,17 @@ rg_POST <- function(url, req, user, pwd, callopts) {
     authenticate(user = user, password = pwd),
     callopts), body = jsonlite::toJSON(req),
     make_rgbif_ua())
-  if (tmp$status_code > 203) stop(c_utf8(tmp), call. = FALSE)
+  if (tmp$status_code > 203) stop(catch_err(tmp), call. = FALSE)
   stopifnot(tmp$header$`content-type` == 'application/json')
   c_utf8(tmp)
+}
+
+catch_err <- function(x) {
+  if (httr::has_content(x)) {
+    c_utf8(x)
+  } else {
+    httr::http_condition(x, "message")$message
+  }
 }
 
 process_keyval <- function(args, type) {
