@@ -27,7 +27,8 @@ awkward named access to elements. The original WKT strings can still be accessed
 * Fix parsing bug in `name_usage()` function, see commit [e88cf01cc11cb238d44222346eaeff001c0c637e](https://github.com/ropensci/rgbif/commit/e88cf01cc11cb238d44222346eaeff001c0c637e)
 * Fix to tests to use new `testthat` fxn names, e.g., `expect_gt()`
 instead of `expect_more_than()`
-* Fix to `occ_download()` to parse error correctly when empty body passed from GBIF (#202)
+* Fix to `occ_download()` to parse error correctly when empty body passed from 
+GBIF (#202)
 
 
 rgbif 0.9.2
