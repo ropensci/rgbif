@@ -357,3 +357,11 @@ movecols <- function(x, cols){
 }
 
 c_utf8 <- function(x) content(x, "text", encoding = "UTF-8")
+
+transform_names <- function(x) {
+  if (all(grepl("POLYGON", x)) && any(nchar(x) > 50)) {
+    paste0("geom", seq_along(x))
+  } else {
+    x
+  }
+}

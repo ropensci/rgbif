@@ -1,11 +1,33 @@
 rgbif 0.9.3
 ===========
 
+### NEW FEATURES
+
+* `occ_data()` and `occ_search()` gain ability to more flexibly deal with inputs to the
+`geometry` parameter. Previously, long WKT strings passed to `occ_search()` or 
+`occ_data()` would fail because URIs can only be so long. Another option is to use
+the download API (see `?downloads`). This version adds the ability to choose what to 
+do with long WKT strings via the `geom_big` parameter: `asis` (same as previous version), 
+`bbox` which detects if a WKT sting is likely too long, and creates a bounding box from the
+WKT string then once data is retrived, clips the result to the original WKT string; `axe`
+uses the `geoaxe` package to chop up the input WKT polygon into many, with toggles in the 
+new parameters `geom_size` and `geom_n`. (#197) (#199)
+* As part of this change, when >1 geometry value passed, or if `geom_big="axe"`, then 
+named elements of the output get names `geom1`, `geom2`, `geom3`, etc. instead of the 
+input WKT strings - this is because WKT strings can be very long, and make for very 
+awkward named access to elements. The original WKT strings can still be accessed via
+`attr(result, "args")$geometry`
+
 ### MINOR IMPROVEMENTS
 
-* xxx (#197)
-* xxxx (#199)
 * code tidying throughout the package
+
+### BUG FIXES
+
+* Fix parsing bug in `name_usage()` function, see commit [e88cf01cc11cb238d44222346eaeff001c0c637e](https://github.com/ropensci/rgbif/commit/e88cf01cc11cb238d44222346eaeff001c0c637e)
+* Fix to tests to use new `testthat` fxn names, e.g., `expect_gt()`
+instead of `expect_more_than()`
+* Fix to `occ_download()` to parse error correctly when empty body passed from GBIF (#202)
 
 
 rgbif 0.9.2

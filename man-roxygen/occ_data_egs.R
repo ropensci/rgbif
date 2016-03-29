@@ -111,7 +111,7 @@
 #' #### Default option with large WKT string fails
 #' # res <- occ_data(geometry = wkt)$data
 #'
-#' #### if WKT too long, with 'geom_handler=bbox': makes into bounding box
+#' #### if WKT too long, with 'geom_big=bbox': makes into bounding box
 #' res <- occ_data(geometry = wkt, geom_big = "bbox")$data
 #' library("rgeos")
 #' library("sp")
@@ -120,7 +120,7 @@
 #' coordinates(res) <- ~decimalLongitude+decimalLatitude
 #' points(res)
 #'
-#' #### Or, use 'geom_handler=axe'
+#' #### Or, use 'geom_big=axe'
 #' (res <- occ_data(geometry = wkt, geom_big = "axe"))
 #' ##### manipulate essentially number of polygons that result, so number of requests
 #' ###### default geom_size is 40

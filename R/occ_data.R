@@ -108,7 +108,7 @@ occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publishin
     out <- .get_occ_data()
   } else {
     out <- lapply(iter[[1]], .get_occ_data, itervar = names(iter))
-    names(out) <- iter[[1]]
+    names(out) <- transform_names(iter[[1]])
   }
 
   if (any(names(argscoll) %in% names(iter))) {
