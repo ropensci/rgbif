@@ -9,7 +9,7 @@ test_that("occ_count", {
   d <- occ_count(type='schema')
   e <- occ_count(type='countries')
   f <- occ_count(type='year', from=2000, to=2012)
-  
+
   # returns the correct class
   expect_is(a, "numeric")
   expect_is(b, "numeric")
@@ -27,5 +27,5 @@ test_that("occ_count", {
   expect_equal(length(b), 1)
   expect_equal(length(c), 1)
   expect_equal(length(d), 42)
-  expect_equal(length(e), 249)
+  expect_equal(length(e), 248)
 })

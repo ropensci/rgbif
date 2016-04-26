@@ -128,14 +128,14 @@ test_that("scientificName basic use works - no synonyms", {
   # with synonyms
   bb <- suppressMessages(occ_data(scientificName = 'Pulsatilla patens', limit = 2))
   expect_equal(attr(bb, "args")$scientificName, "Pulsatilla patens")
-  expect_equal(bb$data$name[1], "Anemone patens")
+  expect_equal(bb$data$name[1], "Pulsatilla patens")
 
   # Genus is a synonym - subspecies rank input
   cc <- suppressMessages(occ_data(scientificName = 'Corynorhinus townsendii ingens', limit = 2))
   expect_is(cc, "gbif_data")
   expect_is(cc$data, "data.frame")
   expect_equal(attr(cc, "args")$scientificName, "Corynorhinus townsendii ingens")
-  expect_equal(cc$data$name[1], "Plecotus townsendii")
+  expect_equal(cc$data$name[1], "Corynorhinus townsendii")
 
   # Genus is a synonym - species rank input
   dd <- suppressMessages(occ_data(scientificName = 'Corynorhinus townsendii', limit = 2))
@@ -143,7 +143,7 @@ test_that("scientificName basic use works - no synonyms", {
   expect_is(dd$data, "data.frame")
   expect_equal(NROW(dd$data), 2)
   expect_equal(attr(dd, "args")$scientificName, "Corynorhinus townsendii")
-  expect_equal(dd$data$name[1], "Plecotus townsendii")
+  expect_equal(dd$data$name[1], "Corynorhinus townsendii")
 
   # specific epithet is the synonym - subspecies rank input
   ee <- suppressMessages(occ_data(scientificName = "Myotis septentrionalis septentrionalis", limit = 2))
@@ -156,19 +156,19 @@ test_that("scientificName basic use works - no synonyms", {
   expect_is(ff, "gbif_data")
   expect_equal(NROW(ff$data), 2)
   expect_equal(attr(ff, "args")$scientificName, "Myotis septentrionalis")
-  expect_equal(ff$data$name[1], "Myotis keenii")
+  expect_equal(ff$data$name[1], "Myotis septentrionalis")
 
   # Genus is a synonym - species rank input - species not found, so Genus rank given back
   gg <- suppressMessages(occ_data(scientificName = 'Parastrellus hesperus', limit = 2))
   expect_is(gg, "gbif_data")
-  expect_is(gg$data, "character")
+  expect_is(gg$data, "data.frame")
   ## above not found, but found after using name_lookup to find a match, genus wrong in this case
   # name_lookup(query = 'Parastrellus hesperus')
   hh <- suppressMessages(occ_data(scientificName = 'Pipistrellus hesperus', limit = 2))
   expect_is(hh, "gbif_data")
   expect_is(hh$data, "data.frame")
   expect_equal(attr(hh, "args")$scientificName, "Pipistrellus hesperus")
-  expect_equal(hh$data$name[1], "Pipistrellus hesperus")
+  expect_equal(hh$data$name[1], "Parastrellus hesperus")
 })
 
 ######### geometry inputs work as expected

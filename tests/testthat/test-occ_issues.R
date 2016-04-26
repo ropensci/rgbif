@@ -12,7 +12,7 @@ test_that("occ_issues", {
   bb <- res %>% occ_issues(gass84)
 
   ### remove data rows with certain issue classes
-  cc <- res %>% occ_issues(-cdround, -cudc)
+  cc <- res %>% occ_issues(-cudc)
 
   ### split issues into separate columns
   dd <- res %>% occ_issues(mutate = "split")
@@ -38,12 +38,12 @@ test_that("occ_issues", {
   # returns the correct dimensions
   expect_true(all(vapply(aa$data$issues, function(x) grepl("cudc", x), logical(1))))
   expect_true(all(vapply(bb$data$issues, function(x) grepl("gass84", x), logical(1))))
+  expect_true(all(vapply(cc$data$issues, function(x) grepl("cdround", x), logical(1))))
   expect_false(all(vapply(cc$data$issues, function(x) grepl("cudc", x), logical(1))))
-  expect_false(all(vapply(cc$data$issues, function(x) grepl("cdround", x), logical(1))))
   expect_false(any(grepl("issues", names(dd$data))))
   expect_true(any(grepl("gass84", names(dd$data))))
   expect_false(any(grepl("issues", names(ee$data))))
-  expect_true(any(grepl("cdreps", names(ee$data))))
+  expect_false(any(grepl("cdreps", names(ee$data))))
   expect_true(any(grepl("gass84", names(ff$data))))
   expect_false(any(grepl("issues", names(ff$data))))
   expect_false(any(grepl("issues", names(hh$data))))
