@@ -17,6 +17,14 @@
 #' library("ggplot2")
 #' gbifmap(dat)
 #' gbifmap(dat, geom = geom_jitter, jitter = position_jitter(1, 6))
+#'
+#' # many species
+#' splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
+#' keys <- vapply(splist, function(x) name_suggest(x)$key[1], numeric(1), USE.NAMES=FALSE)
+#' dat <- occ_data(keys, limit = 50)
+#' library("data.table")
+#' dd <- rbindlist(lapply(dat, function(z) z$data), fill = TRUE, use.names = TRUE)
+#' gbifmap(dd)
 #' }
 
 gbifmap <- function(input = NULL, mapdatabase = "world", region = ".",
