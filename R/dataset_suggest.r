@@ -1,7 +1,5 @@
 #' Suggest datasets in GBIF.
 #'
-#' Search that returns up to 20 matching datasets. Results are ordered by relevance.
-#'
 #' @export
 #' @template otherlimstart
 #' @template occ

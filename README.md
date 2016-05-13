@@ -10,6 +10,12 @@ rgbif
 
 `rgbif` gives you access to data from [GBIF](http://www.gbif.org/) via their REST API. GBIF versions their API - we are currently using `v1` of their API. You can no longer use their old API in this package - see `?rgbif-defunct`.
 
+Tutorials:
+
+* [rgbif vignette - the intro to the package](vignettes/rgbif_vignette.Rmd)
+* [issues vignette - how to clean GBIF data](vignettes/issues_vignette.Rmd)
+* [taxonomic names - examples of some confusing bits](vignettes/taxonomic_names.Rmd)
+
 ## Installation
 
 
@@ -37,7 +43,7 @@ library("rgbif")
 
 ```r
 occ_search(scientificName = "Ursus americanus", limit = 50)
-#> Records found [7760] 
+#> Records found [7809] 
 #> Records returned [50] 
 #> No. unique hierarchies [1] 
 #> No. media records [44] 
@@ -45,16 +51,16 @@ occ_search(scientificName = "Ursus americanus", limit = 50)
 #> First 10 rows of data
 #> 
 #>                name        key decimalLatitude decimalLongitude
-#> 1  Ursus americanus 1249277297        35.76789        -75.80894
-#> 2  Ursus americanus 1229610234        44.06062        -71.92692
-#> 3  Ursus americanus 1253300445        44.65481        -72.67270
-#> 4  Ursus americanus 1229610216        44.06086        -71.92712
-#> 5  Ursus americanus 1249284297        43.68723        -72.32891
-#> 6  Ursus americanus 1249296297        39.08590       -105.24586
-#> 7  Ursus americanus 1253314877        49.25782       -122.82786
+#> 1  Ursus americanus 1253300445        44.65481        -72.67270
+#> 2  Ursus americanus 1229610216        44.06086        -71.92712
+#> 3  Ursus americanus 1249277297        35.76789        -75.80894
+#> 4  Ursus americanus 1229610234        44.06062        -71.92692
+#> 5  Ursus americanus 1253314877        49.25782       -122.82786
+#> 6  Ursus americanus 1249284297        43.68723        -72.32891
+#> 7  Ursus americanus 1249296297        39.08590       -105.24586
 #> 8  Ursus americanus 1253317181        43.64214        -72.52494
 #> 9  Ursus americanus 1257415362        44.32746        -72.41007
-#> 10 Ursus americanus 1065590124        38.36662        -79.68283
+#> 10 Ursus americanus 1262389246        43.80871        -72.20964
 #> ..              ...        ...             ...              ...
 #> Variables not shown: issues (chr), datasetKey (chr), publishingOrgKey
 #>      (chr), publishingCountry (chr), protocol (chr), lastCrawled (chr),
@@ -63,18 +69,18 @@ occ_search(scientificName = "Ursus americanus", limit = 50)
 #>      (int), familyKey (int), genusKey (int), speciesKey (int),
 #>      scientificName (chr), kingdom (chr), phylum (chr), order (chr),
 #>      family (chr), genus (chr), species (chr), genericName (chr),
-#>      specificEpithet (chr), infraspecificEpithet (chr), taxonRank (chr),
-#>      dateIdentified (chr), year (int), month (int), day (int), eventDate
-#>      (chr), modified (chr), lastInterpreted (chr), references (chr),
-#>      identifiers (chr), facts (chr), relations (chr), geodeticDatum (chr),
-#>      class (chr), countryCode (chr), country (chr), rightsHolder (chr),
-#>      identifier (chr), verbatimEventDate (chr), datasetName (chr), gbifID
-#>      (chr), verbatimLocality (chr), collectionCode (chr), occurrenceID
-#>      (chr), taxonID (chr), license (chr), recordedBy (chr), catalogNumber
-#>      (chr), http...unknown.org.occurrenceDetails (chr), institutionCode
-#>      (chr), rights (chr), identificationID (chr), eventTime (chr),
-#>      occurrenceRemarks (chr), coordinateAccuracy (dbl),
-#>      coordinateAccuracyInMeters (dbl), informationWithheld (chr)
+#>      specificEpithet (chr), taxonRank (chr), dateIdentified (chr), year
+#>      (int), month (int), day (int), eventDate (chr), modified (chr),
+#>      lastInterpreted (chr), references (chr), identifiers (chr), facts
+#>      (chr), relations (chr), geodeticDatum (chr), class (chr), countryCode
+#>      (chr), country (chr), rightsHolder (chr), identifier (chr),
+#>      verbatimEventDate (chr), datasetName (chr), verbatimLocality (chr),
+#>      collectionCode (chr), gbifID (chr), occurrenceID (chr), taxonID
+#>      (chr), license (chr), catalogNumber (chr), recordedBy (chr),
+#>      http...unknown.org.occurrenceDetails (chr), institutionCode (chr),
+#>      rights (chr), eventTime (chr), occurrenceRemarks (chr),
+#>      identificationID (chr), infraspecificEpithet (chr),
+#>      coordinateUncertaintyInMeters (dbl), informationWithheld (chr)
 ```
 
 Or you can get the taxon key first with `name_backbone()`. Here, we select to only return the occurrence data.
@@ -83,24 +89,24 @@ Or you can get the taxon key first with `name_backbone()`. Here, we select to on
 ```r
 key <- name_backbone(name='Helianthus annuus', kingdom='plants')$speciesKey
 occ_search(taxonKey=key, limit=20)
-#> Records found [21737] 
+#> Records found [31236] 
 #> Records returned [20] 
 #> No. unique hierarchies [1] 
-#> No. media records [11] 
+#> No. media records [14] 
 #> Args [taxonKey=3119195, limit=20, offset=0, fields=all] 
 #> First 10 rows of data
 #> 
 #>                 name        key decimalLatitude decimalLongitude
 #> 1  Helianthus annuus 1249279611        34.04810       -117.79884
-#> 2  Helianthus annuus 1249286909        32.58747        -97.10081
-#> 3  Helianthus annuus 1253308332        29.67463        -95.44804
-#> 4  Helianthus annuus 1143516596        35.42767       -105.06884
-#> 5  Helianthus annuus 1095851641         0.00000          0.00000
-#> 6  Helianthus annuus 1088900309        33.95239       -117.32011
-#> 7  Helianthus annuus 1135523136        33.96709       -117.99769
-#> 8  Helianthus annuus 1088944416        26.20518        -98.26725
-#> 9  Helianthus annuus 1135826959              NA               NA
-#> 10 Helianthus annuus 1092889365        32.71840       -114.75603
+#> 2  Helianthus annuus 1248872560        37.81227         -8.82959
+#> 3  Helianthus annuus 1248887127        38.53339         -8.94263
+#> 4  Helianthus annuus 1249286909        32.58747        -97.10081
+#> 5  Helianthus annuus 1248873088        38.53339         -8.94263
+#> 6  Helianthus annuus 1253308332        29.67463        -95.44804
+#> 7  Helianthus annuus 1262375813        29.82586        -95.45604
+#> 8  Helianthus annuus 1262379231        34.04911       -117.80066
+#> 9  Helianthus annuus 1265544678        32.58747        -97.10081
+#> 10 Helianthus annuus 1262385911        32.78328        -96.70352
 #> ..               ...        ...             ...              ...
 #> Variables not shown: issues (chr), datasetKey (chr), publishingOrgKey
 #>      (chr), publishingCountry (chr), protocol (chr), lastCrawled (chr),
@@ -114,20 +120,18 @@ occ_search(taxonKey=key, limit=20)
 #>      lastInterpreted (chr), references (chr), identifiers (chr), facts
 #>      (chr), relations (chr), geodeticDatum (chr), class (chr), countryCode
 #>      (chr), country (chr), rightsHolder (chr), identifier (chr),
-#>      verbatimEventDate (chr), datasetName (chr), gbifID (chr),
-#>      verbatimLocality (chr), collectionCode (chr), occurrenceID (chr),
-#>      taxonID (chr), license (chr), recordedBy (chr), catalogNumber (chr),
+#>      verbatimEventDate (chr), datasetName (chr), verbatimLocality (chr),
+#>      collectionCode (chr), gbifID (chr), occurrenceID (chr), taxonID
+#>      (chr), license (chr), catalogNumber (chr), recordedBy (chr),
 #>      http...unknown.org.occurrenceDetails (chr), institutionCode (chr),
 #>      rights (chr), eventTime (chr), identificationID (chr),
-#>      coordinateAccuracy (dbl), coordinateAccuracyInMeters (dbl),
-#>      occurrenceRemarks (chr), elevation (dbl), elevationAccuracy (dbl),
-#>      stateProvince (chr), recordNumber (chr), municipality (chr), locality
-#>      (chr), language (chr), type (chr), ownerInstitutionCode (chr),
-#>      identifiedBy (chr), nomenclaturalCode (chr), institutionID (chr),
-#>      dataGeneralizations (chr), footprintWKT (chr), county (chr),
-#>      occurrenceStatus (chr), footprintSRS (chr), higherClassification
-#>      (chr), collectionID (chr), informationWithheld (chr), depth (dbl),
-#>      depthAccuracy (dbl)
+#>      infraspecificEpithet (chr), nomenclaturalCode (chr), institutionID
+#>      (chr), dataGeneralizations (chr), footprintWKT (chr), municipality
+#>      (chr), county (chr), language (chr), occurrenceStatus (chr),
+#>      footprintSRS (chr), ownerInstitutionCode (chr), identifiedBy (chr),
+#>      reproductiveCondition (chr), higherClassification (chr), collectionID
+#>      (chr), coordinateUncertaintyInMeters (dbl), occurrenceRemarks (chr),
+#>      informationWithheld (chr)
 ```
 
 ## Search for many species
@@ -139,7 +143,7 @@ Get the keys first with `name_backbone()`, then pass to `occ_search()`
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 keys <- sapply(splist, function(x) name_backbone(name=x)$speciesKey, USE.NAMES=FALSE)
 occ_search(taxonKey=keys, limit=5, hasCoordinate=TRUE)
-#> Occ. found [2480598 (21), 2492010 (2454289), 2498387 (772636)] 
+#> Occ. found [2480598 (21), 2492010 (2454584), 2498387 (772877)] 
 #> Occ. returned [2480598 (5), 2492010 (5), 2498387 (5)] 
 #> No. unique hierarchies [2480598 (1), 2492010 (1), 2498387 (1)] 
 #> No. media records [2480598 (1), 2492010 (4), 2498387 (5)] 
@@ -148,11 +152,11 @@ occ_search(taxonKey=keys, limit=5, hasCoordinate=TRUE)
 #> First 10 rows of data from 2480598
 #> 
 #>                      name        key decimalLatitude decimalLongitude
-#> 1 Accipiter erythronemius  920184036       -20.76029        -56.71314
-#> 2 Accipiter erythronemius  920169861       -20.55244        -56.64104
+#> 1 Accipiter erythronemius  920169861       -20.55244        -56.64104
+#> 2 Accipiter erythronemius  920184036       -20.76029        -56.71314
 #> 3 Accipiter erythronemius 1001096527       -27.58000        -58.66000
 #> 4 Accipiter erythronemius 1001096518       -27.92000        -59.14000
-#> 5 Accipiter erythronemius  686297260         5.26667        -60.73333
+#> 5 Accipiter erythronemius  699417490         5.26667        -60.73333
 #> Variables not shown: issues (chr), datasetKey (chr), publishingOrgKey
 #>      (chr), publishingCountry (chr), protocol (chr), lastCrawled (chr),
 #>      lastParsed (chr), extensions (chr), basisOfRecord (chr), taxonKey
@@ -160,21 +164,21 @@ occ_search(taxonKey=keys, limit=5, hasCoordinate=TRUE)
 #>      (int), familyKey (int), genusKey (int), speciesKey (int),
 #>      scientificName (chr), kingdom (chr), phylum (chr), order (chr),
 #>      family (chr), genus (chr), species (chr), genericName (chr),
-#>      specificEpithet (chr), taxonRank (chr), year (int), month (int), day
-#>      (int), eventDate (chr), lastInterpreted (chr), identifiers (chr),
-#>      facts (chr), relations (chr), geodeticDatum (chr), class (chr),
-#>      countryCode (chr), country (chr), recordedBy (chr), catalogNumber
-#>      (chr), institutionCode (chr), locality (chr), collectionCode (chr),
-#>      gbifID (chr), modified (chr), identifier (chr), created (chr),
-#>      occurrenceID (chr), associatedSequences (chr), taxonID (chr),
-#>      higherClassification (chr), sex (chr), elevation (dbl),
-#>      elevationAccuracy (dbl), institutionID (chr), dynamicProperties
-#>      (chr), language (chr), type (chr), preparations (chr), rights (chr),
-#>      verbatimElevation (chr), recordNumber (chr), nomenclaturalCode (chr),
-#>      higherGeography (chr), verbatimEventDate (chr),
-#>      georeferenceVerificationStatus (chr), datasetName (chr),
-#>      occurrenceRemarks (chr), accessRights (chr), bibliographicCitation
-#>      (chr), collectionID (chr), georeferenceSources (chr)
+#>      specificEpithet (chr), taxonRank (chr), coordinateUncertaintyInMeters
+#>      (dbl), year (int), month (int), day (int), eventDate (chr),
+#>      lastInterpreted (chr), identifiers (chr), facts (chr), relations
+#>      (chr), geodeticDatum (chr), class (chr), countryCode (chr), country
+#>      (chr), recordedBy (chr), catalogNumber (chr), institutionCode (chr),
+#>      locality (chr), collectionCode (chr), gbifID (chr), modified (chr),
+#>      identifier (chr), created (chr), associatedSequences (chr),
+#>      occurrenceID (chr), taxonID (chr), higherClassification (chr), sex
+#>      (chr), elevation (dbl), elevationAccuracy (dbl), institutionID (chr),
+#>      language (chr), type (chr), preparations (chr), rights (chr),
+#>      verbatimElevation (chr), recordNumber (chr), higherGeography (chr),
+#>      verbatimEventDate (chr), georeferenceVerificationStatus (chr),
+#>      datasetName (chr), otherCatalogNumbers (chr), occurrenceRemarks
+#>      (chr), bibliographicCitation (chr), accessRights (chr),
+#>      georeferenceSources (chr)
 ```
 
 ## Maps

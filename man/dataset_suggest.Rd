@@ -62,7 +62,7 @@ be combined with \code{\link[httr]{config}}.}
 A data.frame, list, or message printed to console (using pretty=TRUE).
 }
 \description{
-Search that returns up to 20 matching datasets. Results are ordered by relevance.
+Suggest datasets in GBIF.
 }
 \examples{
 \dontrun{

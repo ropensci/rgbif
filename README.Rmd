@@ -18,6 +18,12 @@ knitr::opts_chunk$set(
 
 `rgbif` gives you access to data from [GBIF](http://www.gbif.org/) via their REST API. GBIF versions their API - we are currently using `v1` of their API. You can no longer use their old API in this package - see `?rgbif-defunct`.
 
+Tutorials:
+
+* [rgbif vignette - the intro to the package](vignettes/rgbif_vignette.Rmd)
+* [issues vignette - how to clean GBIF data](vignettes/issues_vignette.Rmd)
+* [taxonomic names - examples of some confusing bits](vignettes/taxonomic_names.Rmd)
+
 ## Installation
 
 ```{r eval=FALSE}
