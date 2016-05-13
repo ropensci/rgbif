@@ -21,7 +21,7 @@ test_that("returns the correct class", {
   # returns the correct dimensions
   expect_equal(nrow(tt$data), 100)
 
-  expect_equal(NCOL(uu), 34)
+  expect_equal(NCOL(uu), 35)
 })
 
 test_that("works with habitat parameter", {
