@@ -5,11 +5,11 @@
 #' @template identifierargs
 #' @export
 #'
-#' @param data The type of data to get. Default is all data. If not 'all', then one
-#'    or more of 'contact', 'endpoint', 'dataset', 'comment', 'deleted', 'nonPublishing'.
+#' @param data The type of data to get. One or more of: 'contact', 'endpoint', 'dataset',
+#' 'comment', 'deleted', 'nonPublishing', or the special 'all'. Default: \code{'all'}
 #' @param uuid UUID of the data node provider. This must be specified if data
-#'    is anything other than 'all'.
-#' @param query Query nodes. Only used when data='all'. Ignored otherwise.
+#' is anything other than 'all'.
+#' @param query Query nodes. Only used when \code{data='all'}. Ignored otherwise.
 #'
 #' @references \url{http://www.gbif.org/developer/registry#installations}
 #'
@@ -28,7 +28,7 @@
 #'
 #' # Pass on options to httr
 #' library('httr')
-#' # res <- installations(data='deleted', config=progress())
+#' res <- installations(data='deleted', config=progress())
 #' }
 
 installations <- function(data = 'all', uuid = NULL, query = NULL, identifier=NULL,

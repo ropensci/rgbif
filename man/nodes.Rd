@@ -8,12 +8,14 @@ nodes(data = "all", uuid = NULL, query = NULL, identifier = NULL,
   identifierType = NULL, limit = 100, start = NULL, isocode = NULL, ...)
 }
 \arguments{
-\item{data}{The type of data to get. Default is all data.}
+\item{data}{The type of data to get. One or more of: 'organization', 'endpoint',
+'identifier', 'tag', 'machineTag', 'comment', 'pendingEndorsement', 'country',
+'dataset', 'installation', or the special 'all'. Default: \code{'all'}}
 
 \item{uuid}{UUID of the data node provider. This must be specified if data
 is anything other than 'all'.}
 
-\item{query}{Query nodes. Only used when data='all'}
+\item{query}{Query nodes. Only used when \code{data='all'}}
 
 \item{identifier}{The value for this parameter can be a simple string or integer,
 e.g. identifier=120. This parameter doesn't seem to work right now.}
@@ -79,7 +81,7 @@ res[1]
 
 # Pass on options to httr
 library('httr')
-# res <- nodes(limit=20, config=progress())
+res <- nodes(limit=20, config=progress())
 }
 }
 \references{

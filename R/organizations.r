@@ -4,10 +4,13 @@
 #'
 #' @template otherlimstart
 #' @template occ
-#' @param data The type of data to get. Default is all data.
-#' @param uuid UUID of the data node provider. This must be specified if data
+#' @param data (character) The type of data to get. One or more of: 'organization', 'contact',
+#' 'endpoint', 'identifier', 'tag', 'machineTag', 'comment', 'hostedDataset',
+#' 'ownedDataset', 'deleted', 'pending', 'nonPublishing', or the special
+#' 'all'. Default: \code{'all'}
+#' @param uuid (character) UUID of the data node provider. This must be specified if data
 #'    is anything other than 'all'.
-#' @param query Query nodes. Only used when data='all'
+#' @param query (character) Query nodes. Only used when \coe{data='all'}
 #'
 #' @return A list of length one or two. If \code{uuid} is NULL, then a data.frame with
 #' call metadata, and a data.frame, but if \code{uuid} given, then a list.
@@ -24,7 +27,7 @@
 #'
 #' # Pass on options to httr
 #' library('httr')
-#' # res <- organizations(query="spain", config=progress())
+#' res <- organizations(query="spain", config=progress())
 #' }
 
 organizations <- function(data = 'all', uuid = NULL, query = NULL, limit=100, start=NULL, ...)
@@ -63,50 +66,5 @@ organizations <- function(data = 'all', uuid = NULL, query = NULL, limit=100, st
   }
 
   # Get data
-  if(length(data)==1) getdata(data) else lapply(data, getdata)
+  if (length(data) == 1) getdata(data) else lapply(data, getdata)
 }
-
-get_meta <- function(x){
-  if('endOfRecords' %in% names(x))
-    data.frame(x[!names(x) == 'results'], stringsAsFactors = FALSE)
-  else
-    NULL
-}
-
-list0tochar <- function(x){
-  if(class(x) == 'list'){
-    tmp <- vapply(x, length, numeric(1))
-    if(sum(tmp) == 0) NA else x
-  } else { x }
-}
-
-parse_results <- function(x, y){
-  if(!is.null(y)){
-    if('endOfRecords' %in% names(x))
-      x[ !names(x) %in% c('offset','limit','endOfRecords','count') ]
-    else
-      x
-  } else {
-#     dat <- x$results
-#     for(i in seq_along(dat)){
-#       if(is(dat[[i]], 'list')){
-#         tmp <- vapply(dat[[i]], length, numeric(1))
-#         dat[[i]] <-
-#           if(sum(tmp) == 0) {
-#             NA
-#           } else if(max(tmp) == 1){
-#             dat[[i]][sapply(dat[[i]], function(x) is.null(x) || length(x)==0 )] <- NA
-#             unlist(dat[[i]])
-#           } else { dat[[i]] }
-#       } else { dat[[i]] <- dat[[i]] }
-#     }
-    x$results
-  }
-}
-
-#       else if(is(dat[[i]], "data.frame")){
-#         dattmp <- dat[[i]]
-#         names(dattmp) <- paste(names(dat[i]), names(dat[[i]]), sep = ".")
-#         dat[[i]] <- NULL
-#         cbind(dat, dattmp) %>% glimpse
-#       }

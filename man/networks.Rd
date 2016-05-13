@@ -8,12 +8,14 @@ networks(data = "all", uuid = NULL, query = NULL, identifier = NULL,
   identifierType = NULL, limit = 100, start = NULL, ...)
 }
 \arguments{
-\item{data}{The type of data to get. Default is all data.}
+\item{data}{The type of data to get. One or more of: 'contact', 'endpoint',
+'identifier', 'tag', 'machineTag', 'comment', 'constituents', or the
+special 'all'. Default: \code{'all'}}
 
 \item{uuid}{UUID of the data network provider. This must be specified if data
 is anything other than 'all'.}
 
-\item{query}{Query nodes. Only used when data='all'. Ignored otherwise.}
+\item{query}{Query nodes. Only used when \code{data='all'}. Ignored otherwise.}
 
 \item{identifier}{The value for this parameter can be a simple string or integer,
 e.g. identifier=120. This parameter doesn't seem to work right now.}
@@ -61,7 +63,7 @@ networks(data='endpoint', uuid='16ab5405-6c94-4189-ac71-16ca3b753df7')
 
 # Pass on options to httr
 library('httr')
-# res <- networks(limit=5, config=progress())
+res <- networks(limit=5, config=progress())
 }
 }
 \references{

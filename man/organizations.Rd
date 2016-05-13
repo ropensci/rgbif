@@ -8,12 +8,15 @@ organizations(data = "all", uuid = NULL, query = NULL, limit = 100,
   start = NULL, ...)
 }
 \arguments{
-\item{data}{The type of data to get. Default is all data.}
+\item{data}{(character) The type of data to get. One or more of: 'organization', 'contact',
+'endpoint', 'identifier', 'tag', 'machineTag', 'comment', 'hostedDataset',
+'ownedDataset', 'deleted', 'pending', 'nonPublishing', or the special
+'all'. Default: \code{'all'}}
 
-\item{uuid}{UUID of the data node provider. This must be specified if data
+\item{uuid}{(character) UUID of the data node provider. This must be specified if data
 is anything other than 'all'.}
 
-\item{query}{Query nodes. Only used when data='all'}
+\item{query}{(character) Query nodes. Only used when \coe{data='all'}}
 
 \item{limit}{Number of records to return. Default: 100. Maximum: 1000.}
 
@@ -42,7 +45,7 @@ organizations(data=c('contact','endpoint'), uuid="4b4b2111-ee51-45f5-bf5e-f535f4
 
 # Pass on options to httr
 library('httr')
-# res <- organizations(query="spain", config=progress())
+res <- organizations(query="spain", config=progress())
 }
 }
 \references{

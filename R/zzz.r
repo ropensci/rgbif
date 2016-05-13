@@ -365,3 +365,31 @@ transform_names <- function(x) {
     x
   }
 }
+
+get_meta <- function(x){
+  if ('endOfRecords' %in% names(x)) {
+    data.frame(x[!names(x) == 'results'], stringsAsFactors = FALSE)
+  } else {
+    NULL
+  }
+}
+
+list0tochar <- function(x){
+  if (class(x) == 'list') {
+    tmp <- vapply(x, length, numeric(1))
+    if (sum(tmp) == 0) NA else x
+  } else {
+    x
+  }
+}
+
+parse_results <- function(x, y){
+  if (!is.null(y)) {
+    if ('endOfRecords' %in% names(x))
+      x[ !names(x) %in% c('offset','limit','endOfRecords','count') ]
+    else
+      x
+  } else {
+    x$results
+  }
+}

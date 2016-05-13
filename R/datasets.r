@@ -4,11 +4,15 @@
 #' @template occ
 #' @export
 #'
-#' @param data The type of data to get. Default is all data.
-#' @param type Type of dataset, options include OCCURRENCE, etc.
+#' @param data The type of data to get. One or more of: 'organization', 'contact',
+#' 'endpoint', 'identifier', 'tag', 'machinetag', 'comment', 'constituents',
+#' 'document', 'metadata', 'deleted', 'duplicate', 'subDataset', 'withNoEndpoint',
+#' or the special 'all'. Default: \code{'all'}
+#' @param type Type of dataset. Options: include occurrence, checklist,
+#' metadata, or sampling_event.
 #' @param uuid UUID of the data node provider. This must be specified if data
-#'    is anything other than 'all'.
-#' @param query Query term(s). Only used when data='all'
+#' is anything other than \code{all}
+#' @param query Query term(s). Only used when \code{data=all}
 #' @param id A metadata document id.
 #'
 #' @return A list.
@@ -16,7 +20,7 @@
 #'
 #' @examples \dontrun{
 #' datasets(limit=5)
-#' datasets(type="OCCURRENCE")
+#' datasets(type="occurrence")
 #' datasets(uuid="a6998220-7e3a-485d-9cd6-73076bd85657")
 #' datasets(data='contact', uuid="a6998220-7e3a-485d-9cd6-73076bd85657")
 #' datasets(data='metadata', uuid="a6998220-7e3a-485d-9cd6-73076bd85657")
@@ -26,50 +30,48 @@
 #'
 #' # httr options
 #' library('httr')
-#' # res <- datasets(data=c('deleted','duplicate'), config=progress())
+#' res <- datasets(data=c('deleted','duplicate'), config=progress())
 #' }
 
 datasets <- function(data = 'all', type = NULL, uuid = NULL, query = NULL, id = NULL,
-                     limit = 100, start=NULL, ...)
-{
-  args <- rgbif_compact(list(q = query, limit=as.integer(limit), offset=start))
+                     limit = 100, start=NULL, ...) {
 
-  data <- match.arg(data, choices=c('all', 'organization', 'contact', 'endpoint',
+  args <- rgbif_compact(list(q = query, type = type, limit = as.integer(limit), offset = start))
+
+  data <- match.arg(data, choices = c('all', 'organization', 'contact', 'endpoint',
                                     'identifier', 'tag', 'machinetag', 'comment',
                                     'constituents', 'document', 'metadata',
                                     'deleted', 'duplicate', 'subDataset',
-                                    'withNoEndpoint'), several.ok=TRUE)
+                                    'withNoEndpoint'), several.ok = TRUE)
 
   # Define function to get data
-  getdata <- function(x){
-    if(!data %in% c('all','deleted','duplicate','subDataset','withNoEndpoint') && is.null(uuid))
+  getdata <- function(x) {
+    if (!data %in% c('all','deleted','duplicate','subDataset','withNoEndpoint') && is.null(uuid)) {
       stop('You must specify a uuid if data does not equal all and
        data does not equal of deleted, duplicate, subDataset, or withNoEndpoint')
+    }
 
-    url <- if(is.null(uuid)){
-      if(x=='all'){
+    url <- if (is.null(uuid)) {
+      if (x == 'all') {
         paste0(gbif_base(), '/dataset')
       } else {
-        if(!is.null(id) && x=='metadata'){
+        if (!is.null(id) && x == 'metadata') {
           sprintf('%s/dataset/metadata/%s/document', gbif_base(), id)
-        } else
-        {
+        } else {
           sprintf('%s/dataset/%s', gbif_base(), x)
         }
       }
     } else {
-      if(x=='all'){
+      if (x == 'all') {
         sprintf('%s/dataset/%s', gbif_base(), uuid)
-      } else
-      {
+      } else {
         sprintf('%s/dataset/%s/%s', gbif_base(), uuid, x)
       }
     }
     res <- gbif_GET(url, args, TRUE, ...)
-    structure(list(meta=get_meta(res), data=parse_results(res, uuid)))
-    # parse_results(res, uuid)
+    structure(list(meta = get_meta(res), data = parse_results(res, uuid)))
   }
 
   # Get data
-  if(length(data)==1) getdata(data) else lapply(data, getdata)
+  if (length(data) == 1) getdata(data) else lapply(data, getdata)
 }

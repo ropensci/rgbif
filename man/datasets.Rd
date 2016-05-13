@@ -8,14 +8,18 @@ datasets(data = "all", type = NULL, uuid = NULL, query = NULL,
   id = NULL, limit = 100, start = NULL, ...)
 }
 \arguments{
-\item{data}{The type of data to get. Default is all data.}
+\item{data}{The type of data to get. One or more of: 'organization', 'contact',
+'endpoint', 'identifier', 'tag', 'machinetag', 'comment', 'constituents',
+'document', 'metadata', 'deleted', 'duplicate', 'subDataset', 'withNoEndpoint',
+or the special 'all'. Default: \code{'all'}}
 
-\item{type}{Type of dataset, options include OCCURRENCE, etc.}
+\item{type}{Type of dataset. Options: include occurrence, checklist,
+metadata, or sampling_event.}
 
 \item{uuid}{UUID of the data node provider. This must be specified if data
-is anything other than 'all'.}
+is anything other than \code{all}}
 
-\item{query}{Query term(s). Only used when data='all'}
+\item{query}{Query term(s). Only used when \code{data=all}}
 
 \item{id}{A metadata document id.}
 
@@ -37,7 +41,7 @@ Search for datasets and dataset metadata.
 \examples{
 \dontrun{
 datasets(limit=5)
-datasets(type="OCCURRENCE")
+datasets(type="occurrence")
 datasets(uuid="a6998220-7e3a-485d-9cd6-73076bd85657")
 datasets(data='contact', uuid="a6998220-7e3a-485d-9cd6-73076bd85657")
 datasets(data='metadata', uuid="a6998220-7e3a-485d-9cd6-73076bd85657")
@@ -47,7 +51,7 @@ datasets(data=c('deleted','duplicate'), limit=1)
 
 # httr options
 library('httr')
-# res <- datasets(data=c('deleted','duplicate'), config=progress())
+res <- datasets(data=c('deleted','duplicate'), config=progress())
 }
 }
 \references{

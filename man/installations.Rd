@@ -9,13 +9,13 @@ installations(data = "all", uuid = NULL, query = NULL,
   ...)
 }
 \arguments{
-\item{data}{The type of data to get. Default is all data. If not 'all', then one
-or more of 'contact', 'endpoint', 'dataset', 'comment', 'deleted', 'nonPublishing'.}
+\item{data}{The type of data to get. One or more of: 'contact', 'endpoint', 'dataset',
+'comment', 'deleted', 'nonPublishing', or the special 'all'. Default: \code{'all'}}
 
 \item{uuid}{UUID of the data node provider. This must be specified if data
 is anything other than 'all'.}
 
-\item{query}{Query nodes. Only used when data='all'. Ignored otherwise.}
+\item{query}{Query nodes. Only used when \code{data='all'}. Ignored otherwise.}
 
 \item{identifier}{The value for this parameter can be a simple string or integer,
 e.g. identifier=120. This parameter doesn't seem to work right now.}
@@ -71,7 +71,7 @@ installations(identifierType='DOI', limit=2)
 
 # Pass on options to httr
 library('httr')
-# res <- installations(data='deleted', config=progress())
+res <- installations(data='deleted', config=progress())
 }
 }
 \references{
