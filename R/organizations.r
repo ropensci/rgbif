@@ -10,7 +10,7 @@
 #' 'all'. Default: \code{'all'}
 #' @param uuid (character) UUID of the data node provider. This must be specified if data
 #'    is anything other than 'all'.
-#' @param query (character) Query nodes. Only used when \coe{data='all'}
+#' @param query (character) Query nodes. Only used when \code{data='all'}
 #'
 #' @return A list of length one or two. If \code{uuid} is NULL, then a data.frame with
 #' call metadata, and a data.frame, but if \code{uuid} given, then a list.

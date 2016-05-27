@@ -16,7 +16,7 @@ organizations(data = "all", uuid = NULL, query = NULL, limit = 100,
 \item{uuid}{(character) UUID of the data node provider. This must be specified if data
 is anything other than 'all'.}
 
-\item{query}{(character) Query nodes. Only used when \coe{data='all'}}
+\item{query}{(character) Query nodes. Only used when \code{data='all'}}
 
 \item{limit}{Number of records to return. Default: 100. Maximum: 1000.}
 
