@@ -4,9 +4,9 @@
 #' @param mapdatabase The map database to use in mapping. What you choose here
 #' 		determines what you can choose in the region parameter. One of: county,
 #' 		state, usa, world, world2, france, italy, or nz.
-#' @param region The region of the world to map. From the maps package, run
-#' 		\code{sort(unique(map_data("world")$region))} to see region names for the
-#' 		world database layer, or e.g., \code{sort(unique(map_data("state")$region))}
+#' @param region The region of the world to map. Run
+#' 		\code{sort(unique(ggplot2::map_data("world")$region))} to see region names for the
+#' 		world database layer, or \code{sort(unique(ggplot2::map_data("state")$region))}
 #' 		for the state layer.
 #' @param geom The geom to use, one of geom_point or geom_jitter. Don't
 #' 		quote them.
