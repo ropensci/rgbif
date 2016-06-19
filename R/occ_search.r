@@ -92,7 +92,12 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
         paste("no data found, try a different search")
       } else {
         data <- gbifparser(input = data, fields = fields)
-        df <- ldfast(lapply(data, "[[", "data"))
+        # df <- ldfast(lapply(data, "[[", "data"))
+        df <- as_data_frame(data.table::setDF(
+          data.table::rbindlist(
+            lapply(data, "[[", "data"), use.names = TRUE, fill = TRUE
+          )
+        ))
         prune_result(df)
       }
     } else if (return == 'hier') {
@@ -110,7 +115,8 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
         sapply(data, "[[", "media")
       }
     } else if (return == 'meta') {
-      data.frame(meta, stringsAsFactors = FALSE)
+      #data.frame(meta, stringsAsFactors = FALSE)
+      as_data_frame(meta)
     } else {
       if (identical(data, list())) {
         dat2 <- paste("no data found, try a different search")
@@ -122,7 +128,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
         hier2 <- unique(lapply(data, "[[", "hierarchy"))
         media <- unique(lapply(data, "[[", "media"))
       }
-      list(meta = meta, hierarchy = hier2, data = dat2, media = media)
+      list(meta = meta, hierarchy = hier2, data = as_data_frame(dat2), media = media)
     }
   }
 
@@ -171,17 +177,18 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
 #' @export
 #' @rdname occ_search
 print.gbif <- function(x, ..., n = 10) {
-  if (attr(x, "type") == "single" & all(c('meta','data','hierarchy','media') %in% names(x))){
+  if (attr(x, "type") == "single" & all(c('meta', 'data', 'hierarchy', 'media') %in% names(x))) {
     cat(rgbif_wrap(sprintf("Records found [%s]", x$meta$count)), "\n")
     cat(rgbif_wrap(sprintf("Records returned [%s]", NROW(x$data))), "\n")
     cat(rgbif_wrap(sprintf("No. unique hierarchies [%s]", length(x$hierarchy))), "\n")
     cat(rgbif_wrap(sprintf("No. media records [%s]", length(x$media))), "\n")
     cat(rgbif_wrap(sprintf("Args [%s]", pasteargs(x))), "\n")
-    cat(sprintf("First 10 rows of data\n\n"))
-    if (is(x$data, "data.frame")) trunc_mat(x$data, n = n) else cat(x$data)
+    #cat(sprintf("First 10 rows of data\n\n"))
+    # if (inherits(x$data, "data.frame")) trunc_mat(x$data, n = n) else cat(x$data)
+    if (inherits(x$data, "data.frame")) print(x$data) else cat(x$data)
   } else if (attr(x, "type") == "many") {
     if (!attr(x, "return") == "all") {
-      if(is(x, "gbif")) x <- unclass(x)
+      if (inherits(x, "gbif")) x <- unclass(x)
       attr(x, "type") <- NULL
       attr(x, "return") <- NULL
       print(x)
@@ -191,11 +198,12 @@ print.gbif <- function(x, ..., n = 10) {
       cat(rgbif_wrap(sprintf("No. unique hierarchies [%s]", pastemax(x, "hier"))), "\n")
       cat(rgbif_wrap(sprintf("No. media records [%s]", pastemax(x, "media"))), "\n")
       cat(rgbif_wrap(sprintf("Args [%s]", pasteargs(x))), "\n")
-      cat(sprintf("First 10 rows of data from %s\n\n", substring(names(x)[1], 1, 50)))
-      if(is(x[[1]]$data, "data.frame")) trunc_mat(x[[1]]$data, n = n) else cat(x[[1]]$data)
+      # cat(sprintf("First 10 rows of data from %s\n\n", substring(names(x)[1], 1, 50)))
+      # if (is(x[[1]]$data, "data.frame")) trunc_mat(x[[1]]$data, n = n) else cat(x[[1]]$data)
+      if (inherits(x[[1]]$data, "data.frame")) print(x[[1]]$data) else cat(x[[1]]$data)
     }
   } else {
-    if(is(x, "gbif")) x <- unclass(x)
+    if (inherits(x, "gbif")) x <- unclass(x)
     attr(x, "type") <- NULL
     attr(x, "return") <- NULL
     print(x)

@@ -147,10 +147,11 @@ gbifparser_verbatim <- function(input, fields='minimal'){
 
 
 ldfast <- function(x, convertvec=FALSE){
-  if (convertvec)
+  if (convertvec) {
     do.call(rbind_fill, lapply(x, convert2df))
-  else
+  } else {
     do.call(rbind_fill, x)
+  }
 }
 
 ldfast_names <- function(x, convertvec=FALSE){
@@ -165,10 +166,12 @@ ldfast_names <- function(x, convertvec=FALSE){
 }
 
 convert2df <- function(x){
-  if (!inherits(x, "data.frame"))
-    data.frame(rbind(x), stringsAsFactors = FALSE)
-  else
-    x
+  if (!inherits(x, "data.frame")) {
+    # data.frame(rbind(x), stringsAsFactors = FALSE)
+    data_frame(rbind(x))
+  } else {
+    as_data_frame(x)
+  }
 }
 
 rbind_rows <- function(x) {
