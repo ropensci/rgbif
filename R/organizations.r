@@ -19,7 +19,7 @@
 #'
 #' @examples \dontrun{
 #' organizations(limit=5)
-#' organizations(query="france")
+#' organizations(query="france", limit=5)
 #' organizations(uuid="4b4b2111-ee51-45f5-bf5e-f535f4a1c9dc")
 #' organizations(data='contact', uuid="4b4b2111-ee51-45f5-bf5e-f535f4a1c9dc")
 #' organizations(data='pending')

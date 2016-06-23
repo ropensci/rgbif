@@ -388,11 +388,18 @@ list0tochar <- function(x){
 
 parse_results <- function(x, y){
   if (!is.null(y)) {
-    if ('endOfRecords' %in% names(x))
-      x[ !names(x) %in% c('offset','limit','endOfRecords','count') ]
-    else
-      x
+    if ('endOfRecords' %in% names(x)) {
+      tmp <- x[ !names(x) %in% c('offset','limit','endOfRecords','count') ]
+    } else {
+      tmp <- x
+    }
   } else {
-    x$results
+    tmp <- x$results
+  }
+  if (inherits(tmp, "data.frame")) {
+    out <- tryCatch(tibble::as_data_frame(tmp), error = function(e) e)
+    if (inherits(out, "error")) tmp else out
+  } else {
+    tmp
   }
 }

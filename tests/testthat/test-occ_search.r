@@ -16,7 +16,7 @@ test_that("returns the correct class", {
   expect_is(tt$data$name, "character")
   expect_is(vv, "data.frame")
   # meta no longer has gbif class
-  expect_equal(length(class(vv)), 1)
+  expect_equal(length(class(vv)), 3)
 
   expect_equal(tt$meta$limit, 2)
   expect_equal(tt$hierarchy[[1]][1,2], 6)
@@ -66,8 +66,10 @@ test_that("returns the correct class", {
 
   out <- occ_search(taxonKey=key, return='data')
   expect_is(out, "data.frame")
-  expect_is(out[1,1], "character")
-  expect_is(out[1,2], "integer")
+  expect_is(out, "tbl_df")
+  expect_is(out[1,1], "tbl_df")
+  expect_is(out[1,1]$name, "character")
+  expect_is(out[1,2]$key, "integer")
 
   # returns the correct value
   expect_equal(as.character(out[1,1]), "Helianthus annuus")
@@ -144,7 +146,7 @@ test_that("looping works correctly", {
   allkeys <- unlist(lapply(out, "[[", "key"))
 
   expect_equal(length(allkeys), length(unique(allkeys)))
-  expect_equal(unique(sapply(out, class)), "data.frame")
+  expect_equal(unique(sapply(out, function(x) class(x)[1])), "tbl_df")
 })
 
 ######### scientificName usage works correctly

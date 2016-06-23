@@ -20,7 +20,7 @@
 #'
 #' @examples \dontrun{
 #' datasets(limit=5)
-#' datasets(type="occurrence")
+#' datasets(type="occurrence", limit=10)
 #' datasets(uuid="a6998220-7e3a-485d-9cd6-73076bd85657")
 #' datasets(data='contact', uuid="a6998220-7e3a-485d-9cd6-73076bd85657")
 #' datasets(data='metadata', uuid="a6998220-7e3a-485d-9cd6-73076bd85657")
@@ -48,7 +48,7 @@ datasets <- function(data = 'all', type = NULL, uuid = NULL, query = NULL, id = 
   getdata <- function(x) {
     if (!data %in% c('all','deleted','duplicate','subDataset','withNoEndpoint') && is.null(uuid)) {
       stop('You must specify a uuid if data does not equal all and
-       data does not equal of deleted, duplicate, subDataset, or withNoEndpoint')
+       data does not equal of deleted, duplicate, subDataset, or withNoEndpoint', call. = FALSE)
     }
 
     url <- if (is.null(uuid)) {

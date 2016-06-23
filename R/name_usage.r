@@ -86,13 +86,17 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL, datasetKe
   return <- match.arg(return, c('meta','data','all'))
   switch(return,
          meta = get_meta_nu(out),
-         data = name_usage_parse(out),
-         all = list(meta = get_meta_nu(out), data = name_usage_parse(out, data))
+         data = tibble::as_data_frame(name_usage_parse(out)),
+         all = list(meta = get_meta_nu(out), data = tibble::as_data_frame(name_usage_parse(out, data)))
   )
 }
 
 get_meta_nu <- function(x) {
-  if (has_meta(x)) data.frame(x[c('offset','limit','endOfRecords')], stringsAsFactors = FALSE) else NA
+  if (has_meta(x)) {
+    tibble::as_data_frame(data.frame(x[c('offset','limit','endOfRecords')], stringsAsFactors = FALSE))
+  } else {
+    tibble::data_frame()
+  }
 }
 
 has_meta <- function(x) any(c('offset','limit','endOfRecords') %in% names(x))

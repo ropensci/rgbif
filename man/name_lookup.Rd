@@ -123,7 +123,7 @@ all parameters with facet in their name are ignored (facetOnly, facetMincount, f
 \examples{
 \dontrun{
 # Look up names like mammalia
-name_lookup(query='mammalia')
+name_lookup(query='mammalia', limit = 20)
 
 # Paging
 name_lookup(query='mammalia', limit=1)

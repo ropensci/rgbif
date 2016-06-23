@@ -3,8 +3,11 @@ context("dataset_suggest")
 test_that("type query returns the correct class", {
   skip_on_cran()
   tt <- dataset_suggest(query="Amazon", type="OCCURRENCE")
+
   expect_is(tt, "data.frame")
-  expect_is(tt[1,1], "character")
+  expect_is(tt, "tbl_df")
+  expect_is(tt[1,1], "tbl_df")
+  expect_is(tt[1,1]$key, "character")
 })
 
 
@@ -12,8 +15,11 @@ test_that("type query returns the correct class", {
 # its metadata (title, description, etc).
 test_that("search query returns the correct class", {
   skip_on_cran()
+
   tt <- dataset_suggest(query="amsterdam")
+
   expect_is(tt, "data.frame")
+  expect_is(tt, "tbl_df")
   expect_is(tt$title, "character")
   expect_is(tt$title[[1]], "character")
 })
@@ -21,15 +27,21 @@ test_that("search query returns the correct class", {
 # Limited search
 test_that("limited search returns the correct class", {
   skip_on_cran()
+
   tt <- dataset_suggest(type="OCCURRENCE", limit=2)
+
   expect_is(tt, "data.frame")
-  expect_is(tt[1,1], "character")
+  expect_is(tt, "tbl_df")
+  expect_is(tt[1,1], "tbl_df")
+  expect_is(tt[1,1]$key, "character")
 })
 
 # Return just descriptions
 test_that("limited fields query returns the correct class", {
   skip_on_cran()
+
   tt <- dataset_suggest(type="OCCURRENCE", description=TRUE)
+
   expect_is(tt, "character")
   expect_is(tt[[1]], "character")
 })

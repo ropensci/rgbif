@@ -58,13 +58,12 @@ identifierType options:
 \examples{
 \dontrun{
 installations(limit=5)
-installations(query="france")
+installations(query="france", limit = 25)
 installations(uuid="b77901f9-d9b0-47fa-94e0-dd96450aa2b4")
-installations(data='contact', uuid="b77901f9-d9b0-47fa-94e0-dd96450aa2b4")
 installations(data='contact', uuid="2e029a0c-87af-42e6-87d7-f38a50b78201")
 installations(data='endpoint', uuid="b77901f9-d9b0-47fa-94e0-dd96450aa2b4")
 installations(data='dataset', uuid="b77901f9-d9b0-47fa-94e0-dd96450aa2b4")
-installations(data='deleted')
+installations(data='deleted', limit = 25)
 installations(data='deleted', limit=2)
 installations(data=c('deleted','nonPublishing'), limit=2)
 installations(identifierType='DOI', limit=2)

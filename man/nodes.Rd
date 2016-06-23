@@ -76,7 +76,7 @@ uuids = c("8cb55387-7802-40e8-86d6-d357a583c596","02c40d2a-1cba-4633-90b7-e36e5e
   "1e789bc9-79fc-4e60-a49e-89dfc45a7188","1f94b3ca-9345-4d65-afe2-4bace93aa0fe")
 
 res <- lapply(uuids, function(x) nodes(x, data='identifier')$data)
-res <- res[!sapply(res, length)==0]
+res <- res[!sapply(res, NROW)==0]
 res[1]
 
 # Pass on options to httr

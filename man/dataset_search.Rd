@@ -78,31 +78,31 @@ that contain occurrence data.
 \examples{
 \dontrun{
 # Gets all datasets of type "OCCURRENCE".
-dataset_search(type="OCCURRENCE")
+dataset_search(type="OCCURRENCE", limit = 10)
 
 # Gets all datasets tagged with keyword "france".
-dataset_search(keyword="france")
+dataset_search(keyword="france", limit = 10)
 
 # Fulltext search for all datasets having the word "amsterdam" somewhere in
 # its metadata (title, description, etc).
-dataset_search(query="amsterdam")
+dataset_search(query="amsterdam", limit = 10)
 
 # Limited search
 dataset_search(type="OCCURRENCE", limit=2)
 dataset_search(type="OCCURRENCE", limit=2, start=10)
 
 # Return just descriptions
-dataset_search(type="OCCURRENCE", return="descriptions")
+dataset_search(type="OCCURRENCE", return="descriptions", limit = 10)
 
 # Return metadata in a more human readable way (hard to manipulate though)
-dataset_search(type="OCCURRENCE", pretty=TRUE)
+dataset_search(type="OCCURRENCE", pretty=TRUE, limit = 10)
 
 # Search by country code. Lookup isocodes first, and use US for United States
 isocodes[agrep("UNITED", isocodes$gbif_name),]
-dataset_search(country="US")
+dataset_search(country="US", limit = 10)
 
 # Search by decade
-dataset_search(decade=1980)
+dataset_search(decade=1980, limit = 10)
 
 # Faceting
 ## just facets
