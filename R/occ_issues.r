@@ -109,7 +109,9 @@ occ_issues <- function(.data, ..., mutate = NULL) {
 }
 
 mutate_iss <- function(w){
-  w$issues <- sapply(strsplit(w$issues, split = ","), function(z) paste(gbifissues[ gbifissues$code %in% z, "issue" ], collapse = ",") )
+  w$issues <- sapply(strsplit(w$issues, split = ","), function(z) {
+    paste(gbifissues[ gbifissues$code %in% z, "issue" ], collapse = ",")
+  })
   return( w )
 }
 
@@ -126,7 +128,7 @@ split_iss <- function(m){
   names(df) <- unq
   m$issues <- NULL
   first <- c('name','key','decimalLatitude','decimalLongitude')
-  data.frame(m[, first], df, m[, !names(m) %in% first], stringsAsFactors = FALSE)
+  tibble::as_data_frame(data.frame(m[, first], df, m[, !names(m) %in% first], stringsAsFactors = FALSE))
 }
 
 parse_input <- function(...) {

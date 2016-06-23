@@ -33,7 +33,7 @@
 #'   "1e789bc9-79fc-4e60-a49e-89dfc45a7188","1f94b3ca-9345-4d65-afe2-4bace93aa0fe")
 #'
 #' res <- lapply(uuids, function(x) nodes(x, data='identifier')$data)
-#' res <- res[!sapply(res, length)==0]
+#' res <- res[!sapply(res, NROW)==0]
 #' res[1]
 #'
 #' # Pass on options to httr

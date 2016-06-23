@@ -5,7 +5,7 @@
 #' @references \url{http://www.gbif.org/developer/species#searching}
 #' @examples \dontrun{
 #' # Look up names like mammalia
-#' name_lookup(query='mammalia')
+#' name_lookup(query='mammalia', limit = 20)
 #'
 #' # Paging
 #' name_lookup(query='mammalia', limit=1)
@@ -112,10 +112,10 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
 
   # actual data
   if (!verbose) {
-    data <- data.table::setDF(
+    data <- tibble::as_data_frame(data.table::setDF(
       data.table::rbindlist(
         lapply(tt$results, namelkupcleaner),
-        use.names = TRUE, fill = TRUE))
+        use.names = TRUE, fill = TRUE)))
     if (limit > 0) data <- movecols(data, c('key', 'scientificName'))
   } else {
     data <- tt$results
@@ -140,11 +140,11 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
   # select output
   return <- match.arg(return, c('meta', 'data', 'facets', 'hierarchy', 'names', 'all'))
   switch(return,
-         meta = data.frame(meta, stringsAsFactors = FALSE),
+         meta = tibble::as_data_frame(meta),
          data = data,
          facets = facetsdat,
          hierarchy = compact_null(hierdat),
          names = compact_null(vernames),
-         all = list(meta = data.frame(meta, stringsAsFactors = FALSE), data = data, facets = facetsdat,
+         all = list(meta = tibble::as_data_frame(meta), data = data, facets = facetsdat,
                     hierarchies = compact_null(hierdat), names = compact_null(vernames)))
 }

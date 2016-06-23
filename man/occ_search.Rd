@@ -17,7 +17,7 @@ occ_search(taxonKey = NULL, scientificName = NULL, country = NULL,
   mediaType = NULL, limit = 500, start = 0, fields = "all",
   return = "all", ...)
 
-\method{print}{gbif}(x, ..., n = 10)
+\method{print}{gbif}(x, ...)
 }
 \arguments{
 \item{taxonKey}{A taxon key from the GBIF backbone. All included and synonym taxa

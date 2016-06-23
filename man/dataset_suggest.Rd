@@ -74,32 +74,32 @@ dataset_suggest(keyword="france")
 
 # Suggest datasets owned by the organization with key
 # "07f617d0-c688-11d8-bf62-b8a03c50a862" (UK NBN).
-head(dataset_suggest(owningOrg="07f617d0-c688-11d8-bf62-b8a03c50a862"))
+dataset_suggest(owningOrg="07f617d0-c688-11d8-bf62-b8a03c50a862")
 
 # Fulltext search for all datasets having the word "amsterdam" somewhere in
 # its metadata (title, description, etc).
-head(dataset_suggest(query="amsterdam"))
+dataset_suggest(query="amsterdam")
 
 # Limited search
 dataset_suggest(type="OCCURRENCE", limit=2)
 dataset_suggest(type="OCCURRENCE", limit=2, start=10)
 
 # Return just descriptions
-dataset_suggest(type="OCCURRENCE", description=TRUE)
+dataset_suggest(type="OCCURRENCE", limit = 5, description=TRUE)
 
 # Return metadata in a more human readable way (hard to manipulate though)
-dataset_suggest(type="OCCURRENCE", pretty=TRUE)
+dataset_suggest(type="OCCURRENCE", limit = 5, pretty=TRUE)
 
 # Search by country code. Lookup isocodes first, and use US for United States
 isocodes[agrep("UNITED", isocodes$gbif_name),]
-head(dataset_suggest(country="US"))
+dataset_suggest(country="US", limit = 25)
 
 # Search by decade
-head(dataset_suggest(decade=1980))
+dataset_suggest(decade=1980, limit = 30)
 
 # httr options
 library('httr')
-dataset_suggest(type="OCCURRENCE", limit=2, config=verbose())
+dataset_suggest(type="OCCURRENCE", limit = 2, config=verbose())
 }
 }
 \references{

@@ -109,16 +109,16 @@
 #' wkt <- gsub("\n", " ", wkt)
 #'
 #' #### Default option with large WKT string fails
-#' # res <- occ_data(geometry = wkt)$data
+#' # res <- occ_data(geometry = wkt)
 #'
 #' #### if WKT too long, with 'geom_big=bbox': makes into bounding box
-#' res <- occ_data(geometry = wkt, geom_big = "bbox")$data
+#' res <- occ_data(geometry = wkt, geom_big = "bbox")
 #' library("rgeos")
 #' library("sp")
 #' wktsp <- readWKT(wkt)
 #' plot(wktsp)
-#' coordinates(res) <- ~decimalLongitude+decimalLatitude
-#' points(res)
+#' coordinates(res$data) <- ~decimalLongitude+decimalLatitude
+#' points(res$data)
 #'
 #' #### Or, use 'geom_big=axe'
 #' (res <- occ_data(geometry = wkt, geom_big = "axe"))
@@ -140,7 +140,7 @@
 #' occ_data(taxonKey=key, hasCoordinate=TRUE, limit=20)
 #'
 #' # Get only occurrences that were recorded as living specimens
-#' occ_data(taxonKey=key, basisOfRecord="LIVING_SPECIMEN", hasCoordinate=TRUE, limit=20)
+#' occ_data(basisOfRecord="LIVING_SPECIMEN", hasCoordinate=TRUE, limit=20)
 #'
 #' # Get occurrences for a particular eventDate
 #' occ_data(taxonKey=key, eventDate="2013", limit=20)
@@ -171,51 +171,51 @@
 #'
 #' # Range queries
 #' ## See Detail for parameters that support range queries
-#' occ_data(depth='50,100') # this is a range depth, with lower/upper limits in character string
-#' occ_data(depth=c(50,100)) # this is not a range search, but does two searches for each depth
+#' occ_data(depth='50,100', limit = 20) # this is a range depth, with lower/upper limits in character string
+#' occ_data(depth=c(50,100), limit = 20) # this is not a range search, but does two searches for each depth
 #'
 #' ## Range search with year
 #' occ_data(year='1999,2000', limit=20)
 #'
 #' ## Range search with latitude
-#' occ_data(decimalLatitude='29.59,29.6')
+#' occ_data(decimalLatitude='29.59,29.6', limit = 20)
 #'
 #' # Search by specimen type status
 #' ## Look for possible values of the typeStatus parameter looking at the typestatus dataset
-#' head(occ_data(typeStatus = 'allotype')$data[,c('name','typeStatus')])
+#' occ_data(typeStatus = 'allotype', limit = 20)$data[,c('name','typeStatus')]
 #'
 #' # Search by specimen record number
 #' ## This is the record number of the person/group that submitted the data, not GBIF's numbers
 #' ## You can see that many different groups have record number 1, so not super helpful
-#' head(occ_data(recordNumber = 1)$data[,c('name','recordNumber','recordedBy')])
+#' occ_data(recordNumber = 1, limit = 20)$data[,c('name','recordNumber','recordedBy')]
 #'
 #' # Search by last time interpreted: Date the record was last modified in GBIF
 #' ## The lastInterpreted parameter accepts ISO 8601 format dates, including
 #' ## yyyy, yyyy-MM, yyyy-MM-dd, or MM-dd. Range queries are accepted for lastInterpreted
-#' occ_data(lastInterpreted = '2015-09-02')
+#' occ_data(lastInterpreted = '2016-04-02', limit = 20)
 #'
 #' # Search for occurrences with images
-#' occ_data(mediaType = 'StillImage')
-#' occ_data(mediaType = 'MovingImage')
-#' occ_data(mediaType = 'Sound')
+#' occ_data(mediaType = 'StillImage', limit = 20)
+#' occ_data(mediaType = 'MovingImage', limit = 20)
+#' occ_data(mediaType = 'Sound', limit = 20)
 #'
 #' # Search by continent
 #' ## One of africa, antarctica, asia, europe, north_america, oceania, or south_america
-#' occ_data(continent = 'south_america')$meta
-#' occ_data(continent = 'africa')$meta
-#' occ_data(continent = 'oceania')$meta
-#' occ_data(continent = 'antarctica')$meta
+#' occ_data(continent = 'south_america', limit = 20)$meta
+#' occ_data(continent = 'africa', limit = 20)$meta
+#' occ_data(continent = 'oceania', limit = 20)$meta
+#' occ_data(continent = 'antarctica', limit = 20)$meta
 #'
 #' # Query based on issues - see Details for options
 #' ## one issue
-#' x <- occ_data(taxonKey=1, issue='DEPTH_UNLIKELY')
+#' x <- occ_data(taxonKey=1, issue='DEPTH_UNLIKELY', limit = 20)
 #' x$data[,c('name','key','decimalLatitude','decimalLongitude','depth')]
 #' ## two issues
-#' occ_data(taxonKey=1, issue=c('DEPTH_UNLIKELY','COORDINATE_ROUNDED'))
+#' occ_data(taxonKey=1, issue=c('DEPTH_UNLIKELY','COORDINATE_ROUNDED'), limit = 20)
 #' # Show all records in the Arizona State Lichen Collection that cant be matched to the GBIF
 #' # backbone properly:
 #' occ_data(datasetKey='84c0e1a0-f762-11e1-a439-00145eb45e9a',
-#'    issue=c('TAXON_MATCH_NONE','TAXON_MATCH_HIGHERRANK'))
+#'    issue=c('TAXON_MATCH_NONE','TAXON_MATCH_HIGHERRANK'), limit = 20)
 #'
 #' # Parsing output by issue
 #' (res <- occ_data(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))', limit = 50))

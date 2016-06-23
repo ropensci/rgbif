@@ -24,7 +24,7 @@ test_that("returns the correct class", {
   # occ_data doesn't have media slot
   expect_null(tt$media)
 
-  expect_equal(uu$data[1,1], "Helianthus annuus")
+  expect_equal(uu$data[1,1]$name, "Helianthus annuus")
   expect_equal(uu$meta$limit, 20)
   expect_null(vv$limit)
 
@@ -118,7 +118,7 @@ test_that("looping works correctly", {
   allkeys <- unlist(lapply(out, "[[", "key"))
 
   expect_equal(length(allkeys), length(unique(allkeys)))
-  expect_equal(unique(sapply(out, class)), "data.frame")
+  expect_equal(unique(sapply(out, function(x) class(x)[1])), "tbl_df")
 })
 
 ######### scientificName usage works correctly

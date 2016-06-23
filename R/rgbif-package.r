@@ -40,6 +40,7 @@
 #' @importFrom oai id list_identifiers list_records list_metadataformats
 #' list_sets get_records
 #' @importFrom geoaxe chop to_wkt
+#' @importFrom tibble as_data_frame
 #' @name rgbif-package
 #' @aliases rgbif
 #' @docType package

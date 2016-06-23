@@ -92,8 +92,12 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
         paste("no data found, try a different search")
       } else {
         data <- gbifparser(input = data, fields = fields)
-        df <- ldfast(lapply(data, "[[", "data"))
-        prune_result(df)
+        df <- data.table::setDF(
+          data.table::rbindlist(
+            lapply(data, "[[", "data"), use.names = TRUE, fill = TRUE
+          )
+        )
+        tibble::as_data_frame(prune_result(df))
       }
     } else if (return == 'hier') {
       if (identical(data, list())) {
@@ -110,7 +114,8 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
         sapply(data, "[[", "media")
       }
     } else if (return == 'meta') {
-      data.frame(meta, stringsAsFactors = FALSE)
+      #data.frame(meta, stringsAsFactors = FALSE)
+      as_data_frame(meta)
     } else {
       if (identical(data, list())) {
         dat2 <- paste("no data found, try a different search")
@@ -118,7 +123,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
         media <- paste("no data found, try a different search")
       } else {
         data <- gbifparser(input = data, fields = fields)
-        dat2 <- prune_result(ldfast(lapply(data, "[[", "data")))
+        dat2 <- as_data_frame(prune_result(ldfast(lapply(data, "[[", "data"))))
         hier2 <- unique(lapply(data, "[[", "hierarchy"))
         media <- unique(lapply(data, "[[", "media"))
       }
@@ -157,8 +162,8 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
   argscoll$fields <- fields
 
   if (!return %in% c('meta', 'hier')) {
-    if (is(out, "data.frame")) {
-      class(out) <- c('data.frame', 'gbif')
+    if (inherits(out, "data.frame")) {
+      class(out) <- c('tbl_df', 'data.frame', 'gbif')
     } else {
       class(out) <- "gbif"
       attr(out, 'type') <- if (length(iter) == 0) "single" else "many"
@@ -167,21 +172,22 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
   structure(out, return = return, args = argscoll)
 }
 
-#' @method print gbif
 #' @export
 #' @rdname occ_search
-print.gbif <- function(x, ..., n = 10) {
-  if (attr(x, "type") == "single" & all(c('meta','data','hierarchy','media') %in% names(x))){
+print.gbif <- function(x, ...) {
+  if (
+    if (is.null(attr(x, "type"))) FALSE else attr(x, "type") == "single" &&
+    all(c('meta', 'data', 'hierarchy', 'media') %in% names(x))
+  ) {
     cat(rgbif_wrap(sprintf("Records found [%s]", x$meta$count)), "\n")
     cat(rgbif_wrap(sprintf("Records returned [%s]", NROW(x$data))), "\n")
     cat(rgbif_wrap(sprintf("No. unique hierarchies [%s]", length(x$hierarchy))), "\n")
     cat(rgbif_wrap(sprintf("No. media records [%s]", length(x$media))), "\n")
     cat(rgbif_wrap(sprintf("Args [%s]", pasteargs(x))), "\n")
-    cat(sprintf("First 10 rows of data\n\n"))
-    if (is(x$data, "data.frame")) trunc_mat(x$data, n = n) else cat(x$data)
-  } else if (attr(x, "type") == "many") {
+    if (inherits(x$data, "data.frame")) print(x$data) else cat(x$data)
+  } else if (if (is.null(attr(x, "type"))) FALSE else attr(x, "type") == "many") {
     if (!attr(x, "return") == "all") {
-      if(is(x, "gbif")) x <- unclass(x)
+      if (inherits(x, "gbif")) x <- unclass(x)
       attr(x, "type") <- NULL
       attr(x, "return") <- NULL
       print(x)
@@ -192,10 +198,12 @@ print.gbif <- function(x, ..., n = 10) {
       cat(rgbif_wrap(sprintf("No. media records [%s]", pastemax(x, "media"))), "\n")
       cat(rgbif_wrap(sprintf("Args [%s]", pasteargs(x))), "\n")
       cat(sprintf("First 10 rows of data from %s\n\n", substring(names(x)[1], 1, 50)))
-      if(is(x[[1]]$data, "data.frame")) trunc_mat(x[[1]]$data, n = n) else cat(x[[1]]$data)
+      if (inherits(x[[1]]$data, "data.frame")) print(x[[1]]$data) else cat(x[[1]]$data)
     }
+  } else if (inherits(x, "data.frame")) {
+    print(tibble::as_data_frame(x))
   } else {
-    if(is(x, "gbif")) x <- unclass(x)
+    if (inherits(x, "gbif")) x <- unclass(x)
     attr(x, "type") <- NULL
     attr(x, "return") <- NULL
     print(x)
