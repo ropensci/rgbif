@@ -16,6 +16,31 @@ Tutorials:
 * [issues vignette - how to clean GBIF data](vignettes/issues_vignette.Rmd)
 * [taxonomic names - examples of some confusing bits](vignettes/taxonomic_names.Rmd)
 
+## Package API
+
+The `rgbif` package API follows the GBIF API, which has the following sections:
+
+* `registry` (<http://www.gbif.org/developer/registry>) - Metadata on datasets, and
+contributing organizations, installations, networks, and nodes
+    * `rgbif` functions: `dataset_metrics()`, `dataset_search()`, `dataset_suggest()`,
+    `datasets()`, `enumeration()`, `enumeration_country()`, `installations()`, `networks()`,
+    `nodes()`, `organizations()`
+    * Registry also includes the GBIF OAI-PMH service, which includes GBIF registry
+    data only. `rgbif` functions: `gbif_oai_get_records()`, `gbif_oai_identify()`,
+    `gbif_oai_list_identifiers()`, `gbif_oai_list_metadataformats()`, 
+    `gbif_oai_list_records()`, `gbif_oai_list_sets()`
+* `species` (<http://www.gbif.org/developer/species>) - Species names and metadata
+    * `rgbif` functions: `name_backbone()`, `name_lookup()`, `name_suggest()`, `name_usage()`
+* `occurrences` (<http://www.gbif.org/developer/occurrence>) - Occurrences, both for 
+the search and download APIs
+    * `rgbif` functions: `occ_count()`, `occ_data()`, `occ_download()`, `occ_download_cancel()`,
+    `occ_download_cancel_staged()`, `occ_download_get()`, `occ_download_import()`,
+    `occ_download_list()`, `occ_download_meta()`, `occ_get()`, `occ_issues()`,
+    `occ_issues_lookup()`, `occ_metadata()`, `occ_search()`
+
+The GBIF `maps` API (<http://www.gbif.org/developer/maps>) is not implemented in `rgbif`, 
+and are meant more for intergration with web based maps.
+
 ## Installation
 
 
