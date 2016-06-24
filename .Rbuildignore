@@ -15,7 +15,6 @@ R/deprecated.r
 README.Rmd
 ^\.httr-oauth$
 ^.*\.zip$
-NEWS.md
 ^CONDUCT\.md$
 ^cran-comments\.md$
 ^revdep$
