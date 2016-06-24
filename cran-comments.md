@@ -7,16 +7,23 @@
 
 0 errors | 0 warnings | 1 note
 
-xxxx
+* checking CRAN incoming feasibility ... NOTE
+Maintainer: 'Scott Chamberlain <myrmecocystus@gmail.com>'
+
+License components with restrictions and base license permitting such:
+  MIT + file LICENSE
+File 'LICENSE':
+  YEAR: 2016
+  COPYRIGHT HOLDER: Scott Chamberlain
 
 ## Reverse dependencies
 
 * I have run R CMD check on the 5 downstream dependencies.
-  (Summary at ). 
+  (Summary at https://github.com/ropensci/rgbif/blob/master/revdep/README.md). 
   
-* FAILURE SUMMARY
+* No downstream dependencies had problems.
 
-* All revdep maintainers were notified of the release on RELEASE DATE.
+* All revdep maintainers were notified of the release.
 
 --------
 
