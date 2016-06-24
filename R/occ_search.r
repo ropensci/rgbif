@@ -12,7 +12,6 @@
 #'    data. hier returns the classifications in a list for each record. meta
 #'    returns the metadata for the entire call. all gives all data back in a list.
 #' @param x Output from a call to occ_search
-#' @param n Number of rows of the data to print.
 #' @seealso \code{\link{downloads}}, \code{\link{occ_data}}
 
 occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publishingCountry=NULL,
@@ -115,7 +114,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
       }
     } else if (return == 'meta') {
       #data.frame(meta, stringsAsFactors = FALSE)
-      as_data_frame(meta)
+      tibble::as_data_frame(meta)
     } else {
       if (identical(data, list())) {
         dat2 <- paste("no data found, try a different search")
@@ -123,7 +122,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publish
         media <- paste("no data found, try a different search")
       } else {
         data <- gbifparser(input = data, fields = fields)
-        dat2 <- as_data_frame(prune_result(ldfast(lapply(data, "[[", "data"))))
+        dat2 <- tibble::as_data_frame(prune_result(ldfast(lapply(data, "[[", "data"))))
         hier2 <- unique(lapply(data, "[[", "hierarchy"))
         media <- unique(lapply(data, "[[", "media"))
       }

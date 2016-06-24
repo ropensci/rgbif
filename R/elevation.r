@@ -17,9 +17,9 @@
 #' @return A new column named elevation in the supplied data.frame or a vector with elevation of
 #' each location in meters.
 #' @references Uses the Google Elevation API at the following link
-#' \url{https://developers.google.com/maps/documentation/elevation/}
+#' https://developers.google.com/maps/documentation/elevation/start
 #' @details To get an API key, see instructions at
-#' \url{https://developers.google.com/maps/documentation/elevation/#api_key}. It should be an
+#' https://developers.google.com/maps/documentation/elevation/#api_key - It should be an
 #' easy process. Once you have the key pass it in to the \code{key} parameter. You can store
 #' the key in your \code{.Rprofile} file and read it in via \code{getOption} as in the
 #' examples below.

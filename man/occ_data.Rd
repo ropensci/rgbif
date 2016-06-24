@@ -493,8 +493,10 @@ occ_data(search="kingfisher", limit=20)
 
 # Range queries
 ## See Detail for parameters that support range queries
-occ_data(depth='50,100', limit = 20) # this is a range depth, with lower/upper limits in character string
-occ_data(depth=c(50,100), limit = 20) # this is not a range search, but does two searches for each depth
+### this is a range depth, with lower/upper limits in character string
+occ_data(depth='50,100', limit = 20)
+### this is not a range search, but does two searches for each depth
+occ_data(depth=c(50,100), limit = 20)
 
 ## Range search with year
 occ_data(year='1999,2000', limit=20)

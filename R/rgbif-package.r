@@ -9,7 +9,7 @@
 #'
 #' @section A note about the old GBIF API:
 #'
-#' The old GBIF API was at \url{http://data.gbif.org/tutorial/services}, but is now defunct -
+#' The old GBIF API was at http://data.gbif.org/tutorial/services, but is now defunct -
 #' that is, not available anymore. We used to have functions that worked with the old API, but
 #' those functions are now not available anymore because GBIF made the old API defunct.
 #'
@@ -40,7 +40,6 @@
 #' @importFrom oai id list_identifiers list_records list_metadataformats
 #' list_sets get_records
 #' @importFrom geoaxe chop to_wkt
-#' @importFrom tibble as_data_frame
 #' @name rgbif-package
 #' @aliases rgbif
 #' @docType package

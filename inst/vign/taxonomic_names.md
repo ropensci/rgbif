@@ -10,25 +10,26 @@ Taxonomic Names
 ===============
 
 You have probably, or will, run into problems with taxonomic names. For example,
-you may think you know how a taxonomic name is spelled, but then GBIF will not 
-agree with you. Or, perhaps GBIF will have multiple versions of the taxon, 
+you may think you know how a taxonomic name is spelled, but then GBIF will not
+agree with you. Or, perhaps GBIF will have multiple versions of the taxon,
 spelled in slightly different ways. Or, the version of the name that they think
-is the _right one_ does not match what yo think is the right one. 
+is the _right one_ does not match what yo think is the right one.
 
-This isn't really anyone's fault. It's a result of there not being one accepted 
-taxonomic source of truth across the globe. There are many different taxonomic 
+This isn't really anyone's fault. It's a result of there not being one accepted
+taxonomic source of truth across the globe. There are many different taxonomic
 databases. GBIF makes their own _backbone taxonomy_ that they use as a source
-of internal truth for taxonomic names. The accepted names in the backbone taxonomy 
-match those in the database of occurrences - so do try to figure out what 
-backbone taxonomy version of the name you want. 
+of internal truth for taxonomic names. The accepted names in the backbone taxonomy
+match those in the database of occurrences - so do try to figure out what
+backbone taxonomy version of the name you want.
 
-Another source of problems stems from the fact that names are constantly changing. 
+Another source of problems stems from the fact that names are constantly changing.
 Sometimes epithets change, sometimes generic names, and sometimes higher names
-like family or tribe. These changes can take a while to work their way in to 
+like family or tribe. These changes can take a while to work their way in to
 GBIF's data.
 
 The following are some examples of confusing name bits. We'll update these if
-GBIF's name's change.
+GBIF's name's change. The difference between each pair of names is highlighted
+in bold.
 
 ## Load rgbif
 
@@ -46,7 +47,7 @@ to `name_backbone()` for each input name, then `rbind` them together:
 ```r
 name_rbind <- function(..., rank = "species") {
  df <- data.frame(do.call(rbind, lapply(list(...), name_backbone, rank = rank)))
- df[, c('usageKey', 'scientificName', 'canonicalName', 'rank', 
+ df[, c('usageKey', 'scientificName', 'canonicalName', 'rank',
        'status', 'confidence', 'matchType', 'synonym')]
 }
 ```
@@ -77,8 +78,8 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 #> 2         88     FUZZY   FALSE
 ```
 
-* P. s<b>y</b>lvestris w/ 241789 occurrences - from Catalogue of Life
-* P. s<b>i</b>lvestris w/ 241789 occurrences - from Catalogue of Life
+* P. s<b>y</b>lvestris w/ 242570 occurrences - from Catalogue of Life
+* P. s<b>i</b>lvestris w/ 242570 occurrences - from Catalogue of Life
 
 ## Macrozamia platyrachis vs. M. platyrhachis
 
@@ -109,7 +110,7 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 #> 2        100     EXACT   FALSE
 ```
 
-* C. circinalis w/ 515 occurrences - from Catalogue of Life
+* C. circinalis w/ 524 occurrences - from Catalogue of Life
 * C. circin<b>n</b>alis w/ 13 occurrences - from International Plant Names Index
 
 ## Isolona perrieri vs. I. perrierii
@@ -143,3 +144,14 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 
 * Wi<b>e</b>sneria w/ 71 occurrences - from Catalogue of Life
 * Wisneria w/ 3 occurrences - from Interim Register of Marine and Nonmarine Genera
+
+## The take away messages from this vignette
+
+* Make sure you are using the name you think you're using
+* Realize that GBIF's backbone taxonomy is used for occurrence data
+* Searching for occurrences by name matches against backbone names, 
+not other names (e.g., synonyms)
+* GBIF may at some points in time have multiple version of the same name in their own backbone taxonomy - These can usually be separated by data provider (e.g., Catalogue of Life vs. International Plant Names Index)
+* There are different ways to search for names - make sure are familiar 
+with the four different name search functions, all starting with 
+`name_`

@@ -153,8 +153,6 @@ returns the metadata for the entire call. all gives all data back in a list.}
 be combined with \code{\link[httr]{config}}.}
 
 \item{x}{Output from a call to occ_search}
-
-\item{n}{Number of rows of the data to print.}
 }
 \value{
 A data.frame or list

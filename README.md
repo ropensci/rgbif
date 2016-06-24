@@ -48,7 +48,8 @@ occ_search(scientificName = "Ursus americanus", limit = 50)
 #> No. unique hierarchies [1] 
 #> No. media records [47] 
 #> Args [scientificName=Ursus americanus, limit=50, offset=0, fields=all] 
-#> # A tibble: 50 x 67
+#> Source: local data frame [50 x 67]
+#> 
 #>                name        key decimalLatitude decimalLongitude
 #>               <chr>      <int>           <dbl>            <dbl>
 #> 1  Ursus americanus 1253300445        44.65481        -72.67270
@@ -61,26 +62,25 @@ occ_search(scientificName = "Ursus americanus", limit = 50)
 #> 8  Ursus americanus 1249284297        43.68723        -72.32891
 #> 9  Ursus americanus 1257415362        44.32746        -72.41007
 #> 10 Ursus americanus 1262389246        43.80871        -72.20964
-#> # ... with 40 more rows, and 63 more variables: issues <chr>,
-#> #   datasetKey <chr>, publishingOrgKey <chr>, publishingCountry <chr>,
-#> #   protocol <chr>, lastCrawled <chr>, lastParsed <chr>, extensions <chr>,
-#> #   basisOfRecord <chr>, taxonKey <int>, kingdomKey <int>,
-#> #   phylumKey <int>, classKey <int>, orderKey <int>, familyKey <int>,
-#> #   genusKey <int>, speciesKey <int>, scientificName <chr>, kingdom <chr>,
-#> #   phylum <chr>, order <chr>, family <chr>, genus <chr>, species <chr>,
-#> #   genericName <chr>, specificEpithet <chr>, taxonRank <chr>,
-#> #   dateIdentified <chr>, year <int>, month <int>, day <int>,
-#> #   eventDate <chr>, modified <chr>, lastInterpreted <chr>,
-#> #   references <chr>, identifiers <chr>, facts <chr>, relations <chr>,
-#> #   geodeticDatum <chr>, class <chr>, countryCode <chr>, country <chr>,
-#> #   rightsHolder <chr>, identifier <chr>, verbatimEventDate <chr>,
-#> #   datasetName <chr>, gbifID <chr>, verbatimLocality <chr>,
-#> #   collectionCode <chr>, occurrenceID <chr>, taxonID <chr>,
-#> #   license <chr>, catalogNumber <chr>, recordedBy <chr>,
-#> #   http...unknown.org.occurrenceDetails <chr>, institutionCode <chr>,
-#> #   rights <chr>, eventTime <chr>, occurrenceRemarks <chr>,
-#> #   identificationID <chr>, infraspecificEpithet <chr>,
-#> #   coordinateUncertaintyInMeters <dbl>, informationWithheld <chr>
+#> ..              ...        ...             ...              ...
+#> Variables not shown: issues <chr>, datasetKey <chr>, publishingOrgKey
+#>   <chr>, publishingCountry <chr>, protocol <chr>, lastCrawled <chr>,
+#>   lastParsed <chr>, extensions <chr>, basisOfRecord <chr>, taxonKey <int>,
+#>   kingdomKey <int>, phylumKey <int>, classKey <int>, orderKey <int>,
+#>   familyKey <int>, genusKey <int>, speciesKey <int>, scientificName <chr>,
+#>   kingdom <chr>, phylum <chr>, order <chr>, family <chr>, genus <chr>,
+#>   species <chr>, genericName <chr>, specificEpithet <chr>, taxonRank
+#>   <chr>, dateIdentified <chr>, year <int>, month <int>, day <int>,
+#>   eventDate <chr>, modified <chr>, lastInterpreted <chr>, references
+#>   <chr>, identifiers <chr>, facts <chr>, relations <chr>, geodeticDatum
+#>   <chr>, class <chr>, countryCode <chr>, country <chr>, rightsHolder
+#>   <chr>, identifier <chr>, verbatimEventDate <chr>, datasetName <chr>,
+#>   gbifID <chr>, verbatimLocality <chr>, collectionCode <chr>, occurrenceID
+#>   <chr>, taxonID <chr>, license <chr>, catalogNumber <chr>, recordedBy
+#>   <chr>, http...unknown.org.occurrenceDetails <chr>, institutionCode
+#>   <chr>, rights <chr>, eventTime <chr>, occurrenceRemarks <chr>,
+#>   identificationID <chr>, infraspecificEpithet <chr>,
+#>   coordinateUncertaintyInMeters <dbl>, informationWithheld <chr>.
 ```
 
 Or you can get the taxon key first with `name_backbone()`. Here, we select to only return the occurrence data.
@@ -94,7 +94,8 @@ occ_search(taxonKey=key, limit=20)
 #> No. unique hierarchies [1] 
 #> No. media records [13] 
 #> Args [taxonKey=3119195, limit=20, offset=0, fields=all] 
-#> # A tibble: 20 x 81
+#> Source: local data frame [20 x 81]
+#> 
 #>                 name        key decimalLatitude decimalLongitude
 #>                <chr>      <int>           <dbl>            <dbl>
 #> 1  Helianthus annuus 1249279611        34.04810       -117.79884
@@ -117,32 +118,29 @@ occ_search(taxonKey=key, limit=20)
 #> 18 Helianthus annuus 1265553900        34.12932       -118.20648
 #> 19 Helianthus annuus 1269543851        29.50991        -94.50006
 #> 20 Helianthus annuus 1265899487        19.45194        -96.95945
-#> # ... with 77 more variables: issues <chr>, datasetKey <chr>,
-#> #   publishingOrgKey <chr>, publishingCountry <chr>, protocol <chr>,
-#> #   lastCrawled <chr>, lastParsed <chr>, extensions <chr>,
-#> #   basisOfRecord <chr>, taxonKey <int>, kingdomKey <int>,
-#> #   phylumKey <int>, classKey <int>, orderKey <int>, familyKey <int>,
-#> #   genusKey <int>, speciesKey <int>, scientificName <chr>, kingdom <chr>,
-#> #   phylum <chr>, order <chr>, family <chr>, genus <chr>, species <chr>,
-#> #   genericName <chr>, specificEpithet <chr>, taxonRank <chr>,
-#> #   dateIdentified <chr>, year <int>, month <int>, day <int>,
-#> #   eventDate <chr>, modified <chr>, lastInterpreted <chr>,
-#> #   references <chr>, identifiers <chr>, facts <chr>, relations <chr>,
-#> #   geodeticDatum <chr>, class <chr>, countryCode <chr>, country <chr>,
-#> #   rightsHolder <chr>, identifier <chr>, verbatimEventDate <chr>,
-#> #   datasetName <chr>, gbifID <chr>, verbatimLocality <chr>,
-#> #   collectionCode <chr>, occurrenceID <chr>, taxonID <chr>,
-#> #   license <chr>, catalogNumber <chr>, recordedBy <chr>,
-#> #   http...unknown.org.occurrenceDetails <chr>, institutionCode <chr>,
-#> #   rights <chr>, eventTime <chr>, identificationID <chr>,
-#> #   infraspecificEpithet <chr>, institutionID <chr>,
-#> #   nomenclaturalCode <chr>, dataGeneralizations <chr>,
-#> #   footprintWKT <chr>, county <chr>, municipality <chr>, language <chr>,
-#> #   occurrenceStatus <chr>, footprintSRS <chr>,
-#> #   ownerInstitutionCode <chr>, higherClassification <chr>,
-#> #   reproductiveCondition <chr>, identifiedBy <chr>, collectionID <chr>,
-#> #   occurrenceRemarks <chr>, coordinateUncertaintyInMeters <dbl>,
-#> #   informationWithheld <chr>
+#> Variables not shown: issues <chr>, datasetKey <chr>, publishingOrgKey
+#>   <chr>, publishingCountry <chr>, protocol <chr>, lastCrawled <chr>,
+#>   lastParsed <chr>, extensions <chr>, basisOfRecord <chr>, taxonKey <int>,
+#>   kingdomKey <int>, phylumKey <int>, classKey <int>, orderKey <int>,
+#>   familyKey <int>, genusKey <int>, speciesKey <int>, scientificName <chr>,
+#>   kingdom <chr>, phylum <chr>, order <chr>, family <chr>, genus <chr>,
+#>   species <chr>, genericName <chr>, specificEpithet <chr>, taxonRank
+#>   <chr>, dateIdentified <chr>, year <int>, month <int>, day <int>,
+#>   eventDate <chr>, modified <chr>, lastInterpreted <chr>, references
+#>   <chr>, identifiers <chr>, facts <chr>, relations <chr>, geodeticDatum
+#>   <chr>, class <chr>, countryCode <chr>, country <chr>, rightsHolder
+#>   <chr>, identifier <chr>, verbatimEventDate <chr>, datasetName <chr>,
+#>   gbifID <chr>, verbatimLocality <chr>, collectionCode <chr>, occurrenceID
+#>   <chr>, taxonID <chr>, license <chr>, catalogNumber <chr>, recordedBy
+#>   <chr>, http...unknown.org.occurrenceDetails <chr>, institutionCode
+#>   <chr>, rights <chr>, eventTime <chr>, identificationID <chr>,
+#>   infraspecificEpithet <chr>, institutionID <chr>, nomenclaturalCode
+#>   <chr>, dataGeneralizations <chr>, footprintWKT <chr>, county <chr>,
+#>   municipality <chr>, language <chr>, occurrenceStatus <chr>, footprintSRS
+#>   <chr>, ownerInstitutionCode <chr>, higherClassification <chr>,
+#>   reproductiveCondition <chr>, identifiedBy <chr>, collectionID <chr>,
+#>   occurrenceRemarks <chr>, coordinateUncertaintyInMeters <dbl>,
+#>   informationWithheld <chr>.
 ```
 
 ## Search for many species
@@ -162,7 +160,8 @@ occ_search(taxonKey=keys, limit=5, hasCoordinate=TRUE)
 #>      offset=0, fields=all] 
 #> First 10 rows of data from 2480598
 #> 
-#> # A tibble: 5 x 76
+#> Source: local data frame [5 x 76]
+#> 
 #>                      name        key decimalLatitude decimalLongitude
 #>                     <chr>      <int>           <dbl>            <dbl>
 #> 1 Accipiter erythronemius  920169861       -20.55244        -56.64104
@@ -170,29 +169,27 @@ occ_search(taxonKey=keys, limit=5, hasCoordinate=TRUE)
 #> 3 Accipiter erythronemius 1001096527       -27.58000        -58.66000
 #> 4 Accipiter erythronemius 1001096518       -27.92000        -59.14000
 #> 5 Accipiter erythronemius  699417490         5.26667        -60.73333
-#> # ... with 72 more variables: issues <chr>, datasetKey <chr>,
-#> #   publishingOrgKey <chr>, publishingCountry <chr>, protocol <chr>,
-#> #   lastCrawled <chr>, lastParsed <chr>, extensions <chr>,
-#> #   basisOfRecord <chr>, taxonKey <int>, kingdomKey <int>,
-#> #   phylumKey <int>, classKey <int>, orderKey <int>, familyKey <int>,
-#> #   genusKey <int>, speciesKey <int>, scientificName <chr>, kingdom <chr>,
-#> #   phylum <chr>, order <chr>, family <chr>, genus <chr>, species <chr>,
-#> #   genericName <chr>, specificEpithet <chr>, taxonRank <chr>,
-#> #   coordinateUncertaintyInMeters <dbl>, year <int>, month <int>,
-#> #   day <int>, eventDate <chr>, lastInterpreted <chr>, identifiers <chr>,
-#> #   facts <chr>, relations <chr>, geodeticDatum <chr>, class <chr>,
-#> #   countryCode <chr>, country <chr>, catalogNumber <chr>,
-#> #   recordedBy <chr>, institutionCode <chr>, locality <chr>, gbifID <chr>,
-#> #   collectionCode <chr>, modified <chr>, identifier <chr>, created <chr>,
-#> #   associatedSequences <chr>, occurrenceID <chr>,
-#> #   higherClassification <chr>, taxonID <chr>, sex <chr>, elevation <dbl>,
-#> #   elevationAccuracy <dbl>, institutionID <chr>, language <chr>,
-#> #   type <chr>, preparations <chr>, rights <chr>, verbatimElevation <chr>,
-#> #   recordNumber <chr>, higherGeography <chr>, verbatimEventDate <chr>,
-#> #   georeferenceVerificationStatus <chr>, datasetName <chr>,
-#> #   otherCatalogNumbers <chr>, occurrenceRemarks <chr>,
-#> #   accessRights <chr>, bibliographicCitation <chr>,
-#> #   georeferenceSources <chr>
+#> Variables not shown: issues <chr>, datasetKey <chr>, publishingOrgKey
+#>   <chr>, publishingCountry <chr>, protocol <chr>, lastCrawled <chr>,
+#>   lastParsed <chr>, extensions <chr>, basisOfRecord <chr>, taxonKey <int>,
+#>   kingdomKey <int>, phylumKey <int>, classKey <int>, orderKey <int>,
+#>   familyKey <int>, genusKey <int>, speciesKey <int>, scientificName <chr>,
+#>   kingdom <chr>, phylum <chr>, order <chr>, family <chr>, genus <chr>,
+#>   species <chr>, genericName <chr>, specificEpithet <chr>, taxonRank
+#>   <chr>, coordinateUncertaintyInMeters <dbl>, year <int>, month <int>, day
+#>   <int>, eventDate <chr>, lastInterpreted <chr>, identifiers <chr>, facts
+#>   <chr>, relations <chr>, geodeticDatum <chr>, class <chr>, countryCode
+#>   <chr>, country <chr>, catalogNumber <chr>, recordedBy <chr>,
+#>   institutionCode <chr>, locality <chr>, gbifID <chr>, collectionCode
+#>   <chr>, modified <chr>, identifier <chr>, created <chr>,
+#>   associatedSequences <chr>, occurrenceID <chr>, higherClassification
+#>   <chr>, taxonID <chr>, sex <chr>, elevation <dbl>, elevationAccuracy
+#>   <dbl>, institutionID <chr>, language <chr>, type <chr>, preparations
+#>   <chr>, rights <chr>, verbatimElevation <chr>, recordNumber <chr>,
+#>   higherGeography <chr>, verbatimEventDate <chr>,
+#>   georeferenceVerificationStatus <chr>, datasetName <chr>,
+#>   otherCatalogNumbers <chr>, occurrenceRemarks <chr>, accessRights <chr>,
+#>   bibliographicCitation <chr>, georeferenceSources <chr>.
 ```
 
 ## Maps

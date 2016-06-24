@@ -244,4 +244,4 @@ dat <- occ_search(taxonKey=key, return='data', limit=300)
 gbifmap(dat)
 ```
 
-[gbifapi]: http://data.gbif.org/tutorial/services
+[gbifapi]: http://www.gbif.org/developer/summary

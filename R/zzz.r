@@ -168,9 +168,9 @@ ldfast_names <- function(x, convertvec=FALSE){
 convert2df <- function(x){
   if (!inherits(x, "data.frame")) {
     # data.frame(rbind(x), stringsAsFactors = FALSE)
-    data_frame(rbind(x))
+    tibble::data_frame(rbind(x))
   } else {
-    as_data_frame(x)
+    tibble::as_data_frame(x)
   }
 }
 
