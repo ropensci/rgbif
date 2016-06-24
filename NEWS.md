@@ -1,3 +1,31 @@
+rgbif 0.9.4
+===========
+
+### NEW FEATURES
+
+* Now using `tibble` in most of the package when the output is 
+a data.frame (#204)
+* New vignette _Taxonomic Names_ for discussing some common names 
+problems users may run into, and some strategies for dealing with 
+taxonomic names when using GBIF (#208) (#209)
+
+### MINOR IMPROVEMENTS
+
+* Replaced `is()` with `inherits()`, no longer importing `methods()` (#219)
+* Improved docs for registry functions. Not all options were listed 
+for the `data` parameter, now they are (#210)
+* Fixed documentation error in `gbifmap()` man file (#212) thanks to @rossmounce
+
+### BUG FIXES
+
+* Fixed bug in internal parser within `occ_download()`, in which 
+strings to parse were not being parsed correctly if spaces weren't in 
+the right place, should be more robust now, and added tests (#217). Came 
+from https://discuss.ropensci.org/t/rgbif-using-geometry-in-occ-download/395
+* The parameter `type` was being silently ignored in a number of 
+registry functions. fixed that. (#211)
+
+
 rgbif 0.9.3
 ===========
 
