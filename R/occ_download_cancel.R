@@ -16,10 +16,10 @@
 
 occ_download_cancel <- function(key, user=getOption("gbif_user"), pwd=getOption("gbif_pwd"), ...) {
   stopifnot(!is.null(key))
-  url <- sprintf('http://api.gbif.org/v1/occurrence/download/request/%s', key)
+  url <- sprintf('%s/occurrence/download/request/%s', gbif_base(), key)
   res <- DELETE(url, c(authenticate(user = user, password = pwd), make_rgbif_ua(), list(...)))
   stop_for_status(res)
-  if (res$status_code == 204) message("Download sucessfully deleted")
+  if (res$status_code == 204) message("Download sucessfully deleted") else res
 }
 
 #' @export

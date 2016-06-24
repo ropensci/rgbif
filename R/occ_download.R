@@ -75,13 +75,18 @@ occ_download <- function(...,
    type = "and", user = getOption("gbif_user"), pwd = getOption("gbif_pwd"),
    email = getOption("gbif_email"), callopts = list()) {
 
-  url <- 'http://api.gbif.org/v1/occurrence/download/request'
+  url <- paste0(gbif_base(), '/occurrence/download/request')
   stopifnot(!is.null(user), !is.null(email))
+  req <- parse_occd(user, email, type, ...)
+  out <- rg_POST(url, req = req, user = user, pwd = pwd, callopts)
+  structure(out, class = "occ_download", user = user, email = email)
+}
 
+parse_occd <- function(user, email, type, ...) {
   args <- list(...)
   keyval <- lapply(args, parse_args)
 
-  req <- if (length(keyval) > 1) {
+  if (length(keyval) > 1) {
     list(creator = unbox(user),
          notification_address = email,
          predicate = list(
@@ -92,11 +97,11 @@ occ_download <- function(...,
   } else {
     if (type == "within" | "within" %in% sapply(keyval, "[[", "type")) {
       tmp <- list(creator = unbox(user),
-           notification_address = email,
-           predicate = list(
-             type = keyval[[1]]$type,
-             value = keyval[[1]]$value
-           )
+                  notification_address = email,
+                  predicate = list(
+                    type = keyval[[1]]$type,
+                    value = keyval[[1]]$value
+                  )
       )
       names(tmp$predicate)[2] <- tolower(keyval[[1]]$key)
       tmp
@@ -111,9 +116,6 @@ occ_download <- function(...,
       )
     }
   }
-
-  out <- rg_POST(url, req = req, user = user, pwd = pwd, callopts)
-  structure(out, class = "occ_download", user = user, email = email)
 }
 
 rg_POST <- function(url, req, user, pwd, callopts) {
@@ -154,12 +156,19 @@ print.occ_download <- function(x, ...) {
 }
 
 parse_args <- function(x){
-  tmp <- strsplit(x, "\\s")[[1]]
-  type <- operator_lkup[[ tmp[2] ]]
-  key <- key_lkup[[ tmp[1] ]]
-  value <- paste0(tmp[3:length(tmp)], collapse = " ")
+  key <- key_lkup[[ strextract(x, "[A-Za-z]+") ]]
+  type <- operator_lkup[[ strextract(x, paste0(operators_regex, collapse = "|")) ]]
+  value <- gsub("^\\s+|\\s+$", "", substring(x, regexpr(paste0(operators_regex, collapse = "|"), x) + 1, nchar(x)))
   list(type = unbox(type), key = unbox(key), value = unbox(value))
+  # tmp <- strsplit(x, "\\s")[[1]]
+  # type <- operator_lkup[[ tmp[2] ]]
+  # key <- key_lkup[[ tmp[1] ]]
+  # value <- paste0(tmp[3:length(tmp)], collapse = " ")
+  # list(type = unbox(type), key = unbox(key), value = unbox(value))
 }
+
+operators_regex <- c("=", "\\&", "<", "<=", ">", ">=", "\\!", "\\sin\\s", "\\swithin\\s", "\\slike\\s", "\\|")
+#ops_regex <- paste0(operators_regex, collapse = '|')
 
 operator_lkup <- list(`=` = 'equals', `&` = 'and', `|` = 'or', `<` = 'lessThan',
     `<=` = 'lessThanOrEquals', `>` = 'greaterThan',

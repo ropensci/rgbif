@@ -18,7 +18,7 @@ occ_download_list <- function(user=getOption("gbif_user"), pwd=getOption("gbif_p
                               limit = 20, start = 0, ...) {
 
   stopifnot(!is.null(user), !is.null(pwd))
-  url <- sprintf('http://api.gbif.org/v1/occurrence/download/user/%s', user)
+  url <- sprintf('%s/occurrence/download/user/%s', gbif_base(), user)
   args <- rgbif_compact(list(limit = limit, offset = start))
   res <- GET(url, query = args, config = c(
     content_type_json(),

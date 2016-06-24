@@ -24,7 +24,7 @@ occ_download_get <- function(key, path=".", overwrite=FALSE, ...) {
   meta <- occ_download_meta(key)
   size <- getsize(meta$size)
   message(sprintf('Download file size: %s MB', size))
-  url <- sprintf('http://api.gbif.org/v1/occurrence/download/request/%s', key)
+  url <- sprintf('%s/occurrence/download/request/%s', gbif_base(), key)
   path <- sprintf("%s/%s.zip", path, key)
   res <- GET(url, write_disk(path = path, overwrite = overwrite), make_rgbif_ua(), ...)
   if (res$status_code > 203) stop(c_utf8(res))
