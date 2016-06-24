@@ -1,8 +1,24 @@
-R CMD CHECK passed on my local OS X install on R 3.2.4 and
-R development version, Ubuntu running on Travis-CI, and
-Win builder.
+## Test environments
+* local OS X install, R 3.3.1
+* ubuntu 12.04 (on travis-ci), R 3.3.1
+* win-builder (devel and release)
 
-This submission fixes some bugs, and adds a feature to two functions to 
-allow more flexible queries on well-known text strings.
+## R CMD check results
 
-Thanks! Scott Chamberlain
+0 errors | 0 warnings | 1 note
+
+xxxx
+
+## Reverse dependencies
+
+* I have run R CMD check on the 5 downstream dependencies.
+  (Summary at ). 
+  
+* FAILURE SUMMARY
+
+* All revdep maintainers were notified of the release on RELEASE DATE.
+
+--------
+
+Thanks!
+Scott Chamberlain

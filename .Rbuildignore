@@ -17,3 +17,5 @@ README.Rmd
 ^.*\.zip$
 NEWS.md
 ^CONDUCT\.md$
+^cran-comments\.md$
+^revdep$
