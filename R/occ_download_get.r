@@ -36,7 +36,7 @@ occ_download_get <- function(key, path=".", overwrite=FALSE, ...) {
 
 #' @export
 print.occ_download_get <- function(x, ...) {
-  stopifnot(is(x, 'occ_download_get'))
+  stopifnot(inherits(x, 'occ_download_get'))
   cat("<<gbif downloaded get>>", "\n", sep = "")
   cat("  Path: ", x, "\n", sep = "")
   cat("  File size: ", sprintf("%s MB", attr(x, "size")), "\n", sep = "")

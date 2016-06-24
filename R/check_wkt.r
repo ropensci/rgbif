@@ -33,7 +33,7 @@ check_wkt <- function(wkt = NULL){
         stop("WKT must be of type POINT, POLYGON, LINESTRING, or LINEARRING", call. = FALSE)
       }
       res <- tryCatch(read_wkt(wkt[i]), error = function(e) e)
-      if (!is(res, 'list')) {
+      if (!inherits(res, 'list')) {
         stop(res$message, call. = FALSE)
       }
     }

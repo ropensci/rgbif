@@ -22,7 +22,7 @@ occ_download_meta <- function(key, ...) {
 
 #' @export
 print.occ_download_meta <- function(x, ...){
-  stopifnot(is(x, 'occ_download_meta'))
+  stopifnot(inherits(x, 'occ_download_meta'))
   cat("<<gbif download metadata>>", "\n", sep = "")
   cat("  Status: ", x$status, "\n", sep = "")
   cat("  Download key: ", x$key, "\n", sep = "")

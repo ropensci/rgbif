@@ -25,7 +25,6 @@
 #'   in \code{rgbif}, and are meant more for intergration with web based maps.
 #' }
 #'
-#' @importFrom methods is
 #' @importFrom utils browseURL head unzip packageVersion
 #' @importFrom stats na.omit complete.cases
 #' @importFrom data.table rbindlist fread setDF

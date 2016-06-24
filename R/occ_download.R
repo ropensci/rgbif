@@ -148,7 +148,7 @@ process_keyval <- function(args, type) {
 
 #' @export
 print.occ_download <- function(x, ...) {
-  stopifnot(is(x, 'occ_download'))
+  stopifnot(inherits(x, 'occ_download'))
   cat("<<gbif download>>", "\n", sep = "")
   cat("  Username: ", attr(x, "user"), "\n", sep = "")
   cat("  E-mail: ", attr(x, "email"), "\n", sep = "")

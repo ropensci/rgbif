@@ -49,7 +49,7 @@ gbif_citation <- function(x) {
 
 #' @export
 gbif_citation.gbif <- function(x) {
-  if (!is(x, "data.frame")) {
+  if (!inherits(x, "data.frame")) {
     x <- x$data
   }
   dkeys <- unique(x$datasetKey)

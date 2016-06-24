@@ -115,6 +115,6 @@ obj_type <- function (x)
     paste0("<S3:", paste0(class(x), collapse = ", "), ">")
   }
   else {
-    paste0("<S4:", paste0(is(x), collapse = ", "), ">")
+    paste0("<S4:", paste0(inherits(x), collapse = ", "), ">")
   }
 }

@@ -83,7 +83,7 @@ elevation <- function(input=NULL, latitude=NULL, longitude=NULL, latlong=NULL, k
   }
 
   if (!is.null(input)) {
-    if (!is(input, "data.frame")) stop("input must be a data.frame",call. = FALSE)
+    if (!inherits(input, "data.frame")) stop("input must be a data.frame",call. = FALSE)
     stopifnot(all(c('decimalLatitude','decimalLongitude') %in% names(input)))
     names(input)[names(input) %in% 'decimalLatitude'] <- "latitude"
     names(input)[names(input) %in% 'decimalLongitude'] <- "longitude"

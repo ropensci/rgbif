@@ -19,7 +19,7 @@
 #' }
 
 gbif_photos <- function(input, output = NULL, which='table', browse = TRUE) {
-  if (!is(input, "gbif")) stop("input should be of class gbif", call. = FALSE)
+  if (!inherits(input, "gbif")) stop("input should be of class gbif", call. = FALSE)
 
   which <- match.arg(which, c("map", "table"))
   if (which == 'map') {

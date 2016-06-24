@@ -20,7 +20,6 @@ BugReports: https://github.com/ropensci/rgbif/issues
 LazyData: true
 VignetteBuilder: knitr
 Imports:
-    methods,
     utils,
     stats,
     xml2,

@@ -72,7 +72,7 @@
 
 occ_issues <- function(.data, ..., mutate = NULL) {
 
-  stopifnot(xor(is(.data, "gbif"), is(.data, "gbif_data")))
+  stopifnot(xor(inherits(.data, "gbif"), inherits(.data, "gbif_data")))
   if ("data" %in% names(.data)) {
     tmp <- .data$data
   } else {

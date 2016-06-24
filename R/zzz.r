@@ -241,7 +241,7 @@ namelkupparser <- function(x){
   tmp <- lapply(tmp, function(x) {
     if (length(x) == 0) {
       NA
-    } else if (length(x) > 1 || is(x, "list")) {
+    } else if (length(x) > 1 || inherits(x, "list")) {
       paste0(x, collapse = ", ")
     } else {
       x
@@ -256,7 +256,7 @@ namelkupcleaner <- function(x){
   lapply(tmp, function(x) {
     if (length(x) == 0) {
       NA
-    } else if (length(x) > 1 || is(x, "list")) {
+    } else if (length(x) > 1 || inherits(x, "list")) {
       paste0(x, collapse = ", ")
     } else {
       x

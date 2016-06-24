@@ -26,7 +26,7 @@
 
 occ_download_import <- function(x=NULL, key=NULL, path=".") {
   if (!is.null(x)) {
-    stopifnot(is(x, "occ_download_get"))
+    stopifnot(inherits(x, "occ_download_get"))
     path <- x[[1]]
     key <- attr(x, "key")
   } else {
