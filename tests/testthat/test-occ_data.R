@@ -234,7 +234,7 @@ test_that("geometry inputs work as expected", {
   wkt <- gsub("\n", " ", wkt)
 
   # Default option with large WKT string fails
-  expect_error(occ_data(geometry = wkt),
+  expect_error(occ_data(geometry = wkt, limit = 1),
                "Client error: \\(413\\) Request Entity Too Large")
 
   # if WKT too long, with 'geom_big=bbox': makes into bounding box

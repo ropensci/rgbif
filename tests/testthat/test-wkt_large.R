@@ -67,7 +67,7 @@ test_that("wkt is used correctly in querying GBIF - occ_data", {
   skip_on_cran()
 
   # by default too large WKT will fail with 413, request entity too large
-  expect_error(occ_data(geometry = wkt, limit = 100),
+  expect_error(occ_data(geometry = wkt, limit = 1),
                "Request Entity Too Large")
 
   # setting to bbox will work
@@ -86,7 +86,7 @@ test_that("wkt is used correctly in querying GBIF - occ_search", {
   skip_on_cran()
 
   # by default too large WKT will fail with 413, request entity too large
-  expect_error(occ_search(geometry = wkt, limit = 100),
+  expect_error(occ_search(geometry = wkt, limit = 1),
                "Request Entity Too Large")
 
   # setting to bbox will work
