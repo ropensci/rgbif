@@ -27,5 +27,8 @@ File 'LICENSE':
 
 --------
 
+This version adds a new vignette, adds a feature, and implements a few minor 
+fixes as well as some bug fixes.
+
 Thanks!
 Scott Chamberlain
