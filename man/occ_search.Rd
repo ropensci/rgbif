@@ -2,7 +2,6 @@
 % Please edit documentation in R/occ_search.r
 \name{occ_search}
 \alias{occ_search}
-\alias{print.gbif}
 \title{Search for GBIF occurrences}
 \usage{
 occ_search(taxonKey = NULL, scientificName = NULL, country = NULL,
@@ -16,8 +15,6 @@ occ_search(taxonKey = NULL, scientificName = NULL, country = NULL,
   hasGeospatialIssue = NULL, issue = NULL, search = NULL,
   mediaType = NULL, limit = 500, start = 0, fields = "all",
   return = "all", ...)
-
-\method{print}{gbif}(x, ...)
 }
 \arguments{
 \item{taxonKey}{A taxon key from the GBIF backbone. All included and synonym taxa
