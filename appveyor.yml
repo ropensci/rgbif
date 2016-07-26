@@ -12,6 +12,7 @@ install:
   ps: Bootstrap
 
 build_script:
+  - travis-tool.sh install_github hadley/devtools
   - travis-tool.sh install_deps
   - travis-tool.sh r_install maps scales colorspace
 
