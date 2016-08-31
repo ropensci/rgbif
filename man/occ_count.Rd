@@ -5,22 +5,25 @@
 \title{Get number of occurrence records.}
 \usage{
 occ_count(taxonKey = NULL, georeferenced = NULL, basisOfRecord = NULL,
-  datasetKey = NULL, date = NULL, catalogNumber = NULL, country = NULL,
-  hostCountry = NULL, year = NULL, from = 2000, to = 2012,
-  type = "count", publishingCountry = "US", nubKey = NULL,
-  protocol = NULL, ...)
+  datasetKey = NULL, date = NULL, typeStatus = NULL,
+  catalogNumber = NULL, country = NULL, hostCountry = NULL, year = NULL,
+  from = 2000, to = 2012, type = "count", publishingCountry = "US",
+  nubKey = NULL, protocol = NULL, ...)
 }
 \arguments{
 \item{taxonKey}{Species key}
 
-\item{georeferenced}{Return only occurence records with lat/long data (TRUE) or
-all records (FALSE, default).}
+\item{georeferenced}{Return only occurence records with lat/long data
+(\code{TRUE}) or all records (\code{FALSE}, default).}
 
 \item{basisOfRecord}{Basis of record}
 
 \item{datasetKey}{Dataset key}
 
 \item{date}{Collection date}
+
+\item{typeStatus}{A type status. See \code{\link{typestatus}} dataset for
+options}
 
 \item{catalogNumber}{Catalog number. PARAMETER GONE.}
 
@@ -35,7 +38,8 @@ all records (FALSE, default).}
 
 \item{to}{Year to end at}
 
-\item{type}{One of count (default), schema, basis_of_record, countries, or year.}
+\item{type}{One of count (default), schema, basis_of_record, countries, or
+year.}
 
 \item{publishingCountry}{Publishing country, two letter ISO country code}
 
@@ -43,9 +47,9 @@ all records (FALSE, default).}
 
 \item{protocol}{Protocol. E.g., 'DWC_ARCHIVE'}
 
-\item{...}{Further named parameters, such as \code{query}, \code{path}, etc, passed on to
-\code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will be
-combined with \code{\link[httr]{config}}.}
+\item{...}{Further named parameters, such as \code{query}, \code{path}, etc,
+passed on to \code{\link[httr]{modify_url}} within \code{\link[httr]{GET}}
+call. Unnamed parameters will be combined with \code{\link[httr]{config}}.}
 }
 \value{
 A single numeric value, or a list of numerics.
@@ -59,6 +63,57 @@ results from \code{\link{occ_search}}. For equivalent outcomes, in the
 \code{\link{occ_search}} function use \code{hasCoordinate=TRUE}, and
 \code{hasGeospatialIssue=FALSE} to have the same outcome for this function
 using \code{georeferenced=TRUE}.
+}
+\section{Supported dimensions}{
+
+That is, there are only a certain set of supported query parameter
+combinations that GBIF allows on this API route. They can be found with the
+call \code{occ_count(type='schema')}. They are also presented below:
+
+\itemize{
+ \item basisOfRecord
+ \item basisOfRecord, country
+ \item basisOfRecord, country, isGeoreferenced
+ \item basisOfRecord, country, isGeoreferenced, taxonKey
+ \item basisOfRecord, country, taxonKey
+ \item basisOfRecord, datasetKey
+ \item basisOfRecord, datasetKey, isGeoreferenced
+ \item basisOfRecord, datasetKey, isGeoreferenced, taxonKey
+ \item basisOfRecord, datasetKey, taxonKey
+ \item basisOfRecord, isGeoreferenced, taxonKey
+ \item basisOfRecord, isGeoreferenced, publishingCountry
+ \item basisOfRecord, isGeoreferenced, publishingCountry, taxonKey
+ \item basisOfRecord, publishingCountry
+ \item basisOfRecord, publishingCountry, taxonKey
+ \item basisOfRecord, taxonKey
+ \item country
+ \item country, datasetKey, isGeoreferenced
+ \item country, isGeoreferenced
+ \item country, isGeoreferenced, publishingCountry
+ \item country, isGeoreferenced, taxonKey
+ \item country, publishingCountry
+ \item country, taxonKey
+ \item country, typeStatus
+ \item datasetKey
+ \item datasetKey, isGeoreferenced
+ \item datasetKey, isGeoreferenced, taxonKey
+ \item datasetKey, issue
+ \item datasetKey, taxonKey
+ \item datasetKey, typeStatus
+ \item isGeoreferenced
+ \item isGeoreferenced, publishingCountry
+ \item isGeoreferenced, publishingCountry, taxonKey
+ \item isGeoreferenced, taxonKey
+ \item issue
+ \item publishingCountry
+ \item publishingCountry, taxonKey
+ \item publishingCountry, typeStatus
+ \item taxonKey
+ \item taxonKey, typeStatus
+ \item typeStatus
+ \item protocol
+ \item year
+}
 }
 \examples{
 \dontrun{
@@ -77,6 +132,10 @@ occ_count(type='schema')
 
 # Counts by basisOfRecord types
 occ_count(type='basisOfRecord')
+
+# Counts by basisOfRecord types
+occ_count(typeStatus='ALLOTYPE')
+occ_count(typeStatus='HOLOTYPE')
 
 # Counts by countries. publishingCountry must be supplied (default to US)
 occ_count(type='countries')

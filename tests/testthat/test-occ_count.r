@@ -29,3 +29,20 @@ test_that("occ_count", {
   expect_equal(length(d), 42)
   expect_equal(length(e), 248)
 })
+
+
+test_that("occ_count fails well", {
+  skip_on_cran()
+
+  # these two params not allowed together
+  expect_error(
+    occ_count(basisOfRecord='OBSERVATION', year=2012),
+    "The provided address is not calculated in the cube"
+  )
+
+  # these two params not allowed together
+  expect_error(
+    occ_count(basisOfRecord='OBSERVATION', typeStatus='ALLOTYPE'),
+    "The provided address is not calculated in the cube"
+  )
+})

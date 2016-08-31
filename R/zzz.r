@@ -323,7 +323,7 @@ gbif_GET <- function(url, args, parse=FALSE, ...){
 
 gbif_GET_content <- function(url, args, ...) {
   temp <- GET(url, query = cn(args), make_rgbif_ua(), ...)
-  if (temp$status_code > 200) warning(c_utf8(temp), call. = FALSE)
+  if (temp$status_code > 200) stop(c_utf8(temp), call. = FALSE)
   stopifnot(temp$headers$`content-type` == 'application/json')
   c_utf8(temp)
 }
