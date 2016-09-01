@@ -279,3 +279,27 @@ test_that("geometry inputs work as expected", {
 
   expect_gt(length(names(gg)), length(names(ee)))
 })
+
+
+######### spell check works
+test_that("spell check param works", {
+  skip_on_cran()
+
+  # as normal
+  expect_is(
+    occ_search(search = "kingfisher", limit=1, spellCheck = TRUE),
+    "gbif"
+  )
+
+  # spelled incorrectly - stops with suggested spelling
+  expect_error(
+    occ_search(search = "kajsdkla", limit=20, spellCheck = TRUE),
+    "spelling bad - suggestions"
+  )
+
+  # spelled incorrectly - stops with many suggested spellings and number of results for each
+  expect_error(
+    occ_search(search = "helir", limit=20, spellCheck = TRUE),
+    "spelling bad - suggestions"
+  )
+})

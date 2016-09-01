@@ -19,7 +19,7 @@ occ_search(taxonKey = NULL, scientificName = NULL, country = NULL,
   protocol = NULL, license = NULL, organismId = NULL,
   publishingOrg = NULL, stateProvince = NULL, waterBody = NULL,
   locality = NULL, limit = 500, start = 0, fields = "all",
-  return = "all", ...)
+  return = "all", spellCheck = FALSE, ...)
 }
 \arguments{
 \item{taxonKey}{(numeric) A taxon key from the GBIF backbone. All included and synonym taxa
@@ -191,6 +191,10 @@ fields = c('name','latitude','elevation').}
 \item{return}{One of data, hier, meta, or all. If data, a data.frame with the
 data. hier returns the classifications in a list for each record. meta
 returns the metadata for the entire call. all gives all data back in a list.}
+
+\item{spellCheck}{(logical) If \code{TRUE} ask GBIF to check your spelling of
+the value passed to the \code{search} parameter. IMPORTANT: This only checks
+the input to the \code{search} parameter, and no others. Default: \code{FALSE}}
 
 \item{...}{Further named parameters, such as \code{query}, \code{path}, etc, passed on to
 \code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will
@@ -574,7 +578,15 @@ occ_search(collectionCode=c("Floristic Databases MV - Higher Plants","Artport"))
 occ_search(taxonKey=key, hasGeospatialIssue=TRUE, limit=20)
 
 # Search using a query string
-occ_search(search="kingfisher", limit=20)
+occ_search(search = "kingfisher", limit=20)
+## spell check - only works with the `search` parameter
+### spelled correctly - same result as above call
+occ_search(search = "kingfisher", limit=20, spellCheck = TRUE)
+### spelled incorrectly - stops with suggested spelling
+occ_search(search = "kajsdkla", limit=20, spellCheck = TRUE)
+### spelled incorrectly - stops with many suggested spellings
+###   and number of results for each
+occ_search(search = "helir", limit=20, spellCheck = TRUE)
 
 
 

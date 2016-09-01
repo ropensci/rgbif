@@ -18,7 +18,7 @@ occ_data(taxonKey = NULL, scientificName = NULL, country = NULL,
   familyKey = NULL, genusKey = NULL, establishmentMeans = NULL,
   protocol = NULL, license = NULL, organismId = NULL,
   publishingOrg = NULL, stateProvince = NULL, waterBody = NULL,
-  locality = NULL, limit = 500, start = 0, ...)
+  locality = NULL, limit = 500, start = 0, spellCheck = FALSE, ...)
 }
 \arguments{
 \item{taxonKey}{(numeric) A taxon key from the GBIF backbone. All included and synonym taxa
@@ -182,6 +182,10 @@ calculated as the \code{limit+start}, so \code{start=199,000} and \code{limit=20
 \item{start}{Record number to start at. Use in combination with limit to page through results.
 Note that we do the paging internally for you, but you can manually set the \code{start}
 parameter}
+
+\item{spellCheck}{(logical) If \code{TRUE} ask GBIF to check your spelling of
+the value passed to the \code{search} parameter. IMPORTANT: This only checks
+the input to the \code{search} parameter, and no others. Default: \code{FALSE}}
 
 \item{...}{Further named parameters, such as \code{query}, \code{path}, etc, passed on to
 \code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will
@@ -556,8 +560,14 @@ occ_data(taxonKey=key, hasGeospatialIssue=TRUE, limit=20)
 
 # Search using a query string
 occ_data(search="kingfisher", limit=20)
-
-
+## spell check - only works with the `search` parameter
+### spelled correctly - same result as above call
+occ_data(search = "kingfisher", limit=20, spellCheck = TRUE)
+### spelled incorrectly - stops with suggested spelling
+occ_data(search = "kajsdkla", limit=20, spellCheck = TRUE)
+### spelled incorrectly - stops with many suggested spellings
+###   and number of results for each
+occ_data(search = "helir", limit=20, spellCheck = TRUE)
 
 # search on repatriated - doesn't work right now
 # occ_data(repatriated = "")

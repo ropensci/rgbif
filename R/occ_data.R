@@ -23,7 +23,7 @@ occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
   kingdomKey = NULL, classKey = NULL, orderKey = NULL, familyKey = NULL,
   genusKey = NULL, establishmentMeans = NULL, protocol = NULL, license = NULL,
   organismId = NULL, publishingOrg = NULL, stateProvince = NULL, waterBody = NULL,
-  locality = NULL, limit=500, start=0, ...) {
+  locality = NULL, limit=500, start=0, spellCheck = FALSE, ...) {
 
   geometry <- geometry_handler(geometry, geom_big, geom_size, geom_n)
 
@@ -62,7 +62,7 @@ occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
         publishingOrg=publishingOrg, stateProvince=stateProvince,
         waterBody=waterBody, locality=locality,
         limit=check_limit(as.integer(limit)),
-        offset=check_limit(as.integer(start))
+        offset=check_limit(as.integer(start)), spellCheck = spellCheck
       )
     )
     args <- c(args, parse_issues(issue))

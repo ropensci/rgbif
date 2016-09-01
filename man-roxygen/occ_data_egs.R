@@ -168,8 +168,14 @@
 #'
 #' # Search using a query string
 #' occ_data(search="kingfisher", limit=20)
-#'
-#'
+#' ## spell check - only works with the `search` parameter
+#' ### spelled correctly - same result as above call
+#' occ_data(search = "kingfisher", limit=20, spellCheck = TRUE)
+#' ### spelled incorrectly - stops with suggested spelling
+#' occ_data(search = "kajsdkla", limit=20, spellCheck = TRUE)
+#' ### spelled incorrectly - stops with many suggested spellings
+#' ###   and number of results for each
+#' occ_data(search = "helir", limit=20, spellCheck = TRUE)
 #'
 #' # search on repatriated - doesn't work right now
 #' # occ_data(repatriated = "")

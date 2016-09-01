@@ -25,7 +25,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
   genusKey = NULL, establishmentMeans = NULL, protocol = NULL, license = NULL,
   organismId = NULL, publishingOrg = NULL, stateProvince = NULL,
   waterBody = NULL, locality = NULL, limit=500, start=0, fields = 'all',
-  return='all', ...) {
+  return='all', spellCheck = FALSE, ...) {
 
   calls <- names(sapply(match.call(), deparse))[-1]
   calls_vec <- c("georeferenced","altitude","latitude","longitude") %in% calls
@@ -69,7 +69,8 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
         protocol=protocol, license=license, organismId=organismId,
         publishingOrg=publishingOrg, stateProvince=stateProvince,
         waterBody=waterBody, locality=locality,
-        limit=check_limit(as.integer(limit)), offset=check_limit(as.integer(start))
+        limit=check_limit(as.integer(limit)),
+        offset=check_limit(as.integer(start)), spellCheck = spellCheck
       )
     )
     args <- c(args, parse_issues(issue))
