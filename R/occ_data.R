@@ -11,6 +11,13 @@
 #' other information like taxon hierarchies and media (e.g., images) information. Alot of time
 #' in \code{\link{occ_search}} is used parsing data to be more useable downstream. We do
 #' less of that in this function.
+#' @return An object of class \code{gbif_data}, which is a S3 class list, with
+#' slots for metadata (\code{meta}) and the occurrence data itself (\code{data}),
+#' and with attributes listing the user supplied arguments and whether it was a
+#' "single" or "many" search; that is, if you supply two values of the
+#' \code{datasetKey} parameter to searches are done, and it's a "many".
+#' \code{meta} is a list of length four with offset, limit, endOfRecords and
+#' count fields. \code{data} is a tibble (aka data.frame)
 
 occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
   publishingCountry=NULL, hasCoordinate=NULL, typeStatus=NULL, recordNumber=NULL,

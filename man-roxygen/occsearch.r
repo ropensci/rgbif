@@ -109,8 +109,6 @@
 #' the value passed to the \code{search} parameter. IMPORTANT: This only checks
 #' the input to the \code{search} parameter, and no others. Default: \code{FALSE}
 #'
-#' @return A data.frame or list
-#'
 #' @details
 #' \bold{protocol parameter options}:
 #' \itemize{
