@@ -169,6 +169,59 @@
 #' # Search using a query string
 #' occ_data(search="kingfisher", limit=20)
 #'
+#'
+#'
+#' # search on repatriated - doesn't work right now
+#' # occ_data(repatriated = "")
+#'
+#' # search on phylumKey
+#' occ_data(phylumKey = 7707728, limit = 5)
+#'
+#' # search on kingdomKey
+#' occ_data(kingdomKey = 1, limit = 5)
+#'
+#' # search on classKey
+#' occ_data(classKey = 216, limit = 5)
+#'
+#' # search on orderKey
+#' occ_data(orderKey = 7192402, limit = 5)
+#'
+#' # search on familyKey
+#' occ_data(familyKey = 3925, limit = 5)
+#'
+#' # search on genusKey
+#' occ_data(genusKey = 1935496, limit = 5)
+#'
+#' # search on establishmentMeans
+#' occ_data(establishmentMeans = "INVASIVE", limit = 5)
+#' occ_data(establishmentMeans = "NATIVE", limit = 5)
+#' occ_data(establishmentMeans = "UNCERTAIN", limit = 5)
+#'
+#' # search on protocol
+#' occ_data(protocol = "DIGIR", limit = 5)
+#'
+#' # search on license
+#' occ_data(license = "CC_BY_4_0", limit = 5)
+#'
+#' # search on organismId
+#' occ_data(organismId = "100", limit = 5)
+#'
+#' # search on publishingOrg
+#' occ_data(publishingOrg = "28eb1a3f-1c15-4a95-931a-4af90ecb574d", limit = 5)
+#'
+#' # search on stateProvince
+#' occ_data(stateProvince = "California", limit = 5)
+#'
+#' # search on waterBody
+#' occ_data(waterBody = "AMAZONAS BASIN, RIO JURUA", limit = 5)
+#'
+#' # search on locality
+#' occ_data(locality = "Trondheim", limit = 5)
+#' res <- occ_data(locality = c("Trondheim", "Hovekilen"), limit = 5)
+#' res$Trondheim$data
+#' res$Hovekilen$data
+#'
+#'
 #' # Range queries
 #' ## See Detail for parameters that support range queries
 #' ### this is a range depth, with lower/upper limits in character string

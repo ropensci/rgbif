@@ -13,10 +13,15 @@ occ_data(taxonKey = NULL, scientificName = NULL, country = NULL,
   decimalLatitude = NULL, decimalLongitude = NULL, elevation = NULL,
   depth = NULL, institutionCode = NULL, collectionCode = NULL,
   hasGeospatialIssue = NULL, issue = NULL, search = NULL,
-  mediaType = NULL, limit = 500, start = 0, ...)
+  mediaType = NULL, subgenusKey = NULL, repatriated = NULL,
+  phylumKey = NULL, kingdomKey = NULL, classKey = NULL, orderKey = NULL,
+  familyKey = NULL, genusKey = NULL, establishmentMeans = NULL,
+  protocol = NULL, license = NULL, organismId = NULL,
+  publishingOrg = NULL, stateProvince = NULL, waterBody = NULL,
+  locality = NULL, limit = 500, start = 0, ...)
 }
 \arguments{
-\item{taxonKey}{A taxon key from the GBIF backbone. All included and synonym taxa
+\item{taxonKey}{(numeric) A taxon key from the GBIF backbone. All included and synonym taxa
 are included in the search, so a search for aves with taxononKey=212
 (i.e. /occurrence/search?taxonKey=212) will match all birds, no matter which
 species. You can pass many keys by passing occ_search in a call to an
@@ -127,6 +132,48 @@ Details. Issues passed to this parameter filter results by the issue.}
 \item{mediaType}{Media type. Default is NULL, so no filtering on mediatype. Options:
 NULL, 'MovingImage', 'Sound', and 'StillImage'.}
 
+\item{subgenusKey}{(numeric) Subgenus classification key.}
+
+\item{repatriated}{(character) Searches for records whose publishing country
+is different to the country where the record was recorded in.}
+
+\item{phylumKey}{(numeric) Phylum classification key.}
+
+\item{kingdomKey}{(numeric) Kingdom classification key.}
+
+\item{classKey}{(numeric) Class classification key.}
+
+\item{orderKey}{(numeric) Order classification key.}
+
+\item{familyKey}{(numeric) Family classification key.}
+
+\item{genusKey}{(numeric) Genus classification key.}
+
+\item{establishmentMeans}{(character) EstablishmentMeans, possible values
+include: INTRODUCED, INVASIVE, MANAGED, NATIVE, NATURALISED, UNCERTAIN}
+
+\item{protocol}{(character) Protocol or mechanism used to provide the
+occurrence record. See Details for possible values}
+
+\item{license}{(character) The type license applied to the dataset or record.
+Possible values: CC0_1_0, CC_BY_4_0, CC_BY_NC_4_0, UNSPECIFIED, and
+UNSUPPORTED}
+
+\item{organismId}{(numeric) An identifier for the Organism instance (as
+opposed to a particular digital record of the Organism). May be a globally
+unique identifier or an identifier specific to the data set.}
+
+\item{publishingOrg}{(character) The publishing organization key (a UUID).}
+
+\item{stateProvince}{(character) The name of the next smaller administrative
+region than country (state, province, canton, department, region, etc.) in
+which the Location occurs.}
+
+\item{waterBody}{(character) The name of the water body in which the
+locations occur}
+
+\item{locality}{(character) The specific description of the place.}
+
 \item{limit}{Number of records to return. Default: 500. Note that the per request maximum is
 300, but since we set it at 500 for the function, we do two requests to get you the 500
 records (if there are that many). Note that there is a hard maximum of 200,000, which is
@@ -147,6 +194,25 @@ A data.frame or list
 Search for GBIF occurrences - simplified for speed
 }
 \details{
+\bold{protocol parameter options}:
+\itemize{
+ \item BIOCASE - A BioCASe protocl compliant service.
+ \item DIGIR - A DiGIR service endpoint.
+ \item DIGIR_MANIS - A DiGIR service slightly modified for the MANIS network.
+ \item DWC_ARCHIVE - A Darwin Core Archive as defined by the Darwin Core Text
+ Guidelines.
+ \item EML - A single EML metadata document in any EML version.
+ \item FEED - Syndication feeds like RSS or ATOM of various flavors.
+ \item OAI_PMH - The Open Archives Initiative Protocol for Metadata
+ Harvesting.
+ \item OTHER - Any other service not covered by this enum so far.
+ \item TAPIR - A TAPIR service.
+ \item TCS_RDF - Taxon Concept data given as RDF based on the TDWG ontology.
+ \item TCS_XML - A Taxon Concept Schema document.
+ \item WFS - An OGC Web Feature Service.
+ \item WMS - An OGC Web Map Service.
+}
+
 \bold{Multiple parmeters}: Note that you can pass in a vector to one of taxonKey,
 scientificName, datasetKey, catalogNumber, recordedBy, geometry, country, publishingCountry,
 recordNumber, search, institutionCode, collectionCode, decimalLatitude, decimalLongitude,
@@ -490,6 +556,59 @@ occ_data(taxonKey=key, hasGeospatialIssue=TRUE, limit=20)
 
 # Search using a query string
 occ_data(search="kingfisher", limit=20)
+
+
+
+# search on repatriated - doesn't work right now
+# occ_data(repatriated = "")
+
+# search on phylumKey
+occ_data(phylumKey = 7707728, limit = 5)
+
+# search on kingdomKey
+occ_data(kingdomKey = 1, limit = 5)
+
+# search on classKey
+occ_data(classKey = 216, limit = 5)
+
+# search on orderKey
+occ_data(orderKey = 7192402, limit = 5)
+
+# search on familyKey
+occ_data(familyKey = 3925, limit = 5)
+
+# search on genusKey
+occ_data(genusKey = 1935496, limit = 5)
+
+# search on establishmentMeans
+occ_data(establishmentMeans = "INVASIVE", limit = 5)
+occ_data(establishmentMeans = "NATIVE", limit = 5)
+occ_data(establishmentMeans = "UNCERTAIN", limit = 5)
+
+# search on protocol
+occ_data(protocol = "DIGIR", limit = 5)
+
+# search on license
+occ_data(license = "CC_BY_4_0", limit = 5)
+
+# search on organismId
+occ_data(organismId = "100", limit = 5)
+
+# search on publishingOrg
+occ_data(publishingOrg = "28eb1a3f-1c15-4a95-931a-4af90ecb574d", limit = 5)
+
+# search on stateProvince
+occ_data(stateProvince = "California", limit = 5)
+
+# search on waterBody
+occ_data(waterBody = "AMAZONAS BASIN, RIO JURUA", limit = 5)
+
+# search on locality
+occ_data(locality = "Trondheim", limit = 5)
+res <- occ_data(locality = c("Trondheim", "Hovekilen"), limit = 5)
+res$Trondheim$data
+res$Hovekilen$data
+
 
 # Range queries
 ## See Detail for parameters that support range queries

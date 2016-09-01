@@ -12,17 +12,23 @@
 #' in \code{\link{occ_search}} is used parsing data to be more useable downstream. We do
 #' less of that in this function.
 
-occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publishingCountry=NULL,
-  hasCoordinate=NULL, typeStatus=NULL, recordNumber=NULL, lastInterpreted=NULL, continent=NULL,
-  geometry=NULL, geom_big="asis", geom_size=40, geom_n=10, recordedBy=NULL, basisOfRecord=NULL,
-  datasetKey=NULL, eventDate=NULL,
-  catalogNumber=NULL, year=NULL, month=NULL, decimalLatitude=NULL, decimalLongitude=NULL,
-  elevation=NULL, depth=NULL, institutionCode=NULL, collectionCode=NULL,
-  hasGeospatialIssue=NULL, issue=NULL, search=NULL, mediaType=NULL, limit=500, start=0, ...) {
+occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
+  publishingCountry=NULL, hasCoordinate=NULL, typeStatus=NULL, recordNumber=NULL,
+  lastInterpreted=NULL, continent=NULL, geometry=NULL, geom_big="asis",
+  geom_size=40, geom_n=10, recordedBy=NULL, basisOfRecord=NULL, datasetKey=NULL,
+  eventDate=NULL, catalogNumber=NULL, year=NULL, month=NULL, decimalLatitude=NULL,
+  decimalLongitude=NULL, elevation=NULL, depth=NULL, institutionCode=NULL,
+  collectionCode=NULL, hasGeospatialIssue=NULL, issue=NULL, search=NULL,
+  mediaType=NULL, subgenusKey = NULL, repatriated = NULL, phylumKey = NULL,
+  kingdomKey = NULL, classKey = NULL, orderKey = NULL, familyKey = NULL,
+  genusKey = NULL, establishmentMeans = NULL, protocol = NULL, license = NULL,
+  organismId = NULL, publishingOrg = NULL, stateProvince = NULL, waterBody = NULL,
+  locality = NULL, limit=500, start=0, ...) {
 
   geometry <- geometry_handler(geometry, geom_big, geom_size, geom_n)
 
   url <- paste0(gbif_base(), '/occurrence/search')
+  argscoll <- NULL
 
   .get_occ_data <- function(x=NULL, itervar=NULL) {
     if (!is.null(x)) {
@@ -37,16 +43,28 @@ occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publishin
     check_vals(start, "start")
 
     # Make arg list
-    args <- rgbif_compact(list(taxonKey=taxonKey, scientificName=scientificName, country=country,
-     publishingCountry=publishingCountry, hasCoordinate=hasCoordinate, typeStatus=typeStatus,
-     recordNumber=recordNumber, lastInterpreted=lastInterpreted, continent=continent,
-     geometry=geometry, recordedBy=recordedBy, basisOfRecord=basisOfRecord,
-     datasetKey=datasetKey, eventDate=eventDate, catalogNumber=catalogNumber,
-     year=year, month=month, decimalLatitude=decimalLatitude,
-     decimalLongitude=decimalLongitude, elevation=elevation, depth=depth,
-     institutionCode=institutionCode, collectionCode=collectionCode,
-     hasGeospatialIssue=hasGeospatialIssue, q=search, mediaType=mediaType,
-     limit=check_limit(as.integer(limit)), offset=check_limit(as.integer(start))))
+    args <- rgbif_compact(
+      list(
+        taxonKey=taxonKey, scientificName=scientificName, country=country,
+        publishingCountry=publishingCountry, hasCoordinate=hasCoordinate,
+        typeStatus=typeStatus,recordNumber=recordNumber,
+        lastInterpreted=lastInterpreted, continent=continent, geometry=geometry,
+        recordedBy=recordedBy, basisOfRecord=basisOfRecord,datasetKey=datasetKey,
+        eventDate=eventDate, catalogNumber=catalogNumber, year=year, month=month,
+        decimalLatitude=decimalLatitude,decimalLongitude=decimalLongitude,
+        elevation=elevation, depth=depth, institutionCode=institutionCode,
+        collectionCode=collectionCode, hasGeospatialIssue=hasGeospatialIssue,
+        q=search, mediaType=mediaType, subgenusKey=subgenusKey,
+        repatriated=repatriated, phylumKey=phylumKey, kingdomKey=kingdomKey,
+        classKey=classKey, orderKey=orderKey, familyKey=familyKey,
+        genusKey=genusKey, establishmentMeans=establishmentMeans,
+        protocol=protocol, license=license, organismId=organismId,
+        publishingOrg=publishingOrg, stateProvince=stateProvince,
+        waterBody=waterBody, locality=locality,
+        limit=check_limit(as.integer(limit)),
+        offset=check_limit(as.integer(start))
+      )
+    )
     args <- c(args, parse_issues(issue))
     argscoll <<- args
 
@@ -88,12 +106,22 @@ occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL, publishin
     list(meta = meta, data = data)
   }
 
-  params <- list(taxonKey=taxonKey,scientificName=scientificName,datasetKey=datasetKey,
-      catalogNumber=catalogNumber, recordedBy=recordedBy,geometry=geometry,country=country,
-      publishingCountry=publishingCountry,recordNumber=recordNumber,
-      q=search,institutionCode=institutionCode,collectionCode=collectionCode,continent=continent,
-      decimalLatitude=decimalLatitude,decimalLongitude=decimalLongitude,depth=depth,year=year,
-      typeStatus=typeStatus,lastInterpreted=lastInterpreted,mediaType=mediaType, limit=limit)
+  params <- list(
+    taxonKey=taxonKey,scientificName=scientificName,datasetKey=datasetKey,
+    catalogNumber=catalogNumber, recordedBy=recordedBy,geometry=geometry,
+    country=country, publishingCountry=publishingCountry,
+    recordNumber=recordNumber, q=search,institutionCode=institutionCode,
+    collectionCode=collectionCode,continent=continent,
+    decimalLatitude=decimalLatitude,decimalLongitude=decimalLongitude,
+    depth=depth,year=year,typeStatus=typeStatus,lastInterpreted=lastInterpreted,
+    mediaType=mediaType, subgenusKey=subgenusKey,repatriated=repatriated,
+    phylumKey=phylumKey, kingdomKey=kingdomKey,classKey=classKey,
+    orderKey=orderKey, familyKey=familyKey,genusKey=genusKey,
+    establishmentMeans=establishmentMeans,protocol=protocol, license=license,
+    organismId=organismId,publishingOrg=publishingOrg,
+    stateProvince=stateProvince,waterBody=waterBody, locality=locality,
+    limit=limit
+  )
   if (!any(sapply(params, length) > 0)) {
     stop(sprintf("At least one of the parmaters must have a value:\n%s", possparams()),
          call. = FALSE)

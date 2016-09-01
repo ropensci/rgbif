@@ -1,4 +1,4 @@
-#' @param taxonKey A taxon key from the GBIF backbone. All included and synonym taxa
+#' @param taxonKey (numeric) A taxon key from the GBIF backbone. All included and synonym taxa
 #'    are included in the search, so a search for aves with taxononKey=212
 #'    (i.e. /occurrence/search?taxonKey=212) will match all birds, no matter which
 #'    species. You can pass many keys by passing occ_search in a call to an
@@ -79,8 +79,55 @@
 #'    or south_america
 #' @param mediaType Media type. Default is NULL, so no filtering on mediatype. Options:
 #'    NULL, 'MovingImage', 'Sound', and 'StillImage'.
+#' @param repatriated (character) Searches for records whose publishing country
+#' is different to the country where the record was recorded in.
+#' @param kingdomKey (numeric) Kingdom classification key.
+#' @param phylumKey (numeric) Phylum classification key.
+#' @param classKey (numeric) Class classification key.
+#' @param orderKey (numeric) Order classification key.
+#' @param familyKey (numeric) Family classification key.
+#' @param genusKey (numeric) Genus classification key.
+#' @param subgenusKey (numeric) Subgenus classification key.
+#' @param establishmentMeans (character) EstablishmentMeans, possible values
+#' include: INTRODUCED, INVASIVE, MANAGED, NATIVE, NATURALISED, UNCERTAIN
+#' @param protocol (character) Protocol or mechanism used to provide the
+#' occurrence record. See Details for possible values
+#' @param license (character) The type license applied to the dataset or record.
+#' Possible values: CC0_1_0, CC_BY_4_0, CC_BY_NC_4_0, UNSPECIFIED, and
+#' UNSUPPORTED
+#' @param organismId (numeric) An identifier for the Organism instance (as
+#' opposed to a particular digital record of the Organism). May be a globally
+#' unique identifier or an identifier specific to the data set.
+#' @param publishingOrg (character) The publishing organization key (a UUID).
+#' @param stateProvince (character) The name of the next smaller administrative
+#' region than country (state, province, canton, department, region, etc.) in
+#' which the Location occurs.
+#' @param waterBody (character) The name of the water body in which the
+#' locations occur
+#' @param locality (character) The specific description of the place.
+#'
 #' @return A data.frame or list
+#'
 #' @details
+#' \bold{protocol parameter options}:
+#' \itemize{
+#'  \item BIOCASE - A BioCASe protocl compliant service.
+#'  \item DIGIR - A DiGIR service endpoint.
+#'  \item DIGIR_MANIS - A DiGIR service slightly modified for the MANIS network.
+#'  \item DWC_ARCHIVE - A Darwin Core Archive as defined by the Darwin Core Text
+#'  Guidelines.
+#'  \item EML - A single EML metadata document in any EML version.
+#'  \item FEED - Syndication feeds like RSS or ATOM of various flavors.
+#'  \item OAI_PMH - The Open Archives Initiative Protocol for Metadata
+#'  Harvesting.
+#'  \item OTHER - Any other service not covered by this enum so far.
+#'  \item TAPIR - A TAPIR service.
+#'  \item TCS_RDF - Taxon Concept data given as RDF based on the TDWG ontology.
+#'  \item TCS_XML - A Taxon Concept Schema document.
+#'  \item WFS - An OGC Web Feature Service.
+#'  \item WMS - An OGC Web Map Service.
+#' }
+#'
 #' \bold{Multiple parmeters}: Note that you can pass in a vector to one of taxonKey,
 #' scientificName, datasetKey, catalogNumber, recordedBy, geometry, country, publishingCountry,
 #' recordNumber, search, institutionCode, collectionCode, decimalLatitude, decimalLongitude,
