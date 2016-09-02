@@ -430,3 +430,22 @@ parse_results <- function(x, y){
     tmp
   }
 }
+
+check_gbif_arg_set <- function(x) {
+  facnms <- c('facet', 'facetMincount', 'facetMultiselect',
+              'facetOffset', 'facetLimit')
+  if (!all(grepl(paste0(facnms, collapse = "|"), names(x)))) {
+    stop("some param names not allowed: ", call. = FALSE)
+  }
+}
+
+# pull out args passed in ... that should be combined with
+# GET request to GBIF
+yank_args <- function(...) {
+  dots <- list(...)
+  # filter out request objects for httr
+  dots <- Filter(function(z) !inherits(z, "request"), dots)
+  # check that args are in a acceptable set
+  check_gbif_arg_set(dots)
+  dots
+}

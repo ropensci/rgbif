@@ -8,6 +8,7 @@ print.gbif <- function(x, ...) {
     cat(rgbif_wrap(sprintf("Records returned [%s]", NROW(x$data))), "\n")
     cat(rgbif_wrap(sprintf("No. unique hierarchies [%s]", length(x$hierarchy))), "\n")
     cat(rgbif_wrap(sprintf("No. media records [%s]", length(x$media))), "\n")
+    cat(rgbif_wrap(sprintf("No. facets [%s]", length(x$facets))), "\n")
     cat(rgbif_wrap(sprintf("Args [%s]", pasteargs(x))), "\n")
     if (inherits(x$data, "data.frame")) print(x$data) else cat(x$data)
   } else if (if (is.null(attr(x, "type"))) FALSE else attr(x, "type") == "many") {
@@ -21,6 +22,7 @@ print.gbif <- function(x, ...) {
       cat(rgbif_wrap(sprintf("Occ. returned [%s]", pastemax(x, "returned"))), "\n")
       cat(rgbif_wrap(sprintf("No. unique hierarchies [%s]", pastemax(x, "hier"))), "\n")
       cat(rgbif_wrap(sprintf("No. media records [%s]", pastemax(x, "media"))), "\n")
+      cat(rgbif_wrap(sprintf("No. facets [%s]", pastemax(x$facets))), "\n")
       cat(rgbif_wrap(sprintf("Args [%s]", pasteargs(x))), "\n")
       cat(sprintf("First 10 rows of data from %s\n\n", substring(names(x)[1], 1, 50)))
       if (inherits(x[[1]]$data, "data.frame")) print(x[[1]]$data) else cat(x[[1]]$data)

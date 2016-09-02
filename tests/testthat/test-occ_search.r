@@ -27,7 +27,7 @@ test_that("returns the correct class", {
   expect_equal(uu$meta$limit, 20)
   expect_equal(vv$limit, 200)
 
-  expect_equal(length(tt), 4)
+  expect_equal(length(tt), 5)
   expect_equal(length(tt$meta), 4)
 })
 
@@ -51,13 +51,13 @@ test_that("returns the correct class", {
 
   expect_is(out, "gbif")
   expect_is(out$meta, "list")
-  expect_is(out$data, "character")
+  expect_null(out$data)
 
   # returns the correct value
   expect_true(out$meta$endOfRecords)
 
   # returns the correct dimensions
-  expect_equal(length(out), 4)
+  expect_equal(length(out), 5)
 })
 
 # Occurrence data: lat/long data, and associated metadata with occurrences
@@ -176,7 +176,7 @@ test_that("scientificName basic use works - no synonyms", {
   # specific epithet is the synonym - subspecies rank input
   ee <- suppressMessages(occ_search(scientificName = "Myotis septentrionalis septentrionalis", limit = 2))
   expect_is(ee, "gbif")
-  expect_is(ee$data, "character")
+  expect_null(ee$data)
   expect_equal(attr(ee, "args")$scientificName, "Myotis septentrionalis septentrionalis")
 
   # above with subspecific name removed, gives result

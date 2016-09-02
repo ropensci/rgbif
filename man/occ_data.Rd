@@ -18,7 +18,7 @@ occ_data(taxonKey = NULL, scientificName = NULL, country = NULL,
   familyKey = NULL, genusKey = NULL, establishmentMeans = NULL,
   protocol = NULL, license = NULL, organismId = NULL,
   publishingOrg = NULL, stateProvince = NULL, waterBody = NULL,
-  locality = NULL, limit = 500, start = 0, spellCheck = FALSE, ...)
+  locality = NULL, limit = 500, start = 0, spellCheck = NULL, ...)
 }
 \arguments{
 \item{taxonKey}{(numeric) A taxon key from the GBIF backbone. All included and synonym taxa
@@ -389,11 +389,12 @@ results from \code{\link{occ_count}}. For equivalent outcomes, in this function
 use \code{hasCoordinate=TRUE}, and \code{hasGeospatialIssue=FALSE} to have the
 same outcome using \code{\link{occ_count}} with \code{isGeoreferenced=TRUE}.
 
-This does nearly the same thing as \code{\link{occ_search}}, but is a bit simplified
-for speed, and is for the most common use case where user just wants the data, and not
-other information like taxon hierarchies and media (e.g., images) information. Alot of time
-in \code{\link{occ_search}} is used parsing data to be more useable downstream. We do
-less of that in this function.
+This does nearly the same thing as \code{\link{occ_search}}, but
+is a bit simplified for speed, and is for the most common use case where
+user just wants the data, and not other information like taxon hierarchies
+and media (e.g., images) information. Alot of time in \code{\link{occ_search}}
+is used parsing data to be more useable downstream. We do less of that
+in this function.
 }
 \examples{
 \dontrun{

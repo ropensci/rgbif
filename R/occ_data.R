@@ -6,11 +6,12 @@
 #' @template occ
 #' @template occ_data_egs
 #' @seealso \code{\link{downloads}}, \code{\link{occ_search}}
-#' @details This does nearly the same thing as \code{\link{occ_search}}, but is a bit simplified
-#' for speed, and is for the most common use case where user just wants the data, and not
-#' other information like taxon hierarchies and media (e.g., images) information. Alot of time
-#' in \code{\link{occ_search}} is used parsing data to be more useable downstream. We do
-#' less of that in this function.
+#' @details This does nearly the same thing as \code{\link{occ_search}}, but
+#' is a bit simplified for speed, and is for the most common use case where
+#' user just wants the data, and not other information like taxon hierarchies
+#' and media (e.g., images) information. Alot of time in \code{\link{occ_search}}
+#' is used parsing data to be more useable downstream. We do less of that
+#' in this function.
 #' @return An object of class \code{gbif_data}, which is a S3 class list, with
 #' slots for metadata (\code{meta}) and the occurrence data itself (\code{data}),
 #' and with attributes listing the user supplied arguments and whether it was a
@@ -30,7 +31,7 @@ occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
   kingdomKey = NULL, classKey = NULL, orderKey = NULL, familyKey = NULL,
   genusKey = NULL, establishmentMeans = NULL, protocol = NULL, license = NULL,
   organismId = NULL, publishingOrg = NULL, stateProvince = NULL, waterBody = NULL,
-  locality = NULL, limit=500, start=0, spellCheck = FALSE, ...) {
+  locality = NULL, limit=500, start=0, spellCheck = NULL, ...) {
 
   geometry <- geometry_handler(geometry, geom_big, geom_size, geom_n)
 
@@ -77,19 +78,27 @@ occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
 
     iter <- 0
     sumreturned <- 0
+    tt_count <- 0
     outout <- list()
+    olimit <- limit
+    if (olimit < 1) limit <- 1
     while (sumreturned < limit) {
       iter <- iter + 1
       tt <- gbif_GET(url, args, TRUE, ...)
 
       # if no results, assign count var with 0
-      if (identical(tt$results, list())) tt$count <- 0
+      if (identical(tt$results, list())) tt_count <- 0
 
-      numreturned <- NROW(tt$results)
-      sumreturned <- sumreturned + numreturned
+      if (olimit < 1) {
+        numreturned <- 0
+        sumreturned <- 1
+      } else {
+        numreturned <- NROW(tt$results)
+        sumreturned <- sumreturned + numreturned
+      }
 
-      if (tt$count < limit) {
-        limit <- tt$count
+      if (tt_count < limit) {
+        limit <- tt_count
       }
 
       if (sumreturned < limit) {
@@ -103,7 +112,7 @@ occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
     data <- lapply(outout, "[[", "results")
 
     if (identical(data[[1]], list())) {
-      data <- paste("no data found, try a different search")
+      data <- NULL
     } else {
       data <- lapply(data, clean_data)
       data <- data.table::setDF(data.table::rbindlist(data, use.names = TRUE, fill = TRUE))

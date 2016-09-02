@@ -19,7 +19,8 @@ occ_search(taxonKey = NULL, scientificName = NULL, country = NULL,
   protocol = NULL, license = NULL, organismId = NULL,
   publishingOrg = NULL, stateProvince = NULL, waterBody = NULL,
   locality = NULL, limit = 500, start = 0, fields = "all",
-  return = "all", spellCheck = FALSE, ...)
+  return = "all", spellCheck = NULL, facet = NULL, facetMincount = NULL,
+  facetMultiselect = NULL, ...)
 }
 \arguments{
 \item{taxonKey}{(numeric) A taxon key from the GBIF backbone. All included and synonym taxa
@@ -184,17 +185,34 @@ calculated as the \code{limit+start}, so \code{start=199,000} and \code{limit=20
 Note that we do the paging internally for you, but you can manually set the \code{start}
 parameter}
 
-\item{fields}{(character) Default ('all') returns all fields. 'minimal' returns just taxon name,
-key, latitude, and longitute. Or specify each field you want returned by name, e.g.
-fields = c('name','latitude','elevation').}
+\item{fields}{(character) Default ('all') returns all fields. 'minimal'
+returns just taxon name, key, latitude, and longitute. Or specify each field
+you want returned by name, e.g. fields = c('name','latitude','elevation').}
 
 \item{return}{One of data, hier, meta, or all. If data, a data.frame with the
 data. hier returns the classifications in a list for each record. meta
-returns the metadata for the entire call. all gives all data back in a list.}
+returns the metadata for the entire call. all gives all data back in
+a list.}
 
 \item{spellCheck}{(logical) If \code{TRUE} ask GBIF to check your spelling of
 the value passed to the \code{search} parameter. IMPORTANT: This only checks
 the input to the \code{search} parameter, and no others. Default: \code{FALSE}}
+
+\item{facet}{(character) a character vector of length 1 or greater. Required.}
+
+\item{facetMincount}{(numeric) minimum number of records to be included
+in the faceting results}
+
+\item{facetMultiselect}{(logical) Set to \code{TRUE} to still return counts
+for values that are not currently filtered. See examples.
+Default: \code{FALSE}
+
+\bold{Faceting:}
+All fields can be faceted on except for last "lastInterpreted",
+"eventDate", and "geometry"
+
+You can do facet searches alongside searching occurrence data, and
+return both, or only return facets, or only occurrence data, etc.}
 
 \item{...}{Further named parameters, such as \code{query}, \code{path}, etc, passed on to
 \code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will
@@ -590,15 +608,15 @@ occ_search(collectionCode=c("Floristic Databases MV - Higher Plants","Artport"))
 occ_search(taxonKey=key, hasGeospatialIssue=TRUE, limit=20)
 
 # Search using a query string
-occ_search(search = "kingfisher", limit=20)
+# occ_search(search = "kingfisher", limit=20)
 ## spell check - only works with the `search` parameter
 ### spelled correctly - same result as above call
-occ_search(search = "kingfisher", limit=20, spellCheck = TRUE)
+# occ_search(search = "kingfisher", limit=20, spellCheck = TRUE)
 ### spelled incorrectly - stops with suggested spelling
-occ_search(search = "kajsdkla", limit=20, spellCheck = TRUE)
+# occ_search(search = "kajsdkla", limit=20, spellCheck = TRUE)
 ### spelled incorrectly - stops with many suggested spellings
 ###   and number of results for each
-occ_search(search = "helir", limit=20, spellCheck = TRUE)
+# occ_search(search = "helir", limit=20, spellCheck = TRUE)
 
 
 
@@ -760,12 +778,37 @@ wkt <- 'POLYGON((-178.59375 64.83258989321493,-165.9375 59.24622380205539,
 ### Apparently a point is allowed, but haven't successfully retrieved data, so returns nothing
 # wkt <- 'POINT(45 -122)'
 # occ_search(geometry = wkt)
+
+## Faceting
+(x <- occ_search(facet = "country", limit = 0))
+x$facets
+(x <- occ_search(facet = "country", limit = 10))
+x$facets
+(x <- occ_search(facet = c("country", "basisOfRecord"), limit = 10))
+x$facets
+(x <- occ_search(facet = "country", facetMincount = 30000000L, limit = 10))
+x$facets
+
+# paging per each faceted variable
+(x <- occ_search(
+  facet = c("country", "basisOfRecord", "hasCoordinate"),
+  country.facetLimit = 3,
+  basisOfRecord.facetLimit = 6,
+  limit = 0
+))
+x$facets
+
+# You can set limit=0 to get number of results found
+occ_search(datasetKey = '7b5d6a48-f762-11e1-a439-00145eb45e9a', limit = 0)$meta
+occ_search(scientificName = 'Ursus americanus', limit = 0)$meta
+occ_search(scientificName = 'Ursus americanus', limit = 0, return = "meta")
 }
 }
 \references{
 \url{http://www.gbif.org/developer/occurrence#search}
 }
 \seealso{
-\code{\link{downloads}}, \code{\link{occ_data}}
+\code{\link{downloads}}, \code{\link{occ_data}},
+\code{\link{occ_facet}}
 }
 

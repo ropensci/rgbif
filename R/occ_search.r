@@ -5,13 +5,16 @@
 #' @template oslimstart
 #' @template occ
 #' @template occ_search_egs
-#' @param fields (character) Default ('all') returns all fields. 'minimal' returns just taxon name,
-#'    key, latitude, and longitute. Or specify each field you want returned by name, e.g.
-#'    fields = c('name','latitude','elevation').
+#' @template occfacet
+#' @param fields (character) Default ('all') returns all fields. 'minimal'
+#' returns just taxon name, key, latitude, and longitute. Or specify each field
+#' you want returned by name, e.g. fields = c('name','latitude','elevation').
 #' @param return One of data, hier, meta, or all. If data, a data.frame with the
-#'    data. hier returns the classifications in a list for each record. meta
-#'    returns the metadata for the entire call. all gives all data back in a list.
-#' @seealso \code{\link{downloads}}, \code{\link{occ_data}}
+#' data. hier returns the classifications in a list for each record. meta
+#' returns the metadata for the entire call. all gives all data back in
+#' a list.
+#' @seealso \code{\link{downloads}}, \code{\link{occ_data}},
+#' \code{\link{occ_facet}}
 #' @return An object of class \code{gbif}, which is a S3 class list, with
 #' slots for metadata (\code{meta}), the occurrence data itself (\code{data}),
 #' the taxonomic hierarchy data (\code{hier}), and media metadata (\code{media}).
@@ -38,7 +41,8 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
   genusKey = NULL, establishmentMeans = NULL, protocol = NULL, license = NULL,
   organismId = NULL, publishingOrg = NULL, stateProvince = NULL,
   waterBody = NULL, locality = NULL, limit=500, start=0, fields = 'all',
-  return='all', spellCheck = FALSE, ...) {
+  return='all', spellCheck = NULL, facet = NULL, facetMincount = NULL,
+  facetMultiselect = NULL, ...) {
 
   calls <- names(sapply(match.call(), deparse))[-1]
   calls_vec <- c("georeferenced","altitude","latitude","longitude") %in% calls
@@ -83,28 +87,40 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
         publishingOrg=publishingOrg, stateProvince=stateProvince,
         waterBody=waterBody, locality=locality,
         limit=check_limit(as.integer(limit)),
-        offset=check_limit(as.integer(start)), spellCheck = spellCheck
+        offset=check_limit(as.integer(start)), spellCheck = spellCheck,
+        facetMincount = facetMincount, facetMultiselect = facetMultiselect
       )
     )
-    args <- c(args, parse_issues(issue))
+    args <- c(args, parse_issues(issue), collargs("facet"), yank_args(...))
 
     argscoll <<- args
 
     iter <- 0
     sumreturned <- 0
+    tt_count <- 0
     outout <- list()
+    # if facet=TRUE, and limit=0, set limit=1
+    olimit <- limit
+    #if (!is.null(facet) && olimit == 0) limit <- 1
+    if (olimit < 1) limit <- 1
     while (sumreturned < limit) {
       iter <- iter + 1
       tt <- gbif_GET(url, args, FALSE, ...)
 
       # if no results, assign count var with 0
-      if (identical(tt$results, list())) tt$count <- 0
+      if (identical(tt$results, list())) tt_count <- 0
 
-      numreturned <- length(tt$results)
-      sumreturned <- sumreturned + numreturned
+      #if (!is.null(facet) && olimit == 0) {
+      if (olimit < 1) {
+        numreturned <- 0
+        sumreturned <- 1
+      } else {
+        numreturned <- length(tt$results)
+        sumreturned <- sumreturned + numreturned
+      }
 
-      if (tt$count < limit) {
-        limit <- tt$count
+      if (tt_count < limit) {
+        limit <- tt_count
       }
 
       if (sumreturned < limit) {
@@ -116,6 +132,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
 
     meta <- outout[[length(outout)]][c('offset', 'limit', 'endOfRecords', 'count')]
     data <- do.call(c, lapply(outout, "[[", "results"))
+    facets <- do.call(c, lapply(outout, "[[", "facets"))
 
     if (return == 'data') {
       if (identical(data, list())) {
@@ -143,21 +160,32 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
         data <- gbifparser(input = data, fields = fields)
         sapply(data, "[[", "media")
       }
+    } else if (return == 'facet') {
+      stats::setNames(lapply(facets, function(z) {
+        tibble::as_data_frame(
+          data.table::rbindlist(z$counts, use.names = TRUE, fill = TRUE)
+        )
+      }), vapply(tt$facets, function(x) to_camel(x$field), ""))
     } else if (return == 'meta') {
-      #data.frame(meta, stringsAsFactors = FALSE)
       tibble::as_data_frame(meta)
     } else {
       if (identical(data, list())) {
-        dat2 <- paste("no data found, try a different search")
-        hier2 <- paste("no data found, try a different search")
-        media <- paste("no data found, try a different search")
+        dat2 <- NULL
+        hier2 <- NULL
+        media <- NULL
       } else {
         data <- gbifparser(input = data, fields = fields)
         dat2 <- tibble::as_data_frame(prune_result(ldfast(lapply(data, "[[", "data"))))
         hier2 <- unique(lapply(data, "[[", "hierarchy"))
         media <- unique(lapply(data, "[[", "media"))
       }
-      list(meta = meta, hierarchy = hier2, data = dat2, media = media)
+      fac <- stats::setNames(lapply(facets, function(z) {
+        tibble::as_data_frame(
+          data.table::rbindlist(z$counts, use.names = TRUE, fill = TRUE)
+        )
+      }), vapply(facets, function(x) to_camel(x$field), ""))
+      list(meta = meta, hierarchy = hier2, data = dat2,
+           media = media, facets = fac)
     }
   }
 

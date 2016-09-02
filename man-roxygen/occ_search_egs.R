@@ -183,15 +183,15 @@
 #' occ_search(taxonKey=key, hasGeospatialIssue=TRUE, limit=20)
 #'
 #' # Search using a query string
-#' occ_search(search = "kingfisher", limit=20)
+#' # occ_search(search = "kingfisher", limit=20)
 #' ## spell check - only works with the `search` parameter
 #' ### spelled correctly - same result as above call
-#' occ_search(search = "kingfisher", limit=20, spellCheck = TRUE)
+#' # occ_search(search = "kingfisher", limit=20, spellCheck = TRUE)
 #' ### spelled incorrectly - stops with suggested spelling
-#' occ_search(search = "kajsdkla", limit=20, spellCheck = TRUE)
+#' # occ_search(search = "kajsdkla", limit=20, spellCheck = TRUE)
 #' ### spelled incorrectly - stops with many suggested spellings
 #' ###   and number of results for each
-#' occ_search(search = "helir", limit=20, spellCheck = TRUE)
+#' # occ_search(search = "helir", limit=20, spellCheck = TRUE)
 #'
 #'
 #'
@@ -353,4 +353,28 @@
 #' ### Apparently a point is allowed, but haven't successfully retrieved data, so returns nothing
 #' # wkt <- 'POINT(45 -122)'
 #' # occ_search(geometry = wkt)
+#'
+#' ## Faceting
+#' (x <- occ_search(facet = "country", limit = 0))
+#' x$facets
+#' (x <- occ_search(facet = "country", limit = 10))
+#' x$facets
+#' (x <- occ_search(facet = c("country", "basisOfRecord"), limit = 10))
+#' x$facets
+#' (x <- occ_search(facet = "country", facetMincount = 30000000L, limit = 10))
+#' x$facets
+#'
+#' # paging per each faceted variable
+#' (x <- occ_search(
+#'   facet = c("country", "basisOfRecord", "hasCoordinate"),
+#'   country.facetLimit = 3,
+#'   basisOfRecord.facetLimit = 6,
+#'   limit = 0
+#' ))
+#' x$facets
+#'
+#' # You can set limit=0 to get number of results found
+#' occ_search(datasetKey = '7b5d6a48-f762-11e1-a439-00145eb45e9a', limit = 0)$meta
+#' occ_search(scientificName = 'Ursus americanus', limit = 0)$meta
+#' occ_search(scientificName = 'Ursus americanus', limit = 0, return = "meta")
 #' }
