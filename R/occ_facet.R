@@ -4,6 +4,8 @@
 #' @param facet (character) a character vector of length 1 or greater. Required.
 #' @param facetMincount (numeric) minimum number of records to be included
 #' in the faceting results
+#' @param ... Further named curl parameters (see xxx), or facet parameters,
+#' such as for paging based on each facet variable, e.g., country.facetLimit
 #' @seealso \code{\link{occ_search}} also has faceting ability, but
 #' can include occurrence data in addition to facets
 #' @details All fields can be faceted on except for last "lastInterpreted",

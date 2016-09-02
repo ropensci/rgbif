@@ -87,7 +87,7 @@ occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
       tt <- gbif_GET(url, args, TRUE, ...)
 
       # if no results, assign count var with 0
-      if (identical(tt$results, list())) tt_count <- 0
+      if (identical(tt$results, list())) tt$count <- tt_count <- 0
 
       if (olimit < 1) {
         numreturned <- 0

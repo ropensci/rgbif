@@ -148,7 +148,7 @@ test_that("scientificName basic use works - no synonyms", {
   # specific epithet is the synonym - subspecies rank input
   ee <- suppressMessages(occ_data(scientificName = "Myotis septentrionalis septentrionalis", limit = 2))
   expect_is(ee, "gbif_data")
-  expect_is(ee$data, "character")
+  expect_null(suppressWarnings(ee$data))
   expect_equal(attr(ee, "args")$scientificName, "Myotis septentrionalis septentrionalis")
 
   # above with subspecific name removed, gives result

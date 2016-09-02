@@ -25,6 +25,6 @@ test_that("name_suggest returns the correct", {
   expect_equal(names(d), c("key","canonicalName"))
 
   # value
-  expect_match(b$canonicalName[[1]], "Puma")
-  expect_equal(c$rank[1], "SUBSPECIES")
+  expect_match(b$canonicalName[1], "Puma")
+  expect_equal(c$rank[1], "GENUS")
 })

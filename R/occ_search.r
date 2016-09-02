@@ -108,7 +108,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
       tt <- gbif_GET(url, args, FALSE, ...)
 
       # if no results, assign count var with 0
-      if (identical(tt$results, list())) tt_count <- 0
+      if (identical(tt$results, list())) tt$count <- tt_count <- 0
 
       #if (!is.null(facet) && olimit == 0) {
       if (olimit < 1) {
