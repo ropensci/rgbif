@@ -6,7 +6,8 @@
 #' @param type Type of dataset, options include OCCURRENCE, etc.
 #' @param keyword Keyword to search by. Datasets can be tagged by keywords, which
 #'    you can search on. The search is done on the merged collection of tags, the
-#'    dataset keywordCollections and temporalCoverages.
+#'    dataset keywordCollections and temporalCoverages. SEEMS TO NOT BE WORKING
+#'    ANYMORE AS OF 2016-09-02.
 #' @param owningOrg Owning organization. A uuid string. See \code{\link{organizations}}
 #' @param publishingOrg Publishing organization. A uuid string. See \code{\link{organizations}}
 #' @param hostingOrg Hosting organization. A uuid string. See \code{\link{organizations}}

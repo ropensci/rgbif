@@ -17,9 +17,6 @@
 #' # Gets all datasets of type "OCCURRENCE".
 #' dataset_search(type="OCCURRENCE", limit = 10)
 #'
-#' # Gets all datasets tagged with keyword "france".
-#' dataset_search(keyword="france", limit = 10)
-#'
 #' # Fulltext search for all datasets having the word "amsterdam" somewhere in
 #' # its metadata (title, description, etc).
 #' dataset_search(query="amsterdam", limit = 10)
@@ -103,7 +100,7 @@ dataset_search <- function(query = NULL, country = NULL, type = NULL, keyword = 
 
     # data
     if (length(tt$results) == 0) {
-      out <- "no results"
+      out <- NULL
     } else if (length(tt$results) == 1) {
       out <- parse_dataset(x = tt$results)
     } else {
