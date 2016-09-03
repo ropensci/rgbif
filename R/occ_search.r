@@ -95,39 +95,34 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
 
     argscoll <<- args
 
-    iter <- 0
-    sumreturned <- 0
-    tt_count <- 0
-    outout <- list()
-    # if facet=TRUE, and limit=0, set limit=1
-    olimit <- limit
-    #if (!is.null(facet) && olimit == 0) limit <- 1
-    if (olimit < 1) limit <- 1
-    while (sumreturned < limit) {
-      iter <- iter + 1
-      tt <- gbif_GET(url, args, FALSE, ...)
+    if (limit >= 300) {
+      ### loop route for no facet and limit>0
+      iter <- 0
+      sumreturned <- 0
+      outout <- list()
+      while (sumreturned < limit) {
+        iter <- iter + 1
+        tt <- gbif_GET(url, args, FALSE, ...)
 
-      # if no results, assign count var with 0
-      if (identical(tt$results, list())) tt$count <- tt_count <- 0
+        # if no results, assign count var with 0
+        if (identical(tt$results, list())) tt$count <- 0
 
-      #if (!is.null(facet) && olimit == 0) {
-      if (olimit < 1) {
-        numreturned <- 0
-        sumreturned <- 1
-      } else {
         numreturned <- length(tt$results)
         sumreturned <- sumreturned + numreturned
-      }
 
-      if (tt_count < limit) {
-        limit <- tt_count
-      }
+        if (tt$count < limit) {
+          limit <- tt$count
+        }
 
-      if (sumreturned < limit) {
-        args$limit <- limit - sumreturned
-        args$offset <- sumreturned + start
+        if (sumreturned < limit) {
+          args$limit <- limit - sumreturned
+          args$offset <- sumreturned + start
+        }
+        outout[[iter]] <- tt
       }
-      outout[[iter]] <- tt
+    } else {
+      ### loop route for facet or limit=0
+      outout <- list(gbif_GET(url, args, FALSE, ...))
     }
 
     meta <- outout[[length(outout)]][c('offset', 'limit', 'endOfRecords', 'count')]

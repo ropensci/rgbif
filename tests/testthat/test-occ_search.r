@@ -25,7 +25,7 @@ test_that("returns the correct class", {
   expect_equal(as.character(uu$hierarchy[[1]][1,1]), "Plantae")
   expect_equal(as.character(uu$data[1,1]), "Helianthus annuus")
   expect_equal(uu$meta$limit, 20)
-  expect_equal(vv$limit, 300)
+  expect_equal(vv$limit, 200)
 
   expect_equal(length(tt), 5)
   expect_equal(length(tt$meta), 4)

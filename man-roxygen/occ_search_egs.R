@@ -7,14 +7,14 @@
 #' occ_search(taxonKey=key, limit=20)
 #'
 #' # Return just metadata for the search
-#' occ_search(taxonKey=key, limit=100, return='meta')
+#' occ_search(taxonKey=key, limit=0, return='meta')
 #'
 #' # Instead of getting a taxon key first, you can search for a name directly
 #' ## However, note that using this approach (with \code{scientificName="..."})
 #' ## you are getting synonyms too. The results for using \code{scientifcName} and
 #' ## \code{taxonKey} parameters are the same in this case, but I wouldn't be surprised if for some
 #' ## names they return different results
-#' occ_search(scientificName = 'Ursus americanus', config=verbose())
+#' occ_search(scientificName = 'Ursus americanus')
 #' key <- name_backbone(name = 'Ursus americanus', rank='species')$usageKey
 #' occ_search(taxonKey = key)
 #'
@@ -355,15 +355,20 @@
 #' # occ_search(geometry = wkt)
 #'
 #' ## Faceting
-#' (x <- occ_search(facet = "country", limit = 0))
+#' x <- occ_search(facet = "country", limit = 0)
 #' x$facets
-#' (x <- occ_search(facet = "country", limit = 10))
+#' x <- occ_search(facet = "establishmentMeans", limit = 10)
 #' x$facets
-#' (x <- occ_search(facet = c("country", "basisOfRecord"), limit = 10))
+#' x$data
+#' x <- occ_search(facet = c("country", "basisOfRecord"), limit = 10)
+#' x$data
 #' x$facets
-#' (x <- occ_search(facet = "country", facetMincount = 30000000L, limit = 10))
+#' x$facets$country
+#' x$facets$basisOfRecord
+#' x$facets$basisOfRecord$count
+#' x <- occ_search(facet = "country", facetMincount = 30000000L, limit = 10)
 #' x$facets
-#'
+#' x$data
 #' # paging per each faceted variable
 #' (x <- occ_search(
 #'   facet = c("country", "basisOfRecord", "hasCoordinate"),
@@ -372,6 +377,7 @@
 #'   limit = 0
 #' ))
 #' x$facets
+#'
 #'
 #' # You can set limit=0 to get number of results found
 #' occ_search(datasetKey = '7b5d6a48-f762-11e1-a439-00145eb45e9a', limit = 0)$meta

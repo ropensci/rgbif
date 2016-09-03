@@ -11,6 +11,9 @@ occ_facet(facet, facetMincount = NULL, ...)
 
 \item{facetMincount}{(numeric) minimum number of records to be included
 in the faceting results}
+
+\item{...}{Further named curl parameters (see xxx), or facet parameters,
+such as for paging based on each facet variable, e.g., country.facetLimit}
 }
 \value{
 A list of tibbles (data.frame's) for each facet (each element of
