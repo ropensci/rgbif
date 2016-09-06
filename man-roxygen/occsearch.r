@@ -53,8 +53,8 @@
 #'    whereas '30,5' wouldn't work)
 #' @param geometry Searches for occurrences inside a polygon described in Well Known
 #'    Text (WKT) format. A WKT shape written as either POINT, LINESTRING, LINEARRING
-#'    or POLYGON. Example of a polygon: ((30.1 10.1, 20, 20 40, 40 40, 30.1 10.1))
-#'     would be queried as \url{http://bit.ly/1BzNwDq}. See also the section \strong{WKT} below.
+#'    POLYGON, or MULTIPOLYGON. Example of a polygon: POLYGON((30.1 10.1, 20, 20 40, 40 40, 30.1 10.1))
+#'    would be queried as \url{http://bit.ly/1BzNwDq}. See also the section \strong{WKT} below.
 #' @param geom_big (character) One of "axe", "bbox", or "asis" (default). See Details.
 #' @param geom_size (integer) An integer indicating size of the cell. Default: 40. See Details.
 #' @param geom_n (integer) An integer indicating number of cells in each dimension. Default: 10.
@@ -161,6 +161,7 @@
 #' \bold{WKT:} Examples of valid WKT objects:
 #' \itemize{
 #'  \item 'POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))'
+#'  \item 'MULTIPOLYGON(((-123 38, -123 43, -116 43, -116 38, -123 38)),((-97 41, -97 45, -93 45, -93 41, -97 41)))'
 #'  \item 'POINT(-120 40)'
 #'  \item 'LINESTRING(3 4,10 50,20 25)'
 #'  \item 'LINEARRING' ???' - Not sure how to specify this. Anyone?

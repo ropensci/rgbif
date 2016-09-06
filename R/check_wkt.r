@@ -7,6 +7,9 @@
 #' check_wkt('POINT(30.1 10.1)')
 #' check_wkt('LINESTRING(3 4,10 50,20 25)')
 #'
+#' wkt <- 'MULTIPOLYGON(((30 20, 45 40, 10 40, 30 20)),((15 5, 40 10, 10 20, 5 10, 15 5)))'
+#' check_wkt(wkt)
+#'
 #' # check many passed in at once
 #' check_wkt(c('POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))', 'POINT(30.1 10.1)'))
 #'
@@ -28,9 +31,14 @@ check_wkt <- function(wkt = NULL){
     stopifnot(is.character(wkt))
     y <- strextract(wkt, "[A-Z]+")
 
+    wkts <- c('POINT', 'POLYGON', 'MULTIPOLYGON', 'LINESTRING', 'LINEARRING')
+
     for (i in seq_along(wkt)) {
-      if (!y[i] %in% c('POINT', 'POLYGON', 'LINESTRING', 'LINEARRING')) {
-        stop("WKT must be of type POINT, POLYGON, LINESTRING, or LINEARRING", call. = FALSE)
+      if (!y[i] %in% wkts) {
+        stop(
+          paste0("WKT must be one of the types: ", paste0(wkts, collapse = ", ")),
+          call. = FALSE
+        )
       }
       res <- tryCatch(read_wkt(wkt[i]), error = function(e) e)
       if (!inherits(res, 'list')) {

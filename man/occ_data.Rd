@@ -55,8 +55,8 @@ or south_america}
 
 \item{geometry}{Searches for occurrences inside a polygon described in Well Known
 Text (WKT) format. A WKT shape written as either POINT, LINESTRING, LINEARRING
-or POLYGON. Example of a polygon: ((30.1 10.1, 20, 20 40, 40 40, 30.1 10.1))
- would be queried as \url{http://bit.ly/1BzNwDq}. See also the section \strong{WKT} below.}
+POLYGON, or MULTIPOLYGON. Example of a polygon: POLYGON((30.1 10.1, 20, 20 40, 40 40, 30.1 10.1))
+would be queried as \url{http://bit.ly/1BzNwDq}. See also the section \strong{WKT} below.}
 
 \item{geom_big}{(character) One of "axe", "bbox", or "asis" (default). See Details.}
 
@@ -255,6 +255,7 @@ first with any \code{name_*} functions, then pass that ID to the \code{taxonKey}
 \bold{WKT:} Examples of valid WKT objects:
 \itemize{
  \item 'POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))'
+ \item 'MULTIPOLYGON(((-123 38, -123 43, -116 43, -116 38, -123 38)),((-97 41, -97 45, -93 45, -93 41, -97 41)))'
  \item 'POINT(-120 40)'
  \item 'LINESTRING(3 4,10 50,20 25)'
  \item 'LINEARRING' ???' - Not sure how to specify this. Anyone?
@@ -458,7 +459,12 @@ occ_data(decimalLatitude=40, decimalLongitude=-120, limit = 10)
 
 # Search on a bounding box
 ## in well known text format
+### polygon
 occ_data(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))', limit=20)
+### multipolygon
+wkt <- 'MULTIPOLYGON(((-123 38, -123 43, -116 43, -116 38, -123 38)),((-97 41, -97 45, -93 45, -93 41, -97 41)))'
+occ_data(geometry = wkt, limit = 20)
+### polygon and taxonkey
 key <- name_suggest(q='Aesculus hippocastanum')$key[1]
 occ_data(taxonKey=key, geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))',
    limit=20)
