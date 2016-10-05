@@ -62,7 +62,7 @@ All georeferenced records in GBIF
 
 ```r
 occ_count(georeferenced=TRUE)
-#> [1] 546285498
+#> [1] 546282258
 ```
 
 Records from Denmark
