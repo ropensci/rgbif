@@ -5,7 +5,6 @@ test_that("gbif_names", {
 
   aa <- gbif_names(name_lookup(query='snake', hl=TRUE), browse=FALSE)
   expect_is(aa, "character")
-  expect_match(aa, "/var/folders")
   expect_match(aa, "index.html")
 
   out <- name_lookup(query='canada', hl=TRUE, limit=5)
