@@ -6,14 +6,16 @@
 #' @param output Output folder path. If not given uses temporary folder.
 #' @param which One of map or table (default).
 #' @param browse (logical) Browse output (default: TRUE)
-#' @details The max number of photos you can see when which="map" is ~160, so cycle through
-#' if you have more than that.
+#' @details The max number of photos you can see when which="map" is ~160,
+#' so cycle through if you have more than that.
+#' @section BEWARE: The maps in the table view may not show up correctly if
+#' you are using RStudio
 #' @examples \dontrun{
-#' (res <- occ_search(mediatype = 'StillImage', return = "media"))
+#' res <- occ_search(mediaType = 'StillImage', return = "media")
 #' gbif_photos(res)
 #' gbif_photos(res, which='map')
 #'
-#' res <- occ_search(scientificName = "Aves", mediatype = 'StillImage', return = "media", limit=150)
+#' res <- occ_search(scientificName = "Aves", mediaType = 'StillImage', return = "media", limit=150)
 #' gbif_photos(res)
 #' gbif_photos(res, output = '~/barfoo')
 #' }
@@ -165,8 +167,9 @@ map <- '
 <meta charset=utf-8 />
 <title>Single marker</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-<script src="https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js"></script>
-<link href="https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.css" rel="stylesheet" />
+<script src="https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js"></script>
+<link href="https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css" rel="stylesheet" />
+
 <style>
   body { margin:0; padding:0; }
   #map { position:absolute; top:0; bottom:0; width:100%; }
@@ -177,7 +180,9 @@ map <- '
 <div id="map"></div>
 
 <script>
-var map = L.mapbox.map("map", "examples.map-i86nkdio")
+L.mapbox.accessToken = "pk.eyJ1IjoicmVjb2xvZ3kiLCJhIjoiZWlta1B0WSJ9.u4w33vy6kkbvmPyGnObw7A";
+
+var map = L.mapbox.map("map", "mapbox.streets")
     .setView([{{decimalLatitude}}, {{decimalLongitude}}], 5);
 
 L.mapbox.featureLayer({

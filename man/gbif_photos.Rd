@@ -19,16 +19,20 @@ gbif_photos(input, output = NULL, which = "table", browse = TRUE)
 View photos from GBIF.
 }
 \details{
-The max number of photos you can see when which="map" is ~160, so cycle through
-if you have more than that.
+The max number of photos you can see when which="map" is ~160,
+so cycle through if you have more than that.
+}
+\section{BEWARE}{
+ The maps in the table view may not show up correctly if
+you are using RStudio
 }
 \examples{
 \dontrun{
-(res <- occ_search(mediatype = 'StillImage', return = "media"))
+res <- occ_search(mediaType = 'StillImage', return = "media")
 gbif_photos(res)
 gbif_photos(res, which='map')
 
-res <- occ_search(scientificName = "Aves", mediatype = 'StillImage', return = "media", limit=150)
+res <- occ_search(scientificName = "Aves", mediaType = 'StillImage', return = "media", limit=150)
 gbif_photos(res)
 gbif_photos(res, output = '~/barfoo')
 }
