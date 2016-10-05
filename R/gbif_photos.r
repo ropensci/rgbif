@@ -31,7 +31,7 @@ gbif_photos <- function(input, output = NULL, which='table', browse = TRUE) {
     ff <- paste(readLines(filepath), collapse = "\n")
     rr <- whisker.render(ff)
     write(rr, file = outfile)
-    if (browse) browseURL(outfile) else outfile
+    if (browse) browseURL(outfile, browser = pick_browser()) else outfile
   } else {
     if (length(input) > 20) {
       outdir <- dirhandler(output, 'dir')
@@ -51,7 +51,7 @@ gbif_photos <- function(input, output = NULL, which='table', browse = TRUE) {
         write(rendered, file = filenames[[i]])
       }
 
-      if (browse) browseURL(filenames[[1]]) else filenames[[1]]
+      if (browse) browseURL(filenames[[1]], browser = pick_browser()) else filenames[[1]]
     } else {
       outfile <- dirhandler(output)
       outdir <- dirname(outfile)
@@ -61,7 +61,7 @@ gbif_photos <- function(input, output = NULL, which='table', browse = TRUE) {
       rendered <- whisker.render(template)
       rendered <- paste0(rendered, footer)
       write(rendered, file = outfile)
-      if (browse) browseURL(outfile) else outfile
+      if (browse) browseURL(outfile, browser = pick_browser()) else outfile
     }
   }
 }
@@ -89,6 +89,19 @@ foo <- function(x){
     }
   })
   do.call(c, unname(rgbif_compact(photos)))
+}
+
+pick_browser <- function() {
+  sysname <- Sys.info()[['sysname']]
+  if (.Platform$OS.type == "windows") {
+    NULL
+  } else if (Sys.info()[['sysname']] == "Darwin") {
+    "open"
+  } else if (.Platform$OS.type == "unix") {
+    "xdg-open"
+  } else {
+    getOption("browser")
+  }
 }
 
 template <- '
