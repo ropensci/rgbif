@@ -1,4 +1,5 @@
 ## Test environments
+
 * local OS X install, R 3.3.1
 * ubuntu 12.04 (on travis-ci), R 3.3.1
 * win-builder (devel and release)
@@ -21,14 +22,15 @@ File 'LICENSE':
 * I have run R CMD check on the 5 downstream dependencies.
   (Summary at https://github.com/ropensci/rgbif/blob/master/revdep/README.md). 
   
-* No downstream dependencies had problems.
+* One downstream dependency had problems, but I checked and they are 
+unrelated to changes in this package.
 
 * All revdep maintainers were notified of the release.
 
 --------
 
-This version adds a new vignette, adds a feature, and implements a few minor 
-fixes as well as some bug fixes.
+This version adds many new features, implements a few minor fixes, 
+and some bug fixes.
 
 Thanks!
 Scott Chamberlain

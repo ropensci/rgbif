@@ -1,3 +1,56 @@
+rgbif 0.9.5
+===========
+
+### NEW FEATURES
+
+* `occ_search()` now has faceted search. This feature is not in `occ_data()`
+as that function focuses on getting occurrence data quickly, so will not
+do get facet data. This means that a new slot is available in the output
+object from `occ_search()`, namely `facets`. Note that `rgbif` has had 
+faceted search for the species search route (`name_lookup()`) and the 
+registry search route (`dataset_search()`) for quite a while. (#215)
+* new function (`occ_facet()`) to facilitate retrieving only 
+facet data, so no occurrence data is retrieved. (#215) (#229)
+* A suite of new parameters added to `occ_search()` and 
+`occ_data()` following addition the GBIF search API: `subgenusKey`, 
+`repatriated`, `phylumKey`, `kingdomKey`, 
+`classKey`, `orderKey`, `familyKey`, `genusKey`, `establishmentMeans`, 
+`protocol`, `license`, `organismId`, `publishingOrg`, `stateProvince`, 
+`waterBody`, `locality` (#216) (#224)
+* New parameter `spellCheck` added to `occ_search()` and 
+`occ_data()` that if `TRUE` spell checks anything passed to the `search`
+parameter (same as `q` parameter on GBIF API; which is a full text 
+search) (#227)
+* New function `occ_spellcheck` to spell check search terms, returns
+`TRUE` if no spelling problems, or a list with info on suggestions 
+if not.
+* Both `occ_search()` and `occ_data()` now have ability to support 
+queries where `limit=0`, which for one should be possible and not
+fail as we did previously, and second, this makes it so that you 
+can do faceted searches (See above) and not have to wait for occurrence 
+records to be returned. (#222)
+* `MULTIPOLYGON` well known text features now supported in the GBIF
+API. Previously, you could not query `geometry` with more than
+one polygon (`POLYGON`), but now you can, yay! (#222)
+
+### MINOR IMPROVEMENTS
+
+* Improved docs for `occ_count()`, especially for the set of 
+allowed parameter options that the GBIF count API supports
+* `occ_count()` gains new parameter `typeStatus` to indicate the 
+specimen type status. 
+* When no results found, the `data` slot now returns `NULL` instead
+of a character string
+
+### BUG FIXES
+
+* Fixes to `gbif_photos()`: 1) Mapbox URLs to their JS and CSS assets
+were out of date, and API key needed. 2) In RStudio, the `table` view
+was outputting errors due to serving files on `localhost:<port>` 
+instead of simply opening the file; fixed now by checking platform 
+and using simple open file command appropriate for the OS. (#228) (#235)
+
+
 rgbif 0.9.4
 ===========
 
