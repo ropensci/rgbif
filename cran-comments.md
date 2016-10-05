@@ -32,5 +32,11 @@ unrelated to changes in this package.
 This version adds many new features, implements a few minor fixes, 
 and some bug fixes.
 
+In addition, this is a revised submission after a first submission 
+earlier today that:
+
+- fixes canonical CRAN URL in README
+- makes sure vignettes in 'vignettes' dir are same as those in 'inst/doc'
+
 Thanks!
 Scott Chamberlain
