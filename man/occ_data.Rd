@@ -464,9 +464,9 @@ occ_data(decimalLatitude=40, decimalLongitude=-120, limit = 10)
 occ_data(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))',
   limit=20)
 ### multipolygon
-## wkt <- 'MULTIPOLYGON(((-123 38, -123 43, -116 43, -116 38, -123 38)),
-##   ((-97 41, -97 45, -93 45, -93 41, -97 41)))'
-## occ_data(geometry = gsub("\\n", "", wkt), limit = 20)
+wkt <- 'MULTIPOLYGON(((-123 38, -123 43, -116 43, -116 38, -123 38)),
+   ((-97 41, -97 45, -93 45, -93 41, -97 41)))'
+occ_data(geometry = gsub("\\n\\\\s+", "", wkt), limit = 20)
 ### polygon and taxonkey
 key <- name_suggest(q='Aesculus hippocastanum')$key[1]
 occ_data(taxonKey=key,
