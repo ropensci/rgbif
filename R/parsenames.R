@@ -2,9 +2,10 @@
 #'
 #' @export
 #' @param scientificname A character vector of scientific names.
-#' @param ... Further named parameters, such as \code{query}, \code{path}, etc, passed on to
-#' \code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will be
-#' combined with \code{\link[httr]{config}}.
+#' @param ... Further named parameters, such as \code{query}, \code{path},
+#' etc, passed on to \code{\link[httr]{modify_url}} within
+#' \code{\link[httr]{GET}} call. Unnamed parameters will be combined
+#' with \code{\link[httr]{config}}.
 #'
 #' @return A \code{data.frame} containing fields extracted from parsed
 #' taxon names. Fields returned are the union of fields extracted from
@@ -12,13 +13,15 @@
 #' @author John Baumgartner (johnbb@@student.unimelb.edu.au)
 #' @references \url{http://www.gbif.org/developer/species#parser}
 #' @examples \dontrun{
-#' parsenames(scientificname='x Agropogon littoralis')
+#' parsenames('x Agropogon littoralis')
 #' parsenames(c('Arrhenatherum elatius var. elatius',
 #'              'Secale cereale subsp. cereale', 'Secale cereale ssp. cereale',
 #'              'Vanessa atalanta (Linnaeus, 1758)'))
+#' parsenames("Ajuga pyramidata")
+#' parsenames("Ajuga pyramidata x reptans")
 #'
 #' # Pass on options to httr
-#' library('httr')
+#' # library('httr')
 #' # res <- parsenames(c('Arrhenatherum elatius var. elatius',
 #' #             'Secale cereale subsp. cereale', 'Secale cereale ssp. cereale',
 #' #             'Vanessa atalanta (Linnaeus, 1758)'), config=progress())
@@ -31,5 +34,8 @@ parsenames <- function(scientificname, ...) {
   stop_for_status(tt)
   stopifnot(tt$headers$`content-type` == 'application/json')
   res <- jsonlite::fromJSON(c_utf8(tt), FALSE)
-  (x <- data.table::setDF(data.table::rbindlist(res, fill = TRUE, use.names = TRUE)))
+  res <- lapply(res, function(x) Map(function(z) if (is.null(z)) NA else z, x))
+  (x <- data.table::setDF(
+    data.table::rbindlist(res, fill = TRUE, use.names = TRUE)))
+  setNames(x, tolower(names(x)))
 }
