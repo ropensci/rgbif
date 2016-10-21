@@ -397,7 +397,7 @@ map_fetch <- function(
 
   # Make temporary file for raster data
   temp <- tempfile()
-  raw_raster <- GET(url = 'http://api.gbif.org', #gbif_base(),
+  raw_raster <- GET(url = gbif_base(),
       path = map_api_path,
       query = query,
       write_disk(temp, overwrite = TRUE)
