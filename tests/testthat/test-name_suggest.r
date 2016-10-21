@@ -18,10 +18,10 @@ test_that("name_suggest returns the correct", {
   expect_is(d$canonicalName, "character")
 
   # name_suggest returns the correct dimensions
-  expect_equal(dim(a), c(100,3))
-  expect_equal(dim(b), c(100,3))
-  expect_equal(dim(c), c(2,3))
-  expect_equal(dim(d), c(100,2))
+  expect_equal(NCOL(a), 3)
+  expect_equal(NCOL(b), 3)
+  expect_equal(NCOL(c), 3)
+  expect_equal(NCOL(d), 2)
   expect_equal(names(d), c("key","canonicalName"))
 
   # value

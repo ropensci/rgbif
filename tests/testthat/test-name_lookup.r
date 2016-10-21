@@ -35,6 +35,6 @@ test_that("works with habitat parameter", {
   expect_true(grepl("MARINE", facet_fresh$data$habitats[1]))
 
   # another test
-  out <- name_lookup(habitats = "terrestrial", return="data")
+  out <- name_lookup(habitat = "terrestrial", return = "data")
   expect_equal(sort(na.omit(out$habitats))[1], "FRESHWATER, MARINE, TERRESTRIAL")
 })
