@@ -150,7 +150,9 @@ get_layers <- function(layers, decades, living, fossil) {
 #' publisher key and returns a raster representing the number of species
 #' occurrence records per raster cell for the target group.
 #'
-#' @param type A value of TAXON, DATASET, COUNTRY or PUBLISHER.
+#' @param type A value of TAXON, DATASET, COUNTRY or PUBLISHER. If a type other
+#' than "TAXON" is chosen then break values cannot be set automatically. A vector
+#' of break values will have to be supplied to the "breaks" argument.
 #' (\code{default = "TAXON"})
 #'
 #' @param key The appropriate key for the chosen type (a taxon key,
@@ -184,13 +186,14 @@ get_layers <- function(layers, decades, living, fossil) {
 #'
 #' @param breaks Numeric vector to specify the break points of value
 #' bins that should be used to represent species occurrence record numbers in
-#' the resulting raster. This should be 50 or lower, but span the spectrum of
-#' expected number of observations per raster cell to provide maximum
-#' contrast between observed values. If you are unsure about what to specify,
-#' leave this empty and get results with the standard settings first. In this
-#' case, the function will try to generate a suitable exponential sequence of
-#' break values estimated from the total number of species occurrence records
-#' available for this key.
+#' the resulting raster. Number of specified breaks should be 50 or lower,
+#' and specified values should span the spectrum of expected number of
+#' observations per raster cell to provide maximum contrast between observed
+#' values. If you are unsure about what to specify (and your query type is
+#' "TAXON"), leave this empty and get results with the standard settings first.
+#' In this case, the function willtry to generate a suitable exponential
+#' sequence of break values estimated from the total number of species
+#' occurrence records available for this key.
 #' (\code{default = <dynamic>})
 #'
 #' @param nbreaks Numeric value to specify the number of breaks to
@@ -209,11 +212,21 @@ get_layers <- function(layers, decades, living, fossil) {
 #' @param z Numeric value to specify the zoom factor of the raster extent.
 #' (\code{default = 0})
 #'
-#' @return An object of the class \code{\link[raster]{raster}}. The raster
-#' package should be installed and loaded to handle the output of the function.
-#' Raster values represent the number of geo-referenced occurrence records in
-#' each of the cells. Notice that values indicate integer ranges ("bins") rather
-#' than exact values. The bins can be adjusted using the \code{breaks} parameter.
+#' @param crs_string String to specify the projection of the output raster.
+#' (\code{default = '+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0'})
+#'
+#' @param map_api_path String to indicate the address of the GBIF map api
+#' endpoint. This is included to allow for manual adjustment should the map api
+#' ever be changed by GBIF. The default value should be used!
+#' (\code{default = '/v1/map/density/tile'})
+#'
+#' @return A list with two objects: [[1]] An object of the class
+#' \code{\link[raster]{raster}} and [[2]] a string containing the URL generated
+#' for the map API call. The raster package should be installed and loaded to
+#' handle the output of the function. Raster values represent the number of
+#' geo-referenced occurrence records in each of the cells. Notice that values
+#' indicate integer ranges ("bins") rather than exact values. The bins can be
+#' adjusted using the \code{breaks} parameter.
 #'
 #' @details This function uses the arguments passed on to generate a query
 #' to the GBIF web map API. The API returns a web tile object that can be read
@@ -284,6 +297,7 @@ map_fetch <- function(
   decades = c('NO_YEAR','PRE_1900','1900_1910','1910_1920','1920_1930',
               '1930_1940','1940_1950','1950_1960','1960_1970','1970_1980',
               '1980_1990','1990_2000','2000_2010','2010_2020'),
+  crs_string = '+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0',
   map_api_path = '/v1/map/density/tile',
   breaks = NULL,
   nbreaks = NULL,
@@ -293,9 +307,18 @@ map_fetch <- function(
   ) {
 
   # Check if required raster package is loaded
+  raster = TRUE
   if(!'package:raster' %in% search()){
-    stop('"raster" package is required for this package, but was not found.',
-         call. = FALSE)
+    warning('"raster" package is recommended for this function, but was not found. The function will return the API call, but you will not be able to use the main data output properly. We recommend you install the raster package via install.packages("raster")!',
+            call. = FALSE)
+    raster = FALSE
+  }
+  # Check type of search. If other than 'TAXON', breaks cannot be set automatically
+  if(type != 'TAXON' & is.null(breaks)){
+    stop(paste(
+      'Automatic setting of breaks is not supported for type',
+      type,'. Please supply break values manually.', call. = FALSE)
+    )
   }
 
   # Check input arguments
@@ -307,10 +330,6 @@ map_fetch <- function(
   }
   if(!is.numeric(z) & !is.integer(z)){
     stop('z value supplied is not numeric.', call. = FALSE)
-  }
-  if(!is.numeric(key) & !is.integer(key)){
-    stop('Value supplied for argument "key" is not numeric.',
-         call. = FALSE)
   }
   if(!is.numeric(resolution) & !is.integer(resolution)){
     stop('Value supplied for argument "resolution" is not numeric.',
@@ -412,7 +431,15 @@ map_fetch <- function(
       right = TRUE
       )
 
-  crs(data_raster) <- '+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0'
+  if(raster){
+    crs(data_raster) <- crs_string
+  }
 
-  return(data_raster)
+  # output list with raster and URL call
+  map_fetch_out <- list(
+      'raster' = data_raster,
+      'url' = raw_raster$url
+      )
+
+  return(map_fetch_out)
 }
