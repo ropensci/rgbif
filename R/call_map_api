@@ -2,7 +2,7 @@
 # Generate colour palette ------------------------------------------------------
 # Helper function to generate a colour ramp that will be used to map colours to
 # value bins of the species occurrence count raster.
-get_colours <- function(key, colour_breaks = NULL, colour_nbreaks = NULL){
+get_colours <- function(type, key, colour_breaks = NULL, colour_nbreaks = NULL){
   breaks <- colour_breaks
   nbreaks <- colour_nbreaks
   # If breaks are supplied, nbreaks will be ignored
@@ -15,30 +15,37 @@ get_colours <- function(key, colour_breaks = NULL, colour_nbreaks = NULL){
       nbreaks <- 50
     }
 
-    # Estimate good breaks from the number of records for the taxon.
-    # Start with an exponential series of 50 break values:
-    breaks <- seq(1,nbreaks, by = 1) ^ 3
+    # If type is TAXON we can use occ_count to estimate total number of records
+    if(type == 'TAXON'){
+      # Estimate good breaks from the number of records for the taxon.
+      # Start with an exponential series of 50 break values:
+      breaks <- seq(1, nbreaks, by = 1) ^ 3
 
-    # A useful sequence depends on taxon, number of records, and extent.
-    # For key = 1 (animalia), which has a total of 400,000,000 records,
-    # a working top category seems to be around 10,000.
-    # Get total number of records for the taxon
-    noccs <- occ_count(key, georeferenced = TRUE)
-    # Get an estimate of a suitable maximum
-    # This number is somewhat arbitrary. What could be a good way to scale this?
-    break_max <- noccs / 50000; if(break_max < nbreaks) break_max = nbreaks
-    break_min <- 1
-    # Rescale to 1 - max
-    rescale_vector <- function(x, min_value, max_value) {
-      return((max_value - min_value) / (max(x) - min(x)) * (x - max(x)) + max_value)
+      # A useful sequence depends on taxon, number of records, and extent.
+      # For key = 1 (animalia), which has a total of 400,000,000 records,
+      # a working top category seems to be around 10,000.
+      # Get total number of records for the taxon
+      noccs <- occ_count(key, georeferenced = TRUE)
+      # Get an estimate of a suitable maximum
+      # This number is somewhat arbitrary. What could be a good way to scale this?
+      break_max <- noccs / 50000; if(break_max < nbreaks) break_max = nbreaks
+      break_min <- 1
+      # Rescale to 1 - max
+      rescale_vector <- function(x, min_value, max_value) {
+        return((max_value - min_value) / (max(x) - min(x)) * (x - max(x)) + max_value)
+      }
+      breaks <- rescale_vector(
+        x = breaks,
+        max_value = break_max,
+        min_value = break_min) %>%
+        round(digits = 0) %>%
+        as.integer() %>%
+        unique
+    # If type other than TAXON we will use a standard colour key (exponential)
+    }else{
+      breaks <- seq(1, 50, by = 1) ^ 2
     }
-    breaks <- rescale_vector(
-      x = breaks,
-      max_value = break_max,
-      min_value = break_min) %>%
-      round(digits = 0) %>%
-      as.integer() %>%
-      unique
+
     nbreaks <- length(breaks)
   }
 
@@ -220,8 +227,8 @@ get_layers <- function(layers, decades, living, fossil) {
 #' ever be changed by GBIF. The default value should be used!
 #' (\code{default = '/v1/map/density/tile'})
 #'
-#' @return A list with two objects: [[1]] An object of the class
-#' \code{\link[raster]{raster}} and [[2]] a string containing the URL generated
+#' @return A list with two objects: [[1]] $raster: An object of the class
+#' \code{\link[raster]{raster}} and [[2]] $url: a string containing the URL generated
 #' for the map API call. The raster package should be installed and loaded to
 #' handle the output of the function. Raster values represent the number of
 #' geo-referenced occurrence records in each of the cells. Notice that values
@@ -310,14 +317,15 @@ map_fetch <- function(
   raster = TRUE
   if(!'package:raster' %in% search()){
     warning('"raster" package is recommended for this function, but was not found. The function will return the API call, but you will not be able to use the main data output properly. We recommend you install the raster package via install.packages("raster")!',
-            call. = FALSE)
+      call. = FALSE)
     raster = FALSE
   }
   # Check type of search. If other than 'TAXON', breaks cannot be set automatically
   if(type != 'TAXON' & is.null(breaks)){
-    stop(paste(
+    warning(paste(
       'Automatic setting of breaks is not supported for type',
-      type,'. Please supply break values manually.', call. = FALSE)
+      type,'. A standard scale will be used, but results will likely be better when supplying manual break values',
+      call. = FALSE)
     )
   }
 
@@ -392,6 +400,7 @@ map_fetch <- function(
     )
   # Get colours using helper function
   colour_values <- get_colours(
+    type = type,
     key = key,
     colour_breaks = breaks,
     colour_nbreaks = nbreaks
