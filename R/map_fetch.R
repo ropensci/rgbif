@@ -41,7 +41,7 @@ get_colours <- function(type, key, colour_breaks = NULL, colour_nbreaks = NULL){
         round(digits = 0) %>%
         as.integer() %>%
         unique
-      # If type other than TAXON we will use a standard colour key (exponential)
+    # If type other than TAXON we will use a standard colour key (exponential)
     }else{
       breaks <- seq(1, 50, by = 1) ^ 2
     }
@@ -227,17 +227,19 @@ get_layers <- function(layers, decades, living, fossil) {
 #' ever be changed by GBIF. The default value should be used!
 #' (\code{default = '/v1/map/density/tile'})
 #'
-#' @return A list with two objects: [[1]] $raster: An object of the class
-#' \code{\link[raster]{raster}} and [[2]] $url: a string containing the URL generated
-#' for the map API call. The raster package should be installed and loaded to
+#' @return An object of the class \code{\link[raster]{raster}}, with the
+#' addition of an attribute 'url' specifying the API call URL that was used to
+#' get the data from GBIF. The raster package should be installed and loaded to
 #' handle the output of the function. Raster values represent the number of
 #' geo-referenced occurrence records in each of the cells. Notice that values
 #' indicate integer ranges ("bins") rather than exact values. The bins can be
-#' adjusted using the \code{breaks} parameter.
+#' adjusted using the \code{breaks} parameter.The URL attribute can be
+#' exctracted from the output:
+#' \code{attr(output, which = 'url')}.
 #'
 #' @details This function uses the arguments passed on to generate a query
-#' to the GBIF web map API. The API returns a web tile object that can be read
-#' as a png and converted into an R raster object. The break values or nbreaks
+#' to the GBIF web map API. The API returns a web tile object as png that can be
+#' read and converted into an R raster object. The break values or nbreaks
 #' generate a custom colour palette for the web tile, with each bin
 #' corresponding to one grey value. After retrieval, the raster is reclassified
 #' to the actual break values. This is a somewhat hacky but nonetheless
