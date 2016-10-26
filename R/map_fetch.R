@@ -41,7 +41,7 @@ get_colours <- function(type, key, colour_breaks = NULL, colour_nbreaks = NULL){
         round(digits = 0) %>%
         as.integer() %>%
         unique
-    # If type other than TAXON we will use a standard colour key (exponential)
+      # If type other than TAXON we will use a standard colour key (exponential)
     }else{
       breaks <- seq(1, 50, by = 1) ^ 2
     }
@@ -311,14 +311,14 @@ map_fetch <- function(
   x = 0,
   y = 0,
   z = 0
-  ) {
+) {
 
   # Check if required raster package is loaded
-  raster = TRUE
+  raster_package_loaded = TRUE
   if(!'package:raster' %in% search()){
     warning('"raster" package is recommended for this function, but was not found. The function will return the API call, but you will not be able to use the main data output properly. We recommend you install the raster package via install.packages("raster")!',
-      call. = FALSE)
-    raster = FALSE
+            call. = FALSE)
+    raster_package_loaded = FALSE
   }
   # Check type of search. If other than 'TAXON', breaks cannot be set automatically
   if(type != 'TAXON' & is.null(breaks)){
@@ -369,24 +369,24 @@ map_fetch <- function(
     arg = type,
     choices = c('TAXON', 'DATASET', 'COUNTRY', 'PUBLISHER'),
     several.ok = FALSE
-    )
+  )
   resolution <- match.arg(
     arg = as.character(resolution),
     choices = c(1, 2, 4, 8, 16),
     several.ok = FALSE
-    )
+  )
   decades <- match.arg(
     arg = decades,
     choices = c('NO_YEAR','PRE_1900','1900_1910','1910_1920','1920_1930',
                 '1930_1940','1940_1950','1950_1960','1960_1970','1970_1980',
                 '1980_1990','1990_2000','2000_2010','2010_2020'),
     several.ok = TRUE
-    )
+  )
   layers <- match.arg(
     arg = layers,
     choices = c('OBS','SP','OTH'),
     several.ok = TRUE
-    )
+  )
 
   # Generate map API query -----------------------------------------------------
   # URL string creation using httr
@@ -397,14 +397,14 @@ map_fetch <- function(
     decades = decades,
     living = living,
     fossil = fossil
-    )
+  )
   # Get colours using helper function
   colour_values <- get_colours(
     type = type,
     key = key,
     colour_breaks = breaks,
     colour_nbreaks = nbreaks
-    )
+  )
 
   # Make list of URL query parameters
   query <- list(
@@ -426,10 +426,10 @@ map_fetch <- function(
   # Make temporary file for raster data
   temp <- tempfile()
   raw_raster <- GET(url = gbif_base(),
-      path = map_api_path,
-      query = query,
-      write_disk(temp, overwrite = TRUE)
-      )
+                    path = map_api_path,
+                    query = query,
+                    write_disk(temp, overwrite = TRUE)
+  )
 
   # Make map tile into raster
   rgb_raster <- raster::stack(temp)
@@ -438,17 +438,14 @@ map_fetch <- function(
     raster::reclassify(
       rcl = colour_values[[2]],
       right = TRUE
-      )
+    )
 
-  if(raster){
+  if(raster_package_loaded){
     crs(data_raster) <- crs_string
   }
 
-  # output list with raster and URL call
-  map_fetch_out <- list(
-      'raster' = data_raster,
-      'url' = raw_raster$url
-      )
+  # Output raster including URL
+  attr(map_fetch_out, which = 'url') <- raw_raster$url
 
   return(map_fetch_out)
 }
