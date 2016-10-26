@@ -8,12 +8,12 @@ get_colours <- function(type, key, colour_breaks = NULL, colour_nbreaks = NULL){
   # If breaks are supplied, nbreaks will be ignored
   if(!is.null(breaks) & !is.null(nbreaks)){
     warning('Both "breaks" and "nbreaks" value supplied. "nbreaks" will be ignored!', call. = FALSE)
-  }
+    }
   if(is.null(breaks)){
     if(is.null(nbreaks)){
       warning('No breaks or number of breaks value supplied for the reclassification of species occurrence count values. BioGeoBias will try to estimate suitable values from the total number of records for the taxon, but you should carefully check the results and consider supplying values manually via the "breaks" or the "nbreaks" argument of the function.', call. = FALSE)
       nbreaks <- 50
-    }
+      }
 
     # If type is TAXON we can use occ_count to estimate total number of records
     if(type == 'TAXON'){
@@ -33,7 +33,7 @@ get_colours <- function(type, key, colour_breaks = NULL, colour_nbreaks = NULL){
       # Rescale to 1 - max
       rescale_vector <- function(x, min_value, max_value) {
         return((max_value - min_value) / (max(x) - min(x)) * (x - max(x)) + max_value)
-      }
+        }
       breaks <- rescale_vector(
         x = breaks,
         max_value = break_max,
@@ -44,10 +44,10 @@ get_colours <- function(type, key, colour_breaks = NULL, colour_nbreaks = NULL){
     # If type other than TAXON we will use a standard colour key (exponential)
     }else{
       breaks <- seq(1, 50, by = 1) ^ 2
-    }
+      }
 
     nbreaks <- length(breaks)
-  }
+    }
 
   # If breaks are supplied manually
   if(!is.null(breaks)) {
@@ -55,22 +55,22 @@ get_colours <- function(type, key, colour_breaks = NULL, colour_nbreaks = NULL){
     # Check if breaks are numeric
     if(!is.numeric(breaks) && !is.integer(breaks)) {
       stop('Break values supplied are not numeric or integer', call. = FALSE)
-    }
+      }
     # Check if breaks are too many
     if(length(breaks) > 50){
       stop('Break values supplied are too many (>50)', call. = FALSE)
-    }
+      }
     # Check if breaks are positive
     if(min(breaks) < 0) {
       stop('Break values supplied contain negative values', call. = FALSE)
-    }
+      }
     breaks <- as.integer(breaks)
     # Check if breaks are monotonic
     if(!all(breaks < c(breaks[-1], max(breaks + 1)))) {
       stop('Break values supplied are not monotonic', call. = FALSE)
-    }
+      }
     nbreaks <- length(breaks)
-  }
+    }
 
   # Generate actual url snippet using the values generated above
   url_colours <- ''
@@ -103,7 +103,8 @@ get_colours <- function(type, key, colour_breaks = NULL, colour_nbreaks = NULL){
       url_colours,
       '0,',
       breaks[1], ',#',
-      colour,colour,colour,'FF|')
+      colour,colour,colour,'FF|'
+      )
   # All other tile_map_colours
   for(i in 2:nbreaks) {
     # Make a ruleset for each value
@@ -113,14 +114,16 @@ get_colours <- function(type, key, colour_breaks = NULL, colour_nbreaks = NULL){
         url_colours,
         breaks[i-1], ',',
         breaks[i], ',#',
-        colour,colour,colour,'FF|')
-  }
+        colour,colour,colour,'FF|'
+        )
+    }
   # Last colour: use break value for floor instead of for ceiling
   colour <- tile_map_colours[i+1]
   url_colours <- paste0(
     url_colours,
     breaks[nbreaks],',,#',
-    colour,colour,colour,'FF')
+    colour,colour,colour,'FF'
+    )
 
   # Get a table of raster values and number of record values they correspond to
   breakstab <- cbind(
@@ -139,8 +142,8 @@ get_layers <- function(layers, decades, living, fossil) {
   for(layer in layers){
     for(decade in decades){
       all_layers <- c(all_layers, paste0(layer,'_',decade))
+      }
     }
-  }
 
   if(living) all_layers <- c(all_layers, 'LIVING')
   if(fossil) all_layers <- c(all_layers, 'FOSSIL')
@@ -234,8 +237,7 @@ get_layers <- function(layers, decades, living, fossil) {
 #' geo-referenced occurrence records in each of the cells. Notice that values
 #' indicate integer ranges ("bins") rather than exact values. The bins can be
 #' adjusted using the \code{breaks} parameter.The URL attribute can be
-#' exctracted from the output:
-#' \code{attr(output, which = 'url')}.
+#' exctracted from the output: \code{attr(output, which = 'url')}.
 #'
 #' @details This function uses the arguments passed on to generate a query
 #' to the GBIF web map API. The API returns a web tile object as png that can be
@@ -245,7 +247,7 @@ get_layers <- function(layers, decades, living, fossil) {
 #' to the actual break values. This is a somewhat hacky but nonetheless
 #' functional solution in the absence of a GBIF raster API implementation.
 #'
-#' @author Jan Laurens Geffert, \email{laurensgeffert@@gmail.com}
+#' @author Laurens Geffert, \email{laurensgeffert@@gmail.com}
 #' @references \url{http://www.gbif.org/developer/maps}
 #' @keywords web map tile, raster, GBIF, bias grid
 #' @examples \dontrun{
@@ -313,7 +315,7 @@ map_fetch <- function(
   x = 0,
   y = 0,
   z = 0
-) {
+  ) {
 
   # Check if required raster package is loaded
   raster_package_loaded = TRUE
@@ -321,74 +323,74 @@ map_fetch <- function(
     warning('"raster" package is recommended for this function, but was not found. The function will return the API call, but you will not be able to use the main data output properly. We recommend you install the raster package via install.packages("raster")!',
             call. = FALSE)
     raster_package_loaded = FALSE
-  }
+    }
   # Check type of search. If other than 'TAXON', breaks cannot be set automatically
   if(type != 'TAXON' & is.null(breaks)){
     warning(paste(
       'Automatic setting of breaks is not supported for type',
       type,'. A standard scale will be used, but results will likely be better when supplying manual break values',
       call. = FALSE)
-    )
-  }
+      )
+    }
 
-  # Check input arguments
+  # Check input ----------------------------------------------------------------
   if(!is.numeric(x) & !is.integer(x)){
     stop('x value supplied is not numeric.', call. = FALSE)
-  }
+    }
   if(!is.numeric(y) & !is.integer(y)){
     stop('y value supplied is not numeric.', call. = FALSE)
-  }
+    }
   if(!is.numeric(z) & !is.integer(z)){
     stop('z value supplied is not numeric.', call. = FALSE)
-  }
+    }
   if(!is.numeric(resolution) & !is.integer(resolution)){
     stop('Value supplied for argument "resolution" is not numeric.',
          call. = FALSE)
-  }
+    }
   if(!is.logical(living)){
     stop('Non-logical value supplied for argument "living". Please use TRUE or FALSE to select or deselect living specimen records', call. = FALSE)
-  }
+    }
   if(!is.logical(fossil)){
     stop('Non-logical value supplied for argument "fossil". Please use TRUE or FALSE to select or deselect fossil specimen records', call. = FALSE)
-  }
+    }
   if(!is.null(breaks)){
     if(!is.numeric(breaks) & !is.integer(breaks)){
       stop('Break values supplied are not numeric.', call. = FALSE)
+      }
     }
-  }
   if(exists('nbreaks') & !is.null(nbreaks)){
     if(!is.numeric(nbreaks) & !is.integer(nbreaks)){
       stop('Number of breaks value supplied is not numeric.',
            call. = FALSE)
-    }
+      }
     if(nbreaks < 1 | nbreaks > 50){
       stop('Breaks value invalid. Use a value between 1 and 50',
            call. = FALSE)
+      }
     }
-  }
 
   type <- match.arg(
     arg = type,
     choices = c('TAXON', 'DATASET', 'COUNTRY', 'PUBLISHER'),
     several.ok = FALSE
-  )
+    )
   resolution <- match.arg(
     arg = as.character(resolution),
     choices = c(1, 2, 4, 8, 16),
     several.ok = FALSE
-  )
+    )
   decades <- match.arg(
     arg = decades,
     choices = c('NO_YEAR','PRE_1900','1900_1910','1910_1920','1920_1930',
                 '1930_1940','1940_1950','1950_1960','1960_1970','1970_1980',
                 '1980_1990','1990_2000','2000_2010','2010_2020'),
     several.ok = TRUE
-  )
+    )
   layers <- match.arg(
     arg = layers,
     choices = c('OBS','SP','OTH'),
     several.ok = TRUE
-  )
+    )
 
   # Generate map API query -----------------------------------------------------
   # URL string creation using httr
@@ -399,14 +401,14 @@ map_fetch <- function(
     decades = decades,
     living = living,
     fossil = fossil
-  )
+    )
   # Get colours using helper function
   colour_values <- get_colours(
     type = type,
     key = key,
     colour_breaks = breaks,
     colour_nbreaks = nbreaks
-  )
+    )
 
   # Make list of URL query parameters
   query <- list(
@@ -417,21 +419,26 @@ map_fetch <- function(
     type = type,
     key = key,
     resolution = resolution
-  )
+    )
+
   # Multiple value parameters are iterated over
   for(layer in layers){
     query <- c(query, 'layer' = layer)
-  }
+    }
   # Append colour mapping
   query <- c(query, 'colors' = colour_values[[1]])
 
+
+  # Generate output file -------------------------------------------------------
+
   # Make temporary file for raster data
   temp <- tempfile()
-  raw_raster <- GET(url = gbif_base(),
-                    path = map_api_path,
-                    query = query,
-                    write_disk(temp, overwrite = TRUE)
-  )
+  raw_raster <- GET(
+    url = gbif_base(),
+    path = map_api_path,
+    query = query,
+    write_disk(temp, overwrite = TRUE)
+    )
 
   # Make map tile into raster
   rgb_raster <- raster::stack(temp)
@@ -440,13 +447,13 @@ map_fetch <- function(
     raster::reclassify(
       rcl = colour_values[[2]],
       right = TRUE
-    )
+      )
 
+  # Add CRS string to the raster
   if(raster_package_loaded){
     crs(data_raster) <- crs_string
-  }
-
-  # Output raster including URL
+    }
+  # Add URL string to the raster
   attr(map_fetch_out, which = 'url') <- raw_raster$url
 
   return(map_fetch_out)
