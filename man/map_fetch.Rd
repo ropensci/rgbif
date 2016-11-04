@@ -124,7 +124,7 @@ plot(BirdDiversityMap)
 
 # If we are interested in an overview of all animal specimen collected between
 # 1990 to 1930, we an use the query below to get a quick overview
-DivMap1 <- call_map_api(
+DivMap1 <- map_fetch(
   key = 1,
   decades = c('1900_1910','1910_1920','1920_1930'),
   layers = 'SP',
@@ -132,11 +132,11 @@ DivMap1 <- call_map_api(
   fossil = FALSE,
   breaks = c(1,3,5,10,30,50,100,300,500,1000)
 )
-plot(DivMap1)
+plot(DivMap1, asp = 1)
 
 # Moreover, I can use the resulting raster to run some interesting analyses,
 # like, how does this compare to the equivalent records from the 1950 to 1980 period?
-DivMap2 <- call_map_api(
+DivMap2 <- map_fetch(
   key = 1,
   #decades = c('1950_1960','1960_1970','1970_1980'),
   decades = c('1930_1940','1940_1950','1950_1960'),
@@ -144,7 +144,7 @@ DivMap2 <- call_map_api(
   living = FALSE,
   fossil = FALSE,
   breaks = c(1,3,5,10,30,50,100,300,500,1000)
-)
+  )
 plot(DivMap2)
 
 # Since these are rasters, we can do calculations on them!
@@ -153,6 +153,18 @@ plot(DivMap2 - DivMap1)
 # We can immediately see that more records were collected in North America,
 # but collection numbers went down in some areas of Europe, South-East Asia,
 # Australia, and Africa.
+
+# We can also use type = 'DATASET' with a dataset key,
+# for example the specimen collection of the Natural History Museum London.
+# In this case the function cannot use occ_count to estimate a suitable
+# set of break values, so we should specify them manually
+# (Otherwise standard exponential will be used).
+NHML <- map_fetch(
+  type = 'DATASET',
+  key = '7e380070-f762-11e1-a439-00145eb45e9a',
+  breaks = c(1,3,5,10,15,20,50,100,200,500,1000,1500,2000,5000,10000)
+  )
+plot(NHML, asp = 1)
 
 # This is just one quick ad-hoc query.
 # You can run your own spatial analyses in a similar fashion to investigate

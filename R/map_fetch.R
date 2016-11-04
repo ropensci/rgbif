@@ -11,7 +11,7 @@ get_colours <- function(type, key, colour_breaks = NULL, colour_nbreaks = NULL){
     }
   if(is.null(breaks)){
     if(is.null(nbreaks)){
-      warning('No breaks or number of breaks value supplied for the reclassification of species occurrence count values. BioGeoBias will try to estimate suitable values from the total number of records for the taxon, but you should carefully check the results and consider supplying values manually via the "breaks" or the "nbreaks" argument of the function.', call. = FALSE)
+      warning('No breaks or number of breaks value supplied for the reclassification of species occurrence count values. The function will try to estimate suitable values from the total number of records for the taxon, but you should carefully check the results and consider supplying values manually via the "breaks" or the "nbreaks" argument of the function.', call. = FALSE)
       nbreaks <- 50
       }
 
@@ -452,21 +452,28 @@ map_fetch <- function(
     write_disk(temp, overwrite = TRUE)
     )
 
-  # Make map tile into raster
-  rgb_raster <- raster::stack(temp)
-  data_raster <- rgb_raster[[1]] %>%
-    # Get actual bins of species number values
-    raster::reclassify(
-      rcl = colour_values[[2]],
-      right = TRUE
-      )
+  # If raster package is not loaded, return raw response
+  if(!raster_package_loaded){
+    return(raw_raster)
 
-  # Add CRS string to the raster
-  if(raster_package_loaded){
-    crs(data_raster) <- crs_string
-    }
-  # Add URL string to the raster
-  attr(data_raster, which = 'url') <- raw_raster$url
+  # If raster package is loaded, return processed raster
+  }else{
+    # Make map tile into raster
+    rgb_raster <- raster::stack(temp)
+    data_raster <- rgb_raster[[1]] %>%
+      # Get actual bins of species number values
+      raster::reclassify(
+        rcl = colour_values[[2]],
+        right = TRUE
+        )
 
-  return(data_raster)
+    # Add CRS string to the raster
+    if(raster_package_loaded){
+      crs(data_raster) <- crs_string
+      }
+    # Add URL string to the raster
+    attr(data_raster, which = 'url') <- raw_raster$url
+
+    return(data_raster)
+  }
 }
