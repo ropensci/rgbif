@@ -435,7 +435,7 @@ check_gbif_arg_set <- function(x) {
   facnms <- c('facet', 'facetMincount', 'facetMultiselect',
               'facetOffset', 'facetLimit')
   if (!all(grepl(paste0(facnms, collapse = "|"), names(x)))) {
-    stop("some param names not allowed: ", call. = FALSE)
+    stop("some param names not allowed: ", names(x), call. = FALSE)
   }
 }
 
@@ -443,6 +443,7 @@ check_gbif_arg_set <- function(x) {
 # GET request to GBIF
 yank_args <- function(...) {
   dots <- list(...)
+  #for (i in seq_along(dots)) cat(names(dots)[i], "  ", dots[[i]])
   # filter out request objects for httr
   dots <- Filter(function(z) !inherits(z, "request"), dots)
   # check that args are in a acceptable set

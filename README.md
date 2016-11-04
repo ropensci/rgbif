@@ -3,8 +3,7 @@ rgbif
 
 
 
-[![Build Status](https://api.travis-ci.org/ropensci/rgbif.png?branch=master)](https://travis-ci.org/ropensci/rgbif)
-[![Build status](https://ci.appveyor.com/api/projects/status/jili6du1ssi4ktbg/branch/master)](https://ci.appveyor.com/project/sckott/rgbif/branch/master)
+[![Build Status](https://travis-ci.org/ropensci/rgbif.svg?branch=master)](https://travis-ci.org/ropensci/rgbif)
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/rgbif)](https://github.com/metacran/cranlogs.app)
 [![cran version](http://www.r-pkg.org/badges/version/rgbif)](https://cran.r-project.org/package=rgbif)
 
@@ -61,51 +60,53 @@ devtools::install_github("ropensci/rgbif")
 library("rgbif")
 ```
 
-> Note: Windows users have to first install [Rtools](http://cran.r-project.org/bin/windows/Rtools/) to use devtools
+> Note: Windows users have to first install [Rtools](https://cran.r-project.org/bin/windows/Rtools/) to use devtools
 
 ## Search for occurrence data
 
 
 ```r
 occ_search(scientificName = "Ursus americanus", limit = 50)
-#> Records found [7919] 
+#> Records found [8196] 
 #> Records returned [50] 
 #> No. unique hierarchies [1] 
-#> No. media records [47] 
+#> No. media records [44] 
+#> No. facets [0] 
 #> Args [scientificName=Ursus americanus, limit=50, offset=0, fields=all] 
-#> Source: local data frame [50 x 67]
-#> 
+#> # A tibble: 50 × 68
 #>                name        key decimalLatitude decimalLongitude
 #>               <chr>      <int>           <dbl>            <dbl>
-#> 1  Ursus americanus 1253300445        44.65481        -72.67270
+#> 1  Ursus americanus 1249277297        35.76789        -75.80894
 #> 2  Ursus americanus 1229610216        44.06086        -71.92712
-#> 3  Ursus americanus 1249277297        35.76789        -75.80894
+#> 3  Ursus americanus 1253300445        44.65481        -72.67270
 #> 4  Ursus americanus 1229610234        44.06062        -71.92692
-#> 5  Ursus americanus 1249296297        39.08590       -105.24586
+#> 5  Ursus americanus 1253314877        49.25782       -122.82786
 #> 6  Ursus americanus 1272078411        44.41793        -72.70709
-#> 7  Ursus americanus 1253314877        49.25782       -122.82786
+#> 7  Ursus americanus 1249296297        39.08590       -105.24586
 #> 8  Ursus americanus 1249284297        43.68723        -72.32891
 #> 9  Ursus americanus 1257415362        44.32746        -72.41007
-#> 10 Ursus americanus 1262389246        43.80871        -72.20964
-#> ..              ...        ...             ...              ...
-#> Variables not shown: issues <chr>, datasetKey <chr>, publishingOrgKey
-#>   <chr>, publishingCountry <chr>, protocol <chr>, lastCrawled <chr>,
-#>   lastParsed <chr>, extensions <chr>, basisOfRecord <chr>, taxonKey <int>,
-#>   kingdomKey <int>, phylumKey <int>, classKey <int>, orderKey <int>,
-#>   familyKey <int>, genusKey <int>, speciesKey <int>, scientificName <chr>,
-#>   kingdom <chr>, phylum <chr>, order <chr>, family <chr>, genus <chr>,
-#>   species <chr>, genericName <chr>, specificEpithet <chr>, taxonRank
-#>   <chr>, dateIdentified <chr>, year <int>, month <int>, day <int>,
-#>   eventDate <chr>, modified <chr>, lastInterpreted <chr>, references
-#>   <chr>, identifiers <chr>, facts <chr>, relations <chr>, geodeticDatum
-#>   <chr>, class <chr>, countryCode <chr>, country <chr>, rightsHolder
-#>   <chr>, identifier <chr>, verbatimEventDate <chr>, datasetName <chr>,
-#>   gbifID <chr>, verbatimLocality <chr>, collectionCode <chr>, occurrenceID
-#>   <chr>, taxonID <chr>, license <chr>, catalogNumber <chr>, recordedBy
-#>   <chr>, http...unknown.org.occurrenceDetails <chr>, institutionCode
-#>   <chr>, rights <chr>, eventTime <chr>, occurrenceRemarks <chr>,
-#>   identificationID <chr>, infraspecificEpithet <chr>,
-#>   coordinateUncertaintyInMeters <dbl>, informationWithheld <chr>.
+#> 10 Ursus americanus 1253317181        43.64214        -72.52494
+#> # ... with 40 more rows, and 64 more variables: issues <chr>,
+#> #   datasetKey <chr>, publishingOrgKey <chr>, publishingCountry <chr>,
+#> #   protocol <chr>, lastCrawled <chr>, lastParsed <chr>, crawlId <int>,
+#> #   extensions <chr>, basisOfRecord <chr>, taxonKey <int>,
+#> #   kingdomKey <int>, phylumKey <int>, classKey <int>, orderKey <int>,
+#> #   familyKey <int>, genusKey <int>, speciesKey <int>,
+#> #   scientificName <chr>, kingdom <chr>, phylum <chr>, order <chr>,
+#> #   family <chr>, genus <chr>, species <chr>, genericName <chr>,
+#> #   specificEpithet <chr>, infraspecificEpithet <chr>, taxonRank <chr>,
+#> #   dateIdentified <chr>, year <int>, month <int>, day <int>,
+#> #   eventDate <chr>, modified <chr>, lastInterpreted <chr>,
+#> #   references <chr>, license <chr>, identifiers <chr>, facts <chr>,
+#> #   relations <chr>, geodeticDatum <chr>, class <chr>, countryCode <chr>,
+#> #   country <chr>, rightsHolder <chr>, identifier <chr>,
+#> #   verbatimEventDate <chr>, datasetName <chr>, collectionCode <chr>,
+#> #   verbatimLocality <chr>, gbifID <chr>, occurrenceID <chr>,
+#> #   taxonID <chr>, catalogNumber <chr>, recordedBy <chr>,
+#> #   http...unknown.org.occurrenceDetails <chr>, institutionCode <chr>,
+#> #   rights <chr>, identificationID <chr>, eventTime <chr>,
+#> #   occurrenceRemarks <chr>, coordinateUncertaintyInMeters <dbl>,
+#> #   informationWithheld <chr>
 ```
 
 Or you can get the taxon key first with `name_backbone()`. Here, we select to only return the occurrence data.
@@ -114,58 +115,55 @@ Or you can get the taxon key first with `name_backbone()`. Here, we select to on
 ```r
 key <- name_backbone(name='Helianthus annuus', kingdom='plants')$speciesKey
 occ_search(taxonKey=key, limit=20)
-#> Records found [31357] 
+#> Records found [20539] 
 #> Records returned [20] 
 #> No. unique hierarchies [1] 
-#> No. media records [13] 
+#> No. media records [16] 
+#> No. facets [0] 
 #> Args [taxonKey=3119195, limit=20, offset=0, fields=all] 
-#> Source: local data frame [20 x 81]
-#> 
+#> # A tibble: 20 × 67
 #>                 name        key decimalLatitude decimalLongitude
 #>                <chr>      <int>           <dbl>            <dbl>
 #> 1  Helianthus annuus 1249279611        34.04810       -117.79884
-#> 2  Helianthus annuus 1248872560        37.81227         -8.82959
-#> 3  Helianthus annuus 1248887127        38.53339         -8.94263
-#> 4  Helianthus annuus 1248873088        38.53339         -8.94263
-#> 5  Helianthus annuus 1253308332        29.67463        -95.44804
-#> 6  Helianthus annuus 1249286909        32.58747        -97.10081
-#> 7  Helianthus annuus 1265544678        32.58747        -97.10081
+#> 2  Helianthus annuus 1315048347        34.04377       -116.94136
+#> 3  Helianthus annuus 1253308332        29.67463        -95.44804
+#> 4  Helianthus annuus 1249286909        32.58747        -97.10081
+#> 5  Helianthus annuus 1305118889        18.40386        -66.04487
+#> 6  Helianthus annuus 1262375813        29.82586        -95.45604
+#> 7  Helianthus annuus 1262379231        34.04911       -117.80066
 #> 8  Helianthus annuus 1262385911        32.78328        -96.70352
-#> 9  Helianthus annuus 1262375813        29.82586        -95.45604
-#> 10 Helianthus annuus 1262379231        34.04911       -117.80066
-#> 11 Helianthus annuus 1270045172        33.92958       -117.37322
-#> 12 Helianthus annuus 1269541227              NA               NA
-#> 13 Helianthus annuus 1265590198        25.76265       -100.25513
-#> 14 Helianthus annuus 1265560496        34.12861       -118.20700
-#> 15 Helianthus annuus 1265590525        29.86693        -95.64667
-#> 16 Helianthus annuus 1272087563        28.51021        -96.81979
-#> 17 Helianthus annuus 1265895094        42.87784       -112.43226
-#> 18 Helianthus annuus 1265553900        34.12932       -118.20648
-#> 19 Helianthus annuus 1269543851        29.50991        -94.50006
-#> 20 Helianthus annuus 1265899487        19.45194        -96.95945
-#> Variables not shown: issues <chr>, datasetKey <chr>, publishingOrgKey
-#>   <chr>, publishingCountry <chr>, protocol <chr>, lastCrawled <chr>,
-#>   lastParsed <chr>, extensions <chr>, basisOfRecord <chr>, taxonKey <int>,
-#>   kingdomKey <int>, phylumKey <int>, classKey <int>, orderKey <int>,
-#>   familyKey <int>, genusKey <int>, speciesKey <int>, scientificName <chr>,
-#>   kingdom <chr>, phylum <chr>, order <chr>, family <chr>, genus <chr>,
-#>   species <chr>, genericName <chr>, specificEpithet <chr>, taxonRank
-#>   <chr>, dateIdentified <chr>, year <int>, month <int>, day <int>,
-#>   eventDate <chr>, modified <chr>, lastInterpreted <chr>, references
-#>   <chr>, identifiers <chr>, facts <chr>, relations <chr>, geodeticDatum
-#>   <chr>, class <chr>, countryCode <chr>, country <chr>, rightsHolder
-#>   <chr>, identifier <chr>, verbatimEventDate <chr>, datasetName <chr>,
-#>   gbifID <chr>, verbatimLocality <chr>, collectionCode <chr>, occurrenceID
-#>   <chr>, taxonID <chr>, license <chr>, catalogNumber <chr>, recordedBy
-#>   <chr>, http...unknown.org.occurrenceDetails <chr>, institutionCode
-#>   <chr>, rights <chr>, eventTime <chr>, identificationID <chr>,
-#>   infraspecificEpithet <chr>, institutionID <chr>, nomenclaturalCode
-#>   <chr>, dataGeneralizations <chr>, footprintWKT <chr>, county <chr>,
-#>   municipality <chr>, language <chr>, occurrenceStatus <chr>, footprintSRS
-#>   <chr>, ownerInstitutionCode <chr>, higherClassification <chr>,
-#>   reproductiveCondition <chr>, identifiedBy <chr>, collectionID <chr>,
-#>   occurrenceRemarks <chr>, coordinateUncertaintyInMeters <dbl>,
-#>   informationWithheld <chr>.
+#> 9  Helianthus annuus 1265544678        32.58747        -97.10081
+#> 10 Helianthus annuus 1270045172        33.92958       -117.37322
+#> 11 Helianthus annuus 1265895094        42.87784       -112.43226
+#> 12 Helianthus annuus 1265553900        34.12932       -118.20648
+#> 13 Helianthus annuus 1269543851        29.50991        -94.50006
+#> 14 Helianthus annuus 1265899487        19.45194        -96.95945
+#> 15 Helianthus annuus 1265562148        29.47895        -98.51160
+#> 16 Helianthus annuus 1305119137        11.86735        -83.93555
+#> 17 Helianthus annuus 1265590989        34.19005       -117.31644
+#> 18 Helianthus annuus 1265590198        25.76265       -100.25513
+#> 19 Helianthus annuus 1305119139        11.86735        -83.93555
+#> 20 Helianthus annuus 1315048128        34.03212       -117.47091
+#> # ... with 63 more variables: issues <chr>, datasetKey <chr>,
+#> #   publishingOrgKey <chr>, publishingCountry <chr>, protocol <chr>,
+#> #   lastCrawled <chr>, lastParsed <chr>, crawlId <int>, extensions <chr>,
+#> #   basisOfRecord <chr>, taxonKey <int>, kingdomKey <int>,
+#> #   phylumKey <int>, classKey <int>, orderKey <int>, familyKey <int>,
+#> #   genusKey <int>, speciesKey <int>, scientificName <chr>, kingdom <chr>,
+#> #   phylum <chr>, order <chr>, family <chr>, genus <chr>, species <chr>,
+#> #   genericName <chr>, specificEpithet <chr>, taxonRank <chr>,
+#> #   dateIdentified <chr>, year <int>, month <int>, day <int>,
+#> #   eventDate <chr>, modified <chr>, lastInterpreted <chr>,
+#> #   references <chr>, license <chr>, identifiers <chr>, facts <chr>,
+#> #   relations <chr>, geodeticDatum <chr>, class <chr>, countryCode <chr>,
+#> #   country <chr>, rightsHolder <chr>, identifier <chr>,
+#> #   verbatimEventDate <chr>, datasetName <chr>, collectionCode <chr>,
+#> #   verbatimLocality <chr>, gbifID <chr>, occurrenceID <chr>,
+#> #   taxonID <chr>, catalogNumber <chr>, recordedBy <chr>,
+#> #   http...unknown.org.occurrenceDetails <chr>, institutionCode <chr>,
+#> #   rights <chr>, eventTime <chr>, identificationID <chr>,
+#> #   coordinateUncertaintyInMeters <dbl>, occurrenceRemarks <chr>,
+#> #   informationWithheld <chr>
 ```
 
 ## Search for many species
@@ -177,44 +175,47 @@ Get the keys first with `name_backbone()`, then pass to `occ_search()`
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 keys <- sapply(splist, function(x) name_backbone(name=x)$speciesKey, USE.NAMES=FALSE)
 occ_search(taxonKey=keys, limit=5, hasCoordinate=TRUE)
-#> Occ. found [2480598 (21), 2492010 (2454564), 2498387 (772915)] 
+#> Occ. found [2480598 (22), 2492010 (2453480), 2498387 (772689)] 
 #> Occ. returned [2480598 (5), 2492010 (5), 2498387 (5)] 
 #> No. unique hierarchies [2480598 (1), 2492010 (1), 2498387 (1)] 
-#> No. media records [2480598 (1), 2492010 (5), 2498387 (5)] 
+#> No. media records [2480598 (1), 2492010 (4), 2498387 (5)] 
+#> No. facets [] 
 #> Args [taxonKey=2480598,2492010,2498387, hasCoordinate=TRUE, limit=5,
 #>      offset=0, fields=all] 
 #> First 10 rows of data from 2480598
 #> 
-#> Source: local data frame [5 x 76]
-#> 
+#> # A tibble: 5 × 82
 #>                      name        key decimalLatitude decimalLongitude
 #>                     <chr>      <int>           <dbl>            <dbl>
 #> 1 Accipiter erythronemius  920169861       -20.55244        -56.64104
 #> 2 Accipiter erythronemius  920184036       -20.76029        -56.71314
 #> 3 Accipiter erythronemius 1001096527       -27.58000        -58.66000
 #> 4 Accipiter erythronemius 1001096518       -27.92000        -59.14000
-#> 5 Accipiter erythronemius  699417490         5.26667        -60.73333
-#> Variables not shown: issues <chr>, datasetKey <chr>, publishingOrgKey
-#>   <chr>, publishingCountry <chr>, protocol <chr>, lastCrawled <chr>,
-#>   lastParsed <chr>, extensions <chr>, basisOfRecord <chr>, taxonKey <int>,
-#>   kingdomKey <int>, phylumKey <int>, classKey <int>, orderKey <int>,
-#>   familyKey <int>, genusKey <int>, speciesKey <int>, scientificName <chr>,
-#>   kingdom <chr>, phylum <chr>, order <chr>, family <chr>, genus <chr>,
-#>   species <chr>, genericName <chr>, specificEpithet <chr>, taxonRank
-#>   <chr>, coordinateUncertaintyInMeters <dbl>, year <int>, month <int>, day
-#>   <int>, eventDate <chr>, lastInterpreted <chr>, identifiers <chr>, facts
-#>   <chr>, relations <chr>, geodeticDatum <chr>, class <chr>, countryCode
-#>   <chr>, country <chr>, catalogNumber <chr>, recordedBy <chr>,
-#>   institutionCode <chr>, locality <chr>, gbifID <chr>, collectionCode
-#>   <chr>, modified <chr>, identifier <chr>, created <chr>,
-#>   associatedSequences <chr>, occurrenceID <chr>, higherClassification
-#>   <chr>, taxonID <chr>, sex <chr>, elevation <dbl>, elevationAccuracy
-#>   <dbl>, institutionID <chr>, language <chr>, type <chr>, preparations
-#>   <chr>, rights <chr>, verbatimElevation <chr>, recordNumber <chr>,
-#>   higherGeography <chr>, verbatimEventDate <chr>,
-#>   georeferenceVerificationStatus <chr>, datasetName <chr>,
-#>   otherCatalogNumbers <chr>, occurrenceRemarks <chr>, accessRights <chr>,
-#>   bibliographicCitation <chr>, georeferenceSources <chr>.
+#> 5 Accipiter erythronemius  686297260         5.26667        -60.73333
+#> # ... with 78 more variables: issues <chr>, datasetKey <chr>,
+#> #   publishingOrgKey <chr>, publishingCountry <chr>, protocol <chr>,
+#> #   lastCrawled <chr>, lastParsed <chr>, crawlId <int>, extensions <chr>,
+#> #   basisOfRecord <chr>, taxonKey <int>, kingdomKey <int>,
+#> #   phylumKey <int>, classKey <int>, orderKey <int>, familyKey <int>,
+#> #   genusKey <int>, speciesKey <int>, scientificName <chr>, kingdom <chr>,
+#> #   phylum <chr>, order <chr>, family <chr>, genus <chr>, species <chr>,
+#> #   genericName <chr>, specificEpithet <chr>, taxonRank <chr>,
+#> #   coordinateUncertaintyInMeters <dbl>, year <int>, month <int>,
+#> #   day <int>, eventDate <chr>, lastInterpreted <chr>, license <chr>,
+#> #   identifiers <chr>, facts <chr>, relations <chr>, geodeticDatum <chr>,
+#> #   class <chr>, countryCode <chr>, country <chr>, recordedBy <chr>,
+#> #   catalogNumber <chr>, institutionCode <chr>, locality <chr>,
+#> #   collectionCode <chr>, gbifID <chr>, modified <chr>, identifier <chr>,
+#> #   created <chr>, occurrenceID <chr>, associatedSequences <chr>,
+#> #   higherClassification <chr>, taxonID <chr>, sex <chr>,
+#> #   establishmentMeans <chr>, continent <chr>, references <chr>,
+#> #   institutionID <chr>, dynamicProperties <chr>, fieldNumber <chr>,
+#> #   language <chr>, type <chr>, preparations <chr>,
+#> #   occurrenceStatus <chr>, rights <chr>, higherGeography <chr>,
+#> #   nomenclaturalCode <chr>, verbatimEventDate <chr>, endDayOfYear <chr>,
+#> #   georeferenceVerificationStatus <chr>, datasetName <chr>,
+#> #   verbatimLocality <chr>, otherCatalogNumbers <chr>,
+#> #   startDayOfYear <chr>, accessRights <chr>, collectionID <chr>
 ```
 
 ## Maps

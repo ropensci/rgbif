@@ -18,6 +18,6 @@ test_that("returns the correct class", {
   expect_equal(as.character(uu$specificEpithet[[1]]), "elatius")
 
   # returns the correct dimensions
-  expect_equal(dim(tt), c(1,9))
-  expect_equal(dim(uu), c(4,12))
+  expect_equal(dim(tt), c(1,11))
+  expect_equal(dim(uu), c(4,13))
 })

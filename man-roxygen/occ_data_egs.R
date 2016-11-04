@@ -9,9 +9,9 @@
 #'
 #' # Instead of getting a taxon key first, you can search for a name directly
 #' ## However, note that using this approach (with \code{scientificName="..."})
-#' ## you are getting synonyms too. The results for using \code{scientifcName} and
-#' ## \code{taxonKey} parameters are the same in this case, but I wouldn't be surprised if for some
-#' ## names they return different results
+#' ## you are getting synonyms too. The results for using \code{scientifcName}
+#' ## and \code{taxonKey} parameters are the same in this case, but I wouldn't
+#' ## be surprised if for some names they return different results
 #' library("httr")
 #' occ_data(scientificName = 'Ursus americanus', config=verbose())
 #' key <- name_backbone(name = 'Ursus americanus', rank='species')$usageKey
@@ -51,7 +51,8 @@
 #' occ_data(taxonKey=keys, limit=5)
 #'
 #' # Search using a synonym name
-#' #  Note that you'll see a message printing out that the accepted name will be used
+#' #  Note that you'll see a message printing out that the accepted name will
+#' # be used
 #' occ_data(scientificName = 'Pulsatilla patens', limit=5)
 #'
 #' # Search on latitidue and longitude
@@ -60,14 +61,17 @@
 #' # Search on a bounding box
 #' ## in well known text format
 #' ### polygon
-#' occ_data(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))', limit=20)
+#' occ_data(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))',
+#'   limit=20)
 #' ### multipolygon
-#' wkt <- 'MULTIPOLYGON(((-123 38, -123 43, -116 43, -116 38, -123 38)),((-97 41, -97 45, -93 45, -93 41, -97 41)))'
-#' occ_data(geometry = wkt, limit = 20)
+#' wkt <- 'MULTIPOLYGON(((-123 38, -123 43, -116 43, -116 38, -123 38)),
+#'    ((-97 41, -97 45, -93 45, -93 41, -97 41)))'
+#' occ_data(geometry = gsub("\n\\s+", "", wkt), limit = 20)
 #' ### polygon and taxonkey
 #' key <- name_suggest(q='Aesculus hippocastanum')$key[1]
-#' occ_data(taxonKey=key, geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))',
-#'    limit=20)
+#' occ_data(taxonKey=key,
+#'  geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))',
+#'  limit=20)
 #' ## or using bounding box, converted to WKT internally
 #' occ_data(geometry=c(-125.0,38.4,-121.8,40.9), limit=20)
 #'

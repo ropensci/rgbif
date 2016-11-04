@@ -24,7 +24,7 @@ test_that("returns the correct class", {
   # returns the correct value
   expect_equal(a[[1]], "122")
   expect_equal(b[[1]], "12")
-  expect_equal(d[[1]], "GB")
+  expect_equal(tolower(d[[1]]), "gb")
   expect_true(grepl("scott", h[[1]]))
 
   # returns the correct dimensions

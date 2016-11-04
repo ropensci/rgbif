@@ -2,28 +2,32 @@
 #'
 #' @export
 #' @name gbif_oai
-#' @param prefix (character) A string to specify the metadata format in OAI-PMH requests issued to
-#' the repository. The default (\code{"oai_dc"}) corresponds to the mandatory OAI unqualified
-#' Dublin Core metadata schema.
-#' @param from (character) string giving datestamp to be used as lower bound for datestamp-based
-#' selective harvesting (i.e., only harvest records with datestamps in the given range). Dates
-#' and times must be encoded using ISO 8601. The trailing Z must be used when including time.
-#' OAI-PMH implies UTC for data/time specifications.
-#' @param until (character) Datestamp to be used as an upper bound, for datestamp-based
-#' selective harvesting (i.e., only harvest records with datestamps in the given range).
+#' @param prefix (character) A string to specify the metadata format in OAI-PMH
+#' requests issued to the repository. The default (\code{"oai_dc"}) corresponds
+#' to the mandatory OAI unqualified Dublin Core metadata schema.
+#' @param from (character) string giving datestamp to be used as lower bound
+#' for datestamp-based selective harvesting (i.e., only harvest records with
+#' datestamps in the given range). Dates and times must be encoded using ISO
+#' 8601. The trailing Z must be used when including time. OAI-PMH implies
+#' UTC for data/time specifications.
+#' @param until (character) Datestamp to be used as an upper bound, for
+#' datestamp-based selective harvesting (i.e., only harvest records with
+#' datestamps in the given range).
 #' @param set (character) A set to be used for selective harvesting (i.e., only
 #' harvest records in the given set).
-#' @param token	(character) a token previously provided by the server to resume a
-#' request where it last left off. 50 is max number of records returned. We will
-#' loop for you internally to get all the records you asked for.
-#' @param as (character) What to return. One of "df" (for data.frame; default),
-#' "list", or "raw" (raw text)
+#' @param token	(character) a token previously provided by the server to resume
+#' a request where it last left off. 50 is max number of records returned.
+#' We will loop for you internally to get all the records you asked for.
+#' @param as (character) What to return. One of "df" (for data.frame;
+#' default), "list" (get a list), or "raw" (raw text). For
+#' \code{gbif_oai_get_records}, one of "parsed" or "raw"
 #' @param id,ids (character) The OAI-PMH identifier for the record. Optional.
 #' @param ... Curl options passed on to \code{\link[httr]{GET}}
-#' @return raw text, list or data.frame, depending on requested output via \code{as}
-#' parameter
-#' @details These functions only work with GBIF registry data, and do so via the
-#' OAI-PMH protocol (https://www.openarchives.org/OAI/openarchivesprotocol.html).
+#' @return raw text, list or data.frame, depending on requested output via
+#' \code{as} parameter
+#' @details These functions only work with GBIF registry data, and do so
+#' via the OAI-PMH protocol
+#' (https://www.openarchives.org/OAI/openarchivesprotocol.html)
 #' @examples \dontrun{
 #' gbif_oai_identify()
 #'
@@ -51,8 +55,8 @@ gbif_oai_identify <- function(...) {
 
 #' @export
 #' @rdname gbif_oai
-gbif_oai_list_identifiers <- function(prefix = "oai_dc", from = NULL, until = NULL,
-  set = NULL, token = NULL, as = "df", ...) {
+gbif_oai_list_identifiers <- function(prefix = "oai_dc", from = NULL,
+  until = NULL, set = NULL, token = NULL, as = "df", ...) {
 
   oai::list_identifiers(url = gboai(), from = from, until = until,
         prefix = prefix, set = set, token = token, as = as, ...)
@@ -81,10 +85,8 @@ gbif_oai_list_sets <- function(token = NULL, as = "df", ...) {
 
 #' @export
 #' @rdname gbif_oai
-gbif_oai_get_records <- function(ids, prefix = "oai_dc", as = "df", ...) {
+gbif_oai_get_records <- function(ids, prefix = "oai_dc", as = "parsed", ...) {
   oai::get_records(ids = ids, prefix = prefix, url = gboai(), as = as, ...)
 }
 
-gboai <- function() {
-  file.path(gbif_base(), "oai-pmh/registry")
-}
+gboai <- function() file.path(gbif_base(), "oai-pmh/registry")

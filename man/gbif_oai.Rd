@@ -22,45 +22,49 @@ gbif_oai_list_metadataformats(id = NULL, ...)
 
 gbif_oai_list_sets(token = NULL, as = "df", ...)
 
-gbif_oai_get_records(ids, prefix = "oai_dc", as = "df", ...)
+gbif_oai_get_records(ids, prefix = "oai_dc", as = "parsed", ...)
 }
 \arguments{
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 
-\item{prefix}{(character) A string to specify the metadata format in OAI-PMH requests issued to
-the repository. The default (\code{"oai_dc"}) corresponds to the mandatory OAI unqualified
-Dublin Core metadata schema.}
+\item{prefix}{(character) A string to specify the metadata format in OAI-PMH
+requests issued to the repository. The default (\code{"oai_dc"}) corresponds
+to the mandatory OAI unqualified Dublin Core metadata schema.}
 
-\item{from}{(character) string giving datestamp to be used as lower bound for datestamp-based
-selective harvesting (i.e., only harvest records with datestamps in the given range). Dates
-and times must be encoded using ISO 8601. The trailing Z must be used when including time.
-OAI-PMH implies UTC for data/time specifications.}
+\item{from}{(character) string giving datestamp to be used as lower bound
+for datestamp-based selective harvesting (i.e., only harvest records with
+datestamps in the given range). Dates and times must be encoded using ISO
+8601. The trailing Z must be used when including time. OAI-PMH implies
+UTC for data/time specifications.}
 
-\item{until}{(character) Datestamp to be used as an upper bound, for datestamp-based
-selective harvesting (i.e., only harvest records with datestamps in the given range).}
+\item{until}{(character) Datestamp to be used as an upper bound, for
+datestamp-based selective harvesting (i.e., only harvest records with
+datestamps in the given range).}
 
 \item{set}{(character) A set to be used for selective harvesting (i.e., only
 harvest records in the given set).}
 
-\item{token}{(character) a token previously provided by the server to resume a
-request where it last left off. 50 is max number of records returned. We will
-loop for you internally to get all the records you asked for.}
+\item{token}{(character) a token previously provided by the server to resume
+a request where it last left off. 50 is max number of records returned.
+We will loop for you internally to get all the records you asked for.}
 
-\item{as}{(character) What to return. One of "df" (for data.frame; default),
-"list", or "raw" (raw text)}
+\item{as}{(character) What to return. One of "df" (for data.frame;
+default), "list" (get a list), or "raw" (raw text). For
+\code{gbif_oai_get_records}, one of "parsed" or "raw"}
 
 \item{id, ids}{(character) The OAI-PMH identifier for the record. Optional.}
 }
 \value{
-raw text, list or data.frame, depending on requested output via \code{as}
-parameter
+raw text, list or data.frame, depending on requested output via
+\code{as} parameter
 }
 \description{
 GBIF registry data via OAI-PMH
 }
 \details{
-These functions only work with GBIF registry data, and do so via the
-OAI-PMH protocol (https://www.openarchives.org/OAI/openarchivesprotocol.html).
+These functions only work with GBIF registry data, and do so
+via the OAI-PMH protocol
+(https://www.openarchives.org/OAI/openarchivesprotocol.html)
 }
 \examples{
 \dontrun{

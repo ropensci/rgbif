@@ -55,7 +55,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
   url <- paste0(gbif_base(), '/occurrence/search')
   argscoll <- NULL
 
-  .get_occ_search <- function(x=NULL, itervar=NULL) {
+  .get_occ_search <- function(x=NULL, itervar=NULL, ...) {
     if (!is.null(x)) {
       assign(itervar, x)
     }
@@ -211,9 +211,9 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
   }
 
   if (length(iter) == 0) {
-    out <- .get_occ_search()
+    out <- .get_occ_search(...)
   } else {
-    out <- lapply(iter[[1]], .get_occ_search, itervar = names(iter))
+    out <- lapply(iter[[1]], .get_occ_search, itervar = names(iter), ...)
     names(out) <- transform_names(iter[[1]])
   }
 

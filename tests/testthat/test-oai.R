@@ -57,9 +57,13 @@ test_that("gbif_oai_get_records", {
 
   tt <- gbif_oai_get_records("9c4e36c1-d3f9-49ce-8ec1-8c434fa9e6eb")
 
-  expect_is(tt, "data.frame")
-  expect_is(tt$identifier, "character")
-  expect_equal(tt$identifier, "9c4e36c1-d3f9-49ce-8ec1-8c434fa9e6eb")
-  expect_is(tt$title, "character")
-  expect_equal(tt$title, "Freshwater fishes of Serbia and Montenegro")
+  expect_is(tt, "list")
+  expect_is(tt[[1]], "list")
+  expect_is(tt[[1]]$header, "data.frame")
+  expect_is(tt[[1]]$metadata, "data.frame")
+  expect_equal(length(tt), 1)
+  expect_is(tt[[1]]$header$identifier, "character")
+  expect_equal(tt[[1]]$header$identifier, "9c4e36c1-d3f9-49ce-8ec1-8c434fa9e6eb")
+  expect_is(tt[[1]]$metadata$title, "character")
+  expect_equal(tt[[1]]$metadata$title, "Freshwater fishes of Serbia and Montenegro")
 })

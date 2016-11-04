@@ -6,14 +6,16 @@
 #' @param output Output folder path. If not given uses temporary folder.
 #' @param which One of map or table (default).
 #' @param browse (logical) Browse output (default: TRUE)
-#' @details The max number of photos you can see when which="map" is ~160, so cycle through
-#' if you have more than that.
+#' @details The max number of photos you can see when which="map" is ~160,
+#' so cycle through if you have more than that.
+#' @section BEWARE: The maps in the table view may not show up correctly if
+#' you are using RStudio
 #' @examples \dontrun{
-#' (res <- occ_search(mediatype = 'StillImage', return = "media"))
+#' res <- occ_search(mediaType = 'StillImage', return = "media")
 #' gbif_photos(res)
 #' gbif_photos(res, which='map')
 #'
-#' res <- occ_search(scientificName = "Aves", mediatype = 'StillImage', return = "media", limit=150)
+#' res <- occ_search(scientificName = "Aves", mediaType = 'StillImage', return = "media", limit=150)
 #' gbif_photos(res)
 #' gbif_photos(res, output = '~/barfoo')
 #' }
@@ -29,7 +31,7 @@ gbif_photos <- function(input, output = NULL, which='table', browse = TRUE) {
     ff <- paste(readLines(filepath), collapse = "\n")
     rr <- whisker.render(ff)
     write(rr, file = outfile)
-    if (browse) browseURL(outfile) else outfile
+    if (browse) browseURL(outfile, browser = pick_browser()) else outfile
   } else {
     if (length(input) > 20) {
       outdir <- dirhandler(output, 'dir')
@@ -49,7 +51,7 @@ gbif_photos <- function(input, output = NULL, which='table', browse = TRUE) {
         write(rendered, file = filenames[[i]])
       }
 
-      if (browse) browseURL(filenames[[1]]) else filenames[[1]]
+      if (browse) browseURL(filenames[[1]], browser = pick_browser()) else filenames[[1]]
     } else {
       outfile <- dirhandler(output)
       outdir <- dirname(outfile)
@@ -59,7 +61,7 @@ gbif_photos <- function(input, output = NULL, which='table', browse = TRUE) {
       rendered <- whisker.render(template)
       rendered <- paste0(rendered, footer)
       write(rendered, file = outfile)
-      if (browse) browseURL(outfile) else outfile
+      if (browse) browseURL(outfile, browser = pick_browser()) else outfile
     }
   }
 }
@@ -87,6 +89,19 @@ foo <- function(x){
     }
   })
   do.call(c, unname(rgbif_compact(photos)))
+}
+
+pick_browser <- function() {
+  sysname <- Sys.info()[['sysname']]
+  if (.Platform$OS.type == "windows") {
+    NULL
+  } else if (Sys.info()[['sysname']] == "Darwin") {
+    "open"
+  } else if (.Platform$OS.type == "unix") {
+    "xdg-open"
+  } else {
+    getOption("browser")
+  }
 }
 
 template <- '
@@ -165,8 +180,9 @@ map <- '
 <meta charset=utf-8 />
 <title>Single marker</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-<script src="https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js"></script>
-<link href="https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.css" rel="stylesheet" />
+<script src="https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js"></script>
+<link href="https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css" rel="stylesheet" />
+
 <style>
   body { margin:0; padding:0; }
   #map { position:absolute; top:0; bottom:0; width:100%; }
@@ -177,7 +193,9 @@ map <- '
 <div id="map"></div>
 
 <script>
-var map = L.mapbox.map("map", "examples.map-i86nkdio")
+L.mapbox.accessToken = "pk.eyJ1IjoicmVjb2xvZ3kiLCJhIjoiZWlta1B0WSJ9.u4w33vy6kkbvmPyGnObw7A";
+
+var map = L.mapbox.map("map", "mapbox.streets")
     .setView([{{decimalLatitude}}, {{decimalLongitude}}], 5);
 
 L.mapbox.featureLayer({

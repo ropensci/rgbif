@@ -38,7 +38,7 @@ occ_facet(facet = "country")
 occ_facet(facet = "country", facetMincount = 30000000L)
 occ_facet(facet = c("country", "basisOfRecord"))
 
-#
+# paging with many facets
 occ_facet(
   facet = c("country", "basisOfRecord", "hasCoordinate"),
   country.facetLimit = 3,

@@ -74,44 +74,44 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 #> 1  5285637 Pinus sylvestris L. Pinus sylvestris SPECIES ACCEPTED
 #> 2  5285637 Pinus sylvestris L. Pinus sylvestris SPECIES ACCEPTED
 #>   confidence matchType synonym
-#> 1         99     EXACT   FALSE
-#> 2         88     FUZZY   FALSE
+#> 1         97     EXACT   FALSE
+#> 2         94     FUZZY   FALSE
 ```
 
-* P. s<b>y</b>lvestris w/ 242570 occurrences - from Catalogue of Life
-* P. s<b>i</b>lvestris w/ 242570 occurrences - from Catalogue of Life
+* P. s<b>y</b>lvestris w/ 232923 occurrences - from Catalogue of Life
+* P. s<b>i</b>lvestris w/ 232923 occurrences - from Catalogue of Life
 
 ## Macrozamia platyrachis vs. M. platyrhachis
 
 
 ```r
 (c2 <- name_rbind("Macrozamia platyrachis", "Macrozamia platyrhachis"))
-#>   usageKey                      scientificName           canonicalName
-#> 1  4928834 Macrozamia platyrachis F. M. Bailey  Macrozamia platyrachis
-#> 2  2683551  Macrozamia platyrhachis F.M.Bailey Macrozamia platyrhachis
+#>   usageKey                     scientificName           canonicalName
+#> 1  2683551 Macrozamia platyrhachis F.M.Bailey Macrozamia platyrhachis
+#> 2  2683551 Macrozamia platyrhachis F.M.Bailey Macrozamia platyrhachis
 #>      rank   status confidence matchType synonym
-#> 1 SPECIES ACCEPTED        100     EXACT   FALSE
-#> 2 SPECIES ACCEPTED        100     EXACT   FALSE
+#> 1 SPECIES ACCEPTED         96     FUZZY   FALSE
+#> 2 SPECIES ACCEPTED         98     EXACT   FALSE
 ```
 
-* M. platyrachis w/ 4 occurrences - from GRIN Taxonomy
-* M. platyr<b>h</b>achis w/ 62 occurrences - from Catalogue of Life
+* M. platyrachis w/ 54 occurrences - from Catalogue of Life
+* M. platyr<b>h</b>achis w/ 54 occurrences - from Catalogue of Life
 
 ## Cycas circinalis vs. C. circinnalis
 
 
 ```r
 (c3 <- name_rbind("Cycas circinalis", "Cycas circinnalis"))
-#>   usageKey       scientificName     canonicalName    rank   status
-#> 1  2683264  Cycas circinalis L.  Cycas circinalis SPECIES ACCEPTED
-#> 2  3594916 Cycas circinnalis L. Cycas circinnalis SPECIES ACCEPTED
+#>   usageKey      scientificName    canonicalName    rank   status
+#> 1  2683264 Cycas circinalis L. Cycas circinalis SPECIES ACCEPTED
+#> 2  2683264 Cycas circinalis L. Cycas circinalis SPECIES ACCEPTED
 #>   confidence matchType synonym
-#> 1         99     EXACT   FALSE
-#> 2        100     EXACT   FALSE
+#> 1         98     EXACT   FALSE
+#> 2         95     FUZZY   FALSE
 ```
 
-* C. circinalis w/ 524 occurrences - from Catalogue of Life
-* C. circin<b>n</b>alis w/ 13 occurrences - from International Plant Names Index
+* C. circinalis w/ 529 occurrences - from Catalogue of Life
+* C. circin<b>n</b>alis w/ 529 occurrences - from Catalogue of Life
 
 ## Isolona perrieri vs. I. perrierii
 
@@ -119,15 +119,15 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 ```r
 (c4 <- name_rbind("Isolona perrieri", "Isolona perrierii"))
 #>   usageKey          scientificName     canonicalName    rank   status
-#> 1  3648546  Isolona perrieri Diels  Isolona perrieri SPECIES ACCEPTED
+#> 1  6308376 Isolona perrierii Diels Isolona perrierii SPECIES ACCEPTED
 #> 2  6308376 Isolona perrierii Diels Isolona perrierii SPECIES ACCEPTED
 #>   confidence matchType synonym
-#> 1        100     EXACT   FALSE
-#> 2        100     EXACT   FALSE
+#> 1         96     FUZZY   FALSE
+#> 2         98     EXACT   FALSE
 ```
 
-* I. perrieri w/ 49 occurrences - from The Plant List with literature
-* I. perrieri<b>i</b> w/ 30 occurrences - from Catalogue of Life
+* I. perrieri w/ 79 occurrences - from Catalogue of Life
+* I. perrieri<b>i</b> w/ 79 occurrences - from Catalogue of Life
 
 ## Wiesneria vs. Wisneria
 
@@ -138,12 +138,12 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 #> 1  2864604                                              Wiesneria Micheli
 #> 2  7327444 Wisneria Micheli in Alph. de Candolle & A.C. de Candolle, 1881
 #>   canonicalName  rank   status confidence matchType synonym
-#> 1     Wiesneria GENUS ACCEPTED         95     EXACT   FALSE
-#> 2      Wisneria GENUS ACCEPTED         95     EXACT   FALSE
+#> 1     Wiesneria GENUS ACCEPTED         96     EXACT   FALSE
+#> 2      Wisneria GENUS ACCEPTED         96     EXACT   FALSE
 ```
 
-* Wi<b>e</b>sneria w/ 71 occurrences - from Catalogue of Life
-* Wisneria w/ 3 occurrences - from Interim Register of Marine and Nonmarine Genera
+* Wi<b>e</b>sneria w/ 78 occurrences - from Catalogue of Life
+* Wisneria w/ 4 occurrences - from Interim Register of Marine and Nonmarine Genera
 
 ## The take away messages from this vignette
 

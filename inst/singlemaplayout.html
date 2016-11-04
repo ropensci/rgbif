@@ -4,8 +4,8 @@
 <meta charset=utf-8 />
 <title>rgbif photo viewer</title>
 <meta name="viewport"" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-<script src="https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js"></script>
-<link href="https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.css" rel="stylesheet"/>
+<script src="https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js"></script>
+<link href="https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css" rel="stylesheet" />
 <link rel="shortcut icon" href="http://ropensci.org/assets/flat-ui/images/favicon.ico">
 <style>
 body { margin:0; padding:0; }
@@ -17,7 +17,9 @@ body { margin:0; padding:0; }
   <div id="map"></div>
 
   <script>
-    var map = L.mapbox.map("map", "examples.map-i86nkdio")
+    L.mapbox.accessToken = "pk.eyJ1IjoicmVjb2xvZ3kiLCJhIjoiZWlta1B0WSJ9.u4w33vy6kkbvmPyGnObw7A";
+
+    var map = L.mapbox.map("map", "mapbox.streets")
     .setView([0, 0], 2);
 
     var myLayer = L.mapbox.featureLayer().addTo(map);
