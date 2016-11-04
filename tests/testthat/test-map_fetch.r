@@ -80,6 +80,8 @@ test_that("function produces alternative output with warning when raster package
 
 test_that("function works for different types of queries", {
 
+  require(raster)
+
   # Get Dataset query
   # Natural History Museum (London) Collection of Specimen
   map_dataset <- map_fetch(
@@ -104,9 +106,15 @@ test_that("function works for different types of queries", {
     breaks = c(1,3,5,10,15,20,50,100,200,500,1000,1500,2000,5000,10000)
   )
 
-  expect_is(map_dataset, 'RasterLayer')
-  expect_is(map_country, 'RasterLayer')
-  expect_is(map_publisher, 'RasterLayer')
+  if(!'raster' %in% loadedNamespaces()){
+    expect_is(map_dataset, 'response')
+    expect_is(map_country, 'response')
+    expect_is(map_publisher, 'response')
+  }else{
+    expect_is(map_dataset, 'RasterLayer')
+    expect_is(map_country, 'RasterLayer')
+    expect_is(map_publisher, 'RasterLayer')
+  }
 })
 
 
