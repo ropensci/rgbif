@@ -225,11 +225,6 @@ get_layers <- function(layers, decades, living, fossil) {
 #' @param crs_string String to specify the projection of the output raster.
 #' (\code{default = '+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0'})
 #'
-#' @param map_api_path String to indicate the address of the GBIF map api
-#' endpoint. This is included to allow for manual adjustment should the map api
-#' ever be changed by GBIF. The default value should be used!
-#' (\code{default = '/v1/map/density/tile'})
-#'
 #' @param ... optional arguments to be passed on to the httr::GET call to the API
 #'
 #' @return An object of the class \code{\link[raster]{raster}}, with the
@@ -331,7 +326,6 @@ map_fetch <- function(
               '1930_1940','1940_1950','1950_1960','1960_1970','1970_1980',
               '1980_1990','1990_2000','2000_2010','2010_2020'),
   crs_string = '+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0',
-  map_api_path = '/v1/map/density/tile',
   breaks = NULL,
   nbreaks = NULL,
   x = 0,
@@ -458,7 +452,7 @@ map_fetch <- function(
   temp <- tempfile()
   raw_raster <- GET(
     url = gbif_base(),
-    path = map_api_path,
+    path = '/v1/map/density/tile',
     query = query,
     write_disk(temp, overwrite = TRUE),
     ...
