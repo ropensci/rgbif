@@ -10,8 +10,7 @@ map_fetch(type = "TAXON", key = 1, resolution = 1, layers = c("OBS",
   "1950_1960", "1960_1970", "1970_1980", "1980_1990", "1990_2000", "2000_2010",
   "2010_2020"),
   crs_string = "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0",
-  map_api_path = "/v1/map/density/tile", breaks = NULL, nbreaks = NULL,
-  x = 0, y = 0, z = 0)
+  breaks = NULL, nbreaks = NULL, x = 0, y = 0, z = 0, ...)
 }
 \arguments{
 \item{type}{A value of TAXON, DATASET, COUNTRY or PUBLISHER. If a type other
@@ -51,11 +50,6 @@ the time from 1990 to present day is used by default.
 \item{crs_string}{String to specify the projection of the output raster.
 (\code{default = '+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0'})}
 
-\item{map_api_path}{String to indicate the address of the GBIF map api
-endpoint. This is included to allow for manual adjustment should the map api
-ever be changed by GBIF. The default value should be used!
-(\code{default = '/v1/map/density/tile'})}
-
 \item{breaks}{Numeric vector to specify the break points of value
 bins that should be used to represent species occurrence record numbers in
 the resulting raster. Number of specified breaks should be 50 or lower,
@@ -83,6 +77,8 @@ position of the raster extent.
 
 \item{z}{Numeric value to specify the zoom factor of the raster extent.
 (\code{default = 0})}
+
+\item{...}{optional arguments to be passed on to the httr::GET call to the API}
 }
 \value{
 An object of the class \code{\link[raster]{raster}}, with the
@@ -111,6 +107,14 @@ functional solution in the absence of a GBIF raster API implementation.
 \examples{
 \dontrun{
 
+# If you don't want to use the raster package, you can still use this function
+# to generate an API call to the map API. The returned value will be an httr object
+# of the class 'response', from which you can extract the url to use it elsewhere:
+
+response <- map_fetch()
+response$url
+
+# If you want to use the raster package, as recommended, then:
 # Make sure required package is loaded
 library(raster)
 

@@ -452,7 +452,7 @@ map_fetch <- function(
   temp <- tempfile()
   raw_raster <- GET(
     url = gbif_base(),
-    path = '/v1/map/density/tile',
+    path = '/map/density/tile',
     query = query,
     write_disk(temp, overwrite = TRUE),
     ...
