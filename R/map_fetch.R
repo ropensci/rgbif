@@ -230,6 +230,8 @@ get_layers <- function(layers, decades, living, fossil) {
 #' ever be changed by GBIF. The default value should be used!
 #' (\code{default = '/v1/map/density/tile'})
 #'
+#' @param ... optional arguments to be passed on to the httr::GET call to the API
+#'
 #' @return An object of the class \code{\link[raster]{raster}}, with the
 #' addition of an attribute 'url' specifying the API call URL that was used to
 #' get the data from GBIF. The raster package should be installed and loaded to
@@ -252,6 +254,14 @@ get_layers <- function(layers, decades, living, fossil) {
 #' @keywords web map tile, raster, GBIF, bias grid
 #' @examples \dontrun{
 #'
+#' # If you don't want to use the raster package, you can still use this function
+#' # to generate an API call to the map API. The returned value will be an httr object
+#' # of the class 'response', from which you can extract the url to use it elsewhere:
+#'
+#' response <- map_fetch()
+#' response$url
+#'
+#' # If you want to use the raster package, as recommended, then:
 #' # Make sure required package is loaded
 #' library(raster)
 #'
@@ -326,7 +336,8 @@ map_fetch <- function(
   nbreaks = NULL,
   x = 0,
   y = 0,
-  z = 0
+  z = 0,
+  ...
   ) {
 
   # Check if required raster package is loaded
@@ -449,7 +460,8 @@ map_fetch <- function(
     url = gbif_base(),
     path = map_api_path,
     query = query,
-    write_disk(temp, overwrite = TRUE)
+    write_disk(temp, overwrite = TRUE),
+    ...
     )
 
   # If raster package is not loaded, return raw response
@@ -469,7 +481,7 @@ map_fetch <- function(
 
     # Add CRS string to the raster
     if(raster_package_loaded){
-      crs(data_raster) <- crs_string
+      raster::crs(data_raster) <- crs_string
       }
     # Add URL string to the raster
     attr(data_raster, which = 'url') <- raw_raster$url
