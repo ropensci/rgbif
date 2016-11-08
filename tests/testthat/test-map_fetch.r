@@ -60,25 +60,9 @@ test_that("layer arguments are generated correctly", {
   expect_length(layers, 16)
 })
 
-test_that("function produces alternative output with warning when raster package is missing", {
-
-  # If raster is loaded or loadable
-  if('raster' %in% loadedNamespaces() | require(raster)){
-    # Check function returns raster without warnings
-    expect_silent(output <- map_fetch(nbreaks = 50))
-  }
-
-  # Unload raster package
-  if('raster' %in% loadedNamespaces()){
-    unloadNamespace("raster")
-    # Check function produces warning about missing raster package
-    expect_warning(raw_response <- map_fetch(nbreaks = 50))
-    # Check function returns raw response instead
-    expect_is(raw_response, 'response')
-  }
-})
-
 test_that("function works for different types of queries", {
+
+  skip_if_not_installed('raster')
 
   require(raster)
 
@@ -106,18 +90,27 @@ test_that("function works for different types of queries", {
     breaks = c(1,3,5,10,15,20,50,100,200,500,1000,1500,2000,5000,10000)
   )
 
-  if(!'raster' %in% loadedNamespaces()){
-    expect_is(map_dataset, 'response')
-    expect_is(map_country, 'response')
-    expect_is(map_publisher, 'response')
-  }else{
-    expect_is(map_dataset, 'RasterLayer')
-    expect_is(map_country, 'RasterLayer')
-    expect_is(map_publisher, 'RasterLayer')
-  }
+  expect_is(map_dataset, 'RasterLayer')
+  expect_is(map_country, 'RasterLayer')
+  expect_is(map_publisher, 'RasterLayer')
 })
 
 
+test_that("function produces alternative output with warning when raster package is missing", {
+
+  # Check function returns raster without warnings
+  expect_silent(output <- map_fetch(nbreaks = 50))
+
+  # Unload raster package
+  if('raster' %in% loadedNamespaces()){
+    unloadNamespace("raster")
+
+    # Check function produces warning about missing raster package
+    expect_warning(raw_response <- map_fetch(nbreaks = 50))
+    # Check function returns raw response instead
+    expect_is(raw_response, 'response')
+  }
+})
 
 
 
