@@ -458,7 +458,7 @@ map_fetch <- function(
   # Make temporary file for raster data
   temp <- tempfile()
   raw_raster <- GET(
-    url = paste0(gbif_base(), '/map/density/tile',
+    url = paste0(gbif_base(), '/map/density/tile'),
     query = query,
     write_disk(temp, overwrite = TRUE),
     ...
