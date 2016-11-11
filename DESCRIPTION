@@ -12,7 +12,8 @@ License: MIT + file LICENSE
 Authors@R: c(
     person("Scott", "Chamberlain", role = c("aut", "cre"), email = "myrmecocystus@gmail.com"),
     person("Vijay", "Barve", role = "ctb"),
-    person("Dan", "Mcglinn", role = "ctb")
+    person("Dan", "Mcglinn", role = "ctb"),
+    person("Laurens", "Geffert", role = "ctb")
     )
 URL: https://github.com/ropensci/rgbif
 BugReports: https://github.com/ropensci/rgbif/issues
@@ -36,6 +37,7 @@ Imports:
 Suggests:
     testthat,
     knitr,
+    raster,
     reshape2,
     maps,
     sp,

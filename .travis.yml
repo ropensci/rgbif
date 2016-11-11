@@ -10,7 +10,7 @@ before_script:
   - chmod 755 ./travis-tool.sh
   - ./travis-tool.sh bootstrap
   - ./travis-tool.sh install_deps
-  - ./travis-tool.sh r_install maps scales colorspace
+  - ./travis-tool.sh r_install maps scales colorspace raster
   - ./travis-tool.sh install_github jimhester/covr
 
 after_failure:
