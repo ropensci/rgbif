@@ -20,6 +20,8 @@ test_that("occ_facet works", {
 })
 
 test_that("occ_facet paging works", {
+  skip_on_cran()
+
   aa <- occ_facet(
     facet = c("country", "basisOfRecord", "hasCoordinate"),
     country.facetLimit = 3,
@@ -27,7 +29,7 @@ test_that("occ_facet paging works", {
   )
 
   expect_is(aa, "list")
-  expect_named(aa, c("country", "basisOfRecord", "hasCoordinate"))
+  expect_named(aa, c("hasCoordinate", "basisOfRecord", "country"))
   expect_named(aa$country, c('name', 'count'))
   expect_named(aa$basisOfRecord, c('name', 'count'))
   expect_named(aa$hasCoordinate, c('name', 'count'))
