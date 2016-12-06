@@ -37,5 +37,5 @@ parsenames <- function(scientificname, ...) {
   res <- lapply(res, function(x) Map(function(z) if (is.null(z)) NA else z, x))
   (x <- data.table::setDF(
     data.table::rbindlist(res, fill = TRUE, use.names = TRUE)))
-  setNames(x, tolower(names(x)))
+  stats::setNames(x, tolower(names(x)))
 }

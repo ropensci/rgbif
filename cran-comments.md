@@ -1,8 +1,9 @@
 ## Test environments
 
-* local OS X install, R 3.3.1
-* ubuntu 12.04 (on travis-ci), R 3.3.1
+* local OS X install, R 3.3.2
+* ubuntu 12.04 (on travis-ci), R 3.3.2
 * win-builder (devel and release)
+* R-hub (Windows R-oldrel, Ubuntu R-release, Fedora R-devel)
 
 ## R CMD check results
 
@@ -31,12 +32,6 @@ unrelated to changes in this package.
 
 This version adds many new features, implements a few minor fixes, 
 and some bug fixes.
-
-In addition, this is a revised submission after a first submission 
-earlier today that:
-
-- fixes canonical CRAN URL in README
-- makes sure vignettes in 'vignettes' dir are same as those in 'inst/doc'
 
 Thanks!
 Scott Chamberlain

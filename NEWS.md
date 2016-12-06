@@ -1,3 +1,16 @@
+rgbif 0.9.6
+===========
+
+### BUG FIXES
+
+* Fixed a bug in `parsenames()` caused by some slots in the list
+being `NULL` (#237)
+* Fixed some failing tests: `occ_facet()` tests were failing due to 
+changes in GBIF API (#239)
+* Fixes to `gbif_oai_get_records()` for slight changes in `oai` 
+dependency pkg (#236)
+
+
 rgbif 0.9.5
 ===========
 

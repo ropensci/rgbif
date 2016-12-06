@@ -7,13 +7,12 @@ Description: A programmatic interface to the Web Service methods
     taxonomic names, retrieving information on data providers,
     getting species occurrence records, and getting counts of
     occurrence records.
-Version: 0.9.5.9140
+Version: 0.9.6
 License: MIT + file LICENSE
 Authors@R: c(
     person("Scott", "Chamberlain", role = c("aut", "cre"), email = "myrmecocystus@gmail.com"),
     person("Vijay", "Barve", role = "ctb"),
-    person("Dan", "Mcglinn", role = "ctb"),
-    person("Laurens", "Geffert", role = "ctb")
+    person("Dan", "Mcglinn", role = "ctb")
     )
 URL: https://github.com/ropensci/rgbif
 BugReports: https://github.com/ropensci/rgbif/issues
@@ -37,7 +36,6 @@ Imports:
 Suggests:
     testthat,
     knitr,
-    raster,
     reshape2,
     maps,
     sp,
