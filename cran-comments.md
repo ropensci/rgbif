@@ -19,12 +19,13 @@ File 'LICENSE':
 
 ## Reverse dependencies
 
-* I have run R CMD check on the 5 downstream dependencies
+* I have run R CMD check on the 5 downstream dependencies.
+  (Summary at https://github.com/ropensci/rgbif/blob/master/revdep/README.md).
+  No problems were found.
 
 --------
 
-This version adds many new features, implements a few minor fixes, 
-and some bug fixes.
+This version fixes some bugs.
 
 Thanks!
 Scott Chamberlain
