@@ -40,5 +40,4 @@ Suggests:
     maps,
     sp,
     rgeos
-Remotes: ropensci/oai
 RoxygenNote: 5.0.1
