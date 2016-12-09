@@ -450,3 +450,5 @@ yank_args <- function(...) {
   check_gbif_arg_set(dots)
   dots
 }
+
+`%||%` <- function(x, y) if (is.null(x)) y else x

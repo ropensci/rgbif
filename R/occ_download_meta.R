@@ -42,7 +42,14 @@ gbif_make_list <- function(y){
     out <- list()
     for (i in seq_along(y$predicates)) {
       tmp <- y$predicates[[i]]
-      out[[i]] <- sprintf("\n      - type: %s, key: %s, value: %s", tmp$type, tmp$key, tmp$value)
+      out[[i]] <- sprintf(
+        "\n      - type: %s, key: %s, value: %s",
+        tmp$type,
+        if ("geometry" %in% names(tmp)) "geometry" else tmp$key,
+        if ("geometry" %in% names(tmp)) tmp$geometry else tmp$value
+        #unlist(rgbif_compact(list(tmp$key, tmp$geometry))),
+        #tmp$value %||% ""
+      )
     }
     paste0(paste("\n    type: ", y$type), pc("\n    predicates: ", pc(out)), collapse = ", ")
   } else {

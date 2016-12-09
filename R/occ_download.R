@@ -157,18 +157,15 @@ print.occ_download <- function(x, ...) {
 
 parse_args <- function(x){
   key <- key_lkup[[ strextract(x, "[A-Za-z]+") ]]
-  type <- operator_lkup[[ strextract(x, paste0(operators_regex, collapse = "|")) ]]
-  value <- gsub("^\\s+|\\s+$", "", substring(x, regexpr(paste0(operators_regex, collapse = "|"), x) + 1, nchar(x)))
+  type <- operator_lkup[[ strtrim(strextract(x, paste0(operators_regex, collapse = "|"))) ]]
+  loc <- regexpr(paste0(operators_regex, collapse = "|"), x)
+  value <- strtrim(
+    substring(x, loc + attr(loc, "match.length"), nchar(x))
+  )
   list(type = unbox(type), key = unbox(key), value = unbox(value))
-  # tmp <- strsplit(x, "\\s")[[1]]
-  # type <- operator_lkup[[ tmp[2] ]]
-  # key <- key_lkup[[ tmp[1] ]]
-  # value <- paste0(tmp[3:length(tmp)], collapse = " ")
-  # list(type = unbox(type), key = unbox(key), value = unbox(value))
 }
 
 operators_regex <- c("=", "\\&", "<", "<=", ">", ">=", "\\!", "\\sin\\s", "\\swithin\\s", "\\slike\\s", "\\|")
-#ops_regex <- paste0(operators_regex, collapse = '|')
 
 operator_lkup <- list(`=` = 'equals', `&` = 'and', `|` = 'or', `<` = 'lessThan',
     `<=` = 'lessThanOrEquals', `>` = 'greaterThan',
