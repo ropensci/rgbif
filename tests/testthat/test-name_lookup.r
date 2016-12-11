@@ -30,9 +30,9 @@ test_that("works with habitat parameter", {
   facet_terr <- name_lookup(habitat = "terrestrial", limit=2)
   facet_mar <- name_lookup(habitat = "marine", limit=2)
   facet_fresh <- name_lookup(habitat = "freshwater", limit=2)
-  expect_true(grepl("MARINE", facet_terr$data$habitats[1]))
+  expect_true(grepl("TERRESTRIAL", facet_terr$data$habitats[1]))
   expect_true(grepl("MARINE", facet_mar$data$habitats[1]))
-  expect_true(grepl("MARINE", facet_fresh$data$habitats[1]))
+  expect_true(grepl("FRESH", facet_fresh$data$habitats[1]))
 
   # another test
   out <- name_lookup(habitat = "terrestrial", return = "data")
