@@ -11,7 +11,8 @@ occ_download_cancel(key, user = getOption("gbif_user"),
 occ_download_cancel_staged()
 }
 \arguments{
-\item{key}{A key generated from a request, like that from \code{occ_download}. Required.}
+\item{key}{A key generated from a request, like that from
+\code{occ_download}. Required.}
 
 \item{user}{(character) User name within GBIF's website. Required.}
 
@@ -23,8 +24,8 @@ occ_download_cancel_staged()
 Cancel a download cretion process.
 }
 \details{
-Note, this only cancels a job in progress. If your download is already prepared
-for you, this won't do anything to change that.
+Note, this only cancels a job in progress. If your download is
+already prepared for you, this won't do anything to change that.
 }
 \examples{
 \dontrun{

@@ -9,8 +9,8 @@ occ_download_get(key, path = ".", overwrite = FALSE, ...)
 \arguments{
 \item{key}{A key generated from a request, like that from \code{occ_download}}
 
-\item{path}{Path to write zip file to. Default: \code{"."}, with a \code{.zip}
-appended to the end.}
+\item{path}{Path to write zip file to. Default: \code{"."}, with a
+\code{.zip} appended to the end.}
 
 \item{overwrite}{Will only overwrite existing path if TRUE.}
 
@@ -21,11 +21,11 @@ Get a download from GBIF.
 }
 \details{
 Downloads the zip file to a directory you specify on your machine.
-\code{link[httr]{write_disk}} is used internally to write the zip file to disk.
-This function only downloads the file. See \code{occ_download_import} to open a
-downloaded file in your R session. The speed of this function is of course proportional
-to the size of the file to download. For example, a 58 MB file on my machine
-took about 26 seconds.
+\code{link[httr]{write_disk}} is used internally to write the zip file to
+disk. This function only downloads the file. See \code{occ_download_import}
+to open a downloaded file in your R session. The speed of this function is
+of course proportional to the size of the file to download. For example,
+a 58 MB file on my machine took about 26 seconds.
 }
 \examples{
 \dontrun{

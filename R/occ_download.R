@@ -3,20 +3,24 @@
 #' @importFrom jsonlite unbox
 #' @export
 #'
-#' @param ... One or more of query arguments to kick of a download job. See Details.
-#' @param type (charcter) One of equals (=), and (&), or (|), lessThan (<), lessThanOrEquals (<=),
-#' greaterThan (>), greaterThanOrEquals (>=), in, within, not (!), like
-#' @param user (character) User name within GBIF's website. Required. Set in your
-#' \code{.Rprofile} file with the option \code{gbif_user}
-#' @param pwd (character) User password within GBIF's website. Required. Set in your
-#' \code{.Rprofile} file with the option \code{gbif_pwd}
-#' @param email (character) Email address to recieve download notice done email. Required.
-#' Set in your \code{.Rprofile} file with the option \code{gbif_email}
+#' @param ... One or more of query arguments to kick of a download job. See
+#' Details.
+#' @param type (charcter) One of equals (=), and (&), or (|), lessThan (<),
+#' lessThanOrEquals (<=), greaterThan (>), greaterThanOrEquals (>=), in,
+#' within, not (!), like
+#' @param user (character) User name within GBIF's website. Required. Set in
+#' your \code{.Rprofile} file with the option \code{gbif_user}
+#' @param pwd (character) User password within GBIF's website. Required. Set
+#' in your \code{.Rprofile} file with the option \code{gbif_pwd}
+#' @param email (character) Email address to recieve download notice done
+#' email. Required. Set in your \code{.Rprofile} file with the option
+#' \code{gbif_email}
 #' @param callopts Further named arguments passed on to \code{\link[httr]{POST}}
 #'
-#' @details Argument passed have to be passed as character (e.g., 'country = US'), with a space
-#' between key ('country'), operator ('='), and value ('US'). See the \code{type} parameter for
-#' possible options for the operator.  This character string is parsed internally.
+#' @details Argument passed have to be passed as character (e.g.,
+#' 'country = US'), with a space between key ('country'), operator ('='),
+#' and value ('US'). See the \code{type} parameter for possible options for
+#' the operator.  This character string is parsed internally.
 #'
 #' Acceptable arguments to \code{...} are:
 #' \itemize{
@@ -48,8 +52,10 @@
 #'  \item recordedBy = 'RECORDED_BY'
 #' }
 #'
-#' @references See the API docs \url{http://www.gbif.org/developer/occurrence#download} for
-#' more info, and the predicates docs \url{http://www.gbif.org/developer/occurrence#predicates}.
+#' @references See the API docs
+#' \url{http://www.gbif.org/developer/occurrence#download} for more info,
+#' and the predicates docs
+#' \url{http://www.gbif.org/developer/occurrence#predicates}
 #'
 #' @examples \dontrun{
 #' # occ_download("basisOfRecord = LITERATURE")
@@ -91,7 +97,18 @@ parse_occd <- function(user, email, type, ...) {
          notification_address = email,
          predicate = list(
            type = unbox(type),
-           predicates = keyval
+           #predicates = keyval
+           predicates = {
+             lapply(keyval, function(z) {
+               if (z$type == "within" && z$key == "GEOMETRY") {
+                 z$key <- NULL
+                 names(z)[2] <- "geometry"
+                 z
+               } else {
+                 z
+               }
+             })
+           }
          )
     )
   } else {
@@ -119,7 +136,7 @@ parse_occd <- function(user, email, type, ...) {
 }
 
 rg_POST <- function(url, req, user, pwd, callopts) {
-  tmp <- POST(url, config = c(
+  tmp <- httr::POST(url, config = c(
     content_type_json(),
     accept_json(),
     authenticate(user = user, password = pwd),
@@ -141,7 +158,8 @@ catch_err <- function(x) {
 process_keyval <- function(args, type) {
   out <- list()
   for (i in seq_along(args)) {
-    out[[i]] <- list(type = unbox(type), key = unbox(names(args[i])), value = unbox(args[[i]]))
+    out[[i]] <- list(type = unbox(type), key = unbox(names(args[i])),
+                     value = unbox(args[[i]]))
   }
   out
 }
@@ -157,7 +175,8 @@ print.occ_download <- function(x, ...) {
 
 parse_args <- function(x){
   key <- key_lkup[[ strextract(x, "[A-Za-z]+") ]]
-  type <- operator_lkup[[ strtrim(strextract(x, paste0(operators_regex, collapse = "|"))) ]]
+  type <- operator_lkup[[ strtrim(strextract(x, paste0(operators_regex,
+                                                       collapse = "|"))) ]]
   loc <- regexpr(paste0(operators_regex, collapse = "|"), x)
   value <- strtrim(
     substring(x, loc + attr(loc, "match.length"), nchar(x))
@@ -165,19 +184,22 @@ parse_args <- function(x){
   list(type = unbox(type), key = unbox(key), value = unbox(value))
 }
 
-operators_regex <- c("=", "\\&", "<", "<=", ">", ">=", "\\!", "\\sin\\s", "\\swithin\\s", "\\slike\\s", "\\|")
+operators_regex <- c("=", "\\&", "<", "<=", ">", ">=", "\\!", "\\sin\\s",
+                     "\\swithin\\s", "\\slike\\s", "\\|")
 
 operator_lkup <- list(`=` = 'equals', `&` = 'and', `|` = 'or', `<` = 'lessThan',
     `<=` = 'lessThanOrEquals', `>` = 'greaterThan',
     `>=` = 'greaterThanOrEquals', `!` = 'not',
     'in' = 'in', 'within' = 'within', 'like' = 'like')
 
-key_lkup <- list(taxonKey='TAXON_KEY', scientificName='SCIENTIFIC_NAME', country='COUNTRY',
-     publishingCountry='PUBLISHING_COUNTRY', hasCoordinate='HAS_COORDINATE',
-     hasGeospatialIssue='HAS_GEOSPATIAL_ISSUE', typeStatus='TYPE_STATUS',
-     recordNumber='RECORD_NUMBER', lastInterpreted='LAST_INTERPRETED', continent='CONTINENT',
-     geometry='GEOMETRY', basisOfRecord='BASIS_OF_RECORD', datasetKey='DATASET_KEY',
-     eventDate='EVENT_DATE', catalogNumber='CATALOG_NUMBER', year='YEAR', month='MONTH',
-     decimalLatitude='DECIMAL_LATITUDE', decimalLongitude='DECIMAL_LONGITUDE', elevation='ELEVATION',
-     depth='DEPTH', institutionCode='INSTITUTION_CODE', collectionCode='COLLECTION_CODE',
-     issue='ISSUE', mediatype='MEDIA_TYPE', recordedBy='RECORDED_BY')
+key_lkup <- list(taxonKey='TAXON_KEY', scientificName='SCIENTIFIC_NAME',
+    country='COUNTRY', publishingCountry='PUBLISHING_COUNTRY',
+    hasCoordinate='HAS_COORDINATE', hasGeospatialIssue='HAS_GEOSPATIAL_ISSUE',
+    typeStatus='TYPE_STATUS', recordNumber='RECORD_NUMBER',
+    lastInterpreted='LAST_INTERPRETED', continent='CONTINENT', geometry='GEOMETRY',
+    basisOfRecord='BASIS_OF_RECORD', datasetKey='DATASET_KEY',
+    eventDate='EVENT_DATE', catalogNumber='CATALOG_NUMBER', year='YEAR',
+    month='MONTH', decimalLatitude='DECIMAL_LATITUDE',
+    decimalLongitude='DECIMAL_LONGITUDE', elevation='ELEVATION', depth='DEPTH',
+    institutionCode='INSTITUTION_CODE', collectionCode='COLLECTION_CODE',
+    issue='ISSUE', mediatype='MEDIA_TYPE', recordedBy='RECORDED_BY')

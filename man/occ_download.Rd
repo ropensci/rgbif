@@ -9,19 +9,22 @@ occ_download(..., type = "and", user = getOption("gbif_user"),
   callopts = list())
 }
 \arguments{
-\item{...}{One or more of query arguments to kick of a download job. See Details.}
+\item{...}{One or more of query arguments to kick of a download job. See
+Details.}
 
-\item{type}{(charcter) One of equals (=), and (&), or (|), lessThan (<), lessThanOrEquals (<=),
-greaterThan (>), greaterThanOrEquals (>=), in, within, not (!), like}
+\item{type}{(charcter) One of equals (=), and (&), or (|), lessThan (<),
+lessThanOrEquals (<=), greaterThan (>), greaterThanOrEquals (>=), in,
+within, not (!), like}
 
-\item{user}{(character) User name within GBIF's website. Required. Set in your
-\code{.Rprofile} file with the option \code{gbif_user}}
+\item{user}{(character) User name within GBIF's website. Required. Set in
+your \code{.Rprofile} file with the option \code{gbif_user}}
 
-\item{pwd}{(character) User password within GBIF's website. Required. Set in your
-\code{.Rprofile} file with the option \code{gbif_pwd}}
+\item{pwd}{(character) User password within GBIF's website. Required. Set
+in your \code{.Rprofile} file with the option \code{gbif_pwd}}
 
-\item{email}{(character) Email address to recieve download notice done email. Required.
-Set in your \code{.Rprofile} file with the option \code{gbif_email}}
+\item{email}{(character) Email address to recieve download notice done
+email. Required. Set in your \code{.Rprofile} file with the option
+\code{gbif_email}}
 
 \item{callopts}{Further named arguments passed on to \code{\link[httr]{POST}}}
 }
@@ -29,9 +32,10 @@ Set in your \code{.Rprofile} file with the option \code{gbif_email}}
 Spin up a download request for GBIF occurrence data.
 }
 \details{
-Argument passed have to be passed as character (e.g., 'country = US'), with a space
-between key ('country'), operator ('='), and value ('US'). See the \code{type} parameter for
-possible options for the operator.  This character string is parsed internally.
+Argument passed have to be passed as character (e.g.,
+'country = US'), with a space between key ('country'), operator ('='),
+and value ('US'). See the \code{type} parameter for possible options for
+the operator.  This character string is parsed internally.
 
 Acceptable arguments to \code{...} are:
 \itemize{
@@ -85,7 +89,9 @@ Acceptable arguments to \code{...} are:
 }
 }
 \references{
-See the API docs \url{http://www.gbif.org/developer/occurrence#download} for
-more info, and the predicates docs \url{http://www.gbif.org/developer/occurrence#predicates}.
+See the API docs
+\url{http://www.gbif.org/developer/occurrence#download} for more info,
+and the predicates docs
+\url{http://www.gbif.org/developer/occurrence#predicates}
 }
 

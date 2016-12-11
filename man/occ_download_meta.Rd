@@ -7,7 +7,8 @@
 occ_download_meta(key, ...)
 }
 \arguments{
-\item{key}{A key generated from a request, like that from \code{occ_download}}
+\item{key}{A key generated from a request, like that from
+\code{occ_download}}
 
 \item{...}{Further args passed to \code{\link[httr]{GET}}}
 }

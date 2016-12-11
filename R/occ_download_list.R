@@ -14,16 +14,16 @@
 #' occ_download_list(user="sckott", start = 21)
 #' }
 
-occ_download_list <- function(user=getOption("gbif_user"), pwd=getOption("gbif_pwd"),
-                              limit = 20, start = 0, ...) {
+occ_download_list <- function(user=getOption("gbif_user"),
+                    pwd=getOption("gbif_pwd"), limit = 20, start = 0, ...) {
 
   stopifnot(!is.null(user), !is.null(pwd))
   url <- sprintf('%s/occurrence/download/user/%s', gbif_base(), user)
   args <- rgbif_compact(list(limit = limit, offset = start))
-  res <- GET(url, query = args, config = c(
+  res <- httr::GET(url, query = args, config = c(
     content_type_json(),
-    accept_json(),
-    authenticate(user = user, password = pwd),
+    httr::accept_json(),
+    httr::authenticate(user = user, password = pwd),
     list(...)$config),
     make_rgbif_ua()
   )
