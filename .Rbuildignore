@@ -20,3 +20,5 @@ README.Rmd
 ^revdep$
 ^issue_template\.md$
 ^CONTRIBUTING\.md$
+.github
+
