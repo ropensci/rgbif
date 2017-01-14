@@ -104,17 +104,17 @@
 #'
 #' # complex example with many predicates
 #' # shows example of how to do date ranges for both year and month
-#' res <- occ_download(
-#'   "taxonKey = 2480946,5229208",
-#'   "basisOfRecord = HUMAN_OBSERVATION,OBSERVATION,MACHINE_OBSERVATION",
-#'   "country = US",
-#'   "hasCoordinate = true",
-#'   "hasGeospatialIssue = false",
-#'   "year >= 1999",
-#'   "year <= 2011",
-#'   "month >= 3",
-#'   "month <= 8"
-#' )
+#' # res <- occ_download(
+#' #  "taxonKey = 2480946,5229208",
+#' #  "basisOfRecord = HUMAN_OBSERVATION,OBSERVATION,MACHINE_OBSERVATION",
+#' #  "country = US",
+#' #  "hasCoordinate = true",
+#' #  "hasGeospatialIssue = false",
+#' #  "year >= 1999",
+#' #  "year <= 2011",
+#' #  "month >= 3",
+#' #  "month <= 8"
+#' # )
 #' }
 
 occ_download <- function(...,

@@ -24,6 +24,9 @@ as.download(path = ".", key = NULL)
 \item{path}{Path to unzip file to. Default: \code{"."} Writes to
 folder matching zip file name}
 }
+\value{
+a tibble (data.frame)
+}
 \description{
 Import a downloaded file from GBIF.
 }
@@ -36,7 +39,7 @@ You can provide either x as input, or both key and path. We use
 # First, kick off at least 1 download, then wait for the job to be complete
 # Then use your download keys
 res <- occ_download_get(key="0000066-140928181241064", overwrite=TRUE)
-occ_download_import(x=res)
+occ_download_import(res)
 
 occ_download_get(key="0000066-140928181241064", overwrite = TRUE) \%>\%
   occ_download_import
