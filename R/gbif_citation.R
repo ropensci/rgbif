@@ -135,18 +135,9 @@ as_occ_d_key <- function(x) {
 }
 
 is_occ_key <- function(x) {
-  res <- HEAD(paste0("http://api.gbif.org/v1/occurrence/", x))
+  res <- HEAD(paste0("https://api.gbif.org/v1/occurrence/", x))
   res$status_code <= 201
 }
-
-# is_dataset_key <- function(x) {
-#   does_dataset_key_exist(x) && is_dataset_key_pattern(x)
-# }
-
-# does_dataset_key_exist <- function(x) {
-#   res <- HEAD(paste0("http://api.gbif.org/v1/dataset/", x))
-#   res$status_code <= 201
-# }
 
 is_dataset_key_pattern <- function(x) {
   grepl("^[A-Za-z0-9]{8}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{12}$", x)

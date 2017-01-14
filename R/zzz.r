@@ -358,7 +358,7 @@ gbif_GET_content <- function(url, args, ...) {
 # other helpers --------------------
 cn <- function(x) if (length(x) == 0) NULL else x
 
-gbif_base <- function() 'http://api.gbif.org/v1'
+gbif_base <- function() 'https://api.gbif.org/v1'
 
 as_log <- function(x){
   stopifnot(is.logical(x) || is.null(x))
@@ -452,3 +452,9 @@ yank_args <- function(...) {
 }
 
 `%||%` <- function(x, y) if (is.null(x)) y else x
+
+rgbif_wrap <- function (..., indent = 0, width = getOption("width")){
+  x <- paste0(..., collapse = "")
+  wrapped <- strwrap(x, indent = indent, exdent = indent + 5, width = width)
+  paste0(wrapped, collapse = "\n")
+}
