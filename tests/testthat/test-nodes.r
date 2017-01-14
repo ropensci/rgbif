@@ -22,7 +22,7 @@ test_that("nodes", {
   expect_equal(length(tt$data$tags[[1]]), 0)
   expect_equal(uu$data$title, "Republic of Congo")
   expect_equal(vv$data$key, 13587)
-  expect_warning(vv$data$modifiedBy, "Unknown column")
+  expect_warning(vv$data$modifiedBy, "Unknown")
 
   # returns the correct dimensions
   expect_equal(length(tt), 2)
