@@ -1,10 +1,15 @@
 #' Spin up a download request for GBIF occurrence data.
 #'
-#' @importFrom jsonlite unbox
 #' @export
 #'
-#' @param ... One or more of query arguments to kick of a download job. See
-#' Details.
+#' @param ... One or more of query arguments to kick of a download job.
+#' If you use this, don't use \code{body} parameter. See Details.
+#' @param body if you prefer to pass in the payload yourself, use this
+#' parameter. if use this, don't ass anythig to the dots. accepts
+#' either an R list, or JSON. JSON is likely easier, since the JSON
+#' library \pkg{jsonlite} requires that you unbox strings that shouldn't
+#' be auto-converted to arrays, which is a bit tedious for large queries.
+#' optional
 #' @param type (charcter) One of equals (=), and (&), or (|), lessThan (<),
 #' lessThanOrEquals (<=), greaterThan (>), greaterThanOrEquals (>=), in,
 #' within, not (!), like
@@ -21,6 +26,27 @@
 #' 'country = US'), with a space between key ('country'), operator ('='),
 #' and value ('US'). See the \code{type} parameter for possible options for
 #' the operator.  This character string is parsed internally.
+#'
+#' The value can be comma separated, in which case we'll turn that into a
+#' predicate combined with the OR operator, for example,
+#' \code{"taxonKey = 2480946,5229208"} will turn into
+#' \code{
+#' '{
+#'     "type": "or",
+#'     "predicates": [
+#'         {
+#'             "type": "equals",
+#'             "key": "TAXON_KEY",
+#'             "value": "2480946"
+#'         },
+#'         {
+#'             "type": "equals",
+#'             "key": "TAXON_KEY",
+#'             "value": "5229208"
+#'         }
+#'     ]
+#' }'
+#' }
 #'
 #' Acceptable arguments to \code{...} are:
 #' \itemize{
@@ -75,6 +101,20 @@
 #' # Multiple queries
 #' # occ_download('decimalLatitude >= 65', 'decimalLatitude <= -65', type="or")
 #' # gg <- occ_download('depth = 80', 'taxonKey = 2343454', type="or")
+#'
+#' # complex example with many predicates
+#' # shows example of how to do date ranges for both year and month
+#' res <- occ_download(
+#'   "taxonKey = 2480946,5229208",
+#'   "basisOfRecord = HUMAN_OBSERVATION,OBSERVATION,MACHINE_OBSERVATION",
+#'   "country = US",
+#'   "hasCoordinate = true",
+#'   "hasGeospatialIssue = false",
+#'   "year >= 1999",
+#'   "year <= 2011",
+#'   "month >= 3",
+#'   "month <= 8"
+#' )
 #' }
 
 occ_download <- function(...,
@@ -181,6 +221,18 @@ parse_args <- function(x){
   value <- strtrim(
     substring(x, loc + attr(loc, "match.length"), nchar(x))
   )
+  if (
+    grepl(",", value) &&
+    !grepl("polygon|multipolygon|linestring|multilinestring|point|mulitpoint", value, ignore.case = TRUE)
+  ) {
+    value <- strsplit(value, ",")[[1]]
+    out <- list(
+      type = unbox("or"), predicates = lapply(value, function(z) {
+        list(type = unbox("equals"), key = unbox(key), value = unbox(z))
+      })
+    )
+    return(out)
+  }
   list(type = unbox(type), key = unbox(key), value = unbox(value))
 }
 

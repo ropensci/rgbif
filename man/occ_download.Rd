@@ -9,8 +9,8 @@ occ_download(..., type = "and", user = getOption("gbif_user"),
   callopts = list())
 }
 \arguments{
-\item{...}{One or more of query arguments to kick of a download job. See
-Details.}
+\item{...}{One or more of query arguments to kick of a download job.
+If you use this, don't use \code{body} parameter. See Details.}
 
 \item{type}{(charcter) One of equals (=), and (&), or (|), lessThan (<),
 lessThanOrEquals (<=), greaterThan (>), greaterThanOrEquals (>=), in,
@@ -27,6 +27,13 @@ email. Required. Set in your \code{.Rprofile} file with the option
 \code{gbif_email}}
 
 \item{callopts}{Further named arguments passed on to \code{\link[httr]{POST}}}
+
+\item{body}{if you prefer to pass in the payload yourself, use this
+parameter. if use this, don't ass anythig to the dots. accepts
+either an R list, or JSON. JSON is likely easier, since the JSON
+library \pkg{jsonlite} requires that you unbox strings that shouldn't
+be auto-converted to arrays, which is a bit tedious for large queries.
+optional}
 }
 \description{
 Spin up a download request for GBIF occurrence data.
@@ -36,6 +43,27 @@ Argument passed have to be passed as character (e.g.,
 'country = US'), with a space between key ('country'), operator ('='),
 and value ('US'). See the \code{type} parameter for possible options for
 the operator.  This character string is parsed internally.
+
+The value can be comma separated, in which case we'll turn that into a
+predicate combined with the OR operator, for example,
+\code{"taxonKey = 2480946,5229208"} will turn into
+\code{
+'{
+    "type": "or",
+    "predicates": [
+        {
+            "type": "equals",
+            "key": "TAXON_KEY",
+            "value": "2480946"
+        },
+        {
+            "type": "equals",
+            "key": "TAXON_KEY",
+            "value": "5229208"
+        }
+    ]
+}'
+}
 
 Acceptable arguments to \code{...} are:
 \itemize{
@@ -86,6 +114,20 @@ Acceptable arguments to \code{...} are:
 # Multiple queries
 # occ_download('decimalLatitude >= 65', 'decimalLatitude <= -65', type="or")
 # gg <- occ_download('depth = 80', 'taxonKey = 2343454', type="or")
+
+# complex example with many predicates
+# shows example of how to do date ranges for both year and month
+res <- occ_download(
+  "taxonKey = 2480946,5229208",
+  "basisOfRecord = HUMAN_OBSERVATION,OBSERVATION,MACHINE_OBSERVATION",
+  "country = US",
+  "hasCoordinate = true",
+  "hasGeospatialIssue = false",
+  "year >= 1999",
+  "year <= 2011",
+  "month >= 3",
+  "month <= 8"
+)
 }
 }
 \references{
