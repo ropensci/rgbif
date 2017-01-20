@@ -115,17 +115,59 @@
 #' #  "month >= 3",
 #' #  "month <= 8"
 #' # )
+#'
+#' # Using body parameter - pass in your own complete query
+#' ## as JSON
+#' query1 <- '{"creator":"sckott",
+#'   "notification_address":["myrmecocystus@gmail.com"],
+#'   "predicate":{"type":"and","predicates":[
+#'     {"type":"equals","key":"TAXON_KEY","value":"7264332"},
+#'     {"type":"equals","key":"HAS_COORDINATE","value":"TRUE"}]}
+#'  }'
+#' # res <- occ_download(body = query, callopts=verbose())
+#'
+#' ## as a list
+#' library(jsonlite)
+#' query <- list(
+#'   creator = unbox("sckott"),
+#'   notification_address = "myrmecocystus@gmail.com",
+#'   predicate = list(
+#'     type = unbox("and"),
+#'     predicates = list(
+#'       list(type = unbox("equals"), key = unbox("TAXON_KEY"), value = unbox("7264332")),
+#'       list(type = unbox("equals"), key = unbox("HAS_COORDINATE"), value = unbox("TRUE"))
+#'     )
+#'   )
+#' )
+#' # res <- occ_download(body = query, callopts=verbose())
 #' }
 
-occ_download <- function(...,
+occ_download <- function(..., body = NULL,
    type = "and", user = getOption("gbif_user"), pwd = getOption("gbif_pwd"),
    email = getOption("gbif_email"), callopts = list()) {
 
   url <- paste0(gbif_base(), '/occurrence/download/request')
   stopifnot(!is.null(user), !is.null(email))
-  req <- parse_occd(user, email, type, ...)
+  if (!is.null(body)) {
+    req <- body
+  } else {
+    req <- parse_occd(user, email, type, ...)
+  }
   out <- rg_POST(url, req = req, user = user, pwd = pwd, callopts)
   structure(out, class = "occ_download", user = user, email = email)
+}
+
+check_inputs <- function(x) {
+  if (is.character(x)) {
+    # replace newlines
+    x <- gsub("\n|\r|\\s+", "", x)
+    # validate
+    tmp <- jsonlite::validate(x)
+    if (!tmp) stop(attr(tmp, "err"))
+    x
+  } else {
+    jsonlite::toJSON(x)
+  }
 }
 
 parse_occd <- function(user, email, type, ...) {
@@ -137,7 +179,6 @@ parse_occd <- function(user, email, type, ...) {
          notification_address = email,
          predicate = list(
            type = unbox(type),
-           #predicates = keyval
            predicates = {
              lapply(keyval, function(z) {
                if (z$type == "within" && z$key == "GEOMETRY") {
@@ -180,7 +221,9 @@ rg_POST <- function(url, req, user, pwd, callopts) {
     content_type_json(),
     accept_json(),
     authenticate(user = user, password = pwd),
-    callopts), body = jsonlite::toJSON(req),
+    callopts),
+    #body = jsonlite::toJSON(req),
+    body = check_inputs(req),
     make_rgbif_ua())
   if (tmp$status_code > 203) stop(catch_err(tmp), call. = FALSE)
   stopifnot(tmp$header$`content-type` == 'application/json')

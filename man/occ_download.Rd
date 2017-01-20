@@ -4,13 +4,20 @@
 \alias{occ_download}
 \title{Spin up a download request for GBIF occurrence data.}
 \usage{
-occ_download(..., type = "and", user = getOption("gbif_user"),
-  pwd = getOption("gbif_pwd"), email = getOption("gbif_email"),
-  callopts = list())
+occ_download(..., body = NULL, type = "and",
+  user = getOption("gbif_user"), pwd = getOption("gbif_pwd"),
+  email = getOption("gbif_email"), callopts = list())
 }
 \arguments{
 \item{...}{One or more of query arguments to kick of a download job.
 If you use this, don't use \code{body} parameter. See Details.}
+
+\item{body}{if you prefer to pass in the payload yourself, use this
+parameter. if use this, don't ass anythig to the dots. accepts
+either an R list, or JSON. JSON is likely easier, since the JSON
+library \pkg{jsonlite} requires that you unbox strings that shouldn't
+be auto-converted to arrays, which is a bit tedious for large queries.
+optional}
 
 \item{type}{(charcter) One of equals (=), and (&), or (|), lessThan (<),
 lessThanOrEquals (<=), greaterThan (>), greaterThanOrEquals (>=), in,
@@ -27,13 +34,6 @@ email. Required. Set in your \code{.Rprofile} file with the option
 \code{gbif_email}}
 
 \item{callopts}{Further named arguments passed on to \code{\link[httr]{POST}}}
-
-\item{body}{if you prefer to pass in the payload yourself, use this
-parameter. if use this, don't ass anythig to the dots. accepts
-either an R list, or JSON. JSON is likely easier, since the JSON
-library \pkg{jsonlite} requires that you unbox strings that shouldn't
-be auto-converted to arrays, which is a bit tedious for large queries.
-optional}
 }
 \description{
 Spin up a download request for GBIF occurrence data.
@@ -128,6 +128,31 @@ Acceptable arguments to \code{...} are:
 #  "month >= 3",
 #  "month <= 8"
 # )
+
+# Using body parameter - pass in your own complete query
+## as JSON
+query1 <- '{"creator":"sckott",
+  "notification_address":["myrmecocystus@gmail.com"],
+  "predicate":{"type":"and","predicates":[
+    {"type":"equals","key":"TAXON_KEY","value":"7264332"},
+    {"type":"equals","key":"HAS_COORDINATE","value":"TRUE"}]}
+ }'
+# res <- occ_download(body = query, callopts=verbose())
+
+## as a list
+library(jsonlite)
+query <- list(
+  creator = unbox("sckott"),
+  notification_address = "myrmecocystus@gmail.com",
+  predicate = list(
+    type = unbox("and"),
+    predicates = list(
+      list(type = unbox("equals"), key = unbox("TAXON_KEY"), value = unbox("7264332")),
+      list(type = unbox("equals"), key = unbox("HAS_COORDINATE"), value = unbox("TRUE"))
+    )
+  )
+)
+# res <- occ_download(body = query, callopts=verbose())
 }
 }
 \references{

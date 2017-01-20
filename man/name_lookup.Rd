@@ -153,9 +153,6 @@ name_lookup(query='Cnaemidophorus', rank="genus", return="hierarchy")
 # Just vernacular (common) names
 name_lookup(query='Cnaemidophorus', rank="genus", return="names")
 
-# Fuzzy searching
-name_lookup(query='Cnaemidophor', rank="genus")
-
 # Limit records to certain number
 name_lookup('Helianthus annuus', rank="species", limit=2)
 

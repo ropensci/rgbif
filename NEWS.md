@@ -1,3 +1,29 @@
+rgbif 0.9.7
+===========
+
+### NEW FEATURES
+
+* `occ_dowload` gains new parameter `body` to allow users to pass in
+JSON or a list for the query instead of passing in statements to 
+`...`. See examples in `?occ_dowload`.
+
+### MINOR IMPROVEMENTS
+
+* Now using `tibble` for compact data.frame output for 
+`occ_download_import` instead of bespoke internal solution (#240)
+* Moved all GBIF API requests to use `https` instead of `http` (#244)
+* Improved print method for `occ_download_meta`
+
+### BUG FIXES
+
+* Fix to `occ_download` to structure query correctly when 
+`type=within` and `geometry` used because the structure is slightly
+different than when not using `geometry` (#242)
+* Fixed `occ_download` to allow `OR` queries for many values of a 
+parameter, e.g., `taxonKey=2475470,2480946` will be queried correctly 
+now as essentially `taxonKey=2475470` or `taxonKey=2480946` (#245)
+
+
 rgbif 0.9.6
 ===========
 
