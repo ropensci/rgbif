@@ -17,8 +17,8 @@ Retrieves the occurrence download metadata by its unique key.
 }
 \examples{
 \dontrun{
-occ_download_meta("0003970-140910143529206")
-occ_download_meta("0000099-140929101555934")
+occ_download_meta("0003983-140910143529206")
+occ_download_meta("0000066-140928181241064")
 }
 }
 

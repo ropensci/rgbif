@@ -32,7 +32,8 @@ occ_download_get <- function(key, path=".", overwrite=FALSE, ...) {
   stopifnot(res$header$`content-type` == "application/octet-stream; qs=0.5")
   options(gbifdownloadpath = path)
   message( sprintf("On disk at %s", res$request$writer[[1]]) )
-  structure(path, class = "occ_download_get", size = size, key = key)
+  structure(path, class = "occ_download_get",
+            size = size, key = key, format = attr(meta, "format"))
 }
 
 #' @export

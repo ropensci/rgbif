@@ -26,6 +26,11 @@
 #' as.download("0000066-140928181241064.zip")
 #' as.download(key = "0000066-140928181241064")
 #' occ_download_import(as.download("0000066-140928181241064.zip"))
+#'
+#' # download a dump that has a CSV file
+#' res <- occ_download_get(key = "0001369-160509122628363", overwrite=TRUE)
+#' occ_download_import(res)
+#' occ_download_import(key = "0001369-160509122628363")
 #' }
 
 occ_download_import <- function(x=NULL, key=NULL, path=".") {
@@ -37,11 +42,19 @@ occ_download_import <- function(x=NULL, key=NULL, path=".") {
     stopifnot(!is.null(key), !is.null(path))
     path <- sprintf("%s/%s.zip", path, key)
   }
-  tmpdir <- file.path(tempdir(), key)
+  if (!file.exists(path)) stop("file does not exist", call. = FALSE)
+  tmpdir <- file.path(tempdir(), "gbifdownload", key)
   unzip(path, exdir = tmpdir, overwrite = TRUE)
-  tibble::as_tibble(
-    data.table::fread(file.path(tmpdir, "occurrence.txt"), data.table = FALSE)
-  )
+  xx <- list.files(tmpdir)
+  if (any(grepl("occurrence.txt", xx))) {
+    tpath <- "occurrence.txt"
+  } else if (any(grepl("\\.csv", xx))) {
+    tpath <- grep("\\.csv", xx, value = TRUE)
+    if (length(tpath) > 1) stop("more than one .csv file found", call. = FALSE)
+  }
+  targetpath <- file.path(tmpdir, tpath)
+  if (!file.exists(tmpdir)) stop("appropriate file not found", call. = FALSE)
+  tibble::as_tibble(data.table::fread(targetpath, data.table = FALSE))
 }
 
 #' @export
