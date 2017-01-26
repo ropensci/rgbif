@@ -7,7 +7,7 @@
 \alias{occ_download_import}
 \title{Import a downloaded file from GBIF.}
 \usage{
-occ_download_import(x = NULL, key = NULL, path = ".")
+occ_download_import(x = NULL, key = NULL, path = ".", ...)
 
 as.download(path = ".", key = NULL)
 
@@ -23,6 +23,8 @@ as.download(path = ".", key = NULL)
 
 \item{path}{Path to unzip file to. Default: \code{"."} Writes to
 folder matching zip file name}
+
+\item{...}{parameters passed on to \code{\link[data.table]{fread}}}
 }
 \value{
 a tibble (data.frame)
