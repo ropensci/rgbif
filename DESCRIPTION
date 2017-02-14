@@ -7,7 +7,7 @@ Description: A programmatic interface to the Web Service methods
     'rgbif' includes functions for searching for taxonomic names, 
     retrieving information on data providers, getting species occurrence 
     records, and getting counts of occurrence records.
-Version: 0.9.7.9140
+Version: 0.9.7.9144
 License: MIT + file LICENSE
 Authors@R: c(
     person("Scott", "Chamberlain", role = c("aut", "cre"), 
@@ -30,10 +30,10 @@ Imports:
     whisker,
     magrittr,
     jsonlite (>= 0.9.16),
-    V8,
     oai (>= 0.2.2),
     geoaxe,
-    tibble
+    tibble,
+    wicket (>= 0.2.0)
 Suggests:
     testthat,
     knitr,

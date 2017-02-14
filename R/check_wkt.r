@@ -1,7 +1,7 @@
 #' Check input WKT
 #'
 #' @export
-#' @param wkt A Well Known Text object
+#' @param wkt (character) A Well Known Text object
 #' @examples
 #' check_wkt('POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))')
 #' check_wkt('POINT(30.1 10.1)')
@@ -11,7 +11,12 @@
 #' check_wkt(wkt)
 #'
 #' # check many passed in at once
-#' check_wkt(c('POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))', 'POINT(30.1 10.1)'))
+#' check_wkt(c('POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))',
+#'   'POINT(30.1 10.1)'))
+#'
+#' # bad WKT
+#' wkt <- 'POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 a))'
+#' #check_wkt(wkt)
 #'
 #' # this passes this check, but isn't valid for GBIF
 #' wkt <- 'POLYGON((-178.59375 64.83258989321493,-165.9375 59.24622380205539,
@@ -36,14 +41,13 @@ check_wkt <- function(wkt = NULL){
     for (i in seq_along(wkt)) {
       if (!y[i] %in% wkts) {
         stop(
-          paste0("WKT must be one of the types: ", paste0(wkts, collapse = ", ")),
-          call. = FALSE
+          paste0("WKT must be one of the types: ",
+                 paste0(wkts, collapse = ", "))
         )
       }
-      res <- tryCatch(read_wkt(wkt[i]), error = function(e) e)
-      if (!inherits(res, 'list')) {
-        stop(res$message, call. = FALSE)
-      }
+
+      res <- wicket::validate_wkt(wkt[i])
+      if (!res$is_valid) stop(res$comments)
     }
 
     return(wkt)

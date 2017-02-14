@@ -1,11 +1,11 @@
 geometry_handler <- function(x, geom_big = "asis", size = 40, n = 10, verbose = TRUE) {
   gbopts <- c('asis', 'bbox', 'axe')
   if (!geom_big %in% gbopts) {
-    stop('geom_big must be one of: ', paste0(gbopts, collapse = ", "), call. = FALSE)
+    stop('geom_big must be one of: ', paste0(gbopts, collapse = ", "))
   }
 
-  if (!is_integer(size) && size <= 0) stop("geom_size must be > 0 and integer", call. = FALSE)
-  if (!is_integer(n) && n <= 0) stop("geom_n must be > 0 and integer", call. = FALSE)
+  if (!is_integer(size) && size <= 0) stop("geom_size must be > 0 and integer")
+  if (!is_integer(n) && n <= 0) stop("geom_n must be > 0 and integer")
 
   if (!is.null(x)) {
     if (!is.character(x)) {
@@ -32,7 +32,7 @@ geometry_handler <- function(x, geom_big = "asis", size = 40, n = 10, verbose = 
            res <- geoaxe::chop(x[i], size = size, n = n)
            as.character(unlist(lapply(res@polygons, function(z) {
              lapply(z@Polygons, function(w) {
-               rgeos::writeWKT(sp::SpatialPolygons(list(sp::Polygons(list(w), 1))))
+               wicket::sp_convert(sp::SpatialPolygons(list(sp::Polygons(list(w), 1))))
              })
            }), recursive = FALSE))
          }
