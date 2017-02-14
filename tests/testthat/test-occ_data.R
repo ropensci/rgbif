@@ -249,6 +249,33 @@ test_that("geometry inputs work as expected", {
   gg <- occ_data(geometry = wkt, geom_big = "axe", geom_size = 30, limit = 5)
 
   expect_gt(length(names(gg)), length(names(ee)))
+
+
+
+  # bad wkt is caught and handled appropriately
+  badwkt1 <- "POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 a))"
+  expect_error(
+    occ_data(geometry = badwkt1),
+    "source type value could not be interpreted as target at 'a'"
+  )
+
+  badwkt2 <- "POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 '10.1'))"
+  expect_error(
+    occ_data(geometry = badwkt2),
+    "source type value could not be interpreted as target at ''10.1''"
+  )
+
+  badwkt3 <- "POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1)"
+  expect_error(
+    occ_data(geometry = badwkt3),
+    "Expected ')' in "
+  )
+
+  badwkt4 <- "CIRCULARSTRING(1 5, 6 2, 7 3)"
+  expect_error(
+    occ_data(geometry = badwkt4),
+    "WKT must be one of the types"
+  )
 })
 
 ######### spell check works
