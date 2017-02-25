@@ -63,7 +63,6 @@ library("rgbif")
 ```
 
 > Note: Windows users have to first install [Rtools](https://cran.r-project.org/bin/windows/Rtools/) to use devtools
-> Note: Mac users have to install openssl and gdal from terminal
 
 Mac Users:
 (in case of errors)
