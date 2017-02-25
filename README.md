@@ -65,6 +65,7 @@ library("rgbif")
 > Note: Windows users have to first install [Rtools](https://cran.r-project.org/bin/windows/Rtools/) to use devtools
 
 Mac Users:
+(in case of error)
 Terminal:
 ```r
 brew install openssl
