@@ -64,17 +64,34 @@ library("rgbif")
 
 > Note: Windows users have to first install [Rtools](https://cran.r-project.org/bin/windows/Rtools/) to use devtools
 
+Mac Users:
+(in case of errors)
+
+Terminal:
+
+Install gdal : https://github.com/edzer/sfr/blob/master/README.md#macos
+
+```r
+brew install openssl
+````
+R terminal:
+```r
+install.packages('openssl')
+install.packages('rgeos')
+install.packages('V8')
+install.packages('rgbif')
+```
 ## Search for occurrence data
 
 
 ```r
 occ_search(scientificName = "Ursus americanus", limit = 50)
-#> Records found [8424] 
-#> Records returned [50] 
-#> No. unique hierarchies [1] 
-#> No. media records [43] 
-#> No. facets [0] 
-#> Args [scientificName=Ursus americanus, limit=50, offset=0, fields=all] 
+#> Records found [8424]
+#> Records returned [50]
+#> No. unique hierarchies [1]
+#> No. media records [43]
+#> No. facets [0]
+#> Args [scientificName=Ursus americanus, limit=50, offset=0, fields=all]
 #> # A tibble: 50 × 68
 #>                name        key decimalLatitude decimalLongitude
 #>               <chr>      <int>           <dbl>            <dbl>
@@ -117,12 +134,12 @@ Or you can get the taxon key first with `name_backbone()`. Here, we select to on
 ```r
 key <- name_backbone(name='Helianthus annuus', kingdom='plants')$speciesKey
 occ_search(taxonKey=key, limit=20)
-#> Records found [21970] 
-#> Records returned [20] 
-#> No. unique hierarchies [1] 
-#> No. media records [15] 
-#> No. facets [0] 
-#> Args [taxonKey=3119195, limit=20, offset=0, fields=all] 
+#> Records found [21970]
+#> Records returned [20]
+#> No. unique hierarchies [1]
+#> No. media records [15]
+#> No. facets [0]
+#> Args [taxonKey=3119195, limit=20, offset=0, fields=all]
 #> # A tibble: 20 × 67
 #>                 name        key decimalLatitude decimalLongitude
 #>                <chr>      <int>           <dbl>            <dbl>
@@ -177,15 +194,15 @@ Get the keys first with `name_backbone()`, then pass to `occ_search()`
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 keys <- sapply(splist, function(x) name_backbone(name=x)$speciesKey, USE.NAMES=FALSE)
 occ_search(taxonKey=keys, limit=5, hasCoordinate=TRUE)
-#> Occ. found [2480598 (22), 2492010 (3042553), 2498387 (971214)] 
-#> Occ. returned [2480598 (5), 2492010 (5), 2498387 (5)] 
-#> No. unique hierarchies [2480598 (1), 2492010 (1), 2498387 (1)] 
-#> No. media records [2480598 (1), 2492010 (5), 2498387 (1)] 
-#> No. facets [] 
+#> Occ. found [2480598 (22), 2492010 (3042553), 2498387 (971214)]
+#> Occ. returned [2480598 (5), 2492010 (5), 2498387 (5)]
+#> No. unique hierarchies [2480598 (1), 2492010 (1), 2498387 (1)]
+#> No. media records [2480598 (1), 2492010 (5), 2498387 (1)]
+#> No. facets []
 #> Args [taxonKey=2480598,2492010,2498387, hasCoordinate=TRUE, limit=5,
-#>      offset=0, fields=all] 
+#>      offset=0, fields=all]
 #> First 10 rows of data from 2480598
-#> 
+#>
 #> # A tibble: 5 × 82
 #>                      name        key decimalLatitude decimalLongitude
 #>                     <chr>      <int>           <dbl>            <dbl>

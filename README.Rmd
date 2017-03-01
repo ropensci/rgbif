@@ -68,6 +68,23 @@ library("rgbif")
 
 > Note: Windows users have to first install [Rtools](https://cran.r-project.org/bin/windows/Rtools/) to use devtools
 
+Mac Users:
+(in case of errors)
+
+Terminal:
+
+Install gdal : https://github.com/edzer/sfr/blob/master/README.md#macos
+
+```{r eval=FALSE}
+brew install openssl
+````
+R terminal:
+```{r eval=FALSE}
+install.packages('openssl')
+install.packages('rgeos')
+install.packages('V8')
+install.packages('rgbif')
+```
 ## Search for occurrence data
 
 ```{r}
