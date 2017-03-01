@@ -68,9 +68,11 @@ Mac Users:
 (in case of errors)
 
 Terminal:
+
+Install gdal : https://github.com/edzer/sfr/blob/master/README.md#macos
+
 ```r
 brew install openssl
-brew install gdal
 ````
 R terminal:
 ```r
