@@ -21,8 +21,10 @@ SUBGENUS, SUBKINGDOM, SUBORDER, SUBPHYLUM, SUBSECTION, SUBSERIES, SUBSPECIES,
 SUBTRIBE, SUBVARIETY, SUPERCLASS, SUPERFAMILY, SUPERORDER, SUPERPHYLUM,
 SUPRAGENERIC_NAME, TRIBE, UNRANKED, VARIETY}
 
-\item{higherTaxonKey}{Filters by any of the higher Linnean rank keys. Note this
-is within the respective checklist and not searching nub keys across all checklists.}
+\item{higherTaxonKey}{Filters by any of the higher Linnean rank keys. Note
+this is within the respective checklist and not searching nub keys
+across all checklists. This parameter accepts many inputs in a vector (
+passed in the same request).}
 
 \item{status}{Filters by the taxonomic status as one of:
 \itemize{
@@ -185,6 +187,9 @@ gbif_names(res)
 # Lookup by datasetKey
 name_lookup(datasetKey='3f8a1297-3259-4700-91fc-acc4170b27ce')
 
+# Some parameters accept many inputs, treated as OR
+name_lookup(higherTaxonKey = c("119", "120", "121", "204"))
+
 # Pass on httr options
 library('httr')
 name_lookup(query='Cnaemidophorus', rank="genus", config=verbose())
@@ -193,4 +198,3 @@ name_lookup(query='Cnaemidophorus', rank="genus", config=verbose())
 \references{
 \url{http://www.gbif.org/developer/species#searching}
 }
-

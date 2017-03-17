@@ -67,6 +67,9 @@
 #' # Lookup by datasetKey
 #' name_lookup(datasetKey='3f8a1297-3259-4700-91fc-acc4170b27ce')
 #'
+#' # Some parameters accept many inputs, treated as OR
+#' name_lookup(higherTaxonKey = c("119", "120", "121", "204"))
+#'
 #' # Pass on httr options
 #' library('httr')
 #' name_lookup(query='Cnaemidophorus', rank="genus", config=verbose())
@@ -87,14 +90,19 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
     facetbyname <- NULL
   }
 
+  if (!is.null(higherTaxonKey)) {
+    names(higherTaxonKey) <- rep('higherTaxonKey', length(higherTaxonKey))
+  }
+
   url <- paste0(gbif_base(), '/species/search')
-  args <- rgbif_compact(list(q=query, rank=rank, higherTaxonKey=higherTaxonKey,
+  args <- rgbif_compact(list(q=query, rank=rank,
             status=status, isExtinct=as_log(isExtinct), habitat=habitat,
             nameType=nameType, datasetKey=datasetKey,
             nomenclaturalStatus=nomenclaturalStatus, limit=limit, offset=start,
             facetMincount=facetMincount,
-            facetMultiselect=as_log(facetMultiselect), hl=as_log(hl), type=type))
-  args <- c(args, facetbyname)
+            facetMultiselect=as_log(facetMultiselect), hl=as_log(hl),
+            type=type))
+  args <- c(args, facetbyname, higherTaxonKey)
   tt <- gbif_GET(url, args, FALSE, ...)
 
   # metadata

@@ -5,8 +5,10 @@
 #'   SUBGENUS, SUBKINGDOM, SUBORDER, SUBPHYLUM, SUBSECTION, SUBSERIES, SUBSPECIES,
 #'   SUBTRIBE, SUBVARIETY, SUPERCLASS, SUPERFAMILY, SUPERORDER, SUPERPHYLUM,
 #'   SUPRAGENERIC_NAME, TRIBE, UNRANKED, VARIETY
-#' @param higherTaxonKey Filters by any of the higher Linnean rank keys. Note this
-#'    is within the respective checklist and not searching nub keys across all checklists.
+#' @param higherTaxonKey Filters by any of the higher Linnean rank keys. Note
+#' this is within the respective checklist and not searching nub keys
+#' across all checklists. This parameter accepts many inputs in a vector (
+#' passed in the same request).
 #' @param status Filters by the taxonomic status as one of:
 #' \itemize{
 #'  \item ACCEPTED
