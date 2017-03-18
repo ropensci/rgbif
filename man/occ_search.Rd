@@ -825,4 +825,3 @@ occ_search(scientificName = 'Ursus americanus', limit = 0, return = "meta")
 \code{\link{downloads}}, \code{\link{occ_data}},
 \code{\link{occ_facet}}
 }
-

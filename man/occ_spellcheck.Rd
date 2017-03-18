@@ -37,4 +37,3 @@ occ_spellcheck(search = "asdfadfasdf")
 occ_spellcheck(search = "helianthus")
 }
 }
-

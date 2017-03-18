@@ -35,6 +35,7 @@ Imports:
     tibble,
     wicket (>= 0.2.0)
 Suggests:
+    roxygen2 (>= 6.0.1),
     testthat,
     knitr,
     reshape2,

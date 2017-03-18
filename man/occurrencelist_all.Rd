@@ -14,4 +14,3 @@ This function is defunct.
 occ_search
 }
 \keyword{internal}
-

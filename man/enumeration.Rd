@@ -40,4 +40,3 @@ library("httr")
 enumeration(config = verbose())
 }
 }
-

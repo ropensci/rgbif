@@ -30,4 +30,3 @@ gbif_names(name_lookup(query='bird', hl=TRUE))
 gbif_names(name_lookup(query='bird', limit=200))
 }
 }
-

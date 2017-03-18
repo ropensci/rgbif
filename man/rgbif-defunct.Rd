@@ -26,4 +26,3 @@ The above functions have been removed. See \url{https://github.com/ropensci/rgbi
 around the code if you want to find the old functions in previous versions of the package, or
 email Scott at \email{myrmecocystus@gmail.com}
 }
-

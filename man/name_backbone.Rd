@@ -82,4 +82,3 @@ x <- name_backbone(name='Oenante', config=progress())
 \references{
 \url{http://www.gbif.org/developer/species#searching}
 }
-

@@ -115,4 +115,3 @@ library('httr')
 \references{
 \url{http://www.gbif.org/developer/species#nameUsages}
 }
-

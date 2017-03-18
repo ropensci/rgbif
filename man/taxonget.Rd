@@ -14,4 +14,3 @@ This function is defunct.
 name_usage
 }
 \keyword{internal}
-

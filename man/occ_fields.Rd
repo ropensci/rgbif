@@ -8,4 +8,3 @@
 These fields can be specified in the \code{fields} parameer in the \code{occ_search} function.
 }
 \keyword{data}
-

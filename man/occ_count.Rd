@@ -115,6 +115,7 @@ call \code{occ_count(type='schema')}. They are also presented below:
  \item year
 }
 }
+
 \examples{
 \dontrun{
 occ_count(basisOfRecord='OBSERVATION')
@@ -156,4 +157,3 @@ library('httr')
 \references{
 \url{http://www.gbif.org/developer/occurrence#metrics}
 }
-

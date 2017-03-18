@@ -10,4 +10,3 @@ suggestfields()
 Fields available in gbif_suggest function
 }
 \keyword{internal}
-

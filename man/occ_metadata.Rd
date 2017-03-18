@@ -59,4 +59,3 @@ occ_metadata(type = "cat", q=122, config=verbose())
 \references{
 \url{http://www.gbif.org/developer/occurrence#search}
 }
-

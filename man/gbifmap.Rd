@@ -71,4 +71,3 @@ dd <- rbindlist(lapply(dat, function(z) z$data), fill = TRUE, use.names = TRUE)
 gbifmap(dd)
 }
 }
-

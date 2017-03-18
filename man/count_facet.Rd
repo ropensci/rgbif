@@ -53,4 +53,3 @@ dcast(out, .id ~ georeferenced)
 count_facet(by="basisOfRecord")
 }
 }
-

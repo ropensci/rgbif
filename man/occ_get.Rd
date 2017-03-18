@@ -58,4 +58,3 @@ occ_get(key=766766824, config=verbose())
 \references{
 \url{http://www.gbif.org/developer/occurrence#occurrence}
 }
-

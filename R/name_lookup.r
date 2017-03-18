@@ -21,7 +21,9 @@
 #'
 #' # Get all data and parse it, removing descriptions which can be quite long
 #' out <- name_lookup('Helianthus annuus', rank="species", verbose=TRUE)
-#' lapply(out$data, function(x) x[!names(x) %in% c("descriptions","descriptionsSerialized")])
+#' lapply(out$data, function(x) {
+#'   x[!names(x) %in% c("descriptions","descriptionsSerialized")]
+#' })
 #'
 #' # Search for a genus, returning just data
 #' name_lookup(query='Cnaemidophorus', rank="genus", return="data")
@@ -45,7 +47,8 @@
 #'
 #' # Using faceting
 #' name_lookup(facet='status', limit=0, facetMincount='70000')
-#' name_lookup(facet=c('status','higherTaxonKey'), limit=0, facetMincount='700000')
+#' name_lookup(facet=c('status','higherTaxonKey'), limit=0,
+#'   facetMincount='700000')
 #'
 #' name_lookup(facet='nameType', limit=0)
 #' name_lookup(facet='habitat', limit=0)
@@ -111,7 +114,8 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
   # facets
   facets <- tt$facets
   if (!length(facets) == 0) {
-    facetsdat <- lapply(facets, function(x) do.call(rbind, lapply(x$counts, data.frame, stringsAsFactors = FALSE)))
+    facetsdat <- lapply(facets, function(x)
+      do.call(rbind, lapply(x$counts, data.frame, stringsAsFactors = FALSE)))
     names(facetsdat) <- tolower(sapply(facets, "[[", "field"))
   } else {
     facetsdat <- NULL
@@ -145,13 +149,16 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
   names(vernames) <- vapply(tt$results, "[[", numeric(1), "key")
 
   # select output
-  return <- match.arg(return, c('meta', 'data', 'facets', 'hierarchy', 'names', 'all'))
+  return <- match.arg(return, c('meta', 'data', 'facets', 'hierarchy',
+                                'names', 'all'))
   switch(return,
          meta = tibble::as_data_frame(meta),
          data = data,
          facets = facetsdat,
          hierarchy = compact_null(hierdat),
          names = compact_null(vernames),
-         all = list(meta = tibble::as_data_frame(meta), data = data, facets = facetsdat,
-                    hierarchies = compact_null(hierdat), names = compact_null(vernames)))
+         all = list(meta = tibble::as_data_frame(meta), data = data,
+                    facets = facetsdat,
+                    hierarchies = compact_null(hierdat),
+                    names = compact_null(vernames)))
 }

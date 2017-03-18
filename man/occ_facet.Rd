@@ -57,4 +57,3 @@ occ_facet(facet = "country", country.facetLimit = 3,
 \code{\link{occ_search}} also has faceting ability, but
 can include occurrence data in addition to facets
 }
-

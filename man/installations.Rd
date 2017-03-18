@@ -76,4 +76,3 @@ res <- installations(data='deleted', config=progress())
 \references{
 \url{http://www.gbif.org/developer/registry#installations}
 }
-

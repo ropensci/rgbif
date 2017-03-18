@@ -87,4 +87,3 @@ res <- nodes(limit=20, config=progress())
 \references{
 \url{http://www.gbif.org/developer/registry#nodes}
 }
-

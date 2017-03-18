@@ -11,4 +11,3 @@ density_spplist(...)
 This function is defunct
 }
 \keyword{internal}
-

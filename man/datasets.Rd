@@ -57,4 +57,3 @@ res <- datasets(data=c('deleted','duplicate'), config=progress())
 \references{
 \url{http://www.gbif.org/developer/registry#datasets}
 }
-

@@ -71,4 +71,3 @@ res <- networks(limit=5, config=progress())
 \references{
 \url{http://www.gbif.org/developer/registry#networks}
 }
-

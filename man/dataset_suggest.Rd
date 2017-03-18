@@ -106,4 +106,3 @@ dataset_suggest(type="OCCURRENCE", limit = 2, config=verbose())
 \references{
 \url{http://www.gbif.org/developer/registry#datasetSearch}
 }
-

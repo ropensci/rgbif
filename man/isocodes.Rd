@@ -13,4 +13,3 @@
 }
 }
 \keyword{data}
-

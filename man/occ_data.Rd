@@ -712,4 +712,3 @@ res \%>\% occ_issues(-cudc, mutate = "split_expand")
 \seealso{
 \code{\link{downloads}}, \code{\link{occ_search}}
 }
-

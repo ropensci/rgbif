@@ -117,4 +117,3 @@ dataset_search(facet="decade", facetMincount="10", limit=2, config=verbose())
 \references{
 \url{http://www.gbif.org/developer/registry#datasetSearch}
 }
-

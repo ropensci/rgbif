@@ -51,4 +51,3 @@ res <- organizations(query="spain", config=progress())
 \references{
 \url{http://www.gbif.org/developer/registry#organizations}
 }
-

@@ -59,4 +59,3 @@ d1 <- occ_download_get("0000066-140928181241064", overwrite = TRUE)
 gbif_citation(d1)
 }
 }
-

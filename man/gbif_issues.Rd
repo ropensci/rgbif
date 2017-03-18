@@ -19,4 +19,3 @@ Table has the following fields:
   \item description. Description of the issue.
 }
 }
-

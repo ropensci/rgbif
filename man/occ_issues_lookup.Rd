@@ -20,4 +20,3 @@ occ_issues_lookup(issue = 'MULTIMEDIA_DATE_INVALID')
 occ_issues_lookup(issue = 'ZERO_COORDINATE')
 occ_issues_lookup(code = 'cdiv')
 }
-

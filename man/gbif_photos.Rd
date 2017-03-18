@@ -26,6 +26,7 @@ so cycle through if you have more than that.
  The maps in the table view may not show up correctly if
 you are using RStudio
 }
+
 \examples{
 \dontrun{
 res <- occ_search(mediaType = 'StillImage', return = "media")
@@ -37,4 +38,3 @@ gbif_photos(res)
 gbif_photos(res, output = '~/barfoo')
 }
 }
-

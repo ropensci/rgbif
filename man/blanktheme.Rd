@@ -10,4 +10,3 @@ blanktheme()
 Custom ggplot2 theme
 }
 \keyword{internal}
-
