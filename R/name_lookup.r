@@ -105,9 +105,6 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
   habitat <- as_many_args(habitat)
   nameType <- as_many_args(nameType)
   datasetKey <- as_many_args(datasetKey)
-  # if (!is.null(higherTaxonKey)) {
-  #   names(higherTaxonKey) <- rep('higherTaxonKey', length(higherTaxonKey))
-  # }
 
   url <- paste0(gbif_base(), '/species/search')
   args <- rgbif_compact(list(q=query, isExtinct=as_log(isExtinct),
@@ -172,13 +169,4 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
                     facets = facetsdat,
                     hierarchies = compact_null(hierdat),
                     names = compact_null(vernames)))
-}
-
-as_many_args <- function(x) {
-  if (!is.null(x)) {
-    names(x) <- rep(deparse(substitute(x)), length(x))
-    return(x)
-  } else {
-    NULL
-  }
 }

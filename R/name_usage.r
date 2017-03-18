@@ -5,7 +5,8 @@
 #' @template occ
 #' @template nameusage
 #' @param return One of data, meta, or all. If data, a data.frame with the
-#'    data. meta returns the metadata for the entire call. all gives all data back in a list.
+#'    data. meta returns the metadata for the entire call. all gives all data
+#'    back in a list.
 #' @return A list of length two. The first element is metadata. The second is
 #' a data.frame
 #' @references \url{http://www.gbif.org/developer/species#nameUsages}
@@ -20,15 +21,15 @@
 #'
 #' Note that \code{data="verbatim"} hasn't been working.
 #'
-#' Options for the data parameter are: 'all', 'verbatim', 'name', 'parents', 'children',
-#' 'related', 'synonyms', 'descriptions','distributions', 'media',
+#' Options for the data parameter are: 'all', 'verbatim', 'name', 'parents',
+#' 'children', 'related', 'synonyms', 'descriptions','distributions', 'media',
 #' 'references', 'speciesProfiles', 'vernacularNames', 'typeSpecimens', 'root'
 #'
-#' This function used to be vectorized with respect to the \code{data} parameter,
-#' where you could pass in multiple values and the function internally loops
-#' over each option making separate requests. This has been removed. You can still
-#' loop over many options for the \code{data} parameter, just use an \code{lapply}
-#' family function, or a for loop, etc.
+#' This function used to be vectorized with respect to the \code{data}
+#' parameter, where you could pass in multiple values and the function
+#' internally loops over each option making separate requests. This has been
+#' removed. You can still loop over many options for the \code{data} parameter,
+#' just use an \code{lapply} family function, or a for loop, etc.
 #' @examples \dontrun{
 #' # A single name usage
 #' name_usage(key=1)
@@ -59,14 +60,24 @@
 #' # Search for a particular language
 #' name_usage(key=3119195, language="FRENCH", data='vernacularNames')
 #'
+#' # Some parameters accept many inputs, treated as OR
+#' name_usage(rank = c("family", "genus"))
+#' name_usage(datasetKey = c("73605f3a-af85-4ade-bbc5-522bfb90d847",
+#'   "d7c60346-44b6-400d-ba27-8d3fbeffc8a5"))
+#' name_usage(uuid = c("73605f3a-af85-4ade-bbc5-522bfb90d847",
+#'   "d7c60346-44b6-400d-ba27-8d3fbeffc8a5"))
+#' name_usage(name = c("Puma", "Quercus"))
+#' name_usage(language = c("spanish", "german"))
+#'
 #' # Pass on httr options
 #' ## here, print progress, notice the progress bar
 #' library('httr')
 #' # res <- name_usage(name='Puma concolor', limit=300, config=progress())
 #' }
 
-name_usage <- function(key=NULL, name=NULL, data='all', language=NULL, datasetKey=NULL, uuid=NULL,
-  sourceId=NULL, rank=NULL, shortname=NULL, start=NULL, limit=100, return='all', ...) {
+name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
+  datasetKey=NULL, uuid=NULL, sourceId=NULL, rank=NULL, shortname=NULL,
+  start=NULL, limit=100, return='all', ...) {
 
   calls <- names(sapply(match.call(), deparse))[-1]
   calls_vec <- c("sourceId") %in% calls
@@ -74,8 +85,15 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL, datasetKe
     stop("Parameters not currently accepted: \n sourceId")
   }
 
-  args <- rgbif_compact(list(language = language, name = name, datasetKey = datasetKey,
-                       rank = rank, offset = start, limit = limit, sourceId = sourceId))
+  rank <- as_many_args(rank)
+  datasetKey <- as_many_args(datasetKey)
+  uuid <- as_many_args(uuid)
+  name <- as_many_args(name)
+  language <- as_many_args(language)
+
+  args <- rgbif_compact(list(offset = start, limit = limit,
+                             sourceId = sourceId))
+  args <- c(args, rank, datasetKey, uuid, name, language)
   data <- match.arg(data,
       choices = c('all', 'verbatim', 'name', 'parents', 'children',
                 'related', 'synonyms', 'descriptions',
@@ -87,13 +105,15 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL, datasetKe
   switch(return,
          meta = get_meta_nu(out),
          data = tibble::as_data_frame(name_usage_parse(out)),
-         all = list(meta = get_meta_nu(out), data = tibble::as_data_frame(name_usage_parse(out, data)))
+         all = list(meta = get_meta_nu(out),
+                    data = tibble::as_data_frame(name_usage_parse(out, data)))
   )
 }
 
 get_meta_nu <- function(x) {
   if (has_meta(x)) {
-    tibble::as_data_frame(data.frame(x[c('offset','limit','endOfRecords')], stringsAsFactors = FALSE))
+    tibble::as_data_frame(data.frame(x[c('offset','limit','endOfRecords')],
+                                     stringsAsFactors = FALSE))
   } else {
     tibble::data_frame()
   }
@@ -130,7 +150,9 @@ name_usage_parse <- function(x, y) {
   many <- "parents"
   if (has_meta(x) || y %in% many) {
     if (y %in% many) {
-      (outtt <- data.table::setDF(data.table::rbindlist(lapply(x, no_zero), use.names = TRUE, fill = TRUE)))
+      (outtt <- data.table::setDF(
+        data.table::rbindlist(
+          lapply(x, no_zero), use.names = TRUE, fill = TRUE)))
     } else {
       (outtt <- data.table::setDF(
         data.table::rbindlist(
