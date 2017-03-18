@@ -72,8 +72,8 @@ for filtering by a nomenclatural status enum}
 
 \item{start}{Record number to start at.}
 
-\item{facet}{A list of facet names used to retrieve the 100 most frequent
-values for a field. Allowed facets are: datasetKey, higherTaxonKey,
+\item{facet}{A vector/list of facet names used to retrieve the 100 most
+frequent values for a field. Allowed facets are: datasetKey, higherTaxonKey,
 rank, status, isExtinct, habitat, and nameType. Additionally threat and
 nomenclaturalStatus are legal values but not yet implemented, so data will
 not yet be returned for them.}
@@ -132,6 +132,20 @@ Faceting: If \code{facet=FALSE} or left to the default (NULL), no faceting
 is done. And therefore, all parameters with facet in their name are
 ignored (facetOnly, facetMincount, facetMultiselect).
 }
+\section{Repeat parmeter inputs}{
+
+Some parameters can tak emany inputs, and treated as 'OR' (e.g., a or b or
+c). The following take many inputs:
+\itemize{
+ \item **rank**
+ \item **higherTaxonKey**
+ \item **status**
+ \item **habitat**
+ \item **nameType**
+ \item **datasetKey**
+}
+}
+
 \examples{
 \dontrun{
 # Look up names like mammalia
@@ -201,7 +215,13 @@ gbif_names(res)
 name_lookup(datasetKey='3f8a1297-3259-4700-91fc-acc4170b27ce')
 
 # Some parameters accept many inputs, treated as OR
+name_lookup(rank = c("family", "genus"))
 name_lookup(higherTaxonKey = c("119", "120", "121", "204"))
+name_lookup(status = c("misapplied", "synonym"))$data
+name_lookup(habitat = c("marine", "terrestrial"))
+name_lookup(nameType = c("cultivar", "doubtful"))
+name_lookup(datasetKey = c("73605f3a-af85-4ade-bbc5-522bfb90d847",
+  "d7c60346-44b6-400d-ba27-8d3fbeffc8a5"))
 
 # Pass on httr options
 library('httr')

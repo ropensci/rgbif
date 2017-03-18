@@ -71,7 +71,13 @@
 #' name_lookup(datasetKey='3f8a1297-3259-4700-91fc-acc4170b27ce')
 #'
 #' # Some parameters accept many inputs, treated as OR
+#' name_lookup(rank = c("family", "genus"))
 #' name_lookup(higherTaxonKey = c("119", "120", "121", "204"))
+#' name_lookup(status = c("misapplied", "synonym"))$data
+#' name_lookup(habitat = c("marine", "terrestrial"))
+#' name_lookup(nameType = c("cultivar", "doubtful"))
+#' name_lookup(datasetKey = c("73605f3a-af85-4ade-bbc5-522bfb90d847",
+#'   "d7c60346-44b6-400d-ba27-8d3fbeffc8a5"))
 #'
 #' # Pass on httr options
 #' library('httr')
@@ -93,19 +99,24 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
     facetbyname <- NULL
   }
 
-  if (!is.null(higherTaxonKey)) {
-    names(higherTaxonKey) <- rep('higherTaxonKey', length(higherTaxonKey))
-  }
+  rank <- as_many_args(rank)
+  higherTaxonKey <- as_many_args(higherTaxonKey)
+  status <- as_many_args(status)
+  habitat <- as_many_args(habitat)
+  nameType <- as_many_args(nameType)
+  datasetKey <- as_many_args(datasetKey)
+  # if (!is.null(higherTaxonKey)) {
+  #   names(higherTaxonKey) <- rep('higherTaxonKey', length(higherTaxonKey))
+  # }
 
   url <- paste0(gbif_base(), '/species/search')
-  args <- rgbif_compact(list(q=query, rank=rank,
-            status=status, isExtinct=as_log(isExtinct), habitat=habitat,
-            nameType=nameType, datasetKey=datasetKey,
+  args <- rgbif_compact(list(q=query, isExtinct=as_log(isExtinct),
             nomenclaturalStatus=nomenclaturalStatus, limit=limit, offset=start,
             facetMincount=facetMincount,
             facetMultiselect=as_log(facetMultiselect), hl=as_log(hl),
             type=type))
-  args <- c(args, facetbyname, higherTaxonKey)
+  args <- c(args, facetbyname, rank, higherTaxonKey, status,
+            habitat, nameType, datasetKey)
   tt <- gbif_GET(url, args, FALSE, ...)
 
   # metadata
@@ -161,4 +172,13 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
                     facets = facetsdat,
                     hierarchies = compact_null(hierdat),
                     names = compact_null(vernames)))
+}
+
+as_many_args <- function(x) {
+  if (!is.null(x)) {
+    names(x) <- rep(deparse(substitute(x)), length(x))
+    return(x)
+  } else {
+    NULL
+  }
 }

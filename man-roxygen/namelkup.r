@@ -45,15 +45,15 @@
 #' @param datasetKey Filters by the dataset's key (a uuid)
 #' @param nomenclaturalStatus	Not yet implemented, but will eventually allow
 #' for filtering by a nomenclatural status enum
-#' @param facet	A list of facet names used to retrieve the 100 most frequent
-#' values for a field. Allowed facets are: datasetKey, higherTaxonKey,
+#' @param facet	A vector/list of facet names used to retrieve the 100 most
+#' frequent values for a field. Allowed facets are: datasetKey, higherTaxonKey,
 #' rank, status, isExtinct, habitat, and nameType. Additionally threat and
 #' nomenclaturalStatus are legal values but not yet implemented, so data will
 #' not yet be returned for them.
 #' @param facetMincount Used in combination with the facet parameter. Set
-#'    facetMincount={#} to exclude facets with a count less than {#}, e.g.
-#'    http://bit.ly/1bMdByP only shows the type value 'ACCEPTED' because the
-#'    other statuses have counts less than 7,000,000
+#' facetMincount={#} to exclude facets with a count less than {#}, e.g.
+#' http://bit.ly/1bMdByP only shows the type value 'ACCEPTED' because the
+#' other statuses have counts less than 7,000,000
 #' @param facetMultiselect (logical) Used in combination with the facet
 #' parameter. Set \code{facetMultiselect=TRUE} to still return counts for
 #' values that are not currently filtered, e.g. http://bit.ly/19YLXPO still
@@ -85,9 +85,11 @@
 #' element. hierarchies and names slots are named by the GBIF key, which
 #' matches the first column of the data.frame in the data slot. So if you
 #' wanted to combine those somehow, you could easily do so using the key.
+#'
 #' @return A list of length three. The first element is metadata. The second is
 #' either a data.frame (verbose=FALSE, default) or a list (verbose=TRUE),
 #' and the third element is the facet data.
+#'
 #' @description
 #' This service uses fuzzy lookup so that you can put in partial names and
 #' you should get back those things that match. See examples below.
@@ -95,3 +97,15 @@
 #' Faceting: If \code{facet=FALSE} or left to the default (NULL), no faceting
 #' is done. And therefore, all parameters with facet in their name are
 #' ignored (facetOnly, facetMincount, facetMultiselect).
+#'
+#' @section Repeat parmeter inputs:
+#' Some parameters can tak emany inputs, and treated as 'OR' (e.g., a or b or
+#' c). The following take many inputs:
+#' \itemize{
+#'  \item **rank**
+#'  \item **higherTaxonKey**
+#'  \item **status**
+#'  \item **habitat**
+#'  \item **nameType**
+#'  \item **datasetKey**
+#' }
