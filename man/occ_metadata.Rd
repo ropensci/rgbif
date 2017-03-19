@@ -2,15 +2,16 @@
 % Please edit documentation in R/occ_metadata.r
 \name{occ_metadata}
 \alias{occ_metadata}
-\title{Search for catalog numbers, collection codes, collector names, and institution
-codes.}
+\title{Search for catalog numbers, collection codes, collector names, and
+institution codes.}
 \usage{
 occ_metadata(type = "catalogNumber", q = NULL, limit = 5, pretty = TRUE,
   ...)
 }
 \arguments{
-\item{type}{Type of data, one of catalogNumber, collectionCode, recordedBy, or
-institutionCode. Unique partial strings work too, like 'cat' for catalogNumber}
+\item{type}{Type of data, one of catalogNumber, collectionCode, recordedBy,
+or institutionCode. Unique partial strings work too, like 'cat' for
+catalogNumber}
 
 \item{q}{Search term}
 
@@ -19,13 +20,13 @@ institutionCode. Unique partial strings work too, like 'cat' for catalogNumber}
 \item{pretty}{Pretty as true (Default) uses cat to print data, FALSE gives
 character strings.}
 
-\item{...}{Further named parameters, such as \code{query}, \code{path}, etc, passed on to
-\code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters
-will be combined with \code{\link[httr]{config}}.}
+\item{...}{Further named parameters, such as \code{query}, \code{path}, etc,
+passed on to \code{\link[httr]{modify_url}} within \code{\link[httr]{GET}}
+call. Unnamed parameters will be combined with \code{\link[httr]{config}}.}
 }
 \description{
-Search for catalog numbers, collection codes, collector names, and institution
-codes.
+Search for catalog numbers, collection codes, collector names, and
+institution codes.
 }
 \examples{
 \dontrun{
