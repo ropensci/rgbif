@@ -5,11 +5,12 @@
 #' @template occ
 #' @template dataset
 #'
-#' @param subtype NOT YET IMPLEMENTED. Will allow filtering of datasets by their
-#'    dataset subtypes, DC or EML.
-#' @param continent Not yet implemented, but will eventually allow filtering datasets
-#'    by their continent(s) as given in our Continent enum.
-#' @param description Return descriptions only (TRUE) or all data (FALSE, default)
+#' @param subtype NOT YET IMPLEMENTED. Will allow filtering of datasets by
+#' their dataset subtypes, DC or EML.
+#' @param continent Not yet implemented, but will eventually allow filtering
+#' datasets by their continent(s) as given in our Continent enum.
+#' @param description Return descriptions only (TRUE) or all data (FALSE,
+#' default)
 #'
 #' @references \url{http://www.gbif.org/developer/registry#datasetSearch}
 #'
@@ -45,21 +46,37 @@
 #' # Search by decade
 #' dataset_suggest(decade=1980, limit = 30)
 #'
+#' # Some parameters accept many inputs, treated as OR
+#' dataset_suggest(type = c("metadata", "checklist"))
+#' dataset_suggest(keyword = c("fern", "algae"))
+#' dataset_suggest(publishingOrg = c("e2e717bf-551a-4917-bdc9-4fa0f342c530",
+#'   "90fd6680-349f-11d8-aa2d-b8a03c50a862"))
+#' dataset_suggest(hostingOrg = c("c5f7ef70-e233-11d9-a4d6-b8a03c50a862",
+#'   "c5e4331-7f2f-4a8d-aa56-81ece7014fc8"))
+#' dataset_suggest(publishingCountry = c("DE", "NZ"))
+#' dataset_suggest(decade = c(1910, 1930))
+#'
 #' # httr options
 #' library('httr')
 #' dataset_suggest(type="OCCURRENCE", limit = 2, config=verbose())
 #' }
 
-dataset_suggest <- function(query = NULL, country = NULL, type = NULL, subtype = NULL,
-  keyword = NULL, owningOrg = NULL, publishingOrg = NULL, hostingOrg = NULL,
-  publishingCountry = NULL, decade = NULL, continent = NULL, limit=100, start=NULL,
-  pretty=FALSE, description=FALSE, ...)
-{
+dataset_suggest <- function(query = NULL, country = NULL, type = NULL,
+  subtype = NULL, keyword = NULL, owningOrg = NULL, publishingOrg = NULL,
+  hostingOrg = NULL, publishingCountry = NULL, decade = NULL, continent = NULL,
+  limit=100, start=NULL, pretty=FALSE, description=FALSE, ...) {
+
+  type <- as_many_args(type)
+  keyword <- as_many_args(keyword)
+  publishingOrg <- as_many_args(publishingOrg)
+  hostingOrg <- as_many_args(hostingOrg)
+  publishingCountry <- as_many_args(publishingCountry)
+  decade <- as_many_args(decade)
+
   url <- paste0(gbif_base(), '/dataset/suggest')
-  args <- rgbif_compact(list(q=query,type=type,keyword=keyword,owningOrg=owningOrg,
-                       publishingOrg=publishingOrg,
-                       hostingOrg=hostingOrg,publishingCountry=publishingCountry,
-                       decade=decade,limit=limit,offset=start))
+  args <- rgbif_compact(list(q = query, limit = limit, offset = start))
+  args <- c(args, type, keyword, publishingOrg, hostingOrg,
+            publishingCountry, decade)
   tt <- gbif_GET(url, args, FALSE, ...)
 
   if (description) {
@@ -70,7 +87,8 @@ dataset_suggest <- function(query = NULL, country = NULL, type = NULL, subtype =
     if (length(tt) == 1) {
       out <- parse_suggest(x = tt$results)
     } else {
-      out <- tibble::as_data_frame(do.call(rbind_fill, lapply(tt, parse_suggest)))
+      out <- tibble::as_data_frame(do.call(rbind_fill,
+                                           lapply(tt, parse_suggest)))
     }
   }
 

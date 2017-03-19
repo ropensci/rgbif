@@ -3,9 +3,10 @@
 #' @export
 #'
 #' @param uuid (character) One or more dataset UUIDs. See examples.
-#' @param ... Further named parameters, such as \code{query}, \code{path}, etc, passed on to
-#' \code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will
-#' be combined with \code{\link[httr]{config}}.
+#' @param ... Further named parameters, such as \code{query}, \code{path},
+#' etc, passed on to
+#' \code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call.
+#' Unnamed parameters will be combined with \code{\link[httr]{config}}.
 #'
 #' @references \url{http://www.gbif.org/developer/registry#datasetMetrics}
 #'
@@ -16,7 +17,8 @@
 #'    '66dd0960-2d7d-46ee-a491-87b9adcfe7b1'))
 #'
 #' library("httr")
-#' dataset_metrics(uuid='66dd0960-2d7d-46ee-a491-87b9adcfe7b1', config=verbose())
+#' dataset_metrics(uuid='66dd0960-2d7d-46ee-a491-87b9adcfe7b1',
+#'   config=verbose())
 #' }
 
 dataset_metrics <- function(uuid, ...) {

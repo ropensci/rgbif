@@ -21,8 +21,8 @@ isocodes$gbif_name, e.g. country=CANADA.}
 \item{type}{Type of dataset, options include occurrene, metadata, checklist,
 sampling_event (http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/DatasetType.html)}
 
-\item{subtype}{NOT YET IMPLEMENTED. Will allow filtering of datasets by their
-dataset subtypes, DC or EML.}
+\item{subtype}{NOT YET IMPLEMENTED. Will allow filtering of datasets by
+their dataset subtypes, DC or EML.}
 
 \item{keyword}{Keyword to search by. Datasets can be tagged by keywords,
 which you can search on. The search is done on the merged collection of
@@ -45,8 +45,8 @@ broken down to decades. Decades are given as a full year, e.g. 1880, 1960,
 as those that cover the entire decade or more. Facet by decade to get the
 break down, e.g. /search?facet=DECADE&facet_only=true (see example below)}
 
-\item{continent}{Not yet implemented, but will eventually allow filtering datasets
-by their continent(s) as given in our Continent enum.}
+\item{continent}{Not yet implemented, but will eventually allow filtering
+datasets by their continent(s) as given in our Continent enum.}
 
 \item{limit}{Number of records to return. Default: 100. Maximum: 1000.}
 
@@ -56,7 +56,8 @@ page through results.}
 \item{pretty}{Print informative metadata using \code{\link{cat}}. Not easy
 to manipulate output though.}
 
-\item{description}{Return descriptions only (TRUE) or all data (FALSE, default)}
+\item{description}{Return descriptions only (TRUE) or all data (FALSE,
+default)}
 
 \item{...}{Further named parameters, such as \code{query}, \code{path}, etc, passed on to
 \code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will
@@ -115,6 +116,16 @@ dataset_suggest(country="US", limit = 25)
 
 # Search by decade
 dataset_suggest(decade=1980, limit = 30)
+
+# Some parameters accept many inputs, treated as OR
+dataset_suggest(type = c("metadata", "checklist"))
+dataset_suggest(keyword = c("fern", "algae"))
+dataset_suggest(publishingOrg = c("e2e717bf-551a-4917-bdc9-4fa0f342c530",
+  "90fd6680-349f-11d8-aa2d-b8a03c50a862"))
+dataset_suggest(hostingOrg = c("c5f7ef70-e233-11d9-a4d6-b8a03c50a862",
+  "c5e4331-7f2f-4a8d-aa56-81ece7014fc8"))
+dataset_suggest(publishingCountry = c("DE", "NZ"))
+dataset_suggest(decade = c(1910, 1930))
 
 # httr options
 library('httr')
