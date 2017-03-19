@@ -18,3 +18,14 @@
 #' @param sourceId (numeric) Filters by the source identifier. Not used
 #' right now.
 #' @param shortname (character) A short name..need more info on this?
+#'
+#' @section Repeat parmeter inputs:
+#' Some parameters can tak emany inputs, and treated as 'OR' (e.g., a or b or
+#' c). The following take many inputs:
+#' \itemize{
+#'  \item **rank**
+#'  \item **datasetKey**
+#'  \item **uuid**
+#'  \item **name**
+#'  \item **langugae**
+#' }

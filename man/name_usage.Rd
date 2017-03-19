@@ -79,6 +79,19 @@ internally loops over each option making separate requests. This has been
 removed. You can still loop over many options for the \code{data} parameter,
 just use an \code{lapply} family function, or a for loop, etc.
 }
+\section{Repeat parmeter inputs}{
+
+Some parameters can tak emany inputs, and treated as 'OR' (e.g., a or b or
+c). The following take many inputs:
+\itemize{
+ \item **rank**
+ \item **datasetKey**
+ \item **uuid**
+ \item **name**
+ \item **langugae**
+}
+}
+
 \examples{
 \dontrun{
 # A single name usage
