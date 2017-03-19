@@ -11,36 +11,39 @@ dataset_suggest(query = NULL, country = NULL, type = NULL,
   pretty = FALSE, description = FALSE, ...)
 }
 \arguments{
-\item{query}{Query term(s) for full text search.  The value for this parameter
-can be a simple word or a phrase. Wildcards can be added to the simple word
-parameters only, e.g. q=*puma*}
+\item{query}{Query term(s) for full text search.  The value for this
+parameter can be a simple word or a phrase. Wildcards can be added to the
+simple word parameters only, e.g. q=*puma*}
 
-\item{country}{NOT YET IMPLEMENTED. Filters by country as given in isocodes$gbif_name,
-e.g. country=CANADA.}
+\item{country}{NOT YET IMPLEMENTED. Filters by country as given in
+isocodes$gbif_name, e.g. country=CANADA.}
 
-\item{type}{Type of dataset, options include OCCURRENCE, etc.}
+\item{type}{Type of dataset, options include occurrene, metadata, checklist,
+sampling_event (http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/DatasetType.html)}
 
 \item{subtype}{NOT YET IMPLEMENTED. Will allow filtering of datasets by their
 dataset subtypes, DC or EML.}
 
-\item{keyword}{Keyword to search by. Datasets can be tagged by keywords, which
-you can search on. The search is done on the merged collection of tags, the
-dataset keywordCollections and temporalCoverages. SEEMS TO NOT BE WORKING
-ANYMORE AS OF 2016-09-02.}
+\item{keyword}{Keyword to search by. Datasets can be tagged by keywords,
+which you can search on. The search is done on the merged collection of
+tags, the dataset keywordCollections and temporalCoverages.}
 
-\item{owningOrg}{Owning organization. A uuid string. See \code{\link{organizations}}}
+\item{owningOrg}{Owning organization. DEFUNCT.}
 
-\item{publishingOrg}{Publishing organization. A uuid string. See \code{\link{organizations}}}
+\item{publishingOrg}{Publishing organization. A uuid string. See
+\code{\link{organizations}}}
 
-\item{hostingOrg}{Hosting organization. A uuid string. See \code{\link{organizations}}}
+\item{hostingOrg}{Hosting organization. A uuid string. See
+\code{\link{organizations}}}
 
-\item{publishingCountry}{Publishing country. See options at isocodes$gbif_name}
+\item{publishingCountry}{Publishing country. See options at
+isocodes$gbif_name}
 
 \item{decade}{Decade, e.g., 1980. Filters datasets by their temporal coverage
-broken down to decades. Decades are given as a full year, e.g. 1880, 1960, 2000,
-etc, and will return datasets wholly contained in the decade as well as those
-that cover the entire decade or more. Facet by decade to get the break down,
-e.g. /search?facet=DECADE&facet_only=true (see example below)}
+broken down to decades. Decades are given as a full year, e.g. 1880, 1960,
+2000, etc, and will return datasets wholly contained in the decade as well
+as those that cover the entire decade or more. Facet by decade to get the
+break down, e.g. /search?facet=DECADE&facet_only=true (see example below)}
 
 \item{continent}{Not yet implemented, but will eventually allow filtering datasets
 by their continent(s) as given in our Continent enum.}
@@ -50,8 +53,8 @@ by their continent(s) as given in our Continent enum.}
 \item{start}{Record number to start at. Default: 0. Use in combination with \code{limit} to
 page through results.}
 
-\item{pretty}{Print informative metadata using \code{\link{cat}}. Not easy to
-manipulate output though.}
+\item{pretty}{Print informative metadata using \code{\link{cat}}. Not easy
+to manipulate output though.}
 
 \item{description}{Return descriptions only (TRUE) or all data (FALSE, default)}
 
@@ -60,11 +63,26 @@ manipulate output though.}
 be combined with \code{\link[httr]{config}}.}
 }
 \value{
-A data.frame, list, or message printed to console (using pretty=TRUE).
+A data.frame, list, or message printed to console (using
+pretty=TRUE).
 }
 \description{
 Suggest datasets in GBIF.
 }
+\section{Repeat parmeter inputs}{
+
+Some parameters can tak emany inputs, and treated as 'OR' (e.g., a or b or
+c). The following take many inputs:
+\itemize{
+ \item **type**
+ \item **keyword**
+ \item **publishingOrg**
+ \item **hostingOrg**
+ \item **publishingCountry**
+ \item **decade**
+}
+}
+
 \examples{
 \dontrun{
 # Suggest datasets of type "OCCURRENCE".
