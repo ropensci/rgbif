@@ -29,7 +29,7 @@ test_that("occ_facet paging works", {
   )
 
   expect_is(aa, "list")
-  expect_equal(names(aa), c("basisOfRecord", "country", "hasCoordinate"))
+  expect_equal(sort(names(aa)), c("basisOfRecord", "country", "hasCoordinate"))
   expect_named(aa$country, c('name', 'count'))
   expect_named(aa$basisOfRecord, c('name', 'count'))
   expect_named(aa$hasCoordinate, c('name', 'count'))
