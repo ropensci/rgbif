@@ -12,10 +12,11 @@ networks(data = "all", uuid = NULL, query = NULL, identifier = NULL,
 'identifier', 'tag', 'machineTag', 'comment', 'constituents', or the
 special 'all'. Default: \code{'all'}}
 
-\item{uuid}{UUID of the data network provider. This must be specified if data
-is anything other than 'all'. Only 1 can be passed in}
+\item{uuid}{UUID of the data network provider. This must be specified if
+data is anything other than 'all'. Only 1 can be passed in}
 
-\item{query}{Query nodes. Only used when \code{data='all'}. Ignored otherwise.}
+\item{query}{Query nodes. Only used when \code{data='all'}. Ignored
+otherwise.}
 
 \item{identifier}{The value for this parameter can be a simple string or integer,
 e.g. identifier=120. This parameter doesn't seem to work right now.}
@@ -29,9 +30,10 @@ work right now.}
 \item{start}{Record number to start at. Default: 0. Use in combination with \code{limit} to
 page through results.}
 
-\item{...}{Further named parameters, such as \code{query}, \code{path}, etc, passed on to
-\code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will
-be combined with \code{\link[httr]{config}}.}
+\item{...}{Further named parameters, such as \code{query}, \code{path},
+etc, passed on to \code{\link[httr]{modify_url}} within
+\code{\link[httr]{GET}} call. Unnamed parameters will be combined
+with \code{\link[httr]{config}}.}
 }
 \description{
 Networks metadata.
@@ -59,7 +61,8 @@ identifierType options:
 \dontrun{
 networks(limit=5)
 networks(uuid='7ddd1f14-a2b0-4838-95b0-785846f656f3')
-uuids <- c('7ddd1f14-a2b0-4838-95b0-785846f656f3', '07b013b4-a2da-47a1-a8ef-df685912fbd6')
+uuids <- c('7ddd1f14-a2b0-4838-95b0-785846f656f3',
+  '07b013b4-a2da-47a1-a8ef-df685912fbd6')
 lapply(uuids, function(x) networks(uuid = x))
 networks(data='endpoint', uuid='16ab5405-6c94-4189-ac71-16ca3b753df7')
 

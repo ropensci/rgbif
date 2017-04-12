@@ -47,9 +47,10 @@ page through results.}
 data. meta returns the metadata for the entire call. all gives all data
 back in a list.}
 
-\item{...}{Further named parameters, such as \code{query}, \code{path}, etc, passed on to
-\code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will
-be combined with \code{\link[httr]{config}}.}
+\item{...}{Further named parameters, such as \code{query}, \code{path},
+etc, passed on to \code{\link[httr]{modify_url}} within
+\code{\link[httr]{GET}} call. Unnamed parameters will be combined
+with \code{\link[httr]{config}}.}
 }
 \value{
 A list of length two. The first element is metadata. The second is

@@ -187,9 +187,10 @@ parameter}
 the value passed to the \code{search} parameter. IMPORTANT: This only checks
 the input to the \code{search} parameter, and no others. Default: \code{FALSE}}
 
-\item{...}{Further named parameters, such as \code{query}, \code{path}, etc, passed on to
-\code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will
-be combined with \code{\link[httr]{config}}.}
+\item{...}{Further named parameters, such as \code{query}, \code{path},
+etc, passed on to \code{\link[httr]{modify_url}} within
+\code{\link[httr]{GET}} call. Unnamed parameters will be combined
+with \code{\link[httr]{config}}.}
 }
 \value{
 An object of class \code{gbif_data}, which is a S3 class list, with

@@ -68,9 +68,10 @@ to manipulate output though.}
 \item{return}{What to return. One of meta, descriptions, data, facets,
 or all (Default).}
 
-\item{...}{Further named parameters, such as \code{query}, \code{path}, etc, passed on to
-\code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will
-be combined with \code{\link[httr]{config}}.}
+\item{...}{Further named parameters, such as \code{query}, \code{path},
+etc, passed on to \code{\link[httr]{modify_url}} within
+\code{\link[httr]{GET}} call. Unnamed parameters will be combined
+with \code{\link[httr]{config}}.}
 }
 \value{
 A data.frame, list, or message printed to console (using

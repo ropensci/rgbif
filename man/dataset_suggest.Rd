@@ -59,9 +59,10 @@ to manipulate output though.}
 \item{description}{Return descriptions only (TRUE) or all data (FALSE,
 default)}
 
-\item{...}{Further named parameters, such as \code{query}, \code{path}, etc, passed on to
-\code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will
-be combined with \code{\link[httr]{config}}.}
+\item{...}{Further named parameters, such as \code{query}, \code{path},
+etc, passed on to \code{\link[httr]{modify_url}} within
+\code{\link[httr]{GET}} call. Unnamed parameters will be combined
+with \code{\link[httr]{config}}.}
 }
 \value{
 A data.frame, list, or message printed to console (using

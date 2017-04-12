@@ -23,7 +23,8 @@
 #' }
 occ_spellcheck <- function(search, ...) {
   url <- paste0(gbif_base(), '/occurrence/search')
-  tt <- gbif_GET2(url, list(q = search, spellCheck = "true", limit = 0), TRUE, ...)
+  tt <- gbif_GET2(url, list(q = search, spellCheck = "true", limit = 0),
+                  TRUE, ...)
   if (!"suggestions" %in% names(tt$spellCheckResponse)) {
     tt$spellCheckResponse$correctlySpelled
   } else {
@@ -40,7 +41,9 @@ gbif_GET2 <- function(url, args, parse=FALSE, ...){
     if (grepl("html", mssg)) {
       stop("500 - Server error", call. = FALSE)
     }
-    if (length(mssg) == 0 || nchar(mssg) == 0) mssg <- http_status(temp)$message
+    if (length(mssg) == 0 || nchar(mssg) == 0) {
+      mssg <- http_status(temp)$message
+    }
     if (temp$status_code == 503) mssg <- http_status(temp)$message
     stop(mssg, call. = FALSE)
   }

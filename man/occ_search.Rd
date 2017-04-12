@@ -214,9 +214,10 @@ All fields can be faceted on except for last "lastInterpreted",
 You can do facet searches alongside searching occurrence data, and
 return both, or only return facets, or only occurrence data, etc.}
 
-\item{...}{Further named parameters, such as \code{query}, \code{path}, etc, passed on to
-\code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will
-be combined with \code{\link[httr]{config}}.}
+\item{...}{Further named parameters, such as \code{query}, \code{path},
+etc, passed on to \code{\link[httr]{modify_url}} within
+\code{\link[httr]{GET}} call. Unnamed parameters will be combined
+with \code{\link[httr]{config}}.}
 }
 \value{
 An object of class \code{gbif}, which is a S3 class list, with
