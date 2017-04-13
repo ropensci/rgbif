@@ -24,7 +24,7 @@ gbifparser <- function(input, fields='minimal'){
     h1 <- c('kingdom','phylum','class','order','family','genus','species')
     h2 <- c('kingdomKey','phylumKey','classKey','orderKey','familyKey','genusKey','speciesKey')
     hier <- get_hier(x, h1, h2)
-    if (nrow(na.omit(hier)) == 0){
+    if (nrow(stats::na.omit(hier)) == 0){
       if (!is.null(x[['species']])){
         usename <- x[['species']]
       } else if(!is.null(x[['scientificName']])) {

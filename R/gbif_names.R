@@ -29,7 +29,7 @@ gbif_names <- function(input, output = NULL, browse = TRUE) {
   rr <- gsub("&lt;em class=&quot;gbifHl&quot;&gt;", "<b>", rr)
   rr <- gsub("&lt;/em&gt;", "</b>", rr)
   write(rr, file = outfile)
-  if (browse) browseURL(outfile) else outfile
+  if (browse) utils::browseURL(outfile) else outfile
 }
 
 gn_dirhandler <- function(x, which="file"){

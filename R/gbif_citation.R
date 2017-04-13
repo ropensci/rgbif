@@ -100,7 +100,7 @@ gbif_citation.numeric <- function(x) {
 gbif_citation.occ_download_get <- function(x) {
   path <- x[1]
   tmpdir <- file.path(tempdir(), x)
-  unzip(path, exdir = tmpdir, overwrite = TRUE)
+  utils::unzip(path, exdir = tmpdir, overwrite = TRUE)
   on.exit(unlink(tmpdir))
   dsets <- list.files(file.path(tmpdir, "dataset"), full.names = TRUE)
   lapply(dsets, get_cit_rights)

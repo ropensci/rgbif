@@ -31,8 +31,6 @@
 #'   with web based maps.
 #' }
 #'
-#' @importFrom utils browseURL head unzip packageVersion
-#' @importFrom stats na.omit complete.cases
 #' @importFrom data.table rbindlist fread setDF
 #' @importFrom ggplot2 geom_point position_jitter map_data ggplot
 #' geom_polygon aes scale_color_brewer labs theme_bw theme guides

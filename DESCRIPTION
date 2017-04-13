@@ -22,8 +22,6 @@ LazyLoad: true
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
 Imports:
-    utils,
-    stats,
     xml2,
     ggplot2,
     httr (>= 1.0.0),

@@ -33,7 +33,8 @@ gbifmap <- function(input = NULL, mapdatabase = "world", region = ".",
                     geom = geom_point, jitter = NULL, customize = NULL) {
 
   check_for_a_pkg("maps")
-  tomap <- input[complete.cases(input$decimalLatitude, input$decimalLatitude), ]
+  tomap <- input[stats::complete.cases(input$decimalLatitude,
+                                       input$decimalLatitude), ]
   tomap <- tomap[!tomap$decimalLongitude == 0 & !tomap$decimalLatitude == 0, ]
   tomap <- tomap[-(which(tomap$decimalLatitude <= 90 ||
                            tomap$decimalLongitude <= 180)), ]

@@ -45,7 +45,7 @@ occ_download_import <- function(x=NULL, key=NULL, path=".", ...) {
   }
   if (!file.exists(path)) stop("file does not exist", call. = FALSE)
   tmpdir <- file.path(tempdir(), "gbifdownload", key)
-  unzip(path, exdir = tmpdir, overwrite = TRUE)
+  utils::unzip(path, exdir = tmpdir, overwrite = TRUE)
   xx <- list.files(tmpdir)
   if (any(grepl("occurrence.txt", xx))) {
     tpath <- "occurrence.txt"

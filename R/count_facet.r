@@ -82,7 +82,7 @@ count_facet <- function(keys = NULL, by = 'country', countries = 10,
   }
 
   # remove NAs (which were caused by errors in country names)
-  df <- na.omit(df)
+  df <- stats::na.omit(df)
 
   if (removezeros) {
     df[!df$V1 == 0, ]

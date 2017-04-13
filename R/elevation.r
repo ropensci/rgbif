@@ -114,7 +114,7 @@ elevation <- function(input=NULL, latitude=NULL, longitude=NULL, latlong=NULL,
 
 check_latlon <- function(x) {
   # missing values
-  not_complete <- x[!complete.cases(x$latitude, x$longitude), ]
+  not_complete <- x[!stats::complete.cases(x$latitude, x$longitude), ]
   if (NROW(not_complete) > 0) {
     stop("Input data has some missing values\n       No lat/long pairs can have missing data",
          call. = FALSE)

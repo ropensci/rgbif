@@ -32,7 +32,7 @@ gbif_photos <- function(input, output = NULL, which='table', browse = TRUE) {
     ff <- paste(readLines(filepath), collapse = "\n")
     rr <- whisker.render(ff)
     write(rr, file = outfile)
-    if (browse) browseURL(outfile, browser = pick_browser()) else outfile
+    if (browse) utils::browseURL(outfile, browser = pick_browser()) else outfile
   } else {
     if (length(input) > 20) {
       outdir <- dirhandler(output, 'dir')
@@ -52,7 +52,7 @@ gbif_photos <- function(input, output = NULL, which='table', browse = TRUE) {
         write(rendered, file = filenames[[i]])
       }
 
-      if (browse) browseURL(filenames[[1]], browser = pick_browser()) else filenames[[1]]
+      if (browse) utils::browseURL(filenames[[1]], browser = pick_browser()) else filenames[[1]]
     } else {
       outfile <- dirhandler(output)
       outdir <- dirname(outfile)
@@ -62,7 +62,7 @@ gbif_photos <- function(input, output = NULL, which='table', browse = TRUE) {
       rendered <- whisker.render(template)
       rendered <- paste0(rendered, footer)
       write(rendered, file = outfile)
-      if (browse) browseURL(outfile, browser = pick_browser()) else outfile
+      if (browse) utils::browseURL(outfile, browser = pick_browser()) else outfile
     }
   }
 }
