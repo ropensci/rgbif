@@ -83,7 +83,7 @@ test_that("name_usage synonyms route works", {
   expect_is(rte5a, "list")
   expect_is(rte5$meta, "data.frame")
   expect_is(rte5a$meta, "data.frame")
-  expect_equal(NROW(rte5$data), 0)
+  expect_equal(NROW(rte5$data), 1)
   expect_is(rte5a$data, "data.frame")
 })
 

@@ -14,24 +14,27 @@ name_usage(key = NULL, name = NULL, data = "all", language = NULL,
 \item{name}{(character) Filters by a case insensitive, canonical namestring,
 e.g. 'Puma concolor'}
 
-\item{data}{(character) Specify an option to select what data is returned. See Description
-below.}
+\item{data}{(character) Specify an option to select what data is returned.
+See Description below.}
 
 \item{language}{(character) Language, default is english}
 
 \item{datasetKey}{(character) Filters by the dataset's key (a uuid)}
 
-\item{uuid}{(character) A uuid for a dataset. Should give exact same results as datasetKey.}
+\item{uuid}{(character) A uuid for a dataset. Should give exact same
+results as datasetKey.}
 
-\item{sourceId}{(numeric) Filters by the source identifier. Not used right now.}
+\item{sourceId}{(numeric) Filters by the source identifier. Not used
+right now.}
 
-\item{rank}{(character) Taxonomic rank. Filters by taxonomic rank as one of:
-  CLASS, CULTIVAR, CULTIVAR_GROUP, DOMAIN, FAMILY, FORM, GENUS, INFORMAL,
-  INFRAGENERIC_NAME, INFRAORDER, INFRASPECIFIC_NAME, INFRASUBSPECIFIC_NAME,
-KINGDOM, ORDER, PHYLUM, SECTION, SERIES, SPECIES, STRAIN, SUBCLASS, SUBFAMILY,
-SUBFORM, SUBGENUS, SUBKINGDOM, SUBORDER, SUBPHYLUM, SUBSECTION, SUBSERIES,
-SUBSPECIES, SUBTRIBE, SUBVARIETY, SUPERCLASS, SUPERFAMILY, SUPERORDER,
-SUPERPHYLUM, SUPRAGENERIC_NAME, TRIBE, UNRANKED, VARIETY}
+\item{rank}{(character) Taxonomic rank. Filters by taxonomic rank as
+one of: CLASS, CULTIVAR, CULTIVAR_GROUP, DOMAIN, FAMILY, FORM, GENUS,
+INFORMAL, INFRAGENERIC_NAME, INFRAORDER, INFRASPECIFIC_NAME,
+INFRASUBSPECIFIC_NAME, KINGDOM, ORDER, PHYLUM, SECTION, SERIES, SPECIES,
+STRAIN, SUBCLASS, SUBFAMILY, SUBFORM, SUBGENUS, SUBKINGDOM, SUBORDER,
+SUBPHYLUM, SUBSECTION, SUBSERIES, SUBSPECIES, SUBTRIBE, SUBVARIETY,
+SUPERCLASS, SUPERFAMILY, SUPERORDER, SUPERPHYLUM, SUPRAGENERIC_NAME,
+TRIBE, UNRANKED, VARIETY}
 
 \item{shortname}{(character) A short name..need more info on this?}
 
@@ -41,11 +44,13 @@ page through results.}
 \item{limit}{Number of records to return. Default: 100. Maximum: 1000.}
 
 \item{return}{One of data, meta, or all. If data, a data.frame with the
-data. meta returns the metadata for the entire call. all gives all data back in a list.}
+data. meta returns the metadata for the entire call. all gives all data
+back in a list.}
 
-\item{...}{Further named parameters, such as \code{query}, \code{path}, etc, passed on to
-\code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will
-be combined with \code{\link[httr]{config}}.}
+\item{...}{Further named parameters, such as \code{query}, \code{path},
+etc, passed on to \code{\link[httr]{modify_url}} within
+\code{\link[httr]{GET}} call. Unnamed parameters will be combined
+with \code{\link[httr]{config}}.}
 }
 \value{
 A list of length two. The first element is metadata. The second is
@@ -65,16 +70,29 @@ endpoint that allows name searches (see examples below).
 
 Note that \code{data="verbatim"} hasn't been working.
 
-Options for the data parameter are: 'all', 'verbatim', 'name', 'parents', 'children',
-'related', 'synonyms', 'descriptions','distributions', 'media',
+Options for the data parameter are: 'all', 'verbatim', 'name', 'parents',
+'children', 'related', 'synonyms', 'descriptions','distributions', 'media',
 'references', 'speciesProfiles', 'vernacularNames', 'typeSpecimens', 'root'
 
-This function used to be vectorized with respect to the \code{data} parameter,
-where you could pass in multiple values and the function internally loops
-over each option making separate requests. This has been removed. You can still
-loop over many options for the \code{data} parameter, just use an \code{lapply}
-family function, or a for loop, etc.
+This function used to be vectorized with respect to the \code{data}
+parameter, where you could pass in multiple values and the function
+internally loops over each option making separate requests. This has been
+removed. You can still loop over many options for the \code{data} parameter,
+just use an \code{lapply} family function, or a for loop, etc.
 }
+\section{Repeat parmeter inputs}{
+
+Some parameters can tak emany inputs, and treated as 'OR' (e.g., a or b or
+c). The following take many inputs:
+\itemize{
+ \item **rank**
+ \item **datasetKey**
+ \item **uuid**
+ \item **name**
+ \item **langugae**
+}
+}
+
 \examples{
 \dontrun{
 # A single name usage
@@ -106,6 +124,15 @@ name_usage(datasetKey="d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
 # Search for a particular language
 name_usage(key=3119195, language="FRENCH", data='vernacularNames')
 
+# Some parameters accept many inputs, treated as OR
+name_usage(rank = c("family", "genus"))
+name_usage(datasetKey = c("73605f3a-af85-4ade-bbc5-522bfb90d847",
+  "d7c60346-44b6-400d-ba27-8d3fbeffc8a5"))
+name_usage(uuid = c("73605f3a-af85-4ade-bbc5-522bfb90d847",
+  "d7c60346-44b6-400d-ba27-8d3fbeffc8a5"))
+name_usage(name = c("Puma", "Quercus"))
+name_usage(language = c("spanish", "german"))
+
 # Pass on httr options
 ## here, print progress, notice the progress bar
 library('httr')
@@ -115,4 +142,3 @@ library('httr')
 \references{
 \url{http://www.gbif.org/developer/species#nameUsages}
 }
-

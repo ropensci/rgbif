@@ -38,10 +38,9 @@ parsenames("Ajuga pyramidata x reptans")
 #             'Vanessa atalanta (Linnaeus, 1758)'), config=progress())
 }
 }
-\author{
-John Baumgartner (johnbb@student.unimelb.edu.au)
-}
 \references{
 \url{http://www.gbif.org/developer/species#parser}
 }
-
+\author{
+John Baumgartner (johnbb@student.unimelb.edu.au)
+}

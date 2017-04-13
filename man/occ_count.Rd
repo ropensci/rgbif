@@ -115,6 +115,7 @@ call \code{occ_count(type='schema')}. They are also presented below:
  \item year
 }
 }
+
 \examples{
 \dontrun{
 occ_count(basisOfRecord='OBSERVATION')
@@ -140,7 +141,8 @@ occ_count(typeStatus='HOLOTYPE')
 # Counts by countries. publishingCountry must be supplied (default to US)
 occ_count(type='countries')
 
-# Counts by year. from and to years have to be supplied, default to 2000 and 2012
+# Counts by year. from and to years have to be supplied, default to 2000
+# and 2012
 occ_count(type='year', from=2000, to=2012)
 
 # Counts by publishingCountry, must supply a country (default to US)
@@ -156,4 +158,3 @@ library('httr')
 \references{
 \url{http://www.gbif.org/developer/occurrence#metrics}
 }
-

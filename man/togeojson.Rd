@@ -10,4 +10,3 @@ togeojson(...)
 This function is defunct.  See the package togeojson for similar functionality.
 }
 \keyword{internal}
-

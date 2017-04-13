@@ -1,7 +1,7 @@
 #' Check input WKT
 #'
 #' @export
-#' @param wkt (character) A Well Known Text object
+#' @param wkt (character) one or more Well Known Text objects
 #' @examples
 #' check_wkt('POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))')
 #' check_wkt('POINT(30.1 10.1)')
@@ -15,8 +15,8 @@
 #'   'POINT(30.1 10.1)'))
 #'
 #' # bad WKT
-#' wkt <- 'POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 a))'
-#' #check_wkt(wkt)
+#' # wkt <- 'POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 a))'
+#' # check_wkt(wkt)
 #'
 #' # this passes this check, but isn't valid for GBIF
 #' wkt <- 'POLYGON((-178.59375 64.83258989321493,-165.9375 59.24622380205539,
@@ -30,10 +30,25 @@
 #' 149.4140625 42.65416193033991,159.2578125 48.3160811030533,168.3984375 57.019804336633165,
 #' 178.2421875 59.95776046458139,-179.6484375 61.16708631440347,-178.59375 64.83258989321493))'
 #' check_wkt(gsub("\n", '', wkt))
+#'
+#' # many wkt's, semi-colon separated, for many repeated "geometry" args
+#' wkt <- "POLYGON((-102.2 46.0,-93.9 46.0,-93.9 43.7,-102.2 43.7,-102.2 46.0));POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))"
+#' check_wkt(wkt)
 
 check_wkt <- function(wkt = NULL){
   if (!is.null(wkt)) {
     stopifnot(is.character(wkt))
+
+    newwkt <- c()
+    for (i in seq_along(wkt)) {
+      if (grepl(";", wkt[[i]])) {
+        newwkt[[i]] <- strsplit(wkt[[i]], ";")[[1]]
+      } else {
+        newwkt[[i]] <- wkt[[i]]
+      }
+    }
+    wkt <- unlist(newwkt)
+
     y <- strextract(wkt, "[A-Z]+")
 
     wkts <- c('POINT', 'POLYGON', 'MULTIPOLYGON', 'LINESTRING', 'LINEARRING')

@@ -13,4 +13,3 @@ This function is defunct.
 occ_count
 }
 \keyword{internal}
-

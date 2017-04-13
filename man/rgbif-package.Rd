@@ -2,8 +2,8 @@
 % Please edit documentation in R/rgbif-package.r
 \docType{package}
 \name{rgbif-package}
-\alias{rgbif}
 \alias{rgbif-package}
+\alias{rgbif}
 \title{Interface to the Global Biodiversity Information Facility API.}
 \description{
 rgbif: A programmatic interface to the Web Service methods provided by the
@@ -36,6 +36,7 @@ those functions are now not available anymore because GBIF made the old API defu
   in \code{rgbif}, and are meant more for intergration with web based maps.
 }
 }
+
 \author{
 Scott Chamberlain \email{myrmecocystus@gmail.com}
 
@@ -45,4 +46,3 @@ Dan Mcglinn \email{danmcglinn@gmail.com}
 
 Vijay Barve \email{vijay.barve@gmail.com}
 }
-

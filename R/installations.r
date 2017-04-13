@@ -5,11 +5,13 @@
 #' @template identifierargs
 #' @export
 #'
-#' @param data The type of data to get. One or more of: 'contact', 'endpoint', 'dataset',
-#' 'comment', 'deleted', 'nonPublishing', or the special 'all'. Default: \code{'all'}
+#' @param data The type of data to get. One or more of: 'contact', 'endpoint',
+#' 'dataset', 'comment', 'deleted', 'nonPublishing', or the special 'all'.
+#' Default: \code{'all'}
 #' @param uuid UUID of the data node provider. This must be specified if data
 #' is anything other than 'all'.
-#' @param query Query nodes. Only used when \code{data='all'}. Ignored otherwise.
+#' @param query Query nodes. Only used when \code{data='all'}. Ignored
+#' otherwise.
 #'
 #' @references \url{http://www.gbif.org/developer/registry#installations}
 #'
@@ -30,14 +32,18 @@
 #' res <- installations(data='deleted', config=progress())
 #' }
 
-installations <- function(data = 'all', uuid = NULL, query = NULL, identifier=NULL,
-                          identifierType=NULL, limit=100, start=NULL, ...)
-{
-  args <- rgbif_compact(list(q = query, limit=as.integer(limit), offset=start))
+installations <- function(data = 'all', uuid = NULL, query = NULL,
+                          identifier=NULL, identifierType=NULL, limit=100,
+                          start=NULL, ...) {
 
-  data <- match.arg(data, choices = c('all', 'contact', 'endpoint', 'dataset',
-                                    'identifier', 'tag', 'machineTag', 'comment',
-                                    'deleted', 'nonPublishing'), several.ok = TRUE)
+  args <- rgbif_compact(list(q = query, limit = as.integer(limit),
+                             offset = start))
+
+  data <- match.arg(data,
+                    choices = c('all', 'contact', 'endpoint', 'dataset',
+                                'identifier', 'tag', 'machineTag', 'comment',
+                                'deleted', 'nonPublishing'),
+                    several.ok = TRUE)
 
   # Define function to get data
   getdata <- function(x){

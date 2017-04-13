@@ -33,4 +33,3 @@ occ_download_get("0000066-140928181241064", overwrite = TRUE)
 occ_download_get("0003983-140910143529206", overwrite = TRUE)
 }
 }
-

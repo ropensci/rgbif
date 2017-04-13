@@ -45,16 +45,33 @@
 #' ## data and facets
 #' dataset_search(facet="decade", facetMincount="10", limit=2)
 #'
+#' # Some parameters accept many inputs, treated as OR
+#' dataset_search(type = c("metadata", "checklist"))$data
+#' dataset_search(keyword = c("fern", "algae"))$data
+#' dataset_search(publishingOrg = c("e2e717bf-551a-4917-bdc9-4fa0f342c530",
+#'   "90fd6680-349f-11d8-aa2d-b8a03c50a862"))$data
+#' dataset_search(hostingOrg = c("c5f7ef70-e233-11d9-a4d6-b8a03c50a862",
+#'   "c5e4331-7f2f-4a8d-aa56-81ece7014fc8"))$data
+#' dataset_search(publishingCountry = c("DE", "NZ"))$data
+#' dataset_search(decade = c(1910, 1930))$data
+#'
 #' ## httr options
 #' library('httr')
 #' dataset_search(facet="decade", facetMincount="10", limit=2, config=verbose())
 #' }
 
-dataset_search <- function(query = NULL, country = NULL, type = NULL, keyword = NULL,
-  owningOrg = NULL, publishingOrg = NULL, hostingOrg = NULL, publishingCountry = NULL,
-  decade = NULL, facet=NULL, facetMincount=NULL, facetMultiselect=NULL, limit=100,
-  start=NULL, pretty=FALSE, return="all", ...)
-{
+dataset_search <- function(query = NULL, country = NULL, type = NULL,
+  keyword = NULL, owningOrg = NULL, publishingOrg = NULL, hostingOrg = NULL,
+  publishingCountry = NULL, decade = NULL, facet=NULL, facetMincount=NULL,
+  facetMultiselect=NULL, limit=100, start=NULL, pretty=FALSE, return="all",
+  ...) {
+
+  calls <- names(sapply(match.call(), deparse))[-1]
+  calls_vec <- c("owningOrg") %in% calls
+  if (any(calls_vec)) {
+    stop("Parameters gone: owningOrg", call. = FALSE)
+  }
+
   if (!is.null(facetMincount) && inherits(facetMincount, "numeric")) {
     stop("Make sure facetMincount is character", call. = FALSE)
   }
@@ -65,13 +82,20 @@ dataset_search <- function(query = NULL, country = NULL, type = NULL, keyword = 
     facetbyname <- NULL
   }
 
+  type <- as_many_args(type)
+  keyword <- as_many_args(keyword)
+  publishingOrg <- as_many_args(publishingOrg)
+  hostingOrg <- as_many_args(hostingOrg)
+  publishingCountry <- as_many_args(publishingCountry)
+  decade <- as_many_args(decade)
+
   url <- paste0(gbif_base(), '/dataset/search')
-  args <- as.list(rgbif_compact(c(q=query,type=type,keyword=keyword,owningOrg=owningOrg,
-                       publishingOrg=publishingOrg,
-                       hostingOrg=hostingOrg,publishingCountry=publishingCountry,
-                       decade=decade,limit=limit,offset=start,facetbyname,
-                       facetMincount=facetMincount,
-                       facetMultiselect=facetMultiselect)))
+  args <- as.list(
+    rgbif_compact(c(q=query, limit=limit, offset=start, facetbyname,
+                    facetMincount=facetMincount,
+                    facetMultiselect=facetMultiselect)))
+  args <- c(args, type, keyword, publishingOrg, hostingOrg,
+            publishingCountry, decade)
   tt <- gbif_GET(url, args, FALSE, ...)
 
   # metadata

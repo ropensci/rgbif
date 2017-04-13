@@ -16,4 +16,3 @@ Get the possible values to be used for (taxonomic) rank arguments in GBIF
 taxrank()
 }
 }
-

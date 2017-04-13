@@ -9,13 +9,15 @@ installations(data = "all", uuid = NULL, query = NULL,
   ...)
 }
 \arguments{
-\item{data}{The type of data to get. One or more of: 'contact', 'endpoint', 'dataset',
-'comment', 'deleted', 'nonPublishing', or the special 'all'. Default: \code{'all'}}
+\item{data}{The type of data to get. One or more of: 'contact', 'endpoint',
+'dataset', 'comment', 'deleted', 'nonPublishing', or the special 'all'.
+Default: \code{'all'}}
 
 \item{uuid}{UUID of the data node provider. This must be specified if data
 is anything other than 'all'.}
 
-\item{query}{Query nodes. Only used when \code{data='all'}. Ignored otherwise.}
+\item{query}{Query nodes. Only used when \code{data='all'}. Ignored
+otherwise.}
 
 \item{identifier}{The value for this parameter can be a simple string or integer,
 e.g. identifier=120. This parameter doesn't seem to work right now.}
@@ -29,9 +31,10 @@ work right now.}
 \item{start}{Record number to start at. Default: 0. Use in combination with \code{limit} to
 page through results.}
 
-\item{...}{Further named parameters, such as \code{query}, \code{path}, etc, passed on to
-\code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will
-be combined with \code{\link[httr]{config}}.}
+\item{...}{Further named parameters, such as \code{query}, \code{path},
+etc, passed on to \code{\link[httr]{modify_url}} within
+\code{\link[httr]{GET}} call. Unnamed parameters will be combined
+with \code{\link[httr]{config}}.}
 }
 \description{
 Installations metadata.
@@ -76,4 +79,3 @@ res <- installations(data='deleted', config=progress())
 \references{
 \url{http://www.gbif.org/developer/registry#installations}
 }
-

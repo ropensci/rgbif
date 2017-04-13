@@ -62,4 +62,3 @@ wkt_parse(wkt, geom_big = "axe", 20)
 wkt_parse(wkt, geom_big = "axe", 10)
 wkt_parse(wkt, geom_big = "axe", 5)
 }
-

@@ -63,4 +63,3 @@ elevation(latlong=pairs, config=verbose(), key = apikey)
 Uses the Google Elevation API at the following link
 https://developers.google.com/maps/documentation/elevation/start
 }
-

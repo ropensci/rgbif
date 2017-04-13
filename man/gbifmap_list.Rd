@@ -13,4 +13,3 @@ This function is defunct.
 gbifmap
 }
 \keyword{internal}
-

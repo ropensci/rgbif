@@ -38,3 +38,26 @@ test_that("works with habitat parameter", {
   out <- name_lookup(habitat = "terrestrial", return = "data")
   expect_equal(sort(na.omit(out$habitats))[1], "FRESHWATER, MARINE, TERRESTRIAL")
 })
+
+test_that("works with parameters that allow many inputs", {
+  skip_on_cran()
+
+  aa <- name_lookup(status = c("misapplied", "synonym"), limit = 200)
+
+  expect_is(aa, "list")
+  expect_is(aa$meta, "data.frame")
+  expect_is(aa$meta$endOfRecords, "logical")
+  expect_is(aa$data$canonicalName, "character")
+  expect_is(aa$data$classKey, "integer")
+  expect_true(all(
+    unique(tolower(aa$data$taxonomicStatus)) %in% c("misapplied", "synonym")))
+
+  aa <- name_lookup(nameType = c("cultivar", "doubtful"))
+  expect_is(aa, "list")
+  expect_is(aa$meta, "data.frame")
+  expect_is(aa$meta$endOfRecords, "logical")
+  expect_is(aa$data$canonicalName, "character")
+  expect_is(aa$data$speciesKey, "integer")
+  expect_true(all(
+    unique(tolower(aa$data$nameType)) %in% c("cultivar", "doubtful")))
+})

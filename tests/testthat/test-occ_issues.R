@@ -38,7 +38,7 @@ test_that("occ_issues", {
   # returns the correct dimensions
   #expect_true(all(vapply(aa$data$issues, function(x) grepl("cudc", x), logical(1))))
   expect_true(all(vapply(bb$data$issues, function(x) grepl("gass84", x), logical(1))))
-  expect_true(all(vapply(cc$data$issues, function(x) grepl("cdround", x), logical(1))))
+  expect_true(all(vapply(cc$data$issues, function(x) grepl("gass84", x), logical(1))))
   expect_false(all(vapply(cc$data$issues, function(x) grepl("cudc", x), logical(1))))
   expect_false(any(grepl("issues", names(dd$data))))
   expect_true(any(grepl("gass84", names(dd$data))))

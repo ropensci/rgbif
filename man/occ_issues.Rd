@@ -82,4 +82,3 @@ occ_issues(res, -cudc, mutate = "split_expand")
 \references{
 \url{http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html}
 }
-

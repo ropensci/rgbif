@@ -9,53 +9,63 @@ name_backbone(name, rank = NULL, kingdom = NULL, phylum = NULL,
   strict = FALSE, verbose = FALSE, start = NULL, limit = 100, ...)
 }
 \arguments{
-\item{name}{(character) Full scientific name potentially with authorship (required)}
+\item{name}{(character) Full scientific name potentially with authorship
+(required)}
 
 \item{rank}{(character) The rank given as our rank enum. (optional)}
 
-\item{kingdom}{(character) If provided default matching will also try to match against this
-if no direct match is found for the name alone. (optional)}
+\item{kingdom}{(character) If provided default matching will also try to
+match against this if no direct match is found for the name alone.
+(optional)}
 
-\item{phylum}{(character) If provided default matching will also try to match against this
-if no direct match is found for the name alone. (optional)}
+\item{phylum}{(character) If provided default matching will also try to
+match against this if no direct match is found for the name alone.
+(optional)}
 
-\item{class}{(character) If provided default matching will also try to match against this
-if no direct match is found for the name alone. (optional)}
+\item{class}{(character) If provided default matching will also try to
+match against this if no direct match is found for the name alone.
+(optional)}
 
-\item{order}{(character) If provided default matching will also try to match against this
-if no direct match is found for the name alone. (optional)}
+\item{order}{(character) If provided default matching will also try to
+match against this if no direct match is found for the name alone.
+(optional)}
 
-\item{family}{(character) If provided default matching will also try to match against this
-if no direct match is found for the name alone. (optional)}
+\item{family}{(character) If provided default matching will also try to
+match against this if no direct match is found for the name alone.
+(optional)}
 
-\item{genus}{(character) If provided default matching will also try to match against this
-if no direct match is found for the name alone. (optional)}
+\item{genus}{(character) If provided default matching will also try to
+match against this if no direct match is found for the name alone.
+(optional)}
 
-\item{strict}{(logical) If TRUE it (fuzzy) matches only the given name, but never a
-taxon in the upper classification (optional)}
+\item{strict}{(logical) If TRUE it (fuzzy) matches only the given name,
+but never a taxon in the upper classification (optional)}
 
-\item{verbose}{(logical) If TRUE show alternative matches considered which had been rejected.}
+\item{verbose}{(logical) If TRUE show alternative matches considered which
+had been rejected.}
 
 \item{start}{Record number to start at. Default: 0. Use in combination with \code{limit} to
 page through results.}
 
 \item{limit}{Number of records to return. Default: 100. Maximum: 1000.}
 
-\item{...}{Further named parameters, such as \code{query}, \code{path}, etc, passed on to
-\code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will
-be combined with \code{\link[httr]{config}}.}
+\item{...}{Further named parameters, such as \code{query}, \code{path},
+etc, passed on to \code{\link[httr]{modify_url}} within
+\code{\link[httr]{GET}} call. Unnamed parameters will be combined
+with \code{\link[httr]{config}}.}
 }
 \value{
-A list for a single taxon with many slots (with \code{verbose=FALSE} - default), or a
-list of length two, first element for the suggested taxon match, and a data.frame
-with alternative name suggestions resulting from fuzzy matching (with \code{verbose=TRUE}).
+A list for a single taxon with many slots (with \code{verbose=FALSE}
+- default), or a list of length two, first element for the suggested taxon
+match, and a data.frame with alternative name suggestions resulting from
+fuzzy matching (with \code{verbose=TRUE}).
 }
 \description{
 Lookup names in the GBIF backbone taxonomy.
 }
 \details{
-If you don't get a match GBIF gives back a list of length 3 with slots synonym,
-confidence, and matchType='NONE'.
+If you don't get a match GBIF gives back a list of length 3 with
+slots synonym, confidence, and matchType='NONE'.
 }
 \examples{
 \dontrun{
@@ -68,7 +78,8 @@ name_backbone(name='Helianthus annuus', kingdom='plants', verbose=TRUE)
 
 # Strictness
 name_backbone(name='Poa', kingdom='plants', verbose=TRUE, strict=FALSE)
-name_backbone(name='Helianthus annuus', kingdom='plants', verbose=TRUE, strict=TRUE)
+name_backbone(name='Helianthus annuus', kingdom='plants', verbose=TRUE,
+  strict=TRUE)
 
 # Non-existent name - returns list of lenght 3 stating no match
 name_backbone(name='Aso')
@@ -82,4 +93,3 @@ x <- name_backbone(name='Oenante', config=progress())
 \references{
 \url{http://www.gbif.org/developer/species#searching}
 }
-

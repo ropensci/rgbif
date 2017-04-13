@@ -4,10 +4,10 @@
 #' @template occ
 #' @export
 #'
-#' @param data The type of data to get. One or more of: 'organization', 'contact',
-#' 'endpoint', 'identifier', 'tag', 'machinetag', 'comment', 'constituents',
-#' 'document', 'metadata', 'deleted', 'duplicate', 'subDataset', 'withNoEndpoint',
-#' or the special 'all'. Default: \code{'all'}
+#' @param data The type of data to get. One or more of: 'organization',
+#' 'contact', 'endpoint', 'identifier', 'tag', 'machinetag', 'comment',
+#' 'constituents', 'document', 'metadata', 'deleted', 'duplicate',
+#' 'subDataset', 'withNoEndpoint', or the special 'all'. Default: \code{'all'}
 #' @param type Type of dataset. Options: include occurrence, checklist,
 #' metadata, or sampling_event.
 #' @param uuid UUID of the data node provider. This must be specified if data
@@ -24,7 +24,8 @@
 #' datasets(uuid="a6998220-7e3a-485d-9cd6-73076bd85657")
 #' datasets(data='contact', uuid="a6998220-7e3a-485d-9cd6-73076bd85657")
 #' datasets(data='metadata', uuid="a6998220-7e3a-485d-9cd6-73076bd85657")
-#' datasets(data='metadata', uuid="a6998220-7e3a-485d-9cd6-73076bd85657", id=598)
+#' datasets(data='metadata', uuid="a6998220-7e3a-485d-9cd6-73076bd85657",
+#'   id=598)
 #' datasets(data=c('deleted','duplicate'))
 #' datasets(data=c('deleted','duplicate'), limit=1)
 #'
@@ -33,22 +34,28 @@
 #' res <- datasets(data=c('deleted','duplicate'), config=progress())
 #' }
 
-datasets <- function(data = 'all', type = NULL, uuid = NULL, query = NULL, id = NULL,
-                     limit = 100, start=NULL, ...) {
+datasets <- function(data = 'all', type = NULL, uuid = NULL, query = NULL,
+                     id = NULL, limit = 100, start=NULL, ...) {
 
-  args <- rgbif_compact(list(q = query, type = type, limit = as.integer(limit), offset = start))
+  args <- rgbif_compact(list(q = query, type = type, limit = as.integer(limit),
+                             offset = start))
 
-  data <- match.arg(data, choices = c('all', 'organization', 'contact', 'endpoint',
-                                    'identifier', 'tag', 'machinetag', 'comment',
-                                    'constituents', 'document', 'metadata',
-                                    'deleted', 'duplicate', 'subDataset',
-                                    'withNoEndpoint'), several.ok = TRUE)
+  data <- match.arg(
+    data, choices = c('all', 'organization', 'contact', 'endpoint',
+                      'identifier', 'tag', 'machinetag', 'comment',
+                      'constituents', 'document', 'metadata',
+                      'deleted', 'duplicate', 'subDataset',
+                      'withNoEndpoint'), several.ok = TRUE)
 
   # Define function to get data
   getdata <- function(x) {
-    if (!data %in% c('all','deleted','duplicate','subDataset','withNoEndpoint') && is.null(uuid)) {
-      stop('You must specify a uuid if data does not equal all and
-       data does not equal of deleted, duplicate, subDataset, or withNoEndpoint', call. = FALSE)
+    if (
+     !data %in% c('all','deleted','duplicate','subDataset','withNoEndpoint') &&
+     is.null(uuid)
+    ) {
+     stop('You must specify a uuid if data does not equal all and
+     data does not equal of deleted, duplicate, subDataset, or withNoEndpoint',
+          call. = FALSE)
     }
 
     url <- if (is.null(uuid)) {

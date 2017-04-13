@@ -10,4 +10,3 @@ stylegeojson(...)
 This function is defunct.  See the package spocc for similar functionality.
 }
 \keyword{internal}
-

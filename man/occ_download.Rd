@@ -161,4 +161,3 @@ See the API docs
 and the predicates docs
 \url{http://www.gbif.org/developer/occurrence#predicates}
 }
-

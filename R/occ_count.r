@@ -109,7 +109,8 @@
 #' # Counts by countries. publishingCountry must be supplied (default to US)
 #' occ_count(type='countries')
 #'
-#' # Counts by year. from and to years have to be supplied, default to 2000 and 2012
+#' # Counts by year. from and to years have to be supplied, default to 2000
+#' # and 2012
 #' occ_count(type='year', from=2000, to=2012)
 #'
 #' # Counts by publishingCountry, must supply a country (default to US)
@@ -122,11 +123,11 @@
 #' # res
 #' }
 
-occ_count <- function(taxonKey = NULL, georeferenced = NULL, basisOfRecord = NULL,
-  datasetKey = NULL, date = NULL, typeStatus = NULL, catalogNumber = NULL,
-  country = NULL, hostCountry = NULL, year = NULL, from = 2000, to = 2012,
-  type = 'count', publishingCountry = 'US', nubKey = NULL,
-  protocol = NULL, ...) {
+occ_count <- function(taxonKey = NULL, georeferenced = NULL,
+  basisOfRecord = NULL, datasetKey = NULL, date = NULL, typeStatus = NULL,
+  catalogNumber = NULL, country = NULL, hostCountry = NULL, year = NULL,
+  from = 2000, to = 2012, type = 'count', publishingCountry = 'US',
+  nubKey = NULL, protocol = NULL, ...) {
 
   calls <- names(sapply(match.call(), deparse))[-1]
   calls_vec <- c("nubKey","hostCountry","catalogNumber") %in% calls
@@ -135,10 +136,11 @@ occ_count <- function(taxonKey = NULL, georeferenced = NULL, basisOfRecord = NUL
   }
 
   args <- rgbif_compact(
-    list(taxonKey=taxonKey, isGeoreferenced=georeferenced,
-         basisOfRecord=basisOfRecord, datasetKey=datasetKey,
-         date=date, typeStatus=typeStatus, catalogNumber=catalogNumber,
-         country=country, hostCountry=hostCountry, year=year, protocol=protocol))
+    list(
+      taxonKey=taxonKey, isGeoreferenced=georeferenced,
+      basisOfRecord=basisOfRecord, datasetKey=datasetKey,
+      date=date, typeStatus=typeStatus, catalogNumber=catalogNumber,
+      country=country, hostCountry=hostCountry, year=year, protocol=protocol))
   type <- match.arg(type, choices=c("count","schema","basisOfRecord",
                                     "countries","year","publishingCountry"))
   url <- switch(type,

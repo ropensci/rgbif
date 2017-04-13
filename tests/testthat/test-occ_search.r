@@ -208,7 +208,7 @@ test_that("geometry inputs work as expected", {
   aa <- occ_search(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))', limit=20)
   expect_is(aa, "gbif")
   expect_is(unclass(aa), "list")
-  expect_named(attr(aa, "args"), c('geometry', 'limit', 'offset', 'fields'))
+  expect_named(attr(aa, "args"), c('limit', 'offset', 'geometry', 'fields'))
   expect_gt(NROW(aa$data), 0)
 
   # with a taxon key
@@ -217,7 +217,7 @@ test_that("geometry inputs work as expected", {
                    limit=20)
   expect_is(bb, "gbif")
   expect_is(unclass(bb), "list")
-  expect_named(attr(bb, "args"), c('taxonKey', 'geometry', 'limit', 'offset', 'fields'))
+  expect_named(attr(bb, "args"), c('limit', 'offset', 'taxonKey', 'geometry', 'fields'))
   expect_gt(NROW(bb$data), 0)
   expect_lt(NROW(bb$data), NROW(aa$data))
 
@@ -225,7 +225,7 @@ test_that("geometry inputs work as expected", {
   cc <- occ_search(geometry=c(-125.0,38.4,-121.8,40.9), limit=20)
   expect_is(cc, "gbif")
   expect_is(unclass(cc), "list")
-  expect_named(attr(cc, "args"), c('geometry', 'limit', 'offset', 'fields'))
+  expect_named(attr(cc, "args"), c('limit', 'offset', 'geometry', 'fields'))
   expect_gt(NROW(cc$data), 0)
   expect_equal(NROW(cc$data), NROW(aa$data))
 

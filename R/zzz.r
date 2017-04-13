@@ -458,3 +458,12 @@ rgbif_wrap <- function (..., indent = 0, width = getOption("width")){
   wrapped <- strwrap(x, indent = indent, exdent = indent + 5, width = width)
   paste0(wrapped, collapse = "\n")
 }
+
+as_many_args <- function(x) {
+  if (!is.null(x)) {
+    names(x) <- rep(deparse(substitute(x)), length(x))
+    return(x)
+  } else {
+    NULL
+  }
+}

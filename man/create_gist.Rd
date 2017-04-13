@@ -10,4 +10,3 @@ create_gist(...)
 This function is defunct.  See the package gistr for similar functionality.
 }
 \keyword{internal}
-
