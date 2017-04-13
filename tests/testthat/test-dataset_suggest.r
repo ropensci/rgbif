@@ -42,6 +42,6 @@ test_that("limited fields query returns the correct class", {
 
   tt <- dataset_suggest(type="OCCURRENCE", description=TRUE)
 
-  expect_is(tt, "character")
+  expect_is(tt, "list")
   expect_is(tt[[1]], "character")
 })

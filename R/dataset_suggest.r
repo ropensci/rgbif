@@ -82,8 +82,8 @@ dataset_suggest <- function(query = NULL, country = NULL, type = NULL,
   tt <- gbif_GET(url, args, FALSE, ...)
 
   if (description) {
-    out <- sapply(tt, "[[", "description")
-    names(out) <- sapply(tt, "[[", "title")
+    out <- lapply(tt, "[[", "description")
+    names(out) <- lapply(tt, "[[", "title")
     out <- rgbif_compact(out)
   } else {
     if (length(tt) == 1) {
