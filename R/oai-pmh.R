@@ -22,7 +22,7 @@
 #' default), "list" (get a list), or "raw" (raw text). For
 #' `gbif_oai_get_records`, one of "parsed" or "raw"
 #' @param id,ids (character) The OAI-PMH identifier for the record. Optional.
-#' @param ... Curl options passed on to [httr::GET()]
+#' @param ... Curl options passed on to `httr::GET`
 #' @return raw text, list or data.frame, depending on requested output via
 #' \code{as} parameter
 #' @details These functions only work with GBIF registry data, and do so

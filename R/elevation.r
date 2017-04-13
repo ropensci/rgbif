@@ -10,9 +10,8 @@
 #' the latitude vector.
 #' @param latlong A vector of lat/long pairs. See examples.
 #' @param key (character) Required. An API key. See Details.
-#' @param ... Further named parameters, such as `query`, `path`, etc, passed
-#' on to [httr::modify_url()] within [httr::GET()] call. Unnamed parameters
-#' will be combined with [httr::config()].
+#' @param ... named curl options passed on to [crul::HttpClient()]. see
+#' [curl::curl_options()] for curl options
 #'
 #' @return A new column named elevation in the supplied data.frame or a vector
 #' with elevation of each location in meters.
@@ -38,14 +37,13 @@
 #' pairs <- list(c(31.8496,-110.576060), c(29.15503,-103.59828))
 #' elevation(latlong=pairs, key = apikey)
 #'
-#' # Pass on options to httr
-#' library('httr')
+#' # Pass on curl options
 #' pairs <- list(c(31.8496,-110.576060), c(29.15503,-103.59828))
-#' elevation(latlong=pairs, config=verbose(), key = apikey)
+#' elevation(latlong=pairs, curlopts = list(verbose=TRUE), key = apikey)
 #' }
 
 elevation <- function(input=NULL, latitude=NULL, longitude=NULL, latlong=NULL,
-                      key, ...) {
+                      key, curlopts = list()) {
 
   # one of input, lat/long, or latlong must be given
   all_input <- rgbif_compact(list(input, latitude, longitude, latlong))
@@ -74,10 +72,18 @@ elevation <- function(input=NULL, latitude=NULL, longitude=NULL, latlong=NULL,
     for (i in seq_along(locations)) {
       args <- rgbif_compact(list(locations = locations[[i]],
                                  sensor = 'false', key = key))
-      tt <- GET(url, query = args, make_rgbif_ua(), ...)
-      stop_for_status(tt)
+
+      cli <- crul::HttpClient$new(
+        url = url,
+        headers = list(
+          `User-Agent` = rgbif_ua(), `X-USER-AGENT` = rgbif_ua()
+        ),
+        opts = curlopts
+      )
+      tt <- cli$get(query = args)
+      tt$raise_for_status()
       stopifnot(tt$headers$`content-type` == 'application/json; charset=UTF-8')
-      res <- c_utf8(tt)
+      res <- tt$parse("UTF-8")
       out <- jsonlite::fromJSON(res, FALSE)
 
       df <- data.frame(elevation = sapply(out$results, '[[', 'elevation'),

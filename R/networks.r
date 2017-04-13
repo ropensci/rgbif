@@ -23,13 +23,13 @@
 #' lapply(uuids, function(x) networks(uuid = x))
 #' networks(data='endpoint', uuid='16ab5405-6c94-4189-ac71-16ca3b753df7')
 #'
-#' # Pass on options to httr
-#' library('httr')
-#' res <- networks(limit=5, config=progress())
+#' # curl options
+#' networks(limit=5, curlopts = list(verbose=TRUE))
 #' }
 
 networks <- function(data = 'all', uuid = NULL, query = NULL, identifier=NULL,
-                     identifierType=NULL, limit=100, start=NULL, ...) {
+                     identifierType=NULL, limit=100, start=NULL,
+                     curlopts = list()) {
 
   args <- rgbif_compact(list(q = query, limit = as.integer(limit),
                              offset = start))
@@ -51,7 +51,7 @@ networks <- function(data = 'all', uuid = NULL, query = NULL, identifier=NULL,
         sprintf('%s/network/%s/%s', gbif_base(), uuid, x)
       }
     }
-    res <- gbif_GET(url, args, TRUE, ...)
+    res <- gbif_GET(url, args, TRUE, curlopts)
     structure(list(meta = get_meta(res), data = parse_results(res, uuid)))
   }
 

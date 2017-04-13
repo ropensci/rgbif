@@ -4,7 +4,7 @@
 \alias{occ_facet}
 \title{Facet GBIF occurrences}
 \usage{
-occ_facet(facet, facetMincount = NULL, ...)
+occ_facet(facet, facetMincount = NULL, curlopts = list(), ...)
 }
 \arguments{
 \item{facet}{(character) a character vector of length 1 or greater. Required.}
@@ -12,8 +12,11 @@ occ_facet(facet, facetMincount = NULL, ...)
 \item{facetMincount}{(numeric) minimum number of records to be included
 in the faceting results}
 
-\item{...}{Further named curl parameters (see xxx), or facet parameters,
-such as for paging based on each facet variable, e.g., country.facetLimit}
+\item{curlopts}{list of named curl options passed on to
+[crul::HttpClient()]. see [curl::curl_options()] for curl options}
+
+\item{...}{Facet parameters, such as for paging based on each facet
+variable, e.g., \code{country.facetLimit}}
 }
 \value{
 A list of tibbles (data.frame's) for each facet (each element of
@@ -51,6 +54,10 @@ occ_facet(facet = "country", country.facetLimit = 3)
 ## offset
 occ_facet(facet = "country", country.facetLimit = 3,
   country.facetOffset = 3)
+
+# Pass on curl options
+occ_facet(facet = "country", country.facetLimit = 3,
+  curlopts = list(verbose = TRUE))
 }
 }
 \seealso{

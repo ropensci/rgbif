@@ -5,7 +5,7 @@
 \title{Networks metadata.}
 \usage{
 networks(data = "all", uuid = NULL, query = NULL, identifier = NULL,
-  identifierType = NULL, limit = 100, start = NULL, ...)
+  identifierType = NULL, limit = 100, start = NULL, curlopts = list())
 }
 \arguments{
 \item{data}{The type of data to get. One or more of: 'contact', 'endpoint',
@@ -31,10 +31,8 @@ seem to work right now.}
 \item{start}{Record number to start at. Default: 0. Use in combination
 with `limit` to page through results.}
 
-\item{...}{Further named parameters, such as `query`, `path`,
-etc, passed on to [httr::modify_url()] within
-[httr::GET()] call. Unnamed parameters will be combined
-with [httr::config()]}
+\item{curlopts}{list of named curl options passed on to
+[crul::HttpClient()]. see [curl::curl_options()] for curl options}
 }
 \description{
 Networks metadata.
@@ -71,9 +69,8 @@ uuids <- c('7ddd1f14-a2b0-4838-95b0-785846f656f3',
 lapply(uuids, function(x) networks(uuid = x))
 networks(data='endpoint', uuid='16ab5405-6c94-4189-ac71-16ca3b753df7')
 
-# Pass on options to httr
-library('httr')
-res <- networks(limit=5, config=progress())
+# curl options
+networks(limit=5, curlopts = list(verbose=TRUE))
 }
 }
 \references{

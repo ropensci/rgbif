@@ -48,13 +48,13 @@
 #' res <- res[!sapply(res, NROW)==0]
 #' res[1]
 #'
-#' # Pass on options to httr
-#' library('httr')
-#' res <- nodes(limit=20, config=progress())
+#' # Pass on curl options
+#' nodes(limit=20, curlopts=list(verbose=TRUE))
 #' }
 
 nodes <- function(data = 'all', uuid = NULL, query = NULL, identifier=NULL,
-  identifierType=NULL, limit=100, start=NULL, isocode = NULL, ...) {
+  identifierType=NULL, limit=100, start=NULL, isocode = NULL,
+  curlopts = list()) {
 
   args <- rgbif_compact(list(q = query, limit = as.integer(limit),
                              offset = start))
@@ -88,7 +88,7 @@ nodes <- function(data = 'all', uuid = NULL, query = NULL, identifier=NULL,
         sprintf('%s/node/%s/%s', gbif_base(), uuid, x)
       }
     }
-    res <- gbif_GET(url, args, TRUE, ...)
+    res <- gbif_GET(url, args, TRUE, curlopts)
     structure(list(meta = get_meta(res), data = parse_results(res, uuid)))
   }
 

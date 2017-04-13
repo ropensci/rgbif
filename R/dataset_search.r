@@ -55,16 +55,16 @@
 #' dataset_search(publishingCountry = c("DE", "NZ"))$data
 #' dataset_search(decade = c(1910, 1930))$data
 #'
-#' ## httr options
-#' library('httr')
-#' dataset_search(facet="decade", facetMincount="10", limit=2, config=verbose())
+#' ## curl options
+#' dataset_search(facet="decade", facetMincount="10", limit=2,
+#'   curlopts = list(verbose=TRUE))
 #' }
 
 dataset_search <- function(query = NULL, country = NULL, type = NULL,
   keyword = NULL, owningOrg = NULL, publishingOrg = NULL, hostingOrg = NULL,
   publishingCountry = NULL, decade = NULL, facet=NULL, facetMincount=NULL,
   facetMultiselect=NULL, limit=100, start=NULL, pretty=FALSE, return="all",
-  ...) {
+  curlopts = list()) {
 
   calls <- names(sapply(match.call(), deparse))[-1]
   calls_vec <- c("owningOrg") %in% calls
@@ -96,7 +96,7 @@ dataset_search <- function(query = NULL, country = NULL, type = NULL,
                     facetMultiselect=facetMultiselect)))
   args <- c(args, type, keyword, publishingOrg, hostingOrg,
             publishingCountry, decade)
-  tt <- gbif_GET(url, args, FALSE, ...)
+  tt <- gbif_GET(url, args, FALSE, curlopts)
 
   # metadata
   meta <- tt[c('offset','limit','endOfRecords','count')]

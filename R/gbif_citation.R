@@ -60,7 +60,8 @@ gbif_citation.gbif <- function(x) {
   if (is.null(dkeys)) {
     occ_keys <- x$key
     if (!is.null(occ_keys)) {
-      dkeys <- unique(vapply(occ_get(unique(occ_keys), fields = "all"), "[[", "", c('data', 'datasetKey')))
+      dkeys <- unique(vapply(occ_get(unique(occ_keys), fields = "all"),
+                             "[[", "", c('data', 'datasetKey')))
     } else {
       stop("No 'datasetKey' or 'key' fields found", call. = FALSE)
     }
@@ -70,30 +71,44 @@ gbif_citation.gbif <- function(x) {
     tmp <- datasets(uuid = z)
     cit <- list(title = tmp$data$title,
       text = tmp$data$citation$text,
-      accessed = paste0("Accessed from R via rgbif (https://github.com/ropensci/rgbif) on ", Sys.Date()))
+      accessed =
+        paste0(
+          "Accessed from R via rgbif (https://github.com/ropensci/rgbif) on ",
+          Sys.Date()))
     cit$citation <- paste(cit$text, cit$accessed, sep = ". ")
-    structure(list(citation = cit, rights = tmp$data$rights), class = "gbif_citation")
+    structure(list(citation = cit, rights = tmp$data$rights),
+              class = "gbif_citation")
   })
 }
 
 #' @export
 gbif_citation.character <- function(x) {
   tmp <- as_occ_d_key(x)
-  cit <- list(title = tmp$data$title,
-              text = tmp$data$citation$text,
-              accessed = paste0("Accessed from R via rgbif (https://github.com/ropensci/rgbif) on ", Sys.Date()))
+  cit <- list(
+    title = tmp$data$title,
+    text = tmp$data$citation$text,
+    accessed =
+      paste0(
+        "Accessed from R via rgbif (https://github.com/ropensci/rgbif) on ",
+        Sys.Date()))
   cit$citation <- paste(cit$text, cit$accessed, sep = ". ")
-  structure(list(citation = cit, rights = tmp$data$rights), class = "gbif_citation")
+  structure(list(citation = cit, rights = tmp$data$rights),
+            class = "gbif_citation")
 }
 
 #' @export
 gbif_citation.numeric <- function(x) {
   tmp <- as_occ_d_key(x)
-  cit <- list(title = tmp$data$title,
-              text = tmp$data$citation$text,
-              accessed = paste0("Accessed from R via rgbif (https://github.com/ropensci/rgbif) on ", Sys.Date()))
+  cit <- list(
+    title = tmp$data$title,
+    text = tmp$data$citation$text,
+    accessed =
+      paste0(
+        "Accessed from R via rgbif (https://github.com/ropensci/rgbif) on ",
+        Sys.Date()))
   cit$citation <- paste(cit$text, cit$accessed, sep = ". ")
-  structure(list(citation = cit, rights = tmp$data$rights), class = "gbif_citation")
+  structure(list(citation = cit, rights = tmp$data$rights),
+            class = "gbif_citation")
 }
 
 #' @export
@@ -112,8 +127,12 @@ get_cit_rights <- function(x) {
   rights <- xml2::xml_text(xml2::xml_find_all(xml, "//intellectualRights"))
   title <- xml2::xml_text(xml2::xml_find_all(xml, "//title"))
   citation <- xml2::xml_text(xml2::xml_find_all(xml, "//citation"))
-  cit <- list(key = key, title = title, text = citation,
-              accessed = paste0("Accessed from R via rgbif (https://github.com/ropensci/rgbif) on ", Sys.Date()))
+  cit <- list(
+    key = key, title = title, text = citation,
+    accessed =
+      paste0(
+        "Accessed from R via rgbif (https://github.com/ropensci/rgbif) on ",
+        Sys.Date()))
   cit$citation <- paste(cit$text, cit$accessed, sep = ". ")
   structure(list(citation = cit, rights = rights), class = "gbif_citation")
 }
@@ -121,8 +140,10 @@ get_cit_rights <- function(x) {
 #' @export
 print.gbif_citation <- function(x, indent = 3, width = 80, ...) {
   cat("<<rgbif citation>>", sep = "\n")
-  cat(rgbif_wrap("  Citation: ", x$citation$citation, indent = indent, width = width), sep = "\n")
-  cat(rgbif_wrap("  Rights: ", x$rights, indent = indent, width = width), "\n", sep = "")
+  cat(rgbif_wrap("  Citation: ", x$citation$citation, indent = indent,
+                 width = width), sep = "\n")
+  cat(rgbif_wrap("  Rights: ", x$rights, indent = indent, width = width),
+      "\n", sep = "")
 }
 
 as_occ_d_key <- function(x) {
@@ -139,10 +160,15 @@ as_occ_d_key <- function(x) {
 }
 
 is_occ_key <- function(x) {
-  res <- HEAD(paste0("https://api.gbif.org/v1/occurrence/", x))
-  res$status_code <= 201
+  cli <- crul::HttpClient$new(
+    url = paste0("https://api.gbif.org/v1/occurrence/", x), headers = rgbif_ual
+  )
+  temp <- cli$head()
+  temp$status_code <= 201
 }
 
 is_dataset_key_pattern <- function(x) {
-  grepl("^[A-Za-z0-9]{8}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{12}$", x)
+  grepl(
+"^[A-Za-z0-9]{8}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{12}$",
+x)
 }

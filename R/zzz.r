@@ -292,37 +292,34 @@ compact_null <- function(l){
 # REST helpers ---------------------------------------
 rgbif_ua <- function() {
   versions <- c(paste0("r-curl/", utils::packageVersion("curl")),
-                paste0("httr/", utils::packageVersion("httr")),
+                paste0("crul/", utils::packageVersion("crul")),
                 sprintf("rOpenSci(rgbif/%s)", utils::packageVersion("rgbif")))
   paste0(versions, collapse = " ")
 }
 
-make_rgbif_ua <- function() {
-  c(
-    user_agent(rgbif_ua()),
-    add_headers(`X-USER-AGENT` = rgbif_ua())
-  )
-}
+rgbif_ual <- list(`User-Agent` = rgbif_ua(), `X-USER-AGENT` = rgbif_ua())
 
-gbif_GET <- function(url, args, parse=FALSE, ...){
-  temp <- GET(url, query = args, make_rgbif_ua(), ...)
-
+gbif_GET <- function(url, args, parse=FALSE, curlopts = list()) {
+  cli <- crul::HttpClient$new(url = url, headers = rgbif_ual, opts = curlopts)
+  temp <- cli$get(query = args)
   if (temp$status_code == 204) stop("Status: 204 - not found", call. = FALSE)
   if (temp$status_code > 200) {
-    mssg <- c_utf8(temp)
+    mssg <- temp$parse("UTF-8")
     if (grepl("html", mssg)) {
       stop("500 - Server error", call. = FALSE)
     }
-    if (length(mssg) == 0 || nchar(mssg) == 0) mssg <- http_status(temp)$message
-    if (temp$status_code == 503) mssg <- http_status(temp)$message
+    if (length(mssg) == 0 || nchar(mssg) == 0) {
+      mssg <- temp$status_http()$message
+    }
+    if (temp$status_code == 503) mssg <- temp$status_http()$message
     stop(mssg, call. = FALSE)
   }
 
   # check content type
-  stopifnot(temp$headers$`content-type` == 'application/json')
+  stopifnot(temp$response_headers$`content-type` == 'application/json')
 
   # parse JSON
-  json <- jsonlite::fromJSON(c_utf8(temp), parse)
+  json <- jsonlite::fromJSON(temp$parse("UTF-8"), parse)
 
   # check if spellCheck = TRUE, and if should stop
   if ('spellCheck' %in% names(args)) {
@@ -348,11 +345,12 @@ gbif_GET <- function(url, args, parse=FALSE, ...){
   return(json)
 }
 
-gbif_GET_content <- function(url, args, ...) {
-  temp <- GET(url, query = cn(args), make_rgbif_ua(), ...)
-  if (temp$status_code > 200) stop(c_utf8(temp), call. = FALSE)
-  stopifnot(temp$headers$`content-type` == 'application/json')
-  c_utf8(temp)
+gbif_GET_content <- function(url, args, curlopts = list()) {
+  cli <- crul::HttpClient$new(url = url, headers = rgbif_ual, opts = curlopts)
+  temp <- cli$get(query = args)
+  if (temp$status_code > 200) stop(temp$parse("UTF-8"), call. = FALSE)
+  stopifnot(temp$response_headers$`content-type` == 'application/json')
+  temp$parse("UTF-8")
 }
 
 # other helpers --------------------
@@ -444,7 +442,7 @@ check_gbif_arg_set <- function(x) {
 yank_args <- function(...) {
   dots <- list(...)
   #for (i in seq_along(dots)) cat(names(dots)[i], "  ", dots[[i]])
-  # filter out request objects for httr
+  # filter out request objects
   dots <- Filter(function(z) !inherits(z, "request"), dots)
   # check that args are in a acceptable set
   check_gbif_arg_set(dots)
@@ -453,7 +451,7 @@ yank_args <- function(...) {
 
 `%||%` <- function(x, y) if (is.null(x)) y else x
 
-rgbif_wrap <- function (..., indent = 0, width = getOption("width")){
+rgbif_wrap <- function(..., indent = 0, width = getOption("width")) {
   x <- paste0(..., collapse = "")
   wrapped <- strwrap(x, indent = indent, exdent = indent + 5, width = width)
   paste0(wrapped, collapse = "\n")

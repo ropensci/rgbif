@@ -12,8 +12,7 @@
 #' ## you are getting synonyms too. The results for using \code{scientifcName}
 #' ## and \code{taxonKey} parameters are the same in this case, but I wouldn't
 #' ## be surprised if for some names they return different results
-#' library("httr")
-#' occ_data(scientificName = 'Ursus americanus', config=verbose())
+#' occ_data(scientificName = 'Ursus americanus', curlopts=list(verbose=TRUE))
 #' key <- name_backbone(name = 'Ursus americanus', rank='species')$usageKey
 #' occ_data(taxonKey = key)
 #'
@@ -50,10 +49,17 @@
 #' occ_data(recordedBy="smith;BJ Stacey", limit=10)
 #'
 #' # Pass in curl options for extra fun
-#' library('httr')
-#' occ_data(taxonKey=key, limit=20, config=verbose())
-#' x <- occ_data(taxonKey=key, limit=50, config=progress())
-#' # occ_data(taxonKey=key, limit=20, config=timeout(0.01))
+#' occ_data(taxonKey=2433407, limit=20, curlopts=list(verbose=TRUE))
+#' occ_data(taxonKey=2433407, limit=20,
+#'   curlopts = list(
+#'     noprogress = FALSE,
+#'     progressfunction = function(down, up) {
+#'       cat(sprintf("up: %d | down %d\n", up, down))
+#'       return(TRUE)
+#'     }
+#'   )
+#' )
+#' # occ_data(taxonKey=2433407, limit=20, curlopts=list(timeout_ms=1))
 #'
 #' # Search for many species
 #' splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')

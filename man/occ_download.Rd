@@ -6,7 +6,7 @@
 \usage{
 occ_download(..., body = NULL, type = "and",
   user = getOption("gbif_user"), pwd = getOption("gbif_pwd"),
-  email = getOption("gbif_email"), callopts = list())
+  email = getOption("gbif_email"), curlopts = list())
 }
 \arguments{
 \item{...}{One or more of query arguments to kick of a download job.
@@ -33,7 +33,8 @@ in your \code{.Rprofile} file with the option \code{gbif_pwd}}
 email. Required. Set in your \code{.Rprofile} file with the option
 \code{gbif_email}}
 
-\item{callopts}{Further named arguments passed on to \code{\link[httr:POST]{httr::POST()}}}
+\item{curlopts}{list of named curl options passed on to
+[crul::HttpClient()]. see [curl::curl_options()] for curl options}
 }
 \description{
 Spin up a download request for GBIF occurrence data.
@@ -135,7 +136,7 @@ query1 <- '{"creator":"sckott",
     {"type":"equals","key":"TAXON_KEY","value":"7264332"},
     {"type":"equals","key":"HAS_COORDINATE","value":"TRUE"}]}
  }'
-# res <- occ_download(body = query, callopts=verbose())
+# res <- occ_download(body = query1, curlopts=list(verbose=TRUE))
 
 ## as a list
 library(jsonlite)
@@ -145,12 +146,14 @@ query <- list(
   predicate = list(
     type = unbox("and"),
     predicates = list(
-      list(type = unbox("equals"), key = unbox("TAXON_KEY"), value = unbox("7264332")),
-      list(type = unbox("equals"), key = unbox("HAS_COORDINATE"), value = unbox("TRUE"))
+      list(type = unbox("equals"), key = unbox("TAXON_KEY"),
+        value = unbox("7264332")),
+      list(type = unbox("equals"), key = unbox("HAS_COORDINATE"),
+        value = unbox("TRUE"))
     )
   )
 )
-# res <- occ_download(body = query, callopts=verbose())
+# res <- occ_download(body = query, curlopts = list(verbose = TRUE))
 }
 }
 \references{

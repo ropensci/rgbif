@@ -6,7 +6,8 @@
 \usage{
 name_backbone(name, rank = NULL, kingdom = NULL, phylum = NULL,
   class = NULL, order = NULL, family = NULL, genus = NULL,
-  strict = FALSE, verbose = FALSE, start = NULL, limit = 100, ...)
+  strict = FALSE, verbose = FALSE, start = NULL, limit = 100,
+  curlopts = list())
 }
 \arguments{
 \item{name}{(character) Full scientific name potentially with authorship
@@ -49,10 +50,8 @@ with `limit` to page through results.}
 
 \item{limit}{Number of records to return. Default: 100. Maximum: 1000.}
 
-\item{...}{Further named parameters, such as `query`, `path`,
-etc, passed on to [httr::modify_url()] within
-[httr::GET()] call. Unnamed parameters will be combined
-with [httr::config()]}
+\item{curlopts}{list of named curl options passed on to
+[crul::HttpClient()]. see [curl::curl_options()] for curl options}
 }
 \value{
 A list for a single taxon with many slots (with \code{verbose=FALSE})
@@ -87,9 +86,8 @@ name_backbone(name='Helianthus annuus', kingdom='plants', verbose=TRUE,
 name_backbone(name='Aso')
 name_backbone(name='Oenante')
 
-# Pass on httr options
-library('httr')
-x <- name_backbone(name='Oenante', config=progress())
+# Pass on curl options
+name_backbone(name='Oenante', curlopts = list(verbose=TRUE))
 }
 }
 \references{

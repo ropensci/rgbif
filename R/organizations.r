@@ -27,13 +27,12 @@
 #' organizations(data=c('contact','endpoint'),
 #'   uuid="4b4b2111-ee51-45f5-bf5e-f535f4a1c9dc")
 #'
-#' # Pass on options to httr
-#' library('httr')
-#' res <- organizations(query="spain", config=progress())
+#' # Pass on curl options
+#' organizations(query="spain", curlopts = list(verbose=TRUE))
 #' }
 
 organizations <- function(data = 'all', uuid = NULL, query = NULL, limit = 100,
-                          start=NULL, ...) {
+                          start=NULL, curlopts = list()) {
 
   args <- rgbif_compact(list(q = query, limit = as.integer(limit),
                              offset = start))
@@ -63,7 +62,7 @@ organizations <- function(data = 'all', uuid = NULL, query = NULL, limit = 100,
         url <- sprintf('%s/organization/%s/%s', gbif_base(), uuid, x)
       }
     }
-    res <- gbif_GET(url, args, TRUE, ...)
+    res <- gbif_GET(url, args, TRUE, curlopts)
     structure(list(meta = get_meta(res), data = parse_results(res, uuid)))
   }
 

@@ -29,13 +29,12 @@
 #' datasets(data=c('deleted','duplicate'))
 #' datasets(data=c('deleted','duplicate'), limit=1)
 #'
-#' # httr options
-#' library('httr')
-#' res <- datasets(data=c('deleted','duplicate'), config=progress())
+#' # curl options
+#' datasets(data=c('deleted','duplicate'), curlopts = list(verbose=TRUE))
 #' }
 
 datasets <- function(data = 'all', type = NULL, uuid = NULL, query = NULL,
-                     id = NULL, limit = 100, start=NULL, ...) {
+                     id = NULL, limit = 100, start=NULL, curlopts = list()) {
 
   args <- rgbif_compact(list(q = query, type = type, limit = as.integer(limit),
                              offset = start))
@@ -75,7 +74,7 @@ datasets <- function(data = 'all', type = NULL, uuid = NULL, query = NULL,
         sprintf('%s/dataset/%s/%s', gbif_base(), uuid, x)
       }
     }
-    res <- gbif_GET(url, args, TRUE, ...)
+    res <- gbif_GET(url, args, TRUE, curlopts)
     structure(list(meta = get_meta(res), data = parse_results(res, uuid)))
   }
 

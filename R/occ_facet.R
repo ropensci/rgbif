@@ -4,8 +4,9 @@
 #' @param facet (character) a character vector of length 1 or greater. Required.
 #' @param facetMincount (numeric) minimum number of records to be included
 #' in the faceting results
-#' @param ... Further named curl parameters (see xxx), or facet parameters,
-#' such as for paging based on each facet variable, e.g., country.facetLimit
+#' @param ... Facet parameters, such as for paging based on each facet
+#' variable, e.g., `country.facetLimit`
+#' @template occ
 #' @seealso [occ_search()] also has faceting ability, but
 #' can include occurrence data in addition to facets
 #' @details All fields can be faceted on except for last "lastInterpreted",
@@ -36,11 +37,16 @@
 #' ## offset
 #' occ_facet(facet = "country", country.facetLimit = 3,
 #'   country.facetOffset = 3)
+#'
+#' # Pass on curl options
+#' occ_facet(facet = "country", country.facetLimit = 3,
+#'   curlopts = list(verbose = TRUE))
 #' }
-occ_facet <- function(facet, facetMincount = NULL, ...) {
+occ_facet <- function(facet, facetMincount = NULL, curlopts = list(), ...) {
   args <- rgbif_compact(list(facetMincount = facetMincount, limit = 0))
   args <- c(args, collargs("facet"), yank_args(...))
-  tt <- gbif_GET(paste0(gbif_base(), '/occurrence/search'), args, FALSE, ...)
+  tt <- gbif_GET(paste0(gbif_base(), '/occurrence/search'), args,
+                 FALSE, curlopts)
   stats::setNames(lapply(tt$facets, function(z) {
     tibble::as_data_frame(
       data.table::rbindlist(z$counts, use.names = TRUE, fill = TRUE)

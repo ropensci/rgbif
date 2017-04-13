@@ -2,38 +2,35 @@
 #'
 #' @export
 #' @param scientificname A character vector of scientific names.
-#' @param ... Further named parameters, such as `query`, `path`,
-#' etc, passed on to [httr::modify_url()] within
-#' [httr::GET()] call. Unnamed parameters will be combined
-#' with [httr::config()]
+#' @template occ
 #'
-#' @return A \code{data.frame} containing fields extracted from parsed
+#' @return A `data.frame` containing fields extracted from parsed
 #' taxon names. Fields returned are the union of fields extracted from
 #' all species names in `scientificname`.
 #' @author John Baumgartner (johnbb@@student.unimelb.edu.au)
 #' @references <http://www.gbif.org/developer/species#parser>
 #' @examples \dontrun{
-#' parsenames('x Agropogon littoralis')
+#' parsenames(scientificname='x Agropogon littoralis')
 #' parsenames(c('Arrhenatherum elatius var. elatius',
 #'              'Secale cereale subsp. cereale', 'Secale cereale ssp. cereale',
 #'              'Vanessa atalanta (Linnaeus, 1758)'))
 #' parsenames("Ajuga pyramidata")
 #' parsenames("Ajuga pyramidata x reptans")
 #'
-#' # Pass on options to httr
-#' # library('httr')
+#' # Pass on curl options
 #' # res <- parsenames(c('Arrhenatherum elatius var. elatius',
-#' #             'Secale cereale subsp. cereale', 'Secale cereale ssp. cereale',
-#' #             'Vanessa atalanta (Linnaeus, 1758)'), config=progress())
+#' #          'Secale cereale subsp. cereale', 'Secale cereale ssp. cereale',
+#' #          'Vanessa atalanta (Linnaeus, 1758)'), curlopts=list(verbose=TRUE))
 #' }
-
-parsenames <- function(scientificname, ...) {
+parsenames <- function(scientificname, curlopts = list()) {
   url <- paste0(gbif_base(), "/parser/name")
-  tt <- POST(url, c(add_headers('Content-Type' = 'application/json')), ...,
-             body = jsonlite::toJSON(scientificname), make_rgbif_ua())
-  stop_for_status(tt)
-  stopifnot(tt$headers$`content-type` == 'application/json')
-  res <- jsonlite::fromJSON(c_utf8(tt), FALSE)
+  cli <- crul::HttpClient$new(url = url, headers = c(
+    rgbif_ual,
+    `Content-Type` = 'application/json'), opts = curlopts)
+  tt <- cli$post(body = jsonlite::toJSON(scientificname), encode = "json")
+  tt$raise_for_status()
+  stopifnot(tt$response_headers$`content-type` == 'application/json')
+  res <- jsonlite::fromJSON(tt$parse("UTF-8"), FALSE)
   res <- lapply(res, function(x) Map(function(z) if (is.null(z)) NA else z, x))
   (x <- data.table::setDF(
     data.table::rbindlist(res, fill = TRUE, use.names = TRUE)))

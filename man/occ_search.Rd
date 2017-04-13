@@ -20,7 +20,7 @@ occ_search(taxonKey = NULL, scientificName = NULL, country = NULL,
   publishingOrg = NULL, stateProvince = NULL, waterBody = NULL,
   locality = NULL, limit = 500, start = 0, fields = "all",
   return = "all", spellCheck = NULL, facet = NULL, facetMincount = NULL,
-  facetMultiselect = NULL, ...)
+  facetMultiselect = NULL, curlopts = list(), ...)
 }
 \arguments{
 \item{taxonKey}{(numeric) A taxon key from the GBIF backbone. All included and synonym taxa
@@ -216,10 +216,10 @@ All fields can be faceted on except for last "lastInterpreted",
 You can do facet searches alongside searching occurrence data, and
 return both, or only return facets, or only occurrence data, etc.}
 
-\item{...}{Further named parameters, such as `query`, `path`,
-etc, passed on to [httr::modify_url()] within
-[httr::GET()] call. Unnamed parameters will be combined
-with [httr::config()]}
+\item{curlopts}{list of named curl options passed on to
+[crul::HttpClient()]. see [curl::curl_options()] for curl options}
+
+\item{...}{additional facet parameters}
 }
 \value{
 An object of class \code{gbif}, which is a S3 class list, with
@@ -497,10 +497,19 @@ occ_search(recordedBy="smith", limit=20)
 occ_search(recordedBy=c("smith","BJ Stacey"), limit=20)
 
 # Pass in curl options for extra fun
-library('httr')
-occ_search(taxonKey=key, limit=20, return='hier', config=verbose())
-# occ_search(taxonKey=key, limit=20, return='hier', config=progress())
-# occ_search(taxonKey=key, limit=20, return='hier', config=timeout(1))
+occ_search(taxonKey=2433407, limit=20, return='hier',
+  curlopts=list(verbose=TRUE))
+occ_search(taxonKey=2433407, limit=20, return='hier',
+  curlopts = list(
+    noprogress = FALSE,
+    progressfunction = function(down, up) {
+      cat(sprintf("up: \%d | down \%d\\n", up, down))
+      return(TRUE)
+    }
+  )
+)
+# occ_search(taxonKey=2433407, limit=20, return='hier',
+#   curlopts = list(timeout_ms = 1))
 
 # Search for many species
 splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')

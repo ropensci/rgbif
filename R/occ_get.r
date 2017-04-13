@@ -13,10 +13,7 @@
 #' key, latitude, and longitute. 'all' returns all fields. Or specify each
 #' field you want returned by name, e.g. fields = c('name',
 #' 'decimalLatitude','altitude').
-#' @param ... Further named parameters, such as `query`, `path`
-#' etc, passed on to [httr::modify_url()] within
-#' [httr::GET()] call. Unnamed parameters will be combined
-#' with [httr::config()].
+#' @template occ
 #'
 #' @return A data.frame or list of data.frame's.
 #' @references <http://www.gbif.org/developer/occurrence#occurrence>
@@ -41,13 +38,11 @@
 #'    verbatim=TRUE)
 #'
 #' # Pass in curl options
-#' library("httr")
-#' occ_get(key=766766824, config=verbose())
-#' # occ_get(key=766766824, config=progress())
+#' occ_get(key=766766824, curlopts = list(verbose=TRUE))
 #' }
 
 occ_get <- function(key=NULL, return='all', verbatim=FALSE, fields='minimal',
-                    ...) {
+                    curlopts = list()) {
 
   stopifnot(is.numeric(key))
   return <- match.arg(return, c("meta", "data", "hier", "all"))
@@ -59,7 +54,7 @@ occ_get <- function(key=NULL, return='all', verbatim=FALSE, fields='minimal',
     } else {
       url <- sprintf('%s/occurrence/%s', gbif_base(), x)
     }
-    gbif_GET(url, NULL, FALSE, ...)
+    gbif_GET(url, NULL, FALSE, curlopts)
   }
 
   # Get data

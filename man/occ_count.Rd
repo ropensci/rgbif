@@ -8,7 +8,7 @@ occ_count(taxonKey = NULL, georeferenced = NULL, basisOfRecord = NULL,
   datasetKey = NULL, date = NULL, typeStatus = NULL,
   catalogNumber = NULL, country = NULL, hostCountry = NULL, year = NULL,
   from = 2000, to = 2012, type = "count", publishingCountry = "US",
-  nubKey = NULL, protocol = NULL, ...)
+  nubKey = NULL, protocol = NULL, curlopts = list())
 }
 \arguments{
 \item{taxonKey}{Species key}
@@ -47,9 +47,8 @@ year.}
 
 \item{protocol}{Protocol. E.g., 'DWC_ARCHIVE'}
 
-\item{...}{Further named parameters, such as \code{query}, \code{path}, etc,
-passed on to \code{\link[httr:modify_url]{httr::modify_url()}} within \code{\link[httr:GET]{httr::GET()}}
-call. Unnamed parameters will be combined with \code{\link[httr:config]{httr::config()}}.}
+\item{curlopts}{list of named curl options passed on to
+[crul::HttpClient()]. see [curl::curl_options()] for curl options}
 }
 \value{
 A single numeric value, or a list of numerics.
@@ -149,10 +148,8 @@ occ_count(type='year', from=2000, to=2012)
 occ_count(type='publishingCountry')
 occ_count(type='publishingCountry', country='BZ')
 
-# Pass on options to httr
-library('httr')
-# res <- occ_count(type='year', from=2000, to=2012, config=progress())
-# res
+# Pass on curl options
+occ_count(type='year', from=2000, to=2012, curlopts = list(verbose = TRUE))
 }
 }
 \references{

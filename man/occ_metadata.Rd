@@ -6,7 +6,7 @@
 institution codes.}
 \usage{
 occ_metadata(type = "catalogNumber", q = NULL, limit = 5, pretty = TRUE,
-  ...)
+  curlopts = list())
 }
 \arguments{
 \item{type}{Type of data, one of catalogNumber, collectionCode, recordedBy,
@@ -20,9 +20,8 @@ catalogNumber}
 \item{pretty}{Pretty as true (Default) uses cat to print data, \code{FALSE} gives
 character strings.}
 
-\item{...}{Further named parameters, such as \code{query}, \code{path}, etc,
-passed on to \code{\link[httr:modify_url]{httr::modify_url()}} within \code{\link[httr:GET]{httr::GET()}}
-call. Unnamed parameters will be combined with \code{\link[httr:config]{httr::config()}}.}
+\item{curlopts}{list of named curl options passed on to
+[crul::HttpClient()]. see [curl::curl_options()] for curl options}
 }
 \description{
 Search for catalog numbers, collection codes, collector names, and
@@ -51,10 +50,8 @@ occ_metadata(type = "catalogNumber", q=122, limit=10)
 # Partial unique type strings work too
 occ_metadata(type = "cat", q=122)
 
-# Pass on options to httr
-library('httr')
-occ_metadata(type = "cat", q=122, config=verbose())
-# occ_metadata(type = "cat", q=122, config=progress())
+# Pass on curl options
+occ_metadata(type = "cat", q=122, curlopts = list(verbose = TRUE))
 }
 }
 \references{

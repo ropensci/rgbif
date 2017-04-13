@@ -6,7 +6,7 @@
 #' @param pwd Your password, look at option "gbif_pwd" first
 #' @param limit Number of records to return. Default: 20
 #' @param start Record number to start at. Default: 0
-#' @param ... Further args passed to [httr::GET()]
+#' @template occ
 #'
 #' @examples \dontrun{
 #' occ_download_list(user="sckott")
@@ -14,20 +14,23 @@
 #' occ_download_list(user="sckott", start = 21)
 #' }
 
-occ_download_list <- function(user=getOption("gbif_user"),
-                    pwd=getOption("gbif_pwd"), limit = 20, start = 0, ...) {
+occ_download_list <- function(user = getOption("gbif_user"),
+                    pwd = getOption("gbif_pwd"), limit = 20, start = 0,
+                    curlopts = list()) {
 
   stopifnot(!is.null(user), !is.null(pwd))
   url <- sprintf('%s/occurrence/download/user/%s', gbif_base(), user)
   args <- rgbif_compact(list(limit = limit, offset = start))
-  res <- httr::GET(url, query = args, config = c(
-    content_type_json(),
-    httr::accept_json(),
-    httr::authenticate(user = user, password = pwd),
-    list(...)$config),
-    make_rgbif_ua()
+  cli <- crul::HttpClient$new(
+    url = url, opts = c(
+      curlopts, httpauth = 1, userpwd = paste0(user, ":", pwd)
+    ), headers = c(
+      rgbif_ual, `Content-Type` = "application/json",
+      Accept = "application/json"
+    )
   )
-  tt <- c_utf8(res)
+  res <- cli$get(query = args)
+  tt <- res$parse("UTF-8")
   out <- jsonlite::fromJSON(tt, flatten = TRUE)
   out$results$size <- getsize(out$results$size)
   list(

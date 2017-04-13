@@ -5,17 +5,15 @@
 \alias{enumeration_country}
 \title{Enumerations.}
 \usage{
-enumeration(x = NULL, ...)
+enumeration(x = NULL, curlopts = list())
 
 enumeration_country(...)
 }
 \arguments{
 \item{x}{A given enumeration.}
 
-\item{...}{Further named parameters, such as `query`, `path`,
-etc, passed on to [httr::modify_url()] within
-[httr::GET()] call. Unnamed parameters will be combined
-with [httr::config()]}
+\item{curlopts}{list of named curl options passed on to
+[crul::HttpClient()]. see [curl::curl_options()] for curl options}
 }
 \value{
 \code{enumeration} returns a character vector, while
@@ -37,7 +35,6 @@ enumeration("TypeStatus")
 enumeration_country()
 
 # curl options
-library("httr")
-enumeration(config = verbose())
+enumeration(curlopts = list(verbose=TRUE))
 }
 }

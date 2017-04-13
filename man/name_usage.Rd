@@ -6,7 +6,8 @@
 \usage{
 name_usage(key = NULL, name = NULL, data = "all", language = NULL,
   datasetKey = NULL, uuid = NULL, sourceId = NULL, rank = NULL,
-  shortname = NULL, start = NULL, limit = 100, return = "all", ...)
+  shortname = NULL, start = NULL, limit = 100, return = "all",
+  curlopts = list())
 }
 \arguments{
 \item{key}{(numeric) A GBIF key for a taxon}
@@ -47,10 +48,8 @@ with `limit` to page through results.}
 data. meta returns the metadata for the entire call. all gives all data
 back in a list.}
 
-\item{...}{Further named parameters, such as `query`, `path`,
-etc, passed on to [httr::modify_url()] within
-[httr::GET()] call. Unnamed parameters will be combined
-with [httr::config()]}
+\item{curlopts}{list of named curl options passed on to
+[crul::HttpClient()]. see [curl::curl_options()] for curl options}
 }
 \value{
 A list of length two. The first element is metadata. The second is
@@ -133,10 +132,8 @@ name_usage(uuid = c("73605f3a-af85-4ade-bbc5-522bfb90d847",
 name_usage(name = c("Puma", "Quercus"))
 name_usage(language = c("spanish", "german"))
 
-# Pass on httr options
-## here, print progress, notice the progress bar
-library('httr')
-# res <- name_usage(name='Puma concolor', limit=300, config=progress())
+# Pass on curl options
+name_usage(name='Puma concolor', limit=300, curlopts = list(verbose=TRUE))
 }
 }
 \references{

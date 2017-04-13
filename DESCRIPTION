@@ -24,7 +24,7 @@ Roxygen: list(markdown = TRUE)
 Imports:
     xml2,
     ggplot2,
-    httr (>= 1.0.0),
+    crul (>= 0.3.4),
     data.table,
     whisker,
     magrittr,

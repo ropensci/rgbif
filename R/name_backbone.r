@@ -56,21 +56,20 @@
 #' name_backbone(name='Aso')
 #' name_backbone(name='Oenante')
 #'
-#' # Pass on httr options
-#' library('httr')
-#' x <- name_backbone(name='Oenante', config=progress())
+#' # Pass on curl options
+#' name_backbone(name='Oenante', curlopts = list(verbose=TRUE))
 #' }
 
 name_backbone <- function(name, rank=NULL, kingdom=NULL, phylum=NULL,
   class=NULL, order=NULL, family=NULL, genus=NULL, strict=FALSE, verbose=FALSE,
-  start=NULL, limit=100, ...) {
+  start=NULL, limit=100, curlopts = list()) {
 
   url <- paste0(gbif_base(), '/species/match')
   args <- rgbif_compact(
     list(name=name, rank=rank, kingdom=kingdom, phylum=phylum,
          class=class, order=order, family=family, genus=genus,
          strict=strict, verbose=verbose, offset=start, limit=limit))
-  tt <- gbif_GET(url, args, FALSE, ...)
+  tt <- gbif_GET(url, args, FALSE, curlopts)
   if (verbose) {
     alt <- tibble::as_data_frame(data.table::setDF(
       data.table::rbindlist(

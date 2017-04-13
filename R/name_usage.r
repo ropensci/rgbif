@@ -69,15 +69,13 @@
 #' name_usage(name = c("Puma", "Quercus"))
 #' name_usage(language = c("spanish", "german"))
 #'
-#' # Pass on httr options
-#' ## here, print progress, notice the progress bar
-#' library('httr')
-#' # res <- name_usage(name='Puma concolor', limit=300, config=progress())
+#' # Pass on curl options
+#' name_usage(name='Puma concolor', limit=300, curlopts = list(verbose=TRUE))
 #' }
 
 name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
   datasetKey=NULL, uuid=NULL, sourceId=NULL, rank=NULL, shortname=NULL,
-  start=NULL, limit=100, return='all', ...) {
+  start=NULL, limit=100, return='all', curlopts = list()) {
 
   calls <- names(sapply(match.call(), deparse))[-1]
   calls_vec <- c("sourceId") %in% calls
@@ -99,7 +97,7 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
                 'related', 'synonyms', 'descriptions',
                 'distributions', 'media', 'references', 'speciesProfiles',
                 'vernacularNames', 'typeSpecimens', 'root'), several.ok = FALSE)
-  out <- getdata(data, key, uuid, shortname, args, ...)
+  out <- getdata(data, key, uuid, shortname, args, curlopts)
   # select output
   return <- match.arg(return, c('meta','data','all'))
   switch(return,
@@ -121,7 +119,7 @@ get_meta_nu <- function(x) {
 
 has_meta <- function(x) any(c('offset','limit','endOfRecords') %in% names(x))
 
-getdata <- function(x, key, uuid, shortname, args, ...){
+getdata <- function(x, key, uuid, shortname, args, curlopts = list()){
   if (!x == 'all' && is.null(key)) {
     stop('You must specify a key if data does not equal "all"', call. = FALSE)
   }
@@ -142,7 +140,7 @@ getdata <- function(x, key, uuid, shortname, args, ...){
           url <- sprintf('%s/species/root/%s/%s', gbif_base(), uuid, shortname)
         }
   }
-  gbif_GET(url, args, FALSE, ...)
+  gbif_GET(url, args, FALSE, curlopts)
 }
 
 name_usage_parse <- function(x, y) {

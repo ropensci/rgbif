@@ -4,20 +4,21 @@
 #'
 #' @param key A key generated from a request, like that from
 #' \code{occ_download}
-#' @param ... Further args passed to [httr::GET()]
+#' @template occ
 #'
 #' @examples \dontrun{
-#' occ_download_meta("0003983-140910143529206")
+#' occ_download_meta(key="0003983-140910143529206")
 #' occ_download_meta("0000066-140928181241064")
 #' }
 
-occ_download_meta <- function(key, ...) {
+occ_download_meta <- function(key, curlopts = list()) {
   stopifnot(!is.null(key))
   url <- sprintf('%s/occurrence/download/%s', gbif_base(), key)
-  tmp <- httr::GET(url, make_rgbif_ua(), ...)
-  if (tmp$status_code > 203) stop(c_utf8(tmp), call. = FALSE)
-  stopifnot(tmp$header$`content-type` == 'application/json')
-  tt <- c_utf8(tmp)
+  cli <- crul::HttpClient$new(url = url, headers = rgbif_ual, opts = curlopts)
+  tmp <- cli$get()
+  if (tmp$status_code > 203) stop(tmp$parse("UTF-8"), call. = FALSE)
+  stopifnot(tmp$response_headers$`content-type` == 'application/json')
+  tt <- tmp$parse("UTF-8")
   res <- jsonlite::fromJSON(tt, FALSE)
   structure(res, class = "occ_download_meta", format = res$request$format)
 }

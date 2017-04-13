@@ -4,15 +4,13 @@
 \alias{dataset_metrics}
 \title{Get details on a GBIF dataset.}
 \usage{
-dataset_metrics(uuid, ...)
+dataset_metrics(uuid, curlopts = list())
 }
 \arguments{
 \item{uuid}{(character) One or more dataset UUIDs. See examples.}
 
-\item{...}{Further named parameters, such as \code{query}, \code{path},
-etc, passed on to
-\code{\link[httr:modify_url]{httr::modify_url()}} within \code{\link[httr:GET]{httr::GET()}} call.
-Unnamed parameters will be combined with \code{\link[httr:config]{httr::config()}}}
+\item{curlopts}{list of named curl options passed on to
+[crul::HttpClient()]. see [curl::curl_options()] for curl options}
 }
 \description{
 Get details on a GBIF dataset.
@@ -23,10 +21,8 @@ dataset_metrics(uuid='863e6d6b-f602-4495-ac30-881482b6f799')
 dataset_metrics(uuid='66dd0960-2d7d-46ee-a491-87b9adcfe7b1')
 dataset_metrics(uuid=c('863e6d6b-f602-4495-ac30-881482b6f799',
    '66dd0960-2d7d-46ee-a491-87b9adcfe7b1'))
-
-library("httr")
 dataset_metrics(uuid='66dd0960-2d7d-46ee-a491-87b9adcfe7b1',
-  config=verbose())
+  curlopts = list(verbose=TRUE))
 }
 }
 \references{

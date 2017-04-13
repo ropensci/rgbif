@@ -22,9 +22,7 @@
 #' @param to Year to end at
 #' @param type One of count (default), schema, basis_of_record, countries, or
 #' year.
-#' @param ... Further named parameters, such as `query`, `path`, etc,
-#' passed on to [httr::modify_url()] within [httr::GET()]
-#' call. Unnamed parameters will be combined with [httr::config()].
+#' @template occ
 #'
 #' @return A single numeric value, or a list of numerics.
 #' @references <http://www.gbif.org/developer/occurrence#metrics>
@@ -117,17 +115,15 @@
 #' occ_count(type='publishingCountry')
 #' occ_count(type='publishingCountry', country='BZ')
 #'
-#' # Pass on options to httr
-#' library('httr')
-#' # res <- occ_count(type='year', from=2000, to=2012, config=progress())
-#' # res
+#' # Pass on curl options
+#' occ_count(type='year', from=2000, to=2012, curlopts = list(verbose = TRUE))
 #' }
 
 occ_count <- function(taxonKey = NULL, georeferenced = NULL,
   basisOfRecord = NULL, datasetKey = NULL, date = NULL, typeStatus = NULL,
   catalogNumber = NULL, country = NULL, hostCountry = NULL, year = NULL,
   from = 2000, to = 2012, type = 'count', publishingCountry = 'US',
-  nubKey = NULL, protocol = NULL, ...) {
+  nubKey = NULL, protocol = NULL, curlopts = list()) {
 
   calls <- names(sapply(match.call(), deparse))[-1]
   calls_vec <- c("nubKey","hostCountry","catalogNumber") %in% calls
@@ -163,6 +159,6 @@ occ_count <- function(taxonKey = NULL, georeferenced = NULL,
                 publishingCountry =
                   rgbif_compact(
                     list(country=ifelse(is.null(country), "US", country) )))
-  res <- gbif_GET_content(url, args, ...)
+  res <- gbif_GET_content(url, args, curlopts)
   if (type == 'count') as.numeric(res) else jsonlite::fromJSON(res, FALSE)
 }

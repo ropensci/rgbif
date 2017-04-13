@@ -27,14 +27,13 @@
 #' installations(data=c('deleted','nonPublishing'), limit=2)
 #' installations(identifierType='DOI', limit=2)
 #'
-#' # Pass on options to httr
-#' library('httr')
-#' res <- installations(data='deleted', config=progress())
+#' # Pass on curl options
+#' installations(data='deleted', curlopts = list(verbose=TRUE))
 #' }
 
 installations <- function(data = 'all', uuid = NULL, query = NULL,
                           identifier=NULL, identifierType=NULL, limit=100,
-                          start=NULL, ...) {
+                          start=NULL, curlopts = list()) {
 
   args <- rgbif_compact(list(q = query, limit = as.integer(limit),
                              offset = start))
@@ -64,7 +63,7 @@ installations <- function(data = 'all', uuid = NULL, query = NULL,
         sprintf('%s/installation/%s/%s', gbif_base(), uuid, x)
       }
     }
-    res <- gbif_GET(url, args, TRUE, ...)
+    res <- gbif_GET(url, args, TRUE, curlopts)
     structure(list(meta = get_meta(res), data = parse_results(res, uuid)))
   }
 

@@ -21,10 +21,10 @@
 #' # correctly spelled,  alternatives
 #' occ_spellcheck(search = "helianthus")
 #' }
-occ_spellcheck <- function(search, ...) {
+occ_spellcheck <- function(search, curlopts = list()) {
   url <- paste0(gbif_base(), '/occurrence/search')
   tt <- gbif_GET2(url, list(q = search, spellCheck = "true", limit = 0),
-                  TRUE, ...)
+                  TRUE, curlopts)
   if (!"suggestions" %in% names(tt$spellCheckResponse)) {
     tt$spellCheckResponse$correctlySpelled
   } else {
@@ -32,21 +32,22 @@ occ_spellcheck <- function(search, ...) {
   }
 }
 
-gbif_GET2 <- function(url, args, parse=FALSE, ...){
-  temp <- GET(url, query = args, make_rgbif_ua(), ...)
-
+gbif_GET2 <- function(url, args, parse=FALSE, curlopts = list()) {
+  cli <- crul::HttpClient$new(url = url, headers = rgbif_ual, opts = curlopts)
+  temp <- cli$get(query = args)
+  temp$raise_for_status()
   if (temp$status_code == 204) stop("Status: 204 - not found", call. = FALSE)
   if (temp$status_code > 200) {
-    mssg <- c_utf8(temp)
+    mssg <- temp$parse("UTF-8")
     if (grepl("html", mssg)) {
       stop("500 - Server error", call. = FALSE)
     }
     if (length(mssg) == 0 || nchar(mssg) == 0) {
-      mssg <- http_status(temp)$message
+      mssg <- temp$status_http()$message
     }
-    if (temp$status_code == 503) mssg <- http_status(temp)$message
+    if (temp$status_code == 503) mssg <- temp$status_http()$message
     stop(mssg, call. = FALSE)
   }
-  stopifnot(temp$headers$`content-type` == 'application/json')
-  jsonlite::fromJSON(c_utf8(temp), parse)
+  stopifnot(temp$response_headers$`content-type` == 'application/json')
+  jsonlite::fromJSON(temp$parse("UTF-8"), parse)
 }

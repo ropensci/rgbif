@@ -20,12 +20,11 @@
 #' enumeration_country()
 #'
 #' # curl options
-#' library("httr")
-#' enumeration(config = verbose())
+#' enumeration(curlopts = list(verbose=TRUE))
 #' }
-enumeration <- function(x = NULL, ...) {
+enumeration <- function(x = NULL, curlopts = list()) {
   url <- paste0(gbif_base(), "/enumeration/basic/", x)
-  gbif_GET(url, NULL, parse = TRUE, ...)
+  gbif_GET(url, NULL, parse = TRUE, curlopts)
 }
 
 #' @export

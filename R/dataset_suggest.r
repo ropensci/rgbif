@@ -52,15 +52,14 @@
 #' dataset_suggest(publishingCountry = c("DE", "NZ"))
 #' dataset_suggest(decade = c(1910, 1930))
 #'
-#' # httr options
-#' library('httr')
-#' dataset_suggest(type="OCCURRENCE", limit = 2, config=verbose())
+#' # curl options
+#' dataset_suggest(type="OCCURRENCE", limit = 2, curlopts = list(verbose=TRUE))
 #' }
 
 dataset_suggest <- function(query = NULL, country = NULL, type = NULL,
   subtype = NULL, keyword = NULL, owningOrg = NULL, publishingOrg = NULL,
   hostingOrg = NULL, publishingCountry = NULL, decade = NULL, continent = NULL,
-  limit=100, start=NULL, pretty=FALSE, description=FALSE, ...) {
+  limit=100, start=NULL, pretty=FALSE, description=FALSE, curlopts = list()) {
 
   calls <- names(sapply(match.call(), deparse))[-1]
   calls_vec <- c("owningOrg") %in% calls
@@ -79,7 +78,7 @@ dataset_suggest <- function(query = NULL, country = NULL, type = NULL,
   args <- rgbif_compact(list(q = query, limit = limit, offset = start))
   args <- c(args, type, keyword, publishingOrg, hostingOrg,
             publishingCountry, decade)
-  tt <- gbif_GET(url, args, FALSE, ...)
+  tt <- gbif_GET(url, args, FALSE, curlopts)
 
   if (description) {
     out <- lapply(tt, "[[", "description")

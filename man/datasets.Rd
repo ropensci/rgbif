@@ -5,7 +5,7 @@
 \title{Search for datasets and dataset metadata.}
 \usage{
 datasets(data = "all", type = NULL, uuid = NULL, query = NULL,
-  id = NULL, limit = 100, start = NULL, ...)
+  id = NULL, limit = 100, start = NULL, curlopts = list())
 }
 \arguments{
 \item{data}{The type of data to get. One or more of: 'organization',
@@ -28,10 +28,8 @@ is anything other than \code{all}}
 \item{start}{Record number to start at. Default: 0. Use in combination
 with `limit` to page through results.}
 
-\item{...}{Further named parameters, such as `query`, `path`,
-etc, passed on to [httr::modify_url()] within
-[httr::GET()] call. Unnamed parameters will be combined
-with [httr::config()]}
+\item{curlopts}{list of named curl options passed on to
+[crul::HttpClient()]. see [curl::curl_options()] for curl options}
 }
 \value{
 A list.
@@ -51,9 +49,8 @@ datasets(data='metadata', uuid="a6998220-7e3a-485d-9cd6-73076bd85657",
 datasets(data=c('deleted','duplicate'))
 datasets(data=c('deleted','duplicate'), limit=1)
 
-# httr options
-library('httr')
-res <- datasets(data=c('deleted','duplicate'), config=progress())
+# curl options
+datasets(data=c('deleted','duplicate'), curlopts = list(verbose=TRUE))
 }
 }
 \references{

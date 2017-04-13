@@ -8,7 +8,8 @@ dataset_search(query = NULL, country = NULL, type = NULL,
   keyword = NULL, owningOrg = NULL, publishingOrg = NULL,
   hostingOrg = NULL, publishingCountry = NULL, decade = NULL,
   facet = NULL, facetMincount = NULL, facetMultiselect = NULL,
-  limit = 100, start = NULL, pretty = FALSE, return = "all", ...)
+  limit = 100, start = NULL, pretty = FALSE, return = "all",
+  curlopts = list())
 }
 \arguments{
 \item{query}{Query term(s) for full text search.  The value for this
@@ -70,10 +71,8 @@ to manipulate output though.}
 \item{return}{What to return. One of meta, descriptions, data, facets,
 or all (Default).}
 
-\item{...}{Further named parameters, such as `query`, `path`,
-etc, passed on to [httr::modify_url()] within
-[httr::GET()] call. Unnamed parameters will be combined
-with [httr::config()]}
+\item{curlopts}{list of named curl options passed on to
+[crul::HttpClient()]. see [curl::curl_options()] for curl options}
 }
 \value{
 A data.frame, list, or message printed to console (using
@@ -140,9 +139,9 @@ dataset_search(hostingOrg = c("c5f7ef70-e233-11d9-a4d6-b8a03c50a862",
 dataset_search(publishingCountry = c("DE", "NZ"))$data
 dataset_search(decade = c(1910, 1930))$data
 
-## httr options
-library('httr')
-dataset_search(facet="decade", facetMincount="10", limit=2, config=verbose())
+## curl options
+dataset_search(facet="decade", facetMincount="10", limit=2,
+  curlopts = list(verbose=TRUE))
 }
 }
 \references{

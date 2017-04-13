@@ -18,7 +18,8 @@ occ_data(taxonKey = NULL, scientificName = NULL, country = NULL,
   familyKey = NULL, genusKey = NULL, establishmentMeans = NULL,
   protocol = NULL, license = NULL, organismId = NULL,
   publishingOrg = NULL, stateProvince = NULL, waterBody = NULL,
-  locality = NULL, limit = 500, start = 0, spellCheck = NULL, ...)
+  locality = NULL, limit = 500, start = 0, spellCheck = NULL,
+  curlopts = list())
 }
 \arguments{
 \item{taxonKey}{(numeric) A taxon key from the GBIF backbone. All included and synonym taxa
@@ -188,10 +189,10 @@ you can manually set the `start` parameter}
 the value passed to the `search` parameter. IMPORTANT: This only checks
 the input to the `search` parameter, and no others. Default: `FALSE`}
 
-\item{...}{Further named parameters, such as `query`, `path`,
-etc, passed on to [httr::modify_url()] within
-[httr::GET()] call. Unnamed parameters will be combined
-with [httr::config()]}
+\item{curlopts}{list of named curl options passed on to
+[crul::HttpClient()]. see [curl::curl_options()] for curl options}
+
+\item{...}{additional facet parameters}
 }
 \value{
 An object of class \code{gbif_data}, which is a S3 class list, with
@@ -415,8 +416,7 @@ occ_data(taxonKey=key, limit=20)
 ## you are getting synonyms too. The results for using \\code{scientifcName}
 ## and \\code{taxonKey} parameters are the same in this case, but I wouldn't
 ## be surprised if for some names they return different results
-library("httr")
-occ_data(scientificName = 'Ursus americanus', config=verbose())
+occ_data(scientificName = 'Ursus americanus', curlopts=list(verbose=TRUE))
 key <- name_backbone(name = 'Ursus americanus', rank='species')$usageKey
 occ_data(taxonKey = key)
 
@@ -453,10 +453,17 @@ occ_data(recordedBy=c("smith","BJ Stacey"), limit=10)
 occ_data(recordedBy="smith;BJ Stacey", limit=10)
 
 # Pass in curl options for extra fun
-library('httr')
-occ_data(taxonKey=key, limit=20, config=verbose())
-x <- occ_data(taxonKey=key, limit=50, config=progress())
-# occ_data(taxonKey=key, limit=20, config=timeout(0.01))
+occ_data(taxonKey=2433407, limit=20, curlopts=list(verbose=TRUE))
+occ_data(taxonKey=2433407, limit=20,
+  curlopts = list(
+    noprogress = FALSE,
+    progressfunction = function(down, up) {
+      cat(sprintf("up: \%d | down \%d\\n", up, down))
+      return(TRUE)
+    }
+  )
+)
+# occ_data(taxonKey=2433407, limit=20, curlopts=list(timeout_ms=1))
 
 # Search for many species
 splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')

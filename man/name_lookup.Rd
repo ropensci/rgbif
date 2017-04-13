@@ -9,7 +9,7 @@ name_lookup(query = NULL, rank = NULL, higherTaxonKey = NULL,
   datasetKey = NULL, nomenclaturalStatus = NULL, limit = 100,
   start = NULL, facet = NULL, facetMincount = NULL,
   facetMultiselect = NULL, type = NULL, hl = NULL, verbose = FALSE,
-  return = "all", ...)
+  return = "all", curlopts = list())
 }
 \arguments{
 \item{query}{Query term(s) for full text search.}
@@ -112,10 +112,6 @@ data back in a list. Each element is NULL if there is no contents in that
 element. hierarchies and names slots are named by the GBIF key, which
 matches the first column of the data.frame in the data slot. So if you
 wanted to combine those somehow, you could easily do so using the key.}
-
-\item{...}{Further named parameters, such as `query`, `path`, etc,
-passed on to [httr::modify_url()] within [httr::GET()]
-call. Unnamed parameters will be combined with [httr::config()].}
 }
 \value{
 A list of length three. The first element is metadata. The second is
@@ -223,9 +219,9 @@ name_lookup(nameType = c("cultivar", "doubtful"))
 name_lookup(datasetKey = c("73605f3a-af85-4ade-bbc5-522bfb90d847",
   "d7c60346-44b6-400d-ba27-8d3fbeffc8a5"))
 
-# Pass on httr options
-library('httr')
-name_lookup(query='Cnaemidophorus', rank="genus", config=verbose())
+# Pass on curl options
+name_lookup(query='Cnaemidophorus', rank="genus",
+  curlopts = list(verbose = TRUE))
 }
 }
 \references{

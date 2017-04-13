@@ -70,9 +70,7 @@
 #' response.
 #' @param limit Number of records to return. Maximum: 1000.
 #' @param start Record number to start at.
-#' @param ... Further named parameters, such as `query`, `path`, etc,
-#' passed on to [httr::modify_url()] within [httr::GET()]
-#' call. Unnamed parameters will be combined with [httr::config()].
+#' @template occ
 #' @param verbose (logical) If `TRUE`, all data is returned as a list for each
 #' element. If `FALSE` (default) a subset of the data that is thought to be most
 #' essential is organized into a data.frame.

@@ -6,7 +6,7 @@
 \usage{
 installations(data = "all", uuid = NULL, query = NULL,
   identifier = NULL, identifierType = NULL, limit = 100, start = NULL,
-  ...)
+  curlopts = list())
 }
 \arguments{
 \item{data}{The type of data to get. One or more of: 'contact', 'endpoint',
@@ -32,10 +32,8 @@ seem to work right now.}
 \item{start}{Record number to start at. Default: 0. Use in combination
 with `limit` to page through results.}
 
-\item{...}{Further named parameters, such as `query`, `path`,
-etc, passed on to [httr::modify_url()] within
-[httr::GET()] call. Unnamed parameters will be combined
-with [httr::config()]}
+\item{curlopts}{list of named curl options passed on to
+[crul::HttpClient()]. see [curl::curl_options()] for curl options}
 }
 \description{
 Installations metadata.
@@ -76,9 +74,8 @@ installations(data='deleted', limit=2)
 installations(data=c('deleted','nonPublishing'), limit=2)
 installations(identifierType='DOI', limit=2)
 
-# Pass on options to httr
-library('httr')
-res <- installations(data='deleted', config=progress())
+# Pass on curl options
+installations(data='deleted', curlopts = list(verbose=TRUE))
 }
 }
 \references{

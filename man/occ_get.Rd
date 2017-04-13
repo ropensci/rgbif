@@ -5,7 +5,7 @@
 \title{Get data for specific GBIF occurrences.}
 \usage{
 occ_get(key = NULL, return = "all", verbatim = FALSE,
-  fields = "minimal", ...)
+  fields = "minimal", curlopts = list())
 }
 \arguments{
 \item{key}{Occurrence key}
@@ -23,10 +23,8 @@ key, latitude, and longitute. 'all' returns all fields. Or specify each
 field you want returned by name, e.g. fields = c('name',
 'decimalLatitude','altitude').}
 
-\item{...}{Further named parameters, such as \code{query}, \code{path}
-etc, passed on to \code{\link[httr:modify_url]{httr::modify_url()}} within
-\code{\link[httr:GET]{httr::GET()}} call. Unnamed parameters will be combined
-with \code{\link[httr:config]{httr::config()}}.}
+\item{curlopts}{list of named curl options passed on to
+[crul::HttpClient()]. see [curl::curl_options()] for curl options}
 }
 \value{
 A data.frame or list of data.frame's.
@@ -55,9 +53,7 @@ occ_get(key=c(766766824, 620594291, 766420684),
    verbatim=TRUE)
 
 # Pass in curl options
-library("httr")
-occ_get(key=766766824, config=verbose())
-# occ_get(key=766766824, config=progress())
+occ_get(key=766766824, curlopts = list(verbose=TRUE))
 }
 }
 \references{

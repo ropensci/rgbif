@@ -79,16 +79,16 @@
 #' name_lookup(datasetKey = c("73605f3a-af85-4ade-bbc5-522bfb90d847",
 #'   "d7c60346-44b6-400d-ba27-8d3fbeffc8a5"))
 #'
-#' # Pass on httr options
-#' library('httr')
-#' name_lookup(query='Cnaemidophorus', rank="genus", config=verbose())
+#' # Pass on curl options
+#' name_lookup(query='Cnaemidophorus', rank="genus",
+#'   curlopts = list(verbose = TRUE))
 #' }
 
 name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
   isExtinct=NULL, habitat=NULL, nameType=NULL, datasetKey=NULL,
   nomenclaturalStatus=NULL, limit=100, start=NULL, facet=NULL,
   facetMincount=NULL, facetMultiselect=NULL, type=NULL, hl=NULL,
-  verbose=FALSE, return="all", ...) {
+  verbose=FALSE, return="all", curlopts = list()) {
 
   if (!is.null(facetMincount) && inherits(facetMincount, "numeric"))
     stop("Make sure facetMincount is character")
@@ -114,7 +114,7 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
             type=type))
   args <- c(args, facetbyname, rank, higherTaxonKey, status,
             habitat, nameType, datasetKey)
-  tt <- gbif_GET(url, args, FALSE, ...)
+  tt <- gbif_GET(url, args, FALSE, curlopts)
 
   # metadata
   meta <- tt[c('offset', 'limit', 'endOfRecords', 'count')]

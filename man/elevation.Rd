@@ -5,7 +5,7 @@
 \title{Get elevation for lat/long points from a data.frame or list of points.}
 \usage{
 elevation(input = NULL, latitude = NULL, longitude = NULL,
-  latlong = NULL, key, ...)
+  latlong = NULL, key, curlopts = list())
 }
 \arguments{
 \item{input}{A data.frame of lat/long data. There must be columns
@@ -21,9 +21,8 @@ the latitude vector.}
 
 \item{key}{(character) Required. An API key. See Details.}
 
-\item{...}{Further named parameters, such as \code{query}, \code{path}, etc, passed
-on to \code{\link[httr:modify_url]{httr::modify_url()}} within \code{\link[httr:GET]{httr::GET()}} call. Unnamed parameters
-will be combined with \code{\link[httr:config]{httr::config()}}.}
+\item{...}{named curl options passed on to \code{\link[crul:HttpClient]{crul::HttpClient()}}. see
+\code{\link[curl:curl_options]{curl::curl_options()}} for curl options}
 }
 \value{
 A new column named elevation in the supplied data.frame or a vector
@@ -55,10 +54,9 @@ elevation(latitude=dat$decimalLatitude, longitude=dat$decimalLongitude,
 pairs <- list(c(31.8496,-110.576060), c(29.15503,-103.59828))
 elevation(latlong=pairs, key = apikey)
 
-# Pass on options to httr
-library('httr')
+# Pass on curl options
 pairs <- list(c(31.8496,-110.576060), c(29.15503,-103.59828))
-elevation(latlong=pairs, config=verbose(), key = apikey)
+elevation(latlong=pairs, curlopts = list(verbose=TRUE), key = apikey)
 }
 }
 \references{

@@ -8,7 +8,7 @@ dataset_suggest(query = NULL, country = NULL, type = NULL,
   subtype = NULL, keyword = NULL, owningOrg = NULL,
   publishingOrg = NULL, hostingOrg = NULL, publishingCountry = NULL,
   decade = NULL, continent = NULL, limit = 100, start = NULL,
-  pretty = FALSE, description = FALSE, ...)
+  pretty = FALSE, description = FALSE, curlopts = list())
 }
 \arguments{
 \item{query}{Query term(s) for full text search.  The value for this
@@ -60,10 +60,8 @@ to manipulate output though.}
 \item{description}{Return descriptions only (TRUE) or all data (FALSE,
 default)}
 
-\item{...}{Further named parameters, such as `query`, `path`,
-etc, passed on to [httr::modify_url()] within
-[httr::GET()] call. Unnamed parameters will be combined
-with [httr::config()]}
+\item{curlopts}{list of named curl options passed on to
+[crul::HttpClient()]. see [curl::curl_options()] for curl options}
 }
 \value{
 A data.frame, list, or message printed to console (using
@@ -125,9 +123,8 @@ dataset_suggest(hostingOrg = c("c5f7ef70-e233-11d9-a4d6-b8a03c50a862",
 dataset_suggest(publishingCountry = c("DE", "NZ"))
 dataset_suggest(decade = c(1910, 1930))
 
-# httr options
-library('httr')
-dataset_suggest(type="OCCURRENCE", limit = 2, config=verbose())
+# curl options
+dataset_suggest(type="OCCURRENCE", limit = 2, curlopts = list(verbose=TRUE))
 }
 }
 \references{

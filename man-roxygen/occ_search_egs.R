@@ -67,10 +67,19 @@
 #' occ_search(recordedBy=c("smith","BJ Stacey"), limit=20)
 #'
 #' # Pass in curl options for extra fun
-#' library('httr')
-#' occ_search(taxonKey=key, limit=20, return='hier', config=verbose())
-#' # occ_search(taxonKey=key, limit=20, return='hier', config=progress())
-#' # occ_search(taxonKey=key, limit=20, return='hier', config=timeout(1))
+#' occ_search(taxonKey=2433407, limit=20, return='hier',
+#'   curlopts=list(verbose=TRUE))
+#' occ_search(taxonKey=2433407, limit=20, return='hier',
+#'   curlopts = list(
+#'     noprogress = FALSE,
+#'     progressfunction = function(down, up) {
+#'       cat(sprintf("up: %d | down %d\n", up, down))
+#'       return(TRUE)
+#'     }
+#'   )
+#' )
+#' # occ_search(taxonKey=2433407, limit=20, return='hier',
+#' #   curlopts = list(timeout_ms = 1))
 #'
 #' # Search for many species
 #' splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')

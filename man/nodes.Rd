@@ -5,7 +5,8 @@
 \title{Nodes metadata.}
 \usage{
 nodes(data = "all", uuid = NULL, query = NULL, identifier = NULL,
-  identifierType = NULL, limit = 100, start = NULL, isocode = NULL, ...)
+  identifierType = NULL, limit = 100, start = NULL, isocode = NULL,
+  curlopts = list())
 }
 \arguments{
 \item{data}{The type of data to get. One or more of: 'organization',
@@ -33,10 +34,8 @@ with `limit` to page through results.}
 
 \item{isocode}{A 2 letter country code. Only used if data='country'.}
 
-\item{...}{Further named parameters, such as `query`, `path`,
-etc, passed on to [httr::modify_url()] within
-[httr::GET()] call. Unnamed parameters will be combined
-with [httr::config()]}
+\item{curlopts}{list of named curl options passed on to
+[crul::HttpClient()]. see [curl::curl_options()] for curl options}
 }
 \description{
 Nodes metadata.
@@ -97,9 +96,8 @@ res <- lapply(uuids, function(x) nodes(x, data='identifier')$data)
 res <- res[!sapply(res, NROW)==0]
 res[1]
 
-# Pass on options to httr
-library('httr')
-res <- nodes(limit=20, config=progress())
+# Pass on curl options
+nodes(limit=20, curlopts=list(verbose=TRUE))
 }
 }
 \references{

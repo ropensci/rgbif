@@ -108,6 +108,7 @@
 #' @param spellCheck (logical) If `TRUE` ask GBIF to check your spelling of
 #' the value passed to the `search` parameter. IMPORTANT: This only checks
 #' the input to the `search` parameter, and no others. Default: `FALSE`
+#' @param ... additional facet parameters
 #'
 #' @details
 #' **protocol parameter options**:

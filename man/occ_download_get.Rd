@@ -4,7 +4,7 @@
 \alias{occ_download_get}
 \title{Get a download from GBIF.}
 \usage{
-occ_download_get(key, path = ".", overwrite = FALSE, ...)
+occ_download_get(key, path = ".", overwrite = FALSE, curlopts = list())
 }
 \arguments{
 \item{key}{A key generated from a request, like that from \code{occ_download}}
@@ -14,22 +14,24 @@ occ_download_get(key, path = ".", overwrite = FALSE, ...)
 
 \item{overwrite}{Will only overwrite existing path if TRUE.}
 
-\item{...}{Further args passed to \code{\link[httr:GET]{httr::GET()}}}
+\item{curlopts}{list of named curl options passed on to
+[crul::HttpClient()]. see [curl::curl_options()] for curl options}
 }
 \description{
 Get a download from GBIF.
 }
 \details{
 Downloads the zip file to a directory you specify on your machine.
-\code{\link[httr:write_disk]{httr::write_disk()}} is used internally to write the zip file to
-disk. This function only downloads the file. See \code{occ_download_import}
-to open a downloaded file in your R session. The speed of this function is
-of course proportional to the size of the file to download. For example,
-a 58 MB file on my machine took about 26 seconds.
+\code{\link[crul:HttpClient]{crul::HttpClient()}} is used internally to write the zip file to
+disk. See \link[crul:writing-options]{crul::writing-options}. This function only downloads the file.
+See \code{occ_download_import} to open a downloaded file in your R session.
+The speed of this function is of course proportional to the size of the
+file to download. For example, a 58 MB file on my machine took about
+26 seconds.
 }
 \examples{
 \dontrun{
-occ_download_get("0000066-140928181241064", overwrite = TRUE)
+occ_download_get("0000066-140928181241064")
 occ_download_get("0003983-140910143529206", overwrite = TRUE)
 }
 }

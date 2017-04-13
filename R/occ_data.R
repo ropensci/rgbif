@@ -35,14 +35,14 @@ occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
   genusKey = NULL, establishmentMeans = NULL, protocol = NULL, license = NULL,
   organismId = NULL, publishingOrg = NULL, stateProvince = NULL,
   waterBody = NULL, locality = NULL, limit=500, start=0,
-  spellCheck = NULL, ...) {
+  spellCheck = NULL, curlopts = list()) {
 
   geometry <- geometry_handler(geometry, geom_big, geom_size, geom_n)
 
   url <- paste0(gbif_base(), '/occurrence/search')
   argscoll <- NULL
 
-  .get_occ_data <- function(x=NULL, itervar=NULL) {
+  .get_occ_data <- function(x=NULL, itervar=NULL, curlopts = list()) {
     if (!is.null(x)) {
       assign(itervar, x)
     }
@@ -91,7 +91,7 @@ occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
       outout <- list()
       while (sumreturned < limit) {
         iter <- iter + 1
-        tt <- gbif_GET(url, args, TRUE, ...)
+        tt <- gbif_GET(url, args, TRUE, curlopts)
 
         # if no results, assign count var with 0
         if (identical(tt$results, list())) tt$count <- 0
@@ -111,7 +111,7 @@ occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
       }
     } else {
       ### loop route for limit<300
-      outout <- list(gbif_GET(url, args, TRUE, ...))
+      outout <- list(gbif_GET(url, args, TRUE, curlopts))
     }
 
     meta <- outout[[length(outout)]][c('offset', 'limit', 'endOfRecords',

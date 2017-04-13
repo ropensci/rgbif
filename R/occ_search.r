@@ -44,7 +44,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
   organismId = NULL, publishingOrg = NULL, stateProvince = NULL,
   waterBody = NULL, locality = NULL, limit=500, start=0, fields = 'all',
   return='all', spellCheck = NULL, facet = NULL, facetMincount = NULL,
-  facetMultiselect = NULL, ...) {
+  facetMultiselect = NULL, curlopts = list(), ...) {
 
   calls <- names(sapply(match.call(), deparse))[-1]
   calls_vec <- c("georeferenced","altitude","latitude","longitude") %in% calls
@@ -59,7 +59,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
   url <- paste0(gbif_base(), '/occurrence/search')
   argscoll <- NULL
 
-  .get_occ_search <- function(x=NULL, itervar=NULL, ...) {
+  .get_occ_search <- function(x=NULL, itervar=NULL, curlopts = list()) {
     if (!is.null(x)) {
       assign(itervar, x)
     }
@@ -71,32 +71,6 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
     check_vals(limit, "limit")
     check_vals(start, "start")
 
-    # Make arg list
-    # args <- rgbif_compact(
-    #   list(
-    #     taxonKey=taxonKey, scientificName=scientificName, country=country,
-    #     publishingCountry=publishingCountry, hasCoordinate=hasCoordinate,
-    #     typeStatus=typeStatus,
-    #     recordNumber=recordNumber, lastInterpreted=lastInterpreted,
-    #     continent=continent,
-    #     geometry=geometry, recordedBy=recordedBy, basisOfRecord=basisOfRecord,
-    #     datasetKey=datasetKey, eventDate=eventDate, catalogNumber=catalogNumber,
-    #     year=year, month=month, decimalLatitude=decimalLatitude,
-    #     decimalLongitude=decimalLongitude, elevation=elevation, depth=depth,
-    #     institutionCode=institutionCode, collectionCode=collectionCode,
-    #     hasGeospatialIssue=hasGeospatialIssue, q=search, mediaType=mediaType,
-    #     subgenusKey=subgenusKey,
-    #     repatriated=repatriated, phylumKey=phylumKey, kingdomKey=kingdomKey,
-    #     classKey=classKey, orderKey=orderKey, familyKey=familyKey,
-    #     genusKey=genusKey, establishmentMeans=establishmentMeans,
-    #     protocol=protocol, license=license, organismId=organismId,
-    #     publishingOrg=publishingOrg, stateProvince=stateProvince,
-    #     waterBody=waterBody, locality=locality,
-    #     limit=check_limit(as.integer(limit)),
-    #     offset=check_limit(as.integer(start)), spellCheck = spellCheck,
-    #     facetMincount = facetMincount, facetMultiselect = facetMultiselect
-    #   )
-    # )
     args <- rgbif_compact(
       list(hasCoordinate = hasCoordinate,
            lastInterpreted = lastInterpreted,
@@ -122,7 +96,6 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
       convmany(license), convmany(organismId), convmany(publishingOrg),
       convmany(stateProvince), convmany(waterBody), convmany(locality)
     )
-    #args <- c(args, parse_issues(issue), collargs("facet"), yank_args(...))
 
     argscoll <<- args
 
@@ -133,7 +106,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
       outout <- list()
       while (sumreturned < limit) {
         iter <- iter + 1
-        tt <- gbif_GET(url, args, FALSE, ...)
+        tt <- gbif_GET(url, args, FALSE, curlopts)
 
         # if no results, assign count var with 0
         if (identical(tt$results, list())) tt$count <- 0
@@ -153,7 +126,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
       }
     } else {
       ### loop route for facet or limit=0
-      outout <- list(gbif_GET(url, args, FALSE, ...))
+      outout <- list(gbif_GET(url, args, FALSE, curlopts))
     }
 
     meta <- outout[[length(outout)]][c('offset', 'limit', 'endOfRecords',
@@ -248,9 +221,10 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
   }
 
   if (length(iter) == 0) {
-    out <- .get_occ_search(...)
+    out <- .get_occ_search(curlopts = curlopts)
   } else {
-    out <- lapply(iter[[1]], .get_occ_search, itervar = names(iter), ...)
+    out <- lapply(iter[[1]], .get_occ_search, itervar = names(iter),
+                  curlopts = curlopts)
     names(out) <- transform_names(iter[[1]])
   }
 

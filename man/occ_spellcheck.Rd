@@ -4,15 +4,13 @@
 \alias{occ_spellcheck}
 \title{Spell check search term for occurrence searches}
 \usage{
-occ_spellcheck(search, ...)
+occ_spellcheck(search, curlopts = list())
 }
 \arguments{
 \item{search}{(character) query term}
 
-\item{...}{Further named parameters, such as `query`, `path`,
-etc, passed on to [httr::modify_url()] within
-[httr::GET()] call. Unnamed parameters will be combined
-with [httr::config()]}
+\item{curlopts}{list of named curl options passed on to
+[crul::HttpClient()]. see [curl::curl_options()] for curl options}
 }
 \value{
 A boolean if search term spelled correctly, or if not spelled
