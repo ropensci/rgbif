@@ -21,10 +21,6 @@
 #' # Suggest datasets tagged with keyword "france".
 #' dataset_suggest(keyword="france")
 #'
-#' # Suggest datasets owned by the organization with key
-#' # "07f617d0-c688-11d8-bf62-b8a03c50a862" (UK NBN).
-#' dataset_suggest(owningOrg="07f617d0-c688-11d8-bf62-b8a03c50a862")
-#'
 #' # Fulltext search for all datasets having the word "amsterdam" somewhere in
 #' # its metadata (title, description, etc).
 #' dataset_suggest(query="amsterdam")
