@@ -1,7 +1,7 @@
 #' Check input WKT
 #'
 #' @export
-#' @param wkt (character) A Well Known Text object
+#' @param wkt (character) one or more Well Known Text objects
 #' @examples
 #' check_wkt('POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))')
 #' check_wkt('POINT(30.1 10.1)')
@@ -15,8 +15,8 @@
 #'   'POINT(30.1 10.1)'))
 #'
 #' # bad WKT
-#' wkt <- 'POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 a))'
-#' #check_wkt(wkt)
+#' # wkt <- 'POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 a))'
+#' # check_wkt(wkt)
 #'
 #' # this passes this check, but isn't valid for GBIF
 #' wkt <- 'POLYGON((-178.59375 64.83258989321493,-165.9375 59.24622380205539,
@@ -39,9 +39,15 @@ check_wkt <- function(wkt = NULL){
   if (!is.null(wkt)) {
     stopifnot(is.character(wkt))
 
-    if (grepl(";", wkt)) {
-      wkt <- strsplit(wkt, ";")[[1]]
+    newwkt <- c()
+    for (i in seq_along(wkt)) {
+      if (grepl(";", wkt[[i]])) {
+        newwkt[[i]] <- strsplit(wkt[[i]], ";")[[1]]
+      } else {
+        newwkt[[i]] <- wkt[[i]]
+      }
     }
+    wkt <- unlist(newwkt)
 
     y <- strextract(wkt, "[A-Z]+")
 
