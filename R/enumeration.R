@@ -29,7 +29,7 @@ enumeration <- function(x = NULL, curlopts = list()) {
 
 #' @export
 #' @rdname enumeration
-enumeration_country <- function(...) {
+enumeration_country <- function(curlopts = list()) {
   url <- paste0(gbif_base(), "/enumeration/country/")
-  gbif_GET(url, NULL, parse = TRUE, ...)
+  gbif_GET(url, NULL, parse = TRUE, curlopts = curlopts)
 }

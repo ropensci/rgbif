@@ -10,8 +10,7 @@
 #' the latitude vector.
 #' @param latlong A vector of lat/long pairs. See examples.
 #' @param key (character) Required. An API key. See Details.
-#' @param ... named curl options passed on to [crul::HttpClient()]. see
-#' [curl::curl_options()] for curl options
+#' @template occ
 #'
 #' @return A new column named elevation in the supplied data.frame or a vector
 #' with elevation of each location in meters.

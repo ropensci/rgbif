@@ -112,6 +112,9 @@ data back in a list. Each element is NULL if there is no contents in that
 element. hierarchies and names slots are named by the GBIF key, which
 matches the first column of the data.frame in the data slot. So if you
 wanted to combine those somehow, you could easily do so using the key.}
+
+\item{curlopts}{list of named curl options passed on to
+[crul::HttpClient()]. see [curl::curl_options()] for curl options}
 }
 \value{
 A list of length three. The first element is metadata. The second is

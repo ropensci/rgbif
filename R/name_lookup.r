@@ -2,6 +2,7 @@
 #'
 #' @template namelkup
 #' @export
+#' @template occ
 #' @references <http://www.gbif.org/developer/species#searching>
 #' @examples \dontrun{
 #' # Look up names like mammalia

@@ -7,7 +7,7 @@
 \usage{
 enumeration(x = NULL, curlopts = list())
 
-enumeration_country(...)
+enumeration_country(curlopts = list())
 }
 \arguments{
 \item{x}{A given enumeration.}

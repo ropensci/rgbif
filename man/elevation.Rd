@@ -21,8 +21,8 @@ the latitude vector.}
 
 \item{key}{(character) Required. An API key. See Details.}
 
-\item{...}{named curl options passed on to \code{\link[crul:HttpClient]{crul::HttpClient()}}. see
-\code{\link[curl:curl_options]{curl::curl_options()}} for curl options}
+\item{curlopts}{list of named curl options passed on to
+[crul::HttpClient()]. see [curl::curl_options()] for curl options}
 }
 \value{
 A new column named elevation in the supplied data.frame or a vector
