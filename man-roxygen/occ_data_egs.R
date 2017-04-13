@@ -22,7 +22,10 @@
 #'
 #' # Search by catalog number
 #' occ_data(catalogNumber="49366", limit=10)
+#' ## separate requests: use a vector of strings
 #' occ_data(catalogNumber=c("49366","Bird.27847588"), limit=10)
+#' ## one request, many instances of same parameter: use semi-colon sep. string
+#' occ_data(catalogNumber="49366;Bird.27847588", limit=10)
 #'
 #' # Use paging parameters (limit and start) to page. Note the different results
 #' # for the two queries below.
@@ -30,14 +33,21 @@
 #' occ_data(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a',start=20,limit=5)
 #'
 #' # Many dataset keys
+#' ## separate requests: use a vector of strings
 #' occ_data(datasetKey=c("50c9509d-22c7-4a22-a47d-8c48425ef4a7",
 #'    "7b5d6a48-f762-11e1-a439-00145eb45e9a"), limit=20)
+#' ## one request, many instances of same parameter: use semi-colon sep. string
+#' v="50c9509d-22c7-4a22-a47d-8c48425ef4a7;7b5d6a48-f762-11e1-a439-00145eb45e9a"
+#' occ_data(datasetKey = v, limit=20)
 #'
 #' # Search by recorder
 #' occ_data(recordedBy="smith", limit=20)
 #'
 #' # Many collector names
-#' occ_data(recordedBy=c("smith","BJ Stacey"), limit=20)
+#' ## separate requests: use a vector of strings
+#' occ_data(recordedBy=c("smith","BJ Stacey"), limit=10)
+#' ## one request, many instances of same parameter: use semi-colon sep. string
+#' occ_data(recordedBy="smith;BJ Stacey", limit=10)
 #'
 #' # Pass in curl options for extra fun
 #' library('httr')
@@ -48,7 +58,10 @@
 #' # Search for many species
 #' splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
 #' keys <- sapply(splist, function(x) name_suggest(x)$key[1], USE.NAMES=FALSE)
-#' occ_data(taxonKey=keys, limit=5)
+#' ## separate requests: use a vector of strings
+#' occ_data(taxonKey = keys, limit=5)
+#' ## one request, many instances of same parameter: use semi-colon sep. string
+#' occ_data(taxonKey = paste0(keys, collapse = ";"), limit=5)
 #'
 #' # Search using a synonym name
 #' #  Note that you'll see a message printing out that the accepted name will
@@ -76,9 +89,13 @@
 #' occ_data(geometry=c(-125.0,38.4,-121.8,40.9), limit=20)
 #'
 #' ## you can seaerch on many geometry objects
+#' ### separate requests: use a vector of strings
 #' wkts <- c('POLYGON((-102.2 46.0,-93.9 46.0,-93.9 43.7,-102.2 43.7,-102.2 46.0))',
 #' 'POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))')
 #' occ_data(geometry = wkts, limit=20)
+#' ### one request, many instances of same parameter: use semi-colon sep. string
+#' occ_data(geometry = paste0(wkts, collapse = ";"), limit=20)
+#'
 #'
 #' # Search on a long WKT string - too long for a GBIF search API request
 #' ## By default, a very long WKT string will likely cause a request failure as
@@ -143,7 +160,10 @@
 #' isocodes[grep("France", isocodes$name),"code"]
 #' occ_data(country='FR', limit=20)
 #' occ_data(country='DE', limit=20)
+#' ### separate requests: use a vector of strings
 #' occ_data(country=c('US','DE'), limit=20)
+#' ### one request, many instances of same parameter: use semi-colon sep. string
+#' occ_data(country = 'US;DE', limit=20)
 #'
 #' # Get only occurrences with lat/long data
 #' occ_data(taxonKey=key, hasCoordinate=TRUE, limit=20)
@@ -166,11 +186,19 @@
 #'
 #' # Get occurrences based on institutionCode
 #' occ_data(institutionCode="TLMF", limit=20)
+#' ### separate requests: use a vector of strings
 #' occ_data(institutionCode=c("TLMF","ArtDatabanken"), limit=20)
+#' ### one request, many instances of same parameter: use semi-colon sep. string
+#' occ_data(institutionCode = "TLMF;ArtDatabanken", limit=20)
 #'
 #' # Get occurrences based on collectionCode
 #' occ_data(collectionCode="Floristic Databases MV - Higher Plants", limit=20)
-#' occ_data(collectionCode=c("Floristic Databases MV - Higher Plants","Artport"))
+#' ### separate requests: use a vector of strings
+#' occ_data(collectionCode=c("Floristic Databases MV - Higher Plants",
+#'   "Artport"), limit = 20)
+#' ### one request, many instances of same parameter: use semi-colon sep. string
+#' occ_data(collectionCode = "Floristic Databases MV - Higher Plants;Artport",
+#'   limit = 20)
 #'
 #' # Get only those occurrences with spatial issues
 #' occ_data(taxonKey=key, hasGeospatialIssue=TRUE, limit=20)
@@ -211,6 +239,10 @@
 #' occ_data(establishmentMeans = "INVASIVE", limit = 5)
 #' occ_data(establishmentMeans = "NATIVE", limit = 5)
 #' occ_data(establishmentMeans = "UNCERTAIN", limit = 5)
+#' ### separate requests: use a vector of strings
+#' occ_data(establishmentMeans = c("INVASIVE", "NATIVE"), limit = 5)
+#' ### one request, many instances of same parameter: use semi-colon sep. string
+#' occ_data(establishmentMeans = "INVASIVE;NATIVE", limit = 5)
 #'
 #' # search on protocol
 #' occ_data(protocol = "DIGIR", limit = 5)
@@ -228,18 +260,20 @@
 #' occ_data(stateProvince = "California", limit = 5)
 #'
 #' # search on waterBody
-#' occ_data(waterBody = "AMAZONAS BASIN, RIO JURUA", limit = 5)
+#' occ_data(waterBody = "pacific ocean", limit = 5)
 #'
 #' # search on locality
 #' occ_data(locality = "Trondheim", limit = 5)
+#' ### separate requests: use a vector of strings
 #' res <- occ_data(locality = c("Trondheim", "Hovekilen"), limit = 5)
 #' res$Trondheim$data
 #' res$Hovekilen$data
+#' ### one request, many instances of same parameter: use semi-colon sep. string
+#' occ_data(locality = "Trondheim;Hovekilen", limit = 5)
 #'
 #'
 #' # Range queries
 #' ## See Detail for parameters that support range queries
-#' ### this is a range depth, with lower/upper limits in character string
 #' occ_data(depth='50,100', limit = 20)
 #' ### this is not a range search, but does two searches for each depth
 #' occ_data(depth=c(50,100), limit = 20)
@@ -270,11 +304,16 @@
 #' occ_data(mediaType = 'Sound', limit = 20)
 #'
 #' # Search by continent
-#' ## One of africa, antarctica, asia, europe, north_america, oceania, or south_america
+#' ## One of africa, antarctica, asia, europe, north_america, oceania, or
+#' ## south_america
 #' occ_data(continent = 'south_america', limit = 20)$meta
 #' occ_data(continent = 'africa', limit = 20)$meta
 #' occ_data(continent = 'oceania', limit = 20)$meta
 #' occ_data(continent = 'antarctica', limit = 20)$meta
+#' ### separate requests: use a vector of strings
+#' occ_data(continent = c('south_america', 'oceania'), limit = 20)
+#' ### one request, many instances of same parameter: use semi-colon sep. string
+#' occ_data(continent = 'south_america;oceania', limit = 20)
 #'
 #' # Query based on issues - see Details for options
 #' ## one issue

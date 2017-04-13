@@ -222,11 +222,13 @@ with \code{\link[httr]{config}}.}
 \value{
 An object of class \code{gbif}, which is a S3 class list, with
 slots for metadata (\code{meta}), the occurrence data itself (\code{data}),
-the taxonomic hierarchy data (\code{hier}), and media metadata (\code{media}).
+the taxonomic hierarchy data (\code{hier}), and media metadata
+(\code{media}).
 In addition, the object has attributes listing the user supplied arguments
 and whether it was a "single" or "many" search; that is, if you supply two
 values of the \code{datasetKey} parameter to searches are done, and it's a
-"many". \code{meta} is a list of length four with offset, limit, endOfRecords and
+"many". \code{meta} is a list of length four with offset, limit,
+endOfRecords and
 count fields. \code{data} is a tibble (aka data.frame). \code{hier} is a
 list of data.frame's of the unique set of taxa found, where each data.frame
 is its taxonomic classification. \code{media} is a list of media objects,
@@ -450,7 +452,10 @@ occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a', return='data', lim
 
 # Search by catalog number
 occ_search(catalogNumber="49366", limit=20)
-occ_search(catalogNumber=c("49366","Bird.27847588"), limit=20)
+## separate requests: use a vector of strings
+occ_search(catalogNumber=c("49366","Bird.27847588"), limit=10)
+## one request, many instances of same parameter: use semi-colon sep. string
+occ_search(catalogNumber="49366;Bird.27847588", limit=10)
 
 # Get all data, not just lat/long and name
 occ_search(taxonKey=key, fields='all', limit=20)
@@ -468,8 +473,12 @@ occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a',start=20,limit=5,
    return="data")
 
 # Many dataset keys
+## separate requests: use a vector of strings
 occ_search(datasetKey=c("50c9509d-22c7-4a22-a47d-8c48425ef4a7",
    "7b5d6a48-f762-11e1-a439-00145eb45e9a"), limit=20)
+## one request, many instances of same parameter: use semi-colon sep. string
+v="50c9509d-22c7-4a22-a47d-8c48425ef4a7;7b5d6a48-f762-11e1-a439-00145eb45e9a"
+occ_search(datasetKey = v, limit=20)
 
 # Occurrence data: lat/long data, and associated metadata with occurrences
 ## If return='data' the output is a data.frame of all data together
@@ -495,7 +504,10 @@ occ_search(taxonKey=key, limit=20, return='hier', config=verbose())
 # Search for many species
 splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
 keys <- sapply(splist, function(x) name_suggest(x)$key[1], USE.NAMES=FALSE)
-occ_search(taxonKey=keys, limit=5, return='data')
+## separate requests: use a vector of strings
+occ_search(taxonKey = keys, limit=5)
+## one request, many instances of same parameter: use semi-colon sep. string
+occ_search(taxonKey = paste0(keys, collapse = ";"), limit=5)
 
 # Search using a synonym name
 #  Note that you'll see a message printing out that the accepted name will be used
@@ -584,7 +596,10 @@ occ_search(country='US', fields=c('name','country'), limit=20)
 isocodes[grep("France", isocodes$name),"code"]
 occ_search(country='FR', fields=c('name','country'), limit=20)
 occ_search(country='DE', fields=c('name','country'), limit=20)
-occ_search(country=c('US','DE'), fields=c('name','country'), limit=20)
+### separate requests: use a vector of strings
+occ_search(country=c('US','DE'), limit=20)
+### one request, many instances of same parameter: use semi-colon sep. string
+occ_search(country = 'US;DE', limit=20)
 
 # Get only occurrences with lat/long data
 occ_search(taxonKey=key, hasCoordinate=TRUE, limit=20)
@@ -607,7 +622,10 @@ occ_search(taxonKey=key, elevation=50, hasCoordinate=TRUE, limit=20)
 
 # Get occurrences based on institutionCode
 occ_search(institutionCode="TLMF", limit=20)
+### separate requests: use a vector of strings
 occ_search(institutionCode=c("TLMF","ArtDatabanken"), limit=20)
+### one request, many instances of same parameter: use semi-colon sep. string
+occ_search(institutionCode = "TLMF;ArtDatabanken", limit=20)
 
 # Get occurrences based on collectionCode
 occ_search(collectionCode="Floristic Databases MV - Higher Plants", limit=20)
@@ -784,7 +802,7 @@ wkt <- 'POLYGON((-178.59375 64.83258989321493,-165.9375 59.24622380205539,
 # wkt <- 'LINESTRING(3 4,10 50,20 25)'
 # occ_search(geometry = wkt)
 
-### Apparently a point is allowed, but haven't successfully retrieved data, so returns nothing
+### Apparently a point is allowed, but errors
 # wkt <- 'POINT(45 -122)'
 # occ_search(geometry = wkt)
 

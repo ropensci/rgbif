@@ -22,9 +22,9 @@ print.gbif <- function(x, ...) {
       cat(rgbif_wrap(sprintf("Occ. returned [%s]", pastemax(x, "returned"))), "\n")
       cat(rgbif_wrap(sprintf("No. unique hierarchies [%s]", pastemax(x, "hier"))), "\n")
       cat(rgbif_wrap(sprintf("No. media records [%s]", pastemax(x, "media"))), "\n")
-      cat(rgbif_wrap(sprintf("No. facets [%s]", pastemax(x$facets))), "\n")
+      cat(rgbif_wrap(sprintf("No. facets [%s]", pastemax(x, "facets"))), "\n")
       cat(rgbif_wrap(sprintf("Args [%s]", pasteargs(x))), "\n")
-      cat(sprintf("First 10 rows of data from %s\n\n", substring(names(x)[1], 1, 50)))
+      cat(sprintf("%s requests; First 10 rows of data from %s\n\n", length(x), substring(names(x)[1], 1, 50)))
       if (inherits(x[[1]]$data, "data.frame")) print(x[[1]]$data) else cat(x[[1]]$data)
     }
   } else if (inherits(x, "data.frame")) {
@@ -61,11 +61,18 @@ pastemax <- function(z, type='counts', n=10){
       x
     }
   }, USE.NAMES = FALSE)
-  yep <- switch(type,
-                counts = vapply(unclass(z), function(y) y$meta$count, numeric(1), USE.NAMES = FALSE),
-                returned = vapply(unclass(z), function(y) NROW(y$data), numeric(1), USE.NAMES = FALSE),
-                hier = vapply(unclass(z), function(y) length(y$hierarchy), numeric(1), USE.NAMES = FALSE),
-                media = vapply(unclass(z), function(y) length(y$media), numeric(1), USE.NAMES = FALSE)
+  yep <- switch(
+    type,
+    counts = vapply(unclass(z), function(y) y$meta$count, numeric(1),
+                    USE.NAMES = FALSE),
+    facets = vapply(unclass(z), function(y) length(y$facets), numeric(1),
+                    USE.NAMES = FALSE),
+    returned = vapply(unclass(z), function(y) NROW(y$data), numeric(1),
+                      USE.NAMES = FALSE),
+    hier = vapply(unclass(z), function(y) length(y$hierarchy), numeric(1),
+                  USE.NAMES = FALSE),
+    media = vapply(unclass(z), function(y) length(y$media), numeric(1),
+                   USE.NAMES = FALSE)
   )
   tt <- list()
   for (i in seq_along(xnames)) {
@@ -80,15 +87,12 @@ print.gbif_data <- function(x, ..., n = 10) {
     cat(rgbif_wrap(sprintf("Records found [%s]", x$meta$count)), "\n")
     cat(rgbif_wrap(sprintf("Records returned [%s]", NROW(x$data))), "\n")
     cat(rgbif_wrap(sprintf("Args [%s]", pasteargs(x))), "\n")
-    #cat(sprintf("First 10 rows of data\n\n"))
-    # if (inherits(x$data, "data.frame")) trunc_mat(x$data, n = n) else cat(x$data)
     if (inherits(x$data, "data.frame")) print(x$data) else cat(x$data)
   } else if (attr(x, "type") == "many") {
     cat(rgbif_wrap(sprintf("Occ. found [%s]", pastemax(x))), "\n")
     cat(rgbif_wrap(sprintf("Occ. returned [%s]", pastemax(x, "returned"))), "\n")
     cat(rgbif_wrap(sprintf("Args [%s]", pasteargs(x))), "\n")
-    cat(sprintf("First 10 rows of data from %s\n\n", substring(names(x)[1], 1, 50)))
-    # if (inherits(x[[1]]$data, "data.frame")) trunc_mat(x[[1]]$data, n = n) else cat(x[[1]]$data)
+    cat(sprintf("%s requests; First 10 rows of data from %s\n\n", length(x), substring(names(x)[1], 1, 50)))
     if (inherits(x[[1]]$data, "data.frame")) print(x[[1]]$data) else cat(x[[1]]$data)
   } else {
     if (inherits(x, "gbif_data")) x <- unclass(x)

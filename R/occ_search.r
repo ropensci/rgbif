@@ -17,11 +17,13 @@
 #' \code{\link{occ_facet}}
 #' @return An object of class \code{gbif}, which is a S3 class list, with
 #' slots for metadata (\code{meta}), the occurrence data itself (\code{data}),
-#' the taxonomic hierarchy data (\code{hier}), and media metadata (\code{media}).
+#' the taxonomic hierarchy data (\code{hier}), and media metadata
+#' (\code{media}).
 #' In addition, the object has attributes listing the user supplied arguments
 #' and whether it was a "single" or "many" search; that is, if you supply two
 #' values of the \code{datasetKey} parameter to searches are done, and it's a
-#' "many". \code{meta} is a list of length four with offset, limit, endOfRecords and
+#' "many". \code{meta} is a list of length four with offset, limit,
+#' endOfRecords and
 #' count fields. \code{data} is a tibble (aka data.frame). \code{hier} is a
 #' list of data.frame's of the unique set of taxa found, where each data.frame
 #' is its taxonomic classification. \code{media} is a list of media objects,
@@ -30,10 +32,12 @@
 #' back just the \code{meta}, \code{data}, \code{hier}, or \code{media}.
 
 occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
-  publishingCountry=NULL, hasCoordinate=NULL, typeStatus=NULL, recordNumber=NULL,
-  lastInterpreted=NULL, continent=NULL, geometry=NULL, geom_big="asis",
+  publishingCountry=NULL, hasCoordinate=NULL, typeStatus=NULL,
+  recordNumber=NULL, lastInterpreted=NULL, continent=NULL, geometry=NULL,
+  geom_big="asis",
   geom_size=40, geom_n=10, recordedBy=NULL, basisOfRecord=NULL, datasetKey=NULL,
-  eventDate=NULL, catalogNumber=NULL, year=NULL, month=NULL, decimalLatitude=NULL,
+  eventDate=NULL, catalogNumber=NULL, year=NULL, month=NULL,
+  decimalLatitude=NULL,
   decimalLongitude=NULL, elevation=NULL, depth=NULL, institutionCode=NULL,
   collectionCode=NULL, hasGeospatialIssue=NULL, issue=NULL, search=NULL,
   mediaType=NULL, subgenusKey = NULL, repatriated = NULL, phylumKey = NULL,
@@ -47,7 +51,9 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
   calls <- names(sapply(match.call(), deparse))[-1]
   calls_vec <- c("georeferenced","altitude","latitude","longitude") %in% calls
   if (any(calls_vec)) {
-    stop("Parameter name changes: \n georeferenced -> hasCoordinate\n altitude -> elevation\n latitude -> decimalLatitude\n longitude - > decimalLongitude")
+    stop(paste0("Parameter name changes: \n georeferenced ->",
+                "hasCoordinate\n altitude -> elevation\n latitude -> ",
+                "decimalLatitude\n longitude - > decimalLongitude"))
   }
 
   geometry <- geometry_handler(geometry, geom_big, geom_size, geom_n)
@@ -68,30 +74,57 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
     check_vals(start, "start")
 
     # Make arg list
+    # args <- rgbif_compact(
+    #   list(
+    #     taxonKey=taxonKey, scientificName=scientificName, country=country,
+    #     publishingCountry=publishingCountry, hasCoordinate=hasCoordinate,
+    #     typeStatus=typeStatus,
+    #     recordNumber=recordNumber, lastInterpreted=lastInterpreted,
+    #     continent=continent,
+    #     geometry=geometry, recordedBy=recordedBy, basisOfRecord=basisOfRecord,
+    #     datasetKey=datasetKey, eventDate=eventDate, catalogNumber=catalogNumber,
+    #     year=year, month=month, decimalLatitude=decimalLatitude,
+    #     decimalLongitude=decimalLongitude, elevation=elevation, depth=depth,
+    #     institutionCode=institutionCode, collectionCode=collectionCode,
+    #     hasGeospatialIssue=hasGeospatialIssue, q=search, mediaType=mediaType,
+    #     subgenusKey=subgenusKey,
+    #     repatriated=repatriated, phylumKey=phylumKey, kingdomKey=kingdomKey,
+    #     classKey=classKey, orderKey=orderKey, familyKey=familyKey,
+    #     genusKey=genusKey, establishmentMeans=establishmentMeans,
+    #     protocol=protocol, license=license, organismId=organismId,
+    #     publishingOrg=publishingOrg, stateProvince=stateProvince,
+    #     waterBody=waterBody, locality=locality,
+    #     limit=check_limit(as.integer(limit)),
+    #     offset=check_limit(as.integer(start)), spellCheck = spellCheck,
+    #     facetMincount = facetMincount, facetMultiselect = facetMultiselect
+    #   )
+    # )
     args <- rgbif_compact(
-      list(
-        taxonKey=taxonKey, scientificName=scientificName, country=country,
-        publishingCountry=publishingCountry, hasCoordinate=hasCoordinate, typeStatus=typeStatus,
-        recordNumber=recordNumber, lastInterpreted=lastInterpreted, continent=continent,
-        geometry=geometry, recordedBy=recordedBy, basisOfRecord=basisOfRecord,
-        datasetKey=datasetKey, eventDate=eventDate, catalogNumber=catalogNumber,
-        year=year, month=month, decimalLatitude=decimalLatitude,
-        decimalLongitude=decimalLongitude, elevation=elevation, depth=depth,
-        institutionCode=institutionCode, collectionCode=collectionCode,
-        hasGeospatialIssue=hasGeospatialIssue, q=search, mediaType=mediaType,
-        subgenusKey=subgenusKey,
-        repatriated=repatriated, phylumKey=phylumKey, kingdomKey=kingdomKey,
-        classKey=classKey, orderKey=orderKey, familyKey=familyKey,
-        genusKey=genusKey, establishmentMeans=establishmentMeans,
-        protocol=protocol, license=license, organismId=organismId,
-        publishingOrg=publishingOrg, stateProvince=stateProvince,
-        waterBody=waterBody, locality=locality,
-        limit=check_limit(as.integer(limit)),
-        offset=check_limit(as.integer(start)), spellCheck = spellCheck,
-        facetMincount = facetMincount, facetMultiselect = facetMultiselect
+      list(hasCoordinate = hasCoordinate,
+           lastInterpreted = lastInterpreted,
+           basisOfRecord = basisOfRecord, decimalLatitude = decimalLatitude,
+           decimalLongitude = decimalLongitude,
+           hasGeospatialIssue = hasGeospatialIssue,
+           q = search, repatriated = repatriated, elevation = elevation,
+           depth = depth, limit = check_limit(as.integer(limit)),
+           eventDate = eventDate, month = month, year = year,
+           offset = check_limit(as.integer(start)), spellCheck = spellCheck
       )
     )
-    args <- c(args, parse_issues(issue), collargs("facet"), yank_args(...))
+    args <- c(
+      args, parse_issues(issue), collargs("facet"), yank_args(...),
+      convmany(taxonKey), convmany(scientificName), convmany(country),
+      convmany(publishingCountry), convmany(datasetKey),
+      convmany(typeStatus), convmany(recordNumber), convmany(continent),
+      convmany(recordedBy), convmany(catalogNumber), convmany(institutionCode),
+      convmany(collectionCode), convmany(geometry), convmany(mediaType),
+      convmany(subgenusKey), convmany(phylumKey), convmany(kingdomKey),
+      convmany(classKey), convmany(orderKey), convmany(familyKey),
+      convmany(genusKey), convmany(establishmentMeans), convmany(protocol),
+      convmany(license), convmany(organismId), convmany(publishingOrg),
+      convmany(stateProvince), convmany(waterBody), convmany(locality)
+    )
+    #args <- c(args, parse_issues(issue), collargs("facet"), yank_args(...))
 
     argscoll <<- args
 
@@ -125,7 +158,8 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
       outout <- list(gbif_GET(url, args, FALSE, ...))
     }
 
-    meta <- outout[[length(outout)]][c('offset', 'limit', 'endOfRecords', 'count')]
+    meta <- outout[[length(outout)]][c('offset', 'limit', 'endOfRecords',
+                                       'count')]
     data <- do.call(c, lapply(outout, "[[", "results"))
     facets <- do.call(c, lapply(outout, "[[", "facets"))
 
@@ -170,7 +204,8 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
         media <- NULL
       } else {
         data <- gbifparser(input = data, fields = fields)
-        dat2 <- tibble::as_data_frame(prune_result(ldfast(lapply(data, "[[", "data"))))
+        dat2 <- tibble::as_data_frame(
+          prune_result(ldfast(lapply(data, "[[", "data"))))
         hier2 <- unique(lapply(data, "[[", "hierarchy"))
         media <- unique(lapply(data, "[[", "media"))
       }
@@ -189,8 +224,10 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
     catalogNumber=catalogNumber,
     recordedBy=recordedBy,geometry=geometry,country=country,
     publishingCountry=publishingCountry,recordNumber=recordNumber,
-    q=search,institutionCode=institutionCode,collectionCode=collectionCode,continent=continent,
-    decimalLatitude=decimalLatitude,decimalLongitude=decimalLongitude,depth=depth,year=year,
+    q=search,institutionCode=institutionCode,collectionCode=collectionCode,
+    continent=continent,
+    decimalLatitude=decimalLatitude,decimalLongitude=decimalLongitude,
+    depth=depth,year=year,
     typeStatus=typeStatus,lastInterpreted=lastInterpreted,mediaType=mediaType,
     subgenusKey=subgenusKey,repatriated=repatriated,
     phylumKey=phylumKey, kingdomKey=kingdomKey,classKey=classKey,
@@ -201,12 +238,14 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
     limit=limit
   )
   if (!any(sapply(params, length) > 0)) {
-    stop(sprintf("At least one of the parmaters must have a value:\n%s", possparams()),
+    stop(sprintf("At least one of the parmaters must have a value:\n%s",
+                 possparams()),
          call. = FALSE)
   }
   iter <- params[which(sapply(params, length) > 1)]
   if (length(names(iter)) > 1) {
-    stop(sprintf("You can have multiple values for only one of:\n%s", possparams()),
+    stop(sprintf("You can have multiple values for only one of:\n%s",
+                 possparams()),
          call. = FALSE)
   }
 
@@ -255,12 +294,13 @@ check_limit <- function(x){
 
 possparams <- function(){
   "   taxonKey, scientificName, datasetKey, catalogNumber, recordedBy, geometry,
-   country, publishingCountry, recordNumber, search, institutionCode, collectionCode,
-   decimalLatitude, decimalLongitude, depth, year, typeStatus, lastInterpreted,
-   continent, or mediatype"
+   country, publishingCountry, recordNumber, search, institutionCode,
+  collectionCode, decimalLatitude, decimalLongitude, depth, year, typeStatus,
+  lastInterpreted, continent, or mediatype"
 }
 
 check_vals <- function(x, y){
-  if (is.na(x) || is.null(x)) stop(sprintf("%s can not be NA or NULL", y), call. = FALSE)
+  if (is.na(x) || is.null(x)) stop(sprintf("%s can not be NA or NULL", y),
+                                   call. = FALSE)
   if (length(x) > 1) stop(sprintf("%s has to be length 1", y), call. = FALSE)
 }
