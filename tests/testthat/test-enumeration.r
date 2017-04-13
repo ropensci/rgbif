@@ -21,5 +21,6 @@ test_that("fails correctly", {
   skip_on_cran()
 
   expect_error(enumeration("asdfadsf"), "Status: 204 - not found")
-  expect_error(enumeration_country("asdfadsf"), "is\\.request\\(y\\) is not TRUE")
+  expect_error(enumeration_country(list(timeout_ms = 1)),
+               "Timeout was reached")
 })
