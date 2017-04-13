@@ -3,8 +3,9 @@
 \docType{data}
 \name{occ_fields}
 \alias{occ_fields}
-\title{Vector of fields in the output for the function \code{occ_search}}
+\title{Vector of fields in the output for the function \code{\link[=occ_search]{occ_search()}}}
 \description{
-These fields can be specified in the \code{fields} parameer in the \code{occ_search} function.
+These fields can be specified in the \code{fields} parameer in the
+\code{\link[=occ_search]{occ_search()}} function.
 }
 \keyword{data}

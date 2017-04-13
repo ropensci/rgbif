@@ -3,7 +3,7 @@
 #' @export
 #' @name gbif_oai
 #' @param prefix (character) A string to specify the metadata format in OAI-PMH
-#' requests issued to the repository. The default (\code{"oai_dc"}) corresponds
+#' requests issued to the repository. The default (`"oai_dc"`) corresponds
 #' to the mandatory OAI unqualified Dublin Core metadata schema.
 #' @param from (character) string giving datestamp to be used as lower bound
 #' for datestamp-based selective harvesting (i.e., only harvest records with
@@ -20,9 +20,9 @@
 #' We will loop for you internally to get all the records you asked for.
 #' @param as (character) What to return. One of "df" (for data.frame;
 #' default), "list" (get a list), or "raw" (raw text). For
-#' \code{gbif_oai_get_records}, one of "parsed" or "raw"
+#' `gbif_oai_get_records`, one of "parsed" or "raw"
 #' @param id,ids (character) The OAI-PMH identifier for the record. Optional.
-#' @param ... Curl options passed on to \code{\link[httr]{GET}}
+#' @param ... Curl options passed on to [httr::GET()]
 #' @return raw text, list or data.frame, depending on requested output via
 #' \code{as} parameter
 #' @details These functions only work with GBIF registry data, and do so

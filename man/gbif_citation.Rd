@@ -7,8 +7,9 @@
 gbif_citation(x)
 }
 \arguments{
-\item{x}{(character) Result of call to \code{occ_search}, \code{occ_download_get},
-a dataset key, or occurrence key (character or numeric).}
+\item{x}{(character) Result of call to \code{\link[=occ_search]{occ_search()}},
+\code{\link[=occ_download_get]{occ_download_get()}}, a dataset key, or occurrence key (character or
+numeric).}
 }
 \value{
 list with S3 class assigned, used by a print method to pretty print
@@ -19,13 +20,14 @@ named items as needed.
 Get citation for datasets used
 }
 \details{
-Returns a set of citations, one for each dataset. We pull out unique dataset keys
-and get citations, so the length of citations may not be equal to the number of records you
-pass in.
+Returns a set of citations, one for each dataset. We pull out
+unique dataset keys and get citations, so the length of citations may not
+be equal to the number of records you pass in.
 
-Currently, this function gives back citations at the dataset level, not at the individual
-occurrence level. If occurrence keys are passed in, then we track down the dataset
-the key is from, and get the citation for the dataset.
+Currently, this function gives back citations at the dataset level, not
+at the individual occurrence level. If occurrence keys are passed in, then
+we track down the dataset the key is from, and get the citation for
+the dataset.
 }
 \examples{
 \dontrun{
@@ -38,10 +40,12 @@ res2 <- occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a',
 
 # if no datasetKey field included, we attempt to identify the dataset
 ## key field included - still works
-res3 <- occ_search(taxonKey=3119195, fields=c('name','basisOfRecord','key'), limit=20)
+res3 <- occ_search(taxonKey=3119195, fields=c('name','basisOfRecord','key'),
+  limit=20)
 (xx <- gbif_citation(res3))
 ## key field not included - errors
-# res3 <- occ_search(taxonKey=3119195, fields=c('name','basisOfRecord','protocol'), limit=20)
+# res3 <- occ_search(taxonKey=3119195, fields=c('name','basisOfRecord','
+#    protocol'), limit=20)
 # (xx <- gbif_citation(res3))
 
 # character class inputs

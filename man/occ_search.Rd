@@ -34,18 +34,18 @@ taxa are included in the search.}
 
 \item{country}{The 2-letter country code (as per ISO-3166-1) of the country in
 which the occurrence was recorded. See here
-\url{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}}
+<http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2>}
 
 \item{publishingCountry}{The 2-letter country code (as per ISO-3166-1) of the
 country in which the occurrence was recorded.}
 
-\item{hasCoordinate}{(logical) Return only occurence records with lat/long data (TRUE) or
-all records (FALSE, default).}
+\item{hasCoordinate}{(logical) Return only occurence records with lat/long data (`TRUE`) or
+all records (`FALSE`, default).}
 
-\item{typeStatus}{Type status of the specimen. One of many options. See ?typestatus}
+\item{typeStatus}{Type status of the specimen. One of many options. See `?typestatus`}
 
 \item{recordNumber}{Number recorded by collector of the data, different from GBIF record
-number. See \url{http://rs.tdwg.org/dwc/terms/#recordNumber} for more info}
+number. See <http://rs.tdwg.org/dwc/terms/#recordNumber> for more info}
 
 \item{lastInterpreted}{Date the record was last modified in GBIF, in ISO 8601 format:
 yyyy, yyyy-MM, yyyy-MM-dd, or MM-dd.  Supports range queries, smaller,larger (e.g.,
@@ -58,7 +58,7 @@ or south_america}
 \item{geometry}{Searches for occurrences inside a polygon described in Well Known
 Text (WKT) format. A WKT shape written as either POINT, LINESTRING, LINEARRING
 POLYGON, or MULTIPOLYGON. Example of a polygon: POLYGON((30.1 10.1, 20, 20 40, 40 40, 30.1 10.1))
-would be queried as \url{http://bit.ly/1BzNwDq}. See also the section \strong{WKT} below.}
+would be queried as <http://bit.ly/1BzNwDq>. See also the section **WKT** below.}
 
 \item{geom_big}{(character) One of "axe", "bbox", or "asis" (default). See Details.}
 
@@ -70,7 +70,7 @@ See Details.}
 \item{recordedBy}{The person who recorded the occurrence.}
 
 \item{basisOfRecord}{Basis of record, as defined in our BasisOfRecord enum here
-\url{http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/BasisOfRecord.html}
+<http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/BasisOfRecord.html>
 Acceptable values are:
 \itemize{
   \item FOSSIL_SPECIMEN An occurrence record describing a fossilized specimen.
@@ -121,8 +121,8 @@ the institution the record belongs to. Not guaranteed to be que.}
 the physical collection or digital dataset uniquely within the text of an institution.}
 
 \item{hasGeospatialIssue}{(logical) Includes/excludes occurrence records which contain spatial
-issues (as determined in our record interpretation), i.e. \code{hasGeospatialIssue=TRUE}
-returns only those records with spatial issues while \code{hasGeospatialIssue=FALSE} includes
+issues (as determined in our record interpretation), i.e. `hasGeospatialIssue=TRUE`
+returns only those records with spatial issues while `hasGeospatialIssue=FALSE` includes
 only records without spatial issues. The absence of this parameter returns any
 record with or without spatial issues.}
 
@@ -176,14 +176,15 @@ locations occur}
 
 \item{locality}{(character) The specific description of the place.}
 
-\item{limit}{Number of records to return. Default: 500. Note that the per request maximum is
-300, but since we set it at 500 for the function, we do two requests to get you the 500
-records (if there are that many). Note that there is a hard maximum of 200,000, which is
-calculated as the \code{limit+start}, so \code{start=199,000} and \code{limit=2000} won't work}
+\item{limit}{Number of records to return. Default: 500. Note that the per
+request maximum is 300, but since we set it at 500 for the function, we
+do two requests to get you the 500 records (if there are that many).
+Note that there is a hard maximum of 200,000, which is calculated as the
+`limit+start`, so `start=199,000` and `limit=2000` won't work}
 
-\item{start}{Record number to start at. Use in combination with limit to page through results.
-Note that we do the paging internally for you, but you can manually set the \code{start}
-parameter}
+\item{start}{Record number to start at. Use in combination with limit to
+page through results. Note that we do the paging internally for you, but
+you can manually set the `start` parameter}
 
 \item{fields}{(character) Default ('all') returns all fields. 'minimal'
 returns just taxon name, key, latitude, and longitute. Or specify each field
@@ -194,30 +195,31 @@ data. hier returns the classifications in a list for each record. meta
 returns the metadata for the entire call. all gives all data back in
 a list.}
 
-\item{spellCheck}{(logical) If \code{TRUE} ask GBIF to check your spelling of
-the value passed to the \code{search} parameter. IMPORTANT: This only checks
-the input to the \code{search} parameter, and no others. Default: \code{FALSE}}
+\item{spellCheck}{(logical) If `TRUE` ask GBIF to check your spelling of
+the value passed to the `search` parameter. IMPORTANT: This only checks
+the input to the `search` parameter, and no others. Default: `FALSE`}
 
-\item{facet}{(character) a character vector of length 1 or greater. Required.}
+\item{facet}{(character) a character vector of length 1 or greater.
+Required.}
 
 \item{facetMincount}{(numeric) minimum number of records to be included
 in the faceting results}
 
-\item{facetMultiselect}{(logical) Set to \code{TRUE} to still return counts
+\item{facetMultiselect}{(logical) Set to `TRUE` to still return counts
 for values that are not currently filtered. See examples.
-Default: \code{FALSE}
+Default: `FALSE`
 
-\bold{Faceting:}
+**Faceting**:
 All fields can be faceted on except for last "lastInterpreted",
 "eventDate", and "geometry"
 
 You can do facet searches alongside searching occurrence data, and
 return both, or only return facets, or only occurrence data, etc.}
 
-\item{...}{Further named parameters, such as \code{query}, \code{path},
-etc, passed on to \code{\link[httr]{modify_url}} within
-\code{\link[httr]{GET}} call. Unnamed parameters will be combined
-with \code{\link[httr]{config}}.}
+\item{...}{Further named parameters, such as `query`, `path`,
+etc, passed on to [httr::modify_url()] within
+[httr::GET()] call. Unnamed parameters will be combined
+with [httr::config()]}
 }
 \value{
 An object of class \code{gbif}, which is a S3 class list, with
@@ -228,19 +230,18 @@ In addition, the object has attributes listing the user supplied arguments
 and whether it was a "single" or "many" search; that is, if you supply two
 values of the \code{datasetKey} parameter to searches are done, and it's a
 "many". \code{meta} is a list of length four with offset, limit,
-endOfRecords and
-count fields. \code{data} is a tibble (aka data.frame). \code{hier} is a
-list of data.frame's of the unique set of taxa found, where each data.frame
-is its taxonomic classification. \code{media} is a list of media objects,
-where each element holds a set of metadata about the media object. If
-the \code{return} parameter is set to something other than default you get
+endOfRecords and count fields. \code{data} is a tibble (aka data.frame). \code{hier}
+is a list of data.frame's of the unique set of taxa found, where each
+data.frame is its taxonomic classification. \code{media} is a list of media
+objects, where each element holds a set of metadata about the media object.
+If the \code{return} parameter is set to something other than default you get
 back just the \code{meta}, \code{data}, \code{hier}, or \code{media}.
 }
 \description{
 Search for GBIF occurrences
 }
 \details{
-\bold{protocol parameter options}:
+**protocol parameter options**:
 \itemize{
  \item BIOCASE - A BioCASe protocl compliant service.
  \item DIGIR - A DiGIR service endpoint.
@@ -259,36 +260,36 @@ Search for GBIF occurrences
  \item WMS - An OGC Web Map Service.
 }
 
-\bold{Multiple parmeters}: Note that you can pass in a vector to one of taxonKey,
+**Multiple parmeters**: Note that you can pass in a vector to one of taxonKey,
 scientificName, datasetKey, catalogNumber, recordedBy, geometry, country, publishingCountry,
 recordNumber, search, institutionCode, collectionCode, decimalLatitude, decimalLongitude,
 depth, year, typeStatus, lastInterpreted, continent, or mediatype parameters in a
 function call, but not a vector >1 of these parameters at the same time
 
-\bold{Hierarchies:} hierarchies are returned wih each occurrence object. There is no
-option no to return them from the API. However, within the \code{occ_search}
+**Hierarchies**: hierarchies are returned wih each occurrence object. There is no
+option no to return them from the API. However, within the `occ_search`
 function you can select whether to return just hierarchies, just data, all of
 data and hiearchies and metadata, or just metadata. If all hierarchies are the
 same we just return one for you.
 
-\bold{Data:} By default only three data fields are returned: name (the species name),
-decimallatitude, and decimallongitude. Set parameter minimal=FALSE if you want more data.
+**Data**: By default only three data fields are returned: name (the species name),
+decimallatitude, and decimallongitude. Set parameter `minimal=FALSE` if you want more data.
 
-\bold{Nerds:} You can pass parameters not defined in this function into the call to
-the GBIF API to control things about the call itself using \code{...}. See an example below
-that passes in the \code{verbose} function to get details on the http call.
+**Nerds**: You can pass parameters not defined in this function into the call to
+the GBIF API to control things about the call itself using `...`. See an example below
+that passes in the `verbose` function to get details on the http call.
 
-\bold{Scientific names vs. taxon keys:} In the previous GBIF API and the version of rgbif that
+**Scientific names vs. taxon keys**: In the previous GBIF API and the version of rgbif that
 wrapped that API, you could search the equivalent of this function with a species name, which
 was convenient. However, names are messy right. So it sorta makes sense to sort out the species
 key numbers you want exactly, and then get your occurrence data with this function. GBIF has
 added a parameter scientificName to allow searches by scientific names in this function - which
-includes synonym taxa. \emph{Note:} that if you do use the scientificName parameter, we will
+includes synonym taxa. *Note:* that if you do use the scientificName parameter, we will
 check internally that it's not a synonym of an accepted name, and if it is, we'll search on the
 accepted name. If you want to force searching by a synonym do so by finding the GBIF identifier
-first with any \code{name_*} functions, then pass that ID to the \code{taxonKey} parameter.
+first with any `name_*` functions, then pass that ID to the `taxonKey` parameter.
 
-\bold{WKT:} Examples of valid WKT objects:
+**WKT**: Examples of valid WKT objects:
 \itemize{
  \item 'POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))'
  \item 'MULTIPOLYGON(((-123 38, -123 43, -116 43, -116 38, -123 38)),((-97 41, -97 45, -93 45, -93 41, -97 41)))'
@@ -297,46 +298,46 @@ first with any \code{name_*} functions, then pass that ID to the \code{taxonKey}
  \item 'LINEARRING' ???' - Not sure how to specify this. Anyone?
 }
 
-\bold{Long WKT:} Options for handling long WKT strings:
-Note that long WKT strings are specially handled when using \code{occ_search} or
-\code{occ_data}. Here are the three options for long WKT strings (> 1500 characters),
-set one of these three via the parameter \code{geom_big}:
+**Long WKT**: Options for handling long WKT strings:
+Note that long WKT strings are specially handled when using [occ_search()] or
+[occ_data()]. Here are the three options for long WKT strings (> 1500 characters),
+set one of these three via the parameter `geom_big`:
 \itemize{
  \item asis - the default setting. This means we don't do anything internally. That is,
  we just pass on your WKT string just as we've done before in this package.
  \item axe - this option uses the \pkg{geoaxe} package to chop up your WKT string in
  to many polygons, which then leads to a separate data request for each polygon piece,
  then we combine all dat back together to give to you. Note that if your WKT string
- is not of type polygon, we drop back to \code{asis} as there's no way to chop up
+ is not of type polygon, we drop back to `asis` as there's no way to chop up
  linestrings, etc. This option will in most cases be slower than the other two options.
  However, this polygon splitting approach won't have the problem of
  the disconnect between how many records you want and what you actually get back as
  with the bbox option.
 
- This method uses \code{\link[geoaxe]{chop}}, which uses \code{GridTopology} from
- the \code{sp} package, which has two parameters \code{cellsize} and \code{cells.dim}
+ This method uses [geoaxe::chop()], which uses `GridTopology` from
+ the \pkg{sp} package, which has two parameters `cellsize` and `cells.dim`
  that we use to chop up polygons. You can tweak those parameters here by tweaking
- \code{geom_size} and \code{geom_n}. \code{geom_size} seems to be more useful in
+ `geom_size` and `geom_n`. `geom_size` seems to be more useful in
  toggling the number of WKT strings you get back.
 
- See \code{\link{wkt_parse}} to manually break make WKT bounding box from a larger WKT
+ See [wkt_parse()] to manually break make WKT bounding box from a larger WKT
  string, or break a larger WKT string into many smaller ones.
 
  \item bbox - this option checks whether your WKT string is longer than 1500 characters,
  and if it is we create a bounding box from the WKT, do the GBIF search with that
  bounding box, then prune the resulting data to only those occurrences in your original
  WKT string. There is a big caveat however. Because we create a bounding box from the WKT,
- and the \code{limit} parameter determines some subset of records to get, then when we
+ and the `limit` parameter determines some subset of records to get, then when we
  prune the resulting data to the WKT, the number of records you get could be less than
- what you set with your \code{limit} parameter. However, you could set the limit to be
+ what you set with your `limit` parameter. However, you could set the limit to be
  high enough so that you get all records back found in that bounding box, then you'll
  get all the records available within the WKT.
 }
 
-\bold{Range queries:} A range query is as it sounds - you query on a range of values defined by
+**Range queries**: A range query is as it sounds - you query on a range of values defined by
 a lower and upper limit. Do a range query by specifying the lower and upper limit in a vector
-like \code{depth='50,100'}. It would be more R like to specify the range in a vector like
-\code{c(50,100)}, but that sort of syntax allows you to do many searches, one for each element in
+like `depth='50,100'`. It would be more R like to specify the range in a vector like
+`c(50,100)`, but that sort of syntax allows you to do many searches, one for each element in
 the vector - thus range queries have to differ. The following parameters support range queries.
 \itemize{
  \item decimalLatitude
@@ -349,7 +350,7 @@ the vector - thus range queries have to differ. The following parameters support
  \item year
 }
 
-\bold{Issue:} The options for the issue parameter (from
+**Issue**: The options for the issue parameter (from
 http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html):
 \itemize{
  \item BASIS_OF_RECORD_INVALID The given basis of record is impossible to interpret or seriously
@@ -421,10 +422,10 @@ http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.h
  coordinate.
 }
 
-\bold{Counts:} There is a slight difference in the way records are counted here vs.
-results from \code{\link{occ_count}}. For equivalent outcomes, in this function
-use \code{hasCoordinate=TRUE}, and \code{hasGeospatialIssue=FALSE} to have the
-same outcome using \code{\link{occ_count}} with \code{isGeoreferenced=TRUE}.
+**Counts**: There is a slight difference in the way records are counted here vs.
+results from [occ_count()]. For equivalent outcomes, in this function
+use `hasCoordinate=TRUE`, and `hasGeospatialIssue=FALSE` to have the
+same outcome using [occ_count()] with `isGeoreferenced=TRUE`
 }
 \examples{
 \dontrun{
@@ -838,9 +839,8 @@ occ_search(scientificName = 'Ursus americanus', limit = 0, return = "meta")
 }
 }
 \references{
-\url{http://www.gbif.org/developer/occurrence#search}
+<http://www.gbif.org/developer/occurrence#search>
 }
 \seealso{
-\code{\link{downloads}}, \code{\link{occ_data}},
-\code{\link{occ_facet}}
+\code{\link[=downloads]{downloads()}}, \code{\link[=occ_data]{occ_data()}}, \code{\link[=occ_facet]{occ_facet()}}
 }

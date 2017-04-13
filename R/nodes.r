@@ -8,13 +8,13 @@
 #' @param data The type of data to get. One or more of: 'organization',
 #' 'endpoint', 'identifier', 'tag', 'machineTag', 'comment',
 #' 'pendingEndorsement', 'country', 'dataset', 'installation', or the
-#' special 'all'. Default: \code{'all'}
+#' special 'all'. Default: `'all'`
 #' @param uuid UUID of the data node provider. This must be specified if data
 #' is anything other than 'all'.
-#' @param query Query nodes. Only used when \code{data='all'}
+#' @param query Query nodes. Only used when `data='all'`
 #' @param isocode A 2 letter country code. Only used if data='country'.
 #'
-#' @references \url{http://www.gbif.org/developer/registry#nodes}
+#' @references <http://www.gbif.org/developer/registry#nodes>
 #'
 #' @examples \dontrun{
 #' nodes(limit=5)

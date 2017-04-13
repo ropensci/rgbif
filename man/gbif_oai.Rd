@@ -25,7 +25,7 @@ gbif_oai_list_sets(token = NULL, as = "df", ...)
 gbif_oai_get_records(ids, prefix = "oai_dc", as = "parsed", ...)
 }
 \arguments{
-\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+\item{...}{Curl options passed on to \code{\link[httr:GET]{httr::GET()}}}
 
 \item{prefix}{(character) A string to specify the metadata format in OAI-PMH
 requests issued to the repository. The default (\code{"oai_dc"}) corresponds

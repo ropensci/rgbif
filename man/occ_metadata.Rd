@@ -17,12 +17,12 @@ catalogNumber}
 
 \item{limit}{Number of results, default=5}
 
-\item{pretty}{Pretty as true (Default) uses cat to print data, FALSE gives
+\item{pretty}{Pretty as true (Default) uses cat to print data, \code{FALSE} gives
 character strings.}
 
 \item{...}{Further named parameters, such as \code{query}, \code{path}, etc,
-passed on to \code{\link[httr]{modify_url}} within \code{\link[httr]{GET}}
-call. Unnamed parameters will be combined with \code{\link[httr]{config}}.}
+passed on to \code{\link[httr:modify_url]{httr::modify_url()}} within \code{\link[httr:GET]{httr::GET()}}
+call. Unnamed parameters will be combined with \code{\link[httr:config]{httr::config()}}.}
 }
 \description{
 Search for catalog numbers, collection codes, collector names, and

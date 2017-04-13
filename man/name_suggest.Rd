@@ -12,7 +12,7 @@ name_suggest(q = NULL, datasetKey = NULL, rank = NULL, fields = NULL,
 \arguments{
 \item{q}{(character, required) Simple search parameter. The value for
 this parameter can be a simple word or a phrase. Wildcards can be added to
-the simple word parameters only, e.g. q=*puma*}
+the simple word parameters only, e.g. q=\emph{puma}}
 
 \item{datasetKey}{(character) Filters by the checklist dataset key (a uuid,
 see examples)}
@@ -28,15 +28,15 @@ superphylum, suprageneric_name, tribe, unranked, or variety.}
 \item{fields}{(character) Fields to return in output data.frame (simply
 prunes columns off)}
 
-\item{start}{Record number to start at. Default: 0. Use in combination with \code{limit} to
-page through results.}
+\item{start}{Record number to start at. Default: 0. Use in combination
+with `limit` to page through results.}
 
 \item{limit}{Number of records to return. Default: 100. Maximum: 1000.}
 
-\item{...}{Further named parameters, such as \code{query}, \code{path},
-etc, passed on to \code{\link[httr]{modify_url}} within
-\code{\link[httr]{GET}} call. Unnamed parameters will be combined
-with \code{\link[httr]{config}}.}
+\item{...}{Further named parameters, such as `query`, `path`,
+etc, passed on to [httr::modify_url()] within
+[httr::GET()] call. Unnamed parameters will be combined
+with [httr::config()]}
 }
 \value{
 A data.frame with fields selected by fields arg.
@@ -51,8 +51,8 @@ are ordered by relevance.
 Some parameters can tak emany inputs, and treated as 'OR' (e.g., a or b or
 c). The following take many inputs:
 \itemize{
- \item **rank**
- \item **datasetKey**
+\item \strong{rank}
+\item \strong{datasetKey}
 }
 }
 

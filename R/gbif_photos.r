@@ -5,7 +5,7 @@
 #' @param input Input output from occ_search
 #' @param output Output folder path. If not given uses temporary folder.
 #' @param which One of map or table (default).
-#' @param browse (logical) Browse output (default: TRUE)
+#' @param browse (logical) Browse output (default: `TRUE`)
 #' @details The max number of photos you can see when which="map" is ~160,
 #' so cycle through if you have more than that.
 #' @section BEWARE: The maps in the table view may not show up correctly if
@@ -15,13 +15,14 @@
 #' gbif_photos(res)
 #' gbif_photos(res, which='map')
 #'
-#' res <- occ_search(scientificName = "Aves", mediaType = 'StillImage', return = "media", limit=150)
+#' res <- occ_search(scientificName = "Aves", mediaType = 'StillImage',
+#'   return = "media", limit=150)
 #' gbif_photos(res)
 #' gbif_photos(res, output = '~/barfoo')
 #' }
 
 gbif_photos <- function(input, output = NULL, which='table', browse = TRUE) {
-  if (!inherits(input, "gbif")) stop("input should be of class gbif", call. = FALSE)
+  if (!inherits(input, "gbif")) stop("input should be of class gbif")
 
   which <- match.arg(which, c("map", "table"))
   if (which == 'map') {

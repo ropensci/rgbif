@@ -6,20 +6,20 @@
 #' @param return One of data, hier, meta, or all. If 'data', a data.frame
 #' with the data. 'hier' returns the classifications in a list for each record.
 #' meta returns the metadata for the entire call. 'all' gives all data back
-#' in a list. Ignored if \code{verbatim=TRUE}.
+#' in a list. Ignored if `verbatim=TRUE`.
 #' @param verbatim Return verbatim object (TRUE) or cleaned up object (FALSE,
 #' default).
 #' @param fields (character) Default ('minimal') will return just taxon name,
 #' key, latitude, and longitute. 'all' returns all fields. Or specify each
 #' field you want returned by name, e.g. fields = c('name',
 #' 'decimalLatitude','altitude').
-#' @param ... Further named parameters, such as \code{query}, \code{path},
-#' etc, passed on to \code{\link[httr]{modify_url}} within
-#' \code{\link[httr]{GET}} call. Unnamed parameters will be combined
-#' with \code{\link[httr]{config}}.
+#' @param ... Further named parameters, such as `query`, `path`
+#' etc, passed on to [httr::modify_url()] within
+#' [httr::GET()] call. Unnamed parameters will be combined
+#' with [httr::config()].
 #'
 #' @return A data.frame or list of data.frame's.
-#' @references \url{http://www.gbif.org/developer/occurrence#occurrence}
+#' @references <http://www.gbif.org/developer/occurrence#occurrence>
 #'
 #' @examples \dontrun{
 #' occ_get(key=766766824, return='data')

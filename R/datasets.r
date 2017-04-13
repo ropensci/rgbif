@@ -7,16 +7,16 @@
 #' @param data The type of data to get. One or more of: 'organization',
 #' 'contact', 'endpoint', 'identifier', 'tag', 'machinetag', 'comment',
 #' 'constituents', 'document', 'metadata', 'deleted', 'duplicate',
-#' 'subDataset', 'withNoEndpoint', or the special 'all'. Default: \code{'all'}
+#' 'subDataset', 'withNoEndpoint', or the special 'all'. Default: `all`
 #' @param type Type of dataset. Options: include occurrence, checklist,
 #' metadata, or sampling_event.
 #' @param uuid UUID of the data node provider. This must be specified if data
-#' is anything other than \code{all}
-#' @param query Query term(s). Only used when \code{data=all}
+#' is anything other than `all`
+#' @param query Query term(s). Only used when `data=all`
 #' @param id A metadata document id.
 #'
 #' @return A list.
-#' @references \url{http://www.gbif.org/developer/registry#datasets}
+#' @references <http://www.gbif.org/developer/registry#datasets>
 #'
 #' @examples \dontrun{
 #' datasets(limit=5)

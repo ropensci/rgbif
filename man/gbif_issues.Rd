@@ -2,7 +2,8 @@
 % Please edit documentation in R/gbif_issues.R
 \name{gbif_issues}
 \alias{gbif_issues}
-\title{Table of GBIF issues, with codes used in data output, full issue name, and descriptions.}
+\title{Table of GBIF issues, with codes used in data output, full issue name,
+and descriptions.}
 \source{
 \url{http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html}
 }
@@ -14,8 +15,8 @@ Table has the following fields:
 }
 \details{
 \itemize{
-  \item code. Code for issue, making viewing data easier.
-  \item issue. Full name of the issue.
-  \item description. Description of the issue.
+\item code. Code for issue, making viewing data easier.
+\item issue. Full name of the issue.
+\item description. Description of the issue.
 }
 }

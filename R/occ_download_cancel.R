@@ -3,10 +3,10 @@
 #' @export
 #'
 #' @param key A key generated from a request, like that from
-#' \code{occ_download}. Required.
+#' `occ_download`. Required.
 #' @param user (character) User name within GBIF's website. Required.
 #' @param pwd (character) User password within GBIF's website. Required.
-#' @param ... Further args passed to \code{\link[httr]{DELETE}}
+#' @param ... Further args passed to [httr::DELETE()]
 #'
 #' @details Note, this only cancels a job in progress. If your download is
 #' already prepared for you, this won't do anything to change that.

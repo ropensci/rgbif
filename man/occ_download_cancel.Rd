@@ -18,7 +18,7 @@ occ_download_cancel_staged()
 
 \item{pwd}{(character) User password within GBIF's website. Required.}
 
-\item{...}{Further args passed to \code{\link[httr]{DELETE}}}
+\item{...}{Further args passed to \code{\link[httr:DELETE]{httr::DELETE()}}}
 }
 \description{
 Cancel a download cretion process.

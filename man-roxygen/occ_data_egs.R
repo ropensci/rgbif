@@ -90,7 +90,8 @@
 #'
 #' ## you can seaerch on many geometry objects
 #' ### separate requests: use a vector of strings
-#' wkts <- c('POLYGON((-102.2 46.0,-93.9 46.0,-93.9 43.7,-102.2 43.7,-102.2 46.0))',
+#' wkts <-
+#' c('POLYGON((-102.2 46.0,-93.9 46.0,-93.9 43.7,-102.2 43.7,-102.2 46.0))',
 #' 'POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))')
 #' occ_data(geometry = wkts, limit=20)
 #' ### one request, many instances of same parameter: use semi-colon sep. string

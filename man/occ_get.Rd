@@ -23,10 +23,10 @@ key, latitude, and longitute. 'all' returns all fields. Or specify each
 field you want returned by name, e.g. fields = c('name',
 'decimalLatitude','altitude').}
 
-\item{...}{Further named parameters, such as \code{query}, \code{path},
-etc, passed on to \code{\link[httr]{modify_url}} within
-\code{\link[httr]{GET}} call. Unnamed parameters will be combined
-with \code{\link[httr]{config}}.}
+\item{...}{Further named parameters, such as \code{query}, \code{path}
+etc, passed on to \code{\link[httr:modify_url]{httr::modify_url()}} within
+\code{\link[httr:GET]{httr::GET()}} call. Unnamed parameters will be combined
+with \code{\link[httr:config]{httr::config()}}.}
 }
 \value{
 A data.frame or list of data.frame's.

@@ -1,11 +1,12 @@
-#' @param facet (character) a character vector of length 1 or greater. Required.
+#' @param facet (character) a character vector of length 1 or greater.
+#' Required.
 #' @param facetMincount (numeric) minimum number of records to be included
 #' in the faceting results
-#' @param facetMultiselect (logical) Set to \code{TRUE} to still return counts
+#' @param facetMultiselect (logical) Set to `TRUE` to still return counts
 #' for values that are not currently filtered. See examples.
-#' Default: \code{FALSE}
+#' Default: `FALSE`
 #'
-#' \bold{Faceting:}
+#' **Faceting**:
 #' All fields can be faceted on except for last "lastInterpreted",
 #' "eventDate", and "geometry"
 #'

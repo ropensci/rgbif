@@ -6,7 +6,7 @@
 #' @param pwd Your password, look at option "gbif_pwd" first
 #' @param limit Number of records to return. Default: 20
 #' @param start Record number to start at. Default: 0
-#' @param ... Further args passed to \code{\link[httr]{GET}}
+#' @param ... Further args passed to [httr::GET()]
 #'
 #' @examples \dontrun{
 #' occ_download_list(user="sckott")

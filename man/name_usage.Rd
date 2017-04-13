@@ -38,8 +38,8 @@ TRIBE, UNRANKED, VARIETY}
 
 \item{shortname}{(character) A short name..need more info on this?}
 
-\item{start}{Record number to start at. Default: 0. Use in combination with \code{limit} to
-page through results.}
+\item{start}{Record number to start at. Default: 0. Use in combination
+with `limit` to page through results.}
 
 \item{limit}{Number of records to return. Default: 100. Maximum: 1000.}
 
@@ -47,10 +47,10 @@ page through results.}
 data. meta returns the metadata for the entire call. all gives all data
 back in a list.}
 
-\item{...}{Further named parameters, such as \code{query}, \code{path},
-etc, passed on to \code{\link[httr]{modify_url}} within
-\code{\link[httr]{GET}} call. Unnamed parameters will be combined
-with \code{\link[httr]{config}}.}
+\item{...}{Further named parameters, such as `query`, `path`,
+etc, passed on to [httr::modify_url()] within
+[httr::GET()] call. Unnamed parameters will be combined
+with [httr::config()]}
 }
 \value{
 A list of length two. The first element is metadata. The second is
@@ -63,7 +63,7 @@ Lookup details for specific names in all taxonomies in GBIF.
 This service uses fuzzy lookup so that you can put in partial names and
 you should get back those things that match. See examples below.
 
-This function is different from \code{name_lookup} in that that function
+This function is different from \code{\link[=name_lookup]{name_lookup()}} in that that function
 searches for names. This function encompasses a bunch of API endpoints,
 most of which require that you already have a taxon key, but there is one
 endpoint that allows name searches (see examples below).
@@ -140,5 +140,5 @@ library('httr')
 }
 }
 \references{
-\url{http://www.gbif.org/developer/species#nameUsages}
+<http://www.gbif.org/developer/species#nameUsages.
 }

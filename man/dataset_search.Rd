@@ -13,13 +13,14 @@ dataset_search(query = NULL, country = NULL, type = NULL,
 \arguments{
 \item{query}{Query term(s) for full text search.  The value for this
 parameter can be a simple word or a phrase. Wildcards can be added to the
-simple word parameters only, e.g. q=*puma*}
+simple word parameters only, e.g. `q=*puma*`}
 
 \item{country}{NOT YET IMPLEMENTED. Filters by country as given in
-isocodes$gbif_name, e.g. country=CANADA.}
+isocodes$gbif_name, e.g. `country=CANADA`}
 
 \item{type}{Type of dataset, options include occurrene, metadata, checklist,
-sampling_event (http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/DatasetType.html)}
+sampling_event
+(http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/DatasetType.html)}
 
 \item{keyword}{Keyword to search by. Datasets can be tagged by keywords,
 which you can search on. The search is done on the merged collection of
@@ -28,10 +29,10 @@ tags, the dataset keywordCollections and temporalCoverages.}
 \item{owningOrg}{Owning organization. DEFUNCT.}
 
 \item{publishingOrg}{Publishing organization. A uuid string. See
-\code{\link{organizations}}}
+[organizations()]}
 
 \item{hostingOrg}{Hosting organization. A uuid string. See
-\code{\link{organizations}}}
+[organizations()]}
 
 \item{publishingCountry}{Publishing country. See options at
 isocodes$gbif_name}
@@ -42,40 +43,41 @@ broken down to decades. Decades are given as a full year, e.g. 1880, 1960,
 as those that cover the entire decade or more. Facet by decade to get the
 break down, e.g. /search?facet=DECADE&facet_only=true (see example below)}
 
-\item{facet}{A list of facet names used to retrieve the 100 most frequent values
-for a field. Allowed facets are: datasetKey, highertaxonKey, rank, status,
-extinct, habitat, and nameType. Additionally threat and nomenclaturalStatus
-are legal values but not yet implemented, so data will not yet be returned for them.}
+\item{facet}{A list of facet names used to retrieve the 100 most frequent
+values for a field. Allowed facets are: datasetKey, highertaxonKey, rank,
+status, extinct, habitat, and nameType. Additionally threat and
+nomenclaturalStatus are legal values but not yet implemented, so data will
+not yet be returned for them.}
 
 \item{facetMincount}{Used in combination with the facet parameter. Set
-facetMincount={#} to exclude facets with a count less than {#}, e.g.
+`facetMincount={#}` to exclude facets with a count less than {#}, e.g.
 http://bit.ly/1bMdByP only shows the type value 'ACCEPTED' because the other
 statuses have counts less than 7,000,000}
 
 \item{facetMultiselect}{Used in combination with the facet parameter. Set
-facetMultiselect=true to still return counts for values that are not currently
-filtered, e.g. http://bit.ly/19YLXPO still shows all status values even though
-status is being filtered by status=ACCEPTED}
+facetMultiselect=true to still return counts for values that are not
+currently filtered, e.g. http://bit.ly/19YLXPO still shows all status
+values even though status is being filtered by `status=ACCEPTED`}
 
 \item{limit}{Number of records to return. Default: 100. Maximum: 1000.}
 
-\item{start}{Record number to start at. Default: 0. Use in combination with \code{limit} to
-page through results.}
+\item{start}{Record number to start at. Default: 0. Use in combination
+with `limit` to page through results.}
 
-\item{pretty}{Print informative metadata using \code{\link{cat}}. Not easy
+\item{pretty}{Print informative metadata using [cat()]. Not easy
 to manipulate output though.}
 
 \item{return}{What to return. One of meta, descriptions, data, facets,
 or all (Default).}
 
-\item{...}{Further named parameters, such as \code{query}, \code{path},
-etc, passed on to \code{\link[httr]{modify_url}} within
-\code{\link[httr]{GET}} call. Unnamed parameters will be combined
-with \code{\link[httr]{config}}.}
+\item{...}{Further named parameters, such as `query`, `path`,
+etc, passed on to [httr::modify_url()] within
+[httr::GET()] call. Unnamed parameters will be combined
+with [httr::config()]}
 }
 \value{
 A data.frame, list, or message printed to console (using
-pretty=TRUE).
+`pretty=TRUE`).
 }
 \description{
 This function does not search occurrence data, only metadata on the datasets

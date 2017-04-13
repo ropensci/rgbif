@@ -11,7 +11,7 @@ gbif_names(input, output = NULL, browse = TRUE)
 
 \item{output}{Output folder path. If not given uses temporary folder.}
 
-\item{browse}{(logical) Browse output (default: TRUE)}
+\item{browse}{(logical) Browse output (default: \code{TRUE})}
 }
 \description{
 View highlighted terms in name results from GBIF.

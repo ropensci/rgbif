@@ -5,21 +5,21 @@
 #' @template oslimstart
 #' @template occ
 #' @template occ_data_egs
-#' @seealso \code{\link{downloads}}, \code{\link{occ_search}}
-#' @details This does nearly the same thing as \code{\link{occ_search}}, but
+#' @seealso [downloads()], [occ_search()]
+#' @details This does nearly the same thing as [occ_search()], but
 #' is a bit simplified for speed, and is for the most common use case where
 #' user just wants the data, and not other information like taxon hierarchies
 #' and media (e.g., images) information. Alot of time in
-#' \code{\link{occ_search}} is used parsing data to be more useable
+#' [occ_search()] is used parsing data to be more useable
 #' downstream. We do less of that in this function.
-#' @return An object of class \code{gbif_data}, which is a S3 class list, with
-#' slots for metadata (\code{meta}) and the occurrence data itself
-#' (\code{data}),
+#' @return An object of class `gbif_data`, which is a S3 class list, with
+#' slots for metadata (`meta`) and the occurrence data itself
+#' (`data`),
 #' and with attributes listing the user supplied arguments and whether it was a
 #' "single" or "many" search; that is, if you supply two values of the
-#' \code{datasetKey} parameter to searches are done, and it's a "many".
-#' \code{meta} is a list of length four with offset, limit, endOfRecords and
-#' count fields. \code{data} is a tibble (aka data.frame)
+#' `datasetKey` parameter to searches are done, and it's a "many".
+#' `meta` is a list of length four with offset, limit, endOfRecords and
+#' count fields. `data` is a tibble (aka data.frame)
 
 occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
   publishingCountry=NULL, hasCoordinate=NULL, typeStatus=NULL,
@@ -171,18 +171,4 @@ occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
 
   structure(out, args = argscoll, class = "gbif_data",
             type = if (length(iter) == 0) "single" else "many")
-}
-
-convmany <- function(x) {
-  if (is.null(x)) return(x)
-  nms <- deparse(substitute(x))
-  if (inherits(x, "character")) {
-    if (length(x) == 1) {
-      if (grepl(";", x)) {
-        x <- strtrim(strsplit(x, ";")[[1]])
-      }
-    }
-  }
-  x <- stats::setNames(x, rep(nms, length(x)))
-  return(x)
 }

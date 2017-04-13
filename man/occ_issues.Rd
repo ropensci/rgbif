@@ -7,16 +7,18 @@
 occ_issues(.data, ..., mutate = NULL)
 }
 \arguments{
-\item{.data}{Output from a call to \code{occ_search}, but only if \code{return="all"},
-or \code{return="data"}, otherwise function stops with error}
+\item{.data}{Output from a call to \code{\link[=occ_search]{occ_search()}}, but only if
+\code{return="all"}, or \code{return="data"}, otherwise function stops
+with error}
 
-\item{...}{Named parameters to only get back (e.g., cdround), or to remove (e.g. -cdround).}
+\item{...}{Named parameters to only get back (e.g., cdround), or to
+remove (e.g. -cdround).}
 
 \item{mutate}{(character) One of:
 \itemize{
- \item split Split issues into new columns.
- \item split_expand Split into new columns, and expand issue names.
- \item expand Expand issue abbreviated codes into descriptive names.
+\item split Split issues into new columns.
+\item split_expand Split into new columns, and expand issue names.
+\item expand Expand issue abbreviated codes into descriptive names.
 }
 For split and split_expand, values in cells become y ("yes") or n ("no").}
 }
@@ -24,16 +26,16 @@ For split and split_expand, values in cells become y ("yes") or n ("no").}
 Parse and examine further GBIF issues on a dataset.
 }
 \details{
-See also the vignette \code{Cleaning data using GBIF issues}.
+See also the vignette \strong{Cleaning data using GBIF issues}
 
 Note that you can also query based on issues, e.g.,
-\code{occ_search(taxonKey=1, issue='DEPTH_UNLIKELY')}. However, I imagine it's more likely
-that you want to search for occurrences based on a taxonomic name, or geographic area,
-not based on issues, so it makes sense to pull data down, then clean as needed
-using this function.
+\code{occ_search(taxonKey=1, issue='DEPTH_UNLIKELY')}. However, I imagine
+it's more likely that you want to search for occurrences based on a
+taxonomic name, or geographic area, not based on issues, so it makes sense
+to pull data down, then clean as needed using this function.
 
 This function only affects the \code{data} element in the \code{gbif} class that is
-returned from a call to \code{\link[rgbif]{occ_search}}. Maybe in a future version
+returned from a call to \code{\link[=occ_search]{occ_search()}}. Maybe in a future version
 we will remove the associated records from the \code{hierarchy} and \code{media}
 elements as they are remove from the \code{data} element.
 }

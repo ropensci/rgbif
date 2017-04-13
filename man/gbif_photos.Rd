@@ -13,7 +13,7 @@ gbif_photos(input, output = NULL, which = "table", browse = TRUE)
 
 \item{which}{One of map or table (default).}
 
-\item{browse}{(logical) Browse output (default: TRUE)}
+\item{browse}{(logical) Browse output (default: \code{TRUE})}
 }
 \description{
 View photos from GBIF.
@@ -33,7 +33,8 @@ res <- occ_search(mediaType = 'StillImage', return = "media")
 gbif_photos(res)
 gbif_photos(res, which='map')
 
-res <- occ_search(scientificName = "Aves", mediaType = 'StillImage', return = "media", limit=150)
+res <- occ_search(scientificName = "Aves", mediaType = 'StillImage',
+  return = "media", limit=150)
 gbif_photos(res)
 gbif_photos(res, output = '~/barfoo')
 }

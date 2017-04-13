@@ -20,10 +20,12 @@
 #'
 #' # many species
 #' splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
-#' keys <- vapply(splist, function(x) name_suggest(x)$key[1], numeric(1), USE.NAMES=FALSE)
+#' keys <- vapply(splist, function(x) name_suggest(x)$key[1], numeric(1),
+#'   USE.NAMES=FALSE)
 #' dat <- occ_data(keys, limit = 50)
 #' library("data.table")
-#' dd <- rbindlist(lapply(dat, function(z) z$data), fill = TRUE, use.names = TRUE)
+#' dd <- rbindlist(lapply(dat, function(z) z$data), fill = TRUE,
+#'   use.names = TRUE)
 #' gbifmap(dd)
 #' }
 
@@ -33,7 +35,8 @@ gbifmap <- function(input = NULL, mapdatabase = "world", region = ".",
   check_for_a_pkg("maps")
   tomap <- input[complete.cases(input$decimalLatitude, input$decimalLatitude), ]
   tomap <- tomap[!tomap$decimalLongitude == 0 & !tomap$decimalLatitude == 0, ]
-  tomap <- tomap[-(which(tomap$decimalLatitude <= 90 || tomap$decimalLongitude <= 180)), ]
+  tomap <- tomap[-(which(tomap$decimalLatitude <= 90 ||
+                           tomap$decimalLongitude <= 180)), ]
   tomap$name <- as.factor(gbif_capwords(tomap$name, onlyfirst = TRUE))
 
   if (is.null(jitter)) {
@@ -50,7 +53,8 @@ gbifmap <- function(input = NULL, mapdatabase = "world", region = ".",
   message(paste("Rendering map...plotting ", nrow(tomap), " points", sep = ""))
 
   ggplot(world, aes(long, lat)) +
-    geom_polygon(aes(group = group), fill = "white", color = "gray40", size = 0.2) +
+    geom_polygon(aes(group = group), fill = "white", color = "gray40",
+                 size = 0.2) +
     geom(data = tomap, aes(decimalLongitude, decimalLatitude, colour = name),
          alpha = 0.4, size = 3, position = jitter) +
     scale_color_brewer("", type = "qual", palette = 6) +

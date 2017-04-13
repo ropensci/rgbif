@@ -4,7 +4,7 @@
 #'
 #' @param input Input output from occ_search
 #' @param output Output folder path. If not given uses temporary folder.
-#' @param browse (logical) Browse output (default: TRUE)
+#' @param browse (logical) Browse output (default: `TRUE`)
 #'
 #' @examples \dontrun{
 #' # browse=FALSE returns path to file

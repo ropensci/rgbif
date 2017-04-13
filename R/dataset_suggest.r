@@ -12,7 +12,7 @@
 #' @param description Return descriptions only (TRUE) or all data (FALSE,
 #' default)
 #'
-#' @references \url{http://www.gbif.org/developer/registry#datasetSearch}
+#' @references <http://www.gbif.org/developer/registry#datasetSearch>
 #'
 #' @examples \dontrun{
 #' # Suggest datasets of type "OCCURRENCE".

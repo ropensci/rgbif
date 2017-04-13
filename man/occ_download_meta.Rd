@@ -10,7 +10,7 @@ occ_download_meta(key, ...)
 \item{key}{A key generated from a request, like that from
 \code{occ_download}}
 
-\item{...}{Further args passed to \code{\link[httr]{GET}}}
+\item{...}{Further args passed to \code{\link[httr:GET]{httr::GET()}}}
 }
 \description{
 Retrieves the occurrence download metadata by its unique key.

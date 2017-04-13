@@ -1,18 +1,20 @@
 #' Get citation for datasets used
 #'
 #' @export
-#' @param x (character) Result of call to \code{occ_search}, \code{occ_download_get},
-#' a dataset key, or occurrence key (character or numeric).
+#' @param x (character) Result of call to [occ_search()],
+#' [occ_download_get()], a dataset key, or occurrence key (character or
+#' numeric).
 #' @return list with S3 class assigned, used by a print method to pretty print
 #' citation information. Though you can unclass the output or just index to the
 #' named items as needed.
-#' @details Returns a set of citations, one for each dataset. We pull out unique dataset keys
-#' and get citations, so the length of citations may not be equal to the number of records you
-#' pass in.
+#' @details Returns a set of citations, one for each dataset. We pull out
+#' unique dataset keys and get citations, so the length of citations may not
+#' be equal to the number of records you pass in.
 #'
-#' Currently, this function gives back citations at the dataset level, not at the individual
-#' occurrence level. If occurrence keys are passed in, then we track down the dataset
-#' the key is from, and get the citation for the dataset.
+#' Currently, this function gives back citations at the dataset level, not
+#' at the individual occurrence level. If occurrence keys are passed in, then
+#' we track down the dataset the key is from, and get the citation for
+#' the dataset.
 #' @examples \dontrun{
 #' res1 <- occ_search(taxonKey=3119195, limit=2)
 #' (xx <- gbif_citation(res1))
@@ -23,10 +25,12 @@
 #'
 #' # if no datasetKey field included, we attempt to identify the dataset
 #' ## key field included - still works
-#' res3 <- occ_search(taxonKey=3119195, fields=c('name','basisOfRecord','key'), limit=20)
+#' res3 <- occ_search(taxonKey=3119195, fields=c('name','basisOfRecord','key'),
+#'   limit=20)
 #' (xx <- gbif_citation(res3))
 #' ## key field not included - errors
-#' # res3 <- occ_search(taxonKey=3119195, fields=c('name','basisOfRecord','protocol'), limit=20)
+#' # res3 <- occ_search(taxonKey=3119195, fields=c('name','basisOfRecord','
+#' #    protocol'), limit=20)
 #' # (xx <- gbif_citation(res3))
 #'
 #' # character class inputs

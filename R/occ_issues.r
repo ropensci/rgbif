@@ -2,9 +2,11 @@
 #'
 #' @export
 #'
-#' @param .data Output from a call to \code{occ_search}, but only if \code{return="all"},
-#' or \code{return="data"}, otherwise function stops with error
-#' @param ... Named parameters to only get back (e.g., cdround), or to remove (e.g. -cdround).
+#' @param .data Output from a call to [occ_search()], but only if
+#' `return="all"`, or `return="data"`, otherwise function stops
+#' with error
+#' @param ... Named parameters to only get back (e.g., cdround), or to
+#' remove (e.g. -cdround).
 #' @param mutate (character) One of:
 #' \itemize{
 #'  \item split Split issues into new columns.
@@ -14,20 +16,20 @@
 #' For split and split_expand, values in cells become y ("yes") or n ("no").
 #'
 #' @references
-#' \url{http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html}
+#' <http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html>
 #'
-#' @details See also the vignette \code{Cleaning data using GBIF issues}.
+#' @details See also the vignette **Cleaning data using GBIF issues**
 #'
 #' Note that you can also query based on issues, e.g.,
-#' \code{occ_search(taxonKey=1, issue='DEPTH_UNLIKELY')}. However, I imagine it's more likely
-#' that you want to search for occurrences based on a taxonomic name, or geographic area,
-#' not based on issues, so it makes sense to pull data down, then clean as needed
-#' using this function.
+#' `occ_search(taxonKey=1, issue='DEPTH_UNLIKELY')`. However, I imagine
+#' it's more likely that you want to search for occurrences based on a
+#' taxonomic name, or geographic area, not based on issues, so it makes sense
+#' to pull data down, then clean as needed using this function.
 #'
-#' This function only affects the \code{data} element in the \code{gbif} class that is
-#' returned from a call to \code{\link[rgbif]{occ_search}}. Maybe in a future version
-#' we will remove the associated records from the \code{hierarchy} and \code{media}
-#' elements as they are remove from the \code{data} element.
+#' This function only affects the `data` element in the `gbif` class that is
+#' returned from a call to [occ_search()]. Maybe in a future version
+#' we will remove the associated records from the `hierarchy` and `media`
+#' elements as they are remove from the `data` element.
 #'
 #' @examples \dontrun{
 #' ## what do issues mean, can print whole table, or search for matches

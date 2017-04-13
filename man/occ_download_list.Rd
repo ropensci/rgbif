@@ -16,7 +16,7 @@ occ_download_list(user = getOption("gbif_user"),
 
 \item{start}{Record number to start at. Default: 0}
 
-\item{...}{Further args passed to \code{\link[httr]{GET}}}
+\item{...}{Further args passed to \code{\link[httr:GET]{httr::GET()}}}
 }
 \description{
 Lists the downloads created by a user.

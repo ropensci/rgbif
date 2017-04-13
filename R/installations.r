@@ -7,13 +7,13 @@
 #'
 #' @param data The type of data to get. One or more of: 'contact', 'endpoint',
 #' 'dataset', 'comment', 'deleted', 'nonPublishing', or the special 'all'.
-#' Default: \code{'all'}
+#' Default: `'all'`
 #' @param uuid UUID of the data node provider. This must be specified if data
 #' is anything other than 'all'.
-#' @param query Query nodes. Only used when \code{data='all'}. Ignored
+#' @param query Query nodes. Only used when `data='all'`. Ignored
 #' otherwise.
 #'
-#' @references \url{http://www.gbif.org/developer/registry#installations}
+#' @references <http://www.gbif.org/developer/registry#installations>
 #'
 #' @examples \dontrun{
 #' installations(limit=5)

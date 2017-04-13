@@ -2,17 +2,17 @@
 #'
 #' @export
 #'
-#' @param x The output of a call to \code{occ_download_get}
+#' @param x The output of a call to `occ_download_get`
 #' @param key A key generated from a request, like that from
 #' \code{occ_download}
-#' @param path Path to unzip file to. Default: \code{"."} Writes to
+#' @param path Path to unzip file to. Default: `"."` Writes to
 #' folder matching zip file name
-#' @param ... parameters passed on to \code{\link[data.table]{fread}}
+#' @param ... parameters passed on to [data.table::fread()]
 #'
 #' @return a tibble (data.frame)
 #'
 #' @details You can provide either x as input, or both key and path. We use
-#' \code{\link[data.table]{fread}} internally to read data.
+#' [data.table::fread()] internally to read data.
 #'
 #' @examples \dontrun{
 #' # First, kick off at least 1 download, then wait for the job to be complete

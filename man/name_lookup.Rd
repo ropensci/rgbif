@@ -42,7 +42,7 @@ passed in the same request).}
 }}
 
 \item{isExtinct}{(logical) Filters by extinction status (e.g.
-isExtinct=TRUE)}
+`isExtinct=TRUE`)}
 
 \item{habitat}{(character) Filters by habitat. One of: marine, freshwater,
 or terrestrial}
@@ -84,42 +84,42 @@ http://bit.ly/1bMdByP only shows the type value 'ACCEPTED' because the
 other statuses have counts less than 7,000,000}
 
 \item{facetMultiselect}{(logical) Used in combination with the facet
-parameter. Set \code{facetMultiselect=TRUE} to still return counts for
+parameter. Set `facetMultiselect=TRUE` to still return counts for
 values that are not currently filtered, e.g. http://bit.ly/19YLXPO still
 shows all status values even though status is being filtered
-by \code{status=ACCEPTED}}
+by `status=ACCEPTED`}
 
 \item{type}{Type of name. One of occurrence, checklist, or metadata.}
 
-\item{hl}{(logical) Set \code{hl=TRUE} to highlight terms matching the
+\item{hl}{(logical) Set `hl=TRUE` to highlight terms matching the
 query when in fulltext search fields. The highlight will be an emphasis tag
-of class 'gbifH1' e.g. \code{query='plant', hl=TRUE}. Fulltext search fields
+of class 'gbifH1' e.g. `query='plant', hl=TRUE`. Fulltext search fields
 include: title, keyword, country, publishing country, publishing
 organization title, hosting organization title, and description. One
 additional full text field is searched which includes information from
 metadata documents, but the text of this field is not returned in the
 response.}
 
-\item{verbose}{(logical) If TRUE, all data is returned as a list for each
-element. If FALSE (default) a subset of the data that is thought to be most
+\item{verbose}{(logical) If `TRUE`, all data is returned as a list for each
+element. If `FALSE` (default) a subset of the data that is thought to be most
 essential is organized into a data.frame.}
 
 \item{return}{One of data, meta, facets, names, or all. If data, a
-data.frame with the data. facets returns the facets, if facets=TRUE, or
-empy list if facets=FALSE. meta returns the metadata for the entire call.
+data.frame with the data. facets returns the facets, if `facets=TRUE`, or
+empy list if `facets=FALSE`. meta returns the metadata for the entire call.
 names returns the vernacular (common) names for each taxon. all gives all
 data back in a list. Each element is NULL if there is no contents in that
 element. hierarchies and names slots are named by the GBIF key, which
 matches the first column of the data.frame in the data slot. So if you
 wanted to combine those somehow, you could easily do so using the key.}
 
-\item{...}{Further named parameters, such as \code{query}, \code{path}, etc,
-passed on to \code{\link[httr]{modify_url}} within \code{\link[httr]{GET}}
-call. Unnamed parameters will be combined with \code{\link[httr]{config}}.}
+\item{...}{Further named parameters, such as `query`, `path`, etc,
+passed on to [httr::modify_url()] within [httr::GET()]
+call. Unnamed parameters will be combined with [httr::config()].}
 }
 \value{
 A list of length three. The first element is metadata. The second is
-either a data.frame (verbose=FALSE, default) or a list (verbose=TRUE),
+either a data.frame (`verbose=FALSE`, default) or a list (`verbose=TRUE`),
 and the third element is the facet data.
 }
 \description{
@@ -128,7 +128,7 @@ Lookup names in all taxonomies in GBIF.
 This service uses fuzzy lookup so that you can put in partial names and
 you should get back those things that match. See examples below.
 
-Faceting: If \code{facet=FALSE} or left to the default (NULL), no faceting
+Faceting: If `facet=FALSE` or left to the default (NULL), no faceting
 is done. And therefore, all parameters with facet in their name are
 ignored (facetOnly, facetMincount, facetMultiselect).
 }

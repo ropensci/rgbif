@@ -33,7 +33,7 @@ in your \code{.Rprofile} file with the option \code{gbif_pwd}}
 email. Required. Set in your \code{.Rprofile} file with the option
 \code{gbif_email}}
 
-\item{callopts}{Further named arguments passed on to \code{\link[httr]{POST}}}
+\item{callopts}{Further named arguments passed on to \code{\link[httr:POST]{httr::POST()}}}
 }
 \description{
 Spin up a download request for GBIF occurrence data.
@@ -46,53 +46,51 @@ the operator.  This character string is parsed internally.
 
 The value can be comma separated, in which case we'll turn that into a
 predicate combined with the OR operator, for example,
-\code{"taxonKey = 2480946,5229208"} will turn into
-\code{
-'{
-    "type": "or",
-    "predicates": [
-        {
-            "type": "equals",
-            "key": "TAXON_KEY",
-            "value": "2480946"
-        },
-        {
-            "type": "equals",
-            "key": "TAXON_KEY",
-            "value": "5229208"
-        }
-    ]
+\code{"taxonKey = 2480946,5229208"} will turn into\preformatted{'{
+   "type": "or",
+   "predicates": [
+     {
+      "type": "equals",
+      "key": "TAXON_KEY",
+      "value": "2480946"
+     },
+     {
+      "type": "equals",
+      "key": "TAXON_KEY",
+      "value": "5229208"
+     }
+   ]
 }'
 }
 
 Acceptable arguments to \code{...} are:
 \itemize{
- \item taxonKey = 'TAXON_KEY'
- \item scientificName = 'SCIENTIFIC_NAME'
- \item country = 'COUNTRY'
- \item publishingCountry = 'PUBLISHING_COUNTRY'
- \item hasCoordinate = 'HAS_COORDINATE'
- \item hasGeospatialIssue = 'HAS_GEOSPATIAL_ISSUE'
- \item typeStatus = 'TYPE_STATUS'
- \item recordNumber = 'RECORD_NUMBER'
- \item lastInterpreted = 'LAST_INTERPRETED'
- \item continent = 'CONTINENT'
- \item geometry = 'GEOMETRY'
- \item basisOfRecord = 'BASIS_OF_RECORD'
- \item datasetKey = 'DATASET_KEY'
- \item eventDate = 'EVENT_DATE'
- \item catalogNumber = 'CATALOG_NUMBER'
- \item year = 'YEAR'
- \item month = 'MONTH'
- \item decimalLatitude = 'DECIMAL_LATITUDE'
- \item decimalLongitude = 'DECIMAL_LONGITUDE'
- \item elevation = 'ELEVATION'
- \item depth = 'DEPTH'
- \item institutionCode = 'INSTITUTION_CODE'
- \item collectionCode = 'COLLECTION_CODE'
- \item issue = 'ISSUE'
- \item mediatype = 'MEDIA_TYPE'
- \item recordedBy = 'RECORDED_BY'
+\item taxonKey = 'TAXON_KEY'
+\item scientificName = 'SCIENTIFIC_NAME'
+\item country = 'COUNTRY'
+\item publishingCountry = 'PUBLISHING_COUNTRY'
+\item hasCoordinate = 'HAS_COORDINATE'
+\item hasGeospatialIssue = 'HAS_GEOSPATIAL_ISSUE'
+\item typeStatus = 'TYPE_STATUS'
+\item recordNumber = 'RECORD_NUMBER'
+\item lastInterpreted = 'LAST_INTERPRETED'
+\item continent = 'CONTINENT'
+\item geometry = 'GEOMETRY'
+\item basisOfRecord = 'BASIS_OF_RECORD'
+\item datasetKey = 'DATASET_KEY'
+\item eventDate = 'EVENT_DATE'
+\item catalogNumber = 'CATALOG_NUMBER'
+\item year = 'YEAR'
+\item month = 'MONTH'
+\item decimalLatitude = 'DECIMAL_LATITUDE'
+\item decimalLongitude = 'DECIMAL_LONGITUDE'
+\item elevation = 'ELEVATION'
+\item depth = 'DEPTH'
+\item institutionCode = 'INSTITUTION_CODE'
+\item collectionCode = 'COLLECTION_CODE'
+\item issue = 'ISSUE'
+\item mediatype = 'MEDIA_TYPE'
+\item recordedBy = 'RECORDED_BY'
 }
 }
 \examples{

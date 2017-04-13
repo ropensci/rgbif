@@ -25,19 +25,19 @@
 #' @param genus (character) If provided default matching will also try to
 #' match against this if no direct match is found for the name alone.
 #' (optional)
-#' @param strict (logical) If TRUE it (fuzzy) matches only the given name,
+#' @param strict (logical) If `TRUE` it (fuzzy) matches only the given name,
 #' but never a taxon in the upper classification (optional)
-#' @param verbose (logical) If TRUE show alternative matches considered which
+#' @param verbose (logical) If `TRUE` show alternative matches considered which
 #' had been rejected.
 #'
-#' @return A list for a single taxon with many slots (with \code{verbose=FALSE}
+#' @return A list for a single taxon with many slots (with `verbose=FALSE`)
 #' - default), or a list of length two, first element for the suggested taxon
 #' match, and a data.frame with alternative name suggestions resulting from
-#' fuzzy matching (with \code{verbose=TRUE}).
+#' fuzzy matching (with `verbose=TRUE`).
 #' @details If you don't get a match GBIF gives back a list of length 3 with
 #' slots synonym, confidence, and matchType='NONE'.
 #'
-#' @references \url{http://www.gbif.org/developer/species#searching}
+#' @references <http://www.gbif.org/developer/species#searching>
 #'
 #' @examples \dontrun{
 #' name_backbone(name='Helianthus annuus', kingdom='plants')

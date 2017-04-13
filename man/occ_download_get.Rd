@@ -14,14 +14,14 @@ occ_download_get(key, path = ".", overwrite = FALSE, ...)
 
 \item{overwrite}{Will only overwrite existing path if TRUE.}
 
-\item{...}{Further args passed to \code{\link[httr]{GET}}}
+\item{...}{Further args passed to \code{\link[httr:GET]{httr::GET()}}}
 }
 \description{
 Get a download from GBIF.
 }
 \details{
 Downloads the zip file to a directory you specify on your machine.
-\code{link[httr]{write_disk}} is used internally to write the zip file to
+\code{\link[httr:write_disk]{httr::write_disk()}} is used internally to write the zip file to
 disk. This function only downloads the file. See \code{occ_download_import}
 to open a downloaded file in your R session. The speed of this function is
 of course proportional to the size of the file to download. For example,

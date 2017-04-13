@@ -3,7 +3,7 @@
 #' @export
 #'
 #' @param ... One or more of query arguments to kick of a download job.
-#' If you use this, don't use \code{body} parameter. See Details.
+#' If you use this, don't use `body` parameter. See Details.
 #' @param body if you prefer to pass in the payload yourself, use this
 #' parameter. if use this, don't ass anythig to the dots. accepts
 #' either an R list, or JSON. JSON is likely easier, since the JSON
@@ -14,41 +14,42 @@
 #' lessThanOrEquals (<=), greaterThan (>), greaterThanOrEquals (>=), in,
 #' within, not (!), like
 #' @param user (character) User name within GBIF's website. Required. Set in
-#' your \code{.Rprofile} file with the option \code{gbif_user}
+#' your `.Rprofile` file with the option `gbif_user`
 #' @param pwd (character) User password within GBIF's website. Required. Set
-#' in your \code{.Rprofile} file with the option \code{gbif_pwd}
+#' in your `.Rprofile` file with the option `gbif_pwd`
 #' @param email (character) Email address to recieve download notice done
-#' email. Required. Set in your \code{.Rprofile} file with the option
-#' \code{gbif_email}
-#' @param callopts Further named arguments passed on to \code{\link[httr]{POST}}
+#' email. Required. Set in your `.Rprofile` file with the option
+#' `gbif_email`
+#' @param callopts Further named arguments passed on to [httr::POST()]
 #'
 #' @details Argument passed have to be passed as character (e.g.,
 #' 'country = US'), with a space between key ('country'), operator ('='),
-#' and value ('US'). See the \code{type} parameter for possible options for
+#' and value ('US'). See the `type` parameter for possible options for
 #' the operator.  This character string is parsed internally.
 #'
 #' The value can be comma separated, in which case we'll turn that into a
 #' predicate combined with the OR operator, for example,
-#' \code{"taxonKey = 2480946,5229208"} will turn into
-#' \code{
-#' '{
-#'     "type": "or",
-#'     "predicates": [
-#'         {
-#'             "type": "equals",
-#'             "key": "TAXON_KEY",
-#'             "value": "2480946"
-#'         },
-#'         {
-#'             "type": "equals",
-#'             "key": "TAXON_KEY",
-#'             "value": "5229208"
-#'         }
-#'     ]
-#' }'
-#' }
+#' `"taxonKey = 2480946,5229208"` will turn into
 #'
-#' Acceptable arguments to \code{...} are:
+#' ```
+#' '{
+#'    "type": "or",
+#'    "predicates": [
+#'      {
+#'       "type": "equals",
+#'       "key": "TAXON_KEY",
+#'       "value": "2480946"
+#'      },
+#'      {
+#'       "type": "equals",
+#'       "key": "TAXON_KEY",
+#'       "value": "5229208"
+#'      }
+#'    ]
+#' }'
+#' ```
+#'
+#' Acceptable arguments to `...` are:
 #' \itemize{
 #'  \item taxonKey = 'TAXON_KEY'
 #'  \item scientificName = 'SCIENTIFIC_NAME'
@@ -79,9 +80,9 @@
 #' }
 #'
 #' @references See the API docs
-#' \url{http://www.gbif.org/developer/occurrence#download} for more info,
+#' <http://www.gbif.org/developer/occurrence#download> for more info,
 #' and the predicates docs
-#' \url{http://www.gbif.org/developer/occurrence#predicates}
+#' <http://www.gbif.org/developer/occurrence#predicates>
 #'
 #' @examples \dontrun{
 #' # occ_download("basisOfRecord = LITERATURE")

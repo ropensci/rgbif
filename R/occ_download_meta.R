@@ -4,7 +4,7 @@
 #'
 #' @param key A key generated from a request, like that from
 #' \code{occ_download}
-#' @param ... Further args passed to \code{\link[httr]{GET}}
+#' @param ... Further args passed to [httr::GET()]
 #'
 #' @examples \dontrun{
 #' occ_download_meta("0003983-140910143529206")

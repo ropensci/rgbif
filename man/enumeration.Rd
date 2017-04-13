@@ -12,10 +12,10 @@ enumeration_country(...)
 \arguments{
 \item{x}{A given enumeration.}
 
-\item{...}{Further named parameters, such as \code{query}, \code{path},
-etc, passed on to \code{\link[httr]{modify_url}} within
-\code{\link[httr]{GET}} call. Unnamed parameters will be combined
-with \code{\link[httr]{config}}.}
+\item{...}{Further named parameters, such as `query`, `path`,
+etc, passed on to [httr::modify_url()] within
+[httr::GET()] call. Unnamed parameters will be combined
+with [httr::config()]}
 }
 \value{
 \code{enumeration} returns a character vector, while

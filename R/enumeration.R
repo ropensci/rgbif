@@ -7,8 +7,8 @@
 #'
 #' @param x A given enumeration.
 #' @template occ
-#' @return \code{enumeration} returns a character vector, while
-#' \code{enumeration_country} returns a data.frame.
+#' @return `enumeration` returns a character vector, while
+#' `enumeration_country` returns a data.frame.
 #' @examples \dontrun{
 #' # basic enumeration
 #' enumeration()

@@ -38,27 +38,29 @@ match against this if no direct match is found for the name alone.
 match against this if no direct match is found for the name alone.
 (optional)}
 
-\item{strict}{(logical) If TRUE it (fuzzy) matches only the given name,
+\item{strict}{(logical) If \code{TRUE} it (fuzzy) matches only the given name,
 but never a taxon in the upper classification (optional)}
 
-\item{verbose}{(logical) If TRUE show alternative matches considered which
+\item{verbose}{(logical) If \code{TRUE} show alternative matches considered which
 had been rejected.}
 
-\item{start}{Record number to start at. Default: 0. Use in combination with \code{limit} to
-page through results.}
+\item{start}{Record number to start at. Default: 0. Use in combination
+with `limit` to page through results.}
 
 \item{limit}{Number of records to return. Default: 100. Maximum: 1000.}
 
-\item{...}{Further named parameters, such as \code{query}, \code{path},
-etc, passed on to \code{\link[httr]{modify_url}} within
-\code{\link[httr]{GET}} call. Unnamed parameters will be combined
-with \code{\link[httr]{config}}.}
+\item{...}{Further named parameters, such as `query`, `path`,
+etc, passed on to [httr::modify_url()] within
+[httr::GET()] call. Unnamed parameters will be combined
+with [httr::config()]}
 }
 \value{
-A list for a single taxon with many slots (with \code{verbose=FALSE}
-- default), or a list of length two, first element for the suggested taxon
+A list for a single taxon with many slots (with \code{verbose=FALSE})
+\itemize{
+\item default), or a list of length two, first element for the suggested taxon
 match, and a data.frame with alternative name suggestions resulting from
 fuzzy matching (with \code{verbose=TRUE}).
+}
 }
 \description{
 Lookup names in the GBIF backbone taxonomy.

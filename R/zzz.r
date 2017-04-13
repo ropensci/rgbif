@@ -467,3 +467,18 @@ as_many_args <- function(x) {
     NULL
   }
 }
+
+convmany <- function(x) {
+  if (is.null(x)) return(x)
+  nms <- deparse(substitute(x))
+  if (inherits(x, "character")) {
+    if (length(x) == 1) {
+      if (grepl(";", x)) {
+        x <- strtrim(strsplit(x, ";")[[1]])
+      }
+    }
+  }
+  x <- stats::setNames(x, rep(nms, length(x)))
+  return(x)
+}
+

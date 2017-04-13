@@ -2,16 +2,16 @@
 #'
 #' @export
 #' @param scientificname A character vector of scientific names.
-#' @param ... Further named parameters, such as \code{query}, \code{path},
-#' etc, passed on to \code{\link[httr]{modify_url}} within
-#' \code{\link[httr]{GET}} call. Unnamed parameters will be combined
-#' with \code{\link[httr]{config}}.
+#' @param ... Further named parameters, such as `query`, `path`,
+#' etc, passed on to [httr::modify_url()] within
+#' [httr::GET()] call. Unnamed parameters will be combined
+#' with [httr::config()]
 #'
 #' @return A \code{data.frame} containing fields extracted from parsed
 #' taxon names. Fields returned are the union of fields extracted from
-#' all species names in \code{scientificname}.
+#' all species names in `scientificname`.
 #' @author John Baumgartner (johnbb@@student.unimelb.edu.au)
-#' @references \url{http://www.gbif.org/developer/species#parser}
+#' @references <http://www.gbif.org/developer/species#parser>
 #' @examples \dontrun{
 #' parsenames('x Agropogon littoralis')
 #' parsenames(c('Arrhenatherum elatius var. elatius',

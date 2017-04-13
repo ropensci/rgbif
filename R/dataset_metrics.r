@@ -3,12 +3,12 @@
 #' @export
 #'
 #' @param uuid (character) One or more dataset UUIDs. See examples.
-#' @param ... Further named parameters, such as \code{query}, \code{path},
+#' @param ... Further named parameters, such as `query`, `path`,
 #' etc, passed on to
-#' \code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call.
-#' Unnamed parameters will be combined with \code{\link[httr]{config}}.
+#' [httr::modify_url()] within [httr::GET()] call.
+#' Unnamed parameters will be combined with [httr::config()]
 #'
-#' @references \url{http://www.gbif.org/developer/registry#datasetMetrics}
+#' @references <http://www.gbif.org/developer/registry#datasetMetrics>
 #'
 #' @examples \dontrun{
 #' dataset_metrics(uuid='863e6d6b-f602-4495-ac30-881482b6f799')

@@ -24,7 +24,7 @@ as.download(path = ".", key = NULL)
 \item{path}{Path to unzip file to. Default: \code{"."} Writes to
 folder matching zip file name}
 
-\item{...}{parameters passed on to \code{\link[data.table]{fread}}}
+\item{...}{parameters passed on to \code{\link[data.table:fread]{data.table::fread()}}}
 }
 \value{
 a tibble (data.frame)
@@ -34,7 +34,7 @@ Import a downloaded file from GBIF.
 }
 \details{
 You can provide either x as input, or both key and path. We use
-\code{\link[data.table]{fread}} internally to read data.
+\code{\link[data.table:fread]{data.table::fread()}} internally to read data.
 }
 \examples{
 \dontrun{

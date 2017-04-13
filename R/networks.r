@@ -7,13 +7,13 @@
 #'
 #' @param data The type of data to get. One or more of: 'contact', 'endpoint',
 #'    'identifier', 'tag', 'machineTag', 'comment', 'constituents', or the
-#'    special 'all'. Default: \code{'all'}
+#'    special 'all'. Default: `'all'`
 #' @param uuid UUID of the data network provider. This must be specified if
 #' data is anything other than 'all'. Only 1 can be passed in
-#' @param query Query nodes. Only used when \code{data='all'}. Ignored
+#' @param query Query nodes. Only used when `data='all'`. Ignored
 #' otherwise.
 #'
-#' @references \url{http://www.gbif.org/developer/registry#networks}
+#' @references <http://www.gbif.org/developer/registry#networks>
 #'
 #' @examples \dontrun{
 #' networks(limit=5)

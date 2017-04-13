@@ -1,4 +1,5 @@
-#' Table of GBIF issues, with codes used in data output, full issue name, and descriptions.
+#' Table of GBIF issues, with codes used in data output, full issue name,
+#' and descriptions.
 #'
 #' Table has the following fields:
 #'

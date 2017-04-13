@@ -10,9 +10,9 @@ parsenames(scientificname, ...)
 \item{scientificname}{A character vector of scientific names.}
 
 \item{...}{Further named parameters, such as \code{query}, \code{path},
-etc, passed on to \code{\link[httr]{modify_url}} within
-\code{\link[httr]{GET}} call. Unnamed parameters will be combined
-with \code{\link[httr]{config}}.}
+etc, passed on to \code{\link[httr:modify_url]{httr::modify_url()}} within
+\code{\link[httr:GET]{httr::GET()}} call. Unnamed parameters will be combined
+with \code{\link[httr:config]{httr::config()}}}
 }
 \value{
 A \code{data.frame} containing fields extracted from parsed

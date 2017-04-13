@@ -11,7 +11,7 @@ datasets(data = "all", type = NULL, uuid = NULL, query = NULL,
 \item{data}{The type of data to get. One or more of: 'organization',
 'contact', 'endpoint', 'identifier', 'tag', 'machinetag', 'comment',
 'constituents', 'document', 'metadata', 'deleted', 'duplicate',
-'subDataset', 'withNoEndpoint', or the special 'all'. Default: \code{'all'}}
+'subDataset', 'withNoEndpoint', or the special 'all'. Default: \code{all}}
 
 \item{type}{Type of dataset. Options: include occurrence, checklist,
 metadata, or sampling_event.}
@@ -25,13 +25,13 @@ is anything other than \code{all}}
 
 \item{limit}{Number of records to return. Default: 100. Maximum: 1000.}
 
-\item{start}{Record number to start at. Default: 0. Use in combination with \code{limit} to
-page through results.}
+\item{start}{Record number to start at. Default: 0. Use in combination
+with `limit` to page through results.}
 
-\item{...}{Further named parameters, such as \code{query}, \code{path},
-etc, passed on to \code{\link[httr]{modify_url}} within
-\code{\link[httr]{GET}} call. Unnamed parameters will be combined
-with \code{\link[httr]{config}}.}
+\item{...}{Further named parameters, such as `query`, `path`,
+etc, passed on to [httr::modify_url()] within
+[httr::GET()] call. Unnamed parameters will be combined
+with [httr::config()]}
 }
 \value{
 A list.

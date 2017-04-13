@@ -7,16 +7,16 @@
 #' @param data (character) The type of data to get. One or more of:
 #' 'organization', 'contact', 'endpoint', 'identifier', 'tag', 'machineTag',
 #' 'comment', 'hostedDataset', 'ownedDataset', 'deleted', 'pending',
-#' 'nonPublishing', or the special 'all'. Default: \code{'all'}
+#' 'nonPublishing', or the special 'all'. Default: `'all'`
 #' @param uuid (character) UUID of the data node provider. This must be
 #' specified if data is anything other than 'all'.
-#' @param query (character) Query nodes. Only used when \code{data='all'}
+#' @param query (character) Query nodes. Only used when `data='all'`
 #'
-#' @return A list of length one or two. If \code{uuid} is NULL, then a
-#' data.frame with call metadata, and a data.frame, but if \code{uuid} given,
+#' @return A list of length one or two. If `uuid` is NULL, then a
+#' data.frame with call metadata, and a data.frame, but if `uuid` given,
 #' then a list.
 #'
-#' @references \url{http://www.gbif.org/developer/registry#organizations}
+#' @references <http://www.gbif.org/developer/registry#organizations>
 #'
 #' @examples \dontrun{
 #' organizations(limit=5)

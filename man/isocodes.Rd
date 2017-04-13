@@ -6,10 +6,10 @@
 \title{Table of country two character ISO codes, and GBIF names}
 \description{
 \itemize{
-  \item code. Two character ISO country code.
-  \item name. Name of country.
-  \item gbif_name. Name of country used by GBIF - this is the name
-  you want to use when searching by country in this package.
+\item code. Two character ISO country code.
+\item name. Name of country.
+\item gbif_name. Name of country used by GBIF - this is the name
+you want to use when searching by country in this package.
 }
 }
 \keyword{data}

@@ -1,28 +1,34 @@
 #' @title Interface to the Global Biodiversity Information Facility API.
 #'
-#' @description rgbif: A programmatic interface to the Web Service methods provided by the
-#' Global Biodiversity Information Facility.
+#' @description rgbif: A programmatic interface to the Web Service methods
+#' provided by the Global Biodiversity Information Facility.
 #'
 #' @section About:
 #'
-#' This package gives you access to data from GBIF \url{http://www.gbif.org/} via their API.
+#' This package gives you access to data from GBIF <http://www.gbif.org/>
+#' via their API.
 #'
 #' @section A note about the old GBIF API:
 #'
-#' The old GBIF API was at http://data.gbif.org/tutorial/services, but is now defunct -
-#' that is, not available anymore. We used to have functions that worked with the old API, but
-#' those functions are now not available anymore because GBIF made the old API defunct.
+#' The old GBIF API was at http://data.gbif.org/tutorial/services, but is now
+#' defunct - that is, not available anymore. We used to have functions that
+#' worked with the old API, but those functions are now not available anymore
+#' because GBIF made the old API defunct.
 #'
 #' @section Documentation for the GBIF API:
 #'
 #' \itemize{
-#'   \item summary \url{http://www.gbif.org/developer/summary} - Summary of the GBIF API
-#'   \item registry \url{http://www.gbif.org/developer/registry} - Metadata on datasets, and
-#'   contributing organizations
-#'   \item species names \url{http://www.gbif.org/developer/species} - Species names and metadata
-#'   \item occurrences \url{http://www.gbif.org/developer/occurrence} - Occurrences
-#'   \item maps \url{http://www.gbif.org/developer/maps} - Maps - these APIs are not implemented
-#'   in \code{rgbif}, and are meant more for intergration with web based maps.
+#'   \item summary <http://www.gbif.org/developer/summary> - Summary of
+#'   the GBIF API
+#'   \item registry <http://www.gbif.org/developer/registry> - Metadata
+#'   on datasets, and contributing organizations
+#'   \item species names <http://www.gbif.org/developer/species> - Species
+#'   names and metadata
+#'   \item occurrences <http://www.gbif.org/developer/occurrence> -
+#'   Occurrences
+#'   \item maps <http://www.gbif.org/developer/maps> - Maps - these APIs
+#'   are not implemented in \pkg{rgbif}, and are meant more for intergration
+#'   with web based maps.
 #' }
 #'
 #' @importFrom utils browseURL head unzip packageVersion
@@ -67,7 +73,7 @@ NULL
 #'  \item \code{\link{gist}}: moving this functionality to spocc package, will be removed soon
 #' }
 #'
-#' The above functions have been removed. See \url{https://github.com/ropensci/rgbif} and poke
+#' The above functions have been removed. See <https://github.com/ropensci/rgbif> and poke
 #' around the code if you want to find the old functions in previous versions of the package, or
 #' email Scott at \email{myrmecocystus@@gmail.com}
 #'
@@ -100,9 +106,10 @@ NULL
 #' @keywords data
 NULL
 
-#' Vector of fields in the output for the function \code{occ_search}
+#' Vector of fields in the output for the function [occ_search()]
 #'
-#' These fields can be specified in the \code{fields} parameer in the \code{occ_search} function.
+#' These fields can be specified in the `fields` parameer in the
+#' [occ_search()] function.
 #'
 #' @name occ_fields
 #' @docType data

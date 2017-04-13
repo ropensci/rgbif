@@ -6,7 +6,7 @@
 #' in the faceting results
 #' @param ... Further named curl parameters (see xxx), or facet parameters,
 #' such as for paging based on each facet variable, e.g., country.facetLimit
-#' @seealso \code{\link{occ_search}} also has faceting ability, but
+#' @seealso [occ_search()] also has faceting ability, but
 #' can include occurrence data in addition to facets
 #' @details All fields can be faceted on except for last "lastInterpreted",
 #' "eventDate", and "geometry"

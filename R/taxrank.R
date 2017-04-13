@@ -6,5 +6,6 @@
 #' }
 #' @export
 taxrank <- function() {
-  c("kingdom", "phylum", "class", "order", "family", "genus", "species", "infraspecific")
+  c("kingdom", "phylum", "class", "order", "family", "genus", "species",
+    "infraspecific")
 }

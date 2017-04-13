@@ -11,7 +11,7 @@
 #' @param return What to return. One of meta, descriptions, data, facets,
 #'    or all (Default).
 #'
-#' @references \url{http://www.gbif.org/developer/registry#datasetSearch}
+#' @references <http://www.gbif.org/developer/registry#datasetSearch>
 #'
 #' @examples \dontrun{
 #' # Gets all datasets of type "OCCURRENCE".

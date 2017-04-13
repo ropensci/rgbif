@@ -7,13 +7,13 @@
 #' catalogNumber
 #' @param q Search term
 #' @param limit Number of results, default=5
-#' @param pretty Pretty as true (Default) uses cat to print data, FALSE gives
+#' @param pretty Pretty as true (Default) uses cat to print data, `FALSE` gives
 #' character strings.
-#' @param ... Further named parameters, such as \code{query}, \code{path}, etc,
-#' passed on to \code{\link[httr]{modify_url}} within \code{\link[httr]{GET}}
-#' call. Unnamed parameters will be combined with \code{\link[httr]{config}}.
+#' @param ... Further named parameters, such as `query`, `path`, etc,
+#' passed on to [httr::modify_url()] within [httr::GET()]
+#' call. Unnamed parameters will be combined with [httr::config()].
 #'
-#' @references \url{http://www.gbif.org/developer/occurrence#search}
+#' @references <http://www.gbif.org/developer/occurrence#search>
 #'
 #' @examples \dontrun{
 #' # catalog number

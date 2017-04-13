@@ -9,27 +9,27 @@
 #'    back in a list.
 #' @return A list of length two. The first element is metadata. The second is
 #' a data.frame
-#' @references \url{http://www.gbif.org/developer/species#nameUsages}
+#' @references <http://www.gbif.org/developer/species#nameUsages.
 #' @details
 #' This service uses fuzzy lookup so that you can put in partial names and
 #' you should get back those things that match. See examples below.
 #'
-#' This function is different from \code{name_lookup} in that that function
+#' This function is different from [name_lookup()] in that that function
 #' searches for names. This function encompasses a bunch of API endpoints,
 #' most of which require that you already have a taxon key, but there is one
 #' endpoint that allows name searches (see examples below).
 #'
-#' Note that \code{data="verbatim"} hasn't been working.
+#' Note that `data="verbatim"` hasn't been working.
 #'
 #' Options for the data parameter are: 'all', 'verbatim', 'name', 'parents',
 #' 'children', 'related', 'synonyms', 'descriptions','distributions', 'media',
 #' 'references', 'speciesProfiles', 'vernacularNames', 'typeSpecimens', 'root'
 #'
-#' This function used to be vectorized with respect to the \code{data}
+#' This function used to be vectorized with respect to the `data`
 #' parameter, where you could pass in multiple values and the function
 #' internally loops over each option making separate requests. This has been
-#' removed. You can still loop over many options for the \code{data} parameter,
-#' just use an \code{lapply} family function, or a for loop, etc.
+#' removed. You can still loop over many options for the `data` parameter,
+#' just use an `lapply` family function, or a for loop, etc.
 #' @examples \dontrun{
 #' # A single name usage
 #' name_usage(key=1)

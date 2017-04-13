@@ -2,35 +2,37 @@
 #'
 #' @export
 #'
-#' @param input A data.frame of lat/long data. There must be columns decimalLatitude and
-#' decimalLongitude.
-#' @param latitude A vector of latitude's. Must be the same length as the longitude
-#' vector.
-#' @param longitude A vector of longitude's. Must be the same length as the latitude
-#' vector.
+#' @param input A data.frame of lat/long data. There must be columns
+#' decimalLatitude and decimalLongitude.
+#' @param latitude A vector of latitude's. Must be the same length as the
+#' longitude vector.
+#' @param longitude A vector of longitude's. Must be the same length as
+#' the latitude vector.
 #' @param latlong A vector of lat/long pairs. See examples.
 #' @param key (character) Required. An API key. See Details.
-#' @param ... Further named parameters, such as \code{query}, \code{path}, etc, passed on to
-#' \code{\link[httr]{modify_url}} within \code{\link[httr]{GET}} call. Unnamed parameters will be
-#' combined with \code{\link[httr]{config}}.
+#' @param ... Further named parameters, such as `query`, `path`, etc, passed
+#' on to [httr::modify_url()] within [httr::GET()] call. Unnamed parameters
+#' will be combined with [httr::config()].
 #'
-#' @return A new column named elevation in the supplied data.frame or a vector with elevation of
-#' each location in meters.
+#' @return A new column named elevation in the supplied data.frame or a vector
+#' with elevation of each location in meters.
 #' @references Uses the Google Elevation API at the following link
 #' https://developers.google.com/maps/documentation/elevation/start
 #' @details To get an API key, see instructions at
-#' https://developers.google.com/maps/documentation/elevation/#api_key - It should be an
-#' easy process. Once you have the key pass it in to the \code{key} parameter. You can store
-#' the key in your \code{.Rprofile} file and read it in via \code{getOption} as in the
-#' examples below.
+#' https://developers.google.com/maps/documentation/elevation/#api_key - It
+#' should be an easy process. Once you have the key pass it in to the `key`
+#' parameter. You can store the key in your `.Rprofile` file and read it in
+#' via `getOption` as in the examples below.
 #' @examples \dontrun{
 #' apikey <- getOption("g_elevation_api")
 #' key <- name_suggest('Puma concolor')$key[1]
-#' dat <- occ_search(taxonKey=key, return='data', limit=300, hasCoordinate=TRUE)
+#' dat <- occ_search(taxonKey=key, return='data', limit=300,
+#'   hasCoordinate=TRUE)
 #' head( elevation(dat, key = apikey) )
 #'
 #' # Pass in a vector of lat's and a vector of long's
-#' elevation(latitude=dat$decimalLatitude, longitude=dat$decimalLongitude, key = apikey)
+#' elevation(latitude=dat$decimalLatitude, longitude=dat$decimalLongitude,
+#'   key = apikey)
 #'
 #' # Pass in lat/long pairs in a single vector
 #' pairs <- list(c(31.8496,-110.576060), c(29.15503,-103.59828))
@@ -42,7 +44,8 @@
 #' elevation(latlong=pairs, config=verbose(), key = apikey)
 #' }
 
-elevation <- function(input=NULL, latitude=NULL, longitude=NULL, latlong=NULL, key, ...) {
+elevation <- function(input=NULL, latitude=NULL, longitude=NULL, latlong=NULL,
+                      key, ...) {
 
   # one of input, lat/long, or latlong must be given
   all_input <- rgbif_compact(list(input, latitude, longitude, latlong))
@@ -51,7 +54,8 @@ elevation <- function(input=NULL, latitude=NULL, longitude=NULL, latlong=NULL, k
   }
 
   url <- 'https://maps.googleapis.com/maps/api/elevation/json'
-  foo <- function(x) gsub("\\s+", "", strtrim(paste(x['latitude'], x['longitude'], sep = ",")))
+  foo <- function(x) gsub("\\s+", "", strtrim(paste(x['latitude'],
+                                                    x['longitude'], sep = ",")))
 
   getdata <- function(x) {
     check_latlon(x)
@@ -68,14 +72,16 @@ elevation <- function(input=NULL, latitude=NULL, longitude=NULL, latlong=NULL, k
 
     outout <- list()
     for (i in seq_along(locations)) {
-      args <- rgbif_compact(list(locations = locations[[i]], sensor = 'false', key = key))
+      args <- rgbif_compact(list(locations = locations[[i]],
+                                 sensor = 'false', key = key))
       tt <- GET(url, query = args, make_rgbif_ua(), ...)
       stop_for_status(tt)
       stopifnot(tt$headers$`content-type` == 'application/json; charset=UTF-8')
       res <- c_utf8(tt)
       out <- jsonlite::fromJSON(res, FALSE)
 
-      df <- data.frame(elevation = sapply(out$results, '[[', 'elevation'), stringsAsFactors = FALSE)
+      df <- data.frame(elevation = sapply(out$results, '[[', 'elevation'),
+                       stringsAsFactors = FALSE)
       outout[[i]] <- df
     }
     datdf <- setDF(rbindlist(outout))
@@ -83,15 +89,19 @@ elevation <- function(input=NULL, latitude=NULL, longitude=NULL, latlong=NULL, k
   }
 
   if (!is.null(input)) {
-    if (!inherits(input, "data.frame")) stop("input must be a data.frame",call. = FALSE)
+    if (!inherits(input, "data.frame")) stop("input must be a data.frame",
+                                             call. = FALSE)
     stopifnot(all(c('decimalLatitude','decimalLongitude') %in% names(input)))
     names(input)[names(input) %in% 'decimalLatitude'] <- "latitude"
     names(input)[names(input) %in% 'decimalLongitude'] <- "longitude"
     getdata(input)
   } else if (is.null(latlong)) {
-    if (!is.null(input)) stop("If you use latitude and longitude, input must be left as default")
+    if (!is.null(input)) {
+      stop("If you use latitude and longitude, input must be left as default")
+    }
     stopifnot(length(latitude) == length(longitude))
-    dat <- data.frame(latitude = latitude, longitude = longitude, stringsAsFactors = FALSE)
+    dat <- data.frame(latitude = latitude, longitude = longitude,
+                      stringsAsFactors = FALSE)
     getdata(dat)
   } else {
     dat <- setDF(rbindlist(

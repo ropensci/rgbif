@@ -13,7 +13,8 @@ count_facet(keys = NULL, by = "country", countries = 10,
 \item{by}{(character) One of georeferenced, basisOfRecord, country, or
 publishingCountry.}
 
-\item{countries}{(numeric) Number of countries to facet on, or a vector of country names}
+\item{countries}{(numeric) Number of countries to facet on, or a vector of
+country names}
 
 \item{removezeros}{(logical) Default is FALSE}
 }
@@ -28,10 +29,12 @@ count_facet(by='country', countries=3, removezeros = TRUE)
 count_facet(by='country', countries='AR', removezeros = TRUE)
 
 spplist <- c('Geothlypis trichas','Tiaris olivacea','Pterodroma axillaris',
-             'Calidris ferruginea','Pterodroma macroptera','Gallirallus australis',
+             'Calidris ferruginea','Pterodroma macroptera',
+             'Gallirallus australis',
              'Falco cenchroides','Telespiza cantans','Oreomystis bairdi',
              'Cistothorus palustris')
-keys <- sapply(spplist, function(x) name_backbone(x, rank="species")$usageKey)
+keys <- sapply(spplist,
+  function(x) name_backbone(x, rank="species")$usageKey)
 count_facet(keys, by='country', countries=3, removezeros = TRUE)
 count_facet(keys, by='country', countries=3, removezeros = FALSE)
 count_facet(by='country', countries=20, removezeros = TRUE)

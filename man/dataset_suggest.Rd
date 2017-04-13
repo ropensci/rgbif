@@ -13,13 +13,14 @@ dataset_suggest(query = NULL, country = NULL, type = NULL,
 \arguments{
 \item{query}{Query term(s) for full text search.  The value for this
 parameter can be a simple word or a phrase. Wildcards can be added to the
-simple word parameters only, e.g. q=*puma*}
+simple word parameters only, e.g. `q=*puma*`}
 
 \item{country}{NOT YET IMPLEMENTED. Filters by country as given in
-isocodes$gbif_name, e.g. country=CANADA.}
+isocodes$gbif_name, e.g. `country=CANADA`}
 
 \item{type}{Type of dataset, options include occurrene, metadata, checklist,
-sampling_event (http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/DatasetType.html)}
+sampling_event
+(http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/DatasetType.html)}
 
 \item{subtype}{NOT YET IMPLEMENTED. Will allow filtering of datasets by
 their dataset subtypes, DC or EML.}
@@ -31,10 +32,10 @@ tags, the dataset keywordCollections and temporalCoverages.}
 \item{owningOrg}{Owning organization. DEFUNCT.}
 
 \item{publishingOrg}{Publishing organization. A uuid string. See
-\code{\link{organizations}}}
+[organizations()]}
 
 \item{hostingOrg}{Hosting organization. A uuid string. See
-\code{\link{organizations}}}
+[organizations()]}
 
 \item{publishingCountry}{Publishing country. See options at
 isocodes$gbif_name}
@@ -50,23 +51,23 @@ datasets by their continent(s) as given in our Continent enum.}
 
 \item{limit}{Number of records to return. Default: 100. Maximum: 1000.}
 
-\item{start}{Record number to start at. Default: 0. Use in combination with \code{limit} to
-page through results.}
+\item{start}{Record number to start at. Default: 0. Use in combination
+with `limit` to page through results.}
 
-\item{pretty}{Print informative metadata using \code{\link{cat}}. Not easy
+\item{pretty}{Print informative metadata using [cat()]. Not easy
 to manipulate output though.}
 
 \item{description}{Return descriptions only (TRUE) or all data (FALSE,
 default)}
 
-\item{...}{Further named parameters, such as \code{query}, \code{path},
-etc, passed on to \code{\link[httr]{modify_url}} within
-\code{\link[httr]{GET}} call. Unnamed parameters will be combined
-with \code{\link[httr]{config}}.}
+\item{...}{Further named parameters, such as `query`, `path`,
+etc, passed on to [httr::modify_url()] within
+[httr::GET()] call. Unnamed parameters will be combined
+with [httr::config()]}
 }
 \value{
 A data.frame, list, or message printed to console (using
-pretty=TRUE).
+`pretty=TRUE`).
 }
 \description{
 Suggest datasets in GBIF.
