@@ -20,7 +20,7 @@ is anything other than 'all'.}
 \item{query}{Query nodes. Only used when \code{data='all'}}
 
 \item{identifier}{The value for this parameter can be a simple string or
-integer, e.g. `identifier=120`. This parameter doesn't seem to work right
+integer, e.g. \code{identifier=120}. This parameter doesn't seem to work right
 now.}
 
 \item{identifierType}{Used in combination with the identifier parameter to
@@ -30,12 +30,13 @@ seem to work right now.}
 \item{limit}{Number of records to return. Default: 100. Maximum: 1000.}
 
 \item{start}{Record number to start at. Default: 0. Use in combination
-with `limit` to page through results.}
+with \code{limit} to page through results.}
 
 \item{isocode}{A 2 letter country code. Only used if data='country'.}
 
 \item{curlopts}{list of named curl options passed on to
-[crul::HttpClient()]. see [curl::curl_options()] for curl options}
+\code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
+for curl options}
 }
 \description{
 Nodes metadata.
@@ -46,7 +47,7 @@ identifierType options:
 \itemize{
  \item {DOI} No description.
  \item {FTP} No description.
- \item {GBIF_NODE} Identifies the node (e.g: 'DK' for Denmark, 'sp2000'
+ \item {GBIF_NODE} Identifies the node (e.g: \code{DK} for Denmark, \code{sp2000}
  for Species 2000).
  \item {GBIF_PARTICIPANT} Participant identifier from the GBIF IMS
  Filemaker system.

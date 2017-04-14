@@ -40,7 +40,7 @@ TRIBE, UNRANKED, VARIETY}
 \item{shortname}{(character) A short name..need more info on this?}
 
 \item{start}{Record number to start at. Default: 0. Use in combination
-with `limit` to page through results.}
+with \code{limit} to page through results.}
 
 \item{limit}{Number of records to return. Default: 100. Maximum: 1000.}
 
@@ -49,7 +49,8 @@ data. meta returns the metadata for the entire call. all gives all data
 back in a list.}
 
 \item{curlopts}{list of named curl options passed on to
-[crul::HttpClient()]. see [curl::curl_options()] for curl options}
+\code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
+for curl options}
 }
 \value{
 A list of length two. The first element is metadata. The second is
@@ -84,12 +85,14 @@ just use an \code{lapply} family function, or a for loop, etc.
 Some parameters can tak emany inputs, and treated as 'OR' (e.g., a or b or
 c). The following take many inputs:
 \itemize{
- \item **rank**
- \item **datasetKey**
- \item **uuid**
- \item **name**
- \item **langugae**
+ \item \strong{rank}
+ \item \strong{datasetKey}
+ \item \strong{uuid}
+ \item \strong{name}
+ \item \strong{langugae}
 }
+
+see also \code{\link{many-values}}
 }
 
 \examples{

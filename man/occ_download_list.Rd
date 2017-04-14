@@ -17,7 +17,8 @@ occ_download_list(user = getOption("gbif_user"),
 \item{start}{Record number to start at. Default: 0}
 
 \item{curlopts}{list of named curl options passed on to
-[crul::HttpClient()]. see [curl::curl_options()] for curl options}
+\code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
+for curl options}
 }
 \description{
 Lists the downloads created by a user.

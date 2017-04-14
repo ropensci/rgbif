@@ -48,7 +48,8 @@ year.}
 \item{protocol}{Protocol. E.g., 'DWC_ARCHIVE'}
 
 \item{curlopts}{list of named curl options passed on to
-[crul::HttpClient()]. see [curl::curl_options()] for curl options}
+\code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
+for curl options}
 }
 \value{
 A single numeric value, or a list of numerics.

@@ -13,10 +13,10 @@ dataset_suggest(query = NULL, country = NULL, type = NULL,
 \arguments{
 \item{query}{Query term(s) for full text search.  The value for this
 parameter can be a simple word or a phrase. Wildcards can be added to the
-simple word parameters only, e.g. `q=*puma*`}
+simple word parameters only, e.g. \code{q=*puma*}}
 
 \item{country}{NOT YET IMPLEMENTED. Filters by country as given in
-isocodes$gbif_name, e.g. `country=CANADA`}
+isocodes$gbif_name, e.g. \code{country=CANADA}}
 
 \item{type}{Type of dataset, options include occurrene, metadata, checklist,
 sampling_event
@@ -32,10 +32,10 @@ tags, the dataset keywordCollections and temporalCoverages.}
 \item{owningOrg}{Owning organization. DEFUNCT.}
 
 \item{publishingOrg}{Publishing organization. A uuid string. See
-[organizations()]}
+\code{\link{organizations}}}
 
 \item{hostingOrg}{Hosting organization. A uuid string. See
-[organizations()]}
+\code{\link{organizations}}}
 
 \item{publishingCountry}{Publishing country. See options at
 isocodes$gbif_name}
@@ -52,38 +52,25 @@ datasets by their continent(s) as given in our Continent enum.}
 \item{limit}{Number of records to return. Default: 100. Maximum: 1000.}
 
 \item{start}{Record number to start at. Default: 0. Use in combination
-with `limit` to page through results.}
+with \code{limit} to page through results.}
 
-\item{pretty}{Print informative metadata using [cat()]. Not easy
+\item{pretty}{Print informative metadata using \code{\link{cat}}. Not easy
 to manipulate output though.}
 
 \item{description}{Return descriptions only (TRUE) or all data (FALSE,
 default)}
 
 \item{curlopts}{list of named curl options passed on to
-[crul::HttpClient()]. see [curl::curl_options()] for curl options}
+\code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
+for curl options}
 }
 \value{
 A data.frame, list, or message printed to console (using
-`pretty=TRUE`).
+\code{pretty=TRUE}).
 }
 \description{
 Suggest datasets in GBIF.
 }
-\section{Repeat parmeter inputs}{
-
-Some parameters can tak emany inputs, and treated as 'OR' (e.g., a or b or
-c). The following take many inputs:
-\itemize{
- \item **type**
- \item **keyword**
- \item **publishingOrg**
- \item **hostingOrg**
- \item **publishingCountry**
- \item **decade**
-}
-}
-
 \examples{
 \dontrun{
 # Suggest datasets of type "OCCURRENCE".

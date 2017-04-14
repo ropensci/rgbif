@@ -30,6 +30,9 @@
 #'  \item **datasetKey**
 #' }
 #'
+#' see also [many-values]
+#'
+#'
 #' @return A data.frame with fields selected by fields arg.
 #'
 #' @examples \dontrun{

@@ -2,9 +2,9 @@
 #' Required.
 #' @param facetMincount (numeric) minimum number of records to be included
 #' in the faceting results
-#' @param facetMultiselect (logical) Set to `TRUE` to still return counts
+#' @param facetMultiselect (logical) Set to \code{TRUE} to still return counts
 #' for values that are not currently filtered. See examples.
-#' Default: `FALSE`
+#' Default: \code{FALSE}
 #'
 #' **Faceting**:
 #' All fields can be faceted on except for last "lastInterpreted",

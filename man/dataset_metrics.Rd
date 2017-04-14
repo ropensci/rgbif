@@ -10,7 +10,8 @@ dataset_metrics(uuid, curlopts = list())
 \item{uuid}{(character) One or more dataset UUIDs. See examples.}
 
 \item{curlopts}{list of named curl options passed on to
-[crul::HttpClient()]. see [curl::curl_options()] for curl options}
+\code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
+for curl options}
 }
 \description{
 Get details on a GBIF dataset.

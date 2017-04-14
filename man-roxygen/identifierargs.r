@@ -1,5 +1,5 @@
 #' @param identifier The value for this parameter can be a simple string or
-#' integer, e.g. `identifier=120`. This parameter doesn't seem to work right
+#' integer, e.g. \code{identifier=120}. This parameter doesn't seem to work right
 #' now.
 #' @param identifierType Used in combination with the identifier parameter to
 #' filter identifiers by identifier type. See details. This parameter doesn't
@@ -11,7 +11,7 @@
 #' \itemize{
 #'  \item {DOI} No description.
 #'  \item {FTP} No description.
-#'  \item {GBIF_NODE} Identifies the node (e.g: 'DK' for Denmark, 'sp2000'
+#'  \item {GBIF_NODE} Identifies the node (e.g: \code{DK} for Denmark, \code{sp2000}
 #'  for Species 2000).
 #'  \item {GBIF_PARTICIPANT} Participant identifier from the GBIF IMS
 #'  Filemaker system.

@@ -9,6 +9,11 @@
 rgbif: A programmatic interface to the Web Service methods
 provided by the Global Biodiversity Information Facility.
 }
+\note{
+See \link{many-values} for discussion of how functions vary in how
+they accept values (single vs. many for the same HTTP request vs. many
+for different HTTP requests)
+}
 \section{About}{
 
 

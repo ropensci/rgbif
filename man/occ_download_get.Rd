@@ -15,7 +15,8 @@ occ_download_get(key, path = ".", overwrite = FALSE, curlopts = list())
 \item{overwrite}{Will only overwrite existing path if TRUE.}
 
 \item{curlopts}{list of named curl options passed on to
-[crul::HttpClient()]. see [curl::curl_options()] for curl options}
+\code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
+for curl options}
 }
 \description{
 Get a download from GBIF.

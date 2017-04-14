@@ -26,10 +26,11 @@ is anything other than \code{all}}
 \item{limit}{Number of records to return. Default: 100. Maximum: 1000.}
 
 \item{start}{Record number to start at. Default: 0. Use in combination
-with `limit` to page through results.}
+with \code{limit} to page through results.}
 
 \item{curlopts}{list of named curl options passed on to
-[crul::HttpClient()]. see [curl::curl_options()] for curl options}
+\code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
+for curl options}
 }
 \value{
 A list.

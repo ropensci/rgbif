@@ -23,9 +23,12 @@
 #' Some parameters can tak emany inputs, and treated as 'OR' (e.g., a or b or
 #' c). The following take many inputs:
 #' \itemize{
-#'  \item **rank**
-#'  \item **datasetKey**
-#'  \item **uuid**
-#'  \item **name**
-#'  \item **langugae**
+#'  \item \strong{rank}
+#'  \item \strong{datasetKey}
+#'  \item \strong{uuid}
+#'  \item \strong{name}
+#'  \item \strong{langugae}
 #' }
+#'
+#' see also \code{\link{many-values}}
+

@@ -31,6 +31,10 @@
 #'   with web based maps.
 #' }
 #'
+#' @note See [many-values] for discussion of how functions vary in how
+#' they accept values (single vs. many for the same HTTP request vs. many
+#' for different HTTP requests)
+#'
 #' @importFrom data.table rbindlist fread setDF
 #' @importFrom ggplot2 geom_point position_jitter map_data ggplot
 #' geom_polygon aes scale_color_brewer labs theme_bw theme guides

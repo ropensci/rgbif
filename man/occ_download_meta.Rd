@@ -11,7 +11,8 @@ occ_download_meta(key, curlopts = list())
 \code{occ_download}}
 
 \item{curlopts}{list of named curl options passed on to
-[crul::HttpClient()]. see [curl::curl_options()] for curl options}
+\code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
+for curl options}
 }
 \description{
 Retrieves the occurrence download metadata by its unique key.

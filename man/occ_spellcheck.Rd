@@ -10,7 +10,8 @@ occ_spellcheck(search, curlopts = list())
 \item{search}{(character) query term}
 
 \item{curlopts}{list of named curl options passed on to
-[crul::HttpClient()]. see [curl::curl_options()] for curl options}
+\code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
+for curl options}
 }
 \value{
 A boolean if search term spelled correctly, or if not spelled

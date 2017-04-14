@@ -10,7 +10,8 @@ parsenames(scientificname, curlopts = list())
 \item{scientificname}{A character vector of scientific names.}
 
 \item{curlopts}{list of named curl options passed on to
-[crul::HttpClient()]. see [curl::curl_options()] for curl options}
+\code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
+for curl options}
 }
 \value{
 A \code{data.frame} containing fields extracted from parsed

@@ -24,7 +24,8 @@ field you want returned by name, e.g. fields = c('name',
 'decimalLatitude','altitude').}
 
 \item{curlopts}{list of named curl options passed on to
-[crul::HttpClient()]. see [curl::curl_options()] for curl options}
+\code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
+for curl options}
 }
 \value{
 A data.frame or list of data.frame's.

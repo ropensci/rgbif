@@ -29,12 +29,13 @@ superphylum, suprageneric_name, tribe, unranked, or variety.}
 prunes columns off)}
 
 \item{start}{Record number to start at. Default: 0. Use in combination
-with `limit` to page through results.}
+with \code{limit} to page through results.}
 
 \item{limit}{Number of records to return. Default: 100. Maximum: 1000.}
 
 \item{curlopts}{list of named curl options passed on to
-[crul::HttpClient()]. see [curl::curl_options()] for curl options}
+\code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
+for curl options}
 }
 \value{
 A data.frame with fields selected by fields arg.
@@ -52,6 +53,8 @@ c). The following take many inputs:
 \item \strong{rank}
 \item \strong{datasetKey}
 }
+
+see also \link{many-values}
 }
 
 \examples{

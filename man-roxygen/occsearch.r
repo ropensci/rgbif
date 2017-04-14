@@ -60,15 +60,15 @@
 #' @param geom_n (integer) An integer indicating number of cells in each dimension. Default: 10.
 #' See Details.
 #' @param hasGeospatialIssue (logical) Includes/excludes occurrence records which contain spatial
-#'    issues (as determined in our record interpretation), i.e. `hasGeospatialIssue=TRUE`
-#'    returns only those records with spatial issues while `hasGeospatialIssue=FALSE` includes
+#'    issues (as determined in our record interpretation), i.e. \code{hasGeospatialIssue=TRUE}
+#'    returns only those records with spatial issues while \code{hasGeospatialIssue=FALSE} includes
 #'    only records without spatial issues. The absence of this parameter returns any
 #'    record with or without spatial issues.
 #' @param issue (character) One or more of many possible issues with each occurrence record. See
 #'    Details. Issues passed to this parameter filter results by the issue.
-#' @param hasCoordinate (logical) Return only occurence records with lat/long data (`TRUE`) or
-#'    all records (`FALSE`, default).
-#' @param typeStatus Type status of the specimen. One of many options. See `?typestatus`
+#' @param hasCoordinate (logical) Return only occurence records with lat/long data (\code{TRUE}) or
+#'    all records (\code{FALSE}, default).
+#' @param typeStatus Type status of the specimen. One of many options. See \code{?typestatus}
 #' @param recordNumber Number recorded by collector of the data, different from GBIF record
 #'    number. See <http://rs.tdwg.org/dwc/terms/#recordNumber> for more info
 #' @param lastInterpreted Date the record was last modified in GBIF, in ISO 8601 format:
@@ -105,9 +105,9 @@
 #' @param waterBody (character) The name of the water body in which the
 #' locations occur
 #' @param locality (character) The specific description of the place.
-#' @param spellCheck (logical) If `TRUE` ask GBIF to check your spelling of
-#' the value passed to the `search` parameter. IMPORTANT: This only checks
-#' the input to the `search` parameter, and no others. Default: `FALSE`
+#' @param spellCheck (logical) If \code{TRUE} ask GBIF to check your spelling of
+#' the value passed to the \code{search} parameter. IMPORTANT: This only checks
+#' the input to the \code{search} parameter, and no others. Default: \code{FALSE}
 #' @param ... additional facet parameters
 #'
 #' @details
@@ -137,17 +137,17 @@
 #' function call, but not a vector >1 of these parameters at the same time
 #'
 #' **Hierarchies**: hierarchies are returned wih each occurrence object. There is no
-#' option no to return them from the API. However, within the `occ_search`
+#' option no to return them from the API. However, within the \code{occ_search}
 #' function you can select whether to return just hierarchies, just data, all of
 #' data and hiearchies and metadata, or just metadata. If all hierarchies are the
 #' same we just return one for you.
 #'
 #' **Data**: By default only three data fields are returned: name (the species name),
-#' decimallatitude, and decimallongitude. Set parameter `minimal=FALSE` if you want more data.
+#' decimallatitude, and decimallongitude. Set parameter \code{minimal=FALSE} if you want more data.
 #'
 #' **Nerds**: You can pass parameters not defined in this function into the call to
-#' the GBIF API to control things about the call itself using `...`. See an example below
-#' that passes in the `verbose` function to get details on the http call.
+#' the GBIF API to control things about the call itself using \code{...}. See an example below
+#' that passes in the \code{verbose} function to get details on the http call.
 #'
 #' **Scientific names vs. taxon keys**: In the previous GBIF API and the version of rgbif that
 #' wrapped that API, you could search the equivalent of this function with a species name, which
@@ -157,7 +157,7 @@
 #' includes synonym taxa. *Note:* that if you do use the scientificName parameter, we will
 #' check internally that it's not a synonym of an accepted name, and if it is, we'll search on the
 #' accepted name. If you want to force searching by a synonym do so by finding the GBIF identifier
-#' first with any `name_*` functions, then pass that ID to the `taxonKey` parameter.
+#' first with any \code{name_*} functions, then pass that ID to the \code{taxonKey} parameter.
 #'
 #' **WKT**: Examples of valid WKT objects:
 #' \itemize{
@@ -169,45 +169,45 @@
 #' }
 #'
 #' **Long WKT**: Options for handling long WKT strings:
-#' Note that long WKT strings are specially handled when using [occ_search()] or
-#' [occ_data()]. Here are the three options for long WKT strings (> 1500 characters),
-#' set one of these three via the parameter `geom_big`:
+#' Note that long WKT strings are specially handled when using \code{\link{occ_search}} or
+#' \code{\link{occ_data}}. Here are the three options for long WKT strings (> 1500 characters),
+#' set one of these three via the parameter \code{geom_big\code{:
 #' \itemize{
 #'  \item asis - the default setting. This means we don't do anything internally. That is,
 #'  we just pass on your WKT string just as we've done before in this package.
 #'  \item axe - this option uses the \pkg{geoaxe} package to chop up your WKT string in
 #'  to many polygons, which then leads to a separate data request for each polygon piece,
 #'  then we combine all dat back together to give to you. Note that if your WKT string
-#'  is not of type polygon, we drop back to `asis` as there's no way to chop up
+#'  is not of type polygon, we drop back to \code{asis}as there's no way to chop up
 #'  linestrings, etc. This option will in most cases be slower than the other two options.
 #'  However, this polygon splitting approach won't have the problem of
 #'  the disconnect between how many records you want and what you actually get back as
 #'  with the bbox option.
 #'
-#'  This method uses [geoaxe::chop()], which uses `GridTopology` from
-#'  the \pkg{sp} package, which has two parameters `cellsize` and `cells.dim`
+#'  This method uses \code{\link[geoaxe]{chop}}, which uses \code{GridTopology}from
+#'  the \pkg{sp} package, which has two parameters \code{cellsize} and \code{cells.dim}
 #'  that we use to chop up polygons. You can tweak those parameters here by tweaking
-#'  `geom_size` and `geom_n`. `geom_size` seems to be more useful in
+#'  \code{geom_size} and \code{geom_n}. \code{geom_size} seems to be more useful in
 #'  toggling the number of WKT strings you get back.
 #'
-#'  See [wkt_parse()] to manually break make WKT bounding box from a larger WKT
+#'  See \code{\link{wkt_parse}} to manually break make WKT bounding box from a larger WKT
 #'  string, or break a larger WKT string into many smaller ones.
 #'
 #'  \item bbox - this option checks whether your WKT string is longer than 1500 characters,
 #'  and if it is we create a bounding box from the WKT, do the GBIF search with that
 #'  bounding box, then prune the resulting data to only those occurrences in your original
 #'  WKT string. There is a big caveat however. Because we create a bounding box from the WKT,
-#'  and the `limit` parameter determines some subset of records to get, then when we
+#'  and the \code{limit} parameter determines some subset of records to get, then when we
 #'  prune the resulting data to the WKT, the number of records you get could be less than
-#'  what you set with your `limit` parameter. However, you could set the limit to be
+#'  what you set with your \code{limit} parameter. However, you could set the limit to be
 #'  high enough so that you get all records back found in that bounding box, then you'll
 #'  get all the records available within the WKT.
 #' }
 #'
 #' **Range queries**: A range query is as it sounds - you query on a range of values defined by
 #' a lower and upper limit. Do a range query by specifying the lower and upper limit in a vector
-#' like `depth='50,100'`. It would be more R like to specify the range in a vector like
-#' `c(50,100)`, but that sort of syntax allows you to do many searches, one for each element in
+#' like \code{depth='50,100'}. It would be more R like to specify the range in a vector like
+#' \code{c(50,100)}, but that sort of syntax allows you to do many searches, one for each element in
 #' the vector - thus range queries have to differ. The following parameters support range queries.
 #' \itemize{
 #'  \item decimalLatitude
@@ -293,8 +293,8 @@
 #' }
 #'
 #' **Counts**: There is a slight difference in the way records are counted here vs.
-#' results from [occ_count()]. For equivalent outcomes, in this function
-#' use `hasCoordinate=TRUE`, and `hasGeospatialIssue=FALSE` to have the
-#' same outcome using [occ_count()] with `isGeoreferenced=TRUE`
+#' results from \code{\link{occ_count}}. For equivalent outcomes, in this function
+#' use \code{hasCoordinate=TRUE}, and \code{hasGeospatialIssue=FALSE} to have the
+#' same outcome using \code{\link{occ_count}} with \code{isGeoreferenced=TRUE}
 #'
-#' @references <http://www.gbif.org/developer/occurrence#search>
+#' @references \url{http://www.gbif.org/developer/occurrence#search}

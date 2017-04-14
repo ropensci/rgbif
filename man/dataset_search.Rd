@@ -14,10 +14,10 @@ dataset_search(query = NULL, country = NULL, type = NULL,
 \arguments{
 \item{query}{Query term(s) for full text search.  The value for this
 parameter can be a simple word or a phrase. Wildcards can be added to the
-simple word parameters only, e.g. `q=*puma*`}
+simple word parameters only, e.g. \code{q=*puma*}}
 
 \item{country}{NOT YET IMPLEMENTED. Filters by country as given in
-isocodes$gbif_name, e.g. `country=CANADA`}
+isocodes$gbif_name, e.g. \code{country=CANADA}}
 
 \item{type}{Type of dataset, options include occurrene, metadata, checklist,
 sampling_event
@@ -30,10 +30,10 @@ tags, the dataset keywordCollections and temporalCoverages.}
 \item{owningOrg}{Owning organization. DEFUNCT.}
 
 \item{publishingOrg}{Publishing organization. A uuid string. See
-[organizations()]}
+\code{\link{organizations}}}
 
 \item{hostingOrg}{Hosting organization. A uuid string. See
-[organizations()]}
+\code{\link{organizations}}}
 
 \item{publishingCountry}{Publishing country. See options at
 isocodes$gbif_name}
@@ -51,51 +51,41 @@ nomenclaturalStatus are legal values but not yet implemented, so data will
 not yet be returned for them.}
 
 \item{facetMincount}{Used in combination with the facet parameter. Set
-`facetMincount={#}` to exclude facets with a count less than {#}, e.g.
+\code{facetMincount={#}} to exclude facets with a count less than {#}, e.g.
 http://bit.ly/1bMdByP only shows the type value 'ACCEPTED' because the other
 statuses have counts less than 7,000,000}
 
 \item{facetMultiselect}{Used in combination with the facet parameter. Set
 facetMultiselect=true to still return counts for values that are not
 currently filtered, e.g. http://bit.ly/19YLXPO still shows all status
-values even though status is being filtered by `status=ACCEPTED`}
+values even though status is being filtered by \code{status=ACCEPTED}}
 
 \item{limit}{Number of records to return. Default: 100. Maximum: 1000.}
 
 \item{start}{Record number to start at. Default: 0. Use in combination
-with `limit` to page through results.}
+with \code{limit} to page through results.}
 
-\item{pretty}{Print informative metadata using [cat()]. Not easy
+\item{pretty}{Print informative metadata using \code{\link{cat}}. Not easy
 to manipulate output though.}
 
 \item{return}{What to return. One of meta, descriptions, data, facets,
 or all (Default).}
 
 \item{curlopts}{list of named curl options passed on to
-[crul::HttpClient()]. see [curl::curl_options()] for curl options}
+\code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
+for curl options}
+
+\item{publishingOrg}{Publishing organization. A uuid string. See
+\code{\link[=organizations]{organizations()}}}
 }
 \value{
 A data.frame, list, or message printed to console (using
-`pretty=TRUE`).
+\code{pretty=TRUE}).
 }
 \description{
 This function does not search occurrence data, only metadata on the datasets
 that contain occurrence data.
 }
-\section{Repeat parmeter inputs}{
-
-Some parameters can tak emany inputs, and treated as 'OR' (e.g., a or b or
-c). The following take many inputs:
-\itemize{
- \item **type**
- \item **keyword**
- \item **publishingOrg**
- \item **hostingOrg**
- \item **publishingCountry**
- \item **decade**
-}
-}
-
 \examples{
 \dontrun{
 # Gets all datasets of type "OCCURRENCE".
