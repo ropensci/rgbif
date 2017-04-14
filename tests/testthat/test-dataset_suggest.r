@@ -45,3 +45,15 @@ test_that("limited fields query returns the correct class", {
   expect_is(tt, "list")
   expect_is(tt[[1]], "character")
 })
+
+
+# many args
+test_that("args that support many repeated uses in one request", {
+  skip_on_cran()
+
+  aa <- dataset_suggest(type = c("metadata", "checklist"))
+
+  expect_is(aa, "tbl_df")
+  expect_named(aa, c('key', 'type', 'title'))
+  expect_equal(tolower(unique(aa$type)), c("checklist", "metadata"))
+})

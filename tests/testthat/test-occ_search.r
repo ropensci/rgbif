@@ -328,3 +328,25 @@ test_that("spell check param works", {
     "spelling bad - suggestions"
   )
 })
+
+# many args
+test_that("works with parameters that allow many inputs", {
+  skip_on_cran()
+
+  ## separate requests: use a vector of strings
+  aa <- occ_search(recordedBy=c("smith","BJ Stacey"), limit=3)
+  ## one request, many instances of same parameter: use semi-colon sep. string
+  bb <- occ_search(recordedBy="smith;BJ Stacey", limit=3)
+
+  expect_is(aa, "gbif")
+  expect_is(bb, "gbif")
+
+  expect_named(aa, c('smith', 'BJ Stacey'))
+  expect_named(bb, c('meta', 'hierarchy', 'data', 'media', 'facets'))
+
+  expect_equal(unique(tolower(aa[[1]]$data$recordedBy)), "smith")
+  expect_equal(unique(tolower(aa[[2]]$data$recordedBy)), "bj stacey")
+
+  expect_true(unique(tolower(bb$data$recordedBy)) %in% c('smith', 'bj stacey'))
+})
+

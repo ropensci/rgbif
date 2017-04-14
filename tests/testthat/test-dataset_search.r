@@ -16,19 +16,17 @@ test_that("type query returns the correct class", {
 test_that("keyword query returns the correct", {
   skip_on_cran()
 
-  # SEEMS TO NOT BE WORKING ANYMORE AS OF 2016-09-02.
-  # tt <- dataset_search(keyword = "france")
-  #
-  # # class
-  # expect_is(tt, "list")
-  # expect_null(tt$data)
-  # expect_is(tt$data, "tbl_df")
-  # expect_is(tt$data[1,1], "tbl_df")
-  # expect_is(tt$data[1,1]$datasetTitle, "character")
-  #
-  # # value
-  # expect_equal(as.character(tt$data$publishingCountry[1]), "FR")
-  # expect_equal(as.character(tt$data[1,4]), "Tela Botanica")
+  tt <- dataset_search(keyword = "france")
+
+  # class
+  expect_is(tt, "list")
+  expect_is(tt$data, "tbl_df")
+  expect_is(tt$data[1,1], "tbl_df")
+  expect_is(tt$data[1,1]$datasetTitle, "character")
+
+  # value
+  expect_equal(as.character(tt$data$publishingCountry[1]), "FR")
+  expect_equal(as.character(tt$data[1,4]), "Tela Botanica")
 })
 
 # Fulltext search for all datasets having the word "amsterdam" somewhere in
@@ -69,4 +67,23 @@ test_that("limited fields query returns the correct class", {
 
   tt <- dataset_search(type="OCCURRENCE", return="descriptions")
   expect_is(tt, "list")
+})
+
+
+# Return just descriptions
+test_that("args that support many repeated uses in one request", {
+  skip_on_cran()
+
+  aa <- dataset_search(type = c("metadata", "checklist"))
+  bb <- dataset_search(publishingCountry = c("DE", "NZ"))
+
+  expect_is(aa, "list")
+  expect_named(aa, c('meta', 'data', 'facets', 'descriptions'))
+  expect_is(aa$data, "tbl_df")
+  expect_equal(tolower(unique(aa$data$type)), c("checklist", "metadata"))
+
+  expect_is(bb, "list")
+  expect_named(bb, c('meta', 'data', 'facets', 'descriptions'))
+  expect_is(bb$data, "tbl_df")
+  expect_equal(tolower(unique(bb$data$publishingCountry)), c("de", "nz"))
 })

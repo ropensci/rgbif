@@ -39,11 +39,12 @@ test_that("works with habitat parameter", {
   expect_equal(sort(na.omit(out$habitats))[1], "FRESHWATER, MARINE, TERRESTRIAL")
 })
 
+
+# many args
 test_that("works with parameters that allow many inputs", {
   skip_on_cran()
 
   aa <- name_lookup(status = c("misapplied", "synonym"), limit = 200)
-
   expect_is(aa, "list")
   expect_is(aa$meta, "data.frame")
   expect_is(aa$meta$endOfRecords, "logical")

@@ -112,7 +112,8 @@ dataset_search <- function(query = NULL, country = NULL, type = NULL,
     # facets
     facets <- tt$facets
     if (!length(facets) == 0) {
-      facetsdat <- lapply(facets, function(x) do.call(rbind, lapply(x$counts, data.frame, stringsAsFactors = FALSE)))
+      facetsdat <- lapply(facets, function(x)
+        do.call(rbind, lapply(x$counts, data.frame, stringsAsFactors = FALSE)))
       names(facetsdat) <- facet
     } else {
       facetsdat <- NULL
@@ -128,17 +129,20 @@ dataset_search <- function(query = NULL, country = NULL, type = NULL,
     } else if (length(tt$results) == 1) {
       out <- parse_dataset(x = tt$results)
     } else {
-      out <- tibble::as_data_frame(do.call(rbind_fill, lapply(tt$results, parse_dataset)))
+      out <- tibble::as_data_frame(do.call(rbind_fill,
+                                           lapply(tt$results, parse_dataset)))
     }
 
     # select output
-    return <- match.arg(return, c("meta", "descriptions", "data", "facets", "all"))
+    return <- match.arg(return, c("meta", "descriptions", "data",
+                                  "facets", "all"))
     switch(return,
            meta = data.frame(meta),
            descriptions = descs,
            data = out,
            facets = facetsdat,
-           all = list(meta = data.frame(meta), data = out, facets = facetsdat, descriptions = descs))
+           all = list(meta = data.frame(meta), data = out,
+                      facets = facetsdat, descriptions = descs))
   }
 }
 

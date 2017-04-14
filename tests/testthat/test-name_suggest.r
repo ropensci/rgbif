@@ -28,3 +28,13 @@ test_that("name_suggest returns the correct", {
   expect_match(b$canonicalName[1], "Puma")
   expect_equal(c$rank[1], "GENUS")
 })
+
+# many args
+test_that("args that support many repeated uses in one request", {
+  skip_on_cran()
+
+  aa <- name_suggest(rank = c("family", "genus"))
+
+  expect_is(aa, "tbl_df")
+  expect_equal(tolower(unique(aa$rank)), "family")
+})
