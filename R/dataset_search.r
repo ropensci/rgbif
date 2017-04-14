@@ -10,8 +10,6 @@
 #' @template dataset_facet
 #' @param return What to return. One of meta, descriptions, data, facets,
 #'    or all (Default).
-#' @param publishingOrg Publishing organization. A uuid string. See
-#' [organizations()]
 #'
 #' @references <http://www.gbif.org/developer/registry#datasetSearch>
 #'

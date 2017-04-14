@@ -74,9 +74,6 @@ or all (Default).}
 \item{curlopts}{list of named curl options passed on to
 \code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
 for curl options}
-
-\item{publishingOrg}{Publishing organization. A uuid string. See
-\code{\link[=organizations]{organizations()}}}
 }
 \value{
 A data.frame, list, or message printed to console (using
