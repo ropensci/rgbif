@@ -1,26 +1,67 @@
+rgbif 0.9.8
+===========
+
+### NEW FEATURES
+
+* The GBIF API supports passing in many instances of the same
+parameter for some parameters on some routes. Previously we
+didn't support this feature, but now we do. See the
+`?many-values` manual file for details. added docs to
+individual functions that support this, and added additional
+tests (#200) (#260) (#261)
+* We've removed `V8` dependency and replaced with C++ based
+WKT parser package `wicket`. We still use `rgeos` for some
+WKT parsing. rgbif functions that use wicket: `gbif_bbox2wkt`,
+`gbif_wkt2bbox`, `check_wkt` (#243)
+* `httr` replaced with `crul` for HTTP reqeusts. As part of
+this change, the `...` parameter was replaced in most functions
+by `curlopts` which expects a list. Some functions require
+a `...` parameter for facet inputs, so `...` is retained
+with the addition of `curltops` parameter. A result of this
+change is that whereas in the past parameters that were not
+defined in a function that also had a `...` parameter
+would essentially silently ignore that undefined parameter,
+but with functions where `...` was removed a misspelled
+or undefined parameter will cause an error with message (#256)
+
+### MINOR IMPROVEMENTS
+
+* moved to markdown docs (#258)
+* namespacing calls to base R pkgs instead of importing them
+
+### BUG FIXES
+
+* Fixed problem in `occ_download_import()` to allow import
+of csv type download in addition to darwin core archive.
+additional change to `occ_download_get` to add `format`
+attribute stating which format (#246)
+* fix to `occ_download_import` adding `fill=TRUE` to
+the `data.table::fread` call (#257)
+
+
 rgbif 0.9.7
 ===========
 
 ### NEW FEATURES
 
 * `occ_dowload` gains new parameter `body` to allow users to pass in
-JSON or a list for the query instead of passing in statements to 
+JSON or a list for the query instead of passing in statements to
 `...`. See examples in `?occ_dowload`.
 
 ### MINOR IMPROVEMENTS
 
-* Now using `tibble` for compact data.frame output for 
+* Now using `tibble` for compact data.frame output for
 `occ_download_import` instead of bespoke internal solution (#240)
 * Moved all GBIF API requests to use `https` instead of `http` (#244)
 * Improved print method for `occ_download_meta`
 
 ### BUG FIXES
 
-* Fix to `occ_download` to structure query correctly when 
+* Fix to `occ_download` to structure query correctly when
 `type=within` and `geometry` used because the structure is slightly
 different than when not using `geometry` (#242)
-* Fixed `occ_download` to allow `OR` queries for many values of a 
-parameter, e.g., `taxonKey=2475470,2480946` will be queried correctly 
+* Fixed `occ_download` to allow `OR` queries for many values of a
+parameter, e.g., `taxonKey=2475470,2480946` will be queried correctly
 now as essentially `taxonKey=2475470` or `taxonKey=2480946` (#245)
 
 
@@ -31,9 +72,9 @@ rgbif 0.9.6
 
 * Fixed a bug in `parsenames()` caused by some slots in the list
 being `NULL` (#237)
-* Fixed some failing tests: `occ_facet()` tests were failing due to 
+* Fixed some failing tests: `occ_facet()` tests were failing due to
 changes in GBIF API (#239)
-* Fixes to `gbif_oai_get_records()` for slight changes in `oai` 
+* Fixes to `gbif_oai_get_records()` for slight changes in `oai`
 dependency pkg (#236)
 
 
@@ -45,28 +86,28 @@ rgbif 0.9.5
 * `occ_search()` now has faceted search. This feature is not in `occ_data()`
 as that function focuses on getting occurrence data quickly, so will not
 do get facet data. This means that a new slot is available in the output
-object from `occ_search()`, namely `facets`. Note that `rgbif` has had 
-faceted search for the species search route (`name_lookup()`) and the 
+object from `occ_search()`, namely `facets`. Note that `rgbif` has had
+faceted search for the species search route (`name_lookup()`) and the
 registry search route (`dataset_search()`) for quite a while. (#215)
-* new function (`occ_facet()`) to facilitate retrieving only 
+* new function (`occ_facet()`) to facilitate retrieving only
 facet data, so no occurrence data is retrieved. (#215) (#229)
-* A suite of new parameters added to `occ_search()` and 
-`occ_data()` following addition the GBIF search API: `subgenusKey`, 
-`repatriated`, `phylumKey`, `kingdomKey`, 
-`classKey`, `orderKey`, `familyKey`, `genusKey`, `establishmentMeans`, 
-`protocol`, `license`, `organismId`, `publishingOrg`, `stateProvince`, 
+* A suite of new parameters added to `occ_search()` and
+`occ_data()` following addition the GBIF search API: `subgenusKey`,
+`repatriated`, `phylumKey`, `kingdomKey`,
+`classKey`, `orderKey`, `familyKey`, `genusKey`, `establishmentMeans`,
+`protocol`, `license`, `organismId`, `publishingOrg`, `stateProvince`,
 `waterBody`, `locality` (#216) (#224)
-* New parameter `spellCheck` added to `occ_search()` and 
+* New parameter `spellCheck` added to `occ_search()` and
 `occ_data()` that if `TRUE` spell checks anything passed to the `search`
-parameter (same as `q` parameter on GBIF API; which is a full text 
+parameter (same as `q` parameter on GBIF API; which is a full text
 search) (#227)
 * New function `occ_spellcheck` to spell check search terms, returns
-`TRUE` if no spelling problems, or a list with info on suggestions 
+`TRUE` if no spelling problems, or a list with info on suggestions
 if not.
-* Both `occ_search()` and `occ_data()` now have ability to support 
+* Both `occ_search()` and `occ_data()` now have ability to support
 queries where `limit=0`, which for one should be possible and not
-fail as we did previously, and second, this makes it so that you 
-can do faceted searches (See above) and not have to wait for occurrence 
+fail as we did previously, and second, this makes it so that you
+can do faceted searches (See above) and not have to wait for occurrence
 records to be returned. (#222)
 * `MULTIPOLYGON` well known text features now supported in the GBIF
 API. Previously, you could not query `geometry` with more than
@@ -74,10 +115,10 @@ one polygon (`POLYGON`), but now you can. (#222)
 
 ### MINOR IMPROVEMENTS
 
-* Improved docs for `occ_count()`, especially for the set of 
+* Improved docs for `occ_count()`, especially for the set of
 allowed parameter options that the GBIF count API supports
-* `occ_count()` gains new parameter `typeStatus` to indicate the 
-specimen type status. 
+* `occ_count()` gains new parameter `typeStatus` to indicate the
+specimen type status.
 * When no results found, the `data` slot now returns `NULL` instead
 of a character string
 
@@ -85,8 +126,8 @@ of a character string
 
 * Fixes to `gbif_photos()`: 1) Mapbox URLs to their JS and CSS assets
 were out of date, and API key needed. 2) In RStudio, the `table` view
-was outputting errors due to serving files on `localhost:<port>` 
-instead of simply opening the file; fixed now by checking platform 
+was outputting errors due to serving files on `localhost:<port>`
+instead of simply opening the file; fixed now by checking platform
 and using simple open file command appropriate for the OS. (#228) (#235)
 
 
@@ -95,26 +136,26 @@ rgbif 0.9.4
 
 ### NEW FEATURES
 
-* Now using `tibble` in most of the package when the output is 
+* Now using `tibble` in most of the package when the output is
 a data.frame (#204)
-* New vignette _Taxonomic Names_ for discussing some common names 
-problems users may run into, and some strategies for dealing with 
+* New vignette _Taxonomic Names_ for discussing some common names
+problems users may run into, and some strategies for dealing with
 taxonomic names when using GBIF (#208) (#209)
 
 ### MINOR IMPROVEMENTS
 
 * Replaced `is()` with `inherits()`, no longer importing `methods()` (#219)
-* Improved docs for registry functions. Not all options were listed 
+* Improved docs for registry functions. Not all options were listed
 for the `data` parameter, now they are (#210)
 * Fixed documentation error in `gbifmap()` man file (#212) thanks to @rossmounce
 
 ### BUG FIXES
 
-* Fixed bug in internal parser within `occ_download()`, in which 
-strings to parse were not being parsed correctly if spaces weren't in 
-the right place, should be more robust now, and added tests (#217). Came 
+* Fixed bug in internal parser within `occ_download()`, in which
+strings to parse were not being parsed correctly if spaces weren't in
+the right place, should be more robust now, and added tests (#217). Came
 from https://discuss.ropensci.org/t/rgbif-using-geometry-in-occ-download/395
-* The parameter `type` was being silently ignored in a number of 
+* The parameter `type` was being silently ignored in a number of
 registry functions. fixed that. (#211)
 
 
@@ -124,17 +165,17 @@ rgbif 0.9.3
 ### NEW FEATURES
 
 * `occ_data()` and `occ_search()` gain ability to more flexibly deal with inputs to the
-`geometry` parameter. Previously, long WKT strings passed to `occ_search()` or 
+`geometry` parameter. Previously, long WKT strings passed to `occ_search()` or
 `occ_data()` would fail because URIs can only be so long. Another option is to use
-the download API (see `?downloads`). This version adds the ability to choose what to 
-do with long WKT strings via the `geom_big` parameter: `asis` (same as previous version), 
+the download API (see `?downloads`). This version adds the ability to choose what to
+do with long WKT strings via the `geom_big` parameter: `asis` (same as previous version),
 `bbox` which detects if a WKT sting is likely too long, and creates a bounding box from the
 WKT string then once data is retrived, clips the result to the original WKT string; `axe`
-uses the `geoaxe` package to chop up the input WKT polygon into many, with toggles in the 
+uses the `geoaxe` package to chop up the input WKT polygon into many, with toggles in the
 new parameters `geom_size` and `geom_n`. (#197) (#199)
-* As part of this change, when >1 geometry value passed, or if `geom_big="axe"`, then 
-named elements of the output get names `geom1`, `geom2`, `geom3`, etc. instead of the 
-input WKT strings - this is because WKT strings can be very long, and make for very 
+* As part of this change, when >1 geometry value passed, or if `geom_big="axe"`, then
+named elements of the output get names `geom1`, `geom2`, `geom3`, etc. instead of the
+input WKT strings - this is because WKT strings can be very long, and make for very
 awkward named access to elements. The original WKT strings can still be accessed via
 `attr(result, "args")$geometry`
 
@@ -147,7 +188,7 @@ awkward named access to elements. The original WKT strings can still be accessed
 * Fix parsing bug in `name_usage()` function, see commit [e88cf01cc11cb238d44222346eaeff001c0c637e](https://github.com/ropensci/rgbif/commit/e88cf01cc11cb238d44222346eaeff001c0c637e)
 * Fix to tests to use new `testthat` fxn names, e.g., `expect_gt()`
 instead of `expect_more_than()`
-* Fix to `occ_download()` to parse error correctly when empty body passed from 
+* Fix to `occ_download()` to parse error correctly when empty body passed from
 GBIF (#202)
 
 
@@ -156,18 +197,18 @@ rgbif 0.9.2
 
 ### NEW FEATURES
 
-* New function `occ_data()` - its primary purpose to perform faster data requests. Whereas 
+* New function `occ_data()` - its primary purpose to perform faster data requests. Whereas
 `occ_search()` gives you lots of data, including taxonomic hierarchies and media records,
 `occ_data()` only gives occurrence data. (#190)
 
 ### MINOR IMPROVEMENTS
 
 * Replaced `XML` with `xml2` (#192)
-* Speed ups to the following functions due to use of `data.table::rbindlist()` for 
+* Speed ups to the following functions due to use of `data.table::rbindlist()` for
 fast list to data.frame coercion: `name_lookup()`, `name_backbone()`, `name_suggest()`,
 `name_usage()`, and `parsenames()` (#191)
-* Changes to `httr` usage to comply with changes in `httr >= v1.1.0`: now setting 
-encoding explicitly to `UTF-8` and parsing all data manually, using the internal 
+* Changes to `httr` usage to comply with changes in `httr >= v1.1.0`: now setting
+encoding explicitly to `UTF-8` and parsing all data manually, using the internal
 function `function(x) content(x, "text", encoding = "UTF-8")` (#195)
 
 ### BUG FIXES
