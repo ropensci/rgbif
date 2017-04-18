@@ -78,8 +78,8 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 #> 2         94     FUZZY   FALSE
 ```
 
-* P. s<b>y</b>lvestris w/ 241515 occurrences - from Catalogue of Life
-* P. s<b>i</b>lvestris w/ 241515 occurrences - from Catalogue of Life
+* P. s<b>y</b>lvestris w/ 255243 occurrences - from Catalogue of Life
+* P. s<b>i</b>lvestris w/ 255243 occurrences - from Catalogue of Life
 
 ## Macrozamia platyrachis vs. M. platyrhachis
 
@@ -110,8 +110,8 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 #> 2         95     FUZZY   FALSE
 ```
 
-* C. circinalis w/ 550 occurrences - from Catalogue of Life
-* C. circin<b>n</b>alis w/ 550 occurrences - from Catalogue of Life
+* C. circinalis w/ 536 occurrences - from Catalogue of Life
+* C. circin<b>n</b>alis w/ 536 occurrences - from Catalogue of Life
 
 ## Isolona perrieri vs. I. perrierii
 
@@ -126,8 +126,8 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 #> 2         98     EXACT   FALSE
 ```
 
-* I. perrieri w/ 79 occurrences - from Catalogue of Life
-* I. perrieri<b>i</b> w/ 79 occurrences - from Catalogue of Life
+* I. perrieri w/ 80 occurrences - from Catalogue of Life
+* I. perrieri<b>i</b> w/ 80 occurrences - from Catalogue of Life
 
 ## Wiesneria vs. Wisneria
 

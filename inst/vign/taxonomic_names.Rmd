@@ -75,8 +75,8 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 (c1 <- name_rbind("Pinus sylvestris", "Pinus silvestris"))
 ```
 
-* P. s<b>y</b>lvestris w/ `r as.character(occ_count(c1$usageKey[1]))` occurrences - from `r taxon_provider(c1$usageKey[[1]])`
-* P. s<b>i</b>lvestris w/ `r as.character(occ_count(c1$usageKey[2]))` occurrences - from `r taxon_provider(c1$usageKey[[2]])`
+* P. s<b>y</b>lvestris w/ `r as.character(occ_count(c1$usageKey[[1]]))` occurrences - from `r taxon_provider(c1$usageKey[[1]])`
+* P. s<b>i</b>lvestris w/ `r as.character(occ_count(c1$usageKey[[2]]))` occurrences - from `r taxon_provider(c1$usageKey[[2]])`
 
 ## Macrozamia platyrachis vs. M. platyrhachis
 
@@ -84,8 +84,8 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 (c2 <- name_rbind("Macrozamia platyrachis", "Macrozamia platyrhachis"))
 ```
 
-* M. platyrachis w/ `r occ_count(c2$usageKey[1])` occurrences - from `r taxon_provider(c2$usageKey[[1]])`
-* M. platyr<b>h</b>achis w/ `r occ_count(c2$usageKey[2])` occurrences - from `r taxon_provider(c2$usageKey[[2]])`
+* M. platyrachis w/ `r occ_count(c2$usageKey[[1]])` occurrences - from `r taxon_provider(c2$usageKey[[1]])`
+* M. platyr<b>h</b>achis w/ `r occ_count(c2$usageKey[[2]])` occurrences - from `r taxon_provider(c2$usageKey[[2]])`
 
 ## Cycas circinalis vs. C. circinnalis
 
@@ -93,8 +93,8 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 (c3 <- name_rbind("Cycas circinalis", "Cycas circinnalis"))
 ```
 
-* C. circinalis w/ `r occ_count(c3$usageKey[1])` occurrences - from `r taxon_provider(c3$usageKey[[1]])`
-* C. circin<b>n</b>alis w/ `r occ_count(c3$usageKey[2])` occurrences - from `r taxon_provider(c3$usageKey[[2]])`
+* C. circinalis w/ `r occ_count(c3$usageKey[[1]])` occurrences - from `r taxon_provider(c3$usageKey[[1]])`
+* C. circin<b>n</b>alis w/ `r occ_count(c3$usageKey[[2]])` occurrences - from `r taxon_provider(c3$usageKey[[2]])`
 
 ## Isolona perrieri vs. I. perrierii
 
@@ -102,8 +102,8 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 (c4 <- name_rbind("Isolona perrieri", "Isolona perrierii"))
 ```
 
-* I. perrieri w/ `r occ_count(c4$usageKey[1])` occurrences - from `r taxon_provider(c4$usageKey[[1]])`
-* I. perrieri<b>i</b> w/ `r occ_count(c4$usageKey[2])` occurrences - from `r taxon_provider(c4$usageKey[[2]])`
+* I. perrieri w/ `r occ_count(c4$usageKey[[1]])` occurrences - from `r taxon_provider(c4$usageKey[[1]])`
+* I. perrieri<b>i</b> w/ `r occ_count(c4$usageKey[[2]])` occurrences - from `r taxon_provider(c4$usageKey[[2]])`
 
 ## Wiesneria vs. Wisneria
 
@@ -111,8 +111,8 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 (c5 <- name_rbind("Wiesneria", "Wisneria", rank = "genus"))
 ```
 
-* Wi<b>e</b>sneria w/ `r occ_count(c5$usageKey[1])` occurrences - from `r taxon_provider(c5$usageKey[[1]])`
-* Wisneria w/ `r occ_count(c5$usageKey[2])` occurrences - from `r taxon_provider(c5$usageKey[[2]])`
+* Wi<b>e</b>sneria w/ `r occ_count(c5$usageKey[[1]])` occurrences - from `r taxon_provider(c5$usageKey[[1]])`
+* Wisneria w/ `r occ_count(c5$usageKey[[2]])` occurrences - from `r taxon_provider(c5$usageKey[[2]])`
 
 ## The take away messages from this vignette
 

@@ -47,7 +47,7 @@ Get taxon key for _Helianthus annuus_
 
 ```r
 (key <- name_suggest(q='Helianthus annuus', rank='species')$key[1])
-#> [1] 3119195
+#> [1] 9206251
 ```
 
 Then pass to `occ_search()`
@@ -55,26 +55,26 @@ Then pass to `occ_search()`
 
 ```r
 (res <- occ_search(taxonKey=key, limit=100))
-#> Records found [21970] 
+#> Records found [14820] 
 #> Records returned [100] 
 #> No. unique hierarchies [1] 
-#> No. media records [63] 
+#> No. media records [2] 
 #> No. facets [0] 
-#> Args [taxonKey=3119195, limit=100, offset=0, fields=all] 
-#> # A tibble: 100 × 77
+#> Args [limit=100, offset=0, taxonKey=9206251, fields=all] 
+#> # A tibble: 100 × 98
 #>                 name        key decimalLatitude decimalLongitude
 #>                <chr>      <int>           <dbl>            <dbl>
-#> 1  Helianthus annuus 1249279611        34.04810       -117.79884
-#> 2  Helianthus annuus 1315048347        34.04377       -116.94136
-#> 3  Helianthus annuus 1305118889        18.40386        -66.04487
-#> 4  Helianthus annuus 1249286909        32.58747        -97.10081
-#> 5  Helianthus annuus 1253308332        29.67463        -95.44804
-#> 6  Helianthus annuus 1262375813        29.82586        -95.45604
-#> 7  Helianthus annuus 1262385911        32.78328        -96.70352
-#> 8  Helianthus annuus 1265544678        32.58747        -97.10081
-#> 9  Helianthus annuus 1262379231        34.04911       -117.80066
-#> 10 Helianthus annuus 1265560496        34.12861       -118.20700
-#> # ... with 90 more rows, and 73 more variables: issues <chr>,
+#> 1  Helianthus annuus 1437798345        51.03513         4.518690
+#> 2  Helianthus annuus 1437786250        50.91574         3.579770
+#> 3  Helianthus annuus 1454554504        50.22000         9.630000
+#> 4  Helianthus annuus 1273001624        59.32739        10.803912
+#> 5  Helianthus annuus 1454554470        49.32000        12.000000
+#> 6  Helianthus annuus 1272997264        58.66189         6.721671
+#> 7  Helianthus annuus 1454553080        49.75000         9.300000
+#> 8  Helianthus annuus 1272995969        59.83241        10.763219
+#> 9  Helianthus annuus 1454553865              NA               NA
+#> 10 Helianthus annuus 1454555306        48.21000        12.080000
+#> # ... with 90 more rows, and 94 more variables: issues <chr>,
 #> #   datasetKey <chr>, publishingOrgKey <chr>, publishingCountry <chr>,
 #> #   protocol <chr>, lastCrawled <chr>, lastParsed <chr>, crawlId <int>,
 #> #   extensions <chr>, basisOfRecord <chr>, taxonKey <int>,
@@ -82,21 +82,28 @@ Then pass to `occ_search()`
 #> #   familyKey <int>, genusKey <int>, speciesKey <int>,
 #> #   scientificName <chr>, kingdom <chr>, phylum <chr>, order <chr>,
 #> #   family <chr>, genus <chr>, species <chr>, genericName <chr>,
-#> #   specificEpithet <chr>, taxonRank <chr>, dateIdentified <chr>,
-#> #   year <int>, month <int>, day <int>, eventDate <chr>, modified <chr>,
-#> #   lastInterpreted <chr>, references <chr>, license <chr>,
-#> #   identifiers <chr>, facts <chr>, relations <chr>, geodeticDatum <chr>,
-#> #   class <chr>, countryCode <chr>, country <chr>, rightsHolder <chr>,
-#> #   identifier <chr>, verbatimEventDate <chr>, datasetName <chr>,
-#> #   verbatimLocality <chr>, gbifID <chr>, collectionCode <chr>,
-#> #   occurrenceID <chr>, taxonID <chr>, recordedBy <chr>,
-#> #   catalogNumber <chr>, http...unknown.org.occurrenceDetails <chr>,
-#> #   institutionCode <chr>, rights <chr>, eventTime <chr>,
-#> #   identificationID <chr>, coordinateUncertaintyInMeters <dbl>,
-#> #   occurrenceRemarks <chr>, informationWithheld <chr>,
-#> #   individualCount <int>, elevation <dbl>, elevationAccuracy <dbl>,
-#> #   stateProvince <chr>, county <chr>, municipality <chr>, locality <chr>,
-#> #   coordinatePrecision <dbl>, habitat <chr>, identifiedBy <chr>
+#> #   specificEpithet <chr>, taxonRank <chr>,
+#> #   coordinateUncertaintyInMeters <dbl>, continent <chr>, year <int>,
+#> #   month <int>, day <int>, eventDate <chr>, modified <chr>,
+#> #   lastInterpreted <chr>, license <chr>, identifiers <chr>, facts <chr>,
+#> #   relations <chr>, geodeticDatum <chr>, class <chr>, countryCode <chr>,
+#> #   country <chr>, identifier <chr>, verbatimEventDate <chr>,
+#> #   nomenclaturalCode <chr>, dataGeneralizations <chr>,
+#> #   verbatimCoordinateSystem <chr>, datasetName <chr>, language <chr>,
+#> #   gbifID <chr>, occurrenceID <chr>, type <chr>, catalogNumber <chr>,
+#> #   recordedBy <chr>, institutionCode <chr>, ownerInstitutionCode <chr>,
+#> #   datasetID <chr>, accessRights <chr>, bibliographicCitation <chr>,
+#> #   locality <chr>, collectionCode <chr>, individualCount <int>,
+#> #   elevation <dbl>, elevationAccuracy <dbl>, stateProvince <chr>,
+#> #   municipality <chr>, county <chr>, coordinatePrecision <dbl>,
+#> #   habitat <chr>, dateIdentified <chr>, identifiedBy <chr>,
+#> #   references <chr>, recordNumber <chr>, institutionID <chr>,
+#> #   dynamicProperties <chr>, associatedTaxa <chr>, startDayOfYear <chr>,
+#> #   verbatimElevation <chr>, collectionID <chr>, verbatimLocality <chr>,
+#> #   fieldNotes <chr>, higherGeography <chr>, endDayOfYear <chr>,
+#> #   higherClassification <chr>, rightsHolder <chr>, rights <chr>,
+#> #   occurrenceRemarks <chr>, footprintWKT <chr>, occurrenceStatus <chr>,
+#> #   footprintSRS <chr>, eventID <chr>, fieldNumber <chr>
 ```
 
 ## Examine issues
@@ -153,26 +160,26 @@ Now that we know a bit about GBIF issues, you can parse your data based on issue
 ```r
 res %>%
   occ_issues(gass84)
-#> Records found [21970] 
-#> Records returned [99] 
+#> Records found [14820] 
+#> Records returned [36] 
 #> No. unique hierarchies [1] 
-#> No. media records [63] 
+#> No. media records [2] 
 #> No. facets [0] 
-#> Args [taxonKey=3119195, limit=100, offset=0, fields=all] 
-#> # A tibble: 99 × 77
+#> Args [limit=100, offset=0, taxonKey=9206251, fields=all] 
+#> # A tibble: 36 × 98
 #>                 name        key decimalLatitude decimalLongitude
 #>                <chr>      <int>           <dbl>            <dbl>
-#> 1  Helianthus annuus 1249279611        34.04810       -117.79884
-#> 2  Helianthus annuus 1315048347        34.04377       -116.94136
-#> 3  Helianthus annuus 1305118889        18.40386        -66.04487
-#> 4  Helianthus annuus 1249286909        32.58747        -97.10081
-#> 5  Helianthus annuus 1253308332        29.67463        -95.44804
-#> 6  Helianthus annuus 1262375813        29.82586        -95.45604
-#> 7  Helianthus annuus 1262385911        32.78328        -96.70352
-#> 8  Helianthus annuus 1265544678        32.58747        -97.10081
-#> 9  Helianthus annuus 1262379231        34.04911       -117.80066
-#> 10 Helianthus annuus 1265560496        34.12861       -118.20700
-#> # ... with 89 more rows, and 73 more variables: issues <chr>,
+#> 1  Helianthus annuus 1273001624        59.32739        10.803912
+#> 2  Helianthus annuus 1272997264        58.66189         6.721671
+#> 3  Helianthus annuus 1272995969        59.83241        10.763219
+#> 4  Helianthus annuus 1323229476        59.08521        11.036315
+#> 5  Helianthus annuus 1323241585        59.57240        10.847597
+#> 6  Helianthus annuus 1273024475        59.08521        11.036315
+#> 7  Helianthus annuus 1323261789        58.66189         6.721671
+#> 8  Helianthus annuus 1305561325        48.57490         7.759700
+#> 9  Helianthus annuus 1425285026        59.21189        10.284695
+#> 10 Helianthus annuus 1323319952        59.08830        10.060628
+#> # ... with 26 more rows, and 94 more variables: issues <chr>,
 #> #   datasetKey <chr>, publishingOrgKey <chr>, publishingCountry <chr>,
 #> #   protocol <chr>, lastCrawled <chr>, lastParsed <chr>, crawlId <int>,
 #> #   extensions <chr>, basisOfRecord <chr>, taxonKey <int>,
@@ -180,21 +187,28 @@ res %>%
 #> #   familyKey <int>, genusKey <int>, speciesKey <int>,
 #> #   scientificName <chr>, kingdom <chr>, phylum <chr>, order <chr>,
 #> #   family <chr>, genus <chr>, species <chr>, genericName <chr>,
-#> #   specificEpithet <chr>, taxonRank <chr>, dateIdentified <chr>,
-#> #   year <int>, month <int>, day <int>, eventDate <chr>, modified <chr>,
-#> #   lastInterpreted <chr>, references <chr>, license <chr>,
-#> #   identifiers <chr>, facts <chr>, relations <chr>, geodeticDatum <chr>,
-#> #   class <chr>, countryCode <chr>, country <chr>, rightsHolder <chr>,
-#> #   identifier <chr>, verbatimEventDate <chr>, datasetName <chr>,
-#> #   verbatimLocality <chr>, gbifID <chr>, collectionCode <chr>,
-#> #   occurrenceID <chr>, taxonID <chr>, recordedBy <chr>,
-#> #   catalogNumber <chr>, http...unknown.org.occurrenceDetails <chr>,
-#> #   institutionCode <chr>, rights <chr>, eventTime <chr>,
-#> #   identificationID <chr>, coordinateUncertaintyInMeters <dbl>,
-#> #   occurrenceRemarks <chr>, informationWithheld <chr>,
-#> #   individualCount <int>, elevation <dbl>, elevationAccuracy <dbl>,
-#> #   stateProvince <chr>, county <chr>, municipality <chr>, locality <chr>,
-#> #   coordinatePrecision <dbl>, habitat <chr>, identifiedBy <chr>
+#> #   specificEpithet <chr>, taxonRank <chr>,
+#> #   coordinateUncertaintyInMeters <dbl>, continent <chr>, year <int>,
+#> #   month <int>, day <int>, eventDate <chr>, modified <chr>,
+#> #   lastInterpreted <chr>, license <chr>, identifiers <chr>, facts <chr>,
+#> #   relations <chr>, geodeticDatum <chr>, class <chr>, countryCode <chr>,
+#> #   country <chr>, identifier <chr>, verbatimEventDate <chr>,
+#> #   nomenclaturalCode <chr>, dataGeneralizations <chr>,
+#> #   verbatimCoordinateSystem <chr>, datasetName <chr>, language <chr>,
+#> #   gbifID <chr>, occurrenceID <chr>, type <chr>, catalogNumber <chr>,
+#> #   recordedBy <chr>, institutionCode <chr>, ownerInstitutionCode <chr>,
+#> #   datasetID <chr>, accessRights <chr>, bibliographicCitation <chr>,
+#> #   locality <chr>, collectionCode <chr>, individualCount <int>,
+#> #   elevation <dbl>, elevationAccuracy <dbl>, stateProvince <chr>,
+#> #   municipality <chr>, county <chr>, coordinatePrecision <dbl>,
+#> #   habitat <chr>, dateIdentified <chr>, identifiedBy <chr>,
+#> #   references <chr>, recordNumber <chr>, institutionID <chr>,
+#> #   dynamicProperties <chr>, associatedTaxa <chr>, startDayOfYear <chr>,
+#> #   verbatimElevation <chr>, collectionID <chr>, verbatimLocality <chr>,
+#> #   fieldNotes <chr>, higherGeography <chr>, endDayOfYear <chr>,
+#> #   higherClassification <chr>, rightsHolder <chr>, rights <chr>,
+#> #   occurrenceRemarks <chr>, footprintWKT <chr>, occurrenceStatus <chr>,
+#> #   footprintSRS <chr>, eventID <chr>, fieldNumber <chr>
 ```
 
 Note also that we've set up `occ_issues()` so that you can pass in issue names without having to quote them, thereby speeding up data cleaning.
@@ -205,26 +219,26 @@ Next, we can remove data with certain issues just as easily by using a `-` sign 
 ```r
 res %>%
   occ_issues(-depunl, -mdatunl)
-#> Records found [21970] 
+#> Records found [14820] 
 #> Records returned [100] 
 #> No. unique hierarchies [1] 
-#> No. media records [63] 
+#> No. media records [2] 
 #> No. facets [0] 
-#> Args [taxonKey=3119195, limit=100, offset=0, fields=all] 
-#> # A tibble: 100 × 77
+#> Args [limit=100, offset=0, taxonKey=9206251, fields=all] 
+#> # A tibble: 100 × 98
 #>                 name        key decimalLatitude decimalLongitude
 #>                <chr>      <int>           <dbl>            <dbl>
-#> 1  Helianthus annuus 1249279611        34.04810       -117.79884
-#> 2  Helianthus annuus 1315048347        34.04377       -116.94136
-#> 3  Helianthus annuus 1305118889        18.40386        -66.04487
-#> 4  Helianthus annuus 1249286909        32.58747        -97.10081
-#> 5  Helianthus annuus 1253308332        29.67463        -95.44804
-#> 6  Helianthus annuus 1262375813        29.82586        -95.45604
-#> 7  Helianthus annuus 1262385911        32.78328        -96.70352
-#> 8  Helianthus annuus 1265544678        32.58747        -97.10081
-#> 9  Helianthus annuus 1262379231        34.04911       -117.80066
-#> 10 Helianthus annuus 1265560496        34.12861       -118.20700
-#> # ... with 90 more rows, and 73 more variables: issues <chr>,
+#> 1  Helianthus annuus 1437798345        51.03513         4.518690
+#> 2  Helianthus annuus 1437786250        50.91574         3.579770
+#> 3  Helianthus annuus 1454554504        50.22000         9.630000
+#> 4  Helianthus annuus 1273001624        59.32739        10.803912
+#> 5  Helianthus annuus 1454554470        49.32000        12.000000
+#> 6  Helianthus annuus 1272997264        58.66189         6.721671
+#> 7  Helianthus annuus 1454553080        49.75000         9.300000
+#> 8  Helianthus annuus 1272995969        59.83241        10.763219
+#> 9  Helianthus annuus 1454553865              NA               NA
+#> 10 Helianthus annuus 1454555306        48.21000        12.080000
+#> # ... with 90 more rows, and 94 more variables: issues <chr>,
 #> #   datasetKey <chr>, publishingOrgKey <chr>, publishingCountry <chr>,
 #> #   protocol <chr>, lastCrawled <chr>, lastParsed <chr>, crawlId <int>,
 #> #   extensions <chr>, basisOfRecord <chr>, taxonKey <int>,
@@ -232,21 +246,28 @@ res %>%
 #> #   familyKey <int>, genusKey <int>, speciesKey <int>,
 #> #   scientificName <chr>, kingdom <chr>, phylum <chr>, order <chr>,
 #> #   family <chr>, genus <chr>, species <chr>, genericName <chr>,
-#> #   specificEpithet <chr>, taxonRank <chr>, dateIdentified <chr>,
-#> #   year <int>, month <int>, day <int>, eventDate <chr>, modified <chr>,
-#> #   lastInterpreted <chr>, references <chr>, license <chr>,
-#> #   identifiers <chr>, facts <chr>, relations <chr>, geodeticDatum <chr>,
-#> #   class <chr>, countryCode <chr>, country <chr>, rightsHolder <chr>,
-#> #   identifier <chr>, verbatimEventDate <chr>, datasetName <chr>,
-#> #   verbatimLocality <chr>, gbifID <chr>, collectionCode <chr>,
-#> #   occurrenceID <chr>, taxonID <chr>, recordedBy <chr>,
-#> #   catalogNumber <chr>, http...unknown.org.occurrenceDetails <chr>,
-#> #   institutionCode <chr>, rights <chr>, eventTime <chr>,
-#> #   identificationID <chr>, coordinateUncertaintyInMeters <dbl>,
-#> #   occurrenceRemarks <chr>, informationWithheld <chr>,
-#> #   individualCount <int>, elevation <dbl>, elevationAccuracy <dbl>,
-#> #   stateProvince <chr>, county <chr>, municipality <chr>, locality <chr>,
-#> #   coordinatePrecision <dbl>, habitat <chr>, identifiedBy <chr>
+#> #   specificEpithet <chr>, taxonRank <chr>,
+#> #   coordinateUncertaintyInMeters <dbl>, continent <chr>, year <int>,
+#> #   month <int>, day <int>, eventDate <chr>, modified <chr>,
+#> #   lastInterpreted <chr>, license <chr>, identifiers <chr>, facts <chr>,
+#> #   relations <chr>, geodeticDatum <chr>, class <chr>, countryCode <chr>,
+#> #   country <chr>, identifier <chr>, verbatimEventDate <chr>,
+#> #   nomenclaturalCode <chr>, dataGeneralizations <chr>,
+#> #   verbatimCoordinateSystem <chr>, datasetName <chr>, language <chr>,
+#> #   gbifID <chr>, occurrenceID <chr>, type <chr>, catalogNumber <chr>,
+#> #   recordedBy <chr>, institutionCode <chr>, ownerInstitutionCode <chr>,
+#> #   datasetID <chr>, accessRights <chr>, bibliographicCitation <chr>,
+#> #   locality <chr>, collectionCode <chr>, individualCount <int>,
+#> #   elevation <dbl>, elevationAccuracy <dbl>, stateProvince <chr>,
+#> #   municipality <chr>, county <chr>, coordinatePrecision <dbl>,
+#> #   habitat <chr>, dateIdentified <chr>, identifiedBy <chr>,
+#> #   references <chr>, recordNumber <chr>, institutionID <chr>,
+#> #   dynamicProperties <chr>, associatedTaxa <chr>, startDayOfYear <chr>,
+#> #   verbatimElevation <chr>, collectionID <chr>, verbatimLocality <chr>,
+#> #   fieldNotes <chr>, higherGeography <chr>, endDayOfYear <chr>,
+#> #   higherClassification <chr>, rightsHolder <chr>, rights <chr>,
+#> #   occurrenceRemarks <chr>, footprintWKT <chr>, occurrenceStatus <chr>,
+#> #   footprintSRS <chr>, eventID <chr>, fieldNumber <chr>
 ```
 
 ## Expand issue codes to full names
@@ -258,14 +279,15 @@ Another thing we can do with `occ_issues()` is go from issue codes to full issue
 out <- res %>% occ_issues(mutate = "expand")
 head(out$data[,c(1,5)])
 #> # A tibble: 6 × 2
-#>                name                                          issues
-#>               <chr>                                           <chr>
-#> 1 Helianthus annuus COORDINATE_ROUNDED,GEODETIC_DATUM_ASSUMED_WGS84
-#> 2 Helianthus annuus COORDINATE_ROUNDED,GEODETIC_DATUM_ASSUMED_WGS84
-#> 3 Helianthus annuus COORDINATE_ROUNDED,GEODETIC_DATUM_ASSUMED_WGS84
-#> 4 Helianthus annuus COORDINATE_ROUNDED,GEODETIC_DATUM_ASSUMED_WGS84
-#> 5 Helianthus annuus COORDINATE_ROUNDED,GEODETIC_DATUM_ASSUMED_WGS84
-#> 6 Helianthus annuus COORDINATE_ROUNDED,GEODETIC_DATUM_ASSUMED_WGS84
+#>                name
+#>               <chr>
+#> 1 Helianthus annuus
+#> 2 Helianthus annuus
+#> 3 Helianthus annuus
+#> 4 Helianthus annuus
+#> 5 Helianthus annuus
+#> 6 Helianthus annuus
+#> # ... with 1 more variables: issues <chr>
 ```
 
 
@@ -280,16 +302,14 @@ Split out each issue type into a separate column, with number of columns equal t
 out <- res %>% occ_issues(mutate = "split")
 head(out$data[,c(1,5:10)])
 #> # A tibble: 6 × 7
-#>                name cdround gass84                           datasetKey
-#>               <chr>   <chr>  <chr>                                <chr>
-#> 1 Helianthus annuus       y      y 50c9509d-22c7-4a22-a47d-8c48425ef4a7
-#> 2 Helianthus annuus       y      y 50c9509d-22c7-4a22-a47d-8c48425ef4a7
-#> 3 Helianthus annuus       y      y 50c9509d-22c7-4a22-a47d-8c48425ef4a7
-#> 4 Helianthus annuus       y      y 50c9509d-22c7-4a22-a47d-8c48425ef4a7
-#> 5 Helianthus annuus       y      y 50c9509d-22c7-4a22-a47d-8c48425ef4a7
-#> 6 Helianthus annuus       y      y 50c9509d-22c7-4a22-a47d-8c48425ef4a7
-#> # ... with 3 more variables: publishingOrgKey <chr>,
-#> #   publishingCountry <chr>, protocol <chr>
+#>                name refuriiv   bri  cudc cdround gass84 cucdmis
+#>               <chr>    <chr> <chr> <chr>   <chr>  <chr>   <chr>
+#> 1 Helianthus annuus        y     n     n       n      n       n
+#> 2 Helianthus annuus        y     n     n       n      n       n
+#> 3 Helianthus annuus        n     y     y       n      n       n
+#> 4 Helianthus annuus        n     n     n       y      y       n
+#> 5 Helianthus annuus        n     n     y       n      n       n
+#> 6 Helianthus annuus        n     n     n       y      y       n
 ```
 
 ## Expand and add columns
@@ -301,16 +321,17 @@ Or you can expand each issue type into its full name, and split each issue into 
 out <- res %>% occ_issues(mutate = "split_expand")
 head(out$data[,c(1,5:10)])
 #> # A tibble: 6 × 7
-#>                name COORDINATE_ROUNDED GEODETIC_DATUM_ASSUMED_WGS84
-#>               <chr>              <chr>                        <chr>
-#> 1 Helianthus annuus                  y                            y
-#> 2 Helianthus annuus                  y                            y
-#> 3 Helianthus annuus                  y                            y
-#> 4 Helianthus annuus                  y                            y
-#> 5 Helianthus annuus                  y                            y
-#> 6 Helianthus annuus                  y                            y
-#> # ... with 4 more variables: datasetKey <chr>, publishingOrgKey <chr>,
-#> #   publishingCountry <chr>, protocol <chr>
+#>                name REFERENCES_URI_INVALID BASIS_OF_RECORD_INVALID
+#>               <chr>                  <chr>                   <chr>
+#> 1 Helianthus annuus                      y                       n
+#> 2 Helianthus annuus                      y                       n
+#> 3 Helianthus annuus                      n                       y
+#> 4 Helianthus annuus                      n                       n
+#> 5 Helianthus annuus                      n                       n
+#> 6 Helianthus annuus                      n                       n
+#> # ... with 4 more variables: COUNTRY_DERIVED_FROM_COORDINATES <chr>,
+#> #   COORDINATE_ROUNDED <chr>, GEODETIC_DATUM_ASSUMED_WGS84 <chr>,
+#> #   COUNTRY_COORDINATE_MISMATCH <chr>
 ```
 
 ## Wrap up

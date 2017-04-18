@@ -82,7 +82,6 @@ R terminal:
 ```{r eval=FALSE}
 install.packages('openssl')
 install.packages('rgeos')
-install.packages('V8')
 install.packages('rgbif')
 ```
 ## Search for occurrence data
