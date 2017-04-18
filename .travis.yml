@@ -6,6 +6,10 @@ cache: packages
 apt_packages:
   - libudunits2-dev
 
+r: 
+  - release
+  - devel
+
 r_packages:
   - maps
   - scales
