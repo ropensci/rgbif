@@ -58,7 +58,7 @@ test_that("works with parameters that allow many inputs", {
   expect_is(aa$meta, "data.frame")
   expect_is(aa$meta$endOfRecords, "logical")
   expect_is(aa$data$canonicalName, "character")
-  expect_is(aa$data$speciesKey, "integer")
+  expect_is(aa$data$key, "integer")
   expect_true(all(
     unique(tolower(aa$data$nameType)) %in% c("cultivar", "doubtful")))
 })
