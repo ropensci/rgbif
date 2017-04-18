@@ -22,7 +22,9 @@ File 'LICENSE':
 
 --------
 
-This version xxxx
+This version adds some new features, removes V8 package
+dependency, replaced the httr package dependency,
+moved to markdown docs, and fixed a few bugs.
 
 Thanks!
 Scott Chamberlain
