@@ -80,10 +80,10 @@ test_that("args that support many repeated uses in one request", {
   expect_is(aa, "list")
   expect_named(aa, c('meta', 'data', 'facets', 'descriptions'))
   expect_is(aa$data, "tbl_df")
-  expect_equal(tolower(unique(aa$data$type)), c("checklist", "metadata"))
+  expect_true(any(tolower(unique(aa$data$type)) %in% c("checklist", "metadata")))
 
   expect_is(bb, "list")
   expect_named(bb, c('meta', 'data', 'facets', 'descriptions'))
   expect_is(bb$data, "tbl_df")
-  expect_equal(tolower(unique(bb$data$publishingCountry)), c("de", "nz"))
+  expect_true(any(tolower(unique(bb$data$publishingCountry)) %in% c("de", "nz")))
 })

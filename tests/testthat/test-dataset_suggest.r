@@ -55,5 +55,5 @@ test_that("args that support many repeated uses in one request", {
 
   expect_is(aa, "tbl_df")
   expect_named(aa, c('key', 'type', 'title'))
-  expect_equal(tolower(unique(aa$type)), c("checklist", "metadata"))
+  expect_true(any(tolower(unique(aa$type)) %in% c("checklist", "metadata")))
 })
