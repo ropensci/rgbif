@@ -19,26 +19,26 @@
 #' @references <http://www.gbif.org/developer/occurrence#occurrence>
 #'
 #' @examples \dontrun{
-#' occ_get(key=766766824, return='data')
-#' occ_get(key=766766824, 'hier')
-#' occ_get(key=766766824, 'all')
+#' occ_get(key=855998194, return='data')
+#' occ_get(key=855998194, 'hier')
+#' occ_get(key=855998194, 'all')
 #'
 #' # many occurrences
 #' occ_get(key=c(101010, 240713150, 855998194), return='data')
 #'
 #' # Verbatim data
-#' occ_get(key=766766824, verbatim=TRUE)
-#' occ_get(key=766766824, fields='all', verbatim=TRUE)
-#' occ_get(key=766766824, fields=c('scientificName', 'lastCrawled', 'county'),
+#' occ_get(key=855998194, verbatim=TRUE)
+#' occ_get(key=855998194, fields='all', verbatim=TRUE)
+#' occ_get(key=855998194, fields=c('scientificName', 'lastCrawled', 'county'),
 #'   verbatim=TRUE)
-#' occ_get(key=c(766766824, 620594291, 766420684), verbatim=TRUE)
-#' occ_get(key=c(766766824, 620594291, 766420684), fields='all', verbatim=TRUE)
-#' occ_get(key=c(766766824, 620594291, 766420684),
+#' occ_get(key=c(855998194, 620594291, 766420684), verbatim=TRUE)
+#' occ_get(key=c(855998194, 620594291, 766420684), fields='all', verbatim=TRUE)
+#' occ_get(key=c(855998194, 620594291, 766420684),
 #'    fields=c('scientificName', 'decimalLatitude', 'basisOfRecord'),
 #'    verbatim=TRUE)
 #'
 #' # Pass in curl options
-#' occ_get(key=766766824, curlopts = list(verbose=TRUE))
+#' occ_get(key=855998194, curlopts = list(verbose=TRUE))
 #' }
 
 occ_get <- function(key=NULL, return='all', verbatim=FALSE, fields='minimal',
