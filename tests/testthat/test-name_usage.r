@@ -24,7 +24,7 @@ test_that("name_usage works", {
 
   expect_equal(length(uu), 2)
   expect_equal(NCOL(uu$meta), 3)
-  expect_equal(NCOL(uu$data), 4)
+  expect_equal(NCOL(uu$data), 5)
 })
 
 test_that("name_usage name route works", {
