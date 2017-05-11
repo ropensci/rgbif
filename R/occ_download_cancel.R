@@ -19,7 +19,7 @@ occ_download_cancel <- function(key, user=getOption("gbif_user"),
   stopifnot(!is.null(key))
   url <- sprintf('%s/occurrence/download/request/%s', gbif_base(), key)
   cli <- crul::HttpClient$new(url = url, opts = c(
-    curlopts, httpauth = 1, userpwd = paste0(user, ":", pwd), verbose = TRUE),
+    curlopts, httpauth = 1, userpwd = paste0(user, ":", pwd)),
     headers = rgbif_ual
   )
   res <- cli$delete(body = FALSE)
