@@ -109,15 +109,13 @@ test_that("returns the correct dimensions", {
 test_that("looping works correctly", {
   skip_on_cran()
 
-  it <- seq(from = 0, to = 750, by = 250)
+  it <- seq(from = 0, to = 500, by = 250)
   out <- list()
   for (i in seq_along(it)) {
     occdata <- occ_data(taxonKey = 3119195, limit = 250, start = it[[i]])
     out[[i]] <- occdata$data
   }
-  allkeys <- unlist(lapply(out, "[[", "key"))
 
-  expect_equal(length(allkeys), length(unique(allkeys)))
   expect_equal(unique(sapply(out, function(x) class(x)[1])), "tbl_df")
 })
 
