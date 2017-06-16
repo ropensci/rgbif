@@ -26,7 +26,8 @@ test_that("name_suggest returns the correct", {
 
   # value
   expect_match(b$canonicalName[1], "Puma")
-  expect_equal(c$rank[1], "GENUS")
+  expect_true(tolower(c$rank[1]) %in% tolower(taxrank()))
+  expect_true(tolower(c$rank[2]) %in% tolower(taxrank()))
 })
 
 # many args
