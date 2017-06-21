@@ -4,8 +4,9 @@
 #'
 #' @param nubKey Species key. PARAMETER NAME CHANGED TO taxonKey.
 #' @param taxonKey Species key
-#' @param georeferenced Return only occurence records with lat/long data
-#' (`TRUE`) or all records (`FALSE`, default).
+#' @param georeferenced Return only occurrence records with lat/long data
+#' (`TRUE`) or those that don't have that data (`FALSE`, default). Note that
+#' you can also get record count with [occ_search()] by setting `limit=0`
 #' @param basisOfRecord Basis of record
 #' @param datasetKey Dataset key
 #' @param date Collection date

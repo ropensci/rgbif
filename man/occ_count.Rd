@@ -13,8 +13,9 @@ occ_count(taxonKey = NULL, georeferenced = NULL, basisOfRecord = NULL,
 \arguments{
 \item{taxonKey}{Species key}
 
-\item{georeferenced}{Return only occurence records with lat/long data
-(\code{TRUE}) or all records (\code{FALSE}, default).}
+\item{georeferenced}{Return only occurrence records with lat/long data
+(\code{TRUE}) or those that don't have that data (\code{FALSE}, default). Note that
+you can also get record count with \code{\link[=occ_search]{occ_search()}} by setting \code{limit=0}}
 
 \item{basisOfRecord}{Basis of record}
 
