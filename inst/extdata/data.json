@@ -1,0 +1,43 @@
+{
+  "@context":"http://schema.org/",
+  "@type":"Dataset",
+  "name":"Global Biodiversity Information Facilty",
+  "description":"Storm Data is provided by the National Weather Service (NWS) and contain statistics on...",
+  "url":"http://www.gbif.org/",
+  "sameAs":"http://www.gbif.org/",
+  "keywords":[
+     "SPECIES > TAXONOMIC NAMES",
+     "MUSEUM > SPECIMEN"
+  ],
+  "creator":{
+     "@type":"Organization",
+     "url": "http://www.gbif.org/",
+     "name":"GBIF > Global Biodiversity Information Facilty",
+     "contactPoint":{
+        "@type":"ContactPoint",
+        "contactType": "ADMINISTRATIVE_POINT_OF_CONTACT",
+        "familyName":"Robertson",
+        "givenName":"Tim",
+        "email":"trobertson@gbif.org"
+     }
+  },
+  "includedInDataCatalog":{
+     "@type":"DataCatalog",
+     "name":"gbif.org"
+  },
+  "distribution":[
+     {
+        "@type":"DataDownload",
+        "encodingFormat":"JSON",
+        "contentUrl":"http://api.gbif.org/v1/species/1"
+     }
+  ],
+  "temporalCoverage":"1600-01-01/2017-06-21",
+  "spatialCoverage":{
+     "@type":"Place",
+     "geo":{
+        "@type":"GeoShape",
+        "box":"-90.0 -180.0 90.0 180.0"
+     }
+  }
+}
