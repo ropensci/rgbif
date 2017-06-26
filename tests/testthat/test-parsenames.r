@@ -2,6 +2,7 @@ context("parsenames")
 
 test_that("returns the correct class", {
   skip_on_cran()
+  skip_on_travis()
 
   tt <- parsenames(scientificname = 'x Agropogon littoralis')
   uu <- parsenames(c('Arrhenatherum elatius var. elatius',
