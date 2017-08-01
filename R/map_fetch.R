@@ -437,9 +437,9 @@ map_fetch <- function(
   # Make list of URL query parameters
   query <- list(
     # Single value parameters can simply be passed on
-    x = 0,
-    y = 0,
-    z = 0,
+    x = x,
+    y = y,
+    z = z,
     type = type,
     key = key,
     resolution = resolution
