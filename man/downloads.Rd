@@ -49,6 +49,8 @@ download
 \item \code{\link{occ_download_get}} - Retrieve a download
 \item \code{\link{occ_download_import}} - Import a download from local
 file system
+\item \code{\link{occ_download_queue}} - Submit any number of
+\code{\link{occ_download}} requests
 }
 }
 
