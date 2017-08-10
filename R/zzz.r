@@ -299,10 +299,11 @@ rgbif_ua <- function() {
 
 rgbif_ual <- list(`User-Agent` = rgbif_ua(), `X-USER-AGENT` = rgbif_ua())
 
-gbif_GET <- function(url, args, parse=FALSE, curlopts = list()) {
+gbif_GET <- function(url, args, parse=FALSE, curlopts = list(), mssg = NULL) {
   cli <- crul::HttpClient$new(url = url, headers = rgbif_ual, opts = curlopts)
   temp <- cli$get(query = args)
-  if (temp$status_code == 204) stop("Status: 204 - not found", call. = FALSE)
+  if (temp$status_code == 204)
+    stop("Status: 204 - not found ", mssg, call. = FALSE)
   if (temp$status_code > 200) {
     mssg <- temp$parse("UTF-8")
     if (grepl("html", mssg)) {
