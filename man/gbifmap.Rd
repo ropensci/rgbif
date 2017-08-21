@@ -42,8 +42,13 @@ gives a simple map of your data.  You can look at the code behing the
 function itself if you want to build on it to make a map according
 to your specfications.
 
-Note that this function removes values that are impossible on the globe,
-and those rows that have both lat and long as NA or zeros.
+Note that this function removes values that are impossible on the globe
+(lat values greater than 90 or less than -90; long values greater than 180
+or less than -180), and those rows that have both lat and long as NA
+or zeros.
+
+See the \code{scrubr} package for more powerful and flexible vizualization
+options with GBIF data.
 }
 \examples{
 \dontrun{
