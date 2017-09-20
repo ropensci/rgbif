@@ -26,8 +26,8 @@ test_that("occ_count", {
   expect_equal(length(a), 1)
   expect_equal(length(b), 1)
   expect_equal(length(c), 1)
-  expect_equal(length(d), 42)
-  expect_equal(length(e), 248)
+  expect_gt(length(d), 30)
+  expect_gt(length(e), 200)
 })
 
 
