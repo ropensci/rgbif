@@ -59,7 +59,6 @@ gbif_citation(x=1425976049)
 
 # Downloads
 ## only works with output from occ_download_get for now
-d1 <- occ_download_get("0000066-140928181241064", overwrite = TRUE)
 d <- occ_download("country = BG", "year <= 2011")
 key <- "0000122-171020152545675"
 occ_download_meta(key)

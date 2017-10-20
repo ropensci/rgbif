@@ -44,7 +44,6 @@
 #'
 #' # Downloads
 #' ## only works with output from occ_download_get for now
-#' d1 <- occ_download_get("0000066-140928181241064", overwrite = TRUE)
 #' d <- occ_download("country = BG", "year <= 2011")
 #' key <- "0000122-171020152545675"
 #' occ_download_meta(key)
@@ -140,28 +139,27 @@ gbif_citation.occ_download_get <- function(x) {
   )
 }
 
-#' @export
-gbif_citation.occ_download_meta <- function(x) {
-  # get DOI for citation
-  met <- occ_download_meta(attr(x, "key"))
-  doi_url <- if (is.null(met$doi)) {
-    file.path("https://www.gbif.org/occurrence/download", attr(x, "key"))
-  } else {
-    file.path("https://doi.org", sub("doi:", "", met$doi))
-  }
-  citation <- sprintf(gbif_cit, doi_url, as.character(as.Date(met$created)))
+# gbif_citation.occ_download_meta <- function(x) {
+#   # get DOI for citation
+#   met <- occ_download_meta(attr(x, "key"))
+#   doi_url <- if (is.null(met$doi)) {
+#     file.path("https://www.gbif.org/occurrence/download", attr(x, "key"))
+#   } else {
+#     file.path("https://doi.org", sub("doi:", "", met$doi))
+#   }
+#   citation <- sprintf(gbif_cit, doi_url, as.character(as.Date(met$created)))
 
-  # individual datasets
-  path <- x[1]
-  tmpdir <- file.path(tempdir(), x)
-  utils::unzip(path, exdir = tmpdir, overwrite = TRUE)
-  on.exit(unlink(tmpdir))
-  dsets <- list.files(file.path(tmpdir, "dataset"), full.names = TRUE)
-  list(
-    download = citation,
-    datasets = lapply(dsets, get_cit_rights)
-  )
-}
+#   # individual datasets
+#   path <- x[1]
+#   tmpdir <- file.path(tempdir(), x)
+#   utils::unzip(path, exdir = tmpdir, overwrite = TRUE)
+#   on.exit(unlink(tmpdir))
+#   dsets <- list.files(file.path(tmpdir, "dataset"), full.names = TRUE)
+#   list(
+#     download = citation,
+#     datasets = lapply(dsets, get_cit_rights)
+#   )
+# }
 
 
 
