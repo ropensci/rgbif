@@ -29,16 +29,16 @@
 #' These numbers are subject to change.
 #'
 #' @section Functions:
-#' \itemize{
-#'  \item \code{\link{occ_download}} - Start a download
-#'  \item \code{\link{occ_download_meta}} - Get metadata progress on a single
-#'  download
-#'  \item \code{\link{occ_download_list}} - List your downloads
-#'  \item \code{\link{occ_download_cancel}} - Cancel a download
-#'  \item \code{\link{occ_download_get}} - Retrieve a download
-#'  \item \code{\link{occ_download_import}} - Import a download from local
-#'  file system
-#' }
+#'
+#' - [occ_download()] - Start a download
+#' - [occ_download_meta()] - Get metadata progress on a single download
+#' - [occ_download_list()] - List your downloads
+#' - [occ_download_cancel()] - Cancel a download
+#' - [occ_download_get()] - Retrieve a download
+#' - [occ_download_import()] - Import a download from local file system
+#' - [occ_download_datasets()] - List datasets for a download
+#' - [occ_download_dataset_activity()] - Lists the downloads activity
+#' of a dataset
 #'
 #' @name downloads
 NULL

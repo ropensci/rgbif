@@ -41,14 +41,15 @@ These numbers are subject to change.
 \section{Functions}{
 
 \itemize{
-\item \code{\link{occ_download}} - Start a download
-\item \code{\link{occ_download_meta}} - Get metadata progress on a single
-download
-\item \code{\link{occ_download_list}} - List your downloads
-\item \code{\link{occ_download_cancel}} - Cancel a download
-\item \code{\link{occ_download_get}} - Retrieve a download
-\item \code{\link{occ_download_import}} - Import a download from local
-file system
+\item \code{\link[=occ_download]{occ_download()}} - Start a download
+\item \code{\link[=occ_download_meta]{occ_download_meta()}} - Get metadata progress on a single download
+\item \code{\link[=occ_download_list]{occ_download_list()}} - List your downloads
+\item \code{\link[=occ_download_cancel]{occ_download_cancel()}} - Cancel a download
+\item \code{\link[=occ_download_get]{occ_download_get()}} - Retrieve a download
+\item \code{\link[=occ_download_import]{occ_download_import()}} - Import a download from local file system
+\item \code{\link[=occ_download_datasets]{occ_download_datasets()}} - List datasets for a download
+\item \code{\link[=occ_download_dataset_activity]{occ_download_dataset_activity()}} - Lists the downloads activity
+of a dataset
 }
 }
 
