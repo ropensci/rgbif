@@ -18,10 +18,6 @@ check_wkt('POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))')
 check_wkt('POINT(30.1 10.1)')
 check_wkt('LINESTRING(3 4,10 50,20 25)')
 
-wkt <- 'POLYGON((30 20, 10 40, 45 40, 30 20),
-(15 5, 5 10, 10 20, 40 10, 15 5))'
-check_wkt(gsub("\\n", '', wkt))
-
 # check many passed in at once
 check_wkt(c('POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))',
   'POINT(30.1 10.1)'))
