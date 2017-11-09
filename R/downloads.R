@@ -40,5 +40,10 @@
 #' - [occ_download_dataset_activity()] - Lists the downloads activity
 #' of a dataset
 #'
+#' @section Query length:
+#' GBIF has a limit of 12,000 characters for a download query. This means
+#' that you can have a pretty long query, but at some point it may lead to an
+#' error on GBIF's side and you'll have to split your query into a few.
+#'
 #' @name downloads
 NULL

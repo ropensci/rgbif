@@ -95,6 +95,13 @@ Acceptable arguments to \code{...} are:
 \item recordedBy = 'RECORDED_BY'
 }
 }
+\section{Query length}{
+
+GBIF has a limit of 12,000 characters for a download query. This means
+that you can have a pretty long query, but at some point it may lead to an
+error on GBIF's side and you'll have to split your query into a few.
+}
+
 \examples{
 \dontrun{
 # occ_download("basisOfRecord = LITERATURE")
