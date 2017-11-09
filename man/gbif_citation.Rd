@@ -8,8 +8,8 @@ gbif_citation(x)
 }
 \arguments{
 \item{x}{(character) Result of call to \code{\link[=occ_search]{occ_search()}},
-\code{\link[=occ_download_get]{occ_download_get()}}, a dataset key, or occurrence key (character or
-numeric).}
+\code{\link[=occ_download_get]{occ_download_get()}}, \code{\link[=occ_download_meta]{occ_download_meta()}}, a dataset key, or occurrence key
+(character or numeric)}
 }
 \value{
 list with S3 class assigned, used by a print method to pretty print
@@ -58,11 +58,16 @@ gbif_citation(x='1425976049')
 gbif_citation(x=1425976049)
 
 # Downloads
-## only works with output from occ_download_get for now
+## occ_download_get()
 d <- occ_download("country = BG", "year <= 2011")
 key <- "0000122-171020152545675"
 occ_download_meta(key)
 d1 <- occ_download_get(key, overwrite = TRUE)
 gbif_citation(d1)
+
+## occ_download_meta()
+key <- "0000122-171020152545675"
+res <- occ_download_meta(key)
+gbif_citation(res)
 }
 }
