@@ -268,4 +268,3 @@ This package is part of a richer suite called [spocc - Species Occurrence Data](
 
 - - -
 
-[![ropensci_footer](https://ropensci.org/public_images/github_footer.png)](https://ropensci.org)
