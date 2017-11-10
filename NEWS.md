@@ -1,3 +1,36 @@
+rgbif 0.9.9
+===========
+
+### NEW FEATURES
+
+* Gains new functions `occ_download_datasets` and `occ_download_dataset_activity` to list datasets for a download,
+and list the downloads activity of a dataset (#275) (#276)
+* Gains a new vignette covering working with GBIF downloads 
+in `rgbif` (#262)
+
+### MINOR IMPROVEMENTS
+
+* Guidance added to docs for downloads functions on length of the
+request body (#263)
+* Changed authentication details (user name, password, email) for 
+downloads to allow any of the options: pass in as arguments,
+store as R options, store as environment variables (#187)
+* `gbif_citation()` function gains an S3 method for passing the 
+output of `occ_download_meta()` to it. In addition, for downloads
+`gbif_citation()` now returns a citation for the entire download 
+(including) its DOI, in addition to citations for each dataset (#274) 
+thanks @dnoesgaard
+
+### BUG FIXES
+
+* Fix documentation bug in `occ_count()`: `georeferenced` had a 
+misleading description of what the value `FALSE` did (#265)
+* Fixed bug in `gbifmap()` - was failing in some cases - better
+error handlingn now (#271) thanks @TomaszSuchan
+* Fixed `occ_download_cancel_staged()`: it wasn't passing on authentication
+parameters correctly (#280)
+
+
 rgbif 0.9.8
 ===========
 
