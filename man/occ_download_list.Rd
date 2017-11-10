@@ -4,13 +4,15 @@
 \alias{occ_download_list}
 \title{Lists the downloads created by a user.}
 \usage{
-occ_download_list(user = getOption("gbif_user"),
-  pwd = getOption("gbif_pwd"), limit = 20, start = 0, curlopts = list())
+occ_download_list(user = NULL, pwd = NULL, limit = 20, start = 0,
+  curlopts = list())
 }
 \arguments{
-\item{user}{A user name, look at option "gbif_user" first}
+\item{user}{(character) User name within GBIF's website. Required. See
+Details.}
 
-\item{pwd}{Your password, look at option "gbif_pwd" first}
+\item{pwd}{(character) User password within GBIF's website. Required. See
+Details.}
 
 \item{limit}{Number of records to return. Default: 20}
 

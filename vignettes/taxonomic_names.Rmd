@@ -78,8 +78,8 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 #> 2         94     FUZZY   FALSE
 ```
 
-* P. s<b>y</b>lvestris w/ 255243 occurrences - from Catalogue of Life
-* P. s<b>i</b>lvestris w/ 255243 occurrences - from Catalogue of Life
+* P. s<b>y</b>lvestris w/ 324515 occurrences - from Catalogue of Life
+* P. s<b>i</b>lvestris w/ 324515 occurrences - from Catalogue of Life
 
 ## Macrozamia platyrachis vs. M. platyrhachis
 
@@ -94,8 +94,8 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 #> 2 SPECIES ACCEPTED         98     EXACT   FALSE
 ```
 
-* M. platyrachis w/ 54 occurrences - from Catalogue of Life
-* M. platyr<b>h</b>achis w/ 54 occurrences - from Catalogue of Life
+* M. platyrachis w/ 59 occurrences - from Catalogue of Life
+* M. platyr<b>h</b>achis w/ 59 occurrences - from Catalogue of Life
 
 ## Cycas circinalis vs. C. circinnalis
 
@@ -110,8 +110,8 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 #> 2         95     FUZZY   FALSE
 ```
 
-* C. circinalis w/ 536 occurrences - from Catalogue of Life
-* C. circin<b>n</b>alis w/ 536 occurrences - from Catalogue of Life
+* C. circinalis w/ 550 occurrences - from Catalogue of Life
+* C. circin<b>n</b>alis w/ 550 occurrences - from Catalogue of Life
 
 ## Isolona perrieri vs. I. perrierii
 
@@ -143,7 +143,7 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 ```
 
 * Wi<b>e</b>sneria w/ 78 occurrences - from Catalogue of Life
-* Wisneria w/ 4 occurrences - from Interim Register of Marine and Nonmarine Genera
+* Wisneria w/ 4 occurrences - from The Interim Register of Marine and Nonmarine Genera
 
 ## The take away messages from this vignette
 

@@ -15,12 +15,17 @@ or via the \code{/occurrence/download} route (many functions, see below).
 You'll use \code{\link[=occ_download]{occ_download()}} to kick off a download. You'll need to
 give that function settings from your GBIF profile: your user name, your
 password, and your email. These three settings are required to use the
-function. You can pass these to the function call or set them as options
-either in the current R
-session using the \code{\link[=options]{options()}} function, or by setting them in your
-\code{.Rprofile} file, after which point they'll be read in automatically, and
-you won't need to pass them in to the function call. If yo set them in your
-\code{.Rprofile} file, they won't be available until you restart the R session.
+function. You can specify them in one of three ways:
+\itemize{
+\item Pass them to \code{occ_download} as parameters
+\item Use R options: As options either in the current R session using
+the \code{\link[=options]{options()}} function, or by setting them in your \code{.Rprofile} file, after
+which point they'll be read in automatically
+\item Use environment variables: As env vars either in the current R session using
+the \code{\link[=Sys.setenv]{Sys.setenv()}} function, or by setting them in your
+\code{.Renviron}/\code{.bash_profile} or similar files, after which point they'll be read
+in automatically
+}
 }
 
 \section{BEWARE}{
@@ -45,6 +50,8 @@ These numbers are subject to change.
 \item \code{\link[=occ_download_meta]{occ_download_meta()}} - Get metadata progress on a single download
 \item \code{\link[=occ_download_list]{occ_download_list()}} - List your downloads
 \item \code{\link[=occ_download_cancel]{occ_download_cancel()}} - Cancel a download
+\item \code{\link[=occ_download_cancel_staged]{occ_download_cancel_staged()}} - Cancels any jobs with status \code{RUNNING}
+or \code{PREPARING}
 \item \code{\link[=occ_download_get]{occ_download_get()}} - Retrieve a download
 \item \code{\link[=occ_download_import]{occ_download_import()}} - Import a download from local file system
 \item \code{\link[=occ_download_datasets]{occ_download_datasets()}} - List datasets for a download

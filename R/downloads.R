@@ -10,12 +10,16 @@
 #' You'll use [occ_download()] to kick off a download. You'll need to
 #' give that function settings from your GBIF profile: your user name, your
 #' password, and your email. These three settings are required to use the
-#' function. You can pass these to the function call or set them as options
-#' either in the current R
-#' session using the [options()] function, or by setting them in your
-#' `.Rprofile` file, after which point they'll be read in automatically, and
-#' you won't need to pass them in to the function call. If yo set them in your
-#' `.Rprofile` file, they won't be available until you restart the R session.
+#' function. You can specify them in one of three ways:
+#'
+#' - Pass them to `occ_download` as parameters
+#' - Use R options: As options either in the current R session using
+#' the [options()] function, or by setting them in your `.Rprofile` file, after
+#' which point they'll be read in automatically
+#' - Use environment variables: As env vars either in the current R session using
+#' the [Sys.setenv()] function, or by setting them in your
+#' `.Renviron`/`.bash_profile` or similar files, after which point they'll be read
+#' in automatically
 #'
 #' @section BEWARE:
 #' You can not perform that many downloads, so plan wisely.
@@ -34,6 +38,8 @@
 #' - [occ_download_meta()] - Get metadata progress on a single download
 #' - [occ_download_list()] - List your downloads
 #' - [occ_download_cancel()] - Cancel a download
+#' - [occ_download_cancel_staged()] - Cancels any jobs with status `RUNNING`
+#' or `PREPARING`
 #' - [occ_download_get()] - Retrieve a download
 #' - [occ_download_import()] - Import a download from local file system
 #' - [occ_download_datasets()] - List datasets for a download
