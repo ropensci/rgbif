@@ -7,8 +7,8 @@ apt_packages:
   - libudunits2-dev
 
 r: 
+  - oldrel
   - release
-  - devel
 
 r_packages:
   - maps
