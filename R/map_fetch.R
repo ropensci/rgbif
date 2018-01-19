@@ -12,13 +12,13 @@
 #' mapping api can be found at https://www.gbif.org/developer/maps
 #'
 #' @param source (character): Either density for fast, precalculated tiles, 
-#' or adhoc for any search. (\code{default = "density"})
+#' or adhoc for any search. `default = "density"`
 #' 
-#' @param x (integer): the zoom. (\code{default = 0})
+#' @param x (integer): the zoom. `default = 0`
 #' 
-#' @param y (integer): the column. (\code{default = 0})
+#' @param y (integer): the column. `default = 0`
 #' 
-#' @param z (integer): the row. (\code{default = 0})
+#' @param z (integer): the row. `default = 0`
 #' 
 #' @param format (character): 
 #' .mvt for a vector tile
@@ -31,7 +31,7 @@
 #' @param srs (character):
 #' 	Spatial reference system. One of:
 #' 	EPSG:3857 (Web Mercator)
-#' 	EPSG:4326 (WGS84 plate careé)
+#' 	EPSG:4326 (WGS84 plate care?)
 #' 	EPSG:3575 (Arctic LAEA)
 #' 	EPSG:3031 (Antarctic stereographic)
 #' 	see below under Projections.
@@ -55,19 +55,20 @@
 #' 	returned.
 #' 	
 #' 	@param id (optional): defines the value to be used as filter criterium in 
-#' 	the category supplied by (\code{search}). Appropriate values depend on the
+#' 	the category supplied by `search`. Appropriate values depend on the
 #' 	search category that is used, for example integer for 
-#' 	(\code{search = "taxonKey"}). Has to be provided if 
-#' 	(\code{search}) parameter is specified.
+#' 	`search = "taxonKey"`. Has to be provided if 
+#' 	`search` parameter is specified.
 #' 	
-#' 	@param year (optional): limits the occurrences within a range of years, 
-#' 	for example c(2008, 2009, 2010).
+#' 	@param year (optional): integer that limits the search to a certain year or, 
+#' 	if passing a vector of integers,, multiple years, for example
+#' 	`1984` or `c(2016, 2017, 2018)`.
 #' 	
-#' 	@param basisOfRecord (optional): can be given multiple times to include 
-#' 	records with that basis of record. The full list is: c("OBSERVATION", 
+#' 	@param basisOfRecord (optional): character or character vector to include 
+#' 	records with that basis of record. The full list is: `c("OBSERVATION", 
 #' 	"HUMAN_OBSERVATION", "MACHINE_OBSERVATION", "MATERIAL_SAMPLE", 
 #' 	"PRESERVED_SPECIMEN", "FOSSIL_SPECIMEN", "LIVING_SPECIMEN", 
-#' 	"LITERATURE", "UNKNOWN".
+#' 	"LITERATURE", "UNKNOWN")`.
 #' 	
 #' @return ###???
 #'
@@ -127,8 +128,8 @@ map_fetch <- function(
     several.ok = FALSE
   )
   
-  z <- match.arg(
-    arg = z,
+  srs <- match.arg(
+    arg = srs,
     choices = c('EPSG:3857', 'EPSG:4326', 'EPSG:3575', 'EPSG:3031'),
     several.ok = FALSE
   )
@@ -257,7 +258,7 @@ map_fetch <- function(
   # API call with dynamically generated URL and parameters from query list
   response <- httr::GET(
     url = 'https://api.gbif.org/v2', #should change to `gbif_base()` at some point
-    path = paste0('/maps/occurrence/', source, '/',
+    path = paste0('/map/occurrence/', source, '/',
       z, '/', x, '/', y, format, '?srs=', srs),
     query = query)
     
@@ -266,3 +267,8 @@ map_fetch <- function(
   
   return(response)
 }
+
+#' TODO:
+#' - switch from httr to crul
+#' - switch to custom url and move version to path
+#' - think output format (check leaflet)
