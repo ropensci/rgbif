@@ -20,3 +20,4 @@ README.Rmd
 ^revdep$
 .github
 
+^codemeta\.json$
