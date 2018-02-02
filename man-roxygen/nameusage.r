@@ -9,7 +9,7 @@
 #' @param datasetKey (character) Filters by the dataset's key (a uuid)
 #' @param uuid (character) A uuid for a dataset. Should give exact same
 #' results as datasetKey.
-#' @param key (numeric) A GBIF key for a taxon
+#' @param key (numeric or character) A GBIF key for a taxon
 #' @param name (character) Filters by a case insensitive, canonical namestring,
 #' e.g. 'Puma concolor'
 #' @param data (character) Specify an option to select what data is returned.
