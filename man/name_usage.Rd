@@ -10,7 +10,7 @@ name_usage(key = NULL, name = NULL, data = "all", language = NULL,
   curlopts = list())
 }
 \arguments{
-\item{key}{(numeric) A GBIF key for a taxon}
+\item{key}{(numeric or character) A GBIF key for a taxon}
 
 \item{name}{(character) Filters by a case insensitive, canonical namestring,
 e.g. 'Puma concolor'}
