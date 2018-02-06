@@ -1,5 +1,37 @@
 context("name_usage")
 
+test_that("name_usage return parameter works", {
+  skip_on_cran()
+
+  meta <- name_usage(return = "meta")
+  dat <- name_usage(return = "data")
+  all <- name_usage(return = "all")
+  
+  # meta
+  expect_is(meta, "data.frame")
+  expect_is(meta, "tbl_df")
+  expect_named(meta, c('offset', 'limit', 'endOfRecords'))
+  expect_equal(meta$limit, 100)
+
+  # data
+  expect_is(dat, "data.frame")
+  expect_is(dat, "tbl_df")
+  expect_true(any(grepl("datasetKey", names(dat))))
+  expect_equal(NROW(dat), 100)
+
+  # both meta and data
+  expect_is(all, "list")
+  expect_named(all, c('meta', 'data'))
+  expect_is(all$meta, "data.frame")
+  expect_is(all$meta, "tbl_df")
+  expect_named(all$meta, c('offset', 'limit', 'endOfRecords'))
+  expect_equal(all$meta$limit, 100)
+  expect_is(all$data, "data.frame")
+  expect_is(all$data, "tbl_df")
+  expect_true(any(grepl("datasetKey", names(all$data))))
+  expect_equal(NROW(all$data), 100)
+})
+
 test_that("name_usage works", {
   skip_on_cran()
 

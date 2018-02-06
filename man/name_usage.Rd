@@ -53,8 +53,9 @@ back in a list.}
 for curl options}
 }
 \value{
-A list of length two. The first element is metadata. The second is
-a data.frame
+If \code{return="all"}, a list of length two, with metadata and data,
+each as data.frame's. If \code{return="meta"} only the metadata data.frame,
+and if \code{return="data"} only the data data.frame
 }
 \description{
 Lookup details for specific names in all taxonomies in GBIF.
@@ -140,5 +141,5 @@ name_usage(name='Puma concolor', limit=300, curlopts = list(verbose=TRUE))
 }
 }
 \references{
-<http://www.gbif.org/developer/species#nameUsages.
+\url{https://www.gbif.org/developer/species#nameUsages}
 }

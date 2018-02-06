@@ -7,9 +7,10 @@
 #' @param return One of data, meta, or all. If data, a data.frame with the
 #'    data. meta returns the metadata for the entire call. all gives all data
 #'    back in a list.
-#' @return A list of length two. The first element is metadata. The second is
-#' a data.frame
-#' @references <http://www.gbif.org/developer/species#nameUsages.
+#' @return If `return="all"`, a list of length two, with metadata and data,
+#' each as data.frame's. If `return="meta"` only the metadata data.frame, 
+#' and if `return="data"` only the data data.frame
+#' @references <https://www.gbif.org/developer/species#nameUsages>
 #' @details
 #' This service uses fuzzy lookup so that you can put in partial names and
 #' you should get back those things that match. See examples below.
@@ -102,7 +103,7 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
   return <- match.arg(return, c('meta','data','all'))
   switch(return,
          meta = get_meta_nu(out),
-         data = tibble::as_data_frame(name_usage_parse(out)),
+         data = tibble::as_data_frame(name_usage_parse(out, data)),
          all = list(meta = get_meta_nu(out),
                     data = tibble::as_data_frame(name_usage_parse(out, data)))
   )
