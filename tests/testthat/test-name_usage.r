@@ -229,3 +229,12 @@ test_that("works with parameters that allow many inputs", {
       c("73605f3a-af85-4ade-bbc5-522bfb90d847")))
 })
 
+test_that("name_usage returns as many records as asked via limit (paging)", {
+  skip_on_cran()
+
+  bb <- name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42",
+                   limit = 5000)
+  expect_equal(bb$meta$offset, 2000)
+  expect_lt(bb$meta$limit, 1000)
+  expect_gt(nrow(bb$data), 2000)
+})
