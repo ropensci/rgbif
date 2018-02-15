@@ -33,6 +33,7 @@ Imports:
     geoaxe,
     tibble,
     wicket (>= 0.2.0)
+    purrr
 Suggests:
     testthat,
     knitr,
