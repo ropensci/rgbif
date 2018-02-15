@@ -100,8 +100,9 @@ name_usage_test <- function(key=NULL, name=NULL, data='all', language=NULL,
   data <- match.arg(data,
                     choices = c('all', 'verbatim', 'name', 'parents', 'children',
                                 'related', 'synonyms', 'descriptions',
-                                'distributions', 'media', 'references', 'speciesProfiles',
-                                'vernacularNames', 'typeSpecimens', 'root'), several.ok = FALSE)
+                                'distributions', 'media', 'references',
+                                'speciesProfiles', 'vernacularNames',
+                                'typeSpecimens', 'root'), several.ok = FALSE)
   if (limit > 1000) {
     iter <- 0
     sumreturned <- 0
@@ -114,8 +115,10 @@ name_usage_test <- function(key=NULL, name=NULL, data='all', language=NULL,
       if (identical(tt$results, list())) numreturned <- 0
       else numreturned <- length(tt$results)
       sumreturned <- sumreturned + numreturned
+      # if less results than maximum
       if ((numreturned > 0) & (numreturned < 1000)) {
-        limit <- numreturned # update limit for metadata before exiting
+        # update limit for metadata before exiting
+        limit <- numreturned
         args$limit <- limit
       }
       if (sumreturned < limit) {
@@ -123,7 +126,6 @@ name_usage_test <- function(key=NULL, name=NULL, data='all', language=NULL,
         args$offset <- sumreturned + start
         args$limit <- limit - sumreturned
       }
-      # args <- c(args, rank, datasetKey, uuid, name, language)
       outout[[iter]] <- tt
     }
     out <- list()
@@ -133,6 +135,7 @@ name_usage_test <- function(key=NULL, name=NULL, data='all', language=NULL,
     out$limit <- args$limit
     out$endOfRecords <- outout[[iter]]$endOfRecords
   } else {
+    # retrieve data in a single query
     out <- getdata(data, key, uuid, shortname, args, curlopts)
   }
   # select output
