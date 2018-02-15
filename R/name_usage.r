@@ -84,6 +84,10 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
     stop("Parameters not currently accepted: \n sourceId")
   }
 
+  # check limit and start params
+  check_vals(limit, "limit")
+  check_vals(start, "start")
+
   rank <- as_many_args(rank)
   datasetKey <- as_many_args(datasetKey)
   uuid <- as_many_args(uuid)
@@ -98,7 +102,41 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
                 'related', 'synonyms', 'descriptions',
                 'distributions', 'media', 'references', 'speciesProfiles',
                 'vernacularNames', 'typeSpecimens', 'root'), several.ok = FALSE)
-  out <- getdata(data, key, uuid, shortname, args, curlopts)
+  if (limit > 1000) {
+    iter <- 0
+    sumreturned <- 0
+    numreturned <- 0
+    outout <- list()
+    while (sumreturned < limit) {
+      iter <- iter + 1
+      tt <- getdata(data, key, uuid, shortname, args, curlopts)
+      # if no results, assign numreturned var with 0
+      if (identical(tt$results, list())) numreturned <- 0
+      else numreturned <- length(tt$results)
+      sumreturned <- sumreturned + numreturned
+      # if less results than maximum
+      if ((numreturned > 0) & (numreturned < 1000)) {
+        # update limit for metadata before exiting
+        limit <- numreturned
+        args$limit <- limit
+      }
+      if (sumreturned < limit) {
+        # update args for next query
+        args$offset <- sumreturned + start
+        args$limit <- limit - sumreturned
+      }
+      outout[[iter]] <- tt
+    }
+    out <- list()
+    out$results <- purrr::map(outout, ~splice(.$results))
+    out$results <- unlist(out$results, recursive = FALSE)
+    out$offset <- args$offset
+    out$limit <- args$limit
+    out$endOfRecords <- outout[[iter]]$endOfRecords
+  } else {
+    # retrieve data in a single query
+    out <- getdata(data, key, uuid, shortname, args, curlopts)
+  }
   # select output
   return <- match.arg(return, c('meta','data','all'))
   switch(return,
@@ -174,3 +212,9 @@ name_usage_parse <- function(x, y) {
 }
 
 no_zero <- function(x) Filter(function(z) length(z) != 0, x)
+
+check_vals <- function(x, y){
+  if (is.na(x) || is.null(x)) stop(sprintf("%s can not be NA or NULL", y),
+                                   call. = FALSE)
+  if (length(x) > 1) stop(sprintf("%s has to be length 1", y), call. = FALSE)
+}
