@@ -86,7 +86,6 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
 
   # check limit and start params
   check_vals(limit, "limit")
-  check_vals(start, "start")
 
   rank <- as_many_args(rank)
   datasetKey <- as_many_args(datasetKey)
@@ -102,7 +101,9 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
                 'related', 'synonyms', 'descriptions',
                 'distributions', 'media', 'references', 'speciesProfiles',
                 'vernacularNames', 'typeSpecimens', 'root'), several.ok = FALSE)
+  # paging implementation
   if (limit > 1000) {
+    if (!("offset" %in% names(args))) args$offset <- 0
     iter <- 0
     sumreturned <- 0
     numreturned <- 0
@@ -122,7 +123,7 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
       }
       if (sumreturned < limit) {
         # update args for next query
-        args$offset <- sumreturned + start
+        args$offset <- args$offset + numreturned
         args$limit <- limit - sumreturned
       }
       outout[[iter]] <- tt
