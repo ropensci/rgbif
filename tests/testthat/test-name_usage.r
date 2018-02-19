@@ -229,6 +229,20 @@ test_that("works with parameters that allow many inputs", {
       c("73605f3a-af85-4ade-bbc5-522bfb90d847")))
 })
 
+
+# paging
+test_that("paging: class data and meta not modified by paging", {
+  skip_on_cran()
+
+  bb1 <- name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42",
+                   limit = 1)
+  bb2 <- name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42",
+                    limit = 1789)
+  expect_true(all(class(bb1) == class(bb2)))
+  expect_true(all(class(bb1$meta) == class(bb2$meta)))
+  expect_true(all(class(bb1$data) == class(bb2$data)))
+})
+
 test_that("paging: name_usage returns all records from dataset: limit > n_records", {
   skip_on_cran()
 
