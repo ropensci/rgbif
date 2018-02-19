@@ -479,3 +479,8 @@ convmany <- function(x) {
   return(x)
 }
 
+check_vals <- function(x, y){
+  if (is.na(x) || is.null(x)) stop(sprintf("%s can not be NA or NULL", y),
+                                   call. = FALSE)
+  if (length(x) > 1) stop(sprintf("%s has to be length 1", y), call. = FALSE)
+}
