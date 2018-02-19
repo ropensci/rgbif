@@ -6,7 +6,7 @@ test_that("name_usage return parameter works", {
   meta <- name_usage(return = "meta")
   dat <- name_usage(return = "data")
   all <- name_usage(return = "all")
-  
+
   # meta
   expect_is(meta, "data.frame")
   expect_is(meta, "tbl_df")
@@ -229,12 +229,28 @@ test_that("works with parameters that allow many inputs", {
       c("73605f3a-af85-4ade-bbc5-522bfb90d847")))
 })
 
-test_that("name_usage returns as many records as asked via limit (paging)", {
+test_that("paging: name_usage returns all records from dataset: limit > n_records", {
   skip_on_cran()
 
-  bb <- name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42",
-                   limit = 5000)
-  expect_equal(bb$meta$offset, 2000)
-  expect_lt(bb$meta$limit, 1000)
-  expect_gt(nrow(bb$data), 2000)
+  cc <- name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42",
+                 limit = 5000)
+  expect_equal(cc$meta$offset, 2000)
+  expect_lt(cc$meta$limit, 1000)
+  expect_gt(nrow(cc$data), 2000)
+})
+
+test_that("paging: name_usage returns as many records as asked via limit", {
+  skip_on_cran()
+
+  dd <- name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42",
+                   limit = 1329)
+  expect_equal(dd$meta$offset, 1000)
+  expect_equal(dd$meta$limit, 329)
+  expect_equal(nrow(dd$data), 1329)
+
+  ee <- name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42",
+                   limit = 1001)
+  expect_equal(ee$meta$offset, 1000)
+  expect_equal(ee$meta$limit, 1)
+  expect_equal(nrow(ee$data), 1001)
 })
