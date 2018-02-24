@@ -121,7 +121,7 @@ map_fetch <- function(
   if(!is.numeric(z) & !is.integer(z)){
     stop('z value should be numeric or integer.', call. = FALSE)
   }
-
+  
   format <- match.arg(
     arg = format,
     choices = c('.mvt', '@Hx.png', '@1x.png', '@2x.png', '@3x.png', '@4x.png'),
@@ -143,21 +143,11 @@ map_fetch <- function(
   }
   
   if (!is.null(hexPerTile)) {
-    hexPerTile <- match.arg(
-      arg = hexPerTile,
-      choices = c('square', 'hex'),
-      several.ok = FALSE
-    )
+    if(!is.numeric(hexPerTile) & !is.integer(hexPerTile)){
+      stop('hexPerTile value should be numeric or integer.', call. = FALSE)
+    }
   }
-  
-  if (!is.null(hexPerTile)) {
-    hexPerTile <- match.arg(
-      arg = hexPerTile,
-      choices = c('square', 'hex'),
-      several.ok = FALSE
-    )
-  }  
-  
+
   if (!is.null(squareSize)) {
     squareSize <- match.arg(
       arg = squareSize,
@@ -169,6 +159,13 @@ map_fetch <- function(
   if (!is.null(bin)) {
     bin <- match.arg(
       arg = bin,
+      choices = c('square', 'hex')
+    )
+  }
+        
+  if (!is.null(style)) {
+    style <- match.arg(
+      arg = style,
       choices = c(
         'purpleHeat.point',
         'blueHeat.point',
@@ -245,30 +242,31 @@ map_fetch <- function(
   # Generate map API query -----------------------------------------------------
   
   # query parameters only needed if at least search OR year are supplied
-  if (!is.null(search) | !is.null(year)) {
-    query = list(
-      'search' = search,
-      'id' = id,
-      'year' = year
-    )
-  } else {
-    query = NULL
+  query = list()
+  if (!is.null(srs)) {
+    query['srs'] = srs
   }
-  
-  # API call with dynamically generated URL and parameters from query list
-  response <- httr::GET(
-    url = 'https://api.gbif.org/v2', #should change to `gbif_base()` at some point
-    path = paste0('/map/occurrence/', source, '/',
-      z, '/', x, '/', y, format, '?srs=', srs),
-    query = query)
-    
-  # test response status
-  stop_for_status(response)
-  
-  return(response)
-}
+  if (!is.null(search)) {
+    query['search'] = search
+    query['id'] = id
+  }
+  if (!is.null(year)) {
+    query['year'] = year
+  }
 
-#' TODO:
-#' - switch from httr to crul
-#' - switch to custom url and move version to path
-#' - think output format (check leaflet)
+  # API call with dynamically generated URL and parameters from query list
+  url <- crul::url_build(
+    url = 'https://api.gbif.org/v2',
+    path = paste0('v2/map/occurrence/', source,
+                  '/', z,
+                  '/', x,
+                  '/', y, format),
+    query = query)
+  
+  # Thinking about output - how about this png / raster mix?
+  library(png)
+  library(RCurl)
+  map_raw <- getBinaryURL(url)
+  map_png <- readPNG(map_raw)
+  map <- raster(map_png[,,2])
+  
