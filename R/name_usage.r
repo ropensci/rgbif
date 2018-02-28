@@ -1,9 +1,10 @@
 #' Lookup details for specific names in all taxonomies in GBIF.
 #'
 #' @export
-#' @template otherlimstart
 #' @template occ
 #' @template nameusage
+#' @param limit Number of records to return. Default: 100.
+#' @param start Record number to start at.
 #' @param return One of data, meta, or all. If data, a data.frame with the
 #'    data. meta returns the metadata for the entire call. all gives all data
 #'    back in a list.
@@ -38,6 +39,8 @@
 #' # Name usage for a taxonomic name
 #' name_usage(name='Puma', rank="GENUS")
 #'
+#' # Name usage for all taxa in a dataset (set sufficient high limit)
+#' name_usage(datasetKey = "", limit = 100000)
 #' # All name usages
 #' name_usage()
 #'
@@ -63,10 +66,6 @@
 #'
 #' # Some parameters accept many inputs, treated as OR
 #' name_usage(rank = c("family", "genus"))
-#' name_usage(datasetKey = c("73605f3a-af85-4ade-bbc5-522bfb90d847",
-#'   "d7c60346-44b6-400d-ba27-8d3fbeffc8a5"))
-#' name_usage(uuid = c("73605f3a-af85-4ade-bbc5-522bfb90d847",
-#'   "d7c60346-44b6-400d-ba27-8d3fbeffc8a5"))
 #' name_usage(name = c("Puma", "Quercus"))
 #' name_usage(language = c("spanish", "german"))
 #'

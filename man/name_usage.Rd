@@ -39,10 +39,9 @@ TRIBE, UNRANKED, VARIETY}
 
 \item{shortname}{(character) A short name..need more info on this?}
 
-\item{start}{Record number to start at. Default: 0. Use in combination
-with \code{limit} to page through results.}
+\item{start}{Record number to start at.}
 
-\item{limit}{Number of records to return. Default: 100. Maximum: 1000.}
+\item{limit}{Number of records to return. Default: 100.}
 
 \item{return}{One of data, meta, or all. If data, a data.frame with the
 data. meta returns the metadata for the entire call. all gives all data
@@ -104,6 +103,8 @@ name_usage(key=1)
 # Name usage for a taxonomic name
 name_usage(name='Puma', rank="GENUS")
 
+# Name usage for all taxa in a dataset (set sufficient high limit)
+name_usage(datasetKey = "", limit = 100000)
 # All name usages
 name_usage()
 
@@ -129,10 +130,6 @@ name_usage(key=3119195, language="FRENCH", data='vernacularNames')
 
 # Some parameters accept many inputs, treated as OR
 name_usage(rank = c("family", "genus"))
-name_usage(datasetKey = c("73605f3a-af85-4ade-bbc5-522bfb90d847",
-  "d7c60346-44b6-400d-ba27-8d3fbeffc8a5"))
-name_usage(uuid = c("73605f3a-af85-4ade-bbc5-522bfb90d847",
-  "d7c60346-44b6-400d-ba27-8d3fbeffc8a5"))
 name_usage(name = c("Puma", "Quercus"))
 name_usage(language = c("spanish", "german"))
 
