@@ -60,15 +60,12 @@
 #'
 #' # Search for a particular language
 #' name_usage(key=3119195, language="FRENCH", data='vernacularNames')
+#' 
+#' # get root usage with a uuid
+#' name_usage(data = "root", uuid = "73605f3a-af85-4ade-bbc5-522bfb90d847")
 #'
-#' # Some parameters accept many inputs, treated as OR
-#' name_usage(rank = c("family", "genus"))
-#' name_usage(datasetKey = c("73605f3a-af85-4ade-bbc5-522bfb90d847",
-#'   "d7c60346-44b6-400d-ba27-8d3fbeffc8a5"))
-#' name_usage(uuid = c("73605f3a-af85-4ade-bbc5-522bfb90d847",
-#'   "d7c60346-44b6-400d-ba27-8d3fbeffc8a5"))
-#' name_usage(name = c("Puma", "Quercus"))
-#' name_usage(language = c("spanish", "german"))
+#' # search by language
+#' name_usage(language = "spanish")
 #'
 #' # Pass on curl options
 #' name_usage(name='Puma concolor', limit=300, curlopts = list(verbose=TRUE))
@@ -84,15 +81,15 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
     stop("Parameters not currently accepted: \n sourceId")
   }
 
-  rank <- as_many_args(rank)
-  datasetKey <- as_many_args(datasetKey)
-  uuid <- as_many_args(uuid)
-  name <- as_many_args(name)
-  language <- as_many_args(language)
+  # each of these args must be length=1
+  if (!is.null(rank)) stopifnot(length(rank) == 1)
+  if (!is.null(name)) stopifnot(length(name) == 1)
+  if (!is.null(language)) stopifnot(length(language) == 1)
+  if (!is.null(datasetKey)) stopifnot(length(datasetKey) == 1)
 
   args <- rgbif_compact(list(offset = start, limit = limit,
                              sourceId = sourceId))
-  args <- c(args, rank, datasetKey, uuid, name, language)
+  args <- c(args, rank, datasetKey, name, language)
   data <- match.arg(data,
       choices = c('all', 'verbatim', 'name', 'parents', 'children',
                 'related', 'synonyms', 'descriptions',
@@ -122,7 +119,11 @@ has_meta <- function(x) any(c('offset','limit','endOfRecords') %in% names(x))
 
 getdata <- function(x, key, uuid, shortname, args, curlopts = list()){
   if (!x == 'all' && is.null(key)) {
-    stop('You must specify a key if data does not equal "all"', call. = FALSE)
+    # data can == 'root' if uuid is not null
+    if (x != 'root' && !is.null(uuid) || x != 'root' && !is.null(shortname)) {
+      stop('You must specify a key if data does not equal "all"', 
+        call. = FALSE)
+    }
   }
 
   if (x == 'all' && is.null(key)) {
@@ -138,7 +139,8 @@ getdata <- function(x, key, uuid, shortname, args, curlopts = list()){
         url <- sprintf('%s/species/%s/%s', gbif_base(), key, x)
       } else
         if (x == 'root') {
-          url <- sprintf('%s/species/root/%s/%s', gbif_base(), uuid, shortname)
+          z <- if (is.null(uuid)) shortname else uuid
+          url <- sprintf('%s/species/root/%s', gbif_base(), z)
         }
   }
   gbif_GET(url, args, FALSE, curlopts)
