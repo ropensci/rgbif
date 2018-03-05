@@ -214,7 +214,9 @@ parse_occd <- function(user, email, type, ...) {
   args <- list(...)
   keyval <- lapply(args, parse_args)
 
-  if (length(keyval) > 1) {
+  if (length(keyval) > 1 || 
+    length(keyval) == 1 && "predicates" %in% names(keyval[[1]])
+  ) {
     list(creator = unbox(user),
          notification_address = email,
          predicate = list(
