@@ -110,8 +110,10 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
       iter <- iter + 1
       tt <- getdata(data, key, uuid, shortname, args, curlopts)
       # if no results, assign numreturned var with 0
-      if (identical(tt$results, list())) numreturned <- 0
-      else numreturned <- length(tt$results)
+      if (identical(tt$results, list())) {
+        numreturned <- 0}
+      else {
+        numreturned <- length(tt$results)}
       sumreturned <- sumreturned + numreturned
       # if less results than maximum
       if ((numreturned > 0) & (numreturned < 1000)) {
