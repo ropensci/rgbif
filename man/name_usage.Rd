@@ -20,10 +20,10 @@ See Description below.}
 
 \item{language}{(character) Language, default is english}
 
-\item{datasetKey}{(character) Filters by the dataset's key (a uuid)}
+\item{datasetKey}{(character) Filters by the dataset's key (a uuid). must
+be length=1}
 
-\item{uuid}{(character) A uuid for a dataset. Should give exact same
-results as datasetKey.}
+\item{uuid}{(character) A datset key}
 
 \item{sourceId}{(numeric) Filters by the source identifier. Not used
 right now.}
@@ -37,7 +37,8 @@ SUBPHYLUM, SUBSECTION, SUBSERIES, SUBSPECIES, SUBTRIBE, SUBVARIETY,
 SUPERCLASS, SUPERFAMILY, SUPERORDER, SUPERPHYLUM, SUPRAGENERIC_NAME,
 TRIBE, UNRANKED, VARIETY}
 
-\item{shortname}{(character) A short name..need more info on this?}
+\item{shortname}{(character) A short name for a dataset - it may
+not do anything}
 
 \item{start}{Record number to start at.}
 
@@ -80,14 +81,12 @@ internally loops over each option making separate requests. This has been
 removed. You can still loop over many options for the \code{data} parameter,
 just use an \code{lapply} family function, or a for loop, etc.
 }
-\section{Repeat parmeter inputs}{
+\section{Repeat parameter inputs}{
 
-Some parameters can tak emany inputs, and treated as 'OR' (e.g., a or b or
-c). The following take many inputs:
+These parameters used to accept many inputs, but no longer do:
+
 \itemize{
  \item \strong{rank}
- \item \strong{datasetKey}
- \item \strong{uuid}
  \item \strong{name}
  \item \strong{langugae}
 }
@@ -128,10 +127,11 @@ name_usage(datasetKey="d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
 # Search for a particular language
 name_usage(key=3119195, language="FRENCH", data='vernacularNames')
 
-# Some parameters accept many inputs, treated as OR
-name_usage(rank = c("family", "genus"))
-name_usage(name = c("Puma", "Quercus"))
-name_usage(language = c("spanish", "german"))
+# get root usage with a uuid
+name_usage(data = "root", uuid = "73605f3a-af85-4ade-bbc5-522bfb90d847")
+
+# search by language
+name_usage(language = "spanish")
 
 # Pass on curl options
 name_usage(name='Puma concolor', limit=300, curlopts = list(verbose=TRUE))

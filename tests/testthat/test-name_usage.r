@@ -213,20 +213,23 @@ test_that("name_usage fails correctly", {
 })
 
 
-# many args
-test_that("works with parameters that allow many inputs", {
+# fails with more than 1 value
+test_that("fails with more than 1", {
   skip_on_cran()
 
-  aa <- name_usage(datasetKey = c("73605f3a-af85-4ade-bbc5-522bfb90d847",
-                                  "d7c60346-44b6-400d-ba27-8d3fbeffc8a5"))
-  expect_is(aa, "list")
-  expect_is(aa$meta, "data.frame")
-  expect_is(aa$meta$endOfRecords, "logical")
-  expect_is(aa$data$canonicalName, "character")
-  expect_is(aa$data$classKey, "integer")
-  expect_true(all(
-    unique(tolower(aa$data$datasetKey)) %in%
-      c("73605f3a-af85-4ade-bbc5-522bfb90d847")))
+  keys <- c("73605f3a-af85-4ade-bbc5-522bfb90d847",
+    "d7c60346-44b6-400d-ba27-8d3fbeffc8a5")
+  expect_error(name_usage(datasetKey = keys),
+    "length\\(datasetKey\\) == 1 is not TRUE")
+
+  expect_error(name_usage(language = c('spanish', 'german')),
+    "length\\(language\\) == 1 is not TRUE")
+
+  expect_error(name_usage(name = c('Quercus', 'Puma')),
+    "length\\(name\\) == 1 is not TRUE")
+
+  expect_error(name_usage(rank = c('GENUS', 'SPECIES')),
+    "length\\(rank\\) == 1 is not TRUE")
 })
 
 

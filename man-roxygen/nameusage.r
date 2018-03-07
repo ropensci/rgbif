@@ -6,9 +6,8 @@
 #' SUBPHYLUM, SUBSECTION, SUBSERIES, SUBSPECIES, SUBTRIBE, SUBVARIETY,
 #' SUPERCLASS, SUPERFAMILY, SUPERORDER, SUPERPHYLUM, SUPRAGENERIC_NAME,
 #' TRIBE, UNRANKED, VARIETY
-#' @param datasetKey (character) Filters by the dataset's key (a uuid)
-#' @param uuid (character) A uuid for a dataset. Should give exact same
-#' results as datasetKey.
+#' @param datasetKey (character) Filters by the dataset's key (a uuid). must 
+#' be length=1
 #' @param key (numeric or character) A GBIF key for a taxon
 #' @param name (character) Filters by a case insensitive, canonical namestring,
 #' e.g. 'Puma concolor'
@@ -17,15 +16,15 @@
 #' @param language (character) Language, default is english
 #' @param sourceId (numeric) Filters by the source identifier. Not used
 #' right now.
-#' @param shortname (character) A short name..need more info on this?
+#' @param shortname (character) A short name for a dataset - it may 
+#' not do anything
+#' @param uuid (character) A datset key
 #'
-#' @section Repeat parmeter inputs:
-#' Some parameters can tak emany inputs, and treated as 'OR' (e.g., a or b or
-#' c). The following take many inputs:
+#' @section Repeat parameter inputs:
+#' These parameters used to accept many inputs, but no longer do:
+#' 
 #' \itemize{
 #'  \item \strong{rank}
-#'  \item \strong{datasetKey}
-#'  \item \strong{uuid}
 #'  \item \strong{name}
 #'  \item \strong{langugae}
 #' }
