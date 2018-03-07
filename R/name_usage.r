@@ -84,6 +84,8 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
     stop("Parameters not currently accepted: \n sourceId")
   }
 
+  check_vals(limit, "limit")
+
   # each of these args must be length=1
   if (!is.null(rank)) stopifnot(length(rank) == 1)
   if (!is.null(name)) stopifnot(length(name) == 1)
@@ -91,7 +93,8 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
   if (!is.null(datasetKey)) stopifnot(length(datasetKey) == 1)
 
   args <- rgbif_compact(list(offset = start, limit = limit,
-                             sourceId = sourceId))
+                             sourceId = sourceId,
+                             datasetKey = datasetKey))
   args <- c(args, rank, datasetKey, name, language)
   data <- match.arg(data,
       choices = c('all', 'verbatim', 'name', 'parents', 'children',
