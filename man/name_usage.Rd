@@ -6,7 +6,7 @@
 \usage{
 name_usage(key = NULL, name = NULL, data = "all", language = NULL,
   datasetKey = NULL, uuid = NULL, sourceId = NULL, rank = NULL,
-  shortname = NULL, start = NULL, limit = 100, return = "all",
+  shortname = NULL, start = 0, limit = 100, return = "all",
   curlopts = list())
 }
 \arguments{
@@ -40,7 +40,7 @@ TRIBE, UNRANKED, VARIETY}
 \item{shortname}{(character) A short name for a dataset - it may
 not do anything}
 
-\item{start}{Record number to start at.}
+\item{start}{Record number to start at. Default: 0.}
 
 \item{limit}{Number of records to return. Default: 100.}
 

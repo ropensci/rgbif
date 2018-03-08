@@ -4,7 +4,7 @@
 #' @template occ
 #' @template nameusage
 #' @param limit Number of records to return. Default: 100.
-#' @param start Record number to start at.
+#' @param start Record number to start at. Default: 0.
 #' @param return One of data, meta, or all. If data, a data.frame with the
 #'    data. meta returns the metadata for the entire call. all gives all data
 #'    back in a list.
