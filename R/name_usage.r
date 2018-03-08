@@ -130,8 +130,7 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
       outout[[iter]] <- tt
     }
     out <- list()
-    out$results <- purrr::map(outout, ~purrr::splice(.$results))
-    out$results <- unlist(out$results, recursive = FALSE)
+    out$results <- do.call(c, lapply(outout, "[[", "results"))
     out$offset <- args$offset
     out$limit <- args$limit
     out$endOfRecords <- outout[[iter]]$endOfRecords

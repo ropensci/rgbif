@@ -32,8 +32,7 @@ Imports:
     oai (>= 0.2.2),
     geoaxe,
     tibble,
-    wicket (>= 0.2.0),
-    purrr
+    wicket (>= 0.2.0)
 Suggests:
     testthat,
     knitr,
