@@ -117,7 +117,7 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
         numreturned <- length(tt$results)}
       sumreturned <- sumreturned + numreturned
       # if less results than maximum
-      if ((numreturned > 0) & (numreturned < 1000)) {
+      if ((numreturned > 0) && (numreturned < 1000)) {
         # update limit for metadata before exiting
         limit <- numreturned
         args$limit <- limit
