@@ -234,40 +234,42 @@ test_that("fails with more than 1", {
 
 
 # paging
-test_that("paging: class data and meta not modified by paging", {
-  skip_on_cran()
-
-  bb1 <- name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42",
-                   limit = 1)
-  bb2 <- name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42",
-                    limit = 1789)
-  expect_true(all(class(bb1) == class(bb2)))
-  expect_true(all(class(bb1$meta) == class(bb2$meta)))
-  expect_true(all(class(bb1$data) == class(bb2$data)))
-})
-
-test_that("paging: name_usage returns all records from dataset: limit > n_records", {
-  skip_on_cran()
-
-  cc <- name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42",
-                 limit = 5000)
-  expect_equal(cc$meta$offset, 2000)
-  expect_lt(cc$meta$limit, 1000)
-  expect_gt(nrow(cc$data), 2000)
-})
-
-test_that("paging: name_usage returns as many records as asked via limit", {
-  skip_on_cran()
-
-  dd <- name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42",
-                   limit = 1329)
-  expect_equal(dd$meta$offset, 1000)
-  expect_equal(dd$meta$limit, 329)
-  expect_equal(nrow(dd$data), 1329)
-
-  ee <- name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42",
-                   limit = 1001)
-  expect_equal(ee$meta$offset, 1000)
-  expect_equal(ee$meta$limit, 1)
-  expect_equal(nrow(ee$data), 1001)
-})
+# Commented:it takes too much time.
+# Uncomment after introducing test caching with vcr package)
+# test_that("paging: class data and meta not modified by paging", {
+#   skip_on_cran()
+#
+#   bb1 <- name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42",
+#                    limit = 1)
+#   bb2 <- name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42",
+#                     limit = 1789)
+#   expect_true(all(class(bb1) == class(bb2)))
+#   expect_true(all(class(bb1$meta) == class(bb2$meta)))
+#   expect_true(all(class(bb1$data) == class(bb2$data)))
+# })
+#
+# test_that("paging: name_usage returns all records from dataset: limit > n_records", {
+#   skip_on_cran()
+#
+#   cc <- name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42",
+#                  limit = 5000)
+#   expect_equal(cc$meta$offset, 2000)
+#   expect_lt(cc$meta$limit, 1000)
+#   expect_gt(nrow(cc$data), 2000)
+# })
+#
+# test_that("paging: name_usage returns as many records as asked via limit", {
+#   skip_on_cran()
+#
+#   dd <- name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42",
+#                    limit = 1329)
+#   expect_equal(dd$meta$offset, 1000)
+#   expect_equal(dd$meta$limit, 329)
+#   expect_equal(nrow(dd$data), 1329)
+#
+#   ee <- name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42",
+#                    limit = 1001)
+#   expect_equal(ee$meta$offset, 1000)
+#   expect_equal(ee$meta$limit, 1)
+#   expect_equal(nrow(ee$data), 1001)
+# })
