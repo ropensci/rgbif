@@ -103,8 +103,6 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
                 'vernacularNames', 'typeSpecimens', 'root'), several.ok = FALSE)
   # paging implementation
   if (limit > 1000) {
-    if (!("offset" %in% names(args)))
-      args$offset <- 0
     iter <- 0
     sumreturned <- 0
     numreturned <- 0
