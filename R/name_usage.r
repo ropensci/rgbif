@@ -93,9 +93,9 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
   if (!is.null(datasetKey)) stopifnot(length(datasetKey) == 1)
 
   args <- rgbif_compact(list(offset = start, limit = limit,
-                             sourceId = sourceId,
+                             sourceId = sourceId, rank = rank,
+                             name = name, language = language,
                              datasetKey = datasetKey))
-  args <- c(args, rank, datasetKey, name, language)
   data <- match.arg(data,
       choices = c('all', 'verbatim', 'name', 'parents', 'children',
                 'related', 'synonyms', 'descriptions',
