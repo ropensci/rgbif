@@ -1,14 +1,15 @@
 #' Lookup details for specific names in all taxonomies in GBIF.
 #'
 #' @export
-#' @template otherlimstart
 #' @template occ
 #' @template nameusage
+#' @param limit Number of records to return. Default: 100.
+#' @param start Record number to start at. Default: 0.
 #' @param return One of data, meta, or all. If data, a data.frame with the
 #'    data. meta returns the metadata for the entire call. all gives all data
 #'    back in a list.
 #' @return If `return="all"`, a list of length two, with metadata and data,
-#' each as data.frame's. If `return="meta"` only the metadata data.frame, 
+#' each as data.frame's. If `return="meta"` only the metadata data.frame,
 #' and if `return="data"` only the data data.frame
 #' @references <https://www.gbif.org/developer/species#nameUsages>
 #' @details
@@ -38,6 +39,8 @@
 #' # Name usage for a taxonomic name
 #' name_usage(name='Puma', rank="GENUS")
 #'
+#' # Name usage for all taxa in a dataset (set sufficient high limit)
+#' name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42", limit = 100000)
 #' # All name usages
 #' name_usage()
 #'
@@ -60,7 +63,7 @@
 #'
 #' # Search for a particular language
 #' name_usage(key=3119195, language="FRENCH", data='vernacularNames')
-#' 
+#'
 #' # get root usage with a uuid
 #' name_usage(data = "root", uuid = "73605f3a-af85-4ade-bbc5-522bfb90d847")
 #'
@@ -73,13 +76,15 @@
 
 name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
   datasetKey=NULL, uuid=NULL, sourceId=NULL, rank=NULL, shortname=NULL,
-  start=NULL, limit=100, return='all', curlopts = list()) {
+  start=0, limit=100, return='all', curlopts = list()) {
 
   calls <- names(sapply(match.call(), deparse))[-1]
   calls_vec <- c("sourceId") %in% calls
   if (any(calls_vec)) {
     stop("Parameters not currently accepted: \n sourceId")
   }
+
+  check_vals(limit, "limit")
 
   # each of these args must be length=1
   if (!is.null(rank)) stopifnot(length(rank) == 1)
@@ -88,14 +93,51 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
   if (!is.null(datasetKey)) stopifnot(length(datasetKey) == 1)
 
   args <- rgbif_compact(list(offset = start, limit = limit,
-                             sourceId = sourceId))
-  args <- c(args, rank, datasetKey, name, language)
+                             sourceId = sourceId, rank = rank,
+                             name = name, language = language,
+                             datasetKey = datasetKey))
   data <- match.arg(data,
       choices = c('all', 'verbatim', 'name', 'parents', 'children',
                 'related', 'synonyms', 'descriptions',
                 'distributions', 'media', 'references', 'speciesProfiles',
                 'vernacularNames', 'typeSpecimens', 'root'), several.ok = FALSE)
-  out <- getdata(data, key, uuid, shortname, args, curlopts)
+  # paging implementation
+  if (limit > 1000) {
+    iter <- 0
+    sumreturned <- 0
+    numreturned <- 0
+    outout <- list()
+    while (sumreturned < limit) {
+      iter <- iter + 1
+      tt <- getdata(data, key, uuid, shortname, args, curlopts)
+      # if no results, assign numreturned var with 0
+      if (identical(tt$results, list())) {
+        numreturned <- 0}
+      else {
+        numreturned <- length(tt$results)}
+      sumreturned <- sumreturned + numreturned
+      # if less results than maximum
+      if ((numreturned > 0) && (numreturned < 1000)) {
+        # update limit for metadata before exiting
+        limit <- numreturned
+        args$limit <- limit
+      }
+      if (sumreturned < limit) {
+        # update args for next query
+        args$offset <- args$offset + numreturned
+        args$limit <- limit - sumreturned
+      }
+      outout[[iter]] <- tt
+    }
+    out <- list()
+    out$results <- do.call(c, lapply(outout, "[[", "results"))
+    out$offset <- args$offset
+    out$limit <- args$limit
+    out$endOfRecords <- outout[[iter]]$endOfRecords
+  } else {
+    # retrieve data in a single query
+    out <- getdata(data, key, uuid, shortname, args, curlopts)
+  }
   # select output
   return <- match.arg(return, c('meta','data','all'))
   switch(return,
@@ -121,7 +163,7 @@ getdata <- function(x, key, uuid, shortname, args, curlopts = list()){
   if (!x == 'all' && is.null(key)) {
     # data can == 'root' if uuid is not null
     if (x != 'root' && !is.null(uuid) || x != 'root' && !is.null(shortname)) {
-      stop('You must specify a key if data does not equal "all"', 
+      stop('You must specify a key if data does not equal "all"',
         call. = FALSE)
     }
   }

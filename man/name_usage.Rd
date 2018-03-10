@@ -6,7 +6,7 @@
 \usage{
 name_usage(key = NULL, name = NULL, data = "all", language = NULL,
   datasetKey = NULL, uuid = NULL, sourceId = NULL, rank = NULL,
-  shortname = NULL, start = NULL, limit = 100, return = "all",
+  shortname = NULL, start = 0, limit = 100, return = "all",
   curlopts = list())
 }
 \arguments{
@@ -20,7 +20,7 @@ See Description below.}
 
 \item{language}{(character) Language, default is english}
 
-\item{datasetKey}{(character) Filters by the dataset's key (a uuid). must 
+\item{datasetKey}{(character) Filters by the dataset's key (a uuid). must
 be length=1}
 
 \item{uuid}{(character) A datset key}
@@ -37,13 +37,12 @@ SUBPHYLUM, SUBSECTION, SUBSERIES, SUBSPECIES, SUBTRIBE, SUBVARIETY,
 SUPERCLASS, SUPERFAMILY, SUPERORDER, SUPERPHYLUM, SUPRAGENERIC_NAME,
 TRIBE, UNRANKED, VARIETY}
 
-\item{shortname}{(character) A short name for a dataset - it may 
+\item{shortname}{(character) A short name for a dataset - it may
 not do anything}
 
-\item{start}{Record number to start at. Default: 0. Use in combination
-with \code{limit} to page through results.}
+\item{start}{Record number to start at. Default: 0.}
 
-\item{limit}{Number of records to return. Default: 100. Maximum: 1000.}
+\item{limit}{Number of records to return. Default: 100.}
 
 \item{return}{One of data, meta, or all. If data, a data.frame with the
 data. meta returns the metadata for the entire call. all gives all data
@@ -103,6 +102,8 @@ name_usage(key=1)
 # Name usage for a taxonomic name
 name_usage(name='Puma', rank="GENUS")
 
+# Name usage for all taxa in a dataset (set sufficient high limit)
+name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42", limit = 100000)
 # All name usages
 name_usage()
 
