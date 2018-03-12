@@ -20,10 +20,10 @@ See Description below.}
 
 \item{language}{(character) Language, default is english}
 
-\item{datasetKey}{(character) Filters by the dataset's key (a uuid). must
+\item{datasetKey}{(character) Filters by the dataset's key (a uuid). Must
 be length=1}
 
-\item{uuid}{(character) A datset key}
+\item{uuid}{(character) A dataset key}
 
 \item{sourceId}{(numeric) Filters by the source identifier. Not used
 right now.}
@@ -89,6 +89,7 @@ These parameters used to accept many inputs, but no longer do:
  \item \strong{rank}
  \item \strong{name}
  \item \strong{langugae}
+ \item \strong{datasetKey}
 }
 
 see also \code{\link{many-values}}
