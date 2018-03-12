@@ -87,7 +87,7 @@
 #' element. If \code{FALSE} (default) a subset of the data that is thought to be most
 #' essential is organized into a data.frame.
 #'
-#' @param return One of data, meta, facets, names, or all. If data, a
+#' @param return One of data, meta, facets, hierarchy, names or all. If data, a
 #' data.frame with the data. facets returns the facets, if \code{facets=TRUE}, or
 #' empy list if \code{facets=FALSE}. meta returns the metadata for the entire call.
 #' names returns the vernacular (common) names for each taxon. all gives all
@@ -96,9 +96,11 @@
 #' matches the first column of the data.frame in the data slot. So if you
 #' wanted to combine those somehow, you could easily do so using the key.
 #'
-#' @return A list of length three. The first element is metadata. The second is
-#' either a data.frame (\code{verbose=FALSE}, default) or a list (\code{verbose=TRUE}),
-#' and the third element is the facet data.
+#' @return A list of length five. The first element is metadata. The second is
+#' either a data.frame (\code{verbose=FALSE}, default) or a list (\code{verbose=TRUE}).
+#' The third element is a list contatining the facet data.
+#' The fourth element is a list containing the hierarchies.
+#' The fifth element is a list containing the names.
 #'
 #' @description
 #' This service uses fuzzy lookup so that you can put in partial names and
