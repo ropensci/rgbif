@@ -79,6 +79,8 @@
 #' name_lookup(nameType = c("cultivar", "doubtful"))
 #' name_lookup(datasetKey = c("73605f3a-af85-4ade-bbc5-522bfb90d847",
 #'   "d7c60346-44b6-400d-ba27-8d3fbeffc8a5"))
+#' name_lookup(datasetKey = "289244ee-e1c1-49aa-b2d7-d379391ce265",
+#'   origin = c("SOURCE", "DENORMED_CLASSIFICATION"))
 #'
 #' # Pass on curl options
 #' name_lookup(query='Cnaemidophorus', rank="genus",

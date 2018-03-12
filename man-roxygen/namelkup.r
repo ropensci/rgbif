@@ -43,6 +43,19 @@
 #'  nomenclatural rules.
 #' }
 #' @param datasetKey Filters by the dataset's key (a uuid)
+#' @param origin (character) Filters by origin. One of:
+#' \itemize{
+#'  \item SOURCE
+#'  \item DENORMED_CLASSIFICATION
+#'  \item VERBATIM_ACCEPTED
+#'  \item EX_AUTHOR_SYNONYM
+#'  \item AUTONYM
+#'  \item BASIONYM_PLACEHOLDER
+#'  \item MISSING_ACCEPTED
+#'  \item IMPLICIT_NAME
+#'  \item PROPARTE
+#'  \item VERBATIM_BASIONYM
+#' }
 #' @param nomenclaturalStatus	Not yet implemented, but will eventually allow
 #' for filtering by a nomenclatural status enum
 #' @param facet	A vector/list of facet names used to retrieve the 100 most
@@ -105,6 +118,7 @@
 #'  \item \strong{habitat}
 #'  \item \strong{nameType}
 #'  \item \strong{datasetKey}
+#'  \item \strong{origin}
 #' }
 #'
 #' see also \code{\link{many-values}}

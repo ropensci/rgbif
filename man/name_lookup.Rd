@@ -6,8 +6,8 @@
 \usage{
 name_lookup(query = NULL, rank = NULL, higherTaxonKey = NULL,
   status = NULL, isExtinct = NULL, habitat = NULL, nameType = NULL,
-  datasetKey = NULL, nomenclaturalStatus = NULL, limit = 100,
-  start = NULL, facet = NULL, facetMincount = NULL,
+  datasetKey = NULL, origin = NULL, nomenclaturalStatus = NULL,
+  limit = 100, start = NULL, facet = NULL, facetMincount = NULL,
   facetMultiselect = NULL, type = NULL, hl = NULL, verbose = FALSE,
   return = "all", curlopts = list())
 }
@@ -65,6 +65,20 @@ or terrestrial}
 
 \item{datasetKey}{Filters by the dataset's key (a uuid)}
 
+\item{origin}{(character) Filters by origin. One of:
+\itemize{
+ \item SOURCE
+ \item DENORMED_CLASSIFICATION
+ \item VERBATIM_ACCEPTED
+ \item EX_AUTHOR_SYNONYM
+ \item AUTONYM
+ \item BASIONYM_PLACEHOLDER
+ \item MISSING_ACCEPTED
+ \item IMPLICIT_NAME
+ \item PROPARTE
+ \item VERBATIM_BASIONYM
+}}
+
 \item{nomenclaturalStatus}{Not yet implemented, but will eventually allow
 for filtering by a nomenclatural status enum}
 
@@ -104,7 +118,7 @@ response.}
 element. If \code{FALSE} (default) a subset of the data that is thought to be most
 essential is organized into a data.frame.}
 
-\item{return}{One of data, meta, facets, names, or all. If data, a
+\item{return}{One of data, meta, facets, names, hierarchy, or all. If data, a
 data.frame with the data. facets returns the facets, if \code{facets=TRUE}, or
 empy list if \code{facets=FALSE}. meta returns the metadata for the entire call.
 names returns the vernacular (common) names for each taxon. all gives all
@@ -143,6 +157,7 @@ c). The following take many inputs:
  \item \strong{habitat}
  \item \strong{nameType}
  \item \strong{datasetKey}
+ \item \strong{origin}
 }
 
 see also \code{\link{many-values}}
@@ -224,6 +239,8 @@ name_lookup(habitat = c("marine", "terrestrial"))
 name_lookup(nameType = c("cultivar", "doubtful"))
 name_lookup(datasetKey = c("73605f3a-af85-4ade-bbc5-522bfb90d847",
   "d7c60346-44b6-400d-ba27-8d3fbeffc8a5"))
+name_lookup(datasetKey = "289244ee-e1c1-49aa-b2d7-d379391ce265",
+  origin = c("SOURCE", "DENORMED_CLASSIFICATION"))
 
 # Pass on curl options
 name_lookup(query='Cnaemidophorus', rank="genus",
