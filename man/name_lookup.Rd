@@ -150,7 +150,7 @@ ignored (facetOnly, facetMincount, facetMultiselect).
 }
 \section{Repeat parmeter inputs}{
 
-Some parameters can tak emany inputs, and treated as 'OR' (e.g., a or b or
+Some parameters can take many inputs, and treated as 'OR' (e.g., a or b or
 c). The following take many inputs:
 \itemize{
  \item \strong{rank}
