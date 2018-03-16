@@ -136,8 +136,8 @@ A list of length five:
 \itemize{
  \item \strong{metadata}
  \item \strong{data}: either a data.frame (\code{verbose=FALSE}, default) or a list (\code{verbose=TRUE}).
- \item \strong{hierarchy}
  \item \strong{facets}
+ \item \strong{hierarchies}
  \item \strong{names}
 }
 }
