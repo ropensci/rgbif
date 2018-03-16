@@ -132,11 +132,14 @@ wanted to combine those somehow, you could easily do so using the key.}
 for curl options}
 }
 \value{
-A list of length five. The first element is metadata. The second is
-either a data.frame (\code{verbose=FALSE}, default) or a list (\code{verbose=TRUE}).
-The third element is a list contatining the facet data.
-The fourth element is a list containing the hierarchies.
-The fifth element is a list containing the names.
+A list of length five:
+\itemize{
+ \item \strong{metadata}
+ \item \strong{data}: either a data.frame (\code{verbose=FALSE}, default) or a list (\code{verbose=TRUE}).
+ \item \strong{hierarchy}
+ \item \strong{facets}
+ \item \strong{names}
+}
 }
 \description{
 Lookup names in all taxonomies in GBIF.
