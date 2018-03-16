@@ -96,11 +96,14 @@
 #' matches the first column of the data.frame in the data slot. So if you
 #' wanted to combine those somehow, you could easily do so using the key.
 #'
-#' @return A list of length five. The first element is metadata. The second is
-#' either a data.frame (\code{verbose=FALSE}, default) or a list (\code{verbose=TRUE}).
-#' The third element is a list contatining the facet data.
-#' The fourth element is a list containing the hierarchies.
-#' The fifth element is a list containing the names.
+#' @return A list of length five:
+#' \itemize{
+#'  \item \strong{metadata}
+#'  \item \strong{data}: either a data.frame (\code{verbose=FALSE}, default) or a list (\code{verbose=TRUE}).
+#'  \item \strong{hierarchy}
+#'  \item \strong{facets}
+#'  \item \strong{names}
+#' }
 #'
 #' @description
 #' This service uses fuzzy lookup so that you can put in partial names and
