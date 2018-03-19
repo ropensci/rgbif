@@ -79,6 +79,8 @@
 #' name_lookup(nameType = c("cultivar", "doubtful"))
 #' name_lookup(datasetKey = c("73605f3a-af85-4ade-bbc5-522bfb90d847",
 #'   "d7c60346-44b6-400d-ba27-8d3fbeffc8a5"))
+#' name_lookup(datasetKey = "289244ee-e1c1-49aa-b2d7-d379391ce265",
+#'   origin = c("SOURCE", "DENORMED_CLASSIFICATION"))
 #'
 #' # Pass on curl options
 #' name_lookup(query='Cnaemidophorus', rank="genus",
@@ -87,7 +89,7 @@
 
 name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
   isExtinct=NULL, habitat=NULL, nameType=NULL, datasetKey=NULL,
-  nomenclaturalStatus=NULL, limit=100, start=NULL, facet=NULL,
+  origin=NULL, nomenclaturalStatus=NULL, limit=100, start=NULL, facet=NULL,
   facetMincount=NULL, facetMultiselect=NULL, type=NULL, hl=NULL,
   verbose=FALSE, return="all", curlopts = list()) {
 
@@ -106,6 +108,7 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
   habitat <- as_many_args(habitat)
   nameType <- as_many_args(nameType)
   datasetKey <- as_many_args(datasetKey)
+  origin <- as_many_args(origin)
 
   url <- paste0(gbif_base(), '/species/search')
   args <- rgbif_compact(list(q=query, isExtinct=as_log(isExtinct),
@@ -114,7 +117,7 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
             facetMultiselect=as_log(facetMultiselect), hl=as_log(hl),
             type=type))
   args <- c(args, facetbyname, rank, higherTaxonKey, status,
-            habitat, nameType, datasetKey)
+            habitat, nameType, datasetKey, origin)
   tt <- gbif_GET(url, args, FALSE, curlopts)
 
   # metadata
