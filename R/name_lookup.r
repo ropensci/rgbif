@@ -12,7 +12,8 @@
 #' name_lookup(query='mammalia', limit=1)
 #' name_lookup(query='mammalia', limit=1, start=2)
 #'
-#' # large requests (paging is internally implemented). GBIF API maximum: 99999
+#' # large requests (paging is internally implemented).
+#' # hard maximum limit set by GBIF API: 99999
 #' name_lookup(query = "Carnivora", limit = 10000)
 #'
 #' # Get all data and parse it, removing descriptions which can be quite long
