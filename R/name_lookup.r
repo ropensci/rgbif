@@ -8,7 +8,7 @@
 #' # Look up names like mammalia
 #' name_lookup(query='mammalia', limit = 20)
 #'
-#' # Start with a offset
+#' # Start with an offset
 #' name_lookup(query='mammalia', limit=1)
 #' name_lookup(query='mammalia', limit=1, start=2)
 #'
