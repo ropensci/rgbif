@@ -6,8 +6,8 @@
 \usage{
 name_lookup(query = NULL, rank = NULL, higherTaxonKey = NULL,
   status = NULL, isExtinct = NULL, habitat = NULL, nameType = NULL,
-  datasetKey = NULL, nomenclaturalStatus = NULL, limit = 100,
-  start = NULL, facet = NULL, facetMincount = NULL,
+  datasetKey = NULL, origin = NULL, nomenclaturalStatus = NULL,
+  limit = 100, start = 0, facet = NULL, facetMincount = NULL,
   facetMultiselect = NULL, type = NULL, hl = NULL, verbose = FALSE,
   return = "all", curlopts = list())
 }
@@ -68,9 +68,9 @@ or terrestrial}
 \item{nomenclaturalStatus}{Not yet implemented, but will eventually allow
 for filtering by a nomenclatural status enum}
 
-\item{limit}{Number of records to return. Maximum: 1000.}
+\item{limit}{Number of records to return. Maximum provided by API: 99999.}
 
-\item{start}{Record number to start at.}
+\item{start}{Record number to start at. Default: 0.}
 
 \item{facet}{A vector/list of facet names used to retrieve the 100 most
 frequent values for a field. Allowed facets are: datasetKey, higherTaxonKey,
@@ -132,9 +132,9 @@ Faceting: If \code{facet=FALSE} or left to the default (NULL), no faceting
 is done. And therefore, all parameters with facet in their name are
 ignored (facetOnly, facetMincount, facetMultiselect).
 }
-\section{Repeat parmeter inputs}{
+\section{Repeat parameter inputs}{
 
-Some parameters can tak emany inputs, and treated as 'OR' (e.g., a or b or
+Some parameters can take many inputs, and treated as 'OR' (e.g., a or b or
 c). The following take many inputs:
 \itemize{
  \item \strong{rank}
@@ -153,17 +153,12 @@ see also \code{\link{many-values}}
 # Look up names like mammalia
 name_lookup(query='mammalia', limit = 20)
 
-# Paging
+# Start with a offset
 name_lookup(query='mammalia', limit=1)
 name_lookup(query='mammalia', limit=1, start=2)
 
-# large requests, use start parameter
-first <- name_lookup(query='mammalia', limit=1000)
-second <- name_lookup(query='mammalia', limit=1000, start=1000)
-tail(first$data)
-head(second$data)
-first$meta
-second$meta
+# large requests (paging is internally implemented). GBIF API maximum: 99999
+name_lookup(query = "Carnivora", limit = 10000)
 
 # Get all data and parse it, removing descriptions which can be quite long
 out <- name_lookup('Helianthus annuus', rank="species", verbose=TRUE)
@@ -213,8 +208,9 @@ name_lookup(query='canada', hl=TRUE, limit=45, return='data')
 res <- name_lookup(query='canada', hl=TRUE, limit=5)
 gbif_names(res)
 
-# Lookup by datasetKey
-name_lookup(datasetKey='3f8a1297-3259-4700-91fc-acc4170b27ce')
+# Lookup by datasetKey (set up sufficient high limit, API maximum: 99999)
+name_lookup(datasetKey='3f8a1297-3259-4700-91fc-acc4170b27ce',
+limit = 50000)
 
 # Some parameters accept many inputs, treated as OR
 name_lookup(rank = c("family", "genus"))
@@ -224,6 +220,8 @@ name_lookup(habitat = c("marine", "terrestrial"))
 name_lookup(nameType = c("cultivar", "doubtful"))
 name_lookup(datasetKey = c("73605f3a-af85-4ade-bbc5-522bfb90d847",
   "d7c60346-44b6-400d-ba27-8d3fbeffc8a5"))
+name_lookup(datasetKey = "289244ee-e1c1-49aa-b2d7-d379391ce265",
+  origin = c("SOURCE", "DENORMED_CLASSIFICATION"))
 
 # Pass on curl options
 name_lookup(query='Cnaemidophorus', rank="genus",

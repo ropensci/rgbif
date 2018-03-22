@@ -68,8 +68,8 @@
 #' additional full text field is searched which includes information from
 #' metadata documents, but the text of this field is not returned in the
 #' response.
-#' @param limit Number of records to return. Maximum: 1000.
-#' @param start Record number to start at.
+#' @param limit Number of records to return. Maximum provided by API: 99999.
+#' @param start Record number to start at. Default: 0.
 #' @param verbose (logical) If \code{TRUE}, all data is returned as a list for each
 #' element. If \code{FALSE} (default) a subset of the data that is thought to be most
 #' essential is organized into a data.frame.

@@ -20,7 +20,7 @@ See Description below.}
 
 \item{language}{(character) Language, default is english}
 
-\item{datasetKey}{(character) Filters by the dataset's key (a uuid). must
+\item{datasetKey}{(character) Filters by the dataset's key (a uuid). must 
 be length=1}
 
 \item{uuid}{(character) A datset key}
@@ -37,7 +37,7 @@ SUBPHYLUM, SUBSECTION, SUBSERIES, SUBSPECIES, SUBTRIBE, SUBVARIETY,
 SUPERCLASS, SUPERFAMILY, SUPERORDER, SUPERPHYLUM, SUPRAGENERIC_NAME,
 TRIBE, UNRANKED, VARIETY}
 
-\item{shortname}{(character) A short name for a dataset - it may
+\item{shortname}{(character) A short name for a dataset - it may 
 not do anything}
 
 \item{start}{Record number to start at. Default: 0.}
