@@ -20,10 +20,10 @@ See Description below.}
 
 \item{language}{(character) Language, default is english}
 
-\item{datasetKey}{(character) Filters by the dataset's key (a uuid). must 
+\item{datasetKey}{(character) Filters by the dataset's key (a uuid). Must
 be length=1}
 
-\item{uuid}{(character) A datset key}
+\item{uuid}{(character) A dataset key}
 
 \item{sourceId}{(numeric) Filters by the source identifier. Not used
 right now.}
@@ -89,6 +89,7 @@ These parameters used to accept many inputs, but no longer do:
  \item \strong{rank}
  \item \strong{name}
  \item \strong{langugae}
+ \item \strong{datasetKey}
 }
 
 see also \code{\link{many-values}}
@@ -102,8 +103,9 @@ name_usage(key=1)
 # Name usage for a taxonomic name
 name_usage(name='Puma', rank="GENUS")
 
-# Name usage for all taxa in a dataset (set sufficient high limit)
-name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42", limit = 100000)
+# Name usage for all taxa in a dataset 
+(set sufficient high limit, but less than 100000)
+name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42", limit = 10000)
 # All name usages
 name_usage()
 

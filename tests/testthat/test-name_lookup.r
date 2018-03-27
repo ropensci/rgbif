@@ -53,7 +53,7 @@ test_that("works with parameters that allow many inputs", {
   expect_true(all(
     unique(tolower(aa$data$taxonomicStatus)) %in% c("misapplied", "synonym")))
 
-  aa <- name_lookup(nameType = c("cultivar", "doubtful"))
+  aa <- name_lookup(nameType = c("cultivar", "doubtful"), limit = 200)
   expect_is(aa, "list")
   expect_is(aa$meta, "data.frame")
   expect_is(aa$meta$endOfRecords, "logical")
@@ -61,6 +61,15 @@ test_that("works with parameters that allow many inputs", {
   expect_is(aa$data$key, "integer")
   expect_true(all(
     unique(tolower(aa$data$nameType)) %in% c("cultivar", "doubtful")))
+
+  aa <- name_lookup(origin = c("implicit_name", "proparte"), limit = 250)
+  expect_is(aa, "list")
+  expect_is(aa$meta, "data.frame")
+  expect_is(aa$meta$endOfRecords, "logical")
+  expect_is(aa$data$canonicalName, "character")
+  expect_is(aa$data$key, "integer")
+  expect_true(all(
+    unique(tolower(aa$data$origin)) %in% c("implicit_name", "proparte")))
 })
 
 #paging (limit higher than 1000 records; maximum API: 99999)

@@ -43,6 +43,19 @@
 #'  nomenclatural rules.
 #' }
 #' @param datasetKey Filters by the dataset's key (a uuid)
+#' @param origin (character) Filters by origin. One of:
+#' \itemize{
+#'  \item SOURCE
+#'  \item DENORMED_CLASSIFICATION
+#'  \item VERBATIM_ACCEPTED
+#'  \item EX_AUTHOR_SYNONYM
+#'  \item AUTONYM
+#'  \item BASIONYM_PLACEHOLDER
+#'  \item MISSING_ACCEPTED
+#'  \item IMPLICIT_NAME
+#'  \item PROPARTE
+#'  \item VERBATIM_BASIONYM
+#' }
 #' @param nomenclaturalStatus	Not yet implemented, but will eventually allow
 #' for filtering by a nomenclatural status enum
 #' @param facet	A vector/list of facet names used to retrieve the 100 most
@@ -75,7 +88,7 @@
 #' element. If \code{FALSE} (default) a subset of the data that is thought to be most
 #' essential is organized into a data.frame.
 #'
-#' @param return One of data, meta, facets, names, or all. If data, a
+#' @param return One of data, meta, facets, hierarchy, names or all. If data, a
 #' data.frame with the data. facets returns the facets, if \code{facets=TRUE}, or
 #' empy list if \code{facets=FALSE}. meta returns the metadata for the entire call.
 #' names returns the vernacular (common) names for each taxon. all gives all
@@ -84,9 +97,14 @@
 #' matches the first column of the data.frame in the data slot. So if you
 #' wanted to combine those somehow, you could easily do so using the key.
 #'
-#' @return A list of length three. The first element is metadata. The second is
-#' either a data.frame (\code{verbose=FALSE}, default) or a list (\code{verbose=TRUE}),
-#' and the third element is the facet data.
+#' @return A list of length five:
+#' \itemize{
+#'  \item \strong{metadata}
+#'  \item \strong{data}: either a data.frame (\code{verbose=FALSE}, default) or a list (\code{verbose=TRUE}).
+#'  \item \strong{facets}
+#'  \item \strong{hierarchies}
+#'  \item \strong{names}
+#' }
 #'
 #' @description
 #' This service uses fuzzy lookup so that you can put in partial names and
@@ -106,6 +124,7 @@
 #'  \item \strong{habitat}
 #'  \item \strong{nameType}
 #'  \item \strong{datasetKey}
+#'  \item \strong{origin}
 #' }
 #'
 #' see also \code{\link{many-values}}
