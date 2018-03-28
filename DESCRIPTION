@@ -12,7 +12,7 @@ License: MIT + file LICENSE
 Authors@R: c(
     person("Scott", "Chamberlain", role = c("aut", "cre"),
       email = "myrmecocystus@gmail.com",
-      comment = c(ORCID="0000-0003-1444-9135"))
+      comment = c(ORCID="0000-0003-1444-9135")),
     person("Vijay", "Barve", role = "ctb"),
     person("Dan", "Mcglinn", role = "ctb"),
     person("Damiano", "Oldoni", role = "ctb")
