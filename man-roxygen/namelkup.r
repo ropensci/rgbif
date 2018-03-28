@@ -81,8 +81,9 @@
 #' additional full text field is searched which includes information from
 #' metadata documents, but the text of this field is not returned in the
 #' response.
-#' @param limit Number of records to return. Maximum: 1000.
-#' @param start Record number to start at.
+#' @param limit Number of records to return.
+#' Hard maximum limit set by GBIF API: 99999.
+#' @param start Record number to start at. Default: 0.
 #' @param verbose (logical) If \code{TRUE}, all data is returned as a list for each
 #' element. If \code{FALSE} (default) a subset of the data that is thought to be most
 #' essential is organized into a data.frame.
@@ -113,7 +114,7 @@
 #' is done. And therefore, all parameters with facet in their name are
 #' ignored (facetOnly, facetMincount, facetMultiselect).
 #'
-#' @section Repeat parmeter inputs:
+#' @section Repeat parameter inputs:
 #' Some parameters can take many inputs, and treated as 'OR' (e.g., a or b or
 #' c). The following take many inputs:
 #' \itemize{
