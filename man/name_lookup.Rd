@@ -82,7 +82,8 @@ or terrestrial}
 \item{nomenclaturalStatus}{Not yet implemented, but will eventually allow
 for filtering by a nomenclatural status enum}
 
-\item{limit}{Number of records to return. Maximum provided by API: 99999.}
+\item{limit}{Number of records to return.
+Hard maximum limit set by GBIF API: 99999.}
 
 \item{start}{Record number to start at. Default: 0.}
 
@@ -173,11 +174,12 @@ see also \code{\link{many-values}}
 # Look up names like mammalia
 name_lookup(query='mammalia', limit = 20)
 
-# Start with a offset
+# Start with an offset
 name_lookup(query='mammalia', limit=1)
 name_lookup(query='mammalia', limit=1, start=2)
 
-# large requests (paging is internally implemented). GBIF API maximum: 99999
+# large requests (paging is internally implemented).
+# hard maximum limit set by GBIF API: 99999
 name_lookup(query = "Carnivora", limit = 10000)
 
 # Get all data and parse it, removing descriptions which can be quite long
