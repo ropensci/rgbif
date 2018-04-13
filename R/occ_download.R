@@ -267,8 +267,8 @@ rg_POST <- function(url, req, user, pwd, curlopts) {
     )
   )
   res <- cli$post(body = check_inputs(req))
-  res$raise_for_status()
   if (res$status_code > 203) stop(catch_err(res), call. = FALSE)
+  res$raise_for_status()
   stopifnot(res$response_headers$`content-type` == 'application/json')
   res$parse("UTF-8")
 }
