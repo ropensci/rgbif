@@ -99,7 +99,8 @@ map_fetch <- function(
   search = NULL,
   id = NULL,
   year = NULL,
-  basisOfRecord = NULL
+  basisOfRecord = NULL,
+  ...
   ) {
   
   
@@ -253,20 +254,12 @@ map_fetch <- function(
   if (!is.null(year)) {
     query['year'] = year
   }
-
-  # API call with dynamically generated URL and parameters from query list
-  url <- crul::url_build(
-    url = 'https://api.gbif.org/v2',
-    path = paste0('v2/map/occurrence/', source,
-                  '/', z,
-                  '/', x,
-                  '/', y, format),
-    query = query)
   
-  # Thinking about output - how about this png / raster mix?
-  library(png)
-  library(RCurl)
-  map_raw <- getBinaryURL(url)
-  map_png <- readPNG(map_raw)
-  map <- raster(map_png[,,2])
+  path <- file.path('v2/map/occurrence', source, z, x, paste0(y, format))
+  cli <- crul::HttpClient$new(url = 'https://api.gbif.org', opts = list(...)) 
+  res <- cli$get(path, query = query)
+  map_png <- png::readPNG(res$content)
+  map <- raster::raster(map_png[,,2])
   
+  return(map)
+}
