@@ -29,48 +29,49 @@
 #' /@4x.png for a 4096px raster tile
 #' 
 #' @param srs (character):
-#' 	Spatial reference system. One of:
-#' 	EPSG:3857 (Web Mercator)
-#' 	EPSG:4326 (WGS84 plate care?)
-#' 	EPSG:3575 (Arctic LAEA)
-#' 	EPSG:3031 (Antarctic stereographic)
-#' 	see below under Projections.
-#' 	
-#' 	@param bin (optional): square or hex to aggregate occurrence counts into 
-#' 	squares or hexagons. Points by default.
-#' 	
-#' 	@param hexPerTile (optional): sets the size of the hexagons 
-#' 	(the number horizontally across a tile)
-#' 	
-#' 	@param squareSize (optional): sets the size of the squares. Choose a factor 
-#' 	of 4096 so they tessalate correctly: probably from 8, 16, 32, 64, 128, 
-#' 	256, 512.
-#' 	
-#' 	@param style (optional): for raster tiles, choose from the available styles. 
-#' 	Defaults to classic.point.
-#' 	
-#' 	@param search (optional): defines what type of subset of all GBIF data to 
-#' 	return. Should be one of c("taxonKey", "datasetKey", "country", "publisher",
-#' 	"publishingCountry"). Without any search parameter, all occurrences will be 
-#' 	returned.
-#' 	
-#' 	@param id (optional): defines the value to be used as filter criterium in 
-#' 	the category supplied by `search`. Appropriate values depend on the
-#' 	search category that is used, for example integer for 
-#' 	`search = "taxonKey"`. Has to be provided if 
-#' 	`search` parameter is specified.
-#' 	
-#' 	@param year (optional): integer that limits the search to a certain year or, 
-#' 	if passing a vector of integers,, multiple years, for example
-#' 	`1984` or `c(2016, 2017, 2018)`.
-#' 	
-#' 	@param basisOfRecord (optional): character or character vector to include 
-#' 	records with that basis of record. The full list is: `c("OBSERVATION", 
-#' 	"HUMAN_OBSERVATION", "MACHINE_OBSERVATION", "MATERIAL_SAMPLE", 
-#' 	"PRESERVED_SPECIMEN", "FOSSIL_SPECIMEN", "LIVING_SPECIMEN", 
-#' 	"LITERATURE", "UNKNOWN")`.
-#' 	
-#' @return ###???
+#' Spatial reference system. One of:
+#' EPSG:3857 (Web Mercator)
+#' EPSG:4326 (WGS84 plate care?)
+#' EPSG:3575 (Arctic LAEA)
+#' EPSG:3031 (Antarctic stereographic)
+#' see below under Projections.
+#' 
+#' @param bin (optional): square or hex to aggregate occurrence counts into 
+#' squares or hexagons. Points by default.
+#' 
+#' @param hexPerTile (optional): sets the size of the hexagons 
+#' (the number horizontally across a tile)
+#' 
+#' @param squareSize (optional): sets the size of the squares. Choose a factor 
+#' of 4096 so they tessalate correctly: probably from 8, 16, 32, 64, 128, 
+#' 256, 512.
+#' 
+#' @param style (optional): for raster tiles, choose from the available styles. 
+#' Defaults to classic.point.
+#' 
+#' @param search (optional): defines what type of subset of all GBIF data to 
+#' return. Should be one of c("taxonKey", "datasetKey", "country", "publisher",
+#' "publishingCountry"). Without any search parameter, all occurrences will be 
+#' returned.
+#' 
+#' @param id (optional): defines the value to be used as filter criterium in 
+#' the category supplied by `search`. Appropriate values depend on the
+#' search category that is used, for example integer for 
+#' `search = "taxonKey"`. Has to be provided if 
+#' `search` parameter is specified.
+#' 
+#' @param year (optional): integer that limits the search to a certain year or, 
+#' if passing a vector of integers,, multiple years, for example
+#' `1984` or `c(2016, 2017, 2018)`.
+#' 
+#' @param basisOfRecord (optional): character or character vector to include 
+#' records with that basis of record. The full list is: `c("OBSERVATION", 
+#' "HUMAN_OBSERVATION", "MACHINE_OBSERVATION", "MATERIAL_SAMPLE", 
+#' "PRESERVED_SPECIMEN", "FOSSIL_SPECIMEN", "LIVING_SPECIMEN", 
+#' "LITERATURE", "UNKNOWN")`.
+#' @param ... curl options passed on to [crul::HttpClient]
+#' 
+#' @return an object of class `RasterLayer`
 #'
 #' @details This function uses the arguments passed on to generate a query
 #' to the GBIF web map API. The API returns a web tile object as png that can be
@@ -83,7 +84,11 @@
 #' @author Laurens Geffert, \email{laurensgeffert@@gmail.com}
 #' @references \url{https://www.gbif.org/developer/maps}
 #' @keywords web map, web tile, GBIF
-#' @examples \dontrun{}
+#' @examples \dontrun{
+#' library(raster)
+#' x <- map_fetch(search = "taxonKey", id = 3118771, year = "2010")
+#' plot(x)
+#' }
 
 map_fetch <- function(
   source = 'density',
@@ -103,6 +108,8 @@ map_fetch <- function(
   ...
   ) {
   
+  check_for_a_pkg("png")
+  check_for_a_pkg("raster")
   
   # Check input ----------------------------------------------------------------
   source <- match.arg(

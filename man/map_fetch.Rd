@@ -33,43 +33,43 @@ EPSG:3857 (Web Mercator)
 EPSG:4326 (WGS84 plate care?)
 EPSG:3575 (Arctic LAEA)
 EPSG:3031 (Antarctic stereographic)
-see below under Projections.\preformatted{@param bin (optional): square or hex to aggregate occurrence counts into 
-squares or hexagons. Points by default.
+see below under Projections.}
 
-@param hexPerTile (optional): sets the size of the hexagons 
-(the number horizontally across a tile)
+\item{bin}{(optional): square or hex to aggregate occurrence counts into
+squares or hexagons. Points by default.}
 
-@param squareSize (optional): sets the size of the squares. Choose a factor 
-of 4096 so they tessalate correctly: probably from 8, 16, 32, 64, 128, 
-256, 512.
+\item{hexPerTile}{(optional): sets the size of the hexagons
+(the number horizontally across a tile)}
 
-@param style (optional): for raster tiles, choose from the available styles. 
-Defaults to classic.point.
+\item{squareSize}{(optional): sets the size of the squares. Choose a factor
+of 4096 so they tessalate correctly: probably from 8, 16, 32, 64, 128,
+256, 512.}
 
-@param search (optional): defines what type of subset of all GBIF data to 
+\item{style}{(optional): for raster tiles, choose from the available styles.
+Defaults to classic.point.}
+
+\item{search}{(optional): defines what type of subset of all GBIF data to
 return. Should be one of c("taxonKey", "datasetKey", "country", "publisher",
-"publishingCountry"). Without any search parameter, all occurrences will be 
-returned.
+"publishingCountry"). Without any search parameter, all occurrences will be
+returned.}
 
-@param id (optional): defines the value to be used as filter criterium in 
-the category supplied by `search`. Appropriate values depend on the
-search category that is used, for example integer for 
-`search = "taxonKey"`. Has to be provided if 
-`search` parameter is specified.
+\item{id}{(optional): defines the value to be used as filter criterium in
+the category supplied by \code{search}. Appropriate values depend on the
+search category that is used, for example integer for
+\code{search = "taxonKey"}. Has to be provided if
+\code{search} parameter is specified.}
 
-@param year (optional): integer that limits the search to a certain year or, 
+\item{year}{(optional): integer that limits the search to a certain year or,
 if passing a vector of integers,, multiple years, for example
-`1984` or `c(2016, 2017, 2018)`.
+\code{1984} or \code{c(2016, 2017, 2018)}.}
 
-@param basisOfRecord (optional): character or character vector to include 
-records with that basis of record. The full list is: `c("OBSERVATION", 
-"HUMAN_OBSERVATION", "MACHINE_OBSERVATION", "MATERIAL_SAMPLE", 
-"PRESERVED_SPECIMEN", "FOSSIL_SPECIMEN", "LIVING_SPECIMEN", 
-"LITERATURE", "UNKNOWN")`.
-}}
+\item{basisOfRecord}{(optional): character or character vector to include
+records with that basis of record. The full list is: \code{c("OBSERVATION", "HUMAN_OBSERVATION", "MACHINE_OBSERVATION", "MATERIAL_SAMPLE", "PRESERVED_SPECIMEN", "FOSSIL_SPECIMEN", "LIVING_SPECIMEN", "LITERATURE", "UNKNOWN")}.}
+
+\item{...}{curl options passed on to \link[crul:HttpClient]{crul::HttpClient}}
 }
 \value{
-###???
+an object of class \code{RasterLayer}
 }
 \description{
 This function is a wrapper for the GBIF mapping api version 2.0.
@@ -91,7 +91,11 @@ to the actual break values. This is a somewhat hacky but nonetheless
 functional solution in the absence of a GBIF raster API implementation.
 }
 \examples{
-\dontrun{}
+\dontrun{
+library(raster)
+x <- map_fetch(search = "taxonKey", id = 3118771, year = "2010")
+plot(x)
+}
 }
 \references{
 \url{https://www.gbif.org/developer/maps}

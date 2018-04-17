@@ -484,3 +484,11 @@ check_vals <- function(x, y){
                                    call. = FALSE)
   if (length(x) > 1) stop(sprintf("%s has to be length 1", y), call. = FALSE)
 }
+
+check_for_a_pkg <- function(x) {
+  if (!requireNamespace(x, quietly = TRUE)) {
+    stop("Please install ", x, call. = FALSE)
+  } else {
+    invisible(TRUE)
+  }
+}
