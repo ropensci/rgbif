@@ -115,6 +115,9 @@ plot(y)
 ## 3031
 z <- map_fetch(search = "taxonKey", id = 3118771, year = 2010, srs = "EPSG:3031")
 plot(z)
+# 3575
+z <- map_fetch(search = "taxonKey", id = 3118771, year = 2010, srs = "EPSG:3575")
+plot(z)
 
 # bin
 plot(map_fetch(search = "taxonKey", id = 212, year = 1998, bin = "hex",

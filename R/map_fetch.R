@@ -94,6 +94,9 @@
 #' ## 3031
 #' z <- map_fetch(search = "taxonKey", id = 3118771, year = 2010, srs = "EPSG:3031")
 #' plot(z)
+#' # 3575
+#' z <- map_fetch(search = "taxonKey", id = 3118771, year = 2010, srs = "EPSG:3575")
+#' plot(z)
 #'
 #' # bin
 #' plot(map_fetch(search = "taxonKey", id = 212, year = 1998, bin = "hex",
@@ -263,8 +266,10 @@ switch_extent <- function(x) {
     x,
     'EPSG:3857' = raster::extent(-180, 180, -85.1, 85.1),
     'EPSG:4326' = raster::extent(-180, 180, -90, 90),
-    'EPSG:3575' = stop("EPSG:3575 not supported yet"),
-    'EPSG:3031' = raster::extent(-12367396.2185, 12367396.2185, -12367396.2185, 12367396.2185)
+    'EPSG:3575' = raster::extent(-6371007.2 * sqrt(2), 6371007.2 * sqrt(2),
+      -6371007.2 * sqrt(2), 6371007.2 * sqrt(2)),
+    'EPSG:3031' = raster::extent(-12367396.2185, 12367396.2185,
+      -12367396.2185, 12367396.2185)
   )
 }
 
