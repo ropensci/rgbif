@@ -10,61 +10,63 @@ map_fetch(source = "density", x = 0, y = 0, z = 0, format = "@1x.png",
   basisOfRecord = NULL, ...)
 }
 \arguments{
-\item{source}{(character): Either density for fast, precalculated tiles,
-or adhoc for any search. \code{default = "density"}}
+\item{source}{(character) Either \code{density} for fast, precalculated tiles,
+or \code{adhoc} for any search. Default: \code{density}}
 
-\item{x}{(integer): the zoom. \code{default = 0}}
+\item{x}{(integer) the zoom. Default: 0}
 
-\item{y}{(integer): the column. \code{default = 0}}
+\item{y}{(integer) the column. Default: 0}
 
-\item{z}{(integer): the row. \code{default = 0}}
+\item{z}{(integer) the row. Default: 0}
 
-\item{format}{(character):
-.mvt for a vector tile
-/@Hx.png for a 256px raster tile (for legacy clients)
-/@1x.png for a 512px raster tile
-/@2x.png for a 1024px raster tile
-/@3x.png for a 2048px raster tile
-/@4x.png for a 4096px raster tile}
+\item{format}{(character) The data format, one of:
+\itemize{
+\item .mvt for a vector tile
+\item /@Hx.png for a 256px raster tile
+\item /@1x.png for a 512px raster tile (the default)
+\item /@2x.png for a 1024px raster tile
+\item /@3x.png for a 2048px raster tile
+\item /@4x.png for a 4096px raster tile
+}}
 
-\item{srs}{(character):
-Spatial reference system. One of:
-EPSG:3857 (Web Mercator)
-EPSG:4326 (WGS84 plate care?)
-EPSG:3575 (Arctic LAEA)
-EPSG:3031 (Antarctic stereographic)
-see below under Projections.}
+\item{srs}{(character) Spatial reference system. One of:
+\itemize{
+\item EPSG:3857 (Web Mercator)
+\item EPSG:4326 (WGS84 plate care?)
+\item EPSG:3575 (Arctic LAEA on 10 degrees E)
+\item EPSG:3031 (Antarctic stereographic)
+}}
 
-\item{bin}{(optional): square or hex to aggregate occurrence counts into
-squares or hexagons. Points by default.}
+\item{bin}{(character) \code{square} or \code{hex} to aggregate occurrence counts into
+squares or hexagons. Points by default. optional}
 
-\item{hexPerTile}{(optional): sets the size of the hexagons
-(the number horizontally across a tile)}
+\item{hexPerTile}{(character) sets the size of the hexagons
+(the number horizontally across a tile). optional}
 
-\item{squareSize}{(optional): sets the size of the squares. Choose a factor
+\item{squareSize}{(integer) sets the size of the squares. Choose a factor
 of 4096 so they tessalate correctly: probably from 8, 16, 32, 64, 128,
-256, 512.}
+256, 512. optional}
 
-\item{style}{(optional): for raster tiles, choose from the available styles.
-Defaults to classic.point.}
+\item{style}{(character) for raster tiles, choose from the available styles.
+Defaults to classic.point. optional}
 
-\item{search}{(optional): defines what type of subset of all GBIF data to
-return. Should be one of c("taxonKey", "datasetKey", "country", "publisher",
-"publishingCountry"). Without any search parameter, all occurrences will be
-returned.}
+\item{search}{(character) defines what type of subset of all GBIF data to
+return. Should be one of "taxonKey", "datasetKey", "country", "publisher",
+"publishingCountry". Without any search parameter, all occurrences will be
+returned. optional}
 
-\item{id}{(optional): defines the value to be used as filter criterium in
+\item{id}{(character) defines the value to be used as filter criterium in
 the category supplied by \code{search}. Appropriate values depend on the
 search category that is used, for example integer for
 \code{search = "taxonKey"}. Has to be provided if
-\code{search} parameter is specified.}
+\code{search} parameter is specified. optional}
 
-\item{year}{(optional): integer that limits the search to a certain year or,
-if passing a vector of integers,, multiple years, for example
-\code{1984} or \code{c(2016, 2017, 2018)}.}
+\item{year}{(integer) integer that limits the search to a certain year or,
+if passing a vector of integers, multiple years, for example
+\code{1984} or \code{c(2016, 2017, 2018)}. optional}
 
-\item{basisOfRecord}{(optional): character or character vector to include
-records with that basis of record. The full list is: \code{c("OBSERVATION", "HUMAN_OBSERVATION", "MACHINE_OBSERVATION", "MATERIAL_SAMPLE", "PRESERVED_SPECIMEN", "FOSSIL_SPECIMEN", "LIVING_SPECIMEN", "LITERATURE", "UNKNOWN")}.}
+\item{basisOfRecord}{(character) one or more basis of record states to
+include records with that basis of record. The full list is: \code{c("OBSERVATION", "HUMAN_OBSERVATION", "MACHINE_OBSERVATION", "MATERIAL_SAMPLE", "PRESERVED_SPECIMEN", "FOSSIL_SPECIMEN", "LIVING_SPECIMEN", "LITERATURE", "UNKNOWN")}. optional}
 
 \item{...}{curl options passed on to \link[crul:HttpClient]{crul::HttpClient}}
 }
@@ -83,18 +85,26 @@ mapping api can be found at https://www.gbif.org/developer/maps
 }
 \details{
 This function uses the arguments passed on to generate a query
-to the GBIF web map API. The API returns a web tile object as png that can be
+to the GBIF web map API. The API returns a web tile object as png that is
 read and converted into an R raster object. The break values or nbreaks
 generate a custom colour palette for the web tile, with each bin
 corresponding to one grey value. After retrieval, the raster is reclassified
 to the actual break values. This is a somewhat hacky but nonetheless
 functional solution in the absence of a GBIF raster API implementation.
+
+We add extent and set the projection for the output. You can reproject
+after retrieving the output.
 }
 \examples{
 \dontrun{
 library(raster)
 x <- map_fetch(search = "taxonKey", id = 3118771, year = "2010")
+x
 plot(x)
+
+# map vector tile, gives back raw bytes
+x <- map_fetch(search = "taxonKey", id = 3118771, year = 2010, format = ".mvt")
+x[1:10]
 }
 }
 \references{
