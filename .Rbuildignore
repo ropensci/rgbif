@@ -15,7 +15,7 @@ R/deprecated.r
 README.Rmd
 ^\.httr-oauth$
 ^.*\.zip$
-^CONDUCT\.md$
+^CODE_OF_CONDUCT\.md$
 ^cran-comments\.md$
 ^revdep$
 .github

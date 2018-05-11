@@ -93,15 +93,15 @@ install.packages('rgbif')
 
 ```r
 occ_search(scientificName = "Ursus americanus", limit = 50)
-#> Records found [10467] 
-#> Records returned [50] 
-#> No. unique hierarchies [1] 
-#> No. media records [49] 
-#> No. facets [0] 
-#> Args [limit=50, offset=0, scientificName=Ursus americanus, fields=all] 
+#> Records found [10467]
+#> Records returned [50]
+#> No. unique hierarchies [1]
+#> No. media records [49]
+#> No. facets [0]
+#> Args [limit=50, offset=0, scientificName=Ursus americanus, fields=all]
 #> # A tibble: 50 x 68
-#>    name        key decimalLatitude decimalLongitude issues  datasetKey    
-#>    <chr>     <int>           <dbl>            <dbl> <chr>   <chr>         
+#>    name        key decimalLatitude decimalLongitude issues  datasetKey
+#>    <chr>     <int>           <dbl>            <dbl> <chr>   <chr>
 #>  1 Ursus …  1.84e9            49.4           -123.  cdroun… 50c9509d-22c7…
 #>  2 Ursus …  1.81e9            37.7           -120.  cdroun… 50c9509d-22c7…
 #>  3 Ursus …  1.80e9            30.0            -84.3 cdroun… 50c9509d-22c7…
@@ -140,15 +140,15 @@ Or you can get the taxon key first with `name_backbone()`. Here, we select to on
 ```r
 key <- name_backbone(name='Helianthus annuus', kingdom='plants')$speciesKey
 occ_search(taxonKey=key, limit=20)
-#> Records found [40800] 
-#> Records returned [20] 
-#> No. unique hierarchies [1] 
-#> No. media records [15] 
-#> No. facets [0] 
-#> Args [limit=20, offset=0, taxonKey=9206251, fields=all] 
+#> Records found [40800]
+#> Records returned [20]
+#> No. unique hierarchies [1]
+#> No. media records [15]
+#> No. facets [0]
+#> Args [limit=20, offset=0, taxonKey=9206251, fields=all]
 #> # A tibble: 20 x 90
-#>    name        key decimalLatitude decimalLongitude issues   datasetKey   
-#>    <chr>     <int>           <dbl>            <dbl> <chr>    <chr>        
+#>    name        key decimalLatitude decimalLongitude issues   datasetKey
+#>    <chr>     <int>           <dbl>            <dbl> <chr>    <chr>
 #>  1 Helian…  1.81e9            52.6             10.1 cdround… 6ac3f774-d9f…
 #>  2 Helian…  1.84e9             0                0   cucdmis… d2470ef8-edf…
 #>  3 Helian…  1.81e9            32.0           -102.  cdround… 50c9509d-22c…
@@ -208,18 +208,18 @@ Get the keys first with `name_backbone()`, then pass to `occ_search()`
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 keys <- sapply(splist, function(x) name_backbone(name=x)$speciesKey, USE.NAMES=FALSE)
 occ_search(taxonKey=keys, limit=5, hasCoordinate=TRUE)
-#> Occ. found [2480598 (16), 9362842 (3799701), 2498387 (1243118)] 
-#> Occ. returned [2480598 (5), 9362842 (5), 2498387 (5)] 
-#> No. unique hierarchies [2480598 (1), 9362842 (1), 2498387 (1)] 
-#> No. media records [2480598 (1), 9362842 (5), 2498387 (4)] 
-#> No. facets [2480598 (0), 9362842 (0), 2498387 (0)] 
+#> Occ. found [2480598 (16), 9362842 (3799701), 2498387 (1243118)]
+#> Occ. returned [2480598 (5), 9362842 (5), 2498387 (5)]
+#> No. unique hierarchies [2480598 (1), 9362842 (1), 2498387 (1)]
+#> No. media records [2480598 (1), 9362842 (5), 2498387 (4)]
+#> No. facets [2480598 (0), 9362842 (0), 2498387 (0)]
 #> Args [hasCoordinate=TRUE, limit=5, offset=0,
-#>      taxonKey=2480598,9362842,2498387, fields=all] 
+#>      taxonKey=2480598,9362842,2498387, fields=all]
 #> 3 requests; First 10 rows of data from 2480598
-#> 
+#>
 #> # A tibble: 5 x 80
-#>   name         key decimalLatitude decimalLongitude issues   datasetKey   
-#>   <chr>      <int>           <dbl>            <dbl> <chr>    <chr>        
+#>   name         key decimalLatitude decimalLongitude issues   datasetKey
+#>   <chr>      <int>           <dbl>            <dbl> <chr>    <chr>
 #> 1 Accipit…  1.00e9          -27.6             -58.7 bri,cud… ad43e954-dd7…
 #> 2 Accipit…  1.00e9          -27.9             -59.1 bri,cud… ad43e954-dd7…
 #> 3 Accipit…  6.86e8            5.27            -60.7 cdround  e635240a-3cb…
@@ -261,13 +261,13 @@ occurrences of taxa of interest. For example:
 ```r
 x <- map_fetch(search = "taxonKey", id = 3118771, year = 2010)
 x
-#> class       : RasterLayer 
+#> class       : RasterLayer
 #> dimensions  : 512, 512, 262144  (nrow, ncol, ncell)
 #> resolution  : 0.703125, 0.3515625  (x, y)
 #> extent      : -180, 180, -90, 90  (xmin, xmax, ymin, ymax)
-#> coord. ref. : +init=epsg:4326 +proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0 
+#> coord. ref. : +init=epsg:4326 +proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0
 #> data source : in memory
-#> names       : layer 
+#> names       : layer
 #> values      : 0, 1  (min, max)
 ```
 
@@ -284,7 +284,7 @@ plot(x, axes = FALSE, box = FALSE)
 * Please [report any issues or bugs](https://github.com/ropensci/rgbif/issues).
 * License: MIT
 * Get citation information for `rgbif` in R doing `citation(package = 'rgbif')`
-* Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+* Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 - - -
 
