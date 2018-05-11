@@ -11,6 +11,7 @@ knitr::opts_chunk$set(
 )
 ```
 
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 [![Build Status](https://travis-ci.org/ropensci/rgbif.svg?branch=master)](https://travis-ci.org/ropensci/rgbif)
 [![codecov.io](https://codecov.io/github/ropensci/rgbif/coverage.svg?branch=master)](https://codecov.io/github/ropensci/rgbif?branch=master)
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/rgbif)](https://github.com/metacran/cranlogs.app)
@@ -18,7 +19,7 @@ knitr::opts_chunk$set(
 [![DOI](https://zenodo.org/badge/2273724.svg)](https://zenodo.org/badge/latestdoi/2273724)
 
 
-`rgbif` gives you access to data from [GBIF](http://www.gbif.org/) via their REST API. GBIF versions their API - we are currently using `v1` of their API. You can no longer use their old API in this package - see `?rgbif-defunct`.
+`rgbif` gives you access to data from [GBIF][] via their REST API. GBIF versions their API - we are currently using `v1` of their API. You can no longer use their old API in this package - see `?rgbif-defunct`.
 
 Tutorials:
 
@@ -26,13 +27,13 @@ Tutorials:
 * [issues vignette - how to clean GBIF data](vignettes/issues_vignette.Rmd)
 * [taxonomic names - examples of some confusing bits](vignettes/taxonomic_names.Rmd)
 
-Check out the rgbif [paper](https://doi.org/10.7287/peerj.preprints.3304v1/) for more information on this package and the sister Python and Ruby clients.
+Check out the rgbif [paper][] for more information on this package and the sister [Python][pygbif] and [Ruby][gbifrb] clients.
 
 ## Package API
 
 The `rgbif` package API follows the GBIF API, which has the following sections:
 
-* `registry` (<http://www.gbif.org/developer/registry>) - Metadata on datasets, and
+* `registry` (<https://www.gbif.org/developer/registry>) - Metadata on datasets, and
 contributing organizations, installations, networks, and nodes
     * `rgbif` functions: `dataset_metrics()`, `dataset_search()`, `dataset_suggest()`,
     `datasets()`, `enumeration()`, `enumeration_country()`, `installations()`, `networks()`,
@@ -41,17 +42,18 @@ contributing organizations, installations, networks, and nodes
     data only. `rgbif` functions: `gbif_oai_get_records()`, `gbif_oai_identify()`,
     `gbif_oai_list_identifiers()`, `gbif_oai_list_metadataformats()`,
     `gbif_oai_list_records()`, `gbif_oai_list_sets()`
-* `species` (<http://www.gbif.org/developer/species>) - Species names and metadata
+* `species` (<https://www.gbif.org/developer/species>) - Species names and metadata
     * `rgbif` functions: `name_backbone()`, `name_lookup()`, `name_suggest()`, `name_usage()`
-* `occurrences` (<http://www.gbif.org/developer/occurrence>) - Occurrences, both for
+* `occurrences` (<https://www.gbif.org/developer/occurrence>) - Occurrences, both for
 the search and download APIs
     * `rgbif` functions: `occ_count()`, `occ_data()`, `occ_download()`, `occ_download_cancel()`,
     `occ_download_cancel_staged()`, `occ_download_get()`, `occ_download_import()`,
     `occ_download_list()`, `occ_download_meta()`, `occ_get()`, `occ_issues()`,
     `occ_issues_lookup()`, `occ_metadata()`, `occ_search()`
-
-The GBIF `maps` API (<http://www.gbif.org/developer/maps>) is not implemented in `rgbif`,
-and are meant more for intergration with web based maps.
+* `maps` (<https://www.gbif.org/developer/maps>) - Map API
+    * `rgbif` functions: `map_fetch()`
+    * Note: we used to have a function `gbifmap()` that used `ggplot2` to plot data from the
+    occurrence API, but it's been removed - see package [mapr][]
 
 ## Installation
 
@@ -88,6 +90,7 @@ install.packages('openssl')
 install.packages('rgeos')
 install.packages('rgbif')
 ```
+
 ## Search for occurrence data
 
 ```{r}
@@ -113,16 +116,22 @@ occ_search(taxonKey=keys, limit=5, hasCoordinate=TRUE)
 
 ## Maps
 
-Make a simple map of species occurrences.
+We've removed `gbifmap()` which helped users plot data from functions `occ_search()`/`occ_data()` - instead we strongly recommend using our other package [mapr][].
+
+As of `rgibf v1`, we have integration for GBIF's mapping API, which lets you get raster images of
+occurrences of taxa of interest. For example:
 
 ```{r}
-splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
-keys <- sapply(splist, function(x) name_backbone(name=x)$speciesKey, USE.NAMES=FALSE)
-dat <- occ_search(taxonKey=keys, limit=100, return='data', hasCoordinate=TRUE)
-library('plyr')
-datdf <- ldply(dat)
-gbifmap(datdf)
+x <- map_fetch(search = "taxonKey", id = 3118771, year = 2010)
+x
 ```
+
+```{r eval=FALSE}
+library(raster)
+plot(x, axes = FALSE, box = FALSE)
+```
+
+![map](tools/map.png)
 
 ## Meta
 
@@ -136,3 +145,9 @@ gbifmap(datdf)
 This package is part of a richer suite called [spocc - Species Occurrence Data](https://github.com/ropensci/spocc), along with several other packages, that provide access to occurrence records from multiple databases.
 
 - - -
+
+[mapr]: https://github.com/ropensci/mapr
+[paper]: https://doi.org/10.7287/peerj.preprints.3304v1/
+[GBIF]: https://www.gbif.org/
+[pygbif]: https://github.com/sckott/pygbif
+[gbifrb]: https://github.com/sckott/gbifrb
