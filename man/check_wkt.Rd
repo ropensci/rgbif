@@ -26,9 +26,6 @@ check_wkt(c('POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))',
 # wkt <- 'POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 a))'
 # check_wkt(wkt)
 
-# this passes this check, but isn't valid for GBIF
-check_wkt(gsub("\\n", '', wkt))
-
 # many wkt's, semi-colon separated, for many repeated "geometry" args
 wkt <- "POLYGON((-102.2 46.0,-93.9 46.0,-93.9 43.7,-102.2 43.7,-102.2 46.0))
 ;POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))"

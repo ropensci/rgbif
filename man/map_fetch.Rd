@@ -40,7 +40,7 @@ or \code{adhoc} for any search. Default: \code{density}}
 \item{bin}{(character) \code{square} or \code{hex} to aggregate occurrence counts into
 squares or hexagons. Points by default. optional}
 
-\item{hexPerTile}{(character) sets the size of the hexagons
+\item{hexPerTile}{(integer) sets the size of the hexagons
 (the number horizontally across a tile). optional}
 
 \item{squareSize}{(integer) sets the size of the squares. Choose a factor
@@ -48,7 +48,7 @@ of 4096 so they tessalate correctly: probably from 8, 16, 32, 64, 128,
 256, 512. optional}
 
 \item{style}{(character) for raster tiles, choose from the available styles.
-Defaults to classic.point. optional}
+Defaults to classic.point. optional. THESE DON'T WORK YET.}
 
 \item{search}{(character) defines what type of subset of all GBIF data to
 return. Should be one of "taxonKey", "datasetKey", "country", "publisher",
@@ -71,7 +71,8 @@ include records with that basis of record. The full list is: \code{c("OBSERVATIO
 \item{...}{curl options passed on to \link[crul:HttpClient]{crul::HttpClient}}
 }
 \value{
-an object of class \code{RasterLayer}
+an object of class \code{RasterLayer} if png format used, or
+raw bytes when mvt format chosen
 }
 \description{
 This function is a wrapper for the GBIF mapping api version 2.0.
@@ -95,15 +96,33 @@ functional solution in the absence of a GBIF raster API implementation.
 We add extent and set the projection for the output. You can reproject
 after retrieving the output.
 }
+\note{
+Styles don't work yet, sorry, we'll try to fix it asap.
+}
 \examples{
 \dontrun{
+x <- map_fetch(search = "taxonKey", id = 3118771, year = 2010)
+# gives a RasterLayer object
+class(x)
+# visualize
 library(raster)
-x <- map_fetch(search = "taxonKey", id = 3118771, year = "2010")
-x
 plot(x)
 
+# different srs
+## 3857
+y <- map_fetch(search = "taxonKey", id = 3118771, year = 2010, srs = "EPSG:3857")
+plot(y)
+## 3031
+z <- map_fetch(search = "taxonKey", id = 3118771, year = 2010, srs = "EPSG:3031")
+plot(z)
+
+# bin
+plot(map_fetch(search = "taxonKey", id = 212, year = 1998, bin = "hex",
+   hexPerTile = 30, style = "classic-noborder.poly"))
+
 # map vector tile, gives back raw bytes
-x <- map_fetch(search = "taxonKey", id = 3118771, year = 2010, format = ".mvt")
+x <- map_fetch(search = "taxonKey", id = 3118771, year = 2010,
+  format = ".mvt")
 x[1:10]
 }
 }
