@@ -1,0 +1,20 @@
+year <- format(Sys.Date(), "%Y")
+note <- sprintf("R package version %s", meta$Version)
+
+bibentry(bibtype = "Manual",
+         title = "rgbif: Interface to the Global Biodiversity Information Facility API",
+         author = c(person("Scott", "Chamberlain"),
+             				person("Vijay", "Barve"),
+								    person("Dan", "Mcglinn"),
+								    person("Damiano", "Oldoni")),
+         year = year,
+         note = note,
+         url = "https://CRAN.R-project.org/package=rgbif")
+
+bibentry(bibtype = "Article",
+  			 title = "R Python, and Ruby clients for GBIF species occurrence data",
+  			 author = c(person("Scott", "Chamberlain"), person("Carl", "Boettiger")),
+  			 journal = "PeerJ PrePrints",
+  			 year = 2017,
+         publisher = "PeerJ, Inc.",
+         url = "https://doi.org/10.7287/peerj.preprints.3304v1")
