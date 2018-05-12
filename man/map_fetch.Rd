@@ -21,20 +21,20 @@ or \code{adhoc} for any search. Default: \code{density}}
 
 \item{format}{(character) The data format, one of:
 \itemize{
-\item .mvt for a vector tile
-\item /@Hx.png for a 256px raster tile
-\item /@1x.png for a 512px raster tile (the default)
-\item /@2x.png for a 1024px raster tile
-\item /@3x.png for a 2048px raster tile
-\item /@4x.png for a 4096px raster tile
+\item \code{.mvt} for a vector tile
+\item \code{@Hx.png} for a 256px raster tile
+\item \code{@1x.png} for a 512px raster tile (the default)
+\item \code{@2x.png} for a 1024px raster tile
+\item \code{@3x.png} for a 2048px raster tile
+\item \code{@4x.png} for a 4096px raster tile
 }}
 
 \item{srs}{(character) Spatial reference system. One of:
 \itemize{
-\item EPSG:3857 (Web Mercator)
-\item EPSG:4326 (WGS84 plate care?)
-\item EPSG:3575 (Arctic LAEA on 10 degrees E)
-\item EPSG:3031 (Antarctic stereographic)
+\item \code{EPSG:3857} (Web Mercator)
+\item \code{EPSG:4326} (WGS84 plate care?)
+\item \code{EPSG:3575} (Arctic LAEA on 10 degrees E)
+\item \code{EPSG:3031} (Antarctic stereographic)
 }}
 
 \item{bin}{(character) \code{square} or \code{hex} to aggregate occurrence counts into

@@ -18,19 +18,19 @@
 #' @param z (integer) the row. Default: 0
 #' @param format (character) The data format, one of:
 #'
-#' - .mvt for a vector tile
-#' - /@Hx.png for a 256px raster tile
-#' - /@1x.png for a 512px raster tile (the default)
-#' - /@2x.png for a 1024px raster tile
-#' - /@3x.png for a 2048px raster tile
-#' - /@4x.png for a 4096px raster tile
+#' - `.mvt` for a vector tile
+#' - `@Hx.png` for a 256px raster tile
+#' - `@1x.png` for a 512px raster tile (the default)
+#' - `@2x.png` for a 1024px raster tile
+#' - `@3x.png` for a 2048px raster tile
+#' - `@4x.png` for a 4096px raster tile
 #'
 #' @param srs (character) Spatial reference system. One of:
 #'
-#' - EPSG:3857 (Web Mercator)
-#' - EPSG:4326 (WGS84 plate care?)
-#' - EPSG:3575 (Arctic LAEA on 10 degrees E)
-#' - EPSG:3031 (Antarctic stereographic)
+#' - `EPSG:3857` (Web Mercator)
+#' - `EPSG:4326` (WGS84 plate care?)
+#' - `EPSG:3575` (Arctic LAEA on 10 degrees E)
+#' - `EPSG:3031` (Antarctic stereographic)
 #'
 #' @param bin (character) `square` or `hex` to aggregate occurrence counts into
 #' squares or hexagons. Points by default. optional
