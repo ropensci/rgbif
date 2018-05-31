@@ -4,10 +4,13 @@
 \alias{check_wkt}
 \title{Check input WKT}
 \usage{
-check_wkt(wkt = NULL)
+check_wkt(wkt = NULL, skip_validate = FALSE)
 }
 \arguments{
 \item{wkt}{(character) one or more Well Known Text objects}
+
+\item{skip_validate}{(logical) whether to skip \code{wicket::wkt_validate}
+call or not. Default: \code{FALSE}}
 }
 \description{
 Check input WKT

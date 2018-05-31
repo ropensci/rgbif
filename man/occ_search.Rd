@@ -20,7 +20,7 @@ occ_search(taxonKey = NULL, scientificName = NULL, country = NULL,
   publishingOrg = NULL, stateProvince = NULL, waterBody = NULL,
   locality = NULL, limit = 500, start = 0, fields = "all",
   return = "all", spellCheck = NULL, facet = NULL, facetMincount = NULL,
-  facetMultiselect = NULL, curlopts = list(), ...)
+  facetMultiselect = NULL, skip_validate = FALSE, curlopts = list(), ...)
 }
 \arguments{
 \item{taxonKey}{(numeric) A taxon key from the GBIF backbone. All included and synonym taxa
@@ -215,6 +215,9 @@ All fields can be faceted on except for last "lastInterpreted",
 
 You can do facet searches alongside searching occurrence data, and
 return both, or only return facets, or only occurrence data, etc.}
+
+\item{skip_validate}{(logical) whether to skip `wicket::wkt_validate`
+call or not. passed down to [check_wkt()]. Default: `FALSE`}
 
 \item{curlopts}{list of named curl options passed on to
 \code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}

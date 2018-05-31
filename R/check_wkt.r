@@ -2,6 +2,8 @@
 #'
 #' @export
 #' @param wkt (character) one or more Well Known Text objects
+#' @param skip_validate (logical) whether to skip `wicket::wkt_validate`
+#' call or not. Default: `FALSE`
 #' @examples \dontrun{
 #' check_wkt('POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))')
 #' check_wkt('POINT(30.1 10.1)')
@@ -21,7 +23,9 @@
 #' check_wkt(gsub("\n", '', wkt))
 #' }
 
-check_wkt <- function(wkt = NULL){
+check_wkt <- function(wkt = NULL, skip_validate = FALSE){
+  stopifnot(is.logical(skip_validate))
+
   if (!is.null(wkt)) {
     stopifnot(is.character(wkt))
 
@@ -47,8 +51,10 @@ check_wkt <- function(wkt = NULL){
         )
       }
 
-      res <- wicket::validate_wkt(wkt[i])
-      if (!res$is_valid) stop(res$comments)
+      if (!skip_validate) {
+        res <- wicket::validate_wkt(wkt[i])
+        if (!res$is_valid) stop(res$comments)
+      }
     }
 
     return(wkt)
