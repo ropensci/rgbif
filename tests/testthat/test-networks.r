@@ -17,7 +17,7 @@ test_that("returns the correct", {
   # expect_is(uu$data$language, "character")
 
   # # values
-  expect_identical(tt$data$tags[[1]], list())
+  expect_is(tt$data, "data.frame")
   # expect_equal(uu$data$title, "Dryad")
   # expect_equal(vv$data$key, 15428)
   # expect_equal(vv$data$modifiedBy, "registry-migration.gbif.org")
