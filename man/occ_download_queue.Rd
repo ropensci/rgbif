@@ -8,6 +8,9 @@ occ_download_queue(..., .list = list())
 }
 \arguments{
 \item{...}{any number of \code{\link[=occ_download]{occ_download()}} requests}
+
+\item{.list}{any number of \code{\link[=occ_download]{occ_download()}} requests as \code{lazy}
+objects, called with e.g., \code{lazyeval::lazy()}}
 }
 \value{
 a list of \code{occ_download} class objects, see \code{\link[=occ_download_get]{occ_download_get()}}

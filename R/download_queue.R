@@ -2,6 +2,9 @@
 #'
 #' @export
 #' @keywords internal
+#' @param ... any number of [occ_download()] requests
+#' @param .list any number of [occ_download()] requests as `lazy`
+#' objects, called with e.g., `lazyeval::lazy()`
 #' @details
 #' **Methods**
 #'   \describe{

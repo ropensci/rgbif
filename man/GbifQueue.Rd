@@ -4,6 +4,12 @@
 \name{GbifQueue}
 \alias{GbifQueue}
 \title{GBIF download queue}
+\arguments{
+\item{...}{any number of \code{\link[=occ_download]{occ_download()}} requests}
+
+\item{.list}{any number of \code{\link[=occ_download]{occ_download()}} requests as \code{lazy}
+objects, called with e.g., \code{lazyeval::lazy()}}
+}
 \description{
 GBIF download queue
 }

@@ -2,6 +2,8 @@
 #'
 #' @export
 #' @param ... any number of [occ_download()] requests
+#' @param .list any number of [occ_download()] requests as `lazy`
+#' objects, called with e.g., `lazyeval::lazy()`
 #' @return a list of `occ_download` class objects, see [occ_download_get()]
 #' to fetch data
 #' @details This function is a convenience wrapper around [occ_download()],
