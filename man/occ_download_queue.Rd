@@ -4,7 +4,7 @@
 \alias{occ_download_queue}
 \title{Download requests in a queue}
 \usage{
-occ_download_queue(...)
+occ_download_queue(..., .list = list())
 }
 \arguments{
 \item{...}{any number of \code{\link[=occ_download]{occ_download()}} requests}
