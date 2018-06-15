@@ -32,14 +32,14 @@
 #'   occ_download("catalogNumber = Bird.27847588", "year = 1998", "month = 2")
 #' )
 #' }
-occ_download_queue <- function(...) {
+occ_download_queue <- function(..., .list = list()) {
   # number of max concurrent requests, has to be hard-coded due to GBIF limits
   max_concurrent <- 3
   # set sleep time (seconds) to be used for while loops
   sleep <- 2
 
   # collect requests
-  que <- GbifQueue$new(...)
+  que <- GbifQueue$new(..., .list = .list)
 
   # stop if no requests submitted
   if (length(que$reqs) == 0) stop("no requests submitted")

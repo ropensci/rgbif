@@ -49,8 +49,13 @@ GbifQueue <- R6::R6Class(
       invisible(self)
     },
 
-    initialize = function(...) {
-      self$reqs <- lapply(lazyeval::lazy_dots(...), DownReq$new)
+    initialize = function(..., .list = list()) {
+      ldots <- lazyeval::lazy_dots(...)
+      ldots <- c(ldots, .list)
+      # if (length(ldots) > && length(.list) > 0) {
+      #   stop("pass in only ")
+      # }
+      self$reqs <- lapply(ldots, DownReq$new)
       self$reqs <- stats::setNames(self$reqs, seq_along(self$reqs))
     },
 
