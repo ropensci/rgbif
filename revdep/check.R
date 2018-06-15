@@ -3,7 +3,7 @@ library("devtools")
 res <- revdep_check(threads = 4)
 revdep_check_save_summary()
 revdep_check_print_problems()
-revdep_email(date = "April 18", only_problems = FALSE, draft = TRUE)
+# revdep_email(date = "Nov 10", version = "0.9.9", only_problems = FALSE, draft = TRUE)
 
 # pkgs <- list(
 #   list(your_package = "downscale", your_version = "1.2-4", email = "charliem2003@gmail.com"),

@@ -3,34 +3,49 @@
 \name{occ_download_cancel}
 \alias{occ_download_cancel}
 \alias{occ_download_cancel_staged}
-\title{Cancel a download cretion process.}
+\title{Cancel a download creation process.}
 \usage{
-occ_download_cancel(key, user = getOption("gbif_user"),
-  pwd = getOption("gbif_pwd"), curlopts = list())
+occ_download_cancel(key, user = NULL, pwd = NULL, curlopts = list())
 
-occ_download_cancel_staged()
+occ_download_cancel_staged(user = NULL, pwd = NULL, limit = 20,
+  start = 0, curlopts = list())
 }
 \arguments{
-\item{key}{A key generated from a request, like that from
+\item{key}{(character) A key generated from a request, like that from
 \code{occ_download}. Required.}
 
-\item{user}{(character) User name within GBIF's website. Required.}
+\item{user}{(character) User name within GBIF's website. Required. See
+Details.}
 
-\item{pwd}{(character) User password within GBIF's website. Required.}
+\item{pwd}{(character) User password within GBIF's website. Required. See
+Details.}
 
 \item{curlopts}{list of named curl options passed on to
 \code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
 for curl options}
+
+\item{limit}{Number of records to return. Default: 20}
+
+\item{start}{Record number to start at. Default: 0}
 }
 \description{
-Cancel a download cretion process.
+Cancel a download creation process.
 }
 \details{
-Note, this only cancels a job in progress. If your download is
-already prepared for you, this won't do anything to change that.
+Note, these functions only cancel a job in progress. If your
+download is already prepared for you, this won't do anything to change
+that.
+
+\code{occ_download_cancel} cancels a specific job by download key - returns
+success message
+
+\code{occ_download_cancel_staged} cancels all jobs with status \code{RUNNING}
+or \code{PREPARING} - if none are found, returns a message saying so -
+if some found, they are cancelled, returning message saying so
 }
 \examples{
 \dontrun{
 # occ_download_cancel(key="0003984-140910143529206")
+# occ_download_cancel_staged()
 }
 }

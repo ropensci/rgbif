@@ -53,7 +53,7 @@ test_that("works with parameters that allow many inputs", {
   expect_true(all(
     unique(tolower(aa$data$taxonomicStatus)) %in% c("misapplied", "synonym")))
 
-  aa <- name_lookup(nameType = c("cultivar", "doubtful"))
+  aa <- name_lookup(nameType = c("cultivar", "doubtful"), limit = 200)
   expect_is(aa, "list")
   expect_is(aa$meta, "data.frame")
   expect_is(aa$meta$endOfRecords, "logical")
@@ -61,4 +61,51 @@ test_that("works with parameters that allow many inputs", {
   expect_is(aa$data$key, "integer")
   expect_true(all(
     unique(tolower(aa$data$nameType)) %in% c("cultivar", "doubtful")))
+
+  aa <- name_lookup(origin = c("implicit_name", "proparte"), limit = 250)
+  expect_is(aa, "list")
+  expect_is(aa$meta, "data.frame")
+  expect_is(aa$meta$endOfRecords, "logical")
+  expect_is(aa$data$canonicalName, "character")
+  expect_is(aa$data$key, "integer")
+  expect_true(all(
+    unique(tolower(aa$data$origin)) %in% c("implicit_name", "proparte")))
+})
+
+#paging (limit higher than 1000 records; maximum API: 99999)
+test_that("paging: name_usage returns as many records as asked, limit > 1000", {
+    skip_on_cran()
+  #https://www.gbif.org/dataset/a5224e5b-6379-4d33-a29d-14b56015893d
+  # 1051 total records (any origin, i.e. SOURCE and DENORMED_CLASSIFICATION)
+  aa <- name_lookup(datasetKey = "a5224e5b-6379-4d33-a29d-14b56015893d",
+                                      limit = 1001)
+                     expect_equal(aa$meta$offset, 1000)
+                     expect_equal(aa$meta$limit, 1)
+                     expect_equal(nrow(aa$data), 1001)
+})
+
+test_that("paging: class data and meta not modified by paging", {
+  skip_on_cran()
+
+  bb1 <- name_lookup(datasetKey = "a5224e5b-6379-4d33-a29d-14b56015893d",
+                   limit = 1)
+  bb2 <- name_lookup(datasetKey = "a5224e5b-6379-4d33-a29d-14b56015893d",
+                    limit = 1002)
+  expect_true(all(class(bb1) == class(bb2)))
+  expect_true(all(class(bb1$meta) == class(bb2$meta)))
+  expect_true(all(class(bb1$data) == class(bb2$data)))
+})
+
+test_that("paging: name_usage returns all records from dataset: limit > n_records", {
+  skip_on_cran()
+
+  #https://www.gbif.org/dataset/a5224e5b-6379-4d33-a29d-14b56015893d
+  # 1051 total records (any origin, i.e. SOURCE and DENORMED_CLASSIFICATION)
+  cc <- name_lookup(datasetKey = "a5224e5b-6379-4d33-a29d-14b56015893d",
+                    limit = 5000)
+  expect_gte(cc$meta$offset, 1000)
+  expect_gte(cc$meta$limit, 51)
+  expect_equal(cc$meta$endOfRecords, TRUE)
+  expect_gte(cc$meta$count, 1051)
+  expect_gte(nrow(cc$data), 1051)
 })

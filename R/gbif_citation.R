@@ -2,8 +2,8 @@
 #'
 #' @export
 #' @param x (character) Result of call to [occ_search()],
-#' [occ_download_get()], a dataset key, or occurrence key (character or
-#' numeric).
+#' [occ_download_get()], [occ_download_meta()], a dataset key, or occurrence key
+#' (character or numeric)
 #' @return list with S3 class assigned, used by a print method to pretty print
 #' citation information. Though you can unclass the output or just index to the
 #' named items as needed.
@@ -37,15 +37,23 @@
 #' ## pass in a dataset key
 #' gbif_citation(x='0ec3229f-2b53-484e-817a-de8ceb1fce2b')
 #' ## pass in an occurrence key
-#' gbif_citation(x='766766824')
+#' gbif_citation(x='1425976049')
 #'
-#' # pass in an occurrence key as a numeric
-#' gbif_citation(x=766766824)
+#' # pass in an occurrence key as a numeric (won't work for a dataset key)
+#' gbif_citation(x=1425976049)
 #'
 #' # Downloads
-#' ## only works with output from occ_download_get for now
-#' d1 <- occ_download_get("0000066-140928181241064", overwrite = TRUE)
+#' ## occ_download_get()
+#' d <- occ_download("country = BG", "year <= 2011")
+#' key <- "0000122-171020152545675"
+#' occ_download_meta(key)
+#' d1 <- occ_download_get(key, overwrite = TRUE)
 #' gbif_citation(d1)
+#'
+#' ## occ_download_meta()
+#' key <- "0000122-171020152545675"
+#' res <- occ_download_meta(key)
+#' gbif_citation(res)
 #' }
 gbif_citation <- function(x) {
   UseMethod("gbif_citation")
@@ -111,16 +119,47 @@ gbif_citation.numeric <- function(x) {
             class = "gbif_citation")
 }
 
+gbif_cit <- "GBIF Occurrence Download %s Accessed from R via rgbif (https://github.com/ropensci/rgbif) on %s"
+
 #' @export
 gbif_citation.occ_download_get <- function(x) {
+  # get DOI for citation
+  met <- occ_download_meta(attr(x, "key"))
+  doi_url <- if (is.null(met$doi)) {
+    file.path("https://www.gbif.org/occurrence/download", attr(x, "key"))
+  } else {
+    file.path("https://doi.org", sub("doi:", "", met$doi))
+  }
+  citation <- sprintf(gbif_cit, doi_url, as.character(as.Date(met$created)))
+
+  # individual datasets
   path <- x[1]
   tmpdir <- file.path(tempdir(), x)
   utils::unzip(path, exdir = tmpdir, overwrite = TRUE)
   on.exit(unlink(tmpdir))
   dsets <- list.files(file.path(tmpdir, "dataset"), full.names = TRUE)
-  lapply(dsets, get_cit_rights)
+  list(
+    download = citation,
+    datasets = lapply(dsets, get_cit_rights)
+  )
 }
 
+#' @export
+gbif_citation.occ_download_meta <- function(x) {
+  doi_url <- if (is.null(x$doi)) {
+    file.path("https://www.gbif.org/occurrence/download", x$key)
+  } else {
+    file.path("https://doi.org", sub("doi:", "", x$doi))
+  }
+  citation <- sprintf(gbif_cit, doi_url, as.character(as.Date(x$created)))
+  list(
+    download = citation,
+    datasets = NULL
+  )
+}
+
+
+### helpers ----------------------------------------------------
 get_cit_rights <- function(x) {
   xml <- xml2::read_xml(x)
   key <- gsub("\\..+", "", basename(x))

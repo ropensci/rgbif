@@ -1,6 +1,6 @@
 context("occ_data")
 
-key <- 3119195
+key <- 3118771
 
 test_that("returns the correct class", {
   skip_on_cran()
@@ -24,7 +24,7 @@ test_that("returns the correct class", {
   # occ_data doesn't have media slot
   expect_null(tt$media)
 
-  expect_equal(uu$data[1,1]$name, "Helianthus annuus")
+  expect_equal(uu$data[1,1]$name, "Encelia californica")
   expect_equal(uu$meta$limit, 20)
   expect_null(vv$limit)
 
@@ -112,7 +112,7 @@ test_that("looping works correctly", {
   it <- seq(from = 0, to = 500, by = 250)
   out <- list()
   for (i in seq_along(it)) {
-    occdata <- occ_data(taxonKey = 3119195, limit = 250, start = it[[i]])
+    occdata <- occ_data(taxonKey = 3118771, limit = 250, start = it[[i]])
     out[[i]] <- occdata$data
   }
 

@@ -23,5 +23,6 @@ test_that("dataset_metrics fails well", {
   expect_error(dataset_metrics(c('3f8a1297-3259-4700-91fc-acc4170b27ce', 4)))
 
   # datasets not of type checklist dont work
-  expect_error(dataset_metrics('82ceb6ba-f762-11e1-a439-00145eb45e9a'), "204 - not found")
+  expect_error(dataset_metrics('82ceb6ba-f762-11e1-a439-00145eb45e9a'),
+               "204 - not found \\(only checklist datasets have metrics\\)")
 })

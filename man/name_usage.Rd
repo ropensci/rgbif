@@ -6,11 +6,11 @@
 \usage{
 name_usage(key = NULL, name = NULL, data = "all", language = NULL,
   datasetKey = NULL, uuid = NULL, sourceId = NULL, rank = NULL,
-  shortname = NULL, start = NULL, limit = 100, return = "all",
+  shortname = NULL, start = 0, limit = 100, return = "all",
   curlopts = list())
 }
 \arguments{
-\item{key}{(numeric) A GBIF key for a taxon}
+\item{key}{(numeric or character) A GBIF key for a taxon}
 
 \item{name}{(character) Filters by a case insensitive, canonical namestring,
 e.g. 'Puma concolor'}
@@ -20,10 +20,10 @@ See Description below.}
 
 \item{language}{(character) Language, default is english}
 
-\item{datasetKey}{(character) Filters by the dataset's key (a uuid)}
+\item{datasetKey}{(character) Filters by the dataset's key (a uuid). Must
+be length=1}
 
-\item{uuid}{(character) A uuid for a dataset. Should give exact same
-results as datasetKey.}
+\item{uuid}{(character) A dataset key}
 
 \item{sourceId}{(numeric) Filters by the source identifier. Not used
 right now.}
@@ -37,12 +37,12 @@ SUBPHYLUM, SUBSECTION, SUBSERIES, SUBSPECIES, SUBTRIBE, SUBVARIETY,
 SUPERCLASS, SUPERFAMILY, SUPERORDER, SUPERPHYLUM, SUPRAGENERIC_NAME,
 TRIBE, UNRANKED, VARIETY}
 
-\item{shortname}{(character) A short name..need more info on this?}
+\item{shortname}{(character) A short name for a dataset - it may
+not do anything}
 
-\item{start}{Record number to start at. Default: 0. Use in combination
-with \code{limit} to page through results.}
+\item{start}{Record number to start at. Default: 0.}
 
-\item{limit}{Number of records to return. Default: 100. Maximum: 1000.}
+\item{limit}{Number of records to return. Default: 100.}
 
 \item{return}{One of data, meta, or all. If data, a data.frame with the
 data. meta returns the metadata for the entire call. all gives all data
@@ -53,8 +53,9 @@ back in a list.}
 for curl options}
 }
 \value{
-A list of length two. The first element is metadata. The second is
-a data.frame
+If \code{return="all"}, a list of length two, with metadata and data,
+each as data.frame's. If \code{return="meta"} only the metadata data.frame,
+and if \code{return="data"} only the data data.frame
 }
 \description{
 Lookup details for specific names in all taxonomies in GBIF.
@@ -80,16 +81,15 @@ internally loops over each option making separate requests. This has been
 removed. You can still loop over many options for the \code{data} parameter,
 just use an \code{lapply} family function, or a for loop, etc.
 }
-\section{Repeat parmeter inputs}{
+\section{Repeat parameter inputs}{
 
-Some parameters can tak emany inputs, and treated as 'OR' (e.g., a or b or
-c). The following take many inputs:
+These parameters used to accept many inputs, but no longer do:
+
 \itemize{
  \item \strong{rank}
- \item \strong{datasetKey}
- \item \strong{uuid}
  \item \strong{name}
  \item \strong{langugae}
+ \item \strong{datasetKey}
 }
 
 see also \code{\link{many-values}}
@@ -103,6 +103,9 @@ name_usage(key=1)
 # Name usage for a taxonomic name
 name_usage(name='Puma', rank="GENUS")
 
+# Name usage for all taxa in a dataset 
+(set sufficient high limit, but less than 100000)
+name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42", limit = 10000)
 # All name usages
 name_usage()
 
@@ -126,19 +129,16 @@ name_usage(datasetKey="d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
 # Search for a particular language
 name_usage(key=3119195, language="FRENCH", data='vernacularNames')
 
-# Some parameters accept many inputs, treated as OR
-name_usage(rank = c("family", "genus"))
-name_usage(datasetKey = c("73605f3a-af85-4ade-bbc5-522bfb90d847",
-  "d7c60346-44b6-400d-ba27-8d3fbeffc8a5"))
-name_usage(uuid = c("73605f3a-af85-4ade-bbc5-522bfb90d847",
-  "d7c60346-44b6-400d-ba27-8d3fbeffc8a5"))
-name_usage(name = c("Puma", "Quercus"))
-name_usage(language = c("spanish", "german"))
+# get root usage with a uuid
+name_usage(data = "root", uuid = "73605f3a-af85-4ade-bbc5-522bfb90d847")
+
+# search by language
+name_usage(language = "spanish")
 
 # Pass on curl options
 name_usage(name='Puma concolor', limit=300, curlopts = list(verbose=TRUE))
 }
 }
 \references{
-<http://www.gbif.org/developer/species#nameUsages.
+\url{https://www.gbif.org/developer/species#nameUsages}
 }

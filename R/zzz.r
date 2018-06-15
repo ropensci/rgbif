@@ -299,10 +299,11 @@ rgbif_ua <- function() {
 
 rgbif_ual <- list(`User-Agent` = rgbif_ua(), `X-USER-AGENT` = rgbif_ua())
 
-gbif_GET <- function(url, args, parse=FALSE, curlopts = list()) {
+gbif_GET <- function(url, args, parse=FALSE, curlopts = list(), mssg = NULL) {
   cli <- crul::HttpClient$new(url = url, headers = rgbif_ual, opts = curlopts)
   temp <- cli$get(query = args)
-  if (temp$status_code == 204) stop("Status: 204 - not found", call. = FALSE)
+  if (temp$status_code == 204)
+    stop("Status: 204 - not found ", mssg, call. = FALSE)
   if (temp$status_code > 200) {
     mssg <- temp$parse("UTF-8")
     if (grepl("html", mssg)) {
@@ -478,3 +479,25 @@ convmany <- function(x) {
   return(x)
 }
 
+check_vals <- function(x, y){
+  if (is.na(x) || is.null(x)) stop(sprintf("%s can not be NA or NULL", y),
+                                   call. = FALSE)
+  if (length(x) > 1) stop(sprintf("%s has to be length 1", y), call. = FALSE)
+}
+
+check_for_a_pkg <- function(x) {
+  if (!requireNamespace(x, quietly = TRUE)) {
+    stop("Please install ", x, call. = FALSE)
+  } else {
+    invisible(TRUE)
+  }
+}
+
+assert <- function (x, y) {
+  if (!is.null(x)) {
+    if (!class(x) %in% y) {
+      stop(deparse(substitute(x)), " must be of class ",
+          paste0(y, collapse = ", "), call. = FALSE)
+    }
+  }
+}

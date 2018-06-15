@@ -1,5 +1,37 @@
 context("name_usage")
 
+test_that("name_usage return parameter works", {
+  skip_on_cran()
+
+  meta <- name_usage(return = "meta")
+  dat <- name_usage(return = "data")
+  all <- name_usage(return = "all")
+
+  # meta
+  expect_is(meta, "data.frame")
+  expect_is(meta, "tbl_df")
+  expect_named(meta, c('offset', 'limit', 'endOfRecords'))
+  expect_equal(meta$limit, 100)
+
+  # data
+  expect_is(dat, "data.frame")
+  expect_is(dat, "tbl_df")
+  expect_true(any(grepl("datasetKey", names(dat))))
+  expect_equal(NROW(dat), 100)
+
+  # both meta and data
+  expect_is(all, "list")
+  expect_named(all, c('meta', 'data'))
+  expect_is(all$meta, "data.frame")
+  expect_is(all$meta, "tbl_df")
+  expect_named(all$meta, c('offset', 'limit', 'endOfRecords'))
+  expect_equal(all$meta$limit, 100)
+  expect_is(all$data, "data.frame")
+  expect_is(all$data, "tbl_df")
+  expect_true(any(grepl("datasetKey", names(all$data))))
+  expect_equal(NROW(all$data), 100)
+})
+
 test_that("name_usage works", {
   skip_on_cran()
 
@@ -181,19 +213,63 @@ test_that("name_usage fails correctly", {
 })
 
 
-# many args
-test_that("works with parameters that allow many inputs", {
+# fails with more than 1 value
+test_that("fails with more than 1", {
   skip_on_cran()
 
-  aa <- name_usage(datasetKey = c("73605f3a-af85-4ade-bbc5-522bfb90d847",
-                                  "d7c60346-44b6-400d-ba27-8d3fbeffc8a5"))
-  expect_is(aa, "list")
-  expect_is(aa$meta, "data.frame")
-  expect_is(aa$meta$endOfRecords, "logical")
-  expect_is(aa$data$canonicalName, "character")
-  expect_is(aa$data$classKey, "integer")
-  expect_true(all(
-    unique(tolower(aa$data$datasetKey)) %in%
-      c("73605f3a-af85-4ade-bbc5-522bfb90d847")))
+  keys <- c("73605f3a-af85-4ade-bbc5-522bfb90d847",
+    "d7c60346-44b6-400d-ba27-8d3fbeffc8a5")
+  expect_error(name_usage(datasetKey = keys),
+    "length\\(datasetKey\\) == 1 is not TRUE")
+
+  expect_error(name_usage(language = c('spanish', 'german')),
+    "length\\(language\\) == 1 is not TRUE")
+
+  expect_error(name_usage(name = c('Quercus', 'Puma')),
+    "length\\(name\\) == 1 is not TRUE")
+
+  expect_error(name_usage(rank = c('GENUS', 'SPECIES')),
+    "length\\(rank\\) == 1 is not TRUE")
 })
 
+
+# paging
+# Commented:it takes too much time.
+# Uncomment after introducing test caching with vcr package)
+# test_that("paging: class data and meta not modified by paging", {
+#   skip_on_cran()
+#
+#   bb1 <- name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42",
+#                    limit = 1)
+#   bb2 <- name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42",
+#                     limit = 1789)
+#   expect_true(all(class(bb1) == class(bb2)))
+#   expect_true(all(class(bb1$meta) == class(bb2$meta)))
+#   expect_true(all(class(bb1$data) == class(bb2$data)))
+# })
+#
+# test_that("paging: name_usage returns all records from dataset: limit > n_records", {
+#   skip_on_cran()
+#
+#   cc <- name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42",
+#                  limit = 5000)
+#   expect_equal(cc$meta$offset, 2000)
+#   expect_lt(cc$meta$limit, 1000)
+#   expect_gt(nrow(cc$data), 2000)
+# })
+#
+# test_that("paging: name_usage returns as many records as asked via limit", {
+#   skip_on_cran()
+#
+#   dd <- name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42",
+#                    limit = 1329)
+#   expect_equal(dd$meta$offset, 1000)
+#   expect_equal(dd$meta$limit, 329)
+#   expect_equal(nrow(dd$data), 1329)
+#
+#   ee <- name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42",
+#                    limit = 1001)
+#   expect_equal(ee$meta$offset, 1000)
+#   expect_equal(ee$meta$limit, 1)
+#   expect_equal(nrow(ee$data), 1001)
+# })

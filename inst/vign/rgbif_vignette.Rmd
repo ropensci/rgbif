@@ -174,25 +174,25 @@ Get data for a single occurrence. Note that data is returned as a list, with slo
 Just data
 
 ```{r occ_get1}
-occ_get(key=766766824, return='data')
+occ_get(key=855998194, return='data')
 ```
 
 Just taxonomic hierarchy
 
 ```{r occ_get2}
-occ_get(key=766766824, return='hier')
+occ_get(key=855998194, return='hier')
 ```
 
 All data, or leave return parameter blank
 
 ```{r occ_get3}
-occ_get(key=766766824, return='all')
+occ_get(key=855998194, return='all')
 ```
 
 Get many occurrences. `occ_get` is vectorized
 
 ```{r occ_get4}
-occ_get(key=c(766766824, 101010, 240713150, 855998194), return='data')
+occ_get(key=c(855998194, 1425976049, 240713150), return='data')
 ```
 
 

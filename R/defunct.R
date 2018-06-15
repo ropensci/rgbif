@@ -257,3 +257,13 @@ create_gist <- function(...){
 get_credentials = function(...){
   .Defunct(msg="This function is defunct. There is no longer a similar function. See the package gistr for similar functionality.")
 }
+
+#' Get Github credentials from use in console
+#'
+#' This function is defunct.  See the package gistr for similar functionality.
+#'
+#' @rdname gbifmap-defunct
+#' @keywords internal
+gbifmap <- function(...) {
+  .Defunct(package = "mapr", msg = "See 'mapr' package for plotting GBIF data")
+}

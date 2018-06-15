@@ -2,8 +2,10 @@
 #'
 #' @export
 #'
-#' @param user A user name, look at option "gbif_user" first
-#' @param pwd Your password, look at option "gbif_pwd" first
+#' @param user (character) User name within GBIF's website. Required. See
+#' Details.
+#' @param pwd (character) User password within GBIF's website. Required. See
+#' Details.
 #' @param limit Number of records to return. Default: 20
 #' @param start Record number to start at. Default: 0
 #' @template occ
@@ -14,10 +16,11 @@
 #' occ_download_list(user="sckott", start = 21)
 #' }
 
-occ_download_list <- function(user = getOption("gbif_user"),
-                    pwd = getOption("gbif_pwd"), limit = 20, start = 0,
-                    curlopts = list()) {
+occ_download_list <- function(user = NULL, pwd = NULL, limit = 20, start = 0,
+  curlopts = list()) {
 
+  user <- check_user(user)
+  pwd <- check_pwd(pwd)
   stopifnot(!is.null(user), !is.null(pwd))
   url <- sprintf('%s/occurrence/download/user/%s', gbif_base(), user)
   args <- rgbif_compact(list(limit = limit, offset = start))

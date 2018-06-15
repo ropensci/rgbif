@@ -8,8 +8,8 @@ gbif_citation(x)
 }
 \arguments{
 \item{x}{(character) Result of call to \code{\link[=occ_search]{occ_search()}},
-\code{\link[=occ_download_get]{occ_download_get()}}, a dataset key, or occurrence key (character or
-numeric).}
+\code{\link[=occ_download_get]{occ_download_get()}}, \code{\link[=occ_download_meta]{occ_download_meta()}}, a dataset key, or occurrence key
+(character or numeric)}
 }
 \value{
 list with S3 class assigned, used by a print method to pretty print
@@ -52,14 +52,22 @@ res3 <- occ_search(taxonKey=3119195, fields=c('name','basisOfRecord','key'),
 ## pass in a dataset key
 gbif_citation(x='0ec3229f-2b53-484e-817a-de8ceb1fce2b')
 ## pass in an occurrence key
-gbif_citation(x='766766824')
+gbif_citation(x='1425976049')
 
-# pass in an occurrence key as a numeric
-gbif_citation(x=766766824)
+# pass in an occurrence key as a numeric (won't work for a dataset key)
+gbif_citation(x=1425976049)
 
 # Downloads
-## only works with output from occ_download_get for now
-d1 <- occ_download_get("0000066-140928181241064", overwrite = TRUE)
+## occ_download_get()
+d <- occ_download("country = BG", "year <= 2011")
+key <- "0000122-171020152545675"
+occ_download_meta(key)
+d1 <- occ_download_get(key, overwrite = TRUE)
 gbif_citation(d1)
+
+## occ_download_meta()
+key <- "0000122-171020152545675"
+res <- occ_download_meta(key)
+gbif_citation(res)
 }
 }

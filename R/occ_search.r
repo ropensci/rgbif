@@ -44,7 +44,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
   organismId = NULL, publishingOrg = NULL, stateProvince = NULL,
   waterBody = NULL, locality = NULL, limit=500, start=0, fields = 'all',
   return='all', spellCheck = NULL, facet = NULL, facetMincount = NULL,
-  facetMultiselect = NULL, curlopts = list(), ...) {
+  facetMultiselect = NULL, skip_validate = FALSE, curlopts = list(), ...) {
 
   calls <- names(sapply(match.call(), deparse))[-1]
   calls_vec <- c("georeferenced","altitude","latitude","longitude") %in% calls
@@ -65,7 +65,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
     }
 
     # check that wkt is proper format and of 1 of 4 allowed types
-    geometry <- check_wkt(geometry)
+    geometry <- check_wkt(geometry, skip_validate = skip_validate)
 
     # check limit and start params
     check_vals(limit, "limit")
@@ -269,10 +269,4 @@ possparams <- function(){
    country, publishingCountry, recordNumber, search, institutionCode,
   collectionCode, decimalLatitude, decimalLongitude, depth, year, typeStatus,
   lastInterpreted, continent, or mediatype"
-}
-
-check_vals <- function(x, y){
-  if (is.na(x) || is.null(x)) stop(sprintf("%s can not be NA or NULL", y),
-                                   call. = FALSE)
-  if (length(x) > 1) stop(sprintf("%s has to be length 1", y), call. = FALSE)
 }

@@ -1,6 +1,6 @@
 context("occ_search")
 
-key <- 3119195
+key <- 3118771
 
 test_that("returns the correct class", {
   skip_on_cran()
@@ -23,7 +23,7 @@ test_that("returns the correct class", {
   expect_equal(as.character(tt$hierarchy[[1]][1,1]), "Plantae")
 
   expect_equal(as.character(uu$hierarchy[[1]][1,1]), "Plantae")
-  expect_equal(as.character(uu$data[1,1]), "Helianthus annuus")
+  expect_equal(as.character(uu$data[1,1]), "Encelia californica")
   expect_equal(uu$meta$limit, 20)
   expect_equal(vv$limit, 200)
 
@@ -72,7 +72,7 @@ test_that("returns the correct class", {
   expect_is(out[1,2]$key, "integer")
 
   # returns the correct value
-  expect_equal(as.character(out[1,1]), "Helianthus annuus")
+  expect_equal(as.character(out[1,1]), "Encelia californica")
 })
 
 # Taxonomic hierarchy data
@@ -140,7 +140,7 @@ test_that("looping works correctly", {
   it <- seq(from = 0, to = 500, by = 250)
   out <- list()
   for (i in seq_along(it)) {
-    occdata <- occ_search(taxonKey = 3119195, limit = 250, start = it[[i]])
+    occdata <- occ_search(taxonKey = 3118771, limit = 250, start = it[[i]])
     out[[i]] <- occdata$data
   }
   expect_equal(unique(sapply(out, function(x) class(x)[1])), "tbl_df")

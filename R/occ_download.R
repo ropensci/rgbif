@@ -13,14 +13,29 @@
 #' @param type (charcter) One of equals (=), and (&), or (|), lessThan (<),
 #' lessThanOrEquals (<=), greaterThan (>), greaterThanOrEquals (>=), in,
 #' within, not (!), like
-#' @param user (character) User name within GBIF's website. Required. Set in
-#' your `.Rprofile` file with the option `gbif_user`
-#' @param pwd (character) User password within GBIF's website. Required. Set
-#' in your `.Rprofile` file with the option `gbif_pwd`
+#' @param user (character) User name within GBIF's website. Required. See
+#' Details.
+#' @param pwd (character) User password within GBIF's website. Required. See
+#' Details.
 #' @param email (character) Email address to recieve download notice done
-#' email. Required. Set in your `.Rprofile` file with the option
-#' `gbif_email`
+#' email. Required. See Details.
 #' @template occ
+#'
+#' @section Authentication:
+#' For `user`, `pwd`, and `email` parameters, you can set them in one of
+#' three ways:
+#'
+#' - Set them in your `.Rprofile` file with the names `gbif_user`,
+#' `gbif_pwd`, and `gbif_email`
+#' - Set them in your `.Renviron`/`.bash_profile` (or similar) file with the
+#' names `GBIF_USER`, `GBIF_PWD`, and `GBIF_EMAIL`
+#' - Simply pass strings to each of the parameters in the function
+#' call
+#'
+#' We strongly recommend the second option - storing your details as
+#' environment variables as it's the most widely used way to store secrets.
+#'
+#' See `?Startup` for help.
 #'
 #' @details Argument passed have to be passed as character (e.g.,
 #' 'country = US'), with a space between key ('country'), operator ('='),
@@ -78,6 +93,11 @@
 #'  \item mediatype = 'MEDIA_TYPE'
 #'  \item recordedBy = 'RECORDED_BY'
 #' }
+#'
+#' @section Query length:
+#' GBIF has a limit of 12,000 characters for a download query. This means
+#' that you can have a pretty long query, but at some point it may lead to an
+#' error on GBIF's side and you'll have to split your query into a few.
 #'
 #' @references See the API docs
 #' <http://www.gbif.org/developer/occurrence#download> for more info,
@@ -145,11 +165,13 @@
 #' # res <- occ_download(body = query, curlopts = list(verbose = TRUE))
 #' }
 
-occ_download <- function(..., body = NULL,
-   type = "and", user = getOption("gbif_user"), pwd = getOption("gbif_pwd"),
-   email = getOption("gbif_email"), curlopts = list()) {
+occ_download <- function(..., body = NULL, type = "and", user = NULL,
+  pwd = NULL, email = NULL, curlopts = list()) {
 
   url <- paste0(gbif_base(), '/occurrence/download/request')
+  user <- check_user(user)
+  pwd <- check_pwd(pwd)
+  email <- check_email(email)
   stopifnot(!is.null(user), !is.null(email))
   if (!is.null(body)) {
     req <- body
@@ -158,6 +180,21 @@ occ_download <- function(..., body = NULL,
   }
   out <- rg_POST(url, req = req, user = user, pwd = pwd, curlopts)
   structure(out, class = "occ_download", user = user, email = email)
+}
+
+check_user <- function(x) {
+  z <- if (is.null(x)) Sys.getenv("GBIF_USER", "") else x
+  if (z == "") getOption("gbif_user", stop("supply a username")) else z
+}
+
+check_pwd <- function(x) {
+  z <- if (is.null(x)) Sys.getenv("GBIF_PWD", "") else x
+  if (z == "") getOption("gbif_pwd", stop("supply a password")) else z
+}
+
+check_email <- function(x) {
+  z <- if (is.null(x)) Sys.getenv("GBIF_EMAIL", "") else x
+  if (z == "") getOption("gbif_email", stop("supply an email address")) else z
 }
 
 check_inputs <- function(x) {
@@ -177,7 +214,9 @@ parse_occd <- function(user, email, type, ...) {
   args <- list(...)
   keyval <- lapply(args, parse_args)
 
-  if (length(keyval) > 1) {
+  if (length(keyval) > 1 || 
+    length(keyval) == 1 && "predicates" %in% names(keyval[[1]])
+  ) {
     list(creator = unbox(user),
          notification_address = email,
          predicate = list(
@@ -228,8 +267,8 @@ rg_POST <- function(url, req, user, pwd, curlopts) {
     )
   )
   res <- cli$post(body = check_inputs(req))
-  res$raise_for_status()
   if (res$status_code > 203) stop(catch_err(res), call. = FALSE)
+  res$raise_for_status()
   stopifnot(res$response_headers$`content-type` == 'application/json')
   res$parse("UTF-8")
 }

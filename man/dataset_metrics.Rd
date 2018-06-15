@@ -16,6 +16,9 @@ for curl options}
 \description{
 Get details on a GBIF dataset.
 }
+\note{
+Dataset metrics are only available for checklist type datasets.
+}
 \examples{
 \dontrun{
 dataset_metrics(uuid='863e6d6b-f602-4495-ac30-881482b6f799')

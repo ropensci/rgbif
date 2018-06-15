@@ -35,7 +35,7 @@ occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
   genusKey = NULL, establishmentMeans = NULL, protocol = NULL, license = NULL,
   organismId = NULL, publishingOrg = NULL, stateProvince = NULL,
   waterBody = NULL, locality = NULL, limit=500, start=0,
-  spellCheck = NULL, curlopts = list()) {
+  spellCheck = NULL, skip_validate = FALSE, curlopts = list()) {
 
   geometry <- geometry_handler(geometry, geom_big, geom_size, geom_n)
 
@@ -48,7 +48,7 @@ occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
     }
 
     # check that wkt is proper format and of 1 of 4 allowed types
-    geometry <- check_wkt(geometry)
+    geometry <- check_wkt(geometry, skip_validate = skip_validate)
 
     # check limit and start params
     check_vals(limit, "limit")
@@ -159,9 +159,10 @@ occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
   }
 
   if (length(iter) == 0) {
-    out <- .get_occ_data()
+    out <- .get_occ_data(curlopts = curlopts)
   } else {
-    out <- lapply(iter[[1]], .get_occ_data, itervar = names(iter))
+    out <- lapply(iter[[1]], .get_occ_data, itervar = names(iter), 
+      curlopts = curlopts)
     names(out) <- transform_names(iter[[1]])
   }
 

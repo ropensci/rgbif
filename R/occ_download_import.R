@@ -7,6 +7,11 @@
 #' \code{occ_download}
 #' @param path Path to unzip file to. Default: `"."` Writes to
 #' folder matching zip file name
+#' @param fill (logical) (default: `FALSE`). If `TRUE` then in case
+#' the rows have unequal length, blank fields are implicitly filled.
+#' passed on to `fill` parameter in [data.table::fread]. If you get
+#' problems with this function crashing it could be due to
+#' `data.table` failing, in which case try setting `fill=FALSE`
 #' @param ... parameters passed on to [data.table::fread()]
 #'
 #' @return a tibble (data.frame)
@@ -34,7 +39,7 @@
 #' occ_download_import(key = "0001369-160509122628363")
 #' }
 
-occ_download_import <- function(x=NULL, key=NULL, path=".", ...) {
+occ_download_import <- function(x=NULL, key=NULL, path=".", fill = TRUE, ...) {
   if (!is.null(x)) {
     stopifnot(inherits(x, "occ_download_get"))
     path <- x[[1]]
@@ -56,7 +61,7 @@ occ_download_import <- function(x=NULL, key=NULL, path=".", ...) {
   targetpath <- file.path(tmpdir, tpath)
   if (!file.exists(tmpdir)) stop("appropriate file not found", call. = FALSE)
   tibble::as_tibble(
-    data.table::fread(targetpath, data.table = FALSE, fill = TRUE, ...)
+    data.table::fread(targetpath, data.table = FALSE, fill = fill, ...)
   )
 }
 

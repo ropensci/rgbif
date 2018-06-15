@@ -1,7 +1,7 @@
 ## Test environments
 
-* local OS X install, R 3.3.3
-* ubuntu 12.04 (on travis-ci), R 3.3.3
+* local OS X install, R 3.4.2 patched
+* ubuntu 12.04 (on travis-ci), R 3.4.2
 * win-builder (devel and release)
 
 ## R CMD check results
@@ -22,9 +22,8 @@ File 'LICENSE':
 
 --------
 
-This version adds some new features, removes V8 package
-dependency, replaced the httr package dependency,
-moved to markdown docs, and fixed a few bugs.
+This version adds two new function, adds a vignette, improves documentation,
+changes a little bit how authentication is done, and fixes some bugs.
 
 Thanks!
 Scott Chamberlain

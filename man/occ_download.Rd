@@ -4,9 +4,8 @@
 \alias{occ_download}
 \title{Spin up a download request for GBIF occurrence data.}
 \usage{
-occ_download(..., body = NULL, type = "and",
-  user = getOption("gbif_user"), pwd = getOption("gbif_pwd"),
-  email = getOption("gbif_email"), curlopts = list())
+occ_download(..., body = NULL, type = "and", user = NULL, pwd = NULL,
+  email = NULL, curlopts = list())
 }
 \arguments{
 \item{...}{One or more of query arguments to kick of a download job.
@@ -23,15 +22,14 @@ optional}
 lessThanOrEquals (<=), greaterThan (>), greaterThanOrEquals (>=), in,
 within, not (!), like}
 
-\item{user}{(character) User name within GBIF's website. Required. Set in
-your \code{.Rprofile} file with the option \code{gbif_user}}
+\item{user}{(character) User name within GBIF's website. Required. See
+Details.}
 
-\item{pwd}{(character) User password within GBIF's website. Required. Set
-in your \code{.Rprofile} file with the option \code{gbif_pwd}}
+\item{pwd}{(character) User password within GBIF's website. Required. See
+Details.}
 
 \item{email}{(character) Email address to recieve download notice done
-email. Required. Set in your \code{.Rprofile} file with the option
-\code{gbif_email}}
+email. Required. See Details.}
 
 \item{curlopts}{list of named curl options passed on to
 \code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
@@ -95,6 +93,32 @@ Acceptable arguments to \code{...} are:
 \item recordedBy = 'RECORDED_BY'
 }
 }
+\section{Authentication}{
+
+For \code{user}, \code{pwd}, and \code{email} parameters, you can set them in one of
+three ways:
+\itemize{
+\item Set them in your \code{.Rprofile} file with the names \code{gbif_user},
+\code{gbif_pwd}, and \code{gbif_email}
+\item Set them in your \code{.Renviron}/\code{.bash_profile} (or similar) file with the
+names \code{GBIF_USER}, \code{GBIF_PWD}, and \code{GBIF_EMAIL}
+\item Simply pass strings to each of the parameters in the function
+call
+}
+
+We strongly recommend the second option - storing your details as
+environment variables as it's the most widely used way to store secrets.
+
+See \code{?Startup} for help.
+}
+
+\section{Query length}{
+
+GBIF has a limit of 12,000 characters for a download query. This means
+that you can have a pretty long query, but at some point it may lead to an
+error on GBIF's side and you'll have to split your query into a few.
+}
+
 \examples{
 \dontrun{
 # occ_download("basisOfRecord = LITERATURE")
