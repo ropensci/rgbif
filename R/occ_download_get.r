@@ -7,6 +7,7 @@
 #' `.zip` appended to the end.
 #' @param overwrite Will only overwrite existing path if TRUE.
 #' @template occ
+#' @note see [downloads] for an overview of GBIF downloads methods
 #'
 #' @details Downloads the zip file to a directory you specify on your machine.
 #' [crul::HttpClient()] is used internally to write the zip file to

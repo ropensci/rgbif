@@ -21,6 +21,9 @@ results has an array of the datasets
 \description{
 List datasets for a download
 }
+\note{
+see \link{downloads} for an overview of GBIF downloads methods
+}
 \examples{
 \dontrun{
 occ_download_datasets(key="0003983-140910143529206")

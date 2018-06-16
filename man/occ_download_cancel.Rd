@@ -43,6 +43,9 @@ success message
 or \code{PREPARING} - if none are found, returns a message saying so -
 if some found, they are cancelled, returning message saying so
 }
+\note{
+see \link{downloads} for an overview of GBIF downloads methods
+}
 \examples{
 \dontrun{
 # occ_download_cancel(key="0003984-140910143529206")

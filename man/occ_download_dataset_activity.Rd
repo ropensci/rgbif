@@ -20,6 +20,9 @@ results has an array of the downloads for the dataset
 \description{
 Lists the downloads activity of a dataset
 }
+\note{
+see \link{downloads} for an overview of GBIF downloads methods
+}
 \examples{
 \dontrun{
 res <- occ_download_dataset_activity("7f2edc10-f762-11e1-a439-00145eb45e9a")
