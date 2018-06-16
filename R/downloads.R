@@ -35,6 +35,7 @@
 #' @section Functions:
 #'
 #' - [occ_download()] - Start a download
+#' - [occ_download_queue()] - Start many downloads in a queue
 #' - [occ_download_meta()] - Get metadata progress on a single download
 #' - [occ_download_list()] - List your downloads
 #' - [occ_download_cancel()] - Cancel a download

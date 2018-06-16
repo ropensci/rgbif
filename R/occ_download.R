@@ -20,6 +20,7 @@
 #' @param email (character) Email address to recieve download notice done
 #' email. Required. See Details.
 #' @template occ
+#' @note see [downloads] for an overview of GBIF downloads methods
 #'
 #' @section Authentication:
 #' For `user`, `pwd`, and `email` parameters, you can set them in one of

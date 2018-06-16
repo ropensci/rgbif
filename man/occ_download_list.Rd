@@ -25,6 +25,9 @@ for curl options}
 \description{
 Lists the downloads created by a user.
 }
+\note{
+see \link{downloads} for an overview of GBIF downloads methods
+}
 \examples{
 \dontrun{
 occ_download_list(user="sckott")

@@ -93,6 +93,9 @@ Acceptable arguments to \code{...} are:
 \item recordedBy = 'RECORDED_BY'
 }
 }
+\note{
+see \link{downloads} for an overview of GBIF downloads methods
+}
 \section{Authentication}{
 
 For \code{user}, \code{pwd}, and \code{email} parameters, you can set them in one of

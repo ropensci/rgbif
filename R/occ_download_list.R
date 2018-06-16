@@ -9,6 +9,7 @@
 #' @param limit Number of records to return. Default: 20
 #' @param start Record number to start at. Default: 0
 #' @template occ
+#' @note see [downloads] for an overview of GBIF downloads methods
 #'
 #' @examples \dontrun{
 #' occ_download_list(user="sckott")

@@ -7,6 +7,7 @@
 #' @template occ
 #' @return a list with slots of offset, limit, endOfRecords, count, and results.
 #' results has an array of the datasets
+#' @note see [downloads] for an overview of GBIF downloads methods
 #'
 #' @examples \dontrun{
 #' occ_download_datasets(key="0003983-140910143529206")

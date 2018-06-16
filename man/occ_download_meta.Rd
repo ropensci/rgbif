@@ -17,6 +17,9 @@ for curl options}
 \description{
 Retrieves the occurrence download metadata by its unique key.
 }
+\note{
+see \link{downloads} for an overview of GBIF downloads methods
+}
 \examples{
 \dontrun{
 occ_download_meta(key="0003983-140910143529206")

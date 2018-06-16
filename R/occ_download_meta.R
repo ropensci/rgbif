@@ -5,6 +5,7 @@
 #' @param key A key generated from a request, like that from
 #' \code{occ_download}
 #' @template occ
+#' @note see [downloads] for an overview of GBIF downloads methods
 #'
 #' @examples \dontrun{
 #' occ_download_meta(key="0003983-140910143529206")

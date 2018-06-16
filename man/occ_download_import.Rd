@@ -42,6 +42,9 @@ Import a downloaded file from GBIF.
 You can provide either x as input, or both key and path. We use
 \code{\link[data.table:fread]{data.table::fread()}} internally to read data.
 }
+\note{
+see \link{downloads} for an overview of GBIF downloads methods
+}
 \examples{
 \dontrun{
 # First, kick off at least 1 download, then wait for the job to be complete

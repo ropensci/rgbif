@@ -30,6 +30,9 @@ The speed of this function is of course proportional to the size of the
 file to download. For example, a 58 MB file on my machine took about
 26 seconds.
 }
+\note{
+see \link{downloads} for an overview of GBIF downloads methods
+}
 \examples{
 \dontrun{
 occ_download_get("0000066-140928181241064")
