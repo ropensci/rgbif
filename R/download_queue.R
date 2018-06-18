@@ -82,6 +82,8 @@ GbifQueue <- R6::R6Class(
 #'
 #' @export
 #' @keywords internal
+#' @param x either a lazy object with an object of class `occ_download`, or an 
+#' object of class `occ_download_pre`
 #' @details
 #' **Methods**
 #'   \describe{
@@ -99,33 +101,48 @@ GbifQueue <- R6::R6Class(
 #' @format NULL
 #' @usage NULL
 #' @examples \dontrun{
-#' res <- DownReq$new(occ_download('taxonKey = 3119195', "year = 1991"))
-#' res
-#' res$req
-#' res$run()
+#' # res <- DownReq$new(occ_download('taxonKey = 3119195', "year = 1991"))
+#' # res
+#' # res$req
+#' # res$run()
 #' # (requests <- GbifQueue$new())
 #' # res$run(keep_track = TRUE)
 #' # requests
+#' # res$status()
+#' 
+#' # prepared query
+#' res <- DownReq$new(occ_download_("basisOfRecord = LITERATURE"))
+#' res
+#' res$run()
+#' res
 #' res$status()
+#' res$result
 #' }
 DownReq <- R6::R6Class(
   'DownReq',
   public = list(
     req = NULL,
+    type = NULL,
     result = NULL,
 
     initialize = function(x) {
       self$req <- x
+      if (inherits(self$req, "lazy")) self$type <- "lazy"
+      if (inherits(self$req, "occ_download_pre")) self$type <- "pre"
     },
 
     print = function(x, ...) {
       cat("<GBIF download single queue> ", sep = "\n")
-      print(self$req$expr)
+      print(if (self$type == "lazy") self$req$expr else self$req)
       invisible(self)
     },
 
     run = function() {
-      tmp <- tryCatch(lazyeval::lazy_eval(self$req), error = function(e) e)
+      if (self$type == "lazy") {
+        tmp <- tryCatch(lazyeval::lazy_eval(self$req), error = function(e) e)
+      } else {
+        tmp <- tryCatch(occ_download_exec(self$req), error = function(e) e)
+      }
       self$result <- if (inherits(tmp, "error")) NULL else tmp
     },
 

@@ -2,8 +2,7 @@
 #'
 #' @export
 #' @param ... any number of [occ_download()] requests
-#' @param .list any number of [occ_download()] requests as `lazy`
-#' objects, called with e.g., `lazyeval::lazy()`
+#' @param .list any number of [occ_download_()] requests
 #' @return a list of `occ_download` class objects, see [occ_download_get()]
 #' to fetch data
 #' @details This function is a convenience wrapper around [occ_download()],
@@ -19,6 +18,7 @@
 #' concurrently, but the function will usually provide for 3 running
 #' concurrently.
 #' @examples \dontrun{
+#' # passing occ_download() requests via ...
 #' out <- occ_download_queue(
 #'   occ_download('taxonKey = 3119195', "year = 1976"),
 #'   occ_download('taxonKey = 3119195', "year = 2001"),
@@ -34,6 +34,21 @@
 #'   occ_download("country = NZ", "year = 1999", "month = 3"),
 #'   occ_download("catalogNumber = Bird.27847588", "year = 1998", "month = 2")
 #' )
+#' 
+#' # using pre-prepared requests via .list
+#' keys <- c(7905507, 5384395, 8911082)
+#' queries <- list()
+#' for (i in seq_along(keys)) {
+#'   queries[[i]] <- occ_download_(
+#'     paste0("taxonKey = ", keys[i]),
+#'     "basisOfRecord = HUMAN_OBSERVATION,OBSERVATION",
+#'     "hasCoordinate = true",
+#'     "hasGeospatialIssue = false",
+#'     "year = 1993"
+#'   )
+#' }
+#' out <- occ_download_queue(.list = queries)
+#' out
 #' }
 occ_download_queue <- function(..., .list = list()) {
   # number of max concurrent requests, has to be hard-coded due to GBIF limits

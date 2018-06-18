@@ -2,9 +2,13 @@
 % Please edit documentation in R/occ_download.R
 \name{occ_download}
 \alias{occ_download}
+\alias{occ_download_}
 \title{Spin up a download request for GBIF occurrence data.}
 \usage{
 occ_download(..., body = NULL, type = "and", user = NULL, pwd = NULL,
+  email = NULL, curlopts = list())
+
+occ_download_(..., body = NULL, type = "and", user = NULL, pwd = NULL,
   email = NULL, curlopts = list())
 }
 \arguments{
@@ -96,6 +100,15 @@ Acceptable arguments to \code{...} are:
 \note{
 see \link{downloads} for an overview of GBIF downloads methods
 }
+\section{Methods}{
+
+\itemize{
+\item \code{occ_download_}: prepares a download request, but DOES NOT execute it.
+meant for use with \code{\link[=occ_download_queue]{occ_download_queue()}}
+\item \code{occ_download}: prepares a download request and DOES execute it
+}
+}
+
 \section{Authentication}{
 
 For \code{user}, \code{pwd}, and \code{email} parameters, you can set them in one of
@@ -182,6 +195,9 @@ query <- list(
   )
 )
 # res <- occ_download(body = query, curlopts = list(verbose = TRUE))
+
+# Prepared query
+occ_download_("basisOfRecord = LITERATURE")
 }
 }
 \references{
