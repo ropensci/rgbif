@@ -1,0 +1,992 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/search?q=amsterdam&limit=100
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Sun, 17 Jun 2018 05:03:12 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/dataset/search?q=amsterdam&limit=100
+      cache-control: public, max-age=600
+      x-varnish: 491356789 460721965
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '98586'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":68,"endOfRecords":true,"count":68,"results":[{"key":"c1e51d70-6166-11de-84bf-b8a03c50a862","title":"Zoological
+        Museum Amsterdam, University of Amsterdam (NL) - Platyhelminthes","description":"The
+        flatworm (Phylum Platyhelminthes) collection of the Zoological Museum Amsterdam
+        contains a broad spectrum of species and specimens from all over the world.
+        However, the major focus of the collections concerns the triclad flatworms
+        or planarians (Order Tricladida). From this group many species and specimens
+        are available of marine, freshwater, as well as terrestrial planarians, including
+        385 type specimens. The beginning of these collections of planarians can be
+        traced back to J. C. C. Loman (1856 - 1929), who described 16 new species
+        of bipaliid land planarians. The collections were considerably expanded with
+        the incorporation of the collection of Prof. Dr. Masaharu Kawakatsu into the
+        collections of the Zoological Museum Amsterdam during the period 2000-2008.","type":"OCCURRENCE","hostingOrganizationKey":"cace8d10-2646-11d8-a2da-b8a03c50a862","hostingOrganizationTitle":"Netherlands
+        Biodiversity Information Facility (NLBIF)","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[],"keywords":[],"recordCount":7771},{"key":"b6ca95b0-c066-11dd-a312-b8a03c50a862","title":"Zoological
+        Museum Amsterdam, University of Amsterdam (NL) - Bryozoa","description":"The
+        Bryozoa collection of the Zoological Museum of Amsterdam consists of ca. 3000
+        registered samples, including 210 nominal types. The collection is not currently
+        studied by ZMA staff, but the Indonesian samples, collected by the Siboga
+        Expedition in 1899-1900, are a valuable asset for the international taxonomic
+        community.","type":"OCCURRENCE","hostingOrganizationKey":"cace8d10-2646-11d8-a2da-b8a03c50a862","hostingOrganizationTitle":"Netherlands
+        Biodiversity Information Facility (NLBIF)","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[],"keywords":[],"recordCount":3006},{"key":"562cf940-6166-11de-84bf-b8a03c50a862","title":"Zoological
+        Museum Amsterdam, University of Amsterdam (NL) - Lepidoptera_Nymphalidae_Palearctic","description":"The
+        ZMAN holdings of Palaearctic Lepidoptera belong to the regalia of the collection.
+        The size of the Lepidoptera collection, the quality of the material, and the
+        fact that the greater majority of material has recently been expertly identified
+        and arranged, provide this part of the collection with a high priority for
+        digitization. Approximately 17% of this collection has now been digitised.","type":"OCCURRENCE","hostingOrganizationKey":"cace8d10-2646-11d8-a2da-b8a03c50a862","hostingOrganizationTitle":"Netherlands
+        Biodiversity Information Facility (NLBIF)","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[],"keywords":[],"recordCount":57928},{"key":"903b7df0-6166-11de-84bf-b8a03c50a862","title":"Zoological
+        Museum Amsterdam, University of Amsterdam (NL) - Pisces_Types","description":"The
+        fish collection of the Zoological Museum of Amsterdam accommodates a broad
+        collection of specimens, both fresh and marine. Collection dates of the material
+        go back to 1850.  The collection contains approximately 40.000 items and probably
+        more than 500.000 specimens, mainly preserved in alcohol. About 900 types
+        are present. Almost all recent orders are represented, with taxonomical strengths
+        in the Cypriniformes, Characiformes, Siluriformes, Cyprinodontiformes, Perciformes,
+        and Tetraodontiformes. Biogeographical focus is on the Indo-Australian Archipelago
+        (marine and fresh), and on brackish and freshwater species of South America
+        and the Caribbean.  Part of the collection lacks exact geographical data,
+        but the biggest part is provided with quite detailed information on finding
+        locations. Western European fishes have mainly been selected for their reference
+        value. Nowadays roughly 40% of the collection is digitized.\n\n\nThe most
+        important contributions to the collection have been made by:\n*  The Siboga
+        Expedition (1899-1900); M. Weber et al.\n*  Biogeography of the Indonesian
+        Archipelago; L.F. de Beaufort\n*  Biogeography of South American catfishes;
+        H. Nijssen, I. Isbruecker\n*  Netherlands Institute of Sea Research (NIOZ)\n*  Rijksinstituut
+        voor Visserijonderzoek (RIVO)","type":"OCCURRENCE","hostingOrganizationKey":"cace8d10-2646-11d8-a2da-b8a03c50a862","hostingOrganizationTitle":"Netherlands
+        Biodiversity Information Facility (NLBIF)","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[],"keywords":[],"recordCount":1851},{"key":"1ed365f0-6167-11de-84c0-b8a03c50a862","title":"Zoological
+        Museum Amsterdam, University of Amsterdam (NL) - Diptera_Tipulidae_NL","description":"The
+        ZMAN collection of Tipulidae (craneflies) from the Netherlands is one of the
+        most important collections in its kind, containing types of many species and
+        voucher specimens. Together with the Tipulidae collections in Bonn (Germany)
+        and Kiev (Ukraine), the ZMAN collection is indispensible for work on the systematics,
+        biogeography and biodiversity of this family. Material from this collection
+        has been and will be fundamental for biodiversity studies.","type":"OCCURRENCE","hostingOrganizationKey":"cace8d10-2646-11d8-a2da-b8a03c50a862","hostingOrganizationTitle":"Netherlands
+        Biodiversity Information Facility (NLBIF)","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/licenses/by/4.0/legalcode","decades":[],"keywords":[],"recordCount":9216},{"key":"b3a5b200-6167-11de-84c0-b8a03c50a862","title":"Zoological
+        Museum Amsterdam, University of Amsterdam (NL) - Diptera_Tipulidae_Palearctic","description":"The
+        western Palaearctic collection of Tipulidae (craneflies) in ZMAN is one of
+        the most important collections in its kind, containing types of many species
+        and voucher specimens from a wide range of collection sites especially from
+        the Mediterranean area. Together with the Tipulidae collections in Bonn (Germany)
+        and Kiev (Ukraine), the ZMAN collection is indispensible for work on the systematics,
+        biogeography and biodiversity of this family. Material from this collection
+        has been and will be fundamental for biodiversity studies in the Mediterranean
+        area.","type":"OCCURRENCE","hostingOrganizationKey":"cace8d10-2646-11d8-a2da-b8a03c50a862","hostingOrganizationTitle":"Netherlands
+        Biodiversity Information Facility (NLBIF)","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[],"keywords":[],"recordCount":8328},{"key":"6e27e0c0-c065-11dd-a311-b8a03c50a862","title":"Zoological
+        Museum Amsterdam, University of Amsterdam (NL) - Coleoptera_Types_Orient","description":"ZMAN
+        accommodates approximately 5250 type and 600 non-type specimens of Oriental
+        Coleoptera contained in a range of families. Digital information associated
+        with the types makes these specimens manifest for the international scientific
+        community, enables an adequate interpretation of the species, and facilitates
+        a proper reconstruction of the relevant parts of the Tree of Life.","type":"OCCURRENCE","hostingOrganizationKey":"cace8d10-2646-11d8-a2da-b8a03c50a862","hostingOrganizationTitle":"Netherlands
+        Biodiversity Information Facility (NLBIF)","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[],"keywords":[],"recordCount":5841},{"key":"ab0b73e0-c064-11dd-a311-b8a03c50a862","title":"Zoological
+        Museum Amsterdam, University of Amsterdam (NL) - Diptera_Types","description":"Diptera:
+        types (non-De Meijere)\n\nZMAN contains important type material of Diptera,
+        mainly originating from the Oriental and Australasian regions. Basically the
+        types in the Diptera collection can be divided into those of species described
+        by J. C. H. de Meijere and those that were described by other authors. The
+        approximately 1.200 De Meijere species with circa 4.000 type specimens have
+        been inventoried and their data have been digitised and made publicly available.
+        The non-De Meijere types count approximately 5200 specimens (of which 60 non-types).
+        Types constitute the unique building blocks in taxonomy and knowledge of this
+        material is essential for an adequate reconstruction of the Tree of Life.","type":"OCCURRENCE","hostingOrganizationKey":"cace8d10-2646-11d8-a2da-b8a03c50a862","hostingOrganizationTitle":"Netherlands
+        Biodiversity Information Facility (NLBIF)","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[],"keywords":[],"recordCount":5195},{"key":"f2836770-6166-11de-84bf-b8a03c50a862","title":"Zoological
+        Museum Amsterdam, University of Amsterdam (NL) - Protozoa","description":"The
+        Protozoa collection of the Zoological Museum Amsterdam is modest in size (ca.
+        100 registered samples) and modest in importance (no nominal types). Its main
+        contents are dry Foraminifera. Approximately half of the specimens are collected
+        in Indonesia during the Siboga Expedition in 1899-1900.","type":"OCCURRENCE","hostingOrganizationKey":"cace8d10-2646-11d8-a2da-b8a03c50a862","hostingOrganizationTitle":"Netherlands
+        Biodiversity Information Facility (NLBIF)","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[],"keywords":[],"recordCount":94},{"key":"985a48b0-c060-11dd-a30f-b8a03c50a862","title":"Zoological
+        Museum Amsterdam, University of Amsterdam (NL) – Herpetology","description":"The
+        collection Herpetology consists of more than 15000 registered specimens: 9500
+        reptilia (1750 species), 5500 amphibia (880 species). Because most specimens
+        are not individually labeled, the total number in the collection is probably
+        much higher: at least 50,000 specimens. Included are 353 type specimens: 1
+        cotype, 45 holotypes, 1 neotype, 26 lectotypes, 63 syntypes, 64 paralectotypes,
+        151 paratypes, 63 syntypes, 2 topotypes. Most of the material has been collected
+        in Indonesia and Suriname. There is a large collection of Chameleons (Hillenius,
+        1959), Anura from Madagascar (Blommers Schlösser, 1980; Vences, 2005); The
+        European herpetofauna is also well represented, with a focus on the Dutch
+        herpetofauna (A. Zuiderwijk) and European newts (J.W. Arntzen). The herpetologist,
+        the late Dick Hillenius, was the first curator of this collection and between
+        2002-2005 Miguel Vences curated the herpetology collection. Vences increased
+        the number of specimens from Madagascar and described numerous new species
+        based on ZMA material.","type":"OCCURRENCE","hostingOrganizationKey":"cace8d10-2646-11d8-a2da-b8a03c50a862","hostingOrganizationTitle":"Netherlands
+        Biodiversity Information Facility (NLBIF)","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[],"keywords":[]},{"key":"c8c52d9c-2080-4641-b370-6d425a03454a","title":"NDFF
+        City of Amsterdam","description":"<p>The city of Amsterdam is the capital
+        of the Netherlands and has over 850,000 inhabitants. For a metropolitan city,
+        it has a fairly small size of only 219 square kilometres, 50 of which are
+        water. For such a small city, Amsterdam has a lot of green spaces, nearly
+        a quarter of its total size.</p>\n<p>Positive observations without protocol</p>\n<p>Dataset
+        available via https://www.ndff.nl/english / serviceteamndff&#64;natuurloket.nl</p>\n<p>14,209
+        records (April 2018)</p>","type":"METADATA","hostingOrganizationKey":"6fbb8fe2-66e2-4a9e-bb39-b84665571f1c","hostingOrganizationTitle":"Dutch
+        National Database of Flora and Fauna (NDFF)","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"6fbb8fe2-66e2-4a9e-bb39-b84665571f1c","publishingOrganizationTitle":"Dutch
+        National Database of Flora and Fauna (NDFF)","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","decades":[],"keywords":["Metadata","Observation"]},{"key":"0cee5d00-6166-11de-84be-b8a03c50a862","title":"Zoological
+        Museum Amsterdam, University of Amsterdam (NL) - Invasive Insecta","description":"A
+        first selection of insect species that according to various standards can
+        be regarded as invasive in the Netherlands have been made in the ZMAN Collection.
+        The full dataset eventually will allow \nthe tracking of various invasions
+        through time.","type":"OCCURRENCE","hostingOrganizationKey":"cace8d10-2646-11d8-a2da-b8a03c50a862","hostingOrganizationTitle":"Netherlands
+        Biodiversity Information Facility (NLBIF)","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/licenses/by/4.0/legalcode","decades":[],"keywords":[]},{"key":"0d32a7f0-039c-4c8f-bea9-d7e55fd8e02b","title":"University
+        of Amsterdam (NL) - Páramo vegetation research, Ecuador.","description":"The
+        Institute for Biodiversity and Ecosystem Dynamics (IBED) from University of
+        Amsterdam (UvA) has been working on Paramos ecosystems since 1970, collecting
+        information on different aspects of plant ecology. \n\nThe dataset from the
+        Ecuador paramo''s is generated from two studies\n1. A study on Andean Paramo''s
+        ecology by H. Sturm and O. Rangel done in 1985. \n2. A phytosociological study
+        of the paramo in the Carchi province by M. Moscol-Olivera and A. M. Cleef
+        in 2009.\n\nBoth studies All studies provide information on the occurrence
+        and location of 1867 plant species from the Paramo in this area sampled in
+        101 releves.  \n\nFor the purpose of the GBIF data-publishing, vegetation
+        releve data were converted into species occurrence data.","type":"OCCURRENCE","hostingOrganizationKey":"1f55bd0a-6ebe-49a1-8a9c-9258702b6f46","hostingOrganizationTitle":"University
+        of Amsterdam / IBED","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"1f55bd0a-6ebe-49a1-8a9c-9258702b6f46","publishingOrganizationTitle":"University
+        of Amsterdam / IBED","license":"http://creativecommons.org/licenses/by/4.0/legalcode","decades":[1980,1990,2000],"keywords":["Paramo\nSouth
+        America\nEcuador\nPáramo vegetation \nAltitude\nAltitudinal zonation\nRéleve
+        method\nBraun-Blanquet method\nConservation\nDiversity","Observation","Occurrence"],"recordCount":1808},{"key":"0d384803-0d1b-4409-ada1-22d8009ecfa9","title":"University
+        of Amsterdam (NL) - Páramo vegetation research, Venezuela.","description":"The
+        Institute for Biodiversity and Ecosystem Dynamics (IBED) from University of
+        Amsterdam (UvA) has been working on the Paramos of Colombia since 1970, collecting
+        information on different aspects of plant ecology.\n\nThe data source is the
+        field data from professor Antoine Cleef (collected in 1978 and 1984). The
+        study provides information on the occurrence and location of 159 plant species
+        from the Paramo in this area, collected in 17 releves. \n\nFor the purpose
+        of the GBIF data-publishing, vegetation releve data were converted into species
+        occurrence data.","type":"OCCURRENCE","hostingOrganizationKey":"1f55bd0a-6ebe-49a1-8a9c-9258702b6f46","hostingOrganizationTitle":"University
+        of Amsterdam / IBED","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"1f55bd0a-6ebe-49a1-8a9c-9258702b6f46","publishingOrganizationTitle":"University
+        of Amsterdam / IBED","license":"http://creativecommons.org/licenses/by/4.0/legalcode","decades":[1970,1980],"keywords":["Venezuela\nAndean
+        Paramos\nMerida\nPáramo vegetation \nAltitude\nRéleve method\nBraun-Blanquet
+        method\nConservation","Observation","Occurrence"],"recordCount":159},{"key":"1edaeec2-9fdf-48d2-a459-2bb8635e9aba","title":"University
+        of Amsterdam (NL) - Páramo pollen reference collection","description":"Pollen
+        samples from Páramo plants collected by A.M. Cleef and from various herbaria.
+        The collection is used as a reference collection for palynological research.","type":"OCCURRENCE","hostingOrganizationKey":"1f55bd0a-6ebe-49a1-8a9c-9258702b6f46","hostingOrganizationTitle":"University
+        of Amsterdam / IBED","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"1f55bd0a-6ebe-49a1-8a9c-9258702b6f46","publishingOrganizationTitle":"University
+        of Amsterdam / IBED","license":"http://creativecommons.org/licenses/by/4.0/legalcode","decades":[1900,1910,1920,1930,1940,1950,1960,1970,1980,1990,2000,2010],"keywords":["South
+        America","Colombia","Andes","Palynology","Northern Andes","Ecology","Paramo","Spores","Latin
+        America","Specimen","Páramo","Pollen","Occurrence"],"recordCount":1706},{"key":"ebbe25bd-c0ce-4c14-9608-3a55fed82620","title":"City
+        of Amsterdam (NL) - Fyke Fishing Piet Ruiter","description":"Piet Ruiter is
+        a commercial fisherman in the Harbour of Amsterdam who is conducting fish
+        monitoring commisioned by Waternet, Amsterdam Harbor and the City of Amsterdam.
+        This monitoring project has started in 2012 and will continue in the future.","type":"OCCURRENCE","hostingOrganizationKey":"cace8d10-2646-11d8-a2da-b8a03c50a862","hostingOrganizationTitle":"Netherlands
+        Biodiversity Information Facility (NLBIF)","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"7f6110d7-d156-47a4-b2e4-c67c12a481ca","publishingOrganizationTitle":"City
+        of Amsterdam","license":"http://creativecommons.org/licenses/by/4.0/legalcode","decades":[2010],"keywords":["Observation","Occurrence"],"recordCount":8928},{"key":"c8db36cf-6b3e-403f-b609-dc0b6ef0cc05","title":"University
+        of Amsterdam (NL) - Páramo vegetation research, Central Andean Cordillera
+        - Colombia","description":"The Institute for Biodiversity and Ecosystem Dynamics
+        (IBED) from University of Amsterdam (UvA) has been working on the Paramos
+        of Colombia since 1970, collecting information on different aspects of plant
+        ecology in the paramo.\n\nThe Central Cordillera area include the National
+        Natural Park Los Nevados, National Natural Park Purace and Nevado del Huila.
+        This dataset is generated from 5 sources: \n1. A study by Helmut Sturm and
+        Orlando Rangel in 1985 about the ecology of Andean paramos, in the National
+        Natural Park Los Nevados and in the Nevado del Huila (Huila volcano).\n2.
+        A study of monitoring and modelling of diverse and dynamic ecosystems in the
+        paramos of los Nevados National Park by Bob Pels in 1990.\n3. A Ph.D. study
+        about the vegetation of the paramo and its dynamics in the volcanic massif
+        Ruiz-Tolima, done by Sonia Salamanca in 1991, this project was part of a bigger
+        project called ECOANDES which cover different aspects of the ecology of the
+        central cordillera in Colombia.\n4.A study on the phytosociology of plant
+        communities of the National Natural Park Purace, done by Andres Duque in 1988.\nAll
+        studies provided information on the occurrence and location of 6947 plant
+        species from the Paramo in this area collected in 332 releves. \n\nFor the
+        purpose of the GBIF data-publishing, vegetation releve data were converted
+        into species occurrence data.","type":"OCCURRENCE","hostingOrganizationKey":"1f55bd0a-6ebe-49a1-8a9c-9258702b6f46","hostingOrganizationTitle":"University
+        of Amsterdam / IBED","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"1f55bd0a-6ebe-49a1-8a9c-9258702b6f46","publishingOrganizationTitle":"University
+        of Amsterdam / IBED","license":"http://creativecommons.org/licenses/by/4.0/legalcode","decades":[1970,1980],"keywords":["Colombia\nAndean
+        Paramos\nNational Natural Park Los Nevados\nNatiioanl Natural Park Nevado
+        del Huila\nNational Natural Park Purace\nPáramo vegetation \nAltitude\nAltitudinal
+        zonation\nRéleve method\nBraun-Blanquet method\nConservation\nDiversity\nZonal
+        and azonal vegetation","Observation","Occurrence"],"recordCount":6947},{"key":"50361be0-d9cd-11de-b793-b8a03c50a862","title":"University
+        of Amsterdam (NL) – Benthos monitoring of the North Sea research database","description":"Benthos
+        monitoring data from the North Sea between 1990 and 2002. The database was
+        compiled from different sources, mainly under the “Biodiversity and Global
+        Change” (BIGC) programme of the “Netherlands Organisation for Scientific Research”
+        (NWO).","type":"OCCURRENCE","hostingOrganizationKey":"1f55bd0a-6ebe-49a1-8a9c-9258702b6f46","hostingOrganizationTitle":"University
+        of Amsterdam / IBED","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"1f55bd0a-6ebe-49a1-8a9c-9258702b6f46","publishingOrganizationTitle":"University
+        of Amsterdam / IBED","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[],"keywords":["Chaetognatha","benthos","Chordata","Phoronida","Echinodermata","Cephalorhyncha","North
+        Sea","Echiura","Annelida","Sipuncula","Arthropoda","Cnidaria","observations","Observation","Mollusca","Occurrence"],"recordCount":29691},{"key":"39b07c5d-caa9-4118-b803-290d667cdd5e","title":"University
+        of Amsterdam (NL) - Páramo vegetation research, Western Andean Cordillera","description":"The
+        Institute for Biodiversity and Ecosystem Dynamics (IBED) from University of
+        Amsterdam (UvA) has been working on the Paramos of Colombia since 1970, collecting
+        information on different aspects of plant ecology.\n\nThe Western Cordillera
+        dataset is generated from 5 sources: \n1. A study about the paramo vegetation
+        in the Nariño volcanoes, Orlando Rangel-Ch and Clara Ariza published in 2000.\n2.
+        A study by Helmut Sturm and Orlando Rangel in 1985 about the ecology of andean
+        paramos, in the volcanoes of Cumbal and Chiles.\n3 and 4. The field data from
+        professor Antoine Cleef (1984) with Sonia Salamanca under the ECOANDES project
+        (Tatama transect), collected in the upper part of Tatama massif. Also data
+        collected (in 1983) under the same project by T. van der Hammen, O. Rangel
+        and A. Cleef and published in a study of the paramo vegetation of the Tatama
+        massif in 2005.\n5. A study about sinecology, diversity and conservation of
+        Andean vegetation in Argelia, Cauca published in 1995 by M.L. Becking.\n\nAll
+        studies provide information on the occurrence and location of 2983 plant species
+        from the Paramo in this area collected in 139 releves. \n\nFor the purpose
+        of the GBIF data-publishing, vegetation releve data were converted into species
+        occurrence data.","type":"OCCURRENCE","hostingOrganizationKey":"1f55bd0a-6ebe-49a1-8a9c-9258702b6f46","hostingOrganizationTitle":"University
+        of Amsterdam / IBED","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"1f55bd0a-6ebe-49a1-8a9c-9258702b6f46","publishingOrganizationTitle":"University
+        of Amsterdam / IBED","license":"http://creativecommons.org/licenses/by/4.0/legalcode","decades":[1970,1980,1990],"keywords":["Colombia\nAndean
+        Paramos\nTatama\nFrontino\nGaleras","Cumbal volcanos\nPáramo vegetation \nAltitude\nRéleve
+        method\nBraun-Blanquet method\nConservation\nDiversity","Observation","Chiles","Occurrence"],"recordCount":2983},{"key":"aa53b19b-ee49-4ff6-963d-2d9499808b72","title":"University
+        of Amsterdam (NL) - Páramo vegetation research, Santa Marta and Perijá, Colombia","description":"The
+        Institute for Biodiversity and Ecosystem Dynamics (IBED) from University of
+        Amsterdam (UvA) has been working on the Paramos of Colombia since 1970, collecting
+        information on different aspects of plant ecology.\n\nThe Santa Marta and
+        Perijá paramo complex dataset is generated from five sources. \n1. A study
+        on the vegetation of tropical ecosystems, in the Sierra Nevada de Santa Marta,
+        particularly in the sector Buritaca - La Cumbre, by A. Cleef and O. Rangel
+        in 1984 (in van der Hammen and Ruiz, 1984). \n2. A study on Andean Paramo''s
+        ecology by H. Sturm and O. Rangel done in 1985.\n3. Field data from professor
+        Antoine Cleef derived from the ECOANDES project) in 1984\n4. A study about
+        the paramo vegetation in the north of Colombia (Sierra nevada de Santa Marta
+        and Serrania Perija) by J.H. Pinto-Zarate and O. Rangel-Ch in 2010.\n5. A
+        study about the high mountain vegetation of Perija, done by O. Rangel-Ch and
+        H. Arrellano-P in 2007.\nAll studies provide information on the occurrence
+        and location of 1506 plant species from the Paramo in this area sampled in
+        91 releves.  \n\nFor the purpose of the GBIF data-publishing, vegetation releve
+        data were converted into species occurrence data.","type":"OCCURRENCE","hostingOrganizationKey":"1f55bd0a-6ebe-49a1-8a9c-9258702b6f46","hostingOrganizationTitle":"University
+        of Amsterdam / IBED","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"1f55bd0a-6ebe-49a1-8a9c-9258702b6f46","publishingOrganizationTitle":"University
+        of Amsterdam / IBED","license":"http://creativecommons.org/licenses/by/4.0/legalcode","decades":[1970,1980,1990,2000],"keywords":["Observation","Colombia\nAndean
+        Paramos\nSierra Nevada de Santa Marta\nSerrania Perijá (massif)\nPáramo vegetation
+        \nAltitude\nAltitudinal zonation\nRéleve method\nBraun-Blanquet method\nConservation\nDiversity","Occurrence"],"recordCount":1506},{"key":"4a837446-cdcd-411b-8d51-5b8184890bcc","title":"University
+        of Amsterdam (NL) - Páramo vegetation research, Talamanca Cordillera, Costa
+        Rica","description":"Research was led by Dr. Antoine M. Cleef from University
+        of Amsterdam and Dr. Adelaida Chaverri Polini from National University of
+        Costa Rica. The authors studied the phytosociology and phytogeography at the
+        National Park Chirripó, located in the Talamanca mountain range. The project
+        aimed to know the páramo communities of Central America, as the first approach
+        to protect this ecosystem in Costa Rica. \n\nThe study provide information
+        on the occurrence and location of 724 plant species from the Paramo in this
+        area collected in 45 releves. \n\nFor the purpose of the GBIF data-publishing,
+        vegetation releve data were converted into species occurrence data.","type":"OCCURRENCE","hostingOrganizationKey":"1f55bd0a-6ebe-49a1-8a9c-9258702b6f46","hostingOrganizationTitle":"University
+        of Amsterdam / IBED","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"1f55bd0a-6ebe-49a1-8a9c-9258702b6f46","publishingOrganizationTitle":"University
+        of Amsterdam / IBED","license":"http://creativecommons.org/licenses/by/4.0/legalcode","decades":[1980],"keywords":["Observation","Paramo\nCentral
+        America\nCosta Rica\nTalamanca Cordillera \nChirripo National Park\nPáramo
+        vegetation \nAltitude\nAltitudinal zonation\nRéleve method\nBraun-Blanquet
+        method\nConservation\nDiversity","Occurrence"],"recordCount":724},{"key":"f5d17a6d-5b53-4bac-b952-d6503839aed7","title":"University
+        of Amsterdam (NL) - Páramo Vegetation Research, Paramo \"El Almorzadero\",
+        Colombia","description":"The Institute for Biodiversity and Ecosystem Dynamics
+        (IBED) from University of Amsterdam (UvA) has been working on the Paramos
+        of Colombia since 1970, collecting information on different aspects of plant
+        ecology.\n\nThe data source is the field data from professor Antoine Cleef
+        (collected in one field campaign in 1978) as part of his PhD thesis, finished
+        in 1981. The study provides information on the occurrence and location of
+        314 plant species from the Paramo in this area. \n\nFor the purpose of the
+        GBIF data-publishing, vegetation releve data were converted into species occurrence
+        data.","type":"OCCURRENCE","hostingOrganizationKey":"1f55bd0a-6ebe-49a1-8a9c-9258702b6f46","hostingOrganizationTitle":"University
+        of Amsterdam / IBED","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"1f55bd0a-6ebe-49a1-8a9c-9258702b6f46","publishingOrganizationTitle":"University
+        of Amsterdam / IBED","license":"http://creativecommons.org/licenses/by/4.0/legalcode","decades":[1970],"keywords":["Colombia\nAndean
+        Paramos\nEastern cordillera\n\"El Almorzadero\" paramo complex\nPáramo vegetation
+        \nAltitude\nRéleve method\nBraun-Blanquet method\nConservation","Observation","Occurrence"],"recordCount":314},{"key":"b5fcea14-86cc-4b97-a0d1-eb604d56ad84","title":"University
+        of Amsterdam (NL) - Páramo Vegetation Research, Bordoncillo - Nariño, Colombia","description":"The
+        Institute for Biodiversity and Ecosystem Dynamics (IBED) from University of
+        Amsterdam (UvA) has been working on the Paramos of Colombia since 1970, collecting
+        information on different aspects of plant ecology.\n\nThe Bordoncillo dataset
+        is generated from a part of a study from Orlando Rangel, done in 1987 about
+        the paramo vegetation of the volcanos of the Nariño province. The vegetation
+        in Bordoncillo groups shrubs with plant rosettes (frailejonal) of the Ugno
+        myricoides-Espeletetium hartwegianae association.\n\nThis is a small data
+        set which provides information on the occurrence and location of 51 plant
+        species from the Paramo in this area. \n\nFor the purpose of the GBIF data-publishing,
+        vegetation releve data were converted into species occurrence data.","type":"OCCURRENCE","hostingOrganizationKey":"1f55bd0a-6ebe-49a1-8a9c-9258702b6f46","hostingOrganizationTitle":"University
+        of Amsterdam / IBED","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"1f55bd0a-6ebe-49a1-8a9c-9258702b6f46","publishingOrganizationTitle":"University
+        of Amsterdam / IBED","license":"http://creativecommons.org/licenses/by/4.0/legalcode","decades":[1980],"keywords":["Colombia\nAndean
+        Paramos\nBordoncillo Paramo\nVolcanos\nPáramo vegetation \nAltitude\nRéleve
+        method\nBraun-Blanquet method\nConservation\nVegation alliances","Observation","Occurrence"],"recordCount":51},{"key":"5e50896f-8bbd-43e7-9ba5-ef7ed7b3e865","title":"University
+        of Amsterdam (NL) - Páramo Vegetation Research, Chingaza - Cruz Verde - Monserrate
+        -Guasca, Colombia","description":"The Institute for Biodiversity and Ecosystem
+        Dynamics (IBED) from University of Amsterdam (UvA) has been working on the
+        Paramos of Colombia since 1970, collecting information on different aspects
+        of plant ecology.\n\nChingaza, Cruz Verde, Monserrate and Guasca dataset is
+        generated from six sources. \n1. A study about the vegetation of the Natural
+        National Park Chingaza by Rangel-Ch y Ariza published in 2000.\n2. A vegetation
+        mapping study done also in the Natural National Park Chingaza by Dierrikx
+        and Kaandorp done in 1986.\n3. A study on Andean Paramo''s ecology by H. Sturm
+        and O. Rangel done in 1985.\n4. A study on the phytosociological analysis
+        of paramo vegetation by R. Sanchez and O. Rangel in 1990.\n5. A study of limit
+        vegetation ecology done by M.L. Becking and J.J. Smeets in 1989 part of the
+        ECOANDES project.\n6. A study on the description of paramo vegetation communities
+        by O. Vargas and D. Rivera in 1991.\n\nAll studies provide information on
+        the occurrence and location of 13949 plant species from the Paramo in this
+        area collected in 631 releves. \n\nFor the purpose of the GBIF data-publishing,
+        vegetation releve data were converted into species occurrence data.","type":"OCCURRENCE","hostingOrganizationKey":"1f55bd0a-6ebe-49a1-8a9c-9258702b6f46","hostingOrganizationTitle":"University
+        of Amsterdam / IBED","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"1f55bd0a-6ebe-49a1-8a9c-9258702b6f46","publishingOrganizationTitle":"University
+        of Amsterdam / IBED","license":"http://creativecommons.org/licenses/by/4.0/legalcode","decades":[1970,1980],"keywords":["Observation","Colombia\nAndean
+        Paramos\nPáramo vegetation\nNational Natural Park Chingaza\nCruz verde paramo
+        \nMonserrate paramo\nGuasca paramo\nAltitude\nRéleve method\nBraun-Blanquet
+        method\nConservation","Occurrence"],"recordCount":13949},{"key":"6fe8dde0-7ef1-41c0-ba0f-ecf41ac2d342","title":"University
+        of Amsterdam (NL) - Páramo Vegetation Research, Rabanal, Guerrero and Villa
+        de Leyva paramo complex, Colombia","description":"The Institute for Biodiversity
+        and Ecosystem Dynamics (IBED) from University of Amsterdam (UvA) has been
+        working on the Paramos of Colombia since 1970, collecting information on different
+        aspects of plant ecology.\n\nThe Rabanal, Guerrero and Villa de Leyva paramo
+        complex data set is generated from six sources. \n1. Field data from professor
+        Antoine Cleef (derived from his PhD thesis on paramo vegetation in the eastern
+        cordillera (1981), the ECOANDES project and independent field trips), the
+        data wascollected in four field campaigns in 1977, 1983, 1984 and 1989. \n2.A
+        study on Andean Paramo''s ecology by H. Sturm and O. Rangel done in 1985.\n3.A
+        study on the phytosociological analysis of paramo vegetation by R. Sanchez
+        and O. Rangel in 1990.\n4. A study about the influence of potato cultivation
+        in the paramo vegetatation by W. Ferwerda in 1987. \n5. A study of limit vegetation
+        ecology done by M.L. Becking and J.j. Smeets in 1989 part of the ECOANDES
+        project.\n6. A study on the description of paramo vegetation by R. Bekker
+        and A. Cleef in 1985.\n\nAll studies provide information on the occurrence
+        and location of 7868 plant species from the Paramo in this area.  \n\nFor
+        the purpose of the GBIF data-publishing, vegetation releve data were converted
+        into species occurrence data.","type":"OCCURRENCE","hostingOrganizationKey":"1f55bd0a-6ebe-49a1-8a9c-9258702b6f46","hostingOrganizationTitle":"University
+        of Amsterdam / IBED","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"1f55bd0a-6ebe-49a1-8a9c-9258702b6f46","publishingOrganizationTitle":"University
+        of Amsterdam / IBED","license":"http://creativecommons.org/licenses/by/4.0/legalcode","decades":[1970,1980],"keywords":["Observation","Colombia\nAndean
+        Paramos\nPáramo vegetation \nRabanal paramo\nGuerrero paramo complex\nAltitude\nRéleve
+        method\nBraun-Blanquet method\nConservation","Occurrence"],"recordCount":7868},{"key":"e567684d-9998-4604-9790-b0ac00e090c1","title":"University
+        of Amsterdam (NL) - Páramo Vegetation Research, Sumapaz-Bocagrande-Chisaca
+        paramo complex, Colombia","description":"The Institute for Biodiversity and
+        Ecosystem Dynamics (IBED) from University of Amsterdam (UvA) has been working
+        on the Paramos of Colombia since 1970, in collaboration with Colombian researches
+        and collecting information on different aspects of plant ecology.\nThe Sumapaz
+        dataset is generated from five studies. One done by Helmut Sturm and Orlando
+        Rangel in 1985 about the ecology of andean paramos. The second source is the
+        field data from professor Antoine Cleef (collected in different field campaigns
+        between in 1977, 1981 and 1984) some of those were part of his PhD thesis
+        (1981). Also data was provided by the  ECOANDES project (vol. 7) which was
+        dedicated only to the Sumapaz area. Another study from Sanchez and Rangel
+        in 1990 provides vegetation information of paramo complexes located close
+        by Bogota. Finally another study by Ernst and Seljee from 1988 provides information
+        about the vegetation of the Bocagrande Paramo. \nThis is a dataset providing
+        information on the occurrence and location of 4494 plant species from the
+        Paramo in this area, collected in 212 releves. \nFor the purpose of the GBIF
+        data-publishing, vegetation releve data were converted into species occurrence
+        data.","type":"OCCURRENCE","hostingOrganizationKey":"1f55bd0a-6ebe-49a1-8a9c-9258702b6f46","hostingOrganizationTitle":"University
+        of Amsterdam / IBED","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"1f55bd0a-6ebe-49a1-8a9c-9258702b6f46","publishingOrganizationTitle":"University
+        of Amsterdam / IBED","license":"http://creativecommons.org/licenses/by/4.0/legalcode","decades":[1970,1980],"keywords":["Observation","Colombia\nAndean
+        Paramos\nNational Natural Park Sumapaz\nPáramo vegetation \nAltitude\nRéleve
+        method\nBraun-Blanquet method\nDiversity\nConservation","Occurrence"],"recordCount":4494},{"key":"0b328835-ea95-4ec3-a0f4-dd2dba993f1f","title":"University
+        of Amsterdam (NL) - Páramo Vegetation Research, National Natural Park El Cocuy,
+        Colombia","description":"The Institute for Biodiversity and Ecosystem Dynamics
+        (IBED) from University of Amsterdam (UvA) has been working on the Paramos
+        of Colombia since 1970, collecting information on different aspects of plant
+        ecology.\n\nThe Sierra Nevada del Cocuy data set is generated from two sources,
+        one is the field data from professor Antoine Cleef (collected in different
+        field campaigns between 1972 and 2012, derived from his PhD thesis (1981),
+        the ECOANDES project and independent field trips) and the second is a study
+        on paramo ecology by Helmut Sturm and Orlando Rangel in 1985. Both studies
+        provide information on the occurrence and location of 2147 plant species from
+        the Paramo in this area. \n\nFor the purpose of the GBIF data-publishing,
+        vegetation releve data were converted into species occurrence data.","type":"OCCURRENCE","hostingOrganizationKey":"1f55bd0a-6ebe-49a1-8a9c-9258702b6f46","hostingOrganizationTitle":"University
+        of Amsterdam / IBED","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"1f55bd0a-6ebe-49a1-8a9c-9258702b6f46","publishingOrganizationTitle":"University
+        of Amsterdam / IBED","license":"http://creativecommons.org/licenses/by/4.0/legalcode","decades":[1970,1980,1990,2000,2010],"keywords":["Colombia\nAndean
+        Paramos\nNational Natural Park El Cocuy\nPáramo vegetation \nAltitude\nRéleve
+        method\nBraun-Blanquet method\nConservation","Observation","Occurrence"],"recordCount":2147},{"key":"3953ab4f-958f-4943-8608-ca5da345447c","title":"University
+        of Amsterdam (NL) - Páramo Vegetation Research, paramo in the Sabana de Bogota
+        area, Colombia","description":"The Institute for Biodiversity and Ecosystem
+        Dynamics (IBED) from University of Amsterdam (UvA) has been working on the
+        Paramos of Colombia since 1970, collecting information on different aspects
+        of plant ecology.\n\nThe data source is the field data from professor Antoine
+        Cleef (collected in one field campaign in 1978) as part of his PhD thesis,
+        finished in 1981. The study provides information on the occurrence and location
+        of 90 plant species from the Paramo in this area. \n\nFor the purpose of the
+        GBIF data-publishing, vegetation releve data were converted into species occurrence
+        data.","type":"OCCURRENCE","hostingOrganizationKey":"1f55bd0a-6ebe-49a1-8a9c-9258702b6f46","hostingOrganizationTitle":"University
+        of Amsterdam / IBED","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"1f55bd0a-6ebe-49a1-8a9c-9258702b6f46","publishingOrganizationTitle":"University
+        of Amsterdam / IBED","license":"http://creativecommons.org/licenses/by/4.0/legalcode","decades":[1980],"keywords":["Colombia\nAndean
+        Paramos\nEastern cordillera\nSabana de Bogotá\nPáramo vegetation \nAltitude\nRéleve
+        method\nBraun-Blanquet method\nConservation","Observation","Occurrence"],"recordCount":90},{"key":"84881ef8-a565-4124-9102-253954c419f4","title":"University
+        of Amsterdam (NL) - Páramo Vegetation Research, Paramos \"Guantiva -La Rusia\",
+        Colombia","description":"The Institute for Biodiversity and Ecosystem Dynamics
+        (IBED) from University of Amsterdam (UvA) has been working on the Paramos
+        of Colombia since 1970, collecting information on different aspects of plant
+        ecology.\n\nThe dataset  Paramos  \"Guantiva -La Rusia\" is generated from
+        the field data from professor Antoine Cleef (collected in one field campaign
+        in 1973), as part of his PhD thesis (finished in 1981). The study provides
+        information on the occurrence and location of 75 plant species from the Paramo
+        in this area. \n\nFor the purpose of the GBIF data-publishing, vegetation
+        releve data were converted into species occurrence data.","type":"OCCURRENCE","hostingOrganizationKey":"1f55bd0a-6ebe-49a1-8a9c-9258702b6f46","hostingOrganizationTitle":"University
+        of Amsterdam / IBED","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"1f55bd0a-6ebe-49a1-8a9c-9258702b6f46","publishingOrganizationTitle":"University
+        of Amsterdam / IBED","license":"http://creativecommons.org/licenses/by/4.0/legalcode","decades":[1970],"keywords":["Colombia\nAndean
+        Paramos\nParamo complex Guantiva - La Rusia\nPáramo vegetation \nAltitude\nRéleve
+        method\nBraun-Blanquet method\nConservation","Observation","Occurrence"],"recordCount":75},{"key":"a1666642-5202-4dcf-886f-25000798838e","title":"New
+        records of West Palaearctic Limoniidae, Pediciidae and Cylindrotomidae (Diptera)
+        from the collections of the Zoological Museum, Amsterdam","description":"This
+        dataset contains the digitized treatments in Plazi based on the original journal
+        article Ÿ, Jaroslav Star, Oosterbroek, Pjotr (2008): New records of West Palaearctic
+        Limoniidae, Pediciidae and Cylindrotomidae (Diptera) from the collections
+        of the Zoological Museum, Amsterdam. Zootaxa 1922: 1-20, DOI: 10.5281/zenodo.184739","type":"CHECKLIST","hostingOrganizationKey":"7ce8aef0-9e92-11dc-8738-b8a03c50a862","hostingOrganizationTitle":"Plazi.org
+        taxonomic treatments database","countryCoverage":[],"publishingCountry":"DE","publishingOrganizationKey":"7ce8aef0-9e92-11dc-8738-b8a03c50a862","publishingOrganizationTitle":"Plazi.org
+        taxonomic treatments database","license":"http://creativecommons.org/licenses/by/4.0/legalcode","decades":[],"keywords":[],"recordCount":115},{"key":"d65d51d3-dda3-4bad-9d80-8fcb46a782f7","title":"The
+        genus Luticola (Bacillariophyta) on Ile Amsterdam and Ile Saint-Paul (Southern
+        Indian Ocean) with the description of two new species","description":"This
+        dataset contains the digitized treatments in Plazi based on the original journal
+        article Chattová, Barbora, Lebouvier, Marc, Haan, Myriam De, Vijver, Bart
+        Van De (2017): The genus Luticola (Bacillariophyta) on Ile Amsterdam and Ile
+        Saint-Paul (Southern Indian Ocean) with the description of two new species.
+        European Journal of Taxonomy 387: 1-17, DOI: https://doi.org/10.5852/ejt.2017.387","type":"CHECKLIST","hostingOrganizationKey":"7ce8aef0-9e92-11dc-8738-b8a03c50a862","hostingOrganizationTitle":"Plazi.org
+        taxonomic treatments database","countryCoverage":[],"publishingCountry":"DE","publishingOrganizationKey":"7ce8aef0-9e92-11dc-8738-b8a03c50a862","publishingOrganizationTitle":"Plazi.org
+        taxonomic treatments database","license":"http://creativecommons.org/licenses/by/4.0/legalcode","decades":[],"keywords":[],"recordCount":10},{"key":"fccafd83-a934-4021-a112-4ae5fd39c14b","title":"Naturalis
+        Biodiversity Center (NL) - Amphibia and Reptilia","description":"Database
+        contains specimen records from the Amphibia and Reptilia collection of the
+        Naturalis Biodiversity Center (Leiden, Netherlands). These zoological specimens
+        come from the National Museum of Natural History (RMNH; Rijksmuseum voor Natuurlijke
+        Historie), later National Museum of Natural History, Naturalis in Leiden The
+        Amphibia and Reptilia collection of the former Zoological Museum Amsterdam
+        (ZMA) is now also housed in Naturalis Biodiversity Center and the dataset
+        was hosted earlier on the GBIF dataportal as &#34;Zoological Museum Amsterdam,
+        University of Amsterdam (NL) – Herpetology&#34;","type":"OCCURRENCE","hostingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","hostingOrganizationTitle":"Naturalis
+        Biodiversity Center","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[],"keywords":["Specimen","Occurrence"]},{"key":"bd246610-0e2d-11de-b8e6-b8a03c50a862","title":"Seed
+        collection – dead seeds for evaluation and observation purposes","description":"The
+        collection includes seeds of weeds collected in agricultural fields, fallows,
+        balks, etc., as well as crop seeds. These seeds were collected by Asst. Kulpa,
+        the founder of this collection and also come from botanical gardens from different
+        parts of the world, e.g. from Brussels (Belgium), Riga (Latvia), Coimbra (Portugal),
+        Jasi and Bucharest (Romania), Strasbourg (France), Dresden, Gatersleben and
+        Leipzig (Germany), Uppsala (Sweden), Vienna (Austria), Basil (Switzerland),
+        Amsterdam (Netherlands), Brno (Czech Republic). Most of the material was received
+        in the 1980''s and 1990''s.","type":"OCCURRENCE","hostingOrganizationKey":"04665d80-7e5f-11d8-a1a0-b8a03c50a862","hostingOrganizationTitle":"University
+        of Warsaw, Dept. of Ecology","countryCoverage":[],"publishingCountry":"PL","publishingOrganizationKey":"24c3dc90-822b-11d8-b7ed-b8a03c50a862","publishingOrganizationTitle":"Plant
+        Breeding and Acclimatization Institute (IHAR) - National Research Institute","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","decades":[],"keywords":["Specimen","Occurrence"],"recordCount":20802},{"key":"d962a7dc-2183-4824-bb88-5e0ba14ec62d","title":"Naturalis
+        Biodiversity Center (NL) - Mollusca","description":"Database contains specimen
+        records from the Mollusca collection of the Naturalis Biodiversity Center
+        (Leiden, Netherlands). The zoological specimens come from the National Museum
+        of Natural History (RMNH; Rijksmuseum voor Natuurlijke Historie), later National
+        Museum of Natural History, Naturalis in Leiden and the Zoological Museum Amsterdam
+        (ZMA) and new acquisitions. This database replaces the dataset &#34;Zoological
+        Museum Amsterdam, University of Amsterdam (NL) – Mollusca_Conidae&#34;, &#34;Zoological
+        Museum Amsterdam, University of Amsterdam (NL) – Mollusca_Netherlands&#34;,
+        and &#34;Zoological Museum Amsterdam, University of Amsterdam (NL) – Mollusca_Pectinoidea&#34;
+        which were hosted earlier on the GBIF dataportal and contains many new and
+        updated records, especially from the RMNH collection. This dataset is an abstract
+        of the Naturalis production database (BRD) of 2012-12-12. The datasets Zoological
+        Museum Amsterdam, University of Amsterdam (NL) – Mollusca_Types, and Naturalis
+        National Natural History Museum (NL) – Mollusca fossils, are still separately
+        hosted at GBIF, and are not included in this dataset. The old registration
+        numbers of the former institutions (RMNH, ZMA) are also mentioned in the dataset.
+        The Naturalis BC collection contains over 42.000 species of Recent Mollusca.
+        Locality data have only been added in part to this molluscan dataset. Many
+        identifications are original and can be as old as over a century. Many species
+        level names were recently (2011-2012) updated with the help of literature
+        and web based taxonomic databases containing synonymies.","type":"OCCURRENCE","hostingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","hostingOrganizationTitle":"Naturalis
+        Biodiversity Center","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[],"keywords":["Specimen","Occurrence"]},{"key":"009a76f6-0960-4a56-a116-63991e6bb037","title":"Naturalis
+        Biodiversity Center (NL) - Mammalia","description":"Database contains specimen
+        records from the Mammalia collection of the Naturalis Biodiversity Center
+        (Leiden, Netherlands). The zoological specimens come from the National Museum
+        of Natural History (RMNH; Rijksmuseum voor Natuurlijke Historie), later National
+        Museum of Natural History, Naturalis in Leiden and the Zoological Museum Amsterdam
+        (ZMA) and new acquisitions. This database replaces the dataset &#34;Zoological
+        Museum Amsterdam, University of Amsterdam (NL) – Mammalia&#34; which was hosted
+        earlier on the GBIF dataportal and contains many new and updated records,
+        especially from the RMNH collection. The old registration numbers of the former
+        institutions (RMNH, ZMA) are also mentioned in the dataset.","type":"OCCURRENCE","hostingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","hostingOrganizationTitle":"Naturalis
+        Biodiversity Center","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[],"keywords":["Specimen","Occurrence"]},{"key":"889c91a3-614f-4355-8df8-b6d0260a118c","title":"Naturalis
+        Biodiversity Center (NL) - Aves","description":"Database contains specimen
+        records from the bird collection of the Naturalis Biodiversity Center (Leiden,
+        Netherlands). The specimens originate from the collection of the former Naturalis
+        National Museum of Natural History (RMNH; Rijksmuseum voor Natuurlijke Historie)  in
+        Leiden and of the Zoological Museum Amsterdam (ZMA) and new acquisitions.
+        This database replaces and enlarges the dataset Naturalis National Natural
+        History Museum (NL) – Aves Types and Zoological Museum Amsterdam, University
+        of Amsterdam (NL) - Aves which were hosted earlier on the GBIF dataportal.
+        Furthermore the dataset contains many new and updated records, also from the
+        ZMA collection. On request more information or pictures (if available) can
+        be provided.","type":"OCCURRENCE","hostingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","hostingOrganizationTitle":"Naturalis
+        Biodiversity Center","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[],"keywords":["Specimen","Occurrence"]},{"key":"4c7c21a8-68d3-49c5-b090-6b26259a291b","title":"Naturalis
+        Biodiversity Center (NL) - Cnidaria","description":"Database contains specimen
+        records from the Cnidaria collection of the Naturalis Biodiversity Center
+        (Leiden, Netherlands). These specimens originate from the collections of the
+        National Museum of Natural History (RMNH; Rijksmuseum voor Natuurlijke Historie),
+        later National Museum of Natural History, Naturalis in Leiden and of the former
+        Zoological Museum Amsterdam (ZMA).This dataset replaces the dataset Naturalis
+        National Natural History Museum (NL) – Coelenterata , and the dataset Zoological
+        Museum Amsterdam, University of Amsterdam (NL) - Coelenterata, which were
+        earlier published on GBIF portal. On request more information or pictures
+        (if available) can be provided.","type":"OCCURRENCE","hostingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","hostingOrganizationTitle":"Naturalis
+        Biodiversity Center","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[],"keywords":["Specimen","Occurrence"]},{"key":"83e20573-f7dd-4852-9159-21566e1e691e","title":"Bird
+        tracking - GPS tracking of Lesser Black-backed Gulls and Herring Gulls breeding
+        at the southern North Sea coast","description":"Bird tracking - GPS tracking
+        of Lesser Black-backed Gulls and Herring Gulls breeding at the southern North
+        Sea coast is a species occurrence dataset published by the Research Institute
+        for Nature and Forest (INBO) and described (v5.5) in Stienen et al. 2016 (https://doi.org/10.3897/zookeys.555.6173).
+        The dataset contains close to 8.5 million occurrences (GPS fixes) recorded
+        by GPS trackers mounted on 108 Lesser Black-backed Gulls and 37 Herring Gulls
+        breeding at the Belgian and Dutch coast. The trackers are developed by the
+        University of Amsterdam Bird Tracking System (UvA-BiTS, http://www.uva-bits.nl)
+        and allow to study the gulls'' habitat use and migration behaviour in great
+        detail. Our bird tracking network is operational since 2013 and is maintained
+        and used by the INBO, the Flanders Marine Institute (VLIZ), UvA-BiTS, Ghent
+        University (UGent), and the University of Antwerp (UA). See the dataset metadata
+        for contact information, scope, and methodology. Issues with the dataset can
+        be reported at https://github.com/inbo/data-publication/tree/master/datasets/bird-tracking-gull-occurrences\nThe
+        following information is not included in the dataset and available upon request:
+        outliers, speed, temperature, barometric pressure, accelerometer data, GPS
+        metadata (fix time, number of satellites used, vertical accuracy), bird biometrics
+        data measured during tagging (bill length, bill depth, tarsus length, wing
+        length, body mass), life history data (day of ringing, age, resightings by
+        volunteers), as well as growth data of chicks.\nTo allow anyone to use this
+        dataset, we have released the data to the public domain under a Creative Commons
+        Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/). We would
+        appreciate however, if you read and follow these norms for data use (http://www.inbo.be/en/norms-for-data-use)
+        and provide a link to the original dataset (https://doi.org/10.15468/02omly)
+        whenever possible. If you use these data for a scientific paper, please cite
+        the dataset following the applicable citation norms and/or consider us for
+        co-authorship. We are always interested to know how you have used or visualized
+        the data, or to provide more information, so please contact us via the contact
+        information provided in the metadata, opendata@inbo.be or https://twitter.com/LifeWatchINBO.\nThe
+        bird tracking network used to collect these data is set up and maintained
+        by the INBO and VLIZ as part of the Flemish contribution to LifeWatch.","type":"OCCURRENCE","hostingOrganizationKey":"1cd669d0-80ea-11de-a9d0-f1765f95f18b","hostingOrganizationTitle":"Research
+        Institute for Nature and Forest (INBO)","countryCoverage":[],"publishingCountry":"BE","publishingOrganizationKey":"1cd669d0-80ea-11de-a9d0-f1765f95f18b","publishingOrganizationTitle":"Research
+        Institute for Nature and Forest (INBO)","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[2010],"keywords":["","Larus
+        fuscus","Herring Gull","animal movement","LifeWatch","bird tracking","Larus
+        argentatus","UvA-BiTS","Lesser Black-backed Gull","Observation","habitat use","migration","GPS
+        tracking","MachineObservation","Occurrence"],"recordCount":8474604},{"key":"62d82928-dc6f-40dc-85b3-f2be47e7b49a","title":"Naturalis
+        Biodiversity Center (NL) - Museum collection digitized at storage unit level","description":"<p>Naturalis
+        Biodiversity Center has carried out one of the largest projects for natural
+        history collection digitization to date. At least 7 million specimens are
+        digitized in detail (see our other occurrence datasets) from a total collection
+        of 37 million. Information of the other 30 million specimen is now digitally
+        available on a higher, less detailed level. These 30 million specimen were
+        digitized at the storage unit level, a storage unit being a unit in (or on)
+        which objects are stored, such as boxes, drawers, and shelves. These specimens
+        are stored in approximately 150,000 of these units, which contain Zoological
+        and Paleontological collections. For each storage unit, the species and quantities
+        it contains and the gathering location were digitized. This information can
+        be used for research and collection management, but also in deciding which
+        taxonomic groups need further registration at the object level. The project
+        was funded by the Dutch Economic Structure Enhancing Fund (FES).</p>\n<p>This
+        database provides a current and comprehensive overview of the Zoological and
+        Paleontological collection at Naturalis Biodiversity Center (Leiden, Netherlands),
+        digitized at storage unit level. The data is presented as specimen occurrence
+        data, in which each record represents one taxon from one geographic location
+        from one storage unit. Generally a record contains more than one specimen.
+        These specimens originate from the collections of the National Museum of Natural
+        History (RMNH; Rijksmuseum voor Natuurlijke Historie), later National Museum
+        of Natural History, Naturalis in Leiden, from the former Zoological Museum
+        Amsterdam (ZMA), and from the former National Museum of Geology and Mineralogy
+        (RGM; Rijksmuseum voor Geologie en Mineralogie).</p>\n<p>All zoological and
+        paleontological records, with at least a family or genus name, are included.
+        The number of specimens gives the count at the end of the FES project, in
+        2015.</p>\n<p>On request more information or pictures (if available) can be
+        provided.</p>","type":"OCCURRENCE","hostingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","hostingOrganizationTitle":"Naturalis
+        Biodiversity Center","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[],"keywords":["Specimen","Occurrence"],"recordCount":368853},{"key":"03f2256a-e548-43d7-a731-253302f4aa34","title":"Naturalis
+        Biodiversity Center (NL) - Hymenoptera","description":"Database contains specimen
+        records from the Hymenoptera collection of the Naturalis Biodiversity Center
+        (Leiden, Netherlands). The zoological specimens come from the National Museum
+        of Natural History (RMNH; Rijksmuseum voor Natuurlijke Historie), later National
+        Museum of Natural History, Naturalis in Leiden and the Zoological Museum Amsterdam
+        (ZMA) and new acquisitions. This database replaces the dataset &#34;Zoological
+        Museum Amsterdam, University of Amsterdam (NL) – Hymenoptera_Bombidae_Types&#34;
+        which was hosted earlier on GBIF dataportal and contains many new and updated
+        records. The old registration numbers of the former institutions (RMNH, ZMA)
+        are also mentioned in the dataset. This dataset is an abstract of the Naturalis
+        production database (BRD) of 2012-12-12, with an update of 2014-03-25.","type":"OCCURRENCE","hostingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","hostingOrganizationTitle":"Naturalis
+        Biodiversity Center","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[],"keywords":["","Specimen","Collection
+        Oskar Vogt","Hymenoptera","Occurrence"]},{"key":"2fc1d8b5-9c99-4e03-8c3c-11a6e51a298f","title":"Bird
+        tracking - GPS tracking of Western Marsh Harriers breeding near the Belgium-Netherlands
+        border","description":"Bird tracking - GPS tracking of Western Marsh Harriers
+        breeding near the Belgium-Netherlands border is a species occurrence dataset
+        published by the Research Institute for Nature and Forest (INBO). The dataset
+        contains over 290.000 occurrences (GPS fixes) recorded between 2013 and 2017
+        by GPS trackers mounted on 6 Western Marsh Harriers breeding near the Belgium-Netherlands
+        border. The trackers are developed by the University of Amsterdam Bird Tracking
+        System (UvA-BiTS, http://www.uva-bits.nl) and allow to study the harriers''
+        habitat use and migration behaviour in great detail. Our bird tracking network
+        is operational since 2013 and is maintained and used by the INBO, the Flanders
+        Marine Institute (VLIZ), UvA-BiTS, Ghent University (UGent), and the University
+        of Antwerp (UA). See the dataset metadata for contact information, scope,
+        and methodology. Issues with the dataset can be reported at https://github.com/inbo/data-publication/tree/master/datasets/bird-tracking-wmh-occurrences\nThe
+        following information is not included in the dataset and available upon request:
+        outliers, speed, temperature, barometric pressure, GPS metadata (fix time,
+        number of satellites used, vertical accuracy), and bird weight measured during
+        tagging.\nTo allow anyone to use this dataset, we have released the data to
+        the public domain under a Creative Commons Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/).
+        We would appreciate however, if you read and follow these norms for data use
+        (http://www.inbo.be/en/norms-for-data-use) and provide a link to the original
+        dataset (https://doi.org/10.15468/rbguhj) whenever possible. If you use these
+        data for a scientific paper, please cite the dataset following the applicable
+        citation norms and/or consider us for co-authorship. We are always interested
+        to know how you have used or visualized the data, or to provide more information,
+        so please contact us via the contact information provided in the metadata,
+        opendata@inbo.be or https://twitter.com/LifeWatchINBO.\nThe bird tracking
+        network used to collect these data is set up and maintained by the INBO and
+        VLIZ as part of the Flemish contribution to LifeWatch.","type":"OCCURRENCE","hostingOrganizationKey":"1cd669d0-80ea-11de-a9d0-f1765f95f18b","hostingOrganizationTitle":"Research
+        Institute for Nature and Forest (INBO)","countryCoverage":[],"publishingCountry":"BE","publishingOrganizationKey":"1cd669d0-80ea-11de-a9d0-f1765f95f18b","publishingOrganizationTitle":"Research
+        Institute for Nature and Forest (INBO)","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[2010],"keywords":["animal
+        movement","LifeWatch","bird tracking","Circus aeruginosus","Western Marsh
+        Harrier","UvA-BiTS","Observation","habitat use","migration","bruine kiekendief","GPS
+        tracking","MachineObservation","Occurrence"],"recordCount":293608},{"key":"f3130a8a-4508-42b4-9737-fbda77748438","title":"Naturalis
+        Biodiversity Center (NL) - Lepidoptera","description":"Database contains specimen
+        records from the Lepidoptera collection of the Naturalis Biodiversity Center
+        (Leiden, Netherlands). The zoological specimens come from the National Museum
+        of Natural History (RMNH; Rijksmuseum voor Natuurlijke Historie), later National
+        Museum of Natural History, Naturalis in Leiden and the Zoological Museum Amsterdam
+        (ZMA) and new acquisitions. This dataset is an abstract of the Naturalis production
+        database (BRD) of 2012-12-12, with an update of 26 March 2014. The datasets
+        &#34;Zoological Museum Amsterdam, University of Amsterdam (NL) - Lepidoptera_Nymphalidae_Palearctic&#34;
+        and &#34;Naturalis National Natural History Museum (NL) – Insecta_Lepidoptera_SE
+        Asia and other regions&#34; are still separately hosted at GBIF, and not included
+        in this dataset.The old registration numbers of the former institutions (RMNH,
+        ZMA) are also mentioned in the dataset.","type":"OCCURRENCE","hostingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","hostingOrganizationTitle":"Naturalis
+        Biodiversity Center","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[],"keywords":["Specimen","Lepidoptera","Occurrence"]},{"key":"65c9103f-2fbf-414b-9b0b-e47ca96c5df2","title":"Afromoths,
+        online database of Afrotropical moth species (Lepidoptera)","description":"This
+        dataset covers all relevant information on every Afrotropical moth species.\n\nThe
+        zoogeographic area covered can be defined as the Africa continent south of
+        the Sahara (i.e. excl. Morocco, Algeria, Tunisia, Libya and Egypt), the islands
+        in the Atlantic Ocean: Amsterdam Island, Ascension, Cape Verde Archipelago,
+        Inaccessible Island, St. Helena, São Tomé and Principe, Tristan da Cunha,
+        and the islands in the Indian Ocean: Comores (Anjouan, Grande Comore, Mayotte,
+        Mohéli), Madagascar, Mascarene Islands (La Réunion, Mauritius, Rodrigues),
+        Seychelles (Félicité, Mahé, Praslin, Silhouette, a.o.).\n\nFurthermore, also
+        those moth species occurring in the transition zone to the Palaearctic fauna
+        have been included, namely most of the Arabia Peninsula (Kuwait, Oman, Saudi
+        Arabia, United Arab Emirates, Yemen with Socotra) but not Iraq, Jordan and
+        further north. Also, some Saharan species have been included (e. g. Hoggar
+        Mts. in Algeria, Tibesti Mts. in South Libya).\n\nUtmost care was taken that
+        the data incorporated in the database are correct. We decline any responsibility
+        in case of damage to soft- or hardware based on information used in this website.
+        Persons retrieving information from this website for their own research or
+        for applied aspects such as pest control programmes, should acknowledge the
+        usage of data from this website in the following format:\n\nDe Prins, J. &
+        De Prins, W. 2011. Afromoths, online database of Afrotropical moth species
+        (Lepidoptera). World Wide Web electronic publication (www.afromoths.net)","type":"CHECKLIST","hostingOrganizationKey":"37e82b90-1e21-11de-ab90-f72009d2669b","hostingOrganizationTitle":"Belgian
+        Biodiversity Platform","countryCoverage":[],"publishingCountry":"BE","publishingOrganizationKey":"37e82b90-1e21-11de-ab90-f72009d2669b","publishingOrganizationTitle":"Belgian
+        Biodiversity Platform","license":"http://creativecommons.org/licenses/by/4.0/legalcode","decades":[],"keywords":["africa","Checklist","moths"],"recordCount":46749},{"key":"843633a9-07cb-4918-a79f-6061b52c9dfd","title":"Naturalis
+        Biodiversity Center (NL) - Coleoptera","description":"Database contains specimen
+        records from the Coleoptera collection of the Naturalis Biodiversity Center
+        (Leiden, Netherlands). The specimens come from the National Museum of Natural
+        History (RMNH; Rijksmuseum voor Natuurlijke Historie), later National Museum
+        of Natural History, Naturalis in Leiden, Zoological Museum Amsterdam (ZMA)
+        (mostly not  digitised) and Wageningen University. This dataset is an abstract
+        of the Naturalis production database (BRD) of 12-Dec-2012.  The dataset &#34;Zoological
+        Museum Amsterdam, University of Amsterdam (NL) - Coleoptera_Types_Orient&#34;
+        is still separately hosted at GBIF, and not included in this dataset. The
+        collection is largely arranged according to the Coleopterorum Catalogus but
+        the family classification is currently updated to Bouchard e.a. 2011. Therefore
+        classification can be inconsistent at the moment. The bulk of the data originate
+        from a digitization project and need further clean up. Many taxa are not digitised
+        below generic level. Important collections come from the Netherlands, the
+        former Dutch East Indies (now Indonesia) and Surinam (formerly Dutch Guyana).","type":"OCCURRENCE","hostingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","hostingOrganizationTitle":"Naturalis
+        Biodiversity Center","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[],"keywords":["Specimen","Occurrence"]},{"key":"01400d26-d164-473a-9a1c-818af8755a0c","title":"NDFF
+        Province of Noord-Holland","description":"The province of Noord-Holland lies
+        in the northwest of the Netherlands. The province has over 2,775,000 inhabitants
+        and covers 4,091 square kilometres. The provincial capital is Haarlem and
+        its largest city is Amsterdam.\nPositive observations without protocol\nDataset
+        available via https://www.ndff.nl/english / serviceteamndff&#64;natuurloket.nl\n1,003,203
+        records (March 2018)","type":"METADATA","hostingOrganizationKey":"6fbb8fe2-66e2-4a9e-bb39-b84665571f1c","hostingOrganizationTitle":"Dutch
+        National Database of Flora and Fauna (NDFF)","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"6fbb8fe2-66e2-4a9e-bb39-b84665571f1c","publishingOrganizationTitle":"Dutch
+        National Database of Flora and Fauna (NDFF)","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","decades":[],"keywords":["observation","Metadata"]},{"key":"5751c38c-078c-431a-be43-af27f5e38db2","title":"Naturalis
+        Biodiversity Center (NL) - Orthopteroidea","description":"Database contains
+        specimen records from the Orthopteroidea collection of the Naturalis Biodiversity
+        Center (Leiden, Netherlands). These specimens originate from the collections
+        of the National Museum of Natural History (RMNH; Rijksmuseum voor Natuurlijke
+        Historie), later National Museum of Natural History, Naturalis in Leiden and
+        of the former Zoological Museum Amsterdam (ZMA). On request more information
+        or pictures (if available) can be provided.","type":"OCCURRENCE","hostingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","hostingOrganizationTitle":"Naturalis
+        Biodiversity Center","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[],"keywords":["Specimen","Occurrence"]},{"key":"b4aad9c3-518b-4550-82de-c70a7ead1b64","title":"Naturalis
+        Biodiversity Center (NL) - Chelicerata and Myriapoda","description":"Database
+        contains specimen records from the Chelicerata and Myriapoda collection of
+        the Naturalis Biodiversity Center (Leiden, Netherlands). The zoological specimens
+        come from the National Museum of Natural History (RMNH; Rijksmuseum voor Natuurlijke
+        Historie), later National Museum of Natural History, Naturalis in Leiden and
+        the Zoological Museum Amsterdam (ZMA) and new acquisitions. The old registration
+        numbers of the former institutions (RMNH, ZMA) are also mentioned in the datase","type":"OCCURRENCE","hostingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","hostingOrganizationTitle":"Naturalis
+        Biodiversity Center","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[],"keywords":["Specimen","Occurrence"]},{"key":"4f8de55f-5967-46c4-b689-31de17090ed4","title":"Naturalis
+        Biodiversity Center (NL) - Collembola","description":"Database contains specimen
+        records from the Collembola collection of the Naturalis Biodiversity Center
+        (Leiden, Netherlands). The zoological specimens come from the National Museum
+        of Natural History (RMNH; Rijksmuseum voor Natuurlijke Historie), later National
+        Museum of Natural History, Naturalis in Leiden and the Zoological Museum Amsterdam
+        (ZMA) and new acquisitions. The old registration numbers of the former institutions
+        (RMNH, ZMA) are also mentioned in the dataset","type":"OCCURRENCE","hostingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","hostingOrganizationTitle":"Naturalis
+        Biodiversity Center","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[],"keywords":["Specimen","Occurrence"]},{"key":"1eb5e969-4412-4f08-81ec-3de057e559a1","title":"Naturalis
+        Biodiversity Center (NL) - Foraminifera","description":"Database contains
+        specimen records from the Foraminifera collection of the Naturalis Biodiversity
+        Center (Leiden, Netherlands). These specimens originate from the collections
+        of the National Museum of Natural History (RMNH; Rijksmuseum voor Natuurlijke
+        Historie), later National Museum of Natural History, Naturalis in Leiden and
+        of the former Zoological Museum Amsterdam (ZMA). On request more information
+        or pictures (if available) can be provided.","type":"OCCURRENCE","hostingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","hostingOrganizationTitle":"Naturalis
+        Biodiversity Center","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[],"keywords":["Specimen","Occurrence"]},{"key":"f598ca19-7c37-47e4-9a64-bcfe526847c1","title":"Naturalis
+        Biodiversity Center (NL) - Echinodermata","description":"Database contains
+        specimen records from the Echinodermata collection of the Naturalis Biodiversity
+        Center (Leiden, Netherlands). These specimens originate from the collections
+        of the National Museum of Natural History (RMNH; Rijksmuseum voor Natuurlijke
+        Historie), later National Museum of Natural History, Naturalis in Leiden and
+        of the former Zoological Museum Amsterdam (ZMA). On request more information
+        or pictures (if available) can be provided.","type":"OCCURRENCE","hostingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","hostingOrganizationTitle":"Naturalis
+        Biodiversity Center","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[],"keywords":["Specimen","Occurrence"]},{"key":"e66ff065-d823-4a4d-b129-569f649ba0eb","title":"Naturalis
+        Biodiversity Center (NL) - Brachiopoda","description":"Database contains specimen
+        records from the Brachiopoda collection of the Naturalis Biodiversity Center
+        (Leiden, Netherlands). These specimens originate from the collections of the
+        National Museum of Natural History (RMNH; Rijksmuseum voor Natuurlijke Historie),
+        later National Museum of Natural History, Naturalis in Leiden and of the former
+        Zoological Museum Amsterdam (ZMA). On request more information or pictures
+        (if available) can be provided.","type":"OCCURRENCE","hostingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","hostingOrganizationTitle":"Naturalis
+        Biodiversity Center","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[],"keywords":["Specimen","Occurrence"]},{"key":"9a025855-803d-4fa7-8417-ac7142544553","title":"Naturalis
+        Biodiversity Center (NL) - Tunicata","description":"Database contains specimen
+        records from the Tunicata collection of the Naturalis Biodiversity Center
+        (Leiden, Netherlands). These specimens originate from the collections of the
+        National Museum of Natural History (RMNH; Rijksmuseum voor Natuurlijke Historie),
+        later National Museum of Natural History, Naturalis in Leiden and of the former
+        Zoological Museum Amsterdam (ZMA). On request more information or pictures
+        (if available) can be provided.","type":"OCCURRENCE","hostingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","hostingOrganizationTitle":"Naturalis
+        Biodiversity Center","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[],"keywords":["Specimen","Occurrence"]},{"key":"8b42bbf1-b287-40a0-ab3a-88fb7928f8e2","title":"Naturalis
+        Biodiversity Center (NL) - Hemiptera","description":"Database contains specimen
+        records from the Hemiptera collection of the Naturalis Biodiversity Center
+        (Leiden, Netherlands). These specimens originate from the collections of the
+        National Museum of Natural History (RMNH; Rijksmuseum voor Natuurlijke Historie),
+        later National Museum of Natural History, Naturalis in Leiden and of the former
+        Zoological Museum Amsterdam (ZMA). On request more information or pictures
+        (if available) can be provided.","type":"OCCURRENCE","hostingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","hostingOrganizationTitle":"Naturalis
+        Biodiversity Center","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[],"keywords":["Specimen","Occurrence"]},{"key":"306f61f2-9ff0-404e-8aa6-a525a7fae369","title":"Naturalis
+        Biodiversity Center (NL) - Odonata","description":"Database contains specimen
+        records from the Odonata collection of the Naturalis Biodiversity Center (Leiden,
+        Netherlands). These specimens originate from the collections of the National
+        Museum of Natural History (RMNH; Rijksmuseum voor Natuurlijke Historie), later
+        National Museum of Natural History, Naturalis in Leiden and of the former
+        Zoological Museum Amsterdam (ZMA). On request more information or pictures
+        (if available) can be provided.","type":"OCCURRENCE","hostingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","hostingOrganizationTitle":"Naturalis
+        Biodiversity Center","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[],"keywords":["Specimen","Occurrence"]},{"key":"19828488-7ebf-43f8-88af-6461d8afef9e","title":"Naturalis
+        Biodiversity Center (NL) - Pisces","description":"Database contains specimen
+        records from the Pisces collection of the Naturalis Biodiversity Center (Leiden,
+        Netherlands). These specimens originate from the collections of the National
+        Museum of Natural History (RMNH; Rijksmuseum voor Natuurlijke Historie), later
+        National Museum of Natural History, Naturalis in Leiden and of the former
+        Zoological Museum Amsterdam (ZMA). On request more information or pictures
+        (if available) can be provided.","type":"OCCURRENCE","hostingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","hostingOrganizationTitle":"Naturalis
+        Biodiversity Center","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[],"keywords":["Specimen","Occurrence"]},{"key":"a4be4c6d-5ce7-47ba-982d-1deb05719133","title":"Naturalis
+        Biodiversity Center (NL) - Porifera","description":"Database contains specimen
+        records from the Porifera collection of the Naturalis Biodiversity Center
+        (Leiden, Netherlands). These specimens originate from the collections of the
+        National Museum of Natural History (RMNH; Rijksmuseum voor Natuurlijke Historie),
+        later National Museum of Natural History, Naturalis in Leiden and of the former
+        Zoological Museum Amsterdam (ZMA). On request more information or pictures
+        (if available) can be provided.","type":"OCCURRENCE","hostingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","hostingOrganizationTitle":"Naturalis
+        Biodiversity Center","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[],"keywords":["Specimen","Occurrence"]},{"key":"6a0a95c6-c07a-4c35-9e9f-f776e8730fd4","title":"Naturalis
+        Biodiversity Center (NL) - Diptera","description":"Database contains specimen
+        records from the Diptera collection of the Naturalis Biodiversity Center (Leiden,
+        Netherlands). These specimens originate from collections of the National Museum
+        of Natural History (RMNH; Rijksmuseum voor Natuurlijke Historie), later National
+        Museum of Natural History, Naturalis in Leiden, and of the former Zoological
+        Museum Amsterdam (ZMA). On request more information or pictures (if available)
+        can be provided.","type":"OCCURRENCE","hostingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","hostingOrganizationTitle":"Naturalis
+        Biodiversity Center","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[],"keywords":["Specimen","Occurrence"]},{"key":"f83746ee-4cf2-4e60-a720-dd508b559794","title":"NDFF
+        Waternet","description":"<p>Waternet is the only water company in the Netherlands
+        that covers the whole water cycle. We provide a safe, clean and sufficient
+        supply of water. This includes water for nature areas and human consumption.</p>\n<p>We
+        work in Amsterdam and surrounding area. Approximately 1,3 million people live
+        in our service area.</p>\n<p>Positive observations without protocol</p>\n<p>Resolution
+        of dataset available in 5 x 5 km. Higher resolution available via https://www.ndff.nl
+        / serviceteamndff&#64;natuurloket.nl</p>\n<p>8,414 records (May 2018)</p>","type":"METADATA","hostingOrganizationKey":"6fbb8fe2-66e2-4a9e-bb39-b84665571f1c","hostingOrganizationTitle":"Dutch
+        National Database of Flora and Fauna (NDFF)","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"6fbb8fe2-66e2-4a9e-bb39-b84665571f1c","publishingOrganizationTitle":"Dutch
+        National Database of Flora and Fauna (NDFF)","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","decades":[],"keywords":["Metadata","Observation"]},{"key":"ffae2921-22c7-41e4-a0d2-41a33f0aeb2a","title":"NDFF
+        Rijnland Water Authority","description":"<p>Rijnland is not the only district
+        water board in the Netherlands. There are many water boards spread over the
+        provinces. Rijnland works in two provinces: North Holland and South Holland.
+        The Rijnland area stretches from Wassenaar up to IJmuiden and from Gouda to
+        and including part of Amsterdam.. This area covers 1,100 square kilometres.
+        1.3 million people live, work, travel and enjoy leisure activities here.</p>\n<p>This
+        area includes many lakes, rivers, canals and 200 polders. It is bordered on
+        the north-westside by the North Sea.</p>\n<p>Dataset available via https://www.ndff.nl/english
+        / serviceteamndff&#64;natuurloket.nl</p>\n<p>Positive observations without
+        protocol</p>\n<p>1,167 records (March 2018)</p>","type":"METADATA","hostingOrganizationKey":"6fbb8fe2-66e2-4a9e-bb39-b84665571f1c","hostingOrganizationTitle":"Dutch
+        National Database of Flora and Fauna (NDFF)","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"6fbb8fe2-66e2-4a9e-bb39-b84665571f1c","publishingOrganizationTitle":"Dutch
+        National Database of Flora and Fauna (NDFF)","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","decades":[],"keywords":["Metadata","Observation"]},{"key":"15f819bd-6612-4447-854b-14d12ee1022d","title":"Naturalis
+        Biodiversity Center (NL) - Botany","description":"This database contains specimen
+        records from the former herbarium of the Leiden University within the botanical
+        collection of the Naturalis Biodiversity Center (Leiden, Netherlands). The
+        Department of Botany houses the National Herbarium of the Netherlands (NHN)
+        which consists of herbarium collections of the universities of Leiden, Wageningen
+        and Utrecht. In 2010 the collection of the University of Amsterdam also moved
+        to Naturalis.The focal areas of the collection are Southeast Asia, tropical
+        America, tropical Africa and the Netherlands. The former herbarium of the
+        Leiden University (acronym: L) contains about 4 million specimens and has
+        extensive collections from Southeast Asia, especially from Indonesia and New
+        Guinea, but it also holds a large collection of palearctic plants, and is
+        the principle herbarium for Dutch plants. As the oldest Dutch herbarium, it
+        also contains several historic collections.","type":"OCCURRENCE","hostingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","hostingOrganizationTitle":"Naturalis
+        Biodiversity Center","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"396d5f30-dea9-11db-8ab4-b8a03c50a862","publishingOrganizationTitle":"Naturalis
+        Biodiversity Center","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[],"keywords":["Specimen","Occurrence"]},{"key":"39043215-39ea-4396-bf2a-b5e5dd69e952","title":"Lista
+        de taxones asociados a Humedales de Colombia","description":"El presente recurso
+        contiene 2742 registros principalmente de especies y algunas, subespecies,
+        variedades y géneros de Animales y Plantas asociados a humedales de Colombia.
+        Los datos han sido recopilados principalmente de las Colecciones en línea
+        del Instituto de Ciencias Naturales de la Universidad Nacional de Colombia,
+        el IPT del Institute for Biodiversity and Ecosystem Dynamics de la Universidad
+        de Amsterdam, el Instituto Alexander von Humboldt y de diferentes entidades
+        que publican información a través del SiB Colombia. \r\n\r\nLa obtención de
+        cada nombre científico se realizó principalmente buscando la palabra \"humedal\"
+        tanto en los metadatos de cada recurso consultado como en el campo ''localidad''
+        de cada registro biológico. Se amplió la recuperación de registros asociados
+        a humedales a partir de los sinónimos “ciénagas”, “lagos”, “lagunas”, “sabanas
+        estacionales”, “sabanas inundables”, “planos de inundación”, “represas” y
+        “manglares”.  Este recurso se encuentra en constante actualización y pretende
+        ser una guía de consulta de las especies presentes en humedales en el país,
+        una vez se logren acuerdos con los expertos de cada grupo biológico.","type":"CHECKLIST","hostingOrganizationKey":"c4f66525-4d36-4c18-82ac-98e088f54db4","hostingOrganizationTitle":"Sistema
+        de Información sobre Biodiversidad de Colombia - SiB","countryCoverage":[],"publishingCountry":"CO","publishingOrganizationKey":"c4f66525-4d36-4c18-82ac-98e088f54db4","publishingOrganizationTitle":"Sistema
+        de Información sobre Biodiversidad de Colombia - SiB","license":"http://creativecommons.org/licenses/by/4.0/legalcode","decades":[],"keywords":[]},{"key":"0a2003a1-fe01-4e47-acc6-ec338552dea8","title":"Lista
+        de taxones asociados a Páramos de Colombia","description":"El presente recurso
+        contiene 8978 registros principalmente de especies y algunas, subespecies,
+        variedades y géneros de Animales y Plantas asociados a páramos de Colombia.
+        Los datos han sido recopilados principalmente de las Colecciones en línea
+        del Instituto de Ciencias Naturales de la Universidad Nacional de Colombia,
+        el IPT del Institute for Biodiversity and Ecosystem Dynamics de la Universidad
+        de Amsterdam, el Instituto Alexander von Humboldt y de diferentes entidades
+        que publican información a través del SiB Colombia. \r\n\r\nLa obtención de
+        cada nombre científico se realizó principalmente buscando la palabra \"páramo\"
+        tanto en los metadatos de cada recurso consultado como en el campo ''localidad''
+        de cada registro biológico. Este recurso se encuentra en constante actualización
+        y pretende ser una guía de consulta de las especies presentes en páramos en
+        el país, una vez se logren acuerdos con los expertos de cada grupo biológico.","type":"CHECKLIST","hostingOrganizationKey":"c4f66525-4d36-4c18-82ac-98e088f54db4","hostingOrganizationTitle":"Sistema
+        de Información sobre Biodiversidad de Colombia - SiB","countryCoverage":[],"publishingCountry":"CO","publishingOrganizationKey":"c4f66525-4d36-4c18-82ac-98e088f54db4","publishingOrganizationTitle":"Sistema
+        de Información sobre Biodiversidad de Colombia - SiB","license":"http://creativecommons.org/licenses/by/4.0/legalcode","decades":[],"keywords":[]},{"key":"faf313a1-9ae4-43f4-bfc9-974281feac0e","title":"RAVON
+        (NL) - Network Ecological Monitoring Reptiles","description":"The Dutch reptile
+        populations are being monitored intensively within the scope of the Dutch
+        Network Ecological Monitoring (NEM). Since 1994 volunteers, coordinated by
+        RAVON (Reptile, Amphibian and Fish Conservation Netherlands), monitor reptiles
+        on an annual base. All seven indigenous species are monitored on transects
+        that are examined seven times a year. The data are used to monitor population
+        trends and patterns and to support legal reporting obligations, scientific
+        research and policy and conservation related issues. Locality data for GBIF
+        are provided on a 5 x 5 km scale.","type":"OCCURRENCE","hostingOrganizationKey":"8629d002-c1cf-4c61-9895-55ca7cd0e149","hostingOrganizationTitle":"Reptile,
+        Amphibian and Fish Conservation Netherlands (RAVON)","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"8629d002-c1cf-4c61-9895-55ca7cd0e149","publishingOrganizationTitle":"Reptile,
+        Amphibian and Fish Conservation Netherlands (RAVON)","license":"http://creativecommons.org/licenses/by/4.0/legalcode","decades":[1990,2000,2010],"keywords":["The
+        Netherlands","ecology","reptiles","Observation","monitoring","Occurrence","trends"]},{"key":"d5e61920-9863-4fc3-8e5a-80f0c7bfe640","title":"Natural
+        History Museum Rotterdam (NL) - Insecta collection","description":"Collection
+        Insecta of the Natural History Museum Rotterdam.","type":"OCCURRENCE","hostingOrganizationKey":"cace8d10-2646-11d8-a2da-b8a03c50a862","hostingOrganizationTitle":"Netherlands
+        Biodiversity Information Facility (NLBIF)","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"3ead5cf3-2840-482e-bbd9-76380825be63","publishingOrganizationTitle":"Natural
+        History Museum Rotterdam","license":"http://creativecommons.org/licenses/by/4.0/legalcode","decades":[1830,1840,1850,1860,1870,1880,1890,1900,1910,1920,1930,1940,1950,1960,1970,1980,1990,2000,2010],"keywords":["Specimen","Coleoptera","Insecta","Trichoptera","Orthoptera","Lepidoptera","Odonata","Hymenoptera","Hemiptera","Occurrence","Diptera","Neuroptera"]},{"key":"7c67da7f-490e-4e8d-8848-7dc152dd4734","title":"Natural
+        History Museum Rotterdam (NL) - Mollusca collection","description":"West-Palearctic
+        and tropical Bivalves, with emphasis on Mytilidae, Pectinidae, Mactridae and
+        Veneridae. Taxa: Arcoida, Myoida, Mytiloida, Nuculoida, Ostreoida, Pholadomyoida,
+        Pterioida, Solemyoida, Trigonioida, Veneroida. \n\nImportant collection West-Palearctic
+        marine Gastropods and micromollusks, as well as a representative collection
+        non-West-Palearctic gastropods. Representative collection of European land-
+        en freshwater snails. Taxa: Caenogastropoda, Cocculiniformia, Heterobranchia,
+        Neritimorpha, Opistobranchia, Patellogastropoda, Pulmonata, Vetigastropoda.
+        \n\nThe Polyplacophora collection holds the private collection of Frans J.A.
+        Slieker, author of &#39;Chitons of the World&#39; (2000) and is the second
+        largest in the Netherlands after the collection of the &#39;Nederlands Centrum
+        voor Biodiversiteit Naturalis (Leiden)&#39;. Emphasis on West-Palearctic species.
+        Taxa: Leptochitonidae, Hanleyidae, Mopaliidae, Ischnochitonidae, Schizochitonidae,
+        Chitonidae, Cryptoplacidae, Acanthochitonidae. \n\nRepresentative collection
+        West-Palearctic scaphopoda. Small, but representative collection of non-West-Palearctic
+        species. Taxa: Gadilinidae, Dentaliidae, Fustiariidae, Laevidentaliidae, Entalinidae,
+        Pulsellidae, Gadalidae. \n\nImportant collections of Eocene (Paris Basin),
+        Miocene (Winterswijk, Miste, Dingden) and Pliocene/Pleistocene mollusks (Westerschelde,
+        de Kaloot, Antwerp Harbour). Taxa: Arcoida, Caenogastropoda, Cocculiniformia,
+        Dentaliida, Gadilida, Heterobranchia, Myoida, Mytiloida, Neritimorpha, Nuculoida,
+        Opistobranchia, Ostreoida, Patellogastropoda, Pholadomyoida, Pterioida, Pulmonata,
+        Sepiida, Veneroida, Vetigastropoda.","type":"OCCURRENCE","hostingOrganizationKey":"cace8d10-2646-11d8-a2da-b8a03c50a862","hostingOrganizationTitle":"Netherlands
+        Biodiversity Information Facility (NLBIF)","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"3ead5cf3-2840-482e-bbd9-76380825be63","publishingOrganizationTitle":"Natural
+        History Museum Rotterdam","license":"http://creativecommons.org/licenses/by/4.0/legalcode","decades":[1830,1840,1850,1860,1870,1880,1890,1900,1910,1920,1930,1940,1950,1960,1970,1980,1990,2000,2010],"keywords":["Specimen","mollusca","Occurrence"]},{"key":"7a28b1b1-9d4c-4aeb-b239-38865417b5ea","title":"Natural
+        History Museum Rotterdam (NL) - Chordata collection","description":"Collection
+        Chordata of the Natural History Museum Rotterdam. Amphibians: Mostly specimens
+        from Europe, Asia Minor and the Middle East. Reptiles: Mostly European species,
+        with some material from Asia Minor and the Middle East. Birds: Mounted specimens,
+        study skins, skeletons and eggs, mainly from European species, some Indonesian
+        material; skeletal material of gulls and waders. Cartilaginous Fish: European
+        species, mostly from the North Sea. Bony Fish: Mainly European species, mostly
+        from the North Sea and Western Atlantic. Mammals (fossil) : Representative
+        collection of mostly Pliocene, Miocene and Pleistocene material from the Netherlands
+        and the bottom of the North Sea. Rich in marine mammals. Mammals (recent):
+        Study skins, mounts and skeletal material of Western Palearctic species, and
+        some material from elsewhere (Indonesia).","type":"OCCURRENCE","hostingOrganizationKey":"cace8d10-2646-11d8-a2da-b8a03c50a862","hostingOrganizationTitle":"Netherlands
+        Biodiversity Information Facility (NLBIF)","countryCoverage":[],"publishingCountry":"NL","publishingOrganizationKey":"3ead5cf3-2840-482e-bbd9-76380825be63","publishingOrganizationTitle":"Natural
+        History Museum Rotterdam","license":"http://creativecommons.org/licenses/by/4.0/legalcode","decades":[1700,1800,1810,1820,1830,1840,1850,1860,1870,1880,1890,1900,1910,1920,1930,1940,1950,1960,1970,1980,1990,2000,2010],"keywords":["Specimen","chordata","Occurrence"]},{"key":"21934821-38c4-496f-a17b-e8dafd29eabf","title":"Iberian
+        Peninsula and Balearic Island Bathynellacea (Crustacea, Syncarida) database","description":"This
+        is the first published database of Bathynellacea. It includes data of bathynellids
+        (Crustacea, Bathynellacea) from the Iberian Peninsula and Balearic Island
+        collected along 64 years (1949 to 2013). The samples come from groundwater
+        (caves, springs, wells and hyporrheic habitat associated rivers) from both
+        sampling campaigns and occasional sampling conducted throughout the Iberian
+        Peninsula and Balearic Islands. The dataset lists ocurrence data of bathynellids
+        distribution, sampling sites (with localities, county and geographic coordinates),
+        taxonomic information (from family to species level) and sampling sources
+        (collector and sampling dates) for all records. The data were compiled by
+        A.I. Camacho (AIC) and come from own samples, literature and samples donated
+        by several Spanish and foreign researchers which were studied by AIC. The
+        descriptions of new species and species identifications have been carried
+        out by an expert taxonomist (AIC) with 25 years experience in the bathynellids
+        studies. Many of the sampling sites are type localities of endemic species
+        from Iberian Peninsula. The data set includes 409 samples record corresponding
+        to two families, 12 genera and 60 species, 42 of them formally described plus
+        18 taxa unpublished. This represents everything known for the study area,
+        and nearly a quarter of all known species of Bathynellacea in the world. The
+        main collectors are J. Notenboom &amp; I. Meijers, R. Rouch et coll., A.I.
+        Camacho et coll. (C. Puch, F. Molinero, A.G. Valdecasas, J. Rodriguez, members
+        of G.E. Edelweiss and G. E. Bathynellidae).","type":"OCCURRENCE","hostingOrganizationKey":"6c4a0bb0-2a4d-11d8-aa2d-b8a03c50a862","hostingOrganizationTitle":"GBIF-Spain","countryCoverage":[],"publishingCountry":"ES","publishingOrganizationKey":"3059a14b-7b43-41ce-beef-873999911dfe","publishingOrganizationTitle":"Spanish
+        National Museum of Natural Sciences (CSIC)","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","decades":[1940,1950,1960,1970,1980,1990,2000,2010],"keywords":["Crustacea","Iberian
+        Peninsula","Bathynellacea","Bathynellidae","Parabathynellidae","Balearic Islands","groundwater
+        fauna","Syncarida","Malacostraca","Invertebrates collections"]},{"key":"26d72d3b-4544-4645-aa56-27aa8a669c6f","title":"A
+        Distribution and Taxonomic Reference Dataset of Geranium (Geraniaceae) in
+        the New World","description":"The dataset includes 8937 records that  covers  genus
+        Geranium  the New World, providing an updated, taxonomically consistent and
+        a sound geographical  distribution of the 137 species of Geranium in America.
+        These are the studied specimens on which following monograph was based:\n\nAedo,
+        Carlos (2012). Revision of Geranium (Geraniaceae) in the New World. Systematic
+        Botany Monographs 95: 550p.\nBesides the exhaustive taxonomic work done, and
+        reflected in the dataset, a detailed revision of the locality of the specimens
+        was performed, and geographic coordinates could be assigned with a 1 minute
+        accuracy in c. 6500 records. Duplicate specimens kept in different collections
+        have been aggregated into single records. Specimens from 128 herbaria were
+        reviewed. These were supplemented by others collected during nine field trips,
+        which allowed to know better the variability of characters within populations,
+        and refine species distribution ranges. These expeditions took place in Argentina,
+        Bolivia, Chile, Costa Rica, Ecuador, Peru, United States and Venezuela, and
+        yielded 235 herbarium specimens of Geranium belonging to 46 species.\nThe
+        potential for this dataset to be widely reused is very high, given the level
+        of taxonomic and geographic scrutiny this dataset encompasses, its completeness,
+        and the fact that Geranium is a well-known genus, widely used in horticulture
+        and for pharmaceutical products.","type":"OCCURRENCE","hostingOrganizationKey":"6c4a0bb0-2a4d-11d8-aa2d-b8a03c50a862","hostingOrganizationTitle":"GBIF-Spain","countryCoverage":[],"publishingCountry":"ES","publishingOrganizationKey":"0363cbd4-f666-455e-8e86-0bbddcf51950","publishingOrganizationTitle":"CSIC-Real
+        Jardín Botánico","license":"http://creativecommons.org/licenses/by/4.0/legalcode","decades":[1700,1800,1810,1820,1830,1840,1850,1860,1870,1880,1890,1900,1910,1920,1930,1940,1950,1960,1970,1980,1990,2000,2010],"keywords":["Specimen","Taxonomy","taxonomicAuthority","Botany","America","inventoryRegional","Species
+        distribution","Occurrence","Plant Sciences"]}],"facets":[]}'
+  recorded_at: 2018-06-17 05:03:14 GMT
+  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2

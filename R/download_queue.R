@@ -55,6 +55,7 @@ GbifQueue <- R6::R6Class(
     initialize = function(..., .list = list()) {
       ldots <- lazyeval::lazy_dots(...)
       ldots <- c(ldots, .list)
+      for (i in ldots) assert(i, "lazy")
       self$reqs <- lapply(ldots, DownReq$new)
       self$reqs <- stats::setNames(self$reqs, seq_along(self$reqs))
     },
@@ -115,6 +116,7 @@ DownReq <- R6::R6Class(
     result = NULL,
 
     initialize = function(x) {
+      assert(x, "lazy")
       self$req <- x
     },
 

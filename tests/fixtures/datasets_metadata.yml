@@ -1,0 +1,37 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/a6998220-7e3a-485d-9cd6-73076bd85657/metadata?limit=100
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Sun, 17 Jun 2018 05:08:19 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/dataset/a6998220-7e3a-485d-9cd6-73076bd85657/metadata?limit=100
+      cache-control: public, max-age=3601
+      x-varnish: 493715601 476678040
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '230'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '[{"key":657,"datasetKey":"a6998220-7e3a-485d-9cd6-73076bd85657","type":"EML","createdBy":"eml-pusher.gbif.org","modifiedBy":"eml-pusher.gbif.org","created":"2013-10-24T11:23:15.236+0000","modified":"2013-10-24T11:23:15.236+0000"}]'
+  recorded_at: 2018-06-17 05:08:20 GMT
+  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2

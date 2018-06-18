@@ -1,0 +1,241 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/suggest?q=Amazon&limit=100&type=OCCURRENCE
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Sun, 17 Jun 2018 05:05:36 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/dataset/suggest?q=Amazon&limit=100&type=OCCURRENCE
+      cache-control: public, max-age=3601
+      x-varnish: 489260106 489260086
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '19345'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '[{"key":"82ceb6ba-f762-11e1-a439-00145eb45e9a","title":"Andes to Amazon
+        Biodiversity Program","description":"The Andes to Amazon Program is an international,
+        multidisciplinary team of scientists, students, and Peruvian locals working
+        between the Botanical Research Institute of Texas (BRIT) and selected field
+        and museum sites in Peru.","type":"OCCURRENCE"},{"key":"58414378-4fb2-47e0-8dd5-8b55d5c77117","title":"Bolivian
+        Amazon lowland fish metacommunity data","description":"<p>This dataset represents
+        data from the paper Yukoni, T. and Torres L. V. (2016) Fish metacommunity
+        dynamics in the patchy heterogeneous habitats of varzea lakes, turbid river
+        channels and transparent clear and black water bodies in the Amazonian Lowlands
+        of Bolivia. Environmental Biology of Fishes.</p>\n<p>This study documents
+        the spatial dynamic of fish metacommunity based on the date sets of 65 sites,
+        covering two geographic patches of transparent water valleys; Manuripi and
+        Itenez Rivers, separated by turbid water valleys originate in the Andes and
+        the Savanna.</p>\n<p>See http://www.freshwaterbiodiversity.eu/metadb/bf_mdb_view.php?entryID=BFE_105
+        for additional metadata.</p>","type":"OCCURRENCE"},{"key":"9b73f44e-bbe1-4fd1-a7a9-c96c38dcf884","title":"Herbario
+        Amazónico Colombiano","description":"Colección biológica del Herbario Amazónico
+        Colombiano COAH, perteneciente al Instituto Amazónico de Investigaciones Científicas
+        SINCHI y que se encuentra registrado ante el Registro Nacional de Colecciones
+        desde el 28 de marzo de 2001. \nEste recurso cuenta a la fecha con 90000 registros
+        de plantas.","type":"OCCURRENCE"},{"key":"d4b72404-5c42-49ea-ab78-9edb3c8957b6","title":"Herbarium
+        Amazonense","description":"Herbario Universidad Nacional de la Amazonía Peruana
+        - UNAP","type":"OCCURRENCE"},{"key":"3cc6171e-8c52-4f65-ad7a-32c74e395f29","title":"Herbarium
+        - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"The INPA
+        herbarium was founded in 1954 and is the largest collection of Amazon plants
+        in Brazil with ca. 260,000 collections, 90% of them from the Amazon region.  The
+        collections is informatized in BRAHMS.  The principal collectors include Ghillian
+        T. Prance, William A. Rodrigues and Carlos A. Cid Ferreira. The current curator
+        is Michael J.G. Hopkins.","type":"OCCURRENCE"},{"key":"5bdb9676-f673-4ae8-8e59-8e787eda7742","title":"Fish
+        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Taxonomic
+        and Systematic collection of Amazon Fishes.","type":"OCCURRENCE"},{"key":"8ffeca3a-6ef4-43fb-8319-d82fe17dccc7","title":"Colección
+        de Mamíferos – Universidad de la Amazonia","description":"Este recurso posee
+        información consolidada de muchas especies de mamíferos colectados y algunos
+        donados por medios externos  al Museo de Historia Natural (sede centro) de
+        la Universidad de la Amazonia (Florencia – Caquetá) con el fin de enriquecer
+        la colección y favorecer la distribución geográfica registrada dentro de la
+        región Andino-Amazónica; cada uno de los individuos registrados consta de
+        su respectiva taxonomía, distribución, ecología y endemismo. Todo se resume
+        en 250 especies registradas, de ellas hay 6 familias, 19 géneros y por lo
+        menos 34 especies.","type":"OCCURRENCE"},{"key":"22331d58-4a7e-40da-b7db-652a4d4d85ed","title":"HERBAM
+        - Herbário da Amazônia Meridional","description":"Coleção da flora da Amazônia
+        Meridional, a qual engloba o arco do desmatamento ou corredor de unidades
+        de conservação. Possui 10 mil unidades de curadoria. Hoje se constitui o maior
+        acervo da amazonia matogrossense.","type":"OCCURRENCE"},{"key":"fbb9dae5-dd42-4171-99d0-47502913ff43","title":"Acari
+        Collection - Instituto Nacional de Pesquisas da Amazônia","description":"Acari
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"26e2dd6e-e6bf-4560-8caa-f29e3a5df6f3","title":"Pauropoda
+        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Pauropoda
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"cb43df0e-a35a-4a2f-8493-24f11cd51feb","title":"Pseudoscorpiones
+        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Pseudoscorpiones
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"9c63bc91-3b2b-4f5e-9eb8-037c3c11ca67","title":"Chilopoda
+        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Chilopoda
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"9e0936f9-8902-4a4b-8f32-a3e3b038993d","title":"Symphyla
+        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Symphyla
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"6834c3b4-50a7-42df-a87f-324239eaca66","title":"Diplopoda
+        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Diplopoda
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"cbc1ecc8-7b69-408a-9b42-8c2c72567523","title":"Fiocruz/CFAM
+        - Coleção de Fungos da Amazônia","description":"A Coleção de Fungos da Amazônia,
+        CFAM, que está inserida na Coleção Biológica do Instituto Leônidas e Maria
+        Deane (CBILMD), possui um acervo de relevante importância uma vez que é composta
+        de linhagens isoladas de diferentes substratos da Amazônia brasileira, região
+        ainda pouco explorada quanto à sua riqueza microbiana.\n\nNo acervo os gêneros
+        de maior ocorrência são Penicillium, Aspergillus e Trichoderma, isolados das
+        mais diversas fontes tais como ar, solo, água, plantas, frutos, homem e outros
+        animais. Todas as culturas estão identificadas ao nível de gênero e outras
+        de espécie, pertencentes aos filos Zygomycota, Ascomycota e aos fungos anamórficos.\n\nO
+        acervo da CFAM é constituído por 1005 culturas de fungos filamentosos, conservados
+        sob óleo mineral, em água destilada, a -20ºC e liofilização, e são mantidas
+        em quadruplicata em cada método de preservação.\n\nAlém de receber depósitos,
+        a CFAM atende a pedidos de fornecimento de culturas, isolamento e identificação
+        de fungos, assim como treinamento de estudantes e profissionais na identificação
+        de fungos. Estes pedidos são procedentes de instituições de ensino e/ou pesquisa,
+        nacionais e internacionais.\n\nA CFAM vem caracterizando as culturas estocadas
+        quanto a aspectos biotecnológicos, tais como produção de enzimas de interesse
+        industrial e antimicrobianos; e quanto às características morfológicas, através
+        de projetos desenvolvidos por alunos de graduação e pós-graduação (mestrado
+        e doutorado)do país.\n\nA CFAM é filiada a World Federation for Culture Collections,
+        World Federation for Culture Collections, WFCC, sob o registro WDCM 957 e
+        está credenciada como Fiel Depositária de Amostras de Patrimônio Genético
+        pelo Conselho de Gestão de Patrimônio Genético (CGEN/ Ministério do Meio Ambiente),
+        de acordo com o Aviso de Credenciamento nº 063/2012/SECEX/CGEN, publicado
+        no D.O.U em 19/09/2012.Para maiores informações acesse a página web da CFAM/For
+        more information please visit the CFAM website: http://cfam.fiocruz.br/","type":"OCCURRENCE"},{"key":"f2e4fddc-f85c-4c79-8629-e5b448298b21","title":"Fiocruz/CBAM
+        - Coleção de Bactérias da Amazônia","description":"A Coleção de Bactérias
+        da Amazônia, CBAM, que está inserida na Coleção Biológica do Instituto Leônidas
+        e Maria Deane, CBILMD, é constituída por um patrimônio de significância científica.
+        Trata-se de um acervo composto de bactérias da Amazônia, incluindo 578 isolados
+        identificados e conservados pelos métodos de óleo mineral, a -20ºC e liofilização.\nAs
+        culturas bacterianas que compõe a CBAM são provenientes de isolados clínicos
+        (orofaringe e fezes humanas), da microbiota bucal de animais e de ambiente
+        (água dos rios, igarapés e plantas). As principais bactérias inseridas na
+        Coleção são: Salmonella spp., Escherichia coli, Shigella spp., Neisseria meningitidis,
+        Staphylococcus aureus, entre outras. O acervo é de relevante importância,
+        uma vez que é composto por linhagens bacterianas isoladas de diferentes substratos
+        da Amazônia brasileira, região ainda pouco explorada quanto à sua riqueza
+        microbiana.\n\nA CBAM recebe para depósito culturas isoladas por pesquisadores
+        de vários laboratórios e universidades do país. Também, mantém grande número
+        de culturas tipo e de referência, empregadas em trabalhos taxonômicos ou relacionados
+        a testes com substâncias diversas.\n\nA CBAM é filiada à World Federation
+        for Culture Collections, WFCC, sob o registro WDCM 956, e foi credenciada
+        como Fiel Depositária de Amostras de Patrimônio Genético pelo Conselho de
+        Gestão de Patrimônio Genético (CGEN/ Ministério do Meio Ambiente), de acordo
+        com o Aviso de Credenciamento nº 063/2012/SECEX/CGEN, publicado no D.O.U.
+        em 19/09/2012.\nPara maiores informações acesse a página web da CBAM/For more
+        information please visit the CBAM website: http://cbam.fiocruz.br/","type":"OCCURRENCE"},{"key":"32d90382-18b6-4660-ad99-8c4e9a5bdbe5","title":"Schizomida
+        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Schizomida
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"aa1f4729-38eb-4bba-ae40-bc1c5b1e3e87","title":"Ricinulei
+        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Ricinulei
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"d9309bc6-e48c-4a92-a0a5-cb538a8096cd","title":"Porifera
+        Collection - Instituto Nacional de Pesquisas da Amazônia","description":"Porifera
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"f28312b7-457b-4c40-a269-a66709ad3f80","title":"Porifera
+        Collection - Instituto Nacional de Pesquisas da Amazônia","description":"Porifera
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"f0ef3703-bab0-4a6b-bab4-e49475784f61","title":"Nematoda
+        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Nematoda
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"be1690c2-5e11-40b3-9dc7-7556155347bf","title":"Palpigradi
+        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Palpigradi
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"ca51faa6-179e-4c43-88d3-c9435671d222","title":"Thelyphonida
+        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Thelyphonida
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"aa02f601-c82e-41bd-9cb4-c8816e702369","title":"Myxozoa
+        Collection - Instituto Nacional de Pesquisas da Amazônia","description":"Myxozoa
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"4522ce7f-1aeb-46d8-8fc6-dd076386166c","title":"Status,
+        ecología y conservación de loros Amazona en el Noreste de México","description":"<p>Los
+        psitácidos o pericos son un grupo de aves que adquirieron en los últimos años
+        una gran importancia como objetos de estudio porque a pesar de sus múltiples
+        problemas de conservación eran prácticamente desconocidos biológicamente.
+        A partir de 1990, he desarrollado trabajo de investigación y conservación
+        con este grupo. El apoyo de la CONABIO permitió la continuación de estos estudios
+        en 1995 y 1996. Nuestra meta es la conservación de tres especies de loros
+        Amazona, dos de las cuales se consideran en peligro de extinción en la NOM-ECOL-059,
+        Amazona oratrix, el loro de cabeza amarilla y A. viridigenalis, el loro Tamaulipeco.
+        Nuestro trabajo a contribuido de manera importante al conocimiento de este
+        genero a nivel mundial y hemos estado desarrollando técnicas de investigación
+        que ahora se aplican en proyectos similares. Entre ellas el muestreo de la
+        dieta de pollos por extracción directa del buche ha sido especialmente útil.
+        Determinamos que las observaciones de forrajeo guardan poca relación con la
+        composición cuantitativa de la dieta. Se estableció también que estas especies
+        pueden persistir en hábitats altamente modificados siempre que se mantengan
+        árboles suficientes para la anidación. Esto indica que en áreas dedicadas
+        a la ganadería se puede lograr la conservación de algunos elementos de la
+        biodiversidad mediante estrategias de manejo del paisaje donde se mantenga
+        un mínimo de áreas con árboles. Para tal fin nos encontramos desarrollando
+        una guía para los ganaderos en que se indique como compatibilizar su actividad
+        con la de conservación de estas especies.</p>\n<p>Reino: 1\nFilo: 1\nClase:
+        1\nOrden: 1\nFamilia: 1\nGénero: 2\nEspecie: 4</p>","type":"OCCURRENCE"},{"key":"80fdc69b-fb8f-48ef-9066-ade0f60ef5a0","title":"Tree
+        species composition in different habitats of savanna used by indigenous in
+        the Northern Brazilian Amazonia","description":"In order to improve our knowledge
+        on wood plants of these regional ecosystems we carried a tree inventory in
+        four different habitats occurring in indigenous savanna areas of the Northern
+        Brazilian Amazonia. The habitats were divided into two formations: forest
+        (Alluvial forest, Forest island and Buritizais = buriti palm formation) and
+        non-forest (typical  savanna). The inventory was carried out on two hectares
+        established in the Darora Indigenous Community region, north of the State
+        of Roraima.","type":"OCCURRENCE"},{"key":"fcee13f5-6e61-4d9b-ba52-87f21f827578","title":"Solifugae
+        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Solifugae
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"bf4641a7-a856-4061-8746-43a9e26db0cb","title":"Inventário
+        florístico de 20 parcelas permanentes estabelecidas em áreas de savana do
+        norte da Amazônia brasileira","description":"Inventário florístico realizado
+        pelo Grupo de Pesquisa \"Ecologia e Manejo dos Recursos Naturais da Savana
+        de Roraima\", vinculado ao Instituto Nacional de Pesquisas da Amazônia (INPA),
+        em 20 parcelas permanentes estabelecidas em dois módulos de savana do Programa
+        de Pesquisa em Biodiversidade (PPBio), Núcleo de Roraima. O levantamento foi
+        realizado entre 2012/2013 e baseado em observações diretas ao longo do transecto
+        central de cada parcela. Todos os indivíduos observados foram categorizados
+        por formas de vida (árvore, arbusto, sub-arbusto e ervas) e habitats definidos
+        por diferentes restrições hidro-edáficas.","type":"OCCURRENCE"},{"key":"dd282bd6-6e30-4f02-bb36-6bdae0a46090","title":"Detection
+        histories for eight species of Amazona parrots in Venezuela during the NeoMaps
+        bird surveys in 2010","type":"OCCURRENCE"},{"key":"8ab22acf-a3eb-4a67-9eec-5d07631011be","title":"Scorpiones
+        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Scorpiones
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"f99eba58-668d-47f1-bf3d-e53dc88ad395","title":"Amblypygi
+        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Amblypygi
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"c001a28f-6f37-40e9-8e34-e0ada1772e4d","title":"Hymenoptera
+        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Hymenoptera
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"b39891a1-2eb2-492d-bb5b-4da1007ecde5","title":"Ephemeroptera  Collection
+        - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Ephemeroptera  Collection
+        - Instituto Nacional de Pesquisas da Amazônia (INPA)","type":"OCCURRENCE"},{"key":"2f62b658-b8eb-4d96-a580-3867f9107567","title":"Phasmatodea
+        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Phasmatodea
+        collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","type":"OCCURRENCE"},{"key":"0226cfa0-2284-4dbf-be05-cad350f50b61","title":"Ortopthera
+        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Ortopthera
+        collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","type":"OCCURRENCE"},{"key":"c76230d9-61a0-4643-a227-bf8e2f78e7b6","title":"Blattaria
+        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Blattaria
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"b8690829-221b-49df-91bc-78bd1fdced24","title":"Crustacea
+        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Crustacea
+        collection &#64; Instituto Nacional de Pesquisas da Amazônia (INPA)","type":"OCCURRENCE"},{"key":"81c2706e-d91a-41d8-b7d9-1553f53b7117","title":"Herpetology
+        Collection - Instituto Nacional de Pesquisas da Amazônia","description":"Herpetology
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"f67c16a4-4734-4d7a-9418-53f528abc110","title":"Opiliones
+        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Opiniones
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"ba29109c-01c2-46b3-b594-2247bfbb0ed9","title":"Onychophora
+        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Onychophora
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"ec5c8ed6-468e-41b0-bb4c-934b36fb3733","title":"Hemiptera  Collection
+        - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Hemiptera
+        collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","type":"OCCURRENCE"},{"key":"d0318a4e-8d55-4da6-b912-e90dd6ed960b","title":"Ictiologia
+        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Scorpiones
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"1412d4de-9982-4f96-8393-3dc9fe1df74f","title":"Diptera
+        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Diptera
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"7aeb3ded-7443-4512-95f7-2ec7ab0f308c","title":"EAFM
+        - Herbário do Instituto Federal de Educação, Ciência e Tecnologia do Amazonas","description":"Acervo
+        iniciado em 2008 com ênfase em espécies da flora vascular amazônica. Além
+        da fitodiversidade em geral, o Herbário EAFM tem grande interesse em amostras
+        de plantas de interesse econômico. A prioridade é material fértil, mas material
+        testumunho (voucher) vegetativo (estéril) originários de trabalhos sistematizados
+        (e.g., estudos etnobotânicos e inventários florísticos) em boas condições,
+        com dados de campo e, minimamente, identificados podem ser incorporados ao
+        acervo, mediante contato prévio com a Curadoria e, eventuais contrapartidas
+        em materiais de consumo ou outros. Atualmente, nosso acervo é composto aproximadamente
+        6000 exsicatas. É uma coleção relevante, pois trabalha majoritariamente com
+        estudantes de nível médio (técnico), contribuindo para desmistificar a botânica
+        e os herbários junto a um público jovem e a comunidade em geral (extensão).","type":"OCCURRENCE"}]'
+  recorded_at: 2018-06-17 05:05:37 GMT
+  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2

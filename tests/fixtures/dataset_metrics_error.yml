@@ -1,0 +1,139 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset//metrics
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+  response:
+    status:
+      status_code: '404'
+      message: Not Found
+      explanation: Nothing matches the given URI
+    headers:
+      status: HTTP/1.1 404 Not Found
+      date: Sun, 17 Jun 2018 05:01:00 GMT
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      content-length: '0'
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/dataset//metrics
+      cache-control: no-cache, no-store, must-revalidate
+      x-varnish: '491749461'
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: 2018-06-17 05:01:03 GMT
+  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/3f8a1297-3259-4700-91fc-acc4170b27ce/metrics
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Sun, 17 Jun 2018 05:01:01 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/dataset/3f8a1297-3259-4700-91fc-acc4170b27ce/metrics
+      cache-control: public, max-age=3601
+      x-varnish: 491585821 492372057
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '1021'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"key":208481,"datasetKey":"3f8a1297-3259-4700-91fc-acc4170b27ce","usagesCount":30685,"synonymsCount":20314,"distinctNamesCount":30642,"nubMatchingCount":29389,"colMatchingCount":24063,"nubCoveragePct":95,"colCoveragePct":78,"countByConstituent":{},"countByKingdom":{"PLANTAE":9158,"ANIMALIA":1},"countByRank":{"SPECIES":6145,"GENUS":1258,"VARIETY":894,"SUBSPECIES":731,"SECTION":353,"TRIBE":328,"FAMILY":173,"SUBFAMILY":148,"SUBGENUS":106,"SUBTRIBE":61,"SUBSECTION":60,"ORDER":55,"SERIES":40,"SUPERORDER":12,"SUBCLASS":6,"CLASS":1},"countNamesByLanguage":{"ENGLISH":20953,"FRENCH":11314},"countExtRecordsByExtension":{"VERNACULAR_NAME":32267,"DISTRIBUTION":29473,"DESCRIPTION":10337,"IDENTIFIER":0,"MULTIMEDIA":0,"REFERENCE":0,"SPECIES_PROFILE":0,"TYPES_AND_SPECIMEN":0},"countByOrigin":{"SOURCE":30677,"PROPARTE":8},"countByIssue":{"SCIENTIFIC_NAME_ASSEMBLED":1809,"BACKBONE_MATCH_NONE":1296,"PARTIALLY_PARSABLE":116},"otherCount":{},"created":"2018-05-09T01:28:42.912+0000","downloaded":"2018-05-08T21:56:27.539+0000"}'
+  recorded_at: 2018-06-17 05:01:03 GMT
+  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/4/metrics
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+  response:
+    status:
+      status_code: '404'
+      message: Not Found
+      explanation: Nothing matches the given URI
+    headers:
+      status: HTTP/1.1 404 Not Found
+      date: Sun, 17 Jun 2018 05:01:02 GMT
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      content-length: '0'
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/dataset/4/metrics
+      cache-control: no-cache, no-store, must-revalidate
+      x-varnish: '493191230'
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: 2018-06-17 05:01:03 GMT
+  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/82ceb6ba-f762-11e1-a439-00145eb45e9a/metrics
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+  response:
+    status:
+      status_code: '204'
+      message: No Content
+      explanation: Request fulfilled, nothing follows
+    headers:
+      status: HTTP/1.1 204 No Content
+      date: Sun, 17 Jun 2018 05:01:02 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/dataset/82ceb6ba-f762-11e1-a439-00145eb45e9a/metrics
+      cache-control: public, max-age=3601
+      x-varnish: 493191245 489652798
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: 2018-06-17 05:01:03 GMT
+  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2

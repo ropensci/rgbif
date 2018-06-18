@@ -1,0 +1,906 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/suggest?limit=100&type=OCCURRENCE
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Sun, 17 Jun 2018 05:05:38 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/dataset/suggest?limit=100&type=OCCURRENCE
+      cache-control: public, max-age=3601
+      x-varnish: 462099186 493290350
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '75276'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '[{"key":"75956ee6-1a2b-4fa3-b3e8-ccda64ce6c2d","title":"INPN - Données
+        flore des CBN agrégées par la FCBN","description":"Dès la création de leur
+        Fédération (FCBN - www.fcbn.fr) en 1999, les onze Conservatoires botaniques
+        nationaux (CBN) ont exprimé la volonté collective de constituer un système
+        d’information national pour mettre en commun leurs données, et celles de leurs
+        partenaires, sur la flore, la fonge et les végétations-habitats. C’est réellement
+        en 2010 avec le lancement de l’établissement du Format Standard de Données
+        sur la flore (FSD Flore), conçu comme le « format commun de données de la
+        Fédération des CBN », que la démarche a été initiée. Il s’en est suivi de
+        nombreux échanges ayant permis de finaliser le format, de le tester sur les
+        premiers jeux de données, d’établir une charte d’adhésion au projet et d’élaborer
+        le cadrage final de l’exercice d’agrégation des données. Le projet s’est concrétisé
+        au premier trimestre 2013 à travers la mise au format des données détenues
+        par les CBN et leur intégration dans le Système d’Information de la FCBN (SI-Flore).
+        A l’horizon de l’année 2014, il résulte, de ce projet structurant, que la
+        FCBN dispose d’un système d’information d’envergure nationale et fort de plus
+        de 20 millions de données d’observation sur la flore de France. Les données
+        centralisées ont été consolidées sur la base du référentiel TAXREF 5.0 et
+        une mise à jour est prévue pour fin 2015.","type":"OCCURRENCE"},{"key":"95db4db8-f762-11e1-a439-00145eb45e9a","title":"DOF","description":"DOFbasen.
+        Please contact DOF (dof@dof.dk) before any use of DOFbase data in publications.
+        Database of bird registrations administrated by Danish Ornithological Society
+        (www.dof.dk). Danish Ornithological Society/BirdLife Denmark (in Danish: Dansk
+        Ornitologisk Forening - DOF) is a private society working for the protection
+        of birds and nature as well as the procurement of knowledge on birds. Information
+        on sensitive species is omitted from the available data - see list here: http://www.dofbasen.dk/opslag/sensitive.php.
+        Please contact DOF on how to obtain information on sensitive species","type":"OCCURRENCE"},{"key":"292a71df-588b-48fa-9ab5-29ae868ba88c","title":"Finnish
+        Bird Ringing and Recovery Database","description":"Database of birds ringed
+        in Finland and all reported encounters of the birds.","type":"OCCURRENCE"},{"key":"4bf1cca8-832c-4891-9e17-7e7a65b7cc81","title":"BirdLife
+        Australia, Birdata","description":"Birdata is your gateway to BirdLife Australia
+        data including the Atlas of Australian Birds and Nest record scheme. You can
+        use Birdata to draw bird distribution maps and generate bird lists for any
+        part of the country. You can also join in the Atlas and submit survey information
+        to this important environmental database.\n\nPlease note that Birdlife data
+        is available under a non-commercial license and consultants should contact
+        Birdlife directly to arrange access to full resolution records for commercial
+        purposes.","type":"OCCURRENCE"},{"key":"e6fab7b3-c733-40b9-8df3-2a03e49532c1","title":"Flora
+        von Deutschland (Phanerogamen)","description":"Verbreitung der Farn- und Bluetenpflanzen
+        in Deutschland, Vorkommensnachweise aggregiert auf Quadranten der Topographischen
+        Karte 1 : 25000 (TK25 = MTB), sowie in Zeitperioden <vor 1950>, <1950 - 1980>,
+        <nach 1980 >","type":"OCCURRENCE"},{"key":"f06fef3c-6ea6-4345-b724-a1b8e490dc55","title":"Anillamiento
+        SEO_Bird ringing","description":"Scientific bird ringing is a research method
+        based on the individual marking of birds.\nBird Ringing involves the marking
+        of individual birds by highly trained ornithologists to provide vitaldata
+        on migration patterns, demography\nand ecological processes.","type":"OCCURRENCE"},{"key":"83e20573-f7dd-4852-9159-21566e1e691e","title":"Bird
+        tracking - GPS tracking of Lesser Black-backed Gulls and Herring Gulls breeding
+        at the southern North Sea coast","description":"Bird tracking - GPS tracking
+        of Lesser Black-backed Gulls and Herring Gulls breeding at the southern North
+        Sea coast is a species occurrence dataset published by the Research Institute
+        for Nature and Forest (INBO) and described (v5.5) in Stienen et al. 2016 (https://doi.org/10.3897/zookeys.555.6173).
+        The dataset contains close to 8.5 million occurrences (GPS fixes) recorded
+        by GPS trackers mounted on 108 Lesser Black-backed Gulls and 37 Herring Gulls
+        breeding at the Belgian and Dutch coast. The trackers are developed by the
+        University of Amsterdam Bird Tracking System (UvA-BiTS, http://www.uva-bits.nl)
+        and allow to study the gulls'' habitat use and migration behaviour in great
+        detail. Our bird tracking network is operational since 2013 and is maintained
+        and used by the INBO, the Flanders Marine Institute (VLIZ), UvA-BiTS, Ghent
+        University (UGent), and the University of Antwerp (UA). See the dataset metadata
+        for contact information, scope, and methodology. Issues with the dataset can
+        be reported at https://github.com/inbo/data-publication/tree/master/datasets/bird-tracking-gull-occurrences\nThe
+        following information is not included in the dataset and available upon request:
+        outliers, speed, temperature, barometric pressure, accelerometer data, GPS
+        metadata (fix time, number of satellites used, vertical accuracy), bird biometrics
+        data measured during tagging (bill length, bill depth, tarsus length, wing
+        length, body mass), life history data (day of ringing, age, resightings by
+        volunteers), as well as growth data of chicks.\nTo allow anyone to use this
+        dataset, we have released the data to the public domain under a Creative Commons
+        Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/). We would
+        appreciate however, if you read and follow these norms for data use (http://www.inbo.be/en/norms-for-data-use)
+        and provide a link to the original dataset (https://doi.org/10.15468/02omly)
+        whenever possible. If you use these data for a scientific paper, please cite
+        the dataset following the applicable citation norms and/or consider us for
+        co-authorship. We are always interested to know how you have used or visualized
+        the data, or to provide more information, so please contact us via the contact
+        information provided in the metadata, opendata@inbo.be or https://twitter.com/LifeWatchINBO.\nThe
+        bird tracking network used to collect these data is set up and maintained
+        by the INBO and VLIZ as part of the Flemish contribution to LifeWatch.","type":"OCCURRENCE"},{"key":"6ac3f774-d9fb-4796-b3e9-92bf6c81c084","title":"naturgucker","description":"naturgucker.de
+        / enjoynature.net is a rapidly growing social network with several millions
+        of observations of wild plants and animals, thus naturgucker.de / enjoynature.net
+        supports and promotes nature conservancy. naturgucker.de / enjoynature.net
+        offers nature observers (mainly citizen scientists) a personal data center
+        for their data in which they can pool and manage all their observations and
+        nature photographs for the surrounding region, or even worldwide from their
+        vacations. In addition, beginners can find a myriad of information, such as
+        hundreds of thousands of photographs, up to date distribution maps, tenthousands
+        observation areas with helpful hints, and a strong community in naturgucker.de
+        /enjoaynature.net.","type":"OCCURRENCE"},{"key":"37beb6ea-e591-41e3-b781-e384250dc42c","title":"Victorian
+        Biodiversity Atlas","description":"The Department of Environment, Land, Water
+        & Planning works in partnership with a range of agencies and stakeholders
+        to protect and preserve Victoria’s native landscape through a range of biodiversity,
+        wildlife and community programs. \n\nWe manage threatened species conservation
+        and recovery, biodiversity research, invasive species, and climate change
+        adaptation strategies. - See more at: http://www.delwp.vic.gov.au/environment-and-wildlife#sthash.giDedj4S.dpuf\n\nThe
+        Victorian Biodiversity Atlas (VBA) is the web-based information system designed
+        to manage information about native and naturalised species occurring in Victoria.
+        The system includes species attribute information, including origin and conservation
+        status, along with more than six million records of species distribution and
+        abundance. All the published records have been through the verification process
+        of the VBA which includes review by a panel of Victorian experts. \n\nThe
+        VBA includes the data submitted to DELWP from external sources as well as
+        the Department’s own data collections from systematic surveys and general
+        observations. The VBA replaces several legacy systems, including the Victorian
+        Flora Site Database, the Atlas of Victorian Wildlife, the Aquatic Fauna Database
+        and the Victorian Rare or Threatened Plant Population monitoring (VROTPop)
+        systems. \n\nFor further information and access to the VBA please go to the
+        DELWP website http://www.depi.vic.gov.au/environment-and-wildlife/biodiversity/victorian-biodiversity-atlas).","type":"OCCURRENCE"},{"key":"4f70108a-dda7-4e8b-8298-babaee5182c3","title":"Bird
+        Ringing Centre in Sweden (NRM)","description":"This database contains information
+        about bird ringing in Sweden.","type":"OCCURRENCE"},{"key":"a86201a4-fa20-44e5-ade2-68ea3563cfa8","title":"Macro-moth
+        distribution records for the UK for the period pre 2000 from Butterfly Conservation","description":"Moth
+        provisional distribution data for the period pre 2000 from the National Moth
+        Recording Scheme led by Butterfly Conservation. The National Moth Recording
+        Scheme provides a comprehensive network for recording the 2500+ species of
+        moths in the UK, the Isle of Man and the Channel Islands, through which members
+        of the public can contribute moth sightings to underpin conservation. The
+        NMRS was launched in 2007 and was developed as part of the Moths Count project
+        funded by the Heritage Lottery Fund with support from many other organisations
+        and is now an ongoing recording scheme.","type":"OCCURRENCE"},{"key":"1e266c3d-92ef-4d5a-8e4a-c04742c772c3","title":"UK
+        Butterfly Monitoring Scheme (UKBMS)","description":"The UKBMS is a standarised
+        monitoring scheme for monitoring butteflies in the UK.  This dataset includes
+        records from traditional fixed transect sites, often called ''Pollard Walks'';
+        data from the Wider Countryside Butterfly Survey is excluded and available
+        within a separate dataset.\n \n The UKBMS is run by Butterfly Conservation
+        (BC), the Centre for Ecology and Hydrology (CEH), and the British Trust for
+        Ornithology (BTO), in partnership with the Joint Nature Conservation Committee
+        (JNCC), and supported and steered by Forestry Commission (FC), Natural England
+        (NE), Natural Resources Wales (NRW), Northern Ireland Environment Agency (NIEA)
+        and Scottish Natural Heritage (SNH).","type":"OCCURRENCE"},{"key":"f2e389da-39c3-4f21-8d72-b7d574d924a9","title":"Finnish
+        Floristic Database (Finnish Museum of Natural History Collections)","description":"Occurrence
+        data of plants from the collections and archives of the Finnish Museum of
+        Natural History.","type":"OCCURRENCE"},{"key":"ad43e954-dd79-4986-ae34-9ccdbd8bf568","title":"Geographically
+        tagged INSDC sequences","description":"Metadata for INSDC sequences that have
+        been geographically tagged.","type":"OCCURRENCE"},{"key":"7bd65a7a-f762-11e1-a439-00145eb45e9a","title":"Tropicos
+        Specimen Data","description":"The Missouri Botanical Garden’s Herbarium is
+        one of the world’s outstanding research resources for specimens and information
+        on bryophytes and vascular plants. The collection is limited to these two
+        major groups of plants. As of 31 December 2015 the collection had 6.66 million
+        specimens (6.1 million vascular plants and 563,000 bryophytes). This specimen
+        dataset includes over 4.4 million records (4.0 million vascular plants and
+        300,000 bryophytes).","type":"OCCURRENCE"},{"key":"64dabd3c-4f34-4520-b9dd-d227a0bf1582","title":"Occurrence
+        Data of Vascular Plants collected or compiled for the Flora of Bavaria","description":"http://wiki.bayernflora.de/web/Flora_of_Bavaria_%E2%94%80_occurrence_data_online","type":"OCCURRENCE"},{"key":"53f13c8f-413e-4537-bda6-98666cd7975f","title":"Other
+        BSBI Scottish data up to 2012","type":"OCCURRENCE"},{"key":"07044577-bd82-4089-9f3a-f4a9d2170b2e","title":"A
+        global database for the distributions of crop wild relatives","description":"<p>This
+        dataset originally held 5 647 442 total records, where 34% of the records
+        corresponded to germplasm accessions and 66% to herbarium samples. A total
+        of 3 231 286 records had cross-checked coordinates (see Figure 2). 322 735
+        records were newly georeferenced using The Google Geocoding API and 15 713
+        new records were obtained after digitizing the information contained in herbaria
+        specimens. Data was gathered from more than 100 data providers, including
+        GBIF (a comprehensive list of institutions and individuals is available here:
+        http://www.cwrdiversity.org/data-sources/ ).</p>\n<p>The geographic coverage
+        of the dataset includes 96% of the world countries and also includes records
+        of cultivated plants (1/3 of the dataset). Records of the crop wild relatives
+        of 80 crop gene pools can be queried and visualized in this interactive map:
+        http://www.cwrdiversity.org/distribution-map/</p>\n<p>This dataset was assembled
+        as part of the project ‘Adapting Agriculture to Climate Change: Collecting,
+        Protecting and Preparing Crop Wild Relatives’, which is supported by the Government
+        of Norway. The project is managed by the Global Crop Diversity Trust and the
+        Millennium Seed Bank of the Royal Botanic Gardens, Kew, and implemented in
+        partnership with national and international genebanks and plant breeding institutes
+        around the world. For further information, please refer to the project website:
+        http://www.cwrdiversity.org/</p>\n<p>For publication to GBIF, all records
+        originally gathered from GBIF have been removed to avoid data duplication.</p>","type":"OCCURRENCE"},{"key":"3b301884-51b9-443f-b63c-47feeccfb89f","title":"Finnish
+        Entomological Database","description":"Finnish Entomological Database contains
+        species occurrence data for insects and arachnids from Finland, collected
+        by professional and amateur entomologists.","type":"OCCURRENCE"},{"key":"c3f5731f-4ebc-48a2-83ba-3fb5c895f6c1","title":"New
+        South Wales Bird Atlassers","description":"Observation records collected by
+        the NSW Bird Atlassers Inc.","type":"OCCURRENCE"},{"key":"37f48e00-1fe8-11dc-b461-b8a03c50a862","title":"Dutch
+        Foundation for Applied Water Research (STOWA) - Limnodata Neerlandica","description":"The
+        Limnodata Neerlandica data set contains the data of more than 30 years systematic
+        and project based sampling of Dutch, mainly freshwater, waterbodies. Data
+        originate from 37 data providers; 26 water boards, the provinces and the Ministry
+        of Transport, Public Works and Water Management. Over 20,000 sample points
+        were used. The main purpose of the dataset is monitoring the quality of Dutch
+        surface waters. Next to the biological characteristics also a-biotic data
+        were sampled and stored alongside the biotic data. Observations are available
+        from phytoplankton, diatoms, aquatic and riparian plants, macro-invertebrates
+        and fish. The data were collected on a yearly base. The taxonomy has been
+        validated according to the Dutch standardised checklist of aquatic species.\n\nUpdate
+        January 2015: Added data for 2011 and 2012. Enhanced taxonomic and locality
+        data fields.","type":"OCCURRENCE"},{"key":"b05a19cf-dcf2-4ef9-bbbb-ad0ecbd2917c","title":"Eremaea","type":"OCCURRENCE"},{"key":"040c5662-da76-4782-a48e-cdea1892d14c","title":"International
+        Barcode of Life project (iBOL)","description":"The International Barcode of
+        Life Project (iBOL) was formally activated in October 2010. Its first phase
+        (2010-2015) will lead to the acquisition of DNA barcode records for 5M specimens
+        representing 500K species. iBOL will release each barcode record in two phases.
+        The initial phase will release barcode sequence(s), trace files, high-level
+        (ordinal) taxonomic assignment, GPS co-ordinates and the country of collection.
+        This phase of data release will occur automatically on a quarterly basis in
+        datafiles posted on this page as well as at GenBank. The second phase of data
+        release will involve a more precise taxonomic assignment and ancillary data,
+        such as images, for each specimen.The data released to date consists of records
+        for 2,869,168 sequences analyzed at the Canadian Centre for DNA Barcoding
+        at the University of Guelph and the Centre for Environmental &amp; Molecular
+        Algal Research at the University of New Brunswick during the first year of
+        iBOL ramp-up (July 1, 2009 - June 30, 2010) and the 66 months of the officially
+        activated iBOL project (July 1, 2010 - Dec 31, 2015). These specimens are
+        derived from many collaborators in many nations.","type":"OCCURRENCE"},{"key":"f1929b90-79f5-47aa-b983-51f108eb491f","title":"Bryophyte
+        data for Great Britain from the British Bryological Society held by BRC: Atlas
+        2014","description":"Bryophyte records submitted to the Biological Records
+        Centre for England, Ireland, Scotland, Wales, the Isle of Man and the Channel
+        Islands. The dataset comprises records collected for the Bryophyte Recording
+        Scheme, as well as those extracted from literature and museum sources. Details
+        of all the surveys in this dataset can be obtained by clicking the ''Surveys''
+        tab. This ''Atlas'' dataset contains all of the records presented in Blockeel
+        et al. (2014) Atlas of British and Irish Bryophytes, with the exception of
+        two datasets (one from Cofnod [North Wales Environmental Information Centre]
+        and one from CEDaR [Centre for Environmental Data and Recording, Northern
+        Ireland]) which the BBS were not given permission to export to the NBN. These
+        are datasets 883 and 881 in the BBS/BRC database. This new dataset contains
+        records covering 109 vice-counties since the last NBN export, with over five
+        hundred new records for each of the following counties: Cheshire, North Ebudes,
+        East Sussex, West Ross, Caernarvonshire, Merionethshire, Shropshire (Salop),
+        Carmarthenshire, Argyll Main, West Inverness-shire, South Lancashire, Surrey,
+        East Norfolk, Outer Hebrides, South-west Yorkshire, East Inverness-shire (with
+        Nairn), Breconshire, Cambridgeshire, West Lancashire, Dumfriesshire, West
+        Norfolk, West Sussex, Huntingdonshire, North Essex, Durham, Cardiganshire,
+        Buckinghamshire, North Northumberland (Cheviot), West Sutherland, and Derbyshire.
+        This dataset will not be added to in future, but will only be subject to amendments.
+        Data collected or collated by the BBS post-Atlas (i.e. from the 01/01/2014)
+        will form a new dataset on the NBN.","type":"OCCURRENCE"},{"key":"73d4365a-8868-4d84-a6fd-51098b968170","title":"First
+        Bird Atlas","description":"Records collected by Birds Australia between 1977
+        and 1981, each survey was ascribed to a grid with the coords given as the
+        central point. Grids size varied, with most being 10-minute grids or 1-degree
+        grids.","type":"OCCURRENCE"},{"key":"5f501df0-0c61-11dd-84ce-b8a03c50a862","title":"SLU
+        Aqua Institute of Freshwater Research National register of survey test-fishing
+        - NORS","description":"Standardized test-fishing with Nordic multi-mesh gillnets
+        is a widely used method in Sweden to investigate the fish fauna in a lake.
+        In 2005 the method became an European standard (EN 14757). Standardized test-fishing
+        catch most of the Swedish species in a representative way, giving a good estimate
+        of species abundance and size distribution. The results are generally used
+        for purposes of environmental protection and fishery management.\n\nNORS consists
+        of thousands of test-fishing occasions back to the 1950’s. The Department
+        of Aquatic Resources (SLU Aqua) at the Swedish University of Agricultural
+        Sciences is responsible of collecting and checking test-fishing data generated
+        in national and regional environmental programs, on behalf of the Swedish
+        Agency for Marine and Water Management. SLU Aqua also collect test-fishing
+        data from several other types of investigations in order to create a database
+        as representative as possible. The purpose is to facilitate obtaining data
+        of high quality for research, national investigations and reports. The database
+        also serves as a reference for local and regional investigations. All data
+        is available for the public.","type":"OCCURRENCE"},{"key":"e707e6da-e143-445d-b41d-529c4a777e8b","title":"Suffolk
+        Biodiversity Information Service (SBIS) Dataset","description":"All species
+        records from the SBIS Recorder Database","type":"OCCURRENCE"},{"key":"22122208-ca75-4063-abdf-ab58607dd55a","title":"Vascular
+        plants in Denmark recorded under the The Nationwide Monitoring and Assessment
+        Programme for the Aquatic and Terrestrial Environments (NOVANA)","description":"Occurrence
+        of vascular plants in Denmark recorded under the The Nationwide Monitoring
+        and Assessment Programme for the Aquatic and Terrestrial Environments (NOVANA)","type":"OCCURRENCE"},{"key":"b4ae1720-1431-49ee-bfeb-8146fc42b1a3","title":"SAFRING:
+        Historical Bird Ringing Records (2005-2009)","description":"Bird ringing started
+        in 1948 in southern Africa and is thus the longest running bird monitoring
+        project in the sub-region. Although the data are biased to areas where ringers
+        operated, it is an invaluable record of bird occurrence and distribution changes,
+        arrival and departure times of migrants, survival and mass data in historical
+        times.The South African Bird Ringing Unit (SAFRING), which is an essential
+        arm of the Animal Demography Unit, administers bird ringing in southern Africa.","type":"OCCURRENCE"},{"key":"912ac7b3-f473-435b-97d1-20b6ed0a6208","title":"RSPB
+        Big Garden Birdwatch winter sightings in the UK in 2009","description":"The
+        dataset contains the records from garden bird observations, made by the public
+        during a one-hour period of their choice on the 24-25 January 2009. The survey
+        has been conducted in the UK annually in the last weekend of January since
+        1979. This dataset contains data for 69 different species.\n <br /><br />\n
+        The first Big Garden Birdwatch dataset to be uploaded onto the NBN, was the
+        2008 house sparrow, starling and blackbird dataset. These three species were
+        the most commonly recorded during 2008. More data for other years will be
+        included in annual datasets. This survey is funded by the RSPB.","type":"OCCURRENCE"},{"key":"95e635d4-f762-11e1-a439-00145eb45e9a","title":"Banco
+        de Datos de la Biodiversidad de la Comunitat Valenciana","description":"El
+        Banco de Datos de Biodiversidad de la Comunitat Valenciana tiene como objetivo
+        recoger toda la información de localización de especies en el territorio de
+        la Comunitat Valenciana y su entorno marino. Los datos son provenientes de
+        colecciones, bibliografía y trabajos de campo. Todas las citas están georreferenciadas.
+        Se aportan, para algunas especies, imágenes y fichas con descripción y biología,
+        distribución, hábitat, situación actual, amenazas y acciones de conservación,
+        y las evoluciones poblaciones.","type":"OCCURRENCE"},{"key":"2a513d16-f4ce-4252-974f-2486ce70b788","title":"SA
+        Flora (BDBSA)","description":"The flora and fauna data sets represent the
+        spatial locations of flora and fauna species observation data maintained by
+        DEWNR in the Biological Databases of South Australia.","type":"OCCURRENCE"},{"key":"02d1e772-54ee-4767-b4b8-c35f0c7270ba","title":"NBIS
+        Records to December 2016","description":"Species records for the county of
+        Norfolk","type":"OCCURRENCE"},{"key":"d4aa2255-f927-4220-af22-2958298733b7","title":"Sistema
+        de Información de la vegetación Ibérica y Macaronésica","type":"OCCURRENCE"},{"key":"b84a3711-b4ca-4e4f-adac-80dfaea98d1c","title":"Hatikka
+        Observation Database","description":"Hatikka Observation Database is a digital
+        field journal for Finnish amateur naturalists. It contains occurrence data
+        for all taxon groups from Finland and several other countries.","type":"OCCURRENCE"},{"key":"ce58b7bb-fed6-46b9-9424-135499c7afdf","title":"Garden
+        Bird Surveys","description":"The Garden Bird Survey (GBS) has been run by
+        the Canberra Ornithologists Group (COG) since 3 July 1981.  Summary results
+        of the GBS are published by COG in the Annual Bird Report  published as an
+        issue of \"Canberra Bird Notes\" in hard copy and on the COG website  http://cbn.canberrabirds.org.au/
+        (navigate through the link to Canberra Bird Notes).\n\nThe basis of the Survey
+        is a site equivalent in area to a circle of 100m in radius around the observer''s
+        home or workplace.    Not all sites are circular but all are approximately
+        3Ha in area.  There is no restriction on the elevation of the bird when observed,
+        and birds flying over the site are included.\n\nMost of the Survey sites are
+        located in the urban area of the ACT but some are also located in the City
+        of Queanbeyan and the villages and rural residential areas in the areas of
+        NSW surrounding the ACT.  A State indicator shows which sites are inside or
+        outside the ACT.\n\n\n\nThe observation period is determined by standard starting
+        dates for each year, with a year always commencing on 3 July.  In most cases
+        the observation period is 7 days so that within each year the starting date
+        of each period is the same day of the week.  Exceptions are:\n-\tIn Leap Years
+        the period commencing February 26 is 8 days to accommodate the 29 February;
+        and\n-\tEvery year the period beginning 25 June is 8 days to enable a seamless
+        match to the first day of the week beginning 3 July.\nThe basic counting rule
+        is to report the maximum number of birds of a species seen at any time during
+        the week.  For example:\n-\tIf ten birds of species \"A\" are seen on the
+        first day of a period and twelve on the second day, record \"12\".    \n-\tIf
+        in the same period 4 birds of species \"B\" are seen on the second day and
+        five birds of species \"B\" are seen on the sixth day report \"5\".  \n\nApplication
+        of this rule means that the survey results are not appropriate for measuring
+        the numbers of birds that are migrating in flocks since only the biggest flock
+        is recorded with no measure of the number of flocks.\n\nIt should be noted
+        that number of sites operating in any period may vary, both between years
+        and within a year.   The number of sites tends to be low for the periods beginning
+        3 and 10 July (due to delays in obtaining new Charts) and from 18 December
+        to 8 January due to observers being away on vacation.","type":"OCCURRENCE"},{"key":"a99ca3c9-7448-4bf6-aba5-0ef61b01232c","title":"Rotherham
+        Biological Records Centre - Non-sensitive Records from all taxonomic groups","description":"This
+        dataset is part of a pilot project of Yorkshire and Humber Environmental Data
+        Network (YHEDN) to mobilise LRC data and Naturalist data from our region more
+        widely.\n \n The data has been collated into 2 datasets for NBN (Sensitive
+        and non-sensitive species) with the original survey name as an attribute.
+        More detailed meta-data can be obtained for individual surveys on request
+        from the centre.\n \n Currently Sensitive species includes all bats, badgers
+        and all birds of prey.\n \n Some data has been excluded altogether from these
+        datasets until such time as we can clarify our authority to distribute it
+        but this can be obtained directly from the LRC.","type":"OCCURRENCE"},{"key":"9440b24c-cd99-48e1-9c1d-135a59267eb0","title":"Inventaire
+        National du Patrimoine Naturel : Flore Franco-Belge","description":"L''objectif
+        de cet inventaire est de rassembler un jeu exhaustif de données sur l''ensemble
+        des espèces connues dans le tiers nord de la France et en Belgique. Le réseau
+        est coordonné par l''Institut Floristique Franco-Belge (L. Delvosalle et V.
+        Boullet). Au 01/01/2002, la base contient environ 2 350 000 données. Celles-ci
+        couvrent une période allant de 1910 à 1998 mais l''essentiel concerne les
+        années 1970-1989. Les données sont localisées sous la forme d''une présence
+        absence par maille de 4 km x 4 km. Ce fichier ne contient pas d''informations
+        autres que les données essentielles (espèce, lieu, date, observateur ou source
+        bibliographique).","type":"OCCURRENCE"},{"key":"b7cd5ad0-f65a-4de1-a1bb-318cf5ae12f8","title":"LERN
+        Records","description":"Records held within the LERN database which have been
+        marked as having been validated (within LERN procedures) and where LERN has
+        the agreement of the data owner to publish them on the NBN Gateway.","type":"OCCURRENCE"},{"key":"20e3fcbb-c285-49ee-a93d-cc6ccd06ca9e","title":"FLORIVON","description":"Observations
+        of vascular plants by botanists from the period 1901-1949. Data have been
+        collected in 1.3 x 1 km grid squares. The entire country of the Netherlands
+        was surveyed. Since records are currently being digitized, the FLORIVON dataset
+        is still growing. We estimate the final number of records on 1,400,000. We
+        digitize ~200,000 records per year and finish the digitizing project in 2018.","type":"OCCURRENCE"},{"key":"c779b049-28f3-4daf-bbf4-0a40830819b6","title":"EBCC
+        Atlas of European Breeding Birds","description":"In 1997 the EBCC Atlas of
+        European breeding birds, also referred to as European Ornithological Atlas
+        or  ''EOA'', was published. This voluminous book was the result of more than
+        25 years of fieldwork, cooperation, data gathering, data processing, writing
+        and editing. Next to a beautiful book the data in the maps provides countless
+        possibilities fur further studies on the distribution of the European breeding
+        birds.","type":"OCCURRENCE"},{"key":"8186b0c0-925e-11da-8900-b8a03c50a862","title":"Ringing
+        Data from the Bird Migration Research Station, University of Gdańsk","description":"Ringing
+        data (mainly passerines) has been collected at ringing stations in Northern
+        Poland since 1961. The database is still under development.","type":"OCCURRENCE"},{"key":"dce8feb0-6c89-11de-8225-b8a03c50a862","title":"Australian
+        Museum provider for OZCAM","description":"Australian Museum provider for OZCAM","type":"OCCURRENCE"},{"key":"bb5b30b4-827e-4d5e-a86a-825d65cb6583","title":"Paleobiology
+        Database","description":"The Paleobiology Database (PBDB) is a non-governmental,
+        non-profit public resource for paleontological data. It has been organized
+        and operated by a multi-disciplinary, multi-institutional, international group
+        of paleobiological researchers. Its purpose is to provide global, collection-based
+        occurrence and taxonomic data for organisms of all geological ages, as well
+        data services to allow easy access to data for independent development of
+        analytical tools, visualization software, and applications of all types. The
+        Database’s broader goal is to encourage and enable data-driven collaborative
+        efforts that address large-scale paleobiological questions.","type":"OCCURRENCE"},{"key":"a4d53b24-d61b-4ee5-addd-8b42d54a913f","title":"Finnish
+        Winter Bird Census","description":"Finnish Winter Bird Census database contains
+        occurrence data for birds and mammals in Finland since 1956/57.","type":"OCCURRENCE"},{"key":"bfc6fe18-77c7-4ede-a555-9207d60d1d86","title":"Waarnemingen.be
+        - Plant occurrences in Flanders and the Brussels Capital Region, Belgium","description":"Waarnemingen.be
+        - Plant occurrences in Flanders and the Brussels Capital Region, Belgium is
+        a species occurrence dataset published by Natuurpunt and described (v1.4)
+        in Steeman et al. 2017 (https://doi.org/10.3897/phytokeys.85.14925). The dataset
+        contains close to 1.2 million plant occurrences of almost 1,200 naturally
+        occurring species (native, vagrant or migrant species), recorded by volunteers
+        (citizen scientists), mainly since 2008. The occurrences are derived from
+        the database http://www.waarnemingen.be, hosted at the nature conservation
+        NGO Natuurpunt in collaboration with Stichting Natuurinformatie. Together
+        with the datasets Van Landuyt & Brosens (2017, http://www.gbif.org/dataset/271c444f-f8d8-4986-b748-e7367755c0c1)
+        and Van Landuyt & Noé (2015, https://doi.org/10.15468/xnlbke), the dataset
+        represents the most complete overview of indigenous plants in Flanders and
+        the Brussels Capital Region.\nGeneralized and/or withheld information: location
+        information is generalized to 4 x 4 km² IFBL grid cells. Observer name, exact
+        XY-coordinates, toponyms, and photographs are not included in the published
+        dataset, but are known in the source database.\nTo allow anyone to use this
+        dataset, we have released the data to the public domain under a Creative Commons
+        Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/). We would
+        appreciate however, if you read and follow these norms for data use (http://www.natuurpunt.be/normen-voor-datagebruik)
+        and provide a link to the original dataset (https://doi.org/10.15468/fyuklz)
+        whenever possible. If you use these data for a scientific paper, please cite
+        the dataset following the applicable citation norms and/or consider us for
+        co-authorship. We are always interested to provide more information or know
+        how you have used the data, so please contact us via the contact information
+        provided in the metadata or natuurdata@natuurpunt.be.\nThe publication of
+        this dataset was supported by the INBO as part of the Flemish contribution
+        to LifeWatch.","type":"OCCURRENCE"},{"key":"2985efd1-45b1-46de-b6db-0465d2834a5a","title":"Tasmanian
+        Natural Values Atlas","description":"ABOUT THE NATURAL VALUES ATLAS\nThe Natural
+        Values Atlas provides an easy to use web interface allowing access to authoritative
+        and comprehensive natural values information.  It draws together in one centralised
+        location data on Tasmanian flora and fauna including Threatened species and
+        weeds as well as the Tasmanian Geodiversity Database.  It also incorporates
+        access to other essential data sets such as TASVEG, Threatened communities
+        and Reserves.  The Natural Values Atlas is a supported information tool that
+        ensures knowledge about Tasmania''s valuable natural assets is readily available
+        and quickly obtained.  This information informs planning and decision making
+        processes across all levels of government, industry and the general public,
+        assisting to improve conservation outcomes for natural values in the State.\n\nSPECIES\nThe
+        Natural Values Atlas is comprised of a database and web based application
+        that allows observations of plants and animals from various sources to be
+        viewed, recorded and analysed.  It can be used to search for information on
+        more than 20,000 plant and animal species from Tasmania, Australia and can
+        display maps showing their location and extent.  There are currently over
+        1 million observations of plants and animals recorded in the Natural Values
+        Atlas which have been collected by a variety of custodians.  This information
+        has been generated through general species surveys and projects undertaken
+        for scientific research, environmental assessments and other purposes throughout
+        the State since the 1800''s.\nThe application maintains species taxonomy,
+        attributes and conservation values and provides access to images, related
+        web sites and management documents such as listing statements and recovery
+        plans.  Habitat Mapping for a number of high priority threatened fauna species
+        is also available.  Information sourced from monitoring individual flora and
+        fauna species is accessible as well as samples and analysis which allows information
+        about samples that are associated with an observation to be recorded and tracked.\n\nGEODIVERSITY\nThe
+        Natural Values Atlas can be used to find and download information about sites
+        that are listed in the Tasmanian Geodiversty Database either for their geology,
+        geomorphology or soil conservation values.  The database contains descriptions
+        of the sites and the geodiverstiy values they encompass, their significance
+        to conservation, sensitivity to disturbance, and advice as to appropriate
+        site management.  The Natural Values Atlas can display maps showing the location
+        and extent of sites.\n\nMANAGEMENT\nManagement locations and activities are
+        another important area of the Natural Values Atlas which provide access to
+        data about locations where activities are being undertaken to control, monitor,
+        manage or maintain natural values.  Examples include 1080 baits, traps, nests,
+        nest boxes and monitoring plots.\n\nPROJECTS\nAll data stored in the Natural
+        Values Atlas is organised under a Project.  This component of the Natural
+        Values Atlas contains information regarding the custodian responsible for
+        the project, specific project details such as the people involved in the project
+        or the methodology used to collect the data.  Associated reports, links and
+        images can also be found in this area.  It provides metadata for each project
+        data set.\n\nCONSEVATION INFORMATION SYSTEM\nThe Conservation Information
+        System (CIS) contains data that assists with conservation planning at the
+        landscape scale.  The CIS Conservation Analysis interface allows you to apply
+        your own weightings for a particular conservation value to create a map of
+        areas that have a high density of the natural values of interest.\n\nNATURAL
+        VALUES REPORTS\nNatural Values Reports enables multiple data sets to be brought
+        together in the one report providing a resource that can be used for desktop
+        assessments of natural values for specific areas.  Some of the data sets available
+        through the Natural Values Report facility include: threatened species, species
+        of conservation significance, weeds, geodiversity, TASVEG, threatened communities
+        and reserves.\n\nQUALITY ASSURANCE\nNew data is loaded into the Natural Values
+        Atlas daily and existing data is regularly reviewed and updated as required.  All
+        data in the Natural Values Atlas is carefully scrutinized by the NVA team
+        who draw on the support of relevant experts to ensure that the data is of
+        the highest quality possible.  This is an ongoing task for which the NVA team
+        welcomes feedback and input from NVA users to continually improve the quality
+        of the data.\nThe NVA is supported by Metadata and Business Rules.  These
+        are available from within the NVA or on request.\nThe Natural Values Atlas
+        undergoes constant review and improvement where existing functionality is
+        streamlined and new functionality is added as required.  New versions are
+        regularly released.  The Natural Values Atlas Message Board informs users
+        of changes to the system.\n\nSUPPORT\nThere is online help embedded in the
+        Natural Values Atlas which instructs users on how to operate the database
+        and make use of the various functions available.  It you are interested in
+        attending a training session then please contact the NVA team to find out
+        what is available.  \n\nHOW TO ACCESS THE NATURAL VALUES ATLAS\nGo to www.naturalvaluesatlas.tas.gov.au
+        and select the Register button.  Fill in and submit the form.  You will be
+        informed via email when your user name and password has been activated.  Simplified
+        data from the NVA is also available via the Land Information System Tasmania
+        (LIST) at www.thelist.tas.gov.au.\n\nFURTHER INFORMATION\nFor enquiries please
+        contact support(at)naturalvaluesatlas.tas.gov.au.","type":"OCCURRENCE"},{"key":"d52d01f6-7472-4dbf-9ea8-a33c343255ac","title":"Vegetation
+        data from protected areas in Denmark (§ 3 in the Danish Nature Protection
+        Act)","description":"Vegetation data from protected areas in Denmark (§ 3
+        in the Danish Nature Protection Act)","type":"OCCURRENCE"},{"key":"169fa761-2fb9-4022-93bd-e22b7a062efd","title":"PlutoF
+        platform observations","description":"Observation records from Citizen Science
+        and research projects hosted by PlutoF platform. All observations have been
+        moderated and verified on PlutoF workbench by appointed persons.","type":"OCCURRENCE"},{"key":"3d2619bf-9cb3-4c0e-8f2c-84e8a0586aac","title":"Atlas
+        of Finnish Macrolepidoptera","description":"Combined atlas of butterflies
+        in Finland.","type":"OCCURRENCE"},{"key":"b3604297-f438-4b5c-b654-7976a909f24e","title":"Fungal
+        Records Database of Britain and Ireland","description":"fungi (true fungi
+        [mushrooms, lichens, moulds, yeast], chromistan fungi [downy mildews, water
+        moulds], protozoan fungi [slime moulds and their allies])","type":"OCCURRENCE"},{"key":"0943f690-fde5-11dd-83f4-b8a03c50a862","title":"Phanerogamic
+        Botanical Collections (S)","description":"This database contains information
+        on the specimens in the Phanerogamic Botanical Collections of the Swedish
+        Museum of Natural History.","type":"OCCURRENCE"},{"key":"1270b3c8-ff55-4b63-a407-dcd7e08cd23f","title":"Dragonfly
+        records from the British Dragonfly Society''s Dragonfly Recording Network
+        for the period up to 2014","description":"Dragonfly and damselfly records
+        collected and collated by the Dragonfly Recording Network (DRN), a part of
+        the British Dragonfly Society, for the period 1807-2014. This dataset incorporates
+        the previous DRN and BRC dragonfly datasets on the Gateway.","type":"OCCURRENCE"},{"key":"8ef95309-811f-4c3b-a329-a85368e774c9","title":"Scottish
+        SNH-funded BSBI records","type":"OCCURRENCE"},{"key":"f7fd7255-5be6-48cf-b76a-821cb84aa93f","title":"BRERC
+        species records within last 15 years","description":"BRERC species records
+        recorded within last 15 years within the unitary authority areas of North
+        Somerset, South Gloucestershire, Bristol and Bath & North East Somerset","type":"OCCURRENCE"},{"key":"7d17a2b2-8751-41b5-ac9b-48effc1ea236","title":"BRERC
+        species records recorded over 15 years ago","description":"BRERC species records
+        recorded over 15 years ago within the unitary authority areas of North Somerset,
+        South Gloucestershire, Bristol and Bath & North East Somerset.","type":"OCCURRENCE"},{"key":"8df9af24-1fbd-4699-a545-9a2867ff25fe","title":"Atlas
+        Flora Danica","description":"Atlas Flora Danica maps the wild Danish flora.
+        Data collection took place from 1992 through 2012, and the voluntary monitoring
+        work was carried out by members of the Danish Botanical Society. For this
+        project, Denmark was divided into 2228 squares of 5 × 5 km. In all investigated
+        squares, all plant species were recorded, with exact location. About every
+        other square were surveyed and thereby obtaining good coverage of the whole
+        country. The project gratefully received sponsoring from the Aage V. Jensen
+        Nature Foundation. Atlas Flora Danica''s purpose is to: 1) Show the Danish
+        plant species’ current distribution and regional frequency, including decline
+        or spread of species. Causes of these changes are discussed. 2) Examine the
+        current status of red-listed, protected and rare plant species. 3) Publicize
+        the Danish flora and the importance of protecting the plants and their habitats.
+        Resource homepage: http://atlasfloradanica.dk/","type":"OCCURRENCE"},{"key":"7fd12114-9010-4c13-8f46-990fe04ca882","title":"NatureServe
+        Network Species Occurrence Data","description":"This dataset consists of \"Element
+        Occurrence\" (EO) records for rare and endangered species of the United States
+        and Canada that are managed by the NatureServe Network of natural heritage
+        programs and conservation data centers. Occurrences are documented by voucher
+        specimens and other forms of ecological observations, and include spatially
+        explicit data on the location and extent of populations, together with data
+        on abundance and population condition. Due to the potential sensitivity of
+        endangered species locations, only non-sensitive geographic data are provided
+        in this dataset. Species-specific criteria used to define element occurrences,
+        as well as standards for documenting and mapping element occurrences are available
+        on the NatureServe web site at: http://www.natureserve.org/conservation-tools/standards-methods","type":"OCCURRENCE"},{"key":"1f968e89-ca96-4065-91a5-4858e736b5aa","title":"Waarnemingen.be
+        - Butterfly occurrences in Flanders and the Brussels Capital Region, Belgium","description":"Waarnemingen.be
+        - Butterfly occurrences in Flanders and the Brussels Capital Region, Belgium
+        is a species occurrence dataset published by Natuurpunt and described (v1.4)
+        in Maes et al. 2016 (https://doi.org/10.3897/zookeys.585.8019). The dataset
+        contains close to 900,000 butterfly occurrences of 68 naturally occurring
+        species (native, vagrant or migrant species), recorded by volunteers (citizen
+        scientists), mainly since 2008. The occurrences are derived from the database
+        http://www.waarnemingen.be, hosted at the nature conservation NGO Natuurpunt
+        in collaboration with Stichting Natuurinformatie. Together with the dataset
+        Maes et al. (2016, https://doi.org/10.15468/njgbmh), the dataset represents
+        the most complete overview of butterflies in Flanders and the Brussels Capital
+        Region (north Belgium).\nGeneralized and/or withheld information: location
+        information is generalized to 5 x 5 km² Universal Transverse Mercator (UTM)
+        grid cells. Observer name, exact XY-coordinates, toponyms, and photographs
+        are not included in the published dataset, but are known in the source database.\nTo
+        allow anyone to use this dataset, we have released the data to the public
+        domain under a Creative Commons Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/).
+        We would appreciate however, if you read and follow these norms for data use
+        (http://www.natuurpunt.be/normen-voor-datagebruik) and provide a link to the
+        original dataset (https://doi.org/10.15468/ezfbee) whenever possible. If you
+        use these data for a scientific paper, please cite the dataset following the
+        applicable citation norms and/or consider us for co-authorship. We are always
+        interested to provide more information or know how you have used the data,
+        so please contact us via the contact information provided in the metadata
+        or natuurdata@natuurpunt.be.\nThe publication of this dataset was supported
+        by the INBO as part of the Flemish contribution to LifeWatch.","type":"OCCURRENCE"},{"key":"847375df-8ac8-4189-a8d6-deaefb90355c","title":"New
+        Zealand Virtual Herbarium","description":"Specimen data from participating
+        members the New Zealand National Herbarium Network.","type":"OCCURRENCE"},{"key":"25d4f82b-b2bc-4197-bc11-27c8e9a25439","title":"Shropshire
+        Ecological Data Network database","description":"All our records for Shropshire.","type":"OCCURRENCE"},{"key":"b929f23d-290f-4e85-8f17-764c55b3b284","title":"Bernice
+        P. Bishop Museum","description":"The Bernice Pauahi Bishop Museum, designated
+        the Hawaiʻi State Museum of Natural and Cultural History, is a museum of history
+        and science located in the Kalihi district of Honolulu on the Hawaiian island
+        of O''ahu. Founded in 1889, it is the largest museum in Hawai''i and is home
+        to one of the world''s largest collections of natural history material from
+        the Pacific region, with approximately 21 million specimens. The main collections
+        include Entomology,  Malacology, Botany, Ichthyology, Vertebrate Zoology (Birds,
+        Mammals, Amphibians and Reptiles) and Marine Invertebrates. Bishop Museum
+        is in the process of dramatically improving its digital resources, and is
+        actively involved in the development of biodiversity information standards
+        and associated services (particularly the Global Names Architecture).","type":"OCCURRENCE"},{"key":"358fbd61-739f-4102-afc9-9d468f571e4d","title":"Fauna
+        Atlas N.T.","description":"Record fauna observational summary data within
+        the N.T. Taxonomic and collection data for observed mammals, birds, reptiles,
+        frogs. Includes presence/absence info, date, time, and location of sighting.
+        Data collected after 1995 may also include counts.","type":"OCCURRENCE"},{"key":"96c93a1e-f762-11e1-a439-00145eb45e9a","title":"AMNH
+        Bird Collection","description":"The Department of Ornithology maintains one
+        of the largest collections of bird specimens in the world. The research collections
+        of the Department number nearly one million specimens; these include skins,
+        skeletons, alcoholic preparations, eggs, nests, and tissue samples for molecular
+        biochemical studies. A large number of type specimens and rare or extinct
+        species are also found in its collections.","type":"OCCURRENCE"},{"key":"7888f666-f59e-4534-8478-3a10a3bfee45","title":"Vlinderdatabank
+        - Butterflies in Flanders and the Brussels Capital Region, Belgium","description":"Vlinderdatabank
+        - Butterflies in Flanders and the Brussels Capital Region, Belgium is a species
+        occurrence dataset published by the Research Institute for Nature and Forest
+        (INBO) and described in Maes et al. 2016 (https://doi.org/10.3897/zookeys.585.8019).
+        The dataset contains over 761.000 butterfly occurrences of 70 species, compiled
+        by the INBO in cooperation with the Butterfly working group of Natuurpunt
+        (Vlinderwerkgroep). The occurrences are georeferenced using the centroid of
+        their respective 5 x 5 km² Universal Transverse Mercator (UTM) grid cell and
+        are derived from the database Vlinderdatabank at the INBO, which consists
+        of (historical) collection and literature data (1830-2001), for which all
+        butterfly specimens in institutional and available personal collections were
+        digitized and all entomological and other relevant publications were checked
+        for butterfly distribution data. It also contains observations and monitoring
+        data for the period 1991-2014. The latter type were collected by a (small)
+        butterfly monitoring network where butterflies were recorded using a standardized
+        protocol. Together with the dataset Vanreusel et al. (2016, https://doi.org/10.15468/ezfbee),
+        the dataset represents the most complete overview of butterflies in Flanders
+        and the Brussels Capital Region (north Belgium).\nInformation withheld: in
+        the original database, the observer’s name and the exact XY-coordinates are
+        known.\nTo allow anyone to use this dataset, we have released the data to
+        the public domain under a Creative Commons Zero waiver (http://creativecommons.org/publicdomain/zero/1.0/).
+        We would appreciate however, if you read and follow these norms for data use
+        (http://www.inbo.be/en/norms-for-data-use) and provide a link to the original
+        dataset (https://doi.org/10.15468/njgbmh) whenever possible. If you use these
+        data for a scientific paper, please cite the dataset following the applicable
+        citation norms and/or consider us for co-authorship. We are always interested
+        to know how you have used or visualized the data, or to provide more information,
+        so please contact us via the contact information provided in the metadata,
+        opendata@inbo.be or https://twitter.com/LifeWatchINBO.","type":"OCCURRENCE"},{"key":"836149af-e7b0-4fc7-b6d9-4d56c28bad43","title":"Inventaire
+        National du Patrimoine Naturel : Oiseaux hivernants de France","description":"L''objectif
+        de cet inventaire est de rassembler un jeu exhaustif de données sur l''ensemble
+        des espèces hivernant en France métropolitaine. Le réseau a été coordonné
+        par Mme D. Yaetman-Berthelot et G. Jarry (Société d''Etude Ornithologique
+        de France). Au 01/01/2002, la base contient environ 1 603 512 données. Celles-ci
+        couvrent les 4 hivers de 1977-1978 à 1980-1981 à raison de 8 décades par hiver.
+        Données essentielles (espèce, lieu, période), classes d''abondance. Le lieu\nest
+        donné sous la forme d''une maille de 4 décigrades x 2 décigrades (découpage
+        des cartes IGN 1/50 000e).","type":"OCCURRENCE"},{"key":"47abf4a5-0eb2-4373-bc51-61196e7346d2","title":"Historical
+        Bird Atlas","description":"The historical atlas is a collection of data from
+        museum collections, personal notebooks, published and unpublished literature
+        collected by Birds Australia. Records range from  1629 to 1976. Each survey
+        was ascribed to a grid with the coordinates given as the central point. Grids
+        size varied, with most being 10-minute grids or 1-degree grids.","type":"OCCURRENCE"},{"key":"c55cf28c-8ed3-43cd-914c-8a8b7b4b9df0","title":"Flora
+        of Worcestershire","description":"Vascular plants throughout the county","type":"OCCURRENCE"},{"key":"197908d0-5565-11d8-b290-b8a03c50a862","title":"Fishbase","description":"Fishbase
+        occurrences hosted by GBIF-Sweden","type":"OCCURRENCE"},{"key":"042e5744-80f1-41ef-8e4f-02ce69d86a42","title":"Finnish
+        monitoring scheme of birds and mammals visiting bird feeders during winter","description":"Monitoring
+        scheme of birds and mammals that are visiting bird feeders during winter.","type":"OCCURRENCE"},{"key":"c1a13bf0-0c71-11dd-84d4-b8a03c50a862","title":"Botany
+        (UPS)","description":"Database of the botany collection of the Museum of Evolution
+        in Uppsala.","type":"OCCURRENCE"},{"key":"f60e31a5-dc12-44c1-8358-098f131cd141","title":"Welsh
+        BSBI data (ex-VPDB dataset) at hectad resolution","type":"OCCURRENCE"},{"key":"cc885e78-0fae-49a3-9c6d-93ac90debd68","title":"Finnish
+        Floristic Database (Literature Sources)","description":"Finnish floristic
+        data from publications.","type":"OCCURRENCE"},{"key":"68513375-3aa5-4f6f-9975-d97d56c21d61","title":"Illinois
+        Natural History Survey Insect Collection","description":"The insect collection
+        at the Survey now houses over 6,000,000 curated specimens. The growth and
+        wide-ranging scope of this collection can be credited to the diverse interests
+        of the systematists who have spent all or part of their career at the Survey.
+        Scientists such as Stephen A. Forbes, the first Director of the State Laboratory
+        and Chief of the Natural History Survey; Theodore Frison, who succeeded Forbes;
+        and H. H. Ross, who directed the intense systematics studies of the faunistic
+        section for 40 years, placed considerable emphasis on enlarging the insect
+        collection. These insects document the changing landscape and environmental
+        conditions of the world.\n\nThe INHS insect collection is one of the largest
+        in North America. The most recent size estimate was done in 1992. The heavy
+        concentration of specimens from the last third of the 1800s also makes this
+        one of North America''s oldest insect and related arthropod collections. \n\nThe
+        INHS Insect Collection includes more than 13,000 primary types (syntypes inclusive).
+        Because of size, historical holdings, and wide breadth of coverage in certain
+        groups, the collection is an important national and worldwide resource.","type":"OCCURRENCE"},{"key":"7565c55d-9dc8-442d-95cf-19d5ebb3d2b0","title":"Flora
+        Atlas N.T.","description":"Record flora observational summary data within
+        the N.T. Taxonomic and collection data for observed and collected plants.
+        Includes presence/absence info, date, and location.","type":"OCCURRENCE"},{"key":"dee8edc4-b19a-11e2-886d-00145eb45e9a","title":"Floristic
+        Databases of Mecklenburg-Pomerania - Higher Plants","description":"Based on
+        the floristic survey of Eastern Germany (Benkert et al. 1996) a distribution
+        database of higher plants in Mecklenburg-Vorpommern has been managed in the
+        Botanical Institute of Botany and Landscape Ecology at the University of Greifswald.
+        On the occasion of the New critical Flora of Mecklenburg-Vorpommern (Henker
+        & Berg 2005) a comprehensive edit has been done. User input is possible at
+        the website http://www.flora-mv.de.","type":"OCCURRENCE"},{"key":"43027054-3812-4599-b7bc-a01f1df5b071","title":"Données
+        ONF Faune-Flore-Fonge","description":"Données passées (reprise bibliographie
+        et carnets de terrain; importations) et données actuelles depuis 2009 (BDN).
+        A la fois données protocolées et données \"opportunistes\".\nAmélioration
+        de la connaissance des taxons présents dans les forêts publiques Potentiellement
+        tous les agents ONF, en particulier réseaux naturalistes de l''ONF (220 personnes)
+        Espèce, date, observateur, commune / maille","type":"OCCURRENCE"},{"key":"3a0e9440-0a97-4a04-8089-7398c77da0be","title":"SEWBReC
+        Birds (South East Wales)","description":"All bird records held by SEWBReC
+        for the South East Wales region.","type":"OCCURRENCE"},{"key":"961a5ce1-f843-4e75-86a6-51aa959fc12c","title":"Plant","description":"세계는
+        지금 생물 다양성 보전의 중요성에 대하여 새로운 인식과 변화를 맞고 있으며 인류생존을 위해서 식물의 세계를 온전하게 보전해야 한다는
+        절대적인 과제를 해결하기 위하여 노력하고 있습니다. 우리나라에서도 많은 수목원과 식물원에서 식물 종의 수집과 보전을 위한 활동과 연구를
+        지속적으로 수행하고 있으며, 식물자원의 보전을 위한 정책과 계획을 수립하고 있습니다. \n· 산림청에서는 국가적 식물자원의 보전을 위한
+        많은 과제들 중에서 식물 종의 서식처에 대한 보전실태를 모니터링 하기 위한 「국가 식물자원정보 관리시스템」을 구축하고 있습니다. \n·
+        \"한국의 식물자원\"홈페이지는 「국가 식물자원정보 관리시스템」에서 구축되는 정보 중에서 일부를 일반인에게 제공하는 부분과 네트워크
+        구축을 위한 자료수집 체계(국가 식물자원정보 관리시스템 인트라넷) 부분으로 구분되어 국가적인 식물 보전실태 중심의 정보로 운영될 예정
+        입니다. \n \n 2010년까지 구축완료를 목표로 하고 있는「국가 식물자원정보 관리시스템」은 많은 자료를 제공하는 대학의 식물 표본관과
+        수목원, 식물원에서의 적극적인 협조에 의하여 단계별로 추진되고 있습니다. 시스템 구축이 완료되지 않은 상황이지만 전 국민이 함께 국가
+        식물자원 보전에 동참하고 함께 발전시키기 위하여 추진 과정과 구축내용에 대한 홈페이지를 공개 합니다. \n \n 지속적으로 구축될 정보를
+        이용하시면서 효율적 활용방안에 대한 의견을 기탄 없이 주시고 국립수목원 생물표본과 이병천 박사, 산림청 정보통계과 김찬회 서기관과 협의하여
+        주시면 성공적인 국가 식물자원정보 관리시스템이 구축될 수 있도록 최선을 다하겠습니다","type":"OCCURRENCE"},{"key":"1d39953f-5c1a-4dad-8524-70191eb4fe6c","title":"SEFSC
+        CAGES Alabama Fish Length Data with CPUE","description":"The CAGES program
+        (Comparative Assessment of Gulf Estuarine Systems) is designed to examine
+        the differences between estuarine ecosystems and investigate why some are
+        more productive than others. The program focuses on estuarine areas important
+        to commercial fisheries and includes data on commercial finfish and invertebrate
+        species, as well as other species commonly captured in trawl sampling. This
+        Louisiana dataset is a subset of the CAGES Relational Database which is a
+        compilation of fishery-independent data contributed by natural resource agencies
+        of the Gulf States (Texas, Louisiana, Mississippi, Alabama, and Florida).
+        This data set includes data from trawls collected by the Alabama Department
+        of Conservation and Natural Resources (ADCNR) and Gulf Coast Research Laboratory
+        (GCRL), as well as associated hydrographic data. Trawl data were used to calculate
+        CPUE (catch per unit effort) at each station for the years 1981 through 2007.","type":"OCCURRENCE"},{"key":"523590f0-f87d-4fed-acd2-6873bdce0a8c","title":"RECORD
+        Aves Data","description":"All RECORD coverage area Aves data","type":"OCCURRENCE"},{"key":"7a25f7aa-03fb-4322-aaeb-66719e1a9527","title":"LACM
+        Vertebrate Collection","description":"The Collection includes the Fish, Herpetology,
+        Bird and Mammal Collections of the Natural History Museum of Los Angeles County.
+        They are worldwide collections with greatest concentration in North and South
+        America, Africa, the Pacific Ocean, and the Antarctic.","type":"OCCURRENCE"},{"key":"82ad4e4e-f762-11e1-a439-00145eb45e9a","title":"Swiss
+        National Butterflies Databank","description":"Database with records of various
+        origins, assembling literature data, digitized collection data and recent
+        observational records provided to the CSCF. Proportionally, this latter resource
+        represents the most important one and is the result of the network activities
+        of voluntary collaborators, internally operated projects (Biodiversity Monitoring
+        Z3-Z4, Red List Project) and impact studies, but also includes data from PhD
+        and master theses. The data cover a period from 1835 to our days. Records
+        have been reviewed according to a standardized validation procedure (http://www.cscf.ch/page24164_en.html).
+        Digitized collection data for specimens hosted in Swiss institutions have
+        been excluded from this resource as already part of the corresponding institutional
+        dataset. Nomenclature has been reviewed within the Swiss participation in
+        the Pan-European Species Directory Infrastructure PESI (Fauna Europaea).","type":"OCCURRENCE"},{"key":"139a966c-22d5-486b-bff2-cfcbccd6fdfc","title":"Marine
+        Nature Conservation Review (MNCR) and associated benthic marine data held
+        and managed by JNCC","description":"This dataset includes the survey data
+        that were collected during the Marine Nature Conservation Review (MNCR) between
+        1987 and 1998, together with data from surveys commissioned by the Nature
+        Conservancy Council in the 1970s and 1980s and data collected subsequently
+        by JNCC. The MNCR was initiated to provide a comprehensive baseline of information
+        on marine habitats and their associated species around the coast of Britain
+        which would aid coastal zone and sea-use management and to contribute to the
+        identification of areas of marine natural heritage importance. The focus of
+        MNCR work was on benthic habitats (often referred to as ''biotopes'') in intertidal
+        and inshore (typically within 3nm) subtidal areas.","type":"OCCURRENCE"},{"key":"ce8530a2-cd4b-4e51-9927-76bf49b5a9a6","title":"Welsh
+        Invertebrate Database (WID)","description":"Collation of around 500,000 invertebrate
+        occurrence records, most of which relate to Wales. This is the primary database
+        used by NRW; incorporates other major invertebrate datasets. Includes terrestrial,
+        freshwater and coastal air breathing invertebrates but not marine species.\n
+        \nMuch of the data has been sent to various UK recording schemes, who may
+        also have supplied this data to the NBN Atlas. Family groups where data may
+        already have been uploaded to the NBN Atlas includes, Cerambycidae, Ciidae.
+        Mollusca, Aquatic Heteroptera, Brachycera, All butterfly data, Odonata, Ant
+        data, Tipuloidea and Trichoptera.","type":"OCCURRENCE"},{"key":"6aa62933-35d4-4e74-af93-0fbc49655547","title":"SEWBReC
+        Vascular Plants (South East Wales)","description":"All plant species records
+        held by SEWBReC for the South East Wales region. This includes the taxonomic
+        groups \"flowering plant\", \"fern\", \"ginkgo\", \"conifer\", \"clubmoss\",
+        \"horsetail\" and \"quillwort\" (as defined by the Recoder 6 Species Dictionary).","type":"OCCURRENCE"},{"key":"91c4bb90-3608-47e6-9757-361a4a7728f5","title":"BLS
+        Lichen Database: England 1650-2016","description":"A collation of the available
+        lichen records for sites (excluding churches and graveyards) in England from
+        1650 to January 2017, for purposes of conservation, future monitoring and
+        research. Habitat and substrate information is included where available.","type":"OCCURRENCE"},{"key":"861e6afe-f762-11e1-a439-00145eb45e9a","title":"Harvard
+        University Herbaria","description":"Specimen records, primarily type specimens
+        from the Harvard University Herbaria. The Harvard University Herbaria, with
+        approximately 5 million specimens, rank eighth in the world in number of specimens
+        and form the world''s largest University Herbaria. Included in the Herbaria
+        are what were once six separate herbarium collections: * Herbarium of the
+        Arnold Arboretum (A) * Economic Herbarium of Oakes Ames (ECON) * Oakes Ames
+        Orchid Herbarium (AMES) * Farlow Herbarium (FH) * Gray Herbarium (GH) * New
+        England Botanical Club Herbarium (NEBC).  DarwinCore data follows the AppleCore
+        guidance https://code.google.com/p/applecore/.","type":"OCCURRENCE"},{"key":"a9e763c8-f674-4492-94a8-4fd4eb9342a5","title":"Aarhus
+        University Palm Transect Database","description":"Data from 500 x 5m palm
+        transects in tropical American forests recording all palm individuals and
+        assigning them to growthclasses from seedlings to adults.\nAll palm records
+        are geo-referenced to one 5 x 5m subunit of a transect.\nAdditional ecological
+        data are recorded to suppport the data.","type":"OCCURRENCE"},{"key":"3dc2a7f6-8d3a-4228-a69c-ec795028fe2f","title":"Miscellaneous
+        records held on the Cofnod database","description":"This dataset includes
+        all records held on the Cofnod database, with some exceptions. Records of
+        INNS are supplied in a separate dataset. Only records where specific permissions
+        have been obtained from the dataset supplier are included. We have also excluded
+        the following records: any which we believe to be already held on the NBN
+        Gateway; any submitted to us by Biological Records Centre or a National Scheme/Society/Conservation
+        organisation; and any owned by Natural Resources Wales (some of which are
+        submitted by Cofnod within three separate datasets). This dataset includes
+        Sensitive species records (as described in our Data Sourcing, Management and
+        Use policy available from the Cofnod website). For these records the resolution
+        of their grid references has been reduced to a non-sensitive resolution and
+        site names and comments have been removed.","type":"OCCURRENCE"},{"key":"a2aab040-0680-11df-823c-b8a03c50a862","title":"National
+        Wetland Inventory (NV)","description":"The national wetland inventory (VMI)
+        has for 25 years made inventories of Swedish wetlands that are situated below
+        the mountain range. Wetlands have been defined in VMI as: \"Land where water,
+        for a large part of the year, is close to, in or above the ground, as well
+        as vegetation-covered water areas. At least 50% of the vegetation should be
+        hydrophilic, i.e. moisture loving, in order for it to be called a wetland
+        area. An exception is sometimes dry-laid bottom areas of lakes, seas and streams.
+        They count as wetlands even though they lack vegetation. \" \n\nIn total,
+        VMI has invented 35,000 sites with a total area of 4.3 million hectares, which
+        corresponds to 10% of Sweden''s total land area. The purpose of the inventories
+        has been to create a knowledge bank over the country''s wetlands, which can
+        be used for environmental monitoring and natural resource planning. By examining
+        how and in what range wetlands are affected by human activities and by identifying
+        valuable wetlands, their values can be preserved for the future. Inventory
+        data was also planned to provide a basis for the authorities'' handling of
+        e.g. land drainage and logging.\n\nFor practical reasons inventories has only
+        been performed at larger wetlands below the mountain ranges. In northern Sweden
+        inventories took place at all wetlands larger than 50 ha and in all wetlands
+        in southern Sweden wetlands larger than 10 ha. All inventoried wetlands have
+        been analyzed with aerial photos and remote sensing and has been classified
+        according to the status of the nature values. A total of 12% of wetlands have
+        also been visited in order to provide further knowledge. Based on the remote
+        sensing, all wetlands were classified into one of the 47 different wetland
+        types. Based on the spatial extent of wetland types, we have divided Sweden
+        into five different marsh/bog-regions: Fell bog, Palsa bog, String bog, Raised
+        bog and Pine bog/Beach wetland bog. \n\nThe results of the VMI are regularly
+        used by county administrative boards and municipalities and have been an important
+        tool for national protection of wetlands. The regional inventories have been
+        made by the various county administrative boards and the Swedish Environmental
+        Protection Agency has acted as coordinator for the project.\n\nThe digital
+        data contains the delimitation of the VMI areas, a central coordinate and
+        an ID (LOID). Via ID, you can extract data from access databases with information
+        about species inventoried. More information on the project can be found at
+        http://www.naturvardsverket.se/Om-Naturvardsverket/Publikationer/ISBN/5900/978-91-620-5925-5/.","type":"OCCURRENCE"},{"key":"36f15a36-6b45-442e-9c31-cd633423aee0","title":"Field
+        Museum of Natural History (Zoology) Bird Collection","description":"The Division
+        of Birds houses the third largest scientific bird collection in the United
+        States. The main collection contains over 480,000 specimens, including 600
+        holotypes, 70,000 skeletons, and 7,000 fluid specimens. In addition, the division
+        houses 21,000 egg sets and 200 nests. The scope of the collection is world-wide;
+        all bird families but one are represented, as are 90% of the world''s genera
+        and species. Included among its many historically and scientifically valuable
+        individual collections are the H. B. Conover Game Bird Collection, Good''s
+        and Van Someren''s African collections, C. B. Cory''s West Indian collection,
+        the Bishop Collection of North American birds, a large portion of W. Koelz''s
+        material from India and the Middle East, and many separate collections from
+        South America, Africa (Hoogstraal from Egypt) and the Philippines (Rabor).","type":"OCCURRENCE"},{"key":"7c93d290-6c8b-11de-8226-b8a03c50a862","title":"Western
+        Australian Museum provider for OZCAM","description":"Western Australian Museum
+        provider for OZCAM","type":"OCCURRENCE"},{"key":"289f4bfc-4460-43c4-bd43-5248e32f53be","title":"RECORD
+        Vascular Plant Data","description":"All RECORD coverage area Vascular Plant
+        data.","type":"OCCURRENCE"},{"key":"8138eb72-f762-11e1-a439-00145eb45e9a","title":"RBINS
+        DaRWIN","description":"The Royal Belgian Institute of Natural Sciences houses
+        a precious collection of zoological, anthropological, paleontological, mineralogical
+        and geological materials and data. The renowned Iguanodons from Bernissart,
+        ambassadors of the Belgian science institute in Brussels, represent a natural
+        history collection currently estimated to hold over 37 million specimens.
+        The roots of the present day collection reach far back in history. It evolved
+        from the Natural History collection of Karel of Lotharingen, governor of The
+        Netherlands (1712-1780) and was part of didactic materials owned by the Central
+        School of the City of Brussels. After the independence of Belgium, the City
+        of Brussels donated the collection to the Belgian Government and became part
+        of the autonomous Royal Natural History Museum in 1846, known as the Royal
+        Belgian Institute of Natural Sciences since 1948. Fieldwork by researchers
+        and collaborators, in Belgium and abroad, donations and purchases have been
+        expanding the assets ever since. Data presented here are coming from the darwin
+        database, the collection management tool of the RBINS. Today, the darwin database
+        manages information on about 350.000 specimens stored in the institute''s
+        depositories. This number rises on a daily basis thanks to the continued efforts
+        of curators and their adjuncts that are responsible for maintaining the stored
+        specimens and information. Our online database provides information about
+        the collections of the Vertebrates, Invertebrates, Entomology and Paleobotany.
+        The application will soon be expanded with paleontozoological data. The Department
+        of Geology and the Department of Marine Ecosystems provide information on
+        different systems. More information on these departments can be found on www.sciencesnaturelles.be/institute/structure/geology/gsb_website
+        and www.mumm.ac.be The corner stone of the darwin database is the specimen
+        and the information about its origin and its status. Although the status of
+        the specimens sollow the current regulations of the International Code on
+        Zoological Nomenclature other status specifications not treated by the ICZN
+        regulations (eg. topotype) have been maintained as supplementary information
+        about the specimen(s) in question. Enjoy your virtual visit through our collections!","type":"OCCURRENCE"},{"key":"e1e16cf0-ada2-11e2-8fbc-00145eb45e9a","title":"Neptune
+        Deep-Sea Microfossil Occurrence Database","description":"Micropaleontologic
+        study of deep-sea sediments cored over several decades by the DSDP, ODP and
+        IODP drilling programs has yielded a vast body of information on the occurrences
+        of individual fossil marine plankton species over time. This information also
+        has been combined with other types of geochronologic information by interdisciplinary
+        teams of scientists to construct detailed age estimates - age models - for
+        hundreds of deep-sea drilling sections. Together, this information provides
+        a uniquely detailed history of of biologic evolution in the oceans, as well
+        as an important source of geochronologic information for geologic studies
+        of ocean and climate change.    The Neptune database provides integrated access
+        to this global data-set. It contains over 500,000 records for the occurrences
+        of species in individual, numerically age-dated samples, age models for hundreds
+        of deep-sea sections, and extensive, annotated, quality-controlled taxonomic
+        lists for thousands of fossil marine plankton species. Neptune, or analyses
+        from it, have been used in over 30 research papers (median ISI 3.5), including
+        8 in Science, Nature or PNAS.    Neptune was originally created by a team
+        led by me in the early 1990s at the ETH in Zürich, and re-cast in internet
+        form, with the addition of more data, by the Chronos project of NSF in the
+        early 2000s. In response to the lapse of Chronos and support for Neptune,
+        I teamed up with Patrick Diver, the main Chronos database programmer, to create
+        a new version of Neptune (Neptune Sandbox Berlin, or NSB) that is hosted at
+        the Museum für Naturkunde. Extensive reprogramming has streamlined the system
+        so that it is easier to maintain, and includes support for direct programmable
+        access over the internet for advanced research purposes. This project was
+        supported by CEES, Oslo. NSB currently does not have a web-interface but one
+        is planned to be added by early 2013.    NSB has already been used in published
+        research within my own group, and to provide data on request to external scientists.
+        Broader collaborations and renewed general public access via the web interface
+        are planned for the future.","type":"OCCURRENCE"},{"key":"2a636fd6-dc73-49c0-9e5b-26bd05532313","title":"New
+        Zealand fish and squid distributions from research bottom trawls 1964-2008","description":"From
+        1997 to 2008, a research programme to determine if fish assemblages in the
+        New Zealand region could be classified into clearly identifiable communities
+        based on their associations with each other and with environmental features
+        was undertaken. This dataset is taken from the resulting fish communities
+        database. These data have been used to show geographical and depth distributions
+        of species from all research tows within the New Zealand EEZ since 2008.","type":"OCCURRENCE"},{"key":"998ff7b4-0e07-40d0-ba1f-c5f249dbcd51","title":"BLS
+        Mapping Scheme dataset, 1750-2009","description":"Lichen distribution data
+        at 10km square level, distinguishing records from before and since 1960.","type":"OCCURRENCE"},{"key":"96570b1a-f762-11e1-a439-00145eb45e9a","title":"KTP
+        Ring Data","description":"Copenhagen Bird Ringing Centre (CBRC) data records
+        may be used by individual researchers or research groups, but they may not
+        be repackaged, resold, or redistributed in any form without the express written
+        consent of CBRC. If any of these records are used in an analysis or report,
+        the provenance of the original data must be acknowledged and CBRC notified.\n\nCopenhagen
+        Bird Ringing Centre,  Zoological Museum,  Universitetsparken 15  DK-2100 Copenhagen
+        Ø  Denmark     Tel: +45 3532 1029  Fax: +45 3532 1010  E-mail: ringing@snm.ku.dk
+        http://rc.ku.dk/","type":"OCCURRENCE"},{"key":"cc2031d1-395d-4052-8ce1-796a08c3dbf2","title":"DASSH
+        Data Archive Centre - Statutory Surveys","description":"Datasets provided
+        to the DASSH Data Archive Centre from Statutory Agencies. Data comply with
+        MEDIN standards (www.oceannet.org) and further assets (images, video, bathymetry)
+        may be available.","type":"OCCURRENCE"}]'
+  recorded_at: 2018-06-17 05:05:40 GMT
+  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2

@@ -1,0 +1,359 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/suggest?q=amsterdam&limit=100
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Sun, 17 Jun 2018 05:05:37 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/dataset/suggest?q=amsterdam&limit=100
+      cache-control: public, max-age=3601
+      x-varnish: 489260120 491979293
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '26877'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '[{"key":"562cf940-6166-11de-84bf-b8a03c50a862","title":"Zoological
+        Museum Amsterdam, University of Amsterdam (NL) - Lepidoptera_Nymphalidae_Palearctic","description":"The
+        ZMAN holdings of Palaearctic Lepidoptera belong to the regalia of the collection.
+        The size of the Lepidoptera collection, the quality of the material, and the
+        fact that the greater majority of material has recently been expertly identified
+        and arranged, provide this part of the collection with a high priority for
+        digitization. Approximately 17% of this collection has now been digitised.","type":"OCCURRENCE"},{"key":"1ed365f0-6167-11de-84c0-b8a03c50a862","title":"Zoological
+        Museum Amsterdam, University of Amsterdam (NL) - Diptera_Tipulidae_NL","description":"The
+        ZMAN collection of Tipulidae (craneflies) from the Netherlands is one of the
+        most important collections in its kind, containing types of many species and
+        voucher specimens. Together with the Tipulidae collections in Bonn (Germany)
+        and Kiev (Ukraine), the ZMAN collection is indispensible for work on the systematics,
+        biogeography and biodiversity of this family. Material from this collection
+        has been and will be fundamental for biodiversity studies.","type":"OCCURRENCE"},{"key":"b3a5b200-6167-11de-84c0-b8a03c50a862","title":"Zoological
+        Museum Amsterdam, University of Amsterdam (NL) - Diptera_Tipulidae_Palearctic","description":"The
+        western Palaearctic collection of Tipulidae (craneflies) in ZMAN is one of
+        the most important collections in its kind, containing types of many species
+        and voucher specimens from a wide range of collection sites especially from
+        the Mediterranean area. Together with the Tipulidae collections in Bonn (Germany)
+        and Kiev (Ukraine), the ZMAN collection is indispensible for work on the systematics,
+        biogeography and biodiversity of this family. Material from this collection
+        has been and will be fundamental for biodiversity studies in the Mediterranean
+        area.","type":"OCCURRENCE"},{"key":"c1e51d70-6166-11de-84bf-b8a03c50a862","title":"Zoological
+        Museum Amsterdam, University of Amsterdam (NL) - Platyhelminthes","description":"The
+        flatworm (Phylum Platyhelminthes) collection of the Zoological Museum Amsterdam
+        contains a broad spectrum of species and specimens from all over the world.
+        However, the major focus of the collections concerns the triclad flatworms
+        or planarians (Order Tricladida). From this group many species and specimens
+        are available of marine, freshwater, as well as terrestrial planarians, including
+        385 type specimens. The beginning of these collections of planarians can be
+        traced back to J. C. C. Loman (1856 - 1929), who described 16 new species
+        of bipaliid land planarians. The collections were considerably expanded with
+        the incorporation of the collection of Prof. Dr. Masaharu Kawakatsu into the
+        collections of the Zoological Museum Amsterdam during the period 2000-2008.","type":"OCCURRENCE"},{"key":"6e27e0c0-c065-11dd-a311-b8a03c50a862","title":"Zoological
+        Museum Amsterdam, University of Amsterdam (NL) - Coleoptera_Types_Orient","description":"ZMAN
+        accommodates approximately 5250 type and 600 non-type specimens of Oriental
+        Coleoptera contained in a range of families. Digital information associated
+        with the types makes these specimens manifest for the international scientific
+        community, enables an adequate interpretation of the species, and facilitates
+        a proper reconstruction of the relevant parts of the Tree of Life.","type":"OCCURRENCE"},{"key":"ab0b73e0-c064-11dd-a311-b8a03c50a862","title":"Zoological
+        Museum Amsterdam, University of Amsterdam (NL) - Diptera_Types","description":"Diptera:
+        types (non-De Meijere)\n\nZMAN contains important type material of Diptera,
+        mainly originating from the Oriental and Australasian regions. Basically the
+        types in the Diptera collection can be divided into those of species described
+        by J. C. H. de Meijere and those that were described by other authors. The
+        approximately 1.200 De Meijere species with circa 4.000 type specimens have
+        been inventoried and their data have been digitised and made publicly available.
+        The non-De Meijere types count approximately 5200 specimens (of which 60 non-types).
+        Types constitute the unique building blocks in taxonomy and knowledge of this
+        material is essential for an adequate reconstruction of the Tree of Life.","type":"OCCURRENCE"},{"key":"b6ca95b0-c066-11dd-a312-b8a03c50a862","title":"Zoological
+        Museum Amsterdam, University of Amsterdam (NL) - Bryozoa","description":"The
+        Bryozoa collection of the Zoological Museum of Amsterdam consists of ca. 3000
+        registered samples, including 210 nominal types. The collection is not currently
+        studied by ZMA staff, but the Indonesian samples, collected by the Siboga
+        Expedition in 1899-1900, are a valuable asset for the international taxonomic
+        community.","type":"OCCURRENCE"},{"key":"903b7df0-6166-11de-84bf-b8a03c50a862","title":"Zoological
+        Museum Amsterdam, University of Amsterdam (NL) - Pisces_Types","description":"The
+        fish collection of the Zoological Museum of Amsterdam accommodates a broad
+        collection of specimens, both fresh and marine. Collection dates of the material
+        go back to 1850.  The collection contains approximately 40.000 items and probably
+        more than 500.000 specimens, mainly preserved in alcohol. About 900 types
+        are present. Almost all recent orders are represented, with taxonomical strengths
+        in the Cypriniformes, Characiformes, Siluriformes, Cyprinodontiformes, Perciformes,
+        and Tetraodontiformes. Biogeographical focus is on the Indo-Australian Archipelago
+        (marine and fresh), and on brackish and freshwater species of South America
+        and the Caribbean.  Part of the collection lacks exact geographical data,
+        but the biggest part is provided with quite detailed information on finding
+        locations. Western European fishes have mainly been selected for their reference
+        value. Nowadays roughly 40% of the collection is digitized.\n\n\nThe most
+        important contributions to the collection have been made by:\n*  The Siboga
+        Expedition (1899-1900); M. Weber et al.\n*  Biogeography of the Indonesian
+        Archipelago; L.F. de Beaufort\n*  Biogeography of South American catfishes;
+        H. Nijssen, I. Isbruecker\n*  Netherlands Institute of Sea Research (NIOZ)\n*  Rijksinstituut
+        voor Visserijonderzoek (RIVO)","type":"OCCURRENCE"},{"key":"f2836770-6166-11de-84bf-b8a03c50a862","title":"Zoological
+        Museum Amsterdam, University of Amsterdam (NL) - Protozoa","description":"The
+        Protozoa collection of the Zoological Museum Amsterdam is modest in size (ca.
+        100 registered samples) and modest in importance (no nominal types). Its main
+        contents are dry Foraminifera. Approximately half of the specimens are collected
+        in Indonesia during the Siboga Expedition in 1899-1900.","type":"OCCURRENCE"},{"key":"985a48b0-c060-11dd-a30f-b8a03c50a862","title":"Zoological
+        Museum Amsterdam, University of Amsterdam (NL) – Herpetology","description":"The
+        collection Herpetology consists of more than 15000 registered specimens: 9500
+        reptilia (1750 species), 5500 amphibia (880 species). Because most specimens
+        are not individually labeled, the total number in the collection is probably
+        much higher: at least 50,000 specimens. Included are 353 type specimens: 1
+        cotype, 45 holotypes, 1 neotype, 26 lectotypes, 63 syntypes, 64 paralectotypes,
+        151 paratypes, 63 syntypes, 2 topotypes. Most of the material has been collected
+        in Indonesia and Suriname. There is a large collection of Chameleons (Hillenius,
+        1959), Anura from Madagascar (Blommers Schlösser, 1980; Vences, 2005); The
+        European herpetofauna is also well represented, with a focus on the Dutch
+        herpetofauna (A. Zuiderwijk) and European newts (J.W. Arntzen). The herpetologist,
+        the late Dick Hillenius, was the first curator of this collection and between
+        2002-2005 Miguel Vences curated the herpetology collection. Vences increased
+        the number of specimens from Madagascar and described numerous new species
+        based on ZMA material.","type":"OCCURRENCE"},{"key":"c8c52d9c-2080-4641-b370-6d425a03454a","title":"NDFF
+        City of Amsterdam","description":"<p>The city of Amsterdam is the capital
+        of the Netherlands and has over 850,000 inhabitants. For a metropolitan city,
+        it has a fairly small size of only 219 square kilometres, 50 of which are
+        water. For such a small city, Amsterdam has a lot of green spaces, nearly
+        a quarter of its total size.</p>\n<p>Positive observations without protocol</p>\n<p>Dataset
+        available via https://www.ndff.nl/english / serviceteamndff&#64;natuurloket.nl</p>\n<p>14,209
+        records (April 2018)</p>","type":"METADATA"},{"key":"0cee5d00-6166-11de-84be-b8a03c50a862","title":"Zoological
+        Museum Amsterdam, University of Amsterdam (NL) - Invasive Insecta","description":"A
+        first selection of insect species that according to various standards can
+        be regarded as invasive in the Netherlands have been made in the ZMAN Collection.
+        The full dataset eventually will allow \nthe tracking of various invasions
+        through time.","type":"OCCURRENCE"},{"key":"ebbe25bd-c0ce-4c14-9608-3a55fed82620","title":"City
+        of Amsterdam (NL) - Fyke Fishing Piet Ruiter","description":"Piet Ruiter is
+        a commercial fisherman in the Harbour of Amsterdam who is conducting fish
+        monitoring commisioned by Waternet, Amsterdam Harbor and the City of Amsterdam.
+        This monitoring project has started in 2012 and will continue in the future.","type":"OCCURRENCE"},{"key":"0d32a7f0-039c-4c8f-bea9-d7e55fd8e02b","title":"University
+        of Amsterdam (NL) - Páramo vegetation research, Ecuador.","description":"The
+        Institute for Biodiversity and Ecosystem Dynamics (IBED) from University of
+        Amsterdam (UvA) has been working on Paramos ecosystems since 1970, collecting
+        information on different aspects of plant ecology. \n\nThe dataset from the
+        Ecuador paramo''s is generated from two studies\n1. A study on Andean Paramo''s
+        ecology by H. Sturm and O. Rangel done in 1985. \n2. A phytosociological study
+        of the paramo in the Carchi province by M. Moscol-Olivera and A. M. Cleef
+        in 2009.\n\nBoth studies All studies provide information on the occurrence
+        and location of 1867 plant species from the Paramo in this area sampled in
+        101 releves.  \n\nFor the purpose of the GBIF data-publishing, vegetation
+        releve data were converted into species occurrence data.","type":"OCCURRENCE"},{"key":"1edaeec2-9fdf-48d2-a459-2bb8635e9aba","title":"University
+        of Amsterdam (NL) - Páramo pollen reference collection","description":"Pollen
+        samples from Páramo plants collected by A.M. Cleef and from various herbaria.
+        The collection is used as a reference collection for palynological research.","type":"OCCURRENCE"},{"key":"0d384803-0d1b-4409-ada1-22d8009ecfa9","title":"University
+        of Amsterdam (NL) - Páramo vegetation research, Venezuela.","description":"The
+        Institute for Biodiversity and Ecosystem Dynamics (IBED) from University of
+        Amsterdam (UvA) has been working on the Paramos of Colombia since 1970, collecting
+        information on different aspects of plant ecology.\n\nThe data source is the
+        field data from professor Antoine Cleef (collected in 1978 and 1984). The
+        study provides information on the occurrence and location of 159 plant species
+        from the Paramo in this area, collected in 17 releves. \n\nFor the purpose
+        of the GBIF data-publishing, vegetation releve data were converted into species
+        occurrence data.","type":"OCCURRENCE"},{"key":"50361be0-d9cd-11de-b793-b8a03c50a862","title":"University
+        of Amsterdam (NL) – Benthos monitoring of the North Sea research database","description":"Benthos
+        monitoring data from the North Sea between 1990 and 2002. The database was
+        compiled from different sources, mainly under the “Biodiversity and Global
+        Change” (BIGC) programme of the “Netherlands Organisation for Scientific Research”
+        (NWO).","type":"OCCURRENCE"},{"key":"39b07c5d-caa9-4118-b803-290d667cdd5e","title":"University
+        of Amsterdam (NL) - Páramo vegetation research, Western Andean Cordillera","description":"The
+        Institute for Biodiversity and Ecosystem Dynamics (IBED) from University of
+        Amsterdam (UvA) has been working on the Paramos of Colombia since 1970, collecting
+        information on different aspects of plant ecology.\n\nThe Western Cordillera
+        dataset is generated from 5 sources: \n1. A study about the paramo vegetation
+        in the Nariño volcanoes, Orlando Rangel-Ch and Clara Ariza published in 2000.\n2.
+        A study by Helmut Sturm and Orlando Rangel in 1985 about the ecology of andean
+        paramos, in the volcanoes of Cumbal and Chiles.\n3 and 4. The field data from
+        professor Antoine Cleef (1984) with Sonia Salamanca under the ECOANDES project
+        (Tatama transect), collected in the upper part of Tatama massif. Also data
+        collected (in 1983) under the same project by T. van der Hammen, O. Rangel
+        and A. Cleef and published in a study of the paramo vegetation of the Tatama
+        massif in 2005.\n5. A study about sinecology, diversity and conservation of
+        Andean vegetation in Argelia, Cauca published in 1995 by M.L. Becking.\n\nAll
+        studies provide information on the occurrence and location of 2983 plant species
+        from the Paramo in this area collected in 139 releves. \n\nFor the purpose
+        of the GBIF data-publishing, vegetation releve data were converted into species
+        occurrence data.","type":"OCCURRENCE"},{"key":"c8db36cf-6b3e-403f-b609-dc0b6ef0cc05","title":"University
+        of Amsterdam (NL) - Páramo vegetation research, Central Andean Cordillera
+        - Colombia","description":"The Institute for Biodiversity and Ecosystem Dynamics
+        (IBED) from University of Amsterdam (UvA) has been working on the Paramos
+        of Colombia since 1970, collecting information on different aspects of plant
+        ecology in the paramo.\n\nThe Central Cordillera area include the National
+        Natural Park Los Nevados, National Natural Park Purace and Nevado del Huila.
+        This dataset is generated from 5 sources: \n1. A study by Helmut Sturm and
+        Orlando Rangel in 1985 about the ecology of Andean paramos, in the National
+        Natural Park Los Nevados and in the Nevado del Huila (Huila volcano).\n2.
+        A study of monitoring and modelling of diverse and dynamic ecosystems in the
+        paramos of los Nevados National Park by Bob Pels in 1990.\n3. A Ph.D. study
+        about the vegetation of the paramo and its dynamics in the volcanic massif
+        Ruiz-Tolima, done by Sonia Salamanca in 1991, this project was part of a bigger
+        project called ECOANDES which cover different aspects of the ecology of the
+        central cordillera in Colombia.\n4.A study on the phytosociology of plant
+        communities of the National Natural Park Purace, done by Andres Duque in 1988.\nAll
+        studies provided information on the occurrence and location of 6947 plant
+        species from the Paramo in this area collected in 332 releves. \n\nFor the
+        purpose of the GBIF data-publishing, vegetation releve data were converted
+        into species occurrence data.","type":"OCCURRENCE"},{"key":"aa53b19b-ee49-4ff6-963d-2d9499808b72","title":"University
+        of Amsterdam (NL) - Páramo vegetation research, Santa Marta and Perijá, Colombia","description":"The
+        Institute for Biodiversity and Ecosystem Dynamics (IBED) from University of
+        Amsterdam (UvA) has been working on the Paramos of Colombia since 1970, collecting
+        information on different aspects of plant ecology.\n\nThe Santa Marta and
+        Perijá paramo complex dataset is generated from five sources. \n1. A study
+        on the vegetation of tropical ecosystems, in the Sierra Nevada de Santa Marta,
+        particularly in the sector Buritaca - La Cumbre, by A. Cleef and O. Rangel
+        in 1984 (in van der Hammen and Ruiz, 1984). \n2. A study on Andean Paramo''s
+        ecology by H. Sturm and O. Rangel done in 1985.\n3. Field data from professor
+        Antoine Cleef derived from the ECOANDES project) in 1984\n4. A study about
+        the paramo vegetation in the north of Colombia (Sierra nevada de Santa Marta
+        and Serrania Perija) by J.H. Pinto-Zarate and O. Rangel-Ch in 2010.\n5. A
+        study about the high mountain vegetation of Perija, done by O. Rangel-Ch and
+        H. Arrellano-P in 2007.\nAll studies provide information on the occurrence
+        and location of 1506 plant species from the Paramo in this area sampled in
+        91 releves.  \n\nFor the purpose of the GBIF data-publishing, vegetation releve
+        data were converted into species occurrence data.","type":"OCCURRENCE"},{"key":"4a837446-cdcd-411b-8d51-5b8184890bcc","title":"University
+        of Amsterdam (NL) - Páramo vegetation research, Talamanca Cordillera, Costa
+        Rica","description":"Research was led by Dr. Antoine M. Cleef from University
+        of Amsterdam and Dr. Adelaida Chaverri Polini from National University of
+        Costa Rica. The authors studied the phytosociology and phytogeography at the
+        National Park Chirripó, located in the Talamanca mountain range. The project
+        aimed to know the páramo communities of Central America, as the first approach
+        to protect this ecosystem in Costa Rica. \n\nThe study provide information
+        on the occurrence and location of 724 plant species from the Paramo in this
+        area collected in 45 releves. \n\nFor the purpose of the GBIF data-publishing,
+        vegetation releve data were converted into species occurrence data.","type":"OCCURRENCE"},{"key":"b5fcea14-86cc-4b97-a0d1-eb604d56ad84","title":"University
+        of Amsterdam (NL) - Páramo Vegetation Research, Bordoncillo - Nariño, Colombia","description":"The
+        Institute for Biodiversity and Ecosystem Dynamics (IBED) from University of
+        Amsterdam (UvA) has been working on the Paramos of Colombia since 1970, collecting
+        information on different aspects of plant ecology.\n\nThe Bordoncillo dataset
+        is generated from a part of a study from Orlando Rangel, done in 1987 about
+        the paramo vegetation of the volcanos of the Nariño province. The vegetation
+        in Bordoncillo groups shrubs with plant rosettes (frailejonal) of the Ugno
+        myricoides-Espeletetium hartwegianae association.\n\nThis is a small data
+        set which provides information on the occurrence and location of 51 plant
+        species from the Paramo in this area. \n\nFor the purpose of the GBIF data-publishing,
+        vegetation releve data were converted into species occurrence data.","type":"OCCURRENCE"},{"key":"f5d17a6d-5b53-4bac-b952-d6503839aed7","title":"University
+        of Amsterdam (NL) - Páramo Vegetation Research, Paramo \"El Almorzadero\",
+        Colombia","description":"The Institute for Biodiversity and Ecosystem Dynamics
+        (IBED) from University of Amsterdam (UvA) has been working on the Paramos
+        of Colombia since 1970, collecting information on different aspects of plant
+        ecology.\n\nThe data source is the field data from professor Antoine Cleef
+        (collected in one field campaign in 1978) as part of his PhD thesis, finished
+        in 1981. The study provides information on the occurrence and location of
+        314 plant species from the Paramo in this area. \n\nFor the purpose of the
+        GBIF data-publishing, vegetation releve data were converted into species occurrence
+        data.","type":"OCCURRENCE"},{"key":"5e50896f-8bbd-43e7-9ba5-ef7ed7b3e865","title":"University
+        of Amsterdam (NL) - Páramo Vegetation Research, Chingaza - Cruz Verde - Monserrate
+        -Guasca, Colombia","description":"The Institute for Biodiversity and Ecosystem
+        Dynamics (IBED) from University of Amsterdam (UvA) has been working on the
+        Paramos of Colombia since 1970, collecting information on different aspects
+        of plant ecology.\n\nChingaza, Cruz Verde, Monserrate and Guasca dataset is
+        generated from six sources. \n1. A study about the vegetation of the Natural
+        National Park Chingaza by Rangel-Ch y Ariza published in 2000.\n2. A vegetation
+        mapping study done also in the Natural National Park Chingaza by Dierrikx
+        and Kaandorp done in 1986.\n3. A study on Andean Paramo''s ecology by H. Sturm
+        and O. Rangel done in 1985.\n4. A study on the phytosociological analysis
+        of paramo vegetation by R. Sanchez and O. Rangel in 1990.\n5. A study of limit
+        vegetation ecology done by M.L. Becking and J.J. Smeets in 1989 part of the
+        ECOANDES project.\n6. A study on the description of paramo vegetation communities
+        by O. Vargas and D. Rivera in 1991.\n\nAll studies provide information on
+        the occurrence and location of 13949 plant species from the Paramo in this
+        area collected in 631 releves. \n\nFor the purpose of the GBIF data-publishing,
+        vegetation releve data were converted into species occurrence data.","type":"OCCURRENCE"},{"key":"6fe8dde0-7ef1-41c0-ba0f-ecf41ac2d342","title":"University
+        of Amsterdam (NL) - Páramo Vegetation Research, Rabanal, Guerrero and Villa
+        de Leyva paramo complex, Colombia","description":"The Institute for Biodiversity
+        and Ecosystem Dynamics (IBED) from University of Amsterdam (UvA) has been
+        working on the Paramos of Colombia since 1970, collecting information on different
+        aspects of plant ecology.\n\nThe Rabanal, Guerrero and Villa de Leyva paramo
+        complex data set is generated from six sources. \n1. Field data from professor
+        Antoine Cleef (derived from his PhD thesis on paramo vegetation in the eastern
+        cordillera (1981), the ECOANDES project and independent field trips), the
+        data wascollected in four field campaigns in 1977, 1983, 1984 and 1989. \n2.A
+        study on Andean Paramo''s ecology by H. Sturm and O. Rangel done in 1985.\n3.A
+        study on the phytosociological analysis of paramo vegetation by R. Sanchez
+        and O. Rangel in 1990.\n4. A study about the influence of potato cultivation
+        in the paramo vegetatation by W. Ferwerda in 1987. \n5. A study of limit vegetation
+        ecology done by M.L. Becking and J.j. Smeets in 1989 part of the ECOANDES
+        project.\n6. A study on the description of paramo vegetation by R. Bekker
+        and A. Cleef in 1985.\n\nAll studies provide information on the occurrence
+        and location of 7868 plant species from the Paramo in this area.  \n\nFor
+        the purpose of the GBIF data-publishing, vegetation releve data were converted
+        into species occurrence data.","type":"OCCURRENCE"},{"key":"e567684d-9998-4604-9790-b0ac00e090c1","title":"University
+        of Amsterdam (NL) - Páramo Vegetation Research, Sumapaz-Bocagrande-Chisaca
+        paramo complex, Colombia","description":"The Institute for Biodiversity and
+        Ecosystem Dynamics (IBED) from University of Amsterdam (UvA) has been working
+        on the Paramos of Colombia since 1970, in collaboration with Colombian researches
+        and collecting information on different aspects of plant ecology.\nThe Sumapaz
+        dataset is generated from five studies. One done by Helmut Sturm and Orlando
+        Rangel in 1985 about the ecology of andean paramos. The second source is the
+        field data from professor Antoine Cleef (collected in different field campaigns
+        between in 1977, 1981 and 1984) some of those were part of his PhD thesis
+        (1981). Also data was provided by the  ECOANDES project (vol. 7) which was
+        dedicated only to the Sumapaz area. Another study from Sanchez and Rangel
+        in 1990 provides vegetation information of paramo complexes located close
+        by Bogota. Finally another study by Ernst and Seljee from 1988 provides information
+        about the vegetation of the Bocagrande Paramo. \nThis is a dataset providing
+        information on the occurrence and location of 4494 plant species from the
+        Paramo in this area, collected in 212 releves. \nFor the purpose of the GBIF
+        data-publishing, vegetation releve data were converted into species occurrence
+        data.","type":"OCCURRENCE"},{"key":"0b328835-ea95-4ec3-a0f4-dd2dba993f1f","title":"University
+        of Amsterdam (NL) - Páramo Vegetation Research, National Natural Park El Cocuy,
+        Colombia","description":"The Institute for Biodiversity and Ecosystem Dynamics
+        (IBED) from University of Amsterdam (UvA) has been working on the Paramos
+        of Colombia since 1970, collecting information on different aspects of plant
+        ecology.\n\nThe Sierra Nevada del Cocuy data set is generated from two sources,
+        one is the field data from professor Antoine Cleef (collected in different
+        field campaigns between 1972 and 2012, derived from his PhD thesis (1981),
+        the ECOANDES project and independent field trips) and the second is a study
+        on paramo ecology by Helmut Sturm and Orlando Rangel in 1985. Both studies
+        provide information on the occurrence and location of 2147 plant species from
+        the Paramo in this area. \n\nFor the purpose of the GBIF data-publishing,
+        vegetation releve data were converted into species occurrence data.","type":"OCCURRENCE"},{"key":"3953ab4f-958f-4943-8608-ca5da345447c","title":"University
+        of Amsterdam (NL) - Páramo Vegetation Research, paramo in the Sabana de Bogota
+        area, Colombia","description":"The Institute for Biodiversity and Ecosystem
+        Dynamics (IBED) from University of Amsterdam (UvA) has been working on the
+        Paramos of Colombia since 1970, collecting information on different aspects
+        of plant ecology.\n\nThe data source is the field data from professor Antoine
+        Cleef (collected in one field campaign in 1978) as part of his PhD thesis,
+        finished in 1981. The study provides information on the occurrence and location
+        of 90 plant species from the Paramo in this area. \n\nFor the purpose of the
+        GBIF data-publishing, vegetation releve data were converted into species occurrence
+        data.","type":"OCCURRENCE"},{"key":"84881ef8-a565-4124-9102-253954c419f4","title":"University
+        of Amsterdam (NL) - Páramo Vegetation Research, Paramos \"Guantiva -La Rusia\",
+        Colombia","description":"The Institute for Biodiversity and Ecosystem Dynamics
+        (IBED) from University of Amsterdam (UvA) has been working on the Paramos
+        of Colombia since 1970, collecting information on different aspects of plant
+        ecology.\n\nThe dataset  Paramos  \"Guantiva -La Rusia\" is generated from
+        the field data from professor Antoine Cleef (collected in one field campaign
+        in 1973), as part of his PhD thesis (finished in 1981). The study provides
+        information on the occurrence and location of 75 plant species from the Paramo
+        in this area. \n\nFor the purpose of the GBIF data-publishing, vegetation
+        releve data were converted into species occurrence data.","type":"OCCURRENCE"},{"key":"a1666642-5202-4dcf-886f-25000798838e","title":"New
+        records of West Palaearctic Limoniidae, Pediciidae and Cylindrotomidae (Diptera)
+        from the collections of the Zoological Museum, Amsterdam","description":"This
+        dataset contains the digitized treatments in Plazi based on the original journal
+        article Ÿ, Jaroslav Star, Oosterbroek, Pjotr (2008): New records of West Palaearctic
+        Limoniidae, Pediciidae and Cylindrotomidae (Diptera) from the collections
+        of the Zoological Museum, Amsterdam. Zootaxa 1922: 1-20, DOI: 10.5281/zenodo.184739","type":"CHECKLIST"},{"key":"d65d51d3-dda3-4bad-9d80-8fcb46a782f7","title":"The
+        genus Luticola (Bacillariophyta) on Ile Amsterdam and Ile Saint-Paul (Southern
+        Indian Ocean) with the description of two new species","description":"This
+        dataset contains the digitized treatments in Plazi based on the original journal
+        article Chattová, Barbora, Lebouvier, Marc, Haan, Myriam De, Vijver, Bart
+        Van De (2017): The genus Luticola (Bacillariophyta) on Ile Amsterdam and Ile
+        Saint-Paul (Southern Indian Ocean) with the description of two new species.
+        European Journal of Taxonomy 387: 1-17, DOI: https://doi.org/10.5852/ejt.2017.387","type":"CHECKLIST"}]'
+  recorded_at: 2018-06-17 05:05:38 GMT
+  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2

@@ -1,0 +1,1075 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/suggest?limit=100&type=metadata&type=checklist
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Sun, 17 Jun 2018 05:05:40 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/dataset/suggest?limit=100&type=metadata&type=checklist
+      cache-control: public, max-age=3601
+      x-varnish: 475499696 475172396
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '86298'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: "[{\"key\":\"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c\",\"title\":\"GBIF
+        Backbone Taxonomy\",\"description\":\"The GBIF Backbone Taxonomy, often called
+        the Nub taxonomy, is a single synthetic management classification with the
+        goal of covering all names GBIF is dealing with.             It's the taxonomic
+        backbone that allows GBIF to integrate name based information from different
+        resources, no matter if these are occurrence datasets, species pages, names
+        from nomenclators or external sources like EOL, Genbank or IUCN.             This
+        backbone allows taxonomic search, browse and reporting operations across all
+        those resources in a consistent way and to provide means to crosswalk names
+        from one source to another.             It is updated regulary through an
+        automated process in which the Catalogue of Life acts as a starting point
+        also providing the complete higher classification above families.             The
+        following 56 sources from the  have been used to assemble the GBIF backbone:
+        \                            Catalogue of Life (3175925 names);                Interim
+        Register of Marine and Nonmarine Genera (733720 names);                World
+        Register of Marine Species (333396 names);                The Plant List with
+        literature (287022 names);                The Paleobiology Database (147044
+        names);                Index Fungorum (137347 names);                International
+        Plant Names Index (114127 names);                Backbone Family Classification
+        Patch (94826 names);                Integrated Taxonomic Information System
+        (ITIS) (69148 names);                Artsnavnebasen (33510 names);                Plazi.org
+        taxonomic treatments database (32543 names);                GRIN Taxonomy
+        (30748 names);                The Clements Checklist (19663 names);                Dyntaxa
+        - Svensk taxonomisk databas (15173 names);                Brazilian Flora
+        Checklist - Brazilian Flora 2020 project - Projeto Flora do Brasil 2020 (13067
+        names);                Mammal Species of the World (6393 names);                Official
+        Lists and Indexes of Names in Zoology (5790 names);                International
+        Cichorieae Network  (ICN): Cichorieae Portal (5032 names);                Orthoptera
+        Species File (4826 names);                Catalogue of Afrotropical Bees (4640
+        names);                Database of Vascular Plants of Canada  (VASCAN) (4323
+        names);                Prokaryotic Nomenclature Up-to-date (4151 names);                Taxon
+        list of fungi and fungal-like organisms from Germany compiled by the DGfM
+        (4034 names);                IOC World Bird List, v6.3 (3830 names);                Checklist
+        of Beetles  (Coleoptera) of Canada and Alaska. Second Edition. (3378 names);
+        \               Aphid Species File (2232 names);                Cockroach
+        Species File (1151 names);                Taxon list of vascular plants from
+        Bavaria, Germany compiled in the context of the BFL project (909 names);                GBIF
+        Algae Classification (885 names);                Mantodea Species File (608
+        names);                ION Taxonomic Hierarchy (572 names);                Coreoidea
+        Species File (498 names);                Taxon list of Jurassic Pisces of
+        the Tethys Palaeo-Environment compiled at the SNSB-JME (444 names);                Taxon
+        list of animals with German names  (worldwide) compiled at the SMNS (349 names);
+        \               Phasmida Species File (294 names);                Plecoptera
+        Species File (261 names);                Psocodea Species File (197 names);
+        \               Dermaptera Species File (152 names);                GBIF Backbone
+        Patch (115 names);                Coleorrhyncha Species File (104 names);
+        \               Grylloblattodea Species File (51 names);                Taxon
+        list of mosses from Germany compiled in the context of the GBOL project (48
+        names);                Embioptera Species File (38 names);                True
+        Fruit Flies  (Diptera, Tephritidae) of the Afrotropical Region (36 names);
+        \               Chrysididae Species File (15 names);                Taxon
+        list of liverworts from Germany compiled in the context of the GBOL project
+        (10 names);                GBIF Backbone Taxonomy (9 names);                Taxon
+        list of Diplopoda from Germany in the context of the GBOL project (9 names);
+        \               Taxon list of Pauropoda from Germany compiled in the context
+        of the GBOL project (8 names);                TAXREF (7 names);                Taxon
+        list of Pisces and Cyclostoma from Germany compiled in the context of the
+        GBOL project (7 names);                Taxon list of Pteridophyta from Germany
+        compiled in the context of the GBOL project (6 names);                Mantophasmatodea
+        Species File (1 names);                Taxon list of hornworts from Germany
+        compiled in the context of the GBOL project (1 names);\",\"type\":\"CHECKLIST\"},{\"key\":\"7ddf754f-d193-4cc9-b351-99906754a03b\",\"title\":\"Catalogue
+        of Life\",\"description\":\"<p>This release of the Catalogue of Life contains
+        contributions from 169 databases with information on 1,805,161 species, 158,736
+        infraspecific taxa and also includes 1,640,822 synonyms and 429,318 common
+        names covering the following groups:</p>\\n<p>Viruses * Viruses and Subviral
+        agents from ICTV_MSL\\nBacteria and Archaea from BIOS\\nChromista * Chromistan
+        fungi from Species Fungorum\\nProtozoa * Major groups from ITIS Regional,
+        * Ciliates from CilCat, * Polycystines from WoRMS Polycystina UPDATED!, *
+        Protozoan fungi from Species Fungorum and Trichomycetes database * Slime moulds
+        from Nomen.eumycetozoa.com\\nFungi * Various taxa in whole or in part from
+        CABI Bioservices databases (Species Fungorum, Phyllachorales, Rhytismatales,
+        Saccharomycetes and Zygomycetes databases) and from three other databases
+        covering Xylariaceae, Glomeromycota, Trichomycetes, Dothideomycetes * Lichens
+        from LIAS\\nPlantae (Plants) * Mosses from MOST * Liverworts and hornworts
+        from ELPT * Conifers from Conifer Database * Cycads and 6 flowering plant
+        families from IOPI-GPC, and 99 families from WCSP * Plus individual flowering
+        plants families from AnnonBase, Brassicaceae, ChenoBase, Droseraceae Database,
+        EbenaBase, GCC, ILDIS, LecyPages, LHD, MELnet, RJB Geranium, Solanaceae Source,
+        Umbellifers.\\nAnimalia (Animals) * Marine groups from URMO, ITIS Global,
+        Hexacorals, ETI WBD (Euphausiacea), WoRMS: WoRMS Asteroidea UPDATED!, WoRMS
+        Bochusacea UPDATED!, WoRMS Brachiopoda UPDATED!, WoRMS Brachypoda UPDATED!,
+        WoRMS Brachyura UPDATED!, WoRMS Bryozoa UPDATED!, WoRMS Cestoda UPDATED!,
+        WoRMS Chaetognatha UPDATED!, WoRMS Cumacea UPDATED!, WoRMS Echinoidea UPDATED!,
+        WoRMS Gastrotricha UPDATED!, WoRMS Gnathostomulida UPDATED!, WoRMS Holothuroidea
+        UPDATED!, WoRMS Hydrozoa UPDATED!, WoRMS Isopoda UPDATED!, WoRMS Leptostraca
+        UPDATED!, WoRMS Monogenea UPDATED!, WoRMS Mystacocarida UPDATED!, WoRMS Myxozoa
+        UPDATED!, WoRMS Nemertea UPDATED!, WoRMS Oligochaeta UPDATED!, WoRMS Ophiuroidea
+        UPDATED!, WoRMS Phoronida UPDATED!, WoRMS Placozoa UPDATED!, WoRMS Polychaeta
+        UPDATED!, WoRMS Polycystina UPDATED!, WoRMS Porifera UPDATED!, WoRMS Priapulida
+        UPDATED!, WoRMS Proseriata-Kalyptorhynchia UPDATED!, WoRMS Remipedia UPDATED!,
+        WoRMS Scaphopoda UPDATED!, WoRMS Tanaidacea UPDATED!, WoRMS Tantulocarida
+        UPDATED!, WoRMS Thermosbaenacea UPDATED!, WoRMS Trematoda UPDATED!, WoRMS
+        Xenoturbellida UPDATED! * Rotifers, mayflies, freshwater hairworms, planarians
+        from FADA databases: FADA Rotifera, FADA Ephemeroptera, FADA Nematomorpha
+        &amp; FADA Turbellaria * Entoprocts, water bears from ITIS Global * Spiders,
+        scorpions, ticks &amp; mites from SpidCat via ITIS, SalticidDB , ITIS Global,
+        TicksBase, SpmWeb BdelloideaBase UPDATED! &amp; Mites GSDs: OlogamasidBase,
+        PhytoseiidBase, RhodacaridBase &amp; TenuipalpidBase * Diplopods, centipedes,
+        pauropods and symphylans from SysMyr UPDATED! &amp; ChiloBase * Dragonflies
+        and damselflies from Odonata database * Stoneflies from PlecopteraSF * Cockroaches
+        from BlattodeaSF * Praying mantids from MantodeaSF * Stick and leaf insects
+        from PhasmidaSF * Grasshoppers, locusts, katydids and crickets from OrthopteraSF
+        * Webspinners from EmbiopteraSF * Bark &amp; parasitic lices from PsocodeaSF
+        * Some groups of true bugs from ScaleNet, FLOW, COOL, Psyllist, AphidSF ,
+        MBB, 3i Cicadellinae, 3i Typhlocybinae, MOWD &amp; CoreoideaSF* Twisted-wing
+        parasites from Strepsiptera Database * Lacewings, antlions, owlflies, fishflies,
+        dobsonflies &amp; snakeflies from LDL Neuropterida * Some beetle groups from
+        the Scarabs UPDATED!, TITAN, WTaxa &amp; ITIS Global * Fleas from Parhost
+        * Flies, mosquitoes, bots, midges and gnats from Systema Dipterorum, CCW &amp;
+        CIPA * Butterflies and moths from LepIndex, GloBIS (GART), Tineidae NHM, World
+        Gracillariidae * Bees &amp; wasps from ITIS Bees, Taxapad Ichneumonoidea,
+        UCD, ZOBODAT Vespoidea &amp; HymIS Rhopalosomatidae* Molluscs from WoRMS Mollusca
+        UPDATED!, FADA Bivalvia, MolluscaFW &amp; AFD (Pulmonata) * Fishes from FishBase
+        * Reptiles from ReptileDB UPDATED! * Amphibians, birds and mammals from ITIS
+        Global PLUS additional species of many groups from ITIS Regional, NZIB and
+        CoL China</p>\",\"type\":\"CHECKLIST\"},{\"key\":\"046bbc50-cae2-47ff-aa43-729fbf53f7c5\",\"title\":\"International
+        Plant Names Index\",\"description\":\"The International Plant Names Index
+        (IPNI) is a database of the names and associated basic bibliographical details
+        of seed plants, ferns and fern allies. Its goal is to eliminate the need for
+        repeated reference to primary sources for basic bibliographic information
+        about plant names. The data are freely available and are gradually being standardized
+        and checked. IPNI will be a dynamic resource, depending on direct contributions
+        by all members of the botanical community.\",\"type\":\"CHECKLIST\",\"subtype\":\"NOMENCLATOR_AUTHORITY\"},{\"key\":\"d9a4eedb-e985-4456-ad46-3df8472e00e8\",\"title\":\"The
+        Plant List with literature\",\"description\":\"This dataset is a derivative
+        work under the &#34;Terms of Use for The Plant List&#34; http://www.theplantlist.org/1.1/terms/
+        that (a) converts The Plant List version 1.1 CSV files into a Darwin Core
+        Archive, and (b) adds identifiers (e.g., DOIs) and complete bibliographic
+        details to the original citations for many of the plant names.The Plant List
+        http://www.theplantlist.org/ is a working list of all known plant species.
+        Version 1.1, released in September 2013, aims to be comprehensive for species
+        of Vascular plant (flowering plants, conifers, ferns and their allies) and
+        of Bryophytes (mosses and liverworts). It does not include algae or fungi.
+        Version 1.1 contains 1,293,685 scientific plant names of which 350,699 are
+        accepted species names. It includes no vernacular or common plant names.\",\"type\":\"CHECKLIST\"},{\"key\":\"6cfd67d6-4f9b-400b-8549-1933ac27936f\",\"title\":\"GBIF
+        Type Specimen Names\",\"description\":\"A checklist of names extracted from
+        all GBIF type specimen with parsable names.\\n                The list uses
+        the verbatim, original data not interpreted by GBIF with the exception\\n
+        \               of the name itself which is parsed using the GBIF Name Parser.\\n
+        \               The detailed procedure can be found at https://github.com/gbif/type-specimen-checklist.\",\"type\":\"CHECKLIST\"},{\"key\":\"fab88965-e69d-4491-a04d-e3198b626e52\",\"title\":\"NCBI
+        Taxonomy\",\"description\":\"The NCBI taxonomy database is not a primary source
+        for taxonomic or phylogenetic information. Furthermore, the database does
+        not follow a single taxonomic treatise but rather attempts to incorporate
+        phylogenetic and taxonomic knowledge from a variety of sources, including
+        the published literature, web-based databases, and the advice of sequence
+        submitters and outside taxonomy experts. Consequently, the NCBI taxonomy database
+        is not a phylogenetic or taxonomic authority and should not be cited as such.\",\"type\":\"CHECKLIST\"},{\"key\":\"2d59e5db-57ad-41ff-97d6-11f5fb264527\",\"title\":\"World
+        Register of Marine Species\",\"description\":\"With WoRMS we aim to provide
+        the most authoritative list of names of all marine species globally, ever
+        published\",\"type\":\"CHECKLIST\"},{\"key\":\"9ca92552-f23a-41a8-a140-01abaa31c931\",\"title\":\"Integrated
+        Taxonomic Information System (ITIS)\",\"description\":\"The White House Subcommittee
+        on Biodiversity and Ecosystem Dynamics has identified systematics as a research
+        priority that is fundamental to ecosystem management and biodiversity conservation.
+        This primary need identified by the Subcommittee requires improvements in
+        the organization of, and access to, standardized nomenclature. ITIS (originally
+        referred to as the Interagency Taxonomic Information System) was designed
+        to fulfill these requirements. In the future, the ITIS will provide taxonomic
+        data and a directory of taxonomic expertise that will support the system.\\n\\nThe
+        ITIS is the result of a partnership of federal agencies formed to satisfy
+        their mutual needs for scientifically credible taxonomic information. Since
+        its inception, ITIS has gained valuable new partners and undergone a name
+        change; ITIS now stands for the Integrated Taxonomic Information System.\\n\\nThe
+        goal is to create an easily accessible database with reliable information
+        on species names and their hierarchical classification. The database will
+        be reviewed periodically to ensure high quality with valid classifications,
+        revisions, and additions of newly described species. The ITIS includes documented
+        taxonomic information of flora and fauna from both aquatic and terrestrial
+        habitats.\\n\\nThe original ITIS partners include:\\nDepartment of Commerce\\n
+        \   National Oceanic and Atmospheric Administration (NOAA)\\nDepartment of
+        Interior (DOI)\\n    Geological Survey (USGS)\\nEnvironmental Protection Agency
+        (EPA)\\nDepartment of Agriculture (USDA)\\n    Agriculture Research Service
+        (ARS)\\n    Natural Resources Conservation Service (NRCS)\\nSmithsonian Institution\\n
+        \   National Museum of Natural History (NMNH)\\n\\nThese agencies signed a
+        Memorandum of Understanding and have formed a Steering Committee that directs
+        two technical work groups - the Database Work Group (DWG) and the Taxonomy
+        Work Group (TWG). The DWG is responsible for the database design and overseeing
+        development of the system to meet the requirements of the ITIS partners. The
+        TWG is responsible for the quality and integrity of the database information.
+        In addition to the database, the working groups have created &#34;Taxonomic
+        Workbench&#34; software designed for easy entry and manipulation of taxonomic
+        data.\\n\\nPrimary objectives of the TWG include the review of data prior
+        to incorporation into the ITIS and the establishment of a process for periodic
+        peer review to ensure data quality. The TWG has evaluated the taxonomic information
+        priorities of the agencies and is locating data sources for the highest priority
+        groups. Efforts to gather data are helping to identify gaps in taxonomic coverage
+        in both scientific expertise and available information. The TWG hopes to promote
+        collaboration among, and provide a point of focus for, taxonomists, scientific
+        institutions, and taxonomic information users.\\n\\nFor each scientific name,
+        ITIS will include the authority (author and date), taxonomic rank, associated
+        synonyms and vernacular names where available, a unique taxonomic serial number,
+        data source information (publications, experts, etc.) and data quality indicators.
+        Expert reviews and changes to taxonomic information in the database will be
+        tracked. Geographic coverage will be worldwide with initial emphasis on North
+        American taxa. The TWG is coordinating its efforts with several national and
+        international biodiversity programs.\\n\\nITIS will be a significant contribution
+        to the scientific infrastructure that is fundamental to the description, conservation,
+        and management of the nation&#39;s biodiversity. Use of the ITIS and the taxonomic
+        serial numbers will facilitate sharing of biological information among researchers
+        and cooperating agencies by providing a common framework for taxonomic data.
+        Agencies that typically cannot afford to maintain taxonomic data will have
+        access to high quality taxonomic information through ITIS. This project allows
+        the coordination of efforts among federal agencies, thereby increasing productivity
+        and saving resources.\\n\\nStatus reports on ITIS system development may be
+        found in the What&#39;s New section. You can also contact Gerald Guala, Ph.D.,
+        Director, Integrated Taxonomic Information System (ITIS) at U.S. Geological
+        Survey, 12201 Sunrise Valley Drive, MS 302, Reston, VA 20192 or via email
+        at itiswebmaster&#64;itis.gov .\",\"type\":\"CHECKLIST\"},{\"key\":\"0e61f8fe-7d25-4f81-ada7-d970bbb2c6d6\",\"title\":\"TAXREF\",\"description\":\"TAXREF
+        est le référentiel taxonomique national pour la faune, la flore et la fonge
+        de France \\nmétropolitaine et d’outre-mer, élaboré et diffusé par le Muséum
+        national d’Histoire naturelle \\n(MNHN) dans le cadre de la mise en œuvre
+        du Système d’Information sur la Nature et les \\nPaysages (SINP). Ce référentiel
+        est unique pour la France ; il a pour but de lister et \\nd’organiser les
+        noms scientifiques de l'ensemble des êtres vivants recensés sur le territoire.
+        Le \\nréférentiel TAXREF est consultable et téléchargeable sur le site internet
+        de l’Inventaire \\nNational du Patrimoine Naturel (INPN) coordonné par le
+        MNHN. \\nhttp://inpn.mnhn.fr/programme/referentiel-taxonomique-taxref\\n\\nLa
+        version en cours est TAXREF v10.0 mise en ligne le 3 novembre 2016.\\n\\nEn
+        téléchargeant TAXREF, j'accepte les conditions suivantes :\\n(1) aucune copie
+        du référentiel TAXREF ne sera faite et transmise à un tiers sans que celui-ci
+        n'ait rempli le présent formulaire \\n(2) le référentiel TAXREF, ou une de
+        ses composantes telles que décrites dans le document de citation des sources,
+        sera citée dans toute publication ou présentation qui l'utilisera \\n(3) aucune
+        partie du référentiel TAXREF ne sera mise à disposition en ligne sans autorisation
+        préalable du SPN/MNHN \\n(4) en cas de découverte d'erreurs il est prié de
+        bien vouloir en informer les éditeurs de façon à constamment accroitre la
+        qualité du référentiel\",\"type\":\"CHECKLIST\"},{\"key\":\"0938172b-2086-439c-a1dd-c21cb0109ed5\",\"title\":\"The
+        Interim Register of Marine and Nonmarine Genera\",\"description\":\"The Interim
+        Register of Marine and Nonmarine Genera is a provisional (or ‘interim’) compilation
+        of genus names – including species names in many cases – and covers both living
+        and extinct biota into a single system to support taxonomic and other queries
+        dealing with e.g. homonyms, authorities, parent-child relationships, spelling
+        variations and distinctions between marine and non-marine or fossil and recent
+        taxa\",\"type\":\"CHECKLIST\"},{\"key\":\"bf3db7c9-5e5d-4fd0-bd5b-94539eaf9598\",\"title\":\"Index
+        Fungorum\",\"description\":\"The Index Fungorum, the global fungal nomenclator
+        coordinated and supported by the Index Fungorum Partnership, contains names
+        of fungi (including yeasts, lichens, chromistan fungi, protozoan fungi and
+        fossil forms) at species level and below. Funding from GBIF (2003-2004) under
+        the ECAT work programme enabled the addition of most missing author citations
+        and year of publication and the linking of most homotypic names. New names
+        from the Index of Fungi, compiled at CABI-UK and published by CABI, are added
+        every three months.\\n\\nThe Bibliography of Systematic Mycology provides
+        a survey of the literature encompassing the biodiversity, classification,
+        distribution, evolution, identification, nomenclature, phylogeny, systematics
+        and taxonomy of fungi (as defined in the previous paragraph). You can search
+        the database using the index of cited generic names or author names.\\n\\nThe
+        Dictionary of the Fungi (currently 10th edition, 2008) published by CABI also
+        contains the current consensus on the fungal taxonomic hierarchy to the rank
+        of genus. Here you can search the database for the status of generic names,
+        or walk down the hierarchy from the rank of Kingdom. The entries for each
+        genus generally include authors and place of publication together with the
+        type species (linked to Index Fungorum) and other data. A database of family
+        names which includes authors, place of publication and type genus (linked
+        to the Dictionary of the Fungi hierarchy) is now supplemented by one which
+        contains names at all supra-familial ranks although it is far from completion.\\n\\nCABI
+        Bioscience is presently coordinating the fungal component of the Species 2000
+        project and its contribution, in partnership with ITIS, to the Catalogue of
+        Life (currently used in the GBIF portal); for more information regarding this
+        global initiative visit their website. You may search here a small but growing
+        number of taxonomically complete datasets - global species databases. Please
+        contact Paul Kirk if you you would like to contribute.\\n\\nAll these databases
+        need to be improved and updated in terms of data content. Please contact Paul
+        Kirk if you have any additions or suggested changes (which will be acknowledged).
+        The database structures have been developed by Jerry Cooper and Paul Kirk
+        and the web interface by Jerry Cooper. Please contact Jerry Cooper if you
+        have any problems with pages or database searches.\",\"type\":\"CHECKLIST\",\"subtype\":\"NOMENCLATOR_AUTHORITY\"},{\"key\":\"90d9e8a6-0ce1-472d-b682-3451095dbc5a\",\"title\":\"Fauna
+        Europaea\",\"description\":\"The Fauna Europaea project (EVR1-1999-20001)
+        has been funded by the European Commission for a period of four years (1 March
+        2000 - 1 March 2004) within the Fifth Framework Programme (5FP). Fauna Europaea
+        has assembled a database of the scientific names and distribution of all living
+        multicellular European land and fresh-water animals.\",\"type\":\"CHECKLIST\"},{\"key\":\"1bd42c2b-b58a-4a01-816b-bec8c8977927\",\"title\":\"EUNIS
+        Biodiversity Database\",\"description\":\"The EUNIS Database is the European
+        Nature Information System, developed and managed by the European Topic Centre
+        on Biological Diversity (ETC/BD in Paris) for the European Environment Agency
+        (EEA) and the European Environmental Information Observation Network(Eionet).</br>The
+        EUNIS Database web application provides access to publicly available data
+        in a consolidated database. The information includes:</br>Data on Species,
+        Habitats and Sites compiled in the framework of NATURA2000 (EU Habitats and
+        Birds Directives),\\nData collected from frameworks, data sources or material
+        published by ETC/BD (formerly the European Topic Centre for Nature Conservation).\\nInformation
+        on Species, Habitats and Sites taken into account in relevant international
+        conventions or from International Red Lists.\\nSpecific data collected in
+        the framework of the EEA's reporting activities, which also constitute a core
+        set of data to be updated periodically.\",\"type\":\"CHECKLIST\"},{\"key\":\"c8227bb4-4143-443f-8cb2-51f9576aff14\",\"title\":\"ZooBank\",\"description\":\"Nomenclatural
+        records in ZooBank\",\"type\":\"CHECKLIST\",\"subtype\":\"NOMENCLATOR_AUTHORITY\"},{\"key\":\"3772da2f-daa1-4f07-a438-15a881a2142c\",\"title\":\"Catalogue
+        of Life China, 2013 Annual Checklist(Biodiversity Committee, Chinese Academy
+        of Sciences)\",\"description\":\"Organized by the Biodiversity Committee of
+        Chinese Academy of Sciences (BC-CAS),Catalogue of Life China 2013 Annual Checklist
+        edition has been compiled by Species 2000 China Node, published by Science
+        Press and released during the 3rd National Biodiversity Informatics Conference
+        in Shanghai on September 14.\\nConsistent with the Species 2000 data standard,
+        each species page includes scientific name, synonyms, common name, literature,
+        classification system, distribution and Chinese name with Pinyin. The reviewers
+        for each record are also listed.\\nThere are 66708 species, 9754infraspecific
+        taxa, 95362 synonyms and 32327 common names in this edition, including 7 kingdoms,
+        30 phylums, 83 classes, 397 orders, 1 959 families and 11 731 genera. Compare
+        with the last edition, another 6 000 species orinfraspecific taxa and more
+        than 170 000 Latin are added.\\nThe main change in the 2013 edition are:about
+        4000 species or infraspecific taxa were added in Animalia Arthropoda; about
+        1800 species or infraspecific taxa were added in Fungi Basidiomycota; about
+        250 species or infraspecific taxa were added in Plantae Angiosperms; about
+        390 species or infraspecific taxa were added in Protozoa, Amoeba.\\nThe national
+        annual species checklist has been compiled and released since 2008 by the
+        participants of Species 2000 China Node, together with more than 100 domestic
+        and overseas taxonomists. It follows the data standard of the Standard Dataset
+        of the Species 2000, and provides the Catalogue of Life China to all users
+        in the world.\",\"type\":\"CHECKLIST\"},{\"key\":\"a6c6cead-b5ce-4a4e-8cf5-1542ba708dec\",\"title\":\"Artsnavnebasen\",\"description\":\"Artsnavnebasen
+        (the Species Nomenclature Database) aims to compile a complete list of all
+        existing species in Norway, and also contains names of species not found in
+        Norway but present in Norwegian museum collections and herbaria.\",\"type\":\"CHECKLIST\"},{\"key\":\"66dd0960-2d7d-46ee-a491-87b9adcfe7b1\",\"title\":\"GRIN
+        Taxonomy\",\"description\":\"GRIN taxonomic data provide the structure and
+        nomenclature for accessions of the National Plant Germplasm System (NPGS),
+        part of the National Genetic Resources Program (NGRP) of the United States
+        Department of Agriculture&#39;s (USDA&#39;s) Agricultural Research Service
+        (ARS). In GRIN Taxonomy for Plants all families and genera of vascular plants
+        and over 46,000 species from throughout the world are represented, especially
+        economic plants and their relatives. Information on scientific and common
+        names, classification, distribution, references, and economic impacts are
+        provided.\",\"type\":\"CHECKLIST\"},{\"key\":\"aacd816d-662c-49d2-ad1a-97e66e2a2908\",\"title\":\"Brazilian
+        Flora 2020 project - Projeto Flora do Brasil 2020\",\"description\":\"In 2010,
+        Brazil published the Catalog of Plants and Fungi of Brazil and launched the
+        first online version of the List of Species of the Brazilian Flora, meeting
+        Target 1 of the Global Strategy for Plant Conservation (GSPC-CBD). This botanical
+        milestone was only achieved due to the commitment of more than 400  Brazilians
+        and foreign taxonomists who worked on a platform where information about our
+        flora was included and disseminated in real time. The &#34;Brazilian List&#34;,
+        as it was popularly known, closed in November 2015 with the publication of
+        five papers and their respective databases (see Download as above) dealing
+        with the different groups of fungi and plants. We enthusiastically present,
+        in 2016, the brand new system that houses the Brazilian Flora 2020 project,
+        aiming to achieve Target 1 established for 2020 by the GSPC-CBD. This new
+        project icludes provisions to include descriptions, identification keys and
+        illustrations to all species of plants, algae and fungi known in the country.
+        The Brazilian Flora 2020 project is part of the Reflora Programme and is being
+        conducted with the support of the Sistema de Informação sobre a Biodiversidade
+        Brasileira (SiBBr). At the moment has nearly 700 scientists working in a network
+        to prepare the monographs. These researchers are also responsible for nomenclatural
+        information and geographic distribution (coverage in Brazil, endemism and
+        biomes), as well as valuable data regarding life forms, substrate and vegetation
+        types for each species. The search results on this page include information
+        on endangered species (thanks to the cooperation with the Centro Nacional
+        de Conservação da Flora) and allow access to the Index Herbariorum (due to
+        the collaboration of The New York Botanical Garden). Besides this information,
+        users can also access images of herbarium specimens, including nomenclatural
+        types, from both the Reflora Virtual Herbarium and INCT Virtual Herbarium
+        of Flora and Fungi; as well as images of live plants and scientific illustrations
+        with all images included by the experts in each group.\\n\\nTo date (2018-02-06),
+        46485 species are recognized for Brazil&#39;s flora: 4754 Algae, 33087 Angiosperms,
+        1567 Bryophytes, 5718 Fungi, 30 Gymnosperms and 1329 Ferns and Lycophytes.\",\"type\":\"CHECKLIST\"},{\"key\":\"de8934f4-a136-481c-a87a-b0b202b80a31\",\"title\":\"Dyntaxa.
+        Svensk taxonomisk databas\",\"description\":\"Dyntaxa is a Swedish taxonomic
+        database of organisms occurring in Swedish nature. For other databases at
+        the Swedish Species Information Centre, e.g. Artportalen, it has a normative
+        function for taxonomic concepts, and is increasingly referenced by external
+        Swedish users. To date (February 2017) Dyntaxa contains information about
+        60,000 species occurring in Sweden. This includes about 95% of known multicellular
+        species – remaining gaps mainly found among the fungi. Our goal is to include
+        in the database all species documented from Sweden – at least the multicellular
+        ones and such unicellular species that are included in environmental monitoring
+        by the Swedish EPA. In addition to these species there are many names at other
+        taxonomic levels, scientific synonyms, Swedish vernaculars, etc. In all, the
+        database includes more than 270,000 names (February 2017). Dyntaxa is continuously
+        updated with new species, changes in taxonomy and added Swedish names and
+        scientific synonyms.\",\"type\":\"CHECKLIST\"},{\"key\":\"4cec8fef-f129-4966-89b7-4f8439aba058\",\"title\":\"International
+        Barcode of Life project (iBOL) Barcode Index Numbers (BINs)\",\"description\":\"<p>The
+        International Barcode of Life Project (iBOL) was formally activated in October
+        2010. Its first phase (2010-2015) will lead to the acquisition of DNA barcode
+        records for 5M specimens representing 500K species. iBOL will release each
+        barcode record in two phases. The initial phase will release barcode sequence(s),
+        trace files, high-level (ordinal) taxonomic assignment, GPS co-ordinates and
+        the country of collection. This phase of data release will occur automatically
+        on a quarterly basis in datafiles posted on this page as well as at GenBank.
+        The second phase of data release will involve a more precise taxonomic assignment
+        and ancillary data, such as images, for each specimen.</p>\\n<p>The data released
+        to date consists of records for 2,869,168 sequences analyzed at the Canadian
+        Centre for DNA Barcoding at the University of Guelph and the Centre for Environmental
+        & Molecular Algal Research at the University of New Brunswick during the first
+        year of iBOL ramp-up (July 1, 2009 - June 30, 2010) and the 66 months of the
+        officially activated iBOL project (July 1, 2010 - Dec 31, 2015). These specimens
+        are derived from many collaborators in many nations.</p>\",\"type\":\"CHECKLIST\"},{\"key\":\"1ec61203-14fa-4fbd-8ee5-a4a80257b45a\",\"title\":\"The
+        National Checklist of Taiwan\",\"description\":\"The catalog of Taiwanese
+        species is call \\\"TaiBNET\\\" and the national node of GBIF (Global Biodiversity
+        Information Facility) in Taiwan is called \\\"TaiBIF\\\". Currently, the websites
+        have been established at Academia Sinica (http://taibnet.sinica.edu.tw and
+        http://www.gbif.org.tw). Both of the Biodiversity Research Center and the
+        Computing Center of Academia Sinica are in charge of the maintenance and the
+        updating biodiversity related information and data.\\n\\nThrough the node,
+        the background of participating GBIF, related documents, news, upcoming conferences,
+        name list of Taiwanese taxonomists, catalog of life in Taiwan, specimen database,
+        biodiversity related organization, team research projects, independent biological
+        databases, natural heritage, and local publications etc. can be accessed.
+        Among them, \\\"Name list of Taiwanese taxonomists\\\" and \\\"Catalog of
+        Life of Taiwan\\\" are one promoting project sponsored by the National Science
+        Council. So far, 236 local taxonomists have included their titles, telephones,
+        e-mail addresses, and the taxa that they are expertised. In the future, we
+        hope to include all of the ecologists or the applied scientists in agriculture,
+        forestry, fishery, and animal husbandry in the name list.\\n\\nThe first phase
+        of Catalog of Life in Taiwan will contain the following items of animals (including
+        insects), plants, and fungi: species names, authors and year, suggested Chinese
+        names, endemic in Taiwan or not, their classification hierarchy, the most
+        authorized citation proving that particular species has occurred in Taiwan.
+        Users can get the name list of one group of organisms through keywords search,
+        species name searching, or image searching etc. Further information of each
+        species can be obtained through the hyperlink to more than 18 well-known global
+        databases or networks, such as Species2000 and ITIS etc. Right now, more than
+        30,000 species have been compiled, and we hope to collect more than 60,000
+        species by July 2004. Species checklist of the microorganisms will be included
+        next year. We hope to get more funding and collaborators in the next phase
+        to collect specimen or ecological photos (endemic species first), description
+        (morphology, ecology and biology), geographical distribution, synonyms, literatures,
+        as well as deposited specimen data for each species.\\n\\nThrough this node,
+        the most authorized information of high biodiversity and endemism of Taiwan
+        can be exchanged and shared with other GBIF participants. This mission is
+        also requested by both of the Convention on Biological Diversity and GBIF
+        to each member because in such a way, education, research, and conservation
+        of biodiversity in the world could be promoted effectively.\",\"type\":\"CHECKLIST\"},{\"key\":\"39653f3e-8d6b-4a94-a202-859359c164c5\",\"title\":\"Belgian
+        Species List\",\"description\":\"This resource was created by publishing the
+        backend database of the Belgian Species List website (www.species.be). This
+        publishing work has been done by the Belgian Biodiversity Platform (http://www.biodiversity.be)
+        in the framework of the \\\"GBIF award for evaluating checklist publication
+        format\\\" during May 2011.\\n\\nData extracted by Francis Strobbe on May
+        27th 2011.\\n\\nAbstract of the Belgian Species List project:\\nSince almost
+        a year now, people of all ages can access the Belgian Species List for an
+        extensive overview of the biodiversity in Belgium. Animals, plants, fungi:
+        you can make your way through a total of more than 32.000 species!\\n\\nThe
+        Belgian species list was set up by the RBINS – the research institution behind
+        the Museum of Natural Sciences – in cooperation with different Belgian and
+        international institutions and organizations.\\n\\nThe purpose of the species
+        list is to become the online reference in naming and occurrence of species
+        in Belgium, easy to consult in just one website that centralizes and standardizes
+        the information. For every species that's been described, information is given
+        on among other things the conservation status, the distribution, the habitat
+        and much more. More and more species index cards are fitted with pictures
+        and interesting links.\\n\\nThe website is aimed at a broad audience: researchers,
+        decision makers, students, journalists, nature conversationists and all nature
+        lovers.\\n\\nWant to know more? \\nLog on to www.species.be!\",\"type\":\"CHECKLIST\"},{\"key\":\"3d9b97e9-2f2c-458e-883b-488a628a3fa5\",\"title\":\"Freshwater
+        Animal Diversity Assessment\",\"description\":\"The Freshwater Animal Diversity
+        Assessment (FADA) database contains authoritative species lists for several
+        taxonomic groups and distribution data at the level of faunistic regions.
+        The groups currently published (26-06-2015) include Halacaridae, Cnidaria-Hydroida,
+        Cladocera, Copepoda, Mysidaceae, Ephemeroptera, Plecoptera, Trichoptera, Macrophytes,
+        Bivalvia, Nematomorpha, Rotifera, Turbellaria, Fish, Mammals, Diptera-Chironomidae-Tanytarsini,
+        Diptera-Culicidae, Coleoptera-Psephenidae, Coleoptera-Dytiscidae, Coleoptera-Gyrinidae,
+        Coleoptera-Haliplidae, Coleoptera-Donaciinae and Gastrotricha\",\"type\":\"CHECKLIST\"},{\"key\":\"65c9103f-2fbf-414b-9b0b-e47ca96c5df2\",\"title\":\"Afromoths,
+        online database of Afrotropical moth species (Lepidoptera)\",\"description\":\"This
+        dataset covers all relevant information on every Afrotropical moth species.\\n\\nThe
+        zoogeographic area covered can be defined as the Africa continent south of
+        the Sahara (i.e. excl. Morocco, Algeria, Tunisia, Libya and Egypt), the islands
+        in the Atlantic Ocean: Amsterdam Island, Ascension, Cape Verde Archipelago,
+        Inaccessible Island, St. Helena, São Tomé and Principe, Tristan da Cunha,
+        and the islands in the Indian Ocean: Comores (Anjouan, Grande Comore, Mayotte,
+        Mohéli), Madagascar, Mascarene Islands (La Réunion, Mauritius, Rodrigues),
+        Seychelles (Félicité, Mahé, Praslin, Silhouette, a.o.).\\n\\nFurthermore,
+        also those moth species occurring in the transition zone to the Palaearctic
+        fauna have been included, namely most of the Arabia Peninsula (Kuwait, Oman,
+        Saudi Arabia, United Arab Emirates, Yemen with Socotra) but not Iraq, Jordan
+        and further north. Also, some Saharan species have been included (e. g. Hoggar
+        Mts. in Algeria, Tibesti Mts. in South Libya).\\n\\nUtmost care was taken
+        that the data incorporated in the database are correct. We decline any responsibility
+        in case of damage to soft- or hardware based on information used in this website.
+        Persons retrieving information from this website for their own research or
+        for applied aspects such as pest control programmes, should acknowledge the
+        usage of data from this website in the following format:\\n\\nDe Prins, J.
+        & De Prins, W. 2011. Afromoths, online database of Afrotropical moth species
+        (Lepidoptera). World Wide Web electronic publication (www.afromoths.net)\",\"type\":\"CHECKLIST\"},{\"key\":\"af66d4cf-0fd2-434b-9334-9806a5efa6f7\",\"title\":\"Orthoptera
+        Species File\",\"description\":\"This file contains taxon names and related
+        nomenclatural information for the order Orthoptera originating from the Orthoptera
+        Species File maintained by the Species File Group (http://software.speciesfile.org)
+        at the University of Illinois, Illinois Natural History Survey.\",\"type\":\"CHECKLIST\"},{\"key\":\"9fe7c02c-a45e-4f31-afca-4840ead2d62a\",\"title\":\"Fishes
+        of the Neotropics\",\"type\":\"CHECKLIST\"},{\"key\":\"ded724e7-3fde-49c5-bfa3-03b4045c4c5f\",\"title\":\"International
+        Cichorieae Network (ICN): Cichorieae Portal\",\"description\":\"The Cichorieae
+        Portal is being established as a convenient access to the existing knowledge
+        about the tribe Cichorieae of the sunflower family (Asteraceae or Compositae).
+        The Cichorieae include about 93 genera, of these, 90 genera comprise approximately
+        1400 species, while 3 genera, hawkweeds and dandelions (Hieracium, Pilosella,
+        and Taraxacum), add further 8000+ species, hybrids and/or apomictics. The
+        Cichorieae Portal is designed on the basis EDIT Platform for Cybertaxonomy,
+        to serve both the specialist and the occasional visitor, providing a geographically
+        referenced species inventory of the entire tribe, offering taxon pages with
+        notes on systematics, descriptions, images, common names, distributional,
+        ecological, specimen and other data, and including full synonymies with protologues
+        and type citations. The available data are continuously being completed and
+        updated. In the long run, the Cichorieae portal aims at presenting an ever
+        up-to-date encyclopedic knowledge base of the tribe, with interactive keys
+        to allow easy identification of its members.\",\"type\":\"CHECKLIST\"},{\"key\":\"2599d15f-58e1-4766-bbaf-93344bd09bb6\",\"title\":\"Echinoderms\",\"type\":\"CHECKLIST\"},{\"key\":\"c696e5ee-9088-4d11-bdae-ab88daffab78\",\"title\":\"IOC
+        World Bird List, v8.1\",\"description\":\"The IOC World Bird List is an open
+        access resource of the international community of ornithologists. Our goal
+        is to facilitate worldwide communication in ornithology and conservation based
+        on an  up-to-date classification of world birds and a set of English names
+        that follows explicit guidelines for spelling and construction (Gill &amp;
+        Wright 2006).\\n\\nTo keep up with the active industry of taxonomic revisions,
+        the IOC editorial team and advisors update the web-based list quarterly.  The
+        updates include changes of recommended names or classification, additions
+        of newly described species, corrections of nomenclature, and updates of species
+        taxonomy.\\n\\nThe IOC World Bird List complements three other primary world
+        bird lists that differ slightly in their primary goals and taxonomic philosophy,
+        i.e. The Clements Checklist of the Birds of the World, The Howard &amp; Moore
+        Complete Checklist of the Birds of the World, 4th Edition, and HBW Alive/Bird
+        Life International.  Improved alignment of these independent taxonomic works
+        is a goal of the newly structured International Ornithologists Union, including
+        a Round Table discussion at the 2018 meeting in Vancouver, British Columbia.\\n\\nSpecial
+        thanks always to our expert advisors (left panel), to Sally Conyne for compiling
+        Ranges, to Eng-Li Green for website management, to Larry Master and Colin
+        Campbell for photos, to Peter Kovalik for spreadsheet magic, and to all volunteer
+        participants. We welcome your corrections and your suggestions for improvement.
+        \ You can reach us at worldbirdnames&#64;gmail.com.\",\"type\":\"CHECKLIST\"},{\"key\":\"47f16512-bf31-410f-b272-d151c996b2f6\",\"title\":\"The
+        Clements Checklist\",\"description\":\"The Clements Checklist of Birds of
+        the World, 6th Edition was published and released by Cornell University Press
+        in June 2007. The book was produced from a nearly completed manuscript left
+        by James Clements upon his death in 2005.\\n\\nThe Cornell Lab of Ornithology
+        has accepted the job of maintaining the ever-changing list of species, subspecies,
+        English names, and approximate distributions, beginning with publication of
+        the 6th Edition. Our procedures for accomplishing this ongoing task include
+        using the considerable expertise of our research ornithologists on staff,
+        aided enormously by input from knowledgeable professional and amateur cooperators
+        worldwide. We invite input on known or suspected errors or updates at any
+        time.\\n\\nThis website serves as the clearinghouse for keeping your Clements
+        Checklist up to date. We will post all corrections once a year in August.
+        At the same time, we’ll post updates to the taxonomy, scientific and English
+        nomenclature, and range descriptions, to incorporate changes that have made
+        their way into the literature and are generally accepted by the appropriate
+        scientific body or community. In the future, we will also be posting a list
+        of alternative English names.\",\"type\":\"CHECKLIST\"},{\"key\":\"155b33d2-84b1-4a31-9287-9d9e900bc6c8\",\"title\":\"Taxon
+        list of fungi and fungal-like organisms from Germany compiled by the DGfM\",\"description\":\"The
+        DTN Taxon lists services concept is described under http://www.diversitymobile.net/wiki/DTN_Taxon_Lists_Services.
+        The taxon lists are offered via several open and freely accessible services
+        with a dynamic data flow involving DTN data bases DTN Software and DTN Information
+        model.\",\"type\":\"CHECKLIST\"},{\"key\":\"a5358a8d-9b1a-43a3-b769-50d3e6ef8bd9\",\"title\":\"Cnidaria\",\"type\":\"CHECKLIST\"},{\"key\":\"3f8a1297-3259-4700-91fc-acc4170b27ce\",\"title\":\"Database
+        of Vascular Plants of Canada (VASCAN)\",\"description\":\"The Database of
+        Vascular Plants of Canada or VASCAN (http://data.canadensys.net/vascan) is
+        a comprehensive and curated checklist of all vascular plants reported in Canada,
+        Greenland (Denmark), and Saint Pierre and Miquelon (France). VASCAN was developed
+        at the Université de Montréal Biodiversity Centre and is maintained by a group
+        of editors and contributors. For every core taxon in the checklist (species,
+        subspecies, or variety), VASCAN provides the accepted scientific name, the
+        accepted French and English vernacular names, and their synonyms/alternatives
+        in Canada, as well as the distribution status (native, introduced, ephemeral,
+        excluded, extirpated, doubtful or absent) of the plant for each province or
+        territory, and the habit (tree, shrub, herb and/or vine) of the plant in Canada.
+        For reported hybrids (nothotaxa or hybrid formulas) VASCAN also provides the
+        hybrid parents, except if the parents of the hybrid do not occur in Canada.
+        All taxa are linked to a classification. VASCAN refers to a source for all
+        name, classification and distribution information.\\n\\nAll data have been
+        released to the public domain under a CC0 waiver and are available through
+        Canadensys and the Global Biodiversity Information Facility (GBIF). VASCAN
+        is a service to the scientific community and the general public, including
+        administrations, companies, and non-governmental organizations.\",\"type\":\"CHECKLIST\"},{\"key\":\"f43069fe-38c1-43e3-8293-37583dcf5547\",\"title\":\"Danish
+        Mycological Society - Checklist of Fungi\",\"description\":\"Taxon list of
+        Fungi, generated from the taxonomic backbone of the Danish fungal atlas.\\nRead
+        more at svampe.databasen.org - the Danish Mycological Societys fungal records
+        database.\",\"type\":\"CHECKLIST\"},{\"key\":\"3e88422b-340c-4b7d-af88-151e817f3077\",\"title\":\"Peracarida\",\"type\":\"CHECKLIST\"},{\"key\":\"16c3f9cb-4b19-4553-ac8e-ebb90003aa02\",\"title\":\"German
+        Wikipedia - Species Pages\",\"description\":\"Species pages extracted from
+        the $LANG Wikipedia article XML dump from $DATE.\\nMultimedia, vernacular
+        names and textual descriptions are extracted, but only pages with a taxobox
+        or speciesbox template are recognized.\\n\\nSee https://github.com/mdoering/wikipedia-dwca
+        for details.\",\"type\":\"CHECKLIST\"},{\"key\":\"9d015991-438a-4093-a8d2-9a8006492121\",\"title\":\"EOL
+        Hotlist\",\"type\":\"CHECKLIST\"},{\"key\":\"3c37ebc6-d3d8-496c-96e8-55a6088aaecb\",\"title\":\"Annelida\",\"type\":\"CHECKLIST\"},{\"key\":\"d8fb1600-d636-4b35-aa0d-d4f292c1b424\",\"title\":\"Fauna
+        Europaea - Lepidoptera\",\"description\":\"All Lepidoptera from the Fauna
+        Europaea project, which has assembled a database of the scientific names and
+        distribution of all living multicellular European land and fresh-water animals.\",\"type\":\"CHECKLIST\"},{\"key\":\"3e9a9493-47e4-4dc9-a73a-00c23156b100\",\"title\":\"Colaboraciones
+        Americanas Sobre Aves\",\"type\":\"CHECKLIST\"},{\"key\":\"bb395a0a-72f0-4c50-b9b6-e1010b79d5c9\",\"title\":\"Yanayacu
+        Natural History Research Group\",\"type\":\"CHECKLIST\"},{\"key\":\"61a5f178-b5fb-4484-b6d8-9b129739e59d\",\"title\":\"UNITE
+        - Unified system for the DNA based fungal species linked to the classification\",\"description\":\"UNITE
+        is a rDNA sequence database designed to provide a stable and reliable platform
+        for sequence-borne identification of all fungal species. UNITE provides a
+        unified way for delimiting, identifying, communicating, and working with DNA-based
+        Species Hypotheses (SH). All fungal ITS sequences in the International Nucleotide
+        Sequence Databases (INSD: GenBank, ENA, DDBJ) are clustered to approximately
+        the species level by applying a set of dynamic distance values (&lt;0.5 -
+        3.0%). All species hypotheses are given a unique, stable name in the form
+        of a DOI, and their taxonomic and ecological annotations are verified through
+        distributed, web-based third-party annotation efforts. SHs are connected to
+        a taxon name and its classification as far as possible (phylum, class, order,
+        etc.) by taking into account identifications for all sequences in the SH.
+        An automatically or manually designated sequence is chosen to represent each
+        such SH. These sequences are released (https://unite.ut.ee/repository.php)
+        for use by the scientific community in, for example, local sequence similarity
+        searches and next-generation sequencing analysis pipelines. The system and
+        the data are updated automatically as the number of public fungal ITS sequences
+        grows.\",\"type\":\"CHECKLIST\"},{\"key\":\"0e35c8a8-d77a-4de5-92e9-e87166ed028a\",\"title\":\"Anthophila-
+        an online repository of bee diversity\",\"type\":\"CHECKLIST\"},{\"key\":\"47baa56c-a511-4764-b506-342d63a9ecbe\",\"title\":\"Porifera\",\"type\":\"CHECKLIST\"},{\"key\":\"52a423d2-0486-4e77-bcee-6350d708d6ff\",\"title\":\"Prokaryotic
+        Nomenclature Up-to-date\",\"description\":\"&#34;Prokaryotic Nomenclature
+        up-to-date&#34; is a compilation of all names of Bacteria and Archaea which
+        have been validly published according to the Bacteriological Code since 1.
+        Jan. 1980, and nomenclatural changes which have been validly published since.
+        It will be updated with the publication of each new issue of the Int. J. Syst.
+        Evol. Microbiol. (IJSEM). &#34;Prokaryotic Nomenclature up-to-date&#34; is
+        published by the Leibniz-Institut DSMZ - Deutsche Sammlung von Mikroorganismen
+        und Zellkulturen GmbH.\",\"type\":\"CHECKLIST\"},{\"key\":\"71667154-257d-4d8e-a2a5-711aaf9b2d74\",\"title\":\"Phthiraptera.info\",\"type\":\"CHECKLIST\"},{\"key\":\"79f243f4-9c38-4305-997f-fa8ac3089dba\",\"title\":\"Taxa
+        Watermanagement the Netherlands (TWN)\",\"description\":\"The Taxa Watermanagement
+        the Netherlands (TWN) checklist consists of several lists of species that
+        are relevant for the proper management of Dutch inland water bodies. The lists
+        contain aquatic, semi-aquatic as well as terrestrial organisms. Nomenclature
+        of the taxa is consequent binominal with references to authors and identification
+        literature. At a regular base the lists are being updated and improved by
+        specialists from the Rijkswaterstaat laboratories. The lists are part of the
+        official Aquo-standard, used by all Dutch water managing organisations. The
+        TWN checklist accommodates over 16.000 species and is sub-divided in lists
+        on amphibians, birds, butterflies, diatoms, macroalgae, macroinvertebrates,
+        mammals, macrophytes, nematodes, phytoplankton, reptiles and zooplankton.\",\"type\":\"CHECKLIST\"},{\"key\":\"88f4e35a-bdf8-4aa2-9a1b-56401d4eed15\",\"title\":\"Taxon
+        list of animals with German names (worldwide) compiled at the SMNS\",\"description\":\"The
+        DTN Taxon lists services concept is described under http://www.diversitymobile.net/wiki/DTN_Taxon_Lists_Services.
+        The taxon lists are offered via several open and freely accessible services
+        with a dynamic data flow involving DTN data bases DTN Software and DTN Information
+        model.\",\"type\":\"CHECKLIST\"},{\"key\":\"e09e1e1f-2460-4017-a964-e999abd2bf66\",\"title\":\"Korean
+        Peninsula Flora\",\"type\":\"CHECKLIST\"},{\"key\":\"6fb9265c-2d98-40ad-989d-7b6bf4820519\",\"title\":\"Psocodea
+        Species File\",\"description\":\"This file contains taxon names and related
+        nomenclatural information for the order Psocodea originating from the Psocodea
+        Species File maintained by the Species File Group (http://software.speciesfile.org)
+        at the University of Illinois, Illinois Natural History Survey.\",\"type\":\"CHECKLIST\"},{\"key\":\"ec1a0bfb-7d8e-4c6b-bc4d-dfd68a1e844f\",\"title\":\"A
+        list of the terrestrial and marine biota from the Azores\",\"description\":\"The
+        Azores is a remote oceanic archipelago of nine islands which belongs to the
+        Macaronesia biogeographical region and is among the richest regions concerning
+        fungi, plant and animal diversity in Europe. This checklist lists all the
+        species of the most important terrestrial and marine taxonomic groups. \\n\\nThe
+        total number of terrestrial and marine taxa (species and subspecies) in the
+        Azores\\nis estimated in about 8047. The marine organisms currently listed
+        make up about 23% of the Azorean biodiversity. The total number of terrestrial
+        and marine endemic taxa (species and subspecies) in the Azores is estimated
+        of about 491.\",\"type\":\"CHECKLIST\"},{\"key\":\"cbb6498e-8927-405a-916b-576d00a6289b\",\"title\":\"English
+        Wikipedia - Species Pages\",\"description\":\"Species pages extracted from
+        the $LANG Wikipedia article XML dump from $DATE.\\nMultimedia, vernacular
+        names and textual descriptions are extracted, but only pages with a taxobox
+        or speciesbox template are recognized.\\n\\nSee https://github.com/mdoering/wikipedia-dwca
+        for details.\",\"type\":\"CHECKLIST\"},{\"key\":\"e1c9e885-9d8c-45b5-9f7d-b710ac2b303b\",\"title\":\"Endemic
+        species in Taiwan\",\"description\":\"Taiwan is a continental island, located
+        between the southeastern coastline of mainland China and Japan's Ryukyu Islands.
+        With diverse terrain and wide range of vertical elevations, Taiwan has tropical,
+        subtropical, temperate, and frigid climate zones. These unique geographical
+        conditions, coupled with the effect of habitat isolation, gave Taiwan its
+        high biodiversity.\\n\\nThe endemic species of Taiwan denotes the native plants
+        and animals of Taiwan and its offshore islands such as Penghu Archipelago,
+        Orchid Island, Green Island, etc. Even though the areas are small, the Checklist
+        of Taiwan (TaiBNET) lists around 50,000 valid species scientific names. Among
+        them, 8,000 are endemic species (including endemic subspecies and varietas),
+        showing the abundance of Taiwan’s endemic Species. TaiBNET also provides information
+        on these species, such as their scientific names (including authors and years),
+        common names, and synonyms. Through Taiwan Biodiversity Information Facility
+        (TaiBIF), the information on these endemic species are published and then
+        shared and exchanged with other GBIF participants. Users can use keywords
+        to link to other websites with relevant information. All these efforts will
+        result in the circulation and utilization of information in the areas of research,
+        education and conservation.\",\"type\":\"CHECKLIST\"},{\"key\":\"672aca30-f1b5-43d3-8a2b-c1606125fa1b\",\"title\":\"Mammal
+        Species of the World\",\"description\":\"The data in this checklist of mammal
+        species of the world are being presented for non-commercial, personal, and
+        collections management use only. Copying or redistributing these data in any
+        manner for personal or corporate gain is not permitted.  A list of the authors
+        responsible for various portions of the text can be found here.\",\"type\":\"CHECKLIST\"},{\"key\":\"a43ec6d8-7b8a-4868-ad74-56b824c75698\",\"title\":\"A
+        list of the terrestrial fungi, flora and fauna of Madeira and Selvagens archipelagos\",\"description\":\"This
+        checklist includes, as rigorously as possible, all the known terrestrial and
+        freshwater, i.e. insular, fungi, plants and animals of the Madeira and Selvagens
+        archipelagos with the indication of their known presence on the islands of
+        Madeira, Porto Santo, Desertas and Selvagens. It results from the collaborative
+        work of many taxonomists from different Portuguese and foreign institutions
+        (about 90 taxonomists), under the editorial coordination of the Azorean Biodiversity
+        Group (http://www.gba.uac.pt).\\n\\nThe total estimated number of terrestrial
+        species and subspecies in the Madeira and Selvagens archipelagos was about
+        7,571 (7,452 species and 421 subspecies). Fungi and plants represent about
+        42% of the terrestrial diversity. However, animals dominate, arthropods being
+        the majority (51%) of all recorded taxa.\\n\\nThe total number of endemic
+        species and subspecies from the Madeira and Selvagens archipelagos is about
+        1,419 (1,286 species and 182 subspecies), which represents 19% of the overall
+        species diversity. The animal Phyla are the most diverse in endemic taxa,
+        namely Mollusca (210) and Arthropoda (979), comprising about 84% of the Madeiran
+        endemics. The percentage of endemism within Mollusca is particularly remarkable,
+        reaching 71%. Within vascular plants there are 154 endemic species and subspecies
+        (13% of the overall plant species diversity) while the remaining higher taxonomic
+        groups are less diverse in terms of endemic forms: Fungi – 36 (5%); Lichens
+        – 12 (2%); Bryophytes – 11 (2%); vertebrates 15 (24%).\",\"type\":\"CHECKLIST\"},{\"key\":\"a0b06e2e-287a-4687-8a6c-2c0cfb31c16d\",\"title\":\"Vernacular
+        names of the Flore d'Afrique Centrale\",\"description\":\"Vernacular names
+        published in the Flore d&#39;Afrique Centrale linked to their respective scientific
+        names.\",\"type\":\"CHECKLIST\"},{\"key\":\"d7435f14-dfc9-4aaa-bef3-5d1ed22d65bf\",\"title\":\"Taxonomy
+        in Flux Checklist\",\"description\":\"Aves - A Taxonomy in Flux\\nVersion
+        2.87: June 02 2013\\n\\nThere are big changes underway in bird taxonomy. You've
+        probably noticed that the checklist is always changing. Suddenly the ducks
+        have replaced the loons in front of the NGS guide. Not too long ago the shrikes
+        and vireos were next to the warblers, now they're next to the jays. Maybe
+        you've heard that vultures are storks, or that they're not really storks after
+        all, or that North American tanagers are now cardinals, or that saltators
+        are tanagers, not cardinals. Then there are the Baltimore and Bullock's Orioles,
+        or are they just Northern Orioles? Are they Slate-colored and Oregon Juncos,
+        or maybe it's Dark-eyed Junco today. Not only are species being split or lumped,
+        but everything is being rearranged. A new view of bird taxonomy takes shape
+        as we watch.\\n\\nThere have always been questions and disagreements about
+        bird taxonomy, and it has always been changing (see Bruce, 2003). Since Aristotle
+        or before, people have tried to find a natural way to order all bird species
+        (the very words “genus” and “species” carry the Aristotelean tradition). Early
+        attempts were based on obvious similarities, such as grouping all waterbirds
+        together. But what constitutes a natural order?\\n\\nLinnaeus simplified scientific
+        nomenclature by naming each type bird with a genus and species, but was unable
+        to tell us what order was natural. It is not until Darwin that we get a clearcut
+        way to order the birds. They should be ordered according to descent. Birds
+        with more recent common ancestors should be grouped together.\\n\\nThomas
+        Huxley (1867) was the first to construct a comprehensive bird list on Darwinian
+        lines. He focused on the characteristics of the bird's skull to determine
+        common inherited features that he could base his taxonomy on. Numerous other
+        ornithologists have used morphological traits to classify the birds, with
+        Livezey and Zusi (2007) being the most recent effort of this type.\\n\\nMore
+        recently, focus has shifted to molecular methods, the most important of which
+        is to directly study the stuff of inheritance—DNA. The culmination of the
+        first wave of DNA based taxonomy were the publications by Sibley, Ahlquist,
+        and Monroe (Sibley, Ahlquist, and Monroe, 1988; Sibley and Ahlquist, 1990;
+        Sibley and Monroe, 1990). Sibley, Ahlquist, and Monroe used DNA hybridization
+        to try to classify birds. This, together with increasing emphasis on cladistic
+        methods, has revitalized interest in bird taxonomy. In the 1990's, DNA hybridization
+        was replaced by the much more precise DNA sequencing, allowing direct examination
+        of the genes themselves. This has opened the possibility of constructing a
+        “tree of life” showing the evolutionary relationships between all living organisms.
+        It has brought the prospect of producing a completely accurate taxonomic tree
+        of all living bird species, and touched off an onslaught of new research.
+        This ongoing research is the driving force behind the checklist changes.\\n\\nThis
+        set of web pages contains a guess at what the avian part of the tree of life
+        might look like. It examines recent taxonomic changes, and possible changes
+        to come. Some of the projected changes are pretty solid, others are guesses
+        based on current research. Keep in mind that some of my guesses will turn
+        out to be wrong, and some of the research they are based will be wrong or
+        misleading. There will doubtless be taxonomic surprises before the entire
+        avian tree is worked out, just as there have been a number of recent surprises.\\n\\nThe
+        “Tapestry” on Steroids\\nUnlike all of the other current checklists, the TiF
+        checklist includes explicit phylogenetic hypotheses whenever possible. These
+        hypotheses are embodied in tree diagrams. From the beginning, the TiF list
+        has used an explicit family-level tree. That has now been extended to a genus-level
+        tree for most families (now over 95%). In some cases it has been pushed to
+        the species level, and in a very few cases, even to subspecies.\\n\\nPreviously,
+        only the combination of Sibley and Monroe (1990) and Sibley and Ahlquist (1990)
+        had attempted anything of this sort, their famous “tapestry”. However, they
+        had nowhere near the coverage that is now possible. One of the goals of this
+        checklist is to provide a tapestry on steroids that will eventually include
+        all extant bird species.\\n\\nThe tree I've put together is an interpretation
+        of the genetic relationships studied by many authors. The higher level taxonomy
+        (the non-passerines) I use is primarily based on Hackett et al. (2008), which
+        refines the results of Ericson et al. (2006a) and Fain and Houde (2004). This
+        taxonomy is slowly creeping into the checklists. The latest (2008) of Christidis
+        and Boles Australian checklist incorporates some of these ideas, as does the
+        AOU's South American checklist.\\n\\nThe purpose of these webpages is twofold:
+        To present the new ideas that Fain and Houde's Metaves hypothesis has brought
+        to the higher taxonomy (mostly above the family level), and to examine the
+        wholesale changes that been going on within the various families. The latter
+        has particularly affected the passerine families, which at times seems like
+        they've been run through a blender (see the Sylviidae page for an example).\\n\\nThe
+        higher-level phylogeny has followed Hackett et al. (2008) since version 2.1.
+        I've created a pdf that summarizes the changes from the previous version.
+        Since then, I've concentrated on adding as many genus-level phylogenetic family
+        trees as are possible (not needed for the one and two genus families). At
+        present, under 5% of the extant bird families lack even a draft tree, although
+        some of other family trees still have areas of conjecture.\\n\\nI also have
+        further information on the Metaves hypothesis and higher-level taxonomy. It
+        discusses the composition of the major groups and the relations between them,
+        particularly Metaves and Coronaves.\",\"type\":\"CHECKLIST\"},{\"key\":\"80b4b440-eaca-4860-aadf-d0dfdd3e856e\",\"title\":\"Official
+        Lists and Indexes of Names in Zoology\",\"description\":\"All scientific names
+        listed in the Official Lists and Indexes of Names in Zoology from the International
+        Commission on Zoological Nomenclature (ICZN).\",\"type\":\"CHECKLIST\"},{\"key\":\"5a71d803-e916-4aac-a373-a2f6010c8f13\",\"title\":\"Aproximación
+        a la representatividad de la diversidad de plantas vasculares en los Parques
+        Nacionales Naturales de Colombia ¿Cuantas especies se conservan en el sistema?\",\"description\":\"Colombia
+        cuenta con 59 áreas del Sistema Nacional de Parques Nacionales Naturales (PNNC).
+        El inventario de la flora del sistema es insipiente ya que se desconoce el
+        número y que especies de plantas que alberga. Se compiló información disponible
+        de colecciones de herbario y literatura para establecer una lista preliminar
+        de especies de plantas vasculares con evidencias que se encuentran PNNC. Esta
+        lista fue confrontada con el catálogo nacional de plantas y se establecieron
+        valores porcentuales del número de especies con respecto a las cifras nacionales.
+        Se estima que el inventario de la flora del Sistema de PNNC se encuentra en
+        un 49.6%.  Lo conocido en PNNC hasta el momento representa el 37.8% de las
+        especies de plantas vasculares conocidas para el país. El 18.2% de las especies
+        endémicas a Colombia y el 56% de las especies categorizadas en algún grado
+        de amenaza se encuentran en PNNC. Se plantea el uso de estas cifras como posibles
+        índices de representatividad de la fitodiversidad que complemente otros índices
+        como el de porcentaje del territorio nacional bajo conservación. Se enfatiza
+        que los parques nacionales asociados a los Andes son los más determinantes
+        y que aportan al mejoramiento de estos indicadores de fitodiversidad propuestos.\",\"type\":\"CHECKLIST\"},{\"key\":\"d027759f-84bc-4dfc-a5ea-b17a50793451\",\"title\":\"Taxon
+        list of vascular plants from Bavaria, Germany compiled in the context of the
+        BFL project\",\"description\":\"The DTN Taxon lists services concept is described
+        under http://www.diversitymobile.net/wiki/DTN_Taxon_Lists_Services. The taxon
+        lists are offered via several open and freely accessible services with a dynamic
+        data flow involving DTN data bases DTN Software and DTN Information model.\",\"type\":\"CHECKLIST\"},{\"key\":\"0b366d90-bd5e-4e7a-ba06-295813334125\",\"title\":\"Taxon
+        list of Hymenoptera from Germany compiled in the context of the GBOL project\",\"description\":\"The
+        DTN Taxon lists services concept is described under http://www.diversitymobile.net/wiki/DTN_Taxon_Lists_Services.
+        The taxon lists are offered via several open and freely accessible services
+        with a dynamic data flow involving DTN data bases DTN Software and DTN Information
+        model.\",\"type\":\"CHECKLIST\"},{\"key\":\"a5dd063e-f45b-4a54-8b94-8fa3adf7f1e1\",\"title\":\"Multilingual
+        IOC World Bird List, v8.1\",\"description\":\"The IOC World Bird List is an
+        open access resource of the international community of ornithologists.\",\"type\":\"CHECKLIST\"},{\"key\":\"8067e0a2-a26d-4831-8a1e-21b9118a299c\",\"title\":\"Families
+        of Living Organisms (FALO)\",\"description\":\"The list of Families of Living
+        Organisms (FALO) compiled by Ruggiero (2014) as an extension of a seven-kingdom
+        classification of life in Ruggiero et al. (2015). \\n      The latter work
+        is the result of an expert panel representing the major taxonomic disciplines
+        convened to review, revise, and update the existing incomplete Catalogue of
+        Life (CoL) hierarchy down to order.\\n\\n      The FALO classification is
+        based on a consensus view among the authors, accommodating taxonomic choices
+        and practical compromises among diverse opinions, usages and often conflicting
+        evidence of the boundaries between ranks and some major taxa, including kingdoms.\\n\\n
+        \     FALO is unique because it aims to be comprehensive, with all known species
+        of life on earth finding a home within its classification. Obviously, FALO
+        is just \\\"a\\\" classification, certainly not \\\"THE\\\" classification
+        of life. \\n      Because it heuristically combines strictly phylogenetic
+        and relatively classical taxonomies, no doubt some of the implied relationships
+        will require revision.\",\"type\":\"CHECKLIST\"},{\"key\":\"c5725db2-507f-4ec1-96ef-60dccb4de490\",\"title\":\"Vernacular
+        names of Iberian fungi in Spain\",\"description\":\"Vernacular names of Iberian
+        fungi in Spain\\nNote: this dataset was previously orphaned. It has been rescued
+        by ① extracting it from the GBIF.org index (see GBIF Download in External
+        Data) and ② republishing it on this IPT data hosting centre as version 1.0.\",\"type\":\"CHECKLIST\"},{\"key\":\"214c3109-d37a-40f8-9c24-5b6e59915394\",\"title\":\"Aphid
+        Species File\",\"description\":\"This file contains taxon names and related
+        nomenclatural information for the infraorder Aphidomorpha, including aphids
+        and their relatives, originating from Aphid Species File maintained by the
+        Species File Group (http://software.speciesfile.org) at the University of
+        Illinois, Illinois Natural History Survey.\",\"type\":\"CHECKLIST\"},{\"key\":\"7a9bccd4-32fc-420e-a73b-352b92267571\",\"title\":\"Checklist
+        of Beetles (Coleoptera) of Canada and Alaska. Second Edition.\",\"description\":\"All
+        8238 species-group taxa of Coleoptera known to occur in Canada and Alaska
+        are recorded by province/territory or state, along with their author(s) and
+        year of publication, in a classification framework. Only presence of taxa
+        in each Canadian province or territory and Alaska is noted. Labrador is considered
+        a distinct geographical entity. Adventive and Holarctic species-group taxa
+        are indicated. References to pertinent identification keys are given under
+        the corresponding supraspecific taxa.\",\"type\":\"CHECKLIST\"},{\"key\":\"b4af7484-5acd-4804-8211-d738f13832c7\",\"title\":\"Compositae\",\"type\":\"CHECKLIST\"},{\"key\":\"ee2aac07-de9a-47a2-b828-37430d537633\",\"title\":\"Lista
+        de taxones en el SIRAP-EC\",\"description\":\"Para el diseño e implementación
+        de un SIRAP, es esencial conocer la biodiversidad regional. Este conocimiento
+        de los patrones regionales de distribución de las especies, es importante
+        para determinar las áreas de mayor diversidad, el grado de concentración de
+        endemismos y los patrones de \x9Cdiversidad beta; es decir, la forma como
+        cambia la composición de especies de acuerdo al gradiente altitudinal. Además,
+        es importante tener información detallada de la distribución de las especies
+        focales en la región.\\n\\nPara caracterizar los patrones de biodiversidad
+        regional en el Eje Cafetero se tuvo como punto de partida dos bases de datos.
+        La primera es una recopilación de la información disponible sobre las localidades
+        de registro de las especies que conforman la biota regional (inventarios básicos).
+        La segunda base de datos consiste en los listados de especies potenciales
+        para cada subregión del Eje Cafetero. La fuente de la información ha sido
+        Fundación Ecoandina y WCS, que suministraron una base de datos digital con
+        más de 35 mil registros (que representan 6974 especies de hongos, plantas
+        y animales). A partir de esta base de datos se originó este listado de especies.\",\"type\":\"CHECKLIST\"},{\"key\":\"3f5e930b-52a5-461d-87ec-26ecd66f14a3\",\"title\":\"RINSE
+        - Registry of non-native species in the Two Seas region countries (Great Britain,
+        France, Belgium and the Netherlands)\",\"description\":\"<p>The Registry of
+        non-native species in the Two Seas region countries is a species checklist
+        dataset published by the University of Cambridge. It contains information
+        on 6.661 taxa occurring in Great Britain, France, Belgium and the Netherlands.
+        This dataset represents a registry of species that are not native, but recorded
+        to live in the wild in at least one of the four countries and is the result
+        of the screening of 55 national and international print and online sources.
+        The checklist has been published as a data paper by Zieritz et al. (2014,
+        https://doi.org/10.3897/neobiota.23.5665), where it can be downloaded as supplementary
+        material. Here it is published as a standardized Darwin Core Archive and includes
+        for each taxon: the scientific name, higher classification and stable taxon
+        identifier (in the taxon core), the (confidence regarding the) presence of
+        the species in each of the four countries, whether the species is native or
+        introduced (establishment) (in the distribution extension) and coarse habitat
+        information (in the species profile extension). Issues with the dataset can
+        be reported at: https://github.com/trias-project/rinse-registry-checklist</p>\\n<p>We
+        have released this dataset to the public domain under a Creative Commons Zero
+        waiver. We would appreciate it if you follow the GBIF citation guidelines
+        (https://www.gbif.org/citation-guidelines) when using the data. If you have
+        any questions regarding this dataset, don&#39;t hesitate to contact us via
+        the contact information provided in the metadata or via https://twitter.com/trias_project.</p>\\n<p>This
+        dataset was published as open data for the TrIAS project (Tracking Invasive
+        Alien Species http://trias-project.be, Vanderhoeven et al. 2017), with technical
+        support provided by the Research Institute for Nature and Forest (INBO). It
+        is selected as one of the authoritative sources for the compilation of a unified
+        and standardized checklist of alien species in Belgium.</p>\",\"type\":\"CHECKLIST\"},{\"key\":\"2b94a042-fe01-4d9f-8995-d996c21d33cd\",\"title\":\"Checklist
+        of Danish Fungi\",\"description\":\"Checklist of Fungi including lichens,
+        accepted as Danish. The list is generated from the taxonomic backbone of the
+        Danish fungal atlas.\\nRead more at svampe.databasen.org - the Danish Mycological
+        Societys fungal records database.\",\"type\":\"CHECKLIST\"},{\"key\":\"cb1a57be-c69c-4ebe-a41a-21dd723d7b48\",\"title\":\"CATE
+        Araceae\",\"description\":\"CATE-Araceae is a community of experts and enthusiasts,
+        trying to improve our understanding of the taxonomy, biology, ecology and
+        evolution of the Araceae.\",\"type\":\"CHECKLIST\"},{\"key\":\"da38f103-4410-43d1-b716-ea6b1b92bbac\",\"title\":\"Catalogue
+        of Afrotropical Bees\",\"description\":\"The purpose of this catalogue is
+        to list the valid names, nomenclatorial history of, and references citing,
+        the described bees of sub-saharan Africa and the western Indian Ocean islands,
+        excluding the honey bee (Apis mellifera Linnaeus). The countries in which
+        species occur are listed, as well as the type specimens/species of species/genera.
+        Some ecological information is provided, namely flowers visited, plants used
+        as nests, parasitic bees and host bees.\",\"type\":\"CHECKLIST\"},{\"key\":\"ca694ebf-2b52-4c67-b2e1-0f423149401c\",\"title\":\"Lygaeoidea
+        Species File\",\"description\":\"The Lygaeoidea Species File database contains
+        taxonomic and other information about all the seed bugs of the world, both
+        living and fossil.\\nNote: This online catalog is under continual development
+        as more specimen data and other information are added.\",\"type\":\"CHECKLIST\"},{\"key\":\"3e812f13-bd5f-46b6-9bae-710766be526d\",\"title\":\"Cockroach
+        Species File\",\"description\":\"This file contains taxon names and related
+        nomenclatural information for the order Blattodea originating from the Cockroach
+        Species File maintained by the Species File Group (http://software.speciesfile.org)
+        at the University of Illinois, Illinois Natural History Survey.\",\"type\":\"CHECKLIST\"},{\"key\":\"a7350d23-6727-4eb6-ae0b-6f86fc8d6a71\",\"title\":\"Checklist
+        of Danish Flies and Mosquitoes (Diptera)\",\"description\":\"Checklist of
+        the species of Flies and Mosquitoes (Diptera), accepted as Danish and included
+        in www.allearter-databasen.dk. The list is part of a national checklist covering
+        animals, plants, fungi etc. Compilation of the list started in 2009.\\nRead
+        more at www.allearter.dk - a project at DanBIF (Danish Biodiversity Information
+        Facility - www.danbif.dk).\",\"type\":\"CHECKLIST\"},{\"key\":\"bd0a2b6d-69d1-4650-8bb1-829c8f92035f\",\"title\":\"Biodiversity
+        inventories in high gear: DNA barcoding facilitates a rapid biotic survey
+        of a temperate nature reserve\",\"type\":\"CHECKLIST\"},{\"key\":\"81100c08-fca6-4b9d-97e5-153dd2b80914\",\"title\":\"Checklist
+        of Danish Wasps, Bees, Ants etc. (Hymenoptera)\",\"description\":\"Checklist
+        of the species of Wasps, Bees, Ants etc. (Hymenoptera), accepted as Danish
+        and included in www.allearter-databasen.dk. The list is part of a national
+        checklist covering animals, plants, fungi etc. Compilation of the list started
+        in 2009.\\nRead more at www.allearter.dk - a project at DanBIF (Danish Biodiversity
+        Information Facility - www.danbif.dk).\",\"type\":\"CHECKLIST\"},{\"key\":\"fbab0194-b923-49d4-9848-1b3279a6673e\",\"title\":\"Plecoptera
+        Species File\",\"description\":\"This file contains taxon names and related
+        nomenclatural information for the order Plecoptera originating from the Plecoptera
+        Species File maintained by the Species File Group (http://software.speciesfile.org)
+        at the University of Illinois, Illinois Natural History Survey.\",\"type\":\"CHECKLIST\"},{\"key\":\"61de76b3-9ba5-4b0c-a16c-1b554ae8f869\",\"title\":\"Checklist
+        da Flora de Portugal (Continental, Açores e Madeira)\",\"description\":\"The
+        checklist of vascular plants of Portugal, including Mainland Portugal, Azores
+        and Madeira, was published in 2012 by ALFA (Associação Lusitana de Fitossociologia),
+        and adopted formally by the Instituto de Conservação da Natureza e da Biodiversidade
+        (presently ICNF). The checklist covers Continental Portugal, Azores and Madeira.
+        It includes a total of 3995 taxa (including infraspecific taxa), of which
+        3314 are for Mainland Portugal, 1006 for Azores and 1233 for Madeira. These
+        taxa are distributed among 185 families and 1066 genera. The checklist also
+        includes establishment means, identifying native, introduced of endemic taxa.\",\"type\":\"CHECKLIST\"},{\"key\":\"9042ab45-d31e-47c6-ad1a-38660a7ce9a7\",\"title\":\"Checklist
+        of Danish Beetles (Coleoptera)\",\"description\":\"Checklist of the species
+        of Beetles (Coleoptera), accepted as Danish and included in www.allearter-databasen.dk.
+        The list is part of a national checklist covering animals, plants, fungi etc.
+        Compilation of the list started in 2009.\\nRead more at www.allearter.dk -
+        a project at DanBIF (Danish Biodiversity Information Facility - www.danbif.dk).\",\"type\":\"CHECKLIST\"},{\"key\":\"e0a61544-c923-4fd7-8ed1-9b692655cf6b\",\"title\":\"Coreoidea
+        Species File\",\"description\":\"This file contains taxon names and related
+        nomenclatural information for the superfamily Coreoidea originating from the
+        Coreoidea Species File maintained by the Species File Group (http://software.speciesfile.org)
+        at the University of Illinois, Illinois Natural History Survey.\",\"type\":\"CHECKLIST\"},{\"key\":\"e01b0cbb-a10a-420c-b5f3-a3b20cc266ad\",\"title\":\"ICTV
+        Master Species List 2016 v1.3\",\"description\":\"Official lists of all ICTV-approved
+        taxa.\\n\\nThe creation or elimination, (re)naming, and (re)assignment of
+        a virus species, genus, (sub)family, or order are all taxonomic acts that
+        require public scrutiny and debate, leading to formal approval by the full
+        membership of the ICTV. In contrast, the naming of a virus isolate and its
+        assignment to a pre-existing species are not considered taxonomic acts and
+        therefore do not require formal ICTV approval. Instead they will typically
+        be accomplished by publication of a paper describing the virus isolate in
+        the peer-reviewed virology literature.\\n\\nDescriptions of virus satellites,
+        viroids and the agents of spongiform encephalopathies (prions) of humans and
+        several animal and fungal species are included.\",\"type\":\"CHECKLIST\"},{\"key\":\"598678e4-323c-49dc-8eb7-3a96ac72d472\",\"title\":\"Phasmida
+        Species File\",\"description\":\"This file contains taxon names and related
+        nomenclatural information for the order Phasmida originating from the Phasmida
+        Species File maintained by the Species File Group (http://software.speciesfile.org)
+        at the University of Illinois, Illinois Natural History Survey.\",\"type\":\"CHECKLIST\"},{\"key\":\"9a4fa5fd-698b-4484-81ce-a4048f5c2d86\",\"title\":\"Zeigerwerte
+        von Pflanzen & Flechten in Mitteleuropa\",\"description\":\"<p>Für alle in
+        Mitteleuropa vorhandenen Pflanzenarten sind in dem Datensatz möglichst folgende
+        Angaben zusammengestellt:\\n\\n1. die ökologischen Zeigerwerte nach Ellenberg
+        (1979), verändert entsprechend der jüngsten Auflage (Ellenberg et al.2001),
+        und nach Wirth (brieflich),\\n\\n2. die Lebens– oder Wuchsform, bei Flechten
+        auch das Substrat.</p>\\n<p>Das ökologische Verhalten gegenüber einem bestimmten
+        Standortfaktor ist in der Regel durch eine Ziffer von 1 bis 9 ausgedrückt.
+        Eine 0 wird nur beim Salzfaktor verwendet; sie weist auf sehr geringe Toleranz
+        hin. Die Zeigerwerte spiegeln das Vorkommen einer Sippe im Gefälle der Umweltfaktoren
+        unter Freilandbedingungen wider, d. h. bei ausgeprägter zwischenartlicher
+        Konkurrenz. Die Zeigerwerte sagen also nichts über die „Ansprüche“, also
+        das Verhalten in Reinkultur, aus.</p>\\n<p>Sämtliche Angaben bei den Zeigerwerten
+        beziehen sich auf das westliche Mitteleuropa, insbesondere auf Westdeutschland,
+        einschließlich der angrenzenden Alpen.</p>\",\"type\":\"CHECKLIST\"},{\"key\":\"fdd49d8c-460b-4402-946e-408084ac4e86\",\"title\":\"Odonata\",\"type\":\"CHECKLIST\"},{\"key\":\"4f1047ac-a19d-41a8-98eb-d968b2548b53\",\"title\":\"Norwegian
+        Red List 2015\",\"description\":\"<p>The Norwegian Red List of Species 2015
+        has been compiled by the Norwegian Biodiversity Information Centre in cooperation
+        with 24 committees of experts with a total of 90 members. The Norwegian Red
+        List of Species includes species that are assessed as being at risk of\\nextinction
+        within Norway. Each species is placed in one of a number of categories, which
+        are ranked according to the level of risk that species will die out if conditions
+        remain unchanged.</p>\\n<p>Red list assessments are only made for species
+        that are or have been established as reproducing species in Norway. Alien
+        species, in other words species that have been spread to Norway since 1800
+        by human activity, are not assessed.</p>\\n<p>Species are assessed against
+        a set of criteria developed by the International Union for Conservation of
+        Nature (IUCN). The criteria and guidelines for using them ensure that assessments
+        are standardised, verifiable and objective.</p>\\n<p>The categories reflect
+        the level of risk that a species will die out if conditions remain unchanged.
+        Species in the categories Critically Endangered (CR), Endangered (EN) and
+        Vulnerable (VU) are described as threatened species.</p>\\n<p>The assessments
+        for most species groups apply to mainland Norway and adjacent Norwegian sea
+        areas. In all, 21 402 species and 278 subspecies of vascular plants have been
+        assessed for the 2015 edition of the Red List.</p>\",\"type\":\"CHECKLIST\"},{\"key\":\"a4a5b61e-baaf-43fd-800d-12203ad5ee6f\",\"title\":\"Checklist
+        of vascular plants of the Ñeembucú Department, Paraguay\",\"description\":\"The
+        Department of Ñeembucú is one of the least well-documented areas of eastern
+        Paraguay, and the flora is composed of a mixture of forest and Chaco elements.
+        Regions like Ñeembucú are often considered of lower diversity and interest
+        that more forested regions; this results from both actual species richness
+        figures and from under-collecting due to perception as uninteresting. We present
+        here a checklist of the vascular plants of Ñeembucú, which includes 676 taxa
+        (including infraspecific taxa and collections identified only to genus) in
+        100 families and 374 genera. Four hundred and thirty nine (439) of these are
+        new records for Ñeembucú and of these, 4 are new published records for Paraguay.
+        Synonyms, distribution details within Paraguay and a voucher specimen or literature
+        record are provided for each taxon, and a brief analysis of the diversity
+        and importance of the flora is presented.\",\"type\":\"CHECKLIST\"},{\"key\":\"99948a8b-63b2-41bf-9d10-6e007e967789\",\"title\":\"Mantodea
+        Species File\",\"description\":\"This file contains taxon names and related
+        nomenclatural information for the order Mantodea originating from the Mantodea
+        Species File maintained by the Species File Group (http://software.speciesfile.org)
+        at the University of Illinois, Illinois Natural History Survey.\",\"type\":\"CHECKLIST\"},{\"key\":\"bc1a1eb3-243d-4e87-b9fa-d35fe0800230\",\"title\":\"Lista
+        de especies presentes en áreas protegidas regionales\",\"description\":\"El
+        Instituto Humboldt, de acuerdo al decreto 2372 de 2010, es el encargado de
+        otorgar conceptos previos favorables para áreas protegidas regionales. En
+        el marco de este proceso se hace una revisión y validación de los nombres
+        científicos de las especies contenidas en los documentos síntesis que soportan
+        las declaratorias. Se pone a disposición esta información. \\n\\nEsta lista
+        de especies contiene 2229 registros, 1154 de los cuales corresponden a animales
+        y 1075 son plantas.\",\"type\":\"CHECKLIST\"},{\"key\":\"70ad86f4-6be8-4e5b-aee8-61896310fb18\",\"title\":\"Pelagic
+        Invertebrates\",\"type\":\"CHECKLIST\"},{\"key\":\"d16563e0-e718-45a9-a20f-3e9fc20613da\",\"title\":\"Checklist
+        of Danish Butterflies and Moths (Lepidoptera)\",\"description\":\"Checklist
+        of the species of Butterflies and Moths (Lepidoptera), accepted as Danish
+        and included in www.allearter-databasen.dk. The list is part of a national
+        checklist covering animals, plants, fungi etc. Compilation of the list started
+        in 2009.\\nRead more at www.allearter.dk - a project at DanBIF (Danish Biodiversity
+        Information Facility - www.danbif.dk).\",\"type\":\"CHECKLIST\"},{\"key\":\"ece71924-278a-4e34-910e-a5caa52940ef\",\"title\":\"Nayades\",\"type\":\"CHECKLIST\"},{\"key\":\"87e99777-7f54-4209-9688-cbf7a9179ebe\",\"title\":\"Checklist
+        of Danish Vascular Plants (Tracheophyta)\",\"description\":\"Checklist of
+        the species of Vascular Plants (Tracheophyta), accepted as Danish and included
+        in www.allearter-databasen.dk. The list is part of a national checklist covering
+        animals, plants, fungi etc. Compilation of the list started in 2009.\\nRead
+        more at www.allearter.dk - a project at DanBIF (Danish Biodiversity Information
+        Facility - www.danbif.dk).\",\"type\":\"CHECKLIST\"},{\"key\":\"9e11f45e-f496-42e5-a1a6-9415907a3717\",\"title\":\"Lista
+        de especies de fauna y flora en tres ventanas piloto: Ciénaga de la Virgen,
+        \ Ciénaga Zapatosa y  Paz de Ariporo - Hato Corozal\",\"description\":\"Recopilación
+        de información secundaria de 1753 especies hidrobiológicas, macroinvertebrados,
+        plantas acuáticas, peces, anfibios, plantas terrestres, reptiles, aves y mamíferos
+        bajo el contrato 14-13-014-237PS entre la Fundación Omacha y el Instituto
+        de Investigación de Recursos Biológicos Alexander von Humboldt. Proyecto:
+        Fondo Adaptación: aplicación de criterios biológicos y ecológicos para la
+        identificación, caracterización y establecimiento de límites funcionales de
+        humedales en tres ventanas piloto.\\n\\nEl presente proyecto se desarrolló
+        para la construcción de los principios y criterios para la delimitación de
+        los humedales continentales neotropicales en Colombia, para lograr una primera
+        aproximación en la caracterización biológica de  grupos taxonómicos presentes
+        en las ventanas Ciénaga de la Virgen,  Ciénaga Zapatosa y  Paz de Ariporo
+        - Hato Corozal, y contribuir al conocimiento de los sistemas de humedales
+        en la región, con miras a la identificación, caracterización y establecimiento
+        de límites funcionales en estos ecosistemas.\",\"type\":\"CHECKLIST\"},{\"key\":\"ca515b82-e301-43ff-9f69-2c0116e1c95b\",\"title\":\"Catalogue
+        of Geadephaga (Coleoptera, Adephaga) of America, north of Mexico\",\"description\":\"This
+        dataset contains the digitized treatments in Plazi based on the original journal
+        article Bousquet, Yves (2012): Catalogue of Geadephaga (Coleoptera, Adephaga)
+        of America, north of Mexico. ZooKeys 245: 1-1722, DOI: http://dx.doi.org/10.3897/zookeys.245.3416,
+        URL: http://dx.doi.org/10.3897/zookeys.245.3416\",\"type\":\"CHECKLIST\"},{\"key\":\"8027d8d5-c8bc-4d54-bee9-f854f141b442\",\"title\":\"Nordic
+        Crop Wild Relative (CWR) Checklist\",\"description\":\"The Nordic Crop Wild
+        Relative (CWR) checklist is a result from a joint Nordic project, \\\"Ecosystem
+        services: Genetic resources and crop wild relatives\\\" (2015-2016) funded
+        by the Nordic Council of Ministers and the Nordic Genetic Resources Center
+        (NordGen).\\n\\nA Crop Wild Relative (CWR) is a wild species that is closely
+        related to a cultivated crop. This close relationship means that properties
+        in a CWR can be transferred to the crop by traditional crossings. As modern
+        cultivars may lack the desired variation, diversity found in CWRs can be central
+        for adaptation to new demands on the crops.\",\"type\":\"CHECKLIST\"},{\"key\":\"02c23566-1d5b-4f0c-9d2f-07f3ae24381b\",\"title\":\"Bryozoa
+        of the British Isles\",\"type\":\"CHECKLIST\"},{\"key\":\"c1c3efdd-0628-4939-9101-8ae7c843b39a\",\"title\":\"Scarabaeinae
+        dung beetles\",\"type\":\"CHECKLIST\"},{\"key\":\"3cabcf37-db13-4dc1-9bf3-e6f3fbfbbe23\",\"title\":\"Global
+        Register of Introduced and Invasive Species- South Africa\",\"description\":\"The
+        Global Register of Introduced and Invasive Species (GRIIS) presents validated
+        and verified checklists (inventories) of introduced (alien) and invasive alien
+        species at the country level. Phase 1 of the project has focused on developing
+        validated and verified checklists (inventories) of countries that are Party
+        to the Convention on Biological Diversity. This annotated checklist (inventory)
+        is of introduced (alien) and invasive alien species known to occur in South
+        Africa.\",\"type\":\"CHECKLIST\"},{\"key\":\"b040c606-644f-4f6b-8f43-124c2a00d345\",\"title\":\"Arácnidos
+        de Centroamérica\",\"type\":\"CHECKLIST\"}]"
+  recorded_at: 2018-06-17 05:05:41 GMT
+  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2
