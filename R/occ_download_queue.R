@@ -4,7 +4,8 @@
 #' @param ... any number of [occ_download()] requests
 #' @param .list any number of [occ_download_()] requests
 #' @param status_ping (integer) seconds between pings checking status of
-#' the download request. generally larger numbers for larger requests
+#' the download request. generally larger numbers for larger requests.
+#' default: 1 (i.e., 1 sec.)
 #' @return a list of `occ_download` class objects, see [occ_download_get()]
 #' to fetch data
 #' @details This function is a convenience wrapper around [occ_download()],
@@ -68,11 +69,9 @@
 #' out <- occ_download_queue(.list = queries)
 #' out
 #' }
-occ_download_queue <- function(..., .list = list(), status_ping = 2) {
+occ_download_queue <- function(..., .list = list(), status_ping = 1) {
   # number of max concurrent requests, has to be hard-coded due to GBIF limits
   max_concurrent <- 3
-  # set sleep time (seconds) to be used for while loops
-  # sleep <- 2
 
   # collect requests
   que <- GbifQueue$new(..., .list = .list)
@@ -117,22 +116,24 @@ occ_download_queue <- function(..., .list = list(), status_ping = 2) {
       statusbool <- tolower(status) %in% c('succeeded', 'killed')
 
       if (any(statusbool)) {
-        ## this message too verbose
-        # mssg <- paste0(
-        #   lapply(metas[statusbool], function(w) {
-        #     sprintf("  %s: %s", w$key, tolower(w$status))
-        #   }),
-        #   collapse = "\n"
-        # )
-        # message("\n", mssg)
+        message(paste0(
+          lapply(metas[statusbool], function(w) {
+            sprintf("  %s: %s", w$key, tolower(w$status))
+          }),
+          collapse = "\n"
+        ))
 
-        # stash result and drop those done from `res` pool
+        # stash result 
         results <- c(results, res[statusbool])
+        # drop those done from `res` pool
         res <- res[!statusbool]
 
-        # kick offf new job
+        # kick offf new job(s)
         if (que$jobs() > 0) {
-          jobs_to_start <- length(que$queue)
+          # take minimum of max concurrent - number still running OR number 
+          #  jobs remaining - we don't want to start 2 jobs if there's 
+          #  only 1 left to start
+          jobs_to_start <- min(max_concurrent - length(res), que$jobs())
           # kick off N=jobs_to_start jobs
           for (i in seq_len(jobs_to_start)) {
             ## get job
@@ -140,7 +141,7 @@ occ_download_queue <- function(..., .list = list(), status_ping = 2) {
             ## remove from queue
             que$remove(x[[1]])
             ## run job
-            message(sprintf("running %s of %s", 
+            message(sprintf("  running %s of %s", 
               length(que$reqs) - length(que$queue), length(que$reqs)))
             res_single <- x[[1]]$run()
             ## stash into `res` pool
@@ -153,7 +154,3 @@ occ_download_queue <- function(..., .list = list(), status_ping = 2) {
   }
   return(results)
 }
-
-# occ_download_list()$results[,c('key','created','status','size')]
-
-
