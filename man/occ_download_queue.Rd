@@ -4,12 +4,15 @@
 \alias{occ_download_queue}
 \title{Download requests in a queue}
 \usage{
-occ_download_queue(..., .list = list())
+occ_download_queue(..., .list = list(), status_ping = 2)
 }
 \arguments{
 \item{...}{any number of \code{\link[=occ_download]{occ_download()}} requests}
 
 \item{.list}{any number of \code{\link[=occ_download_]{occ_download_()}} requests}
+
+\item{status_ping}{(integer) seconds between pings checking status of
+the download request. generally larger numbers for larger requests}
 }
 \value{
 a list of \code{occ_download} class objects, see \code{\link[=occ_download_get]{occ_download_get()}}
@@ -65,6 +68,22 @@ for (i in seq_along(keys)) {
     "hasCoordinate = true",
     "hasGeospatialIssue = false",
     "year = 1993"
+  )
+}
+out <- occ_download_queue(.list = queries)
+out
+
+# anther pre-prepared
+yrs <- 1930:1934
+length(yrs)
+queries <- list()
+for (i in seq_along(yrs)) {
+  queries[[i]] <- occ_download_(
+    "taxonKey = 2877951",
+    "basisOfRecord = HUMAN_OBSERVATION,OBSERVATION",
+    "hasCoordinate = true",
+    "hasGeospatialIssue = false",
+    paste0("year = ", yrs[i])
   )
 }
 out <- occ_download_queue(.list = queries)

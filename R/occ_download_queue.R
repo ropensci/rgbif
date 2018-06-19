@@ -3,6 +3,8 @@
 #' @export
 #' @param ... any number of [occ_download()] requests
 #' @param .list any number of [occ_download_()] requests
+#' @param status_ping (integer) seconds between pings checking status of
+#' the download request. generally larger numbers for larger requests
 #' @return a list of `occ_download` class objects, see [occ_download_get()]
 #' to fetch data
 #' @details This function is a convenience wrapper around [occ_download()],
@@ -49,12 +51,28 @@
 #' }
 #' out <- occ_download_queue(.list = queries)
 #' out
+#' 
+#' # anther pre-prepared
+#' yrs <- 1930:1934
+#' length(yrs)
+#' queries <- list()
+#' for (i in seq_along(yrs)) {
+#'   queries[[i]] <- occ_download_(
+#'     "taxonKey = 2877951",
+#'     "basisOfRecord = HUMAN_OBSERVATION,OBSERVATION",
+#'     "hasCoordinate = true",
+#'     "hasGeospatialIssue = false",
+#'     paste0("year = ", yrs[i])
+#'   )
 #' }
-occ_download_queue <- function(..., .list = list()) {
+#' out <- occ_download_queue(.list = queries)
+#' out
+#' }
+occ_download_queue <- function(..., .list = list(), status_ping = 2) {
   # number of max concurrent requests, has to be hard-coded due to GBIF limits
   max_concurrent <- 3
   # set sleep time (seconds) to be used for while loops
-  sleep <- 2
+  # sleep <- 2
 
   # collect requests
   que <- GbifQueue$new(..., .list = .list)
@@ -87,7 +105,7 @@ occ_download_queue <- function(..., .list = list()) {
       metas <- lapply(res, occ_download_meta)
       status <- vapply(metas, "[[", "", "status", USE.NAMES = FALSE)
       still_running <- !all(tolower(status) %in% c('succeeded', 'killed'))
-      Sys.sleep(sleep)
+      Sys.sleep(status_ping)
     }
     results <- res
   } else {
@@ -99,24 +117,43 @@ occ_download_queue <- function(..., .list = list()) {
       statusbool <- tolower(status) %in% c('succeeded', 'killed')
 
       if (any(statusbool)) {
+        ## this message too verbose
+        # mssg <- paste0(
+        #   lapply(metas[statusbool], function(w) {
+        #     sprintf("  %s: %s", w$key, tolower(w$status))
+        #   }),
+        #   collapse = "\n"
+        # )
+        # message("\n", mssg)
+
         # stash result and drop those done from `res` pool
         results <- c(results, res[statusbool])
         res <- res[!statusbool]
 
         # kick offf new job
         if (que$jobs() > 0) {
-          ## get job
-          x <- que$queue[1]
-          ## remove from queue
-          que$remove(x[[1]])
-          ## run job
-          res_single <- x[[1]]$run()
-          ## stash into `res` pool
-          res <- c(res, stats::setNames(list(res_single), names(x)))
+          jobs_to_start <- length(que$queue)
+          # kick off N=jobs_to_start jobs
+          for (i in seq_len(jobs_to_start)) {
+            ## get job
+            x <- que$next_()
+            ## remove from queue
+            que$remove(x[[1]])
+            ## run job
+            message(sprintf("running %s of %s", 
+              length(que$reqs) - length(que$queue), length(que$reqs)))
+            res_single <- x[[1]]$run()
+            ## stash into `res` pool
+            res <- c(res, stats::setNames(list(res_single), names(x)))
+          }
         }
       }
-      Sys.sleep(sleep)
+      Sys.sleep(status_ping)
     }
   }
   return(results)
 }
+
+# occ_download_list()$results[,c('key','created','status','size')]
+
+

@@ -61,7 +61,8 @@ GbifQueue <- R6::R6Class(
 
     add = function(x) {
       self$queue <- c(self$queue,
-                         stats::setNames(list(x), digest::digest(x$req$expr)))
+        stats::setNames(list(x), digest::digest(x$req$req)))
+                         # stats::setNames(list(x), digest::digest(x$req$expr)))
     },
 
     add_all = function() {
@@ -70,7 +71,24 @@ GbifQueue <- R6::R6Class(
     },
 
     remove = function(x) {
-      self$queue[digest::digest(x$req$expr)] <- NULL
+      # self$queue[digest::digest(x$req$expr)] <- NULL
+      self$queue[digest::digest(x$req$req)] <- NULL
+    },
+
+    next_ = function() {
+      if (length(self$queue) > 0) {
+        self$queue[1]
+      } else {
+        return(list())
+      }
+    },
+
+    last_ = function() {
+      if (length(self$queue) > 0) {
+        self$queue[length(self$queue)]
+      } else {
+        return(list())
+      }
     },
 
     queue = list(),
