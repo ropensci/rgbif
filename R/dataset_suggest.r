@@ -57,15 +57,9 @@
 #' }
 
 dataset_suggest <- function(query = NULL, country = NULL, type = NULL,
-  subtype = NULL, keyword = NULL, owningOrg = NULL, publishingOrg = NULL,
+  subtype = NULL, keyword = NULL, publishingOrg = NULL,
   hostingOrg = NULL, publishingCountry = NULL, decade = NULL, continent = NULL,
   limit=100, start=NULL, pretty=FALSE, description=FALSE, curlopts = list()) {
-
-  calls <- names(sapply(match.call(), deparse))[-1]
-  calls_vec <- c("owningOrg") %in% calls
-  if (any(calls_vec)) {
-    stop("Parameters gone: owningOrg", call. = FALSE)
-  }
 
   type <- as_many_args(type)
   keyword <- as_many_args(keyword)

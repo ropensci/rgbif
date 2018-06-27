@@ -46,14 +46,6 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
   return='all', spellCheck = NULL, facet = NULL, facetMincount = NULL,
   facetMultiselect = NULL, skip_validate = FALSE, curlopts = list(), ...) {
 
-  calls <- names(sapply(match.call(), deparse))[-1]
-  calls_vec <- c("georeferenced","altitude","latitude","longitude") %in% calls
-  if (any(calls_vec)) {
-    stop(paste0("Parameter name changes: \n georeferenced ->",
-                "hasCoordinate\n altitude -> elevation\n latitude -> ",
-                "decimalLatitude\n longitude - > decimalLongitude"))
-  }
-
   geometry <- geometry_handler(geometry, geom_big, geom_size, geom_n)
 
   url <- paste0(gbif_base(), '/occurrence/search')

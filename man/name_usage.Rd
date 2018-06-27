@@ -5,9 +5,8 @@
 \title{Lookup details for specific names in all taxonomies in GBIF.}
 \usage{
 name_usage(key = NULL, name = NULL, data = "all", language = NULL,
-  datasetKey = NULL, uuid = NULL, sourceId = NULL, rank = NULL,
-  shortname = NULL, start = 0, limit = 100, return = "all",
-  curlopts = list())
+  datasetKey = NULL, uuid = NULL, rank = NULL, shortname = NULL,
+  start = 0, limit = 100, return = "all", curlopts = list())
 }
 \arguments{
 \item{key}{(numeric or character) A GBIF key for a taxon}
@@ -24,9 +23,6 @@ See Description below.}
 be length=1}
 
 \item{uuid}{(character) A dataset key}
-
-\item{sourceId}{(numeric) Filters by the source identifier. Not used
-right now.}
 
 \item{rank}{(character) Taxonomic rank. Filters by taxonomic rank as
 one of: CLASS, CULTIVAR, CULTIVAR_GROUP, DOMAIN, FAMILY, FORM, GENUS,

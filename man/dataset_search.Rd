@@ -5,11 +5,10 @@
 \title{Search datasets in GBIF.}
 \usage{
 dataset_search(query = NULL, country = NULL, type = NULL,
-  keyword = NULL, owningOrg = NULL, publishingOrg = NULL,
-  hostingOrg = NULL, publishingCountry = NULL, decade = NULL,
-  facet = NULL, facetMincount = NULL, facetMultiselect = NULL,
-  limit = 100, start = NULL, pretty = FALSE, return = "all",
-  curlopts = list())
+  keyword = NULL, publishingOrg = NULL, hostingOrg = NULL,
+  publishingCountry = NULL, decade = NULL, facet = NULL,
+  facetMincount = NULL, facetMultiselect = NULL, limit = 100,
+  start = NULL, pretty = FALSE, return = "all", curlopts = list())
 }
 \arguments{
 \item{query}{Query term(s) for full text search.  The value for this
@@ -26,8 +25,6 @@ sampling_event
 \item{keyword}{Keyword to search by. Datasets can be tagged by keywords,
 which you can search on. The search is done on the merged collection of
 tags, the dataset keywordCollections and temporalCoverages.}
-
-\item{owningOrg}{Owning organization. DEFUNCT.}
 
 \item{publishingOrg}{Publishing organization. A uuid string. See
 \code{\link{organizations}}}

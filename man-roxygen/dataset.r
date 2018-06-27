@@ -9,7 +9,6 @@
 #' @param keyword Keyword to search by. Datasets can be tagged by keywords,
 #' which you can search on. The search is done on the merged collection of
 #' tags, the dataset keywordCollections and temporalCoverages.
-#' @param owningOrg Owning organization. DEFUNCT.
 #' @param publishingOrg Publishing organization. A uuid string. See
 #' \code{\link{organizations}}
 #' @param hostingOrg Hosting organization. A uuid string. See
