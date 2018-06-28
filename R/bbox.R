@@ -35,9 +35,9 @@ gbif_bbox2wkt <- function(minx=NA, miny=NA, maxx=NA, maxy=NA, bbox=NULL){
   bbox_template <- 'POLYGON((%s %s,%s %s,%s %s,%s %s,%s %s))'
   sprintf(bbox_template, 
     bbox[1], bbox[2],
-    bbox[1], bbox[4],
-    bbox[3], bbox[4],
     bbox[3], bbox[2],
+    bbox[3], bbox[4],
+    bbox[1], bbox[4],
     bbox[1], bbox[2]
   )
 }
