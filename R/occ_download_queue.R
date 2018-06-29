@@ -18,6 +18,13 @@
 #' next, and so on. So in theory, there may not always strictly be 3 running
 #' concurrently, but the function will usually provide for 3 running
 #' concurrently.
+#' 
+#' @section Beware:
+#' This function is still in development. There's a lot of complexity
+#' to this problem. We'll be rolling out fixes and improvements in future
+#' versions of the package, so expect to have to adjust your code 
+#' with new versions.
+#' 
 #' @examples \dontrun{
 #' out <- occ_download_queue(
 #'   occ_download('taxonKey = 3119195', "year = 1976"),

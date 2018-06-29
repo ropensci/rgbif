@@ -32,7 +32,6 @@ because GBIF made the old API defunct.
 
 \section{Documentation for the GBIF API}{
 
-
 \itemize{
 \item summary \url{http://www.gbif.org/developer/summary} - Summary of
 the GBIF API

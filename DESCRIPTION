@@ -6,7 +6,8 @@ Description: A programmatic interface to the Web Service methods
     of species occurrence records from sources all over the globe.
     'rgbif' includes functions for searching for taxonomic names,
     retrieving information on data providers, getting species occurrence
-    records, and getting counts of occurrence records.
+    records, getting counts of occurrence records, and using the 'GBIF' 
+    tile map service to make rasters summarizing huge amounts of data.
 Version: 0.9.9.9615
 License: MIT + file LICENSE
 Authors@R: c(
@@ -15,7 +16,9 @@ Authors@R: c(
       comment = c(ORCID="0000-0003-1444-9135")),
     person("Vijay", "Barve", role = "ctb"),
     person("Dan", "Mcglinn", role = "ctb"),
-    person("Damiano", "Oldoni", role = "ctb")
+    person("Damiano", "Oldoni", role = "ctb"),
+    person("Laurens", "Geffert", role = "ctb"),
+    person("Karthik", "Ram", role = "ctb")
     )
 URL: https://github.com/ropensci/rgbif
 BugReports: https://github.com/ropensci/rgbif/issues

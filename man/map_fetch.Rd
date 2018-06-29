@@ -102,6 +102,7 @@ Styles don't work yet, sorry, we'll try to fix it asap.
 \examples{
 \dontrun{
 x <- map_fetch(search = "taxonKey", id = 3118771, year = 2010)
+x
 # gives a RasterLayer object
 class(x)
 # visualize
@@ -130,10 +131,10 @@ x[1:10]
 }
 }
 \references{
-\url{https://www.gbif.org/developer/maps}
+https://www.gbif.org/developer/maps
 }
 \author{
-Laurens Geffert, \email{laurensgeffert@gmail.com}
+Laurens Geffert \email{laurensgeffert@gmail.com}
 }
 \keyword{GBIF}
 \keyword{map,}

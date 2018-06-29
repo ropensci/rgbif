@@ -17,19 +17,17 @@
 #'
 #' @section Documentation for the GBIF API:
 #'
-#' \itemize{
-#'   \item summary <http://www.gbif.org/developer/summary> - Summary of
-#'   the GBIF API
-#'   \item registry <http://www.gbif.org/developer/registry> - Metadata
-#'   on datasets, and contributing organizations
-#'   \item species names <http://www.gbif.org/developer/species> - Species
-#'   names and metadata
-#'   \item occurrences <http://www.gbif.org/developer/occurrence> -
-#'   Occurrences
-#'   \item maps <http://www.gbif.org/developer/maps> - Maps - these APIs
-#'   are not implemented in \pkg{rgbif}, and are meant more for intergration
-#'   with web based maps.
-#' }
+#' - summary <http://www.gbif.org/developer/summary> - Summary of
+#' the GBIF API
+#' - registry <http://www.gbif.org/developer/registry> - Metadata
+#' on datasets, and contributing organizations
+#' - species names <http://www.gbif.org/developer/species> - Species
+#' names and metadata
+#' - occurrences <http://www.gbif.org/developer/occurrence> -
+#' Occurrences
+#' - maps <http://www.gbif.org/developer/maps> - Maps - these APIs
+#' are not implemented in \pkg{rgbif}, and are meant more for intergration
+#' with web based maps.
 #'
 #' @note See [many-values] for discussion of how functions vary in how
 #' they accept values (single vs. many for the same HTTP request vs. many
@@ -55,22 +53,20 @@ NULL
 
 #' Defunct functions in rgbif
 #'
-#' \itemize{
-#'  \item \code{\link{density_spplist}}: service no longer provided
-#'  \item \code{\link{densitylist}}: service no longer provided
-#'  \item \code{\link{gbifdata}}: service no longer provided
-#'  \item \code{\link{gbifmap_dens}}: service no longer provided
-#'  \item \code{\link{gbifmap_list}}: service no longer provided
-#'  \item \code{\link{occurrencedensity}}: service no longer provided
-#'  \item \code{\link{providers}}: service no longer provided
-#'  \item \code{\link{resources}}: service no longer provided
-#'  \item \code{\link{taxoncount}}: service no longer provided
-#'  \item \code{\link{taxonget}}: service no longer provided
-#'  \item \code{\link{taxonsearch}}: service no longer provided
-#'  \item \code{\link{stylegeojson}}: moving this functionality to spocc package, will be removed soon
-#'  \item \code{\link{togeojson}}: moving this functionality to spocc package, will be removed soon
-#'  \item \code{\link{gist}}: moving this functionality to spocc package, will be removed soon
-#' }
+#' - [density_spplist()]: service no longer provided
+#' - [densitylist()]: service no longer provided
+#' - [gbifdata()]: service no longer provided
+#' - [gbifmap_dens()]: service no longer provided
+#' - [gbifmap_list()]: service no longer provided
+#' - [occurrencedensity()]: service no longer provided
+#' - [providers()]: service no longer provided
+#' - [resources()]: service no longer provided
+#' - [taxoncount()]: service no longer provided
+#' - [taxonget()]: service no longer provided
+#' - [taxonsearch()]: service no longer provided
+#' - [stylegeojson()]: moving this functionality to spocc package, will be removed soon
+#' - [togeojson()]: moving this functionality to spocc package, will be removed soon
+#' - [gist()]: moving this functionality to spocc package, will be removed soon
 #'
 #' The above functions have been removed. See <https://github.com/ropensci/rgbif> and poke
 #' around the code if you want to find the old functions in previous versions of the package, or
@@ -81,12 +77,10 @@ NULL
 
 #' Table of country two character ISO codes, and GBIF names
 #'
-#' \itemize{
-#'   \item code. Two character ISO country code.
-#'   \item name. Name of country.
-#'   \item gbif_name. Name of country used by GBIF - this is the name
+#' - code. Two character ISO country code.
+#' - name. Name of country.
+#' - gbif_name. Name of country used by GBIF - this is the name
 #'   you want to use when searching by country in this package.
-#' }
 #'
 #' @name isocodes
 #' @docType data
@@ -95,10 +89,8 @@ NULL
 
 #' Type status options for GBIF searching
 #'
-#' \itemize{
-#'   \item name. Name of type.
-#'   \item description. Description of the type.
-#' }
+#' - name. Name of type.
+#' - description. Description of the type.
 #'
 #' @name typestatus
 #' @docType data
