@@ -62,7 +62,6 @@ GbifQueue <- R6::R6Class(
     add = function(x) {
       self$queue <- c(self$queue,
         stats::setNames(list(x), digest::digest(x$req$req)))
-                         # stats::setNames(list(x), digest::digest(x$req$expr)))
     },
 
     add_all = function() {
@@ -71,7 +70,6 @@ GbifQueue <- R6::R6Class(
     },
 
     remove = function(x) {
-      # self$queue[digest::digest(x$req$expr)] <- NULL
       self$queue[digest::digest(x$req$req)] <- NULL
     },
 
@@ -101,7 +99,7 @@ GbifQueue <- R6::R6Class(
 #' @export
 #' @keywords internal
 #' @param x either a lazy object with an object of class `occ_download`, or an 
-#' object of class `occ_download_pre`
+#' object of class `occ_download_prep`
 #' @details
 #' **Methods**
 #'   \describe{
@@ -129,7 +127,7 @@ GbifQueue <- R6::R6Class(
 #' # res$status()
 #' 
 #' # prepared query
-#' res <- DownReq$new(occ_download_("basisOfRecord = LITERATURE"))
+#' res <- DownReq$new(occ_download_prep("basisOfRecord = LITERATURE"))
 #' res
 #' res$run()
 #' res
@@ -146,7 +144,7 @@ DownReq <- R6::R6Class(
     initialize = function(x) {
       self$req <- x
       if (inherits(self$req, "lazy")) self$type <- "lazy"
-      if (inherits(self$req, "occ_download_pre")) self$type <- "pre"
+      if (inherits(self$req, "occ_download_prep")) self$type <- "pre"
     },
 
     print = function(x, ...) {

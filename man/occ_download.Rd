@@ -2,14 +2,14 @@
 % Please edit documentation in R/occ_download.R
 \name{occ_download}
 \alias{occ_download}
-\alias{occ_download_}
+\alias{occ_download_prep}
 \title{Spin up a download request for GBIF occurrence data.}
 \usage{
 occ_download(..., body = NULL, type = "and", user = NULL, pwd = NULL,
   email = NULL, curlopts = list())
 
-occ_download_(..., body = NULL, type = "and", user = NULL, pwd = NULL,
-  email = NULL, curlopts = list())
+occ_download_prep(..., body = NULL, type = "and", user = NULL,
+  pwd = NULL, email = NULL, curlopts = list())
 }
 \arguments{
 \item{...}{One or more of query arguments to kick of a download job.
@@ -103,7 +103,7 @@ see \link{downloads} for an overview of GBIF downloads methods
 \section{Methods}{
 
 \itemize{
-\item \code{occ_download_}: prepares a download request, but DOES NOT execute it.
+\item \code{occ_download_prep}: prepares a download request, but DOES NOT execute it.
 meant for use with \code{\link[=occ_download_queue]{occ_download_queue()}}
 \item \code{occ_download}: prepares a download request and DOES execute it
 }
@@ -197,7 +197,7 @@ query <- list(
 # res <- occ_download(body = query, curlopts = list(verbose = TRUE))
 
 # Prepared query
-occ_download_("basisOfRecord = LITERATURE")
+occ_download_prep("basisOfRecord = LITERATURE")
 }
 }
 \references{

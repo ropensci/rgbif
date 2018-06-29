@@ -6,7 +6,7 @@
 \title{Download request}
 \arguments{
 \item{x}{either a lazy object with an object of class \code{occ_download}, or an
-object of class \code{occ_download_pre}}
+object of class \code{occ_download_prep}}
 }
 \description{
 Download request
@@ -37,7 +37,7 @@ check http request status
 # res$status()
 
 # prepared query
-res <- DownReq$new(occ_download_("basisOfRecord = LITERATURE"))
+res <- DownReq$new(occ_download_prep("basisOfRecord = LITERATURE"))
 res
 res$run()
 res

@@ -2,7 +2,7 @@
 #'
 #' @export
 #' @param ... any number of [occ_download()] requests
-#' @param .list any number of [occ_download_()] requests
+#' @param .list any number of [occ_download_prep()] requests
 #' @param status_ping (integer) seconds between pings checking status of
 #' the download request. generally larger numbers for larger requests.
 #' default: 1 (i.e., 1 sec.)
@@ -49,7 +49,7 @@
 #' keys <- c(7905507, 5384395, 8911082)
 #' queries <- list()
 #' for (i in seq_along(keys)) {
-#'   queries[[i]] <- occ_download_(
+#'   queries[[i]] <- occ_download_prep(
 #'     paste0("taxonKey = ", keys[i]),
 #'     "basisOfRecord = HUMAN_OBSERVATION,OBSERVATION",
 #'     "hasCoordinate = true",
@@ -65,7 +65,7 @@
 #' length(yrs)
 #' queries <- list()
 #' for (i in seq_along(yrs)) {
-#'   queries[[i]] <- occ_download_(
+#'   queries[[i]] <- occ_download_prep(
 #'     "taxonKey = 2877951",
 #'     "basisOfRecord = HUMAN_OBSERVATION,OBSERVATION",
 #'     "hasCoordinate = true",

@@ -24,7 +24,7 @@
 #' 
 #' @section Methods:
 #' 
-#' - `occ_download_`: prepares a download request, but DOES NOT execute it.
+#' - `occ_download_prep`: prepares a download request, but DOES NOT execute it.
 #' meant for use with [occ_download_queue()]
 #' - `occ_download`: prepares a download request and DOES execute it
 #'
@@ -172,12 +172,12 @@
 #' # res <- occ_download(body = query, curlopts = list(verbose = TRUE))
 #' 
 #' # Prepared query
-#' occ_download_("basisOfRecord = LITERATURE")
+#' occ_download_prep("basisOfRecord = LITERATURE")
 #' }
 occ_download <- function(..., body = NULL, type = "and", user = NULL,
   pwd = NULL, email = NULL, curlopts = list()) {
 
-  z <- occ_download_(..., body = body, type = type, user = user, 
+  z <- occ_download_prep(..., body = body, type = type, user = user, 
     pwd = pwd, email = email, curlopts = curlopts)
   out <- rg_POST(z$url, req = z$req, user = z$user, pwd = z$pwd, curlopts)
   structure(out, class = "occ_download", user = user, email = email)
@@ -185,7 +185,7 @@ occ_download <- function(..., body = NULL, type = "and", user = NULL,
 
 #' @export
 #' @rdname occ_download
-occ_download_ <- function(..., body = NULL, type = "and", user = NULL,
+occ_download_prep <- function(..., body = NULL, type = "and", user = NULL,
   pwd = NULL, email = NULL, curlopts = list()) {
 
   url <- paste0(gbif_base(), '/occurrence/download/request')
@@ -199,11 +199,11 @@ occ_download_ <- function(..., body = NULL, type = "and", user = NULL,
     req <- parse_occd(user, email, type, ...)
   }
   structure(list(url = url, request = req, user = user, pwd = pwd, 
-    email = email, curlopts = curlopts), class = "occ_download_pre")
+    email = email, curlopts = curlopts), class = "occ_download_prep")
 }
 
 occ_download_exec <- function(x) {
-  assert(x, "occ_download_pre")
+  assert(x, "occ_download_prep")
   out <- rg_POST(x$url, req = x$req, user = x$user, pwd = x$pwd, x$curlopts)
   structure(out, class = "occ_download", user = x$user, email = x$email)
 }
@@ -326,7 +326,7 @@ print.occ_download <- function(x, ...) {
 }
 
 #' @export
-print.occ_download_pre <- function(x, ...) {
+print.occ_download_prep <- function(x, ...) {
   cat("<<gbif download - prepared>>", "\n", sep = "")
   cat("  Username: ", x$user, "\n", sep = "")
   cat("  E-mail: ", x$email, "\n", sep = "")

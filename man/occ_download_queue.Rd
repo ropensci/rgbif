@@ -9,7 +9,7 @@ occ_download_queue(..., .list = list(), status_ping = 1)
 \arguments{
 \item{...}{any number of \code{\link[=occ_download]{occ_download()}} requests}
 
-\item{.list}{any number of \code{\link[=occ_download_]{occ_download_()}} requests}
+\item{.list}{any number of \code{\link[=occ_download_prep]{occ_download_prep()}} requests}
 
 \item{status_ping}{(integer) seconds between pings checking status of
 the download request. generally larger numbers for larger requests.
@@ -40,6 +40,14 @@ concurrently, but the function will usually provide for 3 running
 concurrently.
 }
 
+\section{Beware}{
+
+This function is still in development. There's a lot of complexity
+to this problem. We'll be rolling out fixes and improvements in future
+versions of the package, so expect to have to adjust your code
+with new versions.
+}
+
 \examples{
 \dontrun{
 # passing occ_download() requests via ...
@@ -63,7 +71,7 @@ out <- occ_download_queue(
 keys <- c(7905507, 5384395, 8911082)
 queries <- list()
 for (i in seq_along(keys)) {
-  queries[[i]] <- occ_download_(
+  queries[[i]] <- occ_download_prep(
     paste0("taxonKey = ", keys[i]),
     "basisOfRecord = HUMAN_OBSERVATION,OBSERVATION",
     "hasCoordinate = true",
@@ -79,7 +87,7 @@ yrs <- 1930:1934
 length(yrs)
 queries <- list()
 for (i in seq_along(yrs)) {
-  queries[[i]] <- occ_download_(
+  queries[[i]] <- occ_download_prep(
     "taxonKey = 2877951",
     "basisOfRecord = HUMAN_OBSERVATION,OBSERVATION",
     "hasCoordinate = true",
