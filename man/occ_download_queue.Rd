@@ -4,13 +4,16 @@
 \alias{occ_download_queue}
 \title{Download requests in a queue}
 \usage{
-occ_download_queue(..., .list = list())
+occ_download_queue(..., .list = list(), status_ping = 1)
 }
 \arguments{
 \item{...}{any number of \code{\link[=occ_download]{occ_download()}} requests}
 
-\item{.list}{any number of \code{\link[=occ_download]{occ_download()}} requests as \code{lazy}
-objects, called with e.g., \code{lazyeval::lazy()}}
+\item{.list}{any number of \code{\link[=occ_download_]{occ_download_()}} requests}
+
+\item{status_ping}{(integer) seconds between pings checking status of
+the download request. generally larger numbers for larger requests.
+default: 1 (i.e., 1 sec.)}
 }
 \value{
 a list of \code{occ_download} class objects, see \code{\link[=occ_download_get]{occ_download_get()}}
@@ -39,6 +42,7 @@ concurrently.
 
 \examples{
 \dontrun{
+# passing occ_download() requests via ...
 out <- occ_download_queue(
   occ_download('taxonKey = 3119195', "year = 1976"),
   occ_download('taxonKey = 3119195', "year = 2001"),
@@ -54,5 +58,36 @@ out <- occ_download_queue(
   occ_download("country = NZ", "year = 1999", "month = 3"),
   occ_download("catalogNumber = Bird.27847588", "year = 1998", "month = 2")
 )
+
+# using pre-prepared requests via .list
+keys <- c(7905507, 5384395, 8911082)
+queries <- list()
+for (i in seq_along(keys)) {
+  queries[[i]] <- occ_download_(
+    paste0("taxonKey = ", keys[i]),
+    "basisOfRecord = HUMAN_OBSERVATION,OBSERVATION",
+    "hasCoordinate = true",
+    "hasGeospatialIssue = false",
+    "year = 1993"
+  )
+}
+out <- occ_download_queue(.list = queries)
+out
+
+# anther pre-prepared
+yrs <- 1930:1934
+length(yrs)
+queries <- list()
+for (i in seq_along(yrs)) {
+  queries[[i]] <- occ_download_(
+    "taxonKey = 2877951",
+    "basisOfRecord = HUMAN_OBSERVATION,OBSERVATION",
+    "hasCoordinate = true",
+    "hasGeospatialIssue = false",
+    paste0("year = ", yrs[i])
+  )
+}
+out <- occ_download_queue(.list = queries)
+out
 }
 }
