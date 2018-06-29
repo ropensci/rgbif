@@ -44,7 +44,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
   organismId = NULL, publishingOrg = NULL, stateProvince = NULL,
   waterBody = NULL, locality = NULL, limit=500, start=0, fields = 'all',
   return='all', spellCheck = NULL, facet = NULL, facetMincount = NULL,
-  facetMultiselect = NULL, skip_validate = FALSE, curlopts = list(), ...) {
+  facetMultiselect = NULL, skip_validate = TRUE, curlopts = list(), ...) {
 
   geometry <- geometry_handler(geometry, geom_big, geom_size, geom_n)
 

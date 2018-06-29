@@ -35,7 +35,7 @@ occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
   genusKey = NULL, establishmentMeans = NULL, protocol = NULL, license = NULL,
   organismId = NULL, publishingOrg = NULL, stateProvince = NULL,
   waterBody = NULL, locality = NULL, limit=500, start=0,
-  spellCheck = NULL, skip_validate = FALSE, curlopts = list()) {
+  spellCheck = NULL, skip_validate = TRUE, curlopts = list()) {
 
   geometry <- geometry_handler(geometry, geom_big, geom_size, geom_n)
 
