@@ -19,7 +19,7 @@ occ_data(taxonKey = NULL, scientificName = NULL, country = NULL,
   protocol = NULL, license = NULL, organismId = NULL,
   publishingOrg = NULL, stateProvince = NULL, waterBody = NULL,
   locality = NULL, limit = 500, start = 0, spellCheck = NULL,
-  skip_validate = FALSE, curlopts = list())
+  skip_validate = TRUE, curlopts = list())
 }
 \arguments{
 \item{taxonKey}{(numeric) A taxon key from the GBIF backbone. All included and synonym taxa
@@ -190,7 +190,7 @@ the value passed to the \code{search} parameter. IMPORTANT: This only checks
 the input to the \code{search} parameter, and no others. Default: \code{FALSE}}
 
 \item{skip_validate}{(logical) whether to skip `wicket::wkt_validate`
-call or not. passed down to [check_wkt()]. Default: `FALSE`}
+call or not. passed down to [check_wkt()]. Default: `TRUE`}
 
 \item{curlopts}{list of named curl options passed on to
 \code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}

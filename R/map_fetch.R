@@ -76,11 +76,12 @@
 #'
 #' @note Styles don't work yet, sorry, we'll try to fix it asap.
 #'
-#' @author Laurens Geffert, \email{laurensgeffert@@gmail.com}
-#' @references \url{https://www.gbif.org/developer/maps}
+#' @author Laurens Geffert \email{laurensgeffert@@gmail.com}
+#' @references https://www.gbif.org/developer/maps
 #' @keywords web map, web tile, GBIF
 #' @examples \dontrun{
 #' x <- map_fetch(search = "taxonKey", id = 3118771, year = 2010)
+#' x
 #' # gives a RasterLayer object
 #' class(x)
 #' # visualize
@@ -220,18 +221,6 @@ map_fetch <- function(
     )
   }
 
-  # query parameters only needed if at least search OR year are supplied
-  # query = list()
-  # if (!is.null(srs)) {
-  #   query['srs'] = srs
-  # }
-  # if (!is.null(search)) {
-  #   query['search'] = search
-  #   query['id'] = id
-  # }
-  # if (!is.null(year)) {
-  #   query['year'] = year
-  # }
   query <- rgbif_compact(list(srs = srs, search = search, id = id, year = year,
     bin = bin, squareSize = squareSize, hexPerTile = hexPerTile, style = style,
     basisOfRecord = basisOfRecord))

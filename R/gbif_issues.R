@@ -72,13 +72,13 @@ gbifissues <- structure(list(
                   "Coordinate is the exact 0/0 coordinate, often indicating a bad null coordinate."
   )), .Names = c("code", "issue", "description"), class = "data.frame", row.names = c(NA, -42L))
 
-collapse_issues <- function(x){
-  tmp <- x[names(x) %in% "issues"][[1]]
+collapse_issues <- function(x, issue_col = "issues") {
+  tmp <- x[names(x) %in% issue_col][[1]]
   tmp <- gbifissues[ gbifissues$issue %in% tmp, "code" ]
   paste(tmp, collapse = ",")
 }
 
-collapse_issues_vec <- function(x){
-  tmp <- x[names(x) %in% "issues"][[1]]
-  unlist(lapply(tmp, function(x) paste(gbifissues[ gbifissues$issue %in% x, "code" ], collapse = ",")))
+collapse_issues_vec <- function(x, issue_col = "issues") {
+  tmp <- x[names(x) %in% issue_col][[1]]
+  unlist(lapply(tmp, function(z) paste(gbifissues[ gbifissues$issue %in% z, "code" ], collapse = ",")))
 }

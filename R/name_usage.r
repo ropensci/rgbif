@@ -76,17 +76,10 @@
 #' }
 
 name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
-  datasetKey=NULL, uuid=NULL, sourceId=NULL, rank=NULL, shortname=NULL,
+  datasetKey=NULL, uuid=NULL, rank=NULL, shortname=NULL,
   start=0, limit=100, return='all', curlopts = list()) {
 
-  calls <- names(sapply(match.call(), deparse))[-1]
-  calls_vec <- c("sourceId") %in% calls
-  if (any(calls_vec)) {
-    stop("Parameters not currently accepted: \n sourceId")
-  }
-
   check_vals(limit, "limit")
-
   # each of these args must be length=1
   if (!is.null(rank)) stopifnot(length(rank) == 1)
   if (!is.null(name)) stopifnot(length(name) == 1)
@@ -94,7 +87,7 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
   if (!is.null(datasetKey)) stopifnot(length(datasetKey) == 1)
 
   args <- rgbif_compact(list(offset = start, limit = limit,
-                             sourceId = sourceId, rank = rank,
+                             rank = rank,
                              name = name, language = language,
                              datasetKey = datasetKey))
   data <- match.arg(data,

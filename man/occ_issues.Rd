@@ -2,28 +2,33 @@
 % Please edit documentation in R/occ_issues.r
 \name{occ_issues}
 \alias{occ_issues}
-\title{Parse and examine further GBIF issues on a dataset.}
+\title{Parse and examine further GBIF issues on a dataset}
 \usage{
 occ_issues(.data, ..., mutate = NULL)
 }
 \arguments{
-\item{.data}{Output from a call to \code{\link[=occ_search]{occ_search()}}, but only if
-\code{return="all"}, or \code{return="data"}, otherwise function stops
-with error}
+\item{.data}{Output from a call to \code{\link[=occ_search]{occ_search()}}, \code{\link[=occ_data]{occ_data()}}, or
+\code{\link[=occ_download_import]{occ_download_import()}}, but only if \code{return="all"}, or \code{return="data"},
+otherwise function stops with error. The data from \code{occ_download_import}
+is just a regular data.frame so you can pass in a data.frame to this
+function, but if it doesn't have certain columns it will fail.}
 
 \item{...}{Named parameters to only get back (e.g., cdround), or to
 remove (e.g. -cdround).}
 
 \item{mutate}{(character) One of:
 \itemize{
-\item split Split issues into new columns.
-\item split_expand Split into new columns, and expand issue names.
-\item expand Expand issue abbreviated codes into descriptive names.
+\item \code{split} Split issues into new columns
+\item \code{split_expand} Split into new columns, and expand issue names
+\item \code{expand} Expand issue abbreviated codes into descriptive names.
+for downloads datasets, this is not super useful since the
+issues come to you as expanded already.
 }
-For split and split_expand, values in cells become y ("yes") or n ("no").}
+
+For split and split_expand, values in cells become y ("yes") or n ("no")}
 }
 \description{
-Parse and examine further GBIF issues on a dataset.
+Parse and examine further GBIF issues on a dataset
 }
 \details{
 See also the vignette \strong{Cleaning data using GBIF issues}
@@ -38,6 +43,10 @@ This function only affects the \code{data} element in the \code{gbif} class that
 returned from a call to \code{\link[=occ_search]{occ_search()}}. Maybe in a future version
 we will remove the associated records from the \code{hierarchy} and \code{media}
 elements as they are remove from the \code{data} element.
+
+You'll notice that we sort columns to make it easier to glimpse the important
+parts of your data, namely taxonomic name, taxon key, latitude and longitude,
+and the issues. The columns are unchanged otherwise.
 }
 \examples{
 \dontrun{
@@ -47,14 +56,20 @@ gbif_issues()[ gbif_issues()$code \%in\% c('cdround','cudc','gass84','txmathi'),
 
 # compare out data to after occ_issues use
 (out <- occ_search(limit=100))
-out \%>\% occ_issues(cudc)
+out \%>\% occ_issues(cdround)
+
+# occ_data
+(out <- occ_data(limit=100))
+out \%>\% occ_issues(cdround)
 
 # Parsing output by issue
-(res <- occ_search(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))', limit = 50))
+(res <- occ_data(
+  geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))', 
+  limit = 600))
 
 ## or parse issues in various ways
-### inlude only rows with gass84 issue
-gg <- res \%>\% occ_issues(gass84)
+### inlude only rows with cdround issue
+gg <- res \%>\% occ_issues(cdround)
 NROW(res$data)
 NROW(gg$data)
 head(res$data)[,c(1:5)]
@@ -75,10 +90,23 @@ res \%>\% occ_issues(mutate = "expand")
 res \%>\% occ_issues(mutate = "split_expand")
 
 ### split, expand, and remove an issue class
-res \%>\% occ_issues(-cudc, mutate = "split_expand")
+res \%>\% occ_issues(-cdround, mutate = "split_expand")
 
 ## Or you can use occ_issues without \%>\%
-occ_issues(res, -cudc, mutate = "split_expand")
+occ_issues(res, -cdround, mutate = "split_expand")
+
+# from GBIF downloaded data via occ_download and friends
+res <- occ_download_get(key="0000066-140928181241064", overwrite=TRUE)
+x <- occ_download_import(res)
+occ_issues(x, -txmathi)
+occ_issues(x, txmathi)
+occ_issues(x, gass84)
+occ_issues(x, zerocd)
+occ_issues(x, gass84, txmathi)
+occ_issues(x, mutate = "split")
+occ_issues(x, -gass84, mutate = "split")
+occ_issues(x, mutate = "expand")
+occ_issues(x, mutate = "split_expand")
 }
 }
 \references{

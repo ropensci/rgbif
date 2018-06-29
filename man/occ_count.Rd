@@ -5,10 +5,9 @@
 \title{Get number of occurrence records.}
 \usage{
 occ_count(taxonKey = NULL, georeferenced = NULL, basisOfRecord = NULL,
-  datasetKey = NULL, date = NULL, typeStatus = NULL,
-  catalogNumber = NULL, country = NULL, hostCountry = NULL, year = NULL,
-  from = 2000, to = 2012, type = "count", publishingCountry = "US",
-  nubKey = NULL, protocol = NULL, curlopts = list())
+  datasetKey = NULL, date = NULL, typeStatus = NULL, country = NULL,
+  year = NULL, from = 2000, to = 2012, type = "count",
+  publishingCountry = "US", protocol = NULL, curlopts = list())
 }
 \arguments{
 \item{taxonKey}{Species key}
@@ -26,12 +25,8 @@ you can also get record count with \code{\link[=occ_search]{occ_search()}} by se
 \item{typeStatus}{A type status. See \code{\link[=typestatus]{typestatus()}} dataset for
 options}
 
-\item{catalogNumber}{Catalog number. PARAMETER GONE.}
-
 \item{country}{Country data was collected in, two letter abbreviation. See
 \url{http://countrycode.org/} for abbreviations.}
-
-\item{hostCountry}{Country that hosted the data. PARAMETER GONE.}
 
 \item{year}{Year data were collected in}
 
@@ -43,8 +38,6 @@ options}
 year.}
 
 \item{publishingCountry}{Publishing country, two letter ISO country code}
-
-\item{nubKey}{Species key. PARAMETER NAME CHANGED TO taxonKey.}
 
 \item{protocol}{Protocol. E.g., 'DWC_ARCHIVE'}
 

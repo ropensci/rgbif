@@ -2,7 +2,6 @@
 #'
 #' @export
 #'
-#' @param nubKey Species key. PARAMETER NAME CHANGED TO taxonKey.
 #' @param taxonKey Species key
 #' @param georeferenced Return only occurrence records with lat/long data
 #' (`TRUE`) or those that don't have that data (`FALSE`, default). Note that
@@ -13,11 +12,9 @@
 #' @param typeStatus A type status. See [typestatus()] dataset for
 #' options
 #' @param year Year data were collected in
-#' @param catalogNumber Catalog number. PARAMETER GONE.
 #' @param country Country data was collected in, two letter abbreviation. See
 #' <http://countrycode.org/> for abbreviations.
 #' @param protocol Protocol. E.g., 'DWC_ARCHIVE'
-#' @param hostCountry Country that hosted the data. PARAMETER GONE.
 #' @param publishingCountry Publishing country, two letter ISO country code
 #' @param from Year to start at
 #' @param to Year to end at
@@ -122,22 +119,15 @@
 
 occ_count <- function(taxonKey = NULL, georeferenced = NULL,
   basisOfRecord = NULL, datasetKey = NULL, date = NULL, typeStatus = NULL,
-  catalogNumber = NULL, country = NULL, hostCountry = NULL, year = NULL,
-  from = 2000, to = 2012, type = 'count', publishingCountry = 'US',
-  nubKey = NULL, protocol = NULL, curlopts = list()) {
-
-  calls <- names(sapply(match.call(), deparse))[-1]
-  calls_vec <- c("nubKey","hostCountry","catalogNumber") %in% calls
-  if (any(calls_vec)) {
-    stop("Parameter name changes: \n nubKey -> taxonKey\nParameters gone: \n hostCountry\n catalogNumber", call. = FALSE)
-  }
+  country = NULL, year = NULL, from = 2000, to = 2012, type = 'count', 
+  publishingCountry = 'US', protocol = NULL, curlopts = list()) {
 
   args <- rgbif_compact(
     list(
       taxonKey=taxonKey, isGeoreferenced=georeferenced,
       basisOfRecord=basisOfRecord, datasetKey=datasetKey,
-      date=date, typeStatus=typeStatus, catalogNumber=catalogNumber,
-      country=country, hostCountry=hostCountry, year=year, protocol=protocol))
+      date=date, typeStatus=typeStatus,
+      country=country, year=year, protocol=protocol))
   type <- match.arg(type, choices=c("count","schema","basisOfRecord",
                                     "countries","year","publishingCountry"))
   url <- switch(type,
