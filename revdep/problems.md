@@ -1,27 +1,27 @@
-# Setup
+# KnowBR
 
-## Platform
+Version: 1.8
 
-|setting  |value                                       |
-|:--------|:-------------------------------------------|
-|version  |R version 3.4.2 Patched (2017-10-12 r73552) |
-|system   |x86_64, darwin15.6.0                        |
-|ui       |X11                                         |
-|language |(EN)                                        |
-|collate  |en_US.UTF-8                                 |
-|tz       |America/Los_Angeles                         |
-|date     |2017-11-10                                  |
+## In both
 
-## Packages
+*   checking Rd cross-references ... NOTE
+    ```
+    Package unavailable to check Rd xrefs: ‘splancs’
+    ```
 
-|package |*  |version |date       |source                    |
-|:-------|:--|:-------|:----------|:-------------------------|
-|rgbif   |   |0.9.9   |2017-11-10 |local (ropensci/rgbif@NA) |
+*   checking data for non-ASCII characters ... NOTE
+    ```
+      Note: found 9 marked Latin-1 strings
+    ```
 
-# Check results
+# plotKML
 
-0 packages with problems
+Version: 0.5-8
 
+## In both
 
-
+*   checking package dependencies ... NOTE
+    ```
+    Package suggested but not available for checking: ‘adehabitat’
+    ```
 

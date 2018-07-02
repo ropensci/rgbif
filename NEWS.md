@@ -1,3 +1,43 @@
+rgbif 1.0.0
+===========
+
+### NEW FEATURES
+
+* `occ_issues()` now works with download data and arbitrary data.frame's (#193)
+* New downloads queueing tools: gains functions `occ_download_prep()` for preparing a download request without executing it, and `occ_download_queue()`  for kicking off many download jobs while respecting GBIF's downloads rate limits. See `?occ_download_queue` to get started (#266) (#305) (#311)
+* New function `map_fetch()` working with the GBIF maps API <https://www.gbif.org/developer/maps>. See `?map_fetch` to get started (#238) (#269) (#284) thanks to @JanLauGe for the work on this
+* xx (#xxx)
+* xx (#xxx)
+* xx (#xxx)
+* xx (#xxx)
+* xx (#xxx)
+
+### MINOR IMPROVEMENTS
+
+* removed warnings about parameters that were removed in previous versions of the package (#189)
+* add citation file (#189)
+* updated `name_usage()` to check params that now only allow 1 value: name, language, datasetKey, rank (#287)
+* xx (#xxx)
+* xx (#xxx)
+* xx (#xxx)
+* xx (#xxx)
+
+### BUG FIXES
+
+* fixed bug in `name_usage()`, was screwing something up internally (#286)
+* fixed bug in `occ_data()`: curl options weren't being passed through (#297)
+* fixed geometry usage in `occ_search()`/`occ_data()` - skipping the wicket validation and constructing WKT by hand from bounding box (if bounding box given) - the validation that wicket does isn't what GBIF wants (#303)
+* add `fill` parameter to  `occ_download_import()` to pass on to `fill` in `data.table::fread`, and set `fill=TRUE` as default.  (#292)
+* better failure for `occ_download()` (#300)
+* fix bug in `occ_download()` in which a single `taxonKey` passed in was failing (#283)
+* xx (#xxx)
+* xx (#xxx)
+
+### DEFUNCT AND DEPRECATED
+
+* `gbifmap()` has been removed, see the package `mapr` for similar functionality and `map_fetch()` in this package to use the GBIF map API (#298)
+
+
 rgbif 0.9.9
 ===========
 
