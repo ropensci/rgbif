@@ -4,23 +4,19 @@ rgbif 1.0.0
 ### NEW FEATURES
 
 * `occ_issues()` now works with download data and arbitrary data.frame's (#193)
-* New downloads queueing tools: gains functions `occ_download_prep()` for preparing a download request without executing it, and `occ_download_queue()`  for kicking off many download jobs while respecting GBIF's downloads rate limits. See `?occ_download_queue` to get started (#266) (#305) (#311)
+* New downloads queueing tools: gains functions `occ_download_prep()` for preparing a download request without executing it, and `occ_download_queue()`  for kicking off many download jobs while respecting GBIF's downloads rate limits. See also internal R6 classes for dealing with queuing: `DownReq`, `GifQueue`. See `?occ_download_queue` to get started (#266) (#305) (#311)
 * New function `map_fetch()` working with the GBIF maps API <https://www.gbif.org/developer/maps>. See `?map_fetch` to get started (#238) (#269) (#284) thanks to @JanLauGe for the work on this
-* xx (#xxx)
-* xx (#xxx)
-* xx (#xxx)
-* xx (#xxx)
-* xx (#xxx)
+* `name_lookup()` gains `origin` parameter (#288) (#293) thanks @peterdesmet and @damianooldoni
+* `name_lookup()` and `name_usage()` gain internal paging - just as `occ_search()`/`occ_data()` have (#291) (see also #281) thanks @damianooldoni 
+* new import `lazyeval`, and new suggests `png` and `raster`
+* `occ_search()`/`occ_data()` gain parameter `skip_validate` (boolean) to skip or not stkip WKT validation by the `wicket` package
 
 ### MINOR IMPROVEMENTS
 
 * removed warnings about parameters that were removed in previous versions of the package (#189)
 * add citation file (#189)
 * updated `name_usage()` to check params that now only allow 1 value: name, language, datasetKey, rank (#287)
-* xx (#xxx)
-* xx (#xxx)
-* xx (#xxx)
-* xx (#xxx)
+* `occ_count()` loses `nubKey`, `catalogNumber`, and `hostCountry` as those parameters are no longer accepted by GBIF
 
 ### BUG FIXES
 
@@ -30,8 +26,7 @@ rgbif 1.0.0
 * add `fill` parameter to  `occ_download_import()` to pass on to `fill` in `data.table::fread`, and set `fill=TRUE` as default.  (#292)
 * better failure for `occ_download()` (#300)
 * fix bug in `occ_download()` in which a single `taxonKey` passed in was failing (#283)
-* xx (#xxx)
-* xx (#xxx)
+* `name_usage()` was ignoring `datasetKey` and `uuid` parameters (#290)
 
 ### DEFUNCT AND DEPRECATED
 
