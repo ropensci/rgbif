@@ -39,7 +39,7 @@ contributing organizations, installations, networks, and nodes
     * `rgbif` functions: `name_backbone()`, `name_lookup()`, `name_suggest()`, `name_usage()`
 * `occurrences` (<https://www.gbif.org/developer/occurrence>) - Occurrences, both for
 the search and download APIs
-    * `rgbif` functions: `occ_count()`, `occ_data()`, `occ_download()`, `occ_download_queue()`, `occ_download_cancel()`,
+    * `rgbif` functions: `occ_count()`, `occ_data()`, `occ_download()`, `occ_download_prep()`, `occ_download_queue()`, `occ_download_cancel()`,
     `occ_download_cancel_staged()`, `occ_download_get()`, `occ_download_import()`,
     `occ_download_list()`, `occ_download_meta()`, `occ_download_datasets()`, `occ_download_dataset_activity()`, `occ_get()`, `occ_issues()`,
     `occ_issues_lookup()`, `occ_metadata()`, `occ_search()`
@@ -94,7 +94,7 @@ install.packages('rgbif')
 
 ```r
 occ_search(scientificName = "Ursus americanus", limit = 50)
-#> Records found [10618] 
+#> Records found [10727] 
 #> Records returned [50] 
 #> No. unique hierarchies [1] 
 #> No. media records [49] 
@@ -142,7 +142,7 @@ Or you can get the taxon key first with `name_backbone()`. Here, we select to on
 ```r
 key <- name_backbone(name='Helianthus annuus', kingdom='plants')$speciesKey
 occ_search(taxonKey=key, limit=20)
-#> Records found [40941] 
+#> Records found [40997] 
 #> Records returned [20] 
 #> No. unique hierarchies [1] 
 #> No. media records [15] 
@@ -167,10 +167,10 @@ occ_search(taxonKey=key, limit=20)
 #> 14 Helian…  1.81e9            25.7           -100.  cdround… 50c9509d-22c…
 #> 15 Helian…  1.84e9            26.2            -98.3 cdround… 50c9509d-22c…
 #> 16 Helian…  1.84e9            25.8           -100.  cdround… 50c9509d-22c…
-#> 17 Helian…  1.84e9           -43.6            173.  cdround… 50c9509d-22c…
-#> 18 Helian…  1.84e9            23.8           -107.  cdround… 50c9509d-22c…
-#> 19 Helian…  1.84e9            23.9           -107.  cdround… 50c9509d-22c…
-#> 20 Helian…  1.84e9            26.2            -98.3 cdround… 50c9509d-22c…
+#> 17 Helian…  1.85e9            23.7            -99.2 cdround… 50c9509d-22c…
+#> 18 Helian…  1.84e9           -43.6            173.  cdround… 50c9509d-22c…
+#> 19 Helian…  1.84e9            23.8           -107.  cdround… 50c9509d-22c…
+#> 20 Helian…  1.84e9            23.9           -107.  cdround… 50c9509d-22c…
 #> # ... with 85 more variables: publishingOrgKey <chr>,
 #> #   publishingCountry <chr>, protocol <chr>, lastCrawled <chr>,
 #> #   lastParsed <chr>, crawlId <int>, extensions <chr>,
@@ -211,7 +211,7 @@ Get the keys first with `name_backbone()`, then pass to `occ_search()`
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 keys <- sapply(splist, function(x) name_backbone(name=x)$speciesKey, USE.NAMES=FALSE)
 occ_search(taxonKey=keys, limit=5, hasCoordinate=TRUE)
-#> Occ. found [2480598 (16), 9362842 (3799969), 2498387 (1243363)] 
+#> Occ. found [2480598 (16), 9362842 (3802106), 2498387 (1243584)] 
 #> Occ. returned [2480598 (5), 9362842 (5), 2498387 (5)] 
 #> No. unique hierarchies [2480598 (1), 9362842 (1), 2498387 (1)] 
 #> No. media records [2480598 (1), 9362842 (5), 2498387 (3)] 
