@@ -78,8 +78,8 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 #> 2         94     FUZZY   FALSE
 ```
 
-* P. s<b>y</b>lvestris w/ 324515 occurrences - from Catalogue of Life
-* P. s<b>i</b>lvestris w/ 324515 occurrences - from Catalogue of Life
+* P. s<b>y</b>lvestris w/ 331233 occurrences - from Catalogue of Life
+* P. s<b>i</b>lvestris w/ 331233 occurrences - from Catalogue of Life
 
 ## Macrozamia platyrachis vs. M. platyrhachis
 
@@ -94,8 +94,8 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 #> 2 SPECIES ACCEPTED         98     EXACT   FALSE
 ```
 
-* M. platyrachis w/ 59 occurrences - from Catalogue of Life
-* M. platyr<b>h</b>achis w/ 59 occurrences - from Catalogue of Life
+* M. platyrachis w/ 61 occurrences - from Catalogue of Life
+* M. platyr<b>h</b>achis w/ 61 occurrences - from Catalogue of Life
 
 ## Cycas circinalis vs. C. circinnalis
 
@@ -110,8 +110,8 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 #> 2         95     FUZZY   FALSE
 ```
 
-* C. circinalis w/ 550 occurrences - from Catalogue of Life
-* C. circin<b>n</b>alis w/ 550 occurrences - from Catalogue of Life
+* C. circinalis w/ 579 occurrences - from Catalogue of Life
+* C. circin<b>n</b>alis w/ 579 occurrences - from Catalogue of Life
 
 ## Isolona perrieri vs. I. perrierii
 
@@ -126,24 +126,24 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 #> 2         98     EXACT   FALSE
 ```
 
-* I. perrieri w/ 80 occurrences - from Catalogue of Life
-* I. perrieri<b>i</b> w/ 80 occurrences - from Catalogue of Life
+* I. perrieri w/ 81 occurrences - from Catalogue of Life
+* I. perrieri<b>i</b> w/ 81 occurrences - from Catalogue of Life
 
 ## Wiesneria vs. Wisneria
 
 
 ```r
 (c5 <- name_rbind("Wiesneria", "Wisneria", rank = "genus"))
-#>   usageKey                                                 scientificName
-#> 1  2864604                                              Wiesneria Micheli
-#> 2  7327444 Wisneria Micheli in Alph. de Candolle & A.C. de Candolle, 1881
-#>   canonicalName  rank   status confidence matchType synonym
-#> 1     Wiesneria GENUS ACCEPTED         96     EXACT   FALSE
-#> 2      Wisneria GENUS ACCEPTED         96     EXACT   FALSE
+#>   usageKey    scientificName canonicalName  rank   status confidence
+#> 1  2864604 Wiesneria Micheli     Wiesneria GENUS ACCEPTED         96
+#> 2  7327444  Wisneria Micheli      Wisneria GENUS DOUBTFUL         94
+#>   matchType synonym
+#> 1     EXACT   FALSE
+#> 2     EXACT   FALSE
 ```
 
-* Wi<b>e</b>sneria w/ 78 occurrences - from Catalogue of Life
-* Wisneria w/ 4 occurrences - from The Interim Register of Marine and Nonmarine Genera
+* Wi<b>e</b>sneria w/ 105 occurrences - from Catalogue of Life
+* Wisneria w/ 3 occurrences - from International Plant Names Index
 
 ## The take away messages from this vignette
 

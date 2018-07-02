@@ -22,7 +22,7 @@ Note that you can also query based on issues, e.g., `occ_search(taxonKey=1, issu
 
 Note that `occ_issues()` only affects the data element in the gbif class that is returned from a call to `occ_search()`. Maybe in a future version we will remove the associated records from the hierarchy and media elements as they are remove from the data element.
 
-You also get issues data back with `occ_get()`, but `occ_issues()` doesn't yet support working with data from `occ_get()`.
+`occ_issues()` also works with data from `occ_download()`.
 
 ## Get rgbif
 

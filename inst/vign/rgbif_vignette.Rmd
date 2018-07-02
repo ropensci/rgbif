@@ -236,12 +236,12 @@ occ_search(taxonKey=keys, limit=5)
 
 ## Maps
 
-Static map using the ggplot2 package. Make a map of *Puma concolor* occurrences.
+Using thet GBIF map web tile service, making a raster and visualizing it.
 
 ```{r gbifmap1}
-key <- name_backbone(name='Puma concolor')$speciesKey
-dat <- occ_search(taxonKey=key, return='data', limit=300)
-gbifmap(dat)
+x <- map_fetch(search = "taxonKey", id = 3118771, year = 2010)
+library(raster)
+plot(x)
 ```
 
 [gbifapi]: http://www.gbif.org/developer/summary
