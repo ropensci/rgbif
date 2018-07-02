@@ -255,10 +255,7 @@ The function `name_usage()` works with lots of different name endpoints in GBIF,
 
 
 ```r
-library("plyr")
-out <- name_usage(key=3119195, language="FRENCH", data='vernacularNames')
-head(out$data)
-#> # A tibble: 0 x 0
+name_usage(key=3119195, language="FRENCH", data='vernacularNames')
 ```
 
 The function `name_backbone()` is used to search against the GBIF backbone taxonomy
