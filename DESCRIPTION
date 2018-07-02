@@ -20,7 +20,8 @@ Authors@R: c(
     person("Laurens", "Geffert", role = "ctb"),
     person("Karthik", "Ram", role = "ctb")
     )
-URL: https://github.com/ropensci/rgbif
+URL: https://github.com/ropensci/rgbif (devel) 
+    https://ropenscilabs.github.io/occurrence-manual/ (manual)
 BugReports: https://github.com/ropensci/rgbif/issues
 LazyData: true
 LazyLoad: true
