@@ -5,19 +5,19 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "rgbif",
-  "description": "A programmatic interface to the Web Service methods\n    provided by the Global Biodiversity Information Facility ('GBIF';\n    <https://www.gbif.org/developer/summary>). 'GBIF' is a database\n    of species occurrence records from sources all over the globe.\n    'rgbif' includes functions for searching for taxonomic names,\n    retrieving information on data providers, getting species occurrence\n    records, and getting counts of occurrence records.",
+  "description": "A programmatic interface to the Web Service methods\n    provided by the Global Biodiversity Information Facility ('GBIF';\n    <https://www.gbif.org/developer/summary>). 'GBIF' is a database\n    of species occurrence records from sources all over the globe.\n    'rgbif' includes functions for searching for taxonomic names,\n    retrieving information on data providers, getting species occurrence\n    records, getting counts of occurrence records, and using the 'GBIF' \n    tile map service to make 'rasters' summarizing huge amounts of data.",
   "name": "rgbif: Interface to the Global 'Biodiversity' Information Facility API",
   "codeRepository": "https://github.com/ropensci/rgbif",
   "issueTracker": "https://github.com/ropensci/rgbif/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.9.9.9610",
+  "version": "1.0.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.5.0",
+    "version": "3.5.1",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.5.0 (2018-04-23)",
+  "runtimePlatform": "R version 3.5.1 RC (2018-06-29 r74946)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -48,6 +48,16 @@
       "@type": "Person",
       "givenName": "Damiano",
       "familyName": "Oldoni"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Laurens",
+      "familyName": "Geffert"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Karthik",
+      "familyName": "Ram"
     }
   ],
   "maintainer": [
@@ -310,7 +320,7 @@
   "contIntegration": "https://travis-ci.org/ropensci/rgbif",
   "releaseNotes": "https://github.com/ropensci/rgbif/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/rgbif/blob/master/README.md",
-  "fileSize": "769.224KB",
+  "fileSize": "745.284KB",
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://ropensci.org",
   "keywords": ["GBIF", "specimens", "API", "web-services", "occurrences", "species", "taxonomy", "gbif", "api", "data", "biodiversity", "rstats", "r", "spocc", "r-package"],
