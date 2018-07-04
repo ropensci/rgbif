@@ -4,7 +4,7 @@
 \alias{occ_download_queue}
 \title{Download requests in a queue}
 \usage{
-occ_download_queue(..., .list = list(), status_ping = 1)
+occ_download_queue(..., .list = list(), status_ping = 10)
 }
 \arguments{
 \item{...}{any number of \code{\link[=occ_download]{occ_download()}} requests}
@@ -13,7 +13,7 @@ occ_download_queue(..., .list = list(), status_ping = 1)
 
 \item{status_ping}{(integer) seconds between pings checking status of
 the download request. generally larger numbers for larger requests.
-default: 1 (i.e., 1 sec.)}
+default: 10 (i.e., 10 seconds). must be 10 or greater}
 }
 \value{
 a list of \code{occ_download} class objects, see \code{\link[=occ_download_get]{occ_download_get()}}

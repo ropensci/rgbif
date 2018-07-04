@@ -5,7 +5,7 @@
 #' @param .list any number of [occ_download_prep()] requests
 #' @param status_ping (integer) seconds between pings checking status of
 #' the download request. generally larger numbers for larger requests.
-#' default: 1 (i.e., 1 sec.)
+#' default: 10 (i.e., 10 seconds). must be 10 or greater
 #' @return a list of `occ_download` class objects, see [occ_download_get()]
 #' to fetch data
 #' @details This function is a convenience wrapper around [occ_download()],
@@ -76,9 +76,13 @@
 #' out <- occ_download_queue(.list = queries)
 #' out
 #' }
-occ_download_queue <- function(..., .list = list(), status_ping = 1) {
-  # number of max concurrent requests, has to be hard-coded due to GBIF limits
+occ_download_queue <- function(..., .list = list(), status_ping = 10) {
+  # number of max concurrent requests
+  # hard-coded due to GBIF limits
   max_concurrent <- 3
+
+  # status must be 10 sec or greater
+  stopifnot(status_ping >= 10)
 
   # collect requests
   que <- GbifQueue$new(..., .list = .list)
