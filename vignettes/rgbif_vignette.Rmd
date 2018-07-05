@@ -54,7 +54,7 @@ Records for **Puma concolor** with lat/long data (georeferened) only. Note that 
 
 ```r
 occ_count(taxonKey=2435099, georeferenced=TRUE)
-#> [1] 4018
+#> [1] 4043
 ```
 
 All georeferenced records in GBIF
@@ -62,7 +62,7 @@ All georeferenced records in GBIF
 
 ```r
 occ_count(georeferenced=TRUE)
-#> [1] 898136735
+#> [1] 919056029
 ```
 
 Records from Denmark
@@ -71,7 +71,7 @@ Records from Denmark
 ```r
 denmark_code <- isocodes[grep("Denmark", isocodes$name), "code"]
 occ_count(country=denmark_code)
-#> [1] 27242771
+#> [1] 27242621
 ```
 
 Number of records in a particular dataset
@@ -87,7 +87,7 @@ All records from 2012
 
 ```r
 occ_count(year=2012)
-#> [1] 48807712
+#> [1] 50217952
 ```
 
 Records for a particular dataset, and only for preserved specimens
@@ -236,9 +236,9 @@ head(name_lookup(query = 'Helianthus annuus', rank="species", return = 'data'))
 #> 1  1.35e8 Helianthus an… 29d2d5a6-… 9.21e6 142663894 Aster… Plantae Trach…
 #> 2  1.28e8 Helianthus an… 41c06f1a-… 9.21e6 143979234 Amara… Plantae <NA>  
 #> 3  1.46e8 Helianthus an… 6a97172b-… 9.21e6 145984152 Helia… <NA>    <NA>  
-#> 4  1.35e8 Helianthus an… 3cabcf37-… 9.21e6 140418759 Aster… Plantae Trach…
-#> 5  1.28e8 Helianthus an… 41c06f1a-… 9.21e6       126 Amara… Plantae <NA>  
-#> 6  1.03e8 Helianthus an… fab88965-… 9.21e6 103340270 Helia… Viridi… Strep…
+#> 4  1.03e8 Helianthus an… fab88965-… 9.21e6 103340270 Helia… Viridi… Strep…
+#> 5  1.46e8 Helianthus an… 3f5e930b-… 9.21e6 145966117 Helia… Plantae Angio…
+#> 6  1.35e8 Helianthus an… 3cabcf37-… 9.21e6 140418759 Aster… Plantae Trach…
 #> # ... with 32 more variables: order <chr>, family <chr>, species <chr>,
 #> #   kingdomKey <int>, phylumKey <int>, classKey <int>, orderKey <int>,
 #> #   familyKey <int>, speciesKey <int>, canonicalName <chr>,
@@ -256,6 +256,14 @@ The function `name_usage()` works with lots of different name endpoints in GBIF,
 
 ```r
 name_usage(key=3119195, language="FRENCH", data='vernacularNames')
+#> $meta
+#> # A tibble: 1 x 3
+#>   offset limit endOfRecords
+#>    <int> <int> <lgl>       
+#> 1      0   100 TRUE        
+#> 
+#> $data
+#> # A tibble: 0 x 0
 ```
 
 The function `name_backbone()` is used to search against the GBIF backbone taxonomy
@@ -419,7 +427,7 @@ By default `occ_search()` returns a `dplyr` like output summary in which the dat
 
 ```r
 occ_search(scientificName = "Ursus americanus", limit = 20)
-#> Records found [10727] 
+#> Records found [10689] 
 #> Records returned [20] 
 #> No. unique hierarchies [1] 
 #> No. media records [19] 
@@ -477,7 +485,7 @@ Or to be more precise, you can search for names first, make sure you have the ri
 ```r
 key <- name_suggest(q='Helianthus annuus', rank='species')$key[1]
 occ_search(taxonKey=key, limit=20)
-#> Records found [40997] 
+#> Records found [41219] 
 #> Records returned [20] 
 #> No. unique hierarchies [1] 
 #> No. media records [15] 
@@ -545,7 +553,7 @@ occ_search(taxonKey=key, return='meta')
 #> # A tibble: 1 x 4
 #>   offset limit endOfRecords count
 #> *  <int> <int> <lgl>        <int>
-#> 1    300   200 FALSE        40997
+#> 1    300   200 FALSE        41219
 ```
 
 You can choose what fields to return. This isn't passed on to the API query to GBIF as they don't allow that, but we filter out the columns before we give the data back to you.
@@ -553,7 +561,7 @@ You can choose what fields to return. This isn't passed on to the API query to G
 
 ```r
 occ_search(scientificName = "Ursus americanus", fields=c('name','basisOfRecord','protocol'), limit = 20)
-#> Records found [10727] 
+#> Records found [10689] 
 #> Records returned [20] 
 #> No. unique hierarchies [1] 
 #> No. media records [19] 
@@ -592,7 +600,7 @@ Most parameters are vectorized, so you can pass in more than one value:
 splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
 keys <- sapply(splist, function(x) name_suggest(x)$key[1], USE.NAMES=FALSE)
 occ_search(taxonKey=keys, limit=5)
-#> Occ. found [2482598 (709357), 9362842 (3820243), 2498387 (1246136)] 
+#> Occ. found [2482598 (708924), 9362842 (3818008), 2498387 (1246200)] 
 #> Occ. returned [2482598 (5), 9362842 (5), 2498387 (5)] 
 #> No. unique hierarchies [2482598 (1), 9362842 (1), 2498387 (1)] 
 #> No. media records [2482598 (5), 9362842 (5), 2498387 (3)] 
@@ -604,8 +612,8 @@ occ_search(taxonKey=keys, limit=5)
 #>   name         key decimalLatitude decimalLongitude issues  datasetKey    
 #>   <chr>      <int>           <dbl>            <dbl> <chr>   <chr>         
 #> 1 Cyanoci…  1.80e9            37.2            -122. gass84  50c9509d-22c7…
-#> 2 Cyanoci…  1.81e9            49.2            -124. cdroun… 50c9509d-22c7…
-#> 3 Cyanoci…  1.80e9            49.2            -124. cdroun… 50c9509d-22c7…
+#> 2 Cyanoci…  1.80e9            49.2            -124. cdroun… 50c9509d-22c7…
+#> 3 Cyanoci…  1.81e9            49.2            -124. cdroun… 50c9509d-22c7…
 #> 4 Cyanoci…  1.81e9            49.2            -124. cdroun… 50c9509d-22c7…
 #> 5 Cyanoci…  1.81e9            48.4            -124. cdroun… 50c9509d-22c7…
 #> # ... with 61 more variables: publishingOrgKey <chr>,
