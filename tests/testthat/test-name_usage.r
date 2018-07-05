@@ -59,6 +59,16 @@ test_that("name_usage works", {
   expect_equal(NCOL(uu$data), 5)
 })
 
+test_that("name_usage with single taxon key and return='data': returns issues correctly", {
+  x <- name_usage(key = 143861132, return = "data")
+
+  expect_is(x, "data.frame")
+  expect_is(x, "tbl_df")
+  expect_is(x$key, "integer")
+  expect_is(x$issues, "list")
+  expect_is(x$issues[[1]], "character")
+})
+
 test_that("name_usage name route works", {
   skip_on_cran()
   rte1 <- name_usage(key = 5231190, data = 'name')

@@ -269,7 +269,9 @@ nameusageparser <- function(z){
   tmp <- lapply(z, function(y) {
     if (length(y) == 0) NA else y
   })
-  df <- data.frame(tmp, stringsAsFactors = FALSE)
+  # df <- data.frame(tibble::as_data_frame(tmp), 
+  #   stringsAsFactors = FALSE)
+  df <- tibble::as_data_frame(tmp)
   if (all(tomove %in% names(df))) {
     movecols(df, tomove)
   } else {
