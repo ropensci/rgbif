@@ -1,3 +1,16 @@
+rgbif 1.0.2
+===========
+
+### MINOR IMPROVEMENTS
+
+* significant change to `occ_download_queue()`: sleep time between successive calls to check on the status of download requests is now 10 seconds or greater. This shouldn't slow down your use of `occ_download_queue()` much because most requests should take more than the 10 seconds to be prepared (#313)
+* add tests for download queue method (#315)
+* explicitly `@importFrom` fxns used from `lazyeval` package to avoid check note (#316)
+
+### BUG FIXES
+
+* fix bug in `name_usage()`: we were screwing up parsing of issues column when single taxon keys passed in (#314)
+
 rgbif 1.0.0
 ===========
 

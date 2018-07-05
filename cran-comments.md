@@ -21,7 +21,7 @@ File 'LICENSE':
 
 --------
 
-This version includes some new functions, some new and removed parameters and many bug fixes.
+This version changes sleep time between subsequent requests as requeste by GBIF developer team, and fixes a few minor things.
 
 Thanks!
 Scott Chamberlain
