@@ -101,33 +101,38 @@ Styles don't work yet, sorry, we'll try to fix it asap.
 }
 \examples{
 \dontrun{
-x <- map_fetch(search = "taxonKey", id = 3118771, year = 2010)
-x
-# gives a RasterLayer object
-class(x)
-# visualize
-library(raster)
-plot(x)
+if (
+ requireNamespace("png", quietly = TRUE) && 
+ requireNamespace("raster", quietly = TRUE)
+) {
+  x <- map_fetch(search = "taxonKey", id = 3118771, year = 2010)
+  x
+  # gives a RasterLayer object
+  class(x)
+  # visualize
+  library(raster)
+  plot(x)
 
-# different srs
-## 3857
-y <- map_fetch(search = "taxonKey", id = 3118771, year = 2010, srs = "EPSG:3857")
-plot(y)
-## 3031
-z <- map_fetch(search = "taxonKey", id = 3118771, year = 2010, srs = "EPSG:3031")
-plot(z)
-# 3575
-z <- map_fetch(search = "taxonKey", id = 3118771, year = 2010, srs = "EPSG:3575")
-plot(z)
+  # different srs
+  ## 3857
+  y <- map_fetch(search = "taxonKey", id = 3118771, year = 2010, srs = "EPSG:3857")
+  plot(y)
+  ## 3031
+  z <- map_fetch(search = "taxonKey", id = 3118771, year = 2010, srs = "EPSG:3031")
+  plot(z)
+  # 3575
+  z <- map_fetch(search = "taxonKey", id = 3118771, year = 2010, srs = "EPSG:3575")
+  plot(z)
 
-# bin
-plot(map_fetch(search = "taxonKey", id = 212, year = 1998, bin = "hex",
-   hexPerTile = 30, style = "classic-noborder.poly"))
+  # bin
+  plot(map_fetch(search = "taxonKey", id = 212, year = 1998, bin = "hex",
+     hexPerTile = 30, style = "classic-noborder.poly"))
 
-# map vector tile, gives back raw bytes
-x <- map_fetch(search = "taxonKey", id = 3118771, year = 2010,
-  format = ".mvt")
-x[1:10]
+  # map vector tile, gives back raw bytes
+  x <- map_fetch(search = "taxonKey", id = 3118771, year = 2010,
+    format = ".mvt")
+  x[1:10]
+ }
 }
 }
 \references{
