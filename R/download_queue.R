@@ -20,6 +20,14 @@
 #'     \item{`jobs()`}{
 #'       Give number of jobs in the `queue`
 #'     }
+#'     \item{`next_()`}{
+#'       Get the next job in the `queue`. if no more jobs, returns
+#'       empty list
+#'     }
+#'     \item{`last_()`}{
+#'       Get the last job in the `queue`. if no more jobs, returns
+#'       empty list
+#'     }
 #'   }
 #' @format NULL
 #' @usage NULL
@@ -39,6 +47,17 @@
 #' x
 #' x$remove(x$reqs[[1]])
 #' x
+#' 
+#' # pre-prepared download request
+#' z <- occ_download_prep(
+#'   "basisOfRecord = HUMAN_OBSERVATION,OBSERVATION",
+#'   "hasCoordinate = true",
+#'   "hasGeospatialIssue = false",
+#'   "year = 1993"
+#' )
+#' out <- GbifQueue$new(.list = list(z))
+#' out
+#' out$reqs
 
 GbifQueue <- R6::R6Class(
   'GbifQueue',

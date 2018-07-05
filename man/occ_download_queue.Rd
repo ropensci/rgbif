@@ -82,7 +82,7 @@ for (i in seq_along(keys)) {
 out <- occ_download_queue(.list = queries)
 out
 
-# anther pre-prepared
+# another pre-prepared example
 yrs <- 1930:1934
 length(yrs)
 queries <- list()

@@ -60,7 +60,7 @@
 #' out <- occ_download_queue(.list = queries)
 #' out
 #' 
-#' # anther pre-prepared
+#' # another pre-prepared example
 #' yrs <- 1930:1934
 #' length(yrs)
 #' queries <- list()
@@ -82,6 +82,7 @@ occ_download_queue <- function(..., .list = list(), status_ping = 10) {
   max_concurrent <- 3
 
   # status must be 10 sec or greater
+  assert(status_ping, c('integer', 'numeric'))
   stopifnot(status_ping >= 10)
 
   # collect requests
