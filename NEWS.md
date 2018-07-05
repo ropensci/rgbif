@@ -6,6 +6,7 @@ rgbif 1.0.2
 * significant change to `occ_download_queue()`: sleep time between successive calls to check on the status of download requests is now 10 seconds or greater. This shouldn't slow down your use of `occ_download_queue()` much because most requests should take more than the 10 seconds to be prepared (#313)
 * add tests for download queue method (#315)
 * explicitly `@importFrom` fxns used from `lazyeval` package to avoid check note (#316)
+* remove `reshape2` and `maps` packages from Suggests (#317)
 
 ### BUG FIXES
 
