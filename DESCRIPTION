@@ -44,8 +44,6 @@ Imports:
 Suggests:
     testthat,
     knitr,
-    reshape2,
-    maps,
     sp,
     rgeos,
     png,
