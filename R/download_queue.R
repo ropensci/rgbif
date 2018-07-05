@@ -31,7 +31,7 @@
 #'   }
 #' @format NULL
 #' @usage NULL
-#' @examples
+#' @examples \dontrun{
 #' x <- GbifQueue$new(
 #'   occ_download('taxonKey = 3119195', "year = 1976"),
 #'   occ_download('taxonKey = 3119195', "year = 2001"),
@@ -53,11 +53,13 @@
 #'   "basisOfRecord = HUMAN_OBSERVATION,OBSERVATION",
 #'   "hasCoordinate = true",
 #'   "hasGeospatialIssue = false",
-#'   "year = 1993"
+#'   "year = 1993",
+#'   user = "foo", pwd = "bar", email = "foo@bar.com"
 #' )
 #' out <- GbifQueue$new(.list = list(z))
 #' out
 #' out$reqs
+#' }
 
 GbifQueue <- R6::R6Class(
   'GbifQueue',
@@ -146,12 +148,13 @@ GbifQueue <- R6::R6Class(
 #' # res$status()
 #' 
 #' # prepared query
-#' res <- DownReq$new(occ_download_prep("basisOfRecord = LITERATURE"))
+#' res <- DownReq$new(occ_download_prep("basisOfRecord = LITERATURE", 
+#'   user = "foo", pwd = "bar", email = "foo@bar.com"))
 #' res
-#' res$run()
-#' res
-#' res$status()
-#' res$result
+#' # res$run()
+#' # res
+#' # res$status()
+#' # res$result
 #' }
 DownReq <- R6::R6Class(
   'DownReq',

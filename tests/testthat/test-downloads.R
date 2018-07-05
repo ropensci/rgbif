@@ -1,5 +1,7 @@
 context("occ_download_queue")
 test_that("occ_download_queue fails well", {
+  skip_on_cran()
+
   expect_error(occ_download_queue(status_ping = "foobar"), 
     "status_ping must be of class")
 })
@@ -7,6 +9,8 @@ test_that("occ_download_queue fails well", {
 
 context("GbifQueue")
 test_that("GbifQueue fails well", {
+  skip_on_cran()
+
   empty <- GbifQueue$new()
 
   expect_is(empty, "GbifQueue")
@@ -18,6 +22,8 @@ test_that("GbifQueue fails well", {
 })
 
 test_that("GbifQueue works with occ_download inputs", {
+  skip_on_cran()
+
   x <- GbifQueue$new(
     occ_download('taxonKey = 3119195', "year = 1976"),
     occ_download('taxonKey = 3119195', "year = 2001"),
@@ -42,16 +48,20 @@ test_that("GbifQueue works with occ_download inputs", {
 })
 
 test_that("GbifQueue works with occ_download_prep inputs", {
+  skip_on_cran()
+
   z <- occ_download_prep(
     "basisOfRecord = HUMAN_OBSERVATION,OBSERVATION",
     "hasCoordinate = true",
     "hasGeospatialIssue = false",
-    "year = 1993"
+    "year = 1993",
+    user = "foo", pwd = "bar", email = "foo@bar.com"
   )
   zz <- occ_download_prep(
     "basisOfRecord = HUMAN_OBSERVATION",
     "hasGeospatialIssue = true",
-    "year = 2003"
+    "year = 2003",
+    user = "foo", pwd = "bar", email = "foo@bar.com"
   )
   x <- GbifQueue$new(.list = list(z, zz))
 
@@ -75,12 +85,17 @@ test_that("GbifQueue works with occ_download_prep inputs", {
 
 context("DownReq")
 test_that("DownReq fails well", {
+  skip_on_cran()
+
   expect_error(DownReq$new(), 
     "argument \"x\" is missing")
 })
 
 test_that("DownReq works with occ_download_prep inputs", {
-  res <- DownReq$new(occ_download_prep("basisOfRecord = LITERATURE"))
+  skip_on_cran()
+
+  res <- DownReq$new(occ_download_prep("basisOfRecord = LITERATURE",
+    user = "foo", pwd = "bar", email = "foo@bar.com"))
 
   expect_is(res, "DownReq")
   expect_is(res$run, "function")

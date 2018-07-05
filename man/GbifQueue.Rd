@@ -39,6 +39,7 @@ empty list
 }
 }
 \examples{
+\dontrun{
 x <- GbifQueue$new(
   occ_download('taxonKey = 3119195', "year = 1976"),
   occ_download('taxonKey = 3119195', "year = 2001"),
@@ -60,10 +61,12 @@ z <- occ_download_prep(
   "basisOfRecord = HUMAN_OBSERVATION,OBSERVATION",
   "hasCoordinate = true",
   "hasGeospatialIssue = false",
-  "year = 1993"
+  "year = 1993",
+  user = "foo", pwd = "bar", email = "foo@bar.com"
 )
 out <- GbifQueue$new(.list = list(z))
 out
 out$reqs
+}
 }
 \keyword{internal}

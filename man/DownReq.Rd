@@ -37,12 +37,13 @@ check http request status
 # res$status()
 
 # prepared query
-res <- DownReq$new(occ_download_prep("basisOfRecord = LITERATURE"))
+res <- DownReq$new(occ_download_prep("basisOfRecord = LITERATURE", 
+  user = "foo", pwd = "bar", email = "foo@bar.com"))
 res
-res$run()
-res
-res$status()
-res$result
+# res$run()
+# res
+# res$status()
+# res$result
 }
 }
 \keyword{internal}
