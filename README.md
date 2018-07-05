@@ -94,7 +94,7 @@ install.packages('rgbif')
 
 ```r
 occ_search(scientificName = "Ursus americanus", limit = 50)
-#> Records found [10727] 
+#> Records found [10689] 
 #> Records returned [50] 
 #> No. unique hierarchies [1] 
 #> No. media records [49] 
@@ -142,7 +142,7 @@ Or you can get the taxon key first with `name_backbone()`. Here, we select to on
 ```r
 key <- name_backbone(name='Helianthus annuus', kingdom='plants')$speciesKey
 occ_search(taxonKey=key, limit=20)
-#> Records found [40997] 
+#> Records found [41219] 
 #> Records returned [20] 
 #> No. unique hierarchies [1] 
 #> No. media records [15] 
@@ -211,7 +211,7 @@ Get the keys first with `name_backbone()`, then pass to `occ_search()`
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 keys <- sapply(splist, function(x) name_backbone(name=x)$speciesKey, USE.NAMES=FALSE)
 occ_search(taxonKey=keys, limit=5, hasCoordinate=TRUE)
-#> Occ. found [2480598 (16), 9362842 (3802106), 2498387 (1243584)] 
+#> Occ. found [2480598 (16), 9362842 (3800072), 2498387 (1243725)] 
 #> Occ. returned [2480598 (5), 9362842 (5), 2498387 (5)] 
 #> No. unique hierarchies [2480598 (1), 9362842 (1), 2498387 (1)] 
 #> No. media records [2480598 (1), 9362842 (5), 2498387 (3)] 
