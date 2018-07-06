@@ -16,15 +16,11 @@
 #' @references <http://www.gbif.org/developer/registry#networks>
 #'
 #' @examples \dontrun{
-#' networks(limit=5)
-#' networks(uuid='7ddd1f14-a2b0-4838-95b0-785846f656f3')
-#' uuids <- c('7ddd1f14-a2b0-4838-95b0-785846f656f3',
-#'   '07b013b4-a2da-47a1-a8ef-df685912fbd6')
-#' lapply(uuids, function(x) networks(uuid = x))
-#' networks(data='endpoint', uuid='16ab5405-6c94-4189-ac71-16ca3b753df7')
+#' networks()
+#' networks(uuid='2b7c7b4f-4d4f-40d3-94de-c28b6fa054a6')
 #'
 #' # curl options
-#' networks(limit=5, curlopts = list(verbose=TRUE))
+#' networks(curlopts = list(verbose=TRUE))
 #' }
 
 networks <- function(data = 'all', uuid = NULL, query = NULL, identifier=NULL,

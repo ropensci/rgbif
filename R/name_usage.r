@@ -40,8 +40,8 @@
 #' name_usage(name='Puma', rank="GENUS")
 #'
 #' # Name usage for all taxa in a dataset 
-#' (set sufficient high limit, but less than 100000)
-#' name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42", limit = 10000)
+#' # (set sufficient high limit, but less than 100000)
+#' # name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42", limit = 10000)
 #' # All name usages
 #' name_usage()
 #'

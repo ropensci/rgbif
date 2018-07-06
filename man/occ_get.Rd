@@ -47,9 +47,9 @@ occ_get(key=855998194, verbatim=TRUE)
 occ_get(key=855998194, fields='all', verbatim=TRUE)
 occ_get(key=855998194, fields=c('scientificName', 'lastCrawled', 'county'),
   verbatim=TRUE)
-occ_get(key=c(855998194, 620594291, 766420684), verbatim=TRUE)
-occ_get(key=c(855998194, 620594291, 766420684), fields='all', verbatim=TRUE)
-occ_get(key=c(855998194, 620594291, 766420684),
+occ_get(key=c(855998194, 620594291), verbatim=TRUE)
+occ_get(key=c(855998194, 620594291), fields='all', verbatim=TRUE)
+occ_get(key=c(855998194, 620594291),
    fields=c('scientificName', 'decimalLatitude', 'basisOfRecord'),
    verbatim=TRUE)
 

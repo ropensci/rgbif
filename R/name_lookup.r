@@ -14,7 +14,7 @@
 #'
 #' # large requests (paging is internally implemented).
 #' # hard maximum limit set by GBIF API: 99999
-#' name_lookup(query = "Carnivora", limit = 10000)
+#' # name_lookup(query = "Carnivora", limit = 10000)
 #'
 #' # Get all data and parse it, removing descriptions which can be quite long
 #' out <- name_lookup('Helianthus annuus', rank="species", verbose=TRUE)
@@ -65,8 +65,8 @@
 #' gbif_names(res)
 #'
 #' # Lookup by datasetKey (set up sufficient high limit, API maximum: 99999)
-#' name_lookup(datasetKey='3f8a1297-3259-4700-91fc-acc4170b27ce',
-#' limit = 50000)
+#' # name_lookup(datasetKey='3f8a1297-3259-4700-91fc-acc4170b27ce',
+#' #   limit = 50000)
 #'
 #' # Some parameters accept many inputs, treated as OR
 #' name_lookup(rank = c("family", "genus"))
