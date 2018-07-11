@@ -54,7 +54,9 @@ occ_get <- function(key=NULL, return='all', verbatim=FALSE, fields='minimal',
     } else {
       url <- sprintf('%s/occurrence/%s', gbif_base(), x)
     }
-    gbif_GET(url, NULL, FALSE, curlopts)
+    # gbif_GET(url, NULL, FALSE, curlopts)
+    # if verbatim=TRUE, attemps to parse to data.frame's
+    gbif_GET(url, NULL, verbatim, curlopts)
   }
 
   # Get data
