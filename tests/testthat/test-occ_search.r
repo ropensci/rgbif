@@ -40,7 +40,6 @@ test_that("returns the correct dimensions", {
   expect_is(out, "data.frame")
   expect_is(out$name, "character")
   expect_is(out$issues, "character")
-  expect_match(out$issues, ",")
 })
 
 ## Search by catalog number
