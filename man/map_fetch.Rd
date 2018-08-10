@@ -6,8 +6,9 @@
 \usage{
 map_fetch(source = "density", x = 0, y = 0, z = 0, format = "@1x.png",
   srs = "EPSG:4326", bin = NULL, hexPerTile = NULL, squareSize = NULL,
-  style = "classic.point", search = NULL, id = NULL, year = NULL,
-  basisOfRecord = NULL, ...)
+  style = "classic.point", taxonKey = NULL, datasetKey = NULL,
+  country = NULL, publishingOrg = NULL, publishingCountry = NULL,
+  year = NULL, basisOfRecord = NULL, ...)
 }
 \arguments{
 \item{source}{(character) Either \code{density} for fast, precalculated tiles,
@@ -50,25 +51,35 @@ of 4096 so they tessalate correctly: probably from 8, 16, 32, 64, 128,
 \item{style}{(character) for raster tiles, choose from the available styles.
 Defaults to classic.point. optional. THESE DON'T WORK YET.}
 
-\item{search}{(character) defines what type of subset of all GBIF data to
-return. Should be one of "taxonKey", "datasetKey", "country", "publisher",
-"publishingCountry". Without any search parameter, all occurrences will be
-returned. optional}
+\item{taxonKey}{(integer/numeric/character) search by taxon key, can only
+supply 1. optional}
 
-\item{id}{(character) defines the value to be used as filter criterium in
-the category supplied by \code{search}. Appropriate values depend on the
-search category that is used, for example integer for
-\code{search = "taxonKey"}. Has to be provided if
-\code{search} parameter is specified. optional}
+\item{datasetKey}{(character) search by taxon key, can only supply 1.
+optional}
+
+\item{country}{(character) search by taxon key, can only supply 1.
+optional}
+
+\item{publishingOrg}{(character) search by taxon key, can only supply 1.
+optional}
+
+\item{publishingCountry}{(character) search by taxon key, can only
+supply 1. optional}
 
 \item{year}{(integer) integer that limits the search to a certain year or,
 if passing a vector of integers, multiple years, for example
-\code{1984} or \code{c(2016, 2017, 2018)}. optional}
+\code{1984} or \code{c(2016, 2017, 2018)} or \code{2010:2015} (years 2010 to 2015). optional}
 
 \item{basisOfRecord}{(character) one or more basis of record states to
 include records with that basis of record. The full list is: \code{c("OBSERVATION", "HUMAN_OBSERVATION", "MACHINE_OBSERVATION", "MATERIAL_SAMPLE", "PRESERVED_SPECIMEN", "FOSSIL_SPECIMEN", "LIVING_SPECIMEN", "LITERATURE", "UNKNOWN")}. optional}
 
 \item{...}{curl options passed on to \link[crul:HttpClient]{crul::HttpClient}}
+
+\item{search}{Deprecated, see taxonKey, datasetKey, country, publishingOrg,
+publishingCountry}
+
+\item{id}{Deprecated, see taxonKey, datasetKey, country, publishingOrg,
+publishingCountry}
 }
 \value{
 an object of class \code{RasterLayer} if png format used, or
@@ -105,7 +116,7 @@ if (
  requireNamespace("png", quietly = TRUE) && 
  requireNamespace("raster", quietly = TRUE)
 ) {
-  x <- map_fetch(search = "taxonKey", id = 3118771, year = 2010)
+  x <- map_fetch(taxonKey = 2480498, year = 2007:2011)
   x
   # gives a RasterLayer object
   class(x)
@@ -115,23 +126,32 @@ if (
 
   # different srs
   ## 3857
-  y <- map_fetch(search = "taxonKey", id = 3118771, year = 2010, srs = "EPSG:3857")
+  y <- map_fetch(taxonKey = 2480498, year = 2010, srs = "EPSG:3857")
   plot(y)
   ## 3031
-  z <- map_fetch(search = "taxonKey", id = 3118771, year = 2010, srs = "EPSG:3031")
+  z <- map_fetch(taxonKey = 2480498, year = 2010, srs = "EPSG:3031", verbose = TRUE)
   plot(z)
   # 3575
-  z <- map_fetch(search = "taxonKey", id = 3118771, year = 2010, srs = "EPSG:3575")
+  z <- map_fetch(taxonKey = 2480498, year = 2010, srs = "EPSG:3575")
   plot(z)
 
   # bin
-  plot(map_fetch(search = "taxonKey", id = 212, year = 1998, bin = "hex",
+  plot(map_fetch(taxonKey = 212, year = 1998, bin = "hex",
      hexPerTile = 30, style = "classic-noborder.poly"))
 
+  # styles
+  plot(map_fetch(taxonKey = 2480498, style = "purpleYellow.point"))
+
   # map vector tile, gives back raw bytes
-  x <- map_fetch(search = "taxonKey", id = 3118771, year = 2010,
+  x <- map_fetch(taxonKey = 2480498, year = 2010,
     format = ".mvt")
   x[1:10]
+
+  # query with basisOfRecord
+  map_fetch(taxonKey = 2480498, year = 2010, 
+    basisOfRecord = "HUMAN_OBSERVATION")
+  map_fetch(taxonKey = 2480498, year = 2010, 
+    basisOfRecord = c("HUMAN_OBSERVATION", "LIVING_SPECIMEN"))
  }
 }
 }
