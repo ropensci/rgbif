@@ -74,12 +74,6 @@ if passing a vector of integers, multiple years, for example
 include records with that basis of record. The full list is: \code{c("OBSERVATION", "HUMAN_OBSERVATION", "MACHINE_OBSERVATION", "MATERIAL_SAMPLE", "PRESERVED_SPECIMEN", "FOSSIL_SPECIMEN", "LIVING_SPECIMEN", "LITERATURE", "UNKNOWN")}. optional}
 
 \item{...}{curl options passed on to \link[crul:HttpClient]{crul::HttpClient}}
-
-\item{search}{Deprecated, see taxonKey, datasetKey, country, publishingOrg,
-publishingCountry}
-
-\item{id}{Deprecated, see taxonKey, datasetKey, country, publishingOrg,
-publishingCountry}
 }
 \value{
 an object of class \code{RasterLayer} if png format used, or
