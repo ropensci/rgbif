@@ -4,7 +4,8 @@
 \alias{occ_download_get}
 \title{Get a download from GBIF.}
 \usage{
-occ_download_get(key, path = ".", overwrite = FALSE, curlopts = list())
+occ_download_get(key, path = ".", overwrite = FALSE,
+  curlopts = list())
 }
 \arguments{
 \item{key}{A key generated from a request, like that from \code{occ_download}}

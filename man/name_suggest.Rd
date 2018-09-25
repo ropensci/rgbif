@@ -6,8 +6,8 @@
 usages by doing prefix matching against the scientific name. Results
 are ordered by relevance.}
 \usage{
-name_suggest(q = NULL, datasetKey = NULL, rank = NULL, fields = NULL,
-  start = NULL, limit = 100, curlopts = list())
+name_suggest(q = NULL, datasetKey = NULL, rank = NULL,
+  fields = NULL, start = NULL, limit = 100, curlopts = list())
 }
 \arguments{
 \item{q}{(character, required) Simple search parameter. The value for

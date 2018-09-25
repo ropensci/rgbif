@@ -82,10 +82,10 @@ just use an \code{lapply} family function, or a for loop, etc.
 These parameters used to accept many inputs, but no longer do:
 
 \itemize{
- \item \strong{rank}
- \item \strong{name}
- \item \strong{langugae}
- \item \strong{datasetKey}
+\item \strong{rank}
+\item \strong{name}
+\item \strong{langugae}
+\item \strong{datasetKey}
 }
 
 see also \code{\link{many-values}}

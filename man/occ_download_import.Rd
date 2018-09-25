@@ -7,7 +7,8 @@
 \alias{as.download.download}
 \title{Import a downloaded file from GBIF.}
 \usage{
-occ_download_import(x = NULL, key = NULL, path = ".", fill = TRUE, ...)
+occ_download_import(x = NULL, key = NULL, path = ".", fill = TRUE,
+  ...)
 
 as.download(path = ".", key = NULL)
 

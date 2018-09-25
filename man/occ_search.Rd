@@ -9,18 +9,20 @@ occ_search(taxonKey = NULL, scientificName = NULL, country = NULL,
   recordNumber = NULL, lastInterpreted = NULL, continent = NULL,
   geometry = NULL, geom_big = "asis", geom_size = 40, geom_n = 10,
   recordedBy = NULL, basisOfRecord = NULL, datasetKey = NULL,
-  eventDate = NULL, catalogNumber = NULL, year = NULL, month = NULL,
-  decimalLatitude = NULL, decimalLongitude = NULL, elevation = NULL,
-  depth = NULL, institutionCode = NULL, collectionCode = NULL,
-  hasGeospatialIssue = NULL, issue = NULL, search = NULL,
-  mediaType = NULL, subgenusKey = NULL, repatriated = NULL,
-  phylumKey = NULL, kingdomKey = NULL, classKey = NULL, orderKey = NULL,
-  familyKey = NULL, genusKey = NULL, establishmentMeans = NULL,
-  protocol = NULL, license = NULL, organismId = NULL,
-  publishingOrg = NULL, stateProvince = NULL, waterBody = NULL,
-  locality = NULL, limit = 500, start = 0, fields = "all",
-  return = "all", spellCheck = NULL, facet = NULL, facetMincount = NULL,
-  facetMultiselect = NULL, skip_validate = TRUE, curlopts = list(), ...)
+  eventDate = NULL, catalogNumber = NULL, year = NULL,
+  month = NULL, decimalLatitude = NULL, decimalLongitude = NULL,
+  elevation = NULL, depth = NULL, institutionCode = NULL,
+  collectionCode = NULL, hasGeospatialIssue = NULL, issue = NULL,
+  search = NULL, mediaType = NULL, subgenusKey = NULL,
+  repatriated = NULL, phylumKey = NULL, kingdomKey = NULL,
+  classKey = NULL, orderKey = NULL, familyKey = NULL,
+  genusKey = NULL, establishmentMeans = NULL, protocol = NULL,
+  license = NULL, organismId = NULL, publishingOrg = NULL,
+  stateProvince = NULL, waterBody = NULL, locality = NULL,
+  limit = 500, start = 0, fields = "all", return = "all",
+  spellCheck = NULL, facet = NULL, facetMincount = NULL,
+  facetMultiselect = NULL, skip_validate = TRUE, curlopts = list(),
+  ...)
 }
 \arguments{
 \item{taxonKey}{(numeric) A taxon key from the GBIF backbone. All included and synonym taxa
@@ -34,7 +36,7 @@ taxa are included in the search.}
 
 \item{country}{The 2-letter country code (as per ISO-3166-1) of the country in
 which the occurrence was recorded. See here
-<http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2>}
+\url{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}}
 
 \item{publishingCountry}{The 2-letter country code (as per ISO-3166-1) of the
 country in which the occurrence was recorded.}
@@ -45,7 +47,7 @@ all records (\code{FALSE}, default).}
 \item{typeStatus}{Type status of the specimen. One of many options. See \code{?typestatus}}
 
 \item{recordNumber}{Number recorded by collector of the data, different from GBIF record
-number. See <http://rs.tdwg.org/dwc/terms/#recordNumber> for more info}
+number. See \url{http://rs.tdwg.org/dwc/terms/#recordNumber} for more info}
 
 \item{lastInterpreted}{Date the record was last modified in GBIF, in ISO 8601 format:
 yyyy, yyyy-MM, yyyy-MM-dd, or MM-dd.  Supports range queries, smaller,larger (e.g.,
@@ -58,7 +60,7 @@ or south_america}
 \item{geometry}{Searches for occurrences inside a polygon described in Well Known
 Text (WKT) format. A WKT shape written as either POINT, LINESTRING, LINEARRING
 POLYGON, or MULTIPOLYGON. Example of a polygon: POLYGON((30.1 10.1, 20, 20 40, 40 40, 30.1 10.1))
-would be queried as <http://bit.ly/1BzNwDq>. See also the section **WKT** below.}
+would be queried as \url{http://bit.ly/1BzNwDq}. See also the section \strong{WKT} below.}
 
 \item{geom_big}{(character) One of "axe", "bbox", or "asis" (default). See Details.}
 
@@ -70,19 +72,19 @@ See Details.}
 \item{recordedBy}{The person who recorded the occurrence.}
 
 \item{basisOfRecord}{Basis of record, as defined in our BasisOfRecord enum here
-<http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/BasisOfRecord.html>
+\url{http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/BasisOfRecord.html}
 Acceptable values are:
 \itemize{
-  \item FOSSIL_SPECIMEN An occurrence record describing a fossilized specimen.
-  \item HUMAN_OBSERVATION An occurrence record describing an observation made by
-  one or more people.
-  \item LITERATURE An occurrence record based on literature alone.
-  \item LIVING_SPECIMEN An occurrence record describing a living specimen, e.g.
-  \item MACHINE_OBSERVATION An occurrence record describing an observation made
-  by a machine.
-  \item OBSERVATION An occurrence record describing an observation.
-  \item PRESERVED_SPECIMEN An occurrence record describing a preserved specimen.
-  \item UNKNOWN Unknown basis for the record.
+\item FOSSIL_SPECIMEN An occurrence record describing a fossilized specimen.
+\item HUMAN_OBSERVATION An occurrence record describing an observation made by
+one or more people.
+\item LITERATURE An occurrence record based on literature alone.
+\item LIVING_SPECIMEN An occurrence record describing a living specimen, e.g.
+\item MACHINE_OBSERVATION An occurrence record describing an observation made
+by a machine.
+\item OBSERVATION An occurrence record describing an observation.
+\item PRESERVED_SPECIMEN An occurrence record describing a preserved specimen.
+\item UNKNOWN Unknown basis for the record.
 }}
 
 \item{datasetKey}{The occurrence dataset key (a uuid)}
@@ -209,15 +211,15 @@ in the faceting results}
 for values that are not currently filtered. See examples.
 Default: \code{FALSE}
 
-**Faceting**:
+\strong{Faceting}:
 All fields can be faceted on except for last "lastInterpreted",
 "eventDate", and "geometry"
 
 You can do facet searches alongside searching occurrence data, and
 return both, or only return facets, or only occurrence data, etc.}
 
-\item{skip_validate}{(logical) whether to skip `wicket::wkt_validate`
-call or not. passed down to [check_wkt()]. Default: `TRUE`}
+\item{skip_validate}{(logical) whether to skip \code{wicket::wkt_validate}
+call or not. passed down to \code{\link[=check_wkt]{check_wkt()}}. Default: \code{TRUE}}
 
 \item{curlopts}{list of named curl options passed on to
 \code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}

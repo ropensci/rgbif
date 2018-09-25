@@ -5,8 +5,8 @@
 \alias{occ_download_prep}
 \title{Spin up a download request for GBIF occurrence data.}
 \usage{
-occ_download(..., body = NULL, type = "and", user = NULL, pwd = NULL,
-  email = NULL, curlopts = list())
+occ_download(..., body = NULL, type = "and", user = NULL,
+  pwd = NULL, email = NULL, curlopts = list())
 
 occ_download_prep(..., body = NULL, type = "and", user = NULL,
   pwd = NULL, email = NULL, curlopts = list())

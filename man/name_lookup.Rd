@@ -29,16 +29,16 @@ passed in the same request).}
 
 \item{status}{Filters by the taxonomic status as one of:
 \itemize{
- \item ACCEPTED
- \item DETERMINATION_SYNONYM Used for unknown child taxa referred to via
- spec, ssp, ...
- \item DOUBTFUL Treated as accepted, but doubtful whether this is correct.
- \item HETEROTYPIC_SYNONYM More specific subclass of SYNONYM.
- \item HOMOTYPIC_SYNONYM More specific subclass of SYNONYM.
- \item INTERMEDIATE_RANK_SYNONYM Used in nub only.
- \item MISAPPLIED More specific subclass of SYNONYM.
- \item PROPARTE_SYNONYM More specific subclass of SYNONYM.
- \item SYNONYM A general synonym, the exact type is unknown.
+\item ACCEPTED
+\item DETERMINATION_SYNONYM Used for unknown child taxa referred to via
+spec, ssp, ...
+\item DOUBTFUL Treated as accepted, but doubtful whether this is correct.
+\item HETEROTYPIC_SYNONYM More specific subclass of SYNONYM.
+\item HOMOTYPIC_SYNONYM More specific subclass of SYNONYM.
+\item INTERMEDIATE_RANK_SYNONYM Used in nub only.
+\item MISAPPLIED More specific subclass of SYNONYM.
+\item PROPARTE_SYNONYM More specific subclass of SYNONYM.
+\item SYNONYM A general synonym, the exact type is unknown.
 }}
 
 \item{isExtinct}{(logical) Filters by extinction status (e.g.
@@ -49,34 +49,34 @@ or terrestrial}
 
 \item{nameType}{Filters by the name type as one of:
 \itemize{
- \item BLACKLISTED surely not a scientific name.
- \item CANDIDATUS Candidatus is a component of the taxonomic name for a
- bacterium that cannot be maintained in a Bacteriology Culture Collection.
- \item CULTIVAR a cultivated plant name.
- \item DOUBTFUL doubtful whether this is a scientific name at all.
- \item HYBRID a hybrid formula (not a hybrid name).
- \item INFORMAL a scientific name with some informal addition like "cf." or
- indetermined like Abies spec.
- \item SCINAME a scientific name which is not well formed.
- \item VIRUS a virus name.
- \item WELLFORMED a well formed scientific name according to present
- nomenclatural rules.
+\item BLACKLISTED surely not a scientific name.
+\item CANDIDATUS Candidatus is a component of the taxonomic name for a
+bacterium that cannot be maintained in a Bacteriology Culture Collection.
+\item CULTIVAR a cultivated plant name.
+\item DOUBTFUL doubtful whether this is a scientific name at all.
+\item HYBRID a hybrid formula (not a hybrid name).
+\item INFORMAL a scientific name with some informal addition like "cf." or
+indetermined like Abies spec.
+\item SCINAME a scientific name which is not well formed.
+\item VIRUS a virus name.
+\item WELLFORMED a well formed scientific name according to present
+nomenclatural rules.
 }}
 
 \item{datasetKey}{Filters by the dataset's key (a uuid)}
 
 \item{origin}{(character) Filters by origin. One of:
 \itemize{
- \item SOURCE
- \item DENORMED_CLASSIFICATION
- \item VERBATIM_ACCEPTED
- \item EX_AUTHOR_SYNONYM
- \item AUTONYM
- \item BASIONYM_PLACEHOLDER
- \item MISSING_ACCEPTED
- \item IMPLICIT_NAME
- \item PROPARTE
- \item VERBATIM_BASIONYM
+\item SOURCE
+\item DENORMED_CLASSIFICATION
+\item VERBATIM_ACCEPTED
+\item EX_AUTHOR_SYNONYM
+\item AUTONYM
+\item BASIONYM_PLACEHOLDER
+\item MISSING_ACCEPTED
+\item IMPLICIT_NAME
+\item PROPARTE
+\item VERBATIM_BASIONYM
 }}
 
 \item{nomenclaturalStatus}{Not yet implemented, but will eventually allow
@@ -135,16 +135,14 @@ for curl options}
 \value{
 A list of length five:
 \itemize{
- \item \strong{metadata}
- \item \strong{data}: either a data.frame (\code{verbose=FALSE}, default) or a list (\code{verbose=TRUE}).
- \item \strong{facets}
- \item \strong{hierarchies}
- \item \strong{names}
+\item \strong{metadata}
+\item \strong{data}: either a data.frame (\code{verbose=FALSE}, default) or a list (\code{verbose=TRUE}).
+\item \strong{facets}
+\item \strong{hierarchies}
+\item \strong{names}
 }
 }
 \description{
-Lookup names in all taxonomies in GBIF.
-
 This service uses fuzzy lookup so that you can put in partial names and
 you should get back those things that match. See examples below.
 
@@ -157,13 +155,13 @@ ignored (facetOnly, facetMincount, facetMultiselect).
 Some parameters can take many inputs, and treated as 'OR' (e.g., a or b or
 c). The following take many inputs:
 \itemize{
- \item \strong{rank}
- \item \strong{higherTaxonKey}
- \item \strong{status}
- \item \strong{habitat}
- \item \strong{nameType}
- \item \strong{datasetKey}
- \item \strong{origin}
+\item \strong{rank}
+\item \strong{higherTaxonKey}
+\item \strong{status}
+\item \strong{habitat}
+\item \strong{nameType}
+\item \strong{datasetKey}
+\item \strong{origin}
 }
 
 see also \code{\link{many-values}}

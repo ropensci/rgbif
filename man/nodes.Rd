@@ -45,23 +45,23 @@ Nodes metadata.
 identifierType options:
 
 \itemize{
- \item {DOI} No description.
- \item {FTP} No description.
- \item {GBIF_NODE} Identifies the node (e.g: \code{DK} for Denmark, \code{sp2000}
- for Species 2000).
- \item {GBIF_PARTICIPANT} Participant identifier from the GBIF IMS
- Filemaker system.
- \item {GBIF_PORTAL} Indicates the identifier originated from an
- auto_increment column in the portal.data_provider or portal.data_resource
- table respectively.
- \item {HANDLER} No description.
- \item {LSID} Reference controlled by a separate system, used for example
- by DOI.
- \item {SOURCE_ID} No description.
- \item {UNKNOWN} No description.
- \item {URI} No description.
- \item {URL} No description.
- \item {UUID} No description.
+\item {DOI} No description.
+\item {FTP} No description.
+\item {GBIF_NODE} Identifies the node (e.g: \code{DK} for Denmark, \code{sp2000}
+for Species 2000).
+\item {GBIF_PARTICIPANT} Participant identifier from the GBIF IMS
+Filemaker system.
+\item {GBIF_PORTAL} Indicates the identifier originated from an
+auto_increment column in the portal.data_provider or portal.data_resource
+table respectively.
+\item {HANDLER} No description.
+\item {LSID} Reference controlled by a separate system, used for example
+by DOI.
+\item {SOURCE_ID} No description.
+\item {UNKNOWN} No description.
+\item {URI} No description.
+\item {URL} No description.
+\item {UUID} No description.
 }
 }
 \examples{
