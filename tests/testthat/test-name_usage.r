@@ -60,7 +60,7 @@ test_that("name_usage works", {
 })
 
 test_that("name_usage with single taxon key and return='data': returns issues correctly", {
-  x <- name_usage(key = 143861132, return = "data")
+  x <- name_usage(key = 100037505, return = "data")
 
   expect_is(x, "data.frame")
   expect_is(x, "tbl_df")
