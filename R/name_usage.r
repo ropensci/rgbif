@@ -32,6 +32,10 @@
 #' internally loops over each option making separate requests. This has been
 #' removed. You can still loop over many options for the `data` parameter,
 #' just use an `lapply` family function, or a for loop, etc.
+#' 
+#' See [name_issues()] for information on name usage issues related to the
+#' `issues` column in output from this function
+#' 
 #' @examples \dontrun{
 #' # A single name usage
 #' name_usage(key=1)
@@ -183,7 +187,6 @@ getdata <- function(x, key, uuid, shortname, args, curlopts = list()){
 }
 
 name_usage_parse <- function(x, y) {
-  # many <- c("parents", "related")
   many <- "parents"
   if (has_meta(x) || y %in% many) {
     if (y %in% many) {

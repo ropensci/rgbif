@@ -299,8 +299,10 @@ nameusageparser <- function(z){
   tmp <- lapply(z, function(y) {
     if (length(y) == 0) NA else y
   })
-  # df <- data.frame(tibble::as_data_frame(tmp), 
-  #   stringsAsFactors = FALSE)
+  # reduce multiple element slots to comma sep
+  if ("issues" %in% names(tmp)) {
+    tmp[names(tmp) %in% "issues"] <- collapse_name_issues(tmp)
+  }
   df <- tibble::as_data_frame(tmp)
   if (all(tomove %in% names(df))) {
     movecols(df, tomove)

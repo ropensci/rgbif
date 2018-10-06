@@ -20,3 +20,6 @@ Table has the following fields:
 \item description. Description of the issue.
 }
 }
+\seealso{
+\code{\link[=name_issues]{name_issues()}}
+}

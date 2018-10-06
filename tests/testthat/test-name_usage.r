@@ -65,7 +65,7 @@ test_that("name_usage with single taxon key and return='data': returns issues co
   expect_is(x, "data.frame")
   expect_is(x, "tbl_df")
   expect_is(x$key, "integer")
-  expect_is(x$issues, "list")
+  expect_is(x$issues, "character")
   expect_is(x$issues[[1]], "character")
 })
 

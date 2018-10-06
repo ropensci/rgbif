@@ -3,15 +3,14 @@
 #'
 #' Table has the following fields:
 #'
-#' \itemize{
-#'   \item code. Code for issue, making viewing data easier.
-#'   \item issue. Full name of the issue.
-#'   \item description. Description of the issue.
-#' }
+#' - code. Code for issue, making viewing data easier.
+#' - issue. Full name of the issue.
+#' - description. Description of the issue.
 #'
 #' @export
 #' @usage gbif_issues()
-#' @source \url{http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html}
+#' @seealso [name_issues()]
+#' @source <http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html>
 gbif_issues <- function() gbifissues
 
 gbifissues <- structure(list(
