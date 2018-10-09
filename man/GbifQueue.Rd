@@ -28,9 +28,18 @@ Remove a job from the queue
 \item{\code{jobs()}}{
 Give number of jobs in the \code{queue}
 }
+\item{\code{next_()}}{
+Get the next job in the \code{queue}. if no more jobs, returns
+empty list
+}
+\item{\code{last_()}}{
+Get the last job in the \code{queue}. if no more jobs, returns
+empty list
+}
 }
 }
 \examples{
+\dontrun{
 x <- GbifQueue$new(
   occ_download('taxonKey = 3119195', "year = 1976"),
   occ_download('taxonKey = 3119195', "year = 2001"),
@@ -46,5 +55,18 @@ x$jobs()
 x
 x$remove(x$reqs[[1]])
 x
+
+# pre-prepared download request
+z <- occ_download_prep(
+  "basisOfRecord = HUMAN_OBSERVATION,OBSERVATION",
+  "hasCoordinate = true",
+  "hasGeospatialIssue = false",
+  "year = 1993",
+  user = "foo", pwd = "bar", email = "foo@bar.com"
+)
+out <- GbifQueue$new(.list = list(z))
+out
+out$reqs
+}
 }
 \keyword{internal}

@@ -111,12 +111,12 @@ clean_data <- function(x){
 
 # Parser for gbif data
 # param: input A list
-# param: fields (character) Default ('minimal') will return just taxon name, key, decimalLatitude, and
-#    decimalLongitute. 'all' returns all fields. Or specify each field you want returned by name, e.g.
-#    fields = c('name','decimalLatitude','altitude').
+# param: fields (character) Default ('minimal') will return just taxon name, 
+#    key, decimalLatitude, and decimalLongitute. 'all' returns all fields. Or 
+#    specify each field you want returned by name, e.g. fields = 
+#    c('name','decimalLatitude','altitude').
 gbifparser_verbatim <- function(input, fields='minimal'){
-  parse <- function(x){
-#     alldata <- data.frame(key=x$key, x$fields, stringsAsFactors=FALSE)
+  parse <- function(x) {
     nn <- vapply(names(x), function(z){
       tmp <- strsplit(z, "/")[[1]]
       tmp[length(tmp)]
@@ -124,24 +124,54 @@ gbifparser_verbatim <- function(input, fields='minimal'){
 
     names(x) <- nn
 
-    if(any(fields=='minimal')){
+    if (any(fields=='minimal')) {
       if(all(c('decimalLatitude','decimalLongitude') %in% names(x))) {
         x[c('scientificName','key','decimalLatitude','decimalLongitude')]
       } else {
-        list(scientificName=x[['scientificName']], key=x[['key']], decimalLatitude=NA, decimalLongitude=NA, stringsAsFactors=FALSE)
+        list(scientificName=x[['scientificName']], key=x[['key']], 
+          decimalLatitude=NA, decimalLongitude=NA, stringsAsFactors=FALSE)
       }
     } else if(any(fields == 'all')) {
       x[vapply(x, length, 0) == 0] <- "none"
+      if ("extensions" %in% names(x)) {
+        # x$extensions <- rgbif_compact(lapply(x$extensions, function(z) {
+        #   if (length(z) == 0) return(NULL)
+        #   iflapply(z, class)
+        # }))
+        if (length(x$extensions) == 0) {
+          x$extensions <- NULL
+        } else if (identical(x$extensions[[1]], "none")) {
+          x$extensions <- NULL
+        } else {
+          # tmp <- lapply(x$extensions, function(w) {
+          #   names(w) <- paste0("extensions_", names(w))
+          #   as.list(w)
+          # })
+
+          m <- list()
+          for (i in seq_along(x$extensions)) {
+            z <- x$extensions[[i]]
+            names(z) <- sprintf("extensions_%s_%s", 
+              basename(names(x$extensions)[i]), names(z))
+            m[[i]] <- as.list(z)
+          }
+
+          x$extensions <- NULL
+          x <- c(x, as.list(unlist(m)))
+        }
+      }
       x
     } else {
       x[vapply(x, length, 0) == 0] <- "none"
       x[names(x) %in% fields]
     }
   }
-  if(is.numeric(input[[1]])){
+
+  if (is.numeric(input[[1]])) {
     data.frame(parse(input), stringsAsFactors = FALSE)
   } else {
-    do.call(rbind_fill, lapply(input, function(w) data.frame(parse(w), stringsAsFactors = FALSE)))
+    do.call(rbind_fill, lapply(input, function(w) data.frame(parse(w), 
+      stringsAsFactors = FALSE)))
   }
 }
 
@@ -269,7 +299,11 @@ nameusageparser <- function(z){
   tmp <- lapply(z, function(y) {
     if (length(y) == 0) NA else y
   })
-  df <- data.frame(tmp, stringsAsFactors = FALSE)
+  # reduce multiple element slots to comma sep
+  if ("issues" %in% names(tmp)) {
+    tmp[names(tmp) %in% "issues"] <- collapse_name_issues(tmp)
+  }
+  df <- tibble::as_data_frame(tmp)
   if (all(tomove %in% names(df))) {
     movecols(df, tomove)
   } else {
@@ -495,7 +529,7 @@ check_for_a_pkg <- function(x) {
 
 assert <- function (x, y) {
   if (!is.null(x)) {
-    if (!class(x) %in% y) {
+    if (!inherits(x, y)) {
       stop(deparse(substitute(x)), " must be of class ",
           paste0(y, collapse = ", "), call. = FALSE)
     }

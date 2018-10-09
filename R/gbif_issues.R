@@ -3,15 +3,14 @@
 #'
 #' Table has the following fields:
 #'
-#' \itemize{
-#'   \item code. Code for issue, making viewing data easier.
-#'   \item issue. Full name of the issue.
-#'   \item description. Description of the issue.
-#' }
+#' - code. Code for issue, making viewing data easier.
+#' - issue. Full name of the issue.
+#' - description. Description of the issue.
 #'
 #' @export
 #' @usage gbif_issues()
-#' @source \url{http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html}
+#' @seealso [name_issues()]
+#' @source <http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html>
 gbif_issues <- function() gbifissues
 
 gbifissues <- structure(list(
@@ -72,13 +71,13 @@ gbifissues <- structure(list(
                   "Coordinate is the exact 0/0 coordinate, often indicating a bad null coordinate."
   )), .Names = c("code", "issue", "description"), class = "data.frame", row.names = c(NA, -42L))
 
-collapse_issues <- function(x){
-  tmp <- x[names(x) %in% "issues"][[1]]
+collapse_issues <- function(x, issue_col = "issues") {
+  tmp <- x[names(x) %in% issue_col][[1]]
   tmp <- gbifissues[ gbifissues$issue %in% tmp, "code" ]
   paste(tmp, collapse = ",")
 }
 
-collapse_issues_vec <- function(x){
-  tmp <- x[names(x) %in% "issues"][[1]]
-  unlist(lapply(tmp, function(x) paste(gbifissues[ gbifissues$issue %in% x, "code" ], collapse = ",")))
+collapse_issues_vec <- function(x, issue_col = "issues") {
+  tmp <- x[names(x) %in% issue_col][[1]]
+  unlist(lapply(tmp, function(z) paste(gbifissues[ gbifissues$issue %in% z, "code" ], collapse = ",")))
 }

@@ -21,6 +21,12 @@
 #' email. Required. See Details.
 #' @template occ
 #' @note see [downloads] for an overview of GBIF downloads methods
+#' 
+#' @section Methods:
+#' 
+#' - `occ_download_prep`: prepares a download request, but DOES NOT execute it.
+#' meant for use with [occ_download_queue()]
+#' - `occ_download`: prepares a download request and DOES execute it
 #'
 #' @section Authentication:
 #' For `user`, `pwd`, and `email` parameters, you can set them in one of
@@ -164,9 +170,22 @@
 #'   )
 #' )
 #' # res <- occ_download(body = query, curlopts = list(verbose = TRUE))
+#' 
+#' # Prepared query
+#' occ_download_prep("basisOfRecord = LITERATURE")
 #' }
-
 occ_download <- function(..., body = NULL, type = "and", user = NULL,
+  pwd = NULL, email = NULL, curlopts = list()) {
+
+  z <- occ_download_prep(..., body = body, type = type, user = user, 
+    pwd = pwd, email = email, curlopts = curlopts)
+  out <- rg_POST(z$url, req = z$req, user = z$user, pwd = z$pwd, curlopts)
+  structure(out, class = "occ_download", user = user, email = email)
+}
+
+#' @export
+#' @rdname occ_download
+occ_download_prep <- function(..., body = NULL, type = "and", user = NULL,
   pwd = NULL, email = NULL, curlopts = list()) {
 
   url <- paste0(gbif_base(), '/occurrence/download/request')
@@ -179,8 +198,14 @@ occ_download <- function(..., body = NULL, type = "and", user = NULL,
   } else {
     req <- parse_occd(user, email, type, ...)
   }
-  out <- rg_POST(url, req = req, user = user, pwd = pwd, curlopts)
-  structure(out, class = "occ_download", user = user, email = email)
+  structure(list(url = url, request = req, user = user, pwd = pwd, 
+    email = email, curlopts = curlopts), class = "occ_download_prep")
+}
+
+occ_download_exec <- function(x) {
+  assert(x, "occ_download_prep")
+  out <- rg_POST(x$url, req = x$req, user = x$user, pwd = x$pwd, x$curlopts)
+  structure(out, class = "occ_download", user = x$user, email = x$email)
 }
 
 check_user <- function(x) {
@@ -298,6 +323,14 @@ print.occ_download <- function(x, ...) {
   cat("  Username: ", attr(x, "user"), "\n", sep = "")
   cat("  E-mail: ", attr(x, "email"), "\n", sep = "")
   cat("  Download key: ", x, "\n", sep = "")
+}
+
+#' @export
+print.occ_download_prep <- function(x, ...) {
+  cat("<<gbif download - prepared>>", "\n", sep = "")
+  cat("  Username: ", x$user, "\n", sep = "")
+  cat("  E-mail: ", x$email, "\n", sep = "")
+  cat("  Request: ", gbif_make_list(x$request), "\n", sep = "")
 }
 
 parse_args <- function(x){

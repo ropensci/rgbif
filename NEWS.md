@@ -1,3 +1,52 @@
+rgbif 1.0.2
+===========
+
+### MINOR IMPROVEMENTS
+
+* significant change to `occ_download_queue()`: sleep time between successive calls to check on the status of download requests is now 10 seconds or greater. This shouldn't slow down your use of `occ_download_queue()` much because most requests should take more than the 10 seconds to be prepared (#313)
+* add tests for download queue method (#315)
+* explicitly `@importFrom` fxns used from `lazyeval` package to avoid check note (#316)
+* remove `reshape2` and `maps` packages from Suggests (#317)
+
+### BUG FIXES
+
+* fix bug in `name_usage()`: we were screwing up parsing of issues column when single taxon keys passed in (#314)
+
+rgbif 1.0.0
+===========
+
+### NEW FEATURES
+
+* `occ_issues()` now works with download data and arbitrary data.frame's (#193)
+* New downloads queueing tools: gains functions `occ_download_prep()` for preparing a download request without executing it, and `occ_download_queue()`  for kicking off many download jobs while respecting GBIF's downloads rate limits. See also internal R6 classes for dealing with queuing: `DownReq`, `GifQueue`. See `?occ_download_queue` to get started (#266) (#305) (#311)
+* New function `map_fetch()` working with the GBIF maps API <https://www.gbif.org/developer/maps>. See `?map_fetch` to get started (#238) (#269) (#284) thanks to @JanLauGe for the work on this
+* `name_lookup()` gains `origin` parameter (#288) (#293) thanks @peterdesmet and @damianooldoni
+* `name_lookup()` and `name_usage()` gain internal paging - just as `occ_search()`/`occ_data()` have (#291) (see also #281) thanks @damianooldoni 
+* new import `lazyeval`, and new suggests `png` and `raster`
+* `occ_search()`/`occ_data()` gain parameter `skip_validate` (boolean) to skip or not stkip WKT validation by the `wicket` package
+
+### MINOR IMPROVEMENTS
+
+* removed warnings about parameters that were removed in previous versions of the package (#189)
+* add citation file (#189)
+* updated `name_usage()` to check params that now only allow 1 value: name, language, datasetKey, rank (#287)
+* `occ_count()` loses `nubKey`, `catalogNumber`, and `hostCountry` as those parameters are no longer accepted by GBIF
+
+### BUG FIXES
+
+* fixed bug in `name_usage()`, was screwing something up internally (#286)
+* fixed bug in `occ_data()`: curl options weren't being passed through (#297)
+* fixed geometry usage in `occ_search()`/`occ_data()` - skipping the wicket validation and constructing WKT by hand from bounding box (if bounding box given) - the validation that wicket does isn't what GBIF wants (#303)
+* add `fill` parameter to  `occ_download_import()` to pass on to `fill` in `data.table::fread`, and set `fill=TRUE` as default.  (#292)
+* better failure for `occ_download()` (#300)
+* fix bug in `occ_download()` in which a single `taxonKey` passed in was failing (#283)
+* `name_usage()` was ignoring `datasetKey` and `uuid` parameters (#290)
+
+### DEFUNCT AND DEPRECATED
+
+* `gbifmap()` has been removed, see the package `mapr` for similar functionality and `map_fetch()` in this package to use the GBIF map API (#298)
+
+
 rgbif 0.9.9
 ===========
 

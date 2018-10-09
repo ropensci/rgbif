@@ -14,8 +14,6 @@
 #' @param data (character) Specify an option to select what data is returned.
 #' See Description below.
 #' @param language (character) Language, default is english
-#' @param sourceId (numeric) Filters by the source identifier. Not used
-#' right now.
 #' @param shortname (character) A short name for a dataset - it may
 #' not do anything
 #' @param uuid (character) A dataset key

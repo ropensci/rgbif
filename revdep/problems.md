@@ -1,27 +1,27 @@
-# Setup
+# KnowBR
 
-## Platform
+Version: 1.8
 
-|setting  |value                                       |
-|:--------|:-------------------------------------------|
-|version  |R version 3.4.2 Patched (2017-10-12 r73552) |
-|system   |x86_64, darwin15.6.0                        |
-|ui       |X11                                         |
-|language |(EN)                                        |
-|collate  |en_US.UTF-8                                 |
-|tz       |America/Los_Angeles                         |
-|date     |2017-11-10                                  |
+## In both
 
-## Packages
+*   checking data for non-ASCII characters ... NOTE
+    ```
+      Note: found 9 marked Latin-1 strings
+    ```
 
-|package |*  |version |date       |source                    |
-|:-------|:--|:-------|:----------|:-------------------------|
-|rgbif   |   |0.9.9   |2017-11-10 |local (ropensci/rgbif@NA) |
+# plotKML
 
-# Check results
+Version: 0.5-8
 
-0 packages with problems
+## In both
 
-
-
+*   checking package dependencies ... ERROR
+    ```
+    Package required but not available: ‘RSAGA’
+    
+    Package suggested but not available for checking: ‘adehabitat’
+    
+    See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+    manual.
+    ```
 

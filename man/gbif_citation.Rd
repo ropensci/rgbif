@@ -31,7 +31,7 @@ the dataset.
 }
 \examples{
 \dontrun{
-res1 <- occ_search(taxonKey=3119195, limit=2)
+res1 <- occ_search(taxonKey=9206251, limit=2)
 (xx <- gbif_citation(res1))
 
 res2 <- occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a',
@@ -40,11 +40,11 @@ res2 <- occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a',
 
 # if no datasetKey field included, we attempt to identify the dataset
 ## key field included - still works
-res3 <- occ_search(taxonKey=3119195, fields=c('name','basisOfRecord','key'),
+res3 <- occ_search(taxonKey=9206251, fields=c('name','basisOfRecord','key'),
   limit=20)
 (xx <- gbif_citation(res3))
 ## key field not included - errors
-# res3 <- occ_search(taxonKey=3119195, fields=c('name','basisOfRecord','
+# res3 <- occ_search(taxonKey=9206251, fields=c('name','basisOfRecord','
 #    protocol'), limit=20)
 # (xx <- gbif_citation(res3))
 
@@ -59,15 +59,15 @@ gbif_citation(x=1425976049)
 
 # Downloads
 ## occ_download_get()
-d <- occ_download("country = BG", "year <= 2011")
-key <- "0000122-171020152545675"
-occ_download_meta(key)
-d1 <- occ_download_get(key, overwrite = TRUE)
-gbif_citation(d1)
+# d1 <- occ_download("country = BG", "year <= 2011")
+# key <- "0000122-171020152545675"
+# occ_download_meta(key)
+# d1 <- occ_download_get(key, overwrite = TRUE)
+# gbif_citation(d1)
 
 ## occ_download_meta()
-key <- "0000122-171020152545675"
-res <- occ_download_meta(key)
-gbif_citation(res)
+# key <- "0000122-171020152545675"
+# res <- occ_download_meta(key)
+# gbif_citation(res)
 }
 }

@@ -31,9 +31,9 @@
 #' occ_get(key=855998194, fields='all', verbatim=TRUE)
 #' occ_get(key=855998194, fields=c('scientificName', 'lastCrawled', 'county'),
 #'   verbatim=TRUE)
-#' occ_get(key=c(855998194, 620594291, 766420684), verbatim=TRUE)
-#' occ_get(key=c(855998194, 620594291, 766420684), fields='all', verbatim=TRUE)
-#' occ_get(key=c(855998194, 620594291, 766420684),
+#' occ_get(key=c(855998194, 620594291), verbatim=TRUE)
+#' occ_get(key=c(855998194, 620594291), fields='all', verbatim=TRUE)
+#' occ_get(key=c(855998194, 620594291),
 #'    fields=c('scientificName', 'decimalLatitude', 'basisOfRecord'),
 #'    verbatim=TRUE)
 #'
@@ -54,7 +54,9 @@ occ_get <- function(key=NULL, return='all', verbatim=FALSE, fields='minimal',
     } else {
       url <- sprintf('%s/occurrence/%s', gbif_base(), x)
     }
-    gbif_GET(url, NULL, FALSE, curlopts)
+    # gbif_GET(url, NULL, FALSE, curlopts)
+    # if verbatim=TRUE, attemps to parse to data.frame's
+    gbif_GET(url, NULL, verbatim, curlopts)
   }
 
   # Get data

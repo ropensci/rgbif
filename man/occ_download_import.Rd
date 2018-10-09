@@ -7,7 +7,8 @@
 \alias{as.download.download}
 \title{Import a downloaded file from GBIF.}
 \usage{
-occ_download_import(x = NULL, key = NULL, path = ".", fill = TRUE, ...)
+occ_download_import(x = NULL, key = NULL, path = ".", fill = TRUE,
+  ...)
 
 as.download(path = ".", key = NULL)
 
@@ -56,13 +57,13 @@ occ_download_get(key="0000066-140928181241064", overwrite = TRUE) \%>\%
   occ_download_import
 
 # coerce a file path to the right class to feed to occ_download_import
-as.download("0000066-140928181241064.zip")
-as.download(key = "0000066-140928181241064")
-occ_download_import(as.download("0000066-140928181241064.zip"))
+# as.download("0000066-140928181241064.zip")
+# as.download(key = "0000066-140928181241064")
+# occ_download_import(as.download("0000066-140928181241064.zip"))
 
 # download a dump that has a CSV file
-res <- occ_download_get(key = "0001369-160509122628363", overwrite=TRUE)
-occ_download_import(res)
-occ_download_import(key = "0001369-160509122628363")
+# res <- occ_download_get(key = "0001369-160509122628363", overwrite=TRUE)
+# occ_download_import(res)
+# occ_download_import(key = "0001369-160509122628363")
 }
 }

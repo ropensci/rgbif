@@ -4,6 +4,10 @@
 \name{DownReq}
 \alias{DownReq}
 \title{Download request}
+\arguments{
+\item{x}{either a lazy object with an object of class \code{occ_download}, or an
+object of class \code{occ_download_prep}}
+}
 \description{
 Download request
 }
@@ -23,14 +27,23 @@ check http request status
 }
 \examples{
 \dontrun{
-res <- DownReq$new(occ_download('taxonKey = 3119195', "year = 1991"))
-res
-res$req
-res$run()
+# res <- DownReq$new(occ_download('taxonKey = 3119195', "year = 1991"))
+# res
+# res$req
+# res$run()
 # (requests <- GbifQueue$new())
 # res$run(keep_track = TRUE)
 # requests
-res$status()
+# res$status()
+
+# prepared query
+res <- DownReq$new(occ_download_prep("basisOfRecord = LITERATURE", 
+  user = "foo", pwd = "bar", email = "foo@bar.com"))
+res
+# res$run()
+# res
+# res$status()
+# res$result
 }
 }
 \keyword{internal}

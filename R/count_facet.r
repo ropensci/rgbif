@@ -33,9 +33,7 @@
 #' count_facet(by='georeferenced')
 #'
 #' ## by keys
-#' out <- count_facet(keys, by='georeferenced')
-#' library("reshape2")
-#' dcast(out, .id ~ georeferenced)
+#' count_facet(keys, by='georeferenced')
 #'
 #' # by basisOfRecord
 #' count_facet(by="basisOfRecord")

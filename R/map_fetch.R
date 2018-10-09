@@ -41,18 +41,19 @@
 #' 256, 512. optional
 #' @param style (character) for raster tiles, choose from the available styles.
 #' Defaults to classic.point. optional. THESE DON'T WORK YET.
-#' @param search (character) defines what type of subset of all GBIF data to
-#' return. Should be one of "taxonKey", "datasetKey", "country", "publisher",
-#' "publishingCountry". Without any search parameter, all occurrences will be
-#' returned. optional
-#' @param id (character) defines the value to be used as filter criterium in
-#' the category supplied by `search`. Appropriate values depend on the
-#' search category that is used, for example integer for
-#' `search = "taxonKey"`. Has to be provided if
-#' `search` parameter is specified. optional
+#' @param taxonKey (integer/numeric/character) search by taxon key, can only 
+#' supply 1. optional
+#' @param datasetKey (character) search by taxon key, can only supply 1. 
+#' optional
+#' @param country (character) search by taxon key, can only supply 1. 
+#' optional
+#' @param publishingOrg (character) search by taxon key, can only supply 1. 
+#' optional
+#' @param publishingCountry (character) search by taxon key, can only 
+#' supply 1. optional
 #' @param year (integer) integer that limits the search to a certain year or,
 #' if passing a vector of integers, multiple years, for example
-#' `1984` or `c(2016, 2017, 2018)`. optional
+#' `1984` or `c(2016, 2017, 2018)` or `2010:2015` (years 2010 to 2015). optional
 #' @param basisOfRecord (character) one or more basis of record states to
 #' include records with that basis of record. The full list is: `c("OBSERVATION",
 #' "HUMAN_OBSERVATION", "MACHINE_OBSERVATION", "MATERIAL_SAMPLE",
@@ -76,36 +77,52 @@
 #'
 #' @note Styles don't work yet, sorry, we'll try to fix it asap.
 #'
-#' @author Laurens Geffert, \email{laurensgeffert@@gmail.com}
-#' @references \url{https://www.gbif.org/developer/maps}
+#' @author Laurens Geffert \email{laurensgeffert@@gmail.com}
+#' @references https://www.gbif.org/developer/maps
 #' @keywords web map, web tile, GBIF
 #' @examples \dontrun{
-#' x <- map_fetch(search = "taxonKey", id = 3118771, year = 2010)
-#' # gives a RasterLayer object
-#' class(x)
-#' # visualize
-#' library(raster)
-#' plot(x)
+#' if (
+#'  requireNamespace("png", quietly = TRUE) && 
+#'  requireNamespace("raster", quietly = TRUE)
+#' ) {
+#'   x <- map_fetch(taxonKey = 2480498, year = 2007:2011)
+#'   x
+#'   # gives a RasterLayer object
+#'   class(x)
+#'   # visualize
+#'   library(raster)
+#'   plot(x)
 #'
-#' # different srs
-#' ## 3857
-#' y <- map_fetch(search = "taxonKey", id = 3118771, year = 2010, srs = "EPSG:3857")
-#' plot(y)
-#' ## 3031
-#' z <- map_fetch(search = "taxonKey", id = 3118771, year = 2010, srs = "EPSG:3031")
-#' plot(z)
-#' # 3575
-#' z <- map_fetch(search = "taxonKey", id = 3118771, year = 2010, srs = "EPSG:3575")
-#' plot(z)
+#'   # different srs
+#'   ## 3857
+#'   y <- map_fetch(taxonKey = 2480498, year = 2010, srs = "EPSG:3857")
+#'   plot(y)
+#'   ## 3031
+#'   z <- map_fetch(taxonKey = 2480498, year = 2010, srs = "EPSG:3031", verbose = TRUE)
+#'   plot(z)
+#'   # 3575
+#'   z <- map_fetch(taxonKey = 2480498, year = 2010, srs = "EPSG:3575")
+#'   plot(z)
 #'
-#' # bin
-#' plot(map_fetch(search = "taxonKey", id = 212, year = 1998, bin = "hex",
-#'    hexPerTile = 30, style = "classic-noborder.poly"))
+#'   # bin
+#'   plot(map_fetch(taxonKey = 212, year = 1998, bin = "hex",
+#'      hexPerTile = 30, style = "classic-noborder.poly"))
+#' 
+#'   # styles
+#'   plot(map_fetch(taxonKey = 2480498, style = "purpleYellow.point"))
 #'
-#' # map vector tile, gives back raw bytes
-#' x <- map_fetch(search = "taxonKey", id = 3118771, year = 2010,
-#'   format = ".mvt")
-#' x[1:10]
+#'   # map vector tile, gives back raw bytes
+#'   x <- map_fetch(taxonKey = 2480498, year = 2010,
+#'     format = ".mvt")
+#'   x[1:10]
+#'   is.raw(x)
+#' 
+#'   # query with basisOfRecord
+#'   map_fetch(taxonKey = 2480498, year = 2010, 
+#'     basisOfRecord = "HUMAN_OBSERVATION")
+#'   map_fetch(taxonKey = 2480498, year = 2010, 
+#'     basisOfRecord = c("HUMAN_OBSERVATION", "LIVING_SPECIMEN"))
+#'  }
 #' }
 
 map_fetch <- function(
@@ -119,8 +136,11 @@ map_fetch <- function(
   hexPerTile = NULL,
   squareSize = NULL,
   style = 'classic.point',
-  search = NULL,
-  id = NULL,
+  taxonKey = NULL, 
+  datasetKey = NULL, 
+  country = NULL, 
+  publishingOrg = NULL, 
+  publishingCountry = NULL,
   year = NULL,
   basisOfRecord = NULL,
   ...
@@ -139,29 +159,26 @@ map_fetch <- function(
   assert(hexPerTile, c('numeric', 'integer'))
   assert(squareSize, c('numeric', 'integer'))
   assert(style, "character")
-  assert(search, "character")
-  assert(id, c("numeric", "integer", "character"))
+  assert(taxonKey, c("numeric", "integer", "character"))
+  assert(datasetKey, "character")
+  assert(country, "character")
+  assert(publishingOrg, "character")
+  assert(publishingCountry, "character")
   assert(year, c('numeric', 'integer'))
   assert(basisOfRecord, "character")
 
+  calls <- names(sapply(match.call(), deparse))[-1]
+  calls_vec <- c("search","id") %in% calls
+  if (any(calls_vec)) {
+    stop("The parameters search and id have been removed; see the docs",
+      call. = FALSE)
+  }
+
   # Check input ---------------------------------------------------------------
-  source <- match.arg(
-    arg = source,
-    choices = c('density', 'adhoc'),
-    several.ok = FALSE
-  )
-
-  format <- match.arg(
-    arg = format,
-    choices = c('.mvt', '@Hx.png', '@1x.png', '@2x.png', '@3x.png', '@4x.png'),
-    several.ok = FALSE
-  )
-
-  srs <- match.arg(
-    arg = srs,
-    choices = c('EPSG:3857', 'EPSG:4326', 'EPSG:3575', 'EPSG:3031'),
-    several.ok = FALSE
-  )
+  stopifnot(source %in% c('density', 'adhoc'))
+  stopifnot(format %in% c('.mvt', '@Hx.png', '@1x.png', 
+    '@2x.png', '@3x.png', '@4x.png'))
+  stopifnot(srs %in% c('EPSG:3857', 'EPSG:4326', 'EPSG:3575', 'EPSG:3031'))
 
   if (!is.null(squareSize)) {
     squareSize <- match.arg(arg = as.character(squareSize),
@@ -169,72 +186,39 @@ map_fetch <- function(
     )
   }
 
-  if (!is.null(bin)) {
-    bin <- match.arg(arg = bin, choices = c('square', 'hex'))
-  }
+  if (!is.null(bin)) stopifnot(bin %in% c('square', 'hex'))
+  if (!is.null(style)) stopifnot(style %in% map_styles)
 
-  if (!is.null(style)) {
-    style <- match.arg(arg = style, choices = map_styles, several.ok = FALSE)
-  }
-
-  if (!is.null(search)) {
-    search <- match.arg(
-      arg = search,
-      choices = c(
-        'taxonKey',
-        'datasetKey',
-        'country',
-        'publisher',
-        'publishingCountry'
-        ),
-      several.ok = FALSE
-    )
+  if (length(rgbif_compact(list(taxonKey, datasetKey, country, 
+    publishingOrg, publishingCountry))) > 1) {
+    stop("supply only one of taxonKey, datasetKey, country, publishingOrg, or publishingCountry")
   }
 
   if (!is.null(year)) {
     year <- match.arg(arg = as.character(year), choices = 0:2200,
       several.ok = TRUE)
+    if (length(year) > 1) {
+      year <- paste0(c(min(year), max(year)), collapse = ",")
+    }
   }
-
-  if (!is.null(search) && is.null(id)) {
-    stop('You have supplied a search category but no search value.
-         Please provide either neither or both, for example:
-         search = "taxonKey", id = 1')
-  }
+  
+  query <- rgbif_compact(list(srs = srs, taxonKey = taxonKey, 
+    datasetKey = datasetKey, country, publishingOrg = publishingOrg, 
+    publishingCountry = publishingCountry, year = year,
+    bin = bin, squareSize = squareSize, hexPerTile = hexPerTile, 
+    style = style))
 
   if (!is.null(basisOfRecord)) {
     basisOfRecord <- match.arg(
       arg = basisOfRecord,
-      choices = c(
-        'OBSERVATION',
-        'HUMAN_OBSERVATION',
-        'MACHINE_OBSERVATION',
-        'MATERIAL_SAMPLE',
-        'PRESERVED_SPECIMEN',
-        'FOSSIL_SPECIMEN',
-        'LIVING_SPECIMEN',
-        'LITERATURE',
-        'UNKNOWN'
-      ),
+      choices = basis_of_record_values,
       several.ok = TRUE
     )
+    bs <- as.list(unlist(
+      lapply(basisOfRecord, function(x) list(basisOfRecord = x))
+    ))
+    query <- c(query, bs)
   }
-
-  # query parameters only needed if at least search OR year are supplied
-  # query = list()
-  # if (!is.null(srs)) {
-  #   query['srs'] = srs
-  # }
-  # if (!is.null(search)) {
-  #   query['search'] = search
-  #   query['id'] = id
-  # }
-  # if (!is.null(year)) {
-  #   query['year'] = year
-  # }
-  query <- rgbif_compact(list(srs = srs, search = search, id = id, year = year,
-    bin = bin, squareSize = squareSize, hexPerTile = hexPerTile, style = style,
-    basisOfRecord = basisOfRecord))
 
   path <- file.path('v2/map/occurrence', source, z, x, paste0(y, format))
   cli <- crul::HttpClient$new(url = 'https://api.gbif.org', opts = list(...))
@@ -296,3 +280,14 @@ map_styles <- c(
   'outline.poly'
 )
 
+basis_of_record_values <- c(
+  'OBSERVATION',
+  'HUMAN_OBSERVATION',
+  'MACHINE_OBSERVATION',
+  'MATERIAL_SAMPLE',
+  'PRESERVED_SPECIMEN',
+  'FOSSIL_SPECIMEN',
+  'LIVING_SPECIMEN',
+  'LITERATURE',
+  'UNKNOWN'
+)

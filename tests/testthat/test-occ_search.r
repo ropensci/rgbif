@@ -40,7 +40,6 @@ test_that("returns the correct dimensions", {
   expect_is(out, "data.frame")
   expect_is(out$name, "character")
   expect_is(out$issues, "character")
-  expect_match(out$issues, ",")
 })
 
 ## Search by catalog number
@@ -280,19 +279,22 @@ test_that("geometry inputs work as expected", {
   badwkt1 <- "POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 a))"
   expect_error(
     occ_search(geometry = badwkt1),
-    "source type value could not be interpreted as target at 'a'"
+    "Invalid simple WKT"
+    # "source type value could not be interpreted as target at 'a'"
   )
 
   badwkt2 <- "POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 '10.1'))"
   expect_error(
     occ_search(geometry = badwkt2),
-    "source type value could not be interpreted as target at ''10.1''"
+    "Invalid simple WKT"
+    # "source type value could not be interpreted as target at ''10.1''"
   )
 
   badwkt3 <- "POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1)"
   expect_error(
     occ_search(geometry = badwkt3),
-    "Expected ')' in "
+    "Invalid simple WKT"
+    # "Expected ')' in "
   )
 
   badwkt4 <- "CIRCULARSTRING(1 5, 6 2, 7 3)"

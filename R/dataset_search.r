@@ -61,16 +61,10 @@
 #' }
 
 dataset_search <- function(query = NULL, country = NULL, type = NULL,
-  keyword = NULL, owningOrg = NULL, publishingOrg = NULL, hostingOrg = NULL,
+  keyword = NULL, publishingOrg = NULL, hostingOrg = NULL,
   publishingCountry = NULL, decade = NULL, facet=NULL, facetMincount=NULL,
   facetMultiselect=NULL, limit=100, start=NULL, pretty=FALSE, return="all",
   curlopts = list()) {
-
-  calls <- names(sapply(match.call(), deparse))[-1]
-  calls_vec <- c("owningOrg") %in% calls
-  if (any(calls_vec)) {
-    stop("Parameters gone: owningOrg", call. = FALSE)
-  }
 
   if (!is.null(facetMincount) && inherits(facetMincount, "numeric")) {
     stop("Make sure facetMincount is character", call. = FALSE)

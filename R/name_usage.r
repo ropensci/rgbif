@@ -32,6 +32,10 @@
 #' internally loops over each option making separate requests. This has been
 #' removed. You can still loop over many options for the `data` parameter,
 #' just use an `lapply` family function, or a for loop, etc.
+#' 
+#' See [name_issues()] for information on name usage issues related to the
+#' `issues` column in output from this function
+#' 
 #' @examples \dontrun{
 #' # A single name usage
 #' name_usage(key=1)
@@ -40,8 +44,8 @@
 #' name_usage(name='Puma', rank="GENUS")
 #'
 #' # Name usage for all taxa in a dataset 
-#' (set sufficient high limit, but less than 100000)
-#' name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42", limit = 10000)
+#' # (set sufficient high limit, but less than 100000)
+#' # name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42", limit = 10000)
 #' # All name usages
 #' name_usage()
 #'
@@ -76,17 +80,10 @@
 #' }
 
 name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
-  datasetKey=NULL, uuid=NULL, sourceId=NULL, rank=NULL, shortname=NULL,
+  datasetKey=NULL, uuid=NULL, rank=NULL, shortname=NULL,
   start=0, limit=100, return='all', curlopts = list()) {
 
-  calls <- names(sapply(match.call(), deparse))[-1]
-  calls_vec <- c("sourceId") %in% calls
-  if (any(calls_vec)) {
-    stop("Parameters not currently accepted: \n sourceId")
-  }
-
   check_vals(limit, "limit")
-
   # each of these args must be length=1
   if (!is.null(rank)) stopifnot(length(rank) == 1)
   if (!is.null(name)) stopifnot(length(name) == 1)
@@ -94,7 +91,7 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
   if (!is.null(datasetKey)) stopifnot(length(datasetKey) == 1)
 
   args <- rgbif_compact(list(offset = start, limit = limit,
-                             sourceId = sourceId, rank = rank,
+                             rank = rank,
                              name = name, language = language,
                              datasetKey = datasetKey))
   data <- match.arg(data,
@@ -190,7 +187,6 @@ getdata <- function(x, key, uuid, shortname, args, curlopts = list()){
 }
 
 name_usage_parse <- function(x, y) {
-  # many <- c("parents", "related")
   many <- "parents"
   if (has_meta(x) || y %in% many) {
     if (y %in% many) {

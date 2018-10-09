@@ -47,3 +47,36 @@ test_that("name_usage fails correctly", {
   skip_on_cran()
   expect_error(occ_get(key=766766824, config=timeout(0.001)))
 })
+
+test_that("works w/: verbatim=TRUE, fields all, & return extensions data", {
+  skip_on_cran()
+
+  keys <- c(1315970632, 1261282041, 1807810811, 1807914841)
+  aa <- occ_get(keys[1], fields = "all", verbatim = TRUE, return = "data")
+  bb <- occ_get(keys[2], fields = "all", verbatim = TRUE, return = "data")
+  cc <- occ_get(keys[3], fields = "all", verbatim = TRUE, return = "data")
+  dd <- occ_get(keys[4], fields = "all", verbatim = TRUE, return = "data")
+
+  # extensions: Identification non-empty, Multimedia empty array
+  expect_is(aa, "data.frame")
+  expect_equal(NROW(aa), 1)
+  expect_true(any(grepl("extensions", names(aa))))
+  expect_false(any(grepl("Multimedia", names(aa))))
+
+  # extensions: Identification missing, Multimedia empty array
+  expect_is(bb, "data.frame")
+  expect_equal(NROW(bb), 1)
+  expect_false(any(grepl("extensions", names(bb))))
+  expect_true(any(grepl("Multimedia", names(bb))))
+
+  # extensions: Identification missing, Multimedia non-empty
+  expect_is(cc, "data.frame")
+  expect_equal(NROW(cc), 1)
+  expect_true(any(grepl("extensions", names(cc))))
+  expect_false(any(grepl("Multimedia", names(aa))))
+
+  # extensions: empty hash
+  expect_is(dd, "data.frame")
+  expect_equal(NROW(dd), 1)
+  expect_false(any(grepl("extensions", names(dd))))
+})

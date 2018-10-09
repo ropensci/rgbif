@@ -47,4 +47,9 @@ test_that("fails correctly", {
   # points at zero,zero
   dat <- data.frame(decimalLatitude = c(0, 45), decimalLongitude = c(0, -120))
   expect_warning(elevation(dat, key = apikey), "Input data has some points at 0,0")
+
+  # invalid key
+  pairs <- list(c(31.8496,-110.576060), c(29.15503,-103.59828))
+  expect_error(elevation(latlong = pairs, key = 'bad_key'), 
+    "The provided API key is invalid")  
 })

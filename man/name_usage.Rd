@@ -5,9 +5,8 @@
 \title{Lookup details for specific names in all taxonomies in GBIF.}
 \usage{
 name_usage(key = NULL, name = NULL, data = "all", language = NULL,
-  datasetKey = NULL, uuid = NULL, sourceId = NULL, rank = NULL,
-  shortname = NULL, start = 0, limit = 100, return = "all",
-  curlopts = list())
+  datasetKey = NULL, uuid = NULL, rank = NULL, shortname = NULL,
+  start = 0, limit = 100, return = "all", curlopts = list())
 }
 \arguments{
 \item{key}{(numeric or character) A GBIF key for a taxon}
@@ -24,9 +23,6 @@ See Description below.}
 be length=1}
 
 \item{uuid}{(character) A dataset key}
-
-\item{sourceId}{(numeric) Filters by the source identifier. Not used
-right now.}
 
 \item{rank}{(character) Taxonomic rank. Filters by taxonomic rank as
 one of: CLASS, CULTIVAR, CULTIVAR_GROUP, DOMAIN, FAMILY, FORM, GENUS,
@@ -80,16 +76,19 @@ parameter, where you could pass in multiple values and the function
 internally loops over each option making separate requests. This has been
 removed. You can still loop over many options for the \code{data} parameter,
 just use an \code{lapply} family function, or a for loop, etc.
+
+See \code{\link[=name_issues]{name_issues()}} for information on name usage issues related to the
+\code{issues} column in output from this function
 }
 \section{Repeat parameter inputs}{
 
 These parameters used to accept many inputs, but no longer do:
 
 \itemize{
- \item \strong{rank}
- \item \strong{name}
- \item \strong{langugae}
- \item \strong{datasetKey}
+\item \strong{rank}
+\item \strong{name}
+\item \strong{langugae}
+\item \strong{datasetKey}
 }
 
 see also \code{\link{many-values}}
@@ -104,8 +103,8 @@ name_usage(key=1)
 name_usage(name='Puma', rank="GENUS")
 
 # Name usage for all taxa in a dataset 
-(set sufficient high limit, but less than 100000)
-name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42", limit = 10000)
+# (set sufficient high limit, but less than 100000)
+# name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42", limit = 10000)
 # All name usages
 name_usage()
 

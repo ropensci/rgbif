@@ -20,10 +20,18 @@
 #'     \item{`jobs()`}{
 #'       Give number of jobs in the `queue`
 #'     }
+#'     \item{`next_()`}{
+#'       Get the next job in the `queue`. if no more jobs, returns
+#'       empty list
+#'     }
+#'     \item{`last_()`}{
+#'       Get the last job in the `queue`. if no more jobs, returns
+#'       empty list
+#'     }
 #'   }
 #' @format NULL
 #' @usage NULL
-#' @examples
+#' @examples \dontrun{
 #' x <- GbifQueue$new(
 #'   occ_download('taxonKey = 3119195', "year = 1976"),
 #'   occ_download('taxonKey = 3119195', "year = 2001"),
@@ -39,6 +47,19 @@
 #' x
 #' x$remove(x$reqs[[1]])
 #' x
+#' 
+#' # pre-prepared download request
+#' z <- occ_download_prep(
+#'   "basisOfRecord = HUMAN_OBSERVATION,OBSERVATION",
+#'   "hasCoordinate = true",
+#'   "hasGeospatialIssue = false",
+#'   "year = 1993",
+#'   user = "foo", pwd = "bar", email = "foo@bar.com"
+#' )
+#' out <- GbifQueue$new(.list = list(z))
+#' out
+#' out$reqs
+#' }
 
 GbifQueue <- R6::R6Class(
   'GbifQueue',
@@ -62,7 +83,7 @@ GbifQueue <- R6::R6Class(
 
     add = function(x) {
       self$queue <- c(self$queue,
-                         stats::setNames(list(x), digest::digest(x$req$expr)))
+        stats::setNames(list(x), digest::digest(x$req$req)))
     },
 
     add_all = function() {
@@ -71,7 +92,23 @@ GbifQueue <- R6::R6Class(
     },
 
     remove = function(x) {
-      self$queue[digest::digest(x$req$expr)] <- NULL
+      self$queue[digest::digest(x$req$req)] <- NULL
+    },
+
+    next_ = function() {
+      if (length(self$queue) > 0) {
+        self$queue[1]
+      } else {
+        return(list())
+      }
+    },
+
+    last_ = function() {
+      if (length(self$queue) > 0) {
+        self$queue[length(self$queue)]
+      } else {
+        return(list())
+      }
     },
 
     queue = list(),
@@ -83,6 +120,8 @@ GbifQueue <- R6::R6Class(
 #'
 #' @export
 #' @keywords internal
+#' @param x either a lazy object with an object of class `occ_download`, or an 
+#' object of class `occ_download_prep`
 #' @details
 #' **Methods**
 #'   \describe{
@@ -100,34 +139,50 @@ GbifQueue <- R6::R6Class(
 #' @format NULL
 #' @usage NULL
 #' @examples \dontrun{
-#' res <- DownReq$new(occ_download('taxonKey = 3119195', "year = 1991"))
-#' res
-#' res$req
-#' res$run()
+#' # res <- DownReq$new(occ_download('taxonKey = 3119195', "year = 1991"))
+#' # res
+#' # res$req
+#' # res$run()
 #' # (requests <- GbifQueue$new())
 #' # res$run(keep_track = TRUE)
 #' # requests
-#' res$status()
+#' # res$status()
+#' 
+#' # prepared query
+#' res <- DownReq$new(occ_download_prep("basisOfRecord = LITERATURE", 
+#'   user = "foo", pwd = "bar", email = "foo@bar.com"))
+#' res
+#' # res$run()
+#' # res
+#' # res$status()
+#' # res$result
 #' }
 DownReq <- R6::R6Class(
   'DownReq',
   public = list(
     req = NULL,
+    type = NULL,
     result = NULL,
 
     initialize = function(x) {
       assert(x, "lazy")
       self$req <- x
+      if (inherits(self$req, "lazy")) self$type <- "lazy"
+      if (inherits(self$req, "occ_download_prep")) self$type <- "pre"
     },
 
     print = function(x, ...) {
       cat("<GBIF download single queue> ", sep = "\n")
-      print(self$req$expr)
+      print(if (self$type == "lazy") self$req$expr else self$req)
       invisible(self)
     },
 
     run = function() {
-      tmp <- tryCatch(lazyeval::lazy_eval(self$req), error = function(e) e)
+      if (self$type == "lazy") {
+        tmp <- tryCatch(lazyeval::lazy_eval(self$req), error = function(e) e)
+      } else {
+        tmp <- tryCatch(occ_download_exec(self$req), error = function(e) e)
+      }
       self$result <- if (inherits(tmp, "error")) NULL else tmp
     },
 

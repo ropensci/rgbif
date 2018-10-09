@@ -85,6 +85,8 @@ elevation <- function(input=NULL, latitude=NULL, longitude=NULL, latlong=NULL,
       res <- tt$parse("UTF-8")
       out <- jsonlite::fromJSON(res, FALSE)
 
+      if (out$status != "OK") stop(out$error_message, call. = FALSE)
+
       df <- data.frame(elevation = sapply(out$results, '[[', 'elevation'),
                        stringsAsFactors = FALSE)
       outout[[i]] <- df

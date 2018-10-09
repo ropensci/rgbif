@@ -5,10 +5,10 @@
 \title{Suggest datasets in GBIF.}
 \usage{
 dataset_suggest(query = NULL, country = NULL, type = NULL,
-  subtype = NULL, keyword = NULL, owningOrg = NULL,
-  publishingOrg = NULL, hostingOrg = NULL, publishingCountry = NULL,
-  decade = NULL, continent = NULL, limit = 100, start = NULL,
-  pretty = FALSE, description = FALSE, curlopts = list())
+  subtype = NULL, keyword = NULL, publishingOrg = NULL,
+  hostingOrg = NULL, publishingCountry = NULL, decade = NULL,
+  continent = NULL, limit = 100, start = NULL, pretty = FALSE,
+  description = FALSE, curlopts = list())
 }
 \arguments{
 \item{query}{Query term(s) for full text search.  The value for this
@@ -28,8 +28,6 @@ their dataset subtypes, DC or EML.}
 \item{keyword}{Keyword to search by. Datasets can be tagged by keywords,
 which you can search on. The search is done on the merged collection of
 tags, the dataset keywordCollections and temporalCoverages.}
-
-\item{owningOrg}{Owning organization. DEFUNCT.}
 
 \item{publishingOrg}{Publishing organization. A uuid string. See
 \code{\link{organizations}}}
