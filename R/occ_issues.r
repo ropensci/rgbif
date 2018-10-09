@@ -58,7 +58,7 @@
 #'   limit = 600))
 #'
 #' ## or parse issues in various ways
-#' ### inlude only rows with cdround issue
+#' ### include only rows with cdround issue
 #' gg <- res %>% occ_issues(cdround)
 #' NROW(res$data)
 #' NROW(gg$data)
