@@ -6,9 +6,13 @@ cache: packages
 apt_packages:
   - libudunits2-dev
 
-r: 
-  - oldrel
-  - release
+matrix: 
+  include:
+    - os: linux
+       r: oldrel
+    - os: linux
+       r: release
+       env: R_CODECOV=true
 
 r_packages:
   - maps
@@ -29,7 +33,7 @@ compiler:
   - clang
 
 after_success:
-  - Rscript -e 'covr::codecov()'
+- if [[ "${R_CODECOV}" ]]; then R -e 'covr::codecov()'; fi
 
 env:
    global:
