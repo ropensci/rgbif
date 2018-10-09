@@ -115,6 +115,7 @@
 #'   x <- map_fetch(taxonKey = 2480498, year = 2010,
 #'     format = ".mvt")
 #'   x[1:10]
+#'   is.raw(x)
 #' 
 #'   # query with basisOfRecord
 #'   map_fetch(taxonKey = 2480498, year = 2010, 
