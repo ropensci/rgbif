@@ -98,7 +98,9 @@ occ_download_queue <- function(..., .list = list(), status_ping = 10) {
   que$add_all()
 
   # start the 1st `max_concurrent` jobs
-  message("kicking off first 3 requests")
+  kickoff <- if (length(que$reqs) > 3) 3 else length(que$reqs)
+  reqend <- if (kickoff > 1) "s" else ""
+  message(sprintf("kicking off first %s request%s", kickoff, reqend))
   res <- invisible(lapply(
     rgbif_compact(que$queue[seq_len(max_concurrent)]), function(x) {
     # remove from queue
@@ -110,7 +112,7 @@ occ_download_queue <- function(..., .list = list(), status_ping = 10) {
 
   # handle if 3 requests or less
   if (que$jobs() == 0) {
-    message("<= 3 requests, waiting for completion")
+    message(sprintf("<= %s request%s, waiting for completion", kickoff, reqend))
     still_running <- TRUE
     while (still_running) {
       metas <- lapply(res, occ_download_meta)
