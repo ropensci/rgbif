@@ -1,0 +1,126 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/species/match?name=Puma%20concolor&kingdom=animals&strict=FALSE&verbose=FALSE&limit=100
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Tue, 09 Oct 2018 21:40:00 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/species/match?name=Puma%20concolor&kingdom=animals&strict=FALSE&verbose=FALSE&limit=100
+      cache-control: public, max-age=3601
+      x-varnish: 83985019 48536110
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '449'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"usageKey":2435099,"scientificName":"Puma concolor (Linnaeus, 1771)","canonicalName":"Puma
+        concolor","rank":"SPECIES","status":"ACCEPTED","confidence":100,"matchType":"EXACT","kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
+        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"synonym":false,"class":"Mammalia"}'
+  recorded_at: 2018-10-09 21:40:01 GMT
+  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?hasCoordinate=TRUE&elevation=1000&limit=500&offset=0&taxonKey=2435099
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Tue, 09 Oct 2018 21:40:00 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/occurrence/search?hasCoordinate=TRUE&elevation=1000&limit=500&offset=0&taxonKey=2435099
+      cache-control: public, max-age=600
+      x-varnish: 83985032 48536125
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '12780'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":300,"endOfRecords":true,"count":6,"results":[{"key":1707667041,"datasetKey":"2a337d5a-a784-4f8a-a947-46d69e0fa3eb","publishingOrgKey":"2a7e3080-28a9-11dd-97cd-b8a03c50a862","networkKeys":[],"installationKey":"804b8dd0-07ac-4a30-bf92-3c1d862faf5e","publishingCountry":"CO","protocol":"DWC_ARCHIVE","lastCrawled":"2017-12-15T07:12:13.158+0000","lastParsed":"2017-12-15T07:12:13.240+0000","crawlId":76,"extensions":{},"basisOfRecord":"PRESERVED_SPECIMEN","taxonKey":2435099,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"scientificName":"Puma
+        concolor (Linnaeus, 1771)","kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
+        concolor","genericName":"Puma","specificEpithet":"concolor","taxonRank":"SPECIES","dateIdentified":"2013-06-01T00:00:00.000+0000","decimalLongitude":-71.966389,"decimalLatitude":6.433056,"elevation":1000.0,"continent":"SOUTH_AMERICA","stateProvince":"Arauca","year":2013,"month":3,"day":23,"eventDate":"2013-03-23T00:00:00.000+0000","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84","IDENTIFIED_DATE_UNLIKELY"],"lastInterpreted":"2018-07-07T04:04:32.465+0000","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"CO","country":"Colombia","organismQuantity":"1","identifier":"IAvH:IAvH-M-9480","recordNumber":"NVZ-1645","county":"Tame","municipality":"Reserva
+        Forestal Protectora Rio Tame","locality":"Reserva Forestal Protectora Rio
+        Tame, Vereda Sabana de La Vieja","gbifID":"1707667041","collectionCode":"IAvH-M","occurrenceID":"IAvH:IAvH-M-9480","http://unknown.org/http_//rs.tdwg.org/dwc/terms/MeasurementOrFact":"[
+        ]","preparations":"Cráneo","catalogNumber":"IAvH-M-9480","recordedBy":"Nodier,  Vivas-Zamora
+        |  Fernando ,  Forero","organismQuantityType":"Individuo","institutionCode":"Instituto
+        de Investigación de Recursos Biológicos Alexander von Humboldt (IAvH)","identifiedBy":"Darwin
+        Manuel, Morales"},{"key":233878125,"datasetKey":"e2483380-16f7-11df-b5b3-b8a03c50a862","publishingOrgKey":"979dd240-16f7-11df-b5b3-b8a03c50a862","networkKeys":[],"installationKey":"6064fb16-f762-11e1-a439-00145eb45e9a","publishingCountry":"AR","protocol":"DWC_ARCHIVE","lastCrawled":"2018-03-06T12:45:44.846+0000","lastParsed":"2018-03-06T12:44:45.622+0000","crawlId":51,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2435099,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"scientificName":"Puma
+        concolor (Linnaeus, 1771)","kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
+        concolor","genericName":"Puma","specificEpithet":"concolor","taxonRank":"SPECIES","decimalLongitude":-71.71084,"decimalLatitude":-42.14844,"elevation":1000.0,"elevationAccuracy":0.0,"depth":0.0,"depthAccuracy":0.0,"continent":"SOUTH_AMERICA","stateProvince":"Chubut","year":2007,"month":1,"day":19,"eventDate":"2007-01-19T00:00:00.000+0000","issues":["GEODETIC_DATUM_ASSUMED_WGS84","COORDINATE_UNCERTAINTY_METERS_INVALID"],"lastInterpreted":"2018-07-07T04:04:47.905+0000","license":"http://creativecommons.org/licenses/by/4.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"AR","country":"Argentina","identifier":"233878125","catalogNumber":"APN-PU-61","recordedBy":"M.
+        Ferreyra, A. Fernández, F. del Campo, Gpque. F. Vidoz","institutionCode":"APN-AR","locality":"<p>Cerro
+        Cuevas, recorriendo desde el Lago por el filo del Cord&oacute;n Cuevas. L&iacute;mite
+        entre RNE y RNS.</p>","gbifID":"233878125","collectionCode":"AVISTAJES"},{"key":382131289,"datasetKey":"0409a304-cc5d-4af6-b509-5b6667905117","publishingOrgKey":"979dd240-16f7-11df-b5b3-b8a03c50a862","networkKeys":[],"installationKey":"254b8c8b-d0d3-4e6c-806c-a2f6d3a614ce","publishingCountry":"AR","protocol":"DWC_ARCHIVE","lastCrawled":"2015-05-13T17:43:18.886+0000","lastParsed":"2014-05-29T11:40:10.749+0000","crawlId":6,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2435099,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"scientificName":"Puma
+        concolor (Linnaeus, 1771)","kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
+        concolor","genericName":"Puma","specificEpithet":"concolor","taxonRank":"SPECIES","decimalLongitude":-71.71084,"decimalLatitude":-42.14844,"coordinatePrecision":0.0,"elevation":1000.0,"elevationAccuracy":0.0,"depth":0.0,"depthAccuracy":0.0,"stateProvince":"Chubut","year":2007,"month":1,"day":19,"eventDate":"2007-01-19T00:00:00.000+0000","issues":["GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2010-11-02T16:00:29.000+0000","lastInterpreted":"2018-07-07T19:08:12.067+0000","license":"http://creativecommons.org/licenses/by/4.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"AR","country":"Argentina","identifier":"4599328","catalogNumber":"APN-PU-61","recordedBy":"M.
+        Ferreyra, A. Fernández, F. del Campo, Gpque. F. Vidoz","higherGeography":"SOUTH
+        AMERICA","institutionCode":"APN-AR","locality":"<p>Cerro Cuevas, recorriendo
+        desde el Lago por el filo del Cord&oacute;n Cuevas. L&iacute;mite entre RNE
+        y RNS.</p>","gbifID":"382131289","collectionCode":"PI-IABIN"},{"key":382111274,"datasetKey":"0409a304-cc5d-4af6-b509-5b6667905117","publishingOrgKey":"979dd240-16f7-11df-b5b3-b8a03c50a862","networkKeys":[],"installationKey":"254b8c8b-d0d3-4e6c-806c-a2f6d3a614ce","publishingCountry":"AR","protocol":"DWC_ARCHIVE","lastCrawled":"2015-05-13T17:43:02.747+0000","lastParsed":"2014-05-29T11:40:02.499+0000","crawlId":6,"extensions":{},"basisOfRecord":"PRESERVED_SPECIMEN","taxonKey":2435099,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"scientificName":"Puma
+        concolor (Linnaeus, 1771)","kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
+        concolor","genericName":"Puma","specificEpithet":"concolor","taxonRank":"SPECIES","decimalLongitude":-71.41887,"decimalLatitude":-39.56373,"coordinatePrecision":1.39,"elevation":1000.0,"elevationAccuracy":0.0,"depth":0.0,"depthAccuracy":0.0,"stateProvince":"Neuquen","year":1982,"month":3,"day":22,"eventDate":"1982-03-22T00:00:00.000+0000","issues":["GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2010-11-02T16:01:38.000+0000","lastInterpreted":"2018-07-07T19:08:11.995+0000","license":"http://creativecommons.org/licenses/by/4.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"AR","country":"Argentina","identifier":"3737820","catalogNumber":"2-MACN-5088","recordedBy":"MIC    245","higherGeography":"SOUTH
+        AMERICA","institutionCode":"APN-AR","county":"Huiliches","locality":"Costa
+        Lago Tromen (Río Malleo) 1549, 5620. CartaIGM: 3972.29.3","gbifID":"382111274","collectionCode":"PI-IABIN"},{"key":665803675,"datasetKey":"41fc5c40-5e81-496f-9733-6b5681b3b7a5","publishingOrgKey":"7b8aff00-a9f8-11d8-944b-b8a03c50a862","networkKeys":[],"installationKey":"3b84ff5b-79ce-427c-acb7-b4004e160f66","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2018-07-26T14:47:15.218+0000","lastParsed":"2018-07-26T14:47:15.228+0000","crawlId":78,"extensions":{},"basisOfRecord":"PRESERVED_SPECIMEN","taxonKey":8773192,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"scientificName":"Puma
+        concolor incarum (Nelson & Goldman, 1929)","kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
+        concolor","genericName":"Puma","specificEpithet":"concolor","infraspecificEpithet":"incarum","taxonRank":"SUBSPECIES","decimalLongitude":-75.533333,"decimalLatitude":-10.066667,"elevation":1000.0,"continent":"SOUTH_AMERICA","stateProvince":"Pasco","year":1923,"month":2,"day":12,"eventDate":"1923-02-12T00:00:00.000+0000","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"lastInterpreted":"2018-07-26T14:49:34.947+0000","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"PE","country":"Peru","rightsHolder":"The
+        Field Museum of Natural History","institutionID":"FMNH","county":"Oxapampa","fieldNumber":"13212","gbifID":"665803675","language":"en","type":"PhysicalObject","catalogNumber":"34370","locationRemarks":"decimal
+        degrees","institutionCode":"FMNH","identifier":"055c12fd-1b98-4670-ac42-b17c2d9a5ba5","recordNumber":"7145","higherGeography":"South
+        America, Peru, Pasco, Oxapampa, Neotropics: Pozuzo","georeferenceProtocol":"not
+        recorded","locality":"Pozuzo","collectionCode":"Mammals","occurrenceID":"055c12fd-1b98-4670-ac42-b17c2d9a5ba5","recordedBy":"E.
+        H. Heller","organismID":"2533596","startDayOfYear":"12","ownerInstitutionCode":"FMNH","datasetID":"mammals-26-july2018","accessRights":"http://fieldmuseum.org/about/copyright-information","higherClassification":"Animalia
+        Chordata Mammalia Carnivora Felidae","collectionID":"Mammals"},{"key":1895614459,"datasetKey":"80d3003c-f762-11e1-a439-00145eb45e9a","publishingOrgKey":"ff90b050-c256-11db-b71b-b8a03c50a862","networkKeys":[],"installationKey":"e081c7d7-2dab-42fd-94c4-9f275767fe7d","publishingCountry":"MX","protocol":"DWC_ARCHIVE","lastCrawled":"2018-08-21T01:22:11.093+0000","lastParsed":"2018-08-21T01:22:11.115+0000","crawlId":52,"extensions":{},"basisOfRecord":"UNKNOWN","individualCount":9999,"taxonKey":6164620,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"scientificName":"Puma
+        concolor cougar (Kerr, 1792)","kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
+        concolor","genericName":"Puma","specificEpithet":"concolor","infraspecificEpithet":"cougar","taxonRank":"SUBSPECIES","decimalLongitude":-102.577778,"decimalLatitude":23.239167,"elevation":1000.0,"elevationAccuracy":1000.0,"depth":0.0,"depthAccuracy":0.0,"stateProvince":"Zacatecas","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84","RECORDED_DATE_INVALID","ELEVATION_MIN_MAX_SWAPPED"],"modified":"2015-12-03T00:00:00.000+0000","lastInterpreted":"2018-08-21T01:22:16.457+0000","license":"http://creativecommons.org/licenses/by/4.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"MX","country":"Mexico","rightsHolder":"Comisión
+        Nacional para el Conocimiento y Uso de la Biodiversidad (CONABIO)","institutionID":"1","scientificNameID":"389","dynamicProperties":"TipoVegetacion
+        / MATORRAL XOROFILO Otros Datos / DIS_KM: 32 Otros Datos / DIR_GRAD: 90 Otros
+        Datos / DIST_GRAD: 32 Otros Datos / DIRECCION: E Otros Datos / AUTOR: GOLDMAN
+        Otros Datos / ANO: 1946 Distrito de Riego: ND","county":"FRESNILLO","namePublishedInYear":"1771","associatedReferences":"GOLDMAN
+        E.A. 1946. THE PUMA , MISTERIOUS AMERICAN CAT. Pág. Publicadas: 358. AMERICAN
+        WILDLIFE INSTITUTION.","fieldNumber":"NO DISPONIBLE","gbifID":"1895614459","language":"es","type":"Event","taxonID":"4a5e650b8e4ae51c13ad3d8f59d7c54e","catalogNumber":"NO
+        DISPONIBLE","vernacularName":"válido","institutionCode":"NO DISPONIBLE","eventTime":"00:00:00","nameAccordingTo":"Ramírez-Pulido,
+        González-Ruiz, Gardner & Arroyo-Cabrales, 2014","identifiedBy":"NO DISPONIBLE","identifier":"urn:catalog:NO
+        DISPONIBLE:NO DISPONIBLE:NO DISPONIBLE:7c8611e914425f99a530c914a8be0e8e","acceptedNameUsage":"Puma
+        concolor","verbatimCoordinateSystem":"grados minutos segundos","datasetName":"Actualización
+        de la base de datos del Atlas Mastozoológico de México","locality":"CHICHIMEQUILLAS","collectionCode":"NO
+        DISPONIBLE","occurrenceID":"urn:catalog:NO DISPONIBLE:NO DISPONIBLE:NO DISPONIBLE:7c8611e914425f99a530c914a8be0e8e","recordedBy":"NO
+        DISPONIBLE","locationID":"848","ownerInstitutionCode":"NO DISPONIBLE","datasetID":"7c8611e914425f99a530c914a8be0e8e","accessRights":"CC-BY","bibliographicCitation":"Ceballos,
+        G. 2002. Actualización de la base de datos del Atlas Mastozoológico de México.
+        Universidad Nacional Autónoma de México. Instituto de Ecología. Bases de datos
+        SNIB-CONABIO proyectos No. T009 y A003. México, D.F.","collectionID":"2","higherClassification":"Animalia;
+        Chordata; Mammalia; Carnivora; Felidae; Puma","georeferenceSources":"Mapa,
+        INEGI, 1:250,000","identificationID":"7282","parentNameUsage":"Puma"}],"facets":[]}'
+  recorded_at: 2018-10-09 21:40:01 GMT
+  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0

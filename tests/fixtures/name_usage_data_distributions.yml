@@ -1,0 +1,199 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/species/5231190/distributions?offset=0&limit=100
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Tue, 09 Oct 2018 20:54:56 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/species/5231190/distributions?offset=0&limit=100
+      cache-control: public, max-age=3601
+      x-varnish: 78807226 44238382
+      age: '1334'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '4094'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":100,"endOfRecords":true,"results":[{"taxonKey":5231190,"country":"AW","status":"PRESENT","establishmentMeans":"INTRODUCED","source":"Global
+        Register of Introduced and Invasive Species- Aruba","sourceTaxonKey":142669601},{"taxonKey":5231190,"country":"BR","status":"PRESENT","establishmentMeans":"INTRODUCED","source":"Global
+        Register of Introduced and Invasive Species- Brazil","sourceTaxonKey":142470965},{"taxonKey":5231190,"country":"CL","status":"PRESENT","establishmentMeans":"INTRODUCED","source":"Global
+        Register of Introduced and Invasive Species- Chile","sourceTaxonKey":134851710},{"taxonKey":5231190,"locality":"Juan
+        Fernandez Islands","country":"CL","status":"PRESENT","establishmentMeans":"INTRODUCED","source":"Global
+        Register of Introduced and Invasive Species- Juan Fernandez Islands, Chile","sourceTaxonKey":134853011},{"taxonKey":5231190,"country":"CW","status":"PRESENT","establishmentMeans":"INTRODUCED","source":"Global
+        Register of Introduced and Invasive Species- Curacao, Netherlands","sourceTaxonKey":142657330},{"taxonKey":5231190,"country":"DK","threatStatus":"LEAST_CONCERN","source":"Checklist
+        of Danish Birds (Aves)","sourceTaxonKey":128535745},{"taxonKey":5231190,"country":"EG","status":"PRESENT","establishmentMeans":"INTRODUCED","source":"Global
+        Register of Introduced and Invasive Species- Egypt","sourceTaxonKey":134857690},{"taxonKey":5231190,"locationId":"ISO:NO","country":"NO","status":"PRESENT","source":"Artsnavnebasen","sourceTaxonKey":113865902},{"taxonKey":5231190,"country":"SC","status":"PRESENT","establishmentMeans":"INTRODUCED","source":"Global
+        Register of Introduced and Invasive Species- Seychelles","sourceTaxonKey":134849792},{"taxonKey":5231190,"country":"SX","status":"PRESENT","establishmentMeans":"INTRODUCED","source":"Global
+        Register of Introduced and Invasive Species- Sint Maarten, Netherlands","sourceTaxonKey":142663653},{"taxonKey":5231190,"country":"VU","status":"PRESENT","establishmentMeans":"INTRODUCED","source":"Global
+        Register of Introduced and Invasive Species- Vanuatu","sourceTaxonKey":134846058},{"taxonKey":5231190,"country":"ZA","status":"PRESENT","establishmentMeans":"INTRODUCED","source":"Global
+        Register of Introduced and Invasive Species- South Africa","sourceTaxonKey":134848379},{"taxonKey":5231190,"locationId":"CO:08549003;
+        CO:13657000; CO:44378000","source":"Lista de especies probables para tres
+        fragmentos de Bosque seco en la región del Caribe Colombiano","sourceTaxonKey":120732475},{"taxonKey":5231190,"locationId":"CO:52","locality":"Isla
+        el Morro | Isla de Tumaco | Bocagrande","source":"Listado y anotaciones sobre
+        la historia natural de las aves del litoral de San Andrés de Tumaco, Nariño
+        (Colombia)","sourceTaxonKey":114319110,"remarks":"Barrio La Florida (parque
+        y sede Batallón de Infantería de Marina No. 2) Aeropuerto La Florida, antigua
+        empresa maderera barrio El Morrito, faro Capitanía Puerto - Centro de Control
+        y Contaminación del Pacífico (CCCP) playa turística peña El Morro y El Arco,
+        barrio La Cordialidad parque y sede Corponariño; Parque Colón, parque Nariño,
+        muelle Residencias - embarcadero a Bocagrande; Playas Hotel Las Lilianas"},{"taxonKey":5231190,"locality":"Africa","status":"PRESENT","source":"IOC
+        World Bird List, v8.2","sourceTaxonKey":123528979,"remarks":"Breeding region"},{"taxonKey":5231190,"locality":"Eurasia","status":"PRESENT","source":"IOC
+        World Bird List, v8.2","sourceTaxonKey":123528979,"remarks":"Breeding region"},{"taxonKey":5231190,"locality":"Oriental
+        Region","status":"PRESENT","source":"IOC World Bird List, v8.2","sourceTaxonKey":123528979,"remarks":"Breeding
+        region"},{"taxonKey":5231190,"locality":"Caribbean","status":"PRESENT","source":"Integrated
+        Taxonomic Information System (ITIS)","sourceTaxonKey":102101640},{"taxonKey":5231190,"locality":"North
+        America","status":"PRESENT","source":"Integrated Taxonomic Information System
+        (ITIS)","sourceTaxonKey":102101640},{"taxonKey":5231190,"locality":"Oceania","status":"PRESENT","source":"Integrated
+        Taxonomic Information System (ITIS)","sourceTaxonKey":102101640}]}'
+  recorded_at: 2018-10-09 21:17:11 GMT
+  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/species/5231190/distributions?offset=0&limit=100
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Tue, 09 Oct 2018 20:54:56 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/species/5231190/distributions?offset=0&limit=100
+      cache-control: public, max-age=3601
+      x-varnish: 82968613 44238382
+      age: '1334'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '4094'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":100,"endOfRecords":true,"results":[{"taxonKey":5231190,"country":"AW","status":"PRESENT","establishmentMeans":"INTRODUCED","source":"Global
+        Register of Introduced and Invasive Species- Aruba","sourceTaxonKey":142669601},{"taxonKey":5231190,"country":"BR","status":"PRESENT","establishmentMeans":"INTRODUCED","source":"Global
+        Register of Introduced and Invasive Species- Brazil","sourceTaxonKey":142470965},{"taxonKey":5231190,"country":"CL","status":"PRESENT","establishmentMeans":"INTRODUCED","source":"Global
+        Register of Introduced and Invasive Species- Chile","sourceTaxonKey":134851710},{"taxonKey":5231190,"locality":"Juan
+        Fernandez Islands","country":"CL","status":"PRESENT","establishmentMeans":"INTRODUCED","source":"Global
+        Register of Introduced and Invasive Species- Juan Fernandez Islands, Chile","sourceTaxonKey":134853011},{"taxonKey":5231190,"country":"CW","status":"PRESENT","establishmentMeans":"INTRODUCED","source":"Global
+        Register of Introduced and Invasive Species- Curacao, Netherlands","sourceTaxonKey":142657330},{"taxonKey":5231190,"country":"DK","threatStatus":"LEAST_CONCERN","source":"Checklist
+        of Danish Birds (Aves)","sourceTaxonKey":128535745},{"taxonKey":5231190,"country":"EG","status":"PRESENT","establishmentMeans":"INTRODUCED","source":"Global
+        Register of Introduced and Invasive Species- Egypt","sourceTaxonKey":134857690},{"taxonKey":5231190,"locationId":"ISO:NO","country":"NO","status":"PRESENT","source":"Artsnavnebasen","sourceTaxonKey":113865902},{"taxonKey":5231190,"country":"SC","status":"PRESENT","establishmentMeans":"INTRODUCED","source":"Global
+        Register of Introduced and Invasive Species- Seychelles","sourceTaxonKey":134849792},{"taxonKey":5231190,"country":"SX","status":"PRESENT","establishmentMeans":"INTRODUCED","source":"Global
+        Register of Introduced and Invasive Species- Sint Maarten, Netherlands","sourceTaxonKey":142663653},{"taxonKey":5231190,"country":"VU","status":"PRESENT","establishmentMeans":"INTRODUCED","source":"Global
+        Register of Introduced and Invasive Species- Vanuatu","sourceTaxonKey":134846058},{"taxonKey":5231190,"country":"ZA","status":"PRESENT","establishmentMeans":"INTRODUCED","source":"Global
+        Register of Introduced and Invasive Species- South Africa","sourceTaxonKey":134848379},{"taxonKey":5231190,"locationId":"CO:08549003;
+        CO:13657000; CO:44378000","source":"Lista de especies probables para tres
+        fragmentos de Bosque seco en la región del Caribe Colombiano","sourceTaxonKey":120732475},{"taxonKey":5231190,"locationId":"CO:52","locality":"Isla
+        el Morro | Isla de Tumaco | Bocagrande","source":"Listado y anotaciones sobre
+        la historia natural de las aves del litoral de San Andrés de Tumaco, Nariño
+        (Colombia)","sourceTaxonKey":114319110,"remarks":"Barrio La Florida (parque
+        y sede Batallón de Infantería de Marina No. 2) Aeropuerto La Florida, antigua
+        empresa maderera barrio El Morrito, faro Capitanía Puerto - Centro de Control
+        y Contaminación del Pacífico (CCCP) playa turística peña El Morro y El Arco,
+        barrio La Cordialidad parque y sede Corponariño; Parque Colón, parque Nariño,
+        muelle Residencias - embarcadero a Bocagrande; Playas Hotel Las Lilianas"},{"taxonKey":5231190,"locality":"Africa","status":"PRESENT","source":"IOC
+        World Bird List, v8.2","sourceTaxonKey":123528979,"remarks":"Breeding region"},{"taxonKey":5231190,"locality":"Eurasia","status":"PRESENT","source":"IOC
+        World Bird List, v8.2","sourceTaxonKey":123528979,"remarks":"Breeding region"},{"taxonKey":5231190,"locality":"Oriental
+        Region","status":"PRESENT","source":"IOC World Bird List, v8.2","sourceTaxonKey":123528979,"remarks":"Breeding
+        region"},{"taxonKey":5231190,"locality":"Caribbean","status":"PRESENT","source":"Integrated
+        Taxonomic Information System (ITIS)","sourceTaxonKey":102101640},{"taxonKey":5231190,"locality":"North
+        America","status":"PRESENT","source":"Integrated Taxonomic Information System
+        (ITIS)","sourceTaxonKey":102101640},{"taxonKey":5231190,"locality":"Oceania","status":"PRESENT","source":"Integrated
+        Taxonomic Information System (ITIS)","sourceTaxonKey":102101640}]}'
+  recorded_at: 2018-10-09 21:17:11 GMT
+  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/species/5231190/distributions?offset=0&limit=100
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Tue, 09 Oct 2018 20:54:56 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/species/5231190/distributions?offset=0&limit=100
+      cache-control: public, max-age=3601
+      x-varnish: 69863260 44238382
+      age: '1334'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '4094'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":100,"endOfRecords":true,"results":[{"taxonKey":5231190,"country":"AW","status":"PRESENT","establishmentMeans":"INTRODUCED","source":"Global
+        Register of Introduced and Invasive Species- Aruba","sourceTaxonKey":142669601},{"taxonKey":5231190,"country":"BR","status":"PRESENT","establishmentMeans":"INTRODUCED","source":"Global
+        Register of Introduced and Invasive Species- Brazil","sourceTaxonKey":142470965},{"taxonKey":5231190,"country":"CL","status":"PRESENT","establishmentMeans":"INTRODUCED","source":"Global
+        Register of Introduced and Invasive Species- Chile","sourceTaxonKey":134851710},{"taxonKey":5231190,"locality":"Juan
+        Fernandez Islands","country":"CL","status":"PRESENT","establishmentMeans":"INTRODUCED","source":"Global
+        Register of Introduced and Invasive Species- Juan Fernandez Islands, Chile","sourceTaxonKey":134853011},{"taxonKey":5231190,"country":"CW","status":"PRESENT","establishmentMeans":"INTRODUCED","source":"Global
+        Register of Introduced and Invasive Species- Curacao, Netherlands","sourceTaxonKey":142657330},{"taxonKey":5231190,"country":"DK","threatStatus":"LEAST_CONCERN","source":"Checklist
+        of Danish Birds (Aves)","sourceTaxonKey":128535745},{"taxonKey":5231190,"country":"EG","status":"PRESENT","establishmentMeans":"INTRODUCED","source":"Global
+        Register of Introduced and Invasive Species- Egypt","sourceTaxonKey":134857690},{"taxonKey":5231190,"locationId":"ISO:NO","country":"NO","status":"PRESENT","source":"Artsnavnebasen","sourceTaxonKey":113865902},{"taxonKey":5231190,"country":"SC","status":"PRESENT","establishmentMeans":"INTRODUCED","source":"Global
+        Register of Introduced and Invasive Species- Seychelles","sourceTaxonKey":134849792},{"taxonKey":5231190,"country":"SX","status":"PRESENT","establishmentMeans":"INTRODUCED","source":"Global
+        Register of Introduced and Invasive Species- Sint Maarten, Netherlands","sourceTaxonKey":142663653},{"taxonKey":5231190,"country":"VU","status":"PRESENT","establishmentMeans":"INTRODUCED","source":"Global
+        Register of Introduced and Invasive Species- Vanuatu","sourceTaxonKey":134846058},{"taxonKey":5231190,"country":"ZA","status":"PRESENT","establishmentMeans":"INTRODUCED","source":"Global
+        Register of Introduced and Invasive Species- South Africa","sourceTaxonKey":134848379},{"taxonKey":5231190,"locationId":"CO:08549003;
+        CO:13657000; CO:44378000","source":"Lista de especies probables para tres
+        fragmentos de Bosque seco en la región del Caribe Colombiano","sourceTaxonKey":120732475},{"taxonKey":5231190,"locationId":"CO:52","locality":"Isla
+        el Morro | Isla de Tumaco | Bocagrande","source":"Listado y anotaciones sobre
+        la historia natural de las aves del litoral de San Andrés de Tumaco, Nariño
+        (Colombia)","sourceTaxonKey":114319110,"remarks":"Barrio La Florida (parque
+        y sede Batallón de Infantería de Marina No. 2) Aeropuerto La Florida, antigua
+        empresa maderera barrio El Morrito, faro Capitanía Puerto - Centro de Control
+        y Contaminación del Pacífico (CCCP) playa turística peña El Morro y El Arco,
+        barrio La Cordialidad parque y sede Corponariño; Parque Colón, parque Nariño,
+        muelle Residencias - embarcadero a Bocagrande; Playas Hotel Las Lilianas"},{"taxonKey":5231190,"locality":"Africa","status":"PRESENT","source":"IOC
+        World Bird List, v8.2","sourceTaxonKey":123528979,"remarks":"Breeding region"},{"taxonKey":5231190,"locality":"Eurasia","status":"PRESENT","source":"IOC
+        World Bird List, v8.2","sourceTaxonKey":123528979,"remarks":"Breeding region"},{"taxonKey":5231190,"locality":"Oriental
+        Region","status":"PRESENT","source":"IOC World Bird List, v8.2","sourceTaxonKey":123528979,"remarks":"Breeding
+        region"},{"taxonKey":5231190,"locality":"Caribbean","status":"PRESENT","source":"Integrated
+        Taxonomic Information System (ITIS)","sourceTaxonKey":102101640},{"taxonKey":5231190,"locality":"North
+        America","status":"PRESENT","source":"Integrated Taxonomic Information System
+        (ITIS)","sourceTaxonKey":102101640},{"taxonKey":5231190,"locality":"Oceania","status":"PRESENT","source":"Integrated
+        Taxonomic Information System (ITIS)","sourceTaxonKey":102101640}]}'
+  recorded_at: 2018-10-09 21:17:11 GMT
+  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0

@@ -1,0 +1,155 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/species/5231190/vernacularNames?offset=0&limit=100
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Tue, 09 Oct 2018 20:54:58 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/species/5231190/vernacularNames?offset=0&limit=100
+      cache-control: public, max-age=3601
+      x-varnish: 56134755 74678368
+      age: '1335'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '10877'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":100,"endOfRecords":true,"results":[{"taxonKey":5231190,"vernacularName":"English
+        sparrow","language":"","source":"Global Invasive Species Database","sourceTaxonKey":100220560},{"taxonKey":5231190,"vernacularName":"Europese
+        huismuis","language":"","source":"Global Invasive Species Database","sourceTaxonKey":100220560},{"taxonKey":5231190,"vernacularName":"Gorrion
+        domestico","language":"","source":"Global Invasive Species Database","sourceTaxonKey":100220560},{"taxonKey":5231190,"vernacularName":"Gorrión
+        Común","language":"spa","source":"Multilingual IOC World Bird List, v8.2","sourceTaxonKey":123213203},{"taxonKey":5231190,"vernacularName":"Gorrión
+        Común","language":"spa","source":"EUNIS Biodiversity Database","sourceTaxonKey":101186844},{"taxonKey":5231190,"vernacularName":"Gorrión
+        casero","language":"spa","source":"Colaboraciones Americanas Sobre Aves","sourceTaxonKey":114130266},{"taxonKey":5231190,"vernacularName":"Gorrión
+        casero","language":"spa","source":"Yanayacu Natural History Research Group","sourceTaxonKey":119245200},{"taxonKey":5231190,"vernacularName":"Gorrión
+        casero","language":"spa","source":"Integrated Taxonomic Information System
+        (ITIS)","sourceTaxonKey":102101640},{"taxonKey":5231190,"vernacularName":"Gorrión
+        casero","language":"spa","source":"Catalogue of Life","sourceTaxonKey":132136870},{"taxonKey":5231190,"vernacularName":"Gråsparv","language":"swe","source":"EUNIS
+        Biodiversity Database","sourceTaxonKey":101186844},{"taxonKey":5231190,"vernacularName":"Gråspurv","language":"dan","country":"DK","source":"Checklist
+        of Danish Birds (Aves)","sourceTaxonKey":128535745},{"taxonKey":5231190,"vernacularName":"Gråspurv","language":"nor","source":"Multilingual
+        IOC World Bird List, v8.2","sourceTaxonKey":123213203},{"taxonKey":5231190,"vernacularName":"Gråspurv","language":"dan","source":"Multilingual
+        IOC World Bird List, v8.2","sourceTaxonKey":123213203},{"taxonKey":5231190,"vernacularName":"Haussperling","language":"deu","source":"EUNIS
+        Biodiversity Database","sourceTaxonKey":101186844},{"taxonKey":5231190,"vernacularName":"Haussperling","language":"","source":"NCBI
+        Taxonomy","sourceTaxonKey":104122871},{"taxonKey":5231190,"vernacularName":"Haussperling","language":"deu","country":"DE","source":"Taxon
+        list of animals with German names (worldwide) compiled at the SMNS","sourceTaxonKey":116795880},{"taxonKey":5231190,"vernacularName":"Haussperling","language":"deu","source":"Multilingual
+        IOC World Bird List, v8.2","sourceTaxonKey":123213203},{"taxonKey":5231190,"vernacularName":"Haussperling","language":"deu","country":"BE","source":"Belgian
+        Species List","sourceTaxonKey":100483595},{"taxonKey":5231190,"vernacularName":"House
+        Sparrow","language":"eng","source":"Yanayacu Natural History Research Group","sourceTaxonKey":119245200},{"taxonKey":5231190,"vernacularName":"House
+        Sparrow","language":"eng","source":"The Clements Checklist","sourceTaxonKey":133145048},{"taxonKey":5231190,"vernacularName":"House
+        Sparrow","language":"eng","source":"Taxonomy in Flux Checklist","sourceTaxonKey":100159046},{"taxonKey":5231190,"vernacularName":"House
+        Sparrow","language":"eng","source":"EUNIS Biodiversity Database","sourceTaxonKey":101186844},{"taxonKey":5231190,"vernacularName":"House
+        Sparrow","language":"eng","source":"Catalogue of Life","sourceTaxonKey":132136870},{"taxonKey":5231190,"vernacularName":"House
+        Sparrow","language":"eng","source":"IOC World Bird List, v8.2","sourceTaxonKey":123528979},{"taxonKey":5231190,"vernacularName":"House
+        Sparrow","language":"eng","source":"Integrated Taxonomic Information System
+        (ITIS)","sourceTaxonKey":102101640},{"taxonKey":5231190,"vernacularName":"House
+        Sparrow","language":"eng","source":"Multilingual IOC World Bird List, v8.2","sourceTaxonKey":123213203},{"taxonKey":5231190,"vernacularName":"House
+        Sparrow","language":"eng","source":"Colaboraciones Americanas Sobre Aves","sourceTaxonKey":114130266},{"taxonKey":5231190,"vernacularName":"House
+        sparrow","language":"","source":"NCBI Taxonomy","sourceTaxonKey":104122871},{"taxonKey":5231190,"vernacularName":"House/Eurasian
+        Tree Sparrow","language":"eng","source":"The Clements Checklist","sourceTaxonKey":133145086},{"taxonKey":5231190,"vernacularName":"House/Italian
+        Sparrow","language":"eng","source":"The Clements Checklist","sourceTaxonKey":133145243},{"taxonKey":5231190,"vernacularName":"House/Spanish
+        Sparrow","language":"eng","source":"The Clements Checklist","sourceTaxonKey":133145252},{"taxonKey":5231190,"vernacularName":"Huismossie","language":"afr","source":"Multilingual
+        IOC World Bird List, v8.2","sourceTaxonKey":123213203},{"taxonKey":5231190,"vernacularName":"Huismus","language":"nld","source":"Multilingual
+        IOC World Bird List, v8.2","sourceTaxonKey":123213203},{"taxonKey":5231190,"vernacularName":"Huismus","language":"nld","source":"EUNIS
+        Biodiversity Database","sourceTaxonKey":101186844},{"taxonKey":5231190,"vernacularName":"Házi
+        veréb","language":"hun","source":"EUNIS Biodiversity Database","sourceTaxonKey":101186844},{"taxonKey":5231190,"vernacularName":"Moineau
+        domestique","language":"fra","source":"Yanayacu Natural History Research Group","sourceTaxonKey":119245200},{"taxonKey":5231190,"vernacularName":"Moineau
+        domestique","language":"fra","source":"Colaboraciones Americanas Sobre Aves","sourceTaxonKey":114130266},{"taxonKey":5231190,"vernacularName":"Moineau
+        domestique","language":"fra","source":"Multilingual IOC World Bird List, v8.2","sourceTaxonKey":123213203},{"taxonKey":5231190,"vernacularName":"Moineau
+        domestique","language":"fra","source":"EUNIS Biodiversity Database","sourceTaxonKey":101186844},{"taxonKey":5231190,"vernacularName":"Pardal-comum","language":"por","source":"EUNIS
+        Biodiversity Database","sourceTaxonKey":101186844},{"taxonKey":5231190,"vernacularName":"Passera
+        Europea","language":"ita","source":"Multilingual IOC World Bird List, v8.2","sourceTaxonKey":123213203},{"taxonKey":5231190,"vernacularName":"Passera
+        europea","language":"ita","source":"EUNIS Biodiversity Database","sourceTaxonKey":101186844},{"taxonKey":5231190,"vernacularName":"Varpunen","language":"fin","source":"EUNIS
+        Biodiversity Database","sourceTaxonKey":101186844},{"taxonKey":5231190,"vernacularName":"Vrabec
+        domácí","language":"ces","source":"EUNIS Biodiversity Database","sourceTaxonKey":101186844},{"taxonKey":5231190,"vernacularName":"Wróbel","language":"pol","source":"EUNIS
+        Biodiversity Database","sourceTaxonKey":101186844},{"taxonKey":5231190,"vernacularName":"domači
+        vrabec","language":"slv","source":"Multilingual IOC World Bird List, v8.2","sourceTaxonKey":123213203},{"taxonKey":5231190,"vernacularName":"gorrion
+        casero","language":"","source":"Global Invasive Species Database","sourceTaxonKey":100220560},{"taxonKey":5231190,"vernacularName":"gråsparv","language":"swe","source":"Multilingual
+        IOC World Bird List, v8.2","sourceTaxonKey":123213203},{"taxonKey":5231190,"vernacularName":"house
+        sparrow","language":"","source":"Global Invasive Species Database","sourceTaxonKey":100220560},{"taxonKey":5231190,"vernacularName":"house
+        sparrow","language":"eng","country":"BE","source":"Belgian Species List","sourceTaxonKey":100483595},{"taxonKey":5231190,"vernacularName":"house
+        sparrow","language":"eng","source":"Phthiraptera.info","sourceTaxonKey":116898836},{"taxonKey":5231190,"vernacularName":"house
+        sparrow","language":"eng","source":"Phthiraptera.info","sourceTaxonKey":116898847},{"taxonKey":5231190,"vernacularName":"house
+        sparrow","language":"","source":"Global Invasive Species Database","sourceTaxonKey":100220560},{"taxonKey":5231190,"vernacularName":"huismus","language":"nld","country":"BE","source":"Belgian
+        Species List","sourceTaxonKey":100483595},{"taxonKey":5231190,"vernacularName":"házi
+        veréb","language":"hun","source":"Multilingual IOC World Bird List, v8.2","sourceTaxonKey":123213203},{"taxonKey":5231190,"vernacularName":"koduvarblane","language":"est","source":"Multilingual
+        IOC World Bird List, v8.2","sourceTaxonKey":123213203},{"taxonKey":5231190,"vernacularName":"moineau
+        domestique","language":"","source":"Global Invasive Species Database","sourceTaxonKey":100220560},{"taxonKey":5231190,"vernacularName":"moineau
+        domestique","language":"fra","source":"Integrated Taxonomic Information System
+        (ITIS)","sourceTaxonKey":102101640},{"taxonKey":5231190,"vernacularName":"moineau
+        domestique","language":"fra","country":"BE","source":"Belgian Species List","sourceTaxonKey":100483595},{"taxonKey":5231190,"vernacularName":"moineau
+        domestique","language":"fra","source":"Catalogue of Life","sourceTaxonKey":132136870},{"taxonKey":5231190,"vernacularName":"mājas
+        zvirbulis","language":"lav","source":"Multilingual IOC World Bird List, v8.2","sourceTaxonKey":123213203},{"taxonKey":5231190,"vernacularName":"naminis
+        žvirblis","language":"lit","source":"Multilingual IOC World Bird List, v8.2","sourceTaxonKey":123213203},{"taxonKey":5231190,"vernacularName":"pardal","language":"por","source":"Multilingual
+        IOC World Bird List, v8.2","sourceTaxonKey":123213203},{"taxonKey":5231190,"vernacularName":"pardal
+        comú","language":"cat","source":"Multilingual IOC World Bird List, v8.2","sourceTaxonKey":123213203},{"taxonKey":5231190,"vernacularName":"town
+        sparrow","language":"","source":"Global Invasive Species Database","sourceTaxonKey":100220560},{"taxonKey":5231190,"vernacularName":"varpunen","language":"fin","source":"Multilingual
+        IOC World Bird List, v8.2","sourceTaxonKey":123213203},{"taxonKey":5231190,"vernacularName":"vrabec
+        domový","language":"slk","source":"Multilingual IOC World Bird List, v8.2","sourceTaxonKey":123213203},{"taxonKey":5231190,"vernacularName":"vrabec
+        domácí","language":"ces","source":"Multilingual IOC World Bird List, v8.2","sourceTaxonKey":123213203},{"taxonKey":5231190,"vernacularName":"wróbel
+        (zwyczajny)","language":"pol","source":"Multilingual IOC World Bird List,
+        v8.2","sourceTaxonKey":123213203},{"taxonKey":5231190,"vernacularName":"Домовый
+        воробей","language":"rus","source":"Multilingual IOC World Bird List, v8.2","sourceTaxonKey":123213203},{"taxonKey":5231190,"vernacularName":"นกกระจอกใหญ่","language":"tha","source":"Multilingual
+        IOC World Bird List, v8.2","sourceTaxonKey":123213203},{"taxonKey":5231190,"vernacularName":"イエスズメ","language":"jpn","source":"Multilingual
+        IOC World Bird List, v8.2","sourceTaxonKey":123213203},{"taxonKey":5231190,"vernacularName":"家麻雀","language":"zho","source":"Multilingual
+        IOC World Bird List, v8.2","sourceTaxonKey":123213203},{"taxonKey":5231190,"vernacularName":"家麻雀","language":"zho","source":"Multilingual
+        IOC World Bird List, v8.2","sourceTaxonKey":123213203},{"taxonKey":5231190,"vernacularName":"Huismus","language":"nld","source":"Checklist
+        Dutch Species Register - Nederlands Soortenregister","sourceTaxonKey":124571399,"preferred":true}]}'
+  recorded_at: 2018-10-09 21:17:14 GMT
+  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/species/5136034/vernacularNames?offset=0&limit=100
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Tue, 09 Oct 2018 20:54:58 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/species/5136034/vernacularNames?offset=0&limit=100
+      cache-control: public, max-age=3601
+      x-varnish: 78807269 71172489
+      age: '1336'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '423'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":100,"endOfRecords":true,"results":[{"taxonKey":5136034,"vernacularName":"common
+        acraea","language":"","source":"NCBI Taxonomy","sourceTaxonKey":104428442},{"taxonKey":5136034,"vernacularName":"encedon
+        acraea","language":"","source":"NCBI Taxonomy","sourceTaxonKey":104428442},{"taxonKey":5136034,"vernacularName":"white-barred
+        acraea","language":"","source":"NCBI Taxonomy","sourceTaxonKey":104428442}]}'
+  recorded_at: 2018-10-09 21:17:14 GMT
+  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0

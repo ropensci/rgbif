@@ -1,0 +1,54 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?limit=500&offset=0&catalogNumber=6845144
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Tue, 09 Oct 2018 21:39:45 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/occurrence/search?limit=500&offset=0&catalogNumber=6845144
+      cache-control: public, max-age=600
+      x-varnish: 6624040 78611302
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '5979'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":300,"endOfRecords":true,"count":3,"results":[{"key":1244915494,"datasetKey":"b124e1e0-4755-430f-9eab-894f25a9b59c","publishingOrgKey":"d3978a37-635a-4ae3-bb85-7b4d41bc0b88","networkKeys":[],"installationKey":"c4e83f8a-f24c-4573-a197-f085ca242917","publishingCountry":"NO","protocol":"DWC_ARCHIVE","lastCrawled":"2018-09-24T05:26:03.031+0000","lastParsed":"2018-07-17T09:29:57.309+0000","crawlId":35,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","individualCount":4,"taxonKey":2480242,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":7192402,"familyKey":2480210,"genusKey":3242344,"speciesKey":2480242,"scientificName":"Vanellus
+        vanellus (Linnaeus, 1758)","kingdom":"Animalia","phylum":"Chordata","order":"Charadriiformes","family":"Charadriidae","genus":"Vanellus","species":"Vanellus
+        vanellus","genericName":"Vanellus","specificEpithet":"vanellus","taxonRank":"SPECIES","decimalLongitude":8.230167,"decimalLatitude":60.615616,"coordinateUncertaintyInMeters":300.0,"stateProvince":"Buskerud","year":2014,"month":4,"day":25,"eventDate":"2014-04-25T00:00:00.000+0000","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"lastInterpreted":"2018-07-17T09:41:50.840+0000","license":"http://creativecommons.org/licenses/by/4.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Aves","countryCode":"NO","country":"Norway","dynamicProperties":"{\"Activity\":\"Forage\"}","county":"Buskerud","gbifID":"1244915494","preparations":"None","catalogNumber":"6845144","institutionCode":"nof","eventTime":"11.17/13.5","verbatimElevation":"None","recordNumber":"None","identifier":"urn:uuid:2f94d424-0dbe-4a60-bdb3-8631f07cc836","verbatimSRS":"None","georeferenceRemarks":"None","verbatimCoordinateSystem":"None","locality":"Hovsfjorden,
+        Hol, Bu","collectionCode":"so2-birds","occurrenceID":"urn:uuid:2f94d424-0dbe-4a60-bdb3-8631f07cc836","verbatimDepth":"None","recordedBy":"Andrew
+        W. Clarke, Elsa M. Wallumrød","otherCatalogNumbers":"NOF/SO-Birds/13239694","organismID":"None","identificationQualifier":"None","samplingProtocol":"None","occurrenceRemarks":"None","associatedSequences":"None","http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia":"[
+        ]"},{"key":1618592160,"datasetKey":"f06fef3c-6ea6-4345-b724-a1b8e490dc55","publishingOrgKey":"2d1fabab-9504-4cd8-aa19-79627dd3b010","networkKeys":[],"installationKey":"2a3f6a56-7591-4f05-8c4c-a1bb77aa4ea6","publishingCountry":"ES","protocol":"DWC_ARCHIVE","lastCrawled":"2017-09-29T18:03:57.213+0000","lastParsed":"2017-09-07T17:00:54.129+0000","crawlId":20,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","establishmentMeans":"NATIVE","taxonKey":9515886,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":729,"familyKey":5248,"genusKey":2489222,"speciesKey":9515886,"scientificName":"Hirundo
+        rustica Linnaeus, 1758","kingdom":"Animalia","phylum":"Chordata","order":"Passeriformes","family":"Hirundinidae","genus":"Hirundo","species":"Hirundo
+        rustica","genericName":"Hirundo","specificEpithet":"rustica","taxonRank":"SPECIES","decimalLongitude":-5.93333,"decimalLatitude":36.26667,"stateProvince":"Cadiz","year":2011,"month":8,"day":17,"eventDate":"2011-08-17T00:00:00.000+0000","issues":["MODIFIED_DATE_UNLIKELY"],"modified":"2017-01-01T00:00:00.000+0000","lastInterpreted":"2018-07-07T00:19:20.291+0000","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Aves","countryCode":"ES","country":"Spain","rightsHolder":"SEO-BirdLife","habitat":"ZONAS
+        HUMEDAS INTERIORES","scientificNameID":"09920","samplingEffort":"Captura con
+        sistemas de trampeo no dañinos","municipality":"VEJER DE LA FRONTERA","gbifID":"1618592160","language":"es","type":"PhysicalObject","taxonID":"09920","occurrenceStatus":"Present","catalogNumber":"6845144","vernacularName":"Golondrina
+        común","institutionCode":"SEO-BirdLife","identifier":"SEO-BirdLife:anillamientoseo:6845144","higherGeography":"CADIZ","endDayOfYear":"17","datasetName":"SEO/BirdLife:
+        Anillamiento de aves","locality":"VEJER DE LA FRONTERA","collectionCode":"anillamientoseo","occurrenceID":"SEO-BirdLife:anillamientoseo:6845144","startDayOfYear":"17","ownerInstitutionCode":"SEO-BirdLife","samplingProtocol":"aptura
+        con sistemas de trampeo no dañinos","accessRights":"Solo para uso no comercial","bibliographicCitation":"SEO/BirdLife,
+        2017. Base de datos de la oficina de anillamiento de SEO/BirdLife. Madrid.","collectionID":"anillamientoseo"},{"key":1288815604,"datasetKey":"e6fab7b3-c733-40b9-8df3-2a03e49532c1","publishingOrgKey":"43cab2b0-0653-11d9-acb2-b8a03c50a862","networkKeys":[],"installationKey":"60483206-f762-11e1-a439-00145eb45e9a","publishingCountry":"DE","protocol":"BIOCASE","lastCrawled":"2018-10-06T18:37:37.034+0000","lastParsed":"2018-09-27T14:07:59.181+0000","crawlId":55,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2706490,"kingdomKey":6,"phylumKey":7707728,"classKey":196,"orderKey":1369,"familyKey":3073,"genusKey":2706434,"speciesKey":2706490,"scientificName":"Agrostis
+        capillaris L.","kingdom":"Plantae","phylum":"Tracheophyta","order":"Poales","family":"Poaceae","genus":"Agrostis","species":"Agrostis
+        capillaris","genericName":"Agrostis","specificEpithet":"capillaris","taxonRank":"SPECIES","decimalLongitude":7.45809,"decimalLatitude":49.974886,"coordinateUncertaintyInMeters":3253.0,"issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"lastInterpreted":"2018-09-27T14:07:59.287+0000","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Liliopsida","countryCode":"DE","country":"Germany","recordedBy":"Die
+        Mitarbeiterinnen und Mitarbeiter der Floristischen Kartierung Deutschlands","catalogNumber":"6845144","institutionCode":"BfN","locality":"MTB
+        6010: Kirchberg (Hunsruck); Quadrant: 2","gbifID":"1288815604","collectionCode":"FlorKart_BfN"}],"facets":[]}'
+  recorded_at: 2018-10-09 21:39:46 GMT
+  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0

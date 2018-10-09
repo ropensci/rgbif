@@ -1,0 +1,79 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/installation/deleted?limit=2
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Tue, 09 Oct 2018 20:58:49 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/installation/deleted?limit=2
+      cache-control: public, max-age=3601
+      x-varnish: 53970942 22548936
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '4948'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":1070,"results":[{"key":"4f4e7439-d718-4908-86c2-3d596b3246b2","organizationKey":"7d77970a-28ba-43e3-9dc8-de37db3e1894","type":"IPT_INSTALLATION","title":"GBIF
+        Mozambique IPT","description":"GBIF Mozambique IPT promove a partilha livre
+        e aberta dos dados primários de biodiversidade e enriquece o conhecimento
+        da biodiversidade moçambicana e mundial. Promove a integração de editores
+        de dados moçambicanos e recursos de informação sobre biodiversidade na rede
+        GBIF, bem como a disponibilidade de dados de biodiversidade para a investigação
+        científica e as necessidades societais.\r\n\r\nVisões:\r\na) promover a conservação
+        da flora, fauna e dos habitats moçambicanos; \r\nb) divulgar e promover os
+        conhecimentos científicos e técnicos nos domínios da botânica, da flora, da
+        vegetação e da fauna, com especial incidência em Moçambique; \r\nc) fomentar
+        o intercâmbio de informações entre botânicos, ecologistas, profissionais e
+        amadores, independentemente da sua formação; \r\nd) centralizar informações
+        corológicas, morfológicas, ecológicas e fotográficas da flora e fauna moçambicana;
+        \r\ne) incentivar a aplicação do conhecimento científico na definição de directrizes
+        de gestão de habitats e espécies; \r\nf) fomentar o estudo da floral e fauna
+        desde o ensino primário até o ensino superior.\r\nHerbário Nacional (LMA)
+        do Instituto de Investigação Agrária de Moçambique (IIAM)\r\n\r\n\r\nGBIF
+        Mozambique IPT promotes the free and open sharing of primary biodiversity
+        data and enriches the knowledge of Mozambican and global biodiversity. It
+        promotes the integration of Mozambican data editors and biodiversity information
+        resources on the GBIF network, as well as the availability of biodiversity
+        data for scientific research and societal needs.\r\n\r\nVisions:\r\na) to
+        promote the conservation of Mozambican flora, fauna and habitats; \r\nb) disseminate
+        and promote scientific and technical knowledge in the fields of botany, flora,
+        vegetation and fauna, with special incidence in Mozambique; \r\nc) promote
+        the exchange of information between botanists, ecologists, professionals and
+        amateurs, irrespective of their training; \r\nd) to centralize chorological,
+        morphological, ecological and photographic information of Mozambican flora
+        and fauna; \r\ne) To encourage the application of scientific knowledge in
+        the definition of guidelines for the management of habitats and species;\r\nf)
+        foster the study of floral and fauna from primary education to higher education.","createdBy":"7d77970a-28ba-43e3-9dc8-de37db3e1894","modifiedBy":"mgrosjean","created":"2018-08-08T12:26:35.873+0000","modified":"2018-08-09T11:25:25.636+0000","deleted":"2018-08-09T11:25:25.655+0000","disabled":false,"contacts":[{"key":1006607,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Delcio
+        Odorico","position":[],"email":["delodorico@gmail.com"],"phone":[],"homepage":[],"address":[],"createdBy":"7d77970a-28ba-43e3-9dc8-de37db3e1894","modifiedBy":"7d77970a-28ba-43e3-9dc8-de37db3e1894","created":"2018-08-08T12:26:35.943+0000","modified":"2018-08-08T12:26:35.943+0000"}],"endpoints":[{"key":319378,"type":"FEED","url":"http://197.249.6.202:8088/ipt/rss.do","createdBy":"7d77970a-28ba-43e3-9dc8-de37db3e1894","modifiedBy":"7d77970a-28ba-43e3-9dc8-de37db3e1894","created":"2018-08-08T12:26:35.997+0000","modified":"2018-08-08T12:26:35.997+0000","machineTags":[]}],"machineTags":[],"tags":[],"identifiers":[],"comments":[{"key":18570,"content":"2018/08/09
+        [MG]: installation deleted after request from the technical point of contact.
+        It has been replaced by: e0f2d99d-f183-469a-adb1-f321a3c4609f","createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2018-08-09T11:25:09.172+0000","modified":"2018-08-09T11:25:09.172+0000"}]},{"key":"64e926e2-38df-49c4-a976-3fc2f4c09a2c","organizationKey":"a86e9e36-12ec-49a4-a94c-c0c981fffb71","type":"SYMBIOTA_INSTALLATION","title":"SEINet
+        Portal Network","description":"The SEINet Portal Network supports more than
+        a dozen regional web portals distributed across North America (http://symbiota.org/docs/seinet/).
+        Each regional portal accesses a shared data point to publish botanical data
+        that is particularly relevant to the user groups within the region. Together,
+        these portals publish over 13.6 million occurrences and 7.5 million images
+        associated with herbarium specimens. In addition, the network provides collection
+        management services to more than 200 herbaria. Assisting collections in publishing
+        this data out to the global research community is considered one of the central
+        missions of the network.","createdBy":"trobertson","modifiedBy":"trobertson","created":"2018-05-03T17:54:33.574+0000","modified":"2018-05-08T13:56:45.988+0000","deleted":"2018-05-08T13:56:46.008+0000","disabled":false,"contacts":[],"endpoints":[],"machineTags":[],"tags":[],"identifiers":[],"comments":[]}]}'
+  recorded_at: 2018-10-09 20:58:50 GMT
+  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
