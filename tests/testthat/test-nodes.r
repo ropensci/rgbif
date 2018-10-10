@@ -31,5 +31,5 @@ test_that("nodes", {
     expect_equal(length(vv), 2)
     expect_equal(length(vv$data), 5)
   
-  })
+  }, preserve_exact_body_bytes = TRUE)
 })

@@ -215,7 +215,7 @@ test_that("name_usage vernacularNames route works", {
     expect_is(rte11a$meta, "data.frame")
     expect_is(rte11$data, "data.frame")
     expect_is(rte11a$data, "data.frame")
-  })
+  }, preserve_exact_body_bytes = TRUE)
 })
 
 test_that("name_usage typeSpecimens route works", {

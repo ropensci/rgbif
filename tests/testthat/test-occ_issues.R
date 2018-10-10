@@ -49,5 +49,5 @@ test_that("occ_issues", {
     expect_false(any(grepl("issues", names(hh$data))))
     expect_true(any(grepl("COORDINATE_ROUNDED", names(hh$data))))
 
-  })
+  }, preserve_exact_body_bytes = TRUE)
 })

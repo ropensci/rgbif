@@ -6,7 +6,7 @@ test_that("query all datasets returns the correct class", {
     expect_is(tt, "list")
     expect_is(tt$data, "data.frame")
     expect_is(tt$data$publishingOrganizationKey, "character")
-  })
+  }, preserve_exact_body_bytes = TRUE)
 })
 
 test_that("single dataset query returns the correct", {
@@ -66,5 +66,5 @@ test_that("search for deleted and duplicate datasets returns the correct", {
     # dimensions
     expect_equal(length(tt), 2)
     expect_equal(length(tt[[1]]), 2)
-  })
+  }, preserve_exact_body_bytes = TRUE)
 })

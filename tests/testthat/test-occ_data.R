@@ -124,7 +124,7 @@ test_that("looping works correctly", {
     }
 
     expect_equal(unique(sapply(out, function(x) class(x)[1])), "tbl_df")
-  })
+  }, preserve_exact_body_bytes = TRUE)
 })
 
 ######### scientificName usage works correctly
@@ -176,7 +176,7 @@ test_that("scientificName basic use works - no synonyms", {
     expect_equal(attr(hh, "args")$scientificName, "Pipistrellus hesperus")
     expect_equal(hh$data$name[1], "Parastrellus hesperus")
 
-  })
+  }, preserve_exact_body_bytes = TRUE)
 })
 
 ######### geometry inputs work as expected
@@ -288,7 +288,7 @@ test_that("geometry inputs work as expected", {
       "WKT must be one of the types"
     )
 
-  })
+  }, preserve_exact_body_bytes = TRUE)
 })
 
 ######### spell check works

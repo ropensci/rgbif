@@ -23,7 +23,7 @@ test_that("search query returns the correct class", {
     expect_is(tt, "tbl_df")
     expect_is(tt$title, "character")
     expect_is(tt$title[[1]], "character")
-  })
+  }, preserve_exact_body_bytes = TRUE)
 })
 
 # Limited search
@@ -47,7 +47,7 @@ test_that("limited fields query returns the correct class", {
 
     expect_is(tt, "list")
     expect_is(tt[[1]], "character")
-  })
+  }, preserve_exact_body_bytes = TRUE)
 })
 
 
@@ -60,5 +60,5 @@ test_that("args that support many repeated uses in one request", {
     expect_is(aa, "tbl_df")
     expect_named(aa, c('key', 'type', 'title'))
     expect_true(any(tolower(unique(aa$type)) %in% c("checklist", "metadata")))
-  })
+  }, preserve_exact_body_bytes = TRUE)
 })

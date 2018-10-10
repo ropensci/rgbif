@@ -9,7 +9,7 @@ test_that("type query returns the correct class", {
     expect_is(tt$descriptions, "list")
     expect_is(tt$data[1,1], "tbl_df")
     expect_is(tt$data[1,1]$datasetTitle, "character")
-  })
+  }, preserve_exact_body_bytes = TRUE)
 })
 
 # Gets all datasets tagged with keyword "france".
@@ -44,7 +44,7 @@ test_that("search query returns the correct class", {
     expect_that(is.null(tt$facets), is_true())
     expect_is(tt$data[1,1], "tbl_df")
     expect_is(tt$data[1,1]$datasetTitle, "character")
-  })
+  }, preserve_exact_body_bytes = TRUE)
 })
 
 # Limited search
@@ -70,7 +70,7 @@ test_that("limited fields query returns the correct class", {
 
     tt <- dataset_search(type="OCCURRENCE", return="descriptions")
     expect_is(tt, "list")
-  })
+  }, preserve_exact_body_bytes = TRUE)
 })
 
 
@@ -90,5 +90,5 @@ test_that("args that support many repeated uses in one request", {
     expect_named(bb, c('meta', 'data', 'facets', 'descriptions'))
     expect_is(bb$data, "tbl_df")
     expect_true(any(tolower(unique(bb$data$publishingCountry)) %in% c("de", "nz")))
-  })
+  }, preserve_exact_body_bytes = TRUE)
 })

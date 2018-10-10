@@ -6,7 +6,7 @@ test_that("query all installations returns the correct class", {
     expect_is(tt, "list")
     expect_is(tt$data, "data.frame")
     expect_is(tt$data$organizationKey, "character")
-  })
+  }, preserve_exact_body_bytes = TRUE)
 })
 
 test_that("single dataset query returns the correct", {

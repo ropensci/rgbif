@@ -39,7 +39,7 @@ test_that("works with habitat parameter", {
     # another test
     out <- name_lookup(habitat = "terrestrial", return = "data")
     expect_equal(sort(na.omit(out$habitats))[1], "FRESHWATER, MARINE, TERRESTRIAL")
-  })
+  }, preserve_exact_body_bytes = TRUE)
 })
 
 
@@ -73,7 +73,7 @@ test_that("works with parameters that allow many inputs", {
     expect_is(aa$data$key, "integer")
     expect_true(all(
       unique(tolower(aa$data$origin)) %in% c("implicit_name", "proparte")))
-  })
+  }, preserve_exact_body_bytes = TRUE)
 })
 
 #paging (limit higher than 1000 records; maximum API: 99999)

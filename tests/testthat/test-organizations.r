@@ -23,5 +23,5 @@ test_that("returns the correct class", {
     expect_equal(length(uu), 2)
     expect_equal(length(vv$data), 14)
 
-  })
+  }, preserve_exact_body_bytes = TRUE)
 })
