@@ -1,7 +1,7 @@
 ## Test environments
 
-* local OS X install, R 3.5.1 RC
-* ubuntu 14.04 (on travis-ci), R 3.5.1 RC
+* local OS X install, R 3.5.1 patched
+* ubuntu 14.04 (on travis-ci), R 3.5.1
 * win-builder (devel and release)
 
 ## R CMD check results
@@ -21,7 +21,7 @@ File 'LICENSE':
 
 --------
 
-This version changes sleep time between subsequent requests as requeste by GBIF developer team, and fixes a few minor things.
+This version xxxx
 
 Thanks!
 Scott Chamberlain
