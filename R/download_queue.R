@@ -76,6 +76,11 @@ GbifQueue <- R6::R6Class(
     initialize = function(..., .list = list()) {
       ldots <- lazyeval::lazy_dots(...)
       ldots <- c(ldots, .list)
+      for (i in ldots) {
+        if (!inherits(i, "lazy") && !inherits(i, "occ_download_prep")) {
+          stop("'x' must be of class lazy or occ_download_prep")
+        }
+      }
       self$reqs <- lapply(ldots, DownReq$new)
       self$reqs <- stats::setNames(self$reqs, seq_along(self$reqs))
     },
@@ -164,6 +169,9 @@ DownReq <- R6::R6Class(
     result = NULL,
 
     initialize = function(x) {
+      if (!inherits(x, "lazy") && !inherits(x, "occ_download_prep")) {
+        stop("'x' must be of class lazy or occ_download_prep")
+      }
       self$req <- x
       if (inherits(self$req, "lazy")) self$type <- "lazy"
       if (inherits(self$req, "occ_download_prep")) self$type <- "pre"

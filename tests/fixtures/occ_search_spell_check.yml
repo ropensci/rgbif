@@ -1,0 +1,113 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?q=kingfisher&limit=1&offset=0&spellCheck=TRUE
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Tue, 09 Oct 2018 21:54:28 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/occurrence/search?q=kingfisher&limit=1&offset=0&spellCheck=TRUE
+      cache-control: public, max-age=600
+      x-varnish: 27661654 17996156
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '1693'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":486973,"results":[{"key":1376978627,"datasetKey":"4fa7b334-ce0d-4e88-aaae-2e0c138d049e","publishingOrgKey":"e2e717bf-551a-4917-bdc9-4fa0f342c530","networkKeys":[],"installationKey":"7182d304-b0a2-404b-baba-2086a325c221","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2017-12-15T07:38:23.590+0000","lastParsed":"2017-12-15T07:38:23.604+0000","crawlId":8,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","individualCount":2,"taxonKey":2481875,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":7192775,"familyKey":5268,"genusKey":2481854,"speciesKey":2481875,"scientificName":"Phalacrocorax
+        auritus (Lesson, 1831)","kingdom":"Animalia","phylum":"Chordata","order":"Suliformes","family":"Phalacrocoracidae","genus":"Phalacrocorax","species":"Phalacrocorax
+        auritus","genericName":"Phalacrocorax","specificEpithet":"auritus","taxonRank":"SPECIES","decimalLongitude":-97.932515,"decimalLatitude":35.860987,"stateProvince":"Oklahoma","year":2015,"month":7,"day":6,"eventDate":"2015-07-06T00:00:00.000+0000","issues":["COORDINATE_ROUNDED"],"lastInterpreted":"2018-07-07T18:19:09.246+0000","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Aves","countryCode":"US","country":"United
+        States","identifier":"OBS330560787","catalogNumber":"OBS330560787","recordedBy":"obsr391983","institutionCode":"CLO","county":"Kingfisher","locality":"OK
+        - Kingfisher Co. - Kingfisher","gbifID":"1376978627","collectionCode":"EBIRD","occurrenceID":"URN:catalog:CLO:EBIRD:OBS330560787"}],"facets":[],"spellCheckResponse":{"correctlySpelled":true}}'
+  recorded_at: 2018-10-09 21:54:35 GMT
+  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?q=kajsdkla&limit=20&offset=0&spellCheck=TRUE
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Tue, 09 Oct 2018 21:54:31 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/occurrence/search?q=kajsdkla&limit=20&offset=0&spellCheck=TRUE
+      cache-control: public, max-age=600
+      x-varnish: 75237245 48924248
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '196'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":20,"endOfRecords":true,"count":0,"results":[],"facets":[],"spellCheckResponse":{"correctlySpelled":false,"suggestions":{"kassukla":{"numFound":1,"alternatives":["kassukla"]}}}}'
+  recorded_at: 2018-10-09 21:54:35 GMT
+  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?q=helir&limit=20&offset=0&spellCheck=TRUE
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Tue, 09 Oct 2018 21:54:34 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/occurrence/search?q=helir&limit=20&offset=0&spellCheck=TRUE
+      cache-control: public, max-age=600
+      x-varnish: 56135872 15242523
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '298'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":20,"endOfRecords":true,"count":0,"results":[],"facets":[],"spellCheckResponse":{"correctlySpelled":false,"suggestions":{"heldr":{"numFound":34630,"alternatives":["heldr"]},"helix":{"numFound":537842,"alternatives":["helix"]},"helia":{"numFound":2590,"alternatives":["helia"]}}}}'
+  recorded_at: 2018-10-09 21:54:35 GMT
+  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0

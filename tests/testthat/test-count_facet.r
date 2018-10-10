@@ -1,30 +1,31 @@
 context("count_facet")
 
 test_that("count_facet", {
-  skip_on_cran()
-
-  # returns the correct class
-  a <- count_facet(by='country', countries=3, removezeros = TRUE)
-  b <- count_facet(by='country', countries='AR', removezeros = TRUE)
-
-  # by country name
   countries <- isocodes$code[1:10]
-  c <- count_facet(by='country', countries=countries, removezeros = TRUE)
 
-  # get occurrences by georeferenced state
-  d <- count_facet(by='georeferenced')
+  vcr::use_cassette("count_facet", {
+    # returns the correct class
+    a <- count_facet(by='country', countries=3, removezeros = TRUE)
+    b <- count_facet(by='country', countries='AR', removezeros = TRUE)
 
-  expect_is(a, "data.frame")
-  expect_is(b, "data.frame")
-  expect_is(c, "data.frame")
-  expect_is(d, "data.frame")
-  expect_is(a$country, "character")
+    # by country name
+    c <- count_facet(by='country', countries=countries, removezeros = TRUE)
 
-  # returns the correct dimensions
-  expect_equal(NCOL(a), 2)
-  expect_equal(NCOL(b), 2)
-  expect_equal(NCOL(c), 2)
-  expect_equal(NCOL(d), 2)
+    # get occurrences by georeferenced state
+    d <- count_facet(by='georeferenced')
+
+    expect_is(a, "data.frame")
+    expect_is(b, "data.frame")
+    expect_is(c, "data.frame")
+    expect_is(d, "data.frame")
+    expect_is(a$country, "character")
+
+    # returns the correct dimensions
+    expect_equal(NCOL(a), 2)
+    expect_equal(NCOL(b), 2)
+    expect_equal(NCOL(c), 2)
+    expect_equal(NCOL(d), 2)
+  }, preserve_exact_body_bytes = TRUE)
 })
 
 test_that("fails correctly", {

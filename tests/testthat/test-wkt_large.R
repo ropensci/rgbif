@@ -64,39 +64,35 @@ test_that("wkt is detected/parsed as planned", {
 })
 
 test_that("wkt is used correctly in querying GBIF - occ_data", {
-  skip_on_cran()
+  vcr::use_cassette("wkt_large_occ_data", {
 
-  # by default too large WKT will fail with 413, request entity too large
-  # expect_error(occ_data(geometry = wkt, limit = 1),
-  #              "Request Entity Too Large")
+    # setting to bbox will work
+    res <- suppressMessages(occ_data(geometry = wkt, limit = 100, geom_big = "bbox"))
 
-  # setting to bbox will work
-  res <- suppressMessages(occ_data(geometry = wkt, limit = 100, geom_big = "bbox"))
+    # returns the correct class
+    expect_is(res, "gbif_data")
+    expect_is(res$meta, "list")
+    expect_is(res$data, "data.frame")
+    # dimensions - b/c limit is set for the bounding box queried,
+    # we get less than the limit
+    expect_lt(NROW(res$data), 100)
 
-  # returns the correct class
-  expect_is(res, "gbif_data")
-  expect_is(res$meta, "list")
-  expect_is(res$data, "data.frame")
-  # dimensions - b/c limit is set for the bounding box queried,
-  # we get less than the limit
-  expect_lt(NROW(res$data), 100)
+  })
 })
 
 test_that("wkt is used correctly in querying GBIF - occ_search", {
-  skip_on_cran()
+  vcr::use_cassette("wkt_large_occ_search", {
 
-  # by default too large WKT will fail with 413, request entity too large
-  # expect_error(occ_search(geometry = wkt, limit = 1),
-  #              "Request Entity Too Large")
+    # setting to bbox will work
+    res <- suppressMessages(occ_search(geometry = wkt, limit = 100, geom_big = "bbox"))
 
-  # setting to bbox will work
-  res <- suppressMessages(occ_search(geometry = wkt, limit = 100, geom_big = "bbox"))
+    # returns the correct class
+    expect_is(res, "gbif")
+    expect_is(res$meta, "list")
+    expect_is(res$data, "data.frame")
+    # dimensions - b/c limit is set for the bounding box queried,
+    # we get less than the limit
+    expect_lt(NROW(res$data), 100)
 
-  # returns the correct class
-  expect_is(res, "gbif")
-  expect_is(res$meta, "list")
-  expect_is(res$data, "data.frame")
-  # dimensions - b/c limit is set for the bounding box queried,
-  # we get less than the limit
-  expect_lt(NROW(res$data), 100)
+  })
 })

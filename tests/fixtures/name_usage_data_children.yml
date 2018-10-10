@@ -1,0 +1,155 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/species/5231190/children?offset=0&limit=100
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Tue, 09 Oct 2018 20:54:55 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/species/5231190/children?offset=0&limit=100
+      cache-control: public, max-age=3601
+      x-varnish: 76810028 76120220
+      age: '1332'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '14354'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":100,"endOfRecords":true,"results":[{"key":6090823,"nubKey":6090823,"nameKey":16675127,"taxonID":"gbif:6090823","sourceTaxonKey":132136901,"kingdom":"Animalia","phylum":"Chordata","order":"Passeriformes","family":"Passeridae","genus":"Passer","species":"Passer
+        domesticus","kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":729,"familyKey":5264,"genusKey":2492321,"speciesKey":5231190,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":5231190,"parent":"Passer
+        domesticus","scientificName":"Passer domesticus bactrianus Zarudny & Kudashev,
+        1916","canonicalName":"Passer domesticus bactrianus","authorship":"Zarudny
+        & Kudashev, 1916","nameType":"SCIENTIFIC","rank":"SUBSPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T13:40:57.305+0000","issues":["NAME_PARENT_MISMATCH"],"synonym":false,"class":"Aves"},{"key":6090862,"nubKey":6090862,"nameKey":16675125,"taxonID":"gbif:6090862","sourceTaxonKey":132136899,"kingdom":"Animalia","phylum":"Chordata","order":"Passeriformes","family":"Passeridae","genus":"Passer","species":"Passer
+        domesticus","kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":729,"familyKey":5264,"genusKey":2492321,"speciesKey":5231190,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":5231190,"parent":"Passer
+        domesticus","scientificName":"Passer domesticus balearoibericus von Jordans,
+        1923","canonicalName":"Passer domesticus balearoibericus","authorship":"von
+        Jordans, 1923","nameType":"SCIENTIFIC","rank":"SUBSPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T13:40:57.304+0000","issues":["NAME_PARENT_MISMATCH"],"synonym":false,"class":"Aves"},{"key":6090836,"nubKey":6090836,"nameKey":16675159,"taxonID":"gbif:6090836","sourceTaxonKey":132136896,"kingdom":"Animalia","phylum":"Chordata","order":"Passeriformes","family":"Passeridae","genus":"Passer","species":"Passer
+        domesticus","kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":729,"familyKey":5264,"genusKey":2492321,"speciesKey":5231190,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":5231190,"parent":"Passer
+        domesticus","scientificName":"Passer domesticus biblicus Hartert, 1904","canonicalName":"Passer
+        domesticus biblicus","authorship":"Hartert, 1904","nameType":"SCIENTIFIC","rank":"SUBSPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T13:40:57.298+0000","issues":["NAME_PARENT_MISMATCH"],"synonym":false,"class":"Aves"},{"key":8826221,"nameKey":16675120,"taxonID":"gbif:8826221","sourceTaxonKey":126981513,"kingdom":"Animalia","phylum":"Chordata","order":"Passeriformes","family":"Passeridae","genus":"Passer","species":"Passer
+        domesticus","kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":729,"familyKey":5264,"genusKey":2492321,"speciesKey":5231190,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"6cfd67d6-4f9b-400b-8549-1933ac27936f","parentKey":5231190,"parent":"Passer
+        domesticus","scientificName":"Passer domesticus brachyrhyncha","canonicalName":"Passer
+        domesticus brachyrhyncha","authorship":"","nameType":"SCIENTIFIC","rank":"SUBSPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T13:40:57.287+0000","issues":["NAME_PARENT_MISMATCH"],"synonym":false,"class":"Aves"},{"key":5231191,"nubKey":5231191,"nameKey":8290303,"taxonID":"gbif:5231191","sourceTaxonKey":132136904,"kingdom":"Animalia","phylum":"Chordata","order":"Passeriformes","family":"Passeridae","genus":"Passer","species":"Passer
+        domesticus","kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":729,"familyKey":5264,"genusKey":2492321,"speciesKey":5231190,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":5231190,"parent":"Passer
+        domesticus","scientificName":"Passer domesticus domesticus","canonicalName":"Passer
+        domesticus domesticus","authorship":" (Linnaeus, 1758)","nameType":"SCIENTIFIC","rank":"SUBSPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T13:40:57.293+0000","issues":[],"synonym":false,"class":"Aves"},{"key":6090829,"nubKey":6090829,"nameKey":16675152,"taxonID":"gbif:6090829","sourceTaxonKey":132136893,"kingdom":"Animalia","phylum":"Chordata","order":"Passeriformes","family":"Passeridae","genus":"Passer","species":"Passer
+        domesticus","kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":729,"familyKey":5264,"genusKey":2492321,"speciesKey":5231190,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":5231190,"parent":"Passer
+        domesticus","scientificName":"Passer domesticus hufufae Ticehurst & Cheesman,
+        1924","canonicalName":"Passer domesticus hufufae","authorship":"Ticehurst
+        & Cheesman, 1924","nameType":"SCIENTIFIC","rank":"SUBSPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T13:40:57.300+0000","issues":["NAME_PARENT_MISMATCH"],"synonym":false,"class":"Aves"},{"key":6090812,"nubKey":6090812,"nameKey":16675133,"taxonID":"gbif:6090812","sourceTaxonKey":132136890,"kingdom":"Animalia","phylum":"Chordata","order":"Passeriformes","family":"Passeridae","genus":"Passer","species":"Passer
+        domesticus","kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":729,"familyKey":5264,"genusKey":2492321,"speciesKey":5231190,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":5231190,"parent":"Passer
+        domesticus","scientificName":"Passer domesticus hyrcanus Zarudny & Kudashev,
+        1916","canonicalName":"Passer domesticus hyrcanus","authorship":"Zarudny &
+        Kudashev, 1916","nameType":"SCIENTIFIC","rank":"SUBSPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T13:40:57.302+0000","issues":["NAME_PARENT_MISMATCH"],"synonym":false,"class":"Aves"},{"key":5845699,"nubKey":5845699,"nameKey":16675147,"taxonID":"gbif:5845699","sourceTaxonKey":132136887,"kingdom":"Animalia","phylum":"Chordata","order":"Passeriformes","family":"Passeridae","genus":"Passer","species":"Passer
+        domesticus","kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":729,"familyKey":5264,"genusKey":2492321,"speciesKey":5231190,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":5231190,"parent":"Passer
+        domesticus","scientificName":"Passer domesticus indicus Jardine & Selby, 1831","canonicalName":"Passer
+        domesticus indicus","authorship":"Jardine & Selby, 1831","nameType":"SCIENTIFIC","rank":"SUBSPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T13:40:57.291+0000","issues":["NAME_PARENT_MISMATCH"],"synonym":false,"class":"Aves"},{"key":9066874,"nameKey":16675116,"taxonID":"gbif:9066874","sourceTaxonKey":126981402,"kingdom":"Animalia","phylum":"Chordata","order":"Passeriformes","family":"Passeridae","genus":"Passer","species":"Passer
+        domesticus","kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":729,"familyKey":5264,"genusKey":2492321,"speciesKey":5231190,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"6cfd67d6-4f9b-400b-8549-1933ac27936f","parentKey":5231190,"parent":"Passer
+        domesticus","scientificName":"Passer domesticus medius","canonicalName":"Passer
+        domesticus medius","authorship":"","nameType":"SCIENTIFIC","rank":"SUBSPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T13:40:57.284+0000","issues":["NAME_PARENT_MISMATCH"],"synonym":false,"class":"Aves"},{"key":6090844,"nubKey":6090844,"nameKey":16675136,"taxonID":"gbif:6090844","sourceTaxonKey":132136884,"kingdom":"Animalia","phylum":"Chordata","order":"Passeriformes","family":"Passeridae","genus":"Passer","species":"Passer
+        domesticus","kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":729,"familyKey":5264,"genusKey":2492321,"speciesKey":5231190,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":5231190,"parent":"Passer
+        domesticus","scientificName":"Passer domesticus niloticus Nicoll & Bonhote,
+        1909","canonicalName":"Passer domesticus niloticus","authorship":"Nicoll &
+        Bonhote, 1909","nameType":"SCIENTIFIC","rank":"SUBSPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T13:40:57.290+0000","issues":["NAME_PARENT_MISMATCH"],"synonym":false,"class":"Aves"},{"key":6090794,"nubKey":6090794,"nameKey":16675150,"taxonID":"gbif:6090794","sourceTaxonKey":132136881,"kingdom":"Animalia","phylum":"Chordata","order":"Passeriformes","family":"Passeridae","genus":"Passer","species":"Passer
+        domesticus","kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":729,"familyKey":5264,"genusKey":2492321,"speciesKey":5231190,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":5231190,"parent":"Passer
+        domesticus","scientificName":"Passer domesticus parkini Whistler, 1920","canonicalName":"Passer
+        domesticus parkini","authorship":"Whistler, 1920","nameType":"SCIENTIFIC","rank":"SUBSPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T13:40:57.297+0000","issues":["NAME_PARENT_MISMATCH"],"synonym":false,"class":"Aves"},{"key":6090806,"nubKey":6090806,"nameKey":16675143,"taxonID":"gbif:6090806","sourceTaxonKey":132136878,"kingdom":"Animalia","phylum":"Chordata","order":"Passeriformes","family":"Passeridae","genus":"Passer","species":"Passer
+        domesticus","kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":729,"familyKey":5264,"genusKey":2492321,"speciesKey":5231190,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":5231190,"parent":"Passer
+        domesticus","scientificName":"Passer domesticus persicus Zarudny & Kudashev,
+        1916","canonicalName":"Passer domesticus persicus","authorship":"Zarudny &
+        Kudashev, 1916","nameType":"SCIENTIFIC","rank":"SUBSPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T13:40:57.295+0000","issues":["NAME_PARENT_MISMATCH"],"synonym":false,"class":"Aves"},{"key":6090849,"nubKey":6090849,"nameKey":16675138,"taxonID":"gbif:6090849","sourceTaxonKey":132136875,"kingdom":"Animalia","phylum":"Chordata","order":"Passeriformes","family":"Passeridae","genus":"Passer","species":"Passer
+        domesticus","kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":729,"familyKey":5264,"genusKey":2492321,"speciesKey":5231190,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":5231190,"parent":"Passer
+        domesticus","scientificName":"Passer domesticus rufidorsalis C.L.Brehm, 1855","canonicalName":"Passer
+        domesticus rufidorsalis","authorship":"C.L.Brehm, 1855","nameType":"SCIENTIFIC","rank":"SUBSPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T13:40:57.288+0000","issues":["NAME_PARENT_MISMATCH"],"synonym":false,"class":"Aves"},{"key":6090855,"nubKey":6090855,"nameKey":16675131,"taxonID":"gbif:6090855","sourceTaxonKey":132136872,"kingdom":"Animalia","phylum":"Chordata","order":"Passeriformes","family":"Passeridae","genus":"Passer","species":"Passer
+        domesticus","kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":729,"familyKey":5264,"genusKey":2492321,"speciesKey":5231190,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":5231190,"parent":"Passer
+        domesticus","scientificName":"Passer domesticus tingitanus Loche, 1867","canonicalName":"Passer
+        domesticus tingitanus","authorship":"Loche, 1867","nameType":"SCIENTIFIC","rank":"SUBSPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T13:40:57.301+0000","issues":["NAME_PARENT_MISMATCH"],"synonym":false,"class":"Aves"},{"key":8972664,"nameKey":16675123,"taxonID":"gbif:8972664","sourceTaxonKey":126981475,"kingdom":"Animalia","phylum":"Chordata","order":"Passeriformes","family":"Passeridae","genus":"Passer","species":"Passer
+        domesticus","kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":729,"familyKey":5264,"genusKey":2492321,"speciesKey":5231190,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"6cfd67d6-4f9b-400b-8549-1933ac27936f","parentKey":5231190,"parent":"Passer
+        domesticus","scientificName":"Passer domesticus valida","canonicalName":"Passer
+        domesticus valida","authorship":"","nameType":"SCIENTIFIC","rank":"SUBSPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T13:40:57.285+0000","issues":["NAME_PARENT_MISMATCH"],"synonym":false,"class":"Aves"}]}'
+  recorded_at: 2018-10-09 21:17:07 GMT
+  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/species/5135790/children?offset=0&limit=100
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Tue, 09 Oct 2018 20:54:55 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/species/5135790/children?offset=0&limit=100
+      cache-control: public, max-age=3601
+      x-varnish: 80609703 70680969
+      age: '1332'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '9575'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":100,"endOfRecords":true,"results":[{"key":6231517,"nubKey":6231517,"nameKey":169347,"taxonID":"gbif:6231517","sourceTaxonKey":110504063,"kingdom":"Animalia","phylum":"Arthropoda","order":"Lepidoptera","family":"Nymphalidae","genus":"Acraea","species":"Acraea
+        johnstoni","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":797,"familyKey":7017,"genusKey":1915529,"speciesKey":5135790,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":5135790,"parent":"Acraea
+        johnstoni","scientificName":"Acraea johnstoni butleri Aurivillius, 1898","canonicalName":"Acraea
+        johnstoni butleri","authorship":"Aurivillius, 1898","nameType":"SCIENTIFIC","rank":"SUBSPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T14:02:17.830+0000","issues":["NAME_PARENT_MISMATCH"],"synonym":false,"class":"Insecta"},{"key":6231514,"nubKey":6231514,"nameKey":169357,"taxonID":"gbif:6231514","sourceTaxonKey":110504064,"kingdom":"Animalia","phylum":"Arthropoda","order":"Lepidoptera","family":"Nymphalidae","genus":"Acraea","species":"Acraea
+        johnstoni","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":797,"familyKey":7017,"genusKey":1915529,"speciesKey":5135790,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":5135790,"parent":"Acraea
+        johnstoni","scientificName":"Acraea johnstoni confusa Rogenhofer, 1891","canonicalName":"Acraea
+        johnstoni confusa","authorship":"Rogenhofer, 1891","nameType":"SCIENTIFIC","rank":"SUBSPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T14:02:17.828+0000","issues":["NAME_PARENT_MISMATCH"],"synonym":false,"class":"Insecta"},{"key":6231520,"nubKey":6231520,"nameKey":169366,"taxonID":"gbif:6231520","sourceTaxonKey":110504065,"kingdom":"Animalia","phylum":"Arthropoda","order":"Lepidoptera","family":"Nymphalidae","genus":"Acraea","species":"Acraea
+        johnstoni","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":797,"familyKey":7017,"genusKey":1915529,"speciesKey":5135790,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":5135790,"parent":"Acraea
+        johnstoni","scientificName":"Acraea johnstoni flavescens Oberthür, 1893","canonicalName":"Acraea
+        johnstoni flavescens","authorship":"Oberthür, 1893","nameType":"SCIENTIFIC","rank":"SUBSPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T14:02:17.835+0000","issues":["NAME_PARENT_MISMATCH"],"synonym":false,"class":"Insecta"},{"key":6231516,"nubKey":6231516,"nameKey":169371,"taxonID":"gbif:6231516","sourceTaxonKey":110504066,"kingdom":"Animalia","phylum":"Arthropoda","order":"Lepidoptera","family":"Nymphalidae","genus":"Acraea","species":"Acraea
+        johnstoni","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":797,"familyKey":7017,"genusKey":1915529,"speciesKey":5135790,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":5135790,"parent":"Acraea
+        johnstoni","scientificName":"Acraea johnstoni fulvescens Oberthür, 1893","canonicalName":"Acraea
+        johnstoni fulvescens","authorship":"Oberthür, 1893","nameType":"SCIENTIFIC","rank":"SUBSPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T14:02:17.827+0000","issues":["NAME_PARENT_MISMATCH"],"synonym":false,"class":"Insecta"},{"key":7206750,"nubKey":7206750,"nameKey":16886679,"taxonID":"gbif:7206750","kingdom":"Animalia","phylum":"Arthropoda","order":"Lepidoptera","family":"Nymphalidae","genus":"Acraea","species":"Acraea
+        johnstoni","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":797,"familyKey":7017,"genusKey":1915529,"speciesKey":5135790,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","parentKey":5135790,"parent":"Acraea
+        johnstoni","scientificName":"Acraea johnstoni johnstoni","canonicalName":"Acraea
+        johnstoni johnstoni","authorship":"","nameType":"SCIENTIFIC","rank":"SUBSPECIES","origin":"AUTONYM","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T14:02:17.823+0000","issues":[],"synonym":false,"class":"Insecta"},{"key":6231513,"nubKey":6231513,"nameKey":169377,"taxonID":"gbif:6231513","sourceTaxonKey":110504067,"kingdom":"Animalia","phylum":"Arthropoda","order":"Lepidoptera","family":"Nymphalidae","genus":"Acraea","species":"Acraea
+        johnstoni","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":797,"familyKey":7017,"genusKey":1915529,"speciesKey":5135790,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":5135790,"parent":"Acraea
+        johnstoni","scientificName":"Acraea johnstoni octobalia Karsch, 1894","canonicalName":"Acraea
+        johnstoni octobalia","authorship":"Karsch, 1894","nameType":"SCIENTIFIC","rank":"SUBSPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T14:02:17.834+0000","issues":["NAME_PARENT_MISMATCH"],"synonym":false,"class":"Insecta"},{"key":6231519,"nubKey":6231519,"nameKey":169385,"taxonID":"gbif:6231519","sourceTaxonKey":110504068,"kingdom":"Animalia","phylum":"Arthropoda","order":"Lepidoptera","family":"Nymphalidae","genus":"Acraea","species":"Acraea
+        johnstoni","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":797,"familyKey":7017,"genusKey":1915529,"speciesKey":5135790,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":5135790,"parent":"Acraea
+        johnstoni","scientificName":"Acraea johnstoni praelongata Joicey & Talbot,
+        1926","canonicalName":"Acraea johnstoni praelongata","authorship":"Joicey
+        & Talbot, 1926","nameType":"SCIENTIFIC","rank":"SUBSPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T14:02:17.831+0000","issues":["NAME_PARENT_MISMATCH"],"synonym":false,"class":"Insecta"},{"key":6231521,"nubKey":6231521,"nameKey":169399,"taxonID":"gbif:6231521","sourceTaxonKey":110504069,"kingdom":"Animalia","phylum":"Arthropoda","order":"Lepidoptera","family":"Nymphalidae","genus":"Acraea","species":"Acraea
+        johnstoni","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":797,"familyKey":7017,"genusKey":1915529,"speciesKey":5135790,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":5135790,"parent":"Acraea
+        johnstoni","scientificName":"Acraea johnstoni pretiosa Carpenter, 1932","canonicalName":"Acraea
+        johnstoni pretiosa","authorship":"Carpenter, 1932","nameType":"SCIENTIFIC","rank":"SUBSPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T14:02:17.825+0000","issues":["NAME_PARENT_MISMATCH"],"synonym":false,"class":"Insecta"},{"key":6231522,"nubKey":6231522,"nameKey":169404,"taxonID":"gbif:6231522","sourceTaxonKey":110504070,"kingdom":"Animalia","phylum":"Arthropoda","order":"Lepidoptera","family":"Nymphalidae","genus":"Acraea","species":"Acraea
+        johnstoni","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":797,"familyKey":7017,"genusKey":1915529,"speciesKey":5135790,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":5135790,"parent":"Acraea
+        johnstoni","scientificName":"Acraea johnstoni semialbescens Oberthür, 1893","canonicalName":"Acraea
+        johnstoni semialbescens","authorship":"Oberthür, 1893","nameType":"SCIENTIFIC","rank":"SUBSPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T14:02:17.832+0000","issues":["NAME_PARENT_MISMATCH"],"synonym":false,"class":"Insecta"},{"key":6231518,"nubKey":6231518,"nameKey":169431,"taxonID":"gbif:6231518","sourceTaxonKey":110504071,"kingdom":"Animalia","phylum":"Arthropoda","order":"Lepidoptera","family":"Nymphalidae","genus":"Acraea","species":"Acraea
+        johnstoni","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":797,"familyKey":7017,"genusKey":1915529,"speciesKey":5135790,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":5135790,"parent":"Acraea
+        johnstoni","scientificName":"Acraea johnstoni valdemaculosa Carpenter, 1932","canonicalName":"Acraea
+        johnstoni valdemaculosa","authorship":"Carpenter, 1932","nameType":"SCIENTIFIC","rank":"SUBSPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T14:02:17.824+0000","issues":["NAME_PARENT_MISMATCH"],"synonym":false,"class":"Insecta"}]}'
+  recorded_at: 2018-10-09 21:17:07 GMT
+  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0

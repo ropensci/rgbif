@@ -1,0 +1,85 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/species/5231190/parents?offset=0&limit=100
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Tue, 09 Oct 2018 20:54:54 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/species/5231190/parents?offset=0&limit=100
+      cache-control: public, max-age=3601
+      x-varnish: 49517085 54954149
+      age: '1331'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '4658'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '[{"key":1,"nubKey":1,"nameKey":18528683,"taxonID":"gbif:1","sourceTaxonKey":144299179,"kingdom":"Animalia","kingdomKey":1,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","scientificName":"Animalia","canonicalName":"Animalia","authorship":"","nameType":"SCIENTIFIC","rank":"KINGDOM","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":2226311,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T13:39:53.354+0000","issues":[],"synonym":false},{"key":44,"nubKey":44,"nameKey":2429952,"taxonID":"gbif:44","sourceTaxonKey":144299180,"kingdom":"Animalia","phylum":"Chordata","kingdomKey":1,"phylumKey":44,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"daacce49-b206-469b-8dc2-2257719f3afa","parentKey":1,"parent":"Animalia","scientificName":"Chordata","canonicalName":"Chordata","authorship":"","nameType":"SCIENTIFIC","rank":"PHYLUM","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":217776,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T13:40:17.783+0000","issues":[],"synonym":false},{"key":212,"nubKey":212,"nameKey":1235940,"taxonID":"gbif:212","sourceTaxonKey":144316009,"kingdom":"Animalia","phylum":"Chordata","kingdomKey":1,"phylumKey":44,"classKey":212,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"daacce49-b206-469b-8dc2-2257719f3afa","parentKey":44,"parent":"Chordata","scientificName":"Aves","canonicalName":"Aves","authorship":"","nameType":"SCIENTIFIC","rank":"CLASS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":55532,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T13:40:33.252+0000","issues":[],"synonym":false,"class":"Aves"},{"key":729,"nubKey":729,"nameKey":8291655,"taxonID":"gbif:729","sourceTaxonKey":144318496,"kingdom":"Animalia","phylum":"Chordata","order":"Passeriformes","kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":729,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":212,"parent":"Aves","scientificName":"Passeriformes","canonicalName":"Passeriformes","authorship":"","nameType":"SCIENTIFIC","rank":"ORDER","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":30140,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T13:40:46.118+0000","issues":[],"synonym":false,"class":"Aves"},{"key":5264,"nubKey":5264,"nameKey":8291641,"taxonID":"gbif:5264","sourceTaxonKey":144319940,"kingdom":"Animalia","phylum":"Chordata","order":"Passeriformes","family":"Passeridae","kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":729,"familyKey":5264,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":729,"parent":"Passeriformes","scientificName":"Passeridae","canonicalName":"Passeridae","authorship":"","nameType":"SCIENTIFIC","rank":"FAMILY","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":211,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T13:40:56.209+0000","issues":[],"synonym":false,"class":"Aves"},{"key":2492321,"nubKey":2492321,"nameKey":8290085,"taxonID":"gbif:2492321","kingdom":"Animalia","phylum":"Chordata","order":"Passeriformes","family":"Passeridae","genus":"Passer","kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":729,"familyKey":5264,"genusKey":2492321,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":5264,"parent":"Passeridae","scientificName":"Passer
+        Brisson, 1760","canonicalName":"Passer","authorship":"Brisson, 1760","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","publishedIn":"Brisson,
+        M. J. 1760. Ornithologie ou méthode contenant la division des oiseaux en ordres,
+        sections, genres, especes & leurs variétés. A laquelle on a joint une description
+        exacte de chaque espece, avec les citations des auteurs qui en ont traité,
+        les noms qu''ils leur ont donnés, ceux que leur ont donnés les différentes
+        nations, & les noms vulgaires. Ouvrage enrichi de figures en taille-douce.
+        Bauche, Paris. Vol. Tome 1: j-xxiv , 1-526, j-lxxiij , Pl. I-XXXVII.","numDescendants":104,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T13:40:56.993+0000","issues":[],"synonym":false,"class":"Aves"}]'
+  recorded_at: 2018-10-09 21:17:06 GMT
+  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/species/5135783/parents?offset=0&limit=100
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Tue, 09 Oct 2018 20:54:54 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/species/5135783/parents?offset=0&limit=100
+      cache-control: public, max-age=3601
+      x-varnish: 62327840 32838902
+      age: '1331'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '4517'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '[{"key":1,"nubKey":1,"nameKey":18528683,"taxonID":"gbif:1","sourceTaxonKey":144299179,"kingdom":"Animalia","kingdomKey":1,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","scientificName":"Animalia","canonicalName":"Animalia","authorship":"","nameType":"SCIENTIFIC","rank":"KINGDOM","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":2226311,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T13:39:53.354+0000","issues":[],"synonym":false},{"key":54,"nubKey":54,"nameKey":1009885,"taxonID":"gbif:54","sourceTaxonKey":144320014,"kingdom":"Animalia","phylum":"Arthropoda","kingdomKey":1,"phylumKey":54,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"daacce49-b206-469b-8dc2-2257719f3afa","parentKey":1,"parent":"Animalia","scientificName":"Arthropoda","canonicalName":"Arthropoda","authorship":"","nameType":"SCIENTIFIC","rank":"PHYLUM","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":1549444,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T13:43:11.646+0000","issues":[],"synonym":false},{"key":216,"nubKey":216,"nameKey":5709440,"taxonID":"gbif:216","sourceTaxonKey":144410424,"kingdom":"Animalia","phylum":"Arthropoda","kingdomKey":1,"phylumKey":54,"classKey":216,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"daacce49-b206-469b-8dc2-2257719f3afa","parentKey":54,"parent":"Arthropoda","scientificName":"Insecta","canonicalName":"Insecta","authorship":"","nameType":"SCIENTIFIC","rank":"CLASS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":1268713,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T13:45:04.765+0000","issues":[],"synonym":false,"class":"Insecta"},{"key":797,"nubKey":797,"nameKey":6129398,"taxonID":"gbif:797","sourceTaxonKey":144454084,"kingdom":"Animalia","phylum":"Arthropoda","order":"Lepidoptera","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":797,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"daacce49-b206-469b-8dc2-2257719f3afa","parentKey":216,"parent":"Insecta","scientificName":"Lepidoptera","canonicalName":"Lepidoptera","authorship":"","nameType":"SCIENTIFIC","rank":"ORDER","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":245899,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T13:58:56.933+0000","issues":[],"synonym":false,"class":"Insecta"},{"key":7017,"nubKey":7017,"nameKey":7650804,"taxonID":"gbif:7017","sourceTaxonKey":144470866,"kingdom":"Animalia","phylum":"Arthropoda","order":"Lepidoptera","family":"Nymphalidae","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":797,"familyKey":7017,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"d8fb1600-d636-4b35-aa0d-d4f292c1b424","parentKey":797,"parent":"Lepidoptera","scientificName":"Nymphalidae","canonicalName":"Nymphalidae","authorship":"","nameType":"SCIENTIFIC","rank":"FAMILY","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","publishedIn":"<i>Phil.
+        Mag.</i> (n.s.), <b>1</b>(2): 187","numDescendants":21680,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T14:02:10.369+0000","issues":[],"synonym":false,"class":"Insecta"},{"key":1915529,"nubKey":1915529,"nameKey":169180,"taxonID":"gbif:1915529","sourceTaxonKey":144472525,"kingdom":"Animalia","phylum":"Arthropoda","order":"Lepidoptera","family":"Nymphalidae","genus":"Acraea","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":797,"familyKey":7017,"genusKey":1915529,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":7017,"parent":"Nymphalidae","scientificName":"Acraea
+        Fabricius, 1807","canonicalName":"Acraea","authorship":"Fabricius, 1807","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","publishedIn":"Fabricius,
+        Johann C. 1807. Die neueste Gattungs-Eintheilung der Schmetterlinge aus den
+        Linnéischen Gattungen Papilio und Sphinx. Magazin für insektenkunde / herausgegeben
+        von Karl Illiger Bd.6: 277-289.","numDescendants":665,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T14:02:17.440+0000","issues":[],"synonym":false,"class":"Insecta"}]'
+  recorded_at: 2018-10-09 21:17:06 GMT
+  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0

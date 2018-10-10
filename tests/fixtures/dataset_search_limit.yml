@@ -1,0 +1,73 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/search?limit=2&type=OCCURRENCE
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Sun, 17 Jun 2018 05:03:14 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/dataset/search?limit=2&type=OCCURRENCE
+      cache-control: public, max-age=600
+      x-varnish: 487655272 473566283
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '4069'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":15030,"results":[{"key":"75956ee6-1a2b-4fa3-b3e8-ccda64ce6c2d","title":"INPN
+        - Données flore des CBN agrégées par la FCBN","description":"Dès la création
+        de leur Fédération (FCBN - www.fcbn.fr) en 1999, les onze Conservatoires botaniques
+        nationaux (CBN) ont exprimé la volonté collective de constituer un système
+        d’information national pour mettre en commun leurs données, et celles de leurs
+        partenaires, sur la flore, la fonge et les végétations-habitats. C’est réellement
+        en 2010 avec le lancement de l’établissement du Format Standard de Données
+        sur la flore (FSD Flore), conçu comme le « format commun de données de la
+        Fédération des CBN », que la démarche a été initiée. Il s’en est suivi de
+        nombreux échanges ayant permis de finaliser le format, de le tester sur les
+        premiers jeux de données, d’établir une charte d’adhésion au projet et d’élaborer
+        le cadrage final de l’exercice d’agrégation des données. Le projet s’est concrétisé
+        au premier trimestre 2013 à travers la mise au format des données détenues
+        par les CBN et leur intégration dans le Système d’Information de la FCBN (SI-Flore).
+        A l’horizon de l’année 2014, il résulte, de ce projet structurant, que la
+        FCBN dispose d’un système d’information d’envergure nationale et fort de plus
+        de 20 millions de données d’observation sur la flore de France. Les données
+        centralisées ont été consolidées sur la base du référentiel TAXREF 5.0 et
+        une mise à jour est prévue pour fin 2015.","type":"OCCURRENCE","hostingOrganizationKey":"5d5e5d82-076c-4e9a-b5b0-c88d1b691a6a","hostingOrganizationTitle":"GBIF
+        France","countryCoverage":[],"publishingCountry":"FR","publishingOrganizationKey":"1928bdf0-f5d2-11dc-8c12-b8a03c50a862","publishingOrganizationTitle":"SPN
+        - Service du Patrimoine naturel, Muséum national d''Histoire naturelle, Paris","license":"http://creativecommons.org/licenses/by/4.0/legalcode","decades":[1500,1600,1700,1800,1810,1820,1830,1840,1850,1860,1870,1880,1890,1900,1910,1920,1930,1940,1950,1960,1970,1980,1990,2000,2010],"keywords":["Occurrence","Flore,
+        Flora, Conservatoire Botanique National, CBN, FCBN, observation"],"recordCount":20999334},{"key":"95db4db8-f762-11e1-a439-00145eb45e9a","title":"DOF","description":"DOFbasen.
+        Please contact DOF (dof@dof.dk) before any use of DOFbase data in publications.
+        Database of bird registrations administrated by Danish Ornithological Society
+        (www.dof.dk). Danish Ornithological Society/BirdLife Denmark (in Danish: Dansk
+        Ornitologisk Forening - DOF) is a private society working for the protection
+        of birds and nature as well as the procurement of knowledge on birds. Information
+        on sensitive species is omitted from the available data - see list here: http://www.dofbasen.dk/opslag/sensitive.php.
+        Please contact DOF on how to obtain information on sensitive species","type":"OCCURRENCE","hostingOrganizationKey":"8b734449-479a-4924-8f7a-9a2a64112f8f","hostingOrganizationTitle":"Danish
+        Ornithological Society","countryCoverage":[],"publishingCountry":"DK","publishingOrganizationKey":"8b734449-479a-4924-8f7a-9a2a64112f8f","publishingOrganizationTitle":"Danish
+        Ornithological Society","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","decades":[1700,1800,1810,1820,1830,1840,1850,1860,1870,1880,1890,1900,1910,1920,1930,1940,1950,1960,1970,1980,1990,2000,2010],"keywords":["Animalia","Europe","Observation","DOF","Occurrence","DOFbasen.
+        Database of bird registrations administrated by Danish Ornithological Society
+        (www.dof.dk). Danish Ornithological Society/BirdLife Denmark (in Danish: Dansk
+        Ornitologisk Forening - DOF) is a private society working for the protection
+        of birds and nature as well as the procurement of knowledge on birds. Information
+        on sensitive species is omitted from the available data - see list here: http://www.dofbasen.dk/opslag/sensitive.php.
+        Please contact DOF on how to obtain information on sensitive species","DENMARK"],"recordCount":19287097}],"facets":[]}'
+  recorded_at: 2018-06-17 05:03:14 GMT
+  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2

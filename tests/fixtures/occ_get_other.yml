@@ -1,0 +1,182 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/1315970632/verbatim
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Tue, 09 Oct 2018 21:45:16 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/occurrence/1315970632/verbatim
+      cache-control: public, max-age=3601
+      x-varnish: 57379567 84967972
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '5348'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"key":1315970632,"datasetKey":"3c6e7390-3b56-11dc-8c19-b8a03c50a862","publishingOrgKey":"6b2f029b-7823-4b84-9c30-31ff364238fe","publishingCountry":"NZ","protocol":"DWC_ARCHIVE","lastCrawled":"2018-10-03T02:11:23.241+0000","lastParsed":"2018-04-25T03:02:14.897+0000","crawlId":193,"extensions":{"http://rs.tdwg.org/dwc/terms/Identification":[{"http://rs.tdwg.org/dwc/terms/taxonRank":"species","http://rs.tdwg.org/dwc/terms/family":"Xanthomonadaceae","http://rs.tdwg.org/dwc/terms/identificationID":"11650","http://rs.tdwg.org/dwc/terms/phylum":"Proteobacteria","http://rs.tdwg.org/dwc/terms/genus":"Xanthomonas","http://rs.tdwg.org/dwc/terms/class":"Gammaproteobacteria","http://rs.tdwg.org/dwc/terms/kingdom":"Bacteria","http://rs.tdwg.org/dwc/terms/specificEpithet":"axonopodis","http://rs.tdwg.org/dwc/terms/order":"Xanthomonadales","http://rs.tdwg.org/dwc/terms/scientificName":"Xanthomonas
+        axonopodis Starr & Garces 1950"},{"http://rs.tdwg.org/dwc/terms/taxonRank":"species","http://rs.tdwg.org/dwc/terms/family":"Xanthomonadaceae","http://rs.tdwg.org/dwc/terms/identificationID":"27794","http://rs.tdwg.org/dwc/terms/phylum":"Proteobacteria","http://rs.tdwg.org/dwc/terms/genus":"Xanthomonas","http://rs.tdwg.org/dwc/terms/class":"Gammaproteobacteria","http://rs.tdwg.org/dwc/terms/kingdom":"Bacteria","http://rs.tdwg.org/dwc/terms/specificEpithet":"axonopodis","http://rs.tdwg.org/dwc/terms/order":"Xanthomonadales","http://rs.tdwg.org/dwc/terms/scientificName":"Xanthomonas
+        axonopodis Starr & Garces 1950"},{"http://rs.tdwg.org/dwc/terms/taxonRank":"genus","http://rs.tdwg.org/dwc/terms/family":"Moraceae","http://rs.tdwg.org/dwc/terms/identificationID":"43635","http://rs.tdwg.org/dwc/terms/genus":"Ficus","http://rs.tdwg.org/dwc/terms/kingdom":"HostList","http://rs.tdwg.org/dwc/terms/scientificName":"Ficus"}],"http://rs.tdwg.org/ac/terms/Multimedia":[]},"http://rs.tdwg.org/dwc/terms/country":"Australia","http://rs.tdwg.org/dwc/terms/collectionCode":"ICMP","http://rs.tdwg.org/dwc/terms/order":"Xanthomonadales","http://rs.tdwg.org/dwc/terms/taxonRank":"species","http://unknown.org/http_//rs.tdwg.org/dwc/terms/Identification":"[
+        {\n  \"http://rs.tdwg.org/dwc/terms/taxonRank\" : \"species\",\n  \"http://rs.tdwg.org/dwc/terms/family\"
+        : \"Xanthomonadaceae\",\n  \"http://rs.tdwg.org/dwc/terms/identificationID\"
+        : \"11650\",\n  \"http://rs.tdwg.org/dwc/terms/phylum\" : \"Proteobacteria\",\n  \"http://rs.tdwg.org/dwc/terms/genus\"
+        : \"Xanthomonas\",\n  \"http://rs.tdwg.org/dwc/terms/class\" : \"Gammaproteobacteria\",\n  \"http://rs.tdwg.org/dwc/terms/kingdom\"
+        : \"Bacteria\",\n  \"http://rs.tdwg.org/dwc/terms/specificEpithet\" : \"axonopodis\",\n  \"http://rs.tdwg.org/dwc/terms/order\"
+        : \"Xanthomonadales\",\n  \"http://rs.tdwg.org/dwc/terms/scientificName\"
+        : \"Xanthomonas axonopodis Starr & Garces 1950\"\n}, {\n  \"http://rs.tdwg.org/dwc/terms/taxonRank\"
+        : \"species\",\n  \"http://rs.tdwg.org/dwc/terms/family\" : \"Xanthomonadaceae\",\n  \"http://rs.tdwg.org/dwc/terms/identificationID\"
+        : \"27794\",\n  \"http://rs.tdwg.org/dwc/terms/phylum\" : \"Proteobacteria\",\n  \"http://rs.tdwg.org/dwc/terms/genus\"
+        : \"Xanthomonas\",\n  \"http://rs.tdwg.org/dwc/terms/class\" : \"Gammaproteobacteria\",\n  \"http://rs.tdwg.org/dwc/terms/kingdom\"
+        : \"Bacteria\",\n  \"http://rs.tdwg.org/dwc/terms/specificEpithet\" : \"axonopodis\",\n  \"http://rs.tdwg.org/dwc/terms/order\"
+        : \"Xanthomonadales\",\n  \"http://rs.tdwg.org/dwc/terms/scientificName\"
+        : \"Xanthomonas axonopodis Starr & Garces 1950\"\n}, {\n  \"http://rs.tdwg.org/dwc/terms/taxonRank\"
+        : \"genus\",\n  \"http://rs.tdwg.org/dwc/terms/family\" : \"Moraceae\",\n  \"http://rs.tdwg.org/dwc/terms/identificationID\"
+        : \"43635\",\n  \"http://rs.tdwg.org/dwc/terms/genus\" : \"Ficus\",\n  \"http://rs.tdwg.org/dwc/terms/kingdom\"
+        : \"HostList\",\n  \"http://rs.tdwg.org/dwc/terms/scientificName\" : \"Ficus\"\n}
+        ]","http://rs.tdwg.org/dwc/terms/verbatimLocality":"Coffs Harbour, NSW","http://rs.tdwg.org/dwc/terms/basisOfRecord":"LivingSpecimen","http://purl.org/dc/terms/rightsHolder":"Landcare
+        Research NZ Ltd.","http://rs.tdwg.org/dwc/terms/identificationID":"11650","http://rs.tdwg.org/dwc/terms/family":"Xanthomonadaceae","http://purl.org/dc/terms/modified":"2012-06-27T15:25:00.950+12:00","http://rs.tdwg.org/dwc/terms/decimalLatitude":"-30.319","http://rs.tdwg.org/dwc/terms/scientificName":"Xanthomonas
+        axonopodis Starr & Garces 1950","http://rs.tdwg.org/dwc/terms/phylum":"Proteobacteria","http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by/3.0/nz/","http://rs.gbif.org/terms/1.0/gbifID":"1315970632","http://rs.tdwg.org/dwc/terms/kingdom":"Bacteria","http://rs.tdwg.org/dwc/terms/genus":"Xanthomonas","http://purl.org/dc/terms/identifier":"C4457036-8A3A-406A-802D-BEE23516EF37","http://rs.tdwg.org/dwc/terms/class":"Gammaproteobacteria","http://purl.org/dc/terms/language":"en","http://rs.tdwg.org/dwc/terms/specificEpithet":"axonopodis","http://rs.tdwg.org/dwc/terms/occurrenceID":"C4457036-8A3A-406A-802D-BEE23516EF37","http://rs.tdwg.org/dwc/terms/catalogNumber":"ICMP
+        14581","http://purl.org/dc/terms/type":"PhysicalObject","http://purl.org/dc/terms/references":"https://scd.landcareresearch.co.nz/Specimen/ICMP_14581","http://rs.tdwg.org/dwc/terms/decimalLongitude":"153.108","http://rs.tdwg.org/dwc/terms/institutionCode":"ICMP"}'
+  recorded_at: 2018-10-09 21:45:18 GMT
+  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/1261282041/verbatim
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Tue, 09 Oct 2018 21:45:17 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/occurrence/1261282041/verbatim
+      cache-control: public, max-age=3601
+      x-varnish: 80348417 57379569
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '2688'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"key":1261282041,"datasetKey":"7bd65a7a-f762-11e1-a439-00145eb45e9a","publishingOrgKey":"90fd6680-349f-11d8-aa2d-b8a03c50a862","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2018-06-20T08:05:22.726+0000","lastParsed":"2016-03-21T16:46:11.359+0000","crawlId":28,"extensions":{"http://rs.gbif.org/terms/1.0/Multimedia":[]},"http://rs.tdwg.org/dwc/terms/continent":"North
+        America","http://rs.tdwg.org/dwc/terms/country":"United States","http://rs.tdwg.org/dwc/terms/infraspecificEpithet":"Undesignated","http://rs.tdwg.org/dwc/terms/collectionCode":"MO","http://rs.tdwg.org/dwc/terms/year":"2008","http://rs.tdwg.org/dwc/terms/recordNumber":"Smith
+        4326","http://rs.tdwg.org/dwc/terms/locality":"Open sandy pine woods roadside
+        on Chazel Lane on N bank of JORDAN RIVER, 0.7 miles NW of highway 43-603 bridge,
+        1.5 miles SW of KILN, 9 miles N of Gulf of Mexico. Elev.: 13 feet.","http://rs.tdwg.org/dwc/terms/basisOfRecord":"PreservedSpecimen","http://purl.org/dc/terms/rightsHolder":"Missouri
+        Botanical Garden","http://purl.org/dc/terms/bibliographicCitation":"http://www.tropicos.org/Specimen/570124","http://rs.tdwg.org/dwc/terms/family":"Undesignated","http://purl.org/dc/terms/modified":"2008-07-01
+        03:33:00.0","http://rs.tdwg.org/dwc/terms/decimalLatitude":"30.3916600","http://rs.tdwg.org/dwc/terms/month":"5","http://rs.tdwg.org/dwc/terms/ownerInstitutionCode":"MOBOT","http://rs.tdwg.org/dwc/terms/scientificName":"Undesignated","http://rs.tdwg.org/dwc/terms/stateProvince":"Mississippi","http://rs.tdwg.org/dwc/terms/recordedBy":"Smith","http://purl.org/dc/terms/license":"http://creativecommons.org/licenses/by/4.0/legalcode","http://rs.gbif.org/terms/1.0/gbifID":"1261282041","http://rs.tdwg.org/dwc/terms/day":"14","http://rs.tdwg.org/dwc/terms/datasetName":"Tropicos","http://rs.tdwg.org/dwc/terms/collectionID":"http://biocol.org/urn:lsid:biocol.org:col:15859","http://rs.tdwg.org/dwc/terms/kingdom":"Plantae","http://rs.tdwg.org/dwc/terms/genus":"Undesignated","http://purl.org/dc/terms/identifier":"urn:catalog:MO:Tropicos:570124","http://rs.tdwg.org/dwc/terms/county":"Hancock","http://rs.tdwg.org/dwc/terms/individualCount":"1","http://rs.tdwg.org/dwc/terms/specificEpithet":"Undesignated","http://rs.tdwg.org/dwc/terms/occurrenceID":"urn:catalog:MO:Tropicos:570124","http://rs.tdwg.org/dwc/terms/nomenclaturalCode":"ICNafp","http://rs.tdwg.org/dwc/terms/catalogNumber":"570124","http://purl.org/dc/terms/type":"PhysicalObject","http://rs.tdwg.org/dwc/terms/decimalLongitude":"-89.4508300","http://rs.tdwg.org/dwc/terms/countryCode":"US","http://rs.tdwg.org/dwc/terms/institutionCode":"MO","http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia":"[
+        ]"}'
+  recorded_at: 2018-10-09 21:45:18 GMT
+  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/1807810811/verbatim
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Tue, 09 Oct 2018 21:45:17 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/occurrence/1807810811/verbatim
+      cache-control: public, max-age=3601
+      x-varnish: 44538051 57379582
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '1973'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"key":1807810811,"datasetKey":"6ac3f774-d9fb-4796-b3e9-92bf6c81c084","publishingOrgKey":"bb646dff-a905-4403-a49b-6d378c2cf0d9","publishingCountry":"DE","protocol":"BIOCASE","lastCrawled":"2018-10-05T15:44:46.447+0000","lastParsed":"2018-08-20T16:03:55.893+0000","crawlId":83,"extensions":{"http://rs.gbif.org/terms/1.0/Multimedia":[{"http://purl.org/dc/terms/identifier":null,"http://purl.org/dc/terms/references":"https://naturgucker.net/?sprache=en&bild=1199306785","http://purl.org/dc/terms/description":null,"http://purl.org/dc/terms/format":"text/html","http://purl.org/dc/terms/license":null}]},"http://rs.gbif.org/terms/1.0/gbifID":"1807810811","http://rs.tdwg.org/dwc/terms/kingdom":"Animalia","http://rs.tdwg.org/dwc/terms/coordinateUncertaintyInMeters":"250","http://rs.tdwg.org/dwc/terms/country":"DE","http://rs.tdwg.org/dwc/terms/class":"Aves","http://rs.tdwg.org/dwc/terms/collectionCode":"naturgucker","http://rs.tdwg.org/dwc/terms/order":"Gruiformes","http://rs.tdwg.org/dwc/terms/locality":"Garstädter
+        Seen (Vogelschutzgebiet)","http://rs.tdwg.org/dwc/terms/basisOfRecord":"HumanObservation","http://rs.tdwg.org/dwc/terms/eventDate":"2018-01-21T00:00:00","http://rs.tdwg.org/dwc/terms/catalogNumber":"-2123994837","http://rs.tdwg.org/dwc/terms/family":"Rallidae","http://rs.tdwg.org/dwc/terms/decimalLatitude":"49.9646377563","http://rs.tdwg.org/dwc/terms/decimalLongitude":"10.1838970184","http://rs.tdwg.org/dwc/terms/institutionCode":"naturgucker","http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia":"[
+        {\n  \"http://purl.org/dc/terms/identifier\" : null,\n  \"http://purl.org/dc/terms/references\"
+        : \"https://naturgucker.net/?sprache=en&bild=1199306785\",\n  \"http://purl.org/dc/terms/description\"
+        : null,\n  \"http://purl.org/dc/terms/format\" : \"text/html\",\n  \"http://purl.org/dc/terms/license\"
+        : null\n} ]","http://rs.tdwg.org/dwc/terms/recordedBy":"1655569222","http://rs.tdwg.org/dwc/terms/scientificName":"Gallinula
+        chloropus"}'
+  recorded_at: 2018-10-09 21:45:18 GMT
+  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/1807914841/verbatim
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Tue, 09 Oct 2018 21:42:37 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/occurrence/1807914841/verbatim
+      cache-control: public, max-age=3601
+      x-varnish: 80348432 5412960
+      age: '160'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '1262'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"key":1807914841,"datasetKey":"6ac3f774-d9fb-4796-b3e9-92bf6c81c084","publishingOrgKey":"bb646dff-a905-4403-a49b-6d378c2cf0d9","publishingCountry":"DE","protocol":"BIOCASE","lastCrawled":"2018-10-05T19:26:30.249+0000","lastParsed":"2018-02-15T21:05:43.886+0000","crawlId":83,"extensions":{},"http://rs.gbif.org/terms/1.0/gbifID":"1807914841","http://rs.tdwg.org/dwc/terms/kingdom":"Animalia","http://rs.tdwg.org/dwc/terms/coordinateUncertaintyInMeters":"250","http://rs.tdwg.org/dwc/terms/country":"DE","http://rs.tdwg.org/dwc/terms/class":"Aves","http://rs.tdwg.org/dwc/terms/collectionCode":"naturgucker","http://rs.tdwg.org/dwc/terms/order":"Anseriformes","http://rs.tdwg.org/dwc/terms/locality":"Schellbruch
+        Lübeck","http://rs.tdwg.org/dwc/terms/basisOfRecord":"HumanObservation","http://rs.tdwg.org/dwc/terms/eventDate":"2018-01-10T00:00:00","http://rs.tdwg.org/dwc/terms/catalogNumber":"-850601263","http://rs.tdwg.org/dwc/terms/family":"Anatidae","http://rs.tdwg.org/dwc/terms/decimalLatitude":"53.9044151306","http://rs.tdwg.org/dwc/terms/decimalLongitude":"10.721282959","http://rs.tdwg.org/dwc/terms/institutionCode":"naturgucker","http://rs.tdwg.org/dwc/terms/recordedBy":"-755061113","http://rs.tdwg.org/dwc/terms/scientificName":"Mareca
+        strepera"}'
+  recorded_at: 2018-10-09 21:45:18 GMT
+  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0

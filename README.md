@@ -20,6 +20,8 @@ Tutorials:
 * [issues vignette - how to clean GBIF data](vignettes/issues_vignette.Rmd)
 * [taxonomic names - examples of some confusing bits](vignettes/taxonomic_names.Rmd)
 
+Occurence manual: <https://ropensci.github.io/occurrence-manual/>
+
 Check out the rgbif [paper][] for more information on this package and the sister [Python][pygbif] and [Ruby][gbifrb] clients.
 
 ## Package API

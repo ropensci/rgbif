@@ -1,0 +1,37 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?limit=0&facet=country&facet=basisOfRecord&facet=hasCoordinate&country.facetLimit=3&basisOfRecord.facetLimit=6
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Tue, 09 Oct 2018 21:42:14 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/occurrence/search?limit=0&facet=country&facet=basisOfRecord&facet=hasCoordinate&country.facetLimit=3&basisOfRecord.facetLimit=6
+      cache-control: public, max-age=600
+      x-varnish: 78186739 86377099
+      age: '65'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '618'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":0,"endOfRecords":false,"count":1019284935,"results":[],"facets":[{"field":"COUNTRY","counts":[{"name":"US","count":324446840},{"name":"SE","count":79626359},{"name":"AU","count":68750150}]},{"field":"BASIS_OF_RECORD","counts":[{"name":"HUMAN_OBSERVATION","count":803221812},{"name":"PRESERVED_SPECIMEN","count":149178868},{"name":"UNKNOWN","count":23435290},{"name":"OBSERVATION","count":21400729},{"name":"MACHINE_OBSERVATION","count":11011305},{"name":"FOSSIL_SPECIMEN","count":8980108}]},{"field":"HAS_COORDINATE","counts":[{"name":"true","count":935082633},{"name":"false","count":84202302}]}]}'
+  recorded_at: 2018-10-09 21:43:21 GMT
+  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0

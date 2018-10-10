@@ -1,0 +1,73 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/count?basisOfRecord=OBSERVATION&year=2012
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+  response:
+    status:
+      status_code: '400'
+      message: Bad Request
+      explanation: Bad request syntax or unsupported method
+    headers:
+      status: HTTP/1.1 400 Bad Request
+      date: Tue, 09 Oct 2018 21:25:02 GMT
+      content-type: text/plain
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/occurrence/count?basisOfRecord=OBSERVATION&year=2012
+      cache-control: no-cache, no-store, must-revalidate
+      x-varnish: '68093918'
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      content-length: '111'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: 'The provided address is not calculated in the cube: (basisOfRecord:
+        (nobucket: 03), year: (nobucket: 000007dc))'
+  recorded_at: 2018-10-09 21:25:03 GMT
+  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/count?basisOfRecord=OBSERVATION&typeStatus=ALLOTYPE
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+  response:
+    status:
+      status_code: '400'
+      message: Bad Request
+      explanation: Bad request syntax or unsupported method
+    headers:
+      status: HTTP/1.1 400 Bad Request
+      date: Tue, 09 Oct 2018 21:25:03 GMT
+      content-type: text/plain
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      server: Jetty(9.3.z-SNAPSHOT)
+      x-api-url: /v1/occurrence/count?basisOfRecord=OBSERVATION&typeStatus=ALLOTYPE
+      cache-control: no-cache, no-store, must-revalidate
+      x-varnish: '78022490'
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      content-length: '111'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: 'The provided address is not calculated in the cube: (basisOfRecord:
+        (nobucket: 03), typeStatus: (nobucket: 05))'
+  recorded_at: 2018-10-09 21:25:03 GMT
+  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
