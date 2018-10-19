@@ -1,11 +1,12 @@
 #' Table of GBIF issues, with codes used in data output, full issue name,
-#' and descriptions.
+#' description and the type (occurrence or name related).
 #'
 #' Table has the following fields:
 #'
 #' - code. Code for issue, making viewing data easier.
 #' - issue. Full name of the issue.
 #' - description. Description of the issue.
+#' - type. Type of the issue: related to occurrence data or names.
 #'
 #' @export
 #' @usage gbif_issues()
