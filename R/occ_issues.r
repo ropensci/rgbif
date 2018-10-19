@@ -1,4 +1,4 @@
-#' Parse and examine further GBIF issues on a dataset
+#' Parse and examine further GBIF occurrence issues on a dataset
 #'
 #' @export
 #'
@@ -34,9 +34,9 @@
 #' returned from a call to [occ_search()]. Maybe in a future version
 #' we will remove the associated records from the `hierarchy` and `media`
 #' elements as they are remove from the `data` element.
-#' 
+#'
 #' You'll notice that we sort columns to make it easier to glimpse the important
-#' parts of your data, namely taxonomic name, taxon key, latitude and longitude, 
+#' parts of your data, namely taxonomic name, taxon key, latitude and longitude,
 #' and the issues. The columns are unchanged otherwise.
 #'
 #' @examples \dontrun{
@@ -47,14 +47,14 @@
 #' # compare out data to after occ_issues use
 #' (out <- occ_search(limit=100))
 #' out %>% occ_issues(cdround)
-#' 
+#'
 #' # occ_data
 #' (out <- occ_data(limit=100))
 #' out %>% occ_issues(cdround)
 #'
 #' # Parsing output by issue
 #' (res <- occ_data(
-#'   geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))', 
+#'   geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))',
 #'   limit = 600))
 #'
 #' ## or parse issues in various ways
@@ -84,7 +84,7 @@
 #'
 #' ## Or you can use occ_issues without %>%
 #' occ_issues(res, -cdround, mutate = "split_expand")
-#' 
+#'
 #' # from GBIF downloaded data via occ_download and friends
 #' res <- occ_download_get(key="0000066-140928181241064", overwrite=TRUE)
 #' x <- occ_download_import(res)
@@ -110,7 +110,7 @@ occ_issues <- function(.data, ..., mutate = NULL) {
     tmp <- .data
   }
 
-  # handle downloads data 
+  # handle downloads data
   is_dload <- FALSE
   if (
     c("issue", "gbifID", "accessRights", "accrualMethod") %in% names(tmp) &&
@@ -122,7 +122,7 @@ occ_issues <- function(.data, ..., mutate = NULL) {
     issstr <- tmp[names(tmp) %in% "issue"][[1]]
     tmp$issues <- unlist(lapply(issstr, function(z) {
       if (identical(z, "")) return (character(1))
-      paste(gbifissues[ grepl(gsub(";", "|", z), gbifissues$issue), "code" ], 
+      paste(gbifissues[ grepl(gsub(";", "|", z), gbifissues$issue), "code" ],
         collapse = ",")
     }))
   }
@@ -178,7 +178,7 @@ split_iss <- function(m, is_dload) {
   first_search <- c('name','key','decimalLatitude','decimalLongitude')
   first_dload <- c('scientificName','taxonKey','decimalLatitude','decimalLongitude')
   first <- if (is_dload) first_dload else first_search
-  tibble::as_data_frame(data.frame(m[, first], df, m[, !names(m) %in% first], 
+  tibble::as_data_frame(data.frame(m[, first], df, m[, !names(m) %in% first],
     stringsAsFactors = FALSE))
 }
 
