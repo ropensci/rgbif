@@ -9,7 +9,6 @@
 #'
 #' @export
 #' @usage gbif_issues()
-#' @seealso [name_issues()]
 #' @source
 #'   <http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html>,
 #'   <https://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/NameUsageIssue.html>
