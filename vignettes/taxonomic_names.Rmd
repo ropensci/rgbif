@@ -78,8 +78,8 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 #> 2         94     FUZZY   FALSE
 ```
 
-* P. s<b>y</b>lvestris w/ 356810 occurrences - from Catalogue of Life
-* P. s<b>i</b>lvestris w/ 356810 occurrences - from Catalogue of Life
+* P. s<b>y</b>lvestris w/ 394166 occurrences - from Catalogue of Life
+* P. s<b>i</b>lvestris w/ 394166 occurrences - from Catalogue of Life
 
 ## Macrozamia platyrachis vs. M. platyrhachis
 
@@ -110,8 +110,8 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 #> 2         95     FUZZY   FALSE
 ```
 
-* C. circinalis w/ 578 occurrences - from Catalogue of Life
-* C. circin<b>n</b>alis w/ 578 occurrences - from Catalogue of Life
+* C. circinalis w/ 593 occurrences - from Catalogue of Life
+* C. circin<b>n</b>alis w/ 593 occurrences - from Catalogue of Life
 
 ## Isolona perrieri vs. I. perrierii
 
@@ -126,24 +126,24 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 #> 2         98     EXACT   FALSE
 ```
 
-* I. perrieri w/ 81 occurrences - from Catalogue of Life
-* I. perrieri<b>i</b> w/ 81 occurrences - from Catalogue of Life
+* I. perrieri w/ 82 occurrences - from Catalogue of Life
+* I. perrieri<b>i</b> w/ 82 occurrences - from Catalogue of Life
 
 ## Wiesneria vs. Wisneria
 
 
 ```r
 (c5 <- name_rbind("Wiesneria", "Wisneria", rank = "genus"))
-#>   usageKey    scientificName canonicalName  rank   status confidence
-#> 1  2864604 Wiesneria Micheli     Wiesneria GENUS ACCEPTED         96
-#> 2  7327444  Wisneria Micheli      Wisneria GENUS DOUBTFUL         94
-#>   matchType synonym
-#> 1     EXACT   FALSE
-#> 2     EXACT   FALSE
+#>   usageKey         scientificName canonicalName     rank  status
+#> 1  2864604              Wiesneria         GENUS ACCEPTED      96
+#> 2  7327444 Wisneria Micheli, 1881      Wisneria    GENUS SYNONYM
+#>   confidence matchType    synonym
+#> 1      EXACT   Plantae Liliopsida
+#> 2         95     EXACT       TRUE
 ```
 
-* Wi<b>e</b>sneria w/ 105 occurrences - from Catalogue of Life
-* Wisneria w/ 3 occurrences - from International Plant Names Index
+* Wi<b>e</b>sneria w/ 108 occurrences - from Catalogue of Life
+* Wisneria w/ 3 occurrences - from The Interim Register of Marine and Nonmarine Genera
 
 ## The take away messages from this vignette
 

@@ -237,9 +237,9 @@ occ_search(taxonKey=keys, limit=5)
 Using thet GBIF map web tile service, making a raster and visualizing it.
 
 ```{r gbifmap1}
-x <- map_fetch(search = "taxonKey", id = 3118771, year = 2010)
+x <- map_fetch(taxonKey = 2480498, year = 2000:2017)
 library(raster)
 plot(x)
 ```
 
-[gbifapi]: http://www.gbif.org/developer/summary
+[gbifapi]: https://www.gbif.org/developer/summary
