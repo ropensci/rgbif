@@ -32,7 +32,7 @@ test_that("gbif_oai_list_sets", {
 
 # comment out - always seems to fail for some reason
 test_that("gbif_oai_list_identifiers", {
-  vcr::use_cassette("gbif_oai_list_sets", {
+  vcr::use_cassette("gbif_oai_list_identifiers", {
     # today <- format(Sys.Date() - 100, "%Y-%m-%d")
     tt <- gbif_oai_list_identifiers(from = "2017-01-15", until = "2017-01-30")
 
