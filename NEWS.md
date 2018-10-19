@@ -4,7 +4,7 @@ rgbif 1.1.0
 ### NEW FEATURES
 
 * tests that make HTTP requests are now cached via the `vcr` package so do not require an internet connection (#306) (#327)
-* added name usage issues (similar to occurrence issues) data (#324) possible changes in (#326) waiting ...
+* added name usage issues (similar to occurrence issues) data. in part fixes `name_usage()` problem, more work coming to allow users to use the name issues data like we allow for occurrence issues through `occ_issues()` (#324) 
 
 ### MINOR IMPROVEMENTS
 
