@@ -125,7 +125,7 @@ As of `rgibf v1`, we have integration for GBIF's mapping API, which lets you get
 occurrences of taxa of interest. For example:
 
 ```{r}
-x <- map_fetch(search = "taxonKey", id = 3118771, year = 2010)
+x <- map_fetch(taxonKey = 3118771, year = 2010)
 x
 ```
 
