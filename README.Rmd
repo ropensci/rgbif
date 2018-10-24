@@ -138,7 +138,7 @@ plot(x, axes = FALSE, box = FALSE)
 
 ## Screencast
 
-<a href="https://vimeo.com/127119010"><img src="tools/screencast.png" width="300"></a>
+<a href="https://vimeo.com/127119010"><img src="tools/screencast.png" width="400"></a>
 
 ## Meta
 
