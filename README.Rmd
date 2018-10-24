@@ -136,6 +136,10 @@ plot(x, axes = FALSE, box = FALSE)
 
 ![map](tools/map.png)
 
+## Screencast
+
+<a href="https://vimeo.com/127119010"><img src="tools/screencast.png" width="300"></a>
+
 ## Meta
 
 * Please [report any issues or bugs](https://github.com/ropensci/rgbif/issues).
