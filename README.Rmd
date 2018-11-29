@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# rgbif <img src="man/figures/logo.png" align="right">
+# rgbif <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 [![cran checks](https://cranchecks.info/badges/worst/rgbif)](https://cranchecks.info/pkgs/rgbif)
