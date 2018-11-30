@@ -1,6 +1,7 @@
-rgbif
-=====
 
+<!-- README.md is generated from README.Rmd. Please edit that file and knit -->
+rgbif <img src="man/figures/logo.png" align="right" alt="" width="120">
+=======================================================================
 
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
