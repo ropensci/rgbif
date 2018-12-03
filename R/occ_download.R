@@ -303,7 +303,8 @@ catch_err <- function(x) {
   if (length(x$content) > 0) {
     x$parse("UTF-8")
   } else {
-    x$http_status()$message
+    sthp <- x$status_http()
+    sprintf("%s - %s", sthp$status_code, sthp$message)
   }
 }
 
