@@ -301,7 +301,7 @@ nameusageparser <- function(z){
   })
   # reduce multiple element slots to comma sep
   if ("issues" %in% names(tmp)) {
-    tmp[names(tmp) %in% "issues"] <- collapse_name_issues(tmp)
+    tmp[names(tmp) %in% "issues"] <- collapse_issues(tmp)
   }
   df <- tibble::as_data_frame(tmp)
   if (all(tomove %in% names(df))) {
@@ -534,4 +534,8 @@ assert <- function (x, y) {
           paste0(y, collapse = ", "), call. = FALSE)
     }
   }
+}
+
+parse_issues <- function(x){
+  sapply(x, function(y) list(issue = y), USE.NAMES = FALSE)
 }
