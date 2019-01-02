@@ -80,7 +80,7 @@
 #' }
 
 name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
-  datasetKey=NULL, uuid=NULL, rank=NULL, shortname=NULL, issue=NULL,
+  datasetKey=NULL, uuid=NULL, rank=NULL, shortname=NULL,
   start=0, limit=100, return='all', curlopts = list()) {
 
   check_vals(limit, "limit")
@@ -94,7 +94,6 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
                              rank = rank,
                              name = name, language = language,
                              datasetKey = datasetKey))
-  args <- c(args, parse_issues(issue))
   data <- match.arg(data,
       choices = c('all', 'verbatim', 'name', 'parents', 'children',
                 'related', 'synonyms', 'descriptions',
