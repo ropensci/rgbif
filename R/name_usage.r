@@ -34,8 +34,8 @@
 #' just use an `lapply` family function, or a for loop, etc.
 #' 
 #' See [name_issues()] for information on name usage issues related to the
-#' `issues` column in output from this function
-#' 
+#' `issues` column in output from this function.
+#'
 #' @examples \dontrun{
 #' # A single name usage
 #' name_usage(key=1)
@@ -80,7 +80,7 @@
 #' }
 
 name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
-  datasetKey=NULL, uuid=NULL, rank=NULL, shortname=NULL,
+  datasetKey=NULL, uuid=NULL, rank=NULL, shortname=NULL, issue=NULL,
   start=0, limit=100, return='all', curlopts = list()) {
 
   check_vals(limit, "limit")
