@@ -237,10 +237,6 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
 }
 
 # helpers -------------------------
-parse_issues <- function(x){
-  sapply(x, function(y) list(issue = y), USE.NAMES = FALSE)
-}
-
 check_limit <- function(x){
   if (x > 1000000L) {
     stop("
