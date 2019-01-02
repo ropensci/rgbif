@@ -87,7 +87,7 @@
 name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
   isExtinct=NULL, habitat=NULL, nameType=NULL, datasetKey=NULL,
   origin=NULL, nomenclaturalStatus=NULL, limit=100, start=0, facet=NULL,
-  facetMincount=NULL, facetMultiselect=NULL, type=NULL, hl=NULL,
+  facetMincount=NULL, facetMultiselect=NULL, type=NULL, hl=NULL, issue=NULL,
   verbose=FALSE, return="all", curlopts = list()) {
 
   if (!is.null(facetMincount) && inherits(facetMincount, "numeric"))
@@ -106,6 +106,7 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
   nameType <- as_many_args(nameType)
   datasetKey <- as_many_args(datasetKey)
   origin <- as_many_args(origin)
+  issue <- as_many_args(issue)
 
   url <- paste0(gbif_base(), '/species/search')
   args <- rgbif_compact(list(q=query, isExtinct=as_log(isExtinct),
@@ -114,7 +115,7 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
             facetMultiselect=as_log(facetMultiselect), hl=as_log(hl),
             type=type))
   args <- c(args, facetbyname, rank, higherTaxonKey, status,
-            habitat, nameType, datasetKey, origin)
+            habitat, nameType, datasetKey, origin, issue)
 
   # paging implementation
   if (limit > 1000) {
