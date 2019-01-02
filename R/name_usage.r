@@ -94,6 +94,7 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
                              rank = rank,
                              name = name, language = language,
                              datasetKey = datasetKey))
+  args <- c(args, parse_issues(issue))
   data <- match.arg(data,
       choices = c('all', 'verbatim', 'name', 'parents', 'children',
                 'related', 'synonyms', 'descriptions',
