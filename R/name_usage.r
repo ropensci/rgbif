@@ -32,8 +32,8 @@
 #' internally loops over each option making separate requests. This has been
 #' removed. You can still loop over many options for the `data` parameter,
 #' just use an `lapply` family function, or a for loop, etc.
-#' 
-#' See [name_issues()] for information on name usage issues related to the
+#'
+#' See [name_issues()] for information on issues related to the
 #' `issues` column in output from this function.
 #'
 #' @examples \dontrun{
@@ -197,11 +197,13 @@ name_usage_parse <- function(x, y) {
       (outtt <- data.table::setDF(
         data.table::rbindlist(
           lapply(x$results, function(x) {
+            # reduce multiple element slots to comma sep
+            if ("issues" %in% names(x)) {
+              x[names(x) %in% "issues"] <- collapse_issues(x)
+            }
             lapply(x, function(x) {
               if (length(x) == 0) {
                 NA
-              } else if (length(x) > 1) {
-                paste0(x, collapse = ",")
               } else {
                 x
               }
