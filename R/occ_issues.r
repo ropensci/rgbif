@@ -1,4 +1,4 @@
-#' Parse and examine further GBIF occurrence issues on a dataset
+#' Parse and examine further GBIF occurrence issues on a dataset.
 #'
 #' @export
 #'
@@ -7,7 +7,7 @@
 #' otherwise function stops with error. The data from `occ_download_import`
 #' is just a regular data.frame so you can pass in a data.frame to this
 #' function, but if it doesn't have certain columns it will fail.
-#' @param ... Named parameters to only get back (e.g., cdround), or to
+#' @param ... Named parameters to only get back (e.g. cdround), or to
 #' remove (e.g. -cdround).
 #' @param mutate (character) One of:
 #' 
