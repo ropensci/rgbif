@@ -2,21 +2,21 @@
 #'
 #' @export
 #'
-#' @param .data Output from a call to [occ_search()], [occ_data()], or 
-#' [occ_download_import()], but only if `return="all"`, or `return="data"`, 
+#' @param .data Output from a call to [occ_search()], [occ_data()], or
+#' [occ_download_import()], but only if `return="all"`, or `return="data"`,
 #' otherwise function stops with error. The data from `occ_download_import`
 #' is just a regular data.frame so you can pass in a data.frame to this
 #' function, but if it doesn't have certain columns it will fail.
 #' @param ... Named parameters to only get back (e.g. cdround), or to
 #' remove (e.g. -cdround).
 #' @param mutate (character) One of:
-#' 
-#' - `split` Split issues into new columns
-#' - `split_expand` Split into new columns, and expand issue names
-#' - `expand` Expand issue abbreviated codes into descriptive names. 
-#' for downloads datasets, this is not super useful since the 
+#'
+#' - `split` Split issues into new columns.
+#' - `expand` Expand issue abbreviated codes into descriptive names.
+#' for downloads datasets, this is not super useful since the
 #' issues come to you as expanded already.
-#' 
+#' - `split_expand` Split into new columns, and expand issue names.
+#'
 #' For split and split_expand, values in cells become y ("yes") or n ("no")
 #'
 #' @references
