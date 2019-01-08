@@ -199,14 +199,30 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
   # select output
   return <- match.arg(return, c('meta', 'data', 'facets', 'hierarchy',
                                 'names', 'all'))
-  switch(return,
-         meta = tibble::as_data_frame(meta),
-         data = data,
-         facets = facetsdat,
-         hierarchy = compact_null(hierdat),
-         names = compact_null(vernames),
-         all = list(meta = tibble::as_data_frame(meta), data = data,
-                    facets = facetsdat,
-                    hierarchies = compact_null(hierdat),
-                    names = compact_null(vernames)))
+  if (return == 'meta') {
+    out <- tibble::as_data_frame(meta)
+  } else if (return == 'data') {
+    out <- data
+  } else if (return == 'facets') {
+    out <- facetsdat
+  } else if (return == 'hierarchy') {
+    out <- compact_null(hierdat)
+  } else if (return == 'names') {
+    out <- compact_null(vernames)
+  } else if (return == 'all') {
+    out <- list(meta = tibble::as_data_frame(meta), data = data,
+                facets = facetsdat,
+                hierarchies = compact_null(hierdat),
+                names = compact_null(vernames))
+  }
+  if (!return %in% c('meta')) {
+    if (inherits(out, "data.frame")) {
+      class(out) <- c('tbl_df', 'data.frame', 'gbif')
+    } else {
+      class(out) <- "gbif"
+      attr(out, 'type') <- "single"
+    }
+  structure(out, return = return, args = args)
+  }
 }
+
