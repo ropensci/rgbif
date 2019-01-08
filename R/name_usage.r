@@ -141,12 +141,6 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
   }
   # select output
   return <- match.arg(return, c('meta','data','all'))
-  # switch(return,
-  #        meta = get_meta_nu(out),
-  #        data = tibble::as_tibble(name_usage_parse(out, data)),
-  #        all = list(meta = get_meta_nu(out),
-  #                   data = tibble::as_data_frame(name_usage_parse(out, data)))
-  # )
   if (return == 'meta') {
     out <- get_meta_nu(out)
   } else {
@@ -158,7 +152,7 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
                   data =  tibble::as_tibble(name_usage_parse(out, data))
       )
       class(out) <- "gbif"
-      attr(out, 'type') <- if (length(iter) == 0) "single" else "many"
+      attr(out, 'type') <- "single"
     }
   }
   structure(out, return = return, args = argscoll)
