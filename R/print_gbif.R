@@ -34,8 +34,8 @@ print.gbif <- function(x, ...) {
       attr(x, "return") <- NULL
       print(x)
     } else {
-      cat(rgbif_wrap(sprintf("Occ. found [%s]", pastemax(x))), "\n")
-      cat(rgbif_wrap(sprintf("Occ. returned [%s]", pastemax(x, "returned"))), "\n")
+      cat(rgbif_wrap(sprintf("Records found [%s]", pastemax(x))), "\n")
+      cat(rgbif_wrap(sprintf("Records returned [%s]", pastemax(x, "returned"))), "\n")
       cat(rgbif_wrap(sprintf("No. unique hierarchies [%s]", pastemax(x, "hier"))), "\n")
       cat(rgbif_wrap(sprintf("No. media records [%s]", pastemax(x, "media"))), "\n")
       cat(rgbif_wrap(sprintf("No. facets [%s]", pastemax(x, "facets"))), "\n")
