@@ -25,6 +25,9 @@ print.gbif <- function(x, ...) {
     if ("facets" %in% names(x)) {
       cat(rgbif_wrap(sprintf("No. facets [%s]", length(x$facets))), "\n")
     }
+    if ("names" %in% names(x)) {
+      cat(rgbif_wrap(sprintf("No. names [%s]", length(x$names))), "\n")
+    }
     cat(rgbif_wrap(sprintf("Args [%s]", pasteargs(x))), "\n")
     if (inherits(x$data, "data.frame")) print(x$data) else cat(x$data)
   } else if (if (is.null(attr(x, "type"))) FALSE else attr(x, "type") == "many") {
