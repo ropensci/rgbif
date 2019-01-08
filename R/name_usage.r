@@ -43,7 +43,7 @@
 #' # Name usage for a taxonomic name
 #' name_usage(name='Puma', rank="GENUS")
 #'
-#' # Name usage for all taxa in a dataset 
+#' # Name usage for all taxa in a dataset
 #' # (set sufficient high limit, but less than 100000)
 #' # name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42", limit = 10000)
 #' # All name usages
@@ -94,12 +94,15 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
                              rank = rank,
                              name = name, language = language,
                              datasetKey = datasetKey))
+  argscoll <<- args
+
   data <- match.arg(data,
       choices = c('all', 'verbatim', 'name', 'parents', 'children',
                 'related', 'synonyms', 'descriptions',
                 'distributions', 'media', 'references', 'speciesProfiles',
                 'vernacularNames', 'typeSpecimens', 'root'), several.ok = FALSE)
   # paging implementation
+  iter <- NULL
   if (limit > 1000) {
     iter <- 0
     sumreturned <- 0
@@ -138,12 +141,27 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
   }
   # select output
   return <- match.arg(return, c('meta','data','all'))
-  switch(return,
-         meta = get_meta_nu(out),
-         data = tibble::as_data_frame(name_usage_parse(out, data)),
-         all = list(meta = get_meta_nu(out),
-                    data = tibble::as_data_frame(name_usage_parse(out, data)))
-  )
+  # switch(return,
+  #        meta = get_meta_nu(out),
+  #        data = tibble::as_tibble(name_usage_parse(out, data)),
+  #        all = list(meta = get_meta_nu(out),
+  #                   data = tibble::as_data_frame(name_usage_parse(out, data)))
+  # )
+  if (return == 'meta') {
+    out <- get_meta_nu(out)
+  } else {
+    if (return == 'data') {
+      out <- tibble::as_tibble(name_usage_parse(out, data))
+      class(out) <- c('tbl_df', 'tbl', 'data.frame', 'gbif')
+    } else {
+      out <- list(meta = get_meta_nu(out),
+                  data =  tibble::as_tibble(name_usage_parse(out, data))
+      )
+      class(out) <- "gbif"
+      attr(out, 'type') <- if (length(iter) == 0) "single" else "many"
+    }
+  }
+  structure(out, return = return, args = argscoll)
 }
 
 get_meta_nu <- function(x) {
