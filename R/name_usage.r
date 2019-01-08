@@ -83,7 +83,9 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
   datasetKey=NULL, uuid=NULL, rank=NULL, shortname=NULL,
   start=0, limit=100, return='all', curlopts = list()) {
 
+  # check limit and start params
   check_vals(limit, "limit")
+  check_vals(start, "start")
   # each of these args must be length=1
   if (!is.null(rank)) stopifnot(length(rank) == 1)
   if (!is.null(name)) stopifnot(length(name) == 1)
