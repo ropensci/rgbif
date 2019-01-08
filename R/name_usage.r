@@ -96,7 +96,6 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
                              rank = rank,
                              name = name, language = language,
                              datasetKey = datasetKey))
-  argscoll <<- args
 
   data <- match.arg(data,
       choices = c('all', 'verbatim', 'name', 'parents', 'children',
@@ -158,7 +157,7 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
       attr(out, 'type') <- "single"
     }
   }
-  structure(out, return = return, args = argscoll)
+  structure(out, return = return, args = args)
 }
 
 get_meta_nu <- function(x) {
