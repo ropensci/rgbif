@@ -27,5 +27,11 @@
 #'
 
 name_issues <- function(.data, ..., mutate = NULL) {
-  return(occ_issues(.data = .data, ... = ..., mutate = mutate))
+
+  assert(.data, c("gbif", "gbif_data", "data.frame", "tbl_df"))
+
+  check_issues(type = "name", ...)
+
+  handle_issues(.data, ..., mutate = mutate)
+
 }
