@@ -17,7 +17,7 @@
 #' For split and split_expand, values in cells become y ("yes") or n ("no")
 #'
 #' @references
-#'   <https://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/NameUsageIssue.html>
+#' <https://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/NameUsageIssue.html>
 
 name_issues <- function(.data, ..., mutate = NULL) {
 
