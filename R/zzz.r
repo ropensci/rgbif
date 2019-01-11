@@ -536,6 +536,115 @@ assert <- function (x, y) {
   }
 }
 
+# check correctness issues and their type (type: "name" or "code")
+check_issues <- function(type , ...) {
+  types <- c("occurrence", "name")
+  if (!length(dots(...)) == 0) {
+    filters <- parse_input(...)
+    iss <- c(filters$neg, filters$pos)
+    if (any(!iss %in% gbifissues$code)) {
+      stop("One or more invalid issues.")
+    }
+    if (any(!iss %in%
+            gbifissues$code[which(gbifissues$type == type)])) {
+      stop(paste("Impossible to filter",
+                 paste0(type, "s"), "by",
+                 types[which(type == types) %% 2 + 1],
+                 "related issues."))
+    }
+  }
+}
+
+parse_input <- function(...) {
+  x <- as.character(dots(...))
+  neg <- gsub('-', '', x[grepl("-", x)])
+  pos <- x[!grepl("-", x)]
+  list(neg = neg, pos = pos)
+}
+
+dots <- function(...){
+  eval(substitute(alist(...)))
+}
+
 parse_issues <- function(x){
   sapply(x, function(y) list(issue = y), USE.NAMES = FALSE)
+}
+
+handle_issues <- function(.data, ..., mutate = NULL) {
+  if ("data" %in% names(.data)) {
+    tmp <- .data$data
+  } else {
+    tmp <- .data
+  }
+
+  # handle downloads data
+  is_dload <- FALSE
+  if (
+    c("issue", "gbifID", "accessRights", "accrualMethod") %in% names(tmp) &&
+    !"issues" %in% names(tmp)
+  ) {
+    is_dload <- TRUE
+
+    # convert long issue names to short ones
+    issstr <- tmp[names(tmp) %in% "issue"][[1]]
+    tmp$issues <- unlist(lapply(issstr, function(z) {
+      if (identical(z, "")) return (character(1))
+      paste(gbifissues[ grepl(gsub(";", "|", z), gbifissues$issue), "code" ],
+            collapse = ",")
+    }))
+  }
+
+  if (!length(dots(...)) == 0) {
+    filters <- parse_input(...)
+    if (length(filters$neg) > 0) {
+      tmp <- tmp[ !grepl(paste(filters$neg, collapse = "|"), tmp$issues), ]
+    }
+    if (length(filters$pos) > 0) {
+      tmp <- tmp[ grepl(paste(filters$pos, collapse = "|"), tmp$issues), ]
+    }
+  }
+
+  if (!is.null(mutate)) {
+    if (mutate == 'split') {
+      tmp <- split_iss(tmp, is_dload)
+    } else if (mutate == 'split_expand') {
+      tmp <- mutate_iss(tmp)
+      tmp <- split_iss(tmp, is_dload)
+    } else if (mutate == 'expand') {
+      tmp <- mutate_iss(tmp)
+    }
+  }
+
+  if ("data" %in% names(.data)) {
+    .data$data <- tmp
+    return( .data )
+  } else {
+    return( tmp )
+  }
+}
+
+mutate_iss <- function(w) {
+  w$issues <- sapply(strsplit(w$issues, split = ","), function(z) {
+    paste(gbifissues[ gbifissues$code %in% z, "issue" ], collapse = ",")
+  })
+  return( w )
+}
+
+split_iss <- function(m, is_dload) {
+  unq <- unique(unlist(strsplit(m$issues, split = ",")))
+  df <- data.table::setDF(
+    data.table::rbindlist(
+      lapply(strsplit(m$issues, split = ","), function(b) {
+        v <- unq %in% b
+        data.frame(rbind(ifelse(v, "y", "n")), stringsAsFactors = FALSE)
+      })
+    )
+  )
+  names(df) <- unq
+  m$issues <- NULL
+  first_search <- c('name','key','decimalLatitude','decimalLongitude')
+  first_dload <- c('scientificName','taxonKey','decimalLatitude','decimalLongitude')
+  first <- if (is_dload) first_dload else first_search
+  tibble::as_data_frame(data.frame(m[, first], df, m[, !names(m) %in% first],
+                                   stringsAsFactors = FALSE))
 }
