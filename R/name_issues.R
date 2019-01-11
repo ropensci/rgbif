@@ -18,13 +18,6 @@
 #'
 #' @references
 #'   <https://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/NameUsageIssue.html>
-#'
-#' Note that you can also query based on issues, e.g.,
-#' `name_lookup(issue='RANK_INVALID')`. However, I imagine
-#' it's more likely that you want to search for species based on a
-#' taxonomic group or checklist dataset, not based on issues, so it makes sense
-#' to pull data down, then clean as needed using this function.
-#'
 
 name_issues <- function(.data, ..., mutate = NULL) {
 
