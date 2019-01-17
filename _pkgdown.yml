@@ -1,0 +1,7 @@
+authors:
+  Scott Chamberlain:
+    href: "https://twitter.com/sckottie"
+
+template:
+  params:
+    bootswatch: yeti
