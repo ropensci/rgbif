@@ -291,11 +291,11 @@ library(raster)
 plot(x, axes = FALSE, box = FALSE)
 ```
 
-![map](tools/map.png)
+![Example map](man/figures/README-map.png)
 
 ## Screencast
 
-<a href="https://vimeo.com/127119010"><img src="tools/screencast.png" width="400"></a>
+<a href="https://vimeo.com/127119010"><img src="man/figures/README-screencast.png" width="400"></a>
 
 ## Meta
 
