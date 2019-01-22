@@ -1,13 +1,11 @@
-<!--
-%\VignetteEngine{knitr::knitr}
-%\VignetteIndexEntry{Taxonomic Names}
-%\VignetteEncoding{UTF-8}
--->
-
-
-
-Taxonomic Names
-===============
+---
+title: Taxonomic names
+author: Scott Chamberlain
+vignette: >
+  %\VignetteIndexEntry{Taxonomic names}
+  %\VignetteEngine{knitr::knitr}
+  %\VignetteEncoding{UTF-8}
+---
 
 You have probably, or will, run into problems with taxonomic names. For example,
 you may think you know how a taxonomic name is spelled, but then GBIF will not
