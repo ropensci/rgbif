@@ -210,7 +210,7 @@ The nice thing about data retrieved via GBIF's download service is that they
 provide DOIs for each download, so that you can give a link that resolves to
 the download with metadata on GBIF's website. And it makes for a nice citation.
 
-Using the funciton `gbif_citaiton` we can get citations for our downloads,
+Using the function `gbif_citaiton` we can get citations for our downloads,
 with the output from `occ_download_get` or `occ_download_meta`.
 
 
@@ -227,7 +227,7 @@ You'll notice that the `datasets` slot is `NULL` - because when using `occ_downl
 we don't yet have any information about which datasets are in the download.
 
 But if you use `occ_download_get` you then have the individual datasets, and we
-can get citatations for each idividual dataset in addition to the entire download.
+can get citations for each individual dataset in addition to the entire download.
 
 
 ```r

@@ -7,11 +7,11 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-Seach and retrieve data from the Global Biodiverity Information Facilty (GBIF)
+Search and retrieve data from the Global Biodiversity Information Facility (GBIF)
 
 ## About the package
 
-`rgbif` is an R package to search and retrieve data from the Global Biodiverity Information Facilty (GBIF). `rgbif` wraps R code around the [GBIF API][gbifapi] to allow you to talk to GBIF from R.
+`rgbif` is an R package to search and retrieve data from the Global Biodiversity Information Facility (GBIF). `rgbif` wraps R code around the [GBIF API][gbifapi] to allow you to talk to GBIF from R.
 
 
 ## Get rgbif
@@ -47,7 +47,7 @@ occ_count(basisOfRecord='OBSERVATION')
 #> [1] 20055605
 ```
 
-Records for **Puma concolor** with lat/long data (georeferened) only. Note that `hasCoordinate` in `occ_search()` is the same as `georeferenced` in `occ_count()`.
+Records for **Puma concolor** with lat/long data (georeferenced) only. Note that `hasCoordinate` in `occ_search()` is the same as `georeferenced` in `occ_count()`.
 
 
 ```r
@@ -649,7 +649,7 @@ occ_search(taxonKey=keys, limit=5)
 
 ## Maps
 
-Using thet GBIF map web tile service, making a raster and visualizing it.
+Using the GBIF map web tile service, making a raster and visualizing it.
 
 
 ```r
