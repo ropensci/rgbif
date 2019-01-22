@@ -5,11 +5,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> • rgbif</title>
+<title>GBIF downloads • rgbif</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="">
+<script src="../pkgdown.js"></script><meta property="og:title" content="GBIF downloads">
 <meta property="og:description" content="">
 <meta property="og:image" content="/logo.png">
 <meta name="twitter:card" content="summary">
@@ -54,16 +54,16 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/downloads.html">UNKNOWN TITLE</a>
+      <a href="../articles/downloads.html">GBIF downloads</a>
     </li>
     <li>
-      <a href="../articles/issues_vignette.html">UNKNOWN TITLE</a>
+      <a href="../articles/issues_vignette.html">Cleaning data using GBIF issues</a>
     </li>
     <li>
-      <a href="../articles/rgbif_vignette.html">UNKNOWN TITLE</a>
+      <a href="../articles/rgbif_vignette.html">rgbif introduction</a>
     </li>
     <li>
-      <a href="../articles/taxonomic_names.html">UNKNOWN TITLE</a>
+      <a href="../articles/taxonomic_names.html">Taxonomic names</a>
     </li>
   </ul>
 </li>
@@ -90,7 +90,8 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1></h1>
+      <h1>GBIF downloads</h1>
+                        <h4 class="author">Scott Chamberlain</h4>
             
       
       <small class="dont-index">Source: <a href="https://github.com/ropensci/rgbif/blob/master/vignettes/downloads.Rmd"><code>vignettes/downloads.Rmd</code></a></small>
@@ -100,14 +101,6 @@
 
     
     
-<!--
-%\VignetteEngine{knitr::knitr}
-%\VignetteIndexEntry{Downloads}
-%\VignetteEncoding{UTF-8}
--->
-<div id="gbif-downloads" class="section level1">
-<h1 class="hasAnchor">
-<a href="#gbif-downloads" class="anchor"></a>GBIF Downloads</h1>
 <p>GBIF provides two ways to get occurrence data: through the <code>/occurrence/search</code> route (see <code><a href="../reference/occ_search.html">occ_search()</a></code> and <code><a href="../reference/occ_data.html">occ_data()</a></code>), or via the <code>/occurrence/download</code> route (many functions, see below). <code><a href="../reference/occ_search.html">occ_search()</a></code>/<code><a href="../reference/occ_data.html">occ_data()</a></code> are more appropriate for smaller data, while <code>occ_download*()</code> functions are more appropriate for larger data requests. Note that the download service is equivalent to downloading a dataset from the GBIF website - but doing it here makes it reproducible (and easier once you learn the ropes)!</p>
 <p>The download functions are:</p>
 <ul>
@@ -265,7 +258,7 @@
 <h2 class="hasAnchor">
 <a href="#citing-download-data" class="anchor"></a>Citing download data</h2>
 <p>The nice thing about data retrieved via GBIF’s download service is that they provide DOIs for each download, so that you can give a link that resolves to the download with metadata on GBIF’s website. And it makes for a nice citation.</p>
-<p>Using the funciton <code>gbif_citaiton</code> we can get citations for our downloads, with the output from <code>occ_download_get</code> or <code>occ_download_meta</code>.</p>
+<p>Using the function <code>gbif_citaiton</code> we can get citations for our downloads, with the output from <code>occ_download_get</code> or <code>occ_download_meta</code>.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw"><a href="../reference/occ_download_meta.html">occ_download_meta</a></span>(res) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/gbif_citation.html">gbif_citation</a></span>()</a>
 <a class="sourceLine" id="cb7-2" title="2"><span class="co">#&gt; $download</span></a>
 <a class="sourceLine" id="cb7-3" title="3"><span class="co">#&gt; [1] "GBIF Occurrence Download https://doi.org/10.15468/dl.ohjevv Accessed from R via rgbif (https://github.com/ropensci/rgbif) on 2017-11-10"</span></a>
@@ -273,7 +266,7 @@
 <a class="sourceLine" id="cb7-5" title="5"><span class="co">#&gt; $datasets</span></a>
 <a class="sourceLine" id="cb7-6" title="6"><span class="co">#&gt; NULL</span></a></code></pre></div>
 <p>You’ll notice that the <code>datasets</code> slot is <code>NULL</code> - because when using <code>occ_download_meta</code>, we don’t yet have any information about which datasets are in the download.</p>
-<p>But if you use <code>occ_download_get</code> you then have the individual datasets, and we can get citatations for each idividual dataset in addition to the entire download.</p>
+<p>But if you use <code>occ_download_get</code> you then have the individual datasets, and we can get citations for each individual dataset in addition to the entire download.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw"><a href="../reference/occ_download_get.html">occ_download_get</a></span>(<span class="st">"0000796-171109162308116"</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/gbif_citation.html">gbif_citation</a></span>()</a>
 <a class="sourceLine" id="cb8-2" title="2"><span class="co">#&gt; $download</span></a>
 <a class="sourceLine" id="cb8-3" title="3"><span class="co">#&gt; [1] "GBIF Occurrence Download https://doi.org/10.15468/dl.nv3r5p Accessed from R via rgbif (https://github.com/ropensci/rgbif) on 2017-11-10"</span></a>
@@ -304,7 +297,6 @@
 <p>Here, we get the overall citation as well as citations (and data rights) for each dataset.</p>
 <p>Please do cite the data you use from GBIF!</p>
 </div>
-</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -312,8 +304,6 @@
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li>
-<a href="#gbif-downloads">GBIF Downloads</a><ul class="nav nav-pills nav-stacked">
 <li><a href="#load-rgbif">Load rgbif</a></li>
       <li><a href="#kick-off-a-download">Kick off a download</a></li>
       <li><a href="#check-download-status">Check download status</a></li>
@@ -321,8 +311,6 @@
       <li><a href="#fetch-data">Fetch data</a></li>
       <li><a href="#import-data-into-r">Import data into R</a></li>
       <li><a href="#citing-download-data">Citing download data</a></li>
-      </ul>
-</li>
       </ul>
 </div>
       </div>

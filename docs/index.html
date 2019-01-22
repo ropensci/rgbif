@@ -61,16 +61,16 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/downloads.html">UNKNOWN TITLE</a>
+      <a href="articles/downloads.html">GBIF downloads</a>
     </li>
     <li>
-      <a href="articles/issues_vignette.html">UNKNOWN TITLE</a>
+      <a href="articles/issues_vignette.html">Cleaning data using GBIF issues</a>
     </li>
     <li>
-      <a href="articles/rgbif_vignette.html">UNKNOWN TITLE</a>
+      <a href="articles/rgbif_vignette.html">rgbif introduction</a>
     </li>
     <li>
-      <a href="articles/taxonomic_names.html">UNKNOWN TITLE</a>
+      <a href="articles/taxonomic_names.html">Taxonomic names</a>
     </li>
   </ul>
 </li>
@@ -182,7 +182,7 @@
 <h2 class="hasAnchor">
 <a href="#search-for-occurrence-data" class="anchor"></a>Search for occurrence data</h2>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw"><a href="reference/occ_search.html">occ_search</a></span>(<span class="dt">scientificName =</span> <span class="st">"Ursus americanus"</span>, <span class="dt">limit =</span> <span class="dv">50</span>)</a>
-<a class="sourceLine" id="cb6-2" title="2"><span class="co">#&gt; Records found [11838] </span></a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="co">#&gt; Records found [11796] </span></a>
 <a class="sourceLine" id="cb6-3" title="3"><span class="co">#&gt; Records returned [50] </span></a>
 <a class="sourceLine" id="cb6-4" title="4"><span class="co">#&gt; No. unique hierarchies [1] </span></a>
 <a class="sourceLine" id="cb6-5" title="5"><span class="co">#&gt; No. media records [45] </span></a>
@@ -227,7 +227,7 @@
 <p>Or you can get the taxon key first with <code><a href="reference/name_backbone.html">name_backbone()</a></code>. Here, we select to only return the occurrence data.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">key &lt;-<span class="st"> </span><span class="kw"><a href="reference/name_backbone.html">name_backbone</a></span>(<span class="dt">name=</span><span class="st">'Helianthus annuus'</span>, <span class="dt">kingdom=</span><span class="st">'plants'</span>)<span class="op">$</span>speciesKey</a>
 <a class="sourceLine" id="cb7-2" title="2"><span class="kw"><a href="reference/occ_search.html">occ_search</a></span>(<span class="dt">taxonKey=</span>key, <span class="dt">limit=</span><span class="dv">20</span>)</a>
-<a class="sourceLine" id="cb7-3" title="3"><span class="co">#&gt; Records found [43513] </span></a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="co">#&gt; Records found [43515] </span></a>
 <a class="sourceLine" id="cb7-4" title="4"><span class="co">#&gt; Records returned [20] </span></a>
 <a class="sourceLine" id="cb7-5" title="5"><span class="co">#&gt; No. unique hierarchies [1] </span></a>
 <a class="sourceLine" id="cb7-6" title="6"><span class="co">#&gt; No. media records [14] </span></a>
@@ -295,7 +295,7 @@
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">splist &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'Accipiter erythronemius'</span>, <span class="st">'Junco hyemalis'</span>, <span class="st">'Aix sponsa'</span>)</a>
 <a class="sourceLine" id="cb8-2" title="2">keys &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">sapply</a></span>(splist, <span class="cf">function</span>(x) <span class="kw"><a href="reference/name_backbone.html">name_backbone</a></span>(<span class="dt">name=</span>x)<span class="op">$</span>speciesKey, <span class="dt">USE.NAMES=</span><span class="ot">FALSE</span>)</a>
 <a class="sourceLine" id="cb8-3" title="3"><span class="kw"><a href="reference/occ_search.html">occ_search</a></span>(<span class="dt">taxonKey=</span>keys, <span class="dt">limit=</span><span class="dv">5</span>, <span class="dt">hasCoordinate=</span><span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb8-4" title="4"><span class="co">#&gt; Occ. found [2480598 (20), 9362842 (3807113), 2498387 (1246358)] </span></a>
+<a class="sourceLine" id="cb8-4" title="4"><span class="co">#&gt; Occ. found [2480598 (20), 9362842 (3805169), 2498387 (1246232)] </span></a>
 <a class="sourceLine" id="cb8-5" title="5"><span class="co">#&gt; Occ. returned [2480598 (5), 9362842 (5), 2498387 (5)] </span></a>
 <a class="sourceLine" id="cb8-6" title="6"><span class="co">#&gt; No. unique hierarchies [2480598 (1), 9362842 (1), 2498387 (1)] </span></a>
 <a class="sourceLine" id="cb8-7" title="7"><span class="co">#&gt; No. media records [2480598 (3), 9362842 (4), 2498387 (5)] </span></a>

@@ -5,11 +5,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> • rgbif</title>
+<title>Cleaning data using GBIF issues • rgbif</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Cleaning data using GBIF issues">
 <meta property="og:description" content="">
 <meta property="og:image" content="/logo.png">
 <meta name="twitter:card" content="summary">
@@ -54,16 +54,16 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/downloads.html">UNKNOWN TITLE</a>
+      <a href="../articles/downloads.html">GBIF downloads</a>
     </li>
     <li>
-      <a href="../articles/issues_vignette.html">UNKNOWN TITLE</a>
+      <a href="../articles/issues_vignette.html">Cleaning data using GBIF issues</a>
     </li>
     <li>
-      <a href="../articles/rgbif_vignette.html">UNKNOWN TITLE</a>
+      <a href="../articles/rgbif_vignette.html">rgbif introduction</a>
     </li>
     <li>
-      <a href="../articles/taxonomic_names.html">UNKNOWN TITLE</a>
+      <a href="../articles/taxonomic_names.html">Taxonomic names</a>
     </li>
   </ul>
 </li>
@@ -90,7 +90,8 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1></h1>
+      <h1>Cleaning data using GBIF issues</h1>
+                        <h4 class="author">Scott Chamberlain</h4>
             
       
       <small class="dont-index">Source: <a href="https://github.com/ropensci/rgbif/blob/master/vignettes/issues_vignette.Rmd"><code>vignettes/issues_vignette.Rmd</code></a></small>
@@ -100,14 +101,6 @@
 
     
     
-<!--
-%\VignetteEngine{knitr::knitr}
-%\VignetteIndexEntry{Cleaning data using GBIF issues}
-%\VignetteEncoding{UTF-8}
--->
-<div id="cleaning-data-using-gbif-issues" class="section level1">
-<h1 class="hasAnchor">
-<a href="#cleaning-data-using-gbif-issues" class="anchor"></a>Cleaning data using GBIF issues</h1>
 <p><code>rgbif</code> now has the ability to clean data retrieved from GBIF based on GBIF issues. These issues are returned in data retrieved from GBIF, e.g., through the <code><a href="../reference/occ_search.html">occ_search()</a></code> function. Inspired by <code>magrittr</code>, we’ve setup a workflow for cleaning data based on using the operator <code>%&gt;%</code>. You don’t have to use it, but as we show below, it can make the process quite easy.</p>
 <p>Note that you can also query based on issues, e.g., <code><a href="../reference/occ_search.html">occ_search(taxonKey=1, issue='DEPTH_UNLIKELY')</a></code>. However, we imagine it’s more likely that you want to search for occurrences based on a taxonomic name, or geographic area, not based on issues, so it makes sense to pull data down, then clean as needed using the below workflow with <code><a href="../reference/occ_issues.html">occ_issues()</a></code>.</p>
 <p>Note that <code><a href="../reference/occ_issues.html">occ_issues()</a></code> only affects the data element in the gbif class that is returned from a call to <code><a href="../reference/occ_search.html">occ_search()</a></code>. Maybe in a future version we will remove the associated records from the hierarchy and media elements as they are remove from the data element.</p>
@@ -391,7 +384,6 @@
 <a href="#wrap-up" class="anchor"></a>Wrap up</h2>
 <p>We hope this helps users get just the data they want, and nothing more. Let us know if you have feedback on data cleaning functionality in <code>rgbif</code> at <em><a href="mailto:info@ropensci.org" class="email">info@ropensci.org</a></em> or at <a href="https://github.com/ropensci/rgbif/issues">https://github.com/ropensci/rgbif/issues</a>.</p>
 </div>
-</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -399,8 +391,6 @@
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li>
-<a href="#cleaning-data-using-gbif-issues">Cleaning data using GBIF issues</a><ul class="nav nav-pills nav-stacked">
 <li><a href="#get-rgbif">Get rgbif</a></li>
       <li><a href="#get-some-data">Get some data</a></li>
       <li><a href="#examine-issues">Examine issues</a></li>
@@ -409,8 +399,6 @@
       <li><a href="#add-columns">Add columns</a></li>
       <li><a href="#expand-and-add-columns">Expand and add columns</a></li>
       <li><a href="#wrap-up">Wrap up</a></li>
-      </ul>
-</li>
       </ul>
 </div>
       </div>
