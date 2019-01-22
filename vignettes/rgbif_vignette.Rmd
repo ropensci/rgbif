@@ -1,13 +1,11 @@
-<!--
-%\VignetteEngine{knitr::knitr}
-%\VignetteIndexEntry{rgbif introduction}
-%\VignetteEncoding{UTF-8}
--->
-
-
-
-rgbif introduction
-======
+---
+title: rgbif introduction
+author: Scott Chamberlain
+vignette: >
+  %\VignetteIndexEntry{rgbif introduction}
+  %\VignetteEngine{knitr::knitr}
+  %\VignetteEncoding{UTF-8}
+---
 
 Seach and retrieve data from the Global Biodiverity Information Facilty (GBIF)
 

@@ -1,13 +1,11 @@
-<!--
-%\VignetteEngine{knitr::knitr}
-%\VignetteIndexEntry{Downloads}
-%\VignetteEncoding{UTF-8}
--->
-
-
-
-GBIF Downloads
-==============
+---
+title: GBIF downloads
+author: Scott Chamberlain
+vignette: >
+  %\VignetteIndexEntry{Downloads}
+  %\VignetteEngine{knitr::knitr}
+  %\VignetteEncoding{UTF-8}
+---
 
 GBIF provides two ways to get occurrence data: through the
 `/occurrence/search` route (see `occ_search()` and `occ_data()`),
