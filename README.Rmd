@@ -22,15 +22,14 @@ knitr::opts_chunk$set(
 
 `rgbif` gives you access to data from [GBIF][] via their REST API. GBIF versions their API - we are currently using `v1` of their API. You can no longer use their old API in this package - see `?rgbif-defunct`.
 
-Tutorials:
+To get started, see:
 
-* [rgbif vignette - the intro to the package](vignettes/rgbif_vignette.Rmd)
-* [issues vignette - how to clean GBIF data](vignettes/issues_vignette.Rmd)
-* [taxonomic names - examples of some confusing bits](vignettes/taxonomic_names.Rmd)
+* [rgbif vignette](https://ropensci.github.io/rgbif/articles/rgbif.html): an introduction to the package's main functionalities.
+* [Function reference](https://ropensci.github.io/rgbif/reference/index.html): an overview of all `rgbif` functions.
+* [Articles](https://ropensci.github.io/rgbif/articles/index.html): vignettes/tutorials on how to download data, clean data, and work with taxonomic names.
+* [Occurrence manual](https://ropensci.github.io/occurrence-manual/): a book covering a suite of R packages used for working with biological occurrence data.
 
-Occurence manual: <https://ropensci.github.io/occurrence-manual/>
-
-Check out the rgbif [paper][] for more information on this package and the sister [Python][pygbif] and [Ruby][gbifrb] clients.
+Check out the `rgbif` [paper][] for more information on this package and the sister [Python][pygbif] and [Ruby][gbifrb] clients.
 
 ## Package API
 
