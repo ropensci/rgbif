@@ -2,7 +2,7 @@
 title: Taxonomic names
 author: Scott Chamberlain
 vignette: >
-  %\VignetteIndexEntry{Taxonomic names}
+  %\VignetteIndexEntry{3_taxonomic_names}
   %\VignetteEngine{knitr::knitr}
   %\VignetteEncoding{UTF-8}
 ---

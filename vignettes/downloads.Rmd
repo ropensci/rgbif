@@ -1,8 +1,8 @@
 ---
-title: GBIF downloads
+title: Downloading data from GBIF
 author: Scott Chamberlain
 vignette: >
-  %\VignetteIndexEntry{Downloads}
+  %\VignetteIndexEntry{1_downloading}
   %\VignetteEngine{knitr::knitr}
   %\VignetteEncoding{UTF-8}
 ---
