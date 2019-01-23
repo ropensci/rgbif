@@ -51,6 +51,9 @@
   </a>
 </li>
 <li>
+  <a href="articles/rgbif.html">Get started</a>
+</li>
+<li>
   <a href="reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -61,13 +64,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/downloads.html">GBIF downloads</a>
+      <a href="articles/downloads.html">Downloading data from GBIF</a>
     </li>
     <li>
-      <a href="articles/issues_vignette.html">Cleaning data using GBIF issues</a>
-    </li>
-    <li>
-      <a href="articles/rgbif_vignette.html">rgbif introduction</a>
+      <a href="articles/issues.html">Cleaning data using GBIF issues</a>
     </li>
     <li>
       <a href="articles/taxonomic_names.html">Taxonomic names</a>
@@ -227,7 +227,7 @@
 <p>Or you can get the taxon key first with <code><a href="reference/name_backbone.html">name_backbone()</a></code>. Here, we select to only return the occurrence data.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">key &lt;-<span class="st"> </span><span class="kw"><a href="reference/name_backbone.html">name_backbone</a></span>(<span class="dt">name=</span><span class="st">'Helianthus annuus'</span>, <span class="dt">kingdom=</span><span class="st">'plants'</span>)<span class="op">$</span>speciesKey</a>
 <a class="sourceLine" id="cb7-2" title="2"><span class="kw"><a href="reference/occ_search.html">occ_search</a></span>(<span class="dt">taxonKey=</span>key, <span class="dt">limit=</span><span class="dv">20</span>)</a>
-<a class="sourceLine" id="cb7-3" title="3"><span class="co">#&gt; Records found [43515] </span></a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="co">#&gt; Records found [43546] </span></a>
 <a class="sourceLine" id="cb7-4" title="4"><span class="co">#&gt; Records returned [20] </span></a>
 <a class="sourceLine" id="cb7-5" title="5"><span class="co">#&gt; No. unique hierarchies [1] </span></a>
 <a class="sourceLine" id="cb7-6" title="6"><span class="co">#&gt; No. media records [14] </span></a>
