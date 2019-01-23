@@ -1,8 +1,8 @@
 ---
-title: rgbif introduction
+title: Introduction to rgbif
 author: Scott Chamberlain
 vignette: >
-  %\VignetteIndexEntry{rgbif introduction}
+  %\VignetteIndexEntry{0_introduction}
   %\VignetteEngine{knitr::knitr}
   %\VignetteEncoding{UTF-8}
 ---
