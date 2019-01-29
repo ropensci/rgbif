@@ -180,7 +180,7 @@ occ_download <- function(..., body = NULL, type = "and", user = NULL,
   z <- occ_download_prep(..., body = body, type = type, user = user, 
     pwd = pwd, email = email, curlopts = curlopts)
   out <- rg_POST(z$url, req = z$req, user = z$user, pwd = z$pwd, curlopts)
-  structure(out, class = "occ_download", user = user, email = email)
+  structure(out, class = "occ_download", user = z$user, email = z$email)
 }
 
 #' @export
@@ -303,7 +303,8 @@ catch_err <- function(x) {
   if (length(x$content) > 0) {
     x$parse("UTF-8")
   } else {
-    x$http_status()$message
+    sthp <- x$status_http()
+    sprintf("%s - %s", sthp$status_code, sthp$message)
   }
 }
 

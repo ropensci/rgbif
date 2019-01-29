@@ -15,13 +15,8 @@ Version: 0.5-8
 
 ## In both
 
-*   checking package dependencies ... ERROR
+*   checking package dependencies ... NOTE
     ```
-    Package required but not available: ‘RSAGA’
-    
     Package suggested but not available for checking: ‘adehabitat’
-    
-    See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-    manual.
     ```
 

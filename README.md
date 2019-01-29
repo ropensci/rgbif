@@ -1,7 +1,8 @@
-rgbif
-=====
+<!-- README.md is generated from README.Rmd. Please edit that file and knit -->
 
 
+
+# rgbif <img src="man/figures/logo.png" align="right" alt="" width="120">
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 [![cran checks](https://cranchecks.info/badges/worst/rgbif)](https://cranchecks.info/pkgs/rgbif)
@@ -11,18 +12,16 @@ rgbif
 [![cran version](http://www.r-pkg.org/badges/version/rgbif)](https://cran.r-project.org/package=rgbif)
 [![DOI](https://zenodo.org/badge/2273724.svg)](https://zenodo.org/badge/latestdoi/2273724)
 
-
 `rgbif` gives you access to data from [GBIF][] via their REST API. GBIF versions their API - we are currently using `v1` of their API. You can no longer use their old API in this package - see `?rgbif-defunct`.
 
-Tutorials:
+To get started, see:
 
-* [rgbif vignette - the intro to the package](vignettes/rgbif_vignette.Rmd)
-* [issues vignette - how to clean GBIF data](vignettes/issues_vignette.Rmd)
-* [taxonomic names - examples of some confusing bits](vignettes/taxonomic_names.Rmd)
+* [rgbif vignette](https://ropensci.github.io/rgbif/articles/rgbif.html): an introduction to the package's main functionalities.
+* [Function reference](https://ropensci.github.io/rgbif/reference/index.html): an overview of all `rgbif` functions.
+* [Articles](https://ropensci.github.io/rgbif/articles/index.html): vignettes/tutorials on how to download data, clean data, and work with taxonomic names.
+* [Occurrence manual](https://ropensci.github.io/occurrence-manual/): a book covering a suite of R packages used for working with biological occurrence data.
 
-Occurence manual: <https://ropensci.github.io/occurrence-manual/>
-
-Check out the rgbif [paper][] for more information on this package and the sister [Python][pygbif] and [Ruby][gbifrb] clients.
+Check out the `rgbif` [paper][] for more information on this package and the sister [Python][pygbif] and [Ruby][gbifrb] clients.
 
 ## Package API
 
@@ -96,46 +95,48 @@ install.packages('rgbif')
 
 ```r
 occ_search(scientificName = "Ursus americanus", limit = 50)
-#> Records found [10689] 
+#> Records found [11796] 
 #> Records returned [50] 
 #> No. unique hierarchies [1] 
-#> No. media records [49] 
+#> No. media records [45] 
 #> No. facets [0] 
 #> Args [limit=50, offset=0, scientificName=Ursus americanus, fields=all] 
-#> # A tibble: 50 x 69
-#>    name        key decimalLatitude decimalLongitude issues  datasetKey    
-#>    <chr>     <int>           <dbl>            <dbl> <chr>   <chr>         
-#>  1 Ursus …  1.84e9            49.4           -123.  cdroun… 50c9509d-22c7…
-#>  2 Ursus …  1.81e9            37.7           -120.  cdroun… 50c9509d-22c7…
-#>  3 Ursus …  1.80e9            30.0            -84.3 cdroun… 50c9509d-22c7…
-#>  4 Ursus …  1.81e9            42.0           -124.  cdroun… 50c9509d-22c7…
-#>  5 Ursus …  1.81e9            25.4           -101.  gass84  50c9509d-22c7…
-#>  6 Ursus …  1.81e9            40.8            -81.7 cdroun… 50c9509d-22c7…
-#>  7 Ursus …  1.80e9            29.3           -103.  cdroun… 50c9509d-22c7…
-#>  8 Ursus …  1.81e9            34.4           -119.  gass84  50c9509d-22c7…
-#>  9 Ursus …  1.84e9            44.9           -110.  cdroun… 50c9509d-22c7…
-#> 10 Ursus …  1.84e9            34.0           -117.  gass84  50c9509d-22c7…
-#> # ... with 40 more rows, and 63 more variables: publishingOrgKey <chr>,
-#> #   publishingCountry <chr>, protocol <chr>, lastCrawled <chr>,
-#> #   lastParsed <chr>, crawlId <int>, extensions <chr>,
-#> #   basisOfRecord <chr>, taxonKey <int>, kingdomKey <int>,
-#> #   phylumKey <int>, classKey <int>, orderKey <int>, familyKey <int>,
-#> #   genusKey <int>, speciesKey <int>, scientificName <chr>, kingdom <chr>,
-#> #   phylum <chr>, order <chr>, family <chr>, genus <chr>, species <chr>,
+#> # A tibble: 50 x 74
+#>    name     key decimalLatitude decimalLongitude issues datasetKey
+#>    <chr>  <int>           <dbl>            <dbl> <chr>  <chr>     
+#>  1 Ursu… 1.99e9            45.3            -76.8 cdrou… 50c9509d-…
+#>  2 Ursu… 1.99e9            30.1           -103.  cdrou… 50c9509d-…
+#>  3 Ursu… 1.99e9            39.4           -120.  cdrou… 50c9509d-…
+#>  4 Ursu… 1.99e9            39.0           -120.  cdrou… 50c9509d-…
+#>  5 Ursu… 1.81e9            34.4           -119.  gass84 50c9509d-…
+#>  6 Ursu… 1.80e9            30.0            -84.3 cdrou… 50c9509d-…
+#>  7 Ursu… 1.88e9            31.8           -105.  cdrou… 50c9509d-…
+#>  8 Ursu… 1.80e9            29.3           -103.  cdrou… 50c9509d-…
+#>  9 Ursu… 1.81e9            42.0           -124.  cdrou… 50c9509d-…
+#> 10 Ursu… 1.88e9            25.3           -101.  cdrou… 50c9509d-…
+#> # … with 40 more rows, and 68 more variables: publishingOrgKey <chr>,
+#> #   networkKeys <chr>, installationKey <chr>, publishingCountry <chr>,
+#> #   protocol <chr>, lastCrawled <chr>, lastParsed <chr>, crawlId <int>,
+#> #   extensions <chr>, basisOfRecord <chr>, taxonKey <int>,
+#> #   kingdomKey <int>, phylumKey <int>, classKey <int>, orderKey <int>,
+#> #   familyKey <int>, genusKey <int>, speciesKey <int>,
+#> #   acceptedTaxonKey <int>, scientificName <chr>,
+#> #   acceptedScientificName <chr>, kingdom <chr>, phylum <chr>,
+#> #   order <chr>, family <chr>, genus <chr>, species <chr>,
 #> #   genericName <chr>, specificEpithet <chr>, taxonRank <chr>,
-#> #   dateIdentified <chr>, year <int>, month <int>, day <int>,
-#> #   eventDate <chr>, modified <chr>, lastInterpreted <chr>,
-#> #   references <chr>, license <chr>, identifiers <chr>, facts <chr>,
-#> #   relations <chr>, geodeticDatum <chr>, class <chr>, countryCode <chr>,
-#> #   country <chr>, rightsHolder <chr>, identifier <chr>,
-#> #   verbatimEventDate <chr>, datasetName <chr>, collectionCode <chr>,
-#> #   gbifID <chr>, verbatimLocality <chr>, occurrenceID <chr>,
-#> #   taxonID <chr>, recordedBy <chr>, catalogNumber <chr>,
-#> #   http...unknown.org.occurrenceDetails <chr>, institutionCode <chr>,
-#> #   rights <chr>, eventTime <chr>, occurrenceRemarks <chr>,
-#> #   http...unknown.org.http_..rs.gbif.org.terms.1.0.Multimedia <chr>,
-#> #   identificationID <chr>, infraspecificEpithet <chr>,
-#> #   coordinateUncertaintyInMeters <dbl>, informationWithheld <chr>
+#> #   taxonomicStatus <chr>, dateIdentified <chr>,
+#> #   coordinateUncertaintyInMeters <dbl>, stateProvince <chr>, year <int>,
+#> #   month <int>, day <int>, eventDate <chr>, modified <chr>,
+#> #   lastInterpreted <chr>, references <chr>, license <chr>,
+#> #   identifiers <chr>, facts <chr>, relations <chr>, geodeticDatum <chr>,
+#> #   class <chr>, countryCode <chr>, country <chr>, rightsHolder <chr>,
+#> #   identifier <chr>, verbatimEventDate <chr>, datasetName <chr>,
+#> #   gbifID <chr>, verbatimLocality <chr>, collectionCode <chr>,
+#> #   occurrenceID <chr>, taxonID <chr>, catalogNumber <chr>,
+#> #   recordedBy <chr>, http...unknown.org.occurrenceDetails <chr>,
+#> #   institutionCode <chr>, rights <chr>, eventTime <chr>,
+#> #   occurrenceRemarks <chr>, identificationID <chr>,
+#> #   infraspecificEpithet <chr>, informationWithheld <chr>
 ```
 
 Or you can get the taxon key first with `name_backbone()`. Here, we select to only return the occurrence data.
@@ -144,64 +145,66 @@ Or you can get the taxon key first with `name_backbone()`. Here, we select to on
 ```r
 key <- name_backbone(name='Helianthus annuus', kingdom='plants')$speciesKey
 occ_search(taxonKey=key, limit=20)
-#> Records found [41219] 
+#> Records found [43546] 
 #> Records returned [20] 
 #> No. unique hierarchies [1] 
-#> No. media records [15] 
+#> No. media records [14] 
 #> No. facets [0] 
 #> Args [limit=20, offset=0, taxonKey=9206251, fields=all] 
-#> # A tibble: 20 x 91
-#>    name        key decimalLatitude decimalLongitude issues   datasetKey   
-#>    <chr>     <int>           <dbl>            <dbl> <chr>    <chr>        
-#>  1 Helian…  1.81e9            52.6             10.1 cdround… 6ac3f774-d9f…
-#>  2 Helian…  1.84e9             0                0   cucdmis… d2470ef8-edf…
-#>  3 Helian…  1.81e9            32.0           -102.  cdround… 50c9509d-22c…
-#>  4 Helian…  1.84e9            33.9           -117.  cdround… 50c9509d-22c…
-#>  5 Helian…  1.82e9            56.6             16.4 cdround… 38b4c89f-584…
-#>  6 Helian…  1.84e9            34.1           -116.  gass84   50c9509d-22c…
-#>  7 Helian…  1.81e9            25.7           -100.  cdround… 50c9509d-22c…
-#>  8 Helian…  1.82e9            56.6             16.6 cdround… 38b4c89f-584…
-#>  9 Helian…  1.81e9            25.6           -100.  cdround… 50c9509d-22c…
-#> 10 Helian…  1.82e9            59.8             17.5 gass84,… 38b4c89f-584…
-#> 11 Helian…  1.83e9            34.0           -117.  cdround… 50c9509d-22c…
-#> 12 Helian…  1.83e9            58.6             16.2 gass84,… 38b4c89f-584…
-#> 13 Helian…  1.83e9            58.4             14.9 gass84,… 38b4c89f-584…
-#> 14 Helian…  1.81e9            25.7           -100.  cdround… 50c9509d-22c…
-#> 15 Helian…  1.84e9            26.2            -98.3 cdround… 50c9509d-22c…
-#> 16 Helian…  1.84e9            25.8           -100.  cdround… 50c9509d-22c…
-#> 17 Helian…  1.85e9            23.7            -99.2 cdround… 50c9509d-22c…
-#> 18 Helian…  1.84e9           -43.6            173.  cdround… 50c9509d-22c…
-#> 19 Helian…  1.84e9            23.8           -107.  cdround… 50c9509d-22c…
-#> 20 Helian…  1.84e9            23.9           -107.  cdround… 50c9509d-22c…
-#> # ... with 85 more variables: publishingOrgKey <chr>,
-#> #   publishingCountry <chr>, protocol <chr>, lastCrawled <chr>,
-#> #   lastParsed <chr>, crawlId <int>, extensions <chr>,
+#> # A tibble: 20 x 98
+#>    name     key decimalLatitude decimalLongitude issues datasetKey
+#>    <chr>  <int>           <dbl>            <dbl> <chr>  <chr>     
+#>  1 Heli… 1.99e9            33.8           -118.  cdrou… 50c9509d-…
+#>  2 Heli… 1.99e9            27.7            -97.3 cdrou… 50c9509d-…
+#>  3 Heli… 1.95e9           -37.8            175.  gass84 50c9509d-…
+#>  4 Heli… 1.82e9            59.8             17.5 gass84 38b4c89f-…
+#>  5 Heli… 1.95e9           -37.8            175.  gass84 50c9509d-…
+#>  6 Heli… 1.82e9            56.6             16.4 cdrou… 38b4c89f-…
+#>  7 Heli… 1.84e9            34.1           -116.  gass84 50c9509d-…
+#>  8 Heli… 1.82e9            56.6             16.6 cdrou… 38b4c89f-…
+#>  9 Heli… 1.81e9            25.7           -100.  cdrou… 50c9509d-…
+#> 10 Heli… 1.81e9            25.6           -100.  cdrou… 50c9509d-…
+#> 11 Heli… 1.84e9            33.9           -117.  cdrou… 50c9509d-…
+#> 12 Heli… 1.81e9            32.0           -102.  cdrou… 50c9509d-…
+#> 13 Heli… 1.84e9             0                0   cucdm… d2470ef8-…
+#> 14 Heli… 1.81e9            52.6             10.1 cdrou… 6ac3f774-…
+#> 15 Heli… 1.91e9            30.3            -98.0 cdrou… 50c9509d-…
+#> 16 Heli… 1.81e9            25.7           -100.  cdrou… 50c9509d-…
+#> 17 Heli… 1.83e9            58.4             14.9 gass84 38b4c89f-…
+#> 18 Heli… 1.97e9            52.0              6.2 ""     8a863029-…
+#> 19 Heli… 1.88e9            26.2            -98.2 cdrou… 50c9509d-…
+#> 20 Heli… 1.83e9            58.6             16.2 gass84 38b4c89f-…
+#> # … with 92 more variables: publishingOrgKey <chr>, networkKeys <chr>,
+#> #   installationKey <chr>, publishingCountry <chr>, protocol <chr>,
+#> #   lastCrawled <chr>, lastParsed <chr>, crawlId <int>, extensions <chr>,
 #> #   basisOfRecord <chr>, taxonKey <int>, kingdomKey <int>,
 #> #   phylumKey <int>, classKey <int>, orderKey <int>, familyKey <int>,
-#> #   genusKey <int>, speciesKey <int>, scientificName <chr>, kingdom <chr>,
+#> #   genusKey <int>, speciesKey <int>, acceptedTaxonKey <int>,
+#> #   scientificName <chr>, acceptedScientificName <chr>, kingdom <chr>,
 #> #   phylum <chr>, order <chr>, family <chr>, genus <chr>, species <chr>,
 #> #   genericName <chr>, specificEpithet <chr>, taxonRank <chr>,
-#> #   coordinateUncertaintyInMeters <dbl>, year <int>, month <int>,
-#> #   day <int>, eventDate <chr>, lastInterpreted <chr>, license <chr>,
+#> #   taxonomicStatus <chr>, dateIdentified <chr>,
+#> #   coordinateUncertaintyInMeters <dbl>, stateProvince <chr>, year <int>,
+#> #   month <int>, day <int>, eventDate <chr>, modified <chr>,
+#> #   lastInterpreted <chr>, references <chr>, license <chr>,
 #> #   identifiers <chr>, facts <chr>, relations <chr>, geodeticDatum <chr>,
-#> #   class <chr>, countryCode <chr>, country <chr>, recordedBy <chr>,
-#> #   catalogNumber <chr>, institutionCode <chr>, locality <chr>,
-#> #   collectionCode <chr>, gbifID <chr>,
-#> #   http...unknown.org.http_..rs.gbif.org.terms.1.0.Multimedia <chr>,
-#> #   elevation <dbl>, elevationAccuracy <dbl>, continent <chr>,
-#> #   stateProvince <chr>, rightsHolder <chr>, recordNumber <chr>,
-#> #   identifier <chr>, municipality <chr>, datasetName <chr>,
-#> #   language <chr>, occurrenceID <chr>, type <chr>,
-#> #   ownerInstitutionCode <chr>, occurrenceRemarks <chr>,
-#> #   dateIdentified <chr>, modified <chr>, references <chr>,
-#> #   verbatimEventDate <chr>, verbatimLocality <chr>, taxonID <chr>,
-#> #   http...unknown.org.occurrenceDetails <chr>, rights <chr>,
-#> #   eventTime <chr>, identificationID <chr>, individualCount <int>,
-#> #   county <chr>, identificationVerificationStatus <chr>,
-#> #   occurrenceStatus <chr>, vernacularName <chr>, taxonConceptID <chr>,
-#> #   informationWithheld <chr>, endDayOfYear <chr>, startDayOfYear <chr>,
+#> #   class <chr>, countryCode <chr>, country <chr>, rightsHolder <chr>,
+#> #   identifier <chr>, verbatimEventDate <chr>, datasetName <chr>,
+#> #   gbifID <chr>, verbatimLocality <chr>, collectionCode <chr>,
+#> #   occurrenceID <chr>, taxonID <chr>, catalogNumber <chr>,
+#> #   recordedBy <chr>, http...unknown.org.occurrenceDetails <chr>,
+#> #   institutionCode <chr>, rights <chr>, eventTime <chr>,
+#> #   occurrenceRemarks <chr>, identificationID <chr>,
+#> #   individualCount <int>, continent <chr>, county <chr>,
+#> #   municipality <chr>, identificationVerificationStatus <chr>,
+#> #   language <chr>, type <chr>, occurrenceStatus <chr>,
+#> #   vernacularName <chr>, taxonConceptID <chr>, informationWithheld <chr>,
+#> #   endDayOfYear <chr>, locality <chr>, startDayOfYear <chr>,
 #> #   datasetID <chr>, accessRights <chr>, higherClassification <chr>,
-#> #   habitat <chr>, identifiedBy <chr>
+#> #   identificationRemarks <chr>, habitat <chr>, elevation <dbl>,
+#> #   elevationAccuracy <dbl>, recordNumber <chr>,
+#> #   ownerInstitutionCode <chr>, identifiedBy <chr>,
+#> #   dataGeneralizations <chr>, samplingProtocol <chr>
 ```
 
 ## Search for many species
@@ -213,49 +216,50 @@ Get the keys first with `name_backbone()`, then pass to `occ_search()`
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 keys <- sapply(splist, function(x) name_backbone(name=x)$speciesKey, USE.NAMES=FALSE)
 occ_search(taxonKey=keys, limit=5, hasCoordinate=TRUE)
-#> Occ. found [2480598 (16), 9362842 (3800072), 2498387 (1243725)] 
+#> Occ. found [2480598 (20), 9362842 (3805169), 2498387 (1246232)] 
 #> Occ. returned [2480598 (5), 9362842 (5), 2498387 (5)] 
 #> No. unique hierarchies [2480598 (1), 9362842 (1), 2498387 (1)] 
-#> No. media records [2480598 (1), 9362842 (5), 2498387 (3)] 
+#> No. media records [2480598 (3), 9362842 (4), 2498387 (5)] 
 #> No. facets [2480598 (0), 9362842 (0), 2498387 (0)] 
 #> Args [hasCoordinate=TRUE, limit=5, offset=0,
 #>      taxonKey=2480598,9362842,2498387, fields=all] 
 #> 3 requests; First 10 rows of data from 2480598
 #> 
-#> # A tibble: 5 x 81
-#>   name         key decimalLatitude decimalLongitude issues   datasetKey   
-#>   <chr>      <int>           <dbl>            <dbl> <chr>    <chr>        
-#> 1 Accipit…  1.00e9          -27.6             -58.7 bri,cud… ad43e954-dd7…
-#> 2 Accipit…  1.00e9          -27.9             -59.1 bri,cud… ad43e954-dd7…
-#> 3 Accipit…  6.86e8            5.27            -60.7 cdround  e635240a-3cb…
-#> 4 Accipit…  1.00e9          -27.6             -58.7 bri,cud… ad43e954-dd7…
-#> 5 Accipit…  1.00e9          -27.6             -58.7 bri,cud… ad43e954-dd7…
-#> # ... with 75 more variables: publishingOrgKey <chr>,
-#> #   publishingCountry <chr>, protocol <chr>, lastCrawled <chr>,
-#> #   lastParsed <chr>, crawlId <int>, extensions <chr>,
+#> # A tibble: 5 x 91
+#>   name     key decimalLatitude decimalLongitude issues datasetKey
+#>   <chr>  <int>           <dbl>            <dbl> <chr>  <chr>     
+#> 1 Acci… 1.98e9          -22.4             -42.9 ""     b1047888-…
+#> 2 Acci… 1.00e9          -27.6             -58.7 cudc,… ad43e954-…
+#> 3 Acci… 1.00e9          -27.9             -59.1 cudc,… ad43e954-…
+#> 4 Acci… 1.93e9          -24.3             -48.4 cdrou… b1047888-…
+#> 5 Acci… 6.86e8            5.27            -60.7 cdrou… e635240a-…
+#> # … with 85 more variables: publishingOrgKey <chr>, networkKeys <chr>,
+#> #   installationKey <chr>, publishingCountry <chr>, protocol <chr>,
+#> #   lastCrawled <chr>, lastParsed <chr>, crawlId <int>, extensions <chr>,
 #> #   basisOfRecord <chr>, taxonKey <int>, kingdomKey <int>,
 #> #   phylumKey <int>, classKey <int>, orderKey <int>, familyKey <int>,
-#> #   genusKey <int>, speciesKey <int>, scientificName <chr>, kingdom <chr>,
+#> #   genusKey <int>, speciesKey <int>, acceptedTaxonKey <int>,
+#> #   scientificName <chr>, acceptedScientificName <chr>, kingdom <chr>,
 #> #   phylum <chr>, order <chr>, family <chr>, genus <chr>, species <chr>,
-#> #   genericName <chr>, specificEpithet <chr>, taxonRank <chr>, year <int>,
-#> #   month <int>, day <int>, eventDate <chr>, modified <chr>,
-#> #   lastInterpreted <chr>, license <chr>, identifiers <chr>, facts <chr>,
-#> #   relations <chr>, geodeticDatum <chr>, class <chr>, countryCode <chr>,
-#> #   country <chr>, identifier <chr>, created <chr>, gbifID <chr>,
-#> #   occurrenceID <chr>, associatedSequences <chr>,
-#> #   higherClassification <chr>, taxonID <chr>, sex <chr>,
-#> #   establishmentMeans <chr>, continent <chr>, references <chr>,
-#> #   institutionID <chr>, dynamicProperties <chr>, fieldNumber <chr>,
-#> #   language <chr>, type <chr>, preparations <chr>, catalogNumber <chr>,
-#> #   occurrenceStatus <chr>, institutionCode <chr>,
-#> #   nomenclaturalCode <chr>, higherGeography <chr>,
-#> #   verbatimEventDate <chr>, endDayOfYear <chr>,
+#> #   genericName <chr>, specificEpithet <chr>, taxonRank <chr>,
+#> #   taxonomicStatus <chr>, year <int>, month <int>, day <int>,
+#> #   eventDate <chr>, lastInterpreted <chr>, references <chr>,
+#> #   license <chr>, identifiers <chr>, facts <chr>, relations <chr>,
+#> #   geodeticDatum <chr>, class <chr>, countryCode <chr>, country <chr>,
+#> #   rightsHolder <chr>, identifier <chr>, nomenclaturalCode <chr>,
+#> #   verbatimEventDate <chr>, locality <chr>, gbifID <chr>,
+#> #   collectionCode <chr>, occurrenceID <chr>, catalogNumber <chr>,
+#> #   recordedBy <chr>, vernacularName <chr>, fieldNotes <chr>,
+#> #   eventTime <chr>, verbatimElevation <chr>, behavior <chr>,
+#> #   higherClassification <chr>, modified <chr>, created <chr>,
+#> #   associatedSequences <chr>, taxonID <chr>, sex <chr>,
+#> #   establishmentMeans <chr>, continent <chr>, institutionID <chr>,
+#> #   dynamicProperties <chr>, fieldNumber <chr>, language <chr>,
+#> #   type <chr>, preparations <chr>, occurrenceStatus <chr>,
+#> #   institutionCode <chr>, higherGeography <chr>, endDayOfYear <chr>,
 #> #   georeferenceVerificationStatus <chr>, datasetName <chr>,
-#> #   locality <chr>, collectionCode <chr>, verbatimLocality <chr>,
-#> #   recordedBy <chr>,
-#> #   http...unknown.org.http_..rs.tdwg.org.dwc.terms.ResourceRelationship <chr>,
-#> #   otherCatalogNumbers <chr>, startDayOfYear <chr>, accessRights <chr>,
-#> #   collectionID <chr>
+#> #   verbatimLocality <chr>, otherCatalogNumbers <chr>,
+#> #   startDayOfYear <chr>, accessRights <chr>, collectionID <chr>
 ```
 
 ## Maps
@@ -267,7 +271,7 @@ occurrences of taxa of interest. For example:
 
 
 ```r
-x <- map_fetch(search = "taxonKey", id = 3118771, year = 2010)
+x <- map_fetch(taxonKey = 3118771, year = 2010)
 x
 #> class       : RasterLayer 
 #> dimensions  : 512, 512, 262144  (nrow, ncol, ncell)
@@ -285,14 +289,18 @@ library(raster)
 plot(x, axes = FALSE, box = FALSE)
 ```
 
-![map](tools/map.png)
+![Example map](man/figures/README-map.png)
+
+## Screencast
+
+<a href="https://vimeo.com/127119010"><img src="man/figures/README-screencast.png" width="400"></a>
 
 ## Meta
 
 * Please [report any issues or bugs](https://github.com/ropensci/rgbif/issues).
 * License: MIT
 * Get citation information for `rgbif` in R doing `citation(package = 'rgbif')`
-* Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+* Please note that this project is released with a [Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 - - -
 
@@ -302,8 +310,10 @@ This package is part of a richer suite called [spocc - Species Occurrence Data](
 
 [![rofooter](https://ropensci.org/public_images/github_footer.png)](https://ropensci.org)
 
+
 [mapr]: https://github.com/ropensci/mapr
 [paper]: https://doi.org/10.7287/peerj.preprints.3304v1/
 [GBIF]: https://www.gbif.org/
 [pygbif]: https://github.com/sckott/pygbif
 [gbifrb]: https://github.com/sckott/gbifrb
+
