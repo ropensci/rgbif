@@ -40,9 +40,13 @@
 #' and the issues. The columns are unchanged otherwise.
 #'
 #' @examples \dontrun{
-#' ## what do issues mean, can print whole table, or search for matches
+#' ## what do issues mean, can print whole table
 #' head(gbif_issues())
+#' # or just occurrence related issues
+#' gbif_issues[which(a$type %in% c("occurrence")),]
+#' # or search for matches
 #' gbif_issues()[ gbif_issues()$code %in% c('cdround','cudc','gass84','txmathi'), ]
+#'
 #'
 #' # compare out data to after occ_issues use
 #' (out <- occ_search(limit=100))
@@ -85,7 +89,7 @@
 #' ## Or you can use occ_issues without %>%
 #' occ_issues(res, -cdround, mutate = "split_expand")
 #'
-#' # from GBIF downloaded data via occ_download and friends
+#' # from GBIF downloaded data via occ_download_* functions
 #' res <- occ_download_get(key="0000066-140928181241064", overwrite=TRUE)
 #' x <- occ_download_import(res)
 #' occ_issues(x, -txmathi)
