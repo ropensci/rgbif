@@ -3,9 +3,10 @@
 \name{gbif_issues}
 \alias{gbif_issues}
 \title{Table of GBIF issues, with codes used in data output, full issue name,
-and descriptions.}
+description and the type (occurrence or name related).}
 \source{
-\url{http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html}
+\url{http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html},
+\url{https://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/NameUsageIssue.html}
 }
 \usage{
 gbif_issues()
@@ -18,8 +19,6 @@ Table has the following fields:
 \item code. Code for issue, making viewing data easier.
 \item issue. Full name of the issue.
 \item description. Description of the issue.
+\item type. Type of the issue: related to occurrence data or names.
 }
-}
-\seealso{
-\code{\link[=name_issues]{name_issues()}}
 }

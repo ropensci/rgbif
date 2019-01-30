@@ -7,9 +7,9 @@
 occ_issues_lookup(issue = NULL, code = NULL)
 }
 \arguments{
-\item{issue}{Full name of issue, e.g, CONTINENT_COUNTRY_MISMATCH}
+\item{issue}{Full name of occurrence issue, e.g, CONTINENT_COUNTRY_MISMATCH}
 
-\item{code}{an issue short code, e.g. ccm}
+\item{code}{an occurrence issue short code, e.g. ccm}
 }
 \description{
 Lookup occurrence issue definitions and short codes

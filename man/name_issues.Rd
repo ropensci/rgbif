@@ -2,24 +2,31 @@
 % Please edit documentation in R/name_issues.R
 \name{name_issues}
 \alias{name_issues}
-\title{Table of GBIF name usage issues, with codes used in data output, full issue name,
-and descriptions.}
-\source{
-\url{https://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/NameUsageIssue.html}
-}
+\title{Parse and examine further GBIF name issues on a dataset.}
 \usage{
-name_issues()
+name_issues(.data, ..., mutate = NULL)
+}
+\arguments{
+\item{.data}{Output from a call to \code{\link[=name_usage]{name_usage()}}, but only if
+\code{return="all"}, or \code{return="data"}, otherwise function stops with error.}
+
+\item{...}{Named parameters to only get back (e.g. bbmn), or to
+remove (e.g. -bbmn).}
+
+\item{mutate}{(character) One of:
+\itemize{
+\item \code{split} Split issues into new columns.
+\item \code{expand} Expand issue abbreviated codes into descriptive names.
+for downloads datasets, this is not super useful since the
+issues come to you as expanded already.
+\item \code{split_expand} Split into new columns, and expand issue names.
+}
+
+For split and split_expand, values in cells become y ("yes") or n ("no")}
 }
 \description{
-Table has the following fields:
+Parse and examine further GBIF name issues on a dataset.
 }
-\details{
-\itemize{
-\item code. Code for issue, making viewing data easier.
-\item issue. Full name of the issue.
-\item description. Description of the issue.
-}
-}
-\seealso{
-\code{\link[=gbif_issues]{gbif_issues()}}
+\references{
+\url{https://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/NameUsageIssue.html}
 }

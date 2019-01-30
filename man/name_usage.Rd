@@ -77,8 +77,8 @@ internally loops over each option making separate requests. This has been
 removed. You can still loop over many options for the \code{data} parameter,
 just use an \code{lapply} family function, or a for loop, etc.
 
-See \code{\link[=name_issues]{name_issues()}} for information on name usage issues related to the
-\code{issues} column in output from this function
+See \code{\link[=name_issues]{name_issues()}} for information on issues related to the
+\code{issues} column in output from this function.
 }
 \section{Repeat parameter inputs}{
 
@@ -102,7 +102,7 @@ name_usage(key=1)
 # Name usage for a taxonomic name
 name_usage(name='Puma', rank="GENUS")
 
-# Name usage for all taxa in a dataset 
+# Name usage for all taxa in a dataset
 # (set sufficient high limit, but less than 100000)
 # name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42", limit = 10000)
 # All name usages

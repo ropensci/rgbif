@@ -8,8 +8,8 @@ name_lookup(query = NULL, rank = NULL, higherTaxonKey = NULL,
   status = NULL, isExtinct = NULL, habitat = NULL, nameType = NULL,
   datasetKey = NULL, origin = NULL, nomenclaturalStatus = NULL,
   limit = 100, start = 0, facet = NULL, facetMincount = NULL,
-  facetMultiselect = NULL, type = NULL, hl = NULL, verbose = FALSE,
-  return = "all", curlopts = list())
+  facetMultiselect = NULL, type = NULL, hl = NULL, issue = NULL,
+  verbose = FALSE, return = "all", curlopts = list())
 }
 \arguments{
 \item{query}{Query term(s) for full text search.}
