@@ -27,6 +27,35 @@ For split and split_expand, values in cells become y ("yes") or n ("no")}
 \description{
 Parse and examine further GBIF name issues on a dataset.
 }
+\examples{
+\dontrun{
+# what do issues mean, can print whole table
+head(gbif_issues())
+# or just name related issues
+gbif_issues()[which(gbifissues$type \%in\% c("name")),]
+# or search for matches
+gbif_issues()[gbif_issues()$code \%in\% c('bbmn','clasna','scina'),]
+# compare out data to after name_issues use
+(aa <- name_usage(name = "Lupus"))
+aa \%>\% name_issues("clasna")
+
+## or parse issues in various ways
+### remove data rows with certain issue classes
+aa \%>\% name_issues(-clasna, -scina)
+
+### expand issues to more descriptive names
+aa \%>\% name_issues(mutate = "expand")
+
+### split and expand
+aa \%>\% name_issues(mutate = "split_expand")
+
+### split, expand, and remove an issue class
+aa \%>\% name_issues(-bbmn, mutate = "split_expand")
+
+## Or you can use name_issues without \%>\%
+name_issues(aa, -bbmn, mutate = "split_expand")
+}
+}
 \references{
 \url{https://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/NameUsageIssue.html}
 }

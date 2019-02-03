@@ -50,10 +50,10 @@ and the issues. The columns are unchanged otherwise.
 }
 \examples{
 \dontrun{
-## what do issues mean, can print whole table
+# what do issues mean, can print whole table
 head(gbif_issues())
 # or just occurrence related issues
-gbif_issues[which(a$type \%in\% c("occurrence")),]
+gbif_issues()[which(a$type \%in\% c("occurrence")),]
 # or search for matches
 gbif_issues()[ gbif_issues()$code \%in\% c('cdround','cudc','gass84','txmathi'), ]
 
