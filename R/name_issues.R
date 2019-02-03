@@ -53,6 +53,6 @@ name_issues <- function(.data, ..., mutate = NULL) {
 
   check_issues(type = "name", ...)
 
-  handle_issues(.data, ..., mutate = mutate)
+  handle_issues(.data, is_occ = FALSE, ..., mutate = mutate)
 
 }

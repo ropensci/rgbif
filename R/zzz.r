@@ -570,7 +570,7 @@ parse_issues <- function(x){
   sapply(x, function(y) list(issue = y), USE.NAMES = FALSE)
 }
 
-handle_issues <- function(.data, ..., mutate = NULL) {
+handle_issues <- function(.data, is_occ, ..., mutate = NULL) {
   if ("data" %in% names(.data)) {
     tmp <- .data$data
   } else {
@@ -606,10 +606,10 @@ handle_issues <- function(.data, ..., mutate = NULL) {
 
   if (!is.null(mutate)) {
     if (mutate == 'split') {
-      tmp <- split_iss(tmp, is_dload)
+      tmp <- split_iss(tmp, is_occ, is_dload)
     } else if (mutate == 'split_expand') {
       tmp <- mutate_iss(tmp)
-      tmp <- split_iss(tmp, is_dload)
+      tmp <- split_iss(tmp, is_occ, is_dload)
     } else if (mutate == 'expand') {
       tmp <- mutate_iss(tmp)
     }
@@ -630,7 +630,7 @@ mutate_iss <- function(w) {
   return( w )
 }
 
-split_iss <- function(m, is_dload) {
+split_iss <- function(m, is_occ, is_dload) {
   unq <- unique(unlist(strsplit(m$issues, split = ",")))
   df <- data.table::setDF(
     data.table::rbindlist(
@@ -642,8 +642,14 @@ split_iss <- function(m, is_dload) {
   )
   names(df) <- unq
   m$issues <- NULL
-  first_search <- c('name','key','decimalLatitude','decimalLongitude')
-  first_dload <- c('scientificName','taxonKey','decimalLatitude','decimalLongitude')
+  if (is_occ) {
+    first_search <- c('name','key','decimalLatitude','decimalLongitude')
+    first_dload <- c('scientificName', 'taxonKey',
+                     'decimalLatitude', 'decimalLongitude')
+  } else{
+    first_search <- c('scientificName', 'key', 'nubKey',
+                      'rank', 'taxonomicStatus')
+  }
   first <- if (is_dload) first_dload else first_search
   tibble::as_data_frame(data.frame(m[, first], df, m[, !names(m) %in% first],
                                    stringsAsFactors = FALSE))

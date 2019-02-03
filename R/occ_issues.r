@@ -110,6 +110,6 @@ occ_issues <- function(.data, ..., mutate = NULL) {
 
   check_issues(type = "occurrence", ...)
 
-  handle_issues(.data, ..., mutate = mutate)
+  handle_issues(.data, is_occ = TRUE, ..., mutate = mutate)
 
 }
