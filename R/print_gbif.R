@@ -120,4 +120,3 @@ print.gbif_data <- function(x, ..., n = 10) {
     print(x)
   }
 }
-
