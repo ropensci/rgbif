@@ -253,8 +253,8 @@ check_limit <- function(x){
 }
 
 possparams <- function(){
-  "   taxonKey, scientificName, datasetKey, catalogNumber, recordedBy, geometry,
-   country, publishingCountry, recordNumber, search, institutionCode,
+  "taxonKey, scientificName, datasetKey, catalogNumber, recordedBy, geometry,
+  country, publishingCountry, recordNumber, search, institutionCode,
   collectionCode, decimalLatitude, decimalLongitude, depth, year, typeStatus,
   lastInterpreted, continent, or mediatype"
 }
