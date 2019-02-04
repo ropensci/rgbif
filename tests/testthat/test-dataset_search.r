@@ -41,7 +41,7 @@ test_that("search query returns the correct class", {
     expect_is(tt$data, "tbl_df")
     expect_is(tt$meta, "data.frame")
     expect_is(tt$descriptions, "list")
-    expect_that(is.null(tt$facets), is_true())
+    expect_null(tt$facets)
     expect_is(tt$data[1,1], "tbl_df")
     expect_is(tt$data[1,1]$datasetTitle, "character")
   }, preserve_exact_body_bytes = TRUE)
