@@ -7,13 +7,15 @@ test_that("returns the correct class", {
     tt <- name_lookup(query='mammalia')
     uu <- name_lookup(query='Cnaemidophorus', rank="genus", return="data")
 
-    expect_is(tt, "list")
+    expect_is(tt, "gbif")
     expect_is(tt$meta, "data.frame")
     expect_is(tt$meta$endOfRecords, "logical")
     expect_is(tt$data$canonicalName, "character")
     expect_is(tt$data$classKey, "integer")
 
     expect_is(uu, "data.frame")
+    expect_is(uu, "tbl_df")
+    expect_is(uu, "gbif")
 
     # returns the correct value
     expect_equal(na.omit(tt$data$kingdom)[[2]], "Animalia")
@@ -48,7 +50,7 @@ test_that("works with parameters that allow many inputs", {
   vcr::use_cassette("name_lookup_many_inputs", {
 
     aa <- name_lookup(status = c("misapplied", "synonym"), limit = 200)
-    expect_is(aa, "list")
+    expect_is(aa, "gbif")
     expect_is(aa$meta, "data.frame")
     expect_is(aa$meta$endOfRecords, "logical")
     expect_is(aa$data$canonicalName, "character")
@@ -57,7 +59,7 @@ test_that("works with parameters that allow many inputs", {
       unique(tolower(aa$data$taxonomicStatus)) %in% c("misapplied", "synonym")))
 
     aa <- name_lookup(nameType = c("cultivar", "doubtful"), limit = 200)
-    expect_is(aa, "list")
+    expect_is(aa, "gbif")
     expect_is(aa$meta, "data.frame")
     expect_is(aa$meta$endOfRecords, "logical")
     expect_is(aa$data$canonicalName, "character")
@@ -66,7 +68,7 @@ test_that("works with parameters that allow many inputs", {
       unique(tolower(aa$data$nameType)) %in% c("cultivar", "doubtful")))
 
     aa <- name_lookup(origin = c("implicit_name", "proparte"), limit = 250)
-    expect_is(aa, "list")
+    expect_is(aa, "gbif")
     expect_is(aa$meta, "data.frame")
     expect_is(aa$meta$endOfRecords, "logical")
     expect_is(aa$data$canonicalName, "character")
