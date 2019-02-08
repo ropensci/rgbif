@@ -210,7 +210,8 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
   } else if (return == 'names') {
     out <- compact_null(vernames)
   } else if (return == 'all') {
-    out <- list(meta = tibble::as_data_frame(meta), data = data,
+    out <- list(meta = tibble::as_data_frame(meta),
+                data = data,
                 facets = facetsdat,
                 hierarchies = compact_null(hierdat),
                 names = compact_null(vernames))
