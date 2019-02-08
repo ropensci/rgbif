@@ -23,13 +23,13 @@
 #' })
 #'
 #' # Search for a genus, returning just data
-#' name_lookup(query='Cnaemidophorus', rank="genus", return="data")
+#' name_lookup(query="Cnaemidophorus", rank="genus", return="data")
 #'
 #' # Just metadata
-#' name_lookup(query='Cnaemidophorus', rank="genus", return="meta")
+#' name_lookup(query="Cnaemidophorus", rank="genus", return="meta")
 #'
 #' # Just hierarchies
-#' name_lookup(query='Cnaemidophorus', rank="genus", return="hierarchy")
+#' name_lookup(query="Cnaemidophorus", rank="genus", return="hierarchy")
 #'
 #' # Just vernacular (common) names
 #' name_lookup(query='Cnaemidophorus', rank="genus", return="names")
