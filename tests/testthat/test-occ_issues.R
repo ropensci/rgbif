@@ -7,7 +7,10 @@ test_that("occ_issues", {
     #aa <- out %>% occ_issues(cudc)
 
     # Parsing output by issue
-    res <- occ_search(geometry = 'POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))', limit = 50)
+    res <- occ_search(
+      geometry = 'POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))',
+      limit = 50
+    )
 
     bb <- res %>% occ_issues(gass84)
 
