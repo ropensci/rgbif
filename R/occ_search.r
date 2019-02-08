@@ -9,19 +9,19 @@
 #' @param fields (character) Default ('all') returns all fields. 'minimal'
 #' returns just taxon name, key, latitude, and longitute. Or specify each field
 #' you want returned by name, e.g. fields = c('name','latitude','elevation').
-#' @param return One of data, hier, meta, or all. If data, a data.frame with the
-#' data. hier returns the classifications in a list for each record. meta
-#' returns the metadata for the entire call. all gives all data back in
-#' a list.
+#' @param return One of 'data', 'hier', 'meta', or 'all'. If 'data', a
+#'   data.frame with the data. 'hier' returns the classifications in a list for
+#'   each record. 'meta' returns the metadata for the entire call. 'all'
+#'   (default) gives all data back in a list.
 #' @seealso [downloads()], [occ_data()], [occ_facet()]
 #' @return An object of class `gbif`, which is a S3 class list, with
 #' slots for metadata (`meta`), the occurrence data itself (`data`),
 #' the taxonomic hierarchy data (`hier`), and media metadata
 #' (`media`).
 #' In addition, the object has attributes listing the user supplied arguments
-#' and whether it was a "single" or "many" search; that is, if you supply two
+#' and whether it was a 'single' or 'many' search; that is, if you supply two
 #' values of the `datasetKey` parameter to searches are done, and it's a
-#' "many". `meta` is a list of length four with offset, limit,
+#' 'many'. `meta` is a list of length four with offset, limit,
 #' endOfRecords and count fields. `data` is a tibble (aka data.frame). `hier`
 #' is a list of data.frame's of the unique set of taxa found, where each
 #' data.frame is its taxonomic classification. `media` is a list of media

@@ -80,7 +80,7 @@ nomenclatural rules.
 }}
 
 \item{nomenclaturalStatus}{Not yet implemented, but will eventually allow
-for filtering by a nomenclatural status enum}
+for filtering by a nomenclatural status enum.}
 
 \item{limit}{Number of records to return.
 Hard maximum limit set by GBIF API: 99999.}
@@ -96,20 +96,20 @@ not yet be returned for them.}
 \item{facetMincount}{Used in combination with the facet parameter. Set
 facetMincount={#} to exclude facets with a count less than {#}, e.g.
 http://bit.ly/1bMdByP only shows the type value 'ACCEPTED' because the
-other statuses have counts less than 7,000,000}
+other statuses have counts less than 7,000,000.}
 
 \item{facetMultiselect}{(logical) Used in combination with the facet
 parameter. Set \code{facetMultiselect=TRUE} to still return counts for
 values that are not currently filtered, e.g. http://bit.ly/19YLXPO still
 shows all status values even though status is being filtered
-by \code{status=ACCEPTED}}
+by \code{status=ACCEPTED}.}
 
 \item{type}{Type of name. One of occurrence, checklist, or metadata.}
 
-\item{hl}{(logical) Set \code{hl=TRUE} to highlight terms matching the
-query when in fulltext search fields. The highlight will be an emphasis tag
-of class \code{gbifH1} e.g. \code{query='plant', hl=TRUE}. Fulltext search fields
-include: title, keyword, country, publishing country, publishing
+\item{hl}{(logical) Set \code{hl=TRUE} to highlight terms matching the query
+when in fulltext search fields. The highlight will be an emphasis tag of
+class \code{gbifH1} e.g. \code{query='plant', hl=TRUE}. Fulltext search
+fields include: title, keyword, country, publishing country, publishing
 organization title, hosting organization title, and description. One
 additional full text field is searched which includes information from
 metadata documents, but the text of this field is not returned in the
@@ -119,20 +119,41 @@ response.}
 element. If \code{FALSE} (default) a subset of the data that is thought to be most
 essential is organized into a data.frame.}
 
-\item{return}{One of data, meta, facets, hierarchy, names or all. If data, a
-data.frame with the data. facets returns the facets, if \code{facets=TRUE}, or
-empy list if \code{facets=FALSE}. meta returns the metadata for the entire call.
-names returns the vernacular (common) names for each taxon. all gives all
-data back in a list. Each element is NULL if there is no contents in that
-element. hierarchies and names slots are named by the GBIF key, which
-matches the first column of the data.frame in the data slot. So if you
-wanted to combine those somehow, you could easily do so using the key.}
+\item{return}{One of 'data', 'meta', 'facets', 'hierarchy', 'names' or 'all'
+(default). If 'data', a data.frame with the data. 'meta' returns the
+metadata for the entire call. 'facets' returns the facets, if
+\code{facet=TRUE}, or empy list if \code{facet=FALSE} or
+\code{facet=NULL}(default). 'hierarchies' returns the taxonomic hierarchy
+for each taxa in 'data'. 'names' returns the vernacular (common) names for
+each taxon. 'all' gives all data back as a list. Each element is NULL if
+there is no contents in that element. 'hierarchies' and 'names' slots are named
+by the GBIF key (taxon), which matches the first column of the data.frame in the
+data slot. So if you wanted to combine those somehow, you could easily do
+so using the key.}
 
 \item{curlopts}{list of named curl options passed on to
 \code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
 for curl options}
 }
 \value{
+An object of class gbif, which is a S3 class list, with slots for
+metadata (\code{meta}), the data itself (\code{data}), the taxonomic
+hierarchy data (\code{hierarchies}), and vernacular names (\code{names}).
+In addition, the object has attributes listing the user supplied arguments
+and type of search, which is, differently from occurrence data, always
+equals to 'single' even if multiple values for some parameters are given.
+\code{meta} is a list of length four with offset, limit, endOfRecords and
+count fields. \code{data} is a tibble (aka data.frame) containing all
+information about the found taxa. \code{hierarchies} is a list of
+data.frame's, one per GBIF key (taxon), containing its taxonomic
+classification. Each data.frame contains two columns: \code{rankkey} and
+\code{name}. \code{names} returns a list of data.frame's, one per GBIF key
+(taxon), containing all vernacular names. Each data.frame contains two
+columns: \code{vernacularName} and \code{language}. If \code{return}
+parameter is set to something other than default ('all') you get back just
+what you asked, that means \code{meta}, \code{data}, \code{facets}, or
+\code{names}.
+
 A list of length five:
 \itemize{
 \item \strong{metadata}
@@ -187,13 +208,13 @@ lapply(out$data, function(x) {
 })
 
 # Search for a genus, returning just data
-name_lookup(query='Cnaemidophorus', rank="genus", return="data")
+name_lookup(query="Cnaemidophorus", rank="genus", return="data")
 
 # Just metadata
-name_lookup(query='Cnaemidophorus', rank="genus", return="meta")
+name_lookup(query="Cnaemidophorus", rank="genus", return="meta")
 
 # Just hierarchies
-name_lookup(query='Cnaemidophorus', rank="genus", return="hierarchy")
+name_lookup(query="Cnaemidophorus", rank="genus", return="hierarchy")
 
 # Just vernacular (common) names
 name_lookup(query='Cnaemidophorus', rank="genus", return="names")

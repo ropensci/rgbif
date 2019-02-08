@@ -40,9 +40,9 @@ not do anything}
 
 \item{limit}{Number of records to return. Default: 100.}
 
-\item{return}{One of data, meta, or all. If data, a data.frame with the
-data. meta returns the metadata for the entire call. all gives all data
-back in a list.}
+\item{return}{One of 'data', 'meta', or 'all'. If 'data', a data.frame with
+the data. 'meta' returns the metadata for the entire call. 'all' gives all
+data back in a list.}
 
 \item{curlopts}{list of named curl options passed on to
 \code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}

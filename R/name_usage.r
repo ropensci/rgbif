@@ -5,12 +5,12 @@
 #' @template nameusage
 #' @param limit Number of records to return. Default: 100.
 #' @param start Record number to start at. Default: 0.
-#' @param return One of data, meta, or all. If data, a data.frame with the
-#'    data. meta returns the metadata for the entire call. all gives all data
-#'    back in a list.
 #' @return If `return="all"`, a list of length two, with metadata and data,
 #' each as data.frame's. If `return="meta"` only the metadata data.frame,
 #' and if `return="data"` only the data data.frame
+#' @param return One of 'data', 'meta', or 'all'. If 'data', a data.frame with
+#'   the data. 'meta' returns the metadata for the entire call. 'all' gives all
+#'   data back in a list.
 #' @references <https://www.gbif.org/developer/species#nameUsages>
 #' @details
 #' This service uses fuzzy lookup so that you can put in partial names and
