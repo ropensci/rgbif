@@ -222,7 +222,7 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
       class(out) <- "gbif"
       attr(out, 'type') <- "single"
     }
-  structure(out, return = return, args = args)
   }
+  structure(out, return = return, args = args)
 }
 
