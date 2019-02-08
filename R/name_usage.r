@@ -5,12 +5,20 @@
 #' @template nameusage
 #' @param limit Number of records to return. Default: 100.
 #' @param start Record number to start at. Default: 0.
-#' @return If `return="all"`, a list of length two, with metadata and data,
-#' each as data.frame's. If `return="meta"` only the metadata data.frame,
-#' and if `return="data"` only the data data.frame
 #' @param return One of 'data', 'meta', or 'all'. If 'data', a data.frame with
 #'   the data. 'meta' returns the metadata for the entire call. 'all' gives all
 #'   data back in a list.
+#' @return An object of class gbif, which is a S3 class list, with slots for
+#'   metadata (\code{meta}) and the data itself (\code{data}). In addition, the
+#'   object has attributes listing the user supplied arguments and type of
+#'   search, which is, differently from occurrence data, always equals to
+#'   'single' even if multiple values for some parameters are given. \code{meta}
+#'   is a list of length four with offset, limit, endOfRecords and count fields.
+#'   \code{data} is a tibble (aka data.frame) containing all information about
+#'   the found taxa. If \code{return} parameter is set to something other than
+#'   default ('all') you get back just what you asked, that means \code{meta} or
+#'   \code{data}.
+#'
 #' @references <https://www.gbif.org/developer/species#nameUsages>
 #' @details
 #' This service uses fuzzy lookup so that you can put in partial names and
@@ -33,8 +41,7 @@
 #' removed. You can still loop over many options for the `data` parameter,
 #' just use an `lapply` family function, or a for loop, etc.
 #'
-#' See [name_issues()] for information on issues related to the
-#' `issues` column in output from this function.
+#' See [name_issues()] for more information about issues in `issues` column.
 #'
 #' @examples \dontrun{
 #' # A single name usage
