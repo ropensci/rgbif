@@ -216,7 +216,7 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
                 hierarchies = compact_null(hierdat),
                 names = compact_null(vernames))
   }
-  if (!return %in% c('meta')) {
+  if (!return %in% c('meta', 'hierarchy', 'names')) {
     if (inherits(out, "data.frame")) {
       class(out) <- c('tbl_df', 'data.frame', 'gbif')
     } else {
