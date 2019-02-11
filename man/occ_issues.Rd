@@ -108,6 +108,16 @@ occ_issues(x, mutate = "split")
 occ_issues(x, -gass84, mutate = "split")
 occ_issues(x, mutate = "expand")
 occ_issues(x, mutate = "split_expand")
+
+# occ_search/occ_data with many inputs - give slightly different output
+# format than normal 2482598, 2498387
+xyz <- occ_data(taxonKey = c(9362842, 2492483, 2435099), limit = 300)
+xyz
+length(xyz) # length 3
+names(xyz) # matches taxonKey values passed in
+occ_issues(xyz, -gass84)
+occ_issues(xyz, -cdround)
+occ_issues(xyz, -cdround, -gass84)
 }
 }
 \references{

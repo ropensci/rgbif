@@ -98,6 +98,16 @@
 #' occ_issues(x, -gass84, mutate = "split")
 #' occ_issues(x, mutate = "expand")
 #' occ_issues(x, mutate = "split_expand")
+#'
+#' # occ_search/occ_data with many inputs - give slightly different output
+#' # format than normal 2482598, 2498387
+#' xyz <- occ_data(taxonKey = c(9362842, 2492483, 2435099), limit = 300)
+#' xyz
+#' length(xyz) # length 3
+#' names(xyz) # matches taxonKey values passed in
+#' occ_issues(xyz, -gass84)
+#' occ_issues(xyz, -cdround)
+#' occ_issues(xyz, -cdround, -gass84)
 #' }
 
 occ_issues <- function(.data, ..., mutate = NULL) {
@@ -106,7 +116,15 @@ occ_issues <- function(.data, ..., mutate = NULL) {
   if ("data" %in% names(.data)) {
     tmp <- .data$data
   } else {
-    tmp <- .data
+    many <- FALSE
+    if (attr(.data, "type") == "many") {
+      many <- TRUE
+      tmp <- data.table::setDF(
+        data.table::rbindlist(lapply(.data, "[[", "data"),
+          fill = TRUE, use.names = TRUE, idcol = "ind"))
+    } else {
+      tmp <- .data
+    }
   }
 
   # handle downloads data
@@ -150,6 +168,14 @@ occ_issues <- function(.data, ..., mutate = NULL) {
   if ("data" %in% names(.data)) {
     .data$data <- tmp
     return( .data )
+  } else if (many) {
+    tmpsplit <- split(tmp, tmp$ind)
+    for (i in seq_along(names(.data))) {
+      df <- tibble::as_tibble(tmpsplit[[ names(.data)[i] ]])
+      if (NROW(df) > 0) df$ind <- NULL
+      .data[[ names(.data)[i] ]]$data <- df
+    }
+    return(.data)
   } else {
     return( tmp )
   }
