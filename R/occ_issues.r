@@ -2,21 +2,21 @@
 #'
 #' @export
 #'
-#' @param .data Output from a call to [occ_search()], [occ_data()], or 
-#' [occ_download_import()], but only if `return="all"`, or `return="data"`, 
+#' @param .data Output from a call to [occ_search()], [occ_data()], or
+#' [occ_download_import()], but only if `return="all"`, or `return="data"`,
 #' otherwise function stops with error. The data from `occ_download_import`
 #' is just a regular data.frame so you can pass in a data.frame to this
 #' function, but if it doesn't have certain columns it will fail.
 #' @param ... Named parameters to only get back (e.g., cdround), or to
 #' remove (e.g. -cdround).
 #' @param mutate (character) One of:
-#' 
+#'
 #' - `split` Split issues into new columns
 #' - `split_expand` Split into new columns, and expand issue names
-#' - `expand` Expand issue abbreviated codes into descriptive names. 
-#' for downloads datasets, this is not super useful since the 
+#' - `expand` Expand issue abbreviated codes into descriptive names.
+#' for downloads datasets, this is not super useful since the
 #' issues come to you as expanded already.
-#' 
+#'
 #' For split and split_expand, values in cells become y ("yes") or n ("no")
 #'
 #' @references
@@ -34,27 +34,28 @@
 #' returned from a call to [occ_search()]. Maybe in a future version
 #' we will remove the associated records from the `hierarchy` and `media`
 #' elements as they are remove from the `data` element.
-#' 
+#'
 #' You'll notice that we sort columns to make it easier to glimpse the important
-#' parts of your data, namely taxonomic name, taxon key, latitude and longitude, 
+#' parts of your data, namely taxonomic name, taxon key, latitude and longitude,
 #' and the issues. The columns are unchanged otherwise.
 #'
 #' @examples \dontrun{
 #' ## what do issues mean, can print whole table, or search for matches
 #' head(gbif_issues())
-#' gbif_issues()[ gbif_issues()$code %in% c('cdround','cudc','gass84','txmathi'), ]
+#' iss <- c('cdround','cudc','gass84','txmathi')
+#' gbif_issues()[ gbif_issues()$code %in% iss, ]
 #'
 #' # compare out data to after occ_issues use
 #' (out <- occ_search(limit=100))
 #' out %>% occ_issues(cdround)
-#' 
+#'
 #' # occ_data
 #' (out <- occ_data(limit=100))
 #' out %>% occ_issues(cdround)
 #'
 #' # Parsing output by issue
 #' (res <- occ_data(
-#'   geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))', 
+#'   geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))',
 #'   limit = 600))
 #'
 #' ## or parse issues in various ways
@@ -82,9 +83,9 @@
 #' ### split, expand, and remove an issue class
 #' res %>% occ_issues(-cdround, mutate = "split_expand")
 #'
-#' ## Or you can use occ_issues without %>%
+#' ## Or you can use occ_issues without the pipe
 #' occ_issues(res, -cdround, mutate = "split_expand")
-#' 
+#'
 #' # from GBIF downloaded data via occ_download and friends
 #' res <- occ_download_get(key="0000066-140928181241064", overwrite=TRUE)
 #' x <- occ_download_import(res)
@@ -100,8 +101,6 @@
 #' }
 
 occ_issues <- function(.data, ..., mutate = NULL) {
-
-  # stopifnot(xor(inherits(.data, "gbif"), inherits(.data, "gbif_data")))
   assert(.data, c("gbif", "gbif_data", "data.frame", "tbl_df"))
 
   if ("data" %in% names(.data)) {
@@ -110,7 +109,7 @@ occ_issues <- function(.data, ..., mutate = NULL) {
     tmp <- .data
   }
 
-  # handle downloads data 
+  # handle downloads data
   is_dload <- FALSE
   if (
     c("issue", "gbifID", "accessRights", "accrualMethod") %in% names(tmp) &&
@@ -122,7 +121,7 @@ occ_issues <- function(.data, ..., mutate = NULL) {
     issstr <- tmp[names(tmp) %in% "issue"][[1]]
     tmp$issues <- unlist(lapply(issstr, function(z) {
       if (identical(z, "")) return (character(1))
-      paste(gbifissues[ grepl(gsub(";", "|", z), gbifissues$issue), "code" ], 
+      paste(gbifissues[ grepl(gsub(";", "|", z), gbifissues$issue), "code" ],
         collapse = ",")
     }))
   }
@@ -138,12 +137,12 @@ occ_issues <- function(.data, ..., mutate = NULL) {
   }
 
   if (!is.null(mutate)) {
-    if (mutate == 'split') {
+    if (mutate == "split") {
       tmp <- split_iss(tmp, is_dload)
-    } else if (mutate == 'split_expand') {
+    } else if (mutate == "split_expand") {
       tmp <- mutate_iss(tmp)
       tmp <- split_iss(tmp, is_dload)
-    } else if (mutate == 'expand') {
+    } else if (mutate == "expand") {
       tmp <- mutate_iss(tmp)
     }
   }
@@ -175,16 +174,17 @@ split_iss <- function(m, is_dload) {
   )
   names(df) <- unq
   m$issues <- NULL
-  first_search <- c('name','key','decimalLatitude','decimalLongitude')
-  first_dload <- c('scientificName','taxonKey','decimalLatitude','decimalLongitude')
+  first_search <- c("name", "key", "decimalLatitude", "decimalLongitude")
+  first_dload <- c("scientificName", "taxonKey", "decimalLatitude",
+    "decimalLongitude")
   first <- if (is_dload) first_dload else first_search
-  tibble::as_data_frame(data.frame(m[, first], df, m[, !names(m) %in% first], 
+  tibble::as_data_frame(data.frame(m[, first], df, m[, !names(m) %in% first],
     stringsAsFactors = FALSE))
 }
 
 parse_input <- function(...) {
   x <- as.character(dots(...))
-  neg <- gsub('-', '', x[grepl("-", x)])
+  neg <- gsub("-", "", x[grepl("-", x)])
   pos <- x[!grepl("-", x)]
   list(neg = neg, pos = pos)
 }

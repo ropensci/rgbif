@@ -52,7 +52,8 @@ and the issues. The columns are unchanged otherwise.
 \dontrun{
 ## what do issues mean, can print whole table, or search for matches
 head(gbif_issues())
-gbif_issues()[ gbif_issues()$code \%in\% c('cdround','cudc','gass84','txmathi'), ]
+iss <- c('cdround','cudc','gass84','txmathi')
+gbif_issues()[ gbif_issues()$code \%in\% iss, ]
 
 # compare out data to after occ_issues use
 (out <- occ_search(limit=100))
@@ -64,7 +65,7 @@ out \%>\% occ_issues(cdround)
 
 # Parsing output by issue
 (res <- occ_data(
-  geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))', 
+  geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))',
   limit = 600))
 
 ## or parse issues in various ways
@@ -92,7 +93,7 @@ res \%>\% occ_issues(mutate = "split_expand")
 ### split, expand, and remove an issue class
 res \%>\% occ_issues(-cdround, mutate = "split_expand")
 
-## Or you can use occ_issues without \%>\%
+## Or you can use occ_issues without the pipe
 occ_issues(res, -cdround, mutate = "split_expand")
 
 # from GBIF downloaded data via occ_download and friends
