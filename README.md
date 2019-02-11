@@ -300,17 +300,17 @@ Alphebetical
 
 ### Code Contributors
 
-+ [Scott Chamberlain](https://github.com/sckott)
-+ [Karthik Ram](https://github.com/karthik)
-+ [Damiano Oldoni](https://github.com/damianooldoni)
-+ [Peter Desmet](https://github.com/peterdesmet)
 + [Vijay Barve](https://github.com/vijaybarve)
-+ [Dan McGlinn](https://github.com/dmcglinn)
-+ [steven2249](https://github.com/steven2249)
-+ [Jari Oksanen](https://github.com/jarioksa)
-+ [Sriram](https://github.com/SriramRamesh)
-+ [Ben Marwick](https://github.com/benmarwick)
 + [John Baumgartner](https://github.com/johnbaums)
++ [Scott Chamberlain](https://github.com/sckott)
++ [Peter Desmet](https://github.com/peterdesmet)
++ [Ben Marwick](https://github.com/benmarwick)
++ [Dan McGlinn](https://github.com/dmcglinn)
++ [Jari Oksanen](https://github.com/jarioksa)
++ [Damiano Oldoni](https://github.com/damianooldoni)
++ [Karthik Ram](https://github.com/karthik)
++ [Sriram](https://github.com/SriramRamesh)
++ [steven2249](https://github.com/steven2249)
 
 ### All Contributors!
 
