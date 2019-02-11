@@ -201,7 +201,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
     limit=limit
   )
   if (!any(sapply(params, length) > 0)) {
-    stop(sprintf("At least one of the parmaters must have a value:\n%s",
+    stop(sprintf("At least one of the parameters must have a value:\n%s",
                  possparams()),
          call. = FALSE)
   }
