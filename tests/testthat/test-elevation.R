@@ -12,7 +12,7 @@ test_that("geonames_srtm3 internal fxn works", {
 test_that("geonames_srtm3 fails well", {
   expect_error(geonames_srtm3(), "argument \"latitude\" is missing")
   expect_error(geonames_srtm3(4), "argument \"longitude\" is missing")
-  expect_error(geonames_srtm3("a", "a"), "latitude must be of class")
+  expect_error(geonames_srtm3("a", "a"), "invalid number")
 
   vcr::use_cassette("elevation_geonames_srtm3_unauthorized", {
     expect_error(geonames_srtm3(4, 5, "cheesemonkey"), "Unauthorized")
@@ -68,6 +68,8 @@ test_that("fails correctly", {
 
   # invalid key
   pairs <- list(c(31.8496, -110.576060), c(29.15503, -103.59828))
-  expect_error(elevation(latlong = pairs, username = "bad_user"),
-    "Unauthorized")
+  vcr::use_cassette("elevation_unauthorized", {
+    expect_error(elevation(latlong = pairs, username = "bad_user"),
+      "Unauthorized")
+  })
 })

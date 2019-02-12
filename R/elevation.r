@@ -55,7 +55,7 @@ elevation <- function(input = NULL, latitude = NULL, longitude = NULL,
       call. = FALSE)
   }
 
-  getdata <- function(x) {
+  elev_ <- function(x, username, ...) {
     check_latlon(x)
     locs <- list(x)
     if (NROW(x) > 20) {
@@ -77,7 +77,7 @@ elevation <- function(input = NULL, latitude = NULL, longitude = NULL,
     stopifnot(all(c("decimalLatitude", "decimalLongitude") %in% names(input)))
     names(input)[names(input) %in% "decimalLatitude"] <- "latitude"
     names(input)[names(input) %in% "decimalLongitude"] <- "longitude"
-    getdata(input)
+    elev_(input, username, ...)
   } else if (is.null(latlong)) {
     if (!is.null(input)) {
       stop("If you use latitude and longitude, input must be left as default")
@@ -85,15 +85,19 @@ elevation <- function(input = NULL, latitude = NULL, longitude = NULL,
     stopifnot(length(latitude) == length(longitude))
     dat <- data.frame(latitude = latitude, longitude = longitude,
                       stringsAsFactors = FALSE)
-    getdata(dat)
+    elev_(dat, username, ...)
   } else {
     dat <- setdfrbind(lapply(latlong, function(x) data.frame(t(x))))
     names(dat) <- c("latitude", "longitude")
-    getdata(dat)
+    elev_(dat, username, ...)
   }
 }
 
 check_latlon <- function(x) {
+  # types
+  assert(x$latitude, c("numeric", "integer"))
+  assert(x$longitude, c("numeric", "integer"))
+
   # missing values
   not_complete <- x[!stats::complete.cases(x$latitude, x$longitude), ]
   if (NROW(not_complete) > 0) {
@@ -119,8 +123,6 @@ check_latlon <- function(x) {
 geonames_srtm3 <- function(latitude, longitude,
   username = Sys.getenv("GEONAMES_USER"), ...) {
 
-  assert(latitude, c("numeric", "integer"))
-  assert(longitude, c("numeric", "integer"))
   if (length(latitude) > 1) latitude <- paste0(latitude, collapse = ",")
   if (length(longitude) > 1) longitude <- paste0(longitude, collapse = ",")
   cli <- crul::HttpClient$new(
@@ -132,8 +134,16 @@ geonames_srtm3 <- function(latitude, longitude,
   )
   args <- list(lats = latitude, lngs = longitude, username = username)
   tt <- cli$get("srtm3", query = args)
-  tt$raise_for_status()
-  stopifnot(tt$headers$`content-type` == "text/html;charset=UTF-8")
+  geonames_errs(tt)
   res <- tt$parse("UTF-8")
   as.numeric(strsplit(res, "\n")[[1]])
+}
+
+geonames_errs <- function(z) {
+  z$raise_for_status()
+  stopifnot(z$response_headers$`content-type` == "text/html;charset=UTF-8")
+  txt <- z$parse("UTF-8")
+  if (grepl("ERR", txt)) {
+    stop(sub("ERR:?[0-9]{1,2}:?", "", txt), call. = FALSE)
+  }
 }
