@@ -154,12 +154,12 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
       }
     } else if (return == 'facet') {
       stats::setNames(lapply(facets, function(z) {
-        tibble::as_tibble(
+        tibble::as_data_frame(
           data.table::rbindlist(z$counts, use.names = TRUE, fill = TRUE)
         )
       }), vapply(tt$facets, function(x) to_camel(x$field), ""))
     } else if (return == 'meta') {
-      tibble::as_tibble(meta)
+      tibble::as_data_frame(meta)
     } else {
       if (identical(data, list())) {
         dat2 <- NULL
@@ -167,13 +167,13 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
         media <- NULL
       } else {
         data <- gbifparser(input = data, fields = fields)
-        dat2 <- tibble::as_tibble(
+        dat2 <- tibble::as_data_frame(
           prune_result(ldfast(lapply(data, "[[", "data"))))
         hier2 <- unique(lapply(data, "[[", "hierarchy"))
         media <- unique(lapply(data, "[[", "media"))
       }
       fac <- stats::setNames(lapply(facets, function(z) {
-        tibble::as_tibble(
+        tibble::as_data_frame(
           data.table::rbindlist(z$counts, use.names = TRUE, fill = TRUE)
         )
       }), vapply(facets, function(x) to_camel(x$field), ""))
@@ -201,7 +201,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
     limit=limit
   )
   if (!any(sapply(params, length) > 0)) {
-    stop(sprintf("At least one of the parameters must have a value:\n%s",
+    stop(sprintf("At least one of these parameters must have a value:\n%s",
                  possparams()),
          call. = FALSE)
   }
@@ -227,7 +227,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
 
   if (!return %in% c('meta', 'hier')) {
     if (inherits(out, "data.frame")) {
-      class(out) <- c('tbl_df', 'data.frame', 'gbif')
+      class(out) <- c('tbl_df', 'tbl', 'data.frame', 'gbif')
     } else {
       class(out) <- "gbif"
       attr(out, 'type') <- if (length(iter) == 0) "single" else "many"
