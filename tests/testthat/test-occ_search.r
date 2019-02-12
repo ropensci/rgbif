@@ -10,11 +10,17 @@ test_that("returns the correct class", {
     uu <- occ_search(taxonKey=key, limit=20)
     vv <- occ_search(taxonKey=key, return='meta')
 
+    expect_is(tt, "gbif")
     expect_is(tt$meta, "list")
     expect_is(tt$meta$endOfRecords, "logical")
     expect_is(tt$data, "data.frame")
+    expect_is(tt$data, "tbl_df")
+    expect_is(tt$data, "tbl")
     expect_is(tt$data$name, "character")
+    expect_is(uu, "gbif")
     expect_is(vv, "data.frame")
+    expect_is(vv, "tbl_df")
+    expect_is(vv, "tbl")
     # meta no longer has gbif class
     expect_equal(length(class(vv)), 3)
 
@@ -37,9 +43,12 @@ test_that("returns the correct class", {
 test_that("returns the correct dimensions", {
   vcr::use_cassette("occ_search_datasetkey", {
 
-    out <- occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a', return='data')
+    out <- occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a',
+                      return='data')
 
     expect_is(out, "data.frame")
+    expect_is(out, "gbif")
+    expect_is(out, "tbl_df")
     expect_is(out$name, "character")
     expect_is(out$issues, "character")
 
@@ -72,6 +81,8 @@ test_that("returns the correct class", {
     out <- occ_search(taxonKey=key, return='data')
     expect_is(out, "data.frame")
     expect_is(out, "tbl_df")
+    expect_is(out, "tbl")
+    expect_is(out, "gbif")
     expect_is(out[1,1], "tbl_df")
     expect_is(out[1,1]$name, "character")
     expect_is(out[1,2]$key, "integer")
@@ -178,6 +189,8 @@ test_that("scientificName basic use works - no synonyms", {
     cc <- suppressMessages(occ_search(scientificName = 'Corynorhinus townsendii ingens', limit = 2))
     expect_is(cc, "gbif")
     expect_is(cc$data, "data.frame")
+    expect_is(cc$data, "tbl_df")
+    expect_is(cc$data, "tbl")
     expect_equal(attr(cc, "args")$scientificName, "Corynorhinus townsendii ingens")
     expect_equal(cc$data$name[1], "Corynorhinus townsendii")
 
@@ -185,6 +198,8 @@ test_that("scientificName basic use works - no synonyms", {
     dd <- suppressMessages(occ_search(scientificName = 'Corynorhinus townsendii', limit = 2))
     expect_is(dd, "gbif")
     expect_is(dd$data, "data.frame")
+    expect_is(dd$data, "tbl_df")
+    expect_is(dd$data, "tbl")
     expect_equal(NROW(dd$data), 2)
     expect_equal(attr(dd, "args")$scientificName, "Corynorhinus townsendii")
     expect_equal(dd$data$name[1], "Corynorhinus townsendii")
@@ -198,6 +213,9 @@ test_that("scientificName basic use works - no synonyms", {
     # above with subspecific name removed, gives result
     ff <- suppressMessages(occ_search(scientificName = "Myotis septentrionalis", limit = 2))
     expect_is(ff, "gbif")
+    expect_is(ff$data, "data.frame")
+    expect_is(ff$data, "tbl_df")
+    expect_is(ff$data, "tbl")
     expect_equal(NROW(ff$data), 2)
     expect_equal(attr(ff, "args")$scientificName, "Myotis septentrionalis")
     expect_equal(ff$data$name[1], "Myotis septentrionalis")
@@ -206,11 +224,15 @@ test_that("scientificName basic use works - no synonyms", {
     gg <- suppressMessages(occ_search(scientificName = 'Parastrellus hesperus', limit = 2))
     expect_is(gg, "gbif")
     expect_is(gg$data, "data.frame")
+    expect_is(gg$data, "tbl_df")
+    expect_is(gg$data, "tbl")
     ## above not found, but found after using name_lookup to find a match, genus wrong in this case
     # name_lookup(query = 'Parastrellus hesperus')
     hh <- suppressMessages(occ_search(scientificName = 'Pipistrellus hesperus', limit = 2))
     expect_is(hh, "gbif")
     expect_is(hh$data, "data.frame")
+    expect_is(hh$data, "tbl_df")
+    expect_is(hh$data, "tbl")
     expect_equal(attr(hh, "args")$scientificName, "Pipistrellus hesperus")
     expect_equal(hh$data$name[1], "Parastrellus hesperus")
 
