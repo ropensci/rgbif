@@ -535,3 +535,8 @@ assert <- function (x, y) {
     }
   }
 }
+
+setdfrbind <- function(x) {
+  (data.table::setDF(
+    data.table::rbindlist(x, use.names = TRUE, fill = TRUE)))
+}
