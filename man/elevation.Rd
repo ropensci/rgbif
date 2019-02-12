@@ -5,7 +5,7 @@
 \title{Get elevation for lat/long points from a data.frame or list of points.}
 \usage{
 elevation(input = NULL, latitude = NULL, longitude = NULL,
-  latlong = NULL, key, curlopts = list())
+  latlong = NULL, username = Sys.getenv("GEONAMES_USER"), ...)
 }
 \arguments{
 \item{input}{A data.frame of lat/long data. There must be columns
@@ -19,48 +19,51 @@ the latitude vector.}
 
 \item{latlong}{A vector of lat/long pairs. See examples.}
 
-\item{key}{(character) Required. An API key. See Details.}
+\item{username}{(character) Required. An GeoNames user name. See Details.}
 
-\item{curlopts}{list of named curl options passed on to
-\code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
-for curl options}
+\item{...}{curl options passed on to \link[crul:verb-GET]{crul::verb-GET}
+see \code{\link[curl:curl_options]{curl::curl_options()}} for curl options}
 }
 \value{
 A new column named elevation in the supplied data.frame or a vector
 with elevation of each location in meters.
 }
 \description{
-Get elevation for lat/long points from a data.frame or list of points.
+Uses the GeoNames web service
 }
 \details{
-To get an API key, see instructions at
-https://developers.google.com/maps/documentation/elevation/#api_key - It
-should be an easy process. Once you have the key pass it in to the \code{key}
-parameter. You can store the key in your \code{.Rprofile} file and read it in
-via \code{getOption} as in the examples below.
+To get a GeoNames user name, register for an account at
+http://www.geonames.org/login - then you can enable your account for the
+GeoNames webservice on your account page. Once you are enabled to use
+the webservice, you can pass in your username to the \code{username}
+parameter. Better yet, store your username in your \code{.Renviron} file, or
+similar (e.g., .zshrc or .bash_profile files) and read it in via
+\code{Sys.getenv()} as in the examples below. By default we do
+\code{Sys.getenv("GEONAMES_USER")} for the \code{username} parameter.
 }
 \examples{
 \dontrun{
-apikey <- getOption("g_elevation_api")
-key <- name_suggest('Puma concolor')$key[1]
-dat <- occ_search(taxonKey=key, return='data', limit=300,
-  hasCoordinate=TRUE)
-head( elevation(dat, key = apikey) )
+user <- Sys.getenv("GEONAMES_USER")
+
+occ_key <- name_suggest('Puma concolor')$key[1]
+dat <- occ_search(taxonKey = occ_key, return = 'data', limit = 300,
+  hasCoordinate = TRUE)
+head( elevation(dat, username = user) )
 
 # Pass in a vector of lat's and a vector of long's
-elevation(latitude=dat$decimalLatitude, longitude=dat$decimalLongitude,
-  key = apikey)
+elevation(latitude = dat$decimalLatitude[1:10],
+  longitude = dat$decimalLongitude[1:10],
+  username = user)
 
 # Pass in lat/long pairs in a single vector
 pairs <- list(c(31.8496,-110.576060), c(29.15503,-103.59828))
-elevation(latlong=pairs, key = apikey)
+elevation(latlong=pairs, username = user)
 
 # Pass on curl options
 pairs <- list(c(31.8496,-110.576060), c(29.15503,-103.59828))
-elevation(latlong=pairs, curlopts = list(verbose=TRUE), key = apikey)
+elevation(latlong=pairs, username = user, verbose = TRUE)
 }
 }
 \references{
-Uses the Google Elevation API at the following link
-https://developers.google.com/maps/documentation/elevation/start
+GeoNames http://www.geonames.org/export/web-services.html
 }
