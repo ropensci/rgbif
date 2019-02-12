@@ -218,7 +218,7 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
   }
   if (!return %in% c('meta', 'hierarchy', 'names')) {
     if (inherits(out, "data.frame")) {
-      class(out) <- c('tbl_df', 'data.frame', 'gbif')
+      class(out) <- c('tbl_df', 'tbl', 'data.frame', 'gbif')
     } else {
       class(out) <- "gbif"
       attr(out, 'type') <- "single"
