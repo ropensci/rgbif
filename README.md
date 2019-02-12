@@ -112,8 +112,8 @@ occ_search(scientificName = "Ursus americanus", limit = 50)
 #>  6 Ursu… 1.99e9            27.7            -81.5 gass84 50c9509d-…
 #>  7 Ursu… 1.99e9            30.1           -103.  cdrou… 50c9509d-…
 #>  8 Ursu… 1.99e9            39.4           -120.  cdrou… 50c9509d-…
-#>  9 Ursu… 1.99e9            35.7            -76.6 cdrou… 50c9509d-…
-#> 10 Ursu… 1.99e9            33.1            -91.9 cdrou… 50c9509d-…
+#>  9 Ursu… 1.99e9            33.1            -91.9 cdrou… 50c9509d-…
+#> 10 Ursu… 1.99e9            35.7            -76.6 cdrou… 50c9509d-…
 #> # … with 40 more rows, and 68 more variables: publishingOrgKey <chr>,
 #> #   networkKeys <chr>, installationKey <chr>, publishingCountry <chr>,
 #> #   protocol <chr>, lastCrawled <chr>, lastParsed <chr>, crawlId <int>,
@@ -293,30 +293,11 @@ plot(x, axes = FALSE, box = FALSE)
 
 <a href="https://vimeo.com/127119010"><img src="man/figures/README-screencast.png" width="400"></a>
 
-
 ## Contributors
 
-In alphabetical order.
+Collected via GitHub Issues, this list honors all contributors in alphabetical order. Code contributors are in bold.
 
-### Code contributors
-
-+ [Vijay Barve](https://github.com/vijaybarve)
-+ [John Baumgartner](https://github.com/johnbaums)
-+ [Scott Chamberlain](https://github.com/sckott)
-+ [Peter Desmet](https://github.com/peterdesmet)
-+ [Ben Marwick](https://github.com/benmarwick)
-+ [Dan McGlinn](https://github.com/dmcglinn)
-+ [Jari Oksanen](https://github.com/jarioksa)
-+ [Damiano Oldoni](https://github.com/damianooldoni)
-+ [Karthik Ram](https://github.com/karthik)
-+ [Sriram](https://github.com/SriramRamesh)
-+ [steven2249](https://github.com/steven2249)
-
-### All contributors
-
-Collected via GitHub Issues - this list honors all contributions, whether code or not.
-
-[adamdsmith](https://github.com/adamdsmith) - [AgustinCamacho](https://github.com/AgustinCamacho) - [AlexPeap](https://github.com/AlexPeap) - [andzandz11](https://github.com/andzandz11) - [AugustT](https://github.com/AugustT) - [benmarwick](https://github.com/benmarwick) - [cathynewman](https://github.com/cathynewman) - [cboettig](https://github.com/cboettig) - [coyotree](https://github.com/coyotree) - [damianooldoni](https://github.com/damianooldoni) - [dandaman](https://github.com/dandaman) - [djokester](https://github.com/djokester) - [dlebauer](https://github.com/dlebauer) - [dmcglinn](https://github.com/dmcglinn) - [dnoesgaard](https://github.com/dnoesgaard) - [DupontCai](https://github.com/DupontCai) - [elgabbas](https://github.com/elgabbas) - [fxi](https://github.com/fxi) - [ghost](https://github.com/ghost) - [gkburada](https://github.com/gkburada) - [hadley](https://github.com/hadley) - [JanLauGe](https://github.com/JanLauGe) - [jarioksa](https://github.com/jarioksa) - [jhpoelen](https://github.com/jhpoelen) - [jkmccarthy](https://github.com/jkmccarthy) - [johnbaums](https://github.com/johnbaums) - [jwhalennds](https://github.com/jwhalennds) - [karthik](https://github.com/karthik) - [kgturner](https://github.com/kgturner) - [Kim1801](https://github.com/Kim1801) - [ljuliusson](https://github.com/ljuliusson) - [luisDVA](https://github.com/luisDVA) - [martinpfannkuchen](https://github.com/martinpfannkuchen) - [MattBlissett](https://github.com/MattBlissett) - [maxhenschell](https://github.com/maxhenschell) - [Pakillo](https://github.com/Pakillo) - [peterdesmet](https://github.com/peterdesmet) - [PhillRob](https://github.com/PhillRob) - [poldham](https://github.com/poldham) - [qgroom](https://github.com/qgroom) - [raymondben](https://github.com/raymondben) - [rossmounce](https://github.com/rossmounce) - [sacrevert](https://github.com/sacrevert) - [sckott](https://github.com/sckott) - [scottsfarley93](https://github.com/scottsfarley93) - [SriramRamesh](https://github.com/SriramRamesh) - [steven2249](https://github.com/steven2249) - [stevenpbachman](https://github.com/stevenpbachman) - [stevensotelo](https://github.com/stevensotelo) - [TomaszSuchan](https://github.com/TomaszSuchan) - [vandit15](https://github.com/vandit15) - [vervis](https://github.com/vervis) - [vijaybarve](https://github.com/vijaybarve) - [willgearty](https://github.com/willgearty) - [zixuan75](https://github.com/zixuan75)
+[adamdsmith](https://github.com/adamdsmith) - [AgustinCamacho](https://github.com/AgustinCamacho) - [AlexPeap](https://github.com/AlexPeap) - [andzandz11](https://github.com/andzandz11) - [AugustT](https://github.com/AugustT) - **[benmarwick](https://github.com/benmarwick)** - [cathynewman](https://github.com/cathynewman) - [cboettig](https://github.com/cboettig) - [coyotree](https://github.com/coyotree) - **[damianooldoni](https://github.com/damianooldoni)** - [dandaman](https://github.com/dandaman) - [djokester](https://github.com/djokester) - [dlebauer](https://github.com/dlebauer) - **[dmcglinn](https://github.com/dmcglinn)** - [dnoesgaard](https://github.com/dnoesgaard) - [DupontCai](https://github.com/DupontCai) - [elgabbas](https://github.com/elgabbas) - [fxi](https://github.com/fxi) - [ghost](https://github.com/ghost) - [gkburada](https://github.com/gkburada) - [hadley](https://github.com/hadley) - [JanLauGe](https://github.com/JanLauGe) - **[jarioksa](https://github.com/jarioksa)** - [jhpoelen](https://github.com/jhpoelen) - [jkmccarthy](https://github.com/jkmccarthy) - **[johnbaums](https://github.com/johnbaums)** - [jwhalennds](https://github.com/jwhalennds) - **[karthik](https://github.com/karthik)** - [kgturner](https://github.com/kgturner) - [Kim1801](https://github.com/Kim1801) - [ljuliusson](https://github.com/ljuliusson) - [luisDVA](https://github.com/luisDVA) - [martinpfannkuchen](https://github.com/martinpfannkuchen) - [MattBlissett](https://github.com/MattBlissett) - [maxhenschell](https://github.com/maxhenschell) - [Pakillo](https://github.com/Pakillo) - **[peterdesmet](https://github.com/peterdesmet)** - [PhillRob](https://github.com/PhillRob) - [poldham](https://github.com/poldham) - [qgroom](https://github.com/qgroom) - [raymondben](https://github.com/raymondben) - [rossmounce](https://github.com/rossmounce) - [sacrevert](https://github.com/sacrevert) - **[sckott](https://github.com/sckott)** - [scottsfarley93](https://github.com/scottsfarley93) - **[SriramRamesh](https://github.com/SriramRamesh)** - **[steven2249](https://github.com/steven2249)** - [stevenpbachman](https://github.com/stevenpbachman) - [stevensotelo](https://github.com/stevensotelo) - [TomaszSuchan](https://github.com/TomaszSuchan) - [vandit15](https://github.com/vandit15) - [vervis](https://github.com/vervis) - **[vijaybarve](https://github.com/vijaybarve)** - [willgearty](https://github.com/willgearty) - [zixuan75](https://github.com/zixuan75)
 
 ## Meta
 
