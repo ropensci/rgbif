@@ -157,7 +157,7 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
       class(out) <- c('tbl_df', 'tbl', 'data.frame', 'gbif')
     } else {
       out <- list(meta = get_meta_nu(out),
-                  data =  tibble::as_tibble(name_usage_parse(out, data))
+                  data =  tibble::as_data_frame(name_usage_parse(out, data))
       )
       class(out) <- "gbif"
       # no multiple parameters possible in name_usage
