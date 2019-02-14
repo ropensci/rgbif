@@ -76,10 +76,15 @@ name_backbone <- function(name, rank=NULL, kingdom=NULL, phylum=NULL,
         lapply(tt$alternatives, function(x)
           lapply(x, function(x) if (length(x) == 0) NA else x)),
         use.names = TRUE, fill = TRUE)))
-    dat <- data.frame(tt[!names(tt) %in% c("alternatives", "note")],
-                      stringsAsFactors = FALSE)
-    structure(list(data = dat, alternatives = alt), note = tt$note)
+    dat <- tibble::as_data_frame(
+      data.frame(tt[!names(tt) %in% c("alternatives", "note")],
+                 stringsAsFactors = FALSE))
+    out <- list(data = dat,
+                alternatives = alt)
+    class(out) <- "gbif"
   } else {
-    structure(tt[!names(tt) %in% c("alternatives", "note")], note = tt$note)
+    out <- tibble::as_tibble(tt[!names(tt) %in% c("alternatives", "note")])
+    class(out) <- c('tbl_df', 'tbl', 'data.frame', 'gbif')
   }
+  structure(out, note = tt$note)
 }
