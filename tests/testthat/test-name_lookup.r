@@ -10,11 +10,15 @@ test_that("returns the correct class", {
     expect_is(tt, "gbif")
     expect_is(tt$meta, "data.frame")
     expect_is(tt$meta$endOfRecords, "logical")
+    expect_is(tt$data, "data.frame")
+    expect_is(tt$data, "tbl_df")
+    expect_is(tt$data, "tbl")
     expect_is(tt$data$canonicalName, "character")
     expect_is(tt$data$classKey, "integer")
 
     expect_is(uu, "data.frame")
     expect_is(uu, "tbl_df")
+    expect_is(uu, "tbl")
     expect_is(uu, "gbif")
 
     # returns the correct value
@@ -28,12 +32,16 @@ test_that("works with habitat parameter", {
 
     # with facet
     fachab <- name_lookup(facet='habitat', limit=0)
+    expect_is(fachab, "gbif")
     expect_equal(fachab$facets$habitat$name, c("MARINE", "TERRESTRIAL", "FRESHWATER"))
 
     # with habitat parameter used
     facet_terr <- name_lookup(habitat = "terrestrial", limit=2)
     facet_mar <- name_lookup(habitat = "marine", limit=2)
     facet_fresh <- name_lookup(habitat = "freshwater", limit=2)
+    expect_is(facet_terr, "gbif")
+    expect_is(facet_mar, "gbif")
+    expect_is(facet_fresh, "gbif")
     expect_true(grepl("TERRESTRIAL", facet_terr$data$habitats[1]))
     expect_true(grepl("MARINE", facet_mar$data$habitats[1]))
     expect_true(grepl("FRESH", facet_fresh$data$habitats[1]))
@@ -86,8 +94,12 @@ test_that("paging: name_usage returns as many records as asked, limit > 1000", {
     # 1051 total records (any origin, i.e. SOURCE and DENORMED_CLASSIFICATION)
     aa <- name_lookup(datasetKey = "a5224e5b-6379-4d33-a29d-14b56015893d",
                                           limit = 1001)
+    expect_is(aa, "gbif")
     expect_equal(aa$meta$offset, 1000)
     expect_equal(aa$meta$limit, 1)
+    expect_is(aa$data, "data.frame")
+    expect_is(aa$data, "tbl_df")
+    expect_is(aa$data, "tbl")
     expect_equal(nrow(aa$data), 1001)
   })
 })
@@ -118,5 +130,8 @@ test_that("paging: name_usage returns all records from dataset: limit > n_record
     expect_equal(cc$meta$endOfRecords, TRUE)
     expect_gte(cc$meta$count, 1051)
     expect_gte(nrow(cc$data), 1051)
+    expect_is(cc$data, "data.frame")
+    expect_is(cc$data, "tbl_df")
+    expect_is(cc$data, "tbl")
   })
 })
