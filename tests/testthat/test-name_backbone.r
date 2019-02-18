@@ -1,7 +1,7 @@
 context("name_backbone")
 
 test_that("name_backbone returns the correct class", {
-  vcr::use_cassette("name_backbne", {
+  vcr::use_cassette("name_backbone", {
 
     tt <- name_backbone(name='Helianthus annuus', rank='species')
     uu <- name_backbone(name='Helianthus annuus', rank='species', verbose = TRUE)
