@@ -30,12 +30,12 @@
 #' @param verbose (logical) If `TRUE` show alternative matches considered which
 #' had been rejected.
 #'
-#' @return A list for a single taxon with many slots (default, `verbose=FALSE`)
-#'   or a list of length two, first element for the suggested taxon match, and a
-#'   data.frame with alternative name suggestions resulting from fuzzy matching
-#'   (with `verbose=TRUE`).
-#' @details If you don't get a match GBIF gives back a list of length 3 with
-#' slots synonym, confidence, and matchType='NONE'.
+#' @return A data.frame for a single taxon with many columns (default,
+#'   `verbose=FALSE`) or a list of length two, first data.frame for the
+#'   suggested taxon match, and a data.frame with alternative name suggestions
+#'   resulting from fuzzy matching (with `verbose=TRUE`).
+#' @details If you don't get a match GBIF gives back a data.frame with
+#' columns synonym, confidence, and matchType='NONE'.
 #'
 #' @references <http://www.gbif.org/developer/species#searching>
 #'
@@ -83,8 +83,10 @@ name_backbone <- function(name, rank=NULL, kingdom=NULL, phylum=NULL,
                 alternatives = alt)
     class(out) <- "gbif"
   } else {
-    out <- tibble::as_tibble(tt[!names(tt) %in% c("alternatives", "note")])
+    out <- tibble::as_data_frame(tt[!names(tt) %in% c("alternatives", "note")])
     class(out) <- c('tbl_df', 'tbl', 'data.frame', 'gbif')
   }
-  structure(out, note = tt$note)
+  # no multiple parameters possible in name_backbone
+  attr(out, 'type') <- "single"
+  structure(out, args = args, note = tt$note)
 }
