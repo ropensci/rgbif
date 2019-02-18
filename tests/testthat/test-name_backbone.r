@@ -7,9 +7,9 @@ test_that("name_backbone returns the correct class", {
     uu <- name_backbone(name='Helianthus annuus', rank='species', verbose = TRUE)
 
     expect_is(tt, "gbif")
-    expect_is(tt$data, "tbl")
-    expect_is(tt$data, "tbl_df")
-    expect_is(tt$data, "data.frame")
+    expect_is(tt, "tbl")
+    expect_is(tt, "tbl_df")
+    expect_is(tt, "data.frame")
     expect_is(uu, "gbif")
     expect_is(uu$data, "tbl")
     expect_is(uu$data, "tbl_df")
