@@ -1,3 +1,5 @@
+#' Suggest up to 20 name usages.
+#'
 #' A quick and simple autocomplete service that returns up to 20 name
 #' usages by doing prefix matching against the scientific name. Results
 #' are ordered by relevance.

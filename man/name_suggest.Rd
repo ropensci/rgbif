@@ -2,9 +2,7 @@
 % Please edit documentation in R/name_suggest.r
 \name{name_suggest}
 \alias{name_suggest}
-\title{A quick and simple autocomplete service that returns up to 20 name
-usages by doing prefix matching against the scientific name. Results
-are ordered by relevance.}
+\title{Suggest up to 20 name usages.}
 \usage{
 name_suggest(q = NULL, datasetKey = NULL, rank = NULL,
   fields = NULL, start = NULL, limit = 100, curlopts = list())
