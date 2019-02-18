@@ -55,12 +55,10 @@ with \code{limit} to page through results.}
 for curl options}
 }
 \value{
-A list for a single taxon with many slots (with \code{verbose=FALSE})
-\itemize{
-\item default), or a list of length two, first element for the suggested taxon
-match, and a data.frame with alternative name suggestions resulting from
-fuzzy matching (with \code{verbose=TRUE}).
-}
+A list for a single taxon with many slots (default, \code{verbose=FALSE})
+or a list of length two, first element for the suggested taxon match, and a
+data.frame with alternative name suggestions resulting from fuzzy matching
+(with \code{verbose=TRUE}).
 }
 \description{
 Lookup names in the GBIF backbone taxonomy.

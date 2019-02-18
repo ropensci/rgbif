@@ -30,10 +30,10 @@
 #' @param verbose (logical) If `TRUE` show alternative matches considered which
 #' had been rejected.
 #'
-#' @return A list for a single taxon with many slots (with `verbose=FALSE`)
-#' - default), or a list of length two, first element for the suggested taxon
-#' match, and a data.frame with alternative name suggestions resulting from
-#' fuzzy matching (with `verbose=TRUE`).
+#' @return A list for a single taxon with many slots (default, `verbose=FALSE`)
+#'   or a list of length two, first element for the suggested taxon match, and a
+#'   data.frame with alternative name suggestions resulting from fuzzy matching
+#'   (with `verbose=TRUE`).
 #' @details If you don't get a match GBIF gives back a list of length 3 with
 #' slots synonym, confidence, and matchType='NONE'.
 #'
