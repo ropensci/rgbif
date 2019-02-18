@@ -42,7 +42,7 @@ to pull data down, then clean as needed using this function.
 This function only affects the \code{data} element in the \code{gbif} class that is
 returned from a call to \code{\link[=occ_search]{occ_search()}}. Maybe in a future version
 we will remove the associated records from the \code{hierarchy} and \code{media}
-elements as they are remove from the \code{data} element.
+elements as they are removed from the \code{data} element.
 
 You'll notice that we sort columns to make it easier to glimpse the important
 parts of your data, namely taxonomic name, taxon key, latitude and longitude,
@@ -53,10 +53,10 @@ and the issues. The columns are unchanged otherwise.
 # what do issues mean, can print whole table
 head(gbif_issues())
 # or just occurrence related issues
-gbif_issues()[which(a$type \%in\% c("occurrence")),]
+gbif_issues()[which(gbif_issues()$type \%in\% c("occurrence")),]
 # or search for matches
-gbif_issues()[ gbif_issues()$code \%in\% c('cdround','cudc','gass84','txmathi'), ]
-
+iss <- c('cdround','cudc','gass84','txmathi')
+gbif_issues()[ gbif_issues()$code \%in\% iss, ]
 
 # compare out data to after occ_issues use
 (out <- occ_search(limit=100))
@@ -111,6 +111,16 @@ occ_issues(x, mutate = "split")
 occ_issues(x, -gass84, mutate = "split")
 occ_issues(x, mutate = "expand")
 occ_issues(x, mutate = "split_expand")
+
+# occ_search/occ_data with many inputs - give slightly different output
+# format than normal 2482598, 2498387
+xyz <- occ_data(taxonKey = c(9362842, 2492483, 2435099), limit = 300)
+xyz
+length(xyz) # length 3
+names(xyz) # matches taxonKey values passed in
+occ_issues(xyz, -gass84)
+occ_issues(xyz, -cdround)
+occ_issues(xyz, -cdround, -gass84)
 }
 }
 \references{

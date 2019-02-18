@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rgbif</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0.9113</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0.9311</span>
       </span>
     </div>
 
@@ -193,7 +193,8 @@ and the issues. The columns are unchanged otherwise.</p>
     <pre class="examples"><span class='co'># NOT RUN {</span>
 <span class='co'>## what do issues mean, can print whole table, or search for matches</span>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='fu'><a href='gbif_issues.html'>gbif_issues</a></span>())
-<span class='fu'><a href='gbif_issues.html'>gbif_issues</a></span>()[ <span class='fu'><a href='gbif_issues.html'>gbif_issues</a></span>()$<span class='no'>code</span> <span class='kw'>%in%</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>'cdround'</span>,<span class='st'>'cudc'</span>,<span class='st'>'gass84'</span>,<span class='st'>'txmathi'</span>), ]
+<span class='no'>iss</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>'cdround'</span>,<span class='st'>'cudc'</span>,<span class='st'>'gass84'</span>,<span class='st'>'txmathi'</span>)
+<span class='fu'><a href='gbif_issues.html'>gbif_issues</a></span>()[ <span class='fu'><a href='gbif_issues.html'>gbif_issues</a></span>()$<span class='no'>code</span> <span class='kw'>%in%</span> <span class='no'>iss</span>, ]
 
 <span class='co'># compare out data to after occ_issues use</span>
 (<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='occ_search.html'>occ_search</a></span>(<span class='kw'>limit</span><span class='kw'>=</span><span class='fl'>100</span>))
@@ -233,7 +234,7 @@ and the issues. The columns are unchanged otherwise.</p>
 <span class='co'>### split, expand, and remove an issue class</span>
 <span class='no'>res</span> <span class='kw'>%&gt;%</span> <span class='fu'>occ_issues</span>(-<span class='no'>cdround</span>, <span class='kw'>mutate</span> <span class='kw'>=</span> <span class='st'>"split_expand"</span>)
 
-<span class='co'>## Or you can use occ_issues without %&gt;%</span>
+<span class='co'>## Or you can use occ_issues without the pipe</span>
 <span class='fu'>occ_issues</span>(<span class='no'>res</span>, -<span class='no'>cdround</span>, <span class='kw'>mutate</span> <span class='kw'>=</span> <span class='st'>"split_expand"</span>)
 
 <span class='co'># from GBIF downloaded data via occ_download and friends</span>
@@ -248,6 +249,16 @@ and the issues. The columns are unchanged otherwise.</p>
 <span class='fu'>occ_issues</span>(<span class='no'>x</span>, -<span class='no'>gass84</span>, <span class='kw'>mutate</span> <span class='kw'>=</span> <span class='st'>"split"</span>)
 <span class='fu'>occ_issues</span>(<span class='no'>x</span>, <span class='kw'>mutate</span> <span class='kw'>=</span> <span class='st'>"expand"</span>)
 <span class='fu'>occ_issues</span>(<span class='no'>x</span>, <span class='kw'>mutate</span> <span class='kw'>=</span> <span class='st'>"split_expand"</span>)
+
+<span class='co'># occ_search/occ_data with many inputs - give slightly different output</span>
+<span class='co'># format than normal 2482598, 2498387</span>
+<span class='no'>xyz</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='occ_data.html'>occ_data</a></span>(<span class='kw'>taxonKey</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>9362842</span>, <span class='fl'>2492483</span>, <span class='fl'>2435099</span>), <span class='kw'>limit</span> <span class='kw'>=</span> <span class='fl'>300</span>)
+<span class='no'>xyz</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/length'>length</a></span>(<span class='no'>xyz</span>) <span class='co'># length 3</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/names'>names</a></span>(<span class='no'>xyz</span>) <span class='co'># matches taxonKey values passed in</span>
+<span class='fu'>occ_issues</span>(<span class='no'>xyz</span>, -<span class='no'>gass84</span>)
+<span class='fu'>occ_issues</span>(<span class='no'>xyz</span>, -<span class='no'>cdround</span>)
+<span class='fu'>occ_issues</span>(<span class='no'>xyz</span>, -<span class='no'>cdround</span>, -<span class='no'>gass84</span>)
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

@@ -10,7 +10,6 @@
 #' @param ... Named parameters to only get back (e.g. cdround), or to
 #' remove (e.g. -cdround).
 #' @param mutate (character) One of:
-#'
 #' - `split` Split issues into new columns.
 #' - `expand` Expand issue abbreviated codes into descriptive names.
 #' for downloads datasets, this is not super useful since the
@@ -33,7 +32,7 @@
 #' This function only affects the `data` element in the `gbif` class that is
 #' returned from a call to [occ_search()]. Maybe in a future version
 #' we will remove the associated records from the `hierarchy` and `media`
-#' elements as they are remove from the `data` element.
+#' elements as they are removed from the `data` element.
 #'
 #' You'll notice that we sort columns to make it easier to glimpse the important
 #' parts of your data, namely taxonomic name, taxon key, latitude and longitude,
@@ -43,10 +42,10 @@
 #' # what do issues mean, can print whole table
 #' head(gbif_issues())
 #' # or just occurrence related issues
-#' gbif_issues()[which(a$type %in% c("occurrence")),]
+#' gbif_issues()[which(gbif_issues()$type %in% c("occurrence")),]
 #' # or search for matches
-#' gbif_issues()[ gbif_issues()$code %in% c('cdround','cudc','gass84','txmathi'), ]
-#'
+#' iss <- c('cdround','cudc','gass84','txmathi')
+#' gbif_issues()[ gbif_issues()$code %in% iss, ]
 #'
 #' # compare out data to after occ_issues use
 #' (out <- occ_search(limit=100))
@@ -101,15 +100,21 @@
 #' occ_issues(x, -gass84, mutate = "split")
 #' occ_issues(x, mutate = "expand")
 #' occ_issues(x, mutate = "split_expand")
+#'
+#' # occ_search/occ_data with many inputs - give slightly different output
+#' # format than normal 2482598, 2498387
+#' xyz <- occ_data(taxonKey = c(9362842, 2492483, 2435099), limit = 300)
+#' xyz
+#' length(xyz) # length 3
+#' names(xyz) # matches taxonKey values passed in
+#' occ_issues(xyz, -gass84)
+#' occ_issues(xyz, -cdround)
+#' occ_issues(xyz, -cdround, -gass84)
 #' }
 
 occ_issues <- function(.data, ..., mutate = NULL) {
 
-  # stopifnot(xor(inherits(.data, "gbif"), inherits(.data, "gbif_data")))
   assert(.data, c("gbif", "gbif_data", "data.frame", "tbl_df"))
-
   check_issues(type = "occurrence", ...)
-
   handle_issues(.data, is_occ = TRUE, ..., mutate = mutate)
-
 }

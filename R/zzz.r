@@ -111,9 +111,9 @@ clean_data <- function(x){
 
 # Parser for gbif data
 # param: input A list
-# param: fields (character) Default ('minimal') will return just taxon name, 
-#    key, decimalLatitude, and decimalLongitute. 'all' returns all fields. Or 
-#    specify each field you want returned by name, e.g. fields = 
+# param: fields (character) Default ('minimal') will return just taxon name,
+#    key, decimalLatitude, and decimalLongitute. 'all' returns all fields. Or
+#    specify each field you want returned by name, e.g. fields =
 #    c('name','decimalLatitude','altitude').
 gbifparser_verbatim <- function(input, fields='minimal'){
   parse <- function(x) {
@@ -128,7 +128,7 @@ gbifparser_verbatim <- function(input, fields='minimal'){
       if(all(c('decimalLatitude','decimalLongitude') %in% names(x))) {
         x[c('scientificName','key','decimalLatitude','decimalLongitude')]
       } else {
-        list(scientificName=x[['scientificName']], key=x[['key']], 
+        list(scientificName=x[['scientificName']], key=x[['key']],
           decimalLatitude=NA, decimalLongitude=NA, stringsAsFactors=FALSE)
       }
     } else if(any(fields == 'all')) {
@@ -151,7 +151,7 @@ gbifparser_verbatim <- function(input, fields='minimal'){
           m <- list()
           for (i in seq_along(x$extensions)) {
             z <- x$extensions[[i]]
-            names(z) <- sprintf("extensions_%s_%s", 
+            names(z) <- sprintf("extensions_%s_%s",
               basename(names(x$extensions)[i]), names(z))
             m[[i]] <- as.list(z)
           }
@@ -170,7 +170,7 @@ gbifparser_verbatim <- function(input, fields='minimal'){
   if (is.numeric(input[[1]])) {
     data.frame(parse(input), stringsAsFactors = FALSE)
   } else {
-    do.call(rbind_fill, lapply(input, function(w) data.frame(parse(w), 
+    do.call(rbind_fill, lapply(input, function(w) data.frame(parse(w),
       stringsAsFactors = FALSE)))
   }
 }
@@ -574,7 +574,15 @@ handle_issues <- function(.data, is_occ, ..., mutate = NULL) {
   if ("data" %in% names(.data)) {
     tmp <- .data$data
   } else {
-    tmp <- .data
+    many <- FALSE
+    if (attr(.data, "type") == "many") {
+      many <- TRUE
+      tmp <- data.table::setDF(
+        data.table::rbindlist(lapply(.data, "[[", "data"),
+                              fill = TRUE, use.names = TRUE, idcol = "ind"))
+    } else {
+      tmp <- .data
+    }
   }
 
   # handle downloads data
@@ -615,10 +623,14 @@ handle_issues <- function(.data, is_occ, ..., mutate = NULL) {
     }
   }
 
+  tmp <- tibble::as_data_frame(tmp)
+
   if ("data" %in% names(.data)) {
     .data$data <- tmp
     return( .data )
   } else {
+    # add same class of input data: "gbif" or "gbif_data"
+    class(tmp) <- class(.data)
     return( tmp )
   }
 }
