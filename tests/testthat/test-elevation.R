@@ -1,21 +1,23 @@
-context("elevation: geonames_srtm3 internal fxn")
-test_that("geonames_srtm3 internal fxn works", {
+context("elevation: geonames_conn internal fxn")
+test_that("geonames_conn internal fxn works", {
   latitude <- c(50.01, 51.01)
   longitude <- c(10.2, 11.2)
-  vcr::use_cassette("elevation_geonames_srtm3", {
-    aa <- geonames_srtm3(latitude, longitude)
+  vcr::use_cassette("elevation_geonames_conn", {
+    aa <- geonames_conn("srtm3", latitude, longitude)
   })
   expect_is(aa, "numeric")
   expect_equal(length(aa), 2)
 })
 
-test_that("geonames_srtm3 fails well", {
-  expect_error(geonames_srtm3(), "argument \"latitude\" is missing")
-  expect_error(geonames_srtm3(4), "argument \"longitude\" is missing")
-  expect_error(geonames_srtm3("a", "a"), "invalid number")
+test_that("geonames_conn fails well", {
+  expect_error(geonames_conn(), "argument \"elevation_model\" is missing")
+  expect_error(geonames_conn("foobar"), "argument \"latitude\" is missing")
+  expect_error(geonames_conn("foobar", 4), "argument \"longitude\" is missing")
+  expect_error(geonames_conn("srtm3", "a", "a"), "invalid number")
 
-  vcr::use_cassette("elevation_geonames_srtm3_unauthorized", {
-    expect_error(geonames_srtm3(4, 5, "cheesemonkey"), "Unauthorized")
+  vcr::use_cassette("elevation_geonames_conn_unauthorized", {
+    expect_error(geonames_conn("srtm3", 4, 5, "cheesemonkey"),
+      "user does not exist")
   })
 })
 
@@ -43,6 +45,29 @@ test_that("elevation", {
   expect_is(cc$elevation, "numeric")
 })
 
+context("elevation: different elevation models work")
+test_that("elevation models work", {
+  load("elevation_test_data.rda")
+  eltest_small <- elevation_test_data[1:5, ]
+  vcr::use_cassette("elevation_models", {
+    # srtm3, srtm1, astergdem, or gtopo30
+    srtm3 <- elevation(eltest_small, elevation_model = "srtm3")
+    srtm1 <- elevation(eltest_small, elevation_model = "srtm1")
+    astergdem <- elevation(eltest_small, elevation_model = "astergdem")
+    gtopo30 <- elevation(eltest_small, elevation_model = "gtopo30")
+  })
+
+  expect_is(srtm3, "data.frame")
+  expect_is(srtm3$elevation_geonames, "numeric")
+  expect_is(srtm1, "data.frame")
+  expect_is(srtm1$elevation_geonames, "numeric")
+  expect_is(astergdem, "data.frame")
+  expect_is(astergdem$elevation_geonames, "numeric")
+  expect_is(gtopo30, "data.frame")
+  expect_is(gtopo30$elevation_geonames, "numeric")
+})
+
+context("elevation: fails well")
 test_that("fails correctly", {
   skip_on_cran()
 
@@ -70,6 +95,6 @@ test_that("fails correctly", {
   pairs <- list(c(31.8496, -110.576060), c(29.15503, -103.59828))
   vcr::use_cassette("elevation_unauthorized", {
     expect_error(elevation(latlong = pairs, username = "bad_user"),
-      "Unauthorized")
+      "user does not exist")
   })
 })
