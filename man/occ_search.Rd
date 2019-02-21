@@ -343,7 +343,7 @@ occ_search(taxonKey = paste0(keys, collapse = ";"), limit=5)
 occ_search(scientificName = 'Pulsatilla patens', fields = c('name','scientificName'), limit=5)
 
 # Search on latitidue and longitude
-occ_search(search="kingfisher", decimalLatitude=50, decimalLongitude=-10)
+occ_search(decimalLatitude=48, decimalLongitude=10)
 
 # Search on a bounding box
 ## in well known text format
