@@ -117,7 +117,7 @@ clean_data <- function(x){
   x <- move_col(x, "decimalLongitude")
   x <- move_col(x, "decimalLatitude")
   x <- move_col(x, "scientificName")
-  x <- move_col(x, 'key')
+  x <- move_col(x, "key")
   # names(x)[2] <- 'name'
 
   return(x)
@@ -129,39 +129,30 @@ clean_data <- function(x){
 #    key, decimalLatitude, and decimalLongitute. "all" returns all fields. Or
 #    specify each field you want returned by name, e.g. fields =
 #    c('name',"decimalLatitude",'altitude').
-gbifparser_verbatim <- function(input, fields="minimal"){
+gbifparser_verbatim <- function(input, fields="minimal") {
   parse <- function(x) {
-    nn <- vapply(names(x), function(z){
+    nn <- vapply(names(x), function(z) {
       tmp <- strsplit(z, "/")[[1]]
       tmp[length(tmp)]
     }, "", USE.NAMES = FALSE)
 
     names(x) <- nn
 
-    if (any(fields=="minimal")) {
-      if(all(c("decimalLatitude","decimalLongitude") %in% names(x))) {
-        x[c("scientificName",'key',"decimalLatitude","decimalLongitude")]
+    if (any(fields == "minimal")) {
+      if (all(c("decimalLatitude","decimalLongitude") %in% names(x))) {
+        x[c("key", "scientificName", "decimalLatitude", "decimalLongitude")]
       } else {
-        list(scientificName=x[["scientificName"]], key=x[['key']],
-          decimalLatitude=NA, decimalLongitude=NA, stringsAsFactors=FALSE)
+        list(key = x[["key"]], scientificName = x[["scientificName"]],
+          decimalLatitude = NA, decimalLongitude = NA, stringsAsFactors = FALSE)
       }
-    } else if(any(fields == "all")) {
+    } else if (any(fields == "all")) {
       x[vapply(x, length, 0) == 0] <- "none"
       if ("extensions" %in% names(x)) {
-        # x$extensions <- rgbif_compact(lapply(x$extensions, function(z) {
-        #   if (length(z) == 0) return(NULL)
-        #   iflapply(z, class)
-        # }))
         if (length(x$extensions) == 0) {
           x$extensions <- NULL
         } else if (identical(x$extensions[[1]], "none")) {
           x$extensions <- NULL
         } else {
-          # tmp <- lapply(x$extensions, function(w) {
-          #   names(w) <- paste0("extensions_", names(w))
-          #   as.list(w)
-          # })
-
           m <- list()
           for (i in seq_along(x$extensions)) {
             z <- x$extensions[[i]]
@@ -292,7 +283,7 @@ namelkupparser <- function(x){
     }
   })
   df <- data.frame(tmp, stringsAsFactors = FALSE)
-  movecols(df, c('key', "scientificName"))
+  movecols(df, c("key", "scientificName"))
 }
 
 namelkupcleaner <- function(x){
@@ -309,7 +300,7 @@ namelkupcleaner <- function(x){
 }
 
 nameusageparser <- function(z){
-  tomove <- c('key', "scientificName")
+  tomove <- c("key", "scientificName")
   tmp <- lapply(z, function(y) {
     if (length(y) == 0) NA else y
   })
