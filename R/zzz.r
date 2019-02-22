@@ -118,7 +118,6 @@ clean_data <- function(x){
   x <- move_col(x, "decimalLatitude")
   x <- move_col(x, "scientificName")
   x <- move_col(x, "key")
-  # names(x)[2] <- 'name'
 
   return(x)
 }

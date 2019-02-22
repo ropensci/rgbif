@@ -10,15 +10,15 @@ occ_get(key = NULL, return = "all", verbatim = FALSE,
 \arguments{
 \item{key}{Occurrence key}
 
-\item{return}{One of data, hier, meta, or all. If 'data', a data.frame
-with the data. 'hier' returns the classifications in a list for each record.
+\item{return}{One of data, hier, meta, or all. If "data", a data.frame
+with the data. "hier" returns the classifications in a list for each record.
 meta returns the metadata for the entire call. 'all' gives all data back
 in a list. Ignored if \code{verbatim=TRUE}.}
 
 \item{verbatim}{Return verbatim object (TRUE) or cleaned up object (FALSE,
 default).}
 
-\item{fields}{(character) Default ('minimal') will return just taxon name,
+\item{fields}{(character) Default ("minimal") will return just taxon name,
 key, latitude, and longitute. 'all' returns all fields. Or specify each
 field you want returned by name, e.g. fields = c('name',
 'decimalLatitude','altitude').}
@@ -35,12 +35,12 @@ Get data for specific GBIF occurrences.
 }
 \examples{
 \dontrun{
-occ_get(key=855998194, return='data')
-occ_get(key=855998194, 'hier')
+occ_get(key=855998194, return="data")
+occ_get(key=855998194, "hier")
 occ_get(key=855998194, 'all')
 
 # many occurrences
-occ_get(key=c(101010, 240713150, 855998194), return='data')
+occ_get(key=c(101010, 240713150, 855998194), return="data")
 
 # Verbatim data
 occ_get(key=855998194, verbatim=TRUE)
@@ -58,5 +58,5 @@ occ_get(key=855998194, curlopts = list(verbose=TRUE))
 }
 }
 \references{
-\url{http://www.gbif.org/developer/occurrence#occurrence}
+\url{https://www.gbif.org/developer/occurrence#occurrence}
 }
