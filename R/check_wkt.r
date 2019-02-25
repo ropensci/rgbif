@@ -53,6 +53,10 @@ check_wkt <- function(wkt = NULL, skip_validate = FALSE){
 
       if (!skip_validate) {
         res <- wicket::validate_wkt(wkt[i])
+        if (grepl("\\?wkt_correct", res$comments)) {
+          res$comments <- sub("\\?wkt_correct", "\\?wicket::wkt_correct",
+            res$comments)
+        }
         if (!res$is_valid) stop(res$comments)
       }
     }
