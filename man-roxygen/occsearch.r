@@ -173,7 +173,7 @@
 #' **Long WKT**: Options for handling long WKT strings:
 #' Note that long WKT strings are specially handled when using \code{\link{occ_search}} or
 #' \code{\link{occ_data}}. Here are the three options for long WKT strings (> 1500 characters),
-#' set one of these three via the parameter \code{geom_big\code{:
+#' set one of these three via the parameter \code{geom_big}:
 #' \itemize{
 #'  \item asis - the default setting. This means we don't do anything internally. That is,
 #'  we just pass on your WKT string just as we've done before in this package.
