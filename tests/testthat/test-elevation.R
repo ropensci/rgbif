@@ -17,11 +17,11 @@ test_that("geonames_conn fails well", {
   expect_error(geonames_conn(), "argument \"elevation_model\" is missing")
   expect_error(geonames_conn("foobar"), "argument \"latitude\" is missing")
   expect_error(geonames_conn("foobar", 4), "argument \"longitude\" is missing")
-  expect_error(geonames_conn("srtm3", "a", "a"), "invalid number")
 
   vcr::use_cassette("elevation_geonames_conn_unauthorized", {
     expect_error(geonames_conn("srtm3", 4, 5, "cheesemonkey"),
-      "user does not exist")
+      "Unauthorized")
+    expect_error(geonames_conn("srtm3", "a", "a"), "invalid number")
   })
 })
 

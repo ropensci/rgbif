@@ -8,8 +8,35 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.1.0.9311)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.1.0.9311)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+  response:
+    status:
+      status_code: '401'
+      message: Unauthorized
+      explanation: No permission -- see authorization schemes
+    headers:
+      status: HTTP/1.1 401 Unauthorized
+      date: Tue, 26 Feb 2019 06:21:16 GMT
+      server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips
+      content-length: '28'
+    body:
+      encoding: UTF-8
+      string: |
+        ERR:10:user does not exist.
+  recorded_at: 2019-02-26 06:21:18 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
+- request:
+    method: get
+    uri: http://api.geonames.org/srtm3?lats=a&lngs=a&username=<geonames_user>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -17,12 +44,12 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Thu, 21 Feb 2019 00:20:15 GMT
+      date: Tue, 26 Feb 2019 06:21:18 GMT
       server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips
-      content-length: '28'
+      content-length: '22'
     body:
       encoding: UTF-8
       string: |
-        ERR:10:user does not exist.
-  recorded_at: 2019-02-21 00:20:15 GMT
+        ERR:14:invalid number
+  recorded_at: 2019-02-26 06:21:18 GMT
   recorded_with: vcr/0.2.6, webmockr/0.3.4
