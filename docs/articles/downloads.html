@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rgbif</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0.9311</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
       </span>
     </div>
 
@@ -101,6 +101,9 @@
 
     
     
+<div id="gbif-downloads" class="section level1">
+<h1 class="hasAnchor">
+<a href="#gbif-downloads" class="anchor"></a>GBIF Downloads</h1>
 <p>GBIF provides two ways to get occurrence data: through the <code>/occurrence/search</code> route (see <code><a href="../reference/occ_search.html">occ_search()</a></code> and <code><a href="../reference/occ_data.html">occ_data()</a></code>), or via the <code>/occurrence/download</code> route (many functions, see below). <code><a href="../reference/occ_search.html">occ_search()</a></code>/<code><a href="../reference/occ_data.html">occ_data()</a></code> are more appropriate for smaller data, while <code>occ_download*()</code> functions are more appropriate for larger data requests. Note that the download service is equivalent to downloading a dataset from the GBIF website - but doing it here makes it reproducible (and easier once you learn the ropes)!</p>
 <p>The download functions are:</p>
 <ul>
@@ -258,7 +261,7 @@
 <h2 class="hasAnchor">
 <a href="#citing-download-data" class="anchor"></a>Citing download data</h2>
 <p>The nice thing about data retrieved via GBIF’s download service is that they provide DOIs for each download, so that you can give a link that resolves to the download with metadata on GBIF’s website. And it makes for a nice citation.</p>
-<p>Using the function <code>gbif_citaiton</code> we can get citations for our downloads, with the output from <code>occ_download_get</code> or <code>occ_download_meta</code>.</p>
+<p>Using the funciton <code>gbif_citaiton</code> we can get citations for our downloads, with the output from <code>occ_download_get</code> or <code>occ_download_meta</code>.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="../reference/occ_download_meta.html">occ_download_meta</a></span>(res) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/gbif_citation.html">gbif_citation</a></span>()</a>
 <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">#&gt; $download</span></a>
 <a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt; [1] "GBIF Occurrence Download https://doi.org/10.15468/dl.ohjevv Accessed from R via rgbif (https://github.com/ropensci/rgbif) on 2017-11-10"</span></a>
@@ -266,7 +269,7 @@
 <a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt; $datasets</span></a>
 <a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt; NULL</span></a></code></pre></div>
 <p>You’ll notice that the <code>datasets</code> slot is <code>NULL</code> - because when using <code>occ_download_meta</code>, we don’t yet have any information about which datasets are in the download.</p>
-<p>But if you use <code>occ_download_get</code> you then have the individual datasets, and we can get citations for each individual dataset in addition to the entire download.</p>
+<p>But if you use <code>occ_download_get</code> you then have the individual datasets, and we can get citatations for each idividual dataset in addition to the entire download.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="../reference/occ_download_get.html">occ_download_get</a></span>(<span class="st">"0000796-171109162308116"</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/gbif_citation.html">gbif_citation</a></span>()</a>
 <a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; $download</span></a>
 <a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt; [1] "GBIF Occurrence Download https://doi.org/10.15468/dl.nv3r5p Accessed from R via rgbif (https://github.com/ropensci/rgbif) on 2017-11-10"</span></a>
@@ -297,6 +300,7 @@
 <p>Here, we get the overall citation as well as citations (and data rights) for each dataset.</p>
 <p>Please do cite the data you use from GBIF!</p>
 </div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -304,6 +308,8 @@
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+<li>
+<a href="#gbif-downloads">GBIF Downloads</a><ul class="nav nav-pills nav-stacked">
 <li><a href="#load-rgbif">Load rgbif</a></li>
       <li><a href="#kick-off-a-download">Kick off a download</a></li>
       <li><a href="#check-download-status">Check download status</a></li>
@@ -311,6 +317,8 @@
       <li><a href="#fetch-data">Fetch data</a></li>
       <li><a href="#import-data-into-r">Import data into R</a></li>
       <li><a href="#citing-download-data">Citing download data</a></li>
+      </ul>
+</li>
       </ul>
 </div>
       </div>

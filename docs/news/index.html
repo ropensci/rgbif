@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rgbif</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0.9311</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
       </span>
     </div>
 
@@ -127,21 +127,56 @@
       <small>Source: <a href='https://github.com/ropensci/rgbif/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="rgbif-1-1-0" class="section level1">
+    <div id="rgbif-1-2-0" class="section level1">
 <h1 class="page-header">
-<a href="#rgbif-1-1-0" class="anchor"></a>rgbif 1.1.0<small> 2018-10-19 </small>
+<a href="#rgbif-1-2-0" class="anchor"></a>rgbif 1.2.0<small> Unreleased </small>
 </h1>
 <div id="new-features" class="section level3">
 <h3 class="hasAnchor">
 <a href="#new-features" class="anchor"></a>NEW FEATURES</h3>
 <ul>
-<li>tests that make HTTP requests are now cached via the <code>vcr</code> package so do not require an internet connection (<a href='https://github.com/ropensci/rgbif/issues/306'>#306</a>) (<a href='https://github.com/ropensci/rgbif/issues/327'>#327</a>)</li>
-<li>added name usage issues (similar to occurrence issues) data. in part fixes <code><a href="../reference/name_usage.html">name_usage()</a></code> problem, more work coming to allow users to use the name issues data like we allow for occurrence issues through <code><a href="../reference/occ_issues.html">occ_issues()</a></code> (<a href='https://github.com/ropensci/rgbif/issues/324'>#324</a>)</li>
+<li>pkgdown documentation site (<a href='https://github.com/ropensci/rgbif/issues/336'>#336</a>) (<a href='https://github.com/ropensci/rgbif/issues/337'>#337</a>) all work done by <a href='https://github.com/peterdesmet'>@peterdesmet</a></li>
+<li>package gains hex logo (<a href='https://github.com/ropensci/rgbif/issues/331'>#331</a>) (<a href='https://github.com/ropensci/rgbif/issues/332'>#332</a>) thanks <a href='https://github.com/peterdesmet'>@peterdesmet</a></li>
+<li>big change to <code><a href="../reference/elevation.html">elevation()</a></code> function: the Google Maps API requires a form of payment up front, and so we’ve decided to move away from the service. <code><a href="../reference/elevation.html">elevation()</a></code> now uses the Geonames service <a href="https://www.geonames.org/" class="uri">https://www.geonames.org/</a>; it does require you to register to get a username, but its a free service. Geonames has a few different data models for elevation and can be chosen in the <code>elevation_model</code> parameter (<a href='https://github.com/ropensci/rgbif/issues/344'>#344</a>) (<a href='https://github.com/ropensci/rgbif/issues/345'>#345</a>)</li>
+<li>biggish change to <code><a href="../reference/occ_data.html">occ_data()</a></code>/<code><a href="../reference/occ_search.html">occ_search()</a></code> output: the data.frame in the <code>data</code> slot now always has the first column as the occurrence key (<code>key</code>), and the second column is now the scientific name (<code>scientificName</code>). the previously used <code>name</code> column still exists in the data.frame, so as not to break any user code, but is simply a duplicate of the <code>scientificName</code> column. in a future version of this package the <code>name</code> column will be dropped (<a href='https://github.com/ropensci/rgbif/issues/329'>#329</a>)</li>
 </ul>
 </div>
 <div id="minor-improvements" class="section level3">
 <h3 class="hasAnchor">
 <a href="#minor-improvements" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<ul>
+<li>README gains full list of code contributors and any folks involved in github issues (<a href='https://github.com/ropensci/rgbif/issues/339'>#339</a>) (<a href='https://github.com/ropensci/rgbif/issues/343'>#343</a>) thanks <a href='https://github.com/peterdesmet'>@peterdesmet</a></li>
+<li>update pkg citation, include all authors (<a href='https://github.com/ropensci/rgbif/issues/338'>#338</a>)</li>
+<li>added more to <code><a href="../reference/occ_search.html">occ_search()</a></code>/<code><a href="../reference/occ_data.html">occ_data()</a></code>/<code><a href="../reference/occ_download.html">occ_download()</a></code> documentation on WKT (well-known text) with respect to winding order. GBIF requires counter-clockwise winding order; if you submit clockwise winding order WKT to <code><a href="../reference/occ_search.html">occ_search()</a></code> or <code><a href="../reference/occ_data.html">occ_data()</a></code> you should get data back but the WKT is treated as an exclusion, so returns data outside of that shape instead of within it; if you submit clockwise winding order WKT to <code><a href="../reference/occ_download.html">occ_download()</a></code> you will get no data back (<a href='https://github.com/ropensci/rgbif/issues/340'>#340</a>)</li>
+</ul>
+</div>
+<div id="bug-fixes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#bug-fixes" class="anchor"></a>BUG FIXES</h3>
+<ul>
+<li>fix bug in <code><a href="../reference/occ_download.html">occ_download()</a></code>, was failing in certain cases because of some bad code in an internal function <code>catch_err()</code> (<a href='https://github.com/ropensci/rgbif/issues/333'>#333</a>)</li>
+<li>
+<code><a href="../reference/occ_download.html">occ_download()</a></code> was not returning user name and email in it’s print method (<a href='https://github.com/ropensci/rgbif/issues/334'>#334</a>)</li>
+<li>
+<code><a href="../reference/occ_issues.html">occ_issues()</a></code> was failing with <code><a href="../reference/occ_data.html">occ_data()</a></code> or <code><a href="../reference/occ_search.html">occ_search()</a></code> input when <code>type="many"</code> (i.e., when &gt; 1 thing was passed in) (<a href='https://github.com/ropensci/rgbif/issues/341'>#341</a>)</li>
+</ul>
+</div>
+</div>
+    <div id="rgbif-1-1-0" class="section level1">
+<h1 class="page-header">
+<a href="#rgbif-1-1-0" class="anchor"></a>rgbif 1.1.0<small> 2018-10-19 </small>
+</h1>
+<div id="new-features-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#new-features-1" class="anchor"></a>NEW FEATURES</h3>
+<ul>
+<li>tests that make HTTP requests are now cached via the <code>vcr</code> package so do not require an internet connection (<a href='https://github.com/ropensci/rgbif/issues/306'>#306</a>) (<a href='https://github.com/ropensci/rgbif/issues/327'>#327</a>)</li>
+<li>added name usage issues (similar to occurrence issues) data. in part fixes <code><a href="../reference/name_usage.html">name_usage()</a></code> problem, more work coming to allow users to use the name issues data like we allow for occurrence issues through <code><a href="../reference/occ_issues.html">occ_issues()</a></code> (<a href='https://github.com/ropensci/rgbif/issues/324'>#324</a>)</li>
+</ul>
+</div>
+<div id="minor-improvements-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#minor-improvements-1" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li>
 <code><a href="../reference/map_fetch.html">map_fetch()</a></code> changes following changes in GBIF maps API: new parameters <code>taxonKey</code>, <code>datasetkey</code>, <code>country</code>, <code>publishingOrg</code>, <code>publishingCountry</code> and removed parameters <code>search</code> and <code>id</code>; note that this changes how queries work with this function (<a href='https://github.com/ropensci/rgbif/issues/319'>#319</a>)</li>
@@ -149,9 +184,9 @@
 <li>fixed messaging in <code><a href="../reference/occ_download_queue.html">occ_download_queue()</a></code> to report an accurate number of jobs being processed; before we were just saying “kicking off first 3 requests” even if there were only 1 or 2 (<a href='https://github.com/ropensci/rgbif/issues/312'>#312</a>)</li>
 </ul>
 </div>
-<div id="bug-fixes" class="section level3">
+<div id="bug-fixes-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-1" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>fix to <code><a href="../reference/occ_get.html">occ_get()</a></code> when <code>verbatim=TRUE</code> (<a href='https://github.com/ropensci/rgbif/issues/318'>#318</a>)</li>
 <li>
@@ -163,9 +198,9 @@
 <h1 class="page-header">
 <a href="#rgbif-1-0-2" class="anchor"></a>rgbif 1.0.2<small> 2018-07-06 </small>
 </h1>
-<div id="minor-improvements-1" class="section level3">
+<div id="minor-improvements-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements-1" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<a href="#minor-improvements-2" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li>significant change to <code><a href="../reference/occ_download_queue.html">occ_download_queue()</a></code>: sleep time between successive calls to check on the status of download requests is now 10 seconds or greater. This shouldn’t slow down your use of <code><a href="../reference/occ_download_queue.html">occ_download_queue()</a></code> much because most requests should take more than the 10 seconds to be prepared (<a href='https://github.com/ropensci/rgbif/issues/313'>#313</a>)</li>
 <li>add tests for download queue method (<a href='https://github.com/ropensci/rgbif/issues/315'>#315</a>)</li>
@@ -173,9 +208,9 @@
 <li>remove <code>reshape2</code> and <code>maps</code> packages from Suggests (<a href='https://github.com/ropensci/rgbif/issues/317'>#317</a>)</li>
 </ul>
 </div>
-<div id="bug-fixes-1" class="section level3">
+<div id="bug-fixes-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-1" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-2" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>fix bug in <code><a href="../reference/name_usage.html">name_usage()</a></code>: we were screwing up parsing of issues column when single taxon keys passed in (<a href='https://github.com/ropensci/rgbif/issues/314'>#314</a>)</li>
 </ul>
@@ -185,9 +220,9 @@
 <h1 class="page-header">
 <a href="#rgbif-1-0-0" class="anchor"></a>rgbif 1.0.0<small> 2018-07-03 </small>
 </h1>
-<div id="new-features-1" class="section level3">
+<div id="new-features-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-1" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-2" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>
 <code><a href="../reference/occ_issues.html">occ_issues()</a></code> now works with download data and arbitrary data.frame’s (<a href='https://github.com/ropensci/rgbif/issues/193'>#193</a>)</li>
@@ -203,9 +238,9 @@
 <code><a href="../reference/occ_search.html">occ_search()</a></code>/<code><a href="../reference/occ_data.html">occ_data()</a></code> gain parameter <code>skip_validate</code> (boolean) to skip or not stkip WKT validation by the <code>wicket</code> package</li>
 </ul>
 </div>
-<div id="minor-improvements-2" class="section level3">
+<div id="minor-improvements-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements-2" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<a href="#minor-improvements-3" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li>removed warnings about parameters that were removed in previous versions of the package (<a href='https://github.com/ropensci/rgbif/issues/189'>#189</a>)</li>
 <li>add citation file (<a href='https://github.com/ropensci/rgbif/issues/189'>#189</a>)</li>
@@ -214,9 +249,9 @@
 <code><a href="../reference/occ_count.html">occ_count()</a></code> loses <code>nubKey</code>, <code>catalogNumber</code>, and <code>hostCountry</code> as those parameters are no longer accepted by GBIF</li>
 </ul>
 </div>
-<div id="bug-fixes-2" class="section level3">
+<div id="bug-fixes-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-2" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-3" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>fixed bug in <code><a href="../reference/name_usage.html">name_usage()</a></code>, was screwing something up internally (<a href='https://github.com/ropensci/rgbif/issues/286'>#286</a>)</li>
 <li>fixed bug in <code><a href="../reference/occ_data.html">occ_data()</a></code>: curl options weren’t being passed through (<a href='https://github.com/ropensci/rgbif/issues/297'>#297</a>)</li>
@@ -241,17 +276,17 @@
 <h1 class="page-header">
 <a href="#rgbif-0-9-9" class="anchor"></a>rgbif 0.9.9<small> 2017-11-12 </small>
 </h1>
-<div id="new-features-2" class="section level3">
+<div id="new-features-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-2" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-3" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>Gains new functions <code>occ_download_datasets</code> and <code>occ_download_dataset_activity</code> to list datasets for a download, and list the downloads activity of a dataset (<a href='https://github.com/ropensci/rgbif/issues/275'>#275</a>) (<a href='https://github.com/ropensci/rgbif/issues/276'>#276</a>)</li>
 <li>Gains a new vignette covering working with GBIF downloads in <code>rgbif</code> (<a href='https://github.com/ropensci/rgbif/issues/262'>#262</a>)</li>
 </ul>
 </div>
-<div id="minor-improvements-3" class="section level3">
+<div id="minor-improvements-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements-3" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<a href="#minor-improvements-4" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li>Guidance added to docs for downloads functions on length of the request body (<a href='https://github.com/ropensci/rgbif/issues/263'>#263</a>)</li>
 <li>Changed authentication details (user name, password, email) for downloads to allow any of the options: pass in as arguments, store as R options, store as environment variables (<a href='https://github.com/ropensci/rgbif/issues/187'>#187</a>)</li>
@@ -259,9 +294,9 @@
 <code><a href="../reference/gbif_citation.html">gbif_citation()</a></code> function gains an S3 method for passing the output of <code><a href="../reference/occ_download_meta.html">occ_download_meta()</a></code> to it. In addition, for downloads <code><a href="../reference/gbif_citation.html">gbif_citation()</a></code> now returns a citation for the entire download (including) its DOI, in addition to citations for each dataset (<a href='https://github.com/ropensci/rgbif/issues/274'>#274</a>) thanks <a href='https://github.com/dnoesgaard'>@dnoesgaard</a></li>
 </ul>
 </div>
-<div id="bug-fixes-3" class="section level3">
+<div id="bug-fixes-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-3" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-4" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>Fix documentation bug in <code><a href="../reference/occ_count.html">occ_count()</a></code>: <code>georeferenced</code> had a misleading description of what the value <code>FALSE</code> did (<a href='https://github.com/ropensci/rgbif/issues/265'>#265</a>)</li>
 <li>Fixed bug in <code><a href="../reference/gbifmap-defunct.html">gbifmap()</a></code> - was failing in some cases - better error handlingn now (<a href='https://github.com/ropensci/rgbif/issues/271'>#271</a>) thanks <a href='https://github.com/TomaszSuchan'>@TomaszSuchan</a></li>
@@ -273,9 +308,9 @@
 <h1 class="page-header">
 <a href="#rgbif-0-9-8" class="anchor"></a>rgbif 0.9.8<small> 2017-04-18 </small>
 </h1>
-<div id="new-features-3" class="section level3">
+<div id="new-features-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-3" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-4" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>The GBIF API supports passing in many instances of the same parameter for some parameters on some routes. Previously we didn’t support this feature, but now we do. See the <code>?many-values</code> manual file for details. added docs to individual functions that support this, and added additional tests (<a href='https://github.com/ropensci/rgbif/issues/200'>#200</a>) (<a href='https://github.com/ropensci/rgbif/issues/260'>#260</a>) (<a href='https://github.com/ropensci/rgbif/issues/261'>#261</a>)</li>
 <li>We’ve removed <code>V8</code> dependency and replaced with C++ based WKT parser package <code>wicket</code>. We still use <code>rgeos</code> for some WKT parsing. rgbif functions that use wicket: <code>gbif_bbox2wkt</code>, <code>gbif_wkt2bbox</code>, <code>check_wkt</code> (<a href='https://github.com/ropensci/rgbif/issues/243'>#243</a>)</li>
@@ -283,17 +318,17 @@
 <code>httr</code> replaced with <code>crul</code> for HTTP reqeusts. As part of this change, the <code>...</code> parameter was replaced in most functions by <code>curlopts</code> which expects a list. Some functions require a <code>...</code> parameter for facet inputs, so <code>...</code> is retained with the addition of <code>curltops</code> parameter. A result of this change is that whereas in the past parameters that were not defined in a function that also had a <code>...</code> parameter would essentially silently ignore that undefined parameter, but with functions where <code>...</code> was removed a misspelled or undefined parameter will cause an error with message (<a href='https://github.com/ropensci/rgbif/issues/256'>#256</a>)</li>
 </ul>
 </div>
-<div id="minor-improvements-4" class="section level3">
+<div id="minor-improvements-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements-4" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<a href="#minor-improvements-5" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li>moved to markdown docs (<a href='https://github.com/ropensci/rgbif/issues/258'>#258</a>)</li>
 <li>namespacing calls to base R pkgs instead of importing them</li>
 </ul>
 </div>
-<div id="bug-fixes-4" class="section level3">
+<div id="bug-fixes-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-4" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-5" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>Fixed problem in <code><a href="../reference/occ_download_import.html">occ_download_import()</a></code> to allow import of csv type download in addition to darwin core archive. additional change to <code>occ_download_get</code> to add <code>format</code> attribute stating which format (<a href='https://github.com/ropensci/rgbif/issues/246'>#246</a>)</li>
 <li>fix to <code>occ_download_import</code> adding <code>fill=TRUE</code> to the <code><a href="https://www.rdocumentation.org/packages/data.table/topics/fread">data.table::fread</a></code> call (<a href='https://github.com/ropensci/rgbif/issues/257'>#257</a>)</li>
@@ -304,17 +339,17 @@
 <h1 class="page-header">
 <a href="#rgbif-0-9-7" class="anchor"></a>rgbif 0.9.7<small> 2017-01-21 </small>
 </h1>
-<div id="new-features-4" class="section level3">
+<div id="new-features-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-4" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-5" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>
 <code>occ_dowload</code> gains new parameter <code>body</code> to allow users to pass in JSON or a list for the query instead of passing in statements to <code>...</code>. See examples in <code>?occ_dowload</code>.</li>
 </ul>
 </div>
-<div id="minor-improvements-5" class="section level3">
+<div id="minor-improvements-6" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements-5" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<a href="#minor-improvements-6" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li>Now using <code>tibble</code> for compact data.frame output for <code>occ_download_import</code> instead of bespoke internal solution (<a href='https://github.com/ropensci/rgbif/issues/240'>#240</a>)</li>
 <li>Moved all GBIF API requests to use <code>https</code> instead of <code>http</code> (<a href='https://github.com/ropensci/rgbif/issues/244'>#244</a>)</li>
@@ -322,9 +357,9 @@
 </li>
 </ul>
 </div>
-<div id="bug-fixes-5" class="section level3">
+<div id="bug-fixes-6" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-5" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-6" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>Fix to <code>occ_download</code> to structure query correctly when <code>type=within</code> and <code>geometry</code> used because the structure is slightly different than when not using <code>geometry</code> (<a href='https://github.com/ropensci/rgbif/issues/242'>#242</a>)</li>
 <li>Fixed <code>occ_download</code> to allow <code>OR</code> queries for many values of a parameter, e.g., <code>taxonKey=2475470,2480946</code> will be queried correctly now as essentially <code>taxonKey=2475470</code> or <code>taxonKey=2480946</code> (<a href='https://github.com/ropensci/rgbif/issues/245'>#245</a>)</li>
@@ -335,9 +370,9 @@
 <h1 class="page-header">
 <a href="#rgbif-0-9-6" class="anchor"></a>rgbif 0.9.6<small> 2016-12-06 </small>
 </h1>
-<div id="bug-fixes-6" class="section level3">
+<div id="bug-fixes-7" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-6" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-7" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>Fixed a bug in <code><a href="../reference/parsenames.html">parsenames()</a></code> caused by some slots in the list being <code>NULL</code> (<a href='https://github.com/ropensci/rgbif/issues/237'>#237</a>)</li>
 <li>Fixed some failing tests: <code><a href="../reference/occ_facet.html">occ_facet()</a></code> tests were failing due to changes in GBIF API (<a href='https://github.com/ropensci/rgbif/issues/239'>#239</a>)</li>
@@ -349,9 +384,9 @@
 <h1 class="page-header">
 <a href="#rgbif-0-9-5" class="anchor"></a>rgbif 0.9.5<small> 2016-10-06 </small>
 </h1>
-<div id="new-features-5" class="section level3">
+<div id="new-features-6" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-5" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-6" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>
 <code><a href="../reference/occ_search.html">occ_search()</a></code> now has faceted search. This feature is not in <code><a href="../reference/occ_data.html">occ_data()</a></code> as that function focuses on getting occurrence data quickly, so will not do get facet data. This means that a new slot is available in the output object from <code><a href="../reference/occ_search.html">occ_search()</a></code>, namely <code>facets</code>. Note that <code>rgbif</code> has had faceted search for the species search route (<code><a href="../reference/name_lookup.html">name_lookup()</a></code>) and the registry search route (<code><a href="../reference/dataset_search.html">dataset_search()</a></code>) for quite a while. (<a href='https://github.com/ropensci/rgbif/issues/215'>#215</a>)</li>
@@ -364,9 +399,9 @@
 <code>MULTIPOLYGON</code> well known text features now supported in the GBIF API. Previously, you could not query <code>geometry</code> with more than one polygon (<code>POLYGON</code>), but now you can. (<a href='https://github.com/ropensci/rgbif/issues/222'>#222</a>)</li>
 </ul>
 </div>
-<div id="minor-improvements-6" class="section level3">
+<div id="minor-improvements-7" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements-6" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<a href="#minor-improvements-7" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li>Improved docs for <code><a href="../reference/occ_count.html">occ_count()</a></code>, especially for the set of allowed parameter options that the GBIF count API supports</li>
 <li>
@@ -374,9 +409,9 @@
 <li>When no results found, the <code>data</code> slot now returns <code>NULL</code> instead of a character string</li>
 </ul>
 </div>
-<div id="bug-fixes-7" class="section level3">
+<div id="bug-fixes-8" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-7" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-8" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>Fixes to <code><a href="../reference/gbif_photos.html">gbif_photos()</a></code>: 1) Mapbox URLs to their JS and CSS assets were out of date, and API key needed. 2) In RStudio, the <code>table</code> view was outputting errors due to serving files on <code>localhost:&lt;port&gt;</code> instead of simply opening the file; fixed now by checking platform and using simple open file command appropriate for the OS. (<a href='https://github.com/ropensci/rgbif/issues/228'>#228</a>) (<a href='https://github.com/ropensci/rgbif/issues/235'>#235</a>)</li>
 </ul>
@@ -386,26 +421,26 @@
 <h1 class="page-header">
 <a href="#rgbif-0-9-4" class="anchor"></a>rgbif 0.9.4<small> 2016-06-29 </small>
 </h1>
-<div id="new-features-6" class="section level3">
+<div id="new-features-7" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-6" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-7" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>Now using <code>tibble</code> in most of the package when the output is a data.frame (<a href='https://github.com/ropensci/rgbif/issues/204'>#204</a>)</li>
 <li>New vignette <em>Taxonomic Names</em> for discussing some common names problems users may run into, and some strategies for dealing with taxonomic names when using GBIF (<a href='https://github.com/ropensci/rgbif/issues/208'>#208</a>) (<a href='https://github.com/ropensci/rgbif/issues/209'>#209</a>)</li>
 </ul>
 </div>
-<div id="minor-improvements-7" class="section level3">
+<div id="minor-improvements-8" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements-7" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<a href="#minor-improvements-8" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li>Replaced <code>is()</code> with <code><a href="https://www.rdocumentation.org/packages/base/topics/class">inherits()</a></code>, no longer importing <code><a href="https://www.rdocumentation.org/packages/utils/topics/methods">methods()</a></code> (<a href='https://github.com/ropensci/rgbif/issues/219'>#219</a>)</li>
 <li>Improved docs for registry functions. Not all options were listed for the <code>data</code> parameter, now they are (<a href='https://github.com/ropensci/rgbif/issues/210'>#210</a>)</li>
 <li>Fixed documentation error in <code><a href="../reference/gbifmap-defunct.html">gbifmap()</a></code> man file (<a href='https://github.com/ropensci/rgbif/issues/212'>#212</a>) thanks to <a href='https://github.com/rossmounce'>@rossmounce</a></li>
 </ul>
 </div>
-<div id="bug-fixes-8" class="section level3">
+<div id="bug-fixes-9" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-8" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-9" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>Fixed bug in internal parser within <code><a href="../reference/occ_download.html">occ_download()</a></code>, in which strings to parse were not being parsed correctly if spaces weren’t in the right place, should be more robust now, and added tests (<a href='https://github.com/ropensci/rgbif/issues/217'>#217</a>). Came from <a href="https://discuss.ropensci.org/t/rgbif-using-geometry-in-occ-download/395" class="uri">https://discuss.ropensci.org/t/rgbif-using-geometry-in-occ-download/395</a>
 </li>
@@ -417,9 +452,9 @@
 <h1 class="page-header">
 <a href="#rgbif-0-9-3" class="anchor"></a>rgbif 0.9.3<small> 2016-03-29 </small>
 </h1>
-<div id="new-features-7" class="section level3">
+<div id="new-features-8" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-7" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-8" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>
 <code><a href="../reference/occ_data.html">occ_data()</a></code> and <code><a href="../reference/occ_search.html">occ_search()</a></code> gain ability to more flexibly deal with inputs to the <code>geometry</code> parameter. Previously, long WKT strings passed to <code><a href="../reference/occ_search.html">occ_search()</a></code> or <code><a href="../reference/occ_data.html">occ_data()</a></code> would fail because URIs can only be so long. Another option is to use the download API (see <code><a href="../reference/downloads.html">?downloads</a></code>). This version adds the ability to choose what to do with long WKT strings via the <code>geom_big</code> parameter: <code>asis</code> (same as previous version), <code>bbox</code> which detects if a WKT sting is likely too long, and creates a bounding box from the WKT string then once data is retrived, clips the result to the original WKT string; <code>axe</code> uses the <code>geoaxe</code> package to chop up the input WKT polygon into many, with toggles in the new parameters <code>geom_size</code> and <code>geom_n</code>. (<a href='https://github.com/ropensci/rgbif/issues/197'>#197</a>) (<a href='https://github.com/ropensci/rgbif/issues/199'>#199</a>)</li>
@@ -427,16 +462,16 @@
 </li>
 </ul>
 </div>
-<div id="minor-improvements-8" class="section level3">
+<div id="minor-improvements-9" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements-8" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<a href="#minor-improvements-9" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li>code tidying throughout the package</li>
 </ul>
 </div>
-<div id="bug-fixes-9" class="section level3">
+<div id="bug-fixes-10" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-9" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-10" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>Fix parsing bug in <code><a href="../reference/name_usage.html">name_usage()</a></code> function, see commit <a href="https://github.com/ropensci/rgbif/commit/e88cf01cc11cb238d44222346eaeff001c0c637e">e88cf01cc11cb238d44222346eaeff001c0c637e</a>
 </li>
@@ -450,25 +485,25 @@
 <h1 class="page-header">
 <a href="#rgbif-0-9-2" class="anchor"></a>rgbif 0.9.2<small> 2016-02-02 </small>
 </h1>
-<div id="new-features-8" class="section level3">
+<div id="new-features-9" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-8" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-9" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>New function <code><a href="../reference/occ_data.html">occ_data()</a></code> - its primary purpose to perform faster data requests. Whereas <code><a href="../reference/occ_search.html">occ_search()</a></code> gives you lots of data, including taxonomic hierarchies and media records, <code><a href="../reference/occ_data.html">occ_data()</a></code> only gives occurrence data. (<a href='https://github.com/ropensci/rgbif/issues/190'>#190</a>)</li>
 </ul>
 </div>
-<div id="minor-improvements-9" class="section level3">
+<div id="minor-improvements-10" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements-9" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<a href="#minor-improvements-10" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li>Replaced <code>XML</code> with <code>xml2</code> (<a href='https://github.com/ropensci/rgbif/issues/192'>#192</a>)</li>
 <li>Speed ups to the following functions due to use of <code><a href="https://www.rdocumentation.org/packages/data.table/topics/rbindlist">data.table::rbindlist()</a></code> for fast list to data.frame coercion: <code><a href="../reference/name_lookup.html">name_lookup()</a></code>, <code><a href="../reference/name_backbone.html">name_backbone()</a></code>, <code><a href="../reference/name_suggest.html">name_suggest()</a></code>, <code><a href="../reference/name_usage.html">name_usage()</a></code>, and <code><a href="../reference/parsenames.html">parsenames()</a></code> (<a href='https://github.com/ropensci/rgbif/issues/191'>#191</a>)</li>
 <li>Changes to <code>httr</code> usage to comply with changes in <code>httr &gt;= v1.1.0</code>: now setting encoding explicitly to <code>UTF-8</code> and parsing all data manually, using the internal function <code>function(x) content(x, "text", encoding = "UTF-8")</code> (<a href='https://github.com/ropensci/rgbif/issues/195'>#195</a>)</li>
 </ul>
 </div>
-<div id="bug-fixes-10" class="section level3">
+<div id="bug-fixes-11" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-10" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-11" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>Fix to internal function <code>move_col()</code> to not fail on fields that don’t exist. Was failing sometimes when no latitude or longitude columns were returned. (<a href='https://github.com/ropensci/rgbif/issues/196'>#196</a>)</li>
 </ul>
@@ -478,9 +513,9 @@
 <h1 class="page-header">
 <a href="#rgbif-0-9-0" class="anchor"></a>rgbif 0.9.0<small> 2015-11-25 </small>
 </h1>
-<div id="new-features-9" class="section level3">
+<div id="new-features-10" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-9" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-10" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>New set of functions (<code>gbif_oai_*()</code>) for working with GBIF registry OAI-PMH service. Now importing <code>oai</code> package to make working with GBIF’s OAI-PMH service easier (<a href='https://github.com/ropensci/rgbif/issues/183'>#183</a>)</li>
 <li>Added code of conduct (<a href='https://github.com/ropensci/rgbif/issues/180'>#180</a>)</li>
@@ -488,17 +523,17 @@
 <li>New function <code><a href="../reference/gbif_citation.html">gbif_citation()</a></code> helps get citations for datasets eith using the occurrence search API via <code><a href="../reference/occ_search.html">occ_search()</a></code> or the downloads API via <code>occ_downlad()</code> (<a href='https://github.com/ropensci/rgbif/issues/178'>#178</a>) (<a href='https://github.com/ropensci/rgbif/issues/179'>#179</a>)</li>
 </ul>
 </div>
-<div id="minor-improvements-10" class="section level3">
+<div id="minor-improvements-11" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements-10" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<a href="#minor-improvements-11" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li>Using <code>importFrom</code> instead of <code>import</code> in all cases now.</li>
 <li>Parameter <code>collectorName</code> changed to <code>recordedBy</code> (<a href='https://github.com/ropensci/rgbif/issues/184'>#184</a>)</li>
 </ul>
 </div>
-<div id="bug-fixes-11" class="section level3">
+<div id="bug-fixes-12" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-11" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-12" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>Fix to <code><a href="../reference/occ_download_meta.html">occ_download_meta()</a></code> print method to handle 1 or more predicate results (<a href='https://github.com/ropensci/rgbif/issues/186'>#186</a>)</li>
 <li>Fix to <code><a href="../reference/occ_issues.html">occ_issues()</a></code> to work with <code>return=data</code> and <code>return=all</code> <code><a href="../reference/occ_search.html">occ_search()</a></code> output (<a href='https://github.com/ropensci/rgbif/issues/188'>#188</a>)</li>
@@ -509,9 +544,9 @@
 <h1 class="page-header">
 <a href="#rgbif-0-8-9" class="anchor"></a>rgbif 0.8.9<small> 2015-10-07 </small>
 </h1>
-<div id="minor-improvements-11" class="section level3">
+<div id="minor-improvements-12" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements-11" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<a href="#minor-improvements-12" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li>Updated <code>terraformer.js</code> javascript code included in the package along with an update in that codebase (<a href='https://github.com/ropensci/rgbif/issues/156'>#156</a>)</li>
 <li>The <code>email</code> parameter now <code>NULL</code> by default in the function <code><a href="../reference/occ_download.html">occ_download()</a></code>, so that if not provided or not set in options, then function fails. (<a href='https://github.com/ropensci/rgbif/issues/173'>#173</a>)</li>
@@ -520,9 +555,9 @@
 <li>General code tidying across package</li>
 </ul>
 </div>
-<div id="bug-fixes-12" class="section level3">
+<div id="bug-fixes-13" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-12" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-13" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>A route changed for getting images for a taxon within the <code>/species</code> route, fix to function <code><a href="../reference/name_usage.html">name_usage()</a></code> (<a href='https://github.com/ropensci/rgbif/issues/174'>#174</a>)</li>
 <li>Fix to <code><a href="../reference/occ_search.html">occ_search()</a></code> to remove a block of code to do synonym checking. This block of code was used if the parameter <code>scientificName</code> was passed, and checked if the name given was a synonym; if yes, we used the accepted name according to the GBIF backbone taxonomy; if no, we proceeded with the name given by the user. We removed the block of code because the GBIF API now essentially does this behind the scenes server side. See <a href="https://github.com/gbif/gbif-api" class="uri">https://github.com/gbif/gbif-api</a> for examples. (<a href='https://github.com/ropensci/rgbif/issues/175'>#175</a>)</li>
@@ -533,16 +568,16 @@
 <h1 class="page-header">
 <a href="#rgbif-0-8-8" class="anchor"></a>rgbif 0.8.8<small> 2015-07-24 </small>
 </h1>
-<div id="minor-improvements-12" class="section level3">
+<div id="minor-improvements-13" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements-12" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<a href="#minor-improvements-13" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li>Additional tests added for <code><a href="../reference/gbif_photos.html">gbif_photos()</a></code> and <code><a href="../reference/gbif_names.html">gbif_names()</a></code> (<a href='https://github.com/ropensci/rgbif/issues/170'>#170</a>)</li>
 </ul>
 </div>
-<div id="bug-fixes-13" class="section level3">
+<div id="bug-fixes-14" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-13" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-14" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>Fixed a few tests that were not passing on CRAN.</li>
 </ul>
@@ -552,23 +587,23 @@
 <h1 class="page-header">
 <a href="#rgbif-0-8-6" class="anchor"></a>rgbif 0.8.6<small> 2015-07-03 </small>
 </h1>
-<div id="new-features-10" class="section level3">
+<div id="new-features-11" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-10" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-11" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>New set of functions with names <code>occ_download*()</code> for working with the GBIF download API. This is the same service as using the GBIF website, but via an API. See <code><a href="../reference/downloads.html">?downloads</a></code>. (<a href='https://github.com/ropensci/rgbif/issues/154'>#154</a>) (<a href='https://github.com/ropensci/rgbif/issues/167'>#167</a>)</li>
 </ul>
 </div>
-<div id="minor-improvements-13" class="section level3">
+<div id="minor-improvements-14" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements-13" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<a href="#minor-improvements-14" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li>Explicitly import non-base R pkg functions, so importing from <code>utils</code>, <code>methods</code>, and <code>stats</code> (<a href='https://github.com/ropensci/rgbif/issues/166'>#166</a>)</li>
 </ul>
 </div>
-<div id="bug-fixes-14" class="section level3">
+<div id="bug-fixes-15" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-14" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-15" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>Fixed problem with <code>httr</code> <code>v1</code> where empty list not allowed to pass to the <code>query</code> parameter in <code>GET</code> (<a href='https://github.com/ropensci/rgbif/issues/163'>#163</a>)</li>
 </ul>
@@ -578,9 +613,9 @@
 <h1 class="page-header">
 <a href="#rgbif-0-8-4" class="anchor"></a>rgbif 0.8.4<small> 2015-06-08 </small>
 </h1>
-<div id="new-features-11" class="section level3">
+<div id="new-features-12" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-11" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-12" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>New functions for the <code>/enumerations</code> GBIF API route: <code><a href="../reference/enumeration.html">enumeration()</a></code> and <code><a href="../reference/enumeration.html">enumeration_country()</a></code>. Many parts of the GBIF API make use of enumerations, i.e. controlled vocabularies for specific topics - and are available via these functions. (<a href='https://github.com/ropensci/rgbif/issues/152'>#152</a>)</li>
 </ul>
@@ -600,9 +635,9 @@
 <li>Dropped <code>maps</code> and <code>grid</code> packages from Imports (<a href='https://github.com/ropensci/rgbif/issues/161'>#161</a>)</li>
 </ul>
 </div>
-<div id="bug-fixes-15" class="section level3">
+<div id="bug-fixes-16" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-15" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-16" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>Looping over records with <code>limit</code> and <code>start</code> parameters was in some cases resulting in duplicate records returned. Problem fixed. (<a href='https://github.com/ropensci/rgbif/issues/157'>#157</a>)</li>
 </ul>
@@ -624,9 +659,9 @@
 <li>Fixed <code><a href="../reference/occ_search.html">occ_search()</a></code> to allow ability to query by only publishingCountry, that is, with no other parameters if desired (<a href='https://github.com/ropensci/rgbif/issues/137'>#137</a>)</li>
 </ul>
 </div>
-<div id="bug-fixes-16" class="section level3">
+<div id="bug-fixes-17" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-16" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-17" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>Fixed bug in internal <code>GET()</code> helper function to just pass <code>NULL</code> to the <code>query</code> parameter when the list of length 0 passed, since it caused requests to fail in some cases.</li>
 <li>Fix to <code><a href="../reference/name_lookup.html">name_lookup()</a></code> to force a logical entry for certain parameters - before this fix if the correct logical param was not passed, the GBIF API went with its default parameter (<a href='https://github.com/ropensci/rgbif/issues/135'>#135</a>)</li>
@@ -639,9 +674,9 @@
 <h1 class="page-header">
 <a href="#rgbif-0-7-7" class="anchor"></a>rgbif 0.7.7<small> 2014-11-07 </small>
 </h1>
-<div id="new-features-12" class="section level3">
+<div id="new-features-13" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-12" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-13" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>New function <code><a href="../reference/occ_issues.html">occ_issues()</a></code> to subset data from <code><a href="../reference/occ_search.html">occ_search()</a></code> based on GBIF issues. (#) (<a href='https://github.com/ropensci/rgbif/issues/122'>#122</a>)</li>
 <li>Related to the last bullet, GBIF issues now are returned by default in <code><a href="../reference/occ_search.html">occ_search()</a></code> results, and are intentionally moved to the beginning of the column order of the data to be more obvious. (<a href='https://github.com/ropensci/rgbif/issues/102'>#102</a>)</li>
@@ -679,9 +714,9 @@
 </li>
 </ul>
 </div>
-<div id="bug-fixes-17" class="section level3">
+<div id="bug-fixes-18" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-17" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-18" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>
 <code><a href="../reference/occ_search.html">occ_search()</a></code> failed sometimes on species that were not found. Fixed. (<a href='https://github.com/ropensci/rgbif/issues/112'>#112</a>)</li>
@@ -699,9 +734,9 @@
 <h1 class="page-header">
 <a href="#rgbif-0-7-0" class="anchor"></a>rgbif 0.7.0<small> 2014-07-31 </small>
 </h1>
-<div id="new-features-13" class="section level3">
+<div id="new-features-14" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-13" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-14" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>
 <code><a href="../reference/occ_search.html">occ_search()</a></code> now has a <code>dplyr</code> like summary output when <code>return='all'</code>. See <code><a href="../reference/occ_search.html">?occ_search</a></code> for examples. You can still easily access all data, by indexing to <code>meta</code>, <code>hierarchy</code>, <code>data</code>, or <code>media</code> via e.g., <code>$data</code>, <code>['data']</code>, or <code>[['data']]</code>. (<a href='https://github.com/ropensci/rgbif/issues/95'>#95</a>)</li>
@@ -726,9 +761,9 @@
 <li>Updated the vignette.</li>
 </ul>
 </div>
-<div id="bug-fixes-18" class="section level3">
+<div id="bug-fixes-19" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-18" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-19" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>Added better error message to <code><a href="../reference/check_wkt.html">check_wkt()</a></code>.</li>
 <li>
@@ -754,9 +789,9 @@
 <h1 class="page-header">
 <a href="#rgbif-0-6-2" class="anchor"></a>rgbif 0.6.2<small> 2014-04-24 </small>
 </h1>
-<div id="bug-fixes-19" class="section level3">
+<div id="bug-fixes-20" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-19" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-20" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>
 <code><a href="../reference/gbifmap-defunct.html">gbifmap()</a></code> was throwing an error because it was looking for two variables <code>latitude</code> and <code>longitude</code>, which had been changed to <code>decimalLatitude</code> and <code>decimalLongitude</code>, respectively, in other functions in this package. Fixed. (<a href='https://github.com/ropensci/rgbif/issues/81'>#81</a>)</li>
@@ -781,9 +816,9 @@
 <h1 class="page-header">
 <a href="#rgbif-0-6-0" class="anchor"></a>rgbif 0.6.0<small> 2014-04-17 </small>
 </h1>
-<div id="bug-fixes-20" class="section level3">
+<div id="bug-fixes-21" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-20" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-21" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>A number of variables changed names to better follow the Darwin Core standard. <code>latitude</code> is now <code>decimalLatitude</code>. <code>longitude</code> is now <code>decimalLongitude</code>. <code>clazz</code> is now <code>class</code>. Code in this package changed to accomodate these changes. <code>date</code> is now <code>eventDate</code>. <code>georeferenced</code> is now <code>hasCoordinate</code>. Beware of these changes in your own code using <code>rgbif</code> - find and replace for these should be easy.</li>
 <li>Changed <code>altitude</code> parameter in <code><a href="../reference/occ_search.html">occ_search()</a></code> to <code>elevation</code> - should have been <code>elevation</code> the whole time.</li>
@@ -805,9 +840,9 @@
 <code>sourceId</code> parameter in <code><a href="../reference/name_usage.html">name_usage()</a></code> function doesn’t work so error message is thrown when used.</li>
 </ul>
 </div>
-<div id="new-features-14" class="section level3">
+<div id="new-features-15" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-14" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-15" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>New function <code><a href="../reference/check_wkt.html">check_wkt()</a></code> to check that well known text string is the right format. (<a href='https://github.com/ropensci/rgbif/issues/68'>#68</a>)</li>
 <li>New dataset typestatus to look up possible specimen typeStatus values. See <a href='https://github.com/ropensci/rgbif/issues/74'>#74</a> for more information.</li>
@@ -833,17 +868,17 @@
 <li>occ_get() and occ_search() lose parameter minimal, and in its place gains parameter fields, in which you can request fields=‘minimal’ to get just name, taxon key, lat and long. Or set to ‘all’ to get all fields, or selection the fields you want by passing in a vector of field names.</li>
 </ul>
 </div>
-<div id="bug-fixes-21" class="section level3">
+<div id="bug-fixes-22" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-21" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-22" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>Updated base url for the GIBF parser function parsenames()</li>
 <li>isocodes dataset now with documentation.</li>
 </ul>
 </div>
-<div id="new-features-15" class="section level3">
+<div id="new-features-16" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-15" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-16" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>New function count_facet() to do facetted count search, as GBIF doesn’t allow faceted searches against the count API.</li>
 <li>New function elevation() to get elevation data for a data.frame of lat/long points, or a list of lat/long points. This function uses the Google Elevation API (<a href="https://developers.google.com/maps/documentation/elevation/" class="uri">https://developers.google.com/maps/documentation/elevation/</a>).</li>
@@ -855,9 +890,9 @@
 <h1 class="page-header">
 <a href="#rgbif-0-4-1" class="anchor"></a>rgbif 0.4.1<small> Unreleased </small>
 </h1>
-<div id="bug-fixes-22" class="section level3">
+<div id="bug-fixes-23" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-22" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-23" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>Improved handling of limit parameter in occ_search() so that the correct number of occurrences are returned.</li>
 <li>Fixed various tests that were broken.</li>
@@ -885,9 +920,9 @@
 <li>Vignettes now in vignettes/ directory.</li>
 </ul>
 </div>
-<div id="new-features-16" class="section level3">
+<div id="new-features-17" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-16" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-17" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>New function dataset_suggest(), a quick autocomplete service that returns up to 20 datasets.</li>
 <li>New function name_backbone() looks up names against the GBIF backbone taxonomy.</li>
@@ -909,16 +944,16 @@
 <li>Updated vignette to work with new GBIF API and fxns.</li>
 </ul>
 </div>
-<div id="new-features-17" class="section level3">
+<div id="new-features-18" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-17" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-18" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>Added functions to interact with the new GBIF API, notably: country_codes(), dataset_metrics(), dataset_search(), datasets(), name_lookup(), gbifmap(), gist(), name_lookup(), name_usage(), networks(), nodes(), occ_count(), occ_get(), occ_search(), organizations(), stylegeojson(), togeojson(). See the README for a crosswalk from old functions to new ones.</li>
 </ul>
 </div>
-<div id="bug-fixes-23" class="section level3">
+<div id="bug-fixes-24" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-23" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-24" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>test files moved from inst/tests/ to tests/testthat/</li>
 </ul>
@@ -928,9 +963,9 @@
 <h1 class="page-header">
 <a href="#rgbif-0-3-2" class="anchor"></a>rgbif 0.3.2<small> Unreleased </small>
 </h1>
-<div id="bug-fixes-24" class="section level3">
+<div id="bug-fixes-25" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-24" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-25" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>Removed georeferencedonly parameter - is deprecated in the GBIF API</li>
 </ul>
@@ -950,9 +985,9 @@
 <li>Vignette added.</li>
 </ul>
 </div>
-<div id="new-features-18" class="section level3">
+<div id="new-features-19" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-18" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-19" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>Added function country_codes() to look up 2 character ISO country codes for use in searches.</li>
 <li>Added function occurrencelist_many() to handle searches of many species.</li>
@@ -973,17 +1008,17 @@
 <li>Improved code style, and simplified code in some functions.</li>
 </ul>
 </div>
-<div id="new-features-19" class="section level3">
+<div id="new-features-20" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-19" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-20" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>occurrencelist() now handles scientific notation when maxresults are given in that form.</li>
 <li>occurencelist() now can retrieve any number of records; was previously a max of 1000 records.</li>
 </ul>
 </div>
-<div id="bug-fixes-25" class="section level3">
+<div id="bug-fixes-26" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes-25" class="anchor"></a>BUG FIXES</h3>
+<a href="#bug-fixes-26" class="anchor"></a>BUG FIXES</h3>
 <ul>
 <li>Demo “List” was returning incorrect taxon names - corrected now.</li>
 <li>Removed unused parameter ‘latlongdf’ in occurencelist().</li>
@@ -1002,9 +1037,9 @@
 <li>Two function, capwords and gbifxmlToDataFrame, added with documentation as internal functions.</li>
 </ul>
 </div>
-<div id="new-features-20" class="section level3">
+<div id="new-features-21" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-20" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-21" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>Added function density_spplist to get a species list or data.frame of species and their counts for any degree cell.</li>
 <li>Added function densitylist to access to records showing the density of occurrence records from the GBIF Network by one-degree cell.</li>
@@ -1021,9 +1056,9 @@
 <h1 class="page-header">
 <a href="#rgbif-0-1-0" class="anchor"></a>rgbif 0.1.0<small> Unreleased </small>
 </h1>
-<div id="new-features-21" class="section level3">
+<div id="new-features-22" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-21" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-22" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>released to CRAN</li>
 </ul>
@@ -1035,6 +1070,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#rgbif-1-2-0">1.2.0</a></li>
         <li><a href="#rgbif-1-1-0">1.1.0</a></li>
         <li><a href="#rgbif-1-0-2">1.0.2</a></li>
         <li><a href="#rgbif-1-0-0">1.0.0</a></li>

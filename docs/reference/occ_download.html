@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rgbif</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0.9311</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
       </span>
     </div>
 
@@ -245,6 +245,24 @@ predicate combined with the OR operator, for example,
 
     <p>see <a href='downloads.html'>downloads</a> for an overview of GBIF downloads methods</p>
     
+    <h2 class="hasAnchor" id="geometry"><a class="anchor" href="#geometry"></a>geometry</h2>
+
+    
+    <p>When using the geometry parameter, make sure that your well known text
+(WKT) is formatted as GBIF expects it. They expect WKT to have a
+counter-clockwise winding order. For example, the following is clockwise
+<code>POLYGON((-19.5 34.1, -25.3 68.1, 35.9 68.1, 27.8 34.1, -19.5 34.1))</code>,
+whereas they expect the other order:
+<code>POLYGON((-19.5 34.1, 27.8 34.1, 35.9 68.1, -25.3 68.1, -19.5 34.1))</code></p>
+<p>note that coordinate pairs are <code>longitude latitude</code>, longitude first, then
+latitude</p>
+<p>you should not get any results if you supply WKT that has clockwise
+winding order.</p>
+<p>also note that <code><a href='occ_search.html'>occ_search()</a></code>/<code><a href='occ_data.html'>occ_data()</a></code> behave differently with
+respect to WKT in that you can supply counter-clockwise WKT to those
+functions but they treat it as an exclusion, so get all data not
+inside the WKT area.</p>
+    
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
     
@@ -358,6 +376,8 @@ and the predicates docs
       <li><a href="#details">Details</a></li>
 
       <li><a href="#note">Note</a></li>
+
+      <li><a href="#geometry">geometry</a></li>
 
       <li><a href="#methods">Methods</a></li>
 
