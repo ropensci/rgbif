@@ -130,7 +130,9 @@ occ_issues <- function(.data, ..., mutate = NULL) {
   # handle downloads data
   is_dload <- FALSE
   if (
-    c("issue", "gbifID", "accessRights", "accrualMethod") %in% names(tmp) &&
+    all(
+      c("issue", "gbifID", "accessRights", "accrualMethod") %in% names(tmp)
+    ) &&
     !"issues" %in% names(tmp)
   ) {
     is_dload <- TRUE
