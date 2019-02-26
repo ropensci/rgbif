@@ -69,7 +69,7 @@ test_that("dates work correctly", {
     a <- occ_data(taxonKey = 3189815, year="2013")
     b <- occ_data(taxonKey = 3189815, month="6")
     expect_is(occ_data(taxonKey = key, year="1990,1991"), "gbif_data")
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   expect_equal(a$data$year[1], 2013)
   expect_equal(b$data$month[1], 6)
