@@ -99,7 +99,7 @@ test_that("dates work correctly", {
     a <- occ_search(taxonKey=3189815, year="2013", fields=c('name','year'))
     b <- occ_search(taxonKey=3189815, month="6", fields=c('name','month'))
     expect_is(occ_search(taxonKey=key, year="1990,1991"), "gbif")
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   expect_equal(a$data$year[1], 2013)
   expect_equal(b$data$month[1], 6)

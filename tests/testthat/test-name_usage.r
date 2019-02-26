@@ -117,7 +117,7 @@ test_that("name_usage related route works", {
   vcr::use_cassette("name_usage_data_related", {
     rte4 <- name_usage(key = 5231190, data = 'related')
     rte4a <- name_usage(key = 5135787, data = 'related')
-  })
+  }, preserve_exact_body_bytes = TRUE)
   
   expect_is(rte4, "list")
   expect_is(rte4a, "list")
@@ -159,7 +159,7 @@ test_that("name_usage distributions route works", {
   vcr::use_cassette("name_usage_data_distributions", {
     rte7 <- name_usage(key = 5231190, data = 'distributions')
     rte7a <- name_usage(key = 5231190, data = 'distributions')
-  })
+  }, preserve_exact_body_bytes = TRUE)
   
   expect_is(rte7, "list")
   expect_is(rte7a, "list")
