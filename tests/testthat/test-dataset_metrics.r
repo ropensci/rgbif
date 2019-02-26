@@ -5,14 +5,15 @@ test_that("dataset_metrics returns the correct class", {
     tt <- dataset_metrics('863e6d6b-f602-4495-ac30-881482b6f799')
     ss <- dataset_metrics(uuid = c('863e6d6b-f602-4495-ac30-881482b6f799',
       '66dd0960-2d7d-46ee-a491-87b9adcfe7b1'))
-    expect_is(tt, "list")
-    expect_is(tt$key, "integer")
-    expect_is(tt$datasetKey, "character")
-
-    expect_is(ss, "list")
-    expect_is(ss[[1]]$key, "integer")
-    expect_is(ss[[2]]$datasetKey, "character")
   })
+  
+  expect_is(tt, "list")
+  expect_is(tt$key, "integer")
+  expect_is(tt$datasetKey, "character")
+
+  expect_is(ss, "list")
+  expect_is(ss[[1]]$key, "integer")
+  expect_is(ss[[2]]$datasetKey, "character")
 })
 
 test_that("dataset_metrics fails well", {

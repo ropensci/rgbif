@@ -13,19 +13,19 @@ test_that("count_facet", {
 
     # get occurrences by georeferenced state
     d <- count_facet(by='georeferenced')
-
-    expect_is(a, "data.frame")
-    expect_is(b, "data.frame")
-    expect_is(c, "data.frame")
-    expect_is(d, "data.frame")
-    expect_is(a$country, "character")
-
-    # returns the correct dimensions
-    expect_equal(NCOL(a), 2)
-    expect_equal(NCOL(b), 2)
-    expect_equal(NCOL(c), 2)
-    expect_equal(NCOL(d), 2)
   }, preserve_exact_body_bytes = TRUE)
+  
+  expect_is(a, "data.frame")
+  expect_is(b, "data.frame")
+  expect_is(c, "data.frame")
+  expect_is(d, "data.frame")
+  expect_is(a$country, "character")
+
+  # returns the correct dimensions
+  expect_equal(NCOL(a), 2)
+  expect_equal(NCOL(b), 2)
+  expect_equal(NCOL(c), 2)
+  expect_equal(NCOL(d), 2)
 })
 
 test_that("fails correctly", {
