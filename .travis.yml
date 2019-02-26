@@ -9,19 +9,20 @@ apt_packages:
 matrix: 
   include:
     - os: linux
-       r: oldrel
+      r: oldrel
     - os: linux
-       r: release
-       env: R_CODECOV=true
+      r: release
+      env: R_CODECOV=true
+    - os: linux
+      r: devel
+      env: _R_CHECK_LENGTH_1_LOGIC2_=TRUE
 
 r_packages:
   - maps
   - scales
   - colorspace
   - raster
-
-r_github_packages:
-  - jimhester/covr
+  - covr
 
 before_install:
   - sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
