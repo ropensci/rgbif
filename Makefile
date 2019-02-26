@@ -30,3 +30,6 @@ doc:
 
 eg:
 	${RSCRIPT} -e "devtools::run_examples()"
+
+codemeta:
+	${RSCRIPT} -e "codemetar::write_codemeta()"
