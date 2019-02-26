@@ -117,7 +117,7 @@ occ_issues <- function(.data, ..., mutate = NULL) {
     tmp <- .data$data
   } else {
     many <- FALSE
-    if (attr(.data, "type") == "many") {
+    if (attr(.data, "type") %||% "" == "many") {
       many <- TRUE
       tmp <- data.table::setDF(
         data.table::rbindlist(lapply(.data, "[[", "data"),
