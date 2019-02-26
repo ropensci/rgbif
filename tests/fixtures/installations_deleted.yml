@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -17,22 +17,21 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 20:58:49 GMT
+      date: Tue, 26 Feb 2019 15:17:53 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/installation/deleted?limit=2
       cache-control: public, max-age=3601
-      x-varnish: 53970942 22548936
+      x-varnish: 764117656 775520472
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
-      content-length: '4948'
+      content-length: '4286'
       connection: keep-alive
     body:
       encoding: UTF-8
-      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":1070,"results":[{"key":"4f4e7439-d718-4908-86c2-3d596b3246b2","organizationKey":"7d77970a-28ba-43e3-9dc8-de37db3e1894","type":"IPT_INSTALLATION","title":"GBIF
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":1072,"results":[{"key":"99359045-8574-4e9a-9754-360021930292","organizationKey":"b648db34-3bf9-45eb-a65b-8176a3c3be88","type":"SYMBIOTA_INSTALLATION","title":"MyCoPortal","createdBy":"symbiotamycoportal","modifiedBy":"mgrosjean","created":"2019-02-01T13:29:37.100+0000","modified":"2019-02-11T08:48:54.362+0000","deleted":"2019-02-11T08:48:54.390+0000","disabled":false,"contacts":[],"endpoints":[],"machineTags":[],"tags":[],"identifiers":[],"comments":[]},{"key":"4f4e7439-d718-4908-86c2-3d596b3246b2","organizationKey":"7d77970a-28ba-43e3-9dc8-de37db3e1894","type":"IPT_INSTALLATION","title":"GBIF
         Mozambique IPT","description":"GBIF Mozambique IPT promove a partilha livre
         e aberta dos dados primários de biodiversidade e enriquece o conhecimento
         da biodiversidade moçambicana e mundial. Promove a integração de editores
@@ -65,15 +64,6 @@ http_interactions:
         foster the study of floral and fauna from primary education to higher education.","createdBy":"7d77970a-28ba-43e3-9dc8-de37db3e1894","modifiedBy":"mgrosjean","created":"2018-08-08T12:26:35.873+0000","modified":"2018-08-09T11:25:25.636+0000","deleted":"2018-08-09T11:25:25.655+0000","disabled":false,"contacts":[{"key":1006607,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Delcio
         Odorico","position":[],"email":["delodorico@gmail.com"],"phone":[],"homepage":[],"address":[],"createdBy":"7d77970a-28ba-43e3-9dc8-de37db3e1894","modifiedBy":"7d77970a-28ba-43e3-9dc8-de37db3e1894","created":"2018-08-08T12:26:35.943+0000","modified":"2018-08-08T12:26:35.943+0000"}],"endpoints":[{"key":319378,"type":"FEED","url":"http://197.249.6.202:8088/ipt/rss.do","createdBy":"7d77970a-28ba-43e3-9dc8-de37db3e1894","modifiedBy":"7d77970a-28ba-43e3-9dc8-de37db3e1894","created":"2018-08-08T12:26:35.997+0000","modified":"2018-08-08T12:26:35.997+0000","machineTags":[]}],"machineTags":[],"tags":[],"identifiers":[],"comments":[{"key":18570,"content":"2018/08/09
         [MG]: installation deleted after request from the technical point of contact.
-        It has been replaced by: e0f2d99d-f183-469a-adb1-f321a3c4609f","createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2018-08-09T11:25:09.172+0000","modified":"2018-08-09T11:25:09.172+0000"}]},{"key":"64e926e2-38df-49c4-a976-3fc2f4c09a2c","organizationKey":"a86e9e36-12ec-49a4-a94c-c0c981fffb71","type":"SYMBIOTA_INSTALLATION","title":"SEINet
-        Portal Network","description":"The SEINet Portal Network supports more than
-        a dozen regional web portals distributed across North America (http://symbiota.org/docs/seinet/).
-        Each regional portal accesses a shared data point to publish botanical data
-        that is particularly relevant to the user groups within the region. Together,
-        these portals publish over 13.6 million occurrences and 7.5 million images
-        associated with herbarium specimens. In addition, the network provides collection
-        management services to more than 200 herbaria. Assisting collections in publishing
-        this data out to the global research community is considered one of the central
-        missions of the network.","createdBy":"trobertson","modifiedBy":"trobertson","created":"2018-05-03T17:54:33.574+0000","modified":"2018-05-08T13:56:45.988+0000","deleted":"2018-05-08T13:56:46.008+0000","disabled":false,"contacts":[],"endpoints":[],"machineTags":[],"tags":[],"identifiers":[],"comments":[]}]}'
-  recorded_at: 2018-10-09 20:58:50 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+        It has been replaced by: e0f2d99d-f183-469a-adb1-f321a3c4609f","createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2018-08-09T11:25:09.172+0000","modified":"2018-08-09T11:25:09.172+0000"}]}]}'
+  recorded_at: 2019-02-26 15:17:54 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4

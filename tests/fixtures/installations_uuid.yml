@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -17,14 +17,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 20:58:48 GMT
+      date: Tue, 26 Feb 2019 15:17:52 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/installation/b77901f9-d9b0-47fa-94e0-dd96450aa2b4?limit=100
       cache-control: public, max-age=3601
-      x-varnish: 40176182 73630124
+      x-varnish: 772440371 775520457
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -36,5 +35,5 @@ http_interactions:
         VIR N.I. Vavilov","description":"IPT\r\nN.I.Vavilov Institute of Plant Genetic
         Resources (VIR)","createdBy":"8d30d714-63f5-4f6f-a1a4-d73d09aa60c4","modifiedBy":"b77901f9-d9b0-47fa-94e0-dd96450aa2b4","created":"2013-12-05T12:28:06.094+0000","modified":"2015-12-19T19:19:38.804+0000","disabled":false,"contacts":[{"key":24655,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Vladimir
         Korneev","position":[],"email":["ito@vir.nw.ru"],"phone":[],"homepage":[],"address":[],"createdBy":"8d30d714-63f5-4f6f-a1a4-d73d09aa60c4","modifiedBy":"b77901f9-d9b0-47fa-94e0-dd96450aa2b4","created":"2013-12-05T12:28:06.138+0000","modified":"2015-12-19T19:19:38.874+0000"}],"endpoints":[{"key":89965,"type":"FEED","url":"http://91.151.189.38:8080/viript/rss.do","createdBy":"b77901f9-d9b0-47fa-94e0-dd96450aa2b4","modifiedBy":"b77901f9-d9b0-47fa-94e0-dd96450aa2b4","created":"2015-12-19T19:19:39.011+0000","modified":"2015-12-19T19:19:39.011+0000","machineTags":[]}],"machineTags":[],"tags":[],"identifiers":[],"comments":[]}'
-  recorded_at: 2018-10-09 20:58:49 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+  recorded_at: 2019-02-26 15:17:53 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4

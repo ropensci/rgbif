@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
-      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -17,18 +17,17 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Sun, 17 Jun 2018 05:05:36 GMT
+      date: Tue, 26 Feb 2019 15:14:33 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/dataset/suggest?q=Amazon&limit=100&type=OCCURRENCE
       cache-control: public, max-age=3601
-      x-varnish: 489260106 489260086
+      x-varnish: 749341984 756746212
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
-      content-length: '19345'
+      content-length: '31337'
       connection: keep-alive
     body:
       encoding: UTF-8
@@ -46,14 +45,14 @@ http_interactions:
         covering two geographic patches of transparent water valleys; Manuripi and
         Itenez Rivers, separated by turbid water valleys originate in the Andes and
         the Savanna.</p>\n<p>See http://www.freshwaterbiodiversity.eu/metadb/bf_mdb_view.php?entryID=BFE_105
-        for additional metadata.</p>","type":"OCCURRENCE"},{"key":"9b73f44e-bbe1-4fd1-a7a9-c96c38dcf884","title":"Herbario
+        for additional metadata.</p>","type":"OCCURRENCE"},{"key":"d4b72404-5c42-49ea-ab78-9edb3c8957b6","title":"Herbarium
+        Amazonense","description":"Herbario Universidad Nacional de la Amazonía Peruana
+        - UNAP","type":"OCCURRENCE"},{"key":"9b73f44e-bbe1-4fd1-a7a9-c96c38dcf884","title":"Herbario
         Amazónico Colombiano","description":"Colección biológica del Herbario Amazónico
         Colombiano COAH, perteneciente al Instituto Amazónico de Investigaciones Científicas
         SINCHI y que se encuentra registrado ante el Registro Nacional de Colecciones
-        desde el 28 de marzo de 2001. \nEste recurso cuenta a la fecha con 90000 registros
-        de plantas.","type":"OCCURRENCE"},{"key":"d4b72404-5c42-49ea-ab78-9edb3c8957b6","title":"Herbarium
-        Amazonense","description":"Herbario Universidad Nacional de la Amazonía Peruana
-        - UNAP","type":"OCCURRENCE"},{"key":"3cc6171e-8c52-4f65-ad7a-32c74e395f29","title":"Herbarium
+        desde el 28 de marzo de 2001. \nEste recurso cuenta a la fecha con 82,943
+        registros de plantas.","type":"OCCURRENCE"},{"key":"3cc6171e-8c52-4f65-ad7a-32c74e395f29","title":"Herbarium
         - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"The INPA
         herbarium was founded in 1954 and is the largest collection of Amazon plants
         in Brazil with ca. 260,000 collections, 90% of them from the Amazon region.  The
@@ -70,7 +69,11 @@ http_interactions:
         región Andino-Amazónica; cada uno de los individuos registrados consta de
         su respectiva taxonomía, distribución, ecología y endemismo. Todo se resume
         en 250 especies registradas, de ellas hay 6 familias, 19 géneros y por lo
-        menos 34 especies.","type":"OCCURRENCE"},{"key":"22331d58-4a7e-40da-b7db-652a4d4d85ed","title":"HERBAM
+        menos 34 especies.","type":"OCCURRENCE"},{"key":"191cb056-d760-4b06-a7dd-ac247a45f05d","title":"Données
+        sur la chasse Parc amazonien de Guyane","description":"Enquête de terrain
+        sur les animaux chassés/vus sur une période de 2 ans par un panel de chasseurs
+        sélectionnés dans différents bassin de vie.\nLes données comporte entre autre
+        : le nom d''espèce, le lieu et la date d''observation","type":"OCCURRENCE"},{"key":"22331d58-4a7e-40da-b7db-652a4d4d85ed","title":"HERBAM
         - Herbário da Amazônia Meridional","description":"Coleção da flora da Amazônia
         Meridional, a qual engloba o arco do desmatamento ou corredor de unidades
         de conservação. Possui 10 mil unidades de curadoria. Hoje se constitui o maior
@@ -86,7 +89,29 @@ http_interactions:
         Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Symphyla
         collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"6834c3b4-50a7-42df-a87f-324239eaca66","title":"Diplopoda
         Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Diplopoda
-        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"cbc1ecc8-7b69-408a-9b42-8c2c72567523","title":"Fiocruz/CFAM
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"f2e4fddc-f85c-4c79-8629-e5b448298b21","title":"Fiocruz/CBAM
+        - Coleção de Bactérias da Amazônia","description":"A Coleção de Bactérias
+        da Amazônia, CBAM, que está inserida na Coleção Biológica do Instituto Leônidas
+        e Maria Deane, CBILMD, é constituída por um patrimônio de significância científica.
+        Trata-se de um acervo composto de bactérias da Amazônia, incluindo 578 isolados
+        identificados e conservados pelos métodos de óleo mineral, a -20ºC e liofilização.\nAs
+        culturas bacterianas que compõe a CBAM são provenientes de isolados clínicos
+        (orofaringe e fezes humanas), da microbiota bucal de animais e de ambiente
+        (água dos rios, igarapés e plantas). As principais bactérias inseridas na
+        Coleção são: Salmonella spp., Escherichia coli, Shigella spp., Neisseria meningitidis,
+        Staphylococcus aureus, entre outras. O acervo é de relevante importância,
+        uma vez que é composto por linhagens bacterianas isoladas de diferentes substratos
+        da Amazônia brasileira, região ainda pouco explorada quanto à sua riqueza
+        microbiana.\n\nA CBAM recebe para depósito culturas isoladas por pesquisadores
+        de vários laboratórios e universidades do país. Também, mantém grande número
+        de culturas tipo e de referência, empregadas em trabalhos taxonômicos ou relacionados
+        a testes com substâncias diversas.\n\nA CBAM é filiada à World Federation
+        for Culture Collections, WFCC, sob o registro WDCM 956, e foi credenciada
+        como Fiel Depositária de Amostras de Patrimônio Genético pelo Conselho de
+        Gestão de Patrimônio Genético (CGEN/ Ministério do Meio Ambiente), de acordo
+        com o Aviso de Credenciamento nº 063/2012/SECEX/CGEN, publicado no D.O.U.
+        em 19/09/2012.\nPara maiores informações acesse a página web da CBAM/For more
+        information please visit the CBAM website: http://cbam.fiocruz.br/","type":"OCCURRENCE"},{"key":"cbc1ecc8-7b69-408a-9b42-8c2c72567523","title":"Fiocruz/CFAM
         - Coleção de Fungos da Amazônia","description":"A Coleção de Fungos da Amazônia,
         CFAM, que está inserida na Coleção Biológica do Instituto Leônidas e Maria
         Deane (CBILMD), possui um acervo de relevante importância uma vez que é composta
@@ -112,33 +137,27 @@ http_interactions:
         pelo Conselho de Gestão de Patrimônio Genético (CGEN/ Ministério do Meio Ambiente),
         de acordo com o Aviso de Credenciamento nº 063/2012/SECEX/CGEN, publicado
         no D.O.U em 19/09/2012.Para maiores informações acesse a página web da CFAM/For
-        more information please visit the CFAM website: http://cfam.fiocruz.br/","type":"OCCURRENCE"},{"key":"f2e4fddc-f85c-4c79-8629-e5b448298b21","title":"Fiocruz/CBAM
-        - Coleção de Bactérias da Amazônia","description":"A Coleção de Bactérias
-        da Amazônia, CBAM, que está inserida na Coleção Biológica do Instituto Leônidas
-        e Maria Deane, CBILMD, é constituída por um patrimônio de significância científica.
-        Trata-se de um acervo composto de bactérias da Amazônia, incluindo 578 isolados
-        identificados e conservados pelos métodos de óleo mineral, a -20ºC e liofilização.\nAs
-        culturas bacterianas que compõe a CBAM são provenientes de isolados clínicos
-        (orofaringe e fezes humanas), da microbiota bucal de animais e de ambiente
-        (água dos rios, igarapés e plantas). As principais bactérias inseridas na
-        Coleção são: Salmonella spp., Escherichia coli, Shigella spp., Neisseria meningitidis,
-        Staphylococcus aureus, entre outras. O acervo é de relevante importância,
-        uma vez que é composto por linhagens bacterianas isoladas de diferentes substratos
-        da Amazônia brasileira, região ainda pouco explorada quanto à sua riqueza
-        microbiana.\n\nA CBAM recebe para depósito culturas isoladas por pesquisadores
-        de vários laboratórios e universidades do país. Também, mantém grande número
-        de culturas tipo e de referência, empregadas em trabalhos taxonômicos ou relacionados
-        a testes com substâncias diversas.\n\nA CBAM é filiada à World Federation
-        for Culture Collections, WFCC, sob o registro WDCM 956, e foi credenciada
-        como Fiel Depositária de Amostras de Patrimônio Genético pelo Conselho de
-        Gestão de Patrimônio Genético (CGEN/ Ministério do Meio Ambiente), de acordo
-        com o Aviso de Credenciamento nº 063/2012/SECEX/CGEN, publicado no D.O.U.
-        em 19/09/2012.\nPara maiores informações acesse a página web da CBAM/For more
-        information please visit the CBAM website: http://cbam.fiocruz.br/","type":"OCCURRENCE"},{"key":"32d90382-18b6-4660-ad99-8c4e9a5bdbe5","title":"Schizomida
+        more information please visit the CFAM website: http://cfam.fiocruz.br/","type":"OCCURRENCE"},{"key":"32d90382-18b6-4660-ad99-8c4e9a5bdbe5","title":"Schizomida
         Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Schizomida
         collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"aa1f4729-38eb-4bba-ae40-bc1c5b1e3e87","title":"Ricinulei
         Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Ricinulei
-        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"d9309bc6-e48c-4a92-a0a5-cb538a8096cd","title":"Porifera
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"f090e47d-7e22-4b83-abae-293786ee320d","title":"Peces
+        asociados a sistemas acuáticos del río Yarí, Amazonía Colombiana","description":"Actualmente
+        no existe un listado, ni registros confiables depositados en colecciones biológicas
+        de la íctiofauna presente en la cuenca del río Yarí. El muestreo se realizó
+        en siete días efectivos de trabajo de campo en seis puntos de muestreo. La
+        colecta de los peces se hizo mediante la combinación de diferentes artes de
+        pesca (líneas de mano, redes de arrastre y de espera). Se colectaron 50 taxones
+        (45 especies y 5 géneros), cinco órdenes y 14 familias. Se registran por primera
+        vez para la cuenca del Amazonas en Colombia Bryconella pallidifrons y Serrapinnus
+        sp.; se encontró una especie endémica (Centromochlus altae), dos migratorias
+        (Tetragonopterus argenteus y Ageneiosus inermis) y 15 especies requieren de
+        revisión taxonómica detallada, dado que son posibles nuevos registros para
+        la amazonia colombiana o pueden ser especies nuevas para la ciencia aun sin
+        describir; 29 taxones solo están presentes en la cuenca del Amazonas y 21
+        son compartidos entre Amazonas y Orinoco. Estos resultados fueron un insumo
+        más para la ampliación del PNN Chiribiquete, declarado por la Unesco como
+        Patrimonio de la Humanidad.","type":"OCCURRENCE"},{"key":"d9309bc6-e48c-4a92-a0a5-cb538a8096cd","title":"Porifera
         Collection - Instituto Nacional de Pesquisas da Amazônia","description":"Porifera
         collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"f28312b7-457b-4c40-a269-a66709ad3f80","title":"Porifera
         Collection - Instituto Nacional de Pesquisas da Amazônia","description":"Porifera
@@ -150,7 +169,14 @@ http_interactions:
         Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Thelyphonida
         collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"aa02f601-c82e-41bd-9cb4-c8816e702369","title":"Myxozoa
         Collection - Instituto Nacional de Pesquisas da Amazônia","description":"Myxozoa
-        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"4522ce7f-1aeb-46d8-8fc6-dd076386166c","title":"Status,
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"5889bb53-efcf-42a6-81ba-624d127a76c2","title":"Étude
+        pluridisciplinaire sur le mont Itoupé du Parc amazonien de Guyane","description":"Études
+        floristiques sur les palmiers, fougères, lianes, description des habitats
+        forestiers et relevés botaniques des plantes de sous-bois\nInventaire de la
+        grande faune, étude des peuplements d''amphibiens, de reptiles, de chauves-souris\nÉtude
+        ornithologique par une approche bioacoustique\nÉtude sur les poissons de torrents
+        d''altitude, inventaire des espèces\nÉchantillonnage des espèces de la canopée
+        présentes","type":"OCCURRENCE"},{"key":"4522ce7f-1aeb-46d8-8fc6-dd076386166c","title":"Status,
         ecología y conservación de loros Amazona en el Noreste de México","description":"<p>Los
         psitácidos o pericos son un grupo de aves que adquirieron en los últimos años
         una gran importancia como objetos de estudio porque a pesar de sus múltiples
@@ -194,37 +220,149 @@ http_interactions:
         realizado entre 2012/2013 e baseado em observações diretas ao longo do transecto
         central de cada parcela. Todos os indivíduos observados foram categorizados
         por formas de vida (árvore, arbusto, sub-arbusto e ervas) e habitats definidos
-        por diferentes restrições hidro-edáficas.","type":"OCCURRENCE"},{"key":"dd282bd6-6e30-4f02-bb36-6bdae0a46090","title":"Detection
-        histories for eight species of Amazona parrots in Venezuela during the NeoMaps
-        bird surveys in 2010","type":"OCCURRENCE"},{"key":"8ab22acf-a3eb-4a67-9eec-5d07631011be","title":"Scorpiones
-        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Scorpiones
-        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"f99eba58-668d-47f1-bf3d-e53dc88ad395","title":"Amblypygi
-        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Amblypygi
-        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"c001a28f-6f37-40e9-8e34-e0ada1772e4d","title":"Hymenoptera
+        por diferentes restrições hidro-edáficas.","type":"OCCURRENCE"},{"key":"fbb1a36b-20a9-484b-b78b-d5ff2161225d","title":"Aves
+        de la transición Andino-Amazónica del departamento del Caquetá - Proyecto
+        Colombia BIO","description":"Aves encontradas en la expedición Colombia Bio
+        a Belén de los Andaquíes.","type":"OCCURRENCE"},{"key":"c001a28f-6f37-40e9-8e34-e0ada1772e4d","title":"Hymenoptera
         Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Hymenoptera
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"1412d4de-9982-4f96-8393-3dc9fe1df74f","title":"Diptera
+        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Diptera
         collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"b39891a1-2eb2-492d-bb5b-4da1007ecde5","title":"Ephemeroptera  Collection
         - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Ephemeroptera  Collection
         - Instituto Nacional de Pesquisas da Amazônia (INPA)","type":"OCCURRENCE"},{"key":"2f62b658-b8eb-4d96-a580-3867f9107567","title":"Phasmatodea
         Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Phasmatodea
-        collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","type":"OCCURRENCE"},{"key":"0226cfa0-2284-4dbf-be05-cad350f50b61","title":"Ortopthera
-        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Ortopthera
         collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","type":"OCCURRENCE"},{"key":"c76230d9-61a0-4643-a227-bf8e2f78e7b6","title":"Blattaria
         Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Blattaria
-        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"b8690829-221b-49df-91bc-78bd1fdced24","title":"Crustacea
-        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Crustacea
-        collection &#64; Instituto Nacional de Pesquisas da Amazônia (INPA)","type":"OCCURRENCE"},{"key":"81c2706e-d91a-41d8-b7d9-1553f53b7117","title":"Herpetology
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"d0318a4e-8d55-4da6-b912-e90dd6ed960b","title":"Ictiologia
+        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Scorpiones
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"81c2706e-d91a-41d8-b7d9-1553f53b7117","title":"Herpetology
         Collection - Instituto Nacional de Pesquisas da Amazônia","description":"Herpetology
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"f99eba58-668d-47f1-bf3d-e53dc88ad395","title":"Amblypygi
+        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Amblypygi
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"8ab22acf-a3eb-4a67-9eec-5d07631011be","title":"Scorpiones
+        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Scorpiones
         collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"f67c16a4-4734-4d7a-9418-53f528abc110","title":"Opiliones
         Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Opiniones
         collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"ba29109c-01c2-46b3-b594-2247bfbb0ed9","title":"Onychophora
         Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Onychophora
-        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"ec5c8ed6-468e-41b0-bb4c-934b36fb3733","title":"Hemiptera  Collection
+        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"0226cfa0-2284-4dbf-be05-cad350f50b61","title":"Ortopthera
+        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Ortopthera
+        collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","type":"OCCURRENCE"},{"key":"b8690829-221b-49df-91bc-78bd1fdced24","title":"Crustacea
+        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Crustacea
+        collection &#64; Instituto Nacional de Pesquisas da Amazônia (INPA)","type":"OCCURRENCE"},{"key":"ec5c8ed6-468e-41b0-bb4c-934b36fb3733","title":"Hemiptera  Collection
         - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Hemiptera
-        collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","type":"OCCURRENCE"},{"key":"d0318a4e-8d55-4da6-b912-e90dd6ed960b","title":"Ictiologia
-        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Scorpiones
-        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"1412d4de-9982-4f96-8393-3dc9fe1df74f","title":"Diptera
-        Collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","description":"Diptera
-        collection from Instituto Nacional de Pesquisas da Amazônia.","type":"OCCURRENCE"},{"key":"7aeb3ded-7443-4512-95f7-2ec7ab0f308c","title":"EAFM
+        collection - Instituto Nacional de Pesquisas da Amazônia (INPA)","type":"OCCURRENCE"},{"key":"dd282bd6-6e30-4f02-bb36-6bdae0a46090","title":"Detection
+        histories for eight species of Amazona parrots in Venezuela during the NeoMaps
+        bird surveys in 2010","description":"Documenting changes in distribution is
+        necessary for understanding species&#39; response to environmental changes,
+        but data on species distributions are heterogeneous in accuracy and resolution.
+        Combining different data sources and methodological approaches can fill gaps
+        in knowledge about the dynamic processes driving changes in species-rich,
+        but data-poor regions. We combined recent bird survey data from the Neotropical
+        Biodiversity Mapping Initiative (NeoMaps) with historical distribution records
+        to estimate potential changes in the distribution of eight species of Amazon
+        parrots in Venezuela. Using environmental covariates and presence-only data
+        from museum collections and the literature, we first used maximum likelihood
+        to fit a species distribution model (SDM) estimating a historical maximum
+        probability of occurrence for each species. We then used recent, NeoMaps survey
+        data to build single-season occupancy models (OM) with the same environmental
+        covariates, as well as with time- and effort-dependent detectability, resulting
+        in estimates of the current probability of occurrence. We finally calculated
+        the disagreement between predictions as a matrix of probability of change
+        in the state of occurrence. Our results suggested negative changes for the
+        only restricted, threatened species, Amazona barbadensis, which has been independently
+        confirmed with field studies. Two of the three remaining widespread species
+        that were detected, Amazona amazonica, Amazona ochrocephala, also had a high
+        probability of negative changes in northern Venezuela, but results were not
+        conclusive for Amazona farinosa. The four remaining species were undetected
+        in recent field surveys; three of these were most probably absent from the
+        survey locations (Amazona autumnalis, Amazona mercenaria and Amazona festiva),
+        while a fourth (Amazona dufresniana) requires more intensive targeted sampling
+        to estimate its current status. Our approach is unique in taking full advantage
+        of available, but limited data, and in detecting a high probability of change
+        even for rare and patchily-distributed species. However, it is presently limited
+        to species meeting the strong assumptions required for maximum-likelihood
+        estimation with presence-only data, including very high detectability and
+        representative sampling of its historical distribution.","type":"OCCURRENCE"},{"key":"7b8bb6b4-b245-4079-ad21-89d5e9d4aa0f","title":"Anfibios
+        de la transición Andino-Amazónica del departamento del Caquetá - Proyecto
+        Colombia BIO","description":"Se registran los anfibios presentes en un transecto
+        altitudinal con el fin de aumentar el conocimiento acerca de la biodiversidad
+        de este grupo en la transición Andino-Amazónica del departamento de Caquetá.  Se
+        realizaron siete campamentos ubicados estratégicamente a diferentes alturas
+        desde los 2000 hasta los 500 m.s.n.m. En cada campamento se realizaron muestreos
+        por búsqueda libre y se colectaron vouchers de las especies presentes en la
+        diferentes altitudes.","type":"OCCURRENCE"},{"key":"2ca1c052-4c80-4eb6-96b8-e71b9f761b36","title":"Mamíferos
+        colectados en la transición Andino-Amazónica del  departamento del Caquetá
+        - Proyecto Colombia BIO","description":"Se realizó una evaluación de la diversidad
+        de mamíferos en un transecto altitudinal, ingresando desde Acevedo (Huila)
+        a 1834 msnm hasta la vereda Las Verdes en Belén de los Andaquíes (Caquetá)
+        a 477 msnm. Para la captura de murciélagos se utilizaron entre 8 y 16 redes
+        niebla de 6 y de 12 m de longitud ubicadas a una altura entre los 0 y los
+        3 m entre las 17:30 y las 24 h. Para la captura de pequeños mamíferos no voladores
+        se instaló un transecto de 20 trampas Sherman en las cinco primeras localidades.
+        Se capturaron un total de 285 individuos pertenecientes a dos familias de
+        20 géneros y 41 especies. Adicionalmente se registraron 12 especies de mamíferos
+        no voladores.","type":"OCCURRENCE"},{"key":"086abfe4-f8c7-439c-a462-3f3453fa0a11","title":"Murciélagos
+        observados en la transición Andino Amazónica del departamento del Caquetá
+        - Proyecto Colombia BIO","description":"Se realizó una evaluación de la diversidad
+        de mamíferos en un transecto altitudinal, ingresando desde Acevedo (Huila)
+        a 1834 msnm hasta la vereda Las Verdes en Belén de los Andaquíes (Caquetá)
+        a 477 msnm. Para la captura de murciélagos se utilizaron entre 8 y 16 redes
+        niebla de 6 y de 12 m de longitud ubicadas a una altura entre los 0 y los
+        3 m entre las 17:30 y las 24 h. Para la captura de pequeños mamíferos no voladores
+        se instaló un transecto de 20 trampas Sherman en las cinco primeras localidades.
+        Se capturaron un total de 285 individuos pertenecientes a dos familias de
+        20 géneros y 41 especies. Adicionalmente se registraron 12 especies de mamíferos
+        no voladores.","type":"OCCURRENCE"},{"key":"33785ae9-207b-4cad-9511-56d8a6ee58a3","title":"Plantas
+        de la transición Andino-Amazónica del departamento del Caquetá - Proyecto
+        Colombia BIO","description":"Registro de plantas presentes en un gradiente
+        altitudinal que va desde los 2.700 hasta 350 msnm., que corresponde al área
+        del piedemonte donde se concentran especies endémicas, amenazadas y una elevada
+        diversidad biológica con muchos vacíos de información. Se encuentra localizado
+        en la transición Andino-Amazónica del departamento de Caquetá, en el flaco
+        oriental de la cordillera Oriental, iniciando en el departamento de Huila,
+        municipio de Acevedo y descendiendo a lo largo del camino Andaki hasta el
+        municipio de Belén de los Andaquíes en el departamento de Caquetá. Abarca
+        desde el bosque de niebla hasta el piedemonte amazónico.","type":"OCCURRENCE"},{"key":"4b99d5d8-5d62-4f17-89cc-b1bd3bc242ec","title":"Mamíferos
+        medianos y grandes en la transición Andino-Amazónica del departamento del
+        Caquetá - Proyecto Colombia BIO","description":"Se realizó una evaluación
+        de biodiversidad de mamíferos medianos y grandes en un transecto altitudinal,
+        desde Acevedo (Huila) a 1834 msnm hasta la vereda Las Verdes en Belén de los
+        Andaquíes (Caquetá) a 477 msnm, sobre coberturas de bosque denso alto de tierra
+        firme. Se establecieron 67 estaciones de fototrampeo a lo largo del transecto
+        altitudinal donde se ubicaron cámaras de rastreo que se mantuvieron activas
+        con un esfuerzo de muestreo de 86.3 horas/cámara, para un total acumulado
+        de 5785.12 horas de muestreo. Adicionalmente se realizaron recorridos diurnos
+        (09:00 – 18:00 horas) con algunas observaciones nocturnas, para búsqueda de
+        rastros/huellas y avistamiento directo de mamíferos medianos y grandes. En
+        total se registraron 23 especies de mamíferos medianos y grandes a partir
+        de 327 fotografías (10 especies) y registro de huellas (21 especies).","type":"OCCURRENCE"},{"key":"663bce18-2448-4666-9760-ee07bbded2fa","title":"Peces
+        de la transición Andino-Amazónica del departamento del Caquetá - Proyecto
+        Colombia BIO","description":"Listado taxonómico de especies de peces identificados
+        en un gradiente altitudinal (410 a 1460 m.s.n.m.) del piedemonte amazónico,
+        en el departamento de Caquetá. Este recurso hace parte de la iniciativa de
+        Colciencias Colombia-Bio.","type":"OCCURRENCE"},{"key":"d39b2d99-8595-4f78-954b-22bfaec43e32","title":"Reptiles
+        de la transición Andino-Amazónica del departamento del Caquetá - Proyecto
+        Colombia BIO","description":"El flanco oriental de la Cordillera oriental
+        (foCO) en Colombia, está catalogada como una de las áreas más importantes
+        para la conservación de Los Andes de Colombia (IAvH 1996), a pesar de esto,
+        muy poco se conoce acerca de la diversidad de reptiles de esta región. En
+        marco de las expediciones Colombia Bio, organizadas y financiadas por COLCIENCIAS,  se
+        realizó un estudio de la composición de los reptiles de la transición andino-amazónica
+        en el departamento del Caquetá, Colombia, especificamente en el municipio
+        de Belen de los Andaquíes. Se realizaron muestreos en ocho estaciones en el
+        foCO, que se encuentran desde los 400 m hasta los 2200 m de altitud aproximadamente,
+        seis de las estaciones se encuentran dentro del Parque Municipal Natural Andaki.
+        Los muestreos se realizaron entre el 22 de enero y el 8 de febrero de 2017.
+        Se presenta una base de datos con los registros biológicos de los reptiles
+        recolectados durante la Expedición Colombia Bio. Se obtuviero un total de
+        418 registros que corresponden a 41 especies.","type":"OCCURRENCE"},{"key":"94281e3c-4518-498a-acd7-529f2cb61541","title":"Bacterias
+        y Arqueas de la transición Andino-Amazónica del departamento del Caquetá -
+        Proyecto Colombia BIO","description":"66932 registros de biodiversidad de
+        Bacterias y Archaeas en suelos andino-amazónicos en el camino Andaki, departamento
+        de Caquetá (Colombia) colectados en el camino Andaquí en marco de la expedición
+        Colombia BIO, en un gradiente altitudinal con puntos de muestreo desde los
+        500 metros hasta los 1875.","type":"OCCURRENCE"},{"key":"7aeb3ded-7443-4512-95f7-2ec7ab0f308c","title":"EAFM
         - Herbário do Instituto Federal de Educação, Ciência e Tecnologia do Amazonas","description":"Acervo
         iniciado em 2008 com ênfase em espécies da flora vascular amazônica. Além
         da fitodiversidade em geral, o Herbário EAFM tem grande interesse em amostras
@@ -236,6 +374,12 @@ http_interactions:
         em materiais de consumo ou outros. Atualmente, nosso acervo é composto aproximadamente
         6000 exsicatas. É uma coleção relevante, pois trabalha majoritariamente com
         estudantes de nível médio (técnico), contribuindo para desmistificar a botânica
-        e os herbários junto a um público jovem e a comunidade em geral (extensão).","type":"OCCURRENCE"}]'
-  recorded_at: 2018-06-17 05:05:37 GMT
-  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2
+        e os herbários junto a um público jovem e a comunidade em geral (extensão).","type":"OCCURRENCE"},{"key":"33e5163b-2cb6-46ff-8c2f-2d67b28459ae","title":"Hongos
+        formadores de micorrizas arbusculares de la transición Andino-Amazónica del
+        departamento del Caquetá - Proyecto Colombia BIO","description":"Hongos formadores
+        de micorrizas arbusculares (como esporas y micelio) del suelo colectados en
+        el camino Andaquí en el marco de la expedición Colombia BIO, colectados a
+        una profundidad de 0-10cm x 5 réplicas, en un gradiente altitudinal con puntos
+        de muestreos a cada 125 metros, desde los 500 metros hasta los 1875.","type":"OCCURRENCE"}]'
+  recorded_at: 2019-02-26 15:14:34 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4

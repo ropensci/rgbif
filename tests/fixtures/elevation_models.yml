@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.1.0.9311)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.1.0.9311)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -17,7 +17,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Thu, 21 Feb 2019 00:20:18 GMT
+      date: Tue, 26 Feb 2019 15:15:39 GMT
       server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips
       cache-control: no-cache
       access-control-allow-origin: '*'
@@ -31,7 +31,7 @@ http_interactions:
         340
         1524
         1769
-  recorded_at: 2019-02-21 00:20:22 GMT
+  recorded_at: 2019-02-26 15:15:48 GMT
   recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
@@ -42,8 +42,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.1.0.9311)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.1.0.9311)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -51,7 +51,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Thu, 21 Feb 2019 00:20:19 GMT
+      date: Tue, 26 Feb 2019 15:15:41 GMT
       server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips
       cache-control: no-cache
       access-control-allow-origin: '*'
@@ -65,7 +65,7 @@ http_interactions:
         339
         1521
         1769
-  recorded_at: 2019-02-21 00:20:22 GMT
+  recorded_at: 2019-02-26 15:15:48 GMT
   recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
@@ -76,8 +76,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.1.0.9311)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.1.0.9311)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -85,7 +85,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Thu, 21 Feb 2019 00:20:20 GMT
+      date: Tue, 26 Feb 2019 15:15:44 GMT
       server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips
       cache-control: no-cache
       access-control-allow-origin: '*'
@@ -99,7 +99,7 @@ http_interactions:
         336
         1519
         1764
-  recorded_at: 2019-02-21 00:20:22 GMT
+  recorded_at: 2019-02-26 15:15:48 GMT
   recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
@@ -110,8 +110,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.1.0.9311)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.1.0.9311)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -119,7 +119,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Thu, 21 Feb 2019 00:20:20 GMT
+      date: Tue, 26 Feb 2019 15:15:45 GMT
       server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips
       cache-control: no-cache
       access-control-allow-origin: '*'
@@ -129,7 +129,7 @@ http_interactions:
       encoding: UTF-8
       string: |
         1460
-  recorded_at: 2019-02-21 00:20:22 GMT
+  recorded_at: 2019-02-26 15:15:48 GMT
   recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
@@ -140,8 +140,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.1.0.9311)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.1.0.9311)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -149,7 +149,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Thu, 21 Feb 2019 00:20:21 GMT
+      date: Tue, 26 Feb 2019 15:15:45 GMT
       server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips
       cache-control: no-cache
       access-control-allow-origin: '*'
@@ -159,7 +159,7 @@ http_interactions:
       encoding: UTF-8
       string: |
         303
-  recorded_at: 2019-02-21 00:20:22 GMT
+  recorded_at: 2019-02-26 15:15:48 GMT
   recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
@@ -170,8 +170,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.1.0.9311)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.1.0.9311)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -179,7 +179,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Thu, 21 Feb 2019 00:20:21 GMT
+      date: Tue, 26 Feb 2019 15:15:46 GMT
       server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips
       cache-control: no-cache
       access-control-allow-origin: '*'
@@ -189,7 +189,7 @@ http_interactions:
       encoding: UTF-8
       string: |
         365
-  recorded_at: 2019-02-21 00:20:22 GMT
+  recorded_at: 2019-02-26 15:15:48 GMT
   recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
@@ -200,8 +200,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.1.0.9311)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.1.0.9311)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -209,7 +209,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Thu, 21 Feb 2019 00:20:21 GMT
+      date: Tue, 26 Feb 2019 15:15:47 GMT
       server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips
       cache-control: no-cache
       access-control-allow-origin: '*'
@@ -219,7 +219,7 @@ http_interactions:
       encoding: UTF-8
       string: |
         1515
-  recorded_at: 2019-02-21 00:20:22 GMT
+  recorded_at: 2019-02-26 15:15:48 GMT
   recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
@@ -230,8 +230,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.1.0.9311)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.1.0.9311)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -239,7 +239,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Thu, 21 Feb 2019 00:20:22 GMT
+      date: Tue, 26 Feb 2019 15:15:47 GMT
       server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips
       cache-control: no-cache
       access-control-allow-origin: '*'
@@ -249,5 +249,5 @@ http_interactions:
       encoding: UTF-8
       string: |
         1767
-  recorded_at: 2019-02-21 00:20:22 GMT
+  recorded_at: 2019-02-26 15:15:48 GMT
   recorded_with: vcr/0.2.6, webmockr/0.3.4

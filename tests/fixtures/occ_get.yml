@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -17,32 +17,32 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 21:45:12 GMT
+      date: Tue, 26 Feb 2019 17:24:19 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/855998194
       cache-control: public, max-age=3601
-      x-varnish: 17537933 79593733
+      x-varnish: 825197636 825197633
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
-      content-length: '2573'
+      content-length: '2654'
       connection: keep-alive
     body:
       encoding: UTF-8
-      string: '{"key":855998194,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","networkKeys":[],"installationKey":"4346b227-ca68-4d54-8a77-909148492e0b","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2018-10-09T16:41:35.793+0000","lastParsed":"2018-07-31T19:01:56.585+0000","crawlId":167,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","individualCount":2,"lifeStage":"ADULT","taxonKey":8211070,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":1459,"familyKey":9456,"genusKey":2437489,"speciesKey":8211070,"scientificName":"Sciurus
-        vulgaris Linnaeus, 1758","kingdom":"Animalia","phylum":"Chordata","order":"Rodentia","family":"Sciuridae","genus":"Sciurus","species":"Sciurus
-        vulgaris","genericName":"Sciurus","specificEpithet":"vulgaris","taxonRank":"SPECIES","decimalLongitude":12.043857,"decimalLatitude":58.406765,"coordinateUncertaintyInMeters":50.0,"continent":"EUROPE","year":2013,"month":4,"day":17,"eventDate":"2013-04-17T00:00:00.000+0000","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84","RECORDED_DATE_MISMATCH"],"modified":"2013-04-17T12:37:00.000+0000","lastInterpreted":"2018-07-31T19:01:56.594+0000","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"SE","country":"Sweden","rightsHolder":"Hans
-        Petersson","county":"Bohuslän","municipality":"Uddevalla","associatedReferences":"urn:lsid:artportalen.se:Sighting:Vertebrate.65338","identificationVerificationStatus":"Unvalidated","gbifID":"855998194","language":"Swedish","type":"Occurrence","taxonID":"urn:lsid:dyntaxa.se:Taxon:102606","occurrenceStatus":"Present","catalogNumber":"34275321","vernacularName":"ekorre","institutionCode":"ArtDatabanken","taxonConceptID":"urn:lsid:dyntaxa.se:Taxon:102606","eventTime":"09:00:00
+      string: '{"key":855998194,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","networkKeys":[],"installationKey":"4346b227-ca68-4d54-8a77-909148492e0b","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2019-02-24T00:38:53.781+0000","lastParsed":"2018-07-31T19:01:56.585+0000","crawlId":186,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","individualCount":2,"lifeStage":"ADULT","taxonKey":8211070,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":1459,"familyKey":9456,"genusKey":2437489,"speciesKey":8211070,"acceptedTaxonKey":8211070,"scientificName":"Sciurus
+        vulgaris Linnaeus, 1758","acceptedScientificName":"Sciurus vulgaris Linnaeus,
+        1758","kingdom":"Animalia","phylum":"Chordata","order":"Rodentia","family":"Sciuridae","genus":"Sciurus","species":"Sciurus
+        vulgaris","genericName":"Sciurus","specificEpithet":"vulgaris","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","decimalLongitude":12.043857,"decimalLatitude":58.406765,"coordinateUncertaintyInMeters":50.0,"continent":"EUROPE","year":2013,"month":4,"day":17,"eventDate":"2013-04-17T09:00:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2013-04-17T12:37:00.000+0000","lastInterpreted":"2018-12-23T00:45:52.995+0000","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"SE","country":"Sweden","rightsHolder":"Hans
+        Petersson","associatedReferences":"urn:lsid:artportalen.se:Sighting:Vertebrate.65338","county":"Bohuslän","municipality":"Uddevalla","identificationVerificationStatus":"Unvalidated","language":"Swedish","gbifID":"855998194","type":"Occurrence","taxonID":"urn:lsid:dyntaxa.se:Taxon:102606","occurrenceStatus":"Present","catalogNumber":"34275321","vernacularName":"ekorre","institutionCode":"ArtDatabanken","taxonConceptID":"urn:lsid:dyntaxa.se:Taxon:102606","eventTime":"09:00:00
         - 09:00:00","behavior":"Foraging","identifier":"urn:lsid:artportalen.se:Sighting:49366","informationWithheld":"More
         information can be obtained from the Data Provider.","endDayOfYear":"107","locality":"Holmen
         Lane Ryr","collectionCode":"Artportalen","occurrenceID":"urn:lsid:artportalen.se:Sighting:49366","recordedBy":"Hans
         Petersson","startDayOfYear":"107","datasetID":"urn:lsid:swedishlifewatch.se:DataProvider:1","occurrenceRemarks":"Åt
         havregryn på matningen","accessRights":"Free usage","higherClassification":"Biota;Animalia;Chordata;Craniata;Vertebrata;Gnathostomata;Mammalia;Placentalia;Boreoeutheria;Euarchontoglires;Rodentia;Sciuromorpha;Sciuridae;Sciurinae"}'
-  recorded_at: 2018-10-09 21:45:15 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+  recorded_at: 2019-02-26 17:24:22 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/855998194
@@ -52,8 +52,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -61,32 +61,32 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 21:45:12 GMT
+      date: Tue, 26 Feb 2019 17:24:19 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/855998194
       cache-control: public, max-age=3601
-      x-varnish: 79298815 79593733
+      x-varnish: 813565862 825197633
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
-      content-length: '2573'
+      content-length: '2654'
       connection: keep-alive
     body:
       encoding: UTF-8
-      string: '{"key":855998194,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","networkKeys":[],"installationKey":"4346b227-ca68-4d54-8a77-909148492e0b","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2018-10-09T16:41:35.793+0000","lastParsed":"2018-07-31T19:01:56.585+0000","crawlId":167,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","individualCount":2,"lifeStage":"ADULT","taxonKey":8211070,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":1459,"familyKey":9456,"genusKey":2437489,"speciesKey":8211070,"scientificName":"Sciurus
-        vulgaris Linnaeus, 1758","kingdom":"Animalia","phylum":"Chordata","order":"Rodentia","family":"Sciuridae","genus":"Sciurus","species":"Sciurus
-        vulgaris","genericName":"Sciurus","specificEpithet":"vulgaris","taxonRank":"SPECIES","decimalLongitude":12.043857,"decimalLatitude":58.406765,"coordinateUncertaintyInMeters":50.0,"continent":"EUROPE","year":2013,"month":4,"day":17,"eventDate":"2013-04-17T00:00:00.000+0000","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84","RECORDED_DATE_MISMATCH"],"modified":"2013-04-17T12:37:00.000+0000","lastInterpreted":"2018-07-31T19:01:56.594+0000","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"SE","country":"Sweden","rightsHolder":"Hans
-        Petersson","county":"Bohuslän","municipality":"Uddevalla","associatedReferences":"urn:lsid:artportalen.se:Sighting:Vertebrate.65338","identificationVerificationStatus":"Unvalidated","gbifID":"855998194","language":"Swedish","type":"Occurrence","taxonID":"urn:lsid:dyntaxa.se:Taxon:102606","occurrenceStatus":"Present","catalogNumber":"34275321","vernacularName":"ekorre","institutionCode":"ArtDatabanken","taxonConceptID":"urn:lsid:dyntaxa.se:Taxon:102606","eventTime":"09:00:00
+      string: '{"key":855998194,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","networkKeys":[],"installationKey":"4346b227-ca68-4d54-8a77-909148492e0b","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2019-02-24T00:38:53.781+0000","lastParsed":"2018-07-31T19:01:56.585+0000","crawlId":186,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","individualCount":2,"lifeStage":"ADULT","taxonKey":8211070,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":1459,"familyKey":9456,"genusKey":2437489,"speciesKey":8211070,"acceptedTaxonKey":8211070,"scientificName":"Sciurus
+        vulgaris Linnaeus, 1758","acceptedScientificName":"Sciurus vulgaris Linnaeus,
+        1758","kingdom":"Animalia","phylum":"Chordata","order":"Rodentia","family":"Sciuridae","genus":"Sciurus","species":"Sciurus
+        vulgaris","genericName":"Sciurus","specificEpithet":"vulgaris","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","decimalLongitude":12.043857,"decimalLatitude":58.406765,"coordinateUncertaintyInMeters":50.0,"continent":"EUROPE","year":2013,"month":4,"day":17,"eventDate":"2013-04-17T09:00:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2013-04-17T12:37:00.000+0000","lastInterpreted":"2018-12-23T00:45:52.995+0000","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"SE","country":"Sweden","rightsHolder":"Hans
+        Petersson","associatedReferences":"urn:lsid:artportalen.se:Sighting:Vertebrate.65338","county":"Bohuslän","municipality":"Uddevalla","identificationVerificationStatus":"Unvalidated","language":"Swedish","gbifID":"855998194","type":"Occurrence","taxonID":"urn:lsid:dyntaxa.se:Taxon:102606","occurrenceStatus":"Present","catalogNumber":"34275321","vernacularName":"ekorre","institutionCode":"ArtDatabanken","taxonConceptID":"urn:lsid:dyntaxa.se:Taxon:102606","eventTime":"09:00:00
         - 09:00:00","behavior":"Foraging","identifier":"urn:lsid:artportalen.se:Sighting:49366","informationWithheld":"More
         information can be obtained from the Data Provider.","endDayOfYear":"107","locality":"Holmen
         Lane Ryr","collectionCode":"Artportalen","occurrenceID":"urn:lsid:artportalen.se:Sighting:49366","recordedBy":"Hans
         Petersson","startDayOfYear":"107","datasetID":"urn:lsid:swedishlifewatch.se:DataProvider:1","occurrenceRemarks":"Åt
         havregryn på matningen","accessRights":"Free usage","higherClassification":"Biota;Animalia;Chordata;Craniata;Vertebrata;Gnathostomata;Mammalia;Placentalia;Boreoeutheria;Euarchontoglires;Rodentia;Sciuromorpha;Sciuridae;Sciurinae"}'
-  recorded_at: 2018-10-09 21:45:15 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+  recorded_at: 2019-02-26 17:24:22 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/855998194
@@ -96,8 +96,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -105,32 +105,32 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 21:45:12 GMT
+      date: Tue, 26 Feb 2019 17:24:19 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/855998194
       cache-control: public, max-age=3601
-      x-varnish: 4593880 79593733
+      x-varnish: 822150899 825197633
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
-      content-length: '2573'
+      content-length: '2654'
       connection: keep-alive
     body:
       encoding: UTF-8
-      string: '{"key":855998194,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","networkKeys":[],"installationKey":"4346b227-ca68-4d54-8a77-909148492e0b","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2018-10-09T16:41:35.793+0000","lastParsed":"2018-07-31T19:01:56.585+0000","crawlId":167,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","individualCount":2,"lifeStage":"ADULT","taxonKey":8211070,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":1459,"familyKey":9456,"genusKey":2437489,"speciesKey":8211070,"scientificName":"Sciurus
-        vulgaris Linnaeus, 1758","kingdom":"Animalia","phylum":"Chordata","order":"Rodentia","family":"Sciuridae","genus":"Sciurus","species":"Sciurus
-        vulgaris","genericName":"Sciurus","specificEpithet":"vulgaris","taxonRank":"SPECIES","decimalLongitude":12.043857,"decimalLatitude":58.406765,"coordinateUncertaintyInMeters":50.0,"continent":"EUROPE","year":2013,"month":4,"day":17,"eventDate":"2013-04-17T00:00:00.000+0000","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84","RECORDED_DATE_MISMATCH"],"modified":"2013-04-17T12:37:00.000+0000","lastInterpreted":"2018-07-31T19:01:56.594+0000","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"SE","country":"Sweden","rightsHolder":"Hans
-        Petersson","county":"Bohuslän","municipality":"Uddevalla","associatedReferences":"urn:lsid:artportalen.se:Sighting:Vertebrate.65338","identificationVerificationStatus":"Unvalidated","gbifID":"855998194","language":"Swedish","type":"Occurrence","taxonID":"urn:lsid:dyntaxa.se:Taxon:102606","occurrenceStatus":"Present","catalogNumber":"34275321","vernacularName":"ekorre","institutionCode":"ArtDatabanken","taxonConceptID":"urn:lsid:dyntaxa.se:Taxon:102606","eventTime":"09:00:00
+      string: '{"key":855998194,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","networkKeys":[],"installationKey":"4346b227-ca68-4d54-8a77-909148492e0b","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2019-02-24T00:38:53.781+0000","lastParsed":"2018-07-31T19:01:56.585+0000","crawlId":186,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","individualCount":2,"lifeStage":"ADULT","taxonKey":8211070,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":1459,"familyKey":9456,"genusKey":2437489,"speciesKey":8211070,"acceptedTaxonKey":8211070,"scientificName":"Sciurus
+        vulgaris Linnaeus, 1758","acceptedScientificName":"Sciurus vulgaris Linnaeus,
+        1758","kingdom":"Animalia","phylum":"Chordata","order":"Rodentia","family":"Sciuridae","genus":"Sciurus","species":"Sciurus
+        vulgaris","genericName":"Sciurus","specificEpithet":"vulgaris","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","decimalLongitude":12.043857,"decimalLatitude":58.406765,"coordinateUncertaintyInMeters":50.0,"continent":"EUROPE","year":2013,"month":4,"day":17,"eventDate":"2013-04-17T09:00:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2013-04-17T12:37:00.000+0000","lastInterpreted":"2018-12-23T00:45:52.995+0000","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"SE","country":"Sweden","rightsHolder":"Hans
+        Petersson","associatedReferences":"urn:lsid:artportalen.se:Sighting:Vertebrate.65338","county":"Bohuslän","municipality":"Uddevalla","identificationVerificationStatus":"Unvalidated","language":"Swedish","gbifID":"855998194","type":"Occurrence","taxonID":"urn:lsid:dyntaxa.se:Taxon:102606","occurrenceStatus":"Present","catalogNumber":"34275321","vernacularName":"ekorre","institutionCode":"ArtDatabanken","taxonConceptID":"urn:lsid:dyntaxa.se:Taxon:102606","eventTime":"09:00:00
         - 09:00:00","behavior":"Foraging","identifier":"urn:lsid:artportalen.se:Sighting:49366","informationWithheld":"More
         information can be obtained from the Data Provider.","endDayOfYear":"107","locality":"Holmen
         Lane Ryr","collectionCode":"Artportalen","occurrenceID":"urn:lsid:artportalen.se:Sighting:49366","recordedBy":"Hans
         Petersson","startDayOfYear":"107","datasetID":"urn:lsid:swedishlifewatch.se:DataProvider:1","occurrenceRemarks":"Åt
         havregryn på matningen","accessRights":"Free usage","higherClassification":"Biota;Animalia;Chordata;Craniata;Vertebrata;Gnathostomata;Mammalia;Placentalia;Boreoeutheria;Euarchontoglires;Rodentia;Sciuromorpha;Sciuridae;Sciurinae"}'
-  recorded_at: 2018-10-09 21:45:15 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+  recorded_at: 2019-02-26 17:24:22 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/855998194
@@ -140,8 +140,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -149,32 +149,32 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 21:45:12 GMT
+      date: Tue, 26 Feb 2019 17:24:19 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/855998194
       cache-control: public, max-age=3601
-      x-varnish: 87819318 79593733
+      x-varnish: 843809574 825197633
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
-      content-length: '2573'
+      content-length: '2654'
       connection: keep-alive
     body:
       encoding: UTF-8
-      string: '{"key":855998194,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","networkKeys":[],"installationKey":"4346b227-ca68-4d54-8a77-909148492e0b","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2018-10-09T16:41:35.793+0000","lastParsed":"2018-07-31T19:01:56.585+0000","crawlId":167,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","individualCount":2,"lifeStage":"ADULT","taxonKey":8211070,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":1459,"familyKey":9456,"genusKey":2437489,"speciesKey":8211070,"scientificName":"Sciurus
-        vulgaris Linnaeus, 1758","kingdom":"Animalia","phylum":"Chordata","order":"Rodentia","family":"Sciuridae","genus":"Sciurus","species":"Sciurus
-        vulgaris","genericName":"Sciurus","specificEpithet":"vulgaris","taxonRank":"SPECIES","decimalLongitude":12.043857,"decimalLatitude":58.406765,"coordinateUncertaintyInMeters":50.0,"continent":"EUROPE","year":2013,"month":4,"day":17,"eventDate":"2013-04-17T00:00:00.000+0000","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84","RECORDED_DATE_MISMATCH"],"modified":"2013-04-17T12:37:00.000+0000","lastInterpreted":"2018-07-31T19:01:56.594+0000","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"SE","country":"Sweden","rightsHolder":"Hans
-        Petersson","county":"Bohuslän","municipality":"Uddevalla","associatedReferences":"urn:lsid:artportalen.se:Sighting:Vertebrate.65338","identificationVerificationStatus":"Unvalidated","gbifID":"855998194","language":"Swedish","type":"Occurrence","taxonID":"urn:lsid:dyntaxa.se:Taxon:102606","occurrenceStatus":"Present","catalogNumber":"34275321","vernacularName":"ekorre","institutionCode":"ArtDatabanken","taxonConceptID":"urn:lsid:dyntaxa.se:Taxon:102606","eventTime":"09:00:00
+      string: '{"key":855998194,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","networkKeys":[],"installationKey":"4346b227-ca68-4d54-8a77-909148492e0b","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2019-02-24T00:38:53.781+0000","lastParsed":"2018-07-31T19:01:56.585+0000","crawlId":186,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","individualCount":2,"lifeStage":"ADULT","taxonKey":8211070,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":1459,"familyKey":9456,"genusKey":2437489,"speciesKey":8211070,"acceptedTaxonKey":8211070,"scientificName":"Sciurus
+        vulgaris Linnaeus, 1758","acceptedScientificName":"Sciurus vulgaris Linnaeus,
+        1758","kingdom":"Animalia","phylum":"Chordata","order":"Rodentia","family":"Sciuridae","genus":"Sciurus","species":"Sciurus
+        vulgaris","genericName":"Sciurus","specificEpithet":"vulgaris","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","decimalLongitude":12.043857,"decimalLatitude":58.406765,"coordinateUncertaintyInMeters":50.0,"continent":"EUROPE","year":2013,"month":4,"day":17,"eventDate":"2013-04-17T09:00:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2013-04-17T12:37:00.000+0000","lastInterpreted":"2018-12-23T00:45:52.995+0000","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"SE","country":"Sweden","rightsHolder":"Hans
+        Petersson","associatedReferences":"urn:lsid:artportalen.se:Sighting:Vertebrate.65338","county":"Bohuslän","municipality":"Uddevalla","identificationVerificationStatus":"Unvalidated","language":"Swedish","gbifID":"855998194","type":"Occurrence","taxonID":"urn:lsid:dyntaxa.se:Taxon:102606","occurrenceStatus":"Present","catalogNumber":"34275321","vernacularName":"ekorre","institutionCode":"ArtDatabanken","taxonConceptID":"urn:lsid:dyntaxa.se:Taxon:102606","eventTime":"09:00:00
         - 09:00:00","behavior":"Foraging","identifier":"urn:lsid:artportalen.se:Sighting:49366","informationWithheld":"More
         information can be obtained from the Data Provider.","endDayOfYear":"107","locality":"Holmen
         Lane Ryr","collectionCode":"Artportalen","occurrenceID":"urn:lsid:artportalen.se:Sighting:49366","recordedBy":"Hans
         Petersson","startDayOfYear":"107","datasetID":"urn:lsid:swedishlifewatch.se:DataProvider:1","occurrenceRemarks":"Åt
         havregryn på matningen","accessRights":"Free usage","higherClassification":"Biota;Animalia;Chordata;Craniata;Vertebrata;Gnathostomata;Mammalia;Placentalia;Boreoeutheria;Euarchontoglires;Rodentia;Sciuromorpha;Sciuridae;Sciurinae"}'
-  recorded_at: 2018-10-09 21:45:15 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+  recorded_at: 2019-02-26 17:24:22 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/855998194
@@ -184,8 +184,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -193,32 +193,32 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 21:45:12 GMT
+      date: Tue, 26 Feb 2019 17:24:19 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/855998194
       cache-control: public, max-age=3601
-      x-varnish: 58656923 79593733
+      x-varnish: 823591860 825197633
       age: '1'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
-      content-length: '2573'
+      content-length: '2654'
       connection: keep-alive
     body:
       encoding: UTF-8
-      string: '{"key":855998194,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","networkKeys":[],"installationKey":"4346b227-ca68-4d54-8a77-909148492e0b","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2018-10-09T16:41:35.793+0000","lastParsed":"2018-07-31T19:01:56.585+0000","crawlId":167,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","individualCount":2,"lifeStage":"ADULT","taxonKey":8211070,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":1459,"familyKey":9456,"genusKey":2437489,"speciesKey":8211070,"scientificName":"Sciurus
-        vulgaris Linnaeus, 1758","kingdom":"Animalia","phylum":"Chordata","order":"Rodentia","family":"Sciuridae","genus":"Sciurus","species":"Sciurus
-        vulgaris","genericName":"Sciurus","specificEpithet":"vulgaris","taxonRank":"SPECIES","decimalLongitude":12.043857,"decimalLatitude":58.406765,"coordinateUncertaintyInMeters":50.0,"continent":"EUROPE","year":2013,"month":4,"day":17,"eventDate":"2013-04-17T00:00:00.000+0000","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84","RECORDED_DATE_MISMATCH"],"modified":"2013-04-17T12:37:00.000+0000","lastInterpreted":"2018-07-31T19:01:56.594+0000","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"SE","country":"Sweden","rightsHolder":"Hans
-        Petersson","county":"Bohuslän","municipality":"Uddevalla","associatedReferences":"urn:lsid:artportalen.se:Sighting:Vertebrate.65338","identificationVerificationStatus":"Unvalidated","gbifID":"855998194","language":"Swedish","type":"Occurrence","taxonID":"urn:lsid:dyntaxa.se:Taxon:102606","occurrenceStatus":"Present","catalogNumber":"34275321","vernacularName":"ekorre","institutionCode":"ArtDatabanken","taxonConceptID":"urn:lsid:dyntaxa.se:Taxon:102606","eventTime":"09:00:00
+      string: '{"key":855998194,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","networkKeys":[],"installationKey":"4346b227-ca68-4d54-8a77-909148492e0b","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2019-02-24T00:38:53.781+0000","lastParsed":"2018-07-31T19:01:56.585+0000","crawlId":186,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","individualCount":2,"lifeStage":"ADULT","taxonKey":8211070,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":1459,"familyKey":9456,"genusKey":2437489,"speciesKey":8211070,"acceptedTaxonKey":8211070,"scientificName":"Sciurus
+        vulgaris Linnaeus, 1758","acceptedScientificName":"Sciurus vulgaris Linnaeus,
+        1758","kingdom":"Animalia","phylum":"Chordata","order":"Rodentia","family":"Sciuridae","genus":"Sciurus","species":"Sciurus
+        vulgaris","genericName":"Sciurus","specificEpithet":"vulgaris","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","decimalLongitude":12.043857,"decimalLatitude":58.406765,"coordinateUncertaintyInMeters":50.0,"continent":"EUROPE","year":2013,"month":4,"day":17,"eventDate":"2013-04-17T09:00:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2013-04-17T12:37:00.000+0000","lastInterpreted":"2018-12-23T00:45:52.995+0000","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"SE","country":"Sweden","rightsHolder":"Hans
+        Petersson","associatedReferences":"urn:lsid:artportalen.se:Sighting:Vertebrate.65338","county":"Bohuslän","municipality":"Uddevalla","identificationVerificationStatus":"Unvalidated","language":"Swedish","gbifID":"855998194","type":"Occurrence","taxonID":"urn:lsid:dyntaxa.se:Taxon:102606","occurrenceStatus":"Present","catalogNumber":"34275321","vernacularName":"ekorre","institutionCode":"ArtDatabanken","taxonConceptID":"urn:lsid:dyntaxa.se:Taxon:102606","eventTime":"09:00:00
         - 09:00:00","behavior":"Foraging","identifier":"urn:lsid:artportalen.se:Sighting:49366","informationWithheld":"More
         information can be obtained from the Data Provider.","endDayOfYear":"107","locality":"Holmen
         Lane Ryr","collectionCode":"Artportalen","occurrenceID":"urn:lsid:artportalen.se:Sighting:49366","recordedBy":"Hans
         Petersson","startDayOfYear":"107","datasetID":"urn:lsid:swedishlifewatch.se:DataProvider:1","occurrenceRemarks":"Åt
         havregryn på matningen","accessRights":"Free usage","higherClassification":"Biota;Animalia;Chordata;Craniata;Vertebrata;Gnathostomata;Mammalia;Placentalia;Boreoeutheria;Euarchontoglires;Rodentia;Sciuromorpha;Sciuridae;Sciurinae"}'
-  recorded_at: 2018-10-09 21:45:15 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+  recorded_at: 2019-02-26 17:24:22 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/855998194/verbatim
@@ -228,8 +228,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -237,14 +237,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 21:45:14 GMT
+      date: Tue, 26 Feb 2019 17:24:20 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/855998194/verbatim
       cache-control: public, max-age=3601
-      x-varnish: 78055190 36182913
+      x-varnish: 845709731 836862655
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -252,20 +251,20 @@ http_interactions:
       connection: keep-alive
     body:
       encoding: UTF-8
-      string: '{"key":855998194,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2018-10-09T16:41:35.793+0000","lastParsed":"2018-07-31T19:01:56.585+0000","crawlId":167,"extensions":{},"http://rs.tdwg.org/dwc/terms/continent":"Europe","http://rs.tdwg.org/dwc/terms/country":"Sweden","http://rs.tdwg.org/dwc/terms/order":"Rodentia","http://rs.tdwg.org/dwc/terms/taxonRank":"Species","http://purl.org/dc/terms/accessRights":"Free
+      string: '{"key":855998194,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2019-02-24T00:38:53.781+0000","lastParsed":"2018-07-31T19:01:56.585+0000","crawlId":186,"extensions":{},"http://rs.tdwg.org/dwc/terms/continent":"Europe","http://rs.tdwg.org/dwc/terms/country":"Sweden","http://rs.tdwg.org/dwc/terms/order":"Rodentia","http://rs.tdwg.org/dwc/terms/taxonRank":"Species","http://purl.org/dc/terms/accessRights":"Free
         usage","http://rs.tdwg.org/dwc/terms/year":"2013","http://rs.tdwg.org/dwc/terms/lifeStage":"Adult","http://rs.tdwg.org/dwc/terms/locality":"Holmen
         Lane Ryr","http://rs.tdwg.org/dwc/terms/endDayOfYear":"107","http://rs.tdwg.org/dwc/terms/basisOfRecord":"humanobservation","http://rs.tdwg.org/dwc/terms/higherClassification":"Biota;Animalia;Chordata;Craniata;Vertebrata;Gnathostomata;Mammalia;Placentalia;Boreoeutheria;Euarchontoglires;Rodentia;Sciuromorpha;Sciuridae;Sciurinae","http://rs.tdwg.org/dwc/terms/eventTime":"09:00:00
         - 09:00:00","http://rs.tdwg.org/dwc/terms/taxonConceptID":"urn:lsid:dyntaxa.se:Taxon:102606","http://rs.tdwg.org/dwc/terms/scientificName":"Sciurus
         vulgaris","http://rs.gbif.org/terms/1.0/gbifID":"855998194","http://rs.tdwg.org/dwc/terms/day":"17","http://rs.tdwg.org/dwc/terms/genus":"Sciurus","http://rs.tdwg.org/dwc/terms/datasetID":"urn:lsid:swedishlifewatch.se:DataProvider:1","http://rs.tdwg.org/dwc/terms/specificEpithet":"vulgaris","http://rs.tdwg.org/dwc/terms/occurrenceID":"urn:lsid:artportalen.se:Sighting:49366","http://rs.tdwg.org/dwc/terms/informationWithheld":"More
-        information can be obtained from the Data Provider.","http://rs.tdwg.org/dwc/terms/occurrenceRemarks":"Åt
-        havregryn på matningen","http://rs.tdwg.org/dwc/terms/establishmentMeans":"Natural","http://purl.org/dc/terms/type":"Occurrence","http://rs.tdwg.org/dwc/terms/decimalLongitude":"12.0438569","http://rs.tdwg.org/dwc/terms/occurrenceStatus":"Present","http://rs.tdwg.org/dwc/terms/behavior":"Foraging","http://rs.tdwg.org/dwc/terms/startDayOfYear":"107","http://rs.tdwg.org/dwc/terms/taxonID":"urn:lsid:dyntaxa.se:Taxon:102606","http://rs.tdwg.org/dwc/terms/collectionCode":"Artportalen","http://rs.tdwg.org/dwc/terms/municipality":"Uddevalla","http://rs.tdwg.org/dwc/terms/vernacularName":"ekorre","http://purl.org/dc/terms/rightsHolder":"Hans
-        Petersson","http://rs.tdwg.org/dwc/terms/family":"Sciuridae","http://purl.org/dc/terms/modified":"2013-04-17
-        12:37:00","http://rs.tdwg.org/dwc/terms/decimalLatitude":"58.4067650","http://rs.tdwg.org/dwc/terms/month":"4","http://rs.tdwg.org/dwc/terms/recordedBy":"Hans
-        Petersson","http://rs.tdwg.org/dwc/terms/phylum":"Chordata","http://rs.tdwg.org/dwc/terms/kingdom":"Animalia","http://rs.tdwg.org/dwc/terms/coordinateUncertaintyInMeters":"50.00","http://purl.org/dc/terms/identifier":"urn:lsid:artportalen.se:Sighting:49366","http://rs.tdwg.org/dwc/terms/county":"Bohuslän","http://rs.tdwg.org/dwc/terms/class":"Mammalia","http://rs.tdwg.org/dwc/terms/individualCount":"2","http://purl.org/dc/terms/language":"Swedish","http://rs.tdwg.org/dwc/terms/scientificNameAuthorship":"Linnaeus,
+        information can be obtained from the Data Provider.","http://rs.tdwg.org/dwc/terms/establishmentMeans":"Natural","http://purl.org/dc/terms/type":"Occurrence","http://rs.tdwg.org/dwc/terms/occurrenceRemarks":"Åt
+        havregryn på matningen","http://rs.tdwg.org/dwc/terms/decimalLongitude":"12.0438569","http://rs.tdwg.org/dwc/terms/occurrenceStatus":"Present","http://rs.tdwg.org/dwc/terms/behavior":"Foraging","http://rs.tdwg.org/dwc/terms/startDayOfYear":"107","http://rs.tdwg.org/dwc/terms/collectionCode":"Artportalen","http://rs.tdwg.org/dwc/terms/taxonID":"urn:lsid:dyntaxa.se:Taxon:102606","http://rs.tdwg.org/dwc/terms/municipality":"Uddevalla","http://rs.tdwg.org/dwc/terms/vernacularName":"ekorre","http://purl.org/dc/terms/rightsHolder":"Hans
+        Petersson","http://rs.tdwg.org/dwc/terms/family":"Sciuridae","http://rs.tdwg.org/dwc/terms/month":"4","http://purl.org/dc/terms/modified":"2013-04-17
+        12:37:00","http://rs.tdwg.org/dwc/terms/decimalLatitude":"58.4067650","http://rs.tdwg.org/dwc/terms/recordedBy":"Hans
+        Petersson","http://rs.tdwg.org/dwc/terms/phylum":"Chordata","http://rs.tdwg.org/dwc/terms/kingdom":"Animalia","http://rs.tdwg.org/dwc/terms/coordinateUncertaintyInMeters":"50.00","http://purl.org/dc/terms/identifier":"urn:lsid:artportalen.se:Sighting:49366","http://rs.tdwg.org/dwc/terms/class":"Mammalia","http://rs.tdwg.org/dwc/terms/county":"Bohuslän","http://purl.org/dc/terms/language":"Swedish","http://rs.tdwg.org/dwc/terms/individualCount":"2","http://rs.tdwg.org/dwc/terms/scientificNameAuthorship":"Linnaeus,
         1758","http://rs.tdwg.org/dwc/terms/eventDate":"2013-04-17 09:00:00/2013-04-17
         09:00:00","http://rs.tdwg.org/dwc/terms/catalogNumber":"34275321","http://rs.tdwg.org/dwc/terms/identificationVerificationStatus":"Unvalidated","http://rs.tdwg.org/dwc/terms/countryCode":"SE","http://rs.tdwg.org/dwc/terms/institutionCode":"ArtDatabanken","http://rs.tdwg.org/dwc/terms/associatedReferences":"urn:lsid:artportalen.se:Sighting:Vertebrate.65338"}'
-  recorded_at: 2018-10-09 21:45:15 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+  recorded_at: 2019-02-26 17:24:22 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/855998194/verbatim
@@ -275,8 +274,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -284,14 +283,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 21:45:14 GMT
+      date: Tue, 26 Feb 2019 17:24:20 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/855998194/verbatim
       cache-control: public, max-age=3601
-      x-varnish: 20978224 36182913
+      x-varnish: 724869029 836862655
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -299,20 +297,20 @@ http_interactions:
       connection: keep-alive
     body:
       encoding: UTF-8
-      string: '{"key":855998194,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2018-10-09T16:41:35.793+0000","lastParsed":"2018-07-31T19:01:56.585+0000","crawlId":167,"extensions":{},"http://rs.tdwg.org/dwc/terms/continent":"Europe","http://rs.tdwg.org/dwc/terms/country":"Sweden","http://rs.tdwg.org/dwc/terms/order":"Rodentia","http://rs.tdwg.org/dwc/terms/taxonRank":"Species","http://purl.org/dc/terms/accessRights":"Free
+      string: '{"key":855998194,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2019-02-24T00:38:53.781+0000","lastParsed":"2018-07-31T19:01:56.585+0000","crawlId":186,"extensions":{},"http://rs.tdwg.org/dwc/terms/continent":"Europe","http://rs.tdwg.org/dwc/terms/country":"Sweden","http://rs.tdwg.org/dwc/terms/order":"Rodentia","http://rs.tdwg.org/dwc/terms/taxonRank":"Species","http://purl.org/dc/terms/accessRights":"Free
         usage","http://rs.tdwg.org/dwc/terms/year":"2013","http://rs.tdwg.org/dwc/terms/lifeStage":"Adult","http://rs.tdwg.org/dwc/terms/locality":"Holmen
         Lane Ryr","http://rs.tdwg.org/dwc/terms/endDayOfYear":"107","http://rs.tdwg.org/dwc/terms/basisOfRecord":"humanobservation","http://rs.tdwg.org/dwc/terms/higherClassification":"Biota;Animalia;Chordata;Craniata;Vertebrata;Gnathostomata;Mammalia;Placentalia;Boreoeutheria;Euarchontoglires;Rodentia;Sciuromorpha;Sciuridae;Sciurinae","http://rs.tdwg.org/dwc/terms/eventTime":"09:00:00
         - 09:00:00","http://rs.tdwg.org/dwc/terms/taxonConceptID":"urn:lsid:dyntaxa.se:Taxon:102606","http://rs.tdwg.org/dwc/terms/scientificName":"Sciurus
         vulgaris","http://rs.gbif.org/terms/1.0/gbifID":"855998194","http://rs.tdwg.org/dwc/terms/day":"17","http://rs.tdwg.org/dwc/terms/genus":"Sciurus","http://rs.tdwg.org/dwc/terms/datasetID":"urn:lsid:swedishlifewatch.se:DataProvider:1","http://rs.tdwg.org/dwc/terms/specificEpithet":"vulgaris","http://rs.tdwg.org/dwc/terms/occurrenceID":"urn:lsid:artportalen.se:Sighting:49366","http://rs.tdwg.org/dwc/terms/informationWithheld":"More
-        information can be obtained from the Data Provider.","http://rs.tdwg.org/dwc/terms/occurrenceRemarks":"Åt
-        havregryn på matningen","http://rs.tdwg.org/dwc/terms/establishmentMeans":"Natural","http://purl.org/dc/terms/type":"Occurrence","http://rs.tdwg.org/dwc/terms/decimalLongitude":"12.0438569","http://rs.tdwg.org/dwc/terms/occurrenceStatus":"Present","http://rs.tdwg.org/dwc/terms/behavior":"Foraging","http://rs.tdwg.org/dwc/terms/startDayOfYear":"107","http://rs.tdwg.org/dwc/terms/taxonID":"urn:lsid:dyntaxa.se:Taxon:102606","http://rs.tdwg.org/dwc/terms/collectionCode":"Artportalen","http://rs.tdwg.org/dwc/terms/municipality":"Uddevalla","http://rs.tdwg.org/dwc/terms/vernacularName":"ekorre","http://purl.org/dc/terms/rightsHolder":"Hans
-        Petersson","http://rs.tdwg.org/dwc/terms/family":"Sciuridae","http://purl.org/dc/terms/modified":"2013-04-17
-        12:37:00","http://rs.tdwg.org/dwc/terms/decimalLatitude":"58.4067650","http://rs.tdwg.org/dwc/terms/month":"4","http://rs.tdwg.org/dwc/terms/recordedBy":"Hans
-        Petersson","http://rs.tdwg.org/dwc/terms/phylum":"Chordata","http://rs.tdwg.org/dwc/terms/kingdom":"Animalia","http://rs.tdwg.org/dwc/terms/coordinateUncertaintyInMeters":"50.00","http://purl.org/dc/terms/identifier":"urn:lsid:artportalen.se:Sighting:49366","http://rs.tdwg.org/dwc/terms/county":"Bohuslän","http://rs.tdwg.org/dwc/terms/class":"Mammalia","http://rs.tdwg.org/dwc/terms/individualCount":"2","http://purl.org/dc/terms/language":"Swedish","http://rs.tdwg.org/dwc/terms/scientificNameAuthorship":"Linnaeus,
+        information can be obtained from the Data Provider.","http://rs.tdwg.org/dwc/terms/establishmentMeans":"Natural","http://purl.org/dc/terms/type":"Occurrence","http://rs.tdwg.org/dwc/terms/occurrenceRemarks":"Åt
+        havregryn på matningen","http://rs.tdwg.org/dwc/terms/decimalLongitude":"12.0438569","http://rs.tdwg.org/dwc/terms/occurrenceStatus":"Present","http://rs.tdwg.org/dwc/terms/behavior":"Foraging","http://rs.tdwg.org/dwc/terms/startDayOfYear":"107","http://rs.tdwg.org/dwc/terms/collectionCode":"Artportalen","http://rs.tdwg.org/dwc/terms/taxonID":"urn:lsid:dyntaxa.se:Taxon:102606","http://rs.tdwg.org/dwc/terms/municipality":"Uddevalla","http://rs.tdwg.org/dwc/terms/vernacularName":"ekorre","http://purl.org/dc/terms/rightsHolder":"Hans
+        Petersson","http://rs.tdwg.org/dwc/terms/family":"Sciuridae","http://rs.tdwg.org/dwc/terms/month":"4","http://purl.org/dc/terms/modified":"2013-04-17
+        12:37:00","http://rs.tdwg.org/dwc/terms/decimalLatitude":"58.4067650","http://rs.tdwg.org/dwc/terms/recordedBy":"Hans
+        Petersson","http://rs.tdwg.org/dwc/terms/phylum":"Chordata","http://rs.tdwg.org/dwc/terms/kingdom":"Animalia","http://rs.tdwg.org/dwc/terms/coordinateUncertaintyInMeters":"50.00","http://purl.org/dc/terms/identifier":"urn:lsid:artportalen.se:Sighting:49366","http://rs.tdwg.org/dwc/terms/class":"Mammalia","http://rs.tdwg.org/dwc/terms/county":"Bohuslän","http://purl.org/dc/terms/language":"Swedish","http://rs.tdwg.org/dwc/terms/individualCount":"2","http://rs.tdwg.org/dwc/terms/scientificNameAuthorship":"Linnaeus,
         1758","http://rs.tdwg.org/dwc/terms/eventDate":"2013-04-17 09:00:00/2013-04-17
         09:00:00","http://rs.tdwg.org/dwc/terms/catalogNumber":"34275321","http://rs.tdwg.org/dwc/terms/identificationVerificationStatus":"Unvalidated","http://rs.tdwg.org/dwc/terms/countryCode":"SE","http://rs.tdwg.org/dwc/terms/institutionCode":"ArtDatabanken","http://rs.tdwg.org/dwc/terms/associatedReferences":"urn:lsid:artportalen.se:Sighting:Vertebrate.65338"}'
-  recorded_at: 2018-10-09 21:45:15 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+  recorded_at: 2019-02-26 17:24:22 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/855998194/verbatim
@@ -322,8 +320,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -331,14 +329,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 21:45:14 GMT
+      date: Tue, 26 Feb 2019 17:24:20 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/855998194/verbatim
       cache-control: public, max-age=3601
-      x-varnish: 36082525 36182913
+      x-varnish: 843088227 836862655
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -346,20 +343,20 @@ http_interactions:
       connection: keep-alive
     body:
       encoding: UTF-8
-      string: '{"key":855998194,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2018-10-09T16:41:35.793+0000","lastParsed":"2018-07-31T19:01:56.585+0000","crawlId":167,"extensions":{},"http://rs.tdwg.org/dwc/terms/continent":"Europe","http://rs.tdwg.org/dwc/terms/country":"Sweden","http://rs.tdwg.org/dwc/terms/order":"Rodentia","http://rs.tdwg.org/dwc/terms/taxonRank":"Species","http://purl.org/dc/terms/accessRights":"Free
+      string: '{"key":855998194,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2019-02-24T00:38:53.781+0000","lastParsed":"2018-07-31T19:01:56.585+0000","crawlId":186,"extensions":{},"http://rs.tdwg.org/dwc/terms/continent":"Europe","http://rs.tdwg.org/dwc/terms/country":"Sweden","http://rs.tdwg.org/dwc/terms/order":"Rodentia","http://rs.tdwg.org/dwc/terms/taxonRank":"Species","http://purl.org/dc/terms/accessRights":"Free
         usage","http://rs.tdwg.org/dwc/terms/year":"2013","http://rs.tdwg.org/dwc/terms/lifeStage":"Adult","http://rs.tdwg.org/dwc/terms/locality":"Holmen
         Lane Ryr","http://rs.tdwg.org/dwc/terms/endDayOfYear":"107","http://rs.tdwg.org/dwc/terms/basisOfRecord":"humanobservation","http://rs.tdwg.org/dwc/terms/higherClassification":"Biota;Animalia;Chordata;Craniata;Vertebrata;Gnathostomata;Mammalia;Placentalia;Boreoeutheria;Euarchontoglires;Rodentia;Sciuromorpha;Sciuridae;Sciurinae","http://rs.tdwg.org/dwc/terms/eventTime":"09:00:00
         - 09:00:00","http://rs.tdwg.org/dwc/terms/taxonConceptID":"urn:lsid:dyntaxa.se:Taxon:102606","http://rs.tdwg.org/dwc/terms/scientificName":"Sciurus
         vulgaris","http://rs.gbif.org/terms/1.0/gbifID":"855998194","http://rs.tdwg.org/dwc/terms/day":"17","http://rs.tdwg.org/dwc/terms/genus":"Sciurus","http://rs.tdwg.org/dwc/terms/datasetID":"urn:lsid:swedishlifewatch.se:DataProvider:1","http://rs.tdwg.org/dwc/terms/specificEpithet":"vulgaris","http://rs.tdwg.org/dwc/terms/occurrenceID":"urn:lsid:artportalen.se:Sighting:49366","http://rs.tdwg.org/dwc/terms/informationWithheld":"More
-        information can be obtained from the Data Provider.","http://rs.tdwg.org/dwc/terms/occurrenceRemarks":"Åt
-        havregryn på matningen","http://rs.tdwg.org/dwc/terms/establishmentMeans":"Natural","http://purl.org/dc/terms/type":"Occurrence","http://rs.tdwg.org/dwc/terms/decimalLongitude":"12.0438569","http://rs.tdwg.org/dwc/terms/occurrenceStatus":"Present","http://rs.tdwg.org/dwc/terms/behavior":"Foraging","http://rs.tdwg.org/dwc/terms/startDayOfYear":"107","http://rs.tdwg.org/dwc/terms/taxonID":"urn:lsid:dyntaxa.se:Taxon:102606","http://rs.tdwg.org/dwc/terms/collectionCode":"Artportalen","http://rs.tdwg.org/dwc/terms/municipality":"Uddevalla","http://rs.tdwg.org/dwc/terms/vernacularName":"ekorre","http://purl.org/dc/terms/rightsHolder":"Hans
-        Petersson","http://rs.tdwg.org/dwc/terms/family":"Sciuridae","http://purl.org/dc/terms/modified":"2013-04-17
-        12:37:00","http://rs.tdwg.org/dwc/terms/decimalLatitude":"58.4067650","http://rs.tdwg.org/dwc/terms/month":"4","http://rs.tdwg.org/dwc/terms/recordedBy":"Hans
-        Petersson","http://rs.tdwg.org/dwc/terms/phylum":"Chordata","http://rs.tdwg.org/dwc/terms/kingdom":"Animalia","http://rs.tdwg.org/dwc/terms/coordinateUncertaintyInMeters":"50.00","http://purl.org/dc/terms/identifier":"urn:lsid:artportalen.se:Sighting:49366","http://rs.tdwg.org/dwc/terms/county":"Bohuslän","http://rs.tdwg.org/dwc/terms/class":"Mammalia","http://rs.tdwg.org/dwc/terms/individualCount":"2","http://purl.org/dc/terms/language":"Swedish","http://rs.tdwg.org/dwc/terms/scientificNameAuthorship":"Linnaeus,
+        information can be obtained from the Data Provider.","http://rs.tdwg.org/dwc/terms/establishmentMeans":"Natural","http://purl.org/dc/terms/type":"Occurrence","http://rs.tdwg.org/dwc/terms/occurrenceRemarks":"Åt
+        havregryn på matningen","http://rs.tdwg.org/dwc/terms/decimalLongitude":"12.0438569","http://rs.tdwg.org/dwc/terms/occurrenceStatus":"Present","http://rs.tdwg.org/dwc/terms/behavior":"Foraging","http://rs.tdwg.org/dwc/terms/startDayOfYear":"107","http://rs.tdwg.org/dwc/terms/collectionCode":"Artportalen","http://rs.tdwg.org/dwc/terms/taxonID":"urn:lsid:dyntaxa.se:Taxon:102606","http://rs.tdwg.org/dwc/terms/municipality":"Uddevalla","http://rs.tdwg.org/dwc/terms/vernacularName":"ekorre","http://purl.org/dc/terms/rightsHolder":"Hans
+        Petersson","http://rs.tdwg.org/dwc/terms/family":"Sciuridae","http://rs.tdwg.org/dwc/terms/month":"4","http://purl.org/dc/terms/modified":"2013-04-17
+        12:37:00","http://rs.tdwg.org/dwc/terms/decimalLatitude":"58.4067650","http://rs.tdwg.org/dwc/terms/recordedBy":"Hans
+        Petersson","http://rs.tdwg.org/dwc/terms/phylum":"Chordata","http://rs.tdwg.org/dwc/terms/kingdom":"Animalia","http://rs.tdwg.org/dwc/terms/coordinateUncertaintyInMeters":"50.00","http://purl.org/dc/terms/identifier":"urn:lsid:artportalen.se:Sighting:49366","http://rs.tdwg.org/dwc/terms/class":"Mammalia","http://rs.tdwg.org/dwc/terms/county":"Bohuslän","http://purl.org/dc/terms/language":"Swedish","http://rs.tdwg.org/dwc/terms/individualCount":"2","http://rs.tdwg.org/dwc/terms/scientificNameAuthorship":"Linnaeus,
         1758","http://rs.tdwg.org/dwc/terms/eventDate":"2013-04-17 09:00:00/2013-04-17
         09:00:00","http://rs.tdwg.org/dwc/terms/catalogNumber":"34275321","http://rs.tdwg.org/dwc/terms/identificationVerificationStatus":"Unvalidated","http://rs.tdwg.org/dwc/terms/countryCode":"SE","http://rs.tdwg.org/dwc/terms/institutionCode":"ArtDatabanken","http://rs.tdwg.org/dwc/terms/associatedReferences":"urn:lsid:artportalen.se:Sighting:Vertebrate.65338"}'
-  recorded_at: 2018-10-09 21:45:15 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+  recorded_at: 2019-02-26 17:24:22 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/855998194/verbatim
@@ -369,8 +366,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -378,14 +375,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 21:45:14 GMT
+      date: Tue, 26 Feb 2019 17:24:20 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/855998194/verbatim
       cache-control: public, max-age=3601
-      x-varnish: 83919072 36182913
+      x-varnish: 799772087 836862655
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -393,20 +389,20 @@ http_interactions:
       connection: keep-alive
     body:
       encoding: UTF-8
-      string: '{"key":855998194,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2018-10-09T16:41:35.793+0000","lastParsed":"2018-07-31T19:01:56.585+0000","crawlId":167,"extensions":{},"http://rs.tdwg.org/dwc/terms/continent":"Europe","http://rs.tdwg.org/dwc/terms/country":"Sweden","http://rs.tdwg.org/dwc/terms/order":"Rodentia","http://rs.tdwg.org/dwc/terms/taxonRank":"Species","http://purl.org/dc/terms/accessRights":"Free
+      string: '{"key":855998194,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2019-02-24T00:38:53.781+0000","lastParsed":"2018-07-31T19:01:56.585+0000","crawlId":186,"extensions":{},"http://rs.tdwg.org/dwc/terms/continent":"Europe","http://rs.tdwg.org/dwc/terms/country":"Sweden","http://rs.tdwg.org/dwc/terms/order":"Rodentia","http://rs.tdwg.org/dwc/terms/taxonRank":"Species","http://purl.org/dc/terms/accessRights":"Free
         usage","http://rs.tdwg.org/dwc/terms/year":"2013","http://rs.tdwg.org/dwc/terms/lifeStage":"Adult","http://rs.tdwg.org/dwc/terms/locality":"Holmen
         Lane Ryr","http://rs.tdwg.org/dwc/terms/endDayOfYear":"107","http://rs.tdwg.org/dwc/terms/basisOfRecord":"humanobservation","http://rs.tdwg.org/dwc/terms/higherClassification":"Biota;Animalia;Chordata;Craniata;Vertebrata;Gnathostomata;Mammalia;Placentalia;Boreoeutheria;Euarchontoglires;Rodentia;Sciuromorpha;Sciuridae;Sciurinae","http://rs.tdwg.org/dwc/terms/eventTime":"09:00:00
         - 09:00:00","http://rs.tdwg.org/dwc/terms/taxonConceptID":"urn:lsid:dyntaxa.se:Taxon:102606","http://rs.tdwg.org/dwc/terms/scientificName":"Sciurus
         vulgaris","http://rs.gbif.org/terms/1.0/gbifID":"855998194","http://rs.tdwg.org/dwc/terms/day":"17","http://rs.tdwg.org/dwc/terms/genus":"Sciurus","http://rs.tdwg.org/dwc/terms/datasetID":"urn:lsid:swedishlifewatch.se:DataProvider:1","http://rs.tdwg.org/dwc/terms/specificEpithet":"vulgaris","http://rs.tdwg.org/dwc/terms/occurrenceID":"urn:lsid:artportalen.se:Sighting:49366","http://rs.tdwg.org/dwc/terms/informationWithheld":"More
-        information can be obtained from the Data Provider.","http://rs.tdwg.org/dwc/terms/occurrenceRemarks":"Åt
-        havregryn på matningen","http://rs.tdwg.org/dwc/terms/establishmentMeans":"Natural","http://purl.org/dc/terms/type":"Occurrence","http://rs.tdwg.org/dwc/terms/decimalLongitude":"12.0438569","http://rs.tdwg.org/dwc/terms/occurrenceStatus":"Present","http://rs.tdwg.org/dwc/terms/behavior":"Foraging","http://rs.tdwg.org/dwc/terms/startDayOfYear":"107","http://rs.tdwg.org/dwc/terms/taxonID":"urn:lsid:dyntaxa.se:Taxon:102606","http://rs.tdwg.org/dwc/terms/collectionCode":"Artportalen","http://rs.tdwg.org/dwc/terms/municipality":"Uddevalla","http://rs.tdwg.org/dwc/terms/vernacularName":"ekorre","http://purl.org/dc/terms/rightsHolder":"Hans
-        Petersson","http://rs.tdwg.org/dwc/terms/family":"Sciuridae","http://purl.org/dc/terms/modified":"2013-04-17
-        12:37:00","http://rs.tdwg.org/dwc/terms/decimalLatitude":"58.4067650","http://rs.tdwg.org/dwc/terms/month":"4","http://rs.tdwg.org/dwc/terms/recordedBy":"Hans
-        Petersson","http://rs.tdwg.org/dwc/terms/phylum":"Chordata","http://rs.tdwg.org/dwc/terms/kingdom":"Animalia","http://rs.tdwg.org/dwc/terms/coordinateUncertaintyInMeters":"50.00","http://purl.org/dc/terms/identifier":"urn:lsid:artportalen.se:Sighting:49366","http://rs.tdwg.org/dwc/terms/county":"Bohuslän","http://rs.tdwg.org/dwc/terms/class":"Mammalia","http://rs.tdwg.org/dwc/terms/individualCount":"2","http://purl.org/dc/terms/language":"Swedish","http://rs.tdwg.org/dwc/terms/scientificNameAuthorship":"Linnaeus,
+        information can be obtained from the Data Provider.","http://rs.tdwg.org/dwc/terms/establishmentMeans":"Natural","http://purl.org/dc/terms/type":"Occurrence","http://rs.tdwg.org/dwc/terms/occurrenceRemarks":"Åt
+        havregryn på matningen","http://rs.tdwg.org/dwc/terms/decimalLongitude":"12.0438569","http://rs.tdwg.org/dwc/terms/occurrenceStatus":"Present","http://rs.tdwg.org/dwc/terms/behavior":"Foraging","http://rs.tdwg.org/dwc/terms/startDayOfYear":"107","http://rs.tdwg.org/dwc/terms/collectionCode":"Artportalen","http://rs.tdwg.org/dwc/terms/taxonID":"urn:lsid:dyntaxa.se:Taxon:102606","http://rs.tdwg.org/dwc/terms/municipality":"Uddevalla","http://rs.tdwg.org/dwc/terms/vernacularName":"ekorre","http://purl.org/dc/terms/rightsHolder":"Hans
+        Petersson","http://rs.tdwg.org/dwc/terms/family":"Sciuridae","http://rs.tdwg.org/dwc/terms/month":"4","http://purl.org/dc/terms/modified":"2013-04-17
+        12:37:00","http://rs.tdwg.org/dwc/terms/decimalLatitude":"58.4067650","http://rs.tdwg.org/dwc/terms/recordedBy":"Hans
+        Petersson","http://rs.tdwg.org/dwc/terms/phylum":"Chordata","http://rs.tdwg.org/dwc/terms/kingdom":"Animalia","http://rs.tdwg.org/dwc/terms/coordinateUncertaintyInMeters":"50.00","http://purl.org/dc/terms/identifier":"urn:lsid:artportalen.se:Sighting:49366","http://rs.tdwg.org/dwc/terms/class":"Mammalia","http://rs.tdwg.org/dwc/terms/county":"Bohuslän","http://purl.org/dc/terms/language":"Swedish","http://rs.tdwg.org/dwc/terms/individualCount":"2","http://rs.tdwg.org/dwc/terms/scientificNameAuthorship":"Linnaeus,
         1758","http://rs.tdwg.org/dwc/terms/eventDate":"2013-04-17 09:00:00/2013-04-17
         09:00:00","http://rs.tdwg.org/dwc/terms/catalogNumber":"34275321","http://rs.tdwg.org/dwc/terms/identificationVerificationStatus":"Unvalidated","http://rs.tdwg.org/dwc/terms/countryCode":"SE","http://rs.tdwg.org/dwc/terms/institutionCode":"ArtDatabanken","http://rs.tdwg.org/dwc/terms/associatedReferences":"urn:lsid:artportalen.se:Sighting:Vertebrate.65338"}'
-  recorded_at: 2018-10-09 21:45:15 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+  recorded_at: 2019-02-26 17:24:22 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/855998194/verbatim
@@ -416,8 +412,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -425,35 +421,34 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 21:45:14 GMT
+      date: Tue, 26 Feb 2019 17:24:20 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/855998194/verbatim
       cache-control: public, max-age=3601
-      x-varnish: 84967938 36182913
-      age: '1'
+      x-varnish: 846529012 836862655
+      age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
       content-length: '3625'
       connection: keep-alive
     body:
       encoding: UTF-8
-      string: '{"key":855998194,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2018-10-09T16:41:35.793+0000","lastParsed":"2018-07-31T19:01:56.585+0000","crawlId":167,"extensions":{},"http://rs.tdwg.org/dwc/terms/continent":"Europe","http://rs.tdwg.org/dwc/terms/country":"Sweden","http://rs.tdwg.org/dwc/terms/order":"Rodentia","http://rs.tdwg.org/dwc/terms/taxonRank":"Species","http://purl.org/dc/terms/accessRights":"Free
+      string: '{"key":855998194,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2019-02-24T00:38:53.781+0000","lastParsed":"2018-07-31T19:01:56.585+0000","crawlId":186,"extensions":{},"http://rs.tdwg.org/dwc/terms/continent":"Europe","http://rs.tdwg.org/dwc/terms/country":"Sweden","http://rs.tdwg.org/dwc/terms/order":"Rodentia","http://rs.tdwg.org/dwc/terms/taxonRank":"Species","http://purl.org/dc/terms/accessRights":"Free
         usage","http://rs.tdwg.org/dwc/terms/year":"2013","http://rs.tdwg.org/dwc/terms/lifeStage":"Adult","http://rs.tdwg.org/dwc/terms/locality":"Holmen
         Lane Ryr","http://rs.tdwg.org/dwc/terms/endDayOfYear":"107","http://rs.tdwg.org/dwc/terms/basisOfRecord":"humanobservation","http://rs.tdwg.org/dwc/terms/higherClassification":"Biota;Animalia;Chordata;Craniata;Vertebrata;Gnathostomata;Mammalia;Placentalia;Boreoeutheria;Euarchontoglires;Rodentia;Sciuromorpha;Sciuridae;Sciurinae","http://rs.tdwg.org/dwc/terms/eventTime":"09:00:00
         - 09:00:00","http://rs.tdwg.org/dwc/terms/taxonConceptID":"urn:lsid:dyntaxa.se:Taxon:102606","http://rs.tdwg.org/dwc/terms/scientificName":"Sciurus
         vulgaris","http://rs.gbif.org/terms/1.0/gbifID":"855998194","http://rs.tdwg.org/dwc/terms/day":"17","http://rs.tdwg.org/dwc/terms/genus":"Sciurus","http://rs.tdwg.org/dwc/terms/datasetID":"urn:lsid:swedishlifewatch.se:DataProvider:1","http://rs.tdwg.org/dwc/terms/specificEpithet":"vulgaris","http://rs.tdwg.org/dwc/terms/occurrenceID":"urn:lsid:artportalen.se:Sighting:49366","http://rs.tdwg.org/dwc/terms/informationWithheld":"More
-        information can be obtained from the Data Provider.","http://rs.tdwg.org/dwc/terms/occurrenceRemarks":"Åt
-        havregryn på matningen","http://rs.tdwg.org/dwc/terms/establishmentMeans":"Natural","http://purl.org/dc/terms/type":"Occurrence","http://rs.tdwg.org/dwc/terms/decimalLongitude":"12.0438569","http://rs.tdwg.org/dwc/terms/occurrenceStatus":"Present","http://rs.tdwg.org/dwc/terms/behavior":"Foraging","http://rs.tdwg.org/dwc/terms/startDayOfYear":"107","http://rs.tdwg.org/dwc/terms/taxonID":"urn:lsid:dyntaxa.se:Taxon:102606","http://rs.tdwg.org/dwc/terms/collectionCode":"Artportalen","http://rs.tdwg.org/dwc/terms/municipality":"Uddevalla","http://rs.tdwg.org/dwc/terms/vernacularName":"ekorre","http://purl.org/dc/terms/rightsHolder":"Hans
-        Petersson","http://rs.tdwg.org/dwc/terms/family":"Sciuridae","http://purl.org/dc/terms/modified":"2013-04-17
-        12:37:00","http://rs.tdwg.org/dwc/terms/decimalLatitude":"58.4067650","http://rs.tdwg.org/dwc/terms/month":"4","http://rs.tdwg.org/dwc/terms/recordedBy":"Hans
-        Petersson","http://rs.tdwg.org/dwc/terms/phylum":"Chordata","http://rs.tdwg.org/dwc/terms/kingdom":"Animalia","http://rs.tdwg.org/dwc/terms/coordinateUncertaintyInMeters":"50.00","http://purl.org/dc/terms/identifier":"urn:lsid:artportalen.se:Sighting:49366","http://rs.tdwg.org/dwc/terms/county":"Bohuslän","http://rs.tdwg.org/dwc/terms/class":"Mammalia","http://rs.tdwg.org/dwc/terms/individualCount":"2","http://purl.org/dc/terms/language":"Swedish","http://rs.tdwg.org/dwc/terms/scientificNameAuthorship":"Linnaeus,
+        information can be obtained from the Data Provider.","http://rs.tdwg.org/dwc/terms/establishmentMeans":"Natural","http://purl.org/dc/terms/type":"Occurrence","http://rs.tdwg.org/dwc/terms/occurrenceRemarks":"Åt
+        havregryn på matningen","http://rs.tdwg.org/dwc/terms/decimalLongitude":"12.0438569","http://rs.tdwg.org/dwc/terms/occurrenceStatus":"Present","http://rs.tdwg.org/dwc/terms/behavior":"Foraging","http://rs.tdwg.org/dwc/terms/startDayOfYear":"107","http://rs.tdwg.org/dwc/terms/collectionCode":"Artportalen","http://rs.tdwg.org/dwc/terms/taxonID":"urn:lsid:dyntaxa.se:Taxon:102606","http://rs.tdwg.org/dwc/terms/municipality":"Uddevalla","http://rs.tdwg.org/dwc/terms/vernacularName":"ekorre","http://purl.org/dc/terms/rightsHolder":"Hans
+        Petersson","http://rs.tdwg.org/dwc/terms/family":"Sciuridae","http://rs.tdwg.org/dwc/terms/month":"4","http://purl.org/dc/terms/modified":"2013-04-17
+        12:37:00","http://rs.tdwg.org/dwc/terms/decimalLatitude":"58.4067650","http://rs.tdwg.org/dwc/terms/recordedBy":"Hans
+        Petersson","http://rs.tdwg.org/dwc/terms/phylum":"Chordata","http://rs.tdwg.org/dwc/terms/kingdom":"Animalia","http://rs.tdwg.org/dwc/terms/coordinateUncertaintyInMeters":"50.00","http://purl.org/dc/terms/identifier":"urn:lsid:artportalen.se:Sighting:49366","http://rs.tdwg.org/dwc/terms/class":"Mammalia","http://rs.tdwg.org/dwc/terms/county":"Bohuslän","http://purl.org/dc/terms/language":"Swedish","http://rs.tdwg.org/dwc/terms/individualCount":"2","http://rs.tdwg.org/dwc/terms/scientificNameAuthorship":"Linnaeus,
         1758","http://rs.tdwg.org/dwc/terms/eventDate":"2013-04-17 09:00:00/2013-04-17
         09:00:00","http://rs.tdwg.org/dwc/terms/catalogNumber":"34275321","http://rs.tdwg.org/dwc/terms/identificationVerificationStatus":"Unvalidated","http://rs.tdwg.org/dwc/terms/countryCode":"SE","http://rs.tdwg.org/dwc/terms/institutionCode":"ArtDatabanken","http://rs.tdwg.org/dwc/terms/associatedReferences":"urn:lsid:artportalen.se:Sighting:Vertebrate.65338"}'
-  recorded_at: 2018-10-09 21:45:15 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+  recorded_at: 2019-02-26 17:24:22 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/620594291/verbatim
@@ -463,8 +458,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -472,14 +467,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 21:45:15 GMT
+      date: Tue, 26 Feb 2019 17:24:21 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/620594291/verbatim
       cache-control: public, max-age=3601
-      x-varnish: 46042276 88015171
+      x-varnish: 805569631 821233577
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -489,12 +483,11 @@ http_interactions:
       encoding: UTF-8
       string: '{"key":620594291,"datasetKey":"c21cd435-718a-4069-b503-776bf0e22b96","publishingOrgKey":"a42867f0-813a-11dc-82e0-b8a03c50a862","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2017-10-08T12:39:02.944+0000","lastParsed":"2016-12-23T03:08:50.227+0000","crawlId":57,"extensions":{},"http://rs.tdwg.org/dwc/terms/continent":"Africa","http://rs.tdwg.org/dwc/terms/preparations":"skin","http://rs.tdwg.org/dwc/terms/verbatimEventDate":"05Feb1976","http://rs.tdwg.org/dwc/terms/country":"Nigeria","http://rs.tdwg.org/dwc/terms/collectionCode":"Bird","http://rs.tdwg.org/dwc/terms/order":"Passeriformes","http://rs.tdwg.org/dwc/terms/taxonRank":"species","http://rs.tdwg.org/dwc/terms/verbatimLocality":"Africa
         | Nigeria | Oyo | Ibadan, University of Ibadan","http://purl.org/dc/terms/accessRights":"http://vertnet.org/resources/norms.html","http://rs.tdwg.org/dwc/terms/year":"1976","http://rs.tdwg.org/dwc/terms/lifeStage":"adult","http://rs.tdwg.org/dwc/terms/locality":"Ibadan,
-        University of Ibadan","http://rs.tdwg.org/dwc/terms/endDayOfYear":"36","http://rs.tdwg.org/dwc/terms/basisOfRecord":"PreservedSpecimen","http://rs.tdwg.org/dwc/terms/higherClassification":"Passeriformes
-        | Estrildidae | Spermestes","http://rs.tdwg.org/dwc/terms/sex":"female","http://rs.tdwg.org/dwc/terms/family":"Estrildidae","http://purl.org/dc/terms/modified":"2007-08-08
-        04:58:31.0","http://rs.tdwg.org/dwc/terms/month":"2","http://rs.tdwg.org/dwc/terms/higherGeography":"AFRICA
-        | NIGERIA | OYO |  |  |  |  |","http://rs.tdwg.org/dwc/terms/scientificName":"Spermestes
-        cucullatus","http://rs.tdwg.org/dwc/terms/stateProvince":"Oyo","http://rs.tdwg.org/dwc/terms/recordedBy":"Barker,
-        Jr., R. H","http://rs.tdwg.org/dwc/terms/phylum":"Chordata","http://rs.tdwg.org/dwc/terms/institutionID":"http://biocol.org/urn:lsid:biocol.org:col:34940","http://purl.org/dc/terms/license":"https://creativecommons.org/publicdomain/zero/1.0/","http://rs.gbif.org/terms/1.0/gbifID":"620594291","http://rs.tdwg.org/dwc/terms/day":"5","http://rs.tdwg.org/dwc/terms/datasetName":"Delaware
-        Museum of Natural History (DMNH) Bird Collection","http://rs.tdwg.org/dwc/terms/collectionID":"http://grbio.org/cool/ywsm-eq6q","http://rs.tdwg.org/dwc/terms/kingdom":"Animalia","http://rs.tdwg.org/dwc/terms/genus":"Lonchura","http://purl.org/dc/terms/identifier":"a6d67fb1-c591-11e3-acd2-03413f76937f","http://rs.tdwg.org/dwc/terms/class":"Aves","http://purl.org/dc/terms/language":"en","http://rs.tdwg.org/dwc/terms/specificEpithet":"cucullatus","http://rs.tdwg.org/dwc/terms/occurrenceID":"a6d67fb1-c591-11e3-acd2-03413f76937f","http://rs.tdwg.org/dwc/terms/eventDate":"1976-02-05","http://rs.tdwg.org/dwc/terms/nomenclaturalCode":"ICZN","http://rs.tdwg.org/dwc/terms/catalogNumber":"57398","http://rs.tdwg.org/dwc/terms/establishmentMeans":"native","http://purl.org/dc/terms/type":"PhysicalObject","http://purl.org/dc/terms/references":"http://portal.vertnet.org/o/dmnh/bird?id=57398","http://rs.tdwg.org/dwc/terms/countryCode":"NG","http://rs.tdwg.org/dwc/terms/institutionCode":"DMNH","http://rs.tdwg.org/dwc/terms/occurrenceStatus":"present","http://rs.tdwg.org/dwc/terms/startDayOfYear":"36"}'
-  recorded_at: 2018-10-09 21:45:15 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+        University of Ibadan","http://rs.tdwg.org/dwc/terms/endDayOfYear":"36","http://rs.tdwg.org/dwc/terms/higherClassification":"Passeriformes
+        | Estrildidae | Spermestes","http://rs.tdwg.org/dwc/terms/basisOfRecord":"PreservedSpecimen","http://rs.tdwg.org/dwc/terms/family":"Estrildidae","http://rs.tdwg.org/dwc/terms/sex":"female","http://rs.tdwg.org/dwc/terms/month":"2","http://purl.org/dc/terms/modified":"2007-08-08
+        04:58:31.0","http://rs.tdwg.org/dwc/terms/higherGeography":"AFRICA | NIGERIA
+        | OYO |  |  |  |  |","http://rs.tdwg.org/dwc/terms/stateProvince":"Oyo","http://rs.tdwg.org/dwc/terms/scientificName":"Spermestes
+        cucullatus","http://rs.tdwg.org/dwc/terms/recordedBy":"Barker, Jr., R. H","http://rs.tdwg.org/dwc/terms/phylum":"Chordata","http://rs.tdwg.org/dwc/terms/institutionID":"http://biocol.org/urn:lsid:biocol.org:col:34940","http://purl.org/dc/terms/license":"https://creativecommons.org/publicdomain/zero/1.0/","http://rs.gbif.org/terms/1.0/gbifID":"620594291","http://rs.tdwg.org/dwc/terms/day":"5","http://rs.tdwg.org/dwc/terms/collectionID":"http://grbio.org/cool/ywsm-eq6q","http://rs.tdwg.org/dwc/terms/datasetName":"Delaware
+        Museum of Natural History (DMNH) Bird Collection","http://rs.tdwg.org/dwc/terms/genus":"Lonchura","http://rs.tdwg.org/dwc/terms/kingdom":"Animalia","http://purl.org/dc/terms/identifier":"a6d67fb1-c591-11e3-acd2-03413f76937f","http://rs.tdwg.org/dwc/terms/class":"Aves","http://purl.org/dc/terms/language":"en","http://rs.tdwg.org/dwc/terms/specificEpithet":"cucullatus","http://rs.tdwg.org/dwc/terms/occurrenceID":"a6d67fb1-c591-11e3-acd2-03413f76937f","http://rs.tdwg.org/dwc/terms/eventDate":"1976-02-05","http://rs.tdwg.org/dwc/terms/nomenclaturalCode":"ICZN","http://rs.tdwg.org/dwc/terms/catalogNumber":"57398","http://rs.tdwg.org/dwc/terms/establishmentMeans":"native","http://purl.org/dc/terms/type":"PhysicalObject","http://purl.org/dc/terms/references":"http://portal.vertnet.org/o/dmnh/bird?id=57398","http://rs.tdwg.org/dwc/terms/countryCode":"NG","http://rs.tdwg.org/dwc/terms/institutionCode":"DMNH","http://rs.tdwg.org/dwc/terms/occurrenceStatus":"present","http://rs.tdwg.org/dwc/terms/startDayOfYear":"36"}'
+  recorded_at: 2019-02-26 17:24:22 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4

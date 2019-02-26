@@ -103,6 +103,6 @@ test_that("fails correctly", {
   pairs <- list(c(31.8496, -110.576060), c(29.15503, -103.59828))
   vcr::use_cassette("elevation_unauthorized", {
     expect_error(elevation(latlong = pairs, username = "bad_user"),
-      "user does not exist")
+      "Unauthorized")
   })
 })

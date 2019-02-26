@@ -67,11 +67,11 @@ test_that("works w/: verbatim=TRUE, fields all, & return extensions data", {
   expect_true(any(grepl("extensions", names(aa))))
   expect_false(any(grepl("Multimedia", names(aa))))
 
-  # extensions: Identification missing, Multimedia empty array
+  # extensions: Identification missing, Multimedia doesn't exist
   expect_is(bb, "data.frame")
   expect_equal(NROW(bb), 1)
   expect_false(any(grepl("extensions", names(bb))))
-  expect_true(any(grepl("Multimedia", names(bb))))
+  expect_false(any(grepl("Multimedia", names(bb))))
 
   # extensions: Identification missing, Multimedia non-empty
   expect_is(cc, "data.frame")

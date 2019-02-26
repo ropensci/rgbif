@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -17,24 +17,23 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 20:53:46 GMT
+      date: Tue, 26 Feb 2019 15:17:06 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/enumeration/basic/
       cache-control: public, max-age=3601
-      x-varnish: 42865541 75038740
-      age: '172'
+      x-varnish: 776012071 770376108
+      age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
-      content-length: '767'
+      content-length: '883'
       connection: keep-alive
     body:
       encoding: UTF-8
-      string: '["AppRole","BasisOfRecord","CitesAppendix","ContactType","Continent","Country","DatasetSubtype","DatasetType","EndpointType","EstablishmentMeans","Extension","GbifRegion","Habitat","IdentifierType","InstallationType","InterpretationRemarkSeverity","Kingdom","Language","License","LifeStage","MaintenanceUpdateFrequency","MediaType","MetadataType","NamePart","NameType","NameUsageIssue","NodeType","NomenclaturalCode","NomenclaturalStatus","OccurrenceIssue","OccurrencePersistenceStatus","OccurrenceSchemaType","OccurrenceStatus","Origin","ParticipationStatus","PreservationMethodType","ProcessingErrorType","Rank","RelationType","Sex","TagName","TagNamespace","TaxonomicStatus","TechnicalInstallationType","ThreatStatus","TypeDesignationType","TypeStatus","UserRole"]'
-  recorded_at: 2018-10-09 20:56:41 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+      string: '["AccessionStatus","AppRole","BasisOfRecord","CitesAppendix","CollectionContentType","ContactType","Continent","Country","DatasetSubtype","DatasetType","Discipline","EndpointType","EstablishmentMeans","Extension","GbifRegion","Habitat","IdentifierType","InstallationType","InstitutionGovernance","InstitutionType","InterpretationRemarkSeverity","Kingdom","Language","License","LifeStage","MaintenanceUpdateFrequency","MediaType","MetadataType","NamePart","NameType","NameUsageIssue","NodeType","NomenclaturalCode","NomenclaturalStatus","OccurrenceIssue","OccurrencePersistenceStatus","OccurrenceSchemaType","OccurrenceStatus","Origin","ParticipationStatus","PreservationMethodType","PreservationType","ProcessingErrorType","Rank","RelationType","Sex","TagName","TagNamespace","TaxonomicStatus","TechnicalInstallationType","ThreatStatus","TypeDesignationType","TypeStatus","UserRole"]'
+  recorded_at: 2019-02-26 15:17:09 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/enumeration/basic/NameType
@@ -44,8 +43,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -53,15 +52,14 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 20:53:47 GMT
+      date: Tue, 26 Feb 2019 15:17:06 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/enumeration/basic/NameType
       cache-control: public, max-age=3601
-      x-varnish: 21107380 75038742
-      age: '172'
+      x-varnish: 763102087 767328991
+      age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
       content-length: '107'
@@ -69,8 +67,8 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '["SCIENTIFIC","VIRUS","HYBRID","INFORMAL","CULTIVAR","CANDIDATUS","OTU","DOUBTFUL","PLACEHOLDER","NO_NAME"]'
-  recorded_at: 2018-10-09 20:56:41 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+  recorded_at: 2019-02-26 15:17:09 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/enumeration/basic/MetadataType
@@ -80,8 +78,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -89,15 +87,14 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 20:53:47 GMT
+      date: Tue, 26 Feb 2019 15:17:07 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/enumeration/basic/MetadataType
       cache-control: public, max-age=3601
-      x-varnish: 75760017 73564180
-      age: '173'
+      x-varnish: 704746411 768999669
+      age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
       content-length: '12'
@@ -105,8 +102,8 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '["EML","DC"]'
-  recorded_at: 2018-10-09 20:56:41 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+  recorded_at: 2019-02-26 15:17:09 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/enumeration/basic/TypeStatus
@@ -116,8 +113,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -125,24 +122,23 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 20:53:47 GMT
+      date: Tue, 26 Feb 2019 15:17:07 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/enumeration/basic/TypeStatus
       cache-control: public, max-age=3601
-      x-varnish: 74547508 71925998
-      age: '173'
+      x-varnish: 725945098 768999680
+      age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
-      content-length: '544'
+      content-length: '568'
       connection: keep-alive
     body:
       encoding: UTF-8
-      string: '["TYPE","TYPE_SPECIES","TYPE_GENUS","ALLOLECTOTYPE","ALLONEOTYPE","ALLOTYPE","COTYPE","EPITYPE","EXEPITYPE","EXHOLOTYPE","EXISOTYPE","EXLECTOTYPE","EXNEOTYPE","EXPARATYPE","EXSYNTYPE","EXTYPE","HAPANTOTYPE","HOLOTYPE","ICONOTYPE","ISOLECTOTYPE","ISONEOTYPE","ISOSYNTYPE","ISOTYPE","LECTOTYPE","NEOTYPE","NOTATYPE","ORIGINALMATERIAL","PARALECTOTYPE","PARANEOTYPE","PARATYPE","PLASTOHOLOTYPE","PLASTOISOTYPE","PLASTOLECTOTYPE","PLASTONEOTYPE","PLASTOPARATYPE","PLASTOSYNTYPE","PLASTOTYPE","SECONDARYTYPE","SUPPLEMENTARYTYPE","SYNTYPE","TOPOTYPE"]'
-  recorded_at: 2018-10-09 20:56:41 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+      string: '["TYPE","TYPE_SPECIES","TYPE_GENUS","ALLOLECTOTYPE","ALLONEOTYPE","ALLOTYPE","COTYPE","EPITYPE","EXEPITYPE","EXHOLOTYPE","EXISOTYPE","EXLECTOTYPE","EXNEOTYPE","EXPARATYPE","EXSYNTYPE","EXTYPE","HAPANTOTYPE","HOLOTYPE","HYPOTYPE","ICONOTYPE","ISOLECTOTYPE","ISONEOTYPE","ISOSYNTYPE","ISOTYPE","LECTOTYPE","NEOTYPE","NOTATYPE","ORIGINALMATERIAL","PARALECTOTYPE","PARANEOTYPE","PARATYPE","PLASTOHOLOTYPE","PLASTOISOTYPE","PLASTOLECTOTYPE","PLASTONEOTYPE","PLASTOPARATYPE","PLASTOSYNTYPE","PLASTOTYPE","PLESIOTYPE","SECONDARYTYPE","SUPPLEMENTARYTYPE","SYNTYPE","TOPOTYPE"]'
+  recorded_at: 2019-02-26 15:17:09 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/enumeration/country/
@@ -152,8 +148,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -161,15 +157,14 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 20:53:47 GMT
+      date: Tue, 26 Feb 2019 15:17:08 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/enumeration/country/
       cache-control: public, max-age=3601
-      x-varnish: 12915689 73564186
-      age: '173'
+      x-varnish: 779944144 778240410
+      age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
       content-length: '29183'
@@ -257,5 +252,5 @@ http_interactions:
         Islands, U.S.","gbifRegion":"LATIN_AMERICA","enumName":"VIRGIN_ISLANDS"},{"iso2":"WF","iso3":"WLF","isoNumerical":"876","title":"Wallis
         and Futuna","gbifRegion":"OCEANIA","enumName":"WALLIS_FUTUNA"},{"iso2":"EH","iso3":"ESH","isoNumerical":"732","title":"Western
         Sahara","gbifRegion":"AFRICA","enumName":"WESTERN_SAHARA"},{"iso2":"YE","iso3":"YEM","isoNumerical":"887","title":"Yemen","gbifRegion":"ASIA","enumName":"YEMEN"},{"iso2":"ZM","iso3":"ZMB","isoNumerical":"894","title":"Zambia","gbifRegion":"AFRICA","enumName":"ZAMBIA"},{"iso2":"ZW","iso3":"ZWE","isoNumerical":"716","title":"Zimbabwe","gbifRegion":"AFRICA","enumName":"ZIMBABWE"}]'
-  recorded_at: 2018-10-09 20:56:41 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+  recorded_at: 2019-02-26 15:17:09 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4

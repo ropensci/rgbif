@@ -45,8 +45,8 @@ test_that("works with habitat parameter", {
 test_that("works with parameters that allow many inputs", {
   vcr::use_cassette("name_lookup_many_inputs", {
     aa <- name_lookup(status = c("misapplied", "synonym"), limit = 200)
-    aa <- name_lookup(nameType = c("cultivar", "doubtful"), limit = 200)
-    aa <- name_lookup(origin = c("implicit_name", "proparte"), limit = 250)
+    bb <- name_lookup(nameType = c("cultivar", "doubtful"), limit = 200)
+    cc <- name_lookup(origin = c("implicit_name", "proparte"), limit = 250)
   }, preserve_exact_body_bytes = TRUE)
   
   expect_is(aa, "list")
@@ -57,21 +57,21 @@ test_that("works with parameters that allow many inputs", {
   expect_true(all(
     unique(tolower(aa$data$taxonomicStatus)) %in% c("misapplied", "synonym")))
   
-  expect_is(aa, "list")
-  expect_is(aa$meta, "data.frame")
-  expect_is(aa$meta$endOfRecords, "logical")
-  expect_is(aa$data$canonicalName, "character")
-  expect_is(aa$data$key, "integer")
+  expect_is(bb, "list")
+  expect_is(bb$meta, "data.frame")
+  expect_is(bb$meta$endOfRecords, "logical")
+  expect_is(bb$data$canonicalName, "character")
+  expect_is(bb$data$key, "integer")
   expect_true(all(
-    unique(tolower(aa$data$nameType)) %in% c("cultivar", "doubtful")))
+    unique(tolower(bb$data$nameType)) %in% c("cultivar", "doubtful")))
     
-  expect_is(aa, "list")
-  expect_is(aa$meta, "data.frame")
-  expect_is(aa$meta$endOfRecords, "logical")
-  expect_is(aa$data$canonicalName, "character")
-  expect_is(aa$data$key, "integer")
+  expect_is(cc, "list")
+  expect_is(cc$meta, "data.frame")
+  expect_is(cc$meta$endOfRecords, "logical")
+  expect_is(cc$data$canonicalName, "character")
+  expect_is(cc$data$key, "integer")
   expect_true(all(
-    unique(tolower(aa$data$origin)) %in% c("implicit_name", "proparte")))
+    unique(tolower(cc$data$origin)) %in% c("implicit_name", "proparte")))
 })
 
 #paging (limit higher than 1000 records; maximum API: 99999)

@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -17,31 +17,46 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 20:54:56 GMT
+      date: Tue, 26 Feb 2019 15:29:45 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/species/5231190/descriptions?offset=0&limit=100
       cache-control: public, max-age=3601
-      x-varnish: 79069378 12062627
-      age: '1333'
+      x-varnish: 774406819 765429086
+      age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
-      content-length: '1038'
+      content-length: '3492'
       connection: keep-alive
     body:
       encoding: UTF-8
       string: '{"offset":0,"limit":100,"endOfRecords":true,"results":[{"key":31032583,"taxonKey":5231190,"type":"Distribución","language":"","description":"Ecorregión
         (Hernández et al. (1992): South American Pacific mangroves (SAPm): Distrito
-        Tumaco","source":"Aves del departamento de Nariño, Colombia","sourceTaxonKey":114072928},{"key":57595502,"taxonKey":5231190,"type":"Distribution","language":"","description":"Breeding
+        Tumaco","source":"Aves del departamento de Nariño, Colombia","sourceTaxonKey":114072928},{"key":69459672,"taxonKey":5231190,"type":"Distribution","language":"","description":"Breeding
         regions are EU, OR, AF. Breeding subregions are widespread, introduced worldwide.","source":"IOC
-        World Bird List, v8.2","sourceTaxonKey":123528979},{"key":57708163,"taxonKey":5231190,"type":"Distribution","language":"eng","description":"Caribbean","source":"Catalogue
-        of Life","sourceTaxonKey":132136870},{"key":57708164,"taxonKey":5231190,"type":"Distribution","language":"eng","description":"North
-        America","source":"Catalogue of Life","sourceTaxonKey":132136870},{"key":57708165,"taxonKey":5231190,"type":"Distribution","language":"eng","description":"Oceania","source":"Catalogue
-        of Life","sourceTaxonKey":132136870}]}'
-  recorded_at: 2018-10-09 21:17:10 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+        World Bird List, v9.1","sourceTaxonKey":123529007},{"key":70731005,"taxonKey":5231190,"type":"Distribution","language":"eng","description":"Caribbean","source":"Catalogue
+        of Life","sourceTaxonKey":132136870},{"key":70731006,"taxonKey":5231190,"type":"Distribution","language":"eng","description":"North
+        America","source":"Catalogue of Life","sourceTaxonKey":132136870},{"key":70731007,"taxonKey":5231190,"type":"Distribution","language":"eng","description":"Oceania","source":"Catalogue
+        of Life","sourceTaxonKey":132136870},{"key":71585920,"taxonKey":5231190,"type":"cuddliness","language":"eng","description":"cuddly","source":"Validated
+        red lists of Flanders, Belgium","sourceTaxonKey":152628239},{"key":71585921,"taxonKey":5231190,"type":"nutrient
+        level","language":"eng","description":"eutrophic","source":"Validated red
+        lists of Flanders, Belgium","sourceTaxonKey":152628239},{"key":71585922,"taxonKey":5231190,"type":"mobility","language":"eng","description":"mobile","source":"Validated
+        red lists of Flanders, Belgium","sourceTaxonKey":152628239},{"key":71585923,"taxonKey":5231190,"type":"lifespan","language":"eng","description":"shortlived","source":"Validated
+        red lists of Flanders, Belgium","sourceTaxonKey":152628239},{"key":71585924,"taxonKey":5231190,"type":"biome","language":"eng","description":"terrestrial","source":"Validated
+        red lists of Flanders, Belgium","sourceTaxonKey":152628239},{"key":71585925,"taxonKey":5231190,"type":"biotope","language":"eng","description":"urban","source":"Validated
+        red lists of Flanders, Belgium","sourceTaxonKey":152628239},{"key":71585926,"taxonKey":5231190,"type":"spine","language":"eng","description":"vertebrate","source":"Validated
+        red lists of Flanders, Belgium","sourceTaxonKey":152628239},{"key":71587169,"taxonKey":5231190,"type":"cuddliness","language":"eng","description":"cuddly","source":"Validated
+        red lists of Flanders, Belgium","sourceTaxonKey":152628235},{"key":71587170,"taxonKey":5231190,"type":"nutrient
+        level","language":"eng","description":"eutrophic","source":"Validated red
+        lists of Flanders, Belgium","sourceTaxonKey":152628235},{"key":71587171,"taxonKey":5231190,"type":"mobility","language":"eng","description":"mobile","source":"Validated
+        red lists of Flanders, Belgium","sourceTaxonKey":152628235},{"key":71587172,"taxonKey":5231190,"type":"lifespan","language":"eng","description":"shortlived","source":"Validated
+        red lists of Flanders, Belgium","sourceTaxonKey":152628235},{"key":71587173,"taxonKey":5231190,"type":"biome","language":"eng","description":"terrestrial","source":"Validated
+        red lists of Flanders, Belgium","sourceTaxonKey":152628235},{"key":71587174,"taxonKey":5231190,"type":"biotope","language":"eng","description":"urban","source":"Validated
+        red lists of Flanders, Belgium","sourceTaxonKey":152628235},{"key":71587175,"taxonKey":5231190,"type":"spine","language":"eng","description":"vertebrate","source":"Validated
+        red lists of Flanders, Belgium","sourceTaxonKey":152628235}]}'
+  recorded_at: 2019-02-26 15:29:46 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/species/5127299/descriptions?offset=0&limit=100
@@ -51,8 +66,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -60,15 +75,14 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 20:54:56 GMT
+      date: Tue, 26 Feb 2019 15:29:46 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/species/5127299/descriptions?offset=0&limit=100
       cache-control: public, max-age=3601
-      x-varnish: 78381639 73465993
-      age: '1333'
+      x-varnish: 765429092 760318021
+      age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
       content-length: '57'
@@ -76,5 +90,5 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"offset":0,"limit":100,"endOfRecords":true,"results":[]}'
-  recorded_at: 2018-10-09 21:17:10 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+  recorded_at: 2019-02-26 15:29:46 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4

@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '400'
@@ -17,14 +17,13 @@ http_interactions:
       explanation: Bad request syntax or unsupported method
     headers:
       status: HTTP/1.1 400 Bad Request
-      date: Tue, 09 Oct 2018 21:25:02 GMT
+      date: Tue, 26 Feb 2019 15:31:06 GMT
       content-type: text/plain
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/count?basisOfRecord=OBSERVATION&year=2012
       cache-control: no-cache, no-store, must-revalidate
-      x-varnish: '68093918'
+      x-varnish: '723290868'
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       content-length: '111'
@@ -33,8 +32,8 @@ http_interactions:
       encoding: UTF-8
       string: 'The provided address is not calculated in the cube: (basisOfRecord:
         (nobucket: 03), year: (nobucket: 000007dc))'
-  recorded_at: 2018-10-09 21:25:03 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+  recorded_at: 2019-02-26 15:31:07 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?basisOfRecord=OBSERVATION&typeStatus=ALLOTYPE
@@ -44,8 +43,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '400'
@@ -53,14 +52,13 @@ http_interactions:
       explanation: Bad request syntax or unsupported method
     headers:
       status: HTTP/1.1 400 Bad Request
-      date: Tue, 09 Oct 2018 21:25:03 GMT
+      date: Tue, 26 Feb 2019 15:31:06 GMT
       content-type: text/plain
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/count?basisOfRecord=OBSERVATION&typeStatus=ALLOTYPE
       cache-control: no-cache, no-store, must-revalidate
-      x-varnish: '78022490'
+      x-varnish: '726862799'
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       content-length: '111'
@@ -69,5 +67,5 @@ http_interactions:
       encoding: UTF-8
       string: 'The provided address is not calculated in the cube: (basisOfRecord:
         (nobucket: 03), typeStatus: (nobucket: 05))'
-  recorded_at: 2018-10-09 21:25:03 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+  recorded_at: 2019-02-26 15:31:07 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4

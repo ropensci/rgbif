@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -17,18 +17,17 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 20:54:57 GMT
+      date: Tue, 26 Feb 2019 15:29:51 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/species/5231190/speciesProfiles?offset=0&limit=100
       cache-control: public, max-age=3601
-      x-varnish: 6689569 71172485
-      age: '1335'
+      x-varnish: 740756494 785481825
+      age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
-      content-length: '2403'
+      content-length: '4166'
       connection: keep-alive
     body:
       encoding: UTF-8
@@ -49,9 +48,22 @@ http_interactions:
         Register of Introduced and Invasive Species- Saba, Netherlands","sourceTaxonKey":142663168},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
         Register of Introduced and Invasive Species- Sint Eustatius, Netherlands","sourceTaxonKey":142663402},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
         Register of Introduced and Invasive Species- Sint Maarten, Netherlands","sourceTaxonKey":142663653},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Aruba","sourceTaxonKey":142669601}]}'
-  recorded_at: 2018-10-09 21:17:13 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+        Register of Introduced and Invasive Species- Aruba","sourceTaxonKey":142669601},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Burundi","sourceTaxonKey":148676382},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species -France - Saint-Barthelemy","sourceTaxonKey":148676939},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Colombia","sourceTaxonKey":148737136},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Mexico","sourceTaxonKey":148739371},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- United Kingdom- Cayman Islands","sourceTaxonKey":148740251},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Democratic Republic of Congo","sourceTaxonKey":148740739},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Botswana","sourceTaxonKey":148741344},{"taxonKey":5231190,"source":"Global
+        Register of Introduced and Invasive Species- Gran Canaria, Islas Canarias,
+        Spain","sourceTaxonKey":148787758},{"taxonKey":5231190,"source":"Global Register
+        of Introduced and Invasive Species- Swaziland","sourceTaxonKey":148789617},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Jamaica","sourceTaxonKey":149692575},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Vietnam","sourceTaxonKey":149693209},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Singapore","sourceTaxonKey":149695953}]}'
+  recorded_at: 2019-02-26 15:29:52 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/species/5136020/speciesProfiles?offset=0&limit=100
@@ -61,8 +73,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -70,15 +82,14 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 20:54:58 GMT
+      date: Tue, 26 Feb 2019 15:29:51 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/species/5136020/speciesProfiles?offset=0&limit=100
       cache-control: public, max-age=3601
-      x-varnish: 82968651 15962914
-      age: '1335'
+      x-varnish: 765068989 777913291
+      age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
       content-length: '57'
@@ -86,5 +97,5 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"offset":0,"limit":100,"endOfRecords":true,"results":[]}'
-  recorded_at: 2018-10-09 21:17:13 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+  recorded_at: 2019-02-26 15:29:52 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4

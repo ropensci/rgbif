@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -17,15 +17,14 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 21:18:46 GMT
+      date: Tue, 26 Feb 2019 15:30:25 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/network?limit=100
       cache-control: public, max-age=3601
-      x-varnish: 19437052 79365206
-      age: '34'
+      x-varnish: 730073835 784728189
+      age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
       content-length: '867'
@@ -37,6 +36,6 @@ http_interactions:
         Information System (OBIS) is the information component of the Census of Marine
         Life (CoML), a growing network of more than 1000 researchers in 73 nations
         engaged in a 10-year initiative to assess and explain the diversity, distribution,
-        and abundance of life in the oceans - past, present, and future.","language":"eng","numConstituents":153,"homepage":["http://www.iobis.org/"],"logoUrl":"http://www.coml.org/comlfiles/images/obis_logo_large.gif","createdBy":"ADMIN","modifiedBy":"ADMIN","created":"2007-04-03T08:31:37.000+0000","modified":"2012-12-13T11:00:12.000+0000","contacts":[],"endpoints":[],"machineTags":[],"tags":[],"identifiers":[],"comments":[]}]}'
-  recorded_at: 2018-10-09 21:19:21 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+        and abundance of life in the oceans - past, present, and future.","language":"eng","numConstituents":151,"homepage":["http://www.iobis.org/"],"logoUrl":"http://www.coml.org/comlfiles/images/obis_logo_large.gif","createdBy":"ADMIN","modifiedBy":"ADMIN","created":"2007-04-03T08:31:37.000+0000","modified":"2012-12-13T11:00:12.000+0000","contacts":[],"endpoints":[],"machineTags":[],"tags":[],"identifiers":[],"comments":[]}]}'
+  recorded_at: 2019-02-26 15:30:26 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
