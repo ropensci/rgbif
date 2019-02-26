@@ -2,7 +2,6 @@ context("occ_issues")
 
 test_that("occ_issues", {
   vcr::use_cassette("occ_issues", {
-
     out <- occ_search(limit = 100)
 
     # Parsing output by issue
@@ -25,33 +24,32 @@ test_that("occ_issues", {
 
     ### split and expand
     hh <- res %>% occ_issues(mutate = "split_expand")
-
-    # correct class
-    expect_is(bb, "gbif")
-    expect_is(cc, "gbif")
-    expect_is(dd, "gbif")
-    expect_is(ee, "gbif")
-    expect_is(ff, "gbif")
-    expect_is(gg, "gbif")
-    expect_is(hh, "gbif")
-
-    # returns the correct dimensions
-    expect_true(all(vapply(bb$data$issues, function(x)
-      grepl("gass84", x), logical(1))))
-    expect_true(all(vapply(cc$data$issues, function(x)
-      grepl("gass84", x), logical(1))))
-    expect_false(all(vapply(cc$data$issues, function(x)
-      grepl("cudc", x), logical(1))))
-    expect_false(any(grepl("issues", names(dd$data))))
-    expect_true(any(grepl("gass84", names(dd$data))))
-    expect_false(any(grepl("issues", names(ee$data))))
-    expect_false(any(grepl("cdreps", names(ee$data))))
-    expect_true(any(grepl("gass84", names(ff$data))))
-    expect_false(any(grepl("issues", names(ff$data))))
-    expect_false(any(grepl("issues", names(hh$data))))
-    expect_true(any(grepl("COORDINATE_ROUNDED", names(hh$data))))
-
   }, preserve_exact_body_bytes = TRUE)
+
+  # correct class
+  expect_is(bb, "gbif")
+  expect_is(cc, "gbif")
+  expect_is(dd, "gbif")
+  expect_is(ee, "gbif")
+  expect_is(ff, "gbif")
+  expect_is(gg, "gbif")
+  expect_is(hh, "gbif")
+
+  # returns the correct dimensions
+  expect_true(all(vapply(bb$data$issues, function(x)
+    grepl("gass84", x), logical(1))))
+  expect_true(all(vapply(cc$data$issues, function(x)
+    grepl("gass84", x), logical(1))))
+  expect_false(all(vapply(cc$data$issues, function(x)
+    grepl("cudc", x), logical(1))))
+  expect_false(any(grepl("issues", names(dd$data))))
+  expect_true(any(grepl("gass84", names(dd$data))))
+  expect_false(any(grepl("issues", names(ee$data))))
+  expect_false(any(grepl("cdreps", names(ee$data))))
+  expect_true(any(grepl("gass84", names(ff$data))))
+  expect_false(any(grepl("issues", names(ff$data))))
+  expect_false(any(grepl("issues", names(hh$data))))
+  expect_true(any(grepl("COORDINATE_ROUNDED", names(hh$data))))
 })
 
 test_that("occ_issues: occ_data type=many", {
