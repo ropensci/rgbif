@@ -100,6 +100,27 @@ Acceptable arguments to \code{...} are:
 \note{
 see \link{downloads} for an overview of GBIF downloads methods
 }
+\section{geometry}{
+
+When using the geometry parameter, make sure that your well known text
+(WKT) is formatted as GBIF expects it. They expect WKT to have a
+counter-clockwise winding order. For example, the following is clockwise
+\code{POLYGON((-19.5 34.1, -25.3 68.1, 35.9 68.1, 27.8 34.1, -19.5 34.1))},
+whereas they expect the other order:
+\code{POLYGON((-19.5 34.1, 27.8 34.1, 35.9 68.1, -25.3 68.1, -19.5 34.1))}
+
+note that coordinate pairs are \code{longitude latitude}, longitude first, then
+latitude
+
+you should not get any results if you supply WKT that has clockwise
+winding order.
+
+also note that \code{\link[=occ_search]{occ_search()}}/\code{\link[=occ_data]{occ_data()}} behave differently with
+respect to WKT in that you can supply counter-clockwise WKT to those
+functions but they treat it as an exclusion, so get all data not
+inside the WKT area.
+}
+
 \section{Methods}{
 
 \itemize{
