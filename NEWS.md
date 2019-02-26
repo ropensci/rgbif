@@ -1,3 +1,26 @@
+rgbif 1.2.0
+===========
+
+### NEW FEATURES
+
+* pkgdown documentation site (#336) (#337) all work done by @peterdesmet
+* package gains hex logo (#331) (#332) thanks @peterdesmet
+* big change to `elevation()` function: the Google Maps API requires a form of payment up front, and so we've decided to move away from the service. `elevation()` now uses the Geonames service <https://www.geonames.org/>; it does require you to register to get a username, but its a free service. Geonames has a few different data models for elevation and can be chosen in the `elevation_model` parameter (#344) (#345)
+* biggish change to `occ_data()`/`occ_search()` output: the data.frame in the `data` slot now always has the first column as the occurrence key (`key`), and the second column is now the scientific name (`scientificName`). the previously used `name` column still exists in the data.frame, so as not to break any user code, but is simply a duplicate of the `scientificName` column. in a future version of this package the `name` column will be dropped (#329)
+
+### MINOR IMPROVEMENTS
+
+* README gains full list of code contributors and any folks involved in github issues (#339) (#343) thanks @peterdesmet
+* update pkg citation, include all authors (#338)
+* added more to `occ_search()`/`occ_data()`/`occ_download()` documentation on WKT (well-known text) with respect to winding order. GBIF requires counter-clockwise winding order; if you submit clockwise winding order WKT to `occ_search()` or `occ_data()` you should get data back but the WKT is treated as an exclusion, so returns data outside of that shape instead of within it; if you submit clockwise winding order WKT to `occ_download()` you will get no data back (#340)
+
+### BUG FIXES
+
+* fix bug in `occ_download()`, was failing in certain cases because of some bad code in an internal function `catch_err()` (#333)
+* `occ_download()` was not returning user name and email in it's print method (#334)
+* `occ_issues()` was failing with `occ_data()` or `occ_search()` input when `type="many"` (i.e., when > 1 thing was passed in) (#341)
+
+
 rgbif 1.1.0
 ===========
 
