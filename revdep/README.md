@@ -2,33 +2,34 @@
 
 |field    |value                                       |
 |:--------|:-------------------------------------------|
-|version  |R version 3.5.1 Patched (2018-08-12 r75119) |
-|os       |macOS High Sierra 10.13.6                   |
+|version  |R version 3.5.2 Patched (2018-12-31 r75943) |
+|os       |macOS Mojave 10.14.3                        |
 |system   |x86_64, darwin15.6.0                        |
 |ui       |X11                                         |
 |language |(EN)                                        |
 |collate  |en_US.UTF-8                                 |
 |ctype    |en_US.UTF-8                                 |
 |tz       |US/Pacific                                  |
-|date     |2018-10-19                                  |
+|date     |2019-02-25                                  |
 
 # Dependencies
 
-|package |old   |new   |Δ  |
-|:-------|:-----|:-----|:--|
-|rgbif   |1.0.2 |1.1.0 |*  |
+|package |old   |new |Δ  |
+|:-------|:-----|:---|:--|
+|rgbif   |1.1.0 |NA  |*  |
 
 # Revdeps
 
-## All (7)
+## All (8)
 
-|package                        |version |error |warning |note |
-|:------------------------------|:-------|:-----|:-------|:----|
-|CoordinateCleaner              |2.0-2   |      |        |     |
-|downscale                      |3.0-1   |      |        |     |
-|[KnowBR](problems.md#knowbr)   |1.8     |      |        |1    |
-|[plotKML](problems.md#plotkml) |0.5-8   |      |        |1    |
-|rCAT                           |0.1.5   |      |        |     |
-|scrubr                         |0.1.1   |      |        |     |
-|spocc                          |0.8.0   |      |        |     |
+|package                          |version |error |warning |note |
+|:--------------------------------|:-------|:-----|:-------|:----|
+|[bdchecks](problems.md#bdchecks) |0.1.7   |      |        |1    |
+|CoordinateCleaner                |2.0-7   |      |        |     |
+|downscale                        |3.0-1   |      |        |     |
+|[KnowBR](problems.md#knowbr)     |2.0     |      |        |1    |
+|plotKML                          |0.5-9   |      |        |     |
+|rCAT                             |0.1.5   |      |        |     |
+|scrubr                           |0.1.1   |      |        |     |
+|spocc                            |0.9.0   |      |        |     |
 

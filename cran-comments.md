@@ -16,8 +16,8 @@ File 'LICENSE':
 
 ## Reverse dependencies
 
-* I have run R CMD check on the 7 reverse dependencies.
-  (Summary at <https://github.com/ropensci/rgbif/blob/master/revdep/README.md>). Two notes were found and were unrelated to this package; one for non-ASCII characters and another for a package not available which has been archived on CRAN.
+* I have run R CMD check on the 8 reverse dependencies.
+  (Summary at <https://github.com/ropensci/rgbif/blob/master/revdep/README.md>). Two notes were found and were unrelated to this package; both for non-ASCII characters.
 
 --------
 
