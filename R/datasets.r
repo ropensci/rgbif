@@ -49,7 +49,7 @@ datasets <- function(data = 'all', type = NULL, uuid = NULL, query = NULL,
   # Define function to get data
   getdata <- function(x) {
     if (
-     !data %in% c('all','deleted','duplicate','subDataset','withNoEndpoint') &&
+     any(!data %in% c('all','deleted','duplicate','subDataset','withNoEndpoint')) &&
      is.null(uuid)
     ) {
      stop('You must specify a uuid if data does not equal all and
