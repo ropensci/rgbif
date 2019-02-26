@@ -1,5 +1,7 @@
 context("elevation: geonames_conn internal fxn")
 test_that("geonames_conn internal fxn works", {
+  skip_on_cran()
+  
   latitude <- c(50.01, 51.01)
   longitude <- c(10.2, 11.2)
   vcr::use_cassette("elevation_geonames_conn", {
@@ -10,6 +12,8 @@ test_that("geonames_conn internal fxn works", {
 })
 
 test_that("geonames_conn fails well", {
+  skip_on_cran()
+
   expect_error(geonames_conn(), "argument \"elevation_model\" is missing")
   expect_error(geonames_conn("foobar"), "argument \"latitude\" is missing")
   expect_error(geonames_conn("foobar", 4), "argument \"longitude\" is missing")
@@ -23,6 +27,8 @@ test_that("geonames_conn fails well", {
 
 context("elevation")
 test_that("elevation", {
+  skip_on_cran()
+
   load("elevation_test_data.rda")
   vcr::use_cassette("elevation", {
     # returns the correct class
@@ -47,6 +53,8 @@ test_that("elevation", {
 
 context("elevation: different elevation models work")
 test_that("elevation models work", {
+  skip_on_cran()
+
   load("elevation_test_data.rda")
   eltest_small <- elevation_test_data[1:5, ]
   vcr::use_cassette("elevation_models", {
