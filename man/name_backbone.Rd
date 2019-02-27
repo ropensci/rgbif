@@ -64,8 +64,8 @@ resulting from fuzzy matching (with \code{verbose=TRUE}).
 Lookup names in the GBIF backbone taxonomy.
 }
 \details{
-If you don't get a match GBIF gives back a data.frame with
-columns synonym, confidence, and matchType='NONE'.
+If you don't get a match, GBIF gives back a data.frame with columns \code{synonym}
+, \code{confidence}, and \code{matchType='NONE'}.
 }
 \examples{
 \dontrun{

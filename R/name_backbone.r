@@ -34,8 +34,10 @@
 #'   `verbose=FALSE`) or a list of length two, first data.frame for the
 #'   suggested taxon match, and a data.frame with alternative name suggestions
 #'   resulting from fuzzy matching (with `verbose=TRUE`).
-#' @details If you don't get a match GBIF gives back a data.frame with
-#' columns synonym, confidence, and matchType='NONE'.
+#'
+#' @details
+#' If you don't get a match, GBIF gives back a data.frame with columns `synonym`
+#' , `confidence`, and `matchType='NONE'`.
 #'
 #' @references <http://www.gbif.org/developer/species#searching>
 #'
