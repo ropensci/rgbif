@@ -2,8 +2,7 @@
 % Please edit documentation in R/gbif_issues.R
 \name{gbif_issues}
 \alias{gbif_issues}
-\title{Table of GBIF issues, with codes used in data output, full issue name,
-description and the type (occurrence or name related).}
+\title{List all GBIF issues and their codes.}
 \source{
 \url{http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html},
 \url{https://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/NameUsageIssue.html}
@@ -12,13 +11,11 @@ description and the type (occurrence or name related).}
 gbif_issues()
 }
 \description{
-Table has the following fields:
-}
-\details{
+Returns a data.frame of all GBIF issues with the following columns:
 \itemize{
-\item code. Code for issue, making viewing data easier.
-\item issue. Full name of the issue.
-\item description. Description of the issue.
-\item type. Type of the issue: related to occurrence data or names.
+\item \code{code}: issue short code, e.g. \code{gass84}
+\item \code{code}: issue full name, e.g. \code{GEODETIC_DATUM_ASSUMED_WGS84}
+\item \code{description}: issue description
+\item \code{type}: issue type, either related to \code{occurrence} or \code{name}
 }
 }

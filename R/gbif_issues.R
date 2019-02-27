@@ -1,12 +1,10 @@
-#' Table of GBIF issues, with codes used in data output, full issue name,
-#' description and the type (occurrence or name related).
+#' List all GBIF issues and their codes.
 #'
-#' Table has the following fields:
-#'
-#' - code. Code for issue, making viewing data easier.
-#' - issue. Full name of the issue.
-#' - description. Description of the issue.
-#' - type. Type of the issue: related to occurrence data or names.
+#' Returns a data.frame of all GBIF issues with the following columns:
+#' - `code`: issue short code, e.g. `gass84`
+#' - `code`: issue full name, e.g. `GEODETIC_DATUM_ASSUMED_WGS84`
+#' - `description`: issue description
+#' - `type`: issue type, either related to `occurrence` or `name`
 #'
 #' @export
 #' @usage gbif_issues()
