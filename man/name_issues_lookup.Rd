@@ -2,7 +2,7 @@
 % Please edit documentation in R/name_issues_lookup.r
 \name{name_issues_lookup}
 \alias{name_issues_lookup}
-\title{Lookup name issue definitions and short codes}
+\title{Lookup name issue definitions and short codes.}
 \usage{
 name_issues_lookup(issue = NULL, code = NULL)
 }
@@ -12,7 +12,7 @@ name_issues_lookup(issue = NULL, code = NULL)
 \item{code}{an name issue short code, e.g. ccm}
 }
 \description{
-Lookup name issue definitions and short codes
+Lookup name issue definitions and short codes.
 }
 \examples{
 name_issues_lookup(issue = 'BACKBONE_MATCH_NONE')

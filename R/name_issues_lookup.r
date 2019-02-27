@@ -1,4 +1,4 @@
-#' Lookup name issue definitions and short codes
+#' Lookup name issue definitions and short codes.
 #'
 #' @export
 #' @param issue Full name of name issue, e.g, CONTINENT_COUNTRY_MISMATCH
