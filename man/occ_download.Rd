@@ -13,10 +13,11 @@ occ_download_prep(..., body = NULL, type = "and", user = NULL,
 }
 \arguments{
 \item{...}{One or more of query arguments to kick of a download job.
-If you use this, don't use \code{body} parameter. See Details.}
+If you use this, don't use \code{body} parameter. All inputs must be
+character strings. See Details.}
 
 \item{body}{if you prefer to pass in the payload yourself, use this
-parameter. if use this, don't ass anythig to the dots. accepts
+parameter. if use this, don't pass anythig to the dots. accepts
 either an R list, or JSON. JSON is likely easier, since the JSON
 library \pkg{jsonlite} requires that you unbox strings that shouldn't
 be auto-converted to arrays, which is a bit tedious for large queries.

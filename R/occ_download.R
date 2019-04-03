@@ -3,9 +3,10 @@
 #' @export
 #'
 #' @param ... One or more of query arguments to kick of a download job.
-#' If you use this, don't use `body` parameter. See Details.
+#' If you use this, don't use `body` parameter. All inputs must be 
+#' character strings. See Details.
 #' @param body if you prefer to pass in the payload yourself, use this
-#' parameter. if use this, don't ass anythig to the dots. accepts
+#' parameter. if use this, don't pass anythig to the dots. accepts
 #' either an R list, or JSON. JSON is likely easier, since the JSON
 #' library \pkg{jsonlite} requires that you unbox strings that shouldn't
 #' be auto-converted to arrays, which is a bit tedious for large queries.
@@ -353,7 +354,12 @@ print.occ_download_prep <- function(x, ...) {
   cat("  Request: ", gbif_make_list(x$request), "\n", sep = "")
 }
 
-parse_args <- function(x){
+parse_args <- function(x) {
+  if (!all(vapply(x, is.character, logical(1)))) {
+    stop("all inputs to `...` of occ_download must be character\n", 
+      "  see examples; as an alternative, see the `body` param",
+      call. = FALSE)
+  }
   key <- key_lkup[[ strextract(x, "[A-Za-z]+") ]]
   type <- operator_lkup[[ strtrim(strextract(x, paste0(operators_regex,
                                                        collapse = "|"))) ]]
