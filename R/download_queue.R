@@ -39,7 +39,6 @@
 #'   occ_download('taxonKey = 3119195', "year = 2004"),
 #'   occ_download('taxonKey = 3119195', "year = 2005")
 #' )
-#' que = x
 #' x
 #' x$reqs
 #' x$add_all()
@@ -47,6 +46,8 @@
 #' x
 #' x$remove(x$reqs[[1]])
 #' x
+#' x$reqs[[1]]$run()
+#' x$reqs[[1]]$result
 #' 
 #' # pre-prepared download request
 #' z <- occ_download_prep(
@@ -189,11 +190,24 @@ DownReq <- R6::R6Class(
       } else {
         tmp <- tryCatch(occ_download_exec(self$req), error = function(e) e)
       }
-      self$result <- if (inherits(tmp, "error")) NULL else tmp
+      if (!inherits(tmp, "error")) self$result <- tmp
+      if (inherits(tmp, "error")) {
+        self$result <- if (grepl("supply", tmp$message)) {
+          tmp$message
+        } else {
+          NULL
+        }
+      }
+      self$result
     },
 
     status = function() {
-      if (is.null(self$result)) stop("run() result is `NULL`, not checking status")
+      if (is.null(self$result)) {
+        stop("run() result is `NULL`, not checking status", call. = FALSE)
+      }
+      if (is.character(self$result)) {
+        stop("run() failed: ", self$result, call. = FALSE)
+      }
       tmp <- occ_download_meta(self$result)
       return(tmp)
     }

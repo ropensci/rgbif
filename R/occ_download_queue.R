@@ -108,6 +108,15 @@ occ_download_queue <- function(..., .list = list(), status_ping = 10) {
     # run job
     x$run()
   }))
+  # credentials check
+  if (any(
+    vapply(res, function(x) is.character(x) && !inherits(x, "occ_download"),
+      logical(1))
+    )
+  ) {
+    if (is.character(res[[1]])) stop(res[[1]], call. = FALSE)
+  }
+  # get only occ_download objects
   res <- Filter(function(x) inherits(x, "occ_download"), res)
 
   # handle if 3 requests or less
