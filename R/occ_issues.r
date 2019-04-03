@@ -206,7 +206,7 @@ split_iss <- function(m, is_dload) {
   first_dload <- c("scientificName", "taxonKey", "decimalLatitude",
     "decimalLongitude")
   first <- if (is_dload) first_dload else first_search
-  tibble::as_data_frame(data.frame(m[, first], df, m[, !names(m) %in% first],
+  tibble::as_tibble(data.frame(m[, first], df, m[, !names(m) %in% first],
     stringsAsFactors = FALSE))
 }
 

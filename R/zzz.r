@@ -201,10 +201,9 @@ ldfast_names <- function(x, convertvec=FALSE){
 
 convert2df <- function(x){
   if (!inherits(x, "data.frame")) {
-    # data.frame(rbind(x), stringsAsFactors = FALSE)
-    tibble::data_frame(rbind(x))
+    tibble::as_tibble(rbind(x))
   } else {
-    tibble::as_data_frame(x)
+    tibble::as_tibble(x)
   }
 }
 
@@ -307,7 +306,7 @@ nameusageparser <- function(z){
   if ("issues" %in% names(tmp)) {
     tmp[names(tmp) %in% "issues"] <- collapse_name_issues(tmp)
   }
-  df <- tibble::as_data_frame(tmp)
+  df <- tibble::as_tibble(tmp)
   if (all(tomove %in% names(df))) {
     movecols(df, tomove)
   } else {
@@ -459,7 +458,7 @@ parse_results <- function(x, y){
     tmp <- x$results
   }
   if (inherits(tmp, "data.frame")) {
-    out <- tryCatch(tibble::as_data_frame(tmp), error = function(e) e)
+    out <- tryCatch(tibble::as_tibble(tmp), error = function(e) e)
     if (inherits(out, "error")) tmp else out
   } else {
     tmp

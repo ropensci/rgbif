@@ -124,7 +124,7 @@ occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
       data <- lapply(data, clean_data)
       data <- data.table::setDF(data.table::rbindlist(data, use.names = TRUE,
                                                       fill = TRUE))
-      data <- tibble::as_data_frame(prune_result(data))
+      data <- tibble::as_tibble(prune_result(data))
     }
 
     list(meta = meta, data = data)

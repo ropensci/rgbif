@@ -28,7 +28,7 @@ print.gbif <- function(x, ...) {
       if (inherits(x[[1]]$data, "data.frame")) print(x[[1]]$data) else cat(x[[1]]$data)
     }
   } else if (inherits(x, "data.frame")) {
-    print(tibble::as_data_frame(x))
+    print(tibble::as_tibble(x))
   } else {
     if (inherits(x, "gbif")) x <- unclass(x)
     attr(x, "type") <- NULL

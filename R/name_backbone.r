@@ -71,7 +71,7 @@ name_backbone <- function(name, rank=NULL, kingdom=NULL, phylum=NULL,
          strict=strict, verbose=verbose, offset=start, limit=limit))
   tt <- gbif_GET(url, args, FALSE, curlopts)
   if (verbose) {
-    alt <- tibble::as_data_frame(data.table::setDF(
+    alt <- tibble::as_tibble(data.table::setDF(
       data.table::rbindlist(
         lapply(tt$alternatives, function(x)
           lapply(x, function(x) if (length(x) == 0) NA else x)),

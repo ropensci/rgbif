@@ -170,7 +170,7 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
 
   # actual data
   if (!verbose) {
-    data <- tibble::as_data_frame(data.table::setDF(
+    data <- tibble::as_tibble(data.table::setDF(
       data.table::rbindlist(
         lapply(out$results, namelkupcleaner),
         use.names = TRUE, fill = TRUE)))
@@ -199,12 +199,12 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
   return <- match.arg(return, c('meta', 'data', 'facets', 'hierarchy',
                                 'names', 'all'))
   switch(return,
-         meta = tibble::as_data_frame(meta),
+         meta = tibble::as_tibble(meta),
          data = data,
          facets = facetsdat,
          hierarchy = compact_null(hierdat),
          names = compact_null(vernames),
-         all = list(meta = tibble::as_data_frame(meta), data = data,
+         all = list(meta = tibble::as_tibble(meta), data = data,
                     facets = facetsdat,
                     hierarchies = compact_null(hierdat),
                     names = compact_null(vernames)))

@@ -136,7 +136,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
             lapply(data, "[[", "data"), use.names = TRUE, fill = TRUE
           )
         )
-        tibble::as_data_frame(prune_result(df))
+        tibble::as_tibble(prune_result(df))
       }
     } else if (return == 'hier') {
       if (identical(data, list())) {
@@ -154,12 +154,12 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
       }
     } else if (return == 'facet') {
       stats::setNames(lapply(facets, function(z) {
-        tibble::as_data_frame(
+        tibble::as_tibble(
           data.table::rbindlist(z$counts, use.names = TRUE, fill = TRUE)
         )
       }), vapply(tt$facets, function(x) to_camel(x$field), ""))
     } else if (return == 'meta') {
-      tibble::as_data_frame(meta)
+      tibble::as_tibble(meta)
     } else {
       if (identical(data, list())) {
         dat2 <- NULL
@@ -167,13 +167,13 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
         media <- NULL
       } else {
         data <- gbifparser(input = data, fields = fields)
-        dat2 <- tibble::as_data_frame(
+        dat2 <- tibble::as_tibble(
           prune_result(ldfast(lapply(data, "[[", "data"))))
         hier2 <- unique(lapply(data, "[[", "hierarchy"))
         media <- unique(lapply(data, "[[", "media"))
       }
       fac <- stats::setNames(lapply(facets, function(z) {
-        tibble::as_data_frame(
+        tibble::as_tibble(
           data.table::rbindlist(z$counts, use.names = TRUE, fill = TRUE)
         )
       }), vapply(facets, function(x) to_camel(x$field), ""))

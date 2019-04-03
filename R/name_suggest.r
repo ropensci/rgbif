@@ -93,12 +93,12 @@ name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL,
     hier <- sapply(tt, function(x) x[ names(x) %in% "higherClassificationMap" ])
     hier <- unname(hier)
     names(hier) <- vapply(tt, "[[", numeric(1), "key")
-    list(data = tibble::as_data_frame(df), hierarchy = hier)
+    list(data = tibble::as_tibble(df), hierarchy = hier)
   } else {
     out <- lapply(tt, function(x) x[names(x) %in% toget])
     x <- data.table::setDF(data.table::rbindlist(out,
                                                  use.names = TRUE, fill = TRUE))
-    tibble::as_data_frame(x)
+    tibble::as_tibble(x)
   }
 }
 
