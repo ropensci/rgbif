@@ -19,7 +19,7 @@ test_that("returns the correct class", {
   expect_equal(length(class(vv)), 3)
 
   expect_equal(tt$meta$limit, 2)
-  expect_equal(tt$hierarchy[[1]][1,2], 6)
+  expect_equal(tt$hierarchy[[1]]$key[1], "6")
   expect_equal(as.character(tt$hierarchy[[1]][1,1]), "Plantae")
 
   expect_equal(as.character(uu$hierarchy[[1]][1,1]), "Plantae")
@@ -69,7 +69,7 @@ test_that("returns the correct class", {
 
   expect_is(out, "data.frame")
   expect_is(out, "tbl_df")
-  expect_type(out$key, "integer")
+  expect_type(out$key, "character")
   expect_is(out$scientificName, "character")
 
   # returns the correct value
@@ -365,4 +365,21 @@ test_that("works with parameters that allow many inputs", {
   expect_equal(unique(tolower(aa[[2]]$data$recordedBy)), "bj stacey")
 
   expect_true(unique(tolower(bb$data$recordedBy)) %in% c('smith', 'bj stacey'))
+})
+
+
+
+# per issue #349
+test_that("key and gbifID fields are character class", {
+  vcr::use_cassette("occ_search_key_gbifid_character_class", {
+    aa <- occ_search(taxonKey = 9206251, limit = 3)
+  })
+
+  # top level
+  expect_is(aa$data$key, "character")
+  expect_is(aa$data$gbifID, "character")
+  # within hierarchy
+  expect_is(aa$hierarchy[[1]]$key, "character")
+  # within media
+  expect_is(aa$media[[1]][[1]]$key, "character")
 })

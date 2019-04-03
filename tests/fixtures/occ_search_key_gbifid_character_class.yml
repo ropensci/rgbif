@@ -1,0 +1,57 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?limit=3&offset=0&taxonKey=9206251
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9410)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9410)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Wed, 03 Apr 2019 21:44:20 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=600
+      x-varnish: 253068533 277545157
+      age: '207'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '6773'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":3,"endOfRecords":false,"count":43817,"results":[{"key":1990481993,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-03-26T19:30:43.657+0000","lastParsed":"2019-03-19T20:59:48.916+0000","crawlId":155,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":9206251,"kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3119134,"speciesKey":9206251,"acceptedTaxonKey":9206251,"scientificName":"Helianthus
+        annuus L.","acceptedScientificName":"Helianthus annuus L.","kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Helianthus","species":"Helianthus
+        annuus","genericName":"Helianthus","specificEpithet":"annuus","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2019-01-12T19:44:54","decimalLongitude":-98.229859,"decimalLatitude":26.175213,"coordinateUncertaintyInMeters":10.0,"stateProvince":"Texas","year":2019,"month":1,"day":12,"eventDate":"2019-01-12T12:09:37","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2019-01-12T23:44:32.000+0000","lastInterpreted":"2019-03-19T21:05:35.371+0000","references":"https://www.inaturalist.org/observations/19594806","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/30165542/original.jpeg?1547322296","references":"https://www.inaturalist.org/photos/30165542","created":"2019-01-12T20:09:55.000+0000","creator":"John
+        Brush","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"John
+        Brush"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Magnoliopsida","countryCode":"US","country":"United
+        States of America","rightsHolder":"John Brush","identifier":"19594806","verbatimEventDate":"2019-01-12
+        12:09:37 PM CST","datasetName":"iNaturalist research-grade observations","gbifID":"1990481993","verbatimLocality":"516
+        Bales Rd, McAllen, TX 78503, USA","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/19594806","taxonID":"57983","recordedBy":"John
+        Brush","catalogNumber":"19594806","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/19594806","institutionCode":"iNaturalist","rights":"©
+        John Brush some rights reserved","eventTime":"18:09:37Z","identificationID":"43037195"},{"key":1986613930,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-03-26T19:30:24.095+0000","lastParsed":"2019-03-19T20:59:23.725+0000","crawlId":155,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":9206251,"kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3119134,"speciesKey":9206251,"acceptedTaxonKey":9206251,"scientificName":"Helianthus
+        annuus L.","acceptedScientificName":"Helianthus annuus L.","kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Helianthus","species":"Helianthus
+        annuus","genericName":"Helianthus","specificEpithet":"annuus","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2019-01-08T19:22:34","decimalLongitude":-97.329051,"decimalLatitude":27.668972,"coordinateUncertaintyInMeters":2.0,"stateProvince":"Texas","year":2019,"month":1,"day":8,"eventDate":"2019-01-08T11:30:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2019-01-10T18:45:42.000+0000","lastInterpreted":"2019-03-19T21:04:35.753+0000","references":"https://www.inaturalist.org/observations/19516393","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/30033699/original.jpeg?1546974216","references":"https://www.inaturalist.org/photos/30033699","created":"2019-01-08T19:30:54.000+0000","creator":"Jon
+        McIntyre","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Jon
+        McIntyre"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Magnoliopsida","countryCode":"US","country":"United
+        States of America","rightsHolder":"Jon McIntyre","identifier":"19516393","verbatimEventDate":"2019/01/08
+        11:30 AM CST","datasetName":"iNaturalist research-grade observations","gbifID":"1986613930","verbatimLocality":"South
+        Side, Corpus Christi, TX, USA","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/19516393","taxonID":"57983","recordedBy":"Jon
+        McIntyre","catalogNumber":"19516393","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/19516393","institutionCode":"iNaturalist","rights":"©
+        Jon McIntyre some rights reserved","eventTime":"17:30:00Z","identificationID":"42788160"},{"key":1990684609,"datasetKey":"6ac3f774-d9fb-4796-b3e9-92bf6c81c084","publishingOrgKey":"bb646dff-a905-4403-a49b-6d378c2cf0d9","networkKeys":[],"installationKey":"36cae45c-1983-48be-9cf9-0672c4a60612","publishingCountry":"DE","protocol":"BIOCASE","lastCrawled":"2019-03-25T19:14:43.950+0000","lastParsed":"2019-02-04T19:26:53.988+0000","crawlId":104,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":9206251,"kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3119134,"speciesKey":9206251,"acceptedTaxonKey":9206251,"scientificName":"Helianthus
+        annuus L.","acceptedScientificName":"Helianthus annuus L.","kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Helianthus","species":"Helianthus
+        annuus","genericName":"Helianthus","specificEpithet":"annuus","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","decimalLongitude":10.121498,"decimalLatitude":52.569202,"coordinateUncertaintyInMeters":250.0,"year":2019,"month":1,"day":31,"eventDate":"2019-01-31T00:00:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"lastInterpreted":"2019-02-04T19:26:53.995+0000","license":"http://creativecommons.org/licenses/by/4.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Magnoliopsida","countryCode":"DE","country":"Germany","catalogNumber":"2147260310","recordedBy":"-1510526472","institutionCode":"naturgucker","locality":"Nienhagen
+        - Felder B 214","collectionCode":"naturgucker","gbifID":"1990684609"}],"facets":[]}'
+  recorded_at: 2019-04-03 21:47:49 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4.9100

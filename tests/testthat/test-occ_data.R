@@ -333,3 +333,12 @@ test_that("works with parameters that allow many inputs", {
 
   expect_true(unique(tolower(bb$data$recordedBy)) %in% c('smith', 'bj stacey'))
 })
+
+# per issue #349
+test_that("key and gbifID fields are character class", {
+  vcr::use_cassette("occ_data_key_gbifid_character_class", {
+    aa <- occ_data(taxonKey = 9206251, limit = 3)
+  })
+  expect_is(aa$data$key, "character")
+  expect_is(aa$data$gbifID, "character")
+})

@@ -79,11 +79,13 @@ occ_get <- function(key=NULL, return="all", verbatim=FALSE, fields="minimal",
     } else {
 
       if (return == "hier") {
-        if (length(key) == 1) {
+        hier <- if (length(key) == 1) {
           data$hierarch
         } else {
           ldfast(lapply(data, "[[", "hierarchy"))
         }
+        if ("key" %in% names(hier)) hier$key <- as.character(hier$key)
+        hier
       } else {
         data
       }
