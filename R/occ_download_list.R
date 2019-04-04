@@ -6,7 +6,7 @@
 #' Details.
 #' @param pwd (character) User password within GBIF's website. Required. See
 #' Details.
-#' @param limit Number of records to return. Default: 20
+#' @param limit Number of records to return. Default: 20, max: 300
 #' @param start Record number to start at. Default: 0
 #' @template occ
 #' @note see [downloads] for an overview of GBIF downloads methods
@@ -19,6 +19,35 @@
 
 occ_download_list <- function(user = NULL, pwd = NULL, limit = 20, start = 0,
   curlopts = list()) {
+
+  # user <- check_user(user)
+  # pwd <- check_pwd(pwd)
+  # stopifnot(!is.null(user), !is.null(pwd))
+  # url <- sprintf('%s/occurrence/download/user/%s', gbif_base(), user)
+  # args <- rgbif_compact(list(limit = limit, offset = start))
+  # cli <- crul::HttpClient$new(
+  #   url = url, opts = c(
+  #     curlopts, httpauth = 1, userpwd = paste0(user, ":", pwd)
+  #   ), headers = c(
+  #     rgbif_ual, `Content-Type` = "application/json",
+  #     Accept = "application/json"
+  #   )
+  # )
+  # res <- cli$get(query = args)
+  # res$raise_for_status()
+  # tt <- res$parse("UTF-8")
+  # out <- jsonlite::fromJSON(tt, flatten = TRUE)
+  out <- ocl_help(user, pwd, limit, start, curlopts, TRUE)
+  out$results$size <- getsize(out$results$size)
+  list(
+    meta = data.frame(offset = out$offset, limit = out$limit,
+                      endofrecords = out$endOfRecords, count = out$count),
+    results = out$results
+  )
+}
+
+ocl_help <- function(user = NULL, pwd = NULL, limit = 20, start = 0,
+  curlopts = list(), flatten = TRUE) {
 
   user <- check_user(user)
   pwd <- check_pwd(pwd)
@@ -34,14 +63,9 @@ occ_download_list <- function(user = NULL, pwd = NULL, limit = 20, start = 0,
     )
   )
   res <- cli$get(query = args)
+  res$raise_for_status()
   tt <- res$parse("UTF-8")
-  out <- jsonlite::fromJSON(tt, flatten = TRUE)
-  out$results$size <- getsize(out$results$size)
-  list(
-    meta = data.frame(offset = out$offset, limit = out$limit,
-                      endofrecords = out$endOfRecords, count = out$count),
-    results = out$results
-  )
+  jsonlite::fromJSON(tt, flatten = flatten)
 }
 
 getsize <- function(x) {

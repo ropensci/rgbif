@@ -193,6 +193,7 @@
 #' 
 #' # Prepared query
 #' occ_download_prep("basisOfRecord = LITERATURE")
+#' occ_download_prep("catalogNumber = Bird.27847588", "year = 1978", "month = 5")
 #' }
 occ_download <- function(..., body = NULL, type = "and", user = NULL,
   pwd = NULL, email = NULL, curlopts = list()) {

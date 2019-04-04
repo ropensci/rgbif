@@ -220,6 +220,7 @@ query <- list(
 
 # Prepared query
 occ_download_prep("basisOfRecord = LITERATURE")
+occ_download_prep("catalogNumber = Bird.27847588", "year = 1978", "month = 5")
 }
 }
 \references{

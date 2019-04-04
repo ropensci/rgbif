@@ -14,7 +14,7 @@ Details.}
 \item{pwd}{(character) User password within GBIF's website. Required. See
 Details.}
 
-\item{limit}{Number of records to return. Default: 20}
+\item{limit}{Number of records to return. Default: 20, max: 300}
 
 \item{start}{Record number to start at. Default: 0}
 
