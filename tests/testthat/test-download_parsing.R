@@ -1,3 +1,4 @@
+# not testing the actual HTTP request
 context("occ_download parsing")
 
 user <- "sckott"
@@ -5,8 +6,6 @@ email <- 'foo@bar.com'
 type <- 'and'
 
 test_that("occ_download input parsing", {
-  # not testing the actual HTTP request
-
   aa <- parse_occd(user, email, type, "DWCA", 'taxonKey = 7228682')
   expect_is(aa, "list")
   expect_named(aa, c("creator", "notification_address", "format", "predicate"))
@@ -46,4 +45,26 @@ test_that("occ_download input parsing", {
   expect_equal(aa$predicate$predicates[[1]]$type[1], "equals")
   expect_equal(aa$predicate$predicates[[4]]$key[1], "GEOMETRY")
   expect_equal(aa$predicate$predicates[[3]]$value[1], "FALSE")
+
+  # format=SIMPLE_CSV
+  aa <- parse_occd(user, email, type, "SIMPLE_CSV", 'decimalLatitude >= 82')
+  expect_is(aa, "list")
+  expect_named(aa, c("creator", "notification_address", "format", "predicate"))
+  expect_is(aa$predicate$type, "character")
+  expect_is(aa$predicate$type, "scalar")
+  expect_equal(aa$predicate$type[1], "greaterThanOrEquals")
+  expect_equal(aa$predicate$key[1], "DECIMAL_LATITUDE")
+  expect_equal(aa$predicate$value[1], "82")
+  expect_equal(unclass(aa$format), "SIMPLE_CSV")
+
+  # format=SPECIES_LIST
+  aa <- parse_occd(user, email, "not", "SPECIES_LIST", 'decimalLatitude < 2000')
+  expect_is(aa, "list")
+  expect_named(aa, c("creator", "notification_address", "format", "predicate"))
+  expect_is(aa$predicate$type, "character")
+  expect_is(aa$predicate$type, "scalar")
+  expect_equal(aa$predicate$type[1], "lessThan")
+  expect_equal(aa$predicate$key[1], "DECIMAL_LATITUDE")
+  expect_equal(aa$predicate$value[1], "2000")
+  expect_equal(unclass(aa$format), "SPECIES_LIST")
 })
