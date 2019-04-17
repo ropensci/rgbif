@@ -321,7 +321,16 @@ backbone_parser <- function(x){
   data.frame(tmp, stringsAsFactors = FALSE)
 }
 
-rgbif_compact <- function(l) Filter(Negate(is.null), l)
+is_null_or_na <- function(x) {
+  if (is.environment(x)) return(FALSE)
+  is.null(x) || is.na(x)
+}
+
+# allows all elements in a list, except two things, which are removed:
+# - NULL
+# - NA
+# while detecting environments and passing on them
+rgbif_compact <- function(l) Filter(Negate(is_null_or_na), l)
 
 compact_null <- function(l){
   tmp <- rgbif_compact(l)
