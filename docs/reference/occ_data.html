@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rgbif</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.0</span>
       </span>
     </div>
 
@@ -442,12 +442,11 @@ for curl options</p></td>
 
     <p>An object of class <code>gbif_data</code>, which is a S3 class list, with
 slots for metadata (<code>meta</code>) and the occurrence data itself
-(<code>data</code>),
-and with attributes listing the user supplied arguments and whether it was a
-"single" or "many" search; that is, if you supply two values of the
-<code>datasetKey</code> parameter to searches are done, and it's a "many".
-<code>meta</code> is a list of length four with offset, limit, endOfRecords and
-count fields. <code>data</code> is a tibble (aka data.frame)</p>
+(<code>data</code>), and with attributes listing the user supplied arguments
+and whether it was a "single" or "many" search; that is, if you supply
+two values of the <code>datasetKey</code> parameter to searches are done, and
+it's a "many". <code>meta</code> is a list of length four with offset, limit,
+endOfRecords and count fields. <code>data</code> is a tibble (aka data.frame)</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -624,10 +623,10 @@ use <code>hasCoordinate=TRUE</code>, and <code>hasGeospatialIssue=FALSE</code> t
 same outcome using <code><a href='occ_count.html'>occ_count</a></code> with <code>isGeoreferenced=TRUE</code></p>
 <p>This does nearly the same thing as <code><a href='occ_search.html'>occ_search()</a></code>, but
 is a bit simplified for speed, and is for the most common use case where
-user just wants the data, and not other information like taxon hierarchies
-and media (e.g., images) information. Alot of time in
-<code><a href='occ_search.html'>occ_search()</a></code> is used parsing data to be more useable
-downstream. We do less of that in this function.</p>
+user just wants occurrence data, and not other information like taxon
+hierarchies and media (e.g., images). Alot of time in <code><a href='occ_search.html'>occ_search()</a></code>
+is used parsing data to be more useable downstream. We do less of that
+in this function.</p>
     
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
