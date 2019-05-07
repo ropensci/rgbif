@@ -323,7 +323,7 @@ backbone_parser <- function(x){
 
 is_null_or_na <- function(x) {
   if (is.environment(x)) return(FALSE)
-  is.null(x) || is.na(x)
+  is.null(x) || all(is.na(x))
 }
 
 # allows all elements in a list, except two things, which are removed:
