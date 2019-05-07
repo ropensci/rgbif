@@ -313,7 +313,7 @@ This package is part of a richer suite called [spocc - Species Occurrence Data](
 [![rofooter](https://ropensci.org/public_images/github_footer.png)](https://ropensci.org)
 
 [mapr]: https://github.com/ropensci/mapr
-[paper]: https://doi.org/10.7287/peerj.preprints.3304/
+[paper]: https://peerj.com/preprints/3304/
 [GBIF]: https://www.gbif.org/
 [pygbif]: https://github.com/sckott/pygbif
 [gbifrb]: https://github.com/sckott/gbifrb
