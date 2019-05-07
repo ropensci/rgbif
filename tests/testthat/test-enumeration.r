@@ -7,7 +7,7 @@ test_that("enumeration", {
     c <- enumeration("MetadataType")
     d <- enumeration("TypeStatus")
     e <- enumeration_country()
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   expect_is(a, "character")
   expect_is(b, "character")

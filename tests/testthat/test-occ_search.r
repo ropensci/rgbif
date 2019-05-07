@@ -8,7 +8,7 @@ test_that("returns the correct class", {
     tt <- occ_search(taxonKey=key, limit=2)
     uu <- occ_search(taxonKey=key, limit=20)
     vv <- occ_search(taxonKey=key, return='meta')
-  })
+  }, preserve_exact_body_bytes = TRUE)
   
   expect_is(tt$meta, "list")
   expect_is(tt$meta$endOfRecords, "logical")
@@ -36,7 +36,7 @@ test_that("returns the correct dimensions", {
   vcr::use_cassette("occ_search_datasetkey", {
     out <- occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a',
       return='data')
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   expect_is(out, "data.frame")
   expect_is(out$name, "character")
@@ -65,7 +65,7 @@ test_that("returns the correct class", {
 test_that("returns the correct class", {
   vcr::use_cassette("occ_search_taxonkey", {
     out <- occ_search(taxonKey=key, return='data')
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   expect_is(out, "data.frame")
   expect_is(out, "tbl_df")
@@ -80,7 +80,7 @@ test_that("returns the correct class", {
 test_that("returns the correct class", {
   vcr::use_cassette("occ_search_hierarchy_data", {
     out <- occ_search(taxonKey=key, limit=20, return='hier')
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   expect_is(out, "list")
   expect_is(out[[1]], "data.frame")
@@ -131,7 +131,7 @@ test_that("returns the correct dimensions", {
     key <- name_backbone(name='Puma concolor', kingdom='animals')$speciesKey
     res <- occ_search(taxonKey=key, elevation=1000, hasCoordinate=TRUE,
       fields=c('scientificName', 'elevation'))
-  })
+  }, preserve_exact_body_bytes = TRUE)
   expect_equal(names(res$data), c('scientificName', 'elevation'))
 })
 
@@ -353,7 +353,7 @@ test_that("works with parameters that allow many inputs", {
     aa <- occ_search(recordedBy=c("smith","BJ Stacey"), limit=3)
     ## one request, many instances of same parameter: use semi-colon sep. string
     bb <- occ_search(recordedBy="smith;BJ Stacey", limit=3)
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   expect_is(aa, "gbif")
   expect_is(bb, "gbif")
@@ -373,7 +373,7 @@ test_that("works with parameters that allow many inputs", {
 test_that("key and gbifID fields are character class", {
   vcr::use_cassette("occ_search_key_gbifid_character_class", {
     aa <- occ_search(taxonKey = 9206251, limit = 3)
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   # top level
   expect_is(aa$data$key, "character")

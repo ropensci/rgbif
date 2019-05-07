@@ -17,7 +17,7 @@ test_that("type query returns the correct class", {
 test_that("keyword query returns the correct", {
   vcr::use_cassette("dataset_search_keyword", {
     tt <- dataset_search(keyword = "france")
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   # class
   expect_is(tt, "list")
@@ -42,7 +42,7 @@ test_that("search query returns the correct class", {
   expect_is(tt$data, "tbl_df")
   expect_is(tt$meta, "data.frame")
   expect_is(tt$descriptions, "list")
-  expect_that(is.null(tt$facets), is_true())
+  expect_null(tt$facets)
   expect_is(tt$data[1,1], "tbl_df")
   expect_is(tt$data[1,1]$datasetTitle, "character")
 })
@@ -51,7 +51,7 @@ test_that("search query returns the correct class", {
 test_that("limited search returns the correct", {
   vcr::use_cassette("dataset_search_limit", {
     tt <- dataset_search(type="OCCURRENCE", limit=2)
-  })
+  }, preserve_exact_body_bytes = TRUE)
   
   # class
   expect_is(tt$data, "data.frame")

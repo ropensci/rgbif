@@ -14,41 +14,20 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 26 Feb 2019 15:17:32 GMT
+      date: Tue, 07 May 2019 00:20:26 GMT
       content-type: application/xml; charset=UTF-8
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       content-length: '2472'
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: 726536178 721160669
+      x-varnish: 273975770 290848992
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
       connection: keep-alive
     body:
-      encoding: UTF-8
-      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<OAI-PMH xmlns=\"http://www.openarchives.org/OAI/2.0/\"
-        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/
-        http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\"><responseDate>2019-02-26T15:17:32Z</responseDate><request
-        verb=\"GetRecord\" identifier=\"9c4e36c1-d3f9-49ce-8ec1-8c434fa9e6eb\" metadataPrefix=\"oai_dc\">http://api.gbif.org/v1/oai-pmh/registry</request><GetRecord><record><header><identifier>9c4e36c1-d3f9-49ce-8ec1-8c434fa9e6eb</identifier><datestamp>2017-09-08T07:25:25Z</datestamp><setSpec>installation:7e01b34f-2a3f-48ec-9b18-e99029296724</setSpec><setSpec>dataset_type:OCCURRENCE</setSpec><setSpec>country:DE</setSpec></header><metadata><oai_dc:dc
-        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
-        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
-        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n    <dc:title>Freshwater
-        fishes of Serbia and Montenegro</dc:title>\n    <dc:publisher>BioFresh</dc:publisher>\n\n
-        \   <dc:identifier>https://www.gbif.org/dataset/9c4e36c1-d3f9-49ce-8ec1-8c434fa9e6eb</dc:identifier>\n
-        \   <dc:subject>rivers, wetlands, lakes</dc:subject>\n    <dc:subject>Biosphere</dc:subject>\n
-        \   <dc:subject>Inland Waters, Biota, Environment, Location</dc:subject>\n
-        \   <dc:subject>Metadata</dc:subject>\n    <dc:subject>Observation</dc:subject>\n\n
-        \   <dc:source/>\n    <dc:description>&lt;p>Geo-referenced distribution data
-        of freshwater fishes of Serbia  and Montenegro from about 200 papers &amp;amp;
-        150 fisheries management plans &amp;#61; 3-4 thousands sampling sites.&lt;/p>\n&lt;p>For
-        additional metadata see: http://data.freshwaterbiodiversity.eu/metadb/bf_mdb_view.php?entryID&amp;#61;BF_CF12&lt;/p></dc:description>\n
-        \   \n    <dc:description>5,323 occurrences</dc:description>\n\n    <dc:type>Dataset</dc:type>\n\n
-        \   <dc:creator>Aleksandar Hegediš</dc:creator>\n    <dc:creator>Aaike De
-        Wever</dc:creator>\n\n    <dc:date>2017-09-08</dc:date>\n    <dc:language>en</dc:language>\n
-        \   \n\n\n    \n\n    <dc:coverage>National coverage</dc:coverage>\n    <dc:coverage>42.218,18.851
-        / 46.212,23.056 (min, max Latitude / min, max Longitude)</dc:coverage>\n    <dc:format>application/dwca+zip</dc:format>\n
-        \   <dc:source>Global Biodiversity Information Facility (GBIF) https://www.gbif.org</dc:source>\n</oai_dc:dc></metadata></record></GetRecord></OAI-PMH>"
-  recorded_at: 2019-02-26 15:17:33 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+      encoding: ASCII-8BIT
+      string: PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPE9BSS1QTUggeG1sbnM9Imh0dHA6Ly93d3cub3BlbmFyY2hpdmVzLm9yZy9PQUkvMi4wLyIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vd3d3Lm9wZW5hcmNoaXZlcy5vcmcvT0FJLzIuMC8gaHR0cDovL3d3dy5vcGVuYXJjaGl2ZXMub3JnL09BSS8yLjAvT0FJLVBNSC54c2QiPjxyZXNwb25zZURhdGU+MjAxOS0wNS0wN1QwMDoyMDoyNlo8L3Jlc3BvbnNlRGF0ZT48cmVxdWVzdCB2ZXJiPSJHZXRSZWNvcmQiIGlkZW50aWZpZXI9IjljNGUzNmMxLWQzZjktNDljZS04ZWMxLThjNDM0ZmE5ZTZlYiIgbWV0YWRhdGFQcmVmaXg9Im9haV9kYyI+aHR0cDovL2FwaS5nYmlmLm9yZy92MS9vYWktcG1oL3JlZ2lzdHJ5PC9yZXF1ZXN0PjxHZXRSZWNvcmQ+PHJlY29yZD48aGVhZGVyPjxpZGVudGlmaWVyPjljNGUzNmMxLWQzZjktNDljZS04ZWMxLThjNDM0ZmE5ZTZlYjwvaWRlbnRpZmllcj48ZGF0ZXN0YW1wPjIwMTctMDktMDhUMDc6MjU6MjVaPC9kYXRlc3RhbXA+PHNldFNwZWM+aW5zdGFsbGF0aW9uOjdlMDFiMzRmLTJhM2YtNDhlYy05YjE4LWU5OTAyOTI5NjcyNDwvc2V0U3BlYz48c2V0U3BlYz5kYXRhc2V0X3R5cGU6T0NDVVJSRU5DRTwvc2V0U3BlYz48c2V0U3BlYz5jb3VudHJ5OkRFPC9zZXRTcGVjPjwvaGVhZGVyPjxtZXRhZGF0YT48b2FpX2RjOmRjIHhtbG5zOm9haV9kYz0iaHR0cDovL3d3dy5vcGVuYXJjaGl2ZXMub3JnL09BSS8yLjAvb2FpX2RjLyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIiB4bWxuczp4c2k9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hLWluc3RhbmNlIiB4c2k6c2NoZW1hTG9jYXRpb249Imh0dHA6Ly93d3cub3BlbmFyY2hpdmVzLm9yZy9PQUkvMi4wL29haV9kYy8gaHR0cDovL3d3dy5vcGVuYXJjaGl2ZXMub3JnL09BSS8yLjAvb2FpX2RjLnhzZCI+CiAgICA8ZGM6dGl0bGU+RnJlc2h3YXRlciBmaXNoZXMgb2YgU2VyYmlhIGFuZCBNb250ZW5lZ3JvPC9kYzp0aXRsZT4KICAgIDxkYzpwdWJsaXNoZXI+QmlvRnJlc2g8L2RjOnB1Ymxpc2hlcj4KCiAgICA8ZGM6aWRlbnRpZmllcj5odHRwczovL3d3dy5nYmlmLm9yZy9kYXRhc2V0LzljNGUzNmMxLWQzZjktNDljZS04ZWMxLThjNDM0ZmE5ZTZlYjwvZGM6aWRlbnRpZmllcj4KICAgIDxkYzpzdWJqZWN0PnJpdmVycywgd2V0bGFuZHMsIGxha2VzPC9kYzpzdWJqZWN0PgogICAgPGRjOnN1YmplY3Q+Qmlvc3BoZXJlPC9kYzpzdWJqZWN0PgogICAgPGRjOnN1YmplY3Q+SW5sYW5kIFdhdGVycywgQmlvdGEsIEVudmlyb25tZW50LCBMb2NhdGlvbjwvZGM6c3ViamVjdD4KICAgIDxkYzpzdWJqZWN0Pk1ldGFkYXRhPC9kYzpzdWJqZWN0PgogICAgPGRjOnN1YmplY3Q+T2JzZXJ2YXRpb248L2RjOnN1YmplY3Q+CgogICAgPGRjOnNvdXJjZS8+CiAgICA8ZGM6ZGVzY3JpcHRpb24+Jmx0O3A+R2VvLXJlZmVyZW5jZWQgZGlzdHJpYnV0aW9uIGRhdGEgb2YgZnJlc2h3YXRlciBmaXNoZXMgb2YgU2VyYmlhICBhbmQgTW9udGVuZWdybyBmcm9tIGFib3V0IDIwMCBwYXBlcnMgJmFtcDthbXA7IDE1MCBmaXNoZXJpZXMgbWFuYWdlbWVudCBwbGFucyAmYW1wOyM2MTsgMy00IHRob3VzYW5kcyBzYW1wbGluZyBzaXRlcy4mbHQ7L3A+CiZsdDtwPkZvciBhZGRpdGlvbmFsIG1ldGFkYXRhIHNlZTogaHR0cDovL2RhdGEuZnJlc2h3YXRlcmJpb2RpdmVyc2l0eS5ldS9tZXRhZGIvYmZfbWRiX3ZpZXcucGhwP2VudHJ5SUQmYW1wOyM2MTtCRl9DRjEyJmx0Oy9wPjwvZGM6ZGVzY3JpcHRpb24+CiAgICAKICAgIDxkYzpkZXNjcmlwdGlvbj41LDMyMyBvY2N1cnJlbmNlczwvZGM6ZGVzY3JpcHRpb24+CgogICAgPGRjOnR5cGU+RGF0YXNldDwvZGM6dHlwZT4KCiAgICA8ZGM6Y3JlYXRvcj5BbGVrc2FuZGFyIEhlZ2VkacWhPC9kYzpjcmVhdG9yPgogICAgPGRjOmNyZWF0b3I+QWFpa2UgRGUgV2V2ZXI8L2RjOmNyZWF0b3I+CgogICAgPGRjOmRhdGU+MjAxNy0wOS0wODwvZGM6ZGF0ZT4KICAgIDxkYzpsYW5ndWFnZT5lbjwvZGM6bGFuZ3VhZ2U+CiAgICAKCgogICAgCgogICAgPGRjOmNvdmVyYWdlPk5hdGlvbmFsIGNvdmVyYWdlPC9kYzpjb3ZlcmFnZT4KICAgIDxkYzpjb3ZlcmFnZT40Mi4yMTgsMTguODUxIC8gNDYuMjEyLDIzLjA1NiAobWluLCBtYXggTGF0aXR1ZGUgLyBtaW4sIG1heCBMb25naXR1ZGUpPC9kYzpjb3ZlcmFnZT4KICAgIDxkYzpmb3JtYXQ+YXBwbGljYXRpb24vZHdjYSt6aXA8L2RjOmZvcm1hdD4KICAgIDxkYzpzb3VyY2U+R2xvYmFsIEJpb2RpdmVyc2l0eSBJbmZvcm1hdGlvbiBGYWNpbGl0eSAoR0JJRikgaHR0cHM6Ly93d3cuZ2JpZi5vcmc8L2RjOnNvdXJjZT4KPC9vYWlfZGM6ZGM+PC9tZXRhZGF0YT48L3JlY29yZD48L0dldFJlY29yZD48L09BSS1QTUg+
+  recorded_at: 2019-05-07 00:20:26 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4.9100

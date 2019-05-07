@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9515)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9515)
   response:
     status:
       status_code: '200'
@@ -17,23 +17,23 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 15:29:36 GMT
+      date: Tue, 07 May 2019 00:26:03 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: 764576970 772440714
+      x-varnish: 266507652 276629639
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
       content-length: '573'
       connection: keep-alive
     body:
-      encoding: UTF-8
-      string: '{"key":1,"nubKey":1,"nameKey":18528683,"taxonID":"gbif:1","sourceTaxonKey":144299179,"kingdom":"Animalia","kingdomKey":1,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","scientificName":"Animalia","canonicalName":"Animalia","authorship":"","nameType":"SCIENTIFIC","rank":"KINGDOM","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":2226311,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T13:39:53.354+0000","issues":[],"synonym":false}'
-  recorded_at: 2019-02-26 15:29:37 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+      encoding: ASCII-8BIT
+      string: eyJrZXkiOjEsIm51YktleSI6MSwibmFtZUtleSI6MTg1Mjg2ODMsInRheG9uSUQiOiJnYmlmOjEiLCJzb3VyY2VUYXhvbktleSI6MTQ0Mjk5MTc5LCJraW5nZG9tIjoiQW5pbWFsaWEiLCJraW5nZG9tS2V5IjoxLCJkYXRhc2V0S2V5IjoiZDdkZGRiZjQtMmNmMC00ZjM5LTliMmEtYmIwOTljYWFlMzZjIiwiY29uc3RpdHVlbnRLZXkiOiJkN2RkZGJmNC0yY2YwLTRmMzktOWIyYS1iYjA5OWNhYWUzNmMiLCJzY2llbnRpZmljTmFtZSI6IkFuaW1hbGlhIiwiY2Fub25pY2FsTmFtZSI6IkFuaW1hbGlhIiwiYXV0aG9yc2hpcCI6IiIsIm5hbWVUeXBlIjoiU0NJRU5USUZJQyIsInJhbmsiOiJLSU5HRE9NIiwib3JpZ2luIjoiU09VUkNFIiwidGF4b25vbWljU3RhdHVzIjoiQUNDRVBURUQiLCJub21lbmNsYXR1cmFsU3RhdHVzIjpbXSwicmVtYXJrcyI6IiIsIm51bURlc2NlbmRhbnRzIjoyMjI2MzExLCJsYXN0Q3Jhd2xlZCI6IjIwMTgtMDYtMjBUMTQ6NDE6NTEuODAxKzAwMDAiLCJsYXN0SW50ZXJwcmV0ZWQiOiIyMDE4LTA2LTIwVDEzOjM5OjUzLjM1NCswMDAwIiwiaXNzdWVzIjpbXSwic3lub255bSI6ZmFsc2V9
+  recorded_at: 2019-05-07 00:26:04 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4.9100
 - request:
     method: get
     uri: https://api.gbif.org/v1/species/5231190/references?offset=0&limit=100
@@ -43,8 +43,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9515)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9515)
   response:
     status:
       status_code: '200'
@@ -52,53 +52,20 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 15:29:37 GMT
+      date: Tue, 07 May 2019 00:26:03 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: 772146108 740756430
+      x-varnish: 289866578 294191358
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
       content-length: '3108'
       connection: keep-alive
     body:
-      encoding: UTF-8
-      string: '{"offset":0,"limit":100,"endOfRecords":true,"results":[{"taxonKey":5231190,"citation":"(1996)
-        database, NODC Taxonomic Code","type":"taxon","source":"Catalogue of Life","sourceTaxonKey":132136870},{"taxonKey":5231190,"citation":"(2001)
-        database, Comisión Nacional para el Conocimiento y Uso de la Biodiversidad","type":"vernacular","source":"Catalogue
-        of Life","sourceTaxonKey":132136870},{"taxonKey":5231190,"citation":"(2003)
-        database, http://www.menv.gouv.qc.ca/biodiversite/centre.htm","type":"vernacular","source":"Catalogue
-        of Life","sourceTaxonKey":132136870},{"taxonKey":5231190,"citation":"(2005)
-        website, AOU Check-List (07-2005)","type":"vernacular","source":"Catalogue
-        of Life","sourceTaxonKey":132136870},{"taxonKey":5231190,"citation":"(2012)
-        Zoonomen - Zoological Nomenclature Resource, 2011.02.19","type":"taxon","source":"Catalogue
-        of Life","sourceTaxonKey":132136870},{"taxonKey":5231190,"citation":"Banks,
-        R. C., R. W. McDiarmid, A. L. Gardner, and W. C. Starnes (2003) Checklist
-        of Vertebrates of the United States, the U.S. Territories, and Canada","type":"taxon","source":"Catalogue
-        of Life","sourceTaxonKey":132136870},{"taxonKey":5231190,"citation":"Banks,
-        R. C., R. W. McDiarmid, A. L. Gardner, and W. C. Starnes, 2003: null. Checklist
-        of Vertebrates of the United States, the U.S. Territories, and Canada.","source":"Integrated
-        Taxonomic Information System (ITIS)","sourceTaxonKey":102101640},{"taxonKey":5231190,"citation":"Banks,
-        R. C., R. W. McDiarmid, and A. L. Gardner (1987) Checklist of Vertebrates
-        of the United States, the U.S. Territories, and Canada: Resource Publication,
-        no. 166","type":"taxon","source":"Catalogue of Life","sourceTaxonKey":132136870},{"taxonKey":5231190,"citation":"Banks,
-        R. C., R. W. McDiarmid, and A. L. Gardner, 1987: Checklist of Vertebrates
-        of the United States, the U.S. Territories, and Canada. Resource Publication,
-        no. 166. 79.","source":"Integrated Taxonomic Information System (ITIS)","sourceTaxonKey":102101640},{"taxonKey":5231190,"citation":"Gill,
-        Frank, and Minturn Wright (2006) Birds of the World: Recommended English Names","type":"taxon","source":"Catalogue
-        of Life","sourceTaxonKey":132136870},{"taxonKey":5231190,"citation":"Gill,
-        Frank, and Minturn Wright (2006) Birds of the World: Recommended English Names","type":"vernacular","source":"Catalogue
-        of Life","sourceTaxonKey":132136870},{"taxonKey":5231190,"citation":"Gill,
-        Frank, and Minturn Wright, 2006: null. Birds of the World: Recommended English
-        Names. ix + 259.","source":"Integrated Taxonomic Information System (ITIS)","sourceTaxonKey":102101640},{"taxonKey":5231190,"citation":"R.
-        Restall,D. Ascanio,A. Rodr{\\''ıguez-Ferraro,Azpiroz, A.,A. Soto,C. Bosque
-        (2006) Status and distribution of the House Sparrow (<i>Passer domesticus</i>)
-        in Venezuela","type":"Journal Article","source":"Colaboraciones Americanas
-        Sobre Aves","sourceTaxonKey":114130266},{"taxonKey":5231190,"citation":"SOF
-        (2007) Holarktis Fåglar, version 2. SOF:s Taxonomikommittés officiella lista
-        över Holarktis fåglar","source":"Dyntaxa. Svensk taxonomisk databas","sourceTaxonKey":101499069}]}'
-  recorded_at: 2019-02-26 15:29:37 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+      encoding: ASCII-8BIT
+      string: eyJvZmZzZXQiOjAsImxpbWl0IjoxMDAsImVuZE9mUmVjb3JkcyI6dHJ1ZSwicmVzdWx0cyI6W3sidGF4b25LZXkiOjUyMzExOTAsImNpdGF0aW9uIjoiKDE5OTYpIGRhdGFiYXNlLCBOT0RDIFRheG9ub21pYyBDb2RlIiwidHlwZSI6InRheG9uIiwic291cmNlIjoiQ2F0YWxvZ3VlIG9mIExpZmUiLCJzb3VyY2VUYXhvbktleSI6MTMyMTM2ODcwfSx7InRheG9uS2V5Ijo1MjMxMTkwLCJjaXRhdGlvbiI6IigyMDAxKSBkYXRhYmFzZSwgQ29taXNpw7NuIE5hY2lvbmFsIHBhcmEgZWwgQ29ub2NpbWllbnRvIHkgVXNvIGRlIGxhIEJpb2RpdmVyc2lkYWQiLCJ0eXBlIjoidmVybmFjdWxhciIsInNvdXJjZSI6IkNhdGFsb2d1ZSBvZiBMaWZlIiwic291cmNlVGF4b25LZXkiOjEzMjEzNjg3MH0seyJ0YXhvbktleSI6NTIzMTE5MCwiY2l0YXRpb24iOiIoMjAwMykgZGF0YWJhc2UsIGh0dHA6Ly93d3cubWVudi5nb3V2LnFjLmNhL2Jpb2RpdmVyc2l0ZS9jZW50cmUuaHRtIiwidHlwZSI6InZlcm5hY3VsYXIiLCJzb3VyY2UiOiJDYXRhbG9ndWUgb2YgTGlmZSIsInNvdXJjZVRheG9uS2V5IjoxMzIxMzY4NzB9LHsidGF4b25LZXkiOjUyMzExOTAsImNpdGF0aW9uIjoiKDIwMDUpIHdlYnNpdGUsIEFPVSBDaGVjay1MaXN0ICgwNy0yMDA1KSIsInR5cGUiOiJ2ZXJuYWN1bGFyIiwic291cmNlIjoiQ2F0YWxvZ3VlIG9mIExpZmUiLCJzb3VyY2VUYXhvbktleSI6MTMyMTM2ODcwfSx7InRheG9uS2V5Ijo1MjMxMTkwLCJjaXRhdGlvbiI6IigyMDEyKSBab29ub21lbiAtIFpvb2xvZ2ljYWwgTm9tZW5jbGF0dXJlIFJlc291cmNlLCAyMDExLjAyLjE5IiwidHlwZSI6InRheG9uIiwic291cmNlIjoiQ2F0YWxvZ3VlIG9mIExpZmUiLCJzb3VyY2VUYXhvbktleSI6MTMyMTM2ODcwfSx7InRheG9uS2V5Ijo1MjMxMTkwLCJjaXRhdGlvbiI6IkJhbmtzLCBSLiBDLiwgUi4gVy4gTWNEaWFybWlkLCBBLiBMLiBHYXJkbmVyLCBhbmQgVy4gQy4gU3Rhcm5lcyAoMjAwMykgQ2hlY2tsaXN0IG9mIFZlcnRlYnJhdGVzIG9mIHRoZSBVbml0ZWQgU3RhdGVzLCB0aGUgVS5TLiBUZXJyaXRvcmllcywgYW5kIENhbmFkYSIsInR5cGUiOiJ0YXhvbiIsInNvdXJjZSI6IkNhdGFsb2d1ZSBvZiBMaWZlIiwic291cmNlVGF4b25LZXkiOjEzMjEzNjg3MH0seyJ0YXhvbktleSI6NTIzMTE5MCwiY2l0YXRpb24iOiJCYW5rcywgUi4gQy4sIFIuIFcuIE1jRGlhcm1pZCwgQS4gTC4gR2FyZG5lciwgYW5kIFcuIEMuIFN0YXJuZXMsIDIwMDM6IG51bGwuIENoZWNrbGlzdCBvZiBWZXJ0ZWJyYXRlcyBvZiB0aGUgVW5pdGVkIFN0YXRlcywgdGhlIFUuUy4gVGVycml0b3JpZXMsIGFuZCBDYW5hZGEuIiwic291cmNlIjoiSW50ZWdyYXRlZCBUYXhvbm9taWMgSW5mb3JtYXRpb24gU3lzdGVtIChJVElTKSIsInNvdXJjZVRheG9uS2V5IjoxMDIxMDE2NDB9LHsidGF4b25LZXkiOjUyMzExOTAsImNpdGF0aW9uIjoiQmFua3MsIFIuIEMuLCBSLiBXLiBNY0RpYXJtaWQsIGFuZCBBLiBMLiBHYXJkbmVyICgxOTg3KSBDaGVja2xpc3Qgb2YgVmVydGVicmF0ZXMgb2YgdGhlIFVuaXRlZCBTdGF0ZXMsIHRoZSBVLlMuIFRlcnJpdG9yaWVzLCBhbmQgQ2FuYWRhOiBSZXNvdXJjZSBQdWJsaWNhdGlvbiwgbm8uIDE2NiIsInR5cGUiOiJ0YXhvbiIsInNvdXJjZSI6IkNhdGFsb2d1ZSBvZiBMaWZlIiwic291cmNlVGF4b25LZXkiOjEzMjEzNjg3MH0seyJ0YXhvbktleSI6NTIzMTE5MCwiY2l0YXRpb24iOiJCYW5rcywgUi4gQy4sIFIuIFcuIE1jRGlhcm1pZCwgYW5kIEEuIEwuIEdhcmRuZXIsIDE5ODc6IENoZWNrbGlzdCBvZiBWZXJ0ZWJyYXRlcyBvZiB0aGUgVW5pdGVkIFN0YXRlcywgdGhlIFUuUy4gVGVycml0b3JpZXMsIGFuZCBDYW5hZGEuIFJlc291cmNlIFB1YmxpY2F0aW9uLCBuby4gMTY2LiA3OS4iLCJzb3VyY2UiOiJJbnRlZ3JhdGVkIFRheG9ub21pYyBJbmZvcm1hdGlvbiBTeXN0ZW0gKElUSVMpIiwic291cmNlVGF4b25LZXkiOjEwMjEwMTY0MH0seyJ0YXhvbktleSI6NTIzMTE5MCwiY2l0YXRpb24iOiJHaWxsLCBGcmFuaywgYW5kIE1pbnR1cm4gV3JpZ2h0ICgyMDA2KSBCaXJkcyBvZiB0aGUgV29ybGQ6IFJlY29tbWVuZGVkIEVuZ2xpc2ggTmFtZXMiLCJ0eXBlIjoidGF4b24iLCJzb3VyY2UiOiJDYXRhbG9ndWUgb2YgTGlmZSIsInNvdXJjZVRheG9uS2V5IjoxMzIxMzY4NzB9LHsidGF4b25LZXkiOjUyMzExOTAsImNpdGF0aW9uIjoiR2lsbCwgRnJhbmssIGFuZCBNaW50dXJuIFdyaWdodCAoMjAwNikgQmlyZHMgb2YgdGhlIFdvcmxkOiBSZWNvbW1lbmRlZCBFbmdsaXNoIE5hbWVzIiwidHlwZSI6InZlcm5hY3VsYXIiLCJzb3VyY2UiOiJDYXRhbG9ndWUgb2YgTGlmZSIsInNvdXJjZVRheG9uS2V5IjoxMzIxMzY4NzB9LHsidGF4b25LZXkiOjUyMzExOTAsImNpdGF0aW9uIjoiR2lsbCwgRnJhbmssIGFuZCBNaW50dXJuIFdyaWdodCwgMjAwNjogbnVsbC4gQmlyZHMgb2YgdGhlIFdvcmxkOiBSZWNvbW1lbmRlZCBFbmdsaXNoIE5hbWVzLiBpeCArIDI1OS4iLCJzb3VyY2UiOiJJbnRlZ3JhdGVkIFRheG9ub21pYyBJbmZvcm1hdGlvbiBTeXN0ZW0gKElUSVMpIiwic291cmNlVGF4b25LZXkiOjEwMjEwMTY0MH0seyJ0YXhvbktleSI6NTIzMTE5MCwiY2l0YXRpb24iOiJSLiBSZXN0YWxsLEQuIEFzY2FuaW8sQS4gUm9kcntcXCfEsWd1ZXotRmVycmFybyxBenBpcm96LCBBLixBLiBTb3RvLEMuIEJvc3F1ZSAoMjAwNikgU3RhdHVzIGFuZCBkaXN0cmlidXRpb24gb2YgdGhlIEhvdXNlIFNwYXJyb3cgKDxpPlBhc3NlciBkb21lc3RpY3VzPC9pPikgaW4gVmVuZXp1ZWxhIiwidHlwZSI6IkpvdXJuYWwgQXJ0aWNsZSIsInNvdXJjZSI6IkNvbGFib3JhY2lvbmVzIEFtZXJpY2FuYXMgU29icmUgQXZlcyIsInNvdXJjZVRheG9uS2V5IjoxMTQxMzAyNjZ9LHsidGF4b25LZXkiOjUyMzExOTAsImNpdGF0aW9uIjoiU09GICgyMDA3KSBIb2xhcmt0aXMgRsOlZ2xhciwgdmVyc2lvbiAyLiBTT0Y6cyBUYXhvbm9taWtvbW1pdHTDqXMgb2ZmaWNpZWxsYSBsaXN0YSDDtnZlciBIb2xhcmt0aXMgZsOlZ2xhciIsInNvdXJjZSI6IkR5bnRheGEuIFN2ZW5zayB0YXhvbm9taXNrIGRhdGFiYXMiLCJzb3VyY2VUYXhvbktleSI6MTAxNDk5MDY5fV19
+  recorded_at: 2019-05-07 00:26:04 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4.9100

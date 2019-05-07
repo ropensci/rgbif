@@ -6,7 +6,7 @@ test_that("name_suggest returns the correct", {
     b <- name_suggest(q='Puma')
     c <- name_suggest(q='Puma', limit=2)
     d <- name_suggest(q='Puma', fields=c('key','canonicalName'))
-  })
+  }, preserve_exact_body_bytes = TRUE)
   
   # class
   expect_is(a, "data.frame")

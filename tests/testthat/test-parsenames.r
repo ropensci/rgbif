@@ -7,7 +7,7 @@ test_that("returns the correct class", {
     uu <- parsenames(c('Arrhenatherum elatius var. elatius',
                        'Secale cereale subsp. cereale', 'Secale cereale ssp. cereale',
                        'Vanessa atalanta (Linnaeus, 1758)'))
-  })
+  }, preserve_exact_body_bytes = TRUE)
   
   expect_is(tt, "data.frame")
   expect_is(uu, "data.frame")
