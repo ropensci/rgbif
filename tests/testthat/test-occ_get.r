@@ -12,7 +12,7 @@ test_that("returns the correct class", {
       fields = c("scientificName", "decimalLatitude", "basisOfRecord"),
       verbatim = TRUE)
     dd <- occ_get(key = 855998194, fields = "all")
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   expect_is(tt, "data.frame")
   expect_is(tt$key, "character")
@@ -65,7 +65,7 @@ test_that("works w/: verbatim=TRUE, fields all, & return extensions data", {
     bb <- occ_get(keys[2], fields = "all", verbatim = TRUE, return = "data")
     cc <- occ_get(keys[3], fields = "all", verbatim = TRUE, return = "data")
     dd <- occ_get(keys[4], fields = "all", verbatim = TRUE, return = "data")
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   # extensions: Identification non-empty, Multimedia empty array
   expect_is(aa, "data.frame")

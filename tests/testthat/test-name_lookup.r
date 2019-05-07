@@ -4,7 +4,7 @@ test_that("returns the correct class", {
   vcr::use_cassette("name_lookup", {
     tt <- name_lookup(query='mammalia')
     uu <- name_lookup(query='Cnaemidophorus', rank="genus", return="data")
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   expect_is(tt, "list")
   expect_is(tt$meta, "data.frame")
@@ -81,7 +81,7 @@ test_that("paging: name_usage returns as many records as asked, limit > 1000", {
     # 1051 total records (any origin, i.e. SOURCE and DENORMED_CLASSIFICATION)
     aa <- name_lookup(datasetKey = "a5224e5b-6379-4d33-a29d-14b56015893d",
                                           limit = 1001)
-  })
+  }, preserve_exact_body_bytes = TRUE)
   
   expect_equal(aa$meta$offset, 1000)
   expect_equal(aa$meta$limit, 1)
@@ -94,7 +94,7 @@ test_that("paging: class data and meta not modified by paging", {
                      limit = 1)
     bb2 <- name_lookup(datasetKey = "a5224e5b-6379-4d33-a29d-14b56015893d",
                       limit = 1002)
-  })
+  }, preserve_exact_body_bytes = TRUE)
   
   expect_true(all(class(bb1) == class(bb2)))
   expect_true(all(class(bb1$meta) == class(bb2$meta)))
@@ -109,7 +109,7 @@ test_that("paging: name_usage returns all records from dataset: limit > n_record
     # 1051 total records (any origin, i.e. SOURCE and DENORMED_CLASSIFICATION)
     cc <- name_lookup(datasetKey = "a5224e5b-6379-4d33-a29d-14b56015893d",
                       limit = 5000)
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   expect_gte(cc$meta$offset, 1000)
   expect_gte(cc$meta$limit, 51)

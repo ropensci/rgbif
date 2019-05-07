@@ -36,7 +36,7 @@ test_that("name_usage works", {
   vcr::use_cassette("name_usage", {
     tt <- name_usage(key = 1)
     uu <- name_usage(key = 5231190, data = 'references')
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   expect_is(tt, "list")
   expect_is(tt$data$key, "integer")
@@ -62,7 +62,7 @@ test_that("name_usage works", {
 test_that("name_usage with single taxon key and return='data': returns issues correctly", {
   vcr::use_cassette("name_usage_return_data", {
     x <- name_usage(key = 100037505, return = "data")
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   expect_is(x, "data.frame")
   expect_is(x, "tbl_df")
@@ -89,7 +89,7 @@ test_that("name_usage parents route works", {
   vcr::use_cassette("name_usage_data_parents", {
     rte2 <- name_usage(key = 5231190, data = 'parents')
     rte2a <- name_usage(key = 5135783, data = 'parents')
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   expect_is(rte2, "list")
   expect_is(rte2a, "list")
@@ -103,7 +103,7 @@ test_that("name_usage children route works", {
   vcr::use_cassette("name_usage_data_children", {
     rte3 <- name_usage(key = 5231190, data = 'children')
     rte3a <- name_usage(key = 5135790, data = 'children')
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   expect_is(rte3, "list")
   expect_is(rte3a, "list")
@@ -145,7 +145,7 @@ test_that("name_usage descriptions route works", {
   vcr::use_cassette("name_usage_data_descriptions", {
     rte6 <- name_usage(key = 5231190, data = 'descriptions')
     rte6a <- name_usage(key = 5127299, data = 'descriptions')
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   expect_is(rte6, "list")
   expect_is(rte6a, "list")
@@ -186,7 +186,7 @@ test_that("name_usage references route works", {
   vcr::use_cassette("name_usage_data_references", {
     rte9 <- name_usage(key = 5231190, data = 'references')
     rte9a <- name_usage(key = 5231190, data = 'references')
-  })
+  }, preserve_exact_body_bytes = TRUE)
   expect_is(rte9, "list")
   expect_is(rte9a, "list")
   expect_is(rte9$meta, "data.frame")
