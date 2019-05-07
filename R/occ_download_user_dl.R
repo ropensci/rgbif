@@ -5,24 +5,25 @@
 #' x <- dl_user()
 #' x
 dl_user <- function(user = NULL, pwd = NULL, curlopts = list()) {
-  fst <- ocl_help(user, pwd, limit = 300, curlopts = curlopts, flatten = FALSE)
+  fst <- ocl_help(user, pwd, limit = 300, curlopts = curlopts,
+    flatten = TRUE)
   # FIXME: when https://github.com/gbif/occurrence/issues/98
   #  fixed, finish implementing this
   #  for now, just get first 300 results
-  # if (fst$meta$count > NROW(fst$results)) {
-  #   out <- list(fst$results)
-  #   numfnd <- fst$meta$count
-  #   numret <- sum(vapply(out, NROW, 1))
-  #   it <- 1
-  #   while (numret < numfnd) {
-  #     it <- it + 1
-  #     fst <- occ_download_list(user = user, pwd = pwd, limit = 300,
-  #       start = numret, curlopts = curlopts)
-  #     out[[it]] <- fst$results
-  #   }
-  # }
-  # return(setdfrbind(fst$results))
-  fst$results
+  out <- list(fst$results)
+  if (fst$count > NROW(fst$results)) {
+    numfnd <- fst$count
+    numret <- sum(vapply(out, NROW, 1))
+    it <- 1
+    while (numret < numfnd) {
+      it <- it + 1
+      fst <- ocl_help(user = user, pwd = pwd, limit = 300,
+        start = numret, curlopts = curlopts, flatten = TRUE)
+      out[[it]] <- fst$results
+      numret <- sum(NROW(fst$results), numret)
+    }
+  }
+  return(setdfrbind(out))
 }
 
 #' get all user download predicates
