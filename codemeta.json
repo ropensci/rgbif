@@ -10,14 +10,14 @@
   "codeRepository": "https://github.com/ropensci/rgbif",
   "issueTracker": "https://github.com/ropensci/rgbif/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.5.1",
+    "version": "3.5.2",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.5.1 Patched (2018-08-12 r75119)",
+  "runtimePlatform": "R version 3.5.2 Patched (2018-12-31 r75943)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -37,17 +37,14 @@
     {
       "@type": "Person",
       "givenName": "Vijay",
-      "familyName": "Barve"
+      "familyName": "Barve",
+      "@id": "https://orcid.org/0000-0002-4852-2567"
     },
     {
       "@type": "Person",
-      "givenName": "Dan",
-      "familyName": "Mcglinn"
-    },
-    {
-      "@type": "Person",
-      "givenName": "Damiano",
-      "familyName": "Oldoni"
+      "givenName": "Peter",
+      "familyName": "Desmet",
+      "@id": "https://orcid.org/0000-0002-8442-8025"
     },
     {
       "@type": "Person",
@@ -56,8 +53,21 @@
     },
     {
       "@type": "Person",
+      "givenName": "Dan",
+      "familyName": "Mcglinn",
+      "@id": "https://orcid.org/0000-0003-2359-3526"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Damiano",
+      "familyName": "Oldoni",
+      "@id": "https://orcid.org/0000-0003-3445-7562"
+    },
+    {
+      "@type": "Person",
       "givenName": "Karthik",
-      "familyName": "Ram"
+      "familyName": "Ram",
+      "@id": "https://orcid.org/0000-0002-0233-1757"
     }
   ],
   "maintainer": [
@@ -308,7 +318,7 @@
   "contIntegration": "https://travis-ci.org/ropensci/rgbif",
   "releaseNotes": "https://github.com/ropensci/rgbif/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/rgbif/blob/master/README.md",
-  "fileSize": "4171.538KB",
+  "fileSize": "5007.526KB",
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://ropensci.org",
   "keywords": ["GBIF", "specimens", "API", "web-services", "occurrences", "species", "taxonomy", "gbif", "api", "data", "biodiversity", "rstats", "r", "spocc", "r-package"],
@@ -316,7 +326,7 @@
   "citation": [
     {
       "@type": "SoftwareSourceCode",
-      "datePublished": "2018",
+      "datePublished": "2019",
       "author": [
         {
           "@type": "Person",
@@ -337,6 +347,21 @@
           "@type": "Person",
           "givenName": "Damiano",
           "familyName": "Oldoni"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Peter",
+          "familyName": "Desmet"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Laurens",
+          "familyName": "Geffert"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Karthik",
+          "familyName": "Ram"
         }
       ],
       "name": "rgbif: Interface to the Global Biodiversity Information Facility API",
@@ -369,5 +394,9 @@
       }
     }
   ],
-  "relatedLink": "https://ropensci.github.io/occurrence-manual/"
+  "relatedLink": [
+    "https://ropensci.github.io/occurrence-manual/",
+    "https://ropensci.github.io/rgbif",
+    "https://ropensci.github.io/occurrence-manual"
+  ]
 }

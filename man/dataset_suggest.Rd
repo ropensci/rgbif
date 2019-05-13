@@ -69,6 +69,20 @@ A data.frame, list, or message printed to console (using
 \description{
 Suggest datasets in GBIF.
 }
+\section{Repeat parmeter inputs}{
+
+Some parameters can tak emany inputs, and treated as 'OR' (e.g., a or b or
+c). The following take many inputs:
+\itemize{
+\item \code{type}
+\item \code{keyword}
+\item \code{publishingOrg}
+\item \code{hostingOrg}
+\item \code{publishingCountry}
+\item \code{decade}
+}
+}
+
 \examples{
 \dontrun{
 # Suggest datasets of type "OCCURRENCE".

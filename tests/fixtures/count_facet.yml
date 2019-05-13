@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
-      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -17,14 +17,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Sun, 17 Jun 2018 04:48:58 GMT
+      date: Tue, 26 Feb 2019 15:12:56 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/count?country=AD
       cache-control: public, max-age=600
-      x-varnish: 473369102 486899769
+      x-varnish: 715820279 763822444
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -32,9 +31,9 @@ http_interactions:
       connection: keep-alive
     body:
       encoding: ASCII-8BIT
-      string: MTI5MDA1
-  recorded_at: 2018-06-17 04:49:09 GMT
-  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2
+      string: MTMwNzI3
+  recorded_at: 2019-02-26 15:13:06 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?country=AE
@@ -44,8 +43,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
-      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -53,14 +52,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Sun, 17 Jun 2018 04:48:59 GMT
+      date: Tue, 26 Feb 2019 15:12:56 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/count?country=AE
       cache-control: public, max-age=600
-      x-varnish: 480182757 486899781
+      x-varnish: 715820283 763789797
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -68,9 +66,9 @@ http_interactions:
       connection: keep-alive
     body:
       encoding: ASCII-8BIT
-      string: NDgxODU0
-  recorded_at: 2018-06-17 04:49:09 GMT
-  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2
+      string: NDgyNzYx
+  recorded_at: 2019-02-26 15:13:06 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?country=AF
@@ -80,8 +78,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
-      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -89,14 +87,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Sun, 17 Jun 2018 04:48:59 GMT
+      date: Tue, 26 Feb 2019 15:12:57 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/count?country=AF
       cache-control: public, max-age=600
-      x-varnish: 473369134 479003668
+      x-varnish: 763855142 763855136
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -104,9 +101,9 @@ http_interactions:
       connection: keep-alive
     body:
       encoding: ASCII-8BIT
-      string: NTI2NjY4
-  recorded_at: 2018-06-17 04:49:09 GMT
-  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2
+      string: NTI4MDc1
+  recorded_at: 2019-02-26 15:13:06 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?country=AR
@@ -116,8 +113,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
-      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -125,14 +122,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Sun, 17 Jun 2018 04:49:00 GMT
+      date: Tue, 26 Feb 2019 15:12:58 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/count?country=AR
       cache-control: public, max-age=600
-      x-varnish: 483426425 459183104
+      x-varnish: 750650591 716868663
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -140,9 +136,9 @@ http_interactions:
       connection: keep-alive
     body:
       encoding: ASCII-8BIT
-      string: MzIyNTMzOQ==
-  recorded_at: 2018-06-17 04:49:09 GMT
-  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2
+      string: MzI3OTc1Mg==
+  recorded_at: 2019-02-26 15:13:06 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?country=AD
@@ -152,8 +148,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
-      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -161,24 +157,23 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Sun, 17 Jun 2018 04:48:58 GMT
+      date: Tue, 26 Feb 2019 15:12:56 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/count?country=AD
       cache-control: public, max-age=600
-      x-varnish: 431763722 486899769
-      age: '3'
+      x-varnish: 767983767 763822444
+      age: '2'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
       content-length: '6'
       connection: keep-alive
     body:
       encoding: ASCII-8BIT
-      string: MTI5MDA1
-  recorded_at: 2018-06-17 04:49:09 GMT
-  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2
+      string: MTMwNzI3
+  recorded_at: 2019-02-26 15:13:06 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?country=AD
@@ -188,8 +183,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
-      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -197,14 +192,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Sun, 17 Jun 2018 04:48:58 GMT
+      date: Tue, 26 Feb 2019 15:12:56 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/count?country=AD
       cache-control: public, max-age=600
-      x-varnish: 476939165 486899769
+      x-varnish: 757564370 763822444
       age: '3'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -212,9 +206,9 @@ http_interactions:
       connection: keep-alive
     body:
       encoding: ASCII-8BIT
-      string: MTI5MDA1
-  recorded_at: 2018-06-17 04:49:09 GMT
-  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2
+      string: MTMwNzI3
+  recorded_at: 2019-02-26 15:13:06 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?country=AE
@@ -224,8 +218,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
-      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -233,24 +227,23 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Sun, 17 Jun 2018 04:48:59 GMT
+      date: Tue, 26 Feb 2019 15:12:56 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/count?country=AE
       cache-control: public, max-age=600
-      x-varnish: 488374287 486899781
-      age: '3'
+      x-varnish: 761365326 763789797
+      age: '2'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
       content-length: '6'
       connection: keep-alive
     body:
       encoding: ASCII-8BIT
-      string: NDgxODU0
-  recorded_at: 2018-06-17 04:49:09 GMT
-  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2
+      string: NDgyNzYx
+  recorded_at: 2019-02-26 15:13:06 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?country=AE
@@ -260,8 +253,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
-      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -269,14 +262,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Sun, 17 Jun 2018 04:48:59 GMT
+      date: Tue, 26 Feb 2019 15:12:56 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/count?country=AE
       cache-control: public, max-age=600
-      x-varnish: 459183128 486899781
+      x-varnish: 750650599 763789797
       age: '3'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -284,9 +276,9 @@ http_interactions:
       connection: keep-alive
     body:
       encoding: ASCII-8BIT
-      string: NDgxODU0
-  recorded_at: 2018-06-17 04:49:09 GMT
-  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2
+      string: NDgyNzYx
+  recorded_at: 2019-02-26 15:13:06 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?country=AF
@@ -296,8 +288,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
-      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -305,24 +297,23 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Sun, 17 Jun 2018 04:48:59 GMT
+      date: Tue, 26 Feb 2019 15:12:57 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/count?country=AF
       cache-control: public, max-age=600
-      x-varnish: 478839107 479003668
-      age: '3'
+      x-varnish: 761365334 763855136
+      age: '2'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
       content-length: '6'
       connection: keep-alive
     body:
       encoding: ASCII-8BIT
-      string: NTI2NjY4
-  recorded_at: 2018-06-17 04:49:09 GMT
-  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2
+      string: NTI4MDc1
+  recorded_at: 2019-02-26 15:13:06 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?country=AF
@@ -332,8 +323,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
-      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -341,14 +332,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Sun, 17 Jun 2018 04:48:59 GMT
+      date: Tue, 26 Feb 2019 15:12:57 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/count?country=AF
       cache-control: public, max-age=600
-      x-varnish: 478839116 479003668
+      x-varnish: 768114992 763855136
       age: '3'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -356,9 +346,9 @@ http_interactions:
       connection: keep-alive
     body:
       encoding: ASCII-8BIT
-      string: NTI2NjY4
-  recorded_at: 2018-06-17 04:49:09 GMT
-  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2
+      string: NTI4MDc1
+  recorded_at: 2019-02-26 15:13:06 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?country=AG
@@ -368,8 +358,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
-      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -377,14 +367,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Sun, 17 Jun 2018 04:49:03 GMT
+      date: Tue, 26 Feb 2019 15:13:00 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/count?country=AG
       cache-control: public, max-age=600
-      x-varnish: 478249217 485654651
+      x-varnish: 715820326 776372354
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -392,9 +381,9 @@ http_interactions:
       connection: keep-alive
     body:
       encoding: ASCII-8BIT
-      string: MjkwMzc=
-  recorded_at: 2018-06-17 04:49:09 GMT
-  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2
+      string: Mjk5MTE=
+  recorded_at: 2019-02-26 15:13:06 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?country=AI
@@ -404,8 +393,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
-      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -413,14 +402,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Sun, 17 Jun 2018 04:49:04 GMT
+      date: Tue, 26 Feb 2019 15:13:01 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/count?country=AI
       cache-control: public, max-age=600
-      x-varnish: 476939200 488374312
+      x-varnish: 762610325 761365357
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -428,9 +416,9 @@ http_interactions:
       connection: keep-alive
     body:
       encoding: ASCII-8BIT
-      string: MTc0NzQ=
-  recorded_at: 2018-06-17 04:49:09 GMT
-  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2
+      string: MTc1MzQ=
+  recorded_at: 2019-02-26 15:13:06 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?country=AL
@@ -440,8 +428,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
-      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -449,14 +437,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Sun, 17 Jun 2018 04:49:04 GMT
+      date: Tue, 26 Feb 2019 15:13:02 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/count?country=AL
       cache-control: public, max-age=600
-      x-varnish: 483426461 485262116
+      x-varnish: 776372366 776372361
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -464,9 +451,9 @@ http_interactions:
       connection: keep-alive
     body:
       encoding: ASCII-8BIT
-      string: MjE1MDY=
-  recorded_at: 2018-06-17 04:49:09 GMT
-  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2
+      string: MjM5Mjk=
+  recorded_at: 2019-02-26 15:13:06 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?country=AM
@@ -476,8 +463,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
-      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -485,14 +472,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Sun, 17 Jun 2018 04:49:05 GMT
+      date: Tue, 26 Feb 2019 15:13:02 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/count?country=AM
       cache-control: public, max-age=600
-      x-varnish: 481034884 468486434
+      x-varnish: 770015824 777977910
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -500,9 +486,9 @@ http_interactions:
       connection: keep-alive
     body:
       encoding: ASCII-8BIT
-      string: ODcwNjE=
-  recorded_at: 2018-06-17 04:49:09 GMT
-  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2
+      string: OTAyNTE=
+  recorded_at: 2019-02-26 15:13:06 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?country=AO
@@ -512,8 +498,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
-      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -521,14 +507,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Sun, 17 Jun 2018 04:49:06 GMT
+      date: Tue, 26 Feb 2019 15:13:03 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/count?country=AO
       cache-control: public, max-age=600
-      x-varnish: 463670206 485262132
+      x-varnish: 763986498 770572391
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -536,9 +521,9 @@ http_interactions:
       connection: keep-alive
     body:
       encoding: ASCII-8BIT
-      string: MjAwMDUz
-  recorded_at: 2018-06-17 04:49:09 GMT
-  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2
+      string: MjIyMzcy
+  recorded_at: 2019-02-26 15:13:06 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?country=AQ
@@ -548,8 +533,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
-      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -557,14 +542,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Sun, 17 Jun 2018 04:49:06 GMT
+      date: Tue, 26 Feb 2019 15:13:03 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/count?country=AQ
       cache-control: public, max-age=600
-      x-varnish: 485491430 470026232
+      x-varnish: 767427335 776077549
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -572,9 +556,9 @@ http_interactions:
       connection: keep-alive
     body:
       encoding: ASCII-8BIT
-      string: MTM2MjkwNw==
-  recorded_at: 2018-06-17 04:49:09 GMT
-  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2
+      string: MjQ2MDY2Mg==
+  recorded_at: 2019-02-26 15:13:06 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?country=AR
@@ -584,8 +568,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
-      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -593,14 +577,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Sun, 17 Jun 2018 04:49:00 GMT
+      date: Tue, 26 Feb 2019 15:12:58 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/count?country=AR
       cache-control: public, max-age=600
-      x-varnish: 465177261 459183104
+      x-varnish: 761365378 716868663
       age: '6'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -608,9 +591,9 @@ http_interactions:
       connection: keep-alive
     body:
       encoding: ASCII-8BIT
-      string: MzIyNTMzOQ==
-  recorded_at: 2018-06-17 04:49:09 GMT
-  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2
+      string: MzI3OTc1Mg==
+  recorded_at: 2019-02-26 15:13:06 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?country=AR
@@ -620,8 +603,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
-      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -629,14 +612,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Sun, 17 Jun 2018 04:49:00 GMT
+      date: Tue, 26 Feb 2019 15:12:58 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/count?country=AR
       cache-control: public, max-age=600
-      x-varnish: 465177275 459183104
+      x-varnish: 722012725 716868663
       age: '6'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -644,9 +626,9 @@ http_interactions:
       connection: keep-alive
     body:
       encoding: ASCII-8BIT
-      string: MzIyNTMzOQ==
-  recorded_at: 2018-06-17 04:49:09 GMT
-  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2
+      string: MzI3OTc1Mg==
+  recorded_at: 2019-02-26 15:13:06 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?isGeoreferenced=TRUE
@@ -656,8 +638,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
-      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -665,14 +647,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Sun, 17 Jun 2018 04:49:07 GMT
+      date: Tue, 26 Feb 2019 15:13:05 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/count?isGeoreferenced=TRUE
       cache-control: public, max-age=600
-      x-varnish: 480051866 480051859
+      x-varnish: 777027640 777027637
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -680,9 +661,9 @@ http_interactions:
       connection: keep-alive
     body:
       encoding: ASCII-8BIT
-      string: ODk1NTc0MzQw
-  recorded_at: 2018-06-17 04:49:09 GMT
-  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2
+      string: OTkxNjc4NzY3
+  recorded_at: 2019-02-26 15:13:06 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?isGeoreferenced=FALSE
@@ -692,8 +673,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
-      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -701,14 +682,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Sun, 17 Jun 2018 04:49:08 GMT
+      date: Tue, 26 Feb 2019 15:13:05 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/count?isGeoreferenced=FALSE
       cache-control: public, max-age=600
-      x-varnish: 485884170 480051875
+      x-varnish: 770506933 763986505
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -716,6 +696,6 @@ http_interactions:
       connection: keep-alive
     body:
       encoding: ASCII-8BIT
-      string: ODk1NzQ1OTQ=
-  recorded_at: 2018-06-17 04:49:09 GMT
-  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2
+      string: OTEzNTU1NTE=
+  recorded_at: 2019-02-26 15:13:06 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4

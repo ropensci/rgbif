@@ -78,8 +78,8 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 #> 2         94     FUZZY   FALSE
 ```
 
-* P. s<b>y</b>lvestris w/ 394166 occurrences - from Catalogue of Life
-* P. s<b>i</b>lvestris w/ 394166 occurrences - from Catalogue of Life
+* P. s<b>y</b>lvestris w/ 420319 occurrences - from Catalogue of Life
+* P. s<b>i</b>lvestris w/ 420319 occurrences - from Catalogue of Life
 
 ## Macrozamia platyrachis vs. M. platyrhachis
 
@@ -94,8 +94,8 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 #> 2 SPECIES ACCEPTED         98     EXACT   FALSE
 ```
 
-* M. platyrachis w/ 61 occurrences - from Catalogue of Life
-* M. platyr<b>h</b>achis w/ 61 occurrences - from Catalogue of Life
+* M. platyrachis w/ 63 occurrences - from Catalogue of Life
+* M. platyr<b>h</b>achis w/ 63 occurrences - from Catalogue of Life
 
 ## Cycas circinalis vs. C. circinnalis
 
@@ -110,8 +110,8 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 #> 2         95     FUZZY   FALSE
 ```
 
-* C. circinalis w/ 593 occurrences - from Catalogue of Life
-* C. circin<b>n</b>alis w/ 593 occurrences - from Catalogue of Life
+* C. circinalis w/ 602 occurrences - from Catalogue of Life
+* C. circin<b>n</b>alis w/ 602 occurrences - from Catalogue of Life
 
 ## Isolona perrieri vs. I. perrierii
 
@@ -126,8 +126,8 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 #> 2         98     EXACT   FALSE
 ```
 
-* I. perrieri w/ 82 occurrences - from Catalogue of Life
-* I. perrieri<b>i</b> w/ 82 occurrences - from Catalogue of Life
+* I. perrieri w/ 81 occurrences - from Catalogue of Life
+* I. perrieri<b>i</b> w/ 81 occurrences - from Catalogue of Life
 
 ## Wiesneria vs. Wisneria
 
@@ -142,7 +142,7 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 #> 2         95     EXACT       TRUE
 ```
 
-* Wi<b>e</b>sneria w/ 108 occurrences - from Catalogue of Life
+* Wi<b>e</b>sneria w/ 111 occurrences - from Catalogue of Life
 * Wisneria w/ 3 occurrences - from The Interim Register of Marine and Nonmarine Genera
 
 ## The take away messages from this vignette

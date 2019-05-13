@@ -1,15 +1,15 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.gbif.org/v1/species/suggest?q=Puma%20concolor&limit=100
+    uri: http://api.geonames.org/srtm3?lats=32.909436%2C38.540315%2C37.050632%2C31.913204%2C32.648646%2C32.649972%2C47.42263%2C30.060134%2C37.04786%2C40.363404%2C47.538867%2C38.481486%2C37.050542%2C25.576582%2C31.334842%2C33.124711%2C33.068336%2C32.745623%2C41.695009%2C16.056195&lngs=-116.545853%2C-122.970018%2C-121.4302%2C-109.931659%2C-108.536463%2C-108.537201%2C-113.670813%2C-103.558096%2C-121.42573%2C-120.622698%2C-113.742705%2C-122.915802%2C-121.429824%2C-80.689018%2C-110.332383%2C-108.568249%2C-116.333314%2C-116.570241%2C-103.712241%2C-93.477916&username=<geonames_user>
     body:
       encoding: ''
       string: ''
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
-      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -17,165 +17,48 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Sun, 17 Jun 2018 05:18:06 GMT
-      content-type: application/json
+      date: Tue, 26 Feb 2019 15:15:37 GMT
+      server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips
+      cache-control: no-cache
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
-      server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/species/suggest?q=Puma%20concolor&limit=100
-      cache-control: public, max-age=3601
-      x-varnish: 493553838 487458850
-      age: '141'
-      via: 1.1 varnish (Varnish/5.2)
-      accept-ranges: bytes
-      content-length: '21024'
-      connection: keep-alive
+      transfer-encoding: chunked
+      content-type: text/html;charset=UTF-8
     body:
       encoding: UTF-8
-      string: '[{"key":2435099,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma","parentKey":2435098,"nubKey":2435099,"scientificName":"Puma
-        concolor (Linnaeus, 1771)","canonicalName":"Puma concolor","rank":"SPECIES","status":"ACCEPTED","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma"},"synonym":false,"class":"Mammalia"},{"key":6164589,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma
-        concolor","parentKey":2435099,"nubKey":6164589,"scientificName":"Puma concolor
-        anthonyi (Nelson & Goldman, 1931)","canonicalName":"Puma concolor anthonyi","rank":"SUBSPECIES","status":"ACCEPTED","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma","2435099":"Puma
-        concolor"},"synonym":false,"class":"Mammalia"},{"key":6164622,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma
-        concolor","parentKey":2435099,"nubKey":6164622,"scientificName":"Puma concolor
-        puma (Molina, 1782)","canonicalName":"Puma concolor puma","rank":"SUBSPECIES","status":"ACCEPTED","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma","2435099":"Puma
-        concolor"},"synonym":false,"class":"Mammalia"},{"key":6164611,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma
-        concolor","parentKey":2435099,"nubKey":6164611,"scientificName":"Puma concolor
-        mayensis (Nelson & Goldman, 1929)","canonicalName":"Puma concolor mayensis","rank":"SUBSPECIES","status":"SYNONYM","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma","2435099":"Puma
-        concolor"},"synonym":true,"class":"Mammalia"},{"key":6164613,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma
-        concolor","parentKey":2435099,"nubKey":6164613,"scientificName":"Puma concolor
-        schorgeri (Jackson, 1955)","canonicalName":"Puma concolor schorgeri","rank":"SUBSPECIES","status":"SYNONYM","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma","2435099":"Puma
-        concolor"},"synonym":true,"class":"Mammalia"},{"key":8766647,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma
-        concolor","parentKey":2435099,"scientificName":"Puma concolor pearsoni (Thomas,
-        1901)","canonicalName":"Puma concolor pearsoni","rank":"SUBSPECIES","status":"SYNONYM","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma","2435099":"Puma
-        concolor"},"synonym":true,"class":"Mammalia"},{"key":9037937,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma
-        concolor","parentKey":2435099,"scientificName":"Puma concolor soderstromii
-        (Lönnberg, 1913)","canonicalName":"Puma concolor soderstromii","rank":"SUBSPECIES","status":"SYNONYM","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma","2435099":"Puma
-        concolor"},"synonym":true,"class":"Mammalia"},{"key":6164602,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma
-        concolor","parentKey":2435099,"nubKey":6164602,"scientificName":"Puma concolor
-        improcera (Phillips, 1912)","canonicalName":"Puma concolor improcera","rank":"SUBSPECIES","status":"SYNONYM","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma","2435099":"Puma
-        concolor"},"synonym":true,"class":"Mammalia"},{"key":6164600,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma
-        concolor","parentKey":2435099,"nubKey":6164600,"scientificName":"Puma concolor
-        coryi (Bangs, 1899)","canonicalName":"Puma concolor coryi","rank":"SUBSPECIES","status":"SYNONYM","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma","2435099":"Puma
-        concolor"},"synonym":true,"class":"Mammalia"},{"key":8951716,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma
-        concolor","parentKey":2435099,"scientificName":"Puma concolor borbensis (Nelson
-        & Goldman, 1933)","canonicalName":"Puma concolor borbensis","rank":"SUBSPECIES","status":"SYNONYM","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma","2435099":"Puma
-        concolor"},"synonym":true,"class":"Mammalia"},{"key":6164618,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma
-        concolor","parentKey":2435099,"nubKey":6164618,"scientificName":"Puma concolor
-        browni (Merriam, 1903)","canonicalName":"Puma concolor browni","rank":"SUBSPECIES","status":"SYNONYM","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma","2435099":"Puma
-        concolor"},"synonym":true,"class":"Mammalia"},{"key":8860878,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma
-        concolor","parentKey":2435099,"scientificName":"Puma concolor capricornensis
-        (Goldman, 1946)","canonicalName":"Puma concolor capricornensis","rank":"SUBSPECIES","status":"SYNONYM","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma","2435099":"Puma
-        concolor"},"synonym":true,"class":"Mammalia"},{"key":6164624,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma
-        concolor","parentKey":2435099,"nubKey":6164624,"scientificName":"Puma concolor
-        costaricensis (Merriam, 1901)","canonicalName":"Puma concolor costaricensis","rank":"SUBSPECIES","status":"ACCEPTED","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma","2435099":"Puma
-        concolor"},"synonym":false,"class":"Mammalia"},{"key":6164603,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma
-        concolor","parentKey":2435099,"nubKey":6164603,"scientificName":"Puma concolor
-        missoulensis (Goldman, 1943)","canonicalName":"Puma concolor missoulensis","rank":"SUBSPECIES","status":"SYNONYM","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma","2435099":"Puma
-        concolor"},"synonym":true,"class":"Mammalia"},{"key":9164058,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma
-        concolor","parentKey":2435099,"scientificName":"Puma concolor osgoodi (Nelson
-        & Goldman, 1929)","canonicalName":"Puma concolor osgoodi","rank":"SUBSPECIES","status":"SYNONYM","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma","2435099":"Puma
-        concolor"},"synonym":true,"class":"Mammalia"},{"key":6164604,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma
-        concolor","parentKey":2435099,"nubKey":6164604,"scientificName":"Puma concolor
-        stanleyana (Goldman, 1938)","canonicalName":"Puma concolor stanleyana","rank":"SUBSPECIES","status":"SYNONYM","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma","2435099":"Puma
-        concolor"},"synonym":true,"class":"Mammalia"},{"key":6164610,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma
-        concolor","parentKey":2435099,"nubKey":6164610,"scientificName":"Puma concolor
-        hippolestes (Merriam, 1897)","canonicalName":"Puma concolor hippolestes","rank":"SUBSPECIES","status":"SYNONYM","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma","2435099":"Puma
-        concolor"},"synonym":true,"class":"Mammalia"},{"key":6164620,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma
-        concolor","parentKey":2435099,"nubKey":6164620,"scientificName":"Puma concolor
-        cougar (Kerr, 1792)","canonicalName":"Puma concolor cougar","rank":"SUBSPECIES","status":"SYNONYM","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma","2435099":"Puma
-        concolor"},"synonym":true,"class":"Mammalia"},{"key":8916934,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma
-        concolor","parentKey":2435099,"scientificName":"Puma concolor bangsi (Merriam,
-        1901)","canonicalName":"Puma concolor bangsi","rank":"SUBSPECIES","status":"SYNONYM","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma","2435099":"Puma
-        concolor"},"synonym":true,"class":"Mammalia"},{"key":6164599,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma
-        concolor","parentKey":2435099,"nubKey":6164599,"scientificName":"Puma concolor
-        azteca (Merriam, 1901)","canonicalName":"Puma concolor azteca","rank":"SUBSPECIES","status":"SYNONYM","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma","2435099":"Puma
-        concolor"},"synonym":true,"class":"Mammalia"},{"key":9045222,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma
-        concolor","parentKey":2435099,"scientificName":"Puma concolor araucanus (Osgood,
-        1943)","canonicalName":"Puma concolor araucanus","rank":"SUBSPECIES","status":"SYNONYM","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma","2435099":"Puma
-        concolor"},"synonym":true,"class":"Mammalia"},{"key":6164591,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma
-        concolor","parentKey":2435099,"nubKey":6164591,"scientificName":"Puma concolor
-        kaibabensis (Nelson & Goldman, 1931)","canonicalName":"Puma concolor kaibabensis","rank":"SUBSPECIES","status":"SYNONYM","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma","2435099":"Puma
-        concolor"},"synonym":true,"class":"Mammalia"},{"key":9156584,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma
-        concolor","parentKey":2435099,"scientificName":"Puma concolor patagonica (Merriam,
-        1901)","canonicalName":"Puma concolor patagonica","rank":"SUBSPECIES","status":"SYNONYM","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma","2435099":"Puma
-        concolor"},"synonym":true,"class":"Mammalia"},{"key":6164590,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma
-        concolor","parentKey":2435099,"nubKey":6164590,"scientificName":"Puma concolor
-        couguar (Kerr, 1792)","canonicalName":"Puma concolor couguar","rank":"SUBSPECIES","status":"ACCEPTED","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma","2435099":"Puma
-        concolor"},"synonym":false,"class":"Mammalia"},{"key":6164623,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma
-        concolor","parentKey":2435099,"nubKey":6164623,"scientificName":"Puma concolor
-        cabrerae Pocock, 1940","canonicalName":"Puma concolor cabrerae","rank":"SUBSPECIES","status":"ACCEPTED","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma","2435099":"Puma
-        concolor"},"synonym":false,"class":"Mammalia"},{"key":8836300,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma
-        concolor","parentKey":2435099,"scientificName":"Puma concolor discolor","canonicalName":"Puma
-        concolor discolor","rank":"SUBSPECIES","status":"ACCEPTED","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma","2435099":"Puma
-        concolor"},"synonym":false,"class":"Mammalia"},{"key":6164608,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma
-        concolor","parentKey":2435099,"nubKey":6164608,"scientificName":"Puma concolor
-        californica (May, 1896)","canonicalName":"Puma concolor californica","rank":"SUBSPECIES","status":"SYNONYM","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma","2435099":"Puma
-        concolor"},"synonym":true,"class":"Mammalia"},{"key":6164594,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma
-        concolor","parentKey":2435099,"nubKey":6164594,"scientificName":"Puma concolor
-        vancouverensis (Nelson & Goldman, 1932)","canonicalName":"Puma concolor vancouverensis","rank":"SUBSPECIES","status":"SYNONYM","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma","2435099":"Puma
-        concolor"},"synonym":true,"class":"Mammalia"},{"key":8773192,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma
-        concolor","parentKey":2435099,"scientificName":"Puma concolor incarum (Nelson
-        & Goldman, 1929)","canonicalName":"Puma concolor incarum","rank":"SUBSPECIES","status":"SYNONYM","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma","2435099":"Puma
-        concolor"},"synonym":true,"class":"Mammalia"},{"key":6164592,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma
-        concolor","parentKey":2435099,"nubKey":6164592,"scientificName":"Puma concolor
-        oregonensis (Rafinesque, 1832)","canonicalName":"Puma concolor oregonensis","rank":"SUBSPECIES","status":"SYNONYM","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma","2435099":"Puma
-        concolor"},"synonym":true,"class":"Mammalia"},{"key":7193927,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma
-        concolor","parentKey":2435099,"nubKey":7193927,"scientificName":"Puma concolor
-        concolor","canonicalName":"Puma concolor concolor","rank":"SUBSPECIES","status":"ACCEPTED","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma","2435099":"Puma
-        concolor"},"synonym":false,"class":"Mammalia"},{"key":9104297,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma
-        concolor","parentKey":2435099,"scientificName":"Puma concolor greeni (Nelson
-        & Goldman, 1931)","canonicalName":"Puma concolor greeni","rank":"SUBSPECIES","status":"SYNONYM","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma","2435099":"Puma
-        concolor"},"synonym":true,"class":"Mammalia"},{"key":8944801,"kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"parent":"Puma
-        concolor","parentKey":2435099,"scientificName":"Puma concolor acrocodia (Goldman,
-        1943)","canonicalName":"Puma concolor acrocodia","rank":"SUBSPECIES","status":"SYNONYM","higherClassificationMap":{"1":"Animalia","44":"Chordata","359":"Mammalia","732":"Carnivora","9703":"Felidae","2435098":"Puma","2435099":"Puma
-        concolor"},"synonym":true,"class":"Mammalia"}]'
-  recorded_at: 2018-06-17 05:20:30 GMT
-  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2
+      string: |
+        1447
+        340
+        340
+        1524
+        1769
+        1780
+        1230
+        1353
+        373
+        1297
+        1111
+        59
+        340
+        4
+        1609
+        1821
+        870
+        1134
+        1383
+        1795
+  recorded_at: 2019-02-26 15:15:38 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/search?hasCoordinate=TRUE&limit=20&offset=0&taxonKey=2435099
+    uri: http://api.geonames.org/srtm3?lats=32.909436%2C38.540315%2C37.050632%2C31.913204%2C32.648646%2C32.649972%2C47.42263%2C30.060134%2C37.04786%2C40.363404%2C47.538867%2C38.481486%2C37.050542%2C25.576582%2C31.334842%2C33.124711%2C33.068336%2C32.745623%2C41.695009%2C16.056195&lngs=-116.545853%2C-122.970018%2C-121.4302%2C-109.931659%2C-108.536463%2C-108.537201%2C-113.670813%2C-103.558096%2C-121.42573%2C-120.622698%2C-113.742705%2C-122.915802%2C-121.429824%2C-80.689018%2C-110.332383%2C-108.568249%2C-116.333314%2C-116.570241%2C-103.712241%2C-93.477916&username=<geonames_user>
     body:
       encoding: ''
       string: ''
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
-      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -183,437 +66,48 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Sun, 17 Jun 2018 05:18:07 GMT
-      content-type: application/json
+      date: Tue, 26 Feb 2019 15:15:37 GMT
+      server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips
+      cache-control: no-cache
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
-      server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/search?hasCoordinate=TRUE&limit=20&offset=0&taxonKey=2435099
-      cache-control: public, max-age=600
-      x-varnish: 498041527 470158517
-      age: '140'
-      via: 1.1 varnish (Varnish/5.2)
-      accept-ranges: bytes
-      content-length: '75929'
-      connection: keep-alive
+      transfer-encoding: chunked
+      content-type: text/html;charset=UTF-8
     body:
       encoding: UTF-8
-      string: '{"offset":0,"limit":20,"endOfRecords":false,"count":5155,"results":[{"key":1802781354,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2018-06-12T02:36:11.592+0000","lastParsed":"2018-02-01T17:55:09.352+0000","crawlId":114,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":6164590,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"scientificName":"Puma
-        concolor couguar (Kerr, 1792)","kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","genericName":"Puma","specificEpithet":"concolor","infraspecificEpithet":"couguar","taxonRank":"SUBSPECIES","dateIdentified":"2018-01-06T18:16:52.000+0000","decimalLongitude":-122.803709,"decimalLatitude":38.418883,"coordinateUncertaintyInMeters":28240.0,"year":2018,"month":1,"day":5,"eventDate":"2018-01-05T22:03:16.000+0000","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-01-22T03:27:24.000+0000","lastInterpreted":"2018-02-02T17:13:23.439+0000","references":"https://www.inaturalist.org/observations/9383449","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/12746357/original.jpg?1515262616","references":"https://www.inaturalist.org/photos/12746357","created":"2018-01-06T06:03:16.000+0000","creator":"tedjudah","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"tedjudah"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/12746359/original.jpg?1515262623","references":"https://www.inaturalist.org/photos/12746359","created":"2018-01-06T06:03:16.000+0000","creator":"tedjudah","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"tedjudah"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"US","country":"United
-        States","rightsHolder":"tedjudah","identifier":"9383449","informationWithheld":"Coordinate
-        uncertainty increased to 28240m at the request of the observer","verbatimEventDate":"Fri
-        Jan 05 2018 22:03:16 GMT-0800 (PST)","datasetName":"iNaturalist research-grade
-        observations","collectionCode":"Observations","gbifID":"1802781354","verbatimLocality":"Sonoma
-        County, US-CA, US","occurrenceID":"https://www.inaturalist.org/observations/9383449","taxonID":"143589","recordedBy":"tedjudah","catalogNumber":"9383449","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9383449","institutionCode":"iNaturalist","rights":"©
-        tedjudah some rights reserved","eventTime":"06:03:16Z","occurrenceRemarks":"Came
-        across a skeleton in the forest. At first thought it was a deer. Soon realized
-        it was a large cat!","http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia":"[
-        {\n  \"http://purl.org/dc/terms/format\" : \"image/jpeg\",\n  \"http://purl.org/dc/terms/publisher\"
-        : \"iNaturalist\",\n  \"http://purl.org/dc/terms/references\" : \"https://www.inaturalist.org/photos/12746357\",\n  \"http://purl.org/dc/terms/identifier\"
-        : \"https://static.inaturalist.org/photos/12746357/original.jpg?1515262616\",\n  \"http://purl.org/dc/terms/type\"
-        : \"StillImage\",\n  \"http://purl.org/dc/terms/creator\" : \"tedjudah\",\n  \"http://purl.org/dc/terms/created\"
-        : \"2018-01-06T06:03:16Z\",\n  \"http://purl.org/dc/terms/rightsHolder\" :
-        \"tedjudah\",\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\" : \"12746357\",\n  \"http://purl.org/dc/terms/license\"
-        : \"http://creativecommons.org/licenses/by-nc/4.0/\"\n}, {\n  \"http://purl.org/dc/terms/format\"
-        : \"image/jpeg\",\n  \"http://purl.org/dc/terms/publisher\" : \"iNaturalist\",\n  \"http://purl.org/dc/terms/references\"
-        : \"https://www.inaturalist.org/photos/12746359\",\n  \"http://purl.org/dc/terms/identifier\"
-        : \"https://static.inaturalist.org/photos/12746359/original.jpg?1515262623\",\n  \"http://purl.org/dc/terms/type\"
-        : \"StillImage\",\n  \"http://purl.org/dc/terms/creator\" : \"tedjudah\",\n  \"http://purl.org/dc/terms/created\"
-        : \"2018-01-06T06:03:16Z\",\n  \"http://purl.org/dc/terms/rightsHolder\" :
-        \"tedjudah\",\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\" : \"12746359\",\n  \"http://purl.org/dc/terms/license\"
-        : \"http://creativecommons.org/licenses/by-nc/4.0/\"\n} ]","identificationID":"20455980"},{"key":1807292560,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2018-06-12T02:36:41.206+0000","lastParsed":"2018-02-15T09:29:29.649+0000","crawlId":114,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2435099,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"scientificName":"Puma
-        concolor (Linnaeus, 1771)","kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","genericName":"Puma","specificEpithet":"concolor","taxonRank":"SPECIES","dateIdentified":"2018-01-31T23:19:37.000+0000","decimalLongitude":-121.425555,"decimalLatitude":37.047321,"coordinateUncertaintyInMeters":106.0,"year":2018,"month":1,"day":29,"eventDate":"2018-01-29T00:00:00.000+0000","issues":["GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-02-02T14:56:24.000+0000","lastInterpreted":"2018-02-15T09:29:52.955+0000","references":"https://www.inaturalist.org/observations/9685443","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13241551/original.jpeg?1517440773","references":"https://www.inaturalist.org/photos/13241551","created":"2018-01-29T10:56:25.000+0000","creator":"sferry","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"sferry"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"US","country":"United
-        States","rightsHolder":"sferry","identifier":"9685443","verbatimEventDate":"2018-01-29","datasetName":"iNaturalist
-        research-grade observations","collectionCode":"Observations","gbifID":"1807292560","verbatimLocality":"Henry
-        W. Coe, Henry W. Coe State Park, Santa Clara County, US-CA, US","occurrenceID":"https://www.inaturalist.org/observations/9685443","taxonID":"42007","recordedBy":"sferry","catalogNumber":"9685443","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9685443","institutionCode":"iNaturalist","rights":"©
-        sferry some rights reserved","http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia":"[
-        {\n  \"http://purl.org/dc/terms/references\" : \"https://www.inaturalist.org/photos/13241551\",\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\"
-        : \"13241551\",\n  \"http://purl.org/dc/terms/creator\" : \"sferry\",\n  \"http://purl.org/dc/terms/format\"
-        : \"image/jpeg\",\n  \"http://purl.org/dc/terms/type\" : \"StillImage\",\n  \"http://purl.org/dc/terms/identifier\"
-        : \"https://static.inaturalist.org/photos/13241551/original.jpeg?1517440773\",\n  \"http://purl.org/dc/terms/publisher\"
-        : \"iNaturalist\",\n  \"http://purl.org/dc/terms/rightsHolder\" : \"sferry\",\n  \"http://purl.org/dc/terms/created\"
-        : \"2018-01-29T02:56:25-08:00\",\n  \"http://purl.org/dc/terms/license\" :
-        \"http://creativecommons.org/licenses/by-nc/4.0/\"\n} ]","identificationID":"21297098"},{"key":1806372833,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2018-06-12T02:36:38.185+0000","lastParsed":"2018-04-09T19:05:06.039+0000","crawlId":114,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":6164590,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"scientificName":"Puma
-        concolor couguar (Kerr, 1792)","kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","genericName":"Puma","specificEpithet":"concolor","infraspecificEpithet":"couguar","taxonRank":"SUBSPECIES","dateIdentified":"2018-01-29T01:35:33.000+0000","decimalLongitude":-121.183657,"decimalLatitude":36.507232,"coordinateUncertaintyInMeters":28534.0,"year":2018,"month":1,"day":28,"eventDate":"2018-01-28T08:58:43.000+0000","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-03-08T21:28:08.000+0000","lastInterpreted":"2018-04-09T19:05:06.163+0000","references":"https://www.inaturalist.org/observations/9650615","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13182635/original.jpg?1517189753","references":"https://www.inaturalist.org/photos/13182635","created":"2018-01-28T16:58:43.000+0000","creator":"Daniel
-        George","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Daniel
-        George"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13182783/original.jpg?1517190128","references":"https://www.inaturalist.org/photos/13182783","created":"2018-01-28T16:58:43.000+0000","creator":"Daniel
-        George","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Daniel
-        George"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"US","country":"United
-        States","rightsHolder":"Daniel George","identifier":"9650615","verbatimEventDate":"Sun
-        Jan 28 2018 08:58:43 GMT-0800 (PST)","datasetName":"iNaturalist research-grade
-        observations","collectionCode":"Observations","gbifID":"1806372833","verbatimLocality":"Pinnacles
-        National Park, San Benito County, US-CA, US","occurrenceID":"https://www.inaturalist.org/observations/9650615","taxonID":"143589","recordedBy":"Daniel
-        George","catalogNumber":"9650615","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9650615","institutionCode":"iNaturalist","rights":"©
-        Daniel George some rights reserved","eventTime":"16:58:43Z","http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia":"[
-        {\n  \"http://purl.org/dc/terms/creator\" : \"Daniel George\",\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\"
-        : \"13182635\",\n  \"http://purl.org/dc/terms/rightsHolder\" : \"Daniel George\",\n  \"http://purl.org/dc/terms/references\"
-        : \"https://www.inaturalist.org/photos/13182635\",\n  \"http://purl.org/dc/terms/format\"
-        : \"image/jpeg\",\n  \"http://purl.org/dc/terms/publisher\" : \"iNaturalist\",\n  \"http://purl.org/dc/terms/created\"
-        : \"2018-01-28T16:58:43Z\",\n  \"http://purl.org/dc/terms/identifier\" : \"https://static.inaturalist.org/photos/13182635/original.jpg?1517189753\",\n  \"http://purl.org/dc/terms/license\"
-        : \"http://creativecommons.org/licenses/by-nc/4.0/\",\n  \"http://purl.org/dc/terms/type\"
-        : \"StillImage\"\n}, {\n  \"http://purl.org/dc/terms/creator\" : \"Daniel
-        George\",\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\" : \"13182783\",\n  \"http://purl.org/dc/terms/rightsHolder\"
-        : \"Daniel George\",\n  \"http://purl.org/dc/terms/references\" : \"https://www.inaturalist.org/photos/13182783\",\n  \"http://purl.org/dc/terms/format\"
-        : \"image/jpeg\",\n  \"http://purl.org/dc/terms/publisher\" : \"iNaturalist\",\n  \"http://purl.org/dc/terms/created\"
-        : \"2018-01-28T16:58:43Z\",\n  \"http://purl.org/dc/terms/identifier\" : \"https://static.inaturalist.org/photos/13182783/original.jpg?1517190128\",\n  \"http://purl.org/dc/terms/license\"
-        : \"http://creativecommons.org/licenses/by-nc/4.0/\",\n  \"http://purl.org/dc/terms/type\"
-        : \"StillImage\"\n} ]","identificationID":"21202140"},{"key":1802789714,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2018-06-12T02:36:13.963+0000","lastParsed":"2018-03-26T14:50:45.989+0000","crawlId":114,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2435099,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"scientificName":"Puma
-        concolor (Linnaeus, 1771)","kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","genericName":"Puma","specificEpithet":"concolor","taxonRank":"SPECIES","dateIdentified":"2018-01-08T05:22:52.000+0000","decimalLongitude":-116.498205,"decimalLatitude":33.638442,"year":2018,"month":1,"day":7,"eventDate":"2018-01-07T10:11:00.000+0000","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-03-08T21:32:12.000+0000","lastInterpreted":"2018-03-26T14:50:46.007+0000","references":"https://www.inaturalist.org/observations/9408224","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/12780141/original.jpg?1515388204","references":"https://www.inaturalist.org/photos/12780141","created":"2018-01-07T18:11:00.000+0000","creator":"Colin
-        Barrows","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc-sa/4.0/","rightsHolder":"Colin
-        Barrows"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"US","country":"United
-        States","rightsHolder":"Colin Barrows","identifier":"9408224","verbatimEventDate":"2018/01/07
-        10:11 AM PST","datasetName":"iNaturalist research-grade observations","collectionCode":"Observations","gbifID":"1802789714","verbatimLocality":"Riverside
-        County, CA, USA","occurrenceID":"https://www.inaturalist.org/observations/9408224","taxonID":"42007","recordedBy":"Colin
-        Barrows","catalogNumber":"9408224","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9408224","institutionCode":"iNaturalist","rights":"©
-        Colin Barrows some rights reserved","eventTime":"18:11:00Z","occurrenceRemarks":"Fresh!","http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia":"[
-        {\n  \"http://purl.org/dc/terms/creator\" : \"Colin Barrows\",\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\"
-        : \"12780141\",\n  \"http://purl.org/dc/terms/rightsHolder\" : \"Colin Barrows\",\n  \"http://purl.org/dc/terms/references\"
-        : \"https://www.inaturalist.org/photos/12780141\",\n  \"http://purl.org/dc/terms/format\"
-        : \"image/jpeg\",\n  \"http://purl.org/dc/terms/publisher\" : \"iNaturalist\",\n  \"http://purl.org/dc/terms/created\"
-        : \"2018-01-07T10:11:00-08:00\",\n  \"http://purl.org/dc/terms/identifier\"
-        : \"https://static.inaturalist.org/photos/12780141/original.jpg?1515388204\",\n  \"http://purl.org/dc/terms/license\"
-        : \"http://creativecommons.org/licenses/by-nc-sa/4.0/\",\n  \"http://purl.org/dc/terms/type\"
-        : \"StillImage\"\n} ]","identificationID":"20520941"},{"key":1805413101,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2018-06-12T02:36:25.002+0000","lastParsed":"2018-04-09T19:04:46.604+0000","crawlId":114,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2435099,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"scientificName":"Puma
-        concolor (Linnaeus, 1771)","kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","genericName":"Puma","specificEpithet":"concolor","taxonRank":"SPECIES","dateIdentified":"2018-01-17T23:04:16.000+0000","decimalLongitude":-121.388433,"decimalLatitude":37.175693,"coordinateUncertaintyInMeters":28447.0,"year":2018,"month":1,"day":6,"eventDate":"2018-01-06T00:00:00.000+0000","issues":["GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-01-19T23:06:55.000+0000","lastInterpreted":"2018-04-09T19:04:47.055+0000","references":"https://www.inaturalist.org/observations/9512245","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/12964917/original.jpeg?1516230252","references":"https://www.inaturalist.org/photos/12964917","created":"2018-01-06T10:20:06.000+0000","creator":"sferry","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"sferry"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"US","country":"United
-        States","rightsHolder":"sferry","identifier":"9512245","verbatimEventDate":"2018-01-06","datasetName":"iNaturalist
-        research-grade observations","collectionCode":"Observations","gbifID":"1805413101","verbatimLocality":"Henry
-        W. Coe, Henry W. Coe State Park, Stanislaus County, US-CA, US","occurrenceID":"https://www.inaturalist.org/observations/9512245","taxonID":"42007","recordedBy":"sferry","catalogNumber":"9512245","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9512245","institutionCode":"iNaturalist","rights":"©
-        sferry some rights reserved","http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia":"[
-        {\n  \"http://purl.org/dc/terms/creator\" : \"sferry\",\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\"
-        : \"12964917\",\n  \"http://purl.org/dc/terms/rightsHolder\" : \"sferry\",\n  \"http://purl.org/dc/terms/references\"
-        : \"https://www.inaturalist.org/photos/12964917\",\n  \"http://purl.org/dc/terms/format\"
-        : \"image/jpeg\",\n  \"http://purl.org/dc/terms/publisher\" : \"iNaturalist\",\n  \"http://purl.org/dc/terms/created\"
-        : \"2018-01-06T02:20:06-08:00\",\n  \"http://purl.org/dc/terms/identifier\"
-        : \"https://static.inaturalist.org/photos/12964917/original.jpeg?1516230252\",\n  \"http://purl.org/dc/terms/license\"
-        : \"http://creativecommons.org/licenses/by-nc/4.0/\",\n  \"http://purl.org/dc/terms/type\"
-        : \"StillImage\"\n} ]","identificationID":"20835860"},{"key":1847472633,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2018-06-12T02:15:51.746+0000","lastParsed":"2018-05-31T15:21:45.195+0000","crawlId":114,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2435099,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"scientificName":"Puma
-        concolor (Linnaeus, 1771)","kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","genericName":"Puma","specificEpithet":"concolor","taxonRank":"SPECIES","dateIdentified":"2018-05-08T20:04:01.000+0000","decimalLongitude":-121.42549,"decimalLatitude":37.047495,"coordinateUncertaintyInMeters":61.0,"year":2018,"month":1,"day":17,"eventDate":"2018-01-17T13:02:00.000+0000","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-05-11T20:05:04.000+0000","lastInterpreted":"2018-05-31T15:22:35.040+0000","references":"https://www.inaturalist.org/observations/12273816","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/png","identifier":"https://static.inaturalist.org/photos/17651113/original.png?1525809758","references":"https://www.inaturalist.org/photos/17651113","created":"2018-01-17T21:02:00.000+0000","creator":"sferry","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"sferry"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"US","country":"United
-        States","rightsHolder":"sferry","identifier":"12273816","verbatimEventDate":"2018/01/17
-        1:02 PM -0800","datasetName":"iNaturalist research-grade observations","collectionCode":"Observations","gbifID":"1847472633","verbatimLocality":"Santa
-        Clara County, CA, USA","occurrenceID":"https://www.inaturalist.org/observations/12273816","taxonID":"42007","recordedBy":"sferry","catalogNumber":"12273816","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/12273816","institutionCode":"iNaturalist","rights":"©
-        sferry some rights reserved","eventTime":"21:02:00Z","occurrenceRemarks":"2
-        mtn lions together","http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia":"[
-        {\n  \"http://purl.org/dc/terms/identifier\" : \"https://static.inaturalist.org/photos/17651113/original.png?1525809758\",\n  \"http://purl.org/dc/terms/license\"
-        : \"http://creativecommons.org/licenses/by-nc/4.0/\",\n  \"http://purl.org/dc/terms/publisher\"
-        : \"iNaturalist\",\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\" : \"17651113\",\n  \"http://purl.org/dc/terms/created\"
-        : \"2018-01-17T21:02:00Z\",\n  \"http://purl.org/dc/terms/rightsHolder\" :
-        \"sferry\",\n  \"http://purl.org/dc/terms/creator\" : \"sferry\",\n  \"http://purl.org/dc/terms/format\"
-        : \"image/png\",\n  \"http://purl.org/dc/terms/type\" : \"StillImage\",\n  \"http://purl.org/dc/terms/references\"
-        : \"https://www.inaturalist.org/photos/17651113\"\n} ]","identificationID":"26832289"},{"key":1807283062,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2018-06-12T02:36:36.532+0000","lastParsed":"2018-02-15T09:29:16.543+0000","crawlId":114,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2435099,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"scientificName":"Puma
-        concolor (Linnaeus, 1771)","kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","genericName":"Puma","specificEpithet":"concolor","taxonRank":"SPECIES","dateIdentified":"2018-01-27T20:34:42.000+0000","decimalLongitude":-111.881386,"decimalLatitude":40.782501,"year":2018,"month":1,"day":27,"eventDate":"2018-01-27T08:54:23.000+0000","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-01-31T17:17:50.000+0000","lastInterpreted":"2018-02-15T09:29:16.730+0000","references":"https://www.inaturalist.org/observations/9633727","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13153954/original.jpeg?1517085296","references":"https://www.inaturalist.org/photos/13153954","created":"2018-01-27T16:54:23.000+0000","creator":"bryanto","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"bryanto"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"US","country":"United
-        States","rightsHolder":"bryanto","identifier":"9633727","verbatimEventDate":"2018-01-27
-        8:54:23 AM MST","datasetName":"iNaturalist research-grade observations","collectionCode":"Observations","gbifID":"1807283062","verbatimLocality":"275
-        11th Ave, Salt Lake City, UT 84103, USA","occurrenceID":"https://www.inaturalist.org/observations/9633727","taxonID":"42007","recordedBy":"bryanto","catalogNumber":"9633727","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9633727","institutionCode":"iNaturalist","rights":"©
-        bryanto some rights reserved","eventTime":"15:54:23Z","http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia":"[
-        {\n  \"http://purl.org/dc/terms/references\" : \"https://www.inaturalist.org/photos/13153954\",\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\"
-        : \"13153954\",\n  \"http://purl.org/dc/terms/creator\" : \"bryanto\",\n  \"http://purl.org/dc/terms/format\"
-        : \"image/jpeg\",\n  \"http://purl.org/dc/terms/type\" : \"StillImage\",\n  \"http://purl.org/dc/terms/identifier\"
-        : \"https://static.inaturalist.org/photos/13153954/original.jpeg?1517085296\",\n  \"http://purl.org/dc/terms/publisher\"
-        : \"iNaturalist\",\n  \"http://purl.org/dc/terms/rightsHolder\" : \"bryanto\",\n  \"http://purl.org/dc/terms/created\"
-        : \"2018-01-27T08:54:23-08:00\",\n  \"http://purl.org/dc/terms/license\" :
-        \"http://creativecommons.org/licenses/by-nc/4.0/\"\n} ]","identificationID":"21160601"},{"key":1806375449,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2018-06-12T02:36:38.893+0000","lastParsed":"2018-02-15T09:29:23.148+0000","crawlId":114,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2435099,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"scientificName":"Puma
-        concolor (Linnaeus, 1771)","kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","genericName":"Puma","specificEpithet":"concolor","taxonRank":"SPECIES","dateIdentified":"2018-01-29T19:06:39.000+0000","decimalLongitude":-118.861997,"decimalLatitude":34.839806,"coordinateUncertaintyInMeters":22.0,"year":2018,"month":1,"day":26,"eventDate":"2018-01-26T11:26:52.000+0000","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-01-31T21:52:25.000+0000","lastInterpreted":"2018-02-15T09:29:25.434+0000","references":"https://www.inaturalist.org/observations/9658170","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13195531/original.jpg?1517252809","references":"https://www.inaturalist.org/photos/13195531","created":"2018-01-26T19:26:52.000+0000","creator":"ghosttooth","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"ghosttooth"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"US","country":"United
-        States","rightsHolder":"ghosttooth","identifier":"9658170","verbatimEventDate":"Fri
-        Jan 26 2018 11:26:52 GMT-0800 (PST)","datasetName":"iNaturalist research-grade
-        observations","collectionCode":"Observations","gbifID":"1806375449","verbatimLocality":"Beartrap
-        Rd, Lebec, CA, US","occurrenceID":"https://www.inaturalist.org/observations/9658170","taxonID":"42007","recordedBy":"ghosttooth","catalogNumber":"9658170","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9658170","institutionCode":"iNaturalist","rights":"©
-        ghosttooth some rights reserved","eventTime":"19:26:52Z","http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia":"[
-        {\n  \"http://purl.org/dc/terms/references\" : \"https://www.inaturalist.org/photos/13195531\",\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\"
-        : \"13195531\",\n  \"http://purl.org/dc/terms/creator\" : \"ghosttooth\",\n  \"http://purl.org/dc/terms/format\"
-        : \"image/jpeg\",\n  \"http://purl.org/dc/terms/type\" : \"StillImage\",\n  \"http://purl.org/dc/terms/identifier\"
-        : \"https://static.inaturalist.org/photos/13195531/original.jpg?1517252809\",\n  \"http://purl.org/dc/terms/publisher\"
-        : \"iNaturalist\",\n  \"http://purl.org/dc/terms/rightsHolder\" : \"ghosttooth\",\n  \"http://purl.org/dc/terms/created\"
-        : \"2018-01-26T19:26:52Z\",\n  \"http://purl.org/dc/terms/license\" : \"http://creativecommons.org/licenses/by-nc/4.0/\"\n}
-        ]","identificationID":"21224530"},{"key":1805413186,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2018-06-12T02:36:25.006+0000","lastParsed":"2018-04-09T19:04:46.597+0000","crawlId":114,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2435099,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"scientificName":"Puma
-        concolor (Linnaeus, 1771)","kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","genericName":"Puma","specificEpithet":"concolor","taxonRank":"SPECIES","dateIdentified":"2018-01-17T22:55:32.000+0000","decimalLongitude":-121.425608,"decimalLatitude":37.047464,"coordinateUncertaintyInMeters":28447.0,"year":2018,"month":1,"day":17,"eventDate":"2018-01-17T00:00:00.000+0000","issues":["GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-01-20T17:31:37.000+0000","lastInterpreted":"2018-04-09T19:04:46.650+0000","references":"https://www.inaturalist.org/observations/9512195","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/12964827/original.jpeg?1516229725","references":"https://www.inaturalist.org/photos/12964827","created":"2018-01-17T14:38:32.000+0000","creator":"sferry","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"sferry"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"US","country":"United
-        States","rightsHolder":"sferry","identifier":"9512195","verbatimEventDate":"2018-01-17","datasetName":"iNaturalist
-        research-grade observations","collectionCode":"Observations","gbifID":"1805413186","verbatimLocality":"Henry
-        W. Coe, Henry W. Coe State Park, Santa Clara County, US-CA, US","occurrenceID":"https://www.inaturalist.org/observations/9512195","taxonID":"42007","recordedBy":"sferry","catalogNumber":"9512195","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9512195","institutionCode":"iNaturalist","rights":"©
-        sferry some rights reserved","occurrenceRemarks":"2 lions in the second pic,
-        same day","http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia":"[
-        {\n  \"http://purl.org/dc/terms/creator\" : \"sferry\",\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\"
-        : \"12964827\",\n  \"http://purl.org/dc/terms/rightsHolder\" : \"sferry\",\n  \"http://purl.org/dc/terms/references\"
-        : \"https://www.inaturalist.org/photos/12964827\",\n  \"http://purl.org/dc/terms/format\"
-        : \"image/jpeg\",\n  \"http://purl.org/dc/terms/publisher\" : \"iNaturalist\",\n  \"http://purl.org/dc/terms/created\"
-        : \"2018-01-17T06:38:32-08:00\",\n  \"http://purl.org/dc/terms/identifier\"
-        : \"https://static.inaturalist.org/photos/12964827/original.jpeg?1516229725\",\n  \"http://purl.org/dc/terms/license\"
-        : \"http://creativecommons.org/licenses/by-nc/4.0/\",\n  \"http://purl.org/dc/terms/type\"
-        : \"StillImage\"\n} ]","identificationID":"20835415"},{"key":1805413163,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2018-06-12T02:36:24.998+0000","lastParsed":"2018-04-09T19:04:46.598+0000","crawlId":114,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":6164590,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"scientificName":"Puma
-        concolor couguar (Kerr, 1792)","kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","genericName":"Puma","specificEpithet":"concolor","infraspecificEpithet":"couguar","taxonRank":"SUBSPECIES","dateIdentified":"2018-01-17T22:56:49.000+0000","decimalLongitude":-121.426574,"decimalLatitude":37.049879,"coordinateUncertaintyInMeters":28447.0,"year":2018,"month":1,"day":17,"eventDate":"2018-01-17T00:00:00.000+0000","issues":["GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-01-19T22:06:58.000+0000","lastInterpreted":"2018-04-09T19:04:47.115+0000","references":"https://www.inaturalist.org/observations/9512199","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/12964836/original.jpeg?1516229800","references":"https://www.inaturalist.org/photos/12964836","created":"2018-01-17T14:54:23.000+0000","creator":"sferry","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"sferry"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/12964837/original.jpeg?1516229804","references":"https://www.inaturalist.org/photos/12964837","created":"2018-01-17T14:38:32.000+0000","creator":"sferry","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"sferry"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"US","country":"United
-        States","rightsHolder":"sferry","identifier":"9512199","verbatimEventDate":"2018-01-17","datasetName":"iNaturalist
-        research-grade observations","collectionCode":"Observations","gbifID":"1805413163","verbatimLocality":"Henry
-        Coe State Park, CA, US","occurrenceID":"https://www.inaturalist.org/observations/9512199","taxonID":"143589","recordedBy":"sferry","catalogNumber":"9512199","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9512199","institutionCode":"iNaturalist","rights":"©
-        sferry some rights reserved","occurrenceRemarks":"2 lions in the second pic","http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia":"[
-        {\n  \"http://purl.org/dc/terms/creator\" : \"sferry\",\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\"
-        : \"12964836\",\n  \"http://purl.org/dc/terms/rightsHolder\" : \"sferry\",\n  \"http://purl.org/dc/terms/references\"
-        : \"https://www.inaturalist.org/photos/12964836\",\n  \"http://purl.org/dc/terms/format\"
-        : \"image/jpeg\",\n  \"http://purl.org/dc/terms/publisher\" : \"iNaturalist\",\n  \"http://purl.org/dc/terms/created\"
-        : \"2018-01-17T06:54:23-08:00\",\n  \"http://purl.org/dc/terms/identifier\"
-        : \"https://static.inaturalist.org/photos/12964836/original.jpeg?1516229800\",\n  \"http://purl.org/dc/terms/license\"
-        : \"http://creativecommons.org/licenses/by-nc/4.0/\",\n  \"http://purl.org/dc/terms/type\"
-        : \"StillImage\"\n}, {\n  \"http://purl.org/dc/terms/creator\" : \"sferry\",\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\"
-        : \"12964837\",\n  \"http://purl.org/dc/terms/rightsHolder\" : \"sferry\",\n  \"http://purl.org/dc/terms/references\"
-        : \"https://www.inaturalist.org/photos/12964837\",\n  \"http://purl.org/dc/terms/format\"
-        : \"image/jpeg\",\n  \"http://purl.org/dc/terms/publisher\" : \"iNaturalist\",\n  \"http://purl.org/dc/terms/created\"
-        : \"2018-01-17T06:38:32-08:00\",\n  \"http://purl.org/dc/terms/identifier\"
-        : \"https://static.inaturalist.org/photos/12964837/original.jpeg?1516229804\",\n  \"http://purl.org/dc/terms/license\"
-        : \"http://creativecommons.org/licenses/by-nc/4.0/\",\n  \"http://purl.org/dc/terms/type\"
-        : \"StillImage\"\n} ]","identificationID":"20835453"},{"key":1837077255,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2018-06-12T02:12:10.959+0000","lastParsed":"2018-05-31T15:18:03.709+0000","crawlId":114,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2435099,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"scientificName":"Puma
-        concolor (Linnaeus, 1771)","kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","genericName":"Puma","specificEpithet":"concolor","taxonRank":"SPECIES","dateIdentified":"2018-03-26T18:54:03.000+0000","decimalLongitude":-120.738417,"decimalLatitude":35.323801,"coordinateUncertaintyInMeters":193.0,"year":2018,"month":1,"day":30,"eventDate":"2018-01-30T03:20:00.000+0000","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-05-14T12:15:38.000+0000","lastInterpreted":"2018-05-31T15:18:03.788+0000","references":"https://www.inaturalist.org/observations/10435246","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/14499971/original.jpg?1522090416","references":"https://www.inaturalist.org/photos/14499971","created":"2018-01-30T11:20:35.000+0000","creator":"Kyle
-        Nessen","publisher":"iNaturalist","license":"http://creativecommons.org/publicdomain/zero/1.0/","rightsHolder":"Kyle
-        Nessen"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"US","country":"United
-        States","rightsHolder":"Kyle Nessen","identifier":"10435246","verbatimEventDate":"2018/01/30
-        3:20 AM PST","datasetName":"iNaturalist research-grade observations","collectionCode":"Observations","gbifID":"1837077255","verbatimLocality":"Colusa
-        Ave, San Luis Obispo, CA 93405, USA","occurrenceID":"https://www.inaturalist.org/observations/10435246","taxonID":"42007","recordedBy":"Kyle
-        Nessen","catalogNumber":"10435246","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/10435246","institutionCode":"iNaturalist","rights":"by
-        Kyle Nessen no rights reserved","eventTime":"11:20:00Z","occurrenceRemarks":"Courtesy
-        of Cuesta College Biology Department","http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia":"[
-        {\n  \"http://purl.org/dc/terms/identifier\" : \"https://static.inaturalist.org/photos/14499971/original.jpg?1522090416\",\n  \"http://purl.org/dc/terms/license\"
-        : \"http://creativecommons.org/publicdomain/zero/1.0/\",\n  \"http://purl.org/dc/terms/publisher\"
-        : \"iNaturalist\",\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\" : \"14499971\",\n  \"http://purl.org/dc/terms/created\"
-        : \"2018-01-30T03:20:35-08:00\",\n  \"http://purl.org/dc/terms/rightsHolder\"
-        : \"Kyle Nessen\",\n  \"http://purl.org/dc/terms/creator\" : \"Kyle Nessen\",\n  \"http://purl.org/dc/terms/format\"
-        : \"image/jpeg\",\n  \"http://purl.org/dc/terms/type\" : \"StillImage\",\n  \"http://purl.org/dc/terms/references\"
-        : \"https://www.inaturalist.org/photos/14499971\"\n} ]","identificationID":"23187616"},{"key":1841196370,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2018-06-12T02:14:29.967+0000","lastParsed":"2018-05-31T15:20:11.417+0000","crawlId":114,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2435099,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"scientificName":"Puma
-        concolor (Linnaeus, 1771)","kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","genericName":"Puma","specificEpithet":"concolor","taxonRank":"SPECIES","dateIdentified":"2018-04-27T03:23:07.000+0000","decimalLongitude":-105.281599,"decimalLatitude":39.992277,"coordinateUncertaintyInMeters":188.0,"year":2018,"month":1,"day":18,"eventDate":"2018-01-18T12:45:00.000+0000","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-05-25T21:24:59.000+0000","lastInterpreted":"2018-05-31T15:20:11.433+0000","references":"https://www.inaturalist.org/observations/11472913","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/16372775/original.jpg?1524798422","references":"https://www.inaturalist.org/photos/16372775","created":"2018-01-18T20:45:12.000+0000","creator":"Suzanne
-        Dingwell","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Suzanne
-        Dingwell"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"US","country":"United
-        States","rightsHolder":"Suzanne Dingwell","identifier":"11472913","verbatimEventDate":"2018/01/18
-        12:45 PM HST","datasetName":"iNaturalist research-grade observations","collectionCode":"Observations","gbifID":"1841196370","verbatimLocality":"Enchanted
-        Mesa Trail, Boulder, CO, USA","occurrenceID":"https://www.inaturalist.org/observations/11472913","taxonID":"42007","recordedBy":"Suzanne
-        Dingwell","catalogNumber":"11472913","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/11472913","institutionCode":"iNaturalist","rights":"©
-        Suzanne Dingwell some rights reserved","eventTime":"22:45:00Z","http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia":"[
-        {\n  \"http://purl.org/dc/terms/identifier\" : \"https://static.inaturalist.org/photos/16372775/original.jpg?1524798422\",\n  \"http://purl.org/dc/terms/license\"
-        : \"http://creativecommons.org/licenses/by-nc/4.0/\",\n  \"http://purl.org/dc/terms/publisher\"
-        : \"iNaturalist\",\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\" : \"16372775\",\n  \"http://purl.org/dc/terms/created\"
-        : \"2018-01-18T12:45:12-08:00\",\n  \"http://purl.org/dc/terms/rightsHolder\"
-        : \"Suzanne Dingwell\",\n  \"http://purl.org/dc/terms/creator\" : \"Suzanne
-        Dingwell\",\n  \"http://purl.org/dc/terms/format\" : \"image/jpeg\",\n  \"http://purl.org/dc/terms/type\"
-        : \"StillImage\",\n  \"http://purl.org/dc/terms/references\" : \"https://www.inaturalist.org/photos/16372775\"\n}
-        ]","identificationID":"25467247"},{"key":1847647479,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2018-06-12T02:36:38.253+0000","lastParsed":"2018-05-31T16:30:24.597+0000","crawlId":114,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2435099,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"scientificName":"Puma
-        concolor (Linnaeus, 1771)","kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","genericName":"Puma","specificEpithet":"concolor","taxonRank":"SPECIES","dateIdentified":"2018-01-29T02:11:24.000+0000","decimalLongitude":-121.99944,"decimalLatitude":37.179609,"coordinateUncertaintyInMeters":26.0,"year":2018,"month":1,"day":26,"eventDate":"2018-01-26T13:54:00.000+0000","issues":["GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-05-09T14:29:20.000+0000","lastInterpreted":"2018-05-31T16:30:24.631+0000","references":"https://www.inaturalist.org/observations/9651111","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13183067/original.jpeg?1517190975","references":"https://www.inaturalist.org/photos/13183067","created":"2018-01-26T21:54:43.000+0000","creator":"Anne
-        Parsons","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Anne
-        Parsons"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13183096/original.jpeg?1517191032","references":"https://www.inaturalist.org/photos/13183096","created":"2018-01-26T21:54:57.000+0000","creator":"Anne
-        Parsons","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Anne
-        Parsons"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"US","country":"United
-        States","rightsHolder":"Anne Parsons","identifier":"9651111","verbatimEventDate":"2018/01/26
-        1:54 PM PST","datasetName":"iNaturalist research-grade observations","collectionCode":"Observations","gbifID":"1847647479","verbatimLocality":"Bear
-        Creek Redwoods Open Space Preserve, CA, US","occurrenceID":"https://www.inaturalist.org/observations/9651111","taxonID":"42007","recordedBy":"Anne
-        Parsons","catalogNumber":"9651111","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9651111","institutionCode":"iNaturalist","rights":"©
-        Anne Parsons some rights reserved","eventTime":"21:54:00Z","occurrenceRemarks":"Mountain
-        lion scat deposited in about 5 pieces. Disintegrated due to recent rains.
-        The scat contains stiff white hairs. It''s hard to tell depth from these pictures,
-        but the scrape was more than 12 inches long and there was a pile of redwood
-        needles, leaves, and sticks (from the scrape) more than 4 inches high. The
-        scat was deposited on the \"hill\" made by scraping. Notice the size of this
-        scat relative to the two bobcat scats photographed on the same day. Length:
-        ~10-11 inches Width: ~1 inch Scrape length: >12 inches","http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia":"[
-        {\n  \"http://purl.org/dc/terms/identifier\" : \"https://static.inaturalist.org/photos/13183067/original.jpeg?1517190975\",\n  \"http://purl.org/dc/terms/license\"
-        : \"http://creativecommons.org/licenses/by-nc/4.0/\",\n  \"http://purl.org/dc/terms/publisher\"
-        : \"iNaturalist\",\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\" : \"13183067\",\n  \"http://purl.org/dc/terms/created\"
-        : \"2018-01-26T13:54:43-08:00\",\n  \"http://purl.org/dc/terms/rightsHolder\"
-        : \"Anne Parsons\",\n  \"http://purl.org/dc/terms/creator\" : \"Anne Parsons\",\n  \"http://purl.org/dc/terms/format\"
-        : \"image/jpeg\",\n  \"http://purl.org/dc/terms/type\" : \"StillImage\",\n  \"http://purl.org/dc/terms/references\"
-        : \"https://www.inaturalist.org/photos/13183067\"\n}, {\n  \"http://purl.org/dc/terms/identifier\"
-        : \"https://static.inaturalist.org/photos/13183096/original.jpeg?1517191032\",\n  \"http://purl.org/dc/terms/license\"
-        : \"http://creativecommons.org/licenses/by-nc/4.0/\",\n  \"http://purl.org/dc/terms/publisher\"
-        : \"iNaturalist\",\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\" : \"13183096\",\n  \"http://purl.org/dc/terms/created\"
-        : \"2018-01-26T13:54:57-08:00\",\n  \"http://purl.org/dc/terms/rightsHolder\"
-        : \"Anne Parsons\",\n  \"http://purl.org/dc/terms/creator\" : \"Anne Parsons\",\n  \"http://purl.org/dc/terms/format\"
-        : \"image/jpeg\",\n  \"http://purl.org/dc/terms/type\" : \"StillImage\",\n  \"http://purl.org/dc/terms/references\"
-        : \"https://www.inaturalist.org/photos/13183096\"\n} ]","identificationID":"21203391"},{"key":1831091833,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2018-06-12T02:11:24.049+0000","lastParsed":"2018-05-09T01:48:20.909+0000","crawlId":114,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2435099,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"scientificName":"Puma
-        concolor (Linnaeus, 1771)","kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","genericName":"Puma","specificEpithet":"concolor","taxonRank":"SPECIES","dateIdentified":"2018-02-27T18:32:12.000+0000","decimalLongitude":-93.477916,"decimalLatitude":16.056195,"coordinateUncertaintyInMeters":4.0,"year":2018,"month":1,"day":8,"eventDate":"2018-01-08T00:36:00.000+0000","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-03-08T21:18:38.000+0000","lastInterpreted":"2018-05-09T01:48:32.140+0000","references":"https://www.inaturalist.org/observations/10021633","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13781488/original.jpeg?1519755691","references":"https://www.inaturalist.org/photos/13781488","created":"2018-01-08T08:36:11.000+0000","creator":"Diego
-        Manzano Méndez","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Diego
-        Manzano Méndez"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"MX","country":"Mexico","rightsHolder":"Diego
-        Manzano Méndez","identifier":"10021633","verbatimEventDate":"2018/01/08 12:36
-        AM HST","datasetName":"iNaturalist research-grade observations","collectionCode":"Observations","gbifID":"1831091833","verbatimLocality":"Villa
-        Corzo, Chis., México","occurrenceID":"https://www.inaturalist.org/observations/10021633","taxonID":"42007","recordedBy":"Diego
-        Manzano Méndez","catalogNumber":"10021633","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/10021633","institutionCode":"iNaturalist","rights":"©
-        Diego Manzano Méndez some rights reserved","eventTime":"10:36:00Z","http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia":"[
-        {\n  \"http://purl.org/dc/terms/creator\" : \"Diego Manzano Méndez\",\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\"
-        : \"13781488\",\n  \"http://purl.org/dc/terms/rightsHolder\" : \"Diego Manzano
-        Méndez\",\n  \"http://purl.org/dc/terms/references\" : \"https://www.inaturalist.org/photos/13781488\",\n  \"http://purl.org/dc/terms/format\"
-        : \"image/jpeg\",\n  \"http://purl.org/dc/terms/publisher\" : \"iNaturalist\",\n  \"http://purl.org/dc/terms/created\"
-        : \"2018-01-08T00:36:11-08:00\",\n  \"http://purl.org/dc/terms/identifier\"
-        : \"https://static.inaturalist.org/photos/13781488/original.jpeg?1519755691\",\n  \"http://purl.org/dc/terms/license\"
-        : \"http://creativecommons.org/licenses/by-nc/4.0/\",\n  \"http://purl.org/dc/terms/type\"
-        : \"StillImage\"\n} ]","identificationID":"22170687"},{"key":1805413105,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2018-06-12T02:36:25.052+0000","lastParsed":"2018-04-09T19:04:46.520+0000","crawlId":114,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2435099,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"scientificName":"Puma
-        concolor (Linnaeus, 1771)","kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","genericName":"Puma","specificEpithet":"concolor","taxonRank":"SPECIES","dateIdentified":"2018-01-17T22:58:39.000+0000","decimalLongitude":-121.426756,"decimalLatitude":37.049992,"coordinateUncertaintyInMeters":28447.0,"year":2018,"month":1,"day":4,"eventDate":"2018-01-04T00:00:00.000+0000","issues":["GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-01-19T23:07:03.000+0000","lastInterpreted":"2018-04-09T19:04:46.749+0000","references":"https://www.inaturalist.org/observations/9512210","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/12964862/original.jpeg?1516229915","references":"https://www.inaturalist.org/photos/12964862","created":"2018-01-05T01:09:45.000+0000","creator":"sferry","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"sferry"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"US","country":"United
-        States","rightsHolder":"sferry","identifier":"9512210","verbatimEventDate":"2018-01-04","datasetName":"iNaturalist
-        research-grade observations","collectionCode":"Observations","gbifID":"1805413105","verbatimLocality":"Henry
-        W. Coe, Henry W. Coe State Park, Santa Clara County, US-CA, US","occurrenceID":"https://www.inaturalist.org/observations/9512210","taxonID":"42007","recordedBy":"sferry","catalogNumber":"9512210","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9512210","institutionCode":"iNaturalist","rights":"©
-        sferry some rights reserved","http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia":"[
-        {\n  \"http://purl.org/dc/terms/creator\" : \"sferry\",\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\"
-        : \"12964862\",\n  \"http://purl.org/dc/terms/rightsHolder\" : \"sferry\",\n  \"http://purl.org/dc/terms/references\"
-        : \"https://www.inaturalist.org/photos/12964862\",\n  \"http://purl.org/dc/terms/format\"
-        : \"image/jpeg\",\n  \"http://purl.org/dc/terms/publisher\" : \"iNaturalist\",\n  \"http://purl.org/dc/terms/created\"
-        : \"2018-01-04T17:09:45-08:00\",\n  \"http://purl.org/dc/terms/identifier\"
-        : \"https://static.inaturalist.org/photos/12964862/original.jpeg?1516229915\",\n  \"http://purl.org/dc/terms/license\"
-        : \"http://creativecommons.org/licenses/by-nc/4.0/\",\n  \"http://purl.org/dc/terms/type\"
-        : \"StillImage\"\n} ]","identificationID":"20835567"},{"key":1807289765,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2018-06-12T02:36:40.659+0000","lastParsed":"2018-04-09T19:05:09.907+0000","crawlId":114,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2435099,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"scientificName":"Puma
-        concolor (Linnaeus, 1771)","kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","genericName":"Puma","specificEpithet":"concolor","taxonRank":"SPECIES","dateIdentified":"2018-01-31T09:09:57.000+0000","decimalLongitude":-120.257549,"decimalLatitude":39.437227,"coordinateUncertaintyInMeters":28090.0,"year":2018,"month":1,"day":24,"eventDate":"2018-01-24T11:35:00.000+0000","issues":["GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-02-16T19:35:15.000+0000","lastInterpreted":"2018-04-09T19:05:09.956+0000","references":"https://www.inaturalist.org/observations/9678619","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13229043/original.jpg?1517389622","references":"https://www.inaturalist.org/photos/13229043","created":"2018-01-24T18:31:25.000+0000","creator":"faerthen","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"faerthen"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13229044/original.jpg?1517389626","references":"https://www.inaturalist.org/photos/13229044","created":"2018-01-24T19:35:07.000+0000","creator":"faerthen","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"faerthen"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"US","country":"United
-        States","rightsHolder":"faerthen","identifier":"9678619","verbatimEventDate":"2018/01/24
-        11:35 AM PST","datasetName":"iNaturalist research-grade observations","collectionCode":"Observations","gbifID":"1807289765","verbatimLocality":"Nevada
-        County, CA, USA","occurrenceID":"https://www.inaturalist.org/observations/9678619","taxonID":"42007","recordedBy":"faerthen","catalogNumber":"9678619","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9678619","institutionCode":"iNaturalist","rights":"©
-        faerthen some rights reserved","eventTime":"19:35:00Z","occurrenceRemarks":"Photos
-        by Dan Sayler: \"It snowed just a trace, less than 1/2'''' during the dark
-        between Sun. night/Mon. morning, so conditions were perfect in that it was
-        pretty easy to see that no one had been down the road since the weekend. No
-        vehicles, no foot traffic, so it''s pretty likely that these were not made
-        by someone''s pet. They were pretty fresh, been pretty warm mid day on Mon
-        & Tue.\"","http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia":"[
-        {\n  \"http://purl.org/dc/terms/creator\" : \"faerthen\",\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\"
-        : \"13229043\",\n  \"http://purl.org/dc/terms/rightsHolder\" : \"faerthen\",\n  \"http://purl.org/dc/terms/references\"
-        : \"https://www.inaturalist.org/photos/13229043\",\n  \"http://purl.org/dc/terms/format\"
-        : \"image/jpeg\",\n  \"http://purl.org/dc/terms/publisher\" : \"iNaturalist\",\n  \"http://purl.org/dc/terms/created\"
-        : \"2018-01-24T10:31:25-08:00\",\n  \"http://purl.org/dc/terms/identifier\"
-        : \"https://static.inaturalist.org/photos/13229043/original.jpg?1517389622\",\n  \"http://purl.org/dc/terms/license\"
-        : \"http://creativecommons.org/licenses/by-nc/4.0/\",\n  \"http://purl.org/dc/terms/type\"
-        : \"StillImage\"\n}, {\n  \"http://purl.org/dc/terms/creator\" : \"faerthen\",\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\"
-        : \"13229044\",\n  \"http://purl.org/dc/terms/rightsHolder\" : \"faerthen\",\n  \"http://purl.org/dc/terms/references\"
-        : \"https://www.inaturalist.org/photos/13229044\",\n  \"http://purl.org/dc/terms/format\"
-        : \"image/jpeg\",\n  \"http://purl.org/dc/terms/publisher\" : \"iNaturalist\",\n  \"http://purl.org/dc/terms/created\"
-        : \"2018-01-24T11:35:07-08:00\",\n  \"http://purl.org/dc/terms/identifier\"
-        : \"https://static.inaturalist.org/photos/13229044/original.jpg?1517389626\",\n  \"http://purl.org/dc/terms/license\"
-        : \"http://creativecommons.org/licenses/by-nc/4.0/\",\n  \"http://purl.org/dc/terms/type\"
-        : \"StillImage\"\n} ]","identificationID":"21278170"},{"key":1807318442,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2018-06-12T02:36:47.444+0000","lastParsed":"2018-04-16T15:56:55.863+0000","crawlId":114,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2435099,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"scientificName":"Puma
-        concolor (Linnaeus, 1771)","kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","genericName":"Puma","specificEpithet":"concolor","taxonRank":"SPECIES","dateIdentified":"2018-02-07T00:32:15.000+0000","decimalLongitude":-116.43114,"decimalLatitude":33.393823,"year":2018,"month":2,"day":6,"eventDate":"2018-02-06T13:17:00.000+0000","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-04-10T09:14:49.000+0000","lastInterpreted":"2018-04-16T15:56:55.887+0000","references":"https://www.inaturalist.org/observations/9757087","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13360212/original.jpeg?1517963453","references":"https://www.inaturalist.org/photos/13360212","created":"2018-02-06T21:17:04.000+0000","creator":"Fred
-        Melgert / Carla Hoegen","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Fred
-        Melgert / Carla Hoegen"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"US","country":"United
-        States","rightsHolder":"Fred Melgert / Carla Hoegen","identifier":"9757087","verbatimEventDate":"2018/02/06
-        1:17 PM PST","datasetName":"iNaturalist research-grade observations","collectionCode":"Observations","gbifID":"1807318442","verbatimLocality":"San
-        Diego County, CA, USA","occurrenceID":"https://www.inaturalist.org/observations/9757087","taxonID":"42007","recordedBy":"Fred
-        Melgert / Carla Hoegen","catalogNumber":"9757087","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9757087","institutionCode":"iNaturalist","rights":"©
-        Fred Melgert / Carla Hoegen some rights reserved","eventTime":"21:17:00Z","occurrenceRemarks":"Box
-        Canyon","http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia":"[ {\n  \"http://purl.org/dc/terms/creator\"
-        : \"Fred Melgert / Carla Hoegen\",\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\"
-        : \"13360212\",\n  \"http://purl.org/dc/terms/rightsHolder\" : \"Fred Melgert
-        / Carla Hoegen\",\n  \"http://purl.org/dc/terms/references\" : \"https://www.inaturalist.org/photos/13360212\",\n  \"http://purl.org/dc/terms/format\"
-        : \"image/jpeg\",\n  \"http://purl.org/dc/terms/publisher\" : \"iNaturalist\",\n  \"http://purl.org/dc/terms/created\"
-        : \"2018-02-06T13:17:04-08:00\",\n  \"http://purl.org/dc/terms/identifier\"
-        : \"https://static.inaturalist.org/photos/13360212/original.jpeg?1517963453\",\n  \"http://purl.org/dc/terms/license\"
-        : \"http://creativecommons.org/licenses/by-nc/4.0/\",\n  \"http://purl.org/dc/terms/type\"
-        : \"StillImage\"\n} ]","identificationID":"21497229"},{"key":1831233713,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2018-06-12T02:37:09.064+0000","lastParsed":"2018-03-26T14:55:07.694+0000","crawlId":114,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":6164590,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"scientificName":"Puma
-        concolor couguar (Kerr, 1792)","kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","genericName":"Puma","specificEpithet":"concolor","infraspecificEpithet":"couguar","taxonRank":"SUBSPECIES","dateIdentified":"2018-02-25T01:06:38.000+0000","decimalLongitude":-122.680935,"decimalLatitude":48.033963,"coordinateUncertaintyInMeters":8.0,"year":2018,"month":2,"day":22,"eventDate":"2018-02-22T12:02:00.000+0000","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-03-08T21:20:21.000+0000","lastInterpreted":"2018-03-26T14:55:07.752+0000","references":"https://www.inaturalist.org/observations/9983529","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13720914/original.jpg?1519520582","references":"https://www.inaturalist.org/photos/13720914","created":"2018-02-22T20:02:40.000+0000","creator":"Kurt
-        Steinbach","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Kurt
-        Steinbach"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13720924/original.jpg?1519520602","references":"https://www.inaturalist.org/photos/13720924","created":"2018-02-22T20:01:37.000+0000","creator":"Kurt
-        Steinbach","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Kurt
-        Steinbach"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13720928/original.jpg?1519520631","references":"https://www.inaturalist.org/photos/13720928","created":"2018-02-22T20:02:57.000+0000","creator":"Kurt
-        Steinbach","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Kurt
-        Steinbach"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13721850/original.jpg?1519522903","references":"https://www.inaturalist.org/photos/13721850","created":"2018-02-22T20:01:58.000+0000","creator":"Kurt
-        Steinbach","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"Kurt
-        Steinbach"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"US","country":"United
-        States","rightsHolder":"Kurt Steinbach","identifier":"9983529","verbatimEventDate":"2018/02/22
-        12:02 PM PST","datasetName":"iNaturalist research-grade observations","collectionCode":"Observations","gbifID":"1831233713","verbatimLocality":"Marrowstone,
-        WA 98358, USA","occurrenceID":"https://www.inaturalist.org/observations/9983529","taxonID":"143589","recordedBy":"Kurt
-        Steinbach","catalogNumber":"9983529","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9983529","institutionCode":"iNaturalist","rights":"©
-        Kurt Steinbach some rights reserved","eventTime":"20:02:00Z","occurrenceRemarks":"Photo
-        credit: Al Smith","http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia":"[
-        {\n  \"http://purl.org/dc/terms/creator\" : \"Kurt Steinbach\",\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\"
-        : \"13720914\",\n  \"http://purl.org/dc/terms/rightsHolder\" : \"Kurt Steinbach\",\n  \"http://purl.org/dc/terms/references\"
-        : \"https://www.inaturalist.org/photos/13720914\",\n  \"http://purl.org/dc/terms/format\"
-        : \"image/jpeg\",\n  \"http://purl.org/dc/terms/publisher\" : \"iNaturalist\",\n  \"http://purl.org/dc/terms/created\"
-        : \"2018-02-22T12:02:40-08:00\",\n  \"http://purl.org/dc/terms/identifier\"
-        : \"https://static.inaturalist.org/photos/13720914/original.jpg?1519520582\",\n  \"http://purl.org/dc/terms/license\"
-        : \"http://creativecommons.org/licenses/by-nc/4.0/\",\n  \"http://purl.org/dc/terms/type\"
-        : \"StillImage\"\n}, {\n  \"http://purl.org/dc/terms/creator\" : \"Kurt Steinbach\",\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\"
-        : \"13720924\",\n  \"http://purl.org/dc/terms/rightsHolder\" : \"Kurt Steinbach\",\n  \"http://purl.org/dc/terms/references\"
-        : \"https://www.inaturalist.org/photos/13720924\",\n  \"http://purl.org/dc/terms/format\"
-        : \"image/jpeg\",\n  \"http://purl.org/dc/terms/publisher\" : \"iNaturalist\",\n  \"http://purl.org/dc/terms/created\"
-        : \"2018-02-22T12:01:37-08:00\",\n  \"http://purl.org/dc/terms/identifier\"
-        : \"https://static.inaturalist.org/photos/13720924/original.jpg?1519520602\",\n  \"http://purl.org/dc/terms/license\"
-        : \"http://creativecommons.org/licenses/by-nc/4.0/\",\n  \"http://purl.org/dc/terms/type\"
-        : \"StillImage\"\n}, {\n  \"http://purl.org/dc/terms/creator\" : \"Kurt Steinbach\",\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\"
-        : \"13720928\",\n  \"http://purl.org/dc/terms/rightsHolder\" : \"Kurt Steinbach\",\n  \"http://purl.org/dc/terms/references\"
-        : \"https://www.inaturalist.org/photos/13720928\",\n  \"http://purl.org/dc/terms/format\"
-        : \"image/jpeg\",\n  \"http://purl.org/dc/terms/publisher\" : \"iNaturalist\",\n  \"http://purl.org/dc/terms/created\"
-        : \"2018-02-22T12:02:57-08:00\",\n  \"http://purl.org/dc/terms/identifier\"
-        : \"https://static.inaturalist.org/photos/13720928/original.jpg?1519520631\",\n  \"http://purl.org/dc/terms/license\"
-        : \"http://creativecommons.org/licenses/by-nc/4.0/\",\n  \"http://purl.org/dc/terms/type\"
-        : \"StillImage\"\n}, {\n  \"http://purl.org/dc/terms/creator\" : \"Kurt Steinbach\",\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\"
-        : \"13721850\",\n  \"http://purl.org/dc/terms/rightsHolder\" : \"Kurt Steinbach\",\n  \"http://purl.org/dc/terms/references\"
-        : \"https://www.inaturalist.org/photos/13721850\",\n  \"http://purl.org/dc/terms/format\"
-        : \"image/jpeg\",\n  \"http://purl.org/dc/terms/publisher\" : \"iNaturalist\",\n  \"http://purl.org/dc/terms/created\"
-        : \"2018-02-22T12:01:58-08:00\",\n  \"http://purl.org/dc/terms/identifier\"
-        : \"https://static.inaturalist.org/photos/13721850/original.jpg?1519522903\",\n  \"http://purl.org/dc/terms/license\"
-        : \"http://creativecommons.org/licenses/by-nc/4.0/\",\n  \"http://purl.org/dc/terms/type\"
-        : \"StillImage\"\n} ]","identificationID":"22075785"},{"key":1831087553,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2018-06-12T02:11:22.279+0000","lastParsed":"2018-03-08T06:34:17.390+0000","crawlId":114,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2435099,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"scientificName":"Puma
-        concolor (Linnaeus, 1771)","kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","genericName":"Puma","specificEpithet":"concolor","taxonRank":"SPECIES","decimalLongitude":-121.485831,"decimalLatitude":37.173859,"year":2018,"month":2,"day":25,"eventDate":"2018-02-25T00:00:00.000+0000","issues":["GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-02-27T22:34:43.000+0000","lastInterpreted":"2018-03-08T06:34:22.833+0000","references":"https://www.inaturalist.org/observations/10008180","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"US","country":"United
-        States","rightsHolder":"Mike","identifier":"10008180","verbatimEventDate":"2018-02-25","datasetName":"iNaturalist
-        research-grade observations","collectionCode":"Observations","gbifID":"1831087553","verbatimLocality":"Henry
-        W. Coe State Park","occurrenceID":"https://www.inaturalist.org/observations/10008180","taxonID":"42007","recordedBy":"Mike","catalogNumber":"10008180","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/10008180","institutionCode":"iNaturalist","rights":"©
-        Mike some rights reserved","occurrenceRemarks":"Found these these tracks along
-        the creek in the narrows.","http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia":"[
-        ]"},{"key":1836669657,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2018-06-12T02:11:58.302+0000","lastParsed":"2018-03-26T13:40:57.223+0000","crawlId":114,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2435099,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"scientificName":"Puma
-        concolor (Linnaeus, 1771)","kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
-        concolor","genericName":"Puma","specificEpithet":"concolor","taxonRank":"SPECIES","dateIdentified":"2018-03-22T03:18:00.000+0000","decimalLongitude":-122.4415,"decimalLatitude":38.449699,"coordinateUncertaintyInMeters":28240.0,"year":2018,"month":2,"day":18,"eventDate":"2018-02-18T05:31:00.000+0000","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-03-22T15:42:35.000+0000","lastInterpreted":"2018-03-26T13:41:48.964+0000","references":"https://www.inaturalist.org/observations/10352573","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/14357322/original.jpeg?1521684854","references":"https://www.inaturalist.org/photos/14357322","created":"2018-02-18T13:31:09.000+0000","creator":"rprovost","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"rprovost"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/14357326/original.jpeg?1521684867","references":"https://www.inaturalist.org/photos/14357326","created":"2018-02-18T13:31:05.000+0000","creator":"rprovost","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"rprovost"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/14357327/original.jpeg?1521684868","references":"https://www.inaturalist.org/photos/14357327","created":"2018-02-18T13:31:05.000+0000","creator":"rprovost","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"rprovost"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/14357328/original.jpeg?1521684869","references":"https://www.inaturalist.org/photos/14357328","created":"2018-02-18T13:31:10.000+0000","creator":"rprovost","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"rprovost"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"US","country":"United
-        States","rightsHolder":"rprovost","identifier":"10352573","informationWithheld":"Coordinate
-        uncertainty increased to 28240m at the request of the observer","verbatimEventDate":"2018/02/18
-        5:31 AM PST","datasetName":"iNaturalist research-grade observations","collectionCode":"Observations","gbifID":"1836669657","verbatimLocality":"California,
-        US","occurrenceID":"https://www.inaturalist.org/observations/10352573","taxonID":"42007","recordedBy":"rprovost","catalogNumber":"10352573","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/10352573","institutionCode":"iNaturalist","rights":"©
-        rprovost some rights reserved","eventTime":"13:31:00Z","occurrenceRemarks":"Mayacamas
-        Mountains between Oakville and Glen Ellen","http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia":"[
-        {\n  \"http://purl.org/dc/terms/creator\" : \"rprovost\",\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\"
-        : \"14357322\",\n  \"http://purl.org/dc/terms/rightsHolder\" : \"rprovost\",\n  \"http://purl.org/dc/terms/references\"
-        : \"https://www.inaturalist.org/photos/14357322\",\n  \"http://purl.org/dc/terms/format\"
-        : \"image/jpeg\",\n  \"http://purl.org/dc/terms/publisher\" : \"iNaturalist\",\n  \"http://purl.org/dc/terms/created\"
-        : \"2018-02-18T05:31:09-08:00\",\n  \"http://purl.org/dc/terms/identifier\"
-        : \"https://static.inaturalist.org/photos/14357322/original.jpeg?1521684854\",\n  \"http://purl.org/dc/terms/license\"
-        : \"http://creativecommons.org/licenses/by-nc/4.0/\",\n  \"http://purl.org/dc/terms/type\"
-        : \"StillImage\"\n}, {\n  \"http://purl.org/dc/terms/creator\" : \"rprovost\",\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\"
-        : \"14357326\",\n  \"http://purl.org/dc/terms/rightsHolder\" : \"rprovost\",\n  \"http://purl.org/dc/terms/references\"
-        : \"https://www.inaturalist.org/photos/14357326\",\n  \"http://purl.org/dc/terms/format\"
-        : \"image/jpeg\",\n  \"http://purl.org/dc/terms/publisher\" : \"iNaturalist\",\n  \"http://purl.org/dc/terms/created\"
-        : \"2018-02-18T05:31:05-08:00\",\n  \"http://purl.org/dc/terms/identifier\"
-        : \"https://static.inaturalist.org/photos/14357326/original.jpeg?1521684867\",\n  \"http://purl.org/dc/terms/license\"
-        : \"http://creativecommons.org/licenses/by-nc/4.0/\",\n  \"http://purl.org/dc/terms/type\"
-        : \"StillImage\"\n}, {\n  \"http://purl.org/dc/terms/creator\" : \"rprovost\",\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\"
-        : \"14357327\",\n  \"http://purl.org/dc/terms/rightsHolder\" : \"rprovost\",\n  \"http://purl.org/dc/terms/references\"
-        : \"https://www.inaturalist.org/photos/14357327\",\n  \"http://purl.org/dc/terms/format\"
-        : \"image/jpeg\",\n  \"http://purl.org/dc/terms/publisher\" : \"iNaturalist\",\n  \"http://purl.org/dc/terms/created\"
-        : \"2018-02-18T05:31:05-08:00\",\n  \"http://purl.org/dc/terms/identifier\"
-        : \"https://static.inaturalist.org/photos/14357327/original.jpeg?1521684868\",\n  \"http://purl.org/dc/terms/license\"
-        : \"http://creativecommons.org/licenses/by-nc/4.0/\",\n  \"http://purl.org/dc/terms/type\"
-        : \"StillImage\"\n}, {\n  \"http://purl.org/dc/terms/creator\" : \"rprovost\",\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\"
-        : \"14357328\",\n  \"http://purl.org/dc/terms/rightsHolder\" : \"rprovost\",\n  \"http://purl.org/dc/terms/references\"
-        : \"https://www.inaturalist.org/photos/14357328\",\n  \"http://purl.org/dc/terms/format\"
-        : \"image/jpeg\",\n  \"http://purl.org/dc/terms/publisher\" : \"iNaturalist\",\n  \"http://purl.org/dc/terms/created\"
-        : \"2018-02-18T05:31:10-08:00\",\n  \"http://purl.org/dc/terms/identifier\"
-        : \"https://static.inaturalist.org/photos/14357328/original.jpeg?1521684869\",\n  \"http://purl.org/dc/terms/license\"
-        : \"http://creativecommons.org/licenses/by-nc/4.0/\",\n  \"http://purl.org/dc/terms/type\"
-        : \"StillImage\"\n} ]","identificationID":"23002244"}],"facets":[]}'
-  recorded_at: 2018-06-17 05:20:30 GMT
-  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2
+      string: |
+        1447
+        340
+        340
+        1524
+        1769
+        1780
+        1230
+        1353
+        373
+        1297
+        1111
+        59
+        340
+        4
+        1609
+        1821
+        870
+        1134
+        1383
+        1795
+  recorded_at: 2019-02-26 15:15:38 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
-    uri: https://maps.googleapis.com/maps/api/elevation/json?locations=38.41888%2C-122.80371%7C37.04732%2C-121.42556%7C36.50723%2C-121.18366%7C33.63844%2C-116.49820%7C37.17569%2C-121.38843%7C37.04749%2C-121.42549%7C40.78250%2C-111.88139%7C34.83981%2C-118.86200%7C37.04746%2C-121.42561%7C37.04988%2C-121.42657%7C35.32380%2C-120.73842%7C39.99228%2C-105.28160%7C37.17961%2C-121.99944%7C16.05619%2C-93.47792%7C37.04999%2C-121.42676%7C39.43723%2C-120.25755%7C33.39382%2C-116.43114%7C48.03396%2C-122.68094%7C37.17386%2C-121.48583%7C38.44970%2C-122.44150&sensor=false&key=<google_elevation_api_token>
+    uri: http://api.geonames.org/srtm3?lats=32.909436%2C38.540315%2C37.050632%2C31.913204%2C32.648646%2C32.649972%2C47.42263%2C30.060134%2C37.04786%2C40.363404%2C47.538867%2C38.481486%2C37.050542%2C25.576582%2C31.334842%2C33.124711%2C33.068336%2C32.745623%2C41.695009%2C16.056195&lngs=-116.545853%2C-122.970018%2C-121.4302%2C-109.931659%2C-108.536463%2C-108.537201%2C-113.670813%2C-103.558096%2C-121.42573%2C-120.622698%2C-113.742705%2C-122.915802%2C-121.429824%2C-80.689018%2C-110.332383%2C-108.568249%2C-116.333314%2C-116.570241%2C-103.712241%2C-93.477916&username=<geonames_user>
     body:
       encoding: ''
       string: ''
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
-      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -621,198 +115,48 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      content-type: application/json; charset=UTF-8
-      date: Sun, 17 Jun 2018 05:18:09 GMT
-      expires: Mon, 18 Jun 2018 05:18:09 GMT
-      content-encoding: gzip
-      server: mafe
-      content-length: '621'
-      x-xss-protection: 1; mode=block
-      x-frame-options: SAMEORIGIN
-      cache-control: public, max-age=86400
-      age: '141'
-      alt-svc: quic=":443"; ma=2592000; v="43,42,41,39,35"
+      date: Tue, 26 Feb 2019 15:15:37 GMT
+      server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips
+      cache-control: no-cache
+      access-control-allow-origin: '*'
+      transfer-encoding: chunked
+      content-type: text/html;charset=UTF-8
     body:
       encoding: UTF-8
       string: |
-        {
-           "results" : [
-              {
-                 "elevation" : 27.87019920349121,
-                 "location" : {
-                    "lat" : 38.41888,
-                    "lng" : -122.80371
-                 },
-                 "resolution" : 1221.625854492188
-              },
-              {
-                 "elevation" : 372.8970947265625,
-                 "location" : {
-                    "lat" : 37.04732,
-                    "lng" : -121.42556
-                 },
-                 "resolution" : 610.8129272460938
-              },
-              {
-                 "elevation" : 361.7476806640625,
-                 "location" : {
-                    "lat" : 36.50723,
-                    "lng" : -121.18366
-                 },
-                 "resolution" : 1221.625854492188
-              },
-              {
-                 "elevation" : 998.3264770507812,
-                 "location" : {
-                    "lat" : 33.63844,
-                    "lng" : -116.4982
-                 },
-                 "resolution" : 1221.625854492188
-              },
-              {
-                 "elevation" : 418.6214599609375,
-                 "location" : {
-                    "lat" : 37.17569,
-                    "lng" : -121.38843
-                 },
-                 "resolution" : 610.8129272460938
-              },
-              {
-                 "elevation" : 373.4229431152344,
-                 "location" : {
-                    "lat" : 37.04749,
-                    "lng" : -121.42549
-                 },
-                 "resolution" : 610.8129272460938
-              },
-              {
-                 "elevation" : 1423.184936523438,
-                 "location" : {
-                    "lat" : 40.7825,
-                    "lng" : -111.88139
-                 },
-                 "resolution" : 1221.625854492188
-              },
-              {
-                 "elevation" : 1077.11083984375,
-                 "location" : {
-                    "lat" : 34.83981,
-                    "lng" : -118.862
-                 },
-                 "resolution" : 1221.625854492188
-              },
-              {
-                 "elevation" : 372.1078491210938,
-                 "location" : {
-                    "lat" : 37.04746,
-                    "lng" : -121.42561
-                 },
-                 "resolution" : 610.8129272460938
-              },
-              {
-                 "elevation" : 385.9176940917969,
-                 "location" : {
-                    "lat" : 37.04988,
-                    "lng" : -121.42657
-                 },
-                 "resolution" : 610.8129272460938
-              },
-              {
-                 "elevation" : 74.92229461669922,
-                 "location" : {
-                    "lat" : 35.3238,
-                    "lng" : -120.73842
-                 },
-                 "resolution" : 1221.625854492188
-              },
-              {
-                 "elevation" : 1802.161987304688,
-                 "location" : {
-                    "lat" : 39.99228,
-                    "lng" : -105.2816
-                 },
-                 "resolution" : 1221.625854492188
-              },
-              {
-                 "elevation" : 281.2550964355469,
-                 "location" : {
-                    "lat" : 37.17961,
-                    "lng" : -121.99944
-                 },
-                 "resolution" : 610.8129272460938
-              },
-              {
-                 "elevation" : 1783.17822265625,
-                 "location" : {
-                    "lat" : 16.05619,
-                    "lng" : -93.47792
-                 },
-                 "resolution" : 1221.625854492188
-              },
-              {
-                 "elevation" : 386.2518920898438,
-                 "location" : {
-                    "lat" : 37.04999,
-                    "lng" : -121.42676
-                 },
-                 "resolution" : 610.8129272460938
-              },
-              {
-                 "elevation" : 2019.207641601562,
-                 "location" : {
-                    "lat" : 39.43723,
-                    "lng" : -120.25755
-                 },
-                 "resolution" : 1221.625854492188
-              },
-              {
-                 "elevation" : 658.2520751953125,
-                 "location" : {
-                    "lat" : 33.39382,
-                    "lng" : -116.43114
-                 },
-                 "resolution" : 1221.625854492188
-              },
-              {
-                 "elevation" : 30.53459358215332,
-                 "location" : {
-                    "lat" : 48.03396,
-                    "lng" : -122.68094
-                 },
-                 "resolution" : 1221.625854492188
-              },
-              {
-                 "elevation" : 419.634765625,
-                 "location" : {
-                    "lat" : 37.17386,
-                    "lng" : -121.48583
-                 },
-                 "resolution" : 610.8129272460938
-              },
-              {
-                 "elevation" : 118.2920989990234,
-                 "location" : {
-                    "lat" : 38.4497,
-                    "lng" : -122.4415
-                 },
-                 "resolution" : 1221.625854492188
-              }
-           ],
-           "status" : "OK"
-        }
-  recorded_at: 2018-06-17 05:20:30 GMT
-  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2
+        1447
+        340
+        340
+        1524
+        1769
+        1780
+        1230
+        1353
+        373
+        1297
+        1111
+        59
+        340
+        4
+        1609
+        1821
+        870
+        1134
+        1383
+        1795
+  recorded_at: 2019-02-26 15:15:38 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
-    uri: https://maps.googleapis.com/maps/api/elevation/json?locations=38.418883%2C-122.803709%7C37.047321%2C-121.425555%7C36.507232%2C-121.183657%7C33.638442%2C-116.498205%7C37.175693%2C-121.388433%7C37.047495%2C-121.42549%7C40.782501%2C-111.881386%7C34.839806%2C-118.861997%7C37.047464%2C-121.425608%7C37.049879%2C-121.426574%7C35.323801%2C-120.738417%7C39.992277%2C-105.281599%7C37.179609%2C-121.99944%7C16.056195%2C-93.477916%7C37.049992%2C-121.426756%7C39.437227%2C-120.257549%7C33.393823%2C-116.43114%7C48.033963%2C-122.680935%7C37.173859%2C-121.485831%7C38.449699%2C-122.4415&sensor=false&key=<google_elevation_api_token>
+    uri: http://api.geonames.org/srtm3?lats=31.8496%2C29.15503&lngs=-110.57606%2C-103.59828&username=<geonames_user>
     body:
       encoding: ''
       string: ''
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
-      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -820,239 +164,16 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      content-type: application/json; charset=UTF-8
-      date: Sun, 17 Jun 2018 05:18:09 GMT
-      expires: Mon, 18 Jun 2018 05:18:09 GMT
-      content-encoding: gzip
-      server: mafe
-      content-length: '640'
-      x-xss-protection: 1; mode=block
-      x-frame-options: SAMEORIGIN
-      cache-control: public, max-age=86400
-      age: '141'
-      alt-svc: quic=":443"; ma=2592000; v="43,42,41,39,35"
+      date: Tue, 26 Feb 2019 15:15:38 GMT
+      server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips
+      cache-control: no-cache
+      access-control-allow-origin: '*'
+      transfer-encoding: chunked
+      content-type: text/html;charset=UTF-8
     body:
       encoding: UTF-8
       string: |
-        {
-           "results" : [
-              {
-                 "elevation" : 27.87003517150879,
-                 "location" : {
-                    "lat" : 38.418883,
-                    "lng" : -122.803709
-                 },
-                 "resolution" : 1221.625854492188
-              },
-              {
-                 "elevation" : 372.9446411132812,
-                 "location" : {
-                    "lat" : 37.047321,
-                    "lng" : -121.425555
-                 },
-                 "resolution" : 610.8129272460938
-              },
-              {
-                 "elevation" : 361.7977294921875,
-                 "location" : {
-                    "lat" : 36.507232,
-                    "lng" : -121.183657
-                 },
-                 "resolution" : 1221.625854492188
-              },
-              {
-                 "elevation" : 998.2611694335938,
-                 "location" : {
-                    "lat" : 33.638442,
-                    "lng" : -116.498205
-                 },
-                 "resolution" : 1221.625854492188
-              },
-              {
-                 "elevation" : 418.5838317871094,
-                 "location" : {
-                    "lat" : 37.175693,
-                    "lng" : -121.388433
-                 },
-                 "resolution" : 610.8129272460938
-              },
-              {
-                 "elevation" : 373.4181823730469,
-                 "location" : {
-                    "lat" : 37.047495,
-                    "lng" : -121.42549
-                 },
-                 "resolution" : 610.8129272460938
-              },
-              {
-                 "elevation" : 1423.228393554688,
-                 "location" : {
-                    "lat" : 40.782501,
-                    "lng" : -111.881386
-                 },
-                 "resolution" : 1221.625854492188
-              },
-              {
-                 "elevation" : 1077.107421875,
-                 "location" : {
-                    "lat" : 34.839806,
-                    "lng" : -118.861997
-                 },
-                 "resolution" : 1221.625854492188
-              },
-              {
-                 "elevation" : 372.1217956542969,
-                 "location" : {
-                    "lat" : 37.047464,
-                    "lng" : -121.425608
-                 },
-                 "resolution" : 610.8129272460938
-              },
-              {
-                 "elevation" : 385.8423156738281,
-                 "location" : {
-                    "lat" : 37.049879,
-                    "lng" : -121.426574
-                 },
-                 "resolution" : 610.8129272460938
-              },
-              {
-                 "elevation" : 74.92501831054688,
-                 "location" : {
-                    "lat" : 35.323801,
-                    "lng" : -120.738417
-                 },
-                 "resolution" : 1221.625854492188
-              },
-              {
-                 "elevation" : 1802.188354492188,
-                 "location" : {
-                    "lat" : 39.992277,
-                    "lng" : -105.281599
-                 },
-                 "resolution" : 1221.625854492188
-              },
-              {
-                 "elevation" : 281.2579040527344,
-                 "location" : {
-                    "lat" : 37.179609,
-                    "lng" : -121.99944
-                 },
-                 "resolution" : 610.8129272460938
-              },
-              {
-                 "elevation" : 1783.24365234375,
-                 "location" : {
-                    "lat" : 16.056195,
-                    "lng" : -93.47791599999999
-                 },
-                 "resolution" : 1221.625854492188
-              },
-              {
-                 "elevation" : 386.3551025390625,
-                 "location" : {
-                    "lat" : 37.049992,
-                    "lng" : -121.426756
-                 },
-                 "resolution" : 610.8129272460938
-              },
-              {
-                 "elevation" : 2019.169921875,
-                 "location" : {
-                    "lat" : 39.437227,
-                    "lng" : -120.257549
-                 },
-                 "resolution" : 1221.625854492188
-              },
-              {
-                 "elevation" : 658.3018798828125,
-                 "location" : {
-                    "lat" : 33.393823,
-                    "lng" : -116.43114
-                 },
-                 "resolution" : 1221.625854492188
-              },
-              {
-                 "elevation" : 30.50953483581543,
-                 "location" : {
-                    "lat" : 48.033963,
-                    "lng" : -122.680935
-                 },
-                 "resolution" : 1221.625854492188
-              },
-              {
-                 "elevation" : 419.6565856933594,
-                 "location" : {
-                    "lat" : 37.173859,
-                    "lng" : -121.485831
-                 },
-                 "resolution" : 610.8129272460938
-              },
-              {
-                 "elevation" : 118.3097763061523,
-                 "location" : {
-                    "lat" : 38.449699,
-                    "lng" : -122.4415
-                 },
-                 "resolution" : 1221.625854492188
-              }
-           ],
-           "status" : "OK"
-        }
-  recorded_at: 2018-06-17 05:20:30 GMT
-  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2
-- request:
-    method: get
-    uri: https://maps.googleapis.com/maps/api/elevation/json?locations=31.8496%2C-110.57606%7C29.15503%2C-103.59828&sensor=false&key=<google_elevation_api_token>
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
-      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
-  response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
-    headers:
-      status: HTTP/1.1 200 OK
-      content-type: application/json; charset=UTF-8
-      date: Sun, 17 Jun 2018 05:18:09 GMT
-      expires: Mon, 18 Jun 2018 05:18:09 GMT
-      content-encoding: gzip
-      server: mafe
-      content-length: '207'
-      x-xss-protection: 1; mode=block
-      x-frame-options: SAMEORIGIN
-      cache-control: public, max-age=86400
-      age: '141'
-      alt-svc: quic=":443"; ma=2592000; v="43,42,41,39,35"
-    body:
-      encoding: UTF-8
-      string: |
-        {
-           "results" : [
-              {
-                 "elevation" : 1293.933715820312,
-                 "location" : {
-                    "lat" : 31.8496,
-                    "lng" : -110.57606
-                 },
-                 "resolution" : 9.543951988220215
-              },
-              {
-                 "elevation" : 657.8649291992188,
-                 "location" : {
-                    "lat" : 29.15503,
-                    "lng" : -103.59828
-                 },
-                 "resolution" : 152.7032318115234
-              }
-           ],
-           "status" : "OK"
-        }
-  recorded_at: 2018-06-17 05:20:30 GMT
-  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2
+        1301
+        654
+  recorded_at: 2019-02-26 15:15:38 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4

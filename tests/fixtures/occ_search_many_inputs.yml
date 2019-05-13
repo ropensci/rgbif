@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -17,47 +17,49 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 21:54:35 GMT
+      date: Tue, 26 Feb 2019 17:35:19 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/search?limit=3&offset=0&recordedBy=smith
       cache-control: public, max-age=600
-      x-varnish: 60952882 34541893
+      x-varnish: 839680911 846464007
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
-      content-length: '5659'
+      content-length: '5978'
       connection: keep-alive
     body:
       encoding: UTF-8
-      string: "{\"offset\":0,\"limit\":3,\"endOfRecords\":false,\"count\":5846,\"results\":[{\"key\":1826756129,\"datasetKey\":\"9beef4fb-e3dd-475a-be95-45d2105b32bd\",\"publishingOrgKey\":\"977178c7-76fe-4c86-94f3-cf039ede5c3c\",\"networkKeys\":[],\"installationKey\":\"6aca019f-ee9d-4088-859b-5a601d4b093f\",\"publishingCountry\":\"DK\",\"protocol\":\"DWC_ARCHIVE\",\"lastCrawled\":\"2018-03-01T09:49:23.142+0000\",\"lastParsed\":\"2018-02-28T15:40:07.887+0000\",\"crawlId\":6,\"extensions\":{},\"basisOfRecord\":\"HUMAN_OBSERVATION\",\"individualCount\":1,\"taxonKey\":2494200,\"kingdomKey\":1,\"phylumKey\":44,\"classKey\":212,\"orderKey\":729,\"familyKey\":5242,\"genusKey\":8215044,\"speciesKey\":2494200,\"scientificName\":\"Serinus
-        serinus (Linnaeus, 1766)\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"order\":\"Passeriformes\",\"family\":\"Fringillidae\",\"genus\":\"Serinus\",\"species\":\"Serinus
-        serinus\",\"genericName\":\"Serinus\",\"specificEpithet\":\"serinus\",\"taxonRank\":\"SPECIES\",\"decimalLongitude\":11.192493,\"decimalLatitude\":55.58892,\"coordinateUncertaintyInMeters\":117.0,\"continent\":\"EUROPE\",\"year\":2015,\"month\":4,\"day\":18,\"eventDate\":\"2015-04-18T00:00:00.000+0000\",\"issues\":[\"COORDINATE_ROUNDED\"],\"lastInterpreted\":\"2018-07-07T14:23:11.028+0000\",\"license\":\"http://creativecommons.org/licenses/by/4.0/legalcode\",\"identifiers\":[],\"facts\":[],\"relations\":[],\"geodeticDatum\":\"WGS84\",\"class\":\"Aves\",\"countryCode\":\"DK\",\"country\":\"Denmark\",\"identifier\":\"DK_EB_phd_416177\",\"associatedReferences\":\"Buchwald,
+      string: "{\"offset\":0,\"limit\":3,\"endOfRecords\":false,\"count\":6286,\"results\":[{\"key\":1826756129,\"datasetKey\":\"9beef4fb-e3dd-475a-be95-45d2105b32bd\",\"publishingOrgKey\":\"977178c7-76fe-4c86-94f3-cf039ede5c3c\",\"networkKeys\":[],\"installationKey\":\"6aca019f-ee9d-4088-859b-5a601d4b093f\",\"publishingCountry\":\"DK\",\"protocol\":\"DWC_ARCHIVE\",\"lastCrawled\":\"2018-03-01T09:49:23.142+0000\",\"lastParsed\":\"2018-02-28T15:40:07.887+0000\",\"crawlId\":6,\"extensions\":{},\"basisOfRecord\":\"HUMAN_OBSERVATION\",\"individualCount\":1,\"taxonKey\":2494200,\"kingdomKey\":1,\"phylumKey\":44,\"classKey\":212,\"orderKey\":729,\"familyKey\":5242,\"genusKey\":8215044,\"speciesKey\":2494200,\"acceptedTaxonKey\":2494200,\"scientificName\":\"Serinus
+        serinus (Linnaeus, 1766)\",\"acceptedScientificName\":\"Serinus serinus (Linnaeus,
+        1766)\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"order\":\"Passeriformes\",\"family\":\"Fringillidae\",\"genus\":\"Serinus\",\"species\":\"Serinus
+        serinus\",\"genericName\":\"Serinus\",\"specificEpithet\":\"serinus\",\"taxonRank\":\"SPECIES\",\"taxonomicStatus\":\"ACCEPTED\",\"decimalLongitude\":11.192493,\"decimalLatitude\":55.58892,\"coordinateUncertaintyInMeters\":117.0,\"continent\":\"EUROPE\",\"year\":2015,\"month\":4,\"day\":18,\"eventDate\":\"2015-04-18T00:00:00\",\"issues\":[\"COORDINATE_ROUNDED\"],\"lastInterpreted\":\"2018-12-08T06:55:33.414+0000\",\"license\":\"http://creativecommons.org/licenses/by/4.0/legalcode\",\"identifiers\":[],\"facts\":[],\"relations\":[],\"geodeticDatum\":\"WGS84\",\"class\":\"Aves\",\"countryCode\":\"DK\",\"country\":\"Denmark\",\"identifier\":\"DK_EB_phd_416177\",\"associatedReferences\":\"Buchwald,
         E., PhD-thesis 2018 and manuscripts in it. Analysis and prioritization of
         future efforts for biodiversity \x96 with particular regard to Danish Nature
         Agency lands.\",\"georeferenceRemarks\":\"DK_utm_10x10km_gridcell_PG36\",\"locality\":\"Bjerge\",\"gbifID\":\"1826756129\",\"verbatimLocality\":\"Bjerge\",\"collectionCode\":\"Dofbasen\",\"occurrenceID\":\"DK_EB_phd_416177\",\"taxonID\":\"Serinus
         serinus\",\"recordedBy\":\"Smith\",\"vernacularName\":\"Gulirisk\",\"occurrenceRemarks\":\"Manuscript
-        A and B\",\"behavior\":\"Probable breeding\"},{\"key\":1826747686,\"datasetKey\":\"9beef4fb-e3dd-475a-be95-45d2105b32bd\",\"publishingOrgKey\":\"977178c7-76fe-4c86-94f3-cf039ede5c3c\",\"networkKeys\":[],\"installationKey\":\"6aca019f-ee9d-4088-859b-5a601d4b093f\",\"publishingCountry\":\"DK\",\"protocol\":\"DWC_ARCHIVE\",\"lastCrawled\":\"2018-03-01T09:49:21.971+0000\",\"lastParsed\":\"2018-02-28T15:40:04.750+0000\",\"crawlId\":6,\"extensions\":{},\"basisOfRecord\":\"HUMAN_OBSERVATION\",\"individualCount\":1,\"taxonKey\":2488949,\"kingdomKey\":1,\"phylumKey\":44,\"classKey\":212,\"orderKey\":729,\"familyKey\":5708,\"genusKey\":2488947,\"speciesKey\":2488949,\"scientificName\":\"Oriolus
-        oriolus (Linnaeus, 1758)\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"order\":\"Passeriformes\",\"family\":\"Oriolidae\",\"genus\":\"Oriolus\",\"species\":\"Oriolus
-        oriolus\",\"genericName\":\"Oriolus\",\"specificEpithet\":\"oriolus\",\"taxonRank\":\"SPECIES\",\"decimalLongitude\":11.098149,\"decimalLatitude\":55.51108,\"coordinateUncertaintyInMeters\":25.0,\"continent\":\"EUROPE\",\"year\":2015,\"month\":6,\"day\":7,\"eventDate\":\"2015-06-07T00:00:00.000+0000\",\"issues\":[\"COORDINATE_ROUNDED\"],\"lastInterpreted\":\"2018-07-07T14:21:32.536+0000\",\"license\":\"http://creativecommons.org/licenses/by/4.0/legalcode\",\"identifiers\":[],\"facts\":[],\"relations\":[],\"geodeticDatum\":\"WGS84\",\"class\":\"Aves\",\"countryCode\":\"DK\",\"country\":\"Denmark\",\"identifier\":\"DK_EB_phd_395116\",\"associatedReferences\":\"Buchwald,
+        A and B\",\"behavior\":\"Probable breeding\"},{\"key\":1826747686,\"datasetKey\":\"9beef4fb-e3dd-475a-be95-45d2105b32bd\",\"publishingOrgKey\":\"977178c7-76fe-4c86-94f3-cf039ede5c3c\",\"networkKeys\":[],\"installationKey\":\"6aca019f-ee9d-4088-859b-5a601d4b093f\",\"publishingCountry\":\"DK\",\"protocol\":\"DWC_ARCHIVE\",\"lastCrawled\":\"2018-03-01T09:49:21.971+0000\",\"lastParsed\":\"2018-02-28T15:40:04.750+0000\",\"crawlId\":6,\"extensions\":{},\"basisOfRecord\":\"HUMAN_OBSERVATION\",\"individualCount\":1,\"taxonKey\":2488949,\"kingdomKey\":1,\"phylumKey\":44,\"classKey\":212,\"orderKey\":729,\"familyKey\":5708,\"genusKey\":2488947,\"speciesKey\":2488949,\"acceptedTaxonKey\":2488949,\"scientificName\":\"Oriolus
+        oriolus (Linnaeus, 1758)\",\"acceptedScientificName\":\"Oriolus oriolus (Linnaeus,
+        1758)\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"order\":\"Passeriformes\",\"family\":\"Oriolidae\",\"genus\":\"Oriolus\",\"species\":\"Oriolus
+        oriolus\",\"genericName\":\"Oriolus\",\"specificEpithet\":\"oriolus\",\"taxonRank\":\"SPECIES\",\"taxonomicStatus\":\"ACCEPTED\",\"decimalLongitude\":11.098149,\"decimalLatitude\":55.51108,\"coordinateUncertaintyInMeters\":25.0,\"continent\":\"EUROPE\",\"year\":2015,\"month\":6,\"day\":7,\"eventDate\":\"2015-06-07T00:00:00\",\"issues\":[\"COORDINATE_ROUNDED\"],\"lastInterpreted\":\"2018-12-08T06:55:29.164+0000\",\"license\":\"http://creativecommons.org/licenses/by/4.0/legalcode\",\"identifiers\":[],\"facts\":[],\"relations\":[],\"geodeticDatum\":\"WGS84\",\"class\":\"Aves\",\"countryCode\":\"DK\",\"country\":\"Denmark\",\"identifier\":\"DK_EB_phd_395116\",\"associatedReferences\":\"Buchwald,
         E., PhD-thesis 2018 and manuscripts in it. Analysis and prioritization of
         future efforts for biodiversity \x96 with particular regard to Danish Nature
         Agency lands.\",\"georeferenceRemarks\":\"DK_utm_10x10km_gridcell_PG35\",\"locality\":\"Reersø-halvøen,
         syd\",\"gbifID\":\"1826747686\",\"verbatimLocality\":\"Reersø-halvøen, syd\",\"collectionCode\":\"Dofbasen\",\"occurrenceID\":\"DK_EB_phd_395116\",\"taxonID\":\"Oriolus
         oriolus\",\"recordedBy\":\"Smith\",\"vernacularName\":\"Pirol\",\"occurrenceRemarks\":\"Manuscript
-        A and B\",\"behavior\":\"Probable breeding\"},{\"key\":1826736923,\"datasetKey\":\"9beef4fb-e3dd-475a-be95-45d2105b32bd\",\"publishingOrgKey\":\"977178c7-76fe-4c86-94f3-cf039ede5c3c\",\"networkKeys\":[],\"installationKey\":\"6aca019f-ee9d-4088-859b-5a601d4b093f\",\"publishingCountry\":\"DK\",\"protocol\":\"DWC_ARCHIVE\",\"lastCrawled\":\"2018-03-01T09:49:19.290+0000\",\"lastParsed\":\"2018-02-28T15:40:00.666+0000\",\"crawlId\":6,\"extensions\":{},\"basisOfRecord\":\"HUMAN_OBSERVATION\",\"individualCount\":2,\"taxonKey\":7745240,\"kingdomKey\":1,\"phylumKey\":44,\"classKey\":212,\"orderKey\":729,\"familyKey\":9315,\"genusKey\":2483315,\"speciesKey\":7745240,\"scientificName\":\"Lanius
-        collurio Linnaeus, 1758\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"order\":\"Passeriformes\",\"family\":\"Laniidae\",\"genus\":\"Lanius\",\"species\":\"Lanius
-        collurio\",\"genericName\":\"Lanius\",\"specificEpithet\":\"collurio\",\"taxonRank\":\"SPECIES\",\"decimalLongitude\":10.884992,\"decimalLatitude\":55.739694,\"coordinateUncertaintyInMeters\":1000.0,\"continent\":\"EUROPE\",\"year\":2015,\"month\":8,\"day\":16,\"eventDate\":\"2015-08-16T00:00:00.000+0000\",\"issues\":[\"COORDINATE_ROUNDED\"],\"lastInterpreted\":\"2018-07-07T14:19:58.427+0000\",\"license\":\"http://creativecommons.org/licenses/by/4.0/legalcode\",\"identifiers\":[],\"facts\":[],\"relations\":[],\"geodeticDatum\":\"WGS84\",\"class\":\"Aves\",\"countryCode\":\"DK\",\"country\":\"Denmark\",\"identifier\":\"DK_EB_phd_370077\",\"associatedReferences\":\"Buchwald,
+        A and B\",\"behavior\":\"Probable breeding\"},{\"key\":1826736923,\"datasetKey\":\"9beef4fb-e3dd-475a-be95-45d2105b32bd\",\"publishingOrgKey\":\"977178c7-76fe-4c86-94f3-cf039ede5c3c\",\"networkKeys\":[],\"installationKey\":\"6aca019f-ee9d-4088-859b-5a601d4b093f\",\"publishingCountry\":\"DK\",\"protocol\":\"DWC_ARCHIVE\",\"lastCrawled\":\"2018-03-01T09:49:19.290+0000\",\"lastParsed\":\"2018-02-28T15:40:00.666+0000\",\"crawlId\":6,\"extensions\":{},\"basisOfRecord\":\"HUMAN_OBSERVATION\",\"individualCount\":2,\"taxonKey\":7745240,\"kingdomKey\":1,\"phylumKey\":44,\"classKey\":212,\"orderKey\":729,\"familyKey\":9315,\"genusKey\":2483315,\"speciesKey\":7745240,\"acceptedTaxonKey\":7745240,\"scientificName\":\"Lanius
+        collurio Linnaeus, 1758\",\"acceptedScientificName\":\"Lanius collurio Linnaeus,
+        1758\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"order\":\"Passeriformes\",\"family\":\"Laniidae\",\"genus\":\"Lanius\",\"species\":\"Lanius
+        collurio\",\"genericName\":\"Lanius\",\"specificEpithet\":\"collurio\",\"taxonRank\":\"SPECIES\",\"taxonomicStatus\":\"ACCEPTED\",\"decimalLongitude\":10.884992,\"decimalLatitude\":55.739694,\"coordinateUncertaintyInMeters\":1000.0,\"continent\":\"EUROPE\",\"year\":2015,\"month\":8,\"day\":16,\"eventDate\":\"2015-08-16T00:00:00\",\"issues\":[\"COORDINATE_ROUNDED\"],\"lastInterpreted\":\"2018-12-08T06:55:23.504+0000\",\"license\":\"http://creativecommons.org/licenses/by/4.0/legalcode\",\"identifiers\":[],\"facts\":[],\"relations\":[],\"geodeticDatum\":\"WGS84\",\"class\":\"Aves\",\"countryCode\":\"DK\",\"country\":\"Denmark\",\"identifier\":\"DK_EB_phd_370077\",\"associatedReferences\":\"Buchwald,
         E., PhD-thesis 2018 and manuscripts in it. Analysis and prioritization of
         future efforts for biodiversity \x96 with particular regard to Danish Nature
         Agency lands.\",\"georeferenceRemarks\":\"DK_utm_10x10km_gridcell_PG17\",\"locality\":\"Røsnæs
         spidsen\",\"gbifID\":\"1826736923\",\"verbatimLocality\":\"Røsnæs spidsen\",\"collectionCode\":\"Dofbasen\",\"occurrenceID\":\"DK_EB_phd_370077\",\"taxonID\":\"Lanius
         collurio\",\"recordedBy\":\"Smith\",\"vernacularName\":\"Rødrygget tornskade\",\"occurrenceRemarks\":\"Manuscript
         A and B\",\"behavior\":\"confirmed breeding\"}],\"facets\":[]}"
-  recorded_at: 2018-10-09 21:54:40 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+  recorded_at: 2019-02-26 17:35:22 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search?limit=3&offset=0&recordedBy=BJ%20Stacey
@@ -67,8 +69,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -76,84 +78,55 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 21:54:36 GMT
+      date: Tue, 26 Feb 2019 17:35:20 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/search?limit=3&offset=0&recordedBy=BJ%20Stacey
       cache-control: public, max-age=600
-      x-varnish: 78612092 77955875
+      x-varnish: 832537788 836044496
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
-      content-length: '11107'
+      content-length: '7775'
       connection: keep-alive
     body:
       encoding: UTF-8
-      string: '{"offset":0,"limit":3,"endOfRecords":false,"count":45958,"results":[{"key":1807284917,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2018-10-08T17:07:52.698+0000","lastParsed":"2018-10-08T17:07:53.002+0000","crawlId":129,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2605405,"kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":2605402,"speciesKey":2605405,"scientificName":"Letharia
-        columbiana (Nutt.) J.W.Thomson","kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Letharia","species":"Letharia
-        columbiana","genericName":"Letharia","specificEpithet":"columbiana","taxonRank":"SPECIES","dateIdentified":"2018-01-30T04:57:33.000+0000","decimalLongitude":-116.453142,"decimalLatitude":32.83205,"stateProvince":"California","year":2018,"month":1,"day":27,"eventDate":"2018-01-27T12:22:00.000+0000","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-05-08T21:17:54.000+0000","lastInterpreted":"2018-10-08T17:10:41.517+0000","references":"https://www.inaturalist.org/observations/9665199","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13207121/original.jpg?1517288001","references":"https://www.inaturalist.org/photos/13207121","created":"2018-01-27T20:22:51.000+0000","creator":"BJ
+      string: '{"offset":0,"limit":3,"endOfRecords":false,"count":49624,"results":[{"key":1986625902,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-02-25T02:13:23.585+0000","lastParsed":"2019-01-13T23:39:13.612+0000","crawlId":151,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":5275136,"kingdomKey":6,"phylumKey":7707728,"classKey":7228684,"orderKey":392,"familyKey":2373,"genusKey":2651126,"speciesKey":5275136,"acceptedTaxonKey":5275136,"scientificName":"Dryopteris
+        arguta (Kaulf.) Watt","acceptedScientificName":"Dryopteris arguta (Kaulf.)
+        Watt","kingdom":"Plantae","phylum":"Tracheophyta","order":"Polypodiales","family":"Dryopteridaceae","genus":"Dryopteris","species":"Dryopteris
+        arguta","genericName":"Dryopteris","specificEpithet":"arguta","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2019-01-10T03:45:01","decimalLongitude":-116.790973,"decimalLatitude":33.116608,"stateProvince":"California","year":2019,"month":1,"day":5,"eventDate":"2019-01-05T12:08:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2019-01-10T19:53:45.000+0000","lastInterpreted":"2019-01-13T23:39:37.268+0000","references":"https://www.inaturalist.org/observations/19545911","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/30083558/original.jpg?1547091804","references":"https://www.inaturalist.org/photos/30083558","created":"2019-01-05T20:08:11.000+0000","creator":"BJ
         Stacey","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"BJ
-        Stacey"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13207123/original.jpg?1517288003","references":"https://www.inaturalist.org/photos/13207123","created":"2018-01-27T20:22:51.000+0000","creator":"BJ
-        Stacey","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"BJ
-        Stacey"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Lecanoromycetes","countryCode":"US","country":"United
-        States","rightsHolder":"BJ Stacey","identifier":"9665199","verbatimEventDate":"2018/01/27
-        12:22 PM PST","datasetName":"iNaturalist research-grade observations","gbifID":"1807284917","verbatimLocality":"Laguna
-        Mountains","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/9665199","taxonID":"54608","catalogNumber":"9665199","recordedBy":"BJ
-        Stacey","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9665199","institutionCode":"iNaturalist","rights":"©
-        BJ Stacey some rights reserved","eventTime":"20:22:00Z","occurrenceRemarks":"San
-        Diego County, California, US","http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia":"[
-        {\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\" : \"13207121\",\n  \"http://purl.org/dc/terms/creator\"
-        : \"BJ Stacey\",\n  \"http://purl.org/dc/terms/format\" : \"image/jpeg\",\n  \"http://purl.org/dc/terms/identifier\"
-        : \"https://static.inaturalist.org/photos/13207121/original.jpg?1517288001\",\n  \"http://purl.org/dc/terms/type\"
-        : \"StillImage\",\n  \"http://purl.org/dc/terms/created\" : \"2018-01-27T12:22:51-08:00\",\n  \"http://purl.org/dc/terms/references\"
-        : \"https://www.inaturalist.org/photos/13207121\",\n  \"http://purl.org/dc/terms/rightsHolder\"
-        : \"BJ Stacey\",\n  \"http://purl.org/dc/terms/license\" : \"http://creativecommons.org/licenses/by-nc/4.0/\",\n  \"http://purl.org/dc/terms/publisher\"
-        : \"iNaturalist\"\n}, {\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\"
-        : \"13207123\",\n  \"http://purl.org/dc/terms/creator\" : \"BJ Stacey\",\n  \"http://purl.org/dc/terms/format\"
-        : \"image/jpeg\",\n  \"http://purl.org/dc/terms/identifier\" : \"https://static.inaturalist.org/photos/13207123/original.jpg?1517288003\",\n  \"http://purl.org/dc/terms/type\"
-        : \"StillImage\",\n  \"http://purl.org/dc/terms/created\" : \"2018-01-27T12:22:51-08:00\",\n  \"http://purl.org/dc/terms/references\"
-        : \"https://www.inaturalist.org/photos/13207123\",\n  \"http://purl.org/dc/terms/rightsHolder\"
-        : \"BJ Stacey\",\n  \"http://purl.org/dc/terms/license\" : \"http://creativecommons.org/licenses/by-nc/4.0/\",\n  \"http://purl.org/dc/terms/publisher\"
-        : \"iNaturalist\"\n} ]","identificationID":"21241875"},{"key":1802794176,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2018-10-08T17:07:01.388+0000","lastParsed":"2018-10-08T17:07:01.742+0000","crawlId":129,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2481759,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":7192402,"familyKey":5282,"genusKey":2481739,"speciesKey":2481759,"scientificName":"Calidris
-        alpina (Linnaeus, 1758)","kingdom":"Animalia","phylum":"Chordata","order":"Charadriiformes","family":"Scolopacidae","genus":"Calidris","species":"Calidris
-        alpina","genericName":"Calidris","specificEpithet":"alpina","taxonRank":"SPECIES","dateIdentified":"2018-01-09T05:25:22.000+0000","decimalLongitude":-117.240638,"decimalLatitude":32.75572,"stateProvince":"California","year":2018,"month":1,"day":7,"eventDate":"2018-01-07T15:35:00.000+0000","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-01-26T15:40:13.000+0000","lastInterpreted":"2018-10-08T17:07:19.706+0000","references":"https://www.inaturalist.org/observations/9418687","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/12797601/original.jpg?1515475079","references":"https://www.inaturalist.org/photos/12797601","created":"2018-01-07T23:35:12.000+0000","creator":"BJ
+        Stacey"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Polypodiopsida","countryCode":"US","country":"United
+        States of America","rightsHolder":"BJ Stacey","identifier":"19545911","verbatimEventDate":"2019/01/05
+        12:08 PM PST","datasetName":"iNaturalist research-grade observations","gbifID":"1986625902","verbatimLocality":"Lake
+        Sutherland","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/19545911","taxonID":"52671","catalogNumber":"19545911","recordedBy":"BJ
+        Stacey","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/19545911","institutionCode":"iNaturalist","rights":"©
+        BJ Stacey some rights reserved","eventTime":"20:08:00Z","identificationID":"42877040"},{"key":1990486652,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-02-25T02:13:33.333+0000","lastParsed":"2019-02-04T00:46:54.492+0000","crawlId":151,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2474393,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":1493,"familyKey":9342,"genusKey":2474376,"speciesKey":2474393,"acceptedTaxonKey":2474393,"scientificName":"Fulica
+        americana Gmelin, 1789","acceptedScientificName":"Fulica americana Gmelin,
+        1789","kingdom":"Animalia","phylum":"Chordata","order":"Gruiformes","family":"Rallidae","genus":"Fulica","species":"Fulica
+        americana","genericName":"Fulica","specificEpithet":"americana","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2019-01-13T04:59:33","decimalLongitude":-117.099805,"decimalLatitude":32.619878,"stateProvince":"California","year":2019,"month":1,"day":12,"eventDate":"2019-01-12T11:25:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2019-01-14T01:34:31.000+0000","lastInterpreted":"2019-02-04T00:47:16.310+0000","references":"https://www.inaturalist.org/observations/19607277","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/30187262/original.jpg?1547355450","references":"https://www.inaturalist.org/photos/30187262","created":"2019-01-12T19:25:49.000+0000","creator":"BJ
         Stacey","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"BJ
         Stacey"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Aves","countryCode":"US","country":"United
-        States","rightsHolder":"BJ Stacey","identifier":"9418687","verbatimEventDate":"2018/01/07
-        3:35 PM PST","datasetName":"iNaturalist research-grade observations","gbifID":"1802794176","verbatimLocality":"Robb
-        Field","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/9418687","taxonID":"3857","catalogNumber":"9418687","recordedBy":"BJ
-        Stacey","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9418687","institutionCode":"iNaturalist","rights":"©
-        BJ Stacey some rights reserved","eventTime":"23:35:00Z","occurrenceRemarks":"San
-        Diego County, California, US Front center bird is a Dunlin, most of the others
-        are Western Sandpipers.","http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia":"[
-        {\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\" : \"12797601\",\n  \"http://purl.org/dc/terms/creator\"
-        : \"BJ Stacey\",\n  \"http://purl.org/dc/terms/format\" : \"image/jpeg\",\n  \"http://purl.org/dc/terms/identifier\"
-        : \"https://static.inaturalist.org/photos/12797601/original.jpg?1515475079\",\n  \"http://purl.org/dc/terms/type\"
-        : \"StillImage\",\n  \"http://purl.org/dc/terms/created\" : \"2018-01-07T15:35:12-08:00\",\n  \"http://purl.org/dc/terms/references\"
-        : \"https://www.inaturalist.org/photos/12797601\",\n  \"http://purl.org/dc/terms/rightsHolder\"
-        : \"BJ Stacey\",\n  \"http://purl.org/dc/terms/license\" : \"http://creativecommons.org/licenses/by-nc/4.0/\",\n  \"http://purl.org/dc/terms/publisher\"
-        : \"iNaturalist\"\n} ]","identificationID":"20555041"},{"key":1802794214,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2018-10-08T17:07:01.441+0000","lastParsed":"2018-10-08T17:07:01.803+0000","crawlId":129,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2493843,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":729,"familyKey":9355,"genusKey":2493841,"speciesKey":2493843,"scientificName":"Thryomanes
-        bewickii (Audubon, 1827)","kingdom":"Animalia","phylum":"Chordata","order":"Passeriformes","family":"Troglodytidae","genus":"Thryomanes","species":"Thryomanes
-        bewickii","genericName":"Thryomanes","specificEpithet":"bewickii","taxonRank":"SPECIES","dateIdentified":"2018-01-09T05:33:19.000+0000","decimalLongitude":-116.938903,"decimalLatitude":32.99818,"stateProvince":"California","year":2018,"month":1,"day":7,"eventDate":"2018-01-07T11:30:00.000+0000","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-01-09T06:43:00.000+0000","lastInterpreted":"2018-10-08T17:07:19.854+0000","references":"https://www.inaturalist.org/observations/9418760","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/12797715/original.jpg?1515475671","references":"https://www.inaturalist.org/photos/12797715","created":"2018-01-07T19:30:19.000+0000","creator":"BJ
+        States of America","rightsHolder":"BJ Stacey","identifier":"19607277","verbatimEventDate":"2019/01/12
+        11:25 AM PST","datasetName":"iNaturalist research-grade observations","gbifID":"1990486652","verbatimLocality":"Chula
+        Vista - J St Marina","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/19607277","taxonID":"473","catalogNumber":"19607277","recordedBy":"BJ
+        Stacey","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/19607277","institutionCode":"iNaturalist","rights":"©
+        BJ Stacey some rights reserved","eventTime":"19:25:00Z","occurrenceRemarks":"San
+        Diego County, California, US","identificationID":"43068537"},{"key":1990549630,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-02-25T02:14:01.381+0000","lastParsed":"2019-02-04T00:47:38.643+0000","crawlId":151,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2481794,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":7192402,"familyKey":5282,"genusKey":7875964,"speciesKey":2481794,"acceptedTaxonKey":2481794,"scientificName":"Numenius
+        americanus Bechstein, 1812","acceptedScientificName":"Numenius americanus
+        Bechstein, 1812","kingdom":"Animalia","phylum":"Chordata","order":"Charadriiformes","family":"Scolopacidae","genus":"Numenius","species":"Numenius
+        americanus","genericName":"Numenius","specificEpithet":"americanus","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2019-01-21T04:20:48","decimalLongitude":-117.099977,"decimalLatitude":32.61982,"stateProvince":"California","year":2019,"month":1,"day":19,"eventDate":"2019-01-19T13:38:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2019-01-21T04:24:29.000+0000","lastInterpreted":"2019-02-04T00:49:07.002+0000","references":"https://www.inaturalist.org/observations/19773550","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/30470909/original.jpg?1548044346","references":"https://www.inaturalist.org/photos/30470909","created":"2019-01-19T21:38:21.000+0000","creator":"BJ
         Stacey","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"BJ
         Stacey"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Aves","countryCode":"US","country":"United
-        States","rightsHolder":"BJ Stacey","identifier":"9418760","verbatimEventDate":"2018/01/07
-        11:30 AM PST","datasetName":"iNaturalist research-grade observations","gbifID":"1802794214","verbatimLocality":"Ramona--Dos
-        Picos Park","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/9418760","taxonID":"7576","catalogNumber":"9418760","recordedBy":"BJ
-        Stacey","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9418760","institutionCode":"iNaturalist","rights":"©
-        BJ Stacey some rights reserved","eventTime":"19:30:00Z","occurrenceRemarks":"San
-        Diego County, California, US","http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia":"[
-        {\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\" : \"12797715\",\n  \"http://purl.org/dc/terms/creator\"
-        : \"BJ Stacey\",\n  \"http://purl.org/dc/terms/format\" : \"image/jpeg\",\n  \"http://purl.org/dc/terms/identifier\"
-        : \"https://static.inaturalist.org/photos/12797715/original.jpg?1515475671\",\n  \"http://purl.org/dc/terms/type\"
-        : \"StillImage\",\n  \"http://purl.org/dc/terms/created\" : \"2018-01-07T11:30:19-08:00\",\n  \"http://purl.org/dc/terms/references\"
-        : \"https://www.inaturalist.org/photos/12797715\",\n  \"http://purl.org/dc/terms/rightsHolder\"
-        : \"BJ Stacey\",\n  \"http://purl.org/dc/terms/license\" : \"http://creativecommons.org/licenses/by-nc/4.0/\",\n  \"http://purl.org/dc/terms/publisher\"
-        : \"iNaturalist\"\n} ]","identificationID":"20555293"}],"facets":[]}'
-  recorded_at: 2018-10-09 21:54:40 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+        States of America","rightsHolder":"BJ Stacey","identifier":"19773550","verbatimEventDate":"2019/01/19
+        1:38 PM PST","datasetName":"iNaturalist research-grade observations","gbifID":"1990549630","verbatimLocality":"J
+        St Marina","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/19773550","taxonID":"3906","catalogNumber":"19773550","recordedBy":"BJ
+        Stacey","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/19773550","institutionCode":"iNaturalist","rights":"©
+        BJ Stacey some rights reserved","eventTime":"21:38:00Z","occurrenceRemarks":"San
+        Diego County, California, US","identificationID":"43585041"}],"facets":[]}'
+  recorded_at: 2019-02-26 17:35:22 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search?limit=3&offset=0&recordedBy=smith&recordedBy=BJ%20Stacey
@@ -163,8 +136,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -172,81 +145,52 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 21:54:38 GMT
+      date: Tue, 26 Feb 2019 17:35:21 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/search?limit=3&offset=0&recordedBy=smith&recordedBy=BJ%20Stacey
       cache-control: public, max-age=600
-      x-varnish: 75237298 1020804
+      x-varnish: 836044503 836044499
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
-      content-length: '11107'
+      content-length: '7779'
       connection: keep-alive
     body:
       encoding: UTF-8
-      string: '{"offset":0,"limit":3,"endOfRecords":false,"count":51804,"results":[{"key":1807284917,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2018-10-08T17:07:52.698+0000","lastParsed":"2018-10-08T17:07:53.002+0000","crawlId":129,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2605405,"kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":2605402,"speciesKey":2605405,"scientificName":"Letharia
-        columbiana (Nutt.) J.W.Thomson","kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Letharia","species":"Letharia
-        columbiana","genericName":"Letharia","specificEpithet":"columbiana","taxonRank":"SPECIES","dateIdentified":"2018-01-30T04:57:33.000+0000","decimalLongitude":-116.453142,"decimalLatitude":32.83205,"stateProvince":"California","year":2018,"month":1,"day":27,"eventDate":"2018-01-27T12:22:00.000+0000","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-05-08T21:17:54.000+0000","lastInterpreted":"2018-10-08T17:10:41.517+0000","references":"https://www.inaturalist.org/observations/9665199","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13207121/original.jpg?1517288001","references":"https://www.inaturalist.org/photos/13207121","created":"2018-01-27T20:22:51.000+0000","creator":"BJ
+      string: '{"offset":0,"limit":3,"endOfRecords":false,"count":55910,"results":[{"key":1986625902,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-02-25T02:13:23.585+0000","lastParsed":"2019-01-13T23:39:13.612+0000","crawlId":151,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":5275136,"kingdomKey":6,"phylumKey":7707728,"classKey":7228684,"orderKey":392,"familyKey":2373,"genusKey":2651126,"speciesKey":5275136,"acceptedTaxonKey":5275136,"scientificName":"Dryopteris
+        arguta (Kaulf.) Watt","acceptedScientificName":"Dryopteris arguta (Kaulf.)
+        Watt","kingdom":"Plantae","phylum":"Tracheophyta","order":"Polypodiales","family":"Dryopteridaceae","genus":"Dryopteris","species":"Dryopteris
+        arguta","genericName":"Dryopteris","specificEpithet":"arguta","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2019-01-10T03:45:01","decimalLongitude":-116.790973,"decimalLatitude":33.116608,"stateProvince":"California","year":2019,"month":1,"day":5,"eventDate":"2019-01-05T12:08:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2019-01-10T19:53:45.000+0000","lastInterpreted":"2019-01-13T23:39:37.268+0000","references":"https://www.inaturalist.org/observations/19545911","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/30083558/original.jpg?1547091804","references":"https://www.inaturalist.org/photos/30083558","created":"2019-01-05T20:08:11.000+0000","creator":"BJ
         Stacey","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"BJ
-        Stacey"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/13207123/original.jpg?1517288003","references":"https://www.inaturalist.org/photos/13207123","created":"2018-01-27T20:22:51.000+0000","creator":"BJ
-        Stacey","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"BJ
-        Stacey"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Lecanoromycetes","countryCode":"US","country":"United
-        States","rightsHolder":"BJ Stacey","identifier":"9665199","verbatimEventDate":"2018/01/27
-        12:22 PM PST","datasetName":"iNaturalist research-grade observations","gbifID":"1807284917","verbatimLocality":"Laguna
-        Mountains","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/9665199","taxonID":"54608","catalogNumber":"9665199","recordedBy":"BJ
-        Stacey","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9665199","institutionCode":"iNaturalist","rights":"©
-        BJ Stacey some rights reserved","eventTime":"20:22:00Z","occurrenceRemarks":"San
-        Diego County, California, US","http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia":"[
-        {\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\" : \"13207121\",\n  \"http://purl.org/dc/terms/creator\"
-        : \"BJ Stacey\",\n  \"http://purl.org/dc/terms/format\" : \"image/jpeg\",\n  \"http://purl.org/dc/terms/identifier\"
-        : \"https://static.inaturalist.org/photos/13207121/original.jpg?1517288001\",\n  \"http://purl.org/dc/terms/type\"
-        : \"StillImage\",\n  \"http://purl.org/dc/terms/created\" : \"2018-01-27T12:22:51-08:00\",\n  \"http://purl.org/dc/terms/references\"
-        : \"https://www.inaturalist.org/photos/13207121\",\n  \"http://purl.org/dc/terms/rightsHolder\"
-        : \"BJ Stacey\",\n  \"http://purl.org/dc/terms/license\" : \"http://creativecommons.org/licenses/by-nc/4.0/\",\n  \"http://purl.org/dc/terms/publisher\"
-        : \"iNaturalist\"\n}, {\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\"
-        : \"13207123\",\n  \"http://purl.org/dc/terms/creator\" : \"BJ Stacey\",\n  \"http://purl.org/dc/terms/format\"
-        : \"image/jpeg\",\n  \"http://purl.org/dc/terms/identifier\" : \"https://static.inaturalist.org/photos/13207123/original.jpg?1517288003\",\n  \"http://purl.org/dc/terms/type\"
-        : \"StillImage\",\n  \"http://purl.org/dc/terms/created\" : \"2018-01-27T12:22:51-08:00\",\n  \"http://purl.org/dc/terms/references\"
-        : \"https://www.inaturalist.org/photos/13207123\",\n  \"http://purl.org/dc/terms/rightsHolder\"
-        : \"BJ Stacey\",\n  \"http://purl.org/dc/terms/license\" : \"http://creativecommons.org/licenses/by-nc/4.0/\",\n  \"http://purl.org/dc/terms/publisher\"
-        : \"iNaturalist\"\n} ]","identificationID":"21241875"},{"key":1802794176,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2018-10-08T17:07:01.388+0000","lastParsed":"2018-10-08T17:07:01.742+0000","crawlId":129,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2481759,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":7192402,"familyKey":5282,"genusKey":2481739,"speciesKey":2481759,"scientificName":"Calidris
-        alpina (Linnaeus, 1758)","kingdom":"Animalia","phylum":"Chordata","order":"Charadriiformes","family":"Scolopacidae","genus":"Calidris","species":"Calidris
-        alpina","genericName":"Calidris","specificEpithet":"alpina","taxonRank":"SPECIES","dateIdentified":"2018-01-09T05:25:22.000+0000","decimalLongitude":-117.240638,"decimalLatitude":32.75572,"stateProvince":"California","year":2018,"month":1,"day":7,"eventDate":"2018-01-07T15:35:00.000+0000","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-01-26T15:40:13.000+0000","lastInterpreted":"2018-10-08T17:07:19.706+0000","references":"https://www.inaturalist.org/observations/9418687","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/12797601/original.jpg?1515475079","references":"https://www.inaturalist.org/photos/12797601","created":"2018-01-07T23:35:12.000+0000","creator":"BJ
+        Stacey"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Polypodiopsida","countryCode":"US","country":"United
+        States of America","rightsHolder":"BJ Stacey","identifier":"19545911","verbatimEventDate":"2019/01/05
+        12:08 PM PST","datasetName":"iNaturalist research-grade observations","gbifID":"1986625902","verbatimLocality":"Lake
+        Sutherland","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/19545911","taxonID":"52671","catalogNumber":"19545911","recordedBy":"BJ
+        Stacey","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/19545911","institutionCode":"iNaturalist","rights":"©
+        BJ Stacey some rights reserved","eventTime":"20:08:00Z","identificationID":"42877040"},{"key":1990486715,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-02-25T02:13:33.501+0000","lastParsed":"2019-02-11T01:13:25.610+0000","crawlId":151,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":5231640,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":729,"familyKey":5242,"genusKey":8051475,"speciesKey":5231640,"acceptedTaxonKey":5231640,"scientificName":"Spinus
+        tristis (Linnaeus, 1758)","acceptedScientificName":"Spinus tristis (Linnaeus,
+        1758)","kingdom":"Animalia","phylum":"Chordata","order":"Passeriformes","family":"Fringillidae","genus":"Spinus","species":"Spinus
+        tristis","genericName":"Spinus","specificEpithet":"tristis","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2019-01-13T04:59:22","decimalLongitude":-117.077048,"decimalLatitude":32.558052,"stateProvince":"California","year":2019,"month":1,"day":12,"eventDate":"2019-01-12T10:43:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2019-02-01T22:52:42.000+0000","lastInterpreted":"2019-02-11T01:13:25.648+0000","references":"https://www.inaturalist.org/observations/19607264","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/30187203/original.jpg?1547355323","references":"https://www.inaturalist.org/photos/30187203","created":"2019-01-12T18:43:12.000+0000","creator":"BJ
         Stacey","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"BJ
         Stacey"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Aves","countryCode":"US","country":"United
-        States","rightsHolder":"BJ Stacey","identifier":"9418687","verbatimEventDate":"2018/01/07
-        3:35 PM PST","datasetName":"iNaturalist research-grade observations","gbifID":"1802794176","verbatimLocality":"Robb
-        Field","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/9418687","taxonID":"3857","catalogNumber":"9418687","recordedBy":"BJ
-        Stacey","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9418687","institutionCode":"iNaturalist","rights":"©
-        BJ Stacey some rights reserved","eventTime":"23:35:00Z","occurrenceRemarks":"San
-        Diego County, California, US Front center bird is a Dunlin, most of the others
-        are Western Sandpipers.","http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia":"[
-        {\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\" : \"12797601\",\n  \"http://purl.org/dc/terms/creator\"
-        : \"BJ Stacey\",\n  \"http://purl.org/dc/terms/format\" : \"image/jpeg\",\n  \"http://purl.org/dc/terms/identifier\"
-        : \"https://static.inaturalist.org/photos/12797601/original.jpg?1515475079\",\n  \"http://purl.org/dc/terms/type\"
-        : \"StillImage\",\n  \"http://purl.org/dc/terms/created\" : \"2018-01-07T15:35:12-08:00\",\n  \"http://purl.org/dc/terms/references\"
-        : \"https://www.inaturalist.org/photos/12797601\",\n  \"http://purl.org/dc/terms/rightsHolder\"
-        : \"BJ Stacey\",\n  \"http://purl.org/dc/terms/license\" : \"http://creativecommons.org/licenses/by-nc/4.0/\",\n  \"http://purl.org/dc/terms/publisher\"
-        : \"iNaturalist\"\n} ]","identificationID":"20555041"},{"key":1802794214,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2018-10-08T17:07:01.441+0000","lastParsed":"2018-10-08T17:07:01.803+0000","crawlId":129,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2493843,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":729,"familyKey":9355,"genusKey":2493841,"speciesKey":2493843,"scientificName":"Thryomanes
-        bewickii (Audubon, 1827)","kingdom":"Animalia","phylum":"Chordata","order":"Passeriformes","family":"Troglodytidae","genus":"Thryomanes","species":"Thryomanes
-        bewickii","genericName":"Thryomanes","specificEpithet":"bewickii","taxonRank":"SPECIES","dateIdentified":"2018-01-09T05:33:19.000+0000","decimalLongitude":-116.938903,"decimalLatitude":32.99818,"stateProvince":"California","year":2018,"month":1,"day":7,"eventDate":"2018-01-07T11:30:00.000+0000","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2018-01-09T06:43:00.000+0000","lastInterpreted":"2018-10-08T17:07:19.854+0000","references":"https://www.inaturalist.org/observations/9418760","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/12797715/original.jpg?1515475671","references":"https://www.inaturalist.org/photos/12797715","created":"2018-01-07T19:30:19.000+0000","creator":"BJ
+        States of America","rightsHolder":"BJ Stacey","identifier":"19607264","verbatimEventDate":"2019/01/12
+        10:43 AM PST","datasetName":"iNaturalist research-grade observations","gbifID":"1990486715","verbatimLocality":"Tijuana
+        River Valley","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/19607264","taxonID":"145310","catalogNumber":"19607264","recordedBy":"BJ
+        Stacey","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/19607264","institutionCode":"iNaturalist","rights":"©
+        BJ Stacey some rights reserved","eventTime":"18:43:00Z","occurrenceRemarks":"San
+        Diego County, California, US","identificationID":"43068524"},{"key":1990549630,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-02-25T02:14:01.381+0000","lastParsed":"2019-02-04T00:47:38.643+0000","crawlId":151,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":2481794,"kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":7192402,"familyKey":5282,"genusKey":7875964,"speciesKey":2481794,"acceptedTaxonKey":2481794,"scientificName":"Numenius
+        americanus Bechstein, 1812","acceptedScientificName":"Numenius americanus
+        Bechstein, 1812","kingdom":"Animalia","phylum":"Chordata","order":"Charadriiformes","family":"Scolopacidae","genus":"Numenius","species":"Numenius
+        americanus","genericName":"Numenius","specificEpithet":"americanus","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2019-01-21T04:20:48","decimalLongitude":-117.099977,"decimalLatitude":32.61982,"stateProvince":"California","year":2019,"month":1,"day":19,"eventDate":"2019-01-19T13:38:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2019-01-21T04:24:29.000+0000","lastInterpreted":"2019-02-04T00:49:07.002+0000","references":"https://www.inaturalist.org/observations/19773550","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/30470909/original.jpg?1548044346","references":"https://www.inaturalist.org/photos/30470909","created":"2019-01-19T21:38:21.000+0000","creator":"BJ
         Stacey","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"BJ
         Stacey"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Aves","countryCode":"US","country":"United
-        States","rightsHolder":"BJ Stacey","identifier":"9418760","verbatimEventDate":"2018/01/07
-        11:30 AM PST","datasetName":"iNaturalist research-grade observations","gbifID":"1802794214","verbatimLocality":"Ramona--Dos
-        Picos Park","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/9418760","taxonID":"7576","catalogNumber":"9418760","recordedBy":"BJ
-        Stacey","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/9418760","institutionCode":"iNaturalist","rights":"©
-        BJ Stacey some rights reserved","eventTime":"19:30:00Z","occurrenceRemarks":"San
-        Diego County, California, US","http://unknown.org/http_//rs.gbif.org/terms/1.0/Multimedia":"[
-        {\n  \"http://rs.tdwg.org/dwc/terms/catalogNumber\" : \"12797715\",\n  \"http://purl.org/dc/terms/creator\"
-        : \"BJ Stacey\",\n  \"http://purl.org/dc/terms/format\" : \"image/jpeg\",\n  \"http://purl.org/dc/terms/identifier\"
-        : \"https://static.inaturalist.org/photos/12797715/original.jpg?1515475671\",\n  \"http://purl.org/dc/terms/type\"
-        : \"StillImage\",\n  \"http://purl.org/dc/terms/created\" : \"2018-01-07T11:30:19-08:00\",\n  \"http://purl.org/dc/terms/references\"
-        : \"https://www.inaturalist.org/photos/12797715\",\n  \"http://purl.org/dc/terms/rightsHolder\"
-        : \"BJ Stacey\",\n  \"http://purl.org/dc/terms/license\" : \"http://creativecommons.org/licenses/by-nc/4.0/\",\n  \"http://purl.org/dc/terms/publisher\"
-        : \"iNaturalist\"\n} ]","identificationID":"20555293"}],"facets":[]}'
-  recorded_at: 2018-10-09 21:54:40 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+        States of America","rightsHolder":"BJ Stacey","identifier":"19773550","verbatimEventDate":"2019/01/19
+        1:38 PM PST","datasetName":"iNaturalist research-grade observations","gbifID":"1990549630","verbatimLocality":"J
+        St Marina","collectionCode":"Observations","occurrenceID":"https://www.inaturalist.org/observations/19773550","taxonID":"3906","catalogNumber":"19773550","recordedBy":"BJ
+        Stacey","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/19773550","institutionCode":"iNaturalist","rights":"©
+        BJ Stacey some rights reserved","eventTime":"21:38:00Z","occurrenceRemarks":"San
+        Diego County, California, US","identificationID":"43585041"}],"facets":[]}'
+  recorded_at: 2019-02-26 17:35:22 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4

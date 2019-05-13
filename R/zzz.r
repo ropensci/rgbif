@@ -15,26 +15,27 @@ get_hier <- function(x, h1, h2){
 
 # Parser for gbif data
 # param: input A list
-# @param: fields (character) Default ('minimal') will return just taxon name, key, latitude, and
-#    longitute. 'all' returns all fields. Or specify each field you want returned by name, e.g.
+# @param: fields (character) Default ("minimal") will return just taxon name, key, latitude, and
+#    longitute. "all" returns all fields. Or specify each field you want returned by name, e.g.
 #    fields = c('name','latitude','altitude').
-gbifparser <- function(input, fields='minimal'){
+gbifparser <- function(input, fields= "minimal") {
   parse <- function(x){
     x[sapply(x, length) == 0] <- "none"
-    h1 <- c('kingdom','phylum','class','order','family','genus','species')
-    h2 <- c('kingdomKey','phylumKey','classKey','orderKey','familyKey','genusKey','speciesKey')
+    h1 <- c('kingdom','phylum','class','order','family','genus',"species")
+    h2 <- c('kingdomKey','phylumKey','classKey','orderKey','familyKey',
+      'genusKey','speciesKey')
     hier <- get_hier(x, h1, h2)
-    if (nrow(stats::na.omit(hier)) == 0){
-      if (!is.null(x[['species']])){
-        usename <- x[['species']]
-      } else if(!is.null(x[['scientificName']])) {
-        usename <- x[['scientificName']]
-      } else {
-        usename <- "none"
-      }
-    } else {
-      usename <- hier[[nrow(hier),"name"]]
-    }
+    # if (nrow(stats::na.omit(hier)) == 0){
+    #   if (!is.null(x[["species"]])){
+    #     usename <- x[["species"]]
+    #   } else if (!is.null(x[["scientificName"]])) {
+    #     usename <- x[["scientificName"]]
+    #   } else {
+    #     usename <- "none"
+    #   }
+    # } else {
+    #   usename <- hier[[nrow(hier), "name"]]
+    # }
 
     # issues
     x[names(x) %in% "issues"] <- collapse_issues(x)
@@ -60,27 +61,35 @@ gbifparser <- function(input, fields='minimal'){
     } else { media2 <- list() }
 
     # all other data
-    alldata <- data.frame(name=usename, x, stringsAsFactors=FALSE)
-    if(any(fields=='minimal')){
-      if(all(c('decimalLatitude','decimalLongitude') %in% names(alldata)))
-      {
-        alldata <- alldata[c('name','key','decimalLatitude','decimalLongitude','issues')]
+    x <- data.frame(x, stringsAsFactors=FALSE)
+    if (any(fields == "minimal")) {
+      if (all(c("decimalLatitude","decimalLongitude") %in% names(x))) {
+        x <-
+          x[c("key", "scientificName", "decimalLatitude",
+            "decimalLongitude", "issues")]
       } else {
-        alldata <- data.frame(alldata['name'], alldata['key'],
-                              decimalLatitude=NA, decimalLongitude=NA,
-                              alldata['issues'], stringsAsFactors=FALSE)
+        x <- data.frame(x["key"], x["scientificName"],
+          decimalLatitude = NA, decimalLongitude = NA,
+          x["issues"], stringsAsFactors = FALSE)
       }
-    } else if(any(fields == 'all')) {
+    } else if(any(fields == "all")) {
       # rearrange columns
-      firstnames <- c('name','key','decimalLatitude','decimalLongitude','issues')
-      alldata <- alldata[c(firstnames[firstnames %in% names(alldata)],
-                names(alldata)[-unlist(rgbif_compact(sapply(firstnames, function(z) { tmp <- grep(z, names(alldata)); if(!length(tmp) == 0) tmp }, USE.NAMES = FALSE)))] ) ]
+      firstnames <- c("key", "scientificName", "decimalLatitude",
+        "decimalLongitude", "issues")
+      x <- x[c(firstnames[firstnames %in% names(x)],
+        names(x)[-unlist(rgbif_compact(sapply(firstnames, function(z) {
+        tmp <- grep(z, names(x)); if(!length(tmp) == 0) tmp
+        }, USE.NAMES = FALSE)))])]
+      # add name column, duplicate of scientificName, to not break downstream code
+      if ("scientificName" %in% names(x)) {
+        x$name <- x$scientificName
+      }
     } else {
-      alldata <- alldata[names(alldata) %in% fields]
+      x <- x[names(x) %in% fields]
     }
-    list(hierarchy=hier, media=media2, data=alldata)
+    list(hierarchy = hier, media = media2, data = x)
   }
-  if(is.numeric(input[[1]])){
+  if (is.numeric(input[[1]])) {
     parse(input)
   } else {
     lapply(input, parse)
@@ -98,56 +107,51 @@ clean_data <- function(x){
   x$identifiers <- NULL
   x$extensions <- NULL
 
+  # add name column, duplicate of scientificName, to not break downstream code
+  if ("scientificName" %in% names(x)) {
+    x$name <- x$scientificName
+  }
+
   # move columns
-  x <- move_col(x, 'issues')
-  x <- move_col(x, 'decimalLongitude')
-  x <- move_col(x, 'decimalLatitude')
-  x <- move_col(x, 'key')
-  x <- move_col(x, 'species')
-  names(x)[1] <- 'name'
+  x <- move_col(x, "issues")
+  x <- move_col(x, "decimalLongitude")
+  x <- move_col(x, "decimalLatitude")
+  x <- move_col(x, "scientificName")
+  x <- move_col(x, "key")
 
   return(x)
 }
 
 # Parser for gbif data
 # param: input A list
-# param: fields (character) Default ('minimal') will return just taxon name,
-#    key, decimalLatitude, and decimalLongitute. 'all' returns all fields. Or
+# param: fields (character) Default ("minimal") will return just taxon name,
+#    key, decimalLatitude, and decimalLongitute. "all" returns all fields. Or
 #    specify each field you want returned by name, e.g. fields =
 #    c('name','decimalLatitude','altitude').
-gbifparser_verbatim <- function(input, fields='minimal'){
+gbifparser_verbatim <- function(input, fields="minimal") {
   parse <- function(x) {
-    nn <- vapply(names(x), function(z){
+    nn <- vapply(names(x), function(z) {
       tmp <- strsplit(z, "/")[[1]]
       tmp[length(tmp)]
     }, "", USE.NAMES = FALSE)
 
     names(x) <- nn
 
-    if (any(fields=='minimal')) {
-      if(all(c('decimalLatitude','decimalLongitude') %in% names(x))) {
-        x[c('scientificName','key','decimalLatitude','decimalLongitude')]
+    if (any(fields == "minimal")) {
+      if (all(c("decimalLatitude","decimalLongitude") %in% names(x))) {
+        x[c("key", "scientificName", "decimalLatitude", "decimalLongitude")]
       } else {
-        list(scientificName=x[['scientificName']], key=x[['key']],
-          decimalLatitude=NA, decimalLongitude=NA, stringsAsFactors=FALSE)
+        list(key = x[["key"]], scientificName = x[["scientificName"]],
+          decimalLatitude = NA, decimalLongitude = NA, stringsAsFactors = FALSE)
       }
-    } else if(any(fields == 'all')) {
+    } else if (any(fields == "all")) {
       x[vapply(x, length, 0) == 0] <- "none"
       if ("extensions" %in% names(x)) {
-        # x$extensions <- rgbif_compact(lapply(x$extensions, function(z) {
-        #   if (length(z) == 0) return(NULL)
-        #   iflapply(z, class)
-        # }))
         if (length(x$extensions) == 0) {
           x$extensions <- NULL
         } else if (identical(x$extensions[[1]], "none")) {
           x$extensions <- NULL
         } else {
-          # tmp <- lapply(x$extensions, function(w) {
-          #   names(w) <- paste0("extensions_", names(w))
-          #   as.list(w)
-          # })
-
           m <- list()
           for (i in seq_along(x$extensions)) {
             z <- x$extensions[[i]]
@@ -278,7 +282,7 @@ namelkupparser <- function(x){
     }
   })
   df <- data.frame(tmp, stringsAsFactors = FALSE)
-  movecols(df, c('key', 'scientificName'))
+  movecols(df, c("key", "scientificName"))
 }
 
 namelkupcleaner <- function(x){
@@ -295,7 +299,7 @@ namelkupcleaner <- function(x){
 }
 
 nameusageparser <- function(z){
-  tomove <- c('key', 'scientificName')
+  tomove <- c("key", "scientificName")
   tmp <- lapply(z, function(y) {
     if (length(y) == 0) NA else y
   })
@@ -537,7 +541,7 @@ assert <- function(x, y) {
 }
 
 # check correctness issues and their type (type: "name" or "code")
-check_issues <- function(type , ...) {
+  <- function(type , ...) {
   types <- c("occurrence", "name")
   if (!length(dots(...)) == 0) {
     filters <- parse_input(...)
@@ -665,4 +669,8 @@ split_iss <- function(m, is_occ, is_dload) {
   first <- if (is_dload) first_dload else first_search
   tibble::as_data_frame(data.frame(m[, first], df, m[, !names(m) %in% first],
                                    stringsAsFactors = FALSE))
+
+setdfrbind <- function(x) {
+  (data.table::setDF(
+    data.table::rbindlist(x, use.names = TRUE, fill = TRUE)))
 }

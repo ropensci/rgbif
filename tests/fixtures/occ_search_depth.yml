@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -17,15 +17,14 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 21:39:57 GMT
+      date: Tue, 26 Feb 2019 17:33:59 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/species/match?name=Salmo%20salar&kingdom=animals&strict=FALSE&verbose=FALSE&limit=100
       cache-control: public, max-age=3601
-      x-varnish: 12262210 73958081
-      age: '772'
+      x-varnish: 836044372 835749138
+      age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
       content-length: '456'
@@ -35,8 +34,8 @@ http_interactions:
       string: '{"usageKey":7595433,"scientificName":"Salmo salar Linnaeus, 1758","canonicalName":"Salmo
         salar","rank":"SPECIES","status":"ACCEPTED","confidence":100,"matchType":"EXACT","kingdom":"Animalia","phylum":"Chordata","order":"Salmoniformes","family":"Salmonidae","genus":"Salmo","species":"Salmo
         salar","kingdomKey":1,"phylumKey":44,"classKey":204,"orderKey":1313,"familyKey":8615,"genusKey":2347608,"speciesKey":7595433,"synonym":false,"class":"Actinopterygii"}'
-  recorded_at: 2018-10-09 21:52:52 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+  recorded_at: 2019-02-26 17:34:01 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search?depth=5&limit=500&offset=0&taxonKey=7595433
@@ -46,8 +45,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -55,14 +54,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 21:52:50 GMT
+      date: Tue, 26 Feb 2019 17:34:00 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/search?depth=5&limit=500&offset=0&taxonKey=7595433
       cache-control: public, max-age=600
-      x-varnish: 40997698 49777820
+      x-varnish: 836044377 836044375
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -71,8 +69,8 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"offset":0,"limit":300,"endOfRecords":true,"count":0,"results":[],"facets":[]}'
-  recorded_at: 2018-10-09 21:52:52 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+  recorded_at: 2019-02-26 17:34:01 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search?depth=5&limit=500&offset=0&taxonKey=7595433
@@ -82,8 +80,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -91,14 +89,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 21:52:50 GMT
+      date: Tue, 26 Feb 2019 17:34:00 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/search?depth=5&limit=500&offset=0&taxonKey=7595433
       cache-control: public, max-age=600
-      x-varnish: 954572 49777820
+      x-varnish: 835782247 836044375
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -107,8 +104,8 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"offset":0,"limit":300,"endOfRecords":true,"count":0,"results":[],"facets":[]}'
-  recorded_at: 2018-10-09 21:52:52 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+  recorded_at: 2019-02-26 17:34:01 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search?depth=5&limit=500&offset=0&taxonKey=7595433
@@ -118,8 +115,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -127,14 +124,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 21:52:50 GMT
+      date: Tue, 26 Feb 2019 17:34:00 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/search?depth=5&limit=500&offset=0&taxonKey=7595433
       cache-control: public, max-age=600
-      x-varnish: 88245186 49777820
+      x-varnish: 816908866 836044375
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -143,8 +139,8 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"offset":0,"limit":300,"endOfRecords":true,"count":0,"results":[],"facets":[]}'
-  recorded_at: 2018-10-09 21:52:52 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+  recorded_at: 2019-02-26 17:34:01 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search?depth=5-10&limit=500&offset=0&taxonKey=7595433
@@ -154,8 +150,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '400'
@@ -163,20 +159,19 @@ http_interactions:
       explanation: Bad request syntax or unsupported method
     headers:
       status: HTTP/1.1 400 Bad Request
-      date: Tue, 09 Oct 2018 21:52:52 GMT
+      date: Tue, 26 Feb 2019 17:34:01 GMT
       content-type: text/plain
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/search?depth=5-10&limit=500&offset=0&taxonKey=7595433
       cache-control: no-cache, no-store, must-revalidate
-      x-varnish: '88408921'
+      x-varnish: '832046527'
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
-      content-length: '27'
+      transfer-encoding: chunked
       connection: keep-alive
     body:
       encoding: UTF-8
       string: 'Invalid decimal range: 5-10'
-  recorded_at: 2018-10-09 21:52:52 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+  recorded_at: 2019-02-26 17:34:01 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4

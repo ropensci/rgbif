@@ -83,10 +83,12 @@ Terminal:
 
 Install gdal : https://github.com/edzer/sfr/blob/master/README.md#macos
 
-```{r eval=FALSE}
+```
 brew install openssl
-````
-R terminal:
+```
+
+in R:
+
 ```{r eval=FALSE}
 install.packages('openssl')
 install.packages('rgeos')

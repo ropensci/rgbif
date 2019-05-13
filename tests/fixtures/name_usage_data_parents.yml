@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -17,15 +17,14 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 20:54:54 GMT
+      date: Tue, 26 Feb 2019 15:29:39 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/species/5231190/parents?offset=0&limit=100
       cache-control: public, max-age=3601
-      x-varnish: 49517085 54954149
-      age: '1331'
+      x-varnish: 756385202 752617291
+      age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
       content-length: '4658'
@@ -40,8 +39,8 @@ http_interactions:
         les noms qu''ils leur ont donnés, ceux que leur ont donnés les différentes
         nations, & les noms vulgaires. Ouvrage enrichi de figures en taille-douce.
         Bauche, Paris. Vol. Tome 1: j-xxiv , 1-526, j-lxxiij , Pl. I-XXXVII.","numDescendants":104,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T13:40:56.993+0000","issues":[],"synonym":false,"class":"Aves"}]'
-  recorded_at: 2018-10-09 21:17:06 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+  recorded_at: 2019-02-26 15:29:40 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/species/5135783/parents?offset=0&limit=100
@@ -51,8 +50,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -60,15 +59,14 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 20:54:54 GMT
+      date: Tue, 26 Feb 2019 15:29:40 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/species/5135783/parents?offset=0&limit=100
       cache-control: public, max-age=3601
-      x-varnish: 62327840 32838902
-      age: '1331'
+      x-varnish: 729811270 667655061
+      age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
       content-length: '4517'
@@ -81,5 +79,5 @@ http_interactions:
         Johann C. 1807. Die neueste Gattungs-Eintheilung der Schmetterlinge aus den
         Linnéischen Gattungen Papilio und Sphinx. Magazin für insektenkunde / herausgegeben
         von Karl Illiger Bd.6: 277-289.","numDescendants":665,"lastCrawled":"2018-06-20T14:41:51.801+0000","lastInterpreted":"2018-06-20T14:02:17.440+0000","issues":[],"synonym":false,"class":"Insecta"}]'
-  recorded_at: 2018-10-09 21:17:06 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+  recorded_at: 2019-02-26 15:29:40 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4

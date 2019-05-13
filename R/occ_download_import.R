@@ -61,9 +61,9 @@ occ_download_import <- function(x=NULL, key=NULL, path=".", fill = TRUE, ...) {
   }
   targetpath <- file.path(tmpdir, tpath)
   if (!file.exists(tmpdir)) stop("appropriate file not found", call. = FALSE)
-  tibble::as_tibble(
+  structure(tibble::as_tibble(
     data.table::fread(targetpath, data.table = FALSE, fill = fill, ...)
-  )
+  ), type = "single")
 }
 
 #' @export

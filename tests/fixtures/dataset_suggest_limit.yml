@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
-      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -17,24 +17,37 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Sun, 17 Jun 2018 05:05:38 GMT
+      date: Tue, 26 Feb 2019 15:14:35 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/dataset/suggest?limit=2&type=OCCURRENCE
       cache-control: public, max-age=3601
-      x-varnish: 462099174 490832081
+      x-varnish: 754484617 766181951
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
-      content-length: '2226'
+      content-length: '2702'
       connection: keep-alive
     body:
       encoding: UTF-8
-      string: '[{"key":"75956ee6-1a2b-4fa3-b3e8-ccda64ce6c2d","title":"INPN - Données
-        flore des CBN agrégées par la FCBN","description":"Dès la création de leur
-        Fédération (FCBN - www.fcbn.fr) en 1999, les onze Conservatoires botaniques
+      string: '[{"key":"4fa7b334-ce0d-4e88-aaae-2e0c138d049e","title":"EOD - eBird
+        Observation Dataset","description":"eBird is a collective enterprise that
+        takes a novel approach to citizen science by developing cooperative partnerships
+        among experts in a wide range of fields: population ecologists, conservation
+        biologists, quantitative ecologists, statisticians, computer scientists, GIS
+        and informatics specialists, application developers, and data administrators.
+        Managed by the Cornell Lab of Ornithology eBird’s goal is to increase data
+        quantity through participant recruitment and engagement globally, but also
+        to quantify and control for data quality issues such as observer variability,
+        imperfect detection of species, and both spatial and temporal bias in data
+        collection. eBird data are openly available and used by a broad spectrum of
+        students, teachers, scientists, NGOs, government agencies, land managers,
+        and policy makers. The result is that eBird has become a major source of biodiversity
+        data, increasing our knowledge of the dynamics of species distributions, and
+        having a direct impact on the conservation of birds and their habitats.","type":"OCCURRENCE"},{"key":"75956ee6-1a2b-4fa3-b3e8-ccda64ce6c2d","title":"INPN
+        - Données flore des CBN agrégées par la FCBN","description":"Dès la création
+        de leur Fédération (FCBN - www.fcbn.fr) en 1999, les onze Conservatoires botaniques
         nationaux (CBN) ont exprimé la volonté collective de constituer un système
         d’information national pour mettre en commun leurs données, et celles de leurs
         partenaires, sur la flore, la fonge et les végétations-habitats. C’est réellement
@@ -50,13 +63,6 @@ http_interactions:
         FCBN dispose d’un système d’information d’envergure nationale et fort de plus
         de 20 millions de données d’observation sur la flore de France. Les données
         centralisées ont été consolidées sur la base du référentiel TAXREF 5.0 et
-        une mise à jour est prévue pour fin 2015.","type":"OCCURRENCE"},{"key":"95db4db8-f762-11e1-a439-00145eb45e9a","title":"DOF","description":"DOFbasen.
-        Please contact DOF (dof@dof.dk) before any use of DOFbase data in publications.
-        Database of bird registrations administrated by Danish Ornithological Society
-        (www.dof.dk). Danish Ornithological Society/BirdLife Denmark (in Danish: Dansk
-        Ornitologisk Forening - DOF) is a private society working for the protection
-        of birds and nature as well as the procurement of knowledge on birds. Information
-        on sensitive species is omitted from the available data - see list here: http://www.dofbasen.dk/opslag/sensitive.php.
-        Please contact DOF on how to obtain information on sensitive species","type":"OCCURRENCE"}]'
-  recorded_at: 2018-06-17 05:05:38 GMT
-  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2
+        une mise à jour est prévue pour fin 2015.","type":"OCCURRENCE"}]'
+  recorded_at: 2019-02-26 15:14:36 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4

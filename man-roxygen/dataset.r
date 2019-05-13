@@ -35,4 +35,4 @@
 #'  \item \code{hostingOrg}
 #'  \item \code{publishingCountry}
 #'  \item \code{decade}
-#' \code{
+#' }

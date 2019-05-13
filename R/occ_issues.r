@@ -113,7 +113,6 @@
 #' }
 
 occ_issues <- function(.data, ..., mutate = NULL) {
-
   assert(.data, c("gbif", "gbif_data", "data.frame", "tbl_df"))
   check_issues(type = "occurrence", ...)
   handle_issues(.data, is_occ = TRUE, ..., mutate = mutate)

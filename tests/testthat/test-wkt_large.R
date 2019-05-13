@@ -64,35 +64,31 @@ test_that("wkt is detected/parsed as planned", {
 })
 
 test_that("wkt is used correctly in querying GBIF - occ_data", {
+  # setting to bbox will work
   vcr::use_cassette("wkt_large_occ_data", {
-
-    # setting to bbox will work
     res <- suppressMessages(occ_data(geometry = wkt, limit = 100, geom_big = "bbox"))
-
-    # returns the correct class
-    expect_is(res, "gbif_data")
-    expect_is(res$meta, "list")
-    expect_is(res$data, "data.frame")
-    # dimensions - b/c limit is set for the bounding box queried,
-    # we get less than the limit
-    expect_lt(NROW(res$data), 100)
-
-  })
+  }, preserve_exact_body_bytes = TRUE)
+  
+  # returns the correct class
+  expect_is(res, "gbif_data")
+  expect_is(res$meta, "list")
+  expect_is(res$data, "data.frame")
+  # dimensions - b/c limit is set for the bounding box queried,
+  # we get less than the limit
+  expect_lt(NROW(res$data), 100)
 })
 
 test_that("wkt is used correctly in querying GBIF - occ_search", {
+  # setting to bbox will work
   vcr::use_cassette("wkt_large_occ_search", {
-
-    # setting to bbox will work
     res <- suppressMessages(occ_search(geometry = wkt, limit = 100, geom_big = "bbox"))
-
-    # returns the correct class
-    expect_is(res, "gbif")
-    expect_is(res$meta, "list")
-    expect_is(res$data, "data.frame")
-    # dimensions - b/c limit is set for the bounding box queried,
-    # we get less than the limit
-    expect_lt(NROW(res$data), 100)
-
-  })
+  }, preserve_exact_body_bytes = TRUE)
+  
+  # returns the correct class
+  expect_is(res, "gbif")
+  expect_is(res$meta, "list")
+  expect_is(res$data, "data.frame")
+  # dimensions - b/c limit is set for the bounding box queried,
+  # we get less than the limit
+  expect_lt(NROW(res$data), 100)
 })

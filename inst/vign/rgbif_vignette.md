@@ -46,7 +46,7 @@ Search by type of record, all observational in this case
 
 ```r
 occ_count(basisOfRecord='OBSERVATION')
-#> [1] 20055605
+#> [1] 19756387
 ```
 
 Records for **Puma concolor** with lat/long data (georeferened) only. Note that `hasCoordinate` in `occ_search()` is the same as `georeferenced` in `occ_count()`.
@@ -54,7 +54,7 @@ Records for **Puma concolor** with lat/long data (georeferened) only. Note that 
 
 ```r
 occ_count(taxonKey=2435099, georeferenced=TRUE)
-#> [1] 3421
+#> [1] 4628
 ```
 
 All georeferenced records in GBIF
@@ -62,7 +62,7 @@ All georeferenced records in GBIF
 
 ```r
 occ_count(georeferenced=TRUE)
-#> [1] 943606574
+#> [1] 991539311
 ```
 
 Records from Denmark
@@ -71,7 +71,7 @@ Records from Denmark
 ```r
 denmark_code <- isocodes[grep("Denmark", isocodes$name), "code"]
 occ_count(country=denmark_code)
-#> [1] 27301026
+#> [1] 29429637
 ```
 
 Number of records in a particular dataset
@@ -87,7 +87,7 @@ All records from 2012
 
 ```r
 occ_count(year=2012)
-#> [1] 50765850
+#> [1] 52829793
 ```
 
 Records for a particular dataset, and only for preserved specimens
@@ -131,27 +131,26 @@ out$meta
 #> # A tibble: 1 x 4
 #>   offset limit endOfRecords count
 #>    <int> <int> <lgl>        <int>
-#> 1      0   100 FALSE         1020
+#> 1      0   100 FALSE         1044
 ```
 
 
 ```r
 head(out$data)
-#> # A tibble: 6 x 27
+#> # A tibble: 6 x 25
 #>      key scientificName datasetKey nubKey parentKey parent kingdom phylum
 #>    <int> <chr>          <chr>       <int>     <int> <chr>  <chr>   <chr> 
-#> 1 1.35e8 Mammalia       79c8c7d3-…    359 135011046 Chord… Animal… Chord…
-#> 2 1.35e8 Mammalia       b0135100-…    359 135025806 Chord… Animal… Chord…
-#> 3 1.35e8 Mammalia       04ffa69d-…    359 135034454 Chord… Animal… Chord…
-#> 4 1.35e8 Mammalia       7b3f4866-…    359 135080672 Chord… Animal… Chord…
-#> 5 1.35e8 Mammalia       1ddab917-…    359 135215962 Chord… Animal… Chord…
-#> 6 1.35e8 Mammalia       97b24147-…    359 135216923 Chord… Animal… Chord…
-#> # ... with 19 more variables: kingdomKey <int>, phylumKey <int>,
+#> 1 1.35e8 Mammalia       7b3f4866-…    359 135080672 Chord… Animal… Chord…
+#> 2 1.35e8 Mammalia       1ddab917-…    359 135215962 Chord… Animal… Chord…
+#> 3 1.35e8 Mammalia       97b24147-…    359 135216923 Chord… Animal… Chord…
+#> 4 1.35e8 Mammalia       f3a1e772-…    359 135229685 Chord… Animal… Chord…
+#> 5 1.44e8 Mammalia       3c188f76-…    359 143969855 Chord… Animal… Chord…
+#> 6 1.35e8 Mammalia       128fd844-…    359 135080507 Chord… Animal… Chord…
+#> # … with 17 more variables: kingdomKey <int>, phylumKey <int>,
 #> #   classKey <int>, canonicalName <chr>, authorship <chr>, nameType <chr>,
 #> #   taxonomicStatus <chr>, rank <chr>, origin <chr>, numDescendants <int>,
-#> #   numOccurrences <int>, habitats <chr>, nomenclaturalStatus <lgl>,
-#> #   threatStatuses <lgl>, synonym <lgl>, class <chr>, taxonID <chr>,
-#> #   constituentKey <chr>, extinct <lgl>
+#> #   numOccurrences <int>, habitats <lgl>, nomenclaturalStatus <lgl>,
+#> #   threatStatuses <lgl>, synonym <lgl>, class <chr>, taxonID <chr>
 ```
 
 
@@ -163,21 +162,20 @@ out$facets
 
 ```r
 out$hierarchies[1:2]
-#> $`135011053`
+#> $`135080673`
 #>     rankkey     name
-#> 1 135010932 Animalia
-#> 2 135011046 Chordata
+#> 1 135080671 Animalia
+#> 2 135080672 Chordata
 #> 
-#> $`135025807`
+#> $`135215963`
 #>     rankkey     name
-#> 1 135025805 Animalia
-#> 2 135025806 Chordata
+#> 1 135215961 Animalia
+#> 2 135215962 Chordata
 ```
 
 
 ```r
 out$names[2]
-#> $<NA>
 #> NULL
 ```
 
@@ -186,23 +184,23 @@ Search for a genus
 
 ```r
 head(name_lookup(query='Cnaemidophorus', rank="genus", return="data"))
-#> # A tibble: 6 x 34
-#>      key scientificName datasetKey nubKey parentKey parent kingdom phylum
-#>    <int> <chr>          <chr>       <int>     <int> <chr>  <chr>   <chr> 
-#> 1 1.34e8 Cnaemidophorus 23905003-… 1.86e6 134031457 Ptero… Animal… Arthr…
-#> 2 1.49e8 Cnaemidophorus d16563e0-… 1.86e6 148802896 Ptero… Animal… Arthr…
-#> 3 1.33e8 Cnaemidophorus 4cec8fef-… 1.86e6 133063901 Ptero… <NA>    Arthr…
-#> 4 1.48e8 Cnaemidophorus 7ddf754f-… 1.86e6 148385059 Ptero… Animal… Arthr…
-#> 5 1.41e8 Cnaemidophorus de8934f4-… 1.86e6 140665516 Ptero… Animal… Arthr…
-#> 6 1.24e8 Cnaemidophorus fab88965-… 1.86e6 104446806 Ptero… Metazoa Arthr…
-#> # ... with 26 more variables: order <chr>, family <chr>, genus <chr>,
-#> #   kingdomKey <int>, phylumKey <int>, classKey <int>, orderKey <int>,
-#> #   familyKey <int>, genusKey <int>, canonicalName <chr>,
-#> #   authorship <chr>, nameType <chr>, taxonomicStatus <chr>, rank <chr>,
-#> #   origin <chr>, numDescendants <int>, numOccurrences <int>,
-#> #   habitats <lgl>, nomenclaturalStatus <lgl>, threatStatuses <lgl>,
-#> #   synonym <lgl>, class <chr>, taxonID <chr>, publishedIn <chr>,
-#> #   extinct <lgl>, constituentKey <chr>
+#> # A tibble: 6 x 35
+#>      key scientificName datasetKey nubKey parentKey parent phylum order
+#>    <int> <chr>          <chr>       <int>     <int> <chr>  <chr>  <chr>
+#> 1 1.33e8 Cnaemidophorus 4cec8fef-… 1.86e6 133063901 Ptero… Arthr… Lepi…
+#> 2 1.53e8 Cnaemidophorus 7ddf754f-… 1.86e6 153048732 Ptero… Arthr… Lepi…
+#> 3 1.53e8 Cnaemidophorus d16563e0-… 1.86e6 152672840 Ptero… Arthr… Lepi…
+#> 4 1.24e8 Cnaemidophorus fab88965-… 1.86e6 104446806 Ptero… Arthr… Lepi…
+#> 5 1.53e8 Cnaemidophorus 4dd32523-… 1.86e6 152565575 Ptero… Arthr… Lepi…
+#> 6 1.52e8 Cnaemidophorus 23905003-… 1.86e6 152121874 Ptero… Arthr… Lepi…
+#> # … with 27 more variables: family <chr>, genus <chr>, phylumKey <int>,
+#> #   classKey <int>, orderKey <int>, familyKey <int>, genusKey <int>,
+#> #   canonicalName <chr>, authorship <chr>, nameType <chr>,
+#> #   taxonomicStatus <chr>, rank <chr>, origin <chr>, numDescendants <int>,
+#> #   numOccurrences <int>, habitats <lgl>, nomenclaturalStatus <lgl>,
+#> #   threatStatuses <lgl>, synonym <lgl>, class <chr>, kingdom <chr>,
+#> #   kingdomKey <int>, taxonID <chr>, publishedIn <chr>, extinct <lgl>,
+#> #   accordingTo <chr>, constituentKey <chr>
 ```
 
 Search for the class mammalia
@@ -210,21 +208,20 @@ Search for the class mammalia
 
 ```r
 head(name_lookup(query='mammalia', return = 'data'))
-#> # A tibble: 6 x 27
+#> # A tibble: 6 x 25
 #>      key scientificName datasetKey nubKey parentKey parent kingdom phylum
 #>    <int> <chr>          <chr>       <int>     <int> <chr>  <chr>   <chr> 
-#> 1 1.35e8 Mammalia       79c8c7d3-…    359 135011046 Chord… Animal… Chord…
-#> 2 1.35e8 Mammalia       b0135100-…    359 135025806 Chord… Animal… Chord…
-#> 3 1.35e8 Mammalia       04ffa69d-…    359 135034454 Chord… Animal… Chord…
-#> 4 1.35e8 Mammalia       7b3f4866-…    359 135080672 Chord… Animal… Chord…
-#> 5 1.35e8 Mammalia       1ddab917-…    359 135215962 Chord… Animal… Chord…
-#> 6 1.35e8 Mammalia       97b24147-…    359 135216923 Chord… Animal… Chord…
-#> # ... with 19 more variables: kingdomKey <int>, phylumKey <int>,
+#> 1 1.35e8 Mammalia       7b3f4866-…    359 135080672 Chord… Animal… Chord…
+#> 2 1.35e8 Mammalia       1ddab917-…    359 135215962 Chord… Animal… Chord…
+#> 3 1.35e8 Mammalia       97b24147-…    359 135216923 Chord… Animal… Chord…
+#> 4 1.35e8 Mammalia       f3a1e772-…    359 135229685 Chord… Animal… Chord…
+#> 5 1.44e8 Mammalia       3c188f76-…    359 143969855 Chord… Animal… Chord…
+#> 6 1.35e8 Mammalia       128fd844-…    359 135080507 Chord… Animal… Chord…
+#> # … with 17 more variables: kingdomKey <int>, phylumKey <int>,
 #> #   classKey <int>, canonicalName <chr>, authorship <chr>, nameType <chr>,
 #> #   taxonomicStatus <chr>, rank <chr>, origin <chr>, numDescendants <int>,
-#> #   numOccurrences <int>, habitats <chr>, nomenclaturalStatus <lgl>,
-#> #   threatStatuses <lgl>, synonym <lgl>, class <chr>, taxonID <chr>,
-#> #   constituentKey <chr>, extinct <lgl>
+#> #   numOccurrences <int>, habitats <lgl>, nomenclaturalStatus <lgl>,
+#> #   threatStatuses <lgl>, synonym <lgl>, class <chr>, taxonID <chr>
 ```
 
 Look up the species Helianthus annuus
@@ -233,23 +230,23 @@ Look up the species Helianthus annuus
 ```r
 head(name_lookup(query = 'Helianthus annuus', rank="species", return = 'data'))
 #> # A tibble: 6 x 40
-#>      key scientificName datasetKey nubKey parentKey parent genus species
-#>    <int> <chr>          <chr>       <int>     <int> <chr>  <chr> <chr>  
-#> 1 1.46e8 Helianthus an… 6a97172b-… 9.21e6 147653302 Helia… Heli… Helian…
-#> 2 1.35e8 Helianthus an… 29d2d5a6-… 9.21e6 148402516 Aster… <NA>  Helian…
-#> 3 1.28e8 Helianthus an… 41c06f1a-… 9.21e6 146770884 Amara… <NA>  Helian…
-#> 4 1.15e8 Helianthus an… ee2aac07-… 9.21e6 144238801 Helia… Heli… Helian…
-#> 5 1.35e8 Helianthus an… f82a4f7f-… 9.21e6 146642277 Aster… <NA>  Helian…
-#> 6 1.03e8 Helianthus an… fab88965-… 9.21e6 103340270 Helia… Heli… Helian…
-#> # ... with 32 more variables: genusKey <int>, speciesKey <int>,
-#> #   canonicalName <chr>, nameType <chr>, taxonomicStatus <chr>,
-#> #   rank <chr>, origin <chr>, numDescendants <int>, numOccurrences <int>,
-#> #   taxonID <chr>, habitats <chr>, nomenclaturalStatus <chr>,
-#> #   threatStatuses <lgl>, synonym <lgl>, kingdom <chr>, phylum <chr>,
-#> #   order <chr>, family <chr>, kingdomKey <int>, phylumKey <int>,
-#> #   classKey <int>, orderKey <int>, familyKey <int>, class <chr>,
+#>      key scientificName datasetKey nubKey parentKey parent kingdom phylum
+#>    <int> <chr>          <chr>       <int>     <int> <chr>  <chr>   <chr> 
+#> 1 1.35e8 Helianthus an… 29d2d5a6-… 9.21e6 148402516 Aster… Plantae Trach…
+#> 2 1.28e8 Helianthus an… 41c06f1a-… 9.21e6 146770884 Amara… Plantae <NA>  
+#> 3 1.46e8 Helianthus an… 6a97172b-… 9.21e6 147653302 Helia… <NA>    <NA>  
+#> 4 1.15e8 Helianthus an… ee2aac07-… 9.21e6 144238801 Helia… Plantae Trach…
+#> 5 1.35e8 Helianthus an… f82a4f7f-… 9.21e6 152142298 Aster… Plantae Trach…
+#> 6 1.35e8 Helianthus an… 278c9199-… 9.21e6 147652468 Aster… Plantae Trach…
+#> # … with 32 more variables: order <chr>, family <chr>, species <chr>,
+#> #   kingdomKey <int>, phylumKey <int>, classKey <int>, orderKey <int>,
+#> #   familyKey <int>, speciesKey <int>, canonicalName <chr>,
+#> #   nameType <chr>, taxonomicStatus <chr>, rank <chr>, origin <chr>,
+#> #   numDescendants <int>, numOccurrences <int>, taxonID <chr>,
+#> #   habitats <chr>, nomenclaturalStatus <chr>, threatStatuses <chr>,
+#> #   synonym <lgl>, class <chr>, genus <chr>, genusKey <int>,
 #> #   authorship <chr>, acceptedKey <int>, accepted <chr>,
-#> #   constituentKey <chr>, publishedIn <chr>, accordingTo <chr>,
+#> #   publishedIn <chr>, accordingTo <chr>, constituentKey <chr>,
 #> #   basionymKey <int>, basionym <chr>
 ```
 
@@ -343,11 +340,11 @@ head( name_suggest(q='Puma concolor') )
 #>       key canonicalName                rank      
 #>     <int> <chr>                        <chr>     
 #> 1 2435099 Puma concolor                SPECIES   
-#> 2 6164618 Puma concolor browni         SUBSPECIES
-#> 3 8951716 Puma concolor borbensis      SUBSPECIES
-#> 4 8860878 Puma concolor capricornensis SUBSPECIES
-#> 5 6164622 Puma concolor puma           SUBSPECIES
-#> 6 6164600 Puma concolor coryi          SUBSPECIES
+#> 2 6164622 Puma concolor puma           SUBSPECIES
+#> 3 6164589 Puma concolor anthonyi       SUBSPECIES
+#> 4 6164618 Puma concolor browni         SUBSPECIES
+#> 5 8951716 Puma concolor borbensis      SUBSPECIES
+#> 6 8860878 Puma concolor capricornensis SUBSPECIES
 ```
 
 
@@ -360,10 +357,10 @@ Just data
 
 ```r
 occ_get(key=855998194, return='data')
-#>               name       key decimalLatitude decimalLongitude
-#> 1 Sciurus vulgaris 855998194        58.40677         12.04386
-#>                 issues
-#> 1 cdround,gass84,rdatm
+#>         key                  scientificName decimalLatitude
+#> 1 855998194 Sciurus vulgaris Linnaeus, 1758        58.40677
+#>   decimalLongitude         issues
+#> 1         12.04386 cdround,gass84
 ```
 
 Just taxonomic hierarchy
@@ -400,10 +397,10 @@ occ_get(key=855998194, return='all')
 #> list()
 #> 
 #> $data
-#>               name       key decimalLatitude decimalLongitude
-#> 1 Sciurus vulgaris 855998194        58.40677         12.04386
-#>                 issues
-#> 1 cdround,gass84,rdatm
+#>         key                  scientificName decimalLatitude
+#> 1 855998194 Sciurus vulgaris Linnaeus, 1758        58.40677
+#>   decimalLongitude         issues
+#> 1         12.04386 cdround,gass84
 ```
 
 Get many occurrences. `occ_get` is vectorized
@@ -411,14 +408,14 @@ Get many occurrences. `occ_get` is vectorized
 
 ```r
 occ_get(key=c(855998194, 1425976049, 240713150), return='data')
-#>               name        key decimalLatitude decimalLongitude
-#> 1 Sciurus vulgaris  855998194        58.40677        12.043857
-#> 2    Cygnus cygnus 1425976049        58.26546         7.651751
-#> 3         Pelosina  240713150       -77.56670       163.583000
-#>                 issues
-#> 1 cdround,gass84,rdatm
-#> 2       cdround,gass84
-#> 3               gass84
+#>          key                  scientificName decimalLatitude
+#> 1  855998194 Sciurus vulgaris Linnaeus, 1758        58.40677
+#> 2 1425976049  Cygnus cygnus (Linnaeus, 1758)        58.26546
+#> 3  240713150            Pelosina Brady, 1879       -77.56670
+#>   decimalLongitude         issues
+#> 1        12.043857 cdround,gass84
+#> 2         7.651751 cdround,gass84
+#> 3       163.583000         gass84
 ```
 
 
@@ -429,43 +426,43 @@ By default `occ_search()` returns a `dplyr` like output summary in which the dat
 
 ```r
 occ_search(scientificName = "Ursus americanus", limit = 20)
-#> Records found [8907] 
+#> Records found [12042] 
 #> Records returned [20] 
 #> No. unique hierarchies [1] 
-#> No. media records [17] 
+#> No. media records [20] 
 #> No. facets [0] 
 #> Args [limit=20, offset=0, scientificName=Ursus americanus, fields=all] 
-#> # A tibble: 20 x 75
-#>    name     key decimalLatitude decimalLongitude issues datasetKey
-#>    <chr>  <int>           <dbl>            <dbl> <chr>  <chr>     
-#>  1 Ursu… 1.81e9            37.7           -120.  cdrou… 50c9509d-…
-#>  2 Ursu… 1.80e9            29.3           -103.  cdrou… 50c9509d-…
-#>  3 Ursu… 1.81e9            42.0           -124.  cdrou… 50c9509d-…
-#>  4 Ursu… 1.88e9            25.4           -101.  cdrou… 50c9509d-…
-#>  5 Ursu… 1.81e9            40.8            -81.7 cdrou… 50c9509d-…
-#>  6 Ursu… 1.81e9            34.4           -119.  gass84 50c9509d-…
-#>  7 Ursu… 1.88e9            31.8           -105.  cdrou… 50c9509d-…
-#>  8 Ursu… 1.81e9            25.4           -101.  gass84 50c9509d-…
-#>  9 Ursu… 1.80e9            30.0            -84.3 cdrou… 50c9509d-…
-#> 10 Ursu… 1.88e9            39.2           -121.  cdrou… 50c9509d-…
-#> 11 Ursu… 1.84e9            49.4           -123.  cdrou… 50c9509d-…
-#> 12 Ursu… 1.84e9            44.9           -110.  cdrou… 50c9509d-…
-#> 13 Ursu… 1.84e9            34.0           -117.  gass84 50c9509d-…
-#> 14 Ursu… 1.84e9            34.0           -117.  gass84 50c9509d-…
-#> 15 Ursu… 1.81e9            39.1           -120.  cdrou… 50c9509d-…
-#> 16 Ursu… 1.83e9            25.4           -101.  cdrou… 50c9509d-…
-#> 17 Ursu… 1.81e9            34.4           -120.  cdrou… 50c9509d-…
-#> 18 Ursu… 1.88e9            25.3           -101.  gass84 50c9509d-…
-#> 19 Ursu… 1.83e9            34.0           -117.  gass84 50c9509d-…
-#> 20 Ursu… 1.81e9            35.8            -83.6 cdrou… 50c9509d-…
-#> # ... with 69 more variables: publishingOrgKey <chr>, networkKeys <chr>,
+#> # A tibble: 20 x 74
+#>       key scientificName decimalLatitude decimalLongitude issues datasetKey
+#>     <int> <chr>                    <dbl>            <dbl> <chr>  <chr>     
+#>  1 1.99e9 Ursus america…            29.2            -81.8 cdrou… 50c9509d-…
+#>  2 1.99e9 Ursus america…            45.3            -76.8 cdrou… 50c9509d-…
+#>  3 1.99e9 Ursus america…            47.7           -122.  cdrou… 50c9509d-…
+#>  4 1.99e9 Ursus america…            32.6           -109.  cdrou… 50c9509d-…
+#>  5 1.99e9 Ursus america…            33.1            -91.9 cdrou… 50c9509d-…
+#>  6 1.99e9 Ursus america…            27.7            -81.5 gass84 50c9509d-…
+#>  7 1.99e9 Ursus america…            30.1           -103.  cdrou… 50c9509d-…
+#>  8 1.99e9 Ursus america…            39.4           -120.  cdrou… 50c9509d-…
+#>  9 1.99e9 Ursus america…            35.7            -76.6 cdrou… 50c9509d-…
+#> 10 1.99e9 Ursus america…            33.1            -91.9 cdrou… 50c9509d-…
+#> 11 1.99e9 Ursus america…            45.5            -93.1 cdrou… 50c9509d-…
+#> 12 1.99e9 Ursus america…            45.4            -93.1 cdrou… 50c9509d-…
+#> 13 1.99e9 Ursus america…            31.9            -94.7 cdrou… 50c9509d-…
+#> 14 1.99e9 Ursus america…            45.4            -93.2 cdrou… 50c9509d-…
+#> 15 1.99e9 Ursus america…            45.4            -93.2 cdrou… 50c9509d-…
+#> 16 1.99e9 Ursus america…            44.9            -62.7 cdrou… 50c9509d-…
+#> 17 1.99e9 Ursus america…            40.9           -121.  gass84 50c9509d-…
+#> 18 1.99e9 Ursus america…            39.0           -120.  cdrou… 50c9509d-…
+#> 19 1.99e9 Ursus america…            38.9           -120.  cdrou… 50c9509d-…
+#> 20 1.99e9 Ursus america…            35.6            -82.9 cdrou… 50c9509d-…
+#> # … with 68 more variables: publishingOrgKey <chr>, networkKeys <chr>,
 #> #   installationKey <chr>, publishingCountry <chr>, protocol <chr>,
 #> #   lastCrawled <chr>, lastParsed <chr>, crawlId <int>, extensions <chr>,
 #> #   basisOfRecord <chr>, taxonKey <int>, kingdomKey <int>,
 #> #   phylumKey <int>, classKey <int>, orderKey <int>, familyKey <int>,
 #> #   genusKey <int>, speciesKey <int>, acceptedTaxonKey <int>,
-#> #   scientificName <chr>, acceptedScientificName <chr>, kingdom <chr>,
-#> #   phylum <chr>, order <chr>, family <chr>, genus <chr>, species <chr>,
+#> #   acceptedScientificName <chr>, kingdom <chr>, phylum <chr>,
+#> #   order <chr>, family <chr>, genus <chr>, species <chr>,
 #> #   genericName <chr>, specificEpithet <chr>, taxonRank <chr>,
 #> #   taxonomicStatus <chr>, dateIdentified <chr>, stateProvince <chr>,
 #> #   year <int>, month <int>, day <int>, eventDate <chr>, modified <chr>,
@@ -473,14 +470,13 @@ occ_search(scientificName = "Ursus americanus", limit = 20)
 #> #   identifiers <chr>, facts <chr>, relations <chr>, geodeticDatum <chr>,
 #> #   class <chr>, countryCode <chr>, country <chr>, rightsHolder <chr>,
 #> #   identifier <chr>, verbatimEventDate <chr>, datasetName <chr>,
-#> #   collectionCode <chr>, gbifID <chr>, verbatimLocality <chr>,
+#> #   gbifID <chr>, verbatimLocality <chr>, collectionCode <chr>,
 #> #   occurrenceID <chr>, taxonID <chr>, catalogNumber <chr>,
 #> #   recordedBy <chr>, http...unknown.org.occurrenceDetails <chr>,
 #> #   institutionCode <chr>, rights <chr>, eventTime <chr>,
-#> #   occurrenceRemarks <chr>,
-#> #   http...unknown.org.http_..rs.gbif.org.terms.1.0.Multimedia <chr>,
-#> #   identificationID <chr>, infraspecificEpithet <chr>,
-#> #   coordinateUncertaintyInMeters <dbl>, informationWithheld <chr>
+#> #   identificationID <chr>, name <chr>,
+#> #   coordinateUncertaintyInMeters <dbl>, occurrenceRemarks <chr>,
+#> #   infraspecificEpithet <chr>, informationWithheld <chr>
 ```
 
 Or to be more precise, you can search for names first, make sure you have the right name, then pass the GBIF key to the `occ_search()` function:
@@ -489,66 +485,63 @@ Or to be more precise, you can search for names first, make sure you have the ri
 ```r
 key <- name_suggest(q='Helianthus annuus', rank='species')$key[1]
 occ_search(taxonKey=key, limit=20)
-#> Records found [42034] 
+#> Records found [43757] 
 #> Records returned [20] 
 #> No. unique hierarchies [1] 
-#> No. media records [15] 
+#> No. media records [16] 
 #> No. facets [0] 
 #> Args [limit=20, offset=0, taxonKey=9206251, fields=all] 
-#> # A tibble: 20 x 96
-#>    name     key decimalLatitude decimalLongitude issues datasetKey
-#>    <chr>  <int>           <dbl>            <dbl> <chr>  <chr>     
-#>  1 Heli… 1.81e9            52.6             10.1 cdrou… 6ac3f774-…
-#>  2 Heli… 1.81e9            25.6           -100.  cdrou… 50c9509d-…
-#>  3 Heli… 1.82e9            59.8             17.5 gass8… 38b4c89f-…
-#>  4 Heli… 1.84e9            34.1           -116.  gass84 50c9509d-…
-#>  5 Heli… 1.82e9            56.6             16.6 cdrou… 38b4c89f-…
-#>  6 Heli… 1.81e9            25.7           -100.  cdrou… 50c9509d-…
-#>  7 Heli… 1.82e9            56.6             16.4 cdrou… 38b4c89f-…
-#>  8 Heli… 1.81e9            32.0           -102.  cdrou… 50c9509d-…
-#>  9 Heli… 1.84e9            33.9           -117.  cdrou… 50c9509d-…
-#> 10 Heli… 1.84e9             0                0   cucdm… d2470ef8-…
-#> 11 Heli… 1.88e9            26.2            -98.2 cdrou… 50c9509d-…
-#> 12 Heli… 1.83e9            58.4             14.9 gass8… 38b4c89f-…
-#> 13 Heli… 1.81e9            25.7           -100.  cdrou… 50c9509d-…
-#> 14 Heli… 1.91e9            30.3            -98.0 cdrou… 50c9509d-…
-#> 15 Heli… 1.83e9            58.6             16.2 gass8… 38b4c89f-…
-#> 16 Heli… 1.83e9            34.0           -117.  cdrou… 50c9509d-…
-#> 17 Heli… 1.84e9            23.8           -107.  cdrou… 50c9509d-…
-#> 18 Heli… 1.84e9            26.2            -98.3 cdrou… 50c9509d-…
-#> 19 Heli… 1.88e9            26.1            -98.2 cdrou… 50c9509d-…
-#> 20 Heli… 1.84e9            25.8           -100.  cdrou… 50c9509d-…
-#> # ... with 90 more variables: publishingOrgKey <chr>, networkKeys <chr>,
+#> # A tibble: 20 x 91
+#>       key scientificName decimalLatitude decimalLongitude issues datasetKey
+#>     <int> <chr>                    <dbl>            <dbl> <chr>  <chr>     
+#>  1 1.99e9 Helianthus an…            34.0           -117.  cdrou… 50c9509d-…
+#>  2 1.99e9 Helianthus an…            33.4           -118.  cdrou… 50c9509d-…
+#>  3 1.99e9 Helianthus an…            33.8           -118.  cdrou… 50c9509d-…
+#>  4 1.99e9 Helianthus an…            53.9             10.9 cdrou… 6ac3f774-…
+#>  5 1.99e9 Helianthus an…            27.7            -97.3 cdrou… 50c9509d-…
+#>  6 1.99e9 Helianthus an…            52.6             10.1 cdrou… 6ac3f774-…
+#>  7 1.99e9 Helianthus an…            26.2            -98.2 cdrou… 50c9509d-…
+#>  8 2.01e9 Helianthus an…            31.5            -97.1 cdrou… 50c9509d-…
+#>  9 1.99e9 Helianthus an…            29.8            -95.2 cdrou… 50c9509d-…
+#> 10 2.01e9 Helianthus an…            31.6           -106.  cdrou… 50c9509d-…
+#> 11 2.01e9 Helianthus an…            27.5            -99.5 cdrou… 50c9509d-…
+#> 12 1.95e9 Helianthus an…           -37.8            175.  gass84 50c9509d-…
+#> 13 1.82e9 Helianthus an…            59.8             17.5 gass84 38b4c89f-…
+#> 14 1.95e9 Helianthus an…           -37.8            175.  gass84 50c9509d-…
+#> 15 1.82e9 Helianthus an…            56.6             16.4 cdrou… 38b4c89f-…
+#> 16 1.84e9 Helianthus an…            34.1           -116.  gass84 50c9509d-…
+#> 17 1.82e9 Helianthus an…            56.6             16.6 cdrou… 38b4c89f-…
+#> 18 1.81e9 Helianthus an…            25.7           -100.  cdrou… 50c9509d-…
+#> 19 1.81e9 Helianthus an…            25.6           -100.  cdrou… 50c9509d-…
+#> 20 1.84e9 Helianthus an…            33.9           -117.  cdrou… 50c9509d-…
+#> # … with 85 more variables: publishingOrgKey <chr>, networkKeys <chr>,
 #> #   installationKey <chr>, publishingCountry <chr>, protocol <chr>,
 #> #   lastCrawled <chr>, lastParsed <chr>, crawlId <int>, extensions <chr>,
 #> #   basisOfRecord <chr>, taxonKey <int>, kingdomKey <int>,
 #> #   phylumKey <int>, classKey <int>, orderKey <int>, familyKey <int>,
 #> #   genusKey <int>, speciesKey <int>, acceptedTaxonKey <int>,
-#> #   scientificName <chr>, acceptedScientificName <chr>, kingdom <chr>,
-#> #   phylum <chr>, order <chr>, family <chr>, genus <chr>, species <chr>,
+#> #   acceptedScientificName <chr>, kingdom <chr>, phylum <chr>,
+#> #   order <chr>, family <chr>, genus <chr>, species <chr>,
 #> #   genericName <chr>, specificEpithet <chr>, taxonRank <chr>,
-#> #   taxonomicStatus <chr>, coordinateUncertaintyInMeters <dbl>,
-#> #   year <int>, month <int>, day <int>, eventDate <chr>,
-#> #   lastInterpreted <chr>, license <chr>, identifiers <chr>, facts <chr>,
-#> #   relations <chr>, geodeticDatum <chr>, class <chr>, countryCode <chr>,
-#> #   country <chr>, recordedBy <chr>, catalogNumber <chr>,
-#> #   institutionCode <chr>, locality <chr>, gbifID <chr>,
-#> #   collectionCode <chr>,
-#> #   http...unknown.org.http_..rs.gbif.org.terms.1.0.Multimedia <chr>,
-#> #   dateIdentified <chr>, stateProvince <chr>, modified <chr>,
-#> #   references <chr>, rightsHolder <chr>, identifier <chr>,
-#> #   verbatimEventDate <chr>, datasetName <chr>, verbatimLocality <chr>,
-#> #   occurrenceID <chr>, taxonID <chr>,
-#> #   http...unknown.org.occurrenceDetails <chr>, rights <chr>,
-#> #   eventTime <chr>, identificationID <chr>, individualCount <int>,
-#> #   continent <chr>, county <chr>, municipality <chr>,
-#> #   identificationVerificationStatus <chr>, language <chr>, type <chr>,
-#> #   occurrenceStatus <chr>, vernacularName <chr>, taxonConceptID <chr>,
-#> #   informationWithheld <chr>, endDayOfYear <chr>, startDayOfYear <chr>,
-#> #   datasetID <chr>, accessRights <chr>, higherClassification <chr>,
-#> #   occurrenceRemarks <chr>, habitat <chr>, elevation <dbl>,
-#> #   elevationAccuracy <dbl>, recordNumber <chr>,
-#> #   ownerInstitutionCode <chr>, identifiedBy <chr>
+#> #   taxonomicStatus <chr>, dateIdentified <chr>, stateProvince <chr>,
+#> #   year <int>, month <int>, day <int>, eventDate <chr>, modified <chr>,
+#> #   lastInterpreted <chr>, references <chr>, license <chr>,
+#> #   identifiers <chr>, facts <chr>, relations <chr>, geodeticDatum <chr>,
+#> #   class <chr>, countryCode <chr>, country <chr>, rightsHolder <chr>,
+#> #   identifier <chr>, verbatimEventDate <chr>, datasetName <chr>,
+#> #   gbifID <chr>, verbatimLocality <chr>, collectionCode <chr>,
+#> #   occurrenceID <chr>, taxonID <chr>, catalogNumber <chr>,
+#> #   recordedBy <chr>, http...unknown.org.occurrenceDetails <chr>,
+#> #   institutionCode <chr>, rights <chr>, eventTime <chr>,
+#> #   identificationID <chr>, name <chr>,
+#> #   coordinateUncertaintyInMeters <dbl>, occurrenceRemarks <chr>,
+#> #   locality <chr>, individualCount <int>, continent <chr>, county <chr>,
+#> #   municipality <chr>, identificationVerificationStatus <chr>,
+#> #   language <chr>, type <chr>, occurrenceStatus <chr>,
+#> #   vernacularName <chr>, taxonConceptID <chr>, informationWithheld <chr>,
+#> #   endDayOfYear <chr>, startDayOfYear <chr>, datasetID <chr>,
+#> #   accessRights <chr>, higherClassification <chr>,
+#> #   identificationRemarks <chr>, habitat <chr>
 ```
 
 Like many functions in `rgbif`, you can choose what to return with the `return` parameter, here, just returning the metadata:
@@ -559,7 +552,7 @@ occ_search(taxonKey=key, return='meta')
 #> # A tibble: 1 x 4
 #>   offset limit endOfRecords count
 #> *  <int> <int> <lgl>        <int>
-#> 1    300   200 FALSE        42034
+#> 1    300   200 FALSE        43757
 ```
 
 You can choose what fields to return. This isn't passed on to the API query to GBIF as they don't allow that, but we filter out the columns before we give the data back to you.
@@ -567,36 +560,36 @@ You can choose what fields to return. This isn't passed on to the API query to G
 
 ```r
 occ_search(scientificName = "Ursus americanus", fields=c('name','basisOfRecord','protocol'), limit = 20)
-#> Records found [8907] 
+#> Records found [12042] 
 #> Records returned [20] 
 #> No. unique hierarchies [1] 
-#> No. media records [17] 
+#> No. media records [20] 
 #> No. facets [0] 
 #> Args [limit=20, offset=0, scientificName=Ursus americanus,
 #>      fields=name,basisOfRecord,protocol] 
-#> # A tibble: 20 x 3
-#>    name             protocol    basisOfRecord    
-#>    <chr>            <chr>       <chr>            
-#>  1 Ursus americanus DWC_ARCHIVE HUMAN_OBSERVATION
-#>  2 Ursus americanus DWC_ARCHIVE HUMAN_OBSERVATION
-#>  3 Ursus americanus DWC_ARCHIVE HUMAN_OBSERVATION
-#>  4 Ursus americanus DWC_ARCHIVE HUMAN_OBSERVATION
-#>  5 Ursus americanus DWC_ARCHIVE HUMAN_OBSERVATION
-#>  6 Ursus americanus DWC_ARCHIVE HUMAN_OBSERVATION
-#>  7 Ursus americanus DWC_ARCHIVE HUMAN_OBSERVATION
-#>  8 Ursus americanus DWC_ARCHIVE HUMAN_OBSERVATION
-#>  9 Ursus americanus DWC_ARCHIVE HUMAN_OBSERVATION
-#> 10 Ursus americanus DWC_ARCHIVE HUMAN_OBSERVATION
-#> 11 Ursus americanus DWC_ARCHIVE HUMAN_OBSERVATION
-#> 12 Ursus americanus DWC_ARCHIVE HUMAN_OBSERVATION
-#> 13 Ursus americanus DWC_ARCHIVE HUMAN_OBSERVATION
-#> 14 Ursus americanus DWC_ARCHIVE HUMAN_OBSERVATION
-#> 15 Ursus americanus DWC_ARCHIVE HUMAN_OBSERVATION
-#> 16 Ursus americanus DWC_ARCHIVE HUMAN_OBSERVATION
-#> 17 Ursus americanus DWC_ARCHIVE HUMAN_OBSERVATION
-#> 18 Ursus americanus DWC_ARCHIVE HUMAN_OBSERVATION
-#> 19 Ursus americanus DWC_ARCHIVE HUMAN_OBSERVATION
-#> 20 Ursus americanus DWC_ARCHIVE HUMAN_OBSERVATION
+#> # A tibble: 20 x 2
+#>    protocol    basisOfRecord    
+#>    <chr>       <chr>            
+#>  1 DWC_ARCHIVE HUMAN_OBSERVATION
+#>  2 DWC_ARCHIVE HUMAN_OBSERVATION
+#>  3 DWC_ARCHIVE HUMAN_OBSERVATION
+#>  4 DWC_ARCHIVE HUMAN_OBSERVATION
+#>  5 DWC_ARCHIVE HUMAN_OBSERVATION
+#>  6 DWC_ARCHIVE HUMAN_OBSERVATION
+#>  7 DWC_ARCHIVE HUMAN_OBSERVATION
+#>  8 DWC_ARCHIVE HUMAN_OBSERVATION
+#>  9 DWC_ARCHIVE HUMAN_OBSERVATION
+#> 10 DWC_ARCHIVE HUMAN_OBSERVATION
+#> 11 DWC_ARCHIVE HUMAN_OBSERVATION
+#> 12 DWC_ARCHIVE HUMAN_OBSERVATION
+#> 13 DWC_ARCHIVE HUMAN_OBSERVATION
+#> 14 DWC_ARCHIVE HUMAN_OBSERVATION
+#> 15 DWC_ARCHIVE HUMAN_OBSERVATION
+#> 16 DWC_ARCHIVE HUMAN_OBSERVATION
+#> 17 DWC_ARCHIVE HUMAN_OBSERVATION
+#> 18 DWC_ARCHIVE HUMAN_OBSERVATION
+#> 19 DWC_ARCHIVE HUMAN_OBSERVATION
+#> 20 DWC_ARCHIVE HUMAN_OBSERVATION
 ```
 
 Most parameters are vectorized, so you can pass in more than one value:
@@ -606,7 +599,7 @@ Most parameters are vectorized, so you can pass in more than one value:
 splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
 keys <- sapply(splist, function(x) name_suggest(x)$key[1], USE.NAMES=FALSE)
 occ_search(taxonKey=keys, limit=5)
-#> Occ. found [2482598 (704794), 9362842 (3810565), 2498387 (1246763)] 
+#> Occ. found [2482598 (709564), 9362842 (3822355), 2498387 (1248740)] 
 #> Occ. returned [2482598 (5), 9362842 (5), 2498387 (5)] 
 #> No. unique hierarchies [2482598 (1), 9362842 (1), 2498387 (1)] 
 #> No. media records [2482598 (5), 9362842 (5), 2498387 (5)] 
@@ -614,22 +607,22 @@ occ_search(taxonKey=keys, limit=5)
 #> Args [limit=5, offset=0, taxonKey=2482598,9362842,2498387, fields=all] 
 #> 3 requests; First 10 rows of data from 2482598
 #> 
-#> # A tibble: 5 x 72
-#>   name     key decimalLatitude decimalLongitude issues datasetKey
-#>   <chr>  <int>           <dbl>            <dbl> <chr>  <chr>     
-#> 1 Cyan… 1.81e9            48.4            -124. cdrou… 50c9509d-…
-#> 2 Cyan… 1.80e9            38.0            -105. gass84 50c9509d-…
-#> 3 Cyan… 1.81e9            49.2            -124. cdrou… 50c9509d-…
-#> 4 Cyan… 1.80e9            49.2            -124. cdrou… 50c9509d-…
-#> 5 Cyan… 1.81e9            32.9            -108. cdrou… 50c9509d-…
-#> # ... with 66 more variables: publishingOrgKey <chr>, networkKeys <chr>,
+#> # A tibble: 5 x 71
+#>      key scientificName decimalLatitude decimalLongitude issues datasetKey
+#>    <int> <chr>                    <dbl>            <dbl> <chr>  <chr>     
+#> 1 1.99e9 Cyanocitta st…            16.7            -92.7 cdrou… 50c9509d-…
+#> 2 1.99e9 Cyanocitta st…            32.9           -106.  cdrou… 50c9509d-…
+#> 3 1.99e9 Cyanocitta st…            32.9           -106.  cdrou… 50c9509d-…
+#> 4 1.99e9 Cyanocitta st…            32.9           -106.  cdrou… 50c9509d-…
+#> 5 1.99e9 Cyanocitta st…            32.9           -106.  cdrou… 50c9509d-…
+#> # … with 65 more variables: publishingOrgKey <chr>, networkKeys <chr>,
 #> #   installationKey <chr>, publishingCountry <chr>, protocol <chr>,
 #> #   lastCrawled <chr>, lastParsed <chr>, crawlId <int>, extensions <chr>,
 #> #   basisOfRecord <chr>, taxonKey <int>, kingdomKey <int>,
 #> #   phylumKey <int>, classKey <int>, orderKey <int>, familyKey <int>,
 #> #   genusKey <int>, speciesKey <int>, acceptedTaxonKey <int>,
-#> #   scientificName <chr>, acceptedScientificName <chr>, kingdom <chr>,
-#> #   phylum <chr>, order <chr>, family <chr>, genus <chr>, species <chr>,
+#> #   acceptedScientificName <chr>, kingdom <chr>, phylum <chr>,
+#> #   order <chr>, family <chr>, genus <chr>, species <chr>,
 #> #   genericName <chr>, specificEpithet <chr>, taxonRank <chr>,
 #> #   taxonomicStatus <chr>, dateIdentified <chr>,
 #> #   coordinateUncertaintyInMeters <dbl>, stateProvince <chr>, year <int>,
@@ -638,12 +631,11 @@ occ_search(taxonKey=keys, limit=5)
 #> #   identifiers <chr>, facts <chr>, relations <chr>, geodeticDatum <chr>,
 #> #   class <chr>, countryCode <chr>, country <chr>, rightsHolder <chr>,
 #> #   identifier <chr>, verbatimEventDate <chr>, datasetName <chr>,
-#> #   collectionCode <chr>, gbifID <chr>, verbatimLocality <chr>,
+#> #   gbifID <chr>, verbatimLocality <chr>, collectionCode <chr>,
 #> #   occurrenceID <chr>, taxonID <chr>, catalogNumber <chr>,
 #> #   recordedBy <chr>, http...unknown.org.occurrenceDetails <chr>,
 #> #   institutionCode <chr>, rights <chr>, eventTime <chr>,
-#> #   http...unknown.org.http_..rs.gbif.org.terms.1.0.Multimedia <chr>,
-#> #   identificationID <chr>
+#> #   identificationID <chr>, name <chr>
 ```
 
 

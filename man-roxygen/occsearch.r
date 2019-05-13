@@ -163,17 +163,22 @@
 #'
 #' **WKT**: Examples of valid WKT objects:
 #' \itemize{
-#'  \item 'POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))'
-#'  \item 'MULTIPOLYGON(((-123 38, -123 43, -116 43, -116 38, -123 38)),((-97 41, -97 45, -93 45, -93 41, -97 41)))'
+#'  \item 'POLYGON((-19.5 34.1, 27.8 34.1, 35.9 68.1, -25.3 68.1, -19.5 34.1))'
+#'  \item 'MULTIPOLYGON(((-123 38,-116 38,-116 43,-123 43,-123 38)),((-97 41,-93 41,-93 45,-97 45,-97 41)))'
 #'  \item 'POINT(-120 40)'
 #'  \item 'LINESTRING(3 4,10 50,20 25)'
 #'  \item 'LINEARRING' ???' - Not sure how to specify this. Anyone?
 #' }
+#' 
+#' Note that GBIF expects counter-clockwise winding order for WKT. You can
+#' supply clockwise WKT, but GBIF treats it as an exclusion, so you get all
+#' data not inside the WKT area. [occ_download()] behaves differently
+#' in that you should simply get no data back at all with clockwise WKT.
 #'
 #' **Long WKT**: Options for handling long WKT strings:
 #' Note that long WKT strings are specially handled when using \code{\link{occ_search}} or
 #' \code{\link{occ_data}}. Here are the three options for long WKT strings (> 1500 characters),
-#' set one of these three via the parameter \code{geom_big\code{:
+#' set one of these three via the parameter \code{geom_big}:
 #' \itemize{
 #'  \item asis - the default setting. This means we don't do anything internally. That is,
 #'  we just pass on your WKT string just as we've done before in this package.

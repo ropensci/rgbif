@@ -11,7 +11,7 @@ move:
 
 rmd2md:
 		cd vignettes;\
-		mv rgbif_vignette.md rgbif_vignette.Rmd;\
+		mv rgbif_vignette.md rgbif.Rmd;\
 		mv issues_vignette.md issues_vignette.Rmd;\
 		mv taxonomic_names.md taxonomic_names.Rmd;\
 		mv downloads.md downloads.Rmd
@@ -30,3 +30,6 @@ doc:
 
 eg:
 	${RSCRIPT} -e "devtools::run_examples()"
+
+codemeta:
+	${RSCRIPT} -e "codemetar::write_codemeta()"

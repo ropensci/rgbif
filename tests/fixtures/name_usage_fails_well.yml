@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '404'
@@ -17,19 +17,18 @@ http_interactions:
       explanation: Nothing matches the given URI
     headers:
       status: HTTP/1.1 404 Not Found
-      date: Tue, 09 Oct 2018 21:17:16 GMT
+      date: Tue, 26 Feb 2019 15:29:55 GMT
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       content-length: '0'
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/species/3119195/verbatim?offset=0&limit=100
       cache-control: no-cache, no-store, must-revalidate
-      x-varnish: '73433255'
+      x-varnish: '779453029'
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       connection: keep-alive
     body:
       encoding: UTF-8
       string: ''
-  recorded_at: 2018-10-09 21:17:16 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+  recorded_at: 2019-02-26 15:29:55 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4

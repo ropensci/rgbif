@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -17,24 +17,23 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 21:42:10 GMT
+      date: Tue, 26 Feb 2019 17:23:58 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/search?limit=0&facet=country
       cache-control: public, max-age=600
-      x-varnish: 63343516 39885096
-      age: '69'
+      x-varnish: 844202369 841547957
+      age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
       content-length: '428'
       connection: keep-alive
     body:
       encoding: UTF-8
-      string: '{"offset":0,"limit":0,"endOfRecords":false,"count":1019284935,"results":[],"facets":[{"field":"COUNTRY","counts":[{"name":"US","count":324446840},{"name":"SE","count":79626359},{"name":"AU","count":68750150},{"name":"GB","count":65826216},{"name":"FR","count":57764299},{"name":"CA","count":45380246},{"name":"DE","count":30260705},{"name":"NO","count":28434790},{"name":"DK","count":27297949},{"name":"ES","count":26915224}]}]}'
-  recorded_at: 2018-10-09 21:43:21 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+      string: '{"offset":0,"limit":0,"endOfRecords":false,"count":1083069575,"results":[],"facets":[{"field":"COUNTRY","counts":[{"name":"US","count":327138198},{"name":"SE","count":80197935},{"name":"AU","count":73759906},{"name":"GB","count":65890848},{"name":"FR","count":57886014},{"name":"CA","count":50311724},{"name":"NL","count":48854341},{"name":"DE","count":37904276},{"name":"NO","count":31585562},{"name":"DK","count":29429663}]}]}'
+  recorded_at: 2019-02-26 17:24:02 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search?facetMincount=30000000&limit=0&facet=country
@@ -44,8 +43,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -53,21 +52,20 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 21:42:12 GMT
+      date: Tue, 26 Feb 2019 17:24:00 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/occurrence/search?facetMincount=30000000&limit=0&facet=country
       cache-control: public, max-age=600
-      x-varnish: 37527266 59673600
-      age: '67'
+      x-varnish: 787910547 809503201
+      age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
-      content-length: '335'
+      content-length: '397'
       connection: keep-alive
     body:
       encoding: UTF-8
-      string: '{"offset":0,"limit":0,"endOfRecords":false,"count":1019284935,"results":[],"facets":[{"field":"COUNTRY","counts":[{"name":"US","count":324446840},{"name":"SE","count":79626359},{"name":"AU","count":68750150},{"name":"GB","count":65826216},{"name":"FR","count":57764299},{"name":"CA","count":45380246},{"name":"DE","count":30260705}]}]}'
-  recorded_at: 2018-10-09 21:43:21 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+      string: '{"offset":0,"limit":0,"endOfRecords":false,"count":1083069575,"results":[],"facets":[{"field":"COUNTRY","counts":[{"name":"US","count":327138198},{"name":"SE","count":80197935},{"name":"AU","count":73759906},{"name":"GB","count":65890848},{"name":"FR","count":57886014},{"name":"CA","count":50311724},{"name":"NL","count":48854341},{"name":"DE","count":37904276},{"name":"NO","count":31585562}]}]}'
+  recorded_at: 2019-02-26 17:24:02 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4

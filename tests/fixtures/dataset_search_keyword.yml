@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
-      X-USER-AGENT: r-curl/3.2 crul/0.5.2 rOpenSci(rgbif/0.9.9.9610)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -17,28 +17,27 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Sun, 17 Jun 2018 05:03:12 GMT
+      date: Tue, 26 Feb 2019 15:14:07 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/dataset/search?limit=100&keyword=france
       cache-control: public, max-age=600
-      x-varnish: 493093492 491160239
+      x-varnish: 775782644 776929576
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
-      content-length: '12940'
+      content-length: '16075'
       connection: keep-alive
     body:
       encoding: UTF-8
-      string: '{"offset":0,"limit":7,"endOfRecords":true,"count":7,"results":[{"key":"baa86fb2-7346-4507-a34f-44e4c1bd0d57","title":"Carnet
+      string: '{"offset":0,"limit":8,"endOfRecords":true,"count":8,"results":[{"key":"baa86fb2-7346-4507-a34f-44e4c1bd0d57","title":"Carnet
         en Ligne","description":"Données issues du programme de sciences participatives
         Flora Data. Des botanistes novices comme experts alimentent ce jeu de données
         en publiant leurs observations à travers le réseau Tela Botanica, à l''aide
         de l''outil Carnet en Ligne. Participez ! http://www.tela-botanica.org/page:flora_data","type":"OCCURRENCE","hostingOrganizationKey":"b2dbd210-90c2-11df-86a3-b8a03c50a862","hostingOrganizationTitle":"Tela
         Botanica","countryCoverage":[],"publishingCountry":"FR","publishingOrganizationKey":"b2dbd210-90c2-11df-86a3-b8a03c50a862","publishingOrganizationTitle":"Tela
-        Botanica","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","decades":[],"keywords":["commune","phanérogame","France"],"recordCount":306084},{"key":"2d680d46-d783-4ea7-94b1-2556cd653e36","title":"Phytochorologie
+        Botanica","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","decades":[],"keywords":["commune","phanérogame","France"],"recordCount":326251},{"key":"2d680d46-d783-4ea7-94b1-2556cd653e36","title":"Phytochorologie
         des départements français","description":"Ce projet à pour but de réaliser
         les listes  de plantes présentes dans chaque département français.\n\nUn travail
         d''harmonisation est réalisé pour la nomenclature des taxons sur la base de
@@ -55,36 +54,87 @@ http_interactions:
         française à maille départementale, en scindant bien les données anciennes
         et récentes.\n\nhttp://legumino.tela-botanica.org/","type":"OCCURRENCE","hostingOrganizationKey":"b2dbd210-90c2-11df-86a3-b8a03c50a862","hostingOrganizationTitle":"Tela
         Botanica","countryCoverage":[],"publishingCountry":"FR","publishingOrganizationKey":"b2dbd210-90c2-11df-86a3-b8a03c50a862","publishingOrganizationTitle":"Tela
-        Botanica","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","decades":[],"keywords":["fabaceae","commune","phanérogame","France","leguminosae"],"recordCount":39957},{"key":"3f5e930b-52a5-461d-87ec-26ecd66f14a3","title":"RINSE
+        Botanica","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","decades":[],"keywords":["fabaceae","commune","phanérogame","France","leguminosae"],"recordCount":39957},{"key":"01d9098d-7dec-4235-b783-c537478cd4c2","title":"Inventaire
+        des Mammifères marins de France (métropole et outre-mer)","description":"Le
+        jeu de données de l’Atlas des mammifères marins de France synthétise plus
+        de 90 000 données d’observation récoltées depuis 2000 pour connaître la distribution
+        des 16 carnivores, 53 cétartiodactyles et 2 siréniens peuplant les eaux françaises.\n\nCoordonné
+        par la Société française pour l’étude et la Protection des Mammifères (SFEPM)
+        et le Muséum national d’Histoire naturelle, en partenariat avec l’Observatoire
+        Pelagis, ce projet a mobilisé plus de 45 structures en métropole et en outre-mer
+        : des organismes de recherche, des gestionnaires d’espaces protégés, des organismes
+        publics, mais aussi des associations et des particuliers. \n\nL’agence des
+        Aires marines protégées, Aquasearch, l’Association Évasion tropicale (AET),
+        le Centre de la mer de Biarritz (CMB), le Centre d’étude biologique de Chizé
+        (CEBC), le Centre National de la Recherche Scientifique (CNRS), la Collectivité
+        des TAAF, la Commission Baleinière Internationale, le Conseil départemental
+        de Mayotte, la Coordination Mammalogique du Nord de la France (CMNF), Dauphin
+        Passion, la DEAL de Guyane, la Direction de l’alimentation, de l’agriculture
+        et de la forêt de Mayotte (DAAF), la Direction de l’environnement de Nouvelle-Calédonie,
+        la Direction de l’environnement et du développement durable de Mayotte, la
+        Direction des Territoires, de l’alimentation et de la mer de Saint-Pierre-et-Miquelon,
+        EcoOcéan Institut, la Fédération française d’étude et de sport sous-marin
+        (FFESSM), France Nature Environnement de Saint-Pierre-et-Miquelon (FNE SPM),
+        Globice, le Groupe d''étude des Cétacés de Méditerranée (GECEM), le Groupe
+        d’Etude des Cétacés du Cotentin (GECC), le Groupe d''étude des Mammifères
+        marins (GEMM), le Groupe d’Etude et de Protection des Oiseaux de Guyane (GEPOG),
+        le Groupement d’Intérêt Scientifique pour les Mammifères Marins de Méditerranée
+        (GIS3M), l’Institut français de recherche pour l’exploitation de la mer (Ifremer),
+        l’Institut Polaire français Paul-Emile Victoire (IPEV), Kwata, Le Baleineau,
+        l’unité Littoral Environnement et Sociétés (LIENSs), LOCEAN (MNHN), l’Observatoire
+        de Cétacés de la Martinique (OCETAM), l’Observatoire des Mammifères marins
+        de l''Archipel Guadeloupéen (OMMAG), l’Observatoire Pelagis, l’Observatoire
+        pour la Conservation et l’étude des animaux et milieux marins (OCEAMM), Océanopolis,
+        l’Office National de la Chasse et de la Faune Sauvage (ONCFS), Opération Cétacés,
+        Orca, le Parc national de Guadeloupe, le Parc naturel marin d''Iroise, la
+        Réserve Naturelle nationale de l’île du Grand-Connétable (RNC), la Réserve
+        Naturelle de l’Amana (RNA), la Réserve Naturelle des Terres Australes Françaises
+        - Terres Australes et Antarctiques Françaises, SHELL Exploration and Production
+        France, South Pacific Whale Research Consortium (SPWRC), Te mana o te moana
+        et l’Université de la Rochelle ont ainsi accepté de partager leurs données
+        pour mettre à jour les cartes de répartition des Mammifères marins.\n\nLes
+        données récoltées pour cet atlas couvrent quinze années, de 2000 à 2015, avec
+        quelques ajouts ponctuels de données datant de 2016. Elles concernent l’ensemble
+        des zones économiques exclusives françaises et une zone de 200 milles autour
+        de la Terre Adélie. Une recherche de références bibliographiques attestant
+        de la présence des espèces supposées présentes en France mais ne bénéficiant
+        d’aucune donnée d’occurrence a également servi à préciser les distributions.
+        \n\nPour avoir plus de précision sur les données ayant servi à réaliser la
+        carte de synthèse de cet atlas, il faut afficher les différents jeux de données
+        utilisés dont les producteurs sont cités ci-dessus.","type":"OCCURRENCE","hostingOrganizationKey":"1928bdf0-f5d2-11dc-8c12-b8a03c50a862","hostingOrganizationTitle":"UMS
+        PatriNat (AFB-CNRS-MNHN), Paris","countryCoverage":[],"publishingCountry":"FR","publishingOrganizationKey":"1928bdf0-f5d2-11dc-8c12-b8a03c50a862","publishingOrganizationTitle":"UMS
+        PatriNat (AFB-CNRS-MNHN), Paris","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","decades":[2000,2010],"keywords":["atlas","Observation","France","Occurrence","mammifères
+        marins"],"recordCount":16540},{"key":"3f5e930b-52a5-461d-87ec-26ecd66f14a3","title":"RINSE
         - Registry of non-native species in the Two Seas region countries (Great Britain,
         France, Belgium and the Netherlands)","description":"<p>The Registry of non-native
         species in the Two Seas region countries is a species checklist dataset published
-        by the University of Cambridge. It contains information on 6.661 taxa occurring
-        in Great Britain, France, Belgium and the Netherlands. This dataset represents
-        a registry of species that are not native, but recorded to live in the wild
-        in at least one of the four countries and is the result of the screening of
-        55 national and international print and online sources. The checklist has
-        been published as a data paper by Zieritz et al. (2014, https://doi.org/10.3897/neobiota.23.5665),
-        where it can be downloaded as supplementary material. Here it is published
-        as a standardized Darwin Core Archive and includes for each taxon: the scientific
+        by the Research Institute of Nature and Forest (INBO). It contains information
+        on 6.643 taxa occurring in the Two Seas region countries (Great Britain, France,
+        Belgium and the Netherlands). This dataset represents a registry of species
+        that are not native, but recorded to live in the wild in at least one of the
+        four countries and is the result of the screening of 55 national and international
+        print and online sources. The checklist has been published as a data paper
+        by Zieritz et al. (2014, https://doi.org/10.3897/neobiota.23.5665), where
+        it can be downloaded as supplementary material. Here it is published as a
+        standardized Darwin Core Archive and includes for each taxon: the scientific
         name, higher classification and stable taxon identifier (in the taxon core),
         the (confidence regarding the) presence of the species in each of the four
         countries, whether the species is native or introduced (establishment) (in
         the distribution extension) and coarse habitat information (in the species
         profile extension). Issues with the dataset can be reported at: https://github.com/trias-project/rinse-registry-checklist</p>\n<p>We
         have released this dataset to the public domain under a Creative Commons Zero
-        waiver. We would appreciate it if you follow the GBIF citation guidelines
-        (https://www.gbif.org/citation-guidelines) when using the data. If you have
-        any questions regarding this dataset, don&#39;t hesitate to contact us via
-        the contact information provided in the metadata or via https://twitter.com/trias_project.</p>\n<p>This
-        dataset was published as open data for the TrIAS project (Tracking Invasive
-        Alien Species http://trias-project.be, Vanderhoeven et al. 2017), with technical
-        support provided by the Research Institute for Nature and Forest (INBO). It
-        is selected as one of the authoritative sources for the compilation of a unified
-        and standardized checklist of alien species in Belgium.</p>","type":"CHECKLIST","hostingOrganizationKey":"1cd669d0-80ea-11de-a9d0-f1765f95f18b","hostingOrganizationTitle":"Research
+        waiver. We would appreciate it if you follow the INBO norms for data use (https://www.inbo.be/en/norms-data-use)
+        when using the data. If you have any questions regarding this dataset, don&#39;t
+        hesitate to contact us via the contact information provided in the metadata
+        or via https://twitter.com/LifeWatchINBO.</p>\n<p>This dataset was published
+        as open data for the TrIAS project (Tracking Invasive Alien Species http://trias-project.be,
+        Vanderhoeven et al. 2017), with technical support provided by the Research
+        Institute for Nature and Forest (INBO). It is selected as one of the authoritative
+        sources for the compilation of a unified and reproducible checklist of alien
+        species in Belgium.</p>","type":"CHECKLIST","hostingOrganizationKey":"1cd669d0-80ea-11de-a9d0-f1765f95f18b","hostingOrganizationTitle":"Research
         Institute for Nature and Forest (INBO)","countryCoverage":[],"publishingCountry":"BE","publishingOrganizationKey":"1cd669d0-80ea-11de-a9d0-f1765f95f18b","publishingOrganizationTitle":"Research
         Institute for Nature and Forest (INBO)","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[2010],"keywords":["registry","Great
-        Britain","Netherlands","Belgium","alien species","Checklist","English Channel","TrIAS","France"],"projectIdentifier":"TrIAS","recordCount":9663},{"key":"2aaf8ea9-0460-41d2-a651-3583479947c6","title":"Actualisation
+        Britain","Netherlands","Belgium","alien species","Checklist","English Channel","TrIAS","France"],"projectIdentifier":"TrIAS","recordCount":9665},{"key":"2aaf8ea9-0460-41d2-a651-3583479947c6","title":"Actualisation
         de la cartographie des Ptéridophytes de France et d''Europe occidentale","description":"Ce
         projet a pour but de réactualiser, avec un point de départ au 1er janvier
         2000, les cartes de répartition présentées dans l''ouvrage de R. Prelli &
@@ -107,56 +157,38 @@ http_interactions:
         information on taxonomy (from species to order and higher taxonomic levels).
         Systematics was reviewed and homogeneized by T Saucède for taxonomic relevance
         (Saucède et al. 2012).","type":"OCCURRENCE","hostingOrganizationKey":"bb922300-7ddb-11de-a300-90ac77aa923f","hostingOrganizationTitle":"ZooKeys","countryCoverage":[],"publishingCountry":"BG","publishingOrganizationKey":"bb922300-7ddb-11de-a300-90ac77aa923f","publishingOrganizationTitle":"ZooKeys","license":"http://creativecommons.org/licenses/by/4.0/legalcode","decades":[],"keywords":["Echinoids","Hauterivian","Early
-        Cretaceous","Calcaires à Spatangues Formation","Paris Basin","France"],"recordCount":628},{"key":"01d9098d-7dec-4235-b783-c537478cd4c2","title":"Inventaire
-        des Mammifères marins de France (métropole et outre-mer)","description":"Le
-        jeu de données de l’Atlas des mammifères marins de France synthétise plus
-        de 90 000 données d’observation récoltées depuis 2000 pour connaître la distribution
-        des 16 carnivores, 53 cétartiodactyles et 2 siréniens peuplant les eaux françaises.\n\nCoordonné
-        par la Société française pour l’étude et la Protection des Mammifères (SFEPM)
-        et le Muséum national d’Histoire naturelle, en partenariat avec l’Observatoire
-        Pelagis, ce projet a mobilisé plus de 45 structures en métropole et en outre-mer
-        : des organismes de recherche, des gestionnaires d’espaces protégés, des organismes
-        publics, mais aussi des associations et des particuliers. \n\nL’agence des
-        Aires marines protégées, Aquasearch, l’Association Évasion tropicale (AET),
-        le Centre de la mer de Biarritz (CMB), le Centre d’étude biologique de Chizé
-        (CEBC), le Centre National de la Recherche Scientifique (CNRS), la Collectivité
-        des TAAF, la Commission Baleinière Internationale, le Conseil départemental
-        de Mayotte, la Coordination Mammalogique du Nord de la France (CMNF), Dauphin
-        Passion, la DEAL de Guyane, la Direction de l’alimentation, de l’agriculture
-        et de la forêt de Mayotte (DAAF), la Direction de l’environnement de Nouvelle-Calédonie,
-        la Direction de l’environnement et du développement durable de Mayotte, la
-        Direction des Territoires, de l’alimentation et de la mer de Saint-Pierre-et-Miquelon,
-        EcoOcéan Institut, la Fédération française d’étude et de sport sous-marin
-        (FFESSM), France Nature Environnement de Saint-Pierre-et-Miquelon (FNE SPM),
-        Globice, le Groupe d&#39;étude des Cétacés de Méditerranée (GECEM), le Groupe
-        d’Etude des Cétacés du Cotentin (GECC), le Groupe d&#39;étude des Mammifères
-        marins (GEMM), le Groupe d’Etude et de Protection des Oiseaux de Guyane (GEPOG),
-        le Groupement d’Intérêt Scientifique pour les Mammifères Marins de Méditerranée
-        (GIS3M), l’Institut français de recherche pour l’exploitation de la mer (Ifremer),
-        l’Institut Polaire français Paul-Emile Victoire (IPEV), Kwata, Le Baleineau,
-        l’unité Littoral Environnement et Sociétés (LIENSs), LOCEAN (MNHN), l’Observatoire
-        de Cétacés de la Martinique (OCETAM), l’Observatoire des Mammifères marins
-        de l&#39;Archipel Guadeloupéen (OMMAG), l’Observatoire Pelagis, l’Observatoire
-        pour la Conservation et l’étude des animaux et milieux marins (OCEAMM), Océanopolis,
-        l’Office National de la Chasse et de la Faune Sauvage (ONCFS), Opération Cétacés,
-        Orca, le Parc national de Guadeloupe, le Parc naturel marin d&#39;Iroise,
-        la Réserve Naturelle nationale de l’île du Grand-Connétable (RNC), la Réserve
-        Naturelle de l’Amana (RNA), la Réserve Naturelle des Terres Australes Françaises
-        - Terres Australes et Antarctiques Françaises, SHELL Exploration and Production
-        France, South Pacific Whale Research Consortium (SPWRC), Te mana o te moana
-        et l’Université de la Rochelle ont ainsi accepté de partager leurs données
-        pour mettre à jour les cartes de répartition des Mammifères marins.\n\nLes
-        données récoltées pour cet atlas couvrent quinze années, de 2000 à 2015, avec
-        quelques ajouts ponctuels de données datant de 2016. Elles concernent l’ensemble
-        des zones économiques exclusives françaises et une zone de 200 milles autour
-        de la Terre Adélie. Une recherche de références bibliographiques attestant
-        de la présence des espèces supposées présentes en France mais ne bénéficiant
-        d’aucune donnée d’occurrence a également servi à préciser les distributions.
-        \n\nPour avoir plus de précision sur les données ayant servi à réaliser la
-        carte de synthèse de cet atlas, il faut afficher les différents jeux de données
-        utilisés dont les producteurs sont cités ci-dessus.","type":"OCCURRENCE","hostingOrganizationKey":"1928bdf0-f5d2-11dc-8c12-b8a03c50a862","hostingOrganizationTitle":"SPN
-        - Service du Patrimoine naturel, Muséum national d''Histoire naturelle, Paris","countryCoverage":[],"publishingCountry":"FR","publishingOrganizationKey":"1928bdf0-f5d2-11dc-8c12-b8a03c50a862","publishingOrganizationTitle":"SPN
-        - Service du Patrimoine naturel, Muséum national d''Histoire naturelle, Paris","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","decades":[2000,2010],"keywords":["atlas","Observation","France","Occurrence","mammifères
-        marins"]}],"facets":[]}'
-  recorded_at: 2018-06-17 05:03:12 GMT
-  recorded_with: vcr/0.1.0, webmockr/0.2.6, crul/0.5.2
+        Cretaceous","Calcaires à Spatangues Formation","Paris Basin","France"],"recordCount":628},{"key":"1738f272-6b5d-4f43-9a92-453a8c5ea50a","title":"RINSE
+        - Pathways and vectors of biological invasions in Northwest Europe","description":"<p>RINSE
+        - pathways and vectors of biological invasions in Northwest Europe is a species
+        checklist dataset published by the Research Institute for Nature and Forest
+        (INBO). It contains detailed information on 359 taxa, comprising all non-native
+        Mollusca, Osteichthyes (bony fish), Anseriformes (wildfowl), Mammalia and
+        all non-native, invasive Angiospermae occurring in the wild in the Two Seas
+        region countries (Great Britain, France, Belgium and the Netherlands). This
+        dataset is the result of the screening of 33 national and international print
+        and online sources by Zieritz et al. (2017, https://doi.org/10.1007/s10530-016-1278-z),
+        where it was originally published as supplementary material (Table S2). Here
+        it is published as a standardized Darwin Core Archive and includes for each
+        taxon: the scientific name, higher classification and stable taxon identifier
+        (in the taxon core), the country where it is established as a non-native taxon,
+        the year of first introduction and last assessment in that specific country
+        (given as a year range in the event date in the distribution extension), coarse
+        habitat information (in the species profile extension), the pathway(s) of
+        introduction and native range(s) (in the description extension) and an overview
+        of the consulted literature for each taxon (in the literature references extension).
+        Issues with the dataset can be reported at: https://github.com/trias-project/rinse-pathways-checklist</p>\n<p>We
+        have released this dataset to the public domain under a Creative Commons Zero
+        waiver. We would appreciate it if you follow the INBO norms for data use (https://www.inbo.be/en/norms-data-use)
+        when using the data. If you have any questions regarding this dataset, don&#39;t
+        hesitate to contact us via the contact information provided in the metadata
+        or via https://twitter.com/LifeWatchINBO.</p>\n<p>This dataset was published
+        as open data for the TrIAS project (Tracking Invasive Alien Species http://trias-project.be,
+        Vanderhoeven et al. 2017), with technical support provided by the Research
+        Institute for Nature and Forest (INBO). It is selected as one of the authoritative
+        sources for the compilation of a unified and reproducible checklist of alien
+        species in Belgium.</p>","type":"CHECKLIST","hostingOrganizationKey":"1cd669d0-80ea-11de-a9d0-f1765f95f18b","hostingOrganizationTitle":"Research
+        Institute for Nature and Forest (INBO)","countryCoverage":[],"publishingCountry":"BE","publishingOrganizationKey":"1cd669d0-80ea-11de-a9d0-f1765f95f18b","publishingOrganizationTitle":"Research
+        Institute for Nature and Forest (INBO)","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","decades":[1600,1700,1800,1810,1820,1830,1840,1850,1860,1870,1880,1890,1900,1910,1920,1930,1940,1950,1960,1970,1980,1990,2000,2010],"keywords":["non-native","invasive","English
+        Channel","TrIAS","pathways","marine","Great Britain","Netherlands","terrestrial","Belgium","Checklist","freshwater","France","Inventorythematic"],"projectIdentifier":"TrIAS","recordCount":362}],"facets":[]}'
+  recorded_at: 2019-02-26 15:14:08 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4

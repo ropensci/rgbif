@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '204'
@@ -17,19 +17,18 @@ http_interactions:
       explanation: Request fulfilled, nothing follows
     headers:
       status: HTTP/1.1 204 No Content
-      date: Tue, 09 Oct 2018 20:53:48 GMT
+      date: Tue, 26 Feb 2019 15:17:09 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/enumeration/basic/asdfadsf
       cache-control: public, max-age=3601
-      x-varnish: 75760021 37064963
-      age: '173'
+      x-varnish: 763036477 664837235
+      age: '0'
       via: 1.1 varnish (Varnish/5.2)
       connection: keep-alive
     body:
       encoding: UTF-8
       string: ''
-  recorded_at: 2018-10-09 20:56:42 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+  recorded_at: 2019-02-26 15:17:10 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4

@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
-      X-USER-AGENT: r-curl/3.2 crul/0.6.0 rOpenSci(rgbif/1.0.4.9100)
+      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
   response:
     status:
       status_code: '200'
@@ -17,15 +17,14 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 09 Oct 2018 20:54:53 GMT
+      date: Tue, 26 Feb 2019 15:29:38 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
       server: Jetty(9.3.z-SNAPSHOT)
-      x-api-url: /v1/species/100037505?offset=0&limit=100
       cache-control: public, max-age=3601
-      x-varnish: 62327812 12224402
-      age: '1330'
+      x-varnish: 755992418 779420139
+      age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
       content-length: '1023'
@@ -38,5 +37,5 @@ http_interactions:
         hastatus","authorship":"","nameType":"SCIENTIFIC","rank":"SPECIES","origin":"SOURCE","taxonomicStatus":"SYNONYM","nomenclaturalStatus":[],"accordingTo":"Taxonomía
         validada de: ITIS; Estado taxonómico obtenido de: Catalogue of Life: 21st
         April 2015","numDescendants":0,"lastCrawled":"2018-06-25T18:47:03.794+0000","lastInterpreted":"2017-10-08T06:52:54.891+0000","issues":["ACCEPTED_NAME_MISSING"],"synonym":true,"class":"Actinopterygii"}'
-  recorded_at: 2018-10-09 21:17:05 GMT
-  recorded_with: vcr/0.1.0.9110, webmockr/0.2.6, crul/0.6.0
+  recorded_at: 2019-02-26 15:29:38 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4
