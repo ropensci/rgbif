@@ -82,7 +82,7 @@ dataset_suggest <- function(query = NULL, country = NULL, type = NULL,
     if (length(tt) == 1) {
       out <- parse_suggest(x = tt$results)
     } else {
-      out <- tibble::as_data_frame(do.call(rbind_fill,
+      out <- tibble::as_tibble(do.call(rbind_fill,
                                            lapply(tt, parse_suggest)))
     }
   }
@@ -104,7 +104,7 @@ parse_suggest <- function(x){
     type = x$type,
     title = x$title
   ))
-  tibble::as_data_frame(tmp)
+  tibble::as_tibble(tmp)
 }
 
 print_suggest <- function(x){

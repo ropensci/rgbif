@@ -6,7 +6,6 @@ test_that("name_suggest returns the correct", {
     b <- name_suggest(q='Puma')
     c <- name_suggest(q='Puma', limit=2)
     d <- name_suggest(q='Puma', fields=c('key','canonicalName'))
-    e <- name_suggest(q='Puma', fields=c('key','higherClassificationMap'))
   }, preserve_exact_body_bytes = TRUE)
 
   # class
@@ -26,9 +25,6 @@ test_that("name_suggest returns the correct", {
   expect_is(a$key, "integer")
   expect_is(c$canonicalName, "character")
   expect_is(d$canonicalName, "character")
-  expect_is(e, "gbif")
-  expect_is(e$data, "data.frame")
-  expect_is(e$hierarchy, "list")
 
   # name_suggest returns the correct dimensions
   expect_equal(NCOL(a), 3)
@@ -36,8 +32,6 @@ test_that("name_suggest returns the correct", {
   expect_equal(NCOL(c), 3)
   expect_equal(NCOL(d), 2)
   expect_equal(names(d), c("key","canonicalName"))
-  expect_equal(NCOL(e$data), 1)
-  expect_equal(names(e$data), c("key"))
 
   # value
   expect_match(b$canonicalName[1], "Puma")

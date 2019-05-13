@@ -56,6 +56,7 @@ test_that("occ_issues", {
 test_that("occ_issues: occ_data type=many", {
   vcr::use_cassette("occ_issues_type_many", {
     dat <- occ_data(taxonKey = c(2482598, 9362842, 2498387), limit = 30)
+  }, preserve_exact_body_bytes = TRUE)
 
     expect_is(dat, "gbif_data")
     expect_equal(attr(dat, "type"), "many")
@@ -81,5 +82,4 @@ test_that("occ_issues: occ_data type=many", {
     expect_equal(names(dat)[1], as.character(unique(res$taxonKey)[[1]]))
     expect_equal(names(dat)[2], as.character(unique(res$taxonKey)[[2]]))
     expect_equal(names(dat)[3], as.character(unique(res$taxonKey)[[3]]))
-  })
 })

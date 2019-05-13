@@ -5,26 +5,30 @@
 \alias{occ_download_prep}
 \title{Spin up a download request for GBIF occurrence data.}
 \usage{
-occ_download(..., body = NULL, type = "and", user = NULL,
-  pwd = NULL, email = NULL, curlopts = list())
+occ_download(..., body = NULL, type = "and", format = "DWCA",
+  user = NULL, pwd = NULL, email = NULL, curlopts = list())
 
-occ_download_prep(..., body = NULL, type = "and", user = NULL,
-  pwd = NULL, email = NULL, curlopts = list())
+occ_download_prep(..., body = NULL, type = "and", format = "DWCA",
+  user = NULL, pwd = NULL, email = NULL, curlopts = list())
 }
 \arguments{
 \item{...}{One or more of query arguments to kick of a download job.
-If you use this, don't use \code{body} parameter. See Details.}
+If you use this, don't use \code{body} parameter. All inputs must be
+character strings. See Details.}
 
 \item{body}{if you prefer to pass in the payload yourself, use this
-parameter. if use this, don't ass anythig to the dots. accepts
+parameter. if use this, don't pass anythig to the dots. accepts
 either an R list, or JSON. JSON is likely easier, since the JSON
 library \pkg{jsonlite} requires that you unbox strings that shouldn't
 be auto-converted to arrays, which is a bit tedious for large queries.
 optional}
 
-\item{type}{(charcter) One of equals (=), and (&), or (|), lessThan (<),
+\item{type}{(character) One of equals (=), and (&), or (|), lessThan (<),
 lessThanOrEquals (<=), greaterThan (>), greaterThanOrEquals (>=), in,
 within, not (!), like}
+
+\item{format}{(character) The download format. One of DWCA (default),
+SIMPLE_CSV, or SPECIES_LIST}
 
 \item{user}{(character) User name within GBIF's website. Required. See
 Details.}
@@ -167,6 +171,9 @@ error on GBIF's side and you'll have to split your query into a few.
 # occ_download("institutionCode = TLMF")
 # occ_download("catalogNumber = Bird.27847588")
 
+# download format
+# z <- occ_download('decimalLatitude >= 75', format = "SPECIES_LIST")
+
 # res <- occ_download('taxonKey = 7264332', 'hasCoordinate = TRUE')
 
 # pass output directly, or later, to occ_download_meta for more information
@@ -219,6 +226,8 @@ query <- list(
 
 # Prepared query
 occ_download_prep("basisOfRecord = LITERATURE")
+occ_download_prep("basisOfRecord = LITERATURE", format = "SIMPLE_CSV")
+occ_download_prep("basisOfRecord = LITERATURE", format = "SPECIES_LIST")
 }
 }
 \references{

@@ -96,25 +96,25 @@ install.packages('rgbif')
 
 ```r
 occ_search(scientificName = "Ursus americanus", limit = 50)
-#> Records found [12043] 
+#> Records found [12339] 
 #> Records returned [50] 
 #> No. unique hierarchies [1] 
-#> No. media records [47] 
+#> No. media records [50] 
 #> No. facets [0] 
 #> Args [limit=50, offset=0, scientificName=Ursus americanus, fields=all] 
 #> # A tibble: 50 x 74
-#>       key scientificName decimalLatitude decimalLongitude issues datasetKey
-#>     <int> <chr>                    <dbl>            <dbl> <chr>  <chr>     
-#>  1 1.99e9 Ursus america…            29.2            -81.8 cdrou… 50c9509d-…
-#>  2 1.99e9 Ursus america…            45.3            -76.8 cdrou… 50c9509d-…
-#>  3 1.99e9 Ursus america…            47.7           -122.  cdrou… 50c9509d-…
-#>  4 1.99e9 Ursus america…            32.6           -109.  cdrou… 50c9509d-…
-#>  5 1.99e9 Ursus america…            33.1            -91.9 cdrou… 50c9509d-…
-#>  6 1.99e9 Ursus america…            27.7            -81.5 gass84 50c9509d-…
-#>  7 1.99e9 Ursus america…            30.1           -103.  cdrou… 50c9509d-…
-#>  8 1.99e9 Ursus america…            39.4           -120.  cdrou… 50c9509d-…
-#>  9 1.99e9 Ursus america…            35.7            -76.6 cdrou… 50c9509d-…
-#> 10 1.99e9 Ursus america…            33.1            -91.9 cdrou… 50c9509d-…
+#>    key   scientificName decimalLatitude decimalLongitude issues datasetKey
+#>    <chr> <chr>                    <dbl>            <dbl> <chr>  <chr>     
+#>  1 1990… Ursus america…            44.9            -62.7 cdrou… 50c9509d-…
+#>  2 1990… Ursus america…            40.9           -121.  gass84 50c9509d-…
+#>  3 2006… Ursus america…            31.5           -110.  cdrou… 50c9509d-…
+#>  4 1986… Ursus america…            30.1           -103.  cdrou… 50c9509d-…
+#>  5 1990… Ursus america…            45.4            -93.2 cdrou… 50c9509d-…
+#>  6 1990… Ursus america…            35.7            -76.6 cdrou… 50c9509d-…
+#>  7 1990… Ursus america…            33.1            -91.9 cdrou… 50c9509d-…
+#>  8 1990… Ursus america…            35.6            -82.9 cdrou… 50c9509d-…
+#>  9 1990… Ursus america…            29.2            -81.8 cdrou… 50c9509d-…
+#> 10 1990… Ursus america…            45.4            -93.1 cdrou… 50c9509d-…
 #> # … with 40 more rows, and 68 more variables: publishingOrgKey <chr>,
 #> #   networkKeys <chr>, installationKey <chr>, publishingCountry <chr>,
 #> #   protocol <chr>, lastCrawled <chr>, lastParsed <chr>, crawlId <int>,
@@ -124,19 +124,19 @@ occ_search(scientificName = "Ursus americanus", limit = 50)
 #> #   acceptedTaxonKey <int>, acceptedScientificName <chr>, kingdom <chr>,
 #> #   phylum <chr>, order <chr>, family <chr>, genus <chr>, species <chr>,
 #> #   genericName <chr>, specificEpithet <chr>, taxonRank <chr>,
-#> #   taxonomicStatus <chr>, dateIdentified <chr>, stateProvince <chr>,
-#> #   year <int>, month <int>, day <int>, eventDate <chr>, modified <chr>,
+#> #   taxonomicStatus <chr>, dateIdentified <chr>,
+#> #   coordinateUncertaintyInMeters <dbl>, stateProvince <chr>, year <int>,
+#> #   month <int>, day <int>, eventDate <chr>, modified <chr>,
 #> #   lastInterpreted <chr>, references <chr>, license <chr>,
 #> #   identifiers <chr>, facts <chr>, relations <chr>, geodeticDatum <chr>,
 #> #   class <chr>, countryCode <chr>, country <chr>, rightsHolder <chr>,
 #> #   identifier <chr>, verbatimEventDate <chr>, datasetName <chr>,
 #> #   gbifID <chr>, verbatimLocality <chr>, collectionCode <chr>,
-#> #   occurrenceID <chr>, taxonID <chr>, catalogNumber <chr>,
-#> #   recordedBy <chr>, http...unknown.org.occurrenceDetails <chr>,
+#> #   occurrenceID <chr>, taxonID <chr>, recordedBy <chr>,
+#> #   catalogNumber <chr>, http...unknown.org.occurrenceDetails <chr>,
 #> #   institutionCode <chr>, rights <chr>, eventTime <chr>,
-#> #   identificationID <chr>, name <chr>,
-#> #   coordinateUncertaintyInMeters <dbl>, occurrenceRemarks <chr>,
-#> #   infraspecificEpithet <chr>, informationWithheld <chr>
+#> #   identificationID <chr>, name <chr>, infraspecificEpithet <chr>,
+#> #   informationWithheld <chr>, occurrenceRemarks <chr>
 ```
 
 Or you can get the taxon key first with `name_backbone()`. Here, we select to only return the occurrence data.
@@ -145,36 +145,36 @@ Or you can get the taxon key first with `name_backbone()`. Here, we select to on
 ```r
 key <- name_backbone(name='Helianthus annuus', kingdom='plants')$speciesKey
 occ_search(taxonKey=key, limit=20)
-#> Records found [43758] 
+#> Records found [44157] 
 #> Records returned [20] 
 #> No. unique hierarchies [1] 
-#> No. media records [16] 
+#> No. media records [18] 
 #> No. facets [0] 
 #> Args [limit=20, offset=0, taxonKey=9206251, fields=all] 
-#> # A tibble: 20 x 91
-#>       key scientificName decimalLatitude decimalLongitude issues datasetKey
-#>     <int> <chr>                    <dbl>            <dbl> <chr>  <chr>     
-#>  1 1.99e9 Helianthus an…            34.0           -117.  cdrou… 50c9509d-…
-#>  2 1.99e9 Helianthus an…            33.4           -118.  cdrou… 50c9509d-…
-#>  3 1.99e9 Helianthus an…            33.8           -118.  cdrou… 50c9509d-…
-#>  4 1.99e9 Helianthus an…            53.9             10.9 cdrou… 6ac3f774-…
-#>  5 1.99e9 Helianthus an…            27.7            -97.3 cdrou… 50c9509d-…
-#>  6 1.99e9 Helianthus an…            52.6             10.1 cdrou… 6ac3f774-…
-#>  7 1.99e9 Helianthus an…            26.2            -98.2 cdrou… 50c9509d-…
-#>  8 2.01e9 Helianthus an…            31.5            -97.1 cdrou… 50c9509d-…
-#>  9 1.99e9 Helianthus an…            29.8            -95.2 cdrou… 50c9509d-…
-#> 10 2.01e9 Helianthus an…            31.6           -106.  cdrou… 50c9509d-…
-#> 11 2.01e9 Helianthus an…            27.5            -99.5 cdrou… 50c9509d-…
-#> 12 1.95e9 Helianthus an…           -37.8            175.  gass84 50c9509d-…
-#> 13 1.82e9 Helianthus an…            59.8             17.5 gass84 38b4c89f-…
-#> 14 1.95e9 Helianthus an…           -37.8            175.  gass84 50c9509d-…
-#> 15 1.82e9 Helianthus an…            56.6             16.4 cdrou… 38b4c89f-…
-#> 16 1.84e9 Helianthus an…            34.1           -116.  gass84 50c9509d-…
-#> 17 1.82e9 Helianthus an…            56.6             16.6 cdrou… 38b4c89f-…
-#> 18 1.81e9 Helianthus an…            25.7           -100.  cdrou… 50c9509d-…
-#> 19 1.81e9 Helianthus an…            25.6           -100.  cdrou… 50c9509d-…
-#> 20 1.84e9 Helianthus an…            33.9           -117.  cdrou… 50c9509d-…
-#> # … with 85 more variables: publishingOrgKey <chr>, networkKeys <chr>,
+#> # A tibble: 20 x 86
+#>    key   scientificName decimalLatitude decimalLongitude issues datasetKey
+#>    <chr> <chr>                    <dbl>            <dbl> <chr>  <chr>     
+#>  1 1993… Helianthus an…            33.4          -118.   cdrou… 50c9509d-…
+#>  2 1986… Helianthus an…            33.8          -118.   cdrou… 50c9509d-…
+#>  3 1990… Helianthus an…            53.9            10.9  cdrou… 6ac3f774-…
+#>  4 1990… Helianthus an…            52.6            10.1  cdrou… 6ac3f774-…
+#>  5 2235… Helianthus an…            51.2             4.45 ""     7f5e4129-…
+#>  6 1993… Helianthus an…            34.0          -117.   cdrou… 50c9509d-…
+#>  7 2236… Helianthus an…            26.2           -98.2  cdrou… 50c9509d-…
+#>  8 1986… Helianthus an…            27.7           -97.3  cdrou… 50c9509d-…
+#>  9 1990… Helianthus an…            26.2           -98.2  cdrou… 50c9509d-…
+#> 10 2006… Helianthus an…            27.7           -97.3  cdrou… 50c9509d-…
+#> 11 2005… Helianthus an…            27.5           -99.5  cdrou… 50c9509d-…
+#> 12 2013… Helianthus an…            25.5          -108.   cdrou… 50c9509d-…
+#> 13 1993… Helianthus an…            29.8           -95.2  cdrou… 50c9509d-…
+#> 14 2012… Helianthus an…            33.5          -118.   cdrou… 50c9509d-…
+#> 15 2006… Helianthus an…            34.6            33.0  cdrou… 50c9509d-…
+#> 16 2005… Helianthus an…            31.6          -106.   cdrou… 50c9509d-…
+#> 17 2012… Helianthus an…            25.7          -100.   cdrou… 50c9509d-…
+#> 18 2005… Helianthus an…            31.5           -97.1  cdrou… 50c9509d-…
+#> 19 2012… Helianthus an…            49.3             8.55 gass84 50c9509d-…
+#> 20 2013… Helianthus an…            28.6           -98.2  cdrou… 50c9509d-…
+#> # … with 80 more variables: publishingOrgKey <chr>, networkKeys <chr>,
 #> #   installationKey <chr>, publishingCountry <chr>, protocol <chr>,
 #> #   lastCrawled <chr>, lastParsed <chr>, crawlId <int>, extensions <chr>,
 #> #   basisOfRecord <chr>, taxonKey <int>, kingdomKey <int>,
@@ -183,25 +183,24 @@ occ_search(taxonKey=key, limit=20)
 #> #   acceptedScientificName <chr>, kingdom <chr>, phylum <chr>,
 #> #   order <chr>, family <chr>, genus <chr>, species <chr>,
 #> #   genericName <chr>, specificEpithet <chr>, taxonRank <chr>,
-#> #   taxonomicStatus <chr>, dateIdentified <chr>, stateProvince <chr>,
-#> #   year <int>, month <int>, day <int>, eventDate <chr>, modified <chr>,
+#> #   taxonomicStatus <chr>, dateIdentified <chr>,
+#> #   coordinateUncertaintyInMeters <dbl>, stateProvince <chr>, year <int>,
+#> #   month <int>, day <int>, eventDate <chr>, modified <chr>,
 #> #   lastInterpreted <chr>, references <chr>, license <chr>,
 #> #   identifiers <chr>, facts <chr>, relations <chr>, geodeticDatum <chr>,
 #> #   class <chr>, countryCode <chr>, country <chr>, rightsHolder <chr>,
 #> #   identifier <chr>, verbatimEventDate <chr>, datasetName <chr>,
 #> #   gbifID <chr>, verbatimLocality <chr>, collectionCode <chr>,
-#> #   occurrenceID <chr>, taxonID <chr>, catalogNumber <chr>,
-#> #   recordedBy <chr>, http...unknown.org.occurrenceDetails <chr>,
+#> #   occurrenceID <chr>, taxonID <chr>, recordedBy <chr>,
+#> #   catalogNumber <chr>, http...unknown.org.occurrenceDetails <chr>,
 #> #   institutionCode <chr>, rights <chr>, eventTime <chr>,
-#> #   identificationID <chr>, name <chr>,
-#> #   coordinateUncertaintyInMeters <dbl>, occurrenceRemarks <chr>,
-#> #   locality <chr>, individualCount <int>, continent <chr>, county <chr>,
+#> #   occurrenceRemarks <chr>, identificationID <chr>, name <chr>,
+#> #   locality <chr>, individualCount <int>, continent <chr>,
+#> #   informationWithheld <chr>, nomenclaturalCode <chr>,
 #> #   municipality <chr>, identificationVerificationStatus <chr>,
-#> #   language <chr>, type <chr>, occurrenceStatus <chr>,
-#> #   vernacularName <chr>, taxonConceptID <chr>, informationWithheld <chr>,
-#> #   endDayOfYear <chr>, startDayOfYear <chr>, datasetID <chr>,
-#> #   accessRights <chr>, higherClassification <chr>,
-#> #   identificationRemarks <chr>, habitat <chr>
+#> #   language <chr>, type <chr>, vernacularName <chr>,
+#> #   samplingProtocol <chr>, datasetID <chr>, accessRights <chr>,
+#> #   reproductiveCondition <chr>
 ```
 
 ## Search for many species
@@ -213,7 +212,7 @@ Get the keys first with `name_backbone()`, then pass to `occ_search()`
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 keys <- sapply(splist, function(x) name_backbone(name=x)$speciesKey, USE.NAMES=FALSE)
 occ_search(taxonKey=keys, limit=5, hasCoordinate=TRUE)
-#> Occ. found [2480598 (20), 9362842 (3806201), 2498387 (1246518)] 
+#> Occ. found [2480598 (20), 9362842 (5522131), 2498387 (1823909)] 
 #> Occ. returned [2480598 (5), 9362842 (5), 2498387 (5)] 
 #> No. unique hierarchies [2480598 (1), 9362842 (1), 2498387 (1)] 
 #> No. media records [2480598 (3), 9362842 (5), 2498387 (5)] 
@@ -223,13 +222,13 @@ occ_search(taxonKey=keys, limit=5, hasCoordinate=TRUE)
 #> 3 requests; First 10 rows of data from 2480598
 #> 
 #> # A tibble: 5 x 91
-#>      key scientificName decimalLatitude decimalLongitude issues datasetKey
-#>    <int> <chr>                    <dbl>            <dbl> <chr>  <chr>     
-#> 1 1.98e9 Accipiter ery…          -22.4             -42.9 ""     b1047888-…
-#> 2 1.00e9 Accipiter ery…          -27.6             -58.7 cudc,… ad43e954-…
-#> 3 1.00e9 Accipiter ery…          -27.9             -59.1 cudc,… ad43e954-…
-#> 4 1.93e9 Accipiter ery…          -24.3             -48.4 cdrou… b1047888-…
-#> 5 6.86e8 Accipiter ery…            5.27            -60.7 cdrou… e635240a-…
+#>   key   scientificName decimalLatitude decimalLongitude issues datasetKey
+#>   <chr> <chr>                    <dbl>            <dbl> <chr>  <chr>     
+#> 1 1978… Accipiter ery…          -22.4             -42.9 ""     b1047888-…
+#> 2 1001… Accipiter ery…          -27.6             -58.7 cudc,… ad43e954-…
+#> 3 1001… Accipiter ery…          -27.9             -59.1 cudc,… ad43e954-…
+#> 4 1934… Accipiter ery…          -24.3             -48.4 cdrou… b1047888-…
+#> 5 6862… Accipiter ery…            5.27            -60.7 cdrou… e635240a-…
 #> # … with 85 more variables: publishingOrgKey <chr>, networkKeys <chr>,
 #> #   installationKey <chr>, publishingCountry <chr>, protocol <chr>,
 #> #   lastCrawled <chr>, lastParsed <chr>, crawlId <int>, extensions <chr>,
@@ -243,19 +242,19 @@ occ_search(taxonKey=keys, limit=5, hasCoordinate=TRUE)
 #> #   eventDate <chr>, lastInterpreted <chr>, references <chr>,
 #> #   license <chr>, identifiers <chr>, facts <chr>, relations <chr>,
 #> #   geodeticDatum <chr>, class <chr>, countryCode <chr>, country <chr>,
-#> #   rightsHolder <chr>, identifier <chr>, nomenclaturalCode <chr>,
-#> #   verbatimEventDate <chr>, locality <chr>, gbifID <chr>,
-#> #   collectionCode <chr>, occurrenceID <chr>, catalogNumber <chr>,
-#> #   recordedBy <chr>, vernacularName <chr>, fieldNotes <chr>,
+#> #   rightsHolder <chr>, identifier <chr>, verbatimEventDate <chr>,
+#> #   nomenclaturalCode <chr>, locality <chr>, gbifID <chr>,
+#> #   collectionCode <chr>, occurrenceID <chr>, recordedBy <chr>,
+#> #   catalogNumber <chr>, vernacularName <chr>, fieldNotes <chr>,
 #> #   eventTime <chr>, verbatimElevation <chr>, behavior <chr>,
 #> #   higherClassification <chr>, name <chr>, modified <chr>, created <chr>,
 #> #   associatedSequences <chr>, taxonID <chr>, sex <chr>,
 #> #   establishmentMeans <chr>, continent <chr>, institutionID <chr>,
 #> #   dynamicProperties <chr>, fieldNumber <chr>, language <chr>,
 #> #   type <chr>, preparations <chr>, occurrenceStatus <chr>,
-#> #   institutionCode <chr>, higherGeography <chr>, endDayOfYear <chr>,
-#> #   georeferenceVerificationStatus <chr>, datasetName <chr>,
-#> #   verbatimLocality <chr>, otherCatalogNumbers <chr>,
+#> #   institutionCode <chr>, higherGeography <chr>,
+#> #   georeferenceVerificationStatus <chr>, endDayOfYear <chr>,
+#> #   datasetName <chr>, verbatimLocality <chr>, otherCatalogNumbers <chr>,
 #> #   startDayOfYear <chr>, accessRights <chr>, collectionID <chr>
 ```
 
@@ -296,7 +295,7 @@ plot(x, axes = FALSE, box = FALSE)
 
 Collected via GitHub Issues, this list honors all contributors in alphabetical order. Code contributors are in bold.
 
-[adamdsmith](https://github.com/adamdsmith) - [AgustinCamacho](https://github.com/AgustinCamacho) - [AlexPeap](https://github.com/AlexPeap) - [andzandz11](https://github.com/andzandz11) - [AugustT](https://github.com/AugustT) - **[benmarwick](https://github.com/benmarwick)** - [cathynewman](https://github.com/cathynewman) - [cboettig](https://github.com/cboettig) - [coyotree](https://github.com/coyotree) - **[damianooldoni](https://github.com/damianooldoni)** - [dandaman](https://github.com/dandaman) - [djokester](https://github.com/djokester) - [dlebauer](https://github.com/dlebauer) - **[dmcglinn](https://github.com/dmcglinn)** - [dnoesgaard](https://github.com/dnoesgaard) - [DupontCai](https://github.com/DupontCai) - [elgabbas](https://github.com/elgabbas) - [fxi](https://github.com/fxi) - [ghost](https://github.com/ghost) - [gkburada](https://github.com/gkburada) - [hadley](https://github.com/hadley) - **[JanLauGe](https://github.com/JanLauGe)** - **[jarioksa](https://github.com/jarioksa)** - [jhpoelen](https://github.com/jhpoelen) - [jkmccarthy](https://github.com/jkmccarthy) - **[johnbaums](https://github.com/johnbaums)** - [jwhalennds](https://github.com/jwhalennds) - **[karthik](https://github.com/karthik)** - [kgturner](https://github.com/kgturner) - [Kim1801](https://github.com/Kim1801) - [ljuliusson](https://github.com/ljuliusson) - [luisDVA](https://github.com/luisDVA) - [martinpfannkuchen](https://github.com/martinpfannkuchen) - [MattBlissett](https://github.com/MattBlissett) - [maxhenschell](https://github.com/maxhenschell) - [Pakillo](https://github.com/Pakillo) - **[peterdesmet](https://github.com/peterdesmet)** - [PhillRob](https://github.com/PhillRob) - [poldham](https://github.com/poldham) - [qgroom](https://github.com/qgroom) - [raymondben](https://github.com/raymondben) - [rossmounce](https://github.com/rossmounce) - [sacrevert](https://github.com/sacrevert) - **[sckott](https://github.com/sckott)** - [scottsfarley93](https://github.com/scottsfarley93) - **[SriramRamesh](https://github.com/SriramRamesh)** - **[steven2249](https://github.com/steven2249)** - [stevenpbachman](https://github.com/stevenpbachman) - [stevensotelo](https://github.com/stevensotelo) - [TomaszSuchan](https://github.com/TomaszSuchan) - [vandit15](https://github.com/vandit15) - [vervis](https://github.com/vervis) - **[vijaybarve](https://github.com/vijaybarve)** - [willgearty](https://github.com/willgearty) - [zixuan75](https://github.com/zixuan75)
+[adamdsmith](https://github.com/adamdsmith) - [AgustinCamacho](https://github.com/AgustinCamacho) - [AlexPeap](https://github.com/AlexPeap) - [andzandz11](https://github.com/andzandz11) - [AugustT](https://github.com/AugustT) - **[benmarwick](https://github.com/benmarwick)** - [cathynewman](https://github.com/cathynewman) - [cboettig](https://github.com/cboettig) - [coyotree](https://github.com/coyotree) - **[damianooldoni](https://github.com/damianooldoni)** - [dandaman](https://github.com/dandaman) - [djokester](https://github.com/djokester) - [dlebauer](https://github.com/dlebauer) - **[dmcglinn](https://github.com/dmcglinn)** - [dnoesgaard](https://github.com/dnoesgaard) - [DupontCai](https://github.com/DupontCai) - [elgabbas](https://github.com/elgabbas) - [fxi](https://github.com/fxi) - [ghost](https://github.com/ghost) - [gkburada](https://github.com/gkburada) - [hadley](https://github.com/hadley) - **[JanLauGe](https://github.com/JanLauGe)** - **[jarioksa](https://github.com/jarioksa)** - [jhpoelen](https://github.com/jhpoelen) - [jkmccarthy](https://github.com/jkmccarthy) - **[johnbaums](https://github.com/johnbaums)** - [jwhalennds](https://github.com/jwhalennds) - **[karthik](https://github.com/karthik)** - [kgturner](https://github.com/kgturner) - [Kim1801](https://github.com/Kim1801) - [ljuliusson](https://github.com/ljuliusson) - [luisDVA](https://github.com/luisDVA) - [martinpfannkuchen](https://github.com/martinpfannkuchen) - [MattBlissett](https://github.com/MattBlissett) - [maxhenschell](https://github.com/maxhenschell) - [Pakillo](https://github.com/Pakillo) - **[peterdesmet](https://github.com/peterdesmet)** - [PhillRob](https://github.com/PhillRob) - [poldham](https://github.com/poldham) - [qgroom](https://github.com/qgroom) - [raymondben](https://github.com/raymondben) - [rossmounce](https://github.com/rossmounce) - [sacrevert](https://github.com/sacrevert) - **[sckott](https://github.com/sckott)** - [scottsfarley93](https://github.com/scottsfarley93) - **[SriramRamesh](https://github.com/SriramRamesh)** - [stevenpbachman](https://github.com/stevenpbachman) - [stevensotelo](https://github.com/stevensotelo) - [TomaszSuchan](https://github.com/TomaszSuchan) - [vandit15](https://github.com/vandit15) - [vervis](https://github.com/vervis) - **[vijaybarve](https://github.com/vijaybarve)** - [willgearty](https://github.com/willgearty) - [zixuan75](https://github.com/zixuan75)
 
 ## Meta
 
@@ -314,7 +313,7 @@ This package is part of a richer suite called [spocc - Species Occurrence Data](
 [![rofooter](https://ropensci.org/public_images/github_footer.png)](https://ropensci.org)
 
 [mapr]: https://github.com/ropensci/mapr
-[paper]: https://doi.org/10.7287/peerj.preprints.3304v1/
+[paper]: https://peerj.com/preprints/3304/
 [GBIF]: https://www.gbif.org/
 [pygbif]: https://github.com/sckott/pygbif
 [gbifrb]: https://github.com/sckott/gbifrb

@@ -3,7 +3,7 @@ context("dataset_suggest")
 test_that("type query returns the correct class", {
   vcr::use_cassette("dataset_suggest", {
     tt <- dataset_suggest(query="Amazon", type="OCCURRENCE")
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   expect_is(tt, "data.frame")
   expect_is(tt, "tbl_df")
@@ -29,7 +29,7 @@ test_that("search query returns the correct class", {
 test_that("limited search returns the correct class", {
   vcr::use_cassette("dataset_suggest_limit", {
     tt <- dataset_suggest(type="OCCURRENCE", limit=2)
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   expect_is(tt, "data.frame")
   expect_is(tt, "tbl_df")

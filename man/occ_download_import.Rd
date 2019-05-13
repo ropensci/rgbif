@@ -65,5 +65,9 @@ occ_download_get(key="0000066-140928181241064", overwrite = TRUE) \%>\%
 # res <- occ_download_get(key = "0001369-160509122628363", overwrite=TRUE)
 # occ_download_import(res)
 # occ_download_import(key = "0001369-160509122628363")
+
+# download and import a species list (in csv format)
+# x <- occ_download_get("0000172-190415153152247")
+# occ_download_import(x)
 }
 }

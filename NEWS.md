@@ -1,3 +1,23 @@
+rgbif 1.3.0
+===========
+
+### NEW FEATURES
+
+* `occ_download()` and `occ_download_prep()` gain a new parameter `format` for specifying the type of download. options are DWCA (default), SIMPLE_CSV, or SPECIES_LIST. SIMPLE_CSV and SPECIES_LIST are csv formats, while DWCA is the darwin core format (#352)
+* now throughout the package you can pass `NA` in addition to `NULL` for a missing parameter - both are removed before being sent to GBIF (#351)
+
+### MINOR IMPROVEMENTS
+
+* replace `tibble::as_data_frame`/`tibble::data_frame` with `tibble::as_tibble` (#350)
+* `key` and `gbifID` in the output of `occ_data`/`occ_search`/`occ_get` have been changed so that both are character class (strings) to match how GBIF encodes them (#349)
+* fix some test fixtures to use preserve exact bytes so that cran checks on debian clang devel don't fail (#355)
+
+### BUG FIXES
+
+* fix to `occ_download`: fail with useful message when user does not pass in queries as character class (#347)
+* fix to `occ_download`: fail with useful message now when user/pwd/email not found or given (#348)
+
+
 rgbif 1.2.0
 ===========
 

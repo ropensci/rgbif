@@ -148,6 +148,7 @@ test_that("name_usage descriptions route works", {
     rte6 <- name_usage(key = 5231190, data = 'descriptions')
     rte6a <- name_usage(key = 5127299, data = 'descriptions')
   }, preserve_exact_body_bytes = TRUE)
+
   expect_is(rte6, "gbif")
   expect_is(rte6a, "gbif")
   expect_is(rte6$meta, "data.frame")
@@ -187,6 +188,7 @@ test_that("name_usage references route works", {
     rte9 <- name_usage(key = 5231190, data = 'references')
     rte9a <- name_usage(key = 5231190, data = 'references')
   }, preserve_exact_body_bytes = TRUE)
+
   expect_is(rte9, "gbif")
   expect_is(rte9a, "gbif")
   expect_is(rte9$meta, "data.frame")

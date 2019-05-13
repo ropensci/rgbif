@@ -5,19 +5,19 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "rgbif",
-  "description": "A programmatic interface to the Web Service methods\n    provided by the Global Biodiversity Information Facility ('GBIF';\n    <https://www.gbif.org/developer/summary>). 'GBIF' is a database\n    of species occurrence records from sources all over the globe.\n    'rgbif' includes functions for searching for taxonomic names,\n    retrieving information on data providers, getting species occurrence\n    records, getting counts of occurrence records, and using the 'GBIF' \n    tile map service to make 'rasters' summarizing huge amounts of data.",
+  "description": "A programmatic interface to the Web Service methods\n    provided by the Global Biodiversity Information Facility ('GBIF';\n    <https://www.gbif.org/developer/summary>). 'GBIF' is a database\n    of species occurrence records from sources all over the globe.\n    'rgbif' includes functions for searching for taxonomic names,\n    retrieving information on data providers, getting species occurrence\n    records, getting counts of occurrence records, and using the 'GBIF'\n    tile map service to make 'rasters' summarizing huge amounts of data.",
   "name": "rgbif: Interface to the Global 'Biodiversity' Information Facility API",
   "codeRepository": "https://github.com/ropensci/rgbif",
   "issueTracker": "https://github.com/ropensci/rgbif/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.5.2",
+    "version": "3.6.0",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.5.2 Patched (2018-12-31 r75943)",
+  "runtimePlatform": "R version 3.6.0 Patched (2019-04-30 r76446)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -194,7 +194,7 @@
       "@type": "SoftwareApplication",
       "identifier": "crul",
       "name": "crul",
-      "version": ">= 0.3.4",
+      "version": ">= 0.7.4",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -243,7 +243,7 @@
       "@type": "SoftwareApplication",
       "identifier": "jsonlite",
       "name": "jsonlite",
-      "version": ">= 0.9.16",
+      "version": ">= 1.6",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -293,7 +293,7 @@
       "@type": "SoftwareApplication",
       "identifier": "wicket",
       "name": "wicket",
-      "version": ">= 0.2.0",
+      "version": ">= 0.4.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -318,10 +318,10 @@
   "contIntegration": "https://travis-ci.org/ropensci/rgbif",
   "releaseNotes": "https://github.com/ropensci/rgbif/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/rgbif/blob/master/README.md",
-  "fileSize": "5007.526KB",
+  "fileSize": "5444.406KB",
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://ropensci.org",
-  "keywords": ["GBIF", "specimens", "API", "web-services", "occurrences", "species", "taxonomy", "gbif", "api", "data", "biodiversity", "rstats", "r", "spocc", "r-package"],
+  "keywords": ["GBIF", "specimens", "API", "web-services", "occurrences", "species", "taxonomy", "gbif", "api", "data", "biodiversity", "rstats", "r", "spocc", "r-package", "lifewatch", "oscibio"],
   "developmentStatus": "http://www.repostatus.org/#active",
   "citation": [
     {
@@ -398,5 +398,7 @@
     "https://ropensci.github.io/occurrence-manual/",
     "https://ropensci.github.io/rgbif",
     "https://ropensci.github.io/occurrence-manual"
-  ]
+  ],
+  "copyrightHolder": {},
+  "funder": {}
 }

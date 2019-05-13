@@ -169,10 +169,10 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
 
 get_meta_nu <- function(x) {
   if (has_meta(x)) {
-    tibble::as_data_frame(data.frame(x[c('offset','limit','endOfRecords')],
+    tibble::as_tibble(data.frame(x[c('offset','limit','endOfRecords')],
                                      stringsAsFactors = FALSE))
   } else {
-    tibble::data_frame()
+    tibble::as_tibble()
   }
 }
 

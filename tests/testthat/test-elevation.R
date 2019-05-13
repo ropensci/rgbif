@@ -20,7 +20,7 @@ test_that("geonames_conn fails well", {
 
   vcr::use_cassette("elevation_geonames_conn_unauthorized", {
     expect_error(geonames_conn("srtm3", 4, 5, "cheesemonkey"),
-      "Unauthorized")
+      "Unauthorized", class = "error")
     expect_error(geonames_conn("srtm3", "a", "a"), "invalid number")
   })
 })
@@ -103,6 +103,6 @@ test_that("fails correctly", {
   pairs <- list(c(31.8496, -110.576060), c(29.15503, -103.59828))
   vcr::use_cassette("elevation_unauthorized", {
     expect_error(elevation(latlong = pairs, username = "bad_user"),
-      "Unauthorized")
+      "Unauthorized", class = "error")
   })
 })

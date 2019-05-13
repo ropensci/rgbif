@@ -104,3 +104,16 @@ test_that("DownReq works with occ_download_prep inputs", {
   expect_is(res$status, "function")
   expect_error(res$status(), "run\\(\\) result is `NULL`, not checking status")
 })
+
+test_that("occ_download fails well when user does not give strings as inputs to ...", {
+  skip_on_cran()
+
+  expect_error(
+    occ_download(taxonKey = 5039705, hasCoordinate = T, basisOfRecord = "Preserved_Specimen"),
+    "all inputs to `...` of occ_download must be character"
+  )
+  expect_error(
+    occ_download(taxonKey = 5039705, hasCoordinate = T, basisOfRecord = "Preserved_Specimen"),
+    "see examples; as an alternative, see the `body` param"
+  )
+})

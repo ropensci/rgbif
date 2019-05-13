@@ -1,7 +1,10 @@
 get_hier <- function(x, h1, h2){
-  name <- data.frame(t(data.frame(x[names(x) %in% h1], stringsAsFactors=FALSE)), stringsAsFactors=FALSE)
+  name <- data.frame(
+    t(data.frame(x[names(x) %in% h1], stringsAsFactors=FALSE)),
+    stringsAsFactors=FALSE)
   if (nrow(name)==0){
-    data.frame(name=NA, key=NA, rank=NA, row.names=NULL, stringsAsFactors=FALSE)
+    data.frame(name=NA_character_, key=NA_character_, rank=NA_character_,
+      row.names=NULL, stringsAsFactors=FALSE)
   } else {
     name$ranks <- row.names(name)
     name <- name[order(match(name$ranks, h1)), ]
@@ -9,7 +12,8 @@ get_hier <- function(x, h1, h2){
     row.names(tt) <- name[,2]
     name <- tt
     key <- t(data.frame(x[names(x) %in% h2], stringsAsFactors=FALSE))
-    data.frame(name=name, key=key, rank=row.names(name), row.names=NULL, stringsAsFactors=FALSE)
+    data.frame(name=name, key=as.character(key), rank=row.names(name),
+      row.names=NULL, stringsAsFactors=FALSE)
   }
 }
 
@@ -25,17 +29,6 @@ gbifparser <- function(input, fields= "minimal") {
     h2 <- c('kingdomKey','phylumKey','classKey','orderKey','familyKey',
       'genusKey','speciesKey')
     hier <- get_hier(x, h1, h2)
-    # if (nrow(stats::na.omit(hier)) == 0){
-    #   if (!is.null(x[["species"]])){
-    #     usename <- x[["species"]]
-    #   } else if (!is.null(x[["scientificName"]])) {
-    #     usename <- x[["scientificName"]]
-    #   } else {
-    #     usename <- "none"
-    #   }
-    # } else {
-    #   usename <- hier[[nrow(hier), "name"]]
-    # }
 
     # issues
     x[names(x) %in% "issues"] <- collapse_issues(x)
@@ -50,7 +43,7 @@ gbifparser <- function(input, fields= "minimal") {
         media2[[i]] <- as.list(unlist(c(media[i], media[i+1])))
       }
       media2 <- rgbif_compact(media2)
-      media2$key <- x$key
+      media2$key <- as.character(x$key)
       media2$species <- x$species
       media2$decimalLatitude <- x$decimalLatitude
       media2$decimalLongitude <- x$decimalLongitude
@@ -87,6 +80,9 @@ gbifparser <- function(input, fields= "minimal") {
     } else {
       x <- x[names(x) %in% fields]
     }
+    # make key and gbifID character class
+    if ("key" %in% names(x)) x$key <- as.character(x$key)
+    if ("gbifID" %in% names(x)) x$gbifID <- as.character(x$gbifID)
     list(hierarchy = hier, media = media2, data = x)
   }
   if (is.numeric(input[[1]])) {
@@ -119,6 +115,10 @@ clean_data <- function(x){
   x <- move_col(x, "scientificName")
   x <- move_col(x, "key")
 
+  # make key and gbifID character class
+  if ("key" %in% names(x)) x$key <- as.character(x$key)
+  if ("gbifID" %in% names(x)) x$gbifID <- as.character(x$gbifID)
+
   return(x)
 }
 
@@ -139,9 +139,9 @@ gbifparser_verbatim <- function(input, fields="minimal") {
 
     if (any(fields == "minimal")) {
       if (all(c("decimalLatitude","decimalLongitude") %in% names(x))) {
-        x[c("key", "scientificName", "decimalLatitude", "decimalLongitude")]
+        x <- x[c("key", "scientificName", "decimalLatitude", "decimalLongitude")]
       } else {
-        list(key = x[["key"]], scientificName = x[["scientificName"]],
+        x <- list(key = x[["key"]], scientificName = x[["scientificName"]],
           decimalLatitude = NA, decimalLongitude = NA, stringsAsFactors = FALSE)
       }
     } else if (any(fields == "all")) {
@@ -164,11 +164,13 @@ gbifparser_verbatim <- function(input, fields="minimal") {
           x <- c(x, as.list(unlist(m)))
         }
       }
-      x
     } else {
       x[vapply(x, length, 0) == 0] <- "none"
-      x[names(x) %in% fields]
+      x <- x[names(x) %in% fields]
     }
+    if ("key" %in% names(x)) x$key <- as.character(x$key)
+    if ("gbifID" %in% names(x)) x$gbifID <- as.character(x$gbifID)
+    return(x)
   }
 
   if (is.numeric(input[[1]])) {
@@ -201,10 +203,9 @@ ldfast_names <- function(x, convertvec=FALSE){
 
 convert2df <- function(x){
   if (!inherits(x, "data.frame")) {
-    # data.frame(rbind(x), stringsAsFactors = FALSE)
-    tibble::data_frame(rbind(x))
+    tibble::as_tibble(rbind(x))
   } else {
-    tibble::as_data_frame(x)
+    tibble::as_tibble(x)
   }
 }
 
@@ -307,7 +308,7 @@ nameusageparser <- function(z){
   if ("issues" %in% names(tmp)) {
     tmp[names(tmp) %in% "issues"] <- collapse_issues(tmp)
   }
-  df <- tibble::as_data_frame(tmp)
+  df <- tibble::as_tibble(tmp)
   if (all(tomove %in% names(df))) {
     movecols(df, tomove)
   } else {
@@ -320,7 +321,16 @@ backbone_parser <- function(x){
   data.frame(tmp, stringsAsFactors = FALSE)
 }
 
-rgbif_compact <- function(l) Filter(Negate(is.null), l)
+is_null_or_na <- function(x) {
+  if (is.environment(x)) return(FALSE)
+  is.null(x) || all(is.na(x))
+}
+
+# allows all elements in a list, except two things, which are removed:
+# - NULL
+# - NA
+# while detecting environments and passing on them
+rgbif_compact <- function(l) Filter(Negate(is_null_or_na), l)
 
 compact_null <- function(l){
   tmp <- rgbif_compact(l)
@@ -459,7 +469,7 @@ parse_results <- function(x, y){
     tmp <- x$results
   }
   if (inherits(tmp, "data.frame")) {
-    out <- tryCatch(tibble::as_data_frame(tmp), error = function(e) e)
+    out <- tryCatch(tibble::as_tibble(tmp), error = function(e) e)
     if (inherits(out, "error")) tmp else out
   } else {
     tmp

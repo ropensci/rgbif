@@ -8,7 +8,7 @@ test_that("returns the correct class", {
     tt <- occ_data(taxonKey = key, limit=2)
     uu <- occ_data(taxonKey = key, limit=20)
     vv <- occ_data(taxonKey = key)
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   expect_is(tt$meta, "list")
   expect_is(tt$meta$endOfRecords, "logical")
@@ -36,7 +36,7 @@ test_that("returns the correct class", {
 test_that("returns the correct dimensions", {
   vcr::use_cassette("occ_data_datasetkey", {
     out <- occ_data(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a')
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   # returns the correct class
   expect_is(out, "gbif_data")
@@ -50,7 +50,7 @@ test_that("returns the correct dimensions", {
 test_that("returns the correct class", {
   vcr::use_cassette("occ_data_catalog_number", {
     out <- occ_data(catalogNumber = '6845144')
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   expect_is(out, "gbif_data")
   expect_is(out$meta, "list")
@@ -101,7 +101,7 @@ test_that("returns the correct dimensions", {
   key <- 2435099
   vcr::use_cassette("occ_data_elevation", {
     res <- occ_data(taxonKey = key, elevation=1000, hasCoordinate=TRUE)
-  })
+  }, preserve_exact_body_bytes = TRUE)
   expect_equal(res$data$elevation[1], 1000)
 })
 
@@ -320,7 +320,7 @@ test_that("works with parameters that allow many inputs", {
     aa <- occ_data(recordedBy=c("smith","BJ Stacey"), limit=3)
     ## one request, many instances of same parameter: use semi-colon sep. string
     bb <- occ_data(recordedBy="smith;BJ Stacey", limit=3)
-  })
+  }, preserve_exact_body_bytes = TRUE)
   
   expect_is(aa, "gbif_data")
   expect_is(bb, "gbif_data")
@@ -332,4 +332,13 @@ test_that("works with parameters that allow many inputs", {
   expect_equal(unique(tolower(aa[[2]]$data$recordedBy)), "bj stacey")
 
   expect_true(unique(tolower(bb$data$recordedBy)) %in% c('smith', 'bj stacey'))
+})
+
+# per issue #349
+test_that("key and gbifID fields are character class", {
+  vcr::use_cassette("occ_data_key_gbifid_character_class", {
+    aa <- occ_data(taxonKey = 9206251, limit = 3)
+  }, preserve_exact_body_bytes = TRUE)
+  expect_is(aa$data$key, "character")
+  expect_is(aa$data$gbifID, "character")
 })

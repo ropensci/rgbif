@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9515)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9515)
   response:
     status:
       status_code: '200'
@@ -17,52 +17,20 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 15:14:35 GMT
+      date: Tue, 07 May 2019 00:18:17 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: 754484617 766181951
+      x-varnish: 281708661 290783257
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
-      content-length: '2702'
+      content-length: '1916'
       connection: keep-alive
     body:
-      encoding: UTF-8
-      string: '[{"key":"4fa7b334-ce0d-4e88-aaae-2e0c138d049e","title":"EOD - eBird
-        Observation Dataset","description":"eBird is a collective enterprise that
-        takes a novel approach to citizen science by developing cooperative partnerships
-        among experts in a wide range of fields: population ecologists, conservation
-        biologists, quantitative ecologists, statisticians, computer scientists, GIS
-        and informatics specialists, application developers, and data administrators.
-        Managed by the Cornell Lab of Ornithology eBird’s goal is to increase data
-        quantity through participant recruitment and engagement globally, but also
-        to quantify and control for data quality issues such as observer variability,
-        imperfect detection of species, and both spatial and temporal bias in data
-        collection. eBird data are openly available and used by a broad spectrum of
-        students, teachers, scientists, NGOs, government agencies, land managers,
-        and policy makers. The result is that eBird has become a major source of biodiversity
-        data, increasing our knowledge of the dynamics of species distributions, and
-        having a direct impact on the conservation of birds and their habitats.","type":"OCCURRENCE"},{"key":"75956ee6-1a2b-4fa3-b3e8-ccda64ce6c2d","title":"INPN
-        - Données flore des CBN agrégées par la FCBN","description":"Dès la création
-        de leur Fédération (FCBN - www.fcbn.fr) en 1999, les onze Conservatoires botaniques
-        nationaux (CBN) ont exprimé la volonté collective de constituer un système
-        d’information national pour mettre en commun leurs données, et celles de leurs
-        partenaires, sur la flore, la fonge et les végétations-habitats. C’est réellement
-        en 2010 avec le lancement de l’établissement du Format Standard de Données
-        sur la flore (FSD Flore), conçu comme le « format commun de données de la
-        Fédération des CBN », que la démarche a été initiée. Il s’en est suivi de
-        nombreux échanges ayant permis de finaliser le format, de le tester sur les
-        premiers jeux de données, d’établir une charte d’adhésion au projet et d’élaborer
-        le cadrage final de l’exercice d’agrégation des données. Le projet s’est concrétisé
-        au premier trimestre 2013 à travers la mise au format des données détenues
-        par les CBN et leur intégration dans le Système d’Information de la FCBN (SI-Flore).
-        A l’horizon de l’année 2014, il résulte, de ce projet structurant, que la
-        FCBN dispose d’un système d’information d’envergure nationale et fort de plus
-        de 20 millions de données d’observation sur la flore de France. Les données
-        centralisées ont été consolidées sur la base du référentiel TAXREF 5.0 et
-        une mise à jour est prévue pour fin 2015.","type":"OCCURRENCE"}]'
-  recorded_at: 2019-02-26 15:14:36 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+      encoding: ASCII-8BIT
+      string: W3sia2V5IjoiMzhiNGM4OWYtNTg0Yy00MWJiLWJkOGYtY2QxZGVmMzNlOTJmIiwidGl0bGUiOiJBcnRwb3J0YWxlbiAoU3dlZGlzaCBTcGVjaWVzIE9ic2VydmF0aW9uIFN5c3RlbSkiLCJkZXNjcmlwdGlvbiI6IkFydHBvcnRhbGVuIChTd2VkaXNoIFNwZWNpZXMgT2JzZXJ2YXRpb24gU3lzdGVtKSDigJMgZm9ybWVybHkgcmVjb2duaXplZCBhcyBBcnRkYXRhIC0gaXMgYSB3ZWJzaXRlIGZvciByZXBvcnRpbmcgYW5kIHJldHJpZXZpbmcgaW5mb3JtYXRpb24gb24gb2JzZXJ2YXRpb25zIG9mIFN3ZWRlbuKAmXMgcGxhbnRzLCBhbmltYWxzIGFuZCBmdW5naS4gT2JzZXJ2YXRpb25zIGFyZSBlbnRlcmVkIGluZGl2aWR1YWxseSBvciBpbnRvIHNldmVyYWwgdGhvdXNhbmQgc3Vic2V0cy9wcm9qZWN0cyAoc29tZSBvZiB3aGljaCBhcmUgaW5kaXZpZHVhbGx5IHNlYXJjaGFibGUpIGJ5IGluZGl2aWR1YWxzIGFuZCBOR09zICg5NSUgb2YgZGF0YSksIGJ5IHB1YmxpYyBhdXRob3JpdGllcyBvciBhZ2VuY2llcywgYW5kIGJ5IGNvcnBvcmF0ZSBlbnRlcnByaXNlcy4gQW4gb2JzZXJ2YXRpb24gbWF5IGluY2x1ZGUgbm90IG9ubHkgdGhlIHNwZWNpZXMgaWRlbnRpdHksIHJlcG9ydGVyIGlkZW50aXR5LCBsb2NhdGlvbiBhbmQgZGF0ZSBidXQgYWRkaXRpb25hbCBpbmZvcm1hdGlvbiBzdWNoIGFzIGhhYml0YXQgdHlwZSBhbmQgd2VhdGhlciBjYW4gYWxzbyBiZSBlbnRlcmVkLiBDYS4gOTMlIG9mIGFsbCBkYXRhIGNvbnRhaW5lZCBpbiB0aGUgZGF0YXNldCBpcyB1bnJlc3RyaWN0ZWQsIHRoZSByZW1haW5kZXIgcmVxdWlyaW5nIHNwZWNpYWwgbG9nLWluIGNyZWRlbnRpYWxzLlxuQXJ0cG9ydGFsZW4gKFN3ZWRpc2ggU3BlY2llcyBPYnNlcnZhdGlvbiBTeXN0ZW0pIGNvdmVycyAzMCAwMDAgU3dlZGlzaCBzcGVjaWVzIG91dCBvZiBhcHByb3hpbWF0ZWx5IDYwIDAwMCBpbiB0b3RhbCByZWNvcmRlZCBpbiB0aGUgY291bnRyeSwgaW5jbHVkaW5nIHBsYW50cyAoMTIlIG9mIGRhdGEgcmVwcmVzZW50aW5nIGZsb3dlcmluZyBwbGFudHMgYW5kIG1vc3NlcyksIHZlcnRlYnJhdGVzICgzICUgZmlzaGVzIGFuZCBoZXJwdGlsZXMsIDc0JSBiaXJkcywgMC4yJSBtYW1tYWxzKSwgaW52ZXJ0ZWJyYXRlcyAoNyUpIGFuZCBmdW5naSAoNCUpLiA4MCUgb2YgYWxsIGRhdGEgcmVwcmVzZW50IG9ic2VydmF0aW9ucyBtYWRlIGZyb20gMjAwMS1wcmVzZW50LCBhbmQgYWxtb3N0IGFsbCByZW1haW5pbmcgb2JzZXJ2YXRpb25zIHJlZmVyIHRvIHRoZSBwZXJpb2QgMTk1MS0yMDAwLiBUYXhhLCBub21lbmNsYXR1cmUgYW5kIGhpZXJhcmNoeSBhcmUgc291cmNlZCBmcm9tIHRoZSBTd2VkaXNoIFRheG9ub21pYyBEYXRhYmFzZSAoRHludGF4YSkuICBcbkFydHBvcnRhbGVuIGlzIGRldmVsb3BlZCBhbmQgb3BlcmF0ZWQgYnkgdGhlIFN3ZWRpc2ggU3BlY2llcyBJbmZvcm1hdGlvbiBDZW50cmUgKEFydERhdGFiYW5rZW4pIGF0IHRoZSBTd2VkaXNoIFVuaXZlcnNpdHkgb2YgQWdyaWN1bHR1cmFsIFNjaWVuY2VzLCBvbiBiZWhhbGYgb2YgdGhlIFN3ZWRpc2ggRW52aXJvbm1lbnRhbCBQcm90ZWN0aW9uIEFnZW5jeSIsInR5cGUiOiJPQ0NVUlJFTkNFIn0seyJrZXkiOiI4YTg2MzAyOS1mNDM1LTQ0NmEtODIxZS0yNzVmNGY2NDExNjUiLCJ0aXRsZSI6Ik9ic2VydmF0aW9uLm9yZywgTmF0dXJlIGRhdGEgZnJvbSB0aGUgTmV0aGVybGFuZHMiLCJkZXNjcmlwdGlvbiI6IlRoaXMgZGF0YXNldCBjb250YWlucyBvY2N1cnJlbmNlIGRhdGEgb2YgZmxvcmEgYW5kIGZhdW5hIHNwZWNpZXMgaW4gdGhlIE5ldGhlcmxhbmRzIG9uIGEgNSB4IDUga20gc2NhbGUuIEl0IHN1bW1hcml6ZXMgdGhlIG9ic2VydmF0aW9ucyByZWNvcmRlZCBieSA+ODAuMDAwIHZvbHVudGVlcnMuIiwidHlwZSI6Ik9DQ1VSUkVOQ0UifV0=
+  recorded_at: 2019-05-07 00:18:18 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4.9100
