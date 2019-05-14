@@ -23,11 +23,11 @@
 #' values of the `datasetKey` parameter to searches are done, and it's a
 #' 'many'. `meta` is a list of length four with offset, limit,
 #' endOfRecords and count fields. `data` is a tibble (aka data.frame). `hier`
-#' is a list of data.frame's of the unique set of taxa found, where each
+#' is a list of data.frames of the unique set of taxa found, where each
 #' data.frame is its taxonomic classification. `media` is a list of media
 #' objects, where each element holds a set of metadata about the media object.
-#' If the `return` parameter is set to something other than default you get
-#' back just the `meta`, `data`, `hier`, or `media`.
+#' If the `return` parameter is set to something other than 'all' (default), you
+#' get back just the `meta`, `data`, `hier`, or `media`.
 
 occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
   publishingCountry=NULL, hasCoordinate=NULL, typeStatus=NULL,

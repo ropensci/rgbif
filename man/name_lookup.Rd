@@ -115,6 +115,9 @@ additional full text field is searched which includes information from
 metadata documents, but the text of this field is not returned in the
 response.}
 
+\item{issue}{Filters by issue. Issue has to be related to names. Type
+\code{gbif_issues()} to get complete list of issues.}
+
 \item{verbose}{(logical) If \code{TRUE}, all data is returned as a list for each
 element. If \code{FALSE} (default) a subset of the data that is thought to be most
 essential is organized into a data.frame.}
