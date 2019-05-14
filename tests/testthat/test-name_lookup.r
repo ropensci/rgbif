@@ -53,7 +53,6 @@ test_that("works with habitat parameter", {
   expect_equal(sort(na.omit(out$habitats))[1], "FRESHWATER, MARINE, TERRESTRIAL")
 })
 
-
 # many args
 test_that("works with parameters that allow many inputs", {
   vcr::use_cassette("name_lookup_many_inputs", {
@@ -85,6 +84,7 @@ test_that("works with parameters that allow many inputs", {
   expect_is(cc$data$key, "integer")
   expect_true(all(
     unique(tolower(cc$data$origin)) %in% c("implicit_name", "proparte")))
+})
 
 #paging (limit higher than 1000 records; maximum API: 99999)
 test_that("paging: name_usage returns as many records as asked, limit > 1000", {
