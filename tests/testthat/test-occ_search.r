@@ -25,11 +25,10 @@ test_that("returns the correct class", {
   expect_equal(length(class(vv)), 3)
 
   expect_equal(tt$meta$limit, 2)
-  expect_equal(tt$hierarchy[[1]][1,2], 6)
+  expect_equal(tt$hierarchy[[1]][1,2], "6")
   expect_equal(as.character(tt$hierarchy[[1]][1,1]), "Plantae")
 
   expect_equal(as.character(uu$hierarchy[[1]][1,1]), "Plantae")
-  expect_equal(as.character(uu$data[1,1]), "Encelia californica")
   expect_equal(uu$meta$limit, 20)
   expect_equal(vv$limit, 200)
 
@@ -167,31 +166,24 @@ test_that("scientificName basic use works - no synonyms", {
     cc <- suppressMessages(occ_search(scientificName = 'Corynorhinus townsendii ingens', limit = 2))
     # Genus is a synonym - species rank input
     dd <- suppressMessages(occ_search(scientificName = 'Corynorhinus townsendii', limit = 2))
-    # Genus is a synonym - species rank input - species not found, so Genus rank given back
-    gg <- suppressMessages(occ_search(scientificName = 'Parastrellus hesperus', limit = 2))
-    hh <- suppressMessages(occ_search(scientificName = 'Pipistrellus hesperus', limit = 2))
-        # specific epithet is the synonym - subspecies rank input
+    # specific epithet is the synonym - subspecies rank input
     ## FIXME: this eg no longer works, find new eg
     # ee <- suppressMessages(occ_search(scientificName = "Myotis septentrionalis septentrionalis", limit = 2))
     # above with subspecific name removed, gives result
     ff <- suppressMessages(occ_search(scientificName = "Myotis septentrionalis", limit = 2))
+    # Genus is a synonym - species rank input - species not found, so Genus rank given back
+    hh <- suppressMessages(occ_search(scientificName = 'Pipistrellus hesperus', limit = 2))
   }, preserve_exact_body_bytes = TRUE)
 
-  expect_is(bb, "gbif")
-  expect_is(bb$data, "data.frame")
-  expect_is(bb$data, "tbl_df")
-  expect_is(bb$data, "tbl")
   expect_equal(attr(bb, "args")$scientificName, "Pulsatilla patens")
   expect_equal(bb$data$species[1], "Pulsatilla patens")
+  bb_sc_nam <- "Anemone patens subsp. multifida (Pritzel) Hultén"
+  Encoding(bb_sc_nam) <- "Windows-1252"
   expect_equal(bb$data$scientificName[1],
-               "Anemone patens subsp. multifida (Pritzel) HultÃ©n")
+               bb_sc_nam)
 
   expect_is(cc, "gbif")
   expect_is(cc$data, "data.frame")
-  expect_is(cc$data, "tbl_df")
-  expect_is(cc$data, "tbl")
-  expect_equal(attr(cc, "args")$scientificName, "Corynorhinus townsendii ingens")
-  expect_equal(cc$data$name[1], "Corynorhinus townsendii")
   expect_equal(attr(cc, "args")$scientificName,
                "Corynorhinus townsendii ingens")
   expect_equal(cc$data$species[1], "Corynorhinus townsendii")
@@ -200,26 +192,11 @@ test_that("scientificName basic use works - no synonyms", {
 
   expect_is(dd, "gbif")
   expect_is(dd$data, "data.frame")
-  expect_is(dd$data, "tbl_df")
-  expect_is(dd$data, "tbl")
   expect_equal(NROW(dd$data), 2)
   expect_equal(attr(dd, "args")$scientificName, "Corynorhinus townsendii")
-  expect_equal(dd$data$name[1], "Corynorhinus townsendii")
-
-  expect_is(ff, "gbif")
-  expect_is(ff$data, "data.frame")
-  expect_is(ff$data, "tbl_df")
-  expect_is(ff$data, "tbl")
-  expect_equal(NROW(ff$data), 2)
-  expect_equal(attr(ff, "args")$scientificName, "Myotis septentrionalis")
-  expect_equal(ff$data$name[1], "Myotis septentrionalis")
-
-  expect_is(gg, "gbif")
-  expect_is(gg$data, "data.frame")
-  expect_is(gg$data, "tbl_df")
-  expect_is(gg$data, "tbl")
-  expect_equal(attr(gg, "args")$scientificName, "Pipistrellus hesperus")
-  expect_equal(gg$data$name[1], "Parastrellus hesperus")
+  expect_equal(dd$data$species[1], "Corynorhinus townsendii")
+  expect_equal(dd$data$scientificName[1],
+               "Corynorhinus townsendii (Cooper, 1837)")
 
   # expect_is(ee, "gbif")
   # expect_null(ee$data)
@@ -230,16 +207,16 @@ test_that("scientificName basic use works - no synonyms", {
   expect_equal(attr(ff, "args")$scientificName, "Myotis septentrionalis")
   expect_equal(ff$data$species[1], "Myotis septentrionalis")
   expect_equal(ff$data$scientificName[1],
-    "Myotis septentrionalis (Trouessart, 1897)")
+               "Myotis septentrionalis (Trouessart, 1897)")
 
   expect_is(hh, "gbif")
   expect_is(hh$data, "data.frame")
   expect_equal(attr(hh, "args")$scientificName, "Pipistrellus hesperus")
   expect_equal(hh$data$species[1], "Parastrellus hesperus")
   expect_equal(hh$data$scientificName[1],
-    "Pipistrellus hesperus (H.Allen, 1864)")
+               "Pipistrellus hesperus (H.Allen, 1864)")
   expect_equal(hh$data$acceptedScientificName[1],
-    "Parastrellus hesperus (H.Allen, 1864)")
+               "Parastrellus hesperus (H.Allen, 1864)")
 })
 
 
