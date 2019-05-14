@@ -81,6 +81,8 @@
 #'   additional full text field is searched which includes information from
 #'   metadata documents, but the text of this field is not returned in the
 #'   response.
+#' @param issue Filters by issue. Issue has to be related to names. Type
+#'   \code{gbif_issues()} to get complete list of issues.
 #' @param limit Number of records to return.
 #' Hard maximum limit set by GBIF API: 99999.
 #' @param start Record number to start at. Default: 0.
