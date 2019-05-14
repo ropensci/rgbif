@@ -551,7 +551,7 @@ assert <- function(x, y) {
 }
 
 # check correctness issues and their type (type: "name" or "code")
-  <- function(type , ...) {
+check_issues  <- function(type , ...) {
   types <- c("occurrence", "name")
   if (!length(dots(...)) == 0) {
     filters <- parse_input(...)
@@ -679,6 +679,7 @@ split_iss <- function(m, is_occ, is_dload) {
   first <- if (is_dload) first_dload else first_search
   tibble::as_data_frame(data.frame(m[, first], df, m[, !names(m) %in% first],
                                    stringsAsFactors = FALSE))
+}
 
 setdfrbind <- function(x) {
   (data.table::setDF(
