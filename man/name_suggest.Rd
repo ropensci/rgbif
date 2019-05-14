@@ -2,9 +2,7 @@
 % Please edit documentation in R/name_suggest.r
 \name{name_suggest}
 \alias{name_suggest}
-\title{A quick and simple autocomplete service that returns up to 20 name
-usages by doing prefix matching against the scientific name. Results
-are ordered by relevance.}
+\title{Suggest up to 20 name usages.}
 \usage{
 name_suggest(q = NULL, datasetKey = NULL, rank = NULL,
   fields = NULL, start = NULL, limit = 100, curlopts = list())
@@ -38,7 +36,9 @@ with \code{limit} to page through results.}
 for curl options}
 }
 \value{
-A data.frame with fields selected by fields arg.
+A tibble data.frame with fields selected by fields arg. If
+'higherClassificationMap' in fields, an object of class gbif, which
+is a S3 class list) is returned.
 }
 \description{
 A quick and simple autocomplete service that returns up to 20 name
@@ -47,7 +47,7 @@ are ordered by relevance.
 }
 \section{Repeat parmeter inputs}{
 
-Some parameters can tak emany inputs, and treated as 'OR' (e.g., a or b or
+Some parameters can take many inputs, and treated as 'OR' (e.g., a or b or
 c). The following take many inputs:
 \itemize{
 \item \strong{rank}
@@ -75,6 +75,9 @@ name_suggest(q='Puma', fields=c('key','canonicalName',
 name_suggest(rank = c("family", "genus"))
 name_suggest(datasetKey = c("73605f3a-af85-4ade-bbc5-522bfb90d847",
   "d7c60346-44b6-400d-ba27-8d3fbeffc8a5"))
+
+# If 'higherClassificationMap' in fields, a list is returned
+name_suggest(q='Puma', fields=c('key','higherClassificationMap'))
 
 # Pass on curl options
 name_suggest(q='Puma', limit=200, curlopts = list(verbose=TRUE))

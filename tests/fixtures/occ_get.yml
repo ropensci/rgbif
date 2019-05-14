@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9515)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9515)
   response:
     status:
       status_code: '200'
@@ -17,32 +17,23 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 17:24:19 GMT
+      date: Tue, 07 May 2019 17:09:05 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: 825197636 825197633
+      x-varnish: 785024685 785024682
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
       content-length: '2654'
       connection: keep-alive
     body:
-      encoding: UTF-8
-      string: '{"key":855998194,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","networkKeys":[],"installationKey":"4346b227-ca68-4d54-8a77-909148492e0b","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2019-02-24T00:38:53.781+0000","lastParsed":"2018-07-31T19:01:56.585+0000","crawlId":186,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","individualCount":2,"lifeStage":"ADULT","taxonKey":8211070,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":1459,"familyKey":9456,"genusKey":2437489,"speciesKey":8211070,"acceptedTaxonKey":8211070,"scientificName":"Sciurus
-        vulgaris Linnaeus, 1758","acceptedScientificName":"Sciurus vulgaris Linnaeus,
-        1758","kingdom":"Animalia","phylum":"Chordata","order":"Rodentia","family":"Sciuridae","genus":"Sciurus","species":"Sciurus
-        vulgaris","genericName":"Sciurus","specificEpithet":"vulgaris","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","decimalLongitude":12.043857,"decimalLatitude":58.406765,"coordinateUncertaintyInMeters":50.0,"continent":"EUROPE","year":2013,"month":4,"day":17,"eventDate":"2013-04-17T09:00:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2013-04-17T12:37:00.000+0000","lastInterpreted":"2018-12-23T00:45:52.995+0000","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"SE","country":"Sweden","rightsHolder":"Hans
-        Petersson","associatedReferences":"urn:lsid:artportalen.se:Sighting:Vertebrate.65338","county":"Bohuslän","municipality":"Uddevalla","identificationVerificationStatus":"Unvalidated","language":"Swedish","gbifID":"855998194","type":"Occurrence","taxonID":"urn:lsid:dyntaxa.se:Taxon:102606","occurrenceStatus":"Present","catalogNumber":"34275321","vernacularName":"ekorre","institutionCode":"ArtDatabanken","taxonConceptID":"urn:lsid:dyntaxa.se:Taxon:102606","eventTime":"09:00:00
-        - 09:00:00","behavior":"Foraging","identifier":"urn:lsid:artportalen.se:Sighting:49366","informationWithheld":"More
-        information can be obtained from the Data Provider.","endDayOfYear":"107","locality":"Holmen
-        Lane Ryr","collectionCode":"Artportalen","occurrenceID":"urn:lsid:artportalen.se:Sighting:49366","recordedBy":"Hans
-        Petersson","startDayOfYear":"107","datasetID":"urn:lsid:swedishlifewatch.se:DataProvider:1","occurrenceRemarks":"Åt
-        havregryn på matningen","accessRights":"Free usage","higherClassification":"Biota;Animalia;Chordata;Craniata;Vertebrata;Gnathostomata;Mammalia;Placentalia;Boreoeutheria;Euarchontoglires;Rodentia;Sciuromorpha;Sciuridae;Sciurinae"}'
-  recorded_at: 2019-02-26 17:24:22 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+      encoding: ASCII-8BIT
+      string: eyJrZXkiOjg1NTk5ODE5NCwiZGF0YXNldEtleSI6IjM4YjRjODlmLTU4NGMtNDFiYi1iZDhmLWNkMWRlZjMzZTkyZiIsInB1Ymxpc2hpbmdPcmdLZXkiOiJiODMyMzg2NC02MDJhLTRhN2QtOTEyNy1iYjkwMzA1NGU5N2QiLCJuZXR3b3JrS2V5cyI6W10sImluc3RhbGxhdGlvbktleSI6IjQzNDZiMjI3LWNhNjgtNGQ1NC04YTc3LTkwOTE0ODQ5MmUwYiIsInB1Ymxpc2hpbmdDb3VudHJ5IjoiU0UiLCJwcm90b2NvbCI6IkRXQ19BUkNISVZFIiwibGFzdENyYXdsZWQiOiIyMDE5LTAyLTI0VDAwOjM4OjUzLjc4MSswMDAwIiwibGFzdFBhcnNlZCI6IjIwMTgtMDctMzFUMTk6MDE6NTYuNTg1KzAwMDAiLCJjcmF3bElkIjoxODYsImV4dGVuc2lvbnMiOnt9LCJiYXNpc09mUmVjb3JkIjoiSFVNQU5fT0JTRVJWQVRJT04iLCJpbmRpdmlkdWFsQ291bnQiOjIsImxpZmVTdGFnZSI6IkFEVUxUIiwidGF4b25LZXkiOjgyMTEwNzAsImtpbmdkb21LZXkiOjEsInBoeWx1bUtleSI6NDQsImNsYXNzS2V5IjozNTksIm9yZGVyS2V5IjoxNDU5LCJmYW1pbHlLZXkiOjk0NTYsImdlbnVzS2V5IjoyNDM3NDg5LCJzcGVjaWVzS2V5Ijo4MjExMDcwLCJhY2NlcHRlZFRheG9uS2V5Ijo4MjExMDcwLCJzY2llbnRpZmljTmFtZSI6IlNjaXVydXMgdnVsZ2FyaXMgTGlubmFldXMsIDE3NTgiLCJhY2NlcHRlZFNjaWVudGlmaWNOYW1lIjoiU2NpdXJ1cyB2dWxnYXJpcyBMaW5uYWV1cywgMTc1OCIsImtpbmdkb20iOiJBbmltYWxpYSIsInBoeWx1bSI6IkNob3JkYXRhIiwib3JkZXIiOiJSb2RlbnRpYSIsImZhbWlseSI6IlNjaXVyaWRhZSIsImdlbnVzIjoiU2NpdXJ1cyIsInNwZWNpZXMiOiJTY2l1cnVzIHZ1bGdhcmlzIiwiZ2VuZXJpY05hbWUiOiJTY2l1cnVzIiwic3BlY2lmaWNFcGl0aGV0IjoidnVsZ2FyaXMiLCJ0YXhvblJhbmsiOiJTUEVDSUVTIiwidGF4b25vbWljU3RhdHVzIjoiQUNDRVBURUQiLCJkZWNpbWFsTG9uZ2l0dWRlIjoxMi4wNDM4NTcsImRlY2ltYWxMYXRpdHVkZSI6NTguNDA2NzY1LCJjb29yZGluYXRlVW5jZXJ0YWludHlJbk1ldGVycyI6NTAuMCwiY29udGluZW50IjoiRVVST1BFIiwieWVhciI6MjAxMywibW9udGgiOjQsImRheSI6MTcsImV2ZW50RGF0ZSI6IjIwMTMtMDQtMTdUMDk6MDA6MDAiLCJpc3N1ZXMiOlsiQ09PUkRJTkFURV9ST1VOREVEIiwiR0VPREVUSUNfREFUVU1fQVNTVU1FRF9XR1M4NCJdLCJtb2RpZmllZCI6IjIwMTMtMDQtMTdUMTI6Mzc6MDAuMDAwKzAwMDAiLCJsYXN0SW50ZXJwcmV0ZWQiOiIyMDE4LTEyLTIzVDAwOjQ1OjUyLjk5NSswMDAwIiwibGljZW5zZSI6Imh0dHA6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL3B1YmxpY2RvbWFpbi96ZXJvLzEuMC9sZWdhbGNvZGUiLCJpZGVudGlmaWVycyI6W10sImZhY3RzIjpbXSwicmVsYXRpb25zIjpbXSwiZ2VvZGV0aWNEYXR1bSI6IldHUzg0IiwiY2xhc3MiOiJNYW1tYWxpYSIsImNvdW50cnlDb2RlIjoiU0UiLCJjb3VudHJ5IjoiU3dlZGVuIiwicmlnaHRzSG9sZGVyIjoiSGFucyBQZXRlcnNzb24iLCJtdW5pY2lwYWxpdHkiOiJVZGRldmFsbGEiLCJhc3NvY2lhdGVkUmVmZXJlbmNlcyI6InVybjpsc2lkOmFydHBvcnRhbGVuLnNlOlNpZ2h0aW5nOlZlcnRlYnJhdGUuNjUzMzgiLCJjb3VudHkiOiJCb2h1c2zDpG4iLCJpZGVudGlmaWNhdGlvblZlcmlmaWNhdGlvblN0YXR1cyI6IlVudmFsaWRhdGVkIiwiZ2JpZklEIjoiODU1OTk4MTk0IiwibGFuZ3VhZ2UiOiJTd2VkaXNoIiwidHlwZSI6Ik9jY3VycmVuY2UiLCJ0YXhvbklEIjoidXJuOmxzaWQ6ZHludGF4YS5zZTpUYXhvbjoxMDI2MDYiLCJjYXRhbG9nTnVtYmVyIjoiMzQyNzUzMjEiLCJvY2N1cnJlbmNlU3RhdHVzIjoiUHJlc2VudCIsInZlcm5hY3VsYXJOYW1lIjoiZWtvcnJlIiwiaW5zdGl0dXRpb25Db2RlIjoiQXJ0RGF0YWJhbmtlbiIsInRheG9uQ29uY2VwdElEIjoidXJuOmxzaWQ6ZHludGF4YS5zZTpUYXhvbjoxMDI2MDYiLCJldmVudFRpbWUiOiIwOTowMDowMCAtIDA5OjAwOjAwIiwiYmVoYXZpb3IiOiJGb3JhZ2luZyIsImlkZW50aWZpZXIiOiJ1cm46bHNpZDphcnRwb3J0YWxlbi5zZTpTaWdodGluZzo0OTM2NiIsImluZm9ybWF0aW9uV2l0aGhlbGQiOiJNb3JlIGluZm9ybWF0aW9uIGNhbiBiZSBvYnRhaW5lZCBmcm9tIHRoZSBEYXRhIFByb3ZpZGVyLiIsImVuZERheU9mWWVhciI6IjEwNyIsImxvY2FsaXR5IjoiSG9sbWVuIExhbmUgUnlyIiwiY29sbGVjdGlvbkNvZGUiOiJBcnRwb3J0YWxlbiIsIm9jY3VycmVuY2VJRCI6InVybjpsc2lkOmFydHBvcnRhbGVuLnNlOlNpZ2h0aW5nOjQ5MzY2IiwicmVjb3JkZWRCeSI6IkhhbnMgUGV0ZXJzc29uIiwic3RhcnREYXlPZlllYXIiOiIxMDciLCJkYXRhc2V0SUQiOiJ1cm46bHNpZDpzd2VkaXNobGlmZXdhdGNoLnNlOkRhdGFQcm92aWRlcjoxIiwib2NjdXJyZW5jZVJlbWFya3MiOiLDhXQgaGF2cmVncnluIHDDpSBtYXRuaW5nZW4iLCJhY2Nlc3NSaWdodHMiOiJGcmVlIHVzYWdlIiwiaGlnaGVyQ2xhc3NpZmljYXRpb24iOiJCaW90YTtBbmltYWxpYTtDaG9yZGF0YTtDcmFuaWF0YTtWZXJ0ZWJyYXRhO0duYXRob3N0b21hdGE7TWFtbWFsaWE7UGxhY2VudGFsaWE7Qm9yZW9ldXRoZXJpYTtFdWFyY2hvbnRvZ2xpcmVzO1JvZGVudGlhO1NjaXVyb21vcnBoYTtTY2l1cmlkYWU7U2NpdXJpbmFlIn0=
+  recorded_at: 2019-05-07 17:09:08 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4.9100
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/855998194
@@ -52,8 +43,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9515)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9515)
   response:
     status:
       status_code: '200'
@@ -61,32 +52,23 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 17:24:19 GMT
+      date: Tue, 07 May 2019 17:09:05 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: 813565862 825197633
+      x-varnish: 785024691 785024682
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
       content-length: '2654'
       connection: keep-alive
     body:
-      encoding: UTF-8
-      string: '{"key":855998194,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","networkKeys":[],"installationKey":"4346b227-ca68-4d54-8a77-909148492e0b","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2019-02-24T00:38:53.781+0000","lastParsed":"2018-07-31T19:01:56.585+0000","crawlId":186,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","individualCount":2,"lifeStage":"ADULT","taxonKey":8211070,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":1459,"familyKey":9456,"genusKey":2437489,"speciesKey":8211070,"acceptedTaxonKey":8211070,"scientificName":"Sciurus
-        vulgaris Linnaeus, 1758","acceptedScientificName":"Sciurus vulgaris Linnaeus,
-        1758","kingdom":"Animalia","phylum":"Chordata","order":"Rodentia","family":"Sciuridae","genus":"Sciurus","species":"Sciurus
-        vulgaris","genericName":"Sciurus","specificEpithet":"vulgaris","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","decimalLongitude":12.043857,"decimalLatitude":58.406765,"coordinateUncertaintyInMeters":50.0,"continent":"EUROPE","year":2013,"month":4,"day":17,"eventDate":"2013-04-17T09:00:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2013-04-17T12:37:00.000+0000","lastInterpreted":"2018-12-23T00:45:52.995+0000","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"SE","country":"Sweden","rightsHolder":"Hans
-        Petersson","associatedReferences":"urn:lsid:artportalen.se:Sighting:Vertebrate.65338","county":"Bohuslän","municipality":"Uddevalla","identificationVerificationStatus":"Unvalidated","language":"Swedish","gbifID":"855998194","type":"Occurrence","taxonID":"urn:lsid:dyntaxa.se:Taxon:102606","occurrenceStatus":"Present","catalogNumber":"34275321","vernacularName":"ekorre","institutionCode":"ArtDatabanken","taxonConceptID":"urn:lsid:dyntaxa.se:Taxon:102606","eventTime":"09:00:00
-        - 09:00:00","behavior":"Foraging","identifier":"urn:lsid:artportalen.se:Sighting:49366","informationWithheld":"More
-        information can be obtained from the Data Provider.","endDayOfYear":"107","locality":"Holmen
-        Lane Ryr","collectionCode":"Artportalen","occurrenceID":"urn:lsid:artportalen.se:Sighting:49366","recordedBy":"Hans
-        Petersson","startDayOfYear":"107","datasetID":"urn:lsid:swedishlifewatch.se:DataProvider:1","occurrenceRemarks":"Åt
-        havregryn på matningen","accessRights":"Free usage","higherClassification":"Biota;Animalia;Chordata;Craniata;Vertebrata;Gnathostomata;Mammalia;Placentalia;Boreoeutheria;Euarchontoglires;Rodentia;Sciuromorpha;Sciuridae;Sciurinae"}'
-  recorded_at: 2019-02-26 17:24:22 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+      encoding: ASCII-8BIT
+      string: eyJrZXkiOjg1NTk5ODE5NCwiZGF0YXNldEtleSI6IjM4YjRjODlmLTU4NGMtNDFiYi1iZDhmLWNkMWRlZjMzZTkyZiIsInB1Ymxpc2hpbmdPcmdLZXkiOiJiODMyMzg2NC02MDJhLTRhN2QtOTEyNy1iYjkwMzA1NGU5N2QiLCJuZXR3b3JrS2V5cyI6W10sImluc3RhbGxhdGlvbktleSI6IjQzNDZiMjI3LWNhNjgtNGQ1NC04YTc3LTkwOTE0ODQ5MmUwYiIsInB1Ymxpc2hpbmdDb3VudHJ5IjoiU0UiLCJwcm90b2NvbCI6IkRXQ19BUkNISVZFIiwibGFzdENyYXdsZWQiOiIyMDE5LTAyLTI0VDAwOjM4OjUzLjc4MSswMDAwIiwibGFzdFBhcnNlZCI6IjIwMTgtMDctMzFUMTk6MDE6NTYuNTg1KzAwMDAiLCJjcmF3bElkIjoxODYsImV4dGVuc2lvbnMiOnt9LCJiYXNpc09mUmVjb3JkIjoiSFVNQU5fT0JTRVJWQVRJT04iLCJpbmRpdmlkdWFsQ291bnQiOjIsImxpZmVTdGFnZSI6IkFEVUxUIiwidGF4b25LZXkiOjgyMTEwNzAsImtpbmdkb21LZXkiOjEsInBoeWx1bUtleSI6NDQsImNsYXNzS2V5IjozNTksIm9yZGVyS2V5IjoxNDU5LCJmYW1pbHlLZXkiOjk0NTYsImdlbnVzS2V5IjoyNDM3NDg5LCJzcGVjaWVzS2V5Ijo4MjExMDcwLCJhY2NlcHRlZFRheG9uS2V5Ijo4MjExMDcwLCJzY2llbnRpZmljTmFtZSI6IlNjaXVydXMgdnVsZ2FyaXMgTGlubmFldXMsIDE3NTgiLCJhY2NlcHRlZFNjaWVudGlmaWNOYW1lIjoiU2NpdXJ1cyB2dWxnYXJpcyBMaW5uYWV1cywgMTc1OCIsImtpbmdkb20iOiJBbmltYWxpYSIsInBoeWx1bSI6IkNob3JkYXRhIiwib3JkZXIiOiJSb2RlbnRpYSIsImZhbWlseSI6IlNjaXVyaWRhZSIsImdlbnVzIjoiU2NpdXJ1cyIsInNwZWNpZXMiOiJTY2l1cnVzIHZ1bGdhcmlzIiwiZ2VuZXJpY05hbWUiOiJTY2l1cnVzIiwic3BlY2lmaWNFcGl0aGV0IjoidnVsZ2FyaXMiLCJ0YXhvblJhbmsiOiJTUEVDSUVTIiwidGF4b25vbWljU3RhdHVzIjoiQUNDRVBURUQiLCJkZWNpbWFsTG9uZ2l0dWRlIjoxMi4wNDM4NTcsImRlY2ltYWxMYXRpdHVkZSI6NTguNDA2NzY1LCJjb29yZGluYXRlVW5jZXJ0YWludHlJbk1ldGVycyI6NTAuMCwiY29udGluZW50IjoiRVVST1BFIiwieWVhciI6MjAxMywibW9udGgiOjQsImRheSI6MTcsImV2ZW50RGF0ZSI6IjIwMTMtMDQtMTdUMDk6MDA6MDAiLCJpc3N1ZXMiOlsiQ09PUkRJTkFURV9ST1VOREVEIiwiR0VPREVUSUNfREFUVU1fQVNTVU1FRF9XR1M4NCJdLCJtb2RpZmllZCI6IjIwMTMtMDQtMTdUMTI6Mzc6MDAuMDAwKzAwMDAiLCJsYXN0SW50ZXJwcmV0ZWQiOiIyMDE4LTEyLTIzVDAwOjQ1OjUyLjk5NSswMDAwIiwibGljZW5zZSI6Imh0dHA6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL3B1YmxpY2RvbWFpbi96ZXJvLzEuMC9sZWdhbGNvZGUiLCJpZGVudGlmaWVycyI6W10sImZhY3RzIjpbXSwicmVsYXRpb25zIjpbXSwiZ2VvZGV0aWNEYXR1bSI6IldHUzg0IiwiY2xhc3MiOiJNYW1tYWxpYSIsImNvdW50cnlDb2RlIjoiU0UiLCJjb3VudHJ5IjoiU3dlZGVuIiwicmlnaHRzSG9sZGVyIjoiSGFucyBQZXRlcnNzb24iLCJtdW5pY2lwYWxpdHkiOiJVZGRldmFsbGEiLCJhc3NvY2lhdGVkUmVmZXJlbmNlcyI6InVybjpsc2lkOmFydHBvcnRhbGVuLnNlOlNpZ2h0aW5nOlZlcnRlYnJhdGUuNjUzMzgiLCJjb3VudHkiOiJCb2h1c2zDpG4iLCJpZGVudGlmaWNhdGlvblZlcmlmaWNhdGlvblN0YXR1cyI6IlVudmFsaWRhdGVkIiwiZ2JpZklEIjoiODU1OTk4MTk0IiwibGFuZ3VhZ2UiOiJTd2VkaXNoIiwidHlwZSI6Ik9jY3VycmVuY2UiLCJ0YXhvbklEIjoidXJuOmxzaWQ6ZHludGF4YS5zZTpUYXhvbjoxMDI2MDYiLCJjYXRhbG9nTnVtYmVyIjoiMzQyNzUzMjEiLCJvY2N1cnJlbmNlU3RhdHVzIjoiUHJlc2VudCIsInZlcm5hY3VsYXJOYW1lIjoiZWtvcnJlIiwiaW5zdGl0dXRpb25Db2RlIjoiQXJ0RGF0YWJhbmtlbiIsInRheG9uQ29uY2VwdElEIjoidXJuOmxzaWQ6ZHludGF4YS5zZTpUYXhvbjoxMDI2MDYiLCJldmVudFRpbWUiOiIwOTowMDowMCAtIDA5OjAwOjAwIiwiYmVoYXZpb3IiOiJGb3JhZ2luZyIsImlkZW50aWZpZXIiOiJ1cm46bHNpZDphcnRwb3J0YWxlbi5zZTpTaWdodGluZzo0OTM2NiIsImluZm9ybWF0aW9uV2l0aGhlbGQiOiJNb3JlIGluZm9ybWF0aW9uIGNhbiBiZSBvYnRhaW5lZCBmcm9tIHRoZSBEYXRhIFByb3ZpZGVyLiIsImVuZERheU9mWWVhciI6IjEwNyIsImxvY2FsaXR5IjoiSG9sbWVuIExhbmUgUnlyIiwiY29sbGVjdGlvbkNvZGUiOiJBcnRwb3J0YWxlbiIsIm9jY3VycmVuY2VJRCI6InVybjpsc2lkOmFydHBvcnRhbGVuLnNlOlNpZ2h0aW5nOjQ5MzY2IiwicmVjb3JkZWRCeSI6IkhhbnMgUGV0ZXJzc29uIiwic3RhcnREYXlPZlllYXIiOiIxMDciLCJkYXRhc2V0SUQiOiJ1cm46bHNpZDpzd2VkaXNobGlmZXdhdGNoLnNlOkRhdGFQcm92aWRlcjoxIiwib2NjdXJyZW5jZVJlbWFya3MiOiLDhXQgaGF2cmVncnluIHDDpSBtYXRuaW5nZW4iLCJhY2Nlc3NSaWdodHMiOiJGcmVlIHVzYWdlIiwiaGlnaGVyQ2xhc3NpZmljYXRpb24iOiJCaW90YTtBbmltYWxpYTtDaG9yZGF0YTtDcmFuaWF0YTtWZXJ0ZWJyYXRhO0duYXRob3N0b21hdGE7TWFtbWFsaWE7UGxhY2VudGFsaWE7Qm9yZW9ldXRoZXJpYTtFdWFyY2hvbnRvZ2xpcmVzO1JvZGVudGlhO1NjaXVyb21vcnBoYTtTY2l1cmlkYWU7U2NpdXJpbmFlIn0=
+  recorded_at: 2019-05-07 17:09:09 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4.9100
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/855998194
@@ -96,8 +78,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9515)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9515)
   response:
     status:
       status_code: '200'
@@ -105,32 +87,23 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 17:24:19 GMT
+      date: Tue, 07 May 2019 17:09:05 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: 822150899 825197633
+      x-varnish: 785024696 785024682
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
       content-length: '2654'
       connection: keep-alive
     body:
-      encoding: UTF-8
-      string: '{"key":855998194,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","networkKeys":[],"installationKey":"4346b227-ca68-4d54-8a77-909148492e0b","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2019-02-24T00:38:53.781+0000","lastParsed":"2018-07-31T19:01:56.585+0000","crawlId":186,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","individualCount":2,"lifeStage":"ADULT","taxonKey":8211070,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":1459,"familyKey":9456,"genusKey":2437489,"speciesKey":8211070,"acceptedTaxonKey":8211070,"scientificName":"Sciurus
-        vulgaris Linnaeus, 1758","acceptedScientificName":"Sciurus vulgaris Linnaeus,
-        1758","kingdom":"Animalia","phylum":"Chordata","order":"Rodentia","family":"Sciuridae","genus":"Sciurus","species":"Sciurus
-        vulgaris","genericName":"Sciurus","specificEpithet":"vulgaris","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","decimalLongitude":12.043857,"decimalLatitude":58.406765,"coordinateUncertaintyInMeters":50.0,"continent":"EUROPE","year":2013,"month":4,"day":17,"eventDate":"2013-04-17T09:00:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2013-04-17T12:37:00.000+0000","lastInterpreted":"2018-12-23T00:45:52.995+0000","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"SE","country":"Sweden","rightsHolder":"Hans
-        Petersson","associatedReferences":"urn:lsid:artportalen.se:Sighting:Vertebrate.65338","county":"Bohuslän","municipality":"Uddevalla","identificationVerificationStatus":"Unvalidated","language":"Swedish","gbifID":"855998194","type":"Occurrence","taxonID":"urn:lsid:dyntaxa.se:Taxon:102606","occurrenceStatus":"Present","catalogNumber":"34275321","vernacularName":"ekorre","institutionCode":"ArtDatabanken","taxonConceptID":"urn:lsid:dyntaxa.se:Taxon:102606","eventTime":"09:00:00
-        - 09:00:00","behavior":"Foraging","identifier":"urn:lsid:artportalen.se:Sighting:49366","informationWithheld":"More
-        information can be obtained from the Data Provider.","endDayOfYear":"107","locality":"Holmen
-        Lane Ryr","collectionCode":"Artportalen","occurrenceID":"urn:lsid:artportalen.se:Sighting:49366","recordedBy":"Hans
-        Petersson","startDayOfYear":"107","datasetID":"urn:lsid:swedishlifewatch.se:DataProvider:1","occurrenceRemarks":"Åt
-        havregryn på matningen","accessRights":"Free usage","higherClassification":"Biota;Animalia;Chordata;Craniata;Vertebrata;Gnathostomata;Mammalia;Placentalia;Boreoeutheria;Euarchontoglires;Rodentia;Sciuromorpha;Sciuridae;Sciurinae"}'
-  recorded_at: 2019-02-26 17:24:22 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+      encoding: ASCII-8BIT
+      string: eyJrZXkiOjg1NTk5ODE5NCwiZGF0YXNldEtleSI6IjM4YjRjODlmLTU4NGMtNDFiYi1iZDhmLWNkMWRlZjMzZTkyZiIsInB1Ymxpc2hpbmdPcmdLZXkiOiJiODMyMzg2NC02MDJhLTRhN2QtOTEyNy1iYjkwMzA1NGU5N2QiLCJuZXR3b3JrS2V5cyI6W10sImluc3RhbGxhdGlvbktleSI6IjQzNDZiMjI3LWNhNjgtNGQ1NC04YTc3LTkwOTE0ODQ5MmUwYiIsInB1Ymxpc2hpbmdDb3VudHJ5IjoiU0UiLCJwcm90b2NvbCI6IkRXQ19BUkNISVZFIiwibGFzdENyYXdsZWQiOiIyMDE5LTAyLTI0VDAwOjM4OjUzLjc4MSswMDAwIiwibGFzdFBhcnNlZCI6IjIwMTgtMDctMzFUMTk6MDE6NTYuNTg1KzAwMDAiLCJjcmF3bElkIjoxODYsImV4dGVuc2lvbnMiOnt9LCJiYXNpc09mUmVjb3JkIjoiSFVNQU5fT0JTRVJWQVRJT04iLCJpbmRpdmlkdWFsQ291bnQiOjIsImxpZmVTdGFnZSI6IkFEVUxUIiwidGF4b25LZXkiOjgyMTEwNzAsImtpbmdkb21LZXkiOjEsInBoeWx1bUtleSI6NDQsImNsYXNzS2V5IjozNTksIm9yZGVyS2V5IjoxNDU5LCJmYW1pbHlLZXkiOjk0NTYsImdlbnVzS2V5IjoyNDM3NDg5LCJzcGVjaWVzS2V5Ijo4MjExMDcwLCJhY2NlcHRlZFRheG9uS2V5Ijo4MjExMDcwLCJzY2llbnRpZmljTmFtZSI6IlNjaXVydXMgdnVsZ2FyaXMgTGlubmFldXMsIDE3NTgiLCJhY2NlcHRlZFNjaWVudGlmaWNOYW1lIjoiU2NpdXJ1cyB2dWxnYXJpcyBMaW5uYWV1cywgMTc1OCIsImtpbmdkb20iOiJBbmltYWxpYSIsInBoeWx1bSI6IkNob3JkYXRhIiwib3JkZXIiOiJSb2RlbnRpYSIsImZhbWlseSI6IlNjaXVyaWRhZSIsImdlbnVzIjoiU2NpdXJ1cyIsInNwZWNpZXMiOiJTY2l1cnVzIHZ1bGdhcmlzIiwiZ2VuZXJpY05hbWUiOiJTY2l1cnVzIiwic3BlY2lmaWNFcGl0aGV0IjoidnVsZ2FyaXMiLCJ0YXhvblJhbmsiOiJTUEVDSUVTIiwidGF4b25vbWljU3RhdHVzIjoiQUNDRVBURUQiLCJkZWNpbWFsTG9uZ2l0dWRlIjoxMi4wNDM4NTcsImRlY2ltYWxMYXRpdHVkZSI6NTguNDA2NzY1LCJjb29yZGluYXRlVW5jZXJ0YWludHlJbk1ldGVycyI6NTAuMCwiY29udGluZW50IjoiRVVST1BFIiwieWVhciI6MjAxMywibW9udGgiOjQsImRheSI6MTcsImV2ZW50RGF0ZSI6IjIwMTMtMDQtMTdUMDk6MDA6MDAiLCJpc3N1ZXMiOlsiQ09PUkRJTkFURV9ST1VOREVEIiwiR0VPREVUSUNfREFUVU1fQVNTVU1FRF9XR1M4NCJdLCJtb2RpZmllZCI6IjIwMTMtMDQtMTdUMTI6Mzc6MDAuMDAwKzAwMDAiLCJsYXN0SW50ZXJwcmV0ZWQiOiIyMDE4LTEyLTIzVDAwOjQ1OjUyLjk5NSswMDAwIiwibGljZW5zZSI6Imh0dHA6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL3B1YmxpY2RvbWFpbi96ZXJvLzEuMC9sZWdhbGNvZGUiLCJpZGVudGlmaWVycyI6W10sImZhY3RzIjpbXSwicmVsYXRpb25zIjpbXSwiZ2VvZGV0aWNEYXR1bSI6IldHUzg0IiwiY2xhc3MiOiJNYW1tYWxpYSIsImNvdW50cnlDb2RlIjoiU0UiLCJjb3VudHJ5IjoiU3dlZGVuIiwicmlnaHRzSG9sZGVyIjoiSGFucyBQZXRlcnNzb24iLCJtdW5pY2lwYWxpdHkiOiJVZGRldmFsbGEiLCJhc3NvY2lhdGVkUmVmZXJlbmNlcyI6InVybjpsc2lkOmFydHBvcnRhbGVuLnNlOlNpZ2h0aW5nOlZlcnRlYnJhdGUuNjUzMzgiLCJjb3VudHkiOiJCb2h1c2zDpG4iLCJpZGVudGlmaWNhdGlvblZlcmlmaWNhdGlvblN0YXR1cyI6IlVudmFsaWRhdGVkIiwiZ2JpZklEIjoiODU1OTk4MTk0IiwibGFuZ3VhZ2UiOiJTd2VkaXNoIiwidHlwZSI6Ik9jY3VycmVuY2UiLCJ0YXhvbklEIjoidXJuOmxzaWQ6ZHludGF4YS5zZTpUYXhvbjoxMDI2MDYiLCJjYXRhbG9nTnVtYmVyIjoiMzQyNzUzMjEiLCJvY2N1cnJlbmNlU3RhdHVzIjoiUHJlc2VudCIsInZlcm5hY3VsYXJOYW1lIjoiZWtvcnJlIiwiaW5zdGl0dXRpb25Db2RlIjoiQXJ0RGF0YWJhbmtlbiIsInRheG9uQ29uY2VwdElEIjoidXJuOmxzaWQ6ZHludGF4YS5zZTpUYXhvbjoxMDI2MDYiLCJldmVudFRpbWUiOiIwOTowMDowMCAtIDA5OjAwOjAwIiwiYmVoYXZpb3IiOiJGb3JhZ2luZyIsImlkZW50aWZpZXIiOiJ1cm46bHNpZDphcnRwb3J0YWxlbi5zZTpTaWdodGluZzo0OTM2NiIsImluZm9ybWF0aW9uV2l0aGhlbGQiOiJNb3JlIGluZm9ybWF0aW9uIGNhbiBiZSBvYnRhaW5lZCBmcm9tIHRoZSBEYXRhIFByb3ZpZGVyLiIsImVuZERheU9mWWVhciI6IjEwNyIsImxvY2FsaXR5IjoiSG9sbWVuIExhbmUgUnlyIiwiY29sbGVjdGlvbkNvZGUiOiJBcnRwb3J0YWxlbiIsIm9jY3VycmVuY2VJRCI6InVybjpsc2lkOmFydHBvcnRhbGVuLnNlOlNpZ2h0aW5nOjQ5MzY2IiwicmVjb3JkZWRCeSI6IkhhbnMgUGV0ZXJzc29uIiwic3RhcnREYXlPZlllYXIiOiIxMDciLCJkYXRhc2V0SUQiOiJ1cm46bHNpZDpzd2VkaXNobGlmZXdhdGNoLnNlOkRhdGFQcm92aWRlcjoxIiwib2NjdXJyZW5jZVJlbWFya3MiOiLDhXQgaGF2cmVncnluIHDDpSBtYXRuaW5nZW4iLCJhY2Nlc3NSaWdodHMiOiJGcmVlIHVzYWdlIiwiaGlnaGVyQ2xhc3NpZmljYXRpb24iOiJCaW90YTtBbmltYWxpYTtDaG9yZGF0YTtDcmFuaWF0YTtWZXJ0ZWJyYXRhO0duYXRob3N0b21hdGE7TWFtbWFsaWE7UGxhY2VudGFsaWE7Qm9yZW9ldXRoZXJpYTtFdWFyY2hvbnRvZ2xpcmVzO1JvZGVudGlhO1NjaXVyb21vcnBoYTtTY2l1cmlkYWU7U2NpdXJpbmFlIn0=
+  recorded_at: 2019-05-07 17:09:09 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4.9100
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/855998194
@@ -140,8 +113,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9515)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9515)
   response:
     status:
       status_code: '200'
@@ -149,76 +122,58 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 17:24:19 GMT
+      date: Tue, 07 May 2019 17:09:05 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: 843809574 825197633
-      age: '0'
-      via: 1.1 varnish (Varnish/5.2)
-      accept-ranges: bytes
-      content-length: '2654'
-      connection: keep-alive
-    body:
-      encoding: UTF-8
-      string: '{"key":855998194,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","networkKeys":[],"installationKey":"4346b227-ca68-4d54-8a77-909148492e0b","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2019-02-24T00:38:53.781+0000","lastParsed":"2018-07-31T19:01:56.585+0000","crawlId":186,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","individualCount":2,"lifeStage":"ADULT","taxonKey":8211070,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":1459,"familyKey":9456,"genusKey":2437489,"speciesKey":8211070,"acceptedTaxonKey":8211070,"scientificName":"Sciurus
-        vulgaris Linnaeus, 1758","acceptedScientificName":"Sciurus vulgaris Linnaeus,
-        1758","kingdom":"Animalia","phylum":"Chordata","order":"Rodentia","family":"Sciuridae","genus":"Sciurus","species":"Sciurus
-        vulgaris","genericName":"Sciurus","specificEpithet":"vulgaris","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","decimalLongitude":12.043857,"decimalLatitude":58.406765,"coordinateUncertaintyInMeters":50.0,"continent":"EUROPE","year":2013,"month":4,"day":17,"eventDate":"2013-04-17T09:00:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2013-04-17T12:37:00.000+0000","lastInterpreted":"2018-12-23T00:45:52.995+0000","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"SE","country":"Sweden","rightsHolder":"Hans
-        Petersson","associatedReferences":"urn:lsid:artportalen.se:Sighting:Vertebrate.65338","county":"Bohuslän","municipality":"Uddevalla","identificationVerificationStatus":"Unvalidated","language":"Swedish","gbifID":"855998194","type":"Occurrence","taxonID":"urn:lsid:dyntaxa.se:Taxon:102606","occurrenceStatus":"Present","catalogNumber":"34275321","vernacularName":"ekorre","institutionCode":"ArtDatabanken","taxonConceptID":"urn:lsid:dyntaxa.se:Taxon:102606","eventTime":"09:00:00
-        - 09:00:00","behavior":"Foraging","identifier":"urn:lsid:artportalen.se:Sighting:49366","informationWithheld":"More
-        information can be obtained from the Data Provider.","endDayOfYear":"107","locality":"Holmen
-        Lane Ryr","collectionCode":"Artportalen","occurrenceID":"urn:lsid:artportalen.se:Sighting:49366","recordedBy":"Hans
-        Petersson","startDayOfYear":"107","datasetID":"urn:lsid:swedishlifewatch.se:DataProvider:1","occurrenceRemarks":"Åt
-        havregryn på matningen","accessRights":"Free usage","higherClassification":"Biota;Animalia;Chordata;Craniata;Vertebrata;Gnathostomata;Mammalia;Placentalia;Boreoeutheria;Euarchontoglires;Rodentia;Sciuromorpha;Sciuridae;Sciurinae"}'
-  recorded_at: 2019-02-26 17:24:22 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
-- request:
-    method: get
-    uri: https://api.gbif.org/v1/occurrence/855998194
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-  response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
-    headers:
-      status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 17:24:19 GMT
-      content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
-      cache-control: public, max-age=3601
-      x-varnish: 823591860 825197633
+      x-varnish: 798033737 785024682
       age: '1'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
       content-length: '2654'
       connection: keep-alive
     body:
-      encoding: UTF-8
-      string: '{"key":855998194,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","networkKeys":[],"installationKey":"4346b227-ca68-4d54-8a77-909148492e0b","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2019-02-24T00:38:53.781+0000","lastParsed":"2018-07-31T19:01:56.585+0000","crawlId":186,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","individualCount":2,"lifeStage":"ADULT","taxonKey":8211070,"kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":1459,"familyKey":9456,"genusKey":2437489,"speciesKey":8211070,"acceptedTaxonKey":8211070,"scientificName":"Sciurus
-        vulgaris Linnaeus, 1758","acceptedScientificName":"Sciurus vulgaris Linnaeus,
-        1758","kingdom":"Animalia","phylum":"Chordata","order":"Rodentia","family":"Sciuridae","genus":"Sciurus","species":"Sciurus
-        vulgaris","genericName":"Sciurus","specificEpithet":"vulgaris","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","decimalLongitude":12.043857,"decimalLatitude":58.406765,"coordinateUncertaintyInMeters":50.0,"continent":"EUROPE","year":2013,"month":4,"day":17,"eventDate":"2013-04-17T09:00:00","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2013-04-17T12:37:00.000+0000","lastInterpreted":"2018-12-23T00:45:52.995+0000","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","identifiers":[],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Mammalia","countryCode":"SE","country":"Sweden","rightsHolder":"Hans
-        Petersson","associatedReferences":"urn:lsid:artportalen.se:Sighting:Vertebrate.65338","county":"Bohuslän","municipality":"Uddevalla","identificationVerificationStatus":"Unvalidated","language":"Swedish","gbifID":"855998194","type":"Occurrence","taxonID":"urn:lsid:dyntaxa.se:Taxon:102606","occurrenceStatus":"Present","catalogNumber":"34275321","vernacularName":"ekorre","institutionCode":"ArtDatabanken","taxonConceptID":"urn:lsid:dyntaxa.se:Taxon:102606","eventTime":"09:00:00
-        - 09:00:00","behavior":"Foraging","identifier":"urn:lsid:artportalen.se:Sighting:49366","informationWithheld":"More
-        information can be obtained from the Data Provider.","endDayOfYear":"107","locality":"Holmen
-        Lane Ryr","collectionCode":"Artportalen","occurrenceID":"urn:lsid:artportalen.se:Sighting:49366","recordedBy":"Hans
-        Petersson","startDayOfYear":"107","datasetID":"urn:lsid:swedishlifewatch.se:DataProvider:1","occurrenceRemarks":"Åt
-        havregryn på matningen","accessRights":"Free usage","higherClassification":"Biota;Animalia;Chordata;Craniata;Vertebrata;Gnathostomata;Mammalia;Placentalia;Boreoeutheria;Euarchontoglires;Rodentia;Sciuromorpha;Sciuridae;Sciurinae"}'
-  recorded_at: 2019-02-26 17:24:22 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+      encoding: ASCII-8BIT
+      string: eyJrZXkiOjg1NTk5ODE5NCwiZGF0YXNldEtleSI6IjM4YjRjODlmLTU4NGMtNDFiYi1iZDhmLWNkMWRlZjMzZTkyZiIsInB1Ymxpc2hpbmdPcmdLZXkiOiJiODMyMzg2NC02MDJhLTRhN2QtOTEyNy1iYjkwMzA1NGU5N2QiLCJuZXR3b3JrS2V5cyI6W10sImluc3RhbGxhdGlvbktleSI6IjQzNDZiMjI3LWNhNjgtNGQ1NC04YTc3LTkwOTE0ODQ5MmUwYiIsInB1Ymxpc2hpbmdDb3VudHJ5IjoiU0UiLCJwcm90b2NvbCI6IkRXQ19BUkNISVZFIiwibGFzdENyYXdsZWQiOiIyMDE5LTAyLTI0VDAwOjM4OjUzLjc4MSswMDAwIiwibGFzdFBhcnNlZCI6IjIwMTgtMDctMzFUMTk6MDE6NTYuNTg1KzAwMDAiLCJjcmF3bElkIjoxODYsImV4dGVuc2lvbnMiOnt9LCJiYXNpc09mUmVjb3JkIjoiSFVNQU5fT0JTRVJWQVRJT04iLCJpbmRpdmlkdWFsQ291bnQiOjIsImxpZmVTdGFnZSI6IkFEVUxUIiwidGF4b25LZXkiOjgyMTEwNzAsImtpbmdkb21LZXkiOjEsInBoeWx1bUtleSI6NDQsImNsYXNzS2V5IjozNTksIm9yZGVyS2V5IjoxNDU5LCJmYW1pbHlLZXkiOjk0NTYsImdlbnVzS2V5IjoyNDM3NDg5LCJzcGVjaWVzS2V5Ijo4MjExMDcwLCJhY2NlcHRlZFRheG9uS2V5Ijo4MjExMDcwLCJzY2llbnRpZmljTmFtZSI6IlNjaXVydXMgdnVsZ2FyaXMgTGlubmFldXMsIDE3NTgiLCJhY2NlcHRlZFNjaWVudGlmaWNOYW1lIjoiU2NpdXJ1cyB2dWxnYXJpcyBMaW5uYWV1cywgMTc1OCIsImtpbmdkb20iOiJBbmltYWxpYSIsInBoeWx1bSI6IkNob3JkYXRhIiwib3JkZXIiOiJSb2RlbnRpYSIsImZhbWlseSI6IlNjaXVyaWRhZSIsImdlbnVzIjoiU2NpdXJ1cyIsInNwZWNpZXMiOiJTY2l1cnVzIHZ1bGdhcmlzIiwiZ2VuZXJpY05hbWUiOiJTY2l1cnVzIiwic3BlY2lmaWNFcGl0aGV0IjoidnVsZ2FyaXMiLCJ0YXhvblJhbmsiOiJTUEVDSUVTIiwidGF4b25vbWljU3RhdHVzIjoiQUNDRVBURUQiLCJkZWNpbWFsTG9uZ2l0dWRlIjoxMi4wNDM4NTcsImRlY2ltYWxMYXRpdHVkZSI6NTguNDA2NzY1LCJjb29yZGluYXRlVW5jZXJ0YWludHlJbk1ldGVycyI6NTAuMCwiY29udGluZW50IjoiRVVST1BFIiwieWVhciI6MjAxMywibW9udGgiOjQsImRheSI6MTcsImV2ZW50RGF0ZSI6IjIwMTMtMDQtMTdUMDk6MDA6MDAiLCJpc3N1ZXMiOlsiQ09PUkRJTkFURV9ST1VOREVEIiwiR0VPREVUSUNfREFUVU1fQVNTVU1FRF9XR1M4NCJdLCJtb2RpZmllZCI6IjIwMTMtMDQtMTdUMTI6Mzc6MDAuMDAwKzAwMDAiLCJsYXN0SW50ZXJwcmV0ZWQiOiIyMDE4LTEyLTIzVDAwOjQ1OjUyLjk5NSswMDAwIiwibGljZW5zZSI6Imh0dHA6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL3B1YmxpY2RvbWFpbi96ZXJvLzEuMC9sZWdhbGNvZGUiLCJpZGVudGlmaWVycyI6W10sImZhY3RzIjpbXSwicmVsYXRpb25zIjpbXSwiZ2VvZGV0aWNEYXR1bSI6IldHUzg0IiwiY2xhc3MiOiJNYW1tYWxpYSIsImNvdW50cnlDb2RlIjoiU0UiLCJjb3VudHJ5IjoiU3dlZGVuIiwicmlnaHRzSG9sZGVyIjoiSGFucyBQZXRlcnNzb24iLCJtdW5pY2lwYWxpdHkiOiJVZGRldmFsbGEiLCJhc3NvY2lhdGVkUmVmZXJlbmNlcyI6InVybjpsc2lkOmFydHBvcnRhbGVuLnNlOlNpZ2h0aW5nOlZlcnRlYnJhdGUuNjUzMzgiLCJjb3VudHkiOiJCb2h1c2zDpG4iLCJpZGVudGlmaWNhdGlvblZlcmlmaWNhdGlvblN0YXR1cyI6IlVudmFsaWRhdGVkIiwiZ2JpZklEIjoiODU1OTk4MTk0IiwibGFuZ3VhZ2UiOiJTd2VkaXNoIiwidHlwZSI6Ik9jY3VycmVuY2UiLCJ0YXhvbklEIjoidXJuOmxzaWQ6ZHludGF4YS5zZTpUYXhvbjoxMDI2MDYiLCJjYXRhbG9nTnVtYmVyIjoiMzQyNzUzMjEiLCJvY2N1cnJlbmNlU3RhdHVzIjoiUHJlc2VudCIsInZlcm5hY3VsYXJOYW1lIjoiZWtvcnJlIiwiaW5zdGl0dXRpb25Db2RlIjoiQXJ0RGF0YWJhbmtlbiIsInRheG9uQ29uY2VwdElEIjoidXJuOmxzaWQ6ZHludGF4YS5zZTpUYXhvbjoxMDI2MDYiLCJldmVudFRpbWUiOiIwOTowMDowMCAtIDA5OjAwOjAwIiwiYmVoYXZpb3IiOiJGb3JhZ2luZyIsImlkZW50aWZpZXIiOiJ1cm46bHNpZDphcnRwb3J0YWxlbi5zZTpTaWdodGluZzo0OTM2NiIsImluZm9ybWF0aW9uV2l0aGhlbGQiOiJNb3JlIGluZm9ybWF0aW9uIGNhbiBiZSBvYnRhaW5lZCBmcm9tIHRoZSBEYXRhIFByb3ZpZGVyLiIsImVuZERheU9mWWVhciI6IjEwNyIsImxvY2FsaXR5IjoiSG9sbWVuIExhbmUgUnlyIiwiY29sbGVjdGlvbkNvZGUiOiJBcnRwb3J0YWxlbiIsIm9jY3VycmVuY2VJRCI6InVybjpsc2lkOmFydHBvcnRhbGVuLnNlOlNpZ2h0aW5nOjQ5MzY2IiwicmVjb3JkZWRCeSI6IkhhbnMgUGV0ZXJzc29uIiwic3RhcnREYXlPZlllYXIiOiIxMDciLCJkYXRhc2V0SUQiOiJ1cm46bHNpZDpzd2VkaXNobGlmZXdhdGNoLnNlOkRhdGFQcm92aWRlcjoxIiwib2NjdXJyZW5jZVJlbWFya3MiOiLDhXQgaGF2cmVncnluIHDDpSBtYXRuaW5nZW4iLCJhY2Nlc3NSaWdodHMiOiJGcmVlIHVzYWdlIiwiaGlnaGVyQ2xhc3NpZmljYXRpb24iOiJCaW90YTtBbmltYWxpYTtDaG9yZGF0YTtDcmFuaWF0YTtWZXJ0ZWJyYXRhO0duYXRob3N0b21hdGE7TWFtbWFsaWE7UGxhY2VudGFsaWE7Qm9yZW9ldXRoZXJpYTtFdWFyY2hvbnRvZ2xpcmVzO1JvZGVudGlhO1NjaXVyb21vcnBoYTtTY2l1cmlkYWU7U2NpdXJpbmFlIn0=
+  recorded_at: 2019-05-07 17:09:09 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4.9100
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/855998194
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9515)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9515)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Tue, 07 May 2019 17:09:05 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=3601
+      x-varnish: 777997550 785024682
+      age: '1'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '2654'
+      connection: keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: eyJrZXkiOjg1NTk5ODE5NCwiZGF0YXNldEtleSI6IjM4YjRjODlmLTU4NGMtNDFiYi1iZDhmLWNkMWRlZjMzZTkyZiIsInB1Ymxpc2hpbmdPcmdLZXkiOiJiODMyMzg2NC02MDJhLTRhN2QtOTEyNy1iYjkwMzA1NGU5N2QiLCJuZXR3b3JrS2V5cyI6W10sImluc3RhbGxhdGlvbktleSI6IjQzNDZiMjI3LWNhNjgtNGQ1NC04YTc3LTkwOTE0ODQ5MmUwYiIsInB1Ymxpc2hpbmdDb3VudHJ5IjoiU0UiLCJwcm90b2NvbCI6IkRXQ19BUkNISVZFIiwibGFzdENyYXdsZWQiOiIyMDE5LTAyLTI0VDAwOjM4OjUzLjc4MSswMDAwIiwibGFzdFBhcnNlZCI6IjIwMTgtMDctMzFUMTk6MDE6NTYuNTg1KzAwMDAiLCJjcmF3bElkIjoxODYsImV4dGVuc2lvbnMiOnt9LCJiYXNpc09mUmVjb3JkIjoiSFVNQU5fT0JTRVJWQVRJT04iLCJpbmRpdmlkdWFsQ291bnQiOjIsImxpZmVTdGFnZSI6IkFEVUxUIiwidGF4b25LZXkiOjgyMTEwNzAsImtpbmdkb21LZXkiOjEsInBoeWx1bUtleSI6NDQsImNsYXNzS2V5IjozNTksIm9yZGVyS2V5IjoxNDU5LCJmYW1pbHlLZXkiOjk0NTYsImdlbnVzS2V5IjoyNDM3NDg5LCJzcGVjaWVzS2V5Ijo4MjExMDcwLCJhY2NlcHRlZFRheG9uS2V5Ijo4MjExMDcwLCJzY2llbnRpZmljTmFtZSI6IlNjaXVydXMgdnVsZ2FyaXMgTGlubmFldXMsIDE3NTgiLCJhY2NlcHRlZFNjaWVudGlmaWNOYW1lIjoiU2NpdXJ1cyB2dWxnYXJpcyBMaW5uYWV1cywgMTc1OCIsImtpbmdkb20iOiJBbmltYWxpYSIsInBoeWx1bSI6IkNob3JkYXRhIiwib3JkZXIiOiJSb2RlbnRpYSIsImZhbWlseSI6IlNjaXVyaWRhZSIsImdlbnVzIjoiU2NpdXJ1cyIsInNwZWNpZXMiOiJTY2l1cnVzIHZ1bGdhcmlzIiwiZ2VuZXJpY05hbWUiOiJTY2l1cnVzIiwic3BlY2lmaWNFcGl0aGV0IjoidnVsZ2FyaXMiLCJ0YXhvblJhbmsiOiJTUEVDSUVTIiwidGF4b25vbWljU3RhdHVzIjoiQUNDRVBURUQiLCJkZWNpbWFsTG9uZ2l0dWRlIjoxMi4wNDM4NTcsImRlY2ltYWxMYXRpdHVkZSI6NTguNDA2NzY1LCJjb29yZGluYXRlVW5jZXJ0YWludHlJbk1ldGVycyI6NTAuMCwiY29udGluZW50IjoiRVVST1BFIiwieWVhciI6MjAxMywibW9udGgiOjQsImRheSI6MTcsImV2ZW50RGF0ZSI6IjIwMTMtMDQtMTdUMDk6MDA6MDAiLCJpc3N1ZXMiOlsiQ09PUkRJTkFURV9ST1VOREVEIiwiR0VPREVUSUNfREFUVU1fQVNTVU1FRF9XR1M4NCJdLCJtb2RpZmllZCI6IjIwMTMtMDQtMTdUMTI6Mzc6MDAuMDAwKzAwMDAiLCJsYXN0SW50ZXJwcmV0ZWQiOiIyMDE4LTEyLTIzVDAwOjQ1OjUyLjk5NSswMDAwIiwibGljZW5zZSI6Imh0dHA6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL3B1YmxpY2RvbWFpbi96ZXJvLzEuMC9sZWdhbGNvZGUiLCJpZGVudGlmaWVycyI6W10sImZhY3RzIjpbXSwicmVsYXRpb25zIjpbXSwiZ2VvZGV0aWNEYXR1bSI6IldHUzg0IiwiY2xhc3MiOiJNYW1tYWxpYSIsImNvdW50cnlDb2RlIjoiU0UiLCJjb3VudHJ5IjoiU3dlZGVuIiwicmlnaHRzSG9sZGVyIjoiSGFucyBQZXRlcnNzb24iLCJtdW5pY2lwYWxpdHkiOiJVZGRldmFsbGEiLCJhc3NvY2lhdGVkUmVmZXJlbmNlcyI6InVybjpsc2lkOmFydHBvcnRhbGVuLnNlOlNpZ2h0aW5nOlZlcnRlYnJhdGUuNjUzMzgiLCJjb3VudHkiOiJCb2h1c2zDpG4iLCJpZGVudGlmaWNhdGlvblZlcmlmaWNhdGlvblN0YXR1cyI6IlVudmFsaWRhdGVkIiwiZ2JpZklEIjoiODU1OTk4MTk0IiwibGFuZ3VhZ2UiOiJTd2VkaXNoIiwidHlwZSI6Ik9jY3VycmVuY2UiLCJ0YXhvbklEIjoidXJuOmxzaWQ6ZHludGF4YS5zZTpUYXhvbjoxMDI2MDYiLCJjYXRhbG9nTnVtYmVyIjoiMzQyNzUzMjEiLCJvY2N1cnJlbmNlU3RhdHVzIjoiUHJlc2VudCIsInZlcm5hY3VsYXJOYW1lIjoiZWtvcnJlIiwiaW5zdGl0dXRpb25Db2RlIjoiQXJ0RGF0YWJhbmtlbiIsInRheG9uQ29uY2VwdElEIjoidXJuOmxzaWQ6ZHludGF4YS5zZTpUYXhvbjoxMDI2MDYiLCJldmVudFRpbWUiOiIwOTowMDowMCAtIDA5OjAwOjAwIiwiYmVoYXZpb3IiOiJGb3JhZ2luZyIsImlkZW50aWZpZXIiOiJ1cm46bHNpZDphcnRwb3J0YWxlbi5zZTpTaWdodGluZzo0OTM2NiIsImluZm9ybWF0aW9uV2l0aGhlbGQiOiJNb3JlIGluZm9ybWF0aW9uIGNhbiBiZSBvYnRhaW5lZCBmcm9tIHRoZSBEYXRhIFByb3ZpZGVyLiIsImVuZERheU9mWWVhciI6IjEwNyIsImxvY2FsaXR5IjoiSG9sbWVuIExhbmUgUnlyIiwiY29sbGVjdGlvbkNvZGUiOiJBcnRwb3J0YWxlbiIsIm9jY3VycmVuY2VJRCI6InVybjpsc2lkOmFydHBvcnRhbGVuLnNlOlNpZ2h0aW5nOjQ5MzY2IiwicmVjb3JkZWRCeSI6IkhhbnMgUGV0ZXJzc29uIiwic3RhcnREYXlPZlllYXIiOiIxMDciLCJkYXRhc2V0SUQiOiJ1cm46bHNpZDpzd2VkaXNobGlmZXdhdGNoLnNlOkRhdGFQcm92aWRlcjoxIiwib2NjdXJyZW5jZVJlbWFya3MiOiLDhXQgaGF2cmVncnluIHDDpSBtYXRuaW5nZW4iLCJhY2Nlc3NSaWdodHMiOiJGcmVlIHVzYWdlIiwiaGlnaGVyQ2xhc3NpZmljYXRpb24iOiJCaW90YTtBbmltYWxpYTtDaG9yZGF0YTtDcmFuaWF0YTtWZXJ0ZWJyYXRhO0duYXRob3N0b21hdGE7TWFtbWFsaWE7UGxhY2VudGFsaWE7Qm9yZW9ldXRoZXJpYTtFdWFyY2hvbnRvZ2xpcmVzO1JvZGVudGlhO1NjaXVyb21vcnBoYTtTY2l1cmlkYWU7U2NpdXJpbmFlIn0=
+  recorded_at: 2019-05-07 17:09:09 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4.9100
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/855998194/verbatim
@@ -228,8 +183,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9515)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9515)
   response:
     status:
       status_code: '200'
@@ -237,34 +192,23 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 17:24:20 GMT
+      date: Tue, 07 May 2019 17:09:06 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: 845709731 836862655
+      x-varnish: 770019290 756815066
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
       content-length: '3625'
       connection: keep-alive
     body:
-      encoding: UTF-8
-      string: '{"key":855998194,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2019-02-24T00:38:53.781+0000","lastParsed":"2018-07-31T19:01:56.585+0000","crawlId":186,"extensions":{},"http://rs.tdwg.org/dwc/terms/continent":"Europe","http://rs.tdwg.org/dwc/terms/country":"Sweden","http://rs.tdwg.org/dwc/terms/order":"Rodentia","http://rs.tdwg.org/dwc/terms/taxonRank":"Species","http://purl.org/dc/terms/accessRights":"Free
-        usage","http://rs.tdwg.org/dwc/terms/year":"2013","http://rs.tdwg.org/dwc/terms/lifeStage":"Adult","http://rs.tdwg.org/dwc/terms/locality":"Holmen
-        Lane Ryr","http://rs.tdwg.org/dwc/terms/endDayOfYear":"107","http://rs.tdwg.org/dwc/terms/basisOfRecord":"humanobservation","http://rs.tdwg.org/dwc/terms/higherClassification":"Biota;Animalia;Chordata;Craniata;Vertebrata;Gnathostomata;Mammalia;Placentalia;Boreoeutheria;Euarchontoglires;Rodentia;Sciuromorpha;Sciuridae;Sciurinae","http://rs.tdwg.org/dwc/terms/eventTime":"09:00:00
-        - 09:00:00","http://rs.tdwg.org/dwc/terms/taxonConceptID":"urn:lsid:dyntaxa.se:Taxon:102606","http://rs.tdwg.org/dwc/terms/scientificName":"Sciurus
-        vulgaris","http://rs.gbif.org/terms/1.0/gbifID":"855998194","http://rs.tdwg.org/dwc/terms/day":"17","http://rs.tdwg.org/dwc/terms/genus":"Sciurus","http://rs.tdwg.org/dwc/terms/datasetID":"urn:lsid:swedishlifewatch.se:DataProvider:1","http://rs.tdwg.org/dwc/terms/specificEpithet":"vulgaris","http://rs.tdwg.org/dwc/terms/occurrenceID":"urn:lsid:artportalen.se:Sighting:49366","http://rs.tdwg.org/dwc/terms/informationWithheld":"More
-        information can be obtained from the Data Provider.","http://rs.tdwg.org/dwc/terms/establishmentMeans":"Natural","http://purl.org/dc/terms/type":"Occurrence","http://rs.tdwg.org/dwc/terms/occurrenceRemarks":"Åt
-        havregryn på matningen","http://rs.tdwg.org/dwc/terms/decimalLongitude":"12.0438569","http://rs.tdwg.org/dwc/terms/occurrenceStatus":"Present","http://rs.tdwg.org/dwc/terms/behavior":"Foraging","http://rs.tdwg.org/dwc/terms/startDayOfYear":"107","http://rs.tdwg.org/dwc/terms/collectionCode":"Artportalen","http://rs.tdwg.org/dwc/terms/taxonID":"urn:lsid:dyntaxa.se:Taxon:102606","http://rs.tdwg.org/dwc/terms/municipality":"Uddevalla","http://rs.tdwg.org/dwc/terms/vernacularName":"ekorre","http://purl.org/dc/terms/rightsHolder":"Hans
-        Petersson","http://rs.tdwg.org/dwc/terms/family":"Sciuridae","http://rs.tdwg.org/dwc/terms/month":"4","http://purl.org/dc/terms/modified":"2013-04-17
-        12:37:00","http://rs.tdwg.org/dwc/terms/decimalLatitude":"58.4067650","http://rs.tdwg.org/dwc/terms/recordedBy":"Hans
-        Petersson","http://rs.tdwg.org/dwc/terms/phylum":"Chordata","http://rs.tdwg.org/dwc/terms/kingdom":"Animalia","http://rs.tdwg.org/dwc/terms/coordinateUncertaintyInMeters":"50.00","http://purl.org/dc/terms/identifier":"urn:lsid:artportalen.se:Sighting:49366","http://rs.tdwg.org/dwc/terms/class":"Mammalia","http://rs.tdwg.org/dwc/terms/county":"Bohuslän","http://purl.org/dc/terms/language":"Swedish","http://rs.tdwg.org/dwc/terms/individualCount":"2","http://rs.tdwg.org/dwc/terms/scientificNameAuthorship":"Linnaeus,
-        1758","http://rs.tdwg.org/dwc/terms/eventDate":"2013-04-17 09:00:00/2013-04-17
-        09:00:00","http://rs.tdwg.org/dwc/terms/catalogNumber":"34275321","http://rs.tdwg.org/dwc/terms/identificationVerificationStatus":"Unvalidated","http://rs.tdwg.org/dwc/terms/countryCode":"SE","http://rs.tdwg.org/dwc/terms/institutionCode":"ArtDatabanken","http://rs.tdwg.org/dwc/terms/associatedReferences":"urn:lsid:artportalen.se:Sighting:Vertebrate.65338"}'
-  recorded_at: 2019-02-26 17:24:22 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+      encoding: ASCII-8BIT
+      string: eyJrZXkiOjg1NTk5ODE5NCwiZGF0YXNldEtleSI6IjM4YjRjODlmLTU4NGMtNDFiYi1iZDhmLWNkMWRlZjMzZTkyZiIsInB1Ymxpc2hpbmdPcmdLZXkiOiJiODMyMzg2NC02MDJhLTRhN2QtOTEyNy1iYjkwMzA1NGU5N2QiLCJwdWJsaXNoaW5nQ291bnRyeSI6IlNFIiwicHJvdG9jb2wiOiJEV0NfQVJDSElWRSIsImxhc3RDcmF3bGVkIjoiMjAxOS0wMi0yNFQwMDozODo1My43ODErMDAwMCIsImxhc3RQYXJzZWQiOiIyMDE4LTA3LTMxVDE5OjAxOjU2LjU4NSswMDAwIiwiY3Jhd2xJZCI6MTg2LCJleHRlbnNpb25zIjp7fSwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9jb250aW5lbnQiOiJFdXJvcGUiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2NvdW50cnkiOiJTd2VkZW4iLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL29yZGVyIjoiUm9kZW50aWEiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL3RheG9uUmFuayI6IlNwZWNpZXMiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL3llYXIiOiIyMDEzIiwiaHR0cDovL3B1cmwub3JnL2RjL3Rlcm1zL2FjY2Vzc1JpZ2h0cyI6IkZyZWUgdXNhZ2UiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2xpZmVTdGFnZSI6IkFkdWx0IiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9sb2NhbGl0eSI6IkhvbG1lbiBMYW5lIFJ5ciIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvZW5kRGF5T2ZZZWFyIjoiMTA3IiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9iYXNpc09mUmVjb3JkIjoiaHVtYW5vYnNlcnZhdGlvbiIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvaGlnaGVyQ2xhc3NpZmljYXRpb24iOiJCaW90YTtBbmltYWxpYTtDaG9yZGF0YTtDcmFuaWF0YTtWZXJ0ZWJyYXRhO0duYXRob3N0b21hdGE7TWFtbWFsaWE7UGxhY2VudGFsaWE7Qm9yZW9ldXRoZXJpYTtFdWFyY2hvbnRvZ2xpcmVzO1JvZGVudGlhO1NjaXVyb21vcnBoYTtTY2l1cmlkYWU7U2NpdXJpbmFlIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9ldmVudFRpbWUiOiIwOTowMDowMCAtIDA5OjAwOjAwIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy90YXhvbkNvbmNlcHRJRCI6InVybjpsc2lkOmR5bnRheGEuc2U6VGF4b246MTAyNjA2IiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9zY2llbnRpZmljTmFtZSI6IlNjaXVydXMgdnVsZ2FyaXMiLCJodHRwOi8vcnMuZ2JpZi5vcmcvdGVybXMvMS4wL2diaWZJRCI6Ijg1NTk5ODE5NCIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvZGF5IjoiMTciLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2dlbnVzIjoiU2NpdXJ1cyIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvZGF0YXNldElEIjoidXJuOmxzaWQ6c3dlZGlzaGxpZmV3YXRjaC5zZTpEYXRhUHJvdmlkZXI6MSIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvc3BlY2lmaWNFcGl0aGV0IjoidnVsZ2FyaXMiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL29jY3VycmVuY2VJRCI6InVybjpsc2lkOmFydHBvcnRhbGVuLnNlOlNpZ2h0aW5nOjQ5MzY2IiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9pbmZvcm1hdGlvbldpdGhoZWxkIjoiTW9yZSBpbmZvcm1hdGlvbiBjYW4gYmUgb2J0YWluZWQgZnJvbSB0aGUgRGF0YSBQcm92aWRlci4iLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2VzdGFibGlzaG1lbnRNZWFucyI6Ik5hdHVyYWwiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL29jY3VycmVuY2VSZW1hcmtzIjoiw4V0IGhhdnJlZ3J5biBww6UgbWF0bmluZ2VuIiwiaHR0cDovL3B1cmwub3JnL2RjL3Rlcm1zL3R5cGUiOiJPY2N1cnJlbmNlIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9kZWNpbWFsTG9uZ2l0dWRlIjoiMTIuMDQzODU2OSIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvYmVoYXZpb3IiOiJGb3JhZ2luZyIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvb2NjdXJyZW5jZVN0YXR1cyI6IlByZXNlbnQiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL3N0YXJ0RGF5T2ZZZWFyIjoiMTA3IiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy90YXhvbklEIjoidXJuOmxzaWQ6ZHludGF4YS5zZTpUYXhvbjoxMDI2MDYiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2NvbGxlY3Rpb25Db2RlIjoiQXJ0cG9ydGFsZW4iLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL211bmljaXBhbGl0eSI6IlVkZGV2YWxsYSIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvdmVybmFjdWxhck5hbWUiOiJla29ycmUiLCJodHRwOi8vcHVybC5vcmcvZGMvdGVybXMvcmlnaHRzSG9sZGVyIjoiSGFucyBQZXRlcnNzb24iLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2ZhbWlseSI6IlNjaXVyaWRhZSIsImh0dHA6Ly9wdXJsLm9yZy9kYy90ZXJtcy9tb2RpZmllZCI6IjIwMTMtMDQtMTcgMTI6Mzc6MDAiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2RlY2ltYWxMYXRpdHVkZSI6IjU4LjQwNjc2NTAiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL21vbnRoIjoiNCIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvcmVjb3JkZWRCeSI6IkhhbnMgUGV0ZXJzc29uIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9waHlsdW0iOiJDaG9yZGF0YSIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMva2luZ2RvbSI6IkFuaW1hbGlhIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9jb29yZGluYXRlVW5jZXJ0YWludHlJbk1ldGVycyI6IjUwLjAwIiwiaHR0cDovL3B1cmwub3JnL2RjL3Rlcm1zL2lkZW50aWZpZXIiOiJ1cm46bHNpZDphcnRwb3J0YWxlbi5zZTpTaWdodGluZzo0OTM2NiIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvY2xhc3MiOiJNYW1tYWxpYSIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvY291bnR5IjoiQm9odXNsw6RuIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9pbmRpdmlkdWFsQ291bnQiOiIyIiwiaHR0cDovL3B1cmwub3JnL2RjL3Rlcm1zL2xhbmd1YWdlIjoiU3dlZGlzaCIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvc2NpZW50aWZpY05hbWVBdXRob3JzaGlwIjoiTGlubmFldXMsIDE3NTgiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2V2ZW50RGF0ZSI6IjIwMTMtMDQtMTcgMDk6MDA6MDAvMjAxMy0wNC0xNyAwOTowMDowMCIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvY2F0YWxvZ051bWJlciI6IjM0Mjc1MzIxIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9pZGVudGlmaWNhdGlvblZlcmlmaWNhdGlvblN0YXR1cyI6IlVudmFsaWRhdGVkIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9pbnN0aXR1dGlvbkNvZGUiOiJBcnREYXRhYmFua2VuIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9jb3VudHJ5Q29kZSI6IlNFIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9hc3NvY2lhdGVkUmVmZXJlbmNlcyI6InVybjpsc2lkOmFydHBvcnRhbGVuLnNlOlNpZ2h0aW5nOlZlcnRlYnJhdGUuNjUzMzgifQ==
+  recorded_at: 2019-05-07 17:09:09 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4.9100
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/855998194/verbatim
@@ -274,8 +218,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9515)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9515)
   response:
     status:
       status_code: '200'
@@ -283,34 +227,23 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 17:24:20 GMT
+      date: Tue, 07 May 2019 17:09:06 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: 724869029 836862655
+      x-varnish: 801998525 756815066
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
       content-length: '3625'
       connection: keep-alive
     body:
-      encoding: UTF-8
-      string: '{"key":855998194,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2019-02-24T00:38:53.781+0000","lastParsed":"2018-07-31T19:01:56.585+0000","crawlId":186,"extensions":{},"http://rs.tdwg.org/dwc/terms/continent":"Europe","http://rs.tdwg.org/dwc/terms/country":"Sweden","http://rs.tdwg.org/dwc/terms/order":"Rodentia","http://rs.tdwg.org/dwc/terms/taxonRank":"Species","http://purl.org/dc/terms/accessRights":"Free
-        usage","http://rs.tdwg.org/dwc/terms/year":"2013","http://rs.tdwg.org/dwc/terms/lifeStage":"Adult","http://rs.tdwg.org/dwc/terms/locality":"Holmen
-        Lane Ryr","http://rs.tdwg.org/dwc/terms/endDayOfYear":"107","http://rs.tdwg.org/dwc/terms/basisOfRecord":"humanobservation","http://rs.tdwg.org/dwc/terms/higherClassification":"Biota;Animalia;Chordata;Craniata;Vertebrata;Gnathostomata;Mammalia;Placentalia;Boreoeutheria;Euarchontoglires;Rodentia;Sciuromorpha;Sciuridae;Sciurinae","http://rs.tdwg.org/dwc/terms/eventTime":"09:00:00
-        - 09:00:00","http://rs.tdwg.org/dwc/terms/taxonConceptID":"urn:lsid:dyntaxa.se:Taxon:102606","http://rs.tdwg.org/dwc/terms/scientificName":"Sciurus
-        vulgaris","http://rs.gbif.org/terms/1.0/gbifID":"855998194","http://rs.tdwg.org/dwc/terms/day":"17","http://rs.tdwg.org/dwc/terms/genus":"Sciurus","http://rs.tdwg.org/dwc/terms/datasetID":"urn:lsid:swedishlifewatch.se:DataProvider:1","http://rs.tdwg.org/dwc/terms/specificEpithet":"vulgaris","http://rs.tdwg.org/dwc/terms/occurrenceID":"urn:lsid:artportalen.se:Sighting:49366","http://rs.tdwg.org/dwc/terms/informationWithheld":"More
-        information can be obtained from the Data Provider.","http://rs.tdwg.org/dwc/terms/establishmentMeans":"Natural","http://purl.org/dc/terms/type":"Occurrence","http://rs.tdwg.org/dwc/terms/occurrenceRemarks":"Åt
-        havregryn på matningen","http://rs.tdwg.org/dwc/terms/decimalLongitude":"12.0438569","http://rs.tdwg.org/dwc/terms/occurrenceStatus":"Present","http://rs.tdwg.org/dwc/terms/behavior":"Foraging","http://rs.tdwg.org/dwc/terms/startDayOfYear":"107","http://rs.tdwg.org/dwc/terms/collectionCode":"Artportalen","http://rs.tdwg.org/dwc/terms/taxonID":"urn:lsid:dyntaxa.se:Taxon:102606","http://rs.tdwg.org/dwc/terms/municipality":"Uddevalla","http://rs.tdwg.org/dwc/terms/vernacularName":"ekorre","http://purl.org/dc/terms/rightsHolder":"Hans
-        Petersson","http://rs.tdwg.org/dwc/terms/family":"Sciuridae","http://rs.tdwg.org/dwc/terms/month":"4","http://purl.org/dc/terms/modified":"2013-04-17
-        12:37:00","http://rs.tdwg.org/dwc/terms/decimalLatitude":"58.4067650","http://rs.tdwg.org/dwc/terms/recordedBy":"Hans
-        Petersson","http://rs.tdwg.org/dwc/terms/phylum":"Chordata","http://rs.tdwg.org/dwc/terms/kingdom":"Animalia","http://rs.tdwg.org/dwc/terms/coordinateUncertaintyInMeters":"50.00","http://purl.org/dc/terms/identifier":"urn:lsid:artportalen.se:Sighting:49366","http://rs.tdwg.org/dwc/terms/class":"Mammalia","http://rs.tdwg.org/dwc/terms/county":"Bohuslän","http://purl.org/dc/terms/language":"Swedish","http://rs.tdwg.org/dwc/terms/individualCount":"2","http://rs.tdwg.org/dwc/terms/scientificNameAuthorship":"Linnaeus,
-        1758","http://rs.tdwg.org/dwc/terms/eventDate":"2013-04-17 09:00:00/2013-04-17
-        09:00:00","http://rs.tdwg.org/dwc/terms/catalogNumber":"34275321","http://rs.tdwg.org/dwc/terms/identificationVerificationStatus":"Unvalidated","http://rs.tdwg.org/dwc/terms/countryCode":"SE","http://rs.tdwg.org/dwc/terms/institutionCode":"ArtDatabanken","http://rs.tdwg.org/dwc/terms/associatedReferences":"urn:lsid:artportalen.se:Sighting:Vertebrate.65338"}'
-  recorded_at: 2019-02-26 17:24:22 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+      encoding: ASCII-8BIT
+      string: eyJrZXkiOjg1NTk5ODE5NCwiZGF0YXNldEtleSI6IjM4YjRjODlmLTU4NGMtNDFiYi1iZDhmLWNkMWRlZjMzZTkyZiIsInB1Ymxpc2hpbmdPcmdLZXkiOiJiODMyMzg2NC02MDJhLTRhN2QtOTEyNy1iYjkwMzA1NGU5N2QiLCJwdWJsaXNoaW5nQ291bnRyeSI6IlNFIiwicHJvdG9jb2wiOiJEV0NfQVJDSElWRSIsImxhc3RDcmF3bGVkIjoiMjAxOS0wMi0yNFQwMDozODo1My43ODErMDAwMCIsImxhc3RQYXJzZWQiOiIyMDE4LTA3LTMxVDE5OjAxOjU2LjU4NSswMDAwIiwiY3Jhd2xJZCI6MTg2LCJleHRlbnNpb25zIjp7fSwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9jb250aW5lbnQiOiJFdXJvcGUiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2NvdW50cnkiOiJTd2VkZW4iLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL29yZGVyIjoiUm9kZW50aWEiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL3RheG9uUmFuayI6IlNwZWNpZXMiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL3llYXIiOiIyMDEzIiwiaHR0cDovL3B1cmwub3JnL2RjL3Rlcm1zL2FjY2Vzc1JpZ2h0cyI6IkZyZWUgdXNhZ2UiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2xpZmVTdGFnZSI6IkFkdWx0IiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9sb2NhbGl0eSI6IkhvbG1lbiBMYW5lIFJ5ciIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvZW5kRGF5T2ZZZWFyIjoiMTA3IiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9iYXNpc09mUmVjb3JkIjoiaHVtYW5vYnNlcnZhdGlvbiIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvaGlnaGVyQ2xhc3NpZmljYXRpb24iOiJCaW90YTtBbmltYWxpYTtDaG9yZGF0YTtDcmFuaWF0YTtWZXJ0ZWJyYXRhO0duYXRob3N0b21hdGE7TWFtbWFsaWE7UGxhY2VudGFsaWE7Qm9yZW9ldXRoZXJpYTtFdWFyY2hvbnRvZ2xpcmVzO1JvZGVudGlhO1NjaXVyb21vcnBoYTtTY2l1cmlkYWU7U2NpdXJpbmFlIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9ldmVudFRpbWUiOiIwOTowMDowMCAtIDA5OjAwOjAwIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy90YXhvbkNvbmNlcHRJRCI6InVybjpsc2lkOmR5bnRheGEuc2U6VGF4b246MTAyNjA2IiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9zY2llbnRpZmljTmFtZSI6IlNjaXVydXMgdnVsZ2FyaXMiLCJodHRwOi8vcnMuZ2JpZi5vcmcvdGVybXMvMS4wL2diaWZJRCI6Ijg1NTk5ODE5NCIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvZGF5IjoiMTciLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2dlbnVzIjoiU2NpdXJ1cyIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvZGF0YXNldElEIjoidXJuOmxzaWQ6c3dlZGlzaGxpZmV3YXRjaC5zZTpEYXRhUHJvdmlkZXI6MSIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvc3BlY2lmaWNFcGl0aGV0IjoidnVsZ2FyaXMiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL29jY3VycmVuY2VJRCI6InVybjpsc2lkOmFydHBvcnRhbGVuLnNlOlNpZ2h0aW5nOjQ5MzY2IiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9pbmZvcm1hdGlvbldpdGhoZWxkIjoiTW9yZSBpbmZvcm1hdGlvbiBjYW4gYmUgb2J0YWluZWQgZnJvbSB0aGUgRGF0YSBQcm92aWRlci4iLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2VzdGFibGlzaG1lbnRNZWFucyI6Ik5hdHVyYWwiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL29jY3VycmVuY2VSZW1hcmtzIjoiw4V0IGhhdnJlZ3J5biBww6UgbWF0bmluZ2VuIiwiaHR0cDovL3B1cmwub3JnL2RjL3Rlcm1zL3R5cGUiOiJPY2N1cnJlbmNlIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9kZWNpbWFsTG9uZ2l0dWRlIjoiMTIuMDQzODU2OSIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvYmVoYXZpb3IiOiJGb3JhZ2luZyIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvb2NjdXJyZW5jZVN0YXR1cyI6IlByZXNlbnQiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL3N0YXJ0RGF5T2ZZZWFyIjoiMTA3IiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy90YXhvbklEIjoidXJuOmxzaWQ6ZHludGF4YS5zZTpUYXhvbjoxMDI2MDYiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2NvbGxlY3Rpb25Db2RlIjoiQXJ0cG9ydGFsZW4iLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL211bmljaXBhbGl0eSI6IlVkZGV2YWxsYSIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvdmVybmFjdWxhck5hbWUiOiJla29ycmUiLCJodHRwOi8vcHVybC5vcmcvZGMvdGVybXMvcmlnaHRzSG9sZGVyIjoiSGFucyBQZXRlcnNzb24iLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2ZhbWlseSI6IlNjaXVyaWRhZSIsImh0dHA6Ly9wdXJsLm9yZy9kYy90ZXJtcy9tb2RpZmllZCI6IjIwMTMtMDQtMTcgMTI6Mzc6MDAiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2RlY2ltYWxMYXRpdHVkZSI6IjU4LjQwNjc2NTAiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL21vbnRoIjoiNCIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvcmVjb3JkZWRCeSI6IkhhbnMgUGV0ZXJzc29uIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9waHlsdW0iOiJDaG9yZGF0YSIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMva2luZ2RvbSI6IkFuaW1hbGlhIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9jb29yZGluYXRlVW5jZXJ0YWludHlJbk1ldGVycyI6IjUwLjAwIiwiaHR0cDovL3B1cmwub3JnL2RjL3Rlcm1zL2lkZW50aWZpZXIiOiJ1cm46bHNpZDphcnRwb3J0YWxlbi5zZTpTaWdodGluZzo0OTM2NiIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvY2xhc3MiOiJNYW1tYWxpYSIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvY291bnR5IjoiQm9odXNsw6RuIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9pbmRpdmlkdWFsQ291bnQiOiIyIiwiaHR0cDovL3B1cmwub3JnL2RjL3Rlcm1zL2xhbmd1YWdlIjoiU3dlZGlzaCIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvc2NpZW50aWZpY05hbWVBdXRob3JzaGlwIjoiTGlubmFldXMsIDE3NTgiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2V2ZW50RGF0ZSI6IjIwMTMtMDQtMTcgMDk6MDA6MDAvMjAxMy0wNC0xNyAwOTowMDowMCIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvY2F0YWxvZ051bWJlciI6IjM0Mjc1MzIxIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9pZGVudGlmaWNhdGlvblZlcmlmaWNhdGlvblN0YXR1cyI6IlVudmFsaWRhdGVkIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9pbnN0aXR1dGlvbkNvZGUiOiJBcnREYXRhYmFua2VuIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9jb3VudHJ5Q29kZSI6IlNFIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9hc3NvY2lhdGVkUmVmZXJlbmNlcyI6InVybjpsc2lkOmFydHBvcnRhbGVuLnNlOlNpZ2h0aW5nOlZlcnRlYnJhdGUuNjUzMzgifQ==
+  recorded_at: 2019-05-07 17:09:09 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4.9100
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/855998194/verbatim
@@ -320,8 +253,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9515)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9515)
   response:
     status:
       status_code: '200'
@@ -329,34 +262,23 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 17:24:20 GMT
+      date: Tue, 07 May 2019 17:09:06 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: 843088227 836862655
+      x-varnish: 771363518 756815066
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
       content-length: '3625'
       connection: keep-alive
     body:
-      encoding: UTF-8
-      string: '{"key":855998194,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2019-02-24T00:38:53.781+0000","lastParsed":"2018-07-31T19:01:56.585+0000","crawlId":186,"extensions":{},"http://rs.tdwg.org/dwc/terms/continent":"Europe","http://rs.tdwg.org/dwc/terms/country":"Sweden","http://rs.tdwg.org/dwc/terms/order":"Rodentia","http://rs.tdwg.org/dwc/terms/taxonRank":"Species","http://purl.org/dc/terms/accessRights":"Free
-        usage","http://rs.tdwg.org/dwc/terms/year":"2013","http://rs.tdwg.org/dwc/terms/lifeStage":"Adult","http://rs.tdwg.org/dwc/terms/locality":"Holmen
-        Lane Ryr","http://rs.tdwg.org/dwc/terms/endDayOfYear":"107","http://rs.tdwg.org/dwc/terms/basisOfRecord":"humanobservation","http://rs.tdwg.org/dwc/terms/higherClassification":"Biota;Animalia;Chordata;Craniata;Vertebrata;Gnathostomata;Mammalia;Placentalia;Boreoeutheria;Euarchontoglires;Rodentia;Sciuromorpha;Sciuridae;Sciurinae","http://rs.tdwg.org/dwc/terms/eventTime":"09:00:00
-        - 09:00:00","http://rs.tdwg.org/dwc/terms/taxonConceptID":"urn:lsid:dyntaxa.se:Taxon:102606","http://rs.tdwg.org/dwc/terms/scientificName":"Sciurus
-        vulgaris","http://rs.gbif.org/terms/1.0/gbifID":"855998194","http://rs.tdwg.org/dwc/terms/day":"17","http://rs.tdwg.org/dwc/terms/genus":"Sciurus","http://rs.tdwg.org/dwc/terms/datasetID":"urn:lsid:swedishlifewatch.se:DataProvider:1","http://rs.tdwg.org/dwc/terms/specificEpithet":"vulgaris","http://rs.tdwg.org/dwc/terms/occurrenceID":"urn:lsid:artportalen.se:Sighting:49366","http://rs.tdwg.org/dwc/terms/informationWithheld":"More
-        information can be obtained from the Data Provider.","http://rs.tdwg.org/dwc/terms/establishmentMeans":"Natural","http://purl.org/dc/terms/type":"Occurrence","http://rs.tdwg.org/dwc/terms/occurrenceRemarks":"Åt
-        havregryn på matningen","http://rs.tdwg.org/dwc/terms/decimalLongitude":"12.0438569","http://rs.tdwg.org/dwc/terms/occurrenceStatus":"Present","http://rs.tdwg.org/dwc/terms/behavior":"Foraging","http://rs.tdwg.org/dwc/terms/startDayOfYear":"107","http://rs.tdwg.org/dwc/terms/collectionCode":"Artportalen","http://rs.tdwg.org/dwc/terms/taxonID":"urn:lsid:dyntaxa.se:Taxon:102606","http://rs.tdwg.org/dwc/terms/municipality":"Uddevalla","http://rs.tdwg.org/dwc/terms/vernacularName":"ekorre","http://purl.org/dc/terms/rightsHolder":"Hans
-        Petersson","http://rs.tdwg.org/dwc/terms/family":"Sciuridae","http://rs.tdwg.org/dwc/terms/month":"4","http://purl.org/dc/terms/modified":"2013-04-17
-        12:37:00","http://rs.tdwg.org/dwc/terms/decimalLatitude":"58.4067650","http://rs.tdwg.org/dwc/terms/recordedBy":"Hans
-        Petersson","http://rs.tdwg.org/dwc/terms/phylum":"Chordata","http://rs.tdwg.org/dwc/terms/kingdom":"Animalia","http://rs.tdwg.org/dwc/terms/coordinateUncertaintyInMeters":"50.00","http://purl.org/dc/terms/identifier":"urn:lsid:artportalen.se:Sighting:49366","http://rs.tdwg.org/dwc/terms/class":"Mammalia","http://rs.tdwg.org/dwc/terms/county":"Bohuslän","http://purl.org/dc/terms/language":"Swedish","http://rs.tdwg.org/dwc/terms/individualCount":"2","http://rs.tdwg.org/dwc/terms/scientificNameAuthorship":"Linnaeus,
-        1758","http://rs.tdwg.org/dwc/terms/eventDate":"2013-04-17 09:00:00/2013-04-17
-        09:00:00","http://rs.tdwg.org/dwc/terms/catalogNumber":"34275321","http://rs.tdwg.org/dwc/terms/identificationVerificationStatus":"Unvalidated","http://rs.tdwg.org/dwc/terms/countryCode":"SE","http://rs.tdwg.org/dwc/terms/institutionCode":"ArtDatabanken","http://rs.tdwg.org/dwc/terms/associatedReferences":"urn:lsid:artportalen.se:Sighting:Vertebrate.65338"}'
-  recorded_at: 2019-02-26 17:24:22 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+      encoding: ASCII-8BIT
+      string: eyJrZXkiOjg1NTk5ODE5NCwiZGF0YXNldEtleSI6IjM4YjRjODlmLTU4NGMtNDFiYi1iZDhmLWNkMWRlZjMzZTkyZiIsInB1Ymxpc2hpbmdPcmdLZXkiOiJiODMyMzg2NC02MDJhLTRhN2QtOTEyNy1iYjkwMzA1NGU5N2QiLCJwdWJsaXNoaW5nQ291bnRyeSI6IlNFIiwicHJvdG9jb2wiOiJEV0NfQVJDSElWRSIsImxhc3RDcmF3bGVkIjoiMjAxOS0wMi0yNFQwMDozODo1My43ODErMDAwMCIsImxhc3RQYXJzZWQiOiIyMDE4LTA3LTMxVDE5OjAxOjU2LjU4NSswMDAwIiwiY3Jhd2xJZCI6MTg2LCJleHRlbnNpb25zIjp7fSwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9jb250aW5lbnQiOiJFdXJvcGUiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2NvdW50cnkiOiJTd2VkZW4iLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL29yZGVyIjoiUm9kZW50aWEiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL3RheG9uUmFuayI6IlNwZWNpZXMiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL3llYXIiOiIyMDEzIiwiaHR0cDovL3B1cmwub3JnL2RjL3Rlcm1zL2FjY2Vzc1JpZ2h0cyI6IkZyZWUgdXNhZ2UiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2xpZmVTdGFnZSI6IkFkdWx0IiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9sb2NhbGl0eSI6IkhvbG1lbiBMYW5lIFJ5ciIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvZW5kRGF5T2ZZZWFyIjoiMTA3IiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9iYXNpc09mUmVjb3JkIjoiaHVtYW5vYnNlcnZhdGlvbiIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvaGlnaGVyQ2xhc3NpZmljYXRpb24iOiJCaW90YTtBbmltYWxpYTtDaG9yZGF0YTtDcmFuaWF0YTtWZXJ0ZWJyYXRhO0duYXRob3N0b21hdGE7TWFtbWFsaWE7UGxhY2VudGFsaWE7Qm9yZW9ldXRoZXJpYTtFdWFyY2hvbnRvZ2xpcmVzO1JvZGVudGlhO1NjaXVyb21vcnBoYTtTY2l1cmlkYWU7U2NpdXJpbmFlIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9ldmVudFRpbWUiOiIwOTowMDowMCAtIDA5OjAwOjAwIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy90YXhvbkNvbmNlcHRJRCI6InVybjpsc2lkOmR5bnRheGEuc2U6VGF4b246MTAyNjA2IiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9zY2llbnRpZmljTmFtZSI6IlNjaXVydXMgdnVsZ2FyaXMiLCJodHRwOi8vcnMuZ2JpZi5vcmcvdGVybXMvMS4wL2diaWZJRCI6Ijg1NTk5ODE5NCIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvZGF5IjoiMTciLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2dlbnVzIjoiU2NpdXJ1cyIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvZGF0YXNldElEIjoidXJuOmxzaWQ6c3dlZGlzaGxpZmV3YXRjaC5zZTpEYXRhUHJvdmlkZXI6MSIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvc3BlY2lmaWNFcGl0aGV0IjoidnVsZ2FyaXMiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL29jY3VycmVuY2VJRCI6InVybjpsc2lkOmFydHBvcnRhbGVuLnNlOlNpZ2h0aW5nOjQ5MzY2IiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9pbmZvcm1hdGlvbldpdGhoZWxkIjoiTW9yZSBpbmZvcm1hdGlvbiBjYW4gYmUgb2J0YWluZWQgZnJvbSB0aGUgRGF0YSBQcm92aWRlci4iLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2VzdGFibGlzaG1lbnRNZWFucyI6Ik5hdHVyYWwiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL29jY3VycmVuY2VSZW1hcmtzIjoiw4V0IGhhdnJlZ3J5biBww6UgbWF0bmluZ2VuIiwiaHR0cDovL3B1cmwub3JnL2RjL3Rlcm1zL3R5cGUiOiJPY2N1cnJlbmNlIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9kZWNpbWFsTG9uZ2l0dWRlIjoiMTIuMDQzODU2OSIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvYmVoYXZpb3IiOiJGb3JhZ2luZyIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvb2NjdXJyZW5jZVN0YXR1cyI6IlByZXNlbnQiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL3N0YXJ0RGF5T2ZZZWFyIjoiMTA3IiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy90YXhvbklEIjoidXJuOmxzaWQ6ZHludGF4YS5zZTpUYXhvbjoxMDI2MDYiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2NvbGxlY3Rpb25Db2RlIjoiQXJ0cG9ydGFsZW4iLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL211bmljaXBhbGl0eSI6IlVkZGV2YWxsYSIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvdmVybmFjdWxhck5hbWUiOiJla29ycmUiLCJodHRwOi8vcHVybC5vcmcvZGMvdGVybXMvcmlnaHRzSG9sZGVyIjoiSGFucyBQZXRlcnNzb24iLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2ZhbWlseSI6IlNjaXVyaWRhZSIsImh0dHA6Ly9wdXJsLm9yZy9kYy90ZXJtcy9tb2RpZmllZCI6IjIwMTMtMDQtMTcgMTI6Mzc6MDAiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2RlY2ltYWxMYXRpdHVkZSI6IjU4LjQwNjc2NTAiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL21vbnRoIjoiNCIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvcmVjb3JkZWRCeSI6IkhhbnMgUGV0ZXJzc29uIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9waHlsdW0iOiJDaG9yZGF0YSIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMva2luZ2RvbSI6IkFuaW1hbGlhIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9jb29yZGluYXRlVW5jZXJ0YWludHlJbk1ldGVycyI6IjUwLjAwIiwiaHR0cDovL3B1cmwub3JnL2RjL3Rlcm1zL2lkZW50aWZpZXIiOiJ1cm46bHNpZDphcnRwb3J0YWxlbi5zZTpTaWdodGluZzo0OTM2NiIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvY2xhc3MiOiJNYW1tYWxpYSIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvY291bnR5IjoiQm9odXNsw6RuIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9pbmRpdmlkdWFsQ291bnQiOiIyIiwiaHR0cDovL3B1cmwub3JnL2RjL3Rlcm1zL2xhbmd1YWdlIjoiU3dlZGlzaCIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvc2NpZW50aWZpY05hbWVBdXRob3JzaGlwIjoiTGlubmFldXMsIDE3NTgiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2V2ZW50RGF0ZSI6IjIwMTMtMDQtMTcgMDk6MDA6MDAvMjAxMy0wNC0xNyAwOTowMDowMCIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvY2F0YWxvZ051bWJlciI6IjM0Mjc1MzIxIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9pZGVudGlmaWNhdGlvblZlcmlmaWNhdGlvblN0YXR1cyI6IlVudmFsaWRhdGVkIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9pbnN0aXR1dGlvbkNvZGUiOiJBcnREYXRhYmFua2VuIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9jb3VudHJ5Q29kZSI6IlNFIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9hc3NvY2lhdGVkUmVmZXJlbmNlcyI6InVybjpsc2lkOmFydHBvcnRhbGVuLnNlOlNpZ2h0aW5nOlZlcnRlYnJhdGUuNjUzMzgifQ==
+  recorded_at: 2019-05-07 17:09:09 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4.9100
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/855998194/verbatim
@@ -366,8 +288,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9515)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9515)
   response:
     status:
       status_code: '200'
@@ -375,34 +297,23 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 17:24:20 GMT
+      date: Tue, 07 May 2019 17:09:06 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: 799772087 836862655
+      x-varnish: 761892697 756815066
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
       content-length: '3625'
       connection: keep-alive
     body:
-      encoding: UTF-8
-      string: '{"key":855998194,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2019-02-24T00:38:53.781+0000","lastParsed":"2018-07-31T19:01:56.585+0000","crawlId":186,"extensions":{},"http://rs.tdwg.org/dwc/terms/continent":"Europe","http://rs.tdwg.org/dwc/terms/country":"Sweden","http://rs.tdwg.org/dwc/terms/order":"Rodentia","http://rs.tdwg.org/dwc/terms/taxonRank":"Species","http://purl.org/dc/terms/accessRights":"Free
-        usage","http://rs.tdwg.org/dwc/terms/year":"2013","http://rs.tdwg.org/dwc/terms/lifeStage":"Adult","http://rs.tdwg.org/dwc/terms/locality":"Holmen
-        Lane Ryr","http://rs.tdwg.org/dwc/terms/endDayOfYear":"107","http://rs.tdwg.org/dwc/terms/basisOfRecord":"humanobservation","http://rs.tdwg.org/dwc/terms/higherClassification":"Biota;Animalia;Chordata;Craniata;Vertebrata;Gnathostomata;Mammalia;Placentalia;Boreoeutheria;Euarchontoglires;Rodentia;Sciuromorpha;Sciuridae;Sciurinae","http://rs.tdwg.org/dwc/terms/eventTime":"09:00:00
-        - 09:00:00","http://rs.tdwg.org/dwc/terms/taxonConceptID":"urn:lsid:dyntaxa.se:Taxon:102606","http://rs.tdwg.org/dwc/terms/scientificName":"Sciurus
-        vulgaris","http://rs.gbif.org/terms/1.0/gbifID":"855998194","http://rs.tdwg.org/dwc/terms/day":"17","http://rs.tdwg.org/dwc/terms/genus":"Sciurus","http://rs.tdwg.org/dwc/terms/datasetID":"urn:lsid:swedishlifewatch.se:DataProvider:1","http://rs.tdwg.org/dwc/terms/specificEpithet":"vulgaris","http://rs.tdwg.org/dwc/terms/occurrenceID":"urn:lsid:artportalen.se:Sighting:49366","http://rs.tdwg.org/dwc/terms/informationWithheld":"More
-        information can be obtained from the Data Provider.","http://rs.tdwg.org/dwc/terms/establishmentMeans":"Natural","http://purl.org/dc/terms/type":"Occurrence","http://rs.tdwg.org/dwc/terms/occurrenceRemarks":"Åt
-        havregryn på matningen","http://rs.tdwg.org/dwc/terms/decimalLongitude":"12.0438569","http://rs.tdwg.org/dwc/terms/occurrenceStatus":"Present","http://rs.tdwg.org/dwc/terms/behavior":"Foraging","http://rs.tdwg.org/dwc/terms/startDayOfYear":"107","http://rs.tdwg.org/dwc/terms/collectionCode":"Artportalen","http://rs.tdwg.org/dwc/terms/taxonID":"urn:lsid:dyntaxa.se:Taxon:102606","http://rs.tdwg.org/dwc/terms/municipality":"Uddevalla","http://rs.tdwg.org/dwc/terms/vernacularName":"ekorre","http://purl.org/dc/terms/rightsHolder":"Hans
-        Petersson","http://rs.tdwg.org/dwc/terms/family":"Sciuridae","http://rs.tdwg.org/dwc/terms/month":"4","http://purl.org/dc/terms/modified":"2013-04-17
-        12:37:00","http://rs.tdwg.org/dwc/terms/decimalLatitude":"58.4067650","http://rs.tdwg.org/dwc/terms/recordedBy":"Hans
-        Petersson","http://rs.tdwg.org/dwc/terms/phylum":"Chordata","http://rs.tdwg.org/dwc/terms/kingdom":"Animalia","http://rs.tdwg.org/dwc/terms/coordinateUncertaintyInMeters":"50.00","http://purl.org/dc/terms/identifier":"urn:lsid:artportalen.se:Sighting:49366","http://rs.tdwg.org/dwc/terms/class":"Mammalia","http://rs.tdwg.org/dwc/terms/county":"Bohuslän","http://purl.org/dc/terms/language":"Swedish","http://rs.tdwg.org/dwc/terms/individualCount":"2","http://rs.tdwg.org/dwc/terms/scientificNameAuthorship":"Linnaeus,
-        1758","http://rs.tdwg.org/dwc/terms/eventDate":"2013-04-17 09:00:00/2013-04-17
-        09:00:00","http://rs.tdwg.org/dwc/terms/catalogNumber":"34275321","http://rs.tdwg.org/dwc/terms/identificationVerificationStatus":"Unvalidated","http://rs.tdwg.org/dwc/terms/countryCode":"SE","http://rs.tdwg.org/dwc/terms/institutionCode":"ArtDatabanken","http://rs.tdwg.org/dwc/terms/associatedReferences":"urn:lsid:artportalen.se:Sighting:Vertebrate.65338"}'
-  recorded_at: 2019-02-26 17:24:22 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+      encoding: ASCII-8BIT
+      string: eyJrZXkiOjg1NTk5ODE5NCwiZGF0YXNldEtleSI6IjM4YjRjODlmLTU4NGMtNDFiYi1iZDhmLWNkMWRlZjMzZTkyZiIsInB1Ymxpc2hpbmdPcmdLZXkiOiJiODMyMzg2NC02MDJhLTRhN2QtOTEyNy1iYjkwMzA1NGU5N2QiLCJwdWJsaXNoaW5nQ291bnRyeSI6IlNFIiwicHJvdG9jb2wiOiJEV0NfQVJDSElWRSIsImxhc3RDcmF3bGVkIjoiMjAxOS0wMi0yNFQwMDozODo1My43ODErMDAwMCIsImxhc3RQYXJzZWQiOiIyMDE4LTA3LTMxVDE5OjAxOjU2LjU4NSswMDAwIiwiY3Jhd2xJZCI6MTg2LCJleHRlbnNpb25zIjp7fSwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9jb250aW5lbnQiOiJFdXJvcGUiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2NvdW50cnkiOiJTd2VkZW4iLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL29yZGVyIjoiUm9kZW50aWEiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL3RheG9uUmFuayI6IlNwZWNpZXMiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL3llYXIiOiIyMDEzIiwiaHR0cDovL3B1cmwub3JnL2RjL3Rlcm1zL2FjY2Vzc1JpZ2h0cyI6IkZyZWUgdXNhZ2UiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2xpZmVTdGFnZSI6IkFkdWx0IiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9sb2NhbGl0eSI6IkhvbG1lbiBMYW5lIFJ5ciIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvZW5kRGF5T2ZZZWFyIjoiMTA3IiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9iYXNpc09mUmVjb3JkIjoiaHVtYW5vYnNlcnZhdGlvbiIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvaGlnaGVyQ2xhc3NpZmljYXRpb24iOiJCaW90YTtBbmltYWxpYTtDaG9yZGF0YTtDcmFuaWF0YTtWZXJ0ZWJyYXRhO0duYXRob3N0b21hdGE7TWFtbWFsaWE7UGxhY2VudGFsaWE7Qm9yZW9ldXRoZXJpYTtFdWFyY2hvbnRvZ2xpcmVzO1JvZGVudGlhO1NjaXVyb21vcnBoYTtTY2l1cmlkYWU7U2NpdXJpbmFlIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9ldmVudFRpbWUiOiIwOTowMDowMCAtIDA5OjAwOjAwIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy90YXhvbkNvbmNlcHRJRCI6InVybjpsc2lkOmR5bnRheGEuc2U6VGF4b246MTAyNjA2IiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9zY2llbnRpZmljTmFtZSI6IlNjaXVydXMgdnVsZ2FyaXMiLCJodHRwOi8vcnMuZ2JpZi5vcmcvdGVybXMvMS4wL2diaWZJRCI6Ijg1NTk5ODE5NCIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvZGF5IjoiMTciLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2dlbnVzIjoiU2NpdXJ1cyIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvZGF0YXNldElEIjoidXJuOmxzaWQ6c3dlZGlzaGxpZmV3YXRjaC5zZTpEYXRhUHJvdmlkZXI6MSIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvc3BlY2lmaWNFcGl0aGV0IjoidnVsZ2FyaXMiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL29jY3VycmVuY2VJRCI6InVybjpsc2lkOmFydHBvcnRhbGVuLnNlOlNpZ2h0aW5nOjQ5MzY2IiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9pbmZvcm1hdGlvbldpdGhoZWxkIjoiTW9yZSBpbmZvcm1hdGlvbiBjYW4gYmUgb2J0YWluZWQgZnJvbSB0aGUgRGF0YSBQcm92aWRlci4iLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2VzdGFibGlzaG1lbnRNZWFucyI6Ik5hdHVyYWwiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL29jY3VycmVuY2VSZW1hcmtzIjoiw4V0IGhhdnJlZ3J5biBww6UgbWF0bmluZ2VuIiwiaHR0cDovL3B1cmwub3JnL2RjL3Rlcm1zL3R5cGUiOiJPY2N1cnJlbmNlIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9kZWNpbWFsTG9uZ2l0dWRlIjoiMTIuMDQzODU2OSIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvYmVoYXZpb3IiOiJGb3JhZ2luZyIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvb2NjdXJyZW5jZVN0YXR1cyI6IlByZXNlbnQiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL3N0YXJ0RGF5T2ZZZWFyIjoiMTA3IiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy90YXhvbklEIjoidXJuOmxzaWQ6ZHludGF4YS5zZTpUYXhvbjoxMDI2MDYiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2NvbGxlY3Rpb25Db2RlIjoiQXJ0cG9ydGFsZW4iLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL211bmljaXBhbGl0eSI6IlVkZGV2YWxsYSIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvdmVybmFjdWxhck5hbWUiOiJla29ycmUiLCJodHRwOi8vcHVybC5vcmcvZGMvdGVybXMvcmlnaHRzSG9sZGVyIjoiSGFucyBQZXRlcnNzb24iLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2ZhbWlseSI6IlNjaXVyaWRhZSIsImh0dHA6Ly9wdXJsLm9yZy9kYy90ZXJtcy9tb2RpZmllZCI6IjIwMTMtMDQtMTcgMTI6Mzc6MDAiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2RlY2ltYWxMYXRpdHVkZSI6IjU4LjQwNjc2NTAiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL21vbnRoIjoiNCIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvcmVjb3JkZWRCeSI6IkhhbnMgUGV0ZXJzc29uIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9waHlsdW0iOiJDaG9yZGF0YSIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMva2luZ2RvbSI6IkFuaW1hbGlhIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9jb29yZGluYXRlVW5jZXJ0YWludHlJbk1ldGVycyI6IjUwLjAwIiwiaHR0cDovL3B1cmwub3JnL2RjL3Rlcm1zL2lkZW50aWZpZXIiOiJ1cm46bHNpZDphcnRwb3J0YWxlbi5zZTpTaWdodGluZzo0OTM2NiIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvY2xhc3MiOiJNYW1tYWxpYSIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvY291bnR5IjoiQm9odXNsw6RuIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9pbmRpdmlkdWFsQ291bnQiOiIyIiwiaHR0cDovL3B1cmwub3JnL2RjL3Rlcm1zL2xhbmd1YWdlIjoiU3dlZGlzaCIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvc2NpZW50aWZpY05hbWVBdXRob3JzaGlwIjoiTGlubmFldXMsIDE3NTgiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2V2ZW50RGF0ZSI6IjIwMTMtMDQtMTcgMDk6MDA6MDAvMjAxMy0wNC0xNyAwOTowMDowMCIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvY2F0YWxvZ051bWJlciI6IjM0Mjc1MzIxIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9pZGVudGlmaWNhdGlvblZlcmlmaWNhdGlvblN0YXR1cyI6IlVudmFsaWRhdGVkIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9pbnN0aXR1dGlvbkNvZGUiOiJBcnREYXRhYmFua2VuIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9jb3VudHJ5Q29kZSI6IlNFIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9hc3NvY2lhdGVkUmVmZXJlbmNlcyI6InVybjpsc2lkOmFydHBvcnRhbGVuLnNlOlNpZ2h0aW5nOlZlcnRlYnJhdGUuNjUzMzgifQ==
+  recorded_at: 2019-05-07 17:09:09 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4.9100
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/855998194/verbatim
@@ -412,8 +323,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9515)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9515)
   response:
     status:
       status_code: '200'
@@ -421,34 +332,23 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 17:24:20 GMT
+      date: Tue, 07 May 2019 17:09:06 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: 846529012 836862655
-      age: '0'
+      x-varnish: 809992367 756815066
+      age: '1'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
       content-length: '3625'
       connection: keep-alive
     body:
-      encoding: UTF-8
-      string: '{"key":855998194,"datasetKey":"38b4c89f-584c-41bb-bd8f-cd1def33e92f","publishingOrgKey":"b8323864-602a-4a7d-9127-bb903054e97d","publishingCountry":"SE","protocol":"DWC_ARCHIVE","lastCrawled":"2019-02-24T00:38:53.781+0000","lastParsed":"2018-07-31T19:01:56.585+0000","crawlId":186,"extensions":{},"http://rs.tdwg.org/dwc/terms/continent":"Europe","http://rs.tdwg.org/dwc/terms/country":"Sweden","http://rs.tdwg.org/dwc/terms/order":"Rodentia","http://rs.tdwg.org/dwc/terms/taxonRank":"Species","http://purl.org/dc/terms/accessRights":"Free
-        usage","http://rs.tdwg.org/dwc/terms/year":"2013","http://rs.tdwg.org/dwc/terms/lifeStage":"Adult","http://rs.tdwg.org/dwc/terms/locality":"Holmen
-        Lane Ryr","http://rs.tdwg.org/dwc/terms/endDayOfYear":"107","http://rs.tdwg.org/dwc/terms/basisOfRecord":"humanobservation","http://rs.tdwg.org/dwc/terms/higherClassification":"Biota;Animalia;Chordata;Craniata;Vertebrata;Gnathostomata;Mammalia;Placentalia;Boreoeutheria;Euarchontoglires;Rodentia;Sciuromorpha;Sciuridae;Sciurinae","http://rs.tdwg.org/dwc/terms/eventTime":"09:00:00
-        - 09:00:00","http://rs.tdwg.org/dwc/terms/taxonConceptID":"urn:lsid:dyntaxa.se:Taxon:102606","http://rs.tdwg.org/dwc/terms/scientificName":"Sciurus
-        vulgaris","http://rs.gbif.org/terms/1.0/gbifID":"855998194","http://rs.tdwg.org/dwc/terms/day":"17","http://rs.tdwg.org/dwc/terms/genus":"Sciurus","http://rs.tdwg.org/dwc/terms/datasetID":"urn:lsid:swedishlifewatch.se:DataProvider:1","http://rs.tdwg.org/dwc/terms/specificEpithet":"vulgaris","http://rs.tdwg.org/dwc/terms/occurrenceID":"urn:lsid:artportalen.se:Sighting:49366","http://rs.tdwg.org/dwc/terms/informationWithheld":"More
-        information can be obtained from the Data Provider.","http://rs.tdwg.org/dwc/terms/establishmentMeans":"Natural","http://purl.org/dc/terms/type":"Occurrence","http://rs.tdwg.org/dwc/terms/occurrenceRemarks":"Åt
-        havregryn på matningen","http://rs.tdwg.org/dwc/terms/decimalLongitude":"12.0438569","http://rs.tdwg.org/dwc/terms/occurrenceStatus":"Present","http://rs.tdwg.org/dwc/terms/behavior":"Foraging","http://rs.tdwg.org/dwc/terms/startDayOfYear":"107","http://rs.tdwg.org/dwc/terms/collectionCode":"Artportalen","http://rs.tdwg.org/dwc/terms/taxonID":"urn:lsid:dyntaxa.se:Taxon:102606","http://rs.tdwg.org/dwc/terms/municipality":"Uddevalla","http://rs.tdwg.org/dwc/terms/vernacularName":"ekorre","http://purl.org/dc/terms/rightsHolder":"Hans
-        Petersson","http://rs.tdwg.org/dwc/terms/family":"Sciuridae","http://rs.tdwg.org/dwc/terms/month":"4","http://purl.org/dc/terms/modified":"2013-04-17
-        12:37:00","http://rs.tdwg.org/dwc/terms/decimalLatitude":"58.4067650","http://rs.tdwg.org/dwc/terms/recordedBy":"Hans
-        Petersson","http://rs.tdwg.org/dwc/terms/phylum":"Chordata","http://rs.tdwg.org/dwc/terms/kingdom":"Animalia","http://rs.tdwg.org/dwc/terms/coordinateUncertaintyInMeters":"50.00","http://purl.org/dc/terms/identifier":"urn:lsid:artportalen.se:Sighting:49366","http://rs.tdwg.org/dwc/terms/class":"Mammalia","http://rs.tdwg.org/dwc/terms/county":"Bohuslän","http://purl.org/dc/terms/language":"Swedish","http://rs.tdwg.org/dwc/terms/individualCount":"2","http://rs.tdwg.org/dwc/terms/scientificNameAuthorship":"Linnaeus,
-        1758","http://rs.tdwg.org/dwc/terms/eventDate":"2013-04-17 09:00:00/2013-04-17
-        09:00:00","http://rs.tdwg.org/dwc/terms/catalogNumber":"34275321","http://rs.tdwg.org/dwc/terms/identificationVerificationStatus":"Unvalidated","http://rs.tdwg.org/dwc/terms/countryCode":"SE","http://rs.tdwg.org/dwc/terms/institutionCode":"ArtDatabanken","http://rs.tdwg.org/dwc/terms/associatedReferences":"urn:lsid:artportalen.se:Sighting:Vertebrate.65338"}'
-  recorded_at: 2019-02-26 17:24:22 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+      encoding: ASCII-8BIT
+      string: eyJrZXkiOjg1NTk5ODE5NCwiZGF0YXNldEtleSI6IjM4YjRjODlmLTU4NGMtNDFiYi1iZDhmLWNkMWRlZjMzZTkyZiIsInB1Ymxpc2hpbmdPcmdLZXkiOiJiODMyMzg2NC02MDJhLTRhN2QtOTEyNy1iYjkwMzA1NGU5N2QiLCJwdWJsaXNoaW5nQ291bnRyeSI6IlNFIiwicHJvdG9jb2wiOiJEV0NfQVJDSElWRSIsImxhc3RDcmF3bGVkIjoiMjAxOS0wMi0yNFQwMDozODo1My43ODErMDAwMCIsImxhc3RQYXJzZWQiOiIyMDE4LTA3LTMxVDE5OjAxOjU2LjU4NSswMDAwIiwiY3Jhd2xJZCI6MTg2LCJleHRlbnNpb25zIjp7fSwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9jb250aW5lbnQiOiJFdXJvcGUiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2NvdW50cnkiOiJTd2VkZW4iLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL29yZGVyIjoiUm9kZW50aWEiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL3RheG9uUmFuayI6IlNwZWNpZXMiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL3llYXIiOiIyMDEzIiwiaHR0cDovL3B1cmwub3JnL2RjL3Rlcm1zL2FjY2Vzc1JpZ2h0cyI6IkZyZWUgdXNhZ2UiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2xpZmVTdGFnZSI6IkFkdWx0IiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9sb2NhbGl0eSI6IkhvbG1lbiBMYW5lIFJ5ciIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvZW5kRGF5T2ZZZWFyIjoiMTA3IiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9iYXNpc09mUmVjb3JkIjoiaHVtYW5vYnNlcnZhdGlvbiIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvaGlnaGVyQ2xhc3NpZmljYXRpb24iOiJCaW90YTtBbmltYWxpYTtDaG9yZGF0YTtDcmFuaWF0YTtWZXJ0ZWJyYXRhO0duYXRob3N0b21hdGE7TWFtbWFsaWE7UGxhY2VudGFsaWE7Qm9yZW9ldXRoZXJpYTtFdWFyY2hvbnRvZ2xpcmVzO1JvZGVudGlhO1NjaXVyb21vcnBoYTtTY2l1cmlkYWU7U2NpdXJpbmFlIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9ldmVudFRpbWUiOiIwOTowMDowMCAtIDA5OjAwOjAwIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy90YXhvbkNvbmNlcHRJRCI6InVybjpsc2lkOmR5bnRheGEuc2U6VGF4b246MTAyNjA2IiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9zY2llbnRpZmljTmFtZSI6IlNjaXVydXMgdnVsZ2FyaXMiLCJodHRwOi8vcnMuZ2JpZi5vcmcvdGVybXMvMS4wL2diaWZJRCI6Ijg1NTk5ODE5NCIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvZGF5IjoiMTciLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2dlbnVzIjoiU2NpdXJ1cyIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvZGF0YXNldElEIjoidXJuOmxzaWQ6c3dlZGlzaGxpZmV3YXRjaC5zZTpEYXRhUHJvdmlkZXI6MSIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvc3BlY2lmaWNFcGl0aGV0IjoidnVsZ2FyaXMiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL29jY3VycmVuY2VJRCI6InVybjpsc2lkOmFydHBvcnRhbGVuLnNlOlNpZ2h0aW5nOjQ5MzY2IiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9pbmZvcm1hdGlvbldpdGhoZWxkIjoiTW9yZSBpbmZvcm1hdGlvbiBjYW4gYmUgb2J0YWluZWQgZnJvbSB0aGUgRGF0YSBQcm92aWRlci4iLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2VzdGFibGlzaG1lbnRNZWFucyI6Ik5hdHVyYWwiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL29jY3VycmVuY2VSZW1hcmtzIjoiw4V0IGhhdnJlZ3J5biBww6UgbWF0bmluZ2VuIiwiaHR0cDovL3B1cmwub3JnL2RjL3Rlcm1zL3R5cGUiOiJPY2N1cnJlbmNlIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9kZWNpbWFsTG9uZ2l0dWRlIjoiMTIuMDQzODU2OSIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvYmVoYXZpb3IiOiJGb3JhZ2luZyIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvb2NjdXJyZW5jZVN0YXR1cyI6IlByZXNlbnQiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL3N0YXJ0RGF5T2ZZZWFyIjoiMTA3IiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy90YXhvbklEIjoidXJuOmxzaWQ6ZHludGF4YS5zZTpUYXhvbjoxMDI2MDYiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2NvbGxlY3Rpb25Db2RlIjoiQXJ0cG9ydGFsZW4iLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL211bmljaXBhbGl0eSI6IlVkZGV2YWxsYSIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvdmVybmFjdWxhck5hbWUiOiJla29ycmUiLCJodHRwOi8vcHVybC5vcmcvZGMvdGVybXMvcmlnaHRzSG9sZGVyIjoiSGFucyBQZXRlcnNzb24iLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2ZhbWlseSI6IlNjaXVyaWRhZSIsImh0dHA6Ly9wdXJsLm9yZy9kYy90ZXJtcy9tb2RpZmllZCI6IjIwMTMtMDQtMTcgMTI6Mzc6MDAiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2RlY2ltYWxMYXRpdHVkZSI6IjU4LjQwNjc2NTAiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL21vbnRoIjoiNCIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvcmVjb3JkZWRCeSI6IkhhbnMgUGV0ZXJzc29uIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9waHlsdW0iOiJDaG9yZGF0YSIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMva2luZ2RvbSI6IkFuaW1hbGlhIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9jb29yZGluYXRlVW5jZXJ0YWludHlJbk1ldGVycyI6IjUwLjAwIiwiaHR0cDovL3B1cmwub3JnL2RjL3Rlcm1zL2lkZW50aWZpZXIiOiJ1cm46bHNpZDphcnRwb3J0YWxlbi5zZTpTaWdodGluZzo0OTM2NiIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvY2xhc3MiOiJNYW1tYWxpYSIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvY291bnR5IjoiQm9odXNsw6RuIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9pbmRpdmlkdWFsQ291bnQiOiIyIiwiaHR0cDovL3B1cmwub3JnL2RjL3Rlcm1zL2xhbmd1YWdlIjoiU3dlZGlzaCIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvc2NpZW50aWZpY05hbWVBdXRob3JzaGlwIjoiTGlubmFldXMsIDE3NTgiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2V2ZW50RGF0ZSI6IjIwMTMtMDQtMTcgMDk6MDA6MDAvMjAxMy0wNC0xNyAwOTowMDowMCIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvY2F0YWxvZ051bWJlciI6IjM0Mjc1MzIxIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9pZGVudGlmaWNhdGlvblZlcmlmaWNhdGlvblN0YXR1cyI6IlVudmFsaWRhdGVkIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9pbnN0aXR1dGlvbkNvZGUiOiJBcnREYXRhYmFua2VuIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9jb3VudHJ5Q29kZSI6IlNFIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9hc3NvY2lhdGVkUmVmZXJlbmNlcyI6InVybjpsc2lkOmFydHBvcnRhbGVuLnNlOlNpZ2h0aW5nOlZlcnRlYnJhdGUuNjUzMzgifQ==
+  recorded_at: 2019-05-07 17:09:09 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4.9100
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/620594291/verbatim
@@ -458,8 +358,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9515)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9515)
   response:
     status:
       status_code: '200'
@@ -467,27 +367,90 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 17:24:21 GMT
+      date: Tue, 07 May 2019 17:09:08 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: 805569631 821233577
+      x-varnish: 755273218 802951273
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
       content-length: '3161'
       connection: keep-alive
     body:
-      encoding: UTF-8
-      string: '{"key":620594291,"datasetKey":"c21cd435-718a-4069-b503-776bf0e22b96","publishingOrgKey":"a42867f0-813a-11dc-82e0-b8a03c50a862","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2017-10-08T12:39:02.944+0000","lastParsed":"2016-12-23T03:08:50.227+0000","crawlId":57,"extensions":{},"http://rs.tdwg.org/dwc/terms/continent":"Africa","http://rs.tdwg.org/dwc/terms/preparations":"skin","http://rs.tdwg.org/dwc/terms/verbatimEventDate":"05Feb1976","http://rs.tdwg.org/dwc/terms/country":"Nigeria","http://rs.tdwg.org/dwc/terms/collectionCode":"Bird","http://rs.tdwg.org/dwc/terms/order":"Passeriformes","http://rs.tdwg.org/dwc/terms/taxonRank":"species","http://rs.tdwg.org/dwc/terms/verbatimLocality":"Africa
-        | Nigeria | Oyo | Ibadan, University of Ibadan","http://purl.org/dc/terms/accessRights":"http://vertnet.org/resources/norms.html","http://rs.tdwg.org/dwc/terms/year":"1976","http://rs.tdwg.org/dwc/terms/lifeStage":"adult","http://rs.tdwg.org/dwc/terms/locality":"Ibadan,
-        University of Ibadan","http://rs.tdwg.org/dwc/terms/endDayOfYear":"36","http://rs.tdwg.org/dwc/terms/higherClassification":"Passeriformes
-        | Estrildidae | Spermestes","http://rs.tdwg.org/dwc/terms/basisOfRecord":"PreservedSpecimen","http://rs.tdwg.org/dwc/terms/family":"Estrildidae","http://rs.tdwg.org/dwc/terms/sex":"female","http://rs.tdwg.org/dwc/terms/month":"2","http://purl.org/dc/terms/modified":"2007-08-08
-        04:58:31.0","http://rs.tdwg.org/dwc/terms/higherGeography":"AFRICA | NIGERIA
-        | OYO |  |  |  |  |","http://rs.tdwg.org/dwc/terms/stateProvince":"Oyo","http://rs.tdwg.org/dwc/terms/scientificName":"Spermestes
-        cucullatus","http://rs.tdwg.org/dwc/terms/recordedBy":"Barker, Jr., R. H","http://rs.tdwg.org/dwc/terms/phylum":"Chordata","http://rs.tdwg.org/dwc/terms/institutionID":"http://biocol.org/urn:lsid:biocol.org:col:34940","http://purl.org/dc/terms/license":"https://creativecommons.org/publicdomain/zero/1.0/","http://rs.gbif.org/terms/1.0/gbifID":"620594291","http://rs.tdwg.org/dwc/terms/day":"5","http://rs.tdwg.org/dwc/terms/collectionID":"http://grbio.org/cool/ywsm-eq6q","http://rs.tdwg.org/dwc/terms/datasetName":"Delaware
-        Museum of Natural History (DMNH) Bird Collection","http://rs.tdwg.org/dwc/terms/genus":"Lonchura","http://rs.tdwg.org/dwc/terms/kingdom":"Animalia","http://purl.org/dc/terms/identifier":"a6d67fb1-c591-11e3-acd2-03413f76937f","http://rs.tdwg.org/dwc/terms/class":"Aves","http://purl.org/dc/terms/language":"en","http://rs.tdwg.org/dwc/terms/specificEpithet":"cucullatus","http://rs.tdwg.org/dwc/terms/occurrenceID":"a6d67fb1-c591-11e3-acd2-03413f76937f","http://rs.tdwg.org/dwc/terms/eventDate":"1976-02-05","http://rs.tdwg.org/dwc/terms/nomenclaturalCode":"ICZN","http://rs.tdwg.org/dwc/terms/catalogNumber":"57398","http://rs.tdwg.org/dwc/terms/establishmentMeans":"native","http://purl.org/dc/terms/type":"PhysicalObject","http://purl.org/dc/terms/references":"http://portal.vertnet.org/o/dmnh/bird?id=57398","http://rs.tdwg.org/dwc/terms/countryCode":"NG","http://rs.tdwg.org/dwc/terms/institutionCode":"DMNH","http://rs.tdwg.org/dwc/terms/occurrenceStatus":"present","http://rs.tdwg.org/dwc/terms/startDayOfYear":"36"}'
-  recorded_at: 2019-02-26 17:24:22 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+      encoding: ASCII-8BIT
+      string: eyJrZXkiOjYyMDU5NDI5MSwiZGF0YXNldEtleSI6ImMyMWNkNDM1LTcxOGEtNDA2OS1iNTAzLTc3NmJmMGUyMmI5NiIsInB1Ymxpc2hpbmdPcmdLZXkiOiJhNDI4NjdmMC04MTNhLTExZGMtODJlMC1iOGEwM2M1MGE4NjIiLCJwdWJsaXNoaW5nQ291bnRyeSI6IlVTIiwicHJvdG9jb2wiOiJEV0NfQVJDSElWRSIsImxhc3RDcmF3bGVkIjoiMjAxNy0xMC0wOFQxMjozOTowMi45NDQrMDAwMCIsImxhc3RQYXJzZWQiOiIyMDE2LTEyLTIzVDAzOjA4OjUwLjIyNyswMDAwIiwiY3Jhd2xJZCI6NTcsImV4dGVuc2lvbnMiOnt9LCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2NvbnRpbmVudCI6IkFmcmljYSIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvdmVyYmF0aW1FdmVudERhdGUiOiIwNUZlYjE5NzYiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL3ByZXBhcmF0aW9ucyI6InNraW4iLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2NvdW50cnkiOiJOaWdlcmlhIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9jb2xsZWN0aW9uQ29kZSI6IkJpcmQiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL29yZGVyIjoiUGFzc2VyaWZvcm1lcyIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvdGF4b25SYW5rIjoic3BlY2llcyIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvdmVyYmF0aW1Mb2NhbGl0eSI6IkFmcmljYSB8IE5pZ2VyaWEgfCBPeW8gfCBJYmFkYW4sIFVuaXZlcnNpdHkgb2YgSWJhZGFuIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy95ZWFyIjoiMTk3NiIsImh0dHA6Ly9wdXJsLm9yZy9kYy90ZXJtcy9hY2Nlc3NSaWdodHMiOiJodHRwOi8vdmVydG5ldC5vcmcvcmVzb3VyY2VzL25vcm1zLmh0bWwiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2xpZmVTdGFnZSI6ImFkdWx0IiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9sb2NhbGl0eSI6IkliYWRhbiwgVW5pdmVyc2l0eSBvZiBJYmFkYW4iLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2VuZERheU9mWWVhciI6IjM2IiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9iYXNpc09mUmVjb3JkIjoiUHJlc2VydmVkU3BlY2ltZW4iLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2hpZ2hlckNsYXNzaWZpY2F0aW9uIjoiUGFzc2VyaWZvcm1lcyB8IEVzdHJpbGRpZGFlIHwgU3Blcm1lc3RlcyIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvZmFtaWx5IjoiRXN0cmlsZGlkYWUiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL3NleCI6ImZlbWFsZSIsImh0dHA6Ly9wdXJsLm9yZy9kYy90ZXJtcy9tb2RpZmllZCI6IjIwMDctMDgtMDggMDQ6NTg6MzEuMCIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvbW9udGgiOiIyIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9oaWdoZXJHZW9ncmFwaHkiOiJBRlJJQ0EgfCBOSUdFUklBIHwgT1lPIHwgIHwgIHwgIHwgIHwiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL3JlY29yZGVkQnkiOiJCYXJrZXIsIEpyLiwgUi4gSCIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvc2NpZW50aWZpY05hbWUiOiJTcGVybWVzdGVzIGN1Y3VsbGF0dXMiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL3N0YXRlUHJvdmluY2UiOiJPeW8iLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL3BoeWx1bSI6IkNob3JkYXRhIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9pbnN0aXR1dGlvbklEIjoiaHR0cDovL2Jpb2NvbC5vcmcvdXJuOmxzaWQ6YmlvY29sLm9yZzpjb2w6MzQ5NDAiLCJodHRwOi8vcHVybC5vcmcvZGMvdGVybXMvbGljZW5zZSI6Imh0dHBzOi8vY3JlYXRpdmVjb21tb25zLm9yZy9wdWJsaWNkb21haW4vemVyby8xLjAvIiwiaHR0cDovL3JzLmdiaWYub3JnL3Rlcm1zLzEuMC9nYmlmSUQiOiI2MjA1OTQyOTEiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2RheSI6IjUiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2RhdGFzZXROYW1lIjoiRGVsYXdhcmUgTXVzZXVtIG9mIE5hdHVyYWwgSGlzdG9yeSAoRE1OSCkgQmlyZCBDb2xsZWN0aW9uIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9jb2xsZWN0aW9uSUQiOiJodHRwOi8vZ3JiaW8ub3JnL2Nvb2wveXdzbS1lcTZxIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9raW5nZG9tIjoiQW5pbWFsaWEiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2dlbnVzIjoiTG9uY2h1cmEiLCJodHRwOi8vcHVybC5vcmcvZGMvdGVybXMvaWRlbnRpZmllciI6ImE2ZDY3ZmIxLWM1OTEtMTFlMy1hY2QyLTAzNDEzZjc2OTM3ZiIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvY2xhc3MiOiJBdmVzIiwiaHR0cDovL3B1cmwub3JnL2RjL3Rlcm1zL2xhbmd1YWdlIjoiZW4iLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL3NwZWNpZmljRXBpdGhldCI6ImN1Y3VsbGF0dXMiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL29jY3VycmVuY2VJRCI6ImE2ZDY3ZmIxLWM1OTEtMTFlMy1hY2QyLTAzNDEzZjc2OTM3ZiIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvZXZlbnREYXRlIjoiMTk3Ni0wMi0wNSIsImh0dHA6Ly9ycy50ZHdnLm9yZy9kd2MvdGVybXMvbm9tZW5jbGF0dXJhbENvZGUiOiJJQ1pOIiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9jYXRhbG9nTnVtYmVyIjoiNTczOTgiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2VzdGFibGlzaG1lbnRNZWFucyI6Im5hdGl2ZSIsImh0dHA6Ly9wdXJsLm9yZy9kYy90ZXJtcy90eXBlIjoiUGh5c2ljYWxPYmplY3QiLCJodHRwOi8vcHVybC5vcmcvZGMvdGVybXMvcmVmZXJlbmNlcyI6Imh0dHA6Ly9wb3J0YWwudmVydG5ldC5vcmcvby9kbW5oL2JpcmQ/aWQ9NTczOTgiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2luc3RpdHV0aW9uQ29kZSI6IkRNTkgiLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL2NvdW50cnlDb2RlIjoiTkciLCJodHRwOi8vcnMudGR3Zy5vcmcvZHdjL3Rlcm1zL29jY3VycmVuY2VTdGF0dXMiOiJwcmVzZW50IiwiaHR0cDovL3JzLnRkd2cub3JnL2R3Yy90ZXJtcy9zdGFydERheU9mWWVhciI6IjM2In0=
+  recorded_at: 2019-05-07 17:09:09 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4.9100
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/855998194
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9515)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9515)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Tue, 07 May 2019 17:09:05 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=3601
+      x-varnish: 801900690 785024682
+      age: '3'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '2654'
+      connection: keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: eyJrZXkiOjg1NTk5ODE5NCwiZGF0YXNldEtleSI6IjM4YjRjODlmLTU4NGMtNDFiYi1iZDhmLWNkMWRlZjMzZTkyZiIsInB1Ymxpc2hpbmdPcmdLZXkiOiJiODMyMzg2NC02MDJhLTRhN2QtOTEyNy1iYjkwMzA1NGU5N2QiLCJuZXR3b3JrS2V5cyI6W10sImluc3RhbGxhdGlvbktleSI6IjQzNDZiMjI3LWNhNjgtNGQ1NC04YTc3LTkwOTE0ODQ5MmUwYiIsInB1Ymxpc2hpbmdDb3VudHJ5IjoiU0UiLCJwcm90b2NvbCI6IkRXQ19BUkNISVZFIiwibGFzdENyYXdsZWQiOiIyMDE5LTAyLTI0VDAwOjM4OjUzLjc4MSswMDAwIiwibGFzdFBhcnNlZCI6IjIwMTgtMDctMzFUMTk6MDE6NTYuNTg1KzAwMDAiLCJjcmF3bElkIjoxODYsImV4dGVuc2lvbnMiOnt9LCJiYXNpc09mUmVjb3JkIjoiSFVNQU5fT0JTRVJWQVRJT04iLCJpbmRpdmlkdWFsQ291bnQiOjIsImxpZmVTdGFnZSI6IkFEVUxUIiwidGF4b25LZXkiOjgyMTEwNzAsImtpbmdkb21LZXkiOjEsInBoeWx1bUtleSI6NDQsImNsYXNzS2V5IjozNTksIm9yZGVyS2V5IjoxNDU5LCJmYW1pbHlLZXkiOjk0NTYsImdlbnVzS2V5IjoyNDM3NDg5LCJzcGVjaWVzS2V5Ijo4MjExMDcwLCJhY2NlcHRlZFRheG9uS2V5Ijo4MjExMDcwLCJzY2llbnRpZmljTmFtZSI6IlNjaXVydXMgdnVsZ2FyaXMgTGlubmFldXMsIDE3NTgiLCJhY2NlcHRlZFNjaWVudGlmaWNOYW1lIjoiU2NpdXJ1cyB2dWxnYXJpcyBMaW5uYWV1cywgMTc1OCIsImtpbmdkb20iOiJBbmltYWxpYSIsInBoeWx1bSI6IkNob3JkYXRhIiwib3JkZXIiOiJSb2RlbnRpYSIsImZhbWlseSI6IlNjaXVyaWRhZSIsImdlbnVzIjoiU2NpdXJ1cyIsInNwZWNpZXMiOiJTY2l1cnVzIHZ1bGdhcmlzIiwiZ2VuZXJpY05hbWUiOiJTY2l1cnVzIiwic3BlY2lmaWNFcGl0aGV0IjoidnVsZ2FyaXMiLCJ0YXhvblJhbmsiOiJTUEVDSUVTIiwidGF4b25vbWljU3RhdHVzIjoiQUNDRVBURUQiLCJkZWNpbWFsTG9uZ2l0dWRlIjoxMi4wNDM4NTcsImRlY2ltYWxMYXRpdHVkZSI6NTguNDA2NzY1LCJjb29yZGluYXRlVW5jZXJ0YWludHlJbk1ldGVycyI6NTAuMCwiY29udGluZW50IjoiRVVST1BFIiwieWVhciI6MjAxMywibW9udGgiOjQsImRheSI6MTcsImV2ZW50RGF0ZSI6IjIwMTMtMDQtMTdUMDk6MDA6MDAiLCJpc3N1ZXMiOlsiQ09PUkRJTkFURV9ST1VOREVEIiwiR0VPREVUSUNfREFUVU1fQVNTVU1FRF9XR1M4NCJdLCJtb2RpZmllZCI6IjIwMTMtMDQtMTdUMTI6Mzc6MDAuMDAwKzAwMDAiLCJsYXN0SW50ZXJwcmV0ZWQiOiIyMDE4LTEyLTIzVDAwOjQ1OjUyLjk5NSswMDAwIiwibGljZW5zZSI6Imh0dHA6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL3B1YmxpY2RvbWFpbi96ZXJvLzEuMC9sZWdhbGNvZGUiLCJpZGVudGlmaWVycyI6W10sImZhY3RzIjpbXSwicmVsYXRpb25zIjpbXSwiZ2VvZGV0aWNEYXR1bSI6IldHUzg0IiwiY2xhc3MiOiJNYW1tYWxpYSIsImNvdW50cnlDb2RlIjoiU0UiLCJjb3VudHJ5IjoiU3dlZGVuIiwicmlnaHRzSG9sZGVyIjoiSGFucyBQZXRlcnNzb24iLCJtdW5pY2lwYWxpdHkiOiJVZGRldmFsbGEiLCJhc3NvY2lhdGVkUmVmZXJlbmNlcyI6InVybjpsc2lkOmFydHBvcnRhbGVuLnNlOlNpZ2h0aW5nOlZlcnRlYnJhdGUuNjUzMzgiLCJjb3VudHkiOiJCb2h1c2zDpG4iLCJpZGVudGlmaWNhdGlvblZlcmlmaWNhdGlvblN0YXR1cyI6IlVudmFsaWRhdGVkIiwiZ2JpZklEIjoiODU1OTk4MTk0IiwibGFuZ3VhZ2UiOiJTd2VkaXNoIiwidHlwZSI6Ik9jY3VycmVuY2UiLCJ0YXhvbklEIjoidXJuOmxzaWQ6ZHludGF4YS5zZTpUYXhvbjoxMDI2MDYiLCJjYXRhbG9nTnVtYmVyIjoiMzQyNzUzMjEiLCJvY2N1cnJlbmNlU3RhdHVzIjoiUHJlc2VudCIsInZlcm5hY3VsYXJOYW1lIjoiZWtvcnJlIiwiaW5zdGl0dXRpb25Db2RlIjoiQXJ0RGF0YWJhbmtlbiIsInRheG9uQ29uY2VwdElEIjoidXJuOmxzaWQ6ZHludGF4YS5zZTpUYXhvbjoxMDI2MDYiLCJldmVudFRpbWUiOiIwOTowMDowMCAtIDA5OjAwOjAwIiwiYmVoYXZpb3IiOiJGb3JhZ2luZyIsImlkZW50aWZpZXIiOiJ1cm46bHNpZDphcnRwb3J0YWxlbi5zZTpTaWdodGluZzo0OTM2NiIsImluZm9ybWF0aW9uV2l0aGhlbGQiOiJNb3JlIGluZm9ybWF0aW9uIGNhbiBiZSBvYnRhaW5lZCBmcm9tIHRoZSBEYXRhIFByb3ZpZGVyLiIsImVuZERheU9mWWVhciI6IjEwNyIsImxvY2FsaXR5IjoiSG9sbWVuIExhbmUgUnlyIiwiY29sbGVjdGlvbkNvZGUiOiJBcnRwb3J0YWxlbiIsIm9jY3VycmVuY2VJRCI6InVybjpsc2lkOmFydHBvcnRhbGVuLnNlOlNpZ2h0aW5nOjQ5MzY2IiwicmVjb3JkZWRCeSI6IkhhbnMgUGV0ZXJzc29uIiwic3RhcnREYXlPZlllYXIiOiIxMDciLCJkYXRhc2V0SUQiOiJ1cm46bHNpZDpzd2VkaXNobGlmZXdhdGNoLnNlOkRhdGFQcm92aWRlcjoxIiwib2NjdXJyZW5jZVJlbWFya3MiOiLDhXQgaGF2cmVncnluIHDDpSBtYXRuaW5nZW4iLCJhY2Nlc3NSaWdodHMiOiJGcmVlIHVzYWdlIiwiaGlnaGVyQ2xhc3NpZmljYXRpb24iOiJCaW90YTtBbmltYWxpYTtDaG9yZGF0YTtDcmFuaWF0YTtWZXJ0ZWJyYXRhO0duYXRob3N0b21hdGE7TWFtbWFsaWE7UGxhY2VudGFsaWE7Qm9yZW9ldXRoZXJpYTtFdWFyY2hvbnRvZ2xpcmVzO1JvZGVudGlhO1NjaXVyb21vcnBoYTtTY2l1cmlkYWU7U2NpdXJpbmFlIn0=
+  recorded_at: 2019-05-07 17:09:09 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4.9100
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/855998194
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9515)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.2.0.9515)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Tue, 07 May 2019 17:09:05 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=3601
+      x-varnish: 784567100 785024682
+      age: '3'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '2654'
+      connection: keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: eyJrZXkiOjg1NTk5ODE5NCwiZGF0YXNldEtleSI6IjM4YjRjODlmLTU4NGMtNDFiYi1iZDhmLWNkMWRlZjMzZTkyZiIsInB1Ymxpc2hpbmdPcmdLZXkiOiJiODMyMzg2NC02MDJhLTRhN2QtOTEyNy1iYjkwMzA1NGU5N2QiLCJuZXR3b3JrS2V5cyI6W10sImluc3RhbGxhdGlvbktleSI6IjQzNDZiMjI3LWNhNjgtNGQ1NC04YTc3LTkwOTE0ODQ5MmUwYiIsInB1Ymxpc2hpbmdDb3VudHJ5IjoiU0UiLCJwcm90b2NvbCI6IkRXQ19BUkNISVZFIiwibGFzdENyYXdsZWQiOiIyMDE5LTAyLTI0VDAwOjM4OjUzLjc4MSswMDAwIiwibGFzdFBhcnNlZCI6IjIwMTgtMDctMzFUMTk6MDE6NTYuNTg1KzAwMDAiLCJjcmF3bElkIjoxODYsImV4dGVuc2lvbnMiOnt9LCJiYXNpc09mUmVjb3JkIjoiSFVNQU5fT0JTRVJWQVRJT04iLCJpbmRpdmlkdWFsQ291bnQiOjIsImxpZmVTdGFnZSI6IkFEVUxUIiwidGF4b25LZXkiOjgyMTEwNzAsImtpbmdkb21LZXkiOjEsInBoeWx1bUtleSI6NDQsImNsYXNzS2V5IjozNTksIm9yZGVyS2V5IjoxNDU5LCJmYW1pbHlLZXkiOjk0NTYsImdlbnVzS2V5IjoyNDM3NDg5LCJzcGVjaWVzS2V5Ijo4MjExMDcwLCJhY2NlcHRlZFRheG9uS2V5Ijo4MjExMDcwLCJzY2llbnRpZmljTmFtZSI6IlNjaXVydXMgdnVsZ2FyaXMgTGlubmFldXMsIDE3NTgiLCJhY2NlcHRlZFNjaWVudGlmaWNOYW1lIjoiU2NpdXJ1cyB2dWxnYXJpcyBMaW5uYWV1cywgMTc1OCIsImtpbmdkb20iOiJBbmltYWxpYSIsInBoeWx1bSI6IkNob3JkYXRhIiwib3JkZXIiOiJSb2RlbnRpYSIsImZhbWlseSI6IlNjaXVyaWRhZSIsImdlbnVzIjoiU2NpdXJ1cyIsInNwZWNpZXMiOiJTY2l1cnVzIHZ1bGdhcmlzIiwiZ2VuZXJpY05hbWUiOiJTY2l1cnVzIiwic3BlY2lmaWNFcGl0aGV0IjoidnVsZ2FyaXMiLCJ0YXhvblJhbmsiOiJTUEVDSUVTIiwidGF4b25vbWljU3RhdHVzIjoiQUNDRVBURUQiLCJkZWNpbWFsTG9uZ2l0dWRlIjoxMi4wNDM4NTcsImRlY2ltYWxMYXRpdHVkZSI6NTguNDA2NzY1LCJjb29yZGluYXRlVW5jZXJ0YWludHlJbk1ldGVycyI6NTAuMCwiY29udGluZW50IjoiRVVST1BFIiwieWVhciI6MjAxMywibW9udGgiOjQsImRheSI6MTcsImV2ZW50RGF0ZSI6IjIwMTMtMDQtMTdUMDk6MDA6MDAiLCJpc3N1ZXMiOlsiQ09PUkRJTkFURV9ST1VOREVEIiwiR0VPREVUSUNfREFUVU1fQVNTVU1FRF9XR1M4NCJdLCJtb2RpZmllZCI6IjIwMTMtMDQtMTdUMTI6Mzc6MDAuMDAwKzAwMDAiLCJsYXN0SW50ZXJwcmV0ZWQiOiIyMDE4LTEyLTIzVDAwOjQ1OjUyLjk5NSswMDAwIiwibGljZW5zZSI6Imh0dHA6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL3B1YmxpY2RvbWFpbi96ZXJvLzEuMC9sZWdhbGNvZGUiLCJpZGVudGlmaWVycyI6W10sImZhY3RzIjpbXSwicmVsYXRpb25zIjpbXSwiZ2VvZGV0aWNEYXR1bSI6IldHUzg0IiwiY2xhc3MiOiJNYW1tYWxpYSIsImNvdW50cnlDb2RlIjoiU0UiLCJjb3VudHJ5IjoiU3dlZGVuIiwicmlnaHRzSG9sZGVyIjoiSGFucyBQZXRlcnNzb24iLCJtdW5pY2lwYWxpdHkiOiJVZGRldmFsbGEiLCJhc3NvY2lhdGVkUmVmZXJlbmNlcyI6InVybjpsc2lkOmFydHBvcnRhbGVuLnNlOlNpZ2h0aW5nOlZlcnRlYnJhdGUuNjUzMzgiLCJjb3VudHkiOiJCb2h1c2zDpG4iLCJpZGVudGlmaWNhdGlvblZlcmlmaWNhdGlvblN0YXR1cyI6IlVudmFsaWRhdGVkIiwiZ2JpZklEIjoiODU1OTk4MTk0IiwibGFuZ3VhZ2UiOiJTd2VkaXNoIiwidHlwZSI6Ik9jY3VycmVuY2UiLCJ0YXhvbklEIjoidXJuOmxzaWQ6ZHludGF4YS5zZTpUYXhvbjoxMDI2MDYiLCJjYXRhbG9nTnVtYmVyIjoiMzQyNzUzMjEiLCJvY2N1cnJlbmNlU3RhdHVzIjoiUHJlc2VudCIsInZlcm5hY3VsYXJOYW1lIjoiZWtvcnJlIiwiaW5zdGl0dXRpb25Db2RlIjoiQXJ0RGF0YWJhbmtlbiIsInRheG9uQ29uY2VwdElEIjoidXJuOmxzaWQ6ZHludGF4YS5zZTpUYXhvbjoxMDI2MDYiLCJldmVudFRpbWUiOiIwOTowMDowMCAtIDA5OjAwOjAwIiwiYmVoYXZpb3IiOiJGb3JhZ2luZyIsImlkZW50aWZpZXIiOiJ1cm46bHNpZDphcnRwb3J0YWxlbi5zZTpTaWdodGluZzo0OTM2NiIsImluZm9ybWF0aW9uV2l0aGhlbGQiOiJNb3JlIGluZm9ybWF0aW9uIGNhbiBiZSBvYnRhaW5lZCBmcm9tIHRoZSBEYXRhIFByb3ZpZGVyLiIsImVuZERheU9mWWVhciI6IjEwNyIsImxvY2FsaXR5IjoiSG9sbWVuIExhbmUgUnlyIiwiY29sbGVjdGlvbkNvZGUiOiJBcnRwb3J0YWxlbiIsIm9jY3VycmVuY2VJRCI6InVybjpsc2lkOmFydHBvcnRhbGVuLnNlOlNpZ2h0aW5nOjQ5MzY2IiwicmVjb3JkZWRCeSI6IkhhbnMgUGV0ZXJzc29uIiwic3RhcnREYXlPZlllYXIiOiIxMDciLCJkYXRhc2V0SUQiOiJ1cm46bHNpZDpzd2VkaXNobGlmZXdhdGNoLnNlOkRhdGFQcm92aWRlcjoxIiwib2NjdXJyZW5jZVJlbWFya3MiOiLDhXQgaGF2cmVncnluIHDDpSBtYXRuaW5nZW4iLCJhY2Nlc3NSaWdodHMiOiJGcmVlIHVzYWdlIiwiaGlnaGVyQ2xhc3NpZmljYXRpb24iOiJCaW90YTtBbmltYWxpYTtDaG9yZGF0YTtDcmFuaWF0YTtWZXJ0ZWJyYXRhO0duYXRob3N0b21hdGE7TWFtbWFsaWE7UGxhY2VudGFsaWE7Qm9yZW9ldXRoZXJpYTtFdWFyY2hvbnRvZ2xpcmVzO1JvZGVudGlhO1NjaXVyb21vcnBoYTtTY2l1cmlkYWU7U2NpdXJpbmFlIn0=
+  recorded_at: 2019-05-07 17:09:09 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4.9100

@@ -3,7 +3,7 @@ context("oai")
 test_that("gbif_oai_identify", {
   vcr::use_cassette("gbif_oai_identify", {
     tt <- gbif_oai_identify()
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   expect_is(tt, "list")
   expect_is(tt$repositoryName, "character")
@@ -23,7 +23,7 @@ test_that("gbif_oai_list_metadataformats", {
 test_that("gbif_oai_list_sets", {
   vcr::use_cassette("gbif_oai_list_sets", {
     tt <- gbif_oai_list_sets()
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   expect_is(tt, "data.frame")
   expect_is(tt$setSpec, "character")
@@ -57,7 +57,7 @@ test_that("gbif_oai_list_identifiers", {
 test_that("gbif_oai_get_records", {
   vcr::use_cassette("gbif_oai_get_records", {
     tt <- gbif_oai_get_records("9c4e36c1-d3f9-49ce-8ec1-8c434fa9e6eb")
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   expect_is(tt, "list")
   expect_is(tt[[1]], "list")

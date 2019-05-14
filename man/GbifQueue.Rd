@@ -47,7 +47,6 @@ x <- GbifQueue$new(
   occ_download('taxonKey = 3119195', "year = 2004"),
   occ_download('taxonKey = 3119195', "year = 2005")
 )
-que = x
 x
 x$reqs
 x$add_all()
@@ -55,6 +54,8 @@ x$jobs()
 x
 x$remove(x$reqs[[1]])
 x
+x$reqs[[1]]$run()
+x$reqs[[1]]$result
 
 # pre-prepared download request
 z <- occ_download_prep(

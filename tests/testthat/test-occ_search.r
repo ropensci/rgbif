@@ -8,22 +8,27 @@ test_that("returns the correct class", {
     tt <- occ_search(taxonKey=key, limit=2)
     uu <- occ_search(taxonKey=key, limit=20)
     vv <- occ_search(taxonKey=key, return='meta')
-  })
-  
+  }, preserve_exact_body_bytes = TRUE)
+
+  expect_is(tt, "gbif")
   expect_is(tt$meta, "list")
   expect_is(tt$meta$endOfRecords, "logical")
   expect_is(tt$data, "data.frame")
+  expect_is(tt$data, "tbl_df")
+  expect_is(tt$data, "tbl")
   expect_is(tt$data$name, "character")
+  expect_is(uu, "gbif")
   expect_is(vv, "data.frame")
+  expect_is(vv, "tbl_df")
+  expect_is(vv, "tbl")
   # meta no longer has gbif class
   expect_equal(length(class(vv)), 3)
 
   expect_equal(tt$meta$limit, 2)
-  expect_equal(tt$hierarchy[[1]][1,2], 6)
+  expect_equal(tt$hierarchy[[1]][1,2], "6")
   expect_equal(as.character(tt$hierarchy[[1]][1,1]), "Plantae")
 
   expect_equal(as.character(uu$hierarchy[[1]][1,1]), "Plantae")
-  expect_equal(as.character(uu$data[1, "species"]), "Encelia californica")
   expect_equal(uu$meta$limit, 20)
   expect_equal(vv$limit, 200)
 
@@ -35,10 +40,12 @@ test_that("returns the correct class", {
 test_that("returns the correct dimensions", {
   vcr::use_cassette("occ_search_datasetkey", {
     out <- occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a',
-      return='data')
-  })
+                      return='data')
+  }, preserve_exact_body_bytes = TRUE)
 
   expect_is(out, "data.frame")
+  expect_is(out, "gbif")
+  expect_is(out, "tbl_df")
   expect_is(out$name, "character")
   expect_is(out$issues, "character")
 })
@@ -65,11 +72,13 @@ test_that("returns the correct class", {
 test_that("returns the correct class", {
   vcr::use_cassette("occ_search_taxonkey", {
     out <- occ_search(taxonKey=key, return='data')
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   expect_is(out, "data.frame")
   expect_is(out, "tbl_df")
-  expect_type(out$key, "integer")
+  expect_is(out, "tbl")
+  expect_is(out, "gbif")
+  expect_type(out$key, "character")
   expect_is(out$scientificName, "character")
 
   # returns the correct value
@@ -80,7 +89,7 @@ test_that("returns the correct class", {
 test_that("returns the correct class", {
   vcr::use_cassette("occ_search_hierarchy_data", {
     out <- occ_search(taxonKey=key, limit=20, return='hier')
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   expect_is(out, "list")
   expect_is(out[[1]], "data.frame")
@@ -131,7 +140,7 @@ test_that("returns the correct dimensions", {
     key <- name_backbone(name='Puma concolor', kingdom='animals')$speciesKey
     res <- occ_search(taxonKey=key, elevation=1000, hasCoordinate=TRUE,
       fields=c('scientificName', 'elevation'))
-  })
+  }, preserve_exact_body_bytes = TRUE)
   expect_equal(names(res$data), c('scientificName', 'elevation'))
 })
 
@@ -165,27 +174,29 @@ test_that("scientificName basic use works - no synonyms", {
     # Genus is a synonym - species rank input - species not found, so Genus rank given back
     hh <- suppressMessages(occ_search(scientificName = 'Pipistrellus hesperus', limit = 2))
   }, preserve_exact_body_bytes = TRUE)
-  
+
   expect_equal(attr(bb, "args")$scientificName, "Pulsatilla patens")
   expect_equal(bb$data$species[1], "Pulsatilla patens")
+  bb_sc_nam <- "Anemone patens subsp. multifida (Pritzel) Hultén"
+  Encoding(bb_sc_nam) <- "Windows-1252"
   expect_equal(bb$data$scientificName[1],
-    "Anemone patens subsp. multifida (Pritzel) HultÃ©n")
-  
+               bb_sc_nam)
+
   expect_is(cc, "gbif")
   expect_is(cc$data, "data.frame")
   expect_equal(attr(cc, "args")$scientificName,
-    "Corynorhinus townsendii ingens")
+               "Corynorhinus townsendii ingens")
   expect_equal(cc$data$species[1], "Corynorhinus townsendii")
   expect_equal(cc$data$scientificName[1],
-    "Corynorhinus townsendii ingens Handley, 1955")
-  
+               "Corynorhinus townsendii ingens Handley, 1955")
+
   expect_is(dd, "gbif")
   expect_is(dd$data, "data.frame")
   expect_equal(NROW(dd$data), 2)
   expect_equal(attr(dd, "args")$scientificName, "Corynorhinus townsendii")
   expect_equal(dd$data$species[1], "Corynorhinus townsendii")
   expect_equal(dd$data$scientificName[1],
-    "Corynorhinus townsendii (Cooper, 1837)")
+               "Corynorhinus townsendii (Cooper, 1837)")
 
   # expect_is(ee, "gbif")
   # expect_null(ee$data)
@@ -196,16 +207,16 @@ test_that("scientificName basic use works - no synonyms", {
   expect_equal(attr(ff, "args")$scientificName, "Myotis septentrionalis")
   expect_equal(ff$data$species[1], "Myotis septentrionalis")
   expect_equal(ff$data$scientificName[1],
-    "Myotis septentrionalis (Trouessart, 1897)")
+               "Myotis septentrionalis (Trouessart, 1897)")
 
   expect_is(hh, "gbif")
   expect_is(hh$data, "data.frame")
   expect_equal(attr(hh, "args")$scientificName, "Pipistrellus hesperus")
   expect_equal(hh$data$species[1], "Parastrellus hesperus")
   expect_equal(hh$data$scientificName[1],
-    "Pipistrellus hesperus (H.Allen, 1864)")
+               "Pipistrellus hesperus (H.Allen, 1864)")
   expect_equal(hh$data$acceptedScientificName[1],
-    "Parastrellus hesperus (H.Allen, 1864)")
+               "Parastrellus hesperus (H.Allen, 1864)")
 })
 
 
@@ -248,7 +259,7 @@ test_that("geometry inputs work as expected", {
   vcr::use_cassette("occ_search_geometry", {
     # in well known text format
     aa <- occ_search(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))', limit=20)
-    
+
     # with a taxon key
     key <- 3189815
     bb <- occ_search(taxonKey=key, geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))',
@@ -353,7 +364,7 @@ test_that("works with parameters that allow many inputs", {
     aa <- occ_search(recordedBy=c("smith","BJ Stacey"), limit=3)
     ## one request, many instances of same parameter: use semi-colon sep. string
     bb <- occ_search(recordedBy="smith;BJ Stacey", limit=3)
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   expect_is(aa, "gbif")
   expect_is(bb, "gbif")
@@ -365,4 +376,21 @@ test_that("works with parameters that allow many inputs", {
   expect_equal(unique(tolower(aa[[2]]$data$recordedBy)), "bj stacey")
 
   expect_true(unique(tolower(bb$data$recordedBy)) %in% c('smith', 'bj stacey'))
+})
+
+
+
+# per issue #349
+test_that("key and gbifID fields are character class", {
+  vcr::use_cassette("occ_search_key_gbifid_character_class", {
+    aa <- occ_search(taxonKey = 9206251, limit = 3)
+  }, preserve_exact_body_bytes = TRUE)
+
+  # top level
+  expect_is(aa$data$key, "character")
+  expect_is(aa$data$gbifID, "character")
+  # within hierarchy
+  expect_is(aa$hierarchy[[1]]$key, "character")
+  # within media
+  expect_is(aa$media[[1]][[1]]$key, "character")
 })

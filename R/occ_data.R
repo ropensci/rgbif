@@ -8,18 +8,17 @@
 #' @seealso [downloads()], [occ_search()]
 #' @details This does nearly the same thing as [occ_search()], but
 #' is a bit simplified for speed, and is for the most common use case where
-#' user just wants the data, and not other information like taxon hierarchies
-#' and media (e.g., images) information. Alot of time in
-#' [occ_search()] is used parsing data to be more useable
-#' downstream. We do less of that in this function.
+#' user just wants occurrence data, and not other information like taxon
+#' hierarchies and media (e.g., images). Alot of time in [occ_search()]
+#' is used parsing data to be more useable downstream. We do less of that
+#' in this function.
 #' @return An object of class `gbif_data`, which is a S3 class list, with
 #' slots for metadata (`meta`) and the occurrence data itself
-#' (`data`),
-#' and with attributes listing the user supplied arguments and whether it was a
-#' "single" or "many" search; that is, if you supply two values of the
-#' `datasetKey` parameter to searches are done, and it's a "many".
-#' `meta` is a list of length four with offset, limit, endOfRecords and
-#' count fields. `data` is a tibble (aka data.frame)
+#' (`data`), and with attributes listing the user supplied arguments
+#' and whether it was a "single" or "many" search; that is, if you supply
+#' two values of the `datasetKey` parameter to searches are done, and
+#' it's a "many". `meta` is a list of length four with offset, limit,
+#' endOfRecords and count fields. `data` is a tibble (aka data.frame)
 
 occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
   publishingCountry=NULL, hasCoordinate=NULL, typeStatus=NULL,
@@ -124,7 +123,7 @@ occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
       data <- lapply(data, clean_data)
       data <- data.table::setDF(data.table::rbindlist(data, use.names = TRUE,
                                                       fill = TRUE))
-      data <- tibble::as_data_frame(prune_result(data))
+      data <- tibble::as_tibble(prune_result(data))
     }
 
     list(meta = meta, data = data)

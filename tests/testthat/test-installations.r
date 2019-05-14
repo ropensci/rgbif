@@ -40,7 +40,7 @@ test_that("contact returns the correct", {
 test_that("search for deleted and nonPublishing installations returns the correct", {
   vcr::use_cassette("installations_deleted", {
     tt <- installations(data='deleted', limit=2)
-  })
+  }, preserve_exact_body_bytes = TRUE)
   
   # class
   expect_is(tt, "list")

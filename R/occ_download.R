@@ -3,16 +3,19 @@
 #' @export
 #'
 #' @param ... One or more of query arguments to kick of a download job.
-#' If you use this, don't use `body` parameter. See Details.
+#' If you use this, don't use `body` parameter. All inputs must be
+#' character strings. See Details.
 #' @param body if you prefer to pass in the payload yourself, use this
-#' parameter. if use this, don't ass anythig to the dots. accepts
+#' parameter. if use this, don't pass anythig to the dots. accepts
 #' either an R list, or JSON. JSON is likely easier, since the JSON
 #' library \pkg{jsonlite} requires that you unbox strings that shouldn't
 #' be auto-converted to arrays, which is a bit tedious for large queries.
 #' optional
-#' @param type (charcter) One of equals (=), and (&), or (|), lessThan (<),
+#' @param type (character) One of equals (=), and (&), or (|), lessThan (<),
 #' lessThanOrEquals (<=), greaterThan (>), greaterThanOrEquals (>=), in,
 #' within, not (!), like
+#' @param format (character) The download format. One of DWCA (default),
+#' SIMPLE_CSV, or SPECIES_LIST
 #' @param user (character) User name within GBIF's website. Required. See
 #' Details.
 #' @param pwd (character) User password within GBIF's website. Required. See
@@ -21,28 +24,28 @@
 #' email. Required. See Details.
 #' @template occ
 #' @note see [downloads] for an overview of GBIF downloads methods
-#' 
+#'
 #' @section geometry:
-#' When using the geometry parameter, make sure that your well known text 
-#' (WKT) is formatted as GBIF expects it. They expect WKT to have a 
+#' When using the geometry parameter, make sure that your well known text
+#' (WKT) is formatted as GBIF expects it. They expect WKT to have a
 #' counter-clockwise winding order. For example, the following is clockwise
 #' `POLYGON((-19.5 34.1, -25.3 68.1, 35.9 68.1, 27.8 34.1, -19.5 34.1))`,
 #' whereas they expect the other order:
 #' `POLYGON((-19.5 34.1, 27.8 34.1, 35.9 68.1, -25.3 68.1, -19.5 34.1))`
-#' 
+#'
 #' note that coordinate pairs are `longitude latitude`, longitude first, then
 #' latitude
-#' 
-#' you should not get any results if you supply WKT that has clockwise 
+#'
+#' you should not get any results if you supply WKT that has clockwise
 #' winding order.
-#' 
-#' also note that [occ_search()]/[occ_data()] behave differently with 
-#' respect to WKT in that you can supply counter-clockwise WKT to those 
-#' functions but they treat it as an exclusion, so get all data not 
+#'
+#' also note that [occ_search()]/[occ_data()] behave differently with
+#' respect to WKT in that you can supply counter-clockwise WKT to those
+#' functions but they treat it as an exclusion, so get all data not
 #' inside the WKT area.
-#' 
+#'
 #' @section Methods:
-#' 
+#'
 #' - `occ_download_prep`: prepares a download request, but DOES NOT execute it.
 #' meant for use with [occ_download_queue()]
 #' - `occ_download`: prepares a download request and DOES execute it
@@ -139,6 +142,9 @@
 #' # occ_download("country = US")
 #' # occ_download("institutionCode = TLMF")
 #' # occ_download("catalogNumber = Bird.27847588")
+#' 
+#' # download format
+#' # z <- occ_download('decimalLatitude >= 75', format = "SPECIES_LIST")
 #'
 #' # res <- occ_download('taxonKey = 7264332', 'hasCoordinate = TRUE')
 #'
@@ -189,36 +195,47 @@
 #'   )
 #' )
 #' # res <- occ_download(body = query, curlopts = list(verbose = TRUE))
-#' 
+#'
 #' # Prepared query
 #' occ_download_prep("basisOfRecord = LITERATURE")
+#' occ_download_prep("basisOfRecord = LITERATURE", format = "SIMPLE_CSV")
+#' occ_download_prep("basisOfRecord = LITERATURE", format = "SPECIES_LIST")
 #' }
-occ_download <- function(..., body = NULL, type = "and", user = NULL,
-  pwd = NULL, email = NULL, curlopts = list()) {
+occ_download <- function(..., body = NULL, type = "and", format = "DWCA",
+  user = NULL, pwd = NULL, email = NULL, curlopts = list()) {
 
-  z <- occ_download_prep(..., body = body, type = type, user = user, 
-    pwd = pwd, email = email, curlopts = curlopts)
+  z <- occ_download_prep(..., body = body, type = type, format = format,
+    user = user, pwd = pwd, email = email, curlopts = curlopts)
   out <- rg_POST(z$url, req = z$req, user = z$user, pwd = z$pwd, curlopts)
-  structure(out, class = "occ_download", user = z$user, email = z$email)
+  structure(out, class = "occ_download", user = z$user, email = z$email,
+    format = z$format)
 }
+
+download_formats <- c("DWCA", "SIMPLE_CSV", "SPECIES_LIST")
 
 #' @export
 #' @rdname occ_download
-occ_download_prep <- function(..., body = NULL, type = "and", user = NULL,
-  pwd = NULL, email = NULL, curlopts = list()) {
+occ_download_prep <- function(..., body = NULL, type = "and", format = "DWCA",
+  user = NULL, pwd = NULL, email = NULL, curlopts = list()) {
 
   url <- paste0(gbif_base(), '/occurrence/download/request')
   user <- check_user(user)
   pwd <- check_pwd(pwd)
   email <- check_email(email)
+  assert(format, "character")
+  if (!format %in% download_formats) {
+    stop("'format' must be one of: ", paste0(download_formats, collapse = ", "),
+      call. = FALSE)
+  }
   stopifnot(!is.null(user), !is.null(email))
   if (!is.null(body)) {
     req <- body
   } else {
-    req <- parse_occd(user, email, type, ...)
+    req <- parse_occd(user, email, type, format, ...)
   }
-  structure(list(url = url, request = req, user = user, pwd = pwd, 
-    email = email, curlopts = curlopts), class = "occ_download_prep")
+  structure(list(url = url, request = req, user = user, pwd = pwd,
+    email = email, format = format, curlopts = curlopts),
+  class = "occ_download_prep")
 }
 
 occ_download_exec <- function(x) {
@@ -255,15 +272,16 @@ check_inputs <- function(x) {
   }
 }
 
-parse_occd <- function(user, email, type, ...) {
+parse_occd <- function(user, email, type, format, ...) {
   args <- list(...)
   keyval <- lapply(args, parse_args)
 
-  if (length(keyval) > 1 || 
+  if (length(keyval) > 1 ||
     length(keyval) == 1 && "predicates" %in% names(keyval[[1]])
   ) {
     list(creator = unbox(user),
          notification_address = email,
+         format = unbox(format),
          predicate = list(
            type = unbox(type),
            predicates = {
@@ -280,9 +298,10 @@ parse_occd <- function(user, email, type, ...) {
          )
     )
   } else {
-    if (type == "within" | "within" %in% sapply(keyval, "[[", "type")) {
+    if (type == "within" || "within" %in% sapply(keyval, "[[", "type")) {
       tmp <- list(creator = unbox(user),
                   notification_address = email,
+                  format = unbox(format),
                   predicate = list(
                     type = keyval[[1]]$type,
                     value = keyval[[1]]$value
@@ -293,6 +312,7 @@ parse_occd <- function(user, email, type, ...) {
     } else {
       list(creator = unbox(user),
            notification_address = email,
+           format = unbox(format),
            predicate = list(
              type = keyval[[1]]$type,
              key = keyval[[1]]$key,
@@ -342,6 +362,7 @@ print.occ_download <- function(x, ...) {
   cat("<<gbif download>>", "\n", sep = "")
   cat("  Username: ", attr(x, "user"), "\n", sep = "")
   cat("  E-mail: ", attr(x, "email"), "\n", sep = "")
+  cat("  Format: ", attr(x, "format"), "\n", sep = "")
   cat("  Download key: ", x, "\n", sep = "")
 }
 
@@ -350,10 +371,16 @@ print.occ_download_prep <- function(x, ...) {
   cat("<<gbif download - prepared>>", "\n", sep = "")
   cat("  Username: ", x$user, "\n", sep = "")
   cat("  E-mail: ", x$email, "\n", sep = "")
+  cat("  Format: ", x$format, "\n", sep = "")
   cat("  Request: ", gbif_make_list(x$request), "\n", sep = "")
 }
 
-parse_args <- function(x){
+parse_args <- function(x) {
+  if (!all(vapply(x, is.character, logical(1)))) {
+    stop("all inputs to `...` of occ_download must be character\n",
+      "  see examples; as an alternative, see the `body` param",
+      call. = FALSE)
+  }
   key <- key_lkup[[ strextract(x, "[A-Za-z]+") ]]
   type <- operator_lkup[[ strtrim(strextract(x, paste0(operators_regex,
                                                        collapse = "|"))) ]]

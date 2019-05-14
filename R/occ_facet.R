@@ -48,7 +48,7 @@ occ_facet <- function(facet, facetMincount = NULL, curlopts = list(), ...) {
   tt <- gbif_GET(paste0(gbif_base(), '/occurrence/search'), args,
                  FALSE, curlopts)
   stats::setNames(lapply(tt$facets, function(z) {
-    tibble::as_data_frame(
+    tibble::as_tibble(
       data.table::rbindlist(z$counts, use.names = TRUE, fill = TRUE)
     )
   }), vapply(tt$facets, function(x) to_camel(x$field), ""))

@@ -9,4 +9,5 @@ gist_downloads.md
 revdep/checks.noindex
 revdep/data.sqlite
 revdep/library.noindex
-nameissues.txt
+gbifissues.txt
+*.Rproj

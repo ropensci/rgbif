@@ -64,12 +64,12 @@ gbif_citation.gbif <- function(x) {
   if (!inherits(x, "data.frame")) {
     x <- x$data
   }
-  dkeys <- unique(x$datasetKey)
+  dkeys <- unique(suppressWarnings(x$datasetKey))
   if (is.null(dkeys)) {
     occ_keys <- x$key
     if (!is.null(occ_keys)) {
-      dkeys <- unique(vapply(occ_get(unique(occ_keys), fields = "all"),
-                             "[[", "", c('data', 'datasetKey')))
+      dkeys <- unique(vapply(occ_get(as.numeric(unique(occ_keys)),
+        fields = "all"), "[[", "", c('data', 'datasetKey')))
     } else {
       stop("No 'datasetKey' or 'key' fields found", call. = FALSE)
     }

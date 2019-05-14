@@ -11,15 +11,16 @@ test_that("returns the correct class", {
     cc <- occ_get(key = c(855998194, 620594291),
       fields = c("scientificName", "decimalLatitude", "basisOfRecord"),
       verbatim = TRUE)
-  })
+    dd <- occ_get(key = 855998194, fields = "all")
+  }, preserve_exact_body_bytes = TRUE)
 
   expect_is(tt, "data.frame")
-  expect_is(tt$key, "integer")
+  expect_is(tt$key, "character")
   expect_is(tt$scientificName, "character")
 
   expect_is(uu, "data.frame")
   expect_is(uu$name, "character")
-  expect_is(uu$key, "integer")
+  expect_is(uu$key, "character")
   expect_is(uu$rank, "character")
 
   expect_is(vv, "list")
@@ -28,12 +29,17 @@ test_that("returns the correct class", {
   expect_is(vv$data, "data.frame")
 
   expect_is(aa, "data.frame")
-  expect_is(aa$key, "integer")
+  expect_is(aa$key, "character")
   expect_is(aa$scientificName, "character")
 
   expect_is(bb, "data.frame")
-  expect_is(bb$key, "integer")
+  expect_is(bb$key, "character")
   expect_is(bb$datasetKey, "character")
+  expect_is(bb$gbifID, "character")
+
+  expect_is(dd, "list")
+  expect_is(dd$data$key, "character")
+  expect_is(dd$data$gbifID, "character")
 
   # returns the correct dimensions
   expect_equal(dim(tt), c(1, 5))
@@ -59,7 +65,7 @@ test_that("works w/: verbatim=TRUE, fields all, & return extensions data", {
     bb <- occ_get(keys[2], fields = "all", verbatim = TRUE, return = "data")
     cc <- occ_get(keys[3], fields = "all", verbatim = TRUE, return = "data")
     dd <- occ_get(keys[4], fields = "all", verbatim = TRUE, return = "data")
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   # extensions: Identification non-empty, Multimedia empty array
   expect_is(aa, "data.frame")
@@ -83,4 +89,13 @@ test_that("works w/: verbatim=TRUE, fields all, & return extensions data", {
   expect_is(dd, "data.frame")
   expect_equal(NROW(dd), 1)
   expect_false(any(grepl("extensions", names(dd))))
+})
+
+# per issue #349
+test_that("key and gbifID fields are character class", {
+  vcr::use_cassette("occ_search_key_gbifid_character_class", {
+    aa <- occ_search(taxonKey = 9206251, limit = 3)
+  })
+  expect_is(aa$data$key, "character")
+  expect_is(aa$data$gbifID, "character")
 })
