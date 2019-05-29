@@ -133,9 +133,8 @@ gbif_citation.occ_download_get <- function(x) {
   citation <- sprintf(gbif_cit, doi_url, as.character(as.Date(met$created)))
 
   # individual datasets
-  path <- x[1]
-  tmpdir <- file.path(tempdir(), x)
-  utils::unzip(path, exdir = tmpdir, overwrite = TRUE)
+  tmpdir <- file.path(tempdir(), met$key)
+  utils::unzip(x[1], exdir = tmpdir, overwrite = TRUE)
   on.exit(unlink(tmpdir))
   dsets <- list.files(file.path(tmpdir, "dataset"), full.names = TRUE)
   list(
