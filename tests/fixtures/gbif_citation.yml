@@ -1,0 +1,250 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?limit=2&offset=0&taxonKey=9206251
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.3.0.9100)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.3.0.9100)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Wed, 29 May 2019 01:25:51 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=600
+      x-varnish: 472122143 470155835
+      age: '195'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '7676'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":43384,"results":[{"key":1993719684,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-05-27T11:35:23.141+0000","lastParsed":"2019-05-20T15:20:58.085+0000","crawlId":164,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":9206251,"kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3119134,"speciesKey":9206251,"acceptedTaxonKey":9206251,"scientificName":"Helianthus
+        annuus L.","acceptedScientificName":"Helianthus annuus L.","kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Helianthus","species":"Helianthus
+        annuus","genericName":"Helianthus","specificEpithet":"annuus","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2019-02-01T03:59:27","decimalLongitude":-117.615045,"decimalLatitude":33.418833,"coordinateUncertaintyInMeters":5.0,"stateProvince":"California","year":2019,"month":1,"day":29,"eventDate":"2019-01-29T12:26:35","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2019-02-01T15:36:55.000+0000","lastInterpreted":"2019-05-20T15:20:58.163+0000","references":"https://www.inaturalist.org/observations/20001771","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/30872830/original.jpg?1548993571","references":"https://www.inaturalist.org/photos/30872830","created":"2019-01-29T20:26:35.000+0000","creator":"Martin
+        Dale Purdy","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by/4.0/","rightsHolder":"Martin
+        Dale Purdy"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/30872832/original.jpg?1548993580","references":"https://www.inaturalist.org/photos/30872832","created":"2019-01-29T20:26:35.000+0000","creator":"Martin
+        Dale Purdy","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by/4.0/","rightsHolder":"Martin
+        Dale Purdy"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/30872833/original.jpg?1548993588","references":"https://www.inaturalist.org/photos/30872833","created":"2019-01-29T20:26:35.000+0000","creator":"Martin
+        Dale Purdy","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by/4.0/","rightsHolder":"Martin
+        Dale Purdy"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Magnoliopsida","countryCode":"US","country":"United
+        States of America","rightsHolder":"Martin Dale Purdy","identifier":"20001771","verbatimEventDate":"Tue
+        Jan 29 2019 12:26:35 GMT-0800 (PST)","datasetName":"iNaturalist research-grade
+        observations","collectionCode":"Observations","verbatimLocality":"229 Trafalgar
+        Ln, San Clemente, CA, US","gbifID":"1993719684","occurrenceID":"https://www.inaturalist.org/observations/20001771","taxonID":"57983","catalogNumber":"20001771","recordedBy":"Martin
+        Dale Purdy","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/20001771","institutionCode":"iNaturalist","rights":"©
+        Martin Dale Purdy some rights reserved","eventTime":"20:26:35Z","occurrenceRemarks":"Sprouted
+        under bird feeder","identificationID":"44280722"},{"key":1986597827,"datasetKey":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","publishingOrgKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","networkKeys":[],"installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingCountry":"US","protocol":"DWC_ARCHIVE","lastCrawled":"2019-05-27T11:34:12.844+0000","lastParsed":"2019-03-19T20:59:07.881+0000","crawlId":164,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","taxonKey":9206251,"kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3119134,"speciesKey":9206251,"acceptedTaxonKey":9206251,"scientificName":"Helianthus
+        annuus L.","acceptedScientificName":"Helianthus annuus L.","kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Helianthus","species":"Helianthus
+        annuus","genericName":"Helianthus","specificEpithet":"annuus","taxonRank":"SPECIES","taxonomicStatus":"ACCEPTED","dateIdentified":"2019-01-06T19:09:23","decimalLongitude":-118.344736,"decimalLatitude":33.825568,"coordinateUncertaintyInMeters":45.0,"stateProvince":"California","year":2019,"month":1,"day":3,"eventDate":"2019-01-03T16:01:58","issues":["COORDINATE_ROUNDED","GEODETIC_DATUM_ASSUMED_WGS84"],"modified":"2019-01-10T17:48:22.000+0000","lastInterpreted":"2019-03-19T21:03:56.012+0000","references":"https://www.inaturalist.org/observations/19470267","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","identifiers":[],"media":[{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29956255/original.jpg?1546797690","references":"https://www.inaturalist.org/photos/29956255","created":"2019-01-04T00:01:58.000+0000","creator":"alligatorlizard","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"alligatorlizard"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29956264/original.jpg?1546797700","references":"https://www.inaturalist.org/photos/29956264","created":"2019-01-04T00:01:58.000+0000","creator":"alligatorlizard","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"alligatorlizard"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29956305/original.jpg?1546797743","references":"https://www.inaturalist.org/photos/29956305","created":"2019-01-04T00:01:58.000+0000","creator":"alligatorlizard","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"alligatorlizard"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29956318/original.jpg?1546797757","references":"https://www.inaturalist.org/photos/29956318","created":"2019-01-04T00:01:58.000+0000","creator":"alligatorlizard","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"alligatorlizard"},{"type":"StillImage","format":"image/jpeg","identifier":"https://static.inaturalist.org/photos/29956325/original.jpg?1546797766","references":"https://www.inaturalist.org/photos/29956325","created":"2019-01-04T00:01:58.000+0000","creator":"alligatorlizard","publisher":"iNaturalist","license":"http://creativecommons.org/licenses/by-nc/4.0/","rightsHolder":"alligatorlizard"}],"facts":[],"relations":[],"geodeticDatum":"WGS84","class":"Magnoliopsida","countryCode":"US","country":"United
+        States of America","rightsHolder":"alligatorlizard","identifier":"19470267","verbatimEventDate":"Thu
+        Jan 03 2019 16:01:58 GMT-0800 (PST)","datasetName":"iNaturalist research-grade
+        observations","collectionCode":"Observations","verbatimLocality":"Madrona
+        Marsh Nature Preserve, Torrance, CA, US","gbifID":"1986597827","occurrenceID":"https://www.inaturalist.org/observations/19470267","taxonID":"57983","catalogNumber":"19470267","recordedBy":"alligatorlizard","http://unknown.org/occurrenceDetails":"https://www.inaturalist.org/observations/19470267","institutionCode":"iNaturalist","rights":"©
+        alligatorlizard some rights reserved","eventTime":"00:01:58Z","occurrenceRemarks":"See
+        additional photos","identificationID":"42653106"}],"facets":[]}'
+  recorded_at: 2019-05-29 01:29:08 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4.9100
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/50c9509d-22c7-4a22-a47d-8c48425ef4a7?limit=100
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.3.0.9100)
+      X-USER-AGENT: r-curl/3.3 crul/0.7.4 rOpenSci(rgbif/1.3.0.9100)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Wed, 29 May 2019 01:29:07 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=3601
+      x-varnish: 471597351 465601152
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '26708'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"key":"50c9509d-22c7-4a22-a47d-8c48425ef4a7","installationKey":"997448a8-f762-11e1-a439-00145eb45e9a","publishingOrganizationKey":"28eb1a3f-1c15-4a95-931a-4af90ecb574d","doi":"10.15468/ab3s5x","external":false,"numConstituents":0,"type":"OCCURRENCE","title":"iNaturalist
+        Research-grade Observations","description":"Research-grade observations from
+        iNaturalist.org.","language":"eng","homepage":"https://www.inaturalist.org/observations","logoUrl":"http://www.inaturalist.org/assets/logo-small.gif","citation":{"text":"iNaturalist.org
+        (2019). iNaturalist Research-grade Observations. Occurrence dataset https://doi.org/10.15468/ab3s5x
+        accessed via GBIF.org on 2019-05-29."},"lockedForAutoUpdate":false,"createdBy":"registry-migration.gbif.org","modifiedBy":"crawler.gbif.org","created":"2012-02-09T09:15:33.000+0000","modified":"2019-05-27T11:08:55.636+0000","contacts":[],"endpoints":[{"key":2922,"type":"DWC_ARCHIVE","url":"http://www.inaturalist.org/observations/gbif-observations-dwca.zip","createdBy":"registry-migration.gbif.org","modifiedBy":"registry-migration.gbif.org","created":"2012-02-13T08:28:36.000+0000","modified":"2012-02-13T08:28:36.000+0000","machineTags":[]}],"machineTags":[{"key":3192365,"namespace":"citizenScience.mgrosjean.gbif.org","name":"status","value":"not_reviewed","createdBy":"mgrosjean","created":"2019-03-12T13:48:19.259+0000"},{"key":3670170,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"164","createdBy":"crawler.gbif.org","created":"2019-05-27T11:04:26.042+0000"}],"tags":[],"identifiers":[{"key":158694,"type":"URL","identifier":"https://www.inaturalist.org/observations?created_d2=2019-05-23T18%3A00%3A52-07%3A00&license%5B%5D=CC0&license%5B%5D=CC-BY&license%5B%5D=CC-BY-NC&quality_grade=research","createdBy":"crawler.gbif.org","created":"2019-05-27T11:08:55.603+0000"},{"key":158351,"type":"URL","identifier":"https://www.inaturalist.org/observations?created_d2=2019-05-16T18%3A00%3A56-07%3A00&license%5B%5D=CC0&license%5B%5D=CC-BY&license%5B%5D=CC-BY-NC&quality_grade=research","createdBy":"crawler.gbif.org","created":"2019-05-20T15:03:30.262+0000"},{"key":157782,"type":"URL","identifier":"https://www.inaturalist.org/observations?created_d2=2019-05-02T18%3A00%3A48-07%3A00&license%5B%5D=CC0&license%5B%5D=CC-BY&license%5B%5D=CC-BY-NC&quality_grade=research","createdBy":"crawler.gbif.org","created":"2019-05-07T19:29:15.765+0000"},{"key":157686,"type":"URL","identifier":"https://www.inaturalist.org/observations?created_d2=2019-04-25T18%3A00%3A44-07%3A00&license%5B%5D=CC0&license%5B%5D=CC-BY&license%5B%5D=CC-BY-NC&quality_grade=research","createdBy":"crawler.gbif.org","created":"2019-05-01T14:44:53.782+0000"},{"key":157518,"type":"URL","identifier":"https://www.inaturalist.org/observations?created_d2=2019-04-18T18%3A00%3A44-07%3A00&license%5B%5D=CC0&license%5B%5D=CC-BY&license%5B%5D=CC-BY-NC&quality_grade=research","createdBy":"crawler.gbif.org","created":"2019-04-24T08:00:05.567+0000"},{"key":157133,"type":"URL","identifier":"https://www.inaturalist.org/observations?created_d2=2019-04-11T18%3A00%3A56-07%3A00&license%5B%5D=CC0&license%5B%5D=CC-BY&license%5B%5D=CC-BY-NC&quality_grade=research","createdBy":"crawler.gbif.org","created":"2019-04-17T07:29:43.606+0000"},{"key":156474,"type":"URL","identifier":"https://www.inaturalist.org/observations?created_d2=2019-04-04T18%3A00%3A43-07%3A00&license%5B%5D=CC0&license%5B%5D=CC-BY&license%5B%5D=CC-BY-NC&quality_grade=research","createdBy":"crawler.gbif.org","created":"2019-04-10T07:37:36.297+0000"},{"key":156389,"type":"URL","identifier":"https://www.inaturalist.org/observations?created_d2=2019-03-28T18%3A00%3A45-07%3A00&license%5B%5D=CC0&license%5B%5D=CC-BY&license%5B%5D=CC-BY-NC&quality_grade=research","createdBy":"crawler.gbif.org","created":"2019-04-04T14:53:00.867+0000"},{"key":11678,"type":"GBIF_PORTAL","identifier":"14026","createdBy":"registry-migration.gbif.org","created":"2012-09-05T14:04:22.000+0000"}],"comments":[{"key":27278,"content":"Auto-deletion
+        of stale records: 2312 occurrence(s) flagged for deletion. 164 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2019-05-27T23:50:20.952+0000","modified":"2019-05-27T23:50:20.952+0000"},{"key":27197,"content":"Auto-deletion
+        of stale records: 8331 occurrence(s) flagged for deletion. 163 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2019-05-20T23:52:09.709+0000","modified":"2019-05-20T23:52:09.709+0000"},{"key":27042,"content":"Auto-deletion
+        of stale records: 3572 occurrence(s) flagged for deletion. 161 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2019-05-07T23:54:19.671+0000","modified":"2019-05-07T23:54:19.671+0000"},{"key":26975,"content":"Auto-deletion
+        of stale records: 1598 occurrence(s) flagged for deletion. 160 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2019-05-01T23:54:06.347+0000","modified":"2019-05-01T23:54:06.347+0000"},{"key":26915,"content":"Auto-deletion
+        of stale records: 2581 occurrence(s) flagged for deletion. 159 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2019-04-24T23:52:41.847+0000","modified":"2019-04-24T23:52:41.847+0000"},{"key":26825,"content":"Auto-deletion
+        of stale records: 5057 occurrence(s) flagged for deletion. 158 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2019-04-17T23:49:41.079+0000","modified":"2019-04-17T23:49:41.079+0000"},{"key":26763,"content":"Auto-deletion
+        of stale records: 9163 occurrence(s) flagged for deletion. 157 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2019-04-10T23:51:34.213+0000","modified":"2019-04-10T23:51:34.213+0000"},{"key":26536,"content":"Auto-deletion
+        of stale records: 1660 occurrence(s) flagged for deletion. 156 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2019-04-10T08:40:44.313+0000","modified":"2019-04-10T08:40:44.313+0000"},{"key":26422,"content":"Auto-deletion
+        of stale records: 1851 occurrence(s) flagged for deletion. 155 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2019-03-26T23:56:25.505+0000","modified":"2019-03-26T23:56:25.505+0000"},{"key":25057,"content":"Auto-deletion
+        of stale records: 1696 occurrence(s) flagged for deletion. 154 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2019-03-21T06:53:33.139+0000","modified":"2019-03-21T06:53:33.139+0000"},{"key":24677,"content":"Auto-deletion
+        of stale records: 4491 occurrence(s) flagged for deletion. 153 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2019-03-12T23:49:43.421+0000","modified":"2019-03-12T23:49:43.421+0000"},{"key":24655,"content":"Auto-deletion
+        of stale records: 2354 occurrence(s) flagged for deletion. 152 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2019-03-08T00:20:45.967+0000","modified":"2019-03-08T00:20:45.967+0000"},{"key":24410,"content":"Auto-deletion
+        of stale records: 5759 occurrence(s) flagged for deletion. 151 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2019-02-26T00:32:38.096+0000","modified":"2019-02-26T00:32:38.096+0000"},{"key":24233,"content":"Auto-deletion
+        of stale records: 1820 occurrence(s) flagged for deletion. 149 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2019-02-11T23:56:33.841+0000","modified":"2019-02-11T23:56:33.841+0000"},{"key":24024,"content":"Auto-deletion
+        of stale records: 10140 occurrence(s) flagged for deletion. 148 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2019-02-04T23:54:58.907+0000","modified":"2019-02-04T23:54:58.907+0000"},{"key":23267,"content":"Auto-deletion
+        of stale records: 6682 occurrence(s) flagged for deletion. 145 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2019-01-15T03:10:28.202+0000","modified":"2019-01-15T03:10:28.202+0000"},{"key":22293,"content":"Auto-deletion
+        of stale records: 5085 occurrence(s) flagged for deletion. 144 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2019-01-05T23:49:06.340+0000","modified":"2019-01-05T23:49:06.340+0000"},{"key":22143,"content":"Auto-deletion
+        of stale records: 2952 occurrence(s) flagged for deletion. 141 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-12-24T23:57:47.690+0000","modified":"2018-12-24T23:57:47.690+0000"},{"key":21944,"content":"Auto-deletion
+        of stale records: 8912 occurrence(s) flagged for deletion. 140 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-12-17T23:56:38.219+0000","modified":"2018-12-17T23:56:38.219+0000"},{"key":21943,"content":"Auto-deletion
+        of stale records: 8912 occurrence(s) flagged for deletion. 140 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-12-17T23:56:27.112+0000","modified":"2018-12-17T23:56:27.112+0000"},{"key":21749,"content":"Auto-deletion
+        of stale records: 9422 occurrence(s) flagged for deletion. 139 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-12-10T23:58:51.211+0000","modified":"2018-12-10T23:58:51.211+0000"},{"key":21748,"content":"Auto-deletion
+        of stale records: 9422 occurrence(s) flagged for deletion. 139 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-12-10T23:58:21.335+0000","modified":"2018-12-10T23:58:21.335+0000"},{"key":21390,"content":"Auto-deletion
+        of stale records: 8854 occurrence(s) flagged for deletion. 138 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-12-04T00:37:14.315+0000","modified":"2018-12-04T00:37:14.315+0000"},{"key":21273,"content":"Auto-deletion
+        of stale records: 1434 occurrence(s) flagged for deletion. 136 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-11-28T00:24:34.557+0000","modified":"2018-11-28T00:24:34.557+0000"},{"key":20952,"content":"Auto-deletion
+        of stale records: 1342 occurrence(s) flagged for deletion. 135 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-11-20T00:10:28.300+0000","modified":"2018-11-20T00:10:28.300+0000"},{"key":20913,"content":"Auto-deletion
+        of stale records: 2319 occurrence(s) flagged for deletion. 134 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-11-14T03:26:56.993+0000","modified":"2018-11-14T03:26:56.993+0000"},{"key":20845,"content":"Auto-deletion
+        of stale records: 1527 occurrence(s) flagged for deletion. 133 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-11-05T23:49:17.395+0000","modified":"2018-11-05T23:49:17.395+0000"},{"key":20758,"content":"Auto-deletion
+        of stale records: 2966 occurrence(s) flagged for deletion. 132 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-10-29T23:52:30.335+0000","modified":"2018-10-29T23:52:30.335+0000"},{"key":20705,"content":"Auto-deletion
+        of stale records: 1584 occurrence(s) flagged for deletion. 131 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-10-22T23:51:46.140+0000","modified":"2018-10-22T23:51:46.140+0000"},{"key":20612,"content":"Auto-deletion
+        of stale records: 1825 occurrence(s) flagged for deletion. 130 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-10-15T23:50:54.725+0000","modified":"2018-10-15T23:50:54.725+0000"},{"key":20545,"content":"Auto-deletion
+        of stale records: 1538 occurrence(s) flagged for deletion. 129 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-10-08T23:50:37.352+0000","modified":"2018-10-08T23:50:37.352+0000"},{"key":20134,"content":"Auto-deletion
+        of stale records: 2062377 occurrence(s) flagged for deletion. 128 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-10-04T23:55:50.812+0000","modified":"2018-10-04T23:55:50.812+0000"},{"key":20087,"content":"Auto-deletion
+        of stale records: 1278 occurrence(s) flagged for deletion. 127 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-09-26T23:58:26.165+0000","modified":"2018-09-26T23:58:26.165+0000"},{"key":19997,"content":"Auto-deletion
+        of stale records: 4063 occurrence(s) flagged for deletion. 126 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-09-20T00:31:09.900+0000","modified":"2018-09-20T00:31:09.900+0000"},{"key":19303,"content":"Auto-deletion
+        of stale records: 1555 occurrence(s) flagged for deletion. 125 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-09-10T23:48:22.224+0000","modified":"2018-09-10T23:48:22.224+0000"},{"key":19266,"content":"Auto-deletion
+        of stale records: 1553 occurrence(s) flagged for deletion. 124 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-09-03T23:51:09.977+0000","modified":"2018-09-03T23:51:09.977+0000"},{"key":19216,"content":"Auto-deletion
+        of stale records: 6749 occurrence(s) flagged for deletion. 123 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-08-27T23:49:15.493+0000","modified":"2018-08-27T23:49:15.493+0000"},{"key":18628,"content":"Auto-deletion
+        of stale records: 2755 occurrence(s) flagged for deletion. 122 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-08-20T23:57:37.726+0000","modified":"2018-08-20T23:57:37.726+0000"},{"key":18600,"content":"Auto-deletion
+        of stale records: 1712 occurrence(s) flagged for deletion. 121 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-08-13T23:51:33.616+0000","modified":"2018-08-13T23:51:33.616+0000"},{"key":18561,"content":"Auto-deletion
+        of stale records: 2546 occurrence(s) flagged for deletion. 120 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-08-06T23:49:29.317+0000","modified":"2018-08-06T23:49:29.317+0000"},{"key":18424,"content":"Auto-deletion
+        of stale records: 1588996 occurrence(s) flagged for deletion. 119 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-07-29T23:57:02.939+0000","modified":"2018-07-29T23:57:02.939+0000"},{"key":18339,"content":"Auto-deletion
+        of stale records: 604715 occurrence(s) flagged for deletion. 118 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-07-22T23:52:32.212+0000","modified":"2018-07-22T23:52:32.212+0000"},{"key":18163,"content":"Auto-deletion
+        of stale records: 5039 occurrence(s) flagged for deletion. 116 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-07-13T01:04:26.741+0000","modified":"2018-07-13T01:04:26.741+0000"},{"key":18043,"content":"Auto-deletion
+        of stale records: 1616 occurrence(s) flagged for deletion. 115 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-06-21T11:06:36.470+0000","modified":"2018-06-21T11:06:36.470+0000"},{"key":17994,"content":"Auto-deletion
+        of stale records: 2909 occurrence(s) flagged for deletion. 114 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-06-13T13:54:36.529+0000","modified":"2018-06-13T13:54:36.529+0000"},{"key":17904,"content":"Auto-deletion
+        of stale records: 10910 occurrence(s) flagged for deletion. 113 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-06-01T13:51:54.309+0000","modified":"2018-06-01T13:51:54.309+0000"},{"key":17781,"content":"Auto-deletion
+        of stale records: 2072 occurrence(s) flagged for deletion. 110 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-05-11T14:07:58.612+0000","modified":"2018-05-11T14:07:58.612+0000"},{"key":17678,"content":"Auto-deletion
+        of stale records: 1647 occurrence(s) flagged for deletion. 108 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-05-01T13:53:04.619+0000","modified":"2018-05-01T13:53:04.619+0000"},{"key":17516,"content":"Auto-deletion
+        of stale records: 1636 occurrence(s) flagged for deletion. 104 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-04-24T13:49:28.055+0000","modified":"2018-04-24T13:49:28.055+0000"},{"key":17455,"content":"Auto-deletion
+        of stale records: 839 occurrence(s) flagged for deletion. 103 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-04-17T13:50:47.240+0000","modified":"2018-04-17T13:50:47.240+0000"},{"key":17415,"content":"Auto-deletion
+        of stale records: 1349 occurrence(s) flagged for deletion. 102 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-04-11T13:59:47.845+0000","modified":"2018-04-11T13:59:47.845+0000"},{"key":17328,"content":"Auto-deletion
+        of stale records: 1340 occurrence(s) flagged for deletion. 101 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-04-03T13:51:30.862+0000","modified":"2018-04-03T13:51:30.862+0000"},{"key":17178,"content":"Auto-deletion
+        of stale records: 2045 occurrence(s) flagged for deletion. 100 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-03-27T13:52:15.527+0000","modified":"2018-03-27T13:52:15.527+0000"},{"key":17028,"content":"Auto-deletion
+        of stale records: 8119 occurrence(s) flagged for deletion. 99 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-03-08T14:59:50.895+0000","modified":"2018-03-08T14:59:50.895+0000"},{"key":16691,"content":"Auto-deletion
+        of stale records: 1704 occurrence(s) flagged for deletion. 98 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-02-15T15:00:06.927+0000","modified":"2018-02-15T15:00:06.927+0000"},{"key":16503,"content":"Auto-deletion
+        of stale records: 1562 occurrence(s) flagged for deletion. 97 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-02-02T12:50:17.691+0000","modified":"2018-02-02T12:50:17.691+0000"},{"key":16454,"content":"Auto-deletion
+        of stale records: 1768 occurrence(s) flagged for deletion. 96 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-01-26T12:52:00.403+0000","modified":"2018-01-26T12:52:00.403+0000"},{"key":16360,"content":"Auto-deletion
+        of stale records: 6369 occurrence(s) flagged for deletion. 93 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-01-12T12:55:55.011+0000","modified":"2018-01-12T12:55:55.011+0000"},{"key":15774,"content":"Auto-deletion
+        of stale records: 4069 occurrence(s) flagged for deletion. 89 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2017-12-05T14:34:12.206+0000","modified":"2017-12-05T14:34:12.206+0000"},{"key":15770,"content":"Auto-deletion
+        of stale records: 4069 occurrence(s) flagged for deletion. 89 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2017-12-05T12:48:04.677+0000","modified":"2017-12-05T12:48:04.677+0000"},{"key":15766,"content":"Auto-deletion
+        of stale records: 4069 occurrence(s) flagged for deletion. 89 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2017-12-05T11:19:22.440+0000","modified":"2017-12-05T11:19:22.440+0000"},{"key":15762,"content":"Auto-deletion
+        of stale records: 4069 occurrence(s) flagged for deletion. 89 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2017-12-05T10:50:12.257+0000","modified":"2017-12-05T10:50:12.257+0000"},{"key":15757,"content":"Auto-deletion
+        of stale records: 4069 occurrence(s) flagged for deletion. 89 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2017-12-05T08:42:24.460+0000","modified":"2017-12-05T08:42:24.460+0000"},{"key":15704,"content":"Auto-deletion
+        of stale records: 1116 occurrence(s) flagged for deletion. 88 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2017-11-24T08:44:06.551+0000","modified":"2017-11-24T08:44:06.551+0000"},{"key":15619,"content":"Auto-deletion
+        of stale records: 1551 occurrence(s) flagged for deletion. 87 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2017-11-07T08:42:55.649+0000","modified":"2017-11-07T08:42:55.649+0000"},{"key":15604,"content":"Auto-deletion
+        of stale records: 4262 occurrence(s) flagged for deletion. 86 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2017-11-03T08:41:55.791+0000","modified":"2017-11-03T08:41:55.791+0000"},{"key":15517,"content":"Auto-deletion
+        of stale records: 850 occurrence(s) flagged for deletion. 85 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2017-10-14T07:42:56.398+0000","modified":"2017-10-14T07:42:56.398+0000"},{"key":15488,"content":"Auto-deletion
+        of stale records: 8400 occurrence(s) flagged for deletion. 84 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2017-10-09T07:41:03.178+0000","modified":"2017-10-09T07:41:03.178+0000"},{"key":15388,"content":"Auto-deletion
+        of stale records: 2188 occurrence(s) flagged for deletion. 83 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2017-09-21T07:42:05.586+0000","modified":"2017-09-21T07:42:05.586+0000"},{"key":15259,"content":"Auto-deletion
+        of stale records: 678 occurrence(s) flagged for deletion. 82 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2017-09-09T08:08:25.277+0000","modified":"2017-09-09T08:08:25.277+0000"},{"key":15160,"content":"Auto-deletion
+        of stale records: 6561 occurrence(s) flagged for deletion. 81 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2017-08-31T07:41:02.515+0000","modified":"2017-08-31T07:41:02.515+0000"},{"key":15049,"content":"Auto-deletion
+        of stale records: 37926 occurrence(s) flagged for deletion. 75 was identified
+        as the last normal crawl attempt.","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2017-07-26T08:02:53.331+0000","modified":"2017-07-26T08:02:53.331+0000"},{"key":12671,"content":"Import
+        script set license to CC_BY_NC_4_0","createdBy":"License Import script","modifiedBy":"License
+        Import script","created":"2016-08-18T12:36:25.225+0000","modified":"2016-08-18T12:36:25.225+0000"}],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[{"description":"Bounding
+        Box","boundingBox":{"minLatitude":-88.075329,"maxLatitude":198.0,"minLongitude":-180.0,"maxLongitude":179.9974,"globalCoverage":false}}],"temporalCoverages":[{"@type":"range","start":"1806-12-31T00:00:00.000+0000","end":"2019-05-24T00:00:00.000+0000"}],"keywordCollections":[],"samplingDescription":{"qualityControl":"For
+        more about data quality on iNaturalist, see\n            http://www.inaturalist.org/pages/help#quality","methodSteps":["Observation
+        recorded and verified by the community"]},"countryCoverage":[],"collections":[],"dataDescriptions":[],"dataLanguage":"eng","purpose":"iNaturalist.org
+        is a website where anyone can record their\n        observations from nature.
+        Members record observations for numerous\n        reasons, including participation
+        in citizen science projects, class\n        projects, and personal fulfillment.","pubDate":"2019-05-23T00:00:00.000+0000","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode"}'
+  recorded_at: 2019-05-29 01:29:08 GMT
+  recorded_with: vcr/0.2.6, webmockr/0.3.4.9100

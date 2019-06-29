@@ -183,7 +183,7 @@ test_that("geometry inputs work as expected", {
   vcr::use_cassette("occ_data_geometry", {
 
     # in well known text format
-    aa <- occ_data(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))', limit=20)
+    aa <- occ_data(geometry='POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))', limit=20)
     expect_is(aa, "gbif_data")
     expect_is(unclass(aa), "list")
     expect_named(attr(aa, "args"), c('limit', 'offset', 'geometry'))
@@ -191,7 +191,7 @@ test_that("geometry inputs work as expected", {
 
     # with a taxon key
     key <- 3189815
-    bb <- occ_data(taxonKey = key, geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))',
+    bb <- occ_data(taxonKey = key, geometry='POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))',
                      limit=20)
     expect_is(bb, "gbif_data")
     expect_is(unclass(bb), "list")

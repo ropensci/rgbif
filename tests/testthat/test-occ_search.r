@@ -254,15 +254,15 @@ test_that("geometry inputs work as expected", {
   55.43241335888528,13.26349675655365 52.53991761181831))"
   wkt <- gsub("\n", " ", wkt)
 
-  badwkt1 <- "POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 a))"
+  badwkt1 <- "POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 a))"
 
   vcr::use_cassette("occ_search_geometry", {
     # in well known text format
-    aa <- occ_search(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))', limit=20)
+    aa <- occ_search(geometry='POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))', limit=20)
 
     # with a taxon key
     key <- 3189815
-    bb <- occ_search(taxonKey=key, geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))',
+    bb <- occ_search(taxonKey=key, geometry='POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))',
                      limit=20)
 
     # using bounding box, converted to WKT internally
@@ -290,14 +290,16 @@ test_that("geometry inputs work as expected", {
       # "source type value could not be interpreted as target at 'a'"
     )
 
-    badwkt2 <- "POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 '10.1'))"
+    # badwkt2 <- "POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 '10.1'))"
+    badwkt2 <- "POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 '10.1'))"
     expect_error(
       occ_search(geometry = badwkt2),
       "Invalid simple WKT"
       # "source type value could not be interpreted as target at ''10.1''"
     )
 
-    badwkt3 <- "POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1)"
+    # badwkt3 <- "POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1)"
+    badwkt3 <- "POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1)"
     expect_error(
       occ_search(geometry = badwkt3),
       "Invalid simple WKT"

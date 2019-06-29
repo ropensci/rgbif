@@ -68,7 +68,7 @@ out \%>\% occ_issues(cdround)
 
 # Parsing output by issue
 (res <- occ_data(
-  geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))',
+  geometry='POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))',
   limit = 600))
 
 ## or parse issues in various ways
