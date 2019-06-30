@@ -43,8 +43,3 @@ notifications:
     on_failure: change
   slack:
     secure: Y7ly6rxiG4EBAKKREFovZ1LPQp2ghrN7ThIfkMaQ1XCQLRV0D39a3Uuf1UigS6gpqrtaedXakbtZwG3CIhICILRRiQSZch3gGZUNMRkVrG/0wZDn7HwWOquTxPJEeH1AUlKYToxiI6rRqd/c3U4FwisKuIUHmvqDRA1NEtdiqJY=
-
-script:
-   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then bash ./travis/run_on_pull_requests; fi'
-   - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bash ./travis/run_on_non_pull_requests; fi'
-   
