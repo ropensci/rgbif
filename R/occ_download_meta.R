@@ -59,10 +59,15 @@ gbif_make_list <- function(y){
                            collapse = ", ")
       } else {
         out[[i]] <- sprintf(
-          "\n      > type: %s, key: %s, value: %s",
+          "\n      > type: %s, key: %s, value(s): %s",
           tmp$type,
           if ("geometry" %in% names(tmp)) "geometry" else tmp$key,
-          if ("geometry" %in% names(tmp)) tmp$geometry else tmp$value
+          if ("geometry" %in% names(tmp)) {
+            tmp$geometry 
+          } else {
+            zz <- tmp$value %||% tmp$values
+            if (!is.null(zz)) paste(zz, collapse = ",") else zz
+          }
         )
       }
     }
