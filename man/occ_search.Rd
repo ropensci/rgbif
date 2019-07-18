@@ -192,10 +192,10 @@ you can manually set the \code{start} parameter}
 returns just taxon name, key, latitude, and longitute. Or specify each field
 you want returned by name, e.g. fields = c('name','latitude','elevation').}
 
-\item{return}{One of data, hier, meta, or all. If data, a data.frame with the
-data. hier returns the classifications in a list for each record. meta
-returns the metadata for the entire call. all gives all data back in
-a list.}
+\item{return}{One of 'data', 'hier', 'meta', or 'all'. If 'data', a
+data.frame with the data. 'hier' returns the classifications in a list for
+each record. 'meta' returns the metadata for the entire call. 'all'
+(default) gives all data back in a list.}
 
 \item{spellCheck}{(logical) If \code{TRUE} ask GBIF to check your spelling of
 the value passed to the \code{search} parameter. IMPORTANT: This only checks
@@ -233,15 +233,15 @@ slots for metadata (\code{meta}), the occurrence data itself (\code{data}),
 the taxonomic hierarchy data (\code{hier}), and media metadata
 (\code{media}).
 In addition, the object has attributes listing the user supplied arguments
-and whether it was a "single" or "many" search; that is, if you supply two
+and whether it was a 'single' or 'many' search; that is, if you supply two
 values of the \code{datasetKey} parameter to searches are done, and it's a
-"many". \code{meta} is a list of length four with offset, limit,
+'many'. \code{meta} is a list of length four with offset, limit,
 endOfRecords and count fields. \code{data} is a tibble (aka data.frame). \code{hier}
-is a list of data.frame's of the unique set of taxa found, where each
+is a list of data.frames of the unique set of taxa found, where each
 data.frame is its taxonomic classification. \code{media} is a list of media
 objects, where each element holds a set of metadata about the media object.
-If the \code{return} parameter is set to something other than default you get
-back just the \code{meta}, \code{data}, \code{hier}, or \code{media}.
+If the \code{return} parameter is set to something other than 'all' (default), you
+get back just the \code{meta}, \code{data}, \code{hier}, or \code{media}.
 }
 \description{
 Search for GBIF occurrences

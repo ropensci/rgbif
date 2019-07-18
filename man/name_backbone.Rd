@@ -55,19 +55,17 @@ with \code{limit} to page through results.}
 for curl options}
 }
 \value{
-A list for a single taxon with many slots (with \code{verbose=FALSE})
-\itemize{
-\item default), or a list of length two, first element for the suggested taxon
-match, and a data.frame with alternative name suggestions resulting from
-fuzzy matching (with \code{verbose=TRUE}).
-}
+A data.frame for a single taxon with many columns (default,
+\code{verbose=FALSE}) or a list of length two, first data.frame for the
+suggested taxon match, and a data.frame with alternative name suggestions
+resulting from fuzzy matching (with \code{verbose=TRUE}).
 }
 \description{
 Lookup names in the GBIF backbone taxonomy.
 }
 \details{
-If you don't get a match GBIF gives back a list of length 3 with
-slots synonym, confidence, and matchType='NONE'.
+If you don't get a match, GBIF gives back a data.frame with columns \code{synonym}
+, \code{confidence}, and \code{matchType='NONE'}.
 }
 \examples{
 \dontrun{
