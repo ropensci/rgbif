@@ -160,9 +160,9 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
                   data =  tibble::as_data_frame(name_usage_parse(out, data))
       )
       class(out) <- "gbif"
-      # no multiple parameters possible in name_usage
-      attr(out, 'type') <- "single"
     }
+    # no multiple parameters possible in name_usage
+    attr(out, 'type') <- "single"
   }
   structure(out, return = return, args = args)
 }
