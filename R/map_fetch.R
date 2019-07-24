@@ -41,15 +41,15 @@
 #' 256, 512. optional
 #' @param style (character) for raster tiles, choose from the available styles.
 #' Defaults to classic.point. optional. THESE DON'T WORK YET.
-#' @param taxonKey (integer/numeric/character) search by taxon key, can only 
+#' @param taxonKey (integer/numeric/character) search by taxon key, can only
 #' supply 1. optional
-#' @param datasetKey (character) search by taxon key, can only supply 1. 
+#' @param datasetKey (character) search by taxon key, can only supply 1.
 #' optional
-#' @param country (character) search by taxon key, can only supply 1. 
+#' @param country (character) search by taxon key, can only supply 1.
 #' optional
-#' @param publishingOrg (character) search by taxon key, can only supply 1. 
+#' @param publishingOrg (character) search by taxon key, can only supply 1.
 #' optional
-#' @param publishingCountry (character) search by taxon key, can only 
+#' @param publishingCountry (character) search by taxon key, can only
 #' supply 1. optional
 #' @param year (integer) integer that limits the search to a certain year or,
 #' if passing a vector of integers, multiple years, for example
@@ -82,7 +82,7 @@
 #' @keywords web map, web tile, GBIF
 #' @examples \dontrun{
 #' if (
-#'  requireNamespace("png", quietly = TRUE) && 
+#'  requireNamespace("png", quietly = TRUE) &&
 #'  requireNamespace("raster", quietly = TRUE)
 #' ) {
 #'   x <- map_fetch(taxonKey = 2480498, year = 2007:2011)
@@ -107,7 +107,7 @@
 #'   # bin
 #'   plot(map_fetch(taxonKey = 212, year = 1998, bin = "hex",
 #'      hexPerTile = 30, style = "classic-noborder.poly"))
-#' 
+#'
 #'   # styles
 #'   plot(map_fetch(taxonKey = 2480498, style = "purpleYellow.point"))
 #'
@@ -116,11 +116,11 @@
 #'     format = ".mvt")
 #'   x[1:10]
 #'   is.raw(x)
-#' 
+#'
 #'   # query with basisOfRecord
-#'   map_fetch(taxonKey = 2480498, year = 2010, 
+#'   map_fetch(taxonKey = 2480498, year = 2010,
 #'     basisOfRecord = "HUMAN_OBSERVATION")
-#'   map_fetch(taxonKey = 2480498, year = 2010, 
+#'   map_fetch(taxonKey = 2480498, year = 2010,
 #'     basisOfRecord = c("HUMAN_OBSERVATION", "LIVING_SPECIMEN"))
 #'  }
 #' }
@@ -136,10 +136,10 @@ map_fetch <- function(
   hexPerTile = NULL,
   squareSize = NULL,
   style = 'classic.point',
-  taxonKey = NULL, 
-  datasetKey = NULL, 
-  country = NULL, 
-  publishingOrg = NULL, 
+  taxonKey = NULL,
+  datasetKey = NULL,
+  country = NULL,
+  publishingOrg = NULL,
   publishingCountry = NULL,
   year = NULL,
   basisOfRecord = NULL,
@@ -176,7 +176,7 @@ map_fetch <- function(
 
   # Check input ---------------------------------------------------------------
   stopifnot(source %in% c('density', 'adhoc'))
-  stopifnot(format %in% c('.mvt', '@Hx.png', '@1x.png', 
+  stopifnot(format %in% c('.mvt', '@Hx.png', '@1x.png',
     '@2x.png', '@3x.png', '@4x.png'))
   stopifnot(srs %in% c('EPSG:3857', 'EPSG:4326', 'EPSG:3575', 'EPSG:3031'))
 
@@ -189,7 +189,7 @@ map_fetch <- function(
   if (!is.null(bin)) stopifnot(bin %in% c('square', 'hex'))
   if (!is.null(style)) stopifnot(style %in% map_styles)
 
-  if (length(rgbif_compact(list(taxonKey, datasetKey, country, 
+  if (length(rgbif_compact(list(taxonKey, datasetKey, country,
     publishingOrg, publishingCountry))) > 1) {
     stop("supply only one of taxonKey, datasetKey, country, publishingOrg, or publishingCountry")
   }
@@ -201,11 +201,11 @@ map_fetch <- function(
       year <- paste0(c(min(year), max(year)), collapse = ",")
     }
   }
-  
-  query <- rgbif_compact(list(srs = srs, taxonKey = taxonKey, 
-    datasetKey = datasetKey, country, publishingOrg = publishingOrg, 
+
+  query <- rgbif_compact(list(srs = srs, taxonKey = taxonKey,
+    datasetKey = datasetKey, country, publishingOrg = publishingOrg,
     publishingCountry = publishingCountry, year = year,
-    bin = bin, squareSize = squareSize, hexPerTile = hexPerTile, 
+    bin = bin, squareSize = squareSize, hexPerTile = hexPerTile,
     style = style))
 
   if (!is.null(basisOfRecord)) {
@@ -248,7 +248,7 @@ crs_string <- function(x) {
 switch_extent <- function(x) {
   switch(
     x,
-    'EPSG:3857' = raster::extent(-180, 180, -85.1, 85.1),
+    'EPSG:3857' = raster::extent(-20037508, 20037508, -20037508, 20037508),
     'EPSG:4326' = raster::extent(-180, 180, -90, 90),
     'EPSG:3575' = raster::extent(-6371007.2 * sqrt(2), 6371007.2 * sqrt(2),
       -6371007.2 * sqrt(2), 6371007.2 * sqrt(2)),
