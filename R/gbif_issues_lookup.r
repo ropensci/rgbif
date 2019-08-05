@@ -6,7 +6,7 @@
 #' @examples
 #' gbif_issues_lookup(issue = 'CONTINENT_COUNTRY_MISMATCH')
 #' gbif_issues_lookup(code = 'ccm')
-#' #' gbif_issues_lookup(issue = 'COORDINATE INVALID')
+#' gbif_issues_lookup(issue = 'COORDINATE INVALID')
 #' gbif_issues_lookup(code = 'cdiv')
 
 gbif_issues_lookup <- function(issue=NULL, code=NULL){
