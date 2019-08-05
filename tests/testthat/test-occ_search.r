@@ -177,8 +177,7 @@ test_that("scientificName basic use works - no synonyms", {
 
   expect_equal(attr(bb, "args")$scientificName, "Pulsatilla patens")
   expect_equal(bb$data$species[1], "Pulsatilla patens")
-  bb_sc_nam <- "Anemone patens subsp. multifida (Pritzel) Hultén"
-  Encoding(bb_sc_nam) <- "Windows-1252"
+  bb_sc_nam <- "Anemone patens subsp. multifida (Pritzel) Hult\u00e9n"
   expect_equal(bb$data$scientificName[1],
                bb_sc_nam)
 
