@@ -139,8 +139,8 @@ test_that("scientificName basic use works - no synonyms", {
   expect_equal(attr(bb, "args")$scientificName, "Pulsatilla patens")
   expect_equal(bb$data$species[1], "Pulsatilla patens")
   expect_equal(bb$data$scientificName[1],
-    "Anemone patens subsp. multifida (Pritzel) Hultén")
-  
+    "Anemone patens subsp. multifida (Pritzel) Hult\u00e9n")
+
   expect_is(cc, "gbif_data")
   expect_is(cc$data, "data.frame")
   expect_equal(attr(cc, "args")$scientificName,
@@ -167,7 +167,7 @@ test_that("scientificName basic use works - no synonyms", {
   expect_equal(ff$data$species[1], "Myotis septentrionalis")
   expect_equal(ff$data$scientificName[1],
     "Myotis septentrionalis (Trouessart, 1897)")
-  
+
   expect_is(hh, "gbif_data")
   expect_is(hh$data, "data.frame")
   expect_equal(attr(hh, "args")$scientificName, "Pipistrellus hesperus")
@@ -321,7 +321,7 @@ test_that("works with parameters that allow many inputs", {
     ## one request, many instances of same parameter: use semi-colon sep. string
     bb <- occ_data(recordedBy="smith;BJ Stacey", limit=3)
   }, preserve_exact_body_bytes = TRUE)
-  
+
   expect_is(aa, "gbif_data")
   expect_is(bb, "gbif_data")
 

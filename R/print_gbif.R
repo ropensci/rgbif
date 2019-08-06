@@ -1,14 +1,33 @@
 #' @export
 print.gbif <- function(x, ...) {
   if (
-    if (is.null(attr(x, "type"))) FALSE else attr(x, "type") == "single" &&
-    all(c('meta', 'data', 'hierarchy', 'media') %in% names(x))
-  ) {
-    cat(rgbif_wrap(sprintf("Records found [%s]", x$meta$count)), "\n")
-    cat(rgbif_wrap(sprintf("Records returned [%s]", NROW(x$data))), "\n")
-    cat(rgbif_wrap(sprintf("No. unique hierarchies [%s]", length(x$hierarchy))), "\n")
-    cat(rgbif_wrap(sprintf("No. media records [%s]", length(x$media))), "\n")
-    cat(rgbif_wrap(sprintf("No. facets [%s]", length(x$facets))), "\n")
+    if (is.null(attr(x, "type"))) FALSE else attr(x, "type") == "single"
+    ) {
+    if ("meta" %in% names(x)) {
+      if ("count" %in% names(x$meta)) {
+        cat(rgbif_wrap(sprintf("Records found [%s]", x$meta$count)), "\n")
+      }
+    }
+    if ("data" %in% names(x)) {
+      cat(rgbif_wrap(sprintf("Records returned [%s]", NROW(x$data))), "\n")
+    }
+    if ("hierarchy" %in% names(x)) {
+      cat(rgbif_wrap(sprintf("No. unique hierarchies [%s]",
+                             length(x$hierarchy))), "\n")
+    }
+    if ("hierarchies" %in% names(x)) {
+      cat(rgbif_wrap(sprintf("No. unique hierarchies [%s]",
+                             length(x$hierarchies))), "\n")
+    }
+    if ("media" %in% names(x)) {
+      cat(rgbif_wrap(sprintf("No. media records [%s]", length(x$media))), "\n")
+    }
+    if ("facets" %in% names(x)) {
+      cat(rgbif_wrap(sprintf("No. facets [%s]", length(x$facets))), "\n")
+    }
+    if ("names" %in% names(x)) {
+      cat(rgbif_wrap(sprintf("No. names [%s]", length(x$names))), "\n")
+    }
     cat(rgbif_wrap(sprintf("Args [%s]", pasteargs(x))), "\n")
     if (inherits(x$data, "data.frame")) print(x$data) else cat(x$data)
   } else if (if (is.null(attr(x, "type"))) FALSE else attr(x, "type") == "many") {
@@ -18,8 +37,8 @@ print.gbif <- function(x, ...) {
       attr(x, "return") <- NULL
       print(x)
     } else {
-      cat(rgbif_wrap(sprintf("Occ. found [%s]", pastemax(x))), "\n")
-      cat(rgbif_wrap(sprintf("Occ. returned [%s]", pastemax(x, "returned"))), "\n")
+      cat(rgbif_wrap(sprintf("Records found [%s]", pastemax(x))), "\n")
+      cat(rgbif_wrap(sprintf("Records returned [%s]", pastemax(x, "returned"))), "\n")
       cat(rgbif_wrap(sprintf("No. unique hierarchies [%s]", pastemax(x, "hier"))), "\n")
       cat(rgbif_wrap(sprintf("No. media records [%s]", pastemax(x, "media"))), "\n")
       cat(rgbif_wrap(sprintf("No. facets [%s]", pastemax(x, "facets"))), "\n")
@@ -101,4 +120,3 @@ print.gbif_data <- function(x, ..., n = 10) {
     print(x)
   }
 }
-

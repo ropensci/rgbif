@@ -6,8 +6,9 @@ test_that("occ_issues", {
 
     # Parsing output by issue
     res <- occ_search(
-      geometry = "POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))",
-      limit = 50)
+      geometry = 'POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))',
+      limit = 50
+    )
 
     bb <- res %>% occ_issues(gass84)
 
@@ -57,28 +58,28 @@ test_that("occ_issues: occ_data type=many", {
     dat <- occ_data(taxonKey = c(2482598, 9362842, 2498387), limit = 30)
   }, preserve_exact_body_bytes = TRUE)
 
-  expect_is(dat, "gbif_data")
-  expect_equal(attr(dat, "type"), "many")
+    expect_is(dat, "gbif_data")
+    expect_equal(attr(dat, "type"), "many")
 
-  # remove issues
-  expect_is(occ_issues(dat, -cdround), "gbif_data")
+    # remove issues
+    expect_is(occ_issues(dat, -cdround), "gbif_data")
 
-  # keep issues
-  expect_is(occ_issues(dat, cdround), "gbif_data")
+    # keep issues
+    expect_is(occ_issues(dat, cdround), "gbif_data")
 
-  # keep and mutate=expand
-  expect_is(occ_issues(dat, cdround, mutate = "expand"), "gbif_data")
+    # keep and mutate=expand
+    expect_is(occ_issues(dat, cdround, mutate = "expand"), "gbif_data")
 
-  # keep and mutate=split_expand
-  expect_is(occ_issues(dat, cdround, mutate = "split_expand"),
-    "gbif_data")
+    # keep and mutate=split_expand
+    expect_is(occ_issues(dat, cdround, mutate = "split_expand"),
+              "gbif_data")
 
-  # works when parsing internally results in some empty data.frames
-  expect_is(occ_issues(dat, -gass84), "gbif_data")
+    # works when parsing internally results in some empty data.frames
+    expect_is(occ_issues(dat, -gass84), "gbif_data")
 
-  # internal parsing maintains data table association with original
-  res <- occ_issues(dat, -cdround)
-  expect_equal(names(dat)[1], as.character(unique(res[[1]]$data$taxonKey)))
-  expect_equal(names(dat)[2], as.character(unique(res[[2]]$data$taxonKey)))
-  expect_equal(names(dat)[3], as.character(unique(res[[3]]$data$taxonKey)))
+    # internal parsing maintains data table association with original
+    res <- occ_issues(dat, -cdround)
+    expect_equal(names(dat)[1], as.character(unique(res$taxonKey)[[1]]))
+    expect_equal(names(dat)[2], as.character(unique(res$taxonKey)[[2]]))
+    expect_equal(names(dat)[3], as.character(unique(res$taxonKey)[[3]]))
 })

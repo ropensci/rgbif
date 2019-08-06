@@ -20,7 +20,7 @@
 #' }
 
 gbif_names <- function(input, output = NULL, browse = TRUE) {
-  if (!inherits(input, "list")) stop("input should be of class list", call. = FALSE)
+  if (!inherits(input, "gbif")) stop("input should be of class gbif", call. = FALSE)
 
   input <- input$data
   elements <- gn_tolist(input)

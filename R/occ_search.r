@@ -9,25 +9,25 @@
 #' @param fields (character) Default ('all') returns all fields. 'minimal'
 #' returns just taxon name, key, latitude, and longitute. Or specify each field
 #' you want returned by name, e.g. fields = c('name','latitude','elevation').
-#' @param return One of data, hier, meta, or all. If data, a data.frame with the
-#' data. hier returns the classifications in a list for each record. meta
-#' returns the metadata for the entire call. all gives all data back in
-#' a list.
+#' @param return One of 'data', 'hier', 'meta', or 'all'. If 'data', a
+#'   data.frame with the data. 'hier' returns the classifications in a list for
+#'   each record. 'meta' returns the metadata for the entire call. 'all'
+#'   (default) gives all data back in a list.
 #' @seealso [downloads()], [occ_data()], [occ_facet()]
 #' @return An object of class `gbif`, which is a S3 class list, with
 #' slots for metadata (`meta`), the occurrence data itself (`data`),
 #' the taxonomic hierarchy data (`hier`), and media metadata
 #' (`media`).
 #' In addition, the object has attributes listing the user supplied arguments
-#' and whether it was a "single" or "many" search; that is, if you supply two
+#' and whether it was a 'single' or 'many' search; that is, if you supply two
 #' values of the `datasetKey` parameter to searches are done, and it's a
-#' "many". `meta` is a list of length four with offset, limit,
+#' 'many'. `meta` is a list of length four with offset, limit,
 #' endOfRecords and count fields. `data` is a tibble (aka data.frame). `hier`
-#' is a list of data.frame's of the unique set of taxa found, where each
+#' is a list of data.frames of the unique set of taxa found, where each
 #' data.frame is its taxonomic classification. `media` is a list of media
 #' objects, where each element holds a set of metadata about the media object.
-#' If the `return` parameter is set to something other than default you get
-#' back just the `meta`, `data`, `hier`, or `media`.
+#' If the `return` parameter is set to something other than 'all' (default), you
+#' get back just the `meta`, `data`, `hier`, or `media`.
 
 occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
   publishingCountry=NULL, hasCoordinate=NULL, typeStatus=NULL,
@@ -201,7 +201,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
     limit=limit
   )
   if (!any(sapply(params, length) > 0)) {
-    stop(sprintf("At least one of the parmaters must have a value:\n%s",
+    stop(sprintf("At least one of these parameters must have a value:\n%s",
                  possparams()),
          call. = FALSE)
   }
@@ -227,7 +227,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
 
   if (!return %in% c('meta', 'hier')) {
     if (inherits(out, "data.frame")) {
-      class(out) <- c('tbl_df', 'data.frame', 'gbif')
+      class(out) <- c('tbl_df', 'tbl', 'data.frame', 'gbif')
     } else {
       class(out) <- "gbif"
       attr(out, 'type') <- if (length(iter) == 0) "single" else "many"
@@ -237,10 +237,6 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
 }
 
 # helpers -------------------------
-parse_issues <- function(x){
-  sapply(x, function(y) list(issue = y), USE.NAMES = FALSE)
-}
-
 check_limit <- function(x){
   if (x > 1000000L) {
     stop("
@@ -257,8 +253,8 @@ check_limit <- function(x){
 }
 
 possparams <- function(){
-  "   taxonKey, scientificName, datasetKey, catalogNumber, recordedBy, geometry,
-   country, publishingCountry, recordNumber, search, institutionCode,
+  "taxonKey, scientificName, datasetKey, catalogNumber, recordedBy, geometry,
+  country, publishingCountry, recordNumber, search, institutionCode,
   collectionCode, decimalLatitude, decimalLongitude, depth, year, typeStatus,
   lastInterpreted, continent, or mediatype"
 }

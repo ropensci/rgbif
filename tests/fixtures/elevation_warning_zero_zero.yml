@@ -1,0 +1,28 @@
+http_interactions:
+- request:
+    method: get
+    uri: http://api.geonames.org/srtm3?lats=0%2C45&lngs=0%2C-120&username=<geonames_user>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/3.3 crul/0.8.0 rOpenSci(rgbif/1.3.0.9134)
+      X-USER-AGENT: r-curl/3.3 crul/0.8.0 rOpenSci(rgbif/1.3.0.9134)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Thu, 18 Jul 2019 14:56:18 GMT
+      server: Apache/2.4.6 (CentOS) mod_jk/1.2.46 OpenSSL/1.0.2k-fips
+      content-length: '25'
+    body:
+      encoding: UTF-8
+      string: |
+        net/geonames/LatLngArray
+  recorded_at: 2019-07-18 14:55:58 GMT
+  recorded_with: vcr/0.2.2, webmockr/0.3.0
