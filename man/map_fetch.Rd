@@ -108,7 +108,7 @@ Styles don't work yet, sorry, we'll try to fix it asap.
 \examples{
 \dontrun{
 if (
- requireNamespace("png", quietly = TRUE) && 
+ requireNamespace("png", quietly = TRUE) &&
  requireNamespace("raster", quietly = TRUE)
 ) {
   x <- map_fetch(taxonKey = 2480498, year = 2007:2011)
@@ -144,9 +144,9 @@ if (
   is.raw(x)
 
   # query with basisOfRecord
-  map_fetch(taxonKey = 2480498, year = 2010, 
+  map_fetch(taxonKey = 2480498, year = 2010,
     basisOfRecord = "HUMAN_OBSERVATION")
-  map_fetch(taxonKey = 2480498, year = 2010, 
+  map_fetch(taxonKey = 2480498, year = 2010,
     basisOfRecord = c("HUMAN_OBSERVATION", "LIVING_SPECIMEN"))
  }
 }
