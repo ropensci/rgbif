@@ -33,3 +33,7 @@ eg:
 
 codemeta:
 	${RSCRIPT} -e "codemetar::write_codemeta()"
+
+check:
+	${RSCRIPT} -e 'devtools::check(document = FALSE, cran = TRUE)'
+
