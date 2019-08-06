@@ -602,7 +602,7 @@ handle_issues <- function(.data, is_occ, ..., mutate = NULL) {
   # handle downloads data
   is_dload <- FALSE
   if (
-    all(c("issue", "accessRights", "accrualMethod")) %in% names(tmp) &&
+    all(c("issue", "accessRights", "accrualMethod") %in% names(tmp)) &&
     !"issues" %in% names(tmp)
   ) {
     is_dload <- TRUE
