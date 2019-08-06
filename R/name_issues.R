@@ -23,7 +23,7 @@
 #' # what do issues mean, can print whole table
 #' head(gbif_issues())
 #' # or just name related issues
-#' gbif_issues()[which(gbifissues$type %in% c("name")),]
+#' gbif_issues()[which(gbif_issues()$type %in% c("name")),]
 #' # or search for matches
 #' gbif_issues()[gbif_issues()$code %in% c('bbmn','clasna','scina'),]
 #' # compare out data to after name_issues use
