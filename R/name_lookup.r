@@ -201,7 +201,7 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
                                 'names', 'all'))
 
   if (return == 'meta') {
-    out <- tibble::as_data_frame(meta)
+    out <- tibble::as_tibble(meta)
   } else if (return == 'data') {
     out <- data
   } else if (return == 'facets') {
@@ -211,7 +211,7 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
   } else if (return == 'names') {
     out <- compact_null(vernames)
   } else if (return == 'all') {
-    out <- list(meta = tibble::as_data_frame(meta),
+    out <- list(meta = tibble::as_tibble(meta),
                 data = data,
                 facets = facetsdat,
                 hierarchies = compact_null(hierdat),

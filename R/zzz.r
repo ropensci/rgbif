@@ -637,7 +637,7 @@ handle_issues <- function(.data, is_occ, ..., mutate = NULL) {
     }
   }
 
-  tmp <- tibble::as_data_frame(tmp)
+  tmp <- tibble::as_tibble(tmp)
 
   if ("data" %in% names(.data)) {
     .data$data <- tmp
@@ -677,7 +677,7 @@ split_iss <- function(m, is_occ, is_dload) {
                       'rank', 'taxonomicStatus')
   }
   first <- if (is_dload) first_dload else first_search
-  tibble::as_data_frame(data.frame(m[, first], df, m[, !names(m) %in% first],
+  tibble::as_tibble(data.frame(m[, first], df, m[, !names(m) %in% first],
                                    stringsAsFactors = FALSE))
 }
 

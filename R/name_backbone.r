@@ -78,14 +78,14 @@ name_backbone <- function(name, rank=NULL, kingdom=NULL, phylum=NULL,
         lapply(tt$alternatives, function(x)
           lapply(x, function(x) if (length(x) == 0) NA else x)),
         use.names = TRUE, fill = TRUE)))
-    dat <- tibble::as_data_frame(
+    dat <- tibble::as_tibble(
       data.frame(tt[!names(tt) %in% c("alternatives", "note")],
                  stringsAsFactors = FALSE))
     out <- list(data = dat,
                 alternatives = alt)
     class(out) <- "gbif"
   } else {
-    out <- tibble::as_data_frame(tt[!names(tt) %in% c("alternatives", "note")])
+    out <- tibble::as_tibble(tt[!names(tt) %in% c("alternatives", "note")])
     class(out) <- c('tbl_df', 'tbl', 'data.frame', 'gbif')
   }
   # no multiple parameters possible in name_backbone
