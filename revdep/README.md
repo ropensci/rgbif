@@ -10,13 +10,13 @@
 |collate  |English_United States.1252   |
 |ctype    |English_United States.1252   |
 |tz       |Europe/Paris                 |
-|date     |2019-08-05                   |
+|date     |2019-08-07                   |
 
 # Dependencies
 
 |package      |old      |new        |<U+0394>  |
 |:------------|:--------|:----------|:--|
-|rgbif        |1.3.0    |1.3.0.9134 |*  |
+|rgbif        |1.3.0    |1.3.3.9110 |*  |
 |askpass      |NA       |1.1        |*  |
 |assertthat   |0.2.1    |0.2.1      |   |
 |backports    |NA       |1.1.4      |*  |
@@ -35,7 +35,7 @@
 |glue         |NA       |1.3.1      |*  |
 |gtable       |0.3.0    |0.3.0      |   |
 |httpcode     |0.2.0    |0.2.0      |   |
-|httr         |NA       |1.4.0      |*  |
+|httr         |NA       |1.4.1      |*  |
 |jsonlite     |1.6      |1.6        |   |
 |labeling     |0.3      |0.3        |   |
 |lazyeval     |0.2.2    |0.2.2      |   |
