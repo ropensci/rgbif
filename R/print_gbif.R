@@ -102,21 +102,23 @@ pastemax <- function(z, type='counts', n=10){
 
 #' @export
 print.gbif_data <- function(x, ..., n = 10) {
-  if (attr(x, "type") == "single") {
-    cat(rgbif_wrap(sprintf("Records found [%s]", x$meta$count)), "\n")
-    cat(rgbif_wrap(sprintf("Records returned [%s]", NROW(x$data))), "\n")
-    cat(rgbif_wrap(sprintf("Args [%s]", pasteargs(x))), "\n")
-    if (inherits(x$data, "data.frame")) print(x$data) else cat(x$data)
-  } else if (attr(x, "type") == "many") {
-    cat(rgbif_wrap(sprintf("Occ. found [%s]", pastemax(x))), "\n")
-    cat(rgbif_wrap(sprintf("Occ. returned [%s]", pastemax(x, "returned"))), "\n")
-    cat(rgbif_wrap(sprintf("Args [%s]", pasteargs(x))), "\n")
-    cat(sprintf("%s requests; First 10 rows of data from %s\n\n", length(x), substring(names(x)[1], 1, 50)))
-    if (inherits(x[[1]]$data, "data.frame")) print(x[[1]]$data) else cat(x[[1]]$data)
+  if ("type" %in% names(attributes(x))) {
+    if (attr(x, "type") == "single") {
+      cat(rgbif_wrap(sprintf("Records found [%s]", x$meta$count)), "\n")
+      cat(rgbif_wrap(sprintf("Records returned [%s]", NROW(x$data))), "\n")
+      cat(rgbif_wrap(sprintf("Args [%s]", pasteargs(x))), "\n")
+      if (inherits(x$data, "data.frame")) print(x$data) else cat(x$data)
+    } else if (attr(x, "type") == "many") {
+      cat(rgbif_wrap(sprintf("Occ. found [%s]", pastemax(x))), "\n")
+      cat(rgbif_wrap(sprintf("Occ. returned [%s]", pastemax(x, "returned"))), "\n")
+      cat(rgbif_wrap(sprintf("Args [%s]", pasteargs(x))), "\n")
+      cat(sprintf("%s requests; First 10 rows of data from %s\n\n", length(x), substring(names(x)[1], 1, 50)))
+      if (inherits(x[[1]]$data, "data.frame")) print(x[[1]]$data) else cat(x[[1]]$data)
+    }
   } else {
     if (inherits(x, "gbif_data")) x <- unclass(x)
     attr(x, "type") <- NULL
     attr(x, "return") <- NULL
-    print(x)
+    print(tibble::as_tibble(x))
   }
 }
