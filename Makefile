@@ -37,3 +37,5 @@ codemeta:
 check:
 	${RSCRIPT} -e 'devtools::check(document = FALSE, cran = TRUE)'
 
+test:
+	${RSCRIPT} -e 'devtools::test()'
