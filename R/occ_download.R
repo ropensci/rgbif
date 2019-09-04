@@ -22,6 +22,10 @@
 #' Details.
 #' @param email (character) Email address to recieve download notice done
 #' email. Required. See Details.
+#' @param key (character) the key for the predicate (used in `pred()` and
+#' `pred_multi()`)
+#' @param value the value for the predicate (used in `pred()` and
+#' `pred_multi()`)
 #' @template occ
 #' @note see [downloads] for an overview of GBIF downloads methods
 #'
@@ -134,26 +138,29 @@
 #' <http://www.gbif.org/developer/occurrence#predicates>
 #'
 #' @examples \dontrun{
-#' # occ_download("basisOfRecord = LITERATURE")
-#' # occ_download('taxonKey = 3119195')
-#' # occ_download('decimalLatitude > 50')
-#' # occ_download('elevation >= 9000')
-#' # occ_download('decimalLatitude >= 65')
-#' # occ_download("country = US")
-#' # occ_download("institutionCode = TLMF")
-#' # occ_download("catalogNumber = Bird.27847588")
+#' # occ_download(pred("basisOfRecord", "LITERATURE"))
+#' # occ_download(pred("taxonKey", 3119195), pred("elevation", 5000, ">"))
+#' # occ_download(pred("decimalLatitude", 50, ">")
+#' # occ_download(pred("elevation", 9000, ">=")
+#' # occ_download(pred('decimalLatitude", "65", ">=")
+#' # occ_download(pred("country", "US")
+#' # occ_download(pred("institutionCode", "TLMF"))
+#' # occ_download(pred("catalogNumber", "217880"))
 #' 
 #' # download format
-#' # z <- occ_download('decimalLatitude >= 75', format = "SPECIES_LIST")
+#' # z <- occ_download(pred("decimalLatitude", 75, ">="),
+#' #  format = "SPECIES_LIST")
 #'
-#' # res <- occ_download('taxonKey = 7264332', 'hasCoordinate = TRUE')
+#' # res <- occ_download(pred("taxonKey", 7264332), pred("hasCoordinate", TRUE))
 #'
 #' # pass output directly, or later, to occ_download_meta for more information
 #' # occ_download('decimalLatitude > 75') %>% occ_download_meta
 #'
 #' # Multiple queries
-#' # occ_download('decimalLatitude >= 65', 'decimalLatitude <= -65', type="or")
-#' # gg <- occ_download('depth = 80', 'taxonKey = 2343454', type="or")
+#' # occ_download(pred("decimalLatitude", 65, ">="),
+#' #  pred("decimalLatitude", -65, "<="), type="or")
+#' # gg <- occ_download(pred("depth", 80), pred("taxonKey", 2343454),
+#' #  type="or")
 #'
 #' # complex example with many predicates
 #' # shows example of how to do date ranges for both year and month
@@ -197,9 +204,15 @@
 #' # res <- occ_download(body = query, curlopts = list(verbose = TRUE))
 #'
 #' # Prepared query
-#' occ_download_prep("basisOfRecord = LITERATURE")
-#' occ_download_prep("basisOfRecord = LITERATURE", format = "SIMPLE_CSV")
-#' occ_download_prep("basisOfRecord = LITERATURE", format = "SPECIES_LIST")
+#' pred("basisOfRecord", "LITERATURE")
+#' pred("geometry", "POLYGON((-14 42, 9 38, -7 26, -14 42))")
+#' pred_multi("taxonKey", c(2977832, 2977901, 2977966, 2977835), "or")
+#' pred_multi("taxonKey", c(2977832, 2977901, 2977966, 2977835), "in")
+#' occ_download_prep(pred("basisOfRecord", "LITERATURE"))
+#' occ_download_prep(pred("basisOfRecord", "LITERATURE"), format = "SIMPLE_CSV")
+#' occ_download_prep(pred("basisOfRecord", "LITERATURE"), format = "SPECIES_LIST")
+#' occ_download_prep(pred_multi("taxonKey", c(2977832, 2977901, 2977966, 2977835), "in"))
+#' occ_download_prep(pred("geometry", "POLYGON((-14 42, 9 38, -7 26, -14 42))"))
 #' }
 occ_download <- function(..., body = NULL, type = "and", format = "DWCA",
   user = NULL, pwd = NULL, email = NULL, curlopts = list()) {
@@ -231,13 +244,54 @@ occ_download_prep <- function(..., body = NULL, type = "and", format = "DWCA",
   if (!is.null(body)) {
     req <- body
   } else {
-    req <- parse_occd(user, email, type, format, ...)
+    req <- parse_predicates(user, email, type, format, ...)
   }
   structure(list(url = url, request = req, user = user, pwd = pwd,
     email = email, format = format, curlopts = curlopts),
-  class = "occ_download_prep")
+    class = "occ_download_prep")
 }
 
+#' @export
+#' @rdname occ_download
+pred <- function(key, value, type = "=") {
+  z <- parse_pred(key, value, type)
+  structure(z, class = "occ_predicate")
+}
+
+#' @export
+#' @rdname occ_download
+pred_multi <- function(key, value, type = "or") {
+  if (!type %in% c("or", "in"))
+    stop("'type' must be one of: or, in", call. = FALSE)
+  z <- parse_pred(key, value, type)
+  structure(z, class = "occ_predicate")
+}
+
+
+#' @export
+print.occ_download <- function(x, ...) {
+  stopifnot(inherits(x, 'occ_download'))
+  cat("<<gbif download>>", "\n", sep = "")
+  cat("  Username: ", attr(x, "user"), "\n", sep = "")
+  cat("  E-mail: ", attr(x, "email"), "\n", sep = "")
+  cat("  Format: ", attr(x, "format"), "\n", sep = "")
+  cat("  Download key: ", x, "\n", sep = "")
+}
+#' @export
+print.occ_download_prep <- function(x, ...) {
+  cat("<<gbif download - prepared>>", "\n", sep = "")
+  cat("  Username: ", x$user, "\n", sep = "")
+  cat("  E-mail: ", x$email, "\n", sep = "")
+  cat("  Format: ", x$format, "\n", sep = "")
+  cat("  Request: ", gbif_make_list(x$request), "\n", sep = "")
+}
+#' @export
+print.occ_predicate <- function(x, ...) {
+  cat("<<gbif download - predicate>>", sep = "\n")
+  cat("  ", pred_cat(x), "\n", sep = "")
+}
+
+# helpers -------------------------------------------
 occ_download_exec <- function(x) {
   assert(x, "occ_download_prep")
   out <- rg_POST(x$url, req = x$req, user = x$user, pwd = x$pwd, x$curlopts)
@@ -269,64 +323,6 @@ check_inputs <- function(x) {
     x
   } else {
     jsonlite::toJSON(x)
-  }
-}
-
-parse_occd <- function(user, email, type, format, ...) {
-  args <- list(...)
-  keyval <- lapply(args, parse_args, type1 = type)
-
-  if (length(keyval) > 1 ||
-    length(keyval) == 1 && "predicates" %in% names(keyval[[1]])
-  ) {
-    list(creator = unbox(user),
-         notification_address = email,
-         format = unbox(format),
-         predicate = list(
-           type = unbox(type),
-           predicates = {
-             lapply(keyval, function(z) {
-               if (z$type == "within" && z$key == "GEOMETRY") {
-                 z$key <- NULL
-                 names(z)[2] <- "geometry"
-                 z
-               } else {
-                 z
-               }
-             })
-           }
-         )
-    )
-  } else {
-    if (type == "within" || "within" %in% sapply(keyval, "[[", "type")) {
-      tmp <- list(creator = unbox(user),
-                  notification_address = email,
-                  format = unbox(format),
-                  predicate = list(
-                    type = keyval[[1]]$type,
-                    value = keyval[[1]]$value
-                  )
-      )
-      names(tmp$predicate)[2] <- tolower(keyval[[1]]$key)
-      tmp
-    } else if (type == "in") {
-      list(
-        creator = unbox(user),
-        notification_address = email,
-        format = unbox(format),
-        predicate = keyval[[1]]
-      )
-    } else {
-      list(creator = unbox(user),
-           notification_address = email,
-           format = unbox(format),
-           predicate = list(
-             type = keyval[[1]]$type,
-             key = keyval[[1]]$key,
-             value = keyval[[1]]$value
-           )
-      )
-    }
   }
 }
 
@@ -363,68 +359,13 @@ process_keyval <- function(args, type) {
   out
 }
 
-#' @export
-print.occ_download <- function(x, ...) {
-  stopifnot(inherits(x, 'occ_download'))
-  cat("<<gbif download>>", "\n", sep = "")
-  cat("  Username: ", attr(x, "user"), "\n", sep = "")
-  cat("  E-mail: ", attr(x, "email"), "\n", sep = "")
-  cat("  Format: ", attr(x, "format"), "\n", sep = "")
-  cat("  Download key: ", x, "\n", sep = "")
-}
-
-#' @export
-print.occ_download_prep <- function(x, ...) {
-  cat("<<gbif download - prepared>>", "\n", sep = "")
-  cat("  Username: ", x$user, "\n", sep = "")
-  cat("  E-mail: ", x$email, "\n", sep = "")
-  cat("  Format: ", x$format, "\n", sep = "")
-  cat("  Request: ", gbif_make_list(x$request), "\n", sep = "")
-}
-
-parse_args <- function(x, type1 = "and") {
-  if (!all(vapply(x, is.character, logical(1)))) {
-    stop("all inputs to `...` of occ_download must be character\n",
-      "  see examples; as an alternative, see the `body` param",
-      call. = FALSE)
-  }
-  key <- key_lkup[[ strextract(x, "[A-Za-z]+") ]]
-  type <- operator_lkup[[ strtrim(strextract(x, paste0(operators_regex,
-                                                       collapse = "|"))) ]]
-  loc <- regexpr(paste0(operators_regex, collapse = "|"), x)
-  value <- strtrim(
-    substring(x, loc + attr(loc, "match.length"), nchar(x))
-  )
-  if (
-    grepl(",", value) &&
-    !grepl("polygon|multipolygon|linestring|multilinestring|point|mulitpoint",
-           value, ignore.case = TRUE) &&
-    type1 != "in"
-  ) {
-    value <- strsplit(value, ",")[[1]]
-    out <- list(
-      type = unbox("or"), predicates = lapply(value, function(z) {
-        list(type = unbox("equals"), key = unbox(key), value = unbox(z))
-      })
-    )
-    return(out)
-  }
-  if (type1 == "in") {
-    list(type = unbox("in"), key = unbox(key), values = strsplit(value, ",")[[1]])
-  } else {
-    list(type = unbox(type), key = unbox(key), value = unbox(value))
-  }
-}
-
-operators_regex <- c("=", "\\&", "<", "<=", ">", ">=", "\\!", "\\sin\\s",
-                     "\\swithin\\s", "\\slike\\s", "\\|")
-
-operator_lkup <- list(`=` = 'equals', `&` = 'and', `|` = 'or',
+operators_regex <- c("=", "\\&", "and", "<", "<=", ">", ">=", "\\!", "in",
+                     "within", "like", "\\|", "or")
+operator_lkup <- list(`=` = 'equals', `&` = 'and', 'and' = 'and',
                       `<` = 'lessThan', `<=` = 'lessThanOrEquals',
                       `>` = 'greaterThan', `>=` = 'greaterThanOrEquals',
                       `!` = 'not', 'in' = 'in', 'within' = 'within',
-                      'like' = 'like')
-
+                      'like' = 'like', `|` = 'or', "or" = "or")
 key_lkup <- list(taxonKey='TAXON_KEY', scientificName='SCIENTIFIC_NAME',
     country='COUNTRY', publishingCountry='PUBLISHING_COUNTRY',
     hasCoordinate='HAS_COORDINATE', hasGeospatialIssue='HAS_GEOSPATIAL_ISSUE',
@@ -437,3 +378,77 @@ key_lkup <- list(taxonKey='TAXON_KEY', scientificName='SCIENTIFIC_NAME',
     decimalLongitude='DECIMAL_LONGITUDE', elevation='ELEVATION', depth='DEPTH',
     institutionCode='INSTITUTION_CODE', collectionCode='COLLECTION_CODE',
     issue='ISSUE', mediatype='MEDIA_TYPE', recordedBy='RECORDED_BY')
+
+parse_pred <- function(key, value, type = "and") {
+  assert(key, "character")
+  assert(type, "character")
+
+  key <- key_lkup[[key]]
+  if (is.null(key))
+    stop("'key' not in acceptable set of keys; see ?occ_download",
+      call.=FALSE)
+  
+  if (!any(operators_regex %in% type))
+    stop("'type' not in acceptable set of types; see param def. 'type'",
+      call.=FALSE)
+  type <- operator_lkup[ operators_regex %in% type ][[1]]
+  
+  if (
+    is.character(value) &&
+    grepl("polygon|multipolygon|linestring|multilinestring|point|mulitpoint",
+           value, ignore.case = TRUE)
+  ) {
+    list(type = "within", geometry = unbox(as.character(value)))
+  } else if (type == "in") {
+    list(type = unbox("in"), key = unbox(key), values = as.character(value))
+  } else if (type == "or") {
+    list(type = unbox("or"), predicates = lapply(value, function(w) 
+      list(type = unbox("equals"), key = unbox(key), value = as.character(w))))
+  } else {
+    list(type = unbox(type), key = unbox(key), value = unbox(as.character(value)))
+  }
+}
+pred_cat <- function(x) {
+  if ("predicates" %in% names(x)) {
+    cat("type: or", sep = "\n")
+    for (i in seq_along(x$predicates)) {
+      z <- x$predicates[[i]]
+      cat(sprintf("  > type: %s, key: %s, value(s): %s",
+        z$type, z$key, z$value), sep = "\n")
+    }
+  } else {
+    sprintf(
+      "> type: %s, key: %s, value(s): %s",
+      x$type,
+      if ("geometry" %in% names(x)) "geometry" else x$key,
+      if ("geometry" %in% names(x)) {
+        x$geometry
+      } else {
+        zz <- x$value %||% x$values
+        if (!is.null(zz)) paste(zz, collapse = ",") else zz
+      }
+    )
+  }
+}
+parse_predicates <- function(user, email, type, format, ...) {
+  preds <- list(...)
+  clzzs <- vapply(preds, function(z) inherits(z, "occ_predicate"), logical(1))
+  if (!all(clzzs)) 
+    stop("all objects must be of class occ_predicate; see ?occ_download",
+      call. = FALSE)
+  payload <- list(
+    creator = unbox(user),
+    notification_address = email,
+    format = unbox(format),
+    predicate = list()
+  )
+  if (any(vapply(preds, function(w) "predicates" %in% names(w), logical(1)))) {
+    payload$predicate <- list(unclass(preds[[1]]))
+  } else {
+    payload$predicate <- list(
+      type = unbox(type),
+      predicates = lapply(preds, unclass)
+    )
+  }
+  return(payload)
+}

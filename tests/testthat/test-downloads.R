@@ -51,16 +51,16 @@ test_that("GbifQueue works with occ_download_prep inputs", {
   skip_on_cran()
 
   z <- occ_download_prep(
-    "basisOfRecord = HUMAN_OBSERVATION,OBSERVATION",
-    "hasCoordinate = true",
-    "hasGeospatialIssue = false",
-    "year = 1993",
+    pred_multi("basisOfRecord", c("HUMAN_OBSERVATION", "OBSERVATION"), "in"),
+    pred("hasCoordinate", TRUE),
+    pred("hasGeospatialIssue", FALSE),
+    pred("year", 1993),
     user = "foo", pwd = "bar", email = "foo@bar.com"
   )
   zz <- occ_download_prep(
-    "basisOfRecord = HUMAN_OBSERVATION",
-    "hasGeospatialIssue = true",
-    "year = 2003",
+    pred("basisOfRecord", "HUMAN_OBSERVATION"),
+    pred("hasGeospatialIssue", TRUE),
+    pred("year", 2003),
     user = "foo", pwd = "bar", email = "foo@bar.com"
   )
   x <- GbifQueue$new(.list = list(z, zz))
@@ -94,7 +94,7 @@ test_that("DownReq fails well", {
 test_that("DownReq works with occ_download_prep inputs", {
   skip_on_cran()
 
-  res <- DownReq$new(occ_download_prep("basisOfRecord = LITERATURE",
+  res <- DownReq$new(occ_download_prep(pred("basisOfRecord", "LITERATURE"),
     user = "foo", pwd = "bar", email = "foo@bar.com"))
 
   expect_is(res, "DownReq")
@@ -109,12 +109,9 @@ test_that("occ_download fails well when user does not give strings as inputs to 
   skip_on_cran()
 
   expect_error(
-    occ_download(taxonKey = 5039705, hasCoordinate = T, basisOfRecord = "Preserved_Specimen"),
-    "all inputs to `...` of occ_download must be character"
-  )
-  expect_error(
-    occ_download(taxonKey = 5039705, hasCoordinate = T, basisOfRecord = "Preserved_Specimen"),
-    "see examples; as an alternative, see the `body` param"
+    occ_download(taxonKey = 5039705, hasCoordinate = T,
+      basisOfRecord = "Preserved_Specimen"),
+    "all objects must be of class occ_predicate"
   )
 })
 
@@ -122,14 +119,15 @@ test_that("occ_download fails well when user does not give strings as inputs to 
 test_that("type in works", {
   skip_on_cran()
 
-  z <- occ_download_prep("taxonKey = 2480946,5229208", type = "in", format = "SIMPLE_CSV")
+  z <- occ_download_prep(pred_multi("taxonKey", c(2480946, 5229208), type = "in"),
+    format = "SIMPLE_CSV")
 
   expect_is(z, "occ_download_prep")
   # list has names
   expect_named(z$request$predicate)
   # right type
-  expect_equal(unclass(z$request$predicate$type), "in")
+  expect_equal(unclass(z$request$predicate$type), "and")
   # a vector of length two for each thing passed in
-  expect_equal(z$request$predicate$values, c("2480946", "5229208"))
+  expect_equal(z$request$predicate$predicates[[1]]$values, c("2480946", "5229208"))
 })
 

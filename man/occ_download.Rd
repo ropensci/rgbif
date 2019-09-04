@@ -3,6 +3,8 @@
 \name{occ_download}
 \alias{occ_download}
 \alias{occ_download_prep}
+\alias{pred}
+\alias{pred_multi}
 \title{Spin up a download request for GBIF occurrence data.}
 \usage{
 occ_download(..., body = NULL, type = "and", format = "DWCA",
@@ -10,6 +12,10 @@ occ_download(..., body = NULL, type = "and", format = "DWCA",
 
 occ_download_prep(..., body = NULL, type = "and", format = "DWCA",
   user = NULL, pwd = NULL, email = NULL, curlopts = list())
+
+pred(key, value, type = "=")
+
+pred_multi(key, value, type = "or")
 }
 \arguments{
 \item{...}{One or more of query arguments to kick of a download job.
@@ -42,6 +48,12 @@ email. Required. See Details.}
 \item{curlopts}{list of named curl options passed on to
 \code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
 for curl options}
+
+\item{key}{(character) the key for the predicate (used in \code{pred()} and
+\code{pred_multi()})}
+
+\item{value}{the value for the predicate (used in \code{pred()} and
+\code{pred_multi()})}
 }
 \description{
 Spin up a download request for GBIF occurrence data.
@@ -162,26 +174,29 @@ error on GBIF's side and you'll have to split your query into a few.
 
 \examples{
 \dontrun{
-# occ_download("basisOfRecord = LITERATURE")
-# occ_download('taxonKey = 3119195')
-# occ_download('decimalLatitude > 50')
-# occ_download('elevation >= 9000')
-# occ_download('decimalLatitude >= 65')
-# occ_download("country = US")
-# occ_download("institutionCode = TLMF")
-# occ_download("catalogNumber = Bird.27847588")
+# occ_download(pred("basisOfRecord", "LITERATURE"))
+# occ_download(pred("taxonKey", 3119195), pred("elevation", 5000, ">"))
+# occ_download(pred("decimalLatitude", 50, ">")
+# occ_download(pred("elevation", 9000, ">=")
+# occ_download(pred('decimalLatitude", "65", ">=")
+# occ_download(pred("country", "US")
+# occ_download(pred("institutionCode", "TLMF"))
+# occ_download(pred("catalogNumber", "217880"))
 
 # download format
-# z <- occ_download('decimalLatitude >= 75', format = "SPECIES_LIST")
+# z <- occ_download(pred("decimalLatitude", 75, ">="),
+#  format = "SPECIES_LIST")
 
-# res <- occ_download('taxonKey = 7264332', 'hasCoordinate = TRUE')
+# res <- occ_download(pred("taxonKey", 7264332), pred("hasCoordinate", TRUE))
 
 # pass output directly, or later, to occ_download_meta for more information
 # occ_download('decimalLatitude > 75') \%>\% occ_download_meta
 
 # Multiple queries
-# occ_download('decimalLatitude >= 65', 'decimalLatitude <= -65', type="or")
-# gg <- occ_download('depth = 80', 'taxonKey = 2343454', type="or")
+# occ_download(pred("decimalLatitude", 65, ">="),
+#  pred("decimalLatitude", -65, "<="), type="or")
+# gg <- occ_download(pred("depth", 80), pred("taxonKey", 2343454),
+#  type="or")
 
 # complex example with many predicates
 # shows example of how to do date ranges for both year and month
@@ -225,9 +240,15 @@ query <- list(
 # res <- occ_download(body = query, curlopts = list(verbose = TRUE))
 
 # Prepared query
-occ_download_prep("basisOfRecord = LITERATURE")
-occ_download_prep("basisOfRecord = LITERATURE", format = "SIMPLE_CSV")
-occ_download_prep("basisOfRecord = LITERATURE", format = "SPECIES_LIST")
+pred("basisOfRecord", "LITERATURE")
+pred("geometry", "POLYGON((-14 42, 9 38, -7 26, -14 42))")
+pred_multi("taxonKey", c(2977832, 2977901, 2977966, 2977835), "or")
+pred_multi("taxonKey", c(2977832, 2977901, 2977966, 2977835), "in")
+occ_download_prep(pred("basisOfRecord", "LITERATURE"))
+occ_download_prep(pred("basisOfRecord", "LITERATURE"), format = "SIMPLE_CSV")
+occ_download_prep(pred("basisOfRecord", "LITERATURE"), format = "SPECIES_LIST")
+occ_download_prep(pred_multi("taxonKey", c(2977832, 2977901, 2977966, 2977835), "in"))
+occ_download_prep(pred("geometry", "POLYGON((-14 42, 9 38, -7 26, -14 42))"))
 }
 }
 \references{
