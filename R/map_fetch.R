@@ -13,9 +13,9 @@
 #'
 #' @param source (character) Either `density` for fast, precalculated tiles,
 #' or `adhoc` for any search. Default: `density`
-#' @param x (integer) the zoom. Default: 0
-#' @param y (integer) the column. Default: 0
-#' @param z (integer) the row. Default: 0
+#' @param x (integer) the column. Default: 0
+#' @param y (integer) the row. Default: 0
+#' @param z (integer) the zoom. Default: 0
 #' @param format (character) The data format, one of:
 #'
 #' - `.mvt` for a vector tile
