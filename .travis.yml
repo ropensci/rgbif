@@ -29,6 +29,8 @@ addons:
       - libgdal-dev
       - netcdf-bin
       - libprotobuf-dev
+      - libprotoc-dev
+      - protobuf-compiler
 
 after_success:
 - if [[ "${R_CODECOV}" ]]; then R -e 'covr::codecov()'; fi
