@@ -48,8 +48,11 @@ Suggests:
     rgeos,
     png,
     raster,
+    protolite (>= 1.9.9000),
+    sf,
     vcr
 RoxygenNote: 6.1.1
+Remotes: jeroen/protolite
 X-schema.org-applicationCategory: Biodiversity
 X-schema.org-keywords: GBIF, specimens, API, web-services, occurrences, species, taxonomy
 X-schema.org-isPartOf: https://ropensci.org
