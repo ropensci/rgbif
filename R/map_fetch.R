@@ -146,14 +146,22 @@ map_fetch <- function(
   ...
   ) {
 
-  check_for_a_pkg("png")
-  check_for_a_pkg("raster")
+  # check format && check required pkgs
+  assert(format, "character")
+  stopifnot(format %in% c('.mvt', '@Hx.png', '@1x.png',
+    '@2x.png', '@3x.png', '@4x.png'))
+  if (!grepl("mvt", format)) {
+    check_for_a_pkg("png")
+    check_for_a_pkg("raster")
+  } else {
+    check_for_a_pkg("protolite")
+    check_for_a_pkg("sf")
+  }
 
   assert(source, "character")
   assert(x, c('numeric', 'integer'))
   assert(y, c('numeric', 'integer'))
   assert(z, c('numeric', 'integer'))
-  assert(format, "character")
   assert(srs, "character")
   assert(bin, "character")
   assert(hexPerTile, c('numeric', 'integer'))
@@ -176,8 +184,6 @@ map_fetch <- function(
 
   # Check input ---------------------------------------------------------------
   stopifnot(source %in% c('density', 'adhoc'))
-  stopifnot(format %in% c('.mvt', '@Hx.png', '@1x.png',
-    '@2x.png', '@3x.png', '@4x.png'))
   stopifnot(srs %in% c('EPSG:3857', 'EPSG:4326', 'EPSG:3575', 'EPSG:3031'))
 
   if (!is.null(squareSize)) {
@@ -230,7 +236,7 @@ map_fetch <- function(
     raster::crs(map) <- crs_string(srs)
     return(map)
   } else {
-    res$content
+    protolite::read_mvt_sf(res$content, zxy = c(z, x, y))
   }
 }
 
