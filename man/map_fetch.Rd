@@ -15,11 +15,11 @@ map_fetch(source = "density", x = 0, y = 0, z = 0,
 \item{source}{(character) Either \code{density} for fast, precalculated tiles,
 or \code{adhoc} for any search. Default: \code{density}}
 
-\item{x}{(integer) the zoom. Default: 0}
+\item{x}{(integer) the column. Default: 0}
 
-\item{y}{(integer) the column. Default: 0}
+\item{y}{(integer) the row. Default: 0}
 
-\item{z}{(integer) the row. Default: 0}
+\item{z}{(integer) the zoom. Default: 0}
 
 \item{format}{(character) The data format, one of:
 \itemize{
