@@ -13,3 +13,4 @@ revdep/checks
 revdep/library
 gbifissues.txt
 *.Rproj
+inst/ignore/mvt-test.R
