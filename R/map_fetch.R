@@ -206,8 +206,9 @@ map_fetch <- function(
       year <- paste0(c(min(year), max(year)), collapse = ",")
     }
   }
-
-  query <- rgbif_compact(list(srs = srs, taxonKey = taxonKey,
+  
+  input_srs <- ifelse(grepl("mvt", format), "EPSG:3857", srs)
+  query <- rgbif_compact(list(srs = input_srs, taxonKey = taxonKey,
     datasetKey = datasetKey, country, publishingOrg = publishingOrg,
     publishingCountry = publishingCountry, year = year,
     bin = bin, squareSize = squareSize, hexPerTile = hexPerTile,
@@ -235,7 +236,8 @@ map_fetch <- function(
     raster::crs(map) <- crs_string(srs)
     return(map)
   } else {
-    protolite::read_mvt_sf(res$content, zxy = c(z, x, y))
+    crs <- as.integer(gsub('EPSG:', "", srs))
+    protolite::read_mvt_sf(res$content, zxy = c(z, x, y), crs = crs)
   }
 }
 
