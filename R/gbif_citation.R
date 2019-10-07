@@ -18,6 +18,19 @@
 #' @examples \dontrun{
 #' res1 <- occ_search(taxonKey=9206251, limit=2)
 #' (xx <- gbif_citation(res1))
+#' 
+#' # each individual citation object is a list
+#' ## rights and/or citation may be NULL
+#' xx[[1]]
+#' xx[[1]]$rights
+#' xx[[1]]$citation
+#' xx[[1]]$citation$title
+#' xx[[1]]$citation$text
+#' xx[[1]]$citation$accessed
+#' xx[[1]]$citation$citation
+#' 
+#' ## access many citations
+#' unlist(lapply(xx, "[[", c("citation", "citation")))
 #'
 #' res2 <- occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a',
 #'  return='data', limit=20)
