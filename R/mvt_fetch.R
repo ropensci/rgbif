@@ -1,11 +1,11 @@
-#' @title Fetch aggregated density maps of GBIF occurrences
+#' @title Fetch Map Vector Tiles (MVT)
 #'
 #' @export
 #'
 #' @description This function is a wrapper for the GBIF mapping api version 2.0.
 #' The mapping API is a web map tile service making it straightforward to
 #' visualize GBIF content on interactive maps, and overlay content from other
-#' sources. It returns tile maps with number of
+#' sources. It returns maps vector tiles with number of
 #' GBIF records per area unit that can be used in a variety of ways, for example
 #' in interactive leaflet web maps. Map details are specified by a number of
 #' query parameters, some of them optional. Full documentation of the GBIF
@@ -16,15 +16,8 @@
 #' @param x (integer) the column. Default: 0
 #' @param y (integer) the row. Default: 0
 #' @param z (integer) the zoom. Default: 0
-#' @param format (character) The data format, one of:
-#'
-#' - `@Hx.png` for a 256px raster tile
-#' - `@1x.png` for a 512px raster tile (the default)
-#' - `@2x.png` for a 1024px raster tile
-#' - `@3x.png` for a 2048px raster tile
-#' - `@4x.png` for a 4096px raster tile
-#'
-#' @param srs (character) Spatial reference system. One of:
+#' @param srs (character) Spatial reference system for the output (input srs for mvt
+#' from GBIF is always `EPSG:3857`). One of:
 #'
 #' - `EPSG:3857` (Web Mercator)
 #' - `EPSG:4326` (WGS84 plate care?)
@@ -60,7 +53,7 @@
 #' "LITERATURE", "UNKNOWN")`. optional
 #' @param ... curl options passed on to [crul::HttpClient]
 #'
-#' @return an object of class `RasterLayer`
+#' @return an sf object
 #'
 #' @details This function uses the arguments passed on to generate a query
 #' to the GBIF web map API. The API returns a web tile object as png that is
@@ -72,58 +65,52 @@
 #'
 #' We add extent and set the projection for the output. You can reproject
 #' after retrieving the output.
-#'
-#' @note Styles don't work yet, sorry, we'll try to fix it asap.
-#'
-#' @author Laurens Geffert \email{laurensgeffert@@gmail.com}
 #' @references https://www.gbif.org/developer/maps
-#' @seealso [mvt_fetch()]
-#' @keywords web map, GBIF
+#' @seealso [map_fetch()]
+#' @keywords web map, web tile, GBIF
 #' @examples \dontrun{
 #' if (
-#'  requireNamespace("png", quietly = TRUE) &&
-#'  requireNamespace("raster", quietly = TRUE)
+#'  requireNamespace("sf", quietly = TRUE) &&
+#'  requireNamespace("prolite", quietly = TRUE)
 #' ) {
-#'   x <- map_fetch(taxonKey = 2480498, year = 2007:2011)
+#'   x <- mvt_fetch(taxonKey = 2480498, year = 2007:2011)
 #'   x
-#'   # gives a RasterLayer object
+#'   
+#'   # gives an sf object
 #'   class(x)
+#'   
 #'   # visualize
-#'   library(raster)
-#'   plot(x)
+#'   mapview::mapview(x)
 #'
 #'   # different srs
 #'   ## 3857
-#'   y <- map_fetch(taxonKey = 2480498, year = 2010, srs = "EPSG:3857")
-#'   plot(y)
+#'   y <- mvt_fetch(taxonKey = 2480498, year = 2010, srs = "EPSG:3857")
+#'   mapview::mapview(y)
 #'   ## 3031
-#'   z <- map_fetch(taxonKey = 2480498, year = 2010, srs = "EPSG:3031", verbose = TRUE)
-#'   plot(z)
+#'   z <- mvt_fetch(taxonKey = 2480498, year = 2010, srs = "EPSG:3031", verbose = TRUE)
+#'   mapview::mapview(z)
 #'   # 3575
-#'   z <- map_fetch(taxonKey = 2480498, year = 2010, srs = "EPSG:3575")
-#'   plot(z)
+#'   z <- mvt_fetch(taxonKey = 2480498, year = 2010, srs = "EPSG:3575")
+#'   mapview::mapview(z)
 #'
 #'   # bin
-#'   plot(map_fetch(taxonKey = 212, year = 1998, bin = "hex",
-#'      hexPerTile = 30, style = "classic-noborder.poly"))
-#'
-#'   # styles
-#'   plot(map_fetch(taxonKey = 2480498, style = "purpleYellow.point"))
+#'   x <- mvt_fetch(taxonKey = 212, year = 1998, bin = "hex",
+#'      hexPerTile = 30, style = "classic-noborder.poly")
+#'   mapview::mapview(x)
 #'
 #'   # query with basisOfRecord
-#'   map_fetch(taxonKey = 2480498, year = 2010,
+#'   mvt_fetch(taxonKey = 2480498, year = 2010,
 #'     basisOfRecord = "HUMAN_OBSERVATION")
-#'   map_fetch(taxonKey = 2480498, year = 2010,
+#'   mvt_fetch(taxonKey = 2480498, year = 2010,
 #'     basisOfRecord = c("HUMAN_OBSERVATION", "LIVING_SPECIMEN"))
 #'  }
 #' }
 
-map_fetch <- function(
+mvt_fetch <- function(
   source = 'density',
   x = 0,
   y = 0,
   z = 0,
-  format = '@1x.png',
   srs = 'EPSG:4326',
   bin = NULL,
   hexPerTile = NULL,
@@ -139,11 +126,8 @@ map_fetch <- function(
   ...
   ) {
 
-  assert(format, "character")
-  stopifnot(format %in% c('@Hx.png', '@1x.png',
-    '@2x.png', '@3x.png', '@4x.png'))
-  check_for_a_pkg("png")
-  check_for_a_pkg("raster")
+  check_for_a_pkg("protolite")
+  check_for_a_pkg("sf")
 
   assert(source, "character")
   assert(x, c('numeric', 'integer'))
@@ -161,13 +145,6 @@ map_fetch <- function(
   assert(publishingCountry, "character")
   assert(year, c('numeric', 'integer'))
   assert(basisOfRecord, "character")
-
-  calls <- names(sapply(match.call(), deparse))[-1]
-  calls_vec <- c("search","id") %in% calls
-  if (any(calls_vec)) {
-    stop("The parameters search and id have been removed; see the docs",
-      call. = FALSE)
-  }
 
   # Check input ---------------------------------------------------------------
   stopifnot(source %in% c('density', 'adhoc'))
@@ -195,7 +172,7 @@ map_fetch <- function(
     }
   }
   
-  query <- rgbif_compact(list(srs = srs, taxonKey = taxonKey,
+  query <- rgbif_compact(list(srs = "EPSG:3857", taxonKey = taxonKey,
     datasetKey = datasetKey, country, publishingOrg = publishingOrg,
     publishingCountry = publishingCountry, year = year,
     bin = bin, squareSize = squareSize, hexPerTile = hexPerTile,
@@ -213,70 +190,9 @@ map_fetch <- function(
     query <- c(query, bs)
   }
 
-  path <- file.path('v2/map/occurrence', source, z, x, paste0(y, format))
+  path <- file.path('v2/map/occurrence', source, z, x, paste0(y, ".mvt"))
   cli <- crul::HttpClient$new(url = 'https://api.gbif.org', opts = list(...))
   res <- cli$get(path, query = query)
-  map_png <- png::readPNG(res$content)
-  map <- raster::raster(map_png[,,2])
-  raster::extent(map) <- switch_extent(srs)
-  raster::crs(map) <- crs_string(srs)
-  return(map)
+  crs <- as.integer(gsub('EPSG:', "", srs))
+  protolite::read_mvt_sf(res$content, zxy = c(z, x, y), crs = crs)$occurrence
 }
-
-crs_string <- function(x) {
-  strg <- switch(
-    x,
-    'EPSG:3857' = '+init=epsg:3857',
-    'EPSG:4326' = '+init=epsg:4326',
-    'EPSG:3575' = '+init=epsg:3575',
-    'EPSG:3031' = '+init=epsg:3031'
-  )
-  sp::CRS(strg)
-}
-
-switch_extent <- function(x) {
-  switch(
-    x,
-    'EPSG:3857' = raster::extent(-20037508, 20037508, -20037508, 20037508),
-    'EPSG:4326' = raster::extent(-180, 180, -90, 90),
-    'EPSG:3575' = raster::extent(-6371007.2 * sqrt(2), 6371007.2 * sqrt(2),
-      -6371007.2 * sqrt(2), 6371007.2 * sqrt(2)),
-    'EPSG:3031' = raster::extent(-12367396.2185, 12367396.2185,
-      -12367396.2185, 12367396.2185)
-  )
-}
-
-map_styles <- c(
-  'purpleHeat.point',
-  'blueHeat.point',
-  'orangeHeat.point',
-  'greenHeat.point',
-  'classic.point',
-  'purpleYellow.point',
-  'fire.point',
-  'glacier.point',
-  'classic.poly',
-  'classic-noborder.poly',
-  'purpleYellow.poly',
-  'purpleYellow-noborder.poly',
-  'green.poly',
-  'green2.poly',
-  'iNaturalist.poly',
-  'purpleWhite.poly',
-  'red.poly',
-  'blue.marker',
-  'orange.marker',
-  'outline.poly'
-)
-
-basis_of_record_values <- c(
-  'OBSERVATION',
-  'HUMAN_OBSERVATION',
-  'MACHINE_OBSERVATION',
-  'MATERIAL_SAMPLE',
-  'PRESERVED_SPECIMEN',
-  'FOSSIL_SPECIMEN',
-  'LIVING_SPECIMEN',
-  'LITERATURE',
-  'UNKNOWN'
-)
