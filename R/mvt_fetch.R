@@ -71,7 +71,7 @@
 #' @examples \dontrun{
 #' if (
 #'  requireNamespace("sf", quietly = TRUE) &&
-#'  requireNamespace("prolite", quietly = TRUE)
+#'  requireNamespace("protolite", quietly = TRUE)
 #' ) {
 #'   x <- mvt_fetch(taxonKey = 2480498, year = 2007:2011)
 #'   x
