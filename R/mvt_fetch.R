@@ -79,24 +79,21 @@
 #'   # gives an sf object
 #'   class(x)
 #'   
-#'   # visualize
-#'   mapview::mapview(x)
-#'
 #'   # different srs
 #'   ## 3857
 #'   y <- mvt_fetch(taxonKey = 2480498, year = 2010, srs = "EPSG:3857")
-#'   mapview::mapview(y)
+#'   y
 #'   ## 3031
 #'   z <- mvt_fetch(taxonKey = 2480498, year = 2010, srs = "EPSG:3031", verbose = TRUE)
-#'   mapview::mapview(z)
+#'   z
 #'   # 3575
 #'   z <- mvt_fetch(taxonKey = 2480498, year = 2010, srs = "EPSG:3575")
-#'   mapview::mapview(z)
+#'   z
 #'
 #'   # bin
 #'   x <- mvt_fetch(taxonKey = 212, year = 1998, bin = "hex",
 #'      hexPerTile = 30, style = "classic-noborder.poly")
-#'   mapview::mapview(x)
+#'   x
 #'
 #'   # query with basisOfRecord
 #'   mvt_fetch(taxonKey = 2480498, year = 2010,
