@@ -383,8 +383,11 @@ print.occ_download_prep <- function(x, ...) {
 }
 
 parse_args <- function(x, type1 = "and") {
-  if (!all(vapply(x, is.character, logical(1)))) {
-    stop("all inputs to `...` of occ_download must be character\n",
+  if (
+    !all(vapply(x, is.character, logical(1))) ||
+    length(x) > 1
+  ) {
+    stop("all inputs to `...` of occ_download must be character & length=1\n",
       "  see examples; as an alternative, see the `body` param",
       call. = FALSE)
   }
