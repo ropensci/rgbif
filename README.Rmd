@@ -24,10 +24,10 @@ knitr::opts_chunk$set(
 
 To get started, see:
 
-* [rgbif vignette](https://ropensci.github.io/rgbif/articles/rgbif.html): an introduction to the package's main functionalities.
-* [Function reference](https://ropensci.github.io/rgbif/reference/index.html): an overview of all `rgbif` functions.
-* [Articles](https://ropensci.github.io/rgbif/articles/index.html): vignettes/tutorials on how to download data, clean data, and work with taxonomic names.
-* [Occurrence manual](https://ropensci.github.io/occurrence-manual/): a book covering a suite of R packages used for working with biological occurrence data.
+* [rgbif vignette](https://docs.ropensci.org/rgbif/articles/rgbif.html): an introduction to the package's main functionalities.
+* [Function reference](https://docs.ropensci.org/rgbif/reference/index.html): an overview of all `rgbif` functions.
+* [Articles](https://docs.ropensci.org/rgbif/articles/index.html): vignettes/tutorials on how to download data, clean data, and work with taxonomic names.
+* [Occurrence manual](https://docs.ropensci.org/occurrence-manual/): a book covering a suite of R packages used for working with biological occurrence data.
 
 Check out the `rgbif` [paper][] for more information on this package and the sister [Python][pygbif] and [Ruby][gbifrb] clients.
 
@@ -152,7 +152,8 @@ Collected via GitHub Issues, this list honors all contributors in alphabetical o
 * Please [report any issues or bugs](https://github.com/ropensci/rgbif/issues).
 * License: MIT
 * Get citation information for `rgbif` in R doing `citation(package = 'rgbif')`
-* Please note that this project is released with a [Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+* Please note that this project is released with a [Contributor Code of Conduct][coc].
+By participating in this project you agree to abide by its terms.
 
 - - -
 
@@ -167,3 +168,4 @@ This package is part of a richer suite called [spocc - Species Occurrence Data](
 [GBIF]: https://www.gbif.org/
 [pygbif]: https://github.com/sckott/pygbif
 [gbifrb]: https://github.com/sckott/gbifrb
+[coc]: https://github.com/ropensci/rgbif/blob/master/CODE_OF_CONDUCT.md
