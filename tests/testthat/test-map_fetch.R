@@ -1,12 +1,11 @@
 context("map_fetch")
 
-test_that("map_fetch", {
+test_that("map_fetch - png", {
   skip_on_cran()
 
   x <- map_fetch(taxonKey = 3118771, year = 2010)
   expect_is(x, "RasterLayer")
 })
-
 
 test_that("map_fetch fails well", {
   skip_on_cran()

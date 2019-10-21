@@ -5,7 +5,7 @@
 #'
 #' @section About:
 #'
-#' This package gives you access to data from GBIF <http://www.gbif.org/>
+#' This package gives you access to data from GBIF <https://www.gbif.org/>
 #' via their API.
 #'
 #' @section A note about the old GBIF API:
@@ -17,15 +17,15 @@
 #'
 #' @section Documentation for the GBIF API:
 #'
-#' - summary <http://www.gbif.org/developer/summary> - Summary of
+#' - summary <https://www.gbif.org/developer/summary> - Summary of
 #' the GBIF API
-#' - registry <http://www.gbif.org/developer/registry> - Metadata
+#' - registry <https://www.gbif.org/developer/registry> - Metadata
 #' on datasets, and contributing organizations
-#' - species names <http://www.gbif.org/developer/species> - Species
+#' - species names <https://www.gbif.org/developer/species> - Species
 #' names and metadata
-#' - occurrences <http://www.gbif.org/developer/occurrence> -
+#' - occurrences <https://www.gbif.org/developer/occurrence> -
 #' Occurrences
-#' - maps <http://www.gbif.org/developer/maps> - Maps - these APIs
+#' - maps <https://www.gbif.org/developer/maps> - Maps - these APIs
 #' are not implemented in \pkg{rgbif}, and are meant more for intergration
 #' with web based maps.
 #'

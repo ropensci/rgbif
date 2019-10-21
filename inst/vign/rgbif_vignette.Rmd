@@ -190,7 +190,7 @@ occ_get(key=855998194, return='all')
 Get many occurrences. `occ_get` is vectorized
 
 ```{r occ_get4}
-occ_get(key=c(855998194, 1425976049, 240713150), return='data')
+occ_get(key=c(855998194, 240713150), return='data')
 ```
 
 

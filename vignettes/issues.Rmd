@@ -2,7 +2,7 @@
 title: Cleaning data using GBIF issues
 author: Scott Chamberlain
 vignette: >
-  %\VignetteIndexEntry{2_cleaning}
+  %\VignetteIndexEntry{cleaning}
   %\VignetteEngine{knitr::knitr}
   %\VignetteEncoding{UTF-8}
 ---

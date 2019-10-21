@@ -15,6 +15,8 @@ r_packages:
   - colorspace
   - raster
   - covr
+  - protolite
+  - sf
   
 addons:
   apt:
@@ -26,6 +28,9 @@ addons:
       - libgeos-dev
       - libgdal-dev
       - netcdf-bin
+      - libprotobuf-dev
+      - libprotoc-dev
+      - protobuf-compiler
 
 after_success:
 - if [[ "${R_CODECOV}" ]]; then R -e 'covr::codecov()'; fi

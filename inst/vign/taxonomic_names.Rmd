@@ -51,9 +51,12 @@ to `name_backbone()` for each input name, then `rbind` them together:
 
 ```{r}
 name_rbind <- function(..., rank = "species") {
- df <- data.frame(do.call(rbind, lapply(list(...), name_backbone, rank = rank)))
- df[, c('usageKey', 'scientificName', 'canonicalName', 'rank',
-       'status', 'confidence', 'matchType', 'synonym')]
+  columns <- c('usageKey', 'scientificName', 'canonicalName', 'rank',
+    'status', 'confidence', 'matchType', 'synonym')
+  df <- lapply(list(...), function(w) {
+    name_backbone(w, rank = rank)[, columns]
+  })
+  data.frame(do.call(rbind, df))
 }
 ```
 

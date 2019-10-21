@@ -2,15 +2,11 @@
 title: Downloading data from GBIF
 author: Scott Chamberlain
 vignette: >
-  %\VignetteIndexEntry{1_downloading}
-  %\VignetteEngine{knitr::knitr}
-  %\VignetteEncoding{UTF-8}
+    %\VignetteIndexEntry{downloading}
+    %\VignetteEngine{knitr::knitr}
+    %\VignetteEncoding{UTF-8}
 ---
 
-
-
-GBIF Downloads
-==============
 
 GBIF provides two ways to get occurrence data: through the
 `/occurrence/search` route (see `occ_search()` and `occ_data()`),
