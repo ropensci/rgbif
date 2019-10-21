@@ -17,7 +17,7 @@ for different HTTP requests)
 \section{About}{
 
 
-This package gives you access to data from GBIF \url{http://www.gbif.org/}
+This package gives you access to data from GBIF \url{https://www.gbif.org/}
 via their API.
 }
 
@@ -33,15 +33,15 @@ because GBIF made the old API defunct.
 \section{Documentation for the GBIF API}{
 
 \itemize{
-\item summary \url{http://www.gbif.org/developer/summary} - Summary of
+\item summary \url{https://www.gbif.org/developer/summary} - Summary of
 the GBIF API
-\item registry \url{http://www.gbif.org/developer/registry} - Metadata
+\item registry \url{https://www.gbif.org/developer/registry} - Metadata
 on datasets, and contributing organizations
-\item species names \url{http://www.gbif.org/developer/species} - Species
+\item species names \url{https://www.gbif.org/developer/species} - Species
 names and metadata
-\item occurrences \url{http://www.gbif.org/developer/occurrence} -
+\item occurrences \url{https://www.gbif.org/developer/occurrence} -
 Occurrences
-\item maps \url{http://www.gbif.org/developer/maps} - Maps - these APIs
+\item maps \url{https://www.gbif.org/developer/maps} - Maps - these APIs
 are not implemented in \pkg{rgbif}, and are meant more for intergration
 with web based maps.
 }
