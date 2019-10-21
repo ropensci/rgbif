@@ -7,26 +7,27 @@ env_vars <- as.list(Sys.getenv(keys))
 r_opts <- stats::setNames(lapply(lkeys, getOption), lkeys)
 
 # FIXME: test this when request body matching works in vcr
-# test_that("occ_download_queue: real request works", {
-#   skip_on_cran()
-#   skip_on_travis()
+test_that("occ_download_queue: real request works", {
+  skip_on_cran()
+  skip_on_travis()
 
-#   tt <- occ_download_queue(
-#     occ_download("country = NZ", "year = 1993", "month = 4"),
-#     occ_download("catalogNumber = Bird.27847588", "year = 1998", "month = 2"),
-#     occ_download("taxonKey = 2435240", "year = 1984", "month = 2"),
-#     occ_download("taxonKey = 2435240", "year = 1989", "month = 12")
-#   )
+  vcr::use_cassette("occ_download_queue", {
+    tt <- occ_download_queue(
+      occ_download("country = NZ", "year = 1993", "month = 1"),
+      occ_download("catalogNumber = Bird.27847588", "year = 1971", "month = 4"),
+      occ_download("taxonKey = 2435240", "year = 1974", "month = 2")
+    )
+  }, match_requests_on = c("method", "uri", "body"))
 
-#   expect_is(tt, "list")
-#   for (i in tt) expect_is(i, "occ_download")
-#   for (i in tt) expect_is(unclass(i), "character")
-#   for (i in tt) expect_equal(attr(i, "user"), "sckott")
-#   for (i in tt) expect_equal(attr(i, "email"), "myrmecocystus@gmail.com")
+  expect_is(tt, "list")
+  for (i in tt) expect_is(i, "occ_download")
+  for (i in tt) expect_is(unclass(i), "character")
+  for (i in tt) expect_equal(attr(i, "user"), "sckott")
+  for (i in tt) expect_equal(attr(i, "email"), "myrmecocystus@gmail.com")
 
-#   # all succeeded
-#   for (i in tt) expect_equal(occ_download_meta(i)$status, "SUCCEEDED")
-# })
+  # all succeeded
+  for (i in tt) expect_equal(occ_download_meta(i)$status, "SUCCEEDED")
+})
 
 test_that("occ_download_queue fails well", {
   skip_on_cran()
