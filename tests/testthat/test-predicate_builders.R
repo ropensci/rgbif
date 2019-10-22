@@ -51,3 +51,24 @@ test_that("pred_multi fails well", {
   expect_error(pred_multi(5, "b"), "key must be of class character")
   expect_error(pred_multi("a", 5, 4), "'type' must be one of: or, in")
 })
+
+context("predicate builders: preds")
+test_that("preds", {
+  p <- pred("taxonKey", 7228682)
+  q <- pred("taxonKey", 2977901)
+
+  aa <- preds(p, q)
+  expect_is(aa, "occ_predicate_list")
+  expect_is(unclass(aa), "list")
+  expect_equal(unclass(attr(aa, "type")), "or")
+  expect_named(aa, NULL)
+  expect_named(aa[[1]], c("type", "key", "value"))
+  expect_named(aa[[2]], c("type", "key", "value"))
+  expect_is(aa[[1]]$type, "character")
+  expect_equal(unclass(aa[[1]]$type), "equals")
+})
+test_that("preds fails well", {
+  expect_error(preds(), "nothing passed")
+  expect_error(preds(4, 5, "a"), "inputs is not of class")
+  expect_error(preds(type = "b"), "must be one of")
+})

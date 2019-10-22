@@ -5,6 +5,7 @@
 \alias{occ_download_prep}
 \alias{pred}
 \alias{pred_multi}
+\alias{preds}
 \title{Spin up a download request for GBIF occurrence data.}
 \usage{
 occ_download(..., body = NULL, type = "and", format = "DWCA",
@@ -16,6 +17,8 @@ occ_download_prep(..., body = NULL, type = "and", format = "DWCA",
 pred(key, value, type = "=")
 
 pred_multi(key, value, type = "or")
+
+preds(..., type = "or")
 }
 \arguments{
 \item{...}{One or more of query arguments to kick of a download job.
@@ -49,11 +52,11 @@ email. Required. See Details.}
 \code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
 for curl options}
 
-\item{key}{(character) the key for the predicate (used in \code{pred()} and
-\code{pred_multi()})}
+\item{key}{(character) the key for the predicate (used in \code{pred()},
+\code{pred_multi()}, and \code{preds()})}
 
-\item{value}{the value for the predicate (used in \code{pred()} and
-\code{pred_multi()})}
+\item{value}{the value for the predicate (used in \code{pred()},
+\code{pred_multi()}, and \code{preds()})}
 }
 \description{
 Spin up a download request for GBIF occurrence data.
@@ -116,6 +119,22 @@ Acceptable arguments to \code{...} are:
 \note{
 see \link{downloads} for an overview of GBIF downloads methods
 }
+\section{predicate builders}{
+
+\itemize{
+\item \code{pred()}: used when composing a query with a single value, e.g.,
+you want to search for taxon key 2480946. \code{pred} supports all options
+described in the \code{type} parameter
+\item \code{pred_multi()}: used when composing a query with more than one
+value, e.g., you want to search for taxon keys 2480946 or 5229208.
+only supports \code{type} values of "or" or "in"
+\item \code{preds()}: used when composing a query with multiple individual
+predicates, e.g., search for year less than or equal to 1989 AND
+year greater than or equal to 1993. only supports \code{type} values
+of "or" or "in"
+}
+}
+
 \section{geometry}{
 
 When using the geometry parameter, make sure that your well known text
@@ -249,6 +268,29 @@ occ_download_prep(pred("basisOfRecord", "LITERATURE"), format = "SIMPLE_CSV")
 occ_download_prep(pred("basisOfRecord", "LITERATURE"), format = "SPECIES_LIST")
 occ_download_prep(pred_multi("taxonKey", c(2977832, 2977901, 2977966, 2977835), "in"))
 occ_download_prep(pred("geometry", "POLYGON((-14 42, 9 38, -7 26, -14 42))"))
+
+## a complicated example
+occ_download_prep(
+  pred_multi("basisOfRecord", c("MACHINE_OBSERVATION", "HUMAN_OBSERVATION"), "in"),
+  pred_multi("taxonKey", c(1, 2), "in"),
+  pred_multi("country", c("GB", "IE"), "in"),
+  preds(pred("year", 1989, "<="), pred("year", 2000, "="), type = "or")
+)
+# x = occ_download(
+#   pred_multi("basisOfRecord", c("MACHINE_OBSERVATION", "HUMAN_OBSERVATION"), "in"),
+#   pred_multi("taxonKey", c(9206251, 3112648), "in"),
+#   pred_multi("country", c("US", "MX"), "in"),
+#   preds(pred("year", 1989, ">="), pred("year", 1991, "<="), type = "or")
+# )
+# occ_download_meta(x)
+# z <- occ_download_get(x)
+# df <- occ_download_import(z)
+# str(df)
+# library(dplyr)
+# unique(df$basisOfRecord)
+# unique(df$taxonKey)
+# unique(df$countryCode)
+# sort(unique(df$year))
 }
 }
 \references{

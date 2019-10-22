@@ -22,12 +22,25 @@
 #' Details.
 #' @param email (character) Email address to recieve download notice done
 #' email. Required. See Details.
-#' @param key (character) the key for the predicate (used in `pred()` and
-#' `pred_multi()`)
-#' @param value the value for the predicate (used in `pred()` and
-#' `pred_multi()`)
+#' @param key (character) the key for the predicate (used in `pred()`,
+#' `pred_multi()`, and `preds()`)
+#' @param value the value for the predicate (used in `pred()`,
+#' `pred_multi()`, and `preds()`)
 #' @template occ
 #' @note see [downloads] for an overview of GBIF downloads methods
+#' 
+#' @section predicate builders:
+#' 
+#' * `pred()`: used when composing a query with a single value, e.g., 
+#' you want to search for taxon key 2480946. `pred` supports all options
+#' described in the `type` parameter
+#' * `pred_multi()`: used when composing a query with more than one
+#' value, e.g., you want to search for taxon keys 2480946 or 5229208.
+#' only supports `type` values of "or" or "in"
+#' * `preds()`: used when composing a query with multiple individual
+#' predicates, e.g., search for year less than or equal to 1989 AND
+#' year greater than or equal to 1993. only supports `type` values
+#' of "or" or "in"
 #'
 #' @section geometry:
 #' When using the geometry parameter, make sure that your well known text
@@ -213,6 +226,29 @@
 #' occ_download_prep(pred("basisOfRecord", "LITERATURE"), format = "SPECIES_LIST")
 #' occ_download_prep(pred_multi("taxonKey", c(2977832, 2977901, 2977966, 2977835), "in"))
 #' occ_download_prep(pred("geometry", "POLYGON((-14 42, 9 38, -7 26, -14 42))"))
+#' 
+#' ## a complicated example
+#' occ_download_prep(
+#'   pred_multi("basisOfRecord", c("MACHINE_OBSERVATION", "HUMAN_OBSERVATION"), "in"),
+#'   pred_multi("taxonKey", c(1, 2), "in"),
+#'   pred_multi("country", c("GB", "IE"), "in"),
+#'   preds(pred("year", 1989, "<="), pred("year", 2000, "="), type = "or")
+#' )
+#' # x = occ_download(
+#' #   pred_multi("basisOfRecord", c("MACHINE_OBSERVATION", "HUMAN_OBSERVATION"), "in"),
+#' #   pred_multi("taxonKey", c(9206251, 3112648), "in"),
+#' #   pred_multi("country", c("US", "MX"), "in"),
+#' #   preds(pred("year", 1989, ">="), pred("year", 1991, "<="), type = "or")
+#' # )
+#' # occ_download_meta(x)
+#' # z <- occ_download_get(x)
+#' # df <- occ_download_import(z)
+#' # str(df)
+#' # library(dplyr)
+#' # unique(df$basisOfRecord)
+#' # unique(df$taxonKey)
+#' # unique(df$countryCode)
+#' # sort(unique(df$year))
 #' }
 occ_download <- function(..., body = NULL, type = "and", format = "DWCA",
   user = NULL, pwd = NULL, email = NULL, curlopts = list()) {
@@ -267,6 +303,17 @@ pred_multi <- function(key, value, type = "or") {
   structure(z, class = "occ_predicate")
 }
 
+#' @export
+#' @rdname occ_download
+preds <- function(..., type = "or") {
+  pp <- list(...)
+  if (!type %in% c("or", "in", "and"))
+    stop("'type' must be one of: or, in", call. = FALSE)
+  if (length(pp) == 0) stop("nothing passed to `preds()`")
+  if (!all(vapply(pp, class, "") == "occ_predicate"))
+    stop("1 or more inputs is not of class 'occ_predicate'; see docs")
+  structure(pp, class = "occ_predicate_list", type = unbox(type))
+}
 
 #' @export
 print.occ_download <- function(x, ...) {
@@ -289,6 +336,12 @@ print.occ_download_prep <- function(x, ...) {
 print.occ_predicate <- function(x, ...) {
   cat("<<gbif download - predicate>>", sep = "\n")
   cat("  ", pred_cat(x), "\n", sep = "")
+}
+#' @export
+print.occ_predicate_list <- function(x, ...) {
+  cat("<<gbif download - predicate list>>", sep = "\n")
+  cat(paste0("  type: ", attr(x, "type")), sep = "\n")
+  for (i in x) cat("  ", pred_cat(i), "\n", sep = "")
 }
 
 # helpers -------------------------------------------
@@ -431,10 +484,13 @@ pred_cat <- function(x) {
   }
 }
 parse_predicates <- function(user, email, type, format, ...) {
-  preds <- list(...)
-  clzzs <- vapply(preds, function(z) inherits(z, "occ_predicate"), logical(1))
+  tmp <- list(...)
+  clzzs <- vapply(tmp,
+    function(z) inherits(z, c("occ_predicate", "occ_predicate_list")),
+    logical(1)
+  )
   if (!all(clzzs)) 
-    stop("all objects must be of class occ_predicate; see ?occ_download",
+    stop("all inputs must be class occ_predicate/occ_predicate_list; ?occ_download",
       call. = FALSE)
   payload <- list(
     creator = unbox(user),
@@ -442,12 +498,21 @@ parse_predicates <- function(user, email, type, format, ...) {
     format = unbox(format),
     predicate = list()
   )
-  if (any(vapply(preds, function(w) "predicates" %in% names(w), logical(1)))) {
-    payload$predicate <- list(unclass(preds[[1]]))
+  if (any(vapply(tmp, function(w) "predicates" %in% names(w), logical(1)))) {
+    payload$predicate <- list(unclass(tmp[[1]]))
   } else {
     payload$predicate <- list(
       type = unbox(type),
-      predicates = lapply(preds, unclass)
+      # predicates = lapply(tmp, unclass)
+      predicates = lapply(tmp, function(w) { 
+        if (inherits(w, "occ_predicate")) {
+          unclass(w) 
+        } else {
+          lst <- list(type = attr(w, "type")) 
+          lst$predicates <- lapply(w, unclass)
+          lst
+        }
+      })
     )
   }
   return(payload)
