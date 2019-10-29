@@ -152,6 +152,3 @@ https://www.gbif.org/developer/maps
 \author{
 Laurens Geffert \email{laurensgeffert@gmail.com}
 }
-\keyword{GBIF}
-\keyword{map,}
-\keyword{web}

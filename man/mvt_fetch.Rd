@@ -133,7 +133,3 @@ https://www.gbif.org/developer/maps
 \seealso{
 \code{\link[=map_fetch]{map_fetch()}}
 }
-\keyword{GBIF}
-\keyword{map,}
-\keyword{tile,}
-\keyword{web}

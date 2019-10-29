@@ -67,7 +67,6 @@
 #' after retrieving the output.
 #' @references https://www.gbif.org/developer/maps
 #' @seealso [map_fetch()]
-#' @keywords web map, web tile, GBIF
 #' @examples \dontrun{
 #' if (
 #'  requireNamespace("sf", quietly = TRUE) &&
