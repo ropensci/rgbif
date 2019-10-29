@@ -15,4 +15,6 @@
 
 ### Also, check out our [discussion forum](https://discuss.ropensci.org)
 
-### Prefer to Email? Get in touch: [myrmecocystus@gmail.com](mailto:myrmecocystus@gmail.com)
+### Email?
+
+If you do email you'll get a slower response than if you open an issue at https://github.com/ropensci/rgbif/issues. It benefits everyone to have an open discussion in an issue.
