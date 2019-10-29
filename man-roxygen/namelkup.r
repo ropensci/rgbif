@@ -65,13 +65,13 @@
 #' not yet be returned for them.
 #' @param facetMincount Used in combination with the facet parameter. Set
 #' facetMincount={#} to exclude facets with a count less than {#}, e.g.
-#' http://bit.ly/1bMdByP only shows the type value 'ACCEPTED' because the
-#' other statuses have counts less than 7,000,000.
+#' http://bit.ly/2osAUQB only shows the type values 'CHECKLIST' and 'OCCURRENCE'
+#' because the other types have counts less than 10000
 #' @param facetMultiselect (logical) Used in combination with the facet
 #' parameter. Set \code{facetMultiselect=TRUE} to still return counts for
-#' values that are not currently filtered, e.g. http://bit.ly/19YLXPO still
-#' shows all status values even though status is being filtered
-#' by \code{status=ACCEPTED}.
+#' values that are not currently filtered, e.g. http://bit.ly/2JAymaC still
+#' shows all type values even though type is being filtered
+#' by \code{type=CHECKLIST}.
 #' @param type Type of name. One of occurrence, checklist, or metadata.
 #' @param hl (logical) Set \code{hl=TRUE} to highlight terms matching the query
 #'   when in fulltext search fields. The highlight will be an emphasis tag of

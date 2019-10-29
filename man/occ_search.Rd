@@ -60,7 +60,7 @@ or south_america}
 \item{geometry}{Searches for occurrences inside a polygon described in Well Known
 Text (WKT) format. A WKT shape written as either POINT, LINESTRING, LINEARRING
 POLYGON, or MULTIPOLYGON. Example of a polygon: POLYGON((30.1 10.1, 20, 20 40, 40 40, 30.1 10.1))
-would be queried as \url{http://bit.ly/1BzNwDq}. See also the section \strong{WKT} below.}
+would be queried as http://bit.ly/1BzNwDq See also the section \strong{WKT} below.}
 
 \item{geom_big}{(character) One of "axe", "bbox", or "asis" (default). See Details.}
 
