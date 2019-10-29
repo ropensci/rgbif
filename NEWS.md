@@ -1,3 +1,31 @@
+rgbif 1.4.0
+===========
+
+### NEW FEATURES
+
+* gains new function `mvt_fetch()` for fetching Map Vector Tiles (MVT). mvt used to be an option in `map_fetch()`, but we only returned raw bytes for that option. With `mvt_fetch()` we now leverage the `protolite` package, which parses MVT files, to give back an sf object (#373) thanks to @jeroen for the protolite work to make this work
+* associated with above, `map_fetch()` loses the `format = ".mvt"` option; and thus now only returns a `RasterLayer`
+* `occ_issues()` and `name_issues()` reworked. Both now use the same underlying internal logic, with occ_issues pulling metadata specfic to occurrence issues and name_issues pulling metadata specific to name issues. name_issues used to only be a data.frame of name issues, but can now be used similarly to occ_issues; you can pass the output of `name_usage()` to name_issues to filter/parse name results by their associated name issues. Associated with this, new function `gbif_issues_lookup` can be used to lookup either occurrence or name issues by their full name or code (#363) (#364)
+
+### MINOR IMPROVEMENTS
+
+* fix examples and tests that had WKT in the wrong winding order (#361)
+* parsing GBIF issues in the output of `name_usage()` wasn't working (#328) (#363) (#364)
+* `name_lookup()` gains an additional parameters `issue` for filtering name results by name issues (#335) (#363) (#364)
+* fixed definitions of `x`, `y`, `z` parameters in `map_fetch()` manual file (#375)
+* added examples to `gbif_citation()` manual file for accessing many citations (#379)
+* fixed a test for `occ_download_queue()` (#365)
+* `name_*` function outpus have changed, so be aware if you're using those functions
+
+### BUG FIXES
+
+* fixed issue with `map_fetch()`: when srs was `EPSG:3857`, the extent we set was incorrectly set as `raster::extent(-180, 180, -85.1, 85.1)`. Now the extent is `raster::extent(-20037508, 20037508, -20037508, 20037508` (#366) (#367) thanks @dmcglinn for reporting and @mdsumner for fixing!
+* fix for Windows platforms for `gbif_citation()` for `occ_download_get` objects. we weren't correctly creating the path to a file on windows (#359)
+* fix to `print.gbif_data` (#370) (#371)
+* `occ_download()` was erroring with a useless error when users try to use the fxn with the same parameter input types as `occ_search`/`occ_data`; when this happens now there is a useful error message (#381)
+* fix to `occ_download()`: when `type = "in"` was used, we weren't creating the JSON correctly, fixed now  (#362)
+
+
 rgbif 1.3.0
 ===========
 
