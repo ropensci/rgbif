@@ -4,12 +4,12 @@
 
 # rgbif <img src="man/figures/logo.png" align="right" alt="" width="120">
 
-[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![cran checks](https://cranchecks.info/badges/worst/rgbif)](https://cranchecks.info/pkgs/rgbif)
 [![Build Status](https://travis-ci.org/ropensci/rgbif.svg?branch=master)](https://travis-ci.org/ropensci/rgbif)
 [![codecov.io](https://codecov.io/github/ropensci/rgbif/coverage.svg?branch=master)](https://codecov.io/github/ropensci/rgbif?branch=master)
-[![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/rgbif)](https://github.com/metacran/cranlogs.app)
-[![cran version](http://www.r-pkg.org/badges/version/rgbif)](https://cran.r-project.org/package=rgbif)
+[![rstudio mirror downloads](https://cranlogs.r-pkg.org/badges/rgbif)](https://github.com/metacran/cranlogs.app)
+[![cran version](https://www.r-pkg.org/badges/version/rgbif)](https://cran.r-project.org/package=rgbif)
 [![DOI](https://zenodo.org/badge/2273724.svg)](https://zenodo.org/badge/latestdoi/2273724)
 
 `rgbif` gives you access to data from [GBIF][] via their REST API. GBIF versions their API - we are currently using `v1` of their API. You can no longer use their old API in this package - see `?rgbif-defunct`.
@@ -96,7 +96,7 @@ install.packages('rgbif')
 
 ```r
 occ_search(scientificName = "Ursus americanus", limit = 50)
-#> Records found [13887] 
+#> Records found [14215] 
 #> Records returned [50] 
 #> No. unique hierarchies [1] 
 #> No. media records [49] 
@@ -149,7 +149,7 @@ Or you can get the taxon key first with `name_backbone()`. Here, we select to on
 ```r
 key <- name_backbone(name='Helianthus annuus', kingdom='plants')$speciesKey
 occ_search(taxonKey=key, limit=20)
-#> Records found [45458] 
+#> Records found [45844] 
 #> Records returned [20] 
 #> No. unique hierarchies [1] 
 #> No. media records [15] 
@@ -221,7 +221,7 @@ Get the keys first with `name_backbone()`, then pass to `occ_search()`
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 keys <- sapply(splist, function(x) name_backbone(name=x)$speciesKey, USE.NAMES=FALSE)
 occ_search(taxonKey=keys, limit=5, hasCoordinate=TRUE)
-#> Records found [2480598 (30), 9362842 (5525278), 2498387 (1826157)] 
+#> Records found [2480598 (33), 9362842 (5525661), 2498387 (1826375)] 
 #> Records returned [2480598 (5), 9362842 (5), 2498387 (5)] 
 #> No. unique hierarchies [2480598 (1), 9362842 (1), 2498387 (1)] 
 #> No. media records [2480598 (5), 9362842 (5), 2498387 (5)] 
@@ -234,10 +234,10 @@ occ_search(taxonKey=keys, limit=5, hasCoordinate=TRUE)
 #>   key   scientificName decimalLatitude decimalLongitude issues datasetKey
 #>   <chr> <chr>                    <dbl>            <dbl> <chr>  <chr>     
 #> 1 2243… Accipiter ery…           -38.3            -60.4 ""     b1047888-…
-#> 2 2243… Accipiter ery…           -24.3            -48.4 ""     b1047888-…
-#> 3 2243… Accipiter ery…           -26.3            -48.6 ""     b1047888-…
-#> 4 2243… Accipiter ery…           -26.3            -48.6 txmat… b1047888-…
-#> 5 2243… Accipiter ery…           -22.4            -42.9 ""     b1047888-…
+#> 2 2432… Accipiter ery…           -24.0            -52.2 ""     b1047888-…
+#> 3 2243… Accipiter ery…           -24.3            -48.4 ""     b1047888-…
+#> 4 2243… Accipiter ery…           -26.3            -48.6 ""     b1047888-…
+#> 5 2243… Accipiter ery…           -26.3            -48.6 ""     b1047888-…
 #> # … with 62 more variables: publishingOrgKey <chr>, networkKeys <chr>,
 #> #   installationKey <chr>, publishingCountry <chr>, protocol <chr>,
 #> #   lastCrawled <chr>, lastParsed <chr>, crawlId <int>, extensions <chr>,
@@ -296,7 +296,7 @@ plot(x, axes = FALSE, box = FALSE)
 
 Collected via GitHub Issues, this list honors all contributors in alphabetical order. Code contributors are in bold.
 
-[adamdsmith](https://github.com/adamdsmith) - [AgustinCamacho](https://github.com/AgustinCamacho) - [AlexPeap](https://github.com/AlexPeap) - [andzandz11](https://github.com/andzandz11) - [AugustT](https://github.com/AugustT) - **[benmarwick](https://github.com/benmarwick)** - [cathynewman](https://github.com/cathynewman) - [cboettig](https://github.com/cboettig) - [coyotree](https://github.com/coyotree) - **[damianooldoni](https://github.com/damianooldoni)** - [dandaman](https://github.com/dandaman) - [djokester](https://github.com/djokester) - [dlebauer](https://github.com/dlebauer) - **[dmcglinn](https://github.com/dmcglinn)** - [dnoesgaard](https://github.com/dnoesgaard) - [DupontCai](https://github.com/DupontCai) - [elgabbas](https://github.com/elgabbas) - [fxi](https://github.com/fxi) - [ghost](https://github.com/ghost) - [gkburada](https://github.com/gkburada) - [hadley](https://github.com/hadley) - **[JanLauGe](https://github.com/JanLauGe)** - **[jarioksa](https://github.com/jarioksa)** - [jhpoelen](https://github.com/jhpoelen) - [jkmccarthy](https://github.com/jkmccarthy) - **[johnbaums](https://github.com/johnbaums)** - [jwhalennds](https://github.com/jwhalennds) - **[karthik](https://github.com/karthik)** - [kgturner](https://github.com/kgturner) - [Kim1801](https://github.com/Kim1801) - [ljuliusson](https://github.com/ljuliusson) - [luisDVA](https://github.com/luisDVA) - [martinpfannkuchen](https://github.com/martinpfannkuchen) - [MattBlissett](https://github.com/MattBlissett) - [maxhenschell](https://github.com/maxhenschell) - [Pakillo](https://github.com/Pakillo) - **[peterdesmet](https://github.com/peterdesmet)** - [PhillRob](https://github.com/PhillRob) - [poldham](https://github.com/poldham) - [qgroom](https://github.com/qgroom) - [raymondben](https://github.com/raymondben) - [rossmounce](https://github.com/rossmounce) - [sacrevert](https://github.com/sacrevert) - **[sckott](https://github.com/sckott)** - [scottsfarley93](https://github.com/scottsfarley93) - **[SriramRamesh](https://github.com/SriramRamesh)** - [stevenpbachman](https://github.com/stevenpbachman) - [stevensotelo](https://github.com/stevensotelo) - [TomaszSuchan](https://github.com/TomaszSuchan) - [vandit15](https://github.com/vandit15) - [vervis](https://github.com/vervis) - **[vijaybarve](https://github.com/vijaybarve)** - [willgearty](https://github.com/willgearty) - [zixuan75](https://github.com/zixuan75)
+[adamdsmith](https://github.com/adamdsmith) - [AgustinCamacho](https://github.com/AgustinCamacho) - [AldoCompagnoni](https://github.com/AldoCompagnoni) - [AlexPeap](https://github.com/AlexPeap) - [andzandz11](https://github.com/andzandz11) - [AshleyWoods](https://github.com/AshleyWoods) - [AugustT](https://github.com/AugustT) - **[benmarwick](https://github.com/benmarwick)** - [cathynewman](https://github.com/cathynewman) - [cboettig](https://github.com/cboettig) - [coyotree](https://github.com/coyotree) - **[damianooldoni](https://github.com/damianooldoni)** - [dandaman](https://github.com/dandaman) - [djokester](https://github.com/djokester) - [dlebauer](https://github.com/dlebauer) - **[dmcglinn](https://github.com/dmcglinn)** - [dnoesgaard](https://github.com/dnoesgaard) - [DupontCai](https://github.com/DupontCai) - [EDiLD](https://github.com/EDiLD) - [elgabbas](https://github.com/elgabbas) - [emhart](https://github.com/emhart) - [fxi](https://github.com/fxi) - [ghost](https://github.com/ghost) - [gkburada](https://github.com/gkburada) - [hadley](https://github.com/hadley) - [Huasheng12306](https://github.com/Huasheng12306) - [ibartomeus](https://github.com/ibartomeus) - **[JanLauGe](https://github.com/JanLauGe)** - **[jarioksa](https://github.com/jarioksa)** - **[jeroen](https://github.com/jeroen)** - [jhnwllr](https://github.com/jhnwllr) - [jhpoelen](https://github.com/jhpoelen) - [jivelasquezt](https://github.com/jivelasquezt) - [jkmccarthy](https://github.com/jkmccarthy) - **[johnbaums](https://github.com/johnbaums)** - [jwhalennds](https://github.com/jwhalennds) - **[karthik](https://github.com/karthik)** - [kgturner](https://github.com/kgturner) - [Kim1801](https://github.com/Kim1801) - [ljuliusson](https://github.com/ljuliusson) - [luisDVA](https://github.com/luisDVA) - [martinpfannkuchen](https://github.com/martinpfannkuchen) - [MattBlissett](https://github.com/MattBlissett) - [MattOates](https://github.com/MattOates) - [maxhenschell](https://github.com/maxhenschell) - **[mdsumner](https://github.com/mdsumner)** - [Octoberweather](https://github.com/Octoberweather) - [Pakillo](https://github.com/Pakillo) - **[peterdesmet](https://github.com/peterdesmet)** - [PhillRob](https://github.com/PhillRob) - [poldham](https://github.com/poldham) - [qgroom](https://github.com/qgroom) - [raymondben](https://github.com/raymondben) - [rossmounce](https://github.com/rossmounce) - [sacrevert](https://github.com/sacrevert) - [sagitaninta](https://github.com/sagitaninta) - **[sckott](https://github.com/sckott)** - [scottsfarley93](https://github.com/scottsfarley93) - [simon-tarr](https://github.com/simon-tarr) - [simontarr-aecom](https://github.com/simontarr-aecom) - **[SriramRamesh](https://github.com/SriramRamesh)** - [stevenpbachman](https://github.com/stevenpbachman) - [stevensotelo](https://github.com/stevensotelo) - **[stevenysw](https://github.com/stevenysw)** - [TomaszSuchan](https://github.com/TomaszSuchan) - [tphilippi](https://github.com/tphilippi) - [vandit15](https://github.com/vandit15) - [vervis](https://github.com/vervis) - **[vijaybarve](https://github.com/vijaybarve)** - [willgearty](https://github.com/willgearty) - [Xuletajr](https://github.com/Xuletajr) - [zixuan75](https://github.com/zixuan75)
 
 ## Meta
 
@@ -319,4 +319,4 @@ This package is part of a richer suite called [spocc - Species Occurrence Data](
 [GBIF]: https://www.gbif.org/
 [pygbif]: https://github.com/sckott/pygbif
 [gbifrb]: https://github.com/sckott/gbifrb
-[coc]: https://github.com/ropensci/rgbif/blob/master/CODE_OF_CONDUCT.md
+[coc]: https://github.com/ropensci/rgbif/blob/master/.github/CODE_OF_CONDUCT.md
