@@ -45,7 +45,7 @@ Search by type of record, all observational in this case
 
 ```r
 occ_count(basisOfRecord='OBSERVATION')
-#> [1] 19662024
+#> [1] 19664036
 ```
 
 Records for **Puma concolor** with lat/long data (georeferened) only. Note that `hasCoordinate` in `occ_search()` is the same as `georeferenced` in `occ_count()`.
@@ -53,7 +53,7 @@ Records for **Puma concolor** with lat/long data (georeferened) only. Note that 
 
 ```r
 occ_count(taxonKey=2435099, georeferenced=TRUE)
-#> [1] 4987
+#> [1] 5002
 ```
 
 All georeferenced records in GBIF
@@ -61,7 +61,7 @@ All georeferenced records in GBIF
 
 ```r
 occ_count(georeferenced=TRUE)
-#> [1] 1253896822
+#> [1] 1256996737
 ```
 
 Records from Denmark
@@ -70,7 +70,7 @@ Records from Denmark
 ```r
 denmark_code <- isocodes[grep("Denmark", isocodes$name), "code"]
 occ_count(country=denmark_code)
-#> [1] 31198998
+#> [1] 31204848
 ```
 
 Number of records in a particular dataset
@@ -86,7 +86,7 @@ All records from 2012
 
 ```r
 occ_count(year=2012)
-#> [1] 57799727
+#> [1] 57892853
 ```
 
 Records for a particular dataset, and only for preserved specimens
@@ -130,13 +130,13 @@ out$meta
 #> # A tibble: 1 x 4
 #>   offset limit endOfRecords count
 #>    <int> <int> <lgl>        <int>
-#> 1      0   100 FALSE         1100
+#> 1      0   100 FALSE         1104
 ```
 
 
 ```r
 head(out$data)
-#> # A tibble: 6 x 24
+#> # A tibble: 6 x 26
 #>      key scientificName datasetKey nubKey parentKey parent kingdom phylum
 #>    <int> <chr>          <chr>       <int>     <int> <chr>  <chr>   <chr> 
 #> 1 1.47e8 Mammalia       be44f76b-…    359 147440318 Chord… Animal… Chord…
@@ -145,11 +145,12 @@ head(out$data)
 #> 4 1.35e8 Mammalia       cc056915-…    359 135251314 Chord… Animal… Chord…
 #> 5 1.44e8 Mammalia       73c0f92b-…    359 144200433 Chord… Animal… Chord…
 #> 6 1.44e8 Mammalia       272a784c-…    359 144215598 Chord… Animal… Chord…
-#> # … with 16 more variables: kingdomKey <int>, phylumKey <int>,
+#> # … with 18 more variables: kingdomKey <int>, phylumKey <int>,
 #> #   classKey <int>, canonicalName <chr>, authorship <chr>, nameType <chr>,
 #> #   taxonomicStatus <chr>, rank <chr>, origin <chr>, numDescendants <int>,
 #> #   numOccurrences <int>, habitats <lgl>, nomenclaturalStatus <lgl>,
-#> #   threatStatuses <lgl>, synonym <lgl>, class <chr>
+#> #   threatStatuses <lgl>, synonym <lgl>, class <chr>, order <chr>,
+#> #   orderKey <int>
 ```
 
 
@@ -188,10 +189,10 @@ head(name_lookup(query='Cnaemidophorus', rank="genus", return="data"))
 #>    <int> <chr>          <chr>       <int>     <int> <chr>  <chr>   <chr> 
 #> 1 1.58e8 Cnaemidophorus 4cec8fef-… 1.86e6 157904443 Ptero… Animal… Arthr…
 #> 2 1.59e8 Cnaemidophorus 23905003-… 1.86e6 159439401 Ptero… Animal… Arthr…
-#> 3 1.60e8 Cnaemidophorus d16563e0-… 1.86e6 159737684 Ptero… Animal… Arthr…
-#> 4 1.59e8 Cnaemidophorus 4dd32523-… 1.86e6 159275329 Ptero… Animal… Arthr…
+#> 3 1.59e8 Cnaemidophorus 4dd32523-… 1.86e6 159275329 Ptero… Animal… Arthr…
+#> 4 1.59e8 Cnaemidophorus 16c3f9cb-… 1.86e6 100557623 Ptero… <NA>    <NA>  
 #> 5 1.24e8 Cnaemidophorus fab88965-… 1.86e6 104446806 Ptero… Metazoa Arthr…
-#> 6 1.59e8 Cnaemidophorus 16c3f9cb-… 1.86e6 100557623 Ptero… <NA>    <NA>  
+#> 6 1.60e8 Cnaemidophorus d16563e0-… 1.86e6 159832403 Ptero… Animal… Arthr…
 #> # … with 26 more variables: order <chr>, family <chr>, genus <chr>,
 #> #   kingdomKey <int>, phylumKey <int>, classKey <int>, orderKey <int>,
 #> #   familyKey <int>, genusKey <int>, canonicalName <chr>,
@@ -207,7 +208,7 @@ Search for the class mammalia
 
 ```r
 head(name_lookup(query='mammalia', return = 'data'))
-#> # A tibble: 6 x 24
+#> # A tibble: 6 x 26
 #>      key scientificName datasetKey nubKey parentKey parent kingdom phylum
 #>    <int> <chr>          <chr>       <int>     <int> <chr>  <chr>   <chr> 
 #> 1 1.47e8 Mammalia       be44f76b-…    359 147440318 Chord… Animal… Chord…
@@ -216,11 +217,12 @@ head(name_lookup(query='mammalia', return = 'data'))
 #> 4 1.35e8 Mammalia       cc056915-…    359 135251314 Chord… Animal… Chord…
 #> 5 1.44e8 Mammalia       73c0f92b-…    359 144200433 Chord… Animal… Chord…
 #> 6 1.44e8 Mammalia       272a784c-…    359 144215598 Chord… Animal… Chord…
-#> # … with 16 more variables: kingdomKey <int>, phylumKey <int>,
+#> # … with 18 more variables: kingdomKey <int>, phylumKey <int>,
 #> #   classKey <int>, canonicalName <chr>, authorship <chr>, nameType <chr>,
 #> #   taxonomicStatus <chr>, rank <chr>, origin <chr>, numDescendants <int>,
 #> #   numOccurrences <int>, habitats <lgl>, nomenclaturalStatus <lgl>,
-#> #   threatStatuses <lgl>, synonym <lgl>, class <chr>
+#> #   threatStatuses <lgl>, synonym <lgl>, class <chr>, order <chr>,
+#> #   orderKey <int>
 ```
 
 Look up the species Helianthus annuus
@@ -233,7 +235,7 @@ head(name_lookup(query = 'Helianthus annuus', rank="species", return = 'data'))
 #>    <int> <chr>          <chr>       <int>     <int> <chr>  <chr>   <chr> 
 #> 1 1.15e8 Helianthus an… ee2aac07-… 9.21e6 144238801 Helia… Plantae Trach…
 #> 2 1.35e8 Helianthus an… f82a4f7f-… 9.21e6 158739845 Aster… Plantae Trach…
-#> 3 1.35e8 Helianthus an… 29d2d5a6-… 9.21e6 154516901 Aster… Plantae Trach…
+#> 3 1.35e8 Helianthus an… 29d2d5a6-… 9.21e6 159871432 Aster… Plantae Trach…
 #> 4 1.28e8 Helianthus an… 41c06f1a-… 9.21e6 146770884 Amara… Plantae <NA>  
 #> 5 1.46e8 Helianthus an… 6a97172b-… 9.21e6 147653302 Helia… <NA>    <NA>  
 #> 6 1.03e8 Helianthus an… fab88965-… 9.21e6 103340270 Helia… Viridi… Strep…
@@ -243,8 +245,8 @@ head(name_lookup(query = 'Helianthus annuus', rank="species", return = 'data'))
 #> #   canonicalName <chr>, authorship <chr>, nameType <chr>,
 #> #   taxonomicStatus <chr>, rank <chr>, origin <chr>, numDescendants <int>,
 #> #   numOccurrences <int>, habitats <chr>, nomenclaturalStatus <chr>,
-#> #   threatStatuses <chr>, synonym <lgl>, class <chr>, acceptedKey <int>,
-#> #   accepted <chr>, taxonID <chr>, constituentKey <chr>,
+#> #   threatStatuses <chr>, synonym <lgl>, class <chr>, taxonID <chr>,
+#> #   acceptedKey <int>, accepted <chr>, constituentKey <chr>,
 #> #   accordingTo <chr>, publishedIn <chr>, basionymKey <int>,
 #> #   basionym <chr>
 ```
@@ -367,7 +369,7 @@ By default `occ_search()` returns a `dplyr` like output summary in which the dat
 
 ```r
 occ_search(scientificName = "Ursus americanus", limit = 20)
-#> Records found [13887] 
+#> Records found [14215] 
 #> Records returned [20] 
 #> No. unique hierarchies [1] 
 #> No. media records [20] 
@@ -426,7 +428,7 @@ Or to be more precise, you can search for names first, make sure you have the ri
 ```r
 key <- name_suggest(q='Helianthus annuus', rank='species')$key[1]
 occ_search(taxonKey=key, limit=20)
-#> Records found [45458] 
+#> Records found [45844] 
 #> Records returned [20] 
 #> No. unique hierarchies [1] 
 #> No. media records [15] 
@@ -497,7 +499,7 @@ occ_search(taxonKey=key, return='meta')
 #> # A tibble: 1 x 4
 #>   offset limit endOfRecords count
 #> *  <int> <int> <lgl>        <int>
-#> 1    300   200 FALSE        45458
+#> 1    300   200 FALSE        45844
 ```
 
 You can choose what fields to return. This isn't passed on to the API query to GBIF as they don't allow that, but we filter out the columns before we give the data back to you.
@@ -505,7 +507,7 @@ You can choose what fields to return. This isn't passed on to the API query to G
 
 ```r
 occ_search(scientificName = "Ursus americanus", fields=c('name','basisOfRecord','protocol'), limit = 20)
-#> Records found [13887] 
+#> Records found [14215] 
 #> Records returned [20] 
 #> No. unique hierarchies [1] 
 #> No. media records [20] 
@@ -544,7 +546,7 @@ Most parameters are vectorized, so you can pass in more than one value:
 splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
 keys <- sapply(splist, function(x) name_suggest(x)$key[1], USE.NAMES=FALSE)
 occ_search(taxonKey=keys, limit=5)
-#> Records found [2482598 (1034871), 9362842 (5543162), 2498387 (1828255)] 
+#> Records found [2482598 (1035057), 9362842 (5543545), 2498387 (1828474)] 
 #> Records returned [2482598 (5), 9362842 (5), 2498387 (5)] 
 #> No. unique hierarchies [2482598 (1), 9362842 (1), 2498387 (1)] 
 #> No. media records [2482598 (5), 9362842 (5), 2498387 (5)] 
