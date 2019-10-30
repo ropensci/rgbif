@@ -1,0 +1,116 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/download/dataset/7f2edc10-f762-11e1-a439-00145eb45e9a?limit=20&offset=0
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/4.2 crul/0.8.4 rOpenSci(rgbif/1.4.0.9100)
+      X-USER-AGENT: r-curl/4.2 crul/0.8.4 rOpenSci(rgbif/1.4.0.9100)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Wed, 30 Oct 2019 21:17:28 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=3601
+      x-varnish: '766149115'
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      transfer-encoding: chunked
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"offset":0,"limit":20,"endOfRecords":false,"count":20542,"results":[{"downloadKey":"0032660-190918142434337","datasetKey":"7f2edc10-f762-11e1-a439-00145eb45e9a","datasetTitle":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM","datasetDOI":"10.15468/blmvxk","datasetCitation":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM. Carl Faust Foundation.
+        Occurrence Dataset https://doi.org/10.15468/blmvxk accessed via GBIF.org on
+        2017-06-01.","numberRecords":4277,"download":{"key":"0032660-190918142434337","doi":"10.15468/dl.tqp8x2","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"sendNotification":true,"format":"SPECIES_LIST"},"created":"2019-10-30T17:40:38.976+0000","modified":"2019-10-30T18:10:30.114+0000","eraseAfter":"2020-04-30T17:40:38.912+0000","status":"SUCCEEDED","downloadLink":"http://api.gbif.org/v1/occurrence/download/request/0032660-190918142434337.zip","size":238053603,"totalRecords":3261795,"numberDatasets":25669}},{"downloadKey":"0032650-190918142434337","datasetKey":"7f2edc10-f762-11e1-a439-00145eb45e9a","datasetTitle":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM","datasetDOI":"10.15468/blmvxk","datasetCitation":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM. Carl Faust Foundation.
+        Occurrence Dataset https://doi.org/10.15468/blmvxk accessed via GBIF.org on
+        2017-06-01.","numberRecords":38,"download":{"key":"0032650-190918142434337","doi":"10.15468/dl.ak24e0","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"equals","key":"TAXON_KEY","value":"2978223"},"sendNotification":true,"format":"DWCA"},"created":"2019-10-30T17:35:45.406+0000","modified":"2019-10-30T18:00:47.654+0000","eraseAfter":"2020-04-30T17:35:45.290+0000","status":"SUCCEEDED","downloadLink":"http://api.gbif.org/v1/occurrence/download/request/0032650-190918142434337.zip","size":230940745,"totalRecords":1029894,"numberDatasets":755}},{"downloadKey":"0032604-190918142434337","datasetKey":"7f2edc10-f762-11e1-a439-00145eb45e9a","datasetTitle":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM","datasetDOI":"10.15468/blmvxk","datasetCitation":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM. Carl Faust Foundation.
+        Occurrence Dataset https://doi.org/10.15468/blmvxk accessed via GBIF.org on
+        2017-06-01.","numberRecords":3056,"download":{"key":"0032604-190918142434337","doi":"10.15468/dl.jbbn0b","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"equals","key":"COUNTRY","value":"ES"},"sendNotification":true,"format":"SIMPLE_CSV"},"created":"2019-10-30T16:55:08.672+0000","modified":"2019-10-30T17:09:54.393+0000","eraseAfter":"2020-04-30T16:55:08.610+0000","status":"SUCCEEDED","downloadLink":"http://api.gbif.org/v1/occurrence/download/request/0032604-190918142434337.zip","size":2387490242,"totalRecords":37840920,"numberDatasets":1552}},{"downloadKey":"0032587-190918142434337","datasetKey":"7f2edc10-f762-11e1-a439-00145eb45e9a","datasetTitle":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM","datasetDOI":"10.15468/blmvxk","datasetCitation":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM. Carl Faust Foundation.
+        Occurrence Dataset https://doi.org/10.15468/blmvxk accessed via GBIF.org on
+        2017-06-01.","numberRecords":3056,"download":{"key":"0032587-190918142434337","doi":"10.15468/dl.port0c","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"equals","key":"COUNTRY","value":"ES"},"sendNotification":true,"format":"SIMPLE_CSV"},"created":"2019-10-30T16:34:37.907+0000","modified":"2019-10-30T17:07:05.969+0000","eraseAfter":"2020-04-30T16:34:37.809+0000","status":"SUCCEEDED","downloadLink":"http://api.gbif.org/v1/occurrence/download/request/0032587-190918142434337.zip","size":2387490242,"totalRecords":37840915,"numberDatasets":1552}},{"downloadKey":"0032586-190918142434337","datasetKey":"7f2edc10-f762-11e1-a439-00145eb45e9a","datasetTitle":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM","datasetDOI":"10.15468/blmvxk","datasetCitation":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM. Carl Faust Foundation.
+        Occurrence Dataset https://doi.org/10.15468/blmvxk accessed via GBIF.org on
+        2017-06-01.","numberRecords":3056,"download":{"key":"0032586-190918142434337","doi":"10.15468/dl.ss7trb","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"equals","key":"COUNTRY","value":"ES"},"sendNotification":true,"format":"SIMPLE_CSV"},"created":"2019-10-30T16:33:44.419+0000","modified":"2019-10-30T17:02:37.655+0000","eraseAfter":"2020-04-30T16:33:44.334+0000","status":"SUCCEEDED","downloadLink":"http://api.gbif.org/v1/occurrence/download/request/0032586-190918142434337.zip","size":2387490242,"totalRecords":37840915,"numberDatasets":1552}},{"downloadKey":"0032574-190918142434337","datasetKey":"7f2edc10-f762-11e1-a439-00145eb45e9a","datasetTitle":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM","datasetDOI":"10.15468/blmvxk","datasetCitation":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM. Carl Faust Foundation.
+        Occurrence Dataset https://doi.org/10.15468/blmvxk accessed via GBIF.org on
+        2017-06-01.","numberRecords":3056,"download":{"key":"0032574-190918142434337","doi":"10.15468/dl.cu2zfq","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"equals","key":"COUNTRY","value":"ES"},"sendNotification":true,"format":"SIMPLE_CSV"},"created":"2019-10-30T16:20:15.503+0000","modified":"2019-10-30T16:34:29.449+0000","eraseAfter":"2020-04-30T16:20:15.428+0000","status":"SUCCEEDED","downloadLink":"http://api.gbif.org/v1/occurrence/download/request/0032574-190918142434337.zip","size":2387490242,"totalRecords":37840913,"numberDatasets":1552}},{"downloadKey":"0032539-190918142434337","datasetKey":"7f2edc10-f762-11e1-a439-00145eb45e9a","datasetTitle":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM","datasetDOI":"10.15468/blmvxk","datasetCitation":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM. Carl Faust Foundation.
+        Occurrence Dataset https://doi.org/10.15468/blmvxk accessed via GBIF.org on
+        2017-06-01.","numberRecords":2,"download":{"key":"0032539-190918142434337","doi":"10.15468/dl.gkhc32","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"equals","key":"TAXON_KEY","value":"3173272"},"sendNotification":true,"format":"SPECIES_LIST"},"created":"2019-10-30T15:41:34.500+0000","modified":"2019-10-30T15:42:15.906+0000","eraseAfter":"2020-04-30T15:41:34.424+0000","status":"SUCCEEDED","downloadLink":"http://api.gbif.org/v1/occurrence/download/request/0032539-190918142434337.zip","size":425,"totalRecords":1,"numberDatasets":97}},{"downloadKey":"0032517-190918142434337","datasetKey":"7f2edc10-f762-11e1-a439-00145eb45e9a","datasetTitle":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM","datasetDOI":"10.15468/blmvxk","datasetCitation":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM. Carl Faust Foundation.
+        Occurrence Dataset https://doi.org/10.15468/blmvxk accessed via GBIF.org on
+        2017-06-01.","numberRecords":2,"download":{"key":"0032517-190918142434337","doi":"10.15468/dl.nslari","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"equals","key":"TAXON_KEY","value":"3173272"},"sendNotification":true,"format":"SIMPLE_CSV"},"created":"2019-10-30T15:30:20.511+0000","modified":"2019-10-30T15:40:34.530+0000","eraseAfter":"2019-10-30T15:40:34.500+0000","status":"SUCCEEDED","downloadLink":"http://api.gbif.org/v1/occurrence/download/request/0032517-190918142434337.zip","size":103844,"totalRecords":1999,"numberDatasets":97}},{"downloadKey":"0032516-190918142434337","datasetKey":"7f2edc10-f762-11e1-a439-00145eb45e9a","datasetTitle":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM","datasetDOI":"10.15468/blmvxk","datasetCitation":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM. Carl Faust Foundation.
+        Occurrence Dataset https://doi.org/10.15468/blmvxk accessed via GBIF.org on
+        2017-06-01.","numberRecords":3,"download":{"key":"0032516-190918142434337","doi":"10.15468/dl.by9jem","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"equals","key":"TAXON_KEY","value":"9348640"},"sendNotification":true,"format":"SIMPLE_CSV"},"created":"2019-10-30T15:30:06.239+0000","modified":"2019-10-30T15:33:14.845+0000","eraseAfter":"2020-04-30T15:30:06.146+0000","status":"SUCCEEDED","downloadLink":"http://api.gbif.org/v1/occurrence/download/request/0032516-190918142434337.zip","size":2965150,"totalRecords":49018,"numberDatasets":338}},{"downloadKey":"0032503-190918142434337","datasetKey":"7f2edc10-f762-11e1-a439-00145eb45e9a","datasetTitle":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM","datasetDOI":"10.15468/blmvxk","datasetCitation":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM. Carl Faust Foundation.
+        Occurrence Dataset https://doi.org/10.15468/blmvxk accessed via GBIF.org on
+        2017-06-01.","numberRecords":8,"download":{"key":"0032503-190918142434337","doi":"10.15468/dl.rceffg","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"equals","key":"TAXON_KEY","value":"2926611"},"sendNotification":true,"format":"SIMPLE_CSV"},"created":"2019-10-30T15:17:13.952+0000","modified":"2019-10-30T15:21:33.834+0000","eraseAfter":"2020-04-30T15:17:13.874+0000","status":"SUCCEEDED","downloadLink":"http://api.gbif.org/v1/occurrence/download/request/0032503-190918142434337.zip","size":11671159,"totalRecords":166506,"numberDatasets":734}},{"downloadKey":"0032425-190918142434337","datasetKey":"7f2edc10-f762-11e1-a439-00145eb45e9a","datasetTitle":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM","datasetDOI":"10.15468/blmvxk","datasetCitation":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM. Carl Faust Foundation.
+        Occurrence Dataset https://doi.org/10.15468/blmvxk accessed via GBIF.org on
+        2017-06-01.","numberRecords":1,"download":{"key":"0032425-190918142434337","doi":"10.15468/dl.a2nr4v","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"COUNTRY","value":"ES"},{"type":"equals","key":"TAXON_KEY","value":"5328492"}]},"sendNotification":true,"format":"SIMPLE_CSV"},"created":"2019-10-30T13:46:11.089+0000","modified":"2019-10-30T13:50:22.596+0000","eraseAfter":"2020-04-30T13:46:11.027+0000","status":"SUCCEEDED","downloadLink":"http://api.gbif.org/v1/occurrence/download/request/0032425-190918142434337.zip","size":30662,"totalRecords":741,"numberDatasets":31}},{"downloadKey":"0032280-190918142434337","datasetKey":"7f2edc10-f762-11e1-a439-00145eb45e9a","datasetTitle":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM","datasetDOI":"10.15468/blmvxk","datasetCitation":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM. Carl Faust Foundation.
+        Occurrence Dataset https://doi.org/10.15468/blmvxk accessed via GBIF.org on
+        2017-06-01.","numberRecords":553,"download":{"key":"0032280-190918142434337","doi":"10.15468/dl.k9tgha","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"equals","key":"TAXON_KEY","value":"196"},"sendNotification":true,"format":"DWCA"},"created":"2019-10-30T12:06:28.537+0000","modified":"2019-10-30T12:30:51.076+0000","eraseAfter":"2020-04-30T12:06:28.480+0000","status":"SUCCEEDED","downloadLink":"http://api.gbif.org/v1/occurrence/download/request/0032280-190918142434337.zip","size":11936447859,"totalRecords":57149753,"numberDatasets":3361}},{"downloadKey":"0032263-190918142434337","datasetKey":"7f2edc10-f762-11e1-a439-00145eb45e9a","datasetTitle":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM","datasetDOI":"10.15468/blmvxk","datasetCitation":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM. Carl Faust Foundation.
+        Occurrence Dataset https://doi.org/10.15468/blmvxk accessed via GBIF.org on
+        2017-06-01.","numberRecords":4277,"download":{"key":"0032263-190918142434337","doi":"10.15468/dl.uqoaqz","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"sendNotification":true,"format":"SPECIES_LIST"},"created":"2019-10-30T11:56:24.678+0000","modified":"2019-10-30T12:05:36.019+0000","eraseAfter":"2020-04-30T11:56:24.597+0000","status":"SUCCEEDED","downloadLink":"http://api.gbif.org/v1/occurrence/download/request/0032263-190918142434337.zip","size":238053603,"totalRecords":3261795,"numberDatasets":25669}},{"downloadKey":"0032212-190918142434337","datasetKey":"7f2edc10-f762-11e1-a439-00145eb45e9a","datasetTitle":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM","datasetDOI":"10.15468/blmvxk","datasetCitation":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM. Carl Faust Foundation.
+        Occurrence Dataset https://doi.org/10.15468/blmvxk accessed via GBIF.org on
+        2017-06-01.","numberRecords":42,"download":{"key":"0032212-190918142434337","doi":"10.15468/dl.ulnqcu","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"COUNTRY","value":"ES"},{"type":"equals","key":"TAXON_KEY","value":"7689"}]},"sendNotification":true,"format":"SIMPLE_CSV"},"created":"2019-10-30T11:22:43.507+0000","modified":"2019-10-30T11:25:04.677+0000","eraseAfter":"2020-04-30T11:22:43.440+0000","status":"SUCCEEDED","downloadLink":"http://api.gbif.org/v1/occurrence/download/request/0032212-190918142434337.zip","size":4684742,"totalRecords":94807,"numberDatasets":132}},{"downloadKey":"0032055-190918142434337","datasetKey":"7f2edc10-f762-11e1-a439-00145eb45e9a","datasetTitle":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM","datasetDOI":"10.15468/blmvxk","datasetCitation":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM. Carl Faust Foundation.
+        Occurrence Dataset https://doi.org/10.15468/blmvxk accessed via GBIF.org on
+        2017-06-01.","numberRecords":4277,"download":{"key":"0032055-190918142434337","doi":"10.15468/dl.oynec4","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"sendNotification":true,"format":"SPECIES_LIST"},"created":"2019-10-30T02:51:25.630+0000","modified":"2019-10-30T03:00:24.826+0000","eraseAfter":"2020-04-30T02:51:25.326+0000","status":"SUCCEEDED","downloadLink":"http://api.gbif.org/v1/occurrence/download/request/0032055-190918142434337.zip","size":238053603,"totalRecords":3261795,"numberDatasets":25669}},{"downloadKey":"0032014-190918142434337","datasetKey":"7f2edc10-f762-11e1-a439-00145eb45e9a","datasetTitle":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM","datasetDOI":"10.15468/blmvxk","datasetCitation":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM. Carl Faust Foundation.
+        Occurrence Dataset https://doi.org/10.15468/blmvxk accessed via GBIF.org on
+        2017-06-01.","numberRecords":15,"download":{"key":"0032014-190918142434337","doi":"10.15468/dl.ardtnu","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"equals","key":"TAXON_KEY","value":"2650583"},"sendNotification":true,"format":"SIMPLE_CSV"},"created":"2019-10-30T01:30:33.815+0000","modified":"2019-10-30T01:35:34.192+0000","eraseAfter":"2020-04-30T01:30:33.747+0000","status":"SUCCEEDED","downloadLink":"http://api.gbif.org/v1/occurrence/download/request/0032014-190918142434337.zip","size":68000584,"totalRecords":878634,"numberDatasets":1079}},{"downloadKey":"0031893-190918142434337","datasetKey":"7f2edc10-f762-11e1-a439-00145eb45e9a","datasetTitle":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM","datasetDOI":"10.15468/blmvxk","datasetCitation":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM. Carl Faust Foundation.
+        Occurrence Dataset https://doi.org/10.15468/blmvxk accessed via GBIF.org on
+        2017-06-01.","numberRecords":4277,"download":{"key":"0031893-190918142434337","doi":"10.15468/dl.ejxjtj","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"sendNotification":true,"format":"SPECIES_LIST"},"created":"2019-10-29T19:47:42.006+0000","modified":"2019-10-29T20:02:00.189+0000","eraseAfter":"2020-04-29T19:47:41.930+0000","status":"SUCCEEDED","downloadLink":"http://api.gbif.org/v1/occurrence/download/request/0031893-190918142434337.zip","size":238039103,"totalRecords":3261581,"numberDatasets":25654}},{"downloadKey":"0031832-190918142434337","datasetKey":"7f2edc10-f762-11e1-a439-00145eb45e9a","datasetTitle":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM","datasetDOI":"10.15468/blmvxk","datasetCitation":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM. Carl Faust Foundation.
+        Occurrence Dataset https://doi.org/10.15468/blmvxk accessed via GBIF.org on
+        2017-06-01.","numberRecords":1,"download":{"key":"0031832-190918142434337","doi":"10.15468/dl.jdsryw","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"equals","key":"TAXON_KEY","value":"5289534"},"sendNotification":true,"format":"SIMPLE_CSV"},"created":"2019-10-29T18:18:56.937+0000","modified":"2019-10-29T18:20:26.089+0000","eraseAfter":"2020-04-29T18:18:56.876+0000","status":"SUCCEEDED","downloadLink":"http://api.gbif.org/v1/occurrence/download/request/0031832-190918142434337.zip","size":1025515,"totalRecords":14727,"numberDatasets":377}},{"downloadKey":"0031821-190918142434337","datasetKey":"7f2edc10-f762-11e1-a439-00145eb45e9a","datasetTitle":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM","datasetDOI":"10.15468/blmvxk","datasetCitation":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM. Carl Faust Foundation.
+        Occurrence Dataset https://doi.org/10.15468/blmvxk accessed via GBIF.org on
+        2017-06-01.","numberRecords":4028,"download":{"key":"0031821-190918142434337","doi":"10.15468/dl.7ln1mu","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"or","predicates":[{"type":"equals","key":"MONTH","value":"1"},{"type":"equals","key":"MONTH","value":"2"},{"type":"equals","key":"MONTH","value":"3"},{"type":"equals","key":"MONTH","value":"4"},{"type":"equals","key":"MONTH","value":"5"},{"type":"equals","key":"MONTH","value":"6"},{"type":"equals","key":"MONTH","value":"7"},{"type":"equals","key":"MONTH","value":"8"},{"type":"equals","key":"MONTH","value":"9"},{"type":"equals","key":"MONTH","value":"10"},{"type":"equals","key":"MONTH","value":"11"},{"type":"equals","key":"MONTH","value":"12"}]},"sendNotification":true,"format":"SIMPLE_CSV"},"created":"2019-10-29T18:04:51.000+0000","modified":"2019-10-29T18:39:33.261+0000","eraseAfter":"2020-04-29T18:04:50.937+0000","status":"SUCCEEDED","downloadLink":"http://api.gbif.org/v1/occurrence/download/request/0031821-190918142434337.zip","size":111399254782,"totalRecords":1219895387,"numberDatasets":22177}},{"downloadKey":"0031811-190918142434337","datasetKey":"7f2edc10-f762-11e1-a439-00145eb45e9a","datasetTitle":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM","datasetDOI":"10.15468/blmvxk","datasetCitation":"Fundación
+        Carl Faust: Herbario del Jardí Botànic Marimurtra: HMIM. Carl Faust Foundation.
+        Occurrence Dataset https://doi.org/10.15468/blmvxk accessed via GBIF.org on
+        2017-06-01.","numberRecords":2902,"download":{"key":"0031811-190918142434337","doi":"10.15468/dl.vgljfz","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"or","predicates":[{"type":"equals","key":"MONTH","value":"1"},{"type":"equals","key":"MONTH","value":"2"},{"type":"equals","key":"MONTH","value":"3"},{"type":"equals","key":"MONTH","value":"4"},{"type":"equals","key":"MONTH","value":"5"},{"type":"equals","key":"MONTH","value":"6"}]},"sendNotification":true,"format":"SIMPLE_CSV"},"created":"2019-10-29T17:54:06.546+0000","modified":"2019-10-29T18:11:41.459+0000","eraseAfter":"2020-04-29T17:54:06.488+0000","status":"SUCCEEDED","downloadLink":"http://api.gbif.org/v1/occurrence/download/request/0031811-190918142434337.zip","size":59563286062,"totalRecords":659727743,"numberDatasets":16912}}]}'
+  recorded_at: 2019-10-30 21:17:28 GMT
+  recorded_with: vcr/0.3.0, webmockr/0.4.0

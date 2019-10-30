@@ -6,11 +6,16 @@
 #' Details.
 #' @param pwd (character) User password within GBIF's website. Required. See
 #' Details.
-#' @param limit Number of records to return. Default: 20
-#' @param start Record number to start at. Default: 0
 #' @template occ
+#' @template downloadlimstart
 #' @note see [downloads] for an overview of GBIF downloads methods
-#'
+#' @return a list with two slots:
+#' 
+#' - meta: a single row data.frame with columns: `offset`, `limit`,
+#' `endofrecords`, `count`
+#' - results: a tibble with the nested data flattened, with many 
+#' columns with the same `request.` prefix
+#' 
 #' @examples \dontrun{
 #' occ_download_list(user="sckott")
 #' occ_download_list(user="sckott", limit = 5)
@@ -20,6 +25,8 @@
 occ_download_list <- function(user = NULL, pwd = NULL, limit = 20, start = 0,
   curlopts = list()) {
 
+  assert(limit, c("integer", "numeric"))
+  assert(start, c("integer", "numeric"))
   user <- check_user(user)
   pwd <- check_pwd(pwd)
   stopifnot(!is.null(user), !is.null(pwd))
@@ -34,16 +41,12 @@ occ_download_list <- function(user = NULL, pwd = NULL, limit = 20, start = 0,
     )
   )
   res <- cli$get(query = args)
+  if (res$status_code > 203) {
+    if (length(res$content) == 0) res$raise_for_status()
+    stop(res$parse("UTF-8"), call. = FALSE)
+  }
   tt <- res$parse("UTF-8")
   out <- jsonlite::fromJSON(tt, flatten = TRUE)
   out$results$size <- getsize(out$results$size)
-  list(
-    meta = data.frame(offset = out$offset, limit = out$limit,
-                      endofrecords = out$endOfRecords, count = out$count),
-    results = out$results
-  )
-}
-
-getsize <- function(x) {
-  round(x/10 ^ 6, 2)
+  prep_output(out)
 }
