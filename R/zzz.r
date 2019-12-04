@@ -685,3 +685,18 @@ setdfrbind <- function(x) {
   (data.table::setDF(
     data.table::rbindlist(x, use.names = TRUE, fill = TRUE)))
 }
+
+asl <- function(z) {
+  if (is.null(z)) return(z)
+  if (
+    is.logical(z) || tolower(z) == "true" || tolower(z) == "false"
+  ) {
+    if (z) {
+      return("true")
+    } else {
+      return("false")
+    }
+  } else {
+    return(z)
+  }
+}

@@ -13,7 +13,7 @@ test_that("count_facet", {
 
     # get occurrences by georeferenced state
     d <- count_facet(by='georeferenced')
-  }, preserve_exact_body_bytes = TRUE)
+  })
   
   expect_is(a, "data.frame")
   expect_is(b, "data.frame")

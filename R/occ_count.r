@@ -124,7 +124,7 @@ occ_count <- function(taxonKey = NULL, georeferenced = NULL,
 
   args <- rgbif_compact(
     list(
-      taxonKey=taxonKey, isGeoreferenced=georeferenced,
+      taxonKey=taxonKey, isGeoreferenced=asl(georeferenced),
       basisOfRecord=basisOfRecord, datasetKey=datasetKey,
       date=date, typeStatus=typeStatus,
       country=country, year=year, protocol=protocol))
