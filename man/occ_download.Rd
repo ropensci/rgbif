@@ -120,7 +120,7 @@ you should not get any results if you supply WKT that has clockwise
 winding order.
 
 also note that \code{\link[=occ_search]{occ_search()}}/\code{\link[=occ_data]{occ_data()}} behave differently with
-respect to WKT in that you can supply counter-clockwise WKT to those
+respect to WKT in that you can supply clockwise WKT to those
 functions but they treat it as an exclusion, so get all data not
 inside the WKT area.
 }
