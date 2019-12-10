@@ -22,7 +22,7 @@ Authors@R: c(
     )
 URL: https://github.com/ropensci/rgbif (devel),
     https://docs.ropensci.org/rgbif (documentation),
-    https://ropenscilabs.github.io/occurrence-manual/ (user manual)
+    https://books.ropensci.org/occurrences/ (user manual)
 BugReports: https://github.com/ropensci/rgbif/issues
 LazyData: true
 LazyLoad: true

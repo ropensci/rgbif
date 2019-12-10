@@ -27,7 +27,7 @@ To get started, see:
 * [rgbif vignette](https://docs.ropensci.org/rgbif/articles/rgbif.html): an introduction to the package's main functionalities.
 * [Function reference](https://docs.ropensci.org/rgbif/reference/index.html): an overview of all `rgbif` functions.
 * [Articles](https://docs.ropensci.org/rgbif/articles/index.html): vignettes/tutorials on how to download data, clean data, and work with taxonomic names.
-* [Occurrence manual](https://ropenscilabs.github.io/occurrence-manual/): a book covering a suite of R packages used for working with biological occurrence data.
+* [Occurrence manual](https://books.ropensci.org/occurrences/): a book covering a suite of R packages used for working with biological occurrence data.
 
 Check out the `rgbif` [paper][] for more information on this package and the sister [Python][pygbif] and [Ruby][gbifrb] clients.
 
