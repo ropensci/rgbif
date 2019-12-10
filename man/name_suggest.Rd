@@ -4,8 +4,15 @@
 \alias{name_suggest}
 \title{Suggest up to 20 name usages.}
 \usage{
-name_suggest(q = NULL, datasetKey = NULL, rank = NULL,
-  fields = NULL, start = NULL, limit = 100, curlopts = list())
+name_suggest(
+  q = NULL,
+  datasetKey = NULL,
+  rank = NULL,
+  fields = NULL,
+  start = NULL,
+  limit = 100,
+  curlopts = list()
+)
 }
 \arguments{
 \item{q}{(character, required) Simple search parameter. The value for

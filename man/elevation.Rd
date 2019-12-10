@@ -4,9 +4,17 @@
 \alias{elevation}
 \title{Get elevation for lat/long points from a data.frame or list of points.}
 \usage{
-elevation(input = NULL, latitude = NULL, longitude = NULL,
-  latlong = NULL, elevation_model = "srtm3",
-  username = Sys.getenv("GEONAMES_USER"), key, curlopts, ...)
+elevation(
+  input = NULL,
+  latitude = NULL,
+  longitude = NULL,
+  latlong = NULL,
+  elevation_model = "srtm3",
+  username = Sys.getenv("GEONAMES_USER"),
+  key,
+  curlopts,
+  ...
+)
 }
 \arguments{
 \item{input}{A data.frame of lat/long data. There must be columns

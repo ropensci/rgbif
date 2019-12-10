@@ -4,23 +4,59 @@
 \alias{occ_data}
 \title{Search for GBIF occurrences - simplified for speed}
 \usage{
-occ_data(taxonKey = NULL, scientificName = NULL, country = NULL,
-  publishingCountry = NULL, hasCoordinate = NULL, typeStatus = NULL,
-  recordNumber = NULL, lastInterpreted = NULL, continent = NULL,
-  geometry = NULL, geom_big = "asis", geom_size = 40, geom_n = 10,
-  recordedBy = NULL, basisOfRecord = NULL, datasetKey = NULL,
-  eventDate = NULL, catalogNumber = NULL, year = NULL,
-  month = NULL, decimalLatitude = NULL, decimalLongitude = NULL,
-  elevation = NULL, depth = NULL, institutionCode = NULL,
-  collectionCode = NULL, hasGeospatialIssue = NULL, issue = NULL,
-  search = NULL, mediaType = NULL, subgenusKey = NULL,
-  repatriated = NULL, phylumKey = NULL, kingdomKey = NULL,
-  classKey = NULL, orderKey = NULL, familyKey = NULL,
-  genusKey = NULL, establishmentMeans = NULL, protocol = NULL,
-  license = NULL, organismId = NULL, publishingOrg = NULL,
-  stateProvince = NULL, waterBody = NULL, locality = NULL,
-  limit = 500, start = 0, spellCheck = NULL, skip_validate = TRUE,
-  curlopts = list())
+occ_data(
+  taxonKey = NULL,
+  scientificName = NULL,
+  country = NULL,
+  publishingCountry = NULL,
+  hasCoordinate = NULL,
+  typeStatus = NULL,
+  recordNumber = NULL,
+  lastInterpreted = NULL,
+  continent = NULL,
+  geometry = NULL,
+  geom_big = "asis",
+  geom_size = 40,
+  geom_n = 10,
+  recordedBy = NULL,
+  basisOfRecord = NULL,
+  datasetKey = NULL,
+  eventDate = NULL,
+  catalogNumber = NULL,
+  year = NULL,
+  month = NULL,
+  decimalLatitude = NULL,
+  decimalLongitude = NULL,
+  elevation = NULL,
+  depth = NULL,
+  institutionCode = NULL,
+  collectionCode = NULL,
+  hasGeospatialIssue = NULL,
+  issue = NULL,
+  search = NULL,
+  mediaType = NULL,
+  subgenusKey = NULL,
+  repatriated = NULL,
+  phylumKey = NULL,
+  kingdomKey = NULL,
+  classKey = NULL,
+  orderKey = NULL,
+  familyKey = NULL,
+  genusKey = NULL,
+  establishmentMeans = NULL,
+  protocol = NULL,
+  license = NULL,
+  organismId = NULL,
+  publishingOrg = NULL,
+  stateProvince = NULL,
+  waterBody = NULL,
+  locality = NULL,
+  limit = 500,
+  start = 0,
+  spellCheck = NULL,
+  skip_validate = TRUE,
+  curlopts = list()
+)
 }
 \arguments{
 \item{taxonKey}{(numeric) A taxon key from the GBIF backbone. All included and synonym taxa
@@ -421,9 +457,9 @@ occ_data(taxonKey = key, limit = 4)
 occ_data(taxonKey=key, limit=20)
 
 # Instead of getting a taxon key first, you can search for a name directly
-## However, note that using this approach (with \\code{scientificName="..."})
-## you are getting synonyms too. The results for using \\code{scientifcName}
-## and \\code{taxonKey} parameters are the same in this case, but I wouldn't
+## However, note that using this approach (with \code{scientificName="..."})
+## you are getting synonyms too. The results for using \code{scientifcName}
+## and \code{taxonKey} parameters are the same in this case, but I wouldn't
 ## be surprised if for some names they return different results
 occ_data(scientificName = 'Ursus americanus', curlopts=list(verbose=TRUE))
 key <- name_backbone(name = 'Ursus americanus', rank='species')$usageKey
@@ -467,7 +503,7 @@ occ_data(taxonKey=2433407, limit=20,
   curlopts = list(
     noprogress = FALSE,
     progressfunction = function(down, up) {
-      cat(sprintf("up: \%d | down \%d\\n", up, down))
+      cat(sprintf("up: \%d | down \%d\n", up, down))
       return(TRUE)
     }
   )
@@ -498,7 +534,7 @@ occ_data(geometry='POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))',
 ### multipolygon
 wkt <- 'MULTIPOLYGON(((-123 38,-116 38,-116 43,-123 43,-123 38)),
    ((-97 41,-93 41,-93 45,-97 45,-97 41)))'
-occ_data(geometry = gsub("\\n\\\\s+", "", wkt), limit = 20)
+occ_data(geometry = gsub("\n\\\\s+", "", wkt), limit = 20)
 ### polygon and taxonkey
 key <- name_suggest(q='Aesculus hippocastanum')$key[1]
 occ_data(taxonKey=key,
@@ -555,7 +591,7 @@ wkt <- "POLYGON((-9.178796777343678 53.22769021556159,
 -13.573328027343678 53.437631551347174,
 -11.288171777343678 53.48995552517918,
 -9.178796777343678 53.22769021556159))"
-wkt <- gsub("\\n", " ", wkt)
+wkt <- gsub("\n", " ", wkt)
 
 #### Default option with large WKT string fails
 # res <- occ_data(geometry = wkt)

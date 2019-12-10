@@ -4,12 +4,26 @@
 \alias{map_fetch}
 \title{Fetch aggregated density maps of GBIF occurrences}
 \usage{
-map_fetch(source = "density", x = 0, y = 0, z = 0,
-  format = "@1x.png", srs = "EPSG:4326", bin = NULL,
-  hexPerTile = NULL, squareSize = NULL, style = "classic.point",
-  taxonKey = NULL, datasetKey = NULL, country = NULL,
-  publishingOrg = NULL, publishingCountry = NULL, year = NULL,
-  basisOfRecord = NULL, ...)
+map_fetch(
+  source = "density",
+  x = 0,
+  y = 0,
+  z = 0,
+  format = "@1x.png",
+  srs = "EPSG:4326",
+  bin = NULL,
+  hexPerTile = NULL,
+  squareSize = NULL,
+  style = "classic.point",
+  taxonKey = NULL,
+  datasetKey = NULL,
+  country = NULL,
+  publishingOrg = NULL,
+  publishingCountry = NULL,
+  year = NULL,
+  basisOfRecord = NULL,
+  ...
+)
 }
 \arguments{
 \item{source}{(character) Either \code{density} for fast, precalculated tiles,
@@ -23,11 +37,11 @@ or \code{adhoc} for any search. Default: \code{density}}
 
 \item{format}{(character) The data format, one of:
 \itemize{
-\item \code{@Hx.png} for a 256px raster tile
-\item \code{@1x.png} for a 512px raster tile (the default)
-\item \code{@2x.png} for a 1024px raster tile
-\item \code{@3x.png} for a 2048px raster tile
-\item \code{@4x.png} for a 4096px raster tile
+\item \verb{@Hx.png} for a 256px raster tile
+\item \verb{@1x.png} for a 512px raster tile (the default)
+\item \verb{@2x.png} for a 1024px raster tile
+\item \verb{@3x.png} for a 2048px raster tile
+\item \verb{@4x.png} for a 4096px raster tile
 }}
 
 \item{srs}{(character) Spatial reference system. One of:

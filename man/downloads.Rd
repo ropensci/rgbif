@@ -5,10 +5,10 @@
 \title{Downloads interface}
 \description{
 GBIF provides two ways to get occurrence data: through the
-\code{/occurrence/search} route (see \code{\link[=occ_search]{occ_search()}}),
-or via the \code{/occurrence/download} route (many functions, see below).
+\verb{/occurrence/search} route (see \code{\link[=occ_search]{occ_search()}}),
+or via the \verb{/occurrence/download} route (many functions, see below).
 \code{\link[=occ_search]{occ_search()}} is more appropriate for smaller data, while
-\code{occ_download*()} functions are more appropriate for larger data requests.
+\verb{occ_download*()} functions are more appropriate for larger data requests.
 }
 \section{Settings}{
 

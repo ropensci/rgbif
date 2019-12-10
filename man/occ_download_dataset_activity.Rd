@@ -4,8 +4,12 @@
 \alias{occ_download_dataset_activity}
 \title{Lists the downloads activity of a dataset}
 \usage{
-occ_download_dataset_activity(dataset, limit = 20, start = 0,
-  curlopts = list())
+occ_download_dataset_activity(
+  dataset,
+  limit = 20,
+  start = 0,
+  curlopts = list()
+)
 }
 \arguments{
 \item{dataset}{(character) A dataset key}

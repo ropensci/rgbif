@@ -4,11 +4,24 @@
 \alias{dataset_search}
 \title{Search datasets in GBIF.}
 \usage{
-dataset_search(query = NULL, country = NULL, type = NULL,
-  keyword = NULL, publishingOrg = NULL, hostingOrg = NULL,
-  publishingCountry = NULL, decade = NULL, facet = NULL,
-  facetMincount = NULL, facetMultiselect = NULL, limit = 100,
-  start = NULL, pretty = FALSE, return = "all", curlopts = list())
+dataset_search(
+  query = NULL,
+  country = NULL,
+  type = NULL,
+  keyword = NULL,
+  publishingOrg = NULL,
+  hostingOrg = NULL,
+  publishingCountry = NULL,
+  decade = NULL,
+  facet = NULL,
+  facetMincount = NULL,
+  facetMultiselect = NULL,
+  limit = 100,
+  start = NULL,
+  pretty = FALSE,
+  return = "all",
+  curlopts = list()
+)
 }
 \arguments{
 \item{query}{Query term(s) for full text search.  The value for this

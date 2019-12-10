@@ -4,11 +4,22 @@
 \alias{occ_count}
 \title{Get number of occurrence records.}
 \usage{
-occ_count(taxonKey = NULL, georeferenced = NULL,
-  basisOfRecord = NULL, datasetKey = NULL, date = NULL,
-  typeStatus = NULL, country = NULL, year = NULL, from = 2000,
-  to = 2012, type = "count", publishingCountry = "US",
-  protocol = NULL, curlopts = list())
+occ_count(
+  taxonKey = NULL,
+  georeferenced = NULL,
+  basisOfRecord = NULL,
+  datasetKey = NULL,
+  date = NULL,
+  typeStatus = NULL,
+  country = NULL,
+  year = NULL,
+  from = 2000,
+  to = 2012,
+  type = "count",
+  publishingCountry = "US",
+  protocol = NULL,
+  curlopts = list()
+)
 }
 \arguments{
 \item{taxonKey}{Species key}

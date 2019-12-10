@@ -12,11 +12,25 @@
 \usage{
 gbif_oai_identify(...)
 
-gbif_oai_list_identifiers(prefix = "oai_dc", from = NULL,
-  until = NULL, set = NULL, token = NULL, as = "df", ...)
+gbif_oai_list_identifiers(
+  prefix = "oai_dc",
+  from = NULL,
+  until = NULL,
+  set = NULL,
+  token = NULL,
+  as = "df",
+  ...
+)
 
-gbif_oai_list_records(prefix = "oai_dc", from = NULL, until = NULL,
-  set = NULL, token = NULL, as = "df", ...)
+gbif_oai_list_records(
+  prefix = "oai_dc",
+  from = NULL,
+  until = NULL,
+  set = NULL,
+  token = NULL,
+  as = "df",
+  ...
+)
 
 gbif_oai_list_metadataformats(id = NULL, ...)
 

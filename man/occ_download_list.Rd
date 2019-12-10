@@ -4,8 +4,13 @@
 \alias{occ_download_list}
 \title{Lists the downloads created by a user.}
 \usage{
-occ_download_list(user = NULL, pwd = NULL, limit = 20, start = 0,
-  curlopts = list())
+occ_download_list(
+  user = NULL,
+  pwd = NULL,
+  limit = 20,
+  start = 0,
+  curlopts = list()
+)
 }
 \arguments{
 \item{user}{(character) User name within GBIF's website. Required. See
