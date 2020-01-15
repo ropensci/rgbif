@@ -448,8 +448,8 @@ parse_pred <- function(key, value, type = "and") {
   
   if (
     is.character(value) &&
-    grepl("polygon|multipolygon|linestring|multilinestring|point|mulitpoint",
-           value, ignore.case = TRUE)
+    all(grepl("polygon|multipolygon|linestring|multilinestring|point|mulitpoint",
+      value, ignore.case = TRUE))
   ) {
     list(type = "within", geometry = unbox(as.character(value)))
   } else if (type == "in") {
