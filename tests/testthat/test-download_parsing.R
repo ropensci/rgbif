@@ -80,6 +80,6 @@ test_that("occ_download input parsing", {
 test_that("parse_predicates fails well", {
   expect_error(
     parse_predicates(user, email, type, "DWCA", 'hasCoordinate = TRUE'),
-    "all objects must be of class occ_predicate"
+    "all inputs must be"
   )
 })

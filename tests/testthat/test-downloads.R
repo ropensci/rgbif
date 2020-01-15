@@ -51,7 +51,7 @@ test_that("GbifQueue works with occ_download_prep inputs", {
   skip_on_cran()
 
   z <- occ_download_prep(
-    pred_multi("basisOfRecord", c("HUMAN_OBSERVATION", "OBSERVATION"), "in"),
+    pred_multi(key="basisOfRecord", value=c("HUMAN_OBSERVATION", "OBSERVATION"), type="in"),
     pred("hasCoordinate", TRUE),
     pred("hasGeospatialIssue", FALSE),
     pred("year", 1993),
@@ -111,7 +111,7 @@ test_that("occ_download fails well when user does not give strings as inputs to 
   expect_error(
     occ_download(taxonKey = 5039705, hasCoordinate = T,
       basisOfRecord = "Preserved_Specimen"),
-    "all objects must be of class occ_predicate"
+    "all inputs must be"
   )
 })
 
