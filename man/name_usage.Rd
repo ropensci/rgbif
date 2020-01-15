@@ -4,9 +4,20 @@
 \alias{name_usage}
 \title{Lookup details for specific names in all taxonomies in GBIF.}
 \usage{
-name_usage(key = NULL, name = NULL, data = "all", language = NULL,
-  datasetKey = NULL, uuid = NULL, rank = NULL, shortname = NULL,
-  start = 0, limit = 100, return = "all", curlopts = list())
+name_usage(
+  key = NULL,
+  name = NULL,
+  data = "all",
+  language = NULL,
+  datasetKey = NULL,
+  uuid = NULL,
+  rank = NULL,
+  shortname = NULL,
+  start = 0,
+  limit = 100,
+  return = "all",
+  curlopts = list()
+)
 }
 \arguments{
 \item{key}{(numeric or character) A GBIF key for a taxon}

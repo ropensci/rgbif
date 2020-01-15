@@ -4,11 +4,25 @@
 \alias{mvt_fetch}
 \title{Fetch Map Vector Tiles (MVT)}
 \usage{
-mvt_fetch(source = "density", x = 0, y = 0, z = 0,
-  srs = "EPSG:4326", bin = NULL, hexPerTile = NULL,
-  squareSize = NULL, style = "classic.point", taxonKey = NULL,
-  datasetKey = NULL, country = NULL, publishingOrg = NULL,
-  publishingCountry = NULL, year = NULL, basisOfRecord = NULL, ...)
+mvt_fetch(
+  source = "density",
+  x = 0,
+  y = 0,
+  z = 0,
+  srs = "EPSG:4326",
+  bin = NULL,
+  hexPerTile = NULL,
+  squareSize = NULL,
+  style = "classic.point",
+  taxonKey = NULL,
+  datasetKey = NULL,
+  country = NULL,
+  publishingOrg = NULL,
+  publishingCountry = NULL,
+  year = NULL,
+  basisOfRecord = NULL,
+  ...
+)
 }
 \arguments{
 \item{source}{(character) Either \code{density} for fast, precalculated tiles,
@@ -133,7 +147,3 @@ https://www.gbif.org/developer/maps
 \seealso{
 \code{\link[=map_fetch]{map_fetch()}}
 }
-\keyword{GBIF}
-\keyword{map,}
-\keyword{tile,}
-\keyword{web}

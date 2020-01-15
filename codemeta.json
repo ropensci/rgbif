@@ -10,14 +10,14 @@
   "codeRepository": "https://github.com/ropensci/rgbif",
   "issueTracker": "https://github.com/ropensci/rgbif/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.3.0.9130",
+  "version": "1.4.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.6.0",
+    "version": "3.6.1",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.6.0 Patched (2019-04-30 r76446)",
+  "runtimePlatform": "R version 3.6.1 Patched (2019-09-23 r77210)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -31,6 +31,12 @@
       "familyName": "Chamberlain",
       "email": "myrmecocystus@gmail.com",
       "@id": "https://orcid.org/0000-0003-1444-9135"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Damiano",
+      "familyName": "Oldoni",
+      "@id": "https://orcid.org/0000-0003-3445-7562"
     }
   ],
   "contributor": [
@@ -56,12 +62,6 @@
       "givenName": "Dan",
       "familyName": "Mcglinn",
       "@id": "https://orcid.org/0000-0003-2359-3526"
-    },
-    {
-      "@type": "Person",
-      "givenName": "Damiano",
-      "familyName": "Oldoni",
-      "@id": "https://orcid.org/0000-0003-3445-7562"
     },
     {
       "@type": "Person",
@@ -151,6 +151,31 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=raster"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "protolite",
+      "name": "protolite",
+      "version": ">= 2.0",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=protolite"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "sf",
+      "name": "sf",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=sf"
     },
     {
       "@type": "SoftwareApplication",
@@ -318,7 +343,7 @@
   "contIntegration": "https://travis-ci.org/ropensci/rgbif",
   "releaseNotes": "https://github.com/ropensci/rgbif/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/rgbif/blob/master/README.md",
-  "fileSize": "5515.827KB",
+  "fileSize": "5530.225KB",
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://ropensci.org",
   "keywords": ["GBIF", "specimens", "API", "web-services", "occurrences", "species", "taxonomy", "gbif", "api", "data", "biodiversity", "rstats", "r", "spocc", "r-package", "lifewatch", "oscibio"],
@@ -397,7 +422,9 @@
   "relatedLink": [
     "https://ropensci.github.io/occurrence-manual/",
     "https://ropensci.github.io/rgbif",
-    "https://ropensci.github.io/occurrence-manual"
+    "https://ropensci.github.io/occurrence-manual",
+    "https://docs.ropensci.org/rgbif",
+    "https://ropenscilabs.github.io/occurrence-manual/"
   ],
   "copyrightHolder": {},
   "funder": {}

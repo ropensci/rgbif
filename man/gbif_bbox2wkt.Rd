@@ -6,8 +6,7 @@
 \title{Convert a bounding box to a Well Known Text polygon, and a WKT to a
 bounding box}
 \usage{
-gbif_bbox2wkt(minx = NA, miny = NA, maxx = NA, maxy = NA,
-  bbox = NULL)
+gbif_bbox2wkt(minx = NA, miny = NA, maxx = NA, maxy = NA, bbox = NULL)
 
 gbif_wkt2bbox(wkt = NULL)
 }

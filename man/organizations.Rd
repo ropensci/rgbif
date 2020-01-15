@@ -4,8 +4,14 @@
 \alias{organizations}
 \title{Organizations metadata.}
 \usage{
-organizations(data = "all", uuid = NULL, query = NULL, limit = 100,
-  start = NULL, curlopts = list())
+organizations(
+  data = "all",
+  uuid = NULL,
+  query = NULL,
+  limit = 100,
+  start = NULL,
+  curlopts = list()
+)
 }
 \arguments{
 \item{data}{(character) The type of data to get. One or more of:

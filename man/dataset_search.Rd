@@ -4,11 +4,24 @@
 \alias{dataset_search}
 \title{Search datasets in GBIF.}
 \usage{
-dataset_search(query = NULL, country = NULL, type = NULL,
-  keyword = NULL, publishingOrg = NULL, hostingOrg = NULL,
-  publishingCountry = NULL, decade = NULL, facet = NULL,
-  facetMincount = NULL, facetMultiselect = NULL, limit = 100,
-  start = NULL, pretty = FALSE, return = "all", curlopts = list())
+dataset_search(
+  query = NULL,
+  country = NULL,
+  type = NULL,
+  keyword = NULL,
+  publishingOrg = NULL,
+  hostingOrg = NULL,
+  publishingCountry = NULL,
+  decade = NULL,
+  facet = NULL,
+  facetMincount = NULL,
+  facetMultiselect = NULL,
+  limit = 100,
+  start = NULL,
+  pretty = FALSE,
+  return = "all",
+  curlopts = list()
+)
 }
 \arguments{
 \item{query}{Query term(s) for full text search.  The value for this
@@ -48,14 +61,11 @@ nomenclaturalStatus are legal values but not yet implemented, so data will
 not yet be returned for them.}
 
 \item{facetMincount}{Used in combination with the facet parameter. Set
-\code{facetMincount={#}} to exclude facets with a count less than {#}, e.g.
-http://bit.ly/1bMdByP only shows the type value 'ACCEPTED' because the other
-statuses have counts less than 7,000,000}
+\code{facetMincount={#}} to exclude facets with a count less than {#}}
 
 \item{facetMultiselect}{Used in combination with the facet parameter. Set
 facetMultiselect=true to still return counts for values that are not
-currently filtered, e.g. http://bit.ly/19YLXPO still shows all status
-values even though status is being filtered by \code{status=ACCEPTED}}
+currently filtered}
 
 \item{limit}{Number of records to return. Default: 100. Maximum: 1000.}
 

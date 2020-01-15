@@ -55,7 +55,7 @@ Then pass to `occ_search()`
 
 ```r
 (res <- occ_search(taxonKey=key, limit=100))
-#> Records found [45458] 
+#> Records found [45844] 
 #> Records returned [100] 
 #> No. unique hierarchies [1] 
 #> No. media records [84] 
@@ -175,7 +175,7 @@ Now that we know a bit about GBIF issues, you can parse your data based on issue
 ```r
 res %>%
   occ_issues(gass84)
-#> Records found [45458] 
+#> Records found [45844] 
 #> Records returned [99] 
 #> No. unique hierarchies [1] 
 #> No. media records [84] 
@@ -237,7 +237,7 @@ Next, we can remove data with certain issues just as easily by using a `-` sign 
 ```r
 res %>%
   occ_issues(-depunl, -mdatunl)
-#> Records found [45458] 
+#> Records found [45844] 
 #> Records returned [100] 
 #> No. unique hierarchies [1] 
 #> No. media records [84] 

@@ -1,0 +1,36 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/download/user/foobar?limit=20&offset=0
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      User-Agent: r-curl/4.2 crul/0.8.4 rOpenSci(rgbif/1.4.0.9100)
+      X-USER-AGENT: r-curl/4.2 crul/0.8.4 rOpenSci(rgbif/1.4.0.9100)
+      Content-Type: application/json
+      Accept: application/json
+  response:
+    status:
+      status_code: '401'
+      message: Unauthorized
+      explanation: No permission -- see authorization schemes
+    headers:
+      status: HTTP/1.1 401 Unauthorized
+      date: Wed, 30 Oct 2019 21:39:53 GMT
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      www-authenticate: Basic realm="GBIF"
+      content-length: '0'
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: no-cache, no-store, must-revalidate
+      x-varnish: '777028053'
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: 2019-10-30 21:39:52 GMT
+  recorded_with: vcr/0.3.0, webmockr/0.4.0

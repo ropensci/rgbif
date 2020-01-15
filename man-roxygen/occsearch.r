@@ -54,7 +54,7 @@
 #' @param geometry Searches for occurrences inside a polygon described in Well Known
 #'    Text (WKT) format. A WKT shape written as either POINT, LINESTRING, LINEARRING
 #'    POLYGON, or MULTIPOLYGON. Example of a polygon: POLYGON((30.1 10.1, 20, 20 40, 40 40, 30.1 10.1))
-#'    would be queried as <http://bit.ly/1BzNwDq>. See also the section **WKT** below.
+#'    would be queried as http://bit.ly/1BzNwDq See also the section **WKT** below.
 #' @param geom_big (character) One of "axe", "bbox", or "asis" (default). See Details.
 #' @param geom_size (integer) An integer indicating size of the cell. Default: 40. See Details.
 #' @param geom_n (integer) An integer indicating number of cells in each dimension. Default: 10.

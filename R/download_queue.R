@@ -1,36 +1,7 @@
-#' GBIF download queue
-#'
+#' @title GbifQueue
+#' @description GBIF download queue
 #' @export
 #' @keywords internal
-#' @param ... any number of [occ_download()] requests
-#' @param .list any number of [occ_download()] requests as `lazy`
-#' objects, called with e.g., `lazyeval::lazy()`
-#' @details
-#' **Methods**
-#'   \describe{
-#'     \item{`add(x)`}{
-#'       Add single jobs to the queue
-#'     }
-#'     \item{`add_all()`}{
-#'       Add all jobs to the queue
-#'     }
-#'     \item{`remove(x)`}{
-#'       Remove a job from the queue
-#'     }
-#'     \item{`jobs()`}{
-#'       Give number of jobs in the `queue`
-#'     }
-#'     \item{`next_()`}{
-#'       Get the next job in the `queue`. if no more jobs, returns
-#'       empty list
-#'     }
-#'     \item{`last_()`}{
-#'       Get the last job in the `queue`. if no more jobs, returns
-#'       empty list
-#'     }
-#'   }
-#' @format NULL
-#' @usage NULL
 #' @examples \dontrun{
 #' x <- GbifQueue$new(
 #'   occ_download('taxonKey = 3119195', "year = 1976"),
@@ -48,7 +19,7 @@
 #' x
 #' x$reqs[[1]]$run()
 #' x$reqs[[1]]$result
-#' 
+#'
 #' # pre-prepared download request
 #' z <- occ_download_prep(
 #'   "basisOfRecord = HUMAN_OBSERVATION,OBSERVATION",
@@ -61,12 +32,17 @@
 #' out
 #' out$reqs
 #' }
-
 GbifQueue <- R6::R6Class(
   'GbifQueue',
   public = list(
+    #' @field reqs (list) a named list of objects of class [occ_download()]
     reqs = NULL,
+    #' @field queue (list) holds the queued jobs
+    queue = list(),
 
+    #' @description print method for the `GbifQueue` class
+    #' @param x self
+    #' @param ... ignored
     print = function(x, ...) {
       cat("<GBIF download many queue> ", sep = "\n")
       cat(paste0("  requests (N): ", length(self$reqs)), sep = "\n")
@@ -74,6 +50,11 @@ GbifQueue <- R6::R6Class(
       invisible(self)
     },
 
+    #' @description Create a new `GbifQueue` object
+    #' @param ... any number of [occ_download()] requests
+    #' @param .list any number of [occ_download()] requests as `lazy`
+    #' objects, called with e.g., `lazyeval::lazy()`
+    #' @return A new `GbifQueue` object
     initialize = function(..., .list = list()) {
       ldots <- lazyeval::lazy_dots(...)
       ldots <- c(ldots, .list)
@@ -86,20 +67,31 @@ GbifQueue <- R6::R6Class(
       self$reqs <- stats::setNames(self$reqs, seq_along(self$reqs))
     },
 
+    #' @description Add single jobs to the queue
+    #' @param x an [occ_download()] object
+    #' @return nothing returned; adds job (`x`) to the queue
     add = function(x) {
       self$queue <- c(self$queue,
         stats::setNames(list(x), digest::digest(x$req$req)))
     },
 
+    #' @description Add all jobs to the queue
+    #' @return nothing returned
     add_all = function() {
       if (length(self$reqs) == 0) stop("no jobs to add")
       invisible(lapply(self$reqs, function(z) self$add(z)))
     },
 
+    #' @description Remove a job from the queue
+    #' @param x an [occ_download()] object
+    #' @return nothing returned
     remove = function(x) {
       self$queue[digest::digest(x$req$req)] <- NULL
     },
 
+    #' @description Get the next job in the `queue`. if no more jobs,
+    #' returns empty list
+    #' @return next job or empty list
     next_ = function() {
       if (length(self$queue) > 0) {
         self$queue[1]
@@ -108,6 +100,9 @@ GbifQueue <- R6::R6Class(
       }
     },
 
+    #' @description Get the last job in the `queue`. if no more jobs,
+    #' returns empty list
+    #' @return last job or empty list
     last_ = function() {
       if (length(self$queue) > 0) {
         self$queue[length(self$queue)]
@@ -116,33 +111,16 @@ GbifQueue <- R6::R6Class(
       }
     },
 
-    queue = list(),
+    #' @description Get number of jobs in the `queue`
+    #' @return (integer) number of jobs
     jobs = function() length(self$queue)
   )
 )
 
-#' Download request
-#'
+#' @title DownReq
+#' @description handles single requests for [GbifQueue]
 #' @export
 #' @keywords internal
-#' @param x either a lazy object with an object of class `occ_download`, or an 
-#' object of class `occ_download_prep`
-#' @details
-#' **Methods**
-#'   \describe{
-#'     \item{`new(...)`}{
-#'       initialize request
-#'     }
-#'     \item{`run(...)`}{
-#'       execute http request
-#'     }
-#'     \item{`status(...)`}{
-#'       check http request status
-#'     }
-#'   }
-#'
-#' @format NULL
-#' @usage NULL
 #' @examples \dontrun{
 #' # res <- DownReq$new(occ_download('taxonKey = 3119195', "year = 1991"))
 #' # res
@@ -152,9 +130,9 @@ GbifQueue <- R6::R6Class(
 #' # res$run(keep_track = TRUE)
 #' # requests
 #' # res$status()
-#' 
+#'
 #' # prepared query
-#' res <- DownReq$new(occ_download_prep("basisOfRecord = LITERATURE", 
+#' res <- DownReq$new(occ_download_prep("basisOfRecord = LITERATURE",
 #'   user = "foo", pwd = "bar", email = "foo@bar.com"))
 #' res
 #' # res$run()
@@ -165,10 +143,18 @@ GbifQueue <- R6::R6Class(
 DownReq <- R6::R6Class(
   'DownReq',
   public = list(
+    #' @field req (list) internal holder for the request
     req = NULL,
+    #' @field type (list) type, one of "lazy" (to be lazy evaluated) or "pre"
+    #' (run with `occ_download_exec` internal fxn)
     type = NULL,
+    #' @field result (list) holds the result of the http request
     result = NULL,
 
+    #' @description Create a new `DownReq` object
+    #' @param x either a lazy object with an object of class `occ_download`, or an
+    #' object of class `occ_download_prep`
+    #' @return A new `DownReq` object
     initialize = function(x) {
       if (!inherits(x, "lazy") && !inherits(x, "occ_download_prep")) {
         stop("'x' must be of class lazy or occ_download_prep")
@@ -178,12 +164,17 @@ DownReq <- R6::R6Class(
       if (inherits(self$req, "occ_download_prep")) self$type <- "pre"
     },
 
+    #' @description print method for the `DownReq` class
+    #' @param x self
+    #' @param ... ignored
     print = function(x, ...) {
       cat("<GBIF download single queue> ", sep = "\n")
       print(if (self$type == "lazy") self$req$expr else self$req)
       invisible(self)
     },
 
+    #' @description execute http request
+    #' @return nothing, puts the http response in `$result`
     run = function() {
       if (self$type == "lazy") {
         tmp <- tryCatch(lazyeval::lazy_eval(self$req), error = function(e) e)
@@ -201,6 +192,8 @@ DownReq <- R6::R6Class(
       self$result
     },
 
+    #' @description check http request status
+    #' @return output of [occ_download_meta()]
     status = function() {
       if (is.null(self$result)) {
         stop("run() result is `NULL`, not checking status", call. = FALSE)

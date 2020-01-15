@@ -4,10 +4,21 @@
 \alias{name_backbone}
 \title{Lookup names in the GBIF backbone taxonomy.}
 \usage{
-name_backbone(name, rank = NULL, kingdom = NULL, phylum = NULL,
-  class = NULL, order = NULL, family = NULL, genus = NULL,
-  strict = FALSE, verbose = FALSE, start = NULL, limit = 100,
-  curlopts = list())
+name_backbone(
+  name,
+  rank = NULL,
+  kingdom = NULL,
+  phylum = NULL,
+  class = NULL,
+  order = NULL,
+  family = NULL,
+  genus = NULL,
+  strict = FALSE,
+  verbose = FALSE,
+  start = NULL,
+  limit = 100,
+  curlopts = list()
+)
 }
 \arguments{
 \item{name}{(character) Full scientific name potentially with authorship

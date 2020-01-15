@@ -4,12 +4,29 @@
 \alias{name_lookup}
 \title{Lookup names in all taxonomies in GBIF.}
 \usage{
-name_lookup(query = NULL, rank = NULL, higherTaxonKey = NULL,
-  status = NULL, isExtinct = NULL, habitat = NULL, nameType = NULL,
-  datasetKey = NULL, origin = NULL, nomenclaturalStatus = NULL,
-  limit = 100, start = 0, facet = NULL, facetMincount = NULL,
-  facetMultiselect = NULL, type = NULL, hl = NULL, issue = NULL,
-  verbose = FALSE, return = "all", curlopts = list())
+name_lookup(
+  query = NULL,
+  rank = NULL,
+  higherTaxonKey = NULL,
+  status = NULL,
+  isExtinct = NULL,
+  habitat = NULL,
+  nameType = NULL,
+  datasetKey = NULL,
+  origin = NULL,
+  nomenclaturalStatus = NULL,
+  limit = 100,
+  start = 0,
+  facet = NULL,
+  facetMincount = NULL,
+  facetMultiselect = NULL,
+  type = NULL,
+  hl = NULL,
+  issue = NULL,
+  verbose = FALSE,
+  return = "all",
+  curlopts = list()
+)
 }
 \arguments{
 \item{query}{Query term(s) for full text search.}
@@ -95,14 +112,14 @@ not yet be returned for them.}
 
 \item{facetMincount}{Used in combination with the facet parameter. Set
 facetMincount={#} to exclude facets with a count less than {#}, e.g.
-http://bit.ly/1bMdByP only shows the type value 'ACCEPTED' because the
-other statuses have counts less than 7,000,000.}
+http://bit.ly/2osAUQB only shows the type values 'CHECKLIST' and 'OCCURRENCE'
+because the other types have counts less than 10000}
 
 \item{facetMultiselect}{(logical) Used in combination with the facet
 parameter. Set \code{facetMultiselect=TRUE} to still return counts for
-values that are not currently filtered, e.g. http://bit.ly/19YLXPO still
-shows all status values even though status is being filtered
-by \code{status=ACCEPTED}.}
+values that are not currently filtered, e.g. http://bit.ly/2JAymaC still
+shows all type values even though type is being filtered
+by \code{type=CHECKLIST}.}
 
 \item{type}{Type of name. One of occurrence, checklist, or metadata.}
 

@@ -78,7 +78,6 @@
 #' @author Laurens Geffert \email{laurensgeffert@@gmail.com}
 #' @references https://www.gbif.org/developer/maps
 #' @seealso [mvt_fetch()]
-#' @keywords web map, GBIF
 #' @examples \dontrun{
 #' if (
 #'  requireNamespace("png", quietly = TRUE) &&

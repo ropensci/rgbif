@@ -7,8 +7,13 @@
 \usage{
 occ_download_cancel(key, user = NULL, pwd = NULL, curlopts = list())
 
-occ_download_cancel_staged(user = NULL, pwd = NULL, limit = 20,
-  start = 0, curlopts = list())
+occ_download_cancel_staged(
+  user = NULL,
+  pwd = NULL,
+  limit = 20,
+  start = 0,
+  curlopts = list()
+)
 }
 \arguments{
 \item{key}{(character) A key generated from a request, like that from

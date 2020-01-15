@@ -4,8 +4,13 @@
 \alias{occ_get}
 \title{Get data for specific GBIF occurrences.}
 \usage{
-occ_get(key = NULL, return = "all", verbatim = FALSE,
-  fields = "minimal", curlopts = list())
+occ_get(
+  key = NULL,
+  return = "all",
+  verbatim = FALSE,
+  fields = "minimal",
+  curlopts = list()
+)
 }
 \arguments{
 \item{key}{Occurrence key}

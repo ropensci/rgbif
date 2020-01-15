@@ -8,11 +8,27 @@
 \alias{preds}
 \title{Spin up a download request for GBIF occurrence data.}
 \usage{
-occ_download(..., body = NULL, type = "and", format = "DWCA",
-  user = NULL, pwd = NULL, email = NULL, curlopts = list())
+occ_download(
+  ...,
+  body = NULL,
+  type = "and",
+  format = "DWCA",
+  user = NULL,
+  pwd = NULL,
+  email = NULL,
+  curlopts = list()
+)
 
-occ_download_prep(..., body = NULL, type = "and", format = "DWCA",
-  user = NULL, pwd = NULL, email = NULL, curlopts = list())
+occ_download_prep(
+  ...,
+  body = NULL,
+  type = "and",
+  format = "DWCA",
+  user = NULL,
+  pwd = NULL,
+  email = NULL,
+  curlopts = list()
+)
 
 pred(key, value, type = "=")
 
@@ -69,21 +85,21 @@ the operator.  This character string is parsed internally.
 
 The value can be comma separated, in which case we'll turn that into a
 predicate combined with the OR operator, for example,
-\code{"taxonKey = 2480946,5229208"} will turn into\preformatted{'{
+\code{"taxonKey = 2480946,5229208"} will turn into\preformatted{'\{
    "type": "or",
    "predicates": [
-     {
+     \{
       "type": "equals",
       "key": "TAXON_KEY",
       "value": "2480946"
-     },
-     {
+     \},
+     \{
       "type": "equals",
       "key": "TAXON_KEY",
       "value": "5229208"
-     }
+     \}
    ]
-}'
+\}'
 }
 
 Acceptable arguments to \code{...} are:
@@ -140,18 +156,18 @@ of "or" or "in"
 When using the geometry parameter, make sure that your well known text
 (WKT) is formatted as GBIF expects it. They expect WKT to have a
 counter-clockwise winding order. For example, the following is clockwise
-\code{POLYGON((-19.5 34.1, -25.3 68.1, 35.9 68.1, 27.8 34.1, -19.5 34.1))},
+\verb{POLYGON((-19.5 34.1, -25.3 68.1, 35.9 68.1, 27.8 34.1, -19.5 34.1))},
 whereas they expect the other order:
-\code{POLYGON((-19.5 34.1, 27.8 34.1, 35.9 68.1, -25.3 68.1, -19.5 34.1))}
+\verb{POLYGON((-19.5 34.1, 27.8 34.1, 35.9 68.1, -25.3 68.1, -19.5 34.1))}
 
-note that coordinate pairs are \code{longitude latitude}, longitude first, then
+note that coordinate pairs are \verb{longitude latitude}, longitude first, then
 latitude
 
 you should not get any results if you supply WKT that has clockwise
 winding order.
 
 also note that \code{\link[=occ_search]{occ_search()}}/\code{\link[=occ_data]{occ_data()}} behave differently with
-respect to WKT in that you can supply counter-clockwise WKT to those
+respect to WKT in that you can supply clockwise WKT to those
 functions but they treat it as an exclusion, so get all data not
 inside the WKT area.
 }
