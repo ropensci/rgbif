@@ -4,7 +4,7 @@ test_that("type query returns the correct class", {
   vcr::use_cassette("dataset_search", {
     tt <- dataset_search(type="OCCURRENCE")
   }, preserve_exact_body_bytes = TRUE)
-  
+
   expect_is(tt, "list")
   expect_is(tt$data, "data.frame")
   expect_is(tt$data, "tbl_df")
@@ -34,7 +34,7 @@ test_that("keyword query returns the correct", {
 # its metadata (title, description, etc).
 test_that("search query returns the correct class", {
   vcr::use_cassette("dataset_search_query", {
-    tt <- dataset_search(query="amsterdam")
+    tt <- dataset_search(query = "amsterdam")
   }, preserve_exact_body_bytes = TRUE)
 
   expect_is(tt, "list")
@@ -52,7 +52,7 @@ test_that("limited search returns the correct", {
   vcr::use_cassette("dataset_search_limit", {
     tt <- dataset_search(type="OCCURRENCE", limit=2)
   }, preserve_exact_body_bytes = TRUE)
-  
+
   # class
   expect_is(tt$data, "data.frame")
   expect_is(tt$data, "tbl_df")
@@ -68,7 +68,7 @@ test_that("limited fields query returns the correct class", {
   vcr::use_cassette("dataset_search_return", {
     tt <- dataset_search(type="OCCURRENCE", return="descriptions")
   }, preserve_exact_body_bytes = TRUE)
-  
+
   expect_is(tt, "list")
 })
 

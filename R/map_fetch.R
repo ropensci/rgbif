@@ -5,7 +5,7 @@
 #' @description This function is a wrapper for the GBIF mapping api version 2.0.
 #' The mapping API is a web map tile service making it straightforward to
 #' visualize GBIF content on interactive maps, and overlay content from other
-#' sources. It returns tile maps or vector maps with number of
+#' sources. It returns tile maps with number of
 #' GBIF records per area unit that can be used in a variety of ways, for example
 #' in interactive leaflet web maps. Map details are specified by a number of
 #' query parameters, some of them optional. Full documentation of the GBIF
@@ -13,12 +13,11 @@
 #'
 #' @param source (character) Either `density` for fast, precalculated tiles,
 #' or `adhoc` for any search. Default: `density`
-#' @param x (integer) the zoom. Default: 0
-#' @param y (integer) the column. Default: 0
-#' @param z (integer) the row. Default: 0
+#' @param x (integer) the column. Default: 0
+#' @param y (integer) the row. Default: 0
+#' @param z (integer) the zoom. Default: 0
 #' @param format (character) The data format, one of:
 #'
-#' - `.mvt` for a vector tile
 #' - `@Hx.png` for a 256px raster tile
 #' - `@1x.png` for a 512px raster tile (the default)
 #' - `@2x.png` for a 1024px raster tile
@@ -41,15 +40,15 @@
 #' 256, 512. optional
 #' @param style (character) for raster tiles, choose from the available styles.
 #' Defaults to classic.point. optional. THESE DON'T WORK YET.
-#' @param taxonKey (integer/numeric/character) search by taxon key, can only 
+#' @param taxonKey (integer/numeric/character) search by taxon key, can only
 #' supply 1. optional
-#' @param datasetKey (character) search by taxon key, can only supply 1. 
+#' @param datasetKey (character) search by taxon key, can only supply 1.
 #' optional
-#' @param country (character) search by taxon key, can only supply 1. 
+#' @param country (character) search by taxon key, can only supply 1.
 #' optional
-#' @param publishingOrg (character) search by taxon key, can only supply 1. 
+#' @param publishingOrg (character) search by taxon key, can only supply 1.
 #' optional
-#' @param publishingCountry (character) search by taxon key, can only 
+#' @param publishingCountry (character) search by taxon key, can only
 #' supply 1. optional
 #' @param year (integer) integer that limits the search to a certain year or,
 #' if passing a vector of integers, multiple years, for example
@@ -61,8 +60,7 @@
 #' "LITERATURE", "UNKNOWN")`. optional
 #' @param ... curl options passed on to [crul::HttpClient]
 #'
-#' @return an object of class `RasterLayer` if png format used, or
-#' raw bytes when mvt format chosen
+#' @return an object of class `RasterLayer`
 #'
 #' @details This function uses the arguments passed on to generate a query
 #' to the GBIF web map API. The API returns a web tile object as png that is
@@ -79,10 +77,10 @@
 #'
 #' @author Laurens Geffert \email{laurensgeffert@@gmail.com}
 #' @references https://www.gbif.org/developer/maps
-#' @keywords web map, web tile, GBIF
+#' @seealso [mvt_fetch()]
 #' @examples \dontrun{
 #' if (
-#'  requireNamespace("png", quietly = TRUE) && 
+#'  requireNamespace("png", quietly = TRUE) &&
 #'  requireNamespace("raster", quietly = TRUE)
 #' ) {
 #'   x <- map_fetch(taxonKey = 2480498, year = 2007:2011)
@@ -107,20 +105,14 @@
 #'   # bin
 #'   plot(map_fetch(taxonKey = 212, year = 1998, bin = "hex",
 #'      hexPerTile = 30, style = "classic-noborder.poly"))
-#' 
+#'
 #'   # styles
 #'   plot(map_fetch(taxonKey = 2480498, style = "purpleYellow.point"))
 #'
-#'   # map vector tile, gives back raw bytes
-#'   x <- map_fetch(taxonKey = 2480498, year = 2010,
-#'     format = ".mvt")
-#'   x[1:10]
-#'   is.raw(x)
-#' 
 #'   # query with basisOfRecord
-#'   map_fetch(taxonKey = 2480498, year = 2010, 
+#'   map_fetch(taxonKey = 2480498, year = 2010,
 #'     basisOfRecord = "HUMAN_OBSERVATION")
-#'   map_fetch(taxonKey = 2480498, year = 2010, 
+#'   map_fetch(taxonKey = 2480498, year = 2010,
 #'     basisOfRecord = c("HUMAN_OBSERVATION", "LIVING_SPECIMEN"))
 #'  }
 #' }
@@ -136,16 +128,19 @@ map_fetch <- function(
   hexPerTile = NULL,
   squareSize = NULL,
   style = 'classic.point',
-  taxonKey = NULL, 
-  datasetKey = NULL, 
-  country = NULL, 
-  publishingOrg = NULL, 
+  taxonKey = NULL,
+  datasetKey = NULL,
+  country = NULL,
+  publishingOrg = NULL,
   publishingCountry = NULL,
   year = NULL,
   basisOfRecord = NULL,
   ...
   ) {
 
+  assert(format, "character")
+  stopifnot(format %in% c('@Hx.png', '@1x.png',
+    '@2x.png', '@3x.png', '@4x.png'))
   check_for_a_pkg("png")
   check_for_a_pkg("raster")
 
@@ -153,7 +148,6 @@ map_fetch <- function(
   assert(x, c('numeric', 'integer'))
   assert(y, c('numeric', 'integer'))
   assert(z, c('numeric', 'integer'))
-  assert(format, "character")
   assert(srs, "character")
   assert(bin, "character")
   assert(hexPerTile, c('numeric', 'integer'))
@@ -176,8 +170,6 @@ map_fetch <- function(
 
   # Check input ---------------------------------------------------------------
   stopifnot(source %in% c('density', 'adhoc'))
-  stopifnot(format %in% c('.mvt', '@Hx.png', '@1x.png', 
-    '@2x.png', '@3x.png', '@4x.png'))
   stopifnot(srs %in% c('EPSG:3857', 'EPSG:4326', 'EPSG:3575', 'EPSG:3031'))
 
   if (!is.null(squareSize)) {
@@ -189,7 +181,7 @@ map_fetch <- function(
   if (!is.null(bin)) stopifnot(bin %in% c('square', 'hex'))
   if (!is.null(style)) stopifnot(style %in% map_styles)
 
-  if (length(rgbif_compact(list(taxonKey, datasetKey, country, 
+  if (length(rgbif_compact(list(taxonKey, datasetKey, country,
     publishingOrg, publishingCountry))) > 1) {
     stop("supply only one of taxonKey, datasetKey, country, publishingOrg, or publishingCountry")
   }
@@ -202,10 +194,10 @@ map_fetch <- function(
     }
   }
   
-  query <- rgbif_compact(list(srs = srs, taxonKey = taxonKey, 
-    datasetKey = datasetKey, country, publishingOrg = publishingOrg, 
+  query <- rgbif_compact(list(srs = srs, taxonKey = taxonKey,
+    datasetKey = datasetKey, country, publishingOrg = publishingOrg,
     publishingCountry = publishingCountry, year = year,
-    bin = bin, squareSize = squareSize, hexPerTile = hexPerTile, 
+    bin = bin, squareSize = squareSize, hexPerTile = hexPerTile,
     style = style))
 
   if (!is.null(basisOfRecord)) {
@@ -223,15 +215,11 @@ map_fetch <- function(
   path <- file.path('v2/map/occurrence', source, z, x, paste0(y, format))
   cli <- crul::HttpClient$new(url = 'https://api.gbif.org', opts = list(...))
   res <- cli$get(path, query = query)
-  if (!grepl("mvt", format)) {
-    map_png <- png::readPNG(res$content)
-    map <- raster::raster(map_png[,,2])
-    raster::extent(map) <- switch_extent(srs)
-    raster::crs(map) <- crs_string(srs)
-    return(map)
-  } else {
-    res$content
-  }
+  map_png <- png::readPNG(res$content)
+  map <- raster::raster(map_png[,,2])
+  raster::extent(map) <- switch_extent(srs)
+  raster::crs(map) <- crs_string(srs)
+  return(map)
 }
 
 crs_string <- function(x) {
@@ -248,7 +236,7 @@ crs_string <- function(x) {
 switch_extent <- function(x) {
   switch(
     x,
-    'EPSG:3857' = raster::extent(-180, 180, -85.1, 85.1),
+    'EPSG:3857' = raster::extent(-20037508, 20037508, -20037508, 20037508),
     'EPSG:4326' = raster::extent(-180, 180, -90, 90),
     'EPSG:3575' = raster::extent(-6371007.2 * sqrt(2), 6371007.2 * sqrt(2),
       -6371007.2 * sqrt(2), 6371007.2 * sqrt(2)),

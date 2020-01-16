@@ -4,18 +4,33 @@
 \alias{occ_download_dataset_activity}
 \title{Lists the downloads activity of a dataset}
 \usage{
-occ_download_dataset_activity(dataset, curlopts = list())
+occ_download_dataset_activity(
+  dataset,
+  limit = 20,
+  start = 0,
+  curlopts = list()
+)
 }
 \arguments{
 \item{dataset}{(character) A dataset key}
+
+\item{limit}{(integer/numeric) Number of records to return. Default: 20,
+Max: 1000}
+
+\item{start}{(integer/numeric) Record number to start at. Default: 0}
 
 \item{curlopts}{list of named curl options passed on to
 \code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
 for curl options}
 }
 \value{
-a list with slots of offset, limit, endOfRecords, count, and results.
-results has an array of the downloads for the dataset
+a list with two slots:
+\itemize{
+\item meta: a single row data.frame with columns: \code{offset}, \code{limit},
+\code{endofrecords}, \code{count}
+\item results: a tibble with the nested data flattened, with many
+columns with the same \code{download.} or \code{download.request.} prefixes
+}
 }
 \description{
 Lists the downloads activity of a dataset
@@ -27,6 +42,13 @@ see \link{downloads} for an overview of GBIF downloads methods
 \dontrun{
 res <- occ_download_dataset_activity("7f2edc10-f762-11e1-a439-00145eb45e9a")
 res
-res$count
+res$meta
+res$meta$count
+
+# pagination
+occ_download_dataset_activity("7f2edc10-f762-11e1-a439-00145eb45e9a",
+limit = 3000)
+occ_download_dataset_activity("7f2edc10-f762-11e1-a439-00145eb45e9a",
+limit = 3, start = 10)
 }
 }

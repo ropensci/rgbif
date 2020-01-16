@@ -1,3 +1,5 @@
+#' Suggest up to 20 name usages.
+#'
 #' A quick and simple autocomplete service that returns up to 20 name
 #' usages by doing prefix matching against the scientific name. Results
 #' are ordered by relevance.
@@ -23,7 +25,7 @@
 #' prunes columns off)
 #'
 #' @section Repeat parmeter inputs:
-#' Some parameters can tak emany inputs, and treated as 'OR' (e.g., a or b or
+#' Some parameters can take many inputs, and treated as 'OR' (e.g., a or b or
 #' c). The following take many inputs:
 #' \itemize{
 #'  \item **rank**
@@ -33,7 +35,9 @@
 #' see also [many-values]
 #'
 #'
-#' @return A data.frame with fields selected by fields arg.
+#' @return A tibble data.frame with fields selected by fields arg. If
+#'   'higherClassificationMap' in fields, an object of class gbif, which
+#'   is a S3 class list) is returned.
 #'
 #' @examples \dontrun{
 #' name_suggest(q='Puma concolor')
@@ -52,6 +56,9 @@
 #' name_suggest(rank = c("family", "genus"))
 #' name_suggest(datasetKey = c("73605f3a-af85-4ade-bbc5-522bfb90d847",
 #'   "d7c60346-44b6-400d-ba27-8d3fbeffc8a5"))
+#'
+#' # If 'higherClassificationMap' in fields, a list is returned
+#' name_suggest(q='Puma', fields=c('key','higherClassificationMap'))
 #'
 #' # Pass on curl options
 #' name_suggest(q='Puma', limit=200, curlopts = list(verbose=TRUE))
@@ -73,11 +80,11 @@ name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL,
     toget <- fields
   }
   matched <- sapply(toget, function(x) x %in% suggestfields())
-  if (!any(matched)) {
+  if (!all(matched)) {
     stop(sprintf("the fields %s are not valid",
                  paste0(names(matched[matched == FALSE]), collapse = ",")))
   }
-  if (any(fields %in% "higherClassificationMap")) {
+  if (any(toget %in% "higherClassificationMap")) {
     for (i in seq_along(tt)) {
       temp <- tt[[i]]
       temp <- temp$higherClassificationMap
@@ -93,13 +100,18 @@ name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL,
     hier <- sapply(tt, function(x) x[ names(x) %in% "higherClassificationMap" ])
     hier <- unname(hier)
     names(hier) <- vapply(tt, "[[", numeric(1), "key")
-    list(data = tibble::as_tibble(df), hierarchy = hier)
+    out <- list(data = tibble::as_tibble(df), hierarchy = hier)
+    class(out) <- "gbif"
+    attr(out, 'type') <- "single"
   } else {
     out <- lapply(tt, function(x) x[names(x) %in% toget])
-    x <- data.table::setDF(data.table::rbindlist(out,
+    out <- data.table::setDF(data.table::rbindlist(out,
                                                  use.names = TRUE, fill = TRUE))
-    tibble::as_tibble(x)
+    out <- tibble::as_tibble(out)
+    class(out) <- c('tbl_df', 'tbl', 'data.frame', 'gbif')
   }
+  args <- c(args, fields = toget)
+  structure(out, args = args)
 }
 
 #' Fields available in gbif_suggest function

@@ -139,8 +139,8 @@ test_that("scientificName basic use works - no synonyms", {
   expect_equal(attr(bb, "args")$scientificName, "Pulsatilla patens")
   expect_equal(bb$data$species[1], "Pulsatilla patens")
   expect_equal(bb$data$scientificName[1],
-    "Anemone patens subsp. multifida (Pritzel) Hultén")
-  
+    "Anemone patens subsp. multifida (Pritzel) Hult\u00e9n")
+
   expect_is(cc, "gbif_data")
   expect_is(cc$data, "data.frame")
   expect_equal(attr(cc, "args")$scientificName,
@@ -167,7 +167,7 @@ test_that("scientificName basic use works - no synonyms", {
   expect_equal(ff$data$species[1], "Myotis septentrionalis")
   expect_equal(ff$data$scientificName[1],
     "Myotis septentrionalis (Trouessart, 1897)")
-  
+
   expect_is(hh, "gbif_data")
   expect_is(hh$data, "data.frame")
   expect_equal(attr(hh, "args")$scientificName, "Pipistrellus hesperus")
@@ -183,7 +183,7 @@ test_that("geometry inputs work as expected", {
   vcr::use_cassette("occ_data_geometry", {
 
     # in well known text format
-    aa <- occ_data(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))', limit=20)
+    aa <- occ_data(geometry='POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))', limit=20)
     expect_is(aa, "gbif_data")
     expect_is(unclass(aa), "list")
     expect_named(attr(aa, "args"), c('limit', 'offset', 'geometry'))
@@ -191,7 +191,7 @@ test_that("geometry inputs work as expected", {
 
     # with a taxon key
     key <- 3189815
-    bb <- occ_data(taxonKey = key, geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))',
+    bb <- occ_data(taxonKey = key, geometry='POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))',
                      limit=20)
     expect_is(bb, "gbif_data")
     expect_is(unclass(bb), "list")
@@ -321,7 +321,7 @@ test_that("works with parameters that allow many inputs", {
     ## one request, many instances of same parameter: use semi-colon sep. string
     bb <- occ_data(recordedBy="smith;BJ Stacey", limit=3)
   }, preserve_exact_body_bytes = TRUE)
-  
+
   expect_is(aa, "gbif_data")
   expect_is(bb, "gbif_data")
 

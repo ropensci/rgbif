@@ -30,12 +30,14 @@
 #' @param verbose (logical) If `TRUE` show alternative matches considered which
 #' had been rejected.
 #'
-#' @return A list for a single taxon with many slots (with `verbose=FALSE`)
-#' - default), or a list of length two, first element for the suggested taxon
-#' match, and a data.frame with alternative name suggestions resulting from
-#' fuzzy matching (with `verbose=TRUE`).
-#' @details If you don't get a match GBIF gives back a list of length 3 with
-#' slots synonym, confidence, and matchType='NONE'.
+#' @return A data.frame for a single taxon with many columns (default,
+#'   `verbose=FALSE`) or a list of length two, first data.frame for the
+#'   suggested taxon match, and a data.frame with alternative name suggestions
+#'   resulting from fuzzy matching (with `verbose=TRUE`).
+#'
+#' @details
+#' If you don't get a match, GBIF gives back a data.frame with columns `synonym`
+#' , `confidence`, and `matchType='NONE'`.
 #'
 #' @references <http://www.gbif.org/developer/species#searching>
 #'
@@ -76,10 +78,17 @@ name_backbone <- function(name, rank=NULL, kingdom=NULL, phylum=NULL,
         lapply(tt$alternatives, function(x)
           lapply(x, function(x) if (length(x) == 0) NA else x)),
         use.names = TRUE, fill = TRUE)))
-    dat <- data.frame(tt[!names(tt) %in% c("alternatives", "note")],
-                      stringsAsFactors = FALSE)
-    structure(list(data = dat, alternatives = alt), note = tt$note)
+    dat <- tibble::as_tibble(
+      data.frame(tt[!names(tt) %in% c("alternatives", "note")],
+                 stringsAsFactors = FALSE))
+    out <- list(data = dat,
+                alternatives = alt)
+    class(out) <- "gbif"
   } else {
-    structure(tt[!names(tt) %in% c("alternatives", "note")], note = tt$note)
+    out <- tibble::as_tibble(tt[!names(tt) %in% c("alternatives", "note")])
+    class(out) <- c('tbl_df', 'tbl', 'data.frame', 'gbif')
   }
+  # no multiple parameters possible in name_backbone
+  attr(out, 'type') <- "single"
+  structure(out, args = args, note = tt$note)
 }

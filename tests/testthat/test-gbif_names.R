@@ -30,8 +30,8 @@ test_that("fails correctly", {
   res <- gbif_names(nms, browse=FALSE)
 
   # input of wrong class fails well
-  expect_error(gbif_names("adf", browse = FALSE), "input should be of class list")
-  expect_error(gbif_names(77, browse = FALSE), "input should be of class list")
+  expect_error(gbif_names("adf", browse = FALSE), "input should be of class gbif")
+  expect_error(gbif_names(77, browse = FALSE), "input should be of class gbif")
   # output fails well
   expect_error(gbif_names(nms, 6, browse = FALSE), "invalid 'file' argument")
 })

@@ -4,11 +4,23 @@
 \alias{dataset_suggest}
 \title{Suggest datasets in GBIF.}
 \usage{
-dataset_suggest(query = NULL, country = NULL, type = NULL,
-  subtype = NULL, keyword = NULL, publishingOrg = NULL,
-  hostingOrg = NULL, publishingCountry = NULL, decade = NULL,
-  continent = NULL, limit = 100, start = NULL, pretty = FALSE,
-  description = FALSE, curlopts = list())
+dataset_suggest(
+  query = NULL,
+  country = NULL,
+  type = NULL,
+  subtype = NULL,
+  keyword = NULL,
+  publishingOrg = NULL,
+  hostingOrg = NULL,
+  publishingCountry = NULL,
+  decade = NULL,
+  continent = NULL,
+  limit = 100,
+  start = NULL,
+  pretty = FALSE,
+  description = FALSE,
+  curlopts = list()
+)
 }
 \arguments{
 \item{query}{Query term(s) for full text search.  The value for this

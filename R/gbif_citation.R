@@ -18,6 +18,19 @@
 #' @examples \dontrun{
 #' res1 <- occ_search(taxonKey=9206251, limit=2)
 #' (xx <- gbif_citation(res1))
+#' 
+#' # each individual citation object is a list
+#' ## rights and/or citation may be NULL
+#' xx[[1]]
+#' xx[[1]]$rights
+#' xx[[1]]$citation
+#' xx[[1]]$citation$title
+#' xx[[1]]$citation$text
+#' xx[[1]]$citation$accessed
+#' xx[[1]]$citation$citation
+#' 
+#' ## access many citations
+#' unlist(lapply(xx, "[[", c("citation", "citation")))
 #'
 #' res2 <- occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a',
 #'  return='data', limit=20)
@@ -37,10 +50,10 @@
 #' ## pass in a dataset key
 #' gbif_citation(x='0ec3229f-2b53-484e-817a-de8ceb1fce2b')
 #' ## pass in an occurrence key
-#' gbif_citation(x='1425976049')
+#' gbif_citation(x='1101144669')
 #'
 #' # pass in an occurrence key as a numeric (won't work for a dataset key)
-#' gbif_citation(x=1425976049)
+#' gbif_citation(x=1101144669)
 #'
 #' # Downloads
 #' ## occ_download_get()
@@ -133,9 +146,8 @@ gbif_citation.occ_download_get <- function(x) {
   citation <- sprintf(gbif_cit, doi_url, as.character(as.Date(met$created)))
 
   # individual datasets
-  path <- x[1]
-  tmpdir <- file.path(tempdir(), x)
-  utils::unzip(path, exdir = tmpdir, overwrite = TRUE)
+  tmpdir <- file.path(tempdir(), met$key)
+  utils::unzip(x[1], exdir = tmpdir, overwrite = TRUE)
   on.exit(unlink(tmpdir))
   dsets <- list.files(file.path(tmpdir, "dataset"), full.names = TRUE)
   list(

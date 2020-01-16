@@ -6,20 +6,23 @@ Description: A programmatic interface to the Web Service methods
     of species occurrence records from sources all over the globe.
     'rgbif' includes functions for searching for taxonomic names,
     retrieving information on data providers, getting species occurrence
-    records, getting counts of occurrence records, and using the 'GBIF' 
+    records, getting counts of occurrence records, and using the 'GBIF'
     tile map service to make 'rasters' summarizing huge amounts of data.
-Version: 1.2.0.9515
+Version: 1.4.1.996
 License: MIT + file LICENSE
 Authors@R: c(
-    person("Scott", "Chamberlain", role = c("aut", "cre"), email = "myrmecocystus@gmail.com", comment = c(ORCID="0000-0003-1444-9135")),
+    person("Scott", "Chamberlain", role = c("aut", "cre"), email = "myrmecocystus@gmail.com",
+        comment = c(ORCID="0000-0003-1444-9135")),
+    person("Damiano", "Oldoni", role = "aut", comment = c(ORCID = "0000-0003-3445-7562")),
     person("Vijay", "Barve", role = "ctb", comment = c(ORCID = "0000-0002-4852-2567")),
     person("Peter", "Desmet", role = "ctb", comment = c(ORCID = "0000-0002-8442-8025")),
     person("Laurens", "Geffert", role = "ctb"),
     person("Dan", "Mcglinn", role = "ctb", comment = c(ORCID = "0000-0003-2359-3526")),
-    person("Damiano", "Oldoni", role = "ctb", comment = c(ORCID = "0000-0003-3445-7562")),
     person("Karthik", "Ram", role = "ctb", comment = c(ORCID = "0000-0002-0233-1757"))
     )
-URL: https://github.com/ropensci/rgbif, https://ropensci.github.io/rgbif, https://ropensci.github.io/occurrence-manual
+URL: https://github.com/ropensci/rgbif (devel),
+    https://docs.ropensci.org/rgbif (documentation),
+    https://books.ropensci.org/occurrences/ (user manual)
 BugReports: https://github.com/ropensci/rgbif/issues
 LazyData: true
 LazyLoad: true
@@ -30,15 +33,15 @@ Language: en-US
 Imports:
     xml2,
     ggplot2,
-    crul (>= 0.3.4),
+    crul (>= 0.7.4),
     data.table,
     whisker,
     magrittr,
-    jsonlite (>= 0.9.16),
+    jsonlite (>= 1.6),
     oai (>= 0.2.2),
     geoaxe,
     tibble,
-    wicket (>= 0.2.0),
+    wicket (>= 0.4.0),
     lazyeval
 Suggests:
     testthat,
@@ -47,8 +50,10 @@ Suggests:
     rgeos,
     png,
     raster,
+    protolite (>= 2.0),
+    sf,
     vcr
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
 X-schema.org-applicationCategory: Biodiversity
 X-schema.org-keywords: GBIF, specimens, API, web-services, occurrences, species, taxonomy
 X-schema.org-isPartOf: https://ropensci.org

@@ -40,7 +40,7 @@
 #' winding order.
 #'
 #' also note that [occ_search()]/[occ_data()] behave differently with
-#' respect to WKT in that you can supply counter-clockwise WKT to those
+#' respect to WKT in that you can supply clockwise WKT to those
 #' functions but they treat it as an exclusion, so get all data not
 #' inside the WKT area.
 #'
@@ -207,7 +207,7 @@ occ_download <- function(..., body = NULL, type = "and", format = "DWCA",
 
   z <- occ_download_prep(..., body = body, type = type, format = format,
     user = user, pwd = pwd, email = email, curlopts = curlopts)
-  out <- rg_POST(z$url, req = z$req, user = z$user, pwd = z$pwd, curlopts)
+  out <- rg_POST(z$url, req = z$request, user = z$user, pwd = z$pwd, curlopts)
   structure(out, class = "occ_download", user = z$user, email = z$email,
     format = z$format)
 }
@@ -275,7 +275,7 @@ check_inputs <- function(x) {
 
 parse_occd <- function(user, email, type, format, ...) {
   args <- list(...)
-  keyval <- lapply(args, parse_args)
+  keyval <- lapply(args, parse_args, type1 = type)
 
   if (length(keyval) > 1 ||
     length(keyval) == 1 && "predicates" %in% names(keyval[[1]])
@@ -310,6 +310,13 @@ parse_occd <- function(user, email, type, format, ...) {
       )
       names(tmp$predicate)[2] <- tolower(keyval[[1]]$key)
       tmp
+    } else if (type == "in") {
+      list(
+        creator = unbox(user),
+        notification_address = email,
+        format = unbox(format),
+        predicate = keyval[[1]]
+      )
     } else {
       list(creator = unbox(user),
            notification_address = email,
@@ -376,9 +383,12 @@ print.occ_download_prep <- function(x, ...) {
   cat("  Request: ", gbif_make_list(x$request), "\n", sep = "")
 }
 
-parse_args <- function(x) {
-  if (!all(vapply(x, is.character, logical(1)))) {
-    stop("all inputs to `...` of occ_download must be character\n",
+parse_args <- function(x, type1 = "and") {
+  if (
+    !all(vapply(x, is.character, logical(1))) ||
+    length(x) > 1
+  ) {
+    stop("all inputs to `...` of occ_download must be character & length=1\n",
       "  see examples; as an alternative, see the `body` param",
       call. = FALSE)
   }
@@ -392,7 +402,8 @@ parse_args <- function(x) {
   if (
     grepl(",", value) &&
     !grepl("polygon|multipolygon|linestring|multilinestring|point|mulitpoint",
-           value, ignore.case = TRUE)
+           value, ignore.case = TRUE) &&
+    type1 != "in"
   ) {
     value <- strsplit(value, ",")[[1]]
     out <- list(
@@ -402,7 +413,11 @@ parse_args <- function(x) {
     )
     return(out)
   }
-  list(type = unbox(type), key = unbox(key), value = unbox(value))
+  if (type1 == "in") {
+    list(type = unbox("in"), key = unbox(key), values = strsplit(value, ",")[[1]])
+  } else {
+    list(type = unbox(type), key = unbox(key), value = unbox(value))
+  }
 }
 
 operators_regex <- c("=", "\\&", "<", "<=", ">", ">=", "\\!", "\\sin\\s",

@@ -4,25 +4,65 @@
 \alias{occ_search}
 \title{Search for GBIF occurrences}
 \usage{
-occ_search(taxonKey = NULL, scientificName = NULL, country = NULL,
-  publishingCountry = NULL, hasCoordinate = NULL, typeStatus = NULL,
-  recordNumber = NULL, lastInterpreted = NULL, continent = NULL,
-  geometry = NULL, geom_big = "asis", geom_size = 40, geom_n = 10,
-  recordedBy = NULL, basisOfRecord = NULL, datasetKey = NULL,
-  eventDate = NULL, catalogNumber = NULL, year = NULL,
-  month = NULL, decimalLatitude = NULL, decimalLongitude = NULL,
-  elevation = NULL, depth = NULL, institutionCode = NULL,
-  collectionCode = NULL, hasGeospatialIssue = NULL, issue = NULL,
-  search = NULL, mediaType = NULL, subgenusKey = NULL,
-  repatriated = NULL, phylumKey = NULL, kingdomKey = NULL,
-  classKey = NULL, orderKey = NULL, familyKey = NULL,
-  genusKey = NULL, establishmentMeans = NULL, protocol = NULL,
-  license = NULL, organismId = NULL, publishingOrg = NULL,
-  stateProvince = NULL, waterBody = NULL, locality = NULL,
-  limit = 500, start = 0, fields = "all", return = "all",
-  spellCheck = NULL, facet = NULL, facetMincount = NULL,
-  facetMultiselect = NULL, skip_validate = TRUE, curlopts = list(),
-  ...)
+occ_search(
+  taxonKey = NULL,
+  scientificName = NULL,
+  country = NULL,
+  publishingCountry = NULL,
+  hasCoordinate = NULL,
+  typeStatus = NULL,
+  recordNumber = NULL,
+  lastInterpreted = NULL,
+  continent = NULL,
+  geometry = NULL,
+  geom_big = "asis",
+  geom_size = 40,
+  geom_n = 10,
+  recordedBy = NULL,
+  basisOfRecord = NULL,
+  datasetKey = NULL,
+  eventDate = NULL,
+  catalogNumber = NULL,
+  year = NULL,
+  month = NULL,
+  decimalLatitude = NULL,
+  decimalLongitude = NULL,
+  elevation = NULL,
+  depth = NULL,
+  institutionCode = NULL,
+  collectionCode = NULL,
+  hasGeospatialIssue = NULL,
+  issue = NULL,
+  search = NULL,
+  mediaType = NULL,
+  subgenusKey = NULL,
+  repatriated = NULL,
+  phylumKey = NULL,
+  kingdomKey = NULL,
+  classKey = NULL,
+  orderKey = NULL,
+  familyKey = NULL,
+  genusKey = NULL,
+  establishmentMeans = NULL,
+  protocol = NULL,
+  license = NULL,
+  organismId = NULL,
+  publishingOrg = NULL,
+  stateProvince = NULL,
+  waterBody = NULL,
+  locality = NULL,
+  limit = 500,
+  start = 0,
+  fields = "all",
+  return = "all",
+  spellCheck = NULL,
+  facet = NULL,
+  facetMincount = NULL,
+  facetMultiselect = NULL,
+  skip_validate = TRUE,
+  curlopts = list(),
+  ...
+)
 }
 \arguments{
 \item{taxonKey}{(numeric) A taxon key from the GBIF backbone. All included and synonym taxa
@@ -60,7 +100,7 @@ or south_america}
 \item{geometry}{Searches for occurrences inside a polygon described in Well Known
 Text (WKT) format. A WKT shape written as either POINT, LINESTRING, LINEARRING
 POLYGON, or MULTIPOLYGON. Example of a polygon: POLYGON((30.1 10.1, 20, 20 40, 40 40, 30.1 10.1))
-would be queried as \url{http://bit.ly/1BzNwDq}. See also the section \strong{WKT} below.}
+would be queried as http://bit.ly/1BzNwDq See also the section \strong{WKT} below.}
 
 \item{geom_big}{(character) One of "axe", "bbox", or "asis" (default). See Details.}
 
@@ -192,10 +232,10 @@ you can manually set the \code{start} parameter}
 returns just taxon name, key, latitude, and longitute. Or specify each field
 you want returned by name, e.g. fields = c('name','latitude','elevation').}
 
-\item{return}{One of data, hier, meta, or all. If data, a data.frame with the
-data. hier returns the classifications in a list for each record. meta
-returns the metadata for the entire call. all gives all data back in
-a list.}
+\item{return}{One of 'data', 'hier', 'meta', or 'all'. If 'data', a
+data.frame with the data. 'hier' returns the classifications in a list for
+each record. 'meta' returns the metadata for the entire call. 'all'
+(default) gives all data back in a list.}
 
 \item{spellCheck}{(logical) If \code{TRUE} ask GBIF to check your spelling of
 the value passed to the \code{search} parameter. IMPORTANT: This only checks
@@ -233,15 +273,15 @@ slots for metadata (\code{meta}), the occurrence data itself (\code{data}),
 the taxonomic hierarchy data (\code{hier}), and media metadata
 (\code{media}).
 In addition, the object has attributes listing the user supplied arguments
-and whether it was a "single" or "many" search; that is, if you supply two
+and whether it was a 'single' or 'many' search; that is, if you supply two
 values of the \code{datasetKey} parameter to searches are done, and it's a
-"many". \code{meta} is a list of length four with offset, limit,
+'many'. \code{meta} is a list of length four with offset, limit,
 endOfRecords and count fields. \code{data} is a tibble (aka data.frame). \code{hier}
-is a list of data.frame's of the unique set of taxa found, where each
+is a list of data.frames of the unique set of taxa found, where each
 data.frame is its taxonomic classification. \code{media} is a list of media
 objects, where each element holds a set of metadata about the media object.
-If the \code{return} parameter is set to something other than default you get
-back just the \code{meta}, \code{data}, \code{hier}, or \code{media}.
+If the \code{return} parameter is set to something other than 'all' (default), you
+get back just the \code{meta}, \code{data}, \code{hier}, or \code{media}.
 }
 \description{
 Search for GBIF occurrences
@@ -440,7 +480,7 @@ same outcome using \code{\link{occ_count}} with \code{isGeoreferenced=TRUE}
 }
 \examples{
 \dontrun{
-# Search by species name, using \\code{\\link{name_backbone}} first to get key
+# Search by species name, using \code{\link{name_backbone}} first to get key
 (key <- name_suggest(q='Helianthus annuus', rank='species')$key[1])
 occ_search(taxonKey=key, limit=2)
 
@@ -451,9 +491,9 @@ occ_search(taxonKey=key, limit=20)
 occ_search(taxonKey=key, limit=0, return='meta')
 
 # Instead of getting a taxon key first, you can search for a name directly
-## However, note that using this approach (with \\code{scientificName="..."})
-## you are getting synonyms too. The results for using \\code{scientifcName} and
-## \\code{taxonKey} parameters are the same in this case, but I wouldn't be surprised if for some
+## However, note that using this approach (with \code{scientificName="..."})
+## you are getting synonyms too. The results for using \code{scientifcName} and
+## \code{taxonKey} parameters are the same in this case, but I wouldn't be surprised if for some
 ## names they return different results
 occ_search(scientificName = 'Ursus americanus')
 key <- name_backbone(name = 'Ursus americanus', rank='species')$usageKey
@@ -514,7 +554,7 @@ occ_search(taxonKey=2433407, limit=20, return='hier',
   curlopts = list(
     noprogress = FALSE,
     progressfunction = function(down, up) {
-      cat(sprintf("up: \%d | down \%d\\n", up, down))
+      cat(sprintf("up: \%d | down \%d\n", up, down))
       return(TRUE)
     }
   )
@@ -540,15 +580,15 @@ occ_search(decimalLatitude=48, decimalLongitude=10)
 # Search on a bounding box
 ## in well known text format
 ### polygon
-occ_search(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))', limit=20)
+occ_search(geometry='POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))', limit=20)
 ### multipolygon
-wkt <- 'MULTIPOLYGON(((-123 38, -123 43, -116 43, -116 38, -123 38)),
-   ((-97 41, -97 45, -93 45, -93 41, -97 41)))'
-occ_search(geometry = gsub("\\n\\\\s+", "", wkt), limit = 20)
+wkt <- 'MULTIPOLYGON(((-123 38,-116 38,-116 43,-123 43,-123 38)),
+   ((-97 41,-93 41,-93 45,-97 45,-97 41)))'
+occ_search(geometry = gsub("\n\\\\s+", "", wkt), limit = 20)
 
 ## taxonKey + WKT
 key <- name_suggest(q='Aesculus hippocastanum')$key[1]
-occ_search(taxonKey=key, geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))',
+occ_search(taxonKey=key, geometry='POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))',
    limit=20)
 ## or using bounding box, converted to WKT internally
 occ_search(geometry=c(-125.0,38.4,-121.8,40.9), limit=20)
@@ -559,36 +599,39 @@ occ_search(geometry=c(-125.0,38.4,-121.8,40.9), limit=20)
 ##  then clip the results down to just those in the original polygon
 ##  - Alternatively, you can set the parameter `geom_big="bbox"`
 ##  - An additional alternative is to use the GBIF download API, see ?downloads
-wkt <- "POLYGON((13.26349675655365 52.53991761181831,18.36115300655365 54.11445544219924,
-21.87677800655365 53.80418956368524,24.68927800655365 54.217364774722455,28.20490300655365
-54.320018299365124,30.49005925655365 52.85948216284084,34.70880925655365 52.753220564427814,
-35.93927800655365 50.46131871049754,39.63068425655365 49.55761261299145,40.86115300655365
-46.381388009130845,34.00568425655365 45.279102926537,33.30255925655365 48.636868465271846,
-30.13849675655365 49.78513301801265,28.38068425655365 47.2236377039631,29.78693425655365
-44.6572866068524,27.67755925655365 42.62220075124676,23.10724675655365 43.77542058000212,
-24.51349675655365 47.10412345120368,26.79865300655365 49.55761261299145,23.98615300655365
-52.00209943876426,23.63459050655365 49.44345313705238,19.41584050655365 47.580567827212114,
-19.59162175655365 44.90682206053508,20.11896550655365 42.36297154876359,22.93146550655365
-40.651849782081555,25.56818425655365 39.98171166226459,29.61115300655365 40.78507856230178,
-32.95099675655365 40.38459278067577,32.95099675655365 37.37491910393631,26.27130925655365
-33.65619609886799,22.05255925655365 36.814081996401605,18.71271550655365 36.1072176729021,
-18.53693425655365 39.16878677351903,15.37287175655365 38.346355762190846,15.19709050655365
-41.578843777436326,12.56037175655365 41.050735748143424,12.56037175655365 44.02872991212046,
-15.19709050655365 45.52594200494078,16.42755925655365 48.05271546733352,17.48224675655365
-48.86865641518059,10.62677800655365 47.817178329053135,9.57209050655365 44.154980365192,
-8.16584050655365 40.51835445724746,6.05646550655365 36.53210972067291,0.9588092565536499
-31.583640057148145,-5.54509699344635 35.68001485298146,-6.77556574344635 40.51835445724746,
--9.41228449344635 38.346355762190846,-12.40056574344635 35.10683619158607,-15.74040949344635
-38.07010978950028,-14.68572199344635 41.31532459432774,-11.69744074344635 43.64836179231387,
--8.88494074344635 42.88035509418534,-4.31462824344635 43.52103366008421,-8.35759699344635
-47.2236377039631,-8.18181574344635 50.12441989397795,-5.01775324344635 49.55761261299145,
--2.73259699344635 46.25998980446569,-1.67790949344635 44.154980365192,-1.32634699344635
-39.30493590580802,2.18927800655365 41.44721797271696,4.47443425655365 43.26556960420879,
-2.18927800655365 46.7439668697322,1.83771550655365 50.3492841273576,6.93537175655365
-49.671505849335254,5.00177800655365 52.32557322466785,7.81427800655365 51.67627099802223,
-7.81427800655365 54.5245591562317,10.97834050655365 51.89375191441792,10.97834050655365
-55.43241335888528,13.26349675655365 52.53991761181831))"
-wkt <- gsub("\\n", " ", wkt)
+wkt <- "POLYGON((-9.178796777343678 53.22769021556159,
+-12.167078027343678 51.56540789297837,
+-12.958093652343678 49.78333685689162,-11.024499902343678 49.21251756301334,
+-12.079187402343678 46.68179685941719,-15.067468652343678 45.83103608186854,
+-15.770593652343678 43.58271629699817,-15.067468652343678 41.57676278827219,
+-11.815515527343678 40.44938999172728,-12.958093652343678 37.72112962230871,
+-11.639734277343678 36.52987439429357,-8.299890527343678 34.96062625095747,
+-8.739343652343678 32.62357394385735,-5.223718652343678 30.90497915232165,
+1.1044063476563224 31.80562077746643,1.1044063476563224 30.754036557416256,
+6.905187597656322 32.02942785462211,5.147375097656322 32.99292810780193,
+9.629796972656322 34.164474406524725,10.860265722656322 32.91918014319603,
+14.551671972656322 33.72700959356651,13.409093847656322 34.888564192275204,
+16.748937597656322 35.104560368110114,19.561437597656322 34.81643887792552,
+18.594640722656322 36.38849705969625,22.989171972656322 37.162874858929854,
+19.825109472656322 39.50651757842751,13.760656347656322 38.89353140585116,
+14.112218847656322 42.36091601976124,10.596593847656322 41.11488736647705,
+9.366125097656322 43.70991402658437,5.059484472656322 42.62015372417812,
+2.3348750976563224 45.21526500321446,-0.7412967773436776 46.80225692528942,
+6.114171972656322 47.102229890207894,8.047765722656322 45.52399303437107,
+12.881750097656322 48.22681126957933,9.190343847656322 48.693079457106684,
+8.750890722656322 50.68283120621287,5.059484472656322 50.40356146487845,
+4.268468847656322 52.377558897655156,1.4559688476563224 53.28027243658647,
+0.8407344726563224 51.62000971578333,0.5770625976563224 49.32721423860726,
+-2.5869999023436776 49.49875947592088,-2.4991092773436776 51.18135535408638,
+-2.0596561523436776 52.53822562473851,-4.696374902343678 51.67454591918756,
+-5.311609277343678 50.009802108095776,-6.629968652343678 48.75106196817059,
+-7.684656152343678 50.12263634382465,-6.190515527343678 51.83776110910459,
+-5.047937402343678 54.267098895684235,-6.893640527343678 53.69860705549198,
+-8.915124902343678 54.77719740243195,-12.079187402343678 54.52294465763567,
+-13.573328027343678 53.437631551347174,
+-11.288171777343678 53.48995552517918,
+-9.178796777343678 53.22769021556159))"
+wkt <- gsub("\n", " ", wkt)
 
 #### Default option with large WKT string fails
 # res <- occ_search(geometry = wkt)
@@ -768,7 +811,7 @@ occ_search(datasetKey='84c0e1a0-f762-11e1-a439-00145eb45e9a',
    issue=c('TAXON_MATCH_NONE','TAXON_MATCH_HIGHERRANK'))
 
 # Parsing output by issue
-(res <- occ_search(geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))', limit = 50))
+(res <- occ_search(geometry='POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))', limit = 50))
 ## what do issues mean, can print whole table, or search for matches
 head(gbif_issues())
 gbif_issues()[ gbif_issues()$code \%in\% c('cdround','cudc','gass84','txmathi'), ]
@@ -806,7 +849,7 @@ wkt <- 'POLYGON((-178.59375 64.83258989321493,-165.9375 59.24622380205539,
 149.4140625 42.65416193033991,159.2578125 48.3160811030533,168.3984375 57.019804336633165,
 178.2421875 59.95776046458139,-179.6484375 61.16708631440347,-178.59375 64.83258989321493))'
 
-# occ_search(geometry = gsub("\\n", '', wkt))
+# occ_search(geometry = gsub("\n", '', wkt))
 
 ### unable to parse due to last number pair needing two numbers, not one
 # wkt <- 'POLYGON((-178.5 64.8,-165.9 59.2,-147.3 59.0,-130.7 51.0,-125.8))'

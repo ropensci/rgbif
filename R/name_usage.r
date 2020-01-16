@@ -5,12 +5,20 @@
 #' @template nameusage
 #' @param limit Number of records to return. Default: 100.
 #' @param start Record number to start at. Default: 0.
-#' @param return One of data, meta, or all. If data, a data.frame with the
-#'    data. meta returns the metadata for the entire call. all gives all data
-#'    back in a list.
-#' @return If `return="all"`, a list of length two, with metadata and data,
-#' each as data.frame's. If `return="meta"` only the metadata data.frame,
-#' and if `return="data"` only the data data.frame
+#' @param return One of 'data', 'meta', or 'all'. If 'data', a data.frame with
+#'   the data. 'meta' returns the metadata for the entire call. 'all' gives all
+#'   data back in a list.
+#' @return An object of class gbif, which is a S3 class list, with slots for
+#'   metadata (\code{meta}) and the data itself (\code{data}). In addition, the
+#'   object has attributes listing the user supplied arguments and type of
+#'   search, which is, differently from occurrence data, always equals to
+#'   'single' even if multiple values for some parameters are given. \code{meta}
+#'   is a list of length four with offset, limit, endOfRecords and count fields.
+#'   \code{data} is a tibble (aka data.frame) containing all information about
+#'   the found taxa. If \code{return} parameter is set to something other than
+#'   default ('all') you get back just what you asked, that means \code{meta} or
+#'   \code{data}.
+#'
 #' @references <https://www.gbif.org/developer/species#nameUsages>
 #' @details
 #' This service uses fuzzy lookup so that you can put in partial names and
@@ -32,10 +40,9 @@
 #' internally loops over each option making separate requests. This has been
 #' removed. You can still loop over many options for the `data` parameter,
 #' just use an `lapply` family function, or a for loop, etc.
-#' 
-#' See [name_issues()] for information on name usage issues related to the
-#' `issues` column in output from this function
-#' 
+#'
+#' See [name_issues()] for more information about issues in `issues` column.
+#'
 #' @examples \dontrun{
 #' # A single name usage
 #' name_usage(key=1)
@@ -43,7 +50,7 @@
 #' # Name usage for a taxonomic name
 #' name_usage(name='Puma', rank="GENUS")
 #'
-#' # Name usage for all taxa in a dataset 
+#' # Name usage for all taxa in a dataset
 #' # (set sufficient high limit, but less than 100000)
 #' # name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42", limit = 10000)
 #' # All name usages
@@ -83,7 +90,9 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
   datasetKey=NULL, uuid=NULL, rank=NULL, shortname=NULL,
   start=0, limit=100, return='all', curlopts = list()) {
 
+  # check limit and start params
   check_vals(limit, "limit")
+  check_vals(start, "start")
   # each of these args must be length=1
   if (!is.null(rank)) stopifnot(length(rank) == 1)
   if (!is.null(name)) stopifnot(length(name) == 1)
@@ -94,12 +103,14 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
                              rank = rank,
                              name = name, language = language,
                              datasetKey = datasetKey))
+
   data <- match.arg(data,
       choices = c('all', 'verbatim', 'name', 'parents', 'children',
                 'related', 'synonyms', 'descriptions',
                 'distributions', 'media', 'references', 'speciesProfiles',
                 'vernacularNames', 'typeSpecimens', 'root'), several.ok = FALSE)
   # paging implementation
+  iter <- NULL
   if (limit > 1000) {
     iter <- 0
     sumreturned <- 0
@@ -138,12 +149,22 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
   }
   # select output
   return <- match.arg(return, c('meta','data','all'))
-  switch(return,
-         meta = get_meta_nu(out),
-         data = tibble::as_tibble(name_usage_parse(out, data)),
-         all = list(meta = get_meta_nu(out),
-                    data = tibble::as_tibble(name_usage_parse(out, data)))
-  )
+  if (return == 'meta') {
+    out <- get_meta_nu(out)
+  } else {
+    if (return == 'data') {
+      out <- tibble::as_tibble(name_usage_parse(out, data))
+      class(out) <- c('tbl_df', 'tbl', 'data.frame', 'gbif')
+    } else {
+      out <- list(meta = get_meta_nu(out),
+                  data =  tibble::as_tibble(name_usage_parse(out, data))
+      )
+      class(out) <- "gbif"
+    }
+    # no multiple parameters possible in name_usage
+    attr(out, 'type') <- "single"
+  }
+  structure(out, return = return, args = args)
 }
 
 get_meta_nu <- function(x) {
@@ -197,11 +218,13 @@ name_usage_parse <- function(x, y) {
       (outtt <- data.table::setDF(
         data.table::rbindlist(
           lapply(x$results, function(x) {
+            # reduce multiple element slots to comma sep
+            if ("issues" %in% names(x)) {
+              x[names(x) %in% "issues"] <- collapse_issues(x)
+            }
             lapply(x, function(x) {
               if (length(x) == 0) {
                 NA
-              } else if (length(x) > 1) {
-                paste0(x, collapse = ",")
               } else {
                 x
               }

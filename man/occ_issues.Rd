@@ -2,7 +2,7 @@
 % Please edit documentation in R/occ_issues.r
 \name{occ_issues}
 \alias{occ_issues}
-\title{Parse and examine further GBIF issues on a dataset}
+\title{Parse and examine further GBIF occurrence issues on a dataset.}
 \usage{
 occ_issues(.data, ..., mutate = NULL)
 }
@@ -13,22 +13,22 @@ otherwise function stops with error. The data from \code{occ_download_import}
 is just a regular data.frame so you can pass in a data.frame to this
 function, but if it doesn't have certain columns it will fail.}
 
-\item{...}{Named parameters to only get back (e.g., cdround), or to
+\item{...}{Named parameters to only get back (e.g. cdround), or to
 remove (e.g. -cdround).}
 
 \item{mutate}{(character) One of:
 \itemize{
-\item \code{split} Split issues into new columns
-\item \code{split_expand} Split into new columns, and expand issue names
+\item \code{split} Split issues into new columns.
 \item \code{expand} Expand issue abbreviated codes into descriptive names.
 for downloads datasets, this is not super useful since the
 issues come to you as expanded already.
+\item \code{split_expand} Split into new columns, and expand issue names.
 }
 
 For split and split_expand, values in cells become y ("yes") or n ("no")}
 }
 \description{
-Parse and examine further GBIF issues on a dataset
+Parse and examine further GBIF occurrence issues on a dataset.
 }
 \details{
 See also the vignette \strong{Cleaning data using GBIF issues}
@@ -42,7 +42,7 @@ to pull data down, then clean as needed using this function.
 This function only affects the \code{data} element in the \code{gbif} class that is
 returned from a call to \code{\link[=occ_search]{occ_search()}}. Maybe in a future version
 we will remove the associated records from the \code{hierarchy} and \code{media}
-elements as they are remove from the \code{data} element.
+elements as they are removed from the \code{data} element.
 
 You'll notice that we sort columns to make it easier to glimpse the important
 parts of your data, namely taxonomic name, taxon key, latitude and longitude,
@@ -50,8 +50,11 @@ and the issues. The columns are unchanged otherwise.
 }
 \examples{
 \dontrun{
-## what do issues mean, can print whole table, or search for matches
+# what do issues mean, can print whole table
 head(gbif_issues())
+# or just occurrence related issues
+gbif_issues()[which(gbif_issues()$type \%in\% c("occurrence")),]
+# or search for matches
 iss <- c('cdround','cudc','gass84','txmathi')
 gbif_issues()[ gbif_issues()$code \%in\% iss, ]
 
@@ -65,11 +68,11 @@ out \%>\% occ_issues(cdround)
 
 # Parsing output by issue
 (res <- occ_data(
-  geometry='POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))',
+  geometry='POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))',
   limit = 600))
 
 ## or parse issues in various ways
-### inlude only rows with cdround issue
+### include only rows with cdround issue
 gg <- res \%>\% occ_issues(cdround)
 NROW(res$data)
 NROW(gg$data)
@@ -93,10 +96,10 @@ res \%>\% occ_issues(mutate = "split_expand")
 ### split, expand, and remove an issue class
 res \%>\% occ_issues(-cdround, mutate = "split_expand")
 
-## Or you can use occ_issues without the pipe
+## Or you can use occ_issues without \%>\%
 occ_issues(res, -cdround, mutate = "split_expand")
 
-# from GBIF downloaded data via occ_download and friends
+# from GBIF downloaded data via occ_download_* functions
 res <- occ_download_get(key="0000066-140928181241064", overwrite=TRUE)
 x <- occ_download_import(res)
 occ_issues(x, -txmathi)

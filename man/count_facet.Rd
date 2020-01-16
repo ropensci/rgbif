@@ -4,8 +4,7 @@
 \alias{count_facet}
 \title{Facetted count occurrence search.}
 \usage{
-count_facet(keys = NULL, by = "country", countries = 10,
-  removezeros = FALSE)
+count_facet(keys = NULL, by = "country", countries = 10, removezeros = FALSE)
 }
 \arguments{
 \item{keys}{(numeric) GBIF keys, a vector.}

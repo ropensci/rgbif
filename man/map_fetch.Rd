@@ -4,31 +4,44 @@
 \alias{map_fetch}
 \title{Fetch aggregated density maps of GBIF occurrences}
 \usage{
-map_fetch(source = "density", x = 0, y = 0, z = 0,
-  format = "@1x.png", srs = "EPSG:4326", bin = NULL,
-  hexPerTile = NULL, squareSize = NULL, style = "classic.point",
-  taxonKey = NULL, datasetKey = NULL, country = NULL,
-  publishingOrg = NULL, publishingCountry = NULL, year = NULL,
-  basisOfRecord = NULL, ...)
+map_fetch(
+  source = "density",
+  x = 0,
+  y = 0,
+  z = 0,
+  format = "@1x.png",
+  srs = "EPSG:4326",
+  bin = NULL,
+  hexPerTile = NULL,
+  squareSize = NULL,
+  style = "classic.point",
+  taxonKey = NULL,
+  datasetKey = NULL,
+  country = NULL,
+  publishingOrg = NULL,
+  publishingCountry = NULL,
+  year = NULL,
+  basisOfRecord = NULL,
+  ...
+)
 }
 \arguments{
 \item{source}{(character) Either \code{density} for fast, precalculated tiles,
 or \code{adhoc} for any search. Default: \code{density}}
 
-\item{x}{(integer) the zoom. Default: 0}
+\item{x}{(integer) the column. Default: 0}
 
-\item{y}{(integer) the column. Default: 0}
+\item{y}{(integer) the row. Default: 0}
 
-\item{z}{(integer) the row. Default: 0}
+\item{z}{(integer) the zoom. Default: 0}
 
 \item{format}{(character) The data format, one of:
 \itemize{
-\item \code{.mvt} for a vector tile
-\item \code{@Hx.png} for a 256px raster tile
-\item \code{@1x.png} for a 512px raster tile (the default)
-\item \code{@2x.png} for a 1024px raster tile
-\item \code{@3x.png} for a 2048px raster tile
-\item \code{@4x.png} for a 4096px raster tile
+\item \verb{@Hx.png} for a 256px raster tile
+\item \verb{@1x.png} for a 512px raster tile (the default)
+\item \verb{@2x.png} for a 1024px raster tile
+\item \verb{@3x.png} for a 2048px raster tile
+\item \verb{@4x.png} for a 4096px raster tile
 }}
 
 \item{srs}{(character) Spatial reference system. One of:
@@ -77,14 +90,13 @@ include records with that basis of record. The full list is: \code{c("OBSERVATIO
 \item{...}{curl options passed on to \link[crul:HttpClient]{crul::HttpClient}}
 }
 \value{
-an object of class \code{RasterLayer} if png format used, or
-raw bytes when mvt format chosen
+an object of class \code{RasterLayer}
 }
 \description{
 This function is a wrapper for the GBIF mapping api version 2.0.
 The mapping API is a web map tile service making it straightforward to
 visualize GBIF content on interactive maps, and overlay content from other
-sources. It returns tile maps or vector maps with number of
+sources. It returns tile maps with number of
 GBIF records per area unit that can be used in a variety of ways, for example
 in interactive leaflet web maps. Map details are specified by a number of
 query parameters, some of them optional. Full documentation of the GBIF
@@ -108,7 +120,7 @@ Styles don't work yet, sorry, we'll try to fix it asap.
 \examples{
 \dontrun{
 if (
- requireNamespace("png", quietly = TRUE) && 
+ requireNamespace("png", quietly = TRUE) &&
  requireNamespace("raster", quietly = TRUE)
 ) {
   x <- map_fetch(taxonKey = 2480498, year = 2007:2011)
@@ -137,16 +149,10 @@ if (
   # styles
   plot(map_fetch(taxonKey = 2480498, style = "purpleYellow.point"))
 
-  # map vector tile, gives back raw bytes
-  x <- map_fetch(taxonKey = 2480498, year = 2010,
-    format = ".mvt")
-  x[1:10]
-  is.raw(x)
-
   # query with basisOfRecord
-  map_fetch(taxonKey = 2480498, year = 2010, 
+  map_fetch(taxonKey = 2480498, year = 2010,
     basisOfRecord = "HUMAN_OBSERVATION")
-  map_fetch(taxonKey = 2480498, year = 2010, 
+  map_fetch(taxonKey = 2480498, year = 2010,
     basisOfRecord = c("HUMAN_OBSERVATION", "LIVING_SPECIMEN"))
  }
 }
@@ -154,10 +160,9 @@ if (
 \references{
 https://www.gbif.org/developer/maps
 }
+\seealso{
+\code{\link[=mvt_fetch]{mvt_fetch()}}
+}
 \author{
 Laurens Geffert \email{laurensgeffert@gmail.com}
 }
-\keyword{GBIF}
-\keyword{map,}
-\keyword{tile,}
-\keyword{web}

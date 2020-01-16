@@ -117,3 +117,19 @@ test_that("occ_download fails well when user does not give strings as inputs to 
     "see examples; as an alternative, see the `body` param"
   )
 })
+
+## type "in" works
+test_that("type in works", {
+  skip_on_cran()
+
+  z <- occ_download_prep("taxonKey = 2480946,5229208", type = "in", format = "SIMPLE_CSV")
+
+  expect_is(z, "occ_download_prep")
+  # list has names
+  expect_named(z$request$predicate)
+  # right type
+  expect_equal(unclass(z$request$predicate$type), "in")
+  # a vector of length two for each thing passed in
+  expect_equal(z$request$predicate$values, c("2480946", "5229208"))
+})
+

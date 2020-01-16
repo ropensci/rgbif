@@ -4,8 +4,16 @@
 \alias{datasets}
 \title{Search for datasets and dataset metadata.}
 \usage{
-datasets(data = "all", type = NULL, uuid = NULL, query = NULL,
-  id = NULL, limit = 100, start = NULL, curlopts = list())
+datasets(
+  data = "all",
+  type = NULL,
+  uuid = NULL,
+  query = NULL,
+  id = NULL,
+  limit = 100,
+  start = NULL,
+  curlopts = list()
+)
 }
 \arguments{
 \item{data}{The type of data to get. One or more of: 'organization',

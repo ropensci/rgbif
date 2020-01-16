@@ -5,8 +5,13 @@
 \title{Search for catalog numbers, collection codes, collector names, and
 institution codes.}
 \usage{
-occ_metadata(type = "catalogNumber", q = NULL, limit = 5,
-  pretty = TRUE, curlopts = list())
+occ_metadata(
+  type = "catalogNumber",
+  q = NULL,
+  limit = 5,
+  pretty = TRUE,
+  curlopts = list()
+)
 }
 \arguments{
 \item{type}{Type of data, one of catalogNumber, collectionCode, recordedBy,

@@ -1,7 +1,7 @@
 context("elevation: geonames_conn internal fxn")
 test_that("geonames_conn internal fxn works", {
   skip_on_cran()
-  
+
   latitude <- c(50.01, 51.01)
   longitude <- c(10.2, 11.2)
   vcr::use_cassette("elevation_geonames_conn", {
@@ -97,7 +97,9 @@ test_that("fails correctly", {
 
   # points at zero,zero
   dat <- data.frame(decimalLatitude = c(0, 45), decimalLongitude = c(0, -120))
-  expect_warning(elevation(dat), "Input data has some points at 0,0")
+  vcr::use_cassette("elevation_warning_zero_zero", {
+    expect_warning(elevation(dat), "Input data has some points at 0,0")
+  })
 
   # invalid key
   pairs <- list(c(31.8496, -110.576060), c(29.15503, -103.59828))

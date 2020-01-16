@@ -4,8 +4,13 @@
 \alias{occ_download_list}
 \title{Lists the downloads created by a user.}
 \usage{
-occ_download_list(user = NULL, pwd = NULL, limit = 20, start = 0,
-  curlopts = list())
+occ_download_list(
+  user = NULL,
+  pwd = NULL,
+  limit = 20,
+  start = 0,
+  curlopts = list()
+)
 }
 \arguments{
 \item{user}{(character) User name within GBIF's website. Required. See
@@ -14,13 +19,23 @@ Details.}
 \item{pwd}{(character) User password within GBIF's website. Required. See
 Details.}
 
-\item{limit}{Number of records to return. Default: 20, max: 300}
+\item{limit}{(integer/numeric) Number of records to return. Default: 20,
+Max: 1000}
 
-\item{start}{Record number to start at. Default: 0}
+\item{start}{(integer/numeric) Record number to start at. Default: 0}
 
 \item{curlopts}{list of named curl options passed on to
 \code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
 for curl options}
+}
+\value{
+a list with two slots:
+\itemize{
+\item meta: a single row data.frame with columns: \code{offset}, \code{limit},
+\code{endofrecords}, \code{count}
+\item results: a tibble with the nested data flattened, with many
+columns with the same \code{request.} prefix
+}
 }
 \description{
 Lists the downloads created by a user.

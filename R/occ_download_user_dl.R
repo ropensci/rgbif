@@ -32,7 +32,7 @@ dl_user <- function(user = NULL, pwd = NULL, curlopts = list()) {
 #' @keywords internal
 #' @examples
 #' x <- dl_user()
-#' occ_dl_predicates(user_df = x)
+#' dl_predicates(user_df = x)
 dl_predicates <- function(user_df) {
   reqs <- user_df$request
   out <- list()

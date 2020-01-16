@@ -4,9 +4,17 @@
 \alias{nodes}
 \title{Nodes metadata.}
 \usage{
-nodes(data = "all", uuid = NULL, query = NULL, identifier = NULL,
-  identifierType = NULL, limit = 100, start = NULL, isocode = NULL,
-  curlopts = list())
+nodes(
+  data = "all",
+  uuid = NULL,
+  query = NULL,
+  identifier = NULL,
+  identifierType = NULL,
+  limit = 100,
+  start = NULL,
+  isocode = NULL,
+  curlopts = list()
+)
 }
 \arguments{
 \item{data}{The type of data to get. One or more of: 'organization',

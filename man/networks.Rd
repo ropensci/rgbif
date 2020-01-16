@@ -4,9 +4,16 @@
 \alias{networks}
 \title{Networks metadata.}
 \usage{
-networks(data = "all", uuid = NULL, query = NULL,
-  identifier = NULL, identifierType = NULL, limit = 100,
-  start = NULL, curlopts = list())
+networks(
+  data = "all",
+  uuid = NULL,
+  query = NULL,
+  identifier = NULL,
+  identifierType = NULL,
+  limit = 100,
+  start = NULL,
+  curlopts = list()
+)
 }
 \arguments{
 \item{data}{The type of data to get. One or more of: 'contact', 'endpoint',

@@ -4,19 +4,28 @@
 \alias{occ_download_datasets}
 \title{List datasets for a download}
 \usage{
-occ_download_datasets(key, curlopts = list())
+occ_download_datasets(key, limit = 20, start = 0, curlopts = list())
 }
 \arguments{
-\item{key}{A key generated from a request, like that from
-\code{occ_download}}
+\item{key}{A key generated from a request, like that from \code{\link[=occ_download]{occ_download()}}}
+
+\item{limit}{(integer/numeric) Number of records to return. Default: 20,
+Max: 1000}
+
+\item{start}{(integer/numeric) Record number to start at. Default: 0}
 
 \item{curlopts}{list of named curl options passed on to
 \code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
 for curl options}
 }
 \value{
-a list with slots of offset, limit, endOfRecords, count, and results.
-results has an array of the datasets
+a list with two slots:
+\itemize{
+\item meta: a single row data.frame with columns: \code{offset}, \code{limit},
+\code{endofrecords}, \code{count}
+\item results: a tibble with the results, of three columns: \code{downloadKey},
+\code{datasetKey}, \code{numberRecords}
+}
 }
 \description{
 List datasets for a download
@@ -27,5 +36,7 @@ see \link{downloads} for an overview of GBIF downloads methods
 \examples{
 \dontrun{
 occ_download_datasets(key="0003983-140910143529206")
+occ_download_datasets(key="0003983-140910143529206", limit = 3)
+occ_download_datasets(key="0003983-140910143529206", limit = 3, start = 10)
 }
 }

@@ -23,13 +23,13 @@
 #' })
 #'
 #' # Search for a genus, returning just data
-#' name_lookup(query='Cnaemidophorus', rank="genus", return="data")
+#' name_lookup(query="Cnaemidophorus", rank="genus", return="data")
 #'
 #' # Just metadata
-#' name_lookup(query='Cnaemidophorus', rank="genus", return="meta")
+#' name_lookup(query="Cnaemidophorus", rank="genus", return="meta")
 #'
 #' # Just hierarchies
-#' name_lookup(query='Cnaemidophorus', rank="genus", return="hierarchy")
+#' name_lookup(query="Cnaemidophorus", rank="genus", return="hierarchy")
 #'
 #' # Just vernacular (common) names
 #' name_lookup(query='Cnaemidophorus', rank="genus", return="names")
@@ -87,7 +87,7 @@
 name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
   isExtinct=NULL, habitat=NULL, nameType=NULL, datasetKey=NULL,
   origin=NULL, nomenclaturalStatus=NULL, limit=100, start=0, facet=NULL,
-  facetMincount=NULL, facetMultiselect=NULL, type=NULL, hl=NULL,
+  facetMincount=NULL, facetMultiselect=NULL, type=NULL, hl=NULL, issue=NULL,
   verbose=FALSE, return="all", curlopts = list()) {
 
   if (!is.null(facetMincount) && inherits(facetMincount, "numeric"))
@@ -106,6 +106,7 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
   nameType <- as_many_args(nameType)
   datasetKey <- as_many_args(datasetKey)
   origin <- as_many_args(origin)
+  issue <- as_many_args(issue)
 
   url <- paste0(gbif_base(), '/species/search')
   args <- rgbif_compact(list(q=query, isExtinct=as_log(isExtinct),
@@ -114,7 +115,7 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
             facetMultiselect=as_log(facetMultiselect), hl=as_log(hl),
             type=type))
   args <- c(args, facetbyname, rank, higherTaxonKey, status,
-            habitat, nameType, datasetKey, origin)
+            habitat, nameType, datasetKey, origin, issue)
 
   # paging implementation
   if (limit > 1000) {
@@ -198,14 +199,32 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
   # select output
   return <- match.arg(return, c('meta', 'data', 'facets', 'hierarchy',
                                 'names', 'all'))
-  switch(return,
-         meta = tibble::as_tibble(meta),
-         data = data,
-         facets = facetsdat,
-         hierarchy = compact_null(hierdat),
-         names = compact_null(vernames),
-         all = list(meta = tibble::as_tibble(meta), data = data,
-                    facets = facetsdat,
-                    hierarchies = compact_null(hierdat),
-                    names = compact_null(vernames)))
+
+  if (return == 'meta') {
+    out <- tibble::as_tibble(meta)
+  } else if (return == 'data') {
+    out <- data
+  } else if (return == 'facets') {
+    out <- facetsdat
+  } else if (return == 'hierarchy') {
+    out <- compact_null(hierdat)
+  } else if (return == 'names') {
+    out <- compact_null(vernames)
+  } else if (return == 'all') {
+    out <- list(meta = tibble::as_tibble(meta),
+                data = data,
+                facets = facetsdat,
+                hierarchies = compact_null(hierdat),
+                names = compact_null(vernames))
+  }
+  if (!return %in% c('meta', 'hierarchy', 'names')) {
+    if (inherits(out, "data.frame")) {
+      class(out) <- c('tbl_df', 'tbl', 'data.frame', 'gbif')
+    } else {
+      class(out) <- "gbif"
+      attr(out, 'type') <- "single"
+    }
+  }
+  structure(out, return = return, args = args)
 }
+

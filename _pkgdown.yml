@@ -1,7 +1,74 @@
-authors:
-  Scott Chamberlain:
-    href: "https://twitter.com/sckottie"
-
-template:
-  params:
-    bootswatch: yeti
+reference:
+  - title: "rgbif"
+    desc: >
+      High level overview of package
+    contents:
+      - rgbif
+      - rgbif-defunct
+  - title: "Geometry"
+    contents:
+      - check_wkt
+      - gbif_bbox2wkt
+      - gbif_wkt2bbox
+  - title: "OAI"
+    contents:
+      - starts_with("gbif_oai_")
+  - title: "Registry"
+    desc: >
+      GBIF registry functions
+    contents:
+      - starts_with("dataset_")
+      - datasets
+      - organizations
+      - networks
+      - nodes
+      - installations
+  - title: "Maps"
+    desc: >
+      Work with the GBIF Maps API
+    contents:
+      - map_fetch
+  - title: "Names"
+    desc: >
+      Work with the GBIF taxonomic names API
+    contents:
+      - starts_with("name_")
+  - title: "Occurrence Downloads"
+    desc: >
+      Work with the GBIF occurrence downloads APIs
+    contents:
+      - starts_with("occ_download")
+      - as.download
+  - title: "Occurrence Search"
+    desc: >
+       Work with the GBIF occurrence search APIs
+    contents:
+      - occ_facet
+      - occ_get
+      - occ_data
+      - occ_metadata
+      - occ_search
+      - occ_spellcheck
+      - occ_count
+      - count_facet
+  - title: "Occurrence data cleaning"
+    desc: >
+      Functions for cleaning occurrence data
+    contents:
+      - gbif_issues
+      - occ_issues
+      - occ_issues_lookup
+  - title: "Miscellaneous"
+    contents:
+      - gbif_citation
+      - parsenames
+      - rgb_country_codes
+      - taxrank
+      - wkt_parse
+      - elevation
+      - enumeration
+      - enumeration_country
+  - title: "Pretty reports"
+    contents:
+      - gbif_names
+      - gbif_photos

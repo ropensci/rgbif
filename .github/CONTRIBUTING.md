@@ -1,9 +1,5 @@
 # CONTRIBUTING #
 
-### Please contribute!
-
-We love collaboration.
-
 ### Bugs?
 
 * Submit an issue on the [Issues page](https://github.com/ropensci/rgbif/issues)
@@ -19,6 +15,6 @@ We love collaboration.
 
 ### Also, check out our [discussion forum](https://discuss.ropensci.org)
 
-### Prefer to Email? Get in touch: [scott@ropensci.org](mailto:scott@ropensci.org)
+### Email?
 
-### Thanks for contributing!
+If you do email you'll get a slower response than if you open an issue at https://github.com/ropensci/rgbif/issues. It benefits everyone to have an open discussion in an issue.
