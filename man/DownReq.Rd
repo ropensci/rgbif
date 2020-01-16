@@ -8,18 +8,9 @@ handles single requests for \link{GbifQueue}
 }
 \examples{
 \dontrun{
-# res <- DownReq$new(occ_download('taxonKey = 3119195', "year = 1991"))
-# res
-# res$req
-# res$run()
-# (requests <- GbifQueue$new())
-# res$run(keep_track = TRUE)
-# requests
-# res$status()
-
-# prepared query
-res <- DownReq$new(occ_download_prep("basisOfRecord = LITERATURE",
-  user = "foo", pwd = "bar", email = "foo@bar.com"))
+res <- DownReq$new(occ_download_prep(pred("basisOfRecord", "LITERATURE"), 
+  pred("year", "1956")
+))
 res
 # res$run()
 # res

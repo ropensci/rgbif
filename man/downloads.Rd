@@ -60,6 +60,13 @@ or \code{PREPARING}
 \item \code{\link[=occ_download_dataset_activity]{occ_download_dataset_activity()}} - Lists the downloads activity
 of a dataset
 }
+
+Download query composer methods:
+\itemize{
+\item \code{\link[=pred]{pred()}} - compose a query (aka: predicate) with one value (e.g., \code{1})
+\item \code{\link[=pred_multi]{pred_multi()}} - compose a predicate with many values (e.g., \code{c(1, 2)})
+\item \code{\link[=preds]{preds()}} - combine many predicates (e.g., \code{preds(pred(...), pred(...))})
+}
 }
 
 \section{Query length}{

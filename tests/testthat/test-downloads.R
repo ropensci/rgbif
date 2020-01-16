@@ -25,9 +25,10 @@ test_that("GbifQueue works with occ_download inputs", {
   skip_on_cran()
 
   x <- GbifQueue$new(
-    occ_download('taxonKey = 3119195', "year = 1976"),
-    occ_download('taxonKey = 3119195', "year = 2001"),
-    occ_download('taxonKey = 3119195', "year = 2001", "month <= 8")
+    occ_download(pred('taxonKey', 3119195), pred("year", 1976)),
+    occ_download(pred('taxonKey', 3119195), pred("year", 2001)),
+    occ_download(pred('taxonKey', 3119195), pred("year", 2001),
+      pred("month", 8, "<="))
   )
   
   expect_is(x, "GbifQueue")
@@ -105,12 +106,16 @@ test_that("DownReq works with occ_download_prep inputs", {
   expect_error(res$status(), "run\\(\\) result is `NULL`, not checking status")
 })
 
-test_that("occ_download fails well when user does not give strings as inputs to ...", {
+test_that("occ_download fails well when user does not input predicates", {
   skip_on_cran()
 
   expect_error(
-    occ_download(taxonKey = 5039705, hasCoordinate = T,
+    occ_download(taxonKey = 5039705, hasCoordinate = TRUE,
       basisOfRecord = "Preserved_Specimen"),
+    "all inputs must be"
+  )
+  expect_error(
+    occ_download('taxonKey = 5039705'),
     "all inputs must be"
   )
 })

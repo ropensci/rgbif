@@ -37,9 +37,11 @@ pred_multi(key, value, type = "or")
 preds(..., type = "or")
 }
 \arguments{
-\item{...}{One or more of query arguments to kick of a download job.
-If you use this, don't use \code{body} parameter. All inputs must be
-character strings. See Details.}
+\item{...}{For \code{occ_download()} and \code{occ_download_prep()}, one or more
+objects of class \code{occ_predicate} or \code{occ_predicate_list}, created by
+\code{pred()}, \code{pred_multi()}, or \code{preds()}. If you use this, don't use
+\code{body} parameter. For \code{preds()}, one or more objects of class
+\code{occ_predicate}, created by \code{pred()} or \code{pred_multi()}}
 
 \item{body}{if you prefer to pass in the payload yourself, use this
 parameter. if use this, don't pass anythig to the dots. accepts
@@ -52,85 +54,30 @@ optional}
 lessThanOrEquals (<=), greaterThan (>), greaterThanOrEquals (>=), in,
 within, not (!), like}
 
-\item{format}{(character) The download format. One of DWCA (default),
-SIMPLE_CSV, or SPECIES_LIST}
+\item{format}{(character) The download format. One of 'DWCA' (default),
+'SIMPLE_CSV', or 'SPECIES_LIST'}
 
 \item{user}{(character) User name within GBIF's website. Required. See
-Details.}
+"Authentication" below}
 
 \item{pwd}{(character) User password within GBIF's website. Required. See
-Details.}
+"Authentication" below}
 
 \item{email}{(character) Email address to recieve download notice done
-email. Required. See Details.}
+email. Required. See "Authentication" below}
 
 \item{curlopts}{list of named curl options passed on to
 \code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
 for curl options}
 
 \item{key}{(character) the key for the predicate (used in \code{pred()},
-\code{pred_multi()}, and \code{preds()})}
+\code{pred_multi()}, and \code{preds()}). See "Keys" below}
 
-\item{value}{the value for the predicate (used in \code{pred()},
+\item{value}{(various) the value for the predicate (used in \code{pred()},
 \code{pred_multi()}, and \code{preds()})}
 }
 \description{
 Spin up a download request for GBIF occurrence data.
-}
-\details{
-Argument passed have to be passed as character (e.g.,
-'country = US'), with a space between key ('country'), operator ('='),
-and value ('US'). See the \code{type} parameter for possible options for
-the operator.  This character string is parsed internally.
-
-The value can be comma separated, in which case we'll turn that into a
-predicate combined with the OR operator, for example,
-\code{"taxonKey = 2480946,5229208"} will turn into\preformatted{'\{
-   "type": "or",
-   "predicates": [
-     \{
-      "type": "equals",
-      "key": "TAXON_KEY",
-      "value": "2480946"
-     \},
-     \{
-      "type": "equals",
-      "key": "TAXON_KEY",
-      "value": "5229208"
-     \}
-   ]
-\}'
-}
-
-Acceptable arguments to \code{...} are:
-\itemize{
-\item taxonKey = 'TAXON_KEY'
-\item scientificName = 'SCIENTIFIC_NAME'
-\item country = 'COUNTRY'
-\item publishingCountry = 'PUBLISHING_COUNTRY'
-\item hasCoordinate = 'HAS_COORDINATE'
-\item hasGeospatialIssue = 'HAS_GEOSPATIAL_ISSUE'
-\item typeStatus = 'TYPE_STATUS'
-\item recordNumber = 'RECORD_NUMBER'
-\item lastInterpreted = 'LAST_INTERPRETED'
-\item continent = 'CONTINENT'
-\item geometry = 'GEOMETRY'
-\item basisOfRecord = 'BASIS_OF_RECORD'
-\item datasetKey = 'DATASET_KEY'
-\item eventDate = 'EVENT_DATE'
-\item catalogNumber = 'CATALOG_NUMBER'
-\item year = 'YEAR'
-\item month = 'MONTH'
-\item decimalLatitude = 'DECIMAL_LATITUDE'
-\item decimalLongitude = 'DECIMAL_LONGITUDE'
-\item elevation = 'ELEVATION'
-\item depth = 'DEPTH'
-\item institutionCode = 'INSTITUTION_CODE'
-\item collectionCode = 'COLLECTION_CODE'
-\item issue = 'ISSUE'
-\item mediatype = 'MEDIA_TYPE'
-\item recordedBy = 'RECORDED_BY'
-}
 }
 \note{
 see \link{downloads} for an overview of GBIF downloads methods
@@ -200,6 +147,64 @@ environment variables as it's the most widely used way to store secrets.
 See \code{?Startup} for help.
 }
 
+\section{What happens internally}{
+
+Internally, the input to \code{pred}, \code{pred_multi}, and \code{preds}
+are turned into JSON to be sent to GBIF. For example,
+\code{pred_multi("taxonKey", c(2480946, 5229208))} will turn into:\preformatted{'\{
+   "type": "or",
+   "predicates": [
+     \{
+      "type": "equals",
+      "key": "TAXON_KEY",
+      "value": "2480946"
+     \},
+     \{
+      "type": "equals",
+      "key": "TAXON_KEY",
+      "value": "5229208"
+     \}
+   ]
+\}'
+}
+}
+
+\section{Keys}{
+
+
+Acceptable arguments to the \code{key} parameter are (with the version of
+the key in parens that must be sent if you pass the query via the \code{body}
+parameter; see below for examples):
+\itemize{
+\item taxonKey (TAXON_KEY)
+\item scientificName (SCIENTIFIC_NAME)
+\item country (COUNTRY)
+\item publishingCountry (PUBLISHING_COUNTRY)
+\item hasCoordinate (HAS_COORDINATE)
+\item hasGeospatialIssue (HAS_GEOSPATIAL_ISSUE)
+\item typeStatus (TYPE_STATUS)
+\item recordNumber (RECORD_NUMBER)
+\item lastInterpreted (LAST_INTERPRETED)
+\item continent (CONTINENT)
+\item geometry (GEOMETRY)
+\item basisOfRecord (BASIS_OF_RECORD)
+\item datasetKey (DATASET_KEY)
+\item eventDate (EVENT_DATE)
+\item catalogNumber (CATALOG_NUMBER)
+\item year (YEAR)
+\item month (MONTH)
+\item decimalLatitude (DECIMAL_LATITUDE)
+\item decimalLongitude (DECIMAL_LONGITUDE)
+\item elevation (ELEVATION)
+\item depth (DEPTH)
+\item institutionCode (INSTITUTION_CODE)
+\item collectionCode (COLLECTION_CODE)
+\item issue (ISSUE)
+\item mediatype (MEDIA_TYPE)
+\item recordedBy (RECORDED_BY)
+}
+}
+
 \section{Query length}{
 
 GBIF has a limit of 12,000 characters for a download query. This means
@@ -213,10 +218,10 @@ error on GBIF's side and you'll have to split your query into a few.
 # occ_download(pred("taxonKey", 3119195), pred("elevation", 5000, ">"))
 # occ_download(pred("decimalLatitude", 50, ">")
 # occ_download(pred("elevation", 9000, ">=")
-# occ_download(pred('decimalLatitude", "65", ">=")
+# occ_download(pred('decimalLatitude", 65, ">=")
 # occ_download(pred("country", "US")
 # occ_download(pred("institutionCode", "TLMF"))
-# occ_download(pred("catalogNumber", "217880"))
+# occ_download(pred("catalogNumber", 217880))
 
 # download format
 # z <- occ_download(pred("decimalLatitude", 75, ">="),
@@ -225,7 +230,7 @@ error on GBIF's side and you'll have to split your query into a few.
 # res <- occ_download(pred("taxonKey", 7264332), pred("hasCoordinate", TRUE))
 
 # pass output directly, or later, to occ_download_meta for more information
-# occ_download('decimalLatitude > 75') \%>\% occ_download_meta
+# occ_download(pred('decimalLatitude', 75, ">")) \%>\% occ_download_meta
 
 # Multiple queries
 # occ_download(pred("decimalLatitude", 65, ">="),
@@ -236,15 +241,15 @@ error on GBIF's side and you'll have to split your query into a few.
 # complex example with many predicates
 # shows example of how to do date ranges for both year and month
 # res <- occ_download(
-#  "taxonKey = 2480946,5229208",
-#  "basisOfRecord = HUMAN_OBSERVATION,OBSERVATION,MACHINE_OBSERVATION",
-#  "country = US",
-#  "hasCoordinate = true",
-#  "hasGeospatialIssue = false",
-#  "year >= 1999",
-#  "year <= 2011",
-#  "month >= 3",
-#  "month <= 8"
+#  pred("elevation", 5000, ">"),
+#  pred_multi("basisOfRecord", c('HUMAN_OBSERVATION','OBSERVATION','MACHINE_OBSERVATION'), 'in'),
+#  pred("country", "US"),
+#  pred("hasCoordinate", "true"),
+#  pred("hasGeospatialIssue", "false"),
+#  pred("year", 1999, ">="),
+#  pred("year", 2011, "<="),
+#  pred("month", 3, ">="),
+#  pred("month", 8, "<=")
 # )
 
 # Using body parameter - pass in your own complete query
@@ -276,6 +281,8 @@ query <- list(
 
 # Prepared query
 pred("basisOfRecord", "LITERATURE")
+pred("hasCoordinate", TRUE)
+pred("hasGeospatialIssue", FALSE)
 pred("geometry", "POLYGON((-14 42, 9 38, -7 26, -14 42))")
 pred_multi("taxonKey", c(2977832, 2977901, 2977966, 2977835), "or")
 pred_multi("taxonKey", c(2977832, 2977901, 2977966, 2977835), "in")

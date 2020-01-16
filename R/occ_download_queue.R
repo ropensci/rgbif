@@ -20,57 +20,60 @@
 #' next, and so on. So in theory, there may not always strictly be 3 running
 #' concurrently, but the function will usually provide for 3 running
 #' concurrently.
-#' 
+#'
 #' @section Beware:
 #' This function is still in development. There's a lot of complexity
 #' to this problem. We'll be rolling out fixes and improvements in future
-#' versions of the package, so expect to have to adjust your code 
+#' versions of the package, so expect to have to adjust your code
 #' with new versions.
-#' 
+#'
 #' @examples \dontrun{
 #' # passing occ_download() requests via ...
-#' out <- occ_download_queue(
-#'   occ_download('taxonKey = 3119195', "year = 1976"),
-#'   occ_download('taxonKey = 3119195', "year = 2001"),
-#'   occ_download('taxonKey = 3119195', "year = 2001", "month <= 8"),
-#'   occ_download('taxonKey = 5229208', "year = 2011"),
-#'   occ_download('taxonKey = 2480946', "year = 2015"),
-#'   occ_download("country = NZ", "year = 1999", "month = 3"),
-#'   occ_download("catalogNumber = Bird.27847588", "year = 1998", "month = 2")
+#' out <- occ_download_prep(
+#'   occ_download(pred('taxonKey', 3119195), pred("year", 1976)),
+#'   occ_download(pred('taxonKey', 3119195), pred("year", 2001)),
+#'   occ_download(pred('taxonKey', 3119195), pred("year", 2001),
+#'     pred("month", 8, "<=")),
+#'   occ_download(pred('taxonKey', 5229208), pred("year", 2011)),
+#'   occ_download(pred('taxonKey', 2480946), pred("year", 2015)),
+#'   occ_download(pred("country", "NZ"), pred("year", 1999),
+#'     pred("month", 3)),
+#'   occ_download(pred("catalogNumber", "Bird.27847588"),
+#'     pred("year", 1998), pred("month", 2))
 #' )
 #'
 #' # supports <= 3 requests too
 #' out <- occ_download_queue(
-#'   occ_download("country = NZ", "year = 1999", "month = 3"),
-#'   occ_download("catalogNumber = Bird.27847588", "year = 1998", "month = 2")
+#'   occ_download(pred("country", "NZ"), pred("year", 1999), pred("month", 3)),
+#'   occ_download(pred("catalogNumber", "Bird.27847588"), pred("year", 1998),
+#'     pred("month", 2))
 #' )
-#' 
+#'
 #' # using pre-prepared requests via .list
 #' keys <- c(7905507, 5384395, 8911082)
 #' queries <- list()
 #' for (i in seq_along(keys)) {
 #'   queries[[i]] <- occ_download_prep(
-#'     paste0("taxonKey = ", keys[i]),
-#'     "basisOfRecord = HUMAN_OBSERVATION,OBSERVATION",
-#'     "hasCoordinate = true",
-#'     "hasGeospatialIssue = false",
-#'     "year = 1993"
+#'     pred("taxonKey", keys[i]),
+#'     pred_multi("basisOfRecord", c("HUMAN_OBSERVATION","OBSERVATION"), "in"),
+#'     pred("hasCoordinate", TRUE),
+#'     pred("hasGeospatialIssue", FALSE),
+#'     pred("year", 1993)
 #'   )
 #' }
 #' out <- occ_download_queue(.list = queries)
 #' out
-#' 
+#'
 #' # another pre-prepared example
 #' yrs <- 1930:1934
-#' length(yrs)
 #' queries <- list()
 #' for (i in seq_along(yrs)) {
 #'   queries[[i]] <- occ_download_prep(
-#'     "taxonKey = 2877951",
-#'     "basisOfRecord = HUMAN_OBSERVATION,OBSERVATION",
-#'     "hasCoordinate = true",
-#'     "hasGeospatialIssue = false",
-#'     paste0("year = ", yrs[i])
+#'     pred("taxonKey", 2877951),
+#'     pred_multi("basisOfRecord", c("HUMAN_OBSERVATION","OBSERVATION"), "in"),
+#'     pred("hasCoordinate", TRUE),
+#'     pred("hasGeospatialIssue", FALSE),
+#'     pred("year", yrs[i])
 #'   )
 #' }
 #' out <- occ_download_queue(.list = queries)
@@ -146,15 +149,15 @@ occ_download_queue <- function(..., .list = list(), status_ping = 10) {
           collapse = "\n"
         ))
 
-        # stash result 
+        # stash result
         results <- c(results, res[statusbool])
         # drop those done from `res` pool
         res <- res[!statusbool]
 
         # kick offf new job(s)
         if (que$jobs() > 0) {
-          # take minimum of max concurrent - number still running OR number 
-          #  jobs remaining - we don't want to start 2 jobs if there's 
+          # take minimum of max concurrent - number still running OR number
+          #  jobs remaining - we don't want to start 2 jobs if there's
           #  only 1 left to start
           jobs_to_start <- min(max_concurrent - length(res), que$jobs())
           # kick off N=jobs_to_start jobs
@@ -164,7 +167,7 @@ occ_download_queue <- function(..., .list = list(), status_ping = 10) {
             ## remove from queue
             que$remove(x[[1]])
             ## run job
-            message(sprintf("  running %s of %s", 
+            message(sprintf("  running %s of %s",
               length(que$reqs) - length(que$queue), length(que$reqs)))
             res_single <- x[[1]]$run()
             ## stash into `res` pool

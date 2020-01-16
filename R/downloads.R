@@ -47,6 +47,12 @@
 #' - [occ_download_datasets()] - List datasets for a download
 #' - [occ_download_dataset_activity()] - Lists the downloads activity
 #' of a dataset
+#' 
+#' Download query composer methods:
+#' 
+#' - [pred()] - compose a query (aka: predicate) with one value (e.g., `1`)
+#' - [pred_multi()] - compose a predicate with many values (e.g., `c(1, 2)`)
+#' - [preds()] - combine many predicates (e.g., `preds(pred(...), pred(...))`)
 #'
 #' @section Query length:
 #' GBIF has a limit of 12,000 characters for a download query. This means

@@ -2,9 +2,11 @@
 #'
 #' @export
 #'
-#' @param ... One or more of query arguments to kick of a download job.
-#' If you use this, don't use `body` parameter. All inputs must be
-#' character strings. See Details.
+#' @param ... For `occ_download()` and `occ_download_prep()`, one or more
+#' objects of class `occ_predicate` or `occ_predicate_list`, created by
+#' `pred()`, `pred_multi()`, or `preds()`. If you use this, don't use
+#' `body` parameter. For `preds()`, one or more objects of class
+#' `occ_predicate`, created by `pred()` or `pred_multi()`
 #' @param body if you prefer to pass in the payload yourself, use this
 #' parameter. if use this, don't pass anythig to the dots. accepts
 #' either an R list, or JSON. JSON is likely easier, since the JSON
@@ -14,17 +16,17 @@
 #' @param type (character) One of equals (=), and (&), or (|), lessThan (<),
 #' lessThanOrEquals (<=), greaterThan (>), greaterThanOrEquals (>=), in,
 #' within, not (!), like
-#' @param format (character) The download format. One of DWCA (default),
-#' SIMPLE_CSV, or SPECIES_LIST
+#' @param format (character) The download format. One of 'DWCA' (default),
+#' 'SIMPLE_CSV', or 'SPECIES_LIST'
 #' @param user (character) User name within GBIF's website. Required. See
-#' Details.
+#' "Authentication" below
 #' @param pwd (character) User password within GBIF's website. Required. See
-#' Details.
+#' "Authentication" below
 #' @param email (character) Email address to recieve download notice done
-#' email. Required. See Details.
+#' email. Required. See "Authentication" below
 #' @param key (character) the key for the predicate (used in `pred()`,
-#' `pred_multi()`, and `preds()`)
-#' @param value the value for the predicate (used in `pred()`,
+#' `pred_multi()`, and `preds()`). See "Keys" below
+#' @param value (various) the value for the predicate (used in `pred()`,
 #' `pred_multi()`, and `preds()`)
 #' @template occ
 #' @note see [downloads] for an overview of GBIF downloads methods
@@ -83,14 +85,10 @@
 #'
 #' See `?Startup` for help.
 #'
-#' @details Argument passed have to be passed as character (e.g.,
-#' 'country = US'), with a space between key ('country'), operator ('='),
-#' and value ('US'). See the `type` parameter for possible options for
-#' the operator.  This character string is parsed internally.
-#'
-#' The value can be comma separated, in which case we'll turn that into a
-#' predicate combined with the OR operator, for example,
-#' `"taxonKey = 2480946,5229208"` will turn into
+#' @section What happens internally:
+#' Internally, the input to `pred`, `pred_multi`, and `preds` 
+#' are turned into JSON to be sent to GBIF. For example,
+#' `pred_multi("taxonKey", c(2480946, 5229208))` will turn into:
 #'
 #' ```
 #' '{
@@ -109,36 +107,39 @@
 #'    ]
 #' }'
 #' ```
+#' 
+#' @section Keys:
 #'
-#' Acceptable arguments to `...` are:
-#' \itemize{
-#'  \item taxonKey = 'TAXON_KEY'
-#'  \item scientificName = 'SCIENTIFIC_NAME'
-#'  \item country = 'COUNTRY'
-#'  \item publishingCountry = 'PUBLISHING_COUNTRY'
-#'  \item hasCoordinate = 'HAS_COORDINATE'
-#'  \item hasGeospatialIssue = 'HAS_GEOSPATIAL_ISSUE'
-#'  \item typeStatus = 'TYPE_STATUS'
-#'  \item recordNumber = 'RECORD_NUMBER'
-#'  \item lastInterpreted = 'LAST_INTERPRETED'
-#'  \item continent = 'CONTINENT'
-#'  \item geometry = 'GEOMETRY'
-#'  \item basisOfRecord = 'BASIS_OF_RECORD'
-#'  \item datasetKey = 'DATASET_KEY'
-#'  \item eventDate = 'EVENT_DATE'
-#'  \item catalogNumber = 'CATALOG_NUMBER'
-#'  \item year = 'YEAR'
-#'  \item month = 'MONTH'
-#'  \item decimalLatitude = 'DECIMAL_LATITUDE'
-#'  \item decimalLongitude = 'DECIMAL_LONGITUDE'
-#'  \item elevation = 'ELEVATION'
-#'  \item depth = 'DEPTH'
-#'  \item institutionCode = 'INSTITUTION_CODE'
-#'  \item collectionCode = 'COLLECTION_CODE'
-#'  \item issue = 'ISSUE'
-#'  \item mediatype = 'MEDIA_TYPE'
-#'  \item recordedBy = 'RECORDED_BY'
-#' }
+#' Acceptable arguments to the `key` parameter are (with the version of
+#' the key in parens that must be sent if you pass the query via the `body`
+#' parameter; see below for examples):
+#' 
+#' - taxonKey (TAXON_KEY)
+#' - scientificName (SCIENTIFIC_NAME)
+#' - country (COUNTRY)
+#' - publishingCountry (PUBLISHING_COUNTRY)
+#' - hasCoordinate (HAS_COORDINATE)
+#' - hasGeospatialIssue (HAS_GEOSPATIAL_ISSUE)
+#' - typeStatus (TYPE_STATUS)
+#' - recordNumber (RECORD_NUMBER)
+#' - lastInterpreted (LAST_INTERPRETED)
+#' - continent (CONTINENT)
+#' - geometry (GEOMETRY)
+#' - basisOfRecord (BASIS_OF_RECORD)
+#' - datasetKey (DATASET_KEY)
+#' - eventDate (EVENT_DATE)
+#' - catalogNumber (CATALOG_NUMBER)
+#' - year (YEAR)
+#' - month (MONTH)
+#' - decimalLatitude (DECIMAL_LATITUDE)
+#' - decimalLongitude (DECIMAL_LONGITUDE)
+#' - elevation (ELEVATION)
+#' - depth (DEPTH)
+#' - institutionCode (INSTITUTION_CODE)
+#' - collectionCode (COLLECTION_CODE)
+#' - issue (ISSUE)
+#' - mediatype (MEDIA_TYPE)
+#' - recordedBy (RECORDED_BY)
 #'
 #' @section Query length:
 #' GBIF has a limit of 12,000 characters for a download query. This means
@@ -155,10 +156,10 @@
 #' # occ_download(pred("taxonKey", 3119195), pred("elevation", 5000, ">"))
 #' # occ_download(pred("decimalLatitude", 50, ">")
 #' # occ_download(pred("elevation", 9000, ">=")
-#' # occ_download(pred('decimalLatitude", "65", ">=")
+#' # occ_download(pred('decimalLatitude", 65, ">=")
 #' # occ_download(pred("country", "US")
 #' # occ_download(pred("institutionCode", "TLMF"))
-#' # occ_download(pred("catalogNumber", "217880"))
+#' # occ_download(pred("catalogNumber", 217880))
 #' 
 #' # download format
 #' # z <- occ_download(pred("decimalLatitude", 75, ">="),
@@ -167,7 +168,7 @@
 #' # res <- occ_download(pred("taxonKey", 7264332), pred("hasCoordinate", TRUE))
 #'
 #' # pass output directly, or later, to occ_download_meta for more information
-#' # occ_download('decimalLatitude > 75') %>% occ_download_meta
+#' # occ_download(pred('decimalLatitude', 75, ">")) %>% occ_download_meta
 #'
 #' # Multiple queries
 #' # occ_download(pred("decimalLatitude", 65, ">="),
@@ -178,15 +179,15 @@
 #' # complex example with many predicates
 #' # shows example of how to do date ranges for both year and month
 #' # res <- occ_download(
-#' #  "taxonKey = 2480946,5229208",
-#' #  "basisOfRecord = HUMAN_OBSERVATION,OBSERVATION,MACHINE_OBSERVATION",
-#' #  "country = US",
-#' #  "hasCoordinate = true",
-#' #  "hasGeospatialIssue = false",
-#' #  "year >= 1999",
-#' #  "year <= 2011",
-#' #  "month >= 3",
-#' #  "month <= 8"
+#' #  pred("elevation", 5000, ">"),
+#' #  pred_multi("basisOfRecord", c('HUMAN_OBSERVATION','OBSERVATION','MACHINE_OBSERVATION'), 'in'),
+#' #  pred("country", "US"),
+#' #  pred("hasCoordinate", "true"),
+#' #  pred("hasGeospatialIssue", "false"),
+#' #  pred("year", 1999, ">="),
+#' #  pred("year", 2011, "<="),
+#' #  pred("month", 3, ">="),
+#' #  pred("month", 8, "<=")
 #' # )
 #'
 #' # Using body parameter - pass in your own complete query
@@ -218,6 +219,8 @@
 #'
 #' # Prepared query
 #' pred("basisOfRecord", "LITERATURE")
+#' pred("hasCoordinate", TRUE)
+#' pred("hasGeospatialIssue", FALSE)
 #' pred("geometry", "POLYGON((-14 42, 9 38, -7 26, -14 42))")
 #' pred_multi("taxonKey", c(2977832, 2977901, 2977966, 2977835), "or")
 #' pred_multi("taxonKey", c(2977832, 2977901, 2977966, 2977835), "in")
@@ -290,6 +293,8 @@ occ_download_prep <- function(..., body = NULL, type = "and", format = "DWCA",
 #' @export
 #' @rdname occ_download
 pred <- function(key, value, type = "=") {
+  if (!length(key) == 1) stop("'key' must be length 1", call. = FALSE)
+  if (!length(value) == 1) stop("'value' must be length 1", call. = FALSE)
   z <- parse_pred(key, value, type)
   structure(z, class = "occ_predicate")
 }
@@ -297,6 +302,7 @@ pred <- function(key, value, type = "=") {
 #' @export
 #' @rdname occ_download
 pred_multi <- function(key, value, type = "or") {
+  if (!length(key) == 1) stop("'key' must be length 1", call. = FALSE)
   if (!type %in% c("or", "in"))
     stop("'type' must be one of: or, in", call. = FALSE)
   z <- parse_pred(key, value, type)
@@ -451,14 +457,14 @@ parse_pred <- function(key, value, type = "and") {
     all(grepl("polygon|multipolygon|linestring|multilinestring|point|mulitpoint",
       value, ignore.case = TRUE))
   ) {
-    list(type = "within", geometry = unbox(as.character(value)))
+    list(type = "within", geometry = unbox(as_c(value)))
   } else if (type == "in") {
-    list(type = unbox("in"), key = unbox(key), values = as.character(value))
+    list(type = unbox("in"), key = unbox(key), values = as_c(value))
   } else if (type == "or") {
     list(type = unbox("or"), predicates = lapply(value, function(w) 
-      list(type = unbox("equals"), key = unbox(key), value = as.character(w))))
+      list(type = unbox("equals"), key = unbox(key), value = as_c(w))))
   } else {
-    list(type = unbox(type), key = unbox(key), value = unbox(as.character(value)))
+    list(type = unbox(type), key = unbox(key), value = unbox(as_c(value)))
   }
 }
 pred_cat <- function(x) {
@@ -516,4 +522,8 @@ parse_predicates <- function(user, email, type, format, ...) {
     )
   }
   return(payload)
+}
+as_c <- function(x) {
+  z <- if (inherits(x, "logical")) tolower(x) else x
+  return(as.character(z))
 }

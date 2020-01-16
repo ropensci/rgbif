@@ -33,6 +33,15 @@ or `PREPARING`
 - `occ_download_datasets()` - List datasets for a download
 - `occ_download_dataset_activity()` - Lists the downloads activity of a dataset
 
+The following three functions are query composers, used with `occ_download`,
+`occ_download_prep()`, and `occ_download_queue()`.
+
+- `pred()` - compose a query with a single value, e.g., taxonKey=2480946
+- `pred_multi()` - compose a query with more than one
+value, e.g., taxonKey = 2480946 or 5229208
+- `preds()` - compose a query with multiple individual predicates,
+e.g., year <= 1989 AND year >= 1993
+
 `occ_download()` is the function to start off with when using the GBIF download
 service. With it you can specify what query you want. Unfortunately, the interfaces
 to the search vs. download services are different, so we couldn't make the `rgbif`
@@ -54,12 +63,13 @@ library("rgbif")
 ## Kick off a download
 
 Instead of passing parameters like `taxonkey = 12345` in `occ_search`, for downloads
-we pass the whole thing as a character string **because** you can use operators
-other than `=` (equal to).
+we construct queries using `pred`, `pred_multi`, or `preds`. This provides for much more
+complex queries than can be done with `occ_search/occ_data`. With downloads, you can use
+operators other than `=` (equal to); and the queries can be very complex.
 
 
 ```r
-(res <- occ_download('taxonKey = 7264332', 'hasCoordinate = TRUE'))
+(res <- occ_download(pred('taxonKey', 7264332), pred('hasCoordinate', TRUE)))
 #> <<gbif download>>
 #>   Username: sckott
 #>   E-mail: myrmecocystus@gmail.com

@@ -9,15 +9,16 @@ GBIF download queue
 \examples{
 \dontrun{
 x <- GbifQueue$new(
-  occ_download('taxonKey = 3119195', "year = 1976"),
-  occ_download('taxonKey = 3119195', "year = 2001"),
-  occ_download('taxonKey = 3119195', "year = 2001", "month <= 8"),
-  occ_download('taxonKey = 3119195', "year = 2004"),
-  occ_download('taxonKey = 3119195', "year = 2005")
+  occ_download(pred('taxonKey', 3119195), pred("year", 1976)),
+  occ_download(pred('taxonKey', 3119195), pred("year", 2001)),
+  occ_download(pred('taxonKey', 3119195), pred("year", 2001), pred("month", 8, "<=")),
+  occ_download(pred('taxonKey', 3119195), pred("year", 2004)),
+  occ_download(pred('taxonKey', 3119195), pred("year", 2005))
 )
 x
 x$reqs
 x$add_all()
+x
 x$jobs()
 x
 x$remove(x$reqs[[1]])
@@ -27,10 +28,10 @@ x$reqs[[1]]$result
 
 # pre-prepared download request
 z <- occ_download_prep(
-  "basisOfRecord = HUMAN_OBSERVATION,OBSERVATION",
-  "hasCoordinate = true",
-  "hasGeospatialIssue = false",
-  "year = 1993",
+  pred_multi("basisOfRecord", c("HUMAN_OBSERVATION","OBSERVATION"), "in"),
+  pred("hasCoordinate", TRUE),
+  pred("hasGeospatialIssue", FALSE),
+  pred("year", 1993),
   user = "foo", pwd = "bar", email = "foo@bar.com"
 )
 out <- GbifQueue$new(.list = list(z))

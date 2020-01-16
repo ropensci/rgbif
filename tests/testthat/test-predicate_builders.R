@@ -15,6 +15,12 @@ test_that("pred", {
   expect_named(bb, c("type", "key", "value"))
   expect_is(bb$type, "character")
   expect_equal(unclass(bb$type), "greaterThan")
+
+  # booleans are downcased
+  cct <- pred("hasCoordinate", TRUE)
+  ccf <- pred("hasCoordinate", FALSE)
+  expect_equal(unclass(cct$value), "true")
+  expect_equal(unclass(ccf$value), "false")
 })
 test_that("pred fails well", {
   expect_error(pred(), "argument \"key\" is missing")
@@ -22,6 +28,11 @@ test_that("pred fails well", {
   expect_error(pred("a", "b"), "'key' not in acceptable set")
   expect_error(pred(5, "b"), "key must be of class character")
   expect_error(pred("a", 5, 4), "type must be of class character")
+  # should fail well when more than one thing passed to `value`
+  expect_error(
+    pred("basisOfRecord", c("HUMAN_OBSERVATION","OBSERVATION")),
+    "'value' must be length 1"
+  )
 })
 
 context("predicate builders: pred_multi")

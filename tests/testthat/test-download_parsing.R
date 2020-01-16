@@ -23,7 +23,7 @@ test_that("occ_download input parsing", {
   expect_equal(unclass(bb$predicate$type[1]), "and")
   expect_equal(unclass(bb$predicate$predicates[[1]]$type), "equals")
   expect_equal(unclass(bb$predicate$predicates[[1]]$key), "HAS_COORDINATE")
-  expect_equal(unclass(bb$predicate$predicates[[1]]$value), "TRUE")
+  expect_equal(unclass(bb$predicate$predicates[[1]]$value), "true")
 
   cc <- parse_predicates(user, email, type, "DWCA",
     pred("geometry", "POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))"))

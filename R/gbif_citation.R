@@ -57,10 +57,9 @@
 #'
 #' # Downloads
 #' ## occ_download_get()
-#' # d1 <- occ_download("country = BG", "year <= 2011")
-#' # key <- "0000122-171020152545675"
-#' # occ_download_meta(key)
-#' # d1 <- occ_download_get(key, overwrite = TRUE)
+#' # d1 <- occ_download(pred("country", "BG"), pred("year", 2011, "<="))
+#' # occ_download_meta(d1) # wait until status = succeeded
+#' # d1 <- occ_download_get(d1, overwrite = TRUE)
 #' # gbif_citation(d1)
 #'
 #' ## occ_download_meta()
