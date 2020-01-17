@@ -26,7 +26,7 @@ test_that("occ_download input parsing", {
   expect_equal(unclass(bb$predicate$predicates[[1]]$value), "true")
 
   cc <- parse_predicates(user, email, type, "DWCA",
-    pred("geometry", "POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))"))
+    pred_within("POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))"))
   expect_is(cc, "list")
   expect_is(cc$predicate$type, "character")
   expect_is(cc$predicate$type, "scalar")
@@ -36,11 +36,11 @@ test_that("occ_download input parsing", {
   expect_equal(unclass(cc$predicate$predicates[[1]]$geometry),
     "POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))")
 
-  aa <- parse_predicates(user, email, type, "DWCA", 
+  aa <- parse_predicates(user, email, type, "DWCA",
     pred('taxonKey', 7228682),
     pred('hasCoordinate', TRUE),
     pred('hasGeospatialIssue', FALSE),
-    pred('geometry', 'POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))')
+    pred_within('POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))')
   )
   expect_is(aa, "list")
   expect_named(aa, c("creator", "notification_address", "format", "predicate"))
@@ -50,10 +50,10 @@ test_that("occ_download input parsing", {
   expect_is(aa$predicate$predicates, "list")
   expect_equal(aa$predicate$predicates[[1]]$type[1], "equals")
   expect_is(aa$predicate$predicates[[4]]$geometry[1], "character")
-  
+
   # format=SIMPLE_CSV
   aa <- parse_predicates(user, email, type, "SIMPLE_CSV",
-    pred('decimalLatitude', 82, '>='))
+    pred_gte('decimalLatitude', 82))
   expect_is(aa, "list")
   expect_named(aa, c("creator", "notification_address", "format", "predicate"))
   expect_is(aa$predicate$type, "character")
@@ -66,7 +66,7 @@ test_that("occ_download input parsing", {
 
   # format=SPECIES_LIST
   aa <- parse_predicates(user, email, "not", "SPECIES_LIST",
-    pred('decimalLatitude', 2000, '<'))
+    pred_lt('decimalLatitude', 2000))
   expect_is(aa, "list")
   expect_named(aa, c("creator", "notification_address", "format", "predicate"))
   expect_is(aa$predicate$type, "character")

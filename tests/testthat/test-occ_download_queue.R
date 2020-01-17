@@ -13,7 +13,7 @@ test_that("occ_download_queue: real request works", {
 
   vcr::use_cassette("occ_download_queue", {
     tt <- occ_download_queue(
-      occ_download(pred("country", "NZ"), "year = 1993", pred("month", 1)),
+      occ_download(pred("country", "NZ"), pred("year", 1993), pred("month", 1)),
       occ_download(pred("catalogNumber", "Bird.27847588"), pred("year", 1971), pred("month", 4)),
       occ_download(pred("taxonKey", 2435240), pred("year", 1974), pred("month", 2))
     )

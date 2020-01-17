@@ -28,7 +28,7 @@ test_that("GbifQueue works with occ_download inputs", {
     occ_download(pred('taxonKey', 3119195), pred("year", 1976)),
     occ_download(pred('taxonKey', 3119195), pred("year", 2001)),
     occ_download(pred('taxonKey', 3119195), pred("year", 2001),
-      pred("month", 8, "<="))
+      pred_lte("month", 8))
   )
   
   expect_is(x, "GbifQueue")
@@ -52,7 +52,7 @@ test_that("GbifQueue works with occ_download_prep inputs", {
   skip_on_cran()
 
   z <- occ_download_prep(
-    pred_multi(key="basisOfRecord", value=c("HUMAN_OBSERVATION", "OBSERVATION"), type="in"),
+    pred_in(key="basisOfRecord", value=c("HUMAN_OBSERVATION", "OBSERVATION")),
     pred("hasCoordinate", TRUE),
     pred("hasGeospatialIssue", FALSE),
     pred("year", 1993),
@@ -124,7 +124,7 @@ test_that("occ_download fails well when user does not input predicates", {
 test_that("type in works", {
   skip_on_cran()
 
-  z <- occ_download_prep(pred_multi("taxonKey", c(2480946, 5229208), type = "in"),
+  z <- occ_download_prep(pred_in("taxonKey", c(2480946, 5229208)),
     format = "SIMPLE_CSV")
 
   expect_is(z, "occ_download_prep")

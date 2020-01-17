@@ -50,9 +50,7 @@
 #' 
 #' Download query composer methods:
 #' 
-#' - [pred()] - compose a query (aka: predicate) with one value (e.g., `1`)
-#' - [pred_multi()] - compose a predicate with many values (e.g., `c(1, 2)`)
-#' - [preds()] - combine many predicates (e.g., `preds(pred(...), pred(...))`)
+#' See [download_predicate_dsl]
 #'
 #' @section Query length:
 #' GBIF has a limit of 12,000 characters for a download query. This means

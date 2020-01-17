@@ -3,9 +3,6 @@
 \name{occ_download}
 \alias{occ_download}
 \alias{occ_download_prep}
-\alias{pred}
-\alias{pred_multi}
-\alias{preds}
 \title{Spin up a download request for GBIF occurrence data.}
 \usage{
 occ_download(
@@ -29,12 +26,6 @@ occ_download_prep(
   email = NULL,
   curlopts = list()
 )
-
-pred(key, value, type = "=")
-
-pred_multi(key, value, type = "or")
-
-preds(..., type = "or")
 }
 \arguments{
 \item{...}{For \code{occ_download()} and \code{occ_download_prep()}, one or more
@@ -69,12 +60,6 @@ email. Required. See "Authentication" below}
 \item{curlopts}{list of named curl options passed on to
 \code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
 for curl options}
-
-\item{key}{(character) the key for the predicate (used in \code{pred()},
-\code{pred_multi()}, and \code{preds()}). See "Keys" below}
-
-\item{value}{(various) the value for the predicate (used in \code{pred()},
-\code{pred_multi()}, and \code{preds()})}
 }
 \description{
 Spin up a download request for GBIF occurrence data.
@@ -82,22 +67,6 @@ Spin up a download request for GBIF occurrence data.
 \note{
 see \link{downloads} for an overview of GBIF downloads methods
 }
-\section{predicate builders}{
-
-\itemize{
-\item \code{pred()}: used when composing a query with a single value, e.g.,
-you want to search for taxon key 2480946. \code{pred} supports all options
-described in the \code{type} parameter
-\item \code{pred_multi()}: used when composing a query with more than one
-value, e.g., you want to search for taxon keys 2480946 or 5229208.
-only supports \code{type} values of "or" or "in"
-\item \code{preds()}: used when composing a query with multiple individual
-predicates, e.g., search for year less than or equal to 1989 AND
-year greater than or equal to 1993. only supports \code{type} values
-of "or" or "in"
-}
-}
-
 \section{geometry}{
 
 When using the geometry parameter, make sure that your well known text
@@ -147,64 +116,6 @@ environment variables as it's the most widely used way to store secrets.
 See \code{?Startup} for help.
 }
 
-\section{What happens internally}{
-
-Internally, the input to \code{pred}, \code{pred_multi}, and \code{preds}
-are turned into JSON to be sent to GBIF. For example,
-\code{pred_multi("taxonKey", c(2480946, 5229208))} will turn into:\preformatted{'\{
-   "type": "or",
-   "predicates": [
-     \{
-      "type": "equals",
-      "key": "TAXON_KEY",
-      "value": "2480946"
-     \},
-     \{
-      "type": "equals",
-      "key": "TAXON_KEY",
-      "value": "5229208"
-     \}
-   ]
-\}'
-}
-}
-
-\section{Keys}{
-
-
-Acceptable arguments to the \code{key} parameter are (with the version of
-the key in parens that must be sent if you pass the query via the \code{body}
-parameter; see below for examples):
-\itemize{
-\item taxonKey (TAXON_KEY)
-\item scientificName (SCIENTIFIC_NAME)
-\item country (COUNTRY)
-\item publishingCountry (PUBLISHING_COUNTRY)
-\item hasCoordinate (HAS_COORDINATE)
-\item hasGeospatialIssue (HAS_GEOSPATIAL_ISSUE)
-\item typeStatus (TYPE_STATUS)
-\item recordNumber (RECORD_NUMBER)
-\item lastInterpreted (LAST_INTERPRETED)
-\item continent (CONTINENT)
-\item geometry (GEOMETRY)
-\item basisOfRecord (BASIS_OF_RECORD)
-\item datasetKey (DATASET_KEY)
-\item eventDate (EVENT_DATE)
-\item catalogNumber (CATALOG_NUMBER)
-\item year (YEAR)
-\item month (MONTH)
-\item decimalLatitude (DECIMAL_LATITUDE)
-\item decimalLongitude (DECIMAL_LONGITUDE)
-\item elevation (ELEVATION)
-\item depth (DEPTH)
-\item institutionCode (INSTITUTION_CODE)
-\item collectionCode (COLLECTION_CODE)
-\item issue (ISSUE)
-\item mediatype (MEDIA_TYPE)
-\item recordedBy (RECORDED_BY)
-}
-}
-
 \section{Query length}{
 
 GBIF has a limit of 12,000 characters for a download query. This means
@@ -215,41 +126,41 @@ error on GBIF's side and you'll have to split your query into a few.
 \examples{
 \dontrun{
 # occ_download(pred("basisOfRecord", "LITERATURE"))
-# occ_download(pred("taxonKey", 3119195), pred("elevation", 5000, ">"))
-# occ_download(pred("decimalLatitude", 50, ">")
-# occ_download(pred("elevation", 9000, ">=")
-# occ_download(pred('decimalLatitude", 65, ">=")
+# occ_download(pred("taxonKey", 3119195), pred_gt("elevation", 5000))
+# occ_download(pred_gt("decimalLatitude", 50)
+# occ_download(pred_gte("elevation", 9000)
+# occ_download(pred_gte('decimalLatitude", 65)
 # occ_download(pred("country", "US")
 # occ_download(pred("institutionCode", "TLMF"))
 # occ_download(pred("catalogNumber", 217880))
 
 # download format
-# z <- occ_download(pred("decimalLatitude", 75, ">="),
+# z <- occ_download(pred_gte("decimalLatitude", 75),
 #  format = "SPECIES_LIST")
 
 # res <- occ_download(pred("taxonKey", 7264332), pred("hasCoordinate", TRUE))
 
 # pass output directly, or later, to occ_download_meta for more information
-# occ_download(pred('decimalLatitude', 75, ">")) \%>\% occ_download_meta
+# occ_download(pred_gt('decimalLatitude', 75)) \%>\% occ_download_meta
 
 # Multiple queries
-# occ_download(pred("decimalLatitude", 65, ">="),
-#  pred("decimalLatitude", -65, "<="), type="or")
+# occ_download(pred_gte("decimalLatitude", 65),
+#  pred_lte("decimalLatitude", -65), type="or")
 # gg <- occ_download(pred("depth", 80), pred("taxonKey", 2343454),
 #  type="or")
 
 # complex example with many predicates
 # shows example of how to do date ranges for both year and month
 # res <- occ_download(
-#  pred("elevation", 5000, ">"),
-#  pred_multi("basisOfRecord", c('HUMAN_OBSERVATION','OBSERVATION','MACHINE_OBSERVATION'), 'in'),
+#  pred_gt("elevation", 5000),
+#  pred_in("basisOfRecord", c('HUMAN_OBSERVATION','OBSERVATION','MACHINE_OBSERVATION')),
 #  pred("country", "US"),
-#  pred("hasCoordinate", "true"),
-#  pred("hasGeospatialIssue", "false"),
-#  pred("year", 1999, ">="),
-#  pred("year", 2011, "<="),
-#  pred("month", 3, ">="),
-#  pred("month", 8, "<=")
+#  pred("hasCoordinate", TRUE),
+#  pred("hasGeospatialIssue", FALSE),
+#  pred_gte("year", 1999),
+#  pred_lte("year", 2011),
+#  pred_gte("month", 3),
+#  pred_lte("month", 8)
 # )
 
 # Using body parameter - pass in your own complete query
@@ -280,31 +191,25 @@ query <- list(
 # res <- occ_download(body = query, curlopts = list(verbose = TRUE))
 
 # Prepared query
-pred("basisOfRecord", "LITERATURE")
-pred("hasCoordinate", TRUE)
-pred("hasGeospatialIssue", FALSE)
-pred("geometry", "POLYGON((-14 42, 9 38, -7 26, -14 42))")
-pred_multi("taxonKey", c(2977832, 2977901, 2977966, 2977835), "or")
-pred_multi("taxonKey", c(2977832, 2977901, 2977966, 2977835), "in")
 occ_download_prep(pred("basisOfRecord", "LITERATURE"))
 occ_download_prep(pred("basisOfRecord", "LITERATURE"), format = "SIMPLE_CSV")
 occ_download_prep(pred("basisOfRecord", "LITERATURE"), format = "SPECIES_LIST")
-occ_download_prep(pred_multi("taxonKey", c(2977832, 2977901, 2977966, 2977835), "in"))
-occ_download_prep(pred("geometry", "POLYGON((-14 42, 9 38, -7 26, -14 42))"))
+occ_download_prep(pred_in("taxonKey", c(2977832, 2977901, 2977966, 2977835)))
+occ_download_prep(pred_within("POLYGON((-14 42, 9 38, -7 26, -14 42))"))
 
 ## a complicated example
 occ_download_prep(
-  pred_multi("basisOfRecord", c("MACHINE_OBSERVATION", "HUMAN_OBSERVATION"), "in"),
-  pred_multi("taxonKey", c(2498343, 2481776, 2481890), "in"),
-  pred_multi("country", c("GB", "IE"), "in"),
-  preds(pred("year", 1989, "<="), pred("year", 2000, "="), type = "or")
+  pred_in("basisOfRecord", c("MACHINE_OBSERVATION", "HUMAN_OBSERVATION")),
+  pred_in("taxonKey", c(2498343, 2481776, 2481890)),
+  pred_in("country", c("GB", "IE")),
+  pred_or(pred_lte("year", 1989), pred("year", 2000))
 )
 
 # x = occ_download(
-#   pred_multi("basisOfRecord", c("MACHINE_OBSERVATION", "HUMAN_OBSERVATION"), "in"),
-#   pred_multi("taxonKey", c(9206251, 3112648), "in"),
-#   pred_multi("country", c("US", "MX"), "in"),
-#   preds(pred("year", 1989, ">="), pred("year", 1991, "<="), type = "and")
+#   pred_in("basisOfRecord", c("MACHINE_OBSERVATION", "HUMAN_OBSERVATION")),
+#   pred_in("taxonKey", c(9206251, 3112648)),
+#   pred_in("country", c("US", "MX")),
+#   pred_and(pred_gte("year", 1989), pred_lte("year", 1991))
 # )
 # occ_download_meta(x)
 # z <- occ_download_get(x)
