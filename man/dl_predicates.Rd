@@ -2,7 +2,7 @@
 % Please edit documentation in R/occ_download_user_dl.R
 \name{dl_predicates}
 \alias{dl_predicates}
-\title{get all user download predicates}
+\title{Fetch all user download predicates}
 \usage{
 dl_predicates(user_df)
 }
@@ -10,10 +10,12 @@ dl_predicates(user_df)
 \item{user_df}{output from \code{\link[=dl_user]{dl_user()}}}
 }
 \description{
-get all user download predicates
+Fetch all user download predicates
 }
 \examples{
+\dontrun{
 x <- dl_user()
-occ_dl_predicates(user_df = x)
+dl_predicates(user_df = x)
+}
 }
 \keyword{internal}

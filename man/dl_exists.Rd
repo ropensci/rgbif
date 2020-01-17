@@ -2,7 +2,7 @@
 % Please edit documentation in R/occ_download_user_dl.R
 \name{dl_exists}
 \alias{dl_exists}
-\title{does a download exist already on the GBIF's user account remotely}
+\title{Does a download exist already on the GBIF's user account remotely?}
 \usage{
 dl_exists(pred, preds)
 }
@@ -12,13 +12,26 @@ dl_exists(pred, preds)
 
 \item{preds}{output from \code{\link[=dl_predicates]{dl_predicates()}}}
 }
+\value{
+boolean
+}
 \description{
-does a download exist already on the GBIF's user account remotely
+Does a download exist already on the GBIF's user account remotely?
+}
+\details{
+we convert predicates to JSON, then compare JSON blobs to one
+another
 }
 \examples{
+\dontrun{
+preds <- dl_predicates(dl_user())
+
 dprep <- occ_download_prep("catalogNumber = Bird.27847588", "year = 1978",
   "month = 5")
-preds <- dl_predicates(dl_user())
 dl_exists(pred = dprep, preds)
+
+dprep <- occ_download_prep("catalogNumber = Bird.27847588")
+dl_exists(pred = dprep, preds)
+}
 }
 \keyword{internal}

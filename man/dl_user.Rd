@@ -2,15 +2,28 @@
 % Please edit documentation in R/occ_download_user_dl.R
 \name{dl_user}
 \alias{dl_user}
-\title{get all user downloads}
+\title{Fetch all downloads for a user}
 \usage{
 dl_user(user = NULL, pwd = NULL, curlopts = list())
 }
+\arguments{
+\item{user}{(character) User name within GBIF's website. Required. See
+Details.}
+
+\item{pwd}{(character) User password within GBIF's website. Required. See
+Details.}
+
+\item{curlopts}{list of named curl options passed on to
+\code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
+for curl options}
+}
 \description{
-get all user downloads
+Fetch all downloads for a user
 }
 \examples{
+\dontrun{
 x <- dl_user()
 x
+}
 }
 \keyword{internal}
