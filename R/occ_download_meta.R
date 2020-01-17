@@ -14,6 +14,7 @@
 
 occ_download_meta <- function(key, curlopts = list()) {
   stopifnot(!is.null(key))
+  stopifnot(inherits(x, c("character", "occ_download")))
   url <- sprintf('%s/occurrence/download/%s', gbif_base(), key)
   cli <- crul::HttpClient$new(url = url, headers = rgbif_ual, opts = curlopts)
   tmp <- cli$get()
