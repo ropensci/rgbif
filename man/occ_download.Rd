@@ -52,7 +52,7 @@ optional}
 
 \item{type}{(character) One of equals (=), and (&), or (|), lessThan (<),
 lessThanOrEquals (<=), greaterThan (>), greaterThanOrEquals (>=), in,
-within, not (!), like}
+within, not (!), like, isNotNull}
 
 \item{format}{(character) The download format. One of 'DWCA' (default),
 'SIMPLE_CSV', or 'SPECIES_LIST'}
@@ -295,15 +295,16 @@ occ_download_prep(pred("geometry", "POLYGON((-14 42, 9 38, -7 26, -14 42))"))
 ## a complicated example
 occ_download_prep(
   pred_multi("basisOfRecord", c("MACHINE_OBSERVATION", "HUMAN_OBSERVATION"), "in"),
-  pred_multi("taxonKey", c(1, 2), "in"),
+  pred_multi("taxonKey", c(2498343, 2481776, 2481890), "in"),
   pred_multi("country", c("GB", "IE"), "in"),
   preds(pred("year", 1989, "<="), pred("year", 2000, "="), type = "or")
 )
+
 # x = occ_download(
 #   pred_multi("basisOfRecord", c("MACHINE_OBSERVATION", "HUMAN_OBSERVATION"), "in"),
 #   pred_multi("taxonKey", c(9206251, 3112648), "in"),
 #   pred_multi("country", c("US", "MX"), "in"),
-#   preds(pred("year", 1989, ">="), pred("year", 1991, "<="), type = "or")
+#   preds(pred("year", 1989, ">="), pred("year", 1991, "<="), type = "and")
 # )
 # occ_download_meta(x)
 # z <- occ_download_get(x)
