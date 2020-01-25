@@ -22,3 +22,4 @@ README.Rmd
 ^revdep$
 .github
 ^codemeta\.json$
+rgbif_dependencies.md
