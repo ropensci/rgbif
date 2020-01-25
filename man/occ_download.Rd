@@ -30,9 +30,8 @@ occ_download_prep(
 \arguments{
 \item{...}{For \code{occ_download()} and \code{occ_download_prep()}, one or more
 objects of class \code{occ_predicate} or \code{occ_predicate_list}, created by
-\code{pred()}, \code{pred_multi()}, or \code{preds()}. If you use this, don't use
-\code{body} parameter. For \code{preds()}, one or more objects of class
-\code{occ_predicate}, created by \code{pred()} or \code{pred_multi()}}
+\verb{pred*} functions (see \link{download_predicate_dsl}). If you use this, don't
+use \code{body} parameter.}
 
 \item{body}{if you prefer to pass in the payload yourself, use this
 parameter. if use this, don't pass anythig to the dots. accepts
@@ -228,3 +227,15 @@ See the API docs
 and the predicates docs
 \url{http://www.gbif.org/developer/occurrence#predicates}
 }
+\seealso{
+Other downloads: 
+\code{\link{download_predicate_dsl}},
+\code{\link{occ_download_cancel}()},
+\code{\link{occ_download_datasets}()},
+\code{\link{occ_download_get}()},
+\code{\link{occ_download_import}()},
+\code{\link{occ_download_list}()},
+\code{\link{occ_download_meta}()},
+\code{\link{occ_download_queue}()}
+}
+\concept{downloads}

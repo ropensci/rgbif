@@ -41,33 +41,60 @@ pred_and(..., .list = list())
 pred_in(key, value)
 }
 \arguments{
-\item{key}{(character) the key for the predicate (used in \code{pred()},
-\code{pred_multi()}, and \code{preds()}). See "Keys" below}
+\item{key}{(character) the key for the predicate. See "Keys" below}
 
-\item{value}{(various) the value for the predicate (used in \code{pred()},
-\code{pred_multi()}, and \code{preds()})}
+\item{value}{(various) the value for the predicate}
 
-\item{..., .list}{For \code{pred_or()} or \code{pred_and()}, one or more objects of class
-\code{occ_predicate}, created by \code{pred()}, etc.}
+\item{..., .list}{For \code{pred_or()} or \code{pred_and()}, one or more objects of
+class \code{occ_predicate}, created by any \verb{pred*} function}
 }
 \description{
 Download predicate DSL
 }
 \section{predicate methods and their equivalent types}{
 
+
+\verb{pred*} functions are named for the 'type' of operation they do, following
+the terminology used by GBIF, see
+https://www.gbif.org/developer/occurrence#predicates
+
+Function names are given, with the equivalent GBIF type value (e.g.,
+\code{pred_gt} and \code{greaterThan})
+
+The following functions take one key and one value:
 \itemize{
-\item equals (=): \code{pred}
-\item and (&): \code{pred_and}
-\item or (|): \code{pred_or}
-\item lessThan (<): \code{pred_lt}
-\item lessThanOrEquals (<=): \code{pred_lte}
-\item greaterThan (>): \code{pred_gt}
-\item greaterThanOrEquals (>=): \code{pred_gte}
-\item in: \code{pred_in}
-\item within: \code{pred_within} (only geospatial, accepts only a WKT string)
-\item not (!): \code{pred_not}
-\item like: \code{pred_like}
-\item isNotNull: \code{pred_notnull}
+\item \code{pred}: equals
+\item \code{pred_lt}: lessThan
+\item \code{pred_lte}: lessThanOrEquals
+\item \code{pred_gt}: greaterThan
+\item \code{pred_gte}: greaterThanOrEquals
+\item \code{pred_not}: not
+\item \code{pred_like}: like
+}
+
+The following function is only for geospatial queries, and only
+accepts a WKT string:
+\itemize{
+\item \code{pred_within}: within
+}
+
+The following function is only for stating the you don't want
+a key to be null, so only accepts one key:
+\itemize{
+\item \code{pred_notnull}: isNotNull
+}
+
+The following two functions accept multiple individual predicates,
+separating them by either "and" or "or":
+\itemize{
+\item \code{pred_and}: and
+\item \code{pred_or}: or
+}
+
+The following function is special in that it accepts a single key
+but many values; stating that you want to search for all the values:
+\itemize{
+\item \code{pred_in}: in
 }
 }
 
@@ -150,3 +177,19 @@ pred_or(pred("taxonKey", 2977832), pred("taxonKey", 2977901),
   pred("taxonKey", 2977966))
 pred_in("taxonKey", c(2977832, 2977901, 2977966, 2977835))
 }
+\references{
+Download predicates docs:
+\url{https://www.gbif.org/developer/occurrence#predicates}
+}
+\seealso{
+Other downloads: 
+\code{\link{occ_download_cancel}()},
+\code{\link{occ_download_datasets}()},
+\code{\link{occ_download_get}()},
+\code{\link{occ_download_import}()},
+\code{\link{occ_download_list}()},
+\code{\link{occ_download_meta}()},
+\code{\link{occ_download_queue}()},
+\code{\link{occ_download}()}
+}
+\concept{downloads}

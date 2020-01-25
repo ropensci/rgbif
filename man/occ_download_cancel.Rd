@@ -57,3 +57,15 @@ see \link{downloads} for an overview of GBIF downloads methods
 # occ_download_cancel_staged()
 }
 }
+\seealso{
+Other downloads: 
+\code{\link{download_predicate_dsl}},
+\code{\link{occ_download_datasets}()},
+\code{\link{occ_download_get}()},
+\code{\link{occ_download_import}()},
+\code{\link{occ_download_list}()},
+\code{\link{occ_download_meta}()},
+\code{\link{occ_download_queue}()},
+\code{\link{occ_download}()}
+}
+\concept{downloads}

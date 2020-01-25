@@ -4,9 +4,8 @@
 #'
 #' @param ... For `occ_download()` and `occ_download_prep()`, one or more
 #' objects of class `occ_predicate` or `occ_predicate_list`, created by
-#' `pred()`, `pred_multi()`, or `preds()`. If you use this, don't use
-#' `body` parameter. For `preds()`, one or more objects of class
-#' `occ_predicate`, created by `pred()` or `pred_multi()`
+#' `pred*` functions (see [download_predicate_dsl]). If you use this, don't
+#' use `body` parameter.
 #' @param body if you prefer to pass in the payload yourself, use this
 #' parameter. if use this, don't pass anythig to the dots. accepts
 #' either an R list, or JSON. JSON is likely easier, since the JSON
@@ -26,7 +25,7 @@
 #' email. Required. See "Authentication" below
 #' @template occ
 #' @note see [downloads] for an overview of GBIF downloads methods
-#'
+#' @family downloads
 #' @section geometry:
 #' When using the geometry parameter, make sure that your well known text
 #' (WKT) is formatted as GBIF expects it. They expect WKT to have a

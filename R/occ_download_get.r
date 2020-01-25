@@ -8,7 +8,7 @@
 #' @param overwrite Will only overwrite existing path if TRUE.
 #' @template occ
 #' @note see [downloads] for an overview of GBIF downloads methods
-#'
+#' @family downloads
 #' @details Downloads the zip file to a directory you specify on your machine.
 #' [crul::HttpClient()] is used internally to write the zip file to
 #' disk. See [crul::writing-options]. This function only downloads the file.

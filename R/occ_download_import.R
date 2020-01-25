@@ -19,7 +19,7 @@
 #' @details You can provide either x as input, or both key and path. We use
 #' [data.table::fread()] internally to read data.
 #' @note see [downloads] for an overview of GBIF downloads methods
-#'
+#' @family downloads
 #' @examples \dontrun{
 #' # First, kick off at least 1 download, then wait for the job to be complete
 #' # Then use your download keys

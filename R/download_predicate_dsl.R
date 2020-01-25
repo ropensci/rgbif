@@ -1,26 +1,44 @@
 #' Download predicate DSL
 #'
 #' @name download_predicate_dsl
-#' @param key (character) the key for the predicate (used in `pred()`,
-#' `pred_multi()`, and `preds()`). See "Keys" below
-#' @param value (various) the value for the predicate (used in `pred()`,
-#' `pred_multi()`, and `preds()`)
-#' @param ...,.list For `pred_or()` or `pred_and()`, one or more objects of class
-#' `occ_predicate`, created by `pred()`, etc.
+#' @param key (character) the key for the predicate. See "Keys" below
+#' @param value (various) the value for the predicate
+#' @param ...,.list For `pred_or()` or `pred_and()`, one or more objects of
+#' class `occ_predicate`, created by any `pred*` function
 #' @section predicate methods and their equivalent types:
+#' 
+#' `pred*` functions are named for the 'type' of operation they do, following
+#' the terminology used by GBIF, see
+#' https://www.gbif.org/developer/occurrence#predicates
+#' 
+#' Function names are given, with the equivalent GBIF type value (e.g., 
+#' `pred_gt` and `greaterThan`)
 #'
-#' - equals (=): `pred`
-#' - and (&): `pred_and`
-#' - or (|): `pred_or`
-#' - lessThan (<): `pred_lt`
-#' - lessThanOrEquals (<=): `pred_lte`
-#' - greaterThan (>): `pred_gt`
-#' - greaterThanOrEquals (>=): `pred_gte`
-#' - in: `pred_in`
-#' - within: `pred_within` (only geospatial, accepts only a WKT string)
-#' - not (!): `pred_not`
-#' - like: `pred_like`
-#' - isNotNull: `pred_notnull`
+#' The following functions take one key and one value:
+#' - `pred`: equals
+#' - `pred_lt`: lessThan
+#' - `pred_lte`: lessThanOrEquals
+#' - `pred_gt`: greaterThan
+#' - `pred_gte`: greaterThanOrEquals
+#' - `pred_not`: not
+#' - `pred_like`: like
+#' 
+#' The following function is only for geospatial queries, and only
+#' accepts a WKT string:
+#' - `pred_within`: within
+#' 
+#' The following function is only for stating the you don't want 
+#' a key to be null, so only accepts one key:
+#' - `pred_notnull`: isNotNull
+#' 
+#' The following two functions accept multiple individual predicates,
+#' separating them by either "and" or "or":
+#' - `pred_and`: and
+#' - `pred_or`: or
+#' 
+#' The following function is special in that it accepts a single key
+#' but many values; stating that you want to search for all the values:
+#' - `pred_in`: in
 #' 
 #' @section What happens internally:
 #' Internally, the input to `pred*` functions turns into JSON to be sent to
@@ -77,6 +95,9 @@
 #' - mediatype (MEDIA_TYPE)
 #' - recordedBy (RECORDED_BY)
 #' 
+#' @references Download predicates docs:
+#' <https://www.gbif.org/developer/occurrence#predicates>
+#' @family downloads
 #' @examples
 #' pred("taxonKey", 3119195)
 #' pred_gt("elevation", 5000)
@@ -173,7 +194,7 @@ preds_factory <- function(type) {
     pp <- c(pp, .list)
     if (!type %in% c("or", "in", "and"))
       stop("'type' must be one of: or, in", call. = FALSE)
-    if (length(pp) == 0) stop("nothing passed to `preds()`", call. = FALSE)
+    if (length(pp) == 0) stop("nothing passed`", call. = FALSE)
     if (!all(vapply(pp, class, "") == "occ_predicate"))
       stop("1 or more inputs is not of class 'occ_predicate'; see docs")
     structure(pp, class = "occ_predicate_list", type = unbox(type))

@@ -35,11 +35,18 @@ or `PREPARING`
 The following three functions are query composers, used with `occ_download`,
 `occ_download_prep()`, and `occ_download_queue()`.
 
-- `pred()` - compose a query with a single value, e.g., taxonKey=2480946
-- `pred_multi()` - compose a query with more than one
-value, e.g., taxonKey = 2480946 or 5229208
-- `preds()` - compose a query with multiple individual predicates,
-e.g., year <= 1989 AND year >= 1993
+- `pred`: equals (=)
+- `pred_and`: and (&)
+- `pred_or`: or (|)
+- `pred_lt`: lessThan (<)
+- `pred_lte`: lessThanOrEquals (<=)
+- `pred_gt`: greaterThan (>)
+- `pred_gte`: greaterThanOrEquals (>=)
+- `pred_in`: in
+- `pred_within`: within (only geospatial, accepts only a WKT string)
+- `pred_not`: not (!)
+- `pred_like`: like
+- `pred_notnull`: isNotNull
 
 `occ_download()` is the function to start off with when using the GBIF download
 service. With it you can specify what query you want. Unfortunately, the interfaces
@@ -53,7 +60,6 @@ ready yet.
 Let's take a look at how to use the download functions:
 
 ## Load rgbif
-
 
 ```r
 library("rgbif")

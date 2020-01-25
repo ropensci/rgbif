@@ -12,7 +12,7 @@
 #' allowing the user to kick off any number of requests, while abiding by
 #' GBIF rules of 3 concurrent requests per user.
 #' @note see [downloads] for an overview of GBIF downloads methods
-#'
+#' @family downloads
 #' @section How it works:
 #' It works by using lazy evaluation to collect your requests into a queue.
 #' Then it kicks of the first 3 requests. Then in a while loop, we check

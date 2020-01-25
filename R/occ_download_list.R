@@ -9,6 +9,7 @@
 #' @template occ
 #' @template downloadlimstart
 #' @note see [downloads] for an overview of GBIF downloads methods
+#' @family downloads
 #' @return a list with two slots:
 #' 
 #' - meta: a single row data.frame with columns: `offset`, `limit`,

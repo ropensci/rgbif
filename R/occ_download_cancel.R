@@ -11,7 +11,8 @@
 #' @param limit Number of records to return. Default: 20
 #' @param start Record number to start at. Default: 0
 #' @template occ
-#' @note see [downloads] for an overview of GBIF downloads methods 
+#' @note see [downloads] for an overview of GBIF downloads methods
+#' @family downloads
 #'
 #' @details Note, these functions only cancel a job in progress. If your
 #' download is already prepared for you, this won't do anything to change

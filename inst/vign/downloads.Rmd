@@ -40,14 +40,41 @@ or `PREPARING`
 - `occ_download_datasets()` - List datasets for a download
 - `occ_download_dataset_activity()` - Lists the downloads activity of a dataset
 
-The following three functions are query composers, used with `occ_download`,
+The following functions are the download predicate DSL, used with `occ_download`,
 `occ_download_prep()`, and `occ_download_queue()`.
 
-- `pred()` - compose a query with a single value, e.g., taxonKey=2480946
-- `pred_multi()` - compose a query with more than one
-value, e.g., taxonKey = 2480946 or 5229208
-- `preds()` - compose a query with multiple individual predicates,
-e.g., year <= 1989 AND year >= 1993
+`pred*` functions are named for the 'type' of operation they do, following
+the terminology used by GBIF, see
+https://www.gbif.org/developer/occurrence#predicates
+
+Function names are given, with the equivalent GBIF type value (e.g.,
+`pred_gt` and `greaterThan`)
+
+The following functions take one key and one value:
+- `pred`: equals
+- `pred_lt`: lessThan
+- `pred_lte`: lessThanOrEquals
+- `pred_gt`: greaterThan
+- `pred_gte`: greaterThanOrEquals
+- `pred_not`: not
+- `pred_like`: like
+
+The following function is only for geospatial queries, and only
+accepts a WKT string:
+- `pred_within`: within
+
+The following function is only for stating the you don't want
+a key to be null, so only accepts one key:
+- `pred_notnull`: isNotNull
+
+The following two functions accept multiple individual predicates,
+separating them by either "and" or "or":
+- `pred_and`: and
+- `pred_or`: or
+
+The following function is special in that it accepts a single key
+but many values; stating that you want to search for all the values:
+- `pred_in`: in
 
 `occ_download()` is the function to start off with when using the GBIF download
 service. With it you can specify what query you want. Unfortunately, the interfaces
@@ -58,7 +85,7 @@ Be aware that you can only perform 3 downloads simultaneously, so plan wisely.
 To help with this limitation, we are working on a queue helper, but it's not
 ready yet.
 
-Let's take a look at how to use the download functions:
+Let's take a look at how to use the download functions.
 
 ## Load rgbif
 
@@ -69,9 +96,8 @@ library("rgbif")
 ## Kick off a download
 
 Instead of passing parameters like `taxonkey = 12345` in `occ_search`, for downloads
-we construct queries using `pred`, `pred_multi`, or `preds`. This provides for much more
-complex queries than can be done with `occ_search/occ_data`. With downloads, you can use
-operators other than `=` (equal to); and the queries can be very complex.
+we construct queries using any of the `pred` functions. This provides for much more
+complex queries than can be done with `occ_search/occ_data`. With downloads, you can use operators other than `=` (equal to); and the queries can be very complex.
 
 ```{r eval=FALSE}
 (res <- occ_download(pred('taxonKey', 7264332), pred('hasCoordinate', TRUE)))

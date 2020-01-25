@@ -6,7 +6,7 @@
 #' \code{occ_download}
 #' @template occ
 #' @note see [downloads] for an overview of GBIF downloads methods
-#'
+#' @family downloads
 #' @examples \dontrun{
 #' occ_download_meta(key="0003983-140910143529206")
 #' occ_download_meta("0000066-140928181241064")
