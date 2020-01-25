@@ -231,6 +231,7 @@ and the predicates docs
 Other downloads: 
 \code{\link{download_predicate_dsl}},
 \code{\link{occ_download_cancel}()},
+\code{\link{occ_download_dataset_activity}()},
 \code{\link{occ_download_datasets}()},
 \code{\link{occ_download_get}()},
 \code{\link{occ_download_import}()},

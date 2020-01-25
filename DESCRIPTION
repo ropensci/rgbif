@@ -8,7 +8,7 @@ Description: A programmatic interface to the Web Service methods
     retrieving information on data providers, getting species occurrence
     records, getting counts of occurrence records, and using the 'GBIF'
     tile map service to make 'rasters' summarizing huge amounts of data.
-Version: 1.4.3.91
+Version: 1.8.9.91
 License: MIT + file LICENSE
 Authors@R: c(
     person("Scott", "Chamberlain", role = c("aut", "cre"), email = "myrmecocystus@gmail.com",
@@ -46,6 +46,7 @@ Imports:
 Suggests:
     testthat,
     knitr,
+    rmarkdown,
     sp,
     rgeos,
     png,

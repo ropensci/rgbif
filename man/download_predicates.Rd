@@ -184,6 +184,7 @@ Download predicates docs:
 \seealso{
 Other downloads: 
 \code{\link{occ_download_cancel}()},
+\code{\link{occ_download_dataset_activity}()},
 \code{\link{occ_download_datasets}()},
 \code{\link{occ_download_get}()},
 \code{\link{occ_download_import}()},

@@ -74,6 +74,7 @@ occ_download_get(key="0000066-140928181241064", overwrite = TRUE) \%>\%
 Other downloads: 
 \code{\link{download_predicate_dsl}},
 \code{\link{occ_download_cancel}()},
+\code{\link{occ_download_dataset_activity}()},
 \code{\link{occ_download_datasets}()},
 \code{\link{occ_download_get}()},
 \code{\link{occ_download_list}()},

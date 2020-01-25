@@ -4,24 +4,24 @@ RSCRIPT = Rscript --no-init-file
 all: move rmd2md
 
 move:
-		cp inst/vign/rgbif_vignette.md vignettes;\
-		cp inst/vign/issues.md vignettes;\
-		cp inst/vign/taxonomic_names.md vignettes;\
-		cp inst/vign/downloads.md vignettes;\
-		cp -r inst/vign/figure/ vignettes/figure/
+	cp inst/vign/rgbif_vignette.md vignettes;\
+	cp inst/vign/issues.md vignettes;\
+	cp inst/vign/taxonomic_names.md vignettes;\
+	cp inst/vign/downloads.md vignettes;\
+	cp -r inst/vign/figure/ vignettes/figure/
 
 rmd2md:
-		cd vignettes;\
-		mv rgbif_vignette.md rgbif.Rmd;\
-		mv issues.md issues.Rmd;\
-		mv taxonomic_names.md taxonomic_names.Rmd;\
-		mv downloads.md downloads.Rmd
+	cd vignettes;\
+	mv rgbif_vignette.md rgbif.Rmd;\
+	mv issues.md issues.Rmd;\
+	mv taxonomic_names.md taxonomic_names.Rmd;\
+	mv downloads.md downloads.Rmd
 
 install: doc build
 	R CMD INSTALL . && rm *.tar.gz
 
 build:
-	R CMD build .
+	R CMD build --no-build-vignettes .
 
 doc:
 	${RSCRIPT} -e "devtools::document()"
