@@ -5,6 +5,14 @@ reference:
     contents:
       - rgbif
       - rgbif-defunct
+      - many-values
+  - title: "datasets"
+    desc: >
+      rgbif datasets
+    contents:
+      - isocodes
+      - occ_fields
+      - typestatus
   - title: "Geometry"
     contents:
       - check_wkt
@@ -28,6 +36,7 @@ reference:
       Work with the GBIF Maps API
     contents:
       - map_fetch
+      - mvt_fetch
   - title: "Names"
     desc: >
       Work with the GBIF taxonomic names API
@@ -39,6 +48,8 @@ reference:
     contents:
       - starts_with("occ_download")
       - as.download
+      - downloads
+      - download_predicate_dsl
   - title: "Occurrence Search"
     desc: >
        Work with the GBIF occurrence search APIs
@@ -57,7 +68,7 @@ reference:
     contents:
       - gbif_issues
       - occ_issues
-      - occ_issues_lookup
+      - gbif_issues_lookup
   - title: "Miscellaneous"
     contents:
       - gbif_citation

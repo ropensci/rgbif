@@ -59,6 +59,7 @@ Function names are given, with the equivalent GBIF type value (e.g.,
 `pred_gt` and `greaterThan`)
 
 The following functions take one key and one value:
+
 - `pred`: equals
 - `pred_lt`: lessThan
 - `pred_lte`: lessThanOrEquals
@@ -69,19 +70,23 @@ The following functions take one key and one value:
 
 The following function is only for geospatial queries, and only
 accepts a WKT string:
+
 - `pred_within`: within
 
 The following function is only for stating the you don't want
 a key to be null, so only accepts one key:
+
 - `pred_notnull`: isNotNull
 
 The following two functions accept multiple individual predicates,
 separating them by either "and" or "or":
+
 - `pred_and`: and
 - `pred_or`: or
 
 The following function is special in that it accepts a single key
 but many values; stating that you want to search for all the values:
+
 - `pred_in`: in
 
 `occ_download()` is the function to start off with when using the GBIF download
