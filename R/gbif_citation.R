@@ -1,7 +1,7 @@
 #' Get citation for datasets used
 #'
 #' @export
-#' @param x (character) Result of call to [occ_search()],
+#' @param x (character) Result of call to [occ_search()], [occ_data()],
 #' [occ_download_get()], [occ_download_meta()], a dataset key, or occurrence key
 #' (character or numeric)
 #' @return list with S3 class assigned, used by a print method to pretty print
@@ -45,6 +45,10 @@
 #' # res3 <- occ_search(taxonKey=9206251, fields=c('name','basisOfRecord','
 #' #    protocol'), limit=20)
 #' # (xx <- gbif_citation(res3))
+#' 
+#' # occ_data
+#' res1 <- occ_data(taxonKey=9206251, limit=2)
+#' (xx <- gbif_citation(res1))
 #'
 #' # character class inputs
 #' ## pass in a dataset key
@@ -100,6 +104,9 @@ gbif_citation.gbif <- function(x) {
               class = "gbif_citation")
   })
 }
+
+#' @export
+gbif_citation.gbif_data <- gbif_citation.gbif
 
 #' @export
 gbif_citation.character <- function(x) {
