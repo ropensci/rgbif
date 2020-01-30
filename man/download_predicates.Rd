@@ -14,7 +14,7 @@
 \alias{pred_or}
 \alias{pred_and}
 \alias{pred_in}
-\title{Download predicate DSL}
+\title{Download predicate DSL (domain specific language)}
 \usage{
 pred(key, value)
 
@@ -49,7 +49,7 @@ pred_in(key, value)
 class \code{occ_predicate}, created by any \verb{pred*} function}
 }
 \description{
-Download predicate DSL
+Download predicate DSL (domain specific language)
 }
 \section{predicate methods and their equivalent types}{
 

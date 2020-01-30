@@ -49,6 +49,7 @@ These numbers are subject to change.
 \item \code{\link[=occ_download]{occ_download()}} - Start a download
 \item \code{\link[=occ_download_prep]{occ_download_prep()}} - Prepare a download request
 \item \code{\link[=occ_download_queue]{occ_download_queue()}} - Start many downloads in a queue
+\item \code{\link[=occ_download_wait]{occ_download_wait()}} - Re-run \code{occ_download_meta()} until ready
 \item \code{\link[=occ_download_meta]{occ_download_meta()}} - Get metadata progress on a single download
 \item \code{\link[=occ_download_list]{occ_download_list()}} - List your downloads
 \item \code{\link[=occ_download_cancel]{occ_download_cancel()}} - Cancel a download

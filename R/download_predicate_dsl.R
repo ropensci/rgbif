@@ -1,4 +1,4 @@
-#' Download predicate DSL
+#' Download predicate DSL (domain specific language)
 #'
 #' @name download_predicate_dsl
 #' @param key (character) the key for the predicate. See "Keys" below
