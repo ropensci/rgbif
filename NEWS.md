@@ -1,23 +1,22 @@
 rgbif 2.0
-===========
+=========
 
 ### NEW FEATURES
 
-* xxx (#xxx)
-* xxx (#xxx)
-* xxx (#xxx)
+* The download query user interface for `occ_download()` has changed in a breaking fashion (thus the major version bump). After installation, see `?download_predicate_dsl`. Much more complex queries are now possible with `occ_download()`. TL;DR: you now construct queries with functions like `pred("taxonKey", 3119195)` rather than passing in strings like `taxonKey = 3119195`, and `pred_gt("elevation", 5000)` instead of `"elevation > 5000"`  (#362)
+* gains new function `occ_download_wait()` to re-run `occ_download_meta()` until the download is ready - kinda like `occ_download_queue()` but for a single download (#389)
+* `occ_download_dataset_activity()` gains pagination parameters `limit` and `start` to paginate through results (#382)
+* `gbif_citation()` now works with the output of `occ_data()` in addition to the other existing inputs it accepts (#392)
 
 ### MINOR IMPROVEMENTS
 
-* xxx (#xxx)
-* xxx (#xxx)
-* xxx (#xxx)
+* typo fix in the _geometry_ section of the `occ_download()` manual file (#387)
+* vignettes fixes (#391)
 
 ### BUG FIXES
 
-* xxx (#xxx)
-* xxx (#xxx)
-* xxx (#xxx)
+* `gbif_citation()` tests needed preserve body bytes for vcr (#384)
+* fix to `occ_count()` and `count_facet()`: isGeoreferenced/georeferenced variable needed booleans converted to lowercase before being sent to GBIF (#385) (#386)
 
 
 rgbif 1.4.0

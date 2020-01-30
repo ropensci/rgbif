@@ -14,7 +14,7 @@
 
 --------
 
-This version xxxx.
+This version makes some breaking changes, thus the major version bump.
 
 Thanks!
 Scott Chamberlain
