@@ -14,6 +14,12 @@ occ_download_meta(key, curlopts = list())
 \code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
 for curl options}
 }
+\value{
+an object of class \code{occ_download_meta}, a list with slots for
+the download key, the DOI assigned to the download, license link,
+the request details you sent in the \code{occ_download()} request,
+and metadata about the size and date/time of the request
+}
 \description{
 Retrieves the occurrence download metadata by its unique key.
 }
@@ -36,6 +42,7 @@ Other downloads:
 \code{\link{occ_download_import}()},
 \code{\link{occ_download_list}()},
 \code{\link{occ_download_queue}()},
+\code{\link{occ_download_wait}()},
 \code{\link{occ_download}()}
 }
 \concept{downloads}

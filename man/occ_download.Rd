@@ -237,6 +237,7 @@ Other downloads:
 \code{\link{occ_download_import}()},
 \code{\link{occ_download_list}()},
 \code{\link{occ_download_meta}()},
-\code{\link{occ_download_queue}()}
+\code{\link{occ_download_queue}()},
+\code{\link{occ_download_wait}()}
 }
 \concept{downloads}

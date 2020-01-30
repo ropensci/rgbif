@@ -6,6 +6,10 @@
 #' \code{occ_download}
 #' @template occ
 #' @note see [downloads] for an overview of GBIF downloads methods
+#' @return an object of class `occ_download_meta`, a list with slots for
+#' the download key, the DOI assigned to the download, license link,
+#' the request details you sent in the `occ_download()` request,
+#' and metadata about the size and date/time of the request
 #' @family downloads
 #' @examples \dontrun{
 #' occ_download_meta(key="0003983-140910143529206")
@@ -64,7 +68,7 @@ gbif_make_list <- function(y){
           tmp$type,
           if ("geometry" %in% names(tmp)) "geometry" else tmp$key,
           if ("geometry" %in% names(tmp)) {
-            tmp$geometry 
+            tmp$geometry
           } else {
             zz <- tmp$value %||% tmp$values
             if (!is.null(zz)) paste(zz, collapse = ",") else zz

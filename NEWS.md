@@ -1,3 +1,25 @@
+rgbif 2.0
+===========
+
+### NEW FEATURES
+
+* xxx (#xxx)
+* xxx (#xxx)
+* xxx (#xxx)
+
+### MINOR IMPROVEMENTS
+
+* xxx (#xxx)
+* xxx (#xxx)
+* xxx (#xxx)
+
+### BUG FIXES
+
+* xxx (#xxx)
+* xxx (#xxx)
+* xxx (#xxx)
+
+
 rgbif 1.4.0
 ===========
 

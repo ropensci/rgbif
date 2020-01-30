@@ -1,0 +1,37 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/download/0001656-200127171203522
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.8.9.94)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.8.9.94)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Thu, 30 Jan 2020 02:43:58 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=3601
+      x-varnish: '796360826'
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '686'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"key":"0001656-200127171203522","doi":"10.15468/dl.fslcx2","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"9206251"},{"type":"in","key":"COUNTRY","values":["US","MX"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1982"}]},"sendNotification":false,"format":"DWCA"},"created":"2020-01-30T02:41:16.118+0000","modified":"2020-01-30T02:42:42.516+0000","eraseAfter":"2020-07-30T02:41:16.042+0000","status":"SUCCEEDED","downloadLink":"http://api.gbif.org/v1/occurrence/download/request/0001656-200127171203522.zip","size":4894989,"totalRecords":4554,"numberDatasets":91}'
+  recorded_at: 2020-01-30 02:43:59 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0

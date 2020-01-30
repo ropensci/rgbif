@@ -60,6 +60,7 @@ Other downloads:
 \code{\link{occ_download_import}()},
 \code{\link{occ_download_meta}()},
 \code{\link{occ_download_queue}()},
+\code{\link{occ_download_wait}()},
 \code{\link{occ_download}()}
 }
 \concept{downloads}

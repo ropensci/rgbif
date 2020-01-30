@@ -7,7 +7,7 @@
 gbif_citation(x)
 }
 \arguments{
-\item{x}{(character) Result of call to \code{\link[=occ_search]{occ_search()}},
+\item{x}{(character) Result of call to \code{\link[=occ_search]{occ_search()}}, \code{\link[=occ_data]{occ_data()}},
 \code{\link[=occ_download_get]{occ_download_get()}}, \code{\link[=occ_download_meta]{occ_download_meta()}}, a dataset key, or occurrence key
 (character or numeric)}
 }
@@ -60,6 +60,10 @@ res3 <- occ_search(taxonKey=9206251, fields=c('name','basisOfRecord','key'),
 # res3 <- occ_search(taxonKey=9206251, fields=c('name','basisOfRecord','
 #    protocol'), limit=20)
 # (xx <- gbif_citation(res3))
+
+# occ_data
+res1 <- occ_data(taxonKey=9206251, limit=2)
+(xx <- gbif_citation(res1))
 
 # character class inputs
 ## pass in a dataset key

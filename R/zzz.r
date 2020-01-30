@@ -449,15 +449,6 @@ get_meta <- function(x){
   }
 }
 
-list0tochar <- function(x){
-  if (class(x) == 'list') {
-    tmp <- vapply(x, length, numeric(1))
-    if (sum(tmp) == 0) NA else x
-  } else {
-    x
-  }
-}
-
 parse_results <- function(x, y){
   if (!is.null(y)) {
     if ('endOfRecords' %in% names(x)) {
@@ -528,9 +519,10 @@ convmany <- function(x) {
 }
 
 check_vals <- function(x, y){
-  if (is.na(x) || is.null(x)) stop(sprintf("%s can not be NA or NULL", y),
-                                   call. = FALSE)
-  if (length(x) > 1) stop(sprintf("%s has to be length 1", y), call. = FALSE)
+  if (is.na(x) || is.null(x))
+    stop(sprintf("%s can not be NA or NULL", y), call. = FALSE)
+  if (length(x) > 1)
+    stop(sprintf("%s has to be length 1", y), call. = FALSE)
 }
 
 check_for_a_pkg <- function(x) {
@@ -700,3 +692,7 @@ asl <- function(z) {
     return(z)
   }
 }
+
+last <- function(x) x[length(x)]
+
+mssg <- function(v, ...) if (v) message(...)
