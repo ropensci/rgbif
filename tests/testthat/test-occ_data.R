@@ -266,31 +266,16 @@ test_that("geometry inputs work as expected", {
 
     # bad wkt is caught and handled appropriately
     badwkt1 <- "POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 a))"
-    expect_error(
-      occ_data(geometry = badwkt1),
-      "Invalid simple WKT"
-      # "source type value could not be interpreted as target at 'a'"
-    )
+    expect_error(occ_data(geometry = badwkt1))
 
     badwkt2 <- "POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 '10.1'))"
-    expect_error(
-      occ_data(geometry = badwkt2),
-      "Invalid simple WKT"
-      # "source type value could not be interpreted as target at ''10.1''"
-    )
+    expect_error(occ_data(geometry = badwkt2))
 
     badwkt3 <- "POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1)"
-    expect_error(
-      occ_data(geometry = badwkt3),
-      "Invalid simple WKT"
-      # "Expected ')' in "
-    )
+    expect_error(occ_data(geometry = badwkt3))
 
     badwkt4 <- "CIRCULARSTRING(1 5, 6 2, 7 3)"
-    expect_error(
-      occ_data(geometry = badwkt4),
-      "WKT must be one of the types"
-    )
+    expect_error(occ_data(geometry = badwkt4))
 
   }, preserve_exact_body_bytes = TRUE)
 })

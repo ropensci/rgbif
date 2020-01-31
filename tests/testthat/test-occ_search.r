@@ -290,27 +290,15 @@ test_that("geometry inputs work as expected", {
     gg <- occ_search(geometry = wkt, geom_big = "axe", geom_size = 30, limit = 5)
 
     # bad wkt is caught and handled appropriately
-    expect_error(
-      occ_search(geometry = badwkt1),
-      "Invalid simple WKT"
-      # "source type value could not be interpreted as target at 'a'"
-    )
+    expect_error(occ_search(geometry = badwkt1))
 
     # badwkt2 <- "POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 '10.1'))"
     badwkt2 <- "POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 '10.1'))"
-    expect_error(
-      occ_search(geometry = badwkt2),
-      "Invalid simple WKT"
-      # "source type value could not be interpreted as target at ''10.1''"
-    )
+    expect_error(occ_search(geometry = badwkt2))
 
     # badwkt3 <- "POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1)"
     badwkt3 <- "POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1)"
-    expect_error(
-      occ_search(geometry = badwkt3),
-      "Invalid simple WKT"
-      # "Expected ')' in "
-    )
+    expect_error(occ_search(geometry = badwkt3))
 
     badwkt4 <- "CIRCULARSTRING(1 5, 6 2, 7 3)"
     expect_error(
