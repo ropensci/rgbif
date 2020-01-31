@@ -1,6 +1,8 @@
 context("occ_issues")
 
 test_that("occ_issues", {
+  skip_on_cran() # because fixture in .Rbuildignore
+
   vcr::use_cassette("occ_issues", {
     out <- occ_search(limit = 100)
 
@@ -54,6 +56,8 @@ test_that("occ_issues", {
 })
 
 test_that("occ_issues: occ_data type=many", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  
   vcr::use_cassette("occ_issues_type_many", {
     dat <- occ_data(taxonKey = c(2482598, 9362842, 2498387), limit = 30)
   }, preserve_exact_body_bytes = TRUE)

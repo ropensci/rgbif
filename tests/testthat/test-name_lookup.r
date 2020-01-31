@@ -1,6 +1,8 @@
 context("name_lookup")
 
 test_that("returns the correct class", {
+  skip_on_cran() # because fixture in .Rbuildignore
+
   vcr::use_cassette("name_lookup", {
     tt <- name_lookup(query='mammalia')
     uu <- name_lookup(query='Cnaemidophorus', rank="genus", return="data")
@@ -55,6 +57,8 @@ test_that("works with habitat parameter", {
 
 # many args
 test_that("works with parameters that allow many inputs", {
+  skip_on_cran() # because fixture in .Rbuildignore
+
   vcr::use_cassette("name_lookup_many_inputs", {
     aa <- name_lookup(status = c("misapplied", "synonym"), limit = 200)
     bb <- name_lookup(nameType = c("cultivar", "doubtful"), limit = 200)
@@ -88,6 +92,8 @@ test_that("works with parameters that allow many inputs", {
 
 #paging (limit higher than 1000 records; maximum API: 99999)
 test_that("paging: name_usage returns as many records as asked, limit > 1000", {
+  skip_on_cran() # because fixture in .Rbuildignore
+
   vcr::use_cassette("name_lookup_paging1", {
     # https://www.gbif.org/dataset/a5224e5b-6379-4d33-a29d-14b56015893d
     # 1051 total records (any origin, i.e. SOURCE and DENORMED_CLASSIFICATION)
@@ -105,6 +111,8 @@ test_that("paging: name_usage returns as many records as asked, limit > 1000", {
 })
 
 test_that("paging: class data and meta not modified by paging", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  
   vcr::use_cassette("name_lookup_paging2", {
     bb1 <- name_lookup(datasetKey = "a5224e5b-6379-4d33-a29d-14b56015893d",
                      limit = 1)
@@ -118,7 +126,7 @@ test_that("paging: class data and meta not modified by paging", {
 })
 
 test_that("paging: name_usage returns all records from dataset: limit > n_records", {
-  skip_on_cran()
+  skip_on_cran() # because fixture in .Rbuildignore
 
   vcr::use_cassette("name_lookup_paging3", {
     #https://www.gbif.org/dataset/a5224e5b-6379-4d33-a29d-14b56015893d

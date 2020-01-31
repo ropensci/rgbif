@@ -4,6 +4,7 @@ key <- 3118771
 
 # Search by key
 test_that("returns the correct class", {
+  skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_search", {
     tt <- occ_search(taxonKey=key, limit=2)
     uu <- occ_search(taxonKey=key, limit=20)
@@ -38,6 +39,7 @@ test_that("returns the correct class", {
 
 # Search by dataset key
 test_that("returns the correct dimensions", {
+  skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_search_datasetkey", {
     out <- occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a',
                       return='data')
@@ -70,6 +72,7 @@ test_that("returns the correct class", {
 
 # Occurrence data: lat/long data, and associated metadata with occurrences
 test_that("returns the correct class", {
+  skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_search_taxonkey", {
     out <- occ_search(taxonKey=key, return='data')
   }, preserve_exact_body_bytes = TRUE)
@@ -104,6 +107,7 @@ test_that("returns the correct class", {
 
 ######### Get occurrences for a particular eventDate
 test_that("dates work correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_search_eventdate", {
     a <- occ_search(taxonKey=3189815, year="2013", fields=c('name','year'))
     b <- occ_search(taxonKey=3189815, month="6", fields=c('name','month'))
@@ -146,6 +150,7 @@ test_that("returns the correct dimensions", {
 
 # test that looping is working correctly
 test_that("looping works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_search_looping_works", {
     it <- seq(from = 0, to = 500, by = 250)
     out <- list()
@@ -221,6 +226,8 @@ test_that("scientificName basic use works - no synonyms", {
 
 ######### geometry inputs work as expected
 test_that("geometry inputs work as expected", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  
   ## internally convert WKT string to a bounding box
   wkt <- "POLYGON((13.26349675655365 52.53991761181831,18.36115300655365 54.11445544219924,
   21.87677800655365 53.80418956368524,24.68927800655365 54.217364774722455,28.20490300655365

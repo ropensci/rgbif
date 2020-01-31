@@ -1,6 +1,8 @@
 context("organizations")
 
 test_that("returns the correct class", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  
   vcr::use_cassette("organizations", {
     
     tt <- organizations()

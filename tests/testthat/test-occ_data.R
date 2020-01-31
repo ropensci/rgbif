@@ -4,6 +4,7 @@ key <- 3118771
 
 # Search by key
 test_that("returns the correct class", {
+  skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_data", {
     tt <- occ_data(taxonKey = key, limit=2)
     uu <- occ_data(taxonKey = key, limit=20)
@@ -34,6 +35,7 @@ test_that("returns the correct class", {
 
 # Search by dataset key
 test_that("returns the correct dimensions", {
+  skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_data_datasetkey", {
     out <- occ_data(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a')
   }, preserve_exact_body_bytes = TRUE)
@@ -65,6 +67,7 @@ test_that("returns the correct class", {
 
 ######### Get occurrences for a particular eventDate
 test_that("dates work correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_data_event_date", {
     a <- occ_data(taxonKey = 3189815, year="2013")
     b <- occ_data(taxonKey = 3189815, month="6")
@@ -107,6 +110,7 @@ test_that("returns the correct dimensions", {
 
 # test that looping is working correctly
 test_that("looping works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_data_looping", {
     it <- seq(from = 0, to = 500, by = 250)
     out <- list()
@@ -180,6 +184,7 @@ test_that("scientificName basic use works - no synonyms", {
 
 ######### geometry inputs work as expected
 test_that("geometry inputs work as expected", {
+  skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_data_geometry", {
 
     # in well known text format
