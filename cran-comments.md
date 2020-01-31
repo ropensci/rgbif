@@ -16,5 +16,7 @@
 
 This version makes some breaking changes, thus the major version bump.
 
+This is a re-submission of this version with a decreased build size below 5mb.
+
 Thanks!
 Scott Chamberlain

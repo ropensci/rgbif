@@ -10,14 +10,14 @@
   "codeRepository": "https://github.com/ropensci/rgbif",
   "issueTracker": "https://github.com/ropensci/rgbif/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.4.0",
+  "version": "2.0.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.6.1",
+    "version": "3.6.2",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.6.1 Patched (2019-09-23 r77210)",
+  "runtimePlatform": "R version 3.6.2 Patched (2020-01-25 r77715)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -103,6 +103,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=knitr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "rmarkdown",
+      "name": "rmarkdown",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
     },
     {
       "@type": "SoftwareApplication",
@@ -340,18 +352,18 @@
       "sameAs": "https://CRAN.R-project.org/package=lazyeval"
     }
   ],
-  "contIntegration": "https://travis-ci.org/ropensci/rgbif",
+  "contIntegration": ["https://travis-ci.org/ropensci/rgbif", "https://codecov.io/github/ropensci/rgbif?branch=master"],
   "releaseNotes": "https://github.com/ropensci/rgbif/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/rgbif/blob/master/README.md",
-  "fileSize": "5530.225KB",
+  "fileSize": "3170.722KB",
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://ropensci.org",
   "keywords": ["GBIF", "specimens", "API", "web-services", "occurrences", "species", "taxonomy", "gbif", "api", "data", "biodiversity", "rstats", "r", "spocc", "r-package", "lifewatch", "oscibio"],
-  "developmentStatus": "http://www.repostatus.org/#active",
+  "developmentStatus": "https://www.repostatus.org/#active",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
-      "datePublished": "2019",
+      "datePublished": "2020",
       "author": [
         {
           "@type": "Person",
@@ -424,7 +436,8 @@
     "https://ropensci.github.io/rgbif",
     "https://ropensci.github.io/occurrence-manual",
     "https://docs.ropensci.org/rgbif",
-    "https://ropenscilabs.github.io/occurrence-manual/"
+    "https://ropenscilabs.github.io/occurrence-manual/",
+    "https://books.ropensci.org/occurrences/"
   ],
   "copyrightHolder": {},
   "funder": {}
