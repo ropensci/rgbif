@@ -147,6 +147,8 @@ error on GBIF's side and you'll have to split your query into a few.
 #  pred_lte("decimalLatitude", -65), type="or")
 # gg <- occ_download(pred("depth", 80), pred("taxonKey", 2343454),
 #  type="or")
+# x <- occ_download(pred_and(pred_within("POLYGON((-14 42, 9 38, -7 26, -14 42))"),
+#  pred_gte("elevation", 5000)))
 
 # complex example with many predicates
 # shows example of how to do date ranges for both year and month

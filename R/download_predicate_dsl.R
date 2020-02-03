@@ -6,12 +6,12 @@
 #' @param ...,.list For `pred_or()` or `pred_and()`, one or more objects of
 #' class `occ_predicate`, created by any `pred*` function
 #' @section predicate methods and their equivalent types:
-#' 
+#'
 #' `pred*` functions are named for the 'type' of operation they do, following
 #' the terminology used by GBIF, see
 #' https://www.gbif.org/developer/occurrence#predicates
-#' 
-#' Function names are given, with the equivalent GBIF type value (e.g., 
+#'
+#' Function names are given, with the equivalent GBIF type value (e.g.,
 #' `pred_gt` and `greaterThan`)
 #'
 #' The following functions take one key and one value:
@@ -22,52 +22,74 @@
 #' - `pred_gte`: greaterThanOrEquals
 #' - `pred_not`: not
 #' - `pred_like`: like
-#' 
+#'
 #' The following function is only for geospatial queries, and only
 #' accepts a WKT string:
 #' - `pred_within`: within
-#' 
-#' The following function is only for stating the you don't want 
+#'
+#' The following function is only for stating the you don't want
 #' a key to be null, so only accepts one key:
 #' - `pred_notnull`: isNotNull
-#' 
+#'
 #' The following two functions accept multiple individual predicates,
 #' separating them by either "and" or "or":
 #' - `pred_and`: and
 #' - `pred_or`: or
-#' 
+#'
 #' The following function is special in that it accepts a single key
 #' but many values; stating that you want to search for all the values:
 #' - `pred_in`: in
-#' 
+#'
 #' @section What happens internally:
 #' Internally, the input to `pred*` functions turns into JSON to be sent to
-#' GBIF. For example, `pred_in("taxonKey", c(2480946, 5229208))` will give:
+#' GBIF. For example ...
+#' 
+#' `pred_in("taxonKey", c(2480946, 5229208))` gives:
 #'
 #' ```
-#' '{
-#'    "type": "or",
-#'    "predicates": [
-#'      {
-#'       "type": "equals",
-#'       "key": "TAXON_KEY",
-#'       "value": "2480946"
-#'      },
-#'      {
-#'       "type": "equals",
-#'       "key": "TAXON_KEY",
-#'       "value": "5229208"
-#'      }
-#'    ]
-#' }'
+#' {
+#'    "type": "in",
+#'    "key": "TAXON_KEY",
+#'    "values": ["2480946", "5229208"]
+#'  }
 #' ```
 #' 
+#' `pred_gt("elevation", 5000)` gives:
+#' 
+#' ```
+#' {
+#'    "type": "greaterThan",
+#'    "key": "ELEVATION",
+#'    "value": "5000"
+#' }
+#' ```
+#' 
+#' `pred_or(pred("taxonKey", 2977832), pred("taxonKey", 2977901))` gives:
+#' 
+#' ```
+#' {
+#'   "type": "or",
+#'   "predicates": [
+#'      {
+#'        "type": "equals",
+#'        "key": "TAXON_KEY",
+#'        "value": "2977832"
+#'      },
+#'      {
+#'        "type": "equals",
+#'        "key": "TAXON_KEY",
+#'        "value": "2977901"
+#'      }
+#'   ]
+#' }
+#' ```
+#'
 #' @section Keys:
 #'
 #' Acceptable arguments to the `key` parameter are (with the version of
 #' the key in parens that must be sent if you pass the query via the `body`
 #' parameter; see below for examples):
-#' 
+#'
 #' - taxonKey (TAXON_KEY)
 #' - scientificName (SCIENTIFIC_NAME)
 #' - country (COUNTRY)
@@ -94,7 +116,7 @@
 #' - issue (ISSUE)
 #' - mediatype (MEDIA_TYPE)
 #' - recordedBy (RECORDED_BY)
-#' 
+#'
 #' @references Download predicates docs:
 #' <https://www.gbif.org/developer/occurrence#predicates>
 #' @family downloads
@@ -105,6 +127,8 @@
 #' pred_lt("elevation", 1000)
 #' pred_lte("elevation", 1000)
 #' pred_within("POLYGON((-14 42, 9 38, -7 26, -14 42))")
+#' pred_and(pred_within("POLYGON((-14 42, 9 38, -7 26, -14 42))"),
+#'   pred_gte("elevation", 5000))
 #' pred_or(pred_lte("year", 1989), pred("year", 2000))
 #' pred_and(pred_lte("year", 1989), pred("year", 2000))
 #' pred_in("taxonKey", c(2977832, 2977901, 2977966, 2977835))
@@ -230,23 +254,23 @@ parse_pred <- function(key, value, type = "and") {
   if (is.null(key))
     stop("'key' not in acceptable set of keys; see ?occ_download",
       call.=FALSE)
-  
+
   if (!any(operators_regex %in% type))
     stop("'type' not in acceptable set of types; see param def. 'type'",
       call.=FALSE)
   type <- operator_lkup[ operators_regex %in% type ][[1]]
-  
+
   if (
     (is.character(value) &&
       all(grepl("polygon|multipolygon|linestring|multilinestring|point|mulitpoint",
-        value, ignore.case = TRUE))) || 
+        value, ignore.case = TRUE))) ||
     type == "within"
   ) {
-    list(type = "within", geometry = unbox(as_c(value)))
+    list(type = unbox("within"), geometry = unbox(as_c(value)))
   } else if (type == "in") {
     list(type = unbox("in"), key = unbox(key), values = as_c(value))
   } else if (type == "or") {
-    list(type = unbox("or"), predicates = lapply(value, function(w) 
+    list(type = unbox("or"), predicates = lapply(value, function(w)
       list(type = unbox("equals"), key = unbox(key), value = as_c(w))))
   } else if (type == "isNotNull") {
     list(type = unbox(type), parameter = unbox(key))
@@ -284,7 +308,7 @@ parse_predicates <- function(user, email, type, format, ...) {
     function(z) inherits(z, c("occ_predicate", "occ_predicate_list")),
     logical(1)
   )
-  if (!all(clzzs)) 
+  if (!all(clzzs))
     stop("all inputs must be class occ_predicate/occ_predicate_list; ?occ_download",
       call. = FALSE)
   payload <- list(
@@ -298,17 +322,19 @@ parse_predicates <- function(user, email, type, format, ...) {
   } else {
     payload$predicate <- list(
       type = unbox(type),
-      # predicates = lapply(tmp, unclass)
-      predicates = lapply(tmp, function(w) { 
+      predicates = lapply(tmp, function(w) {
         if (inherits(w, "occ_predicate")) {
-          unclass(w) 
+          unclass(w)
         } else {
-          lst <- list(type = attr(w, "type")) 
+          lst <- list(type = attr(w, "type"))
           lst$predicates <- lapply(w, unclass)
           lst
         }
       })
     )
+    if (length(payload$predicate$predicates) == 1) {
+      payload$predicate <- payload$predicate$predicates[[1]]
+    }
   }
   return(payload)
 }

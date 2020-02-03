@@ -101,21 +101,37 @@ but many values; stating that you want to search for all the values:
 \section{What happens internally}{
 
 Internally, the input to \verb{pred*} functions turns into JSON to be sent to
-GBIF. For example, \code{pred_in("taxonKey", c(2480946, 5229208))} will give:\preformatted{'\{
-   "type": "or",
-   "predicates": [
+GBIF. For example ...
+
+\code{pred_in("taxonKey", c(2480946, 5229208))} gives:\preformatted{\{
+   "type": "in",
+   "key": "TAXON_KEY",
+   "values": ["2480946", "5229208"]
+ \}
+}
+
+\code{pred_gt("elevation", 5000)} gives:\preformatted{\{
+   "type": "greaterThan",
+   "key": "ELEVATION",
+   "value": "5000"
+\}
+}
+
+\code{pred_or(pred("taxonKey", 2977832), pred("taxonKey", 2977901))} gives:\preformatted{\{
+  "type": "or",
+  "predicates": [
      \{
-      "type": "equals",
-      "key": "TAXON_KEY",
-      "value": "2480946"
+       "type": "equals",
+       "key": "TAXON_KEY",
+       "value": "2977832"
      \},
      \{
-      "type": "equals",
-      "key": "TAXON_KEY",
-      "value": "5229208"
+       "type": "equals",
+       "key": "TAXON_KEY",
+       "value": "2977901"
      \}
-   ]
-\}'
+  ]
+\}
 }
 }
 
@@ -162,6 +178,8 @@ pred_gte("elevation", 5000)
 pred_lt("elevation", 1000)
 pred_lte("elevation", 1000)
 pred_within("POLYGON((-14 42, 9 38, -7 26, -14 42))")
+pred_and(pred_within("POLYGON((-14 42, 9 38, -7 26, -14 42))"),
+  pred_gte("elevation", 5000))
 pred_or(pred_lte("year", 1989), pred("year", 2000))
 pred_and(pred_lte("year", 1989), pred("year", 2000))
 pred_in("taxonKey", c(2977832, 2977901, 2977966, 2977835))

@@ -131,8 +131,8 @@ test_that("type in works", {
   # list has names
   expect_named(z$request$predicate)
   # right type
-  expect_equal(unclass(z$request$predicate$type), "and")
+  expect_equal(unclass(z$request$predicate$type), "in")
   # a vector of length two for each thing passed in
-  expect_equal(z$request$predicate$predicates[[1]]$values, c("2480946", "5229208"))
+  expect_equal(z$request$predicate$values, c("2480946", "5229208"))
 })
 
