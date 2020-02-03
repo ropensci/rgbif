@@ -322,7 +322,7 @@ same we just return one for you.
 decimallatitude, and decimallongitude. Set parameter \code{minimal=FALSE} if you want more data.
 
 \strong{Nerds}: You can pass parameters not defined in this function into the call to
-the GBIF API to control things about the call itself using \code{...}. See an example below
+the GBIF API to control things about the call itself using \code{curlopts}. See an example below
 that passes in the \code{verbose} function to get details on the http call.
 
 \strong{Scientific names vs. taxon keys}: In the previous GBIF API and the version of rgbif that

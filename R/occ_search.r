@@ -13,6 +13,7 @@
 #'   data.frame with the data. 'hier' returns the classifications in a list for
 #'   each record. 'meta' returns the metadata for the entire call. 'all'
 #'   (default) gives all data back in a list.
+#' @param ... additional facet parameters
 #' @seealso [downloads()], [occ_data()], [occ_facet()]
 #' @return An object of class `gbif`, which is a S3 class list, with
 #' slots for metadata (`meta`), the occurrence data itself (`data`),

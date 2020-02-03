@@ -110,7 +110,6 @@
 #' the input to the \code{search} parameter, and no others. Default: \code{FALSE}
 #' @param skip_validate (logical) whether to skip `wicket::wkt_validate`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
-#' @param ... additional facet parameters
 #'
 #' @details
 #' **protocol parameter options**:
@@ -148,7 +147,7 @@
 #' decimallatitude, and decimallongitude. Set parameter \code{minimal=FALSE} if you want more data.
 #'
 #' **Nerds**: You can pass parameters not defined in this function into the call to
-#' the GBIF API to control things about the call itself using \code{...}. See an example below
+#' the GBIF API to control things about the call itself using \code{curlopts}. See an example below
 #' that passes in the \code{verbose} function to get details on the http call.
 #'
 #' **Scientific names vs. taxon keys**: In the previous GBIF API and the version of rgbif that

@@ -232,8 +232,6 @@ call or not. passed down to \code{\link[=check_wkt]{check_wkt()}}. Default: \cod
 \item{curlopts}{list of named curl options passed on to
 \code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
 for curl options}
-
-\item{...}{additional facet parameters}
 }
 \value{
 An object of class \code{gbif_data}, which is a S3 class list, with
@@ -283,7 +281,7 @@ same we just return one for you.
 decimallatitude, and decimallongitude. Set parameter \code{minimal=FALSE} if you want more data.
 
 \strong{Nerds}: You can pass parameters not defined in this function into the call to
-the GBIF API to control things about the call itself using \code{...}. See an example below
+the GBIF API to control things about the call itself using \code{curlopts}. See an example below
 that passes in the \code{verbose} function to get details on the http call.
 
 \strong{Scientific names vs. taxon keys}: In the previous GBIF API and the version of rgbif that
