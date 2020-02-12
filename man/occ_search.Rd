@@ -55,7 +55,6 @@ occ_search(
   start = 0,
   fields = "all",
   return = "all",
-  spellCheck = NULL,
   facet = NULL,
   facetMincount = NULL,
   facetMultiselect = NULL,
@@ -236,10 +235,6 @@ you want returned by name, e.g. fields = c('name','latitude','elevation').}
 data.frame with the data. 'hier' returns the classifications in a list for
 each record. 'meta' returns the metadata for the entire call. 'all'
 (default) gives all data back in a list.}
-
-\item{spellCheck}{(logical) If \code{TRUE} ask GBIF to check your spelling of
-the value passed to the \code{search} parameter. IMPORTANT: This only checks
-the input to the \code{search} parameter, and no others. Default: \code{FALSE}}
 
 \item{facet}{(character) a character vector of length 1 or greater.
 Required.}
@@ -699,17 +694,7 @@ occ_search(collectionCode=c("Floristic Databases MV - Higher Plants","Artport"))
 occ_search(taxonKey=key, hasGeospatialIssue=TRUE, limit=20)
 
 # Search using a query string
-# occ_search(search = "kingfisher", limit=20)
-## spell check - only works with the `search` parameter
-### spelled correctly - same result as above call
-# occ_search(search = "kingfisher", limit=20, spellCheck = TRUE)
-### spelled incorrectly - stops with suggested spelling
-# occ_search(search = "kajsdkla", limit=20, spellCheck = TRUE)
-### spelled incorrectly - stops with many suggested spellings
-###   and number of results for each
-# occ_search(search = "helir", limit=20, spellCheck = TRUE)
-
-
+occ_search(search = "kingfisher", limit=20)
 
 # search on repatriated - doesn't work right now
 # occ_search(repatriated = "")

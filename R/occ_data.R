@@ -34,7 +34,7 @@ occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
   genusKey = NULL, establishmentMeans = NULL, protocol = NULL, license = NULL,
   organismId = NULL, publishingOrg = NULL, stateProvince = NULL,
   waterBody = NULL, locality = NULL, limit=500, start=0,
-  spellCheck = NULL, skip_validate = TRUE, curlopts = list()) {
+  skip_validate = TRUE, curlopts = list()) {
 
   geometry <- geometry_handler(geometry, geom_big, geom_size, geom_n)
 
@@ -64,7 +64,7 @@ occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
         depth = depth,
         limit = check_limit(as.integer(limit)), eventDate = eventDate,
         month = month, year = year,
-        offset = check_limit(as.integer(start)), spellCheck = spellCheck
+        offset = check_limit(as.integer(start))
       )
     )
     args <- c(

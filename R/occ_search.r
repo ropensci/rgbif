@@ -44,7 +44,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
   genusKey = NULL, establishmentMeans = NULL, protocol = NULL, license = NULL,
   organismId = NULL, publishingOrg = NULL, stateProvince = NULL,
   waterBody = NULL, locality = NULL, limit=500, start=0, fields = 'all',
-  return='all', spellCheck = NULL, facet = NULL, facetMincount = NULL,
+  return='all', facet = NULL, facetMincount = NULL,
   facetMultiselect = NULL, skip_validate = TRUE, curlopts = list(), ...) {
 
   geometry <- geometry_handler(geometry, geom_big, geom_size, geom_n)
@@ -66,14 +66,14 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
 
     args <- rgbif_compact(
       list(hasCoordinate = hasCoordinate,
-           lastInterpreted = lastInterpreted,
-           basisOfRecord = basisOfRecord, decimalLatitude = decimalLatitude,
-           decimalLongitude = decimalLongitude,
-           hasGeospatialIssue = hasGeospatialIssue,
-           q = search, repatriated = repatriated, elevation = elevation,
-           depth = depth, limit = check_limit(as.integer(limit)),
-           eventDate = eventDate, month = month, year = year,
-           offset = check_limit(as.integer(start)), spellCheck = spellCheck
+        lastInterpreted = lastInterpreted,
+        basisOfRecord = basisOfRecord, decimalLatitude = decimalLatitude,
+        decimalLongitude = decimalLongitude,
+        hasGeospatialIssue = hasGeospatialIssue,
+        q = search, repatriated = repatriated, elevation = elevation,
+        depth = depth, limit = check_limit(as.integer(limit)),
+        eventDate = eventDate, month = month, year = year,
+        offset = check_limit(as.integer(start))
       )
     )
     args <- c(

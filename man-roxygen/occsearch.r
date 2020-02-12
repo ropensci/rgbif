@@ -105,9 +105,6 @@
 #' @param waterBody (character) The name of the water body in which the
 #' locations occur
 #' @param locality (character) The specific description of the place.
-#' @param spellCheck (logical) If \code{TRUE} ask GBIF to check your spelling of
-#' the value passed to the \code{search} parameter. IMPORTANT: This only checks
-#' the input to the \code{search} parameter, and no others. Default: \code{FALSE}
 #' @param skip_validate (logical) whether to skip `wicket::wkt_validate`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'

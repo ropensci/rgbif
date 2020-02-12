@@ -59,7 +59,6 @@ reference:
       - occ_data
       - occ_metadata
       - occ_search
-      - occ_spellcheck
       - occ_count
       - count_facet
   - title: "Occurrence data cleaning"

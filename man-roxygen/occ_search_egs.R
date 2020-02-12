@@ -218,17 +218,7 @@
 #' occ_search(taxonKey=key, hasGeospatialIssue=TRUE, limit=20)
 #'
 #' # Search using a query string
-#' # occ_search(search = "kingfisher", limit=20)
-#' ## spell check - only works with the `search` parameter
-#' ### spelled correctly - same result as above call
-#' # occ_search(search = "kingfisher", limit=20, spellCheck = TRUE)
-#' ### spelled incorrectly - stops with suggested spelling
-#' # occ_search(search = "kajsdkla", limit=20, spellCheck = TRUE)
-#' ### spelled incorrectly - stops with many suggested spellings
-#' ###   and number of results for each
-#' # occ_search(search = "helir", limit=20, spellCheck = TRUE)
-#'
-#'
+#' occ_search(search = "kingfisher", limit=20)
 #'
 #' # search on repatriated - doesn't work right now
 #' # occ_search(repatriated = "")

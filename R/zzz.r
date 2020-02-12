@@ -363,34 +363,10 @@ gbif_GET <- function(url, args, parse=FALSE, curlopts = list(), mssg = NULL) {
     if (temp$status_code == 503) mssg <- temp$status_http()$message
     stop(mssg, call. = FALSE)
   }
-
   # check content type
   stopifnot(temp$response_headers$`content-type` == 'application/json')
-
   # parse JSON
   json <- jsonlite::fromJSON(temp$parse("UTF-8"), parse)
-
-  # check if spellCheck = TRUE, and if should stop
-  if ('spellCheck' %in% names(args)) {
-    if (args$spellCheck) {
-      if (!"suggestions" %in% names(json$spellCheckResponse)) {
-        if (json$spellCheckResponse$correctlySpelled) {
-          return(json)
-        } else {
-          stop("spelling bad, but no suggestions given", call. = FALSE)
-        }
-      } else {
-        mssg <- paste0(
-          "spelling bad - suggestions: \n",
-          paste0(lapply(json$spellCheckResponse$suggestions, function(z) {
-            sprintf("   %s: %s", z$alternatives, z$numFound)
-          }), collapse = "\n")
-        )
-        stop(mssg, call. = FALSE)
-      }
-    }
-  }
-
   return(json)
 }
 
