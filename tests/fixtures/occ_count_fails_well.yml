@@ -8,32 +8,33 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
   response:
     status:
-      status_code: '400'
-      message: Bad Request
-      explanation: Bad request syntax or unsupported method
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 400 Bad Request
-      date: Tue, 26 Feb 2019 15:31:06 GMT
-      content-type: text/plain
+      status: HTTP/1.1 200 OK
+      date: Wed, 12 Feb 2020 22:28:40 GMT
+      content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      cache-control: no-cache, no-store, must-revalidate
-      x-varnish: '723290868'
+      cache-control: public, max-age=600
+      x-varnish: 132606 1073578967
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
-      content-length: '111'
+      accept-ranges: bytes
+      content-length: '5'
       connection: keep-alive
     body:
       encoding: UTF-8
-      string: 'The provided address is not calculated in the cube: (basisOfRecord:
-        (nobucket: 03), year: (nobucket: 000007dc))'
-  recorded_at: 2019-02-26 15:31:07 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+      file: no
+      string: '15456'
+  recorded_at: 2020-02-12 22:28:41 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?basisOfRecord=OBSERVATION&typeStatus=ALLOTYPE
@@ -43,29 +44,30 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
   response:
     status:
-      status_code: '400'
-      message: Bad Request
-      explanation: Bad request syntax or unsupported method
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 400 Bad Request
-      date: Tue, 26 Feb 2019 15:31:06 GMT
-      content-type: text/plain
+      status: HTTP/1.1 200 OK
+      date: Wed, 12 Feb 2020 22:28:41 GMT
+      content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      cache-control: no-cache, no-store, must-revalidate
-      x-varnish: '726862799'
+      cache-control: public, max-age=600
+      x-varnish: 2786187 4555395
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
-      content-length: '111'
+      accept-ranges: bytes
+      content-length: '1'
       connection: keep-alive
     body:
       encoding: UTF-8
-      string: 'The provided address is not calculated in the cube: (basisOfRecord:
-        (nobucket: 03), typeStatus: (nobucket: 05))'
-  recorded_at: 2019-02-26 15:31:07 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+      file: no
+      string: '0'
+  recorded_at: 2020-02-12 22:28:41 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0

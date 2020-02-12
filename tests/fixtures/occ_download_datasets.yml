@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.2 crul/0.8.4 rOpenSci(rgbif/1.4.0.9100)
-      X-USER-AGENT: r-curl/4.2 crul/0.8.4 rOpenSci(rgbif/1.4.0.9100)
+      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
   response:
     status:
       status_code: '200'
@@ -17,13 +17,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Wed, 30 Oct 2019 21:52:11 GMT
+      date: Wed, 12 Feb 2020 22:37:15 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: '795476359'
+      x-varnish: '1071384895'
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -31,6 +31,7 @@ http_interactions:
       connection: keep-alive
     body:
       encoding: UTF-8
+      file: no
       string: '{"offset":0,"limit":20,"endOfRecords":false,"count":254,"results":[{"downloadKey":"0003983-140910143529206","datasetKey":"95c938a8-f762-11e1-a439-00145eb45e9a","numberRecords":449},{"downloadKey":"0003983-140910143529206","datasetKey":"4ec3868e-b460-48f0-bd64-8e5daf392827","numberRecords":25},{"downloadKey":"0003983-140910143529206","datasetKey":"830da118-f762-11e1-a439-00145eb45e9a","numberRecords":1},{"downloadKey":"0003983-140910143529206","datasetKey":"51b92d4e-556f-4a05-bc5c-bfe982ee1156","numberRecords":1},{"downloadKey":"0003983-140910143529206","datasetKey":"86aa6b6c-f762-11e1-a439-00145eb45e9a","numberRecords":8},{"downloadKey":"0003983-140910143529206","datasetKey":"8310f570-f762-11e1-a439-00145eb45e9a","numberRecords":79},{"downloadKey":"0003983-140910143529206","datasetKey":"84aa5ee4-f762-11e1-a439-00145eb45e9a","numberRecords":47},{"downloadKey":"0003983-140910143529206","datasetKey":"ad0d1a24-e952-11e2-961f-00145eb45e9a","numberRecords":3},{"downloadKey":"0003983-140910143529206","datasetKey":"8137b32e-f762-11e1-a439-00145eb45e9a","numberRecords":28},{"downloadKey":"0003983-140910143529206","datasetKey":"f7541fca-5767-4c6c-a317-7826c5bcb515","numberRecords":5},{"downloadKey":"0003983-140910143529206","datasetKey":"da5d29da-80ab-42c4-a947-b09d0db59af3","numberRecords":4},{"downloadKey":"0003983-140910143529206","datasetKey":"dfb05b7b-e477-4d0f-861b-043df5e2fd7f","numberRecords":5},{"downloadKey":"0003983-140910143529206","datasetKey":"b929f23d-290f-4e85-8f17-764c55b3b284","numberRecords":1},{"downloadKey":"0003983-140910143529206","datasetKey":"96c33790-a2b5-11de-9f79-b8a03c50a862","numberRecords":1},{"downloadKey":"0003983-140910143529206","datasetKey":"80ba7738-f762-11e1-a439-00145eb45e9a","numberRecords":2},{"downloadKey":"0003983-140910143529206","datasetKey":"2fd02649-fc08-4957-9ac5-2830e072c097","numberRecords":2},{"downloadKey":"0003983-140910143529206","datasetKey":"e45c7d91-81c6-4455-86e3-2965a5739b1f","numberRecords":104},{"downloadKey":"0003983-140910143529206","datasetKey":"85bf0de8-f762-11e1-a439-00145eb45e9a","numberRecords":6},{"downloadKey":"0003983-140910143529206","datasetKey":"7fb97820-f762-11e1-a439-00145eb45e9a","numberRecords":2},{"downloadKey":"0003983-140910143529206","datasetKey":"857aa892-f762-11e1-a439-00145eb45e9a","numberRecords":99}]}'
-  recorded_at: 2019-10-30 21:52:12 GMT
-  recorded_with: vcr/0.3.0, webmockr/0.4.0
+  recorded_at: 2020-02-12 22:37:15 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0

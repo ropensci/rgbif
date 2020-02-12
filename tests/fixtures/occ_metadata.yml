@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
   response:
     status:
       status_code: '200'
@@ -17,23 +17,24 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 17:33:06 GMT
+      date: Wed, 12 Feb 2020 23:03:16 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=600
-      x-varnish: 750262057 847282430
-      age: '0'
+      x-varnish: 1070534538 4917262
+      age: '177'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
-      content-length: '47'
+      content-length: '56'
       connection: keep-alive
     body:
       encoding: UTF-8
-      string: '["122","122-05b","122-15b","122-27a","122-32a"]'
-  recorded_at: 2019-02-26 17:33:09 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+      file: no
+      string: '["#122","-122","-122000043","-1220001331","-1220002324"]'
+  recorded_at: 2020-02-12 23:06:22 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search/collectionCode?q=12&limit=5
@@ -43,8 +44,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
   response:
     status:
       status_code: '200'
@@ -52,23 +53,24 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 17:33:07 GMT
+      date: Wed, 12 Feb 2020 23:03:17 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=600
-      x-varnish: 832832755 801344550
-      age: '0'
+      x-varnish: 11993517 7505016
+      age: '177'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
-      content-length: '38'
+      content-length: '48'
       connection: keep-alive
     body:
       encoding: UTF-8
-      string: '["12","12.190","120","1200","1200001"]'
-  recorded_at: 2019-02-26 17:33:09 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+      file: no
+      string: '["12","12 minor workers","12-00","12-1","12-82"]'
+  recorded_at: 2020-02-12 23:06:22 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search/institutionCode?q=GB&limit=5
@@ -78,8 +80,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
   response:
     status:
       status_code: '200'
@@ -87,23 +89,24 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 17:33:07 GMT
+      date: Wed, 12 Feb 2020 23:03:19 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=600
-      x-varnish: 771332002 829260910
-      age: '0'
+      x-varnish: 7603390 7111854
+      age: '176'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
       content-length: '41'
       connection: keep-alive
     body:
       encoding: UTF-8
-      string: '["gb","gbg","gbif-se:gnm","gbp","gbr004"]'
-  recorded_at: 2019-02-26 17:33:09 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+      file: no
+      string: '["GB","GBG","GBIF-SE:GNM","GBP","GBR004"]'
+  recorded_at: 2020-02-12 23:06:22 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search/catalogNumber?q=122&limit=5
@@ -113,8 +116,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
   response:
     status:
       status_code: '200'
@@ -122,23 +125,24 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 17:33:06 GMT
+      date: Wed, 12 Feb 2020 23:03:16 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=600
-      x-varnish: 771332004 847282430
-      age: '1'
+      x-varnish: 7309000 4917262
+      age: '179'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
-      content-length: '47'
+      content-length: '56'
       connection: keep-alive
     body:
       encoding: UTF-8
-      string: '["122","122-05b","122-15b","122-27a","122-32a"]'
-  recorded_at: 2019-02-26 17:33:09 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+      file: no
+      string: '["#122","-122","-122000043","-1220001331","-1220002324"]'
+  recorded_at: 2020-02-12 23:06:22 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search/catalogNumber?q=122&limit=5
@@ -148,8 +152,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
   response:
     status:
       status_code: '200'
@@ -157,23 +161,24 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 17:33:06 GMT
+      date: Wed, 12 Feb 2020 23:03:16 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=600
-      x-varnish: 757569329 847282430
-      age: '1'
+      x-varnish: 1012602531 4917262
+      age: '180'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
-      content-length: '47'
+      content-length: '56'
       connection: keep-alive
     body:
       encoding: UTF-8
-      string: '["122","122-05b","122-15b","122-27a","122-32a"]'
-  recorded_at: 2019-02-26 17:33:09 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+      file: no
+      string: '["#122","-122","-122000043","-1220001331","-1220002324"]'
+  recorded_at: 2020-02-12 23:06:22 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search/catalogNumber?q=122&limit=10
@@ -183,8 +188,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
   response:
     status:
       status_code: '200'
@@ -192,23 +197,24 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 17:33:08 GMT
+      date: Wed, 12 Feb 2020 23:03:21 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=600
-      x-varnish: 814418314 842990405
-      age: '0'
+      x-varnish: 11338720 7111893
+      age: '176'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
-      content-length: '95'
+      content-length: '125'
       connection: keep-alive
     body:
       encoding: UTF-8
-      string: '["122","122 a","122-03b","122-12b","122-26a","122-38.","122-72b","122-85a","122/109","122/124"]'
-  recorded_at: 2019-02-26 17:33:09 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+      file: no
+      string: '["#122","-122","-122000043","-1220001331","-1220002324","-1220002495","-1220002581","-1220002847","-122000336","-1220003490"]'
+  recorded_at: 2020-02-12 23:06:22 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search/catalogNumber?q=122&limit=5
@@ -218,8 +224,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
   response:
     status:
       status_code: '200'
@@ -227,23 +233,24 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 17:33:06 GMT
+      date: Wed, 12 Feb 2020 23:03:16 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=600
-      x-varnish: 801509335 847282430
-      age: '1'
+      x-varnish: 980294242 4917262
+      age: '181'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
-      content-length: '47'
+      content-length: '56'
       connection: keep-alive
     body:
       encoding: UTF-8
-      string: '["122","122-05b","122-15b","122-27a","122-32a"]'
-  recorded_at: 2019-02-26 17:33:09 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+      file: no
+      string: '["#122","-122","-122000043","-1220001331","-1220002324"]'
+  recorded_at: 2020-02-12 23:06:22 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search/catalogNumber?q=122&limit=5
@@ -253,8 +260,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
   response:
     status:
       status_code: '200'
@@ -262,23 +269,24 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 17:33:06 GMT
+      date: Wed, 12 Feb 2020 23:03:16 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=600
-      x-varnish: 838338301 847282430
-      age: '2'
+      x-varnish: 1058344193 4917262
+      age: '182'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
-      content-length: '47'
+      content-length: '56'
       connection: keep-alive
     body:
       encoding: UTF-8
-      string: '["122","122-05b","122-15b","122-27a","122-32a"]'
-  recorded_at: 2019-02-26 17:33:09 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+      file: no
+      string: '["#122","-122","-122000043","-1220001331","-1220002324"]'
+  recorded_at: 2020-02-12 23:06:22 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search/recordedBy?q=scott&limit=5
@@ -288,8 +296,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
   response:
     status:
       status_code: '200'
@@ -297,21 +305,22 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 17:33:09 GMT
+      date: Wed, 12 Feb 2020 23:03:23 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=600
-      x-varnish: 834536561 830473043
-      age: '0'
+      x-varnish: 16875966 22773852
+      age: '177'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
-      content-length: '82'
+      content-length: '114'
       connection: keep-alive
     body:
       encoding: UTF-8
-      string: '["scott","scott & asquith","scott & barghoorn","scott & britton","scott
-        & cobban"]'
-  recorded_at: 2019-02-26 17:33:09 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+      file: no
+      string: '["\"Scott Godwin, Nyssa Silbiger, Megan Donohue?\"","-- Scott","?Scott
+        Collection of Cleveland","SCOTT","SCOTT A"]'
+  recorded_at: 2020-02-12 23:06:22 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0

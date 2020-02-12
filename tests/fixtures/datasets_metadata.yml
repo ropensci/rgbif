@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
   response:
     status:
       status_code: '200'
@@ -17,13 +17,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 15:15:11 GMT
+      date: Wed, 12 Feb 2020 06:03:08 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: 767295546 769819165
+      x-varnish: 536772802 533628177
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -31,6 +31,7 @@ http_interactions:
       connection: keep-alive
     body:
       encoding: UTF-8
+      file: no
       string: '[{"key":657,"datasetKey":"a6998220-7e3a-485d-9cd6-73076bd85657","type":"EML","createdBy":"eml-pusher.gbif.org","modifiedBy":"eml-pusher.gbif.org","created":"2013-10-24T11:23:15.236+0000","modified":"2013-10-24T11:23:15.236+0000"}]'
-  recorded_at: 2019-02-26 15:15:12 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+  recorded_at: 2020-02-12 06:03:08 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0

@@ -4,7 +4,7 @@ http_interactions:
     uri: https://api.gbif.org/v1/oai-pmh/registry?verb=ListIdentifiers&metadataPrefix=oai_dc&from=2017-01-15&until=2017-01-30
     body:
       encoding: ''
-      string: ''
+      string: no
     headers:
       Accept: application/json, text/xml, application/xml, */*
   response:
@@ -14,22 +14,23 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 26 Feb 2019 15:17:32 GMT
+      date: Wed, 12 Feb 2020 06:38:58 GMT
       content-type: application/xml; charset=UTF-8
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      content-length: '1231'
+      content-length: '769'
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: 771785310 776077751
+      x-varnish: 460139845 520130293
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
       connection: keep-alive
     body:
       encoding: UTF-8
+      file: no
       string: |-
         <?xml version="1.0" encoding="UTF-8"?>
-        <OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"><responseDate>2019-02-26T15:17:32Z</responseDate><request verb="ListIdentifiers" metadataPrefix="oai_dc" from="2017-01-15T00:00:00Z" until="2017-01-30T00:00:00Z">http://api.gbif.org/v1/oai-pmh/registry</request><ListIdentifiers><header><identifier>4dac6899-124a-40fc-90d3-aa5a872c99c0</identifier><datestamp>2017-01-25T12:52:26Z</datestamp><setSpec>installation:e312f477-a9ba-485e-8c1c-700868a0bfb7</setSpec><setSpec>dataset_type:OCCURRENCE</setSpec><setSpec>country:NO</setSpec></header><header><identifier>40a08be7-0642-4129-b12a-51d547dc2a74</identifier><datestamp>2017-01-18T14:09:40Z</datestamp><setSpec>installation:b494d108-871b-4dfa-bffe-c7949c7400e4</setSpec><setSpec>dataset_type:OCCURRENCE</setSpec></header><header><identifier>6a31497b-234c-4d24-a3aa-e56d8655f57b</identifier><datestamp>2017-01-19T10:47:08Z</datestamp><setSpec>installation:b494d108-871b-4dfa-bffe-c7949c7400e4</setSpec><setSpec>dataset_type:OCCURRENCE</setSpec></header></ListIdentifiers></OAI-PMH>
-  recorded_at: 2019-02-26 15:17:32 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+        <OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"><responseDate>2020-02-12T06:38:58Z</responseDate><request verb="ListIdentifiers" metadataPrefix="oai_dc" from="2017-01-15T00:00:00Z" until="2017-01-30T00:00:00Z">http://api.gbif.org/v1/oai-pmh/registry</request><ListIdentifiers><header><identifier>4dac6899-124a-40fc-90d3-aa5a872c99c0</identifier><datestamp>2017-01-25T12:52:26Z</datestamp><setSpec>installation:e312f477-a9ba-485e-8c1c-700868a0bfb7</setSpec><setSpec>dataset_type:OCCURRENCE</setSpec><setSpec>country:NO</setSpec></header></ListIdentifiers></OAI-PMH>
+  recorded_at: 2020-02-12 06:38:59 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0

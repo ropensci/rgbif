@@ -47,5 +47,5 @@ test_that("search for deleted and nonPublishing installations returns the correc
 
   # value
   expect_equal(length(tt), 2)
-  expect_equal(length(tt$data), 17)
+  expect_is(tt$data, "data.frame")
 })

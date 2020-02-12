@@ -4,7 +4,7 @@ test_that("occ_facet works", {
   vcr::use_cassette("occ_facet", {
     aa <- occ_facet(facet = "country")
     # facetMincount
-    bb <- occ_facet(facet = "country", facetMincount = 30000000L)
+    bb <- occ_facet(facet = "country", facetMincount = 50000000L)
   })
 
   expect_is(aa, "list")

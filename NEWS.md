@@ -1,3 +1,19 @@
+rgbif 2.1
+=========
+
+### DEFUNCT
+
+* the `spellCheck` parameter has been removed from the occurrence routes; thus, the `occ_spellcheck()` function is now defunct - and the parameter `spellCheck` has been removed from `occ_data()` and `occ_search()` (#397)
+
+### MINOR IMPROVEMENTS
+
+* docs fix for `occ_data()`: remove `...` parameter definition as it wasn't used in the function (#394)
+
+### BUG FIXES
+
+* download predicate fxns fix: "within" wasnt being handled properly (#393) thanks @damianooldoni
+
+
 rgbif 2.0
 =========
 
