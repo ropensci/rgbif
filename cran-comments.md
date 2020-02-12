@@ -14,9 +14,7 @@
 
 --------
 
-This version makes some breaking changes, thus the major version bump.
-
-This is a re-submission of this version with a decreased build size below 5mb.
+This version makes a function defunct, removes a ... parameter definition in a function that doesn't use the parameter, and a bug fix.
 
 Thanks!
 Scott Chamberlain

@@ -10,14 +10,14 @@
   "codeRepository": "https://github.com/ropensci/rgbif",
   "issueTracker": "https://github.com/ropensci/rgbif/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "2.0.0.91",
+  "version": "2.1.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "version": "3.6.2",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.6.2 Patched (2020-01-25 r77715)",
+  "runtimePlatform": "R version 3.6.2 Patched (2020-02-04 r77774)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -355,7 +355,7 @@
   "contIntegration": ["https://travis-ci.org/ropensci/rgbif", "https://codecov.io/github/ropensci/rgbif?branch=master"],
   "releaseNotes": "https://github.com/ropensci/rgbif/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/rgbif/blob/master/README.md",
-  "fileSize": "3170.724KB",
+  "fileSize": "3163.538KB",
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://ropensci.org",
   "keywords": ["GBIF", "specimens", "API", "web-services", "occurrences", "species", "taxonomy", "gbif", "api", "data", "biodiversity", "rstats", "r", "spocc", "r-package", "lifewatch", "oscibio"],
