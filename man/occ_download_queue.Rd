@@ -50,12 +50,13 @@ with new versions.
 
 \examples{
 \dontrun{
+if (interactive()) { # dont run in automated example runs, too costly
 # passing occ_download() requests via ...
-out <- occ_download_prep(
+out <- occ_download_queue(
   occ_download(pred('taxonKey', 3119195), pred("year", 1976)),
   occ_download(pred('taxonKey', 3119195), pred("year", 2001)),
   occ_download(pred('taxonKey', 3119195), pred("year", 2001),
-    pred("month", 8, "<=")),
+    pred_lte("month", 8)),
   occ_download(pred('taxonKey', 5229208), pred("year", 2011)),
   occ_download(pred('taxonKey', 2480946), pred("year", 2015)),
   occ_download(pred("country", "NZ"), pred("year", 1999),
@@ -77,7 +78,7 @@ queries <- list()
 for (i in seq_along(keys)) {
   queries[[i]] <- occ_download_prep(
     pred("taxonKey", keys[i]),
-    pred_multi("basisOfRecord", c("HUMAN_OBSERVATION","OBSERVATION"), "in"),
+    pred_in("basisOfRecord", c("HUMAN_OBSERVATION","OBSERVATION")),
     pred("hasCoordinate", TRUE),
     pred("hasGeospatialIssue", FALSE),
     pred("year", 1993)
@@ -92,7 +93,7 @@ queries <- list()
 for (i in seq_along(yrs)) {
   queries[[i]] <- occ_download_prep(
     pred("taxonKey", 2877951),
-    pred_multi("basisOfRecord", c("HUMAN_OBSERVATION","OBSERVATION"), "in"),
+    pred_in("basisOfRecord", c("HUMAN_OBSERVATION","OBSERVATION")),
     pred("hasCoordinate", TRUE),
     pred("hasGeospatialIssue", FALSE),
     pred("year", yrs[i])
@@ -100,7 +101,7 @@ for (i in seq_along(yrs)) {
 }
 out <- occ_download_queue(.list = queries)
 out
-}
+}}
 }
 \seealso{
 Other downloads: 

@@ -3,10 +3,11 @@
 #' @export
 #' @keywords internal
 #' @examples \dontrun{
+#' if (interactive()) { # dont run in automated example runs, too costly
 #' x <- GbifQueue$new(
 #'   occ_download(pred('taxonKey', 3119195), pred("year", 1976)),
 #'   occ_download(pred('taxonKey', 3119195), pred("year", 2001)),
-#'   occ_download(pred('taxonKey', 3119195), pred("year", 2001), pred("month", 8, "<=")),
+#'   occ_download(pred('taxonKey', 3119195), pred("year", 2001), pred_lte("month", 8)),
 #'   occ_download(pred('taxonKey', 3119195), pred("year", 2004)),
 #'   occ_download(pred('taxonKey', 3119195), pred("year", 2005))
 #' )
@@ -23,7 +24,7 @@
 #'
 #' # pre-prepared download request
 #' z <- occ_download_prep(
-#'   pred_multi("basisOfRecord", c("HUMAN_OBSERVATION","OBSERVATION"), "in"),
+#'   pred_in("basisOfRecord", c("HUMAN_OBSERVATION","OBSERVATION")),
 #'   pred("hasCoordinate", TRUE),
 #'   pred("hasGeospatialIssue", FALSE),
 #'   pred("year", 1993),
@@ -32,7 +33,7 @@
 #' out <- GbifQueue$new(.list = list(z))
 #' out
 #' out$reqs
-#' }
+#' }}
 GbifQueue <- R6::R6Class(
   'GbifQueue',
   public = list(

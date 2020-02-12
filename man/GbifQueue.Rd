@@ -8,10 +8,11 @@ GBIF download queue
 }
 \examples{
 \dontrun{
+if (interactive()) { # dont run in automated example runs, too costly
 x <- GbifQueue$new(
   occ_download(pred('taxonKey', 3119195), pred("year", 1976)),
   occ_download(pred('taxonKey', 3119195), pred("year", 2001)),
-  occ_download(pred('taxonKey', 3119195), pred("year", 2001), pred("month", 8, "<=")),
+  occ_download(pred('taxonKey', 3119195), pred("year", 2001), pred_lte("month", 8)),
   occ_download(pred('taxonKey', 3119195), pred("year", 2004)),
   occ_download(pred('taxonKey', 3119195), pred("year", 2005))
 )
@@ -28,7 +29,7 @@ x$reqs[[1]]$result
 
 # pre-prepared download request
 z <- occ_download_prep(
-  pred_multi("basisOfRecord", c("HUMAN_OBSERVATION","OBSERVATION"), "in"),
+  pred_in("basisOfRecord", c("HUMAN_OBSERVATION","OBSERVATION")),
   pred("hasCoordinate", TRUE),
   pred("hasGeospatialIssue", FALSE),
   pred("year", 1993),
@@ -37,7 +38,7 @@ z <- occ_download_prep(
 out <- GbifQueue$new(.list = list(z))
 out
 out$reqs
-}
+}}
 }
 \keyword{internal}
 \section{Public fields}{
