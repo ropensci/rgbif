@@ -67,7 +67,7 @@ nodes <- function(data = 'all', uuid = NULL, query = NULL, identifier=NULL,
 
   # Define function to get data
   getdata <- function(x){
-    if (!data == 'all' && is.null(uuid)) {
+    if (!all(data == 'all') && is.null(uuid)) {
       stop('You must specify a uuid if data does not equal "all"')
     }
 

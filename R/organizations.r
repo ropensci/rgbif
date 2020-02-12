@@ -44,7 +44,7 @@ organizations <- function(data = 'all', uuid = NULL, query = NULL, limit = 100,
 
   # Define function to get data
   getdata <- function(x){
-    if (!data %in% c('all','deleted', 'pending', 'nonPublishing') &&
+    if (!all(data %in% c('all','deleted', 'pending', 'nonPublishing')) &&
         is.null(uuid))
       stop('You must specify a uuid if data does not equal "all" and
        data does not equal of deleted, pending, or nonPublishing')
