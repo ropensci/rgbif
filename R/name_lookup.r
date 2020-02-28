@@ -175,7 +175,7 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
       data.table::rbindlist(
         lapply(out$results, namelkupcleaner),
         use.names = TRUE, fill = TRUE)))
-    if (limit > 0) data <- movecols(data, c('key', 'scientificName'))
+    if (NROW(data) > 0) data <- movecols(data, c('key', 'scientificName'))
   } else {
     data <- out$results
   }

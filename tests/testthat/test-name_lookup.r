@@ -144,3 +144,16 @@ test_that("paging: name_usage returns all records from dataset: limit > n_record
   expect_is(cc$data, "tbl")
   expect_gte(nrow(cc$data), 1051)
 })
+
+test_that("name_lookup handles no results without failing", {
+  skip_on_cran() # because fixture in .Rbuildignore
+
+  vcr::use_cassette("name_lookup_no_results", {
+    cc <- name_lookup(query = "Zwartbuikrotgans", 
+      datasetKey = "4dd32523-a3a3-43b7-84df-4cda02f15cf7",
+      higherTaxonKey = 162310263)
+  }, preserve_exact_body_bytes = TRUE)
+
+  expect_is(cc$data, "tbl_df")
+  expect_gte(NROW(cc$data), 0)
+})
