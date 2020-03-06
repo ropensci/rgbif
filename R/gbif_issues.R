@@ -22,6 +22,7 @@ gbifissues <- structure(list(
            "mdativ", "mdatunl", "muldativ", "muluriiv", "preneglat",
            "preneglon", "preswcd", "rdativ", "rdatm", "rdatunl", "refuriiv",
            "txmatfuz", "txmathi", "txmatnon", "typstativ", "zerocd",
+           "cdpi", "cdumi", "indci", "interr",
            "anm", "annu", "anuidi", "aitidinv", "bbmf", "bbmn", "basauthm",
            "bibrinv", "chsun", "clasna", "clasroi", "conbascomb", "desinv",
            "disinv", "hom", "minv", "npm", "ns","nsinv", "onder", "onnu",
@@ -43,6 +44,8 @@ gbifissues <- structure(list(
             "RECORDED_DATE_INVALID", "RECORDED_DATE_MISMATCH", "RECORDED_DATE_UNLIKELY",
             "REFERENCES_URI_INVALID", "TAXON_MATCH_FUZZY", "TAXON_MATCH_HIGHERRANK",
             "TAXON_MATCH_NONE", "TYPE_STATUS_INVALID", "ZERO_COORDINATE",
+            "COORDINATE_PRECISION_INVALID", "COORDINATE_UNCERTAINTY_METERS_INVALID",
+            "INDIVIDUAL_COUNT_INVALID", "INTERPRETATION_ERROR",
             "ACCEPTED_NAME_MISSING", "ACCEPTED_NAME_NOT_UNIQUE", "ACCEPTED_NAME_USAGE_ID_INVALID",
             "ALT_IDENTIFIER_INVALID", "BACKBONE_MATCH_FUZZY", "BACKBONE_MATCH_NONE",
             "BASIONYM_AUTHOR_MISMATCH", "BIB_REFERENCE_INVALID", "CHAINED_SYNOYM",
@@ -89,6 +92,10 @@ gbifissues <- structure(list(
                   "Matching to the taxonomic backbone cannot be done cause there was no match at all or several matches with too little information to keep them apart (homonyms).",
                   "The given type status is impossible to interpret or seriously different from the recommended vocabulary.",
                   "Coordinate is the exact 0/0 coordinate, often indicating a bad null coordinate.",
+                  "Indicates an invalid or very unlikely coordinatePrecision",
+                  "Indicates an invalid or very unlikely dwc:uncertaintyInMeters.",
+                  "Individual count value not parsable into an integer.",
+                  "An error occurred during interpretation, leaving the record interpretation incomplete.",
                   "Synonym lacking an accepted name.",
                   "Synonym has a verbatim accepted name which is not unique and refers to several records.",
                   "The value for dwc:acceptedNameUsageID could not be resolved.",
@@ -125,8 +132,8 @@ gbifissues <- structure(list(
                   "no description",
                   "The scientific name string could not be parsed at all, but appears to be a parsable name type, i.e.",
                   "At least one vernacular name extension record attached to this name usage is invalid."),
-  type <- c(rep("occurrence", 42), rep("name", 36)
-  )), .Names = c("code", "issue", "description", "type"), class = "data.frame", row.names = c(NA, -78L))
+  type <- c(rep("occurrence", 46), rep("name", 36)
+  )), .Names = c("code", "issue", "description", "type"), class = "data.frame", row.names = c(NA, -82L))
 
 collapse_issues <- function(x, issue_col = "issues") {
   tmp <- x[names(x) %in% issue_col][[1]]

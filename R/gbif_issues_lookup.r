@@ -13,10 +13,10 @@ gbif_issues_lookup <- function(issue=NULL, code=NULL){
 
   if (!is.null(code) & !is.null(issue)) {
     stop(paste("Only one issue or one code allowed. Got: issue",
-               paste0("'", issue, "'"),
-               "and code",
-               paste0("'", code, "'"),
-               "at the same time.")
+      paste0("'", issue, "'"),
+        "and code",
+      paste0("'", code, "'"),
+        "at the same time.")
     )
   }
   if (is.null(code)) {
@@ -24,8 +24,8 @@ gbif_issues_lookup <- function(issue=NULL, code=NULL){
       stop("issue and code both NULL.")
     }
      if (!issue %in% gbifissues$issue) {
-      stop(paste0("Issue '", issue, "' doesn't exists. ",
-                  "Type gbif_issues() for table with all possible issues.")
+      stop(paste0("Issue '", issue, "' doesn't exist. ",
+        "Type gbif_issues() for table with all possible issues.")
       )
     }
 
@@ -33,8 +33,8 @@ gbif_issues_lookup <- function(issue=NULL, code=NULL){
 
   } else{
     if (!code %in% gbifissues$code) {
-      stop(paste0("Issue code '", code, "' doesn't exists. ",
-                  "Type gbif_issues() for table with all possible issue codes.")
+      stop(paste0("Issue code '", code, "' doesn't exist. ",
+        "Type gbif_issues() for table with all possible issue codes.")
       )
     }
     gbifissues[grep(code, gbifissues$code),]
