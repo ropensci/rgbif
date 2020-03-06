@@ -53,8 +53,7 @@ Suggests:
     raster,
     protolite (>= 2.0),
     sf,
-    vcr (>= 0.4.1.97)
-Remotes: ropensci/vcr
+    vcr (>= 0.5.0)
 RoxygenNote: 7.0.2
 X-schema.org-applicationCategory: Biodiversity
 X-schema.org-keywords: GBIF, specimens, API, web-services, occurrences, species, taxonomy
