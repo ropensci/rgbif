@@ -26,3 +26,6 @@ check_windows:
 
 test:
 	${RSCRIPT} -e 'devtools::test()'
+
+readme:
+	${RSCRIPT} -e 'knitr::knit("README.Rmd")'
