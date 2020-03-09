@@ -74,3 +74,19 @@ that you can have a pretty long query, but at some point it may lead to an
 error on GBIF's side and you'll have to split your query into a few.
 }
 
+\section{Download status}{
+
+The following statuses can be found with any download:
+\itemize{
+\item PREPARING: just submitted by user and awaiting processing (typically only
+a few seconds)
+\item RUNNING: being created (takes typically 1-15 minutes)
+\item FAILED: something unexpected went wrong
+\item KILLED: user decided to abort the job while it was in PREPARING or RUNNING
+phase
+\item SUCCEEDED: The download was created and the user was informed
+\item FILE_ERASED: The download was deleted according to the retention policy,
+see https://www.gbif.org/faq?question=for-how-long-will-does-gbif-store-downloads
+}
+}
+

@@ -57,6 +57,19 @@
 #' GBIF has a limit of 12,000 characters for a download query. This means
 #' that you can have a pretty long query, but at some point it may lead to an
 #' error on GBIF's side and you'll have to split your query into a few.
+#' 
+#' @section Download status:
+#' The following statuses can be found with any download:
+#' 
+#' - PREPARING: just submitted by user and awaiting processing (typically only
+#' a few seconds)
+#' - RUNNING: being created (takes typically 1-15 minutes)
+#' - FAILED: something unexpected went wrong
+#' - KILLED: user decided to abort the job while it was in PREPARING or RUNNING
+#' phase
+#' - SUCCEEDED: The download was created and the user was informed
+#' - FILE_ERASED: The download was deleted according to the retention policy,
+#' see https://www.gbif.org/faq?question=for-how-long-will-does-gbif-store-downloads
 #'
 #' @name downloads
 NULL
