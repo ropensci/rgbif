@@ -1,3 +1,17 @@
+rgbif 2.2
+=========
+
+### MINOR IMPROVEMENTS
+
+* add a section _Download status_ to the `?downloads` manual file listing all the different download status states a download can have and what they mean (#390)
+* fix `gbif_issues`/`gbif_issues_lookup`: added four missing occurrence issues to the package (COORDINATE_PRECISION_INVALID, COORDINATE_UNCERTAINTY_METERS_INVALID, INDIVIDUAL_COUNT_INVALID, and INTERPRETATION_ERROR) (#400)
+* doing real tests now for `occ_download()` via vcr (#396)
+
+### BUG FIXES
+
+* fix `name_lookup()`: we were attempting to rearrange columns when no results found, leading to an error (#399)
+
+
 rgbif 2.1
 =========
 

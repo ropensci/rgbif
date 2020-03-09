@@ -1,6 +1,6 @@
 ## Test environments
 
-* local OS X install, R 3.6.2 Patched
+* local OS X install, R 3.6.3
 * ubuntu 16.04 (on travis-ci), R 3.6.2
 * win-builder (devel and release)
 
@@ -14,7 +14,7 @@
 
 --------
 
-This version makes a function defunct, removes a ... parameter definition in a function that doesn't use the parameter, and a bug fix.
+This version fixes a bug, fixes a broken test on CRAN checks, and improves documentation.
 
 Thanks!
 Scott Chamberlain
