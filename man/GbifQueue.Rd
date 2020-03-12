@@ -66,6 +66,7 @@ out$reqs
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-print"></a>}}
+\if{latex}{\out{\hypertarget{method-print}{}}}
 \subsection{Method \code{print()}}{
 print method for the \code{GbifQueue} class
 \subsection{Usage}{
@@ -84,6 +85,7 @@ print method for the \code{GbifQueue} class
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new \code{GbifQueue} object
 \subsection{Usage}{
@@ -106,6 +108,7 @@ A new \code{GbifQueue} object
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-add"></a>}}
+\if{latex}{\out{\hypertarget{method-add}{}}}
 \subsection{Method \code{add()}}{
 Add single jobs to the queue
 \subsection{Usage}{
@@ -125,6 +128,7 @@ nothing returned; adds job (\code{x}) to the queue
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-add_all"></a>}}
+\if{latex}{\out{\hypertarget{method-add_all}{}}}
 \subsection{Method \code{add_all()}}{
 Add all jobs to the queue
 \subsection{Usage}{
@@ -137,6 +141,7 @@ nothing returned
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-remove"></a>}}
+\if{latex}{\out{\hypertarget{method-remove}{}}}
 \subsection{Method \code{remove()}}{
 Remove a job from the queue
 \subsection{Usage}{
@@ -156,6 +161,7 @@ nothing returned
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-next_"></a>}}
+\if{latex}{\out{\hypertarget{method-next_}{}}}
 \subsection{Method \code{next_()}}{
 Get the next job in the \code{queue}. if no more jobs,
 returns empty list
@@ -169,6 +175,7 @@ next job or empty list
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-last_"></a>}}
+\if{latex}{\out{\hypertarget{method-last_}{}}}
 \subsection{Method \code{last_()}}{
 Get the last job in the \code{queue}. if no more jobs,
 returns empty list
@@ -182,6 +189,7 @@ last job or empty list
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-jobs"></a>}}
+\if{latex}{\out{\hypertarget{method-jobs}{}}}
 \subsection{Method \code{jobs()}}{
 Get number of jobs in the \code{queue}
 \subsection{Usage}{
@@ -194,6 +202,7 @@ Get number of jobs in the \code{queue}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

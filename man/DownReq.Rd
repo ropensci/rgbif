@@ -43,6 +43,7 @@ res
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new \code{DownReq} object
 \subsection{Usage}{
@@ -63,6 +64,7 @@ A new \code{DownReq} object
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-print"></a>}}
+\if{latex}{\out{\hypertarget{method-print}{}}}
 \subsection{Method \code{print()}}{
 print method for the \code{DownReq} class
 \subsection{Usage}{
@@ -81,6 +83,7 @@ print method for the \code{DownReq} class
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-run"></a>}}
+\if{latex}{\out{\hypertarget{method-run}{}}}
 \subsection{Method \code{run()}}{
 execute http request
 \subsection{Usage}{
@@ -93,6 +96,7 @@ nothing, puts the http response in \verb{$result}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-status"></a>}}
+\if{latex}{\out{\hypertarget{method-status}{}}}
 \subsection{Method \code{status()}}{
 check http request status
 \subsection{Usage}{
@@ -105,6 +109,7 @@ output of \code{\link[=occ_download_meta]{occ_download_meta()}}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

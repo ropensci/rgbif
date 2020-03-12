@@ -54,7 +54,7 @@ Suggests:
     protolite (>= 2.0),
     sf,
     vcr (>= 0.5.0)
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 X-schema.org-applicationCategory: Biodiversity
 X-schema.org-keywords: GBIF, specimens, API, web-services, occurrences, species, taxonomy
 X-schema.org-isPartOf: https://ropensci.org
