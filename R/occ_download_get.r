@@ -6,7 +6,8 @@
 #' @param path Path to write zip file to. Default: `"."`, with a
 #' `.zip` appended to the end.
 #' @param overwrite Will only overwrite existing path if TRUE.
-#' @template occ
+#' @param ... named curl options passed on to
+#' [crul::verb-GET]. see `curl::curl_options()` for curl options
 #' @note see [downloads] for an overview of GBIF downloads methods
 #' @family downloads
 #' @details Downloads the zip file to a directory you specify on your machine.
@@ -22,15 +23,15 @@
 #' occ_download_get("0003983-140910143529206", overwrite = TRUE)
 #' }
 
-occ_download_get <- function(key, path=".", overwrite=FALSE, curlopts=list()) {
+occ_download_get <- function(key, path=".", overwrite=FALSE, ...) {
   meta <- occ_download_meta(key)
   size <- getsize(meta$size)
   message(sprintf('Download file size: %s MB', size))
   url <- sprintf('%s/occurrence/download/request/%s', gbif_base(), key)
   path <- sprintf("%s/%s.zip", path, key)
-  cli <- crul::HttpClient$new(url = url, headers = rgbif_ual, opts = curlopts)
+  cli <- crul::HttpClient$new(url = url, headers = rgbif_ual, ...)
   if (file.exists(path)) {
-    if (!overwrite) stop("file exists & overwrite is FALSE")
+    if (!overwrite) stop("file exists & overwrite=FALSE")
   }
   res <- cli$get(disk = path)
   if (res$status_code > 203) stop(res$parse("UTF-8"))

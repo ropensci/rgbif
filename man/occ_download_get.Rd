@@ -4,7 +4,7 @@
 \alias{occ_download_get}
 \title{Get a download from GBIF.}
 \usage{
-occ_download_get(key, path = ".", overwrite = FALSE, curlopts = list())
+occ_download_get(key, path = ".", overwrite = FALSE, ...)
 }
 \arguments{
 \item{key}{A key generated from a request, like that from \code{occ_download}}
@@ -14,9 +14,8 @@ occ_download_get(key, path = ".", overwrite = FALSE, curlopts = list())
 
 \item{overwrite}{Will only overwrite existing path if TRUE.}
 
-\item{curlopts}{list of named curl options passed on to
-\code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
-for curl options}
+\item{...}{named curl options passed on to
+\link[crul:verb-GET]{crul::verb-GET}. see \code{curl::curl_options()} for curl options}
 }
 \description{
 Get a download from GBIF.
