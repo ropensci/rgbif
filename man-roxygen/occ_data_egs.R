@@ -48,6 +48,24 @@
 #' ## one request, many instances of same parameter: use semi-colon sep. string
 #' occ_data(recordedBy="smith;BJ Stacey", limit=10)
 #'
+#' # recordedByID
+#' occ_data(recordedByID="https://orcid.org/0000-0003-1691-239X", limit=20)
+#' ## many at once
+#' ### separate searches
+#' ids <- c("https://orcid.org/0000-0003-1691-239X",
+#'   "https://orcid.org/0000-0001-7569-1828",
+#'   "https://orcid.org/0000-0002-0596-5376")
+#' res <- occ_data(recordedByID=ids, limit=20)
+#' res[[1]]$data$recordedByIDs[[1]]
+#' res[[2]]$data$recordedByIDs[[1]]
+#' res[[3]]$data$recordedByIDs[[1]]
+#' ### all in one search
+#' res <- occ_data(recordedByID=paste0(ids, collapse=";"), limit=20)
+#' unique(vapply(res$data$recordedByIDs, "[[", "", "value"))
+#'
+#' # identifiedByID
+#' occ_data(identifiedByID="https://orcid.org/0000-0003-4710-2648", limit=20)
+#'
 #' # Pass in curl options for extra fun
 #' occ_data(taxonKey=2433407, limit=20, curlopts=list(verbose=TRUE))
 #' occ_data(taxonKey=2433407, limit=20,

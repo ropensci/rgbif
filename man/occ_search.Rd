@@ -19,6 +19,8 @@ occ_search(
   geom_size = 40,
   geom_n = 10,
   recordedBy = NULL,
+  recordedByID = NULL,
+  identifiedByID = NULL,
   basisOfRecord = NULL,
   datasetKey = NULL,
   eventDate = NULL,
@@ -109,6 +111,12 @@ would be queried as http://bit.ly/1BzNwDq See also the section \strong{WKT} belo
 See Details.}
 
 \item{recordedBy}{The person who recorded the occurrence.}
+
+\item{recordedByID}{(character) Identifier (e.g. ORCID) for the person who
+recorded the occurrence}
+
+\item{identifiedByID}{(character) Identifier (e.g. ORCID) for the person who
+provided the taxonomic identification of the occurrence.}
 
 \item{basisOfRecord}{Basis of record, as defined in our BasisOfRecord enum here
 \url{http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/BasisOfRecord.html}
@@ -541,6 +549,12 @@ occ_search(recordedBy="smith", limit=20)
 
 # Many collector names
 occ_search(recordedBy=c("smith","BJ Stacey"), limit=20)
+
+# recordedByID
+occ_search(recordedByID="https://orcid.org/0000-0003-1691-239X", limit=20)
+
+# identifiedByID
+occ_search(identifiedByID="https://orcid.org/0000-0003-4710-2648", limit=20)
 
 # Pass in curl options for extra fun
 occ_search(taxonKey=2433407, limit=20, return='hier',

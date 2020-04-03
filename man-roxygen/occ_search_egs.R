@@ -65,6 +65,12 @@
 #'
 #' # Many collector names
 #' occ_search(recordedBy=c("smith","BJ Stacey"), limit=20)
+#' 
+#' # recordedByID
+#' occ_search(recordedByID="https://orcid.org/0000-0003-1691-239X", limit=20)
+#' 
+#' # identifiedByID
+#' occ_search(identifiedByID="https://orcid.org/0000-0003-4710-2648", limit=20)
 #'
 #' # Pass in curl options for extra fun
 #' occ_search(taxonKey=2433407, limit=20, return='hier',

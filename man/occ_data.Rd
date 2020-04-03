@@ -19,6 +19,8 @@ occ_data(
   geom_size = 40,
   geom_n = 10,
   recordedBy = NULL,
+  recordedByID = NULL,
+  identifiedByID = NULL,
   basisOfRecord = NULL,
   datasetKey = NULL,
   eventDate = NULL,
@@ -103,6 +105,12 @@ would be queried as http://bit.ly/1BzNwDq See also the section \strong{WKT} belo
 See Details.}
 
 \item{recordedBy}{The person who recorded the occurrence.}
+
+\item{recordedByID}{(character) Identifier (e.g. ORCID) for the person who
+recorded the occurrence}
+
+\item{identifiedByID}{(character) Identifier (e.g. ORCID) for the person who
+provided the taxonomic identification of the occurrence.}
 
 \item{basisOfRecord}{Basis of record, as defined in our BasisOfRecord enum here
 \url{http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/BasisOfRecord.html}
@@ -489,6 +497,24 @@ occ_data(recordedBy="smith", limit=20)
 occ_data(recordedBy=c("smith","BJ Stacey"), limit=10)
 ## one request, many instances of same parameter: use semi-colon sep. string
 occ_data(recordedBy="smith;BJ Stacey", limit=10)
+
+# recordedByID
+occ_data(recordedByID="https://orcid.org/0000-0003-1691-239X", limit=20)
+## many at once
+### separate searches
+ids <- c("https://orcid.org/0000-0003-1691-239X",
+  "https://orcid.org/0000-0001-7569-1828",
+  "https://orcid.org/0000-0002-0596-5376")
+res <- occ_data(recordedByID=ids, limit=20)
+res[[1]]$data$recordedByIDs[[1]]
+res[[2]]$data$recordedByIDs[[1]]
+res[[3]]$data$recordedByIDs[[1]]
+### all in one search
+res <- occ_data(recordedByID=paste0(ids, collapse=";"), limit=20)
+unique(vapply(res$data$recordedByIDs, "[[", "", "value"))
+
+# identifiedByID
+occ_data(identifiedByID="https://orcid.org/0000-0003-4710-2648", limit=20)
 
 # Pass in curl options for extra fun
 occ_data(taxonKey=2433407, limit=20, curlopts=list(verbose=TRUE))

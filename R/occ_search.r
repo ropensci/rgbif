@@ -34,7 +34,8 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
   publishingCountry=NULL, hasCoordinate=NULL, typeStatus=NULL,
   recordNumber=NULL, lastInterpreted=NULL, continent=NULL, geometry=NULL,
   geom_big="asis",
-  geom_size=40, geom_n=10, recordedBy=NULL, basisOfRecord=NULL, datasetKey=NULL,
+  geom_size=40, geom_n=10, recordedBy=NULL, recordedByID=NULL,
+  identifiedByID=NULL, basisOfRecord=NULL, datasetKey=NULL,
   eventDate=NULL, catalogNumber=NULL, year=NULL, month=NULL,
   decimalLatitude=NULL,
   decimalLongitude=NULL, elevation=NULL, depth=NULL, institutionCode=NULL,
@@ -81,7 +82,8 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
       convmany(taxonKey), convmany(scientificName), convmany(country),
       convmany(publishingCountry), convmany(datasetKey),
       convmany(typeStatus), convmany(recordNumber), convmany(continent),
-      convmany(recordedBy), convmany(catalogNumber), convmany(institutionCode),
+      convmany(recordedBy), convmany(recordedByID), convmany(identifiedByID),
+      convmany(catalogNumber), convmany(institutionCode),
       convmany(collectionCode), convmany(geometry), convmany(mediaType),
       convmany(subgenusKey), convmany(phylumKey), convmany(kingdomKey),
       convmany(classKey), convmany(orderKey), convmany(familyKey),
@@ -186,7 +188,8 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
   params <- list(
     taxonKey=taxonKey,scientificName=scientificName,datasetKey=datasetKey,
     catalogNumber=catalogNumber,
-    recordedBy=recordedBy,geometry=geometry,country=country,
+    recordedBy=recordedBy,recordedByID=recordedByID, identifiedByID=identifiedByID,
+    geometry=geometry, country=country,
     publishingCountry=publishingCountry,recordNumber=recordNumber,
     q=search,institutionCode=institutionCode,collectionCode=collectionCode,
     continent=continent,
@@ -254,8 +257,9 @@ check_limit <- function(x){
 }
 
 possparams <- function(){
-  "taxonKey, scientificName, datasetKey, catalogNumber, recordedBy, geometry,
-  country, publishingCountry, recordNumber, search, institutionCode,
-  collectionCode, decimalLatitude, decimalLongitude, depth, year, typeStatus,
-  lastInterpreted, continent, or mediatype"
+  "taxonKey, scientificName, datasetKey, catalogNumber, recordedBy,
+  recordedByID, identifiedByID, geometry, country, publishingCountry,
+  recordNumber, search, institutionCode, collectionCode, decimalLatitude,
+  decimalLongitude, depth, year, typeStatus, lastInterpreted,
+  continent, or mediatype"
 }
