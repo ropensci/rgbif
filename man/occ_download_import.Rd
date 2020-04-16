@@ -7,7 +7,7 @@
 \alias{as.download.download}
 \title{Import a downloaded file from GBIF.}
 \usage{
-occ_download_import(x = NULL, key = NULL, path = ".", fill = TRUE, ...)
+occ_download_import(x = NULL, key = NULL, path = ".", fill = FALSE, ...)
 
 as.download(path = ".", key = NULL)
 
@@ -26,9 +26,7 @@ folder matching zip file name}
 
 \item{fill}{(logical) (default: \code{FALSE}). If \code{TRUE} then in case
 the rows have unequal length, blank fields are implicitly filled.
-passed on to \code{fill} parameter in \link[data.table:fread]{data.table::fread}. If you get
-problems with this function crashing it could be due to
-\code{data.table} failing, in which case try setting \code{fill=FALSE}}
+passed on to \code{fill} parameter in \link[data.table:fread]{data.table::fread}.}
 
 \item{...}{parameters passed on to \code{\link[data.table:fread]{data.table::fread()}}}
 }
@@ -45,6 +43,16 @@ You can provide either x as input, or both key and path. We use
 \note{
 see \link{downloads} for an overview of GBIF downloads methods
 }
+\section{Problems reading data}{
+
+You may run into errors when using \code{occ_download_import()}; most often
+these are due to \code{\link[data.table:fread]{data.table::fread()}} not being able to parse the
+\code{occurrence.txt} file correctly. The \code{fill} parameter passes down to
+\code{\link[data.table:fread]{data.table::fread()}} and the \code{...} allows you to pass on any other
+parameters that \code{\link[data.table:fread]{data.table::fread()}} accepts. Read the docs for \code{fread}
+for help.
+}
+
 \examples{
 \dontrun{
 # First, kick off at least 1 download, then wait for the job to be complete

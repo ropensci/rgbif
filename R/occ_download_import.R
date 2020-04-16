@@ -9,15 +9,20 @@
 #' folder matching zip file name
 #' @param fill (logical) (default: `FALSE`). If `TRUE` then in case
 #' the rows have unequal length, blank fields are implicitly filled.
-#' passed on to `fill` parameter in [data.table::fread]. If you get
-#' problems with this function crashing it could be due to
-#' `data.table` failing, in which case try setting `fill=FALSE`
+#' passed on to `fill` parameter in [data.table::fread].
 #' @param ... parameters passed on to [data.table::fread()]
 #'
 #' @return a tibble (data.frame)
 #'
 #' @details You can provide either x as input, or both key and path. We use
 #' [data.table::fread()] internally to read data.
+#' @section Problems reading data:
+#' You may run into errors when using `occ_download_import()`; most often
+#' these are due to [data.table::fread()] not being able to parse the 
+#' `occurrence.txt` file correctly. The `fill` parameter passes down to
+#' [data.table::fread()] and the `...` allows you to pass on any other
+#' parameters that [data.table::fread()] accepts. Read the docs for `fread`
+#' for help. 
 #' @note see [downloads] for an overview of GBIF downloads methods
 #' @family downloads
 #' @examples \dontrun{
@@ -44,7 +49,7 @@
 #' # occ_download_import(x)
 #' }
 
-occ_download_import <- function(x=NULL, key=NULL, path=".", fill = TRUE, ...) {
+occ_download_import <- function(x=NULL, key=NULL, path=".", fill = FALSE, ...) {
   if (!is.null(x)) {
     stopifnot(inherits(x, "occ_download_get"))
     path <- x[[1]]
