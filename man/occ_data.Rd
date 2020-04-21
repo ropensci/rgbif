@@ -222,8 +222,8 @@ locations occur}
 \item{limit}{Number of records to return. Default: 500. Note that the per
 request maximum is 300, but since we set it at 500 for the function, we
 do two requests to get you the 500 records (if there are that many).
-Note that there is a hard maximum of 200,000, which is calculated as the
-\code{limit+start}, so \code{start=199,000} and \code{limit=2000} won't work}
+Note that there is a hard maximum of 100,000, which is calculated as the
+\code{limit+start}, so \code{start=99,000} and \code{limit=2000} won't work}
 
 \item{start}{Record number to start at. Use in combination with limit to
 page through results. Note that we do the paging internally for you, but
@@ -446,6 +446,10 @@ user just wants occurrence data, and not other information like taxon
 hierarchies and media (e.g., images). Alot of time in \code{\link[=occ_search]{occ_search()}}
 is used parsing data to be more useable downstream. We do less of that
 in this function.
+}
+\note{
+Maximum number of records you can get with this function is 100,000.
+See https://www.gbif.org/developer/occurrence
 }
 \examples{
 \dontrun{

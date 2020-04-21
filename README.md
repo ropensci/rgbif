@@ -14,6 +14,8 @@
 
 `rgbif` gives you access to data from [GBIF][] via their REST API. GBIF versions their API - we are currently using `v1` of their API. You can no longer use their old API in this package - see `?rgbif-defunct`.
 
+Maximum number of records you can get with `occ_search()` and `occ_data()` is 100,000. See https://www.gbif.org/developer/occurrence
+
 To get started, see:
 
 * rgbif vignette (https://docs.ropensci.org/rgbif/articles/rgbif.html): an introduction to the package's main functionalities.
@@ -96,13 +98,13 @@ install.packages('rgbif')
 
 ```r
 occ_search(scientificName = "Ursus americanus", limit = 50)
-#> Records found [15107] 
+#> Records found [15281] 
 #> Records returned [50] 
 #> No. unique hierarchies [1] 
 #> No. media records [50] 
 #> No. facets [0] 
 #> Args [limit=50, offset=0, scientificName=Ursus americanus, fields=all] 
-#> # A tibble: 50 x 74
+#> # A tibble: 50 x 76
 #>    key   scientificName decimalLatitude decimalLongitude issues datasetKey
 #>    <chr> <chr>                    <dbl>            <dbl> <chr>  <chr>     
 #>  1 2543… Ursus america…            42.5            -73.2 cdrou… 50c9509d-…
@@ -115,7 +117,7 @@ occ_search(scientificName = "Ursus americanus", limit = 50)
 #>  8 2557… Ursus america…            34.0            -92.6 cdrou… 50c9509d-…
 #>  9 2557… Ursus america…            34.0            -92.6 cdrou… 50c9509d-…
 #> 10 2557… Ursus america…            34.0            -92.6 cdrou… 50c9509d-…
-#> # … with 40 more rows, and 68 more variables: publishingOrgKey <chr>,
+#> # … with 40 more rows, and 70 more variables: publishingOrgKey <chr>,
 #> #   installationKey <chr>, publishingCountry <chr>, protocol <chr>,
 #> #   lastCrawled <chr>, lastParsed <chr>, crawlId <int>, extensions <chr>,
 #> #   basisOfRecord <chr>, taxonKey <int>, kingdomKey <int>, phylumKey <int>,
@@ -128,9 +130,10 @@ occ_search(scientificName = "Ursus americanus", limit = 50)
 #> #   month <int>, day <int>, eventDate <chr>, modified <chr>,
 #> #   lastInterpreted <chr>, references <chr>, license <chr>, identifiers <chr>,
 #> #   facts <chr>, relations <chr>, geodeticDatum <chr>, class <chr>,
-#> #   countryCode <chr>, country <chr>, rightsHolder <chr>, identifier <chr>,
+#> #   countryCode <chr>, recordedByIDs <chr>, identifiedByIDs <chr>,
+#> #   country <chr>, rightsHolder <chr>, identifier <chr>,
 #> #   http...unknown.org.nick <chr>, verbatimEventDate <chr>, datasetName <chr>,
-#> #   collectionCode <chr>, gbifID <chr>, verbatimLocality <chr>,
+#> #   verbatimLocality <chr>, collectionCode <chr>, gbifID <chr>,
 #> #   occurrenceID <chr>, taxonID <chr>, catalogNumber <chr>, recordedBy <chr>,
 #> #   http...unknown.org.occurrenceDetails <chr>, institutionCode <chr>,
 #> #   rights <chr>, eventTime <chr>, identificationID <chr>, name <chr>,
@@ -144,13 +147,13 @@ Or you can get the taxon key first with `name_backbone()`. Here, we select to on
 ```r
 key <- name_backbone(name='Helianthus annuus', kingdom='plants')$speciesKey
 occ_search(taxonKey=key, limit=20)
-#> Records found [44669] 
+#> Records found [46960] 
 #> Records returned [20] 
 #> No. unique hierarchies [1] 
 #> No. media records [20] 
 #> No. facets [0] 
 #> Args [limit=20, offset=0, taxonKey=9206251, fields=all] 
-#> # A tibble: 20 x 88
+#> # A tibble: 20 x 90
 #>    key   scientificName decimalLatitude decimalLongitude issues datasetKey
 #>    <chr> <chr>                    <dbl>            <dbl> <chr>  <chr>     
 #>  1 2542… Helianthus an…            25.8           -100.  cdrou… 50c9509d-…
@@ -161,19 +164,19 @@ occ_search(taxonKey=key, limit=20)
 #>  6 2558… Helianthus an…            59.8             17.6 cdrou… 38b4c89f-…
 #>  7 2561… Helianthus an…            59.8             17.6 cdrou… 38b4c89f-…
 #>  8 2563… Helianthus an…            33.6           -112.  cdrou… 50c9509d-…
-#>  9 2564… Helianthus an…            59.6             17.4 gass84 38b4c89f-…
-#> 10 2572… Helianthus an…            56.2             12.6 gass84 38b4c89f-…
-#> 11 2572… Helianthus an…            59.8             17.6 gass84 38b4c89f-…
-#> 12 2573… Helianthus an…            33.2           -112.  cdrou… 50c9509d-…
-#> 13 2573… Helianthus an…            26.3            -98.2 cdrou… 50c9509d-…
-#> 14 2573… Helianthus an…            21.9           -102.  cdrou… 50c9509d-…
-#> 15 2574… Helianthus an…            30.3            -97.7 cdrou… 50c9509d-…
-#> 16 1986… Helianthus an…            33.8           -118.  cdrou… 50c9509d-…
-#> 17 1986… Helianthus an…            27.7            -97.3 cdrou… 50c9509d-…
-#> 18 1990… Helianthus an…            26.2            -98.2 cdrou… 50c9509d-…
-#> 19 1990… Helianthus an…            52.6             10.1 cdrou… 6ac3f774-…
-#> 20 1990… Helianthus an…            53.9             10.9 cdrou… 6ac3f774-…
-#> # … with 82 more variables: publishingOrgKey <chr>, installationKey <chr>,
+#>  9 2579… Helianthus an…            33.6           -118.  cdrou… 50c9509d-…
+#> 10 2564… Helianthus an…            59.6             17.4 gass84 38b4c89f-…
+#> 11 2572… Helianthus an…            56.2             12.6 gass84 38b4c89f-…
+#> 12 2572… Helianthus an…            59.8             17.6 gass84 38b4c89f-…
+#> 13 2573… Helianthus an…            33.2           -112.  cdrou… 50c9509d-…
+#> 14 2573… Helianthus an…            26.3            -98.2 cdrou… 50c9509d-…
+#> 15 2573… Helianthus an…            21.9           -102.  cdrou… 50c9509d-…
+#> 16 2574… Helianthus an…            30.3            -97.7 cdrou… 50c9509d-…
+#> 17 2576… Helianthus an…           -26.3             27.0 cdrou… 50c9509d-…
+#> 18 2576… Helianthus an…            29.6            -95.5 cdrou… 50c9509d-…
+#> 19 2576… Helianthus an…            34.1           -117.  cdrou… 50c9509d-…
+#> 20 2576… Helianthus an…            25.1           -108.  cdrou… 50c9509d-…
+#> # … with 84 more variables: publishingOrgKey <chr>, installationKey <chr>,
 #> #   publishingCountry <chr>, protocol <chr>, lastCrawled <chr>,
 #> #   lastParsed <chr>, crawlId <int>, extensions <chr>, basisOfRecord <chr>,
 #> #   taxonKey <int>, kingdomKey <int>, phylumKey <int>, classKey <int>,
@@ -185,14 +188,15 @@ occ_search(taxonKey=key, limit=20)
 #> #   year <int>, month <int>, day <int>, eventDate <chr>, modified <chr>,
 #> #   lastInterpreted <chr>, references <chr>, license <chr>, identifiers <chr>,
 #> #   facts <chr>, relations <chr>, geodeticDatum <chr>, class <chr>,
-#> #   countryCode <chr>, country <chr>, rightsHolder <chr>, identifier <chr>,
+#> #   countryCode <chr>, recordedByIDs <chr>, identifiedByIDs <chr>,
+#> #   country <chr>, rightsHolder <chr>, identifier <chr>,
 #> #   http...unknown.org.nick <chr>, verbatimEventDate <chr>, datasetName <chr>,
-#> #   collectionCode <chr>, gbifID <chr>, verbatimLocality <chr>,
+#> #   verbatimLocality <chr>, collectionCode <chr>, gbifID <chr>,
 #> #   occurrenceID <chr>, taxonID <chr>, catalogNumber <chr>, recordedBy <chr>,
 #> #   http...unknown.org.occurrenceDetails <chr>, institutionCode <chr>,
 #> #   rights <chr>, eventTime <chr>, identificationID <chr>, name <chr>,
-#> #   coordinateUncertaintyInMeters <dbl>, continent <chr>, municipality <chr>,
-#> #   county <chr>, identificationVerificationStatus <chr>, language <chr>,
+#> #   coordinateUncertaintyInMeters <dbl>, continent <chr>, county <chr>,
+#> #   municipality <chr>, identificationVerificationStatus <chr>, language <chr>,
 #> #   type <chr>, occurrenceStatus <chr>, vernacularName <chr>,
 #> #   taxonConceptID <chr>, informationWithheld <chr>, endDayOfYear <chr>,
 #> #   locality <chr>, startDayOfYear <chr>, datasetID <chr>, accessRights <chr>,
@@ -208,7 +212,7 @@ Get the keys first with `name_backbone()`, then pass to `occ_search()`
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 keys <- sapply(splist, function(x) name_backbone(name=x)$speciesKey, USE.NAMES=FALSE)
 occ_search(taxonKey=keys, limit=5, hasCoordinate=TRUE)
-#> Records found [2480598 (35), 9362842 (5530216), 2498387 (1828163)] 
+#> Records found [2480598 (35), 9362842 (5532233), 2498387 (1828941)] 
 #> Records returned [2480598 (5), 9362842 (5), 2498387 (5)] 
 #> No. unique hierarchies [2480598 (1), 9362842 (1), 2498387 (1)] 
 #> No. media records [2480598 (5), 9362842 (5), 2498387 (5)] 
@@ -217,7 +221,7 @@ occ_search(taxonKey=keys, limit=5, hasCoordinate=TRUE)
 #>      fields=all] 
 #> 3 requests; First 10 rows of data from 2480598
 #> 
-#> # A tibble: 5 x 67
+#> # A tibble: 5 x 69
 #>   key   scientificName decimalLatitude decimalLongitude issues datasetKey
 #>   <chr> <chr>                    <dbl>            <dbl> <chr>  <chr>     
 #> 1 2243… Accipiter ery…           -38.3            -60.4 ""     b1047888-…
@@ -225,7 +229,7 @@ occ_search(taxonKey=keys, limit=5, hasCoordinate=TRUE)
 #> 3 2243… Accipiter ery…           -24.3            -48.4 ""     b1047888-…
 #> 4 2243… Accipiter ery…           -26.3            -48.6 ""     b1047888-…
 #> 5 2243… Accipiter ery…           -26.3            -48.6 ""     b1047888-…
-#> # … with 61 more variables: publishingOrgKey <chr>, installationKey <chr>,
+#> # … with 63 more variables: publishingOrgKey <chr>, installationKey <chr>,
 #> #   publishingCountry <chr>, protocol <chr>, lastCrawled <chr>,
 #> #   lastParsed <chr>, crawlId <int>, extensions <chr>, basisOfRecord <chr>,
 #> #   taxonKey <int>, kingdomKey <int>, phylumKey <int>, classKey <int>,
@@ -236,8 +240,9 @@ occ_search(taxonKey=keys, limit=5, hasCoordinate=TRUE)
 #> #   taxonomicStatus <chr>, year <int>, month <int>, day <int>, eventDate <chr>,
 #> #   lastInterpreted <chr>, references <chr>, license <chr>, identifiers <chr>,
 #> #   facts <chr>, relations <chr>, geodeticDatum <chr>, class <chr>,
-#> #   countryCode <chr>, country <chr>, rightsHolder <chr>, identifier <chr>,
-#> #   verbatimEventDate <chr>, nomenclaturalCode <chr>, locality <chr>,
+#> #   countryCode <chr>, recordedByIDs <chr>, identifiedByIDs <chr>,
+#> #   country <chr>, rightsHolder <chr>, identifier <chr>,
+#> #   nomenclaturalCode <chr>, verbatimEventDate <chr>, locality <chr>,
 #> #   collectionCode <chr>, gbifID <chr>, occurrenceID <chr>,
 #> #   catalogNumber <chr>, recordedBy <chr>, vernacularName <chr>,
 #> #   fieldNotes <chr>, eventTime <chr>, behavior <chr>, verbatimElevation <chr>,
@@ -259,7 +264,7 @@ x
 #> dimensions : 512, 512, 262144  (nrow, ncol, ncell)
 #> resolution : 0.703125, 0.3515625  (x, y)
 #> extent     : -180, 180, -90, 90  (xmin, xmax, ymin, ymax)
-#> crs        : +init=epsg:4326 +proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0 
+#> crs        : +init=epsg:4326 
 #> source     : memory
 #> names      : layer 
 #> values     : 0, 1  (min, max)

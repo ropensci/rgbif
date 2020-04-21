@@ -12,6 +12,8 @@
 #' hierarchies and media (e.g., images). Alot of time in [occ_search()]
 #' is used parsing data to be more useable downstream. We do less of that
 #' in this function.
+#' @note Maximum number of records you can get with this function is 100,000.
+#' See https://www.gbif.org/developer/occurrence
 #' @return An object of class `gbif_data`, which is a S3 class list, with
 #' slots for metadata (`meta`) and the occurrence data itself
 #' (`data`), and with attributes listing the user supplied arguments

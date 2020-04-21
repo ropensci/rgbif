@@ -201,6 +201,8 @@ occ_get(key=c(855998194, 240713150), return='data')
 
 ## Search for occurrences
 
+Note: The maximum number of records you can get with `occ_search()` and `occ_data()` is 100,000. See https://www.gbif.org/developer/occurrence
+
 By default `occ_search()` returns a `dplyr` like output summary in which the data printed expands based on how much data is returned, and the size of your window. You can search by scientific name:
 
 ```{r}
