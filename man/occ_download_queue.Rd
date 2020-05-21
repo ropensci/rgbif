@@ -32,12 +32,22 @@ see \link{downloads} for an overview of GBIF downloads methods
 }
 \section{How it works}{
 
-It works by using lazy evaluation to collect your requests into a queue.
+It works by using lazy evaluation to collect your requests into a queue
+(but does not use lazy evaluation if use the \code{.list} parameter).
 Then it kicks of the first 3 requests. Then in a while loop, we check
-status of those requests, and when any request finishes, we kick off the
+status of those requests, and when any request finishes (see
+\verb{When is a job done?} below), we kick off the
 next, and so on. So in theory, there may not always strictly be 3 running
 concurrently, but the function will usually provide for 3 running
 concurrently.
+}
+
+\section{When is a job done?}{
+
+We mark a job as done by checking the \verb{/occurrence/download/} API route
+with our \code{\link[=occ_download_meta]{occ_download_meta()}} function. If the status of the job is
+any of "succeeded", "killed", or "cancelled", then we mark the job as done
+and move on to other jobs in the queue.
 }
 
 \section{Beware}{

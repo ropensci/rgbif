@@ -14,13 +14,21 @@
 #' @note see [downloads] for an overview of GBIF downloads methods
 #' @family downloads
 #' @section How it works:
-#' It works by using lazy evaluation to collect your requests into a queue.
+#' It works by using lazy evaluation to collect your requests into a queue
+#' (but does not use lazy evaluation if use the `.list` parameter).
 #' Then it kicks of the first 3 requests. Then in a while loop, we check
-#' status of those requests, and when any request finishes, we kick off the
+#' status of those requests, and when any request finishes (see 
+#' `When is a job done?` below), we kick off the
 #' next, and so on. So in theory, there may not always strictly be 3 running
 #' concurrently, but the function will usually provide for 3 running
 #' concurrently.
 #'
+#' @section When is a job done?:
+#' We mark a job as done by checking the `/occurrence/download/` API route
+#' with our [occ_download_meta()] function. If the status of the job is 
+#' any of "succeeded", "killed", or "cancelled", then we mark the job as done
+#' and move on to other jobs in the queue.
+#' 
 #' @section Beware:
 #' This function is still in development. There's a lot of complexity
 #' to this problem. We'll be rolling out fixes and improvements in future
@@ -130,7 +138,7 @@ occ_download_queue <- function(..., .list = list(), status_ping = 10) {
     while (still_running) {
       metas <- lapply(res, occ_download_meta)
       status <- vapply(metas, "[[", "", "status", USE.NAMES = FALSE)
-      still_running <- !all(tolower(status) %in% c('succeeded', 'killed'))
+      still_running <- !all(tolower(status) %in% c('succeeded', 'killed', 'cancelled'))
       Sys.sleep(status_ping)
     }
     results <- res
@@ -138,9 +146,9 @@ occ_download_queue <- function(..., .list = list(), status_ping = 10) {
     message("> 3 requests, waiting for completion")
     # cycle through until all jobs run and complete
     while (que$jobs() > 0 || length(res) > 0) {
-      metas <- lapply(res, occ_download_meta)
+      metas <- lapply(rgbif_compact(res), occ_download_meta)
       status <- vapply(metas, "[[", "", "status", USE.NAMES = FALSE)
-      statusbool <- tolower(status) %in% c('succeeded', 'killed')
+      statusbool <- tolower(status) %in% c('succeeded', 'killed', 'cancelled')
 
       if (any(statusbool)) {
         message(paste0(
