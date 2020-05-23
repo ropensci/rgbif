@@ -93,3 +93,23 @@ test_that("pred_in fails well", {
   expect_error(pred_in("a", "b"), "'key' not in acceptable set")
   expect_error(pred_in(5, "b"), "key must be of class character")
 })
+
+context("predicate builders: pred_within")
+test_that("pred_within", {
+  wkt <- randgeo::wkt_polygon(num_vertices = 30)
+  
+  aa <- pred_within(wkt)
+  expect_is(aa, "occ_predicate")
+  expect_is(unclass(aa), "list")
+  expect_named(aa, c("type", "geometry"))
+  expect_equal(unclass(aa$type), "within")
+  expect_is(unclass(aa$geometry), "character")
+  expect_equal(length(aa$geometry), 1)
+  z <- capture.output(print(aa))[2]
+  expect_true(nchar(z) < 130)
+})
+test_that("pred_within fails well", {
+  expect_error(pred_within(), "argument \"value\" is missing")
+  expect_error(pred_within(NULL), "'value' must be length 1")
+})
+

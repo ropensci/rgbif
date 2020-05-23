@@ -289,18 +289,24 @@ pred_cat <- function(x) {
   } else if ("parameter" %in% names(x)) {
     sprintf("> type: %s, parameter: %s", x$type, x$parameter)
   } else {
+    gg <- if ("geometry" %in% names(x)) {
+      x$geometry
+    } else {
+      zz <- x$value %||% x$values
+      if (!is.null(zz)) paste(zz, collapse = ",") else zz
+    }
     sprintf(
       "> type: %s, key: %s, value(s): %s",
       x$type,
       if ("geometry" %in% names(x)) "geometry" else x$key,
-      if ("geometry" %in% names(x)) {
-        x$geometry
-      } else {
-        zz <- x$value %||% x$values
-        if (!is.null(zz)) paste(zz, collapse = ",") else zz
-      }
+      sub_str(gg, 60)
     )
   }
+}
+sub_str <- function(str, max = 100) {
+  if (!nzchar(str)) return(str)
+  if (nchar(str) < max) return(str)
+  paste0(substring(str, 1, max), " ... ", sprintf("(N chars: %s)", nchar(str)))
 }
 parse_predicates <- function(user, email, type, format, ...) {
   tmp <- list(...)

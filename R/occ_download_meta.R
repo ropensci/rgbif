@@ -63,16 +63,23 @@ gbif_make_list <- function(y){
                            pc("\n        predicates: ", pc(stt)),
                            collapse = ", ")
       } else {
+        gg <- if ("geometry" %in% names(tmp)) {
+          tmp$geometry
+        } else {
+          zz <- tmp$value %||% tmp$values
+          if (!is.null(zz)) paste(zz, collapse = ",") else zz
+        }
         out[[i]] <- sprintf(
           "\n      > type: %s, key: %s, value(s): %s",
           tmp$type,
           if ("geometry" %in% names(tmp)) "geometry" else tmp$key,
-          if ("geometry" %in% names(tmp)) {
-            tmp$geometry
-          } else {
-            zz <- tmp$value %||% tmp$values
-            if (!is.null(zz)) paste(zz, collapse = ",") else zz
-          }
+          sub_str(gg, 60)
+          # if ("geometry" %in% names(tmp)) {
+          #   tmp$geometry
+          # } else {
+          #   zz <- tmp$value %||% tmp$values
+          #   if (!is.null(zz)) paste(zz, collapse = ",") else zz
+          # }
         )
       }
     }
