@@ -7,7 +7,7 @@
 gbif_citation(x)
 }
 \arguments{
-\item{x}{(character) Result of call to \code{\link[=occ_search]{occ_search()}},
+\item{x}{(character) Result of call to \code{\link[=occ_search]{occ_search()}}, \code{\link[=occ_data]{occ_data()}},
 \code{\link[=occ_download_get]{occ_download_get()}}, \code{\link[=occ_download_meta]{occ_download_meta()}}, a dataset key, or occurrence key
 (character or numeric)}
 }
@@ -61,6 +61,10 @@ res3 <- occ_search(taxonKey=9206251, fields=c('name','basisOfRecord','key'),
 #    protocol'), limit=20)
 # (xx <- gbif_citation(res3))
 
+# occ_data
+res1 <- occ_data(taxonKey=9206251, limit=2)
+(xx <- gbif_citation(res1))
+
 # character class inputs
 ## pass in a dataset key
 gbif_citation(x='0ec3229f-2b53-484e-817a-de8ceb1fce2b')
@@ -72,10 +76,9 @@ gbif_citation(x=1101144669)
 
 # Downloads
 ## occ_download_get()
-# d1 <- occ_download("country = BG", "year <= 2011")
-# key <- "0000122-171020152545675"
-# occ_download_meta(key)
-# d1 <- occ_download_get(key, overwrite = TRUE)
+# d1 <- occ_download(pred("country", "BG"), pred("year", 2011, "<="))
+# occ_download_meta(d1) # wait until status = succeeded
+# d1 <- occ_download_get(d1, overwrite = TRUE)
 # gbif_citation(d1)
 
 ## occ_download_meta()

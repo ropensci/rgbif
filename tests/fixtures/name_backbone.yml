@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
   response:
     status:
       status_code: '200'
@@ -17,13 +17,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 15:18:12 GMT
+      date: Wed, 12 Feb 2020 22:58:44 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: 757270013 772472926
+      x-varnish: 1063259636 1066109640
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -31,11 +31,12 @@ http_interactions:
       connection: keep-alive
     body:
       encoding: UTF-8
+      file: no
       string: '{"usageKey":9206251,"scientificName":"Helianthus annuus L.","canonicalName":"Helianthus
         annuus","rank":"SPECIES","status":"ACCEPTED","confidence":98,"matchType":"EXACT","kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Helianthus","species":"Helianthus
         annuus","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3119134,"speciesKey":9206251,"synonym":false,"class":"Magnoliopsida"}'
-  recorded_at: 2019-02-26 15:18:13 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+  recorded_at: 2020-02-12 22:58:46 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/species/match?name=Helianthus%20annuus&rank=species&strict=FALSE&verbose=TRUE&limit=100
@@ -45,8 +46,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
   response:
     status:
       status_code: '200'
@@ -54,13 +55,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 15:18:13 GMT
+      date: Wed, 12 Feb 2020 22:58:45 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: 760547518 755927299
+      x-varnish: 1054216238 1051203050
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -68,6 +69,7 @@ http_interactions:
       connection: keep-alive
     body:
       encoding: UTF-8
+      file: no
       string: '{"usageKey":9206251,"scientificName":"Helianthus annuus L.","canonicalName":"Helianthus
         annuus","rank":"SPECIES","status":"ACCEPTED","confidence":98,"note":"Similarity:
         name=110; authorship=0; classification=-2; rank=5; status=1; nextMatch=5","matchType":"EXACT","alternatives":[{"usageKey":4252034,"acceptedUsageKey":4250528,"scientificName":"Helianthus
@@ -75,5 +77,5 @@ http_interactions:
         name=5; authorship=0; classification=-2; rank=5; status=0","matchType":"FUZZY","kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Helianthus","species":"Helianthus
         petiolaris","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3119134,"speciesKey":3119225,"synonym":true,"class":"Magnoliopsida"}],"kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Helianthus","species":"Helianthus
         annuus","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3119134,"speciesKey":9206251,"synonym":false,"class":"Magnoliopsida"}'
-  recorded_at: 2019-02-26 15:18:13 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+  recorded_at: 2020-02-12 22:58:46 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0

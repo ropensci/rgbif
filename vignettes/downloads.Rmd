@@ -1,12 +1,28 @@
 ---
 title: Downloading data from GBIF
 author: Scott Chamberlain
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
 vignette: >
     %\VignetteIndexEntry{downloading}
-    %\VignetteEngine{knitr::knitr}
+    %\VignetteEngine{knitr::rmarkdown}
     %\VignetteEncoding{UTF-8}
 ---
 
+```{r echo=FALSE}
+NOT_CRAN <- identical(tolower(Sys.getenv("NOT_CRAN")), "true")
+knitr::opts_chunk$set(
+	comment = "#>",
+	collapse = TRUE,
+	warning = FALSE,
+	message = FALSE,
+  purl = NOT_CRAN,
+  eval = NOT_CRAN
+)
+```
+
+GBIF Downloads
+==============
 
 GBIF provides two ways to get occurrence data: through the
 `/occurrence/search` route (see `occ_search()` and `occ_data()`),
@@ -32,6 +48,47 @@ or `PREPARING`
 - `occ_download_datasets()` - List datasets for a download
 - `occ_download_dataset_activity()` - Lists the downloads activity of a dataset
 
+The following functions are the download predicate DSL, used with `occ_download`,
+`occ_download_prep()`, and `occ_download_queue()`.
+
+`pred*` functions are named for the 'type' of operation they do, following
+the terminology used by GBIF, see
+https://www.gbif.org/developer/occurrence#predicates
+
+Function names are given, with the equivalent GBIF type value (e.g.,
+`pred_gt` and `greaterThan`)
+
+The following functions take one key and one value:
+
+- `pred`: equals
+- `pred_lt`: lessThan
+- `pred_lte`: lessThanOrEquals
+- `pred_gt`: greaterThan
+- `pred_gte`: greaterThanOrEquals
+- `pred_not`: not
+- `pred_like`: like
+
+The following function is only for geospatial queries, and only
+accepts a WKT string:
+
+- `pred_within`: within
+
+The following function is only for stating the you don't want
+a key to be null, so only accepts one key:
+
+- `pred_notnull`: isNotNull
+
+The following two functions accept multiple individual predicates,
+separating them by either "and" or "or":
+
+- `pred_and`: and
+- `pred_or`: or
+
+The following function is special in that it accepts a single key
+but many values; stating that you want to search for all the values:
+
+- `pred_in`: in
+
 `occ_download()` is the function to start off with when using the GBIF download
 service. With it you can specify what query you want. Unfortunately, the interfaces
 to the search vs. download services are different, so we couldn't make the `rgbif`
@@ -41,24 +98,22 @@ Be aware that you can only perform 3 downloads simultaneously, so plan wisely.
 To help with this limitation, we are working on a queue helper, but it's not
 ready yet.
 
-Let's take a look at how to use the download functions:
+Let's take a look at how to use the download functions.
 
 ## Load rgbif
 
-
-```r
+```{r}
 library("rgbif")
 ```
 
 ## Kick off a download
 
 Instead of passing parameters like `taxonkey = 12345` in `occ_search`, for downloads
-we pass the whole thing as a character string **because** you can use operators
-other than `=` (equal to).
+we construct queries using any of the `pred` functions. This provides for much more
+complex queries than can be done with `occ_search/occ_data`. With downloads, you can use operators other than `=` (equal to); and the queries can be very complex.
 
-
-```r
-(res <- occ_download('taxonKey = 7264332', 'hasCoordinate = TRUE'))
+```{r eval=FALSE}
+(res <- occ_download(pred('taxonKey', 7264332), pred('hasCoordinate', TRUE)))
 #> <<gbif download>>
 #>   Username: sckott
 #>   E-mail: myrmecocystus@gmail.com
@@ -77,8 +132,7 @@ download, and helps us check and know when the download is done.
 After running `occ_download`, we can pass the resulting object to
 `occ_download_meta` - with primary goal of checking the download status.
 
-
-```r
+```{r eval=FALSE}
 occ_download_meta(res)
 #> <<gbif download metadata>>
 #>   Status: PREPARING
@@ -105,8 +159,7 @@ Before we go to the next step, there's another function to help you out.
 With `occ_download_list` you can get an overview of all your download
 requests, with
 
-
-```r
+```{r eval=FALSE}
 x <- occ_download_list()
 x$results <- tibble::as_tibble(x$results)
 x
@@ -159,8 +212,7 @@ cancels all jobs in `PREPARING` or `RUNNING` stage.
 After you see the `SUCCEEDED` status on calling `occ_download_meta`, you can
 then download the data using `occ_download_get`.
 
-
-```r
+```{r eval=FALSE}
 (dat <- occ_download_get("0000796-171109162308116"))
 #> <<gbif downloaded get>>
 #>   Path: ./0000796-171109162308116.zip
@@ -175,8 +227,7 @@ You can now move on to importing into R.
 Pass the output of `occ_download_get` directly to `occ_download_import` -
 they can be piped together if you like.
 
-
-```r
+```{r eval=FALSE}
 occ_download_get("0000796-171109162308116") %>% occ_download_import()
 # OR
 dat <- occ_download_get("0000796-171109162308116")
@@ -214,8 +265,7 @@ the download with metadata on GBIF's website. And it makes for a nice citation.
 Using the funciton `gbif_citaiton` we can get citations for our downloads,
 with the output from `occ_download_get` or `occ_download_meta`.
 
-
-```r
+```{r eval=FALSE}
 occ_download_meta(res) %>% gbif_citation()
 #> $download
 #> [1] "GBIF Occurrence Download https://doi.org/10.15468/dl.ohjevv Accessed from R via rgbif (https://github.com/ropensci/rgbif) on 2017-11-10"
@@ -230,8 +280,7 @@ we don't yet have any information about which datasets are in the download.
 But if you use `occ_download_get` you then have the individual datasets, and we
 can get citatations for each idividual dataset in addition to the entire download.
 
-
-```r
+```{r eval=FALSE}
 occ_download_get("0000796-171109162308116") %>% gbif_citation()
 #> $download
 #> [1] "GBIF Occurrence Download https://doi.org/10.15468/dl.nv3r5p Accessed from R via rgbif (https://github.com/ropensci/rgbif) on 2017-11-10"

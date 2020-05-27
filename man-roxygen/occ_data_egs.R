@@ -48,6 +48,24 @@
 #' ## one request, many instances of same parameter: use semi-colon sep. string
 #' occ_data(recordedBy="smith;BJ Stacey", limit=10)
 #'
+#' # recordedByID
+#' occ_data(recordedByID="https://orcid.org/0000-0003-1691-239X", limit=20)
+#' ## many at once
+#' ### separate searches
+#' ids <- c("https://orcid.org/0000-0003-1691-239X",
+#'   "https://orcid.org/0000-0001-7569-1828",
+#'   "https://orcid.org/0000-0002-0596-5376")
+#' res <- occ_data(recordedByID=ids, limit=20)
+#' res[[1]]$data$recordedByIDs[[1]]
+#' res[[2]]$data$recordedByIDs[[1]]
+#' res[[3]]$data$recordedByIDs[[1]]
+#' ### all in one search
+#' res <- occ_data(recordedByID=paste0(ids, collapse=";"), limit=20)
+#' unique(vapply(res$data$recordedByIDs, "[[", "", "value"))
+#'
+#' # identifiedByID
+#' occ_data(identifiedByID="https://orcid.org/0000-0003-4710-2648", limit=20)
+#'
 #' # Pass in curl options for extra fun
 #' occ_data(taxonKey=2433407, limit=20, curlopts=list(verbose=TRUE))
 #' occ_data(taxonKey=2433407, limit=20,
@@ -215,14 +233,6 @@
 #'
 #' # Search using a query string
 #' occ_data(search="kingfisher", limit=20)
-#' ## spell check - only works with the `search` parameter
-#' ### spelled correctly - same result as above call
-#' occ_data(search = "kingfisher", limit=20, spellCheck = TRUE)
-#' ### spelled incorrectly - stops with suggested spelling
-#' # occ_data(search = "kajsdkla", limit=20, spellCheck = TRUE)
-#' ### spelled incorrectly - stops with many suggested spellings
-#' ###   and number of results for each
-#' # occ_data(search = "helir", limit=20, spellCheck = TRUE)
 #'
 #' # search on repatriated - doesn't work right now
 #' # occ_data(repatriated = "")

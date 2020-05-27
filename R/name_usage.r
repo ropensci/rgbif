@@ -172,7 +172,7 @@ get_meta_nu <- function(x) {
     tibble::as_tibble(data.frame(x[c('offset','limit','endOfRecords')],
                                      stringsAsFactors = FALSE))
   } else {
-    tibble::as_tibble()
+    tibble::tibble()
   }
 }
 

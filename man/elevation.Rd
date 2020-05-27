@@ -118,10 +118,10 @@ elevation(latlong=pairs, username = user, verbose = TRUE)
 # different elevation models
 lats <- dat$decimalLatitude[1:5]
 lons <- dat$decimalLongitude[1:5]
-elevation(latitude = lats, longitude = lons, elevation_model = "srtm3", verbose = TRUE)
-elevation(latitude = lats, longitude = lons, elevation_model = "srtm1", verbose = TRUE)
-elevation(latitude = lats, longitude = lons, elevation_model = "astergdem", verbose = TRUE)
-elevation(latitude = lats, longitude = lons, elevation_model = "gtopo30", verbose = TRUE)
+elevation(latitude = lats, longitude = lons, elevation_model = "srtm3")
+elevation(latitude = lats, longitude = lons, elevation_model = "srtm1")
+elevation(latitude = lats, longitude = lons, elevation_model = "astergdem")
+elevation(latitude = lats, longitude = lons, elevation_model = "gtopo30")
 }
 }
 \references{

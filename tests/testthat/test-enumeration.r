@@ -1,6 +1,8 @@
 context("enumeration")
 
 test_that("enumeration", {
+  skip_on_cran()
+
   vcr::use_cassette("enumeration", {
     a <- enumeration()
     b <- enumeration("NameType")
@@ -18,9 +20,12 @@ test_that("enumeration", {
 })
 
 test_that("fails correctly", {
-  vcr::use_cassette("datasets_fails_well", {
+  skip_on_cran()
+  
+  vcr::use_cassette("enumeration_fails_well", {
     expect_error(enumeration("asdfadsf"), "Status: 204 - not found")
-    expect_error(enumeration_country(list(timeout_ms = 1)),
-                 "Timeout was reached")
   })
+
+  expect_error(enumeration_country(list(timeout_ms = 1)),
+    "Timeout was reached")
 })

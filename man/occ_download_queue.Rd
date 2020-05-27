@@ -32,12 +32,22 @@ see \link{downloads} for an overview of GBIF downloads methods
 }
 \section{How it works}{
 
-It works by using lazy evaluation to collect your requests into a queue.
+It works by using lazy evaluation to collect your requests into a queue
+(but does not use lazy evaluation if use the \code{.list} parameter).
 Then it kicks of the first 3 requests. Then in a while loop, we check
-status of those requests, and when any request finishes, we kick off the
+status of those requests, and when any request finishes (see
+\verb{When is a job done?} below), we kick off the
 next, and so on. So in theory, there may not always strictly be 3 running
 concurrently, but the function will usually provide for 3 running
 concurrently.
+}
+
+\section{When is a job done?}{
+
+We mark a job as done by checking the \verb{/occurrence/download/} API route
+with our \code{\link[=occ_download_meta]{occ_download_meta()}} function. If the status of the job is
+any of "succeeded", "killed", or "cancelled", then we mark the job as done
+and move on to other jobs in the queue.
 }
 
 \section{Beware}{
@@ -50,21 +60,26 @@ with new versions.
 
 \examples{
 \dontrun{
+if (interactive()) { # dont run in automated example runs, too costly
 # passing occ_download() requests via ...
 out <- occ_download_queue(
-  occ_download('taxonKey = 3119195', "year = 1976"),
-  occ_download('taxonKey = 3119195', "year = 2001"),
-  occ_download('taxonKey = 3119195', "year = 2001", "month <= 8"),
-  occ_download('taxonKey = 5229208', "year = 2011"),
-  occ_download('taxonKey = 2480946', "year = 2015"),
-  occ_download("country = NZ", "year = 1999", "month = 3"),
-  occ_download("catalogNumber = Bird.27847588", "year = 1998", "month = 2")
+  occ_download(pred('taxonKey', 3119195), pred("year", 1976)),
+  occ_download(pred('taxonKey', 3119195), pred("year", 2001)),
+  occ_download(pred('taxonKey', 3119195), pred("year", 2001),
+    pred_lte("month", 8)),
+  occ_download(pred('taxonKey', 5229208), pred("year", 2011)),
+  occ_download(pred('taxonKey', 2480946), pred("year", 2015)),
+  occ_download(pred("country", "NZ"), pred("year", 1999),
+    pred("month", 3)),
+  occ_download(pred("catalogNumber", "Bird.27847588"),
+    pred("year", 1998), pred("month", 2))
 )
 
 # supports <= 3 requests too
 out <- occ_download_queue(
-  occ_download("country = NZ", "year = 1999", "month = 3"),
-  occ_download("catalogNumber = Bird.27847588", "year = 1998", "month = 2")
+  occ_download(pred("country", "NZ"), pred("year", 1999), pred("month", 3)),
+  occ_download(pred("catalogNumber", "Bird.27847588"), pred("year", 1998),
+    pred("month", 2))
 )
 
 # using pre-prepared requests via .list
@@ -72,11 +87,11 @@ keys <- c(7905507, 5384395, 8911082)
 queries <- list()
 for (i in seq_along(keys)) {
   queries[[i]] <- occ_download_prep(
-    paste0("taxonKey = ", keys[i]),
-    "basisOfRecord = HUMAN_OBSERVATION,OBSERVATION",
-    "hasCoordinate = true",
-    "hasGeospatialIssue = false",
-    "year = 1993"
+    pred("taxonKey", keys[i]),
+    pred_in("basisOfRecord", c("HUMAN_OBSERVATION","OBSERVATION")),
+    pred("hasCoordinate", TRUE),
+    pred("hasGeospatialIssue", FALSE),
+    pred("year", 1993)
   )
 }
 out <- occ_download_queue(.list = queries)
@@ -84,18 +99,31 @@ out
 
 # another pre-prepared example
 yrs <- 1930:1934
-length(yrs)
 queries <- list()
 for (i in seq_along(yrs)) {
   queries[[i]] <- occ_download_prep(
-    "taxonKey = 2877951",
-    "basisOfRecord = HUMAN_OBSERVATION,OBSERVATION",
-    "hasCoordinate = true",
-    "hasGeospatialIssue = false",
-    paste0("year = ", yrs[i])
+    pred("taxonKey", 2877951),
+    pred_in("basisOfRecord", c("HUMAN_OBSERVATION","OBSERVATION")),
+    pred("hasCoordinate", TRUE),
+    pred("hasGeospatialIssue", FALSE),
+    pred("year", yrs[i])
   )
 }
 out <- occ_download_queue(.list = queries)
 out
+}}
 }
+\seealso{
+Other downloads: 
+\code{\link{download_predicate_dsl}},
+\code{\link{occ_download_cancel}()},
+\code{\link{occ_download_dataset_activity}()},
+\code{\link{occ_download_datasets}()},
+\code{\link{occ_download_get}()},
+\code{\link{occ_download_import}()},
+\code{\link{occ_download_list}()},
+\code{\link{occ_download_meta}()},
+\code{\link{occ_download_wait}()},
+\code{\link{occ_download}()}
 }
+\concept{downloads}

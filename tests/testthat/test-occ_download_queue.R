@@ -13,9 +13,9 @@ test_that("occ_download_queue: real request works", {
 
   vcr::use_cassette("occ_download_queue", {
     tt <- occ_download_queue(
-      occ_download("country = NZ", "year = 1993", "month = 1"),
-      occ_download("catalogNumber = Bird.27847588", "year = 1971", "month = 4"),
-      occ_download("taxonKey = 2435240", "year = 1974", "month = 2")
+      occ_download(pred("country", "NZ"), pred("year", 1993), pred("month", 1)),
+      occ_download(pred("catalogNumber", "Bird.27847588"), pred("year", 1971), pred("month", 4)),
+      occ_download(pred("taxonKey", 2435240), pred("year", 1974), pred("month", 2))
     )
   }, match_requests_on = c("method", "uri", "body"))
 
@@ -37,7 +37,7 @@ test_that("occ_download_queue fails well", {
 
   # status_ping must be 10 or greater
   expect_error(
-    occ_download_queue(occ_download("country = NZ", "year = 1999", "month = 3"),
+    occ_download_queue(occ_download(pred("country", "NZ"), pred("year", 1999), pred("month", 3)),
       status_ping = 3),
     "is not TRUE"
   )
@@ -47,7 +47,7 @@ test_that("occ_download_queue fails well", {
   Sys.unsetenv("GBIF_USER"); Sys.unsetenv("GBIF_PWD"); Sys.unsetenv("GBIF_EMAIL")
   expect_error(
     suppressMessages(occ_download_queue(
-      occ_download("country = NZ", "year = 1999", "month = 3")
+      occ_download(pred("country", "NZ"), pred("year", 1999), pred("month", 3))
     )),
     "supply a username"
   )
@@ -55,7 +55,7 @@ test_that("occ_download_queue fails well", {
   Sys.setenv(GBIF_USER = "foobar")
   expect_error(
     suppressMessages(occ_download_queue(
-      occ_download("country = NZ", "year = 1999", "month = 3")
+      occ_download(pred("country", "NZ"), pred("year", 1999), pred("month", 3))
     )),
     "supply a password"
   )
@@ -63,7 +63,7 @@ test_that("occ_download_queue fails well", {
   Sys.setenv(GBIF_PWD = "helloworld")
   expect_error(
     suppressMessages(occ_download_queue(
-      occ_download("country = NZ", "year = 1999", "month = 3")
+      occ_download(pred("country", "NZ"), pred("year", 1999), pred("month", 3))
     )),
     "supply an email"
   )

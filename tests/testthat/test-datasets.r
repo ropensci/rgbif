@@ -1,6 +1,8 @@
 context("datasets")
 
 test_that("query all datasets returns the correct class", {
+  skip_on_cran() # because fixture in .Rbuildignore
+
   vcr::use_cassette("datasets", {
     tt <- datasets()
   }, preserve_exact_body_bytes = TRUE)
@@ -55,6 +57,7 @@ test_that("metadata returns the correct class", {
 })
 
 test_that("search for deleted and duplicate datasets returns the correct", {
+  skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("datasets_deleted_duplicate", {
     tt <- datasets(data=c('deleted', 'duplicate'))
   }, preserve_exact_body_bytes = TRUE)

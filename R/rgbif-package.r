@@ -65,12 +65,18 @@ NULL
 #' - [taxoncount()]: service no longer provided
 #' - [taxonget()]: service no longer provided
 #' - [taxonsearch()]: service no longer provided
-#' - [stylegeojson()]: moving this functionality to spocc package, will be removed soon
-#' - [togeojson()]: moving this functionality to spocc package, will be removed soon
-#' - [gist()]: moving this functionality to spocc package, will be removed soon
+#' - [stylegeojson()]: moving this functionality to spocc package, will be
+#' removed soon
+#' - [togeojson()]: moving this functionality to spocc package, will be
+#' removed soon
+#' - [gist()]: moving this functionality to spocc package, will be
+#' removed soon
+#' - [occ_spellcheck()]: GBIF has removed the `spellCheck` parameter
+#' from their API
 #'
-#' The above functions have been removed. See <https://github.com/ropensci/rgbif> and poke
-#' around the code if you want to find the old functions in previous versions of the package, or
+#' The above functions have been removed. See
+#' <https://github.com/ropensci/rgbif> and poke around the code if you
+#' want to find the old functions in previous versions of the package, or
 #' email Scott at \email{myrmecocystus@@gmail.com}
 #'
 #' @name rgbif-defunct

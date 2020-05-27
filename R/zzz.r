@@ -363,34 +363,10 @@ gbif_GET <- function(url, args, parse=FALSE, curlopts = list(), mssg = NULL) {
     if (temp$status_code == 503) mssg <- temp$status_http()$message
     stop(mssg, call. = FALSE)
   }
-
   # check content type
   stopifnot(temp$response_headers$`content-type` == 'application/json')
-
   # parse JSON
   json <- jsonlite::fromJSON(temp$parse("UTF-8"), parse)
-
-  # check if spellCheck = TRUE, and if should stop
-  if ('spellCheck' %in% names(args)) {
-    if (args$spellCheck) {
-      if (!"suggestions" %in% names(json$spellCheckResponse)) {
-        if (json$spellCheckResponse$correctlySpelled) {
-          return(json)
-        } else {
-          stop("spelling bad, but no suggestions given", call. = FALSE)
-        }
-      } else {
-        mssg <- paste0(
-          "spelling bad - suggestions: \n",
-          paste0(lapply(json$spellCheckResponse$suggestions, function(z) {
-            sprintf("   %s: %s", z$alternatives, z$numFound)
-          }), collapse = "\n")
-        )
-        stop(mssg, call. = FALSE)
-      }
-    }
-  }
-
   return(json)
 }
 
@@ -446,15 +422,6 @@ get_meta <- function(x){
     data.frame(x[!names(x) == 'results'], stringsAsFactors = FALSE)
   } else {
     NULL
-  }
-}
-
-list0tochar <- function(x){
-  if (class(x) == 'list') {
-    tmp <- vapply(x, length, numeric(1))
-    if (sum(tmp) == 0) NA else x
-  } else {
-    x
   }
 }
 
@@ -528,9 +495,10 @@ convmany <- function(x) {
 }
 
 check_vals <- function(x, y){
-  if (is.na(x) || is.null(x)) stop(sprintf("%s can not be NA or NULL", y),
-                                   call. = FALSE)
-  if (length(x) > 1) stop(sprintf("%s has to be length 1", y), call. = FALSE)
+  if (is.na(x) || is.null(x))
+    stop(sprintf("%s can not be NA or NULL", y), call. = FALSE)
+  if (length(x) > 1)
+    stop(sprintf("%s has to be length 1", y), call. = FALSE)
 }
 
 check_for_a_pkg <- function(x) {
@@ -700,3 +668,7 @@ asl <- function(z) {
     return(z)
   }
 }
+
+last <- function(x) x[length(x)]
+
+mssg <- function(v, ...) if (v) message(...)

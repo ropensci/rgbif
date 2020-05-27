@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
   response:
     status:
       status_code: '200'
@@ -17,20 +17,21 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 15:29:51 GMT
+      date: Wed, 12 Feb 2020 17:59:48 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: 740756494 785481825
+      x-varnish: 913179107 899417648
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
-      content-length: '4166'
+      content-length: '9672'
       connection: keep-alive
     body:
       encoding: UTF-8
+      file: no
       string: '{"offset":0,"limit":100,"endOfRecords":true,"results":[{"taxonKey":5231190,"extinct":false,"source":"The
         Clements Checklist","sourceTaxonKey":133145048},{"taxonKey":5231190,"extinct":false,"source":"The
         Clements Checklist","sourceTaxonKey":133145086},{"taxonKey":5231190,"extinct":false,"source":"The
@@ -58,12 +59,50 @@ http_interactions:
         Register of Introduced and Invasive Species- Botswana","sourceTaxonKey":148741344},{"taxonKey":5231190,"source":"Global
         Register of Introduced and Invasive Species- Gran Canaria, Islas Canarias,
         Spain","sourceTaxonKey":148787758},{"taxonKey":5231190,"source":"Global Register
-        of Introduced and Invasive Species- Swaziland","sourceTaxonKey":148789617},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        of Introduced and Invasive Species- Eswatini (Swaziland)","sourceTaxonKey":148789617},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
         Register of Introduced and Invasive Species- Jamaica","sourceTaxonKey":149692575},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
         Register of Introduced and Invasive Species- Vietnam","sourceTaxonKey":149693209},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Singapore","sourceTaxonKey":149695953}]}'
-  recorded_at: 2019-02-26 15:29:52 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+        Register of Introduced and Invasive Species- Singapore","sourceTaxonKey":149695953},{"taxonKey":5231190,"habitat":"terrestrial","source":"GRIIS
+        Checklist of Introduced and Invasive Species - Ecuador","sourceTaxonKey":158627398},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
+        Register of Introduced and Invasive Species- France- Mayotte","sourceTaxonKey":158628509},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Argentina","sourceTaxonKey":158850551},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Cabo Verde","sourceTaxonKey":158921007},{"taxonKey":5231190,"habitat":"Terrestrial","source":"GRIIS
+        Checklist of Introduced and Invasive Species - Barbados","sourceTaxonKey":159880179},{"taxonKey":5231190,"habitat":"Terrestrial","source":"GRIIS
+        Checklist of Introduced and Invasive Species - Malawi","sourceTaxonKey":159881107},{"taxonKey":5231190,"habitat":"Terrestrial","source":"GRIIS
+        Checklist of Introduced and Invasive Species - Zimbabwe","sourceTaxonKey":159883822},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Maldives","sourceTaxonKey":160845156},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Tanzania","sourceTaxonKey":160848855},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Rwanda","sourceTaxonKey":160849230},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Laos","sourceTaxonKey":160849962},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Oman","sourceTaxonKey":160850499},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Bahamas","sourceTaxonKey":160854229},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Panama","sourceTaxonKey":160892870},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Venezuela","sourceTaxonKey":160893516},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Australia","sourceTaxonKey":160900638},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Sudan","sourceTaxonKey":160903574},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- South Sudan","sourceTaxonKey":160903756},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Somalia","sourceTaxonKey":160903788},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Belize","sourceTaxonKey":160910164},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Peru","sourceTaxonKey":160910653},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Bermuda","sourceTaxonKey":160912828},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Dominica","sourceTaxonKey":160913157},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Madagascar","sourceTaxonKey":160923050},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Liberia","sourceTaxonKey":160928093},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Senegal","sourceTaxonKey":160928271},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Gambia","sourceTaxonKey":160929321},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Zambia","sourceTaxonKey":160929752},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Kenya","sourceTaxonKey":160930218},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Côte d''Ivoire","sourceTaxonKey":160930739},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Niger","sourceTaxonKey":160930951},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Djibouti","sourceTaxonKey":160931077},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- United States of America (Contiguous)","sourceTaxonKey":160933682},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Costa Rica","sourceTaxonKey":160939063},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Paraguay","sourceTaxonKey":160939664},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Nicaragua","sourceTaxonKey":160939898},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- New Zealand","sourceTaxonKey":160941231},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species- Namibia","sourceTaxonKey":160947137}]}'
+  recorded_at: 2020-02-12 17:59:49 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/species/5136020/speciesProfiles?offset=0&limit=100
@@ -73,8 +112,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
   response:
     status:
       status_code: '200'
@@ -82,13 +121,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 15:29:51 GMT
+      date: Wed, 12 Feb 2020 17:59:48 GMT
       content-type: application/json
       access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: 765068989 777913291
+      x-varnish: 900826473 900826472
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -96,6 +135,7 @@ http_interactions:
       connection: keep-alive
     body:
       encoding: UTF-8
+      file: no
       string: '{"offset":0,"limit":100,"endOfRecords":true,"results":[]}'
-  recorded_at: 2019-02-26 15:29:52 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+  recorded_at: 2020-02-12 17:59:49 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0

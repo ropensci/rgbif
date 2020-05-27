@@ -1,6 +1,8 @@
 context("name_usage")
 
 test_that("name_usage return parameter works", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  
   vcr::use_cassette("name_usage_return_param", {
     meta <- name_usage(return = "meta")
     dat <- name_usage(return = "data")

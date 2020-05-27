@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
   response:
     status:
       status_code: '200'
@@ -17,22 +17,23 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 15:15:39 GMT
-      server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips
+      date: Wed, 12 Feb 2020 06:03:56 GMT
+      server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips PHP/5.4.16
       cache-control: no-cache
       access-control-allow-origin: '*'
       transfer-encoding: chunked
       content-type: text/html;charset=UTF-8
     body:
       encoding: UTF-8
+      file: no
       string: |
         1447
         340
         340
         1524
         1769
-  recorded_at: 2019-02-26 15:15:48 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+  recorded_at: 2020-02-12 06:04:02 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0
 - request:
     method: get
     uri: http://api.geonames.org/srtm1?lats=32.909436%2C38.540315%2C37.050632%2C31.913204%2C32.648646&lngs=-116.545853%2C-122.970018%2C-121.4302%2C-109.931659%2C-108.536463&username=<geonames_user>
@@ -42,8 +43,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
   response:
     status:
       status_code: '200'
@@ -51,22 +52,23 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 15:15:41 GMT
-      server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips
+      date: Wed, 12 Feb 2020 06:03:57 GMT
+      server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips PHP/5.4.16
       cache-control: no-cache
       access-control-allow-origin: '*'
       transfer-encoding: chunked
       content-type: text/html;charset=UTF-8
     body:
       encoding: UTF-8
+      file: no
       string: |
         1447
         339
         339
         1521
         1769
-  recorded_at: 2019-02-26 15:15:48 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+  recorded_at: 2020-02-12 06:04:02 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0
 - request:
     method: get
     uri: http://api.geonames.org/astergdem?lats=32.909436%2C38.540315%2C37.050632%2C31.913204%2C32.648646&lngs=-116.545853%2C-122.970018%2C-121.4302%2C-109.931659%2C-108.536463&username=<geonames_user>
@@ -76,8 +78,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
   response:
     status:
       status_code: '200'
@@ -85,22 +87,23 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 15:15:44 GMT
-      server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips
+      date: Wed, 12 Feb 2020 06:03:58 GMT
+      server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips PHP/5.4.16
       cache-control: no-cache
       access-control-allow-origin: '*'
       transfer-encoding: chunked
       content-type: text/html;charset=UTF-8
     body:
       encoding: UTF-8
+      file: no
       string: |
         1449
         349
         336
         1519
         1764
-  recorded_at: 2019-02-26 15:15:48 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+  recorded_at: 2020-02-12 06:04:02 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0
 - request:
     method: get
     uri: http://api.geonames.org/gtopo30?lat=32.909436&lng=-116.545853&username=<geonames_user>
@@ -110,8 +113,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
   response:
     status:
       status_code: '200'
@@ -119,18 +122,19 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 15:15:45 GMT
-      server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips
+      date: Wed, 12 Feb 2020 06:03:59 GMT
+      server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips PHP/5.4.16
       cache-control: no-cache
       access-control-allow-origin: '*'
       transfer-encoding: chunked
       content-type: text/html;charset=UTF-8
     body:
       encoding: UTF-8
+      file: no
       string: |
         1460
-  recorded_at: 2019-02-26 15:15:48 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+  recorded_at: 2020-02-12 06:04:02 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0
 - request:
     method: get
     uri: http://api.geonames.org/gtopo30?lat=38.540315&lng=-122.970018&username=<geonames_user>
@@ -140,8 +144,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
   response:
     status:
       status_code: '200'
@@ -149,18 +153,19 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 15:15:45 GMT
-      server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips
+      date: Wed, 12 Feb 2020 06:04:00 GMT
+      server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips PHP/5.4.16
       cache-control: no-cache
       access-control-allow-origin: '*'
       transfer-encoding: chunked
       content-type: text/html;charset=UTF-8
     body:
       encoding: UTF-8
+      file: no
       string: |
         303
-  recorded_at: 2019-02-26 15:15:48 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+  recorded_at: 2020-02-12 06:04:02 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0
 - request:
     method: get
     uri: http://api.geonames.org/gtopo30?lat=37.050632&lng=-121.4302&username=<geonames_user>
@@ -170,8 +175,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
   response:
     status:
       status_code: '200'
@@ -179,18 +184,19 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 15:15:46 GMT
-      server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips
+      date: Wed, 12 Feb 2020 06:04:00 GMT
+      server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips PHP/5.4.16
       cache-control: no-cache
       access-control-allow-origin: '*'
       transfer-encoding: chunked
       content-type: text/html;charset=UTF-8
     body:
       encoding: UTF-8
+      file: no
       string: |
         365
-  recorded_at: 2019-02-26 15:15:48 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+  recorded_at: 2020-02-12 06:04:02 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0
 - request:
     method: get
     uri: http://api.geonames.org/gtopo30?lat=31.913204&lng=-109.931659&username=<geonames_user>
@@ -200,8 +206,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
   response:
     status:
       status_code: '200'
@@ -209,18 +215,19 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 15:15:47 GMT
-      server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips
+      date: Wed, 12 Feb 2020 06:04:01 GMT
+      server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips PHP/5.4.16
       cache-control: no-cache
       access-control-allow-origin: '*'
       transfer-encoding: chunked
       content-type: text/html;charset=UTF-8
     body:
       encoding: UTF-8
+      file: no
       string: |
         1515
-  recorded_at: 2019-02-26 15:15:48 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+  recorded_at: 2020-02-12 06:04:02 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0
 - request:
     method: get
     uri: http://api.geonames.org/gtopo30?lat=32.648646&lng=-108.536463&username=<geonames_user>
@@ -230,8 +237,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
   response:
     status:
       status_code: '200'
@@ -239,15 +246,16 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 15:15:47 GMT
-      server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips
+      date: Wed, 12 Feb 2020 06:04:02 GMT
+      server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips PHP/5.4.16
       cache-control: no-cache
       access-control-allow-origin: '*'
       transfer-encoding: chunked
       content-type: text/html;charset=UTF-8
     body:
       encoding: UTF-8
+      file: no
       string: |
         1767
-  recorded_at: 2019-02-26 15:15:48 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+  recorded_at: 2020-02-12 06:04:02 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0

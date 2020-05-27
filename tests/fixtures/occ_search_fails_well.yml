@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
   response:
     status:
       status_code: '400'
@@ -17,22 +17,23 @@ http_interactions:
       explanation: Bad request syntax or unsupported method
     headers:
       status: HTTP/1.1 400 Bad Request
-      date: Tue, 26 Feb 2019 17:33:59 GMT
+      date: Wed, 12 Feb 2020 22:54:59 GMT
       content-type: text/plain
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: no-cache, no-store, must-revalidate
-      x-varnish: '817695405'
+      x-varnish: '1038979450'
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       content-length: '48'
       connection: keep-alive
     body:
       encoding: UTF-8
+      file: no
       string: Cannot parse asia,oceania into a known Continent
-  recorded_at: 2019-02-26 17:33:59 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+  recorded_at: 2020-02-12 22:55:00 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search?decimalLatitude=334&limit=500&offset=0
@@ -42,8 +43,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
   response:
     status:
       status_code: '400'
@@ -51,19 +52,20 @@ http_interactions:
       explanation: Bad request syntax or unsupported method
     headers:
       status: HTTP/1.1 400 Bad Request
-      date: Tue, 26 Feb 2019 17:33:59 GMT
+      date: Wed, 12 Feb 2020 22:55:00 GMT
       content-type: text/plain
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: no-cache, no-store, must-revalidate
-      x-varnish: '830342494'
+      x-varnish: '625572'
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       content-length: '60'
       connection: keep-alive
     body:
       encoding: UTF-8
+      file: no
       string: 334 is not valid value, latitude must be between -90 and 90.
-  recorded_at: 2019-02-26 17:33:59 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+  recorded_at: 2020-02-12 22:55:00 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0

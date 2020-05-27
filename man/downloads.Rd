@@ -49,6 +49,7 @@ These numbers are subject to change.
 \item \code{\link[=occ_download]{occ_download()}} - Start a download
 \item \code{\link[=occ_download_prep]{occ_download_prep()}} - Prepare a download request
 \item \code{\link[=occ_download_queue]{occ_download_queue()}} - Start many downloads in a queue
+\item \code{\link[=occ_download_wait]{occ_download_wait()}} - Re-run \code{occ_download_meta()} until ready
 \item \code{\link[=occ_download_meta]{occ_download_meta()}} - Get metadata progress on a single download
 \item \code{\link[=occ_download_list]{occ_download_list()}} - List your downloads
 \item \code{\link[=occ_download_cancel]{occ_download_cancel()}} - Cancel a download
@@ -60,6 +61,10 @@ or \code{PREPARING}
 \item \code{\link[=occ_download_dataset_activity]{occ_download_dataset_activity()}} - Lists the downloads activity
 of a dataset
 }
+
+Download query composer methods:
+
+See \link{download_predicate_dsl}
 }
 
 \section{Query length}{
@@ -67,5 +72,21 @@ of a dataset
 GBIF has a limit of 12,000 characters for a download query. This means
 that you can have a pretty long query, but at some point it may lead to an
 error on GBIF's side and you'll have to split your query into a few.
+}
+
+\section{Download status}{
+
+The following statuses can be found with any download:
+\itemize{
+\item PREPARING: just submitted by user and awaiting processing (typically only
+a few seconds)
+\item RUNNING: being created (takes typically 1-15 minutes)
+\item FAILED: something unexpected went wrong
+\item KILLED: user decided to abort the job while it was in PREPARING or RUNNING
+phase
+\item SUCCEEDED: The download was created and the user was informed
+\item FILE_ERASED: The download was deleted according to the retention policy,
+see https://www.gbif.org/faq?question=for-how-long-will-does-gbif-store-downloads
+}
 }
 

@@ -1,7 +1,8 @@
 language: r
 cache: packages
+os: linux
 
-matrix: 
+jobs: 
   include:
     - r: oldrel
     - r: release

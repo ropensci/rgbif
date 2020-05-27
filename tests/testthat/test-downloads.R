@@ -25,9 +25,10 @@ test_that("GbifQueue works with occ_download inputs", {
   skip_on_cran()
 
   x <- GbifQueue$new(
-    occ_download('taxonKey = 3119195', "year = 1976"),
-    occ_download('taxonKey = 3119195', "year = 2001"),
-    occ_download('taxonKey = 3119195', "year = 2001", "month <= 8")
+    occ_download(pred('taxonKey', 3119195), pred("year", 1976)),
+    occ_download(pred('taxonKey', 3119195), pred("year", 2001)),
+    occ_download(pred('taxonKey', 3119195), pred("year", 2001),
+      pred_lte("month", 8))
   )
   
   expect_is(x, "GbifQueue")
@@ -51,16 +52,16 @@ test_that("GbifQueue works with occ_download_prep inputs", {
   skip_on_cran()
 
   z <- occ_download_prep(
-    "basisOfRecord = HUMAN_OBSERVATION,OBSERVATION",
-    "hasCoordinate = true",
-    "hasGeospatialIssue = false",
-    "year = 1993",
+    pred_in(key="basisOfRecord", value=c("HUMAN_OBSERVATION", "OBSERVATION")),
+    pred("hasCoordinate", TRUE),
+    pred("hasGeospatialIssue", FALSE),
+    pred("year", 1993),
     user = "foo", pwd = "bar", email = "foo@bar.com"
   )
   zz <- occ_download_prep(
-    "basisOfRecord = HUMAN_OBSERVATION",
-    "hasGeospatialIssue = true",
-    "year = 2003",
+    pred("basisOfRecord", "HUMAN_OBSERVATION"),
+    pred("hasGeospatialIssue", TRUE),
+    pred("year", 2003),
     user = "foo", pwd = "bar", email = "foo@bar.com"
   )
   x <- GbifQueue$new(.list = list(z, zz))
@@ -94,7 +95,7 @@ test_that("DownReq fails well", {
 test_that("DownReq works with occ_download_prep inputs", {
   skip_on_cran()
 
-  res <- DownReq$new(occ_download_prep("basisOfRecord = LITERATURE",
+  res <- DownReq$new(occ_download_prep(pred("basisOfRecord", "LITERATURE"),
     user = "foo", pwd = "bar", email = "foo@bar.com"))
 
   expect_is(res, "DownReq")
@@ -105,16 +106,17 @@ test_that("DownReq works with occ_download_prep inputs", {
   expect_error(res$status(), "run\\(\\) result is `NULL`, not checking status")
 })
 
-test_that("occ_download fails well when user does not give strings as inputs to ...", {
+test_that("occ_download fails well when user does not input predicates", {
   skip_on_cran()
 
   expect_error(
-    occ_download(taxonKey = 5039705, hasCoordinate = T, basisOfRecord = "Preserved_Specimen"),
-    "all inputs to `...` of occ_download must be character"
+    occ_download(taxonKey = 5039705, hasCoordinate = TRUE,
+      basisOfRecord = "Preserved_Specimen"),
+    "all inputs must be"
   )
   expect_error(
-    occ_download(taxonKey = 5039705, hasCoordinate = T, basisOfRecord = "Preserved_Specimen"),
-    "see examples; as an alternative, see the `body` param"
+    occ_download('taxonKey = 5039705'),
+    "all inputs must be"
   )
 })
 
@@ -122,7 +124,8 @@ test_that("occ_download fails well when user does not give strings as inputs to 
 test_that("type in works", {
   skip_on_cran()
 
-  z <- occ_download_prep("taxonKey = 2480946,5229208", type = "in", format = "SIMPLE_CSV")
+  z <- occ_download_prep(pred_in("taxonKey", c(2480946, 5229208)),
+    format = "SIMPLE_CSV")
 
   expect_is(z, "occ_download_prep")
   # list has names

@@ -40,3 +40,17 @@ occ_download_datasets(key="0003983-140910143529206", limit = 3)
 occ_download_datasets(key="0003983-140910143529206", limit = 3, start = 10)
 }
 }
+\seealso{
+Other downloads: 
+\code{\link{download_predicate_dsl}},
+\code{\link{occ_download_cancel}()},
+\code{\link{occ_download_dataset_activity}()},
+\code{\link{occ_download_get}()},
+\code{\link{occ_download_import}()},
+\code{\link{occ_download_list}()},
+\code{\link{occ_download_meta}()},
+\code{\link{occ_download_queue}()},
+\code{\link{occ_download_wait}()},
+\code{\link{occ_download}()}
+}
+\concept{downloads}

@@ -2,22 +2,21 @@
 
 |field    |value                                       |
 |:--------|:-------------------------------------------|
-|version  |R version 3.6.1 Patched (2019-09-23 r77210) |
-|os       |macOS Mojave 10.14.6                        |
+|version  |R version 3.6.3 Patched (2020-02-29 r77909) |
+|os       |macOS Catalina 10.15.3                      |
 |system   |x86_64, darwin15.6.0                        |
 |ui       |X11                                         |
 |language |(EN)                                        |
 |collate  |en_US.UTF-8                                 |
 |ctype    |en_US.UTF-8                                 |
 |tz       |US/Pacific                                  |
-|date     |2019-10-29                                  |
+|date     |2020-03-09                                  |
 
 # Dependencies
 
-|package |old   |new        |Δ  |
-|:-------|:-----|:----------|:--|
-|rgbif   |1.3.0 |1.4.0      |*  |
-|rlang   |NA    |0.4.1.9000 |*  |
+|package |old   |new   |Δ  |
+|:-------|:-----|:-----|:--|
+|rgbif   |2.1.0 |2.2.0 |*  |
 
 # Revdeps
 

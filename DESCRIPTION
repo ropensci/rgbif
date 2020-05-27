@@ -8,7 +8,7 @@ Description: A programmatic interface to the Web Service methods
     retrieving information on data providers, getting species occurrence
     records, getting counts of occurrence records, and using the 'GBIF'
     tile map service to make 'rasters' summarizing huge amounts of data.
-Version: 1.4.1.996
+Version: 2.2.1.91
 License: MIT + file LICENSE
 Authors@R: c(
     person("Scott", "Chamberlain", role = c("aut", "cre"), email = "myrmecocystus@gmail.com",
@@ -46,14 +46,16 @@ Imports:
 Suggests:
     testthat,
     knitr,
+    rmarkdown,
     sp,
     rgeos,
     png,
     raster,
     protolite (>= 2.0),
     sf,
-    vcr
-RoxygenNote: 7.0.2
+    randgeo,
+    vcr (>= 0.5.0)
+RoxygenNote: 7.1.0
 X-schema.org-applicationCategory: Biodiversity
 X-schema.org-keywords: GBIF, specimens, API, web-services, occurrences, species, taxonomy
 X-schema.org-isPartOf: https://ropensci.org

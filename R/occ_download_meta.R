@@ -6,7 +6,11 @@
 #' \code{occ_download}
 #' @template occ
 #' @note see [downloads] for an overview of GBIF downloads methods
-#'
+#' @return an object of class `occ_download_meta`, a list with slots for
+#' the download key, the DOI assigned to the download, license link,
+#' the request details you sent in the `occ_download()` request,
+#' and metadata about the size and date/time of the request
+#' @family downloads
 #' @examples \dontrun{
 #' occ_download_meta(key="0003983-140910143529206")
 #' occ_download_meta("0000066-140928181241064")
@@ -14,6 +18,7 @@
 
 occ_download_meta <- function(key, curlopts = list()) {
   stopifnot(!is.null(key))
+  stopifnot(inherits(key, c("character", "occ_download")))
   url <- sprintf('%s/occurrence/download/%s', gbif_base(), key)
   cli <- crul::HttpClient$new(url = url, headers = rgbif_ual, opts = curlopts)
   tmp <- cli$get()
@@ -58,16 +63,23 @@ gbif_make_list <- function(y){
                            pc("\n        predicates: ", pc(stt)),
                            collapse = ", ")
       } else {
+        gg <- if ("geometry" %in% names(tmp)) {
+          tmp$geometry
+        } else {
+          zz <- tmp$value %||% tmp$values
+          if (!is.null(zz)) paste(zz, collapse = ",") else zz
+        }
         out[[i]] <- sprintf(
           "\n      > type: %s, key: %s, value(s): %s",
           tmp$type,
           if ("geometry" %in% names(tmp)) "geometry" else tmp$key,
-          if ("geometry" %in% names(tmp)) {
-            tmp$geometry 
-          } else {
-            zz <- tmp$value %||% tmp$values
-            if (!is.null(zz)) paste(zz, collapse = ",") else zz
-          }
+          sub_str(gg, 60)
+          # if ("geometry" %in% names(tmp)) {
+          #   tmp$geometry
+          # } else {
+          #   zz <- tmp$value %||% tmp$values
+          #   if (!is.null(zz)) paste(zz, collapse = ",") else zz
+          # }
         )
       }
     }

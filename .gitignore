@@ -14,3 +14,4 @@ revdep/library
 gbifissues.txt
 *.Rproj
 inst/ignore/mvt-test.R
+rgbif_dependencies.md

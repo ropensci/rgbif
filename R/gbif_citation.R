@@ -1,7 +1,7 @@
 #' Get citation for datasets used
 #'
 #' @export
-#' @param x (character) Result of call to [occ_search()],
+#' @param x (character) Result of call to [occ_search()], [occ_data()],
 #' [occ_download_get()], [occ_download_meta()], a dataset key, or occurrence key
 #' (character or numeric)
 #' @return list with S3 class assigned, used by a print method to pretty print
@@ -45,6 +45,10 @@
 #' # res3 <- occ_search(taxonKey=9206251, fields=c('name','basisOfRecord','
 #' #    protocol'), limit=20)
 #' # (xx <- gbif_citation(res3))
+#' 
+#' # occ_data
+#' res1 <- occ_data(taxonKey=9206251, limit=2)
+#' (xx <- gbif_citation(res1))
 #'
 #' # character class inputs
 #' ## pass in a dataset key
@@ -57,10 +61,9 @@
 #'
 #' # Downloads
 #' ## occ_download_get()
-#' # d1 <- occ_download("country = BG", "year <= 2011")
-#' # key <- "0000122-171020152545675"
-#' # occ_download_meta(key)
-#' # d1 <- occ_download_get(key, overwrite = TRUE)
+#' # d1 <- occ_download(pred("country", "BG"), pred("year", 2011, "<="))
+#' # occ_download_meta(d1) # wait until status = succeeded
+#' # d1 <- occ_download_get(d1, overwrite = TRUE)
 #' # gbif_citation(d1)
 #'
 #' ## occ_download_meta()
@@ -101,6 +104,9 @@ gbif_citation.gbif <- function(x) {
               class = "gbif_citation")
   })
 }
+
+#' @export
+gbif_citation.gbif_data <- gbif_citation.gbif
 
 #' @export
 gbif_citation.character <- function(x) {

@@ -2,9 +2,10 @@
 #'
 #' @export
 #'
-#' @param ... One or more of query arguments to kick of a download job.
-#' If you use this, don't use `body` parameter. All inputs must be
-#' character strings. See Details.
+#' @param ... For `occ_download()` and `occ_download_prep()`, one or more
+#' objects of class `occ_predicate` or `occ_predicate_list`, created by
+#' `pred*` functions (see [download_predicate_dsl]). If you use this, don't
+#' use `body` parameter.
 #' @param body if you prefer to pass in the payload yourself, use this
 #' parameter. if use this, don't pass anythig to the dots. accepts
 #' either an R list, or JSON. JSON is likely easier, since the JSON
@@ -13,18 +14,18 @@
 #' optional
 #' @param type (character) One of equals (=), and (&), or (|), lessThan (<),
 #' lessThanOrEquals (<=), greaterThan (>), greaterThanOrEquals (>=), in,
-#' within, not (!), like
-#' @param format (character) The download format. One of DWCA (default),
-#' SIMPLE_CSV, or SPECIES_LIST
+#' within, not (!), like, isNotNull
+#' @param format (character) The download format. One of 'DWCA' (default),
+#' 'SIMPLE_CSV', or 'SPECIES_LIST'
 #' @param user (character) User name within GBIF's website. Required. See
-#' Details.
+#' "Authentication" below
 #' @param pwd (character) User password within GBIF's website. Required. See
-#' Details.
+#' "Authentication" below
 #' @param email (character) Email address to recieve download notice done
-#' email. Required. See Details.
+#' email. Required. See "Authentication" below
 #' @template occ
 #' @note see [downloads] for an overview of GBIF downloads methods
-#'
+#' @family downloads
 #' @section geometry:
 #' When using the geometry parameter, make sure that your well known text
 #' (WKT) is formatted as GBIF expects it. They expect WKT to have a
@@ -66,63 +67,6 @@
 #'
 #' See `?Startup` for help.
 #'
-#' @details Argument passed have to be passed as character (e.g.,
-#' 'country = US'), with a space between key ('country'), operator ('='),
-#' and value ('US'). See the `type` parameter for possible options for
-#' the operator.  This character string is parsed internally.
-#'
-#' The value can be comma separated, in which case we'll turn that into a
-#' predicate combined with the OR operator, for example,
-#' `"taxonKey = 2480946,5229208"` will turn into
-#'
-#' ```
-#' '{
-#'    "type": "or",
-#'    "predicates": [
-#'      {
-#'       "type": "equals",
-#'       "key": "TAXON_KEY",
-#'       "value": "2480946"
-#'      },
-#'      {
-#'       "type": "equals",
-#'       "key": "TAXON_KEY",
-#'       "value": "5229208"
-#'      }
-#'    ]
-#' }'
-#' ```
-#'
-#' Acceptable arguments to `...` are:
-#' \itemize{
-#'  \item taxonKey = 'TAXON_KEY'
-#'  \item scientificName = 'SCIENTIFIC_NAME'
-#'  \item country = 'COUNTRY'
-#'  \item publishingCountry = 'PUBLISHING_COUNTRY'
-#'  \item hasCoordinate = 'HAS_COORDINATE'
-#'  \item hasGeospatialIssue = 'HAS_GEOSPATIAL_ISSUE'
-#'  \item typeStatus = 'TYPE_STATUS'
-#'  \item recordNumber = 'RECORD_NUMBER'
-#'  \item lastInterpreted = 'LAST_INTERPRETED'
-#'  \item continent = 'CONTINENT'
-#'  \item geometry = 'GEOMETRY'
-#'  \item basisOfRecord = 'BASIS_OF_RECORD'
-#'  \item datasetKey = 'DATASET_KEY'
-#'  \item eventDate = 'EVENT_DATE'
-#'  \item catalogNumber = 'CATALOG_NUMBER'
-#'  \item year = 'YEAR'
-#'  \item month = 'MONTH'
-#'  \item decimalLatitude = 'DECIMAL_LATITUDE'
-#'  \item decimalLongitude = 'DECIMAL_LONGITUDE'
-#'  \item elevation = 'ELEVATION'
-#'  \item depth = 'DEPTH'
-#'  \item institutionCode = 'INSTITUTION_CODE'
-#'  \item collectionCode = 'COLLECTION_CODE'
-#'  \item issue = 'ISSUE'
-#'  \item mediatype = 'MEDIA_TYPE'
-#'  \item recordedBy = 'RECORDED_BY'
-#' }
-#'
 #' @section Query length:
 #' GBIF has a limit of 12,000 characters for a download query. This means
 #' that you can have a pretty long query, but at some point it may lead to an
@@ -134,39 +78,44 @@
 #' <http://www.gbif.org/developer/occurrence#predicates>
 #'
 #' @examples \dontrun{
-#' # occ_download("basisOfRecord = LITERATURE")
-#' # occ_download('taxonKey = 3119195')
-#' # occ_download('decimalLatitude > 50')
-#' # occ_download('elevation >= 9000')
-#' # occ_download('decimalLatitude >= 65')
-#' # occ_download("country = US")
-#' # occ_download("institutionCode = TLMF")
-#' # occ_download("catalogNumber = Bird.27847588")
+#' # occ_download(pred("basisOfRecord", "LITERATURE"))
+#' # occ_download(pred("taxonKey", 3119195), pred_gt("elevation", 5000))
+#' # occ_download(pred_gt("decimalLatitude", 50)
+#' # occ_download(pred_gte("elevation", 9000)
+#' # occ_download(pred_gte('decimalLatitude", 65)
+#' # occ_download(pred("country", "US")
+#' # occ_download(pred("institutionCode", "TLMF"))
+#' # occ_download(pred("catalogNumber", 217880))
 #' 
 #' # download format
-#' # z <- occ_download('decimalLatitude >= 75', format = "SPECIES_LIST")
+#' # z <- occ_download(pred_gte("decimalLatitude", 75),
+#' #  format = "SPECIES_LIST")
 #'
-#' # res <- occ_download('taxonKey = 7264332', 'hasCoordinate = TRUE')
+#' # res <- occ_download(pred("taxonKey", 7264332), pred("hasCoordinate", TRUE))
 #'
 #' # pass output directly, or later, to occ_download_meta for more information
-#' # occ_download('decimalLatitude > 75') %>% occ_download_meta
+#' # occ_download(pred_gt('decimalLatitude', 75)) %>% occ_download_meta
 #'
 #' # Multiple queries
-#' # occ_download('decimalLatitude >= 65', 'decimalLatitude <= -65', type="or")
-#' # gg <- occ_download('depth = 80', 'taxonKey = 2343454', type="or")
+#' # occ_download(pred_gte("decimalLatitude", 65),
+#' #  pred_lte("decimalLatitude", -65), type="or")
+#' # gg <- occ_download(pred("depth", 80), pred("taxonKey", 2343454),
+#' #  type="or")
+#' # x <- occ_download(pred_and(pred_within("POLYGON((-14 42, 9 38, -7 26, -14 42))"),
+#' #  pred_gte("elevation", 5000)))
 #'
 #' # complex example with many predicates
 #' # shows example of how to do date ranges for both year and month
 #' # res <- occ_download(
-#' #  "taxonKey = 2480946,5229208",
-#' #  "basisOfRecord = HUMAN_OBSERVATION,OBSERVATION,MACHINE_OBSERVATION",
-#' #  "country = US",
-#' #  "hasCoordinate = true",
-#' #  "hasGeospatialIssue = false",
-#' #  "year >= 1999",
-#' #  "year <= 2011",
-#' #  "month >= 3",
-#' #  "month <= 8"
+#' #  pred_gt("elevation", 5000),
+#' #  pred_in("basisOfRecord", c('HUMAN_OBSERVATION','OBSERVATION','MACHINE_OBSERVATION')),
+#' #  pred("country", "US"),
+#' #  pred("hasCoordinate", TRUE),
+#' #  pred("hasGeospatialIssue", FALSE),
+#' #  pred_gte("year", 1999),
+#' #  pred_lte("year", 2011),
+#' #  pred_gte("month", 3),
+#' #  pred_lte("month", 8)
 #' # )
 #'
 #' # Using body parameter - pass in your own complete query
@@ -197,10 +146,35 @@
 #' # res <- occ_download(body = query, curlopts = list(verbose = TRUE))
 #'
 #' # Prepared query
-#' occ_download_prep("basisOfRecord = LITERATURE")
-#' occ_download_prep("catalogNumber = Bird.27847588", "year = 1978", "month = 5")
-#' occ_download_prep("basisOfRecord = LITERATURE", format = "SIMPLE_CSV")
-#' occ_download_prep("basisOfRecord = LITERATURE", format = "SPECIES_LIST")
+#' occ_download_prep(pred("basisOfRecord", "LITERATURE"))
+#' occ_download_prep(pred("basisOfRecord", "LITERATURE"), format = "SIMPLE_CSV")
+#' occ_download_prep(pred("basisOfRecord", "LITERATURE"), format = "SPECIES_LIST")
+#' occ_download_prep(pred_in("taxonKey", c(2977832, 2977901, 2977966, 2977835)))
+#' occ_download_prep(pred_within("POLYGON((-14 42, 9 38, -7 26, -14 42))"))
+#' 
+#' ## a complicated example
+#' occ_download_prep(
+#'   pred_in("basisOfRecord", c("MACHINE_OBSERVATION", "HUMAN_OBSERVATION")),
+#'   pred_in("taxonKey", c(2498343, 2481776, 2481890)),
+#'   pred_in("country", c("GB", "IE")),
+#'   pred_or(pred_lte("year", 1989), pred("year", 2000))
+#' )
+#' 
+#' # x = occ_download(
+#' #   pred_in("basisOfRecord", c("MACHINE_OBSERVATION", "HUMAN_OBSERVATION")),
+#' #   pred_in("taxonKey", c(9206251, 3112648)),
+#' #   pred_in("country", c("US", "MX")),
+#' #   pred_and(pred_gte("year", 1989), pred_lte("year", 1991))
+#' # )
+#' # occ_download_meta(x)
+#' # z <- occ_download_get(x)
+#' # df <- occ_download_import(z)
+#' # str(df)
+#' # library(dplyr)
+#' # unique(df$basisOfRecord)
+#' # unique(df$taxonKey)
+#' # unique(df$countryCode)
+#' # sort(unique(df$year))
 #' }
 occ_download <- function(..., body = NULL, type = "and", format = "DWCA",
   user = NULL, pwd = NULL, email = NULL, curlopts = list()) {
@@ -232,13 +206,32 @@ occ_download_prep <- function(..., body = NULL, type = "and", format = "DWCA",
   if (!is.null(body)) {
     req <- body
   } else {
-    req <- parse_occd(user, email, type, format, ...)
+    req <- parse_predicates(user, email, type, format, ...)
   }
   structure(list(url = url, request = req, user = user, pwd = pwd,
     email = email, format = format, curlopts = curlopts),
-  class = "occ_download_prep")
+    class = "occ_download_prep")
 }
 
+#' @export
+print.occ_download <- function(x, ...) {
+  stopifnot(inherits(x, 'occ_download'))
+  cat("<<gbif download>>", "\n", sep = "")
+  cat("  Username: ", attr(x, "user"), "\n", sep = "")
+  cat("  E-mail: ", attr(x, "email"), "\n", sep = "")
+  cat("  Format: ", attr(x, "format"), "\n", sep = "")
+  cat("  Download key: ", x, "\n", sep = "")
+}
+#' @export
+print.occ_download_prep <- function(x, ...) {
+  cat("<<gbif download - prepared>>", "\n", sep = "")
+  cat("  Username: ", x$user, "\n", sep = "")
+  cat("  E-mail: ", x$email, "\n", sep = "")
+  cat("  Format: ", x$format, "\n", sep = "")
+  cat("  Request: ", gbif_make_list(x$request), "\n", sep = "")
+}
+
+# helpers -------------------------------------------
 occ_download_exec <- function(x) {
   assert(x, "occ_download_prep")
   out <- rg_POST(x$url, req = x$req, user = x$user, pwd = x$pwd, x$curlopts)
@@ -273,64 +266,6 @@ check_inputs <- function(x) {
   }
 }
 
-parse_occd <- function(user, email, type, format, ...) {
-  args <- list(...)
-  keyval <- lapply(args, parse_args, type1 = type)
-
-  if (length(keyval) > 1 ||
-    length(keyval) == 1 && "predicates" %in% names(keyval[[1]])
-  ) {
-    list(creator = unbox(user),
-         notification_address = email,
-         format = unbox(format),
-         predicate = list(
-           type = unbox(type),
-           predicates = {
-             lapply(keyval, function(z) {
-               if (z$type == "within" && z$key == "GEOMETRY") {
-                 z$key <- NULL
-                 names(z)[2] <- "geometry"
-                 z
-               } else {
-                 z
-               }
-             })
-           }
-         )
-    )
-  } else {
-    if (type == "within" || "within" %in% sapply(keyval, "[[", "type")) {
-      tmp <- list(creator = unbox(user),
-                  notification_address = email,
-                  format = unbox(format),
-                  predicate = list(
-                    type = keyval[[1]]$type,
-                    value = keyval[[1]]$value
-                  )
-      )
-      names(tmp$predicate)[2] <- tolower(keyval[[1]]$key)
-      tmp
-    } else if (type == "in") {
-      list(
-        creator = unbox(user),
-        notification_address = email,
-        format = unbox(format),
-        predicate = keyval[[1]]
-      )
-    } else {
-      list(creator = unbox(user),
-           notification_address = email,
-           format = unbox(format),
-           predicate = list(
-             type = keyval[[1]]$type,
-             key = keyval[[1]]$key,
-             value = keyval[[1]]$value
-           )
-      )
-    }
-  }
-}
-
 rg_POST <- function(url, req, user, pwd, curlopts) {
   cli <- crul::HttpClient$new(url = url, opts = c(
     curlopts, httpauth = 1, userpwd = paste0(user, ":", pwd)),
@@ -354,90 +289,3 @@ catch_err <- function(x) {
     sprintf("%s - %s", sthp$status_code, sthp$message)
   }
 }
-
-process_keyval <- function(args, type) {
-  out <- list()
-  for (i in seq_along(args)) {
-    out[[i]] <- list(type = unbox(type), key = unbox(names(args[i])),
-                     value = unbox(args[[i]]))
-  }
-  out
-}
-
-#' @export
-print.occ_download <- function(x, ...) {
-  stopifnot(inherits(x, 'occ_download'))
-  cat("<<gbif download>>", "\n", sep = "")
-  cat("  Username: ", attr(x, "user"), "\n", sep = "")
-  cat("  E-mail: ", attr(x, "email"), "\n", sep = "")
-  cat("  Format: ", attr(x, "format"), "\n", sep = "")
-  cat("  Download key: ", x, "\n", sep = "")
-}
-
-#' @export
-print.occ_download_prep <- function(x, ...) {
-  cat("<<gbif download - prepared>>", "\n", sep = "")
-  cat("  Username: ", x$user, "\n", sep = "")
-  cat("  E-mail: ", x$email, "\n", sep = "")
-  cat("  Format: ", x$format, "\n", sep = "")
-  cat("  Request: ", gbif_make_list(x$request), "\n", sep = "")
-}
-
-parse_args <- function(x, type1 = "and") {
-  if (
-    !all(vapply(x, is.character, logical(1))) ||
-    length(x) > 1
-  ) {
-    stop("all inputs to `...` of occ_download must be character & length=1\n",
-      "  see examples; as an alternative, see the `body` param",
-      call. = FALSE)
-  }
-  key <- key_lkup[[ strextract(x, "[A-Za-z]+") ]]
-  type <- operator_lkup[[ strtrim(strextract(x, paste0(operators_regex,
-                                                       collapse = "|"))) ]]
-  loc <- regexpr(paste0(operators_regex, collapse = "|"), x)
-  value <- strtrim(
-    substring(x, loc + attr(loc, "match.length"), nchar(x))
-  )
-  if (
-    grepl(",", value) &&
-    !grepl("polygon|multipolygon|linestring|multilinestring|point|mulitpoint",
-           value, ignore.case = TRUE) &&
-    type1 != "in"
-  ) {
-    value <- strsplit(value, ",")[[1]]
-    out <- list(
-      type = unbox("or"), predicates = lapply(value, function(z) {
-        list(type = unbox("equals"), key = unbox(key), value = unbox(z))
-      })
-    )
-    return(out)
-  }
-  if (type1 == "in") {
-    list(type = unbox("in"), key = unbox(key), values = strsplit(value, ",")[[1]])
-  } else {
-    list(type = unbox(type), key = unbox(key), value = unbox(value))
-  }
-}
-
-operators_regex <- c("=", "\\&", "<", "<=", ">", ">=", "\\!", "\\sin\\s",
-                     "\\swithin\\s", "\\slike\\s", "\\|")
-
-operator_lkup <- list(`=` = 'equals', `&` = 'and', `|` = 'or',
-                      `<` = 'lessThan', `<=` = 'lessThanOrEquals',
-                      `>` = 'greaterThan', `>=` = 'greaterThanOrEquals',
-                      `!` = 'not', 'in' = 'in', 'within' = 'within',
-                      'like' = 'like')
-
-key_lkup <- list(taxonKey='TAXON_KEY', scientificName='SCIENTIFIC_NAME',
-    country='COUNTRY', publishingCountry='PUBLISHING_COUNTRY',
-    hasCoordinate='HAS_COORDINATE', hasGeospatialIssue='HAS_GEOSPATIAL_ISSUE',
-    typeStatus='TYPE_STATUS', recordNumber='RECORD_NUMBER',
-    lastInterpreted='LAST_INTERPRETED', continent='CONTINENT',
-    geometry='GEOMETRY',
-    basisOfRecord='BASIS_OF_RECORD', datasetKey='DATASET_KEY',
-    eventDate='EVENT_DATE', catalogNumber='CATALOG_NUMBER', year='YEAR',
-    month='MONTH', decimalLatitude='DECIMAL_LATITUDE',
-    decimalLongitude='DECIMAL_LONGITUDE', elevation='ELEVATION', depth='DEPTH',
-    institutionCode='INSTITUTION_CODE', collectionCode='COLLECTION_CODE',
-    issue='ISSUE', mediatype='MEDIA_TYPE', recordedBy='RECORDED_BY')

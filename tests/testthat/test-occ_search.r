@@ -4,6 +4,7 @@ key <- 3118771
 
 # Search by key
 test_that("returns the correct class", {
+  skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_search", {
     tt <- occ_search(taxonKey=key, limit=2)
     uu <- occ_search(taxonKey=key, limit=20)
@@ -38,6 +39,7 @@ test_that("returns the correct class", {
 
 # Search by dataset key
 test_that("returns the correct dimensions", {
+  skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_search_datasetkey", {
     out <- occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a',
                       return='data')
@@ -70,6 +72,7 @@ test_that("returns the correct class", {
 
 # Occurrence data: lat/long data, and associated metadata with occurrences
 test_that("returns the correct class", {
+  skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_search_taxonkey", {
     out <- occ_search(taxonKey=key, return='data')
   }, preserve_exact_body_bytes = TRUE)
@@ -104,6 +107,7 @@ test_that("returns the correct class", {
 
 ######### Get occurrences for a particular eventDate
 test_that("dates work correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_search_eventdate", {
     a <- occ_search(taxonKey=3189815, year="2013", fields=c('name','year'))
     b <- occ_search(taxonKey=3189815, month="6", fields=c('name','month'))
@@ -146,6 +150,7 @@ test_that("returns the correct dimensions", {
 
 # test that looping is working correctly
 test_that("looping works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_search_looping_works", {
     it <- seq(from = 0, to = 500, by = 250)
     out <- list()
@@ -177,7 +182,7 @@ test_that("scientificName basic use works - no synonyms", {
 
   expect_equal(attr(bb, "args")$scientificName, "Pulsatilla patens")
   expect_equal(bb$data$species[1], "Pulsatilla patens")
-  bb_sc_nam <- "Anemone patens subsp. multifida (Pritzel) Hult\u00e9n"
+  bb_sc_nam <- "Pulsatilla nuttalliana (DC.) Spreng."
   expect_equal(bb$data$scientificName[1],
                bb_sc_nam)
 
@@ -221,6 +226,8 @@ test_that("scientificName basic use works - no synonyms", {
 
 ######### geometry inputs work as expected
 test_that("geometry inputs work as expected", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  
   ## internally convert WKT string to a bounding box
   wkt <- "POLYGON((13.26349675655365 52.53991761181831,18.36115300655365 54.11445544219924,
   21.87677800655365 53.80418956368524,24.68927800655365 54.217364774722455,28.20490300655365
@@ -283,27 +290,15 @@ test_that("geometry inputs work as expected", {
     gg <- occ_search(geometry = wkt, geom_big = "axe", geom_size = 30, limit = 5)
 
     # bad wkt is caught and handled appropriately
-    expect_error(
-      occ_search(geometry = badwkt1),
-      "Invalid simple WKT"
-      # "source type value could not be interpreted as target at 'a'"
-    )
+    expect_error(occ_search(geometry = badwkt1))
 
     # badwkt2 <- "POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 '10.1'))"
     badwkt2 <- "POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 '10.1'))"
-    expect_error(
-      occ_search(geometry = badwkt2),
-      "Invalid simple WKT"
-      # "source type value could not be interpreted as target at ''10.1''"
-    )
+    expect_error(occ_search(geometry = badwkt2))
 
     # badwkt3 <- "POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1)"
     badwkt3 <- "POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1)"
-    expect_error(
-      occ_search(geometry = badwkt3),
-      "Invalid simple WKT"
-      # "Expected ')' in "
-    )
+    expect_error(occ_search(geometry = badwkt3))
 
     badwkt4 <- "CIRCULARSTRING(1 5, 6 2, 7 3)"
     expect_error(
@@ -334,29 +329,6 @@ test_that("geometry inputs work as expected", {
   expect_gt(length(names(gg)), length(names(ee)))
 })
 
-
-######### spell check works
-test_that("spell check param works", {
-  vcr::use_cassette("occ_search_spell_check", {
-    # as normal
-    expect_is(
-      occ_search(search = "kingfisher", limit=1, spellCheck = TRUE),
-      "gbif"
-    )
-
-    # spelled incorrectly - stops with suggested spelling
-    expect_error(
-      occ_search(search = "kajsdkla", limit=20, spellCheck = TRUE),
-      "spelling bad - suggestions"
-    )
-
-    # spelled incorrectly - stops with many suggested spellings and number of results for each
-    expect_error(
-      occ_search(search = "helir", limit=20, spellCheck = TRUE),
-      "spelling bad - suggestions"
-    )
-  })
-})
 
 # many args
 test_that("works with parameters that allow many inputs", {

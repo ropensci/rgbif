@@ -46,7 +46,6 @@ test_that("returns the correct class", {
   expect_equal(dim(uu), c(7, 3))
   expect_equal(dim(vv), NULL)
   expect_equal(dim(vv[[1]]), c(7, 3))
-  expect_equal(length(vv[[2]]), 0)
 
   expect_equal(dim(aa), c(1, 4))
   expect_equal(dim(cc), c(2, 3))
@@ -89,13 +88,4 @@ test_that("works w/: verbatim=TRUE, fields all, & return extensions data", {
   expect_is(dd, "data.frame")
   expect_equal(NROW(dd), 1)
   expect_false(any(grepl("extensions", names(dd))))
-})
-
-# per issue #349
-test_that("key and gbifID fields are character class", {
-  vcr::use_cassette("occ_search_key_gbifid_character_class", {
-    aa <- occ_search(taxonKey = 9206251, limit = 3)
-  })
-  expect_is(aa$data$key, "character")
-  expect_is(aa$data$gbifID, "character")
 })

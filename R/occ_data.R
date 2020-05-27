@@ -12,6 +12,8 @@
 #' hierarchies and media (e.g., images). Alot of time in [occ_search()]
 #' is used parsing data to be more useable downstream. We do less of that
 #' in this function.
+#' @note Maximum number of records you can get with this function is 100,000.
+#' See https://www.gbif.org/developer/occurrence
 #' @return An object of class `gbif_data`, which is a S3 class list, with
 #' slots for metadata (`meta`) and the occurrence data itself
 #' (`data`), and with attributes listing the user supplied arguments
@@ -24,9 +26,9 @@ occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
   publishingCountry=NULL, hasCoordinate=NULL, typeStatus=NULL,
   recordNumber=NULL,
   lastInterpreted=NULL, continent=NULL, geometry=NULL, geom_big="asis",
-  geom_size=40, geom_n=10, recordedBy=NULL, basisOfRecord=NULL,
-  datasetKey=NULL, eventDate=NULL, catalogNumber=NULL, year=NULL, month=NULL,
-  decimalLatitude=NULL,
+  geom_size=40, geom_n=10, recordedBy=NULL, recordedByID=NULL,
+  identifiedByID=NULL, basisOfRecord=NULL, datasetKey=NULL, eventDate=NULL,
+  catalogNumber=NULL, year=NULL, month=NULL, decimalLatitude=NULL,
   decimalLongitude=NULL, elevation=NULL, depth=NULL, institutionCode=NULL,
   collectionCode=NULL, hasGeospatialIssue=NULL, issue=NULL, search=NULL,
   mediaType=NULL, subgenusKey = NULL, repatriated = NULL, phylumKey = NULL,
@@ -34,7 +36,7 @@ occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
   genusKey = NULL, establishmentMeans = NULL, protocol = NULL, license = NULL,
   organismId = NULL, publishingOrg = NULL, stateProvince = NULL,
   waterBody = NULL, locality = NULL, limit=500, start=0,
-  spellCheck = NULL, skip_validate = TRUE, curlopts = list()) {
+  skip_validate = TRUE, curlopts = list()) {
 
   geometry <- geometry_handler(geometry, geom_big, geom_size, geom_n)
 
@@ -64,7 +66,7 @@ occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
         depth = depth,
         limit = check_limit(as.integer(limit)), eventDate = eventDate,
         month = month, year = year,
-        offset = check_limit(as.integer(start)), spellCheck = spellCheck
+        offset = check_limit(as.integer(start))
       )
     )
     args <- c(
@@ -73,7 +75,8 @@ occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
       convmany(taxonKey), convmany(scientificName), convmany(country),
       convmany(publishingCountry), convmany(datasetKey),
       convmany(typeStatus), convmany(recordNumber), convmany(continent),
-      convmany(recordedBy), convmany(catalogNumber), convmany(institutionCode),
+      convmany(recordedBy), convmany(recordedByID), convmany(identifiedByID),
+      convmany(catalogNumber), convmany(institutionCode),
       convmany(collectionCode), convmany(geometry), convmany(mediaType),
       convmany(subgenusKey), convmany(phylumKey), convmany(kingdomKey),
       convmany(classKey), convmany(orderKey), convmany(familyKey),
@@ -131,7 +134,8 @@ occ_data <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
 
   params <- list(
     taxonKey=taxonKey,scientificName=scientificName,datasetKey=datasetKey,
-    catalogNumber=catalogNumber, recordedBy=recordedBy,geometry=geometry,
+    catalogNumber=catalogNumber, recordedBy=recordedBy, recordedByID=recordedByID,
+    identifiedByID=identifiedByID, geometry=geometry,
     country=country, publishingCountry=publishingCountry,
     recordNumber=recordNumber, q=search,institutionCode=institutionCode,
     collectionCode=collectionCode,continent=continent,

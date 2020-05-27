@@ -1,7 +1,7 @@
 ## Test environments
 
-* local OS X install, R 3.6.1
-* ubuntu 14.04 (on travis-ci), R 3.6.1
+* local OS X install, R 3.6.3
+* ubuntu 16.04 (on travis-ci), R 3.6.2
 * win-builder (devel and release)
 
 ## R CMD check results
@@ -14,7 +14,7 @@
 
 --------
 
-This version overhauls some data quality functionality and fixes many bugs.
+This version fixes a bug, fixes a broken test on CRAN checks, and improves documentation.
 
 Thanks!
 Scott Chamberlain

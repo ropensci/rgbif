@@ -16,13 +16,19 @@
 \item \code{\link[=taxoncount]{taxoncount()}}: service no longer provided
 \item \code{\link[=taxonget]{taxonget()}}: service no longer provided
 \item \code{\link[=taxonsearch]{taxonsearch()}}: service no longer provided
-\item \code{\link[=stylegeojson]{stylegeojson()}}: moving this functionality to spocc package, will be removed soon
-\item \code{\link[=togeojson]{togeojson()}}: moving this functionality to spocc package, will be removed soon
-\item \code{\link[=gist]{gist()}}: moving this functionality to spocc package, will be removed soon
+\item \code{\link[=stylegeojson]{stylegeojson()}}: moving this functionality to spocc package, will be
+removed soon
+\item \code{\link[=togeojson]{togeojson()}}: moving this functionality to spocc package, will be
+removed soon
+\item \code{\link[=gist]{gist()}}: moving this functionality to spocc package, will be
+removed soon
+\item \code{\link[=occ_spellcheck]{occ_spellcheck()}}: GBIF has removed the \code{spellCheck} parameter
+from their API
 }
 }
 \details{
-The above functions have been removed. See \url{https://github.com/ropensci/rgbif} and poke
-around the code if you want to find the old functions in previous versions of the package, or
+The above functions have been removed. See
+\url{https://github.com/ropensci/rgbif} and poke around the code if you
+want to find the old functions in previous versions of the package, or
 email Scott at \email{myrmecocystus@gmail.com}
 }

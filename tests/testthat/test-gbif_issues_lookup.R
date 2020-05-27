@@ -12,6 +12,8 @@ test_that("check expected return from gbif_issues_lookup", {
   ff <- gbif_issues_lookup(code = 'cdiv')
   gg <- gbif_issues_lookup(code = 'bbmn')
   hh <- gbif_issues_lookup(code = 'rankinv')
+  ii <- gbif_issues_lookup(issue = 'COORDINATE_PRECISION_INVALID')
+  jj <- gbif_issues_lookup(issue = 'COORDINATE_UNCERTAINTY_METERS_INVALID')
 
   expect_is(aa, "data.frame")
   expect_is(bb, "data.frame")
@@ -46,12 +48,12 @@ test_that("gbif_issues_lookup fails correctly", {
           "'BACKBONE_MATCH_NONE' and code 'bbmn' at the same time.")
   )
   expect_error(gbif_issues_lookup(issue = "bad_issue_name"),
-               paste0("Issue 'bad_issue_name' doesn't exists. ",
+               paste0("Issue 'bad_issue_name' doesn't exist. ",
                       "Type gbif_issues() for table with all possible issues."),
                fixed = TRUE
   )
   expect_error(gbif_issues_lookup(code = "bad"),
-               paste("Issue code 'bad' doesn't exists.",
+               paste("Issue code 'bad' doesn't exist.",
                      "Type gbif_issues() for table",
                      "with all possible issue codes."),
                fixed = TRUE

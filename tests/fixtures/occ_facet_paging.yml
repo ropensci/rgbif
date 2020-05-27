@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
-      X-USER-AGENT: r-curl/3.3 crul/0.7.0 rOpenSci(rgbif/1.2.0)
+      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
   response:
     status:
       status_code: '200'
@@ -17,20 +17,21 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 26 Feb 2019 17:24:02 GMT
+      date: Wed, 12 Feb 2020 22:59:53 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=600
-      x-varnish: 844202406 766318073
-      age: '0'
+      x-varnish: 11993096 1048087546
+      age: '183'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
-      content-length: '618'
+      content-length: '621'
       connection: keep-alive
     body:
       encoding: UTF-8
-      string: '{"offset":0,"limit":0,"endOfRecords":false,"count":1083069575,"results":[],"facets":[{"field":"COUNTRY","counts":[{"name":"US","count":327138198},{"name":"SE","count":80197935},{"name":"AU","count":73759906}]},{"field":"BASIS_OF_RECORD","counts":[{"name":"HUMAN_OBSERVATION","count":857011897},{"name":"PRESERVED_SPECIMEN","count":158980395},{"name":"OBSERVATION","count":19652932},{"name":"UNKNOWN","count":17133616},{"name":"MACHINE_OBSERVATION","count":11179076},{"name":"FOSSIL_SPECIMEN","count":9123842}]},{"field":"HAS_COORDINATE","counts":[{"name":"true","count":996291793},{"name":"false","count":86777782}]}]}'
-  recorded_at: 2019-02-26 17:24:04 GMT
-  recorded_with: vcr/0.2.6, webmockr/0.3.4
+      file: no
+      string: '{"offset":0,"limit":0,"endOfRecords":false,"count":1385390925,"results":[],"facets":[{"field":"HAS_COORDINATE","counts":[{"name":"true","count":1290936092},{"name":"false","count":94454833}]},{"field":"BASIS_OF_RECORD","counts":[{"name":"HUMAN_OBSERVATION","count":1128762718},{"name":"PRESERVED_SPECIMEN","count":168187016},{"name":"MATERIAL_SAMPLE","count":25352431},{"name":"OBSERVATION","count":19654002},{"name":"UNKNOWN","count":17477531},{"name":"MACHINE_OBSERVATION","count":12578602}]},{"field":"COUNTRY","counts":[{"name":"US","count":463258161},{"name":"AU","count":90966826},{"name":"SE","count":89027080}]}]}'
+  recorded_at: 2020-02-12 23:02:58 GMT
+  recorded_with: vcr/0.4.0, webmockr/0.5.0

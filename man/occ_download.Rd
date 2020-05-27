@@ -28,9 +28,10 @@ occ_download_prep(
 )
 }
 \arguments{
-\item{...}{One or more of query arguments to kick of a download job.
-If you use this, don't use \code{body} parameter. All inputs must be
-character strings. See Details.}
+\item{...}{For \code{occ_download()} and \code{occ_download_prep()}, one or more
+objects of class \code{occ_predicate} or \code{occ_predicate_list}, created by
+\verb{pred*} functions (see \link{download_predicate_dsl}). If you use this, don't
+use \code{body} parameter.}
 
 \item{body}{if you prefer to pass in the payload yourself, use this
 parameter. if use this, don't pass anythig to the dots. accepts
@@ -41,19 +42,19 @@ optional}
 
 \item{type}{(character) One of equals (=), and (&), or (|), lessThan (<),
 lessThanOrEquals (<=), greaterThan (>), greaterThanOrEquals (>=), in,
-within, not (!), like}
+within, not (!), like, isNotNull}
 
-\item{format}{(character) The download format. One of DWCA (default),
-SIMPLE_CSV, or SPECIES_LIST}
+\item{format}{(character) The download format. One of 'DWCA' (default),
+'SIMPLE_CSV', or 'SPECIES_LIST'}
 
 \item{user}{(character) User name within GBIF's website. Required. See
-Details.}
+"Authentication" below}
 
 \item{pwd}{(character) User password within GBIF's website. Required. See
-Details.}
+"Authentication" below}
 
 \item{email}{(character) Email address to recieve download notice done
-email. Required. See Details.}
+email. Required. See "Authentication" below}
 
 \item{curlopts}{list of named curl options passed on to
 \code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
@@ -61,61 +62,6 @@ for curl options}
 }
 \description{
 Spin up a download request for GBIF occurrence data.
-}
-\details{
-Argument passed have to be passed as character (e.g.,
-'country = US'), with a space between key ('country'), operator ('='),
-and value ('US'). See the \code{type} parameter for possible options for
-the operator.  This character string is parsed internally.
-
-The value can be comma separated, in which case we'll turn that into a
-predicate combined with the OR operator, for example,
-\code{"taxonKey = 2480946,5229208"} will turn into\preformatted{'\{
-   "type": "or",
-   "predicates": [
-     \{
-      "type": "equals",
-      "key": "TAXON_KEY",
-      "value": "2480946"
-     \},
-     \{
-      "type": "equals",
-      "key": "TAXON_KEY",
-      "value": "5229208"
-     \}
-   ]
-\}'
-}
-
-Acceptable arguments to \code{...} are:
-\itemize{
-\item taxonKey = 'TAXON_KEY'
-\item scientificName = 'SCIENTIFIC_NAME'
-\item country = 'COUNTRY'
-\item publishingCountry = 'PUBLISHING_COUNTRY'
-\item hasCoordinate = 'HAS_COORDINATE'
-\item hasGeospatialIssue = 'HAS_GEOSPATIAL_ISSUE'
-\item typeStatus = 'TYPE_STATUS'
-\item recordNumber = 'RECORD_NUMBER'
-\item lastInterpreted = 'LAST_INTERPRETED'
-\item continent = 'CONTINENT'
-\item geometry = 'GEOMETRY'
-\item basisOfRecord = 'BASIS_OF_RECORD'
-\item datasetKey = 'DATASET_KEY'
-\item eventDate = 'EVENT_DATE'
-\item catalogNumber = 'CATALOG_NUMBER'
-\item year = 'YEAR'
-\item month = 'MONTH'
-\item decimalLatitude = 'DECIMAL_LATITUDE'
-\item decimalLongitude = 'DECIMAL_LONGITUDE'
-\item elevation = 'ELEVATION'
-\item depth = 'DEPTH'
-\item institutionCode = 'INSTITUTION_CODE'
-\item collectionCode = 'COLLECTION_CODE'
-\item issue = 'ISSUE'
-\item mediatype = 'MEDIA_TYPE'
-\item recordedBy = 'RECORDED_BY'
-}
 }
 \note{
 see \link{downloads} for an overview of GBIF downloads methods
@@ -178,39 +124,44 @@ error on GBIF's side and you'll have to split your query into a few.
 
 \examples{
 \dontrun{
-# occ_download("basisOfRecord = LITERATURE")
-# occ_download('taxonKey = 3119195')
-# occ_download('decimalLatitude > 50')
-# occ_download('elevation >= 9000')
-# occ_download('decimalLatitude >= 65')
-# occ_download("country = US")
-# occ_download("institutionCode = TLMF")
-# occ_download("catalogNumber = Bird.27847588")
+# occ_download(pred("basisOfRecord", "LITERATURE"))
+# occ_download(pred("taxonKey", 3119195), pred_gt("elevation", 5000))
+# occ_download(pred_gt("decimalLatitude", 50)
+# occ_download(pred_gte("elevation", 9000)
+# occ_download(pred_gte('decimalLatitude", 65)
+# occ_download(pred("country", "US")
+# occ_download(pred("institutionCode", "TLMF"))
+# occ_download(pred("catalogNumber", 217880))
 
 # download format
-# z <- occ_download('decimalLatitude >= 75', format = "SPECIES_LIST")
+# z <- occ_download(pred_gte("decimalLatitude", 75),
+#  format = "SPECIES_LIST")
 
-# res <- occ_download('taxonKey = 7264332', 'hasCoordinate = TRUE')
+# res <- occ_download(pred("taxonKey", 7264332), pred("hasCoordinate", TRUE))
 
 # pass output directly, or later, to occ_download_meta for more information
-# occ_download('decimalLatitude > 75') \%>\% occ_download_meta
+# occ_download(pred_gt('decimalLatitude', 75)) \%>\% occ_download_meta
 
 # Multiple queries
-# occ_download('decimalLatitude >= 65', 'decimalLatitude <= -65', type="or")
-# gg <- occ_download('depth = 80', 'taxonKey = 2343454', type="or")
+# occ_download(pred_gte("decimalLatitude", 65),
+#  pred_lte("decimalLatitude", -65), type="or")
+# gg <- occ_download(pred("depth", 80), pred("taxonKey", 2343454),
+#  type="or")
+# x <- occ_download(pred_and(pred_within("POLYGON((-14 42, 9 38, -7 26, -14 42))"),
+#  pred_gte("elevation", 5000)))
 
 # complex example with many predicates
 # shows example of how to do date ranges for both year and month
 # res <- occ_download(
-#  "taxonKey = 2480946,5229208",
-#  "basisOfRecord = HUMAN_OBSERVATION,OBSERVATION,MACHINE_OBSERVATION",
-#  "country = US",
-#  "hasCoordinate = true",
-#  "hasGeospatialIssue = false",
-#  "year >= 1999",
-#  "year <= 2011",
-#  "month >= 3",
-#  "month <= 8"
+#  pred_gt("elevation", 5000),
+#  pred_in("basisOfRecord", c('HUMAN_OBSERVATION','OBSERVATION','MACHINE_OBSERVATION')),
+#  pred("country", "US"),
+#  pred("hasCoordinate", TRUE),
+#  pred("hasGeospatialIssue", FALSE),
+#  pred_gte("year", 1999),
+#  pred_lte("year", 2011),
+#  pred_gte("month", 3),
+#  pred_lte("month", 8)
 # )
 
 # Using body parameter - pass in your own complete query
@@ -241,10 +192,35 @@ query <- list(
 # res <- occ_download(body = query, curlopts = list(verbose = TRUE))
 
 # Prepared query
-occ_download_prep("basisOfRecord = LITERATURE")
-occ_download_prep("catalogNumber = Bird.27847588", "year = 1978", "month = 5")
-occ_download_prep("basisOfRecord = LITERATURE", format = "SIMPLE_CSV")
-occ_download_prep("basisOfRecord = LITERATURE", format = "SPECIES_LIST")
+occ_download_prep(pred("basisOfRecord", "LITERATURE"))
+occ_download_prep(pred("basisOfRecord", "LITERATURE"), format = "SIMPLE_CSV")
+occ_download_prep(pred("basisOfRecord", "LITERATURE"), format = "SPECIES_LIST")
+occ_download_prep(pred_in("taxonKey", c(2977832, 2977901, 2977966, 2977835)))
+occ_download_prep(pred_within("POLYGON((-14 42, 9 38, -7 26, -14 42))"))
+
+## a complicated example
+occ_download_prep(
+  pred_in("basisOfRecord", c("MACHINE_OBSERVATION", "HUMAN_OBSERVATION")),
+  pred_in("taxonKey", c(2498343, 2481776, 2481890)),
+  pred_in("country", c("GB", "IE")),
+  pred_or(pred_lte("year", 1989), pred("year", 2000))
+)
+
+# x = occ_download(
+#   pred_in("basisOfRecord", c("MACHINE_OBSERVATION", "HUMAN_OBSERVATION")),
+#   pred_in("taxonKey", c(9206251, 3112648)),
+#   pred_in("country", c("US", "MX")),
+#   pred_and(pred_gte("year", 1989), pred_lte("year", 1991))
+# )
+# occ_download_meta(x)
+# z <- occ_download_get(x)
+# df <- occ_download_import(z)
+# str(df)
+# library(dplyr)
+# unique(df$basisOfRecord)
+# unique(df$taxonKey)
+# unique(df$countryCode)
+# sort(unique(df$year))
 }
 }
 \references{
@@ -253,3 +229,17 @@ See the API docs
 and the predicates docs
 \url{http://www.gbif.org/developer/occurrence#predicates}
 }
+\seealso{
+Other downloads: 
+\code{\link{download_predicate_dsl}},
+\code{\link{occ_download_cancel}()},
+\code{\link{occ_download_dataset_activity}()},
+\code{\link{occ_download_datasets}()},
+\code{\link{occ_download_get}()},
+\code{\link{occ_download_import}()},
+\code{\link{occ_download_list}()},
+\code{\link{occ_download_meta}()},
+\code{\link{occ_download_queue}()},
+\code{\link{occ_download_wait}()}
+}
+\concept{downloads}

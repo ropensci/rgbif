@@ -8,10 +8,10 @@ dl_user(user = NULL, pwd = NULL, curlopts = list())
 }
 \arguments{
 \item{user}{(character) User name within GBIF's website. Required. See
-Details.}
+"Authentication" below}
 
 \item{pwd}{(character) User password within GBIF's website. Required. See
-Details.}
+"Authentication" below}
 
 \item{curlopts}{list of named curl options passed on to
 \code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}

@@ -1,11 +1,25 @@
 ---
 title: Taxonomic names
 author: Scott Chamberlain
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
 vignette: >
     %\VignetteIndexEntry{taxonomic_names}
-    %\VignetteEngine{knitr::knitr}
+    %\VignetteEngine{knitr::rmarkdown}
     %\VignetteEncoding{UTF-8}
 ---
+
+```{r echo=FALSE}
+NOT_CRAN <- identical(tolower(Sys.getenv("NOT_CRAN")), "true")
+knitr::opts_chunk$set(
+	comment = "#>",
+	collapse = TRUE,
+	warning = FALSE,
+	message = FALSE,
+  purl = NOT_CRAN,
+  eval = NOT_CRAN
+)
+```
 
 You have probably, or will, run into problems with taxonomic names. For example,
 you may think you know how a taxonomic name is spelled, but then GBIF will not
@@ -31,8 +45,7 @@ in bold.
 
 ## Load rgbif
 
-
-```r
+```{r}
 library("rgbif")
 ```
 
@@ -41,13 +54,12 @@ library("rgbif")
 To reduce code duplication, we'll use a little helper function to make a call
 to `name_backbone()` for each input name, then `rbind` them together:
 
-
-```r
+```{r}
 name_rbind <- function(..., rank = "species") {
   columns <- c('usageKey', 'scientificName', 'canonicalName', 'rank',
     'status', 'confidence', 'matchType', 'synonym')
   df <- lapply(list(...), function(w) {
-    name_backbone(w, rank = rank)[, columns]
+    rgbif::name_backbone(w, rank = rank)[, columns]
   })
   data.frame(do.call(rbind, df))
 }
@@ -55,8 +67,7 @@ name_rbind <- function(..., rank = "species") {
 
 And another function to get the taxonomic data provider
 
-
-```r
+```{r}
 taxon_provider <- function(x) {
   tt <- name_usage(key = x)$data
   datasets(uuid = tt$constituentKey)$data$title
@@ -68,83 +79,103 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 
 ## Pinus sylvestris vs. P. silvestris
 
-
-```r
+```{r}
 (c1 <- name_rbind("Pinus sylvestris", "Pinus silvestris"))
-#>   usageKey      scientificName    canonicalName    rank   status
-#> 1  5285637 Pinus sylvestris L. Pinus sylvestris SPECIES ACCEPTED
-#> 2  5285637 Pinus sylvestris L. Pinus sylvestris SPECIES ACCEPTED
-#>   confidence matchType synonym
-#> 1         97     EXACT   FALSE
-#> 2         94     FUZZY   FALSE
 ```
 
-* P. s<b>y</b>lvestris w/ 463067 occurrences - from Catalogue of Life
-* P. s<b>i</b>lvestris w/ 463067 occurrences - from Catalogue of Life
+* P. s<b>y</b>lvestris w/ occurrences count from the data provider
+
+```{r}
+occ_count(c1$usageKey[[1]])
+taxon_provider(c1$usageKey[[1]])
+```
+
+* P. s<b>i</b>lvestris w/ occurrences count from the data provider
+
+```{r}
+occ_count(c1$usageKey[[2]])
+taxon_provider(c1$usageKey[[2]])
+```
 
 ## Macrozamia platyrachis vs. M. platyrhachis
 
-
-```r
+```{r}
 (c2 <- name_rbind("Macrozamia platyrachis", "Macrozamia platyrhachis"))
-#>   usageKey                     scientificName           canonicalName
-#> 1  2683551 Macrozamia platyrhachis F.M.Bailey Macrozamia platyrhachis
-#> 2  2683551 Macrozamia platyrhachis F.M.Bailey Macrozamia platyrhachis
-#>      rank   status confidence matchType synonym
-#> 1 SPECIES ACCEPTED         96     FUZZY   FALSE
-#> 2 SPECIES ACCEPTED         98     EXACT   FALSE
 ```
 
-* M. platyrachis w/ 63 occurrences - from Catalogue of Life
-* M. platyr<b>h</b>achis w/ 63 occurrences - from Catalogue of Life
+* M. platyrachis w/ occurrences count from the data provider
+
+```{r}
+occ_count(c2$usageKey[[1]])
+taxon_provider(c2$usageKey[[1]])
+```
+
+* M. platyr<b>h</b>achis w/ occurrences count from the data provider
+
+```{r}
+occ_count(c2$usageKey[[2]])
+taxon_provider(c2$usageKey[[2]])
+```
 
 ## Cycas circinalis vs. C. circinnalis
 
-
-```r
+```{r}
 (c3 <- name_rbind("Cycas circinalis", "Cycas circinnalis"))
-#>   usageKey      scientificName    canonicalName    rank   status
-#> 1  2683264 Cycas circinalis L. Cycas circinalis SPECIES ACCEPTED
-#> 2  2683264 Cycas circinalis L. Cycas circinalis SPECIES ACCEPTED
-#>   confidence matchType synonym
-#> 1         98     EXACT   FALSE
-#> 2         95     FUZZY   FALSE
 ```
 
-* C. circinalis w/ 650 occurrences - from Catalogue of Life
-* C. circin<b>n</b>alis w/ 650 occurrences - from Catalogue of Life
+* C. circinalis w/ occurrences count from the data provider
+
+```{r}
+occ_count(c3$usageKey[[1]])
+taxon_provider(c3$usageKey[[1]])
+```
+
+* C. circin<b>n</b>alis w/ occurrences count from the data provider
+
+```{r}
+occ_count(c3$usageKey[[2]])
+taxon_provider(c3$usageKey[[2]])
+```
 
 ## Isolona perrieri vs. I. perrierii
 
-
-```r
+```{r}
 (c4 <- name_rbind("Isolona perrieri", "Isolona perrierii"))
-#>   usageKey          scientificName     canonicalName    rank   status
-#> 1  6308376 Isolona perrierii Diels Isolona perrierii SPECIES ACCEPTED
-#> 2  6308376 Isolona perrierii Diels Isolona perrierii SPECIES ACCEPTED
-#>   confidence matchType synonym
-#> 1         96     FUZZY   FALSE
-#> 2         98     EXACT   FALSE
 ```
 
-* I. perrieri w/ 86 occurrences - from Catalogue of Life
-* I. perrieri<b>i</b> w/ 86 occurrences - from Catalogue of Life
+* I. perrieri w/ occurrences count from the data provider
+
+```{r}
+occ_count(c4$usageKey[[1]])
+taxon_provider(c4$usageKey[[1]])
+```
+
+* I. perrieri<b>i</b> w/ occurrences count from the data provider
+
+```{r}
+occ_count(c4$usageKey[[2]])
+taxon_provider(c4$usageKey[[2]])
+```
 
 ## Wiesneria vs. Wisneria
 
-
-```r
+```{r}
 (c5 <- name_rbind("Wiesneria", "Wisneria", rank = "genus"))
-#>   usageKey         scientificName canonicalName  rank   status confidence
-#> 1  2864604      Wiesneria Micheli     Wiesneria GENUS ACCEPTED         96
-#> 2  7327444 Wisneria Micheli, 1881      Wisneria GENUS  SYNONYM         95
-#>   matchType synonym
-#> 1     EXACT   FALSE
-#> 2     EXACT    TRUE
 ```
 
-* Wi<b>e</b>sneria w/ 114 occurrences - from Catalogue of Life
-* Wisneria w/ 3 occurrences - from The Interim Register of Marine and Nonmarine Genera
+* Wi<b>e</b>sneria w/ occurrences count from the data provider
+
+```{r}
+occ_count(c5$usageKey[[1]])
+taxon_provider(c5$usageKey[[1]])
+```
+
+* Wisneria w/ occurrences count from the data provider
+
+```{r}
+occ_count(c5$usageKey[[2]])
+taxon_provider(c5$usageKey[[2]])
+```
 
 ## The take away messages from this vignette
 

@@ -132,7 +132,6 @@ occ_count(datasetKey='9e7ea106-0bf8-4087-bb61-dfe4f29e0f17')
 occ_count(year=2012)
 occ_count(taxonKey=2435099)
 occ_count(taxonKey=2435099, georeferenced=TRUE)
-occ_count(protocol='DWC_ARCHIVE')
 
 # Just schema
 occ_count(type='schema')

@@ -10,6 +10,10 @@
 #'    physical collection or digital dataset for the record which may not unique,
 #'    but should be fairly unique in combination with the institution and collection code.
 #' @param recordedBy The person who recorded the occurrence.
+#' @param recordedByID (character) Identifier (e.g. ORCID) for the person who
+#' recorded the occurrence
+#' @param identifiedByID (character) Identifier (e.g. ORCID) for the person who
+#' provided the taxonomic identification of the occurrence.
 #' @param collectionCode An identifier of any form assigned by the source to identify
 #'    the physical collection or digital dataset uniquely within the text of an institution.
 #' @param institutionCode An identifier of any form assigned by the source to identify
@@ -105,12 +109,8 @@
 #' @param waterBody (character) The name of the water body in which the
 #' locations occur
 #' @param locality (character) The specific description of the place.
-#' @param spellCheck (logical) If \code{TRUE} ask GBIF to check your spelling of
-#' the value passed to the \code{search} parameter. IMPORTANT: This only checks
-#' the input to the \code{search} parameter, and no others. Default: \code{FALSE}
 #' @param skip_validate (logical) whether to skip `wicket::wkt_validate`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
-#' @param ... additional facet parameters
 #'
 #' @details
 #' **protocol parameter options**:
@@ -148,7 +148,7 @@
 #' decimallatitude, and decimallongitude. Set parameter \code{minimal=FALSE} if you want more data.
 #'
 #' **Nerds**: You can pass parameters not defined in this function into the call to
-#' the GBIF API to control things about the call itself using \code{...}. See an example below
+#' the GBIF API to control things about the call itself using \code{curlopts}. See an example below
 #' that passes in the \code{verbose} function to get details on the http call.
 #'
 #' **Scientific names vs. taxon keys**: In the previous GBIF API and the version of rgbif that
