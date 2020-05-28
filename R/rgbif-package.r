@@ -43,6 +43,7 @@
 #' list_sets get_records
 #' @importFrom geoaxe chop to_wkt
 #' @importFrom lazyeval lazy_dots lazy_eval
+#' @importFrom R6 R6Class
 #' @name rgbif-package
 #' @aliases rgbif
 #' @docType package

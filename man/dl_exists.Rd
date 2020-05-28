@@ -28,9 +28,10 @@ preds <- dl_predicates(dl_user())
 
 dprep <- occ_download_prep("catalogNumber = Bird.27847588", "year = 1978",
   "month = 5")
+dprep <- occ_download_prep(pred("catalogNumber", "Bird.27847588"), pred("year", 1978))
 dl_exists(pred = dprep, preds)
 
-dprep <- occ_download_prep("catalogNumber = Bird.27847588")
+dprep <- occ_download_prep(pred("catalogNumber", "Bird.27847588"))
 dl_exists(pred = dprep, preds)
 }
 }

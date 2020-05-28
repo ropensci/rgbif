@@ -15,7 +15,8 @@ Fetch all user download predicates
 \examples{
 \dontrun{
 x <- dl_user()
-dl_predicates(user_df = x)
+res <- dl_predicates(user_df = x)
+res
 }
 }
 \keyword{internal}

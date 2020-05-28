@@ -126,10 +126,10 @@ error on GBIF's side and you'll have to split your query into a few.
 \dontrun{
 # occ_download(pred("basisOfRecord", "LITERATURE"))
 # occ_download(pred("taxonKey", 3119195), pred_gt("elevation", 5000))
-# occ_download(pred_gt("decimalLatitude", 50)
-# occ_download(pred_gte("elevation", 9000)
-# occ_download(pred_gte('decimalLatitude", 65)
-# occ_download(pred("country", "US")
+# occ_download(pred_gt("decimalLatitude", 50))
+# occ_download(pred_gte("elevation", 9000))
+# occ_download(pred_gte('decimalLatitude", 65))
+# occ_download(pred("country", "US"))
 # occ_download(pred("institutionCode", "TLMF"))
 # occ_download(pred("catalogNumber", 217880))
 
@@ -232,6 +232,7 @@ and the predicates docs
 \seealso{
 Other downloads: 
 \code{\link{download_predicate_dsl}},
+\code{\link{occ_download_cached}()},
 \code{\link{occ_download_cancel}()},
 \code{\link{occ_download_dataset_activity}()},
 \code{\link{occ_download_datasets}()},

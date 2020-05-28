@@ -201,6 +201,7 @@ Download predicates docs:
 }
 \seealso{
 Other downloads: 
+\code{\link{occ_download_cached}()},
 \code{\link{occ_download_cancel}()},
 \code{\link{occ_download_dataset_activity}()},
 \code{\link{occ_download_datasets}()},

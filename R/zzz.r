@@ -331,6 +331,7 @@ is_null_or_na <- function(x) {
 # - NA
 # while detecting environments and passing on them
 rgbif_compact <- function(l) Filter(Negate(is_null_or_na), l)
+rc <- rgbif_compact
 
 compact_null <- function(l){
   tmp <- rgbif_compact(l)
