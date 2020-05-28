@@ -42,7 +42,8 @@ Imports:
     geoaxe,
     tibble,
     wicket (>= 0.4.0),
-    lazyeval
+    lazyeval,
+    R6
 Suggests:
     testthat,
     knitr,
