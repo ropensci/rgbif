@@ -35,8 +35,6 @@ dl_user <- function(user = NULL, pwd = NULL, curlopts = list()) {
 #' res
 #' }
 dl_predicates <- function(user_df) {
-  # reqs <- user_df$request
-  # out <- list()
   user_df$pred_str <- NA_character_
   for (i in seq_len(NROW(user_df))) {
     # cat(i, sep = "\n")
@@ -87,7 +85,7 @@ unbox2 <- function(x) {
 #' @return boolean
 #' @details we convert predicates to JSON, then compare JSON blobs to one
 #' another
-#' @keywords internal
+#' @noRd
 #' @examples \dontrun{
 #' preds <- dl_predicates(dl_user())
 #' 
@@ -154,16 +152,19 @@ DownloadMatch <- R6::R6Class(
     #' @field preds (data.frame) preds
     preds = NULL,
     #' @field age (integer) age
-    age = NULL,
+    age = 30,
     #' @field output (list) the output
     output = list(),
+    #' @field most_recent (character) most recent matching date
+    most_recent = "",
 
     #' @description print method for the `DownloadMatch` class
     #' @param x self
     #' @param ... ignored
     print = function(x, ...) {
       cat("<download match> ", sep = "\n")
-      cat(paste0("  match: ", self$output$match), sep = "\n")
+      cat(paste0("  match?: ", self$output$match), sep = "\n")
+      cat(paste0("  expired?: ", self$output$expired), sep = "\n")
       cat(paste0("  key: ", self$output$key), sep = "\n")
       cat(paste0("  created: ", self$output$created), sep = "\n")
       cat(paste0("  n records: ", self$output$totalRecords), sep = "\n")
@@ -194,16 +195,16 @@ DownloadMatch <- R6::R6Class(
       } else {
         md <- self$preds[mtchs,]
         md <- md[order(md$created, decreasing = TRUE), ]
-        if (!is.null(self$age)) {
-          to_day <- Sys.Date()
-          oldest <- to_day - self$age
-          if (md$created[1] < oldest) {
-            self$output <- self$pred_match(TRUE, md$key[1], md$created[1],
-              md$totalRecords[1], expired = TRUE)
-          }
+        to_day <- Sys.Date()
+        oldest <- to_day - self$age
+        self$most_recent <- md$created[1]
+        if (md$created[1] < oldest) {
+          self$output <- self$pred_match(TRUE, md$key[1], md$created[1],
+            md$totalRecords[1], expired = TRUE)
+        } else {
+          self$output <- self$pred_match(TRUE, md$key[1], md$created[1],
+            md$totalRecords[1], expired = FALSE)
         }
-        self$output <- self$pred_match(TRUE, md$key[1], md$created[1],
-          md$totalRecords[1])
       }
     },
 
@@ -231,9 +232,13 @@ DownloadMatch <- R6::R6Class(
     #' @field message - make an output message
     message = function() {
       str <- "no match found"
-      if (self$output$match) {
+      if (self$output$match && !self$output$expired) {
         str <- sprintf("match found (key: %s, created: %s, records: %s)",
           self$output$key, self$output$created, self$output$totalRecords)
+      }
+      if (self$output$match && self$output$expired) {
+        str <- paste0("match found, but expired. most recent query from ",
+          self$most_recent)
       }
       message(str)
     },

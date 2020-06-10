@@ -17,6 +17,8 @@ download match handler
 \item{\code{age}}{(integer) age}
 
 \item{\code{output}}{(list) the output}
+
+\item{\code{most_recent}}{(character) most recent matching date}
 }
 \if{html}{\out{</div>}}
 }

@@ -13,6 +13,7 @@ occ_download_cached(
   pwd = NULL,
   email = NULL,
   refresh = FALSE,
+  age = 30,
   curlopts = list()
 )
 }
@@ -51,6 +52,9 @@ downloads locally. you can refresh this list by setting \code{refresh=TRUE};
 if you're in the same R session, and you've done many download requests,
 then refreshing may be a good idea if you're using this function}
 
+\item{age}{(integer) number of days after which you want a new
+download. default: 30}
+
 \item{curlopts}{list of named curl options passed on to
 \code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
 for curl options}
@@ -63,25 +67,14 @@ see \link{downloads} for an overview of GBIF downloads methods
 }
 \examples{
 \dontrun{
+# these are examples from the package maintainer's account;
+# outcomes will vary by user
 occ_download_cached(pred_gte("elevation", 12000L))
 occ_download_cached(pred("catalogNumber", 217880))
 occ_download_cached(pred_gte("decimalLatitude", 65),
   pred_lte("decimalLatitude", -65), type="or")
-
 occ_download_cached(pred_gte("elevation", 12000L))
 occ_download_cached(pred_gte("elevation", 12000L), refresh = TRUE)
-
-occ_download_cached(
-  pred_gt("elevation", 5000),
-  pred_in("basisOfRecord", c('HUMAN_OBSERVATION','OBSERVATION','MACHINE_OBSERVATION')),
-  pred("country", "US"),
-  pred("hasCoordinate", TRUE),
-  pred("hasGeospatialIssue", FALSE),
-  pred_gte("year", 1999),
-  pred_lte("year", 2011),
-  pred_gte("month", 3),
-  pred_lte("month", 8)
-)
 }
 }
 \seealso{
