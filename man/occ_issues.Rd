@@ -8,8 +8,7 @@ occ_issues(.data, ..., mutate = NULL)
 }
 \arguments{
 \item{.data}{Output from a call to \code{\link[=occ_search]{occ_search()}}, \code{\link[=occ_data]{occ_data()}}, or
-\code{\link[=occ_download_import]{occ_download_import()}}, but only if \code{return="all"}, or \code{return="data"},
-otherwise function stops with error. The data from \code{occ_download_import}
+\code{\link[=occ_download_import]{occ_download_import()}}. The data from \code{occ_download_import}
 is just a regular data.frame so you can pass in a data.frame to this
 function, but if it doesn't have certain columns it will fail.}
 

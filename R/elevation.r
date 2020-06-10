@@ -58,13 +58,12 @@
 #' user <- Sys.getenv("GEONAMES_USER")
 #'
 #' occ_key <- name_suggest('Puma concolor')$key[1]
-#' dat <- occ_search(taxonKey = occ_key, return = 'data', limit = 300,
-#'   hasCoordinate = TRUE)
-#' head( elevation(dat, username = user) )
+#' dat <- occ_search(taxonKey = occ_key, limit = 300, hasCoordinate = TRUE)
+#' head( elevation(dat$data, username = user) )
 #'
 #' # Pass in a vector of lat's and a vector of long's
-#' elevation(latitude = dat$decimalLatitude[1:10],
-#'   longitude = dat$decimalLongitude[1:10],
+#' elevation(latitude = dat$data$decimalLatitude[1:10],
+#'   longitude = dat$data$decimalLongitude[1:10],
 #'   username = user, verbose = TRUE)
 #'
 #' # Pass in lat/long pairs in a single vector
@@ -76,8 +75,8 @@
 #' elevation(latlong=pairs, username = user, verbose = TRUE)
 #'
 #' # different elevation models
-#' lats <- dat$decimalLatitude[1:5]
-#' lons <- dat$decimalLongitude[1:5]
+#' lats <- dat$data$decimalLatitude[1:5]
+#' lons <- dat$data$decimalLongitude[1:5]
 #' elevation(latitude = lats, longitude = lons, elevation_model = "srtm3")
 #' elevation(latitude = lats, longitude = lons, elevation_model = "srtm1")
 #' elevation(latitude = lats, longitude = lons, elevation_model = "astergdem")

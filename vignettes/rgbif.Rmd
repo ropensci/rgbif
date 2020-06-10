@@ -216,10 +216,10 @@ key <- name_suggest(q='Helianthus annuus', rank='species')$key[1]
 occ_search(taxonKey=key, limit=20)
 ```
 
-Like many functions in `rgbif`, you can choose what to return with the `return` parameter, here, just returning the metadata:
+You can index to different parts of the oupu; here, the metadata:
 
 ```{r}
-occ_search(taxonKey=key, return='meta')
+occ_search(taxonKey=key)$meta
 ```
 
 You can choose what fields to return. This isn't passed on to the API query to GBIF as they don't allow that, but we filter out the columns before we give the data back to you.

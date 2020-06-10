@@ -29,12 +29,12 @@ you are using RStudio
 
 \examples{
 \dontrun{
-res <- occ_search(mediaType = 'StillImage', return = "media")
+res <- occ_search(mediaType = 'StillImage', limit = 100)
 gbif_photos(res)
 gbif_photos(res, which='map')
 
 res <- occ_search(scientificName = "Aves", mediaType = 'StillImage',
-  return = "media", limit=150)
+  limit=150)
 gbif_photos(res)
 gbif_photos(res, output = '~/barfoo')
 }

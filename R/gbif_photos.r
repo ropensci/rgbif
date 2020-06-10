@@ -11,19 +11,19 @@
 #' @section BEWARE: The maps in the table view may not show up correctly if
 #' you are using RStudio
 #' @examples \dontrun{
-#' res <- occ_search(mediaType = 'StillImage', return = "media")
+#' res <- occ_search(mediaType = 'StillImage', limit = 100)
 #' gbif_photos(res)
 #' gbif_photos(res, which='map')
 #'
 #' res <- occ_search(scientificName = "Aves", mediaType = 'StillImage',
-#'   return = "media", limit=150)
+#'   limit=150)
 #' gbif_photos(res)
 #' gbif_photos(res, output = '~/barfoo')
 #' }
 
 gbif_photos <- function(input, output = NULL, which='table', browse = TRUE) {
   if (!inherits(input, "gbif")) stop("input should be of class gbif")
-
+  input <- input$media
   which <- match.arg(which, c("map", "table"))
   if (which == 'map') {
     photos <- foo(input)
@@ -80,6 +80,7 @@ dirhandler <- function(x, which="file"){
 
 foo <- function(x){
   photos <- lapply(x, function(y){
+    y <- y[[1]]
     if (is.null(y$decimalLatitude) || is.null(y$decimalLongitude)) {
       NULL
     } else {

@@ -9,10 +9,9 @@
 #' @param fields (character) Default ('all') returns all fields. 'minimal'
 #' returns just taxon name, key, latitude, and longitute. Or specify each field
 #' you want returned by name, e.g. fields = c('name','latitude','elevation').
-#' @param return One of 'data', 'hier', 'meta', or 'all'. If 'data', a
-#' data.frame with the data. 'hier' returns the classifications in a list for
-#' each record. 'meta' returns the metadata for the entire call. 'all'
-#' (default) gives all data back in a list.
+#' @param return Defunct. All components (meta, hierarchy, data, media,
+#' facets) are returned now; index to the one(s) you want. See [occ_data()]
+#' if you just want the data component
 #' @param ... additional facet parameters
 #' @seealso [downloads()], [occ_data()], [occ_facet()]
 #' @note Maximum number of records you can get with this function is 100,000.
@@ -29,8 +28,6 @@
 #' is a list of data.frames of the unique set of taxa found, where each
 #' data.frame is its taxonomic classification. `media` is a list of media
 #' objects, where each element holds a set of metadata about the media object.
-#' If the `return` parameter is set to something other than 'all' (default), you
-#' get back just the `meta`, `data`, `hier`, or `media`.
 
 occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
   publishingCountry=NULL, hasCoordinate=NULL, typeStatus=NULL,
@@ -47,11 +44,15 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
   genusKey = NULL, establishmentMeans = NULL, protocol = NULL, license = NULL,
   organismId = NULL, publishingOrg = NULL, stateProvince = NULL,
   waterBody = NULL, locality = NULL, limit=500, start=0, fields = 'all',
-  return='all', facet = NULL, facetMincount = NULL,
+  return=NULL, facet = NULL, facetMincount = NULL,
   facetMultiselect = NULL, skip_validate = TRUE, curlopts = list(), ...) {
 
-  geometry <- geometry_handler(geometry, geom_big, geom_size, geom_n)
+  calls <- names(sapply(match.call(), deparse))[-1]
+  if (any("return" %in% calls)) {
+    stop("The parameter `return` is defunct \n\nTo get just data see `?occ_data`")
+  }
 
+  geometry <- geometry_handler(geometry, geom_big, geom_size, geom_n)
   url <- paste0(gbif_base(), '/occurrence/search')
   argscoll <- NULL
 
@@ -130,61 +131,24 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
                                        'count')]
     data <- do.call(c, lapply(outout, "[[", "results"))
     facets <- do.call(c, lapply(outout, "[[", "facets"))
-
-    if (return == 'data') {
-      if (identical(data, list())) {
-        paste("no data found, try a different search")
-      } else {
-        data <- gbifparser(input = data, fields = fields)
-        df <- data.table::setDF(
-          data.table::rbindlist(
-            lapply(data, "[[", "data"), use.names = TRUE, fill = TRUE
-          )
-        )
-        tibble::as_tibble(prune_result(df))
-      }
-    } else if (return == 'hier') {
-      if (identical(data, list())) {
-        paste("no data found, try a different search")
-      } else {
-        data <- gbifparser(input = data, fields = fields)
-        unique(lapply(data, "[[", "hierarchy"))
-      }
-    } else if (return == 'media') {
-      if (identical(data, list())) {
-        paste("no data found, try a different search")
-      } else {
-        data <- gbifparser(input = data, fields = fields)
-        sapply(data, "[[", "media")
-      }
-    } else if (return == 'facet') {
-      stats::setNames(lapply(facets, function(z) {
-        tibble::as_tibble(
-          data.table::rbindlist(z$counts, use.names = TRUE, fill = TRUE)
-        )
-      }), vapply(tt$facets, function(x) to_camel(x$field), ""))
-    } else if (return == 'meta') {
-      tibble::as_tibble(meta)
+    if (identical(data, list())) {
+      dat2 <- NULL
+      hier2 <- NULL
+      media <- NULL
     } else {
-      if (identical(data, list())) {
-        dat2 <- NULL
-        hier2 <- NULL
-        media <- NULL
-      } else {
-        data <- gbifparser(input = data, fields = fields)
-        dat2 <- tibble::as_tibble(
-          prune_result(ldfast(lapply(data, "[[", "data"))))
-        hier2 <- unique(lapply(data, "[[", "hierarchy"))
-        media <- unique(lapply(data, "[[", "media"))
-      }
-      fac <- stats::setNames(lapply(facets, function(z) {
-        tibble::as_tibble(
-          data.table::rbindlist(z$counts, use.names = TRUE, fill = TRUE)
-        )
-      }), vapply(facets, function(x) to_camel(x$field), ""))
-      list(meta = meta, hierarchy = hier2, data = dat2,
-           media = media, facets = fac)
+      data <- gbifparser(input = data, fields = fields)
+      dat2 <- tibble::as_tibble(
+        prune_result(setdfrbind(lapply(data, "[[", "data"))))
+      hier2 <- unique(lapply(data, "[[", "hierarchy"))
+      media <- unique(lapply(data, "[[", "media"))
     }
+    fac <- stats::setNames(lapply(facets, function(z) {
+      tibble::as_tibble(
+        data.table::rbindlist(z$counts, use.names = TRUE, fill = TRUE)
+      )
+    }), vapply(facets, function(x) to_camel(x$field), ""))
+    list(meta = meta, hierarchy = hier2, data = dat2,
+         media = media, facets = fac)
   }
 
   params <- list(
@@ -230,16 +194,8 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
     argscoll[[names(iter)]] <- iter[[names(iter)]]
   }
   argscoll$fields <- fields
-
-  if (!return %in% c('meta', 'hier')) {
-    if (inherits(out, "data.frame")) {
-      class(out) <- c('tbl_df', 'tbl', 'data.frame', 'gbif')
-    } else {
-      class(out) <- "gbif"
-      attr(out, 'type') <- if (length(iter) == 0) "single" else "many"
-    }
-  }
-  structure(out, return = return, args = argscoll)
+  structure(out, class = "gbif", args = argscoll,
+    type = if (length(iter) == 0) "single" else "many")
 }
 
 # helpers -------------------------

@@ -3,7 +3,7 @@ context("gbif_photos")
 test_that("gbif_photos", {
   skip_on_cran()
 
-  res <- occ_search(mediaType = 'StillImage', return = "media")
+  res <- occ_search(mediaType = 'StillImage')
   a <- gbif_photos(res, browse = FALSE)
   b <- gbif_photos(res, which = 'map', browse = FALSE)
 

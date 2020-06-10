@@ -31,27 +31,19 @@ print.gbif <- function(x, ...) {
     cat(rgbif_wrap(sprintf("Args [%s]", pasteargs(x))), "\n")
     if (inherits(x$data, "data.frame")) print(x$data) else cat(x$data)
   } else if (if (is.null(attr(x, "type"))) FALSE else attr(x, "type") == "many") {
-    if (!attr(x, "return") == "all") {
-      if (inherits(x, "gbif")) x <- unclass(x)
-      attr(x, "type") <- NULL
-      attr(x, "return") <- NULL
-      print(x)
-    } else {
-      cat(rgbif_wrap(sprintf("Records found [%s]", pastemax(x))), "\n")
-      cat(rgbif_wrap(sprintf("Records returned [%s]", pastemax(x, "returned"))), "\n")
-      cat(rgbif_wrap(sprintf("No. unique hierarchies [%s]", pastemax(x, "hier"))), "\n")
-      cat(rgbif_wrap(sprintf("No. media records [%s]", pastemax(x, "media"))), "\n")
-      cat(rgbif_wrap(sprintf("No. facets [%s]", pastemax(x, "facets"))), "\n")
-      cat(rgbif_wrap(sprintf("Args [%s]", pasteargs(x))), "\n")
-      cat(sprintf("%s requests; First 10 rows of data from %s\n\n", length(x), substring(names(x)[1], 1, 50)))
-      if (inherits(x[[1]]$data, "data.frame")) print(x[[1]]$data) else cat(x[[1]]$data)
-    }
+    cat(rgbif_wrap(sprintf("Records found [%s]", pastemax(x))), "\n")
+    cat(rgbif_wrap(sprintf("Records returned [%s]", pastemax(x, "returned"))), "\n")
+    cat(rgbif_wrap(sprintf("No. unique hierarchies [%s]", pastemax(x, "hier"))), "\n")
+    cat(rgbif_wrap(sprintf("No. media records [%s]", pastemax(x, "media"))), "\n")
+    cat(rgbif_wrap(sprintf("No. facets [%s]", pastemax(x, "facets"))), "\n")
+    cat(rgbif_wrap(sprintf("Args [%s]", pasteargs(x))), "\n")
+    cat(sprintf("%s requests; First 10 rows of data from %s\n\n", length(x), substring(names(x)[1], 1, 50)))
+    if (inherits(x[[1]]$data, "data.frame")) print(x[[1]]$data) else cat(x[[1]]$data)
   } else if (inherits(x, "data.frame")) {
     print(tibble::as_tibble(x))
   } else {
     if (inherits(x, "gbif")) x <- unclass(x)
     attr(x, "type") <- NULL
-    attr(x, "return") <- NULL
     print(x)
   }
 }

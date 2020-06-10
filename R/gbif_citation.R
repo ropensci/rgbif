@@ -33,7 +33,7 @@
 #' unlist(lapply(xx, "[[", c("citation", "citation")))
 #'
 #' res2 <- occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a',
-#'  return='data', limit=20)
+#' limit=20)
 #' (xx <- gbif_citation(res2))
 #'
 #' # if no datasetKey field included, we attempt to identify the dataset

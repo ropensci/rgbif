@@ -3,8 +3,7 @@
 #' @export
 #'
 #' @param .data Output from a call to [occ_search()], [occ_data()], or
-#' [occ_download_import()], but only if `return="all"`, or `return="data"`,
-#' otherwise function stops with error. The data from `occ_download_import`
+#' [occ_download_import()]. The data from `occ_download_import`
 #' is just a regular data.frame so you can pass in a data.frame to this
 #' function, but if it doesn't have certain columns it will fail.
 #' @param ... Named parameters to only get back (e.g. cdround), or to

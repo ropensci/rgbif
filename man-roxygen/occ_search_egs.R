@@ -6,8 +6,8 @@
 #' # Return 20 results, this is the default by the way
 #' occ_search(taxonKey=key, limit=20)
 #'
-#' # Return just metadata for the search
-#' occ_search(taxonKey=key, limit=0, return='meta')
+#' # Get just metadata
+#' occ_search(taxonKey=key, limit=0)$meta
 #'
 #' # Instead of getting a taxon key first, you can search for a name directly
 #' ## However, note that using this approach (with \code{scientificName="..."})
@@ -19,7 +19,7 @@
 #' occ_search(taxonKey = key)
 #'
 #' # Search by dataset key
-#' occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a', return='data', limit=20)
+#' occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a', limit=20)$data
 #'
 #' # Search by catalog number
 #' occ_search(catalogNumber="49366", limit=20)
@@ -38,10 +38,8 @@
 #'
 #' # Use paging parameters (limit and start) to page. Note the different results
 #' # for the two queries below.
-#' occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a',start=10,limit=5,
-#'    return="data")
-#' occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a',start=20,limit=5,
-#'    return="data")
+#' occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a',start=10,limit=5)$data
+#' occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a',start=20,limit=5)$data
 #'
 #' # Many dataset keys
 #' ## separate requests: use a vector of strings
@@ -52,13 +50,13 @@
 #' occ_search(datasetKey = v, limit=20)
 #'
 #' # Occurrence data: lat/long data, and associated metadata with occurrences
-#' ## If return='data' the output is a data.frame of all data together
+#' ## The `data` slot has a data.frame of all data together
 #' ## for easy manipulation
-#' occ_search(taxonKey=key, return='data', limit=20)
+#' occ_search(taxonKey=key, limit=20)$data
 #'
 #' # Taxonomic hierarchy data
-#' ## If return='meta' the output is a list of the hierarch for each record
-#' occ_search(taxonKey=key, return='hier', limit=10)
+#' ## In the `hier` slot
+#' occ_search(taxonKey=key, limit=10)$hier
 #'
 #' # Search by recorder
 #' occ_search(recordedBy="smith", limit=20)
@@ -73,9 +71,8 @@
 #' occ_search(identifiedByID="https://orcid.org/0000-0003-4710-2648", limit=20)
 #'
 #' # Pass in curl options for extra fun
-#' occ_search(taxonKey=2433407, limit=20, return='hier',
-#'   curlopts=list(verbose=TRUE))
-#' occ_search(taxonKey=2433407, limit=20, return='hier',
+#' occ_search(taxonKey=2433407, limit=20, curlopts=list(verbose=TRUE))$hier
+#' occ_search(taxonKey=2433407, limit=20,
 #'   curlopts = list(
 #'     noprogress = FALSE,
 #'     progressfunction = function(down, up) {
@@ -83,8 +80,8 @@
 #'       return(TRUE)
 #'     }
 #'   )
-#' )
-#' # occ_search(taxonKey=2433407, limit=20, return='hier',
+#' )$hier
+#' # occ_search(taxonKey=2433407, limit=20,
 #' #   curlopts = list(timeout_ms = 1))
 #'
 #' # Search for many species
@@ -304,15 +301,15 @@
 #'
 #' # Search by continent
 #' ## One of africa, antarctica, asia, europe, north_america, oceania, or south_america
-#' occ_search(continent = 'south_america', return = 'meta')
-#' occ_search(continent = 'africa', return = 'meta')
-#' occ_search(continent = 'oceania', return = 'meta')
-#' occ_search(continent = 'antarctica', return = 'meta')
+#' occ_search(continent = 'south_america')$meta
+#' occ_search(continent = 'africa')$meta
+#' occ_search(continent = 'oceania')$meta
+#' occ_search(continent = 'antarctica')$meta
 #'
 #' # Search for occurrences with images
-#' occ_search(mediaType = 'StillImage', return='media')
-#' occ_search(mediaType = 'MovingImage', return='media')
-#' occ_search(mediaType = 'Sound', return='media')
+#' occ_search(mediaType = 'StillImage')$media
+#' occ_search(mediaType = 'MovingImage')$media
+#' occ_search(mediaType = 'Sound')$media
 #'
 #' # Query based on issues - see Details for options
 #' ## one issue
@@ -347,8 +344,8 @@
 #' # occ_search(taxonKey=c(2482598,2492010), recordedBy=c("smith","BJ Stacey"))
 #'
 #' # Get a lot of data, here 1500 records for Helianthus annuus
-#' # out <- occ_search(taxonKey=key, limit=1500, return="data")
-#' # nrow(out)
+#' # out <- occ_search(taxonKey=key, limit=1500)
+#' # nrow(out$data)
 #'
 #' # If you pass in an invalid polygon you get hopefully informative errors
 #'
@@ -413,5 +410,5 @@
 #' # You can set limit=0 to get number of results found
 #' occ_search(datasetKey = '7b5d6a48-f762-11e1-a439-00145eb45e9a', limit = 0)$meta
 #' occ_search(scientificName = 'Ursus americanus', limit = 0)$meta
-#' occ_search(scientificName = 'Ursus americanus', limit = 0, return = "meta")
+#' occ_search(scientificName = 'Ursus americanus', limit = 0)$meta
 #' }

@@ -8,7 +8,6 @@ test_that("returns the correct class", {
   vcr::use_cassette("occ_search", {
     tt <- occ_search(taxonKey=key, limit=2)
     uu <- occ_search(taxonKey=key, limit=20)
-    vv <- occ_search(taxonKey=key, return='meta')
   }, preserve_exact_body_bytes = TRUE)
 
   expect_is(tt, "gbif")
@@ -19,11 +18,6 @@ test_that("returns the correct class", {
   expect_is(tt$data, "tbl")
   expect_is(tt$data$name, "character")
   expect_is(uu, "gbif")
-  expect_is(vv, "data.frame")
-  expect_is(vv, "tbl_df")
-  expect_is(vv, "tbl")
-  # meta no longer has gbif class
-  expect_equal(length(class(vv)), 3)
 
   expect_equal(tt$meta$limit, 2)
   expect_equal(tt$hierarchy[[1]][1,2], "6")
@@ -31,7 +25,6 @@ test_that("returns the correct class", {
 
   expect_equal(as.character(uu$hierarchy[[1]][1,1]), "Plantae")
   expect_equal(uu$meta$limit, 20)
-  expect_equal(vv$limit, 200)
 
   expect_equal(length(tt), 5)
   expect_equal(length(tt$meta), 4)
@@ -41,15 +34,14 @@ test_that("returns the correct class", {
 test_that("returns the correct dimensions", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_search_datasetkey", {
-    out <- occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a',
-                      return='data')
+    out <- occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a')
   }, preserve_exact_body_bytes = TRUE)
 
-  expect_is(out, "data.frame")
   expect_is(out, "gbif")
-  expect_is(out, "tbl_df")
-  expect_is(out$name, "character")
-  expect_is(out$issues, "character")
+  expect_is(out$data, "tbl_df")
+  expect_is(out$data, "data.frame")
+  expect_is(out$data$name, "character")
+  expect_is(out$data$issues, "character")
 })
 
 ## Search by catalog number
@@ -74,34 +66,33 @@ test_that("returns the correct class", {
 test_that("returns the correct class", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_search_taxonkey", {
-    out <- occ_search(taxonKey=key, return='data')
+    out <- occ_search(taxonKey=key)
   }, preserve_exact_body_bytes = TRUE)
 
-  expect_is(out, "data.frame")
-  expect_is(out, "tbl_df")
-  expect_is(out, "tbl")
   expect_is(out, "gbif")
-  expect_type(out$key, "character")
-  expect_is(out$scientificName, "character")
+  expect_is(out$data, "tbl_df")
+  expect_is(out$data, "tbl")
+  expect_type(out$data$key, "character")
+  expect_is(out$data$scientificName, "character")
 
   # returns the correct value
-  expect_equal(out$scientificName[1], "Encelia californica Nutt.")
+  expect_equal(out$data$scientificName[1], "Encelia californica Nutt.")
 })
 
 # Taxonomic hierarchy data
 test_that("returns the correct class", {
   vcr::use_cassette("occ_search_hierarchy_data", {
-    out <- occ_search(taxonKey=key, limit=20, return='hier')
+    out <- occ_search(taxonKey=key, limit=20)
   }, preserve_exact_body_bytes = TRUE)
 
-  expect_is(out, "list")
-  expect_is(out[[1]], "data.frame")
+  expect_is(out$hierarchy, "list")
+  expect_is(out$hierarchy[[1]], "data.frame")
   # hier no longer has gbif class
-  expect_equal(length(class(out)), 1)
+  expect_equal(length(class(out$hierarchy)), 1)
 
   # returns the correct dimensions
-  expect_equal(length(out), 1)
-  expect_equal(dim(out[[1]]), c(7,3))
+  expect_equal(length(out$hierarchy), 1)
+  expect_equal(dim(out$hierarchy[[1]]), c(7,3))
 })
 
 
