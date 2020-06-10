@@ -36,6 +36,7 @@ and the download key
 }
 }
 \examples{
+\dontrun{
 preds <- dl_predicates(dl_user())
 preds
 
@@ -52,5 +53,6 @@ dl_match(pred = dprep, preds)
 dprep <- occ_download_prep(pred_within("POLYGON((-14 42, 9 38, -7 26, -14 42))"),
   pred_gte("elevation", 5000))
 dl_match(pred = dprep, preds, age = 90)
+}
 }
 \keyword{internal}

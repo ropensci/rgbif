@@ -118,7 +118,7 @@ dl_exists <- function(pred, preds) {
 #'   - sort by most recent request
 #'   - if the query age created is less than the `age` parameter, return `TRUE`
 #'   and the download key
-#' @examples
+#' @examples \dontrun{
 #' preds <- dl_predicates(dl_user())
 #' preds
 #' 
@@ -135,6 +135,7 @@ dl_exists <- function(pred, preds) {
 #' dprep <- occ_download_prep(pred_within("POLYGON((-14 42, 9 38, -7 26, -14 42))"),
 #'   pred_gte("elevation", 5000))
 #' dl_match(pred = dprep, preds, age = 90)
+#' }
 dl_match <- function(pred, preds, age = 30) {
   x <- DownloadMatch$new(pred, preds, age)
   x$check_matches()
