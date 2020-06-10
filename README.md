@@ -98,7 +98,7 @@ install.packages('rgbif')
 
 ```r
 occ_search(scientificName = "Ursus americanus", limit = 50)
-#> Records found [15281] 
+#> Records found [15793] 
 #> Records returned [50] 
 #> No. unique hierarchies [1] 
 #> No. media records [50] 
@@ -133,8 +133,8 @@ occ_search(scientificName = "Ursus americanus", limit = 50)
 #> #   countryCode <chr>, recordedByIDs <chr>, identifiedByIDs <chr>,
 #> #   country <chr>, rightsHolder <chr>, identifier <chr>,
 #> #   http...unknown.org.nick <chr>, verbatimEventDate <chr>, datasetName <chr>,
-#> #   verbatimLocality <chr>, collectionCode <chr>, gbifID <chr>,
-#> #   occurrenceID <chr>, taxonID <chr>, catalogNumber <chr>, recordedBy <chr>,
+#> #   verbatimLocality <chr>, gbifID <chr>, collectionCode <chr>,
+#> #   occurrenceID <chr>, taxonID <chr>, recordedBy <chr>, catalogNumber <chr>,
 #> #   http...unknown.org.occurrenceDetails <chr>, institutionCode <chr>,
 #> #   rights <chr>, eventTime <chr>, identificationID <chr>, name <chr>,
 #> #   informationWithheld <chr>, occurrenceRemarks <chr>,
@@ -147,7 +147,7 @@ Or you can get the taxon key first with `name_backbone()`. Here, we select to on
 ```r
 key <- name_backbone(name='Helianthus annuus', kingdom='plants')$speciesKey
 occ_search(taxonKey=key, limit=20)
-#> Records found [46960] 
+#> Records found [47227] 
 #> Records returned [20] 
 #> No. unique hierarchies [1] 
 #> No. media records [20] 
@@ -191,12 +191,12 @@ occ_search(taxonKey=key, limit=20)
 #> #   countryCode <chr>, recordedByIDs <chr>, identifiedByIDs <chr>,
 #> #   country <chr>, rightsHolder <chr>, identifier <chr>,
 #> #   http...unknown.org.nick <chr>, verbatimEventDate <chr>, datasetName <chr>,
-#> #   verbatimLocality <chr>, collectionCode <chr>, gbifID <chr>,
-#> #   occurrenceID <chr>, taxonID <chr>, catalogNumber <chr>, recordedBy <chr>,
+#> #   verbatimLocality <chr>, gbifID <chr>, collectionCode <chr>,
+#> #   occurrenceID <chr>, taxonID <chr>, recordedBy <chr>, catalogNumber <chr>,
 #> #   http...unknown.org.occurrenceDetails <chr>, institutionCode <chr>,
 #> #   rights <chr>, eventTime <chr>, identificationID <chr>, name <chr>,
-#> #   coordinateUncertaintyInMeters <dbl>, continent <chr>, county <chr>,
-#> #   municipality <chr>, identificationVerificationStatus <chr>, language <chr>,
+#> #   coordinateUncertaintyInMeters <dbl>, continent <chr>, municipality <chr>,
+#> #   county <chr>, identificationVerificationStatus <chr>, language <chr>,
 #> #   type <chr>, occurrenceStatus <chr>, vernacularName <chr>,
 #> #   taxonConceptID <chr>, informationWithheld <chr>, endDayOfYear <chr>,
 #> #   locality <chr>, startDayOfYear <chr>, datasetID <chr>, accessRights <chr>,
@@ -212,7 +212,7 @@ Get the keys first with `name_backbone()`, then pass to `occ_search()`
 splist <- c('Accipiter erythronemius', 'Junco hyemalis', 'Aix sponsa')
 keys <- sapply(splist, function(x) name_backbone(name=x)$speciesKey, USE.NAMES=FALSE)
 occ_search(taxonKey=keys, limit=5, hasCoordinate=TRUE)
-#> Records found [2480598 (35), 9362842 (5532233), 2498387 (1828941)] 
+#> Records found [2480598 (39), 9362842 (5533951), 2498387 (1830337)] 
 #> Records returned [2480598 (5), 9362842 (5), 2498387 (5)] 
 #> No. unique hierarchies [2480598 (1), 9362842 (1), 2498387 (1)] 
 #> No. media records [2480598 (5), 9362842 (5), 2498387 (5)] 
@@ -221,15 +221,15 @@ occ_search(taxonKey=keys, limit=5, hasCoordinate=TRUE)
 #>      fields=all] 
 #> 3 requests; First 10 rows of data from 2480598
 #> 
-#> # A tibble: 5 x 69
+#> # A tibble: 5 x 68
 #>   key   scientificName decimalLatitude decimalLongitude issues datasetKey
 #>   <chr> <chr>                    <dbl>            <dbl> <chr>  <chr>     
 #> 1 2243… Accipiter ery…           -38.3            -60.4 ""     b1047888-…
 #> 2 2432… Accipiter ery…           -24.0            -52.2 ""     b1047888-…
-#> 3 2243… Accipiter ery…           -24.3            -48.4 ""     b1047888-…
-#> 4 2243… Accipiter ery…           -26.3            -48.6 ""     b1047888-…
-#> 5 2243… Accipiter ery…           -26.3            -48.6 ""     b1047888-…
-#> # … with 63 more variables: publishingOrgKey <chr>, installationKey <chr>,
+#> 3 2609… Accipiter ery…           -26.6            -53.8 ""     b1047888-…
+#> 4 2609… Accipiter ery…           -26.6            -53.8 ""     b1047888-…
+#> 5 2609… Accipiter ery…           -26.6            -53.8 ""     b1047888-…
+#> # … with 62 more variables: publishingOrgKey <chr>, installationKey <chr>,
 #> #   publishingCountry <chr>, protocol <chr>, lastCrawled <chr>,
 #> #   lastParsed <chr>, crawlId <int>, extensions <chr>, basisOfRecord <chr>,
 #> #   taxonKey <int>, kingdomKey <int>, phylumKey <int>, classKey <int>,
@@ -242,11 +242,11 @@ occ_search(taxonKey=keys, limit=5, hasCoordinate=TRUE)
 #> #   facts <chr>, relations <chr>, geodeticDatum <chr>, class <chr>,
 #> #   countryCode <chr>, recordedByIDs <chr>, identifiedByIDs <chr>,
 #> #   country <chr>, rightsHolder <chr>, identifier <chr>,
-#> #   nomenclaturalCode <chr>, verbatimEventDate <chr>, locality <chr>,
-#> #   collectionCode <chr>, gbifID <chr>, occurrenceID <chr>,
-#> #   catalogNumber <chr>, recordedBy <chr>, vernacularName <chr>,
-#> #   fieldNotes <chr>, eventTime <chr>, behavior <chr>, verbatimElevation <chr>,
-#> #   higherClassification <chr>, name <chr>, associatedTaxa <chr>
+#> #   verbatimEventDate <chr>, nomenclaturalCode <chr>, locality <chr>,
+#> #   gbifID <chr>, collectionCode <chr>, occurrenceID <chr>, recordedBy <chr>,
+#> #   catalogNumber <chr>, vernacularName <chr>, fieldNotes <chr>,
+#> #   eventTime <chr>, verbatimElevation <chr>, behavior <chr>,
+#> #   higherClassification <chr>, name <chr>
 ```
 
 ## Maps
@@ -264,7 +264,7 @@ x
 #> dimensions : 512, 512, 262144  (nrow, ncol, ncell)
 #> resolution : 0.703125, 0.3515625  (x, y)
 #> extent     : -180, 180, -90, 90  (xmin, xmax, ymin, ymax)
-#> crs        : +init=epsg:4326 
+#> crs        : +init=epsg:4326 +proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0 
 #> source     : memory
 #> names      : layer 
 #> values     : 0, 1  (min, max)
@@ -282,11 +282,6 @@ plot(x, axes = FALSE, box = FALSE)
 
 <a href="https://vimeo.com/127119010"><img src="man/figures/README-screencast.png" width="400"></a>
 
-## Contributors
-
-Collected via GitHub Issues, this list honors all contributors in alphabetical order. Code contributors are in bold.
-
-[adamdsmith](https://github.com/adamdsmith) - [AgustinCamacho](https://github.com/AgustinCamacho) - [AldoCompagnoni](https://github.com/AldoCompagnoni) - [AlexPeap](https://github.com/AlexPeap) - [andzandz11](https://github.com/andzandz11) - [AshleyWoods](https://github.com/AshleyWoods) - [AugustT](https://github.com/AugustT) - [barthoekstra](https://github.com/barthoekstra) - **[benmarwick](https://github.com/benmarwick)** - [cathynewman](https://github.com/cathynewman) - [cboettig](https://github.com/cboettig) - [coyotree](https://github.com/coyotree) - **[damianooldoni](https://github.com/damianooldoni)** - [dandaman](https://github.com/dandaman) - [djokester](https://github.com/djokester) - [dlebauer](https://github.com/dlebauer) - **[dmcglinn](https://github.com/dmcglinn)** - [dnoesgaard](https://github.com/dnoesgaard) - [DupontCai](https://github.com/DupontCai) - [ecology-data-science](https://github.com/ecology-data-science) - [EDiLD](https://github.com/EDiLD) - [elgabbas](https://github.com/elgabbas) - [emhart](https://github.com/emhart) - [fxi](https://github.com/fxi) - [ghost](https://github.com/ghost) - [gkburada](https://github.com/gkburada) - [hadley](https://github.com/hadley) - [Huasheng12306](https://github.com/Huasheng12306) - [ibartomeus](https://github.com/ibartomeus) - **[JanLauGe](https://github.com/JanLauGe)** - **[jarioksa](https://github.com/jarioksa)** - **[jeroen](https://github.com/jeroen)** - [jhnwllr](https://github.com/jhnwllr) - [jhpoelen](https://github.com/jhpoelen) - [jivelasquezt](https://github.com/jivelasquezt) - [jkmccarthy](https://github.com/jkmccarthy) - **[johnbaums](https://github.com/johnbaums)** - [jtgiermakowski](https://github.com/jtgiermakowski) - [jwhalennds](https://github.com/jwhalennds) - **[karthik](https://github.com/karthik)** - [kgturner](https://github.com/kgturner) - [Kim1801](https://github.com/Kim1801) - [ljuliusson](https://github.com/ljuliusson) - [ljvillanueva](https://github.com/ljvillanueva) - [luisDVA](https://github.com/luisDVA) - [martinpfannkuchen](https://github.com/martinpfannkuchen) - [MattBlissett](https://github.com/MattBlissett) - [MattOates](https://github.com/MattOates) - [maxhenschell](https://github.com/maxhenschell) - **[mdsumner](https://github.com/mdsumner)** - [no-la-ngo](https://github.com/no-la-ngo) - [Octoberweather](https://github.com/Octoberweather) - [Pakillo](https://github.com/Pakillo) - **[peterdesmet](https://github.com/peterdesmet)** - [PhillRob](https://github.com/PhillRob) - [poldham](https://github.com/poldham) - [qgroom](https://github.com/qgroom) - [raymondben](https://github.com/raymondben) - [rossmounce](https://github.com/rossmounce) - [sacrevert](https://github.com/sacrevert) - [sagitaninta](https://github.com/sagitaninta) - **[sckott](https://github.com/sckott)** - [scottsfarley93](https://github.com/scottsfarley93) - [simon-tarr](https://github.com/simon-tarr) - **[SriramRamesh](https://github.com/SriramRamesh)** - [stevenpbachman](https://github.com/stevenpbachman) - [stevensotelo](https://github.com/stevensotelo) - **[stevenysw](https://github.com/stevenysw)** - [TomaszSuchan](https://github.com/TomaszSuchan) - [tphilippi](https://github.com/tphilippi) - [vandit15](https://github.com/vandit15) - [vervis](https://github.com/vervis) - **[vijaybarve](https://github.com/vijaybarve)** - [willgearty](https://github.com/willgearty) - [Xuletajr](https://github.com/Xuletajr) - [yvanlebras](https://github.com/yvanlebras) - [zixuan75](https://github.com/zixuan75)
 
 ## Meta
 

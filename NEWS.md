@@ -1,3 +1,21 @@
+rgbif 2.3
+=========
+
+### MINOR IMPROVEMENTS
+
+* max records you can return for `/occurrence/search` route is now 100,000 (used in `occ_data()` and `occ_search()`). updated docs throughout accordingly (#405)
+* improved docs in `occ_download_queue()` for how we determine when a job is done. see new section "When is a job done?" (#409)
+* print methods `print.occ_download_prep` and `print.occ_download` improved. previously well-known text strings were printed in their entirety. now they are handled to only print so many characters; also applies to any download predicate string that's long (#407)
+* `occ_download_get()` now supports using a progress bar by passing in `httr::progress()` (#402)
+* `occ_data()` and `occ_search()` gain two new parameters: `recordedByID` and `identifiedByID` (#403)
+
+### BUG FIXES
+
+* fix in `occ_download_queue`: an empty `occ_download_meta()` lead to problems; now removing any `NULL`'s from a list of `occ_download_meta()` outputs before further work (#408)
+* fix in `occ_download_queue`: we were not accounting for job status "cancelled" (#409)
+* `occ_download_import()` fix: `fill` parameter was set to `TRUE` by default, changed to `FALSE`. improved docs for this fxn on passing down parameters to `data.table::fread` (#404)
+
+
 rgbif 2.2
 =========
 
