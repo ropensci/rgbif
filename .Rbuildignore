@@ -16,7 +16,6 @@ gist_downloads.md
 R/deprecated.r
 README.Rmd
 ^\.httr-oauth$
-^.*\.zip$
 ^CODE_OF_CONDUCT\.md$
 ^cran-comments\.md$
 ^revdep$

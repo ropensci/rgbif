@@ -37,6 +37,7 @@
 #' - [occ_download()] - Start a download
 #' - [occ_download_prep()] - Prepare a download request
 #' - [occ_download_queue()] - Start many downloads in a queue
+#' - [occ_download_cached()] - Check for downloads already in your GBIF account
 #' - [occ_download_wait()] - Re-run `occ_download_meta()` until ready
 #' - [occ_download_meta()] - Get metadata progress on a single download
 #' - [occ_download_list()] - List your downloads

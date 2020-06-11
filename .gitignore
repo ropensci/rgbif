@@ -16,3 +16,4 @@ gbifissues.txt
 inst/ignore/mvt-test.R
 rgbif_dependencies.md
 readme_contributors.txt
+tests/fixtures/dl_user.yml

@@ -1,12 +1,3 @@
-context("occ_download_queue")
-test_that("occ_download_queue fails well", {
-  skip_on_cran()
-
-  expect_error(occ_download_queue(status_ping = "foobar"), 
-    "status_ping must be of class")
-})
-
-
 context("GbifQueue")
 test_that("GbifQueue fails well", {
   skip_on_cran()

@@ -1,14 +1,14 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.gbif.org/v1/occurrence/download/request
+    uri: https://api.gbif-uat.org/v1/occurrence/download/request
     body:
       encoding: ''
-      string: ''
+      string: '{"creator":"<gbif_user>","notification_address":["<gbif_email>"],"format":"DWCA","predicate":{"type":"and","predicates":[{"type":"equals","key":"COUNTRY","value":"NZ"},{"type":"equals","key":"YEAR","value":"1993"},{"type":"equals","key":"MONTH","value":"1"}]}}'
     headers:
       Accept-Encoding: gzip, deflate
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      User-Agent: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
       Content-Type: application/json
       Accept: application/json
   response:
@@ -18,14 +18,14 @@ http_interactions:
       explanation: Document created, URL follows
     headers:
       status: HTTP/1.1 201 Created
-      date: Wed, 12 Feb 2020 22:38:33 GMT
+      date: Thu, 11 Jun 2020 16:16:56 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      location: http://api.gbif.org/v1/occurrence/download/request/0011597-200127171203522
+      location: http://api.gbif-uat.org/v1/occurrence/download/request/0000205-200429162749254
       cache-control: public, max-age=3601
-      x-varnish: '1055132570'
+      x-varnish: '2163039'
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       content-length: '23'
@@ -33,19 +33,19 @@ http_interactions:
     body:
       encoding: UTF-8
       file: no
-      string: 0011597-200127171203522
-  recorded_at: 2020-02-12 22:39:41 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+      string: 0000205-200429162749254
+  recorded_at: 2020-06-11 16:18:09 GMT
+  recorded_with: vcr/0.5.4.91, webmockr/0.6.2
 - request:
     method: post
-    uri: https://api.gbif.org/v1/occurrence/download/request
+    uri: https://api.gbif-uat.org/v1/occurrence/download/request
     body:
       encoding: ''
-      string: ''
+      string: '{"creator":"<gbif_user>","notification_address":["<gbif_email>"],"format":"DWCA","predicate":{"type":"and","predicates":[{"type":"equals","key":"CATALOG_NUMBER","value":"Bird.27847588"},{"type":"equals","key":"YEAR","value":"1971"},{"type":"equals","key":"MONTH","value":"4"}]}}'
     headers:
       Accept-Encoding: gzip, deflate
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      User-Agent: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
       Content-Type: application/json
       Accept: application/json
   response:
@@ -55,14 +55,14 @@ http_interactions:
       explanation: Document created, URL follows
     headers:
       status: HTTP/1.1 201 Created
-      date: Wed, 12 Feb 2020 22:38:34 GMT
+      date: Thu, 11 Jun 2020 16:16:58 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      location: http://api.gbif.org/v1/occurrence/download/request/0011598-200127171203522
+      location: http://api.gbif-uat.org/v1/occurrence/download/request/0000206-200429162749254
       cache-control: public, max-age=3601
-      x-varnish: '1066175884'
+      x-varnish: '2163041'
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       content-length: '23'
@@ -70,137 +70,57 @@ http_interactions:
     body:
       encoding: UTF-8
       file: no
-      string: 0011598-200127171203522
-  recorded_at: 2020-02-12 22:39:41 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+      string: 0000206-200429162749254
+  recorded_at: 2020-06-11 16:18:09 GMT
+  recorded_with: vcr/0.5.4.91, webmockr/0.6.2
 - request:
     method: post
-    uri: https://api.gbif.org/v1/occurrence/download/request
+    uri: https://api.gbif-uat.org/v1/occurrence/download/request
     body:
       encoding: ''
-      string: ''
+      string: '{"creator":"<gbif_user>","notification_address":["<gbif_email>"],"format":"DWCA","predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"2435240"},{"type":"equals","key":"YEAR","value":"1974"},{"type":"equals","key":"MONTH","value":"2"}]}}'
     headers:
       Accept-Encoding: gzip, deflate
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      User-Agent: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
       Content-Type: application/json
       Accept: application/json
   response:
     status:
-      status_code: '420'
-      message: Method Failure / Enhance Your Calm
-      explanation: Spring Framework / Twitter
+      status_code: '201'
+      message: Created
+      explanation: Document created, URL follows
     headers:
-      status: HTTP/1.1 420 Enhance your Calm
-      date: Wed, 12 Feb 2020 22:38:35 GMT
-      content-type: text/plain
+      status: HTTP/1.1 201 Created
+      date: Thu, 11 Jun 2020 16:16:59 GMT
+      content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
-      cache-control: no-cache, no-store, must-revalidate
-      x-varnish: '1062700754'
+      location: http://api.gbif-uat.org/v1/occurrence/download/request/0000207-200429162749254
+      cache-control: public, max-age=3601
+      x-varnish: '2163043'
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
-      content-length: '189'
+      content-length: '23'
       connection: keep-alive
     body:
       encoding: UTF-8
       file: no
-      string: |
-        A download limitation is exceeded:
-        User <gbif_user> has too many simultaneous downloads; the limit is 3.
-        Please wait for some to complete, or cancel any unwanted downloads.  See your user page.
-  recorded_at: 2020-02-12 22:39:41 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
-- request:
-    method: post
-    uri: https://api.gbif.org/v1/occurrence/download/request
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-      Content-Type: application/json
-      Accept: application/json
-  response:
-    status:
-      status_code: '420'
-      message: Method Failure / Enhance Your Calm
-      explanation: Spring Framework / Twitter
-    headers:
-      status: HTTP/1.1 420 Enhance your Calm
-      date: Wed, 12 Feb 2020 22:38:35 GMT
-      content-type: text/plain
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
-      cache-control: no-cache, no-store, must-revalidate
-      x-varnish: '1066371429'
-      age: '0'
-      via: 1.1 varnish (Varnish/5.2)
-      content-length: '189'
-      connection: keep-alive
-    body:
-      encoding: UTF-8
-      file: no
-      string: |
-        A download limitation is exceeded:
-        User <gbif_user> has too many simultaneous downloads; the limit is 3.
-        Please wait for some to complete, or cancel any unwanted downloads.  See your user page.
-  recorded_at: 2020-02-12 22:39:41 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
-- request:
-    method: post
-    uri: https://api.gbif.org/v1/occurrence/download/request
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-      Content-Type: application/json
-      Accept: application/json
-  response:
-    status:
-      status_code: '420'
-      message: Method Failure / Enhance Your Calm
-      explanation: Spring Framework / Twitter
-    headers:
-      status: HTTP/1.1 420 Enhance your Calm
-      date: Wed, 12 Feb 2020 22:38:36 GMT
-      content-type: text/plain
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
-      cache-control: no-cache, no-store, must-revalidate
-      x-varnish: '5276344'
-      age: '0'
-      via: 1.1 varnish (Varnish/5.2)
-      content-length: '189'
-      connection: keep-alive
-    body:
-      encoding: UTF-8
-      file: no
-      string: |
-        A download limitation is exceeded:
-        User <gbif_user> has too many simultaneous downloads; the limit is 3.
-        Please wait for some to complete, or cancel any unwanted downloads.  See your user page.
-  recorded_at: 2020-02-12 22:39:41 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+      string: 0000207-200429162749254
+  recorded_at: 2020-06-11 16:18:09 GMT
+  recorded_with: vcr/0.5.4.91, webmockr/0.6.2
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/download/0011596-200127171203522
+    uri: https://api.gbif-uat.org/v1/occurrence/download/0000205-200429162749254
     body:
       encoding: ''
       string: ''
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      User-Agent: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
   response:
     status:
       status_code: '200'
@@ -208,193 +128,13 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Wed, 12 Feb 2020 22:38:38 GMT
+      date: Thu, 11 Jun 2020 16:17:00 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: '5145523'
-      age: '0'
-      via: 1.1 varnish (Varnish/5.2)
-      accept-ranges: bytes
-      content-length: '605'
-      connection: keep-alive
-    body:
-      encoding: UTF-8
-      file: no
-      string: '{"key":"0011596-200127171203522","doi":"10.15468/dl.t8lj9b","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"COUNTRY","value":"NZ"},{"type":"equals","key":"YEAR","value":"1993"},{"type":"equals","key":"MONTH","value":"1"}]},"sendNotification":false,"format":"DWCA"},"created":"2020-02-12T22:38:32.185+0000","modified":"2020-02-12T22:38:32.185+0000","eraseAfter":"2020-08-12T22:38:32.128+0000","status":"PREPARING","downloadLink":"http://api.gbif.org/v1/occurrence/download/request/0011596-200127171203522.zip","size":0,"totalRecords":0,"numberDatasets":0}'
-  recorded_at: 2020-02-12 22:39:41 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
-- request:
-    method: get
-    uri: https://api.gbif.org/v1/occurrence/download/0011596-200127171203522
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-  response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
-    headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 12 Feb 2020 22:38:51 GMT
-      content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
-      cache-control: public, max-age=3601
-      x-varnish: '1066535139'
-      age: '0'
-      via: 1.1 varnish (Varnish/5.2)
-      accept-ranges: bytes
-      content-length: '608'
-      connection: keep-alive
-    body:
-      encoding: UTF-8
-      file: no
-      string: '{"key":"0011596-200127171203522","doi":"10.15468/dl.t8lj9b","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"COUNTRY","value":"NZ"},{"type":"equals","key":"YEAR","value":"1993"},{"type":"equals","key":"MONTH","value":"1"}]},"sendNotification":false,"format":"DWCA"},"created":"2020-02-12T22:38:32.185+0000","modified":"2020-02-12T22:38:47.840+0000","eraseAfter":"2020-08-12T22:38:32.128+0000","status":"PREPARING","downloadLink":"http://api.gbif.org/v1/occurrence/download/request/0011596-200127171203522.zip","size":0,"totalRecords":8490,"numberDatasets":0}'
-  recorded_at: 2020-02-12 22:39:41 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
-- request:
-    method: get
-    uri: https://api.gbif.org/v1/occurrence/download/0011596-200127171203522
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-  response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
-    headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 12 Feb 2020 22:38:51 GMT
-      content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
-      cache-control: public, max-age=3601
-      x-varnish: '1059327137'
-      age: '0'
-      via: 1.1 varnish (Varnish/5.2)
-      accept-ranges: bytes
-      content-length: '608'
-      connection: keep-alive
-    body:
-      encoding: UTF-8
-      file: no
-      string: '{"key":"0011596-200127171203522","doi":"10.15468/dl.t8lj9b","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"COUNTRY","value":"NZ"},{"type":"equals","key":"YEAR","value":"1993"},{"type":"equals","key":"MONTH","value":"1"}]},"sendNotification":false,"format":"DWCA"},"created":"2020-02-12T22:38:32.185+0000","modified":"2020-02-12T22:38:47.840+0000","eraseAfter":"2020-08-12T22:38:32.128+0000","status":"PREPARING","downloadLink":"http://api.gbif.org/v1/occurrence/download/request/0011596-200127171203522.zip","size":0,"totalRecords":8490,"numberDatasets":0}'
-  recorded_at: 2020-02-12 22:39:41 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
-- request:
-    method: get
-    uri: https://api.gbif.org/v1/occurrence/download/0011596-200127171203522
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-  response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
-    headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 12 Feb 2020 22:39:04 GMT
-      content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
-      cache-control: public, max-age=3601
-      x-varnish: '2654610'
-      age: '0'
-      via: 1.1 varnish (Varnish/5.2)
-      accept-ranges: bytes
-      content-length: '608'
-      connection: keep-alive
-    body:
-      encoding: UTF-8
-      file: no
-      string: '{"key":"0011596-200127171203522","doi":"10.15468/dl.t8lj9b","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"COUNTRY","value":"NZ"},{"type":"equals","key":"YEAR","value":"1993"},{"type":"equals","key":"MONTH","value":"1"}]},"sendNotification":false,"format":"DWCA"},"created":"2020-02-12T22:38:32.185+0000","modified":"2020-02-12T22:38:47.840+0000","eraseAfter":"2020-08-12T22:38:32.128+0000","status":"PREPARING","downloadLink":"http://api.gbif.org/v1/occurrence/download/request/0011596-200127171203522.zip","size":0,"totalRecords":8490,"numberDatasets":0}'
-  recorded_at: 2020-02-12 22:39:41 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
-- request:
-    method: get
-    uri: https://api.gbif.org/v1/occurrence/download/0011596-200127171203522
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-  response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
-    headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 12 Feb 2020 22:39:04 GMT
-      content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
-      cache-control: public, max-age=3601
-      x-varnish: '2327768'
-      age: '0'
-      via: 1.1 varnish (Varnish/5.2)
-      accept-ranges: bytes
-      content-length: '608'
-      connection: keep-alive
-    body:
-      encoding: UTF-8
-      file: no
-      string: '{"key":"0011596-200127171203522","doi":"10.15468/dl.t8lj9b","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"COUNTRY","value":"NZ"},{"type":"equals","key":"YEAR","value":"1993"},{"type":"equals","key":"MONTH","value":"1"}]},"sendNotification":false,"format":"DWCA"},"created":"2020-02-12T22:38:32.185+0000","modified":"2020-02-12T22:38:47.840+0000","eraseAfter":"2020-08-12T22:38:32.128+0000","status":"PREPARING","downloadLink":"http://api.gbif.org/v1/occurrence/download/request/0011596-200127171203522.zip","size":0,"totalRecords":8490,"numberDatasets":0}'
-  recorded_at: 2020-02-12 22:39:41 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
-- request:
-    method: get
-    uri: https://api.gbif.org/v1/occurrence/download/0011596-200127171203522
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-  response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
-    headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 12 Feb 2020 22:39:16 GMT
-      content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
-      cache-control: public, max-age=3601
-      x-varnish: '1044876179'
+      x-varnish: '328152'
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
@@ -403,20 +143,20 @@ http_interactions:
     body:
       encoding: UTF-8
       file: no
-      string: '{"key":"0011596-200127171203522","doi":"10.15468/dl.t8lj9b","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"COUNTRY","value":"NZ"},{"type":"equals","key":"YEAR","value":"1993"},{"type":"equals","key":"MONTH","value":"1"}]},"sendNotification":false,"format":"DWCA"},"created":"2020-02-12T22:38:32.185+0000","modified":"2020-02-12T22:38:47.840+0000","eraseAfter":"2020-08-12T22:38:32.128+0000","status":"PREPARING","downloadLink":"http://api.gbif.org/v1/occurrence/download/request/0011596-200127171203522.zip","size":0,"totalRecords":8490,"numberDatasets":49}'
-  recorded_at: 2020-02-12 22:39:41 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+      string: '{"key":"0000205-200429162749254","doi":"10.21373/dl.3mgje6","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"COUNTRY","value":"NZ"},{"type":"equals","key":"YEAR","value":"1993"},{"type":"equals","key":"MONTH","value":"1"}]},"sendNotification":false,"format":"DWCA"},"created":"2020-06-11T16:16:57.941+0000","modified":"2020-06-11T16:16:57.941+0000","eraseAfter":"2020-12-11T16:16:57.763+0000","status":"PREPARING","downloadLink":"http://api.gbif-uat.org/v1/occurrence/download/request/0000205-200429162749254.zip","size":0,"totalRecords":0,"numberDatasets":0}'
+  recorded_at: 2020-06-11 16:18:09 GMT
+  recorded_with: vcr/0.5.4.91, webmockr/0.6.2
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/download/0011596-200127171203522
+    uri: https://api.gbif-uat.org/v1/occurrence/download/0000206-200429162749254
     body:
       encoding: ''
       string: ''
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      User-Agent: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
   response:
     status:
       status_code: '200'
@@ -424,35 +164,35 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Wed, 12 Feb 2020 22:39:16 GMT
+      date: Thu, 11 Jun 2020 16:17:01 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: '328863'
+      x-varnish: '328154'
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
-      content-length: '609'
+      content-length: '627'
       connection: keep-alive
     body:
       encoding: UTF-8
       file: no
-      string: '{"key":"0011596-200127171203522","doi":"10.15468/dl.t8lj9b","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"COUNTRY","value":"NZ"},{"type":"equals","key":"YEAR","value":"1993"},{"type":"equals","key":"MONTH","value":"1"}]},"sendNotification":false,"format":"DWCA"},"created":"2020-02-12T22:38:32.185+0000","modified":"2020-02-12T22:38:47.840+0000","eraseAfter":"2020-08-12T22:38:32.128+0000","status":"PREPARING","downloadLink":"http://api.gbif.org/v1/occurrence/download/request/0011596-200127171203522.zip","size":0,"totalRecords":8490,"numberDatasets":49}'
-  recorded_at: 2020-02-12 22:39:41 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+      string: '{"key":"0000206-200429162749254","doi":"10.21373/dl.tz3uxf","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"CATALOG_NUMBER","value":"Bird.27847588"},{"type":"equals","key":"YEAR","value":"1971"},{"type":"equals","key":"MONTH","value":"4"}]},"sendNotification":false,"format":"DWCA"},"created":"2020-06-11T16:16:59.414+0000","modified":"2020-06-11T16:16:59.414+0000","eraseAfter":"2020-12-11T16:16:59.293+0000","status":"PREPARING","downloadLink":"http://api.gbif-uat.org/v1/occurrence/download/request/0000206-200429162749254.zip","size":0,"totalRecords":0,"numberDatasets":0}'
+  recorded_at: 2020-06-11 16:18:09 GMT
+  recorded_with: vcr/0.5.4.91, webmockr/0.6.2
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/download/0011596-200127171203522
+    uri: https://api.gbif-uat.org/v1/occurrence/download/0000207-200429162749254
     body:
       encoding: ''
       string: ''
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      User-Agent: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
   response:
     status:
       status_code: '200'
@@ -460,35 +200,35 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Wed, 12 Feb 2020 22:39:28 GMT
+      date: Thu, 11 Jun 2020 16:17:01 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: '1048053844'
+      x-varnish: '328156'
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
-      content-length: '659'
+      content-length: '616'
       connection: keep-alive
     body:
       encoding: UTF-8
       file: no
-      string: '{"key":"0011596-200127171203522","doi":"10.15468/dl.t8lj9b","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"COUNTRY","value":"NZ"},{"type":"equals","key":"YEAR","value":"1993"},{"type":"equals","key":"MONTH","value":"1"}]},"sendNotification":false,"format":"DWCA"},"created":"2020-02-12T22:38:32.185+0000","modified":"2020-02-12T22:39:25.256+0000","eraseAfter":"2020-08-12T22:38:32.128+0000","status":"SUCCEEDED","downloadLink":"http://api.gbif.org/v1/occurrence/download/request/0011596-200127171203522.zip","size":1422753,"totalRecords":8490,"numberDatasets":49}'
-  recorded_at: 2020-02-12 22:39:41 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+      string: '{"key":"0000207-200429162749254","doi":"10.21373/dl.9f8ewt","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"2435240"},{"type":"equals","key":"YEAR","value":"1974"},{"type":"equals","key":"MONTH","value":"2"}]},"sendNotification":false,"format":"DWCA"},"created":"2020-06-11T16:17:00.648+0000","modified":"2020-06-11T16:17:00.648+0000","eraseAfter":"2020-12-11T16:17:00.531+0000","status":"PREPARING","downloadLink":"http://api.gbif-uat.org/v1/occurrence/download/request/0000207-200429162749254.zip","size":0,"totalRecords":0,"numberDatasets":0}'
+  recorded_at: 2020-06-11 16:18:09 GMT
+  recorded_with: vcr/0.5.4.91, webmockr/0.6.2
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/download/0011596-200127171203522
+    uri: https://api.gbif-uat.org/v1/occurrence/download/0000205-200429162749254
     body:
       encoding: ''
       string: ''
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      User-Agent: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
   response:
     status:
       status_code: '200'
@@ -496,21 +236,525 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Wed, 12 Feb 2020 22:39:30 GMT
+      date: Thu, 11 Jun 2020 16:17:12 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: '1068478737'
+      x-varnish: '2326904'
       age: '0'
       via: 1.1 varnish (Varnish/5.2)
       accept-ranges: bytes
-      content-length: '659'
+      transfer-encoding: chunked
       connection: keep-alive
     body:
       encoding: UTF-8
       file: no
-      string: '{"key":"0011596-200127171203522","doi":"10.15468/dl.t8lj9b","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"COUNTRY","value":"NZ"},{"type":"equals","key":"YEAR","value":"1993"},{"type":"equals","key":"MONTH","value":"1"}]},"sendNotification":false,"format":"DWCA"},"created":"2020-02-12T22:38:32.185+0000","modified":"2020-02-12T22:39:25.256+0000","eraseAfter":"2020-08-12T22:38:32.128+0000","status":"SUCCEEDED","downloadLink":"http://api.gbif.org/v1/occurrence/download/request/0011596-200127171203522.zip","size":1422753,"totalRecords":8490,"numberDatasets":49}'
-  recorded_at: 2020-02-12 22:39:41 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+      string: '{"key":"0000205-200429162749254","doi":"10.21373/dl.3mgje6","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"COUNTRY","value":"NZ"},{"type":"equals","key":"YEAR","value":"1993"},{"type":"equals","key":"MONTH","value":"1"}]},"sendNotification":false,"format":"DWCA"},"created":"2020-06-11T16:16:57.941+0000","modified":"2020-06-11T16:16:57.941+0000","eraseAfter":"2020-12-11T16:16:57.763+0000","status":"PREPARING","downloadLink":"http://api.gbif-uat.org/v1/occurrence/download/request/0000205-200429162749254.zip","size":0,"totalRecords":0,"numberDatasets":0}'
+  recorded_at: 2020-06-11 16:18:09 GMT
+  recorded_with: vcr/0.5.4.91, webmockr/0.6.2
+- request:
+    method: get
+    uri: https://api.gbif-uat.org/v1/occurrence/download/0000206-200429162749254
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Thu, 11 Jun 2020 16:17:12 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=3601
+      x-varnish: '2326906'
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '627'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"key":"0000206-200429162749254","doi":"10.21373/dl.tz3uxf","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"CATALOG_NUMBER","value":"Bird.27847588"},{"type":"equals","key":"YEAR","value":"1971"},{"type":"equals","key":"MONTH","value":"4"}]},"sendNotification":false,"format":"DWCA"},"created":"2020-06-11T16:16:59.414+0000","modified":"2020-06-11T16:16:59.414+0000","eraseAfter":"2020-12-11T16:16:59.293+0000","status":"PREPARING","downloadLink":"http://api.gbif-uat.org/v1/occurrence/download/request/0000206-200429162749254.zip","size":0,"totalRecords":0,"numberDatasets":0}'
+  recorded_at: 2020-06-11 16:18:09 GMT
+  recorded_with: vcr/0.5.4.91, webmockr/0.6.2
+- request:
+    method: get
+    uri: https://api.gbif-uat.org/v1/occurrence/download/0000207-200429162749254
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Thu, 11 Jun 2020 16:17:12 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=3601
+      x-varnish: '2326908'
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '616'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"key":"0000207-200429162749254","doi":"10.21373/dl.9f8ewt","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"2435240"},{"type":"equals","key":"YEAR","value":"1974"},{"type":"equals","key":"MONTH","value":"2"}]},"sendNotification":false,"format":"DWCA"},"created":"2020-06-11T16:17:00.648+0000","modified":"2020-06-11T16:17:00.648+0000","eraseAfter":"2020-12-11T16:17:00.531+0000","status":"PREPARING","downloadLink":"http://api.gbif-uat.org/v1/occurrence/download/request/0000207-200429162749254.zip","size":0,"totalRecords":0,"numberDatasets":0}'
+  recorded_at: 2020-06-11 16:18:10 GMT
+  recorded_with: vcr/0.5.4.91, webmockr/0.6.2
+- request:
+    method: get
+    uri: https://api.gbif-uat.org/v1/occurrence/download/0000205-200429162749254
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Thu, 11 Jun 2020 16:17:24 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=3601
+      x-varnish: '590140'
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '612'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"key":"0000205-200429162749254","doi":"10.21373/dl.3mgje6","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"COUNTRY","value":"NZ"},{"type":"equals","key":"YEAR","value":"1993"},{"type":"equals","key":"MONTH","value":"1"}]},"sendNotification":false,"format":"DWCA"},"created":"2020-06-11T16:16:57.941+0000","modified":"2020-06-11T16:17:15.587+0000","eraseAfter":"2020-12-11T16:16:57.763+0000","status":"PREPARING","downloadLink":"http://api.gbif-uat.org/v1/occurrence/download/request/0000205-200429162749254.zip","size":0,"totalRecords":1501,"numberDatasets":0}'
+  recorded_at: 2020-06-11 16:18:10 GMT
+  recorded_with: vcr/0.5.4.91, webmockr/0.6.2
+- request:
+    method: get
+    uri: https://api.gbif-uat.org/v1/occurrence/download/0000206-200429162749254
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Thu, 11 Jun 2020 16:17:24 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=3601
+      x-varnish: '590142'
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '627'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"key":"0000206-200429162749254","doi":"10.21373/dl.tz3uxf","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"CATALOG_NUMBER","value":"Bird.27847588"},{"type":"equals","key":"YEAR","value":"1971"},{"type":"equals","key":"MONTH","value":"4"}]},"sendNotification":false,"format":"DWCA"},"created":"2020-06-11T16:16:59.414+0000","modified":"2020-06-11T16:17:15.851+0000","eraseAfter":"2020-12-11T16:16:59.293+0000","status":"PREPARING","downloadLink":"http://api.gbif-uat.org/v1/occurrence/download/request/0000206-200429162749254.zip","size":0,"totalRecords":0,"numberDatasets":0}'
+  recorded_at: 2020-06-11 16:18:10 GMT
+  recorded_with: vcr/0.5.4.91, webmockr/0.6.2
+- request:
+    method: get
+    uri: https://api.gbif-uat.org/v1/occurrence/download/0000207-200429162749254
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Thu, 11 Jun 2020 16:17:25 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=3601
+      x-varnish: '590144'
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      transfer-encoding: chunked
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"key":"0000207-200429162749254","doi":"10.21373/dl.9f8ewt","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"2435240"},{"type":"equals","key":"YEAR","value":"1974"},{"type":"equals","key":"MONTH","value":"2"}]},"sendNotification":false,"format":"DWCA"},"created":"2020-06-11T16:17:00.648+0000","modified":"2020-06-11T16:17:18.262+0000","eraseAfter":"2020-12-11T16:17:00.531+0000","status":"PREPARING","downloadLink":"http://api.gbif-uat.org/v1/occurrence/download/request/0000207-200429162749254.zip","size":0,"totalRecords":1,"numberDatasets":0}'
+  recorded_at: 2020-06-11 16:18:10 GMT
+  recorded_with: vcr/0.5.4.91, webmockr/0.6.2
+- request:
+    method: get
+    uri: https://api.gbif-uat.org/v1/occurrence/download/0000205-200429162749254
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Thu, 11 Jun 2020 16:17:36 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=3601
+      x-varnish: '590151'
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '612'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"key":"0000205-200429162749254","doi":"10.21373/dl.3mgje6","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"COUNTRY","value":"NZ"},{"type":"equals","key":"YEAR","value":"1993"},{"type":"equals","key":"MONTH","value":"1"}]},"sendNotification":false,"format":"DWCA"},"created":"2020-06-11T16:16:57.941+0000","modified":"2020-06-11T16:17:15.587+0000","eraseAfter":"2020-12-11T16:16:57.763+0000","status":"PREPARING","downloadLink":"http://api.gbif-uat.org/v1/occurrence/download/request/0000205-200429162749254.zip","size":0,"totalRecords":1501,"numberDatasets":0}'
+  recorded_at: 2020-06-11 16:18:10 GMT
+  recorded_with: vcr/0.5.4.91, webmockr/0.6.2
+- request:
+    method: get
+    uri: https://api.gbif-uat.org/v1/occurrence/download/0000206-200429162749254
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Thu, 11 Jun 2020 16:17:36 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=3601
+      x-varnish: '590153'
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '674'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"key":"0000206-200429162749254","doi":"10.21373/dl.tz3uxf","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"CATALOG_NUMBER","value":"Bird.27847588"},{"type":"equals","key":"YEAR","value":"1971"},{"type":"equals","key":"MONTH","value":"4"}]},"sendNotification":false,"format":"DWCA"},"created":"2020-06-11T16:16:59.414+0000","modified":"2020-06-11T16:17:35.440+0000","eraseAfter":"2020-12-11T16:16:59.293+0000","status":"PREPARING","downloadLink":"http://api.gbif-uat.org/v1/occurrence/download/request/0000206-200429162749254.zip","size":0,"totalRecords":0,"numberDatasets":0}'
+  recorded_at: 2020-06-11 16:18:10 GMT
+  recorded_with: vcr/0.5.4.91, webmockr/0.6.2
+- request:
+    method: get
+    uri: https://api.gbif-uat.org/v1/occurrence/download/0000207-200429162749254
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Thu, 11 Jun 2020 16:17:36 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=3601
+      x-varnish: '590155'
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '616'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"key":"0000207-200429162749254","doi":"10.21373/dl.9f8ewt","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"2435240"},{"type":"equals","key":"YEAR","value":"1974"},{"type":"equals","key":"MONTH","value":"2"}]},"sendNotification":false,"format":"DWCA"},"created":"2020-06-11T16:17:00.648+0000","modified":"2020-06-11T16:17:18.262+0000","eraseAfter":"2020-12-11T16:17:00.531+0000","status":"PREPARING","downloadLink":"http://api.gbif-uat.org/v1/occurrence/download/request/0000207-200429162749254.zip","size":0,"totalRecords":1,"numberDatasets":0}'
+  recorded_at: 2020-06-11 16:18:10 GMT
+  recorded_with: vcr/0.5.4.91, webmockr/0.6.2
+- request:
+    method: get
+    uri: https://api.gbif-uat.org/v1/occurrence/download/0000205-200429162749254
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Thu, 11 Jun 2020 16:17:47 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=3601
+      x-varnish: '2163060'
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '657'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"key":"0000205-200429162749254","doi":"10.21373/dl.3mgje6","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"COUNTRY","value":"NZ"},{"type":"equals","key":"YEAR","value":"1993"},{"type":"equals","key":"MONTH","value":"1"}]},"sendNotification":false,"format":"DWCA"},"created":"2020-06-11T16:16:57.941+0000","modified":"2020-06-11T16:17:44.644+0000","eraseAfter":"2020-12-11T16:16:57.763+0000","status":"PREPARING","downloadLink":"http://api.gbif-uat.org/v1/occurrence/download/request/0000205-200429162749254.zip","size":0,"totalRecords":1501,"numberDatasets":16}'
+  recorded_at: 2020-06-11 16:18:10 GMT
+  recorded_with: vcr/0.5.4.91, webmockr/0.6.2
+- request:
+    method: get
+    uri: https://api.gbif-uat.org/v1/occurrence/download/0000206-200429162749254
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Thu, 11 Jun 2020 16:17:48 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=3601
+      x-varnish: '328242'
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '677'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"key":"0000206-200429162749254","doi":"10.21373/dl.tz3uxf","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"CATALOG_NUMBER","value":"Bird.27847588"},{"type":"equals","key":"YEAR","value":"1971"},{"type":"equals","key":"MONTH","value":"4"}]},"sendNotification":false,"format":"DWCA"},"created":"2020-06-11T16:16:59.414+0000","modified":"2020-06-11T16:17:42.840+0000","eraseAfter":"2020-12-11T16:16:59.293+0000","status":"SUCCEEDED","downloadLink":"http://api.gbif-uat.org/v1/occurrence/download/request/0000206-200429162749254.zip","size":8139,"totalRecords":0,"numberDatasets":0}'
+  recorded_at: 2020-06-11 16:18:10 GMT
+  recorded_with: vcr/0.5.4.91, webmockr/0.6.2
+- request:
+    method: get
+    uri: https://api.gbif-uat.org/v1/occurrence/download/0000207-200429162749254
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Thu, 11 Jun 2020 16:17:48 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=3601
+      x-varnish: '328244'
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '661'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"key":"0000207-200429162749254","doi":"10.21373/dl.9f8ewt","license":"http://creativecommons.org/licenses/by/4.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"2435240"},{"type":"equals","key":"YEAR","value":"1974"},{"type":"equals","key":"MONTH","value":"2"}]},"sendNotification":false,"format":"DWCA"},"created":"2020-06-11T16:17:00.648+0000","modified":"2020-06-11T16:17:47.987+0000","eraseAfter":"2020-12-11T16:17:00.531+0000","status":"SUCCEEDED","downloadLink":"http://api.gbif-uat.org/v1/occurrence/download/request/0000207-200429162749254.zip","size":11895,"totalRecords":1,"numberDatasets":1}'
+  recorded_at: 2020-06-11 16:18:10 GMT
+  recorded_with: vcr/0.5.4.91, webmockr/0.6.2
+- request:
+    method: get
+    uri: https://api.gbif-uat.org/v1/occurrence/download/0000205-200429162749254
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Thu, 11 Jun 2020 16:17:59 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=3601
+      x-varnish: '328251'
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '662'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"key":"0000205-200429162749254","doi":"10.21373/dl.3mgje6","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"COUNTRY","value":"NZ"},{"type":"equals","key":"YEAR","value":"1993"},{"type":"equals","key":"MONTH","value":"1"}]},"sendNotification":false,"format":"DWCA"},"created":"2020-06-11T16:16:57.941+0000","modified":"2020-06-11T16:17:50.669+0000","eraseAfter":"2020-12-11T16:16:57.763+0000","status":"SUCCEEDED","downloadLink":"http://api.gbif-uat.org/v1/occurrence/download/request/0000205-200429162749254.zip","size":324308,"totalRecords":1501,"numberDatasets":16}'
+  recorded_at: 2020-06-11 16:18:10 GMT
+  recorded_with: vcr/0.5.4.91, webmockr/0.6.2
+- request:
+    method: get
+    uri: https://api.gbif-uat.org/v1/occurrence/download/0000206-200429162749254
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Thu, 11 Jun 2020 16:17:59 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=3601
+      x-varnish: '328253'
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '677'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"key":"0000206-200429162749254","doi":"10.21373/dl.tz3uxf","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"CATALOG_NUMBER","value":"Bird.27847588"},{"type":"equals","key":"YEAR","value":"1971"},{"type":"equals","key":"MONTH","value":"4"}]},"sendNotification":false,"format":"DWCA"},"created":"2020-06-11T16:16:59.414+0000","modified":"2020-06-11T16:17:42.840+0000","eraseAfter":"2020-12-11T16:16:59.293+0000","status":"SUCCEEDED","downloadLink":"http://api.gbif-uat.org/v1/occurrence/download/request/0000206-200429162749254.zip","size":8139,"totalRecords":0,"numberDatasets":0}'
+  recorded_at: 2020-06-11 16:18:10 GMT
+  recorded_with: vcr/0.5.4.91, webmockr/0.6.2
+- request:
+    method: get
+    uri: https://api.gbif-uat.org/v1/occurrence/download/0000207-200429162749254
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.0.91)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Thu, 11 Jun 2020 16:17:59 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=3601
+      x-varnish: '328255'
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '661'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"key":"0000207-200429162749254","doi":"10.21373/dl.9f8ewt","license":"http://creativecommons.org/licenses/by/4.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"2435240"},{"type":"equals","key":"YEAR","value":"1974"},{"type":"equals","key":"MONTH","value":"2"}]},"sendNotification":false,"format":"DWCA"},"created":"2020-06-11T16:17:00.648+0000","modified":"2020-06-11T16:17:47.987+0000","eraseAfter":"2020-12-11T16:17:00.531+0000","status":"SUCCEEDED","downloadLink":"http://api.gbif-uat.org/v1/occurrence/download/request/0000207-200429162749254.zip","size":11895,"totalRecords":1,"numberDatasets":1}'
+  recorded_at: 2020-06-11 16:18:10 GMT
+  recorded_with: vcr/0.5.4.91, webmockr/0.6.2

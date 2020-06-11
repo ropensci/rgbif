@@ -55,6 +55,7 @@ limit = 3, start = 10)
 \seealso{
 Other downloads: 
 \code{\link{download_predicate_dsl}},
+\code{\link{occ_download_cached}()},
 \code{\link{occ_download_cancel}()},
 \code{\link{occ_download_datasets}()},
 \code{\link{occ_download_get}()},

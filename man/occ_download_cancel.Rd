@@ -60,6 +60,7 @@ see \link{downloads} for an overview of GBIF downloads methods
 \seealso{
 Other downloads: 
 \code{\link{download_predicate_dsl}},
+\code{\link{occ_download_cached}()},
 \code{\link{occ_download_dataset_activity}()},
 \code{\link{occ_download_datasets}()},
 \code{\link{occ_download_get}()},

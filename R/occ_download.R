@@ -80,10 +80,10 @@
 #' @examples \dontrun{
 #' # occ_download(pred("basisOfRecord", "LITERATURE"))
 #' # occ_download(pred("taxonKey", 3119195), pred_gt("elevation", 5000))
-#' # occ_download(pred_gt("decimalLatitude", 50)
-#' # occ_download(pred_gte("elevation", 9000)
-#' # occ_download(pred_gte('decimalLatitude", 65)
-#' # occ_download(pred("country", "US")
+#' # occ_download(pred_gt("decimalLatitude", 50))
+#' # occ_download(pred_gte("elevation", 9000))
+#' # occ_download(pred_gte('decimalLatitude", 65))
+#' # occ_download(pred("country", "US"))
 #' # occ_download(pred("institutionCode", "TLMF"))
 #' # occ_download(pred("catalogNumber", 217880))
 #' 

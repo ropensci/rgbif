@@ -42,6 +42,7 @@ occ_download_meta(x)
 \seealso{
 Other downloads: 
 \code{\link{download_predicate_dsl}},
+\code{\link{occ_download_cached}()},
 \code{\link{occ_download_cancel}()},
 \code{\link{occ_download_dataset_activity}()},
 \code{\link{occ_download_datasets}()},

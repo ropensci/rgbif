@@ -331,6 +331,7 @@ is_null_or_na <- function(x) {
 # - NA
 # while detecting environments and passing on them
 rgbif_compact <- function(l) Filter(Negate(is_null_or_na), l)
+rc <- rgbif_compact
 
 compact_null <- function(l){
   tmp <- rgbif_compact(l)
@@ -381,7 +382,22 @@ gbif_GET_content <- function(url, args, curlopts = list()) {
 # other helpers --------------------
 cn <- function(x) if (length(x) == 0) NULL else x
 
-gbif_base <- function() 'https://api.gbif.org/v1'
+# gbif_base <- function() 'https://api.gbif.org/v1'
+gbif_allowed_urls <- c(
+  "https://api.gbif.org/v1",
+  "https://api.gbif-uat.org/v1"
+)
+gbif_base <- function() {
+  x <- Sys.getenv("RGBIF_BASE_URL", "")
+  if (identical(x, "")) {
+    x <- gbif_allowed_urls[1]
+  }
+  if (!x %in% gbif_allowed_urls) {
+    stop("the RGBIF_BASE_URL environment variable must be in set:\n",
+      paste0(gbif_allowed_urls, collapse = "  \n"))
+  }
+  return(x)
+}
 
 as_log <- function(x){
   stopifnot(is.logical(x) || is.null(x))
