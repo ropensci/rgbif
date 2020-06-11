@@ -19,7 +19,7 @@ dataset_search(
   limit = 100,
   start = NULL,
   pretty = FALSE,
-  return = "all",
+  return = NULL,
   curlopts = list()
 )
 }
@@ -75,8 +75,8 @@ with \code{limit} to page through results.}
 \item{pretty}{Print informative metadata using \code{\link{cat}}. Not easy
 to manipulate output though.}
 
-\item{return}{What to return. One of meta, descriptions, data, facets,
-or all (Default).}
+\item{return}{Defunct. All components are returned; index to the
+one(s) you want}
 
 \item{curlopts}{list of named curl options passed on to
 \code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
@@ -116,9 +116,6 @@ dataset_search(query="amsterdam", limit = 10)
 # Limited search
 dataset_search(type="OCCURRENCE", limit=2)
 dataset_search(type="OCCURRENCE", limit=2, start=10)
-
-# Return just descriptions
-dataset_search(type="OCCURRENCE", return="descriptions", limit = 10)
 
 # Return metadata in a more human readable way (hard to manipulate though)
 dataset_search(type="OCCURRENCE", pretty=TRUE, limit = 10)

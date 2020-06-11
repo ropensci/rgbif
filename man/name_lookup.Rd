@@ -24,7 +24,7 @@ name_lookup(
   hl = NULL,
   issue = NULL,
   verbose = FALSE,
-  return = "all",
+  return = NULL,
   curlopts = list()
 )
 }
@@ -139,17 +139,8 @@ response.}
 element. If \code{FALSE} (default) a subset of the data that is thought to be most
 essential is organized into a data.frame.}
 
-\item{return}{One of 'data', 'meta', 'facets', 'hierarchy', 'names' or 'all'
-(default). If 'data', a data.frame with the data. 'meta' returns the
-metadata for the entire call. 'facets' returns the facets, if
-\code{facet=TRUE}, or empy list if \code{facet=FALSE} or
-\code{facet=NULL}(default). 'hierarchies' returns the taxonomic hierarchy
-for each taxa in 'data'. 'names' returns the vernacular (common) names for
-each taxon. 'all' gives all data back as a list. Each element is NULL if
-there is no contents in that element. 'hierarchies' and 'names' slots are named
-by the GBIF key (taxon), which matches the first column of the data.frame in the
-data slot. So if you wanted to combine those somehow, you could easily do
-so using the key.}
+\item{return}{Defunct. All components are returned; index to the
+one(s) you want}
 
 \item{curlopts}{list of named curl options passed on to
 \code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
@@ -169,10 +160,7 @@ data.frame's, one per GBIF key (taxon), containing its taxonomic
 classification. Each data.frame contains two columns: \code{rankkey} and
 \code{name}. \code{names} returns a list of data.frame's, one per GBIF key
 (taxon), containing all vernacular names. Each data.frame contains two
-columns: \code{vernacularName} and \code{language}. If \code{return}
-parameter is set to something other than default ('all') you get back just
-what you asked, that means \code{meta}, \code{data}, \code{facets}, or
-\code{names}.
+columns: \code{vernacularName} and \code{language}.
 
 A list of length five:
 \itemize{
@@ -227,18 +215,8 @@ lapply(out$data, function(x) {
   x[!names(x) \%in\% c("descriptions","descriptionsSerialized")]
 })
 
-# Search for a genus, returning just data
-name_lookup(query="Cnaemidophorus", rank="genus", return="data")
-
-# Just metadata
-name_lookup(query="Cnaemidophorus", rank="genus", return="meta")
-
-# Just hierarchies
-name_lookup(query="Cnaemidophorus", rank="genus", return="hierarchy")
-
-# Just vernacular (common) names
-name_lookup(query='Cnaemidophorus', rank="genus", return="names")
-
+# Search for a genus
+name_lookup(query="Cnaemidophorus", rank="genus")
 # Limit records to certain number
 name_lookup('Helianthus annuus', rank="species", limit=2)
 
@@ -264,7 +242,7 @@ name_lookup(isExtinct=TRUE, limit=0)
 ## turn on highlighting
 res <- name_lookup(query='canada', hl=TRUE, limit=5)
 res$data
-name_lookup(query='canada', hl=TRUE, limit=45, return='data')
+name_lookup(query='canada', hl=TRUE, limit=45)
 ## and you can pass the output to gbif_names() function
 res <- name_lookup(query='canada', hl=TRUE, limit=5)
 gbif_names(res)

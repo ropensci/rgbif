@@ -90,17 +90,8 @@
 #' element. If \code{FALSE} (default) a subset of the data that is thought to be most
 #' essential is organized into a data.frame.
 #'
-#' @param return One of 'data', 'meta', 'facets', 'hierarchy', 'names' or 'all'
-#'   (default). If 'data', a data.frame with the data. 'meta' returns the
-#'   metadata for the entire call. 'facets' returns the facets, if
-#'   \code{facet=TRUE}, or empy list if \code{facet=FALSE} or
-#'   \code{facet=NULL}(default). 'hierarchies' returns the taxonomic hierarchy
-#'   for each taxa in 'data'. 'names' returns the vernacular (common) names for
-#'   each taxon. 'all' gives all data back as a list. Each element is NULL if
-#'   there is no contents in that element. 'hierarchies' and 'names' slots are named
-#'   by the GBIF key (taxon), which matches the first column of the data.frame in the
-#'   data slot. So if you wanted to combine those somehow, you could easily do
-#'   so using the key.
+#' @param return Defunct. All components are returned; index to the
+#' one(s) you want
 #'
 #' @return An object of class gbif, which is a S3 class list, with slots for
 #'   metadata (\code{meta}), the data itself (\code{data}), the taxonomic
@@ -115,10 +106,7 @@
 #'   classification. Each data.frame contains two columns: \code{rankkey} and
 #'   \code{name}. \code{names} returns a list of data.frame's, one per GBIF key
 #'   (taxon), containing all vernacular names. Each data.frame contains two
-#'   columns: \code{vernacularName} and \code{language}. If \code{return}
-#'   parameter is set to something other than default ('all') you get back just
-#'   what you asked, that means \code{meta}, \code{data}, \code{facets}, or
-#'   \code{names}.
+#'   columns: \code{vernacularName} and \code{language}.
 #'
 #' @return A list of length five:
 #' \itemize{

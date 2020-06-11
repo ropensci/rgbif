@@ -688,3 +688,27 @@ asl <- function(z) {
 last <- function(x) x[length(x)]
 
 mssg <- function(v, ...) if (v) message(...)
+
+rgbif_ck <- conditionz::ConditionKeeper$new(times = 1, condition = "warning")
+pchk <- function(from, pkg_version = "v3.0.0") {
+  assert(deparse(substitute(from)), "character")
+  assert(pkg_version, "character")
+  fun <- as.character(as.list(sys.call(-1))[[1]])
+  # & will be removed in a future version
+  param_mssg <- "`%s` param in `%s` function is defunct as of rgbif %s, and is ignored"
+  parms_help <- "\nSee `?rgbif` for more information."
+  once_per <- "\nThis warning will be thrown once per R session."
+  mssg <- c(sprintf(param_mssg, deparse(substitute(from)), fun, pkg_version),
+    parms_help, once_per)
+  if (!is.null(from))
+    rgbif_ck$handle_conditions(warning(mssg))
+}
+# pchk <- function(from, pkg_version = "v3.0") {
+#   assert(deparse(substitute(from)), "character")
+#   assert(pkg_version, "character")
+#   param_mssg <- "`%s` param is defunct as of rgbif %s"
+#   parms_help <- "\nSee `?rgbif` for more information."
+#   mssg <- c(sprintf(param_mssg, deparse(substitute(from)), pkg_version),
+#     parms_help)
+#   if (!is.null(from)) stop(mssg, call.=FALSE)
+# }

@@ -22,18 +22,9 @@
 #'   x[!names(x) %in% c("descriptions","descriptionsSerialized")]
 #' })
 #'
-#' # Search for a genus, returning just data
-#' name_lookup(query="Cnaemidophorus", rank="genus", return="data")
-#'
-#' # Just metadata
-#' name_lookup(query="Cnaemidophorus", rank="genus", return="meta")
-#'
-#' # Just hierarchies
-#' name_lookup(query="Cnaemidophorus", rank="genus", return="hierarchy")
-#'
-#' # Just vernacular (common) names
-#' name_lookup(query='Cnaemidophorus', rank="genus", return="names")
-#'
+#' # Search for a genus
+#' name_lookup(query="Cnaemidophorus", rank="genus")
+#
 #' # Limit records to certain number
 #' name_lookup('Helianthus annuus', rank="species", limit=2)
 #'
@@ -59,7 +50,7 @@
 #' ## turn on highlighting
 #' res <- name_lookup(query='canada', hl=TRUE, limit=5)
 #' res$data
-#' name_lookup(query='canada', hl=TRUE, limit=45, return='data')
+#' name_lookup(query='canada', hl=TRUE, limit=45)
 #' ## and you can pass the output to gbif_names() function
 #' res <- name_lookup(query='canada', hl=TRUE, limit=5)
 #' gbif_names(res)
@@ -88,8 +79,9 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
   isExtinct=NULL, habitat=NULL, nameType=NULL, datasetKey=NULL,
   origin=NULL, nomenclaturalStatus=NULL, limit=100, start=0, facet=NULL,
   facetMincount=NULL, facetMultiselect=NULL, type=NULL, hl=NULL, issue=NULL,
-  verbose=FALSE, return="all", curlopts = list()) {
+  verbose=FALSE, return=NULL, curlopts = list()) {
 
+  pchk(return)
   if (!is.null(facetMincount) && inherits(facetMincount, "numeric"))
     stop("Make sure facetMincount is character")
   if (!is.null(facet)) {
@@ -196,35 +188,10 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
   })
   names(vernames) <- vapply(out$results, "[[", numeric(1), "key")
 
-  # select output
-  return <- match.arg(return, c('meta', 'data', 'facets', 'hierarchy',
-                                'names', 'all'))
-
-  if (return == 'meta') {
-    out <- tibble::as_tibble(meta)
-  } else if (return == 'data') {
-    out <- data
-  } else if (return == 'facets') {
-    out <- facetsdat
-  } else if (return == 'hierarchy') {
-    out <- compact_null(hierdat)
-  } else if (return == 'names') {
-    out <- compact_null(vernames)
-  } else if (return == 'all') {
-    out <- list(meta = tibble::as_tibble(meta),
-                data = data,
-                facets = facetsdat,
-                hierarchies = compact_null(hierdat),
-                names = compact_null(vernames))
-  }
-  if (!return %in% c('meta', 'hierarchy', 'names')) {
-    if (inherits(out, "data.frame")) {
-      class(out) <- c('tbl_df', 'tbl', 'data.frame', 'gbif')
-    } else {
-      class(out) <- "gbif"
-      attr(out, 'type') <- "single"
-    }
-  }
-  structure(out, return = return, args = args)
+  out <- list(meta = tibble::as_tibble(meta),
+              data = data,
+              facets = facetsdat,
+              hierarchies = compact_null(hierdat),
+              names = compact_null(vernames))
+  structure(out, class = "gbif", type = "single", args = args)
 }
-

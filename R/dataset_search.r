@@ -8,8 +8,8 @@
 #' @template occ
 #' @template dataset
 #' @template dataset_facet
-#' @param return What to return. One of meta, descriptions, data, facets,
-#'    or all (Default).
+#' @param return Defunct. All components are returned; index to the
+#' one(s) you want
 #'
 #' @references <http://www.gbif.org/developer/registry#datasetSearch>
 #'
@@ -24,9 +24,6 @@
 #' # Limited search
 #' dataset_search(type="OCCURRENCE", limit=2)
 #' dataset_search(type="OCCURRENCE", limit=2, start=10)
-#'
-#' # Return just descriptions
-#' dataset_search(type="OCCURRENCE", return="descriptions", limit = 10)
 #'
 #' # Return metadata in a more human readable way (hard to manipulate though)
 #' dataset_search(type="OCCURRENCE", pretty=TRUE, limit = 10)
@@ -63,9 +60,10 @@
 dataset_search <- function(query = NULL, country = NULL, type = NULL,
   keyword = NULL, publishingOrg = NULL, hostingOrg = NULL,
   publishingCountry = NULL, decade = NULL, facet=NULL, facetMincount=NULL,
-  facetMultiselect=NULL, limit=100, start=NULL, pretty=FALSE, return="all",
+  facetMultiselect=NULL, limit=100, start=NULL, pretty=FALSE, return=NULL,
   curlopts = list()) {
 
+  pchk(return)
   if (!is.null(facetMincount) && inherits(facetMincount, "numeric")) {
     stop("Make sure facetMincount is character", call. = FALSE)
   }
@@ -127,16 +125,12 @@ dataset_search <- function(query = NULL, country = NULL, type = NULL,
         lapply(tt$results, parse_dataset)))
     }
 
-    # select output
-    return <- match.arg(return, c("meta", "descriptions", "data",
-                                  "facets", "all"))
-    switch(return,
-           meta = data.frame(meta),
-           descriptions = descs,
-           data = out,
-           facets = facetsdat,
-           all = list(meta = data.frame(meta), data = out,
-                      facets = facetsdat, descriptions = descs))
+    list(
+      meta = data.frame(meta), 
+      data = out, 
+      facets = facetsdat,
+      descriptions = descs
+    )
   }
 }
 

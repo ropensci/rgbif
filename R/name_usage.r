@@ -5,9 +5,8 @@
 #' @template nameusage
 #' @param limit Number of records to return. Default: 100.
 #' @param start Record number to start at. Default: 0.
-#' @param return One of 'data', 'meta', or 'all'. If 'data', a data.frame with
-#'   the data. 'meta' returns the metadata for the entire call. 'all' gives all
-#'   data back in a list.
+#' @param return Defunct. All components are returned; index to the
+#' one(s) you want
 #' @return An object of class gbif, which is a S3 class list, with slots for
 #'   metadata (\code{meta}) and the data itself (\code{data}). In addition, the
 #'   object has attributes listing the user supplied arguments and type of
@@ -15,9 +14,7 @@
 #'   'single' even if multiple values for some parameters are given. \code{meta}
 #'   is a list of length four with offset, limit, endOfRecords and count fields.
 #'   \code{data} is a tibble (aka data.frame) containing all information about
-#'   the found taxa. If \code{return} parameter is set to something other than
-#'   default ('all') you get back just what you asked, that means \code{meta} or
-#'   \code{data}.
+#'   the found taxa.
 #'
 #' @references <https://www.gbif.org/developer/species#nameUsages>
 #' @details
@@ -52,7 +49,8 @@
 #'
 #' # Name usage for all taxa in a dataset
 #' # (set sufficient high limit, but less than 100000)
-#' # name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42", limit = 10000)
+#' # name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42", 
+#' #  limit = 10000)
 #' # All name usages
 #' name_usage()
 #'
@@ -88,8 +86,9 @@
 
 name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
   datasetKey=NULL, uuid=NULL, rank=NULL, shortname=NULL,
-  start=0, limit=100, return='all', curlopts = list()) {
+  start=0, limit=100, return=NULL, curlopts = list()) {
 
+  pchk(return)
   # check limit and start params
   check_vals(limit, "limit")
   check_vals(start, "start")
@@ -147,24 +146,10 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
     # retrieve data in a single query
     out <- getdata(data, key, uuid, shortname, args, curlopts)
   }
-  # select output
-  return <- match.arg(return, c('meta','data','all'))
-  if (return == 'meta') {
-    out <- get_meta_nu(out)
-  } else {
-    if (return == 'data') {
-      out <- tibble::as_tibble(name_usage_parse(out, data))
-      class(out) <- c('tbl_df', 'tbl', 'data.frame', 'gbif')
-    } else {
-      out <- list(meta = get_meta_nu(out),
-                  data =  tibble::as_tibble(name_usage_parse(out, data))
-      )
-      class(out) <- "gbif"
-    }
-    # no multiple parameters possible in name_usage
-    attr(out, 'type') <- "single"
-  }
-  structure(out, return = return, args = args)
+
+  out <- list(meta = get_meta_nu(out),
+              data =  tibble::as_tibble(name_usage_parse(out, data)))
+  structure(out, class = "gbif", args = args, type = "single")
 }
 
 get_meta_nu <- function(x) {

@@ -5,7 +5,7 @@ test_that("returns the correct class", {
 
   vcr::use_cassette("name_lookup", {
     tt <- name_lookup(query='mammalia')
-    uu <- name_lookup(query='Cnaemidophorus', rank="genus", return="data")
+    uu <- name_lookup(query='Cnaemidophorus', rank="genus")
   }, preserve_exact_body_bytes = TRUE)
 
   expect_is(tt, "gbif")
@@ -17,21 +17,19 @@ test_that("returns the correct class", {
   expect_is(tt$data$canonicalName, "character")
   expect_is(tt$data$classKey, "integer")
 
-  expect_is(uu, "data.frame")
-  expect_is(uu, "tbl_df")
-  expect_is(uu, "tbl")
   expect_is(uu, "gbif")
+  expect_is(uu$data, "data.frame")
+  expect_is(uu$data, "tbl_df")
+  expect_equal(unique(tolower(uu$data$rank)), "genus")
 
   # returns the correct value
-  expect_equal(na.omit(tt$data$kingdom)[[2]], "Animalia")
+  expect_equal(unique(na.omit(tt$data$kingdom)), "Animalia")
 })
 
 test_that("works with habitat parameter", {
   vcr::use_cassette("name_lookup_habitat", {
     # with facet
     fachab <- name_lookup(facet='habitat', limit=0)
-    expect_is(fachab, "gbif")
-    expect_equal(fachab$facets$habitat$name, c("MARINE", "TERRESTRIAL", "FRESHWATER"))
 
     # with habitat parameter used
     facet_terr <- name_lookup(habitat = "terrestrial", limit=2)
@@ -39,8 +37,11 @@ test_that("works with habitat parameter", {
     facet_fresh <- name_lookup(habitat = "freshwater", limit=2)
 
     # another test
-    out <- name_lookup(habitat = "terrestrial", return = "data")
+    out <- name_lookup(habitat = "terrestrial")
   }, preserve_exact_body_bytes = TRUE)
+  
+  expect_is(fachab, "gbif")
+  expect_equal(fachab$facets$habitat$name, c("MARINE", "TERRESTRIAL", "FRESHWATER"))
 
   expect_is(facet_terr, "gbif")
   expect_is(facet_mar, "gbif")
@@ -52,7 +53,7 @@ test_that("works with habitat parameter", {
   expect_true(grepl("MARINE", facet_mar$data$habitats[1]))
   expect_true(grepl("FRESH", facet_fresh$data$habitats[1]))
 
-  expect_equal(sort(na.omit(out$habitats))[1], "FRESHWATER, MARINE, TERRESTRIAL")
+  expect_equal(sort(na.omit(out$data$habitats))[1], "FRESHWATER, MARINE, TERRESTRIAL")
 })
 
 # many args

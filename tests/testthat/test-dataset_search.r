@@ -63,13 +63,12 @@ test_that("limited search returns the correct", {
   expect_equal(dim(tt$data), c(2,8))
 })
 
-# Return just descriptions
-test_that("limited fields query returns the correct class", {
+# Return throws warning
+test_that("return defunct, throws warning", {
   vcr::use_cassette("dataset_search_return", {
-    tt <- dataset_search(type="OCCURRENCE", return="descriptions")
-  }, preserve_exact_body_bytes = TRUE)
-
-  expect_is(tt, "list")
+    expect_warning(dataset_search(type="OCCURRENCE", return="descriptions"),
+      "`return` param in `dataset_search` function is defunct")
+  })
 })
 
 # Return just descriptions

@@ -2,31 +2,23 @@ context("occ_get")
 
 test_that("returns the correct class", {
   vcr::use_cassette("occ_get", {
-    tt <- occ_get(key = 855998194, return = "data")
-    uu <- occ_get(key = 855998194, "hier")
-    vv <- occ_get(key = 855998194, "all")
+    tt <- occ_get(key = 855998194)
 
-    aa <- occ_get(key = 855998194, verbatim = TRUE)
-    bb <- occ_get(key = 855998194, verbatim = TRUE, fields = "all")
-    cc <- occ_get(key = c(855998194, 620594291),
-      fields = c("scientificName", "decimalLatitude", "basisOfRecord"),
-      verbatim = TRUE)
+    aa <- occ_get_verbatim(key = 855998194)
+    bb <- occ_get_verbatim(key = 855998194, fields = "all")
+    cc <- occ_get_verbatim(key = c(855998194, 620594291),
+      fields = c("scientificName", "decimalLatitude", "basisOfRecord"))
     dd <- occ_get(key = 855998194, fields = "all")
   }, preserve_exact_body_bytes = TRUE)
 
-  expect_is(tt, "data.frame")
-  expect_is(tt$key, "character")
-  expect_is(tt$scientificName, "character")
-
-  expect_is(uu, "data.frame")
-  expect_is(uu$name, "character")
-  expect_is(uu$key, "character")
-  expect_is(uu$rank, "character")
-
-  expect_is(vv, "list")
-  expect_is(vv$hierarchy, "data.frame")
-  expect_is(vv$media, "list")
-  expect_is(vv$data, "data.frame")
+  expect_is(tt, "list")
+  # not named
+  expect_named(tt, NULL)
+  expect_named(tt[[1]], c("hierarchy", "media", "data"))
+  expect_is(tt[[1]]$data, "data.frame")
+  expect_is(tt[[1]]$data$key, "character")
+  expect_is(tt[[1]]$data$scientificName, "character")
+  expect_lt(NCOL(tt[[1]]$data), 10)
 
   expect_is(aa, "data.frame")
   expect_is(aa$key, "character")
@@ -37,18 +29,14 @@ test_that("returns the correct class", {
   expect_is(bb$datasetKey, "character")
   expect_is(bb$gbifID, "character")
 
+  expect_is(cc, "data.frame")
+  expect_equal(NCOL(cc), 3)
+
   expect_is(dd, "list")
-  expect_is(dd$data$key, "character")
-  expect_is(dd$data$gbifID, "character")
-
-  # returns the correct dimensions
-  expect_equal(dim(tt), c(1, 5))
-  expect_equal(dim(uu), c(7, 3))
-  expect_equal(dim(vv), NULL)
-  expect_equal(dim(vv[[1]]), c(7, 3))
-
-  expect_equal(dim(aa), c(1, 4))
-  expect_equal(dim(cc), c(2, 3))
+  expect_named(dd, NULL)
+  expect_named(dd[[1]], c("hierarchy", "media", "data"))
+  expect_is(dd[[1]]$data, "data.frame")
+  expect_gt(NCOL(dd[[1]]$data), 60)
 })
 
 test_that("name_usage fails correctly", {
@@ -56,14 +44,14 @@ test_that("name_usage fails correctly", {
   expect_error(occ_get(key = 766766824, curlopts = list(timeout_ms = 1)))
 })
 
-test_that("works w/: verbatim=TRUE, fields all, & return extensions data", {
+test_that("works w/: fields all, & return extensions data", {
   keys <- c(1315970632, 1261282041, 1807810811, 1807914841)
 
   vcr::use_cassette("occ_get_other", {
-    aa <- occ_get(keys[1], fields = "all", verbatim = TRUE, return = "data")
-    bb <- occ_get(keys[2], fields = "all", verbatim = TRUE, return = "data")
-    cc <- occ_get(keys[3], fields = "all", verbatim = TRUE, return = "data")
-    dd <- occ_get(keys[4], fields = "all", verbatim = TRUE, return = "data")
+    aa <- occ_get_verbatim(keys[1], fields = "all")
+    bb <- occ_get_verbatim(keys[2], fields = "all")
+    cc <- occ_get_verbatim(keys[3], fields = "all")
+    dd <- occ_get_verbatim(keys[4], fields = "all")
   }, preserve_exact_body_bytes = TRUE)
 
   # extensions: Identification non-empty, Multimedia empty array

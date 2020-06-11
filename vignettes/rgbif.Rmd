@@ -136,19 +136,22 @@ out$names[2]
 Search for a genus
 
 ```{r name_lookup1}
-head(name_lookup(query='Cnaemidophorus', rank="genus", return="data"))
+z <- name_lookup(query='Cnaemidophorus', rank="genus")
+z$data
 ```
 
 Search for the class mammalia
 
 ```{r name_lookup2}
-head(name_lookup(query='mammalia', return = 'data'))
+w <- name_lookup(query='mammalia')
+w$data
 ```
 
 Look up the species Helianthus annuus
 
 ```{r name_lookup3}
-head(name_lookup(query = 'Helianthus annuus', rank="species", return = 'data'))
+m <- name_lookup(query = 'Helianthus annuus', rank="species")
+m$data
 ```
 
 The function `name_usage()` works with lots of different name endpoints in GBIF, listed at [http://www.gbif.org/developer/species#nameUsages](http://www.gbif.org/developer/species#nameUsages).
@@ -172,30 +175,16 @@ head( name_suggest(q='Puma concolor') )
 
 ## Single occurrence records
 
-Get data for a single occurrence. Note that data is returned as a list, with slots for metadata and data, or as a hierarchy, or just data.
-
-Just data
+Get data for a single occurrence. Note that data is returned as a list, with slots for metadata and data.
 
 ```{r occ_get1}
-occ_get(key=855998194, return='data')
-```
-
-Just taxonomic hierarchy
-
-```{r occ_get2}
-occ_get(key=855998194, return='hier')
-```
-
-All data, or leave return parameter blank
-
-```{r occ_get3}
-occ_get(key=855998194, return='all')
+occ_get(key=855998194)
 ```
 
 Get many occurrences. `occ_get` is vectorized
 
 ```{r occ_get4}
-occ_get(key=c(855998194, 240713150), return='data')
+occ_get(key=c(855998194, 240713150))
 ```
 
 

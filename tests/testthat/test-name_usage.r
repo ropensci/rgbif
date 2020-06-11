@@ -4,39 +4,17 @@ test_that("name_usage return parameter works", {
   skip_on_cran() # because fixture in .Rbuildignore
   
   vcr::use_cassette("name_usage_return_param", {
-    meta <- name_usage(return = "meta")
-    dat <- name_usage(return = "data")
-    all <- name_usage(return = "all")
+    # the 1st time does throw a warning
+    expect_warning((z = name_usage(return = "all")), 
+      "`return` param in `name_usage` function is defunct"
+    )
+    # the 2nd time does not throw any warnings
+    expect_warning((z = name_usage(return = "all")), 
+      NA
+    )
   })
-
-  # meta
-  expect_is(meta, "data.frame")
-  expect_is(meta, "tbl_df")
-  expect_is(meta, "tbl")
-  expect_named(meta, c('offset', 'limit', 'endOfRecords'))
-  expect_equal(meta$limit, 100)
-
-  # data
-  expect_is(dat, "data.frame")
-  expect_is(dat, "tbl_df")
-  expect_is(dat, "tbl")
-  expect_is(dat, "gbif")
-  expect_true(any(grepl("datasetKey", names(dat))))
-  expect_equal(NROW(dat), 100)
-
-  # both meta and data
-  expect_is(all, "gbif")
-  expect_named(all, c('meta', 'data'))
-  expect_is(all$meta, "data.frame")
-  expect_is(all$meta, "tbl_df")
-  expect_is(all$meta, "tbl")
-  expect_named(all$meta, c('offset', 'limit', 'endOfRecords'))
-  expect_equal(all$meta$limit, 100)
-  expect_is(all$data, "data.frame")
-  expect_is(all$data, "tbl_df")
-  expect_is(all$data, "tbl")
-  expect_true(any(grepl("datasetKey", names(all$data))))
-  expect_equal(NROW(all$data), 100)
+  # still returns data
+  expect_is(z, "gbif")
 })
 
 test_that("name_usage works", {
@@ -64,18 +42,6 @@ test_that("name_usage works", {
   expect_equal(length(uu), 2)
   expect_equal(NCOL(uu$meta), 3)
   expect_equal(NCOL(uu$data), 5)
-})
-
-test_that("name_usage with single taxon key and return='data': returns issues correctly", {
-  vcr::use_cassette("name_usage_return_data", {
-    x <- name_usage(key = 100037505, return = "data")
-  }, preserve_exact_body_bytes = TRUE)
-
-  expect_is(x, "data.frame")
-  expect_is(x, "tbl_df")
-  expect_is(x$key, "integer")
-  expect_is(x$issues, "character")
-  expect_is(x$issues[[1]], "character")
 })
 
 test_that("name_usage name route works", {

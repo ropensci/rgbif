@@ -15,7 +15,7 @@ name_usage(
   shortname = NULL,
   start = 0,
   limit = 100,
-  return = "all",
+  return = NULL,
   curlopts = list()
 )
 }
@@ -51,9 +51,8 @@ not do anything}
 
 \item{limit}{Number of records to return. Default: 100.}
 
-\item{return}{One of 'data', 'meta', or 'all'. If 'data', a data.frame with
-the data. 'meta' returns the metadata for the entire call. 'all' gives all
-data back in a list.}
+\item{return}{Defunct. All components are returned; index to the
+one(s) you want}
 
 \item{curlopts}{list of named curl options passed on to
 \code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
@@ -67,9 +66,7 @@ search, which is, differently from occurrence data, always equals to
 'single' even if multiple values for some parameters are given. \code{meta}
 is a list of length four with offset, limit, endOfRecords and count fields.
 \code{data} is a tibble (aka data.frame) containing all information about
-the found taxa. If \code{return} parameter is set to something other than
-default ('all') you get back just what you asked, that means \code{meta} or
-\code{data}.
+the found taxa.
 }
 \description{
 Lookup details for specific names in all taxonomies in GBIF.
@@ -121,7 +118,8 @@ name_usage(name='Puma', rank="GENUS")
 
 # Name usage for all taxa in a dataset
 # (set sufficient high limit, but less than 100000)
-# name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42", limit = 10000)
+# name_usage(datasetKey = "9ff7d317-609b-4c08-bd86-3bc404b77c42", 
+#  limit = 10000)
 # All name usages
 name_usage()
 

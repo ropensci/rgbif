@@ -2,26 +2,21 @@
 % Please edit documentation in R/occ_get.r
 \name{occ_get}
 \alias{occ_get}
-\title{Get data for specific GBIF occurrences.}
+\alias{occ_get_verbatim}
+\title{Get data for GBIF occurrences by occurrence key}
 \usage{
 occ_get(
-  key = NULL,
-  return = "all",
-  verbatim = FALSE,
+  key,
   fields = "minimal",
-  curlopts = list()
+  curlopts = list(),
+  return = NULL,
+  verbatim = NULL
 )
+
+occ_get_verbatim(key, fields = "minimal", curlopts = list())
 }
 \arguments{
-\item{key}{Occurrence key}
-
-\item{return}{One of data, hier, meta, or all. If "data", a data.frame
-with the data. "hier" returns the classifications in a list for each record.
-meta returns the metadata for the entire call. 'all' gives all data back
-in a list. Ignored if \code{verbatim=TRUE}.}
-
-\item{verbatim}{Return verbatim object (TRUE) or cleaned up object (FALSE,
-default).}
+\item{key}{(numeric/integer) one or more occurrence keys. required}
 
 \item{fields}{(character) Default ("minimal") will return just taxon name,
 key, latitude, and longitute. 'all' returns all fields. Or specify each
@@ -31,34 +26,37 @@ field you want returned by name, e.g. fields = c('name',
 \item{curlopts}{list of named curl options passed on to
 \code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
 for curl options}
+
+\item{return}{Defunct. All components are returned now; index to the
+one(s) you want}
+
+\item{verbatim}{Defunct. verbatim records can now be retrieved using
+\code{occ_get_verbatim()}}
 }
 \value{
-A data.frame or list of data.frame's.
+For \code{occ_get} a list of lists. For \code{occ_get_verbatim} a data.frame
 }
 \description{
-Get data for specific GBIF occurrences.
+Get data for GBIF occurrences by occurrence key
 }
 \examples{
 \dontrun{
-occ_get(key=855998194, return="data")
-occ_get(key=855998194, "hier")
-occ_get(key=855998194, 'all')
+occ_get(key=855998194)
 
 # many occurrences
-occ_get(key=c(101010, 240713150, 855998194), return="data")
+occ_get(key=c(101010, 240713150, 855998194))
 
 # Verbatim data
-occ_get(key=855998194, verbatim=TRUE)
-occ_get(key=855998194, fields='all', verbatim=TRUE)
-occ_get(key=855998194, fields=c('scientificName', 'lastCrawled', 'county'),
-  verbatim=TRUE)
-occ_get(key=c(855998194, 620594291), verbatim=TRUE)
-occ_get(key=c(855998194, 620594291), fields='all', verbatim=TRUE)
-occ_get(key=c(855998194, 620594291),
-   fields=c('scientificName', 'decimalLatitude', 'basisOfRecord'),
-   verbatim=TRUE)
+occ_get_verbatim(key=855998194)
+occ_get_verbatim(key=855998194, fields='all')
+occ_get_verbatim(key=855998194,
+ fields=c('scientificName', 'lastCrawled', 'county'))
+occ_get_verbatim(key=c(855998194, 620594291))
+occ_get_verbatim(key=c(855998194, 620594291), fields='all')
+occ_get_verbatim(key=c(855998194, 620594291),
+   fields=c('scientificName', 'decimalLatitude', 'basisOfRecord'))
 
-# Pass in curl options
+# curl options, pass in a named list
 occ_get(key=855998194, curlopts = list(verbose=TRUE))
 }
 }
