@@ -27,17 +27,16 @@
 #' @section Repeat parmeter inputs:
 #' Some parameters can take many inputs, and treated as 'OR' (e.g., a or b or
 #' c). The following take many inputs:
-#' \itemize{
-#'  \item **rank**
-#'  \item **datasetKey**
-#' }
+#' 
+#' - **rank**
+#' - **datasetKey**
 #'
 #' see also [many-values]
 #'
-#'
-#' @return A tibble data.frame with fields selected by fields arg. If
-#'   'higherClassificationMap' in fields, an object of class gbif, which
-#'   is a S3 class list) is returned.
+#' @return A list, with two elements `data` (tibble) and `hierarchy` (list of
+#' data.frame's). If 'higherClassificationMap' is one of the `fields` requested,
+#' then `hierarchy` is a list of data.frame's; if not included, `hierarchy`
+#' is an empty list.
 #'
 #' @examples \dontrun{
 #' name_suggest(q='Puma concolor')
@@ -63,7 +62,6 @@
 #' # Pass on curl options
 #' name_suggest(q='Puma', limit=200, curlopts = list(verbose=TRUE))
 #' }
-
 name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL,
                          start=NULL, limit=100, curlopts = list()) {
 
@@ -100,18 +98,18 @@ name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL,
     hier <- sapply(tt, function(x) x[ names(x) %in% "higherClassificationMap" ])
     hier <- unname(hier)
     names(hier) <- vapply(tt, "[[", numeric(1), "key")
-    out <- list(data = tibble::as_tibble(df), hierarchy = hier)
-    class(out) <- "gbif"
-    attr(out, 'type') <- "single"
+    df <- tibble::as_tibble(df)
   } else {
     out <- lapply(tt, function(x) x[names(x) %in% toget])
     out <- data.table::setDF(data.table::rbindlist(out,
                                                  use.names = TRUE, fill = TRUE))
-    out <- tibble::as_tibble(out)
-    class(out) <- c('tbl_df', 'tbl', 'data.frame', 'gbif')
+    df <- tibble::as_tibble(out)
+    hier <- list()
   }
+
+  result <- list(data = tibble::as_tibble(df), hierarchy = hier)
   args <- c(args, fields = toget)
-  structure(out, args = args)
+  structure(result, class = "gbif", type = "single", args = args)
 }
 
 #' Fields available in gbif_suggest function

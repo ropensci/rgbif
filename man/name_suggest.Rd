@@ -43,9 +43,10 @@ with \code{limit} to page through results.}
 for curl options}
 }
 \value{
-A tibble data.frame with fields selected by fields arg. If
-'higherClassificationMap' in fields, an object of class gbif, which
-is a S3 class list) is returned.
+A list, with two elements \code{data} (tibble) and \code{hierarchy} (list of
+data.frame's). If 'higherClassificationMap' is one of the \code{fields} requested,
+then \code{hierarchy} is a list of data.frame's; if not included, \code{hierarchy}
+is an empty list.
 }
 \description{
 A quick and simple autocomplete service that returns up to 20 name
