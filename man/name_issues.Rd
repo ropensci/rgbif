@@ -7,8 +7,7 @@
 name_issues(.data, ..., mutate = NULL)
 }
 \arguments{
-\item{.data}{Output from a call to \code{\link[=name_usage]{name_usage()}}, but only if
-\code{return="all"}, or \code{return="data"}, otherwise function stops with error.}
+\item{.data}{Output from a call to \code{\link[=name_usage]{name_usage()}}}
 
 \item{...}{Named parameters to only get back (e.g. bbmn), or to
 remove (e.g. -bbmn).}

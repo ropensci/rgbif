@@ -2,8 +2,7 @@
 #'
 #' @export
 #'
-#' @param .data Output from a call to [name_usage()], but only if
-#'   `return="all"`, or `return="data"`, otherwise function stops with error.
+#' @param .data Output from a call to [name_usage()]
 #' @param ... Named parameters to only get back (e.g. bbmn), or to
 #' remove (e.g. -bbmn).
 #' @param mutate (character) One of:
