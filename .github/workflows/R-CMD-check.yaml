@@ -57,11 +57,24 @@ jobs:
         run: |
           Rscript -e "remotes::install_github('r-hub/sysreqs')"
           sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
+          sudo add-apt-repository -y ppa:ubuntugis/ppa
           sudo -s eval "$sysreqs"
+          # install spatial dependencies
+          sudo add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable
+          sudo apt update
+          sudo apt install \
+            libudunits2-dev \
+            libproj-dev \
+            libgeos-dev \
+            libgdal-dev \
+            netcdf-bin \
+            libprotobuf-dev \
+            libprotoc-dev \
+            protobuf-compiler
       - name: Install dependencies
         run: |
           remotes::install_deps(dependencies = TRUE)
-          remotes::install_cran("rcmdcheck")
+          remotes::install_cran(c("rcmdcheck", "sf", "maps", "scales", "colorspace", "raster", "covr", "protolite"))
         shell: Rscript {0}
 
       - name: Session info
@@ -88,3 +101,8 @@ jobs:
         with:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
+
+      - name: Test coverage
+        if: matrix.config.os == 'macOS-latest' && matrix.config.r == 'release'
+        run: |
+          Rscript -e 'covr::codecov(token = "${{secrets.CODECOV_TOKEN}}")'
