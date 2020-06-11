@@ -1,15 +1,18 @@
 context("occ_download_queue")
 
+# set to dev GBIF API base url
+Sys.setenv(RGBIF_BASE_URL = "https://api.gbif-uat.org/v1")
+
 # get original env vars/R options
 keys <- c("GBIF_USER", "GBIF_PWD", "GBIF_EMAIL")
 lkeys <- tolower(keys)
 env_vars <- as.list(Sys.getenv(keys))
 r_opts <- stats::setNames(lapply(lkeys, getOption), lkeys)
 
-# FIXME: test this when request body matching works in vcr
+# Long running test block, skip except locally
 test_that("occ_download_queue: real request works", {
   skip_on_cran()
-  skip_on_travis()
+  skip_on_ci()
 
   vcr::use_cassette("occ_download_queue", {
     tt <- occ_download_queue(
@@ -68,6 +71,16 @@ test_that("occ_download_queue fails well", {
     "supply an email"
   )
 })
+
+test_that("occ_download_queue fails well", {
+  skip_on_cran()
+
+  expect_error(occ_download_queue(status_ping = "foobar"), 
+    "status_ping must be of class")
+})
+
+# cleanup url change
+Sys.unsetenv("RGBIF_BASE_URL")
 
 # set env vars/R options back to original
 invisible(do.call(Sys.setenv, env_vars))

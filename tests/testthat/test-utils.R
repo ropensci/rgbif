@@ -38,3 +38,20 @@ test_that("%||%", {
   expect_equal(5 %||% 6, 5)
   expect_equal(NULL %||% 6, 6)
 })
+
+test_that("gbif_base", {
+  # by default gbif_base() returns api.gbif.org
+  expect_equal(gbif_base(), "https://api.gbif.org/v1")
+  # after setting other url
+  Sys.setenv(RGBIF_BASE_URL = "https://api.gbif-uat.org/v1")
+  expect_equal(gbif_base(), "https://api.gbif-uat.org/v1")
+  # set back to main url
+  Sys.setenv(RGBIF_BASE_URL = "https://api.gbif.org/v1")
+  expect_equal(gbif_base(), "https://api.gbif.org/v1")
+  # cannot set to anything else
+  Sys.setenv(RGBIF_BASE_URL = "https://foo.bar")
+  expect_error(gbif_base())
+
+  # cleanup url change
+  Sys.unsetenv("RGBIF_BASE_URL")
+})
