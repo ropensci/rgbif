@@ -2,6 +2,7 @@
 % Please edit documentation in R/name_backbone.r
 \name{name_backbone}
 \alias{name_backbone}
+\alias{name_backbone_verbose}
 \title{Lookup names in the GBIF backbone taxonomy.}
 \usage{
 name_backbone(
@@ -14,7 +15,22 @@ name_backbone(
   family = NULL,
   genus = NULL,
   strict = FALSE,
-  verbose = FALSE,
+  verbose = NULL,
+  start = NULL,
+  limit = 100,
+  curlopts = list()
+)
+
+name_backbone_verbose(
+  name,
+  rank = NULL,
+  kingdom = NULL,
+  phylum = NULL,
+  class = NULL,
+  order = NULL,
+  family = NULL,
+  genus = NULL,
+  strict = FALSE,
   start = NULL,
   limit = 100,
   curlopts = list()
@@ -85,11 +101,10 @@ name_backbone(name='Helianthus', rank='genus', kingdom='plants')
 name_backbone(name='Poa', rank='genus', family='Poaceae')
 
 # Verbose - gives back alternatives
-name_backbone(name='Helianthus annuus', kingdom='plants', verbose=TRUE)
-
-# Strictness
-name_backbone(name='Poa', kingdom='plants', verbose=TRUE, strict=FALSE)
-name_backbone(name='Helianthus annuus', kingdom='plants', verbose=TRUE,
+## Strictness
+name_backbone_verbose(name='Poa', kingdom='plants',
+  strict=FALSE)
+name_backbone_verbose(name='Helianthus annuus', kingdom='plants',
   strict=TRUE)
 
 # Non-existent name - returns list of lenght 3 stating no match
@@ -101,5 +116,5 @@ name_backbone(name='Oenante', curlopts = list(verbose=TRUE))
 }
 }
 \references{
-\url{http://www.gbif.org/developer/species#searching}
+\url{https://www.gbif.org/developer/species#searching}
 }
