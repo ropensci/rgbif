@@ -12,48 +12,48 @@
 #' @param description Return descriptions only (TRUE) or all data (FALSE,
 #' default)
 #'
-#' @references <http://www.gbif.org/developer/registry#datasetSearch>
+#' @references <https://www.gbif.org/developer/registry#datasetSearch>
 #'
 #' @examples \dontrun{
 #' # Suggest datasets of type "OCCURRENCE".
-#' dataset_suggest(query="Amazon", type="OCCURRENCE")
+#' # dataset_suggest(query="Amazon", type="OCCURRENCE")
 #'
 #' # Suggest datasets tagged with keyword "france".
-#' dataset_suggest(keyword="france")
+#' # dataset_suggest(keyword="france")
 #'
 #' # Fulltext search for all datasets having the word "amsterdam" somewhere in
 #' # its metadata (title, description, etc).
-#' dataset_suggest(query="amsterdam")
+#' # dataset_suggest(query="amsterdam")
 #'
 #' # Limited search
-#' dataset_suggest(type="OCCURRENCE", limit=2)
-#' dataset_suggest(type="OCCURRENCE", limit=2, start=10)
+#' # dataset_suggest(type="OCCURRENCE", limit=2)
+#' # dataset_suggest(type="OCCURRENCE", limit=2, start=10)
 #'
 #' # Return just descriptions
-#' dataset_suggest(type="OCCURRENCE", limit = 5, description=TRUE)
+#' # dataset_suggest(type="OCCURRENCE", limit = 5, description=TRUE)
 #'
 #' # Return metadata in a more human readable way (hard to manipulate though)
-#' dataset_suggest(type="OCCURRENCE", limit = 5, pretty=TRUE)
+#' # dataset_suggest(type="OCCURRENCE", limit = 5, pretty=TRUE)
 #'
 #' # Search by country code. Lookup isocodes first, and use US for United States
 #' isocodes[agrep("UNITED", isocodes$gbif_name),]
-#' dataset_suggest(country="US", limit = 25)
+#' # dataset_suggest(country="US", limit = 25)
 #'
 #' # Search by decade
-#' dataset_suggest(decade=1980, limit = 30)
+#' # dataset_suggest(decade=1980, limit = 30)
 #'
 #' # Some parameters accept many inputs, treated as OR
-#' dataset_suggest(type = c("metadata", "checklist"))
-#' dataset_suggest(keyword = c("fern", "algae"))
-#' dataset_suggest(publishingOrg = c("e2e717bf-551a-4917-bdc9-4fa0f342c530",
-#'   "90fd6680-349f-11d8-aa2d-b8a03c50a862"))
-#' dataset_suggest(hostingOrg = c("c5f7ef70-e233-11d9-a4d6-b8a03c50a862",
-#'   "c5e4331-7f2f-4a8d-aa56-81ece7014fc8"))
-#' dataset_suggest(publishingCountry = c("DE", "NZ"))
-#' dataset_suggest(decade = c(1910, 1930))
+#' # dataset_suggest(type = c("metadata", "checklist"))
+#' # dataset_suggest(keyword = c("fern", "algae"))
+#' # dataset_suggest(publishingOrg = c("e2e717bf-551a-4917-bdc9-4fa0f342c530",
+#' #   "90fd6680-349f-11d8-aa2d-b8a03c50a862"))
+#' # dataset_suggest(hostingOrg = c("c5f7ef70-e233-11d9-a4d6-b8a03c50a862",
+#' #   "c5e4331-7f2f-4a8d-aa56-81ece7014fc8"))
+#' # dataset_suggest(publishingCountry = c("DE", "NZ"))
+#' # dataset_suggest(decade = c(1910, 1930))
 #'
 #' # curl options
-#' dataset_suggest(type="OCCURRENCE", limit = 2, curlopts = list(verbose=TRUE))
+#' # dataset_suggest(type="OCCURRENCE", limit = 2, curlopts = list(verbose=TRUE))
 #' }
 
 dataset_suggest <- function(query = NULL, country = NULL, type = NULL,
