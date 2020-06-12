@@ -4,7 +4,7 @@
 #' (res <- occ_data(taxonKey = key, limit = 400))
 #'
 #' # Return 20 results, this is the default by the way
-#' (key <- name_suggest(q='Helianthus annuus', rank='species')$key[1])
+#' (key <- name_suggest(q='Helianthus annuus', rank='species')$data$key[1])
 #' occ_data(taxonKey=key, limit=20)
 #'
 #' # Instead of getting a taxon key first, you can search for a name directly
@@ -81,7 +81,7 @@
 #'
 #' # Search for many species
 #' splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
-#' keys <- sapply(splist, function(x) name_suggest(x)$key[1], USE.NAMES=FALSE)
+#' keys <- sapply(splist, function(x) name_suggest(x)$data$key[1], USE.NAMES=FALSE)
 #' ## separate requests: use a vector of strings
 #' occ_data(taxonKey = keys, limit=5)
 #' ## one request, many instances of same parameter: use semi-colon sep. string
@@ -105,7 +105,7 @@
 #'    ((-97 41,-93 41,-93 45,-97 45,-97 41)))'
 #' occ_data(geometry = gsub("\n\\s+", "", wkt), limit = 20)
 #' ### polygon and taxonkey
-#' key <- name_suggest(q='Aesculus hippocastanum')$key[1]
+#' key <- name_suggest(q='Aesculus hippocastanum')$data$key[1]
 #' occ_data(taxonKey=key,
 #'  geometry='POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))',
 #'  limit=20)

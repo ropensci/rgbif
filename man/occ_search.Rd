@@ -485,7 +485,7 @@ See https://www.gbif.org/developer/occurrence
 \examples{
 \dontrun{
 # Search by species name, using \code{\link{name_backbone}} first to get key
-(key <- name_suggest(q='Helianthus annuus', rank='species')$key[1])
+(key <- name_suggest(q='Helianthus annuus', rank='species')$data$key[1])
 occ_search(taxonKey=key, limit=2)
 
 # Return 20 results, this is the default by the way
@@ -571,7 +571,7 @@ occ_search(taxonKey=2433407, limit=20,
 
 # Search for many species
 splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
-keys <- sapply(splist, function(x) name_suggest(x)$key[1], USE.NAMES=FALSE)
+keys <- sapply(splist, function(x) name_suggest(x)$data$key[1], USE.NAMES=FALSE)
 ## separate requests: use a vector of strings
 occ_search(taxonKey = keys, limit=5)
 ## one request, many instances of same parameter: use semi-colon sep. string
@@ -594,7 +594,7 @@ wkt <- 'MULTIPOLYGON(((-123 38,-116 38,-116 43,-123 43,-123 38)),
 occ_search(geometry = gsub("\n\\\\s+", "", wkt), limit = 20)
 
 ## taxonKey + WKT
-key <- name_suggest(q='Aesculus hippocastanum')$key[1]
+key <- name_suggest(q='Aesculus hippocastanum')$data$key[1]
 occ_search(taxonKey=key, geometry='POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))',
    limit=20)
 ## or using bounding box, converted to WKT internally

@@ -3,6 +3,7 @@ gbif_dl_env <- new.env()
 #' Fetch all downloads for a user
 #' @inheritParams occ_download
 #' @keywords internal
+#' @noRd
 #' @examples \dontrun{
 #' x <- dl_user()
 #' x
@@ -29,6 +30,7 @@ dl_user <- function(user = NULL, pwd = NULL, curlopts = list()) {
 #' Fetch all user download predicates
 #' @param user_df output from [dl_user()]
 #' @keywords internal
+#' @noRd
 #' @examples \dontrun{
 #' x <- dl_user()
 #' res <- dl_predicates(user_df = x)
@@ -118,6 +120,7 @@ dl_exists <- function(pred, preds) {
 #'   - sort by most recent request
 #'   - if the query age created is less than the `age` parameter, return `TRUE`
 #'   and the download key
+#' @noRd
 #' @examples \dontrun{
 #' preds <- dl_predicates(dl_user())
 #' preds
@@ -145,6 +148,7 @@ dl_match <- function(pred, preds, age = 30) {
 #' @title DownloadMatch
 #' @description download match handler
 #' @keywords internal
+#' @noRd
 DownloadMatch <- R6::R6Class(
   'DownloadMatch',
   public = list(
