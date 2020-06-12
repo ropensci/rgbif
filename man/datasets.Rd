@@ -63,5 +63,5 @@ datasets(data=c('deleted','duplicate'), curlopts = list(verbose=TRUE))
 }
 }
 \references{
-\url{http://www.gbif.org/developer/registry#datasets}
+\url{https://www.gbif.org/developer/registry#datasets}
 }

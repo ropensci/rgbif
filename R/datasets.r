@@ -16,7 +16,7 @@
 #' @param id A metadata document id.
 #'
 #' @return A list.
-#' @references <http://www.gbif.org/developer/registry#datasets>
+#' @references <https://www.gbif.org/developer/registry#datasets>
 #'
 #' @examples \dontrun{
 #' datasets(limit=5)
@@ -32,10 +32,10 @@
 #' # curl options
 #' datasets(data=c('deleted','duplicate'), curlopts = list(verbose=TRUE))
 #' }
-
 datasets <- function(data = 'all', type = NULL, uuid = NULL, query = NULL,
                      id = NULL, limit = 100, start=NULL, curlopts = list()) {
 
+  if (!is.null(type)) type <- toupper(type)
   args <- rgbif_compact(list(q = query, type = type, limit = as.integer(limit),
                              offset = start))
 
