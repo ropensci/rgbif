@@ -47,12 +47,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
   return=NULL, facet = NULL, facetMincount = NULL,
   facetMultiselect = NULL, skip_validate = TRUE, curlopts = list(), ...) {
 
-  # calls <- names(sapply(match.call(), deparse))[-1]
-  # if (any("return" %in% calls)) {
-  #   stop("The parameter `return` is defunct \n\nTo get just data see `?occ_data`")
-  # }
-  pchk(return)
-
+  pchk(return, "occ_search")
   geometry <- geometry_handler(geometry, geom_big, geom_size, geom_n)
   url <- paste0(gbif_base(), '/occurrence/search')
   argscoll <- NULL

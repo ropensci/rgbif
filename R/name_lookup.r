@@ -81,7 +81,7 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
   facetMincount=NULL, facetMultiselect=NULL, type=NULL, hl=NULL, issue=NULL,
   verbose=FALSE, return=NULL, curlopts = list()) {
 
-  pchk(return)
+  pchk(return, "name_lookup")
   if (!is.null(facetMincount) && inherits(facetMincount, "numeric"))
     stop("Make sure facetMincount is character")
   if (!is.null(facet)) {

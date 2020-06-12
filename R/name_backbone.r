@@ -63,7 +63,7 @@ name_backbone <- function(name, rank=NULL, kingdom=NULL, phylum=NULL,
   class=NULL, order=NULL, family=NULL, genus=NULL, strict=FALSE, verbose=NULL,
   start=NULL, limit=100, curlopts = list()) {
 
-  pchk(verbose)
+  pchk(verbose, "name_backbone")
   url <- paste0(gbif_base(), '/species/match')
   args <- rgbif_compact(
     list(name=name, rank=rank, kingdom=kingdom, phylum=phylum,

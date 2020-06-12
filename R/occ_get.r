@@ -34,8 +34,8 @@
 #' }
 occ_get <- function(key, fields="minimal", curlopts=list(), return=NULL,
   verbatim=NULL) {
-  pchk(return)
-  pchk(verbatim)
+  pchk(return, "occ_get")
+  pchk(verbatim, "occ_get")
   occ_get_helper(FALSE, key, fields, curlopts)
 }
 

@@ -88,7 +88,7 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
   datasetKey=NULL, uuid=NULL, rank=NULL, shortname=NULL,
   start=0, limit=100, return=NULL, curlopts = list()) {
 
-  pchk(return)
+  pchk(return, "name_usage")
   # check limit and start params
   check_vals(limit, "limit")
   check_vals(start, "start")

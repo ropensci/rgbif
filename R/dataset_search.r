@@ -63,7 +63,7 @@ dataset_search <- function(query = NULL, country = NULL, type = NULL,
   facetMultiselect=NULL, limit=100, start=NULL, pretty=FALSE, return=NULL,
   curlopts = list()) {
 
-  pchk(return)
+  pchk(return, "dataset_search")
   if (!is.null(facetMincount) && inherits(facetMincount, "numeric")) {
     stop("Make sure facetMincount is character", call. = FALSE)
   }
