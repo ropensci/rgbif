@@ -69,8 +69,7 @@ match against this if no direct match is found for the name alone.
 \item{strict}{(logical) If \code{TRUE} it (fuzzy) matches only the given name,
 but never a taxon in the upper classification (optional)}
 
-\item{verbose}{(logical) If \code{TRUE} show alternative matches considered which
-had been rejected.}
+\item{verbose}{(logical) Defunct. See function \code{name_backbone_verbose()}}
 
 \item{start}{Record number to start at. Default: 0. Use in combination
 with \code{limit} to page through results.}
@@ -82,17 +81,17 @@ with \code{limit} to page through results.}
 for curl options}
 }
 \value{
-A data.frame for a single taxon with many columns (default,
-\code{verbose=FALSE}) or a list of length two, first data.frame for the
-suggested taxon match, and a data.frame with alternative name suggestions
-resulting from fuzzy matching (with \code{verbose=TRUE}).
+For \code{name_backbone}, a data.frame for a single taxon with many
+columns. For \code{name_backbone_verbose} a list of length two (\code{data} and
+\code{alternatives}), first data.frame for the suggested taxon match, and a
+data.frame with alternative name suggestions resulting from fuzzy matching
 }
 \description{
 Lookup names in the GBIF backbone taxonomy.
 }
 \details{
-If you don't get a match, GBIF gives back a data.frame with columns \code{synonym}
-, \code{confidence}, and \code{matchType='NONE'}.
+If you don't get a match, GBIF gives back a data.frame with columns
+\code{synonym}, \code{confidence}, and \code{matchType='NONE'}.
 }
 \examples{
 \dontrun{
