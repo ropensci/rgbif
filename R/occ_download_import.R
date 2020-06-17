@@ -10,6 +10,9 @@
 #' @param fill (logical) (default: `FALSE`). If `TRUE` then in case
 #' the rows have unequal length, blank fields are implicitly filled.
 #' passed on to `fill` parameter in [data.table::fread].
+#' @param encoding (character) encoding to read in data; passed to
+#' [data.table::fread()]. default: "UTF-8". other allowed options:
+#' "Latin-1" and "unknown". see `?data.table::fread` docs
 #' @param ... parameters passed on to [data.table::fread()]
 #'
 #' @return a tibble (data.frame)
@@ -49,7 +52,10 @@
 #' # occ_download_import(x)
 #' }
 
-occ_download_import <- function(x=NULL, key=NULL, path=".", fill = FALSE, ...) {
+occ_download_import <- function(x=NULL, key=NULL, path=".", fill = FALSE, 
+  encoding = "UTF-8", ...) {
+
+  assert(encoding, "character")
   if (!is.null(x)) {
     stopifnot(inherits(x, "occ_download_get"))
     path <- x[[1]]
@@ -71,7 +77,8 @@ occ_download_import <- function(x=NULL, key=NULL, path=".", fill = FALSE, ...) {
   targetpath <- file.path(tmpdir, tpath)
   if (!file.exists(tmpdir)) stop("appropriate file not found", call. = FALSE)
   structure(tibble::as_tibble(
-    data.table::fread(targetpath, data.table = FALSE, fill = fill, ...)
+    data.table::fread(targetpath, data.table = FALSE, fill = fill, 
+      encoding = encoding, ...)
   ), type = "single")
 }
 
