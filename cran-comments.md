@@ -1,7 +1,7 @@
 ## Test environments
 
-* local OS X install, R 4.0.0 Patched
-* ubuntu 16.04 (on travis-ci), R 4.0.0
+* local OS X install, R 4.0.2
+* ubuntu 16.04 (on travis-ci), R 4.0.2
 * win-builder (devel and release)
 
 ## R CMD check results
@@ -14,7 +14,7 @@
 
 --------
 
-This version fixes makes many improvements and bug fixes, no changes to the package API.
+This version makes a breaking change, thus the major version bump; some minor fixes and a bug fix.
 
 Thanks!
 Scott Chamberlain

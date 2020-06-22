@@ -1,3 +1,24 @@
+rgbif 3.0
+=========
+
+### BREAKING CHANGE
+
+* Many functions (`occ_search`, `occ_get`, `name_usage`, `name_lookup`, `name_suggest`, `name_backbone`, and `dataset_search`) have a `return` parameter to toggle what is returned from the function call. To simplify rgbif maintainence, we've deprecated the `return` parameter. We've left it in each of the functions, but it no longer does anything, other than raising a warning if used. This means that function calls to these functions now always return the same data structure, making it easier to reason about for the user, as well as for us developers trying to make sure the package works as expected under a variety of conditions. If you have been using the `return` parameter, do the same function call as before, but now index to the output you need. This is a breaking change, thus the major version bump  (#413)
+
+### NEW FEATURES
+
+* new function `occ_download_cached()`, which takes the same input as `occ_download()`, but instead of starting a query, it checks if you've recently made the same request (with configureable settings for what "recent" means). This can save time when you're doing occurrence download requests that you may have done in the recent past (#308)
+
+### MINOR IMPROVEMENTS
+
+* configured package to be able to use two different base urls, `api.gbif-uat.org` and `api.gbif.org`. We have only used the latter previously, but now can configure rgbif to use the former, mostly for testing purposes  (#398)
+* `occ_download_import()` gains `encoding` parameter that is passed down to `data.table::fread` to make it very clear that encoding can be configured (even though you could have before via `...`) (#414)
+
+### BUG FIXES
+
+* fix tibble construction (#412)
+
+
 rgbif 2.3
 =========
 
