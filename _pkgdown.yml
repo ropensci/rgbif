@@ -23,7 +23,7 @@ reference:
       - starts_with("gbif_oai_")
   - title: "Registry"
     desc: >
-      GBIF registry functions
+      GBIF registry functions <https://www.gbif.org/developer/registry>
     contents:
       - starts_with("dataset_")
       - datasets
@@ -33,18 +33,18 @@ reference:
       - installations
   - title: "Maps"
     desc: >
-      Work with the GBIF Maps API
+      Work with the GBIF Maps API <https://www.gbif.org/developer/maps>
     contents:
       - map_fetch
       - mvt_fetch
   - title: "Names"
     desc: >
-      Work with the GBIF taxonomic names API
+      Work with the GBIF taxonomic names API <https://www.gbif.org/developer/species>
     contents:
       - starts_with("name_")
   - title: "Occurrence Downloads"
     desc: >
-      Work with the GBIF occurrence downloads APIs
+      Work with the GBIF occurrence downloads APIs <https://www.gbif.org/developer/occurrence#download>
     contents:
       - starts_with("occ_download")
       - as.download
@@ -52,7 +52,7 @@ reference:
       - download_predicate_dsl
   - title: "Occurrence Search"
     desc: >
-       Work with the GBIF occurrence search APIs
+       Work with the GBIF occurrence search APIs <https://www.gbif.org/developer/occurrence>
     contents:
       - occ_facet
       - occ_get

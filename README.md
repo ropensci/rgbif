@@ -14,7 +14,11 @@
 
 `rgbif` gives you access to data from [GBIF][] via their REST API. GBIF versions their API - we are currently using `v1` of their API. You can no longer use their old API in this package - see `?rgbif-defunct`.
 
-Maximum number of records you can get with `occ_search()` and `occ_data()` is 100,000. See https://www.gbif.org/developer/occurrence
+Please cite rgbif. Run the following to get the appropriate citation for the version you're using:
+
+```r
+citation(package = "rgbif")
+```
 
 To get started, see:
 
@@ -25,31 +29,7 @@ To get started, see:
 
 Check out the `rgbif` [paper][] for more information on this package and the sister [Python][pygbif] and [Ruby][gbifrb] clients.
 
-## Package API
-
-The `rgbif` package API follows the GBIF API, which has the following sections:
-
-* `registry` (<https://www.gbif.org/developer/registry>) - Metadata on datasets, and
-contributing organizations, installations, networks, and nodes
-    * `rgbif` functions: `dataset_metrics()`, `dataset_search()`, `dataset_suggest()`,
-    `datasets()`, `enumeration()`, `enumeration_country()`, `installations()`, `networks()`,
-    `nodes()`, `organizations()`
-    * Registry also includes the GBIF OAI-PMH service, which includes GBIF registry
-    data only. `rgbif` functions: `gbif_oai_get_records()`, `gbif_oai_identify()`,
-    `gbif_oai_list_identifiers()`, `gbif_oai_list_metadataformats()`,
-    `gbif_oai_list_records()`, `gbif_oai_list_sets()`
-* `species` (<https://www.gbif.org/developer/species>) - Species names and metadata
-    * `rgbif` functions: `name_backbone()`, `name_lookup()`, `name_suggest()`, `name_usage()`
-* `occurrences` (<https://www.gbif.org/developer/occurrence>) - Occurrences, both for
-the search and download APIs
-    * `rgbif` functions: `occ_count()`, `occ_data()`, `occ_download()`, `occ_download_prep()`, `occ_download_queue()`, `occ_download_cancel()`,
-    `occ_download_cancel_staged()`, `occ_download_get()`, `occ_download_import()`,
-    `occ_download_list()`, `occ_download_meta()`, `occ_download_datasets()`, `occ_download_dataset_activity()`, `occ_get()`, `occ_issues()`,
-    `occ_issues_lookup()`, `occ_metadata()`, `occ_search()`, `pred()`, `preds()`, `pred_multi()`
-* `maps` (<https://www.gbif.org/developer/maps>) - Map API
-    * `rgbif` functions: `map_fetch()`
-    * Note: we used to have a function `gbifmap()` that used `ggplot2` to plot data from the
-    occurrence API, but it's been removed - see package [mapr][]
+Note: Maximum number of records you can get with `occ_search()` and `occ_data()` is 100,000. See https://www.gbif.org/developer/occurrence
 
 ## Installation
 
@@ -96,12 +76,6 @@ install.packages('rgbif')
 ## Screencast
 
 <a href="https://vimeo.com/127119010"><img src="man/figures/README-screencast.png" width="400"></a>
-
-## Contributors
-
-This list honors all contributors in alphabetical order. Code contributors are in bold.
-
-[adamdsmith](https://github.com/adamdsmith) - [AgustinCamacho](https://github.com/AgustinCamacho) - [AldoCompagnoni](https://github.com/AldoCompagnoni) - [AlexPeap](https://github.com/AlexPeap) - [andzandz11](https://github.com/andzandz11) - [AshleyWoods](https://github.com/AshleyWoods) - [AugustT](https://github.com/AugustT) - [barthoekstra](https://github.com/barthoekstra) - **[benmarwick](https://github.com/benmarwick)** - [cathynewman](https://github.com/cathynewman) - [cboettig](https://github.com/cboettig) - [coyotree](https://github.com/coyotree) - **[damianooldoni](https://github.com/damianooldoni)** - [dandaman](https://github.com/dandaman) - [djokester](https://github.com/djokester) - [dlebauer](https://github.com/dlebauer) - **[dmcglinn](https://github.com/dmcglinn)** - [dnoesgaard](https://github.com/dnoesgaard) - [DupontCai](https://github.com/DupontCai) - [ecology-data-science](https://github.com/ecology-data-science) - [EDiLD](https://github.com/EDiLD) - [elgabbas](https://github.com/elgabbas) - [emhart](https://github.com/emhart) - [fxi](https://github.com/fxi) - [ghost](https://github.com/ghost) - [gkburada](https://github.com/gkburada) - [hadley](https://github.com/hadley) - [Huasheng12306](https://github.com/Huasheng12306) - [ibartomeus](https://github.com/ibartomeus) - **[JanLauGe](https://github.com/JanLauGe)** - **[jarioksa](https://github.com/jarioksa)** - **[jeroen](https://github.com/jeroen)** - [jhnwllr](https://github.com/jhnwllr) - [jhpoelen](https://github.com/jhpoelen) - [jivelasquezt](https://github.com/jivelasquezt) - [jkmccarthy](https://github.com/jkmccarthy) - **[johnbaums](https://github.com/johnbaums)** - [jtgiermakowski](https://github.com/jtgiermakowski) - [jwhalennds](https://github.com/jwhalennds) - **[karthik](https://github.com/karthik)** - [kgturner](https://github.com/kgturner) - [Kim1801](https://github.com/Kim1801) - [ljuliusson](https://github.com/ljuliusson) - [ljvillanueva](https://github.com/ljvillanueva) - [luisDVA](https://github.com/luisDVA) - [martinpfannkuchen](https://github.com/martinpfannkuchen) - [MattBlissett](https://github.com/MattBlissett) - [MattOates](https://github.com/MattOates) - [maxhenschell](https://github.com/maxhenschell) - **[mdsumner](https://github.com/mdsumner)** - [no-la-ngo](https://github.com/no-la-ngo) - [Octoberweather](https://github.com/Octoberweather) - [Pakillo](https://github.com/Pakillo) - **[peterdesmet](https://github.com/peterdesmet)** - [PhillRob](https://github.com/PhillRob) - [poldham](https://github.com/poldham) - [qgroom](https://github.com/qgroom) - [raymondben](https://github.com/raymondben) - [rossmounce](https://github.com/rossmounce) - [sacrevert](https://github.com/sacrevert) - [sagitaninta](https://github.com/sagitaninta) - **[sckott](https://github.com/sckott)** - [scottsfarley93](https://github.com/scottsfarley93) - [simon-tarr](https://github.com/simon-tarr) - **[SriramRamesh](https://github.com/SriramRamesh)** - [stevenpbachman](https://github.com/stevenpbachman) - [stevensotelo](https://github.com/stevensotelo) - **[stevenysw](https://github.com/stevenysw)** - [TomaszSuchan](https://github.com/TomaszSuchan) - [tphilippi](https://github.com/tphilippi) - [vandit15](https://github.com/vandit15) - [vervis](https://github.com/vervis) - **[vijaybarve](https://github.com/vijaybarve)** - [willgearty](https://github.com/willgearty) - [Xuletajr](https://github.com/Xuletajr) - [yvanlebras](https://github.com/yvanlebras) - [zixuan75](https://github.com/zixuan75)
 
 
 ## Meta
