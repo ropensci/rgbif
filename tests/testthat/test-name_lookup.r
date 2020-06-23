@@ -23,7 +23,7 @@ test_that("returns the correct class", {
   expect_equal(unique(tolower(uu$data$rank)), "genus")
 
   # returns the correct value
-  expect_equal(unique(na.omit(tt$data$kingdom)), "Animalia")
+  expect_true(any(unique(na.omit(tt$data$kingdom)) == "Animalia"))
 })
 
 test_that("works with habitat parameter", {
