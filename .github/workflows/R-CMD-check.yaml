@@ -78,7 +78,7 @@ jobs:
       - name: Install dependencies
         run: |
           remotes::install_deps(dependencies = TRUE)
-          remotes::install_cran(c("rcmdcheck", "sf", "maps", "scales", "colorspace", "raster", "covr", "protolite"))
+          remotes::install_cran(c("rcmdcheck", "sf", "maps", "scales", "colorspace", "raster", "protolite"))
         shell: Rscript {0}
 
       - name: Session info
@@ -107,6 +107,6 @@ jobs:
           path: check
 
       - name: Test coverage
-        if: matrix.config.os == 'macOS-latest' && matrix.config.r == 'release'
+        if: matrix.config.os == 'ubuntu-16.04' && matrix.config.r == 'release'
         run: |
-          Rscript -e 'covr::codecov(token = "${{secrets.CODECOV_TOKEN}}")'
+          Rscript -e 'remotes::install_cran("covr")' -e 'covr::codecov(token = "${{secrets.CODECOV_TOKEN}}")'
