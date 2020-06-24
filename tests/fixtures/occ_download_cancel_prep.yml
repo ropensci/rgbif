@@ -1,0 +1,38 @@
+http_interactions:
+- request:
+    method: post
+    uri: https://api.gbif.org/v1/occurrence/download/request
+    body:
+      encoding: ''
+      string: '{"creator":"<gbif_user>","notification_address":["<gbif_email>"],"format":"DWCA","predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"9206251"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1979"}]}}'
+    headers:
+      Accept-Encoding: gzip, deflate
+      User-Agent: r-curl/4.3 crul/0.9.2.92 rOpenSci(rgbif/3.0.0.91)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.2.92 rOpenSci(rgbif/3.0.0.91)
+      Content-Type: application/json
+      Accept: application/json
+  response:
+    status:
+      status_code: '201'
+      message: Created
+      explanation: Document created, URL follows
+    headers:
+      status: HTTP/1.1 201 Created
+      date: Wed, 24 Jun 2020 15:14:01 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      location: http://api.gbif.org/v1/occurrence/download/request/0007553-200613084148143
+      cache-control: public, max-age=3601
+      x-varnish: '1007386857'
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      content-length: '23'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: 0007553-200613084148143
+  recorded_at: 2020-06-24 15:14:03 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.6.2

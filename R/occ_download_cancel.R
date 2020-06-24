@@ -32,7 +32,7 @@
 occ_download_cancel <- function(key, user = NULL, pwd = NULL,
   curlopts = list()) {
 
-  stopifnot(!is.null(key))
+  assert(key, c("character", "occ_download"))
   user <- check_user(user)
   pwd <- check_pwd(pwd)
   url <- sprintf('%s/occurrence/download/request/%s', gbif_base(), key)
@@ -51,7 +51,7 @@ occ_download_cancel_staged <- function(user = NULL, pwd = NULL, limit = 20,
   start = 0, curlopts = list()) {
 
   hh <- occ_download_list(user, pwd, limit, start, curlopts)$results
-  run_or_prep <- hh[ hh$status %in% c("RUNNING","PREPARING"), "key" ]
+  run_or_prep <- hh[ hh$status %in% c("RUNNING","PREPARING"),]$key
   if (length(run_or_prep) == 0) return(message("no staged downloads"))
   lapply(run_or_prep, occ_download_cancel, user = user, pwd = pwd)
   invisible()

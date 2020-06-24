@@ -1,6 +1,7 @@
 library("vcr")
 invisible(vcr::vcr_configure(
   dir = "../fixtures",
+  write_disk_path = "../files",
   filter_sensitive_data = list(
     "<gbif_user>" = Sys.getenv("GBIF_USER"),
     "<gbif_pwd>" = Sys.getenv("GBIF_PWD"),

@@ -24,6 +24,8 @@
 #' }
 
 occ_download_get <- function(key, path=".", overwrite=FALSE, ...) {
+  assert(path, "character")
+  assert(overwrite, "logical")
   meta <- occ_download_meta(key)
   size <- getsize(meta$size)
   message(sprintf('Download file size: %s MB', size))

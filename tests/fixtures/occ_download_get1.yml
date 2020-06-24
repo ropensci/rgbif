@@ -1,0 +1,74 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/download/0000066-140928181241064
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/4.3 crul/0.9.2.92 rOpenSci(rgbif/3.0.0.91)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.2.92 rOpenSci(rgbif/3.0.0.91)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
+      content-type: application/json
+      date: Wed, 24 Jun 2020 14:59:48 GMT
+      cache-control: public, max-age=3601
+      x-varnish: '971377693'
+      age: '0'
+      via: 1.1 varnish (Varnish/5.2)
+      accept-ranges: bytes
+      content-length: '514'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"key":"0000066-140928181241064","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"equals","key":"ELEVATION","value":"9500"},"sendNotification":false,"format":"DWCA"},"created":"2014-09-29T06:00:16.704+0000","modified":"2014-09-29T06:01:29.520+0000","eraseAfter":"2015-03-29T06:00:16.704+0000","status":"SUCCEEDED","downloadLink":"http://api.gbif.org/v1/occurrence/download/request/0000066-140928181241064.zip","size":143097,"totalRecords":470,"numberDatasets":26}'
+  recorded_at: 2020-06-24 14:59:50 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.6.2
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/download/request/0000066-140928181241064
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/4.3 crul/0.9.2.92 rOpenSci(rgbif/3.0.0.91)
+      X-USER-AGENT: r-curl/4.3 crul/0.9.2.92 rOpenSci(rgbif/3.0.0.91)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Wed, 24 Jun 2020 14:59:49 GMT
+      accept-ranges: bytes
+      content-disposition: attachment; filename=0000066-140928181241064.zip
+      last-modified: Sun, 04 Jun 2017 18:49:06 GMT
+      content-type: application/octet-stream; qs=0.5
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      content-length: '143097'
+      connection: close
+      server: Jetty(9.3.z-SNAPSHOT)
+    body:
+      encoding: UTF-8
+      file: yes
+      string: ../files/0000066-140928181241064.zip
+  recorded_at: 2020-06-24 14:59:50 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.6.2
