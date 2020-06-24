@@ -184,7 +184,7 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
 
   # vernacular names
   vernames <- lapply(out$results, function(x){
-    rbind_fill(lapply(x$vernacularNames, data.frame))
+    setdfrbind(lapply(x$vernacularNames, data.frame))
   })
   names(vernames) <- vapply(out$results, "[[", numeric(1), "key")
 

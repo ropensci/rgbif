@@ -121,8 +121,7 @@ dataset_search <- function(query = NULL, country = NULL, type = NULL,
     } else if (length(tt$results) == 1) {
       out <- parse_dataset(x = tt$results)
     } else {
-      out <- tibble::as_tibble(do.call(rbind_fill,
-        lapply(tt$results, parse_dataset)))
+      out <- tibble::as_tibble(setdfrbind(lapply(tt$results, parse_dataset)))
     }
 
     list(

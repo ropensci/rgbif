@@ -11,10 +11,11 @@ wkt_parse(wkt, geom_big, geom_size = 40, geom_n = 10)
 
 \item{geom_big}{(character) One of "axe" or "bbox". Required.}
 
-\item{geom_size}{(integer) An integer indicating size of the cell. Default: 40. See Details.}
+\item{geom_size}{(integer) An integer indicating size of the cell.
+Default: 40.}
 
-\item{geom_n}{(integer) An integer indicating number of cells in each dimension. Default: 10.
-See Details.}
+\item{geom_n}{(integer) An integer indicating number of cells in
+each dimension. Default: 10.}
 }
 \description{
 parse wkt into smaller bits

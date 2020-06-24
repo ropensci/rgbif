@@ -91,7 +91,7 @@ name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL,
                    name = do.call(c, unname(temp)), stringsAsFactors = FALSE)
     }
     out <- lapply(tt, function(x) x[names(x) %in% toget])
-    df <- do.call(rbind_fill, lapply(out, function(x){
+    df <- setdfrbind(lapply(out, function(x) {
       data.frame(x[ !names(x) %in% "higherClassificationMap" ],
                  stringsAsFactors = FALSE)
     }))

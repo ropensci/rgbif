@@ -82,8 +82,7 @@ dataset_suggest <- function(query = NULL, country = NULL, type = NULL,
     if (length(tt) == 1) {
       out <- parse_suggest(x = tt$results)
     } else {
-      out <- tibble::as_tibble(do.call(rbind_fill,
-                                           lapply(tt, parse_suggest)))
+      out <- tibble::as_tibble(setdfrbind(lapply(tt, parse_suggest)))
     }
   }
 

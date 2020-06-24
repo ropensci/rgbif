@@ -176,7 +176,7 @@ gbifparser_verbatim <- function(input, fields="minimal") {
   if (is.numeric(input[[1]])) {
     data.frame(parse(input), stringsAsFactors = FALSE)
   } else {
-    do.call(rbind_fill, lapply(input, function(w) data.frame(parse(w),
+    setdfrbind(lapply(input, function(w) data.frame(parse(w),
       stringsAsFactors = FALSE)))
   }
 }
@@ -184,9 +184,9 @@ gbifparser_verbatim <- function(input, fields="minimal") {
 
 ldfast <- function(x, convertvec=FALSE){
   if (convertvec) {
-    do.call(rbind_fill, lapply(x, convert2df))
+    setdfrbind(lapply(x, convert2df))
   } else {
-    do.call(rbind_fill, x)
+    setdfrbind(x)
   }
 }
 
@@ -194,11 +194,7 @@ ldfast_names <- function(x, convertvec=FALSE){
   for (i in seq_along(x)) {
     x[[i]] <- data.frame(.id = names(x)[i], x[[i]], stringsAsFactors = FALSE)
   }
-  if (convertvec) {
-    do.call(rbind_fill, lapply(x, convert2df))
-  } else {
-    do.call(rbind_fill, x)
-  }
+  ldfast(x, convertvec)
 }
 
 convert2df <- function(x){
@@ -214,23 +210,6 @@ rbind_rows <- function(x) {
   tmp <- data.frame(.id = row.names(tmp), V1 = tmp, stringsAsFactors = FALSE)
   row.names(tmp) <- NULL
   tmp
-}
-
-# Parser for gbif data
-datasetparser <- function(input, minimal=TRUE){
-  parse <- function(x){
-    x[sapply(x, length) == 0] <- "none"
-    contacts <- ldfast(x$contacts, TRUE)
-    endpoints <- ldfast(x$endpoints, TRUE)
-    identifiers <- ldfast(x$identifiers, TRUE)
-    rest <- x[!names(x) %in% c('contacts','endpoints','identifiers')]
-    list(other=rest, contacts=contacts, endpoints=endpoints, identifiers=identifiers)
-  }
-  if(is.character(input[[1]])){
-    parse(input)
-  } else {
-    lapply(input, parse)
-  }
 }
 
 #' Custom ggplot2 theme
@@ -701,4 +680,19 @@ pchk <- function(from, fun, pkg_version = "v3.0.0") {
     parms_help, once_per)
   if (!is.null(from))
     rgbif_ck$handle_conditions(warning(mssg))
+}
+
+tryDefault <- function(expr, default, quiet = FALSE) {
+  result <- default
+  if (quiet) {
+    tryCatch(result <- expr, error = function(e) NULL)
+  }
+  else {
+    try(result <- expr)
+  }
+  result
+}
+fail_with <- function(default = NULL, f, quiet = FALSE) {
+  f <- match.fun(f)
+  function(...) tryDefault(f(...), default, quiet = quiet)
 }
