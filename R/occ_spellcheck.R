@@ -4,6 +4,6 @@
 #' @rdname occ_spellcheck-defunct
 #' @keywords internal
 #' @param ... ignored
-occ_spellcheck <- function(...) {
+occ_spellcheck <- function(...) { # nocov start
   .Defunct(msg="the spellCheck parameter has been removed")
-}
+} # nocov end

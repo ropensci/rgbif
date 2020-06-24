@@ -4,7 +4,7 @@
 #' This function is defunct
 #'
 #' @keywords internal
-density_spplist <- function(...)
+density_spplist <- function(...) # nocov start
 {
   .Defunct(msg="This function is defunct. There is no longer a similar function.")
 }
@@ -266,4 +266,4 @@ get_credentials = function(...){
 #' @keywords internal
 gbifmap <- function(...) {
   .Defunct(package = "mapr", msg = "See 'mapr' package for plotting GBIF data")
-}
+} # nocov end

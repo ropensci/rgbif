@@ -3,9 +3,10 @@
 #' @export
 #' @param wkt (character) A WKT string. Required.
 #' @param geom_big (character) One of "axe" or "bbox". Required.
-#' @param geom_size (integer) An integer indicating size of the cell. Default: 40. See Details.
-#' @param geom_n (integer) An integer indicating number of cells in each dimension. Default: 10.
-#' See Details.
+#' @param geom_size (integer) An integer indicating size of the cell.
+#' Default: 40.
+#' @param geom_n (integer) An integer indicating number of cells in
+#' each dimension. Default: 10.
 #' @examples
 #' wkt <- "POLYGON((13.26349675655365 52.53991761181831,18.36115300655365 54.11445544219924,
 #' 21.87677800655365 53.80418956368524,24.68927800655365 54.217364774722455,28.20490300655365

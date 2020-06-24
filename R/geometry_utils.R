@@ -4,8 +4,10 @@ geometry_handler <- function(x, geom_big = "asis", size = 40, n = 10, verbose = 
     stop('geom_big must be one of: ', paste0(gbopts, collapse = ", "))
   }
 
-  if (!is_integer(size) && size <= 0) stop("geom_size must be > 0 and integer")
-  if (!is_integer(n) && n <= 0) stop("geom_n must be > 0 and integer")
+  assert(size, c("numeric", "integer"))
+  assert(n, c("numeric", "integer"))
+  if (size <= 0) stop("geom_size must be > 0")
+  if (n <= 0) stop("geom_n must be > 0")
 
   if (!is.null(x)) {
     if (!is.character(x)) {

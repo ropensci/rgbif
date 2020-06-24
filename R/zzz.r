@@ -409,6 +409,7 @@ noNA <- function(x) {
 }
 
 strextract <- function(str, pattern) regmatches(str, regexpr(pattern, str))
+strextracta <- function(str, pattern) regmatches(str, gregexpr(pattern, str))[[1]]
 
 strtrim <- function(str) gsub("^\\s+|\\s+$", "", str)
 
