@@ -68,7 +68,7 @@ test_that("return defunct, throws warning", {
   vcr::use_cassette("dataset_search_return", {
     expect_warning(dataset_search(type="OCCURRENCE", return="descriptions"),
       "`return` param in `dataset_search` function is defunct")
-  })
+  }, preserve_exact_body_bytes = TRUE)
 })
 
 # Return just descriptions
