@@ -14,7 +14,7 @@
 #' or gtopo30. See "Elevation models" below for more
 #' @param username (character) Required. An GeoNames user name. See Details.
 #' @param ... curl options passed on to [crul::verb-GET]
-#' see [curl::curl_options()] for curl options
+#' see `curl::curl_options()` for curl options
 #' @param key,curlopts defunct. see docs
 #'
 #' @return A new column named `elevation_geonames` in the supplied data.frame

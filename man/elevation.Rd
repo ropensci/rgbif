@@ -36,7 +36,7 @@ or gtopo30. See "Elevation models" below for more}
 \item{key, curlopts}{defunct. see docs}
 
 \item{...}{curl options passed on to \link[crul:verb-GET]{crul::verb-GET}
-see \code{\link[curl:curl_options]{curl::curl_options()}} for curl options}
+see \code{curl::curl_options()} for curl options}
 }
 \value{
 A new column named \code{elevation_geonames} in the supplied data.frame
