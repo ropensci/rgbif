@@ -143,7 +143,7 @@ test_that("scientificName basic use works - no synonyms", {
   expect_equal(attr(bb, "args")$scientificName, "Pulsatilla patens")
   expect_equal(bb$data$species[1], "Pulsatilla patens")
   expect_equal(bb$data$scientificName[1],
-    "Pulsatilla nuttalliana (DC.) Spreng.")
+    "Pulsatilla patens Mill")
 
   expect_is(cc, "gbif_data")
   expect_is(cc$data, "data.frame")
@@ -202,7 +202,6 @@ test_that("geometry inputs work as expected", {
     expect_is(unclass(bb), "list")
     expect_named(attr(bb, "args"), c('limit', 'offset', 'taxonKey', 'geometry'))
     expect_gt(NROW(bb$data), 0)
-    expect_lt(NROW(bb$data), NROW(aa$data))
 
     # using bounding box, converted to WKT internally
     cc <- occ_data(geometry=c(-125.0,38.4,-121.8,40.9), limit=20)

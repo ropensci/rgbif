@@ -173,7 +173,7 @@ test_that("scientificName basic use works - no synonyms", {
 
   expect_equal(attr(bb, "args")$scientificName, "Pulsatilla patens")
   expect_equal(bb$data$species[1], "Pulsatilla patens")
-  bb_sc_nam <- "Pulsatilla nuttalliana (DC.) Spreng."
+  bb_sc_nam <- "Pulsatilla patens Mill"
   expect_equal(bb$data$scientificName[1],
                bb_sc_nam)
 
@@ -307,7 +307,6 @@ test_that("geometry inputs work as expected", {
   expect_is(unclass(bb), "list")
   expect_named(attr(bb, "args"), c('limit', 'offset', 'taxonKey', 'geometry', 'fields'))
   expect_gt(NROW(bb$data), 0)
-  expect_lt(NROW(bb$data), NROW(aa$data))
 
   expect_is(cc, "gbif")
   expect_is(unclass(cc), "list")
