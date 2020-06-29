@@ -1,3 +1,17 @@
+rgbif 3.1
+=========
+
+### MINOR IMPROVEMENTS
+
+* finally delete code originally extracted from `plyr::rbind.fill` - use `data.table::rbindlist` in all cases (#417)
+* fix failing test on cran for `dataset_search()` (#418)
+* fix xd refs note on cran (non-file package anchored links) for curl pkg function (#419)
+
+### BUG FIXES
+
+* `occ_download_cancel_staged()` fix: was broken cause we were indexing to a column in a table with `[,"key"]` (#416)
+
+
 rgbif 3.0
 =========
 

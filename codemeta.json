@@ -10,14 +10,14 @@
   "codeRepository": "https://github.com/ropensci/rgbif",
   "issueTracker": "https://github.com/ropensci/rgbif/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "version": "4.0.2",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.2 RC (2020-06-14 r78689)",
+  "runtimePlatform": "R version 4.0.2 (2020-06-22)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -395,7 +395,7 @@
   ],
   "releaseNotes": "https://github.com/ropensci/rgbif/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/rgbif/blob/master/README.md",
-  "fileSize": "3820.29KB",
+  "fileSize": "3984.73KB",
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://ropensci.org",
   "keywords": ["GBIF", "specimens", "API", "web-services", "occurrences", "species", "taxonomy", "gbif", "api", "data", "biodiversity", "rstats", "r", "spocc", "r-package", "lifewatch", "oscibio"],
@@ -480,5 +480,10 @@
     "https://books.ropensci.org/occurrences/"
   ],
   "copyrightHolder": {},
-  "funder": {}
+  "funder": [
+    {
+      "@type": "Organization",
+      "name": "rOpenSci"
+    }
+  ]
 }

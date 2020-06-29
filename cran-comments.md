@@ -14,7 +14,7 @@
 
 --------
 
-This version makes a breaking change, thus the major version bump; some minor fixes and a bug fix.
+I realize this submission is only 6 days from the previous, but this version fixes a failing test on CRAN, and fixes the non-file package anchored links note.
 
 Thanks!
 Scott Chamberlain
