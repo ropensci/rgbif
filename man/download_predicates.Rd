@@ -168,6 +168,7 @@ parameter; see below for examples):
 \item issue (ISSUE)
 \item mediatype (MEDIA_TYPE)
 \item recordedBy (RECORDED_BY)
+\item establishmentMeans (ESTABLISHMENT_MEANS)
 }
 }
 

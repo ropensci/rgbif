@@ -1,3 +1,14 @@
+context("predicate builders: supported keys")
+test_that("pred keys", {
+  # allowed keys, i.e., anything in key_lkup
+  for (i in seq_along(key_lkup))
+    expect_is(pred(names(key_lkup)[i], 5), "occ_predicate")
+
+  # not allowed keys, i.e., anything not in key_lkup
+  keys_bad <- c("foo", "bar", "stuff")
+  for (i in keys_bad) expect_error(pred(i, 5))
+})
+
 context("predicate builders: pred")
 test_that("pred", {
   aa <- pred("taxonKey", 7228682)
@@ -15,6 +26,14 @@ test_that("pred", {
   expect_named(bb, c("type", "key", "value"))
   expect_is(bb$type, "character")
   expect_equal(unclass(bb$type), "greaterThan")
+
+  # establishmentMeans works
+  bb <- pred("establishmentMeans", "NATIVE")
+  expect_is(bb, "occ_predicate")
+  expect_is(unclass(bb), "list")
+  expect_named(bb, c("type", "key", "value"))
+  expect_is(bb$type, "character")
+  expect_equal(unclass(bb$type), "equals")
 
   # booleans are downcased
   cct <- pred("hasCoordinate", TRUE)

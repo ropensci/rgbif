@@ -116,6 +116,7 @@
 #' - issue (ISSUE)
 #' - mediatype (MEDIA_TYPE)
 #' - recordedBy (RECORDED_BY)
+#' - establishmentMeans (ESTABLISHMENT_MEANS)
 #'
 #' @references Download predicates docs:
 #' <https://www.gbif.org/developer/occurrence#predicates>
@@ -244,7 +245,8 @@ key_lkup <- list(taxonKey='TAXON_KEY', scientificName='SCIENTIFIC_NAME',
     month='MONTH', decimalLatitude='DECIMAL_LATITUDE',
     decimalLongitude='DECIMAL_LONGITUDE', elevation='ELEVATION', depth='DEPTH',
     institutionCode='INSTITUTION_CODE', collectionCode='COLLECTION_CODE',
-    issue='ISSUE', mediatype='MEDIA_TYPE', recordedBy='RECORDED_BY')
+    issue='ISSUE', mediatype='MEDIA_TYPE', recordedBy='RECORDED_BY',
+    establishmentMeans='ESTABLISHMENT_MEANS')
 
 parse_pred <- function(key, value, type = "and") {
   assert(key, "character")
