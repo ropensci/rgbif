@@ -22,8 +22,8 @@ gbifissues <- structure(list(
            "mdativ", "mdatunl", "muldativ", "muluriiv", "preneglat",
            "preneglon", "preswcd", "rdativ", "rdatm", "rdatunl", "refuriiv",
            "txmatfuz", "txmathi", "txmatnon", "typstativ", "zerocd",
-           "cdpi", "cdumi", "indci", "interr",
-           "anm", "annu", "anuidi", "aitidinv", "bbmf", "bbmn", "basauthm",
+           "cdpi", "cdumi", "indci", "interr", "iccos", "osiic", "osu",
+           "anm", "annu", "anuidi", "aitidinv", "bbmn", "basauthm",
            "bibrinv", "chsun", "clasna", "clasroi", "conbascomb", "desinv",
            "disinv", "hom", "minv", "npm", "ns","nsinv", "onder", "onnu",
            "onuidinv", "ov", "pc", "pnnu", "pnuidinv", "pp","pbg","rankinv",
@@ -46,8 +46,9 @@ gbifissues <- structure(list(
             "TAXON_MATCH_NONE", "TYPE_STATUS_INVALID", "ZERO_COORDINATE",
             "COORDINATE_PRECISION_INVALID", "COORDINATE_UNCERTAINTY_METERS_INVALID",
             "INDIVIDUAL_COUNT_INVALID", "INTERPRETATION_ERROR",
+            "INDIVIDUAL_COUNT_CONFLICTS_WITH_OCCURRENCE_STATUS", "OCCURRENCE_STATUS_INFERRED_FROM_INDIVIDUAL_COUNT", "OCCURRENCE_STATUS_UNPARSABLE",
             "ACCEPTED_NAME_MISSING", "ACCEPTED_NAME_NOT_UNIQUE", "ACCEPTED_NAME_USAGE_ID_INVALID",
-            "ALT_IDENTIFIER_INVALID", "BACKBONE_MATCH_FUZZY", "BACKBONE_MATCH_NONE",
+            "ALT_IDENTIFIER_INVALID", "BACKBONE_MATCH_NONE",
             "BASIONYM_AUTHOR_MISMATCH", "BIB_REFERENCE_INVALID", "CHAINED_SYNOYM",
             "CLASSIFICATION_NOT_APPLIED", "CLASSIFICATION_RANK_ORDER_INVALID",
             "CONFLICTING_BASIONYM_COMBINATION", "DESCRIPTION_INVALID",
@@ -96,11 +97,13 @@ gbifissues <- structure(list(
                   "Indicates an invalid or very unlikely dwc:uncertaintyInMeters.",
                   "Individual count value not parsable into an integer.",
                   "An error occurred during interpretation, leaving the record interpretation incomplete.",
+                  "Example: individual count value > 0, but occurrence status is absent and etc.",
+                  "Occurrence status was inferred from the individual count value",
+                  "Occurrence status value can't be assigned to OccurrenceStatus",
                   "Synonym lacking an accepted name.",
                   "Synonym has a verbatim accepted name which is not unique and refers to several records.",
                   "The value for dwc:acceptedNameUsageID could not be resolved.",
                   "At least one alternative identifier extension record attached to this name usage is invalid.",
-                  "Deprecated. because there should be no fuzzy matching being used anymore for matching checklist names",
                   "Name usage could not be matched to the GBIF backbone.",
                   "The authorship of the original name does not match the authorship in brackets of the actual name.",
                   "At least one bibliographic reference extension record attached to this name usage is invalid.",
@@ -132,8 +135,8 @@ gbifissues <- structure(list(
                   "no description",
                   "The scientific name string could not be parsed at all, but appears to be a parsable name type, i.e.",
                   "At least one vernacular name extension record attached to this name usage is invalid."),
-  type <- c(rep("occurrence", 46), rep("name", 36)
-  )), .Names = c("code", "issue", "description", "type"), class = "data.frame", row.names = c(NA, -82L))
+  type <- c(rep("occurrence", 49), rep("name", 35)
+  )), .Names = c("code", "issue", "description", "type"), class = "data.frame", row.names = c(NA, -84L))
 
 collapse_issues <- function(x, issue_col = "issues") {
   tmp <- x[names(x) %in% issue_col][[1]]

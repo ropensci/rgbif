@@ -1,6 +1,8 @@
 context("gbif_issues")
 
 test_that("gbif_issues", {
+  skip_on_cran()
+
   aa <- gbif_issues()
 
   expect_is(aa, "data.frame")
@@ -12,6 +14,8 @@ test_that("gbif_issues", {
 })
 
 test_that("fails correctly", {
+  skip_on_cran()
+
   expect_error(gbif_issues(5), "unused argument")
 })
 
@@ -30,19 +34,23 @@ fetch_gbif_issues <- function(type = 'occ') {
   nodes <- Filter(function(z) {
     length(xml2::xml_find_first(z, ".//span[contains(@class, 'deprecatedLabel')]")) == 0
   }, nodes)
-  xml2::xml_text(xml2::xml_find_all(nodes, ".//code"))
+  xml2::xml_text(xml2::xml_find_all(nodes, ".//span"))
 }
 
 test_that("gbif_issues issues match what GBIF has", {
+  skip_on_cran()
+
   our_iss <- gbif_issues()
 
   # occurrence issues
   iss_occ <- fetch_gbif_issues("occ")
   our_iss_occ <- our_iss[our_iss$type == "occurrence", ]
   expect_true(all(sort(iss_occ) %in% sort(our_iss_occ$issue)))
+  expect_true(all(sort(our_iss_occ$issue) %in% sort(iss_occ)))
 
   # name issues
   iss_name <- fetch_gbif_issues("name")
   our_iss_name <- our_iss[our_iss$type == "name", ]
   expect_true(all(sort(iss_name) %in% sort(our_iss_name$issue)))
+  expect_true(all(sort(our_iss_name$issue) %in% sort(iss_name)))
 })
