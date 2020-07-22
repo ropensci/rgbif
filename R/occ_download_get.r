@@ -31,14 +31,17 @@ occ_download_get <- function(key, path=".", overwrite=FALSE, ...) {
   message(sprintf('Download file size: %s MB', size))
   url <- sprintf('%s/occurrence/download/request/%s', gbif_base(), key)
   path <- sprintf("%s/%s.zip", path, key)
-  cli <- crul::HttpClient$new(url = url, headers = rgbif_ual, ...)
+  cli <- crul::HttpClient$new(url = url, headers = rgbif_ual, opts = list(...))
   if (file.exists(path)) {
     if (!overwrite) stop("file exists & overwrite=FALSE")
   }
   res <- cli$get(disk = path)
   if (res$status_code > 203) stop(res$parse("UTF-8"))
-  stopifnot(res$response_headers$`content-type` ==
-              "application/octet-stream; qs=0.5")
+  if (res$response_headers$`content-type` !=
+              "application/octet-stream; q=0.5") {
+    on.exit(unlink(path))
+    stop("response content-type != application/octet-stream; q=0.5")
+  }
   options(gbifdownloadpath = path)
   message( sprintf("On disk at %s", res$content) )
   structure(path, class = "occ_download_get",
