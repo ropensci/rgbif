@@ -26,7 +26,7 @@ Details.}
 Details.}
 
 \item{curlopts}{list of named curl options passed on to
-\code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
+\code{\link[crul]{HttpClient}}. see \code{curl::curl_options}
 for curl options}
 
 \item{limit}{Number of records to return. Default: 20}

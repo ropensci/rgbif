@@ -13,7 +13,7 @@ enumeration_country(curlopts = list())
 \item{x}{A given enumeration.}
 
 \item{curlopts}{list of named curl options passed on to
-\code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
+\code{\link[crul]{HttpClient}}. see \code{curl::curl_options}
 for curl options}
 }
 \value{

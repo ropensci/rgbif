@@ -264,7 +264,7 @@ return both, or only return facets, or only occurrence data, etc.}
 call or not. passed down to \code{\link[=check_wkt]{check_wkt()}}. Default: \code{TRUE}}
 
 \item{curlopts}{list of named curl options passed on to
-\code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
+\code{\link[crul]{HttpClient}}. see \code{curl::curl_options}
 for curl options}
 
 \item{...}{additional facet parameters}

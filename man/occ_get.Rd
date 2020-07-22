@@ -24,7 +24,7 @@ field you want returned by name, e.g. fields = c('name',
 'decimalLatitude','altitude').}
 
 \item{curlopts}{list of named curl options passed on to
-\code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
+\code{\link[crul]{HttpClient}}. see \code{curl::curl_options}
 for curl options}
 
 \item{return}{Defunct. All components are returned now; index to the

@@ -11,7 +11,7 @@ occ_download_meta(key, curlopts = list())
 \code{occ_download}}
 
 \item{curlopts}{list of named curl options passed on to
-\code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
+\code{\link[crul]{HttpClient}}. see \code{curl::curl_options}
 for curl options}
 }
 \value{

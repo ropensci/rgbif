@@ -43,7 +43,7 @@ with \code{limit} to page through results.}
 \item{isocode}{A 2 letter country code. Only used if data='country'.}
 
 \item{curlopts}{list of named curl options passed on to
-\code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
+\code{\link[crul]{HttpClient}}. see \code{curl::curl_options}
 for curl options}
 }
 \description{

@@ -13,7 +13,7 @@ occ_facet(facet, facetMincount = NULL, curlopts = list(), ...)
 in the faceting results}
 
 \item{curlopts}{list of named curl options passed on to
-\code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
+\code{\link[crul]{HttpClient}}. see \code{curl::curl_options}
 for curl options}
 
 \item{...}{Facet parameters, such as for paging based on each facet

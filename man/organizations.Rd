@@ -30,7 +30,7 @@ specified if data is anything other than 'all'.}
 with \code{limit} to page through results.}
 
 \item{curlopts}{list of named curl options passed on to
-\code{\link[crul]{HttpClient}}. see \code{\link[curl]{curl_options}}
+\code{\link[crul]{HttpClient}}. see \code{curl::curl_options}
 for curl options}
 }
 \value{
