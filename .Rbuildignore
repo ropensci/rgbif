@@ -44,4 +44,6 @@ tests/fixtures/occ_search_eventdate.yml
 tests/fixtures/occ_search_geometry.yml
 tests/fixtures/occ_search_looping_works.yml
 tests/fixtures/occ_search_taxonkey.yml
+tests/fixtures/organizations.yml
+tests/fixtures/dl_user.yml
 readme_contributors.txt
