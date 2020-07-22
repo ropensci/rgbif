@@ -61,7 +61,7 @@
 #'
 #' # Downloads
 #' ## occ_download_get()
-#' # d1 <- occ_download(pred("country", "BG"), pred("year", 2011, "<="))
+#' # d1 <- occ_download(pred("country", "BG"), pred_gte("year", 2020))
 #' # occ_download_meta(d1) # wait until status = succeeded
 #' # d1 <- occ_download_get(d1, overwrite = TRUE)
 #' # gbif_citation(d1)
@@ -100,7 +100,7 @@ gbif_citation.gbif <- function(x) {
           "Accessed from R via rgbif (https://github.com/ropensci/rgbif) on ",
           Sys.Date()))
     cit$citation <- paste(cit$text, cit$accessed, sep = ". ")
-    structure(list(citation = cit, rights = tmp$data$rights),
+    structure(list(citation = cit, rights = tmp$data$rights %||% tmp$data$license),
               class = "gbif_citation")
   })
 }
@@ -119,7 +119,7 @@ gbif_citation.character <- function(x) {
         "Accessed from R via rgbif (https://github.com/ropensci/rgbif) on ",
         Sys.Date()))
   cit$citation <- paste(cit$text, cit$accessed, sep = ". ")
-  structure(list(citation = cit, rights = tmp$data$rights),
+  structure(list(citation = cit, rights = tmp$data$rights %||% tmp$data$license),
             class = "gbif_citation")
 }
 
@@ -134,7 +134,7 @@ gbif_citation.numeric <- function(x) {
         "Accessed from R via rgbif (https://github.com/ropensci/rgbif) on ",
         Sys.Date()))
   cit$citation <- paste(cit$text, cit$accessed, sep = ". ")
-  structure(list(citation = cit, rights = tmp$data$rights),
+  structure(list(citation = cit, rights = tmp$data$rights %||% tmp$data$license),
             class = "gbif_citation")
 }
 
@@ -208,7 +208,7 @@ as_occ_d_key <- function(x) {
     datasets(uuid = x)
   } else {
     if (is_occ_key(x)) {
-      key <- occ_get(as.numeric(x), fields = "all")$data$datasetKey
+      key <- occ_get(as.numeric(x), fields = "all")[[1]]$data$datasetKey
       datasets(uuid = key)
     } else {
       stop("Pass in either an occurrence key or dataset key", call. = FALSE)

@@ -10,7 +10,7 @@ test_that("gbif_citation w/ occ_search", {
   expect_named(aa[[1]], c('citation', 'rights'))
   
   expect_is(aa[[1]]$citation, 'list')
-  expect_null(aa[[1]]$rights)
+  expect_is(aa[[1]]$rights, "character")
 })
 
 test_that("gbif_citation w/ occ_data", {
@@ -25,7 +25,7 @@ test_that("gbif_citation w/ occ_data", {
   expect_named(aa[[1]], c('citation', 'rights'))
   
   expect_is(aa[[1]]$citation, 'list')
-  expect_null(aa[[1]]$rights)
+  expect_is(aa[[1]]$rights, "character")
 })
 
 test_that("gbif_citation fails correctly", {

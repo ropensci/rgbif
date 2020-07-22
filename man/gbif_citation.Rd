@@ -76,7 +76,7 @@ gbif_citation(x=1101144669)
 
 # Downloads
 ## occ_download_get()
-# d1 <- occ_download(pred("country", "BG"), pred("year", 2011, "<="))
+# d1 <- occ_download(pred("country", "BG"), pred_gte("year", 2020))
 # occ_download_meta(d1) # wait until status = succeeded
 # d1 <- occ_download_get(d1, overwrite = TRUE)
 # gbif_citation(d1)
