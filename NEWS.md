@@ -1,3 +1,17 @@
+rgbif 3.2
+=========
+
+### MINOR IMPROVEMENTS
+
+* `gbif_issues()` changes: three new occurrence issues added; one name issue removed that's deprecated (#423)
+* `gbif_citation()` rights field was empty unless pulling from a downloaded file; now fill in with `license` key; also a fix for when occurrence key passed to the function (#424)
+* `establishmentMeans` now supported in `occ_download`/`pred` (#420)
+
+### BUG FIXES
+
+* fix for `occ_download_get()`: response content-type header changed recently, fixed (#422)
+
+
 rgbif 3.1
 =========
 

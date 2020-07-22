@@ -1,6 +1,6 @@
 ## Test environments
 
-* local OS X install, R 4.0.2
+* local OS X install, R 4.0.2 Patched
 * ubuntu 16.04 (on travis-ci), R 4.0.2
 * win-builder (devel and release)
 
@@ -14,7 +14,7 @@
 
 --------
 
-I realize this submission is only 6 days from the previous, but this version fixes a failing test on CRAN, and fixes the non-file package anchored links note.
+This version includes a bug fix for a failing test on CRAN.
 
 Thanks!
 Scott Chamberlain
