@@ -7,11 +7,28 @@
 #' @template occ_data_egs
 #' @seealso [downloads()], [occ_search()]
 #' @details This does nearly the same thing as [occ_search()], but
-#' is a bit simplified for speed, and is for the most common use case where
+#' is simplified for speed, and is for the most common use case where
 #' user just wants occurrence data, and not other information like taxon
 #' hierarchies and media (e.g., images). Alot of time in [occ_search()]
 #' is used parsing data to be more useable downstream. We do less of that
-#' in this function.
+#' in this function. 
+#' 
+#' There are a number of data fields GBIF returns that we drop to speed up
+#' processing time within R. These fields take extra time to process
+#' because they are deeply nested and so take extra time to check if
+#' they are empty or not, and if not, figure out how to parse them 
+#' into a data.frame. The fields are:
+#' 
+#' - `gadm`
+#' - `media`
+#' - `facts`
+#' - `relations`
+#' - `extensions`
+#' - `identifiers`
+#' - `recordedByIDs`
+#' - `identifiedByIDs`
+#' 
+#' To get these fields use [occ_search()] instead.
 #' @note Maximum number of records you can get with this function is 100,000.
 #' See https://www.gbif.org/developer/occurrence
 #' @return An object of class `gbif_data`, which is a S3 class list, with

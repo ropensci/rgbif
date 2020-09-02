@@ -96,12 +96,12 @@ clean_data <- function(x){
   # collapse issues
   if (!identical(x, list())) x[names(x) %in% "issues"] <- collapse_issues_vec(x)
 
-  # drop media, facts, relations
-  x$media <- NULL
-  x$facts <- NULL
-  x$relations <- NULL
-  x$identifiers <- NULL
-  x$extensions <- NULL
+  # drop media, facts, relations, etc.
+  x$media <- x$facts <- x$relations <- x$identifiers <-
+  x$extensions <- x$gadm <- x$recordedByIDs <- x$identifiedByIDs <- NULL
+
+  # drop any new columns that GBIF adds of which each element is not length 1
+   x[sapply(x, is.data.frame)] <- NULL
 
   # add name column, duplicate of scientificName, to not break downstream code
   if ("scientificName" %in% names(x)) {
