@@ -11,7 +11,7 @@ doc:
 	${RSCRIPT} -e "devtools::document()"
 
 eg:
-	${RSCRIPT} -e "devtools::run_examples(run = TRUE)"
+	${RSCRIPT} -e "Sys.setenv(RGBIF_BASE_URL='https://api.gbif-uat.org/v1'); cat(paste0('gbif api base url: ', Sys.getenv('RGBIF_BASE_URL', 'api.gbif.org/v1'), '\n')); devtools::run_examples(run = TRUE)"
 
 codemeta:
 	${RSCRIPT} -e "codemetar::write_codemeta()"
