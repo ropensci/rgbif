@@ -308,3 +308,19 @@ test_that("key and gbifID fields are character class", {
   expect_is(aa$data$key, "character")
   expect_is(aa$data$gbifID, "character")
 })
+
+# per issue #427
+test_that("various fields are dropped - so should be absent", {
+  vcr::use_cassette("occ_data_dropped_fields", {
+    aa <- occ_data(limit = 3)
+  }, preserve_exact_body_bytes = TRUE)
+  df <- data.frame(aa$data)
+  expect_null(df$media)
+  expect_null(df$facts)
+  expect_null(df$relations)
+  expect_null(df$identifiers)
+  expect_null(df$extensions)
+  expect_null(df$gadm)
+  expect_null(df$recordedByIDs)
+  expect_null(df$identifiedByIDs)
+})
