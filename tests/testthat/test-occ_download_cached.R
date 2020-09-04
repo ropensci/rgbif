@@ -90,16 +90,16 @@ test_that("occ_download_cached itself", {
   expect_equal(length(bb), 1)
 
   # match but expired
-  age <- as.numeric((Sys.Date()-as.Date("2020-04-02"))+1)
-  expect_message((cc <- occ_download_cached(
-      pred_within("POLYGON((-14 42, 9 38, -7 26, -14 42))"),
-      pred_gte("elevation", 5000), age = age)),
-    "match found \\(key"
-  )
-  # returns an object of class occ_download
-  expect_is(cc, "occ_download")
-  # length 1
-  expect_equal(length(cc), 1)
+  # age <- as.numeric((Sys.Date()-as.Date("2020-04-02"))+1)
+  # expect_message((cc <- occ_download_cached(
+  #     pred("country", "BG"),
+  #     pred_gte("year", 2020))),
+  #   "match found \\(key"
+  # )
+  # # returns an object of class occ_download
+  # expect_is(cc, "occ_download")
+  # # length 1
+  # expect_equal(length(cc), 1)
 })
 
 test_that("occ_download_cached fails well", {
