@@ -87,5 +87,5 @@ installations(data='deleted', curlopts = list(verbose=TRUE))
 }
 }
 \references{
-\url{http://www.gbif.org/developer/registry#installations}
+\url{https://www.gbif.org/developer/registry#installations}
 }

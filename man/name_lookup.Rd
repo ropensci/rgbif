@@ -268,5 +268,5 @@ name_lookup(query='Cnaemidophorus', rank="genus",
 }
 }
 \references{
-\url{http://www.gbif.org/developer/species#searching}
+\url{https://www.gbif.org/developer/species#searching}
 }

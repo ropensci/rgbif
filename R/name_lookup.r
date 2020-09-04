@@ -3,7 +3,7 @@
 #' @template namelkup
 #' @export
 #' @template occ
-#' @references <http://www.gbif.org/developer/species#searching>
+#' @references <https://www.gbif.org/developer/species#searching>
 #' @examples \dontrun{
 #' # Look up names like mammalia
 #' name_lookup(query='mammalia', limit = 20)

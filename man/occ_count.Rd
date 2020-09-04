@@ -38,7 +38,7 @@ you can also get record count with \code{\link[=occ_search]{occ_search()}} by se
 options}
 
 \item{country}{Country data was collected in, two letter abbreviation. See
-\url{http://countrycode.org/} for abbreviations.}
+https://countrycode.org/ for abbreviations.}
 
 \item{year}{Year data were collected in}
 
@@ -159,5 +159,5 @@ occ_count(type='year', from=2000, to=2012, curlopts = list(verbose = TRUE))
 }
 }
 \references{
-\url{http://www.gbif.org/developer/occurrence#metrics}
+https://www.gbif.org/developer/occurrence#metrics
 }

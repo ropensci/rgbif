@@ -13,7 +13,7 @@
 #' @param query Query nodes. Only used when `data='all'`. Ignored
 #' otherwise.
 #'
-#' @references <http://www.gbif.org/developer/registry#networks>
+#' @references <https://www.gbif.org/developer/registry#networks>
 #'
 #' @examples \dontrun{
 #' networks()

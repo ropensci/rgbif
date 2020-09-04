@@ -123,5 +123,5 @@ occ_issues(xyz, -cdround, -gass84)
 }
 }
 \references{
-\url{http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html}
+https://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html
 }

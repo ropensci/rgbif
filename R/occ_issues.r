@@ -18,7 +18,7 @@
 #' For split and split_expand, values in cells become y ("yes") or n ("no")
 #'
 #' @references
-#' <http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html>
+#' https://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html
 #'
 #' @details See also the vignette **Cleaning data using GBIF issues**
 #'

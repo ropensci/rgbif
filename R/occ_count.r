@@ -13,7 +13,7 @@
 #' options
 #' @param year Year data were collected in
 #' @param country Country data was collected in, two letter abbreviation. See
-#' <http://countrycode.org/> for abbreviations.
+#' https://countrycode.org/ for abbreviations.
 #' @param protocol Protocol. E.g., 'DWC_ARCHIVE'
 #' @param publishingCountry Publishing country, two letter ISO country code
 #' @param from Year to start at
@@ -23,7 +23,7 @@
 #' @template occ
 #'
 #' @return A single numeric value, or a list of numerics.
-#' @references <http://www.gbif.org/developer/occurrence#metrics>
+#' @references https://www.gbif.org/developer/occurrence#metrics
 #'
 #' @details There is a slight difference in the way records are counted here vs.
 #' results from [occ_search()]. For equivalent outcomes, in the

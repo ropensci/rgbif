@@ -92,5 +92,5 @@ name_suggest(q='Puma', limit=200, curlopts = list(verbose=TRUE))
 }
 }
 \references{
-\url{http://www.gbif.org/developer/species#searching}
+\url{https://www.gbif.org/developer/species#searching}
 }

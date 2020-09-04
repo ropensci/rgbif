@@ -79,5 +79,5 @@ networks(curlopts = list(verbose=TRUE))
 }
 }
 \references{
-\url{http://www.gbif.org/developer/registry#networks}
+\url{https://www.gbif.org/developer/registry#networks}
 }

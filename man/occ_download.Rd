@@ -225,9 +225,9 @@ occ_download_prep(
 }
 \references{
 See the API docs
-\url{http://www.gbif.org/developer/occurrence#download} for more info,
+\url{https://www.gbif.org/developer/occurrence#download} for more info,
 and the predicates docs
-\url{http://www.gbif.org/developer/occurrence#predicates}
+\url{https://www.gbif.org/developer/occurrence#predicates}
 }
 \seealso{
 Other downloads: 

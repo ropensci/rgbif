@@ -16,7 +16,7 @@
 #' data.frame with call metadata, and a data.frame, but if `uuid` given,
 #' then a list.
 #'
-#' @references <http://www.gbif.org/developer/registry#organizations>
+#' @references <https://www.gbif.org/developer/registry#organizations>
 #'
 #' @examples \dontrun{
 #' organizations(limit=5)

@@ -13,7 +13,7 @@
 #' @param query Query nodes. Only used when `data='all'`. Ignored
 #' otherwise.
 #'
-#' @references <http://www.gbif.org/developer/registry#installations>
+#' @references <https://www.gbif.org/developer/registry#installations>
 #'
 #' @examples \dontrun{
 #' installations(limit=5)

@@ -14,7 +14,7 @@
 #' @param query Query nodes. Only used when `data='all'`
 #' @param isocode A 2 letter country code. Only used if data='country'.
 #'
-#' @references <http://www.gbif.org/developer/registry#nodes>
+#' @references <https://www.gbif.org/developer/registry#nodes>
 #'
 #' @examples \dontrun{
 #' nodes(limit=5)

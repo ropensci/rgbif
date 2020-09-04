@@ -51,9 +51,9 @@ gn_tolist <- function(x){
   })
   addurl <- function(z) {
     if (z$nubKey == "none") {
-      c(z, url = paste0("http://www.gbif.org/species/", strtrim(z$key)))
+      c(z, url = paste0("https://www.gbif.org/species/", strtrim(z$key)))
     } else {
-      c(z, url = paste0("http://www.gbif.org/species/", strtrim(z$nubKey)))
+      c(z, url = paste0("https://www.gbif.org/species/", strtrim(z$nubKey)))
     }
   }
   Map(addurl, out)

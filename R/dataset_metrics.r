@@ -3,7 +3,7 @@
 #' @export
 #' @param uuid (character) One or more dataset UUIDs. See examples.
 #' @template occ
-#' @references <http://www.gbif.org/developer/registry#datasetMetrics>
+#' @references <https://www.gbif.org/developer/registry#datasetMetrics>
 #' @note Dataset metrics are only available for checklist type datasets.
 #' @examples \dontrun{
 #' dataset_metrics(uuid='863e6d6b-f602-4495-ac30-881482b6f799')

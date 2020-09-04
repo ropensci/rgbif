@@ -7,7 +7,7 @@
 #' @template otherlimstart
 #' @template occ
 #' @export
-#' @references <http://www.gbif.org/developer/species#searching>
+#' @references <https://www.gbif.org/developer/species#searching>
 #'
 #' @param q (character, required) Simple search parameter. The value for
 #' this parameter can be a simple word or a phrase. Wildcards can be added to

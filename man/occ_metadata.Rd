@@ -61,5 +61,5 @@ occ_metadata(type = "cat", q=122, curlopts = list(verbose = TRUE))
 }
 }
 \references{
-\url{http://www.gbif.org/developer/occurrence#search}
+\url{https://www.gbif.org/developer/occurrence#search}
 }

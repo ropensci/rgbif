@@ -20,9 +20,9 @@
 #'    the institution the record belongs to. Not guaranteed to be que.
 #' @param country The 2-letter country code (as per ISO-3166-1) of the country in
 #'    which the occurrence was recorded. See here
-#'    <http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2>
+#'    https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 #' @param basisOfRecord Basis of record, as defined in our BasisOfRecord enum here
-#'    <http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/BasisOfRecord.html>
+#'    https://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/BasisOfRecord.html
 #'    Acceptable values are:
 #'    \itemize{
 #'      \item FOSSIL_SPECIMEN An occurrence record describing a fossilized specimen.
@@ -228,7 +228,7 @@
 #' }
 #'
 #' **Issue**: The options for the issue parameter (from
-#' http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html):
+#' https://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html):
 #' \itemize{
 #'  \item BASIS_OF_RECORD_INVALID The given basis of record is impossible to interpret or seriously
 #'  different from the recommended vocabulary.

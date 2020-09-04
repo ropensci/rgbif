@@ -8,7 +8,7 @@
 #' taxon names. Fields returned are the union of fields extracted from
 #' all species names in `scientificname`.
 #' @author John Baumgartner (johnbb@@student.unimelb.edu.au)
-#' @references <http://www.gbif.org/developer/species#parser>
+#' @references <https://www.gbif.org/developer/species#parser>
 #' @examples \dontrun{
 #' parsenames(scientificname='x Agropogon littoralis')
 #' parsenames(c('Arrhenatherum elatius var. elatius',

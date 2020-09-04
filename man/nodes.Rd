@@ -110,5 +110,5 @@ nodes(limit=20, curlopts=list(verbose=TRUE))
 }
 }
 \references{
-\url{http://www.gbif.org/developer/registry#nodes}
+\url{https://www.gbif.org/developer/registry#nodes}
 }

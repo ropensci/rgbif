@@ -73,9 +73,9 @@
 #' error on GBIF's side and you'll have to split your query into a few.
 #'
 #' @references See the API docs
-#' <http://www.gbif.org/developer/occurrence#download> for more info,
+#' <https://www.gbif.org/developer/occurrence#download> for more info,
 #' and the predicates docs
-#' <http://www.gbif.org/developer/occurrence#predicates>
+#' <https://www.gbif.org/developer/occurrence#predicates>
 #'
 #' @examples \dontrun{
 #' # occ_download(pred("basisOfRecord", "LITERATURE"))

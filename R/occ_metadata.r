@@ -11,7 +11,7 @@
 #' character strings.
 #' @template occ
 #'
-#' @references <http://www.gbif.org/developer/occurrence#search>
+#' @references <https://www.gbif.org/developer/occurrence#search>
 #'
 #' @examples \dontrun{
 #' # catalog number

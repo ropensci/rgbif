@@ -37,7 +37,7 @@ parsenames("Ajuga pyramidata x reptans")
 }
 }
 \references{
-\url{http://www.gbif.org/developer/species#parser}
+\url{https://www.gbif.org/developer/species#parser}
 }
 \author{
 John Baumgartner (johnbb@student.unimelb.edu.au)

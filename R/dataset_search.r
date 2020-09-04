@@ -11,7 +11,7 @@
 #' @param return Defunct. All components are returned; index to the
 #' one(s) you want
 #'
-#' @references <http://www.gbif.org/developer/registry#datasetSearch>
+#' @references <https://www.gbif.org/developer/registry#datasetSearch>
 #'
 #' @examples \dontrun{
 #' # Gets all datasets of type "OCCURRENCE".
