@@ -14,7 +14,7 @@
 
 --------
 
-This version includes a bug fix for a failing test on CRAN.
+This version includes two bug fixes.
 
 Thanks!
 Scott Chamberlain

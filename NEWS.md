@@ -1,3 +1,16 @@
+rgbif 3.3
+=========
+
+### MINOR IMPROVEMENTS
+
+* added two new occurrence issues to `gbif_issues()`: `GEOREFERENCED_DATE_INVALID` and `GEOREFERENCED_DATE_UNLIKELY` (#430)
+
+### BUG FIXES
+
+* fixed an error in `occ_data()` caused by GBIF adding a new field of data to the output of `/occurrence/search/`: gadm. cleaned up internals of `occ_data()` to drop gadm, and other fields that are complex and take time to parse (use `occ_search()` if you want all the data fields)  (#427)
+* `gbif_names()` fix: was ending up with invalid URLs to GBIF species pages because we had taxon keys with leading spaces somehow. now all leading and trailing spaces in taxon keys removed before making URLs  (#429)
+
+
 rgbif 3.2
 =========
 
