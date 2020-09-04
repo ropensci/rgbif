@@ -10,13 +10,13 @@
   "codeRepository": "https://github.com/ropensci/rgbif",
   "issueTracker": "https://github.com/ropensci/rgbif/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.2 Patched (2020-06-30 r78761)",
+  "runtimePlatform": "R version 4.0.2 Patched (2020-09-01 r79114)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -473,7 +473,8 @@
     "https://ropensci.github.io/occurrence-manual",
     "https://docs.ropensci.org/rgbif",
     "https://ropenscilabs.github.io/occurrence-manual/",
-    "https://books.ropensci.org/occurrences/"
+    "https://books.ropensci.org/occurrences/",
+    "https://docs.ropensci.org/rgbif/"
   ],
   "copyrightHolder": {},
   "funder": [
