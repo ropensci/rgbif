@@ -14,7 +14,7 @@
 
 --------
 
-This version includes two bug fixes.
+This version includes two bug fixes. This is a re-submission of the same version after fixing some URLs.
 
 Thanks!
 Scott Chamberlain

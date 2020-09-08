@@ -81,7 +81,7 @@ The code `cdround` represents the GBIF issue `COORDINATE_ROUNDED`, which means t
 
 > Original coordinate modified by rounding to 5 decimals.
 
-The content for this information comes from [http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html](http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html).
+The content for this information comes from https://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html
 
 ## Parse data based on issues
 

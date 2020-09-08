@@ -88,7 +88,7 @@ all records (\code{FALSE}, default).}
 \item{typeStatus}{Type status of the specimen. One of many options. See \code{?typestatus}}
 
 \item{recordNumber}{Number recorded by collector of the data, different from GBIF record
-number. See \url{http://rs.tdwg.org/dwc/terms/#recordNumber} for more info}
+number. See http://rs.tdwg.org/dwc/terms/#recordNumber for more info}
 
 \item{lastInterpreted}{Date the record was last modified in GBIF, in ISO 8601 format:
 yyyy, yyyy-MM, yyyy-MM-dd, or MM-dd.  Supports range queries, smaller,larger (e.g.,
@@ -899,7 +899,7 @@ occ_search(scientificName = 'Ursus americanus', limit = 0)$meta
 }
 }
 \references{
-\url{http://www.gbif.org/developer/occurrence#search}
+https://www.gbif.org/developer/occurrence#search
 }
 \seealso{
 \code{\link[=downloads]{downloads()}}, \code{\link[=occ_data]{occ_data()}}, \code{\link[=occ_facet]{occ_facet()}}

@@ -74,7 +74,7 @@
 #'    all records (\code{FALSE}, default).
 #' @param typeStatus Type status of the specimen. One of many options. See \code{?typestatus}
 #' @param recordNumber Number recorded by collector of the data, different from GBIF record
-#'    number. See <http://rs.tdwg.org/dwc/terms/#recordNumber> for more info
+#'    number. See http://rs.tdwg.org/dwc/terms/#recordNumber for more info
 #' @param lastInterpreted Date the record was last modified in GBIF, in ISO 8601 format:
 #'    yyyy, yyyy-MM, yyyy-MM-dd, or MM-dd.  Supports range queries, smaller,larger (e.g.,
 #'    '1990,1991', whereas '1991,1990' wouldn't work)
@@ -304,4 +304,4 @@
 #' use \code{hasCoordinate=TRUE}, and \code{hasGeospatialIssue=FALSE} to have the
 #' same outcome using \code{\link{occ_count}} with \code{isGeoreferenced=TRUE}
 #'
-#' @references \url{http://www.gbif.org/developer/occurrence#search}
+#' @references https://www.gbif.org/developer/occurrence#search

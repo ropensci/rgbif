@@ -154,7 +154,7 @@ m <- name_lookup(query = 'Helianthus annuus', rank="species")
 m$data
 ```
 
-The function `name_usage()` works with lots of different name endpoints in GBIF, listed at [http://www.gbif.org/developer/species#nameUsages](http://www.gbif.org/developer/species#nameUsages).
+The function `name_usage()` works with lots of different name endpoints in GBIF, listed at https://www.gbif.org/developer/species#nameUsages
 
 ```{r}
 name_usage(key=3119195, language="FRENCH", data='vernacularNames')
