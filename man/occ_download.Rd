@@ -167,7 +167,7 @@ error on GBIF's side and you'll have to split your query into a few.
 # Using body parameter - pass in your own complete query
 ## as JSON
 query1 <- '{"creator":"sckott",
-  "notification_address":["myrmecocystus@gmail.com"],
+  "notification_address":["stuff1@gmail.com"],
   "predicate":{"type":"and","predicates":[
     {"type":"equals","key":"TAXON_KEY","value":"7264332"},
     {"type":"equals","key":"HAS_COORDINATE","value":"TRUE"}]}
@@ -178,7 +178,7 @@ query1 <- '{"creator":"sckott",
 library(jsonlite)
 query <- list(
   creator = unbox("sckott"),
-  notification_address = "myrmecocystus@gmail.com",
+  notification_address = "stuff1@gmail.com",
   predicate = list(
     type = unbox("and"),
     predicates = list(

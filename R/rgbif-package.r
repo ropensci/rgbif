@@ -48,10 +48,10 @@
 #' @name rgbif-package
 #' @aliases rgbif
 #' @docType package
-#' @author Scott Chamberlain \email{myrmecocystus@@gmail.com}
-#' @author Karthik Ram \email{karthik@@ropensci.org}
-#' @author Dan Mcglinn \email{danmcglinn@@gmail.com}
-#' @author Vijay Barve \email{vijay.barve@@gmail.com}
+#' @author Scott Chamberlain
+#' @author Karthik Ram
+#' @author Dan Mcglinn
+#' @author Vijay Barve
 NULL
 
 #' Defunct functions in rgbif
@@ -78,8 +78,7 @@ NULL
 #'
 #' The above functions have been removed. See
 #' <https://github.com/ropensci/rgbif> and poke around the code if you
-#' want to find the old functions in previous versions of the package, or
-#' email Scott at \email{myrmecocystus@@gmail.com}
+#' want to find the old functions in previous versions of the package
 #'
 #' @name rgbif-defunct
 NULL

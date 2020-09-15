@@ -48,11 +48,11 @@ with web based maps.
 }
 
 \author{
-Scott Chamberlain \email{myrmecocystus@gmail.com}
+Scott Chamberlain
 
-Karthik Ram \email{karthik@ropensci.org}
+Karthik Ram
 
-Dan Mcglinn \email{danmcglinn@gmail.com}
+Dan Mcglinn
 
-Vijay Barve \email{vijay.barve@gmail.com}
+Vijay Barve
 }
