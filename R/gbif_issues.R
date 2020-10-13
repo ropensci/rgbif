@@ -23,7 +23,8 @@ gbifissues <- structure(list(
            "preneglon", "preswcd", "rdativ", "rdatm", "rdatunl", "refuriiv",
            "txmatfuz", "txmathi", "txmatnon", "typstativ", "zerocd",
            "cdpi", "cdumi", "indci", "interr", "iccos", "osiic", "osu",
-           "geodi","geodu",
+           "geodi","geodu", "ambcol", "ambinst", "colmafu", "colmano",
+           "incomis", "inmafu", "inmano", "osifbor", "ploan",
            "anm", "annu", "anuidi", "aitidinv", "bbmn", "basauthm",
            "bibrinv", "chsun", "clasna", "clasroi", "conbascomb", "desinv",
            "disinv", "hom", "minv", "npm", "ns","nsinv", "onder", "onnu",
@@ -48,7 +49,11 @@ gbifissues <- structure(list(
             "COORDINATE_PRECISION_INVALID", "COORDINATE_UNCERTAINTY_METERS_INVALID",
             "INDIVIDUAL_COUNT_INVALID", "INTERPRETATION_ERROR",
             "INDIVIDUAL_COUNT_CONFLICTS_WITH_OCCURRENCE_STATUS", "OCCURRENCE_STATUS_INFERRED_FROM_INDIVIDUAL_COUNT", "OCCURRENCE_STATUS_UNPARSABLE",
-            "GEOREFERENCED_DATE_INVALID","GEOREFERENCED_DATE_UNLIKELY",
+            "GEOREFERENCED_DATE_INVALID","GEOREFERENCED_DATE_UNLIKELY", "AMBIGUOUS_COLLECTION",
+            "AMBIGUOUS_INSTITUTION", "COLLECTION_MATCH_FUZZY", "COLLECTION_MATCH_NONE",
+            "INSTITUTION_COLLECTION_MISMATCH", "INSTITUTION_MATCH_FUZZY",
+            "INSTITUTION_MATCH_NONE", "OCCURRENCE_STATUS_INFERRED_FROM_BASIS_OF_RECORD",
+            "POSSIBLY_ON_LOAN",
             "ACCEPTED_NAME_MISSING", "ACCEPTED_NAME_NOT_UNIQUE", "ACCEPTED_NAME_USAGE_ID_INVALID",
             "ALT_IDENTIFIER_INVALID", "BACKBONE_MATCH_NONE",
             "BASIONYM_AUTHOR_MISMATCH", "BIB_REFERENCE_INVALID", "CHAINED_SYNOYM",
@@ -104,6 +109,15 @@ gbifissues <- structure(list(
                   "Occurrence status value can't be assigned to OccurrenceStatus",
                   "The date given for dwc:georeferencedDate is invalid and can't be interpreted at all.",
                   "The date given for dwc:georeferencedDate is in the future or before Linnean times (1700).",
+                  "The given collection matches with more than 1 GrSciColl collection.",
+                  "The given institution matches with more than 1 GrSciColl institution.",
+                  "The given collection was fuzzily matched to a GrSciColl collection.",
+                  "The given collection couldn't be matched with any GrSciColl collection.",
+                  "The collection matched doesn't belong to the institution matched.",
+                  "The given institution was fuzzily matched to a GrSciColl institution.",
+                  "The given institution couldn't be matched with any GrSciColl institution.",
+                  "Occurrence status was inferred from basis of records",
+                  "The given owner institution is different than the given institution.",
                   "Synonym lacking an accepted name.",
                   "Synonym has a verbatim accepted name which is not unique and refers to several records.",
                   "The value for dwc:acceptedNameUsageID could not be resolved.",
@@ -139,8 +153,8 @@ gbifissues <- structure(list(
                   "no description",
                   "The scientific name string could not be parsed at all, but appears to be a parsable name type, i.e.",
                   "At least one vernacular name extension record attached to this name usage is invalid."),
-  type <- c(rep("occurrence", 51), rep("name", 35)
-  )), .Names = c("code", "issue", "description", "type"), class = "data.frame", row.names = c(NA, -86L))
+  type <- c(rep("occurrence", 60), rep("name", 35)
+  )), .Names = c("code", "issue", "description", "type"), class = "data.frame", row.names = c(NA, -95L))
 
 collapse_issues <- function(x, issue_col = "issues") {
   tmp <- x[names(x) %in% issue_col][[1]]
