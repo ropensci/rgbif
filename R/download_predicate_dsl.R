@@ -145,40 +145,40 @@
 #'   pred("taxonKey", 2977966))
 #' pred_in("taxonKey", c(2977832, 2977901, 2977966, 2977835))
 
-#' @rdname download_predicates
+#' @rdname download_predicate_dsl
 #' @export
 pred <- function(key, value) pred_factory("=")(key, value)
-#' @rdname download_predicates
+#' @rdname download_predicate_dsl
 #' @export
 pred_gt <- function(key, value) pred_factory(">")(key, value)
-#' @rdname download_predicates
+#' @rdname download_predicate_dsl
 #' @export
 pred_gte <- function(key, value) pred_factory(">=")(key, value)
-#' @rdname download_predicates
+#' @rdname download_predicate_dsl
 #' @export
 pred_lt <- function(key, value) pred_factory("<")(key, value)
-#' @rdname download_predicates
+#' @rdname download_predicate_dsl
 #' @export
 pred_lte <- function(key, value) pred_factory("<=")(key, value)
-#' @rdname download_predicates
+#' @rdname download_predicate_dsl
 #' @export
 pred_not <- function(key, value) pred_factory("not")(key, value)
-#' @rdname download_predicates
+#' @rdname download_predicate_dsl
 #' @export
 pred_like <- function(key, value) pred_factory("like")(key, value)
-#' @rdname download_predicates
+#' @rdname download_predicate_dsl
 #' @export
 pred_within <- function(value) pred_factory("within")(key = "geometry", value)
-#' @rdname download_predicates
+#' @rdname download_predicate_dsl
 #' @export
 pred_notnull <- function(key) pred_factory("isNotNull")(key, "foo")
-#' @rdname download_predicates
+#' @rdname download_predicate_dsl
 #' @export
 pred_or <- function(..., .list = list()) preds_factory("or")(.list, ...)
-#' @rdname download_predicates
+#' @rdname download_predicate_dsl
 #' @export
 pred_and <- function(..., .list = list()) preds_factory("and")(.list, ...)
-#' @rdname download_predicates
+#' @rdname download_predicate_dsl
 #' @export
 pred_in <- function(key, value) pred_multi_factory("in")(key, value)
 
