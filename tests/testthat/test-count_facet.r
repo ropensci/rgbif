@@ -31,7 +31,17 @@ test_that("count_facet", {
 test_that("fails correctly", {
   skip_on_cran()
 
+  # countries must be numeric/integer or character
+  expect_error(count_facet(by='country', countries=logical(1)))
+
+  # by must be character
+  expect_error(count_facet(by=as.factor('country'), countries=3))
+
+  # removezeros must be logical
+  expect_error(count_facet(by='country', countries=3, removezeros=5))
+
   # throws error, you can't use basisOfRecord and keys in the same call
-  expect_error(count_facet(c(2489670, 5231042, 2481447), by="basisOfRecord"),
-               "you can't pass in both keys and have by='basisOfRecord'")
+  # NOT TRUE ANYMORE as of 2020-11-09
+  # expect_error(count_facet(c(2489670, 5231042, 2481447), by="basisOfRecord"),
+  #              "you can't pass in both keys and have by='basisOfRecord'")
 })

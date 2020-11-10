@@ -1,11 +1,11 @@
 #' Facetted count occurrence search.
 #'
-#' @param keys (numeric) GBIF keys, a vector.
+#' @param keys (numeric) GBIF keys, a vector. optional
 #' @param by (character) One of georeferenced, basisOfRecord, country, or
-#' publishingCountry.
+#' publishingCountry. default: country
 #' @param countries (numeric) Number of countries to facet on, or a vector of
-#' country names
-#' @param removezeros (logical) Default is FALSE
+#' country names. default: 10
+#' @param removezeros (logical) remove zeros or not? default: `FALSE`
 #' @export
 #' @examples \dontrun{
 #' # Select number of countries to facet on
@@ -23,6 +23,7 @@
 #' count_facet(keys, by='country', countries=3, removezeros = TRUE)
 #' count_facet(keys, by='country', countries=3, removezeros = FALSE)
 #' count_facet(by='country', countries=20, removezeros = TRUE)
+#' count_facet(keys, by='basisOfRecord', countries=5, removezeros = TRUE)
 #'
 #' # Pass in country names instead
 #' countries <- isocodes$code[1:10]
@@ -42,10 +43,9 @@
 count_facet <- function(keys = NULL, by = 'country', countries = 10,
                         removezeros = FALSE) {
 
-  # can't do both keys and basisofrecord
-  if (!is.null(keys) && by == 'basisOfRecord') {
-    stop("you can't pass in both keys and have by='basisOfRecord'")
-  }
+  assert(by, "character")
+  assert(countries, c("numeric", "integer", "character"))
+  assert(removezeros, "logical")
 
   # faceting data vectors
   if (is.numeric(countries)) {
@@ -68,22 +68,18 @@ count_facet <- function(keys = NULL, by = 'country', countries = 10,
     out <- lapply(keys, occ_by_keys, tt = byvar)
     names(out) <- keys
     df <- ldfast_names(lapply(out, function(x){
-      tmp <- rbind_rows(x)
-      names(tmp)[1] <- by
-      tmp
+      rbind_rows(x, by)
     }))
   } else {
     out <- occ_by(byvar)
-    df <- rbind_rows(out)
-    names(df)[1] <- by
-    df
+    df <- rbind_rows(out, by)
   }
 
   # remove NAs (which were caused by errors in country names)
   df <- stats::na.omit(df)
 
   if (removezeros) {
-    df[!df$V1 == 0, ]
+    df[!df$count == 0, ]
   } else {
     df
   }

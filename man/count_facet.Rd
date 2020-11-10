@@ -7,15 +7,15 @@
 count_facet(keys = NULL, by = "country", countries = 10, removezeros = FALSE)
 }
 \arguments{
-\item{keys}{(numeric) GBIF keys, a vector.}
+\item{keys}{(numeric) GBIF keys, a vector. optional}
 
 \item{by}{(character) One of georeferenced, basisOfRecord, country, or
-publishingCountry.}
+publishingCountry. default: country}
 
 \item{countries}{(numeric) Number of countries to facet on, or a vector of
-country names}
+country names. default: 10}
 
-\item{removezeros}{(logical) Default is FALSE}
+\item{removezeros}{(logical) remove zeros or not? default: \code{FALSE}}
 }
 \description{
 Facetted count occurrence search.
@@ -37,6 +37,7 @@ keys <- sapply(spplist,
 count_facet(keys, by='country', countries=3, removezeros = TRUE)
 count_facet(keys, by='country', countries=3, removezeros = FALSE)
 count_facet(by='country', countries=20, removezeros = TRUE)
+count_facet(keys, by='basisOfRecord', countries=5, removezeros = TRUE)
 
 # Pass in country names instead
 countries <- isocodes$code[1:10]
