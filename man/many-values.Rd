@@ -15,7 +15,9 @@ The following functions originally only iterated over many
 values passed to \code{foo} as a vector (e.g., \code{foo = c(1, 2)}) with completely
 separate HTTP requests. But now these functions also support passing in many
 values to the same HTTP request (e.g., \code{foo = "1;2"}). This is a bit
-awkward, but means that we don't break existing code.
+awkward, but means that we don't break existing code. See
+"Multiple values passed to a parameter" in \code{occ_search}/\code{occ_data} for more
+information.
 
 \itemize{
 \item \code{\link[=occ_search]{occ_search()}}

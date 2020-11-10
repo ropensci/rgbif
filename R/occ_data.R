@@ -6,7 +6,8 @@
 #' @template occ
 #' @template occ_data_egs
 #' @seealso [downloads()], [occ_search()]
-#' @details This does nearly the same thing as [occ_search()], but
+#' @section occ_data vs. occ_search:
+#' This does nearly the same thing as [occ_search()], but
 #' is simplified for speed, and is for the most common use case where
 #' user just wants occurrence data, and not other information like taxon
 #' hierarchies and media (e.g., images). Alot of time in [occ_search()]

@@ -248,14 +248,19 @@ endOfRecords and count fields. \code{data} is a tibble (aka data.frame)
 \description{
 Search for GBIF occurrences - simplified for speed
 }
-\details{
-\strong{protocol parameter options}:
+\note{
+Maximum number of records you can get with this function is 100,000.
+See https://www.gbif.org/developer/occurrence
+}
+\section{protocol parameter options}{
+
 \itemize{
 \item BIOCASE - A BioCASe protocl compliant service.
 \item DIGIR - A DiGIR service endpoint.
-\item DIGIR_MANIS - A DiGIR service slightly modified for the MANIS network.
-\item DWC_ARCHIVE - A Darwin Core Archive as defined by the Darwin Core Text
-Guidelines.
+\item DIGIR_MANIS - A DiGIR service slightly modified for the MANIS
+network.
+\item DWC_ARCHIVE - A Darwin Core Archive as defined by the Darwin Core
+Text Guidelines.
 \item EML - A single EML metadata document in any EML version.
 \item FEED - Syndication feeds like RSS or ATOM of various flavors.
 \item OAI_PMH - The Open Archives Initiative Protocol for Metadata
@@ -267,42 +272,130 @@ Harvesting.
 \item WFS - An OGC Web Feature Service.
 \item WMS - An OGC Web Map Service.
 }
+}
 
-\strong{Multiple values to a single parameter}: Note that you can pass in a vector to one of taxonKey,
-scientificName, datasetKey, catalogNumber, recordedBy, geometry, country, publishingCountry,
-recordNumber, search, institutionCode, collectionCode, decimalLatitude, decimalLongitude,
-depth, year, typeStatus, lastInterpreted, continent, basisOfRecord, or mediatype parameters
-in a function call, but not a vector >1 of these parameters at the same time
+\section{Multiple values passed to a parameter}{
 
-\strong{Multiple semicolon separated values in a string}: If instead of passing in a vector
-to one of the above parameters you pass in a semicolon separated string (e.g., 'a;b')
-then we'll do a single request with that parameter repeated for each value given
-(e.g., \code{foo=a&foo=b} if the parameter is \code{foo})
+There are some parameters you can pass multiple values to in a vector,
+each value of which produces a different request (MDR: multiple different
+requests). Some parameters allow multiple values to be passed in the same
+request (MSR: multiple same request) in a semicolon separated string
+(e.g., 'a;b'); if given we'll do a single request with that parameter
+repeated for each value given (e.g., \code{foo=a&foo=b} if the parameter
+is \code{foo}). Some parameters allow both MDR and MSR.
 
-\strong{Hierarchies}: hierarchies are returned wih each occurrence object. There is no
+The following list shows which parameters support MDR and MSR.
+
+\itemize{
+\item basisOfRecord: MDR, MSR
+\item classKey: MDR, MSR
+\item country: MDR, MSR
+\item familyKey: MDR, MSR
+\item genusKey: MDR, MSR
+\item identifiedByID: MDR, MSR
+\item kingdomKey: MDR, MSR
+\item license: MDR, MSR
+\item locality: MDR, MSR
+\item catalogNumber: MDR, MSR
+\item collectionCode: MDR, MSR
+\item continent: MDR, MSR
+\item datasetKey: MDR, MSR
+\item establishmentMeans: MDR, MSR
+\item geometry: MDR, MSR
+\item institutionCode: MDR, MSR
+\item mediaType: MDR, MSR
+\item orderKey: MDR, MSR
+\item organismId: MDR, MSR
+\item phylumKey: MDR, MSR
+\item protocol: MDR, MSR
+\item publishingCountry: MDR, MSR
+\item publishingOrg: MDR, MSR
+\item recordedBy: MDR, MSR
+\item recordedByID: MDR, MSR
+\item recordNumber: MDR, MSR
+\item scientificName: MDR, MSR
+\item stateProvince: MDR, MSR
+\item subgenusKey: MDR, MSR
+\item taxonKey: MDR, MSR
+\item typeStatus: MDR, MSR
+\item waterBody: MDR, MSR
+\item depth: MDR
+\item limit: MDR
+\item q: MDR
+\item year: MDR
+\item repatriated: MDR
+\item lastInterpreted: MDR
+\item decimalLatitude: MDR
+\item decimalLongitude: MDR
+}
+
+Note that you can not pass a vector > length 1 to more than 1 of the above
+MDR parameters at the same time.
+
+see also \code{\link{many-values}}
+}
+
+\section{Range queries}{
+
+A range query is as it sounds - you query on a range of values defined by
+a lower and upper limit. Do a range query by specifying the lower and upper
+limit in a string like \code{depth='50,100'}. It would be more R like to
+specify the range in a vector like \code{c(50,100)}, but that sort of syntax
+allows you to do many searches, one for each element in the vector -
+thus range queries have to differ. The following parameters support
+range queries.
+
+\itemize{
+\item decimalLatitude
+\item decimalLongitude
+\item depth
+\item elevation
+\item eventDate
+\item lastInterpreted
+\item month
+\item year
+}
+
+See also above section: semicolon and comma separated strings lead to
+different outcomes for some parameters.
+}
+
+\section{Hierarchies}{
+
+Hierarchies are returned wih each occurrence object. There is no
 option no to return them from the API. However, within the \code{occ_search}
-function you can select whether to return just hierarchies, just data, all of
-data and hiearchies and metadata, or just metadata. If all hierarchies are the
-same we just return one for you.
+function you can select whether to return just hierarchies, just data, all
+of data and hiearchies and metadata, or just metadata. If all hierarchies
+are the same we just return one for you.
+}
 
-\strong{Data}: By default only three data fields are returned: name (the species name),
-decimallatitude, and decimallongitude. Set parameter \code{minimal=FALSE} if you want more data.
+\section{curl debugging}{
 
-\strong{curl debugging}: You can pass parameters not defined in this function into the call to
-the GBIF API to control things about the call itself using \code{curlopts}. See an example below
-that passes in the \code{verbose} function to get details on the http call.
+You can pass parameters not defined in this function into the call to
+the GBIF API to control things about the call itself using \code{curlopts}.
+See an example below that passes in the \code{verbose} function to get
+details on the http call.
+}
 
-\strong{Scientific names vs. taxon keys}: In the previous GBIF API and the version of rgbif that
-wrapped that API, you could search the equivalent of this function with a species name, which
-was convenient. However, names are messy right. So it sorta makes sense to sort out the species
-key numbers you want exactly, and then get your occurrence data with this function. GBIF has
-added a parameter scientificName to allow searches by scientific names in this function - which
-includes synonym taxa. \emph{Note:} that if you do use the scientificName parameter, we will
-check internally that it's not a synonym of an accepted name, and if it is, we'll search on the
-accepted name. If you want to force searching by a synonym do so by finding the GBIF identifier
-first with any \code{name_*} functions, then pass that ID to the \code{taxonKey} parameter.
+\section{Scientific names vs. taxon keys}{
 
-\strong{WKT}: Examples of valid WKT objects:
+In the previous GBIF API and the version of rgbif that
+wrapped that API, you could search the equivalent of this function with a
+species name, which was convenient. However, names are messy right. So it
+sorta makes sense to sort out the species key numbers you want exactly,
+and then get your occurrence data with this function. GBIF has added a
+parameter scientificName to allow searches by scientific names in this
+function - which includes synonym taxa. \emph{Note:} that if you do use the
+scientificName parameter, we will check internally that it's not a
+synonym of an accepted name, and if it is, we'll search on the
+accepted name. If you want to force searching by a synonym do so by
+finding the GBIF identifier first with any \code{name_*} functions,
+then pass that ID to the \code{taxonKey} parameter.
+}
+
+\section{WKT}{
+
+Examples of valid WKT objects:
 \itemize{
 \item 'POLYGON((-19.5 34.1, 27.8 34.1, 35.9 68.1, -25.3 68.1, -19.5 34.1))'
 \item 'MULTIPOLYGON(((-123 38,-116 38,-116 43,-123 43,-123 38)),((-97 41,-93 41,-93 45,-97 45,-97 41)))'
@@ -315,8 +408,11 @@ Note that GBIF expects counter-clockwise winding order for WKT. You can
 supply clockwise WKT, but GBIF treats it as an exclusion, so you get all
 data not inside the WKT area. \code{\link[=occ_download]{occ_download()}} behaves differently
 in that you should simply get no data back at all with clockwise WKT.
+}
 
-\strong{Long WKT}: Options for handling long WKT strings:
+\section{Long WKT}{
+
+Options for handling long WKT strings:
 Note that long WKT strings are specially handled when using \code{\link{occ_search}} or
 \code{\link{occ_data}}. Here are the three options for long WKT strings (> 1500 characters),
 set one of these three via the parameter \code{geom_big}:
@@ -351,24 +447,11 @@ what you set with your \code{limit} parameter. However, you could set the limit 
 high enough so that you get all records back found in that bounding box, then you'll
 get all the records available within the WKT.
 }
-
-\strong{Range queries}: A range query is as it sounds - you query on a range of values defined by
-a lower and upper limit. Do a range query by specifying the lower and upper limit in a vector
-like \code{depth='50,100'}. It would be more R like to specify the range in a vector like
-\code{c(50,100)}, but that sort of syntax allows you to do many searches, one for each element in
-the vector - thus range queries have to differ. The following parameters support range queries.
-\itemize{
-\item decimalLatitude
-\item decimalLongitude
-\item depth
-\item elevation
-\item eventDate
-\item lastInterpreted
-\item month
-\item year
 }
 
-\strong{Issue}: The options for the issue parameter (from
+\section{issue parameter}{
+
+The options for the issue parameter (from
 https://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html):
 \itemize{
 \item BASIS_OF_RECORD_INVALID The given basis of record is impossible to interpret or seriously
@@ -439,11 +522,18 @@ different from the recommended vocabulary.
 \item ZERO_COORDINATE Coordinate is the exact 0/0 coordinate, often indicating a bad null
 coordinate.
 }
+}
 
-\strong{Counts}: There is a slight difference in the way records are counted here vs.
-results from \code{\link{occ_count}}. For equivalent outcomes, in this function
-use \code{hasCoordinate=TRUE}, and \code{hasGeospatialIssue=FALSE} to have the
-same outcome using \code{\link{occ_count}} with \code{isGeoreferenced=TRUE}
+\section{Counts}{
+
+There is a slight difference in the way records are counted here vs.
+results from \code{\link{occ_count}}. For equivalent outcomes, in this
+function use \code{hasCoordinate=TRUE}, and \code{hasGeospatialIssue=FALSE}
+to have the same outcome using \code{\link{occ_count}} with
+\code{isGeoreferenced=TRUE}
+}
+
+\section{occ_data vs. occ_search}{
 
 This does nearly the same thing as \code{\link[=occ_search]{occ_search()}}, but
 is simplified for speed, and is for the most common use case where
@@ -470,10 +560,7 @@ into a data.frame. The fields are:
 
 To get these fields use \code{\link[=occ_search]{occ_search()}} instead.
 }
-\note{
-Maximum number of records you can get with this function is 100,000.
-See https://www.gbif.org/developer/occurrence
-}
+
 \examples{
 \dontrun{
 (key <- name_backbone(name='Encelia californica')$speciesKey)
