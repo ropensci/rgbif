@@ -46,7 +46,7 @@ https://countrycode.org/ for abbreviations.}
 
 \item{to}{Year to end at}
 
-\item{type}{One of count (default), schema, basis_of_record, countries, or
+\item{type}{One of count (default), schema, basisOfRecord, countries, or
 year.}
 
 \item{publishingCountry}{Publishing country, two letter ISO country code}
@@ -75,7 +75,6 @@ using \code{georeferenced=TRUE}.
 That is, there are only a certain set of supported query parameter
 combinations that GBIF allows on this API route. They can be found with the
 call \code{occ_count(type='schema')}. They are also presented below:
-
 \itemize{
 \item basisOfRecord
 \item basisOfRecord, country
@@ -139,7 +138,10 @@ occ_count(type='schema')
 # Counts by basisOfRecord types
 occ_count(type='basisOfRecord')
 
-# Counts by basisOfRecord types
+# Counts by basisOfRecord types and taxonkey
+occ_count(taxonKey=2435099, basisOfRecord='OBSERVATION')
+
+# Counts by typeStatus
 occ_count(typeStatus='ALLOTYPE')
 occ_count(typeStatus='HOLOTYPE')
 

@@ -18,7 +18,7 @@
 #' @param publishingCountry Publishing country, two letter ISO country code
 #' @param from Year to start at
 #' @param to Year to end at
-#' @param type One of count (default), schema, basis_of_record, countries, or
+#' @param type One of count (default), schema, basisOfRecord, countries, or
 #' year.
 #' @template occ
 #'
@@ -36,50 +36,48 @@
 #' combinations that GBIF allows on this API route. They can be found with the
 #' call `occ_count(type='schema')`. They are also presented below:
 #'
-#' \itemize{
-#'  \item basisOfRecord
-#'  \item basisOfRecord, country
-#'  \item basisOfRecord, country, isGeoreferenced
-#'  \item basisOfRecord, country, isGeoreferenced, taxonKey
-#'  \item basisOfRecord, country, taxonKey
-#'  \item basisOfRecord, datasetKey
-#'  \item basisOfRecord, datasetKey, isGeoreferenced
-#'  \item basisOfRecord, datasetKey, isGeoreferenced, taxonKey
-#'  \item basisOfRecord, datasetKey, taxonKey
-#'  \item basisOfRecord, isGeoreferenced, taxonKey
-#'  \item basisOfRecord, isGeoreferenced, publishingCountry
-#'  \item basisOfRecord, isGeoreferenced, publishingCountry, taxonKey
-#'  \item basisOfRecord, publishingCountry
-#'  \item basisOfRecord, publishingCountry, taxonKey
-#'  \item basisOfRecord, taxonKey
-#'  \item country
-#'  \item country, datasetKey, isGeoreferenced
-#'  \item country, isGeoreferenced
-#'  \item country, isGeoreferenced, publishingCountry
-#'  \item country, isGeoreferenced, taxonKey
-#'  \item country, publishingCountry
-#'  \item country, taxonKey
-#'  \item country, typeStatus
-#'  \item datasetKey
-#'  \item datasetKey, isGeoreferenced
-#'  \item datasetKey, isGeoreferenced, taxonKey
-#'  \item datasetKey, issue
-#'  \item datasetKey, taxonKey
-#'  \item datasetKey, typeStatus
-#'  \item isGeoreferenced
-#'  \item isGeoreferenced, publishingCountry
-#'  \item isGeoreferenced, publishingCountry, taxonKey
-#'  \item isGeoreferenced, taxonKey
-#'  \item issue
-#'  \item publishingCountry
-#'  \item publishingCountry, taxonKey
-#'  \item publishingCountry, typeStatus
-#'  \item taxonKey
-#'  \item taxonKey, typeStatus
-#'  \item typeStatus
-#'  \item protocol
-#'  \item year
-#' }
+#' - basisOfRecord
+#' - basisOfRecord, country
+#' - basisOfRecord, country, isGeoreferenced
+#' - basisOfRecord, country, isGeoreferenced, taxonKey
+#' - basisOfRecord, country, taxonKey
+#' - basisOfRecord, datasetKey
+#' - basisOfRecord, datasetKey, isGeoreferenced
+#' - basisOfRecord, datasetKey, isGeoreferenced, taxonKey
+#' - basisOfRecord, datasetKey, taxonKey
+#' - basisOfRecord, isGeoreferenced, taxonKey
+#' - basisOfRecord, isGeoreferenced, publishingCountry
+#' - basisOfRecord, isGeoreferenced, publishingCountry, taxonKey
+#' - basisOfRecord, publishingCountry
+#' - basisOfRecord, publishingCountry, taxonKey
+#' - basisOfRecord, taxonKey
+#' - country
+#' - country, datasetKey, isGeoreferenced
+#' - country, isGeoreferenced
+#' - country, isGeoreferenced, publishingCountry
+#' - country, isGeoreferenced, taxonKey
+#' - country, publishingCountry
+#' - country, taxonKey
+#' - country, typeStatus
+#' - datasetKey
+#' - datasetKey, isGeoreferenced
+#' - datasetKey, isGeoreferenced, taxonKey
+#' - datasetKey, issue
+#' - datasetKey, taxonKey
+#' - datasetKey, typeStatus
+#' - isGeoreferenced
+#' - isGeoreferenced, publishingCountry
+#' - isGeoreferenced, publishingCountry, taxonKey
+#' - isGeoreferenced, taxonKey
+#' - issue
+#' - publishingCountry
+#' - publishingCountry, taxonKey
+#' - publishingCountry, typeStatus
+#' - taxonKey
+#' - taxonKey, typeStatus
+#' - typeStatus
+#' - protocol
+#' - year
 #'
 #' @examples \dontrun{
 #' occ_count(basisOfRecord='OBSERVATION')
@@ -96,8 +94,11 @@
 #'
 #' # Counts by basisOfRecord types
 #' occ_count(type='basisOfRecord')
+#' 
+#' # Counts by basisOfRecord types and taxonkey
+#' occ_count(taxonKey=2435099, basisOfRecord='OBSERVATION')
 #'
-#' # Counts by basisOfRecord types
+#' # Counts by typeStatus
 #' occ_count(typeStatus='ALLOTYPE')
 #' occ_count(typeStatus='HOLOTYPE')
 #'
