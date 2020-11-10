@@ -132,11 +132,16 @@
 #'  \item WMS - An OGC Web Map Service.
 #' }
 #'
-#' **Multiple parmeters**: Note that you can pass in a vector to one of taxonKey,
+#' **Multiple values to a single parameter**: Note that you can pass in a vector to one of taxonKey,
 #' scientificName, datasetKey, catalogNumber, recordedBy, geometry, country, publishingCountry,
 #' recordNumber, search, institutionCode, collectionCode, decimalLatitude, decimalLongitude,
-#' depth, year, typeStatus, lastInterpreted, continent, or mediatype parameters in a
-#' function call, but not a vector >1 of these parameters at the same time
+#' depth, year, typeStatus, lastInterpreted, continent, basisOfRecord, or mediatype parameters
+#' in a function call, but not a vector >1 of these parameters at the same time
+#' 
+#' **Multiple semicolon separated values in a string**: If instead of passing in a vector
+#' to one of the above parameters you pass in a semicolon separated string (e.g., 'a;b')
+#' then we'll do a single request with that parameter repeated for each value given
+#' (e.g., `foo=a&foo=b` if the parameter is `foo`)
 #'
 #' **Hierarchies**: hierarchies are returned wih each occurrence object. There is no
 #' option no to return them from the API. However, within the \code{occ_search}
@@ -147,7 +152,7 @@
 #' **Data**: By default only three data fields are returned: name (the species name),
 #' decimallatitude, and decimallongitude. Set parameter \code{minimal=FALSE} if you want more data.
 #'
-#' **Nerds**: You can pass parameters not defined in this function into the call to
+#' **curl debugging**: You can pass parameters not defined in this function into the call to
 #' the GBIF API to control things about the call itself using \code{curlopts}. See an example below
 #' that passes in the \code{verbose} function to get details on the http call.
 #'

@@ -192,6 +192,12 @@
 #'
 #' # Get only occurrences that were recorded as living specimens
 #' occ_search(taxonKey=key, basisOfRecord="LIVING_SPECIMEN", hasCoordinate=TRUE, limit=20)
+#' ## multiple values in a vector = a separate request for each value
+#' occ_search(taxonKey=key,
+#'   basisOfRecord=c("LIVING_SPECIMEN", "HUMAN_OBSERVATION"), limit=20)
+#' ## mutiple values in a single string, ";" separated = one request including all values
+#' occ_search(taxonKey=key,
+#'   basisOfRecord="LIVING_SPECIMEN;HUMAN_OBSERVATION", limit=20)
 #'
 #' # Get occurrences for a particular eventDate
 #' occ_search(taxonKey=key, eventDate="2013", limit=20)

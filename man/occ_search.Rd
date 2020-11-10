@@ -306,11 +306,16 @@ Harvesting.
 \item WMS - An OGC Web Map Service.
 }
 
-\strong{Multiple parmeters}: Note that you can pass in a vector to one of taxonKey,
+\strong{Multiple values to a single parameter}: Note that you can pass in a vector to one of taxonKey,
 scientificName, datasetKey, catalogNumber, recordedBy, geometry, country, publishingCountry,
 recordNumber, search, institutionCode, collectionCode, decimalLatitude, decimalLongitude,
-depth, year, typeStatus, lastInterpreted, continent, or mediatype parameters in a
-function call, but not a vector >1 of these parameters at the same time
+depth, year, typeStatus, lastInterpreted, continent, basisOfRecord, or mediatype parameters
+in a function call, but not a vector >1 of these parameters at the same time
+
+\strong{Multiple semicolon separated values in a string}: If instead of passing in a vector
+to one of the above parameters you pass in a semicolon separated string (e.g., 'a;b')
+then we'll do a single request with that parameter repeated for each value given
+(e.g., \code{foo=a&foo=b} if the parameter is \code{foo})
 
 \strong{Hierarchies}: hierarchies are returned wih each occurrence object. There is no
 option no to return them from the API. However, within the \code{occ_search}
@@ -321,7 +326,7 @@ same we just return one for you.
 \strong{Data}: By default only three data fields are returned: name (the species name),
 decimallatitude, and decimallongitude. Set parameter \code{minimal=FALSE} if you want more data.
 
-\strong{Nerds}: You can pass parameters not defined in this function into the call to
+\strong{curl debugging}: You can pass parameters not defined in this function into the call to
 the GBIF API to control things about the call itself using \code{curlopts}. See an example below
 that passes in the \code{verbose} function to get details on the http call.
 
@@ -677,6 +682,12 @@ occ_search(taxonKey=key, hasCoordinate=TRUE, limit=20)
 
 # Get only occurrences that were recorded as living specimens
 occ_search(taxonKey=key, basisOfRecord="LIVING_SPECIMEN", hasCoordinate=TRUE, limit=20)
+## multiple values in a vector = a separate request for each value
+occ_search(taxonKey=key,
+  basisOfRecord=c("LIVING_SPECIMEN", "HUMAN_OBSERVATION"), limit=20)
+## mutiple values in a single string, ";" separated = one request including all values
+occ_search(taxonKey=key,
+  basisOfRecord="LIVING_SPECIMEN;HUMAN_OBSERVATION", limit=20)
 
 # Get occurrences for a particular eventDate
 occ_search(taxonKey=key, eventDate="2013", limit=20)

@@ -67,7 +67,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
     args <- rgbif_compact(
       list(hasCoordinate = hasCoordinate,
         lastInterpreted = lastInterpreted,
-        basisOfRecord = basisOfRecord, decimalLatitude = decimalLatitude,
+        decimalLatitude = decimalLatitude,
         decimalLongitude = decimalLongitude,
         hasGeospatialIssue = hasGeospatialIssue,
         q = search, repatriated = repatriated, elevation = elevation,
@@ -88,7 +88,8 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
       convmany(classKey), convmany(orderKey), convmany(familyKey),
       convmany(genusKey), convmany(establishmentMeans), convmany(protocol),
       convmany(license), convmany(organismId), convmany(publishingOrg),
-      convmany(stateProvince), convmany(waterBody), convmany(locality)
+      convmany(stateProvince), convmany(waterBody), convmany(locality),
+      convmany(basisOfRecord)
     )
 
     argscoll <<- args
@@ -164,7 +165,7 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
     establishmentMeans=establishmentMeans,protocol=protocol, license=license,
     organismId=organismId,publishingOrg=publishingOrg,
     stateProvince=stateProvince,waterBody=waterBody, locality=locality,
-    limit=limit
+    limit=limit, basisOfRecord=basisOfRecord
   )
   if (!any(sapply(params, length) > 0)) {
     stop(sprintf("At least one of these parameters must have a value:\n%s",
