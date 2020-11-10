@@ -1,6 +1,26 @@
 PACKAGE := $(shell grep '^Package:' DESCRIPTION | sed -E 's/^Package:[[:space:]]+//')
 RSCRIPT = Rscript --no-init-file
 
+vign:
+	cd vignettes;\
+	${RSCRIPT} -e "Sys.setenv(NOT_CRAN='true'); knitr::knit('rgbif.Rmd.og', output = 'rgbif.Rmd')";\
+	cd ..
+
+vign_issues:
+	cd vignettes;\
+	${RSCRIPT} -e "Sys.setenv(NOT_CRAN='true'); knitr::knit('issues.Rmd.og', output = 'issues.Rmd')";\
+	cd ..
+
+vign_downloads:
+	cd vignettes;\
+	${RSCRIPT} -e "Sys.setenv(NOT_CRAN='true'); knitr::knit('downloads.Rmd.og', output = 'downloads.Rmd')";\
+	cd ..
+
+vign_names:
+	cd vignettes;\
+	${RSCRIPT} -e "Sys.setenv(NOT_CRAN='true'); knitr::knit('taxonomic_names.Rmd.og', output = 'taxonomic_names.Rmd')";\
+	cd ..
+
 install: doc build
 	R CMD INSTALL . && rm *.tar.gz
 

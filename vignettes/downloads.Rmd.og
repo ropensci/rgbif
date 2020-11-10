@@ -1,7 +1,7 @@
 ---
 title: Downloading data from GBIF
 author: Scott Chamberlain
-date: "2020-11-10"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
     %\VignetteIndexEntry{downloading}
@@ -9,7 +9,14 @@ vignette: >
     %\VignetteEncoding{UTF-8}
 ---
 
-
+```{r echo=FALSE}
+knitr::opts_chunk$set(
+	comment = "#>",
+	collapse = TRUE,
+	warning = FALSE,
+	message = FALSE
+)
+```
 
 GBIF Downloads
 ==============
@@ -92,8 +99,7 @@ Let's take a look at how to use the download functions.
 
 ## Load rgbif
 
-
-```r
+```{r}
 library("rgbif")
 ```
 
@@ -103,8 +109,7 @@ Instead of passing parameters like `taxonkey = 12345` in `occ_search`, for downl
 we construct queries using any of the `pred` functions. This provides for much more
 complex queries than can be done with `occ_search/occ_data`. With downloads, you can use operators other than `=` (equal to); and the queries can be very complex.
 
-
-```r
+```{r eval=FALSE}
 (res <- occ_download(pred('taxonKey', 7264332), pred('hasCoordinate', TRUE)))
 #> <<gbif download>>
 #>   Username: sckott
@@ -124,8 +129,7 @@ download, and helps us check and know when the download is done.
 After running `occ_download`, we can pass the resulting object to
 `occ_download_meta` - with primary goal of checking the download status.
 
-
-```r
+```{r eval=FALSE}
 occ_download_meta(res)
 #> <<gbif download metadata>>
 #>   Status: PREPARING
@@ -152,8 +156,7 @@ Before we go to the next step, there's another function to help you out.
 With `occ_download_list` you can get an overview of all your download
 requests, with
 
-
-```r
+```{r eval=FALSE}
 x <- occ_download_list()
 x$results <- tibble::as_tibble(x$results)
 x
@@ -206,8 +209,7 @@ cancels all jobs in `PREPARING` or `RUNNING` stage.
 After you see the `SUCCEEDED` status on calling `occ_download_meta`, you can
 then download the data using `occ_download_get`.
 
-
-```r
+```{r eval=FALSE}
 (dat <- occ_download_get("0000796-171109162308116"))
 #> <<gbif downloaded get>>
 #>   Path: ./0000796-171109162308116.zip
@@ -222,8 +224,7 @@ You can now move on to importing into R.
 Pass the output of `occ_download_get` directly to `occ_download_import` -
 they can be piped together if you like.
 
-
-```r
+```{r eval=FALSE}
 occ_download_get("0000796-171109162308116") %>% occ_download_import()
 # OR
 dat <- occ_download_get("0000796-171109162308116")
@@ -261,8 +262,7 @@ the download with metadata on GBIF's website. And it makes for a nice citation.
 Using the funciton `gbif_citaiton` we can get citations for our downloads,
 with the output from `occ_download_get` or `occ_download_meta`.
 
-
-```r
+```{r eval=FALSE}
 occ_download_meta(res) %>% gbif_citation()
 #> $download
 #> [1] "GBIF Occurrence Download https://doi.org/10.15468/dl.ohjevv Accessed from R via rgbif (https://github.com/ropensci/rgbif) on 2017-11-10"
@@ -277,8 +277,7 @@ we don't yet have any information about which datasets are in the download.
 But if you use `occ_download_get` you then have the individual datasets, and we
 can get citatations for each idividual dataset in addition to the entire download.
 
-
-```r
+```{r eval=FALSE}
 occ_download_get("0000796-171109162308116") %>% gbif_citation()
 #> $download
 #> [1] "GBIF Occurrence Download https://doi.org/10.15468/dl.nv3r5p Accessed from R via rgbif (https://github.com/ropensci/rgbif) on 2017-11-10"
