@@ -697,3 +697,5 @@ fail_with <- function(default = NULL, f, quiet = FALSE) {
   f <- match.fun(f)
   function(...) tryDefault(f(...), default, quiet = quiet)
 }
+
+cat_n <- function(..., sep = "") cat(..., "\n", sep = sep)

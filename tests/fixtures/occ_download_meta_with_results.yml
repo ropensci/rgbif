@@ -1,0 +1,41 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/download/0108986-200613084148143
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.3.3.91)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.3.3.91)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
+      content-type: application/json
+      date: Wed, 11 Nov 2020 16:49:09 GMT
+      cache-control: public, max-age=3601
+      x-varnish: '226988503'
+      age: '0'
+      via: 1.1 varnish (Varnish/6.0)
+      accept-ranges: bytes
+      content-length: '670'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"key":"0108986-200613084148143","doi":"10.15468/dl.hx3uzz","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"within","geometry":"POLYGON((-14
+        42, 9 38, -7 26, -14 42))"},{"type":"greaterThanOrEquals","key":"ELEVATION","value":"5400","matchCase":false}]},"sendNotification":false,"format":"DWCA"},"created":"2020-11-11T16:47:40.736+0000","modified":"2020-11-11T16:48:30.842+0000","eraseAfter":"2021-05-11T16:47:40.654+0000","status":"SUCCEEDED","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0108986-200613084148143.zip","size":38857,"totalRecords":21,"numberDatasets":8}'
+  recorded_at: 2020-11-11 16:49:10 GMT
+  recorded_with: vcr/0.5.4.93, webmockr/0.7.0.91

@@ -32,15 +32,28 @@ occ_download_meta <- function(key, curlopts = list()) {
 #' @export
 print.occ_download_meta <- function(x, ...){
   stopifnot(inherits(x, 'occ_download_meta'))
-  cat("<<gbif download metadata>>", "\n", sep = "")
-  cat("  Status: ", x$status, "\n", sep = "")
-  cat("  Format: ", attr(x, 'format'), "\n", sep = "")
-  cat("  Download key: ", x$key, "\n", sep = "")
-  cat("  Created: ", x$created, "\n", sep = "")
-  cat("  Modified: ", x$modified, "\n", sep = "")
-  cat("  Download link: ", x$downloadLink, "\n", sep = "")
-  cat("  Total records: ", x$totalRecords, "\n", sep = "")
-  cat("  Request: ", gbif_make_list(x$request), "\n", sep = "")
+  cat_n("<<gbif download metadata>>")
+  cat_n("  Status: ", x$status)
+  cat_n("  Format: ", attr(x, 'format'))
+  cat_n("  Download key: ", x$key)
+  cat_n("  Created: ", x$created)
+  cat_n("  Modified: ", x$modified)
+  cat_n("  Download link: ", x$downloadLink)
+  cat_n("  Total records: ", n_with_status(x$totalRecords, x$status))
+  cat_n("  Request: ", gbif_make_list(x$request))
+}
+
+n_with_status <- function(n, status) {
+  # bail out if not numeric or integer
+  if (!inherits(n, c("numeric", "integer"))) return(n)
+  # return n if greater than zero
+  if (n > 0) return(n)
+  # if zero and still running return NA
+  if (!tolower(status) %in% c('succeeded', 'killed', 'cancelled')) {
+    return("<NA>")
+  }
+  # else return n
+  return(n)
 }
 
 gbif_make_list <- function(y){
@@ -74,12 +87,6 @@ gbif_make_list <- function(y){
           tmp$type,
           if ("geometry" %in% names(tmp)) "geometry" else tmp$key,
           sub_str(gg, 60)
-          # if ("geometry" %in% names(tmp)) {
-          #   tmp$geometry
-          # } else {
-          #   zz <- tmp$value %||% tmp$values
-          #   if (!is.null(zz)) paste(zz, collapse = ",") else zz
-          # }
         )
       }
     }

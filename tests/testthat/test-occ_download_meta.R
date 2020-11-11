@@ -33,3 +33,26 @@ test_that("occ_download_meta", {
   res <- capture.output(aa)
   expect_true(all(vapply(res, nchar, 1) < 150))
 })
+
+test_that("occ_download_meta print method", {
+  skip_on_cran()
+
+  # ## Query:
+  # occ_download(
+  #   pred_and(
+  #     pred_within("POLYGON((-14 42, 9 38, -7 26, -14 42))"),
+  #     pred_gte("elevation", 5400)))
+  vcr::use_cassette("occ_download_meta_na_results", {
+    aa <- occ_download_meta("0108986-200613084148143")
+  })
+  # re-recorded cassette for same request after results ready
+  vcr::use_cassette("occ_download_meta_with_results", {
+    bb <- occ_download_meta("0108986-200613084148143")
+  })
+
+  expect_is(aa, "occ_download_meta")
+  expect_output(print(aa), "Total records: <NA>")
+
+  expect_is(bb, "occ_download_meta")
+  expect_output(print(bb), "Total records: 21")
+})
