@@ -48,3 +48,4 @@ tests/fixtures/organizations.yml
 tests/fixtures/dl_user.yml
 readme_contributors.txt
 vignettes/
+^LICENSE\.md$
