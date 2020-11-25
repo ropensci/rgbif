@@ -15,6 +15,7 @@ cran-comments.md
 gist_downloads.md
 R/deprecated.r
 README.Rmd
+README.md
 ^\.httr-oauth$
 ^CODE_OF_CONDUCT\.md$
 ^cran-comments\.md$
