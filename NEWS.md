@@ -1,3 +1,20 @@
+rgbif 3.4
+=========
+
+### MINOR IMPROVEMENTS
+
+* Documentation: clarify for `occ_search()` and `occ_data()` what parameters accept many values and which do not; in addition, we clarify which parameters accept multiple values in the same HTTP request, and those that accept multiple values but apply each in separate HTTP requests. See also `?many-values` manual file  (#369)
+* `gbif_issues()` gains 9 new occurrence issues (#435)
+* for `occ_search()` and `occ_data()`, `basisOfRecord` parameter now supports multiple values, both in one request and in different requests, depending on input format (see "Multiple values passed to a parameter" section in `?occ_search`)  (#437)
+* remove vignettes from cran to avoid cran checks - still available on our docs site (#438)
+* `occ_download_get()`: GBIF slightly altered download behavior - we now explicitly follow any redirects to get a download (#439)
+* `print.occ_download_meta` (used when you run `occ_download_meta()`) was printing `NA` for number of results found if no results were ready yet - now prints `0` instead of `NA` (#440)
+
+### BUG FIXES
+
+* `count_facet()` fixes: fixed internal fxn for `count_facet` for parsing results, was dropping values for facets; added assertions to check parameter types input by user for the fxn; changed so that keys and basisofrecord can be passed together (#436)
+
+
 rgbif 3.3
 =========
 
