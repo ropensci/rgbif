@@ -8,32 +8,34 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0)
   response:
     status:
       status_code: '400'
       message: Bad Request
       explanation: Bad request syntax or unsupported method
     headers:
-      status: HTTP/1.1 400 Bad Request
-      date: Wed, 12 Feb 2020 22:54:59 GMT
+      status: 'HTTP/2 400 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
       content-type: text/plain
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
-      cache-control: no-cache, no-store, must-revalidate
-      x-varnish: '1038979450'
-      age: '0'
-      via: 1.1 varnish (Varnish/5.2)
       content-length: '48'
-      connection: keep-alive
+      date: Mon, 07 Dec 2020 17:14:07 GMT
+      cache-control: no-cache, no-store, must-revalidate
+      x-varnish: '422067217'
+      age: '0'
+      via: 1.1 varnish (Varnish/6.0)
     body:
       encoding: UTF-8
       file: no
       string: Cannot parse asia,oceania into a known Continent
-  recorded_at: 2020-02-12 22:55:00 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+  recorded_at: 2020-12-07 17:14:07 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search?decimalLatitude=334&limit=500&offset=0
@@ -43,29 +45,31 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0)
   response:
     status:
       status_code: '400'
       message: Bad Request
       explanation: Bad request syntax or unsupported method
     headers:
-      status: HTTP/1.1 400 Bad Request
-      date: Wed, 12 Feb 2020 22:55:00 GMT
+      status: 'HTTP/2 400 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
       content-type: text/plain
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
-      cache-control: no-cache, no-store, must-revalidate
-      x-varnish: '625572'
-      age: '0'
-      via: 1.1 varnish (Varnish/5.2)
       content-length: '60'
-      connection: keep-alive
+      date: Mon, 07 Dec 2020 17:14:07 GMT
+      cache-control: no-cache, no-store, must-revalidate
+      x-varnish: '422067218'
+      age: '0'
+      via: 1.1 varnish (Varnish/6.0)
     body:
       encoding: UTF-8
       file: no
       string: 334 is not valid value, latitude must be between -90 and 90.
-  recorded_at: 2020-02-12 22:55:00 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+  recorded_at: 2020-12-07 17:14:07 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0

@@ -8,35 +8,34 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.2.91)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.2.91)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Thu, 11 Jun 2020 23:20:51 GMT
+      status: 'HTTP/2 200 '
+      date: Mon, 07 Dec 2020 17:14:07 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: '69796472'
+      x-varnish: '422067219'
       age: '0'
-      via: 1.1 varnish (Varnish/5.2)
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
       content-length: '456'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
       string: '{"usageKey":7595433,"scientificName":"Salmo salar Linnaeus, 1758","canonicalName":"Salmo
         salar","rank":"SPECIES","status":"ACCEPTED","confidence":100,"matchType":"EXACT","kingdom":"Animalia","phylum":"Chordata","order":"Salmoniformes","family":"Salmonidae","genus":"Salmo","species":"Salmo
         salar","kingdomKey":1,"phylumKey":44,"classKey":204,"orderKey":1313,"familyKey":8615,"genusKey":2347608,"speciesKey":7595433,"synonym":false,"class":"Actinopterygii"}'
-  recorded_at: 2020-06-11 23:20:52 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.6.2
+  recorded_at: 2020-12-07 17:14:09 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search?depth=5&limit=500&offset=0&taxonKey=7595433
@@ -46,33 +45,35 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.2.91)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.2.91)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Thu, 11 Jun 2020 23:20:51 GMT
+      status: 'HTTP/2 200 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
       content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
+      date: Mon, 07 Dec 2020 17:14:08 GMT
       cache-control: public, max-age=600
-      x-varnish: '58426708'
+      x-varnish: '422067220'
       age: '0'
-      via: 1.1 varnish (Varnish/5.2)
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
       content-length: '79'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
       string: '{"offset":0,"limit":300,"endOfRecords":true,"count":0,"results":[],"facets":[]}'
-  recorded_at: 2020-06-11 23:20:52 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.6.2
+  recorded_at: 2020-12-07 17:14:09 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search?depth=5&limit=500&offset=0&taxonKey=7595433
@@ -82,33 +83,35 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.2.91)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.2.91)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Thu, 11 Jun 2020 23:20:51 GMT
+      status: 'HTTP/2 200 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
       content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
+      date: Mon, 07 Dec 2020 17:14:08 GMT
       cache-control: public, max-age=600
-      x-varnish: 1067421313 58426709
+      x-varnish: 422067221 499778848
       age: '0'
-      via: 1.1 varnish (Varnish/5.2)
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
       content-length: '79'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
       string: '{"offset":0,"limit":300,"endOfRecords":true,"count":0,"results":[],"facets":[]}'
-  recorded_at: 2020-06-11 23:20:52 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.6.2
+  recorded_at: 2020-12-07 17:14:09 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search?depth=5-10&limit=500&offset=0&taxonKey=7595433
@@ -118,29 +121,31 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.2.91)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.2.91)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0)
   response:
     status:
       status_code: '400'
       message: Bad Request
       explanation: Bad request syntax or unsupported method
     headers:
-      status: HTTP/1.1 400 Bad Request
-      date: Thu, 11 Jun 2020 23:20:52 GMT
+      status: 'HTTP/2 400 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
       content-type: text/plain
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
-      cache-control: no-cache, no-store, must-revalidate
-      x-varnish: '64356495'
-      age: '0'
-      via: 1.1 varnish (Varnish/5.2)
       content-length: '27'
-      connection: keep-alive
+      date: Mon, 07 Dec 2020 17:14:08 GMT
+      cache-control: no-cache, no-store, must-revalidate
+      x-varnish: '422067222'
+      age: '0'
+      via: 1.1 varnish (Varnish/6.0)
     body:
       encoding: UTF-8
       file: no
       string: 'Invalid decimal range: 5-10'
-  recorded_at: 2020-06-11 23:20:52 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.6.2
+  recorded_at: 2020-12-07 17:14:09 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0

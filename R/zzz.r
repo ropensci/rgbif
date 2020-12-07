@@ -53,6 +53,13 @@ gbifparser <- function(input, fields= "minimal") {
       x <- x[!names(x) %in% "media"] # remove images
     } else { media2 <- list() }
 
+    # extensions is a PITA, just remove
+    x$extensions <- NULL
+
+    # remove any fields > length 1
+    lgts <- unname(sapply(x, length))
+    if (any(lgts > 1)) x[lgts > 1] <- NULL
+
     # all other data
     x <- data.frame(x, stringsAsFactors=FALSE)
     if (any(fields == "minimal")) {
