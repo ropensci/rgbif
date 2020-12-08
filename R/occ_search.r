@@ -1,5 +1,3 @@
-vvv <- new.env()
-
 #' Search for GBIF occurrences
 #'
 #' @export
@@ -135,7 +133,6 @@ occ_search <- function(taxonKey=NULL, scientificName=NULL, country=NULL,
       hier2 <- NULL
       media <- NULL
     } else {
-      vvv$data <- data
       data <- gbifparser(input = data, fields = fields)
       dat2 <- tibble::as_tibble(
         prune_result(setdfrbind(lapply(data, "[[", "data"))))
