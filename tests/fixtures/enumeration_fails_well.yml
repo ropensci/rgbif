@@ -8,27 +8,31 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0.94)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0.94)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
-      status_code: '204'
-      message: No Content
-      explanation: Request fulfilled, nothing follows
+      status_code: '404'
+      message: Not Found
+      explanation: Nothing matches the given URI
     headers:
-      status: 'HTTP/2 204 '
-      date: Mon, 09 Mar 2020 15:39:14 GMT
-      content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
-      cache-control: public, max-age=3601
-      x-varnish: '41320900'
+      status: 'HTTP/2 404 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
+      content-type: text/plain
+      content-length: '53'
+      date: Tue, 08 Dec 2020 23:58:48 GMT
+      cache-control: no-cache, no-store, must-revalidate
+      x-varnish: '478282658'
       age: '0'
-      via: 1.1 varnish (Varnish/5.2)
+      via: 1.1 varnish (Varnish/6.0)
     body:
       encoding: UTF-8
       file: no
-      string: ''
-  recorded_at: 2020-03-09 15:39:15 GMT
-  recorded_with: vcr/0.5.0, webmockr/0.6.0
+      string: 'Entity not found for uri: /enumeration/basic/asdfadsf'
+  recorded_at: 2020-12-08 23:58:49 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0

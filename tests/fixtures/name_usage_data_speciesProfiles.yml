@@ -8,27 +8,25 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 12 Feb 2020 17:59:48 GMT
+      status: 'HTTP/2 200 '
+      date: Tue, 08 Dec 2020 23:50:26 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: 913179107 899417648
+      x-varnish: '475693287'
       age: '0'
-      via: 1.1 varnish (Varnish/5.2)
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
-      content-length: '9672'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -37,72 +35,114 @@ http_interactions:
         Clements Checklist","sourceTaxonKey":133145086},{"taxonKey":5231190,"extinct":false,"source":"The
         Clements Checklist","sourceTaxonKey":133145243},{"taxonKey":5231190,"extinct":false,"source":"The
         Clements Checklist","sourceTaxonKey":133145252},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Vanuatu","sourceTaxonKey":134846058},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
-        Register of Introduced and Invasive Species- South Africa","sourceTaxonKey":134848379},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Seychelles","sourceTaxonKey":134849792},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Chile","sourceTaxonKey":134851710},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Juan Fernandez Islands, Chile","sourceTaxonKey":134853011},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Vanuatu","sourceTaxonKey":134846058},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
+        Register of Introduced and Invasive Species - South Africa","sourceTaxonKey":134848379},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Seychelles","sourceTaxonKey":134849792},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Chile","sourceTaxonKey":134851710},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Juan Fernandez Islands, Chile","sourceTaxonKey":134853011},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
         Register of Introduced and Invasive Species- Egypt","sourceTaxonKey":134857690},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Brazil","sourceTaxonKey":142470965},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Bonaire_Netherlands","sourceTaxonKey":142656975},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Curacao, Netherlands","sourceTaxonKey":142657330},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Saba, Netherlands","sourceTaxonKey":142663168},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Sint Eustatius, Netherlands","sourceTaxonKey":142663402},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Sint Maarten, Netherlands","sourceTaxonKey":142663653},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Aruba","sourceTaxonKey":142669601},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Burundi","sourceTaxonKey":148676382},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species -France - Saint-Barthelemy","sourceTaxonKey":148676939},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Colombia","sourceTaxonKey":148737136},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Mexico","sourceTaxonKey":148739371},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- United Kingdom- Cayman Islands","sourceTaxonKey":148740251},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Democratic Republic of Congo","sourceTaxonKey":148740739},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Botswana","sourceTaxonKey":148741344},{"taxonKey":5231190,"source":"Global
-        Register of Introduced and Invasive Species- Gran Canaria, Islas Canarias,
+        Register of Introduced and Invasive Species - Brazil","sourceTaxonKey":142470965},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Bonaire, Bonaire, Sint Eustatius
+        and Saba","sourceTaxonKey":142656975},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Curacao, Netherlands","sourceTaxonKey":142657330},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Saba, Bonaire, Sint Eustatius
+        and Saba","sourceTaxonKey":142663168},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Sint Eustatius, Bonaire, Sint
+        Eustatius and Saba","sourceTaxonKey":142663402},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Sint Maarten, Netherlands","sourceTaxonKey":142663653},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Aruba","sourceTaxonKey":142669601},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Burundi","sourceTaxonKey":148676382},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Saint Barthelemy","sourceTaxonKey":148676939},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Colombia","sourceTaxonKey":148737136},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Mexico","sourceTaxonKey":148739371},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Cayman Islands","sourceTaxonKey":148740251},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Democratic Republic of Congo","sourceTaxonKey":148740739},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Botswana","sourceTaxonKey":148741344},{"taxonKey":5231190,"source":"Global
+        Register of Introduced and Invasive Species - Gran Canaria, Islas Canarias,
         Spain","sourceTaxonKey":148787758},{"taxonKey":5231190,"source":"Global Register
-        of Introduced and Invasive Species- Eswatini (Swaziland)","sourceTaxonKey":148789617},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Jamaica","sourceTaxonKey":149692575},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Vietnam","sourceTaxonKey":149693209},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Singapore","sourceTaxonKey":149695953},{"taxonKey":5231190,"habitat":"terrestrial","source":"GRIIS
-        Checklist of Introduced and Invasive Species - Ecuador","sourceTaxonKey":158627398},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
-        Register of Introduced and Invasive Species- France- Mayotte","sourceTaxonKey":158628509},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
+        of Introduced and Invasive Species - Eswatini (Swaziland)","sourceTaxonKey":148789617},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Jamaica","sourceTaxonKey":149692575},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Vietnam","sourceTaxonKey":149693209},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Singapore","sourceTaxonKey":149695953},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Mayotte, France","sourceTaxonKey":158628509},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
         Register of Introduced and Invasive Species - Argentina","sourceTaxonKey":158850551},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Cabo Verde","sourceTaxonKey":158921007},{"taxonKey":5231190,"habitat":"Terrestrial","source":"GRIIS
-        Checklist of Introduced and Invasive Species - Barbados","sourceTaxonKey":159880179},{"taxonKey":5231190,"habitat":"Terrestrial","source":"GRIIS
+        Register of Introduced and Invasive Species - Cabo Verde","sourceTaxonKey":158921007},{"taxonKey":5231190,"terrestrial":true,"source":"Catálogo
+        de autoridades taxonómicas de las aves con distribución en México.","sourceTaxonKey":159147193},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Barbados","sourceTaxonKey":159880179},{"taxonKey":5231190,"habitat":"Terrestrial","source":"GRIIS
         Checklist of Introduced and Invasive Species - Malawi","sourceTaxonKey":159881107},{"taxonKey":5231190,"habitat":"Terrestrial","source":"GRIIS
         Checklist of Introduced and Invasive Species - Zimbabwe","sourceTaxonKey":159883822},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Maldives","sourceTaxonKey":160845156},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Tanzania","sourceTaxonKey":160848855},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Rwanda","sourceTaxonKey":160849230},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Laos","sourceTaxonKey":160849962},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Oman","sourceTaxonKey":160850499},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Bahamas","sourceTaxonKey":160854229},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Panama","sourceTaxonKey":160892870},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Venezuela","sourceTaxonKey":160893516},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Australia","sourceTaxonKey":160900638},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Sudan","sourceTaxonKey":160903574},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- South Sudan","sourceTaxonKey":160903756},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Somalia","sourceTaxonKey":160903788},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Belize","sourceTaxonKey":160910164},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Peru","sourceTaxonKey":160910653},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Bermuda","sourceTaxonKey":160912828},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Dominica","sourceTaxonKey":160913157},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Madagascar","sourceTaxonKey":160923050},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Liberia","sourceTaxonKey":160928093},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Senegal","sourceTaxonKey":160928271},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Gambia","sourceTaxonKey":160929321},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Zambia","sourceTaxonKey":160929752},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Kenya","sourceTaxonKey":160930218},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Côte d''Ivoire","sourceTaxonKey":160930739},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Niger","sourceTaxonKey":160930951},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Djibouti","sourceTaxonKey":160931077},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- United States of America (Contiguous)","sourceTaxonKey":160933682},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Costa Rica","sourceTaxonKey":160939063},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Paraguay","sourceTaxonKey":160939664},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Nicaragua","sourceTaxonKey":160939898},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- New Zealand","sourceTaxonKey":160941231},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species- Namibia","sourceTaxonKey":160947137}]}'
-  recorded_at: 2020-02-12 17:59:49 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+        Register of Introduced and Invasive Species - Maldives","sourceTaxonKey":160845156},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Tanzania","sourceTaxonKey":160848855},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Rwanda","sourceTaxonKey":160849230},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - South Sudan","sourceTaxonKey":160903756},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Bermuda","sourceTaxonKey":160912916},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Dominica","sourceTaxonKey":160913157},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Madagascar","sourceTaxonKey":160923050},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Liberia","sourceTaxonKey":160928093},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Senegal","sourceTaxonKey":160928271},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Gambia","sourceTaxonKey":160929321},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Zambia","sourceTaxonKey":160929882},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Côte d''Ivoire","sourceTaxonKey":160930739},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Niger","sourceTaxonKey":160930951},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Djibouti","sourceTaxonKey":160931077},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - United States of America (Contiguous)","sourceTaxonKey":160936528},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Kenya","sourceTaxonKey":162486473},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Australia","sourceTaxonKey":162494576},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Protected
+        Areas - Global Register of Introduced and Invasive Species - D''Arros island,
+        Seychelles","sourceTaxonKey":163289421},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Protected
+        Areas - Global Register of Introduced and Invasive Species - Desnoeufs Island,
+        Seychelles","sourceTaxonKey":163289486},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Saint Martin (French part)","sourceTaxonKey":163298147},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - French Guiana","sourceTaxonKey":163299142},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - New Zealand","sourceTaxonKey":163301988},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Panama","sourceTaxonKey":163308125},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species – Falkland Islands (Islas Malvinas)","sourceTaxonKey":163309167},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Protected
+        Areas - Global Register of Introduced and Invasive Species - Addo-Elephant
+        National Park, South Africa","sourceTaxonKey":163309862},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Protected
+        Areas - Global Register of Introduced and Invasive Species - Agulhas National
+        Park, South Africa","sourceTaxonKey":163310137},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Protected
+        Areas - Global Register of Introduced and Invasive Species - Augrabies Falls
+        National Park, South Africa","sourceTaxonKey":163310371},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Protected
+        Areas - Global Register of Introduced and Invasive Species - Bontebok National
+        Park, South Africa","sourceTaxonKey":163310624},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Protected
+        Areas - Global Register of Introduced and Invasive Species - Garden Route
+        National Park, South Africa","sourceTaxonKey":163310974},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Protected
+        Areas - Global Register of Introduced and Invasive Species - Golden Gate Highlands
+        National Park, South Africa","sourceTaxonKey":163311501},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Protected
+        Areas - Global Register of Introduced and Invasive Species - Kalahari Gemsbok
+        National Park, South Africa","sourceTaxonKey":163311844},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Protected
+        Areas - Global Register of Introduced and Invasive Species - Karoo National
+        Park, South Africa","sourceTaxonKey":163311901},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Protected
+        Areas - Global Register of Introduced and Invasive Species - Kruger National
+        Park, South Africa","sourceTaxonKey":163312069},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species – Turks and Caicos Islands","sourceTaxonKey":163312902},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species – Ascension Island, Saint Helena,
+        Ascension and Tristan da Cunha","sourceTaxonKey":163314407},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Protected
+        Areas - Global Register of Introduced and Invasive Species - Mapungupwe National
+        Park, South Africa","sourceTaxonKey":163316745},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Protected
+        Areas - Global Register of Introduced and Invasive Species - Marakele National
+        Park, South Africa","sourceTaxonKey":163316874},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Protected
+        Areas - Global Register of Introduced and Invasive Species - Mokala National
+        Park, South Africa","sourceTaxonKey":163316969},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Protected
+        Areas - Global Register of Introduced and Invasive Species - Mountain Zebra
+        National Park, South Africa","sourceTaxonKey":163317078},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Protected
+        Areas - Global Register of Introduced and Invasive Species - Namaqua National
+        Park, South Africa","sourceTaxonKey":163317288},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Protected
+        Areas - Global Register of Introduced and Invasive Species - Richtersveld
+        National Park, South Africa","sourceTaxonKey":163317344},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Protected
+        Areas - Global Register of Introduced and Invasive Species - Table Mountain
+        National Park, South Africa","sourceTaxonKey":163317585},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Protected
+        Areas - Global Register of Introduced and Invasive Species - Tankwa-Karoo
+        National Park, South Africa","sourceTaxonKey":163318096},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Protected
+        Areas - Global Register of Introduced and Invasive Species - West Coast National
+        Park, South Africa","sourceTaxonKey":163318459},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Protected
+        Areas - Global Register of Introduced and Invasive Species - Archipielago
+        Juan Fernández, Chile","sourceTaxonKey":163402176},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Namibia","sourceTaxonKey":163972617},{"taxonKey":5231190,"marine":false,"freshwater":false,"terrestrial":true,"source":"World
+        Register of Marine Species","sourceTaxonKey":167504516},{"taxonKey":5231190,"habitat":"Terrestrial","sourceTaxonKey":167581120},{"taxonKey":5231190,"habitat":"Terrestrial","source":"GRIIS
+        Checklist of Introduced and Invasive Species - Ecuador","sourceTaxonKey":168211724}]}'
+  recorded_at: 2020-12-08 23:50:26 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/species/5136020/speciesProfiles?offset=0&limit=100
@@ -112,30 +152,29 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 12 Feb 2020 17:59:48 GMT
+      status: 'HTTP/2 200 '
+      date: Tue, 08 Dec 2020 23:50:26 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: 900826473 900826472
+      x-varnish: '475693288'
       age: '0'
-      via: 1.1 varnish (Varnish/5.2)
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
       content-length: '57'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
       string: '{"offset":0,"limit":100,"endOfRecords":true,"results":[]}'
-  recorded_at: 2020-02-12 17:59:49 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+  recorded_at: 2020-12-08 23:50:26 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0

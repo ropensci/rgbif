@@ -8,33 +8,32 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 12 Feb 2020 05:59:52 GMT
+      status: 'HTTP/2 200 '
+      date: Tue, 08 Dec 2020 23:53:28 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: 521472000 514428361
+      x-varnish: '482836512'
       age: '0'
-      via: 1.1 varnish (Varnish/5.2)
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
       content-length: '728'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
       string: '{"key":347295,"datasetKey":"863e6d6b-f602-4495-ac30-881482b6f799","usagesCount":7,"synonymsCount":0,"distinctNamesCount":7,"nubMatchingCount":7,"colMatchingCount":7,"nubCoveragePct":100,"colCoveragePct":100,"countByConstituent":{},"countByKingdom":{"ANIMALIA":7},"countByRank":{"KINGDOM":1,"PHYLUM":1,"CLASS":1,"ORDER":1,"FAMILY":1,"GENUS":1,"SPECIES":1},"countNamesByLanguage":{},"countExtRecordsByExtension":{"DESCRIPTION":4,"DISTRIBUTION":0,"IDENTIFIER":0,"MULTIMEDIA":0,"REFERENCE":0,"SPECIES_PROFILE":0,"TYPES_AND_SPECIMEN":0,"VERNACULAR_NAME":0},"countByOrigin":{"DENORMED_CLASSIFICATION":6,"SOURCE":1},"countByIssue":{},"otherCount":{},"created":"2019-10-01T03:09:31.928+0000","downloaded":"2019-10-01T02:03:22.753+0000"}'
-  recorded_at: 2020-02-12 05:59:54 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+  recorded_at: 2020-12-08 23:53:29 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/dataset/863e6d6b-f602-4495-ac30-881482b6f799/metrics
@@ -44,69 +43,32 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 12 Feb 2020 05:59:52 GMT
+      status: 'HTTP/2 200 '
+      date: Tue, 08 Dec 2020 23:53:28 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: 521472010 514428361
+      x-varnish: 482836513 465995042
       age: '0'
-      via: 1.1 varnish (Varnish/5.2)
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
       content-length: '728'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
       string: '{"key":347295,"datasetKey":"863e6d6b-f602-4495-ac30-881482b6f799","usagesCount":7,"synonymsCount":0,"distinctNamesCount":7,"nubMatchingCount":7,"colMatchingCount":7,"nubCoveragePct":100,"colCoveragePct":100,"countByConstituent":{},"countByKingdom":{"ANIMALIA":7},"countByRank":{"KINGDOM":1,"PHYLUM":1,"CLASS":1,"ORDER":1,"FAMILY":1,"GENUS":1,"SPECIES":1},"countNamesByLanguage":{},"countExtRecordsByExtension":{"DESCRIPTION":4,"DISTRIBUTION":0,"IDENTIFIER":0,"MULTIMEDIA":0,"REFERENCE":0,"SPECIES_PROFILE":0,"TYPES_AND_SPECIMEN":0,"VERNACULAR_NAME":0},"countByOrigin":{"DENORMED_CLASSIFICATION":6,"SOURCE":1},"countByIssue":{},"otherCount":{},"created":"2019-10-01T03:09:31.928+0000","downloaded":"2019-10-01T02:03:22.753+0000"}'
-  recorded_at: 2020-02-12 05:59:54 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
-- request:
-    method: get
-    uri: https://api.gbif.org/v1/dataset/863e6d6b-f602-4495-ac30-881482b6f799/metrics
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-  response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
-    headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 12 Feb 2020 05:59:52 GMT
-      content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
-      cache-control: public, max-age=3601
-      x-varnish: 469966142 514428361
-      age: '0'
-      via: 1.1 varnish (Varnish/5.2)
-      accept-ranges: bytes
-      content-length: '728'
-      connection: keep-alive
-    body:
-      encoding: UTF-8
-      file: no
-      string: '{"key":347295,"datasetKey":"863e6d6b-f602-4495-ac30-881482b6f799","usagesCount":7,"synonymsCount":0,"distinctNamesCount":7,"nubMatchingCount":7,"colMatchingCount":7,"nubCoveragePct":100,"colCoveragePct":100,"countByConstituent":{},"countByKingdom":{"ANIMALIA":7},"countByRank":{"KINGDOM":1,"PHYLUM":1,"CLASS":1,"ORDER":1,"FAMILY":1,"GENUS":1,"SPECIES":1},"countNamesByLanguage":{},"countExtRecordsByExtension":{"DESCRIPTION":4,"DISTRIBUTION":0,"IDENTIFIER":0,"MULTIMEDIA":0,"REFERENCE":0,"SPECIES_PROFILE":0,"TYPES_AND_SPECIMEN":0,"VERNACULAR_NAME":0},"countByOrigin":{"DENORMED_CLASSIFICATION":6,"SOURCE":1},"countByIssue":{},"otherCount":{},"created":"2019-10-01T03:09:31.928+0000","downloaded":"2019-10-01T02:03:22.753+0000"}'
-  recorded_at: 2020-02-12 05:59:54 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+  recorded_at: 2020-12-08 23:53:29 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/dataset/66dd0960-2d7d-46ee-a491-87b9adcfe7b1/metrics
@@ -116,30 +78,29 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 12 Feb 2020 05:59:53 GMT
+      status: 'HTTP/2 200 '
+      date: Tue, 08 Dec 2020 23:53:29 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: 525862855 531661409
+      x-varnish: '482836514'
       age: '0'
-      via: 1.1 varnish (Varnish/5.2)
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
       content-length: '1621'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
       string: '{"key":359798,"datasetKey":"66dd0960-2d7d-46ee-a491-87b9adcfe7b1","usagesCount":138248,"synonymsCount":59906,"distinctNamesCount":138122,"nubMatchingCount":131773,"colMatchingCount":101124,"nubCoveragePct":95,"colCoveragePct":73,"countByConstituent":{},"countByKingdom":{"PLANTAE":72340},"countByRank":{"SPECIES":52563,"GENUS":12880,"VARIETY":4810,"SUBSPECIES":4462,"SERIES":1077,"TRIBE":844,"FAMILY":509,"SUBTRIBE":327,"SUBFAMILY":303,"SUBGENUS":240,"FORM":238,"SECTION":82,"SUBVARIETY":5,"KINGDOM":1},"countNamesByLanguage":{"ENGLISH":32165,"SWEDISH":7284,"GERMAN":4882,"SPANISH":4157,"FRENCH":3783,"PORTUGUESE":1141,"ITALIAN":663,"AFRIKAANS":450,"ARABIC":182,"INDONESIAN":153,"MALAY":139,"SWAHILI":72,"DUTCH":50,"MALAGASY":41,"DANISH":21,"FIJIAN":17,"HINDI":15,"SOMALI":11,"TURKISH":8,"POLISH":7,"CZECH":4,"KOREAN":4,"TAJIK":4,"CATALAN":3,"FINNISH":3,"JAVANESE":3,"ROMANIAN":3,"YORUBA":3,"AYMARA":2,"CHINESE":2,"SAMOAN":2,"ALBANIAN":1,"BISLAMA":1,"HUNGARIAN":1,"NORWEGIAN":1,"QUECHUA":1,"RUSSIAN":1,"SANSKRIT":1,"TAMIL":1,"THAI":1,"TONGA":1,"TURKMEN":1},"countExtRecordsByExtension":{"VERNACULAR_NAME":64900,"DESCRIPTION":0,"DISTRIBUTION":0,"IDENTIFIER":0,"MULTIMEDIA":0,"REFERENCE":0,"SPECIES_PROFILE":0,"TYPES_AND_SPECIMEN":0},"countByOrigin":{"SOURCE":138246,"DENORMED_CLASSIFICATION":1,"MISSING_ACCEPTED":1},"countByIssue":{"SCIENTIFIC_NAME_ASSEMBLED":128639,"BACKBONE_MATCH_NONE":6475,"VERNACULAR_NAME_INVALID":5732,"CHAINED_SYNOYM":522,"PARENT_NAME_USAGE_ID_INVALID":48,"PARTIALLY_PARSABLE":9,"PARENT_CYCLE":1},"otherCount":{},"created":"2019-11-01T00:12:10.344+0000","downloaded":"2019-10-31T16:06:51.031+0000"}'
-  recorded_at: 2020-02-12 05:59:54 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+  recorded_at: 2020-12-08 23:53:29 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0

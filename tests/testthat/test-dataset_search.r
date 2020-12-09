@@ -16,7 +16,7 @@ test_that("type query returns the correct class", {
 # Gets all datasets tagged with keyword "france".
 test_that("keyword query returns the correct", {
   vcr::use_cassette("dataset_search_keyword", {
-    tt <- dataset_search(keyword = "france")
+    tt <- dataset_search(keyword = "bird")
   }, preserve_exact_body_bytes = TRUE)
 
   # class
@@ -26,8 +26,7 @@ test_that("keyword query returns the correct", {
   expect_is(tt$data[1,1]$datasetTitle, "character")
 
   # value
-  expect_equal(as.character(tt$data$publishingCountry[1]), "FR")
-  expect_equal(as.character(tt$data[1,4]), "Tela Botanica")
+  expect_true(any(grepl("bird", tt$data$datasetTitle, ignore.case = TRUE)))
 })
 
 # Fulltext search for all datasets having the word "amsterdam" somewhere in

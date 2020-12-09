@@ -11,6 +11,7 @@ test_that("occ_download_cached utils", {
   skip_on_ci()
 
   # dl_user
+  # NOTE: do not delete or update this cassette
   vcr::use_cassette("dl_user", {
     user <- dl_user()
   })

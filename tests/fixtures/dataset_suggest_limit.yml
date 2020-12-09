@@ -8,30 +8,32 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 12 Feb 2020 06:01:26 GMT
+      status: 'HTTP/2 200 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
       content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
+      date: Tue, 08 Dec 2020 23:53:42 GMT
       cache-control: public, max-age=3601
-      x-varnish: 523929243 515739006
+      x-varnish: '482836528'
       age: '0'
-      via: 1.1 varnish (Varnish/5.2)
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
-      content-length: '658'
-      connection: keep-alive
+      content-length: '983'
     body:
       encoding: ASCII-8BIT
       file: no
-      string: W3sia2V5IjoiOGE4NjMwMjktZjQzNS00NDZhLTgyMWUtMjc1ZjRmNjQxMTY1IiwidGl0bGUiOiJPYnNlcnZhdGlvbi5vcmcsIE5hdHVyZSBkYXRhIGZyb20gdGhlIE5ldGhlcmxhbmRzIiwiZGVzY3JpcHRpb24iOiJUaGlzIGRhdGFzZXQgY29udGFpbnMgb2NjdXJyZW5jZSBkYXRhIG9mIGZsb3JhIGFuZCBmYXVuYSBzcGVjaWVzIGluIHRoZSBOZXRoZXJsYW5kcyBvbiBhIDUgeCA1IGttIHNjYWxlLiBJdCBzdW1tYXJpemVzIHRoZSBvYnNlcnZhdGlvbnMgcmVjb3JkZWQgYnkgPjgwLjAwMCB2b2x1bnRlZXJzLiIsInR5cGUiOiJPQ0NVUlJFTkNFIn0seyJrZXkiOiJlNmZhYjdiMy1jNzMzLTQwYjktOGRmMy0yYTAzZTQ5NTMyYzEiLCJ0aXRsZSI6IkZsb3JhIHZvbiBEZXV0c2NobGFuZCAoUGhhbmVyb2dhbWVuKSIsImRlc2NyaXB0aW9uIjoiVmVyYnJlaXR1bmcgZGVyIEZhcm4tIHVuZCBCbHVldGVucGZsYW56ZW4gaW4gRGV1dHNjaGxhbmQsIFZvcmtvbW1lbnNuYWNod2Vpc2UgYWdncmVnaWVydCBhdWYgUXVhZHJhbnRlbiBkZXIgVG9wb2dyYXBoaXNjaGVuIEthcnRlIDEgOiAyNTAwMCAoVEsyNSA9IE1UQiksIHNvd2llIGluIFplaXRwZXJpb2RlbiA8dm9yIDE5NTA+LCA8MTk1MCAtIDE5ODA+LCA8bmFjaCAxOTgwID4iLCJ0eXBlIjoiT0NDVVJSRU5DRSJ9XQ==
-  recorded_at: 2020-02-12 06:01:27 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+      string: W3sia2V5IjoiZGQyMzhmNTAtZjU5NC00ZTUxLTgyYWYtMDMzMjI3Y2NhYjU1IiwidGl0bGUiOiJGbG9yZSBkdSBCYXNzaW4gcGFyaXNpZW4gKENCTkJQKSIsImRlc2NyaXB0aW9uIjoiSmV1eCBkZSBkb25uw6llcyBkdSBDQk5CUCBldCBkZSBzb24gcsOpc2VhdSAoYsOpbsOpdm9sZXMsIGFzc29jaWF0aW9ucywgYXV0cmVzIHN0cnVjdHVyZXMgcHJvZmVzc2lvbm5lbGxlcykuIEVsbGVzIGludMOoZ3JlbnQgcHJpbmNpcGFsZW1lbnQgZGVzIGRvbm7DqWVzIGRlIGZsb3JlIHZhc2N1bGFpcmUgbWFpcyBhdXNzaSBkZXMgYnJ5b3BoeXRlcywgZGVzIGFsZ3VlcyBub3RhbW1lbnQgY2hhcm9waHl0ZXMsIGRlcyBjaGFtcGlnbm9ucyB5IGNvbXByaXMgbGVzIGxpY2hlbnMuIiwidHlwZSI6Ik9DQ1VSUkVOQ0UifSx7ImtleSI6IjBkOGNjMzQ0LWQ4ODAtNDJlYy1hMjAwLTQwYjRhZDcxYWZmZCIsInRpdGxlIjoiT2JzZXJ2YXRpb25zIGZsb3Jpc3RpcXVlcyAtIHBsYXRlZm9ybWUgU0lOUCByw6lnaW9uYWxlIFNJTEVORSAgIFBBQ0EiLCJkZXNjcmlwdGlvbiI6Ik9ic2VydmF0aW9ucyBmbG9yaXN0aXF1ZXMgaXNzdWVzIGRlIGxhIHBsYXRlZm9ybWUgU0lOUCByw6lnaW9uYWxlIFNJTEVORSBQQUNBLiBDZXMgb2JzZXJ2YXRpb25zIHNvbnQgYWRtaW5pc3Ryw6llcyBwYXIgbGVzIENvbnNlcnZhdG9pcmVzIGJvdGFuaXF1ZXMgbmF0aW9uYXV4IChDQk4pIGFscGluIGV0IG3DqWRpdGVycmFuw6llbiBzdXIgbGV1ciB0ZXJyaXRvaXJlcyBkJ2FncsOpbWVudHMgcmVzcGVjdGlmcyAoZMOpcGFydGVtZW50cyAwNCBldCAwNSBwb3VyIGxlIENCTiBBbHBpbiA7IGTDqXBhcnRlbWVudHMgMDYsIDEzLCA4MywgODQgcG91ciBsZSBDQk4gTcOpZGl0ZXJyYW7DqWVuKS4gTGVzIG9ic2VydmF0aW9ucyBwcm92aWVubmVudCBkZXMgQ0JOLCBkZXMgcGFydGVuYWlyZXMgZXQgcHJvZHVjdGV1cnMgZGUgZG9ubsOpZXMuIiwidHlwZSI6Ik9DQ1VSUkVOQ0UifV0=
+  recorded_at: 2020-12-08 23:53:43 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0

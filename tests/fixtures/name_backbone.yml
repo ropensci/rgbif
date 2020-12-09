@@ -8,35 +8,34 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.2.91)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.2.91)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Thu, 11 Jun 2020 23:23:43 GMT
+      status: 'HTTP/2 200 '
+      date: Tue, 08 Dec 2020 23:54:40 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: '48925747'
+      x-varnish: '471991340'
       age: '0'
-      via: 1.1 varnish (Varnish/5.2)
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
       content-length: '468'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
       string: '{"usageKey":9206251,"scientificName":"Helianthus annuus L.","canonicalName":"Helianthus
         annuus","rank":"SPECIES","status":"ACCEPTED","confidence":98,"matchType":"EXACT","kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Helianthus","species":"Helianthus
         annuus","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3119134,"speciesKey":9206251,"synonym":false,"class":"Magnoliopsida"}'
-  recorded_at: 2020-06-11 23:23:44 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.6.2
+  recorded_at: 2020-12-08 23:54:41 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/species/match?name=Helianthus%20annuus&rank=species&strict=false&verbose=TRUE&limit=100
@@ -46,27 +45,26 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.2.91)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.2.91 rOpenSci(rgbif/2.3.2.91)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Thu, 11 Jun 2020 23:23:44 GMT
+      status: 'HTTP/2 200 '
+      date: Tue, 08 Dec 2020 23:54:41 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: '80642148'
+      x-varnish: '471991341'
       age: '0'
-      via: 1.1 varnish (Varnish/5.2)
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
       content-length: '1175'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -77,5 +75,5 @@ http_interactions:
         name=5; authorship=0; classification=-2; rank=5; status=0","matchType":"FUZZY","kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Helianthus","species":"Helianthus
         petiolaris","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3119134,"speciesKey":3119225,"synonym":true,"class":"Magnoliopsida"}],"kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Helianthus","species":"Helianthus
         annuus","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3119134,"speciesKey":9206251,"synonym":false,"class":"Magnoliopsida"}'
-  recorded_at: 2020-06-11 23:23:44 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.6.2
+  recorded_at: 2020-12-08 23:54:41 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0

@@ -8,33 +8,35 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 15 Jan 2020 22:43:08 GMT
+      status: 'HTTP/2 200 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
       content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
+      date: Tue, 08 Dec 2020 23:53:20 GMT
       cache-control: public, max-age=600
-      x-varnish: 513115339 496995495
+      x-varnish: '482836496'
       age: '0'
-      via: 1.1 varnish (Varnish/5.2)
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
       content-length: '6'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
-      string: '132808'
-  recorded_at: 2020-01-15 22:43:22 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+      string: '137272'
+  recorded_at: 2020-12-08 23:53:28 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?country=AE
@@ -44,33 +46,35 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 15 Jan 2020 22:43:09 GMT
+      status: 'HTTP/2 200 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
       content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
+      date: Tue, 08 Dec 2020 23:53:21 GMT
       cache-control: public, max-age=600
-      x-varnish: 514163505 514163504
+      x-varnish: '482836497'
       age: '0'
-      via: 1.1 varnish (Varnish/5.2)
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
-      content-length: '6'
-      connection: keep-alive
+      content-length: '7'
     body:
       encoding: UTF-8
       file: no
-      string: '696640'
-  recorded_at: 2020-01-15 22:43:22 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+      string: '1023287'
+  recorded_at: 2020-12-08 23:53:28 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?country=AF
@@ -80,33 +84,35 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 15 Jan 2020 22:43:09 GMT
+      status: 'HTTP/2 200 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
       content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
+      date: Tue, 08 Dec 2020 23:53:21 GMT
       cache-control: public, max-age=600
-      x-varnish: 450306934 507676445
+      x-varnish: '482836498'
       age: '0'
-      via: 1.1 varnish (Varnish/5.2)
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
       content-length: '6'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
-      string: '530444'
-  recorded_at: 2020-01-15 22:43:22 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+      string: '702513'
+  recorded_at: 2020-12-08 23:53:28 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?country=AR
@@ -116,33 +122,35 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 15 Jan 2020 22:43:10 GMT
+      status: 'HTTP/2 200 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
       content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
+      date: Tue, 08 Dec 2020 23:53:22 GMT
       cache-control: public, max-age=600
-      x-varnish: 512754032 512754031
+      x-varnish: '482836499'
       age: '0'
-      via: 1.1 varnish (Varnish/5.2)
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
       content-length: '7'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
-      string: '4944379'
-  recorded_at: 2020-01-15 22:43:22 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+      string: '6640089'
+  recorded_at: 2020-12-08 23:53:28 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?country=AD
@@ -152,69 +160,35 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 15 Jan 2020 22:43:08 GMT
+      status: 'HTTP/2 200 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
       content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
+      date: Tue, 08 Dec 2020 23:53:20 GMT
       cache-control: public, max-age=600
-      x-varnish: 450306945 496995495
+      x-varnish: 482836500 399808319
       age: '2'
-      via: 1.1 varnish (Varnish/5.2)
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
       content-length: '6'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
-      string: '132808'
-  recorded_at: 2020-01-15 22:43:22 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
-- request:
-    method: get
-    uri: https://api.gbif.org/v1/occurrence/count?country=AD
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
-  response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
-    headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 15 Jan 2020 22:43:08 GMT
-      content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
-      cache-control: public, max-age=600
-      x-varnish: 513180481 496995495
-      age: '3'
-      via: 1.1 varnish (Varnish/5.2)
-      accept-ranges: bytes
-      content-length: '6'
-      connection: keep-alive
-    body:
-      encoding: UTF-8
-      file: no
-      string: '132808'
-  recorded_at: 2020-01-15 22:43:22 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+      string: '137272'
+  recorded_at: 2020-12-08 23:53:28 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?country=AE
@@ -224,69 +198,35 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 15 Jan 2020 22:43:09 GMT
+      status: 'HTTP/2 200 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
       content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
+      date: Tue, 08 Dec 2020 23:53:21 GMT
       cache-control: public, max-age=600
-      x-varnish: 483630122 514163504
+      x-varnish: 482836501 483426426
       age: '2'
-      via: 1.1 varnish (Varnish/5.2)
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
-      content-length: '6'
-      connection: keep-alive
+      content-length: '7'
     body:
       encoding: UTF-8
       file: no
-      string: '696640'
-  recorded_at: 2020-01-15 22:43:22 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
-- request:
-    method: get
-    uri: https://api.gbif.org/v1/occurrence/count?country=AE
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
-  response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
-    headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 15 Jan 2020 22:43:09 GMT
-      content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
-      cache-control: public, max-age=600
-      x-varnish: 512524618 514163504
-      age: '2'
-      via: 1.1 varnish (Varnish/5.2)
-      accept-ranges: bytes
-      content-length: '6'
-      connection: keep-alive
-    body:
-      encoding: UTF-8
-      file: no
-      string: '696640'
-  recorded_at: 2020-01-15 22:43:22 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+      string: '1023287'
+  recorded_at: 2020-12-08 23:53:28 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?country=AF
@@ -296,69 +236,35 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 15 Jan 2020 22:43:09 GMT
+      status: 'HTTP/2 200 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
       content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
+      date: Tue, 08 Dec 2020 23:53:21 GMT
       cache-control: public, max-age=600
-      x-varnish: 510853677 507676445
+      x-varnish: 482836502 462063597
       age: '2'
-      via: 1.1 varnish (Varnish/5.2)
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
       content-length: '6'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
-      string: '530444'
-  recorded_at: 2020-01-15 22:43:22 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
-- request:
-    method: get
-    uri: https://api.gbif.org/v1/occurrence/count?country=AF
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
-  response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
-    headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 15 Jan 2020 22:43:09 GMT
-      content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
-      cache-control: public, max-age=600
-      x-varnish: 513180497 507676445
-      age: '2'
-      via: 1.1 varnish (Varnish/5.2)
-      accept-ranges: bytes
-      content-length: '6'
-      connection: keep-alive
-    body:
-      encoding: UTF-8
-      file: no
-      string: '530444'
-  recorded_at: 2020-01-15 22:43:22 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+      string: '702513'
+  recorded_at: 2020-12-08 23:53:28 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?country=AG
@@ -368,33 +274,35 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 15 Jan 2020 22:43:12 GMT
+      status: 'HTTP/2 200 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
       content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
+      date: Tue, 08 Dec 2020 23:53:23 GMT
       cache-control: public, max-age=600
-      x-varnish: 484642524 514163533
+      x-varnish: '482836503'
       age: '0'
-      via: 1.1 varnish (Varnish/5.2)
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
       content-length: '5'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
-      string: '35985'
-  recorded_at: 2020-01-15 22:43:22 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+      string: '43177'
+  recorded_at: 2020-12-08 23:53:28 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?country=AI
@@ -404,33 +312,35 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 15 Jan 2020 22:43:14 GMT
+      status: 'HTTP/2 200 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
       content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
+      date: Tue, 08 Dec 2020 23:53:24 GMT
       cache-control: public, max-age=600
-      x-varnish: 468916936 513475783
+      x-varnish: '482836504'
       age: '0'
-      via: 1.1 varnish (Varnish/5.2)
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
       content-length: '5'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
-      string: '26948'
-  recorded_at: 2020-01-15 22:43:22 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+      string: '29979'
+  recorded_at: 2020-12-08 23:53:28 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?country=AL
@@ -440,33 +350,35 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 15 Jan 2020 22:43:14 GMT
+      status: 'HTTP/2 200 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
       content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
+      date: Tue, 08 Dec 2020 23:53:24 GMT
       cache-control: public, max-age=600
-      x-varnish: 513671394 454696270
+      x-varnish: '482836505'
       age: '0'
-      via: 1.1 varnish (Varnish/5.2)
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
       content-length: '5'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
-      string: '30718'
-  recorded_at: 2020-01-15 22:43:22 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+      string: '37747'
+  recorded_at: 2020-12-08 23:53:28 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?country=AM
@@ -476,33 +388,35 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 15 Jan 2020 22:43:16 GMT
+      status: 'HTTP/2 200 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
       content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
+      date: Tue, 08 Dec 2020 23:53:25 GMT
       cache-control: public, max-age=600
-      x-varnish: 479402813 511902670
+      x-varnish: '482836506'
       age: '0'
-      via: 1.1 varnish (Varnish/5.2)
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
       content-length: '6'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
-      string: '102190'
-  recorded_at: 2020-01-15 22:43:22 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+      string: '140343'
+  recorded_at: 2020-12-08 23:53:28 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?country=AO
@@ -512,33 +426,35 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 15 Jan 2020 22:43:17 GMT
+      status: 'HTTP/2 200 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
       content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
+      date: Tue, 08 Dec 2020 23:53:25 GMT
       cache-control: public, max-age=600
-      x-varnish: 454696277 509249592
+      x-varnish: '482836507'
       age: '0'
-      via: 1.1 varnish (Varnish/5.2)
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
       content-length: '6'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
-      string: '268464'
-  recorded_at: 2020-01-15 22:43:22 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+      string: '270481'
+  recorded_at: 2020-12-08 23:53:28 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?country=AQ
@@ -548,33 +464,35 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 15 Jan 2020 22:43:18 GMT
+      status: 'HTTP/2 200 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
       content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
+      date: Tue, 08 Dec 2020 23:53:25 GMT
       cache-control: public, max-age=600
-      x-varnish: 513868362 454696283
+      x-varnish: '482836508'
       age: '0'
-      via: 1.1 varnish (Varnish/5.2)
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
       content-length: '7'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
-      string: '1650776'
-  recorded_at: 2020-01-15 22:43:22 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+      string: '1691974'
+  recorded_at: 2020-12-08 23:53:28 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?country=AR
@@ -584,69 +502,35 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 15 Jan 2020 22:43:10 GMT
+      status: 'HTTP/2 200 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
       content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
+      date: Tue, 08 Dec 2020 23:53:22 GMT
       cache-control: public, max-age=600
-      x-varnish: 469866560 512754031
-      age: '9'
-      via: 1.1 varnish (Varnish/5.2)
+      x-varnish: 482836509 483491966
+      age: '4'
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
       content-length: '7'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
-      string: '4944379'
-  recorded_at: 2020-01-15 22:43:22 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
-- request:
-    method: get
-    uri: https://api.gbif.org/v1/occurrence/count?country=AR
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
-  response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
-    headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 15 Jan 2020 22:43:10 GMT
-      content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
-      cache-control: public, max-age=600
-      x-varnish: 498633370 512754031
-      age: '10'
-      via: 1.1 varnish (Varnish/5.2)
-      accept-ranges: bytes
-      content-length: '7'
-      connection: keep-alive
-    body:
-      encoding: UTF-8
-      file: no
-      string: '4944379'
-  recorded_at: 2020-01-15 22:43:22 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+      string: '6640089'
+  recorded_at: 2020-12-08 23:53:28 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?isGeoreferenced=true
@@ -656,33 +540,35 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 15 Jan 2020 22:37:29 GMT
+      status: 'HTTP/2 200 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
       content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
+      date: Tue, 08 Dec 2020 23:48:11 GMT
       cache-control: public, max-age=600
-      x-varnish: 451682522 504432597
-      age: '351'
-      via: 1.1 varnish (Varnish/5.2)
+      x-varnish: 482836510 478282462
+      age: '315'
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
       content-length: '10'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
-      string: '1288855851'
-  recorded_at: 2020-01-15 22:43:22 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+      string: '1536353338'
+  recorded_at: 2020-12-08 23:53:28 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?isGeoreferenced=false
@@ -692,30 +578,32 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/1.4.1.996)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 15 Jan 2020 22:37:30 GMT
+      status: 'HTTP/2 200 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
       content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
+      date: Tue, 08 Dec 2020 23:53:26 GMT
       cache-control: public, max-age=600
-      x-varnish: 498698340 452959486
-      age: '352'
-      via: 1.1 varnish (Varnish/5.2)
+      x-varnish: '482836511'
+      age: '0'
+      via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
       content-length: '8'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
-      string: '94192256'
-  recorded_at: 2020-01-15 22:43:22 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+      string: '98792542'
+  recorded_at: 2020-12-08 23:53:28 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0

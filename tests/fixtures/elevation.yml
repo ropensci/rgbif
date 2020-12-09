@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
@@ -17,10 +17,11 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Wed, 12 Feb 2020 06:03:54 GMT
-      server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips PHP/5.4.16
-      cache-control: no-cache
+      date: Tue, 08 Dec 2020 23:53:54 GMT
+      server: Apache/2.4.6 (CentOS) mod_jk/1.2.46 OpenSSL/1.0.2k-fips
       access-control-allow-origin: '*'
+      x-frame-options: sameorigin
+      cache-control: no-cache
       transfer-encoding: chunked
       content-type: text/html;charset=UTF-8
     body:
@@ -47,8 +48,8 @@ http_interactions:
         1134
         1383
         1795
-  recorded_at: 2020-02-12 06:03:55 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+  recorded_at: 2020-12-08 23:53:55 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
 - request:
     method: get
     uri: http://api.geonames.org/srtm3?lats=32.909436%2C38.540315%2C37.050632%2C31.913204%2C32.648646%2C32.649972%2C47.42263%2C30.060134%2C37.04786%2C40.363404%2C47.538867%2C38.481486%2C37.050542%2C25.576582%2C31.334842%2C33.124711%2C33.068336%2C32.745623%2C41.695009%2C16.056195&lngs=-116.545853%2C-122.970018%2C-121.4302%2C-109.931659%2C-108.536463%2C-108.537201%2C-113.670813%2C-103.558096%2C-121.42573%2C-120.622698%2C-113.742705%2C-122.915802%2C-121.429824%2C-80.689018%2C-110.332383%2C-108.568249%2C-116.333314%2C-116.570241%2C-103.712241%2C-93.477916&username=<geonames_user>
@@ -58,8 +59,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
@@ -67,10 +68,11 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Wed, 12 Feb 2020 06:03:54 GMT
-      server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips PHP/5.4.16
-      cache-control: no-cache
+      date: Tue, 08 Dec 2020 23:53:55 GMT
+      server: Apache/2.4.6 (CentOS) mod_jk/1.2.46 OpenSSL/1.0.2k-fips
       access-control-allow-origin: '*'
+      x-frame-options: sameorigin
+      cache-control: no-cache
       transfer-encoding: chunked
       content-type: text/html;charset=UTF-8
     body:
@@ -97,58 +99,8 @@ http_interactions:
         1134
         1383
         1795
-  recorded_at: 2020-02-12 06:03:55 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
-- request:
-    method: get
-    uri: http://api.geonames.org/srtm3?lats=32.909436%2C38.540315%2C37.050632%2C31.913204%2C32.648646%2C32.649972%2C47.42263%2C30.060134%2C37.04786%2C40.363404%2C47.538867%2C38.481486%2C37.050542%2C25.576582%2C31.334842%2C33.124711%2C33.068336%2C32.745623%2C41.695009%2C16.056195&lngs=-116.545853%2C-122.970018%2C-121.4302%2C-109.931659%2C-108.536463%2C-108.537201%2C-113.670813%2C-103.558096%2C-121.42573%2C-120.622698%2C-113.742705%2C-122.915802%2C-121.429824%2C-80.689018%2C-110.332383%2C-108.568249%2C-116.333314%2C-116.570241%2C-103.712241%2C-93.477916&username=<geonames_user>
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-  response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
-    headers:
-      status: HTTP/1.1 200 OK
-      date: Wed, 12 Feb 2020 06:03:54 GMT
-      server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips PHP/5.4.16
-      cache-control: no-cache
-      access-control-allow-origin: '*'
-      transfer-encoding: chunked
-      content-type: text/html;charset=UTF-8
-    body:
-      encoding: UTF-8
-      file: no
-      string: |
-        1447
-        340
-        340
-        1524
-        1769
-        1780
-        1230
-        1353
-        373
-        1297
-        1111
-        59
-        340
-        4
-        1609
-        1821
-        870
-        1134
-        1383
-        1795
-  recorded_at: 2020-02-12 06:03:55 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+  recorded_at: 2020-12-08 23:53:55 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
 - request:
     method: get
     uri: http://api.geonames.org/srtm3?lats=31.8496%2C29.15503&lngs=-110.57606%2C-103.59828&username=<geonames_user>
@@ -158,8 +110,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
@@ -167,10 +119,11 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Wed, 12 Feb 2020 06:03:55 GMT
-      server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips PHP/5.4.16
-      cache-control: no-cache
+      date: Tue, 08 Dec 2020 23:53:55 GMT
+      server: Apache/2.4.6 (CentOS) mod_jk/1.2.46 OpenSSL/1.0.2k-fips
       access-control-allow-origin: '*'
+      x-frame-options: sameorigin
+      cache-control: no-cache
       transfer-encoding: chunked
       content-type: text/html;charset=UTF-8
     body:
@@ -179,5 +132,5 @@ http_interactions:
       string: |
         1301
         654
-  recorded_at: 2020-02-12 06:03:55 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+  recorded_at: 2020-12-08 23:53:55 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
