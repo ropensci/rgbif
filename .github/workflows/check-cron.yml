@@ -1,7 +1,5 @@
 on:
   push:
-    branches:
-      - master
     schedule:
       - cron: '0 */72 * * *' # very 3 days
 
