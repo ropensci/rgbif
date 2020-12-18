@@ -26,8 +26,7 @@ test_that("occ_download_meta", {
   expect_equal(aa$request$predicate$type, "and")
   expect_is(aa$request$predicate$predicates, "list")
   expect_is(aa$request$predicate$predicates[[1]], "list")
-  expect_named(aa$request$predicate$predicates[[1]],
-    c("type", "key", "value"))
+  expect_named(aa$request$predicate$predicates[[1]])
 
   # print
   res <- capture.output(aa)

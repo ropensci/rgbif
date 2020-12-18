@@ -52,7 +52,8 @@ test_that("returns the correct dimensions", {
 test_that("returns the correct class", {
   vcr::use_cassette("occ_data_catalog_number", {
     out <- occ_data(catalogNumber = '6845144')
-  }, preserve_exact_body_bytes = TRUE)
+  }, preserve_exact_body_bytes = TRUE,
+     match_requests_on = c("path", "query"))
 
   expect_is(out, "gbif_data")
   expect_is(out$meta, "list")
@@ -286,7 +287,7 @@ test_that("works with parameters that allow many inputs", {
     aa <- occ_data(recordedBy=c("smith","BJ Stacey"), limit=3)
     ## one request, many instances of same parameter: use semi-colon sep. string
     bb <- occ_data(recordedBy="smith;BJ Stacey", limit=3)
-  }, preserve_exact_body_bytes = TRUE)
+  }, preserve_exact_body_bytes = TRUE, match_requests_on = c("path", "query"))
 
   expect_is(aa, "gbif_data")
   expect_is(bb, "gbif_data")
