@@ -25,5 +25,6 @@ test_that("occ_download_cancel fails well", {
 
 test_that("occ_download_cancel_staged", {
   skip_on_cran()
+  skip_on_ci()
   expect_message((res=occ_download_cancel_staged()), "no staged downloads")
 })
