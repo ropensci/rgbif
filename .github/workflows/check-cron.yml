@@ -1,0 +1,95 @@
+on:
+  push:
+    branches:
+      - master
+    schedule:
+      - cron: '0 */72 * * *' # very 3 days
+
+name: R-check-real-requests
+
+jobs:
+  R-check-real-requests:
+    runs-on: ubuntu-latest
+    name: ${{ config.os }} (${{ config.r }})
+    strategy:
+      fail-fast: false
+      config:
+        - { r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/xenial/latest"}
+    env:
+      R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
+      CRAN: ${{ config.cran }}
+      VCR_VERBOSE_ERRORS: true
+      VCR_TURN_OFF: true
+      GEONAMES_USER: ${{ secrets.GEONAMES_USER }}
+      GBIF_EMAIL: ${{ secrets.GBIF_EMAIL }}
+      GBIF_USER: ${{ secrets.GBIF_USER }}
+      GBIF_PWD: ${{ secrets.GBIF_PWD }}
+      # RGBIF_BASE_URL: 'https://api.gbif-uat.org/v1'
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: r-lib/actions/setup-r@v1
+        with:
+          r-version: ${{ config.r }}
+
+      - uses: r-lib/actions/setup-pandoc@v1
+
+      - name: Query dependencies
+        run: |
+          install.packages('remotes')
+          saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
+          writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
+        shell: Rscript {0}
+
+      - name: Cache R packages
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.R_LIBS_USER }}
+          key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
+          restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
+
+      - name: Install pak
+        run: |
+          install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
+        shell: Rscript {0}
+
+      - name: Install system dependencies
+        if: runner.os == 'Linux'
+        env:
+          RHUB_PLATFORM: linux-x86_64-ubuntu-gcc
+        run: |
+          while read -r cmd
+          do
+            eval sudo $cmd
+          done < <(Rscript -e 'writeLines(pak::local_system_requirements("ubuntu", "16.04"))')
+      
+      - name: Install dependencies
+        run: |
+          pak::local_install_dev_deps()
+          pak::pkg_install(c("rcmdcheck", "sf", "maps", "scales", "colorspace", "raster", "protolite"))
+        shell: Rscript {0}
+
+      - name: Session info
+        run: |
+          options(width = 100)
+          pkgs <- installed.packages()[, "Package"]
+          sessioninfo::session_info(pkgs, include_base = TRUE)
+        shell: Rscript {0}
+
+      - name: Check
+        env:
+          _R_CHECK_CRAN_INCOMING_: false
+        run: rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")
+        shell: Rscript {0}
+
+      - name: Show testthat output
+        if: always()
+        run: find check -name 'test-all.Rout*' -exec cat '{}' \; || true
+        shell: bash
+
+      - name: Upload check results
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ runner.os }}-r${{ config.r }}-results
+          path: check
