@@ -34,6 +34,7 @@ test_that("occ_download_queue: real request works", {
 
 test_that("occ_download_queue fails well", {
   skip_on_cran()
+  skip_on_ci()
 
   # no requests submitted
   expect_error(occ_download_queue(), "no requests submitted")

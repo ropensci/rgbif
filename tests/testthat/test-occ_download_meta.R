@@ -35,6 +35,7 @@ test_that("occ_download_meta", {
 
 test_that("occ_download_meta print method", {
   skip_on_cran()
+  skip_on_ci()
 
   # ## Query:
   # occ_download(

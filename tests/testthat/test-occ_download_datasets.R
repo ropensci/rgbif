@@ -2,7 +2,7 @@ context("occ_download_datasets")
 
 test_that("occ_download_datasets", {
   skip_on_cran()
-  skip_on_travis()
+  skip_on_ci()
 
   vcr::use_cassette("occ_download_datasets", {
     tt <- occ_download_datasets("0003983-140910143529206")

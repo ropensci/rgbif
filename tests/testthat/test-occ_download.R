@@ -24,6 +24,9 @@ test_that("occ_download: real requests work", {
   expect_equal(attr(zzz, "email"), "myrmecocystus@gmail.com")
   expect_equal(attr(zzz, "format"), "DWCA")
 
+  # skip on ci because when testing real requests, we'd get rate limited
+  skip_on_ci()
+
   vcr::use_cassette("occ_download_2", {
     x <- occ_download(
       pred_and(

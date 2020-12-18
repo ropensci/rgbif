@@ -8,7 +8,7 @@ r_opts <- stats::setNames(lapply(lkeys, getOption), lkeys)
 
 test_that("occ_download_list", {
   skip_on_cran()
-  skip_on_travis()
+  skip_on_ci()
 
   vcr::use_cassette("occ_download_list", {
     tt <- occ_download_list()
