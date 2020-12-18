@@ -1,3 +1,16 @@
+rgbif 3.4.2
+===========
+
+### MINOR IMPROVEMENTS
+
+* Add new occurrence issue `DIFFERENT_OWNER_INSTITUTION` (#444)
+* re-record all test fixtures
+
+### BUG FIXES
+
+* fix bug in `occ_search()` (#443)
+
+
 rgbif 3.4
 =========
 

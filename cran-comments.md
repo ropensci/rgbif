@@ -14,7 +14,7 @@
 
 --------
 
-This version includes improvements to documentation, and some minor code improvements.
+This version fixes a bug.
 
 Thanks!
 Scott Chamberlain
