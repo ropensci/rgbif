@@ -1,7 +1,6 @@
 on:
-  push:
-    schedule:
-      - cron: '0 */72 * * *' # very 3 days
+  schedule:
+    - cron: '0 */72 * * *' # every 3 days
 
 name: R-check-real-requests
 
