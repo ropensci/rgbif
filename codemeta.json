@@ -16,7 +16,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.3 Patched (2020-12-04 r79565)",
+  "runtimePlatform": "R version 4.0.3 Patched (2020-12-29 r79725)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -367,7 +367,7 @@
   "contIntegration": "https://codecov.io/github/ropensci/rgbif?branch=master",
   "releaseNotes": "https://github.com/ropensci/rgbif/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/rgbif/blob/master/README.md",
-  "fileSize": "7646.301KB",
+  "fileSize": "7646.314KB",
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://ropensci.org",
   "keywords": ["GBIF", "specimens", "API", "web-services", "occurrences", "species", "taxonomy", "gbif", "api", "data", "biodiversity", "rstats", "r", "spocc", "r-package", "lifewatch", "oscibio"],
@@ -375,7 +375,7 @@
   "citation": [
     {
       "@type": "SoftwareSourceCode",
-      "datePublished": "2020",
+      "datePublished": "2021",
       "author": [
         {
           "@type": "Person",
