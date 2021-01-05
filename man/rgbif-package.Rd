@@ -24,10 +24,9 @@ via their API.
 \section{A note about the old GBIF API}{
 
 
-The old GBIF API was at http://data.gbif.org/tutorial/services, but is now
-defunct - that is, not available anymore. We used to have functions that
-worked with the old API, but those functions are now not available anymore
-because GBIF made the old API defunct.
+The old GBIF API is now defunct - that is, not available anymore. We used
+to have functions that worked with the old API, but those functions are
+now not available anymore because GBIF made the old API defunct.
 }
 
 \section{Documentation for the GBIF API}{
