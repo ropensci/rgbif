@@ -75,6 +75,12 @@ gbif_make_list <- function(y){
         out[[i]] <- paste0(paste("\n      > type: ", tmp$type),
                            pc("\n        predicates: ", pc(stt)),
                            collapse = ", ")
+      } else if ("predicate" %in% names(tmp)) {
+        stt <- sprintf("\n          - type: %s, key: %s, value: %s",
+          tmp$predicate$type, tmp$predicate$key, tmp$predicate$value)
+        out[[i]] <- paste0(paste("\n      > type: ", tmp$type),
+                           pc("\n        predicate: ", pc(stt)),
+                           collapse = ", ")
       } else {
         gg <- if ("geometry" %in% names(tmp)) {
           tmp$geometry

@@ -134,7 +134,7 @@
 #' pred_and(pred_lte("year", 1989), pred("year", 2000))
 #' pred_in("taxonKey", c(2977832, 2977901, 2977966, 2977835))
 #' pred_in("basisOfRecord", c("MACHINE_OBSERVATION", "HUMAN_OBSERVATION"))
-#' pred_not("catalogNumber", "cat1")
+#' pred_not(pred("taxonKey", 729))
 #' pred_like("catalogNumber", "PAPS5-560%")
 #' pred_notnull("issue")
 #' pred("basisOfRecord", "LITERATURE")
@@ -162,7 +162,15 @@ pred_lt <- function(key, value) pred_factory("<")(key, value)
 pred_lte <- function(key, value) pred_factory("<=")(key, value)
 #' @rdname download_predicate_dsl
 #' @export
-pred_not <- function(key, value) pred_factory("not")(key, value)
+# pred_not <- function(key, value) pred_factory("not")(key, value)
+pred_not <- function(...) {
+  pp <- list(...)
+  if (length(pp) == 0 || length(pp) > 1) 
+    stop("no predicates supplied to `not`", call. = FALSE)
+  if (!all(vapply(pp, class, "") == "occ_predicate"))
+    stop("1 or more inputs is not of class 'occ_predicate'; see docs")
+  structure(pp, class = "occ_predicate_list", type = unbox("not"))
+}
 #' @rdname download_predicate_dsl
 #' @export
 pred_like <- function(key, value) pred_factory("like")(key, value)
@@ -281,6 +289,7 @@ parse_pred <- function(key, value, type = "and") {
   }
 }
 pred_cat <- function(x) {
+  # if (is.null(names(x))) pred_cat(x[[1]])
   if ("predicates" %in% names(x)) {
     cat("type: or", sep = "\n")
     for (i in seq_along(x$predicates)) {
@@ -335,7 +344,18 @@ parse_predicates <- function(user, email, type, format, ...) {
           unclass(w)
         } else {
           lst <- list(type = attr(w, "type"))
-          lst$predicates <- lapply(w, unclass)
+          if (attr(w, "type") == "not") lst$predicate <- unclass(w[[1]])
+          if (!attr(w, "type") == "not") lst$predicates <- lapply(w, function(m) {
+            if (!is.null(attr(m, "type"))) {
+              if (attr(m, "type") == "not") {
+                list(type = unbox("not"), predicate = unclass(m[[1]]))
+              } else {
+                unclass(m)
+              }
+            } else {
+              unclass(m)
+            }
+          })
           lst
         }
       })

@@ -26,7 +26,7 @@ pred_lt(key, value)
 
 pred_lte(key, value)
 
-pred_not(key, value)
+pred_not(...)
 
 pred_like(key, value)
 
@@ -185,7 +185,7 @@ pred_or(pred_lte("year", 1989), pred("year", 2000))
 pred_and(pred_lte("year", 1989), pred("year", 2000))
 pred_in("taxonKey", c(2977832, 2977901, 2977966, 2977835))
 pred_in("basisOfRecord", c("MACHINE_OBSERVATION", "HUMAN_OBSERVATION"))
-pred_not("catalogNumber", "cat1")
+pred_not(pred("taxonKey", 729))
 pred_like("catalogNumber", "PAPS5-560\%")
 pred_notnull("issue")
 pred("basisOfRecord", "LITERATURE")
