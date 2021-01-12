@@ -20,7 +20,6 @@
 #' - `pred_lte`: lessThanOrEquals
 #' - `pred_gt`: greaterThan
 #' - `pred_gte`: greaterThanOrEquals
-#' - `pred_not`: not
 #' - `pred_like`: like
 #'
 #' The following function is only for geospatial queries, and only
@@ -35,6 +34,10 @@
 #' separating them by either "and" or "or":
 #' - `pred_and`: and
 #' - `pred_or`: or
+#' 
+#' The not predicate accepts one predicate; that is, this negates whatever
+#' predicate is passed in, e.g., not the taxonKey of 12345:
+#' - `pred_not`: not
 #'
 #' The following function is special in that it accepts a single key
 #' but many values; stating that you want to search for all the values:
@@ -162,11 +165,11 @@ pred_lt <- function(key, value) pred_factory("<")(key, value)
 pred_lte <- function(key, value) pred_factory("<=")(key, value)
 #' @rdname download_predicate_dsl
 #' @export
-# pred_not <- function(key, value) pred_factory("not")(key, value)
 pred_not <- function(...) {
   pp <- list(...)
   if (length(pp) == 0 || length(pp) > 1) 
-    stop("no predicates supplied to `not`", call. = FALSE)
+    stop("Supply one predicate to `not`, no more, no less",
+      call. = FALSE)
   if (!all(vapply(pp, class, "") == "occ_predicate"))
     stop("1 or more inputs is not of class 'occ_predicate'; see docs")
   structure(pp, class = "occ_predicate_list", type = unbox("not"))

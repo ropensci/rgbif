@@ -93,6 +93,26 @@ test_that("pred_and/pred_or fails well", {
   expect_error(pred_and(4), "not of class 'occ_predicate'")
 })
 
+context("predicate builders: pred_not")
+test_that("pred_not", {
+  z <- pred("taxonKey", 1)
+  aa <- pred_not(z)
+  expect_is(aa, "occ_predicate_list")
+  expect_is(unclass(aa), "list")
+  expect_named(aa, NULL)
+  expect_named(aa[[1]], c("type", "key", "value"))
+  expect_equal(unclass(aa[[1]]$type), "equals")
+  expect_equal(unclass(aa[[1]]$key), "TAXON_KEY")
+  expect_equal(unclass(aa[[1]]$value), "1")
+  expect_equal(attr(aa, "type"), jsonlite::unbox("not"))
+})
+test_that("pred_not fails well", {
+  z <- pred("taxonKey", 1)
+  expect_error(pred_not(), "Supply one")
+  expect_error(pred_not(z, z), "Supply one")
+  expect_error(pred_not(4), "not of class 'occ_predicate'")
+})
+
 context("predicate builders: pred_in")
 test_that("pred_in", {
   taxon_ids <- c(2977832, 2977901, 2977966, 2977835)

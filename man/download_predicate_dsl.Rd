@@ -68,7 +68,6 @@ The following functions take one key and one value:
 \item \code{pred_lte}: lessThanOrEquals
 \item \code{pred_gt}: greaterThan
 \item \code{pred_gte}: greaterThanOrEquals
-\item \code{pred_not}: not
 \item \code{pred_like}: like
 }
 
@@ -89,6 +88,12 @@ separating them by either "and" or "or":
 \itemize{
 \item \code{pred_and}: and
 \item \code{pred_or}: or
+}
+
+The not predicate accepts one predicate; that is, this negates whatever
+predicate is passed in, e.g., not the taxonKey of 12345:
+\itemize{
+\item \code{pred_not}: not
 }
 
 The following function is special in that it accepts a single key
