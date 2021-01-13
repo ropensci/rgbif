@@ -1,0 +1,118 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?limit=500&offset=0&geometry=POLYGON%28%2830.1%2010.1%2C%2010%2020%2C%2020%2040%2C%2040%2040%2C%2030.1%20a%29%29
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.2.93)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.2.93)
+  response:
+    status:
+      status_code: '400'
+      message: Bad Request
+      explanation: Bad request syntax or unsupported method
+    headers:
+      status: 'HTTP/2 400 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
+      content-type: text/plain
+      content-length: '92'
+      date: Wed, 13 Jan 2021 17:40:19 GMT
+      cache-control: no-cache, no-store, must-revalidate
+      x-varnish: '737608050'
+      age: '0'
+      via: 1.1 varnish (Varnish/6.0)
+    body:
+      encoding: ASCII-8BIT
+      file: no
+      string: |-
+        Q2Fubm90IHBhcnNlIHNpbXBsZSBXS1Q6IFBPTFlHT04oKDMwLjEgMTAuMSwgMTAgMjAsIDIwIDQwLCA0
+        MCA0MCwgMzAuMSBhKSkgRXhwZWN0ZWQgYSBudW1iZXI=
+  recorded_at: 2021-01-13 17:40:18 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.7.4
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?limit=500&offset=0&geometry=POLYGON%28%2830.1%2010.1%2C%2010%2020%2C%2020%2040%2C%2040%2040%2C%2030.1%20%2710.1%27%29%29
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.2.93)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.2.93)
+  response:
+    status:
+      status_code: '400'
+      message: Bad Request
+      explanation: Bad request syntax or unsupported method
+    headers:
+      status: 'HTTP/2 400 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
+      content-type: text/plain
+      content-length: '97'
+      date: Wed, 13 Jan 2021 17:40:19 GMT
+      cache-control: no-cache, no-store, must-revalidate
+      x-varnish: '737608051'
+      age: '0'
+      via: 1.1 varnish (Varnish/6.0)
+    body:
+      encoding: ASCII-8BIT
+      file: no
+      string: |-
+        Q2Fubm90IHBhcnNlIHNpbXBsZSBXS1Q6IFBPTFlHT04oKDMwLjEgMTAuMSwgMTAgMjAsIDIwIDQwLCA0
+        MCA0MCwgMzAuMSAnMTAuMScpKSBFeHBlY3RlZCBhIG51bWJlcg==
+  recorded_at: 2021-01-13 17:40:18 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.7.4
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?limit=500&offset=0&geometry=POLYGON%28%2830.1%2010.1%2C%2010%2020%2C%2020%2040%2C%2040%2040%2C%2030.1%2010.1%29
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.2.93)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.2.93)
+  response:
+    status:
+      status_code: '400'
+      message: Bad Request
+      explanation: Bad request syntax or unsupported method
+    headers:
+      status: 'HTTP/2 400 '
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
+      content-type: text/plain
+      content-length: '99'
+      date: Wed, 13 Jan 2021 17:40:20 GMT
+      cache-control: no-cache, no-store, must-revalidate
+      x-varnish: '737608052'
+      age: '0'
+      via: 1.1 varnish (Varnish/6.0)
+    body:
+      encoding: ASCII-8BIT
+      file: no
+      string: |-
+        Q2Fubm90IHBhcnNlIHNpbXBsZSBXS1Q6IFBPTFlHT04oKDMwLjEgMTAuMSwgMTAgMjAsIDIwIDQwLCA0
+        MCA0MCwgMzAuMSAxMC4xKSBFeHBlY3RlZCBbKV0gZm91bmQgRU9G
+  recorded_at: 2021-01-13 17:40:18 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.7.4

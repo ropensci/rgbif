@@ -39,9 +39,8 @@ Imports:
     magrittr,
     jsonlite (>= 1.6),
     oai (>= 0.2.2),
-    geoaxe,
     tibble,
-    wicket (>= 0.4.0),
+    wellknown (>= 0.7.2),
     lazyeval,
     R6,
     conditionz

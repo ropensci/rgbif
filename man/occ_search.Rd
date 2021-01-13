@@ -260,7 +260,7 @@ All fields can be faceted on except for last "lastInterpreted",
 You can do facet searches alongside searching occurrence data, and
 return both, or only return facets, or only occurrence data, etc.}
 
-\item{skip_validate}{(logical) whether to skip \code{wicket::wkt_validate}
+\item{skip_validate}{(logical) whether to skip \code{wellknown::validate_wkt}
 call or not. passed down to \code{\link[=check_wkt]{check_wkt()}}. Default: \code{TRUE}}
 
 \item{curlopts}{list of named curl options passed on to

@@ -39,21 +39,21 @@ test_that("wkt_parse", {
   # geom_big=axe
   bb <- wkt_parse(wkt, geom_big = "axe")
   expect_is(bb, "character")
-  expect_equal(length(bb), 5)
+  expect_equal(length(bb), 4)
   for (i in bb) expect_is(i, "character")
   for (i in bb) expect_match(i, "POLYGON")
 
   # geom_big=axe, geom_size=60
   cc <- wkt_parse(wkt, geom_big = "axe", geom_size = 60)
   expect_is(cc, "character")
-  expect_equal(length(cc), 3)
+  expect_equal(length(cc), 1)
   for (i in cc) expect_is(i, "character")
   for (i in cc) expect_match(i, "POLYGON")
 
   # geom_big=axe, geom_size=5
   dd <- wkt_parse(wkt, geom_big = "axe", geom_size = 5)
   expect_is(dd, "character")
-  expect_equal(length(dd), 54)
+  expect_equal(length(dd), 50)
   for (i in dd) expect_is(i, "character")
   for (i in dd) expect_match(i, "POLYGON")
 })

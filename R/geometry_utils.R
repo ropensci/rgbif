@@ -17,27 +17,28 @@ geometry_handler <- function(x, geom_big = "asis", size = 40, n = 10, verbose = 
     out <- c()
     for (i in seq_along(x)) {
       out[[i]] <- switch(geom_big,
-         asis = {
-           x[i]
-         },
-         bbox = {
-           if (nchar(x[i]) > 1500) {
-             if (verbose) message("geometry is big, querying BBOX, then pruning results to polygon")
-             # set run time option so that we know to prune result once it returns
-             options(rgbif.geometry.original = x)
-             gbif_bbox2wkt(bbox = gbif_wkt2bbox(x[i]))
-           } else {
-             x[i]
-           }
-         },
-         axe = {
-           res <- geoaxe::chop(x[i], size = size, n = n)
-           as.character(unlist(lapply(res@polygons, function(z) {
-             lapply(z@Polygons, function(w) {
-               wicket::sp_convert(sp::SpatialPolygons(list(sp::Polygons(list(w), 1))))
-             })
-           }), recursive = FALSE))
-         }
+        asis = {
+         x[i]
+        },
+        bbox = {
+          if (nchar(x[i]) > 1500) {
+            if (verbose) message("geometry is big, querying BBOX, then pruning results to polygon")
+            # set run time option so that we know to prune result once it returns
+            options(rgbif.geometry.original = x)
+            gbif_bbox2wkt(bbox = gbif_wkt2bbox(x[i]))
+          } else {
+            x[i]
+          }
+        },
+        axe = {
+          check_for_a_pkg("sf")
+          xsf <- sf::st_as_sfc(x[i])
+          gt <- sf::st_make_grid(xsf, cellsize = rep(size, 2), n = rep(n, 2))
+          res <- sf::st_intersection(xsf, gt)
+          unlist(lapply(res, function(w) {
+            if (inherits(w, "MULTIPOLYGON")) mp2wkt(w) else sf::st_as_text(w)
+          }))
+        }
       )
 
     }
@@ -46,6 +47,11 @@ geometry_handler <- function(x, geom_big = "asis", size = 40, n = 10, verbose = 
   } else {
     return(x)
   }
+}
+
+mp2wkt <- function(x) {
+  z <- lapply(x, sf::st_polygon)
+  vapply(z, sf::st_as_text, "")
 }
 
 prune_result <- function(x) {

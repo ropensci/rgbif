@@ -37,7 +37,8 @@ tests/fixtures/datasets_deleted_duplicate.yml
 tests/fixtures/occ_data.yml
 tests/fixtures/occ_data_datasetkey.yml
 tests/fixtures/occ_data_event_date.yml
-tests/fixtures/occ_data_geometry.yml
+tests/fixtures/occ_data_geometry*
+tests/fixtures/occ_search_geometry*
 tests/fixtures/occ_data_looping.yml
 tests/fixtures/occ_search.yml
 tests/fixtures/occ_search_datasetkey.yml

@@ -109,7 +109,7 @@
 #' @param waterBody (character) The name of the water body in which the
 #' locations occur
 #' @param locality (character) The specific description of the place.
-#' @param skip_validate (logical) whether to skip `wicket::wkt_validate`
+#' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'
 #' @section protocol parameter options:

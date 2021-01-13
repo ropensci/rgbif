@@ -253,33 +253,39 @@ test_that("geometry inputs work as expected", {
 
   badwkt1 <- "POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 a))"
 
-  vcr::use_cassette("occ_search_geometry", {
-    # in well known text format
+  # in well known text format
+  vcr::use_cassette("occ_search_geometry_aa", {
     aa <- occ_search(geometry='POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))', limit=20)
+  }, preserve_exact_body_bytes = TRUE)
 
-    # with a taxon key
+  # with a taxon key
+  vcr::use_cassette("occ_search_geometry_bb", {
     key <- 3189815
-    bb <- occ_search(taxonKey=key, geometry='POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))',
-                     limit=20)
+    bb <- occ_search(taxonKey=key, 
+      geometry='POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))',
+      limit=20)
+  }, preserve_exact_body_bytes = TRUE)
 
-    # using bounding box, converted to WKT internally
+  # using bounding box, converted to WKT internally
+  vcr::use_cassette("occ_search_geometry_cc", {
     cc <- occ_search(geometry=c(-125.0,38.4,-121.8,40.9), limit=20)
+  }, preserve_exact_body_bytes = TRUE)
 
-    # Search on a long WKT string - too long for a GBIF search API request
-    # Default option with large WKT string fails
-    # expect_error(occ_search(geometry = wkt, limit = 1),
-    #              "Client error: \\(413\\) Request Entity Too Large")
-
-    # if WKT too long, with 'geom_big=bbox': makes into bounding box
+  # if WKT too long, with 'geom_big=bbox': makes into bounding box
+  vcr::use_cassette("occ_search_geometry_dd", {
     dd <- occ_search(geometry = wkt, geom_big = "bbox", limit = 30)
     expect_message(occ_search(geometry = wkt, geom_big = "bbox", limit = 1),
                    "geometry is big, querying BBOX, then pruning results to polygon")
+  }, preserve_exact_body_bytes = TRUE)
 
+  vcr::use_cassette("occ_search_geometry_ee_gg", {
     # use 'geom_big=axe'
     ee <- occ_search(geometry = wkt, geom_big = "axe", limit = 30)
     ## more calls
     gg <- occ_search(geometry = wkt, geom_big = "axe", geom_size = 30, limit = 5)
+  }, preserve_exact_body_bytes = TRUE)
 
+  vcr::use_cassette("occ_search_geometry_errors", {
     # bad wkt is caught and handled appropriately
     expect_error(occ_search(geometry = badwkt1))
 
@@ -316,7 +322,7 @@ test_that("geometry inputs work as expected", {
 
   expect_lt(nchar(attr(dd, "args")$geometry), nchar(wkt))
 
-  expect_gt(length(names(gg)), length(names(ee)))
+  expect_gt(length(names(ee)), length(names(gg)))
 })
 
 

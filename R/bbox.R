@@ -31,7 +31,6 @@ gbif_bbox2wkt <- function(minx=NA, miny=NA, maxx=NA, maxy=NA, bbox=NULL){
   if (is.null(bbox)) bbox <- c(minx, miny, maxx, maxy)
   stopifnot(noNA(bbox)) #check for NAs
   stopifnot(is.numeric(as.numeric(bbox))) #check for numeric-ness
-  # wicket::bounding_wkt(values = bbox)
   bbox_template <- 'POLYGON((%s %s,%s %s,%s %s,%s %s,%s %s))'
   sprintf(bbox_template, 
     bbox[1], bbox[2],
@@ -46,5 +45,5 @@ gbif_bbox2wkt <- function(minx=NA, miny=NA, maxx=NA, maxy=NA, bbox=NULL){
 #' @rdname gbif_bbox2wkt
 gbif_wkt2bbox <- function(wkt = NULL){
   stopifnot(!is.null(wkt))
-  as.numeric(wicket::wkt_bounding(wkt))
+  as.numeric(wellknown::wkt_bounding(wkt))
 }

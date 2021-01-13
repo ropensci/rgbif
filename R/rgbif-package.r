@@ -40,10 +40,10 @@
 #' @importFrom jsonlite toJSON fromJSON unbox
 #' @importFrom oai id list_identifiers list_records list_metadataformats
 #' list_sets get_records
-#' @importFrom geoaxe chop to_wkt
 #' @importFrom lazyeval lazy_dots lazy_eval
 #' @importFrom R6 R6Class
 #' @importFrom conditionz ConditionKeeper
+#' @importFrom wellknown wkt_bounding validate_wkt
 #' @name rgbif-package
 #' @aliases rgbif
 #' @docType package
