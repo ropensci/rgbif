@@ -54,10 +54,10 @@
 #' ## pass in a dataset key
 #' gbif_citation(x='0ec3229f-2b53-484e-817a-de8ceb1fce2b')
 #' ## pass in an occurrence key
-#' gbif_citation(x='1101144669')
+#' # gbif_citation(x='1101144669')
 #'
 #' # pass in an occurrence key as a numeric (won't work for a dataset key)
-#' gbif_citation(x=1101144669)
+#' # gbif_citation(x=1101144669)
 #'
 #' # Downloads
 #' ## occ_download_get()
