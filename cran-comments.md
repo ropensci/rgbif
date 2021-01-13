@@ -14,7 +14,7 @@
 
 --------
 
-This version fixes a bug.
+This version drops a package import, swaps one package import for another, and fixes a bug.
 
 Thanks!
 Scott Chamberlain

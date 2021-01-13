@@ -10,7 +10,7 @@
   "codeRepository": "https://github.com/ropensci/rgbif",
   "issueTracker": "https://github.com/ropensci/rgbif/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "3.4.2",
+  "version": "3.5.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -292,18 +292,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "geoaxe",
-      "name": "geoaxe",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=geoaxe"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "tibble",
       "name": "tibble",
       "provider": {
@@ -316,16 +304,16 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "wicket",
-      "name": "wicket",
-      "version": ">= 0.4.0",
+      "identifier": "wellknown",
+      "name": "wellknown",
+      "version": ">= 0.7.2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=wicket"
+      "sameAs": "https://CRAN.R-project.org/package=wellknown"
     },
     {
       "@type": "SoftwareApplication",
@@ -367,7 +355,7 @@
   "contIntegration": "https://codecov.io/github/ropensci/rgbif?branch=master",
   "releaseNotes": "https://github.com/ropensci/rgbif/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/rgbif/blob/master/README.md",
-  "fileSize": "7646.314KB",
+  "fileSize": "7649.329KB",
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://ropensci.org",
   "keywords": ["GBIF", "specimens", "API", "web-services", "occurrences", "species", "taxonomy", "gbif", "api", "data", "biodiversity", "rstats", "r", "spocc", "r-package", "lifewatch", "oscibio"],

@@ -1,3 +1,16 @@
+rgbif 3.5.0
+===========
+
+### MINOR IMPROVEMENTS
+
+* remove package wicket - use package wellknown instead - no user facing changes related to this (#447)
+* remove package geoaxe (to be archived on CRAN soon) - use package sf instead (#447)
+
+### BUG FIXES
+
+* fix to download predicate function `pred_not()`: it was not constructing the query correctly, fixed now. user facing change as well: it now expects a predicate to be passed, and only a single predicate as GBIF not predicate only accepts one predicate (#446)
+
+
 rgbif 3.4.2
 ===========
 
