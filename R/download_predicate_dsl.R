@@ -91,7 +91,9 @@
 #'
 #' Acceptable arguments to the `key` parameter are (with the version of
 #' the key in parens that must be sent if you pass the query via the `body`
-#' parameter; see below for examples):
+#' parameter; see below for examples). Open an issue in the GitHub
+#' repository for this package if you know of a key that should
+#' be supported that is not yet.
 #'
 #' - taxonKey (TAXON_KEY)
 #' - scientificName (SCIENTIFIC_NAME)
@@ -265,10 +267,12 @@ parse_pred <- function(key, value, type = "and") {
   assert(key, "character")
   assert(type, "character")
 
+  ogkey <- key
   key <- key_lkup[[key]]
   if (is.null(key))
-    stop("'key' not in acceptable set of keys; see ?occ_download",
-      call.=FALSE)
+    stop(
+      sprintf("'%s' not in acceptable set of keys; see ?download_predicate_dsl",
+        ogkey), call.=FALSE)
 
   if (!any(operators_regex %in% type))
     stop("'type' not in acceptable set of types; see param def. 'type'",

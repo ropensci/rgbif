@@ -145,7 +145,9 @@ GBIF. For example ...
 
 Acceptable arguments to the \code{key} parameter are (with the version of
 the key in parens that must be sent if you pass the query via the \code{body}
-parameter; see below for examples):
+parameter; see below for examples). Open an issue in the GitHub
+repository for this package if you know of a key that should
+be supported that is not yet.
 \itemize{
 \item taxonKey (TAXON_KEY)
 \item scientificName (SCIENTIFIC_NAME)

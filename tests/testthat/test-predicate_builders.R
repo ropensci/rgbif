@@ -44,7 +44,7 @@ test_that("pred", {
 test_that("pred fails well", {
   expect_error(pred(), "argument \"key\" is missing")
   expect_error(pred(key = "taxonKey"), "argument \"value\" is missing")
-  expect_error(pred("a", "b"), "'key' not in acceptable set")
+  expect_error(pred("a", "b"), "'a' not in acceptable set")
   expect_error(pred(5, "b"), "key must be of class character")
   # expect_error(pred("a", 5), "type must be of class character")
   # should fail well when more than one thing passed to `value`
@@ -129,7 +129,7 @@ test_that("pred_in", {
 test_that("pred_in fails well", {
   expect_error(pred_in(), "argument \"key\" is missing")
   expect_error(pred_in(key = "taxonKey"), "argument \"value\" is missing")
-  expect_error(pred_in("a", "b"), "'key' not in acceptable set")
+  expect_error(pred_in("a", "b"), "'a' not in acceptable set")
   expect_error(pred_in(5, "b"), "key must be of class character")
 })
 
