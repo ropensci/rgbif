@@ -120,6 +120,7 @@
 #' - mediatype (MEDIA_TYPE)
 #' - recordedBy (RECORDED_BY)
 #' - establishmentMeans (ESTABLISHMENT_MEANS)
+#' - coordinateUncertaintyInMeters (COORDINATE_UNCERTAINTY_IN_METERS)
 #'
 #' @references Download predicates docs:
 #' <https://www.gbif.org/developer/occurrence#predicates>
@@ -257,7 +258,8 @@ key_lkup <- list(taxonKey='TAXON_KEY', scientificName='SCIENTIFIC_NAME',
     decimalLongitude='DECIMAL_LONGITUDE', elevation='ELEVATION', depth='DEPTH',
     institutionCode='INSTITUTION_CODE', collectionCode='COLLECTION_CODE',
     issue='ISSUE', mediatype='MEDIA_TYPE', recordedBy='RECORDED_BY',
-    establishmentMeans='ESTABLISHMENT_MEANS')
+    establishmentMeans='ESTABLISHMENT_MEANS',
+    coordinateUncertaintyInMeters='COORDINATE_UNCERTAINTY_IN_METERS')
 
 parse_pred <- function(key, value, type = "and") {
   assert(key, "character")

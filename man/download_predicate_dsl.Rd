@@ -174,6 +174,7 @@ parameter; see below for examples):
 \item mediatype (MEDIA_TYPE)
 \item recordedBy (RECORDED_BY)
 \item establishmentMeans (ESTABLISHMENT_MEANS)
+\item coordinateUncertaintyInMeters (COORDINATE_UNCERTAINTY_IN_METERS)
 }
 }
 
