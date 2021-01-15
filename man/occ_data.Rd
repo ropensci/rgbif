@@ -419,7 +419,7 @@ set one of these three via the parameter \code{geom_big}:
 \itemize{
 \item asis - the default setting. This means we don't do anything internally. That is,
 we just pass on your WKT string just as we've done before in this package.
-\item axe - this option uses the \pkg{geoaxe} package to chop up your WKT string in
+\item axe - this option uses the \pkg{sf} package to chop up your WKT string in
 to many polygons, which then leads to a separate data request for each polygon piece,
 then we combine all dat back together to give to you. Note that if your WKT string
 is not of type polygon, we drop back to \code{asis}as there's no way to chop up
@@ -428,10 +428,9 @@ However, this polygon splitting approach won't have the problem of
 the disconnect between how many records you want and what you actually get back as
 with the bbox option.
 
-This method uses \code{\link[geoaxe]{chop}}, which uses \code{GridTopology}from
-the \pkg{sp} package, which has two parameters \code{cellsize} and \code{cells.dim}
-that we use to chop up polygons. You can tweak those parameters here by tweaking
-\code{geom_size} and \code{geom_n}. \code{geom_size} seems to be more useful in
+This method uses \code{sf::st_make_grid} and \code{sf::st_intersection}, which has
+two parameters \code{cellsize} and \code{n}. You can tweak those parameters here by
+tweaking \code{geom_size} and \code{geom_n}. \code{geom_size} seems to be more useful in
 toggling the number of WKT strings you get back.
 
 See \code{\link{wkt_parse}} to manually break make WKT bounding box from a larger WKT
