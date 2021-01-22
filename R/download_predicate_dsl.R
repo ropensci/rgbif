@@ -205,7 +205,14 @@ print.occ_predicate <- function(x, ...) {
 print.occ_predicate_list <- function(x, ...) {
   cat("<<gbif download - predicate list>>", sep = "\n")
   cat(paste0("  type: ", attr(x, "type")), sep = "\n")
-  for (i in x) cat("  ", pred_cat(i), "\n", sep = "")
+  for (i in x) {
+    if (attr(i, "type") %||% "" == "not") {
+      cat("  > type: not", "\n", sep = "")
+      cat("    ", pred_cat(i[[1]]), "\n", sep = "")
+    } else {
+      cat("  ", pred_cat(i), "\n", sep = "")
+    }
+  }
 }
 
 # helpers
@@ -237,7 +244,7 @@ preds_factory <- function(type) {
     if (!length(pp) > 1) {
       stop("must pass more than 1 predicate to pred_or/pred_and")
     }
-    if (!all(vapply(pp, class, "") == "occ_predicate"))
+    if (!all(vapply(pp, class, "") %in% c("occ_predicate", "occ_predicate_list")))
       stop("1 or more inputs is not of class 'occ_predicate'; see docs")
     structure(pp, class = "occ_predicate_list", type = unbox(type))
   }

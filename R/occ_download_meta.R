@@ -64,6 +64,14 @@ sprintf_key_val <- function(x, ws_prefix = "\n          -") {
   sprintf("%s type: %s, key: %s, value: %s", 
     ws_prefix, x$type, x$key, x$value)
 }
+sprintf_not <- function(type, fmt) {
+  z <- if (type == "isNotNull") {
+    sprintf_not_null(fmt, "\n            -")
+  } else {
+    sprintf_key_val(fmt)
+  }
+  paste0("\n          - type: not", z)
+}
 
 gbif_make_list <- function(y){
   if (length(y) > 0) {
@@ -77,7 +85,9 @@ gbif_make_list <- function(y){
       tmp <- y$predicates[[i]]
 
       if ("predicates" %in% names(tmp)) {
-        stt <- lapply(tmp$predicates, sprintf_key_val)
+        stt <- lapply(tmp$predicates, function(w) {
+          if (w$type == "not") sprintf_not(w$predicate$type, w$predicate) else sprintf_key_val(w)
+        })
         out[[i]] <- paste0(paste("\n      > type: ", tmp$type),
                            pc("\n        predicates: ", pc(stt)),
                            collapse = ", ")
