@@ -89,8 +89,9 @@ test_that("pred_and/pred_or", {
 test_that("pred_and/pred_or fails well", {
   expect_error(pred_or(), "nothing passed")
   expect_error(pred_and(), "nothing passed")
-  expect_error(pred_or(4), "not of class 'occ_predicate'")
-  expect_error(pred_and(4), "not of class 'occ_predicate'")
+  expect_error(pred_and(pred("taxonKey", 2977832)), "must pass more than 1")
+  expect_error(pred_or(4, 5), "not of class 'occ_predicate'")
+  expect_error(pred_and(4, 5), "not of class 'occ_predicate'")
 })
 
 context("predicate builders: pred_not")

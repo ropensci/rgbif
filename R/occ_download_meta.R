@@ -56,6 +56,15 @@ n_with_status <- function(n, status) {
   return(n)
 }
 
+sprintf_not_null <- function(z, ws_prefix = "\n          -") {
+  sprintf("%s type: %s, parameter: %s", 
+    ws_prefix, z$type, z$parameter)
+}
+sprintf_key_val <- function(x, ws_prefix = "\n          -") {
+  sprintf("%s type: %s, key: %s, value: %s", 
+    ws_prefix, x$type, x$key, x$value)
+}
+
 gbif_make_list <- function(y){
   if (length(y) > 0) {
     y <- y$predicate
@@ -68,16 +77,16 @@ gbif_make_list <- function(y){
       tmp <- y$predicates[[i]]
 
       if ("predicates" %in% names(tmp)) {
-        stt <- lapply(tmp$predicates, function(x) {
-          sprintf("\n          - type: %s, key: %s, value: %s",
-                  x$type, x$key, x$value)
-        })
+        stt <- lapply(tmp$predicates, sprintf_key_val)
         out[[i]] <- paste0(paste("\n      > type: ", tmp$type),
                            pc("\n        predicates: ", pc(stt)),
                            collapse = ", ")
       } else if ("predicate" %in% names(tmp)) {
-        stt <- sprintf("\n          - type: %s, key: %s, value: %s",
-          tmp$predicate$type, tmp$predicate$key, tmp$predicate$value)
+        if (tmp$predicate$type == "isNotNull") {
+          stt <- sprintf_not_null(tmp$predicate)
+        } else {
+          stt <- sprintf_key_val(tmp$predicate)
+        }
         out[[i]] <- paste0(paste("\n      > type: ", tmp$type),
                            pc("\n        predicate: ", pc(stt)),
                            collapse = ", ")
@@ -88,11 +97,13 @@ gbif_make_list <- function(y){
           zz <- tmp$value %||% tmp$values
           if (!is.null(zz)) paste(zz, collapse = ",") else zz
         }
-        out[[i]] <- sprintf(
-          "\n      > type: %s, key: %s, value(s): %s",
-          tmp$type,
-          if ("geometry" %in% names(tmp)) "geometry" else tmp$key,
-          sub_str(gg, 60)
+        out[[i]] <- sprintf_key_val(
+          list(
+            type = tmp$type,
+            key = if ("geometry" %in% names(tmp)) "geometry" else tmp$key,
+            value = sub_str(gg, 60)
+          ),
+          "\n      >"
         )
       }
     }

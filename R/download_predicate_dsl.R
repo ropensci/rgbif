@@ -234,6 +234,9 @@ preds_factory <- function(type) {
     if (!type %in% c("or", "in", "and"))
       stop("'type' must be one of: or, in", call. = FALSE)
     if (length(pp) == 0) stop("nothing passed`", call. = FALSE)
+    if (!length(pp) > 1) {
+      stop("must pass more than 1 predicate to pred_or/pred_and")
+    }
     if (!all(vapply(pp, class, "") == "occ_predicate"))
       stop("1 or more inputs is not of class 'occ_predicate'; see docs")
     structure(pp, class = "occ_predicate_list", type = unbox(type))
@@ -303,11 +306,10 @@ pred_cat <- function(x) {
     cat("type: or", sep = "\n")
     for (i in seq_along(x$predicates)) {
       z <- x$predicates[[i]]
-      cat(sprintf("  > type: %s, key: %s, value(s): %s",
-        z$type, z$key, z$value), sep = "\n")
+      cat(sprintf_key_val(z, "  >"), sep = "\n")
     }
   } else if ("parameter" %in% names(x)) {
-    sprintf("> type: %s, parameter: %s", x$type, x$parameter)
+    sprintf_not_null(x, ">")
   } else {
     gg <- if ("geometry" %in% names(x)) {
       x$geometry
@@ -315,12 +317,15 @@ pred_cat <- function(x) {
       zz <- x$value %||% x$values
       if (!is.null(zz)) paste(zz, collapse = ",") else zz
     }
-    sprintf(
-      "> type: %s, key: %s, value(s): %s",
-      x$type,
-      if ("geometry" %in% names(x)) "geometry" else x$key,
-      sub_str(gg, 60)
+    sprintf_key_val(
+      list(
+        type = x$type,
+        key = if ("geometry" %in% names(x)) "geometry" else x$key,
+        value = sub_str(gg, 60)
+      ),
+      ">"
     )
+
   }
 }
 sub_str <- function(str, max = 100) {
