@@ -22,8 +22,7 @@ Authors@R: c(
     person(given = "rOpenSci", role = "fnd", comment = "https://ropensci.org/")
     )
 URL: https://github.com/ropensci/rgbif (devel),
-    https://docs.ropensci.org/rgbif/ (documentation),
-    https://books.ropensci.org/occurrences/ (user manual)
+    https://docs.ropensci.org/rgbif/ (documentation)
 BugReports: https://github.com/ropensci/rgbif/issues
 LazyData: true
 LazyLoad: true
