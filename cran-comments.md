@@ -14,7 +14,7 @@
 
 --------
 
-This version drops a package import, swaps one package import for another, and fixes a bug.
+This version makes a number of improvements to occurrence download predicate functions - and removes references to the now CRAN archived geoaxe package, which also is no longer used in this package.
 
 Thanks!
 Scott Chamberlain

@@ -10,7 +10,7 @@
   "codeRepository": "https://github.com/ropensci/rgbif",
   "issueTracker": "https://github.com/ropensci/rgbif/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "3.5.1.92",
+  "version": "3.5.2",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -355,7 +355,7 @@
   "contIntegration": "https://codecov.io/github/ropensci/rgbif?branch=master",
   "releaseNotes": "https://github.com/ropensci/rgbif/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/rgbif/blob/master/README.md",
-  "fileSize": "7650.49KB",
+  "fileSize": "7651.268KB",
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://ropensci.org",
   "keywords": ["GBIF", "specimens", "API", "web-services", "occurrences", "species", "taxonomy", "gbif", "api", "data", "biodiversity", "rstats", "r", "spocc", "r-package", "lifewatch", "oscibio"],

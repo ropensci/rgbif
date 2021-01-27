@@ -1,3 +1,18 @@
+rgbif 3.5.2
+===========
+
+### Download predicates
+
+* in occurrence download predicate builder checks, to better help users, give the name of the key that fails upon failure instead of just the string 'key' (#450)
+* occurrence download predicates: new key `coordinateUncertaintyInMeters` added, e.g. usage: `pred_lt("coordinateUncertaintyInMeters",10000)`  (#449)
+* `pred_and()` and `pred_or()` slight change: now required that more than one predicate is passed to each of these functions because it doesn't make sense to do an `and` or `or` predicate with only one predicate (#452)
+* fix for use of `pred_not(pred_notnull())` (#452)
+
+### BUG FIXES
+
+* remove geoaxe references in man-roxygen template doc files - not using pkg anymore here and that pkg is cran archived too (#448)
+
+
 rgbif 3.5.0
 ===========
 
