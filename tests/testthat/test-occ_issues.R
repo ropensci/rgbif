@@ -42,7 +42,7 @@ test_that("occ_issues", {
   expect_true(all(vapply(bb$data$issues, function(x)
     grepl("gass84", x), logical(1))))
   expect_true(all(vapply(cc$data$issues, function(x)
-    grepl("gass84", x), logical(1))))
+    grepl("colmano", x), logical(1))))
   expect_false(all(vapply(cc$data$issues, function(x)
     grepl("cudc", x), logical(1))))
   expect_false(any(grepl("issues", names(dd$data))))
