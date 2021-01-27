@@ -24,13 +24,13 @@ gbifissues <- structure(list(
            "txmatfuz", "txmathi", "txmatnon", "typstativ", "zerocd",
            "cdpi", "cdumi", "indci", "interr", "iccos", "osiic", "osu",
            "geodi","geodu", "ambcol", "ambinst", "colmafu", "colmano",
-           "incomis", "inmafu", "inmano", "osifbor", "diffown",
+           "incomis", "inmafu", "inmano", "osifbor", "diffown", "taxmatagg",
            "anm", "annu", "anuidi", "aitidinv", "bbmn", "basauthm",
            "bibrinv", "chsun", "clasna", "clasroi", "conbascomb", "desinv",
            "disinv", "hom", "minv", "npm", "ns","nsinv", "onder", "onnu",
            "onuidinv", "ov", "pc", "pnnu", "pnuidinv", "pp","pbg","rankinv",
            "relmiss", "scina", "spprinv", "taxstinv", "taxstmis", "unpars",
-           "vernnameinv"),
+           "vernnameinv", "backmatagg"),
   issue = c("BASIS_OF_RECORD_INVALID",
             "CONTINENT_COUNTRY_MISMATCH", "CONTINENT_DERIVED_FROM_COORDINATES",
             "CONTINENT_INVALID", "COORDINATE_INVALID", "COORDINATE_OUT_OF_RANGE",
@@ -53,7 +53,7 @@ gbifissues <- structure(list(
             "AMBIGUOUS_INSTITUTION", "COLLECTION_MATCH_FUZZY", "COLLECTION_MATCH_NONE",
             "INSTITUTION_COLLECTION_MISMATCH", "INSTITUTION_MATCH_FUZZY",
             "INSTITUTION_MATCH_NONE", "OCCURRENCE_STATUS_INFERRED_FROM_BASIS_OF_RECORD",
-            "DIFFERENT_OWNER_INSTITUTION",
+            "DIFFERENT_OWNER_INSTITUTION","TAXON_MATCH_AGGREGATE",
             "ACCEPTED_NAME_MISSING", "ACCEPTED_NAME_NOT_UNIQUE", "ACCEPTED_NAME_USAGE_ID_INVALID",
             "ALT_IDENTIFIER_INVALID", "BACKBONE_MATCH_NONE",
             "BASIONYM_AUTHOR_MISMATCH", "BIB_REFERENCE_INVALID", "CHAINED_SYNOYM",
@@ -66,7 +66,7 @@ gbifissues <- structure(list(
             "PARTIALLY_PARSABLE", "PUBLISHED_BEFORE_GENUS", "RANK_INVALID",
             "RELATIONSHIP_MISSING", "SCIENTIFIC_NAME_ASSEMBLED", "SPECIES_PROFILE_INVALID",
             "TAXONOMIC_STATUS_INVALID", "TAXONOMIC_STATUS_MISMATCH", "UNPARSABLE",
-            "VERNACULAR_NAME_INVALID"),
+            "VERNACULAR_NAME_INVALID", "BACKBONE_MATCH_AGGREGATE"),
   description = c("The given basis of record is impossible to interpret or seriously different from the recommended vocabulary.",
                   "The interpreted continent and country do not match up.",
                   "The interpreted continent is based on the coordinates, not the verbatim string information.",
@@ -118,6 +118,7 @@ gbifissues <- structure(list(
                   "The given institution couldn't be matched with any GrSciColl institution.",
                   "Occurrence status was inferred from basis of records",
                   "The given owner institution is different than the given institution. Therefore we assume it doesn't belong to the institution and we don't link it to the occurrence.",
+                  "Matching to the taxonomic backbone can only be done on a species level, but the occurrence was in fact considered a broader species aggregate/complex.",
                   "Synonym lacking an accepted name.",
                   "Synonym has a verbatim accepted name which is not unique and refers to several records.",
                   "The value for dwc:acceptedNameUsageID could not be resolved.",
@@ -152,9 +153,10 @@ gbifissues <- structure(list(
                   "dwc:taxonomicStatus could not be interpreted",
                   "no description",
                   "The scientific name string could not be parsed at all, but appears to be a parsable name type, i.e.",
-                  "At least one vernacular name extension record attached to this name usage is invalid."),
-  type <- c(rep("occurrence", 60), rep("name", 35)
-  )), .Names = c("code", "issue", "description", "type"), class = "data.frame", row.names = c(NA, -95L))
+                  "At least one vernacular name extension record attached to this name usage is invalid.",
+                  "Name usage could only be matched to a GBIF backbone species, but was in fact a broader species aggregate/complex."),
+  type <- c(rep("occurrence", 61), rep("name", 36)
+  )), .Names = c("code", "issue", "description", "type"), class = "data.frame", row.names = c(NA, -97L))
 
 collapse_issues <- function(x, issue_col = "issues") {
   tmp <- x[names(x) %in% issue_col][[1]]

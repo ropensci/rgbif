@@ -8,6 +8,10 @@ rgbif 3.5.2
 * `pred_and()` and `pred_or()` slight change: now required that more than one predicate is passed to each of these functions because it doesn't make sense to do an `and` or `or` predicate with only one predicate (#452)
 * fix for use of `pred_not(pred_notnull())` (#452)
 
+### MINOR IMPROVEMENTS
+
+* add a new occurrence issue (`TAXON_MATCH_AGGREGATE`) and a new name issue (`BACKBONE_MATCH_AGGREGATE`) (#453)
+
 ### BUG FIXES
 
 * remove geoaxe references in man-roxygen template doc files - not using pkg anymore here and that pkg is cran archived too (#448)
