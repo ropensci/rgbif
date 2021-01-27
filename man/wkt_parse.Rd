@@ -52,6 +52,7 @@ wkt <- "POLYGON((13.26349675655365 52.53991761181831,18.36115300655365 54.114455
 55.43241335888528,13.26349675655365 52.53991761181831))"
 wkt <- gsub("\n", " ", wkt)
 
+if (requireNamespace("sf", quietly=TRUE)) {
 # to a bounding box in wkt format
 wkt_parse(wkt, geom_big = "bbox")
 
@@ -62,4 +63,5 @@ wkt_parse(wkt, geom_big = "axe", 30)
 wkt_parse(wkt, geom_big = "axe", 20)
 wkt_parse(wkt, geom_big = "axe", 10)
 wkt_parse(wkt, geom_big = "axe", 5)
+}
 }
