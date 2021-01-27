@@ -30,6 +30,8 @@ wkt <- "POLYGON((13.26349675655365 52.53991761181831,18.36115300655365 54.114455
 wkt <- gsub("\n", " ", wkt)
 
 test_that("wkt_parse", {
+  skip_if_not_installed("sf")
+
   # geom_big=bbox
   aa <- wkt_parse(wkt, geom_big = "bbox")
   expect_is(aa, "character")

@@ -264,6 +264,7 @@ test_that("geometry inputs work as expected", {
                  "geometry is big, querying BBOX, then pruning results to polygon")
 
   # use 'geom_big=axe'
+  skip_if_not_installed("sf")
   vcr::use_cassette("occ_data_geometry_ee_gg", {
     ee <- occ_data(geometry = wkt, geom_big = "axe", limit = 30)
     ## more calls
