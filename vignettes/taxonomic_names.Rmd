@@ -1,7 +1,7 @@
 ---
 title: Taxonomic names
 author: Scott Chamberlain
-date: "2020-11-10"
+date: "2021-01-27"
 output: rmarkdown::html_vignette
 vignette: >
     %\VignetteIndexEntry{taxonomic_names}
@@ -88,7 +88,7 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 
 ```r
 occ_count(c1$usageKey[[1]])
-#> [1] 595480
+#> [1] 608291
 taxon_provider(c1$usageKey[[1]])
 #> [1] "Catalogue of Life"
 ```
@@ -98,7 +98,7 @@ taxon_provider(c1$usageKey[[1]])
 
 ```r
 occ_count(c1$usageKey[[2]])
-#> [1] 595480
+#> [1] 608291
 taxon_provider(c1$usageKey[[2]])
 #> [1] "Catalogue of Life"
 ```
@@ -154,7 +154,7 @@ taxon_provider(c2$usageKey[[2]])
 
 ```r
 occ_count(c3$usageKey[[1]])
-#> [1] 687
+#> [1] 688
 taxon_provider(c3$usageKey[[1]])
 #> [1] "Catalogue of Life"
 ```
@@ -164,7 +164,7 @@ taxon_provider(c3$usageKey[[1]])
 
 ```r
 occ_count(c3$usageKey[[2]])
-#> [1] 687
+#> [1] 688
 taxon_provider(c3$usageKey[[2]])
 #> [1] "Catalogue of Life"
 ```

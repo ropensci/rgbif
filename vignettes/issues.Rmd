@@ -1,7 +1,7 @@
 ---
 title: Cleaning data using GBIF issues
 author: Scott Chamberlain
-date: "2020-11-10"
+date: "2021-01-27"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{cleaning}
@@ -57,56 +57,53 @@ Then pass to `occ_search()`
 
 ```r
 (res <- occ_search(taxonKey=key, limit=100))
-#> Records found [1631169502] 
+#> Records found [1650859425] 
 #> Records returned [100] 
-#> No. unique hierarchies [77] 
+#> No. unique hierarchies [68] 
 #> No. media records [100] 
 #> No. facets [0] 
 #> Args [limit=100, offset=0, fields=all] 
-#> # A tibble: 100 x 111
-#>    key   scientificName issues datasetKey publishingOrgKey installationKey
-#>    <chr> <chr>          <chr>  <chr>      <chr>            <chr>          
-#>  1 1039… Psittacus eri… "osii… 854cf79e-… 2e167bb0-4441-1… 3f28c5e9-59b3-…
-#>  2 1086… Asplenium rad… "gass… a51fa32f-… f6e2efc9-42a3-4… b38ff2b7-c8af-…
-#>  3 1095… Eugenia pyrif… ""     3b8e9d83-… ab5c0b99-5af3-4… b38ff2b7-c8af-…
-#>  4 1135… Marasmius epi… ""     0afba960-… 58520c30-bafb-1… 602f7766-f762-…
-#>  5 1135… Berkleasmium … ""     0afba960-… 58520c30-bafb-1… 602f7766-f762-…
-#>  6 1135… Pseudovalsa u… ""     0afba960-… 58520c30-bafb-1… 602f7766-f762-…
-#>  7 1135… Hemitrichia i… ""     0afba960-… 58520c30-bafb-1… 602f7766-f762-…
-#>  8 1830… Diatrypella f… ""     0afba960-… 58520c30-bafb-1… 602f7766-f762-…
-#>  9 1830… Cryptocline t… ""     0afba960-… 58520c30-bafb-1… 602f7766-f762-…
-#> 10 1840… Asota helicon… "osii… e0b8cb67-… 7c07cec1-2925-4… 08eefeeb-e20f-…
-#> # … with 90 more rows, and 105 more variables: publishingCountry <chr>,
-#> #   protocol <chr>, lastCrawled <chr>, lastParsed <chr>, crawlId <int>,
-#> #   extensions <chr>, basisOfRecord <chr>, individualCount <int>,
-#> #   occurrenceStatus <chr>, taxonKey <int>, kingdomKey <int>, phylumKey <int>,
-#> #   classKey <int>, orderKey <int>, familyKey <int>, genusKey <int>,
-#> #   speciesKey <int>, acceptedTaxonKey <int>, acceptedScientificName <chr>,
-#> #   kingdom <chr>, phylum <chr>, order <chr>, family <chr>, genus <chr>,
-#> #   species <chr>, genericName <chr>, specificEpithet <chr>, taxonRank <chr>,
-#> #   taxonomicStatus <chr>, year <int>, month <int>, eventDate <chr>,
-#> #   modified <chr>, lastInterpreted <chr>, references <chr>, license <chr>,
-#> #   identifiers <chr>, facts <chr>, relations <chr>, gadm <chr>, class <chr>,
-#> #   recordedByIDs <chr>, identifiedByIDs <chr>, rightsHolder <chr>,
-#> #   identifier <chr>, nomenclaturalCode <chr>, gbifID <chr>,
-#> #   collectionCode <chr>, language <chr>, occurrenceID <chr>, type <chr>,
-#> #   taxonRemarks <chr>, preparations <chr>, disposition <chr>,
-#> #   recordedBy <chr>, catalogNumber <chr>, vernacularName <chr>,
-#> #   previousIdentifications <chr>, institutionCode <chr>,
-#> #   ownerInstitutionCode <chr>, datasetID <chr>, occurrenceRemarks <chr>,
-#> #   bibliographicCitation <chr>, accessRights <chr>,
-#> #   higherClassification <chr>, name <chr>, decimalLatitude <dbl>,
-#> #   decimalLongitude <dbl>, dateIdentified <chr>, elevation <dbl>,
-#> #   elevationAccuracy <dbl>, stateProvince <chr>, day <int>,
-#> #   gadm.level0.gid <chr>, gadm.level0.name <chr>, gadm.level1.gid <chr>,
-#> #   gadm.level1.name <chr>, gadm.level2.gid <chr>, gadm.level2.name <chr>,
-#> #   gadm.level3.gid <chr>, gadm.level3.name <chr>, geodeticDatum <chr>,
-#> #   countryCode <chr>, country <chr>, recordNumber <chr>, municipality <chr>,
-#> #   locality <chr>, datasetName <chr>, identifiedBy <chr>, continent <chr>,
-#> #   typifiedName <chr>, lifeStage <chr>, infraspecificEpithet <chr>,
-#> #   county <chr>, associatedReferences <chr>, verbatimElevation <chr>,
-#> #   higherGeography <chr>, institutionID <chr>, island <chr>,
-#> #   islandGroup <chr>, …
+#> # A tibble: 100 x 96
+#>    key   scientificName decimalLatitude decimalLongitude issues datasetKey
+#>    <chr> <chr>                    <dbl>            <dbl> <chr>  <chr>     
+#>  1 1135… Cryptosphaeri…            48.0             16.5 colma… 0afba960-…
+#>  2 1632… Belenois java…           -34.9            139.  txmat… fa375330-…
+#>  3 1632… Belenois java…           -34.9            139.  txmat… fa375330-…
+#>  4 1830… Lopadostoma g…            48.0             16.5 colma… 0afba960-…
+#>  5 1830… Platystomum o…            48.0             16.5 colma… 0afba960-…
+#>  6 1831… Trechispora f…            48.0             16.5 colma… 0afba960-…
+#>  7 1831… Nemania serpe…            48.0             16.5 colma… 0afba960-…
+#>  8 1897… Anisotome aro…           -38.9            175.  cdrou… 83ae84cf-…
+#>  9 1897… Lagenifera Ca…           -38.9            175.  cdrou… 83ae84cf-…
+#> 10 1897… Aciphylla hec…           -45.5            169.  cdrou… 83ae84cf-…
+#> # … with 90 more rows, and 90 more variables: publishingOrgKey <chr>,
+#> #   installationKey <chr>, publishingCountry <chr>, protocol <chr>,
+#> #   lastCrawled <chr>, lastParsed <chr>, crawlId <int>,
+#> #   hostingOrganizationKey <chr>, basisOfRecord <chr>, occurrenceStatus <chr>,
+#> #   taxonKey <int>, kingdomKey <int>, phylumKey <int>, classKey <int>,
+#> #   orderKey <int>, familyKey <int>, genusKey <int>, speciesKey <int>,
+#> #   acceptedTaxonKey <int>, acceptedScientificName <chr>, kingdom <chr>,
+#> #   phylum <chr>, order <chr>, family <chr>, genus <chr>, species <chr>,
+#> #   genericName <chr>, specificEpithet <chr>, infraspecificEpithet <chr>,
+#> #   taxonRank <chr>, taxonomicStatus <chr>, elevation <dbl>, year <int>,
+#> #   month <int>, day <int>, eventDate <chr>, lastInterpreted <chr>,
+#> #   license <chr>, identifiers <chr>, facts <chr>, relations <chr>,
+#> #   institutionKey <chr>, isInCluster <lgl>, geodeticDatum <chr>, class <chr>,
+#> #   countryCode <chr>, recordedByIDs <chr>, identifiedByIDs <chr>,
+#> #   country <chr>, identifier <chr>, recordedBy <chr>, catalogNumber <chr>,
+#> #   institutionCode <chr>, locality <chr>, gbifID <chr>, collectionCode <chr>,
+#> #   occurrenceID <chr>, identifiedBy <chr>, name <chr>,
+#> #   X.99d66b6c.9087.452f.a9d4.f15f2c2d0e7e. <chr>,
+#> #   coordinateUncertaintyInMeters <dbl>, stateProvince <chr>, references <chr>,
+#> #   eventID <chr>, dataGeneralizations <chr>, vernacularName <chr>,
+#> #   otherCatalogNumbers <chr>, taxonConceptID <chr>, modified <chr>,
+#> #   collectionKey <chr>, higherGeography <chr>, language <chr>,
+#> #   verbatimLocality <chr>, type <chr>, verbatimElevation <chr>,
+#> #   typeStatus <chr>, gadm <chr>, individualCount <int>,
+#> #   dynamicProperties <chr>, municipality <chr>, associatedReferences <chr>,
+#> #   county <chr>, locationID <chr>, fieldNotes <chr>, eventTime <chr>,
+#> #   behavior <chr>, sex <chr>, habitat <chr>,
+#> #   identificationVerificationStatus <chr>, identificationRemarks <chr>
 ```
 
 ## Examine issues
@@ -175,56 +172,53 @@ Now that we know a bit about GBIF issues, you can parse your data based on issue
 ```r
 res %>%
   occ_issues(gass84)
-#> Records found [1631169502] 
-#> Records returned [84] 
-#> No. unique hierarchies [77] 
+#> Records found [1650859425] 
+#> Records returned [77] 
+#> No. unique hierarchies [68] 
 #> No. media records [100] 
 #> No. facets [0] 
 #> Args [limit=100, offset=0, fields=all] 
-#> # A tibble: 84 x 111
-#>    key   scientificName issues datasetKey publishingOrgKey installationKey
-#>    <chr> <chr>          <chr>  <chr>      <chr>            <chr>          
-#>  1 1086… Asplenium rad… gass84 a51fa32f-… f6e2efc9-42a3-4… b38ff2b7-c8af-…
-#>  2 1880… Limnonectes w… gass84 dce00a1f-… b554c320-0560-1… c7b49e46-602a-…
-#>  3 1880… Limnonectes w… gass84 dce00a1f-… b554c320-0560-1… c7b49e46-602a-…
-#>  4 1880… Limnonectes w… gass84 dce00a1f-… b554c320-0560-1… c7b49e46-602a-…
-#>  5 1897… Polystichum w… cdrou… 83ae84cf-… 32e82a64-c9b4-4… 58f76e14-f21d-…
-#>  6 1897… Epacris pauci… cdrou… 83ae84cf-… 32e82a64-c9b4-4… 58f76e14-f21d-…
-#>  7 1897… Metrosideros … cdrou… 83ae84cf-… 32e82a64-c9b4-4… 58f76e14-f21d-…
-#>  8 1897… Potentilla an… cdrou… 83ae84cf-… 32e82a64-c9b4-4… 58f76e14-f21d-…
-#>  9 1897… Ranunculus ni… cdrou… 83ae84cf-… 32e82a64-c9b4-4… 58f76e14-f21d-…
-#> 10 1897… Blechnum memb… cdrou… 83ae84cf-… 32e82a64-c9b4-4… 58f76e14-f21d-…
-#> # … with 74 more rows, and 105 more variables: publishingCountry <chr>,
-#> #   protocol <chr>, lastCrawled <chr>, lastParsed <chr>, crawlId <int>,
-#> #   extensions <chr>, basisOfRecord <chr>, individualCount <int>,
-#> #   occurrenceStatus <chr>, taxonKey <int>, kingdomKey <int>, phylumKey <int>,
-#> #   classKey <int>, orderKey <int>, familyKey <int>, genusKey <int>,
-#> #   speciesKey <int>, acceptedTaxonKey <int>, acceptedScientificName <chr>,
-#> #   kingdom <chr>, phylum <chr>, order <chr>, family <chr>, genus <chr>,
-#> #   species <chr>, genericName <chr>, specificEpithet <chr>, taxonRank <chr>,
-#> #   taxonomicStatus <chr>, year <int>, month <int>, eventDate <chr>,
-#> #   modified <chr>, lastInterpreted <chr>, references <chr>, license <chr>,
-#> #   identifiers <chr>, facts <chr>, relations <chr>, gadm <chr>, class <chr>,
-#> #   recordedByIDs <chr>, identifiedByIDs <chr>, rightsHolder <chr>,
-#> #   identifier <chr>, nomenclaturalCode <chr>, gbifID <chr>,
-#> #   collectionCode <chr>, language <chr>, occurrenceID <chr>, type <chr>,
-#> #   taxonRemarks <chr>, preparations <chr>, disposition <chr>,
-#> #   recordedBy <chr>, catalogNumber <chr>, vernacularName <chr>,
-#> #   previousIdentifications <chr>, institutionCode <chr>,
-#> #   ownerInstitutionCode <chr>, datasetID <chr>, occurrenceRemarks <chr>,
-#> #   bibliographicCitation <chr>, accessRights <chr>,
-#> #   higherClassification <chr>, name <chr>, decimalLatitude <dbl>,
-#> #   decimalLongitude <dbl>, dateIdentified <chr>, elevation <dbl>,
-#> #   elevationAccuracy <dbl>, stateProvince <chr>, day <int>,
-#> #   gadm.level0.gid <chr>, gadm.level0.name <chr>, gadm.level1.gid <chr>,
-#> #   gadm.level1.name <chr>, gadm.level2.gid <chr>, gadm.level2.name <chr>,
-#> #   gadm.level3.gid <chr>, gadm.level3.name <chr>, geodeticDatum <chr>,
-#> #   countryCode <chr>, country <chr>, recordNumber <chr>, municipality <chr>,
-#> #   locality <chr>, datasetName <chr>, identifiedBy <chr>, continent <chr>,
-#> #   typifiedName <chr>, lifeStage <chr>, infraspecificEpithet <chr>,
-#> #   county <chr>, associatedReferences <chr>, verbatimElevation <chr>,
-#> #   higherGeography <chr>, institutionID <chr>, island <chr>,
-#> #   islandGroup <chr>, …
+#> # A tibble: 77 x 96
+#>    key   scientificName decimalLatitude decimalLongitude issues datasetKey
+#>    <chr> <chr>                    <dbl>            <dbl> <chr>  <chr>     
+#>  1 1897… Anisotome aro…           -38.9             175. cdrou… 83ae84cf-…
+#>  2 1897… Lagenifera Ca…           -38.9             175. cdrou… 83ae84cf-…
+#>  3 1897… Aciphylla hec…           -45.5             169. cdrou… 83ae84cf-…
+#>  4 1897… Ozothamnus va…           -39.2             175. cdrou… 83ae84cf-…
+#>  5 1897… Huperzia aust…           -39.2             175. cdrou… 83ae84cf-…
+#>  6 1897… Celmisia dens…           -45.5             169. cdrou… 83ae84cf-…
+#>  7 1897… Schizaea aust…           -39.2             175. cdrou… 83ae84cf-…
+#>  8 1897… Ourisia macro…           -39.2             175. cdrou… 83ae84cf-…
+#>  9 1897… Epilobium als…           -39.2             175. cdrou… 83ae84cf-…
+#> 10 1897… Lycopodium fa…           -39.2             175. cdrou… 83ae84cf-…
+#> # … with 67 more rows, and 90 more variables: publishingOrgKey <chr>,
+#> #   installationKey <chr>, publishingCountry <chr>, protocol <chr>,
+#> #   lastCrawled <chr>, lastParsed <chr>, crawlId <int>,
+#> #   hostingOrganizationKey <chr>, basisOfRecord <chr>, occurrenceStatus <chr>,
+#> #   taxonKey <int>, kingdomKey <int>, phylumKey <int>, classKey <int>,
+#> #   orderKey <int>, familyKey <int>, genusKey <int>, speciesKey <int>,
+#> #   acceptedTaxonKey <int>, acceptedScientificName <chr>, kingdom <chr>,
+#> #   phylum <chr>, order <chr>, family <chr>, genus <chr>, species <chr>,
+#> #   genericName <chr>, specificEpithet <chr>, infraspecificEpithet <chr>,
+#> #   taxonRank <chr>, taxonomicStatus <chr>, elevation <dbl>, year <int>,
+#> #   month <int>, day <int>, eventDate <chr>, lastInterpreted <chr>,
+#> #   license <chr>, identifiers <chr>, facts <chr>, relations <chr>,
+#> #   institutionKey <chr>, isInCluster <lgl>, geodeticDatum <chr>, class <chr>,
+#> #   countryCode <chr>, recordedByIDs <chr>, identifiedByIDs <chr>,
+#> #   country <chr>, identifier <chr>, recordedBy <chr>, catalogNumber <chr>,
+#> #   institutionCode <chr>, locality <chr>, gbifID <chr>, collectionCode <chr>,
+#> #   occurrenceID <chr>, identifiedBy <chr>, name <chr>,
+#> #   X.99d66b6c.9087.452f.a9d4.f15f2c2d0e7e. <chr>,
+#> #   coordinateUncertaintyInMeters <dbl>, stateProvince <chr>, references <chr>,
+#> #   eventID <chr>, dataGeneralizations <chr>, vernacularName <chr>,
+#> #   otherCatalogNumbers <chr>, taxonConceptID <chr>, modified <chr>,
+#> #   collectionKey <chr>, higherGeography <chr>, language <chr>,
+#> #   verbatimLocality <chr>, type <chr>, verbatimElevation <chr>,
+#> #   typeStatus <chr>, gadm <chr>, individualCount <int>,
+#> #   dynamicProperties <chr>, municipality <chr>, associatedReferences <chr>,
+#> #   county <chr>, locationID <chr>, fieldNotes <chr>, eventTime <chr>,
+#> #   behavior <chr>, sex <chr>, habitat <chr>,
+#> #   identificationVerificationStatus <chr>, identificationRemarks <chr>
 ```
 
 Note also that we've set up `occ_issues()` so that you can pass in issue names without having to quote them, thereby speeding up data cleaning.
@@ -235,56 +229,53 @@ Next, we can remove data with certain issues just as easily by using a `-` sign 
 ```r
 res %>%
   occ_issues(-depunl, -mdatunl)
-#> Records found [1631169502] 
+#> Records found [1650859425] 
 #> Records returned [100] 
-#> No. unique hierarchies [77] 
+#> No. unique hierarchies [68] 
 #> No. media records [100] 
 #> No. facets [0] 
 #> Args [limit=100, offset=0, fields=all] 
-#> # A tibble: 100 x 111
-#>    key   scientificName issues datasetKey publishingOrgKey installationKey
-#>    <chr> <chr>          <chr>  <chr>      <chr>            <chr>          
-#>  1 1039… Psittacus eri… "osii… 854cf79e-… 2e167bb0-4441-1… 3f28c5e9-59b3-…
-#>  2 1086… Asplenium rad… "gass… a51fa32f-… f6e2efc9-42a3-4… b38ff2b7-c8af-…
-#>  3 1095… Eugenia pyrif… ""     3b8e9d83-… ab5c0b99-5af3-4… b38ff2b7-c8af-…
-#>  4 1135… Marasmius epi… ""     0afba960-… 58520c30-bafb-1… 602f7766-f762-…
-#>  5 1135… Berkleasmium … ""     0afba960-… 58520c30-bafb-1… 602f7766-f762-…
-#>  6 1135… Pseudovalsa u… ""     0afba960-… 58520c30-bafb-1… 602f7766-f762-…
-#>  7 1135… Hemitrichia i… ""     0afba960-… 58520c30-bafb-1… 602f7766-f762-…
-#>  8 1830… Diatrypella f… ""     0afba960-… 58520c30-bafb-1… 602f7766-f762-…
-#>  9 1830… Cryptocline t… ""     0afba960-… 58520c30-bafb-1… 602f7766-f762-…
-#> 10 1840… Asota helicon… "osii… e0b8cb67-… 7c07cec1-2925-4… 08eefeeb-e20f-…
-#> # … with 90 more rows, and 105 more variables: publishingCountry <chr>,
-#> #   protocol <chr>, lastCrawled <chr>, lastParsed <chr>, crawlId <int>,
-#> #   extensions <chr>, basisOfRecord <chr>, individualCount <int>,
-#> #   occurrenceStatus <chr>, taxonKey <int>, kingdomKey <int>, phylumKey <int>,
-#> #   classKey <int>, orderKey <int>, familyKey <int>, genusKey <int>,
-#> #   speciesKey <int>, acceptedTaxonKey <int>, acceptedScientificName <chr>,
-#> #   kingdom <chr>, phylum <chr>, order <chr>, family <chr>, genus <chr>,
-#> #   species <chr>, genericName <chr>, specificEpithet <chr>, taxonRank <chr>,
-#> #   taxonomicStatus <chr>, year <int>, month <int>, eventDate <chr>,
-#> #   modified <chr>, lastInterpreted <chr>, references <chr>, license <chr>,
-#> #   identifiers <chr>, facts <chr>, relations <chr>, gadm <chr>, class <chr>,
-#> #   recordedByIDs <chr>, identifiedByIDs <chr>, rightsHolder <chr>,
-#> #   identifier <chr>, nomenclaturalCode <chr>, gbifID <chr>,
-#> #   collectionCode <chr>, language <chr>, occurrenceID <chr>, type <chr>,
-#> #   taxonRemarks <chr>, preparations <chr>, disposition <chr>,
-#> #   recordedBy <chr>, catalogNumber <chr>, vernacularName <chr>,
-#> #   previousIdentifications <chr>, institutionCode <chr>,
-#> #   ownerInstitutionCode <chr>, datasetID <chr>, occurrenceRemarks <chr>,
-#> #   bibliographicCitation <chr>, accessRights <chr>,
-#> #   higherClassification <chr>, name <chr>, decimalLatitude <dbl>,
-#> #   decimalLongitude <dbl>, dateIdentified <chr>, elevation <dbl>,
-#> #   elevationAccuracy <dbl>, stateProvince <chr>, day <int>,
-#> #   gadm.level0.gid <chr>, gadm.level0.name <chr>, gadm.level1.gid <chr>,
-#> #   gadm.level1.name <chr>, gadm.level2.gid <chr>, gadm.level2.name <chr>,
-#> #   gadm.level3.gid <chr>, gadm.level3.name <chr>, geodeticDatum <chr>,
-#> #   countryCode <chr>, country <chr>, recordNumber <chr>, municipality <chr>,
-#> #   locality <chr>, datasetName <chr>, identifiedBy <chr>, continent <chr>,
-#> #   typifiedName <chr>, lifeStage <chr>, infraspecificEpithet <chr>,
-#> #   county <chr>, associatedReferences <chr>, verbatimElevation <chr>,
-#> #   higherGeography <chr>, institutionID <chr>, island <chr>,
-#> #   islandGroup <chr>, …
+#> # A tibble: 100 x 96
+#>    key   scientificName decimalLatitude decimalLongitude issues datasetKey
+#>    <chr> <chr>                    <dbl>            <dbl> <chr>  <chr>     
+#>  1 1135… Cryptosphaeri…            48.0             16.5 colma… 0afba960-…
+#>  2 1632… Belenois java…           -34.9            139.  txmat… fa375330-…
+#>  3 1632… Belenois java…           -34.9            139.  txmat… fa375330-…
+#>  4 1830… Lopadostoma g…            48.0             16.5 colma… 0afba960-…
+#>  5 1830… Platystomum o…            48.0             16.5 colma… 0afba960-…
+#>  6 1831… Trechispora f…            48.0             16.5 colma… 0afba960-…
+#>  7 1831… Nemania serpe…            48.0             16.5 colma… 0afba960-…
+#>  8 1897… Anisotome aro…           -38.9            175.  cdrou… 83ae84cf-…
+#>  9 1897… Lagenifera Ca…           -38.9            175.  cdrou… 83ae84cf-…
+#> 10 1897… Aciphylla hec…           -45.5            169.  cdrou… 83ae84cf-…
+#> # … with 90 more rows, and 90 more variables: publishingOrgKey <chr>,
+#> #   installationKey <chr>, publishingCountry <chr>, protocol <chr>,
+#> #   lastCrawled <chr>, lastParsed <chr>, crawlId <int>,
+#> #   hostingOrganizationKey <chr>, basisOfRecord <chr>, occurrenceStatus <chr>,
+#> #   taxonKey <int>, kingdomKey <int>, phylumKey <int>, classKey <int>,
+#> #   orderKey <int>, familyKey <int>, genusKey <int>, speciesKey <int>,
+#> #   acceptedTaxonKey <int>, acceptedScientificName <chr>, kingdom <chr>,
+#> #   phylum <chr>, order <chr>, family <chr>, genus <chr>, species <chr>,
+#> #   genericName <chr>, specificEpithet <chr>, infraspecificEpithet <chr>,
+#> #   taxonRank <chr>, taxonomicStatus <chr>, elevation <dbl>, year <int>,
+#> #   month <int>, day <int>, eventDate <chr>, lastInterpreted <chr>,
+#> #   license <chr>, identifiers <chr>, facts <chr>, relations <chr>,
+#> #   institutionKey <chr>, isInCluster <lgl>, geodeticDatum <chr>, class <chr>,
+#> #   countryCode <chr>, recordedByIDs <chr>, identifiedByIDs <chr>,
+#> #   country <chr>, identifier <chr>, recordedBy <chr>, catalogNumber <chr>,
+#> #   institutionCode <chr>, locality <chr>, gbifID <chr>, collectionCode <chr>,
+#> #   occurrenceID <chr>, identifiedBy <chr>, name <chr>,
+#> #   X.99d66b6c.9087.452f.a9d4.f15f2c2d0e7e. <chr>,
+#> #   coordinateUncertaintyInMeters <dbl>, stateProvince <chr>, references <chr>,
+#> #   eventID <chr>, dataGeneralizations <chr>, vernacularName <chr>,
+#> #   otherCatalogNumbers <chr>, taxonConceptID <chr>, modified <chr>,
+#> #   collectionKey <chr>, higherGeography <chr>, language <chr>,
+#> #   verbatimLocality <chr>, type <chr>, verbatimElevation <chr>,
+#> #   typeStatus <chr>, gadm <chr>, individualCount <int>,
+#> #   dynamicProperties <chr>, municipality <chr>, associatedReferences <chr>,
+#> #   county <chr>, locationID <chr>, fieldNotes <chr>, eventTime <chr>,
+#> #   behavior <chr>, sex <chr>, habitat <chr>,
+#> #   identificationVerificationStatus <chr>, identificationRemarks <chr>
 ```
 
 ## Expand issue codes to full names
@@ -296,14 +287,14 @@ Another thing we can do with `occ_issues()` is go from issue codes to full issue
 out <- res %>% occ_issues(mutate = "expand")
 head(out$data[,c(1,5)])
 #> # A tibble: 6 x 2
-#>   key        publishingOrgKey                    
-#>   <chr>      <chr>                               
-#> 1 1039645472 2e167bb0-4441-11db-9ba2-b8a03c50a862
-#> 2 1086659096 f6e2efc9-42a3-47ea-99c6-3eda8d653cc9
-#> 3 1095554046 ab5c0b99-5af3-4958-b03c-0b7e85481cc1
-#> 4 1135436894 58520c30-bafb-11d9-8e53-b8a03c50a862
-#> 5 1135437949 58520c30-bafb-11d9-8e53-b8a03c50a862
-#> 6 1135453294 58520c30-bafb-11d9-8e53-b8a03c50a862
+#>   key        issues                                                             
+#>   <chr>      <chr>                                                              
+#> 1 1135442454 COLLECTION_MATCH_NONE,INSTITUTION_MATCH_FUZZY                      
+#> 2 1632784162 TAXON_MATCH_HIGHERRANK,INDIVIDUAL_COUNT_INVALID,INSTITUTION_COLLEC…
+#> 3 1632784175 TAXON_MATCH_HIGHERRANK,INDIVIDUAL_COUNT_INVALID,INSTITUTION_COLLEC…
+#> 4 1830979757 COLLECTION_MATCH_NONE,INSTITUTION_MATCH_FUZZY                      
+#> 5 1830979760 COLLECTION_MATCH_NONE,INSTITUTION_MATCH_FUZZY                      
+#> 6 1831004050 COLLECTION_MATCH_NONE,INSTITUTION_MATCH_FUZZY
 ```
 
 
@@ -318,14 +309,14 @@ Split out each issue type into a separate column, with number of columns equal t
 out <- res %>% occ_issues(mutate = "split")
 head(out$data[,c(1,5:10)])
 #> # A tibble: 6 x 7
-#>   name                             osiic gass84 txmatfuz cdround gdativ muluriiv
-#>   <chr>                            <chr> <chr>  <chr>    <chr>   <chr>  <chr>   
-#> 1 Psittacus erithacus Linnaeus, 1… y     n      n        n       n      n       
-#> 2 Asplenium radicans L.            n     y      n        n       n      n       
-#> 3 Eugenia pyriformis Cambess.      n     n      n        n       n      n       
-#> 4 Marasmius epiphyllus (Pers.) Fr. n     n      n        n       n      n       
-#> 5 Berkleasmium moriforme (Peck) R… n     n      n        n       n      n       
-#> 6 Pseudovalsa umbonata (Tul. & C.… n     n      n        n       n      n
+#>   name                              colmano inmafu txmathi indci incomis cdround
+#>   <chr>                             <chr>   <chr>  <chr>   <chr> <chr>   <chr>  
+#> 1 Cryptosphaeria eunomia var. frax… y       y      n       n     n       n      
+#> 2 Belenois java (Sparrman, 1768)    n       y      y       y     y       n      
+#> 3 Belenois java (Sparrman, 1768)    n       y      y       y     y       n      
+#> 4 Lopadostoma gastrinum (Fr.) Trav… y       y      n       n     n       n      
+#> 5 Platystomum obtectum (Peck) Lind… y       y      n       n     n       n      
+#> 6 Trechispora farinacea (Pers.) Li… y       y      n       n     n       n
 ```
 
 ## Expand and add columns
@@ -337,16 +328,16 @@ Or you can expand each issue type into its full name, and split each issue into 
 out <- res %>% occ_issues(mutate = "split_expand")
 head(out$data[,c(1,5:10)])
 #> # A tibble: 6 x 7
-#>   name  OCCURRENCE_STAT… GEODETIC_DATUM_… TAXON_MATCH_FUZ… COORDINATE_ROUN…
+#>   name  COLLECTION_MATC… INSTITUTION_MAT… TAXON_MATCH_HIG… INDIVIDUAL_COUN…
 #>   <chr> <chr>            <chr>            <chr>            <chr>           
-#> 1 Psit… y                n                n                n               
-#> 2 Aspl… n                y                n                n               
-#> 3 Euge… n                n                n                n               
-#> 4 Mara… n                n                n                n               
-#> 5 Berk… n                n                n                n               
-#> 6 Pseu… n                n                n                n               
-#> # … with 2 more variables: GEODETIC_DATUM_INVALID <chr>,
-#> #   MULTIMEDIA_URI_INVALID <chr>
+#> 1 Cryp… y                y                n                n               
+#> 2 Bele… n                y                y                y               
+#> 3 Bele… n                y                y                y               
+#> 4 Lopa… y                y                n                n               
+#> 5 Plat… y                y                n                n               
+#> 6 Trec… y                y                n                n               
+#> # … with 2 more variables: INSTITUTION_COLLECTION_MISMATCH <chr>,
+#> #   COORDINATE_ROUNDED <chr>
 ```
 
 ## Wrap up

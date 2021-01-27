@@ -1,7 +1,7 @@
 ---
 title: Downloading data from GBIF
 author: Scott Chamberlain
-date: "2020-11-10"
+date: "2021-01-27"
 output: rmarkdown::html_vignette
 vignette: >
     %\VignetteIndexEntry{downloading}
@@ -11,8 +11,6 @@ vignette: >
 
 
 
-GBIF Downloads
-==============
 
 GBIF provides two ways to get occurrence data: through the
 `/occurrence/search` route (see `occ_search()` and `occ_data()`),
