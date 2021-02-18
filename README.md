@@ -27,7 +27,7 @@ To get started, see:
 * Function reference (https://docs.ropensci.org/rgbif/reference/index.html): an overview of all `rgbif` functions.
 * Articles (https://docs.ropensci.org/rgbif/articles/index.html): vignettes/tutorials on how to download data, clean data, and work with taxonomic names.
 
-Check out the `rgbif` [paper][] for more information on this package and the sister [Python][pygbif] and [Ruby][gbifrb] clients.
+Check out the `rgbif` [paper][] for more information on this package and the sister [Python][pygbif], [Ruby][gbifrb], and [PHP][phpgbif] clients.
 
 Note: Maximum number of records you can get with `occ_search()` and `occ_data()` is 100,000. See https://www.gbif.org/developer/occurrence
 
@@ -80,3 +80,4 @@ This package is part of [spocc](https://github.com/ropensci/spocc), along with s
 [GBIF]: https://www.gbif.org/
 [pygbif]: https://github.com/sckott/pygbif
 [gbifrb]: https://github.com/sckott/gbifrb
+[phpgbif]: https://gitlab.res-telae.cat/restelae/php-gbif
