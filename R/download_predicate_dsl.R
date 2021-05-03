@@ -291,7 +291,7 @@ parse_pred <- function(key, value, type = "and") {
 
   if (
     (is.character(value) &&
-      all(grepl("polygon|multipolygon|linestring|multilinestring|point|mulitpoint",
+      all(grepl("polygon|multipolygon|linestring|multilinestring|point|multipoint",
         value, ignore.case = TRUE))) ||
     type == "within"
   ) {
