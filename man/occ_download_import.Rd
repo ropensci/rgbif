@@ -39,7 +39,10 @@ passed on to \code{fill} parameter in \link[data.table:fread]{data.table::fread}
 \code{\link[data.table:fread]{data.table::fread()}}. default: "UTF-8". other allowed options:
 "Latin-1" and "unknown". see \code{?data.table::fread} docs}
 
-\item{...}{parameters passed on to \code{\link[data.table:fread]{data.table::fread()}}}
+\item{...}{parameters passed on to \code{\link[data.table:fread]{data.table::fread()}}. See \code{fread}
+docs for details. Some \code{fread} parameters that may be particular useful
+here are: \code{select} (select which columns to read in; others are dropped),
+\code{nrows} (only read in a certain number of rows)}
 }
 \value{
 a tibble (data.frame)

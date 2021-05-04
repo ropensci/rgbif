@@ -13,7 +13,10 @@
 #' @param encoding (character) encoding to read in data; passed to
 #' [data.table::fread()]. default: "UTF-8". other allowed options:
 #' "Latin-1" and "unknown". see `?data.table::fread` docs
-#' @param ... parameters passed on to [data.table::fread()]
+#' @param ... parameters passed on to [data.table::fread()]. See `fread`
+#' docs for details. Some `fread` parameters that may be particular useful
+#' here are: `select` (select which columns to read in; others are dropped),
+#' `nrows` (only read in a certain number of rows)
 #'
 #' @return a tibble (data.frame)
 #'
