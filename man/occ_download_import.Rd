@@ -67,6 +67,15 @@ parameters that \code{\link[data.table:fread]{data.table::fread()}} accepts. Rea
 for help.
 }
 
+\section{countryCode result column and Namibia}{
+
+The country code for Namibia is \code{"NA"}. Unfortunately in R an \code{"NA"} string
+will be read in to R as an NA/missing. To avoid this, in this function
+we read in the data, then convert an NA/missing values to the character
+string \code{"NA"}. When a country code is truly missing it will be an empty
+string.
+}
+
 \examples{
 \dontrun{
 # First, kick off at least 1 download, then wait for the job to be complete

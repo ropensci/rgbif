@@ -29,6 +29,12 @@
 #' [data.table::fread()] and the `...` allows you to pass on any other
 #' parameters that [data.table::fread()] accepts. Read the docs for `fread`
 #' for help. 
+#' @section countryCode result column and Namibia:
+#' The country code for Namibia is `"NA"`. Unfortunately in R an `"NA"` string
+#' will be read in to R as an NA/missing. To avoid this, in this function
+#' we read in the data, then convert an NA/missing values to the character
+#' string `"NA"`. When a country code is truly missing it will be an empty
+#' string.
 #' @note see [downloads] for an overview of GBIF downloads methods
 #' @family downloads
 #' @examples \dontrun{
@@ -79,10 +85,10 @@ occ_download_import <- function(x=NULL, key=NULL, path=".", fill = FALSE,
   }
   targetpath <- file.path(tmpdir, tpath)
   if (!file.exists(tmpdir)) stop("appropriate file not found", call. = FALSE)
-  structure(tibble::as_tibble(
-    data.table::fread(targetpath, data.table = FALSE, fill = fill, 
-      encoding = encoding, ...)
-  ), type = "single")
+  df <- data.table::fread(targetpath, data.table = FALSE, fill = fill, 
+    encoding = encoding, ...)
+  df$countryCode[is.na(df$countryCode)] <- "NA"
+  structure(tibble::as_tibble(df), type = "single")
 }
 
 #' @export
