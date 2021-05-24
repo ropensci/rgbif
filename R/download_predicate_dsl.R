@@ -124,6 +124,7 @@
 #' - establishmentMeans (ESTABLISHMENT_MEANS)
 #' - coordinateUncertaintyInMeters (COORDINATE_UNCERTAINTY_IN_METERS)
 #' - gadm (GADM_GID) (for the Database of Global Administrative Areas)
+#' - stateProvince (STATE_PROVINCE)
 #'
 #' @references Download predicates docs:
 #' <https://www.gbif.org/developer/occurrence#predicates>
@@ -146,6 +147,7 @@
 #' pred_notnull("issue")
 #' pred("basisOfRecord", "LITERATURE")
 #' pred("hasCoordinate", TRUE)
+#' pred("stateProvince", "California")
 #' pred("hasGeospatialIssue", FALSE)
 #' pred_within("POLYGON((-14 42, 9 38, -7 26, -14 42))")
 #' pred_or(pred("taxonKey", 2977832), pred("taxonKey", 2977901),
@@ -273,7 +275,7 @@ key_lkup <- list(taxonKey='TAXON_KEY', scientificName='SCIENTIFIC_NAME',
     issue='ISSUE', mediatype='MEDIA_TYPE', recordedBy='RECORDED_BY',
     establishmentMeans='ESTABLISHMENT_MEANS',
     coordinateUncertaintyInMeters='COORDINATE_UNCERTAINTY_IN_METERS',
-    gadm = 'GADM_GID')
+    gadm = 'GADM_GID', stateProvince = 'STATE_PROVINCE')
 
 parse_pred <- function(key, value, type = "and") {
   assert(key, "character")

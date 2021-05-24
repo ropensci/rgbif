@@ -178,6 +178,7 @@ be supported that is not yet.
 \item establishmentMeans (ESTABLISHMENT_MEANS)
 \item coordinateUncertaintyInMeters (COORDINATE_UNCERTAINTY_IN_METERS)
 \item gadm (GADM_GID) (for the Database of Global Administrative Areas)
+\item stateProvince (STATE_PROVINCE)
 }
 }
 
@@ -199,6 +200,7 @@ pred_like("catalogNumber", "PAPS5-560\%")
 pred_notnull("issue")
 pred("basisOfRecord", "LITERATURE")
 pred("hasCoordinate", TRUE)
+pred("stateProvince", "California")
 pred("hasGeospatialIssue", FALSE)
 pred_within("POLYGON((-14 42, 9 38, -7 26, -14 42))")
 pred_or(pred("taxonKey", 2977832), pred("taxonKey", 2977901),

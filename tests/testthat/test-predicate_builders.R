@@ -40,6 +40,11 @@ test_that("pred", {
   ccf <- pred("hasCoordinate", FALSE)
   expect_equal(unclass(cct$value), "true")
   expect_equal(unclass(ccf$value), "false")
+
+  # stateProvince works
+  dsp <- pred("stateProvince", "Texas")
+  expect_equal(unclass(dsp$value), "Texas")
+  expect_equal(unclass(dsp$key), "STATE_PROVINCE")
 })
 test_that("pred fails well", {
   expect_error(pred(), "argument \"key\" is missing")
