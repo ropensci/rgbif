@@ -630,6 +630,7 @@ mutate_iss <- function(w) {
 
 split_iss <- function(m, is_occ, is_dload) {
   unq <- unique(unlist(strsplit(m$issues, split = ",")))
+  if (length(unq) == 0) return(data.frame())
   df <- data.table::setDF(
     data.table::rbindlist(
       lapply(strsplit(m$issues, split = ","), function(b) {

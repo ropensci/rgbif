@@ -3,7 +3,7 @@ context("name_issues")
 test_that("name_issues", {
   vcr::use_cassette("name_issues", {
 
-    out <- name_usage(name = "Lupus")
+    out <- name_usage(name = "Lupus", limit = 100)
 
     # Parsing output by issue
     aa <- out %>% name_issues(clasna)
@@ -13,7 +13,7 @@ test_that("name_issues", {
 
     ### split issues into separate columns
     cc <- out %>% name_issues(mutate = "split")
-    dd <- out %>% name_issues(-scina, -clasna, mutate = "split")
+    dd <- out %>% name_issues(-scina, mutate = "split")
     ee <- out %>% name_issues(bbmn, mutate = "split")
 
     ### expand issues to more descriptive names
