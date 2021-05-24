@@ -31,6 +31,10 @@ file to download. For example, a 58 MB file on my machine took about
 }
 \note{
 see \link{downloads} for an overview of GBIF downloads methods
+
+This function used to check for HTTP response content type, but
+it has changed enough that we no longer check it. If you run into issues
+with this function, open an issue in the GitHub repository.
 }
 \examples{
 \dontrun{

@@ -17,6 +17,10 @@
 #' The speed of this function is of course proportional to the size of the
 #' file to download. For example, a 58 MB file on my machine took about
 #' 26 seconds.
+#' 
+#' @note This function used to check for HTTP response content type, but
+#' it has changed enough that we no longer check it. If you run into issues
+#' with this function, open an issue in the GitHub repository.
 #'
 #' @examples \dontrun{
 #' occ_download_get("0000066-140928181241064")
@@ -38,11 +42,6 @@ occ_download_get <- function(key, path=".", overwrite=FALSE, ...) {
   }
   res <- cli$get(disk = path)
   if (res$status_code > 203) stop(res$parse("UTF-8"))
-  if (res$response_headers$`content-type` !=
-              "application/octet-stream; q=0.5") {
-    on.exit(unlink(path))
-    stop("response content-type != application/octet-stream; q=0.5")
-  }
   options(gbifdownloadpath = path)
   message( sprintf("On disk at %s", res$content) )
   structure(path, class = "occ_download_get",
