@@ -3,7 +3,7 @@ on:
     branches:
       - master
   schedule:
-    - cron: '0 */72 * * *' # every 3 days
+    - cron: '0 0 */3 * *' # every 3 days
 
 name: R-check-real-requests
 
