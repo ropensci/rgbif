@@ -173,9 +173,7 @@ test_that("scientificName basic use works - no synonyms", {
 
   expect_equal(attr(bb, "args")$scientificName, "Pulsatilla patens")
   expect_equal(bb$data$species[1], "Pulsatilla patens")
-  bb_sc_nam <- "Pulsatilla patens Mill"
-  expect_equal(bb$data$scientificName[1],
-               bb_sc_nam)
+  expect_match(bb$data$scientificName[1], "Pulsatilla patens")
 
   expect_is(cc, "gbif")
   expect_is(cc$data, "data.frame")
