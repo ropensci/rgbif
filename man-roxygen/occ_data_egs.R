@@ -166,13 +166,16 @@
 #' # res <- occ_data(geometry = wkt)
 #'
 #' #### if WKT too long, with 'geom_big=bbox': makes into bounding box
+#' if (interactive()){
 #' res <- occ_data(geometry = wkt, geom_big = "bbox")
 #' library("rgeos")
 #' library("sp")
 #' wktsp <- readWKT(wkt)
 #' plot(wktsp)
-#' coordinates(res$data) <- ~decimalLongitude+decimalLatitude
-#' points(res$data)
+#' z <- data.frame(res$data)
+#' coordinates(z) <- ~decimalLongitude+decimalLatitude
+#' points(z)
+#' }
 #'
 #' #### Or, use 'geom_big=axe'
 #' (res <- occ_data(geometry = wkt, geom_big = "axe"))
