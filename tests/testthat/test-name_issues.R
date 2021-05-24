@@ -14,7 +14,6 @@ test_that("name_issues", {
     ### split issues into separate columns
     cc <- out %>% name_issues(mutate = "split")
     dd <- out %>% name_issues(-scina, mutate = "split")
-    ee <- out %>% name_issues(bbmn, mutate = "split")
 
     ### expand issues to more descriptive names
     ff <- out %>% name_issues(mutate = "expand")
@@ -28,7 +27,6 @@ test_that("name_issues", {
   expect_is(bb, "gbif")
   expect_is(cc, "gbif")
   expect_is(dd, "gbif")
-  expect_is(ee, "gbif")
   expect_is(ff, "gbif")
   expect_is(gg, "gbif")
 
@@ -37,17 +35,12 @@ test_that("name_issues", {
                          logical(1))))
   expect_true(all(vapply(bb$data$issues, function(x) !grepl("clasna", x),
                          logical(1))))
-  expect_true(all(vapply(bb$data$issues, function(x) !grepl("bbmn", x),
-                         logical(1))))
   expect_false(any(grepl("issues", names(cc$data))))
-  expect_true(any(grepl("bbmn", names(cc$data))))
   expect_false(any(grepl("issues", names(dd$data))))
   expect_false(any(grepl("scina", names(dd$data))))
-  expect_false(any(grepl("issues", names(ee$data))))
-  expect_true(any(grepl("bbmn", names(ee$data))))
   expect_true(any(grepl("issues", names(ff$data))))
   expect_true(any(vapply(ff$data$issues,
-                         function(x) grepl("BACKBONE_MATCH_NONE", x),
+                         function(x) grepl("SCIENTIFIC_NAME_ASSEMBLED", x),
                          logical(1))))
   expect_false(any(grepl("issues", names(gg$data))))
   expect_true(any(grepl("CLASSIFICATION_NOT_APPLIED", names(gg$data))))
