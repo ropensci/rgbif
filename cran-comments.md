@@ -10,11 +10,11 @@
 
 ## Reverse dependencies
 
-* I have run R CMD check on the 14 reverse dependencies. Reverse dependency checks at <https://github.com/ropensci/rgbif/actions?query=workflow%3Arevdep>. No problems were found related to this package.
+* I have run R CMD check on the 15 reverse dependencies. Reverse dependency checks at <https://github.com/ropensci/rgbif/actions?query=workflow%3Arevdep>. No problems were found related to this package.
 
 --------
 
-This version makes a number of improvements to occurrence download predicate functions - and removes references to the now CRAN archived geoaxe package, which also is no longer used in this package.
+This version fixes many bugs and adds some additional search capabilities.
 
 Thanks!
 Scott Chamberlain

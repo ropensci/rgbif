@@ -1,3 +1,22 @@
+rgbif 3.6.0
+===========
+
+### Downloads
+
+* typo in download predicate functions fixed - `mulitpoint` -> `multipoint` (#460) thanks @damianooldoni for catching that
+* added two new predicate keys: `stateProvince` (#458) and `gadm` (#462)
+
+### MINOR IMPROVEMENTS
+
+* add two new occurrence issues: `FOOTPRINT_SRS_INVALID` and `FOOTPRINT_WKT_INVALID` (#454)
+* `occ_download_import()` docs: more information on `data.table::fread` parameters and particular ones that would be useful to sort out data read issues (#461)
+
+### BUG FIXES
+
+* fix `occ_download_get()`: downloaded files used to have a certain content type in response header we checked for, but its changed at least once even in successful responses, so that step has been removed (#464)
+* fix `occ_download_import()`: country code for Namibia is `NA` - this was turning into the R missing value `NA` - now fixed (#463)
+
+
 rgbif 3.5.2
 ===========
 
