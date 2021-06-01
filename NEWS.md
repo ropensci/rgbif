@@ -4,7 +4,7 @@ rgbif 3.6.0
 ### Downloads
 
 * typo in download predicate functions fixed - `mulitpoint` -> `multipoint` (#460) thanks @damianooldoni for catching that
-* added two new predicate keys: `stateProvince` (#458) and `gadm` (#462)
+* added three new predicate keys: `stateProvince` (#458), `gadm` (#462), and `occurrenceStatus` (#465)
 
 ### MINOR IMPROVEMENTS
 

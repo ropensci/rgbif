@@ -179,6 +179,7 @@ be supported that is not yet.
 \item coordinateUncertaintyInMeters (COORDINATE_UNCERTAINTY_IN_METERS)
 \item gadm (GADM_GID) (for the Database of Global Administrative Areas)
 \item stateProvince (STATE_PROVINCE)
+\item occurrenceStatus (OCCURRENCE_STATUS)
 }
 }
 

@@ -45,6 +45,11 @@ test_that("pred", {
   dsp <- pred("stateProvince", "Texas")
   expect_equal(unclass(dsp$value), "Texas")
   expect_equal(unclass(dsp$key), "STATE_PROVINCE")
+
+  # occurrenceStatus works
+  ocs <- pred("occurrenceStatus", "present")
+  expect_equal(unclass(ocs$value), "present")
+  expect_equal(unclass(ocs$key), "OCCURRENCE_STATUS")
 })
 test_that("pred fails well", {
   expect_error(pred(), "argument \"key\" is missing")

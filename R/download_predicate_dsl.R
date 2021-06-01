@@ -125,6 +125,7 @@
 #' - coordinateUncertaintyInMeters (COORDINATE_UNCERTAINTY_IN_METERS)
 #' - gadm (GADM_GID) (for the Database of Global Administrative Areas)
 #' - stateProvince (STATE_PROVINCE)
+#' - occurrenceStatus (OCCURRENCE_STATUS)
 #'
 #' @references Download predicates docs:
 #' <https://www.gbif.org/developer/occurrence#predicates>
@@ -275,7 +276,8 @@ key_lkup <- list(taxonKey='TAXON_KEY', scientificName='SCIENTIFIC_NAME',
     issue='ISSUE', mediatype='MEDIA_TYPE', recordedBy='RECORDED_BY',
     establishmentMeans='ESTABLISHMENT_MEANS',
     coordinateUncertaintyInMeters='COORDINATE_UNCERTAINTY_IN_METERS',
-    gadm = 'GADM_GID', stateProvince = 'STATE_PROVINCE')
+    gadm = 'GADM_GID', stateProvince = 'STATE_PROVINCE',
+    occurrenceStatus = 'OCCURRENCE_STATUS')
 
 parse_pred <- function(key, value, type = "and") {
   assert(key, "character")
