@@ -1,7 +1,7 @@
 ---
 title: Downloading data from GBIF
 author: Scott Chamberlain
-date: "2021-01-27"
+date: "2021-06-11"
 output: rmarkdown::html_vignette
 vignette: >
     %\VignetteIndexEntry{downloading}

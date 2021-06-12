@@ -1,7 +1,7 @@
 ---
 title: Taxonomic names
 author: Scott Chamberlain
-date: "2021-01-27"
+date: "2021-06-11"
 output: rmarkdown::html_vignette
 vignette: >
     %\VignetteIndexEntry{taxonomic_names}
@@ -88,9 +88,9 @@ for each taxon (even though you don't see it called, we use it, but the code isn
 
 ```r
 occ_count(c1$usageKey[[1]])
-#> [1] 608291
+#> [1] 642901
 taxon_provider(c1$usageKey[[1]])
-#> [1] "Catalogue of Life"
+#> [1] "Catalogue of Life - May 2021"
 ```
 
 * P. s<b>i</b>lvestris w/ occurrences count from the data provider
@@ -98,9 +98,9 @@ taxon_provider(c1$usageKey[[1]])
 
 ```r
 occ_count(c1$usageKey[[2]])
-#> [1] 608291
+#> [1] 642901
 taxon_provider(c1$usageKey[[2]])
-#> [1] "Catalogue of Life"
+#> [1] "Catalogue of Life - May 2021"
 ```
 
 ## Macrozamia platyrachis vs. M. platyrhachis
@@ -123,7 +123,7 @@ taxon_provider(c1$usageKey[[2]])
 occ_count(c2$usageKey[[1]])
 #> [1] 61
 taxon_provider(c2$usageKey[[1]])
-#> [1] "Catalogue of Life"
+#> [1] "Catalogue of Life - May 2021"
 ```
 
 * M. platyr<b>h</b>achis w/ occurrences count from the data provider
@@ -133,7 +133,7 @@ taxon_provider(c2$usageKey[[1]])
 occ_count(c2$usageKey[[2]])
 #> [1] 61
 taxon_provider(c2$usageKey[[2]])
-#> [1] "Catalogue of Life"
+#> [1] "Catalogue of Life - May 2021"
 ```
 
 ## Cycas circinalis vs. C. circinnalis
@@ -154,9 +154,9 @@ taxon_provider(c2$usageKey[[2]])
 
 ```r
 occ_count(c3$usageKey[[1]])
-#> [1] 688
+#> [1] 724
 taxon_provider(c3$usageKey[[1]])
-#> [1] "Catalogue of Life"
+#> [1] "Catalogue of Life - May 2021"
 ```
 
 * C. circin<b>n</b>alis w/ occurrences count from the data provider
@@ -164,9 +164,9 @@ taxon_provider(c3$usageKey[[1]])
 
 ```r
 occ_count(c3$usageKey[[2]])
-#> [1] 688
+#> [1] 724
 taxon_provider(c3$usageKey[[2]])
-#> [1] "Catalogue of Life"
+#> [1] "Catalogue of Life - May 2021"
 ```
 
 ## Isolona perrieri vs. I. perrierii
@@ -187,9 +187,9 @@ taxon_provider(c3$usageKey[[2]])
 
 ```r
 occ_count(c4$usageKey[[1]])
-#> [1] 88
+#> [1] 92
 taxon_provider(c4$usageKey[[1]])
-#> [1] "Catalogue of Life"
+#> [1] "Catalogue of Life - May 2021"
 ```
 
 * I. perrieri<b>i</b> w/ occurrences count from the data provider
@@ -197,9 +197,9 @@ taxon_provider(c4$usageKey[[1]])
 
 ```r
 occ_count(c4$usageKey[[2]])
-#> [1] 88
+#> [1] 92
 taxon_provider(c4$usageKey[[2]])
-#> [1] "Catalogue of Life"
+#> [1] "Catalogue of Life - May 2021"
 ```
 
 ## Wiesneria vs. Wisneria
@@ -220,9 +220,9 @@ taxon_provider(c4$usageKey[[2]])
 
 ```r
 occ_count(c5$usageKey[[1]])
-#> [1] 116
+#> [1] 120
 taxon_provider(c5$usageKey[[1]])
-#> [1] "Catalogue of Life"
+#> [1] "Catalogue of Life - May 2021"
 ```
 
 * Wisneria w/ occurrences count from the data provider
