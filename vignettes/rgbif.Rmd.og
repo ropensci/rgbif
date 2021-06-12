@@ -198,7 +198,7 @@ occ_search(scientificName = "Ursus americanus", limit = 20)
 Or to be more precise, you can search for names first, make sure you have the right name, then pass the GBIF key to the `occ_search()` function:
 
 ```{r}
-key <- name_suggest(q='Helianthus annuus', rank='species')$key[1]
+key <- name_suggest(q='Helianthus annuus', rank='species')$data$key[1]
 occ_search(taxonKey=key, limit=20)
 ```
 
@@ -218,7 +218,7 @@ Most parameters are vectorized, so you can pass in more than one value:
 
 ```{r}
 splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
-keys <- sapply(splist, function(x) name_suggest(x)$key[1], USE.NAMES=FALSE)
+keys <- sapply(splist, function(x) name_suggest(x)$data$key[1], USE.NAMES=FALSE)
 occ_search(taxonKey=keys, limit=5)
 ```
 

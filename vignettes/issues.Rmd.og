@@ -51,7 +51,7 @@ library('rgbif')
 Get taxon key for _Helianthus annuus_
 
 ```{r}
-(key <- name_suggest(q='Helianthus annuus', rank='species')$key[1])
+(key <- name_suggest(q='Helianthus annuus', rank='species')$data$key[1])
 ```
 
 Then pass to `occ_search()`
