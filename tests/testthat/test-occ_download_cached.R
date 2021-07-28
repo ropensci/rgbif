@@ -19,7 +19,7 @@ test_that("occ_download_cached utils", {
   expect_is(user, "tbl")
   expect_gt(NROW(user), 100)
   expect_is(user$key, "character")
-  expect_equal(unique(user$request.creator), "sckott")
+  expect_equal(unique(user$request.creator), "jwaller")
 
   # dl_predicates
   preds <- dl_predicates(user_df = user)

@@ -1,0 +1,44 @@
+http_interactions:
+- request:
+    method: post
+    uri: https://api.gbif.org/v1/derivedDataset
+    body:
+      encoding: ''
+      string: '{"title":"Test for derived dataset","description":"This data was filtered
+        using a fake protocol","sourceUrl":"https://zenodo.org/record/4246090#.YPGS2OgzZPY","originalDownloadDOI":"10.15468/dl.hgc9gw","relatedDatasets":{"3ea36590-9b79-46a8-9300-c9ef0bfed7b8":3,"630eb55d-5169-4473-99d6-a93396aeae38":1,"806bf7d4-f762-11e1-a439-00145eb45e9a":2781}}'
+    headers:
+      Accept-Encoding: gzip, deflate
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+      Content-Type: application/json
+      Accept: application/json
+  response:
+    status:
+      status_code: '201'
+      message: Created
+      explanation: Document created, URL follows
+    headers:
+      status: HTTP/1.1 201 Created
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
+      content-type: application/json
+      date: Tue, 27 Jul 2021 13:13:34 GMT
+      cache-control: public, max-age=3601
+      x-varnish: '717226166'
+      age: '0'
+      via: 1.1 varnish (Varnish/6.0)
+      transfer-encoding: chunked
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"doi":"10.15468/dd.k2vm2d","originalDownloadDOI":"10.15468/dl.hgc9gw","description":"This
+        data was filtered using a fake protocol","citation":"Derived dataset GBIF.org
+        (27 July 2021) Filtered export of GBIF occurrence data https://doi.org/10.15468/dd.k2vm2d","title":"Test
+        for derived dataset","sourceUrl":"https://zenodo.org/record/4246090#.YPGS2OgzZPY","createdBy":"<gbif_user>","modifiedBy":"<gbif_user>"}'
+  recorded_at: 2021-07-27 13:13:35 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
