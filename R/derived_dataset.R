@@ -137,7 +137,7 @@ derived_dataset_prep <- function(citation_data = NULL,
   source_url <- check_source_url(source_url)
   gbif_download_doi <- check_gbif_download_doi(gbif_download_doi)
   
-  related_datasets <- setNames(as.list(data[,2]),data[,1])
+  related_datasets <- setNames(as.list(citation_data[,2]),citation_data[,1])
   
   if(!is.null(gbif_download_doi)) {
     req <- list(title=title,
@@ -171,9 +171,9 @@ derived_dataset_prep <- function(citation_data = NULL,
 # uses helpers from occ_download.R consider moving them to utils zzz.r. 
 
 check_citation_data = function(citation_data = NULL) {
-
-  data = citation_data
-      
+  
+  data <- citation_data
+  
   if(is.null(data)) stop("Supply your datsetkey uuids with occurrence counts.")
   
   # try to convert to data.frame
@@ -287,8 +287,8 @@ print.derived_dataset_prep <- function(x, ...) {
   cat("  Description: '", x$request$description,"'", "\n", sep = "")
   cat("  Source URL: ", x$request$sourceUrl, "\n", sep = "")
   cat("  Original Download DOI: ", x$request$originalDownloadDOI, "\n", sep = "")
-  datasets = head(names(out$request$relatedDatasets),5)
-  counts = out$request$relatedDatasets
+  datasets = head(names(x$request$relatedDatasets),5)
+  counts = x$request$relatedDatasets
   cat("First 5 datasets of ",length(datasets)," :", "\n", sep = "")
   for(i in 1:length(datasets)) 
   cat("  ",datasets[[i]]," : ",counts[[i]], "\n", sep = "")
