@@ -8,27 +8,28 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '403'
       message: Forbidden
       explanation: Request forbidden -- authorization will not help
     headers:
-      status: 'HTTP/2 403 '
+      status: HTTP/1.1 403 Forbidden
       content-length: '0'
-      date: Tue, 08 Dec 2020 23:53:29 GMT
+      date: Wed, 28 Jul 2021 09:19:33 GMT
       cache-control: no-cache, no-store, must-revalidate
-      x-varnish: '482836515'
+      x-varnish: '515803622'
       age: '0'
       via: 1.1 varnish (Varnish/6.0)
+      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
       string: ''
-  recorded_at: 2020-12-08 23:53:31 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+  recorded_at: 2021-07-28 09:19:34 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/dataset/3f8a1297-3259-4700-91fc-acc4170b27ce/metrics
@@ -38,32 +39,33 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: 'HTTP/2 200 '
-      date: Tue, 08 Dec 2020 23:53:30 GMT
+      status: HTTP/1.1 200 OK
+      date: Wed, 28 Jul 2021 09:19:34 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: '482836516'
+      x-varnish: '515803624'
       age: '0'
       via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
       content-length: '1008'
+      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
-      string: '{"key":380531,"datasetKey":"3f8a1297-3259-4700-91fc-acc4170b27ce","usagesCount":31924,"synonymsCount":21425,"distinctNamesCount":31891,"nubMatchingCount":30525,"colMatchingCount":24751,"nubCoveragePct":95,"colCoveragePct":77,"countByConstituent":{},"countByKingdom":{"PLANTAE":9221},"countByRank":{"SPECIES":6200,"GENUS":1272,"VARIETY":906,"SUBSPECIES":724,"SECTION":377,"TRIBE":335,"FAMILY":176,"SUBFAMILY":157,"SUBGENUS":106,"SUBTRIBE":68,"SUBSECTION":60,"ORDER":55,"SERIES":44,"SUPERORDER":12,"SUBCLASS":6,"CLASS":1},"countNamesByLanguage":{"ENGLISH":20941,"FRENCH":11392},"countExtRecordsByExtension":{"VERNACULAR_NAME":32333,"DISTRIBUTION":29734,"DESCRIPTION":10465,"IDENTIFIER":0,"MULTIMEDIA":0,"REFERENCE":0,"SPECIES_PROFILE":0,"TYPES_AND_SPECIMEN":0},"countByOrigin":{"SOURCE":31913,"PROPARTE":11},"countByIssue":{"SCIENTIFIC_NAME_ASSEMBLED":1878,"BACKBONE_MATCH_NONE":1399,"PARTIALLY_PARSABLE":47},"otherCount":{},"created":"2020-09-04T21:30:44.050+0000","downloaded":"2020-09-04T21:24:18.292+0000"}'
-  recorded_at: 2020-12-08 23:53:31 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+      string: '{"key":423840,"datasetKey":"3f8a1297-3259-4700-91fc-acc4170b27ce","usagesCount":31924,"synonymsCount":21425,"distinctNamesCount":31891,"nubMatchingCount":30591,"colMatchingCount":24565,"nubCoveragePct":95,"colCoveragePct":76,"countByConstituent":{},"countByKingdom":{"PLANTAE":9253},"countByRank":{"SPECIES":6200,"GENUS":1272,"VARIETY":906,"SUBSPECIES":724,"SECTION":377,"TRIBE":335,"FAMILY":176,"SUBFAMILY":157,"SUBGENUS":106,"SUBTRIBE":68,"SUBSECTION":60,"ORDER":55,"SERIES":44,"SUPERORDER":12,"SUBCLASS":6,"CLASS":1},"countNamesByLanguage":{"ENGLISH":20941,"FRENCH":11392},"countExtRecordsByExtension":{"VERNACULAR_NAME":32333,"DISTRIBUTION":29734,"DESCRIPTION":10465,"IDENTIFIER":0,"MULTIMEDIA":0,"REFERENCE":0,"SPECIES_PROFILE":0,"TYPES_AND_SPECIMEN":0},"countByOrigin":{"SOURCE":31913,"PROPARTE":11},"countByIssue":{"SCIENTIFIC_NAME_ASSEMBLED":1878,"BACKBONE_MATCH_NONE":1333,"PARTIALLY_PARSABLE":47},"otherCount":{},"created":"2021-03-04T04:57:51.497+0000","downloaded":"2021-03-03T20:14:33.029+0000"}'
+  recorded_at: 2021-07-28 09:19:34 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/dataset/4/metrics
@@ -73,30 +75,31 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '404'
       message: Not Found
       explanation: Nothing matches the given URI
     headers:
-      status: 'HTTP/2 404 '
-      date: Tue, 08 Dec 2020 23:53:30 GMT
+      status: HTTP/1.1 404 Not Found
+      date: Wed, 28 Jul 2021 09:19:34 GMT
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       content-length: '0'
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: no-cache, no-store, must-revalidate
-      x-varnish: '482836517'
+      x-varnish: '515803626'
       age: '0'
       via: 1.1 varnish (Varnish/6.0)
+      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
       string: ''
-  recorded_at: 2020-12-08 23:53:31 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+  recorded_at: 2021-07-28 09:19:34 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/dataset/82ceb6ba-f762-11e1-a439-00145eb45e9a/metrics
@@ -106,27 +109,28 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '204'
       message: No Content
       explanation: Request fulfilled, nothing follows
     headers:
-      status: 'HTTP/2 204 '
-      date: Tue, 08 Dec 2020 23:53:30 GMT
+      status: HTTP/1.1 204 No Content
+      date: Wed, 28 Jul 2021 09:19:34 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: '482836518'
+      x-varnish: '513443842'
       age: '0'
       via: 1.1 varnish (Varnish/6.0)
+      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
       string: ''
-  recorded_at: 2020-12-08 23:53:31 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+  recorded_at: 2021-07-28 09:19:34 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

@@ -111,7 +111,7 @@ derived_dataset <- function(citation_data = NULL,
                               user = z$user,
                               pwd = z$pwd,
                               curlopts = z$curlopts)
-  structure(fromJSON(out), 
+  structure(jsonlite::fromJSON(out), 
             class = "derived_dataset",
             user = z$user
             )
@@ -191,7 +191,7 @@ check_citation_data = function(citation_data = NULL) {
   }
   if(ncol(data) < 2) 
     stop("Data should have two columns with dataset uuids and occurrence counts.")
-  if(!any(complete.cases(data))) {
+  if(!any(stats::complete.cases(data))) {
     message("removing missing values")
     data = na.omit(data)
   } 

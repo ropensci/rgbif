@@ -1,15 +1,15 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.geonames.org/srtm3?lats=0%2C45&lngs=0%2C-120&username=<geonames_user>
+    uri: http://api.geonames.org/srtm3?lats=0%2C45&lngs=0%2C-120&username=<gbif_user>
     body:
       encoding: ''
       string: ''
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -17,8 +17,8 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Tue, 08 Dec 2020 23:53:59 GMT
-      server: Apache/2.4.6 (CentOS) mod_jk/1.2.46 OpenSSL/1.0.2k-fips
+      date: Wed, 28 Jul 2021 12:26:26 GMT
+      server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips PHP/5.4.16
       access-control-allow-origin: '*'
       x-frame-options: sameorigin
       cache-control: no-cache
@@ -30,5 +30,5 @@ http_interactions:
       string: |
         -32768
         1351
-  recorded_at: 2020-12-08 23:54:00 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+  recorded_at: 2021-07-28 12:26:27 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

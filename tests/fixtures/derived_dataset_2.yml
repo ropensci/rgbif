@@ -26,19 +26,19 @@ http_interactions:
       expires: '0'
       x-frame-options: DENY
       content-type: application/json
-      date: Tue, 27 Jul 2021 13:13:34 GMT
+      date: Wed, 28 Jul 2021 08:41:37 GMT
       cache-control: public, max-age=3601
-      x-varnish: '717226166'
+      x-varnish: '507544725'
       age: '0'
       via: 1.1 varnish (Varnish/6.0)
-      transfer-encoding: chunked
+      content-length: '401'
       connection: keep-alive
     body:
       encoding: UTF-8
       file: no
-      string: '{"doi":"10.15468/dd.k2vm2d","originalDownloadDOI":"10.15468/dl.hgc9gw","description":"This
+      string: '{"doi":"10.15468/dd.rnkkjt","originalDownloadDOI":"10.15468/dl.hgc9gw","description":"This
         data was filtered using a fake protocol","citation":"Derived dataset GBIF.org
-        (27 July 2021) Filtered export of GBIF occurrence data https://doi.org/10.15468/dd.k2vm2d","title":"Test
+        (28 July 2021) Filtered export of GBIF occurrence data https://doi.org/10.15468/dd.rnkkjt","title":"Test
         for derived dataset","sourceUrl":"https://zenodo.org/record/4246090#.YPGS2OgzZPY","createdBy":"<gbif_user>","modifiedBy":"<gbif_user>"}'
-  recorded_at: 2021-07-27 13:13:35 GMT
+  recorded_at: 2021-07-28 08:41:37 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0

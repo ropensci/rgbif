@@ -27,8 +27,7 @@ test_that("derived_dataset: real request", {
   expect_false(is.null(zzz$citation))
   expect_false(is.null(zzz$title))
   expect_false(is.null(zzz$description))
-  print(zzz)
-  
+
   # Test with gbif_download_doi
   vcr::use_cassette("derived_dataset_2",
                     {
@@ -122,6 +121,8 @@ test_that("derived_dataset: bad data", {
 })
 
 test_that("derived_dataset: title, description, and source_url filled", {
+  skip_on_cran()
+  skip_on_ci()
   
   expect_error(
     derived_dataset_prep(
