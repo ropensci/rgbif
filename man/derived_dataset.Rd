@@ -116,13 +116,30 @@ See \code{?Startup} for help.
 #  description = "This data was filtered using a fake protocol",
 #  source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY"
 #  )
-
 #  derived_dataset(
 #  citation_data = data,
 #  title = "Test for derived dataset",
 #  description = "This data was filtered using a fake protocol",
 #  source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY"
 #  )
+
+
+# Example with occ_search and dplyr
+# library(dplyr)
+
+# citation_data <- occ_search(taxonKey=212, limit=20)$data \%>\%
+#   group_by(datasetKey) \%>\% 
+#   count()
+
+# You would still need to upload your data to Zenodo or something similiar 
+# derived_dataset_prep(
+#   citation_data = citation_data,
+#   title="Bird data downloaded for test",
+#   description="This data was downloaded using rgbif::occ_search and was later uploaded to Zenodo.",
+#   source_url="https://zenodo.org/record/4246090#.YPGS2OgzZPY",
+#   gbif_download_doi = NULL,
+# )
+
 
 }
 
