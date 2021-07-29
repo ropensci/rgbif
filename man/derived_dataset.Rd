@@ -124,14 +124,14 @@ See \code{?Startup} for help.
 #  )
 
 
-# Example with occ_search and dplyr
+## Example with occ_search and dplyr
 # library(dplyr)
 
 # citation_data <- occ_search(taxonKey=212, limit=20)$data \%>\%
 #   group_by(datasetKey) \%>\% 
 #   count()
 
-# You would still need to upload your data to Zenodo or something similiar 
+# # You would still need to upload your data to Zenodo or something similar 
 # derived_dataset_prep(
 #   citation_data = citation_data,
 #   title="Bird data downloaded for test",
