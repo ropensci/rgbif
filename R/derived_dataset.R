@@ -17,17 +17,17 @@
 #' @return A list. 
 #' 
 #' @section Usage:
-#' Create a **citable DOI** for a dataset derived from GBIF mediated occurrences. 
-#' Often downloads generated from GBIF undergo additional processing or 
-#' manipulation, which makes the originally exported dataset unrepresentative. 
+#' Create a **citable DOI** for a dataset derived from GBIF mediated 
+#' occurrences. 
 #' 
 #' **Use-case (1)** your dataset was obtained with `occ_search` and 
-#' never returned a citable DOI, but you want to cite the dataset in a 
+#' never returned a **citable DOI**, but you want to cite the data in a 
 #' research paper.  
 #' 
-#' **Use-case (2)** your dataset was obtained using `occ_download` but underwent 
-#' extensive filtering using `CoordinateCleaner` or some other cleaning 
-#' pipeline. In this case be sure to fill in your original `gbif_download_doi`.
+#' **Use-case (2)** your dataset was obtained using `occ_download` and you 
+#' got a DOI, but the data underwent extensive filtering using 
+#' `CoordinateCleaner` or some other cleaning pipeline. In this case be sure 
+#' to fill in your original `gbif_download_doi`.
 #' 
 #' **Use-case (3)** your dataset was generated using a GBIF cloud export but 
 #' you want a DOI to cite in your research paper. 
@@ -43,18 +43,28 @@
 #' details before making it final with `derived_dataset`. 
 #' 
 #' @section Authentication:
-#' For `user` and `pwd` parameters, you can set them in one of
+#' Some `rgbif` functions require your **GBIF credentials**. 
+#' 
+#' For the `user` and `pwd` parameters, you can set them in one of
 #' three ways:
 #'
-#' - Set them in your `.Rprofile` file with the names `gbif_user` and
-#' `gbif_pwd`.
-#' - Set them in your `.Renviron`/`.bash_profile` (or similar) file with the
+#' 1. Set them in your `.Renviron`/`.bash_profile` (or similar) file with the
 #' names `GBIF_USER`, `GBIF_PWD`, and `GBIF_EMAIL`
-#' - Simply pass strings to each of the parameters in the function
-#' call
+#' 2. Set them in your `.Rprofile` file with the names `gbif_user` and
+#' `gbif_pwd`.
+#' 3. Simply pass strings to each of the parameters in the function
+#' call.
 #'
-#' We strongly recommend the second option - storing your details as
-#' environment variables as it's the most widely used way to store secrets.
+#' We strongly recommend the **first option** - storing your details as
+#' environment variables - as it's the most widely used way to store secrets. 
+#' 
+#' You can edit your `.Renviron` with `usethis::edit_r_environ()`. 
+#' 
+#' After editing, your `.Renviron` file should look something like this... 
+#' 
+#' GBIF_USER="jwaller"\cr
+#' GBIF_PWD="fakepassword123"\cr
+#' GBIF_EMAIL="jwaller@gbif.org"\cr
 #'
 #' See `?Startup` for help.
 #'
@@ -71,20 +81,20 @@
 #'#  count = c(3, 1, 2781)
 #'#  )
 #'
-#'# If output looks ok, run derived_dataset to register the dataset
+#'## If output looks ok, run derived_dataset to register the dataset
 #'#  derived_dataset_prep(
 #'#  citation_data = data,
 #'#  title = "Test for derived dataset",
 #'#  description = "This data was filtered using a fake protocol",
 #'#  source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY"
 #'#  )
+#'
 #'#  derived_dataset(
 #'#  citation_data = data,
 #'#  title = "Test for derived dataset",
 #'#  description = "This data was filtered using a fake protocol",
 #'#  source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY"
 #'#  )
-#'
 #'
 #'## Example with occ_search and dplyr
 #'# library(dplyr)
@@ -97,7 +107,8 @@
 #'# derived_dataset_prep(
 #'#   citation_data = citation_data,
 #'#   title="Bird data downloaded for test",
-#'#   description="This data was downloaded using rgbif::occ_search and was later uploaded to Zenodo.",
+#'#   description="This data was downloaded using rgbif::occ_search and was 
+#'#   later uploaded to Zenodo.",
 #'#   source_url="https://zenodo.org/record/4246090#.YPGS2OgzZPY",
 #'#   gbif_download_doi = NULL,
 #'# )
@@ -154,7 +165,7 @@ derived_dataset_prep <- function(citation_data = NULL,
   source_url <- check_source_url(source_url)
   gbif_download_doi <- check_gbif_download_doi(gbif_download_doi)
   
-  related_datasets <- setNames(as.list(citation_data[,2]),citation_data[,1])
+  related_datasets <- stats::setNames(as.list(citation_data[,2]),citation_data[,1])
   
   if(!is.null(gbif_download_doi)) {
     req <- list(title=title,
@@ -213,7 +224,7 @@ check_citation_data = function(citation_data = NULL) {
     stop("Data should have two columns with dataset uuids and occurrence counts.")
   if(!any(stats::complete.cases(data))) {
     message("removing missing values")
-    data = na.omit(data)
+    data = stats::na.omit(data)
   } 
   if(!is.character(data[,1])) {
     message("Column 1 should be a character column of uuids. Converting Column 1 to character.")
@@ -307,7 +318,7 @@ print.derived_dataset_prep <- function(x, ...) {
   cat("  Description: '", x$request$description,"'", "\n", sep = "")
   cat("  Source URL: ", x$request$sourceUrl, "\n", sep = "")
   cat("  Original Download DOI: ", x$request$originalDownloadDOI, "\n", sep = "")
-  datasets = head(names(x$request$relatedDatasets),5)
+  datasets = utils::head(names(x$request$relatedDatasets),5)
   counts = x$request$relatedDatasets
   cat("First 5 datasets of ",length(datasets)," :", "\n", sep = "")
   for(i in 1:length(datasets)) 

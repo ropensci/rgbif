@@ -54,17 +54,17 @@ Register a derived dataset for citation.
 }
 \section{Usage}{
 
-Create a \strong{citable DOI} for a dataset derived from GBIF mediated occurrences.
-Often downloads generated from GBIF undergo additional processing or
-manipulation, which makes the originally exported dataset unrepresentative.
+Create a \strong{citable DOI} for a dataset derived from GBIF mediated
+occurrences.
 
 \strong{Use-case (1)} your dataset was obtained with \code{occ_search} and
-never returned a citable DOI, but you want to cite the dataset in a
+never returned a \strong{citable DOI}, but you want to cite the data in a
 research paper.
 
-\strong{Use-case (2)} your dataset was obtained using \code{occ_download} but underwent
-extensive filtering using \code{CoordinateCleaner} or some other cleaning
-pipeline. In this case be sure to fill in your original \code{gbif_download_doi}.
+\strong{Use-case (2)} your dataset was obtained using \code{occ_download} and you
+got a DOI, but the data underwent extensive filtering using
+\code{CoordinateCleaner} or some other cleaning pipeline. In this case be sure
+to fill in your original \code{gbif_download_doi}.
 
 \strong{Use-case (3)} your dataset was generated using a GBIF cloud export but
 you want a DOI to cite in your research paper.
@@ -82,19 +82,29 @@ details before making it final with \code{derived_dataset}.
 
 \section{Authentication}{
 
-For \code{user} and \code{pwd} parameters, you can set them in one of
+Some \code{rgbif} functions require your \strong{GBIF credentials}.
+
+For the \code{user} and \code{pwd} parameters, you can set them in one of
 three ways:
-\itemize{
-\item Set them in your \code{.Rprofile} file with the names \code{gbif_user} and
-\code{gbif_pwd}.
+\enumerate{
 \item Set them in your \code{.Renviron}/\code{.bash_profile} (or similar) file with the
 names \code{GBIF_USER}, \code{GBIF_PWD}, and \code{GBIF_EMAIL}
+\item Set them in your \code{.Rprofile} file with the names \code{gbif_user} and
+\code{gbif_pwd}.
 \item Simply pass strings to each of the parameters in the function
-call
+call.
 }
 
-We strongly recommend the second option - storing your details as
-environment variables as it's the most widely used way to store secrets.
+We strongly recommend the \strong{first option} - storing your details as
+environment variables - as it's the most widely used way to store secrets.
+
+You can edit your \code{.Renviron} with \code{usethis::edit_r_environ()}.
+
+After editing, your \code{.Renviron} file should look something like this...
+
+GBIF_USER="jwaller"\cr
+GBIF_PWD="fakepassword123"\cr
+GBIF_EMAIL="jwaller@gbif.org"\cr
 
 See \code{?Startup} for help.
 }
@@ -109,20 +119,20 @@ See \code{?Startup} for help.
 #  count = c(3, 1, 2781)
 #  )
 
-# If output looks ok, run derived_dataset to register the dataset
+## If output looks ok, run derived_dataset to register the dataset
 #  derived_dataset_prep(
 #  citation_data = data,
 #  title = "Test for derived dataset",
 #  description = "This data was filtered using a fake protocol",
 #  source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY"
 #  )
+
 #  derived_dataset(
 #  citation_data = data,
 #  title = "Test for derived dataset",
 #  description = "This data was filtered using a fake protocol",
 #  source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY"
 #  )
-
 
 ## Example with occ_search and dplyr
 # library(dplyr)
