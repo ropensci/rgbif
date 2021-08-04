@@ -4,16 +4,16 @@ test_that("occ_issues", {
   skip_on_cran() # because fixture in .Rbuildignore
 
   vcr::use_cassette("occ_issues", {
-    out <- occ_search(limit = 100)
 
     # Parsing output by issue
     res <- occ_search(
-      geometry = 'POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1))',
+      issue=c("GEODETIC_DATUM_ASSUMED_WGS84",
+              "COORDINATE_REPROJECTION_SUSPICIOUS"),
       limit = 50
     )
-
+    
     bb <- res %>% occ_issues(gass84)
-
+    
     ### remove data rows with certain issue classes
     cc <- res %>% occ_issues(-cudc, -cdreps)
 

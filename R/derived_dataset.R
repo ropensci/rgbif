@@ -13,7 +13,8 @@
 #' @param gbif_download_doi (optional) A DOI from an original GBIF download. 
 #' @param user (required) Your GBIF username.
 #' @param pwd (required) Your GBIF password.
-#'
+#' @param curlopts a list of arguments to pass to curl.
+#' 
 #' @return A list. 
 #' 
 #' @section Usage:

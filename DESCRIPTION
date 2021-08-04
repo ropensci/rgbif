@@ -11,8 +11,7 @@ Description: A programmatic interface to the Web Service methods
 Version: 3.6.1.91
 License: MIT + file LICENSE
 Authors@R: c(
-    person("Scott", "Chamberlain", role = "aut", email = "myrmecocystus@gmail.com",
-        comment = c(ORCID="0000-0003-1444-9135")),
+    person("Scott", "Chamberlain", role = "aut", comment = c(ORCID="0000-0003-1444-9135")),
     person("Damiano", "Oldoni", role = "aut", comment = c(ORCID = "0000-0003-3445-7562")),
     person("Vijay", "Barve", role = "ctb", comment = c(ORCID = "0000-0002-4852-2567")),
     person("Peter", "Desmet", role = "ctb", comment = c(ORCID = "0000-0002-8442-8025")),

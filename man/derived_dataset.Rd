@@ -45,6 +45,8 @@ describing how it was created.}
 \item{user}{(required) Your GBIF username.}
 
 \item{pwd}{(required) Your GBIF password.}
+
+\item{curlopts}{a list of arguments to pass to curl.}
 }
 \value{
 A list.
@@ -145,7 +147,8 @@ See \code{?Startup} for help.
 # derived_dataset_prep(
 #   citation_data = citation_data,
 #   title="Bird data downloaded for test",
-#   description="This data was downloaded using rgbif::occ_search and was later uploaded to Zenodo.",
+#   description="This data was downloaded using rgbif::occ_search and was 
+#   later uploaded to Zenodo.",
 #   source_url="https://zenodo.org/record/4246090#.YPGS2OgzZPY",
 #   gbif_download_doi = NULL,
 # )

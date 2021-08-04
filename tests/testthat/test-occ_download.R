@@ -20,8 +20,8 @@ test_that("occ_download: real requests work", {
   expect_is(zzz, "occ_download")
   expect_is(unclass(zzz), "character")
   expect_match(unclass(zzz)[1], "[0-9]+-[0-9]+")
-  expect_equal(attr(zzz, "user"), "jwaller")
-  expect_equal(attr(zzz, "email"), "jwaller@gbif.org")
+  expect_equal(attr(zzz, "user"), Sys.getenv("GBIF_USER"))
+  expect_equal(attr(zzz, "email"),Sys.getenv("GBIF_EMAIL"))
   expect_equal(attr(zzz, "format"), "DWCA")
 
   # skip on ci because when testing real requests, we'd get rate limited
@@ -39,8 +39,8 @@ test_that("occ_download: real requests work", {
   expect_is(x, "occ_download")
   expect_is(unclass(x), "character")
   expect_match(unclass(x)[1], "[0-9]+-[0-9]+")
-  expect_equal(attr(x, "user"), "jwaller")
-  expect_equal(attr(x, "email"), "jwaller@gbif.org")
+  expect_equal(attr(x, "user"), Sys.getenv("GBIF_USER"))
+  expect_equal(attr(x, "email"), Sys.getenv("GBIF_EMAIL"))
   expect_equal(attr(x, "format"), "DWCA")
 
   vcr::use_cassette("occ_download_3", {
@@ -50,7 +50,7 @@ test_that("occ_download: real requests work", {
   expect_is(z, "occ_download")
   expect_is(unclass(z), "character")
   expect_match(unclass(z)[1], "[0-9]+-[0-9]+")
-  expect_equal(attr(z, "user"), "jwaller")
-  expect_equal(attr(z, "email"), "jwaller@gbif.org")
+  expect_equal(attr(z, "user"), Sys.getenv("GBIF_USER"))
+  expect_equal(attr(z, "email"), Sys.getenv("GBIF_EMAIL"))
   expect_equal(attr(z, "format"), "SPECIES_LIST")
 })
