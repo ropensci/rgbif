@@ -75,7 +75,7 @@ Use \code{derived_dataset} to create a custom citable meta-data description and
 most importantly a DOI link between an external archive (e.g. Zenodo) and the
 datasets involved in your research or analysis.
 
-All fields (except \code{gbif_download_doi}) required for the registration to
+All fields (except \code{gbif_download_doi}) are required for the registration to
 work.
 
 We recommend that you run \code{derived_dataset_prep} to check registration

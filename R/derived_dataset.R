@@ -37,7 +37,7 @@
 #' most importantly a DOI link between an external archive (e.g. Zenodo) and the
 #' datasets involved in your research or analysis.   
 #' 
-#' All fields (except `gbif_download_doi`) required for the registration to 
+#' All fields (except `gbif_download_doi`) are required for the registration to 
 #' work.   
 #' 
 #' We recommend that you run `derived_dataset_prep` to check registration 
