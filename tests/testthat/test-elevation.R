@@ -54,6 +54,7 @@ test_that("elevation", {
 context("elevation: different elevation models work")
 test_that("elevation models work", {
   skip_on_cran()
+  skip_on_ci()
 
   load("elevation_test_data.rda")
   eltest_small <- elevation_test_data[1:5, ]
