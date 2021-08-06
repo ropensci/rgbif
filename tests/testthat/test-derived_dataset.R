@@ -68,7 +68,7 @@ test_that("derived_dataset: bad data", {
       title = "Test for derived dataset",
       description = "This data was filtered using a fake protocol",
       source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY",
-      gbif_download_doi = "10.15468/dl.hgc9gw",
+      gbif_download_doi = "10.15468/dl.hgc9gw"
     )
   )
   
@@ -87,7 +87,7 @@ test_that("derived_dataset: bad data", {
       title = "Test for derived dataset",
       description = "This data was filtered using a fake protocol",
       source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY",
-      gbif_download_doi = "10.15468/dl.hgc9gw",
+      gbif_download_doi = "10.15468/dl.hgc9gw"
     )
   )
   
@@ -106,7 +106,7 @@ test_that("derived_dataset: bad data", {
       title = "Test for derived dataset",
       description = "This data was filtered using a fake protocol",
       source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY",
-      gbif_download_doi = "10.15468/dl.hgc9gw",
+      gbif_download_doi = "10.15468/dl.hgc9gw"
     )
   )
 
@@ -116,7 +116,7 @@ test_that("derived_dataset: bad data", {
       title = "Test for derived dataset",
       description = "This data was filtered using a fake protocol",
       source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY",
-      gbif_download_doi = "10.15468/dl.hgc9gw",
+      gbif_download_doi = "10.15468/dl.hgc9gw"
     )
   )
   
@@ -125,17 +125,25 @@ test_that("derived_dataset: bad data", {
 
 test_that("derived_dataset: title, description, and source_url filled", {
   skip_on_cran()
-  skip_on_ci()
   
-  expect_error(
-    derived_dataset_prep(
-      citation_data = data,
-      title = NULL,
-      description = "This data was filtered using a fake protocol",
-      source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY",
-      gbif_download_doi = "10.15468/dl.hgc9gw",
-    )
+  data <- data.frame(
+    datasetKey = c(
+      "3ea36590-9b79-46a8-9300-c9ef0bfed7b8",
+      "630eb55d-5169-4473-99d6-a93396aeae38",
+      "806bf7d4-f762-11e1-a439-00145eb45e9a"
+    ),
+    count = c(3, 1, 2781)
   )
+  
+expect_error(
+  derived_dataset_prep(
+    citation_data = data,
+    title = NULL,
+    description = "This data was filtered using a fake protocol",
+    source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY",
+    gbif_download_doi = "10.15468/dl.hgc9gw"),
+  "GBIF requires you to fill in the title."
+)
   
   expect_error(
     derived_dataset_prep(
@@ -143,8 +151,9 @@ test_that("derived_dataset: title, description, and source_url filled", {
       title = "Test for derived dataset",
       description = NULL,
       source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY",
-      gbif_download_doi = "10.15468/dl.hgc9gw",
-    )
+      gbif_download_doi = "10.15468/dl.hgc9gw"
+    ),
+    "GBIF requires you to fill in the description."
   )
 
   expect_error(
@@ -153,18 +162,20 @@ test_that("derived_dataset: title, description, and source_url filled", {
       title = "Test for derived dataset",
       description = "This data was filtered using a fake protocol",
       source_url = NULL,
-      gbif_download_doi = "10.15468/dl.hgc9gw",
-    )
+      gbif_download_doi = "10.15468/dl.hgc9gw"
+    ),
+    "Please fill in the url where the derived dataset is stored."
   )
 
-  
   expect_error(
     derived_dataset_prep(
       citation_data = as.matrix(data),
       title = "Test for derived dataset",
       description = "This data was filtered using a fake protocol",
       source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY",
-      gbif_download_doi = "10.15468/dl.hgc9gw"))
+      gbif_download_doi = "10.15468/dl.hgc9gw"),
+    "Column 2 should be occurrence counts."
+    )
   
   expect_error(
     derived_dataset_prep(
@@ -172,7 +183,9 @@ test_that("derived_dataset: title, description, and source_url filled", {
       title = "Test for derived dataset",
       description = "This data was filtered using a fake protocol",
       source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY",
-      gbif_download_doi = "10.15468/dl.hgc9gw"))
+      gbif_download_doi = "10.15468/dl.hgc9gw"),
+    "Supply your datsetkey uuids with occurrence counts."
+    )
   
   expect_error(
     derived_dataset_prep(
@@ -180,7 +193,8 @@ test_that("derived_dataset: title, description, and source_url filled", {
       title = "Test for derived dataset",
       description = "This data was filtered using a fake protocol",
       source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY",
-      gbif_download_doi = "10.15468/dl.hgc9gw"))
-  
+      gbif_download_doi = "10.15468/dl.hgc9gw"),
+    "Data should have two columns with dataset uuids and occurrence counts."
+    )
   
 })
