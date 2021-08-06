@@ -27,6 +27,7 @@ test_that("derived_dataset: real request", {
   expect_false(is.null(zzz$citation))
   expect_false(is.null(zzz$title))
   expect_false(is.null(zzz$description))
+  
 
   # Test with gbif_download_doi
   vcr::use_cassette("derived_dataset_2",
@@ -44,10 +45,12 @@ test_that("derived_dataset: real request", {
   expect_is(yyy, "derived_dataset")
   expect_false(is.null(yyy$originalDownloadDOI))
   
+  
 })
 
 
 test_that("derived_dataset: bad data", {
+  
   
   # count and keys reversed
   bad_data_1 <- data.frame(
@@ -153,7 +156,31 @@ test_that("derived_dataset: title, description, and source_url filled", {
       gbif_download_doi = "10.15468/dl.hgc9gw",
     )
   )
+
+  
+  expect_error(
+    derived_dataset_prep(
+      citation_data = as.matrix(data),
+      title = "Test for derived dataset",
+      description = "This data was filtered using a fake protocol",
+      source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY",
+      gbif_download_doi = "10.15468/dl.hgc9gw"))
+  
+  expect_error(
+    derived_dataset_prep(
+      citation_data = NULL,
+      title = "Test for derived dataset",
+      description = "This data was filtered using a fake protocol",
+      source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY",
+      gbif_download_doi = "10.15468/dl.hgc9gw"))
+  
+  expect_error(
+    derived_dataset_prep(
+      citation_data = data[,1],
+      title = "Test for derived dataset",
+      description = "This data was filtered using a fake protocol",
+      source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY",
+      gbif_download_doi = "10.15468/dl.hgc9gw"))
+  
   
 })
-
-
