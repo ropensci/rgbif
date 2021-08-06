@@ -69,10 +69,11 @@ test_that("derived_dataset: bad data", {
       description = "This data was filtered using a fake protocol",
       source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY",
       gbif_download_doi = "10.15468/dl.hgc9gw"
-    )
+    ),
+    "GBIF dataset uuids have 36 characters and look something like this :  '3ea36590-9b79-46a8-9300-c9ef0bfed7b8' Put your uuids in the first column. Occurrence counts in the second column."
   )
   
-  bad_data_3 <- data.frame(
+  bad_data_2 <- data.frame(
     datasetKey = c(
       "3ea36590-9b79-46a8-9300-c9ef0bfed7b8",
       "630eb55d-5169-4473-99d6-a93396aeae38",
@@ -83,41 +84,84 @@ test_that("derived_dataset: bad data", {
   
   expect_error(
     derived_dataset_prep(
-      citation_data = bad_data_3,
+      citation_data = bad_data_2,
       title = "Test for derived dataset",
       description = "This data was filtered using a fake protocol",
       source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY",
       gbif_download_doi = "10.15468/dl.hgc9gw"
+    ),
+    "Column 2 should be occurrence counts."
     )
-  )
   
-  bad_data_2 <- data.frame(
+  bad_data_3 <- data.frame(
     datasetKey = c(
       "not a key",
       "630eb55d-5169-4473-99d6-a93396aeae38",
       "806bf7d4-f762-11e1-a439-00145eb45e9a"
     ),
     count = c(3, 1, 2781)
-  )
-  
-  expect_error(
-    derived_dataset_prep(
-      citation_data = bad_data_2,
-      title = "Test for derived dataset",
-      description = "This data was filtered using a fake protocol",
-      source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY",
-      gbif_download_doi = "10.15468/dl.hgc9gw"
-    )
-  )
+  ) 
 
   expect_error(
     derived_dataset_prep(
-      citation_data = List("dog","cat"),
+      citation_data = bad_data_3,
       title = "Test for derived dataset",
       description = "This data was filtered using a fake protocol",
       source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY",
       gbif_download_doi = "10.15468/dl.hgc9gw"
+      ),
+    "GBIF dataset uuids have 36 characters and look something like this :  '3ea36590-9b79-46a8-9300-c9ef0bfed7b8' Put your uuids in the first column. Occurrence counts in the second column."
     )
+
+  expect_error(
+    derived_dataset_prep(
+      citation_data = c("630eb55d-5169-4473-99d6-a93396aeae38",1),
+      title = "Test for derived dataset",
+      description = "This data was filtered using a fake protocol",
+      source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY",
+      gbif_download_doi = "10.15468/dl.hgc9gw"
+    ),
+    "citation_data should be a data.frame not a vector."
+  )
+  
+  bad_data_4 <- data.frame(
+    datasetKey = c(
+      "3ea36590-9b79-46a8-9300-c9ef0bfed7b8",
+      "630eb55d-5169-4473-99d6-a93396aeae38",
+      "806bf7d4-f762-11e1-a439-00145eb45e9a"
+    ),
+    count = c(3, 1, 2781)
+  )
+  class(bad_data_4) <- "fake_class"
+  
+  expect_error(
+    derived_dataset_prep(
+      citation_data = bad_data_4,
+      title = "Test for derived dataset",
+      description = "This data was filtered using a fake protocol",
+      source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY"
+    )
+    ,
+    "Error converting to data.frame. Please supply a data.frame to citation_data"
+  )
+    
+  bad_data_5 <- data.frame(
+    datasetKey = c(
+      "3ea36590-9b79-46a8-9300-c9ef0bfed7b8",
+      "630eb55d-5169-4473-99d6-a93396aeae38",
+      "806bf7d4-f762-11e1-a439-00145eb45e9a"
+    ),
+    count = c(0, 1, 2781)
+  )
+  
+  expect_error(
+  derived_dataset_prep(
+    citation_data = bad_data_5,
+    title = "Test for derived dataset",
+    description = "This data was filtered using a fake protocol",
+    source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY"
+  ),
+  "Only positive occurrence counts should be in column 2 of citation data."
   )
   
     
@@ -189,7 +233,7 @@ expect_error(
   
   expect_error(
     derived_dataset_prep(
-      citation_data = data[,1],
+      citation_data = data[1],
       title = "Test for derived dataset",
       description = "This data was filtered using a fake protocol",
       source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY",

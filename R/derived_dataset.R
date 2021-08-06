@@ -203,24 +203,23 @@ check_citation_data = function(citation_data = NULL) {
   
   data <- citation_data
   
-  if(is.null(data)) stop("Supply your datsetkey uuids with occurrence counts.")
+  if(is.null(data)) stop("Supply your datsetkey uuids with occurrence counts.")  
+  if(is.vector(data))  stop("citation_data should be a data.frame not a vector.")
   
   # try to convert to data.frame
   if(!class(data)[1] == "data.frame") {
     tryCatch(
       expr = {
-        data <- as.data.frame(data) 
+        data <- as.data.frame(data)
         # message("converted to data.frame")
       },
       error = function(e){
-        message("Error converting to data.frame. 
-                Please supply a data.frame to citation_data.")
+        stop("Error converting to data.frame. Please supply a data.frame to citation_data.")
         print(e)
       })    
   }
   if(nrow(data) == 0)
-    stop("citation_data should not have zero rows. Check if your data.frame is 
-         empty.")
+    stop("citation_data should not have zero rows. Check if your data.frame is empty.")
   if(ncol(data) < 2) 
     stop("Data should have two columns with dataset uuids and occurrence counts.")
   if(!any(stats::complete.cases(data))) {
