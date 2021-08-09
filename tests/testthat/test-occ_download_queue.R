@@ -25,8 +25,8 @@ test_that("occ_download_queue: real request works", {
   expect_is(tt, "list")
   for (i in tt) expect_is(i, "occ_download")
   for (i in tt) expect_is(unclass(i), "character")
-  for (i in tt) expect_equal(attr(i, "user"), "sckott")
-  for (i in tt) expect_equal(attr(i, "email"), "myrmecocystus@gmail.com")
+  for (i in tt) expect_equal(attr(i, "user"), Sys.getenv("GBIF_USER"))
+  for (i in tt) expect_equal(attr(i, "email"), Sys.getenv("GBIF_EMAIL"))
 
   # all succeeded
   for (i in tt) expect_equal(occ_download_meta(i)$status, "SUCCEEDED")

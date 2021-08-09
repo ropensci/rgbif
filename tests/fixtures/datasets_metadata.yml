@@ -8,15 +8,15 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: 'HTTP/2 200 '
+      status: HTTP/1.1 200 OK
       vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
       x-content-type-options: nosniff
       x-xss-protection: 1; mode=block
@@ -24,16 +24,17 @@ http_interactions:
       expires: '0'
       x-frame-options: DENY
       content-type: application/json
-      date: Tue, 08 Dec 2020 23:53:47 GMT
+      date: Wed, 28 Jul 2021 09:15:54 GMT
       cache-control: public, max-age=3601
-      x-varnish: '482836534'
+      x-varnish: '534183939'
       age: '0'
       via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
-      content-length: '230'
+      transfer-encoding: chunked
+      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
-      string: '[{"key":657,"datasetKey":"a6998220-7e3a-485d-9cd6-73076bd85657","type":"EML","createdBy":"eml-pusher.gbif.org","modifiedBy":"eml-pusher.gbif.org","created":"2013-10-24T11:23:15.236+0000","modified":"2013-10-24T11:23:15.236+0000"}]'
-  recorded_at: 2020-12-08 23:53:49 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+      string: '[{"key":657,"datasetKey":"a6998220-7e3a-485d-9cd6-73076bd85657","type":"EML","createdBy":"eml-pusher.gbif.org","modifiedBy":"eml-pusher.gbif.org","created":"2013-10-24T11:23:15.236+00:00","modified":"2013-10-24T11:23:15.236+00:00"}]'
+  recorded_at: 2021-07-28 09:15:54 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

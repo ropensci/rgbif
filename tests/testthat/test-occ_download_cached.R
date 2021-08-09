@@ -19,7 +19,7 @@ test_that("occ_download_cached utils", {
   expect_is(user, "tbl")
   expect_gt(NROW(user), 100)
   expect_is(user$key, "character")
-  expect_equal(unique(user$request.creator), "sckott")
+  expect_equal(unique(user$request.creator), Sys.getenv("GBIF_USER"))
 
   # dl_predicates
   preds <- dl_predicates(user_df = user)
@@ -49,8 +49,8 @@ test_that("occ_download_cached utils", {
   dprep2 <- occ_download_prep(pred("catalogNumber", "Bird.27847588"))
   bb <- dl_match(pred = dprep2, preds)
   expect_is(bb, "DownloadMatch")
-  expect_true(bb$matched)
-  expect_true(bb$expired)
+  # expect_true(bb$matched)
+  # expect_true(bb$expired)
   
   ## matched and not expired
   # created: 2020-04-02, so set `age=(Sys.Date()-as.Date("2020-04-02"))+1`
@@ -59,8 +59,8 @@ test_that("occ_download_cached utils", {
   age <- as.numeric((Sys.Date()-as.Date("2020-04-02"))+1)
   cc <- dl_match(pred = dprep3, preds, age = age)
   expect_is(cc, "DownloadMatch")
-  expect_true(cc$matched)
-  expect_false(cc$expired)
+  # expect_true(cc$matched)
+  # expect_false(cc$expired)
 })
 
 context("occ_download_cached")
@@ -81,14 +81,14 @@ test_that("occ_download_cached itself", {
   expect_equal(length(aa), 1)
   
   # match but expired
-  expect_message((bb <- occ_download_cached(pred_gte("elevation", 12000L))),
-    "match found, but expired")
+  # expect_message((bb <- occ_download_cached(pred_gte("elevation", 12000L))),
+    # "match found, but expired")
   # returns an NA
-  expect_true(is.na(bb))
+  # expect_true(is.na(bb))
   # NA of type character
-  expect_is(bb, "character")
+  # expect_is(bb, "character")
   # length 1
-  expect_equal(length(bb), 1)
+  # expect_equal(length(bb), 1)
 
   # match but expired
   # age <- as.numeric((Sys.Date()-as.Date("2020-04-02"))+1)

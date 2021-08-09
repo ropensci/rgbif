@@ -51,7 +51,8 @@ Uses the GeoNames web service
 
 To get a GeoNames user name, register for an account at
 http://www.geonames.org/login - then you can enable your account for the
-GeoNames webservice on your account page. Once you are enabled to use
+GeoNames webservice on your account page
+(http://www.geonames.org/manageaccount). Once you are enabled to use
 the webservice, you can pass in your username to the \code{username}
 parameter. Better yet, store your username in your \code{.Renviron} file, or
 similar (e.g., .zshrc or .bash_profile files) and read it in via
