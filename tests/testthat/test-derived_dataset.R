@@ -48,7 +48,6 @@ test_that("derived_dataset: real request", {
   
 })
 
-
 test_that("derived_dataset: bad data", {
   
   
@@ -164,10 +163,26 @@ test_that("derived_dataset: bad data", {
   "Only positive occurrence counts should be in column 2 of citation data."
   )
   
-    
+  bad_data_6 <- data.frame(
+    datasetKey = c(
+      "3ea36590-9b79-46a8-9300-c9ef0bfed7b8",
+      "630eb55d-5169-4473-99d6-a93396aeae38",
+      "806bf7d4-f762-11e1-a439-00145eb45e9a"
+    ),
+    count = c(NA_integer_, 1, 23)
+  )
+
+  expect_equal(
+    length(derived_dataset_prep(
+      citation_data = bad_data_6,
+      title = "Test for derived dataset",
+      description = "This data was filtered using a fake protocol",
+      source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY"
+    )$request$relatedDatasets),2)
+  
 })
 
-test_that("derived_dataset: title, description, and source_url filled", {
+test_that("derived_dataset: title, description, source_url, and gbif_download_doi", {
   skip_on_cran()
   
   data <- data.frame(
@@ -241,4 +256,93 @@ expect_error(
     "Data should have two columns with dataset uuids and occurrence counts."
     )
   
+  expect_error(
+  derived_dataset_prep(
+      citation_data = data.frame(keys=c(),counts=c()),
+      title = "Test for derived dataset",
+      description = "This data was filtered using a fake protocol",
+      source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY",
+      gbif_download_doi = "10.15468/dl.hgc9gw"),
+  "citation_data should not have zero rows. Check if your data.frame is empty."
+  )
+
+  expect_error(
+  derived_dataset_prep(
+    citation_data = data,
+    title = "Test for derived dataset",
+    description = "This data was filtered using a fake protocol",
+    source_url = 123
+  ),
+  "The source_url should be character string."
+  )
+  
+  expect_equal(
+    class(derived_dataset_prep(
+      citation_data = data,
+      title = "Test for derived dataset",
+      description = "This data was filtered using a fake protocol",
+      source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY",
+      gbif_download_doi = as.factor("10.15468/dl.hgc9gw")
+    )$request$originalDownloadDOI),
+    "character"
+    )
+  
+  expect_error(
+    derived_dataset_prep(
+      citation_data = data,
+      title = "Test for derived dataset",
+      description = "This data was filtered using a fake protocol",
+      source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY",
+      gbif_download_doi = "10.15468/dl.hgc9gw.doi.org"
+    ),
+    "remove 'https://doi.org/' from gbif_download_doi."
+  )
+  
+  
+ expect_message( 
+  derived_dataset_prep(
+    citation_data = data,
+    title = "Test for derived dataset",
+    description = "This data was filtered using a fake protocol",
+    source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY",
+    gbif_download_doi = "this is my doi"
+  ),
+  "For gbif_download_doi, DOI not valid, proceeding with potentially invalid DOI..."
+  )
+ 
 })
+
+test_that("derived_dataset: print methods", {
+  
+  data <- data.frame(
+    datasetKey = c(
+      "3ea36590-9b79-46a8-9300-c9ef0bfed7b8",
+      "630eb55d-5169-4473-99d6-a93396aeae38",
+      "806bf7d4-f762-11e1-a439-00145eb45e9a"
+    ),
+    count = c(3, 1, 2781)
+  )
+  
+  expect_output(
+  print(derived_dataset_prep(
+    citation_data = data,
+    title = "This is a test of the print method",
+    description = "This data was filtered using a fake protocol",
+    source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY",
+    gbif_download_doi = "10.15468/dl.hgc9gw")),
+  "This is a test of the print method"
+  )
+  
+  expect_output(
+    print(derived_dataset_prep(
+      citation_data = data,
+      title = "This is a test of the print method",
+      description = "This data was filtered using a fake protocol",
+      source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY",
+      gbif_download_doi = "10.15468/dl.hgc9gw")),
+    "3ea36590-9b79-46a8-9300-c9ef0bfed7b8 : 3"
+  )
+  
+})
+
+

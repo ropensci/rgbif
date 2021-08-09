@@ -136,7 +136,7 @@ derived_dataset <- function(citation_data = NULL,
                             curlopts = curlopts)
 
   out <- derived_dataset_POST(url = z$url,
-                              req = z$req,
+                              req = convert_to_json(z$req),
                               user = z$user,
                               pwd = z$pwd,
                               curlopts = z$curlopts)
@@ -222,15 +222,15 @@ check_citation_data = function(citation_data = NULL) {
     stop("citation_data should not have zero rows. Check if your data.frame is empty.")
   if(ncol(data) < 2) 
     stop("Data should have two columns with dataset uuids and occurrence counts.")
-  if(!any(stats::complete.cases(data))) {
+  if(any(!stats::complete.cases(data))) {
     message("removing missing values")
     data = stats::na.omit(data)
-  } 
+  }
   if(!is.character(data[,1])) {
     message("Column 1 should be a character column of uuids. Converting Column 1 to character.")
     data[,1] = as.character(data[,1]) 
     }
-  if(any(!sapply(data[,1],nchar) == 36)) 
+  if(any(!sapply(data[,1],nchar) == 36))
     stop("GBIF dataset uuids have 36 characters and look something like this :  '3ea36590-9b79-46a8-9300-c9ef0bfed7b8' Put your uuids in the first column. Occurrence counts in the second column.")
   if(!is.numeric(data[,2])) 
     stop("Column 2 should be occurrence counts.")
@@ -303,7 +303,7 @@ convert_to_json <- function(x) {
 derived_dataset_POST <- function(url, req, user, pwd, curlopts) {
   cli <- crul::HttpClient$new(url = url,opts = c(curlopts, httpauth = 1, userpwd = paste0(user, ":", pwd)),headers = c(rgbif_ual, `Content-Type` = "application/json", Accept = "application/json"))
   
-  res <- cli$post(body = convert_to_json(req))
+  res <- cli$post(body = req)
   if (res$status_code > 203) stop(catch_err(res), call. = FALSE)
   res$raise_for_status()
   stopifnot(res$response_headers$`content-type` == 'application/json')
