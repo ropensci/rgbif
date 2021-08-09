@@ -202,8 +202,18 @@ expect_error(
     source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY",
     gbif_download_doi = "10.15468/dl.hgc9gw"),
   "GBIF requires you to fill in the title."
-)
-  
+  )
+
+  expect_error(
+    derived_dataset_prep(
+    citation_data = data,
+    title = 123,
+    description = "This data was filtered using a fake protocol",
+    source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY",
+    gbif_download_doi = "10.15468/dl.hgc9gw"),
+    "The title should be character string."
+  )
+
   expect_error(
     derived_dataset_prep(
       citation_data = data,
@@ -215,6 +225,17 @@ expect_error(
     "GBIF requires you to fill in the description."
   )
 
+  expect_error(
+    derived_dataset_prep(
+      citation_data = data,
+      title = "Test for derived dataset",
+      description = 123,
+      source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY",
+      gbif_download_doi = "10.15468/dl.hgc9gw"
+    ),
+    "The description should be character string."
+  )
+  
   expect_error(
     derived_dataset_prep(
       citation_data = data,
@@ -297,7 +318,21 @@ expect_error(
     ),
     "remove 'https://doi.org/' from gbif_download_doi."
   )
+
+  expect_error(
+    derived_dataset_prep(
+      citation_data = data,
+      title = "Test for derived dataset",
+      description = "This data was filtered using a fake protocol",
+      source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY",
+      gbif_download_doi = "https://doi.org/10.15468/dl.hgc9gw"
+    ),
+    "remove 'https://doi.org/' from gbif_download_doi."
+  )
   
+  
+  
+    
   
  expect_message( 
   derived_dataset_prep(
