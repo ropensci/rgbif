@@ -44,8 +44,11 @@ test_that("derived_dataset: real request", {
   
   expect_is(yyy, "derived_dataset")
   expect_false(is.null(yyy$originalDownloadDOI))
-  
-  
+  expect_output(
+  print(yyy),
+  "<<gbif derived dataset - created>>"
+  )
+
 })
 
 test_that("derived_dataset: bad data", {
@@ -377,6 +380,8 @@ test_that("derived_dataset: print methods", {
       gbif_download_doi = "10.15468/dl.hgc9gw")),
     "3ea36590-9b79-46a8-9300-c9ef0bfed7b8 : 3"
   )
+  
+  expect_error(print.derived_dataset(123))
   
 })
 
