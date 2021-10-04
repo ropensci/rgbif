@@ -82,9 +82,11 @@ for curl options}
 }
 \value{
 For \code{name_backbone}, a data.frame for a single taxon with many
-columns. For \code{name_backbone_verbose} a list of length two (\code{data} and
-\code{alternatives}), first data.frame for the suggested taxon match, and a
-data.frame with alternative name suggestions resulting from fuzzy matching
+columns. For \code{name_backbone_verbose}, a larger number of results in a
+data.frame the results of resulting from fuzzy matching.
+You will also get back your input name, rank, kingdom, phylum ect. as
+columns input_name, input_rank, input_kingdom ect. so you can check the
+results.
 }
 \description{
 Lookup names in the GBIF backbone taxonomy.

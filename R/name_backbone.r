@@ -30,9 +30,11 @@
 #' @param verbose (logical) Defunct. See function `name_backbone_verbose()`
 #'
 #' @return For `name_backbone`, a data.frame for a single taxon with many
-#' columns. For `name_backbone_verbose` a list of length two (`data` and
-#' `alternatives`), first data.frame for the suggested taxon match, and a
-#' data.frame with alternative name suggestions resulting from fuzzy matching
+#' columns. For `name_backbone_verbose`, a larger number of results in a 
+#' data.frame the results of resulting from fuzzy matching. 
+#' You will also get back your input name, rank, kingdom, phylum ect. as 
+#' columns input_name, input_rank, input_kingdom ect. so you can check the 
+#' results. 
 #'
 #' @details
 #' If you don't get a match, GBIF gives back a data.frame with columns
@@ -70,6 +72,9 @@ name_backbone <- function(name, rank=NULL, kingdom=NULL, phylum=NULL,
          class=class, order=order, family=family, genus=genus,
          strict=as_log(strict), offset=start, limit=limit))
   tt <- gbif_GET(url, args, FALSE, curlopts)
+  input_args <- args[!names(args) %in% c("strict","verbose","start","limit","curlopts")]
+  input_args <- setNames(input_args,paste0("input_",names(input_args)))
+  tt <- c(tt,input_args)
   out <- tibble::as_tibble(tt[!names(tt) %in% c("alternatives", "note")])
   structure(out, args = args, note = tt$note, type = "single")
 }
@@ -86,14 +91,25 @@ name_backbone_verbose <- function(name, rank=NULL, kingdom=NULL, phylum=NULL,
          class=class, order=order, family=family, genus=genus,
          strict=as_log(strict), verbose=TRUE, offset=start, limit=limit))
   tt <- gbif_GET(url, args, FALSE, curlopts)
+  
+  input_args <- args[!names(args) %in% 
+                       c("strict","verbose","start","limit","curlopts")]
+  input_args <- stats::setNames(input_args,paste0("input_",names(input_args)))
+  
+  alternatives <- lapply(tt$alternatives, function(x) c(x,input_args))
   alt <- tibble::as_tibble(data.table::setDF(
     data.table::rbindlist(
-      lapply(tt$alternatives, function(x)
+      lapply(alternatives, function(x)
         lapply(x, function(x) if (length(x) == 0) NA else x)),
       use.names = TRUE, fill = TRUE)))
+  
+  tt <- c(tt,input_args)
   dat <- tibble::as_tibble(
     data.frame(tt[!names(tt) %in% c("alternatives", "note")],
                stringsAsFactors = FALSE))
-  out <- list(data = dat, alternatives = alt)
+  
+  out <- tibble::as_tibble(data.table::rbindlist(list(dat,alt),fill=TRUE))
   structure(out, args = args, note = tt$note, type = "single")
 }
+
+
