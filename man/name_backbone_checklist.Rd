@@ -2,7 +2,7 @@
 % Please edit documentation in R/name_backbone_checklist.R
 \name{name_backbone_checklist}
 \alias{name_backbone_checklist}
-\title{Title}
+\title{Lookup names in the GBIF backbone taxonomy in a checklist.}
 \usage{
 name_backbone_checklist(
   name_data = NULL,
@@ -10,28 +10,62 @@ name_backbone_checklist(
   start = NULL,
   limit = 100,
   curlopts = list(),
-  verbose = FALSE
+  fuzzy = FALSE
 )
 }
 \arguments{
-\item{name_data}{}
+\item{name_data}{(data.frame or vector) see details.}
 
-\item{strict}{}
+\item{strict}{(logical) If \code{TRUE} it (fuzzy) matches only the given name,
+but never a taxon in the upper classification (optional)}
 
-\item{start}{}
-
-\item{limit}{}
-
-\item{curlopts}{}
-
-\item{verbose}{}
+\item{fuzzy}{(logical) should the matching return non-exact matches}
 }
 \value{
-
+A \code{data.frame} of matched names.
 }
 \description{
-Title
+Lookup names in the GBIF backbone taxonomy in a checklist.
+}
+\details{
+This function is a wrapper for  \code{name_backbone()}, which will work with
+a list of names (a vectors or a data.frame). The data.frame should have the
+following column names. \strong{Only the 'name' column is required}. If only
+one column is present, then that column is assumed to be the 'name' column.
+\itemize{
+\item \strong{name} : (required)
+\item \strong{rank} : (optional)
+\item \strong{kingdom} : (optional)
+\item \strong{phylum} : (optional)
+\item \strong{class} : (optional)
+\item \strong{order} : (optional)
+\item \strong{family} : (optional)
+\item \strong{genus} : (optional)
+}
+
+The input columns will be returned as "verbatim_name","verbatim_rank",
+"verbatim_phylum"...
+
+The following aliases for the 'name' column will work (any case or with '_'
+work) :
+\itemize{
+\item "scientificName"
+\item "sci_name"
+\item "names"
+\item "species"
+\item "species_name"
+\item "sp_name"
+}
+
+If more than one aliases is present and no column is named 'name', then the
+leftmost column with an alias name is used.
+
+This function can also be used with a character vector of names. In that case
+no column names are needed of course.
 }
 \examples{
+\dontrun{
+
+}
 
 }

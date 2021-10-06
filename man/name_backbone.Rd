@@ -3,6 +3,7 @@
 \name{name_backbone}
 \alias{name_backbone}
 \alias{name_backbone_verbose}
+\alias{name_backbone_fuzzy}
 \title{Lookup names in the GBIF backbone taxonomy.}
 \usage{
 name_backbone(
@@ -22,6 +23,21 @@ name_backbone(
 )
 
 name_backbone_verbose(
+  name,
+  rank = NULL,
+  kingdom = NULL,
+  phylum = NULL,
+  class = NULL,
+  order = NULL,
+  family = NULL,
+  genus = NULL,
+  strict = FALSE,
+  start = NULL,
+  limit = 100,
+  curlopts = list()
+)
+
+name_backbone_fuzzy(
   name,
   rank = NULL,
   kingdom = NULL,

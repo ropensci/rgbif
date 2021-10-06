@@ -1,0 +1,225 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/species/match?name=Cirsium%20arvense%20%28L.%29%20Scop.&kingdom=Plantae&strict=false&limit=100
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Tue, 05 Oct 2021 14:03:02 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=3601
+      x-varnish: 274891266 252511625
+      age: '723'
+      via: 1.1 varnish (Varnish/6.0)
+      accept-ranges: bytes
+      content-length: '468'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"usageKey":3113414,"scientificName":"Cirsium arvense (L.) Scop.","canonicalName":"Cirsium
+        arvense","rank":"SPECIES","status":"ACCEPTED","confidence":100,"matchType":"EXACT","kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Cirsium","species":"Cirsium
+        arvense","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3112554,"speciesKey":3113414,"synonym":false,"class":"Magnoliopsida"}'
+  recorded_at: 2021-10-05 14:15:07 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/species/match?name=Calopteryx%20splendens%20%28Harris%2C%201780%29&kingdom=Animalia&strict=false&limit=100
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Tue, 05 Oct 2021 14:03:02 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=3601
+      x-varnish: 262703581 250971817
+      age: '723'
+      via: 1.1 varnish (Varnish/6.0)
+      accept-ranges: bytes
+      content-length: '478'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"usageKey":7412043,"scientificName":"Calopteryx splendens Harris,
+        1780","canonicalName":"Calopteryx splendens","rank":"SPECIES","status":"ACCEPTED","confidence":100,"matchType":"EXACT","kingdom":"Animalia","phylum":"Arthropoda","order":"Odonata","family":"Calopterygidae","genus":"Calopteryx","species":"Calopteryx
+        splendens","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":789,"familyKey":4211,"genusKey":1427007,"speciesKey":7412043,"synonym":false,"class":"Insecta"}'
+  recorded_at: 2021-10-05 14:15:07 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/species/match?name=Puma%20concolor%20%28Linnaeus%2C%201771%29&kingdom=Animalia&strict=false&limit=100
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Tue, 05 Oct 2021 14:03:02 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=3601
+      x-varnish: 244223332 210773521
+      age: '724'
+      via: 1.1 varnish (Varnish/6.0)
+      accept-ranges: bytes
+      content-length: '449'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"usageKey":2435099,"scientificName":"Puma concolor (Linnaeus, 1771)","canonicalName":"Puma
+        concolor","rank":"SPECIES","status":"ACCEPTED","confidence":100,"matchType":"EXACT","kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
+        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"synonym":false,"class":"Mammalia"}'
+  recorded_at: 2021-10-05 14:15:07 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/species/match?name=Ceylonosticta%20alwisi%20%28Priyadarshana%20%26%20Wijewardhane%2C%202016%29&kingdom=Animalia&strict=false&limit=100
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Tue, 05 Oct 2021 14:03:02 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=3601
+      x-varnish: 267093113 210773523
+      age: '724'
+      via: 1.1 varnish (Varnish/6.0)
+      accept-ranges: bytes
+      content-length: '415'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"usageKey":4799067,"scientificName":"Ceylonosticta Fraser, 1931","canonicalName":"Ceylonosticta","rank":"GENUS","status":"ACCEPTED","confidence":96,"matchType":"HIGHERRANK","kingdom":"Animalia","phylum":"Arthropoda","order":"Odonata","family":"Platystictidae","genus":"Ceylonosticta","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":789,"familyKey":9403,"genusKey":4799067,"synonym":false,"class":"Insecta"}'
+  recorded_at: 2021-10-05 14:15:07 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/species/match?name=Puma%20concuolor%20%28Linnaeus%2C%201771%29&kingdom=Animalia&strict=false&limit=100
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Tue, 05 Oct 2021 14:03:02 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=3601
+      x-varnish: 275415647 210773525
+      age: '724'
+      via: 1.1 varnish (Varnish/6.0)
+      accept-ranges: bytes
+      content-length: '448'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"usageKey":2435099,"scientificName":"Puma concolor (Linnaeus, 1771)","canonicalName":"Puma
+        concolor","rank":"SPECIES","status":"ACCEPTED","confidence":97,"matchType":"FUZZY","kingdom":"Animalia","phylum":"Chordata","order":"Carnivora","family":"Felidae","genus":"Puma","species":"Puma
+        concolor","kingdomKey":1,"phylumKey":44,"classKey":359,"orderKey":732,"familyKey":9703,"genusKey":2435098,"speciesKey":2435099,"synonym":false,"class":"Mammalia"}'
+  recorded_at: 2021-10-05 14:15:07 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/species/match?name=Fake%20species%20%28John%20Waller%202021%29&kingdom=Johnlia&strict=false&limit=100
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Tue, 05 Oct 2021 14:03:02 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=3601
+      x-varnish: 228626287 210773527
+      age: '724'
+      via: 1.1 varnish (Varnish/6.0)
+      accept-ranges: bytes
+      content-length: '104'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"confidence":100,"note":"No match because of too little confidence","matchType":"NONE","synonym":false}'
+  recorded_at: 2021-10-05 14:15:07 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
