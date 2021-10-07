@@ -3,7 +3,6 @@
 \name{name_backbone}
 \alias{name_backbone}
 \alias{name_backbone_verbose}
-\alias{name_backbone_fuzzy}
 \title{Lookup names in the GBIF backbone taxonomy.}
 \usage{
 name_backbone(
@@ -16,28 +15,13 @@ name_backbone(
   family = NULL,
   genus = NULL,
   strict = FALSE,
-  verbose = NULL,
+  verbose = FALSE,
   start = NULL,
   limit = 100,
   curlopts = list()
 )
 
 name_backbone_verbose(
-  name,
-  rank = NULL,
-  kingdom = NULL,
-  phylum = NULL,
-  class = NULL,
-  order = NULL,
-  family = NULL,
-  genus = NULL,
-  strict = FALSE,
-  start = NULL,
-  limit = 100,
-  curlopts = list()
-)
-
-name_backbone_fuzzy(
   name,
   rank = NULL,
   kingdom = NULL,
@@ -85,7 +69,8 @@ match against this if no direct match is found for the name alone.
 \item{strict}{(logical) If \code{TRUE} it (fuzzy) matches only the given name,
 but never a taxon in the upper classification (optional)}
 
-\item{verbose}{(logical) Defunct. See function \code{name_backbone_verbose()}}
+\item{verbose}{(logical) should the function give back more results.
+See function \code{name_backbone_verbose()}}
 
 \item{start}{Record number to start at. Default: 0. Use in combination
 with \code{limit} to page through results.}

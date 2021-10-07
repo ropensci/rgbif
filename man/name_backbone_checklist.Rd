@@ -7,10 +7,10 @@
 name_backbone_checklist(
   name_data = NULL,
   strict = FALSE,
+  verbose = FALSE,
   start = NULL,
   limit = 100,
-  curlopts = list(),
-  fuzzy = FALSE
+  curlopts = list()
 )
 }
 \arguments{
@@ -18,6 +18,8 @@ name_backbone_checklist(
 
 \item{strict}{(logical) If \code{TRUE} it (fuzzy) matches only the given name,
 but never a taxon in the upper classification (optional)}
+
+\item{verbose}{(logical) should the matching return non}
 
 \item{fuzzy}{(logical) should the matching return non-exact matches}
 }

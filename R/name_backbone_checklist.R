@@ -3,8 +3,7 @@
 #' @param name_data (data.frame or vector) see details.
 #' @param strict (logical) If `TRUE` it (fuzzy) matches only the given name,
 #' but never a taxon in the upper classification (optional)
-#' @param verbose (logical) should the matching return non
-#' @param fuzzy (logical) should the matching return non-exact matches
+#' @param verbose (logical) should the matching return non-exact matches
 #'
 #' @return
 #' A \code{data.frame} of matched names.
@@ -42,7 +41,8 @@
 #' This function can also be used with a character vector of names. In that case 
 #' no column names are needed of course. 
 #' 
-#' 
+#' This function is very similar to the GBIF species-lookup tool. 
+#' https://www.gbif.org/tools/species-lookup 
 #' 
 #' 
 #' @export
@@ -101,11 +101,18 @@ name_backbone_checklist <- function(
 
 check_name_data = function(name_data) {
   
-  if(is.null(name_data)) stop("You forgot to supply your checklist data.frame or vector to name_data")
+  if(is.null(name_data)) stop("You forgot to supply your checklist data.frame or vector to name_data.")
   if(is.vector(name_data)) {
+    if(!is.character(name_data)) stop("name_data should be class character.")
     name_data <- data.frame(name=name_data)
     return(name_data) # exit early if vector
   } 
+  if(ncol(name_data) == 1) {
+    message("Assuming first column is 'name' column.")
+    colnames(name_data) <- "name"
+    if(!is.character(name_data$name)) stop("The name column should be class character.")
+    return(name_data) # exit early if only one column
+  }
   
   # clean column names 
   original_colnames <- colnames(name_data) 
@@ -120,9 +127,8 @@ check_name_data = function(name_data) {
     message("No 'name' column found. Using leftmost '",original_colnames[left_most_index], "' as the 'name' column.\nIf you do not want to use '", original_colnames[left_most_index], "' column, re-name the column you want to use 'name'.")
     colnames(name_data) <- gsub(left_most_name,"name",colnames(name_data))
   } 
-  if(ncol(name_data) == 1) {
-    message("Assuming first column is 'name' column.")
-    colnames(name_data) <- "name"
-    }
+  # check columns are character
+  char_args = c("name","rank","kingdom","phylum","class","order","family","genus")
+  if(!all(sapply(name_data[char_args %in% names(name_data)],is.character))) stop("All taxonomic columns should be character.")
   name_data
 }
