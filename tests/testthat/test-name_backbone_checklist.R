@@ -49,16 +49,16 @@ test_that("name_backbone_checklist good data", {
   
   vcr::use_cassette("name_backbone_checklist", {
     # with data.frame
-    tt <- name_backbone_checklist(name_data = name_data)
-    vv <- name_backbone_checklist(name_data = name_data,verbose=TRUE)
+    tt <- name_backbone_checklist(name_data = name_data,progress_bar=FALSE)
+    vv <- name_backbone_checklist(name_data = name_data,verbose=TRUE,progress_bar=FALSE)
     # vector
-    ttt <- name_backbone_checklist(name_data = name_data$name) 
-    vvv <- name_backbone_checklist(name_data = name_data$name,verbose=TRUE)
+    ttt <- name_backbone_checklist(name_data = name_data$name,progress_bar=FALSE) 
+    vvv <- name_backbone_checklist(name_data = name_data$name,verbose=TRUE,progress_bar=FALSE)
     # one column
-    cc <- name_backbone_checklist(name_data = name_data["name"]) 
-    dd <- name_backbone_checklist(name_data = name_data["name"],verbose=TRUE)
-    ccc <- name_backbone_checklist(name_data = name_data["Canonical_Name"]) 
-    ddd <- name_backbone_checklist(name_data = name_data["Canonical_Name"],verbose=TRUE)
+    cc <- name_backbone_checklist(name_data = name_data["name"],progress_bar=FALSE) 
+    dd <- name_backbone_checklist(name_data = name_data["name"],verbose=TRUE,progress_bar=FALSE)
+    ccc <- name_backbone_checklist(name_data = name_data["Canonical_Name"],progress_bar=FALSE) 
+    ddd <- name_backbone_checklist(name_data = name_data["Canonical_Name"],verbose=TRUE,progress_bar=FALSE)
     })
   
   # data.frame

@@ -6,7 +6,6 @@ test_that("gbif_citation w/ occ_search", {
   
   expect_is(aa, "list")
   expect_is(aa[[1]], "gbif_citation")
-  
   expect_named(aa[[1]], c('citation', 'rights'))
   
   expect_is(aa[[1]]$citation, 'list')

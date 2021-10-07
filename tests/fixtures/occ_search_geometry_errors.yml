@@ -8,15 +8,15 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.2.93)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.2.93)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '400'
       message: Bad Request
       explanation: Bad request syntax or unsupported method
     headers:
-      status: 'HTTP/2 400 '
+      status: HTTP/1.1 400 Bad Request
       vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
       x-content-type-options: nosniff
       x-xss-protection: 1; mode=block
@@ -25,19 +25,20 @@ http_interactions:
       x-frame-options: DENY
       content-type: text/plain
       content-length: '88'
-      date: Wed, 13 Jan 2021 18:08:54 GMT
+      date: Thu, 07 Oct 2021 13:52:57 GMT
       cache-control: no-cache, no-store, must-revalidate
-      x-varnish: '725781834'
+      x-varnish: '701597066'
       age: '0'
       via: 1.1 varnish (Varnish/6.0)
+      connection: keep-alive
     body:
       encoding: ASCII-8BIT
       file: no
       string: |-
         Q2Fubm90IHBhcnNlIHNpbXBsZSBXS1Q6IFBPTFlHT04oKDMwLjEgMTAuMSw0MCA0MCwyMCA0MCwxMCAy
         MCwzMC4xIGEpKSBFeHBlY3RlZCBhIG51bWJlcg==
-  recorded_at: 2021-01-13 18:08:53 GMT
-  recorded_with: vcr/0.6.0, webmockr/0.7.4
+  recorded_at: 2021-10-07 13:52:58 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search?limit=500&offset=0&geometry=POLYGON%28%2830.1%2010.1%2C40%2040%2C20%2040%2C10%2020%2C30.1%20%2710.1%27%29%29
@@ -47,15 +48,15 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.2.93)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.2.93)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '400'
       message: Bad Request
       explanation: Bad request syntax or unsupported method
     headers:
-      status: 'HTTP/2 400 '
+      status: HTTP/1.1 400 Bad Request
       vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
       x-content-type-options: nosniff
       x-xss-protection: 1; mode=block
@@ -64,19 +65,20 @@ http_interactions:
       x-frame-options: DENY
       content-type: text/plain
       content-length: '93'
-      date: Wed, 13 Jan 2021 18:08:54 GMT
+      date: Thu, 07 Oct 2021 13:52:57 GMT
       cache-control: no-cache, no-store, must-revalidate
-      x-varnish: '725781835'
+      x-varnish: '671093376'
       age: '0'
       via: 1.1 varnish (Varnish/6.0)
+      connection: keep-alive
     body:
       encoding: ASCII-8BIT
       file: no
       string: |-
         Q2Fubm90IHBhcnNlIHNpbXBsZSBXS1Q6IFBPTFlHT04oKDMwLjEgMTAuMSw0MCA0MCwyMCA0MCwxMCAy
         MCwzMC4xICcxMC4xJykpIEV4cGVjdGVkIGEgbnVtYmVy
-  recorded_at: 2021-01-13 18:08:53 GMT
-  recorded_with: vcr/0.6.0, webmockr/0.7.4
+  recorded_at: 2021-10-07 13:52:58 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search?limit=500&offset=0&geometry=POLYGON%28%2830.1%2010.1%2C40%2040%2C20%2040%2C10%2020%2C30.1%2010.1%29
@@ -86,15 +88,15 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.2.93)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.2.93)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '400'
       message: Bad Request
       explanation: Bad request syntax or unsupported method
     headers:
-      status: 'HTTP/2 400 '
+      status: HTTP/1.1 400 Bad Request
       vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
       x-content-type-options: nosniff
       x-xss-protection: 1; mode=block
@@ -103,16 +105,17 @@ http_interactions:
       x-frame-options: DENY
       content-type: text/plain
       content-length: '95'
-      date: Wed, 13 Jan 2021 18:08:54 GMT
+      date: Thu, 07 Oct 2021 13:52:57 GMT
       cache-control: no-cache, no-store, must-revalidate
-      x-varnish: '725781836'
+      x-varnish: '664606449'
       age: '0'
       via: 1.1 varnish (Varnish/6.0)
+      connection: keep-alive
     body:
       encoding: ASCII-8BIT
       file: no
       string: |-
         Q2Fubm90IHBhcnNlIHNpbXBsZSBXS1Q6IFBPTFlHT04oKDMwLjEgMTAuMSw0MCA0MCwyMCA0MCwxMCAy
         MCwzMC4xIDEwLjEpIEV4cGVjdGVkIFspXSBmb3VuZCBFT0Y=
-  recorded_at: 2021-01-13 18:08:53 GMT
-  recorded_with: vcr/0.6.0, webmockr/0.7.4
+  recorded_at: 2021-10-07 13:52:58 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

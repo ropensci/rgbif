@@ -4,14 +4,15 @@
 #' @param strict (logical) If `TRUE` it (fuzzy) matches only the given name,
 #' but never a taxon in the upper classification (optional)
 #' @param verbose (logical) should the matching return non-exact matches
-#'
+#' @param progress_bar (logical) show or hide progress bar 
+#' 
 #' @return
 #' A \code{data.frame} of matched names.
 #' 
 #' @details
 #' This function is a wrapper for  \code{name_backbone()}, which will work with 
 #' a list of names (a vectors or a data.frame). The data.frame should have the 
-#' following column names. \strong{Only the 'name' column is required}. If only 
+#' following column names,but \strong{only the 'name' column is required}. If only 
 #' one column is present, then that column is assumed to be the 'name' column.
 #' 
 #' - \strong{name} : (required)
@@ -44,6 +45,8 @@
 #' This function is very similar to the GBIF species-lookup tool. 
 #' https://www.gbif.org/tools/species-lookup 
 #' 
+#' If you have 1000s of names to match, it can take some minutes to get back all
+#' of the matches. 
 #' 
 #' @export
 #'
@@ -55,6 +58,7 @@ name_backbone_checklist <- function(
   name_data = NULL,
   strict = FALSE,
   verbose = FALSE,
+  progress_bar = TRUE,
   start=NULL,
   limit=100, 
   curlopts = list()
@@ -66,7 +70,7 @@ name_backbone_checklist <- function(
                       function(x) setNames(as.list(x),colnames(name_data)))
   
   message("matching names in progress...")
-  pb <- utils::txtProgressBar(min = 0, max = length(data_list), style = 3)
+  if(progress_bar) pb <- utils::txtProgressBar(min = 0, max = length(data_list), style = 3)
   matched_list <- lapply(1:length(data_list), function(i) {
     x <- data_list[[i]] # needed for progress bar 
     
@@ -85,11 +89,9 @@ name_backbone_checklist <- function(
         limit=limit, 
         curlopts = curlopts) 
       
-    setTxtProgressBar(pb, i)
+    if(progress_bar) setTxtProgressBar(pb, i)
     out 
   }) 
-  cat("\n")
-
   matched_names <- tibble::as_tibble(data.table::rbindlist(matched_list,fill=TRUE))
   
   # make sure "verbatim_" end up at the end of the data.frame
@@ -129,6 +131,6 @@ check_name_data = function(name_data) {
   } 
   # check columns are character
   char_args = c("name","rank","kingdom","phylum","class","order","family","genus")
-  if(!all(sapply(name_data[char_args %in% names(name_data)],is.character))) stop("All taxonomic columns should be character.")
+  if(!all(sapply(name_data[names(name_data) %in% char_args],is.character))) stop("All taxonomic columns should be character.")
   name_data
 }

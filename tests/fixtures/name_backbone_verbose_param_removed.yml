@@ -1,0 +1,87 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/species/match?name=Helianthus&strict=false&verbose=TRUE&limit=100
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Thu, 07 Oct 2021 12:46:17 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=3601
+      x-varnish: 630722037 647200771
+      age: '1445'
+      via: 1.1 varnish (Varnish/6.0)
+      accept-ranges: bytes
+      content-length: '2051'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"usageKey":3119134,"scientificName":"Helianthus L.","canonicalName":"Helianthus","rank":"GENUS","status":"ACCEPTED","confidence":94,"note":"Similarity:
+        name=100; authorship=0; classification=-2; rank=0; status=1; nextMatch=5","matchType":"EXACT","alternatives":[{"usageKey":3231727,"acceptedUsageKey":7937950,"scientificName":"Halianthus
+        Fr.","canonicalName":"Halianthus","rank":"GENUS","status":"SYNONYM","confidence":73,"note":"Similarity:
+        name=75; authorship=0; classification=-2; rank=0; status=0","matchType":"FUZZY","kingdom":"Plantae","phylum":"Tracheophyta","order":"Caryophyllales","family":"Caryophyllaceae","genus":"Arenaria","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":422,"familyKey":2518,"genusKey":7937950,"synonym":true,"class":"Magnoliopsida"},{"usageKey":6438470,"acceptedUsageKey":3172186,"scientificName":"Hemianthus
+        Nutt.","canonicalName":"Hemianthus","rank":"GENUS","status":"SYNONYM","confidence":73,"note":"Similarity:
+        name=75; authorship=0; classification=-2; rank=0; status=0","matchType":"FUZZY","kingdom":"Plantae","phylum":"Tracheophyta","order":"Lamiales","family":"Linderniaceae","genus":"Micranthemum","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":408,"familyKey":4160847,"genusKey":3172186,"synonym":true,"class":"Magnoliopsida"},{"usageKey":7327443,"scientificName":"Helianthum
+        Engelm. ex Britton, 1905","canonicalName":"Helianthum","rank":"GENUS","status":"DOUBTFUL","confidence":68,"note":"Similarity:
+        name=75; authorship=0; classification=-2; rank=0; status=-5","matchType":"FUZZY","kingdom":"Plantae","phylum":"Tracheophyta","order":"Alismatales","family":"Alismataceae","genus":"Helianthum","kingdomKey":6,"phylumKey":7707728,"classKey":196,"orderKey":551,"familyKey":3720,"genusKey":7327443,"synonym":false,"class":"Liliopsida"}],"kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Helianthus","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3119134,"synonym":false,"class":"Magnoliopsida"}'
+  recorded_at: 2021-10-07 13:10:23 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/species/match?name=Helianthus&strict=false&verbose=TRUE&limit=100
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Thu, 07 Oct 2021 12:46:17 GMT
+      content-type: application/json
+      access-control-allow-origin: '*'
+      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
+      server: Jetty(9.3.z-SNAPSHOT)
+      cache-control: public, max-age=3601
+      x-varnish: 647662450 647200771
+      age: '1445'
+      via: 1.1 varnish (Varnish/6.0)
+      accept-ranges: bytes
+      content-length: '2051'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"usageKey":3119134,"scientificName":"Helianthus L.","canonicalName":"Helianthus","rank":"GENUS","status":"ACCEPTED","confidence":94,"note":"Similarity:
+        name=100; authorship=0; classification=-2; rank=0; status=1; nextMatch=5","matchType":"EXACT","alternatives":[{"usageKey":3231727,"acceptedUsageKey":7937950,"scientificName":"Halianthus
+        Fr.","canonicalName":"Halianthus","rank":"GENUS","status":"SYNONYM","confidence":73,"note":"Similarity:
+        name=75; authorship=0; classification=-2; rank=0; status=0","matchType":"FUZZY","kingdom":"Plantae","phylum":"Tracheophyta","order":"Caryophyllales","family":"Caryophyllaceae","genus":"Arenaria","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":422,"familyKey":2518,"genusKey":7937950,"synonym":true,"class":"Magnoliopsida"},{"usageKey":6438470,"acceptedUsageKey":3172186,"scientificName":"Hemianthus
+        Nutt.","canonicalName":"Hemianthus","rank":"GENUS","status":"SYNONYM","confidence":73,"note":"Similarity:
+        name=75; authorship=0; classification=-2; rank=0; status=0","matchType":"FUZZY","kingdom":"Plantae","phylum":"Tracheophyta","order":"Lamiales","family":"Linderniaceae","genus":"Micranthemum","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":408,"familyKey":4160847,"genusKey":3172186,"synonym":true,"class":"Magnoliopsida"},{"usageKey":7327443,"scientificName":"Helianthum
+        Engelm. ex Britton, 1905","canonicalName":"Helianthum","rank":"GENUS","status":"DOUBTFUL","confidence":68,"note":"Similarity:
+        name=75; authorship=0; classification=-2; rank=0; status=-5","matchType":"FUZZY","kingdom":"Plantae","phylum":"Tracheophyta","order":"Alismatales","family":"Alismataceae","genus":"Helianthum","kingdomKey":6,"phylumKey":7707728,"classKey":196,"orderKey":551,"familyKey":3720,"genusKey":7327443,"synonym":false,"class":"Liliopsida"}],"kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Helianthus","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3119134,"synonym":false,"class":"Magnoliopsida"}'
+  recorded_at: 2021-10-07 13:10:23 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
