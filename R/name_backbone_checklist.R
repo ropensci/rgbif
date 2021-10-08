@@ -173,7 +173,7 @@ check_name_data = function(name_data) {
   colnames(name_data) <- gsub("_","",colnames(name_data))
   
   # check for aliases 
-  name_aliases = c("scientificname","sciname","names","species","speciesname","spname","taxonname")
+  name_aliases <- c("scientificname","sciname","names","species","speciesname","spname","taxonname")
   if((any(name_aliases %in% colnames(name_data))) & (!"name" %in% colnames(name_data))) {
     left_most_index <- which(colnames(name_data) %in% name_aliases)[1]
     left_most_name <- colnames(name_data)[left_most_index]
@@ -181,7 +181,7 @@ check_name_data = function(name_data) {
     colnames(name_data) <- gsub(left_most_name,"name",colnames(name_data))
   } 
   # check columns are character
-  char_args = c("name","rank","kingdom","phylum","class","order","family","genus")
+  char_args <- c("name","rank","kingdom","phylum","class","order","family","genus")
   if(!all(sapply(name_data[names(name_data) %in% char_args],is.character))) stop("All taxonomic columns should be character.")
   name_data
 }
