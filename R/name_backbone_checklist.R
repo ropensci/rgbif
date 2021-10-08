@@ -1,5 +1,9 @@
 #' Lookup names in the GBIF backbone taxonomy in a checklist.
 #'
+#' @template otherlimstart
+#' @template occ
+#' @export
+#'
 #' @param name_data (data.frame or vector) see details.
 #' @param strict (logical) If `TRUE` it (fuzzy) matches only the given name,
 #' but never a taxon in the upper classification (optional)
@@ -11,8 +15,8 @@
 #' 
 #' @details
 #' This function is a wrapper for  \code{name_backbone()}, which will work with 
-#' a list of names (a vectors or a data.frame). The data.frame should have the 
-#' following column names,but \strong{only the 'name' column is required}. If only 
+#' a list of names (a vector or a data.frame). The data.frame should have the 
+#' following column names, but \strong{only the 'name' column is required}. If only 
 #' one column is present, then that column is assumed to be the 'name' column.
 #' 
 #' - \strong{name} : (required)
@@ -29,28 +33,73 @@
 #'
 #' The following aliases for the 'name' column will work (any case or with '_'
 #' work) :
-#' - "scientificName" 
-#' - "sci_name" 
-#' - "names" 
-#' - "species" 
-#' - "species_name" 
-#' - "sp_name" 
+#' - "scientificName", "ScientificName", "scientific_name" ... 
+#' - "sci_name", "sciname", "SCI_NAME" ...
+#' - "names", "NAMES" ...
+#' - "species", "SPECIES" ... 
+#' - "species_name", "speciesname" ... 
+#' - "sp_name", "SP_NAME", "spname" ...
 #'   
 #' If more than one aliases is present and no column is named 'name', then the
-#' leftmost column with an alias name is used.  
+#' left-most column with an acceptable aliased name above is used.  
 #'
 #' This function can also be used with a character vector of names. In that case 
 #' no column names are needed of course. 
 #' 
 #' This function is very similar to the GBIF species-lookup tool. 
-#' https://www.gbif.org/tools/species-lookup 
+#' \href{https://www.gbif.org/tools/species-lookup}{https://www.gbif.org/tools/species-lookup}
 #' 
 #' If you have 1000s of names to match, it can take some minutes to get back all
-#' of the matches. 
+#' of the matches. Also you will usually get better matches if you include the 
+#' author details. 
 #' 
-#' @export
-#'
 #' @examples \dontrun{
+#' 
+#' library(rgbif)
+#'
+#' name_data <- data.frame(
+#'  scientificName = c(
+#'    "Cirsium arvense (L.) Scop.", # a plant
+#'    "Calopteryx splendens (Harris, 1780)", # an insect
+#'    "Puma concolor (Linnaeus, 1771)", # a big cat
+#'    "Ceylonosticta alwisi (Priyadarshana & Wijewardhane, 2016)", # newly discovered insect 
+#'    "Puma concuolor (Linnaeus, 1771)", # a mis-spelled big cat
+#'    "Fake species (John Waller 2021)", # a fake species
+#'    "Calopteryx" # Just a Genus   
+#'  ), description = c(
+#'    "a plant",
+#'    "an insect",
+#'    "a big cat",
+#'    "newly discovered insect",
+#'    "a mis-spelled big cat",
+#'    "a fake species",
+#'    "just a GENUS"
+#'  ), 
+#'  kingdom = c(
+#'    "Plantae",
+#'    "Animalia",
+#'    "Animalia",
+#'    "Animalia",
+#'    "Animalia",
+#'    "Johnlia",
+#'    "Animalia"
+#'  ))
+#'
+#' name_backbone_checklist(name_data)
+#' name_backbone_checklist(name_data,verbose=TRUE) # return non-accepted names too 
+#'
+#' # works with just vectors too 
+#' name_list <- c(
+#' "Cirsium arvense (L.) Scop.", 
+#' "Calopteryx splendens (Harris, 1780)", 
+#' "Puma concolor (Linnaeus, 1771)", 
+#' "Ceylonosticta alwisi (Priyadarshana & Wijewardhane, 2016)", 
+#' "Puma concuolor", 
+#' "Fake species (John Waller 2021)", 
+#' "Calopteryx")
+#'
+#' name_backbone_checklist(name_list)
+#' name_backbone_checklist(name_list,verbose=TRUE)
 #' 
 #' }
 #' 
@@ -67,10 +116,12 @@ name_backbone_checklist <- function(
   
   name_data <- check_name_data(name_data)
   data_list <- lapply(data.table::transpose(name_data),
-                      function(x) setNames(as.list(x),colnames(name_data)))
+                      function(x) stats::setNames(as.list(x),colnames(name_data)))
   
-  message("matching names in progress...")
-  if(progress_bar) pb <- utils::txtProgressBar(min = 0, max = length(data_list), style = 3)
+  if(progress_bar){
+    message("matching names in progress...")
+    pb <- utils::txtProgressBar(min = 0, max = length(data_list), style = 3)
+  } 
   matched_list <- lapply(1:length(data_list), function(i) {
     x <- data_list[[i]] # needed for progress bar 
     
@@ -89,7 +140,7 @@ name_backbone_checklist <- function(
         limit=limit, 
         curlopts = curlopts) 
       
-    if(progress_bar) setTxtProgressBar(pb, i)
+    if(progress_bar) utils::setTxtProgressBar(pb, i)
     out 
   }) 
   matched_names <- tibble::as_tibble(data.table::rbindlist(matched_list,fill=TRUE))
@@ -122,7 +173,7 @@ check_name_data = function(name_data) {
   colnames(name_data) <- gsub("_","",colnames(name_data))
   
   # check for aliases 
-  name_aliases = c("scientificname","sciname","names","species","speciesname","spname")
+  name_aliases = c("scientificname","sciname","names","species","speciesname","spname","taxonname")
   if((any(name_aliases %in% colnames(name_data))) & (!"name" %in% colnames(name_data))) {
     left_most_index <- which(colnames(name_data) %in% name_aliases)[1]
     left_most_name <- colnames(name_data)[left_most_index]

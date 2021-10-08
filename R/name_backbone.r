@@ -74,7 +74,7 @@ name_backbone <- function(name, rank=NULL, kingdom=NULL, phylum=NULL,
          strict=as_log(strict), verbose = verbose, offset=start, limit=limit))
   tt <- gbif_GET(url, args, FALSE, curlopts)
   input_args <- args[!names(args) %in% c("strict","verbose","start","limit","curlopts")]
-  input_args <- setNames(input_args,paste0("verbatim_",names(input_args)))
+  input_args <- stats::setNames(input_args,paste0("verbatim_",names(input_args)))
   tt <- c(tt,input_args)
   out <- tibble::as_tibble(tt[!names(tt) %in% c("alternatives", "note")])
   structure(out, args = args, note = tt$note, type = "single")

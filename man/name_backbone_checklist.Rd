@@ -8,6 +8,7 @@ name_backbone_checklist(
   name_data = NULL,
   strict = FALSE,
   verbose = FALSE,
+  progress_bar = TRUE,
   start = NULL,
   limit = 100,
   curlopts = list()
@@ -19,9 +20,18 @@ name_backbone_checklist(
 \item{strict}{(logical) If \code{TRUE} it (fuzzy) matches only the given name,
 but never a taxon in the upper classification (optional)}
 
-\item{verbose}{(logical) should the matching return non}
+\item{verbose}{(logical) should the matching return non-exact matches}
 
-\item{fuzzy}{(logical) should the matching return non-exact matches}
+\item{progress_bar}{(logical) show or hide progress bar}
+
+\item{start}{Record number to start at. Default: 0. Use in combination
+with \code{limit} to page through results.}
+
+\item{limit}{Number of records to return. Default: 100. Maximum: 1000.}
+
+\item{curlopts}{list of named curl options passed on to
+\code{\link[crul]{HttpClient}}. see \code{curl::curl_options}
+for curl options}
 }
 \value{
 A \code{data.frame} of matched names.
@@ -31,8 +41,8 @@ Lookup names in the GBIF backbone taxonomy in a checklist.
 }
 \details{
 This function is a wrapper for  \code{name_backbone()}, which will work with
-a list of names (a vectors or a data.frame). The data.frame should have the
-following column names. \strong{Only the 'name' column is required}. If only
+a list of names (a vector or a data.frame). The data.frame should have the
+following column names, but \strong{only the 'name' column is required}. If only
 one column is present, then that column is assumed to be the 'name' column.
 \itemize{
 \item \strong{name} : (required)
@@ -51,22 +61,75 @@ The input columns will be returned as "verbatim_name","verbatim_rank",
 The following aliases for the 'name' column will work (any case or with '_'
 work) :
 \itemize{
-\item "scientificName"
-\item "sci_name"
-\item "names"
-\item "species"
-\item "species_name"
-\item "sp_name"
+\item "scientificName", "ScientificName", "scientific_name" ...
+\item "sci_name", "sciname", "SCI_NAME" ...
+\item "names", "NAMES" ...
+\item "species", "SPECIES" ...
+\item "species_name", "speciesname" ...
+\item "sp_name", "SP_NAME", "spname" ...
 }
 
 If more than one aliases is present and no column is named 'name', then the
-leftmost column with an alias name is used.
+left-most column with an acceptable aliased name above is used.
 
 This function can also be used with a character vector of names. In that case
 no column names are needed of course.
+
+This function is very similar to the GBIF species-lookup tool.
+\href{https://www.gbif.org/tools/species-lookup}{https://www.gbif.org/tools/species-lookup}
+
+If you have 1000s of names to match, it can take some minutes to get back all
+of the matches. Also you will usually get better matches if you include the
+author details.
 }
 \examples{
 \dontrun{
+
+library(rgbif)
+
+name_data <- data.frame(
+ scientificName = c(
+   "Cirsium arvense (L.) Scop.", # a plant
+   "Calopteryx splendens (Harris, 1780)", # an insect
+   "Puma concolor (Linnaeus, 1771)", # a big cat
+   "Ceylonosticta alwisi (Priyadarshana & Wijewardhane, 2016)", # newly discovered insect 
+   "Puma concuolor (Linnaeus, 1771)", # a mis-spelled big cat
+   "Fake species (John Waller 2021)", # a fake species
+   "Calopteryx" # Just a Genus   
+ ), description = c(
+   "a plant",
+   "an insect",
+   "a big cat",
+   "newly discovered insect",
+   "a mis-spelled big cat",
+   "a fake species",
+   "just a GENUS"
+ ), 
+ kingdom = c(
+   "Plantae",
+   "Animalia",
+   "Animalia",
+   "Animalia",
+   "Animalia",
+   "Johnlia",
+   "Animalia"
+ ))
+
+name_backbone_checklist(name_data)
+name_backbone_checklist(name_data,verbose=TRUE) # return non-accepted names too 
+
+# works with just vectors too 
+name_list <- c(
+"Cirsium arvense (L.) Scop.", 
+"Calopteryx splendens (Harris, 1780)", 
+"Puma concolor (Linnaeus, 1771)", 
+"Ceylonosticta alwisi (Priyadarshana & Wijewardhane, 2016)", 
+"Puma concuolor", 
+"Fake species (John Waller 2021)", 
+"Calopteryx")
+
+name_backbone_checklist(name_list)
+name_backbone_checklist(name_list,verbose=TRUE)
 
 }
 

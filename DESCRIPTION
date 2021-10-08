@@ -42,7 +42,8 @@ Imports:
     wellknown (>= 0.7.2),
     lazyeval,
     R6,
-    conditionz
+    conditionz,
+    stats
 Suggests:
     testthat,
     sp,
