@@ -34,6 +34,7 @@ print.occ_download_meta <- function(x, ...){
   stopifnot(inherits(x, 'occ_download_meta'))
   cat_n("<<gbif download metadata>>")
   cat_n("  Status: ", x$status)
+  cat_n("  DOI: ", x$doi)
   cat_n("  Format: ", attr(x, 'format'))
   cat_n("  Download key: ", x$key)
   cat_n("  Created: ", x$created)

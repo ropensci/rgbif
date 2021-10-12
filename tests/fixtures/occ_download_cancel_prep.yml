@@ -4,11 +4,11 @@ http_interactions:
     uri: https://api.gbif.org/v1/occurrence/download/request
     body:
       encoding: ''
-      string: '{"creator":"<gbif_user>","notification_address":["<gbif_email>"],"format":"DWCA","predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"9206251"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1979"}]}}'
+      string: '{"creator":"<gbif_user>","notification_address":["<gbif_user>@gbif.org"],"format":"DWCA","predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"9206251"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1979"}]}}'
     headers:
       Accept-Encoding: gzip, deflate
-      User-Agent: r-curl/4.3 crul/0.9.2.92 rOpenSci(rgbif/3.0.0.91)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.2.92 rOpenSci(rgbif/3.0.0.91)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
       Content-Type: application/json
       Accept: application/json
   response:
@@ -18,21 +18,62 @@ http_interactions:
       explanation: Document created, URL follows
     headers:
       status: HTTP/1.1 201 Created
-      date: Wed, 24 Jun 2020 15:14:01 GMT
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
       content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
-      location: http://api.gbif.org/v1/occurrence/download/request/0007553-200613084148143
-      cache-control: public, max-age=3601
-      x-varnish: '1007386857'
-      age: '0'
-      via: 1.1 varnish (Varnish/5.2)
       content-length: '23'
+      date: Tue, 12 Oct 2021 07:35:09 GMT
+      cache-control: public, max-age=3601
+      x-varnish: '799214960'
+      age: '0'
+      via: 1.1 varnish (Varnish/6.0)
       connection: keep-alive
     body:
       encoding: UTF-8
       file: no
-      string: 0007553-200613084148143
-  recorded_at: 2020-06-24 15:14:03 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.6.2
+      string: 0023420-210914110416597
+  recorded_at: 2021-10-12 07:35:10 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/download/0023420-210914110416597
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
+      content-type: application/json
+      date: Tue, 12 Oct 2021 07:35:09 GMT
+      cache-control: public, max-age=3601
+      x-varnish: '815630521'
+      age: '0'
+      via: 1.1 varnish (Varnish/6.0)
+      accept-ranges: bytes
+      transfer-encoding: chunked
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"key":"0023420-210914110416597","doi":"10.15468/dl.s6y6z7","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"9206251","matchCase":false},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1979","matchCase":false}]},"sendNotification":false,"format":"DWCA"},"created":"2021-10-12T07:35:10.145+00:00","modified":"2021-10-12T07:35:10.255+00:00","eraseAfter":"2022-04-12T07:35:10.068+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0023420-210914110416597.zip","size":0,"totalRecords":0,"numberDatasets":0}'
+  recorded_at: 2021-10-12 07:35:10 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
