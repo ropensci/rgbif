@@ -31,12 +31,12 @@ test_that("gbif_citation w/ occ_data", {
 test_that("gbif_citation fails correctly", {
   expect_error(gbif_citation(), "no applicable method")
   expect_error(gbif_citation(matrix()), "no applicable method")
-
+  
   # key field not included - errors
   vcr::use_cassette("gbif_citation_error", {
     res3 <- occ_search(taxonKey=9206251,
-      fields=c('scientificName','basisOfRecord','protocol'), limit=20)
+                       fields=c('scientificName','basisOfRecord','protocol'), limit=20)
   }, preserve_exact_body_bytes = TRUE)
   expect_error(suppressWarnings(gbif_citation(res3)),
-    "No 'datasetKey' or 'key' fields found")
+               "No 'datasetKey' or 'key' fields found")
 })

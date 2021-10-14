@@ -36,7 +36,7 @@ occ_download_get <- function(key, path=".", overwrite=FALSE, ...) {
   url <- sprintf('%s/occurrence/download/request/%s', gbif_base(), key)
   path <- sprintf("%s/%s.zip", path, key)
   cli <- crul::HttpClient$new(url = url, headers = rgbif_ual,
-    opts = c(followlocation = TRUE, list(...)))
+                              opts = c(followlocation = TRUE, list(...)))
   if (file.exists(path)) {
     if (!overwrite) stop("file exists & overwrite=FALSE")
   }
