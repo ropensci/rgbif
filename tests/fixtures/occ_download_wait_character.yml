@@ -1,0 +1,40 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/download/0000066-140928181241064
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
+      content-type: application/json
+      date: Fri, 15 Oct 2021 13:00:00 GMT
+      cache-control: public, max-age=3601
+      x-varnish: '518882885'
+      age: '0'
+      via: 1.1 varnish (Varnish/6.0)
+      accept-ranges: bytes
+      content-length: '536'
+      connection: keep-alive
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"key":"0000066-140928181241064","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"equals","key":"ELEVATION","value":"9500","matchCase":false},"sendNotification":false,"format":"DWCA"},"created":"2014-09-29T06:00:16.704+00:00","modified":"2014-09-29T06:01:29.520+00:00","eraseAfter":"2015-03-29T06:00:16.704+00:00","status":"SUCCEEDED","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0000066-140928181241064.zip","size":143097,"totalRecords":470,"numberDatasets":26}'
+  recorded_at: 2021-10-15 13:00:01 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
