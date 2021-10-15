@@ -51,7 +51,7 @@ test_that("occ_download_meta print method", {
   })
 
   expect_is(aa, "occ_download_meta")
-  expect_output(print(aa), "Total records: <NA>")
+  expect_output(print(aa), "Total records: 21")
 
   expect_is(bb, "occ_download_meta")
   expect_output(print(bb), "Total records: 21")

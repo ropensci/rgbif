@@ -7,8 +7,8 @@ http_interactions:
       string: ''
     headers:
       Accept-Encoding: gzip, deflate
-      User-Agent: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
-      X-USER-AGENT: r-curl/4.3 crul/0.9.0 rOpenSci(rgbif/2.1.0)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
       Content-Type: application/json
       Accept: application/json
   response:
@@ -18,20 +18,22 @@ http_interactions:
       explanation: No permission -- see authorization schemes
     headers:
       status: HTTP/1.1 401 Unauthorized
-      date: Wed, 12 Feb 2020 22:38:04 GMT
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      www-authenticate: Basic realm="GBIF"
+      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      pragma: no-cache
+      expires: '0'
+      x-frame-options: DENY
       content-length: '0'
-      server: Jetty(9.3.z-SNAPSHOT)
+      date: Mon, 11 Oct 2021 14:51:57 GMT
       cache-control: no-cache, no-store, must-revalidate
-      x-varnish: '1027673894'
+      x-varnish: '1021083838'
       age: '0'
-      via: 1.1 varnish (Varnish/5.2)
+      via: 1.1 varnish (Varnish/6.0)
       connection: keep-alive
     body:
       encoding: UTF-8
       file: no
       string: ''
-  recorded_at: 2020-02-12 22:38:04 GMT
-  recorded_with: vcr/0.4.0, webmockr/0.5.0
+  recorded_at: 2021-10-11 14:51:58 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
