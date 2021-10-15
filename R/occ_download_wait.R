@@ -1,7 +1,7 @@
 #' Wait for an occurrence download to be done
 #'
 #' @export
-#' @param x and object of class `occ_download`
+#' @param x and object of class `occ_download` or download key
 #' @param status_ping (integer) seconds between each [occ_download_meta()]
 #' request. default is 5, and cannot be < 3
 #' @param curlopts (list) curl options, as named list, passed on to
@@ -23,8 +23,10 @@
 #' }
 occ_download_wait <- function(x, status_ping = 5, curlopts = list(),
   quiet = FALSE) {
-
-  assert(x, "occ_download")
+  
+  if(!grepl("[0-9]+-[0-9]+",x)) stop("x should be a downloadkey or 
+                                     an occ_download object.")
+  # assert(x, "occ_download")
   assert(status_ping, c("numeric", "integer"))
   assert(quiet, "logical")
   if (status_ping < 3) stop("ping seconds must be >= 3", call. = FALSE)

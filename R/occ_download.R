@@ -182,7 +182,7 @@ occ_download <- function(..., body = NULL, type = "and", format = "DWCA",
   z <- occ_download_prep(..., body = body, type = type, format = format,
     user = user, pwd = pwd, email = email, curlopts = curlopts)
   out <- rg_POST(z$url, req = z$request, user = z$user, pwd = z$pwd, curlopts)
-  class(out) <- "occ_download" # to get occ_download_meta() to work
+#  class(out) <- "occ_download" # to get occ_download_meta() to work
   md <- occ_download_meta(out) # get meta_data for printing
   citation <- gbif_citation(md)$download # get citation
   
@@ -234,6 +234,8 @@ print.occ_download <- function(x, ...) {
   cat_n("  https://www.gbif.org/occurrence/download/",x)
   cat_n("  https://www.gbif.org/user/download")
   cat_n("  Most downloads finish within 15 min.")
+  cat_n("  Check status with")
+  cat_n("  occ_download_wait('",x,"')")
   cat_n("  After it finishes, use")
   cat_n("  d <- occ_download_get('",x,"') %>%") 
   cat_n("    occ_download_import()")
