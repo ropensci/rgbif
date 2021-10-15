@@ -9,8 +9,8 @@ name: R-check-real-requests
 
 jobs:
   R-check-real-requests:
-    runs-on: ubuntu-lastest
-    name: 'ubuntu-lastest (R-release)'
+    runs-on: ubuntu-latest
+    name: 'ubuntu-latest (R-release)'
     strategy:
       fail-fast: false
     env:
