@@ -182,7 +182,6 @@ occ_download <- function(..., body = NULL, type = "and", format = "DWCA",
   z <- occ_download_prep(..., body = body, type = type, format = format,
     user = user, pwd = pwd, email = email, curlopts = curlopts)
   out <- rg_POST(z$url, req = z$request, user = z$user, pwd = z$pwd, curlopts)
-#  class(out) <- "occ_download" # to get occ_download_meta() to work
   md <- occ_download_meta(out) # get meta_data for printing
   citation <- gbif_citation(md)$download # get citation
   

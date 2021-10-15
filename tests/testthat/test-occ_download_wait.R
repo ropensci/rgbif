@@ -25,11 +25,15 @@ test_that("occ_download_wait: character key works", {
     cc <- occ_download_wait("0000066-140928181241064")
     })
   
-  # Test if works with occ_download object
+  # Test if works with character key
   expect_is(cc, "occ_download_meta")
   expect_is(unclass(cc), "list")
   expect_match(cc$key, "[0-9]+-[0-9]+")
   expect_equal(cc$status, "SUCCEEDED")
+  
+  # expect error
+  expect_error(occ_download_wait(1),"x should be a downloadkey or an occ_download object.")
+  expect_error(occ_download_wait("dog"),"x should be a downloadkey or an occ_download object.")
   
 })
 
