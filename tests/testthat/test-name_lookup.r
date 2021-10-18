@@ -2,7 +2,7 @@ context("name_lookup")
 
 test_that("returns the correct class", {
   skip_on_cran() # because fixture in .Rbuildignore
-
+  
   vcr::use_cassette("name_lookup", {
     tt <- name_lookup(query='mammalia')
     uu <- name_lookup(query='Cnaemidophorus', rank="genus")
@@ -41,8 +41,8 @@ test_that("works with habitat parameter", {
   }, preserve_exact_body_bytes = TRUE)
   
   expect_is(fachab, "gbif")
-  expect_equal(fachab$facets$habitat$name, c("MARINE", "TERRESTRIAL", "FRESHWATER"))
-
+  expect_equal(fachab$facets$habitat$name, c("TERRESTRIAL","MARINE","FRESHWATER"))
+  
   expect_is(facet_terr, "gbif")
   expect_is(facet_mar, "gbif")
   expect_is(facet_fresh, "gbif")
