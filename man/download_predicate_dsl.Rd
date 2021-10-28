@@ -10,6 +10,7 @@
 \alias{pred_not}
 \alias{pred_like}
 \alias{pred_within}
+\alias{pred_isnull}
 \alias{pred_notnull}
 \alias{pred_or}
 \alias{pred_and}
@@ -31,6 +32,8 @@ pred_not(...)
 pred_like(key, value)
 
 pred_within(value)
+
+pred_isnull(key, value)
 
 pred_notnull(key)
 

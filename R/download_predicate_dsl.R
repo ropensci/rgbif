@@ -189,6 +189,9 @@ pred_like <- function(key, value) pred_factory("like")(key, value)
 pred_within <- function(value) pred_factory("within")(key = "geometry", value)
 #' @rdname download_predicate_dsl
 #' @export
+pred_isnull <- function(key) pred_factory("isNull")(key, "foo")
+#' @rdname download_predicate_dsl
+#' @export
 pred_notnull <- function(key) pred_factory("isNotNull")(key, "foo")
 #' @rdname download_predicate_dsl
 #' @export
@@ -255,13 +258,13 @@ preds_factory <- function(type) {
 }
 
 operators_regex <- c("=", "\\&", "and", "<", "<=", ">", ">=", "not", "in",
-                     "within", "like", "\\|", "or", "isNotNull")
+                     "within", "like", "\\|", "or", "isNotNull","isNull")
 operator_lkup <- list(`=` = 'equals', `&` = 'and', 'and' = 'and',
                       `<` = 'lessThan', `<=` = 'lessThanOrEquals',
                       `>` = 'greaterThan', `>=` = 'greaterThanOrEquals',
                       `not` = 'not', 'in' = 'in', 'within' = 'within',
                       'like' = 'like', `|` = 'or', "or" = "or",
-                      "isNotNull" = "isNotNull")
+                      "isNotNull" = "isNotNull","isNull" = "isNull")
 key_lkup <- list(taxonKey='TAXON_KEY', scientificName='SCIENTIFIC_NAME',
     country='COUNTRY', publishingCountry='PUBLISHING_COUNTRY',
     hasCoordinate='HAS_COORDINATE', hasGeospatialIssue='HAS_GEOSPATIAL_ISSUE',
@@ -294,7 +297,6 @@ parse_pred <- function(key, value, type = "and") {
     stop("'type' not in acceptable set of types; see param def. 'type'",
       call.=FALSE)
   type <- operator_lkup[ operators_regex %in% type ][[1]]
-
   if (
     (is.character(value) &&
       all(grepl("polygon|multipolygon|linestring|multilinestring|point|multipoint",
@@ -308,6 +310,8 @@ parse_pred <- function(key, value, type = "and") {
     list(type = unbox("or"), predicates = lapply(value, function(w)
       list(type = unbox("equals"), key = unbox(key), value = as_c(w))))
   } else if (type == "isNotNull") {
+    list(type = unbox(type), parameter = unbox(key))
+  } else if (type == "isNull") {
     list(type = unbox(type), parameter = unbox(key))
   } else {
     list(type = unbox(type), key = unbox(key), value = unbox(as_c(value)))
