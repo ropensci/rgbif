@@ -25,19 +25,4 @@ test_that("Throws error because a name is required in the function call", {
   expect_error(name_backbone(kingdom = 'plants'), "argument \"name\" is missing")
 })
 
-test_that("name_backbone verbose parameter", {
-  skip_on_cran()
-  
-  vcr::use_cassette("name_backbone_verbose_param_removed", {
-    # the 1st time does throw a warning
-    expect_warning((z = name_backbone(name = 'Helianthus', verbose = TRUE)),
-      "`verbose` param in `name_backbone` function is defunct"
-    )
-    # the 2nd time does not throw any warnings
-    expect_warning((z = name_backbone(name = 'Helianthus', verbose = TRUE)),
-      NA
-    )
-  })
-  # still returns data
-  expect_is(z, "data.frame")
-})
+

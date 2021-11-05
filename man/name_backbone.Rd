@@ -15,7 +15,7 @@ name_backbone(
   family = NULL,
   genus = NULL,
   strict = FALSE,
-  verbose = NULL,
+  verbose = FALSE,
   start = NULL,
   limit = 100,
   curlopts = list()
@@ -69,7 +69,8 @@ match against this if no direct match is found for the name alone.
 \item{strict}{(logical) If \code{TRUE} it (fuzzy) matches only the given name,
 but never a taxon in the upper classification (optional)}
 
-\item{verbose}{(logical) Defunct. See function \code{name_backbone_verbose()}}
+\item{verbose}{(logical) should the function give back more results.
+See function \code{name_backbone_verbose()}}
 
 \item{start}{Record number to start at. Default: 0. Use in combination
 with \code{limit} to page through results.}
@@ -82,9 +83,11 @@ for curl options}
 }
 \value{
 For \code{name_backbone}, a data.frame for a single taxon with many
-columns. For \code{name_backbone_verbose} a list of length two (\code{data} and
-\code{alternatives}), first data.frame for the suggested taxon match, and a
-data.frame with alternative name suggestions resulting from fuzzy matching
+columns. For \code{name_backbone_verbose}, a larger number of results in a
+data.frame the results of resulting from fuzzy matching.
+You will also get back your input name, rank, kingdom, phylum ect. as
+columns input_name, input_rank, input_kingdom ect. so you can check the
+results.
 }
 \description{
 Lookup names in the GBIF backbone taxonomy.
