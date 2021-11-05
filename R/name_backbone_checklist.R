@@ -1,14 +1,10 @@
 #' Lookup names in the GBIF backbone taxonomy in a checklist.
 #'
-#' @template otherlimstart
 #' @template occ
 #' @export
 #'
 #' @param name_data (data.frame or vector) see details.
-#' @param strict (logical) If `TRUE` it (fuzzy) matches only the given name,
-#' but never a taxon in the upper classification (optional)
 #' @param verbose (logical) should the matching return non-exact matches
-#' @param progress_bar (logical) show or hide progress bar 
 #' 
 #' @return
 #' A \code{data.frame} of matched names.
@@ -32,7 +28,7 @@
 #' "verbatim_phylum"...
 #'
 #' The following aliases for the 'name' column will work (any case or with '_'
-#' work) :
+#' will work) :
 #' - "scientificName", "ScientificName", "scientific_name" ... 
 #' - "sci_name", "sciname", "SCI_NAME" ...
 #' - "names", "NAMES" ...
@@ -50,8 +46,9 @@
 #' \href{https://www.gbif.org/tools/species-lookup}{https://www.gbif.org/tools/species-lookup}
 #' 
 #' If you have 1000s of names to match, it can take some minutes to get back all
-#' of the matches. Also you will usually get better matches if you include the 
-#' author details. 
+#' of the matches. I have tested it with 30K names, but if you have more, 
+#' you might need a different approach. Also you will usually get better matches 
+#' if you include the author details. 
 #' 
 #' @examples \dontrun{
 #' 
@@ -102,54 +99,24 @@
 #' name_backbone_checklist(name_list,verbose=TRUE)
 #' 
 #' }
-#' 
+#'
 name_backbone_checklist <- function(
   name_data = NULL,
-  strict = FALSE,
   verbose = FALSE,
-  progress_bar = TRUE,
-  start=NULL,
-  limit=100, 
   curlopts = list()
-  
 ) {
-  
   name_data <- check_name_data(name_data)
-  data_list <- lapply(data.table::transpose(name_data),
-                      function(x) stats::setNames(as.list(x),colnames(name_data)))
-  
-  if(progress_bar){
-    message("matching names in progress...")
-    pb <- utils::txtProgressBar(min = 0, max = length(data_list), style = 3)
-  } 
-  matched_list <- lapply(1:length(data_list), function(i) {
-    x <- data_list[[i]] # needed for progress bar 
-    
-      out <- rgbif::name_backbone(
-        name=x$name,
-        rank=x$rank,
-        kingdom=x$kingdom,
-        phylum=x$phylum,
-        class=x$class,
-        order=x$order,
-        family=x$family,
-        genus=x$genus,
-        strict=strict,
-        verbose=verbose,
-        start=start,
-        limit=limit, 
-        curlopts = curlopts) 
-      
-    if(progress_bar) utils::setTxtProgressBar(pb, i)
-    out 
-  }) 
+  data_list <- lapply(data.table::transpose(name_data),function(x) stats::setNames(as.list(x),colnames(name_data)))
+  urls <- make_async_urls(data_list,verbose=verbose)
+  matched_list <- gbif_async_get(urls)
+  verbatim_list <- lapply(data_list,function(x) stats::setNames(x,paste0("verbatim_",names(x))))
+  matched_list <- mapply(function(x, y) c(x,y),verbatim_list,matched_list,SIMPLIFY = FALSE)
   matched_names <- tibble::as_tibble(data.table::rbindlist(matched_list,fill=TRUE))
-  
-  # make sure "verbatim_" end up at the end of the data.frame
+  matched_names <- matched_names[!names(matched_names) %in% c("alternatives", "note")]
   col_idx <- grep("verbatim_", names(matched_names))
   ordering <- c((1:ncol(matched_names))[-col_idx],col_idx)
   matched_names <- matched_names[, ordering]
-  matched_names
+  return(matched_names)
 }
 
 check_name_data = function(name_data) {
@@ -183,5 +150,46 @@ check_name_data = function(name_data) {
   # check columns are character
   char_args <- c("name","rank","kingdom","phylum","class","order","family","genus")
   if(!all(sapply(name_data[names(name_data) %in% char_args],is.character))) stop("All taxonomic columns should be character.")
+  name_data <- name_data[colnames(name_data) %in% char_args] # only keep needed columns
+  # name_data <- name_data[!is.na(name_data$name),] # remove rows with missing in name column
   name_data
 }
+
+make_async_urls <- function(x,verbose=FALSE) {
+  url_base = paste0(gbif_base(), '/species/match')
+  x <- lapply(x, function(x) x[!is.na(x)]) # remove potential missing values
+  queries <- lapply(x,function(x) paste0(names(x),"=",x,collapse="&"))
+  urls <- paste0(url_base,"?",queries)
+  if(verbose) urls <- paste0(urls,"&verbose=true")
+  urls
+}
+
+gbif_async_get <- function(urls, curlopts = list()) {
+  
+  cc <- crul::Async$new(urls = urls,headers = rgbif_ual, opts = curlopts)
+  res <- cc$get()
+  
+  status_codes <- sapply(res, function(z) z$status_code)
+  if(any(status_codes == 204)) stop("Status: 204 - not found ", call. = FALSE)
+  if(all(status_codes > 200)) {
+    mssgs <- lapply(res, function(z) z$parse("UTF-8"))
+    html_msg <- lapply(mssgs,function(x) grepl("html", x))
+    if(any(html_msg)) {
+      stop("500 - Server error", call. = FALSE)
+    }
+    length_mssgs <- sapply(mssgs,length)
+    nchar_mssgs <- sapply(mssgs,nchar)
+    if(any(length_mssgs == 0) || any(nchar_mssgs == 0)) {
+      stop("message of length zero")
+    }
+    if(any(status_codes) == 503) 
+      stop("503 - Service Unavailable", call. = FALSE)
+  }
+  # check content type
+  content_types <- sapply(res, function(z) z$response_headers$`content-type`)
+  stopifnot(any(content_types == 'application/json'))
+  # parse JSON
+  json_list <- lapply(res, function(z) jsonlite::fromJSON(z$parse("UTF-8"), parse)) 
+  return(json_list)
+}
+

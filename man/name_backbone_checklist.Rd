@@ -4,30 +4,12 @@
 \alias{name_backbone_checklist}
 \title{Lookup names in the GBIF backbone taxonomy in a checklist.}
 \usage{
-name_backbone_checklist(
-  name_data = NULL,
-  strict = FALSE,
-  verbose = FALSE,
-  progress_bar = TRUE,
-  start = NULL,
-  limit = 100,
-  curlopts = list()
-)
+name_backbone_checklist(name_data = NULL, verbose = FALSE, curlopts = list())
 }
 \arguments{
 \item{name_data}{(data.frame or vector) see details.}
 
-\item{strict}{(logical) If \code{TRUE} it (fuzzy) matches only the given name,
-but never a taxon in the upper classification (optional)}
-
 \item{verbose}{(logical) should the matching return non-exact matches}
-
-\item{progress_bar}{(logical) show or hide progress bar}
-
-\item{start}{Record number to start at. Default: 0. Use in combination
-with \code{limit} to page through results.}
-
-\item{limit}{Number of records to return. Default: 100. Maximum: 1000.}
 
 \item{curlopts}{list of named curl options passed on to
 \code{\link[crul]{HttpClient}}. see \code{curl::curl_options}
@@ -59,7 +41,7 @@ The input columns will be returned as "verbatim_name","verbatim_rank",
 "verbatim_phylum"...
 
 The following aliases for the 'name' column will work (any case or with '_'
-work) :
+will work) :
 \itemize{
 \item "scientificName", "ScientificName", "scientific_name" ...
 \item "sci_name", "sciname", "SCI_NAME" ...
@@ -79,8 +61,9 @@ This function is very similar to the GBIF species-lookup tool.
 \href{https://www.gbif.org/tools/species-lookup}{https://www.gbif.org/tools/species-lookup}
 
 If you have 1000s of names to match, it can take some minutes to get back all
-of the matches. Also you will usually get better matches if you include the
-author details.
+of the matches. I have tested it with 30K names, but if you have more,
+you might need a different approach. Also you will usually get better matches
+if you include the author details.
 }
 \examples{
 \dontrun{
