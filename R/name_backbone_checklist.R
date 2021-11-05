@@ -156,7 +156,7 @@ check_name_data = function(name_data) {
 }
 
 make_async_urls <- function(x,verbose=FALSE) {
-  url_base = paste0(gbif_base(), '/species/match')
+  url_base <- paste0(gbif_base(), '/species/match')
   x <- lapply(x, function(x) x[!is.na(x)]) # remove potential missing values
   queries <- lapply(x,function(x) paste0(names(x),"=",x,collapse="&"))
   urls <- paste0(url_base,"?",queries)
@@ -165,10 +165,8 @@ make_async_urls <- function(x,verbose=FALSE) {
 }
 
 gbif_async_get <- function(urls, curlopts = list()) {
-  
   cc <- crul::Async$new(urls = urls,headers = rgbif_ual, opts = curlopts)
   res <- cc$get()
-  
   status_codes <- sapply(res, function(z) z$status_code)
   if(any(status_codes == 204)) stop("Status: 204 - not found ", call. = FALSE)
   if(all(status_codes > 200)) {
