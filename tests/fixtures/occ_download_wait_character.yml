@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/download/0108986-200613084148143
+    uri: https://api.gbif.org/v1/occurrence/download/0000066-140928181241064
     body:
       encoding: ''
       string: ''
@@ -24,18 +24,17 @@ http_interactions:
       expires: '0'
       x-frame-options: DENY
       content-type: application/json
-      date: Mon, 11 Oct 2021 14:51:58 GMT
+      date: Fri, 15 Oct 2021 13:00:00 GMT
       cache-control: public, max-age=3601
-      x-varnish: '1039204380'
+      x-varnish: '518882885'
       age: '0'
       via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
-      transfer-encoding: chunked
+      content-length: '536'
       connection: keep-alive
     body:
       encoding: UTF-8
       file: no
-      string: '{"key":"0108986-200613084148143","doi":"10.15468/dl.hx3uzz","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"within","geometry":"POLYGON((-14
-        42, 9 38, -7 26, -14 42))"},{"type":"greaterThanOrEquals","key":"ELEVATION","value":"5400","matchCase":false}]},"sendNotification":false,"format":"DWCA"},"created":"2020-11-11T16:47:40.736+00:00","modified":"2020-11-11T16:48:30.842+00:00","eraseAfter":"2021-05-11T16:47:40.654+00:00","status":"SUCCEEDED","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0108986-200613084148143.zip","size":38857,"totalRecords":21,"numberDatasets":8}'
-  recorded_at: 2021-10-11 14:51:58 GMT
+      string: '{"key":"0000066-140928181241064","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"equals","key":"ELEVATION","value":"9500","matchCase":false},"sendNotification":false,"format":"DWCA"},"created":"2014-09-29T06:00:16.704+00:00","modified":"2014-09-29T06:01:29.520+00:00","eraseAfter":"2015-03-29T06:00:16.704+00:00","status":"SUCCEEDED","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0000066-140928181241064.zip","size":143097,"totalRecords":470,"numberDatasets":26}'
+  recorded_at: 2021-10-15 13:00:01 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0

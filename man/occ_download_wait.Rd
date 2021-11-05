@@ -7,7 +7,7 @@
 occ_download_wait(x, status_ping = 5, curlopts = list(), quiet = FALSE)
 }
 \arguments{
-\item{x}{and object of class \code{occ_download}}
+\item{x}{and object of class \code{occ_download} or downloadkey}
 
 \item{status_ping}{(integer) seconds between each \code{\link[=occ_download_meta]{occ_download_meta()}}
 request. default is 5, and cannot be < 3}
@@ -37,6 +37,10 @@ x <- occ_download(
 )
 res <- occ_download_wait(x)
 occ_download_meta(x)
+
+# works also with a downloadkey
+occ_download_wait("0000066-140928181241064") 
+
 }
 }
 \seealso{

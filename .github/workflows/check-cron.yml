@@ -9,8 +9,8 @@ name: R-check-real-requests
 
 jobs:
   R-check-real-requests:
-    runs-on: ubuntu-16.04
-    name: 'ubuntu-16.04 (R-release)'
+    runs-on: ubuntu-latest
+    name: 'ubuntu-latest (R-release)'
     strategy:
       fail-fast: false
     env:
@@ -89,5 +89,5 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v2
         with:
-          name: ubuntu-16.04-r-release-results
+          name: ubuntu-lastest-r-release-results
           path: check

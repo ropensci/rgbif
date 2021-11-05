@@ -182,8 +182,20 @@ occ_download <- function(..., body = NULL, type = "and", format = "DWCA",
   z <- occ_download_prep(..., body = body, type = type, format = format,
     user = user, pwd = pwd, email = email, curlopts = curlopts)
   out <- rg_POST(z$url, req = z$request, user = z$user, pwd = z$pwd, curlopts)
-  structure(out, class = "occ_download", user = z$user, email = z$email,
-    format = z$format)
+  md <- occ_download_meta(out) # get meta_data for printing
+  citation <- gbif_citation(md)$download # get citation
+  
+  structure(out, 
+            class = "occ_download", 
+            user = z$user, 
+            email = z$email,
+            format = z$format,
+            status = md$status,
+            created = md$created,
+            downloadLink = md$downloadLink,
+            doi = md$doi,
+            citation = citation
+            )
 }
 
 download_formats <- c("DWCA", "SIMPLE_CSV", "SPECIES_LIST")
@@ -216,11 +228,32 @@ occ_download_prep <- function(..., body = NULL, type = "and", format = "DWCA",
 #' @export
 print.occ_download <- function(x, ...) {
   stopifnot(inherits(x, 'occ_download'))
-  cat("<<gbif download>>", "\n", sep = "")
-  cat("  Username: ", attr(x, "user"), "\n", sep = "")
-  cat("  E-mail: ", attr(x, "email"), "\n", sep = "")
-  cat("  Format: ", attr(x, "format"), "\n", sep = "")
-  cat("  Download key: ", x, "\n", sep = "")
+  cat_n("<<gbif download>>")
+  cat_n("  Your download is being processed by GBIF:")
+  cat_n("  https://www.gbif.org/occurrence/download/",x)
+  cat_n("  https://www.gbif.org/user/download")
+  cat_n("  Most downloads finish within 15 min.")
+  cat_n("  Check status with")
+  cat_n("  occ_download_wait('",x,"')")
+  cat_n("  After it finishes, use")
+  cat_n("  d <- occ_download_get('",x,"') %>%") 
+  cat_n("    occ_download_import()")
+  cat_n("  to retrieve your download.")
+  cat_n("  or use the download link:")
+  cat_n("  ", attr(x,"downloadLink"))
+  cat_n("Download Info:")
+  cat_n("  Username: ", attr(x, "user"))
+  cat_n("  E-mail: ", attr(x, "email"))
+  cat_n("  Format: ", attr(x, "format"))
+  cat_n("  Download key: ", x)
+  cat_n("  Status: ", attr(x, "status"))
+  cat_n("  Created: ",attr(x, "created"))
+  cat_n("Citation Info:  ")
+  cat_n("  Please always cite the download DOI when using this data.")
+  cat_n("  https://www.gbif.org/citation-guidelines")
+  cat_n("  DOI: ", attr(x,"doi"))
+  cat_n("  Citation:")
+  cat_n("  ", attr(x,"citation"))
 }
 #' @export
 print.occ_download_prep <- function(x, ...) {

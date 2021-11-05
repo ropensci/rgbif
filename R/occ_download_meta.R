@@ -18,7 +18,10 @@
 
 occ_download_meta <- function(key, curlopts = list()) {
   stopifnot(!is.null(key))
-  stopifnot(inherits(key, c("character", "occ_download")))
+  
+  if(!grepl("[0-9]+-[0-9]+",key)) stop("key should be a downloadkey or 
+                                     an occ_download object.")
+  #stopifnot(inherits(key, c("character", "occ_download")))
   url <- sprintf('%s/occurrence/download/%s', gbif_base(), key)
   cli <- crul::HttpClient$new(url = url, headers = rgbif_ual, opts = curlopts)
   tmp <- cli$get()
@@ -34,6 +37,7 @@ print.occ_download_meta <- function(x, ...){
   stopifnot(inherits(x, 'occ_download_meta'))
   cat_n("<<gbif download metadata>>")
   cat_n("  Status: ", x$status)
+  cat_n("  DOI: ", x$doi)
   cat_n("  Format: ", attr(x, 'format'))
   cat_n("  Download key: ", x$key)
   cat_n("  Created: ", x$created)
