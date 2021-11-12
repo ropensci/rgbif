@@ -94,7 +94,8 @@
 #'
 #' Acceptable arguments to the `key` parameter are (with the version of
 #' the key in parens that must be sent if you pass the query via the `body`
-#' parameter; see below for examples). Open an issue in the GitHub
+#' parameter; see below for examples). You can also use the 'ALL_CAPS' version
+#' of a key if you prefer. Open an issue in the GitHub
 #' repository for this package if you know of a key that should
 #' be supported that is not yet.
 #'

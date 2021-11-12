@@ -15,7 +15,7 @@ You have probably, or will, run into problems with taxonomic names. For example,
 you may think you know how a taxonomic name is spelled, but then GBIF will not
 agree with you. Or, perhaps GBIF will have multiple versions of the taxon,
 spelled in slightly different ways. Or, the version of the name that they think
-is the _right one_ does not match what yo think is the right one.
+is the _right one_ does not match what you think is the right one.
 
 This isn't really anyone's fault. It's a result of there not being one accepted
 taxonomic source of truth across the globe. There are many different taxonomic
