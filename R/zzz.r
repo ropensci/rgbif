@@ -707,3 +707,35 @@ fail_with <- function(default = NULL, f, quiet = FALSE) {
 }
 
 cat_n <- function(..., sep = "") cat(..., "\n", sep = sep)
+
+pc <- function(..., collapse = "") paste0(..., collapse = collapse)
+
+check_user <- function(x) {
+  z <- if (is.null(x)) Sys.getenv("GBIF_USER", "") else x
+  if (z == "") getOption("gbif_user", stop("supply a username")) else z
+}
+
+check_pwd <- function(x) {
+  z <- if (is.null(x)) Sys.getenv("GBIF_PWD", "") else x
+  if (z == "") getOption("gbif_pwd", stop("supply a password")) else z
+}
+
+check_email <- function(x) {
+  z <- if (is.null(x)) Sys.getenv("GBIF_EMAIL", "") else x
+  if (z == "") getOption("gbif_email", stop("supply an email address")) else z
+}
+
+check_inputs <- function(x) {
+  if (is.character(x)) {
+    # replace newlines
+    x <- gsub("\n|\r|\\s+", "", x)
+    # validate
+    tmp <- jsonlite::validate(x)
+    if (!tmp) stop(attr(tmp, "err"))
+    x
+  } else {
+    jsonlite::toJSON(x)
+  }
+}
+
+

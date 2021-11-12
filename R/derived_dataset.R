@@ -197,8 +197,6 @@ derived_dataset_prep <- function(citation_data = NULL,
 
 # helpers -------------------------------------------
 
-# uses helpers from occ_download.R consider moving them to utils zzz.r. 
-
 check_citation_data = function(citation_data = NULL) {
   
   data <- citation_data

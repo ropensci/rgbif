@@ -33,7 +33,7 @@ pred_like(key, value)
 
 pred_within(value)
 
-pred_isnull(key, value)
+pred_isnull(key)
 
 pred_notnull(key)
 
@@ -84,6 +84,11 @@ The following function is only for stating the you don't want
 a key to be null, so only accepts one key:
 \itemize{
 \item \code{pred_notnull}: isNotNull
+}
+
+The following function is only for stating that you want a key to be null.
+\itemize{
+\item \code{pred_isnull} : isNull
 }
 
 The following two functions accept multiple individual predicates,

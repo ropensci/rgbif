@@ -30,6 +30,9 @@
 #' a key to be null, so only accepts one key:
 #' - `pred_notnull`: isNotNull
 #'
+#' The following function is only for stating that you want a key to be null.
+#' - `pred_isnull` : isNull
+#' 
 #' The following two functions accept multiple individual predicates,
 #' separating them by either "and" or "or":
 #' - `pred_and`: and

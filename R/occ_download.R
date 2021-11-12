@@ -231,7 +231,6 @@ print.occ_download <- function(x, ...) {
   cat_n("<<gbif download>>")
   cat_n("  Your download is being processed by GBIF:")
   cat_n("  https://www.gbif.org/occurrence/download/",x)
-  cat_n("  https://www.gbif.org/user/download")
   cat_n("  Most downloads finish within 15 min.")
   cat_n("  Check status with")
   cat_n("  occ_download_wait('",x,"')")
@@ -239,14 +238,11 @@ print.occ_download <- function(x, ...) {
   cat_n("  d <- occ_download_get('",x,"') %>%") 
   cat_n("    occ_download_import()")
   cat_n("  to retrieve your download.")
-  cat_n("  or use the download link:")
-  cat_n("  ", attr(x,"downloadLink"))
   cat_n("Download Info:")
   cat_n("  Username: ", attr(x, "user"))
   cat_n("  E-mail: ", attr(x, "email"))
   cat_n("  Format: ", attr(x, "format"))
   cat_n("  Download key: ", x)
-  cat_n("  Status: ", attr(x, "status"))
   cat_n("  Created: ",attr(x, "created"))
   cat_n("Citation Info:  ")
   cat_n("  Please always cite the download DOI when using this data.")
@@ -257,11 +253,11 @@ print.occ_download <- function(x, ...) {
 }
 #' @export
 print.occ_download_prep <- function(x, ...) {
-  cat("<<gbif download - prepared>>", "\n", sep = "")
-  cat("  Username: ", x$user, "\n", sep = "")
-  cat("  E-mail: ", x$email, "\n", sep = "")
-  cat("  Format: ", x$format, "\n", sep = "")
-  cat("  Request: ", gbif_make_list(x$request), "\n", sep = "")
+  cat_n("<<gbif download - prepared>>")
+  cat_n("  Username: ", x$user)
+  cat_n("  E-mail: ", x$email)
+  cat_n("  Format: ", x$format)
+  cat_n("  Request: \n", jsonlite::prettify(check_inputs(x$request),indent = 1))
 }
 
 # helpers -------------------------------------------
@@ -269,34 +265,6 @@ occ_download_exec <- function(x) {
   assert(x, "occ_download_prep")
   out <- rg_POST(x$url, req = x$req, user = x$user, pwd = x$pwd, x$curlopts)
   structure(out, class = "occ_download", user = x$user, email = x$email)
-}
-
-check_user <- function(x) {
-  z <- if (is.null(x)) Sys.getenv("GBIF_USER", "") else x
-  if (z == "") getOption("gbif_user", stop("supply a username")) else z
-}
-
-check_pwd <- function(x) {
-  z <- if (is.null(x)) Sys.getenv("GBIF_PWD", "") else x
-  if (z == "") getOption("gbif_pwd", stop("supply a password")) else z
-}
-
-check_email <- function(x) {
-  z <- if (is.null(x)) Sys.getenv("GBIF_EMAIL", "") else x
-  if (z == "") getOption("gbif_email", stop("supply an email address")) else z
-}
-
-check_inputs <- function(x) {
-  if (is.character(x)) {
-    # replace newlines
-    x <- gsub("\n|\r|\\s+", "", x)
-    # validate
-    tmp <- jsonlite::validate(x)
-    if (!tmp) stop(attr(tmp, "err"))
-    x
-  } else {
-    jsonlite::toJSON(x)
-  }
 }
 
 rg_POST <- function(url, req, user, pwd, curlopts) {
