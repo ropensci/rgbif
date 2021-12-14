@@ -3,11 +3,9 @@ test_that("occ_download_get", {
   skip_on_ci()
   
   # not using vcr here because it fails too often with this test
-  expect_message((zzz=occ_download_get("0000066-140928181241064", path = tempdir(),
+  temp_path <- tempdir()
+  expect_message((zzz=occ_download_get("0000066-140928181241064", path = temp_path,
                                          overwrite=TRUE)),"On disk at") 
-  # fails if overwrite=FALSE
-  expect_error(occ_download_get("0000066-140928181241064", path = tempdir()))
-
   expect_is(zzz, "occ_download_get")
   expect_is(unclass(zzz), "character")
   expect_match(unclass(zzz)[1], "[0-9]+-[0-9]+\\.zip")
@@ -15,12 +13,15 @@ test_that("occ_download_get", {
   expect_is(attr(zzz, "key"), "character")
   expect_equal(attr(zzz, "format"), "DWCA")
   expect_true(file.exists(zzz))
-  unlink(zzz)
-  
   expect_output(print(zzz), "gbif downloaded get")
   expect_output(print(zzz), "Path")
   expect_output(print(zzz), "File size")
-})
+  
+  # do not re-download if already present
+  expect_message(occ_download_get("0000066-140928181241064", path = temp_path,
+          overwrite=FALSE),"file exists & overwrite=FALSE, not overwriting...")
+  unlink(zzz)
+})  
 
 test_that("occ_download_get fails well", {
   # key is missing

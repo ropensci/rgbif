@@ -177,10 +177,10 @@
 #' # sort(unique(df$year))
 #' }
 occ_download <- function(..., body = NULL, type = "and", format = "DWCA",
-  user = NULL, pwd = NULL, email = NULL, curlopts = list()) {
-
+                         user = NULL, pwd = NULL, email = NULL, curlopts = list()) {
+  
   z <- occ_download_prep(..., body = body, type = type, format = format,
-    user = user, pwd = pwd, email = email, curlopts = curlopts)
+                         user = user, pwd = pwd, email = email, curlopts = curlopts)
   out <- rg_POST(z$url, req = z$request, user = z$user, pwd = z$pwd, curlopts)
   md <- occ_download_meta(out) # get meta_data for printing
   citation <- gbif_citation(md)$download # get citation
@@ -195,7 +195,7 @@ occ_download <- function(..., body = NULL, type = "and", format = "DWCA",
             downloadLink = md$downloadLink,
             doi = md$doi,
             citation = citation
-            )
+  )
 }
 
 download_formats <- c("DWCA", "SIMPLE_CSV", "SPECIES_LIST")
@@ -203,8 +203,8 @@ download_formats <- c("DWCA", "SIMPLE_CSV", "SPECIES_LIST")
 #' @export
 #' @rdname occ_download
 occ_download_prep <- function(..., body = NULL, type = "and", format = "DWCA",
-  user = NULL, pwd = NULL, email = NULL, curlopts = list()) {
-
+                              user = NULL, pwd = NULL, email = NULL, curlopts = list()) {
+  
   url <- paste0(gbif_base(), '/occurrence/download/request')
   user <- check_user(user)
   pwd <- check_pwd(pwd)
@@ -212,7 +212,7 @@ occ_download_prep <- function(..., body = NULL, type = "and", format = "DWCA",
   assert(format, "character")
   if (!format %in% download_formats) {
     stop("'format' must be one of: ", paste0(download_formats, collapse = ", "),
-      call. = FALSE)
+         call. = FALSE)
   }
   stopifnot(!is.null(user), !is.null(email))
   if (!is.null(body)) {
@@ -220,8 +220,15 @@ occ_download_prep <- function(..., body = NULL, type = "and", format = "DWCA",
   } else {
     req <- parse_predicates(user, email, type, format, ...)
   }
-  structure(list(url = url, request = req, user = user, pwd = pwd,
-    email = email, format = format, curlopts = curlopts),
+  structure(list(
+    url = url,
+    request = req,
+    json_request = jsonlite::prettify(check_inputs(req),indent = 1),
+    user = user,
+    pwd = pwd,
+    email = email,
+    format = format,
+    curlopts = curlopts),
     class = "occ_download_prep")
 }
 
@@ -257,7 +264,8 @@ print.occ_download_prep <- function(x, ...) {
   cat_n("  Username: ", x$user)
   cat_n("  E-mail: ", x$email)
   cat_n("  Format: ", x$format)
-  cat_n("  Request: \n", jsonlite::prettify(check_inputs(x$request),indent = 1))
+  if(nchar(x$json_request) < 1500) cat_n("  Request: \n", x$json_request)
+  else cat_n("  Request: \n  OK. But too large to print.")
 }
 
 # helpers -------------------------------------------

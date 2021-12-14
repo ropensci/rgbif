@@ -37,13 +37,14 @@ occ_download_get <- function(key, path=".", overwrite=FALSE, ...) {
   path <- sprintf("%s/%s.zip", path, key)
   cli <- crul::HttpClient$new(url = url, headers = rgbif_ual,
                               opts = c(followlocation = TRUE, list(...)))
-  if (file.exists(path)) {
-    if (!overwrite) stop("file exists & overwrite=FALSE")
-  }
+  if (file.exists(path) & !overwrite) {
+    message("file exists & overwrite=FALSE, not overwriting...")
+  } else {
   res <- cli$get(disk = path)
   if (res$status_code > 203) stop(res$parse("UTF-8"))
   options(gbifdownloadpath = path)
   message( sprintf("On disk at %s", res$content) )
+  }
   structure(path, class = "occ_download_get",
             size = size, key = key, format = attr(meta, "format"))
 }

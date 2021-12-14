@@ -19,7 +19,7 @@
 occ_download_meta <- function(key, curlopts = list()) {
   stopifnot(!is.null(key))
   
-  if(!grepl("[0-9]+-[0-9]+",key)) stop("key should be a downloadkey or 
+  if(!is_download_key(key)) stop("key should be a downloadkey or 
                                      an occ_download object.")
   #stopifnot(inherits(key, c("character", "occ_download")))
   url <- sprintf('%s/occurrence/download/%s', gbif_base(), key)

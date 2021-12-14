@@ -62,13 +62,6 @@ reference:
       - occ_search
       - occ_count
       - count_facet
-  - title: "Occurrence data cleaning"
-    desc: >
-      Functions for cleaning occurrence data
-    contents:
-      - gbif_issues
-      - occ_issues
-      - gbif_issues_lookup
   - title: "Miscellaneous"
     contents:
       - gbif_citation
@@ -79,6 +72,7 @@ reference:
       - elevation
       - enumeration
       - enumeration_country
+      - derived_dataset
   - title: "Pretty reports"
     contents:
       - gbif_names

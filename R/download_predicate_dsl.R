@@ -130,7 +130,8 @@
 #' - gadm (GADM_GID) (for the Database of Global Administrative Areas)
 #' - stateProvince (STATE_PROVINCE)
 #' - occurrenceStatus (OCCURRENCE_STATUS)
-#'
+#' - publishingOrg (PUBLISHING_ORG)
+#' 
 #' @references Download predicates docs:
 #' <https://www.gbif.org/developer/occurrence#predicates>
 #' @family downloads
@@ -331,7 +332,10 @@ key_lkup <- list(
   stateProvince='STATE_PROVINCE',
   STATE_PROVINCE='STATE_PROVINCE',
   occurrenceStatus='OCCURRENCE_STATUS',
-  OCCURRENCE_STATUS='OCCURRENCE_STATUS')
+  OCCURRENCE_STATUS='OCCURRENCE_STATUS',
+  publishingOrg='PUBLISHING_ORG',
+  PUBLISHING_ORG='PUBLISHING_ORG'
+  )
 
 parse_pred <- function(key, value, type = "and") {
   assert(key, "character")

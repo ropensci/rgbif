@@ -45,7 +45,7 @@ gbif_citation <- function(x) {
 #' @export
 gbif_citation.gbif <- function(x) {
   cat_n("gbif_citation() for occ_search() and occ_data() is deprecated.")
-  cat_n("Use rgbif::derived_dataset() instead.")
+  cat_n("Use rgbif::occ_download() or rgbif::derived_dataset() instead.")
 }
 
 #' @export
@@ -53,17 +53,24 @@ gbif_citation.gbif_data <- gbif_citation.gbif
 
 #' @export
 gbif_citation.character <- function(x) {
-  tmp <- as_occ_d_key(x)
-  cit <- list(
-    title = tmp$data$title,
-    text = tmp$data$citation$text,
-    accessed =
-      paste0(
-        "Accessed from R via rgbif (https://github.com/ropensci/rgbif) on ",
-        Sys.Date()))
-  cit$citation <- paste(cit$text, cit$accessed, sep = ". ")
-  structure(list(citation = cit, rights = tmp$data$rights %||% tmp$data$license),
-            class = "gbif_citation")
+  if (is_download_key(x)) {
+    gbif_citation.occ_download_meta(occ_download_meta(x))
+  } else {
+    tmp <- as_occ_d_key(x)
+    
+    cit <- list(
+      title = tmp$data$title,
+      text = tmp$data$citation$text,
+      accessed =
+        paste0(
+          "Accessed from R via rgbif (https://github.com/ropensci/rgbif) on ",
+          Sys.Date()))
+    cit$citation <- paste(cit$text, cit$accessed, sep = ". ")
+    structure(list(citation = cit, rights = tmp$data$rights %||% tmp$data$license),
+              class = "gbif_citation")
+    
+  }
+  
 }
 
 #' @export
@@ -113,9 +120,10 @@ gbif_citation.occ_download_meta <- function(x) {
     file.path("https://doi.org", sub("doi:", "", x$doi))
   }
   citation <- sprintf(gbif_cit, doi_url, as.character(as.Date(x$created)))
+
   list(
     download = citation,
-    datasets = NULL
+    datasets = NULL # keeping this for legacy reasons
   )
 }
 
@@ -149,7 +157,8 @@ print.gbif_citation <- function(x, indent = 3, width = 80, ...) {
 as_occ_d_key <- function(x) {
   if (is_dataset_key_pattern(x)) {
     datasets(uuid = x)
-  } else {
+  }
+  else {
     if (is_occ_key(x)) {
       key <- occ_get(as.numeric(x), fields = "all")[[1]]$data$datasetKey
       datasets(uuid = key)

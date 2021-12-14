@@ -74,21 +74,21 @@
 #' <https://www.gbif.org/derived-dataset/about>
 #'
 #' @examples \dontrun{
-#'#  data <- data.frame(
-#'#  datasetKey = c(
-#'#  "3ea36590-9b79-46a8-9300-c9ef0bfed7b8",
-#'#  "630eb55d-5169-4473-99d6-a93396aeae38",
-#'#  "806bf7d4-f762-11e1-a439-00145eb45e9a"),
-#'#  count = c(3, 1, 2781)
-#'#  )
+#' data <- data.frame(
+#'  datasetKey = c(
+#'  "3ea36590-9b79-46a8-9300-c9ef0bfed7b8",
+#'  "630eb55d-5169-4473-99d6-a93396aeae38",
+#'  "806bf7d4-f762-11e1-a439-00145eb45e9a"),
+#'  count = c(3, 1, 2781)
+#'  )
 #'
 #'## If output looks ok, run derived_dataset to register the dataset
-#'#  derived_dataset_prep(
-#'#  citation_data = data,
-#'#  title = "Test for derived dataset",
-#'#  description = "This data was filtered using a fake protocol",
-#'#  source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY"
-#'#  )
+#'  derived_dataset_prep(
+#'  citation_data = data,
+#'  title = "Test for derived dataset",
+#'  description = "This data was filtered using a fake protocol",
+#'  source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY"
+#'  )
 #'
 #'#  derived_dataset(
 #'#  citation_data = data,
@@ -113,8 +113,6 @@
 #'#   source_url="https://zenodo.org/record/4246090#.YPGS2OgzZPY",
 #'#   gbif_download_doi = NULL,
 #'# )
-#'
-#' 
 #' }
 #' 
 derived_dataset <- function(citation_data = NULL,

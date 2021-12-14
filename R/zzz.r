@@ -738,4 +738,7 @@ check_inputs <- function(x) {
   }
 }
 
+is_download_key <- function(x) grepl("^[0-9]{7}-[0-9]{15}$",x)
+
+bind_rows <- function(x) tibble::as_tibble(data.table::rbindlist(x,fill=TRUE))
 

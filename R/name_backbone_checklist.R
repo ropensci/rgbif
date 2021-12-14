@@ -35,7 +35,8 @@
 #' - "species", "SPECIES" ... 
 #' - "species_name", "speciesname" ... 
 #' - "sp_name", "SP_NAME", "spname" ...
-#'   
+#' - "taxon_name", "taxonname", "TAXON NAME" ...   
+#' 
 #' If more than one aliases is present and no column is named 'name', then the
 #' left-most column with an acceptable aliased name above is used.  
 #'
@@ -46,9 +47,8 @@
 #' \href{https://www.gbif.org/tools/species-lookup}{https://www.gbif.org/tools/species-lookup}
 #' 
 #' If you have 1000s of names to match, it can take some minutes to get back all
-#' of the matches. I have tested it with 30K names, but if you have more, 
-#' you might need a different approach. Also you will usually get better matches 
-#' if you include the author details. 
+#' of the matches. I have tested it with 60K names. Scientific names with author details
+#'  usually get better matches. 
 #' 
 #' @examples \dontrun{
 #' 
@@ -110,13 +110,35 @@ name_backbone_checklist <- function(
   urls <- make_async_urls(data_list,verbose=verbose)
   matched_list <- gbif_async_get(urls)
   verbatim_list <- lapply(data_list,function(x) stats::setNames(x,paste0("verbatim_",names(x))))
-  matched_list <- mapply(function(x, y) c(x,y),verbatim_list,matched_list,SIMPLIFY = FALSE)
-  matched_names <- tibble::as_tibble(data.table::rbindlist(matched_list,fill=TRUE))
+  mvl <- mapply(function(x, y) c(x,y),verbatim_list,matched_list,SIMPLIFY = FALSE)
+  matched_names <- bind_rows(mvl)
+  if(verbose) {
+    a <- lapply(mvl,function(x) x[["alternatives"]])
+    alternatives <- process_alternatives(a,verbatim_list)
+    matched_names <- bind_rows(list(matched_names,alternatives))
+  }
+  # post processing matched names
   matched_names <- matched_names[!names(matched_names) %in% c("alternatives", "note")]
   col_idx <- grep("verbatim_", names(matched_names))
   ordering <- c((1:ncol(matched_names))[-col_idx],col_idx)
-  matched_names <- matched_names[, ordering]
+  matched_names <- unique(matched_names[, ordering])
+  matched_names <- matched_names[order(factor(matched_names$verbatim_name, levels = name_data$name)),]
   return(matched_names)
+}
+
+bind_rows <- function(x) tibble::as_tibble(data.table::rbindlist(x,fill=TRUE))
+
+process_alternatives <- function(a,vl) {
+  is_empty <- sapply(a,is.null) 
+  a <- a[!is_empty] # alternatives
+  vl <- vl[!is_empty] # verbatim list
+  dl <- lapply(a,function(x) lapply(`[`(x), function(xx) tibble::as_tibble(xx)))
+  dl <- lapply(dl,function(x) bind_rows(`[`(x)))
+  vl <- lapply(vl,function(x) tibble::as_tibble(x))
+  n_times_list <- lapply(sapply(dl,nrow),function(x) rep(1,x))
+  vl <- mapply(function(x,y) x[y,],vl,n_times_list,SIMPLIFY = FALSE) # repeat data
+  alternatives <- bind_rows(mapply(function(x,y) cbind(x,y),dl,vl,SIMPLIFY = FALSE))
+  alternatives
 }
 
 check_name_data = function(name_data) {
@@ -125,12 +147,14 @@ check_name_data = function(name_data) {
   if(is.vector(name_data)) {
     if(!is.character(name_data)) stop("name_data should be class character.")
     name_data <- data.frame(name=name_data)
+    if(any(duplicated(name_data$name))) stop("Repeated names found. Use unique names only.")
     return(name_data) # exit early if vector
   } 
   if(ncol(name_data) == 1) {
     message("Assuming first column is 'name' column.")
     colnames(name_data) <- "name"
     if(!is.character(name_data$name)) stop("The name column should be class character.")
+    if(any(duplicated(name_data$name))) stop("Repeated names found. Use unique names only.")
     return(name_data) # exit early if only one column
   }
   
@@ -152,6 +176,7 @@ check_name_data = function(name_data) {
   if(!all(sapply(name_data[names(name_data) %in% char_args],is.character))) stop("All taxonomic columns should be character.")
   name_data <- name_data[colnames(name_data) %in% char_args] # only keep needed columns
   # name_data <- name_data[!is.na(name_data$name),] # remove rows with missing in name column
+  if(any(duplicated(name_data$name))) stop("Repeated names found. Use unique names only.")
   name_data
 }
 

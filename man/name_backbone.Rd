@@ -69,8 +69,8 @@ match against this if no direct match is found for the name alone.
 \item{strict}{(logical) If \code{TRUE} it (fuzzy) matches only the given name,
 but never a taxon in the upper classification (optional)}
 
-\item{verbose}{(logical) should the function give back more results.
-See function \code{name_backbone_verbose()}}
+\item{verbose}{(logical) should the function give back more (less reliable)
+results. See function \code{name_backbone_verbose()}}
 
 \item{start}{Record number to start at. Default: 0. Use in combination
 with \code{limit} to page through results.}

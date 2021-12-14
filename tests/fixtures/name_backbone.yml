@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.99)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.99)
   response:
     status:
       status_code: '200'
@@ -17,14 +17,14 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Thu, 07 Oct 2021 12:46:17 GMT
+      date: Tue, 30 Nov 2021 10:43:19 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: 564405718 599592535
-      age: '1445'
+      x-varnish: '862590581'
+      age: '0'
       via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
       content-length: '468'
@@ -35,7 +35,7 @@ http_interactions:
       string: '{"usageKey":9206251,"scientificName":"Helianthus annuus L.","canonicalName":"Helianthus
         annuus","rank":"SPECIES","status":"ACCEPTED","confidence":98,"matchType":"EXACT","kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Helianthus","species":"Helianthus
         annuus","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3119134,"speciesKey":9206251,"synonym":false,"class":"Magnoliopsida"}'
-  recorded_at: 2021-10-07 13:10:23 GMT
+  recorded_at: 2021-11-30 10:43:19 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
@@ -46,8 +46,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.99)
+      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.99)
   response:
     status:
       status_code: '200'
@@ -55,14 +55,14 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Thu, 07 Oct 2021 12:46:17 GMT
+      date: Tue, 30 Nov 2021 10:43:19 GMT
       content-type: application/json
       access-control-allow-origin: '*'
       access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
       server: Jetty(9.3.z-SNAPSHOT)
       cache-control: public, max-age=3601
-      x-varnish: 640551669 635011085
-      age: '1445'
+      x-varnish: '911216859'
+      age: '0'
       via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
       content-length: '1177'
@@ -77,5 +77,5 @@ http_interactions:
         name=5; authorship=0; classification=-2; rank=5; status=0","matchType":"FUZZY","kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Helianthus","species":"Helianthus
         petiolaris","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3119134,"speciesKey":3119225,"synonym":true,"class":"Magnoliopsida"}],"kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Helianthus","species":"Helianthus
         annuus","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3119134,"speciesKey":9206251,"synonym":false,"class":"Magnoliopsida"}'
-  recorded_at: 2021-10-07 13:10:23 GMT
+  recorded_at: 2021-11-30 10:43:19 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0
