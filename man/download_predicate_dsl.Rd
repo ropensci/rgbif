@@ -189,6 +189,7 @@ be supported that is not yet.
 \item gadm (GADM_GID) (for the Database of Global Administrative Areas)
 \item stateProvince (STATE_PROVINCE)
 \item occurrenceStatus (OCCURRENCE_STATUS)
+\item publishingOrg (PUBLISHING_ORG)
 }
 }
 

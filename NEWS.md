@@ -1,3 +1,42 @@
+rgbif 3.7.0
+===========
+
+There is a new rgbif maintainer: John Waller.  
+
+### NEW FEATURES
+
+* `derived_dataset()` : New function to register a cleaned or modified dataset on GBIF for citation. (#467)
+* `name_backbone_checklist()` : New function that takes a list or data.frame of scientific names and asynchronously matches them to the backbone. (#475)
+* `pred_isnull()` : New predicate function that includes NULL values from a column in the download. (#489)
+* `occ_download.print()` : Now prints out much more information including a DOI and citation. (#494)
+
+### DEFUNCT
+
+* `gbif_citation.gbif` : it is no longer considered best practice to generate a citation from `occ_search()` or `occ_data()`. We recommend `occ_download()` or `derived_dataset()` instead. (#494)
+
+### MINOR IMPROVEMENTS
+
+* `occ_download_wait()` and `occ_download_meta()` : now accept a download key directly. The do not need to be class "occ_download". (#487)
+* `name_backbone()` : now returns new columns "verbatim_name", "verabtim_genus" ect. that the user has supplied. This makes it easier for the user to track what has been matched. The verbose argument also has been un-retired. If `verbose=TRUE`, more results will be returned in a single data.frame. (#475)
+* `gbif_citation()` : will now accept a download key directly. 
+* `occ_download_get()` : Does not throw an error if the data is already present and `overwrite=FALSE`, it will just give a warning an return the already present dataset. This allows users to run `occ_download_get(key) %>% occ_download_import()` multiple times without re-downloading the same file with `overwrite=TRUE`. 
+
+### DOCUMENTATION 
+
+New articles:
+
+* Citing GBIF Mediated Data
+* Set Up Your GBIF Username and Password
+* Getting Occurrence Data From GBIF
+* Downloading A Long Species List
+
+Wrote new articles highlighting new features and encouraging the use of `occ_download()` or `occ_search()`. 
+
+### BUG FIXES
+
+`occ_download_import()` : fixed bug related to select argument. (#479)
+
+
 rgbif 3.6.0
 ===========
 
