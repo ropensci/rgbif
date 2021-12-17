@@ -37,7 +37,7 @@ To get started, see:
 
 Check out the `rgbif` [paper][] for more information on this package and the sister [Python][pygbif], [Ruby][gbifrb], and [PHP][phpgbif] clients.
 
-Note: Maximum number of records you can get with `occ_search()` and `occ_data()` is 100,000. See https://www.gbif.org/developer/occurrence
+We **strongly recommend** that you use `occ_download()` rather than `occ_search()` for getting GBIF mediated occurrences. See article [Getting Occurrence Data From GBIF](https://docs.ropensci.org/rgbif/articles/getting_occurrence_data.html). 
 
 ## Installation
 

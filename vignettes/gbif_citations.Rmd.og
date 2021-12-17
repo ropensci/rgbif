@@ -1,7 +1,7 @@
 ---
 title: Citing GBIF Mediated Data
 author: John Waller
-date: "2021-12-17"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Citing GBIF Mediated Data}
@@ -9,7 +9,14 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-
+```{r echo=FALSE}
+knitr::opts_chunk$set(
+	comment = "#>",
+	collapse = TRUE,
+	warning = FALSE,
+	message = FALSE
+)
+```
 
 Data accessed through the GBIF network is free for all, **but not free of obligations**. 
 

@@ -1,7 +1,7 @@
 ---
 title: "Downloading A Long Species List"
 author: John Waller
-date: "2021-12-17"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Downloading A Long Species List}

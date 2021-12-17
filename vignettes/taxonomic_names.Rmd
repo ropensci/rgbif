@@ -1,7 +1,7 @@
 ---
 title: Working With Taxonomic Names
 author: John Waller
-date: "`r Sys.Date()`"
+date: "2021-12-17"
 output: rmarkdown::html_vignette
 vignette: >
     %\VignetteIndexEntry{Working With Taxonomic Names}
@@ -33,7 +33,9 @@ A matchType of **"HIGHERRANK"** usually means the name is not in the GBIF backbo
 
 If you have **multiple names** to match, you can use `name_backbone_checklist`. 
 
+
 ```r 
+# This requires the newest version of rgbif
 name_list <- c(
 "Cirsium arvense (L.) Scop.", 
 "Calopteryx splendens", 
