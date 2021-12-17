@@ -6,23 +6,25 @@ There is a new rgbif maintainer: John Waller.
 ### NEW FEATURES
 
 * `derived_dataset()` : New function to register a cleaned or modified dataset on GBIF for citation. (#467)
-* `name_backbone_checklist()` : New function that takes a list or data.frame of scientific names and asynchronously matches them to the backbone. (#475)
+* `name_backbone_checklist()` : New function that takes a list, vector, or data.frame of scientific names and asynchronously matches them to the backbone. (#475)
 * `pred_isnull()` : New predicate function that includes NULL values from a column in the download. (#489)
 * `occ_download.print()` : Now prints out much more information including a DOI and citation. (#494)
 
 ### DEFUNCT
 
-* `gbif_citation.gbif` : it is no longer considered best practice to generate a citation from `occ_search()` or `occ_data()`. We recommend `occ_download()` or `derived_dataset()` instead. (#494)
+* `gbif_citation.gbif()` : it is no longer considered best practice to generate a citation from `occ_search()` or `occ_data()`. We recommend `occ_download()` or `derived_dataset()` instead. (#494)
 
 ### MINOR IMPROVEMENTS
 
-* `occ_download_wait()` and `occ_download_meta()` : now accept a download key directly. The do not need to be class "occ_download". (#487)
+* `occ_download_wait()` and `occ_download_meta()` : now accepts a class character download key directly. The keys does do not need to be class "occ_download". (#487)
 * `name_backbone()` : now returns new columns "verbatim_name", "verabtim_genus" ect. that the user has supplied. This makes it easier for the user to track what has been matched. The verbose argument also has been un-retired. If `verbose=TRUE`, more results will be returned in a single data.frame. (#475)
 * `gbif_citation()` : will now accept a download key directly. 
-* `occ_download_get()` : Does not throw an error if the data is already present and `overwrite=FALSE`, it will just give a warning an return the already present dataset. This allows users to run `occ_download_get(key) %>% occ_download_import()` multiple times without re-downloading the same file with `overwrite=TRUE`. 
-* `download_predicate_dsl()` : "publishingOrg" now added as a download key. (#496) `key_lkup` now includeds GBIF-style uppercase keys as well. So `pred("TAXON_KEY",212)` and `pred("taxonKey",212)` will both work.
+* `occ_download_get()` : Does not throw an error if the data is already present and `overwrite=FALSE`, it will just give a warning and return the already present dataset. This allows users to run `occ_download_get(key) %>% occ_download_import()` multiple times without re-downloading the same file with `overwrite=TRUE`. 
+* `download_predicate_dsl()` : "publishingOrg" now added as a download key. (#496) `key_lkup` now includes GBIF-style uppercase keys as well. So `pred("TAXON_KEY",212)` and `pred("taxonKey",212)` will both work.
 
 ### DOCUMENTATION 
+
+Wrote new articles highlighting new features and encouraging the use of `occ_download()` over `occ_search()`. 
 
 New articles:
 
@@ -30,8 +32,6 @@ New articles:
 * Set Up Your GBIF Username and Password
 * Getting Occurrence Data From GBIF
 * Downloading A Long Species List
-
-Wrote new articles highlighting new features and encouraging the use of `occ_download()` over `occ_search()`. 
 
 ### BUG FIXES
 
