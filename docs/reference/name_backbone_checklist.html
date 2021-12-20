@@ -205,6 +205,7 @@ will work) :</p><ul>
 <li><p>"species", "SPECIES" ...</p></li>
 <li><p>"species_name", "speciesname" ...</p></li>
 <li><p>"sp_name", "SP_NAME", "spname" ...</p></li>
+<li><p>"taxon_name", "taxonname", "TAXON NAME" ...</p></li>
 </ul>
 
 <p>If more than one aliases is present and no column is named 'name', then the
@@ -214,9 +215,8 @@ no column names are needed of course.</p>
 <p>This function is very similar to the GBIF species-lookup tool.
 <a href='https://www.gbif.org/tools/species-lookup'>https://www.gbif.org/tools/species-lookup</a></p>
 <p>If you have 1000s of names to match, it can take some minutes to get back all
-of the matches. I have tested it with 30K names, but if you have more,
-you might need a different approach. Also you will usually get better matches
-if you include the author details.</p>
+of the matches. I have tested it with 60K names. Scientific names with author details
+usually get better matches.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>

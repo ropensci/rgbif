@@ -28,11 +28,11 @@ Wrote new articles highlighting new features and encouraging the use of `occ_dow
 
 New articles:
 
-* Citing GBIF Mediated Data
-* Set Up Your GBIF Username and Password
-* Getting Occurrence Data From GBIF
-* Downloading A Long Species List
-* Working With Taxonomic Names
+* [Citing GBIF Mediated Data](https://docs.ropensci.org/rgbif/articles/gbif_citations.html)
+* [Set Up Your GBIF Username and Password](https://docs.ropensci.org/rgbif/articles/gbif_credentials.html)
+* [Getting Occurrence Data From GBIF](https://docs.ropensci.org/rgbif/articles/getting_occurrence_data.html)
+* [Downloading A Long Species List](https://docs.ropensci.org/rgbif/articles/downloading_a_long_species_list.html)
+* [Working With Taxonomic Names](https://docs.ropensci.org/rgbif/articles/taxonomic_names.html)
 
 ### BUG FIXES
 

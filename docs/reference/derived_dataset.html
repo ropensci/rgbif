@@ -273,21 +273,21 @@ GBIF_EMAIL="jwaller@gbif.org"<br /></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
-<span class='r-in'><span class='co'>#  data &lt;- data.frame(</span></span>
-<span class='r-in'><span class='co'>#  datasetKey = c(</span></span>
-<span class='r-in'><span class='co'>#  "3ea36590-9b79-46a8-9300-c9ef0bfed7b8",</span></span>
-<span class='r-in'><span class='co'>#  "630eb55d-5169-4473-99d6-a93396aeae38",</span></span>
-<span class='r-in'><span class='co'>#  "806bf7d4-f762-11e1-a439-00145eb45e9a"),</span></span>
-<span class='r-in'><span class='co'>#  count = c(3, 1, 2781)</span></span>
-<span class='r-in'><span class='co'>#  )</span></span>
+<span class='r-in'><span class='va'>data</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span></span>
+<span class='r-in'> datasetKey <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span></span>
+<span class='r-in'> <span class='st'>"3ea36590-9b79-46a8-9300-c9ef0bfed7b8"</span>,</span>
+<span class='r-in'> <span class='st'>"630eb55d-5169-4473-99d6-a93396aeae38"</span>,</span>
+<span class='r-in'> <span class='st'>"806bf7d4-f762-11e1-a439-00145eb45e9a"</span><span class='op'>)</span>,</span>
+<span class='r-in'> count <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>, <span class='fl'>1</span>, <span class='fl'>2781</span><span class='op'>)</span></span>
+<span class='r-in'> <span class='op'>)</span></span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'>## If output looks ok, run derived_dataset to register the dataset</span></span>
-<span class='r-in'><span class='co'>#  derived_dataset_prep(</span></span>
-<span class='r-in'><span class='co'>#  citation_data = data,</span></span>
-<span class='r-in'><span class='co'>#  title = "Test for derived dataset",</span></span>
-<span class='r-in'><span class='co'>#  description = "This data was filtered using a fake protocol",</span></span>
-<span class='r-in'><span class='co'>#  source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY"</span></span>
-<span class='r-in'><span class='co'>#  )</span></span>
+<span class='r-in'> <span class='fu'>derived_dataset_prep</span><span class='op'>(</span></span>
+<span class='r-in'> citation_data <span class='op'>=</span> <span class='va'>data</span>,</span>
+<span class='r-in'> title <span class='op'>=</span> <span class='st'>"Test for derived dataset"</span>,</span>
+<span class='r-in'> description <span class='op'>=</span> <span class='st'>"This data was filtered using a fake protocol"</span>,</span>
+<span class='r-in'> source_url <span class='op'>=</span> <span class='st'>"https://zenodo.org/record/4246090#.YPGS2OgzZPY"</span></span>
+<span class='r-in'> <span class='op'>)</span></span>
 <span class='r-in'></span>
 <span class='r-in'><span class='co'>#  derived_dataset(</span></span>
 <span class='r-in'><span class='co'>#  citation_data = data,</span></span>
@@ -312,8 +312,6 @@ GBIF_EMAIL="jwaller@gbif.org"<br /></p>
 <span class='r-in'><span class='co'>#   source_url="https://zenodo.org/record/4246090#.YPGS2OgzZPY",</span></span>
 <span class='r-in'><span class='co'>#   gbif_download_doi = NULL,</span></span>
 <span class='r-in'><span class='co'># )</span></span>
-<span class='r-in'></span>
-<span class='r-in'></span>
 <span class='r-in'><span class='op'>}</span></span>
 <span class='r-in'></span>
 </pre>

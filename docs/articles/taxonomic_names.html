@@ -107,7 +107,7 @@
       <h1 data-toc-skip>Working With Taxonomic Names</h1>
                         <h4 class="author">John Waller</h4>
             
-            <h4 class="date">2021-12-14</h4>
+            <h4 class="date">2021-12-20</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ropensci/rgbif/blob/master/vignettes/taxonomic_names.Rmd"><code>vignettes/taxonomic_names.Rmd</code></a></small>
       <div class="hidden name"><code>taxonomic_names.Rmd</code></div>
@@ -138,7 +138,8 @@
 <p>A matchType of <strong>“HIGHERRANK”</strong> usually means the name is not in the GBIF backbone or it is not a species-level name (a genus, family, order …). A matchType of <strong>“FUZZY”</strong> means that the name you supplied may have been mis-spelled or is a variant not in the backbone. A matchType of <strong>“Exact”</strong> means the binomial name appears exactly as spelled by you in the GBIF backbone (note that it ignores authorship info).</p>
 <p>If you have <strong>multiple names</strong> to match, you can use <code>name_backbone_checklist</code>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">name_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+<code class="sourceCode R"><span class="co"># This requires the newest version of rgbif</span>
+<span class="va">name_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
 <span class="st">"Cirsium arvense (L.) Scop."</span>, 
 <span class="st">"Calopteryx splendens"</span>, 
 <span class="st">"Puma concolor (Linnaeus, 1771)"</span>, 
