@@ -742,3 +742,16 @@ is_download_key <- function(x) grepl("^[0-9]{7}-[0-9]{15}$",x)
 
 bind_rows <- function(x) tibble::as_tibble(data.table::rbindlist(x,fill=TRUE))
 
+getsize <- function(x) {
+  round(x/10 ^ 6, 2)
+}
+
+prep_output <- function(x) {
+  list(
+    meta = data.frame(offset = x$offset, limit = x$limit,
+                      endofrecords = x$endOfRecords, count = x$count,
+                      stringsAsFactors = FALSE),
+    results = tibble::as_tibble(x$results)
+  )
+}
+

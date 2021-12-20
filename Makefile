@@ -1,5 +1,6 @@
 PACKAGE := $(shell grep '^Package:' DESCRIPTION | sed -E 's/^Package:[[:space:]]+//')
 RSCRIPT = Rscript.exe --no-init-file
+R = R.exe
 
 vignettes:
 	cd vignettes;\
@@ -7,10 +8,10 @@ vignettes:
 	cd ..
 
 install: doc build
-	R CMD INSTALL . && rm *.tar.gz
+	${R} CMD INSTALL . && rm *.tar.gz
 
 build:
-	R CMD build .
+	${R} CMD build .
 
 doc:
 	${RSCRIPT} -e "devtools::document()"

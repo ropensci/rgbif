@@ -8,15 +8,15 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      User-Agent: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
+      X-USER-AGENT: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: 'HTTP/2 200 '
+      status: HTTP/1.1 200 OK
       vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
       x-content-type-options: nosniff
       x-xss-protection: 1; mode=block
@@ -24,19 +24,20 @@ http_interactions:
       expires: '0'
       x-frame-options: DENY
       content-type: application/json
-      date: Tue, 08 Dec 2020 23:46:29 GMT
+      date: Fri, 17 Dec 2021 14:13:17 GMT
       cache-control: public, max-age=600
-      x-varnish: '471171686'
-      age: '0'
+      x-varnish: 812843100 778766146
+      age: '158'
       via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
       content-length: '79'
+      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
       string: '{"offset":0,"limit":300,"endOfRecords":true,"count":0,"results":[],"facets":[]}'
-  recorded_at: 2020-12-08 23:46:30 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+  recorded_at: 2021-12-17 14:15:57 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search?depth=5&limit=500&offset=0&taxonKey=7595433
@@ -46,15 +47,15 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      User-Agent: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
+      X-USER-AGENT: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: 'HTTP/2 200 '
+      status: HTTP/1.1 200 OK
       vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
       x-content-type-options: nosniff
       x-xss-protection: 1; mode=block
@@ -62,19 +63,20 @@ http_interactions:
       expires: '0'
       x-frame-options: DENY
       content-type: application/json
-      date: Tue, 08 Dec 2020 23:46:29 GMT
+      date: Fri, 17 Dec 2021 14:13:17 GMT
       cache-control: public, max-age=600
-      x-varnish: 471171687 473760469
-      age: '0'
+      x-varnish: 821559407 778766146
+      age: '159'
       via: 1.1 varnish (Varnish/6.0)
       accept-ranges: bytes
       content-length: '79'
+      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
       string: '{"offset":0,"limit":300,"endOfRecords":true,"count":0,"results":[],"facets":[]}'
-  recorded_at: 2020-12-08 23:46:30 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+  recorded_at: 2021-12-17 14:15:57 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search?depth=5-10&limit=500&offset=0&taxonKey=7595433
@@ -84,15 +86,15 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
+      User-Agent: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
+      X-USER-AGENT: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
   response:
     status:
       status_code: '400'
       message: Bad Request
       explanation: Bad request syntax or unsupported method
     headers:
-      status: 'HTTP/2 400 '
+      status: HTTP/1.1 400 Bad Request
       vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
       x-content-type-options: nosniff
       x-xss-protection: 1; mode=block
@@ -101,14 +103,15 @@ http_interactions:
       x-frame-options: DENY
       content-type: text/plain
       content-length: '27'
-      date: Tue, 08 Dec 2020 23:46:30 GMT
+      date: Fri, 17 Dec 2021 14:15:56 GMT
       cache-control: no-cache, no-store, must-revalidate
-      x-varnish: '471171688'
+      x-varnish: '810287860'
       age: '0'
       via: 1.1 varnish (Varnish/6.0)
+      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
       string: 'Invalid decimal range: 5-10'
-  recorded_at: 2020-12-08 23:46:30 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+  recorded_at: 2021-12-17 14:15:57 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

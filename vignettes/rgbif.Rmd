@@ -1,7 +1,7 @@
 ---
 title: Introduction to rgbif
 author: Scott Chamberlain
-date: "2021-12-17"
+date: "2021-12-20"
 output: rmarkdown::html_vignette
 vignette: >
     %\VignetteIndexEntry{introduction}
@@ -56,7 +56,7 @@ Records for **Puma concolor** with lat/long data (georeferened) only. Note that 
 
 ```r
 occ_count(taxonKey=2435099, georeferenced=TRUE)
-#> [1] 9745
+#> [1] 9852
 ```
 
 All georeferenced records in GBIF
@@ -64,7 +64,7 @@ All georeferenced records in GBIF
 
 ```r
 occ_count(georeferenced=TRUE)
-#> [1] 1800250870
+#> [1] 1800318338
 ```
 
 Records from Denmark
@@ -73,7 +73,7 @@ Records from Denmark
 ```r
 denmark_code <- isocodes[grep("Denmark", isocodes$name), "code"]
 occ_count(country=denmark_code)
-#> [1] 46362084
+#> [1] 46363801
 ```
 
 Number of records in a particular dataset
@@ -89,7 +89,7 @@ All records from 2012
 
 ```r
 occ_count(year=2012)
-#> [1] 64918685
+#> [1] 64919530
 ```
 
 Records for a particular dataset, and only for preserved specimens
@@ -139,21 +139,20 @@ out$meta
 
 ```r
 head(out$data)
-#> # A tibble: 6 x 26
-#>         key scientificName datasetKey     nubKey parentKey parent kingdom phylum
-#>       <int> <chr>          <chr>           <int>     <int> <chr>  <chr>   <chr> 
-#> 1 168233342 Mammalia       2e76af52-48a9~    359 168233332 Chord~ Animal~ Chord~
-#> 2 168239467 Mammalia       ed581dc4-7008~    359 168239466 Chord~ Animal~ Chord~
-#> 3 190557477 Mammalia       777f49d9-27c7~    359 190557476 Chord~ Animal~ Chord~
-#> 4 190653816 Mammalia       69c434f8-762e~    359 190653815 Chord~ Animal~ Chord~
-#> 5 190793428 Mammalia       b3293c54-11ba~    359 190793427 Chord~ Animal~ Chord~
-#> 6 190800965 Mammalia       c52dfeb7-f89d~    359 190800963 Chord~ Animal~ Chord~
-#> # ... with 18 more variables: kingdomKey <int>, phylumKey <int>,
-#> #   classKey <int>, canonicalName <chr>, authorship <chr>, nameType <chr>,
-#> #   taxonomicStatus <chr>, rank <chr>, origin <chr>, numDescendants <int>,
+#> # A tibble: 6 x 24
+#>         key scientificName datasetKey      nubKey parentKey parent canonicalName
+#>       <int> <chr>          <chr>            <int>     <int> <chr>  <chr>        
+#> 1 114079693 Mammalia       bd0a2b6d-69d1-~    359 114079410 Anima~ Mammalia     
+#> 2 168233342 Mammalia       2e76af52-48a9-~    359 168233332 Chord~ Mammalia     
+#> 3 168239467 Mammalia       ed581dc4-7008-~    359 168239466 Chord~ Mammalia     
+#> 4 190557477 Mammalia       777f49d9-27c7-~    359 190557476 Chord~ Mammalia     
+#> 5 190653816 Mammalia       69c434f8-762e-~    359 190653815 Chord~ Mammalia     
+#> 6 190793428 Mammalia       b3293c54-11ba-~    359 190793427 Chord~ Mammalia     
+#> # ... with 17 more variables: authorship <chr>, nameType <chr>,
+#> #   taxonomicStatus <chr>, origin <chr>, numDescendants <int>,
 #> #   numOccurrences <int>, habitats <lgl>, nomenclaturalStatus <lgl>,
-#> #   threatStatuses <lgl>, synonym <lgl>, class <chr>, order <chr>,
-#> #   orderKey <int>
+#> #   threatStatuses <lgl>, synonym <lgl>, kingdom <chr>, phylum <chr>,
+#> #   kingdomKey <int>, phylumKey <int>, classKey <int>, rank <chr>, class <chr>
 ```
 
 
@@ -165,15 +164,14 @@ out$facets
 
 ```r
 out$hierarchies[1:2]
+#> $`114079693`
+#>     rankkey     name
+#> 1 114079410 Animalia
+#> 
 #> $`168233342`
 #>     rankkey     name
 #> 1 168233318 Animalia
 #> 2 168233332 Chordata
-#> 
-#> $`168239467`
-#>     rankkey     name
-#> 1 168239444 Animalia
-#> 2 168239466 Chordata
 ```
 
 
@@ -193,14 +191,14 @@ z$data
 #>     <int> <chr>          <chr>       <int>     <int> <chr>  <chr>   <chr>  <chr>
 #>  1 1.58e8 Cnaemidophorus 4cec8fef-~ 1.86e6 157904443 Ptero~ Animal~ Arthr~ Lepi~
 #>  2 1.69e8 Cnaemidophorus 4b3e4a71-~ 1.86e6 168525701 Ptero~ Animal~ Arthr~ Lepi~
-#>  3 1.92e8 Cnaemidophorus 848271aa-~ 1.86e6 191652923 Lepid~ Animal~ <NA>   Lepi~
-#>  4 1.91e8 Cnaemidophorus 23905003-~ 1.86e6 191419707 Ptero~ Animal~ Arthr~ Lepi~
-#>  5 1.91e8 Cnaemidophorus 23905003-~ 1.86e6 190527758 Ptero~ Animal~ Arthr~ Lepi~
-#>  6 1.90e8 Cnaemidophorus 16c3f9cb-~ 1.86e6 190348092 Ptero~ <NA>    Arthr~ Lepi~
-#>  7 1.91e8 Cnaemidophorus 848271aa-~ 1.86e6 190866933 Lepid~ Animal~ <NA>   Lepi~
-#>  8 1.24e8 Cnaemidophorus fab88965-~ 1.86e6 104446806 Ptero~ Metazoa Arthr~ Lepi~
-#>  9 1.78e8 Cnaemidophorus 6b6b2923-~ 1.86e6 177881660 Ptero~ Metazoa Arthr~ Lepi~
-#> 10 1.91e8 Cnaemidophorus 4dd32523-~ 1.86e6 190585832 Ptero~ Animal~ Arthr~ Lepi~
+#>  3 1.91e8 Cnaemidophorus 23905003-~ 1.86e6 191419707 Ptero~ Animal~ Arthr~ Lepi~
+#>  4 1.91e8 Cnaemidophorus 23905003-~ 1.86e6 190527758 Ptero~ Animal~ Arthr~ Lepi~
+#>  5 1.90e8 Cnaemidophorus 16c3f9cb-~ 1.86e6 190348092 Ptero~ <NA>    Arthr~ Lepi~
+#>  6 1.91e8 Cnaemidophorus 848271aa-~ 1.86e6 190866933 Lepid~ Animal~ <NA>   Lepi~
+#>  7 1.24e8 Cnaemidophorus fab88965-~ 1.86e6 104446806 Ptero~ Metazoa Arthr~ Lepi~
+#>  8 1.78e8 Cnaemidophorus 6b6b2923-~ 1.86e6 177881660 Ptero~ Metazoa Arthr~ Lepi~
+#>  9 1.91e8 Cnaemidophorus 4dd32523-~ 1.86e6 190585832 Ptero~ Animal~ Arthr~ Lepi~
+#> 10 1.91e8 Cnaemidophorus 4dd32523-~ 1.86e6 191472572 Ptero~ Animal~ Arthr~ Lepi~
 #> # ... with 21 more rows, and 28 more variables: family <chr>, genus <chr>,
 #> #   kingdomKey <int>, phylumKey <int>, classKey <int>, orderKey <int>,
 #> #   familyKey <int>, genusKey <int>, canonicalName <chr>, authorship <chr>,
@@ -216,25 +214,24 @@ Search for the class mammalia
 ```r
 w <- name_lookup(query='mammalia')
 w$data
-#> # A tibble: 100 x 26
-#>          key scientificName datasetKey    nubKey parentKey parent kingdom phylum
-#>        <int> <chr>          <chr>          <int>     <int> <chr>  <chr>   <chr> 
-#>  1 168233342 Mammalia       2e76af52-48a~    359 168233332 Chord~ Animal~ Chord~
-#>  2 168239467 Mammalia       ed581dc4-700~    359 168239466 Chord~ Animal~ Chord~
-#>  3 190557477 Mammalia       777f49d9-27c~    359 190557476 Chord~ Animal~ Chord~
-#>  4 190653816 Mammalia       69c434f8-762~    359 190653815 Chord~ Animal~ Chord~
-#>  5 190793428 Mammalia       b3293c54-11b~    359 190793427 Chord~ Animal~ Chord~
-#>  6 190800965 Mammalia       c52dfeb7-f89~    359 190800963 Chord~ Animal~ Chord~
-#>  7 159140593 Mammalia       9d926eab-7be~    359 159140592 Chord~ Animal~ Chord~
-#>  8 144203186 Mammalia       39c18d15-4c4~    359 144203185 Chord~ Animal~ Chord~
-#>  9 167583005 Mammalia       8e77944c-d20~    359 167583004 Chord~ Animal~ Chord~
-#> 10 167674204 Mammalia       3e4a9e27-157~    359 167674203 Chord~ Animal~ Chord~
-#> # ... with 90 more rows, and 18 more variables: kingdomKey <int>,
-#> #   phylumKey <int>, classKey <int>, canonicalName <chr>, authorship <chr>,
-#> #   nameType <chr>, taxonomicStatus <chr>, rank <chr>, origin <chr>,
-#> #   numDescendants <int>, numOccurrences <int>, habitats <lgl>,
-#> #   nomenclaturalStatus <lgl>, threatStatuses <lgl>, synonym <lgl>,
-#> #   class <chr>, order <chr>, orderKey <int>
+#> # A tibble: 100 x 24
+#>          key scientificName datasetKey     nubKey parentKey parent canonicalName
+#>        <int> <chr>          <chr>           <int>     <int> <chr>  <chr>        
+#>  1 114079693 Mammalia       bd0a2b6d-69d1~    359 114079410 Anima~ Mammalia     
+#>  2 168233342 Mammalia       2e76af52-48a9~    359 168233332 Chord~ Mammalia     
+#>  3 168239467 Mammalia       ed581dc4-7008~    359 168239466 Chord~ Mammalia     
+#>  4 190557477 Mammalia       777f49d9-27c7~    359 190557476 Chord~ Mammalia     
+#>  5 190653816 Mammalia       69c434f8-762e~    359 190653815 Chord~ Mammalia     
+#>  6 190793428 Mammalia       b3293c54-11ba~    359 190793427 Chord~ Mammalia     
+#>  7 190800965 Mammalia       c52dfeb7-f89d~    359 190800963 Chord~ Mammalia     
+#>  8 159140593 Mammalia       9d926eab-7be1~    359 159140592 Chord~ Mammalia     
+#>  9 144203186 Mammalia       39c18d15-4c48~    359 144203185 Chord~ Mammalia     
+#> 10 167583005 Mammalia       8e77944c-d207~    359 167583004 Chord~ Mammalia     
+#> # ... with 90 more rows, and 17 more variables: authorship <chr>,
+#> #   nameType <chr>, taxonomicStatus <chr>, origin <chr>, numDescendants <int>,
+#> #   numOccurrences <int>, habitats <lgl>, nomenclaturalStatus <lgl>,
+#> #   threatStatuses <lgl>, synonym <lgl>, kingdom <chr>, phylum <chr>,
+#> #   kingdomKey <int>, phylumKey <int>, classKey <int>, rank <chr>, class <chr>
 ```
 
 Look up the species Helianthus annuus
@@ -249,9 +246,9 @@ m$data
 #>  1 1.35e8 Helianthus an~ f82a4f7f-~ 9.21e6 188456849 Aster~ Plantae Trach~ Aste~
 #>  2 1.15e8 Helianthus an~ ee2aac07-~ 9.21e6 144238801 Helia~ Plantae Trach~ Aste~
 #>  3 1.46e8 Helianthus an~ 3f5e930b-~ 9.21e6 157140516 Helia~ Plantae Angio~ <NA> 
-#>  4 1.03e8 Helianthus an~ fab88965-~ 9.21e6 103340270 Helia~ Viridi~ Strep~ Aste~
-#>  5 1.79e8 Helianthus an~ 6b6b2923-~ 9.21e6 178978795 Helia~ Viridi~ Strep~ Aste~
-#>  6 1.35e8 Helianthus an~ 29d2d5a6-~ 9.21e6 188628564 Aster~ Plantae Trach~ Aste~
+#>  4 1.35e8 Helianthus an~ 29d2d5a6-~ 9.21e6 188628564 Aster~ Plantae Trach~ Aste~
+#>  5 1.03e8 Helianthus an~ fab88965-~ 9.21e6 103340270 Helia~ Viridi~ Strep~ Aste~
+#>  6 1.79e8 Helianthus an~ 6b6b2923-~ 9.21e6 178978795 Helia~ Viridi~ Strep~ Aste~
 #>  7 1.28e8 Helianthus an~ 41c06f1a-~ 9.21e6 146770884 Amara~ Plantae <NA>   <NA> 
 #>  8 1.63e8 Helianthus an~ 88217638-~ 9.21e6 163398972 Aster~ Plantae Trach~ Aste~
 #>  9 1.35e8 Helianthus an~ 83ca3188-~ 9.21e6 188536859 Aster~ Plantae Trach~ Aste~
@@ -602,7 +599,7 @@ Most parameters are vectorized, so you can pass in more than one value:
 splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
 keys <- sapply(splist, function(x) name_suggest(x)$data$key[1], USE.NAMES=FALSE)
 occ_search(taxonKey=keys, limit=5)
-#> Records found [2482598 (1506272), 9362842 (7816056), 2498387 (4210167)] 
+#> Records found [2482598 (1506272), 9362842 (7816056), 2498387 (4210168)] 
 #> Records returned [2482598 (5), 9362842 (5), 2498387 (5)] 
 #> No. unique hierarchies [2482598 (1), 9362842 (1), 2498387 (1)] 
 #> No. media records [2482598 (5), 9362842 (5), 2498387 (5)] 

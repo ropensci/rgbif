@@ -1,7 +1,7 @@
 rgbif 3.7.0
 ===========
 
-There is a new rgbif maintainer: John Waller.  
+There is a new rgbif maintainer: [John Waller](https://twitter.com/JohnTWaller).  
 
 ### NEW FEATURES
 
@@ -16,7 +16,7 @@ There is a new rgbif maintainer: John Waller.
 
 ### MINOR IMPROVEMENTS
 
-* `occ_download_wait()` and `occ_download_meta()` : now accepts a class character download key directly. The keys does do not need to be class "occ_download". (#487)
+* `occ_download_wait()` and `occ_download_meta()` : now accept a class character download key directly. The keys does do not need to be class "occ_download". (#487)
 * `name_backbone()` : now returns new columns "verbatim_name", "verabtim_genus" ect. that the user has supplied. This makes it easier for the user to track what has been matched. The verbose argument also has been un-retired. If `verbose=TRUE`, more results will be returned in a single data.frame. (#475)
 * `gbif_citation()` : will now accept a download key directly. 
 * `occ_download_get()` : Does not throw an error if the data is already present and `overwrite=FALSE`, it will just give a warning and return the already present dataset. This allows users to run `occ_download_get(key) %>% occ_download_import()` multiple times without re-downloading the same file with `overwrite=TRUE`. 
@@ -32,10 +32,12 @@ New articles:
 * Set Up Your GBIF Username and Password
 * Getting Occurrence Data From GBIF
 * Downloading A Long Species List
+* Working With Taxonomic Names
 
 ### BUG FIXES
 
-`occ_download_import()` : fixed bug related to select argument. (#479)
+* `occ_download_import()` : fixed bug related to select argument. (#479)
+* `map_fetch()` : fixed bug related to `sp::CRS` (#497)
 
 rgbif 3.6.0
 ===========

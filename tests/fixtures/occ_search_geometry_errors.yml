@@ -8,8 +8,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+      User-Agent: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
+      X-USER-AGENT: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
   response:
     status:
       status_code: '400'
@@ -25,9 +25,9 @@ http_interactions:
       x-frame-options: DENY
       content-type: text/plain
       content-length: '88'
-      date: Thu, 07 Oct 2021 13:52:57 GMT
+      date: Fri, 17 Dec 2021 14:13:43 GMT
       cache-control: no-cache, no-store, must-revalidate
-      x-varnish: '701597066'
+      x-varnish: '779617578'
       age: '0'
       via: 1.1 varnish (Varnish/6.0)
       connection: keep-alive
@@ -37,7 +37,7 @@ http_interactions:
       string: |-
         Q2Fubm90IHBhcnNlIHNpbXBsZSBXS1Q6IFBPTFlHT04oKDMwLjEgMTAuMSw0MCA0MCwyMCA0MCwxMCAy
         MCwzMC4xIGEpKSBFeHBlY3RlZCBhIG51bWJlcg==
-  recorded_at: 2021-10-07 13:52:58 GMT
+  recorded_at: 2021-12-17 14:13:43 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
@@ -48,8 +48,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+      User-Agent: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
+      X-USER-AGENT: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
   response:
     status:
       status_code: '400'
@@ -65,9 +65,9 @@ http_interactions:
       x-frame-options: DENY
       content-type: text/plain
       content-length: '93'
-      date: Thu, 07 Oct 2021 13:52:57 GMT
+      date: Fri, 17 Dec 2021 14:13:43 GMT
       cache-control: no-cache, no-store, must-revalidate
-      x-varnish: '671093376'
+      x-varnish: '707596502'
       age: '0'
       via: 1.1 varnish (Varnish/6.0)
       connection: keep-alive
@@ -77,7 +77,7 @@ http_interactions:
       string: |-
         Q2Fubm90IHBhcnNlIHNpbXBsZSBXS1Q6IFBPTFlHT04oKDMwLjEgMTAuMSw0MCA0MCwyMCA0MCwxMCAy
         MCwzMC4xICcxMC4xJykpIEV4cGVjdGVkIGEgbnVtYmVy
-  recorded_at: 2021-10-07 13:52:58 GMT
+  recorded_at: 2021-12-17 14:13:43 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
@@ -88,8 +88,8 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
+      User-Agent: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
+      X-USER-AGENT: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
   response:
     status:
       status_code: '400'
@@ -105,9 +105,9 @@ http_interactions:
       x-frame-options: DENY
       content-type: text/plain
       content-length: '95'
-      date: Thu, 07 Oct 2021 13:52:57 GMT
+      date: Fri, 17 Dec 2021 14:13:43 GMT
       cache-control: no-cache, no-store, must-revalidate
-      x-varnish: '664606449'
+      x-varnish: '763202350'
       age: '0'
       via: 1.1 varnish (Varnish/6.0)
       connection: keep-alive
@@ -117,5 +117,5 @@ http_interactions:
       string: |-
         Q2Fubm90IHBhcnNlIHNpbXBsZSBXS1Q6IFBPTFlHT04oKDMwLjEgMTAuMSw0MCA0MCwyMCA0MCwxMCAy
         MCwzMC4xIDEwLjEpIEV4cGVjdGVkIFspXSBmb3VuZCBFT0Y=
-  recorded_at: 2021-10-07 13:52:58 GMT
+  recorded_at: 2021-12-17 14:13:43 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0

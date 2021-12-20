@@ -1,7 +1,7 @@
 ---
 title: "Downloading A Long Species List"
 author: John Waller
-date: "2021-12-17"
+date: "2021-12-20"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Downloading A Long Species List}
@@ -11,7 +11,7 @@ vignette: >
 
 It is now possible to download up to **100,000 names** on GBIF.
 
-One good reason to download data using a long list of names, would be if your group of interest is **non-monophyletic**.  
+One good reason to download data using a long list of names, would be if your group of interest is **non-monophyletic**. It is required to set up your **GBIF credentials** to make downloads from GBIF. I suggest that you follow this [short tutorial](https://docs.ropensci.org/rgbif/articles/gbif_credentials.html) before continuing.
 
 <!-- https://discourse.gbif.org/t/setting-up-your-rgbif-environment-with-username-and-password/3017/2 -->
 
