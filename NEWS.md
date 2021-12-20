@@ -11,7 +11,7 @@ There is a new rgbif maintainer: [John Waller](https://twitter.com/JohnTWaller).
 * `occ_download.print()` : Now prints out much more information including a DOI and citation. (#494)
 
 ### DEFUNCT
-
+dev
 * `gbif_citation.gbif()` : it is no longer considered best practice to generate a citation from `occ_search()` or `occ_data()`. We recommend `occ_download()` or `derived_dataset()` instead. (#494)
 
 ### MINOR IMPROVEMENTS

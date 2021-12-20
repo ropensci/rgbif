@@ -5,7 +5,7 @@
 #' @param citation_data (required) A data.frame with **two columns**. The first 
 #' column should be GBIF **datasetkey uuids** and the second column should be 
 #' **occurrence counts** from each of your datasets, representing the 
-#' contribution of each GBIF dataset to your final derived dataset. 
+#' contribution of each dataset to your final derived dataset. 
 #' @param title (required) The title for your derived dataset. 
 #' @param description (required) A description of the dataset. Perhaps 
 #' describing how it was created. 
@@ -21,11 +21,11 @@
 #' Create a **citable DOI** for a dataset derived from GBIF mediated 
 #' occurrences. 
 #' 
-#' **Use-case (1)** your dataset was obtained with `occ_search` and 
+#' **Use-case (1)** your dataset was obtained with `occ_search()` and 
 #' never returned a **citable DOI**, but you want to cite the data in a 
 #' research paper.  
 #' 
-#' **Use-case (2)** your dataset was obtained using `occ_download` and you 
+#' **Use-case (2)** your dataset was obtained using `occ_download()` and you 
 #' got a DOI, but the data underwent extensive filtering using 
 #' `CoordinateCleaner` or some other cleaning pipeline. In this case be sure 
 #' to fill in your original `gbif_download_doi`.
@@ -40,8 +40,8 @@
 #' All fields (except `gbif_download_doi`) are required for the registration to 
 #' work.   
 #' 
-#' We recommend that you run `derived_dataset_prep` to check registration 
-#' details before making it final with `derived_dataset`. 
+#' We recommend that you run `derived_dataset_prep()` to check registration 
+#' details before making it final with `derived_dataset()`. 
 #' 
 #' @section Authentication:
 #' Some `rgbif` functions require your **GBIF credentials**. 
