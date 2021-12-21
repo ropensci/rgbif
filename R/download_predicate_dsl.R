@@ -131,6 +131,7 @@
 #' - stateProvince (STATE_PROVINCE)
 #' - occurrenceStatus (OCCURRENCE_STATUS)
 #' - publishingOrg (PUBLISHING_ORG)
+#' - occurrenceId (OCCURRENCE_ID)
 #' 
 #' @references Download predicates docs:
 #' <https://www.gbif.org/developer/occurrence#predicates>
@@ -334,7 +335,9 @@ key_lkup <- list(
   occurrenceStatus='OCCURRENCE_STATUS',
   OCCURRENCE_STATUS='OCCURRENCE_STATUS',
   publishingOrg='PUBLISHING_ORG',
-  PUBLISHING_ORG='PUBLISHING_ORG'
+  PUBLISHING_ORG='PUBLISHING_ORG',
+  OCCURRENCE_ID = 'OCCURRENCE_ID',
+  occurrenceId = 'OCCURRENCE_ID'
   )
 
 parse_pred <- function(key, value, type = "and") {
