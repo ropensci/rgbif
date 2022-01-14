@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.geonames.org/srtm3?lats=32.909436%2C38.540315%2C37.050632%2C31.913204%2C32.648646&lngs=-116.545853%2C-122.970018%2C-121.4302%2C-109.931659%2C-108.536463&username=<gbif_user>
+    uri: http://api.geonames.org/srtm3?lats=32.909436%2C38.540315%2C37.050632%2C31.913204%2C32.648646&lngs=-116.545853%2C-122.970018%2C-121.4302%2C-109.931659%2C-108.536463&username=<geonames_user>
     body:
       encoding: ''
       string: ''
@@ -29,7 +29,7 @@ http_interactions:
   recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
-    uri: http://api.geonames.org/srtm1?lats=32.909436%2C38.540315%2C37.050632%2C31.913204%2C32.648646&lngs=-116.545853%2C-122.970018%2C-121.4302%2C-109.931659%2C-108.536463&username=<gbif_user>
+    uri: http://api.geonames.org/srtm1?lats=32.909436%2C38.540315%2C37.050632%2C31.913204%2C32.648646&lngs=-116.545853%2C-122.970018%2C-121.4302%2C-109.931659%2C-108.536463&username=<geonames_user>
     body:
       encoding: ''
       string: ''
@@ -57,7 +57,7 @@ http_interactions:
   recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
-    uri: http://api.geonames.org/astergdem?lats=32.909436%2C38.540315%2C37.050632%2C31.913204%2C32.648646&lngs=-116.545853%2C-122.970018%2C-121.4302%2C-109.931659%2C-108.536463&username=<gbif_user>
+    uri: http://api.geonames.org/astergdem?lats=32.909436%2C38.540315%2C37.050632%2C31.913204%2C32.648646&lngs=-116.545853%2C-122.970018%2C-121.4302%2C-109.931659%2C-108.536463&username=<geonames_user>
     body:
       encoding: ''
       string: ''
@@ -85,7 +85,7 @@ http_interactions:
   recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
-    uri: http://api.geonames.org/gtopo30?lat=32.90944&lng=-116.5459&username=<gbif_user>
+    uri: http://api.geonames.org/gtopo30?lat=32.90944&lng=-116.5459&username=<geonames_user>
     body:
       encoding: ''
       string: ''
@@ -109,7 +109,7 @@ http_interactions:
   recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
-    uri: http://api.geonames.org/gtopo30?lat=38.54031&lng=-122.97&username=<gbif_user>
+    uri: http://api.geonames.org/gtopo30?lat=38.54031&lng=-122.97&username=<geonames_user>
     body:
       encoding: ''
       string: ''
@@ -133,7 +133,7 @@ http_interactions:
   recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
-    uri: http://api.geonames.org/gtopo30?lat=37.05063&lng=-121.4302&username=<gbif_user>
+    uri: http://api.geonames.org/gtopo30?lat=37.05063&lng=-121.4302&username=<geonames_user>
     body:
       encoding: ''
       string: ''
@@ -157,7 +157,7 @@ http_interactions:
   recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
-    uri: http://api.geonames.org/gtopo30?lat=31.9132&lng=-109.9317&username=<gbif_user>
+    uri: http://api.geonames.org/gtopo30?lat=31.9132&lng=-109.9317&username=<geonames_user>
     body:
       encoding: ''
       string: ''
@@ -181,7 +181,7 @@ http_interactions:
   recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
-    uri: http://api.geonames.org/gtopo30?lat=32.64865&lng=-108.5365&username=<gbif_user>
+    uri: http://api.geonames.org/gtopo30?lat=32.64865&lng=-108.5365&username=<geonames_user>
     body:
       encoding: ''
       string: ''

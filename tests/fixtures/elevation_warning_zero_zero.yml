@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.geonames.org/srtm3?lats=0%2C45&lngs=0%2C-120&username=<gbif_user>
+    uri: http://api.geonames.org/srtm3?lats=0%2C45&lngs=0%2C-120&username=<geonames_user>
     body:
       encoding: ''
       string: ''

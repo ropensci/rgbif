@@ -24,7 +24,7 @@ http_interactions:
   recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
-    uri: http://api.geonames.org/srtm3?lats=a&lngs=a&username=<gbif_user>
+    uri: http://api.geonames.org/srtm3?lats=a&lngs=a&username=<geonames_user>
     body:
       encoding: ''
       string: ''
