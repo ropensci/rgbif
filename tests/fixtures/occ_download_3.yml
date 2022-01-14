@@ -4,7 +4,7 @@ http_interactions:
     uri: https://api.gbif.org/v1/occurrence/download/request
     body:
       encoding: ''
-      string: '{"creator":"<gbif_user>","notification_address":["<gbif_user>@gbif.org"],"format":"SPECIES_LIST","predicate":{"type":"greaterThanOrEquals","key":"DECIMAL_LATITUDE","value":"75"}}'
+      string: '{"creator":"<gbif_user>","notification_address":["<gbif_email>"],"format":"SPECIES_LIST","predicate":{"type":"greaterThanOrEquals","key":"DECIMAL_LATITUDE","value":"75"}}'
     headers:
       Accept-Encoding: gzip, deflate
       Content-Type: application/json

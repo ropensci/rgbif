@@ -4,7 +4,7 @@ http_interactions:
     uri: https://api.gbif.org/v1/occurrence/download/request
     body:
       encoding: ''
-      string: '{"creator":"<gbif_user>","notification_address":["<gbif_user>@gbif.org"],"format":"DWCA","predicate":{"type":"and","predicates":[{"type":"within","geometry":"POLYGON((-14
+      string: '{"creator":"<gbif_user>","notification_address":["<gbif_email>"],"format":"DWCA","predicate":{"type":"and","predicates":[{"type":"within","geometry":"POLYGON((-14
         42, 9 38, -7 26, -14 42))"},{"type":"greaterThanOrEquals","key":"ELEVATION","value":"5000"}]}}'
     headers:
       Accept-Encoding: gzip, deflate
