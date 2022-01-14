@@ -72,6 +72,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          install.packages("stringi")
           pak::local_install_dev_deps()
           pak::pkg_install(c("rcmdcheck", "sf", "maps", "scales", "colorspace", "raster", "protolite"))
         shell: Rscript {0}
