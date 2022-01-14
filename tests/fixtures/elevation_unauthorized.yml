@@ -16,14 +16,14 @@ http_interactions:
       message: Unauthorized
       explanation: No permission -- see authorization schemes
     headers:
-      status: HTTP/1.1 401 Unauthorized
-      date: Thu, 13 Jan 2022 14:10:04 GMT
-      server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips PHP/5.4.16
+      status: HTTP/1.1 401 401
+      date: Fri, 14 Jan 2022 12:21:38 GMT
+      server: Apache/2.4.37 (centos) mod_jk/1.2.48 OpenSSL/1.1.1g
       content-length: '28'
     body:
       encoding: UTF-8
       file: no
       string: |
         ERR:10:user does not exist.
-  recorded_at: 2022-01-13 14:10:04 GMT
+  recorded_at: 2022-01-14 12:21:38 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0
