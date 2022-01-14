@@ -190,6 +190,7 @@ be supported that is not yet.
 \item stateProvince (STATE_PROVINCE)
 \item occurrenceStatus (OCCURRENCE_STATUS)
 \item publishingOrg (PUBLISHING_ORG)
+\item occurrenceId (OCCURRENCE_ID)
 }
 }
 

@@ -198,7 +198,7 @@ occ_download <- function(..., body = NULL, type = "and", format = "DWCA",
   )
 }
 
-download_formats <- c("DWCA", "SIMPLE_CSV", "SPECIES_LIST")
+download_formats <- c("DWCA", "SIMPLE_CSV", "SPECIES_LIST", "SIMPLE_PARQUET")
 
 #' @export
 #' @rdname occ_download

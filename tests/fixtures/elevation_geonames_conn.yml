@@ -17,7 +17,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Fri, 17 Dec 2021 13:36:26 GMT
+      date: Thu, 13 Jan 2022 14:09:56 GMT
       server: Apache/2.4.6 (CentOS) mod_jk/1.2.41 OpenSSL/1.0.1e-fips PHP/5.4.16
       access-control-allow-origin: '*'
       x-frame-options: sameorigin
@@ -30,5 +30,5 @@ http_interactions:
       string: |
         206
         239
-  recorded_at: 2021-12-17 13:36:27 GMT
+  recorded_at: 2022-01-13 14:09:56 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0
