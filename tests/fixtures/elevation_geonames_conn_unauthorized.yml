@@ -8,8 +8,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
-      X-USER-AGENT: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
   response:
     status:
       status_code: '401'
@@ -17,9 +15,6 @@ http_interactions:
       explanation: No permission -- see authorization schemes
     headers:
       status: HTTP/1.1 401 401
-      date: Fri, 14 Jan 2022 12:21:35 GMT
-      server: Apache/2.4.37 (centos) mod_jk/1.2.48 OpenSSL/1.1.1g
-      content-length: '28'
     body:
       encoding: UTF-8
       file: no
@@ -36,8 +31,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
-      X-USER-AGENT: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
   response:
     status:
       status_code: '200'
@@ -45,9 +38,6 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 200
-      date: Fri, 14 Jan 2022 12:21:35 GMT
-      server: Apache/2.4.37 (centos) mod_jk/1.2.48 OpenSSL/1.1.1g
-      content-length: '22'
     body:
       encoding: UTF-8
       file: no

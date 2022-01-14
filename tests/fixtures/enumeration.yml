@@ -8,8 +8,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
@@ -17,19 +15,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: 'HTTP/2 200 '
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Tue, 08 Dec 2020 23:54:00 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '453086098'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
     body:
       encoding: ASCII-8BIT
       file: no
@@ -45,8 +31,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
@@ -54,20 +38,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: 'HTTP/2 200 '
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Tue, 08 Dec 2020 23:54:01 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '453086099'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      content-length: '121'
     body:
       encoding: ASCII-8BIT
       file: no
@@ -83,8 +54,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
@@ -92,20 +61,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: 'HTTP/2 200 '
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Tue, 08 Dec 2020 23:54:01 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '453086100'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      content-length: '12'
     body:
       encoding: ASCII-8BIT
       file: no
@@ -121,8 +77,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
@@ -130,20 +84,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: 'HTTP/2 200 '
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Tue, 08 Dec 2020 23:54:02 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '453086101'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      content-length: '568'
     body:
       encoding: ASCII-8BIT
       file: no
@@ -159,8 +100,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
@@ -168,19 +107,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: 'HTTP/2 200 '
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Tue, 08 Dec 2020 23:54:02 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '453086102'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
     body:
       encoding: ASCII-8BIT
       file: no

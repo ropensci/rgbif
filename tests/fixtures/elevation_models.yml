@@ -8,8 +8,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
-      X-USER-AGENT: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
   response:
     status:
       status_code: '200'
@@ -17,12 +15,6 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 200
-      date: Fri, 14 Jan 2022 12:21:36 GMT
-      server: Apache/2.4.37 (centos) mod_jk/1.2.48 OpenSSL/1.1.1g
-      access-control-allow-origin: '*'
-      x-frame-options: sameorigin
-      cache-control: no-cache
-      transfer-encoding: chunked
       content-type: text/html;charset=UTF-8
     body:
       encoding: UTF-8
@@ -44,8 +36,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
-      X-USER-AGENT: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
   response:
     status:
       status_code: '200'
@@ -53,12 +43,6 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 200
-      date: Fri, 14 Jan 2022 12:21:36 GMT
-      server: Apache/2.4.37 (centos) mod_jk/1.2.48 OpenSSL/1.1.1g
-      access-control-allow-origin: '*'
-      x-frame-options: sameorigin
-      cache-control: no-cache
-      transfer-encoding: chunked
       content-type: text/html;charset=UTF-8
     body:
       encoding: UTF-8
@@ -80,8 +64,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
-      X-USER-AGENT: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
   response:
     status:
       status_code: '200'
@@ -89,12 +71,6 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 200
-      date: Fri, 14 Jan 2022 12:21:37 GMT
-      server: Apache/2.4.37 (centos) mod_jk/1.2.48 OpenSSL/1.1.1g
-      access-control-allow-origin: '*'
-      x-frame-options: sameorigin
-      cache-control: no-cache
-      transfer-encoding: chunked
       content-type: text/html;charset=UTF-8
     body:
       encoding: UTF-8
@@ -116,8 +92,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
-      X-USER-AGENT: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
   response:
     status:
       status_code: '200'
@@ -125,12 +99,6 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 200
-      date: Fri, 14 Jan 2022 12:21:37 GMT
-      server: Apache/2.4.37 (centos) mod_jk/1.2.48 OpenSSL/1.1.1g
-      access-control-allow-origin: '*'
-      x-frame-options: sameorigin
-      cache-control: no-cache
-      transfer-encoding: chunked
       content-type: text/html;charset=UTF-8
     body:
       encoding: UTF-8
@@ -148,8 +116,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
-      X-USER-AGENT: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
   response:
     status:
       status_code: '200'
@@ -157,12 +123,6 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 200
-      date: Fri, 14 Jan 2022 12:21:37 GMT
-      server: Apache/2.4.37 (centos) mod_jk/1.2.48 OpenSSL/1.1.1g
-      access-control-allow-origin: '*'
-      x-frame-options: sameorigin
-      cache-control: no-cache
-      transfer-encoding: chunked
       content-type: text/html;charset=UTF-8
     body:
       encoding: UTF-8
@@ -180,8 +140,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
-      X-USER-AGENT: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
   response:
     status:
       status_code: '200'
@@ -189,12 +147,6 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 200
-      date: Fri, 14 Jan 2022 12:21:37 GMT
-      server: Apache/2.4.37 (centos) mod_jk/1.2.48 OpenSSL/1.1.1g
-      access-control-allow-origin: '*'
-      x-frame-options: sameorigin
-      cache-control: no-cache
-      transfer-encoding: chunked
       content-type: text/html;charset=UTF-8
     body:
       encoding: UTF-8
@@ -212,8 +164,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
-      X-USER-AGENT: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
   response:
     status:
       status_code: '200'
@@ -221,12 +171,6 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 200
-      date: Fri, 14 Jan 2022 12:21:38 GMT
-      server: Apache/2.4.37 (centos) mod_jk/1.2.48 OpenSSL/1.1.1g
-      access-control-allow-origin: '*'
-      x-frame-options: sameorigin
-      cache-control: no-cache
-      transfer-encoding: chunked
       content-type: text/html;charset=UTF-8
     body:
       encoding: UTF-8
@@ -244,8 +188,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
-      X-USER-AGENT: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
   response:
     status:
       status_code: '200'
@@ -253,12 +195,6 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 200
-      date: Fri, 14 Jan 2022 12:21:38 GMT
-      server: Apache/2.4.37 (centos) mod_jk/1.2.48 OpenSSL/1.1.1g
-      access-control-allow-origin: '*'
-      x-frame-options: sameorigin
-      cache-control: no-cache
-      transfer-encoding: chunked
       content-type: text/html;charset=UTF-8
     body:
       encoding: UTF-8

@@ -7,8 +7,6 @@ http_interactions:
       string: '{"creator":"<gbif_user>","notification_address":["<gbif_user>@gbif.org"],"format":"DWCA","predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"9206251"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]}}'
     headers:
       Accept-Encoding: gzip, deflate
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
       Content-Type: application/json
       Accept: application/json
   response:
@@ -18,20 +16,7 @@ http_interactions:
       explanation: Document created, URL follows
     headers:
       status: HTTP/1.1 201 Created
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      content-length: '23'
-      date: Fri, 15 Oct 2021 12:58:17 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '505940742'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -47,8 +32,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -56,21 +39,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:58:18 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '505972376'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      transfer-encoding: chunked
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -86,8 +55,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -95,21 +62,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:58:18 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '525435348'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      transfer-encoding: chunked
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -125,8 +78,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -134,21 +85,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:58:21 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '525435377'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      transfer-encoding: chunked
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -164,8 +101,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -173,21 +108,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:58:24 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '498338814'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      transfer-encoding: chunked
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -203,8 +124,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -212,21 +131,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:58:27 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '527827339'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      content-length: '690'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -242,8 +147,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -251,21 +154,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:58:30 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '514622330'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      transfer-encoding: chunked
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -281,8 +170,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -290,21 +177,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:58:33 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '525894238'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      transfer-encoding: chunked
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -320,8 +193,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -329,21 +200,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:58:36 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '510756572'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      content-length: '690'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -359,8 +216,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -368,21 +223,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:58:39 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '488903140'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      content-length: '694'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -398,8 +239,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -407,21 +246,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:58:42 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '522551757'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      content-length: '694'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -437,8 +262,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -446,21 +269,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:58:45 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '512721722'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      content-length: '694'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -476,8 +285,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -485,21 +292,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:58:48 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '505940768'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      transfer-encoding: chunked
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -515,8 +308,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -524,21 +315,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:58:51 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '510756605'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      transfer-encoding: chunked
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -554,8 +331,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -563,21 +338,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:58:54 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '396208914'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      transfer-encoding: chunked
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -593,8 +354,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -602,21 +361,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:58:58 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '484282912'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      content-length: '694'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -632,8 +377,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -641,21 +384,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:59:01 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '492962951'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      transfer-encoding: chunked
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -671,8 +400,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -680,21 +407,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:59:04 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '448795594'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      transfer-encoding: chunked
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -710,8 +423,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -719,21 +430,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:59:07 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '506463284'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      transfer-encoding: chunked
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -749,8 +446,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -758,21 +453,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:59:10 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '514458697'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      transfer-encoding: chunked
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -788,8 +469,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -797,21 +476,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:59:13 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '522322230'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      transfer-encoding: chunked
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -827,8 +492,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -836,21 +499,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:59:16 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '513246009'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      transfer-encoding: chunked
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -866,8 +515,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -875,21 +522,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:59:19 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '512755019'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      transfer-encoding: chunked
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -905,8 +538,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -914,21 +545,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:59:23 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '488280417'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      content-length: '696'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -944,8 +561,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -953,21 +568,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:59:26 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '506660576'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      content-length: '696'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -983,8 +584,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -992,21 +591,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:59:29 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '503318900'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      content-length: '696'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -1022,8 +607,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -1031,21 +614,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:59:32 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '527925803'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      transfer-encoding: chunked
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -1061,8 +630,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -1070,21 +637,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:59:36 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '527991197'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      content-length: '696'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -1100,8 +653,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -1109,21 +660,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:59:39 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '488280466'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      transfer-encoding: chunked
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -1139,8 +676,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -1148,21 +683,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:59:42 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '520095513'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      content-length: '740'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -1178,8 +699,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -1187,21 +706,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:59:44 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '493094822'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      transfer-encoding: chunked
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -1217,8 +722,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -1226,21 +729,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:59:47 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '504039673'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      transfer-encoding: chunked
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -1256,8 +745,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -1265,21 +752,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:59:50 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '478843063'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      transfer-encoding: chunked
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -1295,8 +768,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -1304,21 +775,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:59:54 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '514393830'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      content-length: '740'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -1334,8 +791,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -1343,21 +798,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 12:59:57 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '467441249'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      content-length: '740'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -1373,8 +814,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -1382,21 +821,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 15 Oct 2021 13:00:00 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '528548466'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      content-length: '746'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no

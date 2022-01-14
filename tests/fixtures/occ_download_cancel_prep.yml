@@ -7,8 +7,6 @@ http_interactions:
       string: '{"creator":"<gbif_user>","notification_address":["<gbif_user>@gbif.org"],"format":"DWCA","predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"9206251"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1979"}]}}'
     headers:
       Accept-Encoding: gzip, deflate
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
       Content-Type: application/json
       Accept: application/json
   response:
@@ -18,20 +16,7 @@ http_interactions:
       explanation: Document created, URL follows
     headers:
       status: HTTP/1.1 201 Created
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      content-length: '23'
-      date: Tue, 12 Oct 2021 07:35:09 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '799214960'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -47,8 +32,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -56,21 +39,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Tue, 12 Oct 2021 07:35:09 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '815630521'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      transfer-encoding: chunked
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no

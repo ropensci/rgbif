@@ -8,8 +8,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -17,18 +15,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Wed, 28 Jul 2021 09:19:33 GMT
       content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
-      cache-control: public, max-age=3601
-      x-varnish: '524715102'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      content-length: '727'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -44,8 +31,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -53,18 +38,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Wed, 28 Jul 2021 09:19:33 GMT
       content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
-      cache-control: public, max-age=3601
-      x-varnish: 524715108 524715103
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      content-length: '727'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -80,8 +54,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -89,18 +61,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Wed, 28 Jul 2021 09:19:33 GMT
       content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
-      cache-control: public, max-age=3601
-      x-varnish: '513804071'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      content-length: '1640'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no

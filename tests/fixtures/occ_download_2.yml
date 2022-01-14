@@ -8,8 +8,6 @@ http_interactions:
         42, 9 38, -7 26, -14 42))"},{"type":"greaterThanOrEquals","key":"ELEVATION","value":"5000"}]}}'
     headers:
       Accept-Encoding: gzip, deflate
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
       Content-Type: application/json
       Accept: application/json
   response:
@@ -19,20 +17,7 @@ http_interactions:
       explanation: Document created, URL follows
     headers:
       status: HTTP/1.1 201 Created
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      content-length: '23'
-      date: Mon, 11 Oct 2021 14:51:13 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '984815029'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -48,8 +33,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
   response:
     status:
       status_code: '200'
@@ -57,21 +40,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Mon, 11 Oct 2021 14:51:15 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '1023050451'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      content-length: '622'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
