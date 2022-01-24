@@ -14,20 +14,7 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/xml
-      content-length: '872'
-      date: Tue, 08 Dec 2020 23:59:58 GMT
-      cache-control: public, max-age=3601
-      x-varnish: '485982364'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
     body:
       encoding: UTF-8
       file: no

@@ -8,8 +8,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
-      X-USER-AGENT: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
   response:
     status:
       status_code: '200'
@@ -17,18 +15,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      date: Fri, 17 Dec 2021 14:13:17 GMT
       content-type: application/json
-      access-control-allow-origin: '*'
-      access-control-allow-methods: HEAD, GET, POST, DELETE, PUT, OPTIONS
-      server: Jetty(9.3.z-SNAPSHOT)
-      cache-control: public, max-age=3601
-      x-varnish: '801964474'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      content-length: '456'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -46,8 +33,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
-      X-USER-AGENT: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
   response:
     status:
       status_code: '200'
@@ -55,21 +40,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 17 Dec 2021 14:13:17 GMT
-      cache-control: public, max-age=600
-      x-varnish: '778766145'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      content-length: '79'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -85,8 +56,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
-      X-USER-AGENT: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
   response:
     status:
       status_code: '200'
@@ -94,21 +63,7 @@ http_interactions:
       explanation: Request fulfilled, document follows
     headers:
       status: HTTP/1.1 200 OK
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: application/json
-      date: Fri, 17 Dec 2021 14:13:17 GMT
-      cache-control: public, max-age=600
-      x-varnish: 763858256 778766146
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      accept-ranges: bytes
-      content-length: '79'
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
@@ -124,8 +79,6 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
-      X-USER-AGENT: r-curl/4.3.2 crul/1.2.0 rOpenSci(rgbif/3.6.1.99)
   response:
     status:
       status_code: '400'
@@ -133,20 +86,7 @@ http_interactions:
       explanation: Bad request syntax or unsupported method
     headers:
       status: HTTP/1.1 400 Bad Request
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
       content-type: text/plain
-      content-length: '27'
-      date: Fri, 17 Dec 2021 14:13:17 GMT
-      cache-control: no-cache, no-store, must-revalidate
-      x-varnish: '763858257'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no
