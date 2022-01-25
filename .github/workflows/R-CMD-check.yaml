@@ -15,7 +15,9 @@ jobs:
         - { os: windows-latest, r: 'release'}
         - { os: macOS-latest, r: 'release'}
         # - { os: macOS-latest, r: 'devel'}
-        - { os: ubuntu-latest, r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/xenial/latest"}
+        # If changing the Ubuntu version, change all instances of 18.04, and change bionic to the new
+        # version using this reference: https://wiki.ubuntu.com/Releases
+        - { os: ubuntu-18.04, r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/bionic/latest"}
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
@@ -46,14 +48,14 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
-          restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
+          key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-2-${{ hashFiles('.github/depends.Rds') }}
+          restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-2-
 
       - name: Install pak
         run: |
-          install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
+          install.packages("pak", repos = "https://r-lib.github.io/p/pak/devel/")
         shell: Rscript {0}
-      
+
       - name: install macOS system dependencies
         if: runner.os == 'macOS'
         continue-on-error: true
@@ -65,22 +67,20 @@ jobs:
         env:
           RHUB_PLATFORM: linux-x86_64-ubuntu-gcc
         run: |
-          while read -r cmd
-          do
-            eval sudo $cmd
-          done < <(Rscript -e 'writeLines(pak::local_system_requirements("ubuntu", "16.04"))')
-      
+          Rscript -e 'writeLines(pak::local_system_requirements("ubuntu", "18.04", execute = TRUE, sudo = TRUE, echo = TRUE))'
+
       - name: Install dependencies
         run: |
+          pak::pkg_install("stringi")
           pak::local_install_dev_deps()
-          pak::pkg_install(c("rcmdcheck", "sf", "maps", "scales", "colorspace", "raster", "protolite"))
+          pak::pkg_install(c("rcmdcheck", "sf", "maps", "scales", "colorspace", "raster", "protolite", "rgeos"))
         shell: Rscript {0}
 
       - name: Session info
         run: |
           options(width = 100)
           pkgs <- installed.packages()[, "Package"]
-          utils::sessionInfo(pkgs) 
+          utils::sessionInfo(pkgs)
         shell: Rscript {0}
 
       - name: Check
@@ -102,6 +102,6 @@ jobs:
           path: check
 
       - name: Test coverage
-        if: matrix.config.os == 'ubuntu-16.04' && matrix.config.r == 'release'
+        if: matrix.config.os == 'ubuntu-18.04' && matrix.config.r == 'release'
         run: |
           Rscript -e 'remotes::install_cran("covr")' -e 'covr::codecov(token = "${{secrets.CODECOV_TOKEN}}")'

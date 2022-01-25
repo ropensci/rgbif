@@ -3,14 +3,14 @@ test_that("gbif_citation w/ occ_search", {
   vcr::use_cassette("gbif_citation", {
     ss <- occ_search(taxonKey=9206251, limit=2)
   }, preserve_exact_body_bytes = TRUE)
-  expect_output(gbif_citation(ss)$download, "gbif_citation\\(\\) for occ_search\\(\\)")
+  expect_warning(gbif_citation(ss)$download, "gbif_citation\\(\\) for occ_search\\(\\)")
 })
 
 test_that("gbif_citation w/ occ_data", {
   vcr::use_cassette("gbif_citation_occ_data", {
     dd <- occ_data(taxonKey=9206251, limit=2)
   }, preserve_exact_body_bytes = TRUE)
-  expect_output(gbif_citation(dd)$download, "gbif_citation\\(\\) for occ_search\\(\\)")
+  expect_warning(gbif_citation(dd)$download, "gbif_citation\\(\\) for occ_search\\(\\)")
 })
 
 test_that("gbif_citation w/ occ_download_meta", {

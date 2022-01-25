@@ -44,8 +44,33 @@ gbif_citation <- function(x) {
 
 #' @export
 gbif_citation.gbif <- function(x) {
-  cat_n("gbif_citation() for occ_search() and occ_data() is deprecated.")
-  cat_n("Use rgbif::occ_download() or rgbif::derived_dataset() instead.")
+  .Deprecated(msg="gbif_citation() for occ_search() and occ_data() is deprecated. \nUse rgbif::occ_download() or rgbif::derived_dataset() instead.")
+  if (!inherits(x, "data.frame")) {
+    x <- x$data
+  }
+  dkeys <- unique(suppressWarnings(x$datasetKey))
+  if (is.null(dkeys)) {
+    occ_keys <- x$key
+    if (!is.null(occ_keys)) {
+      dkeys <- unique(vapply(occ_get(as.numeric(unique(occ_keys)),
+                                     fields = "all"), "[[", "", c('data', 'datasetKey')))
+    } else {
+      stop("No 'datasetKey' or 'key' fields found", call. = FALSE)
+    }
+  }
+  
+  lapply(dkeys, function(z) {
+    tmp <- datasets(uuid = z)
+    cit <- list(title = tmp$data$title,
+                text = tmp$data$citation$text,
+                accessed =
+                  paste0(
+                    "Accessed from R via rgbif (https://github.com/ropensci/rgbif) on ",
+                    Sys.Date()))
+    cit$citation <- paste(cit$text, cit$accessed, sep = ". ")
+    structure(list(citation = cit, rights = tmp$data$rights %||% tmp$data$license),
+              class = "gbif_citation")
+  })
 }
 
 #' @export
