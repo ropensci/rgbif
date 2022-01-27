@@ -102,14 +102,15 @@ jobs:
           path: check
       
       - name: Test coverage
-        if: matrix.config.os == 'windows-latest' && matrix.config.r == 'release'
+        if: matrix.config.os == 'ubuntu-18.04' && matrix.config.r == 'release'
         run: |
           install.packages(c("remotes"))
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("covr")
           covr::codecov()
         shell: Rscript {0}
-
+      
+      # if: matrix.config.os == 'windows-latest' && matrix.config.r == 'release'
       # - name: Test coverage
       #   if: matrix.config.os == 'ubuntu-18.04' && matrix.config.r == 'release'
       #   run: |
