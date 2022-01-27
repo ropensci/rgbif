@@ -146,8 +146,10 @@ test_that("name_backbone_checklist good data", {
   expect_true(nrow(vvvvvv) > nrow(tttttt))
   })
   
-  test_that("name_backbone_checklist bad or weird data", {
-    
+test_that("name_backbone_checklist bad or weird data", {
+  skip_on_cran()
+  skip_on_ci()
+      
     name_data <- data.frame(
       name = c(
         NA, # missing value
