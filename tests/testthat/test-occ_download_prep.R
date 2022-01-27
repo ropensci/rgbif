@@ -48,3 +48,20 @@ test_that("occ_download_prep print method", {
   w <- w[length(w)]
   expect_true(nchar(w) < 150)
 })
+
+test_that("occ_download_prep long print", {
+  skip_on_cran()
+  
+  long_taxonkey_list <- rep(22222222,200)
+  
+  pp <- occ_download_prep(
+    pred_in("taxonKey", long_taxonkey_list),
+    pred("hasCoordinate", TRUE),
+    user = "foo", 
+    pwd = "bar", 
+    email = "foo@bar.com"
+  )
+  
+  expect_output(print(pp),"OK. But too large to print.")
+})
+

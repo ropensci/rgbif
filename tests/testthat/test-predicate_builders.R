@@ -163,3 +163,21 @@ test_that("pred_within fails well", {
   expect_error(pred_within(NULL), "'value' must be length 1")
 })
 
+
+context("predicate builders: pred_isnull")
+test_that("pred_isnull", {
+
+  ii <- pred_isnull("coordinateUncertaintyInMeters")
+  expect_is(ii, "occ_predicate")
+  expect_is(unclass(ii), "list")
+  expect_named(ii, c("type", "parameter"))
+  expect_equal(unclass(ii$type), "isNull")
+  expect_is(unclass(ii$parameter), "character")
+  expect_equal(length(ii$parameter), 1)
+})
+test_that("pred_isnull fails well", {
+  expect_error(pred_isnull(), "argument \"key\" is missing")
+  expect_error(pred_isnull(NULL), "'key' must be length 1")
+})
+
+
