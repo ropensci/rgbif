@@ -191,7 +191,11 @@ make_async_urls <- function(x,verbose=FALSE) {
 
 gbif_async_get <- function(urls, curlopts = list()) {
   cc <- crul::Async$new(urls = urls,headers = rgbif_ual, opts = curlopts)
-  res <- cc$get()
+  res <- process_async_get(cc$get())
+  return(res)
+}
+
+process_async_get <- function(res) {
   status_codes <- sapply(res, function(z) z$status_code)
   if(any(status_codes == 204)) stop("Status: 204 - not found ", call. = FALSE)
   if(all(status_codes > 200)) {
@@ -211,8 +215,7 @@ gbif_async_get <- function(urls, curlopts = list()) {
   # check content type
   content_types <- sapply(res, function(z) z$response_headers$`content-type`)
   stopifnot(any(content_types == 'application/json'))
-  # parse JSON
+  
   json_list <- lapply(res, function(z) jsonlite::fromJSON(z$parse("UTF-8"), parse)) 
   return(json_list)
 }
-
