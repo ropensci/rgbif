@@ -200,9 +200,9 @@ test_that("name_backbone_checklist bad or weird data", {
       ))
     
   # bad data 
-  expect_error(name_backbone_checklist(name_data = c("dog","dog")),"Repeated names found. Use unique names only.")
   expect_error(name_backbone_checklist(name_data = NULL),"You forgot to supply your checklist data.frame or vector to name_data.")
   expect_error(name_backbone_checklist(name_data = 1),"name_data should be class character.")
+  expect_error(name_backbone_checklist(name_data = data.frame(1)),"The name column should be class character.")
   
   # name column is a factor
   name_data_factor = name_data
@@ -214,8 +214,8 @@ test_that("name_backbone_checklist bad or weird data", {
   # just missing names
   ff <- name_backbone_checklist(name_data = c("fake name 1","fake name 2"))
   zz <- name_backbone_checklist(name_data = c("fake name 1","fake name 2"),verbose=TRUE)
-  expect_equal(colnames(ff), c("confidence","matchType", "synonym", "verbatim_name"))
-  expect_equal(colnames(zz), c("confidence","matchType", "synonym", "verbatim_name"))
+  expect_equal(colnames(ff), c("confidence","matchType", "synonym", "verbatim_name","verbatim_index"))
+  expect_equal(colnames(zz), c("confidence","matchType", "synonym", "verbatim_name","verbatim_index"))
   expect_true(nrow(ff) == nrow(zz))
   expect_equal(unique(ff$matchType), "NONE")
   expect_equal(unique(zz$matchType), "NONE")
@@ -225,8 +225,8 @@ test_that("name_backbone_checklist bad or weird data", {
   # just one missing name
   fff <- name_backbone_checklist(name_data = name_data[1,])
   zzz <- name_backbone_checklist(name_data = name_data[1,],verbose=TRUE)   
-  expect_equal(colnames(fff), c("confidence","matchType", "synonym", "verbatim_name","verbatim_kingdom"))
-  expect_equal(colnames(zzz), c("confidence","matchType", "synonym", "verbatim_name","verbatim_kingdom"))
+  expect_equal(colnames(fff), c("confidence","matchType", "synonym", "verbatim_name","verbatim_kingdom","verbatim_index"))
+  expect_equal(colnames(zzz), c("confidence","matchType", "synonym", "verbatim_name","verbatim_kingdom","verbatim_index"))
   expect_true(nrow(fff) == nrow(zzz))
   expect_equal(unique(fff$matchType), "NONE")
   expect_equal(unique(zzz$matchType), "NONE")

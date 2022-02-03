@@ -134,7 +134,7 @@ derived_dataset <- function(citation_data = NULL,
                             curlopts = curlopts)
 
   out <- derived_dataset_POST(url = z$url,
-                              req = convert_to_json(z$req),
+                              req = jsonlite::toJSON(z$req,auto_unbox=TRUE),
                               user = z$user,
                               pwd = z$pwd,
                               curlopts = z$curlopts)
@@ -211,7 +211,6 @@ check_citation_data = function(citation_data = NULL) {
       },
       error = function(e){
         stop("Error converting to data.frame. Please supply a data.frame to citation_data.")
-        print(e)
       })    
   }
   if(nrow(data) == 0)
@@ -257,7 +256,7 @@ check_description = function(description=NULL) {
 
 check_source_url = function(source_url=NULL) {
   
-  if(is.null(source_url)) stop("Please fill in the url where the derived dataset is stored.")
+  if(is.null(source_url)) stop("Please fill in the url where the derived dataset is stored (e.g.Zendo).")
   if(!is.character(source_url)) stop("The source_url should be character string.")
   
   source_url
@@ -283,19 +282,6 @@ check_gbif_download_doi = function(gbif_download_doi) {
   gbif_download_doi
 }
 
-convert_to_json <- function(x) {
-  if (is.character(x)) {
-    # replace newlines
-    x <- gsub("\n|\r|\\s+", "", x)
-    # validate
-    tmp <- jsonlite::validate(x)
-    if (!tmp) stop(attr(tmp, "err"))
-    x
-  } else {
-    jsonlite::toJSON(x,auto_unbox=TRUE)
-  }
-}
-
 derived_dataset_POST <- function(url, req, user, pwd, curlopts) {
   cli <- crul::HttpClient$new(url = url,opts = c(curlopts, httpauth = 1, userpwd = paste0(user, ":", pwd)),headers = c(rgbif_ual, `Content-Type` = "application/json", Accept = "application/json"))
   
@@ -308,32 +294,30 @@ derived_dataset_POST <- function(url, req, user, pwd, curlopts) {
 
 #' @export
 print.derived_dataset_prep <- function(x, ...) {
-  cat("<<gbif derived dataset - prepared>>", "\n", sep = "")
-  cat("  Username: ", x$user, "\n", sep = "")
-  cat("  Title: '", x$request$title,"'", "\n", sep = "")
-  cat("  Description: '", x$request$description,"'", "\n", sep = "")
-  cat("  Source URL: ", x$request$sourceUrl, "\n", sep = "")
-  cat("  Original Download DOI: ", x$request$originalDownloadDOI, "\n", sep = "")
+  cat_n("<<gbif derived dataset - prepared>>")
+  cat_n("  Username: ", x$user)
+  cat_n("  Title: '", x$request$title,"'")
+  cat_n("  Description: '", x$request$description,"'")
+  cat_n("  Source URL: ", x$request$sourceUrl)
+  cat_n("  Original Download DOI: ", x$request$originalDownloadDOI)
   datasets = utils::head(names(x$request$relatedDatasets),5)
   counts = x$request$relatedDatasets
-  cat("First 5 datasets of ",length(datasets)," :", "\n", sep = "")
+  cat_n("First 5 datasets of ",length(datasets)," :")
   for(i in 1:length(datasets)) 
-  cat("  ",datasets[[i]]," : ",counts[[i]], "\n", sep = "")
+  cat_n("  ",datasets[[i]]," : ",counts[[i]])
   
 }
 #' @export
 print.derived_dataset <- function(x, ...) {
   stopifnot(inherits(x, 'derived_dataset'))
-  
-  cat("<<gbif derived dataset - created>>", "\n", sep = "")
-  cat("  Username: ", attr(x, "user"), "\n", sep = "")
-  cat("  Title: '", x$title,"'", "\n", sep = "")
-  cat("  Description: '", x$description,"'", "\n", sep = "")
-  cat("  Source URL: ", x$sourceUrl, "\n", sep = "")
+  cat_n("<<gbif derived dataset - created>>")
+  cat_n("  Username: ", attr(x, "user"))
+  cat_n("  Title: '", x$title,"'")
+  cat_n("  Description: '", x$description,"'")
+  cat_n("  Source URL: ", x$sourceUrl)
   if(!is.null(x$originalDownloadDOI))
-    cat("  Original Download DOI: ", x$originalDownloadDOI, "\n", sep = "")
-  cat("  Citation: ", x$citation, "\n", sep = "")	
-  cat("  Derived Dataset DOI: ", x$doi, "\n", sep = "")	
-  cat("  See your registration here: https://www.gbif.org/derived-dataset", 
-      "\n", sep = "")	
+    cat("  Original Download DOI: ", x$originalDownloadDOI)
+  cat_n("  Citation: ", x$citation)	
+  cat_n("  Derived Dataset DOI: ", x$doi)	
+  cat_n("  See your registration here: https://www.gbif.org/derived-dataset")	
 }

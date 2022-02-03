@@ -44,10 +44,9 @@ test_that("derived_dataset: real request", {
   
   expect_is(yyy, "derived_dataset")
   expect_false(is.null(yyy$originalDownloadDOI))
-  expect_output(
-  print(yyy),
-  "<<gbif derived dataset - created>>"
-  )
+  expect_output(print.derived_dataset(yyy),"<<gbif derived dataset - created>>")
+  print(yyy)
+  
 
 })
 
@@ -333,10 +332,6 @@ expect_error(
     "remove 'https://doi.org/' from gbif_download_doi."
   )
   
-  
-  
-    
-  
  expect_message( 
   derived_dataset_prep(
     citation_data = data,
@@ -350,7 +345,7 @@ expect_error(
  
 })
 
-test_that("derived_dataset: print methods", {
+test_that("derived_dataset_prep: print methods", {
   
   data <- data.frame(
     datasetKey = c(
@@ -384,5 +379,3 @@ test_that("derived_dataset: print methods", {
   expect_error(print.derived_dataset(123))
   
 })
-
-

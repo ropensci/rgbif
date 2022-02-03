@@ -25,7 +25,8 @@
 #' - \strong{genus} : (optional)
 #'
 #' The input columns will be returned as "verbatim_name","verbatim_rank",
-#' "verbatim_phylum"...
+#' "verbatim_phylum" ect. A column of "verbatim_index" will also be returned
+#' giving the index of the input. 
 #'
 #' The following aliases for the 'name' column will work (any case or with '_'
 #' will work) :
@@ -118,11 +119,11 @@ name_backbone_checklist <- function(
     matched_names <- bind_rows(list(matched_names,alternatives))
   }
   # post processing matched names
+  matched_names <- matched_names[order(matched_names$verbatim_index),]
   matched_names <- matched_names[!names(matched_names) %in% c("alternatives", "note")]
   col_idx <- grep("verbatim_", names(matched_names))
   ordering <- c((1:ncol(matched_names))[-col_idx],col_idx)
   matched_names <- unique(matched_names[, ordering])
-  matched_names <- matched_names[order(factor(matched_names$verbatim_name, levels = name_data$name)),]
   return(matched_names)
 }
 
@@ -147,14 +148,14 @@ check_name_data = function(name_data) {
   if(is.vector(name_data)) {
     if(!is.character(name_data)) stop("name_data should be class character.")
     name_data <- data.frame(name=name_data)
-    if(any(duplicated(name_data$name))) stop("Repeated names found. Use unique names only.")
+    name_data$index <- 1:nrow(name_data) # add id for sorting 
     return(name_data) # exit early if vector
   } 
   if(ncol(name_data) == 1) {
     message("Assuming first column is 'name' column.")
     colnames(name_data) <- "name"
     if(!is.character(name_data$name)) stop("The name column should be class character.")
-    if(any(duplicated(name_data$name))) stop("Repeated names found. Use unique names only.")
+    name_data$index <- 1:nrow(name_data) # add id for sorting
     return(name_data) # exit early if only one column
   }
   
@@ -175,8 +176,7 @@ check_name_data = function(name_data) {
   char_args <- c("name","rank","kingdom","phylum","class","order","family","genus")
   if(!all(sapply(name_data[names(name_data) %in% char_args],is.character))) stop("All taxonomic columns should be character.")
   name_data <- name_data[colnames(name_data) %in% char_args] # only keep needed columns
-  # name_data <- name_data[!is.na(name_data$name),] # remove rows with missing in name column
-  if(any(duplicated(name_data$name))) stop("Repeated names found. Use unique names only.")
+  name_data$index <- 1:nrow(name_data) # add id for sorting 
   name_data
 }
 
