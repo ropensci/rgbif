@@ -1,16 +1,25 @@
-
 test_that("gbif_citation w/ occ_search", {
   vcr::use_cassette("gbif_citation", {
-    ss <- occ_search(taxonKey=9206251, limit=2)
+    res1 <- occ_search(taxonKey=9206251, limit=2)
+    aa <- expect_warning(gbif_citation(res1),"gbif_citation\\(\\) for occ_search\\(\\)")
   }, preserve_exact_body_bytes = TRUE)
-  expect_warning(gbif_citation(ss)$download, "gbif_citation\\(\\) for occ_search\\(\\)")
+  expect_is(aa, "list")
+  expect_is(aa[[1]], "gbif_citation")
+  expect_named(aa[[1]], c('citation', 'rights'))
+  expect_is(aa[[1]]$citation, 'list')
+  expect_is(aa[[1]]$rights, "character")
 })
 
 test_that("gbif_citation w/ occ_data", {
   vcr::use_cassette("gbif_citation_occ_data", {
-    dd <- occ_data(taxonKey=9206251, limit=2)
+    res1 <- occ_data(taxonKey=9206251, limit=2)
+    aa <- expect_warning(gbif_citation(res1),"gbif_citation\\(\\) for occ_search\\(\\)")
   }, preserve_exact_body_bytes = TRUE)
-  expect_warning(gbif_citation(dd)$download, "gbif_citation\\(\\) for occ_search\\(\\)")
+  expect_is(aa, "list")
+  expect_is(aa[[1]], "gbif_citation")
+  expect_named(aa[[1]], c('citation', 'rights'))
+  expect_is(aa[[1]]$citation, 'list')
+  expect_is(aa[[1]]$rights, "character")
 })
 
 test_that("gbif_citation w/ occ_download_meta", {

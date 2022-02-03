@@ -69,3 +69,21 @@ test_that("search for deleted and duplicate datasets returns the correct", {
   expect_equal(length(tt), 2)
   expect_equal(length(tt[[1]]), 2)
 })
+
+test_that("query all checklist datasets", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  
+  vcr::use_cassette("datasets_checklist", {
+    cc <- datasets(type="checklist")
+  }, preserve_exact_body_bytes = TRUE)
+  
+  expect_is(cc, "list")
+  expect_is(cc$data, "data.frame")
+  expect_true(all(cc$data$type == "CHECKLIST"))
+})
+
+test_that("test failure", {
+  expect_error(datasets(data="organization",uuid=NULL),
+               "You must specify a uuid if data does not equal all")
+})
+
