@@ -197,20 +197,10 @@ gbif_async_get <- function(urls, curlopts = list()) {
 
 process_async_get <- function(res) {
   status_codes <- sapply(res, function(z) z$status_code)
-  if(any(status_codes == 204)) stop("Status: 204 - not found ", call. = FALSE)
-  if(all(status_codes > 200)) {
-    mssgs <- lapply(res, function(z) z$parse("UTF-8"))
-    html_msg <- lapply(mssgs,function(x) grepl("html", x))
-    if(any(html_msg)) {
-      stop("500 - Server error", call. = FALSE)
-    }
-    length_mssgs <- sapply(mssgs,length)
-    nchar_mssgs <- sapply(mssgs,nchar)
-    if(any(length_mssgs == 0) || any(nchar_mssgs == 0)) {
-      stop("message of length zero")
-    }
-    if(any(status_codes) == 503) 
-      stop("503 - Service Unavailable", call. = FALSE)
+  if(any(status_codes == 204)) stop("Status: 204 - not found", call. = FALSE)
+  if(any(status_codes > 200)) {
+    if(any(status_codes == 500)) stop("500 - Server error", call. = FALSE)
+    if(any(status_codes == 503)) stop("503 - Service Unavailable", call. = FALSE)
   }
   # check content type
   content_types <- sapply(res, function(z) z$response_headers$`content-type`)

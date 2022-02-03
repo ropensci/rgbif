@@ -1,0 +1,25 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://httpbin.org/status/204
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '204'
+      message: No Content
+      explanation: Request fulfilled, nothing follows
+    headers:
+      status: HTTP/1.1 204 NO CONTENT
+      content-type: text/html; charset=utf-8
+      access-control-allow-credentials: 'true'
+    body:
+      encoding: UTF-8
+      file: no
+      string: ''
+  recorded_at: 2022-02-02 14:55:14 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

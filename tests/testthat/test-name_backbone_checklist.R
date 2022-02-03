@@ -235,3 +235,23 @@ test_that("name_backbone_checklist bad or weird data", {
   
   })
 
+
+test_that("test status codes", {
+  skip_on_cran()
+  skip_on_ci()
+  
+  urls_200 = c("https://httpbin.org/json","https://httpbin.org/json")
+  expect_length(gbif_async_get(urls = urls_200),2)
+  
+  urls_204 = c("https://httpbin.org/status/204","https://httpbin.org/json")
+  expect_error(gbif_async_get(urls = urls_204),"Status: 204 - not found")
+               
+  urls_500 = c("https://httpbin.org/json","https://httpbin.org/status/500")
+  expect_error(gbif_async_get(urls = urls_500),"500 - Server error")
+  
+  urls_503 = c("https://httpbin.org/json","https://httpbin.org/status/503")
+  expect_error(gbif_async_get(urls = urls_503),"503 - Service Unavailable")
+  
+})
+
+

@@ -46,9 +46,3 @@ test_that("name_backbone verbose=TRUE", {
   expect_true(tt$status == "ACCEPTED")
   expect_true(all(vv$status %in% c("ACCEPTED","DOUBTFUL","SYNONYM")))
 })
-
-
-
-
-
-
