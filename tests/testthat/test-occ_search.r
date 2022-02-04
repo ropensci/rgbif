@@ -346,8 +346,6 @@ test_that("works with parameters that allow many inputs", {
   expect_true(unique(tolower(bb$data$recordedBy)) %in% c('smith', 'bj stacey'))
 })
 
-
-
 # per issue #349
 test_that("key and gbifID fields are character class", {
   vcr::use_cassette("occ_search_key_gbifid_character_class", {
@@ -362,3 +360,16 @@ test_that("key and gbifID fields are character class", {
   # within media
   expect_is(aa$media[[1]][[1]]$key, "character")
 })
+
+test_that("test check_limit 1 million limit exceeded", {
+  expect_error(occ_search(limit=1e6+1),"Maximum request size is 1 million.")
+})
+
+test_that("multiple values for parameters fails", {
+  expect_error(occ_search(
+    taxonKey=c(1,2),
+    basisOfRecord=c("PRESERVED_SPECIMEN","HUMANA_OBSERVATION")),
+    "You can have multiple values for only one of")
+})
+
+
