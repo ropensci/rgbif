@@ -19,7 +19,7 @@ occ_get_verbatim(key, fields = "minimal", curlopts = list())
 \item{key}{(numeric/integer) one or more occurrence keys. required}
 
 \item{fields}{(character) Default ("minimal") will return just taxon name,
-key, latitude, and longitute. 'all' returns all fields. Or specify each
+key, latitude, and longitude. 'all' returns all fields. Or specify each
 field you want returned by name, e.g. fields = c('name',
 'decimalLatitude','altitude').}
 

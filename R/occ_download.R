@@ -21,7 +21,7 @@
 #' "Authentication" below
 #' @param pwd (character) User password within GBIF's website. Required. See
 #' "Authentication" below
-#' @param email (character) Email address to recieve download notice done
+#' @param email (character) Email address to receive download notice done
 #' email. Required. See "Authentication" below
 #' @template occ
 #' @note see [downloads] for an overview of GBIF downloads methods

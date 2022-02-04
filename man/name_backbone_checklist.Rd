@@ -38,7 +38,8 @@ one column is present, then that column is assumed to be the 'name' column.
 }
 
 The input columns will be returned as "verbatim_name","verbatim_rank",
-"verbatim_phylum"...
+"verbatim_phylum" ect. A column of "verbatim_index" will also be returned
+giving the index of the input.
 
 The following aliases for the 'name' column will work (any case or with '_'
 will work) :
