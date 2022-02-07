@@ -69,14 +69,14 @@ jobs:
         run: |
           Rscript -e 'writeLines(pak::local_system_requirements("ubuntu", "18.04", execute = TRUE, sudo = TRUE, echo = TRUE))'
       
-      -name: Install dependencies Linux
+      - name: Install dependencies Linux
         if: runner.os == 'Linux'
         run: |
           pak::pkg_install("r-spatial/sf") # for r-spatial/sf#1899 remove this once it moves to CRAN.
           pak::pkg_install("stringi")
           pak::local_install_dev_deps()
           pak::pkg_install(c("rcmdcheck", "maps", "scales", "colorspace", "raster", "protolite", "rgeos"))
-        shell: Rscript {0}  
+        shell: Rscript {0}
 
       - name: Install dependencies macOS and Windows
         if: runner.os == 'macOS' || runner.os == 'Windows'
