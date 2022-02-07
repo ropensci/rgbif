@@ -62,7 +62,8 @@ datasets <- function(data = 'all', type = NULL, uuid = NULL, query = NULL,
         paste0(gbif_base(), '/dataset')
       } else {
         if (!is.null(id) && x == 'metadata') {
-          sprintf('%s/dataset/metadata/%s/document', gbif_base(), id)
+          # not reachable leaving in for legacy reasons
+          sprintf('%s/dataset/metadata/%s/document', gbif_base(), id) # nocov
         } else {
           sprintf('%s/dataset/%s', gbif_base(), x)
         }

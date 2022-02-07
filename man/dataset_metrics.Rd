@@ -7,7 +7,7 @@
 dataset_metrics(uuid, curlopts = list())
 }
 \arguments{
-\item{uuid}{(character) One or more dataset UUIDs. See examples.}
+\item{uuid}{(character) One or more dataset uuid(s). See examples.}
 
 \item{curlopts}{list of named curl options passed on to
 \code{\link[crul]{HttpClient}}. see \code{curl::curl_options}

@@ -21,7 +21,7 @@
 #' "Authentication" below
 #' @param pwd (character) User password within GBIF's website. Required. See
 #' "Authentication" below
-#' @param email (character) Email address to recieve download notice done
+#' @param email (character) Email address to receive download notice done
 #' email. Required. See "Authentication" below
 #' @template occ
 #' @note see [downloads] for an overview of GBIF downloads methods
@@ -177,10 +177,10 @@
 #' # sort(unique(df$year))
 #' }
 occ_download <- function(..., body = NULL, type = "and", format = "DWCA",
-  user = NULL, pwd = NULL, email = NULL, curlopts = list()) {
-
+                         user = NULL, pwd = NULL, email = NULL, curlopts = list()) {
+  
   z <- occ_download_prep(..., body = body, type = type, format = format,
-    user = user, pwd = pwd, email = email, curlopts = curlopts)
+                         user = user, pwd = pwd, email = email, curlopts = curlopts)
   out <- rg_POST(z$url, req = z$request, user = z$user, pwd = z$pwd, curlopts)
   md <- occ_download_meta(out) # get meta_data for printing
   citation <- gbif_citation(md)$download # get citation
@@ -195,16 +195,16 @@ occ_download <- function(..., body = NULL, type = "and", format = "DWCA",
             downloadLink = md$downloadLink,
             doi = md$doi,
             citation = citation
-            )
+  )
 }
 
-download_formats <- c("DWCA", "SIMPLE_CSV", "SPECIES_LIST")
+download_formats <- c("DWCA", "SIMPLE_CSV", "SPECIES_LIST", "SIMPLE_PARQUET")
 
 #' @export
 #' @rdname occ_download
 occ_download_prep <- function(..., body = NULL, type = "and", format = "DWCA",
-  user = NULL, pwd = NULL, email = NULL, curlopts = list()) {
-
+                              user = NULL, pwd = NULL, email = NULL, curlopts = list()) {
+  
   url <- paste0(gbif_base(), '/occurrence/download/request')
   user <- check_user(user)
   pwd <- check_pwd(pwd)
@@ -212,7 +212,7 @@ occ_download_prep <- function(..., body = NULL, type = "and", format = "DWCA",
   assert(format, "character")
   if (!format %in% download_formats) {
     stop("'format' must be one of: ", paste0(download_formats, collapse = ", "),
-      call. = FALSE)
+         call. = FALSE)
   }
   stopifnot(!is.null(user), !is.null(email))
   if (!is.null(body)) {
@@ -220,8 +220,15 @@ occ_download_prep <- function(..., body = NULL, type = "and", format = "DWCA",
   } else {
     req <- parse_predicates(user, email, type, format, ...)
   }
-  structure(list(url = url, request = req, user = user, pwd = pwd,
-    email = email, format = format, curlopts = curlopts),
+  structure(list(
+    url = url,
+    request = req,
+    json_request = jsonlite::prettify(check_inputs(req),indent = 1),
+    user = user,
+    pwd = pwd,
+    email = email,
+    format = format,
+    curlopts = curlopts),
     class = "occ_download_prep")
 }
 
@@ -231,7 +238,6 @@ print.occ_download <- function(x, ...) {
   cat_n("<<gbif download>>")
   cat_n("  Your download is being processed by GBIF:")
   cat_n("  https://www.gbif.org/occurrence/download/",x)
-  cat_n("  https://www.gbif.org/user/download")
   cat_n("  Most downloads finish within 15 min.")
   cat_n("  Check status with")
   cat_n("  occ_download_wait('",x,"')")
@@ -239,14 +245,11 @@ print.occ_download <- function(x, ...) {
   cat_n("  d <- occ_download_get('",x,"') %>%") 
   cat_n("    occ_download_import()")
   cat_n("  to retrieve your download.")
-  cat_n("  or use the download link:")
-  cat_n("  ", attr(x,"downloadLink"))
   cat_n("Download Info:")
   cat_n("  Username: ", attr(x, "user"))
   cat_n("  E-mail: ", attr(x, "email"))
   cat_n("  Format: ", attr(x, "format"))
   cat_n("  Download key: ", x)
-  cat_n("  Status: ", attr(x, "status"))
   cat_n("  Created: ",attr(x, "created"))
   cat_n("Citation Info:  ")
   cat_n("  Please always cite the download DOI when using this data.")
@@ -257,11 +260,12 @@ print.occ_download <- function(x, ...) {
 }
 #' @export
 print.occ_download_prep <- function(x, ...) {
-  cat("<<gbif download - prepared>>", "\n", sep = "")
-  cat("  Username: ", x$user, "\n", sep = "")
-  cat("  E-mail: ", x$email, "\n", sep = "")
-  cat("  Format: ", x$format, "\n", sep = "")
-  cat("  Request: ", gbif_make_list(x$request), "\n", sep = "")
+  cat_n("<<gbif download - prepared>>")
+  cat_n("  Username: ", x$user)
+  cat_n("  E-mail: ", x$email)
+  cat_n("  Format: ", x$format)
+  if(nchar(x$json_request) < 1500) cat_n("  Request: \n", x$json_request)
+  else cat_n("  Request: \n  OK. But too large to print.")
 }
 
 # helpers -------------------------------------------
@@ -269,34 +273,6 @@ occ_download_exec <- function(x) {
   assert(x, "occ_download_prep")
   out <- rg_POST(x$url, req = x$req, user = x$user, pwd = x$pwd, x$curlopts)
   structure(out, class = "occ_download", user = x$user, email = x$email)
-}
-
-check_user <- function(x) {
-  z <- if (is.null(x)) Sys.getenv("GBIF_USER", "") else x
-  if (z == "") getOption("gbif_user", stop("supply a username")) else z
-}
-
-check_pwd <- function(x) {
-  z <- if (is.null(x)) Sys.getenv("GBIF_PWD", "") else x
-  if (z == "") getOption("gbif_pwd", stop("supply a password")) else z
-}
-
-check_email <- function(x) {
-  z <- if (is.null(x)) Sys.getenv("GBIF_EMAIL", "") else x
-  if (z == "") getOption("gbif_email", stop("supply an email address")) else z
-}
-
-check_inputs <- function(x) {
-  if (is.character(x)) {
-    # replace newlines
-    x <- gsub("\n|\r|\\s+", "", x)
-    # validate
-    tmp <- jsonlite::validate(x)
-    if (!tmp) stop(attr(tmp, "err"))
-    x
-  } else {
-    jsonlite::toJSON(x)
-  }
 }
 
 rg_POST <- function(url, req, user, pwd, curlopts) {

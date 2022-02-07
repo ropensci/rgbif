@@ -25,7 +25,8 @@
 #' - \strong{genus} : (optional)
 #'
 #' The input columns will be returned as "verbatim_name","verbatim_rank",
-#' "verbatim_phylum"...
+#' "verbatim_phylum" ect. A column of "verbatim_index" will also be returned
+#' giving the index of the input. 
 #'
 #' The following aliases for the 'name' column will work (any case or with '_'
 #' will work) :
@@ -35,7 +36,8 @@
 #' - "species", "SPECIES" ... 
 #' - "species_name", "speciesname" ... 
 #' - "sp_name", "SP_NAME", "spname" ...
-#'   
+#' - "taxon_name", "taxonname", "TAXON NAME" ...   
+#' 
 #' If more than one aliases is present and no column is named 'name', then the
 #' left-most column with an acceptable aliased name above is used.  
 #'
@@ -46,9 +48,8 @@
 #' \href{https://www.gbif.org/tools/species-lookup}{https://www.gbif.org/tools/species-lookup}
 #' 
 #' If you have 1000s of names to match, it can take some minutes to get back all
-#' of the matches. I have tested it with 30K names, but if you have more, 
-#' you might need a different approach. Also you will usually get better matches 
-#' if you include the author details. 
+#' of the matches. I have tested it with 60K names. Scientific names with author details
+#'  usually get better matches. 
 #' 
 #' @examples \dontrun{
 #' 
@@ -110,13 +111,35 @@ name_backbone_checklist <- function(
   urls <- make_async_urls(data_list,verbose=verbose)
   matched_list <- gbif_async_get(urls)
   verbatim_list <- lapply(data_list,function(x) stats::setNames(x,paste0("verbatim_",names(x))))
-  matched_list <- mapply(function(x, y) c(x,y),verbatim_list,matched_list,SIMPLIFY = FALSE)
-  matched_names <- tibble::as_tibble(data.table::rbindlist(matched_list,fill=TRUE))
+  mvl <- mapply(function(x, y) c(x,y),verbatim_list,matched_list,SIMPLIFY = FALSE)
+  matched_names <- bind_rows(mvl)
+  if(verbose) {
+    a <- lapply(mvl,function(x) x[["alternatives"]])
+    alternatives <- process_alternatives(a,verbatim_list)
+    matched_names <- bind_rows(list(matched_names,alternatives))
+  }
+  # post processing matched names
+  matched_names <- matched_names[order(matched_names$verbatim_index),]
   matched_names <- matched_names[!names(matched_names) %in% c("alternatives", "note")]
   col_idx <- grep("verbatim_", names(matched_names))
   ordering <- c((1:ncol(matched_names))[-col_idx],col_idx)
-  matched_names <- matched_names[, ordering]
+  matched_names <- unique(matched_names[, ordering])
   return(matched_names)
+}
+
+bind_rows <- function(x) tibble::as_tibble(data.table::rbindlist(x,fill=TRUE))
+
+process_alternatives <- function(a,vl) {
+  is_empty <- sapply(a,is.null) 
+  a <- a[!is_empty] # alternatives
+  vl <- vl[!is_empty] # verbatim list
+  dl <- lapply(a,function(x) lapply(`[`(x), function(xx) tibble::as_tibble(xx)))
+  dl <- lapply(dl,function(x) bind_rows(`[`(x)))
+  vl <- lapply(vl,function(x) tibble::as_tibble(x))
+  n_times_list <- lapply(sapply(dl,nrow),function(x) rep(1,x))
+  vl <- mapply(function(x,y) x[y,],vl,n_times_list,SIMPLIFY = FALSE) # repeat data
+  alternatives <- bind_rows(mapply(function(x,y) cbind(x,y),dl,vl,SIMPLIFY = FALSE))
+  alternatives
 }
 
 check_name_data = function(name_data) {
@@ -125,12 +148,14 @@ check_name_data = function(name_data) {
   if(is.vector(name_data)) {
     if(!is.character(name_data)) stop("name_data should be class character.")
     name_data <- data.frame(name=name_data)
+    name_data$index <- 1:nrow(name_data) # add id for sorting 
     return(name_data) # exit early if vector
   } 
   if(ncol(name_data) == 1) {
     message("Assuming first column is 'name' column.")
     colnames(name_data) <- "name"
     if(!is.character(name_data$name)) stop("The name column should be class character.")
+    name_data$index <- 1:nrow(name_data) # add id for sorting
     return(name_data) # exit early if only one column
   }
   
@@ -151,7 +176,7 @@ check_name_data = function(name_data) {
   char_args <- c("name","rank","kingdom","phylum","class","order","family","genus")
   if(!all(sapply(name_data[names(name_data) %in% char_args],is.character))) stop("All taxonomic columns should be character.")
   name_data <- name_data[colnames(name_data) %in% char_args] # only keep needed columns
-  # name_data <- name_data[!is.na(name_data$name),] # remove rows with missing in name column
+  name_data$index <- 1:nrow(name_data) # add id for sorting 
   name_data
 }
 
@@ -166,28 +191,21 @@ make_async_urls <- function(x,verbose=FALSE) {
 
 gbif_async_get <- function(urls, curlopts = list()) {
   cc <- crul::Async$new(urls = urls,headers = rgbif_ual, opts = curlopts)
-  res <- cc$get()
+  res <- process_async_get(cc$get())
+  return(res)
+}
+
+process_async_get <- function(res) {
   status_codes <- sapply(res, function(z) z$status_code)
-  if(any(status_codes == 204)) stop("Status: 204 - not found ", call. = FALSE)
-  if(all(status_codes > 200)) {
-    mssgs <- lapply(res, function(z) z$parse("UTF-8"))
-    html_msg <- lapply(mssgs,function(x) grepl("html", x))
-    if(any(html_msg)) {
-      stop("500 - Server error", call. = FALSE)
-    }
-    length_mssgs <- sapply(mssgs,length)
-    nchar_mssgs <- sapply(mssgs,nchar)
-    if(any(length_mssgs == 0) || any(nchar_mssgs == 0)) {
-      stop("message of length zero")
-    }
-    if(any(status_codes) == 503) 
-      stop("503 - Service Unavailable", call. = FALSE)
+  if(any(status_codes == 204)) stop("Status: 204 - not found", call. = FALSE)
+  if(any(status_codes > 200)) {
+    if(any(status_codes == 500)) stop("500 - Server error", call. = FALSE)
+    if(any(status_codes == 503)) stop("503 - Service Unavailable", call. = FALSE)
   }
   # check content type
   content_types <- sapply(res, function(z) z$response_headers$`content-type`)
   stopifnot(any(content_types == 'application/json'))
-  # parse JSON
+  
   json_list <- lapply(res, function(z) jsonlite::fromJSON(z$parse("UTF-8"), parse)) 
   return(json_list)
 }
-

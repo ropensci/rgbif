@@ -218,19 +218,8 @@ map_fetch <- function(
   map_png <- png::readPNG(res$content)
   map <- raster::raster(map_png[,,2])
   raster::extent(map) <- switch_extent(srs)
-  raster::crs(map) <- crs_string(srs)
+  raster::crs(map) <- sf::st_crs(srs)
   return(map)
-}
-
-crs_string <- function(x) {
-  strg <- switch(
-    x,
-    'EPSG:3857' = '+init=epsg:3857',
-    'EPSG:4326' = '+init=epsg:4326',
-    'EPSG:3575' = '+init=epsg:3575',
-    'EPSG:3031' = '+init=epsg:3031'
-  )
-  sp::CRS(strg)
 }
 
 switch_extent <- function(x) {

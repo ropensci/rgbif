@@ -8,21 +8,13 @@ http_interactions:
     headers:
       Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.4.0.95)
   response:
     status:
       status_code: '200'
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 OK
-      date: Tue, 08 Dec 2020 23:53:53 GMT
-      server: Apache/2.4.6 (CentOS) mod_jk/1.2.46 OpenSSL/1.0.2k-fips
-      access-control-allow-origin: '*'
-      x-frame-options: sameorigin
-      cache-control: no-cache
-      transfer-encoding: chunked
+      status: HTTP/1.1 200 200
       content-type: text/html;charset=UTF-8
     body:
       encoding: UTF-8
@@ -30,5 +22,5 @@ http_interactions:
       string: |
         206
         239
-  recorded_at: 2020-12-08 23:53:54 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+  recorded_at: 2022-01-14 12:21:34 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

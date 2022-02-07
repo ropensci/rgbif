@@ -53,7 +53,7 @@ within, not (!), like, isNotNull}
 \item{pwd}{(character) User password within GBIF's website. Required. See
 "Authentication" below}
 
-\item{email}{(character) Email address to recieve download notice done
+\item{email}{(character) Email address to receive download notice done
 email. Required. See "Authentication" below}
 
 \item{curlopts}{list of named curl options passed on to

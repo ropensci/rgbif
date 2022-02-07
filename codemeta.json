@@ -1,26 +1,24 @@
 {
-  "@context": [
-    "http://purl.org/codemeta/2.0",
-    "http://schema.org"
-  ],
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "rgbif",
-  "description": "A programmatic interface to the Web Service methods\n    provided by the Global Biodiversity Information Facility ('GBIF';\n    <https://www.gbif.org/developer/summary>). 'GBIF' is a database\n    of species occurrence records from sources all over the globe.\n    'rgbif' includes functions for searching for taxonomic names,\n    retrieving information on data providers, getting species occurrence\n    records, getting counts of occurrence records, and using the 'GBIF'\n    tile map service to make 'rasters' summarizing huge amounts of data.",
-  "name": "rgbif: Interface to the Global 'Biodiversity' Information Facility API",
+  "description": "A programmatic interface to the Web Service methods provided by the Global Biodiversity Information Facility (GBIF; <https://www.gbif.org/developer/summary>). GBIF is a database of species occurrence records from sources all over the globe. rgbif includes functions for searching for taxonomic names, retrieving information on data providers, getting species occurrence records, getting counts of occurrence records, and using the GBIF tile map service to make rasters summarizing huge amounts of data.",
+  "name": "rgbif: Interface to the Global Biodiversity Information Facility API",
+  "relatedLink": "https://docs.ropensci.org/rgbif/",
   "codeRepository": "https://github.com/ropensci/rgbif",
   "issueTracker": "https://github.com/ropensci/rgbif/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "3.5.2",
+  "version": "3.6.1.99",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.3 Patched (2021-01-08 r79819)",
+  "runtimePlatform": "R version 4.1.2 (2021-11-01)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
-    "name": "Central R Archive Network (CRAN)",
+    "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
   "author": [
@@ -28,7 +26,6 @@
       "@type": "Person",
       "givenName": "Scott",
       "familyName": "Chamberlain",
-      "email": "myrmecocystus@gmail.com",
       "@id": "https://orcid.org/0000-0003-1444-9135"
     },
     {
@@ -36,6 +33,13 @@
       "givenName": "Damiano",
       "familyName": "Oldoni",
       "@id": "https://orcid.org/0000-0003-3445-7562"
+    },
+    {
+      "@type": "Person",
+      "givenName": "John",
+      "familyName": "Waller",
+      "email": "jwaller@gbif.org",
+      "@id": "https://orcid.org/0000-0002-7302-5976"
     }
   ],
   "contributor": [
@@ -69,13 +73,19 @@
       "@id": "https://orcid.org/0000-0002-0233-1757"
     }
   ],
+  "funder": [
+    {
+      "@type": "Organization",
+      "name": "rOpenSci"
+    }
+  ],
   "maintainer": [
     {
       "@type": "Person",
-      "givenName": "Scott",
-      "familyName": "Chamberlain",
-      "email": "myrmecocystus@gmail.com",
-      "@id": "https://orcid.org/0000-0003-1444-9135"
+      "givenName": "John",
+      "familyName": "Waller",
+      "email": "jwaller@gbif.org",
+      "@id": "https://orcid.org/0000-0002-7302-5976"
     }
   ],
   "softwareSuggestions": [
@@ -188,10 +198,34 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=vcr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "knitr",
+      "name": "knitr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=knitr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "rmarkdown",
+      "name": "rmarkdown",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
     }
   ],
-  "softwareRequirements": [
-    {
+  "softwareRequirements": {
+    "1": {
       "@type": "SoftwareApplication",
       "identifier": "xml2",
       "name": "xml2",
@@ -203,7 +237,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=xml2"
     },
-    {
+    "2": {
       "@type": "SoftwareApplication",
       "identifier": "ggplot2",
       "name": "ggplot2",
@@ -215,7 +249,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=ggplot2"
     },
-    {
+    "3": {
       "@type": "SoftwareApplication",
       "identifier": "crul",
       "name": "crul",
@@ -228,7 +262,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=crul"
     },
-    {
+    "4": {
       "@type": "SoftwareApplication",
       "identifier": "data.table",
       "name": "data.table",
@@ -240,7 +274,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=data.table"
     },
-    {
+    "5": {
       "@type": "SoftwareApplication",
       "identifier": "whisker",
       "name": "whisker",
@@ -252,7 +286,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=whisker"
     },
-    {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "magrittr",
       "name": "magrittr",
@@ -264,7 +298,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=magrittr"
     },
-    {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "jsonlite",
       "name": "jsonlite",
@@ -277,7 +311,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=jsonlite"
     },
-    {
+    "8": {
       "@type": "SoftwareApplication",
       "identifier": "oai",
       "name": "oai",
@@ -290,7 +324,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=oai"
     },
-    {
+    "9": {
       "@type": "SoftwareApplication",
       "identifier": "tibble",
       "name": "tibble",
@@ -302,7 +336,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tibble"
     },
-    {
+    "10": {
       "@type": "SoftwareApplication",
       "identifier": "wellknown",
       "name": "wellknown",
@@ -315,7 +349,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=wellknown"
     },
-    {
+    "11": {
       "@type": "SoftwareApplication",
       "identifier": "lazyeval",
       "name": "lazyeval",
@@ -327,7 +361,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=lazyeval"
     },
-    {
+    "12": {
       "@type": "SoftwareApplication",
       "identifier": "R6",
       "name": "R6",
@@ -339,7 +373,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=R6"
     },
-    {
+    "13": {
       "@type": "SoftwareApplication",
       "identifier": "conditionz",
       "name": "conditionz",
@@ -350,20 +384,22 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=conditionz"
-    }
-  ],
-  "contIntegration": "https://codecov.io/github/ropensci/rgbif?branch=master",
-  "releaseNotes": "https://github.com/ropensci/rgbif/blob/master/NEWS.md",
-  "readme": "https://github.com/ropensci/rgbif/blob/master/README.md",
-  "fileSize": "7651.268KB",
+    },
+    "14": {
+      "@type": "SoftwareApplication",
+      "identifier": "stats",
+      "name": "stats"
+    },
+    "SystemRequirements": null
+  },
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://ropensci.org",
-  "keywords": ["GBIF", "specimens", "API", "web-services", "occurrences", "species", "taxonomy", "gbif", "api", "data", "biodiversity", "rstats", "r", "spocc", "r-package", "lifewatch", "oscibio"],
-  "developmentStatus": "https://www.repostatus.org/#active",
+  "keywords": ["GBIF", "specimens", "API", "web-services", "occurrences", "species", "taxonomy"],
+  "fileSize": "9305.678KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
-      "datePublished": "2021",
+      "datePublished": "2022",
       "author": [
         {
           "@type": "Person",
@@ -402,7 +438,8 @@
         }
       ],
       "name": "rgbif: Interface to the Global Biodiversity Information Facility API",
-      "url": "https://CRAN.R-project.org/package=rgbif"
+      "url": "https://CRAN.R-project.org/package=rgbif",
+      "description": "R package version 3.6.1.99"
     },
     {
       "@type": "ScholarlyArticle",
@@ -429,22 +466,6 @@
           "name": "PeerJ PrePrints"
         }
       }
-    }
-  ],
-  "relatedLink": [
-    "https://ropensci.github.io/occurrence-manual/",
-    "https://ropensci.github.io/rgbif",
-    "https://ropensci.github.io/occurrence-manual",
-    "https://docs.ropensci.org/rgbif",
-    "https://ropenscilabs.github.io/occurrence-manual/",
-    "https://books.ropensci.org/occurrences/",
-    "https://docs.ropensci.org/rgbif/"
-  ],
-  "copyrightHolder": {},
-  "funder": [
-    {
-      "@type": "Organization",
-      "name": "rOpenSci"
     }
   ]
 }

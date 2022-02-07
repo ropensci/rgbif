@@ -1,0 +1,50 @@
+---
+title: "Downloading A Long Species List"
+author: John Waller
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Downloading A Long Species List}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+It is now possible to download up to **100,000 names** on GBIF.
+
+One good reason to download data using a long list of names, would be if your group of interest is **non-monophyletic**. It is required to set up your **GBIF credentials** to make downloads from GBIF. I suggest that you follow this [short tutorial](https://docs.ropensci.org/rgbif/articles/gbif_credentials.html) before continuing.
+
+<!-- https://discourse.gbif.org/t/setting-up-your-rgbif-environment-with-username-and-password/3017/2 -->
+
+**This requires the latest version of rgbif.**
+
+```r
+library(dplyr)
+library(readr)  
+library(rgbif) 
+
+# 60,000 tree names file from BGCI
+tree_file <- "https://gist.githubusercontent.com/jhnwllr/bd61bcd56d76beeacd03ea9ace0a31fd/raw/089d4c3a88b358719845a1394c9f88f9a2025e20/tree_names.tsv"
+
+long_checklist <- readr::read_tsv(tree_file)
+
+# match the names 
+gbif_taxon_keys <- long_checklist %>% 
+head(1000) %>% # only first 1000 names 
+name_backbone_checklist() %>% # match to backbone 
+filter(!matchType == "NONE") %>% # get matched names
+pull(usageKey) 
+
+# gbif_taxon_keys should be a long vector like this c(2977832,2977901,2977966,2977835,2977863)
+
+# download the data
+occ_download(
+pred_in("taxonKey", gbif_taxon_keys), # important to use pred_in
+pred("hasCoordinate", TRUE),
+pred("hasGeospatialIssue", FALSE),
+format = "SIMPLE_CSV"
+)
+
+```
+
+If your request can easily be summarized into higher taxon groups, it still makes more sense to download just that taxon group. For example, if you just want to download all dragonflies, all
+mammals, or all vascular plants. **These requests don’t require anything special.**

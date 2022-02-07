@@ -16,40 +16,7 @@
 #' we track down the dataset the key is from, and get the citation for
 #' the dataset.
 #' @examples \dontrun{
-#' res1 <- occ_search(taxonKey=9206251, limit=2)
-#' (xx <- gbif_citation(res1))
 #' 
-#' # each individual citation object is a list
-#' ## rights and/or citation may be NULL
-#' xx[[1]]
-#' xx[[1]]$rights
-#' xx[[1]]$citation
-#' xx[[1]]$citation$title
-#' xx[[1]]$citation$text
-#' xx[[1]]$citation$accessed
-#' xx[[1]]$citation$citation
-#' 
-#' ## access many citations
-#' unlist(lapply(xx, "[[", c("citation", "citation")))
-#'
-#' res2 <- occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a',
-#' limit=20)
-#' (xx <- gbif_citation(res2))
-#'
-#' # if no datasetKey field included, we attempt to identify the dataset
-#' ## key field included - still works
-#' res3 <- occ_search(taxonKey=9206251, fields=c('name','basisOfRecord','key'),
-#'   limit=20)
-#' (xx <- gbif_citation(res3))
-#' ## key field not included - errors
-#' # res3 <- occ_search(taxonKey=9206251, fields=c('name','basisOfRecord','
-#' #    protocol'), limit=20)
-#' # (xx <- gbif_citation(res3))
-#' 
-#' # occ_data
-#' res1 <- occ_data(taxonKey=9206251, limit=2)
-#' (xx <- gbif_citation(res1))
-#'
 #' # character class inputs
 #' ## pass in a dataset key
 #' gbif_citation(x='0ec3229f-2b53-484e-817a-de8ceb1fce2b')
@@ -77,6 +44,7 @@ gbif_citation <- function(x) {
 
 #' @export
 gbif_citation.gbif <- function(x) {
+  .Deprecated(msg="gbif_citation() for occ_search() and occ_data() is deprecated. \nUse rgbif::occ_download() or rgbif::derived_dataset() instead.")
   if (!inherits(x, "data.frame")) {
     x <- x$data
   }
@@ -84,21 +52,20 @@ gbif_citation.gbif <- function(x) {
   if (is.null(dkeys)) {
     occ_keys <- x$key
     if (!is.null(occ_keys)) {
-      dkeys <- unique(vapply(occ_get(as.numeric(unique(occ_keys)),
-        fields = "all"), "[[", "", c('data', 'datasetKey')))
+      dkeys <- unique(vapply(occ_get(as.numeric(unique(occ_keys)),fields = "all"), "[[", "", c('data', 'datasetKey')))
     } else {
       stop("No 'datasetKey' or 'key' fields found", call. = FALSE)
     }
   }
-
+  
   lapply(dkeys, function(z) {
     tmp <- datasets(uuid = z)
     cit <- list(title = tmp$data$title,
-      text = tmp$data$citation$text,
-      accessed =
-        paste0(
-          "Accessed from R via rgbif (https://github.com/ropensci/rgbif) on ",
-          Sys.Date()))
+                text = tmp$data$citation$text,
+                accessed =
+                  paste0(
+                    "Accessed from R via rgbif (https://github.com/ropensci/rgbif) on ",
+                    Sys.Date()))
     cit$citation <- paste(cit$text, cit$accessed, sep = ". ")
     structure(list(citation = cit, rights = tmp$data$rights %||% tmp$data$license),
               class = "gbif_citation")
@@ -110,17 +77,24 @@ gbif_citation.gbif_data <- gbif_citation.gbif
 
 #' @export
 gbif_citation.character <- function(x) {
-  tmp <- as_occ_d_key(x)
-  cit <- list(
-    title = tmp$data$title,
-    text = tmp$data$citation$text,
-    accessed =
-      paste0(
-        "Accessed from R via rgbif (https://github.com/ropensci/rgbif) on ",
-        Sys.Date()))
-  cit$citation <- paste(cit$text, cit$accessed, sep = ". ")
-  structure(list(citation = cit, rights = tmp$data$rights %||% tmp$data$license),
-            class = "gbif_citation")
+  if (is_download_key(x)) {
+    gbif_citation.occ_download_meta(occ_download_meta(x))
+  } else {
+    tmp <- as_occ_d_key(x)
+    
+    cit <- list(
+      title = tmp$data$title,
+      text = tmp$data$citation$text,
+      accessed =
+        paste0(
+          "Accessed from R via rgbif (https://github.com/ropensci/rgbif) on ",
+          Sys.Date()))
+    cit$citation <- paste(cit$text, cit$accessed, sep = ". ")
+    structure(list(citation = cit, rights = tmp$data$rights %||% tmp$data$license),
+              class = "gbif_citation")
+    
+  }
+  
 }
 
 #' @export
@@ -170,9 +144,10 @@ gbif_citation.occ_download_meta <- function(x) {
     file.path("https://doi.org", sub("doi:", "", x$doi))
   }
   citation <- sprintf(gbif_cit, doi_url, as.character(as.Date(x$created)))
+
   list(
     download = citation,
-    datasets = NULL
+    datasets = NULL # keeping this for legacy reasons
   )
 }
 
@@ -206,7 +181,8 @@ print.gbif_citation <- function(x, indent = 3, width = 80, ...) {
 as_occ_d_key <- function(x) {
   if (is_dataset_key_pattern(x)) {
     datasets(uuid = x)
-  } else {
+  }
+  else {
     if (is_occ_key(x)) {
       key <- occ_get(as.numeric(x), fields = "all")[[1]]$data$datasetKey
       datasets(uuid = key)

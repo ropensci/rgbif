@@ -31,7 +31,7 @@ derived_dataset_prep(
 \item{citation_data}{(required) A data.frame with \strong{two columns}. The first
 column should be GBIF \strong{datasetkey uuids} and the second column should be
 \strong{occurrence counts} from each of your datasets, representing the
-contribution of each GBIF dataset to your final derived dataset.}
+contribution of each dataset to your final derived dataset.}
 
 \item{title}{(required) The title for your derived dataset.}
 
@@ -59,11 +59,11 @@ Register a derived dataset for citation.
 Create a \strong{citable DOI} for a dataset derived from GBIF mediated
 occurrences.
 
-\strong{Use-case (1)} your dataset was obtained with \code{occ_search} and
+\strong{Use-case (1)} your dataset was obtained with \code{occ_search()} and
 never returned a \strong{citable DOI}, but you want to cite the data in a
 research paper.
 
-\strong{Use-case (2)} your dataset was obtained using \code{occ_download} and you
+\strong{Use-case (2)} your dataset was obtained using \code{occ_download()} and you
 got a DOI, but the data underwent extensive filtering using
 \code{CoordinateCleaner} or some other cleaning pipeline. In this case be sure
 to fill in your original \code{gbif_download_doi}.
@@ -78,8 +78,8 @@ datasets involved in your research or analysis.
 All fields (except \code{gbif_download_doi}) are required for the registration to
 work.
 
-We recommend that you run \code{derived_dataset_prep} to check registration
-details before making it final with \code{derived_dataset}.
+We recommend that you run \code{derived_dataset_prep()} to check registration
+details before making it final with \code{derived_dataset()}.
 }
 
 \section{Authentication}{
@@ -113,21 +113,21 @@ See \code{?Startup} for help.
 
 \examples{
 \dontrun{
-#  data <- data.frame(
-#  datasetKey = c(
-#  "3ea36590-9b79-46a8-9300-c9ef0bfed7b8",
-#  "630eb55d-5169-4473-99d6-a93396aeae38",
-#  "806bf7d4-f762-11e1-a439-00145eb45e9a"),
-#  count = c(3, 1, 2781)
-#  )
+data <- data.frame(
+ datasetKey = c(
+ "3ea36590-9b79-46a8-9300-c9ef0bfed7b8",
+ "630eb55d-5169-4473-99d6-a93396aeae38",
+ "806bf7d4-f762-11e1-a439-00145eb45e9a"),
+ count = c(3, 1, 2781)
+ )
 
 ## If output looks ok, run derived_dataset to register the dataset
-#  derived_dataset_prep(
-#  citation_data = data,
-#  title = "Test for derived dataset",
-#  description = "This data was filtered using a fake protocol",
-#  source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY"
-#  )
+ derived_dataset_prep(
+ citation_data = data,
+ title = "Test for derived dataset",
+ description = "This data was filtered using a fake protocol",
+ source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY"
+ )
 
 #  derived_dataset(
 #  citation_data = data,
@@ -152,8 +152,6 @@ See \code{?Startup} for help.
 #   source_url="https://zenodo.org/record/4246090#.YPGS2OgzZPY",
 #   gbif_download_doi = NULL,
 # )
-
-
 }
 
 }

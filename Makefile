@@ -1,24 +1,9 @@
 PACKAGE := $(shell grep '^Package:' DESCRIPTION | sed -E 's/^Package:[[:space:]]+//')
 RSCRIPT = Rscript --no-init-file
 
-vign:
+vignettes:
 	cd vignettes;\
-	${RSCRIPT} -e "Sys.setenv(NOT_CRAN='true'); knitr::knit('rgbif.Rmd.og', output = 'rgbif.Rmd')";\
-	cd ..
-
-vign_issues:
-	cd vignettes;\
-	${RSCRIPT} -e "Sys.setenv(NOT_CRAN='true'); knitr::knit('issues.Rmd.og', output = 'issues.Rmd')";\
-	cd ..
-
-vign_downloads:
-	cd vignettes;\
-	${RSCRIPT} -e "Sys.setenv(NOT_CRAN='true'); knitr::knit('downloads.Rmd.og', output = 'downloads.Rmd')";\
-	cd ..
-
-vign_names:
-	cd vignettes;\
-	${RSCRIPT} -e "Sys.setenv(NOT_CRAN='true'); knitr::knit('taxonomic_names.Rmd.og', output = 'taxonomic_names.Rmd')";\
+	${RSCRIPT} -e "Sys.setenv(NOT_CRAN='true'); knitr::knit('rgbif.Rmd.og', output = 'rgbif.Rmd'); knitr::knit('taxonomic_names.Rmd.og', output = 'taxonomic_names.Rmd'); knitr::knit('gbif_citations.Rmd.og', output = 'gbif_citations.Rmd'); knitr::knit('downloading_a_long_species_list.Rmd.og', output = 'downloading_a_long_species_list.Rmd'); knitr::knit('getting_occurrence_data.Rmd.og', output = 'getting_occurrence_data.Rmd'); knitr::knit('gbif_credentials.Rmd.og', output = 'gbif_credentials.Rmd')";\
 	cd ..
 
 install: doc build

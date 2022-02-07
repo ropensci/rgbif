@@ -38,7 +38,8 @@ one column is present, then that column is assumed to be the 'name' column.
 }
 
 The input columns will be returned as "verbatim_name","verbatim_rank",
-"verbatim_phylum"...
+"verbatim_phylum" ect. A column of "verbatim_index" will also be returned
+giving the index of the input.
 
 The following aliases for the 'name' column will work (any case or with '_'
 will work) :
@@ -49,6 +50,7 @@ will work) :
 \item "species", "SPECIES" ...
 \item "species_name", "speciesname" ...
 \item "sp_name", "SP_NAME", "spname" ...
+\item "taxon_name", "taxonname", "TAXON NAME" ...
 }
 
 If more than one aliases is present and no column is named 'name', then the
@@ -61,9 +63,8 @@ This function is very similar to the GBIF species-lookup tool.
 \href{https://www.gbif.org/tools/species-lookup}{https://www.gbif.org/tools/species-lookup}
 
 If you have 1000s of names to match, it can take some minutes to get back all
-of the matches. I have tested it with 30K names, but if you have more,
-you might need a different approach. Also you will usually get better matches
-if you include the author details.
+of the matches. I have tested it with 60K names. Scientific names with author details
+usually get better matches.
 }
 \examples{
 \dontrun{

@@ -1,247 +1,136 @@
 ---
-title: Taxonomic names
-author: Scott Chamberlain
-date: "2021-06-11"
+title: Working With Taxonomic Names
+author: John Waller
+date: "2021-12-20"
 output: rmarkdown::html_vignette
 vignette: >
-    %\VignetteIndexEntry{taxonomic_names}
+    %\VignetteIndexEntry{Working With Taxonomic Names}
     %\VignetteEngine{knitr::rmarkdown}
     %\VignetteEncoding{UTF-8}
 ---
 
+In order to use GBIF mediated data effectively, you will often need to match a scientific name to the [GBIF Backbone Taxonomy](https://www.gbif.org/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c). 
+
+The goal of **name matching** is to get back an unambiguous taxonomic key (a number) of the scientific name you are interested in. Having a key makes it easy for GBIF to know what you mean. 
+
+`name_backbone` or `name_backbone_checklist` are the **best ways** to go from **scientific name** to **GBIF taxonkey**. 
+
+```r
+name_backbone(name="Calopteryx splendens") 
+# name_backbone(name="Calopteryx splendens", verbose=TRUE)
+```
+
+This will return a `data.frame` of the **single best match** for the name you supplied.  
+
+The most interesting columns are: 
+
+* **usageKey**:  [Another name](https://discourse.gbif.org/t/understanding-gbif-taxonomic-keys-usagekey-taxonkey-specieskey/3045) for the GBIF taxonkey. 
+* **status** : `name_backbone` will always return only "ACCEPTED" names. 
+* **matchType** : "EXACT", "HIGHERRANK", "FUZZY", or "NONE" (see below).  
+* **verbatim_name** : The name you supplied to GBIF. Useful for matching back to your original data. 
+
+A matchType of **"HIGHERRANK"** usually means the name is not in the GBIF backbone or it is not a species-level name (a genus, family, order ...). A matchType of **"FUZZY"** means that the name you supplied may have been mis-spelled or is a variant not in the backbone. A matchType of **"Exact"** means the binomial name appears exactly as spelled by you in the GBIF backbone (note that it ignores authorship info).  
+
+If you have **multiple names** to match, you can use `name_backbone_checklist`. 
 
 
-You have probably, or will, run into problems with taxonomic names. For example,
-you may think you know how a taxonomic name is spelled, but then GBIF will not
-agree with you. Or, perhaps GBIF will have multiple versions of the taxon,
-spelled in slightly different ways. Or, the version of the name that they think
-is the _right one_ does not match what yo think is the right one.
+```r 
+# This requires the newest version of rgbif
+name_list <- c(
+"Cirsium arvense (L.) Scop.", 
+"Calopteryx splendens", 
+"Puma concolor (Linnaeus, 1771)", 
+"Ceylonosticta alwisi", 
+"Fake species (John Waller 2021)", 
+"Calopteryx")
 
-This isn't really anyone's fault. It's a result of there not being one accepted
-taxonomic source of truth across the globe. There are many different taxonomic
-databases. GBIF makes their own _backbone taxonomy_ that they use as a source
-of internal truth for taxonomic names. The accepted names in the backbone taxonomy
-match those in the database of occurrences - so do try to figure out what
-backbone taxonomy version of the name you want.
+name_backbone_checklist(name_list)
+```
 
-Another source of problems stems from the fact that names are constantly changing.
-Sometimes epithets change, sometimes generic names, and sometimes higher names
-like family or tribe. These changes can take a while to work their way in to
-GBIF's data.
+`name_backbone_checklist` will also work with a `data.frame` of name information also known as a **checklist**. 
 
-The following are some examples of confusing name bits. We'll update these if
-GBIF's name's change. The difference between each pair of names is highlighted
-in bold.
+```r 
+name_data <- data.frame(
+scientificName = c(
+  "Cirsium arvense (L.) Scop.", # a plant
+  "Calopteryx splendens (Harris, 1780)", # an insect
+  "Puma concolor (Linnaeus, 1771)", # a big cat
+  "Ceylonosticta alwisi (Priyadarshana & Wijewardhane, 2016)", # newly discovered insect 
+  "Puma concuolor (Linnaeus, 1771)", # a mis-spelled big cat
+  "Fake species (John Waller 2021)", # a fake species
+  "Calopteryx" # Just a Genus   
+), 
+kingdom = c(
+  "Plantae",
+  "Animalia",
+  "Animalia",
+  "Animalia",
+  "Animalia",
+  "Johnlia",
+  "Animalia"
+))
 
-## Load rgbif
+name_backbone_checklist(name_data)
+# To return more than just the 'best' results, run
+# name_backbone_checklist(name_data,verbose=TRUE) 
+```
+
+When using `name_backbone_checklist` with a `data.frame`, you can include higher taxonomic information (genus, family, order, phylum, kingdom, rank) as columns. The **'name'** column can also be one of **several commonly used aliases** (scientificName, sci_name, names, species, species_name, sp_name).
 
 
 ```r
-library("rgbif")
+name_data <- data.frame(
+species = c(
+  "Cirsium arvense (L.) Scop.", # a plant
+  "Calopteryx splendens (Harris, 1780)", # an insect
+  "Puma concolor (Linnaeus, 1771)"
+  ), 
+ kingdom = c(
+  "Plantae",
+  "Animalia",
+  "Animalia"
+))
+
+name_backbone_checklist(name_data)
 ```
 
-## Helper function
+## Other name_* functions 
 
-To reduce code duplication, we'll use a little helper function to make a call
-to `name_backbone()` for each input name, then `rbind` them together:
+There are several functions for finding taxonomic information. Typically, the function you want to use is `name_backbone` or `name_backbone_checklist`, but these other functions can also be useful in certain situations.
 
+`name_suggest` can be useful for looking up subspecies or partial names. It is the same service that lets [gbif.org](https://www.gbif.org) guess which name you are typing in the [occurrence search](https://www.gbif.org/occurrence/search).
 
 ```r
-name_rbind <- function(..., rank = "species") {
-  columns <- c('usageKey', 'scientificName', 'canonicalName', 'rank',
-    'status', 'confidence', 'matchType', 'synonym')
-  df <- lapply(list(...), function(w) {
-    rgbif::name_backbone(w, rank = rank)[, columns]
-  })
-  data.frame(do.call(rbind, df))
-}
+name_suggest("Calopteryx splendens")
 ```
 
-And another function to get the taxonomic data provider
-
+`name_lookup` can be sometimes useful for seeing what is available in other checklists. 
 
 ```r
-taxon_provider <- function(x) {
-  tt <- name_usage(key = x)$data
-  datasets(uuid = tt$constituentKey)$data$title
-}
+name_lookup("Calopteryx splendens")$data
 ```
 
-We use `taxon_provider()` below to get the taxonomy provider in the bulleted list of details
-for each taxon (even though you don't see it called, we use it, but the code isn't shown :)).
+`name_usage` is a catch all function that does a lot. `?name_usage` for more examples. 
 
-## Pinus sylvestris vs. P. silvestris
+For example, `name_usage` can be used for looking up all of the order, families, or genera in a higher-rank group. 
 
+```r 
+library(dplyr)
+# all bird genera, families, and orders
+name_usage(212,data="children",limit=200)$data %>% 
+filter(!is.na(nubKey)) %>% # only things with a GBIF backbone nubKey
+glimpse()
+```
+
+<!-- This is not typically necessary if you just want to make a download using the taxonkey, since a higher-rank taxonkey will automatically download all of the downstream species, genera, families ect in a group. See [here](https://discourse.gbif.org/t/understanding-gbif-taxonomic-keys-usagekey-taxonkey-specieskey/3045) for an explanation of GBIF taxonkey terms like **nubKey**.  -->
+
+`name_usage` can be used for looking up the **common names** or **venacular names**. 
 
 ```r
-(c1 <- name_rbind("Pinus sylvestris", "Pinus silvestris"))
-#>   usageKey      scientificName    canonicalName    rank   status confidence
-#> 1  5285637 Pinus sylvestris L. Pinus sylvestris SPECIES ACCEPTED         97
-#> 2  5285637 Pinus sylvestris L. Pinus sylvestris SPECIES ACCEPTED         94
-#>   matchType synonym
-#> 1     EXACT   FALSE
-#> 2     FUZZY   FALSE
+name_usage(key=212, data="vernacularNames")$data # the common names for birds
 ```
 
-* P. s<b>y</b>lvestris w/ occurrences count from the data provider
+## Further reading
 
+Read more about how the GBIF backbone is made [here](https://data-blog.gbif.org/post/gbif-backbone-taxonomy/).
 
-```r
-occ_count(c1$usageKey[[1]])
-#> [1] 642901
-taxon_provider(c1$usageKey[[1]])
-#> [1] "Catalogue of Life - May 2021"
-```
-
-* P. s<b>i</b>lvestris w/ occurrences count from the data provider
-
-
-```r
-occ_count(c1$usageKey[[2]])
-#> [1] 642901
-taxon_provider(c1$usageKey[[2]])
-#> [1] "Catalogue of Life - May 2021"
-```
-
-## Macrozamia platyrachis vs. M. platyrhachis
-
-
-```r
-(c2 <- name_rbind("Macrozamia platyrachis", "Macrozamia platyrhachis"))
-#>   usageKey                     scientificName           canonicalName    rank
-#> 1  2683551 Macrozamia platyrhachis F.M.Bailey Macrozamia platyrhachis SPECIES
-#> 2  2683551 Macrozamia platyrhachis F.M.Bailey Macrozamia platyrhachis SPECIES
-#>     status confidence matchType synonym
-#> 1 ACCEPTED         96     FUZZY   FALSE
-#> 2 ACCEPTED         98     EXACT   FALSE
-```
-
-* M. platyrachis w/ occurrences count from the data provider
-
-
-```r
-occ_count(c2$usageKey[[1]])
-#> [1] 61
-taxon_provider(c2$usageKey[[1]])
-#> [1] "Catalogue of Life - May 2021"
-```
-
-* M. platyr<b>h</b>achis w/ occurrences count from the data provider
-
-
-```r
-occ_count(c2$usageKey[[2]])
-#> [1] 61
-taxon_provider(c2$usageKey[[2]])
-#> [1] "Catalogue of Life - May 2021"
-```
-
-## Cycas circinalis vs. C. circinnalis
-
-
-```r
-(c3 <- name_rbind("Cycas circinalis", "Cycas circinnalis"))
-#>   usageKey      scientificName    canonicalName    rank   status confidence
-#> 1  2683264 Cycas circinalis L. Cycas circinalis SPECIES ACCEPTED         98
-#> 2  2683264 Cycas circinalis L. Cycas circinalis SPECIES ACCEPTED         95
-#>   matchType synonym
-#> 1     EXACT   FALSE
-#> 2     FUZZY   FALSE
-```
-
-* C. circinalis w/ occurrences count from the data provider
-
-
-```r
-occ_count(c3$usageKey[[1]])
-#> [1] 724
-taxon_provider(c3$usageKey[[1]])
-#> [1] "Catalogue of Life - May 2021"
-```
-
-* C. circin<b>n</b>alis w/ occurrences count from the data provider
-
-
-```r
-occ_count(c3$usageKey[[2]])
-#> [1] 724
-taxon_provider(c3$usageKey[[2]])
-#> [1] "Catalogue of Life - May 2021"
-```
-
-## Isolona perrieri vs. I. perrierii
-
-
-```r
-(c4 <- name_rbind("Isolona perrieri", "Isolona perrierii"))
-#>   usageKey          scientificName     canonicalName    rank   status
-#> 1  6308376 Isolona perrierii Diels Isolona perrierii SPECIES ACCEPTED
-#> 2  6308376 Isolona perrierii Diels Isolona perrierii SPECIES ACCEPTED
-#>   confidence matchType synonym
-#> 1         96     FUZZY   FALSE
-#> 2         98     EXACT   FALSE
-```
-
-* I. perrieri w/ occurrences count from the data provider
-
-
-```r
-occ_count(c4$usageKey[[1]])
-#> [1] 92
-taxon_provider(c4$usageKey[[1]])
-#> [1] "Catalogue of Life - May 2021"
-```
-
-* I. perrieri<b>i</b> w/ occurrences count from the data provider
-
-
-```r
-occ_count(c4$usageKey[[2]])
-#> [1] 92
-taxon_provider(c4$usageKey[[2]])
-#> [1] "Catalogue of Life - May 2021"
-```
-
-## Wiesneria vs. Wisneria
-
-
-```r
-(c5 <- name_rbind("Wiesneria", "Wisneria", rank = "genus"))
-#>   usageKey         scientificName canonicalName  rank   status confidence
-#> 1  2864604      Wiesneria Micheli     Wiesneria GENUS ACCEPTED         96
-#> 2  7327444 Wisneria Micheli, 1881      Wisneria GENUS  SYNONYM         95
-#>   matchType synonym
-#> 1     EXACT   FALSE
-#> 2     EXACT    TRUE
-```
-
-* Wi<b>e</b>sneria w/ occurrences count from the data provider
-
-
-```r
-occ_count(c5$usageKey[[1]])
-#> [1] 120
-taxon_provider(c5$usageKey[[1]])
-#> [1] "Catalogue of Life - May 2021"
-```
-
-* Wisneria w/ occurrences count from the data provider
-
-
-```r
-occ_count(c5$usageKey[[2]])
-#> [1] 3
-taxon_provider(c5$usageKey[[2]])
-#> [1] "The Interim Register of Marine and Nonmarine Genera"
-```
-
-## The take away messages from this vignette
-
-* Make sure you are using the name you think you're using
-* Realize that GBIF's backbone taxonomy is used for occurrence data
-* Searching for occurrences by name matches against backbone names, 
-not other names (e.g., synonyms)
-* GBIF may at some points in time have multiple version of the same name in their own backbone taxonomy - These can usually be separated by data provider (e.g., Catalogue of Life vs. International Plant Names Index)
-* There are different ways to search for names - make sure are familiar 
-with the four different name search functions, all starting with 
-`name_`

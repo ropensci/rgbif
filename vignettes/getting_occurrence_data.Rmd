@@ -1,0 +1,242 @@
+---
+title: Getting Occurrence Data From GBIF
+author: John Waller
+date: "2021-12-20"
+output: rmarkdown::html_vignette
+vignette: >
+    %\VignetteIndexEntry{getting_occurrence_data}
+    %\VignetteEngine{knitr::rmarkdown}
+    %\VignetteEncoding{UTF-8}
+---
+
+There are a two ways to get occurrence data from GBIF: 
+
+1. [occ_download()](https://docs.ropensci.org/rgbif/reference/occ_download.html): unlimited records. Useful for research and citation. 
+2. [occ_search()](https://docs.ropensci.org/rgbif/reference/occ_search.html): limited to 100K records. Useful primarily for testing. 
+
+The function `occ_search()` (and related function `occ_data()`) **should not** be used for serious research. Users sometimes find it easier to use `occ_search()` rather than `occ_download()` because they do not need to supply a username or password, and also do not need to wait for a download to finish. However, any serious research project should always use `occ_download()` instead. 
+
+## occ_download()
+
+`occ_download()` is the **best way** to get GBIF mediated occurrences. 
+
+The main functions related to downloads are:
+
+- [occ_download()](https://docs.ropensci.org/rgbif/reference/occ_download.html): start a download on GBIF servers. 
+- [occ_download_prep()](https://docs.ropensci.org/rgbif/reference/occ_download_prep.html): preview a download request before sending to GBIF.
+- [occ_download_get()](https://docs.ropensci.org/rgbif/reference/occ_download_get.html): retrieve a download from GBIF to your computer.
+- [occ_download_import()](https://docs.ropensci.org/rgbif/reference/occ_download_import.html): load a download from your computer to R.
+
+<!-- You might also find these other functions useful in certain scenarios:  -->
+
+<!-- - `occ_download_queue()`: start many downloads in a queue (only 3 at a time possible) -->
+<!-- - `occ_download_meta()`: get metadata on a single download. -->
+<!-- - `occ_download_list()`: list your previous downloads. -->
+<!-- - `occ_download_cancel()`: cancel a download. -->
+<!-- - `occ_download_cancel_staged()`: cancels any active jobs. -->
+
+To make a download request, `occ_download()` uses [helper functions](https://docs.ropensci.org/rgbif/reference/download_predicate_dsl.html) starting with **pred**. These functions **define filters** on the large GBIF occurrence table, so that only a usable subset is returned. The predicate functions are named for the 'type' of operation they do, following
+the terminology [used by GBIF](https://www.gbif.org/developer/occurrence#predicates).
+
+| function      | description   | example    |
+| :------------- | :------------- | :-----------|
+| `pred()` | key is equal to value | `pred("taxonKey",212)`|
+| `pred_lt()`| key is less than value. | `pred_lt("coordinateUncertaintyInMeters",5000)` |
+|`pred_lte()` | key is less than or equal to value | `pred_lte("year", 1900)`|
+|`pred_gt()` | key is greater than value | `pred_gt("elevation", 1000)`|
+|`pred_gte()`| key is greater than or equal to value | `pred_gte("depth", 1000)`  | 
+| `pred_not()` | key is not value | `pred_not("taxonKey",212)` | 
+| `pred_like()` | key like pattern | `pred_like("catalogNumber","PAPS5-560*")`|
+| `pred_within()`| lat-lon values within WKT polygon | `pred_within('POLYGON((-14 42, 9 38, -7 26, -14 42))')`|
+| `pred_notnull()` | column is not NULL | `pred_notnull("establishmentMeans")`|
+| `pred_isnull()` | column is NULL | `pred_isnull("recordedBy")` | 
+| `pred_and()` | a logical and of predicate functions |  `pred_and(pred_lte("elevation",5000),pred("taxonKey",212))` |  
+|`pred_or()` | a logical or of predicate functions | `pred_or(pred_gt("elevation", 1000), pred_isnull("elevation"))`|
+| `pred_in()`| values are in the column | `pred_in("taxonKey",c(2977832,2977901,2977966))` |
+
+
+## A Very Simple Download 
+
+It is required to set up your **GBIF credentials** to make downloads from GBIF. I suggest that you follow this [short tutorial](https://docs.ropensci.org/rgbif/articles/gbif_credentials.html) before continuing.  
+
+The following will download all occurrences of _Lepus saxatilis_. You can use `name_backbone("Lepus saxatilis")` to find the taxonKey (usageKey).
+
+```r
+# remember to set up your GBIF credentials
+occ_download(pred("taxonKey", 2436775),format = "SIMPLE_CSV")
+```
+
+```
+<<gbif download>>
+  Your download is being processed by GBIF:
+  https://www.gbif.org/occurrence/download/0079311-210914110416597
+  Most downloads finish within 15 min.
+  Check status with
+  occ_download_wait('0079311-210914110416597')
+  After it finishes, use
+  d <- occ_download_get('0079311-210914110416597') %>%
+    occ_download_import()
+  to retrieve your download.
+Download Info:
+  Username: jwaller
+  E-mail: jwaller@gbif.org
+  Format: SIMPLE_CSV
+  Download key: 0079311-210914110416597
+  Created: 2021-12-14T13:02:09.610+00:00
+Citation Info:  
+  Please always cite the download DOI when using this data.
+  https://www.gbif.org/citation-guidelines
+  DOI: 10.15468/dl.dqp6a3
+  Citation:
+  GBIF Occurrence Download https://doi.org/10.15468/dl.dqp6a3 Accessed from R via rgbif (https://github.com/ropensci/rgbif) on 2021-12-14
+The print out tells us that we can wait for the download to finish with `occ_download_wait()`. Most downloads under 100K records run very quickly. You can also check the status of a download on your [GBIF user page](https://www.gbif.org/user/download). 
+```
+
+```r
+occ_download_wait('0079311-210914110416597') # checks if download is finished
+```
+
+The print out tells you can get this download using `occ_download_get()` and `occ_download_import()`.
+
+```r
+d <- occ_download_get('0079311-210914110416597') %>%
+  occ_download_import()
+```
+
+It is also possible save your download into an object and pass that into `occ_download_get()`. 
+
+```r
+gbif_download <- occ_download(pred("taxonKey", 2436775),format = "SIMPLE_CSV")
+
+occ_download_wait(gbif_download)
+
+d <- occ_download_get(gbif_download) %>%
+  occ_download_import()
+```
+
+Note that the **citation** appears in the print out. This is what you would use if used this download in a research paper. Please also see GBIF's [citation guidelines](https://www.gbif.org/citation-guidelines) when using GBIF mediated data. 
+
+```
+GBIF Occurrence Download https://doi.org/10.15468/dl.dqp6a3 Accessed from R via rgbif (https://github.com/ropensci/rgbif) on 2021-12-14
+```
+
+You could also get this citation by running `gbif_citation()` or checking your [user page](https://www.gbif.org/user/download).
+
+```r
+gbif_citation('0078589-210914110416597')
+# or
+# gbif_citation(gbif_download)
+```
+
+## A More Realistic Download 
+
+Typically GBIF downloads follow a particular pattern, and the same filters are used again and again. These are some common filters that you should probably be using. 
+
+```r 
+occ_download(
+pred("taxonKey", 2436775), 
+pred("hasGeospatialIssue", FALSE),
+pred("hasCoordinate", TRUE),
+pred("occurrenceStatus","PRESENT"), 
+pred_not(pred_in("basisOfRecord",c("FOSSIL_SPECIMEN","LIVING_SPECIMEN"))),
+format = "SIMPLE_CSV"
+)
+```
+
+This download will ... 
+
+- Retrieve all _Lepus saxatilis_. 
+- Remove default geospatial issues. 
+- Keep only records with coordinates. 
+- Remove absent records. 
+- Remove fossils and living specimens
+
+Another common download pattern is **long species list downloads**. There is a tutorial about downloading from a long list of species [here](https://docs.ropensci.org/rgbif/reference/downloading_a_long_species_list.html).
+ 
+ 
+## A Complex Download For Illustration
+
+Here I make an overly complex download to highlight some of the capabilities of `occ_download()`. Most useful downloads are much simpler. 
+
+```r 
+occ_download(
+type="and",
+    pred("taxonKey", 2436775),
+    pred("hasGeospatialIssue", FALSE),
+    pred("hasCoordinate", TRUE),
+    pred("occurrenceStatus","PRESENT"), 
+    pred_gte("year", 1900),
+    pred_not(pred_in("basisOfRecord",c("FOSSIL_SPECIMEN","LIVING_SPECIMEN"))),
+  pred_or(
+    pred("country","ZA"),
+    pred("gadm","ETH")
+    ),
+  pred_or(
+    pred_not(pred_in("establishmentMeans",c("MANAGED","INTRODUCED"))),
+    pred_isnull("establishmentMeans")
+    ),
+  pred_or(  
+    pred_lt("coordinateUncertaintyInMeters",10000),
+    pred_isnull("coordinateUncertaintyInMeters")
+    ),
+format = "SIMPLE_CSV"
+)
+
+```
+
+This download will ... 
+
+- `pred("taxonKey", 2436775)` : all _Lepus saxatilis_ records 
+- `pred("hasGeospatialIssue", FALSE)` : remove default geospatial issues. 
+- `pred("hasCoordinate", TRUE)` : keep only records with coordinates. 
+- `pred("occurrenceStatus","PRESENT")` :  remove absent records. 
+- `pred_not(pred_in("basisOfRecord",c("FOSSIL_SPECIMEN","LIVING_SPECIMEN")))`: Remove fossils and living specimens
+- `pred_gte("year", 1900)` : after/or year 1900
+- `pred_or(pred("country","ZA"),pred("gadm","ETH"))` in South Africa or Ethiopia, using seperate polygon systems. See `rgbif::isocodes` for country codes.
+- `pred_or(pred_not(pred_in("establishmentMeans",c("MANAGED","INTRODUCED"))),pred_isnull("establishmentMeans"))` : establishmentMeans column does not contain managed or introduced species, but can be left blank. 
+- `pred_or(pred_lt("coordinateUncertaintyInMeters",10000),pred_isnull("coordinateUncertaintyInMeters"))` : coordinateUncertaintyInMeters is less 10K meter or is left blank. 
+- `format = "SIMPLE_CSV"` : return just a tsv file of occurrences. 
+
+## Not Downloads
+
+Another sometimes useful pattern is **downloading all occurrences except some group**. Birds make up a [large portion](https://www.gbif.org/occurrence/taxonomy) of GBIF occurrences. If you wanted to download everything but birds, you could use `pred_not()`. 
+
+```r
+# name_backbone("Aves")
+occ_download(pred_not("taxonKey", 212),format = "SIMPLE_CSV")
+```
+ 
+## Big Polygon Downloads 
+
+Sometimes users will want to download records using a large polygon. It is worth noting that many land-based polygons can be captured using the [gadm filter](https://www.gbif.org/occurrence/map?gadm_gid=BWA&gadm_gid=VAT&gadm_gid=BHS.17_1&gadm_gid=TWN&gadm_gid=NZL.2_1). Here I will download all occurrences within this biodiversity hotspot known as [Wallacea](https://www.gbif.org/occurrence/map?has_geospatial_issue=false&geometry=POLYGON%20((127.0171%204.9391,%20124.5973%204.7960,%20121.7968%203.7617,%20119.0816%203.0776,%20119.1999%200.5229,%20117.3936%20-5.1010,%20116.4971%20-6.7425,%20115.9096%20-8.2031,%20115.5687%20-9.9150,%20117.2358%20-10.0975,%20120.9361%20-11.4096,%20122.5775%20-11.8123,%20123.5516%20-11.8544,%20125.5775%20-11.2832,%20128.6224%20-9.7196,%20131.1873%20-9.1914,%20132.1547%20-8.3925,%20133.4920%20-6.4151,%20133.6129%20-5.8375,%20133.5079%20-5.1369,%20133.1861%20-4.7011,%20131.4894%20-3.3231,%20129.8271%20-2.4649,%20129.3679%20-2.0044,%20129.1699%20-1.1486,%20129.7026%20-0.2859,%20129.7691%200.2902,%20129.4364%202.4420,%20128.9881%203.3626,%20128.3585%204.1683,%20127.7041%204.6918,%20127.0171%204.9391))). 
+
+A polygon may contain a **maximum of 10,000 points**, but in practice this number might be less depending the complexity of the polygon. You also have to make sure your polygons are in "anticlockwise" ordering of points. See downloads [documentation](https://www.gbif.org/developer/occurrence#download).
+
+
+```r 
+
+# Simple code to go from shapefile to WKT
+# large_wkt <- sf::st_read("large_shapefile") %>% 
+# sf::st_geometry() %>% 
+# sf::st_as_text()
+
+large_wkt <- "POLYGON ((127.0171 4.9391, 124.5973 4.7960, 121.7968 3.7617,
+119.0816 3.0776, 119.1999 0.5229, 117.3936 -5.1010, 116.4971 -6.7425,
+115.9096 -8.2031, 115.5687 -9.9150, 117.2358 -10.0975, 120.9361 -11.4096,
+122.5775 -11.8123, 123.5516 -11.8544, 125.5775 -11.2832, 128.6224 -9.7196,
+131.1873 -9.1914, 132.1547 -8.3925, 133.4920 -6.4151, 133.6129 -5.8375,
+133.5079 -5.1369, 133.1861 -4.7011, 131.4894 -3.3231, 129.8271 -2.4649, 
+129.3679 -2.0044, 129.1699 -1.1486, 129.7026 -0.2859, 129.7691 0.2902, 
+129.4364 2.4420, 128.9881 3.3626, 128.3585 4.1683, 127.7041 4.6918,
+127.0171 4.9391))" 
+
+occ_download(pred_within(large_wkt),format = "SIMPLE_CSV"))
+```
+
+## Further Reading
+https://docs.ropensci.org/rgbif/reference/occ_download.html
+https://www.gbif.org/developer/occurrence#download
+https://data-blog.gbif.org/post/gbif-filtering-guide/
+
+
+

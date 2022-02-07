@@ -5,7 +5,7 @@
 #' @param citation_data (required) A data.frame with **two columns**. The first 
 #' column should be GBIF **datasetkey uuids** and the second column should be 
 #' **occurrence counts** from each of your datasets, representing the 
-#' contribution of each GBIF dataset to your final derived dataset. 
+#' contribution of each dataset to your final derived dataset. 
 #' @param title (required) The title for your derived dataset. 
 #' @param description (required) A description of the dataset. Perhaps 
 #' describing how it was created. 
@@ -21,11 +21,11 @@
 #' Create a **citable DOI** for a dataset derived from GBIF mediated 
 #' occurrences. 
 #' 
-#' **Use-case (1)** your dataset was obtained with `occ_search` and 
+#' **Use-case (1)** your dataset was obtained with `occ_search()` and 
 #' never returned a **citable DOI**, but you want to cite the data in a 
 #' research paper.  
 #' 
-#' **Use-case (2)** your dataset was obtained using `occ_download` and you 
+#' **Use-case (2)** your dataset was obtained using `occ_download()` and you 
 #' got a DOI, but the data underwent extensive filtering using 
 #' `CoordinateCleaner` or some other cleaning pipeline. In this case be sure 
 #' to fill in your original `gbif_download_doi`.
@@ -40,8 +40,8 @@
 #' All fields (except `gbif_download_doi`) are required for the registration to 
 #' work.   
 #' 
-#' We recommend that you run `derived_dataset_prep` to check registration 
-#' details before making it final with `derived_dataset`. 
+#' We recommend that you run `derived_dataset_prep()` to check registration 
+#' details before making it final with `derived_dataset()`. 
 #' 
 #' @section Authentication:
 #' Some `rgbif` functions require your **GBIF credentials**. 
@@ -74,21 +74,21 @@
 #' <https://www.gbif.org/derived-dataset/about>
 #'
 #' @examples \dontrun{
-#'#  data <- data.frame(
-#'#  datasetKey = c(
-#'#  "3ea36590-9b79-46a8-9300-c9ef0bfed7b8",
-#'#  "630eb55d-5169-4473-99d6-a93396aeae38",
-#'#  "806bf7d4-f762-11e1-a439-00145eb45e9a"),
-#'#  count = c(3, 1, 2781)
-#'#  )
+#' data <- data.frame(
+#'  datasetKey = c(
+#'  "3ea36590-9b79-46a8-9300-c9ef0bfed7b8",
+#'  "630eb55d-5169-4473-99d6-a93396aeae38",
+#'  "806bf7d4-f762-11e1-a439-00145eb45e9a"),
+#'  count = c(3, 1, 2781)
+#'  )
 #'
 #'## If output looks ok, run derived_dataset to register the dataset
-#'#  derived_dataset_prep(
-#'#  citation_data = data,
-#'#  title = "Test for derived dataset",
-#'#  description = "This data was filtered using a fake protocol",
-#'#  source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY"
-#'#  )
+#'  derived_dataset_prep(
+#'  citation_data = data,
+#'  title = "Test for derived dataset",
+#'  description = "This data was filtered using a fake protocol",
+#'  source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY"
+#'  )
 #'
 #'#  derived_dataset(
 #'#  citation_data = data,
@@ -113,8 +113,6 @@
 #'#   source_url="https://zenodo.org/record/4246090#.YPGS2OgzZPY",
 #'#   gbif_download_doi = NULL,
 #'# )
-#'
-#' 
 #' }
 #' 
 derived_dataset <- function(citation_data = NULL,
@@ -136,7 +134,7 @@ derived_dataset <- function(citation_data = NULL,
                             curlopts = curlopts)
 
   out <- derived_dataset_POST(url = z$url,
-                              req = convert_to_json(z$req),
+                              req = jsonlite::toJSON(z$req,auto_unbox=TRUE),
                               user = z$user,
                               pwd = z$pwd,
                               curlopts = z$curlopts)
@@ -197,8 +195,6 @@ derived_dataset_prep <- function(citation_data = NULL,
 
 # helpers -------------------------------------------
 
-# uses helpers from occ_download.R consider moving them to utils zzz.r. 
-
 check_citation_data = function(citation_data = NULL) {
   
   data <- citation_data
@@ -215,7 +211,6 @@ check_citation_data = function(citation_data = NULL) {
       },
       error = function(e){
         stop("Error converting to data.frame. Please supply a data.frame to citation_data.")
-        print(e)
       })    
   }
   if(nrow(data) == 0)
@@ -261,7 +256,7 @@ check_description = function(description=NULL) {
 
 check_source_url = function(source_url=NULL) {
   
-  if(is.null(source_url)) stop("Please fill in the url where the derived dataset is stored.")
+  if(is.null(source_url)) stop("Please fill in the url where the derived dataset is stored (e.g.Zendo).")
   if(!is.character(source_url)) stop("The source_url should be character string.")
   
   source_url
@@ -287,19 +282,6 @@ check_gbif_download_doi = function(gbif_download_doi) {
   gbif_download_doi
 }
 
-convert_to_json <- function(x) {
-  if (is.character(x)) {
-    # replace newlines
-    x <- gsub("\n|\r|\\s+", "", x)
-    # validate
-    tmp <- jsonlite::validate(x)
-    if (!tmp) stop(attr(tmp, "err"))
-    x
-  } else {
-    jsonlite::toJSON(x,auto_unbox=TRUE)
-  }
-}
-
 derived_dataset_POST <- function(url, req, user, pwd, curlopts) {
   cli <- crul::HttpClient$new(url = url,opts = c(curlopts, httpauth = 1, userpwd = paste0(user, ":", pwd)),headers = c(rgbif_ual, `Content-Type` = "application/json", Accept = "application/json"))
   
@@ -312,32 +294,30 @@ derived_dataset_POST <- function(url, req, user, pwd, curlopts) {
 
 #' @export
 print.derived_dataset_prep <- function(x, ...) {
-  cat("<<gbif derived dataset - prepared>>", "\n", sep = "")
-  cat("  Username: ", x$user, "\n", sep = "")
-  cat("  Title: '", x$request$title,"'", "\n", sep = "")
-  cat("  Description: '", x$request$description,"'", "\n", sep = "")
-  cat("  Source URL: ", x$request$sourceUrl, "\n", sep = "")
-  cat("  Original Download DOI: ", x$request$originalDownloadDOI, "\n", sep = "")
+  cat_n("<<gbif derived dataset - prepared>>")
+  cat_n("  Username: ", x$user)
+  cat_n("  Title: '", x$request$title,"'")
+  cat_n("  Description: '", x$request$description,"'")
+  cat_n("  Source URL: ", x$request$sourceUrl)
+  cat_n("  Original Download DOI: ", x$request$originalDownloadDOI)
   datasets = utils::head(names(x$request$relatedDatasets),5)
   counts = x$request$relatedDatasets
-  cat("First 5 datasets of ",length(datasets)," :", "\n", sep = "")
+  cat_n("First 5 datasets of ",length(datasets)," :")
   for(i in 1:length(datasets)) 
-  cat("  ",datasets[[i]]," : ",counts[[i]], "\n", sep = "")
+  cat_n("  ",datasets[[i]]," : ",counts[[i]])
   
 }
 #' @export
 print.derived_dataset <- function(x, ...) {
   stopifnot(inherits(x, 'derived_dataset'))
-  
-  cat("<<gbif derived dataset - created>>", "\n", sep = "")
-  cat("  Username: ", attr(x, "user"), "\n", sep = "")
-  cat("  Title: '", x$title,"'", "\n", sep = "")
-  cat("  Description: '", x$description,"'", "\n", sep = "")
-  cat("  Source URL: ", x$sourceUrl, "\n", sep = "")
+  cat_n("<<gbif derived dataset - created>>")
+  cat_n("  Username: ", attr(x, "user"))
+  cat_n("  Title: '", x$title,"'")
+  cat_n("  Description: '", x$description,"'")
+  cat_n("  Source URL: ", x$sourceUrl)
   if(!is.null(x$originalDownloadDOI))
-    cat("  Original Download DOI: ", x$originalDownloadDOI, "\n", sep = "")
-  cat("  Citation: ", x$citation, "\n", sep = "")	
-  cat("  Derived Dataset DOI: ", x$doi, "\n", sep = "")	
-  cat("  See your registration here: https://www.gbif.org/derived-dataset", 
-      "\n", sep = "")	
+    cat("  Original Download DOI: ", x$originalDownloadDOI)
+  cat_n("  Citation: ", x$citation)	
+  cat_n("  Derived Dataset DOI: ", x$doi)	
+  cat_n("  See your registration here: https://www.gbif.org/derived-dataset")	
 }

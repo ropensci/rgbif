@@ -19,7 +19,7 @@
 occ_download_meta <- function(key, curlopts = list()) {
   stopifnot(!is.null(key))
   
-  if(!grepl("[0-9]+-[0-9]+",key)) stop("key should be a downloadkey or 
+  if(!is_download_key(key)) stop("key should be a downloadkey or 
                                      an occ_download object.")
   #stopifnot(inherits(key, c("character", "occ_download")))
   url <- sprintf('%s/occurrence/download/%s', gbif_base(), key)
@@ -44,7 +44,6 @@ print.occ_download_meta <- function(x, ...){
   cat_n("  Modified: ", x$modified)
   cat_n("  Download link: ", x$downloadLink)
   cat_n("  Total records: ", n_with_status(x$totalRecords, x$status))
-  cat_n("  Request: ", gbif_make_list(x$request))
 }
 
 n_with_status <- function(n, status) {
@@ -60,75 +59,21 @@ n_with_status <- function(n, status) {
   return(n)
 }
 
-sprintf_not_null <- function(z, ws_prefix = "\n          -") {
-  sprintf("%s type: %s, parameter: %s", 
-    ws_prefix, z$type, z$parameter)
+ sprintf_not_null <- function(z, ws_prefix = "\n          -") {
+   sprintf("%s type: %s, parameter: %s", 
+     ws_prefix, z$type, z$parameter)
 }
 sprintf_key_val <- function(x, ws_prefix = "\n          -") {
-  sprintf("%s type: %s, key: %s, value: %s", 
-    ws_prefix, x$type, x$key, x$value)
-}
-sprintf_not <- function(type, fmt) {
-  z <- if (type == "isNotNull") {
-    sprintf_not_null(fmt, "\n            -")
-  } else {
-    sprintf_key_val(fmt)
-  }
-  paste0("\n          - type: not", z)
-}
+   sprintf("%s type: %s, key: %s, value: %s", 
+     ws_prefix, x$type, x$key, x$value)
+ }
+ sprintf_not <- function(type, fmt) {
+   z <- if (type == "isNotNull") {
+     sprintf_not_null(fmt, "\n            -")
+   } else {
+     sprintf_key_val(fmt)
+   }
+   paste0("\n          - type: not", z)
+ }
+ 
 
-gbif_make_list <- function(y){
-  if (length(y) > 0) {
-    y <- y$predicate
-    otype <- y$type
-    if (!"predicates" %in% names(y)) {
-      y <- list(predicates = list(y))
-    }
-    out <- list()
-    for (i in seq_along(y$predicates)) {
-      tmp <- y$predicates[[i]]
-
-      if ("predicates" %in% names(tmp)) {
-        stt <- lapply(tmp$predicates, function(w) {
-          if (w$type == "not") sprintf_not(w$predicate$type, w$predicate) else sprintf_key_val(w)
-        })
-        out[[i]] <- paste0(paste("\n      > type: ", tmp$type),
-                           pc("\n        predicates: ", pc(stt)),
-                           collapse = ", ")
-      } else if ("predicate" %in% names(tmp)) {
-        if (tmp$predicate$type == "isNotNull") {
-          stt <- sprintf_not_null(tmp$predicate)
-        } else {
-          stt <- sprintf_key_val(tmp$predicate)
-        }
-        out[[i]] <- paste0(paste("\n      > type: ", tmp$type),
-                           pc("\n        predicate: ", pc(stt)),
-                           collapse = ", ")
-      } else {
-        gg <- if ("geometry" %in% names(tmp)) {
-          tmp$geometry
-        } else {
-          zz <- tmp$value %||% tmp$values
-          if (!is.null(zz)) paste(zz, collapse = ",") else zz
-        }
-        out[[i]] <- sprintf_key_val(
-          list(
-            type = tmp$type,
-            key = if ("geometry" %in% names(tmp)) "geometry" else tmp$key,
-            value = sub_str(gg, 60)
-          ),
-          "\n      >"
-        )
-      }
-    }
-
-    paste0(paste("\n    type: ", otype), pc("\n    predicates: ", pc(out)),
-           collapse = ", ")
-  } else {
-    "none"
-  }
-}
-
-pc <- function(..., collapse = "") {
-  paste0(..., collapse = collapse)
-}

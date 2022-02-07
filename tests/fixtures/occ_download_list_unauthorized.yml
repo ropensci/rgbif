@@ -7,8 +7,6 @@ http_interactions:
       string: ''
     headers:
       Accept-Encoding: gzip, deflate
-      User-Agent: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
-      X-USER-AGENT: r-curl/4.3 crul/1.0.0 rOpenSci(rgbif/3.6.1.91)
       Content-Type: application/json
       Accept: application/json
   response:
@@ -18,19 +16,6 @@ http_interactions:
       explanation: No permission -- see authorization schemes
     headers:
       status: HTTP/1.1 401 Unauthorized
-      vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-      x-content-type-options: nosniff
-      x-xss-protection: 1; mode=block
-      pragma: no-cache
-      expires: '0'
-      x-frame-options: DENY
-      content-length: '0'
-      date: Mon, 11 Oct 2021 14:51:57 GMT
-      cache-control: no-cache, no-store, must-revalidate
-      x-varnish: '1021083838'
-      age: '0'
-      via: 1.1 varnish (Varnish/6.0)
-      connection: keep-alive
     body:
       encoding: UTF-8
       file: no

@@ -30,6 +30,9 @@
 #' a key to be null, so only accepts one key:
 #' - `pred_notnull`: isNotNull
 #'
+#' The following function is only for stating that you want a key to be null.
+#' - `pred_isnull` : isNull
+#' 
 #' The following two functions accept multiple individual predicates,
 #' separating them by either "and" or "or":
 #' - `pred_and`: and
@@ -91,7 +94,8 @@
 #'
 #' Acceptable arguments to the `key` parameter are (with the version of
 #' the key in parens that must be sent if you pass the query via the `body`
-#' parameter; see below for examples). Open an issue in the GitHub
+#' parameter; see below for examples). You can also use the 'ALL_CAPS' version
+#' of a key if you prefer. Open an issue in the GitHub
 #' repository for this package if you know of a key that should
 #' be supported that is not yet.
 #'
@@ -126,7 +130,9 @@
 #' - gadm (GADM_GID) (for the Database of Global Administrative Areas)
 #' - stateProvince (STATE_PROVINCE)
 #' - occurrenceStatus (OCCURRENCE_STATUS)
-#'
+#' - publishingOrg (PUBLISHING_ORG)
+#' - occurrenceId (OCCURRENCE_ID)
+#' 
 #' @references Download predicates docs:
 #' <https://www.gbif.org/developer/occurrence#predicates>
 #' @family downloads
@@ -187,6 +193,9 @@ pred_like <- function(key, value) pred_factory("like")(key, value)
 #' @rdname download_predicate_dsl
 #' @export
 pred_within <- function(value) pred_factory("within")(key = "geometry", value)
+#' @rdname download_predicate_dsl
+#' @export
+pred_isnull <- function(key) pred_factory("isNull")(key, "foo")
 #' @rdname download_predicate_dsl
 #' @export
 pred_notnull <- function(key) pred_factory("isNotNull")(key, "foo")
@@ -255,29 +264,81 @@ preds_factory <- function(type) {
 }
 
 operators_regex <- c("=", "\\&", "and", "<", "<=", ">", ">=", "not", "in",
-                     "within", "like", "\\|", "or", "isNotNull")
+                     "within", "like", "\\|", "or", "isNotNull","isNull")
 operator_lkup <- list(`=` = 'equals', `&` = 'and', 'and' = 'and',
                       `<` = 'lessThan', `<=` = 'lessThanOrEquals',
                       `>` = 'greaterThan', `>=` = 'greaterThanOrEquals',
                       `not` = 'not', 'in' = 'in', 'within' = 'within',
                       'like' = 'like', `|` = 'or', "or" = "or",
-                      "isNotNull" = "isNotNull")
-key_lkup <- list(taxonKey='TAXON_KEY', scientificName='SCIENTIFIC_NAME',
-    country='COUNTRY', publishingCountry='PUBLISHING_COUNTRY',
-    hasCoordinate='HAS_COORDINATE', hasGeospatialIssue='HAS_GEOSPATIAL_ISSUE',
-    typeStatus='TYPE_STATUS', recordNumber='RECORD_NUMBER',
-    lastInterpreted='LAST_INTERPRETED', continent='CONTINENT',
-    geometry='GEOMETRY',
-    basisOfRecord='BASIS_OF_RECORD', datasetKey='DATASET_KEY',
-    eventDate='EVENT_DATE', catalogNumber='CATALOG_NUMBER', year='YEAR',
-    month='MONTH', decimalLatitude='DECIMAL_LATITUDE',
-    decimalLongitude='DECIMAL_LONGITUDE', elevation='ELEVATION', depth='DEPTH',
-    institutionCode='INSTITUTION_CODE', collectionCode='COLLECTION_CODE',
-    issue='ISSUE', mediatype='MEDIA_TYPE', recordedBy='RECORDED_BY',
-    establishmentMeans='ESTABLISHMENT_MEANS',
-    coordinateUncertaintyInMeters='COORDINATE_UNCERTAINTY_IN_METERS',
-    gadm = 'GADM_GID', stateProvince = 'STATE_PROVINCE',
-    occurrenceStatus = 'OCCURRENCE_STATUS')
+                      "isNotNull" = "isNotNull","isNull" = "isNull")
+key_lkup <- list(
+  taxonKey='TAXON_KEY',
+  TAXON_KEY='TAXON_KEY',
+  scientificName='SCIENTIFIC_NAME',
+  SCIENTIFIC_NAME='SCIENTIFIC_NAME',
+  country='COUNTRY',
+  COUNTRY='COUNTRY',
+  publishingCountry='PUBLISHING_COUNTRY',
+  PUBLISHING_COUNTRY='PUBLISHING_COUNTRY',
+  hasCoordinate='HAS_COORDINATE', 
+  HAS_COORDINATE='HAS_COORDINATE', 
+  hasGeospatialIssue='HAS_GEOSPATIAL_ISSUE',
+  HAS_GEOSPATIAL_ISSUE='HAS_GEOSPATIAL_ISSUE',
+  typeStatus='TYPE_STATUS', 
+  TYPE_STATUS='TYPE_STATUS', 
+  recordNumber='RECORD_NUMBER',
+  RECORD_NUMBER='RECORD_NUMBER',
+  lastInterpreted='LAST_INTERPRETED', 
+  LAST_INTERPRETED='LAST_INTERPRETED', 
+  continent='CONTINENT',
+  CONTINENT='CONTINENT',
+  geometry='GEOMETRY',
+  GEOMETRY='GEOMETRY',
+  basisOfRecord='BASIS_OF_RECORD', 
+  BASIS_OF_RECORD='BASIS_OF_RECORD', 
+  datasetKey='DATASET_KEY',
+  DATASET_KEY='DATASET_KEY',
+  eventDate='EVENT_DATE', 
+  EVENT_DATE='EVENT_DATE', 
+  catalogNumber='CATALOG_NUMBER', 
+  CATALOG_NUMBER='CATALOG_NUMBER', 
+  year='YEAR',
+  YEAR='YEAR',
+  month='MONTH', 
+  MONTH='MONTH', 
+  decimalLatitude='DECIMAL_LATITUDE',
+  DECIMAL_LATITUDE='DECIMAL_LATITUDE',
+  decimalLongitude='DECIMAL_LONGITUDE', 
+  DECIMAL_LONGITUDE='DECIMAL_LONGITUDE', 
+  elevation='ELEVATION', 
+  ELEVATION='ELEVATION', 
+  depth='DEPTH',
+  DEPTH='DEPTH',
+  institutionCode='INSTITUTION_CODE', 
+  INSTITUTION_CODE='INSTITUTION_CODE', 
+  collectionCode='COLLECTION_CODE',
+  COLLECTION_CODE='COLLECTION_CODE',
+  issue='ISSUE', 
+  ISSUE='ISSUE', 
+  mediatype='MEDIA_TYPE', 
+  MEDIA_TYPE='MEDIA_TYPE', 
+  recordedBy='RECORDED_BY',
+  RECORDED_BY='RECORDED_BY',
+  establishmentMeans='ESTABLISHMENT_MEANS',
+  ESTABLISHMENT_MEANS='ESTABLISHMENT_MEANS',
+  coordinateUncertaintyInMeters='COORDINATE_UNCERTAINTY_IN_METERS',
+  COORDINATE_UNCERTAINTY_IN_METERS='COORDINATE_UNCERTAINTY_IN_METERS',
+  gadm='GADM_GID', 
+  GADM_GID='GADM_GID', 
+  stateProvince='STATE_PROVINCE',
+  STATE_PROVINCE='STATE_PROVINCE',
+  occurrenceStatus='OCCURRENCE_STATUS',
+  OCCURRENCE_STATUS='OCCURRENCE_STATUS',
+  publishingOrg='PUBLISHING_ORG',
+  PUBLISHING_ORG='PUBLISHING_ORG',
+  OCCURRENCE_ID = 'OCCURRENCE_ID',
+  occurrenceId = 'OCCURRENCE_ID'
+  )
 
 parse_pred <- function(key, value, type = "and") {
   assert(key, "character")
@@ -294,7 +355,6 @@ parse_pred <- function(key, value, type = "and") {
     stop("'type' not in acceptable set of types; see param def. 'type'",
       call.=FALSE)
   type <- operator_lkup[ operators_regex %in% type ][[1]]
-
   if (
     (is.character(value) &&
       all(grepl("polygon|multipolygon|linestring|multilinestring|point|multipoint",
@@ -308,6 +368,8 @@ parse_pred <- function(key, value, type = "and") {
     list(type = unbox("or"), predicates = lapply(value, function(w)
       list(type = unbox("equals"), key = unbox(key), value = as_c(w))))
   } else if (type == "isNotNull") {
+    list(type = unbox(type), parameter = unbox(key))
+  } else if (type == "isNull") {
     list(type = unbox(type), parameter = unbox(key))
   } else {
     list(type = unbox(type), key = unbox(key), value = unbox(as_c(value)))

@@ -55,3 +55,12 @@ test_that("gbif_base", {
   # cleanup url change
   Sys.unsetenv("RGBIF_BASE_URL")
 })
+
+
+test_that("zzz.r utils", {
+  
+expect_length(pc("dog","cat"),1)
+expect_equal(check_inputs('["json"]'),"[\"json\"]")
+ 
+})
+

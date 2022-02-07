@@ -1,3 +1,44 @@
+rgbif 3.7.0
+===========
+
+There is a new rgbif maintainer: [John Waller](https://twitter.com/JohnTWaller).  
+
+### NEW FEATURES
+
+* `derived_dataset()` : New function to register a cleaned or modified dataset on GBIF for citation. (#467)
+* `name_backbone_checklist()` : New function that takes a list, vector, or data.frame of scientific names and asynchronously matches them to the backbone. (#475)
+* `pred_isnull()` : New predicate function that includes NULL values from a column in the download. (#489)
+* `occ_download.print()` : Now prints out much more information including a DOI and citation. (#494)
+
+### DEPRECATED
+
+* `gbif_citation.gbif()` : it is no longer considered best practice to generate a citation from `occ_search()` or `occ_data()`. We recommend `occ_download()` or `derived_dataset()` instead. (#494)
+
+### MINOR IMPROVEMENTS
+
+* `occ_download_wait()` and `occ_download_meta()` : now accept a class character download key directly. The keys does do not need to be class "occ_download". (#487)
+* `name_backbone()` : now returns new columns "verbatim_name", "verabtim_genus" ect. that the user has supplied. This makes it easier for the user to track what has been matched. The verbose argument also has been un-retired. If `verbose=TRUE`, more results will be returned in a single data.frame. (#475)
+* `gbif_citation()` : will now accept a download key directly. 
+* `occ_download_get()` : Does not throw an error if the data is already present and `overwrite=FALSE`, it will just give a warning and return the already present dataset. This allows users to run `occ_download_get(key) %>% occ_download_import()` multiple times without re-downloading the same file with `overwrite=TRUE`. 
+* `download_predicate_dsl()` : "publishingOrg" now added as a download key. (#496) `key_lkup` now includes GBIF-style uppercase keys as well. So `pred("TAXON_KEY",212)` and `pred("taxonKey",212)` will both work.
+
+### DOCUMENTATION 
+
+Wrote new articles highlighting new features and encouraging the use of `occ_download()` over `occ_search()`. 
+
+New articles:
+
+* [Citing GBIF Mediated Data](https://docs.ropensci.org/rgbif/articles/gbif_citations.html)
+* [Set Up Your GBIF Username and Password](https://docs.ropensci.org/rgbif/articles/gbif_credentials.html)
+* [Getting Occurrence Data From GBIF](https://docs.ropensci.org/rgbif/articles/getting_occurrence_data.html)
+* [Downloading A Long Species List](https://docs.ropensci.org/rgbif/articles/downloading_a_long_species_list.html)
+* [Working With Taxonomic Names](https://docs.ropensci.org/rgbif/articles/taxonomic_names.html)
+
+### BUG FIXES
+
+* `occ_download_import()` : fixed bug related to select argument. (#479)
+* `map_fetch()` : fixed bug related to `sp::CRS` (#497)
+
 rgbif 3.6.0
 ===========
 
@@ -125,7 +166,7 @@ rgbif 3.0
 
 ### BREAKING CHANGE
 
-* Many functions (`occ_search`, `occ_get`, `name_usage`, `name_lookup`, `name_suggest`, `name_backbone`, and `dataset_search`) have a `return` parameter to toggle what is returned from the function call. To simplify rgbif maintainence, we've deprecated the `return` parameter. We've left it in each of the functions, but it no longer does anything, other than raising a warning if used. This means that function calls to these functions now always return the same data structure, making it easier to reason about for the user, as well as for us developers trying to make sure the package works as expected under a variety of conditions. If you have been using the `return` parameter, do the same function call as before, but now index to the output you need. This is a breaking change, thus the major version bump  (#413)
+* Many functions (`occ_search`, `occ_get`, `name_usage`, `name_lookup`, `name_suggest`, `name_backbone`, and `dataset_search`) have a `return` parameter to toggle what is returned from the function call. To simplify rgbif maintenance, we've deprecated the `return` parameter. We've left it in each of the functions, but it no longer does anything, other than raising a warning if used. This means that function calls to these functions now always return the same data structure, making it easier to reason about for the user, as well as for us developers trying to make sure the package works as expected under a variety of conditions. If you have been using the `return` parameter, do the same function call as before, but now index to the output you need. This is a breaking change, thus the major version bump  (#413)
 
 ### NEW FEATURES
 
@@ -555,7 +596,7 @@ rgbif 0.9.3
 the download API (see `?downloads`). This version adds the ability to choose what to
 do with long WKT strings via the `geom_big` parameter: `asis` (same as previous version),
 `bbox` which detects if a WKT sting is likely too long, and creates a bounding box from the
-WKT string then once data is retrived, clips the result to the original WKT string; `axe`
+WKT string then once data is retrieved, clips the result to the original WKT string; `axe`
 uses the `geoaxe` package to chop up the input WKT polygon into many, with toggles in the
 new parameters `geom_size` and `geom_n`. (#197) (#199)
 * As part of this change, when >1 geometry value passed, or if `geom_big="axe"`, then
@@ -847,7 +888,7 @@ rgbif 0.6.0
 ### IMPROVEMENTS
 
 * Better checking and parsing of response data from GBIF: Across all functions, we now check that the response content type is `application/json`, then parse JSON ourselves using `RJSONIO::fromJSON` (instead of httr doing it).
-* Across all functions, we now return all potenital character class columns as character class (instead of factor), by passing `stringsAsFactors = FALSE` to all `data.frame()` calls.
+* Across all functions, we now return all potential character class columns as character class (instead of factor), by passing `stringsAsFactors = FALSE` to all `data.frame()` calls.
 * Now using assertthat package in various places to give better error messages when the wrong input is passed to a function.
 * Four parameters have name changes in the `occ_search()` function. These parameters are still in the function definition, but if called they throw a useful warning telling you the correct parameter names. (#75)
 * Updated docs in `name_usage`, `name_backbone`, `name_lookup`, and `name_suggest` functions.
@@ -902,7 +943,7 @@ rgbif 0.4.0
 ### IMPROVEMENTS
 
 * Data object isocodes gains new column gbif_names, the GBIF specific names for countries.
-* Added in deprecation messages throughtout package for functions and arguments that are deprecated.
+* Added in deprecation messages throughout package for functions and arguments that are deprecated.
 * tests moved to tests/testthat from inst/tests.
 * Vignettes now in vignettes/ directory.
 

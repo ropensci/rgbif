@@ -10,6 +10,7 @@
 \alias{pred_not}
 \alias{pred_like}
 \alias{pred_within}
+\alias{pred_isnull}
 \alias{pred_notnull}
 \alias{pred_or}
 \alias{pred_and}
@@ -31,6 +32,8 @@ pred_not(...)
 pred_like(key, value)
 
 pred_within(value)
+
+pred_isnull(key)
 
 pred_notnull(key)
 
@@ -81,6 +84,11 @@ The following function is only for stating the you don't want
 a key to be null, so only accepts one key:
 \itemize{
 \item \code{pred_notnull}: isNotNull
+}
+
+The following function is only for stating that you want a key to be null.
+\itemize{
+\item \code{pred_isnull} : isNull
 }
 
 The following two functions accept multiple individual predicates,
@@ -145,7 +153,8 @@ GBIF. For example ...
 
 Acceptable arguments to the \code{key} parameter are (with the version of
 the key in parens that must be sent if you pass the query via the \code{body}
-parameter; see below for examples). Open an issue in the GitHub
+parameter; see below for examples). You can also use the 'ALL_CAPS' version
+of a key if you prefer. Open an issue in the GitHub
 repository for this package if you know of a key that should
 be supported that is not yet.
 \itemize{
@@ -180,6 +189,8 @@ be supported that is not yet.
 \item gadm (GADM_GID) (for the Database of Global Administrative Areas)
 \item stateProvince (STATE_PROVINCE)
 \item occurrenceStatus (OCCURRENCE_STATUS)
+\item publishingOrg (PUBLISHING_ORG)
+\item occurrenceId (OCCURRENCE_ID)
 }
 }
 
