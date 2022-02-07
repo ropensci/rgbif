@@ -71,9 +71,10 @@ jobs:
 
       - name: Install dependencies
         run: |
+          pak::pkg_install("r-spatial/sf") # for r-spatial/sf#1899 remove this once it moves to CRAN.
           pak::pkg_install("stringi")
           pak::local_install_dev_deps()
-          pak::pkg_install(c("rcmdcheck", "sf", "maps", "scales", "colorspace", "raster", "protolite", "rgeos"))
+          pak::pkg_install(c("rcmdcheck", "maps", "scales", "colorspace", "raster", "protolite", "rgeos"))
         shell: Rscript {0}
 
       - name: Session info

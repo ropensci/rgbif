@@ -45,9 +45,6 @@ test_that("derived_dataset: real request", {
   expect_is(yyy, "derived_dataset")
   expect_false(is.null(yyy$originalDownloadDOI))
   expect_output(print.derived_dataset(yyy),"<<gbif derived dataset - created>>")
-  print(yyy)
-  
-
 })
 
 test_that("derived_dataset: bad data", {
