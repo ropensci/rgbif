@@ -1,7 +1,7 @@
 #' Get details on a GBIF dataset.
 #'
 #' @export
-#' @param uuid (character) One or more dataset UUIDs. See examples.
+#' @param uuid (character) One or more dataset uuid(s). See examples.
 #' @template occ
 #' @references <https://www.gbif.org/developer/registry#datasetMetrics>
 #' @note Dataset metrics are only available for checklist type datasets.
