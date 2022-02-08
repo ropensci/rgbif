@@ -48,6 +48,7 @@ test_that("derived_dataset: real request", {
 })
 
 test_that("derived_dataset: bad data", {
+  skip_on_cran()
   
   
   # count and keys reversed
@@ -343,6 +344,7 @@ expect_error(
 })
 
 test_that("derived_dataset_prep: print methods", {
+  skip_on_cran()
   
   data <- data.frame(
     datasetKey = c(
