@@ -151,9 +151,16 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "protolit-e",
-      "name": "protolit-e",
-      "version": ">= 2.0"
+      "identifier": "protolite",
+      "name": "protolite",
+      "version": ">= 2.0",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=protolite"
     },
     {
       "@type": "SoftwareApplication",
@@ -388,7 +395,7 @@
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://ropensci.org",
   "keywords": ["GBIF", "specimens", "API", "web-services", "occurrences", "species", "taxonomy"],
-  "fileSize": "9311.858KB",
+  "fileSize": "9311.857KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
