@@ -8,7 +8,7 @@
   "codeRepository": "https://github.com/ropensci/rgbif",
   "issueTracker": "https://github.com/ropensci/rgbif/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "3.6.1.99",
+  "version": "3.7.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -151,16 +151,9 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "protolite",
-      "name": "protolite",
-      "version": ">= 2.0",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=protolite"
+      "identifier": "protolit-e",
+      "name": "protolit-e",
+      "version": ">= 2.0"
     },
     {
       "@type": "SoftwareApplication",
@@ -395,7 +388,7 @@
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://ropensci.org",
   "keywords": ["GBIF", "specimens", "API", "web-services", "occurrences", "species", "taxonomy"],
-  "fileSize": "9305.678KB",
+  "fileSize": "9311.858KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -439,7 +432,7 @@
       ],
       "name": "rgbif: Interface to the Global Biodiversity Information Facility API",
       "url": "https://CRAN.R-project.org/package=rgbif",
-      "description": "R package version 3.6.1.99"
+      "description": "R package version 3.7.0"
     },
     {
       "@type": "ScholarlyArticle",
