@@ -50,7 +50,7 @@ Suggests:
     rgeos,
     png,
     raster,
-    protolit-e (>= 2.0),
+    protolite (>= 2.0),
     sf,
     randgeo,
     vcr (>= 0.5.0),
