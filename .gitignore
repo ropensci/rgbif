@@ -7,6 +7,7 @@
 .Ruserdata
 .Renviron
 .httr-oauth
+.aspell
 rgbif.Rproj
 *.Rproj
 gist_downloads.md
@@ -27,6 +28,5 @@ docs/
 /check/
 /*.tar.gz
 /*.Rcheck/
-.aspell/
 *.utf8.md
 *.knit.md
