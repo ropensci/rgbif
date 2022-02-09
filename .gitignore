@@ -27,6 +27,6 @@ docs/
 /check/
 /*.tar.gz
 /*.Rcheck/
-/.aspell
+/.aspell/
 *.utf8.md
 *.knit.md
