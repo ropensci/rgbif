@@ -119,6 +119,7 @@ name_backbone_checklist <- function(
     matched_names <- bind_rows(list(matched_names,alternatives))
   }
   # post processing matched names
+  matched_names$verbatim_index <- as.numeric(matched_names$verbatim_index)
   matched_names <- matched_names[order(matched_names$verbatim_index),]
   matched_names <- matched_names[!names(matched_names) %in% c("alternatives", "note")]
   col_idx <- grep("verbatim_", names(matched_names))

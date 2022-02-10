@@ -1,0 +1,36 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/download/0000122-171020152545675
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ASCII-8BIT
+      file: no
+      string: |-
+        eyJrZXkiOiIwMDAwMTIyLTE3MTAyMDE1MjU0NTY3NSIsImRvaSI6IjEwLjE1NDY4L2RsLnlnaHhqNyIs
+        ImxpY2Vuc2UiOiJodHRwOi8vY3JlYXRpdmVjb21tb25zLm9yZy9saWNlbnNlcy9ieS80LjAvbGVnYWxj
+        b2RlIiwicmVxdWVzdCI6eyJwcmVkaWNhdGUiOnsidHlwZSI6ImFuZCIsInByZWRpY2F0ZXMiOlt7InR5
+        cGUiOiJlcXVhbHMiLCJrZXkiOiJDT1VOVFJZIiwidmFsdWUiOiJCRyIsIm1hdGNoQ2FzZSI6ZmFsc2V9
+        LHsidHlwZSI6Imxlc3NUaGFuT3JFcXVhbHMiLCJrZXkiOiJZRUFSIiwidmFsdWUiOiIyMDExIiwibWF0
+        Y2hDYXNlIjpmYWxzZX1dfSwic2VuZE5vdGlmaWNhdGlvbiI6ZmFsc2UsImZvcm1hdCI6IkRXQ0EifSwi
+        Y3JlYXRlZCI6IjIwMTctMTAtMjBUMTg6MjE6NTYuMzQ3KzAwOjAwIiwibW9kaWZpZWQiOiIyMDE3LTEw
+        LTIwVDE4OjI1OjUwLjI2OSswMDowMCIsImVyYXNlQWZ0ZXIiOiIyMDE4LTA0LTIwVDE4OjIxOjU2LjM0
+        NyswMDowMCIsInN0YXR1cyI6IlNVQ0NFRURFRCIsImRvd25sb2FkTGluayI6Imh0dHBzOi8vYXBpLmdi
+        aWYub3JnL3YxL29jY3VycmVuY2UvZG93bmxvYWQvcmVxdWVzdC8wMDAwMTIyLTE3MTAyMDE1MjU0NTY3
+        NS56aXAiLCJzaXplIjo4MTMwNDIzLCJ0b3RhbFJlY29yZHMiOjk4NjEwLCJudW1iZXJEYXRhc2V0cyI6
+        MzI0fQ==
+  recorded_at: 2022-02-10 09:08:54 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
