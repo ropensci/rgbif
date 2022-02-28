@@ -187,6 +187,7 @@ make_async_urls <- function(x,verbose=FALSE) {
   queries <- lapply(x,function(x) paste0(names(x),"=",x,collapse="&"))
   urls <- paste0(url_base,"?",queries)
   if(verbose) urls <- paste0(urls,"&verbose=true")
+  urls <- sapply(urls,utils::URLencode)
   urls
 }
 
