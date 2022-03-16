@@ -1,3 +1,10 @@
+rgbif 3.7.1
+===========
+
+### BUG FIXES
+
+* `name_backbone_checklist()` : bug fixes (#501) (#505) 
+
 rgbif 3.7.0
 ===========
 
@@ -17,7 +24,7 @@ There is a new rgbif maintainer: [John Waller](https://twitter.com/JohnTWaller).
 ### MINOR IMPROVEMENTS
 
 * `occ_download_wait()` and `occ_download_meta()` : now accept a class character download key directly. The keys does do not need to be class "occ_download". (#487)
-* `name_backbone()` : now returns new columns "verbatim_name", "verabtim_genus" ect. that the user has supplied. This makes it easier for the user to track what has been matched. The verbose argument also has been un-retired. If `verbose=TRUE`, more results will be returned in a single data.frame. (#475)
+* `name_backbone()` : now returns new columns "verbatim_name", "verbatim_genus" ect. that the user has supplied. This makes it easier for the user to track what has been matched. The verbose argument also has been un-retired. If `verbose=TRUE`, more results will be returned in a single data.frame. (#475)
 * `gbif_citation()` : will now accept a download key directly. 
 * `occ_download_get()` : Does not throw an error if the data is already present and `overwrite=FALSE`, it will just give a warning and return the already present dataset. This allows users to run `occ_download_get(key) %>% occ_download_import()` multiple times without re-downloading the same file with `overwrite=TRUE`. 
 * `download_predicate_dsl()` : "publishingOrg" now added as a download key. (#496) `key_lkup` now includes GBIF-style uppercase keys as well. So `pred("TAXON_KEY",212)` and `pred("taxonKey",212)` will both work.
