@@ -16,12 +16,7 @@
 
 Hello,
 
-I am the new rgbif maintainer.
-
-R CMD CHECK might fail on Linux environments because of a known issue with sf. 
-https://github.com/r-spatial/sf/issues/1899
-
-This version fixes many bugs and adds some additional capabilities.
+This version fixes a few bugs.
 
 Thanks!
 John Waller
