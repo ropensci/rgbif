@@ -15,7 +15,8 @@ test_that("name_backbone_checklist good data", {
       "Fake species (John Waller 2021)", # a fake species
       "Calopteryx", # Just a Genus,
       "Hymenochaete fuliginosa (Fr.) Lév.", # name with special character
-      "Aleurodiscus amorphus (Pers.) J. Schröt." # name with special character
+      "Aleurodiscus amorphus (Pers.) J. Schröt.", # name with special character
+      "dog [brackets break matching]"
     ), description = c(
       "missing",
       "a plant",
@@ -26,7 +27,8 @@ test_that("name_backbone_checklist good data", {
       "a fake species",
       "just a GENUS",
       "special character",
-      "special character"
+      "special character",
+      "square brackets"
     ), 
     kingdom = c(
       "missing",
@@ -38,7 +40,8 @@ test_that("name_backbone_checklist good data", {
       "Johnlia",
       "Animalia",
       "Fungi",
-      "Fungi"
+      "Fungi",
+      "Animalia"
     ), Canonical_Name = c(
       "not known",
       "Cirsium arvense", 
@@ -49,7 +52,8 @@ test_that("name_backbone_checklist good data", {
       "Fake species",
       "Calopteryx",
       "Hymenochaete fuliginosa",
-      "Aleurodiscus amorphus"
+      "Aleurodiscus amorphus",
+      "dog"
     ), scientificName = c(
       NA,
       "Cirsium arvense (L.) Scop.", # a plant
@@ -60,7 +64,8 @@ test_that("name_backbone_checklist good data", {
       "Fake species (John Waller 2021)", # a fake species
       "Calopteryx", # Just a Genus   
       "Hymenochaete fuliginosa (Fr.) Lév.", # name with special character
-      "Aleurodiscus amorphus (Pers.) J. Schröt." # name with special character
+      "Aleurodiscus amorphus (Pers.) J. Schröt.", # name with special character
+      "dog [brackets break matching]"
     ))
 
   # vcr does not seem to work with async requests  
@@ -86,7 +91,7 @@ test_that("name_backbone_checklist good data", {
   expect_is(tt, "data.frame")
   expect_is(tt$usageKey, "integer")
   expect_is(tt$verbatim_name, "character")
-  expect_equal(nrow(tt), 10)
+  expect_equal(nrow(tt), 11)
   expect_true(all(tt$status == "ACCEPTED" | is.na(tt$status)))
   expect_true(is.numeric(tt$verbatim_index))
   expect_true(!is.unsorted(tt$verbatim_index))
@@ -105,7 +110,7 @@ test_that("name_backbone_checklist good data", {
   expect_is(ttt, "data.frame")
   expect_is(ttt$usageKey, "integer")
   expect_is(ttt$verbatim_name, "character")
-  expect_equal(nrow(ttt), 10)
+  expect_equal(nrow(ttt), 11)
   expect_true(all(ttt$status == "ACCEPTED" | is.na(ttt$status)))
   expect_true(is.numeric(ttt$verbatim_index))
   expect_true(!is.unsorted(ttt$verbatim_index))
@@ -124,7 +129,7 @@ test_that("name_backbone_checklist good data", {
   expect_is(tttt, "data.frame")
   expect_is(tttt$usageKey, "integer")
   expect_is(tttt$verbatim_name, "character")
-  expect_equal(nrow(tttt), 10)
+  expect_equal(nrow(tttt), 11)
   expect_true(all(tttt$status == "ACCEPTED" | is.na(tttt$status)))
   expect_true(is.numeric(tttt$verbatim_index))
   expect_true(!is.unsorted(tttt$verbatim_index))
@@ -141,7 +146,7 @@ test_that("name_backbone_checklist good data", {
   expect_is(ttttt, "data.frame")
   expect_is(ttttt$usageKey, "integer")
   expect_is(ttttt$verbatim_name, "character")
-  expect_equal(nrow(ttttt), 10)
+  expect_equal(nrow(ttttt), 11)
   expect_true(all(ttttt$status == "ACCEPTED" | is.na(ttttt$status)))
   expect_true(is.numeric(ttttt$verbatim_index))
   expect_true(!is.unsorted(ttttt$verbatim_index))
@@ -160,7 +165,7 @@ test_that("name_backbone_checklist good data", {
   expect_is(tttttt, "data.frame")
   expect_is(tttttt$usageKey, "integer")
   expect_is(tttttt$verbatim_name, "character")
-  expect_equal(nrow(tttttt), 10)
+  expect_equal(nrow(tttttt), 11)
   expect_true(all(tttttt$status == "ACCEPTED" | is.na(tttttt$status)))
   expect_true(is.numeric(tttttt$verbatim_index))
   expect_true(!is.unsorted(tttttt$verbatim_index))
