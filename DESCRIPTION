@@ -39,11 +39,11 @@ Imports:
     jsonlite (>= 1.6),
     oai (>= 0.2.2),
     tibble,
-    wellknown (>= 0.7.2),
     lazyeval,
     R6,
     conditionz,
-    stats
+    stats,
+    wk
 Suggests:
     testthat,
     sp,

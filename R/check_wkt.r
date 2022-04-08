@@ -2,7 +2,7 @@
 #'
 #' @export
 #' @param wkt (character) one or more Well Known Text objects
-#' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
+#' @param skip_validate (logical) whether to skip `wk::wk_problems`
 #' call or not. Default: `FALSE`
 #' @examples \dontrun{
 #' check_wkt('POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 10.1))')
@@ -28,39 +28,19 @@ check_wkt <- function(wkt = NULL, skip_validate = FALSE){
 
   if (!is.null(wkt)) {
     stopifnot(is.character(wkt))
-
-    newwkt <- c()
+    
+    wkt <- unlist(strsplit(wkt, ";")) # kept for legacy reasons
+    strextract <- function(str, pattern) regmatches(str, regexpr(pattern, str))
+    
+    extracted_wkts <- strextract(wkt, "[A-Z]+")
+    accepted_wkts <- c('POINT', 'POLYGON', 'MULTIPOLYGON', 'LINESTRING', 'LINEARRING')
+    
     for (i in seq_along(wkt)) {
-      if (grepl(";", wkt[[i]])) {
-        newwkt[[i]] <- strsplit(wkt[[i]], ";")[[1]]
-      } else {
-        newwkt[[i]] <- wkt[[i]]
+      if (!extracted_wkts[i] %in% accepted_wkts) stop(paste0("WKT must be one of the types: ",paste0(accepted_wkts, collapse = ", ")))
+      if (!skip_validate) { res <- wk::wk_problems(wk::new_wk_wkt(wkt[i]))
+      if (!is.na(res)) stop(res) # print error 
       }
     }
-    wkt <- unlist(newwkt)
-
-    y <- strextract(wkt, "[A-Z]+")
-
-    wkts <- c('POINT', 'POLYGON', 'MULTIPOLYGON', 'LINESTRING', 'LINEARRING')
-
-    for (i in seq_along(wkt)) {
-      if (!y[i] %in% wkts) {
-        stop(
-          paste0("WKT must be one of the types: ",
-                 paste0(wkts, collapse = ", "))
-        )
-      }
-
-      if (!skip_validate) {
-        res <- wellknown::validate_wkt(wkt[i])
-        if (grepl("\\?wkt_correct", res$comments)) {
-          res$comments <- sub("\\?wkt_correct", "\\?wellknown::wkt_correct",
-            res$comments)
-        }
-        if (!res$is_valid) stop(res$comments)
-      }
-    }
-
     return(wkt)
   } else {
     NULL

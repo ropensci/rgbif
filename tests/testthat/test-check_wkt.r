@@ -42,12 +42,8 @@ test_that("many wkt's, semi-colon separated, for many repeated geometry args", {
 test_that("bad WKT fails well", {
   expect_error(
     check_wkt('POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 a))'),
-    "bad lexical cast: source type value could not be"
+    "Expected a number but found 'a' at byte 46"
   )
 
-  expect_error(
-    check_wkt('POLYGON((30.1 10.1, 10 20, 20 60, 60 60, 30.1 a))'),
-    "bad lexical cast: source type value could not be"
-  )
 })
 

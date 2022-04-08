@@ -43,7 +43,6 @@
 #' @importFrom lazyeval lazy_dots lazy_eval
 #' @importFrom R6 R6Class
 #' @importFrom conditionz ConditionKeeper
-#' @importFrom wellknown wkt_bounding validate_wkt
 #' @name rgbif-package
 #' @aliases rgbif
 #' @docType package
