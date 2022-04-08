@@ -9,7 +9,7 @@ check_wkt(wkt = NULL, skip_validate = FALSE)
 \arguments{
 \item{wkt}{(character) one or more Well Known Text objects}
 
-\item{skip_validate}{(logical) whether to skip \code{wellknown::validate_wkt}
+\item{skip_validate}{(logical) whether to skip \code{wk::wk_problems}
 call or not. Default: \code{FALSE}}
 }
 \description{

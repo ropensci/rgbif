@@ -45,5 +45,5 @@ gbif_bbox2wkt <- function(minx=NA, miny=NA, maxx=NA, maxy=NA, bbox=NULL){
 #' @rdname gbif_bbox2wkt
 gbif_wkt2bbox <- function(wkt = NULL){
   stopifnot(!is.null(wkt))
-  as.numeric(wellknown::wkt_bounding(wkt))
+  as.numeric(wk::wk_bbox(wk::wkt(wkt)))
 }

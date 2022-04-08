@@ -1,3 +1,15 @@
+rgbif 3.7.2
+===========
+
+### MINOR IMPROVEMENTS
+
+* Removing `wellknown` dependency and switching to `wk` (#512)
+
+### BUG FIXES
+
+* `name_backbone_checklist()` : bug fix related two square brackets in url (#509)
+
+
 rgbif 3.7.1
 ===========
 
