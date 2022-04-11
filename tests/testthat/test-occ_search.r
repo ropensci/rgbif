@@ -157,7 +157,7 @@ test_that("looping works correctly", {
 test_that("scientificName basic use works - no synonyms", {
   vcr::use_cassette("occ_search_scientificname", {
     # with synonyms
-    bb <- suppressMessages(occ_search(scientificName = 'Pulsatilla patens', limit = 2))
+    bb <- suppressMessages(occ_search(scientificName = 'Pulsatilla nuttalliana (DC.) Spreng.', limit = 2))
     # Genus is a synonym - subspecies rank input
     cc <- suppressMessages(occ_search(scientificName = 'Corynorhinus townsendii ingens', limit = 2))
     # Genus is a synonym - species rank input
@@ -171,9 +171,9 @@ test_that("scientificName basic use works - no synonyms", {
     hh <- suppressMessages(occ_search(scientificName = 'Pipistrellus hesperus', limit = 2))
   }, preserve_exact_body_bytes = TRUE)
 
-  expect_equal(attr(bb, "args")$scientificName, "Pulsatilla patens")
+  expect_equal(attr(bb, "args")$scientificName, "Pulsatilla nuttalliana (DC.) Spreng.")
   expect_equal(bb$data$species[1], "Pulsatilla patens")
-  expect_match(bb$data$scientificName[1], "Pulsatilla patens")
+  expect_match(bb$data$scientificName[1], "Pulsatilla nuttalliana \\(DC\\.\\) Spreng\\.")
 
   expect_is(cc, "gbif")
   expect_is(cc$data, "data.frame")
@@ -343,7 +343,7 @@ test_that("works with parameters that allow many inputs", {
   expect_equal(unique(tolower(aa[[1]]$data$recordedBy)), "smith")
   expect_equal(unique(tolower(aa[[2]]$data$recordedBy)), "bj stacey")
 
-  expect_true(unique(tolower(bb$data$recordedBy)) %in% c('smith', 'bj stacey'))
+  expect_true(unique(tolower(bb$data$recordedBy) %in% c('smith', 'bj stacey')))
 })
 
 # per issue #349

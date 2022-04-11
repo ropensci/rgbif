@@ -14,17 +14,17 @@ http_interactions:
       message: Unauthorized
       explanation: No permission -- see authorization schemes
     headers:
-      status: HTTP/1.1 401 401
+      status: HTTP/1.1 401 Unauthorized
     body:
       encoding: UTF-8
       file: no
       string: |
         ERR:10:user does not exist.
-  recorded_at: 2022-01-14 12:21:35 GMT
+  recorded_at: 2022-04-08 13:33:16 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
-    uri: http://api.geonames.org/srtm3?lats=a&lngs=a&username=<geonames_user>
+    uri: http://api.geonames.org/srtm3?lats=a&lngs=a&username=<gbif_user>
     body:
       encoding: ''
       string: ''
@@ -37,11 +37,11 @@ http_interactions:
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 200
+      status: HTTP/1.1 200 OK
     body:
       encoding: UTF-8
       file: no
       string: |
         ERR:14:invalid number
-  recorded_at: 2022-01-14 12:21:35 GMT
+  recorded_at: 2022-04-08 13:33:16 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0

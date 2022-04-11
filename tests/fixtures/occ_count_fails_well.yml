@@ -14,14 +14,14 @@ http_interactions:
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: 'HTTP/2 200 '
+      status: HTTP/1.1 200 OK
       content-type: application/json
     body:
       encoding: UTF-8
       file: no
-      string: '6995'
-  recorded_at: 2020-12-08 23:48:16 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+      string: '28990'
+  recorded_at: 2022-04-08 13:35:44 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/count?basisOfRecord=OBSERVATION&typeStatus=ALLOTYPE
@@ -37,11 +37,11 @@ http_interactions:
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: 'HTTP/2 200 '
+      status: HTTP/1.1 200 OK
       content-type: application/json
     body:
       encoding: UTF-8
       file: no
       string: '0'
-  recorded_at: 2020-12-08 23:48:16 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+  recorded_at: 2022-04-08 13:35:44 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

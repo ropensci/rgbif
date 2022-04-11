@@ -14,14 +14,14 @@ http_interactions:
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: 'HTTP/2 200 '
+      status: HTTP/1.1 200 OK
       content-type: application/json
     body:
       encoding: UTF-8
       file: no
-      string: '{"offset":0,"limit":0,"endOfRecords":false,"count":1635145880,"results":[],"facets":[{"field":"COUNTRY","counts":[{"name":"US","count":558106273},{"name":"AU","count":98066651},{"name":"SE","count":97829728},{"name":"FR","count":86825159},{"name":"CA","count":85730168},{"name":"GB","count":80331917},{"name":"NL","count":56278138},{"name":"ES","count":43165236},{"name":"DK","count":42324422},{"name":"DE","count":40932029}]}]}'
-  recorded_at: 2020-12-09 00:02:45 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+      string: '{"offset":0,"limit":0,"endOfRecords":false,"count":2184797352,"results":[],"facets":[{"field":"COUNTRY","counts":[{"name":"US","count":808302991},{"name":"CA","count":131806867},{"name":"GB","count":108057716},{"name":"AU","count":107917235},{"name":"SE","count":107632259},{"name":"FR","count":100666945},{"name":"NL","count":77444744},{"name":"ES","count":54442678},{"name":"DE","count":49855461},{"name":"DK","count":47888195}]}]}'
+  recorded_at: 2022-04-08 13:39:23 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search?facetMincount=50000000&limit=0&facet=country
@@ -37,11 +37,11 @@ http_interactions:
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: 'HTTP/2 200 '
+      status: HTTP/1.1 200 OK
       content-type: application/json
     body:
       encoding: UTF-8
       file: no
-      string: '{"offset":0,"limit":0,"endOfRecords":false,"count":1635145880,"results":[],"facets":[{"field":"COUNTRY","counts":[{"name":"US","count":558106273},{"name":"AU","count":98066651},{"name":"SE","count":97829728},{"name":"FR","count":86825159},{"name":"CA","count":85730168},{"name":"GB","count":80331917},{"name":"NL","count":56278138}]}]}'
-  recorded_at: 2020-12-09 00:02:45 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+      string: '{"offset":0,"limit":0,"endOfRecords":false,"count":2184797352,"results":[],"facets":[{"field":"COUNTRY","counts":[{"name":"US","count":808302991},{"name":"CA","count":131806867},{"name":"GB","count":108057716},{"name":"AU","count":107917235},{"name":"SE","count":107632259},{"name":"FR","count":100666945},{"name":"NL","count":77444744},{"name":"ES","count":54442678}]}]}'
+  recorded_at: 2022-04-08 13:39:23 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

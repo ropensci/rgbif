@@ -14,106 +14,14 @@ http_interactions:
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: 'HTTP/2 200 '
+      status: HTTP/1.1 200 OK
       content-type: application/json
     body:
       encoding: UTF-8
       file: no
-      string: '{"offset":0,"limit":100,"endOfRecords":true,"results":[{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/112437.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2008-11-26T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Henk Olieman","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/113397.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2007-05-04T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Dirk Huitzing","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/113398.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2007-05-04T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Dirk Huitzing","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/117344.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2009-05-22T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Marcel Holtjer","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/117474.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2009-05-30T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Marcel Holtjer","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/135866.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2008-03-01T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Lesley van Loo","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/136352.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2010-01-01T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Ab H. Baas","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/136863.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2009-12-12T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Dirk Huitzing","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/141411.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2010-04-07T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Henk Olieman","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/141534.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2010-04-09T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Ab H. Baas","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/141631.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2010-04-24T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Ab H. Baas","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/141659.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2010-04-19T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Ab H. Baas","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/141660.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2010-04-19T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Ab H. Baas","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/141837.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2010-05-10T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Ab H. Baas","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/142101.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2010-04-18T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Ab H. Baas","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/142141.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2010-05-20T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Ab H. Baas","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/174700.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2009-03-10T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Annemarie Visser","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/174701.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2009-03-20T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Annemarie Visser","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/174702.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2009-09-06T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Annemarie Visser","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/174831.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2010-10-09T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Jan Sebregts","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/174855.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2006-09-29T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Menno van Duijn","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/188451.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2011-08-12T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Maries Elemans","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/189671.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2011-05-25T00:00:00.000+0000","license":"CC
-        BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/189700.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2011-05-25T00:00:00.000+0000","license":"CC
-        BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/189701.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2009-10-15T00:00:00.000+0000","license":"CC
-        BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/194491.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2011-11-19T00:00:00.000+0000","license":"CC
-        BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/194492.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2011-11-19T00:00:00.000+0000","license":"CC
-        BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/195638.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2011-04-17T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Hans Kool","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/201423.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2012-04-27T00:00:00.000+0000","license":"CC
-        BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/201424.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2012-04-27T00:00:00.000+0000","license":"CC
-        BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/201425.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2012-04-27T00:00:00.000+0000","license":"CC
-        BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/205479.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2012-07-01T00:00:00.000+0000","license":"CC
-        BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/205480.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2012-07-01T00:00:00.000+0000","license":"CC
-        BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/205609.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2012-07-02T00:00:00.000+0000","license":"CC
-        BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/206295.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2012-07-27T00:00:00.000+0000","license":"CC
-        BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/210824.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2012-10-14T00:00:00.000+0000","license":"CC
-        BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/214270.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2012-12-08T00:00:00.000+0000","license":"CC
-        BY","rightsHolder":"Dick Belgers","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/236401.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2013-06-02T00:00:00.000+0000","license":"CC
-        BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/64478.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2005-01-01T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Tim Faasen","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/64480.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2005-01-01T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Tim Faasen","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/67586.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2007-07-19T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Ron Schoones","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/68585.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2004-01-01T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Marcel van Dijk","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/73544.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2006-06-01T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Henk van Woerden","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/73545.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2006-06-01T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Henk van Woerden","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/77619.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2004-04-22T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Ab H. Baas","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/99212_huismus-81.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2016-06-25T00:00:00.000+0000","license":"CC
-        BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165}]}'
-  recorded_at: 2020-12-08 23:50:25 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+      string: '{"offset":0,"limit":100,"endOfRecords":true,"results":[]}'
+  recorded_at: 2022-04-08 13:35:36 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/species/5231190/media?offset=0&limit=100
@@ -129,103 +37,11 @@ http_interactions:
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: 'HTTP/2 200 '
+      status: HTTP/1.1 200 OK
       content-type: application/json
     body:
       encoding: UTF-8
       file: no
-      string: '{"offset":0,"limit":100,"endOfRecords":true,"results":[{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/112437.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2008-11-26T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Henk Olieman","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/113397.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2007-05-04T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Dirk Huitzing","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/113398.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2007-05-04T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Dirk Huitzing","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/117344.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2009-05-22T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Marcel Holtjer","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/117474.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2009-05-30T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Marcel Holtjer","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/135866.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2008-03-01T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Lesley van Loo","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/136352.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2010-01-01T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Ab H. Baas","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/136863.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2009-12-12T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Dirk Huitzing","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/141411.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2010-04-07T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Henk Olieman","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/141534.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2010-04-09T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Ab H. Baas","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/141631.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2010-04-24T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Ab H. Baas","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/141659.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2010-04-19T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Ab H. Baas","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/141660.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2010-04-19T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Ab H. Baas","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/141837.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2010-05-10T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Ab H. Baas","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/142101.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2010-04-18T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Ab H. Baas","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/142141.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2010-05-20T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Ab H. Baas","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/174700.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2009-03-10T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Annemarie Visser","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/174701.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2009-03-20T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Annemarie Visser","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/174702.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2009-09-06T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Annemarie Visser","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/174831.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2010-10-09T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Jan Sebregts","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/174855.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2006-09-29T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Menno van Duijn","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/188451.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2011-08-12T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Maries Elemans","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/189671.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2011-05-25T00:00:00.000+0000","license":"CC
-        BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/189700.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2011-05-25T00:00:00.000+0000","license":"CC
-        BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/189701.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2009-10-15T00:00:00.000+0000","license":"CC
-        BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/194491.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2011-11-19T00:00:00.000+0000","license":"CC
-        BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/194492.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2011-11-19T00:00:00.000+0000","license":"CC
-        BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/195638.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2011-04-17T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Hans Kool","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/201423.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2012-04-27T00:00:00.000+0000","license":"CC
-        BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/201424.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2012-04-27T00:00:00.000+0000","license":"CC
-        BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/201425.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2012-04-27T00:00:00.000+0000","license":"CC
-        BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/205479.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2012-07-01T00:00:00.000+0000","license":"CC
-        BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/205480.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2012-07-01T00:00:00.000+0000","license":"CC
-        BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/205609.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2012-07-02T00:00:00.000+0000","license":"CC
-        BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/206295.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2012-07-27T00:00:00.000+0000","license":"CC
-        BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/210824.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2012-10-14T00:00:00.000+0000","license":"CC
-        BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/214270.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2012-12-08T00:00:00.000+0000","license":"CC
-        BY","rightsHolder":"Dick Belgers","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/236401.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2013-06-02T00:00:00.000+0000","license":"CC
-        BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/64478.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2005-01-01T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Tim Faasen","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/64480.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2005-01-01T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Tim Faasen","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/67586.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2007-07-19T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Ron Schoones","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/68585.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2004-01-01T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Marcel van Dijk","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/73544.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2006-06-01T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Henk van Woerden","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/73545.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2006-06-01T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Henk van Woerden","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/77619.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2004-04-22T00:00:00.000+0000","license":"All
-        rights reserved","rightsHolder":"Ab H. Baas","taxonKey":5231190,"sourceTaxonKey":152437165},{"type":"StillImage","format":"image/jpeg","identifier":"https://images.naturalis.nl/original/99212_huismus-81.jpg","source":"Checklist
-        Dutch Species Register - Nederlands Soortenregister","created":"2016-06-25T00:00:00.000+0000","license":"CC
-        BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165}]}'
-  recorded_at: 2020-12-08 23:50:25 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+      string: '{"offset":0,"limit":100,"endOfRecords":true,"results":[]}'
+  recorded_at: 2022-04-08 13:35:36 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

@@ -8,13 +8,13 @@
   "codeRepository": "https://github.com/ropensci/rgbif",
   "issueTracker": "https://github.com/ropensci/rgbif/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "3.7.1",
+  "version": "3.7.2",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.6.3 (2020-02-29)",
+  "runtimePlatform": "R version 4.1.2 (2021-11-01)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -338,19 +338,6 @@
     },
     "10": {
       "@type": "SoftwareApplication",
-      "identifier": "wellknown",
-      "name": "wellknown",
-      "version": ">= 0.7.2",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=wellknown"
-    },
-    "11": {
-      "@type": "SoftwareApplication",
       "identifier": "lazyeval",
       "name": "lazyeval",
       "provider": {
@@ -361,7 +348,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=lazyeval"
     },
-    "12": {
+    "11": {
       "@type": "SoftwareApplication",
       "identifier": "R6",
       "name": "R6",
@@ -373,7 +360,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=R6"
     },
-    "13": {
+    "12": {
       "@type": "SoftwareApplication",
       "identifier": "conditionz",
       "name": "conditionz",
@@ -385,17 +372,29 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=conditionz"
     },
-    "14": {
+    "13": {
       "@type": "SoftwareApplication",
       "identifier": "stats",
       "name": "stats"
+    },
+    "14": {
+      "@type": "SoftwareApplication",
+      "identifier": "wk",
+      "name": "wk",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=wk"
     },
     "SystemRequirements": null
   },
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://ropensci.org",
   "keywords": ["GBIF", "specimens", "API", "web-services", "occurrences", "species", "taxonomy", "gbif", "api", "data", "biodiversity", "rstats", "r", "spocc", "r-package", "lifewatch", "oscibio"],
-  "fileSize": "9299.908KB",
+  "fileSize": "9631.335KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -439,7 +438,7 @@
       ],
       "name": "rgbif: Interface to the Global Biodiversity Information Facility API",
       "url": "https://CRAN.R-project.org/package=rgbif",
-      "description": "R package version 3.7.1"
+      "description": "R package version 3.7.2"
     },
     {
       "@type": "ScholarlyArticle",

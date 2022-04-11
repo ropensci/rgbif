@@ -39,7 +39,7 @@ test_that("occ_download_list fails well", {
   ## set username, run again
   Sys.setenv(GBIF_PWD = "cheese")
   vcr::use_cassette("occ_download_list_unauthorized", {
-    expect_error(occ_download_list(), "Unauthorized", class = "error")
+    expect_error(occ_download_list(), "Failed to authenticate user foobar\r\n", class = "error")
   })
 })
 

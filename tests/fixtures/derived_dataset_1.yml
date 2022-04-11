@@ -21,9 +21,9 @@ http_interactions:
     body:
       encoding: UTF-8
       file: no
-      string: '{"doi":"10.15468/dd.pn335p","description":"This data was filtered using
-        a fake protocol","citation":"Derived dataset GBIF.org (8 February 2022) Filtered
-        export of GBIF occurrence data https://doi.org/10.15468/dd.pn335p","title":"Test
+      string: '{"doi":"10.15468/dd.cu5k3e","description":"This data was filtered using
+        a fake protocol","citation":"Derived dataset GBIF.org (8 April 2022) Filtered
+        export of GBIF occurrence data https://doi.org/10.15468/dd.cu5k3e","title":"Test
         for derived dataset","sourceUrl":"https://zenodo.org/record/4246090#.YPGS2OgzZPY","createdBy":"<gbif_user>","modifiedBy":"<gbif_user>"}'
-  recorded_at: 2022-02-08 10:52:56 GMT
+  recorded_at: 2022-04-08 13:33:11 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0

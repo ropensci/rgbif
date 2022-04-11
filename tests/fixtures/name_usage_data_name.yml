@@ -14,7 +14,7 @@ http_interactions:
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: 'HTTP/2 200 '
+      status: HTTP/1.1 200 OK
       content-type: application/json
     body:
       encoding: UTF-8
@@ -22,8 +22,8 @@ http_interactions:
       string: '{"key":8290258,"scientificName":"Passer domesticus (Linnaeus, 1758)","type":"SCIENTIFIC","genusOrAbove":"Passer","specificEpithet":"domesticus","bracketAuthorship":"Linnaeus","bracketYear":"1758","parsed":true,"parsedPartially":false,"canonicalName":"Passer
         domesticus","canonicalNameWithMarker":"Passer domesticus","canonicalNameComplete":"Passer
         domesticus (Linnaeus, 1758)","rankMarker":"sp."}'
-  recorded_at: 2020-12-08 23:50:18 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+  recorded_at: 2022-04-08 13:35:30 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/species/5127291/name?offset=0&limit=100
@@ -39,7 +39,7 @@ http_interactions:
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: 'HTTP/2 200 '
+      status: HTTP/1.1 200 OK
       content-type: application/json
     body:
       encoding: UTF-8
@@ -48,5 +48,5 @@ http_interactions:
         1916","type":"SCIENTIFIC","genusOrAbove":"Aulacodes","specificEpithet":"aulocodoidalis","authorship":"Rothschild","year":"1916","parsed":true,"parsedPartially":false,"canonicalName":"Aulacodes
         aulocodoidalis","canonicalNameWithMarker":"Aulacodes aulocodoidalis","canonicalNameComplete":"Aulacodes
         aulocodoidalis Rothschild, 1916","rankMarker":"sp."}'
-  recorded_at: 2020-12-08 23:50:18 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+  recorded_at: 2022-04-08 13:35:30 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

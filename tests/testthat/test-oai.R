@@ -34,7 +34,7 @@ test_that("gbif_oai_list_sets", {
 test_that("gbif_oai_list_identifiers", {
   vcr::use_cassette("gbif_oai_list_identifiers", {
     # today <- format(Sys.Date() - 100, "%Y-%m-%d")
-    tt <- gbif_oai_list_identifiers(from = "2017-01-15", until = "2017-01-30")
+    tt <- gbif_oai_list_identifiers(from = "2019-01-15", until = "2019-01-30")
   })
 
   expect_is(tt, "data.frame")

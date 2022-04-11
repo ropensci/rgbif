@@ -14,11 +14,11 @@ http_interactions:
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: 'HTTP/2 200 '
+      status: HTTP/1.1 200 OK
       content-type: application/json
     body:
       encoding: UTF-8
       file: no
-      string: '{"offset":0,"limit":0,"endOfRecords":false,"count":1635145880,"results":[],"facets":[{"field":"HAS_COORDINATE","counts":[{"name":"true","count":1536353338},{"name":"false","count":98792542}]},{"field":"BASIS_OF_RECORD","counts":[{"name":"HUMAN_OBSERVATION","count":1358970691},{"name":"PRESERVED_SPECIMEN","count":178880650},{"name":"MATERIAL_SAMPLE","count":32882617},{"name":"UNKNOWN","count":18990433},{"name":"OBSERVATION","count":18662617},{"name":"MACHINE_OBSERVATION","count":12780841}]},{"field":"COUNTRY","counts":[{"name":"US","count":558106273},{"name":"AU","count":98066651},{"name":"SE","count":97829728}]}]}'
-  recorded_at: 2020-12-09 00:02:49 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+      string: '{"offset":0,"limit":0,"endOfRecords":false,"count":2184797352,"results":[],"facets":[{"field":"HAS_COORDINATE","counts":[{"name":"true","count":2057412259},{"name":"false","count":127385090}]},{"field":"BASIS_OF_RECORD","counts":[{"name":"HUMAN_OBSERVATION","count":1869458105},{"name":"PRESERVED_SPECIMEN","count":204033927},{"name":"MATERIAL_SAMPLE","count":39981161},{"name":"OBSERVATION","count":19940100},{"name":"MACHINE_OBSERVATION","count":17544749},{"name":"OCCURRENCE","count":16388081}]},{"field":"COUNTRY","counts":[{"name":"US","count":808302991},{"name":"CA","count":131806867},{"name":"GB","count":108057716}]}]}'
+  recorded_at: 2022-04-08 13:39:27 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

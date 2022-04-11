@@ -4,7 +4,7 @@ http_interactions:
     uri: https://api.gbif.org/v1/occurrence/download/request
     body:
       encoding: ''
-      string: '{"creator":"<gbif_user>","notification_address":["<gbif_email>"],"format":"DWCA","predicate":{"type":"and","predicates":[{"type":"within","geometry":"POLYGON((-14
+      string: '{"creator":"<gbif_user>","notification_address":["<gbif_user>@gbif.org"],"format":"DWCA","predicate":{"type":"and","predicates":[{"type":"within","geometry":"POLYGON((-14
         42, 9 38, -7 26, -14 42))"},{"type":"greaterThanOrEquals","key":"ELEVATION","value":"5000"}]}}'
     headers:
       Accept-Encoding: gzip, deflate
@@ -21,12 +21,12 @@ http_interactions:
     body:
       encoding: UTF-8
       file: no
-      string: 0022669-210914110416597
-  recorded_at: 2021-10-11 14:51:15 GMT
+      string: 0214907-210914110416597
+  recorded_at: 2022-04-08 13:36:27 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/download/0022669-210914110416597
+    uri: https://api.gbif.org/v1/occurrence/download/0214907-210914110416597
     body:
       encoding: ''
       string: ''
@@ -44,7 +44,7 @@ http_interactions:
     body:
       encoding: UTF-8
       file: no
-      string: '{"key":"0022669-210914110416597","doi":"10.15468/dl.w48d7p","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"within","geometry":"POLYGON((-14
-        42, 9 38, -7 26, -14 42))"},{"type":"greaterThanOrEquals","key":"ELEVATION","value":"5000","matchCase":false}]},"sendNotification":false,"format":"DWCA"},"created":"2021-10-11T14:51:14.177+00:00","modified":"2021-10-11T14:51:14.269+00:00","eraseAfter":"2022-04-11T14:51:14.106+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0022669-210914110416597.zip","size":0,"totalRecords":0,"numberDatasets":0}'
-  recorded_at: 2021-10-11 14:51:15 GMT
+      string: '{"key":"0214907-210914110416597","doi":"10.15468/dl.38dv5q","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"within","geometry":"POLYGON((-14
+        42, 9 38, -7 26, -14 42))"},{"type":"greaterThanOrEquals","key":"ELEVATION","value":"5000","matchCase":false}]},"sendNotification":false,"format":"DWCA"},"created":"2022-04-08T13:36:27.464+00:00","modified":"2022-04-08T13:36:27.553+00:00","eraseAfter":"2022-10-08T13:36:27.410+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0214907-210914110416597.zip","size":0,"totalRecords":0,"numberDatasets":0}'
+  recorded_at: 2022-04-08 13:36:27 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0

@@ -19,7 +19,7 @@ http_interactions:
       encoding: UTF-8
       file: no
       string: ''
-  recorded_at: 2022-02-10 08:12:31 GMT
+  recorded_at: 2022-04-08 13:32:40 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
@@ -41,12 +41,35 @@ http_interactions:
     body:
       encoding: UTF-8
       file: no
-      string: '{"key":1011937,"datasetKey":"3f8a1297-3259-4700-91fc-acc4170b27ce","usagesCount":32204,"synonymsCount":21629,"distinctNamesCount":32171,"nubMatchingCount":30776,"colMatchingCount":25024,"nubCoveragePct":95,"colCoveragePct":77,"countByConstituent":{},"countByKingdom":{"PLANTAE":9247},"countByRank":{"SPECIES":6219,"GENUS":1271,"VARIETY":919,"SUBSPECIES":716,"SECTION":406,"TRIBE":341,"FAMILY":176,"SUBFAMILY":159,"SUBGENUS":113,"SUBTRIBE":68,"SUBSECTION":63,"ORDER":55,"SERIES":50,"SUPERORDER":12,"SUBCLASS":6,"CLASS":1},"countNamesByLanguage":{"ENGLISH":20958,"FRENCH":11563},"countExtRecordsByExtension":{"VERNACULAR_NAME":32521,"DISTRIBUTION":29793,"DESCRIPTION":10574,"IDENTIFIER":0,"MULTIMEDIA":0,"REFERENCE":0,"SPECIES_PROFILE":0,"TYPES_AND_SPECIMEN":0},"countByOrigin":{"SOURCE":32193,"PROPARTE":11},"countByIssue":{"SCIENTIFIC_NAME_ASSEMBLED":1877,"BACKBONE_MATCH_NONE":1428,"PARTIALLY_PARSABLE":49,"UNPARSABLE":3},"otherCount":{},"created":"2021-12-22T16:41:58.757+0000","downloaded":"2021-12-22T16:36:41.323+0000"}'
-  recorded_at: 2022-02-10 08:12:31 GMT
+      string: '{"key":1011937,"datasetKey":"3f8a1297-3259-4700-91fc-acc4170b27ce","usagesCount":32204,"synonymsCount":21629,"distinctNamesCount":32171,"nubMatchingCount":30776,"colMatchingCount":25024,"nubCoveragePct":95,"colCoveragePct":77,"countByConstituent":{},"countByKingdom":{"PLANTAE":9247},"countByRank":{"SPECIES":6219,"GENUS":1271,"VARIETY":919,"SUBSPECIES":716,"SECTION":406,"TRIBE":341,"FAMILY":176,"SUBFAMILY":159,"SUBGENUS":113,"SUBTRIBE":68,"SUBSECTION":63,"ORDER":55,"SERIES":50,"SUPERORDER":12,"SUBCLASS":6,"CLASS":1},"countNamesByLanguage":{"ENGLISH":20958,"FRENCH":11563},"countExtRecordsByExtension":{"VERNACULAR_NAME":32521,"DISTRIBUTION":29793,"DESCRIPTION":10574,"IDENTIFIER":0,"MULTIMEDIA":0,"REFERENCE":0,"SPECIES_PROFILE":0,"TYPES_AND_SPECIMEN":0},"countByOrigin":{"SOURCE":32193,"PROPARTE":11},"countByIssue":{"SCIENTIFIC_NAME_ASSEMBLED":1877,"BACKBONE_MATCH_NONE":1428,"PARTIALLY_PARSABLE":49,"UNPARSABLE":3},"otherCount":{},"downloaded":"2021-12-22T16:36:41.323+00:00"}'
+  recorded_at: 2022-04-08 13:32:40 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/dataset/4/metrics
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '400'
+      message: Bad Request
+      explanation: Bad request syntax or unsupported method
+    headers:
+      status: HTTP/1.1 400 Bad Request
+      content-type: text/plain
+    body:
+      encoding: UTF-8
+      file: no
+      string: 'Invalid UUID string: 4'
+  recorded_at: 2022-04-08 13:32:40 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/82ceb6ba-f762-11e1-a439-00145eb45e9a/metrics
     body:
       encoding: ''
       string: ''
@@ -60,32 +83,10 @@ http_interactions:
       explanation: Nothing matches the given URI
     headers:
       status: HTTP/1.1 404 Not Found
+      content-type: text/plain
     body:
       encoding: UTF-8
       file: no
-      string: ''
-  recorded_at: 2022-02-10 08:12:31 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
-- request:
-    method: get
-    uri: https://api.gbif.org/v1/dataset/82ceb6ba-f762-11e1-a439-00145eb45e9a/metrics
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
-  response:
-    status:
-      status_code: '204'
-      message: No Content
-      explanation: Request fulfilled, nothing follows
-    headers:
-      status: HTTP/1.1 204 No Content
-      content-type: application/json
-    body:
-      encoding: UTF-8
-      file: no
-      string: ''
-  recorded_at: 2022-02-10 08:12:31 GMT
+      string: 'Entity not found for uri: /'
+  recorded_at: 2022-04-08 13:32:40 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0
