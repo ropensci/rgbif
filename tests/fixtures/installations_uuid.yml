@@ -14,14 +14,14 @@ http_interactions:
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: 'HTTP/2 200 '
+      status: HTTP/1.1 200 OK
       content-type: application/json
     body:
       encoding: UTF-8
       file: no
       string: '{"key":"b77901f9-d9b0-47fa-94e0-dd96450aa2b4","organizationKey":"8d30d714-63f5-4f6f-a1a4-d73d09aa60c4","type":"IPT_INSTALLATION","title":"IPT
         VIR N.I. Vavilov","description":"IPT\r\nN.I.Vavilov Institute of Plant Genetic
-        Resources (VIR)","createdBy":"8d30d714-63f5-4f6f-a1a4-d73d09aa60c4","modifiedBy":"b77901f9-d9b0-47fa-94e0-dd96450aa2b4","created":"2013-12-05T12:28:06.094+0000","modified":"2015-12-19T19:19:38.804+0000","disabled":false,"contacts":[{"key":24655,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Vladimir
-        Korneev","position":[],"email":["ito@vir.nw.ru"],"phone":[],"homepage":[],"address":[],"createdBy":"8d30d714-63f5-4f6f-a1a4-d73d09aa60c4","modifiedBy":"b77901f9-d9b0-47fa-94e0-dd96450aa2b4","created":"2013-12-05T12:28:06.138+0000","modified":"2015-12-19T19:19:38.874+0000"}],"endpoints":[{"key":89965,"type":"FEED","url":"http://91.151.189.38:8080/viript/rss.do","createdBy":"b77901f9-d9b0-47fa-94e0-dd96450aa2b4","modifiedBy":"b77901f9-d9b0-47fa-94e0-dd96450aa2b4","created":"2015-12-19T19:19:39.011+0000","modified":"2015-12-19T19:19:39.011+0000","machineTags":[]}],"machineTags":[],"tags":[],"identifiers":[],"comments":[]}'
-  recorded_at: 2020-12-08 23:54:37 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+        Resources (VIR)","createdBy":"8d30d714-63f5-4f6f-a1a4-d73d09aa60c4","modifiedBy":"b77901f9-d9b0-47fa-94e0-dd96450aa2b4","created":"2013-12-05T12:28:06.094+00:00","modified":"2015-12-19T19:19:38.804+00:00","disabled":false,"contacts":[{"key":24655,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Vladimir
+        Korneev","position":[],"email":["ito@vir.nw.ru"],"phone":[],"homepage":[],"address":[],"createdBy":"8d30d714-63f5-4f6f-a1a4-d73d09aa60c4","modifiedBy":"b77901f9-d9b0-47fa-94e0-dd96450aa2b4","created":"2013-12-05T12:28:06.138+00:00","modified":"2015-12-19T19:19:38.874+00:00"}],"endpoints":[{"key":89965,"type":"FEED","url":"http://91.151.189.38:8080/viript/rss.do","createdBy":"b77901f9-d9b0-47fa-94e0-dd96450aa2b4","modifiedBy":"b77901f9-d9b0-47fa-94e0-dd96450aa2b4","created":"2015-12-19T19:19:39.011+00:00","modified":"2015-12-19T19:19:39.011+00:00","machineTags":[]}],"machineTags":[],"tags":[],"identifiers":[],"comments":[]}'
+  recorded_at: 2022-04-08 13:34:39 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

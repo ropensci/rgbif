@@ -28,6 +28,6 @@ test_that("dataset_metrics fails well", {
 
     # datasets not of type checklist dont work
     expect_error(dataset_metrics('82ceb6ba-f762-11e1-a439-00145eb45e9a'),
-                 "204 - not found \\(only checklist datasets have metrics\\)")
+                 "Entity not found for uri: ")
   })
 })

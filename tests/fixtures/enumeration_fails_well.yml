@@ -14,11 +14,11 @@ http_interactions:
       message: Not Found
       explanation: Nothing matches the given URI
     headers:
-      status: 'HTTP/2 404 '
+      status: HTTP/1.1 404 Not Found
       content-type: text/plain
     body:
       encoding: UTF-8
       file: no
       string: 'Entity not found for uri: /enumeration/basic/asdfadsf'
-  recorded_at: 2020-12-08 23:58:49 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+  recorded_at: 2022-04-08 13:34:05 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

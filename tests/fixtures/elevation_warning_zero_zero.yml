@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.geonames.org/srtm3?lats=0%2C45&lngs=0%2C-120&username=<geonames_user>
+    uri: http://api.geonames.org/srtm3?lats=0%2C45&lngs=0%2C-120&username=<gbif_user>
     body:
       encoding: ''
       string: ''
@@ -14,7 +14,7 @@ http_interactions:
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 200
+      status: HTTP/1.1 200 OK
       content-type: text/html;charset=UTF-8
     body:
       encoding: UTF-8
@@ -22,5 +22,5 @@ http_interactions:
       string: |
         -32768
         1351
-  recorded_at: 2022-01-14 12:21:38 GMT
+  recorded_at: 2022-04-08 13:34:03 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0

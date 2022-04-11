@@ -14,14 +14,15 @@ http_interactions:
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: 'HTTP/2 200 '
+      status: HTTP/1.1 200 OK
       content-type: application/json
     body:
       encoding: UTF-8
       file: no
-      string: '["122","122 (WSP iSOTYPE)","122 RMCA 16981-M-","122 a","122 cyl"]'
-  recorded_at: 2020-12-09 00:03:23 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+      string: '["122","122 (WSP iSOTYPE)","122 (WSP, isotype);San Martin, F. 8010S","122
+        E10","122 RMCA 16981-M-"]'
+  recorded_at: 2022-04-08 13:39:36 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search/collectionCode?q=12&limit=5
@@ -37,14 +38,14 @@ http_interactions:
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: 'HTTP/2 200 '
+      status: HTTP/1.1 200 OK
       content-type: application/json
     body:
       encoding: UTF-8
       file: no
       string: '["12","12 minor workers","12-00","12-1","12-82"]'
-  recorded_at: 2020-12-09 00:03:23 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+  recorded_at: 2022-04-08 13:39:36 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search/institutionCode?q=GB&limit=5
@@ -60,14 +61,14 @@ http_interactions:
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: 'HTTP/2 200 '
+      status: HTTP/1.1 200 OK
       content-type: application/json
     body:
       encoding: UTF-8
       file: no
-      string: '["GB","GBG","GBIF-SE:GNM","GBIFPortugal","GBP"]'
-  recorded_at: 2020-12-09 00:03:23 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+      string: '["GB","GBC","GBG","GBIF-SE:GNM","GBIFPortugal"]'
+  recorded_at: 2022-04-08 13:39:36 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search/catalogNumber?q=122&limit=5
@@ -83,14 +84,15 @@ http_interactions:
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: 'HTTP/2 200 '
+      status: HTTP/1.1 200 OK
       content-type: application/json
     body:
       encoding: UTF-8
       file: no
-      string: '["122","122 (WSP iSOTYPE)","122 RMCA 16981-M-","122 a","122 cyl"]'
-  recorded_at: 2020-12-09 00:03:23 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+      string: '["122","122 (WSP iSOTYPE)","122 (WSP, isotype);San Martin, F. 8010S","122
+        E10","122 RMCA 16981-M-"]'
+  recorded_at: 2022-04-08 13:39:36 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search/catalogNumber?q=122&limit=10
@@ -106,15 +108,15 @@ http_interactions:
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: 'HTTP/2 200 '
+      status: HTTP/1.1 200 OK
       content-type: application/json
     body:
       encoding: UTF-8
       file: no
-      string: '["122","122 (WSP iSOTYPE)","122 RMCA 16981-M-","122 a","122 cyl","122
-        tauschii","122(4165)","122-00","122-01a","122-01b"]'
-  recorded_at: 2020-12-09 00:03:23 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+      string: '["122","122 (WSP iSOTYPE)","122 (WSP, isotype);San Martin, F. 8010S","122
+        E10","122 RMCA 16981-M-","122 a","122 cyl","122 tauschii","122(4165)","122(MSB)"]'
+  recorded_at: 2022-04-08 13:39:36 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search/catalogNumber?q=122&limit=5
@@ -130,14 +132,15 @@ http_interactions:
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: 'HTTP/2 200 '
+      status: HTTP/1.1 200 OK
       content-type: application/json
     body:
       encoding: UTF-8
       file: no
-      string: '["122","122 (WSP iSOTYPE)","122 RMCA 16981-M-","122 a","122 cyl"]'
-  recorded_at: 2020-12-09 00:03:23 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+      string: '["122","122 (WSP iSOTYPE)","122 (WSP, isotype);San Martin, F. 8010S","122
+        E10","122 RMCA 16981-M-"]'
+  recorded_at: 2022-04-08 13:39:36 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search/recordedBy?q=scott&limit=5
@@ -153,12 +156,12 @@ http_interactions:
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: 'HTTP/2 200 '
+      status: HTTP/1.1 200 OK
       content-type: application/json
     body:
       encoding: UTF-8
       file: no
-      string: '["SCOTT","SCOTT  SUSAN","SCOTT A","SCOTT A.L. Amy","SCOTT A.L. Amy
-        | HOFFMANN E. Emily"]'
-  recorded_at: 2020-12-09 00:03:23 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+      string: '["SCOTT","SCOTT  SUSAN","SCOTT A","SCOTT AND DOUGLAS MOODY","SCOTT
+        C MCKENZIE"]'
+  recorded_at: 2022-04-08 13:39:36 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

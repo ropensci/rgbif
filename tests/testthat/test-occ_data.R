@@ -143,7 +143,7 @@ test_that("scientificName basic use works - no synonyms", {
 
   expect_equal(attr(bb, "args")$scientificName, "Pulsatilla patens")
   expect_equal(bb$data$species[1], "Pulsatilla patens")
-  expect_match(bb$data$scientificName[1], "Pulsatilla patens")
+  expect_match(bb$data$scientificName[1], "Pulsatilla nuttalliana \\(DC\\.\\) Spreng\\.")
 
   expect_is(cc, "gbif_data")
   expect_is(cc$data, "data.frame")
@@ -307,7 +307,7 @@ test_that("works with parameters that allow many inputs", {
   expect_equal(unique(tolower(aa[[1]]$data$recordedBy)), "smith")
   expect_equal(unique(tolower(aa[[2]]$data$recordedBy)), "bj stacey")
 
-  expect_true(unique(tolower(bb$data$recordedBy)) %in% c('smith', 'bj stacey'))
+  expect_true(unique(tolower(bb$data$recordedBy) %in% c('smith', 'bj stacey')))
 })
 
 # per issue #349

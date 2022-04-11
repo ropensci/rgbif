@@ -14,11 +14,13 @@ http_interactions:
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: 'HTTP/2 200 '
+      status: HTTP/1.1 200 OK
       content-type: application/json
     body:
       encoding: ASCII-8BIT
       file: no
-      string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOnRydWUsImNvdW50IjowLCJyZXN1bHRzIjpbXSwiZmFjZXRzIjpbXX0=
-  recorded_at: 2020-12-08 23:51:55 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+      string: |-
+        eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOnRydWUsImNvdW50IjowLCJyZXN1bHRz
+        IjpbXSwiZmFjZXRzIjpbXX0=
+  recorded_at: 2022-04-08 13:35:23 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

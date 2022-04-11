@@ -21,5 +21,5 @@ http_interactions:
       file: no
       string: '{"key":"0108986-200613084148143","doi":"10.15468/dl.hx3uzz","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"within","geometry":"POLYGON((-14
         42, 9 38, -7 26, -14 42))"},{"type":"greaterThanOrEquals","key":"ELEVATION","value":"5400","matchCase":false}]},"sendNotification":false,"format":"DWCA"},"created":"2020-11-11T16:47:40.736+00:00","modified":"2020-11-11T16:48:30.842+00:00","eraseAfter":"2021-05-11T16:47:40.654+00:00","status":"SUCCEEDED","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0108986-200613084148143.zip","size":38857,"totalRecords":21,"numberDatasets":8}'
-  recorded_at: 2021-10-11 14:51:58 GMT
+  recorded_at: 2022-04-08 13:29:44 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0

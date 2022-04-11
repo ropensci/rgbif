@@ -4,7 +4,7 @@ http_interactions:
     uri: https://api.gbif.org/v1/occurrence/download/request
     body:
       encoding: ''
-      string: '{"creator":"<gbif_user>","notification_address":["<gbif_email>"],"format":"SPECIES_LIST","predicate":{"type":"greaterThanOrEquals","key":"DECIMAL_LATITUDE","value":"75"}}'
+      string: '{"creator":"<gbif_user>","notification_address":["<gbif_user>@gbif.org"],"format":"SPECIES_LIST","predicate":{"type":"greaterThanOrEquals","key":"DECIMAL_LATITUDE","value":"75"}}'
     headers:
       Accept-Encoding: gzip, deflate
       Content-Type: application/json
@@ -20,12 +20,12 @@ http_interactions:
     body:
       encoding: UTF-8
       file: no
-      string: 0022670-210914110416597
-  recorded_at: 2021-10-11 14:51:16 GMT
+      string: 0214908-210914110416597
+  recorded_at: 2022-04-08 13:36:29 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/download/0022670-210914110416597
+    uri: https://api.gbif.org/v1/occurrence/download/0214908-210914110416597
     body:
       encoding: ''
       string: ''
@@ -43,6 +43,6 @@ http_interactions:
     body:
       encoding: UTF-8
       file: no
-      string: '{"key":"0022670-210914110416597","doi":"10.15468/dl.5edeac","license":"unspecified","request":{"predicate":{"type":"greaterThanOrEquals","key":"DECIMAL_LATITUDE","value":"75","matchCase":false},"sendNotification":false,"format":"SPECIES_LIST"},"created":"2021-10-11T14:51:16.344+00:00","modified":"2021-10-11T14:51:16.428+00:00","eraseAfter":"2022-04-11T14:51:16.287+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0022670-210914110416597.zip","size":0,"totalRecords":0,"numberDatasets":0}'
-  recorded_at: 2021-10-11 14:51:16 GMT
+      string: '{"key":"0214908-210914110416597","doi":"10.15468/dl.wnqb4s","license":"unspecified","request":{"predicate":{"type":"greaterThanOrEquals","key":"DECIMAL_LATITUDE","value":"75","matchCase":false},"sendNotification":false,"format":"SPECIES_LIST"},"created":"2022-04-08T13:36:28.982+00:00","modified":"2022-04-08T13:36:28.982+00:00","eraseAfter":"2022-10-08T13:36:28.915+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0214908-210914110416597.zip","size":0,"totalRecords":0,"numberDatasets":0}'
+  recorded_at: 2022-04-08 13:36:29 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0

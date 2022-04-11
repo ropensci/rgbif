@@ -19,6 +19,6 @@ http_interactions:
     body:
       encoding: UTF-8
       file: no
-      string: ''
-  recorded_at: 2021-10-11 14:51:58 GMT
+      string: "Failed to authenticate user foobar\r\n"
+  recorded_at: 2022-04-08 13:29:43 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0

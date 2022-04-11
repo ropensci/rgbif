@@ -20,5 +20,5 @@ http_interactions:
       encoding: UTF-8
       file: no
       string: 'Invalid UUID string: foo-bar'
-  recorded_at: 2021-10-11 14:51:54 GMT
+  recorded_at: 2022-04-08 13:29:39 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0
