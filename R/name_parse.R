@@ -10,20 +10,19 @@
 #' @author John Baumgartner (johnbb@@student.unimelb.edu.au)
 #' @references <https://www.gbif.org/developer/species#parser>
 #' @examples \dontrun{
-#' parsenames(scientificname='x Agropogon littoralis')
-#' parsenames(c('Arrhenatherum elatius var. elatius',
+#' name_parse(scientificname='x Agropogon littoralis')
+#' name_parse(c('Arrhenatherum elatius var. elatius',
 #'              'Secale cereale subsp. cereale', 'Secale cereale ssp. cereale',
 #'              'Vanessa atalanta (Linnaeus, 1758)'))
-#' parsenames("Ajuga pyramidata")
-#' parsenames("Ajuga pyramidata x reptans")
+#' name_parse("Ajuga pyramidata")
+#' name_parse("Ajuga pyramidata x reptans")
 #'
 #' # Pass on curl options
-#' # res <- parsenames(c('Arrhenatherum elatius var. elatius',
+#' # res <- name_parse(c('Arrhenatherum elatius var. elatius',
 #' #          'Secale cereale subsp. cereale', 'Secale cereale ssp. cereale',
 #' #          'Vanessa atalanta (Linnaeus, 1758)'), curlopts=list(verbose=TRUE))
 #' }
-parsenames <- function(scientificname, curlopts = list()) {
-  .Deprecated(msg="rgbif::parsenames() is deprecated since rgbif 3.7.3, use rgbif::name_parse() instead.")
+name_parse <- function(scientificname, curlopts = list()) {
   url <- paste0(gbif_base(), "/parser/name")
   cli <- crul::HttpClient$new(url = url, headers = c(
     rgbif_ual,
