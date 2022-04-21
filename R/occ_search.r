@@ -7,7 +7,7 @@
 #' @template occ_search_egs
 #' @template occfacet
 #' @param fields (character) Default ('all') returns all fields. 'minimal'
-#' returns just taxon name, key, latitude, and longitute. Or specify each field
+#' returns just taxon name, key, datasetKey, latitude, and longitute. Or specify each field
 #' you want returned by name, e.g. fields = c('name','latitude','elevation').
 #' @param return Defunct. All components (meta, hierarchy, data, media,
 #' facets) are returned now; index to the one(s) you want. See [occ_data()]

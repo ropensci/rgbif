@@ -65,7 +65,7 @@ gbifparser <- function(input, fields= "minimal") {
     if (any(fields == "minimal")) {
       if (all(c("decimalLatitude","decimalLongitude") %in% names(x))) {
         x <-
-          x[c("key", "scientificName", "decimalLatitude",
+          x[c("key","datasetKey", "scientificName", "decimalLatitude",
             "decimalLongitude", "issues")]
       } else {
         x <- data.frame(x["key"], x["scientificName"],
