@@ -32,7 +32,9 @@ gbifparser <- function(input, fields= "minimal") {
 
     # issues
     x[names(x) %in% "issues"] <- collapse_issues(x)
-
+    # networkKeys
+    x[names(x) %in% "networkKeys"] <- sapply(x[names(x) %in% "networkKeys"], function(x) paste(unlist(x),collapse=","))
+    
     # media
     if ("media" %in% names(x)) {
       media <- x[names(x) %in% "media"]
