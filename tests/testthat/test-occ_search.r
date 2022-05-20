@@ -340,7 +340,7 @@ test_that("works with parameters that allow many inputs", {
   expect_named(aa, c('smith', 'BJ Stacey'))
   expect_named(bb, c('meta', 'hierarchy', 'data', 'media', 'facets'))
 
-  expect_equal(unique(tolower(aa[[1]]$data$recordedBy)), "smith")
+  expect_equal(unique(tolower(aa[[1]]$data$recordedBy)), c("smith","long|peter|smith|rae"))
   expect_equal(unique(tolower(aa[[2]]$data$recordedBy)), "bj stacey")
 
   expect_true(unique(tolower(bb$data$recordedBy) %in% c('smith', 'bj stacey')))
