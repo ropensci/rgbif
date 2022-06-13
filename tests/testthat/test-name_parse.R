@@ -1,4 +1,4 @@
-context("parsenames")
+context("name_parse")
 
 test_that("returns the correct class", {
   vcr::use_cassette("name_parse", {
