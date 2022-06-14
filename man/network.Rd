@@ -49,7 +49,7 @@ for curl options}
 \value{
 \itemize{
 \item \code{network()} returns a list
-\item \code{network_constituents()} returns or data.frame of datasets in the network
+\item \code{network_constituents()} returns a data.frame of datasets in the network
 }
 }
 \description{

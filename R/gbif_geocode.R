@@ -1,5 +1,5 @@
 
-#' Geocode lat-lon point(s) with GBIF's set of geo-polygons
+#' Geocode lat-lon point(s) with GBIF's set of geo-polygons (experimental)
 #'
 #' @param latitude  a vector of numeric latitude values between -90 and 90.
 #' @param longitude a vector of numeric longitude values between -180 and 180.
@@ -16,6 +16,13 @@
 #' "EEZ", (in national waters) or "GADM0","GADM1","GADM2","GADM2"(http://gadm.org/)
 #' - \strong{title} : The name of the source polygon
 #' - \strong{distance} : distance to the polygon boarder
+#' 
+#' 
+#' This function uses the GBIF geocoder API which is not guaranteed to be 
+#' stable and is undocumented. As such, this may return different data over 
+#' time, may be rate-limited or may stop working if GBIF change the service. 
+#' Use this function with caution. 
+#'  
 #' 
 #' @references
 #' 

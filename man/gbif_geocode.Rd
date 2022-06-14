@@ -2,7 +2,7 @@
 % Please edit documentation in R/gbif_geocode.R
 \name{gbif_geocode}
 \alias{gbif_geocode}
-\title{Geocode lat-lon point(s) with GBIF's set of geo-polygons}
+\title{Geocode lat-lon point(s) with GBIF's set of geo-polygons (experimental)}
 \usage{
 gbif_geocode(latitude = NULL, longitude = NULL)
 }
@@ -24,9 +24,14 @@ A data.frame of results from the GBIF gecoding service.
 \item \strong{title} : The name of the source polygon
 \item \strong{distance} : distance to the polygon boarder
 }
+
+This function uses the GBIF geocoder API which is not guaranteed to be
+stable and is undocumented. As such, this may return different data over
+time, may be rate-limited or may stop working if GBIF change the service.
+Use this function with caution.
 }
 \description{
-Geocode lat-lon point(s) with GBIF's set of geo-polygons
+Geocode lat-lon point(s) with GBIF's set of geo-polygons (experimental)
 }
 \examples{
 \dontrun{
