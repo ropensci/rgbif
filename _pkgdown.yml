@@ -18,6 +18,7 @@ reference:
       - check_wkt
       - gbif_bbox2wkt
       - gbif_wkt2bbox
+      - gbif_geocode
   - title: "OAI"
     contents:
       - starts_with("gbif_oai_")
@@ -28,7 +29,7 @@ reference:
       - starts_with("dataset_")
       - datasets
       - organizations
-      - networks
+      - network
       - nodes
       - installations
   - title: "Maps"
@@ -65,7 +66,6 @@ reference:
   - title: "Miscellaneous"
     contents:
       - gbif_citation
-      - parsenames
       - rgb_country_codes
       - taxrank
       - wkt_parse
