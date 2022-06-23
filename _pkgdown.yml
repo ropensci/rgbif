@@ -4,46 +4,7 @@ reference:
       High level overview of package
     contents:
       - rgbif
-      - rgbif-defunct
-      - many-values
-  - title: "datasets"
-    desc: >
-      rgbif datasets
-    contents:
-      - isocodes
-      - occ_fields
-      - typestatus
-  - title: "Geometry"
-    contents:
-      - check_wkt
-      - gbif_bbox2wkt
-      - gbif_wkt2bbox
-      - gbif_geocode
-  - title: "OAI"
-    contents:
-      - starts_with("gbif_oai_")
-  - title: "Registry"
-    desc: >
-      GBIF registry functions <https://www.gbif.org/developer/registry>
-    contents:
-      - starts_with("dataset_")
-      - datasets
-      - organizations
-      - network
-      - nodes
-      - installations
-  - title: "Maps"
-    desc: >
-      Work with the GBIF Maps API <https://www.gbif.org/developer/maps>
-    contents:
-      - map_fetch
-      - mvt_fetch
-  - title: "Names"
-    desc: >
-      Work with the GBIF taxonomic names API <https://www.gbif.org/developer/species>
-    contents:
-      - starts_with("name_")
-  - title: "Occurrence Downloads"
+  - title: "Occurrence downloads"
     desc: >
       Work with the GBIF occurrence downloads APIs <https://www.gbif.org/developer/occurrence#download>
     contents:
@@ -51,7 +12,7 @@ reference:
       - as.download
       - downloads
       - download_predicate_dsl
-  - title: "Occurrence Search"
+  - title: "Occurrence search"
     desc: >
        Work with the GBIF occurrence search APIs <https://www.gbif.org/developer/occurrence>
     contents:
@@ -63,17 +24,62 @@ reference:
       - occ_search
       - occ_count
       - count_facet
-  - title: "Miscellaneous"
+  - title: "Taxonomic names"
+    desc: >
+      Work with the GBIF taxonomic names API <https://www.gbif.org/developer/species>
+    contents:
+      - starts_with("name_")
+  - title: "Citation"
+    desc: >
+      <https://docs.ropensci.org/rgbif/articles/gbif_citations.html>
     contents:
       - gbif_citation
+      - derived_dataset
+  - title: "Geometry"
+    contents:
+      - check_wkt
+      - gbif_bbox2wkt
+      - gbif_wkt2bbox
+      - gbif_geocode
+  - title: "Registry"
+    desc: >
+      GBIF registry functions <https://www.gbif.org/developer/registry>
+    contents:
+      - starts_with("dataset_")
+      - datasets
+      - organizations
+      - network
+      - nodes
+      - installations
+  - title: "OAI"
+    contents:
+      - starts_with("gbif_oai_")
+  - title: "Maps"
+    desc: >
+      Work with the GBIF Maps API <https://www.gbif.org/developer/maps>
+    contents:
+      - map_fetch
+      - mvt_fetch
+  - title: "Miscellaneous"
+    contents:
       - rgb_country_codes
       - taxrank
       - wkt_parse
       - elevation
       - enumeration
       - enumeration_country
-      - derived_dataset
-  - title: "Pretty reports"
+  - title: "Pretty html reports"
     contents:
       - gbif_names
       - gbif_photos
+  - title: "rgbif datasets"
+    desc: >
+      rgbif datasets
+    contents:
+      - isocodes
+      - occ_fields
+      - typestatus
+  - title: "Defunct functions"
+    contents:
+      - rgbif-defunct
+    
