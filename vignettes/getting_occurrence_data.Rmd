@@ -89,8 +89,9 @@ Citation Info:
   DOI: 10.15468/dl.dqp6a3
   Citation:
   GBIF Occurrence Download https://doi.org/10.15468/dl.dqp6a3 Accessed from R via rgbif (https://github.com/ropensci/rgbif) on 2021-12-14
-The print out tells us that we can wait for the download to finish with `occ_download_wait()`. Most downloads under 100K records run very quickly. You can also check the status of a download on your [GBIF user page](https://www.gbif.org/user/download). 
 ```
+
+The print out tells us that we can wait for the download to finish with `occ_download_wait()`. Most downloads under 100K records run very quickly. You can also check the status of a download on your [GBIF user page](https://www.gbif.org/user/download). 
 
 ```r
 occ_download_wait('0079311-210914110416597') # checks if download is finished
