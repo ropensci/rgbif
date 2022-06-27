@@ -138,4 +138,3 @@
 #'  \item \strong{origin}
 #' }
 #'
-#' see also \code{\link{many-values}}

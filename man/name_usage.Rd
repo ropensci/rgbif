@@ -104,8 +104,6 @@ These parameters used to accept many inputs, but no longer do:
 \item \strong{langugae}
 \item \strong{datasetKey}
 }
-
-see also \code{\link{many-values}}
 }
 
 \examples{

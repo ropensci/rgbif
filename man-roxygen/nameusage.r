@@ -28,5 +28,4 @@
 #'  \item \strong{datasetKey}
 #' }
 #'
-#' see also \code{\link{many-values}}
 

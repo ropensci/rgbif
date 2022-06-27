@@ -189,7 +189,6 @@
 #' Note that you can not pass a vector > length 1 to more than 1 of the above
 #' MDR parameters at the same time.
 #'
-#' see also \code{\link{many-values}}
 #'
 #' @section Range queries:
 #' A range query is as it sounds - you query on a range of values defined by

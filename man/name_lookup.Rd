@@ -192,8 +192,6 @@ c). The following take many inputs:
 \item \strong{datasetKey}
 \item \strong{origin}
 }
-
-see also \code{\link{many-values}}
 }
 
 \examples{
