@@ -61,8 +61,6 @@ c). The following take many inputs:
 \item \strong{rank}
 \item \strong{datasetKey}
 }
-
-see also \link{many-values}
 }
 
 \examples{

@@ -31,8 +31,6 @@
 #' - **rank**
 #' - **datasetKey**
 #'
-#' see also [many-values]
-#'
 #' @return A list, with two elements `data` (tibble) and `hierarchy` (list of
 #' data.frame's). If 'higherClassificationMap' is one of the `fields` requested,
 #' then `hierarchy` is a list of data.frame's; if not included, `hierarchy`

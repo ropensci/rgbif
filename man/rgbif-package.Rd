@@ -9,24 +9,11 @@
 rgbif: A programmatic interface to the Web Service methods
 provided by the Global Biodiversity Information Facility.
 }
-\note{
-See \link{many-values} for discussion of how functions vary in how
-they accept values (single vs. many for the same HTTP request vs. many
-for different HTTP requests)
-}
 \section{About}{
 
 
 This package gives you access to data from GBIF \url{https://www.gbif.org/}
 via their API.
-}
-
-\section{A note about the old GBIF API}{
-
-
-The old GBIF API is now defunct - that is, not available anymore. We used
-to have functions that worked with the old API, but those functions are
-now not available anymore because GBIF made the old API defunct.
 }
 
 \section{Documentation for the GBIF API}{
@@ -54,4 +41,6 @@ Karthik Ram
 Dan Mcglinn
 
 Vijay Barve
+
+John Waller
 }

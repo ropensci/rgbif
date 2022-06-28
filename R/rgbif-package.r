@@ -8,12 +8,6 @@
 #' This package gives you access to data from GBIF <https://www.gbif.org/>
 #' via their API.
 #'
-#' @section A note about the old GBIF API:
-#'
-#' The old GBIF API is now defunct - that is, not available anymore. We used
-#' to have functions that worked with the old API, but those functions are
-#' now not available anymore because GBIF made the old API defunct.
-#'
 #' @section Documentation for the GBIF API:
 #'
 #' - summary <https://www.gbif.org/developer/summary> - Summary of
@@ -27,10 +21,6 @@
 #' - maps <https://www.gbif.org/developer/maps> - Maps - these APIs
 #' are not implemented in \pkg{rgbif}, and are meant more for intergration
 #' with web based maps.
-#'
-#' @note See [many-values] for discussion of how functions vary in how
-#' they accept values (single vs. many for the same HTTP request vs. many
-#' for different HTTP requests)
 #'
 #' @importFrom data.table rbindlist fread setDF
 #' @importFrom ggplot2 geom_point position_jitter map_data ggplot
@@ -50,6 +40,7 @@
 #' @author Karthik Ram
 #' @author Dan Mcglinn
 #' @author Vijay Barve
+#' @author John Waller
 NULL
 
 #' Defunct functions in rgbif

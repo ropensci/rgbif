@@ -28,13 +28,17 @@
 #'      \item FOSSIL_SPECIMEN An occurrence record describing a fossilized specimen.
 #'      \item HUMAN_OBSERVATION An occurrence record describing an observation made by
 #'      one or more people.
-#'      \item LITERATURE An occurrence record based on literature alone.
+#'      \item MATERIAL_CITATION A reference to or citation of one, a part of, or 
+#'      multiple specimens in scholarly publications.
+#'      \item MATERIAL_SAMPLE An occurrence record based on samples taken from 
+#'      other specimens or the environment.
 #'      \item LIVING_SPECIMEN An occurrence record describing a living specimen, e.g.
 #'      \item MACHINE_OBSERVATION An occurrence record describing an observation made
 #'      by a machine.
 #'      \item OBSERVATION An occurrence record describing an observation.
 #'      \item PRESERVED_SPECIMEN An occurrence record describing a preserved specimen.
-#'      \item UNKNOWN Unknown basis for the record.
+#'      \item OCCURRENCE An existence of an Organism 
+#'      at a particular place at a particular time.
 #'    }
 #' @param eventDate Occurrence date in ISO 8601 format: yyyy, yyyy-MM, yyyy-MM-dd, or
 #'    MM-dd. Supports range queries, smaller,larger (e.g., '1990,1991', whereas '1991,1990'
@@ -189,7 +193,6 @@
 #' Note that you can not pass a vector > length 1 to more than 1 of the above
 #' MDR parameters at the same time.
 #'
-#' see also \code{\link{many-values}}
 #'
 #' @section Range queries:
 #' A range query is as it sounds - you query on a range of values defined by
