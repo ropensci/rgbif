@@ -116,7 +116,12 @@
 #' @param occurrenceStatus (character)  Default is "PRESENT". Specify whether 
 #' search should return "PRESENT" or "ABSENT" data.
 #' @param gadmGid (character) The gadm id of the area occurrences are desired 
-#' from. https://gadm.org/
+#' from. https://gadm.org/.
+#' @param coordinateUncertaintyInMeters A number or range between 0-1000000 which 
+#' coordinate uncertainty specifies the desired coordinate uncertainty. 
+#' coordinateUncertaintyInMeters=1000 will be interpreted all records with 
+#' exactly 1000m. Supports range queries, smaller,larger (e.g., '1000,10000', 
+#' whereas '10000,1000' wouldn't work).
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'
