@@ -96,7 +96,7 @@ test_that("returns the correct class", {
 })
 
 
-######### Get occurrences for a particular eventDate
+# Get occurrences for a particular eventDate
 test_that("dates work correctly", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_search_eventdate", {
@@ -109,6 +109,52 @@ test_that("dates work correctly", {
   expect_equal(b$data$month[1], 6)
 })
 
+# Get occurrences for with a particular occurrenceStatus
+test_that("occurrenceStatus works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_search_occurrencestatus", {
+    pp <- occ_search()
+    aa <- occ_search(occurrenceStatus = 'ABSENT')
+    tt <- occ_search(taxonKey=212,occurrenceStatus = 'ABSENT')
+  }, preserve_exact_body_bytes = TRUE)
+  
+  expect_equal(pp$data$occurrenceStatus[1], 'PRESENT')
+  expect_equal(aa$data$occurrenceStatus[1], 'ABSENT')
+  expect_equal(tt$data$classKey[1], 212)
+})
+
+# Get occurrences for with a particular gadmGid
+test_that("gadmGid works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_search_gadmGid", {
+    bwa <- occ_search(gadmGid='BWA.3_1')
+    twn <- occ_search(gadmGid='TWN')
+    usa <- occ_search(taxonKey=212,gadmGid="USA")
+  }, preserve_exact_body_bytes = TRUE)
+  
+  expect_equal(bwa$data$countryCode[1], 'BW')
+  expect_equal(twn$data$countryCode[1], 'TW')
+  expect_equal(usa$data$countryCode[1], 'US')
+  expect_equal(usa$data$classKey[1], 212)
+})
+
+# Get occurrences for with coordinateUncertaintyInMeters
+test_that("coordinateUncertaintyInMeters works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_search_coordinateUncertaintyInMeters", {
+    ss <- occ_search(coordinateUncertaintyInMeters=1000)
+    rr <- occ_search(coordinateUncertaintyInMeters="1000,10000")
+    tt <- occ_search(taxonKey=212,coordinateUncertaintyInMeters="1000,10000")
+  }, preserve_exact_body_bytes = TRUE)
+  
+  expect_equal(ss$data$coordinateUncertaintyInMeters[1], 1000)
+  expect_true(all(rr$data$coordinateUncertaintyInMeters <= 10000 & 
+                    rr$data$coordinateUncertaintyInMeters >= 1000))
+  expect_true(all(tt$data$coordinateUncertaintyInMeters <= 10000 & 
+                    tt$data$coordinateUncertaintyInMeters >= 1000))
+  expect_equal(tt$data$classKey[1], 212)
+})
+
 test_that("make sure things that should throw errors do", {
   vcr::use_cassette("occ_search_fails_well", {
     # not allowed to do a range query on many variables, including contintent
@@ -118,7 +164,7 @@ test_that("make sure things that should throw errors do", {
   })
 })
 
-######### Get occurrences based on depth
+# Get occurrences based on depth
 test_that("returns the correct stuff", {
   vcr::use_cassette("occ_search_depth", {
     key <- name_backbone(name='Salmo salar', kingdom='animals')$speciesKey
@@ -129,7 +175,7 @@ test_that("returns the correct stuff", {
   })
 })
 
-######### Get occurrences based on elevation
+# Get occurrences based on elevation
 test_that("returns the correct dimensions", {
   vcr::use_cassette("occ_search_elevation", {
     key <- name_backbone(name='Puma concolor', kingdom='animals')$speciesKey
@@ -153,7 +199,7 @@ test_that("looping works correctly", {
   expect_equal(unique(sapply(out, function(x) class(x)[1])), "tbl_df")
 })
 
-######### scientificName usage works correctly
+# scientificName usage works correctly
 test_that("scientificName basic use works - no synonyms", {
   vcr::use_cassette("occ_search_scientificname", {
     # with synonyms
@@ -213,7 +259,7 @@ test_that("scientificName basic use works - no synonyms", {
 })
 
 
-######### geometry inputs work as expected
+# geometry inputs work as expected
 test_that("geometry inputs work as expected", {
   skip_on_cran() # because fixture in .Rbuildignore
   

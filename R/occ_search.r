@@ -77,7 +77,9 @@ occ_search <- function(taxonKey=NULL,
                        stateProvince = NULL,
                        waterBody = NULL,
                        locality = NULL,
-                       occurrenceStatus = "PRESENT",
+                       occurrenceStatus = 'PRESENT',
+                       gadmGid = NULL,
+                       coordinateUncertaintyInMeters = NULL,
                        limit=500,
                        start=0,
                        fields = 'all',
@@ -121,6 +123,7 @@ occ_search <- function(taxonKey=NULL,
         eventDate = eventDate, 
         month = month, 
         year = year,
+        coordinateUncertaintyInMeters = coordinateUncertaintyInMeters,
         offset = check_limit(as.integer(start))
       )
     )
@@ -137,7 +140,7 @@ occ_search <- function(taxonKey=NULL,
       convmany(genusKey), convmany(establishmentMeans), convmany(protocol),
       convmany(license), convmany(organismId), convmany(publishingOrg),
       convmany(stateProvince), convmany(waterBody), convmany(locality),
-      convmany(basisOfRecord)
+      convmany(basisOfRecord), convmany(gadmGid)
     )
 
     argscoll <<- args
@@ -257,5 +260,5 @@ possparams <- function(){
   recordedByID, identifiedByID, geometry, country, publishingCountry,
   recordNumber, search, institutionCode, collectionCode, decimalLatitude,
   decimalLongitude, depth, year, typeStatus, lastInterpreted, occurrenceStatus,
-  continent, or mediatype"
+  continent, gadmGid, coordinateUncertaintyInMeters, or mediatype"
 }

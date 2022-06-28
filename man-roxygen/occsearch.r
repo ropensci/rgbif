@@ -113,6 +113,10 @@
 #' @param waterBody (character) The name of the water body in which the
 #' locations occur
 #' @param locality (character) The specific description of the place.
+#' @param occurrenceStatus (character)  Default is "PRESENT". Specify whether 
+#' search should return "PRESENT" or "ABSENT" data.
+#' @param gadmGid (character) The gadm id of the area occurrences are desired 
+#' from. https://gadm.org/
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'
