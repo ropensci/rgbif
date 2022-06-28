@@ -305,17 +305,17 @@ test_that("geometry inputs work as expected", {
 
   expect_is(aa, "gbif")
   expect_is(unclass(aa), "list")
-  expect_named(attr(aa, "args"), c('limit', 'offset', 'geometry', 'fields'))
+  expect_named(attr(aa, "args"), c('occurrenceStatus','limit', 'offset', 'geometry', 'fields'))
   expect_gt(NROW(aa$data), 0)
 
   expect_is(bb, "gbif")
   expect_is(unclass(bb), "list")
-  expect_named(attr(bb, "args"), c('limit', 'offset', 'taxonKey', 'geometry', 'fields'))
+  expect_named(attr(bb, "args"), c('occurrenceStatus','limit', 'offset', 'taxonKey', 'geometry', 'fields'))
   expect_gt(NROW(bb$data), 0)
 
   expect_is(cc, "gbif")
   expect_is(unclass(cc), "list")
-  expect_named(attr(cc, "args"), c('limit', 'offset', 'geometry', 'fields'))
+  expect_named(attr(cc, "args"), c('occurrenceStatus','limit', 'offset', 'geometry', 'fields'))
   expect_gt(NROW(cc$data), 0)
   expect_equal(NROW(cc$data), NROW(aa$data))
 
