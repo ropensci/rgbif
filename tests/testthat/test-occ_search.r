@@ -169,7 +169,7 @@ test_that("verbatimScientificName works correctly", {
   expect_true(all(ss$data$species %in% c("Calopteryx splendens","Calopteryx virgo")))
   expect_true(all(cc$data$species %in% c("Calopteryx splendens","Calopteryx virgo")))
   expect_equal(tt$data$species[1], "Calopteryx splendens")
-  expect_equal(tt$datacountryCode, "DK")
+  expect_equal(tt$data$countryCode, "DK")
 })
 
 
