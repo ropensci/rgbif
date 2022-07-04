@@ -172,6 +172,7 @@ test_that("verbatimScientificName works correctly", {
   expect_equal(tt$data$countryCode[1], "DK")
 })
 
+# Get occurrences for with a particular eventId
 test_that("eventId works correctly", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_search_eventId", {
@@ -188,7 +189,39 @@ test_that("eventId works correctly", {
   expect_equal(tt$data$classKey[1], 212)
 })
 
+# Get occurrences for with a particular speciesKey
+test_that("speciesKey works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_search_speciesKey", {
+    kk <- occ_search(speciesKey=7412043)
+    qq <- occ_search(speciesKey="7412043;1427037")
+    cc <- occ_search(speciesKey=c(7412043,1427037))
+    ff <- occ_search(country="DK",speciesKey=7412043)
+  }, preserve_exact_body_bytes = TRUE)
+  
+  expect_equal(kk$data$speciesKey[1],7412043)
+  expect_true(all(qq$data$speciesKey %in% c(7412043,1427037)))
+  expect_true(all(cc$data$speciesKey %in% c(7412043,1427037)))
+  expect_equal(kk$data$speciesKey[1],7412043)
+  expect_equal(ff$data$countryCode[1], "DK")
+})
 
+# Get occurrences for with a particular identifiedBy
+test_that("identifiedBy works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_search_identifiedBy", {
+    ww <- occ_search(identifiedBy="John Waller")
+    bb <- occ_search(identifiedBy="John Waller;Matthew Blissett")
+    cc <- occ_search(identifiedBy=c("John Waller", "Matthew Blissett"))
+    dd <- occ_search(country="DK",identifiedBy="John Waller")
+  }, preserve_exact_body_bytes = TRUE)
+  
+  expect_equal(ww$data$identifiedBy[1],"John Waller")
+  expect_true(all(bb$data$identifiedBy %in% c("John Waller", "Matthew Blissett")))
+  expect_true(all(cc$data$identifiedBy %in% c("John Waller", "Matthew Blissett")))
+  expect_equal(dd$data$identifiedBy[1],"John Waller")
+  expect_equal(dd$data$countryCode[1], "DK")
+})
 
 test_that("make sure things that should throw errors do", {
   vcr::use_cassette("occ_search_fails_well", {

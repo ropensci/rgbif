@@ -95,6 +95,7 @@
 #' @param orderKey (numeric) Order classification key.
 #' @param familyKey (numeric) Family classification key.
 #' @param genusKey (numeric) Genus classification key.
+#' @param speciesKey (numeric) Species classification key.
 #' @param subgenusKey (numeric) Subgenus classification key.
 #' @param establishmentMeans (character) EstablishmentMeans, possible values
 #' include: INTRODUCED, INVASIVE, MANAGED, NATIVE, NATURALISED, UNCERTAIN
@@ -125,6 +126,8 @@
 #' @param verbatimScientificName (character) Scientific name as provided by the 
 #' source.
 #' @param eventId (character) identifier(s) for a sampling event.
+#' @param identifiedBy (character)  names of people, groups, or organizations 
+#' who assigned the Taxon to the subject.
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'
