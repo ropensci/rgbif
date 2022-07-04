@@ -155,6 +155,24 @@ test_that("coordinateUncertaintyInMeters works correctly", {
   expect_equal(tt$data$classKey[1], 212)
 })
 
+# Get occurrences for with a particular verbatimScientificName
+test_that("verbatimScientificName works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_search_verbatimScientificName", {
+    vv <- occ_search(verbatimScientificName="Calopteryx splendens")
+    ss <- occ_search(verbatimScientificName="Calopteryx splendens;Calopteryx virgo")
+    cc <- occ_search(verbatimScientificName=c("Calopteryx splendens","Calopteryx virgo"))
+    tt <- occ_search(country="DK",verbatimScientificName="Calopteryx splendens")
+  }, preserve_exact_body_bytes = TRUE)
+  
+  expect_equal(vv$data$species[1], "Calopteryx splendens")
+  expect_true(all(ss$data$species %in% c("Calopteryx splendens","Calopteryx virgo")))
+  expect_true(all(cc$data$species %in% c("Calopteryx splendens","Calopteryx virgo")))
+  expect_equal(tt$data$species[1], "Calopteryx splendens")
+  expect_equal(tt$datacountryCode, "DK")
+})
+
+
 test_that("make sure things that should throw errors do", {
   vcr::use_cassette("occ_search_fails_well", {
     # not allowed to do a range query on many variables, including contintent

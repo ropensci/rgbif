@@ -80,6 +80,7 @@ occ_search <- function(taxonKey=NULL,
                        occurrenceStatus = 'PRESENT',
                        gadmGid = NULL,
                        coordinateUncertaintyInMeters = NULL,
+                       verbatimScientificName = NULL,
                        limit=500,
                        start=0,
                        fields = 'all',
@@ -140,7 +141,8 @@ occ_search <- function(taxonKey=NULL,
       convmany(genusKey), convmany(establishmentMeans), convmany(protocol),
       convmany(license), convmany(organismId), convmany(publishingOrg),
       convmany(stateProvince), convmany(waterBody), convmany(locality),
-      convmany(basisOfRecord), convmany(gadmGid)
+      convmany(basisOfRecord), convmany(gadmGid),
+      convmany(verbatimScientificName)
     )
 
     argscoll <<- args
@@ -260,5 +262,6 @@ possparams <- function(){
   recordedByID, identifiedByID, geometry, country, publishingCountry,
   recordNumber, search, institutionCode, collectionCode, decimalLatitude,
   decimalLongitude, depth, year, typeStatus, lastInterpreted, occurrenceStatus,
-  continent, gadmGid, coordinateUncertaintyInMeters, or mediatype"
+  continent, gadmGid, coordinateUncertaintyInMeters, verbatimScientificName, 
+  or mediatype"
 }
