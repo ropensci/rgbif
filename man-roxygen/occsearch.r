@@ -122,6 +122,9 @@
 #' coordinateUncertaintyInMeters=1000 will be interpreted all records with 
 #' exactly 1000m. Supports range queries, smaller,larger (e.g., '1000,10000', 
 #' whereas '10000,1000' wouldn't work).
+#' @param verbatimScientificName (character) Scientific name as provided by the 
+#' source.
+#' @param eventId (character) identifier(s) for a sampling event.
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'

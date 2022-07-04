@@ -169,8 +169,25 @@ test_that("verbatimScientificName works correctly", {
   expect_true(all(ss$data$species %in% c("Calopteryx splendens","Calopteryx virgo")))
   expect_true(all(cc$data$species %in% c("Calopteryx splendens","Calopteryx virgo")))
   expect_equal(tt$data$species[1], "Calopteryx splendens")
-  expect_equal(tt$data$countryCode, "DK")
+  expect_equal(tt$data$countryCode[1], "DK")
 })
+
+test_that("eventId works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_search_eventId", {
+    ii <- occ_search(eventId="1")
+    hh <- occ_search(eventId="1;2")
+    cc <- occ_search(eventId=c("1","2"))
+    tt <- occ_search(taxonKey=212,eventId="1")
+  }, preserve_exact_body_bytes = TRUE)
+  
+  expect_equal(ii$data$eventID[1], "1")
+  expect_true(all(hh$data$eventID %in% c("1","2")))
+  expect_true(all(cc$data$eventID %in% c("1","2")))
+  expect_equal(tt$data$eventID[1], "1")
+  expect_equal(tt$data$classKey[1], 212)
+})
+
 
 
 test_that("make sure things that should throw errors do", {
