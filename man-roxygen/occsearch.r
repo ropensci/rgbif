@@ -128,6 +128,7 @@
 #' @param identifiedBy (character)  names of people, groups, or organizations
 #' @param networkKey (character) The occurrence network key (a uuid) 
 #' who assigned the Taxon to the subject.
+#' @param occurrenceId (character) interpreted id from source. 
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'

@@ -189,6 +189,24 @@ test_that("eventId works correctly", {
   expect_equal(tt$data$classKey[1], 212)
 })
 
+# Get occurrences for with a particular occurrenceId
+test_that("occurrenceId works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_search_occurrenceId", {
+    ii <- occ_search(occurrenceId="1")
+    hh <- occ_search(occurrenceId="1;2")
+    cc <- occ_search(occurrenceId=c("1","2"))
+    tt <- occ_search(taxonKey=212,occurrenceId="1")
+  }, preserve_exact_body_bytes = TRUE)
+  
+  expect_equal(ii$data$occurrenceID[1], "1")
+  expect_true(all(hh$data$occurrenceID %in% c("1","2")))
+  expect_true(all(cc$data$occurrenceID %in% c("1","2")))
+  expect_equal(tt$data$occurrenceID[1], "1")
+  expect_equal(tt$data$classKey[1], 212)
+})
+
+
 # Get occurrences for with a particular speciesKey
 test_that("speciesKey works correctly", {
   skip_on_cran() # because fixture in .Rbuildignore
@@ -347,7 +365,6 @@ test_that("scientificName basic use works - no synonyms", {
   expect_equal(hh$data$acceptedScientificName[1],
                "Parastrellus hesperus (H.Allen, 1864)")
 })
-
 
 # geometry inputs work as expected
 test_that("geometry inputs work as expected", {
