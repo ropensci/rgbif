@@ -172,7 +172,22 @@ test_that("organismQuantity works correctly", {
   expect_equal(tt$data$classKey[1], 212)
 })
 
-
+# Get occurrences for with organismQuantityType
+test_that("organismQuantityType works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_search_organismQuantityType", {
+    yy <- occ_search(organismQuantity=5,organismQuantityType="individuals")
+    tt <- occ_search(taxonKey=212,organismQuantity="5,20",
+                     organismQuantityType="individuals")
+  }, preserve_exact_body_bytes = TRUE)
+  
+  expect_equal(yy$data$organismQuantityType[1], "individuals")
+  expect_equal(yy$data$organismQuantity[1], 5)
+  expect_equal(tt$data$organismQuantityType[1], "individuals")
+  expect_true(all(tt$data$organismQuantity <= 20 &
+                    tt$data$organismQuantity >= 5))
+  expect_equal(tt$data$classKey[1], 212)
+})
 
 # Get occurrences for with a particular verbatimScientificName
 test_that("verbatimScientificName works correctly", {
