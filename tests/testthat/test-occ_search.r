@@ -223,6 +223,28 @@ test_that("identifiedBy works correctly", {
   expect_equal(dd$data$countryCode[1], "DK")
 })
 
+# Get occurrences for with a particular networkKey
+test_that("networkKey works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_search_networkKey", {
+    nn <- occ_search(networkKey="4b0d8edb-7504-42c4-9349-63e86c01bf97")
+    ss <- occ_search(
+    networkKey="4b0d8edb-7504-42c4-9349-63e86c01bf97;99d66b6c-9087-452f-a9d4-f15f2c2d0e7e")
+    cc <- occ_search(networkKey=c("4b0d8edb-7504-42c4-9349-63e86c01bf97",
+                                  "99d66b6c-9087-452f-a9d4-f15f2c2d0e7e"))
+    vv <- occ_search(taxonKey=6,networkKey="4b0d8edb-7504-42c4-9349-63e86c01bf97")
+  }, preserve_exact_body_bytes = TRUE)
+  
+  expect_equal(nn$data$networkKeys[1],"4b0d8edb-7504-42c4-9349-63e86c01bf97")
+  p <- c("4b0d8edb-7504-42c4-9349-63e86c01bf97|99d66b6c-9087-452f-a9d4-f15f2c2d0e7e")
+  expect_true(all(grepl(p,ss$data$networkKeys)))
+  expect_true(all(grepl(p,cc$data$networkKeys)))
+  expect_equal(vv$data$networkKeys[1],"4b0d8edb-7504-42c4-9349-63e86c01bf97")
+  expect_equal(vv$data$kingdomKey[1], 6)
+})
+
+
+
 test_that("make sure things that should throw errors do", {
   vcr::use_cassette("occ_search_fails_well", {
     # not allowed to do a range query on many variables, including contintent
