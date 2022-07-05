@@ -155,6 +155,25 @@ test_that("coordinateUncertaintyInMeters works correctly", {
   expect_equal(tt$data$classKey[1], 212)
 })
 
+# Get occurrences for with organismQuantity
+test_that("organismQuantity works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_search_organismQuantity", {
+    ss <- occ_search(organismQuantity=5)
+    rr <- occ_search(organismQuantity="5,20")
+    tt <- occ_search(taxonKey=212,organismQuantity="5,20")
+  }, preserve_exact_body_bytes = TRUE)
+  
+  expect_equal(ss$data$organismQuantity[1], 5)
+  expect_true(all(rr$data$organismQuantity <= 20 & 
+                    rr$data$organismQuantity >= 5))
+  expect_true(all(tt$data$organismQuantity <= 20 & 
+                    tt$data$organismQuantity >= 5))
+  expect_equal(tt$data$classKey[1], 212)
+})
+
+
+
 # Get occurrences for with a particular verbatimScientificName
 test_that("verbatimScientificName works correctly", {
   skip_on_cran() # because fixture in .Rbuildignore

@@ -87,6 +87,7 @@ occ_search <- function(taxonKey=NULL,
                        networkKey = NULL,
                        verbatimTaxonId = NULL,
                        occurrenceId = NULL,
+                       organismQuantity = NULL,
                        limit=500,
                        start=0,
                        fields = 'all',
@@ -131,6 +132,7 @@ occ_search <- function(taxonKey=NULL,
         month = month, 
         year = year,
         coordinateUncertaintyInMeters = coordinateUncertaintyInMeters,
+        organismQuantity = organismQuantity,
         offset = check_limit(as.integer(start))
       )
     )
@@ -284,7 +286,8 @@ occ_search <- function(taxonKey=NULL,
     eventId=eventId,
     identifiedBy=identifiedBy,
     networkKey=networkKey,
-    occurrenceId=occurrenceId
+    occurrenceId=occurrenceId,
+    organismQuantity=organismQuantity
     )
   if (!any(sapply(params, length) > 0)) {
     stop(sprintf("At least one of these parameters must have a value:\n%s",
@@ -329,5 +332,5 @@ possparams <- function(){
   recordNumber, search, institutionCode, collectionCode, decimalLatitude,
   decimalLongitude, depth, year, typeStatus, lastInterpreted, occurrenceStatus,
   continent, gadmGid, coordinateUncertaintyInMeters, verbatimScientificName, 
-  eventId, identifiedBy, networkKey, occurrenceId, or mediatype"
+  eventId, identifiedBy, networkKey, occurrenceId, organismQuantity, or mediatype"
 }

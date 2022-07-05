@@ -125,10 +125,14 @@
 #' @param verbatimScientificName (character) Scientific name as provided by the 
 #' source.
 #' @param eventId (character) identifier(s) for a sampling event.
-#' @param identifiedBy (character)  names of people, groups, or organizations
+#' @param identifiedBy (character)  names of people, groups, or organizations.
 #' @param networkKey (character) The occurrence network key (a uuid) 
 #' who assigned the Taxon to the subject.
-#' @param occurrenceId (character) interpreted id from source. 
+#' @param occurrenceId (character) occurrence id from source. 
+#' @param organismQuantity A number or range between 0-1000000 which 
+#' specifies the desired organism quantity. organismQuantity=5 
+#' will be interpreted all records with exactly 5. Supports range queries, 
+#' smaller,larger (e.g., '5,20', whereas '20,5' wouldn't work). 
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'
