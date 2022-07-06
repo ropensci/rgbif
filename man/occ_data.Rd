@@ -112,23 +112,22 @@ recorded the occurrence}
 \item{identifiedByID}{(character) Identifier (e.g. ORCID) for the person who
 provided the taxonomic identification of the occurrence.}
 
-\item{basisOfRecord}{Basis of record, as defined in our BasisOfRecord enum here
-https://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/BasisOfRecord.html
-Acceptable values are:
+\item{basisOfRecord}{(character) Basis of record
+
 \itemize{
-\item FOSSIL_SPECIMEN An occurrence record describing a fossilized specimen.
-\item HUMAN_OBSERVATION An occurrence record describing an observation made by
+\item "FOSSIL_SPECIMEN" An occurrence record describing a fossilized specimen.
+\item "HUMAN_OBSERVATION" An occurrence record describing an observation made by
 one or more people.
-\item MATERIAL_CITATION A reference to or citation of one, a part of, or
+\item "MATERIAL_CITATION" A reference to or citation of one, a part of, or
 multiple specimens in scholarly publications.
-\item MATERIAL_SAMPLE An occurrence record based on samples taken from
+\item "MATERIAL_SAMPLE" An occurrence record based on samples taken from
 other specimens or the environment.
-\item LIVING_SPECIMEN An occurrence record describing a living specimen, e.g.
-\item MACHINE_OBSERVATION An occurrence record describing an observation made
+\item "LIVING_SPECIMEN" An occurrence record describing a living specimen, e.g.
+\item "MACHINE_OBSERVATION" An occurrence record describing an observation made
 by a machine.
-\item OBSERVATION An occurrence record describing an observation.
-\item PRESERVED_SPECIMEN An occurrence record describing a preserved specimen.
-\item OCCURRENCE An existence of an Organism
+\item "OBSERVATION" An occurrence record describing an observation.
+\item "PRESERVED_SPECIMEN" An occurrence record describing a preserved specimen.
+\item "OCCURRENCE" An existence of an Organism
 at a particular place at a particular time.
 }}
 
@@ -198,15 +197,29 @@ is different to the country where the record was recorded in.}
 
 \item{genusKey}{(numeric) Genus classification key.}
 
-\item{establishmentMeans}{(character) EstablishmentMeans, possible values
-include: INTRODUCED, INVASIVE, MANAGED, NATIVE, NATURALISED, UNCERTAIN}
+\item{establishmentMeans}{(character) provides information about whether an
+organism or organisms have been introduced to a given place and time through
+the direct or indirect activity of modern humans.
+
+\itemize{
+\item "Introduced"
+\item "Native"
+\item "NativeReintroduced"
+\item "Vagrant"
+\item "Uncertain"
+\item "IntroducedAssistedColonisation"
+}}
 
 \item{protocol}{(character) Protocol or mechanism used to provide the
 occurrence record. See Details for possible values}
 
 \item{license}{(character) The type license applied to the dataset or record.
-Possible values: CC0_1_0, CC_BY_4_0, CC_BY_NC_4_0, UNSPECIFIED, and
-UNSUPPORTED}
+
+\itemize{
+\item "CC0_1_0"
+\item "CC_BY_4_0"
+\item "CC_BY_NC_4_0"
+}}
 
 \item{organismId}{(numeric) An identifier for the Organism instance (as
 opposed to a particular digital record of the Organism). May be a globally
@@ -239,6 +252,58 @@ call or not. passed down to \code{\link[=check_wkt]{check_wkt()}}. Default: \cod
 \item{curlopts}{list of named curl options passed on to
 \code{\link[crul]{HttpClient}}. see \code{curl::curl_options}
 for curl options}
+
+\item{speciesKey}{(numeric) Species classification key.}
+
+\item{occurrenceStatus}{(character)  Default is "PRESENT". Specify whether
+search should return "PRESENT" or "ABSENT" data.}
+
+\item{gadmGid}{(character) The gadm id of the area occurrences are desired
+from. https://gadm.org/.}
+
+\item{coordinateUncertaintyInMeters}{A number or range between 0-1000000 which
+specifies the desired coordinate uncertainty. A coordinateUncertaintyInMeters=1000
+will be interpreted all records with exactly 1000m. Supports range queries,
+smaller,larger (e.g., '1000,10000', whereas '10000,1000' wouldn't work).}
+
+\item{verbatimScientificName}{(character) Scientific name as provided by the
+source.}
+
+\item{eventId}{(character) identifier(s) for a sampling event.}
+
+\item{identifiedBy}{(character)  names of people, groups, or organizations.}
+
+\item{networkKey}{(character) The occurrence network key (a uuid)
+who assigned the Taxon to the subject.}
+
+\item{occurrenceId}{(character) occurrence id from source.}
+
+\item{organismQuantity}{A number or range which
+specifies the desired organism quantity. An organismQuantity=5
+will be interpreted all records with exactly 5. Supports range queries,
+smaller,larger (e.g., '5,20', whereas '20,5' wouldn't work).}
+
+\item{organismQuantityType}{(character) The type of quantification system
+used for the quantity of organisms. For example, "individuals" or "biomass".}
+
+\item{relativeOrganismQuantity}{(numeric) A relativeOrganismQuantity=0.1 will
+be interpreted all records with exactly 0.1 The relative measurement of the
+quantity of the organism (a number between 0-1). Supports range queries,
+"smaller,larger" (e.g., '0.1,0.5', whereas '0.5,0.1' wouldn't work).}
+
+\item{iucnRedListCategory}{(character) The IUCN threat status category.
+
+\itemize{
+\item "NE" (Not Evaluated)
+\item "DD" (Data Deficient)
+\item "LC" (Least Concern)
+\item "NT" (Near Threatened)
+\item "VU" (Vulnerable)
+\item "EN" (Endangered)
+\item "CR" (Critically Endangered)
+\item "EX" (Extinct)
+\item "EW" (Extinct in the Wild)
+}}
 }
 \value{
 An object of class \code{gbif_data}, which is a S3 class list, with

@@ -21,23 +21,22 @@
 #' @param country The 2-letter country code (as per ISO-3166-1) of the country in
 #'    which the occurrence was recorded. See here
 #'    https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
-#' @param basisOfRecord Basis of record, as defined in our BasisOfRecord enum here
-#'    https://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/BasisOfRecord.html
-#'    Acceptable values are:
+#' @param basisOfRecord (character) Basis of record. 
+#'    
 #'    \itemize{
-#'      \item FOSSIL_SPECIMEN An occurrence record describing a fossilized specimen.
-#'      \item HUMAN_OBSERVATION An occurrence record describing an observation made by
+#'      \item "FOSSIL_SPECIMEN" An occurrence record describing a fossilized specimen.
+#'      \item "HUMAN_OBSERVATION" An occurrence record describing an observation made by
 #'      one or more people.
-#'      \item MATERIAL_CITATION A reference to or citation of one, a part of, or 
+#'      \item "MATERIAL_CITATION" A reference to or citation of one, a part of, or 
 #'      multiple specimens in scholarly publications.
-#'      \item MATERIAL_SAMPLE An occurrence record based on samples taken from 
+#'      \item "MATERIAL_SAMPLE" An occurrence record based on samples taken from 
 #'      other specimens or the environment.
-#'      \item LIVING_SPECIMEN An occurrence record describing a living specimen, e.g.
-#'      \item MACHINE_OBSERVATION An occurrence record describing an observation made
+#'      \item "LIVING_SPECIMEN" An occurrence record describing a living specimen, e.g.
+#'      \item "MACHINE_OBSERVATION" An occurrence record describing an observation made
 #'      by a machine.
-#'      \item OBSERVATION An occurrence record describing an observation.
-#'      \item PRESERVED_SPECIMEN An occurrence record describing a preserved specimen.
-#'      \item OCCURRENCE An existence of an Organism 
+#'      \item "OBSERVATION" An occurrence record describing an observation.
+#'      \item "PRESERVED_SPECIMEN" An occurrence record describing a preserved specimen.
+#'      \item "OCCURRENCE" An existence of an Organism 
 #'      at a particular place at a particular time.
 #'    }
 #' @param eventDate Occurrence date in ISO 8601 format: yyyy, yyyy-MM, yyyy-MM-dd, or
@@ -97,13 +96,49 @@
 #' @param genusKey (numeric) Genus classification key.
 #' @param speciesKey (numeric) Species classification key.
 #' @param subgenusKey (numeric) Subgenus classification key.
-#' @param establishmentMeans (character) EstablishmentMeans, possible values
-#' include: INTRODUCED, INVASIVE, MANAGED, NATIVE, NATURALISED, UNCERTAIN
+#' @param establishmentMeans (character) provides information about whether an
+#'  organism or organisms have been introduced to a given place and time through 
+#'  the direct or indirect activity of modern humans.
+#' 
+#' \itemize{
+#'  \item "Introduced"
+#'  \item "Native"
+#'  \item "NativeReintroduced"
+#'  \item "Vagrant"
+#'  \item "Uncertain"
+#'  \item "IntroducedAssistedColonisation"
+#'  }
+#'  
 #' @param protocol (character) Protocol or mechanism used to provide the
-#' occurrence record. See Details for possible values
+#' occurrence record. 
+#'
+#' \itemize{
+#'  \item "BIOCASE" A BioCASe protocl compliant service.
+#'  \item "DIGIR" A DiGIR service endpoint.
+#'  \item "DIGIR_MANIS" A DiGIR service slightly modified for the MANIS
+#'  network.
+#'  \item "DWC_ARCHIVE" A Darwin Core Archive as defined by the Darwin Core
+#'  Text Guidelines.
+#'  \item "EML" A single EML metadata document in any EML version.
+#'  \item "FEED" Syndication feeds like RSS or ATOM of various flavors.
+#'  \item "OAI_PMH" The Open Archives Initiative Protocol for Metadata
+#'  Harvesting.
+#'  \item "OTHER" Any other service not covered by this enum so far.
+#'  \item "TAPIR" A TAPIR service.
+#'  \item "TCS_RDF" Taxon Concept data given as RDF based on the TDWG ontology.
+#'  \item "TCS_XML" A Taxon Concept Schema document.
+#'  \item "WFS" An OGC Web Feature Service.
+#'  \item "WMS" An OGC Web Map Service.
+#' }
+#' 
 #' @param license (character) The type license applied to the dataset or record.
-#' Possible values: CC0_1_0, CC_BY_4_0, CC_BY_NC_4_0, UNSPECIFIED, and
-#' UNSUPPORTED
+#' 
+#'  \itemize{
+#'  \item "CC0_1_0"
+#'  \item "CC_BY_4_0"
+#'  \item "CC_BY_NC_4_0"
+#'  }
+#' 
 #' @param organismId (numeric) An identifier for the Organism instance (as
 #' opposed to a particular digital record of the Organism). May be a globally
 #' unique identifier or an identifier specific to the data set.
@@ -133,34 +168,29 @@
 #' specifies the desired organism quantity. An organismQuantity=5 
 #' will be interpreted all records with exactly 5. Supports range queries, 
 #' smaller,larger (e.g., '5,20', whereas '20,5' wouldn't work). 
-#' @param organismQuantityType ("character") The type of quantification system 
+#' @param organismQuantityType (character) The type of quantification system 
 #' used for the quantity of organisms. For example, "individuals" or "biomass".
 #' @param relativeOrganismQuantity (numeric) A relativeOrganismQuantity=0.1 will
 #' be interpreted all records with exactly 0.1 The relative measurement of the 
-#' quantity of the organism (a number between 0-1). Supports range queries, 
-#' smaller,larger (e.g., '0.1,0.5', whereas '0.5,0.1' wouldn't work).  
+#' quantity of the organism (a number between 0-1). Supports range queries,  
+#' "smaller,larger" (e.g., '0.1,0.5', whereas '0.5,0.1' wouldn't work).
+#' @param iucnRedListCategory (character) The IUCN threat status category. 
+#' 
+#' \itemize{
+#'  \item "NE" (Not Evaluated) 
+#'  \item "DD" (Data Deficient)
+#'  \item "LC" (Least Concern)
+#'  \item "NT" (Near Threatened)
+#'  \item "VU" (Vulnerable)
+#'  \item "EN" (Endangered)
+#'  \item "CR" (Critically Endangered) 
+#'  \item "EX" (Extinct)
+#'  \item "EW" (Extinct in the Wild)
+#'  }
+#'  
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'
-#' @section protocol parameter options:
-#' \itemize{
-#'  \item BIOCASE - A BioCASe protocl compliant service.
-#'  \item DIGIR - A DiGIR service endpoint.
-#'  \item DIGIR_MANIS - A DiGIR service slightly modified for the MANIS
-#'  network.
-#'  \item DWC_ARCHIVE - A Darwin Core Archive as defined by the Darwin Core
-#'  Text Guidelines.
-#'  \item EML - A single EML metadata document in any EML version.
-#'  \item FEED - Syndication feeds like RSS or ATOM of various flavors.
-#'  \item OAI_PMH - The Open Archives Initiative Protocol for Metadata
-#'  Harvesting.
-#'  \item OTHER - Any other service not covered by this enum so far.
-#'  \item TAPIR - A TAPIR service.
-#'  \item TCS_RDF - Taxon Concept data given as RDF based on the TDWG ontology.
-#'  \item TCS_XML - A Taxon Concept Schema document.
-#'  \item WFS - An OGC Web Feature Service.
-#'  \item WMS - An OGC Web Map Service.
-#' }
 #'
 #' @section Multiple values passed to a parameter:
 #' There are some parameters you can pass multiple values to in a vector,

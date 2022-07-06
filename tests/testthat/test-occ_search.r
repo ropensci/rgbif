@@ -294,6 +294,24 @@ test_that("identifiedBy works correctly", {
   expect_equal(dd$data$countryCode[1], "DK")
 })
 
+# Get occurrences for with a particular iucnRedListCategory
+test_that("iucnRedListCategory works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_search_iucnRedListCategory", {
+    ll <- occ_search(iucnRedListCategory="LC")
+    yy <- occ_search(iucnRedListCategory="LC;EW")
+    ss <- occ_search(iucnRedListCategory=c("LC", "EW"))
+    tt <- occ_search(taxonKey=212,iucnRedListCategory="LC")
+  }, preserve_exact_body_bytes = TRUE)
+  
+  expect_equal(ll$data$iucnRedListCategory[1],"LC")
+  expect_true(all(yy$data$iucnRedListCategory %in% c("LC", "EW")))
+  expect_equal(ss[[1]]$data$iucnRedListCategory[1],"LC")
+  expect_equal(ss[[2]]$data$iucnRedListCategory[1],"EW")
+  expect_equal(tt$data$iucnRedListCategory[1],"LC")
+  expect_equal(tt$data$classKey[1], 212)
+})
+
 # Get occurrences for with a particular networkKey
 test_that("networkKey works correctly", {
   skip_on_cran() # because fixture in .Rbuildignore
