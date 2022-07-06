@@ -88,7 +88,9 @@ occ_search <- function(taxonKey=NULL,
                        verbatimTaxonId = NULL,
                        occurrenceId = NULL,
                        organismQuantity = NULL,
-                       organismQuantityType=NULL,
+                       organismQuantityType = NULL,
+                       relativeOrganismQuantity = NULL,
+                       iucnRedListCategory = NULL,
                        limit=500,
                        start=0,
                        fields = 'all',
@@ -135,6 +137,7 @@ occ_search <- function(taxonKey=NULL,
         coordinateUncertaintyInMeters = coordinateUncertaintyInMeters,
         organismQuantity = organismQuantity,
         organismQuantityType = organismQuantityType,
+        relativeOrganismQuantity = relativeOrganismQuantity,
         offset = check_limit(as.integer(start))
       )
     )
@@ -181,7 +184,8 @@ occ_search <- function(taxonKey=NULL,
       convmany(eventId),
       convmany(identifiedBy),
       convmany(networkKey),
-      convmany(occurrenceId)
+      convmany(occurrenceId),
+      convmany(iucnRedListCategory)
       )
 
     argscoll <<- args
@@ -290,7 +294,9 @@ occ_search <- function(taxonKey=NULL,
     networkKey=networkKey,
     occurrenceId=occurrenceId,
     organismQuantity=organismQuantity,
-    organismQuantityType=organismQuantityType
+    organismQuantityType=organismQuantityType,
+    relativeOrganismQuantity=relativeOrganismQuantity,
+    iucnRedListCategory=iucnRedListCategory
     )
   if (!any(sapply(params, length) > 0)) {
     stop(sprintf("At least one of these parameters must have a value:\n%s",
@@ -336,5 +342,6 @@ possparams <- function(){
   decimalLongitude, depth, year, typeStatus, lastInterpreted, occurrenceStatus,
   continent, gadmGid, coordinateUncertaintyInMeters, verbatimScientificName, 
   eventId, identifiedBy, networkKey, occurrenceId, organismQuantity, 
-  organismQuantityType, or mediatype"
+  organismQuantityType, relativeOrganismQuantity, iucnRedListCategory, 
+  or mediatype"
 }

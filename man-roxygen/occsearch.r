@@ -119,7 +119,7 @@
 #' @param gadmGid (character) The gadm id of the area occurrences are desired 
 #' from. https://gadm.org/.
 #' @param coordinateUncertaintyInMeters A number or range between 0-1000000 which 
-#' specifies the desired coordinate uncertainty. coordinateUncertaintyInMeters=1000 
+#' specifies the desired coordinate uncertainty. A coordinateUncertaintyInMeters=1000 
 #' will be interpreted all records with exactly 1000m. Supports range queries, 
 #' smaller,larger (e.g., '1000,10000', whereas '10000,1000' wouldn't work).
 #' @param verbatimScientificName (character) Scientific name as provided by the 
@@ -133,8 +133,12 @@
 #' specifies the desired organism quantity. An organismQuantity=5 
 #' will be interpreted all records with exactly 5. Supports range queries, 
 #' smaller,larger (e.g., '5,20', whereas '20,5' wouldn't work). 
-#' @param organismQuantityType The type of quantification system used for 
-#' the quantity of organisms. For example, "individuals" or "biomass".
+#' @param organismQuantityType ("character") The type of quantification system 
+#' used for the quantity of organisms. For example, "individuals" or "biomass".
+#' @param relativeOrganismQuantity (numeric) A relativeOrganismQuantity=0.1 will
+#' be interpreted all records with exactly 0.1 The relative measurement of the 
+#' quantity of the organism (a number between 0-1). Supports range queries, 
+#' smaller,larger (e.g., '0.1,0.5', whereas '0.5,0.1' wouldn't work).  
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'

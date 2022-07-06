@@ -189,6 +189,25 @@ test_that("organismQuantityType works correctly", {
   expect_equal(tt$data$classKey[1], 212)
 })
 
+# Get occurrences for with relativeOrganismQuantity
+test_that("relativeOrganismQuantity works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_search_relativeOrganismQuantity", {
+    rr <- occ_search(relativeOrganismQuantity=0.1)
+    vv <- occ_search(relativeOrganismQuantity="0.1,0.5")
+    tt <- occ_search(taxonKey=212,relativeOrganismQuantity="0.1,0.5")
+  }, preserve_exact_body_bytes = TRUE)
+  
+  expect_equal(rr$data$relativeOrganismQuantity[1], 0.1)
+  expect_true(all(vv$data$relativeOrganismQuantity <= 0.5 & 
+                    vv$data$relativeOrganismQuantity >= 0.1))
+  expect_true(all(tt$data$relativeOrganismQuantity <= 0.5 & 
+                    tt$data$relativeOrganismQuantity >= 0.1))
+  expect_equal(tt$data$classKey[1], 212)
+})
+
+
+
 # Get occurrences for with a particular verbatimScientificName
 test_that("verbatimScientificName works correctly", {
   skip_on_cran() # because fixture in .Rbuildignore
