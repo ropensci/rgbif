@@ -71,6 +71,7 @@ occ_search <- function(taxonKey=NULL,
                        genusKey = NULL,
                        speciesKey = NULL,
                        establishmentMeans = NULL,
+                       degreeOfEstablishment = NULL,
                        protocol = NULL,
                        license = NULL,
                        organismId = NULL,
@@ -91,6 +92,7 @@ occ_search <- function(taxonKey=NULL,
                        organismQuantityType = NULL,
                        relativeOrganismQuantity = NULL,
                        iucnRedListCategory = NULL,
+                       lifeStage=NULL,
                        limit=500,
                        start=0,
                        fields = 'all',
@@ -185,7 +187,8 @@ occ_search <- function(taxonKey=NULL,
       convmany(identifiedBy),
       convmany(networkKey),
       convmany(occurrenceId),
-      convmany(iucnRedListCategory)
+      convmany(iucnRedListCategory),
+      convmany(lifeStage)
       )
 
     argscoll <<- args
@@ -296,7 +299,8 @@ occ_search <- function(taxonKey=NULL,
     organismQuantity=organismQuantity,
     organismQuantityType=organismQuantityType,
     relativeOrganismQuantity=relativeOrganismQuantity,
-    iucnRedListCategory=iucnRedListCategory
+    iucnRedListCategory=iucnRedListCategory,
+    lifeStage=lifeStage
     )
   if (!any(sapply(params, length) > 0)) {
     stop(sprintf("At least one of these parameters must have a value:\n%s",
@@ -343,5 +347,5 @@ possparams <- function(){
   continent, gadmGid, coordinateUncertaintyInMeters, verbatimScientificName, 
   eventId, identifiedBy, networkKey, occurrenceId, organismQuantity, 
   organismQuantityType, relativeOrganismQuantity, iucnRedListCategory, 
-  or mediatype"
+  lifeStage, or mediatype"
 }

@@ -153,7 +153,7 @@
 #' search should return "PRESENT" or "ABSENT" data.
 #' @param gadmGid (character) The gadm id of the area occurrences are desired 
 #' from. https://gadm.org/.
-#' @param coordinateUncertaintyInMeters A number or range between 0-1000000 which 
+#' @param coordinateUncertaintyInMeters A number or range between 0-1,000,000 which 
 #' specifies the desired coordinate uncertainty. A coordinateUncertaintyInMeters=1000 
 #' will be interpreted all records with exactly 1000m. Supports range queries, 
 #' smaller,larger (e.g., '1000,10000', whereas '10000,1000' wouldn't work).
@@ -187,7 +187,27 @@
 #'  \item "EX" (Extinct)
 #'  \item "EW" (Extinct in the Wild)
 #'  }
-#'  
+#' @param lifeStage (character) the life stage of the occurrence. 
+#' 
+#' some acceptable values: 
+#' 
+#' "Nymph" "Adult" "Embryo" 
+#' "Vegetative" "Tadpole"
+#' "Calyptopsis" "Juvenile" 
+#' "Pupa" "Cyst" 
+#' "Polyp" "Caterpillar" 
+#' "Zoea" "Flowering" 
+#' "Egg" "Veliger" "Fruiting" "Nestling" 
+#' "Fledgling" "Larva" 
+#' "Nauplius" "Medusa" "Furcilia" "Neonate" "Unknown" 
+#' "Metanauplius" "Megalopa" 
+#' "Mature" "Deutonymph" 
+#' "Eft" "Zygote" 
+#' "Seedling" "Chick" 
+#' "Imago" "Gametophyte" 
+#' "Hatchling" "Fetus" 
+#' "Immature" "Subadult" 
+#' "Cyprid".
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'

@@ -312,6 +312,25 @@ test_that("iucnRedListCategory works correctly", {
   expect_equal(tt$data$classKey[1], 212)
 })
 
+# Get occurrences for with a particular lifeStage
+test_that("lifeStage works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_search_lifeStage", {
+    aa <- occ_search(lifeStage="Adult")
+    ee <- occ_search(lifeStage="Adult;Egg")
+    cc <- occ_search(lifeStage=c("Adult", "Egg"))
+    tt <- occ_search(taxonKey=212,lifeStage="Adult")
+  }, preserve_exact_body_bytes = TRUE)
+  
+  expect_equal(aa$data$lifeStage[1],"Adult")
+  expect_true(all(ee$data$lifeStage %in% c("Adult", "Egg")))
+  expect_equal(cc[[1]]$data$lifeStage[1],"Adult")
+  expect_equal(cc[[2]]$data$lifeStage[1],"Egg")
+  expect_equal(tt$data$lifeStage[1],"Adult")
+  expect_equal(tt$data$classKey[1], 212)
+})
+
+
 # Get occurrences for with a particular networkKey
 test_that("networkKey works correctly", {
   skip_on_cran() # because fixture in .Rbuildignore

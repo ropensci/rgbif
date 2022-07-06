@@ -112,7 +112,7 @@ recorded the occurrence}
 \item{identifiedByID}{(character) Identifier (e.g. ORCID) for the person who
 provided the taxonomic identification of the occurrence.}
 
-\item{basisOfRecord}{(character) Basis of record
+\item{basisOfRecord}{(character) Basis of record.
 
 \itemize{
 \item "FOSSIL_SPECIMEN" An occurrence record describing a fossilized specimen.
@@ -211,7 +211,26 @@ the direct or indirect activity of modern humans.
 }}
 
 \item{protocol}{(character) Protocol or mechanism used to provide the
-occurrence record. See Details for possible values}
+occurrence record.
+
+\itemize{
+\item "BIOCASE" A BioCASe protocl compliant service.
+\item "DIGIR" A DiGIR service endpoint.
+\item "DIGIR_MANIS" A DiGIR service slightly modified for the MANIS
+network.
+\item "DWC_ARCHIVE" A Darwin Core Archive as defined by the Darwin Core
+Text Guidelines.
+\item "EML" A single EML metadata document in any EML version.
+\item "FEED" Syndication feeds like RSS or ATOM of various flavors.
+\item "OAI_PMH" The Open Archives Initiative Protocol for Metadata
+Harvesting.
+\item "OTHER" Any other service not covered by this enum so far.
+\item "TAPIR" A TAPIR service.
+\item "TCS_RDF" Taxon Concept data given as RDF based on the TDWG ontology.
+\item "TCS_XML" A Taxon Concept Schema document.
+\item "WFS" An OGC Web Feature Service.
+\item "WMS" An OGC Web Map Service.
+}}
 
 \item{license}{(character) The type license applied to the dataset or record.
 
@@ -304,6 +323,28 @@ quantity of the organism (a number between 0-1). Supports range queries,
 \item "EX" (Extinct)
 \item "EW" (Extinct in the Wild)
 }}
+
+\item{lifeStage}{(character) the life stage of the occurrence.
+
+acceptable values:
+
+"Nymph" "Adult" "Embryo"
+"Vegetative" "Tadpole"
+"Calyptopsis" "Juvenile"
+"Pupa" "Cyst"
+"Polyp" "Caterpillar"
+"Zoea" "Flowering"
+"Egg" "Veliger" "Fruiting" "Nestling"
+"Fledgling" "Larva"
+"Nauplius" "Medusa" "Furcilia" "Neonate" "Unknown"
+"Metanauplius" "Megalopa"
+"Mature" "Deutonymph"
+"Eft" "Zygote"
+"Seedling" "Chick"
+"Imago" "Gametophyte"
+"Hatchling" "Fetus"
+"Immature" "Subadult"
+"Cyprid".}
 }
 \value{
 An object of class \code{gbif_data}, which is a S3 class list, with
@@ -321,28 +362,6 @@ Search for GBIF occurrences - simplified for speed
 Maximum number of records you can get with this function is 100,000.
 See https://www.gbif.org/developer/occurrence
 }
-\section{protocol parameter options}{
-
-\itemize{
-\item BIOCASE - A BioCASe protocl compliant service.
-\item DIGIR - A DiGIR service endpoint.
-\item DIGIR_MANIS - A DiGIR service slightly modified for the MANIS
-network.
-\item DWC_ARCHIVE - A Darwin Core Archive as defined by the Darwin Core
-Text Guidelines.
-\item EML - A single EML metadata document in any EML version.
-\item FEED - Syndication feeds like RSS or ATOM of various flavors.
-\item OAI_PMH - The Open Archives Initiative Protocol for Metadata
-Harvesting.
-\item OTHER - Any other service not covered by this enum so far.
-\item TAPIR - A TAPIR service.
-\item TCS_RDF - Taxon Concept data given as RDF based on the TDWG ontology.
-\item TCS_XML - A Taxon Concept Schema document.
-\item WFS - An OGC Web Feature Service.
-\item WMS - An OGC Web Map Service.
-}
-}
-
 \section{Multiple values passed to a parameter}{
 
 There are some parameters you can pass multiple values to in a vector,
