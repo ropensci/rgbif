@@ -92,7 +92,8 @@ occ_search <- function(taxonKey=NULL,
                        organismQuantityType = NULL,
                        relativeOrganismQuantity = NULL,
                        iucnRedListCategory = NULL,
-                       lifeStage=NULL,
+                       lifeStage = NULL,
+                       isInCluster = NULL, 
                        limit=500,
                        start=0,
                        fields = 'all',
@@ -140,6 +141,7 @@ occ_search <- function(taxonKey=NULL,
         organismQuantity = organismQuantity,
         organismQuantityType = organismQuantityType,
         relativeOrganismQuantity = relativeOrganismQuantity,
+        isInCluster = isInCluster,
         offset = check_limit(as.integer(start))
       )
     )
@@ -172,7 +174,8 @@ occ_search <- function(taxonKey=NULL,
       convmany(familyKey),
       convmany(genusKey),
       convmany(speciesKey),
-      convmany(establishmentMeans), 
+      convmany(establishmentMeans),
+      convmany(degreeOfEstablishment),
       convmany(protocol),
       convmany(license),
       convmany(organismId),
@@ -347,5 +350,5 @@ possparams <- function(){
   continent, gadmGid, coordinateUncertaintyInMeters, verbatimScientificName, 
   eventId, identifiedBy, networkKey, occurrenceId, organismQuantity, 
   organismQuantityType, relativeOrganismQuantity, iucnRedListCategory, 
-  lifeStage, or mediatype"
+  lifeStage, degreeOfEstablishment, isInCluster, or mediatype"
 }

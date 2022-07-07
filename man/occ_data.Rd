@@ -274,13 +274,23 @@ for curl options}
 
 \item{speciesKey}{(numeric) Species classification key.}
 
+\item{degreeOfEstablishment}{(character) Provides information about degree to
+which an Organism survives, reproduces, and expands its range at the given
+place and time.
+
+Some acceptable values for degreeOfEstablishment:
+
+"Naturalized" "Colonising" "Managed" "WidespreadInvasive" "Spreading"
+"Captive" "Established" "Released" "Reproducing" "Native" "Failing" "Casual"
+"Invasive" "Cultivated" "Unestablished".}
+
 \item{occurrenceStatus}{(character)  Default is "PRESENT". Specify whether
 search should return "PRESENT" or "ABSENT" data.}
 
 \item{gadmGid}{(character) The gadm id of the area occurrences are desired
 from. https://gadm.org/.}
 
-\item{coordinateUncertaintyInMeters}{A number or range between 0-1000000 which
+\item{coordinateUncertaintyInMeters}{A number or range between 0-1,000,000 which
 specifies the desired coordinate uncertainty. A coordinateUncertaintyInMeters=1000
 will be interpreted all records with exactly 1000m. Supports range queries,
 smaller,larger (e.g., '1000,10000', whereas '10000,1000' wouldn't work).}
@@ -326,7 +336,7 @@ quantity of the organism (a number between 0-1). Supports range queries,
 
 \item{lifeStage}{(character) the life stage of the occurrence.
 
-acceptable values:
+some acceptable values:
 
 "Nymph" "Adult" "Embryo"
 "Vegetative" "Tadpole"

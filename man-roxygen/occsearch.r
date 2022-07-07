@@ -21,7 +21,8 @@
 #' @param country The 2-letter country code (as per ISO-3166-1) of the country in
 #'    which the occurrence was recorded. See here
 #'    https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
-#' @param basisOfRecord (character) Basis of record. 
+#' @param basisOfRecord (character) Basis of record. he specific nature of the 
+#' data record.
 #'    
 #'    \itemize{
 #'      \item "FOSSIL_SPECIMEN" An occurrence record describing a fossilized specimen.
@@ -100,6 +101,8 @@
 #'  organism or organisms have been introduced to a given place and time through 
 #'  the direct or indirect activity of modern humans.
 #' 
+#' Some acceptable values for establishmentMeans:
+#' 
 #' \itemize{
 #'  \item "Introduced"
 #'  \item "Native"
@@ -108,7 +111,16 @@
 #'  \item "Uncertain"
 #'  \item "IntroducedAssistedColonisation"
 #'  }
-#'  
+#' @param degreeOfEstablishment (character) Provides information about degree to 
+#' which an Organism survives, reproduces, and expands its range at the given 
+#' place and time.
+#' 
+#' Some acceptable values for degreeOfEstablishment:
+#' 
+#' "Naturalized" "Colonising" "Managed" "WidespreadInvasive" "Spreading" 
+#' "Captive" "Established" "Released" "Reproducing" "Native" "Failing" "Casual" 
+#' "Invasive" "Cultivated" "Unestablished".
+#' 
 #' @param protocol (character) Protocol or mechanism used to provide the
 #' occurrence record. 
 #'
@@ -188,6 +200,7 @@
 #'  \item "EW" (Extinct in the Wild)
 #'  }
 #' @param lifeStage (character) the life stage of the occurrence. 
+#' @param isInCluster (logical) identify potentially related records on GBIF.
 #' 
 #' some acceptable values: 
 #' 

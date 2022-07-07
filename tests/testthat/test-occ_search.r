@@ -144,6 +144,7 @@ test_that("coordinateUncertaintyInMeters works correctly", {
   vcr::use_cassette("occ_search_coordinateUncertaintyInMeters", {
     ss <- occ_search(coordinateUncertaintyInMeters=1000)
     rr <- occ_search(coordinateUncertaintyInMeters="1000,10000")
+    
     tt <- occ_search(taxonKey=212,coordinateUncertaintyInMeters="1000,10000")
   }, preserve_exact_body_bytes = TRUE)
   
@@ -330,6 +331,39 @@ test_that("lifeStage works correctly", {
   expect_equal(tt$data$classKey[1], 212)
 })
 
+# Get occurrences for with a particular degreeOfEstablishment
+test_that("degreeOfEstablishment works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_search_degreeOfEstablishment", {
+    ee <- occ_search(degreeOfEstablishment="Established")
+    ii <- occ_search(degreeOfEstablishment="Established;Invasive")
+    cc <- occ_search(degreeOfEstablishment=c("Established", "Invasive"))
+    tt <- occ_search(taxonKey=1,degreeOfEstablishment="Established")
+  }, preserve_exact_body_bytes = TRUE)
+  
+  expect_equal(ee$data$degreeOfEstablishment[1],"Established")
+  expect_true(all(ii$data$degreeOfEstablishment %in% c("Established", "Invasive")))
+  expect_true(all(cc$data$degreeOfEstablishment %in% c("Established", "Invasive")))
+  expect_equal(tt$data$degreeOfEstablishment[1],"Established")
+  expect_equal(tt$data$kingdomKey[1], 1)
+})
+
+
+# Test argument isInCluster
+test_that("isInCluster works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_search_degreeOfEstablishment", {
+    ee <- occ_search(isInCluster=TRUE)
+    ff <- occ_search(isInCluster=FALSE)
+    tt <- occ_search(taxonKey = 212,isInCluster=TRUE)
+  }, preserve_exact_body_bytes = TRUE)
+  
+  expect_true(ee$data$isInCluster[1])
+  expect_false(ff$data$isInCluster[1])
+  expect_true(tt$data$isInCluster[1])
+  expect_equal(tt$data$classKey[1], 212)
+})
+
 
 # Get occurrences for with a particular networkKey
 test_that("networkKey works correctly", {
@@ -350,8 +384,6 @@ test_that("networkKey works correctly", {
   expect_equal(vv$data$networkKeys[1],"4b0d8edb-7504-42c4-9349-63e86c01bf97")
   expect_equal(vv$data$kingdomKey[1], 6)
 })
-
-
 
 test_that("make sure things that should throw errors do", {
   vcr::use_cassette("occ_search_fails_well", {
