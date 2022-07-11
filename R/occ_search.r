@@ -303,7 +303,8 @@ occ_search <- function(taxonKey=NULL,
     organismQuantityType=organismQuantityType,
     relativeOrganismQuantity=relativeOrganismQuantity,
     iucnRedListCategory=iucnRedListCategory,
-    lifeStage=lifeStage
+    lifeStage=lifeStage,
+    coordinateUncertaintyInMeters = coordinateUncertaintyInMeters
     )
   if (!any(sapply(params, length) > 0)) {
     stop(sprintf("At least one of these parameters must have a value:\n%s",
@@ -347,8 +348,6 @@ possparams <- function(){
   recordedByID, identifiedByID, geometry, country, publishingCountry,
   recordNumber, search, institutionCode, collectionCode, decimalLatitude,
   decimalLongitude, depth, year, typeStatus, lastInterpreted, occurrenceStatus,
-  continent, gadmGid, coordinateUncertaintyInMeters, verbatimScientificName, 
-  eventId, identifiedBy, networkKey, occurrenceId, organismQuantity, 
-  organismQuantityType, relativeOrganismQuantity, iucnRedListCategory, 
-  lifeStage, degreeOfEstablishment, isInCluster, or mediatype"
+  continent, gadmGid, verbatimScientificName, eventId, identifiedBy, networkKey, 
+  occurrenceId, iucnRedListCategory, lifeStage, degreeOfEstablishment, or mediatype"
 }

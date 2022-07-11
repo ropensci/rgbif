@@ -21,9 +21,7 @@ occ_search(taxonKey="1;212"))
 occ_data(taxonKey="1;212"))
 ```
 
-These are the only two function in which the `;` separator will work.
-
-Other **rgbif** functions, unlike those above, only support passing in many values to the **same HTTP request**, which is done like `c("1", "2")`, which is the opposite of how it was done above with the `;` separator. 
+Other **rgbif** functions, support passing in many values to the **same HTTP request**, which is done like `c("1", "2")`, which is the opposite of how it was done above with the `;` separator. 
 
 
 ```r 
