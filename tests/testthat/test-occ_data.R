@@ -193,7 +193,7 @@ test_that("geometry inputs work as expected", {
   
   expect_is(aa, "gbif_data")
   expect_is(unclass(aa), "list")
-  expect_named(attr(aa, "args"), c('limit', 'offset', 'geometry'))
+  expect_named(attr(aa, "args"), c('occurrenceStatus', 'limit', 'offset', 'geometry'))
   expect_gt(NROW(aa$data), 0)
   
   # with a taxon key
@@ -206,7 +206,7 @@ test_that("geometry inputs work as expected", {
 
   expect_is(bb, "gbif_data")
   expect_is(unclass(bb), "list")
-  expect_named(attr(bb, "args"), c('limit', 'offset', 'taxonKey', 'geometry'))
+  expect_named(attr(bb, "args"), c('occurrenceStatus', 'limit', 'offset', 'taxonKey', 'geometry'))
   expect_gt(NROW(bb$data), 0)
     
   # using bounding box, converted to WKT internally
@@ -216,7 +216,7 @@ test_that("geometry inputs work as expected", {
 
   expect_is(cc, "gbif_data")
   expect_is(unclass(cc), "list")
-  expect_named(attr(cc, "args"), c('limit', 'offset', 'geometry'))
+  expect_named(attr(cc, "args"), c('occurrenceStatus', 'limit', 'offset', 'geometry'))
   expect_gt(NROW(cc$data), 0)
   expect_equal(NROW(cc$data), NROW(aa$data))
 

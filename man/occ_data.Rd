@@ -45,7 +45,9 @@ occ_data(
   orderKey = NULL,
   familyKey = NULL,
   genusKey = NULL,
+  speciesKey = NULL,
   establishmentMeans = NULL,
+  degreeOfEstablishment = NULL,
   protocol = NULL,
   license = NULL,
   organismId = NULL,
@@ -56,6 +58,21 @@ occ_data(
   limit = 500,
   start = 0,
   skip_validate = TRUE,
+  occurrenceStatus = "PRESENT",
+  gadmGid = NULL,
+  coordinateUncertaintyInMeters = NULL,
+  verbatimScientificName = NULL,
+  eventId = NULL,
+  identifiedBy = NULL,
+  networkKey = NULL,
+  verbatimTaxonId = NULL,
+  occurrenceId = NULL,
+  organismQuantity = NULL,
+  organismQuantityType = NULL,
+  relativeOrganismQuantity = NULL,
+  iucnRedListCategory = NULL,
+  lifeStage = NULL,
+  isInCluster = NULL,
   curlopts = list()
 )
 }
@@ -230,6 +247,8 @@ is different to the country where the record was recorded in.}
 
 \item{genusKey}{(numeric) Genus classification key.}
 
+\item{speciesKey}{(numeric) Species classification key.}
+
 \item{establishmentMeans}{(character) provides information about whether an
 organism or organisms have been introduced to a given place and time through
 the direct or indirect activity of modern humans.
@@ -242,6 +261,11 @@ the direct or indirect activity of modern humans.
 \item "Uncertain"
 \item "IntroducedAssistedColonisation"
 }}
+
+\item{degreeOfEstablishment}{(character) Provides information about degree to
+which an Organism survives, reproduces, and expands its range at the given
+place and time. One of many \href{https://www.gbif.org/occurrence/search?adva
+nced=1&degree_of_establishment=Managed}{options}.}
 
 \item{protocol}{(character) Protocol or mechanism used to provide the
 occurrence record. One of many \href{https://www.gbif.org/occurrence/search?p
@@ -283,17 +307,6 @@ you can manually set the \code{start} parameter}
 \item{skip_validate}{(logical) whether to skip \code{wellknown::validate_wkt}
 call or not. passed down to \code{\link[=check_wkt]{check_wkt()}}. Default: \code{TRUE}}
 
-\item{curlopts}{list of named curl options passed on to
-\code{\link[crul]{HttpClient}}. see \code{curl::curl_options}
-for curl options}
-
-\item{speciesKey}{(numeric) Species classification key.}
-
-\item{degreeOfEstablishment}{(character) Provides information about degree to
-which an Organism survives, reproduces, and expands its range at the given
-place and time. One of many \href{https://www.gbif.org/occurrence/search?adva
-nced=1&degree_of_establishment=Managed}{options}.}
-
 \item{occurrenceStatus}{(character)  Default is "PRESENT". Specify whether
 search should return "PRESENT" or "ABSENT" data.}
 
@@ -309,15 +322,15 @@ wouldn't work).}
 \item{verbatimScientificName}{(character) Scientific name as provided by the
 source.}
 
-\item{verbatimTaxonId}{(character) The taxon identifier provided to GBIF by
-the data publisher.}
-
 \item{eventId}{(character) identifier(s) for a sampling event.}
 
 \item{identifiedBy}{(character)  names of people, groups, or organizations.}
 
 \item{networkKey}{(character) The occurrence network key (a uuid)
 who assigned the Taxon to the subject.}
+
+\item{verbatimTaxonId}{(character) The taxon identifier provided to GBIF by
+the data publisher.}
 
 \item{occurrenceId}{(character) occurrence id from source.}
 
@@ -353,6 +366,10 @@ quantity of the organism (a number between 0-1). Supports range queries,
 le}{options}.}
 
 \item{isInCluster}{(logical) identify potentially related records on GBIF.}
+
+\item{curlopts}{list of named curl options passed on to
+\code{\link[crul]{HttpClient}}. see \code{curl::curl_options}
+for curl options}
 }
 \value{
 An object of class \code{gbif_data}, which is a S3 class list, with

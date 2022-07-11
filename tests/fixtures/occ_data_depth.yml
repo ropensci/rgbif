@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/search?depth=5&limit=500&offset=0&taxonKey=7595433
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&depth=5&limit=500&offset=0&taxonKey=7595433
     body:
       encoding: ''
       string: ''
@@ -20,11 +20,11 @@ http_interactions:
       encoding: UTF-8
       file: no
       string: '{"offset":0,"limit":300,"endOfRecords":true,"count":0,"results":[],"facets":[]}'
-  recorded_at: 2022-05-20 13:16:48 GMT
+  recorded_at: 2022-07-11 14:24:42 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/search?depth=5&limit=500&offset=0&taxonKey=7595433
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&depth=5&limit=500&offset=0&taxonKey=7595433
     body:
       encoding: ''
       string: ''
@@ -43,11 +43,11 @@ http_interactions:
       encoding: UTF-8
       file: no
       string: '{"offset":0,"limit":300,"endOfRecords":true,"count":0,"results":[],"facets":[]}'
-  recorded_at: 2022-05-20 13:16:48 GMT
+  recorded_at: 2022-07-11 14:24:42 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/search?depth=5-10&limit=500&offset=0&taxonKey=7595433
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&depth=5-10&limit=500&offset=0&taxonKey=7595433
     body:
       encoding: ''
       string: ''
@@ -66,5 +66,5 @@ http_interactions:
       encoding: UTF-8
       file: no
       string: 'Invalid decimal range: 5-10'
-  recorded_at: 2022-05-20 13:16:48 GMT
+  recorded_at: 2022-07-11 14:24:42 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0
