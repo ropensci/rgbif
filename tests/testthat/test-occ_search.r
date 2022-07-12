@@ -352,7 +352,7 @@ test_that("degreeOfEstablishment works correctly", {
 # Test argument isInCluster
 test_that("isInCluster works correctly", {
   skip_on_cran() # because fixture in .Rbuildignore
-  vcr::use_cassette("occ_search_degreeOfEstablishment", {
+  vcr::use_cassette("occ_search_isInCluster", {
     ee <- occ_search(isInCluster=TRUE)
     ff <- occ_search(isInCluster=FALSE)
     tt <- occ_search(taxonKey = 212,isInCluster=TRUE)

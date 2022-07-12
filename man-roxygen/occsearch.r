@@ -8,8 +8,7 @@
 #' in which the occurrence was recorded. \code{enumeration_country()}.
 #' @param datasetKey (character) The occurrence dataset uuid key. That can be 
 #' found in the dataset page url. For example, "7e380070-f762-11e1-a439-00145
-#' eb45e9a" is the key for \href{https://www.gbif.org/dataset/7e380070-f762-11e1
-#' -a439-00145eb45e9a}{Natural History Museum (London) Collection Specimens}.
+#' eb45e9a" is the key for [Natural History Museum (London) Collection Specimens](https://www.gbif.org/dataset/7e380070-f762-11e1-a439-00145eb45e9a).
 #' @param eventDate (character) Occurrence date in ISO 8601 format: yyyy, 
 #' yyyy-MM, yyyy-MM-dd, or MM-dd. Supports range queries, 'smaller,larger' 
 #' ('1990,1991', whereas '1991,1990' wouldn't work).
@@ -28,8 +27,7 @@
 #' @param institutionCode An identifier of any form assigned by the source to 
 #' identify the institution the record belongs to.
 #' @param basisOfRecord (character) The specific nature of the data record. See 
-#' \href{https://gbif.github.io/parsers/apidocs/org/gbif/api/vocabulary/BasisOf
-#' Record.html}{here}.
+#' [here](https://gbif.github.io/parsers/apidocs/org/gbif/api/vocabulary/BasisOfRecord.html).
 #'    
 #'    \itemize{
 #'      \item "FOSSIL_SPECIMEN" 
@@ -48,8 +46,7 @@
 #' @param month The month of the year, starting with 1 for January. Supports 
 #' range queries, 'smaller,larger' (e.g., '1,2', whereas '2,1' wouldn't work).
 #' @param search (character) Query terms. The value for this parameter can be a 
-#' simple word or a phrase. For example, \href{https://www.gbif.org/occurrence/
-#' search?q=puma}{search="puma"}
+#' simple word or a phrase. For example, [search="puma"](https://www.gbif.org/occurrence/search?q=puma)
 #' @param decimalLatitude Latitude in decimals between -90 and 90 based on 
 #' WGS84. Supports range queries, 'smaller,larger' (e.g., '25,30', whereas 
 #' '30,25' wouldn't work).
@@ -90,16 +87,14 @@
 #' without spatial issues.
 #' @param issue (character) One or more of many possible issues with each 
 #' occurrence record. Issues passed to this parameter filter results by 
-#' the issue. One of many \href{https://gbif.github.io/gbif-api/apidocs/org/
-#' gbif/api/vocabulary/OccurrenceIssue.html}{options}. See \href{https://data-b
-#' log.gbif.org/post/issues-and-flags/}{here} for definitions.
+#' the issue. One of many [options](https://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html). 
+#' See [here](https://data-blog.gbif.org/post/issues-and-flags/) for definitions.
 #' @param hasCoordinate (logical) Return only occurrence records with lat/long 
 #' data (\code{TRUE}) or all records (\code{FALSE}, default).
 #' @param typeStatus Type status of the specimen. One of many 
-#' \href{https://www.gbif.org/occurrence/search?type_status=PARATYPE}{options}. 
+#' [options](https://www.gbif.org/occurrence/search?type_status=PARATYPE). 
 #' @param recordNumber Number recorded by collector of the data, different from 
-#' GBIF record number. See \href{http://rs.tdwg.org/dwc/terms/#recordNumbe
-#' r}{here}. 
+#' GBIF record number. 
 #' @param lastInterpreted Date the record was last modified in GBIF, in ISO 
 #' 8601 format: yyyy, yyyy-MM, yyyy-MM-dd, or MM-dd.  Supports range queries, 
 #' 'smaller,larger' (e.g., '1990,1991', whereas '1991,1990' wouldn't work).
@@ -144,11 +139,9 @@
 #'  
 #' @param degreeOfEstablishment (character) Provides information about degree to 
 #' which an Organism survives, reproduces, and expands its range at the given 
-#' place and time. One of many \href{https://www.gbif.org/occurrence/search?adva
-#' nced=1&degree_of_establishment=Managed}{options}.
+#' place and time. One of many [options](https://www.gbif.org/occurrence/search?advanced=1&degree_of_establishment=Managed).
 #' @param protocol (character) Protocol or mechanism used to provide the
-#' occurrence record. One of many \href{https://www.gbif.org/occurrence/search?p
-#' rotocol=DWC_ARCHIVE&advanced=1}{options}.
+#' occurrence record. One of many [options](https://www.gbif.org/occurrence/search?protocol=DWC_ARCHIVE&advanced=1).
 #' @param license (character) The type license applied to the dataset or record.
 #' 
 #'  \itemize{
@@ -209,8 +202,7 @@
 #'  \item "EW" (Extinct in the Wild)
 #'  }
 #' @param lifeStage (character) the life stage of the occurrence. One of many 
-#' \href{https://www.gbif.org/occurrence/search?advanced=1&life_stage=Tadpo
-#' le}{options}.
+#' [options](https://www.gbif.org/occurrence/search?advanced=1&life_stage=Tadpole).
 #' @param isInCluster (logical) identify potentially related records on GBIF.
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
@@ -224,8 +216,7 @@
 #' repeated for each value given (e.g., `foo=a&foo=b` if the parameter
 #' is `foo`).  
 #' 
-#' See article \href{https://docs.ropensci.org/rgbif/articles/multiple_values.ht
-#' ml}{Multiple Values}.
+#' See article [Multiple Values](https://docs.ropensci.org/rgbif/articles/multiple_values.html).
 #' 
 #' @section Hierarchies:
 #' Hierarchies are returned with each occurrence object. There is no

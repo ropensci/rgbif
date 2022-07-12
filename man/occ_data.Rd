@@ -99,8 +99,7 @@ data (\code{TRUE}) or all records (\code{FALSE}, default).}
 \href{https://www.gbif.org/occurrence/search?type_status=PARATYPE}{options}.}
 
 \item{recordNumber}{Number recorded by collector of the data, different from
-GBIF record number. See \href{http://rs.tdwg.org/dwc/terms/#recordNumbe
-r}{here}.}
+GBIF record number.}
 
 \item{lastInterpreted}{Date the record was last modified in GBIF, in ISO
 8601 format: yyyy, yyyy-MM, yyyy-MM-dd, or MM-dd.  Supports range queries,
@@ -152,8 +151,7 @@ recorded the occurrence}
 provided the taxonomic identification of the occurrence.}
 
 \item{basisOfRecord}{(character) The specific nature of the data record. See
-\href{https://gbif.github.io/parsers/apidocs/org/gbif/api/vocabulary/BasisOf
-Record.html}{here}.
+\href{https://gbif.github.io/parsers/apidocs/org/gbif/api/vocabulary/BasisOfRecord.html}{here}.
 
 \itemize{
 \item "FOSSIL_SPECIMEN"
@@ -169,8 +167,7 @@ Record.html}{here}.
 
 \item{datasetKey}{(character) The occurrence dataset uuid key. That can be
 found in the dataset page url. For example, "7e380070-f762-11e1-a439-00145
-eb45e9a" is the key for \href{https://www.gbif.org/dataset/7e380070-f762-11e1
--a439-00145eb45e9a}{Natural History Museum (London) Collection Specimens}.}
+eb45e9a" is the key for \href{https://www.gbif.org/dataset/7e380070-f762-11e1-a439-00145eb45e9a}{Natural History Museum (London) Collection Specimens}.}
 
 \item{eventDate}{(character) Occurrence date in ISO 8601 format: yyyy,
 yyyy-MM, yyyy-MM-dd, or MM-dd. Supports range queries, 'smaller,larger'
@@ -219,13 +216,11 @@ without spatial issues.}
 
 \item{issue}{(character) One or more of many possible issues with each
 occurrence record. Issues passed to this parameter filter results by
-the issue. One of many \href{https://gbif.github.io/gbif-api/apidocs/org/
-gbif/api/vocabulary/OccurrenceIssue.html}{options}. See \href{https://data-b
-log.gbif.org/post/issues-and-flags/}{here} for definitions.}
+the issue. One of many \href{https://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html}{options}.
+See \href{https://data-blog.gbif.org/post/issues-and-flags/}{here} for definitions.}
 
 \item{search}{(character) Query terms. The value for this parameter can be a
-simple word or a phrase. For example, \href{https://www.gbif.org/occurrence/
-search?q=puma}{search="puma"}}
+simple word or a phrase. For example, \href{https://www.gbif.org/occurrence/search?q=puma}{search="puma"}}
 
 \item{mediaType}{(character) Media type of "MovingImage", "Sound", or
 "StillImage".}
@@ -264,12 +259,10 @@ the direct or indirect activity of modern humans.
 
 \item{degreeOfEstablishment}{(character) Provides information about degree to
 which an Organism survives, reproduces, and expands its range at the given
-place and time. One of many \href{https://www.gbif.org/occurrence/search?adva
-nced=1&degree_of_establishment=Managed}{options}.}
+place and time. One of many \href{https://www.gbif.org/occurrence/search?advanced=1&degree_of_establishment=Managed}{options}.}
 
 \item{protocol}{(character) Protocol or mechanism used to provide the
-occurrence record. One of many \href{https://www.gbif.org/occurrence/search?p
-rotocol=DWC_ARCHIVE&advanced=1}{options}.}
+occurrence record. One of many \href{https://www.gbif.org/occurrence/search?protocol=DWC_ARCHIVE&advanced=1}{options}.}
 
 \item{license}{(character) The type license applied to the dataset or record.
 
@@ -362,8 +355,7 @@ quantity of the organism (a number between 0-1). Supports range queries,
 }}
 
 \item{lifeStage}{(character) the life stage of the occurrence. One of many
-\href{https://www.gbif.org/occurrence/search?advanced=1&life_stage=Tadpo
-le}{options}.}
+\href{https://www.gbif.org/occurrence/search?advanced=1&life_stage=Tadpole}{options}.}
 
 \item{isInCluster}{(logical) identify potentially related records on GBIF.}
 
@@ -397,8 +389,7 @@ string (e.g., 'a;b'); if given we'll do a single request with that parameter
 repeated for each value given (e.g., \code{foo=a&foo=b} if the parameter
 is \code{foo}).
 
-See article \href{https://docs.ropensci.org/rgbif/articles/multiple_values.ht
-ml}{Multiple Values}.
+See article \href{https://docs.ropensci.org/rgbif/articles/multiple_values.html}{Multiple Values}.
 }
 
 \section{Hierarchies}{
