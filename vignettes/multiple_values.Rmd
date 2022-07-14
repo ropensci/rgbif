@@ -21,15 +21,85 @@ occ_search(taxonKey="1;212"))
 occ_data(taxonKey="1;212"))
 ```
 
-Other **rgbif** functions, support passing in many values to the **same HTTP request**, which is done like `c("1", "2")`, which is the opposite of how it was done above with the `;` separator. 
+In `occ_search`, there are some parameters you can pass multiple values to in a vector, each value of which produces a **different** request `c("a","b")`. Some parameters allow multiple values to be passed in the same request  in a semicolon separated string `"a;b"`. Only one argument at a time can have multiple values in different requests. 
 
+```
+# works
+occ_search(taxonKey="1;2",basisOfRecord = c("PRESERVED_SPECIMEN","LIVING_SPECIMEN","MATERIAL_CITATION"))
+occ_search(occurrenceStatus=c("PRESENT","ABSENT"))
 
-```r 
-# for example
-dataset_search(publishingOrg=c(
-  "e2e717bf-551a-4917-bdc9-4fa0f342c530",
-  "b8323864-602a-4a7d-9127-bb903054e97d")
-  )
+# will give error 
+occ_search(taxonKey=c(1,2),basisOfRecord = c("PRESERVED_SPECIMEN","LIVING_SPECIMEN","MATERIAL_CITATION"))
+occ_search(occurrenceStatus="PRESENT;ABSENT")
 ```
 
-In general, it is best to read the documentation before assuming a function will accept multiple values. 
+The following table describes whether an arguments for `occ_search` or `occ_data` will take multiple values in the same request 
+
+
+| arg           | different| same |
+|---------------|----------|------|
+|basisOfRecord  | X        |X  |
+|classKey       | X        |X|
+|country        | X        |X|
+|familyKey      | X        |X|
+|genusKey          | X| X|
+|identifiedByID    | X| X|
+|kingdomKey        | X| X|
+|license           | X| X|
+|locality          | X| X|
+|catalogNumber     | X| X|
+|collectionCode    | X| X|
+|continent         | X| X|
+|datasetKey        | X| X|
+|establishmentMeans| X| X|
+|speciesKey| X| X|
+|establishmentMeans| X| X|
+|degreeOfEstablishment| X| X|
+|protocol| X| X|
+|license| X| X|
+|organismId| X| X|
+|publishingOrg| X| X|
+|stateProvince| X| X|
+|waterBody| X| X|
+|locality| X| X|
+|basisOfRecord| X| X|
+|gadmGid| X| X|
+|verbatimScientificName| X| X|
+|eventId| X| X|
+|identifiedBy| X| X|
+|networkKey| X| X|
+|occurrenceId| X| X|
+|iucnRedListCategory| X| X|
+|lifeStage| X| X|
+|geometry| X| X|
+|institutionCode| X| X|
+|mediaType| X| X|
+|orderKey| X| X|
+|organismId| X| X|
+|phylumKey| X| X|
+|protocol| X| X|
+|publishingCountry| X| X|
+|publishingOrg| X| X|
+|recordedBy| X| X|
+|recordedByID| X| X|
+|recordNumber| X| X|
+|scientificName| X| X|
+|stateProvince| X| X|
+|subgenusKey| X| X|
+|taxonKey| X| X|
+|typeStatus| X| X|
+|waterBody| X| X|
+|depth| X|
+|limit| X|
+|q| X|
+|year| X|
+|repatriated| X|
+|lastInterpreted| X|
+|decimalLatitude| X|
+|decimalLongitude| X|
+|coordinateUncertaintyInMeters| X|
+|organismQuantity| X|
+|organismQuantityType| X|
+|relativeOrganismQuantity| X|
+|isInCluster| X|
+|occurrenceStatus|X|
