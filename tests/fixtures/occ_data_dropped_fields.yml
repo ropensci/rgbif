@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/search?limit=3&offset=0
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=3&offset=0
     body:
       encoding: ''
       string: ''
@@ -20,8 +20,8 @@ http_interactions:
       encoding: ASCII-8BIT
       file: no
       string: |-
-        eyJvZmZzZXQiOjAsImxpbWl0IjozLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MjE5NTIyNTE1
-        MCwicmVzdWx0cyI6W3sia2V5IjoyMTIxNTYyMTksImRhdGFzZXRLZXkiOiI5NmMzODNhOC1mNzYyLTEx
+        eyJvZmZzZXQiOjAsImxpbWl0IjozLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MjIwNDY5ODU5
+        NSwicmVzdWx0cyI6W3sia2V5IjoyMTIxNTYyMTksImRhdGFzZXRLZXkiOiI5NmMzODNhOC1mNzYyLTEx
         ZTEtYTQzOS0wMDE0NWViNDVlOWEiLCJwdWJsaXNoaW5nT3JnS2V5IjoiODRkNDUxYTAtNjQ0ZC0xMWRl
         LWI5MTAtYjhhMDNjNTBhODYyIiwibmV0d29ya0tleXMiOlsiOTlkNjZiNmMtOTA4Ny00NTJmLWE5ZDQt
         ZjE1ZjJjMmQwZTdlIl0sImluc3RhbGxhdGlvbktleSI6ImE5NTdhNjYzLTJmMTctNDE1Zi1iMWM4LTVj
@@ -53,15 +53,15 @@ http_interactions:
         M2RhYjE2MGRiNSIsImlzSW5DbHVzdGVyIjpmYWxzZSwicmVjb3JkZWRCeSI6IkcuIExpbmRzZXkiLCJw
         cmVwYXJhdGlvbnMiOiJza2luIiwiaW5DbHVzdGVyIjpmYWxzZSwiY2xhc3MiOiJBdmVzIiwiY291bnRy
         eUNvZGUiOiJVUyIsInJlY29yZGVkQnlJRHMiOltdLCJpZGVudGlmaWVkQnlJRHMiOltdLCJjb3VudHJ5
-        IjoiVW5pdGVkIFN0YXRlcyBvZiBBbWVyaWNhIiwiaWRlbnRpZmllciI6InVybjpjYXRhbG9nOlVBWjpP
-        cm5pdGhvbG9neTpVQXotMDA0NjQ3IiwicmVjb3JkTnVtYmVyIjoiR0wtMDA0OCIsIm5vbWVuY2xhdHVy
-        YWxDb2RlIjoiSUNaTiIsInZlcmJhdGltRXZlbnREYXRlIjoiMS8xLzIwMjIiLCJoaWdoZXJHZW9ncmFw
-        aHkiOiJ8IFVTQSB8IE5ldyBZb3JrIHwgTW9ucm9lIHwgIHwgIHwgIHwiLCJpbnN0aXR1dGlvbklEIjoi
-        aHR0cDovL2Jpb2NvbC5vcmcvdXJuOmxzaWQ6YmlvY29sLm9yZzpjb2w6MzQ4NTIiLCJjb3VudHkiOiJN
-        b25yb2UiLCJsb2NhbGl0eSI6IkNoYXJsb3R0ZSwgTW9ucm9lIENvLiwgTmV3IFlvcmsiLCJnYmlmSUQi
-        OiIyMTIxNTYyMTkiLCJ2ZXJiYXRpbUxvY2FsaXR5IjoiVVNBIHwgTmV3IFlvcmsgfCBNb25yb2UgfCBD
-        aGFybG90dGUsIE1vbnJvZSBDby4sIE5ldyBZb3JrIiwiY29sbGVjdGlvbkNvZGUiOiJPcm5pdGhvbG9n
-        eSIsImxhbmd1YWdlIjoiZW4iLCJvY2N1cnJlbmNlSUQiOiJ1cm46Y2F0YWxvZzpVQVo6T3JuaXRob2xv
+        IjoiVW5pdGVkIFN0YXRlcyBvZiBBbWVyaWNhIiwicmVjb3JkTnVtYmVyIjoiR0wtMDA0OCIsImlkZW50
+        aWZpZXIiOiJ1cm46Y2F0YWxvZzpVQVo6T3JuaXRob2xvZ3k6VUF6LTAwNDY0NyIsIm5vbWVuY2xhdHVy
+        YWxDb2RlIjoiSUNaTiIsImluc3RpdHV0aW9uSUQiOiJodHRwOi8vYmlvY29sLm9yZy91cm46bHNpZDpi
+        aW9jb2wub3JnOmNvbDozNDg1MiIsImhpZ2hlckdlb2dyYXBoeSI6InwgVVNBIHwgTmV3IFlvcmsgfCBN
+        b25yb2UgfCAgfCAgfCAgfCIsInZlcmJhdGltRXZlbnREYXRlIjoiMS8xLzIwMjIiLCJjb3VudHkiOiJN
+        b25yb2UiLCJsb2NhbGl0eSI6IkNoYXJsb3R0ZSwgTW9ucm9lIENvLiwgTmV3IFlvcmsiLCJjb2xsZWN0
+        aW9uQ29kZSI6Ik9ybml0aG9sb2d5IiwiZ2JpZklEIjoiMjEyMTU2MjE5IiwibGFuZ3VhZ2UiOiJlbiIs
+        InZlcmJhdGltTG9jYWxpdHkiOiJVU0EgfCBOZXcgWW9yayB8IE1vbnJvZSB8IENoYXJsb3R0ZSwgTW9u
+        cm9lIENvLiwgTmV3IFlvcmsiLCJvY2N1cnJlbmNlSUQiOiJ1cm46Y2F0YWxvZzpVQVo6T3JuaXRob2xv
         Z3k6VUF6LTAwNDY0NyIsInR5cGUiOiJQaHlzaWNhbE9iamVjdCIsImNhdGFsb2dOdW1iZXIiOiJVQXot
         MDA0NjQ3IiwidmVybmFjdWxhck5hbWUiOiJMb25nLXRhaWxlZCBEdWNrIiwiaW5zdGl0dXRpb25Db2Rl
         IjoiVUFaIiwiYWNjZXNzUmlnaHRzIjoiaHR0cDovL3ZlcnRuZXQub3JnL3Jlc291cmNlcy9ub3Jtcy5o
@@ -98,16 +98,16 @@ http_interactions:
         bG9nTnVtYmVyIjoiMjc5MDciLCJoYWJpdGF0IjoiSW50ZXJtYXJlYWwsIHNvYnJlIENvcmFsbGluYSBl
         bG9uZ2F0YSIsImluc3RpdHV0aW9uSUQiOiJodHRwOi8vYmlvY29sLm9yZy91cm46bHNpZDpiaW9jb2wu
         b3JnOmNvbDoxNDMwOSIsImluc3RpdHV0aW9uQ29kZSI6IlNBTlQiLCJsb2NhbGl0eSI6IkEgQ29ydcOD
-        wrFhOiBDYWnDg8KzbiwgTGFyYWNoYSIsImdiaWZJRCI6Ijg5NTA2NjUxOSIsInZlcmJhdGltTG9jYWxp
-        dHkiOiJBIENvcnXDg8KxYTogQ2Fpw4PCs24sIExhcmFjaGEiLCJjb2xsZWN0aW9uQ29kZSI6IlNBTlQt
-        QWxnYWUiLCJvY2N1cnJlbmNlSUQiOiJTQU5UOlNBTlQtQWxnYWU6Mjc5MDctQSJ9LHsia2V5IjoxMDM5
+        wrFhOiBDYWnDg8KzbiwgTGFyYWNoYSIsImNvbGxlY3Rpb25Db2RlIjoiU0FOVC1BbGdhZSIsInZlcmJh
+        dGltTG9jYWxpdHkiOiJBIENvcnXDg8KxYTogQ2Fpw4PCs24sIExhcmFjaGEiLCJnYmlmSUQiOiI4OTUw
+        NjY1MTkiLCJvY2N1cnJlbmNlSUQiOiJTQU5UOlNBTlQtQWxnYWU6Mjc5MDctQSJ9LHsia2V5IjoxMDM5
         NTIwNDQxLCJkYXRhc2V0S2V5IjoiODU0ZjYwMmUtZjc2Mi0xMWUxLWE0MzktMDAxNDVlYjQ1ZTlhIiwi
         cHVibGlzaGluZ09yZ0tleSI6IjJlMTY3YmIwLTQ0NDEtMTFkYi05YmEyLWI4YTAzYzUwYTg2MiIsIm5l
         dHdvcmtLZXlzIjpbIjk5ZDY2YjZjLTkwODctNDUyZi1hOWQ0LWYxNWYyYzJkMGU3ZSJdLCJpbnN0YWxs
         YXRpb25LZXkiOiI4YTc3MGVkZi1mNWViLTQzNmQtYTMxNS1kNjk2ZDFlMzNlZDciLCJwdWJsaXNoaW5n
         Q291bnRyeSI6IlVTIiwicHJvdG9jb2wiOiJEV0NfQVJDSElWRSIsImxhc3RDcmF3bGVkIjoiMjAyMi0w
-        NS0yMFQwMTo1MToxOC4yOTErMDA6MDAiLCJsYXN0UGFyc2VkIjoiMjAyMi0wNS0yMFQwMTo1MTozNS43
-        MzYrMDA6MDAiLCJjcmF3bElkIjoxNjk3LCJob3N0aW5nT3JnYW5pemF0aW9uS2V5IjoiMmUxNjdiYjAt
+        Ny0xMlQwMTo1MToxMS40OTgrMDA6MDAiLCJsYXN0UGFyc2VkIjoiMjAyMi0wNy0xMlQwMTo1MToyOS4y
+        MDArMDA6MDAiLCJjcmF3bElkIjoxNzUyLCJob3N0aW5nT3JnYW5pemF0aW9uS2V5IjoiMmUxNjdiYjAt
         NDQ0MS0xMWRiLTliYTItYjhhMDNjNTBhODYyIiwiZXh0ZW5zaW9ucyI6e30sImJhc2lzT2ZSZWNvcmQi
         OiJQUkVTRVJWRURfU1BFQ0lNRU4iLCJpbmRpdmlkdWFsQ291bnQiOjEsIm9jY3VycmVuY2VTdGF0dXMi
         OiJQUkVTRU5UIiwic2V4IjoiRkVNQUxFIiwibGlmZVN0YWdlIjoiQWR1bHQiLCJ0YXhvbktleSI6NzI2
@@ -125,8 +125,8 @@ http_interactions:
         OjI0LCJldmVudERhdGUiOiIyMDIyLTAxLTI0VDAwOjAwOjAwIiwiaXNzdWVzIjpbIkdFT0RFVElDX0RB
         VFVNX0FTU1VNRURfV0dTODQiLCJPQ0NVUlJFTkNFX1NUQVRVU19JTkZFUlJFRF9GUk9NX0lORElWSURV
         QUxfQ09VTlQiLCJJTlNUSVRVVElPTl9NQVRDSF9GVVpaWSJdLCJtb2RpZmllZCI6IjIwMjItMDItMjVU
-        MjE6NDQ6MTUuMDAwKzAwOjAwIiwibGFzdEludGVycHJldGVkIjoiMjAyMi0wNS0yMFQwMTo1MTozNS43
-        MzYrMDA6MDAiLCJyZWZlcmVuY2VzIjoiaHR0cDovL2NvbGxlY3Rpb25zLnBlYWJvZHkueWFsZS5lZHUv
+        MjE6NDQ6MTUuMDAwKzAwOjAwIiwibGFzdEludGVycHJldGVkIjoiMjAyMi0wNy0xMlQwMTo1MToyOS4y
+        MDArMDA6MDAiLCJyZWZlcmVuY2VzIjoiaHR0cDovL2NvbGxlY3Rpb25zLnBlYWJvZHkueWFsZS5lZHUv
         c2VhcmNoL1JlY29yZC9ZUE0tTUFNLTAxNTEwOSIsImxpY2Vuc2UiOiJodHRwOi8vY3JlYXRpdmVjb21t
         b25zLm9yZy9wdWJsaWNkb21haW4vemVyby8xLjAvbGVnYWxjb2RlIiwiaWRlbnRpZmllcnMiOltdLCJt
         ZWRpYSI6W10sImZhY3RzIjpbXSwicmVsYXRpb25zIjpbXSwiZ2FkbSI6eyJsZXZlbDAiOnsiZ2lkIjoi
@@ -141,15 +141,15 @@ http_interactions:
         LCJjb3VudHJ5IjoiVW5pdGVkIFN0YXRlcyBvZiBBbWVyaWNhIiwicmlnaHRzSG9sZGVyIjoiWWFsZSBQ
         ZWFib2R5IE11c2V1bSBvZiBOYXR1cmFsIEhpc3RvcnkiLCJkeW5hbWljUHJvcGVydGllcyI6InsgXCJp
         cm5cIjogXCIxNDY1Njg4XCIsIFwic29scl9sb25nX2xhdFwiOiBcIi03Mi45MjE0LDQxLjMxNjRcIiB9
-        IiwibXVuaWNpcGFsaXR5IjoiTmV3IEhhdmVuIiwiY291bnR5IjoiTmV3IEhhdmVuIENvdW50eSIsImZp
+        IiwiY291bnR5IjoiTmV3IEhhdmVuIENvdW50eSIsIm11bmljaXBhbGl0eSI6Ik5ldyBIYXZlbiIsImZp
         ZWxkTnVtYmVyIjoiMTMyNjQiLCJnYmlmSUQiOiIxMDM5NTIwNDQxIiwibGFuZ3VhZ2UiOiJodHRwOi8v
         Y3JlYXRpdmVjb21tb25zLm9yZy9wdWJsaWNkb21haW4vemVyby8xLjAvIiwidHlwZSI6IlBoeXNpY2Fs
         T2JqZWN0IiwidGF4b25SZW1hcmtzIjoiQW5pbWFscyBhbmQgUGxhbnRzOiBWZXJ0ZWJyYXRlcyAtIE1h
         bW1hbHMiLCJjYXRhbG9nTnVtYmVyIjoiWVBNIE1BTSAwMTUxMDkiLCJ2ZXJuYWN1bGFyTmFtZSI6IkJp
         ZyBCcm93biBCYXQ7IGJyb3duIGJhdHM7IHZlc3BlcnRpbGlvbmlkIGJhdHM7IGJhdHM7IG1hbW1hbHM7
-        IHZlcnRlYnJhdGVzOyBjaG9yZGF0ZXM7IGFuaW1hbHMiLCJpbnN0aXR1dGlvbkNvZGUiOiJZUE0iLCJp
-        ZGVudGlmaWVyIjoidXJuOnV1aWQ6NTljZWIyZTktMDBiNS00ZmI4LWE3OWItNzFkNjQ0YWUxMDZjIiwi
-        Z2VvcmVmZXJlbmNlZERhdGUiOiIyMDIyLTAyLTI1Iiwibm9tZW5jbGF0dXJhbENvZGUiOiJJQ1pOIiwi
+        IHZlcnRlYnJhdGVzOyBjaG9yZGF0ZXM7IGFuaW1hbHMiLCJpbnN0aXR1dGlvbkNvZGUiOiJZUE0iLCJn
+        ZW9yZWZlcmVuY2VkRGF0ZSI6IjIwMjItMDItMjUiLCJpZGVudGlmaWVyIjoidXJuOnV1aWQ6NTljZWIy
+        ZTktMDBiNS00ZmI4LWE3OWItNzFkNjQ0YWUxMDZjIiwibm9tZW5jbGF0dXJhbENvZGUiOiJJQ1pOIiwi
         aGlnaGVyR2VvZ3JhcGh5IjoiTm9ydGggQW1lcmljYTsgVVNBOyBDb25uZWN0aWN1dDsgTmV3IEhhdmVu
         IENvdW50eTsgTmV3IEhhdmVuIiwiZ2VvcmVmZXJlbmNlZEJ5IjoiS3Jpc3RvZiBaeXNrb3dza2kiLCJn
         ZW9yZWZlcmVuY2VQcm90b2NvbCI6ImRpZ2l0YWwgcmVzb3VyY2UiLCJsb2NhbGl0eSI6IllhbGUgVW5p
@@ -167,5 +167,5 @@ http_interactions:
         YTsgQ2hpcm9wdGVyYTsgTWljcm9jaGlyb3B0ZXJhOyBZYW5nb2NoaXJvcHRlcmE7IFZlc3BlcnRpbGlv
         bmlkYWU7IFZlc3BlcnRpbGlvbmluYWUiLCJnZW9yZWZlcmVuY2VTb3VyY2VzIjoiR29vZ2xlIEVhcnRo
         In1dLCJmYWNldHMiOltdfQ==
-  recorded_at: 2022-05-20 13:17:14 GMT
+  recorded_at: 2022-07-12 12:29:44 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0

@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/search?limit=500&offset=0&taxonKey=3189815&continent=asia%2Coceania
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=500&offset=0&taxonKey=3189815&continent=asia%2Coceania
     body:
       encoding: ''
       string: ''
@@ -20,11 +20,11 @@ http_interactions:
       encoding: UTF-8
       file: no
       string: Cannot parse asia,oceania into a known Continent
-  recorded_at: 2022-05-20 13:21:34 GMT
+  recorded_at: 2022-07-12 12:44:59 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/search?decimalLatitude=334&limit=500&offset=0
+    uri: https://api.gbif.org/v1/occurrence/search?decimalLatitude=334&occurrenceStatus=PRESENT&limit=500&offset=0
     body:
       encoding: ''
       string: ''
@@ -43,5 +43,5 @@ http_interactions:
       encoding: UTF-8
       file: no
       string: 334 is not valid value, latitude must be between -90 and 90.
-  recorded_at: 2022-05-20 13:21:34 GMT
+  recorded_at: 2022-07-12 12:44:59 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0

@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/search?limit=500&offset=0&catalogNumber=PlantAndMushroom.6845144
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=500&offset=0&catalogNumber=PlantAndMushroom.6845144
     body:
       encoding: ''
       string: ''
@@ -20,5 +20,5 @@ http_interactions:
       encoding: UTF-8
       file: no
       string: '{"offset":0,"limit":300,"endOfRecords":true,"count":0,"results":[],"facets":[]}'
-  recorded_at: 2022-05-20 13:21:08 GMT
+  recorded_at: 2022-07-12 12:36:48 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0

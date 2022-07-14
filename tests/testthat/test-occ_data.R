@@ -66,7 +66,7 @@ test_that("returns the correct class", {
   expect_equal(length(out), 2)
 })
 
-######### Get occurrences for a particular eventDate
+# Get occurrences for a particular eventDate
 test_that("dates work correctly", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_data_event_date", {
@@ -89,7 +89,7 @@ test_that("make sure things that should throw errors do", {
   })
 })
 
-######### Get occurrences based on depth
+# Get occurrences based on depth
 test_that("returns the correct stuff", {
   key <- 7595433
   vcr::use_cassette("occ_data_depth", {
@@ -100,7 +100,7 @@ test_that("returns the correct stuff", {
   })
 })
 
-######### Get occurrences based on elevation
+# Get occurrences based on elevation
 test_that("returns the correct dimensions", {
   key <- 2435099
   vcr::use_cassette("occ_data_elevation", {
@@ -124,7 +124,7 @@ test_that("looping works correctly", {
   expect_equal(unique(sapply(out, function(x) class(x)[1])), "tbl_df")
 })
 
-######### scientificName usage works correctly
+# scientificName usage works correctly
 test_that("scientificName basic use works - no synonyms", {
   vcr::use_cassette("occ_data_scientificname", {
     # with synonyms
@@ -182,7 +182,7 @@ test_that("scientificName basic use works - no synonyms", {
     "Parastrellus hesperus (H.Allen, 1864)")
 })
 
-######### geometry inputs work as expected
+# geometry inputs work as expected
 test_that("geometry inputs work as expected", {
   skip_on_cran() # because fixture in .Rbuildignore
   
@@ -193,7 +193,7 @@ test_that("geometry inputs work as expected", {
   
   expect_is(aa, "gbif_data")
   expect_is(unclass(aa), "list")
-  expect_named(attr(aa, "args"), c('limit', 'offset', 'geometry'))
+  expect_named(attr(aa, "args"), c('occurrenceStatus', 'limit', 'offset', 'geometry'))
   expect_gt(NROW(aa$data), 0)
   
   # with a taxon key
@@ -206,7 +206,7 @@ test_that("geometry inputs work as expected", {
 
   expect_is(bb, "gbif_data")
   expect_is(unclass(bb), "list")
-  expect_named(attr(bb, "args"), c('limit', 'offset', 'taxonKey', 'geometry'))
+  expect_named(attr(bb, "args"), c('occurrenceStatus', 'limit', 'offset', 'taxonKey', 'geometry'))
   expect_gt(NROW(bb$data), 0)
     
   # using bounding box, converted to WKT internally
@@ -216,7 +216,7 @@ test_that("geometry inputs work as expected", {
 
   expect_is(cc, "gbif_data")
   expect_is(unclass(cc), "list")
-  expect_named(attr(cc, "args"), c('limit', 'offset', 'geometry'))
+  expect_named(attr(cc, "args"), c('occurrenceStatus', 'limit', 'offset', 'geometry'))
   expect_gt(NROW(cc$data), 0)
   expect_equal(NROW(cc$data), NROW(aa$data))
 
@@ -334,3 +334,279 @@ test_that("various fields are dropped - so should be absent", {
   expect_null(df$recordedByIDs)
   expect_null(df$identifiedByIDs)
 })
+
+# Get occurrences for with a particular occurrenceStatus
+test_that("occurrenceStatus works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_data_occurrencestatus", {
+    pp <- occ_data()
+    aa <- occ_data(occurrenceStatus = 'ABSENT')
+    tt <- occ_data(taxonKey=212,occurrenceStatus = 'ABSENT')
+  }, preserve_exact_body_bytes = TRUE)
+
+  expect_equal(pp$data$occurrenceStatus[1], 'PRESENT')
+  expect_equal(aa$data$occurrenceStatus[1], 'ABSENT')
+  expect_equal(tt$data$classKey[1], 212)
+})
+
+# Get occurrences for with a particular gadmGid
+test_that("gadmGid works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_data_gadmGid", {
+    bwa <- occ_data(gadmGid='BWA.3_1')
+    twn <- occ_data(gadmGid='TWN')
+    usa <- occ_data(taxonKey=212,gadmGid="USA")
+  }, preserve_exact_body_bytes = TRUE)
+
+  expect_equal(bwa$data$countryCode[1], 'BW')
+  expect_equal(twn$data$countryCode[1], 'TW')
+  expect_equal(usa$data$countryCode[1], 'US')
+  expect_equal(usa$data$classKey[1], 212)
+})
+
+# Get occurrences for with coordinateUncertaintyInMeters
+test_that("coordinateUncertaintyInMeters works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_data_coordinateUncertaintyInMeters", {
+    ss <- occ_data(coordinateUncertaintyInMeters=1000)
+    rr <- occ_data(coordinateUncertaintyInMeters="1000,10000")
+
+    tt <- occ_data(taxonKey=212,coordinateUncertaintyInMeters="1000,10000")
+  }, preserve_exact_body_bytes = TRUE)
+
+  expect_equal(ss$data$coordinateUncertaintyInMeters[1], 1000)
+  expect_true(all(rr$data$coordinateUncertaintyInMeters <= 10000 &
+                    rr$data$coordinateUncertaintyInMeters >= 1000))
+  expect_true(all(tt$data$coordinateUncertaintyInMeters <= 10000 &
+                    tt$data$coordinateUncertaintyInMeters >= 1000))
+  expect_equal(tt$data$classKey[1], 212)
+})
+
+# Get occurrences for with organismQuantity
+test_that("organismQuantity works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_data_organismQuantity", {
+    ss <- occ_data(organismQuantity=5)
+    rr <- occ_data(organismQuantity="5,20")
+    tt <- occ_data(taxonKey=212,organismQuantity="5,20")
+  }, preserve_exact_body_bytes = TRUE)
+
+  expect_equal(ss$data$organismQuantity[1], 5)
+  expect_true(all(rr$data$organismQuantity <= 20 &
+                    rr$data$organismQuantity >= 5))
+  expect_true(all(tt$data$organismQuantity <= 20 &
+                    tt$data$organismQuantity >= 5))
+  expect_equal(tt$data$classKey[1], 212)
+})
+
+# Get occurrences for with organismQuantityType
+test_that("organismQuantityType works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_data_organismQuantityType", {
+    yy <- occ_data(organismQuantity=5,organismQuantityType="individuals")
+    tt <- occ_data(taxonKey=212,organismQuantity="5,20",
+                     organismQuantityType="individuals")
+  }, preserve_exact_body_bytes = TRUE)
+
+  expect_equal(yy$data$organismQuantityType[1], "individuals")
+  expect_equal(yy$data$organismQuantity[1], 5)
+  expect_equal(tt$data$organismQuantityType[1], "individuals")
+  expect_true(all(tt$data$organismQuantity <= 20 &
+                    tt$data$organismQuantity >= 5))
+  expect_equal(tt$data$classKey[1], 212)
+})
+
+# Get occurrences for with relativeOrganismQuantity
+test_that("relativeOrganismQuantity works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_data_relativeOrganismQuantity", {
+    rr <- occ_data(relativeOrganismQuantity=0.1)
+    vv <- occ_data(relativeOrganismQuantity="0.1,0.5")
+    tt <- occ_data(taxonKey=212,relativeOrganismQuantity="0.1,0.5")
+  }, preserve_exact_body_bytes = TRUE)
+
+  expect_equal(rr$data$relativeOrganismQuantity[1], 0.1)
+  expect_true(all(vv$data$relativeOrganismQuantity <= 0.5 &
+                    vv$data$relativeOrganismQuantity >= 0.1))
+  expect_true(all(tt$data$relativeOrganismQuantity <= 0.5 &
+                    tt$data$relativeOrganismQuantity >= 0.1))
+  expect_equal(tt$data$classKey[1], 212)
+})
+
+
+
+# Get occurrences for with a particular verbatimScientificName
+test_that("verbatimScientificName works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_data_verbatimScientificName", {
+    vv <- occ_data(verbatimScientificName="Calopteryx splendens")
+    ss <- occ_data(verbatimScientificName="Calopteryx splendens;Calopteryx virgo")
+    cc <- occ_data(verbatimScientificName=c("Calopteryx splendens","Calopteryx virgo"))
+    tt <- occ_data(country="DK",verbatimScientificName="Calopteryx splendens")
+  }, preserve_exact_body_bytes = TRUE)
+
+  expect_equal(vv$data$species[1], "Calopteryx splendens")
+  expect_true(all(ss$data$species %in% c("Calopteryx splendens","Calopteryx virgo")))
+  expect_true(all(cc$data$species %in% c("Calopteryx splendens","Calopteryx virgo")))
+  expect_equal(tt$data$species[1], "Calopteryx splendens")
+  expect_equal(tt$data$countryCode[1], "DK")
+})
+
+# Get occurrences for with a particular eventId
+test_that("eventId works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_data_eventId", {
+    ii <- occ_data(eventId="1")
+    hh <- occ_data(eventId="1;2")
+    cc <- occ_data(eventId=c("1","2"))
+    tt <- occ_data(taxonKey=212,eventId="1")
+  }, preserve_exact_body_bytes = TRUE)
+
+  expect_equal(ii$data$eventID[1], "1")
+  expect_true(all(hh$data$eventID %in% c("1","2")))
+  expect_true(all(cc$data$eventID %in% c("1","2")))
+  expect_equal(tt$data$eventID[1], "1")
+  expect_equal(tt$data$classKey[1], 212)
+})
+
+# Get occurrences for with a particular occurrenceId
+test_that("occurrenceId works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_data_occurrenceId", {
+    ii <- occ_data(occurrenceId="1")
+    hh <- occ_data(occurrenceId="1;2")
+    cc <- occ_data(occurrenceId=c("1","2"))
+    tt <- occ_data(taxonKey=212,occurrenceId="1")
+  }, preserve_exact_body_bytes = TRUE)
+
+  expect_equal(ii$data$occurrenceID[1], "1")
+  expect_true(all(hh$data$occurrenceID %in% c("1","2")))
+  expect_true(all(cc$data$occurrenceID %in% c("1","2")))
+  expect_equal(tt$data$occurrenceID[1], "1")
+  expect_equal(tt$data$classKey[1], 212)
+})
+
+# Get occurrences for with a particular speciesKey
+test_that("speciesKey works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_data_speciesKey", {
+    kk <- occ_data(speciesKey=7412043)
+    qq <- occ_data(speciesKey="7412043;1427037")
+    cc <- occ_data(speciesKey=c(7412043,1427037))
+    ff <- occ_data(country="DK",speciesKey=7412043)
+  }, preserve_exact_body_bytes = TRUE)
+
+  expect_equal(kk$data$speciesKey[1],7412043)
+  expect_true(all(qq$data$speciesKey %in% c(7412043,1427037)))
+  expect_true(all(cc$data$speciesKey %in% c(7412043,1427037)))
+  expect_equal(kk$data$speciesKey[1],7412043)
+  expect_equal(ff$data$countryCode[1], "DK")
+})
+
+# Get occurrences for with a particular identifiedBy
+test_that("identifiedBy works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_data_identifiedBy", {
+    ww <- occ_data(identifiedBy="John Waller")
+    bb <- occ_data(identifiedBy="John Waller;Matthew Blissett")
+    cc <- occ_data(identifiedBy=c("John Waller", "Matthew Blissett"))
+    dd <- occ_data(country="DK",identifiedBy="John Waller")
+  }, preserve_exact_body_bytes = TRUE)
+
+  expect_equal(ww$data$identifiedBy[1],"John Waller")
+  expect_true(all(bb$data$identifiedBy %in% c("John Waller", "Matthew Blissett")))
+  expect_true(all(cc$data$identifiedBy %in% c("John Waller", "Matthew Blissett")))
+  expect_equal(dd$data$identifiedBy[1],"John Waller")
+  expect_equal(dd$data$countryCode[1], "DK")
+})
+
+# Get occurrences for with a particular iucnRedListCategory
+test_that("iucnRedListCategory works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_data_iucnRedListCategory", {
+    ll <- occ_data(iucnRedListCategory="LC")
+    yy <- occ_data(iucnRedListCategory="LC;EW")
+    ss <- occ_data(iucnRedListCategory=c("LC", "EW"))
+    tt <- occ_data(taxonKey=212,iucnRedListCategory="LC")
+  }, preserve_exact_body_bytes = TRUE)
+
+  expect_equal(ll$data$iucnRedListCategory[1],"LC")
+  expect_true(all(yy$data$iucnRedListCategory %in% c("LC", "EW")))
+  expect_equal(ss[[1]]$data$iucnRedListCategory[1],"LC")
+  expect_equal(ss[[2]]$data$iucnRedListCategory[1],"EW")
+  expect_equal(tt$data$iucnRedListCategory[1],"LC")
+  expect_equal(tt$data$classKey[1], 212)
+})
+
+# Get occurrences for with a particular lifeStage
+test_that("lifeStage works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_data_lifeStage", {
+    aa <- occ_data(lifeStage="Adult")
+    ee <- occ_data(lifeStage="Adult;Egg")
+    cc <- occ_data(lifeStage=c("Adult", "Egg"))
+    tt <- occ_data(taxonKey=212,lifeStage="Adult")
+  }, preserve_exact_body_bytes = TRUE)
+
+  expect_equal(aa$data$lifeStage[1],"Adult")
+  expect_true(all(ee$data$lifeStage %in% c("Adult", "Egg")))
+  expect_equal(cc[[1]]$data$lifeStage[1],"Adult")
+  expect_equal(cc[[2]]$data$lifeStage[1],"Egg")
+  expect_equal(tt$data$lifeStage[1],"Adult")
+  expect_equal(tt$data$classKey[1], 212)
+})
+
+# Get occurrences for with a particular degreeOfEstablishment
+test_that("degreeOfEstablishment works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_data_degreeOfEstablishment", {
+    ee <- occ_data(degreeOfEstablishment="Established")
+    ii <- occ_data(degreeOfEstablishment="Established;Invasive")
+    cc <- occ_data(degreeOfEstablishment=c("Established", "Invasive"))
+    tt <- occ_data(taxonKey=1,degreeOfEstablishment="Established")
+  }, preserve_exact_body_bytes = TRUE)
+
+  expect_equal(ee$data$degreeOfEstablishment[1],"Established")
+  expect_true(all(ii$data$degreeOfEstablishment %in% c("Established", "Invasive")))
+  expect_true(all(cc$data$degreeOfEstablishment %in% c("Established", "Invasive")))
+  expect_equal(tt$data$degreeOfEstablishment[1],"Established")
+  expect_equal(tt$data$kingdomKey[1], 1)
+})
+
+
+# Test argument isInCluster
+test_that("isInCluster works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_data_isInCluster", {
+    ee <- occ_data(isInCluster=TRUE)
+    ff <- occ_data(isInCluster=FALSE)
+    tt <- occ_data(taxonKey = 212,isInCluster=TRUE)
+  }, preserve_exact_body_bytes = TRUE)
+
+  expect_true(ee$data$isInCluster[1])
+  expect_false(ff$data$isInCluster[1])
+  expect_true(tt$data$isInCluster[1])
+  expect_equal(tt$data$classKey[1], 212)
+})
+
+
+# Get occurrences for with a particular networkKey
+test_that("networkKey works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_data_networkKey", {
+    nn <- occ_data(networkKey="4b0d8edb-7504-42c4-9349-63e86c01bf97")
+    ss <- occ_data(
+      networkKey="4b0d8edb-7504-42c4-9349-63e86c01bf97;99d66b6c-9087-452f-a9d4-f15f2c2d0e7e")
+    cc <- occ_data(networkKey=c("4b0d8edb-7504-42c4-9349-63e86c01bf97",
+                                  "99d66b6c-9087-452f-a9d4-f15f2c2d0e7e"))
+    vv <- occ_data(taxonKey=6,networkKey="4b0d8edb-7504-42c4-9349-63e86c01bf97")
+  }, preserve_exact_body_bytes = TRUE)
+
+  expect_equal(nn$data$networkKeys[[1]],"4b0d8edb-7504-42c4-9349-63e86c01bf97")
+  p <- c("4b0d8edb-7504-42c4-9349-63e86c01bf97|99d66b6c-9087-452f-a9d4-f15f2c2d0e7e")
+  expect_true(all(grepl(p,ss$data$networkKeys)))
+  expect_true(all(grepl(p,cc$data$networkKeys)))
+  expect_equal(vv$data$networkKeys[[1]],"4b0d8edb-7504-42c4-9349-63e86c01bf97")
+  expect_equal(vv$data$kingdomKey[[1]], 6)
+})
+
