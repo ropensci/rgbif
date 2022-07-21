@@ -68,6 +68,9 @@ reference:
       - elevation
       - enumeration
       - enumeration_country
+      - gbif_issues
+      - gbif_issues_lookup
+      - occ_issues
   - title: "Pretty html reports"
     contents:
       - gbif_names
@@ -82,4 +85,6 @@ reference:
   - title: "Defunct functions"
     contents:
       - rgbif-defunct
+      - parsenames
+      - networks
     
