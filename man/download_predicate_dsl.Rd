@@ -210,6 +210,10 @@ be supported that is not yet.
 \item verbatimScientificName (VERBATIM_SCIENTIFIC_NAME)
 \item TaxonId (TAXON_ID)
 \item waterBody (WATER_BODY)
+\item iucnRedListCategory (IUCN_RED_LIST_CATEGORY)
+\item degreeOfEstablishment (DEGREE_OF_ESTABLISHMENT)
+\item isInCluster (IS_IN_CLUSTER)
+\item lifeStage (LIFE_STAGE)
 }
 }
 

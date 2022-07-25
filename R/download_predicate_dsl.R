@@ -151,6 +151,11 @@
 #' - verbatimScientificName (VERBATIM_SCIENTIFIC_NAME)
 #' - TaxonId (TAXON_ID)
 #' - waterBody (WATER_BODY)
+#' - iucnRedListCategory (IUCN_RED_LIST_CATEGORY)
+#' - degreeOfEstablishment (DEGREE_OF_ESTABLISHMENT)
+#' - isInCluster (IS_IN_CLUSTER)
+#' - lifeStage (LIFE_STAGE)
+
 #' 
 #' @references Download predicates docs:
 #' <https://www.gbif.org/developer/occurrence#predicates>
@@ -394,7 +399,15 @@ key_lkup <- list(
   TaxonId="TAXON_ID",
   TAXON_ID="TAXON_ID",
   waterBody="WATER_BODY",
-  WATER_BODY="WATER_BODY"
+  WATER_BODY="WATER_BODY",
+  iucnRedListCategory="IUCN_RED_LIST_CATEGORY",
+  IUCN_RED_LIST_CATEGORY="IUCN_RED_LIST_CATEGORY",
+  degreeOfEstablishment="DEGREE_OF_ESTABLISHMENT",
+  DEGREE_OF_ESTABLISHMENT="DEGREE_OF_ESTABLISHMENT",
+  isInCluster="IS_IN_CLUSTER",
+  IS_IN_CLUSTER="IS_IN_CLUSTER",
+  lifeStage="LIFE_STAGE",
+  LIFE_STAGE="LIFE_STAGE"
   )
 
 parse_pred <- function(key, value, type = "and") {

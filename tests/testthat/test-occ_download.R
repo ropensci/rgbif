@@ -149,6 +149,27 @@ test_that("occ_download: real requests work", {
   expect_is(attr(ooo,"downloadLink"),"character")
   expect_output(print.occ_download(ooo),"<<gbif download>>")
   expect_equal(length(capture.output(print(ooo))),22)
+
+  # test new key
+  vcr::use_cassette("occ_download_7", {
+    sss <- occ_download(
+      type="and",
+      pred("lifeStage", "Adult"),
+      format = "SIMPLE_CSV"
+    )
+  }, match_requests_on = c("method", "uri", "body"))
+  
+  expect_is(sss, "occ_download")
+  expect_is(unclass(sss), "character")
+  expect_match(unclass(sss)[1], "^[0-9]{7}-[0-9]{15}$")
+  expect_equal(attr(sss, "user"), Sys.getenv("GBIF_USER"))
+  expect_equal(attr(sss, "email"), Sys.getenv("GBIF_EMAIL"))
+  expect_equal(attr(sss, "format"), "SIMPLE_CSV")
+  expect_is(attr(sss,"doi"),"character")
+  expect_is(attr(sss,"citation"),"character")
+  expect_is(attr(sss,"downloadLink"),"character")
+  expect_output(print.occ_download(sss),"<<gbif download>>")
+  expect_equal(length(capture.output(print(sss))),22)
 })
 
 
