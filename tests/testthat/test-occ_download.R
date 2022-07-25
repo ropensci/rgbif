@@ -107,7 +107,69 @@ test_that("occ_download: real requests work", {
   expect_is(attr(ccc,"downloadLink"),"character")
   expect_output(print.occ_download(ccc),"<<gbif download>>")
   expect_equal(length(capture.output(print(ccc))),22)
+
+  # test new key
+  vcr::use_cassette("occ_download_5", {
+    vvv <- occ_download(
+      type="and",
+      pred("verbatimScientificName", "Calopteryx"),
+      format = "SIMPLE_CSV"
+    )
+  }, match_requests_on = c("method", "uri", "body"))
   
+  expect_is(vvv, "occ_download")
+  expect_is(unclass(vvv), "character")
+  expect_match(unclass(vvv)[1], "^[0-9]{7}-[0-9]{15}$")
+  expect_equal(attr(vvv, "user"), Sys.getenv("GBIF_USER"))
+  expect_equal(attr(vvv, "email"), Sys.getenv("GBIF_EMAIL"))
+  expect_equal(attr(vvv, "format"), "SIMPLE_CSV")
+  expect_is(attr(vvv,"doi"),"character")
+  expect_is(attr(vvv,"citation"),"character")
+  expect_is(attr(vvv,"downloadLink"),"character")
+  expect_output(print.occ_download(vvv),"<<gbif download>>")
+  expect_equal(length(capture.output(print(vvv))),22)
+  
+  # test new key
+  vcr::use_cassette("occ_download_6", {
+    ooo <- occ_download(
+      type="and",
+      pred_gt("organismQuantity", 1),
+      format = "SIMPLE_CSV"
+    )
+  }, match_requests_on = c("method", "uri", "body"))
+  
+  expect_is(ooo, "occ_download")
+  expect_is(unclass(ooo), "character")
+  expect_match(unclass(ooo)[1], "^[0-9]{7}-[0-9]{15}$")
+  expect_equal(attr(ooo, "user"), Sys.getenv("GBIF_USER"))
+  expect_equal(attr(ooo, "email"), Sys.getenv("GBIF_EMAIL"))
+  expect_equal(attr(ooo, "format"), "SIMPLE_CSV")
+  expect_is(attr(ooo,"doi"),"character")
+  expect_is(attr(ooo,"citation"),"character")
+  expect_is(attr(ooo,"downloadLink"),"character")
+  expect_output(print.occ_download(ooo),"<<gbif download>>")
+  expect_equal(length(capture.output(print(ooo))),22)
+
+  # test new key
+  vcr::use_cassette("occ_download_7", {
+    sss <- occ_download(
+      type="and",
+      pred("lifeStage", "Adult"),
+      format = "SIMPLE_CSV"
+    )
+  }, match_requests_on = c("method", "uri", "body"))
+  
+  expect_is(sss, "occ_download")
+  expect_is(unclass(sss), "character")
+  expect_match(unclass(sss)[1], "^[0-9]{7}-[0-9]{15}$")
+  expect_equal(attr(sss, "user"), Sys.getenv("GBIF_USER"))
+  expect_equal(attr(sss, "email"), Sys.getenv("GBIF_EMAIL"))
+  expect_equal(attr(sss, "format"), "SIMPLE_CSV")
+  expect_is(attr(sss,"doi"),"character")
+  expect_is(attr(sss,"citation"),"character")
+  expect_is(attr(sss,"downloadLink"),"character")
+  expect_output(print.occ_download(sss),"<<gbif download>>")
+  expect_equal(length(capture.output(print(sss))),22)
 })
 
 

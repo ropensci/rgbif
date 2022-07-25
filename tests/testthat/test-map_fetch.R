@@ -2,6 +2,7 @@ context("map_fetch")
 
 test_that("map_fetch - png", {
   skip_on_cran()
+  skip_on_ci()
   skip_if_not_installed("png")
   skip_if_not_installed("raster")
 
@@ -11,6 +12,7 @@ test_that("map_fetch - png", {
 
 test_that("map_fetch fails well", {
   skip_on_cran()
+  skip_on_ci()
   skip_if_not_installed("png")
   skip_if_not_installed("raster")
 

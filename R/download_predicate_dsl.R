@@ -132,6 +132,30 @@
 #' - occurrenceStatus (OCCURRENCE_STATUS)
 #' - publishingOrg (PUBLISHING_ORG)
 #' - occurrenceId (OCCURRENCE_ID)
+#' - eventId (EVENT_ID)
+#' - identifiedBy (IDENTIFIED_BY)
+#' - identifiedByID (IDENTIFIED_BY_ID)
+#' - license (LICENSE)
+#' - locality(LOCALITY)
+#' - networkKey (NETWORK_KEY)
+#' - organismId (ORGANISM_ID)
+#' - organismQuantity (ORGANISM_QUANTITY)
+#' - organismQuantityType (ORGANISM_QUANTITY_TYPE)
+#' - protocol (PROTOCOL)
+#' - recordedByID (RECORDED_BY_ID)
+#' - relativeOrganismQuantity (RELATIVE_ORGANISM_QUANTITY)
+#' - repatriated (REPATRIATED)
+#' - sampleSizeUnit (SAMPLE_SIZE_UNIT)
+#' - sampleSizeValue (SAMPLE_SIZE_VALUE)
+#' - samplingProtocol (SAMPLING_PROTOCOL)
+#' - verbatimScientificName (VERBATIM_SCIENTIFIC_NAME)
+#' - TaxonId (TAXON_ID)
+#' - waterBody (WATER_BODY)
+#' - iucnRedListCategory (IUCN_RED_LIST_CATEGORY)
+#' - degreeOfEstablishment (DEGREE_OF_ESTABLISHMENT)
+#' - isInCluster (IS_IN_CLUSTER)
+#' - lifeStage (LIFE_STAGE)
+
 #' 
 #' @references Download predicates docs:
 #' <https://www.gbif.org/developer/occurrence#predicates>
@@ -337,7 +361,53 @@ key_lkup <- list(
   publishingOrg='PUBLISHING_ORG',
   PUBLISHING_ORG='PUBLISHING_ORG',
   OCCURRENCE_ID = 'OCCURRENCE_ID',
-  occurrenceId = 'OCCURRENCE_ID'
+  occurrenceId = 'OCCURRENCE_ID',
+  eventId="EVENT_ID",
+  EVENT_ID="EVENT_ID",
+  identifiedBy="IDENTIFIED_BY",
+  IDENTIFIED_BY="IDENTIFIED_BY",
+  identifiedByID="IDENTIFIED_BY_ID",
+  IDENTIFIED_BY_ID="IDENTIFIED_BY_ID",
+  license="LICENSE",
+  LICENSE="LICENSE",
+  locality="LOCALITY",
+  LOCALITY="LOCALITY",
+  networkKey="NETWORK_KEY",
+  NETWORK_KEY="NETWORK_KEY",
+  organismId="ORGANISM_ID",
+  ORGANISM_ID="ORGANISM_ID",
+  organismQuantity="ORGANISM_QUANTITY",
+  ORGANISM_QUANTITY="ORGANISM_QUANTITY",
+  organismQuantityType="ORGANISM_QUANTITY_TYPE",
+  ORGANISM_QUANTITY_TYPE="ORGANISM_QUANTITY_TYPE",
+  protocol="PROTOCOL",
+  PROTOCOL="PROTOCOL",
+  recordedByID="RECORDED_BY_ID",
+  RECORDED_BY_ID="RECORDED_BY_ID",
+  relativeOrganismQuantity="RELATIVE_ORGANISM_QUANTITY",
+  RELATIVE_ORGANISM_QUANTITY="RELATIVE_ORGANISM_QUANTITY",
+  repatriated="REPATRIATED",
+  REPATRIATED="REPATRIATED",
+  sampleSizeUnit="SAMPLE_SIZE_UNIT",
+  SAMPLE_SIZE_UNIT="SAMPLE_SIZE_UNIT",
+  sampleSizeValue="SAMPLE_SIZE_VALUE",
+  SAMPLE_SIZE_VALUE="SAMPLE_SIZE_VALUE",
+  samplingProtocol="SAMPLING_PROTOCOL",
+  SAMPLING_PROTOCOL="SAMPLING_PROTOCOL",
+  verbatimScientificName="VERBATIM_SCIENTIFIC_NAME",
+  VERBATIM_SCIENTIFIC_NAME="VERBATIM_SCIENTIFIC_NAME",
+  TaxonId="TAXON_ID",
+  TAXON_ID="TAXON_ID",
+  waterBody="WATER_BODY",
+  WATER_BODY="WATER_BODY",
+  iucnRedListCategory="IUCN_RED_LIST_CATEGORY",
+  IUCN_RED_LIST_CATEGORY="IUCN_RED_LIST_CATEGORY",
+  degreeOfEstablishment="DEGREE_OF_ESTABLISHMENT",
+  DEGREE_OF_ESTABLISHMENT="DEGREE_OF_ESTABLISHMENT",
+  isInCluster="IS_IN_CLUSTER",
+  IS_IN_CLUSTER="IS_IN_CLUSTER",
+  lifeStage="LIFE_STAGE",
+  LIFE_STAGE="LIFE_STAGE"
   )
 
 parse_pred <- function(key, value, type = "and") {
