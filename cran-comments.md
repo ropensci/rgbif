@@ -1,8 +1,8 @@
 ## Test environments
 
 * local windows, R 4.1.2
-* local macOS 11.6.3 (GitHub Actions), R 4.1.2
-* ubuntu 18.04 (on GitHub Actions), R 4.1.2
+* local macOS 11.6.3 (GitHub Actions), R 4.2.1
+* ubuntu 18.04 (on GitHub Actions), R 4.2.1
 
 ## R CMD check results
 
@@ -16,7 +16,7 @@
 
 Hello,
 
-This version fixes a few bugs and dependency problems. 
+This version adds new features and bug fixes. 
 
 Thanks!
 John Waller
