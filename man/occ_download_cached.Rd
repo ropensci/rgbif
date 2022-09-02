@@ -24,7 +24,7 @@ objects of class \code{occ_predicate} or \code{occ_predicate_list}, created by
 use \code{body} parameter.}
 
 \item{body}{if you prefer to pass in the payload yourself, use this
-parameter. if use this, don't pass anythig to the dots. accepts
+parameter. If you use this, don't pass anything to the dots. Accepts
 either an R list, or JSON. JSON is likely easier, since the JSON
 library \pkg{jsonlite} requires that you unbox strings that shouldn't
 be auto-converted to arrays, which is a bit tedious for large queries.
