@@ -1,3 +1,24 @@
+rgbif 3.7.3
+===========
+
+### NEW FEATURES
+
+* Added missing search parameters for `occ_data()` and `occ_search()` (#530) 
+* Added missing `occ_download()` terms to key lookup (#541)
+* Support for identifying "gridded datasets" with experimental API using `dataset_gridded()` (#516)
+* Look up the datasets in a GBIF network with `network_constituents()` (#527)
+* Added support for using GBIF experimental reverse geocoding API `gbif_geocode()` (#521)
+
+### DEPRECATED
+
+* `networks()` is deprecated and called `network()` instead. (#527)
+* `parsenames()` is deprecated and called `name_parse()` for better alignment
+with other `name_*` functions. (#504)
+
+### BUG FIXES
+
+* `occ_search` fixed bug related to networkKey in the column names (#524)
+
 rgbif 3.7.2
 ===========
 
