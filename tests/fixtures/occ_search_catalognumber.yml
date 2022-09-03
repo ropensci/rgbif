@@ -20,5 +20,5 @@ http_interactions:
       encoding: UTF-8
       file: no
       string: '{"offset":0,"limit":300,"endOfRecords":true,"count":0,"results":[],"facets":[]}'
-  recorded_at: 2022-09-02 09:52:32 GMT
+  recorded_at: 2022-09-03 08:59:04 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0
