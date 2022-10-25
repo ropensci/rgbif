@@ -1,0 +1,49 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/species/7707728/iucnRedListCategory?offset=0&limit=100
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"category":"NOT_EVALUATED","usageKey":203042533,"scientificName":"TRACHEOPHYTA","taxonomicStatus":"ACCEPTED","code":"NE"}'
+  recorded_at: 2022-10-25 13:38:37 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/species/5097652/iucnRedListCategory?offset=0&limit=100
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"category":"NOT_EVALUATED","scientificName":"Corycus praemorsus Krauss,
+        1890","taxonomicStatus":"SYNONYM","acceptedName":"Corycoides karschi (Krauss,
+        1890)","code":"NE"}'
+  recorded_at: 2022-10-25 13:38:37 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

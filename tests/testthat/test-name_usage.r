@@ -205,6 +205,19 @@ test_that("name_usage typeSpecimens route works", {
   expect_equal(NROW(rte12a$data), 0)
 })
 
+test_that("name_usage iucnRedListCategory route works", {
+  vcr::use_cassette("name_usage_data_iucnRedListCategory", {
+    iucn_a <- name_usage(key = 7707728, data = 'iucnRedListCategory')
+    iucn_b <- name_usage(key = 5097652, data = 'iucnRedListCategory')
+  })
+  expect_is(iucn_a, "gbif")
+  expect_is(iucn_b, "gbif")
+  expect_is(iucn_a$meta, "data.frame")
+  expect_is(iucn_b$meta, "data.frame")
+  expect_equal(NROW(iucn_a$data), 1)
+  expect_equal(NROW(iucn_b$data), 1)
+})
+
 test_that("name_usage fails correctly", {
   vcr::use_cassette("name_usage_fails_well", {
     ### verbatim not working right now for some unknown reason

@@ -30,7 +30,8 @@
 #'
 #' Options for the data parameter are: 'all', 'verbatim', 'name', 'parents',
 #' 'children', 'related', 'synonyms', 'descriptions','distributions', 'media',
-#' 'references', 'speciesProfiles', 'vernacularNames', 'typeSpecimens', 'root'
+#' 'references', 'speciesProfiles', 'vernacularNames', 'typeSpecimens', 'root',
+#' 'iucnRedListCategory'
 #'
 #' This function used to be vectorized with respect to the `data`
 #' parameter, where you could pass in multiple values and the function
@@ -82,6 +83,9 @@
 #'
 #' # Pass on curl options
 #' name_usage(name='Puma concolor', limit=300, curlopts = list(verbose=TRUE))
+#' 
+#' # look up iucn red list category 
+#' name_usage(key = 7707728, data = 'iucnRedListCategory') 
 #' }
 
 name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
@@ -92,6 +96,7 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
   # check limit and start params
   check_vals(limit, "limit")
   check_vals(start, "start")
+  
   # each of these args must be length=1
   if (!is.null(rank)) stopifnot(length(rank) == 1)
   if (!is.null(name)) stopifnot(length(name) == 1)
@@ -107,8 +112,10 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
       choices = c('all', 'verbatim', 'name', 'parents', 'children',
                 'related', 'synonyms', 'descriptions',
                 'distributions', 'media', 'references', 'speciesProfiles',
-                'vernacularNames', 'typeSpecimens', 'root'), several.ok = FALSE)
+                'vernacularNames', 'typeSpecimens', 'root',
+                'iucnRedListCategory'), several.ok = FALSE)
   # paging implementation
+  
   iter <- NULL
   if (limit > 1000) {
     iter <- 0
@@ -146,7 +153,6 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
     # retrieve data in a single query
     out <- getdata(data, key, uuid, shortname, args, curlopts)
   }
-
   out <- list(meta = get_meta_nu(out),
               data =  tibble::as_tibble(name_usage_parse(out, data)))
   structure(out, class = "gbif", args = args, type = "single")
@@ -181,7 +187,7 @@ getdata <- function(x, key, uuid, shortname, args, curlopts = list()){
       if (x %in% c('verbatim', 'name', 'parents', 'children',
                   'related', 'synonyms', 'descriptions',
                   'distributions', 'media', 'references', 'speciesProfiles',
-                  'vernacularNames', 'typeSpecimens')) {
+                  'vernacularNames', 'typeSpecimens','iucnRedListCategory')) {
         url <- sprintf('%s/species/%s/%s', gbif_base(), key, x)
       } else
         if (x == 'root') {
