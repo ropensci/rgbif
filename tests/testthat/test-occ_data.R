@@ -37,7 +37,7 @@ test_that("returns the correct class", {
 test_that("returns the correct dimensions", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_data_datasetkey", {
-    out <- occ_data(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a')
+    out <- occ_data(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a',limit=20)
   }, preserve_exact_body_bytes = TRUE)
 
   # returns the correct class
@@ -70,9 +70,9 @@ test_that("returns the correct class", {
 test_that("dates work correctly", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_data_event_date", {
-    a <- occ_data(taxonKey = 3189815, year="2013")
-    b <- occ_data(taxonKey = 3189815, month="6")
-    expect_is(occ_data(taxonKey = key, year="1990,1991"), "gbif_data")
+    a <- occ_data(taxonKey = 3189815, year="2013",limit=2)
+    b <- occ_data(taxonKey = 3189815, month="6",limit=2)
+    expect_is(occ_data(taxonKey = key, year="1990,1991",limit=2), "gbif_data")
   }, preserve_exact_body_bytes = TRUE)
 
   expect_equal(a$data$year[1], 2013)
@@ -83,7 +83,7 @@ test_that("dates work correctly", {
 test_that("make sure things that should throw errors do", {
   vcr::use_cassette("occ_data_fails_well", {
     # not allowed to do a range query on many variables, including contintent
-    expect_error(occ_data(taxonKey = 3189815, continent = 'asia,oceania'))
+    expect_error(occ_data(taxonKey = 3189815, continent = 'asia,oceania', limit=2))
     # can't pass the wrong value to latitude
     expect_error(occ_data(decimalLatitude = 334))
   })
@@ -93,10 +93,10 @@ test_that("make sure things that should throw errors do", {
 test_that("returns the correct stuff", {
   key <- 7595433
   vcr::use_cassette("occ_data_depth", {
-    expect_is(occ_data(taxonKey = key, depth="5"), "gbif_data")
-    expect_is(occ_data(taxonKey = key, depth=5), "gbif_data")
+    expect_is(occ_data(taxonKey = key, depth="5",limit=2), "gbif_data")
+    expect_is(occ_data(taxonKey = key, depth=5,limit=2), "gbif_data")
     # does range search correctly - THROWS ERROR NOW, BUT SHOULD WORK
-    expect_error(occ_data(taxonKey = key, depth="5-10"))
+    expect_error(occ_data(taxonKey = key, depth="5-10", limit=2))
   })
 })
 
@@ -104,7 +104,7 @@ test_that("returns the correct stuff", {
 test_that("returns the correct dimensions", {
   key <- 2435099
   vcr::use_cassette("occ_data_elevation", {
-    res <- occ_data(taxonKey = key, elevation=1000, hasCoordinate=TRUE)
+    res <- occ_data(taxonKey = key, elevation=1000, hasCoordinate=TRUE,limit=2)
   }, preserve_exact_body_bytes = TRUE)
   expect_equal(res$data$elevation[1], 1000)
 })
@@ -188,7 +188,7 @@ test_that("geometry inputs work as expected", {
   
   # in well known text format
   vcr::use_cassette("occ_data_geometry_aa", {
-    aa <- occ_data(geometry='POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))', limit=20)
+    aa <- occ_data(geometry='POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))', limit=2)
   }, preserve_exact_body_bytes = TRUE)
   
   expect_is(aa, "gbif_data")
@@ -201,7 +201,7 @@ test_that("geometry inputs work as expected", {
     key <- 3189815
     bb <- occ_data(taxonKey = key, 
       geometry='POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))',
-      limit=20)
+      limit=2)
   }, preserve_exact_body_bytes = TRUE)
 
   expect_is(bb, "gbif_data")
@@ -211,7 +211,7 @@ test_that("geometry inputs work as expected", {
     
   # using bounding box, converted to WKT internally
   vcr::use_cassette("occ_data_geometry_cc", {
-    cc <- occ_data(geometry=c(-125.0,38.4,-121.8,40.9), limit=20)
+    cc <- occ_data(geometry=c(-125.0,38.4,-121.8,40.9), limit=2)
   }, preserve_exact_body_bytes = TRUE)
 
   expect_is(cc, "gbif_data")
@@ -339,9 +339,9 @@ test_that("various fields are dropped - so should be absent", {
 test_that("occurrenceStatus works correctly", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_data_occurrencestatus", {
-    pp <- occ_data()
-    aa <- occ_data(occurrenceStatus = 'ABSENT')
-    tt <- occ_data(taxonKey=212,occurrenceStatus = 'ABSENT')
+    pp <- occ_data(limit=2)
+    aa <- occ_data(occurrenceStatus = 'ABSENT', limit=2)
+    tt <- occ_data(taxonKey=212,occurrenceStatus = 'ABSENT', limit=2)
   }, preserve_exact_body_bytes = TRUE)
 
   expect_equal(pp$data$occurrenceStatus[1], 'PRESENT')
@@ -353,9 +353,9 @@ test_that("occurrenceStatus works correctly", {
 test_that("gadmGid works correctly", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_data_gadmGid", {
-    bwa <- occ_data(gadmGid='BWA.3_1')
-    twn <- occ_data(gadmGid='TWN')
-    usa <- occ_data(taxonKey=212,gadmGid="USA")
+    bwa <- occ_data(gadmGid='BWA.3_1', limit=2)
+    twn <- occ_data(gadmGid='TWN', limit=2)
+    usa <- occ_data(taxonKey=212,gadmGid="USA", limit=2)
   }, preserve_exact_body_bytes = TRUE)
 
   expect_equal(bwa$data$countryCode[1], 'BW')
@@ -368,10 +368,10 @@ test_that("gadmGid works correctly", {
 test_that("coordinateUncertaintyInMeters works correctly", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_data_coordinateUncertaintyInMeters", {
-    ss <- occ_data(coordinateUncertaintyInMeters=1000)
-    rr <- occ_data(coordinateUncertaintyInMeters="1000,10000")
+    ss <- occ_data(coordinateUncertaintyInMeters=1000, limit=2)
+    rr <- occ_data(coordinateUncertaintyInMeters="1000,10000", limit=2)
 
-    tt <- occ_data(taxonKey=212,coordinateUncertaintyInMeters="1000,10000")
+    tt <- occ_data(taxonKey=212,coordinateUncertaintyInMeters="1000,10000", limit=2)
   }, preserve_exact_body_bytes = TRUE)
 
   expect_equal(ss$data$coordinateUncertaintyInMeters[1], 1000)
@@ -386,9 +386,9 @@ test_that("coordinateUncertaintyInMeters works correctly", {
 test_that("organismQuantity works correctly", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_data_organismQuantity", {
-    ss <- occ_data(organismQuantity=5)
-    rr <- occ_data(organismQuantity="5,20")
-    tt <- occ_data(taxonKey=212,organismQuantity="5,20")
+    ss <- occ_data(organismQuantity=5, limit=2)
+    rr <- occ_data(organismQuantity="5,20", limit=2)
+    tt <- occ_data(taxonKey=212,organismQuantity="5,20", limit=2)
   }, preserve_exact_body_bytes = TRUE)
 
   expect_equal(ss$data$organismQuantity[1], 5)
@@ -403,9 +403,9 @@ test_that("organismQuantity works correctly", {
 test_that("organismQuantityType works correctly", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_data_organismQuantityType", {
-    yy <- occ_data(organismQuantity=5,organismQuantityType="individuals")
+    yy <- occ_data(organismQuantity=5,organismQuantityType="individuals", limit=2)
     tt <- occ_data(taxonKey=212,organismQuantity="5,20",
-                     organismQuantityType="individuals")
+                     organismQuantityType="individuals", limit=2)
   }, preserve_exact_body_bytes = TRUE)
 
   expect_equal(yy$data$organismQuantityType[1], "individuals")
@@ -420,9 +420,9 @@ test_that("organismQuantityType works correctly", {
 test_that("relativeOrganismQuantity works correctly", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_data_relativeOrganismQuantity", {
-    rr <- occ_data(relativeOrganismQuantity=0.1)
-    vv <- occ_data(relativeOrganismQuantity="0.1,0.5")
-    tt <- occ_data(taxonKey=212,relativeOrganismQuantity="0.1,0.5")
+    rr <- occ_data(relativeOrganismQuantity=0.1, limit=2)
+    vv <- occ_data(relativeOrganismQuantity="0.1,0.5", limit=2)
+    tt <- occ_data(taxonKey=212,relativeOrganismQuantity="0.1,0.5", limit=2)
   }, preserve_exact_body_bytes = TRUE)
 
   expect_equal(rr$data$relativeOrganismQuantity[1], 0.1)
@@ -439,10 +439,10 @@ test_that("relativeOrganismQuantity works correctly", {
 test_that("verbatimScientificName works correctly", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_data_verbatimScientificName", {
-    vv <- occ_data(verbatimScientificName="Calopteryx splendens")
-    ss <- occ_data(verbatimScientificName="Calopteryx splendens;Calopteryx virgo")
-    cc <- occ_data(verbatimScientificName=c("Calopteryx splendens","Calopteryx virgo"))
-    tt <- occ_data(country="DK",verbatimScientificName="Calopteryx splendens")
+    vv <- occ_data(verbatimScientificName="Calopteryx splendens", limit=2)
+    ss <- occ_data(verbatimScientificName="Calopteryx splendens;Calopteryx virgo", limit=2)
+    cc <- occ_data(verbatimScientificName=c("Calopteryx splendens","Calopteryx virgo"), limit=2)
+    tt <- occ_data(country="DK",verbatimScientificName="Calopteryx splendens", limit=2)
   }, preserve_exact_body_bytes = TRUE)
 
   expect_equal(vv$data$species[1], "Calopteryx splendens")
@@ -456,10 +456,10 @@ test_that("verbatimScientificName works correctly", {
 test_that("eventId works correctly", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_data_eventId", {
-    ii <- occ_data(eventId="1")
-    hh <- occ_data(eventId="1;2")
-    cc <- occ_data(eventId=c("1","2"))
-    tt <- occ_data(taxonKey=212,eventId="1")
+    ii <- occ_data(eventId="1", limit=2)
+    hh <- occ_data(eventId="1;2", limit=2)
+    cc <- occ_data(eventId=c("1","2"), limit=2)
+    tt <- occ_data(taxonKey=212,eventId="1", limit=2)
   }, preserve_exact_body_bytes = TRUE)
 
   expect_equal(ii$data$eventID[1], "1")
@@ -473,10 +473,10 @@ test_that("eventId works correctly", {
 test_that("occurrenceId works correctly", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_data_occurrenceId", {
-    ii <- occ_data(occurrenceId="1")
-    hh <- occ_data(occurrenceId="1;2")
-    cc <- occ_data(occurrenceId=c("1","2"))
-    tt <- occ_data(taxonKey=212,occurrenceId="1")
+    ii <- occ_data(occurrenceId="1", limit=2)
+    hh <- occ_data(occurrenceId="1;2", limit=2)
+    cc <- occ_data(occurrenceId=c("1","2"), limit=2)
+    tt <- occ_data(taxonKey=212,occurrenceId="1", limit=2)
   }, preserve_exact_body_bytes = TRUE)
 
   expect_equal(ii$data$occurrenceID[1], "1")
@@ -490,10 +490,10 @@ test_that("occurrenceId works correctly", {
 test_that("speciesKey works correctly", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_data_speciesKey", {
-    kk <- occ_data(speciesKey=7412043)
-    qq <- occ_data(speciesKey="7412043;1427037")
-    cc <- occ_data(speciesKey=c(7412043,1427037))
-    ff <- occ_data(country="DK",speciesKey=7412043)
+    kk <- occ_data(speciesKey=7412043, limit=2)
+    qq <- occ_data(speciesKey="7412043;1427037", limit=2)
+    cc <- occ_data(speciesKey=c(7412043,1427037), limit=2)
+    ff <- occ_data(country="DK",speciesKey=7412043, limit=2)
   }, preserve_exact_body_bytes = TRUE)
 
   expect_equal(kk$data$speciesKey[1],7412043)
@@ -507,10 +507,10 @@ test_that("speciesKey works correctly", {
 test_that("identifiedBy works correctly", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_data_identifiedBy", {
-    ww <- occ_data(identifiedBy="John Waller")
-    bb <- occ_data(identifiedBy="John Waller;Matthew Blissett")
-    cc <- occ_data(identifiedBy=c("John Waller", "Matthew Blissett"))
-    dd <- occ_data(country="DK",identifiedBy="John Waller")
+    ww <- occ_data(identifiedBy="John Waller", limit=2)
+    bb <- occ_data(identifiedBy="John Waller;Matthew Blissett", limit=2)
+    cc <- occ_data(identifiedBy=c("John Waller", "Matthew Blissett"), limit=2)
+    dd <- occ_data(country="DK",identifiedBy="John Waller", limit=2)
   }, preserve_exact_body_bytes = TRUE)
 
   expect_equal(ww$data$identifiedBy[1],"John Waller")
@@ -524,10 +524,10 @@ test_that("identifiedBy works correctly", {
 test_that("iucnRedListCategory works correctly", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_data_iucnRedListCategory", {
-    ll <- occ_data(iucnRedListCategory="LC")
-    yy <- occ_data(iucnRedListCategory="LC;EW")
-    ss <- occ_data(iucnRedListCategory=c("LC", "EW"))
-    tt <- occ_data(taxonKey=212,iucnRedListCategory="LC")
+    ll <- occ_data(iucnRedListCategory="LC", limit=2)
+    yy <- occ_data(iucnRedListCategory="LC;EW", limit=2)
+    ss <- occ_data(iucnRedListCategory=c("LC", "EW"), limit=2)
+    tt <- occ_data(taxonKey=212,iucnRedListCategory="LC", limit=2)
   }, preserve_exact_body_bytes = TRUE)
 
   expect_equal(ll$data$iucnRedListCategory[1],"LC")
@@ -542,10 +542,10 @@ test_that("iucnRedListCategory works correctly", {
 test_that("lifeStage works correctly", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_data_lifeStage", {
-    aa <- occ_data(lifeStage="Adult")
-    ee <- occ_data(lifeStage="Adult;Egg")
-    cc <- occ_data(lifeStage=c("Adult", "Egg"))
-    tt <- occ_data(taxonKey=212,lifeStage="Adult")
+    aa <- occ_data(lifeStage="Adult", limit=2)
+    ee <- occ_data(lifeStage="Adult;Egg", limit=2)
+    cc <- occ_data(lifeStage=c("Adult", "Egg"), limit=2)
+    tt <- occ_data(taxonKey=212,lifeStage="Adult", limit=2)
   }, preserve_exact_body_bytes = TRUE)
 
   expect_equal(aa$data$lifeStage[1],"Adult")
@@ -560,10 +560,10 @@ test_that("lifeStage works correctly", {
 test_that("degreeOfEstablishment works correctly", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_data_degreeOfEstablishment", {
-    ee <- occ_data(degreeOfEstablishment="Established")
-    ii <- occ_data(degreeOfEstablishment="Established;Invasive")
-    cc <- occ_data(degreeOfEstablishment=c("Established", "Invasive"))
-    tt <- occ_data(taxonKey=1,degreeOfEstablishment="Established")
+    ee <- occ_data(degreeOfEstablishment="Established", limit=2)
+    ii <- occ_data(degreeOfEstablishment="Established;Invasive", limit=2)
+    cc <- occ_data(degreeOfEstablishment=c("Established", "Invasive"), limit=2)
+    tt <- occ_data(taxonKey=1,degreeOfEstablishment="Established", limit=2)
   }, preserve_exact_body_bytes = TRUE)
 
   expect_equal(ee$data$degreeOfEstablishment[1],"Established")
@@ -578,9 +578,9 @@ test_that("degreeOfEstablishment works correctly", {
 test_that("isInCluster works correctly", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_data_isInCluster", {
-    ee <- occ_data(isInCluster=TRUE)
-    ff <- occ_data(isInCluster=FALSE)
-    tt <- occ_data(taxonKey = 212,isInCluster=TRUE)
+    ee <- occ_data(isInCluster=TRUE, limit=2)
+    ff <- occ_data(isInCluster=FALSE, limit=2)
+    tt <- occ_data(taxonKey = 212,isInCluster=TRUE, limit=2)
   }, preserve_exact_body_bytes = TRUE)
 
   expect_true(ee$data$isInCluster[1])
@@ -594,12 +594,12 @@ test_that("isInCluster works correctly", {
 test_that("networkKey works correctly", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_data_networkKey", {
-    nn <- occ_data(networkKey="4b0d8edb-7504-42c4-9349-63e86c01bf97")
+    nn <- occ_data(networkKey="4b0d8edb-7504-42c4-9349-63e86c01bf97", limit=2)
     ss <- occ_data(
-      networkKey="4b0d8edb-7504-42c4-9349-63e86c01bf97;99d66b6c-9087-452f-a9d4-f15f2c2d0e7e")
+      networkKey="4b0d8edb-7504-42c4-9349-63e86c01bf97;99d66b6c-9087-452f-a9d4-f15f2c2d0e7e", limit=2)
     cc <- occ_data(networkKey=c("4b0d8edb-7504-42c4-9349-63e86c01bf97",
-                                  "99d66b6c-9087-452f-a9d4-f15f2c2d0e7e"))
-    vv <- occ_data(taxonKey=6,networkKey="4b0d8edb-7504-42c4-9349-63e86c01bf97")
+                                  "99d66b6c-9087-452f-a9d4-f15f2c2d0e7e"), limit=2)
+    vv <- occ_data(taxonKey=6,networkKey="4b0d8edb-7504-42c4-9349-63e86c01bf97", limit=2)
   }, preserve_exact_body_bytes = TRUE)
 
   expect_equal(nn$data$networkKeys[[1]],"4b0d8edb-7504-42c4-9349-63e86c01bf97")

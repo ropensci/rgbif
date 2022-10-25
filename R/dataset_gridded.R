@@ -50,9 +50,10 @@ dataset_gridded <- function(uuid=NULL,
   
   uuid_bool <- sapply(uuid, function(x) is_uuid(x))
   if(all(!uuid_bool)) stop ("'uuid' should be a GBIF datasetkey uuid.")
-  
+
   x <- unique(uuid[uuid_bool & !is.na(uuid)]) # filtered uuids
   d_input <- tibble::tibble(index=1:length(uuid),uuid,is_uuid=uuid_bool)
+  
   if(!all(uuid_bool) & warn) warning("'uuid' should be a GBIF datasetkey uuid.")
   url_base <- paste0(gbif_base(), '/dataset/')
   urls <- paste0(url_base,x,"/gridded")
@@ -68,16 +69,20 @@ dataset_gridded <- function(uuid=NULL,
         )  
     } else {
       tibble::tibble(
-        min_distance = NA # dummy fill
+        min_distance = NA, # dummy fill
+        percentage_gridded = NA,
+        total_count = NA,
+        min_distance_count = NA
       )
     }
   })
   d <- bind_rows(res)
   d$uuid <- x
   d <- merge(d_input,d,id="uuid",all.x=TRUE)
+
   d$is_gridded <- (d$percentage_gridded >= min_per & d$min_distance > min_dis & d$min_distance_count >= min_dis_count)
-  d <- d[order(d$index),]
   d$is_gridded[is.na(d$is_gridded) & !is.na(d$uuid) & uuid_bool] <- FALSE # fill missing as not gridded
+  d <- d[order(d$index),]
   if(return=="logical") d$is_gridded
   else d
 }

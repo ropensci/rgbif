@@ -69,5 +69,22 @@ test_that("dataset_gridded bad data", {
   expect_error(dataset_gridded(FALSE),"'uuid' should be a GBIF datasetkey uuid.")
   expect_error(dataset_gridded(1,return="data"),"'uuid' should be a GBIF datasetkey uuid.")
   
+  # test only non-gridded datasets 
+  expect_false(dataset_gridded("13b70480-bd69-11dd-b15f-b8a03c50a862"))
+  expect_false(dataset_gridded("13b70480-bd69-11dd-b15f-b8a03c50a862",return="data")$is_gridded)
+  
+  nn <- dataset_gridded(c("4fa7b334-ce0d-4e88-aaae-2e0c138d049e","13b70480-bd69-11dd-b15f-b8a03c50a862"))
+  expect_equal(length(nn),2)
+  expect_false(any(nn))
+  expect_equal(class(nn),"logical")
+  
+  dd <- dataset_gridded(c("4fa7b334-ce0d-4e88-aaae-2e0c138d049e","13b70480-bd69-11dd-b15f-b8a03c50a862"),return="data")
+  expect_true(all(is.na(dd$min_distance))) 
+  expect_false(any(dd$is_gridded))
+  expect_false(is.logical(dd))
+  expect_equal(nrow(dd),2)
+  expect_equal(ncol(dd),8)
+  expect_equal(class(dd),"data.frame")
+  
 })
 
