@@ -264,7 +264,7 @@ expect_error(
       description = "This data was filtered using a fake protocol",
       source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY",
       gbif_download_doi = "10.15468/dl.hgc9gw"),
-    "Supply your datsetkey uuids with occurrence counts."
+    "Supply your datasetkey uuids with occurrence counts."
     )
   
   expect_error(
