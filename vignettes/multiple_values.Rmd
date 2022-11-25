@@ -9,7 +9,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-There are some differences in how function across **rgbif** behave with respect to many values given to a single parameter. Typically as a user does need to worry about these details, but it can sometimes make a difference. 
+There are some differences in how functions across **rgbif** behave with respect to many values given to a single parameter. Typically as a user does need to worry about these details, but it can sometimes make a difference. 
 
 ```r
 # multiple API requests 
