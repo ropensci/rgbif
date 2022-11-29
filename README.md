@@ -5,7 +5,7 @@
 # rgbif <img src="man/figures/logo.png" align="right" alt="" width="120">
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![cran checks](https://cranchecks.info/badges/worst/rgbif)](https://cranchecks.info/pkgs/rgbif)
+[![cran checks](https://badges.cranchecks.info/worst/rgbif.svg)](https://cranchecks.info/pkgs/rgbif)
 [![R-CMD-check](https://github.com/ropensci/rgbif/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/rgbif/actions?query=workflow%3AR-CMD-check)
 [![real-requests](https://github.com/ropensci/rgbif/workflows/R-check-real-requests/badge.svg)](https://github.com/ropensci/rgbif/actions?query=workflow%3AR-check-real-requests)
 [![codecov.io](https://codecov.io/github/ropensci/rgbif/coverage.svg?branch=master)](https://codecov.io/github/ropensci/rgbif?branch=master)
