@@ -116,21 +116,27 @@ but many values; stating that you want to search for all the values:
 Internally, the input to \verb{pred*} functions turns into JSON to be sent to
 GBIF. For example ...
 
-\code{pred_in("taxonKey", c(2480946, 5229208))} gives:\preformatted{\{
+\code{pred_in("taxonKey", c(2480946, 5229208))} gives:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{\{
    "type": "in",
    "key": "TAXON_KEY",
    "values": ["2480946", "5229208"]
  \}
-}
+}\if{html}{\out{</div>}}
 
-\code{pred_gt("elevation", 5000)} gives:\preformatted{\{
+\code{pred_gt("elevation", 5000)} gives:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{\{
    "type": "greaterThan",
    "key": "ELEVATION",
    "value": "5000"
 \}
-}
+}\if{html}{\out{</div>}}
 
-\code{pred_or(pred("taxonKey", 2977832), pred("taxonKey", 2977901))} gives:\preformatted{\{
+\code{pred_or(pred("taxonKey", 2977832), pred("taxonKey", 2977901))} gives:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{\{
   "type": "or",
   "predicates": [
      \{
@@ -145,7 +151,7 @@ GBIF. For example ...
      \}
   ]
 \}
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Keys}{

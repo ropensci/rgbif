@@ -22,11 +22,6 @@
 #' stable and is undocumented. As such, this may return different data over 
 #' time, may be rate-limited or may stop working if GBIF change the service. 
 #' Use this function with caution. 
-#'  
-#' 
-#' @references
-#' 
-#' 
 #' 
 #' @export
 #'
