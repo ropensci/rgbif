@@ -56,7 +56,7 @@ Suggests:
     vcr (>= 1.2.0),
     knitr,
     rmarkdown
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.2
 X-schema.org-applicationCategory: Biodiversity
 X-schema.org-keywords: GBIF, specimens, API, web-services, occurrences, species, taxonomy
 X-schema.org-isPartOf: https://ropensci.org
