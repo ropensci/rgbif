@@ -33,6 +33,14 @@ occ_search(taxonKey=c(1,2),basisOfRecord = c("PRESERVED_SPECIMEN","LIVING_SPECIM
 occ_search(occurrenceStatus="PRESENT;ABSENT")
 ```
 
+When using different requests `c("a","b")`, you will get back a list equal to the value of your vector. To extract data from multiple different requests, you will need something like the following. 
+
+```r
+
+occ_search(taxonKey=c(1,2))[[1]]$data
+
+```
+
 The following table describes whether an argument for `occ_search` or `occ_data` will take multiple values in the same request. 
 
 

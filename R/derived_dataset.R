@@ -199,7 +199,7 @@ check_citation_data = function(citation_data = NULL) {
   
   data <- citation_data
   
-  if(is.null(data)) stop("Supply your datsetkey uuids with occurrence counts.")  
+  if(is.null(data)) stop("Supply your datasetkey uuids with occurrence counts.")  
   if(is.vector(data))  stop("citation_data should be a data.frame not a vector.")
   
   # try to convert to data.frame
