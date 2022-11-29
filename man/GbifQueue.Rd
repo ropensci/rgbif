@@ -53,20 +53,20 @@ out$reqs
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-print}{\code{GbifQueue$print()}}
-\item \href{#method-new}{\code{GbifQueue$new()}}
-\item \href{#method-add}{\code{GbifQueue$add()}}
-\item \href{#method-add_all}{\code{GbifQueue$add_all()}}
-\item \href{#method-remove}{\code{GbifQueue$remove()}}
-\item \href{#method-next_}{\code{GbifQueue$next_()}}
-\item \href{#method-last_}{\code{GbifQueue$last_()}}
-\item \href{#method-jobs}{\code{GbifQueue$jobs()}}
-\item \href{#method-clone}{\code{GbifQueue$clone()}}
+\item \href{#method-GbifQueue-print}{\code{GbifQueue$print()}}
+\item \href{#method-GbifQueue-new}{\code{GbifQueue$new()}}
+\item \href{#method-GbifQueue-add}{\code{GbifQueue$add()}}
+\item \href{#method-GbifQueue-add_all}{\code{GbifQueue$add_all()}}
+\item \href{#method-GbifQueue-remove}{\code{GbifQueue$remove()}}
+\item \href{#method-GbifQueue-next_}{\code{GbifQueue$next_()}}
+\item \href{#method-GbifQueue-last_}{\code{GbifQueue$last_()}}
+\item \href{#method-GbifQueue-jobs}{\code{GbifQueue$jobs()}}
+\item \href{#method-GbifQueue-clone}{\code{GbifQueue$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-print"></a>}}
-\if{latex}{\out{\hypertarget{method-print}{}}}
+\if{html}{\out{<a id="method-GbifQueue-print"></a>}}
+\if{latex}{\out{\hypertarget{method-GbifQueue-print}{}}}
 \subsection{Method \code{print()}}{
 print method for the \code{GbifQueue} class
 \subsection{Usage}{
@@ -84,8 +84,8 @@ print method for the \code{GbifQueue} class
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-GbifQueue-new"></a>}}
+\if{latex}{\out{\hypertarget{method-GbifQueue-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new \code{GbifQueue} object
 \subsection{Usage}{
@@ -107,8 +107,8 @@ A new \code{GbifQueue} object
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-add"></a>}}
-\if{latex}{\out{\hypertarget{method-add}{}}}
+\if{html}{\out{<a id="method-GbifQueue-add"></a>}}
+\if{latex}{\out{\hypertarget{method-GbifQueue-add}{}}}
 \subsection{Method \code{add()}}{
 Add single jobs to the queue
 \subsection{Usage}{
@@ -127,8 +127,8 @@ nothing returned; adds job (\code{x}) to the queue
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-add_all"></a>}}
-\if{latex}{\out{\hypertarget{method-add_all}{}}}
+\if{html}{\out{<a id="method-GbifQueue-add_all"></a>}}
+\if{latex}{\out{\hypertarget{method-GbifQueue-add_all}{}}}
 \subsection{Method \code{add_all()}}{
 Add all jobs to the queue
 \subsection{Usage}{
@@ -140,8 +140,8 @@ nothing returned
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-remove"></a>}}
-\if{latex}{\out{\hypertarget{method-remove}{}}}
+\if{html}{\out{<a id="method-GbifQueue-remove"></a>}}
+\if{latex}{\out{\hypertarget{method-GbifQueue-remove}{}}}
 \subsection{Method \code{remove()}}{
 Remove a job from the queue
 \subsection{Usage}{
@@ -160,8 +160,8 @@ nothing returned
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-next_"></a>}}
-\if{latex}{\out{\hypertarget{method-next_}{}}}
+\if{html}{\out{<a id="method-GbifQueue-next_"></a>}}
+\if{latex}{\out{\hypertarget{method-GbifQueue-next_}{}}}
 \subsection{Method \code{next_()}}{
 Get the next job in the \code{queue}. if no more jobs,
 returns empty list
@@ -174,8 +174,8 @@ next job or empty list
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-last_"></a>}}
-\if{latex}{\out{\hypertarget{method-last_}{}}}
+\if{html}{\out{<a id="method-GbifQueue-last_"></a>}}
+\if{latex}{\out{\hypertarget{method-GbifQueue-last_}{}}}
 \subsection{Method \code{last_()}}{
 Get the last job in the \code{queue}. if no more jobs,
 returns empty list
@@ -188,8 +188,8 @@ last job or empty list
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-jobs"></a>}}
-\if{latex}{\out{\hypertarget{method-jobs}{}}}
+\if{html}{\out{<a id="method-GbifQueue-jobs"></a>}}
+\if{latex}{\out{\hypertarget{method-GbifQueue-jobs}{}}}
 \subsection{Method \code{jobs()}}{
 Get number of jobs in the \code{queue}
 \subsection{Usage}{
@@ -201,8 +201,8 @@ Get number of jobs in the \code{queue}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-GbifQueue-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-GbifQueue-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

@@ -84,7 +84,8 @@ Note that \code{data="verbatim"} hasn't been working.
 
 Options for the data parameter are: 'all', 'verbatim', 'name', 'parents',
 'children', 'related', 'synonyms', 'descriptions','distributions', 'media',
-'references', 'speciesProfiles', 'vernacularNames', 'typeSpecimens', 'root'
+'references', 'speciesProfiles', 'vernacularNames', 'typeSpecimens', 'root',
+'iucnRedListCategory'
 
 This function used to be vectorized with respect to the \code{data}
 parameter, where you could pass in multiple values and the function
@@ -149,6 +150,9 @@ name_usage(language = "spanish")
 
 # Pass on curl options
 name_usage(name='Puma concolor', limit=300, curlopts = list(verbose=TRUE))
+
+# look up iucn red list category 
+name_usage(key = 7707728, data = 'iucnRedListCategory') 
 }
 }
 \references{

@@ -44,8 +44,6 @@ gbif_geocode(c(0,50),c(0,20))
 
 }
 \references{
-
-
 http://gadm.org/
 http://marineregions.org/
 http://www.tdwg.org/standards/
