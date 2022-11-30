@@ -93,6 +93,25 @@ species = c(
 
 name_backbone_checklist(name_data)
 ```
+## Too many choices problem 
+
+When two or more names exist in the [GBIF Backbone Taxonomy](https://www.gbif.org/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c) that have the **same name** but **different authorship,** (homotypic synonyms) supplying just the binomial name will result in `matchType : "HIGHERRANK"`. 
+
+For example, the binomial name "Glocianus punctiger" has two entries in the backbone taxonomy. Using the `verbose=TRUE` will return both names. 
+
+```
+name_backbone("Glocianus punctiger",verbose=TRUE) # returns more names
+# "Glocianus punctiger (C.R.Sahlberg, 1835)"
+# "Glocianus punctiger (Gyllenhal, 1837)"
+```
+
+Giving just the binomial name will return the genus **Glocianus**, since GBIF doesn't know which one to choose. 
+
+```r
+name_backbone("Glocianus punctiger") # matchType : "HIGHERRANK"
+```
+
+Since `name_backbone` is designed to give back the best match, it's not possible for the response to choose between the two names. 
 
 ## Other name_* functions 
 
