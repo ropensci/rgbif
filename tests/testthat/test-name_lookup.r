@@ -41,7 +41,7 @@ test_that("works with habitat parameter", {
   }, preserve_exact_body_bytes = TRUE)
   
   expect_is(fachab, "gbif")
-  expect_equal(fachab$facets$habitat$name, c("TERRESTRIAL","MARINE","FRESHWATER"))
+  expect_equal(fachab$facets$habitat$name, c("MARINE","TERRESTRIAL","FRESHWATER"))
   
   expect_is(facet_terr, "gbif")
   expect_is(facet_mar, "gbif")
