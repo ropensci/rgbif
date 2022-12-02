@@ -15,10 +15,11 @@ http_interactions:
       explanation: Nothing matches the given URI
     headers:
       status: HTTP/1.1 404 Not Found
-      content-type: text/plain
+      content-type: application/json
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
-      string: 'Entity not found for uri: /'
-  recorded_at: 2022-04-08 13:35:39 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+      string: '{"timestamp":"2022-12-02T09:47:45.002+00:00","status":404,"error":"","message":"Entity
+        not found for uri: /species/3119195/verbatim"}'
+  recorded_at: 2022-12-02 09:47:44 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
