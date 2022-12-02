@@ -207,7 +207,7 @@ test_that("name_usage typeSpecimens route works", {
 
 test_that("name_usage iucnRedListCategory route works", {
   vcr::use_cassette("name_usage_data_iucnRedListCategory", {
-    iucn_a <- name_usage(key = 7707728, data = 'iucnRedListCategory')
+    iucn_a <- name_usage(key = 7412043, data = 'iucnRedListCategory')
     iucn_b <- name_usage(key = 5097652, data = 'iucnRedListCategory')
   })
   expect_is(iucn_a, "gbif")
