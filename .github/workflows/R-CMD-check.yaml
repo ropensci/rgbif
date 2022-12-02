@@ -81,9 +81,8 @@ jobs:
       - name: Install dependencies macOS and Windows
         if: runner.os == 'macOS' || runner.os == 'Windows'
         run: |
-          pak::pkg_install("stringi")
           pak::local_install_dev_deps()
-          pak::pkg_install(c("rcmdcheck", "sf", "maps", "scales", "colorspace", "raster", "protolite", "rgeos"))
+          pak::pkg_install(c("stringi","rcmdcheck", "sf", "maps", "scales", "colorspace", "raster", "protolite", "rgeos"))
         shell: Rscript {0}
 
       - name: Session info
