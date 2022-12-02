@@ -17,10 +17,9 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: ASCII-8BIT
+      encoding: ''
       file: no
-      string: |-
-        eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOnRydWUsImNvdW50IjowLCJyZXN1bHRz
-        IjpbXSwiZmFjZXRzIjpbXX0=
-  recorded_at: 2022-04-08 13:35:23 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjoxMDAsImVuZE9mUmVjb3JkcyI6dHJ1ZSwiY291bnQiOjAsInJlc3Vs
+        dHMiOltdLCJmYWNldHMiOltdfQ==
+  recorded_at: 2022-12-02 10:52:18 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
