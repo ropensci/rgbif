@@ -8,13 +8,13 @@
   "codeRepository": "https://github.com/ropensci/rgbif",
   "issueTracker": "https://github.com/ropensci/rgbif/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "3.7.3",
+  "version": "3.7.4",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.1.2 (2021-11-01)",
+  "runtimePlatform": "R version 4.2.2 (2022-10-31 ucrt)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -190,7 +190,7 @@
       "@type": "SoftwareApplication",
       "identifier": "vcr",
       "name": "vcr",
-      "version": ">= 0.5.0",
+      "version": ">= 1.2.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -394,7 +394,7 @@
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://ropensci.org",
   "keywords": ["GBIF", "specimens", "API", "web-services", "occurrences", "species", "taxonomy", "gbif", "api", "data", "biodiversity", "rstats", "r", "spocc", "r-package", "lifewatch", "oscibio"],
-  "fileSize": "310076.875KB",
+  "fileSize": "10899.16KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -438,7 +438,7 @@
       ],
       "name": "rgbif: Interface to the Global Biodiversity Information Facility API",
       "url": "https://CRAN.R-project.org/package=rgbif",
-      "description": "R package version 3.7.3"
+      "description": "R package version 3.7.4"
     },
     {
       "@type": "ScholarlyArticle",
