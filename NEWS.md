@@ -1,3 +1,24 @@
+rgbif 3.7.4
+===========
+
+### NEW FEATURES
+* `name_usage` now has the ability to fetch iucn red list categories using `data=iucnRedListCategory`. (#547)
+
+### DOCUMENTATION
+
+* `name_backbone_checklist` updated definition of `verbose` argument. (#564)
+* "Too many choices" warning added to article [Working With Taxonomic Names](https://docs.ropensci.org/rgbif/articles/taxonomic_names.html).  (#536)
+
+### BUG FIXES
+
+* `dataset_gridded` bug fixed when inputing only one non-gridded dataset. (#546)
+
+### MINOR IMPROVEMENTS
+
+* New CRAN checks badge URL. (#555)
+* Update min vcr requirment to (>= 1.2.0). (#559)
+* Updated r-lib actions to v2 (#566)
+
 rgbif 3.7.3
 ===========
 

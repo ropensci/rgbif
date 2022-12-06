@@ -143,7 +143,7 @@ glimpse()
 
 <!-- This is not typically necessary if you just want to make a download using the taxonkey, since a higher-rank taxonkey will automatically download all of the downstream species, genera, families ect in a group. See [here](https://discourse.gbif.org/t/understanding-gbif-taxonomic-keys-usagekey-taxonkey-specieskey/3045) for an explanation of GBIF taxonkey terms like **nubKey**.  -->
 
-`name_usage` can be used for looking up the **common names** or **venacular names**. 
+`name_usage` can be used for looking up the **common names** or **vernacular names**. 
 
 ```r
 name_usage(key=212, data="vernacularNames")$data # the common names for birds
