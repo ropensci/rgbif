@@ -5,7 +5,9 @@
 #'
 #' @param name_data (data.frame or vector) see details.
 #' @param verbose (logical) If true it shows alternative matches which were 
-#' considered but then rejected
+#' considered but then rejected.
+#' @param strict (logical) strict=TRUE will not attempt to fuzzy match or 
+#' return higherrankmatches.
 #' 
 #' @return
 #' A \code{data.frame} of matched names.
@@ -87,7 +89,7 @@
 #'  ))
 #'
 #' name_backbone_checklist(name_data)
-#' name_backbone_checklist(name_data,verbose=TRUE) # return non-accepted names too 
+#' name_backbone_checklist(name_data,verbose=TRUE) # return more than 1 result per name
 #'
 #' # works with just vectors too 
 #' name_list <- c(
@@ -101,17 +103,19 @@
 #'
 #' name_backbone_checklist(name_list)
 #' name_backbone_checklist(name_list,verbose=TRUE)
+#' name_backbone_checklist(name_list,strict=TRUE) # no fuzzy matching
 #' 
 #' }
 #'
 name_backbone_checklist <- function(
   name_data = NULL,
   verbose = FALSE,
+  strict = FALSE,
   curlopts = list()
 ) {
   name_data <- check_name_data(name_data)
   data_list <- lapply(data.table::transpose(name_data),function(x) stats::setNames(as.list(x),colnames(name_data)))
-  urls <- make_async_urls(data_list,verbose=verbose)
+  urls <- make_async_urls(data_list,verbose=verbose,strict=strict)
   matched_list <- gbif_async_get(urls)
   verbatim_list <- lapply(data_list,function(x) stats::setNames(x,paste0("verbatim_",names(x))))
   mvl <- mapply(function(x, y) c(x,y),verbatim_list,matched_list,SIMPLIFY = FALSE)
@@ -184,12 +188,13 @@ check_name_data = function(name_data) {
   name_data
 }
 
-make_async_urls <- function(x,verbose=FALSE) {
+make_async_urls <- function(x,verbose=FALSE,strict=FALSE) {
   url_base <- paste0(gbif_base(), '/species/match')
   x <- lapply(x, function(x) x[!is.na(x)]) # remove potential missing values
   queries <- lapply(x,function(x) paste0(names(x),"=",x,collapse="&"))
   urls <- paste0(url_base,"?",queries)
   if(verbose) urls <- paste0(urls,"&verbose=true")
+  if(strict) urls <- paste0(urls,"&strict=true")
   urls <- sapply(urls,function(x) utils::URLencode(x))
   urls <- sapply(urls,function(x) gsub("\\[|\\]","",x)) # remove any square brackets
   urls

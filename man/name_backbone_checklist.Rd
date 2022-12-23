@@ -4,13 +4,21 @@
 \alias{name_backbone_checklist}
 \title{Lookup names in the GBIF backbone taxonomy in a checklist.}
 \usage{
-name_backbone_checklist(name_data = NULL, verbose = FALSE, curlopts = list())
+name_backbone_checklist(
+  name_data = NULL,
+  verbose = FALSE,
+  strict = FALSE,
+  curlopts = list()
+)
 }
 \arguments{
 \item{name_data}{(data.frame or vector) see details.}
 
 \item{verbose}{(logical) If true it shows alternative matches which were
-considered but then rejected}
+considered but then rejected.}
+
+\item{strict}{(logical) strict=TRUE will not attempt to fuzzy match or
+return higherrankmatches.}
 
 \item{curlopts}{list of named curl options passed on to
 \code{\link[crul]{HttpClient}}. see \code{curl::curl_options}
@@ -103,7 +111,7 @@ name_data <- data.frame(
  ))
 
 name_backbone_checklist(name_data)
-name_backbone_checklist(name_data,verbose=TRUE) # return non-accepted names too 
+name_backbone_checklist(name_data,verbose=TRUE) # return more than 1 result per name
 
 # works with just vectors too 
 name_list <- c(
@@ -117,6 +125,7 @@ name_list <- c(
 
 name_backbone_checklist(name_list)
 name_backbone_checklist(name_list,verbose=TRUE)
+name_backbone_checklist(name_list,strict=TRUE) # no fuzzy matching
 
 }
 
