@@ -46,8 +46,6 @@ Imports:
     wk
 Suggests:
     testthat,
-    sp,
-    rgeos,
     png,
     raster,
     protolite (>= 2.0),
