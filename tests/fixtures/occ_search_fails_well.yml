@@ -17,11 +17,11 @@ http_interactions:
       status: HTTP/1.1 400 Bad Request
       content-type: text/plain
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: Cannot parse asia,oceania into a known Continent
-  recorded_at: 2022-09-03 08:59:36 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+  recorded_at: 2022-12-23 10:54:34 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search?decimalLatitude=334&occurrenceStatus=PRESENT&limit=500&offset=0
@@ -40,8 +40,8 @@ http_interactions:
       status: HTTP/1.1 400 Bad Request
       content-type: text/plain
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: 334 is not valid value, latitude must be between -90 and 90.
-  recorded_at: 2022-09-03 08:59:36 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+  recorded_at: 2022-12-23 10:54:34 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2

@@ -17,13 +17,13 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '{"usageKey":7595433,"scientificName":"Salmo salar Linnaeus, 1758","canonicalName":"Salmo
         salar","rank":"SPECIES","status":"ACCEPTED","confidence":100,"matchType":"EXACT","kingdom":"Animalia","phylum":"Chordata","order":"Salmoniformes","family":"Salmonidae","genus":"Salmo","species":"Salmo
-        salar","kingdomKey":1,"phylumKey":44,"classKey":204,"orderKey":1313,"familyKey":8615,"genusKey":2347608,"speciesKey":7595433,"synonym":false,"class":"Actinopterygii"}'
-  recorded_at: 2022-09-03 08:59:38 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+        salar","kingdomKey":1,"phylumKey":44,"orderKey":1313,"familyKey":8615,"genusKey":2347608,"speciesKey":7595433,"synonym":false}'
+  recorded_at: 2022-12-23 10:54:35 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&depth=5&limit=2&offset=0&taxonKey=7595433
@@ -42,11 +42,11 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '{"offset":0,"limit":2,"endOfRecords":true,"count":0,"results":[],"facets":[]}'
-  recorded_at: 2022-09-03 08:59:38 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+  recorded_at: 2022-12-23 10:54:35 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&depth=5&limit=2&offset=0&taxonKey=7595433
@@ -65,11 +65,11 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '{"offset":0,"limit":2,"endOfRecords":true,"count":0,"results":[],"facets":[]}'
-  recorded_at: 2022-09-03 08:59:38 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+  recorded_at: 2022-12-23 10:54:35 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&depth=5-10&limit=500&offset=0&taxonKey=7595433
@@ -88,8 +88,8 @@ http_interactions:
       status: HTTP/1.1 400 Bad Request
       content-type: text/plain
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: 'Invalid decimal range: 5-10'
-  recorded_at: 2022-09-03 08:59:38 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+  recorded_at: 2022-12-23 10:54:35 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
