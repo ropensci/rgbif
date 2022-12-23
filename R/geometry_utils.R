@@ -57,12 +57,10 @@ mp2wkt <- function(x) {
 prune_result <- function(x) {
   geom_orig <- getOption('rgbif.geometry.original')
   if (!is.null(geom_orig)) {
-    check_for_a_pkg("sp")
-    check_for_a_pkg("rgeos")
-    poly_orig <- rgeos::readWKT(geom_orig)
-    xx <- x
-    sp::coordinates(xx) <- ~decimalLongitude + decimalLatitude
-    clipped <- sp::over(xx, poly_orig) == 1
+    check_for_a_pkg("sf")
+    poly_orig <- sf::st_as_sf(data.frame(wkt=geom_orig),wkt="wkt",crs = "+proj=longlat +datum=WGS84")
+    xx <- sf::st_as_sf(x, coords = c("decimalLongitude", "decimalLatitude"),crs = "+proj=longlat +datum=WGS84")
+    clipped <- unlist(sf::st_intersects(xx,poly_orig,sparse=FALSE)) == 1
     clipped[is.na(clipped)] <- FALSE
     x <- x[clipped, ]
   }
