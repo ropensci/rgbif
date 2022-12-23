@@ -673,12 +673,6 @@ wkt <- gsub("\n", " ", wkt)
 
 #### if WKT too long, with 'geom_big=bbox': makes into bounding box
 res <- occ_search(geometry = wkt, geom_big = "bbox")$data
-library("rgeos")
-library("sp")
-wktsp <- readWKT(wkt)
-plot(wktsp)
-coordinates(res) <- ~decimalLongitude+decimalLatitude
-points(res)
 
 #### Or, use 'geom_big=axe'
 (res <- occ_search(geometry = wkt, geom_big = "axe"))
