@@ -364,7 +364,103 @@ test_that("name_backbone_checklist strict arg works as expected", {
     
 })
 
-
+test_that("name_backbone_checklist default values works as expected", {
+  skip_on_cran()
+  skip_on_ci()
+  
+  # basic functionality 
+  gg <- name_backbone_checklist(c("Cirsium arvense (L.) Scop.", 
+                                 "Calopteryx splendens (Harris, 1780)"))
+  expect_warning(gg$verbatim_kingdom, "Unknown or uninitialised column: `verbatim_kingdom`.")
+  
+  dd <- name_backbone_checklist(c("Cirsium arvense (L.) Scop.", 
+                                  "Calopteryx splendens (Harris, 1780)"),
+                                kingdom = "Animalia")
+  expect_is(dd, "tbl")
+  expect_is(dd, "tbl_df")
+  expect_is(dd, "data.frame")
+  expect_true(is.numeric(dd$verbatim_index))
+  expect_true(!is.unsorted(dd$verbatim_index))
+  expect_true(all(dd$verbatim_kingdom == "Animalia"))
+  
+  rr <- name_backbone_checklist(c("Cirsium arvense (L.) Scop.", 
+                                  "Calopteryx splendens (Harris, 1780)"),
+                                kingdom = "Animalia",rank="SPECIES")
+  
+  expect_true(all(rr$verbatim_kingdom == "Animalia"))
+  expect_true(all(rr$verbatim_rank == "SPECIES"))
+  
+  # multiple default values 
+  mm <- name_backbone_checklist(c("Cirsium arvense (L.) Scop.", 
+                                  "Calopteryx splendens (Harris, 1780)"),
+                                kingdom = c("Plantea","Animalia"),rank="SPECIES")
+  
+  expect_true(all(mm$verbatim_kingdom %in% c("Plantea","Animalia")))
+  
+  # overwrite existing values in name_data
+  name_data <- data.frame(
+    name = c(
+      NA, # missing value
+      "Cirsium arvense (L.) Scop.", # a plant
+      "Calopteryx splendens (Harris, 1780)", # an insect
+      "Puma concolor (Linnaeus, 1771)", # a big cat
+      "Ceylonosticta alwisi (Priyadarshana & Wijewardhane, 2016)", # newly discovered insect 
+      "Puma concuolor (Linnaeus, 1771)", # a mis-spelled big cat
+      "Fake species (John Waller 2021)", # a fake species
+      "Calopteryx", # Just a Genus
+      "Calopteryx fake" # make higher rank match
+    ), description = c(
+      "missing",
+      "a plant",
+      "an insect",
+      "a big cat",
+      "newly discovered insect",
+      "a mis-spelled big cat",
+      "a fake species",
+      "just a GENUS",
+      "higherrank match"
+    ), 
+    kingdom = c(
+      "missing",
+      "Plantae",
+      "Animalia",
+      "Animalia",
+      "Animalia",
+      "Animalia",
+      "Johnlia",
+      "Animalia",
+      "Animalia"
+    ), Canonical_Name = c(
+      "not known",
+      "Cirsium arvense", 
+      "Calopteryx splendens", 
+      "Puma concolor", 
+      "Ceylonosticta alwisi", 
+      "Puma concuolor", 
+      "Fake species",
+      "Calopteryx",
+      "Calopteryx fake"
+    ), scientificName = c(
+      NA,
+      "Cirsium arvense (L.) Scop.", # a plant
+      "Calopteryx splendens (Harris, 1780)", # an insect
+      "Puma concolor (Linnaeus, 1771)", # a big cat
+      "Ceylonosticta alwisi (Priyadarshana & Wijewardhane, 2016)", # newly discovered insect 
+      "Puma concuolor (Linnaeus, 1771)", # a mis-spelled big cat
+      "Fake species (John Waller 2021)", # a fake species
+      "Calopteryx", # Just a Genus
+      "Calopteryx fake Waller 2022"
+    ))
+  
+    expect_message((oo <- name_backbone_checklist(name_data,kingdom = "Animalia")),
+                   "Default values found, over-writing : kingdom")
+    expect_is(oo, "tbl")
+    expect_is(oo, "tbl_df")
+    expect_is(oo, "data.frame")
+    expect_true(is.numeric(oo$verbatim_index))
+    expect_true(!is.unsorted(oo$verbatim_index))
+    expect_true(all(oo$verbatim_kingdom == "Animalia"))
+})
 
 
 # test_that("test status codes", {
