@@ -4,6 +4,13 @@
 #' @export
 #'
 #' @param name_data (data.frame or vector) see details.
+#' @param rank (character) default value (optional).
+#' @param kingdom (character) default value (optional).
+#' @param phylum (character) default value (optional).
+#' @param class (character) default value (optional).
+#' @param order (character) default value (optional).
+#' @param family (character) default value (optional).
+#' @param genus (character) default value (optional).
 #' @param verbose (logical) If true it shows alternative matches which were 
 #' considered but then rejected.
 #' @param strict (logical) strict=TRUE will not attempt to fuzzy match or 
@@ -43,7 +50,14 @@
 #' 
 #' If more than one aliases is present and no column is named 'name', then the
 #' left-most column with an acceptable aliased name above is used.  
-#'
+#' 
+#' Default values for rank, kingdom, phylum, class, order, family, and genus can
+#' can be supplied. If a default value is supplied, the values for these fields 
+#' are ignored in name_data, and the default value is used instead. This is most 
+#' useful if you have a list of names and you know they are all plants, insects,
+#' birds, ect. You can also input multiple values, if they are the same length as 
+#' list of names you are trying to match. 
+#' 
 #' This function can also be used with a character vector of names. In that case 
 #' no column names are needed of course. 
 #' 
@@ -89,7 +103,9 @@
 #'  ))
 #'
 #' name_backbone_checklist(name_data)
-#' name_backbone_checklist(name_data,verbose=TRUE) # return more than 1 result per name
+#'
+#' # return more than 1 result per name
+#' name_backbone_checklist(name_data,verbose=TRUE) 
 #'
 #' # works with just vectors too 
 #' name_list <- c(
@@ -103,17 +119,32 @@
 #'
 #' name_backbone_checklist(name_list)
 #' name_backbone_checklist(name_list,verbose=TRUE)
-#' name_backbone_checklist(name_list,strict=TRUE) # no fuzzy matching
+#' name_backbone_checklist(name_list,strict=TRUE) 
+#' 
+#' # default values
+#' name_backbone_checklist(c("Aloe arborecens Mill.",
+#' "Cirsium arvense (L.) Scop."),kingdom="Plantae")
+#' name_backbone_checklist(c("Aloe arborecens Mill.",
+#' "Calopteryx splendens (Harris, 1780)"),kingdom=c("Plantae","Animalia"))
 #' 
 #' }
 #'
 name_backbone_checklist <- function(
   name_data = NULL,
-  verbose = FALSE,
+  rank = NULL,
+  kingdom = NULL,
+  phylum = NULL,
+  class = NULL,
+  order = NULL,
+  family = NULL,
+  genus  = NULL,
   strict = FALSE,
+  verbose = FALSE,
   curlopts = list()
 ) {
   name_data <- check_name_data(name_data)
+  if(!is.null(c(rank,kingdom,phylum,class,order,family,genus))) 
+    name_data <- default_value_handler(name_data=name_data,rank=rank,kingdom=kingdom,phylum=phylum,class=class,order=order,family=family,genus=genus) 
   data_list <- lapply(data.table::transpose(name_data),function(x) stats::setNames(as.list(x),colnames(name_data)))
   urls <- make_async_urls(data_list,verbose=verbose,strict=strict)
   matched_list <- gbif_async_get(urls)
@@ -186,6 +217,18 @@ check_name_data = function(name_data) {
   name_data <- name_data[colnames(name_data) %in% char_args] # only keep needed columns
   name_data$index <- 1:nrow(name_data) # add id for sorting 
   name_data
+}
+
+default_value_handler <- function(name_data=NULL,rank=NULL,kingdom=NULL,phylum=NULL,class=NULL,
+                                  order=NULL,family=NULL,genus=NULL) {
+  args <- rgbif_compact(list(rank=rank, kingdom=kingdom, phylum=phylum,
+                             class=class, order=order, family=family, genus=genus))
+  arg_names = names(args)
+  sapply(args,function(x) stopifnot(is.character(x))) 
+  if(any(arg_names %in% colnames(name_data))) message("Default values found, over-writing : ",paste0(arg_names[arg_names %in% colnames(name_data)],collapse=", "))
+  # overwrite original names in name_data
+  for(i in 1:length(args)) name_data[,arg_names[i]] <- args[i]
+  return(name_data)
 }
 
 make_async_urls <- function(x,verbose=FALSE,strict=FALSE) {
