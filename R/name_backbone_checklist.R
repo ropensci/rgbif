@@ -20,7 +20,7 @@
 #' A \code{data.frame} of matched names.
 #' 
 #' @details
-#' This function is a wrapper for  \code{name_backbone()}, which will work with 
+#' This function is an alternative for  \code{name_backbone()}, which will work with 
 #' a list of names (a vector or a data.frame). The data.frame should have the 
 #' following column names, but \strong{only the 'name' column is required}. If only 
 #' one column is present, then that column is assumed to be the 'name' column.
@@ -50,6 +50,11 @@
 #' 
 #' If more than one aliases is present and no column is named 'name', then the
 #' left-most column with an acceptable aliased name above is used.  
+#' 
+#' If \code{verbose=TRUE}, a column called \code{is_alternative} will be returned, 
+#' which species if a name was originally a first choice or not. 
+#' \code{is_alternative=TRUE} means the name was not is not considered to be
+#' the best match by GBIF.  
 #' 
 #' Default values for rank, kingdom, phylum, class, order, family, and genus can
 #' can be supplied. If a default value is supplied, the values for these fields 
@@ -163,6 +168,7 @@ name_backbone_checklist <- function(
   col_idx <- grep("verbatim_", names(matched_names))
   ordering <- c((1:ncol(matched_names))[-col_idx],col_idx)
   matched_names <- unique(matched_names[, ordering])
+  if(verbose) matched_names$is_alternative[is.na(matched_names$is_alternative)] <- FALSE
   return(matched_names)
 }
 
@@ -178,6 +184,7 @@ process_alternatives <- function(a,vl) {
   n_times_list <- lapply(sapply(dl,nrow),function(x) rep(1,x))
   vl <- mapply(function(x,y) x[y,],vl,n_times_list,SIMPLIFY = FALSE) # repeat data
   alternatives <- bind_rows(mapply(function(x,y) cbind(x,y),dl,vl,SIMPLIFY = FALSE))
+  alternatives$is_alternative <- TRUE
   alternatives
 }
 

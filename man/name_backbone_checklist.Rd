@@ -52,7 +52,7 @@ A \code{data.frame} of matched names.
 Lookup names in the GBIF backbone taxonomy in a checklist.
 }
 \details{
-This function is a wrapper for  \code{name_backbone()}, which will work with
+This function is an alternative for  \code{name_backbone()}, which will work with
 a list of names (a vector or a data.frame). The data.frame should have the
 following column names, but \strong{only the 'name' column is required}. If only
 one column is present, then that column is assumed to be the 'name' column.
@@ -85,6 +85,11 @@ will work) :
 
 If more than one aliases is present and no column is named 'name', then the
 left-most column with an acceptable aliased name above is used.
+
+If \code{verbose=TRUE}, a column called \code{is_alternative} will be returned,
+which species if a name was originally a first choice or not.
+\code{is_alternative=TRUE} means the name was not is not considered to be
+the best match by GBIF.
 
 Default values for rank, kingdom, phylum, class, order, family, and genus can
 can be supplied. If a default value is supplied, the values for these fields

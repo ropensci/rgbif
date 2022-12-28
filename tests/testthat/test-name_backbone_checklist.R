@@ -249,7 +249,7 @@ test_that("name_backbone_checklist bad or weird data", {
   ff <- name_backbone_checklist(name_data = c("fake name 1","fake name 2"))
   zz <- name_backbone_checklist(name_data = c("fake name 1","fake name 2"),verbose=TRUE)
   expect_equal(colnames(ff), c("confidence","matchType", "synonym", "verbatim_name","verbatim_index"))
-  expect_equal(colnames(zz), c("confidence","matchType", "synonym", "verbatim_name","verbatim_index"))
+  expect_equal(colnames(zz), c("confidence","matchType", "synonym", "is_alternative", "verbatim_name","verbatim_index"))
   expect_true(nrow(ff) == nrow(zz))
   expect_equal(unique(ff$matchType), "NONE")
   expect_equal(unique(zz$matchType), "NONE")
@@ -259,8 +259,8 @@ test_that("name_backbone_checklist bad or weird data", {
   # just one missing name
   fff <- name_backbone_checklist(name_data = name_data[1,])
   zzz <- name_backbone_checklist(name_data = name_data[1,],verbose=TRUE)   
-  expect_equal(colnames(fff), c("confidence","matchType", "synonym", "verbatim_name","verbatim_kingdom","verbatim_index"))
-  expect_equal(colnames(zzz), c("confidence","matchType", "synonym", "verbatim_name","verbatim_kingdom","verbatim_index"))
+  expect_equal(colnames(fff), c("confidence","matchType", "synonym", "verbatim_name", "verbatim_kingdom","verbatim_index"))
+  expect_equal(colnames(zzz), c("confidence","matchType", "synonym", "is_alternative", "verbatim_name","verbatim_kingdom","verbatim_index"))
   expect_true(nrow(fff) == nrow(zzz))
   expect_equal(unique(fff$matchType), "NONE")
   expect_equal(unique(zzz$matchType), "NONE")
@@ -462,6 +462,17 @@ test_that("name_backbone_checklist default values works as expected", {
     expect_true(all(oo$verbatim_kingdom == "Animalia"))
 })
 
+test_that("name_backbone_checklist is_alternative works as expected", {
+  skip_on_cran()
+  skip_on_ci()
+  
+  ff <- name_backbone_checklist("Calopteryx",verbose=FALSE)
+  expect_warning(ff$is_alternative, "Unknown or uninitialised column: `is_alternative`.")
+  aa <- name_backbone_checklist("Calopteryx",verbose=TRUE)
+  expect_true(is.logical(aa$is_alternative))
+  expect_false(any(is.na(aa$is_alternative)))
+  
+})
 
 # test_that("test status codes", {
 #   skip_on_cran()
