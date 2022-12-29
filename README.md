@@ -1,7 +1,3 @@
-<!-- README.md is generated from README.Rmd. Please edit that file and knit -->
-
-
-
 # rgbif <img src="man/figures/logo.png" align="right" alt="" width="120">
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
@@ -13,48 +9,59 @@
 [![cran version](https://www.r-pkg.org/badges/version/rgbif)](https://cran.r-project.org/package=rgbif)
 [![DOI](https://zenodo.org/badge/2273724.svg)](https://zenodo.org/badge/latestdoi/2273724)
 
-`rgbif` gives you access to data from [GBIF][] via their REST API. GBIF versions their API - we are currently using `v1` of their API. You can no longer use their old API in this package - see `?rgbif-defunct`.
+**rgbif** is an R package which gives you access to [GBIF](https://www.gbif.org/) mediated data via its [REST API](https://www.gbif.org/developer/summary). 
 
-Please cite rgbif. Run the following to get the appropriate citation for the version you're using:
-
-```r
-citation(package = "rgbif")
-```
-
-To get started, see:
-
-* rgbif vignette (https://docs.ropensci.org/rgbif/articles/rgbif.html): an introduction to the package's main functionalities.
-* Function reference (https://docs.ropensci.org/rgbif/reference/index.html): an overview of all `rgbif` functions.
-* Articles (https://docs.ropensci.org/rgbif/articles/index.html): vignettes/tutorials on how to download data, clean data, and work with taxonomic names.
-
-Check out the `rgbif` [paper][] for more information on this package and the sister [Python][pygbif], [Ruby][gbifrb], and [PHP][phpgbif] clients.
-
-We **strongly recommend** that you use `occ_download()` rather than `occ_search()` for getting GBIF mediated occurrences. See article [Getting Occurrence Data From GBIF](https://docs.ropensci.org/rgbif/articles/getting_occurrence_data.html). 
+**GBIF** (the Global Biodiversity Information Facility) is an international network and data infrastructure funded by the world's governments and aimed at providing anyone, anywhere, open access to data about all types of life on Earth.
 
 ## Installation
 
-
 ```r
-install.packages("rgbif")
+install.packages("rgbif") # CRAN version
 ```
 
-Or, install development version
-
-
 ```r
-pak::pkg_install("ropensci/rgbif")
-# OR
-install.packages("rgbif", repos="https://dev.ropensci.org")
+pak::pkg_install("ropensci/rgbif") # dev version
 ```
 
-
-```r
-library("rgbif")
+```r 
+install.packages("rgbif", repos="https://dev.ropensci.org") # dev version
 ```
 
-## Screencast
+## Getting Started 
 
-<a href="https://vimeo.com/127119010"><img src="man/figures/README-screencast.png" width="400"></a>
+There are several long-form articles that can help get you started:
+
+* [Getting Started](https://docs.ropensci.org/rgbif/articles/rgbif.html)
+* [Getting Occurrence Data From GBIF](https://docs.ropensci.org/rgbif/articles/getting_occurrence_data.html)
+* [Working With Taxonomic Names](https://docs.ropensci.org/rgbif/articles/taxonomic_names.html)
+
+Most GBIF users are interested in getting lat-lon occurrence records. 
+
+```r 
+occ_search(scientificName = "Pan troglodytes")
+occ_data(scientificName = "Pan troglodytes")
+```
+
+It is usually better to get occurrence records using a **taxonKey**. See the article [Working With Taxonomic Names](https://docs.ropensci.org/rgbif/articles/taxonomic_names.html). 
+
+```r 
+taxonKey <- name_backbone("Pan troglodytes")$usageKey
+occ_search(taxonKey = taxonKey)
+```
+
+GBIF **strongly recommends** the use of `occ_download()` rather than `occ_search()` for serious research projects. See article [Getting Occurrence Data From GBIF](https://docs.ropensci.org/rgbif/articles/getting_occurrence_data.html). 
+
+It is required to set up your [GBIF credentials](https://docs.ropensci.org/rgbif/articles/gbif_credentials.html) to make downloads from GBIF. 
+
+```r
+occ_download(pred("taxonKey", 5219534)) # 5219534 is the taxonKey for Pan troglodytes
+```
+
+## Citation 
+
+Under the terms of the GBIF data user agreement, users who download data agree to cite a DOI. Please see GBIF’s [citation guidelines](https://www.gbif.org/citation-guidelines) and [Citing GBIF Mediated Data](https://docs.ropensci.org/rgbif/articles/gbif_citations.html).
+
+Please also cite **rgbif** by running `citation(package = "rgbif")`.
 
 ## Contributors
 
@@ -69,15 +76,11 @@ This list honors all contributors in alphabetical order. Code contributors are i
 * Get citation information for `rgbif` in R doing `citation(package = 'rgbif')`
 * Please note that this package is released with a [Contributor Code of Conduct](https://ropensci.org/code-of-conduct/). By contributing to this project, you agree to abide by its terms.
 
-- - -
+There are similar GBIF clients in other languages :
+
+* [Python](https://github.com/sckott/pygbif)
+* [Ruby](https://github.com/sckott/gbifrb)
+* [PHP](https://gitlab.res-telae.cat/restelae/php-gbif)
 
 This package is part of [spocc](https://github.com/ropensci/spocc), along with several other packages, that provide access to occurrence records from multiple data sources.
 
-- - -
-
-[mapr]: https://github.com/ropensci/mapr
-[paper]: https://peerj.com/preprints/3304/
-[GBIF]: https://www.gbif.org/
-[pygbif]: https://github.com/sckott/pygbif
-[gbifrb]: https://github.com/sckott/gbifrb
-[phpgbif]: https://gitlab.res-telae.cat/restelae/php-gbif
