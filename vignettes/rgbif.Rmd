@@ -34,11 +34,6 @@ occ_search(scientificName = "Calopteryx splendens")
 occ_search(scientificName = "Calopteryx splendens",country = "DK")
 occ_search(scientificName = "Calopteryx splendens",country = "DK",year="1999,2005")
 
-# or get just the data
-occ_data(scientificName = "Calopteryx splendens")
-occ_data(scientificName = "Calopteryx splendens",country = "DK")
-occ_data(scientificName = "Calopteryx splendens",country = "DK",year="1999,2005")
-
 # look up a single occurrence record
 occ_get(key=855998194) # not many reasons to do this but it exists
 ```
