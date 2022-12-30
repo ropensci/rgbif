@@ -236,7 +236,7 @@ occ_download(pred_within(large_wkt),format = "SIMPLE_CSV"))
 
 ## Data Quality 
 
-GBIF is a large data aggregator. It mediates occurrences occurrence records from a large variety of sources: 
+GBIF is a large data aggregator. It mediates occurrences records from a large variety of sources: 
 
 * Museums
 * eDNA
@@ -259,8 +259,9 @@ For this reason, not all of the occurrences from GBIF are "fit for use", meaning
 * Any-Zero Coordinates
 * Gridded Datasets 
 
-Please see the following resources for cleaning or post-processing your downloads from GBIF: 
+Since **rgbif** is not a data cleaning package, please see the following resources for post-processing your occurrence downloads: 
 
 * [Common things to look out for when post-processing GBIF downloads](https://data-blog.gbif.org/post/gbif-filtering-guide/)
 * [CoordinateCleaner](https://docs.ropensci.org/CoordinateCleaner/)
 * [Data Quality Webinar](https://www.gbif.org/event/2CAcHI4oxVK5ZgMnFszNUD/data-use-club-practical-sessions-data-quality)
+

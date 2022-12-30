@@ -17,14 +17,14 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
-      string: '{"offset":0,"limit":0,"endOfRecords":false,"count":2184797352,"results":[],"facets":[{"field":"COUNTRY","counts":[{"name":"US","count":808302991},{"name":"CA","count":131806867},{"name":"GB","count":108057716},{"name":"AU","count":107917235},{"name":"SE","count":107632259},{"name":"FR","count":100666945},{"name":"NL","count":77444744},{"name":"ES","count":54442678},{"name":"DE","count":49855461},{"name":"DK","count":47888195}]}]}'
-  recorded_at: 2022-04-08 13:39:23 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+      string: '{"offset":0,"limit":0,"endOfRecords":false,"count":2298098025,"results":[],"facets":[{"field":"COUNTRY","counts":[{"name":"US","count":820028047},{"name":"FR","count":135859403},{"name":"CA","count":133937135},{"name":"SE","count":118149141},{"name":"AU","count":114128644},{"name":"GB","count":111294920},{"name":"NL","count":87954359},{"name":"ES","count":55634531},{"name":"DE","count":51158570},{"name":"DK","count":50011653}]}]}'
+  recorded_at: 2022-12-30 08:43:33 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/search?facetMincount=50000000&limit=0&facet=country
+    uri: https://api.gbif.org/v1/occurrence/search?facetMincount=100000000&limit=0&facet=country
     body:
       encoding: ''
       string: ''
@@ -40,8 +40,8 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
-      string: '{"offset":0,"limit":0,"endOfRecords":false,"count":2184797352,"results":[],"facets":[{"field":"COUNTRY","counts":[{"name":"US","count":808302991},{"name":"CA","count":131806867},{"name":"GB","count":108057716},{"name":"AU","count":107917235},{"name":"SE","count":107632259},{"name":"FR","count":100666945},{"name":"NL","count":77444744},{"name":"ES","count":54442678}]}]}'
-  recorded_at: 2022-04-08 13:39:23 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+      string: '{"offset":0,"limit":0,"endOfRecords":false,"count":2298098025,"results":[],"facets":[{"field":"COUNTRY","counts":[{"name":"US","count":820028047},{"name":"FR","count":135859403},{"name":"CA","count":133937135},{"name":"SE","count":118149141},{"name":"AU","count":114128644},{"name":"GB","count":111294920}]}]}'
+  recorded_at: 2022-12-30 08:43:33 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
