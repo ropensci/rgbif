@@ -4,13 +4,42 @@
 \alias{name_backbone_checklist}
 \title{Lookup names in the GBIF backbone taxonomy in a checklist.}
 \usage{
-name_backbone_checklist(name_data = NULL, verbose = FALSE, curlopts = list())
+name_backbone_checklist(
+  name_data = NULL,
+  rank = NULL,
+  kingdom = NULL,
+  phylum = NULL,
+  class = NULL,
+  order = NULL,
+  family = NULL,
+  genus = NULL,
+  strict = FALSE,
+  verbose = FALSE,
+  curlopts = list()
+)
 }
 \arguments{
 \item{name_data}{(data.frame or vector) see details.}
 
+\item{rank}{(character) default value (optional).}
+
+\item{kingdom}{(character) default value (optional).}
+
+\item{phylum}{(character) default value (optional).}
+
+\item{class}{(character) default value (optional).}
+
+\item{order}{(character) default value (optional).}
+
+\item{family}{(character) default value (optional).}
+
+\item{genus}{(character) default value (optional).}
+
+\item{strict}{(logical) strict=TRUE will not attempt to fuzzy match or
+return higherrankmatches.}
+
 \item{verbose}{(logical) If true it shows alternative matches which were
-considered but then rejected}
+considered but then rejected.}
 
 \item{curlopts}{list of named curl options passed on to
 \code{\link[crul]{HttpClient}}. see \code{curl::curl_options}
@@ -23,7 +52,7 @@ A \code{data.frame} of matched names.
 Lookup names in the GBIF backbone taxonomy in a checklist.
 }
 \details{
-This function is a wrapper for  \code{name_backbone()}, which will work with
+This function is an alternative for  \code{name_backbone()}, which will work with
 a list of names (a vector or a data.frame). The data.frame should have the
 following column names, but \strong{only the 'name' column is required}. If only
 one column is present, then that column is assumed to be the 'name' column.
@@ -56,6 +85,18 @@ will work) :
 
 If more than one aliases is present and no column is named 'name', then the
 left-most column with an acceptable aliased name above is used.
+
+If \code{verbose=TRUE}, a column called \code{is_alternative} will be returned,
+which species if a name was originally a first choice or not.
+\code{is_alternative=TRUE} means the name was not is not considered to be
+the best match by GBIF.
+
+Default values for rank, kingdom, phylum, class, order, family, and genus can
+can be supplied. If a default value is supplied, the values for these fields
+are ignored in name_data, and the default value is used instead. This is most
+useful if you have a list of names and you know they are all plants, insects,
+birds, ect. You can also input multiple values, if they are the same length as
+list of names you are trying to match.
 
 This function can also be used with a character vector of names. In that case
 no column names are needed of course.
@@ -103,7 +144,9 @@ name_data <- data.frame(
  ))
 
 name_backbone_checklist(name_data)
-name_backbone_checklist(name_data,verbose=TRUE) # return non-accepted names too 
+
+# return more than 1 result per name
+name_backbone_checklist(name_data,verbose=TRUE) 
 
 # works with just vectors too 
 name_list <- c(
@@ -117,6 +160,13 @@ name_list <- c(
 
 name_backbone_checklist(name_list)
 name_backbone_checklist(name_list,verbose=TRUE)
+name_backbone_checklist(name_list,strict=TRUE) 
+
+# default values
+name_backbone_checklist(c("Aloe arborecens Mill.",
+"Cirsium arvense (L.) Scop."),kingdom="Plantae")
+name_backbone_checklist(c("Aloe arborecens Mill.",
+"Calopteryx splendens (Harris, 1780)"),kingdom=c("Plantae","Animalia"))
 
 }
 

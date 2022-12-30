@@ -234,10 +234,33 @@ large_wkt <- "POLYGON ((127.0171 4.9391, 124.5973 4.7960, 121.7968 3.7617,
 occ_download(pred_within(large_wkt),format = "SIMPLE_CSV"))
 ```
 
-## Further Reading
-https://docs.ropensci.org/rgbif/reference/occ_download.html
-https://www.gbif.org/developer/occurrence#download
-https://data-blog.gbif.org/post/gbif-filtering-guide/
+## Data Quality 
 
+GBIF is a large data aggregator. It mediates occurrences occurrence records from a large variety of sources: 
 
+* Museums
+* eDNA
+* Citizen Science Apps 
+* Ecological Surveys
+* Camera Traps
+* Satellite Tracking
+* Herbaria
+* Paleontology 
+* Research Projects
 
+For this reason, not all of the occurrences from GBIF are "fit for use", meaning they are not suitable for a **particular** purpose or project. Some data-quality issues are so well understood that there are automated ways to detect and remove them from a dataset.
+
+* Country Centroids
+* Living Specimens
+* Fossils
+* Uncertain Records
+* Country Coordinate Mismatch 
+* Zero-Zero Coordinate
+* Any-Zero Coordinates
+* Gridded Datasets 
+
+Please see the following resources for cleaning or post-processing your downloads from GBIF: 
+
+* [Common things to look out for when post-processing GBIF downloads](https://data-blog.gbif.org/post/gbif-filtering-guide/)
+* [CoordinateCleaner](https://docs.ropensci.org/CoordinateCleaner/)
+* [Data Quality Webinar](https://www.gbif.org/event/2CAcHI4oxVK5ZgMnFszNUD/data-use-club-practical-sessions-data-quality)

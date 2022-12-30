@@ -4,14 +4,23 @@
 #' @export
 #'
 #' @param name_data (data.frame or vector) see details.
+#' @param rank (character) default value (optional).
+#' @param kingdom (character) default value (optional).
+#' @param phylum (character) default value (optional).
+#' @param class (character) default value (optional).
+#' @param order (character) default value (optional).
+#' @param family (character) default value (optional).
+#' @param genus (character) default value (optional).
 #' @param verbose (logical) If true it shows alternative matches which were 
-#' considered but then rejected
+#' considered but then rejected.
+#' @param strict (logical) strict=TRUE will not attempt to fuzzy match or 
+#' return higherrankmatches.
 #' 
 #' @return
 #' A \code{data.frame} of matched names.
 #' 
 #' @details
-#' This function is a wrapper for  \code{name_backbone()}, which will work with 
+#' This function is an alternative for  \code{name_backbone()}, which will work with 
 #' a list of names (a vector or a data.frame). The data.frame should have the 
 #' following column names, but \strong{only the 'name' column is required}. If only 
 #' one column is present, then that column is assumed to be the 'name' column.
@@ -41,7 +50,19 @@
 #' 
 #' If more than one aliases is present and no column is named 'name', then the
 #' left-most column with an acceptable aliased name above is used.  
-#'
+#' 
+#' If \code{verbose=TRUE}, a column called \code{is_alternative} will be returned, 
+#' which species if a name was originally a first choice or not. 
+#' \code{is_alternative=TRUE} means the name was not is not considered to be
+#' the best match by GBIF.  
+#' 
+#' Default values for rank, kingdom, phylum, class, order, family, and genus can
+#' can be supplied. If a default value is supplied, the values for these fields 
+#' are ignored in name_data, and the default value is used instead. This is most 
+#' useful if you have a list of names and you know they are all plants, insects,
+#' birds, ect. You can also input multiple values, if they are the same length as 
+#' list of names you are trying to match. 
+#' 
 #' This function can also be used with a character vector of names. In that case 
 #' no column names are needed of course. 
 #' 
@@ -87,7 +108,9 @@
 #'  ))
 #'
 #' name_backbone_checklist(name_data)
-#' name_backbone_checklist(name_data,verbose=TRUE) # return non-accepted names too 
+#'
+#' # return more than 1 result per name
+#' name_backbone_checklist(name_data,verbose=TRUE) 
 #'
 #' # works with just vectors too 
 #' name_list <- c(
@@ -101,17 +124,34 @@
 #'
 #' name_backbone_checklist(name_list)
 #' name_backbone_checklist(name_list,verbose=TRUE)
+#' name_backbone_checklist(name_list,strict=TRUE) 
+#' 
+#' # default values
+#' name_backbone_checklist(c("Aloe arborecens Mill.",
+#' "Cirsium arvense (L.) Scop."),kingdom="Plantae")
+#' name_backbone_checklist(c("Aloe arborecens Mill.",
+#' "Calopteryx splendens (Harris, 1780)"),kingdom=c("Plantae","Animalia"))
 #' 
 #' }
 #'
 name_backbone_checklist <- function(
   name_data = NULL,
+  rank = NULL,
+  kingdom = NULL,
+  phylum = NULL,
+  class = NULL,
+  order = NULL,
+  family = NULL,
+  genus  = NULL,
+  strict = FALSE,
   verbose = FALSE,
   curlopts = list()
 ) {
   name_data <- check_name_data(name_data)
+  if(!is.null(c(rank,kingdom,phylum,class,order,family,genus))) 
+    name_data <- default_value_handler(name_data=name_data,rank=rank,kingdom=kingdom,phylum=phylum,class=class,order=order,family=family,genus=genus) 
   data_list <- lapply(data.table::transpose(name_data),function(x) stats::setNames(as.list(x),colnames(name_data)))
-  urls <- make_async_urls(data_list,verbose=verbose)
+  urls <- make_async_urls(data_list,verbose=verbose,strict=strict)
   matched_list <- gbif_async_get(urls)
   verbatim_list <- lapply(data_list,function(x) stats::setNames(x,paste0("verbatim_",names(x))))
   mvl <- mapply(function(x, y) c(x,y),verbatim_list,matched_list,SIMPLIFY = FALSE)
@@ -128,6 +168,7 @@ name_backbone_checklist <- function(
   col_idx <- grep("verbatim_", names(matched_names))
   ordering <- c((1:ncol(matched_names))[-col_idx],col_idx)
   matched_names <- unique(matched_names[, ordering])
+  if(verbose) matched_names$is_alternative[is.na(matched_names$is_alternative)] <- FALSE
   return(matched_names)
 }
 
@@ -143,6 +184,7 @@ process_alternatives <- function(a,vl) {
   n_times_list <- lapply(sapply(dl,nrow),function(x) rep(1,x))
   vl <- mapply(function(x,y) x[y,],vl,n_times_list,SIMPLIFY = FALSE) # repeat data
   alternatives <- bind_rows(mapply(function(x,y) cbind(x,y),dl,vl,SIMPLIFY = FALSE))
+  alternatives$is_alternative <- TRUE
   alternatives
 }
 
@@ -184,12 +226,25 @@ check_name_data = function(name_data) {
   name_data
 }
 
-make_async_urls <- function(x,verbose=FALSE) {
+default_value_handler <- function(name_data=NULL,rank=NULL,kingdom=NULL,phylum=NULL,class=NULL,
+                                  order=NULL,family=NULL,genus=NULL) {
+  args <- rgbif_compact(list(rank=rank, kingdom=kingdom, phylum=phylum,
+                             class=class, order=order, family=family, genus=genus))
+  arg_names = names(args)
+  sapply(args,function(x) stopifnot(is.character(x))) 
+  if(any(arg_names %in% colnames(name_data))) message("Default values found, over-writing : ",paste0(arg_names[arg_names %in% colnames(name_data)],collapse=", "))
+  # overwrite original names in name_data
+  for(i in 1:length(args)) name_data[,arg_names[i]] <- args[i]
+  return(name_data)
+}
+
+make_async_urls <- function(x,verbose=FALSE,strict=FALSE) {
   url_base <- paste0(gbif_base(), '/species/match')
   x <- lapply(x, function(x) x[!is.na(x)]) # remove potential missing values
   queries <- lapply(x,function(x) paste0(names(x),"=",x,collapse="&"))
   urls <- paste0(url_base,"?",queries)
   if(verbose) urls <- paste0(urls,"&verbose=true")
+  if(strict) urls <- paste0(urls,"&strict=true")
   urls <- sapply(urls,function(x) utils::URLencode(x))
   urls <- sapply(urls,function(x) gsub("\\[|\\]","",x)) # remove any square brackets
   urls

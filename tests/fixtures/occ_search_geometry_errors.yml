@@ -17,13 +17,12 @@ http_interactions:
       status: HTTP/1.1 400 Bad Request
       content-type: text/plain
     body:
-      encoding: ASCII-8BIT
+      encoding: ''
       file: no
-      string: |-
-        Q2Fubm90IHBhcnNlIHNpbXBsZSBXS1Q6IFBPTFlHT04oKDMwLjEgMTAuMSw0MCA0MCwyMCA0MCwxMCAy
+      base64_string: Q2Fubm90IHBhcnNlIHNpbXBsZSBXS1Q6IFBPTFlHT04oKDMwLjEgMTAuMSw0MCA0MCwyMCA0MCwxMCAy
         MCwzMC4xIGEpKSBFeHBlY3RlZCBhIG51bWJlcg==
-  recorded_at: 2022-09-03 09:00:20 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+  recorded_at: 2022-12-23 10:55:04 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=500&offset=0&geometry=POLYGON%28%2830.1%2010.1%2C40%2040%2C20%2040%2C10%2020%2C30.1%20%2710.1%27%29%29
@@ -42,13 +41,12 @@ http_interactions:
       status: HTTP/1.1 400 Bad Request
       content-type: text/plain
     body:
-      encoding: ASCII-8BIT
+      encoding: ''
       file: no
-      string: |-
-        Q2Fubm90IHBhcnNlIHNpbXBsZSBXS1Q6IFBPTFlHT04oKDMwLjEgMTAuMSw0MCA0MCwyMCA0MCwxMCAy
+      base64_string: Q2Fubm90IHBhcnNlIHNpbXBsZSBXS1Q6IFBPTFlHT04oKDMwLjEgMTAuMSw0MCA0MCwyMCA0MCwxMCAy
         MCwzMC4xICcxMC4xJykpIEV4cGVjdGVkIGEgbnVtYmVy
-  recorded_at: 2022-09-03 09:00:20 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+  recorded_at: 2022-12-23 10:55:04 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=500&offset=0&geometry=POLYGON%28%2830.1%2010.1%2C40%2040%2C20%2040%2C10%2020%2C30.1%2010.1%29
@@ -67,10 +65,9 @@ http_interactions:
       status: HTTP/1.1 400 Bad Request
       content-type: text/plain
     body:
-      encoding: ASCII-8BIT
+      encoding: ''
       file: no
-      string: |-
-        Q2Fubm90IHBhcnNlIHNpbXBsZSBXS1Q6IFBPTFlHT04oKDMwLjEgMTAuMSw0MCA0MCwyMCA0MCwxMCAy
+      base64_string: Q2Fubm90IHBhcnNlIHNpbXBsZSBXS1Q6IFBPTFlHT04oKDMwLjEgMTAuMSw0MCA0MCwyMCA0MCwxMCAy
         MCwzMC4xIDEwLjEpIEV4cGVjdGVkIFspXSBmb3VuZCBFT0Y=
-  recorded_at: 2022-09-03 09:00:20 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+  recorded_at: 2022-12-23 10:55:04 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
