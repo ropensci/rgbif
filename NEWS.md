@@ -1,3 +1,19 @@
+rgbif 3.7.5
+===========
+
+### NEW FEATURES
+
+* `name_backbone_checklist()` now accepts `strict=TRUE`, meaning that only non-fuzzy matches are returned. (#565)
+* `name_backbone_checklist()` now accepts default values for high taxonomy, such as kingdom, phylum, family, ect. (#515)
+* `name_backbone_checklist()` now returns a column `is_alternative` when `verbose=TRUE`, which lets the user know if a name was originally considered to be an alternative choice by the name matcher. (#515)
+
+### DOCUMENTATION
+* Updated README to be more inviting to new users (#574)
+* Added data quality section to article [Getting Occurrence Data From GBIF](https://docs.ropensci.org/rgbif/articles/getting_occurrence_data.html). (#575)
+
+### MINOR IMPROVEMENTS
+* removed `sp` and `rgeos` dependencies. (#578)
+
 rgbif 3.7.4
 ===========
 
@@ -11,12 +27,12 @@ rgbif 3.7.4
 
 ### BUG FIXES
 
-* `dataset_gridded` bug fixed when inputing only one non-gridded dataset. (#546)
+* `dataset_gridded` bug fixed when inputting only one non-gridded dataset. (#546)
 
 ### MINOR IMPROVEMENTS
 
 * New CRAN checks badge URL. (#555)
-* Update min vcr requirment to (>= 1.2.0). (#559)
+* Update min vcr requirement to (>= 1.2.0). (#559)
 * Updated r-lib actions to v2 (#566)
 
 rgbif 3.7.3
