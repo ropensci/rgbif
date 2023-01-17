@@ -87,3 +87,22 @@ test_that("args that support many repeated uses in one request", {
   expect_is(bb$data, "tbl_df")
   expect_true(any(tolower(unique(bb$data$publishingCountry)) %in% c("de", "nz")))
 })
+
+# check that $meta$count and $data are the same length
+# https://github.com/ropensci/rgbif/issues/595
+test_that("meta count and data are the same length", {
+vcr::use_cassette("dataset_search_same_length", {
+   ll <- dataset_search(publishingOrg = "80420c96-95d0-44eb-9f77-339ac92051fb",
+                        limit=3)
+  }, preserve_exact_body_bytes = TRUE)
+  expect_is(ll, "list")
+  expect_is(ll$data, "data.frame")
+  expect_is(ll$data, "tbl_df")
+  expect_is(ll$meta, "data.frame")
+  expect_is(ll$descriptions, "list")
+  expect_null(ll$facets)
+  # equal to count or limit=3
+  expect_true(nrow(ll$data) == ll$meta$count | nrow(ll$data) == 3)
+  
+})
+

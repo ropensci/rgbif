@@ -89,18 +89,13 @@ dataset_search <- function(query = NULL, country = NULL, type = NULL,
   args <- c(args, type, keyword, publishingOrg, hostingOrg,
             publishingCountry, decade)
   tt <- gbif_GET(url, args, FALSE, curlopts)
-
   # metadata
   meta <- tt[c('offset','limit','endOfRecords','count')]
 
   # if pretty
   if (pretty) {
-    if (length(tt$results) == 1) {
-      printdata(tt$results)
-    } else {
       lapply(tt$results, printdata)[[1]]
-    }
-  } else {
+    } else {
     # facets
     facets <- tt$facets
     if (!length(facets) == 0) {
@@ -118,8 +113,6 @@ dataset_search <- function(query = NULL, country = NULL, type = NULL,
     # data
     if (length(tt$results) == 0) {
       out <- NULL
-    } else if (length(tt$results) == 1) {
-      out <- parse_dataset(x = tt$results)
     } else {
       out <- tibble::as_tibble(setdfrbind(lapply(tt$results, parse_dataset)))
     }
