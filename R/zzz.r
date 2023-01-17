@@ -740,9 +740,9 @@ check_inputs <- function(x) {
   }
 }
 
-is_download_key <- function(x) grepl("^[0-9]{7}-[0-9]{15}$",x)
+is_download_key <- function(x) ifelse(!is.null(x),grepl("^[0-9]{7}-[0-9]{15}$",x),FALSE)
 
-is_uuid <- function(x) grepl("[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}",x)
+is_uuid <- function(x) ifelse(!is.null(x),grepl("[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}",x),FALSE)
 
 is_empty <- function(x) length(x) == 0
 
