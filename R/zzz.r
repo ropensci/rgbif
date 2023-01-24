@@ -500,6 +500,11 @@ convmany <- function(x) {
   return(x)
 }
 
+convmany_rename <- function(x,y) { 
+  if (is.null(x)) return(x) 
+  stats::setNames(convmany(x),rep(y,length(x))) 
+  }
+
 check_vals <- function(x, y){
   if (is.na(x) || is.null(x))
     stop(sprintf("%s can not be NA or NULL", y), call. = FALSE)

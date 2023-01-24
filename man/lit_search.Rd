@@ -15,27 +15,26 @@ lit_search(
   relevance = NULL,
   year = NULL,
   topics = NULL,
-  gbifDatasetKey = NULL,
-  publishingOrganizationKey = NULL,
+  datasetKey = NULL,
+  publishingOrg = NULL,
   peerReview = NULL,
   openAccess = NULL,
-  gbifDownloadKey = NULL,
+  downloadKey = NULL,
   doi = NULL,
-  source = NULL,
-  publisher = NULL,
+  journalSource = NULL,
+  journalPublisher = NULL,
   flatten = TRUE,
   start = 0,
   limit = 500,
   curlopts = list()
 )
 
-lit_all_gbif(nrows = NULL, peerReview = TRUE, flatten = TRUE, step = 1000)
+lit_all_gbif(limit = NULL, peerReview = TRUE, flatten = TRUE)
 
 lit_all_dataset(
-  gbifDatasetKey = NULL,
+  datasetKey = NULL,
   peerReview = NULL,
-  nrows = NULL,
-  step = 1000,
+  limit = NULL,
   flatten = TRUE
 )
 
@@ -64,22 +63,22 @@ e.g. BR (for Brazil). Country codes are listed in enumeration_country().}
 
 \item{topics}{(character) Topic of publication.}
 
-\item{gbifDatasetKey}{(character) GBIF dataset uuid referenced in publication.}
+\item{datasetKey}{(character) GBIF dataset uuid referenced in publication.}
 
-\item{publishingOrganizationKey}{(character) Publisher uuid whose dataset is
+\item{publishingOrg}{(character) Publisher uuid whose dataset is
 referenced in publication.}
 
 \item{peerReview}{(logical) Has publication undergone peer-review?}
 
 \item{openAccess}{(logical) Is publication Open Access?}
 
-\item{gbifDownloadKey}{(character) Download referenced in publication.}
+\item{downloadKey}{(character) Download referenced in publication.}
 
 \item{doi}{(character) Digital Object Identifier (DOI).}
 
-\item{source}{(character) Journal of publication.}
+\item{journalSource}{(character) Journal of publication.}
 
-\item{publisher}{(character) Publisher of journal.}
+\item{journalPublisher}{(character) Publisher of journal.}
 
 \item{flatten}{(logical) should any lists in the resulting data be flattened
 into comma-seperated strings?}
@@ -88,6 +87,12 @@ into comma-seperated strings?}
 with \code{limit} to page through results.}
 
 \item{limit}{Number of records to return. Default: 100. Maximum: 1000.}
+
+\item{curlopts}{list of named curl options passed on to
+\code{\link[crul]{HttpClient}}. see \code{curl::curl_options}
+for curl options}
+
+\item{...}{additional parameters passed to lit_search}
 }
 \value{
 A named list with two values: \code{$data} and \code{$meta}. \code{$data} is
@@ -129,12 +134,12 @@ The following arguments can take multiple values:
 \item countriesOfCoverage
 \item literatureType
 \item topics
-\item gbifDatasetKey
-\item publishingOrganizationKey
-\item gbifDownloadKey
+\item datasetKey
+\item publishingOrg
+\item downloadKey
 \item doi
-\item source
-\item publisher
+\item journalSource
+\item journalPublisher
 }
 
 If \code{flatten=TRUE}, then \strong{data} will be returned as flat
@@ -145,9 +150,9 @@ peer-reviewed literature that cites or uses GBIF mediated data in a single
 \code{data.frame}.
 
 \code{lit_all_dataset()} is a convenience wrapper, which will return
-literature citations for a given GBIF dataset uuid. This corresponds to what
+literature citations for a given single GBIF dataset uuid. This corresponds to what
 currently appears on \href{https://www.gbif.org/dataset/50c9509d-22c7-4a22-a47d-8c48425ef4a7}{dataset pages}
-for "citations".
+for "citations". Does not accept multiple values.
 
 \code{lit_count()} is a convenience wrapper, which will return the number of
 literature references for a certain \code{lit_search()} query.
@@ -157,12 +162,27 @@ literature references for a certain \code{lit_search()} query.
  # https://www.gbif.org/resource/search?contentType=literature
  
  lit_search(q="bats")$data 
- lit_search(gbifDatasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7")
+ lit_search(datasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7")
  lit_search(year=2020)
  lit_search(year="2011,2020") # year ranges
  lit_search(relevance=c("GBIF_CITED","GBIF_USED")) # multiple values
  lit_search(relevance=c("GBIF_USED","GBIF_CITED"), 
  topics=c("EVOLUTION","PHYLOGENETICS")
+ 
+ lit_count() # total number of literature referencing GBIF
+ lit_count(peerReview=TRUE)
+ # number of citations of iNaturalist 
+ lit_count(datasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7")
+ # number of peer-reviewed articles used GBIF mediated data
+ lit_count(peerReview=TRUE,literatureType="JOURNAL",relevance="GBIF_USED")
+ 
+ # fetches all from this query: 
+ # lit_search(peerReview=TRUE,literatureType="JOURNAL",relevance="GBIF_USED")
+ lit_all_gbif() 
+ 
+ # fetches all data from this query:
+ # lit_search(datasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7")
+ lit_all_dataset("50c9509d-22c7-4a22-a47d-8c48425ef4a7")
 
 }
 

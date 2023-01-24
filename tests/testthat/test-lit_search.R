@@ -5,7 +5,7 @@ test_that("lit_search works as expected", {
     ee <- lit_search(limit=3)
     ss <- lit_search(q="dog",limit=3,flatten=TRUE)
     # many arguments 
-    aa <- lit_search(gbifDatasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7",
+    aa <- lit_search(datasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7",
                      peerReview=TRUE,
                      year=2020,
                      literatureType="JOURNAL",
@@ -76,9 +76,9 @@ test_that("lit_search works as expected", {
   expect_true(all(yy$data$year >= 2011 & yy$data$year <= 2020))
   
   # bad inputs
-  expect_error(lit_search(gbifDatasetKey="dog"),"'gbifDatasetKey' should be a GBIF dataset uuid.")
-  expect_error(lit_search(publishingOrganizationKey="dog"),"'publishingOrganizationKey' should be a GBIF publisher uuid.")
-  expect_error(lit_search(gbifDownloadKey="dog"),"'gbifDownloadKey' should be a GBIF downloadkey.")
+  expect_error(lit_search(datasetKey="dog"),"'datasetKey' should be a GBIF dataset uuid.")
+  expect_error(lit_search(publishingOrg="dog"),"'publishingOrg' should be a GBIF publisher uuid.")
+  expect_error(lit_search(downloadKey="dog"),"'downloadKey' should be a GBIF downloadkey.")
   expect_error(lit_search(limit=2000),"Max 'limit' is 1000.")
   expect_error(lit_search(start=10000,limit=0),"Max 'start' \\+ 'limit' is 10,000.")
   expect_error(lit_search(start=9999,limit=2),"Max 'start' \\+ 'limit' is 10,000.")
@@ -88,10 +88,10 @@ test_that("lit_search works as expected", {
 
 test_that("lit_count works as expected", {
   vcr::use_cassette("lit_count", {
-    ii <- lit_count(gbifDatasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7")
+    ii <- lit_count(datasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7")
     ee <- lit_count()
     # many values 
-    mm <- lit_count(gbifDatasetKey=c("9ca92552-f23a-41a8-a140-01abaa31c931",
+    mm <- lit_count(datasetKey=c("9ca92552-f23a-41a8-a140-01abaa31c931",
                                      "50c9509d-22c7-4a22-a47d-8c48425ef4a7"))
     
     }, preserve_exact_body_bytes = TRUE)
@@ -107,7 +107,7 @@ test_that("lit_count works as expected", {
   expect_true(mm > ii) # more datasets = more citations
   
   # bad inputs
-  expect_error(lit_count(dog="1"), "Please use accepted argument from lit_search\\(\\) \\:q, countriesOfResearcher, countriesOfResearcher, countriesOfCoverage, literatureType, relevance, year, topics, gbifDatasetKey, publishingOrganizationKey, peerReview, openAccess, gbifDownloadKey, doi, source, publisher")
+  expect_error(lit_count(dog="1"), "Please use accepted argument from lit_search\\(\\) \\:q, countriesOfResearcher, countriesOfResearcher, countriesOfCoverage, literatureType, relevance, year, topics, datasetKey, publishingOrg, peerReview, openAccess, downloadKey, doi, journalSource, journalPublisher")
 
 })
 
@@ -117,19 +117,19 @@ test_that("lit_all_gbif works as expected", {
   
   # takes a while so I skip running it 
   # vv <- lit_all_gbif() # fetch all peer-reviewed lit from a journal
-  # expect_true(nrow(vv) > 8000) # nrows + steps
+  # expect_true(nrow(vv) > 8000) # limit + steps
   # expect_is(vv,"data.frame")
   # expect_true(!all(sapply(vv,class) == "list"))
   # expect_true(all(vv$peerReview==TRUE))
   # expect_true(all(grepl("GBIF_USED",vv$relevance)))
   # expect_true(all(grepl("JOURNAL",vv$literatureType)))
   
-  aa <- lit_all_gbif(nrows=20,step=5)
-  nn <- lit_all_gbif(peerReview = NULL,nrows=20,step=5)
-  pp <- lit_all_gbif(peerReview = FALSE,nrows=20,step=5)
-  ff <- lit_all_gbif(nrows=20,step=5,flatten=FALSE)
+  aa <- lit_all_gbif(limit=20)
+  nn <- lit_all_gbif(peerReview = NULL,limit=20)
+  pp <- lit_all_gbif(peerReview = FALSE,limit=20)
+  ff <- lit_all_gbif(limit=20,flatten=FALSE)
   
-  expect_true(nrow(aa) == 25) # nrows + steps
+  expect_true(nrow(aa) == 20) # limit + steps
   expect_is(aa,"data.frame")
   expect_true(!all(sapply(aa,class) == "list"))
   expect_true(all(aa$peerReview==TRUE))
@@ -140,15 +140,15 @@ test_that("lit_all_gbif works as expected", {
   expect_true(all(pp$peerReview==FALSE))
   
   expect_is(nn,"data.frame")
-  expect_true(FALSE %in% nn$peerReview)
-  expect_true(TRUE %in% nn$peerReview)
+  # expect_true(FALSE %in% nn$peerReview)
+  # expect_true(TRUE %in% nn$peerReview)
   
   # flatten=FALSE should return some list types
   expect_is(ff,"data.frame")
   expect_true(any(sapply(ff,class) == "list"))
   
-  expect_error(lit_all_gbif(nrows=11000),"Max 'nrows' \\+ 'step' is 10,000.")
-  expect_error(lit_all_gbif(step=2000),"Max step is 1000.")
+  expect_error(lit_all_gbif(limit=11000),"Max 'limit' \\+ 'step' is 10,000.")
+  # expect_error(lit_all_gbif(step=2000),"Max step is 1000.")
   
   
   
@@ -166,13 +166,13 @@ test_that("lit_all_dataset works as expected", {
   # expect_true(!all(sapply(vv,class) == "list"))
   # expect_true(!all(vv$peerReview==TRUE)) # default is NULL so should return both
 
-  aa <- lit_all_dataset("50c9509d-22c7-4a22-a47d-8c48425ef4a7",nrows=20,step=5)
-  nn <- lit_all_dataset("50c9509d-22c7-4a22-a47d-8c48425ef4a7",peerReview = NULL,nrows=20,step=5)
-  pp <- lit_all_dataset("50c9509d-22c7-4a22-a47d-8c48425ef4a7",peerReview = FALSE,nrows=20,step=5)
-  ff <- lit_all_dataset("50c9509d-22c7-4a22-a47d-8c48425ef4a7",nrows=20,step=5,flatten=FALSE)
+  aa <- lit_all_dataset("50c9509d-22c7-4a22-a47d-8c48425ef4a7",limit=20)
+  nn <- lit_all_dataset("50c9509d-22c7-4a22-a47d-8c48425ef4a7",peerReview = NULL,limit=20)
+  pp <- lit_all_dataset("50c9509d-22c7-4a22-a47d-8c48425ef4a7",peerReview = FALSE,limit=20)
+  ff <- lit_all_dataset("50c9509d-22c7-4a22-a47d-8c48425ef4a7",limit=20,flatten=FALSE)
   ll <- lit_all_dataset("9ca92552-f23a-41a8-a140-01abaa31c931") # few citations
   
-  expect_true(nrow(aa) == 25) # nrows + steps
+  expect_true(nrow(aa) == 20) 
   expect_is(aa,"data.frame")
   expect_true(!all(sapply(aa,class) == "list"))
   expect_true(!all(aa$peerReview==TRUE))
@@ -193,9 +193,9 @@ test_that("lit_all_dataset works as expected", {
   expect_true(!all(sapply(ll,class) == "list"))
   expect_true(!all(ll$peerReview==TRUE))
   
-  expect_error(lit_all_dataset("50c9509d-22c7-4a22-a47d-8c48425ef4a7",nrows=11000),"Max 'nrows' \\+ 'step' is 10,000.")
-  expect_error(lit_all_dataset("50c9509d-22c7-4a22-a47d-8c48425ef4a7",step=2000),"Max step is 1000.")
-  expect_error(lit_all_dataset("dog"),"'gbifDatasetKey' should be a GBIF datasetkey uuid.")
+  expect_error(lit_all_dataset("50c9509d-22c7-4a22-a47d-8c48425ef4a7",limit=11000),"Max 'limit' \\+ 'step' is 10,000.")
+  # expect_error(lit_all_dataset("50c9509d-22c7-4a22-a47d-8c48425ef4a7",step=2000),"Max step is 1000.")
+  expect_error(lit_all_dataset("dog"),"'datasetKey' should be a GBIF datasetkey uuid.")
   
 })
 

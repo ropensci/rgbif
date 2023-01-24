@@ -1,6 +1,8 @@
 #' Search for literature that cites GBIF mediated data
 #' 
 #' @template otherlimstart
+#' @template occ
+#' 
 #' @export
 #' 
 #' @param q (character) Simple full text search parameter. The value for this 
@@ -18,17 +20,18 @@
 #' "GBIF_PUBLISHED", "GBIF_ACKNOWLEDGED", "GBIF_AUTHOR").
 #' @param year (integer) Year of publication.
 #' @param topics (character) Topic of publication.
-#' @param gbifDatasetKey (character) GBIF dataset uuid referenced in publication.
-#' @param publishingOrganizationKey (character) Publisher uuid whose dataset is 
+#' @param datasetKey (character) GBIF dataset uuid referenced in publication.
+#' @param publishingOrg (character) Publisher uuid whose dataset is 
 #' referenced in publication.
 #' @param peerReview (logical) Has publication undergone peer-review? 
 #' @param openAccess (logical) Is publication Open Access?
-#' @param gbifDownloadKey (character) Download referenced in publication.
+#' @param downloadKey (character) Download referenced in publication.
 #' @param doi (character) Digital Object Identifier (DOI).
-#' @param source (character) Journal of publication.
-#' @param publisher (character) Publisher of journal.
+#' @param journalSource (character) Journal of publication.
+#' @param journalPublisher (character) Publisher of journal.
 #' @param flatten (logical) should any lists in the resulting data be flattened
 #' into comma-seperated strings?
+#' @param ... additional parameters passed to lit_search
 #'
 #' @details
 #' This function enables you to search for literature indexed by GBIF, 
@@ -63,12 +66,12 @@
 #' \item countriesOfCoverage
 #' \item literatureType
 #' \item topics
-#' \item gbifDatasetKey
-#' \item publishingOrganizationKey
-#' \item gbifDownloadKey
+#' \item datasetKey
+#' \item publishingOrg
+#' \item downloadKey
 #' \item doi
-#' \item source
-#' \item publisher
+#' \item journalSource
+#' \item journalPublisher
 #' }
 #' 
 #' If \code{flatten=TRUE}, then \strong{data} will be returned as flat 
@@ -95,17 +98,17 @@
 #'  # https://www.gbif.org/resource/search?contentType=literature
 #'  
 #'  lit_search(q="bats")$data 
-#'  lit_search(gbifDatasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7")
+#'  lit_search(datasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7")
 #'  lit_search(year=2020)
 #'  lit_search(year="2011,2020") # year ranges
 #'  lit_search(relevance=c("GBIF_CITED","GBIF_USED")) # multiple values
 #'  lit_search(relevance=c("GBIF_USED","GBIF_CITED"), 
 #'  topics=c("EVOLUTION","PHYLOGENETICS")
 #'  
-#'  # number of citations of iNaturalist 
 #'  lit_count() # total number of literature referencing GBIF
 #'  lit_count(peerReview=TRUE)
-#'  lit_count(gbifDatasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7")
+#'  # number of citations of iNaturalist 
+#'  lit_count(datasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7")
 #'  # number of peer-reviewed articles used GBIF mediated data
 #'  lit_count(peerReview=TRUE,literatureType="JOURNAL",relevance="GBIF_USED")
 #'  
@@ -114,7 +117,7 @@
 #'  lit_all_gbif() 
 #'  
 #'  # fetches all data from this query:
-#'  # lit_search(gbifDatasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7")
+#'  # lit_search(datasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7")
 #'  lit_all_dataset("50c9509d-22c7-4a22-a47d-8c48425ef4a7")
 #' 
 #' }
@@ -128,14 +131,14 @@ lit_search <- function(
   relevance=NULL, 
   year=NULL, 
   topics=NULL, 
-  gbifDatasetKey=NULL, 
-  publishingOrganizationKey=NULL, 
+  datasetKey=NULL, 
+  publishingOrg=NULL, 
   peerReview=NULL, 
   openAccess=NULL, 
-  gbifDownloadKey=NULL, 
+  downloadKey=NULL, 
   doi=NULL, 
-  source=NULL, 
-  publisher=NULL,
+  journalSource=NULL, 
+  journalPublisher=NULL,
   flatten=TRUE,
   start=0,
   limit=500,
@@ -144,9 +147,9 @@ lit_search <- function(
   if(limit > 1000) stop("Max 'limit' is 1000.")
   if(start > 10000) stop("Max 'start' is 10000.")
   if((start + limit) >= 10000) stop("Max 'start' + 'limit' is 10,000.")
-  if(!is_uuid(gbifDatasetKey) & !is.null(gbifDatasetKey)) stop("'gbifDatasetKey' should be a GBIF dataset uuid.")
-  if(!is_uuid(publishingOrganizationKey) & !is.null(publishingOrganizationKey)) stop("'publishingOrganizationKey' should be a GBIF publisher uuid.")
-  if(!is_download_key(gbifDownloadKey) & !is.null(gbifDownloadKey)) stop("'gbifDownloadKey' should be a GBIF downloadkey.")
+  if(!is_uuid(datasetKey) & !is.null(datasetKey)) stop("'datasetKey' should be a GBIF dataset uuid.")
+  if(!is_uuid(publishingOrg) & !is.null(publishingOrg)) stop("'publishingOrg' should be a GBIF publisher uuid.")
+  if(!is_download_key(downloadKey) & !is.null(downloadKey)) stop("'downloadKey' should be a GBIF downloadkey.")
   assert(q,"character") 
   assert(countriesOfResearcher,"character")
   assert(countriesOfCoverage,"character") 
@@ -155,10 +158,10 @@ lit_search <- function(
   assert(topics,"character") 
   assert(peerReview,"logical")
   assert(openAccess,"logical")
-  assert(gbifDownloadKey,"character")
+  assert(downloadKey,"character")
   assert(doi,"character") 
-  assert(source,"character")
-  assert(publisher,"character")
+  assert(journalSource,"character")
+  assert(journalPublisher,"character")
   
   # args that take only a single value
   args <- rgbif_compact(list(
@@ -176,12 +179,12 @@ lit_search <- function(
             convmany(countriesOfCoverage),
             convmany(literatureType),
             convmany(topics),
-            convmany(gbifDatasetKey), 
-            convmany(publishingOrganizationKey),
-            convmany(gbifDownloadKey), 
+            convmany_rename(datasetKey,"gbifDatasetKey"),
+            convmany_rename(publishingOrg,"publishingOrganizationKey"),
+            convmany_rename(downloadKey,"gbifDownloadKey"), 
             convmany(doi), 
-            convmany(source), 
-            convmany(publisher)
+            convmany_rename(journalSource,"source"), 
+            convmany_rename(journalPublisher,"publisher")
             )
   url <- paste0(gbif_base(), "/literature/search")
   ll <- gbif_GET(url, args, parse=TRUE, curlopts = curlopts, mssg = NULL) 
@@ -192,7 +195,7 @@ lit_search <- function(
   data <- tibble::tibble(data,data$identifiers)
   data$identifiers <- NULL 
   # flatten other columns
-  data <- dplyr::as_tibble(lapply(data,function(x) if(is.list(x)) sapply(x,toString) else x))
+  data <- tibble::as_tibble(lapply(data,function(x) if(is.list(x)) sapply(x,toString) else x))
   }
   ll$results <- NULL
   meta <- rgbif_compact(ll) 
@@ -201,25 +204,25 @@ lit_search <- function(
 
 #' @export
 #' @rdname lit_search
-lit_all_gbif <- function(nrows=NULL,
+lit_all_gbif <- function(limit=NULL,
                          peerReview=TRUE,
-                         flatten=TRUE,
-                         step=1000) {
+                         flatten=TRUE) {
+  step <- 1000
   # check inputs
   assert(peerReview,"logical")
   assert(flatten,"logical")
   if(step > 1000) stop("Max step is 1000.")
-  if(is.null(nrows)) nrows <- lit_count(literatureType="JOURNAL",relevance="GBIF_USED",peerReview=peerReview)
-  if((nrows + step) >= 10000) stop("Max 'nrows' + 'step' is 10,000.")
-  if(nrows > 10000) { 
+  if(is.null(limit)) limit <- lit_count(literatureType="JOURNAL",relevance="GBIF_USED",peerReview=peerReview)
+  if((limit + step) >= 10000) stop("Max 'limit' + 'step' is 10,000.")
+  if(limit > 10000) { 
     message("Max allowed 10,000 records. Contact helpdesk@gbif.org for more.")
-    nrows <- 9999 }
-  if(step >= nrows) step <- nrows
-  if((nrows %% step) == 0) { offset_seq <- seq(from=0,nrows,by=step) 
+    limit <- 9999 }
+  if(step >= limit) step <- limit
+  if((limit %% step) == 0) { offset_seq <- seq(from=0,limit,by=step) 
   } else { 
-    offset_seq <- c(seq(from=0,nrows,by=step),nrows) 
+    offset_seq <- c(seq(from=0,limit,by=step),limit) 
     }
-  if(step == nrows) offset_seq <- 0 # only one request needed 
+  if(step == limit) offset_seq <- 0 # only one request needed 
   
   # make async request
   req <- "literatureType=journal&relevance=GBIF_USED"
@@ -239,30 +242,30 @@ lit_all_gbif <- function(nrows=NULL,
 
 #' @export
 #' @rdname lit_search
-lit_all_dataset <- function(gbifDatasetKey=NULL,
+lit_all_dataset <- function(datasetKey=NULL,
                         peerReview=NULL,
-                        nrows=NULL,
-                        step=1000,
+                        limit=NULL,
                         flatten=TRUE) {
+  step <- 1000 # default step size 
   # check inputs
-  if(!is_uuid(gbifDatasetKey)) stop("'gbifDatasetKey' should be a GBIF datasetkey uuid.")
+  if(!is_uuid(datasetKey)) stop("'datasetKey' should be a GBIF datasetkey uuid.")
   assert(peerReview,"logical")
   assert(flatten,"logical")
   if(step > 1000) stop("Max step is 1000.")
-  if(is.null(nrows)) nrows <- lit_count(gbifDatasetKey=gbifDatasetKey,peerReview=peerReview)
-  if((nrows + step) >= 10000) stop("Max 'nrows' + 'step' is 10,000.")
-  if(nrows > 10000) {
+  if(is.null(limit)) limit <- lit_count(datasetKey=datasetKey,peerReview=peerReview)
+  if((limit + step) >= 10000) stop("Max 'limit' + 'step' is 10,000.")
+  if(limit > 10000) {
     message("Max allowed 10,000 records. Contact helpdesk@gbif.org.")
-    nrows <- 9999 }
+    limit <- 9999 }
   
-  if(step >= nrows) step <- nrows
-  if((nrows %% step) == 0) { offset_seq <- seq(from=0,nrows,by=step)
+  if(step >= limit) step <- limit
+  if((limit %% step) == 0) { offset_seq <- seq(from=0,limit,by=step)
     } else {
-    offset_seq <- c(seq(from=0,nrows,by=step),nrows) }
-  if(step == nrows) offset_seq <- 0 # only one request needed
+    offset_seq <- c(seq(from=0,limit,by=step),limit) }
+  if(step == limit) offset_seq <- 0 # only one request needed
   
   # make async request
-  req <- paste0("&gbifDatasetKey=",gbifDatasetKey)
+  req <- paste0("&gbifDatasetKey=",datasetKey)
   if(!is.null(peerReview)) {
     if(peerReview) { req <- paste0(req,"&peerReview=true") }
       else { req <- paste0(req,"&peerReview=false") }
@@ -281,10 +284,22 @@ lit_all_dataset <- function(gbifDatasetKey=NULL,
 lit_count <- function(...) {
   
   x <- rgbif_compact(list(...))
-  accepted_args <- c("q","countriesOfResearcher","countriesOfResearcher","countriesOfCoverage",
-    "literatureType","relevance","year","topics","gbifDatasetKey",
-    "publishingOrganizationKey","peerReview","openAccess","gbifDownloadKey",
-    "doi","source","publisher")
+  accepted_args <- c("q",
+                     "countriesOfResearcher",
+                     "countriesOfResearcher",
+                     "countriesOfCoverage",
+                     "literatureType",
+                     "relevance",
+                     "year",
+                     "topics",
+                     "datasetKey",
+                     "publishingOrg",
+                     "peerReview",
+                     "openAccess",
+                     "downloadKey",
+                     "doi",
+                     "journalSource",
+                     "journalPublisher")
   if(!all(names(x) %in% accepted_args)) {
     stop(
     paste0(
@@ -299,14 +314,14 @@ lit_count <- function(...) {
     relevance=x$relevance,
     year=x$year,
     topics=x$topics,
-    gbifDatasetKey=x$gbifDatasetKey,
-    publishingOrganizationKey=x$publishingOrganizationKey,
+    datasetKey=x$datasetKey,
+    publishingOrg=x$publishingOrg,
     peerReview=x$peerReview,
     openAccess=x$openAccess,
-    gbifDownloadKey=x$gbifDownloadKey,
+    downloadKey=x$downloadKey,
     doi=x$doi,
-    source=x$source,
-    publisher=x$publisher,
+    journalSource=x$journalSource,
+    journalPublisher=x$journalPublisher,
     limit=1)$meta$count
   count
 }
@@ -324,7 +339,7 @@ process_lit_async_results <- function(ll,flatten=TRUE) {
     # handle complex identifiers and authors
     data$authors <- sapply(data$authors,function(x) paste0(x$firstName," ",x$lastName,collapse=","))
     # flatten other columns
-    data <- dplyr::as_tibble(lapply(data,function(x) if(is.list(x)) sapply(x,toString) else x))
+    data <- tibble::as_tibble(lapply(data,function(x) if(is.list(x)) sapply(x,toString) else x))
   }
   data$x <- NULL
   data
