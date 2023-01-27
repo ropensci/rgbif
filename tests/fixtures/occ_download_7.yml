@@ -18,14 +18,14 @@ http_interactions:
       status: HTTP/1.1 201 Created
       content-type: application/json
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
-      string: 0002193-220831081235567
-  recorded_at: 2022-09-02 09:48:39 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+      string: 0261266-220831081235567
+  recorded_at: 2023-01-27 12:56:36 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/download/0002193-220831081235567
+    uri: https://api.gbif.org/v1/occurrence/download/0261266-220831081235567
     body:
       encoding: ''
       string: ''
@@ -41,8 +41,8 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
-      string: '{"key":"0002193-220831081235567","doi":"10.15468/dl.xb2aat","license":"unspecified","request":{"predicate":{"type":"equals","key":"LIFE_STAGE","value":"Adult","matchCase":false},"sendNotification":false,"format":"SIMPLE_CSV"},"created":"2022-09-02T09:48:39.639+00:00","modified":"2022-09-02T09:48:39.708+00:00","eraseAfter":"2023-03-02T09:48:39.584+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0002193-220831081235567.zip","size":0,"totalRecords":0,"numberDatasets":0}'
-  recorded_at: 2022-09-02 09:48:39 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+      string: '{"key":"0261266-220831081235567","doi":"10.15468/dl.epr5fd","license":"unspecified","request":{"predicate":{"type":"equals","key":"LIFE_STAGE","value":"Adult","matchCase":false},"sendNotification":false,"format":"SIMPLE_CSV","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2023-01-27T12:56:35.422+00:00","modified":"2023-01-27T12:56:35.422+00:00","eraseAfter":"2023-07-27T12:56:35.371+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0261266-220831081235567.zip","size":0,"totalRecords":0,"numberDatasets":0}'
+  recorded_at: 2023-01-27 12:56:36 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
