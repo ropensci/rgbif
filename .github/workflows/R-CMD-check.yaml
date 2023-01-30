@@ -72,19 +72,17 @@ jobs:
       - name: Install dependencies Linux
         if: runner.os == 'Linux'
         run: |
-          pak::pkg_install("r-spatial/sf") # for r-spatial/sf#1899 remove this once it moves to CRAN.
-          pak::pkg_install("stringi")
+          # pak::pkg_install("r-spatial/sf") # for r-spatial/sf#1899 remove this once it moves to CRAN.
           pak::local_install_dev_deps()
-          pak::pkg_install(c("rcmdcheck", "maps", "scales", "colorspace", "raster", "protolite"))
+          pak::pkg_install(c("stringi","rcmdcheck","sf","maps", "scales", "colorspace", "raster", "protolite"))
         shell: Rscript {0}
 
       - name: Install dependencies macOS and Windows
         if: runner.os == 'macOS' || runner.os == 'Windows'
         run: |
           install.packages('terra', repos='https://rspatial.r-universe.dev') # issue #597
-          pak::pkg_install("stringi")
           pak::local_install_dev_deps()
-          pak::pkg_install(c("rcmdcheck", "sf", "maps", "scales", "colorspace", "raster", "protolite"))
+          pak::pkg_install(c("stringi","rcmdcheck", "sf", "maps", "scales", "colorspace", "raster", "protolite"))
         shell: Rscript {0}
 
       - name: Session info
