@@ -18,14 +18,14 @@ http_interactions:
       status: HTTP/1.1 201 Created
       content-type: application/json
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
-      string: 0214886-210914110416597
-  recorded_at: 2022-04-08 13:29:36 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+      string: 0260895-220831081235567
+  recorded_at: 2023-01-27 08:37:01 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/download/0214886-210914110416597
+    uri: https://api.gbif.org/v1/occurrence/download/0260895-220831081235567
     body:
       encoding: ''
       string: ''
@@ -41,8 +41,8 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
-      string: '{"key":"0214886-210914110416597","doi":"10.15468/dl.janjgb","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"9206251","matchCase":false},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1979","matchCase":false}]},"sendNotification":false,"format":"DWCA"},"created":"2022-04-08T13:29:34.148+00:00","modified":"2022-04-08T13:29:34.148+00:00","eraseAfter":"2022-10-08T13:29:34.092+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0214886-210914110416597.zip","size":0,"totalRecords":0,"numberDatasets":0}'
-  recorded_at: 2022-04-08 13:29:36 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+      string: '{"key":"0260895-220831081235567","doi":"10.15468/dl.4zjc2r","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"9206251","matchCase":false},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1979","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2023-01-27T08:37:00.655+00:00","modified":"2023-01-27T08:37:00.716+00:00","eraseAfter":"2023-07-27T08:37:00.591+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0260895-220831081235567.zip","size":0,"totalRecords":0,"numberDatasets":0}'
+  recorded_at: 2023-01-27 08:37:01 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2

@@ -18,7 +18,7 @@ test_that("occ_download_meta", {
 
   # request part
   expect_is(aa$request, "list")
-  expect_named(aa$request, c("predicate", "sendNotification", "format"))
+  expect_named(aa$request, c('predicate', 'sendNotification', 'format', 'type', 'verbatimExtensions'))
   expect_false(aa$request$sendNotification)
   expect_equal(aa$request$format, "SIMPLE_CSV")
   expect_is(aa$request$predicate, "list")

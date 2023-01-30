@@ -17,7 +17,7 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '{"key":"0068181-200221144449610","doi":"10.15468/dl.5dzkry","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"7707728","matchCase":false},{"type":"in","key":"BASIS_OF_RECORD","values":["PRESERVED_SPECIMEN","HUMAN_OBSERVATION","OBSERVATION","MACHINE_OBSERVATION"],"matchCase":false},{"type":"within","geometry":"POLYGON
         ((68.02426 44.14495, 68.11511 44.12606, 68.19852 44.13503, 68.30507 44.13010,
@@ -156,6 +156,6 @@ http_interactions:
         67.36881 44.42658, 67.30069 44.45841, 67.26194 44.47356, 67.21906 44.50227,
         67.14815 44.55851, 67.14504 44.60075, 67.20264 44.62072, 67.28562 44.60553,
         67.37978 44.55291, 67.47047 44.47832, 67.60944 44.40416, 67.75394 44.30938,
-        67.86927 44.26326, 68.02426 44.14495))"},{"type":"equals","key":"HAS_COORDINATE","value":"true","matchCase":false},{"type":"equals","key":"HAS_GEOSPATIAL_ISSUE","value":"false","matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1900","matchCase":false}]},"sendNotification":false,"format":"SIMPLE_CSV"},"created":"2020-05-21T22:43:16.996+00:00","modified":"2020-05-21T22:45:33.050+00:00","eraseAfter":"2020-11-21T22:43:16.926+00:00","status":"CANCELLED","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0068181-200221144449610.zip","size":0,"totalRecords":2426,"numberDatasets":0}'
-  recorded_at: 2022-04-08 13:29:44 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+        67.86927 44.26326, 68.02426 44.14495))"},{"type":"equals","key":"HAS_COORDINATE","value":"true","matchCase":false},{"type":"equals","key":"HAS_GEOSPATIAL_ISSUE","value":"false","matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1900","matchCase":false}]},"sendNotification":false,"format":"SIMPLE_CSV","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2020-05-21T22:43:16.996+00:00","modified":"2020-05-21T22:45:33.050+00:00","eraseAfter":"2020-11-21T22:43:16.926+00:00","status":"CANCELLED","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0068181-200221144449610.zip","size":0,"totalRecords":2426,"numberDatasets":0}'
+  recorded_at: 2023-01-30 09:47:04 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
