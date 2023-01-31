@@ -81,6 +81,7 @@ test_that("lit_search works as expected", {
   expect_error(lit_search(downloadKey="dog"),"'downloadKey' should be a GBIF downloadkey.")
   expect_error(lit_search(limit=2000),"Max 'limit' is 1000.")
   expect_error(lit_search(start=10000,limit=0),"Max 'start' \\+ 'limit' is 10,000.")
+  expect_error(lit_search(start=10001),"Max 'start' is 1000.")
   expect_error(lit_search(start=9999,limit=2),"Max 'start' \\+ 'limit' is 10,000.")
   expect_error(lit_search(q=2), "q must be of class character")
   expect_error(lit_search(peerReview="frog"), "peerReview must be of class logical")
@@ -169,6 +170,7 @@ test_that("lit_all_dataset works as expected", {
   aa <- lit_all_dataset("50c9509d-22c7-4a22-a47d-8c48425ef4a7",limit=20)
   nn <- lit_all_dataset("50c9509d-22c7-4a22-a47d-8c48425ef4a7",peerReview = NULL,limit=20)
   pp <- lit_all_dataset("50c9509d-22c7-4a22-a47d-8c48425ef4a7",peerReview = FALSE,limit=20)
+  tt <- lit_all_dataset("50c9509d-22c7-4a22-a47d-8c48425ef4a7",peerReview = TRUE,limit=20)
   ff <- lit_all_dataset("50c9509d-22c7-4a22-a47d-8c48425ef4a7",limit=20,flatten=FALSE)
   ll <- lit_all_dataset("9ca92552-f23a-41a8-a140-01abaa31c931") # few citations
   
@@ -179,7 +181,10 @@ test_that("lit_all_dataset works as expected", {
 
   expect_is(pp,"data.frame")
   expect_true(all(pp$peerReview==FALSE))
-   
+  
+  expect_is(tt,"data.frame")
+  expect_true(all(tt$peerReview==TRUE))
+  
   expect_is(nn,"data.frame")
   expect_true(FALSE %in% nn$peerReview)
   expect_true(TRUE %in% nn$peerReview)

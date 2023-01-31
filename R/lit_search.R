@@ -207,11 +207,10 @@ lit_search <- function(
 lit_all_gbif <- function(limit=NULL,
                          peerReview=TRUE,
                          flatten=TRUE) {
-  step <- 1000
+  step <- 1000 # Max step is 1000
   # check inputs
   assert(peerReview,"logical")
   assert(flatten,"logical")
-  if(step > 1000) stop("Max step is 1000.")
   if(is.null(limit)) limit <- lit_count(literatureType="JOURNAL",relevance="GBIF_USED",peerReview=peerReview)
   if((limit + step) >= 10000) stop("Max 'limit' + 'step' is 10,000.")
   if(limit > 10000) { 
@@ -246,12 +245,11 @@ lit_all_dataset <- function(datasetKey=NULL,
                         peerReview=NULL,
                         limit=NULL,
                         flatten=TRUE) {
-  step <- 1000 # default step size 
+  step <- 1000 # Max step is 1000
   # check inputs
   if(!is_uuid(datasetKey)) stop("'datasetKey' should be a GBIF datasetkey uuid.")
   assert(peerReview,"logical")
   assert(flatten,"logical")
-  if(step > 1000) stop("Max step is 1000.")
   if(is.null(limit)) limit <- lit_count(datasetKey=datasetKey,peerReview=peerReview)
   if((limit + step) >= 10000) stop("Max 'limit' + 'step' is 10,000.")
   if(limit > 10000) {
