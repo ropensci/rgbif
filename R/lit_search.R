@@ -213,9 +213,6 @@ lit_all_gbif <- function(limit=NULL,
   assert(flatten,"logical")
   if(is.null(limit)) limit <- lit_count(literatureType="JOURNAL",relevance="GBIF_USED",peerReview=peerReview)
   if((limit + step) >= 10000) stop("Max 'limit' + 'step' is 10,000.")
-  if(limit > 10000) { 
-    message("Max allowed 10,000 records. Contact helpdesk@gbif.org for more.")
-    limit <- 9999 }
   if(step >= limit) step <- limit
   if((limit %% step) == 0) { offset_seq <- seq(from=0,limit,by=step) 
   } else { 
@@ -252,10 +249,6 @@ lit_all_dataset <- function(datasetKey=NULL,
   assert(flatten,"logical")
   if(is.null(limit)) limit <- lit_count(datasetKey=datasetKey,peerReview=peerReview)
   if((limit + step) >= 10000) stop("Max 'limit' + 'step' is 10,000.")
-  if(limit > 10000) {
-    message("Max allowed 10,000 records. Contact helpdesk@gbif.org.")
-    limit <- 9999 }
-  
   if(step >= limit) step <- limit
   if((limit %% step) == 0) { offset_seq <- seq(from=0,limit,by=step)
     } else {
