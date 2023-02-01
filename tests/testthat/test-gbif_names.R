@@ -2,6 +2,7 @@ context("gbif_names")
 
 test_that("gbif_names", {
   skip_on_cran()
+  skip_on_ci()
 
   aa <- gbif_names(name_lookup(query='snake', hl=TRUE), browse=FALSE)
   expect_is(aa, "character")
@@ -25,6 +26,7 @@ test_that("gbif_names", {
 
 test_that("fails correctly", {
   skip_on_cran()
+  skip_on_ci()
 
   nms <- name_lookup(query='snake', hl=TRUE)
   res <- gbif_names(nms, browse=FALSE)
