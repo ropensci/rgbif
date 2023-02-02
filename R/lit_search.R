@@ -198,6 +198,7 @@ lit_search <- function(
   data <- tibble::as_tibble(lapply(data,function(x) if(is.list(x)) sapply(x,toString) else x))
   }
   ll$results <- NULL
+  data$abstract <- NULL
   meta <- rgbif_compact(ll) 
   list(data=data,meta=meta)
 }
