@@ -116,14 +116,13 @@ test_that("lit_all_gbif works as expected", {
   skip_on_cran()
   skip_on_ci()
   
-  # takes a while so I skip running it 
-  # vv <- lit_all_gbif() # fetch all peer-reviewed lit from a journal
-  # expect_true(nrow(vv) > 8000) # limit + steps
-  # expect_is(vv,"data.frame")
-  # expect_true(!all(sapply(vv,class) == "list"))
-  # expect_true(all(vv$peerReview==TRUE))
-  # expect_true(all(grepl("GBIF_USED",vv$relevance)))
-  # expect_true(all(grepl("JOURNAL",vv$literatureType)))
+  vv <- lit_all_gbif() # fetch all peer-reviewed lit from a journal
+  expect_true(nrow(vv) > 8000) # limit + steps
+  expect_is(vv,"data.frame")
+  expect_true(!all(sapply(vv,class) == "list"))
+  expect_true(all(vv$peerReview==TRUE))
+  expect_true(all(grepl("GBIF_USED",vv$relevance)))
+  expect_true(all(grepl("JOURNAL",vv$literatureType)))
   
   aa <- lit_all_gbif(limit=20)
   nn <- lit_all_gbif(peerReview = NULL,limit=20)
@@ -159,13 +158,11 @@ test_that("lit_all_dataset works as expected", {
   skip_on_cran()
   skip_on_ci()
   
-  # takes a while so I skip running it 
-  # vv <- lit_all_dataset("50c9509d-22c7-4a22-a47d-8c48425ef4a7") # fetch all iNat related lit
-  # print(vv %>% glimpse())
-  # expect_true(nrow(vv) > 3000) # should not lose citations
-  # expect_is(vv,"data.frame")
-  # expect_true(!all(sapply(vv,class) == "list"))
-  # expect_true(!all(vv$peerReview==TRUE)) # default is NULL so should return both
+  vv <- lit_all_dataset("50c9509d-22c7-4a22-a47d-8c48425ef4a7") # fetch all iNat related lit
+  expect_true(nrow(vv) > 3000) # should not lose citations
+  expect_is(vv,"data.frame")
+  expect_true(!all(sapply(vv,class) == "list"))
+  expect_true(!all(vv$peerReview==TRUE)) # default is NULL so should return both
 
   aa <- lit_all_dataset("50c9509d-22c7-4a22-a47d-8c48425ef4a7",limit=20)
   nn <- lit_all_dataset("50c9509d-22c7-4a22-a47d-8c48425ef4a7",peerReview = NULL,limit=20)
@@ -199,7 +196,6 @@ test_that("lit_all_dataset works as expected", {
   expect_true(!all(ll$peerReview==TRUE))
   
   expect_error(lit_all_dataset("50c9509d-22c7-4a22-a47d-8c48425ef4a7",limit=11000),"Max 'limit' \\+ 'step' is 10,000.")
-  # expect_error(lit_all_dataset("50c9509d-22c7-4a22-a47d-8c48425ef4a7",step=2000),"Max step is 1000.")
   expect_error(lit_all_dataset("dog"),"'datasetKey' should be a GBIF datasetkey uuid.")
   
 })
