@@ -2,8 +2,6 @@
 % Please edit documentation in R/lit_search.R
 \name{lit_search}
 \alias{lit_search}
-\alias{lit_all_gbif}
-\alias{lit_all_dataset}
 \alias{lit_count}
 \title{Search for literature that cites GBIF mediated data}
 \usage{
@@ -24,18 +22,8 @@ lit_search(
   journalSource = NULL,
   journalPublisher = NULL,
   flatten = TRUE,
-  start = 0,
-  limit = 500,
-  curlopts = list()
-)
-
-lit_all_gbif(limit = NULL, peerReview = TRUE, flatten = TRUE)
-
-lit_all_dataset(
-  datasetKey = NULL,
-  peerReview = NULL,
   limit = NULL,
-  flatten = TRUE
+  curlopts = list()
 )
 
 lit_count(...)
@@ -83,10 +71,7 @@ referenced in publication.}
 \item{flatten}{(logical) should any lists in the resulting data be flattened
 into comma-seperated strings?}
 
-\item{start}{Record number to start at. Default: 0. Use in combination
-with \code{limit} to page through results.}
-
-\item{limit}{Number of records to return. Default: 100. Maximum: 1000.}
+\item{limit}{how many records to return. limit=NULL will fetch up to 10,000.}
 
 \item{curlopts}{list of named curl options passed on to
 \code{\link[crul]{HttpClient}}. see \code{curl::curl_options}
@@ -145,15 +130,6 @@ The following arguments can take multiple values:
 If \code{flatten=TRUE}, then \strong{data} will be returned as flat
 data.frame with no complex column types (i.e. no lists or data.frames).
 
-\code{lit_all_gbif()} is a convenience wrapper, which will return all
-peer-reviewed literature that cites or uses GBIF mediated data in a single
-\code{data.frame}.
-
-\code{lit_all_dataset()} is a convenience wrapper, which will return
-literature citations for a given single GBIF dataset uuid. This corresponds to what
-currently appears on \href{https://www.gbif.org/dataset/50c9509d-22c7-4a22-a47d-8c48425ef4a7}{dataset pages}
-for "citations". Does not accept multiple values.
-
 \code{lit_count()} is a convenience wrapper, which will return the number of
 literature references for a certain \code{lit_search()} query.
 }
@@ -176,13 +152,8 @@ literature references for a certain \code{lit_search()} query.
  # number of peer-reviewed articles used GBIF mediated data
  lit_count(peerReview=TRUE,literatureType="JOURNAL",relevance="GBIF_USED")
  
- # fetches all from this query: 
- # lit_search(peerReview=TRUE,literatureType="JOURNAL",relevance="GBIF_USED")
- lit_all_gbif() 
- 
- # fetches all data from this query:
- # lit_search(datasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7")
- lit_all_dataset("50c9509d-22c7-4a22-a47d-8c48425ef4a7")
+ # Typically what is meant by "literature that uses GBIF" 
+ lit_search(peerReview=TRUE,literatureType="JOURNAL",relevance="GBIF_USED")
 
 }
 
