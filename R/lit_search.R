@@ -78,8 +78,9 @@
 #' data.frame with no complex column types (i.e. no lists or data.frames).
 #'  
 #' \code{limit=NULL} will return up to 10,000 records. The maximum value for
-#' \code{limit} is 10,000. The limit arg will be ignored if over 9000, since
-#' this does not save on the number of requests to GBIF.
+#' \code{limit} is 10,000. If no filters are used, only the first 1000 records 
+#' will be returned, limit must be explicitly set to \code{limit=10000}, to get 
+#' the first 10,000 records in this case.  
 #' 
 #' \code{lit_count()} is a convenience wrapper, which will return the number of 
 #' literature references for a certain \code{lit_search()} query.
@@ -177,28 +178,37 @@ lit_search <- function(
   if(is.null(limit)) {
     count_args <- args; count_args$limit <- 0
     limit <- gbif_GET(paste0(gbif_base(), "/literature/search"), count_args, parse=TRUE, curlopts = curlopts, mssg = NULL)$count
+    if(length(args) == 0) {
+      message("No filters used, but 'limit=NULL' returning just the first 1000 results. If you actually just want the first 10,000 records, use 'limit=10000'.")
+      limit <- 1000
+      }
   }
-  if((limit + step) >= 10000) { 
+  if(limit > 10000) { 
     message("Not returning all records. Max records is 10,000.") 
-    if(limit > 9000) message("Ignoring limit arg, since limit > 9000.")
-    limit <- 9000 
+    limit <- 10000 
   } 
   if(step >= limit) step <- limit
-  if(limit < 9000) limit <- limit - step
-  if((limit %% step) == 0) { offset_seq <- seq(from=0,limit,by=step)
+  
+  if((limit %% step) == 0) { 
+    offset_seq <- seq(from=0,limit-step,by=step)
+    limit_seq <- rep(step,length(offset_seq))
+    
   } else {
-    offset_seq <- c(seq(from=0,limit,by=step),limit) }
+    offset_seq <- seq(from=0,limit,by=step)
+    limit_seq <- c(rep(step,length(offset_seq)-1),limit %% step)
+  }
+  
   if(step == limit) offset_seq <- 0 # only one request needed
   if(length(args) == 0) { 
     urls <- paste0(gbif_base(),"/literature/search?",
                    "offset=",offset_seq,
-                   "&limit=",step)
+                   "&limit=",limit_seq)
   } else {
     req <- paste0(names(args),"=",args,collapse="&")
     urls <- paste0(gbif_base(),
                    "/literature/search?",req,
                    "&offset=",offset_seq,
-                   "&limit=",step)
+                   "&limit=",limit_seq)
   }
   ll <- gbif_async_get(urls,parse=TRUE)
   data <- process_lit_async_results(ll,flatten=flatten)

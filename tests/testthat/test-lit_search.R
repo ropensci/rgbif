@@ -3,7 +3,10 @@ context("lit_search")
 test_that("lit_search works as expected", {
     skip_on_ci()
     skip_on_cran()
+    
     oo <- lit_search()
+    pp <- lit_search(limit=10000)
+    nn <- lit_search(datasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7")
     ee <- lit_search(limit=3)
     ss <- lit_search(q="dog",limit=3,flatten=TRUE)
     # many arguments 
@@ -13,6 +16,7 @@ test_that("lit_search works as expected", {
                      literatureType="JOURNAL",
                      limit=3,
                      flatten=TRUE)
+    
     
     # not flat 
     ww <- lit_search(q="dog",limit=3,flatten=FALSE)
@@ -25,13 +29,28 @@ test_that("lit_search works as expected", {
     # year ranges work
     yy <- lit_search(year="2011,2020",limit=5)
   
+    
   expect_length(oo,2)
   expect_is(oo$data,"data.frame")
   expect_is(oo$meta,"list")
   # flatten=TRUE should have no lists
   expect_true(!all(sapply(oo$data,class) == "list"))
-  expect_true(nrow(oo$data) == 10000)
-
+  expect_true(nrow(oo$data) == 1000)
+  
+  expect_length(pp,2)
+  expect_is(pp$data,"data.frame")
+  expect_is(pp$meta,"list")
+  # flatten=TRUE should have no lists
+  expect_true(!all(sapply(pp$data,class) == "list"))
+  expect_true(nrow(pp$data) == 10000)
+  
+  expect_length(nn,2)
+  expect_is(nn$data,"data.frame")
+  expect_is(nn$meta,"list")
+  # flatten=TRUE should have no lists
+  expect_true(!all(sapply(nn$data,class) == "list"))
+  expect_true(nrow(nn$data) == nn$meta$count)
+  
   expect_length(ee,2)
   expect_is(ee$data,"data.frame")
   expect_is(ee$meta,"list")
@@ -61,7 +80,7 @@ test_that("lit_search works as expected", {
   # flatten=TRUE should have no lists
   expect_true(!all(sapply(mm1$data,class) == "list"))
   expect_true(all(mm1$data$relevance %in% c("GBIF_USED","GBIF_CITED")))
-  
+
   expect_length(mm2,2)
   expect_is(mm2$data,"data.frame")
   expect_is(mm2$meta,"list")
@@ -80,10 +99,12 @@ test_that("lit_search works as expected", {
   expect_error(lit_search(datasetKey="dog"),"'datasetKey' should be a GBIF dataset uuid.")
   expect_error(lit_search(publishingOrg="dog"),"'publishingOrg' should be a GBIF publisher uuid.")
   expect_error(lit_search(downloadKey="dog"),"'downloadKey' should be a GBIF downloadkey.")
-  expect_message(lit_search(limit=10001),"Not returning all records. Max records is 10,000.")
-  expect_message(lit_search(limit=9001),"Ignoring limit arg, since limit > 9000.")
   expect_error(lit_search(q=2), "q must be of class character")
   expect_error(lit_search(peerReview="frog"), "peerReview must be of class logical")
+  
+  expect_message(lit_search(limit=10001),"Not returning all records. Max records is 10,000.")
+  expect_message(lit_search(),"No filters used, but 'limit=NULL' returning just the first 1000 results. If you actually just want the first 10,000 records, use 'limit=10000'.")
+  
 })
 
 test_that("lit_count works as expected", {
