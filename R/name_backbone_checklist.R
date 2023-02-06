@@ -250,13 +250,13 @@ make_async_urls <- function(x,verbose=FALSE,strict=FALSE) {
   urls
 }
 
-gbif_async_get <- function(urls, curlopts = list()) {
+gbif_async_get <- function(urls, parse=FALSE, curlopts = list()) {
   cc <- crul::Async$new(urls = urls,headers = rgbif_ual, opts = curlopts)
-  res <- process_async_get(cc$get())
+  res <- process_async_get(cc$get(),parse=parse)
   return(res)
 }
 
-process_async_get <- function(res) {
+process_async_get <- function(res,parse=FALSE) {
   status_codes <- sapply(res, function(z) z$status_code)
   if(any(status_codes == 204)) stop("Status: 204 - not found", call. = FALSE)
   if(any(status_codes > 200)) {
