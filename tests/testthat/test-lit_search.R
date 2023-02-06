@@ -29,7 +29,6 @@ test_that("lit_search works as expected", {
     # year ranges work
     yy <- lit_search(year="2011,2020",limit=5)
   
-    
   expect_length(oo,2)
   expect_is(oo$data,"data.frame")
   expect_is(oo$meta,"list")

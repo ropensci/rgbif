@@ -78,12 +78,13 @@
 #' data.frame with no complex column types (i.e. no lists or data.frames).
 #'  
 #' \code{limit=NULL} will return up to 10,000 records. The maximum value for
-#' \code{limit} is 10,000. If no filters are used, only the first 1000 records 
+#' \code{limit} is 10,000. If no filters are used, only the first 1,000 records 
 #' will be returned, limit must be explicitly set to \code{limit=10000}, to get 
 #' the first 10,000 records in this case.  
 #' 
 #' \code{lit_count()} is a convenience wrapper, which will return the number of 
-#' literature references for a certain \code{lit_search()} query.
+#' literature references for a certain \code{lit_search()} query. This is the 
+#' same as running \code{lit_search()$meta$count}.
 #' 
 #' @return
 #' A named list with two values: \code{$data} and \code{$meta}. \code{$data} is
@@ -110,7 +111,7 @@
 #'  
 #'  # Typically what is meant by "literature that uses GBIF" 
 #'  lit_search(peerReview=TRUE,literatureType="JOURNAL",relevance="GBIF_USED")
-#' 
+#'  lit_count(peerReview=TRUE,literatureType="JOURNAL",relevance="GBIF_USED")
 #' }
 #' 
 #' 
