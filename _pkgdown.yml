@@ -71,6 +71,7 @@ reference:
       - gbif_issues
       - gbif_issues_lookup
       - occ_issues
+      - lit_search
   - title: "Pretty html reports"
     contents:
       - gbif_names
