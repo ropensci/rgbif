@@ -155,7 +155,7 @@
 #' - degreeOfEstablishment (DEGREE_OF_ESTABLISHMENT)
 #' - isInCluster (IS_IN_CLUSTER)
 #' - lifeStage (LIFE_STAGE)
-
+#' - distanceFromCentroidInMeters (DISTANCE_FROM_CENTROID_IN_METERS)
 #' 
 #' @references Download predicates docs:
 #' <https://www.gbif.org/developer/occurrence#predicates>
