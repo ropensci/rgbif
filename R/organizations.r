@@ -8,16 +8,16 @@
 #' 'organization', 'contact', 'endpoint', 'identifier', 'tag', 'machineTag',
 #' 'comment', 'hostedDataset', 'ownedDataset', 'deleted', 'pending',
 #' 'nonPublishing', or the special 'all'. Default: `'all'`
-#' @param country Filters by country as given in isocodes$gbif_name,
-#'  e.g. \code{country=CANADA}
+#' @param country (character) Filters by country as given in isocodes$gbif_name,
+#'  e.g. \code{country="CANADA"}
 #' @param uuid (character) UUID of the data node provider. This must be
 #' specified if data is anything other than 'all', 'deleted', 'pending', or
 #' 'nonPublishing'.
 #' @param query (character) Query nodes. Only used when `data='all'`
 #'
-#' @return A list of length one or two. If `uuid` is NULL, then a
-#' data.frame with call metadata, and a data.frame, but if `uuid` given,
-#' then a list.
+#' @return A list of length of two, consisting of a data.frame \code{meta} when
+#'  uuid is NULL, and \code{data} which can either be a list or a data.frame
+#'  depending on the requested type of data.
 #'
 #' @references <https://www.gbif.org/developer/registry#organizations>
 #'

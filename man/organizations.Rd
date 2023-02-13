@@ -20,8 +20,8 @@ organizations(
 'comment', 'hostedDataset', 'ownedDataset', 'deleted', 'pending',
 'nonPublishing', or the special 'all'. Default: \code{'all'}}
 
-\item{country}{Filters by country as given in isocodes$gbif_name,
-e.g. \code{country=CANADA}}
+\item{country}{(character) Filters by country as given in isocodes$gbif_name,
+e.g. \code{country="CANADA"}}
 
 \item{uuid}{(character) UUID of the data node provider. This must be
 specified if data is anything other than 'all', 'deleted', 'pending', or
@@ -39,9 +39,9 @@ with \code{limit} to page through results.}
 for curl options}
 }
 \value{
-A list of length one or two. If \code{uuid} is NULL, then a
-data.frame with call metadata, and a data.frame, but if \code{uuid} given,
-then a list.
+A list of length of two, consisting of a data.frame \code{meta} when
+uuid is NULL, and \code{data} which can either be a list or a data.frame
+depending on the requested type of data.
 }
 \description{
 Organizations metadata.
