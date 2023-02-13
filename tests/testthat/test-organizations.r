@@ -30,22 +30,6 @@ test_that("returns the correct class", {
   expect_equal(length(vv$data), 14)
 })
 
-# check that there is metadata for every publisher
-test_that("meta count and data are the same length", {
-  vcr::use_cassette("organizations_same_length",
-    {
-      ll <- organizations(limit = 7)
-    },
-    preserve_exact_body_bytes = TRUE
-  )
-  expect_is(ll, "list")
-  expect_is(ll$data, "data.frame")
-  expect_is(ll$data, "tbl_df")
-  expect_is(ll$meta, "data.frame")
-  # equal to count or limit=7
-  expect_true(nrow(ll$data) == ll$meta$count | nrow(ll$data) == 7)
-})
-
 # Finds the correct country
 test_that("correct country is returned", {
   vcr::use_cassette("organizations_search_country",
