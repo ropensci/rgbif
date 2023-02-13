@@ -8,6 +8,8 @@
 #' 'organization', 'contact', 'endpoint', 'identifier', 'tag', 'machineTag',
 #' 'comment', 'hostedDataset', 'ownedDataset', 'deleted', 'pending',
 #' 'nonPublishing', or the special 'all'. Default: `'all'`
+#' @param country Filters by country as given in isocodes$gbif_name,
+#'  e.g. \code{country=CANADA}
 #' @param uuid (character) UUID of the data node provider. This must be
 #' specified if data is anything other than 'all'.
 #' @param query (character) Query nodes. Only used when `data='all'`
@@ -21,6 +23,7 @@
 #' @examples \dontrun{
 #' organizations(limit=5)
 #' organizations(query="france", limit=5)
+#' organizations(country = "SPAIN")
 #' organizations(uuid="4b4b2111-ee51-45f5-bf5e-f535f4a1c9dc")
 #' organizations(data='contact', uuid="4b4b2111-ee51-45f5-bf5e-f535f4a1c9dc")
 #' organizations(data='pending')
@@ -31,11 +34,12 @@
 #' organizations(query="spain", curlopts = list(verbose=TRUE))
 #' }
 
-organizations <- function(data = 'all', uuid = NULL, query = NULL, limit = 100,
-                          start=NULL, curlopts = list()) {
+organizations <- function(data = 'all', country = NULL, uuid = NULL,
+                          query = NULL, limit = 100, start=NULL,
+                          curlopts = list()) {
 
-  args <- rgbif_compact(list(q = query, limit = as.integer(limit),
-                             offset = start))
+  args <- rgbif_compact(list(q = query, country = country,
+                             limit = as.integer(limit), offset = start))
   data <- match.arg(data,
                     choices = c('all', 'organization', 'contact', 'endpoint',
                               'identifier', 'tag', 'machineTag', 'comment',
