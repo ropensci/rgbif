@@ -6,6 +6,7 @@
 \usage{
 organizations(
   data = "all",
+  country = NULL,
   uuid = NULL,
   query = NULL,
   limit = 100,
@@ -19,8 +20,10 @@ organizations(
 'comment', 'hostedDataset', 'ownedDataset', 'deleted', 'pending',
 'nonPublishing', or the special 'all'. Default: \code{'all'}}
 
+\item{country}{Filters by country as given in isocodes$gbif_name,
+e.g. \code{country=CANADA}}
+
 \item{uuid}{(character) UUID of the data node provider. This must be
-specified if data is anything other than 'all'.}
 
 \item{query}{(character) Query nodes. Only used when \code{data='all'}}
 
@@ -45,6 +48,7 @@ Organizations metadata.
 \dontrun{
 organizations(limit=5)
 organizations(query="france", limit=5)
+organizations(country = "SPAIN")
 organizations(uuid="4b4b2111-ee51-45f5-bf5e-f535f4a1c9dc")
 organizations(data='contact', uuid="4b4b2111-ee51-45f5-bf5e-f535f4a1c9dc")
 organizations(data='pending')
