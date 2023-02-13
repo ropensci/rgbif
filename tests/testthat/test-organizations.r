@@ -69,7 +69,8 @@ test_that("find GBIF Secretariat datasets", {
 test_that("Error on bad user input", {
   # doesn't need to be cached because should return error before HTTP request
   expect_error(organizations(data = "not a data type",
-                             uid = "fbca90e3-8aed-48b1-84e3-369afbd000ce"),
+                             uuid = "fbca90e3-8aed-48b1-84e3-369afbd000ce"),
+               "should be one of"
                )
   expect_error(organizations(uuid = "not a uuid"),
                "Invalid UUID string: not a uuid",
