@@ -24,6 +24,8 @@ organizations(
 e.g. \code{country=CANADA}}
 
 \item{uuid}{(character) UUID of the data node provider. This must be
+specified if data is anything other than 'all', 'deleted', 'pending', or
+'nonPublishing'.}
 
 \item{query}{(character) Query nodes. Only used when \code{data='all'}}
 

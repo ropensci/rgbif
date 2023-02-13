@@ -11,7 +11,8 @@
 #' @param country Filters by country as given in isocodes$gbif_name,
 #'  e.g. \code{country=CANADA}
 #' @param uuid (character) UUID of the data node provider. This must be
-#' specified if data is anything other than 'all'.
+#' specified if data is anything other than 'all', 'deleted', 'pending', or
+#' 'nonPublishing'.
 #' @param query (character) Query nodes. Only used when `data='all'`
 #'
 #' @return A list of length one or two. If `uuid` is NULL, then a
