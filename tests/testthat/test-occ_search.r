@@ -364,6 +364,22 @@ test_that("isInCluster works correctly", {
   expect_equal(tt$data$classKey[1], 212)
 })
 
+# Test argument distanceFromCentroidInMeters
+test_that("distanceFromCentroidInMeters works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_search_distanceFromCentroidInMeters", {
+    ee <- occ_search(distanceFromCentroidInMeters=0,limit=2)
+    rr <- occ_search(distanceFromCentroidInMeters="2000,*",limit=2)
+    dd <- occ_search(distanceFromCentroidInMeters="0,2000",limit=2)
+  }, preserve_exact_body_bytes = TRUE)
+  
+  expect_equal(nrow(ee$data),2)
+  expect_equal(nrow(rr$data),2)
+  expect_equal(nrow(dd$data),2)
+  expect_true(rr$meta$count > dd$meta$count)
+})
+
+
 
 # Get occurrences for with a particular networkKey
 test_that("networkKey works correctly", {

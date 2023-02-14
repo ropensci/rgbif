@@ -93,7 +93,8 @@ occ_search <- function(taxonKey=NULL,
                        relativeOrganismQuantity = NULL,
                        iucnRedListCategory = NULL,
                        lifeStage = NULL,
-                       isInCluster = NULL, 
+                       isInCluster = NULL,
+                       distanceFromCentroidInMeters=NULL,
                        limit=500,
                        start=0,
                        fields = 'all',
@@ -120,7 +121,8 @@ occ_search <- function(taxonKey=NULL,
     # check limit and start params
     check_vals(limit, "limit")
     check_vals(start, "start")
-
+    
+    # args that take a single value
     args <- rgbif_compact(
       list(
         hasCoordinate = hasCoordinate,
@@ -145,6 +147,7 @@ occ_search <- function(taxonKey=NULL,
         offset = check_limit(as.integer(start))
       )
     )
+    # args that can take multiple values 
     args <- c(
       args, 
       parse_issues(issue),
@@ -191,7 +194,8 @@ occ_search <- function(taxonKey=NULL,
       convmany(networkKey),
       convmany(occurrenceId),
       convmany(iucnRedListCategory),
-      convmany(lifeStage)
+      convmany(lifeStage),
+      convmany(distanceFromCentroidInMeters)
       )
 
     argscoll <<- args
@@ -304,7 +308,8 @@ occ_search <- function(taxonKey=NULL,
     relativeOrganismQuantity=relativeOrganismQuantity,
     iucnRedListCategory=iucnRedListCategory,
     lifeStage=lifeStage,
-    coordinateUncertaintyInMeters = coordinateUncertaintyInMeters
+    coordinateUncertaintyInMeters=coordinateUncertaintyInMeters,
+    distanceFromCentroidInMeters=distanceFromCentroidInMeters
     )
   if (!any(sapply(params, length) > 0)) {
     stop(sprintf("At least one of these parameters must have a value:\n%s",
@@ -349,5 +354,6 @@ possparams <- function(){
   recordNumber, search, institutionCode, collectionCode, decimalLatitude,
   decimalLongitude, depth, year, typeStatus, lastInterpreted, occurrenceStatus,
   continent, gadmGid, verbatimScientificName, eventId, identifiedBy, networkKey, 
-  occurrenceId, iucnRedListCategory, lifeStage, degreeOfEstablishment, or mediatype"
+  occurrenceId, iucnRedListCategory, lifeStage, degreeOfEstablishment, 
+  distanceFromCentroidInMeters, or mediatype"
 }

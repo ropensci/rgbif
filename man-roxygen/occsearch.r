@@ -204,6 +204,10 @@
 #' @param lifeStage (character) the life stage of the occurrence. One of many 
 #' [options](https://www.gbif.org/occurrence/search?advanced=1&life_stage=Tadpole).
 #' @param isInCluster (logical) identify potentially related records on GBIF.
+#' @param distanceFromCentroidInMeters A number or range. A value of "2000,*"
+#' means at least 2km from known centroids. A value of "0" would mean occurrences 
+#' exactly on known centroids. A value of "0,2000" would mean within 2km of 
+#' centroids. Max value is 5000. 
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'
