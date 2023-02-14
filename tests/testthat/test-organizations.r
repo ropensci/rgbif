@@ -34,7 +34,7 @@ test_that("returns the correct class", {
 test_that("correct country is returned", {
   vcr::use_cassette("organizations_search_country",
     {
-      cc <- organizations(country = "BELGIUM")
+      cc <- organizations(country = "SAINT_BARTHELEMY")
     },
     preserve_exact_body_bytes = TRUE
   )
@@ -44,7 +44,7 @@ test_that("correct country is returned", {
   # The query returns the right country
   expect_identical(
     isocodes[isocodes$code == unique(cc$data$country), "gbif_name"],
-    "BELGIUM"
+    "SAINT_BARTHELEMY"
   )
 })
 
