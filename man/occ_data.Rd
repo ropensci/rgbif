@@ -73,6 +73,7 @@ occ_data(
   iucnRedListCategory = NULL,
   lifeStage = NULL,
   isInCluster = NULL,
+  distanceFromCentroidInMeters = NULL,
   curlopts = list()
 )
 }
@@ -358,6 +359,11 @@ quantity of the organism (a number between 0-1). Supports range queries,
 \href{https://www.gbif.org/occurrence/search?advanced=1&life_stage=Tadpole}{options}.}
 
 \item{isInCluster}{(logical) identify potentially related records on GBIF.}
+
+\item{distanceFromCentroidInMeters}{A number or range. A value of "2000,*"
+means at least 2km from known centroids. A value of "0" would mean occurrences
+exactly on known centroids. A value of "0,2000" would mean within 2km of
+centroids. Max value is 5000.}
 
 \item{curlopts}{list of named curl options passed on to
 \code{\link[crul]{HttpClient}}. see \code{curl::curl_options}
