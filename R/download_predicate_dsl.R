@@ -155,7 +155,7 @@
 #' - degreeOfEstablishment (DEGREE_OF_ESTABLISHMENT)
 #' - isInCluster (IS_IN_CLUSTER)
 #' - lifeStage (LIFE_STAGE)
-
+#' - distanceFromCentroidInMeters (DISTANCE_FROM_CENTROID_IN_METERS)
 #' 
 #' @references Download predicates docs:
 #' <https://www.gbif.org/developer/occurrence#predicates>
@@ -407,7 +407,9 @@ key_lkup <- list(
   isInCluster="IS_IN_CLUSTER",
   IS_IN_CLUSTER="IS_IN_CLUSTER",
   lifeStage="LIFE_STAGE",
-  LIFE_STAGE="LIFE_STAGE"
+  LIFE_STAGE="LIFE_STAGE",
+  DISTANCE_FROM_CENTROID_IN_METERS="DISTANCE_FROM_CENTROID_IN_METERS",
+  distanceFromCentroidInMeters="DISTANCE_FROM_CENTROID_IN_METERS"
   )
 
 parse_pred <- function(key, value, type = "and") {

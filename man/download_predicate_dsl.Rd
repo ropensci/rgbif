@@ -220,6 +220,7 @@ be supported that is not yet.
 \item degreeOfEstablishment (DEGREE_OF_ESTABLISHMENT)
 \item isInCluster (IS_IN_CLUSTER)
 \item lifeStage (LIFE_STAGE)
+\item distanceFromCentroidInMeters (DISTANCE_FROM_CENTROID_IN_METERS)
 }
 }
 
