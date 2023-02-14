@@ -34,7 +34,7 @@ test_that("returns the correct class", {
 test_that("correct country is returned", {
   vcr::use_cassette("organizations_search_country",
     {
-      cc <- organizations(country = "SAINT_BARTHELEMY")
+      cc <- organizations(country = "BL")
     },
     preserve_exact_body_bytes = TRUE
   )
@@ -42,10 +42,7 @@ test_that("correct country is returned", {
   # only one value for country
   expect_length(unique(cc$data$country), 1)
   # The query returns the right country
-  expect_identical(
-    isocodes[isocodes$code == unique(cc$data$country), "gbif_name"],
-    "SAINT_BARTHELEMY"
-  )
+  expect_identical(unique(cc$data$country),"BL")
 })
 
 # Finds datasets based for a single organisation based on uuid

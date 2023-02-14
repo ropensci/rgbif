@@ -9,7 +9,7 @@
 #' 'comment', 'hostedDataset', 'ownedDataset', 'deleted', 'pending',
 #' 'nonPublishing', or the special 'all'. Default: `'all'`
 #' @param country (character) Filters by country as given in isocodes$code,
-#'  e.g. \code{country="CANADA"}
+#'  e.g. \code{country="CA"}
 #' @param uuid (character) UUID of the data node provider. This must be
 #' specified if data is anything other than 'all', 'deleted', 'pending', or
 #' 'nonPublishing'.
@@ -44,7 +44,7 @@ organizations <- function(data = 'all', country = NULL, uuid = NULL,
     rgbif_compact(
       list(
         q = query,
-        country = isocodes[isocodes$gbif_name == country, "code"],
+        country = country,
         limit = as.integer(limit),
         offset = start
         )
