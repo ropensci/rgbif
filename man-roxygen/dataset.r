@@ -2,7 +2,7 @@
 #' parameter can be a simple word or a phrase. Wildcards can be added to the
 #' simple word parameters only, e.g. \code{q=*puma*}
 #' @param country NOT YET IMPLEMENTED. Filters by country as given in
-#' isocodes$gbif_name, e.g. \code{country=CANADA}
+#' isocodes$gbif_name, e.g. \code{country="CANADA"}
 #' @param type Type of dataset, options include occurrene, metadata, checklist,
 #' sampling_event
 #' (http://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/DatasetType.html)

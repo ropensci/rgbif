@@ -6,6 +6,7 @@
 \usage{
 organizations(
   data = "all",
+  country = NULL,
   uuid = NULL,
   query = NULL,
   limit = 100,
@@ -19,8 +20,12 @@ organizations(
 'comment', 'hostedDataset', 'ownedDataset', 'deleted', 'pending',
 'nonPublishing', or the special 'all'. Default: \code{'all'}}
 
+\item{country}{(character) Filters by country as given in isocodes$gbif_name,
+e.g. \code{country="CANADA"}}
+
 \item{uuid}{(character) UUID of the data node provider. This must be
-specified if data is anything other than 'all'.}
+specified if data is anything other than 'all', 'deleted', 'pending', or
+'nonPublishing'.}
 
 \item{query}{(character) Query nodes. Only used when \code{data='all'}}
 
@@ -34,9 +39,9 @@ with \code{limit} to page through results.}
 for curl options}
 }
 \value{
-A list of length one or two. If \code{uuid} is NULL, then a
-data.frame with call metadata, and a data.frame, but if \code{uuid} given,
-then a list.
+A list of length of two, consisting of a data.frame \code{meta} when
+uuid is NULL, and \code{data} which can either be a list or a data.frame
+depending on the requested type of data.
 }
 \description{
 Organizations metadata.
@@ -45,6 +50,7 @@ Organizations metadata.
 \dontrun{
 organizations(limit=5)
 organizations(query="france", limit=5)
+organizations(country = "SPAIN")
 organizations(uuid="4b4b2111-ee51-45f5-bf5e-f535f4a1c9dc")
 organizations(data='contact', uuid="4b4b2111-ee51-45f5-bf5e-f535f4a1c9dc")
 organizations(data='pending')
