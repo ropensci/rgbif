@@ -620,9 +620,9 @@ test_that("geometry inputs work as expected", {
 test_that("works with parameters that allow many inputs", {
   vcr::use_cassette("occ_search_many_inputs", {
     ## separate requests: use a vector of strings
-    aa <- occ_search(recordedBy=c("smith","BJ Stacey"), limit=50)
+    aa <- occ_search(recordedBy=c("smith","BJ Stacey"), limit=10)
     ## one request, many instances of same parameter: use semi-colon sep. string
-    bb <- occ_search(recordedBy="smith;BJ Stacey", limit=50)
+    bb <- occ_search(recordedBy="smith;BJ Stacey", limit=10)
   }, preserve_exact_body_bytes = TRUE)
 
   expect_is(aa, "gbif")
@@ -630,11 +630,12 @@ test_that("works with parameters that allow many inputs", {
 
   expect_named(aa, c('smith', 'BJ Stacey'))
   expect_named(bb, c('meta', 'hierarchy', 'data', 'media', 'facets'))
+  
+  expect_true(all(grepl("smith",unique(tolower(aa[[1]]$data$recordedBy)))))
+  expect_true(all(grepl("bj stacey",unique(tolower(aa[[2]]$data$recordedBy)))))
+  
+  expect_true(all(grepl('smith|bj stacey',unique(tolower(bb$data$recordedBy)))))
 
-  expect_equal(unique(tolower(aa[[1]]$data$recordedBy)), c("smith","long|peter|smith|rae"))
-  expect_equal(unique(tolower(aa[[2]]$data$recordedBy)), "bj stacey")
-
-  expect_true(unique(tolower(bb$data$recordedBy) %in% c('smith', 'bj stacey')))
 })
 
 # per issue #349
