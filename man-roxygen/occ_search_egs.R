@@ -284,7 +284,12 @@
 #'
 #' ## Range search with latitude
 #' occ_search(decimalLatitude='29.59,29.6')
-#'
+#' 
+#' ## Range search with distanceFromCentroidInMeters 
+#' occ_search(distanceFromCentroidInMeters = "2000,*") # at least 2km from centroids
+#' occ_search(distanceFromCentroidInMeters = "0,2000") # close to centroids within 2km 
+#' occ_search(distanceFromCentroidInMeters = 0) # exactly on centroids
+#' 
 #' # Search by specimen type status
 #' ## Look for possible values of the typeStatus parameter looking at the typestatus dataset
 #' occ_search(typeStatus = 'allotype', fields = c('name','typeStatus'))

@@ -143,7 +143,7 @@ test_that("scientificName basic use works - no synonyms", {
 
   expect_equal(attr(bb, "args")$scientificName, "Pulsatilla patens")
   expect_equal(bb$data$species[1], "Pulsatilla patens")
-  expect_match(bb$data$scientificName[1], "Pulsatilla nuttalliana \\(DC\\.\\) Spreng\\.")
+  expect_match(bb$data$scientificName[1], "Pulsatilla patens \\(L\\.\\) Mill\\.")
 
   expect_is(cc, "gbif_data")
   expect_is(cc$data, "data.frame")
@@ -587,6 +587,21 @@ test_that("isInCluster works correctly", {
   expect_false(ff$data$isInCluster[1])
   expect_true(tt$data$isInCluster[1])
   expect_equal(tt$data$classKey[1], 212)
+})
+
+# Test argument distanceFromCentroidInMeters
+test_that("distanceFromCentroidInMeters works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_data_distanceFromCentroidInMeters", {
+    ee <- occ_data(distanceFromCentroidInMeters=0,limit=2)
+    rr <- occ_data(distanceFromCentroidInMeters="2000,*",limit=2)
+    dd <- occ_data(distanceFromCentroidInMeters="0,2000",limit=2)
+  }, preserve_exact_body_bytes = TRUE)
+  
+  expect_equal(nrow(ee$data),2)
+  expect_equal(nrow(rr$data),2)
+  expect_equal(nrow(dd$data),2)
+  expect_true(rr$meta$count > dd$meta$count)
 })
 
 

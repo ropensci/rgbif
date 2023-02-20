@@ -107,7 +107,8 @@ occ_data <- function(taxonKey=NULL,
                     relativeOrganismQuantity = NULL,
                     iucnRedListCategory = NULL,
                     lifeStage = NULL,
-                    isInCluster = NULL, 
+                    isInCluster = NULL,
+                    distanceFromCentroidInMeters = NULL,
                     curlopts = list()) {
 
   geometry <- geometry_handler(geometry, geom_big, geom_size, geom_n)
@@ -196,7 +197,8 @@ occ_data <- function(taxonKey=NULL,
       convmany(networkKey),
       convmany(occurrenceId),
       convmany(iucnRedListCategory),
-      convmany(lifeStage)
+      convmany(lifeStage),
+      convmany(distanceFromCentroidInMeters)
     )
     argscoll <<- args
 
@@ -300,7 +302,8 @@ occ_data <- function(taxonKey=NULL,
     relativeOrganismQuantity=relativeOrganismQuantity,
     iucnRedListCategory=iucnRedListCategory,
     lifeStage=lifeStage,
-    coordinateUncertaintyInMeters = coordinateUncertaintyInMeters
+    coordinateUncertaintyInMeters=coordinateUncertaintyInMeters,
+    distanceFromCentroidInMeters=distanceFromCentroidInMeters
   )
   if (!any(sapply(params, length) > 0)) {
     stop(sprintf("At least one of the parmaters must have a value:\n%s",

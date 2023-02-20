@@ -70,6 +70,7 @@ occ_search(
   iucnRedListCategory = NULL,
   lifeStage = NULL,
   isInCluster = NULL,
+  distanceFromCentroidInMeters = NULL,
   limit = 500,
   start = 0,
   fields = "all",
@@ -351,6 +352,11 @@ quantity of the organism (a number between 0-1). Supports range queries,
 \href{https://www.gbif.org/occurrence/search?advanced=1&life_stage=Tadpole}{options}.}
 
 \item{isInCluster}{(logical) identify potentially related records on GBIF.}
+
+\item{distanceFromCentroidInMeters}{A number or range. A value of "2000,*"
+means at least 2km from known centroids. A value of "0" would mean occurrences
+exactly on known centroids. A value of "0,2000" would mean within 2km of
+centroids. Max value is 5000.}
 
 \item{limit}{Number of records to return. Default: 500. Note that the per
 request maximum is 300, but since we set it at 500 for the function, we
@@ -797,6 +803,11 @@ occ_search(year='1999,2000', limit=20)
 
 ## Range search with latitude
 occ_search(decimalLatitude='29.59,29.6')
+
+## Range search with distanceFromCentroidInMeters 
+occ_search(distanceFromCentroidInMeters = "2000,*") # at least 2km from centroids
+occ_search(distanceFromCentroidInMeters = "0,2000") # close to centroids within 2km 
+occ_search(distanceFromCentroidInMeters = 0) # exactly on centroids
 
 # Search by specimen type status
 ## Look for possible values of the typeStatus parameter looking at the typestatus dataset
