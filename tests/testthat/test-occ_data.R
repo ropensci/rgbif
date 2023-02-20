@@ -293,9 +293,9 @@ test_that("geometry inputs work as expected", {
 test_that("works with parameters that allow many inputs", {
   vcr::use_cassette("occ_data_args_with_many_inputs", {
     ## separate requests: use a vector of strings
-    aa <- occ_data(recordedBy=c("smith","BJ Stacey"), limit=3)
+    aa <- occ_data(recordedBy=c("smith","BJ Stacey"), limit=50)
     ## one request, many instances of same parameter: use semi-colon sep. string
-    bb <- occ_data(recordedBy="smith;BJ Stacey", limit=3)
+    bb <- occ_data(recordedBy="smith;BJ Stacey", limit=50)
   }, preserve_exact_body_bytes = TRUE, match_requests_on = c("path", "query"))
 
   expect_is(aa, "gbif_data")
