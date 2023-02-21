@@ -20,8 +20,8 @@ organizations(
 'comment', 'hostedDataset', 'ownedDataset', 'deleted', 'pending',
 'nonPublishing', or the special 'all'. Default: \code{'all'}}
 
-\item{country}{(character) Filters by country as given in isocodes$gbif_name,
-e.g. \code{country="CANADA"}}
+\item{country}{(character) Filters by country as given in isocodes$code,
+e.g. \code{country="CA"}}
 
 \item{uuid}{(character) UUID of the data node provider. This must be
 specified if data is anything other than 'all', 'deleted', 'pending', or

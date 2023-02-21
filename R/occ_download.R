@@ -265,7 +265,7 @@ print.occ_download_prep <- function(x, ...) {
   cat_n("  E-mail: ", x$email)
   cat_n("  Format: ", x$format)
   if(nchar(x$json_request) < 1500) cat_n("  Request: \n", x$json_request)
-  else cat_n("  Request: \n  OK. But too large to print.")
+  else cat_n("  Request: \n  OK. But too large to print. \n Use 'occ_download_prep()$json_request' to see JSON print out.")
 }
 
 # helpers -------------------------------------------
