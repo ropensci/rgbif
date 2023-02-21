@@ -90,10 +90,7 @@
 #' A named list with two values: \code{$data} and \code{$meta}. \code{$data} is
 #' a \code{data.frame} of literature references. 
 #' 
-#'
 #' @examples \dontrun{
-#'  # https://www.gbif.org/resource/search?contentType=literature
-#'  
 #'  lit_search(q="bats")$data 
 #'  lit_search(datasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7")
 #'  lit_search(year=2020)
