@@ -1,155 +1,179 @@
 #' Get number of occurrence records.
-#'
 #' @export
+#' 
+#' @param ... parameters passed to `occ_search()`.
+#' @param curlopts (list) curl options. 
 #'
-#' @param taxonKey Species key
-#' @param georeferenced Return only occurrence records with lat/long data
-#' (`TRUE`) or those that don't have that data (`FALSE`, default). Note that
-#' you can also get record count with [occ_search()] by setting `limit=0`
-#' @param basisOfRecord Basis of record
-#' @param datasetKey Dataset key
-#' @param date Collection date
-#' @param typeStatus A type status. See [typestatus()] dataset for
-#' options
-#' @param year Year data were collected in
-#' @param country Country data was collected in, two letter abbreviation. See
-#' https://countrycode.org/ for abbreviations.
-#' @param protocol Protocol. E.g., 'DWC_ARCHIVE'
-#' @param publishingCountry Publishing country, two letter ISO country code
-#' @param from Year to start at
-#' @param to Year to end at
-#' @param type One of count (default), schema, basisOfRecord, countries, or
-#' year.
-#' @template occ
-#'
-#' @return A single numeric value, or a list of numerics.
-#' @references https://www.gbif.org/developer/occurrence#metrics
-#'
-#' @details There is a slight difference in the way records are counted here vs.
-#' results from [occ_search()]. For equivalent outcomes, in the
-#' [occ_search()] function use `hasCoordinate=TRUE`, and
-#' `hasGeospatialIssue=FALSE` to have the same outcome for this function
-#' using `georeferenced=TRUE`.
-#'
-#' @section Supported dimensions:
-#' That is, there are only a certain set of supported query parameter
-#' combinations that GBIF allows on this API route. They can be found with the
-#' call `occ_count(type='schema')`. They are also presented below:
-#'
-#' - basisOfRecord
-#' - basisOfRecord, country
-#' - basisOfRecord, country, isGeoreferenced
-#' - basisOfRecord, country, isGeoreferenced, taxonKey
-#' - basisOfRecord, country, taxonKey
-#' - basisOfRecord, datasetKey
-#' - basisOfRecord, datasetKey, isGeoreferenced
-#' - basisOfRecord, datasetKey, isGeoreferenced, taxonKey
-#' - basisOfRecord, datasetKey, taxonKey
-#' - basisOfRecord, isGeoreferenced, taxonKey
-#' - basisOfRecord, isGeoreferenced, publishingCountry
-#' - basisOfRecord, isGeoreferenced, publishingCountry, taxonKey
-#' - basisOfRecord, publishingCountry
-#' - basisOfRecord, publishingCountry, taxonKey
-#' - basisOfRecord, taxonKey
-#' - country
-#' - country, datasetKey, isGeoreferenced
-#' - country, isGeoreferenced
-#' - country, isGeoreferenced, publishingCountry
-#' - country, isGeoreferenced, taxonKey
-#' - country, publishingCountry
-#' - country, taxonKey
-#' - country, typeStatus
-#' - datasetKey
-#' - datasetKey, isGeoreferenced
-#' - datasetKey, isGeoreferenced, taxonKey
-#' - datasetKey, issue
-#' - datasetKey, taxonKey
-#' - datasetKey, typeStatus
-#' - isGeoreferenced
-#' - isGeoreferenced, publishingCountry
-#' - isGeoreferenced, publishingCountry, taxonKey
-#' - isGeoreferenced, taxonKey
-#' - issue
-#' - publishingCountry
-#' - publishingCountry, taxonKey
-#' - publishingCountry, typeStatus
-#' - taxonKey
-#' - taxonKey, typeStatus
-#' - typeStatus
-#' - protocol
-#' - year
+#' @details
+#' `occ_count()` is a short convenience wrapper for 
+#' `occ_search(limit=0,occurrenceStatus=NULL)$meta$count`. 
+#' 
+#' The current version of `occ_count()` uses a different GBIF API endpoint than 
+#' than previous versions. This change greatly improves the usability of 
+#' `occ_count()`. Legacy parameters `georeferenced`, `type`, `date`, `to`, 
+#' `from` are no longer supported and not guaranteed to work correctly. See  
+#' `occ_counts_country`, `occ_counts_pub_country()`, `occ_counts_year()`, 
+#' `occ_counts_year`, and  `occ_counts_basis_of_record()` for replacements of 
+#' counts available via the `type` parameter. 
+#'  
+#'  Certain `occ_search()` parameters, such as `facet`, will be ignored since
+#'  they do not make sense in the context of a total count. Multiple values of
+#'  the type `c("a","b")` will give an error, but `"a;b"` will work. 
+#'  
+#' @return
+#' The occurrence count of the `occ_search()` query. 
 #'
 #' @examples \dontrun{
-#' occ_count(basisOfRecord='OBSERVATION')
-#' occ_count(georeferenced=TRUE)
-#' occ_count(country='DE')
-#' occ_count(country='CA', georeferenced=TRUE, basisOfRecord='OBSERVATION')
-#' occ_count(datasetKey='9e7ea106-0bf8-4087-bb61-dfe4f29e0f17')
-#' occ_count(year=2012)
-#' occ_count(taxonKey=2435099)
-#' occ_count(taxonKey=2435099, georeferenced=TRUE)
-#'
-#' # Just schema
-#' occ_count(type='schema')
-#'
-#' # Counts by basisOfRecord types
-#' occ_count(type='basisOfRecord')
+#' # total occurrences mediated by GBIF
+#' occ_count() # should be > 2 billion! 
 #' 
-#' # Counts by basisOfRecord types and taxonkey
-#' occ_count(taxonKey=2435099, basisOfRecord='OBSERVATION')
+#' # number of plant occurrences
+#' occ_count(kingdomKey=name_backbone("Plantea")$usageKey) 
+#' occ_count(scientificName = 'Ursus americanus')
+#' 
+#' 
+#' occ_count(country="DK") # found in Denmark 
+#' occ_count(country="DK;US") # found in Denmark and United States
+#' occ_count(publishingCountry="US") # published by the United States
+#' # number of repatriated eBird records in India
+#' occ_count(repatriated = TRUE,country="IN") 
+#'  
+#' occ_count(taxonKey=212) # number of bird occurrences
+#' # between years 1800-1900
+#' occ_count(basisOfRecord="PRESERVED_SPECIMEN", year="1800,1900") 
+#' occ_count(recordedBy="John Waller") # recorded by John Waller
+#' occ_count(decimalLatitude=0, decimalLongitude=0) # exactly on 0,0
+#' 
+#' # close to a known iso2 centroid
+#' occ_count(distanceFromCentroidInMeters="0,2000") 
+#' # close to a known iso2 centroid in Sweden
+#' occ_count(distanceFromCentroidInMeters="0,2000",country="SE") 
+#' 
+#' occ_count(hasCoordinate=TRUE) # with coordinates
+#' occ_count(protocol = "DIGIR") # published using DIGIR format
+#' occ_count(mediaType = 'StillImage') # with images
 #'
-#' # Counts by typeStatus
-#' occ_count(typeStatus='ALLOTYPE')
-#' occ_count(typeStatus='HOLOTYPE')
-#'
-#' # Counts by countries. publishingCountry must be supplied (default to US)
-#' occ_count(type='countries')
-#'
-#' # Counts by year. from and to years have to be supplied, default to 2000
-#' # and 2012
-#' occ_count(type='year', from=2000, to=2012)
-#'
-#' # Counts by publishingCountry, must supply a country (default to US)
-#' occ_count(type='publishingCountry')
-#' occ_count(type='publishingCountry', country='BZ')
-#'
-#' # Pass on curl options
-#' occ_count(type='year', from=2000, to=2012, curlopts = list(verbose = TRUE))
+#' # number of occurrences iucn status "critically endangered"
+#' occ_count(iucnRedListCategory="CR") 
+#' occ_count(verbatimScientificName="Calopteryx splendens;Calopteryx virgo")
+#' occ_count(
+#' geometry="POLYGON((24.70938 48.9221,24.71056 48.92175,24.71107
+#'  48.92296,24.71002 48.92318,24.70938 48.9221))")
+#' 
 #' }
+occ_count <- function(..., curlopts = list()) {
 
-occ_count <- function(taxonKey = NULL, georeferenced = NULL,
-  basisOfRecord = NULL, datasetKey = NULL, date = NULL, typeStatus = NULL,
-  country = NULL, year = NULL, from = 2000, to = 2012, type = 'count', 
-  publishingCountry = 'US', protocol = NULL, curlopts = list()) {
+  x <- list(...)
+  arg_names <- names(x)
 
-  args <- rgbif_compact(
-    list(
-      taxonKey=taxonKey, isGeoreferenced=asl(georeferenced),
-      basisOfRecord=basisOfRecord, datasetKey=datasetKey,
-      date=date, typeStatus=typeStatus,
-      country=country, year=year, protocol=protocol))
-  type <- match.arg(type, choices=c("count","schema","basisOfRecord",
-                                    "countries","year","publishingCountry"))
-  url <- switch(type,
-                count = paste0(gbif_base(), '/occurrence/count'),
-                schema = paste0(gbif_base(), '/occurrence/count/schema'),
-                basisOfRecord = paste0(gbif_base(),
-                                       '/occurrence/counts/basisOfRecord'),
-                countries = paste0(gbif_base(), '/occurrence/counts/countries'),
-                year = paste0(gbif_base(), '/occurrence/counts/year'),
-                publishingCountry = paste0(
-                  gbif_base(),
-                  '/occurrence/counts/publishingCountries'))
-  args <- switch(type,
-                count = args,
-                schema = list(),
-                basisofRecord = list(),
-                countries = rgbif_compact(
-                  list(publishingCountry=publishingCountry)),
-                year = rgbif_compact(list(from=from, to=to)),
-                publishingCountry =
-                  rgbif_compact(
-                    list(country=ifelse(is.null(country), "US", country) )))
-  res <- gbif_GET_content(url, args, curlopts)
-  if (type == 'count') as.numeric(res) else jsonlite::fromJSON(res, FALSE)
+  # check for multiple values 
+  if(any(!sapply(x,length) == 1)) stop("Multiple values of the form c('a','b') are not supported. Use 'a;b' instead.")
+  
+  # handle legacy parameters 
+  if("georeferenced" %in% arg_names) {
+    .Deprecated(msg="arg 'georeferenced' is deprecated since rgbif 3.7.6, use 'hasCoordinate' and 'hasGeospatialIssue' instead.")
+    if(x$georeferenced) {
+      x$hasCoordinate <- TRUE
+      x$hasGeospatialIssue <- FALSE
+    } 
+    if(is.null(x$georeferenced)) {
+      x$hasCoordinate <- NULL
+      x$hasGeospatialIssue <- NULL
+    } else {
+      x$hasCoordinate <- FALSE
+      x$hasGeospatialIssue <- FALSE
+    }
+  }
+  if("date" %in% arg_names) {
+    .Deprecated(msg="arg 'date' is deprecated since rgbif 3.7.6")
+    x$eventDate = x$date
+  }
+  if(any(c("to","from") %in% arg_names)) {
+    .Deprecated(msg="args 'to' and 'from' are deprecated since rgbif 3.7.6, use 'year' instead.")
+    x$year <- paste(x$from,x$to,sep=",")
+  }
+  if("type" %in% arg_names) {
+    .Deprecated(msg="arg 'type' is deprecated since rgbif 3.7.6, use 'occ_counts_*' functions instead.")
+  }
+  
+ count <- occ_search(
+             taxonKey = x$taxonKey,
+             scientificName = x$scientificName,
+             country = x$country,
+             publishingCountry = x$publishingCountry, 
+             hasCoordinate = x$hasCoordinate, 
+             typeStatus = x$typeStatus,
+             recordNumber = x$recordNumber,
+             lastInterpreted = x$lastInterpreted,
+             continent = x$continent,
+             geometry = x$geometry,
+             geom_big="asis",
+             geom_size=40,
+             geom_n=10,
+             recordedBy = x$recordedBy,
+             recordedByID = x$recordedByID,
+             identifiedByID = x$identifiedByID,
+             basisOfRecord = x$basisOfRecord,
+             datasetKey = x$datasetKey,
+             eventDate = x$eventDate,
+             catalogNumber = x$catalogNumber,
+             year = x$year,
+             month = x$month,
+             decimalLatitude = x$decimalLatitude,
+             decimalLongitude = x$decimalLongitude,
+             elevation = x$elevation,
+             depth = x$depth,
+             institutionCode = x$institutionCode,
+             collectionCode = x$collectionCode,
+             hasGeospatialIssue = x$hasGeospatialIssue,
+             issue = x$issue,
+             search = x$search,
+             mediaType = x$mediaType,
+             subgenusKey = x$subgenusKey,
+             repatriated = x$repatriated,
+             phylumKey = x$phylumKey,
+             kingdomKey = x$kingdomKey,
+             classKey = x$classKey,
+             orderKey = x$orderKey,
+             familyKey = x$familyKey,
+             genusKey = x$genusKey,
+             speciesKey = x$speciesKey,
+             establishmentMeans = x$establishmentMeans,
+             degreeOfEstablishment = x$degreeOfEstablishment,
+             protocol = x$protocol,
+             license = x$license,
+             organismId = x$organismId,
+             publishingOrg = x$publishingOrg,
+             stateProvince = x$stateProvince,
+             waterBody = x$waterBody,
+             locality = x$locality,
+             occurrenceStatus = x$occurrenceStatus,
+             gadmGid = x$gadmGid,
+             coordinateUncertaintyInMeters = x$coordinateUncertaintyInMeters,
+             verbatimScientificName = x$verbatimScientificName,
+             eventId = x$identifiedBy,
+             identifiedBy = x$identifiedBy,
+             networkKey = x$networkKey,
+             verbatimTaxonId = x$verbatimTaxonId,
+             occurrenceId = x$occurrenceId,
+             organismQuantity = x$organismQuantity,
+             organismQuantityType = x$organismQuantityType,
+             relativeOrganismQuantity = x$relativeOrganismQuantity,
+             iucnRedListCategory = x$iucnRedListCategory,
+             lifeStage = x$lifeStage,
+             isInCluster = x$isInCluster,
+             distanceFromCentroidInMeters = x$distanceFromCentroidInMeters,
+             limit=0,
+             start=0,
+             fields = 'all',
+             return=NULL,
+             facet = NULL,
+             facetMincount = NULL,
+             facetMultiselect = NULL,
+             skip_validate = TRUE,
+             curlopts = curlopts)$meta$count
+    
+  as.numeric(count)
 }
+
+

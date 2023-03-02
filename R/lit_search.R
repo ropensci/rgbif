@@ -110,8 +110,6 @@
 #'  lit_search(peerReview=TRUE,literatureType="JOURNAL",relevance="GBIF_USED")
 #'  lit_count(peerReview=TRUE,literatureType="JOURNAL",relevance="GBIF_USED")
 #' }
-#' 
-#' 
 lit_search <- function(
     q=NULL, 
     countriesOfResearcher=NULL, 

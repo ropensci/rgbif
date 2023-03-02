@@ -1,0 +1,172 @@
+---
+title: Getting Occurrence Counts From GBIF
+author: John Waller
+date: "2023-03-02"
+output: rmarkdown::html_vignette
+vignette: >
+    %\VignetteIndexEntry{getting_occurrence_data}
+    %\VignetteEngine{knitr::rmarkdown}
+    %\VignetteEncoding{UTF-8}
+---
+
+> This article requires rgbif \>= v3.7.6
+
+It can sometimes be useful to know the number of occurrences for a country, species, basis of record, or year. With `occ_count()` it is possible to get simple occurrence counts for wide variety of queries.
+
+Running `occ_count()` with no arguments will give the total number of occurrences mediated by GBIF.
+
+``` r
+occ_count() # should be over 2 billion!
+```
+
+`occ_count()` uses the same interface as `occ_search()`, so almost any query that works for `occ_search()` will work for `occ_count()`. In fact, `occ_count()` is just a short version of `occ_search(limit=0,occurrenceStatus=NULL)$meta$count`.
+
+Below returns the total number of bird occurrences mediated by GBIF.
+
+``` r
+# should give the same result
+occ_count(scientificName="Aves")
+occ_search(scientificName="Aves",occurrenceStatus=NULL,limit=0)$meta$count
+```
+
+It is usually better to use **taxonKeys** rather than scientific names. Note the use of `;` for multiple values in the same query.
+
+``` r
+# name_backbone("Aves")$usageKey
+occ_count(taxonKey=212)
+# total count of birds and insects
+occ_count(taxonKey="212;216")
+```
+
+It is possible to get counts by **country** or area using the appropriate 2-letter country code. See `enumeration_country()`.
+
+``` r
+# occurrences in Denmark
+occ_count(country="DK")  
+# occurrences in Denmark and United States
+occ_count(country="DK;US") 
+# occurrences in Denmark, United States, Mexico
+occ_count(country="DK;US;MX") 
+
+# number of occurrences published by the United States
+occ_count(publishingCountry="US") 
+# number of occurrences published by the United States and Japan
+occ_count(publishingCountry="US;JP") 
+
+# number of repatriated records in India
+occ_count(repatriated = TRUE,country="IN") 
+
+# number of insect occurrence records published by Japan
+occ_count(taxonKey=216,publishingCountry="JP") 
+
+# number of specimen insect occurrence records published by Japan bewtween the years 1900-2000
+occ_count(publishingCountry="JP",basisOfRecord="PRESERVED_SPECIMEN",taxonKey=216,year="1900,2000")
+```
+
+Some `occ_search()` parameters accept a **range** of values, and these will also work for `occ_count()`. A `,` is used to define a range, such as `year="1900,2000"`.
+
+> Note that 'year' means the year when the occurrence was recorded or collected, not when it was published to GBIF.
+
+``` r
+# number of occurrences between the years 
+occ_count(year="1800,1900")
+# In recorded or collected in 2023
+occ_count(year=2023)
+
+# all occurrences published with a coordinate uncertainty less than 10m
+occ_count(coordinateUncertaintyInMeters = "0,10")
+
+# close to a known iso2 centroid
+occ_count(distanceFromCentroidInMeters="0,2000") 
+# close to a known iso2 centroid in Sweden
+occ_count(distanceFromCentroidInMeters="0,2000",country="SE") 
+```
+
+Note that `occ_count()` will **ignore missing values**, so if a publisher has not filled in a value, it will not be returned in the count. For example, it is common for occurrence publishers to leave the `coordinateUncertaintyInMeters` blank, but **not** very common to leave the coordinates fields empty.
+
+``` r
+occ_count(coordinateUncertaintyInMeters = "0,1000000")
+occ_count(hasCoordinates=TRUE)
+```
+
+Here are some other interesting occurrence counts:
+
+    # recorded by John Waller
+    occ_count(recordedBy="John Waller") 
+    # exactly on 0,0
+    occ_count(decimalLatitude=0, decimalLongitude=0) 
+    # published using DIGIR format
+    occ_count(protocol = "DIGIR") 
+    # with images
+    occ_count(mediaType = 'StillImage') 
+    # number of occurrences iucn status "critically endangered"
+    occ_count(iucnRedListCategory="CR") 
+    # counts by verbatim name supplied by the occurrence publisher
+    occ_count(verbatimScientificName="Calopteryx splendens;Calopteryx virgo")
+    # counts by WKT geometries 
+    occ_count(geometry="POLYGON((24.70938 48.9221,24.71056 48.92175,24.71107 48.92296,24.71002 48.92318,24.70938 48.9221))")
+
+There are some `occ_search()` queries that **do not** work. It's not possible to give `occ_count()` **multiple values** in the form `c("a","b")`. Since this will perform two separate request and get two separate counts. `occ_count` is designed to give back a single number, so querying with multiple values is not supported.
+
+``` r
+# will give ERROR 
+# occ_count(scientificName=c("Calopteryx splendens","Calopteryx virgo")) 
+
+# will work but will give the total count of both species. 
+occ_count(scientificName="Calopteryx splendens;Calopteryx virgo")
+```
+
+## Using occ_counts\_\* functions
+
+GBIF also has a few custom API endpoints for getting a **table** of useful occurrence counts. These can be accessed via the `occ_counts_*` family of functions.
+
+`occ_counts_country()` will give back a table of total occurrence counts for each country or area.
+
+| title                    | enumName      | iso2 | iso3 | isoNumerical | gbifRegion    |     count |
+|:-------------------------|:--------------|:-----|:-----|:-------------|:--------------|----------:|
+| United States of America | UNITED_STATES | US   | USA  | 840          | NORTH_AMERICA | 821428365 |
+| France                   | FRANCE        | FR   | FRA  | 250          | EUROPE        | 136246772 |
+| Canada                   | CANADA        | CA   | CAN  | 124          | NORTH_AMERICA | 134162884 |
+| Sweden                   | SWEDEN        | SE   | SWE  | 752          | EUROPE        | 120223673 |
+
+`occ_counts_country(publishingCountry="MX")` will return a table of counts with countries were Mexico publishes occurrences records.
+
+| title                    | enumName      | iso2 | iso3 | isoNumerical | gbifRegion    |    count |
+|:-------------------------|:--------------|:-----|:-----|:-------------|:--------------|---------:|
+| Mexico                   | MEXICO        | MX   | MEX  | 484          | LATIN_AMERICA | 21078158 |
+| United States of America | UNITED_STATES | US   | USA  | 840          | NORTH_AMERICA |   124478 |
+| Guatemala                | GUATEMALA     | GT   | GTM  | 320          | LATIN_AMERICA |    43327 |
+
+`occ_counts_pub_country(country="MX")` will return a table of occurrence counts for each publishing country **about** Mexico. Note that the value for Mexico in this table will be the same as the one above.
+
+See the examples below for more clarification:
+
+``` r
+# the occurrences Mexico has published in other countries 
+occ_counts_country("MX") 
+# the occurrences Denmark has published in other countries 
+occ_counts_country("DK")
+ 
+# the occurrences other countries have published in Denmark
+occ_counts_pub_country("DK")
+# the occurrences other countries have published in Mexico
+occ_counts_pub_country("MX")
+```
+
+`occ_counts_year()` will return a table of total occurrence counts for each year that an occurrence was recorded or collected (**not** when published to GBIF).
+
+| year |     count |
+|:-----|----------:|
+| 2023 |   2128333 |
+| 2022 |  44899603 |
+| 2021 | 230671677 |
+
+`occ_counts_basis_of_record()` will return a table of occurrences counts for each basis of record type.
+
+| basisOfRecord      |      count |
+|:-------------------|-----------:|
+| HUMAN_OBSERVATION  | 1967253952 |
+| PRESERVED_SPECIMEN |  212934368 |
+| MATERIAL_SAMPLE    |   51946547 |
+| OBSERVATION        |   23398982 |
+| OCCURRENCE         |   20362535 |
