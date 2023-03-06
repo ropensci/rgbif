@@ -14,15 +14,16 @@
 #' GBIF API endpoint than than previous versions. This change greatly improves 
 #' the usability of `occ_count()`. Legacy parameters `georeferenced`, `type`, 
 #' `date`, `to`, `from` are no longer supported and not guaranteed to work 
-#' correctly. See `occ_counts_country`, `occ_counts_pub_country()`, 
-#' `occ_counts_year()`, `occ_counts_year`, and  `occ_counts_basis_of_record()` 
-#' for replacements of counts available via the `type` parameter. 
-#'  
+#' correctly. 
+#'
 #' Multiple values of the type `c("a","b")` will give an error, 
 #' but `"a;b"` will work. 
 #'  
 #' @return
-#' The occurrence count of the `occ_search()` query. 
+#' The occurrence count of the `occ_search()` query.
+#'
+#' @seealso [occ_count_year()], [occ_count_country()], [occ_count_pub_country()], 
+#' [occ_count_basis_of_record()]
 #'
 #' @examples \dontrun{
 #' # total occurrences mediated by GBIF

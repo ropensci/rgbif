@@ -13,7 +13,7 @@
 #' facets) are returned now; index to the one(s) you want. See [occ_data()]
 #' if you just want the data component
 #' @param ... additional facet parameters
-#' @seealso [downloads()], [occ_data()], [occ_facet()]
+#' @seealso [downloads()], [occ_data()]
 #' @note Maximum number of records you can get with this function is 100,000.
 #' See https://www.gbif.org/developer/occurrence
 #' @return An object of class `gbif`, which is a S3 class list, with
@@ -104,20 +104,20 @@ occ_search <- function(taxonKey=NULL,
                        facetMultiselect = NULL,
                        skip_validate = TRUE,
                        curlopts = list(), ...) {
-
+  
   pchk(return, "occ_search")
   geometry <- geometry_handler(geometry, geom_big, geom_size, geom_n)
   url <- paste0(gbif_base(), '/occurrence/search')
   argscoll <- NULL
-
+  
   .get_occ_search <- function(x=NULL, itervar=NULL, curlopts = list()) {
     if (!is.null(x)) {
       assign(itervar, x)
     }
-
+    
     # check that wkt is proper format and of 1 of 4 allowed types
     geometry <- check_wkt(geometry, skip_validate = skip_validate)
-
+    
     # check limit and start params
     check_vals(limit, "limit")
     check_vals(start, "start")
@@ -196,10 +196,10 @@ occ_search <- function(taxonKey=NULL,
       convmany(iucnRedListCategory),
       convmany(lifeStage),
       convmany(distanceFromCentroidInMeters)
-      )
-
+    )
+    
     argscoll <<- args
-
+    
     if (limit >= 300) {
       ### loop route for no facet and limit>0
       iter <- 0
@@ -208,17 +208,17 @@ occ_search <- function(taxonKey=NULL,
       while (sumreturned < limit) {
         iter <- iter + 1
         tt <- gbif_GET(url, args, FALSE, curlopts)
-
+        
         # if no results, assign count var with 0
         if (identical(tt$results, list())) tt$count <- 0
-
+        
         numreturned <- length(tt$results)
         sumreturned <- sumreturned + numreturned
-
+        
         if (tt$count < limit) {
           limit <- tt$count
         }
-
+        
         if (sumreturned < limit) {
           args$limit <- limit - sumreturned
           args$offset <- sumreturned + start
@@ -229,7 +229,7 @@ occ_search <- function(taxonKey=NULL,
       ### loop route for facet or limit=0
       outout <- list(gbif_GET(url, args, FALSE, curlopts))
     }
-
+    
     meta <- outout[[length(outout)]][c('offset', 'limit', 'endOfRecords',
                                        'count')]
     data <- do.call(c, lapply(outout, "[[", "results"))
@@ -253,7 +253,7 @@ occ_search <- function(taxonKey=NULL,
     list(meta = meta, hierarchy = hier2, data = dat2,
          media = media, facets = fac)
   }
-
+  
   params <- list(
     taxonKey=taxonKey,
     scientificName=scientificName,
@@ -310,7 +310,7 @@ occ_search <- function(taxonKey=NULL,
     lifeStage=lifeStage,
     coordinateUncertaintyInMeters=coordinateUncertaintyInMeters,
     distanceFromCentroidInMeters=distanceFromCentroidInMeters
-    )
+  )
   if (!any(sapply(params, length) > 0)) {
     stop(sprintf("At least one of these parameters must have a value:\n%s",
                  possparams()),
@@ -322,7 +322,7 @@ occ_search <- function(taxonKey=NULL,
                  possparams()),
          call. = FALSE)
   }
-
+  
   if (length(iter) == 0) {
     out <- .get_occ_search(curlopts = curlopts)
   } else {
@@ -330,13 +330,13 @@ occ_search <- function(taxonKey=NULL,
                   curlopts = curlopts)
     names(out) <- transform_names(iter[[1]])
   }
-
+  
   if (any(names(argscoll) %in% names(iter))) {
     argscoll[[names(iter)]] <- iter[[names(iter)]]
   }
   argscoll$fields <- fields
   structure(out, class = "gbif", args = argscoll,
-    type = if (length(iter) == 0) "single" else "many")
+            type = if (length(iter) == 0) "single" else "many")
 }
 
 # helpers -------------------------

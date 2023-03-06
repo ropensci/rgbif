@@ -28,9 +28,7 @@ The current version (since rgbif 3.7.6) of \code{occ_count()} uses a different
 GBIF API endpoint than than previous versions. This change greatly improves
 the usability of \code{occ_count()}. Legacy parameters \code{georeferenced}, \code{type},
 \code{date}, \code{to}, \code{from} are no longer supported and not guaranteed to work
-correctly. See \code{occ_counts_country}, \code{occ_counts_pub_country()},
-\code{occ_counts_year()}, \code{occ_counts_year}, and  \code{occ_counts_basis_of_record()}
-for replacements of counts available via the \code{type} parameter.
+correctly.
 
 Multiple values of the type \code{c("a","b")} will give an error,
 but \code{"a;b"} will work.
@@ -110,4 +108,8 @@ occ_count(facet="recordedBy",datasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7"
 occ_count(facet="institutionCode",basisOfRecord="PRESERVED_SPECIMEN")
 
 }
+}
+\seealso{
+\code{\link[=occ_count_year]{occ_count_year()}}, \code{\link[=occ_count_country]{occ_count_country()}}, \code{\link[=occ_count_pub_country]{occ_count_pub_country()}},
+\code{\link[=occ_count_basis_of_record]{occ_count_basis_of_record()}}
 }

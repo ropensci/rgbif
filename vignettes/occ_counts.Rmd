@@ -122,7 +122,7 @@ occ_count(scientificName="Calopteryx splendens;Calopteryx virgo")
 
 ### Getting counts using facets
 
-`occ_count()` also supports querying via the **facets interface**. Using a `occ_count(facet="x")` will return a `data.frame`.
+`occ_count()` also supports querying via the **facets interface**. Using `occ_count(facet="x")` will return a `data.frame`.
 
 All below will get a table of occurrence counts by **year**.
 
@@ -140,7 +140,7 @@ occ_count_year()
 
 > Counts from facets are sorted by `count`. Use `facetLimit` to control the number of rows returned.
 
-The facets interface uses `occ_search()` internally, so this table can also be fetched using `occ_search(facet="year",occurrenceStatus=NULL,limit=0)$facets$year`. This particular count is also available via a custom function `occ_count_year()` (see below).
+The facets interface uses `occ_search()` internally, so this table can also be fetched using `occ_search(facet="year",occurrenceStatus="PRESENT",limit=0)$facets$year`. This particular count is also available via a custom function `occ_count_year()` (see below).
 
 Almost any `occ_search()` parameter can be used via the facets interface. Facets can be combined with other search filters to produce a custom result.
 

@@ -3,12 +3,26 @@ context("occ_count")
 test_that("occ_count", {
   vcr::use_cassette("occ_count", {
     aa <- occ_count()
+    aaa <- occ_search(limit=0)$meta$count
     bb <- occ_count(taxonKey=212, year="2000,2011")
+    bbb <- occ_search(taxonKey=212, year="2000,2011",limit=0)$meta$count
     cc <- occ_count(year=2012)
+    ccc <- occ_search(year=2012,limit=0)$meta$count
     dd <- occ_count(occurrenceStatus = "ABSENT")
+    ddd <- occ_search(occurrenceStatus = "ABSENT",limit=0)$meta$count
     ee <- occ_count(basisOfRecord="MATERIAL_SAMPLE",organismQuantity=5)
+    eee <- occ_search(basisOfRecord="MATERIAL_SAMPLE",organismQuantity=5,limit=0)$meta$count
     ff <- occ_count(verbatimScientificName="Calopteryx splendens;Calopteryx virgo")
+    fff <- occ_search(verbatimScientificName="Calopteryx splendens;Calopteryx virgo",limit=0)$meta$count
   }, preserve_exact_body_bytes = TRUE)
+  
+  # results should be the same for occ_search(limit=0)$meta$count and occ_count()$
+  expect_equal(aaa,aa)
+  expect_equal(bbb,bb)
+  expect_equal(ccc,cc)
+  expect_equal(ddd,dd)
+  expect_equal(eee,ee)
+  expect_equal(fff,ff)
   
   # returns the correct class
   expect_is(aa, "numeric")
@@ -37,12 +51,26 @@ test_that("occ_count", {
 test_that("occ_count facets work", {
   vcr::use_cassette("occ_count_facet", {
     aa <- occ_count(facet="year",occurrenceStatus = NULL)
+    aaa <- occ_search(facet="year",occurrenceStatus = NULL,limit=0)$facet$year
     bb <- occ_count(facet="year",taxonKey=212, year="2000,2003")
+    bbb <- occ_search(facet="year",taxonKey=212, year="2000,2003",limit=0)$facet$year
     cc <- occ_count(facet="country",facetLimit=2)
+    ccc <- occ_search(facet="country",facetLimit=2,limit=0)$facet$country
     dd <- occ_count(facet="occurrenceStatus",occurrenceStatus=NULL)
+    ddd <- occ_search(facet="occurrenceStatus",occurrenceStatus=NULL,limit=0)$facet$occurrenceStatus
     ee <- occ_count(facet="basisOfRecord",basisOfRecord="MATERIAL_SAMPLE",organismQuantity=5)
+    eee <- occ_search(facet="basisOfRecord",basisOfRecord="MATERIAL_SAMPLE",organismQuantity=5,limit=0)$facet$basisOfRecord
     ff <- occ_count(facet="coordinateUncertaintyInMeters",facetverbatimScientificName="Calopteryx splendens;Calopteryx virgo")
+    fff <- occ_search(facet="coordinateUncertaintyInMeters",facetverbatimScientificName="Calopteryx splendens;Calopteryx virgo",limit=0)$facet$coordinateUncertaintyInMeters
   }, preserve_exact_body_bytes = TRUE)
+  
+  # occ_search(facet="x",limit=0)$facet$x should return the same
+  expect_equal(aaa$count[1],aa$count[1])
+  expect_equal(bbb$count[1],bb$count[1])
+  expect_equal(ccc$count[1],cc$count[1])
+  expect_equal(ddd$count[1],dd$count[1])
+  expect_equal(eee$count[1],ee$count[1])
+  expect_equal(fff$count[1],ff$count[1])
   
   # returns the correct class
   expect_is(aa, "data.frame")
@@ -77,6 +105,7 @@ test_that("occ_count facets work", {
   expect_equal(ncol(ff), 2)
   
 })
+
 
 
 
