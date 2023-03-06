@@ -25,7 +25,7 @@ Get number of occurrence records.
 \code{occ_search(limit=0)$meta$count}.
 
 The current version (since rgbif 3.7.6) of \code{occ_count()} uses a different
-GBIF API endpoint than than previous versions. This change greatly improves
+GBIF API endpoint from previous versions. This change greatly improves
 the usability of \code{occ_count()}. Legacy parameters \code{georeferenced}, \code{type},
 \code{date}, \code{to}, \code{from} are no longer supported and not guaranteed to work
 correctly.

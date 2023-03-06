@@ -29,6 +29,8 @@
 #' @return
 #' A `data.frame` of counts. 
 #'
+#'@seealso [occ_count()]
+#'
 #' @examples \dontrun{
 #' # total occurrence counts for all countries and iso2 places
 #' occ_count_country()  

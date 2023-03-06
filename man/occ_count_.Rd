@@ -76,3 +76,6 @@ occ_count_basis_of_record()
 
 }
 }
+\seealso{
+\code{\link[=occ_count]{occ_count()}}
+}
