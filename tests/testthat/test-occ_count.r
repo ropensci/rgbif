@@ -34,6 +34,51 @@ test_that("occ_count", {
   expect_equal(length(ff), 1)
 })
 
+test_that("occ_count facets work", {
+  vcr::use_cassette("occ_count_facet", {
+    aa <- occ_count(facet="year",occurrenceStatus = NULL)
+    bb <- occ_count(facet="year",taxonKey=212, year="2000,2003")
+    cc <- occ_count(facet="country",facetLimit=2)
+    dd <- occ_count(facet="occurrenceStatus",occurrenceStatus=NULL)
+    ee <- occ_count(facet="basisOfRecord",basisOfRecord="MATERIAL_SAMPLE",organismQuantity=5)
+    ff <- occ_count(facet="coordinateUncertaintyInMeters",facetverbatimScientificName="Calopteryx splendens;Calopteryx virgo")
+  }, preserve_exact_body_bytes = TRUE)
+  
+  # returns the correct class
+  expect_is(aa, "data.frame")
+  expect_is(bb, "data.frame")
+  expect_is(cc, "data.frame")
+  expect_is(dd, "data.frame")
+  expect_is(ee, "data.frame")
+  expect_is(ff, "data.frame")
+  
+  # colnames are correct 
+  expect_equal(colnames(aa),c("year","count"))
+  expect_equal(colnames(bb),c("year","count"))
+  expect_equal(colnames(cc),c("country","count"))
+  expect_equal(colnames(dd),c("occurrenceStatus","count"))
+  expect_equal(colnames(ee),c("basisOfRecord","count"))
+  expect_equal(colnames(ff),c("coordinateUncertaintyInMeters","count"))
+  
+  # returns reasonable amounts of rows
+  expect_equal(nrow(aa), 10)
+  expect_equal(nrow(bb), 4)
+  expect_equal(nrow(cc), 2)
+  expect_equal(nrow(dd), 2)
+  expect_equal(nrow(ee), 1)
+  expect_lte(nrow(ff), 10)
+  
+  # returns the correct dimensions
+  expect_equal(ncol(aa), 2)
+  expect_equal(ncol(bb), 2)
+  expect_equal(ncol(cc), 2)
+  expect_equal(ncol(dd), 2)
+  expect_equal(ncol(ee), 2)
+  expect_equal(ncol(ff), 2)
+  
+})
+
+
 
 test_that("occ_count fails well", {
     expect_error(
@@ -53,7 +98,7 @@ test_that("occ_count legacy params", {
   expect_warning(occ_count(type="count"),  
   "arg 'type' is deprecated since rgbif 3.7.6, use 'occ_counts_\\*' functions instead."  
   )
-  expect_warning(occ_count(from="2000",to="20001"),  
+  expect_warning(occ_count(from="2000",to="2001"),  
   "args 'to' and 'from' are deprecated since rgbif 3.7.6, use 'year' instead."  
   )
   }, preserve_exact_body_bytes = TRUE)

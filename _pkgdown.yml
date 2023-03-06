@@ -16,14 +16,13 @@ reference:
     desc: >
        Work with the GBIF occurrence search APIs <https://www.gbif.org/developer/occurrence>
     contents:
-      - occ_facet
       - occ_get
       - occ_get_verbatim
       - occ_data
       - occ_metadata
       - occ_search
       - occ_count
-      - count_facet
+      - occ_counts_
   - title: "Taxonomic names"
     desc: >
       Work with the GBIF taxonomic names API <https://www.gbif.org/developer/species>
@@ -88,4 +87,6 @@ reference:
       - rgbif-defunct
       - parsenames
       - networks
+      - count_facet
+      - occ_facet
     

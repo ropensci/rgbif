@@ -8,7 +8,7 @@
 #' variable, e.g., `country.facetLimit`
 #' @template occ
 #' @seealso [occ_search()] also has faceting ability, but
-#' can include occurrence data in addition to facets
+#' can include occurrence data in addition to facets.
 #' @details All fields can be faceted on except for last "lastInterpreted",
 #' "eventDate", and "geometry"
 #'
@@ -43,6 +43,7 @@
 #'   curlopts = list(verbose = TRUE))
 #' }
 occ_facet <- function(facet, facetMincount = NULL, curlopts = list(), ...) {
+  .Deprecated(msg="occ_facet() is deprecated since rgbif 3.7.6. Use occ_count(facet='x') instead.")
   args <- rgbif_compact(list(facetMincount = facetMincount, limit = 0))
   args <- c(args, collargs("facet"), yank_args(...))
   tt <- gbif_GET(paste0(gbif_base(), '/occurrence/search'), args,

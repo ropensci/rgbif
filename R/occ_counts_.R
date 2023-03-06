@@ -58,9 +58,9 @@ occ_counts_country <- function(publishingCountry = NULL) {
   assert(publishingCountry,"character")
   url <- paste0(gbif_base(),'/occurrence/counts/countries')
   args <- rgbif_compact(list(publishingCountry=publishingCountry))
-  res <- as_tibble(gbif_GET(url,args=args))
+  res <- tibble::as_tibble(gbif_GET(url,args=args))
   res <- data.table::transpose(res,keep.names="x")
-  res <- setNames(res,c("enumName","count"))
+  res <- stats::setNames(res,c("enumName","count"))
   res <- merge(res,enumeration_country(),by="enumName")
   res <- res[c("title","enumName","iso2","iso3","isoNumerical","gbifRegion","count")]
   res[rev(order(res$count)),]
@@ -72,9 +72,9 @@ occ_counts_pub_country <- function(country = NULL) {
   assert(country,"character")
   if(is.null(country)) stop("Supply a iso2 countrycode.")
   url <- paste0(gbif_base(),'/occurrence/counts/publishingCountries')
-  res <- as_tibble(gbif_GET(url,args=list(country=country)))
+  res <- tibble::as_tibble(gbif_GET(url,args=list(country=country)))
   res <- data.table::transpose(res,keep.names="x")
-  res <- setNames(res,c("enumName","count"))
+  res <- stats::setNames(res,c("enumName","count"))
   res <- merge(res,enumeration_country(),by="enumName")
   res <- res[c("title","enumName","iso2","iso3","isoNumerical","gbifRegion","count")]
   res[rev(order(res$count)),]
@@ -84,9 +84,9 @@ occ_counts_pub_country <- function(country = NULL) {
 #' @rdname occ_counts_
 occ_counts_year <- function(year=NULL) {
   url <- paste0(gbif_base(),'/occurrence/counts/year')
-  res <- as_tibble(gbif_GET(url,args=list(year=year)))
+  res <- tibble::as_tibble(gbif_GET(url,args=list(year=year)))
   res <- data.table::transpose(res,keep.names="x")
-  res <- setNames(res,c("year","count"))
+  res <- stats::setNames(res,c("year","count"))
   res[rev(order(res$year)),]
 }
 
@@ -94,8 +94,8 @@ occ_counts_year <- function(year=NULL) {
 #' @rdname occ_counts_
 occ_counts_basis_of_record <- function(curlopts=list()) {
   url <- paste0(gbif_base(),'/occurrence/counts/basisOfRecord')
-  res <- as_tibble(gbif_GET(url,args=NULL))
+  res <- tibble::as_tibble(gbif_GET(url,args=NULL))
   res <- data.table::transpose(res,keep.names="x")
-  res <- setNames(res,c("basisOfRecord","count"))
+  res <- stats::setNames(res,c("basisOfRecord","count"))
   res[rev(order(res$count)),]
 }

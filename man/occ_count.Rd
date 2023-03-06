@@ -4,10 +4,13 @@
 \alias{occ_count}
 \title{Get number of occurrence records.}
 \usage{
-occ_count(..., curlopts = list())
+occ_count(..., occurrenceStatus = "PRESENT", curlopts = list())
 }
 \arguments{
 \item{...}{parameters passed to \code{occ_search()}.}
+
+\item{occurrenceStatus}{(character) Default is "PRESENT". Specify whether
+search should return "PRESENT" or "ABSENT" data.}
 
 \item{curlopts}{(list) curl options.}
 }
@@ -19,19 +22,18 @@ Get number of occurrence records.
 }
 \details{
 \code{occ_count()} is a short convenience wrapper for
-\code{occ_search(limit=0,occurrenceStatus=NULL)$meta$count}.
+\code{occ_search(limit=0)$meta$count}.
 
-The current version of \code{occ_count()} uses a different GBIF API endpoint than
-than previous versions. This change greatly improves the usability of
-\code{occ_count()}. Legacy parameters \code{georeferenced}, \code{type}, \code{date}, \code{to},
-\code{from} are no longer supported and not guaranteed to work correctly. See
-\code{occ_counts_country}, \code{occ_counts_pub_country()}, \code{occ_counts_year()},
-\code{occ_counts_year}, and  \code{occ_counts_basis_of_record()} for replacements of
-counts available via the \code{type} parameter.
+The current version (since rgbif 3.7.6) of \code{occ_count()} uses a different
+GBIF API endpoint than than previous versions. This change greatly improves
+the usability of \code{occ_count()}. Legacy parameters \code{georeferenced}, \code{type},
+\code{date}, \code{to}, \code{from} are no longer supported and not guaranteed to work
+correctly. See \code{occ_counts_country}, \code{occ_counts_pub_country()},
+\code{occ_counts_year()}, \code{occ_counts_year}, and  \code{occ_counts_basis_of_record()}
+for replacements of counts available via the \code{type} parameter.
 
-Certain \code{occ_search()} parameters, such as \code{facet}, will be ignored since
-they do not make sense in the context of a total count. Multiple values of
-the type \code{c("a","b")} will give an error, but \code{"a;b"} will work.
+Multiple values of the type \code{c("a","b")} will give an error,
+but \code{"a;b"} will work.
 }
 \examples{
 \dontrun{
@@ -41,7 +43,6 @@ occ_count() # should be > 2 billion!
 # number of plant occurrences
 occ_count(kingdomKey=name_backbone("Plantea")$usageKey) 
 occ_count(scientificName = 'Ursus americanus')
-
 
 occ_count(country="DK") # found in Denmark 
 occ_count(country="DK;US") # found in Denmark and United States
