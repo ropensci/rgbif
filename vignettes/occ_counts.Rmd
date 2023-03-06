@@ -76,10 +76,12 @@ occ_count(year=2023)
 # all occurrences published with a coordinate uncertainty less than 10m
 occ_count(coordinateUncertaintyInMeters = "0,10")
 
-# close to a known iso2 centroid
+# close to a known country (iso2) centroid
 occ_count(distanceFromCentroidInMeters="0,2000") 
-# close to a known iso2 centroid in Sweden
+# close to a known country (iso2) centroid in Sweden
 occ_count(distanceFromCentroidInMeters="0,2000",country="SE") 
+# not close to a known country (iso2) centroid in Sweden
+occ_count(distanceFromCentroidInMeters="2000,*",country="SE") 
 ```
 
 Note that `occ_count()` will **ignore missing values**, so if a publisher has not filled in a value, it will not be returned in the count. For example, it is common for occurrence publishers to leave the `coordinateUncertaintyInMeters` blank, but **not** very common to leave the coordinates fields empty.
@@ -120,7 +122,7 @@ occ_count(scientificName="Calopteryx splendens;Calopteryx virgo")
 
 ### Getting counts using facets
 
-`occ_count()` also supports querying via the **facets interface**. Using a `occ_count(facet="x")` will return a `data.frame`. 
+`occ_count()` also supports querying via the **facets interface**. Using a `occ_count(facet="x")` will return a `data.frame`.
 
 All below will get a table of occurrence counts by **year**.
 
@@ -178,7 +180,7 @@ occ_count(facet="institutionCode",basisOfRecord="PRESERVED_SPECIMEN")
 
 ### Using facets to get species counts
 
-Facets can also be quick way for getting **unique counts** for certain queries, such as species counts.
+Facets can also be quick way for getting **unique counts** for certain queries, such as **species counts**.
 
 ``` r
 # unique number of species in Sweden
@@ -189,7 +191,12 @@ occ_count(facet="speciesKey",iucnRedListCategory="CR",country="SE",hasGeospatial
 
 # unique number of species in this WKT polygon
 occ_count(facet="speciesKey",geometry="POLYGON((24.70938 48.9221,24.71056 48.92175,24.71107 48.92296,24.71002 48.92318,24.70938 48.9221))",facetLimit=200000) %>% nrow()
+
+# Will not work since the query returns too many results
+# occ_count(facet="speciesKey",facetLimit=500000) %>% nrow()
 ```
+
+> Note that if your query returns many values, you may exceed the `facetLimit` max value. I have tested with `facetLimit=500000`, but larger values may fail.
 
 ## Using occ_counts\_\* functions
 
@@ -198,7 +205,7 @@ While the facets are powerful and quite useful, they can be **slow**. For this r
 `occ_counts_country()` will give back a table of total occurrence counts for each country or area.
 
 | title                    | enumName      | iso2 | iso3 | isoNumerical | gbifRegion    |     count |
-|:----------|:----------|:----------|:----------|:----------|:----------|----------:|
+|:-------------------------|:--------------|:-----|:-----|:-------------|:--------------|----------:|
 | United States of America | UNITED_STATES | US   | USA  | 840          | NORTH_AMERICA | 821428365 |
 | France                   | FRANCE        | FR   | FRA  | 250          | EUROPE        | 136246772 |
 | Canada                   | CANADA        | CA   | CAN  | 124          | NORTH_AMERICA | 134162884 |
@@ -207,7 +214,7 @@ While the facets are powerful and quite useful, they can be **slow**. For this r
 `occ_counts_country(publishingCountry="MX")` will return a table of counts with countries were Mexico publishes occurrences records.
 
 | title                    | enumName      | iso2 | iso3 | isoNumerical | gbifRegion    |    count |
-|:----------|:----------|:----------|:----------|:----------|:----------|----------:|
+|:-------------------------|:--------------|:-----|:-----|:-------------|:--------------|---------:|
 | Mexico                   | MEXICO        | MX   | MEX  | 484          | LATIN_AMERICA | 21078158 |
 | United States of America | UNITED_STATES | US   | USA  | 840          | NORTH_AMERICA |   124478 |
 | Guatemala                | GUATEMALA     | GT   | GTM  | 320          | LATIN_AMERICA |    43327 |
