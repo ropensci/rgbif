@@ -140,7 +140,7 @@ occ_count_year()
 
 > Counts from facets are sorted by `count`. Use `facetLimit` to control the number of rows returned.
 
-The facets interface uses `occ_search()` internally, so this table can also be fetched using `occ_search(facet="year",occurrenceStatus=NULL,limit=0)$facets$year`. This particular count is also available via a custom function `occ_counts_year()` (see below).
+The facets interface uses `occ_search()` internally, so this table can also be fetched using `occ_search(facet="year",occurrenceStatus=NULL,limit=0)$facets$year`. This particular count is also available via a custom function `occ_count_year()` (see below).
 
 Almost any `occ_search()` parameter can be used via the facets interface. Facets can be combined with other search filters to produce a custom result.
 
@@ -198,44 +198,44 @@ occ_count(facet="speciesKey",geometry="POLYGON((24.70938 48.9221,24.71056 48.921
 
 > Note that if your query returns many values, you may exceed the `facetLimit` max value. I have tested with `facetLimit=500000`, but larger values may fail.
 
-## Using occ_counts\_\* functions
+## Using occ_count\_\* functions
 
-While the facets are powerful and quite useful, they can be **slow**. For this reason, GBIF also has a few custom API endpoints for getting a **table** of useful occurrence counts. These can be accessed via the `occ_counts_*` family of functions.
+While the facets are powerful and quite useful, they can be **slow**. For this reason, GBIF also has a few custom API endpoints for getting a **table** of useful occurrence counts. These can be accessed via the `occ_count_*` family of functions.
 
-`occ_counts_country()` will give back a table of total occurrence counts for each country or area.
+`occ_count_country()` will give back a table of total occurrence counts for each country or area.
 
 | title                    | enumName      | iso2 | iso3 | isoNumerical | gbifRegion    |     count |
-|:-------------------------|:--------------|:-----|:-----|:-------------|:--------------|----------:|
+|:----------|:----------|:----------|:----------|:----------|:----------|----------:|
 | United States of America | UNITED_STATES | US   | USA  | 840          | NORTH_AMERICA | 821428365 |
 | France                   | FRANCE        | FR   | FRA  | 250          | EUROPE        | 136246772 |
 | Canada                   | CANADA        | CA   | CAN  | 124          | NORTH_AMERICA | 134162884 |
 | Sweden                   | SWEDEN        | SE   | SWE  | 752          | EUROPE        | 120223673 |
 
-`occ_counts_country(publishingCountry="MX")` will return a table of counts with countries were Mexico publishes occurrences records.
+`occ_count_country(publishingCountry="MX")` will return a table of counts with countries were Mexico publishes occurrences records.
 
 | title                    | enumName      | iso2 | iso3 | isoNumerical | gbifRegion    |    count |
-|:-------------------------|:--------------|:-----|:-----|:-------------|:--------------|---------:|
+|:----------|:----------|:----------|:----------|:----------|:----------|----------:|
 | Mexico                   | MEXICO        | MX   | MEX  | 484          | LATIN_AMERICA | 21078158 |
 | United States of America | UNITED_STATES | US   | USA  | 840          | NORTH_AMERICA |   124478 |
 | Guatemala                | GUATEMALA     | GT   | GTM  | 320          | LATIN_AMERICA |    43327 |
 
-`occ_counts_pub_country(country="MX")` will return a table of occurrence counts for each publishing country **about** Mexico. Note that the value for Mexico in this table will be the same as the one above.
+`occ_count_pub_country(country="MX")` will return a table of occurrence counts for each publishing country **about** Mexico. Note that the value for Mexico in this table will be the same as the one above.
 
 See the examples below for more clarification:
 
 ``` r
 # the occurrences Mexico has published in other countries 
-occ_counts_country("MX") 
+occ_count_country("MX") 
 # the occurrences Denmark has published in other countries 
-occ_counts_country("DK")
+occ_count_country("DK")
  
 # the occurrences other countries have published in Denmark
-occ_counts_pub_country("DK")
+occ_count_pub_country("DK")
 # the occurrences other countries have published in Mexico
-occ_counts_pub_country("MX")
+occ_count_pub_country("MX")
 ```
 
-`occ_counts_year()` will return a table of total occurrence counts for each year that an occurrence was recorded or collected (**not** when published to GBIF).
+`occ_count_year()` will return a table of total occurrence counts for each year that an occurrence was recorded or collected (**not** when published to GBIF).
 
 | year |     count |
 |:-----|----------:|
@@ -243,7 +243,7 @@ occ_counts_pub_country("MX")
 | 2022 |  44899603 |
 | 2021 | 230671677 |
 
-`occ_counts_basis_of_record()` will return a table of occurrences counts for each basis of record type.
+`occ_count_basis_of_record()` will return a table of occurrences counts for each basis of record type.
 
 | basisOfRecord      |      count |
 |:-------------------|-----------:|
