@@ -196,7 +196,7 @@ occ_count(facet="speciesKey",geometry="POLYGON((24.70938 48.9221,24.71056 48.921
 # occ_count(facet="speciesKey",facetLimit=500000) %>% nrow()
 ```
 
-> Note that if your query returns many row, you may exceed the `facetLimit` max value. I have tested with `facetLimit=500000`, but larger values may fail.
+> Note that if your query returns many rows, you may exceed the `facetLimit` max value. I have tested with `facetLimit=500000`, but larger values may fail.
 
 ## Using occ_count\_\* functions
 
