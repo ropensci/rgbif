@@ -1,0 +1,24 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?limit=0&facet=country&facet=basisOfRecord&facet=hasCoordinate&country.facetLimit=3&basisOfRecord.facetLimit=6
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: '{"offset":0,"limit":0,"endOfRecords":false,"count":2309327640,"results":[],"facets":[{"field":"HAS_COORDINATE","counts":[{"name":"true","count":2176279511},{"name":"false","count":133048129}]},{"field":"BASIS_OF_RECORD","counts":[{"name":"HUMAN_OBSERVATION","count":1967565545},{"name":"PRESERVED_SPECIMEN","count":216222178},{"name":"MATERIAL_SAMPLE","count":51421905},{"name":"OBSERVATION","count":23398982},{"name":"OCCURRENCE","count":20362561},{"name":"MACHINE_OBSERVATION","count":15203565}]},{"field":"COUNTRY","counts":[{"name":"US","count":821658562},{"name":"FR","count":136241481},{"name":"CA","count":134148808}]}]}'
+  recorded_at: 2023-03-06 13:43:35 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2

@@ -1,0 +1,47 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?limit=0&facet=country
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: '{"offset":0,"limit":0,"endOfRecords":false,"count":2309327640,"results":[],"facets":[{"field":"COUNTRY","counts":[{"name":"US","count":821658562},{"name":"FR","count":136241481},{"name":"CA","count":134148808},{"name":"SE","count":120310028},{"name":"AU","count":115220255},{"name":"GB","count":111525623},{"name":"NL","count":87979409},{"name":"ES","count":56131849},{"name":"DK","count":50811715},{"name":"DE","count":50150186}]}]}'
+  recorded_at: 2023-03-06 13:43:31 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?facetMincount=100000000&limit=0&facet=country
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: '{"offset":0,"limit":0,"endOfRecords":false,"count":2309327640,"results":[],"facets":[{"field":"COUNTRY","counts":[{"name":"US","count":821658562},{"name":"FR","count":136241481},{"name":"CA","count":134148808},{"name":"SE","count":120310028},{"name":"AU","count":115220255},{"name":"GB","count":111525623}]}]}'
+  recorded_at: 2023-03-06 13:43:31 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2

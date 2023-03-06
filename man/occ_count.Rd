@@ -72,5 +72,40 @@ occ_count(
 geometry="POLYGON((24.70938 48.9221,24.71056 48.92175,24.71107
  48.92296,24.71002 48.92318,24.70938 48.9221))")
 
+# getting a table of counts using the facets interface
+# occurrence counts by year
+occ_count(facet="year")
+occ_count(facet="year",facetLimit=400)
+
+# top scientificNames from Japan
+occ_count(facet="scientificName",country="JP")
+# top countries publishing specimen bird records between 1850 and 1880
+occ_count(facet="scientificName",taxonKey=212,basisOfRecord="PRESERVED_SPECIMEN",year="1850,1880")
+
+# Number of present or absence records of Elephants
+occ_count(facet="occurrenceStatus",scientificName="Elephantidae")
+
+# top 100 datasets publshing occurrences to GBIF
+occ_count(facet="datasetKey",facetLimit=100)
+# top datasets publishing country centroids on GBIF
+occ_count(facet="datasetKey",distanceFromCentroidInMeters="0")
+
+# common values for coordinateUncertaintyInMeters for museum specimens
+occ_count(facet="coordinateUncertaintyInMeters",basisOfRecord="PRESERVED_SPECIMEN")
+
+# number of iucn listed bird and insect occurrences in Mexico
+occ_count(facet="iucnRedListCategory",taxonKey="212;216",country="MX")
+
+# most common latitude values mediated by GBIF
+occ_count(facet="decimalLatitude")
+
+# top iNaturalist users publishing research-grade obs to GBIF
+occ_count(facet="recordedBy",datasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7")
+# top 100 iNaturalist users from Ukraine
+occ_count(facet="recordedBy",datasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7",country="UA",facetLimit=100)
+
+# top institutions publishing specimen occurrences to GBIF
+occ_count(facet="institutionCode",basisOfRecord="PRESERVED_SPECIMEN")
+
 }
 }
