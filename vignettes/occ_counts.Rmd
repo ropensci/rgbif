@@ -21,7 +21,7 @@ occ_count() # should be over 2 billion!
 
 `occ_count()` uses the same interface as `occ_search()`, so almost any query that works for `occ_search()` will work for `occ_count()`. In fact, `occ_count()` is just a short version of `occ_search(limit=0)$meta$count`.
 
-Below returns the total number of bird occurrences mediated by GBIF.
+Get the total number of bird occurrences mediated by GBIF.
 
 ``` r
 # should give the same result
