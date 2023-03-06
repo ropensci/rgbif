@@ -11,7 +11,7 @@
 #' `occ_search(limit=0)$meta$count`. 
 #' 
 #' The current version (since rgbif 3.7.6) of `occ_count()` uses a different 
-#' GBIF API endpoint than than previous versions. This change greatly improves 
+#' GBIF API endpoint from previous versions. This change greatly improves 
 #' the usability of `occ_count()`. Legacy parameters `georeferenced`, `type`, 
 #' `date`, `to`, `from` are no longer supported and not guaranteed to work 
 #' correctly. 
