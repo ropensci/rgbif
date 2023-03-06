@@ -68,7 +68,8 @@
 #' # top scientificNames from Japan
 #' occ_count(facet="scientificName",country="JP")
 #' # top countries publishing specimen bird records between 1850 and 1880
-#' occ_count(facet="scientificName",taxonKey=212,basisOfRecord="PRESERVED_SPECIMEN",year="1850,1880")
+#' occ_count(facet="scientificName",taxonKey=212,basisOfRecord="PRESERVED_SPECIMEN"
+#' ,year="1850,1880")
 #'
 #' # Number of present or absence records of Elephants
 #' occ_count(facet="occurrenceStatus",scientificName="Elephantidae")
@@ -90,7 +91,8 @@
 #' # top iNaturalist users publishing research-grade obs to GBIF
 #' occ_count(facet="recordedBy",datasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7")
 #' # top 100 iNaturalist users from Ukraine
-#' occ_count(facet="recordedBy",datasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7",country="UA",facetLimit=100)
+#' occ_count(facet="recordedBy",datasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7"
+#' ,country="UA",facetLimit=100)
 #'
 #' # top institutions publishing specimen occurrences to GBIF
 #' occ_count(facet="institutionCode",basisOfRecord="PRESERVED_SPECIMEN")
