@@ -1,6 +1,8 @@
 context("occ_facet")
 
 test_that("occ_facet works", {
+  skip_on_cran()
+  skip_on_ci()
   vcr::use_cassette("occ_facet", {
     aa <- occ_facet(facet = "country")
     # facetMincount
@@ -19,6 +21,8 @@ test_that("occ_facet works", {
 })
 
 test_that("occ_facet paging works", {
+  skip_on_cran()
+  skip_on_ci()
   vcr::use_cassette("occ_facet_paging", {
     aa <- occ_facet(
       facet = c("country", "basisOfRecord", "hasCoordinate"),
@@ -38,6 +42,7 @@ test_that("occ_facet paging works", {
 
 test_that("occ_facet fails well", {
   skip_on_cran()
+  skip_on_ci()
 
   expect_error(
     occ_facet(),
