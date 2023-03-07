@@ -64,16 +64,13 @@ jobs:
         env:
           RHUB_PLATFORM: linux-x86_64-ubuntu-gcc
         run: |
-          wget https://github.com/gagolews/stringi/archive/master.zip -O stringi.zip
-          unzip stringi.zip
-          sed -i '/\/icu..\/data/d' stringi-master/.Rbuildignore
-          R CMD build stringi-master
           Rscript -e 'writeLines(pak::local_system_requirements("ubuntu", "18.04", execute = TRUE, sudo = TRUE, echo = TRUE))'
       
       - name: Install dependencies Linux
         if: runner.os == 'Linux'
         run: |
           pak::local_install_dev_deps()
+          install.packages("stringi")
           pak::pkg_install(c("rcmdcheck","sf","maps", "scales", "colorspace", "raster", "protolite"))
         shell: Rscript {0}
 
