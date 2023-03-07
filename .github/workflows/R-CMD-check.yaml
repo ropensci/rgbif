@@ -14,10 +14,7 @@ jobs:
         config:
         - { os: windows-latest, r: 'release'}
         - { os: macOS-latest, r: 'release'}
-        # - { os: macOS-latest, r: 'devel'}
-        # If changing the Ubuntu version, change all instances of 18.04, and change bionic to the new
-        # version using this reference: https://wiki.ubuntu.com/Releases
-        - { os: ubuntu-18.04, r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/bionic/latest"}
+        - { os: ubuntu-latest, r: 'release'}
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
