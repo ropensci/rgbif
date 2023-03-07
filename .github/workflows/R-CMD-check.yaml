@@ -70,10 +70,7 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           pak::local_install_dev_deps()
-          install.packages("stringi")
-          install.packages("sf")
-          install.packages("protolite")
-          pak::pkg_install(c("rcmdcheck","maps", "scales", "colorspace", "raster"))
+          pak::pkg_install(c("stringi","protolite","sf",","rcmdcheck","maps", "scales", "colorspace", "raster"))
         shell: Rscript {0}
 
       - name: Install dependencies macOS and Windows
