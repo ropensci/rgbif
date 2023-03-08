@@ -238,7 +238,7 @@ It is possible to filter out **country/area centroids** in a download using the 
 ``` r
 # download occurrences that are at least 2km from a centroid in Sweden
 occ_download(
-pred("distanceFromCentroidInMeters","2000,*"),
+pred_gte("distanceFromCentroidInMeters","2000,*"),
 pred("country","SE"),
 format = "SIMPLE_CSV")
 ```
