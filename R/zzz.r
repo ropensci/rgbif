@@ -685,13 +685,11 @@ last <- function(x) x[length(x)]
 
 mssg <- function(v, ...) if (v) message(...)
 
-# rgbif_ck <- conditionz::ConditionKeeper$new(times = 1, condition = "warning")
 pchk <- function(from, fun, pkg_version = "v3.0.0") {
   assert(deparse(substitute(from)), "character")
   assert(pkg_version, "character")
   param_mssg <- "`%s` param in `%s` function is defunct as of rgbif %s, and is ignored"
   parms_help <- "\nSee `?rgbif` for more information."
-  # once_per <- "\nThis warning will be thrown once per R session."
   mssg <- c(sprintf(param_mssg, deparse(substitute(from)), fun, pkg_version),
     parms_help)
   if (!is.null(from)) warning(mssg)
