@@ -50,7 +50,6 @@ Suggests:
     raster,
     protolite (>= 2.0),
     sf,
-    randgeo,
     vcr (>= 1.2.0),
     knitr,
     rmarkdown
