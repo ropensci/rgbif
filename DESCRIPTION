@@ -41,7 +41,6 @@ Imports:
     tibble,
     lazyeval,
     R6,
-    conditionz,
     stats,
     wk
 Suggests:
