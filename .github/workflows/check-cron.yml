@@ -2,6 +2,7 @@ on:
   push:
     branches:
       - master
+      - actions
   schedule:
     - cron: '0 0 */3 * *' # every 3 days
 
