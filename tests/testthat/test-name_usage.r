@@ -8,10 +8,11 @@ test_that("name_usage return parameter works", {
     expect_warning((z = name_usage(return = "all")), 
       "`return` param in `name_usage` function is defunct"
     )
+    # this is no longer the case with removal of conditionz dep
     # the 2nd time does not throw any warnings
-    expect_warning((z = name_usage(return = "all")), 
-      NA
-    )
+    # expect_warning((z = name_usage(return = "all")), 
+      # NA
+    # )
   })
   # still returns data
   expect_is(z, "gbif")

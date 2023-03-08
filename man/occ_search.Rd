@@ -941,5 +941,5 @@ occ_search(scientificName = 'Ursus americanus', limit = 0)$meta
 https://www.gbif.org/developer/occurrence#search
 }
 \seealso{
-\code{\link[=downloads]{downloads()}}, \code{\link[=occ_data]{occ_data()}}, \code{\link[=occ_facet]{occ_facet()}}
+\code{\link[=downloads]{downloads()}}, \code{\link[=occ_data]{occ_data()}}
 }

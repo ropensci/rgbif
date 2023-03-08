@@ -4,162 +4,112 @@
 \alias{occ_count}
 \title{Get number of occurrence records.}
 \usage{
-occ_count(
-  taxonKey = NULL,
-  georeferenced = NULL,
-  basisOfRecord = NULL,
-  datasetKey = NULL,
-  date = NULL,
-  typeStatus = NULL,
-  country = NULL,
-  year = NULL,
-  from = 2000,
-  to = 2012,
-  type = "count",
-  publishingCountry = "US",
-  protocol = NULL,
-  curlopts = list()
-)
+occ_count(..., occurrenceStatus = "PRESENT", curlopts = list())
 }
 \arguments{
-\item{taxonKey}{Species key}
+\item{...}{parameters passed to \code{occ_search()}.}
 
-\item{georeferenced}{Return only occurrence records with lat/long data
-(\code{TRUE}) or those that don't have that data (\code{FALSE}, default). Note that
-you can also get record count with \code{\link[=occ_search]{occ_search()}} by setting \code{limit=0}}
+\item{occurrenceStatus}{(character) Default is "PRESENT". Specify whether
+search should return "PRESENT" or "ABSENT" data.}
 
-\item{basisOfRecord}{Basis of record}
-
-\item{datasetKey}{Dataset key}
-
-\item{date}{Collection date}
-
-\item{typeStatus}{A type status. See \code{\link[=typestatus]{typestatus()}} dataset for
-options}
-
-\item{country}{Country data was collected in, two letter abbreviation. See
-https://countrycode.org/ for abbreviations.}
-
-\item{year}{Year data were collected in}
-
-\item{from}{Year to start at}
-
-\item{to}{Year to end at}
-
-\item{type}{One of count (default), schema, basisOfRecord, countries, or
-year.}
-
-\item{publishingCountry}{Publishing country, two letter ISO country code}
-
-\item{protocol}{Protocol. E.g., 'DWC_ARCHIVE'}
-
-\item{curlopts}{list of named curl options passed on to
-\code{\link[crul]{HttpClient}}. see \code{curl::curl_options}
-for curl options}
+\item{curlopts}{(list) curl options.}
 }
 \value{
-A single numeric value, or a list of numerics.
+The occurrence count of the \code{occ_search()} query.
 }
 \description{
 Get number of occurrence records.
 }
 \details{
-There is a slight difference in the way records are counted here vs.
-results from \code{\link[=occ_search]{occ_search()}}. For equivalent outcomes, in the
-\code{\link[=occ_search]{occ_search()}} function use \code{hasCoordinate=TRUE}, and
-\code{hasGeospatialIssue=FALSE} to have the same outcome for this function
-using \code{georeferenced=TRUE}.
-}
-\section{Supported dimensions}{
+\code{occ_count()} is a short convenience wrapper for
+\code{occ_search(limit=0)$meta$count}.
 
-That is, there are only a certain set of supported query parameter
-combinations that GBIF allows on this API route. They can be found with the
-call \code{occ_count(type='schema')}. They are also presented below:
-\itemize{
-\item basisOfRecord
-\item basisOfRecord, country
-\item basisOfRecord, country, isGeoreferenced
-\item basisOfRecord, country, isGeoreferenced, taxonKey
-\item basisOfRecord, country, taxonKey
-\item basisOfRecord, datasetKey
-\item basisOfRecord, datasetKey, isGeoreferenced
-\item basisOfRecord, datasetKey, isGeoreferenced, taxonKey
-\item basisOfRecord, datasetKey, taxonKey
-\item basisOfRecord, isGeoreferenced, taxonKey
-\item basisOfRecord, isGeoreferenced, publishingCountry
-\item basisOfRecord, isGeoreferenced, publishingCountry, taxonKey
-\item basisOfRecord, publishingCountry
-\item basisOfRecord, publishingCountry, taxonKey
-\item basisOfRecord, taxonKey
-\item country
-\item country, datasetKey, isGeoreferenced
-\item country, isGeoreferenced
-\item country, isGeoreferenced, publishingCountry
-\item country, isGeoreferenced, taxonKey
-\item country, publishingCountry
-\item country, taxonKey
-\item country, typeStatus
-\item datasetKey
-\item datasetKey, isGeoreferenced
-\item datasetKey, isGeoreferenced, taxonKey
-\item datasetKey, issue
-\item datasetKey, taxonKey
-\item datasetKey, typeStatus
-\item isGeoreferenced
-\item isGeoreferenced, publishingCountry
-\item isGeoreferenced, publishingCountry, taxonKey
-\item isGeoreferenced, taxonKey
-\item issue
-\item publishingCountry
-\item publishingCountry, taxonKey
-\item publishingCountry, typeStatus
-\item taxonKey
-\item taxonKey, typeStatus
-\item typeStatus
-\item protocol
-\item year
-}
-}
+The current version (since rgbif 3.7.6) of \code{occ_count()} uses a different
+GBIF API endpoint from previous versions. This change greatly improves
+the usability of \code{occ_count()}. Legacy parameters \code{georeferenced}, \code{type},
+\code{date}, \code{to}, \code{from} are no longer supported and not guaranteed to work
+correctly.
 
+Multiple values of the type \code{c("a","b")} will give an error,
+but \code{"a;b"} will work.
+}
 \examples{
 \dontrun{
-occ_count(basisOfRecord='OBSERVATION')
-occ_count(georeferenced=TRUE)
-occ_count(country='DE')
-occ_count(country='CA', georeferenced=TRUE, basisOfRecord='OBSERVATION')
-occ_count(datasetKey='9e7ea106-0bf8-4087-bb61-dfe4f29e0f17')
-occ_count(year=2012)
-occ_count(taxonKey=2435099)
-occ_count(taxonKey=2435099, georeferenced=TRUE)
+# total occurrences mediated by GBIF
+occ_count() # should be > 2 billion! 
 
-# Just schema
-occ_count(type='schema')
+# number of plant occurrences
+occ_count(kingdomKey=name_backbone("Plantea")$usageKey) 
+occ_count(scientificName = 'Ursus americanus')
 
-# Counts by basisOfRecord types
-occ_count(type='basisOfRecord')
+occ_count(country="DK") # found in Denmark 
+occ_count(country="DK;US") # found in Denmark and United States
+occ_count(publishingCountry="US") # published by the United States
+# number of repatriated eBird records in India
+occ_count(repatriated = TRUE,country="IN") 
+ 
+occ_count(taxonKey=212) # number of bird occurrences
+# between years 1800-1900
+occ_count(basisOfRecord="PRESERVED_SPECIMEN", year="1800,1900") 
+occ_count(recordedBy="John Waller") # recorded by John Waller
+occ_count(decimalLatitude=0, decimalLongitude=0) # exactly on 0,0
 
-# Counts by basisOfRecord types and taxonkey
-occ_count(taxonKey=2435099, basisOfRecord='OBSERVATION')
+# close to a known iso2 centroid
+occ_count(distanceFromCentroidInMeters="0,2000") 
+# close to a known iso2 centroid in Sweden
+occ_count(distanceFromCentroidInMeters="0,2000",country="SE") 
 
-# Counts by typeStatus
-occ_count(typeStatus='ALLOTYPE')
-occ_count(typeStatus='HOLOTYPE')
+occ_count(hasCoordinate=TRUE) # with coordinates
+occ_count(protocol = "DIGIR") # published using DIGIR format
+occ_count(mediaType = 'StillImage') # with images
 
-# Counts by countries. publishingCountry must be supplied (default to US)
-occ_count(type='countries')
+# number of occurrences iucn status "critically endangered"
+occ_count(iucnRedListCategory="CR") 
+occ_count(verbatimScientificName="Calopteryx splendens;Calopteryx virgo")
+occ_count(
+geometry="POLYGON((24.70938 48.9221,24.71056 48.92175,24.71107
+ 48.92296,24.71002 48.92318,24.70938 48.9221))")
 
-# Counts by year. from and to years have to be supplied, default to 2000
-# and 2012
-occ_count(type='year', from=2000, to=2012)
+# getting a table of counts using the facets interface
+# occurrence counts by year
+occ_count(facet="year")
+occ_count(facet="year",facetLimit=400)
 
-# Counts by publishingCountry, must supply a country (default to US)
-occ_count(type='publishingCountry')
-occ_count(type='publishingCountry', country='BZ')
+# top scientificNames from Japan
+occ_count(facet="scientificName",country="JP")
+# top countries publishing specimen bird records between 1850 and 1880
+occ_count(facet="scientificName",taxonKey=212,basisOfRecord="PRESERVED_SPECIMEN"
+,year="1850,1880")
 
-# Pass on curl options
-occ_count(type='year', from=2000, to=2012, curlopts = list(verbose = TRUE))
+# Number of present or absence records of Elephants
+occ_count(facet="occurrenceStatus",scientificName="Elephantidae")
+
+# top 100 datasets publshing occurrences to GBIF
+occ_count(facet="datasetKey",facetLimit=100)
+# top datasets publishing country centroids on GBIF
+occ_count(facet="datasetKey",distanceFromCentroidInMeters="0")
+
+# common values for coordinateUncertaintyInMeters for museum specimens
+occ_count(facet="coordinateUncertaintyInMeters",basisOfRecord="PRESERVED_SPECIMEN")
+
+# number of iucn listed bird and insect occurrences in Mexico
+occ_count(facet="iucnRedListCategory",taxonKey="212;216",country="MX")
+
+# most common latitude values mediated by GBIF
+occ_count(facet="decimalLatitude")
+
+# top iNaturalist users publishing research-grade obs to GBIF
+occ_count(facet="recordedBy",datasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7")
+# top 100 iNaturalist users from Ukraine
+occ_count(facet="recordedBy",datasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7"
+,country="UA",facetLimit=100)
+
+# top institutions publishing specimen occurrences to GBIF
+occ_count(facet="institutionCode",basisOfRecord="PRESERVED_SPECIMEN")
+
 }
 }
-\references{
-https://www.gbif.org/developer/occurrence#metrics
+\seealso{
+\code{\link[=occ_count_year]{occ_count_year()}}, \code{\link[=occ_count_country]{occ_count_country()}}, \code{\link[=occ_count_pub_country]{occ_count_pub_country()}},
+\code{\link[=occ_count_basis_of_record]{occ_count_basis_of_record()}}
 }

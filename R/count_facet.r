@@ -40,9 +40,12 @@
 #' count_facet(by="basisOfRecord")
 #' }
 
-count_facet <- function(keys = NULL, by = 'country', countries = 10,
+count_facet <- function(keys = NULL,
+                        by = 'country',
+                        countries = 10,
                         removezeros = FALSE) {
-
+  
+  .Deprecated(msg="count_facet() is deprecated since rgbif 3.7.6. Use occ_count(facet='x') instead.")
   assert(by, "character")
   assert(countries, c("numeric", "integer", "character"))
   assert(removezeros, "logical")
