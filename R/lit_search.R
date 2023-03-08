@@ -89,26 +89,25 @@
 #' @return
 #' A named list with two values: \code{$data} and \code{$meta}. \code{$data} is
 #' a \code{data.frame} of literature references. 
-#' 
 #' @examples \dontrun{
-#'  lit_search(q="bats")$data 
-#'  lit_search(datasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7")
-#'  lit_search(year=2020)
-#'  lit_search(year="2011,2020") # year ranges
-#'  lit_search(relevance=c("GBIF_CITED","GBIF_USED")) # multiple values
-#'  lit_search(relevance=c("GBIF_USED","GBIF_CITED"), 
-#'  topics=c("EVOLUTION","PHYLOGENETICS")
+#' lit_search(q="bats")$data 
+#' lit_search(datasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7")
+#' lit_search(year=2020)
+#' lit_search(year="2011,2020") # year ranges
+#' lit_search(relevance=c("GBIF_CITED","GBIF_USED")) # multiple values
+#' lit_search(relevance=c("GBIF_USED","GBIF_CITED"), 
+#' topics=c("EVOLUTION","PHYLOGENETICS")
 #'  
-#'  lit_count() # total number of literature referencing GBIF
-#'  lit_count(peerReview=TRUE)
-#'  # number of citations of iNaturalist 
-#'  lit_count(datasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7")
-#'  # number of peer-reviewed articles used GBIF mediated data
-#'  lit_count(peerReview=TRUE,literatureType="JOURNAL",relevance="GBIF_USED")
+#' lit_count() # total number of literature referencing GBIF
+#' lit_count(peerReview=TRUE)
+#' # number of citations of iNaturalist 
+#' lit_count(datasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7")
+#' # number of peer-reviewed articles used GBIF mediated data
+#' lit_count(peerReview=TRUE,literatureType="JOURNAL",relevance="GBIF_USED")
 #'  
-#'  # Typically what is meant by "literature that uses GBIF" 
-#'  lit_search(peerReview=TRUE,literatureType="JOURNAL",relevance="GBIF_USED")
-#'  lit_count(peerReview=TRUE,literatureType="JOURNAL",relevance="GBIF_USED")
+#' # Typically what is meant by "literature that uses GBIF" 
+#' lit_search(peerReview=TRUE,literatureType="JOURNAL",relevance="GBIF_USED")
+#' lit_count(peerReview=TRUE,literatureType="JOURNAL",relevance="GBIF_USED")
 #' }
 lit_search <- function(
     q=NULL, 
