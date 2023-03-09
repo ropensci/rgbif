@@ -22,7 +22,7 @@ reference:
       - occ_metadata
       - occ_search
       - occ_count
-      - occ_counts_
+      - occ_count_
   - title: "Taxonomic names"
     desc: >
       Work with the GBIF taxonomic names API <https://www.gbif.org/developer/species>

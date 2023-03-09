@@ -1,5 +1,5 @@
 #' Get quick pre-computed occurrence counts of a limited number of dimensions. 
-#'
+#' @name occ_count_
 #' @param publishingCountry The 2-letter country code (as per ISO-3166-1)
 #' the country from which the occurrence was published.
 #' @param country (character) The 2-letter country code (ISO-3166-1) 
@@ -29,7 +29,7 @@
 #' @return
 #' A `data.frame` of counts. 
 #'
-#'@seealso [occ_count()]
+#' @seealso [occ_count()]
 #'
 #' @examples \dontrun{
 #' # total occurrence counts for all countries and iso2 places

@@ -1,6 +1,5 @@
 #' Search for literature that cites GBIF mediated data
 #' 
-#' @template occ
 #' 
 #' @export
 #' 
@@ -31,6 +30,8 @@
 #' @param flatten (logical) should any lists in the resulting data be flattened
 #' into comma-seperated strings?
 #' @param limit how many records to return. limit=NULL will fetch up to 10,000. 
+#' @param curlopts list of named curl options passed on to HttpClient. 
+#' see curl::curl_options for curl options.
 #' @param ... additional parameters passed to lit_search
 #'
 #' @details
@@ -88,7 +89,8 @@
 #' 
 #' @return
 #' A named list with two values: \code{$data} and \code{$meta}. \code{$data} is
-#' a \code{data.frame} of literature references. 
+#' a \code{data.frame} of literature references.
+#'  
 #' @examples \dontrun{
 #' lit_search(q="bats")$data 
 #' lit_search(datasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7")
@@ -96,15 +98,7 @@
 #' lit_search(year="2011,2020") # year ranges
 #' lit_search(relevance=c("GBIF_CITED","GBIF_USED")) # multiple values
 #' lit_search(relevance=c("GBIF_USED","GBIF_CITED"), 
-#' topics=c("EVOLUTION","PHYLOGENETICS")
-#'  
-#' lit_search(q="bats")$data 
-#' lit_search(datasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7")
-#' lit_search(year=2020)
-#' lit_search(year="2011,2020") # year ranges
-#' lit_search(relevance=c("GBIF_CITED","GBIF_USED")) # multiple values
-#' lit_search(relevance=c("GBIF_USED","GBIF_CITED"), 
-#'  topics=c("EVOLUTION","PHYLOGENETICS")
+#' topics=c("EVOLUTION","PHYLOGENETICS"))
 #' lit_count() # total number of literature referencing GBIF
 #' lit_count(peerReview=TRUE)
 #' # number of citations of iNaturalist 
