@@ -55,31 +55,3 @@ occ_facet <- function(facet, facetMincount = NULL, curlopts = list(), ...) {
   }), vapply(tt$facets, function(x) to_camel(x$field), ""))
 }
 
-collargs <- function(x){
-  outlist <- list()
-  for (i in seq_along(x)) {
-    outlist[[i]] <- makemultiargs(x[[i]])
-  }
-  as.list(unlist(rgbif_compact(outlist)))
-}
-
-makemultiargs <- function(x){
-  value <- get(x, envir = parent.frame(n = 2))
-  if ( length(value) == 0 ) {
-    NULL
-  } else {
-    if ( any(sapply(value, is.na)) ) {
-      NULL
-    } else {
-      if ( !is.character(value) ) {
-        value <- as.character(value)
-      }
-      names(value) <- rep(x, length(value))
-      value
-    }
-  }
-}
-
-to_camel <- function(x) {
-  gsub("(_)([a-z])", "\\U\\2", tolower(x), perl = TRUE)
-}
