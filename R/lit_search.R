@@ -131,7 +131,7 @@ lit_search <- function(
     curlopts = list()
 ) {
   step <- 1000 # max step size in 1000
-  
+  max_limit <- 10000 # max limit is 10,000
   # check inputs 
   if(!is_uuid(datasetKey) & !is.null(datasetKey)) stop("'datasetKey' should be a GBIF dataset uuid.")
   if(!is_uuid(publishingOrg) & !is.null(publishingOrg)) stop("'publishingOrg' should be a GBIF publisher uuid.")
@@ -171,29 +171,44 @@ lit_search <- function(
             convmany_rename(journalSource,"source"), 
             convmany_rename(journalPublisher,"publisher")
   )
-  if(is.null(limit)) {
-    count_args <- args; count_args$limit <- 0
-    limit <- gbif_GET(paste0(gbif_base(), "/literature/search"), count_args, parse=TRUE, curlopts = curlopts, mssg = NULL)$count
-    if(length(args) == 0) {
-      message("No filters used, but 'limit=NULL' returning just the first 1000 results. If you actually just want the first 10,000 records, use 'limit=10000'.")
-      limit <- 1000
-      }
-  }
-  if(limit > 10000) { 
-    message("Not returning all records. Max records is 10,000.") 
-    limit <- 10000 
-  } 
-  if(step >= limit) step <- limit
   
-  if((limit %% step) == 0) { 
+  # make count to see if any further processing needed
+  count_args <- args; count_args$limit <- 0
+  count_limit <- gbif_GET(paste0(gbif_base(), "/literature/search"), count_args, parse=TRUE, curlopts = curlopts, mssg = NULL)$count
+  
+  # exit early if there will be no results
+  if(count_limit == 0) {
+    meta <- list(endOfRecords=TRUE,count=0) 
+    data <- tibble::tibble()
+    return(list(data=data,meta=meta))
+  }
+  
+  # if limit not filled in use count_limit
+  if(is.null(limit)) {
+    limit <- count_limit
+    if(length(args) == 0) {
+        message("No filters used, but 'limit=NULL' returning just the first 1000 results. If you actually just want the first 10,000 records, use 'limit=10000'.")
+        limit <- 1000
+    }
+  }
+  
+  # if larger than max value of 10,000 
+  if(limit > max_limit) { 
+    message("Not returning all records. Max records is 10,000.") 
+    limit <- max_limit 
+  } 
+  
+  # if step size greater than limit adjust for one request
+  if((step >= limit)) step <- limit
+  
+  # if limit exactly divisible by step size
+  if((limit%%step) == 0) { 
     offset_seq <- seq(from=0,limit-step,by=step)
     limit_seq <- rep(step,length(offset_seq))
-    
   } else {
     offset_seq <- seq(from=0,limit,by=step)
     limit_seq <- c(rep(step,length(offset_seq)-1),limit %% step)
   }
-  
   if(step == limit) offset_seq <- 0 # only one request needed
   if(length(args) == 0) { 
     urls <- paste0(gbif_base(),"/literature/search?",
@@ -210,6 +225,8 @@ lit_search <- function(
   data <- process_lit_async_results(ll,flatten=flatten)
   meta <- rgbif_compact(ll[[length(urls)]])
   meta$results <- NULL
+  meta$offset <- NULL
+  meta$limit <- NULL
   list(data=data,meta=meta)
 }
 
