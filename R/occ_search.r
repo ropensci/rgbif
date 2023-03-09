@@ -126,23 +126,11 @@ occ_search <- function(taxonKey=NULL,
     args <- rgbif_compact(
       list(
         hasCoordinate = hasCoordinate,
-        lastInterpreted = lastInterpreted,
-        decimalLatitude = decimalLatitude,
-        decimalLongitude = decimalLongitude,
         hasGeospatialIssue = hasGeospatialIssue,
         occurrenceStatus = occurrenceStatus,
         q = search,
         repatriated = repatriated,
-        elevation = elevation,
-        depth = depth, 
         limit = check_limit(as.integer(limit)),
-        eventDate = eventDate, 
-        month = month, 
-        year = year,
-        coordinateUncertaintyInMeters = coordinateUncertaintyInMeters,
-        organismQuantity = organismQuantity,
-        organismQuantityType = organismQuantityType,
-        relativeOrganismQuantity = relativeOrganismQuantity,
         isInCluster = isInCluster,
         offset = check_limit(as.integer(start))
       )
@@ -153,6 +141,18 @@ occ_search <- function(taxonKey=NULL,
       parse_issues(issue),
       collargs("facet"),
       yank_args(...),
+      convmany(lastInterpreted),
+      convmany(decimalLatitude),
+      convmany(decimalLongitude),
+      convmany(elevation),
+      convmany(depth), 
+      convmany(eventDate), 
+      convmany(month), 
+      convmany(year),
+      convmany(coordinateUncertaintyInMeters),
+      convmany(organismQuantity),
+      convmany(organismQuantityType),
+      convmany(relativeOrganismQuantity),
       convmany(taxonKey),
       convmany(scientificName),
       convmany(country),
@@ -197,7 +197,6 @@ occ_search <- function(taxonKey=NULL,
       convmany(lifeStage),
       convmany(distanceFromCentroidInMeters)
     )
-    
     argscoll <<- args
     
     if (limit >= 300) {

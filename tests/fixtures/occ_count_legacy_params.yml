@@ -19,13 +19,13 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MTI2ODA2MjAw
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MTI2OTE0ODM4
         LCJyZXN1bHRzIjpbXSwiZmFjZXRzIjpbXX0=
-  recorded_at: 2023-03-06 15:33:46 GMT
+  recorded_at: 2023-03-09 14:40:24 GMT
   recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&eventDate=2010&offset=0&facetLimit=
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&eventDate=2010
     body:
       encoding: ''
       string: ''
@@ -43,9 +43,9 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MjYzOTU2NSwi
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MjYzOTI3NCwi
         cmVzdWx0cyI6W10sImZhY2V0cyI6W119
-  recorded_at: 2023-03-06 15:33:46 GMT
+  recorded_at: 2023-03-09 14:40:24 GMT
   recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
@@ -67,13 +67,13 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MjI4MDMzNTUx
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MjI4NDgyMDU2
         NiwicmVzdWx0cyI6W10sImZhY2V0cyI6W119
-  recorded_at: 2023-03-06 15:33:46 GMT
+  recorded_at: 2023-03-09 14:40:24 GMT
   recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&year=2000%2C2001&offset=0&facetLimit=
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&year=2000%2C2001
     body:
       encoding: ''
       string: ''
@@ -91,7 +91,7 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6Mzk1MTQwMzQs
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6Mzk1NDg2OTgs
         InJlc3VsdHMiOltdLCJmYWNldHMiOltdfQ==
-  recorded_at: 2023-03-06 15:33:46 GMT
+  recorded_at: 2023-03-09 14:40:24 GMT
   recorded_with: vcr/1.2.0, webmockr/0.8.2

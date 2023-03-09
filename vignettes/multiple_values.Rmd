@@ -36,78 +36,16 @@ occ_search(occurrenceStatus="PRESENT;ABSENT")
 When using different requests `c("a","b")`, you will get back a list equal to the value of your vector. To extract data from multiple different requests, you will need something like the following. 
 
 ```r
-
 occ_search(taxonKey=c(1,2))[[1]]$data
-
 ```
 
-The following table describes whether an argument for `occ_search` or `occ_data` will take multiple values in the same request. 
+All `occ_search()` arguments can take multiple values, except for the following arguments:   
 
-
-| arg           | different| same |
-|---------------|----------|------|
-|basisOfRecord  | X        |X  |
-|classKey       | X        |X|
-|country        | X        |X|
-|familyKey      | X        |X|
-|genusKey          | X| X|
-|identifiedByID    | X| X|
-|kingdomKey        | X| X|
-|license           | X| X|
-|locality          | X| X|
-|catalogNumber     | X| X|
-|collectionCode    | X| X|
-|continent         | X| X|
-|datasetKey        | X| X|
-|establishmentMeans| X| X|
-|speciesKey| X| X|
-|establishmentMeans| X| X|
-|degreeOfEstablishment| X| X|
-|protocol| X| X|
-|license| X| X|
-|organismId| X| X|
-|publishingOrg| X| X|
-|stateProvince| X| X|
-|waterBody| X| X|
-|locality| X| X|
-|basisOfRecord| X| X|
-|gadmGid| X| X|
-|verbatimScientificName| X| X|
-|eventId| X| X|
-|identifiedBy| X| X|
-|networkKey| X| X|
-|occurrenceId| X| X|
-|iucnRedListCategory| X| X|
-|lifeStage| X| X|
-|geometry| X| X|
-|institutionCode| X| X|
-|mediaType| X| X|
-|orderKey| X| X|
-|organismId| X| X|
-|phylumKey| X| X|
-|protocol| X| X|
-|publishingCountry| X| X|
-|publishingOrg| X| X|
-|recordedBy| X| X|
-|recordedByID| X| X|
-|recordNumber| X| X|
-|scientificName| X| X|
-|stateProvince| X| X|
-|subgenusKey| X| X|
-|taxonKey| X| X|
-|typeStatus| X| X|
-|waterBody| X| X|
-|depth| X|
-|limit| X|
-|q| X|
-|year| X|
-|repatriated| X|
-|lastInterpreted| X|
-|decimalLatitude| X|
-|decimalLongitude| X|
-|coordinateUncertaintyInMeters| X|
-|organismQuantity| X|
-|organismQuantityType| X|
-|relativeOrganismQuantity| X|
-|isInCluster| X|
-|occurrenceStatus|X|
+* hasCoordinate
+* hasGeospatialIssue
+* occurrenceStatus
+* search
+* repatriated
+* isInCluster
+* limit
+* offset
