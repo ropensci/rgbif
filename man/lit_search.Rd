@@ -73,9 +73,8 @@ into comma-seperated strings?}
 
 \item{limit}{how many records to return. limit=NULL will fetch up to 10,000.}
 
-\item{curlopts}{list of named curl options passed on to
-\code{\link[crul]{HttpClient}}. see \code{curl::curl_options}
-for curl options}
+\item{curlopts}{list of named curl options passed on to HttpClient.
+see curl::curl_options for curl options.}
 
 \item{...}{additional parameters passed to lit_search}
 }
@@ -141,23 +140,22 @@ same as running \code{lit_search()$meta$count}.
 }
 \examples{
 \dontrun{
- lit_search(q="bats")$data 
- lit_search(datasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7")
- lit_search(year=2020)
- lit_search(year="2011,2020") # year ranges
- lit_search(relevance=c("GBIF_CITED","GBIF_USED")) # multiple values
- lit_search(relevance=c("GBIF_USED","GBIF_CITED"), 
- topics=c("EVOLUTION","PHYLOGENETICS")
+lit_search(q="bats")$data 
+lit_search(datasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7")
+lit_search(year=2020)
+lit_search(year="2011,2020") # year ranges
+lit_search(relevance=c("GBIF_CITED","GBIF_USED")) # multiple values
+lit_search(relevance=c("GBIF_USED","GBIF_CITED"), 
+topics=c("EVOLUTION","PHYLOGENETICS"))
+lit_count() # total number of literature referencing GBIF
+lit_count(peerReview=TRUE)
+# number of citations of iNaturalist 
+lit_count(datasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7")
+# number of peer-reviewed articles used GBIF mediated data
+lit_count(peerReview=TRUE,literatureType="JOURNAL",relevance="GBIF_USED")
  
- lit_count() # total number of literature referencing GBIF
- lit_count(peerReview=TRUE)
- # number of citations of iNaturalist 
- lit_count(datasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7")
- # number of peer-reviewed articles used GBIF mediated data
- lit_count(peerReview=TRUE,literatureType="JOURNAL",relevance="GBIF_USED")
- 
- # Typically what is meant by "literature that uses GBIF" 
- lit_search(peerReview=TRUE,literatureType="JOURNAL",relevance="GBIF_USED")
- lit_count(peerReview=TRUE,literatureType="JOURNAL",relevance="GBIF_USED")
+# Typically what is meant by "literature that uses GBIF" 
+lit_search(peerReview=TRUE,literatureType="JOURNAL",relevance="GBIF_USED")
+lit_count(peerReview=TRUE,literatureType="JOURNAL",relevance="GBIF_USED")
 }
 }
