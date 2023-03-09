@@ -28,6 +28,9 @@ test_that("lit_search works as expected", {
                       limit=10)
     # year ranges work
     yy <- lit_search(year="2011,2020",limit=5)
+    
+    # exit early if we know there will be no results with fake datasetkey
+    hh <- lit_search(datasetKey="592d81d0-5e2a-41f3-b75b-d96a7d997a0c")
   
   expect_length(oo,2)
   expect_is(oo$data,"data.frame")
@@ -93,6 +96,12 @@ test_that("lit_search works as expected", {
   expect_is(yy$data,"data.frame")
   expect_is(yy$meta,"list")
   expect_true(all(yy$data$year >= 2011 & yy$data$year <= 2020))
+  
+  # exit early for no results
+  expect_length(hh,2)
+  expect_is(hh$data,"data.frame")
+  expect_is(hh$meta,"list")
+  expect_equal(nrow(hh$data),0)
   
   # bad inputs
   expect_error(lit_search(datasetKey="dog"),"'datasetKey' should be a GBIF dataset uuid.")
