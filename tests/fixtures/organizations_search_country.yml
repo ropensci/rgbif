@@ -14,7 +14,7 @@ http_interactions:
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: 'HTTP/2 200 '
+      status: HTTP/1.1 200 OK
       content-type: application/json
     body:
       encoding: ''
@@ -64,5 +64,5 @@ http_interactions:
         aWYuZXhwcmVzcyIsIm1vZGlmaWVkQnkiOiJnYmlmLmV4cHJlc3MiLCJjcmVhdGVkIjoiMjAxOS0xMS0x
         OFQxMDowNToxMS4zNDYrMDA6MDAiLCJtb2RpZmllZCI6IjIwMTktMTEtMThUMTA6MDU6MTEuMzQ2KzAw
         OjAwIn1dfV19
-  recorded_at: 2023-02-14 09:26:42 GMT
+  recorded_at: 2023-03-10 11:20:48 GMT
   recorded_with: vcr/1.2.0, webmockr/0.8.2
