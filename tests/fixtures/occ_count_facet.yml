@@ -19,15 +19,15 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MjMxMzgzODI4
-        MywicmVzdWx0cyI6W10sImZhY2V0cyI6W3siZmllbGQiOiJZRUFSIiwiY291bnRzIjpbeyJuYW1lIjoi
-        MjAyMSIsImNvdW50IjoyMzEyNDU3Njl9LHsibmFtZSI6IjIwMjAiLCJjb3VudCI6MjA3MDg0NTAwfSx7
-        Im5hbWUiOiIyMDE5IiwiY291bnQiOjE3MjkxMjM3OX0seyJuYW1lIjoiMjAxOCIsImNvdW50IjoxNTUw
-        MjI0MzJ9LHsibmFtZSI6IjIwMTciLCJjb3VudCI6MTMwODAzNTQ3fSx7Im5hbWUiOiIyMDE2IiwiY291
-        bnQiOjExNjM3ODY4NH0seyJuYW1lIjoiMjAxNSIsImNvdW50IjoxMDI1NTEyNTl9LHsibmFtZSI6IjIw
-        MTQiLCJjb3VudCI6OTIxNzYwMDV9LHsibmFtZSI6IjIwMTMiLCJjb3VudCI6Nzc4MTk1ODZ9LHsibmFt
-        ZSI6IjIwMTIiLCJjb3VudCI6NjkzMjQzNzF9XX1dfQ==
-  recorded_at: 2023-03-09 14:40:22 GMT
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MjMxMzcyODc4
+        NywicmVzdWx0cyI6W10sImZhY2V0cyI6W3siZmllbGQiOiJZRUFSIiwiY291bnRzIjpbeyJuYW1lIjoi
+        MjAyMSIsImNvdW50IjoyMzEyMDY3NTJ9LHsibmFtZSI6IjIwMjAiLCJjb3VudCI6MjA3MDA4NTE5fSx7
+        Im5hbWUiOiIyMDE5IiwiY291bnQiOjE3MjkwODkwMX0seyJuYW1lIjoiMjAxOCIsImNvdW50IjoxNTUw
+        MjIzMjd9LHsibmFtZSI6IjIwMTciLCJjb3VudCI6MTMwODAzNzM2fSx7Im5hbWUiOiIyMDE2IiwiY291
+        bnQiOjExNjM3ODc1OX0seyJuYW1lIjoiMjAxNSIsImNvdW50IjoxMDI1NTE0ODN9LHsibmFtZSI6IjIw
+        MTQiLCJjb3VudCI6OTIxNzYzOTh9LHsibmFtZSI6IjIwMTMiLCJjb3VudCI6Nzc4MTk2MzV9LHsibmFt
+        ZSI6IjIwMTIiLCJjb3VudCI6NjkzMjUxMTN9XX1dfQ==
+  recorded_at: 2023-03-10 09:40:00 GMT
   recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
@@ -49,12 +49,12 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6Mzg3MDU3NDks
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6Mzg3MDU3NDYs
         InJlc3VsdHMiOltdLCJmYWNldHMiOlt7ImZpZWxkIjoiWUVBUiIsImNvdW50cyI6W3sibmFtZSI6IjIw
-        MDMiLCJjb3VudCI6MTA3ODQ1ODl9LHsibmFtZSI6IjIwMDIiLCJjb3VudCI6OTU3ODk5OX0seyJuYW1l
-        IjoiMjAwMSIsImNvdW50Ijo5NDAwMzg3fSx7Im5hbWUiOiIyMDAwIiwiY291bnQiOjg5NDE3NzR9XX1d
+        MDMiLCJjb3VudCI6MTA3ODQ1OTB9LHsibmFtZSI6IjIwMDIiLCJjb3VudCI6OTU3ODk5OX0seyJuYW1l
+        IjoiMjAwMSIsImNvdW50Ijo5NDAwMzg3fSx7Im5hbWUiOiIyMDAwIiwiY291bnQiOjg5NDE3NzB9XX1d
         fQ==
-  recorded_at: 2023-03-09 14:40:22 GMT
+  recorded_at: 2023-03-10 09:40:00 GMT
   recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
@@ -76,11 +76,11 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MjI4NDgyMDU2
-        NiwicmVzdWx0cyI6W10sImZhY2V0cyI6W3siZmllbGQiOiJDT1VOVFJZIiwiY291bnRzIjpbeyJuYW1l
-        IjoiVVMiLCJjb3VudCI6ODEwNjI5MjQyfSx7Im5hbWUiOiJGUiIsImNvdW50IjoxMzkyMzQyNzl9XX1d
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MjI4NDcxMTA3
+        MCwicmVzdWx0cyI6W10sImZhY2V0cyI6W3siZmllbGQiOiJDT1VOVFJZIiwiY291bnRzIjpbeyJuYW1l
+        IjoiVVMiLCJjb3VudCI6ODEwNjI5OTI3fSx7Im5hbWUiOiJGUiIsImNvdW50IjoxMzkyMzQzOTB9XX1d
         fQ==
-  recorded_at: 2023-03-09 14:40:22 GMT
+  recorded_at: 2023-03-10 09:40:00 GMT
   recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
@@ -102,11 +102,11 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MjMxMzgzODI4
-        MywicmVzdWx0cyI6W10sImZhY2V0cyI6W3siZmllbGQiOiJPQ0NVUlJFTkNFX1NUQVRVUyIsImNvdW50
-        cyI6W3sibmFtZSI6IlBSRVNFTlQiLCJjb3VudCI6MjI4NDgyMDU2Nn0seyJuYW1lIjoiQUJTRU5UIiwi
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MjMxMzcyODc4
+        NywicmVzdWx0cyI6W10sImZhY2V0cyI6W3siZmllbGQiOiJPQ0NVUlJFTkNFX1NUQVRVUyIsImNvdW50
+        cyI6W3sibmFtZSI6IlBSRVNFTlQiLCJjb3VudCI6MjI4NDcxMTA3MH0seyJuYW1lIjoiQUJTRU5UIiwi
         Y291bnQiOjI5MDE3NzE3fV19XX0=
-  recorded_at: 2023-03-09 14:40:22 GMT
+  recorded_at: 2023-03-10 09:40:00 GMT
   recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
@@ -131,11 +131,11 @@ http_interactions:
       base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6OTQxNTM5LCJy
         ZXN1bHRzIjpbXSwiZmFjZXRzIjpbeyJmaWVsZCI6IkJBU0lTX09GX1JFQ09SRCIsImNvdW50cyI6W3si
         bmFtZSI6Ik1BVEVSSUFMX1NBTVBMRSIsImNvdW50Ijo5NDE1Mzl9XX1dfQ==
-  recorded_at: 2023-03-09 14:40:22 GMT
+  recorded_at: 2023-03-10 09:40:00 GMT
   recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facet=coordinateUncertaintyInMeters&facetLimit=
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facet=coordinateUncertaintyInMeters&facetLimit=&verbatimScientificName=Calopteryx%20splendens&verbatimScientificName=Calopteryx%20virgo
     body:
       encoding: ''
       string: ''
@@ -153,14 +153,13 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MjI4NDgyMDU2
-        NiwicmVzdWx0cyI6W10sImZhY2V0cyI6W3siZmllbGQiOiJDT09SRElOQVRFX1VOQ0VSVEFJTlRZX0lO
-        X01FVEVSUyIsImNvdW50cyI6W3sibmFtZSI6IjUwMDAuMCIsImNvdW50IjoxMDg3OTE2MzZ9LHsibmFt
-        ZSI6IjEwMC4wIiwiY291bnQiOjQ3OTE4MDU4fSx7Im5hbWUiOiIxMDAwLjAiLCJjb3VudCI6MzE3MjA5
-        MTZ9LHsibmFtZSI6IjEwLjAiLCJjb3VudCI6Mjc0MDUzNjZ9LHsibmFtZSI6IjUwMC4wIiwiY291bnQi
-        OjIxNzQzOTM1fSx7Im5hbWUiOiI3MDcuMSIsImNvdW50IjoyMTA1NDM3OX0seyJuYW1lIjoiMTQxNC4y
-        IiwiY291bnQiOjIwOTIzMjM2fSx7Im5hbWUiOiIxMDAwMC4wIiwiY291bnQiOjIwMzUxOTkxfSx7Im5h
-        bWUiOiI3MC43IiwiY291bnQiOjE4Mzk3MzE1fSx7Im5hbWUiOiI3MDcxLjEiLCJjb3VudCI6MTcxNDM4
-        NDJ9XX1dfQ==
-  recorded_at: 2023-03-09 14:40:22 GMT
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MjY1OTA1LCJy
+        ZXN1bHRzIjpbXSwiZmFjZXRzIjpbeyJmaWVsZCI6IkNPT1JESU5BVEVfVU5DRVJUQUlOVFlfSU5fTUVU
+        RVJTIiwiY291bnRzIjpbeyJuYW1lIjoiNTAwMC4wIiwiY291bnQiOjc3NDA0fSx7Im5hbWUiOiI3MC43
+        IiwiY291bnQiOjYwMzkxfSx7Im5hbWUiOiI3MDcuMSIsImNvdW50IjoyNDYzNn0seyJuYW1lIjoiNy4x
+        IiwiY291bnQiOjE1OTQ1fSx7Im5hbWUiOiIyNTAuMCIsImNvdW50IjoxMTk4M30seyJuYW1lIjoiMjUu
+        MCIsImNvdW50Ijo5MDc2fSx7Im5hbWUiOiIxMDAuMCIsImNvdW50Ijo4NjE2fSx7Im5hbWUiOiI3MDcx
+        LjEiLCJjb3VudCI6NzAyNn0seyJuYW1lIjoiMTAuMCIsImNvdW50Ijo0MDU5fSx7Im5hbWUiOiIxNDE0
+        LjIiLCJjb3VudCI6MzIzMH1dfV19
+  recorded_at: 2023-03-10 09:40:00 GMT
   recorded_with: vcr/1.2.0, webmockr/0.8.2

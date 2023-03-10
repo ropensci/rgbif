@@ -41,7 +41,7 @@ test_that("occ_count facets work", {
     cc <- occ_count(facet="country",facetLimit=2)
     dd <- occ_count(facet="occurrenceStatus",occurrenceStatus=NULL)
     ee <- occ_count(facet="basisOfRecord",basisOfRecord="MATERIAL_SAMPLE",organismQuantity=5)
-    ff <- occ_count(facet="coordinateUncertaintyInMeters",facetverbatimScientificName="Calopteryx splendens;Calopteryx virgo")
+    ff <- occ_count(facet="coordinateUncertaintyInMeters",verbatimScientificName="Calopteryx splendens;Calopteryx virgo")
   }, preserve_exact_body_bytes = TRUE)
   
   # returns the correct class
@@ -79,13 +79,19 @@ test_that("occ_count facets work", {
 })
 
 
-
-
 test_that("occ_count fails well", {
-    expect_error(
-     occ_count(basisOfRecord=c('OBSERVATION','PRESERVED_SPECIMEN'), year=2012),
-     "Multiple values of the form c\\('a','b'\\) are not supported. Use 'a;b' instead."
-    )
+  expect_warning(
+  occ_count(dog="bad_arg"),
+  "dog not acceptable args for occ_count\\(\\) and will be ignored."
+  )
+  expect_warning( 
+  occ_count(return="all"),
+  "return not acceptable args for occ_count\\(\\) and will be ignored."  
+  )
+  expect_error(
+  occ_count(basisOfRecord=c('OBSERVATION','PRESERVED_SPECIMEN'), year=2012),
+  "Multiple values of the form c\\('a','b'\\) are not supported. Use 'a;b' instead."
+  )
 })
 
 test_that("occ_count legacy params", {
