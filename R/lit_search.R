@@ -221,9 +221,14 @@ lit_search <- function(
                    "&offset=",offset_seq,
                    "&limit=",limit_seq)
   }
+  # clean urls
+  urls <- sapply(urls,function(x) utils::URLencode(x))
+  urls <- sapply(urls,function(x) gsub("\\[|\\]","",x)) # remove any square brackets
+  # make request 
   ll <- gbif_async_get(urls,parse=TRUE)
   data <- process_lit_async_results(ll,flatten=flatten)
   meta <- rgbif_compact(ll[[length(urls)]])
+  # clean results
   meta$results <- NULL
   meta$offset <- NULL
   meta$limit <- NULL
