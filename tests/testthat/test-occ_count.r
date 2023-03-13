@@ -81,6 +81,10 @@ test_that("occ_count facets work", {
 
 test_that("occ_count fails well", {
   expect_warning(
+    occ_count(limit=100),
+    "limit not acceptable args for occ_count\\(\\) and will be ignored."
+  )
+  expect_warning(
   occ_count(dog="bad_arg"),
   "dog not acceptable args for occ_count\\(\\) and will be ignored."
   )
@@ -91,6 +95,14 @@ test_that("occ_count fails well", {
   expect_error(
   occ_count(basisOfRecord=c('OBSERVATION','PRESERVED_SPECIMEN'), year=2012),
   "Multiple values of the form c\\('a','b'\\) are not supported. Use 'a;b' instead."
+  )
+  expect_error(
+    occ_count(facet="dog"),
+    "Bad facet arg."
+  )
+  expect_error(
+    occ_count(facet="search",taxonKey=212),
+    "Bad facet arg."
   )
 })
 

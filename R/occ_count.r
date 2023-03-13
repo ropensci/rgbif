@@ -100,23 +100,17 @@
 #' 
 #' }
 occ_count <- function(...,occurrenceStatus="PRESENT", curlopts = list()) {
-  
-  # check if arg is acceptable 
-  
-  # c(names(formals(occ_search)),c("facet","facetMincount","facetMultiselect"))
-  
-  # 
-  
-  # "fields"           "return"           "facet"           
-  # "facetMincount"    "facetMultiselect" "..."
-  
   args <- list(...)
   args <- rgbif_compact(c(args,occurrenceStatus=occurrenceStatus))
   arg_names <- names(args)
   
   # check if arg is acceptable
-  acc_args <- c(names(formals(occ_search)),c("facetLimit","facet","facetMincount","facetMultiselect"))
+  formal_args <- names(formals(occ_search))
+  facet_args <- c("facetLimit","facet","facetMincount","facetMultiselect")
+  legacy_args <- c("georeferenced","date","to","from","type")
+  # acceptable arguments or ignored arguments
   ign_args <- c("limit","start","fields","return","skip_validate","geom_big","geom_size","geom_n","...")
+  acc_args <- c(formal_args,facet_args,legacy_args)
   
   bad_args <- (arg_names[(!arg_names %in% acc_args) | (arg_names %in% ign_args)])
   if(length(bad_args) > 0) warning(paste(bad_args,collapse=",")," not acceptable args for occ_count() and will be ignored.")
@@ -230,6 +224,12 @@ occ_count <- function(...,occurrenceStatus="PRESENT", curlopts = list()) {
              facetLimit = args$facetLimit)
  
  if("facet" %in% arg_names) {
+      not_facet_arg <- c("skip_validate","...","curlopts","facetMultiselect",
+                         "facetMincount", "facet","return","fields","start",
+                         "limit","verbatimTaxonId","geometry", "geom_big",
+                         "geom_size","geom_n","search")
+      acc_facet_arg <- formal_args[!formal_args %in% not_facet_arg]
+   if(!args$facet %in% acc_facet_arg) stop("Bad facet arg.")
    count <- stats::setNames(res$facet[[1]],c(args$facet,"count"))
  } else {
    count <- as.numeric(res$meta$count)
