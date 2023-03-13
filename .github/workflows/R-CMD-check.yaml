@@ -71,7 +71,7 @@ jobs:
         run: |
           pak::local_install_dev_deps()
           install.packages("stringi")
-          install.packages("sf")
+          pak::pkg_instsall("r-spatial/sf")
           install.packages("protolite")
           pak::pkg_install(c("rcmdcheck", "maps", "scales", "colorspace", "raster"))
         shell: Rscript {0}
@@ -81,7 +81,8 @@ jobs:
         run: |
           install.packages('terra', repos='https://rspatial.r-universe.dev') # issue #597
           pak::local_install_dev_deps()
-          pak::pkg_install(c("stringi","rcmdcheck", "sf", "maps", "scales", "colorspace", "raster", "protolite"))
+          pak::pkg_install("r-spatial/sf")
+          pak::pkg_install(c("stringi","rcmdcheck", "maps", "scales", "colorspace", "raster", "protolite"))
         shell: Rscript {0}
 
       - name: Session info
