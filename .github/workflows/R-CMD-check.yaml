@@ -72,7 +72,7 @@ jobs:
           pak::local_install_dev_deps()
           install.packages("stringi")
           install.packages("protolite")
-          remotes::install_github("r-lib/conflicted")
+          remotes::install_github("r-spatial/sf")
           # pak::pkg_install("r-spatial/sf")
           pak::pkg_install(c("rcmdcheck", "maps", "scales", "colorspace", "raster"))
         shell: Rscript {0}
