@@ -506,7 +506,9 @@ test_that("scientificName basic use works - no synonyms", {
 
 # geometry inputs work as expected
 test_that("geometry inputs work as expected", {
+  skip_on_ci() # skip because sf install too buggy
   skip_on_cran() # because fixture in .Rbuildignore
+  skip_if_not_installed("sf")
   
   ## internally convert WKT string to a bounding box
   wkt <- "POLYGON((13.26349675655365 52.53991761181831,18.36115300655365 54.11445544219924,
@@ -566,8 +568,7 @@ test_that("geometry inputs work as expected", {
     expect_message(occ_search(geometry = wkt, geom_big = "bbox", limit = 1),
                    "geometry is big, querying BBOX, then pruning results to polygon")
   }, preserve_exact_body_bytes = TRUE)
-
-  skip_if_not_installed("sf")
+  
   vcr::use_cassette("occ_search_geometry_ee_gg", {
     # use 'geom_big=axe'
     ee <- occ_search(geometry = wkt, geom_big = "axe", limit = 30)

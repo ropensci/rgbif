@@ -184,7 +184,9 @@ test_that("scientificName basic use works - no synonyms", {
 
 # geometry inputs work as expected
 test_that("geometry inputs work as expected", {
+  skip_on_ci() # skip because sf install too buggy
   skip_on_cran() # because fixture in .Rbuildignore
+  skip_if_not_installed("sf")
   
   # in well known text format
   vcr::use_cassette("occ_data_geometry_aa", {
@@ -253,8 +255,6 @@ test_that("geometry inputs work as expected", {
   55.43241335888528,13.26349675655365 52.53991761181831))"
   wkt <- gsub("\n", " ", wkt)
 
-  skip_if_not_installed("sf")
-  
   # if WKT too long, with 'geom_big=bbox': makes into bounding box
   vcr::use_cassette("occ_data_geometry_dd", {
     dd <- occ_data(geometry = wkt, geom_big = "bbox", limit = 30)
