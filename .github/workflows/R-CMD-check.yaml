@@ -69,14 +69,14 @@ jobs:
       - name: Install dependencies Linux
         if: runner.os == 'Linux'
         run: |
-          pak::local_install_dev_deps()
+          # pak::local_install_dev_deps()
           pak::pkg_install(c("rcmdcheck", "maps", "scales", "colorspace", "raster", "protolite"))
         shell: Rscript {0}
 
       - name: Install dependencies macOS and Windows
         if: runner.os == 'macOS' || runner.os == 'Windows'
         run: |
-          pak::local_install_dev_deps()
+          # pak::local_install_dev_deps()
           pak::pkg_install(c("rcmdcheck", "maps", "scales", "colorspace", "raster", "protolite"))
         shell: Rscript {0}
 
