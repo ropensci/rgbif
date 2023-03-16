@@ -62,7 +62,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pak::local_install_dev_deps()
+          # pak::local_install_dev_deps()
           pak::pkg_install(c("rcmdcheck", "maps", "scales", "colorspace", "raster", "protolite"))
         shell: Rscript {0}
 
