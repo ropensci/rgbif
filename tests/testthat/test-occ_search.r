@@ -506,7 +506,7 @@ test_that("scientificName basic use works - no synonyms", {
 
 # geometry inputs work as expected
 test_that("geometry inputs work as expected", {
-  skip_on_ci() # skip because sf install too buggy
+  # skip_on_ci() # skip because sf install too buggy
   skip_on_cran() # because fixture in .Rbuildignore
   skip_if_not_installed("sf")
   

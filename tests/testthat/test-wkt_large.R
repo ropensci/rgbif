@@ -32,7 +32,7 @@ wkt <- "POLYGON((13.26349675655365 52.53991761181831,18.36115300655365 54.114455
 wkt <- gsub("\n", " ", wkt)
 
 test_that("wkt is detected/parsed as planned", {
-  skip_on_ci() # skip because sf install too buggy
+  # skip_on_ci() # skip because sf install too buggy
   skip_on_cran() # because fixture in .Rbuildignore
   skip_if_not_installed("sf")
   
