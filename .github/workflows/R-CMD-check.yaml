@@ -70,7 +70,8 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           pak::local_install_dev_deps()
-          pak::pkg_install("r-spatial/sf")
+          remotes::install_github("r-spatial/sf@1d0302a8b1c6344510e466ece947e640e4759ea7")
+          # pak::pkg_install("r-spatial/sf")
           pak::pkg_install(c("sf","rcmdcheck", "maps", "scales", "colorspace", "raster", "protolite"))
         shell: Rscript {0}
 
