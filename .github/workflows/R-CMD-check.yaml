@@ -70,7 +70,7 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           # pak::local_install_dev_deps()
-          install.packages("sf")
+          pak::pkg_install("sf")
           # pak::pkg_install(c("rcmdcheck", "maps", "scales", "colorspace", "raster", "protolite"))
         shell: Rscript {0}
 
