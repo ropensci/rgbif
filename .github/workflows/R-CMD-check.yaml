@@ -64,7 +64,7 @@ jobs:
         env:
           RHUB_PLATFORM: linux-x86_64-ubuntu-gcc
         run: |
-          # Rscript -e 'writeLines(pak::local_system_requirements("ubuntu", "20.04", execute = TRUE, sudo = TRUE, echo = TRUE))'
+          Rscript -e 'writeLines(pak::local_system_requirements("ubuntu", "20.04", execute = TRUE, sudo = TRUE, echo = TRUE))'
       
       - name: Install dependencies Linux
         if: runner.os == 'Linux'
