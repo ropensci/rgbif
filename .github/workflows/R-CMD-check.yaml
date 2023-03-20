@@ -64,19 +64,13 @@ jobs:
         env:
           RHUB_PLATFORM: linux-x86_64-ubuntu-gcc
         run: |
-          # Rscript -e 'writeLines(pak::local_system_requirements("ubuntu", "20.04", execute = TRUE, sudo = TRUE, echo = TRUE))'
+          Rscript -e 'writeLines(pak::local_system_requirements("ubuntu", "20.04", execute = TRUE, sudo = TRUE, echo = TRUE))'
       
       - name: Install dependencies Linux
         if: runner.os == 'Linux'
         run: |
-          pak::local_system_requirements("ubuntu", "20.04", execute = TRUE, sudo = TRUE, echo = TRUE)
-          pak::pkg_install("sf")
-          library(sf)
-          nc <- st_read(system.file("shape/nc.shp", package="sf"))
-          class(nc)
-          # pak::local_install_dev_deps()
-          # pak::pkg_install("sf")
-          # pak::pkg_install(c("rcmdcheck", "maps", "scales", "colorspace", "raster", "protolite"))
+          pak::local_install_dev_deps()
+          pak::pkg_install(c("sf","rcmdcheck", "maps", "scales", "colorspace", "raster", "protolite"))
         shell: Rscript {0}
 
       - name: Install dependencies macOS and Windows
