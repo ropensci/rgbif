@@ -20,7 +20,7 @@ http_interactions:
       encoding: ''
       file: no
       string: Cannot parse asia,oceania into a known Continent
-  recorded_at: 2023-03-20 13:43:44 GMT
+  recorded_at: 2023-03-22 12:57:55 GMT
   recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
@@ -43,5 +43,5 @@ http_interactions:
       encoding: ''
       file: no
       string: 334 is not valid value, latitude must be between -90 and 90.
-  recorded_at: 2023-03-20 13:43:44 GMT
+  recorded_at: 2023-03-22 12:57:55 GMT
   recorded_with: vcr/1.2.0, webmockr/0.8.2

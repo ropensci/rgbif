@@ -20,12 +20,12 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: 0260859-220831081235567
-  recorded_at: 2023-01-27 08:10:58 GMT
+      string: 0108508-230224095556074
+  recorded_at: 2023-03-22 11:35:00 GMT
   recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/download/0260859-220831081235567
+    uri: https://api.gbif.org/v1/occurrence/download/0108508-230224095556074
     body:
       encoding: ''
       string: ''
@@ -43,6 +43,6 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"key":"0260859-220831081235567","doi":"10.15468/dl.38hkm9","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"9206251","matchCase":false},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1979","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2023-01-27T08:10:57.246+00:00","modified":"2023-01-27T08:10:57.308+00:00","eraseAfter":"2023-07-27T08:10:57.167+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0260859-220831081235567.zip","size":0,"totalRecords":0,"numberDatasets":0}'
-  recorded_at: 2023-01-27 08:10:58 GMT
+      string: '{"key":"0108508-230224095556074","doi":"10.15468/dl.j9gsk2","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"9206251","matchCase":false},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1979","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2023-03-22T11:35:00.821+00:00","modified":"2023-03-22T11:35:00.821+00:00","eraseAfter":"2023-09-22T11:35:00.768+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0108508-230224095556074.zip","size":0,"totalRecords":0,"numberDatasets":0}'
+  recorded_at: 2023-03-22 11:35:00 GMT
   recorded_with: vcr/1.2.0, webmockr/0.8.2
