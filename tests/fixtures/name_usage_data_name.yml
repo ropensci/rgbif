@@ -20,9 +20,9 @@ http_interactions:
       encoding: ''
       file: no
       string: '{"key":8290258,"scientificName":"Passer domesticus (Linnaeus, 1758)","type":"SCIENTIFIC","genusOrAbove":"Passer","specificEpithet":"domesticus","bracketAuthorship":"Linnaeus","bracketYear":"1758","parsed":true,"parsedPartially":false,"canonicalName":"Passer
-        domesticus","canonicalNameComplete":"Passer domesticus (Linnaeus, 1758)","canonicalNameWithMarker":"Passer
-        domesticus","rankMarker":"sp."}'
-  recorded_at: 2022-12-06 09:51:02 GMT
+        domesticus","canonicalNameWithMarker":"Passer domesticus","canonicalNameComplete":"Passer
+        domesticus (Linnaeus, 1758)","rankMarker":"sp."}'
+  recorded_at: 2023-03-22 11:32:52 GMT
   recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
@@ -46,7 +46,7 @@ http_interactions:
       file: no
       string: '{"key":1200841,"scientificName":"Aulacodes aulocodoidalis Rothschild,
         1916","type":"SCIENTIFIC","genusOrAbove":"Aulacodes","specificEpithet":"aulocodoidalis","authorship":"Rothschild","year":"1916","parsed":true,"parsedPartially":false,"canonicalName":"Aulacodes
-        aulocodoidalis","canonicalNameComplete":"Aulacodes aulocodoidalis Rothschild,
-        1916","canonicalNameWithMarker":"Aulacodes aulocodoidalis","rankMarker":"sp."}'
-  recorded_at: 2022-12-06 09:51:02 GMT
+        aulocodoidalis","canonicalNameWithMarker":"Aulacodes aulocodoidalis","canonicalNameComplete":"Aulacodes
+        aulocodoidalis Rothschild, 1916","rankMarker":"sp."}'
+  recorded_at: 2023-03-22 11:32:52 GMT
   recorded_with: vcr/1.2.0, webmockr/0.8.2

@@ -14,11 +14,11 @@ http_interactions:
       message: Unauthorized
       explanation: No permission -- see authorization schemes
     headers:
-      status: HTTP/1.1 401 Unauthorized
+      status: HTTP/1.1 401 401
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: |
         ERR:10:user does not exist.
-  recorded_at: 2022-04-08 13:34:03 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+  recorded_at: 2023-03-22 11:31:16 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2

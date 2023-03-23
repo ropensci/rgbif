@@ -17,14 +17,14 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '{"key":"a6998220-7e3a-485d-9cd6-73076bd85657","installationKey":"883c001a-33c5-4437-828a-8dc86ec5d82e","publishingOrganizationKey":"c71f0513-c95a-4e98-abad-0c222b87ec66","external":false,"numConstituents":0,"type":"OCCURRENCE","title":"Worldbirds
         - List Aves Argentina Observations","description":"Extract of bird observations
         from Worldbirds - List Aves Argentina","language":"eng","citation":{"text":"Fisher
         I (2013). Worldbirds - List Aves Argentina Observations. Royal Society for
-        the Protection of Birds. Occurrence dataset accessed via GBIF.org on 2022-09-02.","citationProvidedBySource":false},"contactsCitation":[{"key":22898,"abbreviatedName":"Fisher
-        I","firstName":"Ian","lastName":"Fisher","roles":["ORIGINATOR","METADATA_AUTHOR"],"userId":[]}],"rights":"not-for-profit
+        the Protection of Birds. Occurrence dataset accessed via GBIF.org on 2023-03-22.","citationProvidedBySource":false},"contactsCitation":[{"key":22898,"abbreviatedName":"Fisher
+        I","firstName":"Ian","lastName":"Fisher","roles":["METADATA_AUTHOR","ORIGINATOR"],"userId":[]}],"rights":"not-for-profit
         use only","lockedForAutoUpdate":false,"createdBy":"registry-migration.gbif.org","modifiedBy":"eml-pusher.gbif.org","created":"2013-08-13T10:20:48.000+00:00","modified":"2013-10-24T11:23:15.303+00:00","deleted":"2013-11-04T10:26:06.925+00:00","contacts":[{"key":22898,"type":"ORIGINATOR","primary":true,"userId":[],"firstName":"Ian","lastName":"Fisher","position":[],"email":["ian.fisher@birdlife.org"],"phone":["00441223277200"],"homepage":[],"organization":"BirdLife
         International","address":["Wellbrook Court, Girton Road"],"city":"Cambridge","postalCode":"CB3
         0NA","createdBy":"eml-pusher.gbif.org","modifiedBy":"eml-pusher.gbif.org","created":"2013-10-24T11:23:15.249+00:00","modified":"2013-10-24T11:23:15.249+00:00"},{"key":22899,"type":"METADATA_AUTHOR","primary":true,"userId":[],"firstName":"Ian","lastName":"Fisher","position":[],"email":["ian.fisher@birdlife.org"],"phone":["00441223277200"],"homepage":[],"organization":"BirdLife
@@ -34,5 +34,5 @@ http_interactions:
         1JD","createdBy":"eml-pusher.gbif.org","modifiedBy":"eml-pusher.gbif.org","created":"2013-10-24T11:23:15.256+00:00","modified":"2013-10-24T11:23:15.256+00:00"},{"key":22901,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Ian","lastName":"Fisher","position":[],"email":["ian.fisher@birdlife.org"],"phone":["00441223277200"],"homepage":[],"organization":"BirdLife
         International","address":["Wellbrook Court, Girton Road"],"city":"Cambridge","province":"Cambridgeshire","postalCode":"CB3
         0NA","createdBy":"eml-pusher.gbif.org","modifiedBy":"eml-pusher.gbif.org","created":"2013-10-24T11:23:15.258+00:00","modified":"2013-10-24T11:23:15.258+00:00"}],"endpoints":[{"key":16743,"type":"EML","url":"http://78.31.105.84:8080/ipt-2.0.4/eml.do?r=argentina","createdBy":"registry-migration.gbif.org","modifiedBy":"registry-migration.gbif.org","created":"2013-08-13T10:20:48.000+00:00","modified":"2013-09-10T15:06:25.000+00:00","machineTags":[]},{"key":16744,"type":"DWC_ARCHIVE","url":"http://78.31.105.84:8080/ipt-2.0.4/archive.do?r=argentina","createdBy":"registry-migration.gbif.org","modifiedBy":"registry-migration.gbif.org","created":"2013-08-13T10:20:48.000+00:00","modified":"2013-09-10T15:06:25.000+00:00","machineTags":[]}],"machineTags":[],"tags":[],"identifiers":[{"key":13537,"type":"GBIF_PORTAL","identifier":"15032","createdBy":"registry-migration.gbif.org","created":"2013-08-13T14:31:26.000+00:00"}],"comments":[],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[{"description":"Argentina","boundingBox":{"minLatitude":-90.0,"maxLatitude":90.0,"minLongitude":-180.0,"maxLongitude":180.0,"globalCoverage":true}}],"temporalCoverages":[{"@type":"range","start":"1900-01-01T00:00:00.001+00:00","end":"2013-12-31T00:00:00.001+00:00"}],"keywordCollections":[],"countryCoverage":[],"collections":[],"dataDescriptions":[],"dataLanguage":"eng","pubDate":"2013-09-10T00:00:00.000+00:00","license":"unspecified"}'
-  recorded_at: 2022-09-02 09:43:03 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+  recorded_at: 2023-03-22 11:31:04 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2

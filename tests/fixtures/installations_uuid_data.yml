@@ -17,9 +17,9 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '[{"key":19952,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Biodiversity
         Informatics Manager","position":[],"email":["bdim@ansp.org"],"phone":[],"homepage":[],"address":[],"createdBy":"registry-migration.gbif.org","modifiedBy":"2e029a0c-87af-42e6-87d7-f38a50b78201","created":"2013-07-22T18:17:06.000+00:00","modified":"2014-11-10T14:00:07.894+00:00"}]'
-  recorded_at: 2022-04-08 13:34:41 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+  recorded_at: 2023-03-22 11:31:34 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2

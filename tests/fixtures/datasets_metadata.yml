@@ -17,8 +17,8 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '[{"key":657,"datasetKey":"a6998220-7e3a-485d-9cd6-73076bd85657","type":"EML","createdBy":"eml-pusher.gbif.org","modifiedBy":"eml-pusher.gbif.org","created":"2013-10-24T11:23:15.236+00:00","modified":"2013-10-24T11:23:15.236+00:00"}]'
-  recorded_at: 2022-09-02 09:43:03 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+  recorded_at: 2023-03-22 11:31:05 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2

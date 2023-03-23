@@ -16,14 +16,13 @@ http_interactions:
     headers:
       content-type: application/xml
     body:
-      encoding: ASCII-8BIT
+      encoding: ''
       file: no
-      string: |-
-        PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPE9BSS1QTUggeG1sbnM9Imh0dHA6
+      base64_string: PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPE9BSS1QTUggeG1sbnM9Imh0dHA6
         Ly93d3cub3BlbmFyY2hpdmVzLm9yZy9PQUkvMi4wLyIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9y
         Zy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vd3d3Lm9w
         ZW5hcmNoaXZlcy5vcmcvT0FJLzIuMC8gaHR0cDovL3d3dy5vcGVuYXJjaGl2ZXMub3JnL09BSS8yLjAv
-        T0FJLVBNSC54c2QiPjxyZXNwb25zZURhdGU+MjAyMi0wNC0xMVQwNzoyNzo1Nlo8L3Jlc3BvbnNlRGF0
+        T0FJLVBNSC54c2QiPjxyZXNwb25zZURhdGU+MjAyMy0wMy0yMlQxMTozMzoxNVo8L3Jlc3BvbnNlRGF0
         ZT48cmVxdWVzdCB2ZXJiPSJJZGVudGlmeSI+aHR0cDovL2FwaS5nYmlmLm9yZy92MS9vYWktcG1oL3Jl
         Z2lzdHJ5PC9yZXF1ZXN0PjxJZGVudGlmeT48cmVwb3NpdG9yeU5hbWU+R0JJRiBSZWdpc3RyeTwvcmVw
         b3NpdG9yeU5hbWU+PGJhc2VVUkw+aHR0cDovL2FwaS5nYmlmLm9yZy92MS9vYWktcG1oL3JlZ2lzdHJ5
@@ -38,11 +37,11 @@ http_interactions:
         cDovL3d3dy5vcGVuYXJjaGl2ZXMub3JnL09BSS8yLjAvb2FpX2RjLnhzZCI+Cgk8ZGM6dGl0bGU+R0JJ
         RiBSZWdpc3RyeTwvZGM6dGl0bGU+Cgk8ZGM6Y3JlYXRvcj5HbG9iYWwgQmlvZGl2ZXJzaXR5IEluZm9y
         bWF0aW9uIEZhY2lsaXR5IFNlY3JldGFyaWF0PC9kYzpjcmVhdG9yPgoJPGRjOmRlc2NyaXB0aW9uPgoJ
-        CVRoZSBHQklGIFJlZ2lzdHJ5IMOi4oKs4oCdIHRoZSBlbnRpdGllcyB0aGF0IG1ha2UgdXAgdGhlIEdC
-        SUYgbmV0d29yay4KCQlUaGlzIE9BSS1QTUggc2VydmljZSBleHBvc2VzIERhdGFzZXRzLCBvcmdhbml6
-        ZWQgaW50byBzZXRzIG9mIGNvdW50cnksIGluc3RhbGxhdGlvbiBhbmQgcmVzb3VyY2UgdHlwZS4KCQlG
-        b3IgbW9yZSBpbmZvcm1hdGlvbiwgc2VlIGh0dHBzOi8vd3d3LmdiaWYub3JnL2RldmVsb3Blci9yZWdp
-        c3RyeQoJPC9kYzpkZXNjcmlwdGlvbj4KPC9vYWlfZGM6ZGM+PC9kZXNjcmlwdGlvbj48L0lkZW50aWZ5
-        PjwvT0FJLVBNSD4=
-  recorded_at: 2022-04-11 07:27:56 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+        CVRoZSBHQklGIFJlZ2lzdHJ5IOKAlCB0aGUgZW50aXRpZXMgdGhhdCBtYWtlIHVwIHRoZSBHQklGIG5l
+        dHdvcmsuCgkJVGhpcyBPQUktUE1IIHNlcnZpY2UgZXhwb3NlcyBEYXRhc2V0cywgb3JnYW5pemVkIGlu
+        dG8gc2V0cyBvZiBjb3VudHJ5LCBpbnN0YWxsYXRpb24gYW5kIHJlc291cmNlIHR5cGUuCgkJRm9yIG1v
+        cmUgaW5mb3JtYXRpb24sIHNlZSBodHRwczovL3d3dy5nYmlmLm9yZy9kZXZlbG9wZXIvcmVnaXN0cnkK
+        CTwvZGM6ZGVzY3JpcHRpb24+Cjwvb2FpX2RjOmRjPjwvZGVzY3JpcHRpb24+PC9JZGVudGlmeT48L09B
+        SS1QTUg+
+  recorded_at: 2023-03-22 11:33:15 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2

@@ -17,8 +17,8 @@ http_interactions:
       status: HTTP/1.1 404 Not Found
       content-type: text/plain
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: Download was not found
-  recorded_at: 2022-04-08 13:29:41 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+  recorded_at: 2023-03-22 11:36:03 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2

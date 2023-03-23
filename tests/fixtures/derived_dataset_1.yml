@@ -19,11 +19,11 @@ http_interactions:
       status: HTTP/1.1 201 Created
       content-type: application/json
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
-      string: '{"doi":"10.15468/dd.cu5k3e","description":"This data was filtered using
-        a fake protocol","citation":"Derived dataset GBIF.org (8 April 2022) Filtered
-        export of GBIF occurrence data https://doi.org/10.15468/dd.cu5k3e","title":"Test
+      string: '{"doi":"10.15468/dd.qc7d22","description":"This data was filtered using
+        a fake protocol","citation":"Derived dataset GBIF.org (22 March 2023) Filtered
+        export of GBIF occurrence data https://doi.org/10.15468/dd.qc7d22","title":"Test
         for derived dataset","sourceUrl":"https://zenodo.org/record/4246090#.YPGS2OgzZPY","createdBy":"<gbif_user>","modifiedBy":"<gbif_user>"}'
-  recorded_at: 2022-04-08 13:33:11 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+  recorded_at: 2023-03-22 11:31:09 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2

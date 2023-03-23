@@ -1,3 +1,33 @@
+rgbif 3.7.6
+===========
+
+### BREAKING CHANGE
+
+* `occ_count()` parameter `type` is now deprecated and will no longer work correctly. Please see `occ_count_country()`, `occ_count_pub_country()`, `occ_count_year()`, `occ_count_basis_of_record()` for replacements. (#622)
+
+### DEPRECATED
+
+* `occ_count()` parameters `georeferenced`, `type`, `date`, `to`, `from` are no longer supported and not guaranteed to work correctly. (#622)
+* `occ_facet()` and `count_facet()` are now deprecated use `occ_count(facet="x")` instead. 
+
+### NEW FEATURES
+
+* `lit_search()` now supports searching the GBIF literature API. (#591)
+* `occ_count()` now supports almost all `occ_search()` queries. (#622)
+* `occ_count()` now supports the facets interface through `occ_count(facet="x")`. (#622)  
+* `organizations()` (aka publishers) now supports the use of getting lists of publishers by `country`. (#606)
+* `occ_download()` and `occ_search()` now support downloading and getting occurrences a certain distance from known country/area centroids via the parameter `distanceFromCentroidInMeters`. (#594)
+
+### MINOR IMPROVEMENTS
+
+* `occ_search()` now supports more multi-valued parameters. (#617) 
+* Removed dependencies on `randgeo` and `conditionz`. (#624) (#625)
+
+### Documentation 
+
+New article explaining `occ_count()` changes and new features [Getting Occurrence Counts From GBIF](https://docs.ropensci.org/rgbif/articles/occ_counts.html).
+
+
 rgbif 3.7.5
 ===========
 
@@ -49,8 +79,7 @@ rgbif 3.7.3
 ### DEPRECATED
 
 * `networks()` is deprecated and called `network()` instead. (#527)
-* `parsenames()` is deprecated and called `name_parse()` for better alignment
-with other `name_*` functions. (#504)
+* `parsenames()` is deprecated and called `name_parse()` for better alignment with other `name_*` functions. (#504)
 
 ### BUG FIXES
 

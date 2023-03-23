@@ -17,20 +17,19 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: ASCII-8BIT
+      encoding: ''
       file: no
-      string: |-
-        eyJrZXkiOiIwMDAwMTIyLTE3MTAyMDE1MjU0NTY3NSIsImRvaSI6IjEwLjE1NDY4L2RsLnlnaHhqNyIs
+      base64_string: eyJrZXkiOiIwMDAwMTIyLTE3MTAyMDE1MjU0NTY3NSIsImRvaSI6IjEwLjE1NDY4L2RsLnlnaHhqNyIs
         ImxpY2Vuc2UiOiJodHRwOi8vY3JlYXRpdmVjb21tb25zLm9yZy9saWNlbnNlcy9ieS80LjAvbGVnYWxj
         b2RlIiwicmVxdWVzdCI6eyJwcmVkaWNhdGUiOnsidHlwZSI6ImFuZCIsInByZWRpY2F0ZXMiOlt7InR5
         cGUiOiJlcXVhbHMiLCJrZXkiOiJDT1VOVFJZIiwidmFsdWUiOiJCRyIsIm1hdGNoQ2FzZSI6ZmFsc2V9
         LHsidHlwZSI6Imxlc3NUaGFuT3JFcXVhbHMiLCJrZXkiOiJZRUFSIiwidmFsdWUiOiIyMDExIiwibWF0
-        Y2hDYXNlIjpmYWxzZX1dfSwic2VuZE5vdGlmaWNhdGlvbiI6ZmFsc2UsImZvcm1hdCI6IkRXQ0EifSwi
-        Y3JlYXRlZCI6IjIwMTctMTAtMjBUMTg6MjE6NTYuMzQ3KzAwOjAwIiwibW9kaWZpZWQiOiIyMDE3LTEw
-        LTIwVDE4OjI1OjUwLjI2OSswMDowMCIsImVyYXNlQWZ0ZXIiOiIyMDE4LTA0LTIwVDE4OjIxOjU2LjM0
-        NyswMDowMCIsInN0YXR1cyI6IlNVQ0NFRURFRCIsImRvd25sb2FkTGluayI6Imh0dHBzOi8vYXBpLmdi
-        aWYub3JnL3YxL29jY3VycmVuY2UvZG93bmxvYWQvcmVxdWVzdC8wMDAwMTIyLTE3MTAyMDE1MjU0NTY3
-        NS56aXAiLCJzaXplIjo4MTMwNDIzLCJ0b3RhbFJlY29yZHMiOjk4NjEwLCJudW1iZXJEYXRhc2V0cyI6
-        MzI0fQ==
-  recorded_at: 2022-09-02 09:43:11 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+        Y2hDYXNlIjpmYWxzZX1dfSwic2VuZE5vdGlmaWNhdGlvbiI6ZmFsc2UsImZvcm1hdCI6IkRXQ0EiLCJ0
+        eXBlIjoiT0NDVVJSRU5DRSIsInZlcmJhdGltRXh0ZW5zaW9ucyI6W119LCJjcmVhdGVkIjoiMjAxNy0x
+        MC0yMFQxODoyMTo1Ni4zNDcrMDA6MDAiLCJtb2RpZmllZCI6IjIwMTctMTAtMjBUMTg6MjU6NTAuMjY5
+        KzAwOjAwIiwiZXJhc2VBZnRlciI6IjIwMTgtMDQtMjBUMTg6MjE6NTYuMzQ3KzAwOjAwIiwic3RhdHVz
+        IjoiU1VDQ0VFREVEIiwiZG93bmxvYWRMaW5rIjoiaHR0cHM6Ly9hcGkuZ2JpZi5vcmcvdjEvb2NjdXJy
+        ZW5jZS9kb3dubG9hZC9yZXF1ZXN0LzAwMDAxMjItMTcxMDIwMTUyNTQ1Njc1LnppcCIsInNpemUiOjgx
+        MzA0MjMsInRvdGFsUmVjb3JkcyI6OTg2MTAsIm51bWJlckRhdGFzZXRzIjozMjR9
+  recorded_at: 2023-03-22 11:31:19 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2

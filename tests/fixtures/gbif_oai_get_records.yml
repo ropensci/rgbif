@@ -16,14 +16,13 @@ http_interactions:
     headers:
       content-type: application/xml
     body:
-      encoding: ASCII-8BIT
+      encoding: ''
       file: no
-      string: |-
-        PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPE9BSS1QTUggeG1sbnM9Imh0dHA6
+      base64_string: PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPE9BSS1QTUggeG1sbnM9Imh0dHA6
         Ly93d3cub3BlbmFyY2hpdmVzLm9yZy9PQUkvMi4wLyIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9y
         Zy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vd3d3Lm9w
         ZW5hcmNoaXZlcy5vcmcvT0FJLzIuMC8gaHR0cDovL3d3dy5vcGVuYXJjaGl2ZXMub3JnL09BSS8yLjAv
-        T0FJLVBNSC54c2QiPjxyZXNwb25zZURhdGU+MjAyMi0wNC0xMVQwNzoyNzo1OFo8L3Jlc3BvbnNlRGF0
+        T0FJLVBNSC54c2QiPjxyZXNwb25zZURhdGU+MjAyMy0wMy0yMlQxMTozMzoxOVo8L3Jlc3BvbnNlRGF0
         ZT48cmVxdWVzdCB2ZXJiPSJHZXRSZWNvcmQiIGlkZW50aWZpZXI9IjljNGUzNmMxLWQzZjktNDljZS04
         ZWMxLThjNDM0ZmE5ZTZlYiIgbWV0YWRhdGFQcmVmaXg9Im9haV9kYyI+aHR0cDovL2FwaS5nYmlmLm9y
         Zy92MS9vYWktcG1oL3JlZ2lzdHJ5PC9yZXF1ZXN0PjxHZXRSZWNvcmQ+PHJlY29yZD48aGVhZGVyPjxp
@@ -52,14 +51,14 @@ http_interactions:
         ZXcucGhwP2VudHJ5SUQmYW1wOyM2MTtCRl9DRjEyJmx0Oy9wPjwvZGM6ZGVzY3JpcHRpb24+CiAgICAK
         ICAgIDxkYzpkZXNjcmlwdGlvbj41LDMyMyBvY2N1cnJlbmNlczwvZGM6ZGVzY3JpcHRpb24+CgogICAg
         PGRjOnR5cGU+RGF0YXNldDwvZGM6dHlwZT4KCiAgICA8ZGM6Y3JlYXRvcj5BbGVrc2FuZGFyIEhlZ2Vk
-        acOFwqE8L2RjOmNyZWF0b3I+CiAgICA8ZGM6Y3JlYXRvcj5BYWlrZSBEZSBXZXZlcjwvZGM6Y3JlYXRv
-        cj4KCiAgICA8ZGM6ZGF0ZT4yMDE3LTA5LTA4PC9kYzpkYXRlPgogICAgPGRjOmxhbmd1YWdlPmVuPC9k
-        YzpsYW5ndWFnZT4KICAgIAoKCiAgICAKCiAgICA8ZGM6Y292ZXJhZ2U+TmF0aW9uYWwgY292ZXJhZ2U8
-        L2RjOmNvdmVyYWdlPgogICAgPGRjOmNvdmVyYWdlPjQyLjIxOCwxOC44NTEgLyA0Ni4yMTIsMjMuMDU2
-        IChtaW4sIG1heCBMYXRpdHVkZSAvIG1pbiwgbWF4IExvbmdpdHVkZSk8L2RjOmNvdmVyYWdlPgogICAg
-        PGRjOmZvcm1hdD5hcHBsaWNhdGlvbi9kd2NhK3ppcDwvZGM6Zm9ybWF0PgogICAgPGRjOnNvdXJjZT5H
-        bG9iYWwgQmlvZGl2ZXJzaXR5IEluZm9ybWF0aW9uIEZhY2lsaXR5IChHQklGKSBodHRwczovL3d3dy5n
-        YmlmLm9yZzwvZGM6c291cmNlPgo8L29haV9kYzpkYz48L21ldGFkYXRhPjwvcmVjb3JkPjwvR2V0UmVj
-        b3JkPjwvT0FJLVBNSD4=
-  recorded_at: 2022-04-11 07:27:57 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+        acWhPC9kYzpjcmVhdG9yPgogICAgPGRjOmNyZWF0b3I+QWFpa2UgRGUgV2V2ZXI8L2RjOmNyZWF0b3I+
+        CgogICAgPGRjOmRhdGU+MjAxNy0wOS0wODwvZGM6ZGF0ZT4KICAgIDxkYzpsYW5ndWFnZT5lbjwvZGM6
+        bGFuZ3VhZ2U+CiAgICAKCgogICAgCgogICAgPGRjOmNvdmVyYWdlPk5hdGlvbmFsIGNvdmVyYWdlPC9k
+        Yzpjb3ZlcmFnZT4KICAgIDxkYzpjb3ZlcmFnZT40Mi4yMTgsMTguODUxIC8gNDYuMjEyLDIzLjA1NiAo
+        bWluLCBtYXggTGF0aXR1ZGUgLyBtaW4sIG1heCBMb25naXR1ZGUpPC9kYzpjb3ZlcmFnZT4KICAgIDxk
+        Yzpmb3JtYXQ+YXBwbGljYXRpb24vZHdjYSt6aXA8L2RjOmZvcm1hdD4KICAgIDxkYzpzb3VyY2U+R2xv
+        YmFsIEJpb2RpdmVyc2l0eSBJbmZvcm1hdGlvbiBGYWNpbGl0eSAoR0JJRikgaHR0cHM6Ly93d3cuZ2Jp
+        Zi5vcmc8L2RjOnNvdXJjZT4KPC9vYWlfZGM6ZGM+PC9tZXRhZGF0YT48L3JlY29yZD48L0dldFJlY29y
+        ZD48L09BSS1QTUg+
+  recorded_at: 2023-03-22 11:33:19 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2

@@ -3,6 +3,7 @@ on:
     branches:
       - master
       - actions
+      - cran_release
   schedule:
     - cron: '0 0 */3 * *' # every 3 days
 
@@ -62,10 +63,7 @@ jobs:
       - name: Install dependencies
         run: |
           pak::local_install_dev_deps()
-          install.packages("stringi")
-          install.packages("sf")
-          install.packages("protolite")
-          pak::pkg_install(c("rcmdcheck", "maps", "scales", "colorspace", "raster"))
+          pak::pkg_install(c("rcmdcheck", "maps", "scales", "colorspace", "raster", "protolite"))
         shell: Rscript {0}
 
       - name: Session info

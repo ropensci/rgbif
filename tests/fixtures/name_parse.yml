@@ -18,17 +18,16 @@ http_interactions:
       status: HTTP/1.1 201 Created
       content-type: application/json
     body:
-      encoding: ASCII-8BIT
+      encoding: ''
       file: no
-      string: |-
-        W3sic2NpZW50aWZpY05hbWUiOiJ4IEFncm9wb2dvbiBsaXR0b3JhbGlzIiwidHlwZSI6IlNDSUVOVElG
+      base64_string: W3sic2NpZW50aWZpY05hbWUiOiJ4IEFncm9wb2dvbiBsaXR0b3JhbGlzIiwidHlwZSI6IlNDSUVOVElG
         SUMiLCJnZW51c09yQWJvdmUiOiJBZ3JvcG9nb24iLCJzcGVjaWZpY0VwaXRoZXQiOiJsaXR0b3JhbGlz
         Iiwibm90aG8iOiJHRU5FUklDIiwicGFyc2VkIjp0cnVlLCJwYXJzZWRQYXJ0aWFsbHkiOmZhbHNlLCJj
         YW5vbmljYWxOYW1lIjoiQWdyb3BvZ29uIGxpdHRvcmFsaXMiLCJjYW5vbmljYWxOYW1lV2l0aE1hcmtl
-        ciI6IsOD4oCUQWdyb3BvZ29uIGxpdHRvcmFsaXMiLCJjYW5vbmljYWxOYW1lQ29tcGxldGUiOiLDg+KA
-        lEFncm9wb2dvbiBsaXR0b3JhbGlzIiwicmFua01hcmtlciI6InNwLiJ9XQ==
-  recorded_at: 2022-04-13 14:07:25 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+        ciI6IsOXQWdyb3BvZ29uIGxpdHRvcmFsaXMiLCJjYW5vbmljYWxOYW1lQ29tcGxldGUiOiLDl0Fncm9w
+        b2dvbiBsaXR0b3JhbGlzIiwicmFua01hcmtlciI6InNwLiJ9XQ==
+  recorded_at: 2023-03-22 11:32:45 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: post
     uri: https://api.gbif.org/v1/parser/name
@@ -49,10 +48,9 @@ http_interactions:
       status: HTTP/1.1 201 Created
       content-type: application/json
     body:
-      encoding: ASCII-8BIT
+      encoding: ''
       file: no
-      string: |-
-        W3sic2NpZW50aWZpY05hbWUiOiJBcnJoZW5hdGhlcnVtIGVsYXRpdXMgdmFyLiBlbGF0aXVzIiwidHlw
+      base64_string: W3sic2NpZW50aWZpY05hbWUiOiJBcnJoZW5hdGhlcnVtIGVsYXRpdXMgdmFyLiBlbGF0aXVzIiwidHlw
         ZSI6IlNDSUVOVElGSUMiLCJnZW51c09yQWJvdmUiOiJBcnJoZW5hdGhlcnVtIiwic3BlY2lmaWNFcGl0
         aGV0IjoiZWxhdGl1cyIsImluZnJhU3BlY2lmaWNFcGl0aGV0IjoiZWxhdGl1cyIsInBhcnNlZCI6dHJ1
         ZSwicGFyc2VkUGFydGlhbGx5IjpmYWxzZSwiY2Fub25pY2FsTmFtZSI6IkFycmhlbmF0aGVydW0gZWxh
@@ -78,5 +76,5 @@ http_interactions:
         YSBhdGFsYW50YSIsImNhbm9uaWNhbE5hbWVXaXRoTWFya2VyIjoiVmFuZXNzYSBhdGFsYW50YSIsImNh
         bm9uaWNhbE5hbWVDb21wbGV0ZSI6IlZhbmVzc2EgYXRhbGFudGEgKExpbm5hZXVzLCAxNzU4KSIsInJh
         bmtNYXJrZXIiOiJzcC4ifV0=
-  recorded_at: 2022-04-13 14:07:25 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+  recorded_at: 2023-03-22 11:32:45 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2

@@ -19,7 +19,7 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"timestamp":"2022-12-06T09:51:10.481+00:00","status":404,"error":"","message":"Entity
+      string: '{"timestamp":"2023-03-22T11:33:07.573+00:00","status":404,"error":"","message":"Entity
         not found for uri: /species/3119195/verbatim"}'
-  recorded_at: 2022-12-06 09:51:10 GMT
+  recorded_at: 2023-03-22 11:33:07 GMT
   recorded_with: vcr/1.2.0, webmockr/0.8.2

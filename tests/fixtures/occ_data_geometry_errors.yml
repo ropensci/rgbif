@@ -1,0 +1,73 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=500&offset=0&geometry=POLYGON%28%2830.1%2010.1%2C%2010%2020%2C%2020%2040%2C%2040%2040%2C%2030.1%20a%29%29
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '400'
+      message: Bad Request
+      explanation: Bad request syntax or unsupported method
+    headers:
+      status: HTTP/1.1 400 Bad Request
+      content-type: text/plain
+    body:
+      encoding: ''
+      file: no
+      base64_string: Q2Fubm90IHBhcnNlIHNpbXBsZSBXS1Q6IFBPTFlHT04oKDMwLjEgMTAuMSwgMTAgMjAsIDIwIDQwLCA0
+        MCA0MCwgMzAuMSBhKSkgRXhwZWN0ZWQgYSBudW1iZXI=
+  recorded_at: 2023-03-22 11:34:09 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=500&offset=0&geometry=POLYGON%28%2830.1%2010.1%2C%2010%2020%2C%2020%2040%2C%2040%2040%2C%2030.1%20%2710.1%27%29%29
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '400'
+      message: Bad Request
+      explanation: Bad request syntax or unsupported method
+    headers:
+      status: HTTP/1.1 400 Bad Request
+      content-type: text/plain
+    body:
+      encoding: ''
+      file: no
+      base64_string: Q2Fubm90IHBhcnNlIHNpbXBsZSBXS1Q6IFBPTFlHT04oKDMwLjEgMTAuMSwgMTAgMjAsIDIwIDQwLCA0
+        MCA0MCwgMzAuMSAnMTAuMScpKSBFeHBlY3RlZCBhIG51bWJlcg==
+  recorded_at: 2023-03-22 11:34:09 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=500&offset=0&geometry=POLYGON%28%2830.1%2010.1%2C%2010%2020%2C%2020%2040%2C%2040%2040%2C%2030.1%2010.1%29
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '400'
+      message: Bad Request
+      explanation: Bad request syntax or unsupported method
+    headers:
+      status: HTTP/1.1 400 Bad Request
+      content-type: text/plain
+    body:
+      encoding: ''
+      file: no
+      base64_string: Q2Fubm90IHBhcnNlIHNpbXBsZSBXS1Q6IFBPTFlHT04oKDMwLjEgMTAuMSwgMTAgMjAsIDIwIDQwLCA0
+        MCA0MCwgMzAuMSAxMC4xKSBFeHBlY3RlZCBbKV0gZm91bmQgRU9G
+  recorded_at: 2023-03-22 11:34:09 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2

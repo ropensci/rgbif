@@ -16,10 +16,10 @@ http_interactions:
     headers:
       content-type: application/xml
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: |-
         <?xml version="1.0" encoding="UTF-8"?>
-        <OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"><responseDate>2022-04-11T07:27:56Z</responseDate><request verb="ListMetadataFormats">http://api.gbif.org/v1/oai-pmh/registry</request><ListMetadataFormats><metadataFormat><metadataPrefix>oai_dc</metadataPrefix><schema>http://www.openarchives.org/OAI/2.0/oai_dc.xsd</schema><metadataNamespace>http://www.openarchives.org/OAI/2.0/oai_dc/</metadataNamespace></metadataFormat><metadataFormat><metadataPrefix>eml</metadataPrefix><schema>http://rs.gbif.org/schema/eml-gbif-profile/1.0.2/eml.xsd</schema><metadataNamespace>eml://ecoinformatics.org/eml-2.1.1</metadataNamespace></metadataFormat></ListMetadataFormats></OAI-PMH>
-  recorded_at: 2022-04-11 07:27:56 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+        <OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"><responseDate>2023-03-22T11:33:16Z</responseDate><request verb="ListMetadataFormats">http://api.gbif.org/v1/oai-pmh/registry</request><ListMetadataFormats><metadataFormat><metadataPrefix>oai_dc</metadataPrefix><schema>http://www.openarchives.org/OAI/2.0/oai_dc.xsd</schema><metadataNamespace>http://www.openarchives.org/OAI/2.0/oai_dc/</metadataNamespace></metadataFormat><metadataFormat><metadataPrefix>eml</metadataPrefix><schema>http://rs.gbif.org/schema/eml-gbif-profile/1.2/eml.xsd</schema><metadataNamespace>eml://ecoinformatics.org/eml-2.1.1</metadataNamespace></metadataFormat></ListMetadataFormats></OAI-PMH>
+  recorded_at: 2023-03-22 11:33:16 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
