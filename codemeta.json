@@ -346,7 +346,7 @@
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://ropensci.org",
   "keywords": ["GBIF", "specimens", "API", "web-services", "occurrences", "species", "taxonomy", "gbif", "api", "data", "biodiversity", "rstats", "r", "spocc", "r-package", "lifewatch", "oscibio"],
-  "fileSize": "12076.24KB",
+  "fileSize": "12364.127KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
