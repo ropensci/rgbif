@@ -1,3 +1,9 @@
+rgbif 3.7.7
+===========
+
+### MINOR IMPROVEMENTS
+* Fixes test that was causing errors on CRAN. 
+
 rgbif 3.7.6
 ===========
 
