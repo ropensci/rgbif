@@ -19,16 +19,16 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MjMyMTUwNDk0
-        NywicmVzdWx0cyI6W10sImZhY2V0cyI6W3siZmllbGQiOiJZRUFSIiwiY291bnRzIjpbeyJuYW1lIjoi
-        MjAyMSIsImNvdW50IjoyMzE0NDk5NTh9LHsibmFtZSI6IjIwMjAiLCJjb3VudCI6MjA3MTkyMDczfSx7
-        Im5hbWUiOiIyMDE5IiwiY291bnQiOjE3MzEwNDMyNX0seyJuYW1lIjoiMjAxOCIsImNvdW50IjoxNTUy
-        MTY2MDR9LHsibmFtZSI6IjIwMTciLCJjb3VudCI6MTMwOTkyMjc5fSx7Im5hbWUiOiIyMDE2IiwiY291
-        bnQiOjExNjUxODc2OX0seyJuYW1lIjoiMjAxNSIsImNvdW50IjoxMDI2ODQ1NDZ9LHsibmFtZSI6IjIw
-        MTQiLCJjb3VudCI6OTIyOTY4MTV9LHsibmFtZSI6IjIwMTMiLCJjb3VudCI6Nzc5MzQ1NTB9LHsibmFt
-        ZSI6IjIwMTIiLCJjb3VudCI6Njk0NTc2MzF9XX1dfQ==
-  recorded_at: 2023-03-22 11:33:30 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MjMyNTY1OTc5
+        MiwicmVzdWx0cyI6W10sImZhY2V0cyI6W3siZmllbGQiOiJZRUFSIiwiY291bnRzIjpbeyJuYW1lIjoi
+        MjAyMSIsImNvdW50IjoyMzE4MDcyNTZ9LHsibmFtZSI6IjIwMjAiLCJjb3VudCI6MjA3MjQyMTEwfSx7
+        Im5hbWUiOiIyMDE5IiwiY291bnQiOjE3MzMzNDg4OH0seyJuYW1lIjoiMjAxOCIsImNvdW50IjoxNTUz
+        Mzc1ODR9LHsibmFtZSI6IjIwMTciLCJjb3VudCI6MTMxMDQ0MDY2fSx7Im5hbWUiOiIyMDE2IiwiY291
+        bnQiOjExNjU2NTc0OX0seyJuYW1lIjoiMjAxNSIsImNvdW50IjoxMDI3NDA1Nzd9LHsibmFtZSI6IjIw
+        MTQiLCJjb3VudCI6OTIzNjEyNTF9LHsibmFtZSI6IjIwMTMiLCJjb3VudCI6Nzc5MjA2MDZ9LHsibmFt
+        ZSI6IjIwMTIiLCJjb3VudCI6Njk0OTQ4NDh9XX1dfQ==
+  recorded_at: 2023-04-03 08:53:54 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facet=year&facetLimit=&year=2000%2C2003&taxonKey=212
@@ -49,13 +49,13 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6Mzg3MjYzNzks
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6Mzg3Mjk0NjIs
         InJlc3VsdHMiOltdLCJmYWNldHMiOlt7ImZpZWxkIjoiWUVBUiIsImNvdW50cyI6W3sibmFtZSI6IjIw
-        MDMiLCJjb3VudCI6MTA3OTQ5MzZ9LHsibmFtZSI6IjIwMDIiLCJjb3VudCI6OTU4ODkwM30seyJuYW1l
-        IjoiMjAwMSIsImNvdW50Ijo5NDAxMDU1fSx7Im5hbWUiOiIyMDAwIiwiY291bnQiOjg5NDE0ODV9XX1d
+        MDMiLCJjb3VudCI6MTA3OTg2MTh9LHsibmFtZSI6IjIwMDIiLCJjb3VudCI6OTU5MDQ5MH0seyJuYW1l
+        IjoiMjAwMSIsImNvdW50Ijo5NDAxNTkzfSx7Im5hbWUiOiIyMDAwIiwiY291bnQiOjg5Mzg3NjF9XX1d
         fQ==
-  recorded_at: 2023-03-22 11:33:30 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+  recorded_at: 2023-04-03 08:53:54 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facet=country&facetLimit=2
@@ -76,12 +76,12 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MjI5MjQxMDQ4
-        NiwicmVzdWx0cyI6W10sImZhY2V0cyI6W3siZmllbGQiOiJDT1VOVFJZIiwiY291bnRzIjpbeyJuYW1l
-        IjoiVVMiLCJjb3VudCI6ODExMDczMDk0fSx7Im5hbWUiOiJGUiIsImNvdW50IjoxMzkzNDM5MjB9XX1d
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MjI5NjA3MDQ1
+        MywicmVzdWx0cyI6W10sImZhY2V0cyI6W3siZmllbGQiOiJDT1VOVFJZIiwiY291bnRzIjpbeyJuYW1l
+        IjoiVVMiLCJjb3VudCI6ODEyMzgyMjQyfSx7Im5hbWUiOiJGUiIsImNvdW50IjoxMzkzNzQxMzB9XX1d
         fQ==
-  recorded_at: 2023-03-22 11:33:30 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+  recorded_at: 2023-04-03 08:53:54 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search?limit=0&offset=0&facet=occurrenceStatus&facetLimit=
@@ -102,12 +102,12 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MjMyMTUwNDk0
-        NywicmVzdWx0cyI6W10sImZhY2V0cyI6W3siZmllbGQiOiJPQ0NVUlJFTkNFX1NUQVRVUyIsImNvdW50
-        cyI6W3sibmFtZSI6IlBSRVNFTlQiLCJjb3VudCI6MjI5MjQxMDQ4Nn0seyJuYW1lIjoiQUJTRU5UIiwi
-        Y291bnQiOjI5MDk0NDYxfV19XX0=
-  recorded_at: 2023-03-22 11:33:30 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MjMyNTY2MDQ5
+        OCwicmVzdWx0cyI6W10sImZhY2V0cyI6W3siZmllbGQiOiJPQ0NVUlJFTkNFX1NUQVRVUyIsImNvdW50
+        cyI6W3sibmFtZSI6IlBSRVNFTlQiLCJjb3VudCI6MjI5NjA3MDQ1M30seyJuYW1lIjoiQUJTRU5UIiwi
+        Y291bnQiOjI5NTkwMDQ1fV19XX0=
+  recorded_at: 2023-04-03 08:53:54 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facet=basisOfRecord&facetLimit=&organismQuantity=5&basisOfRecord=MATERIAL_SAMPLE
@@ -128,11 +128,11 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6OTQxNTQxLCJy
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6OTQzMjA5LCJy
         ZXN1bHRzIjpbXSwiZmFjZXRzIjpbeyJmaWVsZCI6IkJBU0lTX09GX1JFQ09SRCIsImNvdW50cyI6W3si
-        bmFtZSI6Ik1BVEVSSUFMX1NBTVBMRSIsImNvdW50Ijo5NDE1NDF9XX1dfQ==
-  recorded_at: 2023-03-22 11:33:30 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+        bmFtZSI6Ik1BVEVSSUFMX1NBTVBMRSIsImNvdW50Ijo5NDMyMDl9XX1dfQ==
+  recorded_at: 2023-04-03 08:53:54 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facet=coordinateUncertaintyInMeters&facetLimit=&verbatimScientificName=Calopteryx%20splendens&verbatimScientificName=Calopteryx%20virgo
@@ -153,13 +153,13 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MjY2MTkyLCJy
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MjY2MjU0LCJy
         ZXN1bHRzIjpbXSwiZmFjZXRzIjpbeyJmaWVsZCI6IkNPT1JESU5BVEVfVU5DRVJUQUlOVFlfSU5fTUVU
         RVJTIiwiY291bnRzIjpbeyJuYW1lIjoiNTAwMC4wIiwiY291bnQiOjc3MzgwfSx7Im5hbWUiOiI3MC43
         IiwiY291bnQiOjYwMzk0fSx7Im5hbWUiOiI3MDcuMSIsImNvdW50IjoyNDYzNn0seyJuYW1lIjoiNy4x
         IiwiY291bnQiOjE1OTQ5fSx7Im5hbWUiOiIyNTAuMCIsImNvdW50IjoxMTk4M30seyJuYW1lIjoiMjUu
-        MCIsImNvdW50Ijo5MTQwfSx7Im5hbWUiOiIxMDAuMCIsImNvdW50Ijo4NjM2fSx7Im5hbWUiOiI3MDcx
+        MCIsImNvdW50Ijo5MTQyfSx7Im5hbWUiOiIxMDAuMCIsImNvdW50Ijo4NjM3fSx7Im5hbWUiOiI3MDcx
         LjEiLCJjb3VudCI6NzAyNn0seyJuYW1lIjoiMTAuMCIsImNvdW50Ijo0MDkxfSx7Im5hbWUiOiIxNDE0
         LjIiLCJjb3VudCI6MzIzMH1dfV19
-  recorded_at: 2023-03-22 11:33:30 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+  recorded_at: 2023-04-03 08:53:54 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0

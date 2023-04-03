@@ -19,10 +19,10 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MTI4NDE5NzI5
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MTI4NTMzNDI3
         LCJyZXN1bHRzIjpbXSwiZmFjZXRzIjpbXX0=
-  recorded_at: 2023-03-22 11:33:32 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+  recorded_at: 2023-04-03 08:53:55 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&eventDate=2010
@@ -43,10 +43,10 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MjY0MzEyNiwi
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MjY0MzM5MCwi
         cmVzdWx0cyI6W10sImZhY2V0cyI6W119
-  recorded_at: 2023-03-22 11:33:32 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+  recorded_at: 2023-04-03 08:53:55 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=
@@ -67,10 +67,10 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MjI5MjQxMDQ4
-        NiwicmVzdWx0cyI6W10sImZhY2V0cyI6W119
-  recorded_at: 2023-03-22 11:33:32 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MjI5NjA2OTQw
+        MiwicmVzdWx0cyI6W10sImZhY2V0cyI6W119
+  recorded_at: 2023-04-03 08:53:55 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&year=2000%2C2001
@@ -91,7 +91,7 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6Mzk2NzA1MDgs
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6Mzk3MjkyMTIs
         InJlc3VsdHMiOltdLCJmYWNldHMiOltdfQ==
-  recorded_at: 2023-03-22 11:33:32 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+  recorded_at: 2023-04-03 08:53:55 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0

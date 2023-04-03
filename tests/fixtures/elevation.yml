@@ -40,8 +40,8 @@ http_interactions:
         1134
         1383
         1795
-  recorded_at: 2023-03-22 11:31:12 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+  recorded_at: 2023-04-03 08:52:44 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
     uri: http://api.geonames.org/srtm3?lats=32.909436%2C38.540315%2C37.050632%2C31.913204%2C32.648646%2C32.649972%2C47.42263%2C30.060134%2C37.04786%2C40.363404%2C47.538867%2C38.481486%2C37.050542%2C25.576582%2C31.334842%2C33.124711%2C33.068336%2C32.745623%2C41.695009%2C16.056195&lngs=-116.545853%2C-122.970018%2C-121.4302%2C-109.931659%2C-108.536463%2C-108.537201%2C-113.670813%2C-103.558096%2C-121.42573%2C-120.622698%2C-113.742705%2C-122.915802%2C-121.429824%2C-80.689018%2C-110.332383%2C-108.568249%2C-116.333314%2C-116.570241%2C-103.712241%2C-93.477916&username=<gbif_user>
@@ -83,8 +83,8 @@ http_interactions:
         1134
         1383
         1795
-  recorded_at: 2023-03-22 11:31:12 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+  recorded_at: 2023-04-03 08:52:44 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
     uri: http://api.geonames.org/srtm3?lats=31.8496%2C29.15503&lngs=-110.57606%2C-103.59828&username=<gbif_user>
@@ -108,5 +108,5 @@ http_interactions:
       string: |
         1301
         654
-  recorded_at: 2023-03-22 11:31:12 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+  recorded_at: 2023-04-03 08:52:44 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0

@@ -27,8 +27,8 @@ http_interactions:
         bmdkb21LZXkiOjEsInBoeWx1bUtleSI6NDQsImNsYXNzS2V5IjozNTksIm9yZGVyS2V5Ijo3MzIsImZh
         bWlseUtleSI6OTcwMywiZ2VudXNLZXkiOjI0MzUwOTgsInNwZWNpZXNLZXkiOjI0MzUwOTksInN5bm9u
         eW0iOmZhbHNlLCJjbGFzcyI6Ik1hbW1hbGlhIn0=
-  recorded_at: 2023-03-22 12:57:58 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+  recorded_at: 2023-04-03 08:58:01 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/occurrence/search?hasCoordinate=TRUE&occurrenceStatus=PRESENT&limit=500&offset=0&elevation=1000&taxonKey=2435099
@@ -148,8 +148,8 @@ http_interactions:
         MiIsInB1Ymxpc2hpbmdPcmdLZXkiOiI5NzlkZDI0MC0xNmY3LTExZGYtYjViMy1iOGEwM2M1MGE4NjIi
         LCJpbnN0YWxsYXRpb25LZXkiOiI2MDY0ZmIxNi1mNzYyLTExZTEtYTQzOS0wMDE0NWViNDVlOWEiLCJw
         dWJsaXNoaW5nQ291bnRyeSI6IkFSIiwicHJvdG9jb2wiOiJEV0NfQVJDSElWRSIsImxhc3RDcmF3bGVk
-        IjoiMjAyMy0wMy0yMFQwNDozNDoxNy4zMTUrMDA6MDAiLCJsYXN0UGFyc2VkIjoiMjAyMy0wMy0yMFQw
-        NDozODo0NC43MjgrMDA6MDAiLCJjcmF3bElkIjoyNTksImhvc3RpbmdPcmdhbml6YXRpb25LZXkiOiI5
+        IjoiMjAyMy0wNC0wM1QwODoyMDozMS41MDUrMDA6MDAiLCJsYXN0UGFyc2VkIjoiMjAyMy0wNC0wM1Qw
+        ODozOTozNS4zMDkrMDA6MDAiLCJjcmF3bElkIjoyNjEsImhvc3RpbmdPcmdhbml6YXRpb25LZXkiOiI5
         NzlkZDI0MC0xNmY3LTExZGYtYjViMy1iOGEwM2M1MGE4NjIiLCJleHRlbnNpb25zIjp7fSwiYmFzaXNP
         ZlJlY29yZCI6IkhVTUFOX09CU0VSVkFUSU9OIiwib2NjdXJyZW5jZVN0YXR1cyI6IlBSRVNFTlQiLCJ0
         YXhvbktleSI6MjQzNTA5OSwia2luZ2RvbUtleSI6MSwicGh5bHVtS2V5Ijo0NCwiY2xhc3NLZXkiOjM1
@@ -166,7 +166,7 @@ http_interactions:
         IjoiU09VVEhfQU1FUklDQSIsInN0YXRlUHJvdmluY2UiOiJDaHVidXQiLCJ5ZWFyIjoyMDA3LCJtb250
         aCI6MSwiZGF5IjoxOSwiZXZlbnREYXRlIjoiMjAwNy0wMS0xOVQwMDowMDowMCIsImlzc3VlcyI6WyJH
         RU9ERVRJQ19EQVRVTV9BU1NVTUVEX1dHUzg0IiwiQ09PUkRJTkFURV9VTkNFUlRBSU5UWV9NRVRFUlNf
-        SU5WQUxJRCJdLCJsYXN0SW50ZXJwcmV0ZWQiOiIyMDIzLTAzLTIwVDA0OjM4OjQ0LjcyOCswMDowMCIs
+        SU5WQUxJRCJdLCJsYXN0SW50ZXJwcmV0ZWQiOiIyMDIzLTA0LTAzVDA4OjM5OjM1LjMwOSswMDowMCIs
         ImxpY2Vuc2UiOiJodHRwOi8vY3JlYXRpdmVjb21tb25zLm9yZy9saWNlbnNlcy9ieS80LjAvbGVnYWxj
         b2RlIiwiaWRlbnRpZmllcnMiOlt7ImlkZW50aWZpZXIiOiIyMzM4NzgxMjUifV0sIm1lZGlhIjpbXSwi
         ZmFjdHMiOltdLCJyZWxhdGlvbnMiOltdLCJnYWRtIjp7ImxldmVsMCI6eyJnaWQiOiJBUkciLCJuYW1l
@@ -370,5 +370,5 @@ http_interactions:
         bGlkYWU7IFB1bWEiLCJnZW9yZWZlcmVuY2VTb3VyY2VzIjoiTWFwYSwgSU5FR0ksIDE6MjUwLDAwMCIs
         ImlkZW50aWZpY2F0aW9uSUQiOiI3MjgyIiwicGFyZW50TmFtZVVzYWdlIjoiUHVtYSJ9XSwiZmFjZXRz
         IjpbXX0=
-  recorded_at: 2023-03-22 12:57:58 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+  recorded_at: 2023-04-03 08:58:01 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
