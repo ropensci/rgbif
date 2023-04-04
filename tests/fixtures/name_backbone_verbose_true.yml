@@ -20,8 +20,8 @@ http_interactions:
       encoding: ''
       file: no
       string: '{"usageKey":1427007,"scientificName":"Calopteryx Leach, 1815","canonicalName":"Calopteryx","rank":"GENUS","status":"ACCEPTED","confidence":92,"matchType":"HIGHERRANK","kingdom":"Animalia","phylum":"Arthropoda","order":"Odonata","family":"Calopterygidae","genus":"Calopteryx","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":789,"familyKey":4211,"genusKey":1427007,"synonym":false,"class":"Insecta"}'
-  recorded_at: 2023-03-22 11:32:22 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+  recorded_at: 2023-04-03 08:53:35 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
     uri: https://api.gbif.org/v1/species/match?name=Calopteryx&rank=species&strict=false&verbose=TRUE&limit=100
@@ -56,5 +56,5 @@ http_interactions:
         name=75; authorship=0; classification=-2; rank=-30; status=-5","matchType":"FUZZY","kingdom":"Animalia","phylum":"Arthropoda","order":"Odonata","family":"Calopterygidae","genus":"Calepteryx","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":789,"familyKey":4211,"genusKey":4798148,"synonym":false,"class":"Insecta"},{"usageKey":3241589,"scientificName":"Colopteryx
         Ridgway, 1888","canonicalName":"Colopteryx","rank":"GENUS","status":"DOUBTFUL","confidence":38,"note":"Similarity:
         name=75; authorship=0; classification=-2; rank=-30; status=-5","matchType":"FUZZY","kingdom":"Animalia","phylum":"Chordata","order":"Passeriformes","family":"Tyrannidae","genus":"Colopteryx","kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":729,"familyKey":5291,"genusKey":3241589,"synonym":false,"class":"Aves"}],"kingdom":"Animalia","phylum":"Arthropoda","order":"Odonata","family":"Calopterygidae","genus":"Calopteryx","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":789,"familyKey":4211,"genusKey":1427007,"synonym":false,"class":"Insecta"}'
-  recorded_at: 2023-03-22 11:32:22 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+  recorded_at: 2023-04-03 08:53:35 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
