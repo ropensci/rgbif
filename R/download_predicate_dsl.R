@@ -232,6 +232,16 @@ pred_and <- function(..., .list = list()) preds_factory("and")(.list, ...)
 #' @rdname download_predicate_dsl
 #' @export
 pred_in <- function(key, value) pred_multi_factory("in")(key, value)
+#' @rdname download_predicate_dsl
+#' @export
+pred_default <- function() {
+  pred_and(
+  pred("HAS_GEOSPATIAL_ISSUE",FALSE),
+  pred("HAS_COORDINATE",TRUE),
+  pred("OCCURRENCE_STATUS","PRESENT"), 
+  pred_not(pred_in("BASIS_OF_RECORD",c("FOSSIL_SPECIMEN","LIVING_SPECIMEN")))
+  )
+}
 
 #' @export
 print.occ_predicate <- function(x, ...) {
@@ -243,11 +253,11 @@ print.occ_predicate_list <- function(x, ...) {
   cat("<<gbif download - predicate list>>", sep = "\n")
   cat(paste0("  type: ", attr(x, "type")), sep = "\n")
   for (i in x) {
-    if (attr(i, "type") %||% "" == "not") {
-      cat("  > type: not", "\n", sep = "")
-      cat("    ", pred_cat(i[[1]]), "\n", sep = "")
+   if (attr(i, "type") %||% "" == "not") {
+     cat("  > type: not", "\n", sep = "")
+     cat("    ", pred_cat(i[[1]]), "\n", sep = "")
     } else {
-      cat("  ", pred_cat(i), "\n", sep = "")
+     cat("  ", pred_cat(i), "\n", sep = "")
     }
   }
 }
