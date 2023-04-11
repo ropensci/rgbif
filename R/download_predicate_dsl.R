@@ -46,6 +46,19 @@
 #' but many values; stating that you want to search for all the values:
 #' - `pred_in`: in
 #'
+#' The following function will apply commonly used **defaults**. 
+#' - `pred_default`
+#'   
+#' Using `pred_default()` is equivalent to running: 
+#'
+#'   `pred_and(`
+#'    `pred("HAS_GEOSPATIAL_ISSUE",FALSE),`
+#'    `pred("HAS_COORDINATE",TRUE),`
+#'    `pred("OCCURRENCE_STATUS","PRESENT"),`
+#'    `pred_not(pred_in("BASIS_OF_RECORD",`
+#'     `c("FOSSIL_SPECIMEN","LIVING_SPECIMEN")))`
+#'   `)`
+#' 
 #' @section What happens internally:
 #' Internally, the input to `pred*` functions turns into JSON to be sent to
 #' GBIF. For example ...

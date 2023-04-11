@@ -15,6 +15,7 @@
 \alias{pred_or}
 \alias{pred_and}
 \alias{pred_in}
+\alias{pred_default}
 \title{Download predicate DSL (domain specific language)}
 \usage{
 pred(key, value)
@@ -42,6 +43,8 @@ pred_or(..., .list = list())
 pred_and(..., .list = list())
 
 pred_in(key, value)
+
+pred_default()
 }
 \arguments{
 \item{key}{(character) the key for the predicate. See "Keys" below}
@@ -109,6 +112,21 @@ but many values; stating that you want to search for all the values:
 \itemize{
 \item \code{pred_in}: in
 }
+
+The following function will apply commonly used \strong{defaults}.
+\itemize{
+\item \code{pred_default}
+}
+
+Using \code{pred_default()} is equivalent to running:
+
+\verb{pred_and(}
+\verb{pred("HAS_GEOSPATIAL_ISSUE",FALSE),}
+\verb{pred("HAS_COORDINATE",TRUE),}
+\verb{pred("OCCURRENCE_STATUS","PRESENT"),}
+\verb{pred_not(pred_in("BASIS_OF_RECORD",}
+\verb{c("FOSSIL_SPECIMEN","LIVING_SPECIMEN")))}
+\verb{)}
 }
 
 \section{What happens internally}{
