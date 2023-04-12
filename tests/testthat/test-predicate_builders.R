@@ -181,3 +181,30 @@ test_that("pred_isnull fails well", {
 })
 
 
+context("predicate builders: pred_default")
+test_that("pred_default", {
+  
+  ff <- pred_default()
+  expect_is(ff, "occ_predicate_list")
+  expect_is(unclass(ff), "list")
+  expect_length(ff,4)
+  
+  expect_equal(unclass(ff[[1]]$type), "equals")
+  expect_equal(unclass(ff[[1]]$key), "HAS_GEOSPATIAL_ISSUE")
+  expect_equal(unclass(ff[[1]]$value), "false")
+  
+  expect_equal(unclass(ff[[2]]$type), "equals")
+  expect_equal(unclass(ff[[2]]$key), "HAS_COORDINATE")
+  expect_equal(unclass(ff[[2]]$value), "true")
+  
+  expect_equal(unclass(ff[[3]]$type), "equals")
+  expect_equal(unclass(ff[[3]]$key), "OCCURRENCE_STATUS")
+  expect_equal(unclass(ff[[3]]$value), "PRESENT")
+  
+  expect_equal(as.character(attr(unclass(ff[[4]]),"type")),"not")
+  expect_equal(unclass(ff[[4]][[1]]$type), "in")
+  expect_equal(unclass(ff[[4]][[1]]$key), "BASIS_OF_RECORD")
+  expect_true(all(unclass(ff[[4]][[1]]$value) 
+                  %in% c("FOSSIL_SPECIMEN","LIVING_SPECIMEN")))
+  })
+

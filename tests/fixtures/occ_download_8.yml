@@ -1,0 +1,48 @@
+http_interactions:
+- request:
+    method: post
+    uri: https://api.gbif.org/v1/occurrence/download/request
+    body:
+      encoding: ''
+      string: '{"creator":"<gbif_user>","notification_address":["<gbif_user>@gbif.org"],"format":"SIMPLE_CSV","predicate":{"type":"and","predicates":[{"type":"and","predicates":[{"type":"equals","key":"HAS_GEOSPATIAL_ISSUE","value":"false"},{"type":"equals","key":"HAS_COORDINATE","value":"true"},{"type":"equals","key":"OCCURRENCE_STATUS","value":"PRESENT"},{"type":"not","predicate":{"type":"in","key":"BASIS_OF_RECORD","values":["FOSSIL_SPECIMEN","LIVING_SPECIMEN"]}}]},{"type":"equals","key":"TYPE_STATUS","value":"ALLOLECTOTYPE"}]}}'
+    headers:
+      Accept-Encoding: gzip, deflate
+      Content-Type: application/json
+      Accept: application/json
+  response:
+    status:
+      status_code: '201'
+      message: Created
+      explanation: Document created, URL follows
+    headers:
+      status: HTTP/1.1 201 Created
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: 0160218-230224095556074
+  recorded_at: 2023-04-11 12:44:47 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/download/0160218-230224095556074
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: '{"key":"0160218-230224095556074","doi":"10.15468/dl.ug6c9q","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"and","predicates":[{"type":"equals","key":"HAS_GEOSPATIAL_ISSUE","value":"false","matchCase":false},{"type":"equals","key":"HAS_COORDINATE","value":"true","matchCase":false},{"type":"equals","key":"OCCURRENCE_STATUS","value":"PRESENT","matchCase":false},{"type":"not","predicate":{"type":"in","key":"BASIS_OF_RECORD","values":["FOSSIL_SPECIMEN","LIVING_SPECIMEN"],"matchCase":false}}]},{"type":"equals","key":"TYPE_STATUS","value":"ALLOLECTOTYPE","matchCase":false}]},"sendNotification":false,"format":"SIMPLE_CSV","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2023-04-11T12:44:56.114+00:00","modified":"2023-04-11T12:44:56.114+00:00","eraseAfter":"2023-10-11T12:44:56.054+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0160218-230224095556074.zip","size":0,"totalRecords":0,"numberDatasets":0}'
+  recorded_at: 2023-04-11 12:44:47 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
