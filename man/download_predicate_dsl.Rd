@@ -120,13 +120,14 @@ The following function will apply commonly used \strong{defaults}.
 
 Using \code{pred_default()} is equivalent to running:
 
-\verb{pred_and(}
-\verb{pred("HAS_GEOSPATIAL_ISSUE",FALSE),}
-\verb{pred("HAS_COORDINATE",TRUE),}
-\verb{pred("OCCURRENCE_STATUS","PRESENT"),}
-\verb{pred_not(pred_in("BASIS_OF_RECORD",}
-\verb{c("FOSSIL_SPECIMEN","LIVING_SPECIMEN")))}
-\verb{)}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{  pred_and(
+   pred("HAS_GEOSPATIAL_ISSUE",FALSE),
+   pred("HAS_COORDINATE",TRUE),
+   pred("OCCURRENCE_STATUS","PRESENT"),
+   pred_not(pred_in("BASIS_OF_RECORD",
+    c("FOSSIL_SPECIMEN","LIVING_SPECIMEN")))
+  )
+}\if{html}{\out{</div>}}
 }
 
 \section{What happens internally}{
