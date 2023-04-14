@@ -434,7 +434,8 @@ key_lkup <- list(
   lifeStage="LIFE_STAGE",
   LIFE_STAGE="LIFE_STAGE",
   DISTANCE_FROM_CENTROID_IN_METERS="DISTANCE_FROM_CENTROID_IN_METERS",
-  distanceFromCentroidInMeters="DISTANCE_FROM_CENTROID_IN_METERS"
+  distanceFromCentroidInMeters="DISTANCE_FROM_CENTROID_IN_METERS",
+  datasetName = "DATASET_NAME" # rgbif/issues/589
   )
 
 parse_pred <- function(key, value, type = "and") {
