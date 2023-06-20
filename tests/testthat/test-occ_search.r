@@ -665,4 +665,12 @@ test_that("multiple values for parameters fails", {
     "You can have multiple values for only one of")
 })
 
+test_that("test for stream error", {
+  
+  names <- rgbif::name_lookup(rank="SPECIES",limit=2000)$data
+  L = lapply(names$scientificName, function(x) rgbif::occ_search(scientificName = x)) 
+  expect_true(all(sapply(L,class) == "gbif"))
+})
+
+
 
