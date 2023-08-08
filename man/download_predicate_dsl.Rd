@@ -184,6 +184,14 @@ repository for this package if you know of a key that should
 be supported that is not yet.
 \itemize{
 \item taxonKey (TAXON_KEY)
+\item kingdomKey (KINGDOM_KEY)
+\item phylumKey (PHYLUM_KEY)
+\item classKey (CLASS_KEY)
+\item orderKey (ORDER_KEY)
+\item familyKey (FAMILY_KEY)
+\item genusKey (GENUS_KEY)
+\item subgenusKey (SUBGENUS_KEY)
+\item speciesKey (SPECIES_KEY)
 \item scientificName (SCIENTIFIC_NAME)
 \item country (COUNTRY)
 \item publishingCountry (PUBLISHING_COUNTRY)

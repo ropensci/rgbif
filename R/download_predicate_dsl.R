@@ -115,6 +115,14 @@
 #' be supported that is not yet.
 #'
 #' - taxonKey (TAXON_KEY)
+#' - kingdomKey (KINGDOM_KEY)
+#' - phylumKey (PHYLUM_KEY)
+#' - classKey (CLASS_KEY)
+#' - orderKey (ORDER_KEY)
+#' - familyKey (FAMILY_KEY)
+#' - genusKey (GENUS_KEY)
+#' - subgenusKey (SUBGENUS_KEY)
+#' - speciesKey (SPECIES_KEY)
 #' - scientificName (SCIENTIFIC_NAME)
 #' - country (COUNTRY)
 #' - publishingCountry (PUBLISHING_COUNTRY)
@@ -323,6 +331,22 @@ operator_lkup <- list(`=` = 'equals', `&` = 'and', 'and' = 'and',
 key_lkup <- list(
   taxonKey='TAXON_KEY',
   TAXON_KEY='TAXON_KEY',
+  kingdomKey='KINGDOM_KEY',
+  KINGDOM_KEY='KINGDOM_KEY',
+  phylumKey='PHYLUM_KEY',
+  PHYLUM_KEY='PHYLUM_KEY',
+  classKey='CLASS_KEY',
+  CLASS_KEY='CLASS_KEY',
+  orderKey='ORDER_KEY',
+  ORDER_KEY='ORDER_KEY',
+  familyKey='FAMILY_KEY',
+  FAMILY_KEY='FAMILY_KEY',
+  genusKey='GENUS_KEY',
+  GENUS_KEY='GENUS_KEY',
+  subgenusKey='SUBGENUS_KEY',
+  SUBGENUS_KEY='SUBGENUS_KEY',
+  speciesKey='SPECIES_KEY',
+  SPECIES_KEY='SPECIES_KEY',
   scientificName='SCIENTIFIC_NAME',
   SCIENTIFIC_NAME='SCIENTIFIC_NAME',
   country='COUNTRY',
