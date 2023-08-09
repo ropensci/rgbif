@@ -184,6 +184,7 @@ repository for this package if you know of a key that should
 be supported that is not yet.
 \itemize{
 \item taxonKey (TAXON_KEY)
+\item acceptedTaxonKey (ACCEPTED_TAXON_KEY)
 \item kingdomKey (KINGDOM_KEY)
 \item phylumKey (PHYLUM_KEY)
 \item classKey (CLASS_KEY)

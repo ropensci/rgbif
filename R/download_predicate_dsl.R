@@ -115,6 +115,7 @@
 #' be supported that is not yet.
 #'
 #' - taxonKey (TAXON_KEY)
+#' - acceptedTaxonKey (ACCEPTED_TAXON_KEY)
 #' - kingdomKey (KINGDOM_KEY)
 #' - phylumKey (PHYLUM_KEY)
 #' - classKey (CLASS_KEY)
@@ -331,6 +332,8 @@ operator_lkup <- list(`=` = 'equals', `&` = 'and', 'and' = 'and',
 key_lkup <- list(
   taxonKey='TAXON_KEY',
   TAXON_KEY='TAXON_KEY',
+  acceptedTaxonKey='ACCEPTED_TAXON_KEY',
+  ACCEPTED_TAXON_KEY='ACCEPTED_TAXON_KEY',
   kingdomKey='KINGDOM_KEY',
   KINGDOM_KEY='KINGDOM_KEY',
   phylumKey='PHYLUM_KEY',
