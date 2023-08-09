@@ -132,12 +132,15 @@
 #' - typeStatus (TYPE_STATUS)
 #' - recordNumber (RECORD_NUMBER)
 #' - lastInterpreted (LAST_INTERPRETED)
+#' - modified (MODIFIED)
 #' - continent (CONTINENT)
 #' - geometry (GEOMETRY)
 #' - basisOfRecord (BASIS_OF_RECORD)
 #' - datasetKey (DATASET_KEY)
+#' - datasetID (DATASET_ID)
 #' - eventDate (EVENT_DATE)
 #' - catalogNumber (CATALOG_NUMBER)
+#' - otherCatalogNumbers (OTHER_CATALOG_NUMBERS)
 #' - year (YEAR)
 #' - month (MONTH)
 #' - decimalLatitude (DECIMAL_LATITUDE)
@@ -152,17 +155,24 @@
 #' - establishmentMeans (ESTABLISHMENT_MEANS)
 #' - coordinateUncertaintyInMeters (COORDINATE_UNCERTAINTY_IN_METERS)
 #' - gadm (GADM_GID) (for the Database of Global Administrative Areas)
+#' - level0Gid (GADM_LEVEL_0_GID)
+#' - level1Gid (GADM_LEVEL_1_GID)
+#' - level2Gid (GADM_LEVEL_2_GID)
+#' - level3Gid (GADM_LEVEL_3_GID)
 #' - stateProvince (STATE_PROVINCE)
 #' - occurrenceStatus (OCCURRENCE_STATUS)
 #' - publishingOrg (PUBLISHING_ORG)
-#' - occurrenceId (OCCURRENCE_ID)
-#' - eventId (EVENT_ID)
+#' - occurrenceID (OCCURRENCE_ID)
+#' - eventID (EVENT_ID)
+#' - parentEventID (PARENT_EVENT_ID)
 #' - identifiedBy (IDENTIFIED_BY)
 #' - identifiedByID (IDENTIFIED_BY_ID)
 #' - license (LICENSE)
 #' - locality(LOCALITY)
+#' - pathway (PATHWAY)
+#' - preparations (PREPARATIONS)
 #' - networkKey (NETWORK_KEY)
-#' - organismId (ORGANISM_ID)
+#' - organismID (ORGANISM_ID)
 #' - organismQuantity (ORGANISM_QUANTITY)
 #' - organismQuantityType (ORGANISM_QUANTITY_TYPE)
 #' - protocol (PROTOCOL)
@@ -173,7 +183,8 @@
 #' - sampleSizeValue (SAMPLE_SIZE_VALUE)
 #' - samplingProtocol (SAMPLING_PROTOCOL)
 #' - verbatimScientificName (VERBATIM_SCIENTIFIC_NAME)
-#' - TaxonId (TAXON_ID)
+#' - taxonID (TAXON_ID)
+#' - taxonomicStatus (TAXONOMIC_STATUS)
 #' - waterBody (WATER_BODY)
 #' - iucnRedListCategory (IUCN_RED_LIST_CATEGORY)
 #' - degreeOfEstablishment (DEGREE_OF_ESTABLISHMENT)
@@ -374,10 +385,14 @@ key_lkup <- list(
   BASIS_OF_RECORD='BASIS_OF_RECORD', 
   datasetKey='DATASET_KEY',
   DATASET_KEY='DATASET_KEY',
+  datasetID='DATASET_ID',
+  DATASET_ID='DATASET_ID',
   eventDate='EVENT_DATE', 
   EVENT_DATE='EVENT_DATE', 
   catalogNumber='CATALOG_NUMBER', 
   CATALOG_NUMBER='CATALOG_NUMBER', 
+  otherCatalogNumbers='OTHER_CATALOG_NUMBERS',
+  OTHER_CATALOG_NUMBERS='OTHER_CATALOG_NUMBERS',
   year='YEAR',
   YEAR='YEAR',
   month='MONTH', 
@@ -406,6 +421,14 @@ key_lkup <- list(
   COORDINATE_UNCERTAINTY_IN_METERS='COORDINATE_UNCERTAINTY_IN_METERS',
   gadm='GADM_GID', 
   GADM_GID='GADM_GID', 
+  level0Gid='GADM_LEVEL_0_GID',
+  GADM_LEVEL_0_GID='GADM_LEVEL_0_GID',
+  level1Gid='GADM_LEVEL_1_GID',
+  GADM_LEVEL_1_GID='GADM_LEVEL_1_GID',
+  level2Gid='GADM_LEVEL_2_GID',
+  GADM_LEVEL_2_GID='GADM_LEVEL_2_GID',
+  level3Gid='GADM_LEVEL_3_GID',
+  GADM_LEVEL_3_GID='GADM_LEVEL_3_GID',
   stateProvince='STATE_PROVINCE',
   STATE_PROVINCE='STATE_PROVINCE',
   occurrenceStatus='OCCURRENCE_STATUS',
@@ -413,9 +436,11 @@ key_lkup <- list(
   publishingOrg='PUBLISHING_ORG',
   PUBLISHING_ORG='PUBLISHING_ORG',
   OCCURRENCE_ID = 'OCCURRENCE_ID',
-  occurrenceId = 'OCCURRENCE_ID',
-  eventId="EVENT_ID",
+  occurrenceID = 'OCCURRENCE_ID',
+  eventID="EVENT_ID",
   EVENT_ID="EVENT_ID",
+  parentEventID='PARENT_EVENT_ID',
+  PARENT_EVENT_ID='PARENT_EVENT_ID',
   identifiedBy="IDENTIFIED_BY",
   IDENTIFIED_BY="IDENTIFIED_BY",
   identifiedByID="IDENTIFIED_BY_ID",
@@ -426,7 +451,7 @@ key_lkup <- list(
   LOCALITY="LOCALITY",
   networkKey="NETWORK_KEY",
   NETWORK_KEY="NETWORK_KEY",
-  organismId="ORGANISM_ID",
+  organismID="ORGANISM_ID",
   ORGANISM_ID="ORGANISM_ID",
   organismQuantity="ORGANISM_QUANTITY",
   ORGANISM_QUANTITY="ORGANISM_QUANTITY",
@@ -440,6 +465,8 @@ key_lkup <- list(
   RELATIVE_ORGANISM_QUANTITY="RELATIVE_ORGANISM_QUANTITY",
   repatriated="REPATRIATED",
   REPATRIATED="REPATRIATED",
+  modified='MODIFIED',
+  MODIFIED='MODIFIED',
   sampleSizeUnit="SAMPLE_SIZE_UNIT",
   SAMPLE_SIZE_UNIT="SAMPLE_SIZE_UNIT",
   sampleSizeValue="SAMPLE_SIZE_VALUE",
@@ -448,10 +475,16 @@ key_lkup <- list(
   SAMPLING_PROTOCOL="SAMPLING_PROTOCOL",
   verbatimScientificName="VERBATIM_SCIENTIFIC_NAME",
   VERBATIM_SCIENTIFIC_NAME="VERBATIM_SCIENTIFIC_NAME",
-  TaxonId="TAXON_ID",
+  taxonID="TAXON_ID",
   TAXON_ID="TAXON_ID",
+  taxonomicStatus='TAXONOMIC_STATUS',
+  TAXONOMIC_STATUS='TAXONOMIC_STATUS',
   waterBody="WATER_BODY",
   WATER_BODY="WATER_BODY",
+  pathway='PATHWAY',
+  PATHWAY='PATHWAY',
+  preparations='PREPARATIONS',
+  PREPARATIONS='PREPARATIONS',
   iucnRedListCategory="IUCN_RED_LIST_CATEGORY",
   IUCN_RED_LIST_CATEGORY="IUCN_RED_LIST_CATEGORY",
   degreeOfEstablishment="DEGREE_OF_ESTABLISHMENT",
