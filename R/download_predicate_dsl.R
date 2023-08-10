@@ -137,7 +137,7 @@
 #' - geometry (GEOMETRY)
 #' - basisOfRecord (BASIS_OF_RECORD)
 #' - datasetKey (DATASET_KEY)
-#' - datasetID (DATASET_ID)
+#' - datasetID/datasetId (DATASET_ID)
 #' - eventDate (EVENT_DATE)
 #' - catalogNumber (CATALOG_NUMBER)
 #' - otherCatalogNumbers (OTHER_CATALOG_NUMBERS)
@@ -152,6 +152,7 @@
 #' - issue (ISSUE)
 #' - mediatype (MEDIA_TYPE)
 #' - recordedBy (RECORDED_BY)
+#' - recordedById/recordedByID (RECORDED_BY_ID)
 #' - establishmentMeans (ESTABLISHMENT_MEANS)
 #' - coordinateUncertaintyInMeters (COORDINATE_UNCERTAINTY_IN_METERS)
 #' - gadm (GADM_GID) (for the Database of Global Administrative Areas)
@@ -162,28 +163,27 @@
 #' - stateProvince (STATE_PROVINCE)
 #' - occurrenceStatus (OCCURRENCE_STATUS)
 #' - publishingOrg (PUBLISHING_ORG)
-#' - occurrenceID (OCCURRENCE_ID)
-#' - eventID (EVENT_ID)
-#' - parentEventID (PARENT_EVENT_ID)
+#' - occurrenceId/occurrenceID (OCCURRENCE_ID)
+#' - eventId/eventID (EVENT_ID)
+#' - parentEventId/parentEventID (PARENT_EVENT_ID)
 #' - identifiedBy (IDENTIFIED_BY)
-#' - identifiedByID (IDENTIFIED_BY_ID)
+#' - identifiedById/identifiedByID (IDENTIFIED_BY_ID)
 #' - license (LICENSE)
 #' - locality(LOCALITY)
 #' - pathway (PATHWAY)
 #' - preparations (PREPARATIONS)
 #' - networkKey (NETWORK_KEY)
-#' - organismID (ORGANISM_ID)
+#' - organismId/organismID (ORGANISM_ID)
 #' - organismQuantity (ORGANISM_QUANTITY)
 #' - organismQuantityType (ORGANISM_QUANTITY_TYPE)
 #' - protocol (PROTOCOL)
-#' - recordedByID (RECORDED_BY_ID)
 #' - relativeOrganismQuantity (RELATIVE_ORGANISM_QUANTITY)
 #' - repatriated (REPATRIATED)
 #' - sampleSizeUnit (SAMPLE_SIZE_UNIT)
 #' - sampleSizeValue (SAMPLE_SIZE_VALUE)
 #' - samplingProtocol (SAMPLING_PROTOCOL)
 #' - verbatimScientificName (VERBATIM_SCIENTIFIC_NAME)
-#' - taxonID (TAXON_ID)
+#' - taxonID/taxonId (TAXON_ID)
 #' - taxonomicStatus (TAXONOMIC_STATUS)
 #' - waterBody (WATER_BODY)
 #' - iucnRedListCategory (IUCN_RED_LIST_CATEGORY)
@@ -386,6 +386,7 @@ key_lkup <- list(
   datasetKey='DATASET_KEY',
   DATASET_KEY='DATASET_KEY',
   datasetID='DATASET_ID',
+  datasetId='DATASET_ID',
   DATASET_ID='DATASET_ID',
   eventDate='EVENT_DATE', 
   EVENT_DATE='EVENT_DATE', 
@@ -415,6 +416,9 @@ key_lkup <- list(
   MEDIA_TYPE='MEDIA_TYPE', 
   recordedBy='RECORDED_BY',
   RECORDED_BY='RECORDED_BY',
+  recordedById="RECORDED_BY_ID",
+  recordedByID="RECORDED_BY_ID",
+  RECORDED_BY_ID="RECORDED_BY_ID",
   establishmentMeans='ESTABLISHMENT_MEANS',
   ESTABLISHMENT_MEANS='ESTABLISHMENT_MEANS',
   coordinateUncertaintyInMeters='COORDINATE_UNCERTAINTY_IN_METERS',
@@ -435,14 +439,18 @@ key_lkup <- list(
   OCCURRENCE_STATUS='OCCURRENCE_STATUS',
   publishingOrg='PUBLISHING_ORG',
   PUBLISHING_ORG='PUBLISHING_ORG',
-  OCCURRENCE_ID = 'OCCURRENCE_ID',
   occurrenceID = 'OCCURRENCE_ID',
+  occurrenceId = 'OCCURRENCE_ID',
+  OCCURRENCE_ID = 'OCCURRENCE_ID',
   eventID="EVENT_ID",
+  eventId="EVENT_ID",
   EVENT_ID="EVENT_ID",
   parentEventID='PARENT_EVENT_ID',
+  parentEventId='PARENT_EVENT_ID',
   PARENT_EVENT_ID='PARENT_EVENT_ID',
   identifiedBy="IDENTIFIED_BY",
   IDENTIFIED_BY="IDENTIFIED_BY",
+  identifiedById="IDENTIFIED_BY_ID",
   identifiedByID="IDENTIFIED_BY_ID",
   IDENTIFIED_BY_ID="IDENTIFIED_BY_ID",
   license="LICENSE",
@@ -451,6 +459,7 @@ key_lkup <- list(
   LOCALITY="LOCALITY",
   networkKey="NETWORK_KEY",
   NETWORK_KEY="NETWORK_KEY",
+  organismId="ORGANISM_ID",
   organismID="ORGANISM_ID",
   ORGANISM_ID="ORGANISM_ID",
   organismQuantity="ORGANISM_QUANTITY",
@@ -459,8 +468,6 @@ key_lkup <- list(
   ORGANISM_QUANTITY_TYPE="ORGANISM_QUANTITY_TYPE",
   protocol="PROTOCOL",
   PROTOCOL="PROTOCOL",
-  recordedByID="RECORDED_BY_ID",
-  RECORDED_BY_ID="RECORDED_BY_ID",
   relativeOrganismQuantity="RELATIVE_ORGANISM_QUANTITY",
   RELATIVE_ORGANISM_QUANTITY="RELATIVE_ORGANISM_QUANTITY",
   repatriated="REPATRIATED",
@@ -475,6 +482,7 @@ key_lkup <- list(
   SAMPLING_PROTOCOL="SAMPLING_PROTOCOL",
   verbatimScientificName="VERBATIM_SCIENTIFIC_NAME",
   VERBATIM_SCIENTIFIC_NAME="VERBATIM_SCIENTIFIC_NAME",
+  taxonId="TAXON_ID",
   taxonID="TAXON_ID",
   TAXON_ID="TAXON_ID",
   taxonomicStatus='TAXONOMIC_STATUS',
@@ -493,8 +501,8 @@ key_lkup <- list(
   IS_IN_CLUSTER="IS_IN_CLUSTER",
   lifeStage="LIFE_STAGE",
   LIFE_STAGE="LIFE_STAGE",
-  DISTANCE_FROM_CENTROID_IN_METERS="DISTANCE_FROM_CENTROID_IN_METERS",
   distanceFromCentroidInMeters="DISTANCE_FROM_CENTROID_IN_METERS",
+  DISTANCE_FROM_CENTROID_IN_METERS="DISTANCE_FROM_CENTROID_IN_METERS",
   datasetName = "DATASET_NAME" # rgbif/issues/589
   )
 
