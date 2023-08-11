@@ -34,10 +34,13 @@ test_that("map_fetch terra", {
 test_that("map_fetch warnings and errors", {
   
   expect_message(map_fetch(style="green.poly"), 
-    "You are using a map style that works better with arg 'bin' set to 'hex'. Setting bin='hex'.
-     You can also try bin='square'.")
+  "You are using a map style that works better with arg 'bin' set to 'hex'. Setting bin='hex'. You can also try bin='square'.")
   expect_message(map_fetch(srs = 'EPSG:3857'),
   "EPSG:3857 only has one tile at z=0, so setting x=0 and y=0.")
+  expect_message(map_fetch(recorded_by="John Waller"), 
+   "Un-named args, setting source='adhoc'.")
+  expect_message(map_fetch(source="adhoc",style="classic.point"),
+  "The adhoc interface doesn't work well with 'point styles'. Try one of these :")
   
   # simple errors 
   expect_error(map_fetch(srs = "dog"))
@@ -68,15 +71,9 @@ test_that("map_fetch warnings and errors", {
   # complex errors 
   expect_error(map_fetch(srs = 'EPSG:3575', return = "terra"),
   "return='terra' is only supported for 'EPSG:4326'.")
-  expect_error(map_fetch(taxonKey=212,country="US"),
-  "supply only one of taxonKey, datasetKey, country, publishingOrg, or publishingCountry")
-  expect_error(map_fetch(taxonKey = 212, year = 2010, country= "US"),
-  "supply only one of taxonKey, datasetKey, country, publishingOrg, or publishingCountry")    
-  
-  # big x,y values
-  expect_error(map_fetch(x=1000),"The args chosen returned no png. Try smaller x,y values.")
-  expect_error(map_fetch(y=1000),"The args chosen returned no png. Try smaller x,y values.")
-  expect_error(map_fetch(z=1000),"The args chosen returned no png. Try smaller x,y values.")
-  
+  expect_message(map_fetch(taxonKey=212,country="US"),
+  "Supply only one of taxonKey, datasetKey, country, publishingOrg, or publishingCountry. Switching to source='adhoc'.")
+  expect_message(map_fetch(taxonKey = 212, year = 2010, country= "US"),
+  "Supply only one of taxonKey, datasetKey, country, publishingOrg, or publishingCountry. Switching to source='adhoc'.")    
   })
   

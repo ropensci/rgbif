@@ -32,24 +32,21 @@
 #' - `EPSG:3031` (Antarctic stereographic)
 #'
 #' @param bin (character) `square` or `hex` to aggregate occurrence counts into
-#' squares or hexagons. Points by default. optional
+#' squares or hexagons. Points by default. 
 #' @param hexPerTile (integer) sets the size of the hexagons
-#' (the number horizontally across a tile). optional
+#' (the number horizontally across a tile). 
 #' @param squareSize (integer) sets the size of the squares. Choose a factor
 #' of 4096 so they tessalate correctly: probably from 8, 16, 32, 64, 128,
-#' 256, 512. optional
+#' 256, 512. 
 #' @param style (character) for raster tiles, choose from the available styles.
-#' Defaults to classic.point. optional. THESE DON'T WORK YET.
+#' Defaults to classic.point for source="density" and "scaled.circle" for source="adhoc".
 #' @param taxonKey (integer/numeric/character) search by taxon key, can only
-#' supply 1. optional
+#' supply 1. 
 #' @param datasetKey (character) search by taxon key, can only supply 1.
-#' optional
 #' @param country (character) search by taxon key, can only supply 1.
-#' optional
 #' @param publishingOrg (character) search by taxon key, can only supply 1.
-#' optional
 #' @param publishingCountry (character) search by taxon key, can only
-#' supply 1. optional
+#' supply 1. 
 #' @param year (integer) integer that limits the search to a certain year or,
 #' if passing a vector of integers, multiple years, for example
 #' `1984` or `c(2016, 2017, 2018)` or `2010:2015` (years 2010 to 2015). optional
@@ -57,11 +54,12 @@
 #' include records with that basis of record. The full list is: `c("OBSERVATION",
 #' "HUMAN_OBSERVATION", "MACHINE_OBSERVATION", "MATERIAL_SAMPLE",
 #' "PRESERVED_SPECIMEN", "FOSSIL_SPECIMEN", "LIVING_SPECIMEN",
-#' "LITERATURE", "UNKNOWN")`. optional
+#' "LITERATURE", "UNKNOWN")`.
 #' @param return (character) Either "png" or "terra". 
 #' @param base_style (character)  The style of the base map. 
 #' @param plot_terra (logical) Set whether the terra map be default plotted.
-#' @param ... curl options passed on to [crul::HttpClient]
+#' @param curlopts options passed on to [crul::HttpClient]
+#' @param ... additional arguments passed to the adhoc interface. 
 #'
 #' @return a `magick-image` or `terra::SpatRaster ` object.
 #'
@@ -73,8 +71,7 @@
 #' The args `x` and `y` can both be integer sequences. For example, `x=0:3` or 
 #' `y=0:1`. Note that the tile index starts at 0. Higher values of `z`, will 
 #' will produce more tiles that can be fetched and stitched together. Selecting
-#' a too high value for `x` or `y` will produce a warning and give back the 
-#' lowest acceptable value. 
+#' a too high value for `x` or `y` will produce a blank image.
 #' 
 #' Setting `return='terra'` will return a `terra::SpatRaster ` object. This
 #' is primarily useful if you were interested in the underlying aggregated 
@@ -133,7 +130,7 @@ map_fetch <- function(
   bin = NULL,
   hexPerTile = NULL,
   squareSize = NULL,
-  style = 'classic.point',
+  style = NULL,
   taxonKey = NULL,
   datasetKey = NULL,
   country = NULL,
@@ -142,8 +139,9 @@ map_fetch <- function(
   year = NULL,
   basisOfRecord = NULL,
   return = "png",
-  base_style = "gbif-classic",
+  base_style = NULL,
   plot_terra = TRUE,
+  curlopts = list(),
   ...
   ) {
   
@@ -175,8 +173,7 @@ map_fetch <- function(
   # Check input 
   stopifnot(source %in% c('density', 'adhoc'))
   stopifnot(srs %in% c('EPSG:3857', 'EPSG:4326', 'EPSG:3575', 'EPSG:3031'))
-  # if(z > 6) {warning("Max z is 6. Setting z to 6"); z <- 6 }
-  
+
   if(!(srs == 'EPSG:4326') & return == "terra") {
     stop("return='terra' is only supported for 'EPSG:4326'.") } 
   
@@ -186,35 +183,54 @@ map_fetch <- function(
     x <- 0; y <- 0
   }
   
-  # check if tile is available  
-  # this doesn't work because it seems too variable
-  # x <- check_max_tile(srs,z,x,var="x")
-  # y <- check_max_tile(srs,z,y,var="y")
-  
   if (!is.null(squareSize)) {
     squareSize <- match.arg(arg = as.character(squareSize),
       choices = c(8, 16, 32, 64, 128, 256, 512), several.ok = FALSE
     )
-  }
-
-  if(!is.null(bin)) stopifnot(bin %in% c('square', 'hex'))
-  if(!is.null(style)) stopifnot(style %in% map_styles)
-  if(!is.null(base_style) & return == "png") stopifnot(base_style %in% base_styles)
-  if(is.null(bin)) {
-    default_hex_styles <- map_styles[grepl("marker|poly",map_styles)]  
-    if(style %in% default_hex_styles) { 
-      message(rgbif_wrap("You are using a map style that works better with arg 'bin' set to 'hex'. Setting bin='hex'. You can also try bin='square'."))
-      bin <- "hex" 
-    }
   }
   
   # density queries can accept only one 
   if(source == "density") {
     den_query <- rgbif_compact(list(taxonKey, datasetKey, country, publishingOrg, publishingCountry))
     if (length(den_query) > 1) {
-      stop("supply only one of taxonKey, datasetKey, country, publishingOrg, or publishingCountry")
+      message("Supply only one of taxonKey, datasetKey, country, publishingOrg, or publishingCountry. Switching to source='adhoc'.")
+      source <- "adhoc"
     }
   }
+  
+  if(!length(dots(...)) == 0 & !source == "adhoc") {
+    message(rgbif_wrap("Un-named args, setting source='adhoc'."))
+    source <- "adhoc"
+    if(is.null(style)) style <- "scaled.circles"
+  }
+  
+  # set default style based on interface 
+  if(is.null(style) & source == "density") style <- "classic.point"
+  if(is.null(base_style) & source == "density") base_style <- "gbif-classic"
+  
+  if(is.null(style) & source == "adhoc") style <- "scaled.circles"
+  if(is.null(base_style) & source == "adhoc") base_style <- "gbif-light"
+  
+  if(!is.null(bin)) stopifnot(bin %in% c('square', 'hex'))
+  if(!is.null(style)) stopifnot(style %in% map_styles)
+  if(!is.null(base_style) & return == "png") stopifnot(base_style %in% base_styles)
+  if(is.null(bin)) {
+    default_hex_styles <- map_styles[grepl("marker|poly",map_styles)]  
+    if(style %in% default_hex_styles) { 
+      message("You are using a map style that works better with arg 'bin' set to 'hex'. Setting bin='hex'. You can also try bin='square'.")
+      bin <- "hex" 
+    }
+  }
+  
+  # message that point styles don't really work well with bin hex and 
+  
+  # if((style %in% map_styles[grepl("point",map_styles)]) |
+     # is.null(bin)) 
+  
+  if(source == "adhoc" & style %in% map_styles[grepl("point",map_styles)]) {
+    message("The adhoc interface doesn't work well with 'point styles'. Try one of these : ")
+    message(paste(map_styles[!grepl("point",map_styles)],collapse="\n"))
+  } 
   
   if (!is.null(year)) {
     year <- match.arg(arg = as.character(year), choices = 0:2200,
@@ -263,7 +279,7 @@ map_fetch <- function(
     do.call("c",lapply(y,function(y) {
     magick::image_append(
     do.call("c",lapply(x,function(x) { 
-    get_map_png(source,z=z,x=x,y=y,format,query,return)
+    get_map_png(source,z=z,x=x,y=y,format,query,return,srs,curlopts)
   })))
   })),stack=TRUE)
   
@@ -271,7 +287,8 @@ map_fetch <- function(
     do.call("c",lapply(y,function(y) {
     magick::image_append(
     do.call("c",lapply(x,function(x) { 
-    get_base_png(srs,z=z,x=x,y=y,format,base_style,return)
+    get_base_png(srs,z=z,x=x,y=y,
+      format=format,base_style=base_style,curlopts=curlopts)
   })))
   })),stack=TRUE)
     
@@ -313,56 +330,45 @@ switch_extent <- function(srs,x,y,z) {
   return(extents)
 }
 
-# this doesn't work 
-# check_max_tile <- function(srs,z,x,var) {
-#   if(min(x) < 0) x[which.min(x)] <- 0 
-#   if(is.unsorted(x)) stop(paste0("Please order ",var," from smallest to largest."))
-#   
-#   if(var=="x") { 
-#   z_seq <- switch(srs,  
-#     'EPSG:4326' = c(1, 3, 7, 15, 31, 63, 71),
-#     'EPSG:3857' = c(0, 1, 3, 7, 15, 31, 38),
-#     'EPSG:3575' = c(0, 1, 3, 5, 9, 11, 17),
-#     'EPSG:3031' = c(0, 1, 3, 5, 9, 11, 16))
-#   }
-#   if(var=="y") { 
-#   z_seq <- switch(srs,  
-#     'EPSG:4326' = c(0, 1, 3, 7, 15, 31, 62),
-#     'EPSG:3857' = c(0, 1, 3, 7, 15, 31, 61),
-#     'EPSG:3575' = c(0, 1, 3, 5, 9, 11, 17),
-#     'EPSG:3031' = c(0, 1, 3, 5, 9, 12, 17))
-#   }
-#   
-#   z_i <- z + 1
-#   x_i <- x + 1
-#   max_x <- z_seq[z_i]
-#   if(max(x) > max_x) {
-#     warning(paste0("Max ", var, " for z = ", z," is ", max_x,". Setting max ", var ," to ", max_x,"."))
-#     if(length(x) > 1) { x <- seq(min(x),max_x)} 
-#     else { x <- max_x }
-#     
-#   } 
-#   x
-# }
-
-get_map_png <- function(source,z,x,y,format,query,return,...) {
+get_map_png <- function(source,z,x,y,format,query,return,srs,curlopts) {
   path <- file.path('v2/map/occurrence', source, z, x, paste0(y, format))
-  cli <- crul::HttpClient$new(url = 'https://api.gbif.org', opts = list(...))
+  cli <- crul::HttpClient$new(url = 'https://api.gbif.org', opts = curlopts)
   res <- cli$get(path, query = query)
-  if(length(res$content) == 0) stop("The args chosen returned no png. Try smaller x,y values.")
-  if(return == "terra") img <- png::readPNG(res$content)[,,2]
-  if(return == "png") img <- magick::image_read(res$content)
+  if(length(res$content) == 0) {
+    if(return == "png") {
+      # get size of tile map tile to make blank tile
+      dummy_img <- get_base_png(srs,z,x=0,y=0,format,base_style="gbif-classic")
+      img <- magick::image_blank(height=magick::image_info(dummy_img)$height,
+                                 width=magick::image_info(dummy_img)$width)
+    }
+    if(return == "terra") {
+      stop("The args chosen returned no data. Try smaller x,y values.")
+    }
+    
+  } else {
+    if(return == "terra") img <- png::readPNG(res$content)[,,2]
+    if(return == "png") img <- magick::image_read(res$content)
+  }
   img
 }
 
-get_base_png <- function(srs,z,x,y,format,base_style,...) {
+get_base_png <- function(srs,z,x,y,format,base_style,curlopts) {
   query <- rgbif_compact(list(style=base_style))
   srs_num <- gsub("[^0-9]","",srs)
   path <- file.path(srs_num,'omt', z, x, paste0(y, format))
-  cli <- crul::HttpClient$new(url = 'https://tile.gbif.org', opts = list(...))
+  cli <- crul::HttpClient$new(url = 'https://tile.gbif.org', opts = curlopts)
   res <- cli$get(path, query = query)
-  img <- magick::image_read(res$content)
-  img
+  if(length(res$content) == 0) {
+      message("The args chosen returned no data. Returning blank image.")
+      # get size of tile map tile to make blank tile
+      dummy_img <- get_base_png(srs,z,x=0,y=0,format,base_style="gbif-classic")
+      img <- magick::image_blank(height=magick::image_info(dummy_img)$height,
+                                 width=magick::image_info(dummy_img)$width)
+  } else {
+    img <- magick::image_read(res$content)
+    img
+    }
+    
 }
 
 ext_ <- function(x,z,var=NULL,d1=NULL,d2=NULL,tot=NULL,max_z=NULL,z_seq = NULL) {
@@ -382,6 +388,7 @@ map_styles <- c(
   'blueHeat.point',
   'orangeHeat.point',
   'greenHeat.point',
+  'green.point',
   'classic.point',
   'purpleYellow.point',
   'fire.point',
