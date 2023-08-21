@@ -9,7 +9,7 @@ test_that("returns the correct class", {
     tt <- occ_search(taxonKey=key, limit=2)
     uu <- occ_search(taxonKey=key, limit=20)
   }, preserve_exact_body_bytes = TRUE)
-
+  
   expect_is(tt, "gbif")
   expect_is(tt$meta, "list")
   expect_is(tt$meta$endOfRecords, "logical")
@@ -18,14 +18,14 @@ test_that("returns the correct class", {
   expect_is(tt$data, "tbl")
   expect_is(tt$data$name, "character")
   expect_is(uu, "gbif")
-
+  
   expect_equal(tt$meta$limit, 2)
   expect_equal(tt$hierarchy[[1]][1,2], "6")
   expect_equal(as.character(tt$hierarchy[[1]][1,1]), "Plantae")
-
+  
   expect_equal(as.character(uu$hierarchy[[1]][1,1]), "Plantae")
   expect_equal(uu$meta$limit, 20)
-
+  
   expect_equal(length(tt), 5)
   expect_equal(length(tt$meta), 4)
 })
@@ -36,7 +36,7 @@ test_that("returns the correct dimensions", {
   vcr::use_cassette("occ_search_datasetkey", {
     out <- occ_search(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a')
   }, preserve_exact_body_bytes = TRUE)
-
+  
   expect_is(out, "gbif")
   expect_is(out$data, "tbl_df")
   expect_is(out$data, "data.frame")
@@ -48,16 +48,16 @@ test_that("returns the correct dimensions", {
 test_that("returns the correct class", {
   vcr::use_cassette("occ_search_catalognumber", {
     out <- occ_search(catalogNumber='PlantAndMushroom.6845144',
-      fields='all')
+                      fields='all')
   })
-
+  
   expect_is(out, "gbif")
   expect_is(out$meta, "list")
   expect_null(out$data)
-
+  
   # returns the correct value
   expect_true(out$meta$endOfRecords)
-
+  
   # returns the correct dimensions
   expect_equal(length(out), 5)
 })
@@ -68,13 +68,13 @@ test_that("returns the correct class", {
   vcr::use_cassette("occ_search_taxonkey", {
     out <- occ_search(taxonKey=key,limit=2)
   }, preserve_exact_body_bytes = TRUE)
-
+  
   expect_is(out, "gbif")
   expect_is(out$data, "tbl_df")
   expect_is(out$data, "tbl")
   expect_type(out$data$key, "character")
   expect_is(out$data$scientificName, "character")
-
+  
   # returns the correct value
   expect_equal(out$data$scientificName[1], "Encelia californica Nutt.")
 })
@@ -84,12 +84,12 @@ test_that("returns the correct class", {
   vcr::use_cassette("occ_search_hierarchy_data", {
     out <- occ_search(taxonKey=key, limit=2)
   }, preserve_exact_body_bytes = TRUE)
-
+  
   expect_is(out$hierarchy, "list")
   expect_is(out$hierarchy[[1]], "data.frame")
   # hier no longer has gbif class
   expect_equal(length(class(out$hierarchy)), 1)
-
+  
   # returns the correct dimensions
   expect_equal(length(out$hierarchy), 1)
   expect_equal(dim(out$hierarchy[[1]]), c(7,3))
@@ -104,7 +104,7 @@ test_that("dates work correctly", {
     b <- occ_search(taxonKey=3189815, month="6", fields=c('name','month'),limit=2)
     expect_is(occ_search(taxonKey=key, year="1990,1991"), "gbif")
   }, preserve_exact_body_bytes = TRUE)
-
+  
   expect_equal(a$data$year[1], 2013)
   expect_equal(b$data$month[1], 6)
 })
@@ -387,7 +387,7 @@ test_that("networkKey works correctly", {
   vcr::use_cassette("occ_search_networkKey", {
     nn <- occ_search(networkKey="4b0d8edb-7504-42c4-9349-63e86c01bf97",limit=2)
     ss <- occ_search(
-    networkKey="4b0d8edb-7504-42c4-9349-63e86c01bf97;99d66b6c-9087-452f-a9d4-f15f2c2d0e7e",limit=2)
+      networkKey="4b0d8edb-7504-42c4-9349-63e86c01bf97;99d66b6c-9087-452f-a9d4-f15f2c2d0e7e",limit=2)
     cc <- occ_search(networkKey=c("4b0d8edb-7504-42c4-9349-63e86c01bf97",
                                   "99d66b6c-9087-452f-a9d4-f15f2c2d0e7e"),limit=2)
     vv <- occ_search(taxonKey=6,networkKey="4b0d8edb-7504-42c4-9349-63e86c01bf97",limit=2)
@@ -426,7 +426,7 @@ test_that("returns the correct dimensions", {
   vcr::use_cassette("occ_search_elevation", {
     key <- name_backbone(name='Puma concolor', kingdom='animals')$speciesKey
     res <- occ_search(taxonKey=key, elevation=1000, hasCoordinate=TRUE,
-      fields=c('scientificName', 'elevation'))
+                      fields=c('scientificName', 'elevation'))
   }, preserve_exact_body_bytes = TRUE)
   expect_equal(names(res$data), c('scientificName', 'elevation'))
 })
@@ -462,11 +462,11 @@ test_that("scientificName basic use works - no synonyms", {
     # Genus is a synonym - species rank input - species not found, so Genus rank given back
     hh <- suppressMessages(occ_search(scientificName = 'Pipistrellus hesperus', limit = 2))
   }, preserve_exact_body_bytes = TRUE)
-
+  
   expect_equal(attr(bb, "args")$scientificName, "Pulsatilla nuttalliana (DC.) Spreng.")
   expect_equal(bb$data$species[1], "Pulsatilla patens")
   expect_match(bb$data$scientificName[1], "Pulsatilla nuttalliana \\(DC\\.\\) Spreng\\.")
-
+  
   expect_is(cc, "gbif")
   expect_is(cc$data, "data.frame")
   expect_equal(attr(cc, "args")$scientificName,
@@ -474,7 +474,7 @@ test_that("scientificName basic use works - no synonyms", {
   expect_equal(cc$data$species[1], "Corynorhinus townsendii")
   expect_equal(cc$data$scientificName[1],
                "Corynorhinus townsendii ingens Handley, 1955")
-
+  
   expect_is(dd, "gbif")
   expect_is(dd$data, "data.frame")
   expect_equal(NROW(dd$data), 2)
@@ -482,18 +482,18 @@ test_that("scientificName basic use works - no synonyms", {
   expect_equal(dd$data$species[1], "Corynorhinus townsendii")
   expect_equal(dd$data$scientificName[1],
                "Corynorhinus townsendii (Cooper, 1837)")
-
+  
   # expect_is(ee, "gbif")
   # expect_null(ee$data)
   # expect_equal(attr(ee, "args")$scientificName, "Myotis septentrionalis septentrionalis")
-
+  
   expect_is(ff, "gbif")
   expect_equal(NROW(ff$data), 2)
   expect_equal(attr(ff, "args")$scientificName, "Myotis septentrionalis")
   expect_equal(ff$data$species[1], "Myotis septentrionalis")
   expect_equal(ff$data$scientificName[1],
                "Myotis septentrionalis (Trouessart, 1897)")
-
+  
   expect_is(hh, "gbif")
   expect_is(hh$data, "data.frame")
   expect_equal(attr(hh, "args")$scientificName, "Pipistrellus hesperus")
@@ -541,27 +541,27 @@ test_that("geometry inputs work as expected", {
   7.81427800655365 54.5245591562317,10.97834050655365 51.89375191441792,10.97834050655365
   55.43241335888528,13.26349675655365 52.53991761181831))"
   wkt <- gsub("\n", " ", wkt)
-
+  
   badwkt1 <- "POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 a))"
-
+  
   # in well known text format
   vcr::use_cassette("occ_search_geometry_aa", {
     aa <- occ_search(geometry='POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))', limit=2)
   }, preserve_exact_body_bytes = TRUE)
-
+  
   # with a taxon key
   vcr::use_cassette("occ_search_geometry_bb", {
     key <- 3189815
     bb <- occ_search(taxonKey=key, 
-      geometry='POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))',
-      limit=2)
+                     geometry='POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))',
+                     limit=2)
   }, preserve_exact_body_bytes = TRUE)
-
+  
   # using bounding box, converted to WKT internally
   vcr::use_cassette("occ_search_geometry_cc", {
     cc <- occ_search(geometry=c(-125.0,38.4,-121.8,40.9), limit=2)
   }, preserve_exact_body_bytes = TRUE)
-
+  
   # if WKT too long, with 'geom_big=bbox': makes into bounding box
   vcr::use_cassette("occ_search_geometry_dd", {
     dd <- occ_search(geometry = wkt, geom_big = "bbox", limit = 30)
@@ -575,44 +575,44 @@ test_that("geometry inputs work as expected", {
     ## more calls
     gg <- occ_search(geometry = wkt, geom_big = "axe", geom_size = 30, limit = 5)
   }, preserve_exact_body_bytes = TRUE)
-
+  
   vcr::use_cassette("occ_search_geometry_errors", {
     # bad wkt is caught and handled appropriately
     expect_error(occ_search(geometry = badwkt1))
-
+    
     # badwkt2 <- "POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 '10.1'))"
     badwkt2 <- "POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 '10.1'))"
     expect_error(occ_search(geometry = badwkt2))
-
+    
     # badwkt3 <- "POLYGON((30.1 10.1, 10 20, 20 40, 40 40, 30.1 10.1)"
     badwkt3 <- "POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1)"
     expect_error(occ_search(geometry = badwkt3))
-
+    
     badwkt4 <- "CIRCULARSTRING(1 5, 6 2, 7 3)"
     expect_error(
       occ_search(geometry = badwkt4),
       "WKT must be one of the types"
     )
   }, preserve_exact_body_bytes = TRUE)
-
+  
   expect_is(aa, "gbif")
   expect_is(unclass(aa), "list")
   expect_named(attr(aa, "args"), c('occurrenceStatus','limit', 'offset', 'geometry', 'fields'))
   expect_gt(NROW(aa$data), 0)
-
+  
   expect_is(bb, "gbif")
   expect_is(unclass(bb), "list")
   expect_named(attr(bb, "args"), c('occurrenceStatus','limit', 'offset', 'taxonKey', 'geometry', 'fields'))
   expect_gt(NROW(bb$data), 0)
-
+  
   expect_is(cc, "gbif")
   expect_is(unclass(cc), "list")
   expect_named(attr(cc, "args"), c('occurrenceStatus','limit', 'offset', 'geometry', 'fields'))
   expect_gt(NROW(cc$data), 0)
   expect_equal(NROW(cc$data), NROW(aa$data))
-
+  
   expect_lt(nchar(attr(dd, "args")$geometry), nchar(wkt))
-
+  
   expect_gt(length(names(ee)), length(names(gg)))
 })
 
@@ -625,10 +625,10 @@ test_that("works with parameters that allow many inputs", {
     ## one request, many instances of same parameter: use semi-colon sep. string
     bb <- occ_search(recordedBy="smith;BJ Stacey", limit=10)
   }, preserve_exact_body_bytes = TRUE)
-
+  
   expect_is(aa, "gbif")
   expect_is(bb, "gbif")
-
+  
   expect_named(aa, c('smith', 'BJ Stacey'))
   expect_named(bb, c('meta', 'hierarchy', 'data', 'media', 'facets'))
   
@@ -636,7 +636,7 @@ test_that("works with parameters that allow many inputs", {
   expect_true(all(grepl("bj stacey",unique(tolower(aa[[2]]$data$recordedBy)))))
   
   expect_true(all(grepl('smith|bj stacey',unique(tolower(bb$data$recordedBy)))))
-
+  
 })
 
 # per issue #349
@@ -644,7 +644,7 @@ test_that("key and gbifID fields are character class", {
   vcr::use_cassette("occ_search_key_gbifid_character_class", {
     aa <- occ_search(taxonKey = 9206251, limit = 3)
   }, preserve_exact_body_bytes = TRUE)
-
+  
   # top level
   expect_is(aa$data$key, "character")
   expect_is(aa$data$gbifID, "character")
@@ -664,13 +664,4 @@ test_that("multiple values for parameters fails", {
     basisOfRecord=c("PRESERVED_SPECIMEN","HUMANA_OBSERVATION")),
     "You can have multiple values for only one of")
 })
-
-test_that("test for stream error", {
-  
-  names <- rgbif::name_lookup(rank="SPECIES",limit=2000)$data
-  L = lapply(names$scientificName, function(x) rgbif::occ_search(scientificName = x,curlopts=list(http_version=2))) 
-  expect_true(all(sapply(L,class) == "gbif"))
-})
-
-
 

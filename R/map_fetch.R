@@ -432,4 +432,3 @@ basis_of_record_values <- c('PRESERVED_SPECIMEN',
                             'MATERIAL_CITATION',
                             'OCCURRENCE',
                             'UNKNOWN')
-  
