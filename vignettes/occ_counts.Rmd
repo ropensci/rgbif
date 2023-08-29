@@ -59,7 +59,7 @@ occ_count(repatriated = TRUE,country="IN")
 # number of insect occurrence records published by Japan
 occ_count(taxonKey=216,publishingCountry="JP") 
 
-# number of specimen insect occurrence records published by Japan bewtween the years 1900-2000
+# number of specimen insect occurrence records published by Japan between the years 1900-2000
 occ_count(publishingCountry="JP",basisOfRecord="PRESERVED_SPECIMEN",taxonKey=216,year="1900,2000")
 ```
 
@@ -153,7 +153,7 @@ occ_count(facet="scientificName",taxonKey=212,basisOfRecord="PRESERVED_SPECIMEN"
 # Number of present or absence records of Elephants
 occ_count(facet="occurrenceStatus",scientificName="Elephantidae")
 
-# top 100 datasets publshing occurrences to GBIF
+# top 100 datasets publishing occurrences to GBIF
 occ_count(facet="datasetKey",facetLimit=100)
 # top datasets publishing country centroids on GBIF
 occ_count(facet="datasetKey",distanceFromCentroidInMeters="0")
@@ -211,7 +211,7 @@ While the facets are powerful and quite useful, they can be **slow**. For this r
 | Canada                   | CANADA        | CA   | CAN  | 124          | NORTH_AMERICA | 134162884 |
 | Sweden                   | SWEDEN        | SE   | SWE  | 752          | EUROPE        | 120223673 |
 
-`occ_count_country(publishingCountry="MX")` will return a table of counts with countries were Mexico publishes occurrences records.
+`occ_count_country(publishingCountry="MX")` will return a table of counts with countries where Mexico publishes occurrences records.
 
 | title                    | enumName      | iso2 | iso3 | isoNumerical | gbifRegion    |    count |
 |:----------|:----------|:----------|:----------|:----------|:----------|----------:|

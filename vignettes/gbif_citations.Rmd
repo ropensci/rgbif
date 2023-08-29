@@ -89,7 +89,7 @@ There are 3 main reasons to register a derived dataset:
 2) Data accessed through a [cloud service](https://data-blog.gbif.org/post/aws-and-gbif/).
 3) Occurrences obtained using `occ_search()` or similar. 
 
-Before using option 3, it is important to consider: **could my `occ_search()` have be accomplished with an `occ_download()`**? The answer is almost always **YES!**.
+Before using option 3, it is important to consider: **could my `occ_search()` have been accomplished with an `occ_download()`**? The answer is almost always **YES!**.
 
 Here is a simple example of using `rgbif::derived_dataset()`. 
 
