@@ -490,16 +490,16 @@ test_that("occurrenceId works correctly", {
 test_that("speciesKey works correctly", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_data_speciesKey", {
-    kk <- occ_data(speciesKey=7412043, limit=2)
-    qq <- occ_data(speciesKey="7412043;1427037", limit=2)
-    cc <- occ_data(speciesKey=c(7412043,1427037), limit=2)
-    ff <- occ_data(country="DK",speciesKey=7412043, limit=2)
+    kk <- occ_data(speciesKey=1427067, limit=2)
+    qq <- occ_data(speciesKey="1427067;1427037", limit=2)
+    cc <- occ_data(speciesKey=c(1427067,1427037), limit=2)
+    ff <- occ_data(country="DK",speciesKey=1427067, limit=2)
   }, preserve_exact_body_bytes = TRUE)
 
-  expect_equal(kk$data$speciesKey[1],7412043)
-  expect_true(all(qq$data$speciesKey %in% c(7412043,1427037)))
-  expect_true(all(cc$data$speciesKey %in% c(7412043,1427037)))
-  expect_equal(kk$data$speciesKey[1],7412043)
+  expect_equal(kk$data$speciesKey[1],1427067)
+  expect_true(all(qq$data$speciesKey %in% c(1427067,1427037)))
+  expect_true(all(cc$data$speciesKey %in% c(1427067,1427037)))
+  expect_equal(kk$data$speciesKey[1],1427067)
   expect_equal(ff$data$countryCode[1], "DK")
 })
 

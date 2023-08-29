@@ -14,7 +14,7 @@ http_interactions:
       message: OK
       explanation: Request fulfilled, document follows
     headers:
-      status: HTTP/1.1 200 200
+      status: HTTP/1.1 200 OK
       content-type: text/html;charset=UTF-8
     body:
       encoding: ''
@@ -22,5 +22,5 @@ http_interactions:
       string: |
         206
         239
-  recorded_at: 2023-04-03 08:52:43 GMT
+  recorded_at: 2023-08-29 13:19:03 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0

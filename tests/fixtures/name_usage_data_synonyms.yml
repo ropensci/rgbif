@@ -27,8 +27,8 @@ http_interactions:
         C. (1758). Systema Naturae per regna tria naturae, secundum classes, ordines,
         genera, species, cum characteribus, differentiis, synonymis, locis. <em>Editio
         decima, reformata [10th revised edition], vol. 1: 824 pp. Laurentius Salvius:
-        Holmiae.</em>","numDescendants":0,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T05:44:05.838+00:00","issues":[],"synonym":true,"class":"Aves"}]}'
-  recorded_at: 2023-04-03 08:53:45 GMT
+        Holmiae.</em>","numDescendants":0,"lastCrawled":"2023-08-22T23:20:59.545+00:00","lastInterpreted":"2023-08-22T22:19:17.657+00:00","issues":[],"class":"Aves"}]}'
+  recorded_at: 2023-08-29 13:20:36 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
@@ -53,9 +53,9 @@ http_interactions:
       string: '{"offset":0,"limit":100,"endOfRecords":true,"results":[{"key":5135684,"nubKey":5135684,"nameKey":170352,"taxonID":"gbif:5135684","sourceTaxonKey":198334476,"kingdom":"Animalia","phylum":"Arthropoda","order":"Lepidoptera","family":"Nymphalidae","genus":"Acraea","species":"Acraea
         johnstoni","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":797,"familyKey":7017,"genusKey":1915529,"speciesKey":5135790,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":1915529,"parent":"Acraea","acceptedKey":5135790,"accepted":"Acraea
         johnstoni Godman, 1885","scientificName":"Acraea semifulvescens Oberthür,
-        1893","canonicalName":"Acraea semifulvescens","authorship":"Oberthür, 1893","nameType":"SCIENTIFIC","rank":"SPECIES","origin":"SOURCE","taxonomicStatus":"SYNONYM","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T05:55:27.691+00:00","issues":[],"synonym":true,"class":"Insecta"},{"key":6231515,"nubKey":6231515,"nameKey":8831492,"taxonID":"gbif:6231515","sourceTaxonKey":173224673,"kingdom":"Animalia","phylum":"Arthropoda","order":"Lepidoptera","family":"Nymphalidae","genus":"Acraea","species":"Acraea
+        1893","canonicalName":"Acraea semifulvescens","authorship":"Oberthür, 1893","nameType":"SCIENTIFIC","rank":"SPECIES","origin":"SOURCE","taxonomicStatus":"SYNONYM","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2023-08-22T23:20:59.545+00:00","lastInterpreted":"2023-08-22T22:24:33.132+00:00","issues":[],"class":"Insecta"},{"key":6231515,"nubKey":6231515,"nameKey":8831492,"taxonID":"gbif:6231515","sourceTaxonKey":173224673,"kingdom":"Animalia","phylum":"Arthropoda","order":"Lepidoptera","family":"Nymphalidae","genus":"Acraea","species":"Acraea
         johnstoni","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":797,"familyKey":7017,"genusKey":1915529,"speciesKey":5135790,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":1915529,"parent":"Acraea","acceptedKey":5135790,"accepted":"Acraea
         johnstoni Godman, 1885","scientificName":"Planema telekiana Rogenhofer, 1891","canonicalName":"Planema
-        telekiana","authorship":"Rogenhofer, 1891","nameType":"SCIENTIFIC","rank":"SPECIES","origin":"SOURCE","taxonomicStatus":"SYNONYM","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T05:55:27.689+00:00","issues":[],"synonym":true,"class":"Insecta"}]}'
-  recorded_at: 2023-04-03 08:53:45 GMT
+        telekiana","authorship":"Rogenhofer, 1891","nameType":"SCIENTIFIC","rank":"SPECIES","origin":"SOURCE","taxonomicStatus":"SYNONYM","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2023-08-22T23:20:59.545+00:00","lastInterpreted":"2023-08-22T22:24:33.134+00:00","issues":[],"class":"Insecta"}]}'
+  recorded_at: 2023-08-29 13:20:36 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0

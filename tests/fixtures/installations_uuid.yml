@@ -23,5 +23,5 @@ http_interactions:
         VIR N.I. Vavilov","description":"IPT\r\nN.I.Vavilov Institute of Plant Genetic
         Resources (VIR)","createdBy":"8d30d714-63f5-4f6f-a1a4-d73d09aa60c4","modifiedBy":"b77901f9-d9b0-47fa-94e0-dd96450aa2b4","created":"2013-12-05T12:28:06.094+00:00","modified":"2015-12-19T19:19:38.804+00:00","disabled":false,"contacts":[{"key":24655,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Vladimir
         Korneev","position":[],"email":["ito@vir.nw.ru"],"phone":[],"homepage":[],"address":[],"createdBy":"8d30d714-63f5-4f6f-a1a4-d73d09aa60c4","modifiedBy":"b77901f9-d9b0-47fa-94e0-dd96450aa2b4","created":"2013-12-05T12:28:06.138+00:00","modified":"2015-12-19T19:19:38.874+00:00"}],"endpoints":[{"key":89965,"type":"FEED","url":"http://91.151.189.38:8080/viript/rss.do","createdBy":"b77901f9-d9b0-47fa-94e0-dd96450aa2b4","modifiedBy":"b77901f9-d9b0-47fa-94e0-dd96450aa2b4","created":"2015-12-19T19:19:39.011+00:00","modified":"2015-12-19T19:19:39.011+00:00","machineTags":[]}],"machineTags":[],"tags":[],"identifiers":[],"comments":[]}'
-  recorded_at: 2023-04-03 08:53:08 GMT
+  recorded_at: 2023-08-29 13:19:21 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0
