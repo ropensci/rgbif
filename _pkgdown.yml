@@ -91,4 +91,4 @@ reference:
       - occ_facet
 
 development:
-  mode: release    
+  mode: auto    
