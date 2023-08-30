@@ -91,4 +91,7 @@ reference:
       - occ_facet
 
 development:
-  mode: auto    
+  mode: auto
+  version_label: default
+  version_tooltip: "Version"
+  
