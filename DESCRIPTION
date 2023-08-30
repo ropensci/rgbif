@@ -46,7 +46,8 @@ Imports:
 Suggests:
     testthat,
     png,
-    raster,
+    terra,
+    magick,
     protolite (>= 2.0),
     sf,
     vcr (>= 1.2.0),

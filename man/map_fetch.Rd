@@ -2,11 +2,11 @@
 % Please edit documentation in R/map_fetch.R
 \name{map_fetch}
 \alias{map_fetch}
-\title{Fetch aggregated density maps of GBIF occurrences}
+\title{Fetch maps of GBIF occurrences}
 \usage{
 map_fetch(
   source = "density",
-  x = 0,
+  x = 0:1,
   y = 0,
   z = 0,
   format = "@1x.png",
@@ -14,7 +14,7 @@ map_fetch(
   bin = NULL,
   hexPerTile = NULL,
   squareSize = NULL,
-  style = "classic.point",
+  style = NULL,
   taxonKey = NULL,
   datasetKey = NULL,
   country = NULL,
@@ -22,6 +22,10 @@ map_fetch(
   publishingCountry = NULL,
   year = NULL,
   basisOfRecord = NULL,
+  return = "png",
+  base_style = NULL,
+  plot_terra = TRUE,
+  curlopts = list(),
   ...
 )
 }
@@ -29,9 +33,9 @@ map_fetch(
 \item{source}{(character) Either \code{density} for fast, precalculated tiles,
 or \code{adhoc} for any search. Default: \code{density}}
 
-\item{x}{(integer) the column. Default: 0}
+\item{x}{(integer sequence) the column. Default: 0:1}
 
-\item{y}{(integer) the row. Default: 0}
+\item{y}{(integer sequence) the row. Default: 0}
 
 \item{z}{(integer) the zoom. Default: 0}
 
@@ -53,44 +57,49 @@ or \code{adhoc} for any search. Default: \code{density}}
 }}
 
 \item{bin}{(character) \code{square} or \code{hex} to aggregate occurrence counts into
-squares or hexagons. Points by default. optional}
+squares or hexagons. Points by default.}
 
 \item{hexPerTile}{(integer) sets the size of the hexagons
-(the number horizontally across a tile). optional}
+(the number horizontally across a tile).}
 
 \item{squareSize}{(integer) sets the size of the squares. Choose a factor
 of 4096 so they tessalate correctly: probably from 8, 16, 32, 64, 128,
-256, 512. optional}
+256, 512.}
 
 \item{style}{(character) for raster tiles, choose from the available styles.
-Defaults to classic.point. optional. THESE DON'T WORK YET.}
+Defaults to classic.point for source="density" and "scaled.circle" for source="adhoc".}
 
 \item{taxonKey}{(integer/numeric/character) search by taxon key, can only
-supply 1. optional}
+supply 1.}
 
-\item{datasetKey}{(character) search by taxon key, can only supply 1.
-optional}
+\item{datasetKey}{(character) search by taxon key, can only supply 1.}
 
-\item{country}{(character) search by taxon key, can only supply 1.
-optional}
+\item{country}{(character) search by taxon key, can only supply 1.}
 
-\item{publishingOrg}{(character) search by taxon key, can only supply 1.
-optional}
+\item{publishingOrg}{(character) search by taxon key, can only supply 1.}
 
 \item{publishingCountry}{(character) search by taxon key, can only
-supply 1. optional}
+supply 1.}
 
 \item{year}{(integer) integer that limits the search to a certain year or,
 if passing a vector of integers, multiple years, for example
 \code{1984} or \code{c(2016, 2017, 2018)} or \code{2010:2015} (years 2010 to 2015). optional}
 
 \item{basisOfRecord}{(character) one or more basis of record states to
-include records with that basis of record. The full list is: \code{c("OBSERVATION", "HUMAN_OBSERVATION", "MACHINE_OBSERVATION", "MATERIAL_SAMPLE", "PRESERVED_SPECIMEN", "FOSSIL_SPECIMEN", "LIVING_SPECIMEN", "LITERATURE", "UNKNOWN")}. optional}
+include records with that basis of record. The full list is: \code{c("OBSERVATION", "HUMAN_OBSERVATION", "MACHINE_OBSERVATION", "MATERIAL_SAMPLE", "PRESERVED_SPECIMEN", "FOSSIL_SPECIMEN", "LIVING_SPECIMEN", "LITERATURE", "UNKNOWN")}.}
 
-\item{...}{curl options passed on to \link[crul:HttpClient]{crul::HttpClient}}
+\item{return}{(character) Either "png" or "terra".}
+
+\item{base_style}{(character)  The style of the base map.}
+
+\item{plot_terra}{(logical) Set whether the terra map be default plotted.}
+
+\item{curlopts}{options passed on to \link[crul:HttpClient]{crul::HttpClient}}
+
+\item{...}{additional arguments passed to the adhoc interface.}
 }
 \value{
-an object of class \code{RasterLayer}
+a \code{magick-image} or \code{terra::SpatRaster } object.
 }
 \description{
 This function is a wrapper for the GBIF mapping api version 2.0.
@@ -103,66 +112,69 @@ query parameters, some of them optional. Full documentation of the GBIF
 mapping api can be found at https://www.gbif.org/developer/maps
 }
 \details{
-This function uses the arguments passed on to generate a query
-to the GBIF web map API. The API returns a web tile object as png that is
-read and converted into an R raster object. The break values or nbreaks
-generate a custom colour palette for the web tile, with each bin
-corresponding to one grey value. After retrieval, the raster is reclassified
-to the actual break values. This is a somewhat hacky but nonetheless
-functional solution in the absence of a GBIF raster API implementation.
+The default settings, \code{return='png'}, will return a \code{magick-image}
+png. This image will be a composite image of the the occurrence tiles fetched
+and a base map. This map is primarily useful as a high quality image of
+occurrence records.
 
-We add extent and set the projection for the output. You can reproject
-after retrieving the output.
-}
-\note{
-Styles don't work yet, sorry, we'll try to fix it asap.
+The args \code{x} and \code{y} can both be integer sequences. For example, \code{x=0:3} or
+\code{y=0:1}. Note that the tile index starts at 0. Higher values of \code{z}, will
+will produce more tiles that can be fetched and stitched together. Selecting
+a too high value for \code{x} or \code{y} will produce a blank image.
+
+Setting \code{return='terra'} will return a \code{terra::SpatRaster } object. This
+is primarily useful if you were interested in the underlying aggregated
+occurrence density data.
+
+See the article
 }
 \examples{
 \dontrun{
-if (
- requireNamespace("png", quietly = TRUE) &&
- requireNamespace("raster", quietly = TRUE)
-) {
-  x <- map_fetch(taxonKey = 2480498, year = 2007:2011)
-  x
-  # gives a RasterLayer object
-  class(x)
-  # visualize
-  library(raster)
-  plot(x)
 
-  # different srs
-  ## 3857
-  y <- map_fetch(taxonKey = 2480498, year = 2010, srs = "EPSG:3857")
-  plot(y)
-  ## 3031
-  z <- map_fetch(taxonKey = 2480498, year = 2010, srs = "EPSG:3031", verbose = TRUE)
-  plot(z)
-  # 3575
-  z <- map_fetch(taxonKey = 2480498, year = 2010, srs = "EPSG:3575")
-  plot(z)
+# all occurrences
+map_fetch()
+# get artic map
+map_fetch(srs='EPSG:3031') 
+# only preserved specimens
+map_fetch(basisOfRecord="PRESERVED_SPECIMEN")
 
-  # bin
-  plot(map_fetch(taxonKey = 212, year = 1998, bin = "hex",
-     hexPerTile = 30, style = "classic-noborder.poly"))
+# Map of occ in Great Britain
+map_fetch(z=3,y=1,x=7:8,country="GB")
+# Peguins with artic projection
+map_fetch(srs='EPSG:3031',taxonKey=2481660,style='glacier.point', 
+base_style="gbif-dark")
 
-  # styles
-  plot(map_fetch(taxonKey = 2480498, style = "purpleYellow.point"))
+# occ from a long time ago
+map_fetch(year=1600) 
+# polygon style 
+map_fetch(style="iNaturalist.poly",bin="hex")
+# iNaturalist dataset plotted 
+map_fetch(datasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7",
+  style="iNaturalist.poly")
+ 
+# use source="adhoc" for more filters
+map_fetch(z=1,
+  source="adhoc",
+  iucn_red_list_category="CR",
+  style="scaled.circles",
+  base_style='gbif-light')
 
-  # query with basisOfRecord
-  map_fetch(taxonKey = 2480498, year = 2010,
-    basisOfRecord = "HUMAN_OBSERVATION")
-  map_fetch(taxonKey = 2480498, year = 2010,
-    basisOfRecord = c("HUMAN_OBSERVATION", "LIVING_SPECIMEN"))
- }
+# cropped map of Hawaii
+map_fetch(z=5,x=3:4,y=12,source="adhoc",gadmGid="USA.12_1")
+
+
 }
 }
 \references{
 https://www.gbif.org/developer/maps
+
+https://api.gbif.org/v2/map/demo.html
+
+https://api.gbif.org/v2/map/demo13.html
 }
 \seealso{
 \code{\link[=mvt_fetch]{mvt_fetch()}}
 }
 \author{
-Laurens Geffert \email{laurensgeffert@gmail.com}
+John Waller and Laurens Geffert \email{laurensgeffert@gmail.com}
 }
