@@ -89,4 +89,6 @@ reference:
       - networks
       - count_facet
       - occ_facet
-    
+
+development:
+  mode: release    
