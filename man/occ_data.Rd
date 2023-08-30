@@ -74,7 +74,7 @@ occ_data(
   lifeStage = NULL,
   isInCluster = NULL,
   distanceFromCentroidInMeters = NULL,
-  curlopts = list()
+  curlopts = list(http_version = 2)
 )
 }
 \arguments{

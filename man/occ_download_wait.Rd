@@ -4,7 +4,12 @@
 \alias{occ_download_wait}
 \title{Wait for an occurrence download to be done}
 \usage{
-occ_download_wait(x, status_ping = 5, curlopts = list(), quiet = FALSE)
+occ_download_wait(
+  x,
+  status_ping = 5,
+  curlopts = list(http_version = 2),
+  quiet = FALSE
+)
 }
 \arguments{
 \item{x}{and object of class \code{occ_download} or downloadkey}
