@@ -103,7 +103,7 @@ occ_search <- function(taxonKey=NULL,
                        facetMincount = NULL,
                        facetMultiselect = NULL,
                        skip_validate = TRUE,
-                       curlopts = list(), ...) {
+                       curlopts = list(http_version=2), ...) {
   
   pchk(return, "occ_search")
   geometry <- geometry_handler(geometry, geom_big, geom_size, geom_n)

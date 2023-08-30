@@ -109,7 +109,7 @@ occ_data <- function(taxonKey=NULL,
                     lifeStage = NULL,
                     isInCluster = NULL,
                     distanceFromCentroidInMeters = NULL,
-                    curlopts = list()) {
+                    curlopts = list(http_version=2)) {
 
   geometry <- geometry_handler(geometry, geom_big, geom_size, geom_n)
 
