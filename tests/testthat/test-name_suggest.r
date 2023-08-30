@@ -53,3 +53,11 @@ test_that("args that support many repeated uses in one request", {
   expect_is(aa$data, "tbl_df")
   expect_equal(tolower(unique(aa$data$rank)), "family")
 })
+
+test_that("name_suggest limit is 100", {
+    expect_warning(name_suggest(limit=101),"Max limit is 100.")
+    expect_no_warning(name_suggest(limit=10))
+})
+
+
+

@@ -62,7 +62,8 @@
 #' }
 name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL,
                          start=NULL, limit=100, curlopts = list()) {
-
+  
+  if(limit > 100) { warning("Max limit is 100."); limit <- 100} 
   url <- paste0(gbif_base(), '/species/suggest')
   rank <- as_many_args(rank)
   datasetKey <- as_many_args(datasetKey)
