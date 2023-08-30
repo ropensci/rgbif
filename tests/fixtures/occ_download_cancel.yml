@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: delete
-    uri: https://api.gbif.org/v1/occurrence/download/request/0108860-230224095556074
+    uri: https://api.gbif.org/v1/occurrence/download/request/0002189-230828120925497
     body:
       encoding: ''
       string: ''
@@ -19,5 +19,5 @@ http_interactions:
       encoding: ''
       file: no
       string: ''
-  recorded_at: 2023-03-22 13:38:35 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+  recorded_at: 2023-08-30 06:45:44 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0

@@ -20,12 +20,12 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: 0108607-230224095556074
-  recorded_at: 2023-03-22 12:07:46 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+      string: 0001343-230828120925497
+  recorded_at: 2023-08-29 14:03:12 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/download/0108607-230224095556074
+    uri: https://api.gbif.org/v1/occurrence/download/0001343-230828120925497
     body:
       encoding: ''
       string: ''
@@ -43,6 +43,6 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"key":"0108607-230224095556074","doi":"10.15468/dl.am4tde","license":"unspecified","request":{"predicate":{"type":"greaterThan","key":"ORGANISM_QUANTITY","value":"1","matchCase":false},"sendNotification":false,"format":"SIMPLE_CSV","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2023-03-22T12:07:46.376+00:00","modified":"2023-03-22T12:07:46.452+00:00","eraseAfter":"2023-09-22T12:07:46.314+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0108607-230224095556074.zip","size":0,"totalRecords":0,"numberDatasets":0}'
-  recorded_at: 2023-03-22 12:07:46 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+      string: '{"key":"0001343-230828120925497","doi":"10.15468/dl.bpuzsu","license":"unspecified","request":{"predicate":{"type":"greaterThan","key":"ORGANISM_QUANTITY","value":"1","matchCase":false},"sendNotification":false,"format":"SIMPLE_CSV","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2023-08-29T14:03:12.738+00:00","modified":"2023-08-29T14:03:12.738+00:00","eraseAfter":"2024-02-29T14:03:12.589+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0001343-230828120925497.zip","size":0,"totalRecords":0,"numberDatasets":0}'
+  recorded_at: 2023-08-29 14:03:12 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
