@@ -9,7 +9,7 @@ vignette: >
     %\VignetteEncoding{UTF-8}
 ---
 
-There are a two ways to get occurrence data from GBIF:
+There are two ways to get occurrence data from GBIF:
 
 1.  [occ_download()](https://docs.ropensci.org/rgbif/reference/occ_download.html): unlimited records. Useful for research and citation.
 2.  [occ_search()](https://docs.ropensci.org/rgbif/reference/occ_search.html): limited to 100K records. Useful primarily for testing.
@@ -203,7 +203,7 @@ This download will ...
 -   `pred("occurrenceStatus","PRESENT")` : remove absent records.
 -   `pred_not(pred_in("basisOfRecord",c("FOSSIL_SPECIMEN","LIVING_SPECIMEN")))`: Remove fossils and living specimens
 -   `pred_gte("year", 1900)` : after/or year 1900
--   `pred_or(pred("country","ZA"),pred("gadm","ETH"))` in South Africa or Ethiopia, using seperate polygon systems. See `rgbif::isocodes` for country codes.
+-   `pred_or(pred("country","ZA"),pred("gadm","ETH"))` in South Africa or Ethiopia, using separate polygon systems. See `rgbif::isocodes` for country codes.
 -   `pred_or(pred_not(pred_in("establishmentMeans",c("MANAGED","INTRODUCED"))),pred_isnull("establishmentMeans"))` : establishmentMeans column does not contain managed or introduced species, but can be left blank.
 -   `pred_or(pred_lt("coordinateUncertaintyInMeters",10000),pred_isnull("coordinateUncertaintyInMeters"))` : coordinateUncertaintyInMeters is less 10K meter or is left blank.
 -   `format = "SIMPLE_CSV"` : return just a tsv file of occurrences.

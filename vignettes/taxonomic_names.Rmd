@@ -29,7 +29,7 @@ The most interesting columns are:
 * **matchType** : "EXACT", "HIGHERRANK", "FUZZY", or "NONE" (see below).  
 * **verbatim_name** : The name you supplied to GBIF. Useful for matching back to your original data. 
 
-A matchType of **"HIGHERRANK"** usually means the name is not in the GBIF backbone or it is not a species-level name (a genus, family, order ...). A matchType of **"FUZZY"** means that the name you supplied may have been mis-spelled or is a variant not in the backbone. A matchType of **"Exact"** means the binomial name appears exactly as spelled by you in the GBIF backbone (note that it ignores authorship info).  
+A matchType of **"HIGHERRANK"** usually means the name is not in the GBIF backbone or it is not a species-level name (a genus, family, order ...). A matchType of **"FUZZY"** means that the name you supplied may have been misspelled or is a variant not in the backbone. A matchType of **"Exact"** means the binomial name appears exactly as spelled by you in the GBIF backbone (note that it ignores authorship info).  
 
 If you have **multiple names** to match, you can use `name_backbone_checklist`. 
 

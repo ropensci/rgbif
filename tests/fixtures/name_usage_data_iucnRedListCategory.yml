@@ -19,9 +19,9 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"category":"LEAST_CONCERN","usageKey":176615256,"scientificName":"Calopteryx
-        splendens (Harris, 1780)","taxonomicStatus":"ACCEPTED","code":"LC"}'
-  recorded_at: 2023-04-03 08:53:47 GMT
+      string: '{"category":"NOT_EVALUATED","scientificName":"Calopteryx splendens
+        Harris, 1780","taxonomicStatus":"ACCEPTED","code":"NE"}'
+  recorded_at: 2023-08-29 13:20:39 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
@@ -46,5 +46,5 @@ http_interactions:
       string: '{"category":"NOT_EVALUATED","scientificName":"Corycus praemorsus Krauss,
         1890","taxonomicStatus":"SYNONYM","acceptedName":"Corycoides karschi (Krauss,
         1890)","code":"NE"}'
-  recorded_at: 2023-04-03 08:53:47 GMT
+  recorded_at: 2023-08-29 13:20:39 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0
