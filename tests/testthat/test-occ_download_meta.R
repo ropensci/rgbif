@@ -7,7 +7,7 @@ test_that("occ_download_meta", {
 
   expect_is(aa, "occ_download_meta")
   expect_is(aa$key, "character")
-  expect_is(aa$doi, "character")
+  expect_null(aa$doi)
   expect_is(aa$license, "character")
   expect_is(aa$status, "character")
   expect_equal(aa$status, "CANCELLED")

@@ -40,7 +40,8 @@ http_interactions:
         Register of Introduced and Invasive Species - Sint Eustatius, Bonaire, Sint
         Eustatius and Saba","sourceTaxonKey":142663402},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
         Register of Introduced and Invasive Species - Sint Maarten, Netherlands","sourceTaxonKey":142663653},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
-        Register of Introduced and Invasive Species - Aruba","sourceTaxonKey":142669601},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - Aruba","sourceTaxonKey":142669601},{"taxonKey":5231190,"habitat":"Grassland","source":"Lista
+        de referencia de especies de aves de Colombia - 2022","sourceTaxonKey":146053962},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
         Register of Introduced and Invasive Species - Burundi","sourceTaxonKey":148676382},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
         Register of Introduced and Invasive Species - Saint Barthelemy","sourceTaxonKey":148676939},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
         Register of Introduced and Invasive Species - Colombia","sourceTaxonKey":148737136},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
@@ -127,12 +128,11 @@ http_interactions:
         Park, South Africa","sourceTaxonKey":163318459},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Protected
         Areas - Global Register of Introduced and Invasive Species - Archipielago
         Juan Fernández, Chile","sourceTaxonKey":163402176},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
-        Register of Introduced and Invasive Species - Namibia","sourceTaxonKey":163972617},{"taxonKey":5231190,"marine":false,"freshwater":false,"terrestrial":true,"source":"World
-        Register of Marine Species","sourceTaxonKey":167504516},{"taxonKey":5231190,"habitat":"Terrestrial","sourceTaxonKey":167581120},{"taxonKey":5231190,"habitat":"Terrestrial","source":"GRIIS
+        Register of Introduced and Invasive Species - Namibia","sourceTaxonKey":163972617},{"taxonKey":5231190,"habitat":"Terrestrial","sourceTaxonKey":167581120},{"taxonKey":5231190,"habitat":"Terrestrial","source":"GRIIS
         Checklist of Introduced and Invasive Species - Ecuador","sourceTaxonKey":168211724},{"taxonKey":5231190,"extinct":false,"source":"Catalogue
         of Life Checklist","sourceTaxonKey":172761619},{"taxonKey":5231190,"livingPeriod":"0.0117
         to 0.0 Ma","extinct":false,"source":"The Paleobiology Database","sourceTaxonKey":185018081},{"taxonKey":5231190,"habitat":"Terrestrial","sourceTaxonKey":196381258},{"taxonKey":5231190,"habitat":"Terrestrial","sourceTaxonKey":196382217},{"taxonKey":5231190,"habitat":"Terrestrial","sourceTaxonKey":196383324},{"taxonKey":5231190,"habitat":"Terrestrial","sourceTaxonKey":196384193},{"taxonKey":5231190,"habitat":"Terrestrial","sourceTaxonKey":196388910},{"taxonKey":5231190,"habitat":"Terrestrial","sourceTaxonKey":196394382},{"taxonKey":5231190,"habitat":"Terrestrial","sourceTaxonKey":196394780},{"taxonKey":5231190,"habitat":"Terrestrial","sourceTaxonKey":196395058},{"taxonKey":5231190,"habitat":"Terrestrial","sourceTaxonKey":196395193},{"taxonKey":5231190,"habitat":"Terrestrial","sourceTaxonKey":196395871},{"taxonKey":5231190,"habitat":"Terrestrial","sourceTaxonKey":196397086},{"taxonKey":5231190,"habitat":"Terrestrial","sourceTaxonKey":196397540},{"taxonKey":5231190,"habitat":"Terrestrial","sourceTaxonKey":201278372}]}'
-  recorded_at: 2023-04-03 08:53:46 GMT
+  recorded_at: 2023-08-29 13:20:38 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
@@ -156,5 +156,5 @@ http_interactions:
       file: no
       string: '{"offset":0,"limit":100,"endOfRecords":true,"results":[{"taxonKey":5136020,"extinct":false,"source":"Catalogue
         of Life Checklist","sourceTaxonKey":173224352}]}'
-  recorded_at: 2023-04-03 08:53:46 GMT
+  recorded_at: 2023-08-29 13:20:38 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0
