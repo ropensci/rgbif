@@ -86,7 +86,7 @@ occ_download_import <- function(x=NULL, key=NULL, path=".", fill = FALSE,
   targetpath <- file.path(tmpdir, tpath)
   if (!file.exists(tmpdir)) stop("appropriate file not found", call. = FALSE)
   df <- data.table::fread(targetpath, data.table = FALSE, fill = fill, 
-    encoding = encoding, ...)
+    encoding = encoding, quote="", ...)
   if(!is.null(df$countryCode)) df$countryCode[is.na(df$countryCode)] <- "NA"
   structure(tibble::as_tibble(df), type = "single")
 }
