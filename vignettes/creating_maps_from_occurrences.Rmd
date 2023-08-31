@@ -21,7 +21,9 @@ However, if you would like to make a complex graphic with different colors, shap
 map_fetch()
 ```
 
-![](man/figures/dot_map.png){width=50%}
+```{r, echo = FALSE,out.width="50%"}
+knitr::include_graphics("img/dot_map.png")
+```
 
 It is also possible to make static maps that look like default [occurrence search](https://www.gbif.org/occurrence/map?taxon_key=212) maps. See the maps api page for [available styles](https://tile.gbif.org/ui/). 
 
@@ -29,7 +31,9 @@ It is also possible to make static maps that look like default [occurrence searc
 map_fetch(taxonKey=212,style="scaled.circles",base_sytle="gbif-light")
 ```
 
-![](man/figures/gbif-light-scaled-circles-birds.png){width=50%}
+```{r, echo = FALSE,out.width="50%"}
+knitr::include_graphics("img/gbif-light-scaled-circles-birds.png")
+```
 
 For "poly" styles it is also possible to plot set the `hexPerTile` parameter, so that the binned occurrence data is essentially shown at a higher resolution. A tile is an individual `png` image that is fetch from the API in order to make a map. The default settings of `map_fetch()` will fetch two images, so the image below has 400 hexagons across the width of map. 
 
@@ -37,8 +41,9 @@ For "poly" styles it is also possible to plot set the `hexPerTile` parameter, so
 map_fetch(hexPerTile=200,style="green.poly",base_style="gbif-dark",bin="hex")
 ```
 
-![](man/figures/hexpertile.png){width=50%}
-
+```{r, echo = FALSE,out.width="50%"}
+knitr::include_graphics("img/hexpertile.png")
+```
 
 There is also the option to plot with polar or artic projections. For example, penguin records. 
 
@@ -46,7 +51,9 @@ There is also the option to plot with polar or artic projections. For example, p
 map_fetch(srs='EPSG:3031',taxonKey=7190978,style='glacier.point', base_style="gbif-dark")
 ```
 
-![](man/figures/artic-peguins-glacier-point-gbif-dark.png)
+```{r, echo = FALSE,out.width="50%"}
+knitr::include_graphics("img/artic-peguins-glacier-point-gbif-dark.png")
+```
 
 It is also possible to get views other than just the global map, by zooming in and selecting only certain map tiles with `z`, `x`, `y`. 
 
@@ -58,8 +65,9 @@ For example, you can see what the tile values for a zoomed in map of Australia w
 map_fetch(z=3,x=13:14,y=4:5)
 ```
 
-![](man/figures/AU-zoom.png){width=50%}
-
+```{r, echo = FALSE,out.width="50%"}
+knitr::include_graphics("img/AU-zoom.png")
+```
 
 Be aware that selecting many tiles will create a large image, and might crash your R session. You can control the resolution of your final image with `format`, with  `format="@4x.png"` being the highest possible value. 
 
@@ -94,7 +102,9 @@ map_fetch(z=1,x=0:3,y=0:1,source="adhoc",iucn_red_list_category="CR",
           style="iNaturalist.poly",base_style='osm-bright',bin="hex")
 ```
 
-![](man/figures/adhoc-iucn.png){width=50%}
+```{r, echo = FALSE,out.width="50%"}
+knitr::include_graphics("img/adhoc-iucn.png")
+```
 
 `map_fetch()` can also tell when you have used a parameter that is no a default parameter and automatically switch to `source="adhoc"` for you. I have found that point style don't work well with `source="adhoc"`, so `map_fetch()` will give a warning if you try to use a point style with `source="adhoc"`. 
 
