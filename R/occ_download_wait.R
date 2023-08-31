@@ -25,8 +25,10 @@
 #' occ_download_wait("0000066-140928181241064") 
 #' 
 #' }
-occ_download_wait <- function(x, status_ping = 5, curlopts = list(),
-  quiet = FALSE) {
+occ_download_wait <- function(x,
+                              status_ping = 5,
+                              curlopts = list(http_version=2),
+                              quiet = FALSE) {
   
   if(!grepl("[0-9]+-[0-9]+",x)) stop("x should be a downloadkey or an occ_download object.")
   # assert(x, "occ_download")

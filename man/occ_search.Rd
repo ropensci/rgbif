@@ -79,7 +79,7 @@ occ_search(
   facetMincount = NULL,
   facetMultiselect = NULL,
   skip_validate = TRUE,
-  curlopts = list(),
+  curlopts = list(http_version = 2),
   ...
 )
 }
