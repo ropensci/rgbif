@@ -69,7 +69,6 @@ reference:
       - enumeration_country
       - gbif_issues
       - gbif_issues_lookup
-      - occ_issues
       - lit_search
   - title: "Pretty html reports"
     contents:
@@ -89,6 +88,7 @@ reference:
       - networks
       - count_facet
       - occ_facet
+      - occ_issues
 
 development:
   mode: auto
