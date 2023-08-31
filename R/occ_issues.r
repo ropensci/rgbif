@@ -112,6 +112,7 @@
 #' }
 
 occ_issues <- function(.data, ..., mutate = NULL) {
+  .Deprecated(msg="rgbif::occ_issues() is deprecated since rgbif 3.7.8.")
   assert(.data, c("gbif", "gbif_data", "data.frame", "tbl_df"))
 
   check_issues(type = "occurrence", ...)
