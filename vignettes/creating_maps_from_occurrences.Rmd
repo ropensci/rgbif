@@ -21,7 +21,7 @@ However, if you would like to make a complex graphic with different colors, shap
 map_fetch()
 ```
 
-![](C:/Users/ftw712/Desktop/packages/rgbif/man/figures/dot_map.png){width=50%}
+![](man/figures/dot_map.png){width=50%}
 
 It is also possible to make static maps that look like default [occurrence search](https://www.gbif.org/occurrence/map?taxon_key=212) maps. See the maps api page for [available styles](https://tile.gbif.org/ui/). 
 
@@ -29,7 +29,7 @@ It is also possible to make static maps that look like default [occurrence searc
 map_fetch(taxonKey=212,style="scaled.circles",base_sytle="gbif-light")
 ```
 
-![](C:/Users/ftw712/Desktop/packages/rgbif/man/figures/gbif-light-scaled-circles-birds.png){width=50%}
+![](man/figures/gbif-light-scaled-circles-birds.png){width=50%}
 
 For "poly" styles it is also possible to plot set the `hexPerTile` parameter, so that the binned occurrence data is essentially shown at a higher resolution. A tile is an individual `png` image that is fetch from the API in order to make a map. The default settings of `map_fetch()` will fetch two images, so the image below has 400 hexagons across the width of map. 
 
@@ -37,7 +37,7 @@ For "poly" styles it is also possible to plot set the `hexPerTile` parameter, so
 map_fetch(hexPerTile=200,style="green.poly",base_style="gbif-dark",bin="hex")
 ```
 
-![](C:/Users/ftw712/Desktop/packages/rgbif/man/figures/hexpertile.png){width=50%}
+![](man/figures/hexpertile.png){width=50%}
 
 
 There is also the option to plot with polar or artic projections. For example, penguin records. 
@@ -46,7 +46,7 @@ There is also the option to plot with polar or artic projections. For example, p
 map_fetch(srs='EPSG:3031',taxonKey=7190978,style='glacier.point', base_style="gbif-dark")
 ```
 
-![](C:/Users/ftw712/Desktop/packages/rgbif/man/figures/artic-peguins-glacier-point-gbif-dark.png)
+![](man/figures/artic-peguins-glacier-point-gbif-dark.png)
 
 It is also possible to get views other than just the global map, by zooming in and selecting only certain map tiles with `z`, `x`, `y`. 
 
@@ -58,22 +58,29 @@ For example, you can see what the tile values for a zoomed in map of Australia w
 map_fetch(z=3,x=13:14,y=4:5)
 ```
 
-![](C:/Users/ftw712/Desktop/packages/rgbif/man/figures/AU-zoom.png){width=50%}
+![](man/figures/AU-zoom.png){width=50%}
 
 
 Be aware that selecting many tiles will create a large image, and might crash your R session. You can control the resolution of your final image with `format`, with  `format="@4x.png"` being the highest possible value. 
 
-Below is a table of some areas to give you an idea of how `z`,`x`,`y` it are working. 
+Below are some areas to give you an idea of how `z`,`x`,`y` it are working. 
 
-| Location    | Parameters
-| ----------- | -----------------------------------------|
-| Europe      | `map_fetch(z=3,x=7:9,y=0:2)`             | 
-| Africa      | `map_fetch(z=3,x=7:10,y=2:5)`            | 
-| Hawaii      | `map_fetch(z=6,x=6:9,y=23:25)`           |
-| South Africa| `map_fetch(z=5,x=34:38,y=19:22)`         |
-| Ukraine     | `map_fetch(z=6,x=70:78,y=13:16)`         |
-| Iceland     | `map_fetch(z=6,x=55:59,y=8:9)`           | 
-| Capri Is.   | `map_fetch(z=12,x=4419:4420,y=1124:1125)`|
+```R 
+# Europe
+map_fetch(z=3,x=7:9,y=0:2)
+# Africa
+map_fetch(z=3,x=7:10,y=2:5)
+# Hawaii
+map_fetch(z=6,x=6:9,y=23:25)
+# South Africa 
+map_fetch(z=5,x=34:38,y=19:22)
+# Ukraine 
+map_fetch(z=6,x=70:78,y=13:16)
+# Iceland
+map_fetch(z=6,x=55:59,y=8:9)
+# Capri Is. 
+map_fetch(z=12,x=4419:4420,y=1124:1125)
+```
 
 I suggest using this [interactive page](https://api.gbif.org/v2/map/demo13.html#map=3/0/0/0) for getting the tile numbers. 
 
@@ -87,21 +94,51 @@ map_fetch(z=1,x=0:3,y=0:1,source="adhoc",iucn_red_list_category="CR",
           style="iNaturalist.poly",base_style='osm-bright',bin="hex")
 ```
 
-![](C:/Users/ftw712/Desktop/packages/rgbif/man/figures/adhoc-iucn.png){width=50%}
+![](man/figures/adhoc-iucn.png){width=50%}
 
 `map_fetch()` can also tell when you have used a parameter that is no a default parameter and automatically switch to `source="adhoc"` for you. I have found that point style don't work well with `source="adhoc"`, so `map_fetch()` will give a warning if you try to use a point style with `source="adhoc"`. 
 
-The table below gives some examples of maps in different styles. 
+Here are some examples of maps with different parameters and styles. 
 
-| code                                  | comment
-| --------------------------------------| ---------------|
-| `map_fetch(recordedBy="John Waller")` | `adhoc` is needed here  because `recordedBy` isn't one of the named paramters. `map_fetch()` automatically detects this and switches source to "adhoc". |
-| `map_fetch(z=1,source="adhoc",style="green.poly",squareSize=64,bin="square",network_key="2b7c7b4f-4d4f-40d3-94de-c28b6fa054a6")` | Occurrences in the OBIS network. Note that `squareSize` only works with `bin="square"`. |
-| `map_fetch(z=4,x=6:7,y=4:5,gadm_gid="USA.44_1",style="blue.marker")` | Map of Texas using the `gadm` filter. |
-| `map_fetch(x=1:5)` | `map_fetch()` is generally forgiving and will give you back at least some map with warnings or blank images when the parameters don't work. |
-| `map_fetch(taxonKey=212, basisOfRecord="PRESERVED_SPECIMEN", year=2000,style="classic-noborder.poly")` | All specimen bird records from the year 2000. | 
-| `map_fetch(distanceFromCentroidInMeters=0,base_style="osm-bright")` | Map of all country centroid locations. |
-| `map_fetch(source="adhoc",project_id="BID-AF2015-0134-REG",style="green2.poly",hexPerTile=50)` | In general, adhoc maps are harder to make look nice, but usually picking a non-point style and tuning `hexPerTile` and perhaps also `squareSize`, will make a nice map. |
+`adhoc` is needed here  because `recordedBy` isn't one of the named paramters. `map_fetch()` automatically detects this and switches source to "adhoc". 
+
+```R 
+map_fetch(recordedBy="John Waller")
+```
+Occurrences in the OBIS network. Note that `squareSize` only works with `bin="square"`.
+
+```R
+map_fetch(z=1,source="adhoc",style="green.poly",squareSize=64,bin="square",network_key="2b7c7b4f-4d4f-40d3-94de-c28b6fa054a6")
+```
+
+Map of Texas using the `gadm` filter.
+
+```R 
+map_fetch(z=4,x=6:7,y=4:5,gadm_gid="USA.44_1",style="blue.marker") 
+```
+`map_fetch()` is generally forgiving and will give you back at least some map with warnings or blank images when the parameters don't work.
+
+```R 
+map_fetch(x=1:5) # no tiles exist past 2, so blank images are returned
+```
+
+All specimen bird records from the year 2000.
+
+```R 
+map_fetch(taxonKey=212, basisOfRecord="PRESERVED_SPECIMEN", year=2000,style="classic-noborder.poly")  
+```
+
+Map of all country centroid locations. |
+
+```R 
+map_fetch(distanceFromCentroidInMeters=0,base_style="osm-bright")
+```
+
+In general, adhoc maps are harder to make look nice, but usually picking a non-point style and tuning `hexPerTile` and perhaps also `squareSize`, will make a nice map.
+
+```R 
+map_fetch(source="adhoc",project_id="BID-AF2015-0134-REG",style="green2.poly",hexPerTile=50)
+```
 
 A tip for getting the un-named adhoc parameters is to pull them from the occurrence search URL after looking them up via the [web interface](https://www.gbif.org/occurrence/map?advanced=1&project_id=BID-AF2015-0134-REG).
 
