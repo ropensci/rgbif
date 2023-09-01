@@ -1,3 +1,30 @@
+rgbif 3.7.8
+===========
+
+* **rgbif** has a new logo. (#679)
+
+
+### NEW FEATURES
+
+* `map_fetch()` now returns a base map as a `magick::magick-image`. This allows for the creation of high quality images from the GBIF maps API. (#675)
+* `occ_download()` terms added to key lookup. (#661) (#589)
+* `pred_default()` is an `occ_download()` pred function that allows users to easily filter out commonly unwanted occurrence records. (#611)
+
+### MINOR IMPROVEMENTS
+
+* Stream error fixed ("HTTP/2 stream 15 was not closed cleanly before end of the underlying stream"). Now `map_fetch()`, `occ_data()`, `occ_search()`, and `occ_download_wait()` have `curlopts = list(http_version=2)`, which fixes the error. This might need to be the default setting for the whole package. (#656) 
+
+* `name_suggest()` now gives a warning at prevents setting the `limit` > 100, since this is the GBIF API max. (#657)
+
+### Documentation 
+
+New article [Creating maps from occurrences](https://docs.ropensci.org/rgbif/articles/creating_maps_from_occurrences.html), which explains how to use `map_fetch()`. 
+
+### DEPRECATED
+
+* `occ_issues()` is now deprecated, since it is difficult to maintain, and not widely used. (#651)
+
+
 rgbif 3.7.7
 ===========
 
