@@ -1,9 +1,9 @@
 ## Test environments
 
 * local windows, R 4.2.3
-* windows latest R 4.2.3 (GitHub Actions)
-* ubuntu 20.04, R 4.2.3 (GitHub Actions)
-* macOS latest, R 4.2.3 (GitHub Actions)
+* windows latest R 4.3.1 (GitHub Actions)
+* ubuntu 20.04, R 4.3.1 (GitHub Actions)
+* macOS latest, R 4.3.1 (GitHub Actions)
 
 ## R CMD check results
 
