@@ -25,7 +25,7 @@ map_fetch(
   return = "png",
   base_style = NULL,
   plot_terra = TRUE,
-  curlopts = list(),
+  curlopts = list(http_version = 2),
   ...
 )
 }

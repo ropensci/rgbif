@@ -7,9 +7,9 @@ output: html_document
 
 ## Introduction 
 
-Large datasets of millions of lat-lon points can be difficult to plot using `ggplot2` or base graphics. In these cases, using the [GBIF maps API](https://www.gbif.org/developer/maps) from with `rgbif::map_fetch()` can be a good option. 
+Large datasets of millions of lat-lon points can be difficult to plot using `ggplot2` or base graphics. In these cases, using the [GBIF maps API](https://www.gbif.org/developer/maps) with `rgbif::map_fetch()` can be a good option. 
 
-However, if you would like to make a complex graphic with different colors, shapes, and legends, using `ggplot2::geom_sf()` is your only option. Below I will give examples using both methods.  
+However, if you would like to make a complex graphic with different colors, shapes, and legends, using `ggplot2::geom_sf()` is a better option. Below I will give examples using both methods.  
 
 ## Using map_fetch()
 
@@ -138,7 +138,7 @@ All specimen bird records from the year 2000.
 map_fetch(taxonKey=212, basisOfRecord="PRESERVED_SPECIMEN", year=2000,style="classic-noborder.poly")  
 ```
 
-Map of all country centroid locations. |
+Map of all country centroid locations.
 
 ```R 
 map_fetch(distanceFromCentroidInMeters=0,base_style="osm-bright")
@@ -166,7 +166,7 @@ library(ggplot2)
 library(sf)
 library(rnaturalearth)
 
-# occ_download(pred_default(),pred(taxonKey,"7412043"),format="SIMPLE_CSV")
+# occ_download(pred_default(),pred(taxonKey,"1427067"),format="SIMPLE_CSV")
 
 worldmap <- ne_countries(scale = 'medium', type = 'map_units',returnclass = 'sf')
 
