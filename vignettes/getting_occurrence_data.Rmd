@@ -164,7 +164,7 @@ format = "SIMPLE_CSV"
 
 ## Long species list downloads 
 
-Another common download pattern is **long species list downloads**. There is a tutorial about downloading from a long list of species [here](https://docs.ropensci.org/rgbif/reference/downloading_a_long_species_list.html).
+Another common download pattern is **long species list downloads**. There is a tutorial about downloading from a long list of species [here](https://docs.ropensci.org/rgbif/articles/downloading_a_long_species_list.html).
 
 ## A Complex Download For Illustration
 
