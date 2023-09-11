@@ -8,7 +8,7 @@
   "codeRepository": "https://github.com/ropensci/rgbif",
   "issueTracker": "https://github.com/ropensci/rgbif/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "3.7.7",
+  "version": "3.7.8",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -115,15 +115,27 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "raster",
-      "name": "raster",
+      "identifier": "terra",
+      "name": "terra",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=raster"
+      "sameAs": "https://CRAN.R-project.org/package=terra"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "magick",
+      "name": "magick",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=magick"
     },
     {
       "@type": "SoftwareApplication",
@@ -346,7 +358,7 @@
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://ropensci.org",
   "keywords": ["GBIF", "specimens", "API", "web-services", "occurrences", "species", "taxonomy", "gbif", "api", "data", "biodiversity", "rstats", "r", "spocc", "r-package", "lifewatch", "oscibio"],
-  "fileSize": "12483.103KB",
+  "fileSize": "11313.313KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -390,7 +402,7 @@
       ],
       "name": "rgbif: Interface to the Global Biodiversity Information Facility API",
       "url": "https://CRAN.R-project.org/package=rgbif",
-      "description": "R package version 3.7.7"
+      "description": "R package version 3.7.8"
     },
     {
       "@type": "ScholarlyArticle",
