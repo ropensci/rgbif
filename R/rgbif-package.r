@@ -81,12 +81,3 @@ NULL
 #' @keywords data
 NULL
 
-#' Vector of fields in the output for the function [occ_search()]
-#'
-#' These fields can be specified in the `fields` parameer in the
-#' [occ_search()] function.
-#'
-#' @name occ_fields
-#' @docType data
-#' @keywords data
-NULL
