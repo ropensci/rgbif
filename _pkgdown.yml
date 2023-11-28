@@ -78,7 +78,6 @@ reference:
     desc: >
       rgbif datasets
     contents:
-      - isocodes
       - occ_fields
       - typestatus
   - title: "Defunct functions"

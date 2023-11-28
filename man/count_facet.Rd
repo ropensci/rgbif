@@ -39,10 +39,6 @@ count_facet(keys, by='country', countries=3, removezeros = FALSE)
 count_facet(by='country', countries=20, removezeros = TRUE)
 count_facet(keys, by='basisOfRecord', countries=5, removezeros = TRUE)
 
-# Pass in country names instead
-countries <- isocodes$code[1:10]
-count_facet(by='country', countries=countries, removezeros = TRUE)
-
 # get occurrences by georeferenced state
 ## across all records
 count_facet(by='georeferenced')

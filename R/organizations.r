@@ -8,8 +8,7 @@
 #' 'organization', 'contact', 'endpoint', 'identifier', 'tag', 'machineTag',
 #' 'comment', 'hostedDataset', 'ownedDataset', 'deleted', 'pending',
 #' 'nonPublishing', or the special 'all'. Default: `'all'`
-#' @param country (character) Filters by country as given in isocodes$code,
-#'  e.g. \code{country="CA"}
+#' @param country (character) Filters by country. 
 #' @param uuid (character) UUID of the data node provider. This must be
 #' specified if data is anything other than 'all', 'deleted', 'pending', or
 #' 'nonPublishing'.

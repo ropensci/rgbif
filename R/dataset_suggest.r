@@ -35,8 +35,7 @@
 #' # Return metadata in a more human readable way (hard to manipulate though)
 #' # dataset_suggest(type="OCCURRENCE", limit = 5, pretty=TRUE)
 #'
-#' # Search by country code. Lookup isocodes first, and use US for United States
-#' isocodes[agrep("UNITED", isocodes$gbif_name),]
+#' # Search by country code. 
 #' # dataset_suggest(country="US", limit = 25)
 #'
 #' # Search by decade
