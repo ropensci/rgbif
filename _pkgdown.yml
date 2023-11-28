@@ -74,13 +74,6 @@ reference:
     contents:
       - gbif_names
       - gbif_photos
-  - title: "rgbif datasets"
-    desc: >
-      rgbif datasets
-    contents:
-      - isocodes
-      - occ_fields
-      - typestatus
   - title: "Defunct functions"
     contents:
       - rgbif-defunct

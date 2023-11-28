@@ -28,8 +28,7 @@ dataset_search(
 parameter can be a simple word or a phrase. Wildcards can be added to the
 simple word parameters only, e.g. \code{q=*puma*}}
 
-\item{country}{NOT YET IMPLEMENTED. Filters by country as given in
-isocodes$gbif_name, e.g. \code{country="CANADA"}}
+\item{country}{NOT YET IMPLEMENTED. Filters by country.}
 
 \item{type}{Type of dataset, options include occurrene, metadata, checklist,
 sampling_event
@@ -120,8 +119,7 @@ dataset_search(type="OCCURRENCE", limit=2, start=10)
 # Return metadata in a more human readable way (hard to manipulate though)
 dataset_search(type="OCCURRENCE", pretty=TRUE, limit = 10)
 
-# Search by country code. Lookup isocodes first, and use US for United States
-isocodes[agrep("UNITED", isocodes$gbif_name),]
+# Search by country code. 
 dataset_search(country="US", limit = 10)
 
 # Search by decade

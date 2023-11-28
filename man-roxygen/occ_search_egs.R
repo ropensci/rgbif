@@ -173,7 +173,6 @@
 #'
 #' # Search on country
 #' occ_search(country='US', fields=c('name','country'), limit=20)
-#' isocodes[grep("France", isocodes$name),"code"]
 #' occ_search(country='FR', fields=c('name','country'), limit=20)
 #' occ_search(country='DE', fields=c('name','country'), limit=20)
 #' ### separate requests: use a vector of strings

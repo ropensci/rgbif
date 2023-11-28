@@ -25,10 +25,6 @@
 #' count_facet(by='country', countries=20, removezeros = TRUE)
 #' count_facet(keys, by='basisOfRecord', countries=5, removezeros = TRUE)
 #'
-#' # Pass in country names instead
-#' countries <- isocodes$code[1:10]
-#' count_facet(by='country', countries=countries, removezeros = TRUE)
-#'
 #' # get occurrences by georeferenced state
 #' ## across all records
 #' count_facet(by='georeferenced')
@@ -52,7 +48,7 @@ count_facet <- function(keys = NULL,
 
   # faceting data vectors
   if (is.numeric(countries)) {
-    countrynames <- list(country = as.character(isocodes$code)[1:countries])
+    countrynames <- list(country = as.character(enumeration_country()$iso2)[1:countries])
   } else{
     countrynames <- list(country = as.character(countries))
   }

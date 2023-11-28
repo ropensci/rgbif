@@ -70,35 +70,3 @@ NULL
 #'
 #' @name rgbif-defunct
 NULL
-
-#' Table of country two character ISO codes, and GBIF names
-#'
-#' - code. Two character ISO country code.
-#' - name. Name of country.
-#' - gbif_name. Name of country used by GBIF - this is the name
-#'   you want to use when searching by country in this package.
-#'
-#' @name isocodes
-#' @docType data
-#' @keywords data
-NULL
-
-#' Type status options for GBIF searching
-#'
-#' - name. Name of type.
-#' - description. Description of the type.
-#'
-#' @name typestatus
-#' @docType data
-#' @keywords data
-NULL
-
-#' Vector of fields in the output for the function [occ_search()]
-#'
-#' These fields can be specified in the `fields` parameer in the
-#' [occ_search()] function.
-#'
-#' @name occ_fields
-#' @docType data
-#' @keywords data
-NULL

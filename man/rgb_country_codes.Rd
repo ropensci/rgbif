@@ -17,5 +17,7 @@ rgb_country_codes(country_name, fuzzy = FALSE, ...)
 Look up 2 character ISO country codes
 }
 \examples{
+\dontrun{
 rgb_country_codes(country_name="United")
+}
 }

@@ -5,11 +5,14 @@
 #' @param ... Further arguments passed on to agrep or grep
 #' @export
 #' @examples
+#' \dontrun{
 #' rgb_country_codes(country_name="United")
+#' }
 rgb_country_codes <- function(country_name, fuzzy = FALSE, ...) {
+  x <- enumeration_country()
   if (fuzzy) {
-    isocodes[agrep(country_name, isocodes$name, ...),]
+    x[agrep(country_name, x$title, ...),]
   } else {
-    isocodes[grep(country_name, isocodes$name, ...),]
+    x[grep(country_name, x$title, ...),]
   }
 }
