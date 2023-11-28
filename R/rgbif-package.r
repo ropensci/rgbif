@@ -70,14 +70,3 @@ NULL
 #'
 #' @name rgbif-defunct
 NULL
-
-#' Type status options for GBIF searching
-#'
-#' - name. Name of type.
-#' - description. Description of the type.
-#'
-#' @name typestatus
-#' @docType data
-#' @keywords data
-NULL
-
