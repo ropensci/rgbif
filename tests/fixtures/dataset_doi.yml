@@ -1,0 +1,38 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/doi/10.15468/igasai?limit=20
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: '{"offset":0,"limit":20,"endOfRecords":true,"count":1,"results":[{"key":"8575f23e-f762-11e1-a439-00145eb45e9a","installationKey":"60454014-f762-11e1-a439-00145eb45e9a","publishingOrganizationKey":"57254bd0-8256-11d8-b7ed-b8a03c50a862","networkKeys":["17abcf75-2f1e-46dd-bf75-a5b21dd02655"],"doi":"10.15468/igasai","external":false,"numConstituents":0,"type":"OCCURRENCE","title":"PonTaurus
+        collection","description":"Plant specimens gathered in the Toroslar mountain
+        range of southern Turkey and the Pontic mountain range in north eastern torkey
+        in 1999. The collection mainly covers grass vegetation plots of the subalpine
+        level. It was collected together with many more observation records for vegetational
+        studies applying phytosociological analysis. The resulting thesis was released
+        in the public domain and is available at <a href=\"http://www.archive.org/details/VegetationskundlicheUntersuchungenInDerHochgebirgsregionDerBolkar\">http://www.archive.org/details/VegetationskundlicheUntersuchungenInDerHochgebirgsregionDerBolkar</a>.  Specimens
+        have been deposited at the Berlin Botanical Garden Herbarium (B) with duplicates
+        send to the Istanbul herbarium and the private collection of Gerald Parolly
+        who supervised this work.","language":"eng","citation":{"text":"PonTaurus
+        collection database 1999","citationProvidedBySource":false},"contactsCitation":[],"lockedForAutoUpdate":false,"createdBy":"registry-migration.gbif.org","modifiedBy":"crawler.gbif.org","created":"2007-03-08T23:00:00.000+00:00","modified":"2021-04-14T12:00:42.949+00:00","contacts":[{"key":2376641,"type":"TECHNICAL_POINT_OF_CONTACT","primary":false,"userId":[],"firstName":"Markus
+        Döring","position":[],"email":["mdoering@gbif.org"],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2021-04-14T12:00:43.324+00:00","modified":"2021-04-14T12:00:43.324+00:00"},{"key":2376642,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":false,"userId":[],"firstName":"Markus
+        Döring","position":[],"email":["mdoering@gbif.org"],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2021-04-14T12:00:43.440+00:00","modified":"2021-04-14T12:00:43.440+00:00"}],"endpoints":[{"key":581027,"type":"BIOCASE","url":"http://ww3.bgbm.org/biocase/pywrapper.cgi?dsa=pontaurus","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2021-04-14T12:00:43.765+00:00","modified":"2021-04-14T12:00:43.765+00:00","machineTags":[{"key":8245625,"namespace":"metasync.gbif.org","name":"conceptualSchema","value":"http://www.tdwg.org/schemas/abcd/2.06","createdBy":"crawler.gbif.org","created":"2021-04-14T12:00:43.765+00:00"}]}],"machineTags":[{"key":17530948,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"254","createdBy":"crawler.gbif.org","created":"2023-11-25T15:44:43.863+00:00"},{"key":17530947,"namespace":"metasync.gbif.org","name":"declaredCount","value":"1534","createdBy":"crawler.gbif.org","created":"2023-11-25T15:44:43.705+00:00"}],"tags":[],"identifiers":[{"key":7376,"type":"GBIF_PORTAL","identifier":"1099","createdBy":"registry-migration.gbif.org","created":"2012-09-05T14:03:51.000+00:00"}],"comments":[{"key":6542,"content":"Import
+        script set license to CC_BY_4_0","createdBy":"License Import script","modifiedBy":"License
+        Import script","created":"2016-08-18T12:36:25.225+00:00","modified":"2016-08-18T12:36:25.225+00:00"}],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[],"temporalCoverages":[],"keywordCollections":[],"countryCoverage":[],"collections":[],"dataDescriptions":[],"license":"http://creativecommons.org/licenses/by/4.0/legalcode"}]}'
+  recorded_at: 2023-11-30 08:19:43 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
