@@ -12,7 +12,6 @@ test_that("dataset_doi work as expected", {
   expect_is(xx$meta, "data.frame")
   })
 
-
 test_that("dataset_doi fails well", {
   expect_warning(expect_error(dataset_doi("dog")))
   })

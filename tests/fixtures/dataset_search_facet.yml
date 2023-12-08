@@ -1,0 +1,108 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/search?limit=0&facetLimit=5&facet=doi
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6OTE0NzUsInJl
+        c3VsdHMiOltdLCJmYWNldHMiOlt7ImZpZWxkIjoiRE9JIiwiY291bnRzIjpbeyJuYW1lIjoiMTAuNTI4
+        MS96ZW5vZG8uMjkxOTcxIiwiY291bnQiOjI2fSx7Im5hbWUiOiIxMC41NTM5L2VucnIudjJuM3AxMTUi
+        LCJjb3VudCI6Nn0seyJuYW1lIjoiMTAuMTAwNy9zMTA3NTAtMDA3LTkyMzUtNiIsImNvdW50IjozfSx7
+        Im5hbWUiOiIxMC4xMTY0Ni96b290YXhhLjQwMDYuMi4xMCIsImNvdW50IjozfSx7Im5hbWUiOiIxMC4x
+        NTQ2OC8yOHA3aGMiLCJjb3VudCI6M31dfV19
+  recorded_at: 2023-12-07 15:11:32 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/search?limit=0&facetLimit=5&facet=type
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6OTE0NzUsInJl
+        c3VsdHMiOltdLCJmYWNldHMiOlt7ImZpZWxkIjoiVFlQRSIsImNvdW50cyI6W3sibmFtZSI6IkNIRUNL
+        TElTVCIsImNvdW50Ijo0OTU3NH0seyJuYW1lIjoiT0NDVVJSRU5DRSIsImNvdW50IjozODQ5OH0seyJu
+        YW1lIjoiU0FNUExJTkdfRVZFTlQiLCJjb3VudCI6MzAxOH0seyJuYW1lIjoiTUVUQURBVEEiLCJjb3Vu
+        dCI6Mzg1fV19XX0=
+  recorded_at: 2023-12-07 15:11:32 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/search?limit=0&facetLimit=5&facet=publishingCountry
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6OTE0NzUsInJl
+        c3VsdHMiOltdLCJmYWNldHMiOlt7ImZpZWxkIjoiUFVCTElTSElOR19DT1VOVFJZIiwiY291bnRzIjpb
+        eyJuYW1lIjoiQ0giLCJjb3VudCI6NDcwNTR9LHsibmFtZSI6IkZSIiwiY291bnQiOjE1NTU3fSx7Im5h
+        bWUiOiJERSIsImNvdW50Ijo5MDEyfSx7Im5hbWUiOiJDTyIsImNvdW50IjoyNzk5fSx7Im5hbWUiOiJV
+        UyIsImNvdW50IjoyNTMyfV19XX0=
+  recorded_at: 2023-12-07 15:11:32 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/search?limit=0&facetLimit=5&facetMincount=10000&facet=license
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      base64_string: 'eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6OTE0NzUsInJl
+        c3VsdHMiOltdLCJmYWNldHMiOlt7ImZpZWxkIjoiTElDRU5TRSIsImNvdW50cyI6W3sibmFtZSI6IkND
+        MF8xXzAiLCJjb3VudCI6NDk0NTR9LHsibmFtZSI6IkNDX0JZXzRfMCIsImNvdW50IjozNTAzNn1dfV19 '
+  recorded_at: 2023-12-07 15:11:32 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0

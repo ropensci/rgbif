@@ -11,7 +11,7 @@
 #' @return A `list`. 
 #' @export
 #'
-#' @examples dontrun {
+#' @examples \dontrun {
 #' dataset_doi("10.15468/igasai")
 #' }
 dataset_doi <- function(doi=NULL, limit = 20, start=NULL, curlopts = list()) {
