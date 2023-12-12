@@ -1,0 +1,14 @@
+---
+title: Getting Dataset Metadata From GBIF
+author: John Waller
+date: "2023-12-12"
+output: rmarkdown::html_vignette
+vignette: >
+    %\VignetteIndexEntry{getting_occurrence_data}
+    %\VignetteEngine{knitr::rmarkdown}
+    %\VignetteEncoding{UTF-8}
+---
+
+It can sometimes be useful to get information about datasets rather than the data which they contain. 
+
+In this article I will explain the various methods available to access dataset metadata stored within the 

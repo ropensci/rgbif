@@ -58,8 +58,11 @@ dataset_export <- function(query = NULL,
   url <- gsub("\\[|\\]","",url)
   url <- utils::URLencode(url)
   temp_file <- tempfile()
-  download.file(url,destfile=temp_file,quiet=TRUE)
+  utils::download.file(url,destfile=temp_file,quiet=TRUE)
   out <- tibble::as_tibble(data.table::fread(temp_file, showProgress=FALSE))
   colnames(out) <- to_camel(colnames(out))
+  out[] <- lapply(out, as.character)
+  out$occurrenceRecordsCount <- as.numeric(out$occurrenceRecordsCount)
+  out$nameUsagesCount <- as.numeric(out$nameUsagesCount)
   out
 }

@@ -8,19 +8,19 @@ test_that("dataset_export works as expected", {
   xx <- dataset_export(type = "METADATA")
   expect_equal(ncol(xx), 17)
   expect_lt(nrow(xx), total_ds)
-  expect_equal(names(xx)[1], "dataset_key")
+  expect_equal(names(xx)[1], "datasetKey")
   expect_is(xx,"tbl_df")
   
   aa <- dataset_export(subtype = "TAXONOMIC_AUTHORITY")
   expect_equal(ncol(aa), 17)
   expect_lt(nrow(aa), total_ds)
-  expect_equal(names(aa)[1], "dataset_key")
+  expect_equal(names(aa)[1], "datasetKey")
   expect_is(aa,"tbl_df")
   
   ll <- dataset_export(license = "CC0_1_0",subtype = "TAXONOMIC_AUTHORITY")
   expect_equal(ncol(ll), 17)
   expect_lt(nrow(ll), total_ds)
-  expect_equal(names(ll)[1], "dataset_key")
+  expect_equal(names(ll)[1], "datasetKey")
   expect_is(ll,"tbl_df")
   
   # test multiple values for hostingOrg

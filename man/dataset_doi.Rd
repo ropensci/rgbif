@@ -26,7 +26,7 @@ This function allows for dataset lookup using a doi. Be aware that
 some doi have more than one dataset associated with them.
 }
 \examples{
-\dontrun {
-dataset_doi("10.15468/igasai")
+\dontrun{
+dataset_doi('10.15468/igasai')
 }
 }

@@ -138,7 +138,7 @@ Use \code{dataset_search(facet="x",limit=0)$facets} to get simple group by count
 for different parameters.
 }
 \examples{
-\dontrun {
+\dontrun{
 # search metadata on all datasets and return a sample
 dataset_search()
 # dataset_export() # download info on all +90K datasets 
@@ -156,7 +156,7 @@ dataset_search(decade="1890,1990",limit=5)
 dataset_search(projectId = "GRIIS") 
 dataset_search(hostingCountry = "NO") 
 dataset_search(networkKey = "99d66b6c-9087-452f-a9d4-f15f2c2d0e7e") 
-dataset_search(doi="10.15468/aomfnb") 
+dataset_search(doi='10.15468/aomfnb') 
 
 # search multiple values 
 dataset_search(projectId = "GRIIS;BID-AF2020-140-REG") 
