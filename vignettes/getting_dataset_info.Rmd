@@ -11,4 +11,29 @@ vignette: >
 
 It can sometimes be useful to get information about datasets rather than the data which they contain. 
 
-In this article I will explain the various methods available to access dataset metadata stored within the 
+In this article, I will explain the various methods available to access dataset meta-data stored within the [GBIF registry](https://www.gbif.org/developer/registry).
+
+## dataset_search() and dataset_export()
+
+```R 
+
+```
+
+## datasets
+
+Returns data not found in dataset search. Useful if you know the dataset key
+
+```R 
+
+```
+
+## Other functions
+
+
+
+
+
+
+
+
+

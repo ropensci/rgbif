@@ -44,7 +44,7 @@
 #' @param start Determines the offset for the search results. A limit of 20 
 #' and offset of 40 will get the third page of 20 results. Some services have 
 #' a maximum offset.
-#' @param descriptions Logical whether to return descriptions.  
+#' @param description Logical whether to return descriptions.  
 #' @param curlopts options passed on to [crul::HttpClient].
 #' 
 #' @details
@@ -128,7 +128,7 @@ dataset_search <- function(query = NULL,
                            facetMultiselect = NULL,
                            limit = 100,
                            start = NULL,
-                           descriptions=FALSE,
+                           description = FALSE,
                            curlopts = list()) {
 
   assert(query,"character")
@@ -197,7 +197,7 @@ dataset_search <- function(query = NULL,
     out <- tibble::as_tibble(setdfrbind(lapply(tt$results, parse_dataset)))
   }
   
-  if(descriptions) {
+  if(description) {
     descs <- lapply(tt$results, "[[", "description")
     names(descs) <- sapply(tt$results, "[[", "title")
     list(meta = data.frame(meta), data = out, facets = facetsdat, descriptions = descs)
