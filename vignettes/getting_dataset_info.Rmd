@@ -132,65 +132,35 @@ dataset_search(publishingOrg = "e2e717bf-551a-4917-bdc9-4fa0f342c530")
 
 I haven't yet mentioned `dataset_suggest()`, which will return less data than `dataset_search()`, but is practically the same function. Most of the time you will be wanting to use `dataset_search()` and `dataset_export()` rather than `dataset_suggest()`. The endpoint for `dataset_suggest()` was designed for allowing the GBIF website to function efficiently, and isn't really that interesting for **rgbif** users, but there might be some edge cases where it is useful.
 
-## datasets
+## dataset
 
-`datasets()` returns other meta-data not necessarily found with a `dataset_search()`. With `datasets()` if you know the datasetKey UUID.
-
-
-
-https://ipt.gbif.org/manual/en/ipt/latest/gbif-metadata-profile
-
-key
-installationKey
-$ publishingOrganizationKey
-$ doi
-$ external
-$ numConstituents
-$ type
-$ title
-$ description
-$ language
-$ homepage
-$ citation
-$ contacts
-$ Citation
-$ lockedForAutoUpdate
-$ createdBy
-$ modifiedBy
-$ created
-$ modified
-$ contacts
-$ endpoints
-$ machineTags
-$ tags
-$ identifiers
-$ comments
-$ bibliographicCitations
-$ curatorialUnits
-$ taxonomicCoverages
-$ geographicCoverages
-$ temporalCoverages
-$ keywordCollections
-$ countryCoverage
-$ collections
-$ dataDescriptions
-$ dataLanguage
-$ pubDate
-$ license
-$ maintenanceUpdateFrequency
-$ maintenanceDescription
-$ subtype
-$ project
-$ samplingDescription        
-$ purpose 
-$ logoUrl
-$ additionalInfo  
-$ version                 
-
-`datasets()` 
-
+`dataset()` returns other meta-data not necessarily found with a `dataset_search()`. Most of the time you will want to use `dataset_search()`, but there are times when you have to use `dataset()`. For example, when you want to search by **machine tag**. 
 
 ``` r
+# return all datasets tagged as "citizen science"
+dataset(machineTagNamespace="citizenScience.gbif.org")
 ```
 
 ## Other functions
+
+There are various other dataset functions that you might find useful. Particularly if you know the datasetKey **uuid**, there are a group of functions that can be used. 
+
+```r 
+# get details of a single dataset 
+dataset_get("38b4c89f-584c-41bb-bd8f-cd1def33e92f")
+
+# get the details of how the dataset is being ingested by GBIF
+dataset_process("38b4c89f-584c-41bb-bd8f-cd1def33e92f",limit=3)
+
+# what networks does the dataset belong to? 
+dataset_networks("3dab037f-a520-4bc3-b888-508755c2eb52")
+
+# what datasets compose the dataset? Not many datasets have constituents. 
+dataset_constituents("7ddf754f-d193-4cc9-b351-99906754a03b",limit=3)
+
+# what contacts did the publishers give for the dataset? 
+dataset_contact("7ddf754f-d193-4cc9-b351-99906754a03b")
+
+# only works for CHECKLIST type datasets
+dataset_metrics("7ddf754f-d193-4cc9-b351-99906754a03b")
+```
