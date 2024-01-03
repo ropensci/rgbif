@@ -12,8 +12,18 @@ test_that("dataset works as expected", {
     v <- dataset(machineTagValue = "Borkhart",limit=3)
     o <- dataset(modified = "2023-04-01", limit=3) 
     q <- dataset(q = "dog", limit=3) 
+    e <- dataset(deleted=TRUE,limit=3)
   })
-
+  
+  expect_is(e, "list")
+  expect_named(e,c("meta","data"))
+  expect_is(e$data,"tbl_df")
+  expect_is(e$meta,"data.frame")
+  expect_named(e$meta,c("offset", "limit", "endOfRecords", "count"))
+  expect_is(e$data$key,"character")
+  expect_lte(nrow(e$data),3)
+  expect_is(e$data$deleted,"character")
+  
   expect_is(q, "list")
   expect_named(q,c("meta","data"))
   expect_is(q$data,"tbl_df")

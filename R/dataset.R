@@ -21,6 +21,7 @@
 #' can be used as a wildcard, e.g.:modified=2023-04-01,
 #' @param query Simple full text search parameter. The value for this parameter 
 #' can be a simple word or a phrase. Wildcards are not supported.
+#' @param deleted Logical specifying whether to return only deleted datasets. 
 #' @param limit Controls the number of results in the page. 
 #' @param start Determines the start for the search results.
 #' @param curlopts options passed on to [crul::HttpClient].
@@ -29,15 +30,23 @@
 #' 
 #' @details
 #' This function allows you to search for some more obscure dataset metadata
-#' that might not be possible with `dataset_search()`. 
-#' 
+#' that might not be possible with `dataset_search()`. For example, searching 
+#' through registry machinetags. 
 #' 
 #' @export
 #'
 #' @examples \dontrun {
-#' 
-#' 
-#' 
+#' dataset(limit=3)
+#' dataset(country="US",limit=3)
+#' dataset(type="CHECKLIST",limit=3)
+#' dataset(identifierType = "URL",limit=3)
+#' dataset(identifier = 168,limit=3)
+#' dataset(machineTagNamespace = "metasync.gbif.org",limit=3)
+#' dataset(machineTagName = "datasetTitle",limit=3)
+#' dataset(machineTagValue = "Borkhart",limit=3)
+#' dataset(modified = "2023-04-01", limit=3) 
+#' dataset(q = "dog", limit=3) 
+#' dataset(deleted=TRUE,limit=3)
 #' }
 dataset <- function(country = NULL, 
                     type = NULL, 
@@ -47,7 +56,8 @@ dataset <- function(country = NULL,
                     machineTagName = NULL, 
                     machineTagValue = NULL,
                     modified = NULL, 
-                    query = NULL, 
+                    query = NULL,
+                    deleted = FALSE,
                     limit = NULL, 
                     start = NULL,
                     curlopts = list()) {
@@ -80,7 +90,11 @@ dataset <- function(country = NULL,
     convmany(modified)
     )))
   
-  url <- paste0(gbif_base(), '/dataset/')
+  if(deleted) {
+    url <- paste0(gbif_base(), '/dataset/deleted/')
+  } else {
+    url <- paste0(gbif_base(), '/dataset/')
+  }
   tt <- gbif_GET(url, args, FALSE, curlopts)
   
   meta <- tt[c('offset','limit','endOfRecords','count')]
