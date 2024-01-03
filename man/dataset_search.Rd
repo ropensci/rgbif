@@ -166,7 +166,7 @@ for different parameters.
 dataset_search()
 # dataset_export() # download info on all +90K datasets 
 
-dataset_search(publishingCountry = US)
+dataset_search(publishingCountry = "US")
 dataset_search(type = "OCCURRENCE") 
 dataset_search(keyword = "bird")
 dataset_search(subtype = "TAXONOMIC_AUTHORITY") 

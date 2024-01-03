@@ -32,18 +32,37 @@
 #' # curl options
 #' datasets(data=c('deleted','duplicate'), curlopts = list(verbose=TRUE))
 #' }
-datasets <- function(data = 'all', type = NULL, uuid = NULL, query = NULL,
-                     id = NULL, limit = 100, start=NULL, curlopts = list()) {
+datasets <- function(data = 'all',
+                     type = NULL,
+                     uuid = NULL,
+                     query = NULL,
+                     id = NULL,
+                     limit = 100,
+                     start=NULL,
+                     curlopts = list()) {
   
   if (!is.null(type)) type <- toupper(type)
-  args <- rgbif_compact(list(q = query, type = type, limit = as.integer(limit),
+  
+  args <- rgbif_compact(list(q = query,
+                             type = type,
+                             limit = as.integer(limit),
                              offset = start))
   
   data <- match.arg(
-    data, choices = c('all', 'organization', 'contact', 'endpoint',
-                      'identifier', 'tag', 'machinetag', 'comment',
-                      'constituents', 'document', 'metadata',
-                      'deleted', 'duplicate', 'subDataset',
+    data, choices = c('all',
+                      'organization',
+                      'contact',
+                      'endpoint',
+                      'identifier',
+                      'tag',
+                      'machinetag',
+                      'comment',
+                      'constituents',
+                      'document',
+                      'metadata',
+                      'deleted',
+                      'duplicate',
+                      'subDataset',
                       'withNoEndpoint'), several.ok = TRUE)
   
   # Define function to get data

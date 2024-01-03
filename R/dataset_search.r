@@ -73,7 +73,7 @@
 #' dataset_search()
 #' # dataset_export() # download info on all +90K datasets 
 #' 
-#' dataset_search(publishingCountry = US)
+#' dataset_search(publishingCountry = "US")
 #' dataset_search(type = "OCCURRENCE") 
 #' dataset_search(keyword = "bird")
 #' dataset_search(subtype = "TAXONOMIC_AUTHORITY") 
@@ -194,7 +194,7 @@ dataset_search <- function(query = NULL,
   if (length(tt$results) == 0) {
     out <- NULL
   } else {
-    out <- tibble::as_tibble(setdfrbind(lapply(tt$results, parse_dataset)))
+    out <- tibble::as_tibble(setdfrbind(lapply(tt$results, parse_dataset_search)))
   }
   
   if(description) {
@@ -206,7 +206,7 @@ dataset_search <- function(query = NULL,
   }  
 }
 
-parse_dataset <- function(x){
+parse_dataset_search <- function(x){
   tmp <- rgbif_compact(list(
                       datasetKey = x$key,
                       title = x$title,
