@@ -35,7 +35,7 @@
 #' 
 #' @export
 #'
-#' @examples \dontrun {
+#' @examples \dontrun{
 #' dataset(limit=3)
 #' dataset(country="US",limit=3)
 #' dataset(type="CHECKLIST",limit=3)

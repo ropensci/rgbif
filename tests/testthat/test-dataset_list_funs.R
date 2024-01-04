@@ -6,9 +6,9 @@ test_that("dataset_list_funs work as expected.", {
   e <- dataset_noendpoint(limit=3)
   })
   
-  expect_is(e,"tbl_df")
+  expect_is(e,"list")
   expect_named(e,c("meta","data"))
   expect_is(e$data$key,"character")
-  expect_lte(nrow(e), 3)
+  expect_lte(nrow(e$data), 3)
   
 })

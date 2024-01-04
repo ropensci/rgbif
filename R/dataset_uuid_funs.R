@@ -1,6 +1,5 @@
 #' Get dataset metadata using a datasetkey
 #' 
-#' @name dataset_uuid_funs
 #' @param uuid A GBIF datasetkey uuid. 
 #' @param limit Number of records to return.
 #' @param start Record number to start at. 
@@ -96,7 +95,7 @@ dataset_tag <- function(uuid = NULL, curlopts = list()) {
 #' @name dataset_uuid_funs
 #' @export
 dataset_metrics <- function(uuid = NULL, curlopts = list()) {
-  if(!is_uuid(uuid)) warn("'uuid' should be a GBIF datasetkey uuid.")
+  if(!is_uuid(uuid)) stop("'uuid' should be a GBIF datasetkey uuid.")
   if(!dataset_get(uuid)$type == "CHECKLIST") stop("Dataset should be a checklist.")
   url <- paste0(gbif_base(),"/dataset/",uuid,"/metrics")
   res <- rgbif_compact(gbif_GET(url, args = NULL, TRUE, curlopts))
