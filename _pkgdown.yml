@@ -45,7 +45,7 @@ reference:
       GBIF registry functions <https://www.gbif.org/developer/registry>
     contents:
       - starts_with("dataset_")
-      - datasets
+      - dataset
       - organizations
       - network
       - nodes
@@ -76,6 +76,7 @@ reference:
       - gbif_photos
   - title: "Defunct functions"
     contents:
+      - datasets
       - rgbif-defunct
       - parsenames
       - networks
