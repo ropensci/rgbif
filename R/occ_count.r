@@ -116,7 +116,7 @@ occ_count <- function(...,occurrenceStatus="PRESENT", curlopts = list()) {
   if(length(bad_args) > 0) warning(paste(bad_args,collapse=",")," not acceptable args for occ_count() and will be ignored.")
 
   # check for multiple values 
-  if(any(!sapply(args,length) == 1)) stop("Multiple values of the form c('a','b') are not supported. Use 'a;b' instead.")
+  if(any(!sapply(args,length) == 1)) stop("Multiple values of the form c('a','b') are not supported. Use 'a;b' instead. Multiple values are not supported for facets.")
   
   # handle legacy parameters 
   if("georeferenced" %in% arg_names) {
