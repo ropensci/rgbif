@@ -1,0 +1,166 @@
+---
+title: Getting Dataset Metadata From GBIF
+author: John Waller
+date: "2023-12-12"
+output: rmarkdown::html_vignette
+vignette: >
+    %\VignetteIndexEntry{getting_occurrence_data}
+    %\VignetteEngine{knitr::rmarkdown}
+    %\VignetteEncoding{UTF-8}
+---
+
+It can sometimes be useful to get information **about** datasets rather than the data which they contain.
+
+In this article, I will explain the various methods available to access dataset meta-data stored within the [GBIF registry](https://www.gbif.org/developer/registry).
+
+## dataset_search() and dataset_export()
+
+-   `dataset_search()` : Use this function if you want meta-data, counts, facets, and not necessarily all of the results.
+-   `dataset_export()` : Use this function if you only want meta-data and *all* of the results as a table.
+
+If you want just a (non-random) sample of datasets from the registry, you can run `dataset_search()` with no arguments, which will return 100 datasets of various types. However, running `dataset_export()` with no filters, will download **all of the dataset meta-data in the registry**.
+
+``` r
+dataset_search()
+# dataset_export() # beware this will download 93K datasets! 
+```
+
+There are a few types of datasets GBIF supports. The most well known is the **occurrence dataset**. You can search for occurrence type datasets using the `type` filter.
+
+``` r
+dataset_search(type = "OCCURRENCE") 
+# dataset_export(type = "OCCURRENCE") # download all of the meta-data 
+```
+
+Checklists are also another common type of dataset mediated by GBIF. You can use the **multiple values** separator ";", in order to get both checklist and occurrence types.
+
+``` r
+dataset_search(type = "OCCURRENCE;CHECKLIST") 
+# dataset_export(type = "OCCURRENCE;CHECKLIST") # download both types 
+```
+
+You might be wondering what the other possible types of datasets are called. With the **facets** interface, it is possible to get group-by counts for most of the `dataset_search()` filters.
+
+``` r
+dataset_search(facet="type",limit=0)$facets
+```
+
+```         
+$type 
+  name count 
+1 CHECKLIST 49628 
+2 OCCURRENCE 38523 
+3 SAMPLING_EVENT 3036 
+4 METADATA 386
+```
+
+Use `facetLimit` to control the number of results returned with the facets interface.
+
+``` r
+dataset_search(facet="publishingCountry",facetLimit=200,limit=0)$facets
+```
+
+```         
+    name count
+1     CH 47107
+2     FR 15559
+3     DE  9012
+4     CO  2812
+
+<...>
+
+136   RS     1
+137   SO     1
+138   SS     1
+139   TR     1
+140   WF     1
+```
+
+Facets can also be used with other filters. For example to get the top countries publishing occurrence datasets.
+
+``` r
+dataset_search(facet="publishingCountry",type="OCCURRENCE",facetLimit=200,limit=0)$facets
+```
+
+Here are some more examples of using `dataset_search()` filters:
+
+``` r
+# datasets published by Ukraine
+dataset_search(publishingCountry = "UA") 
+
+# checklist datasets with a CC0 license 
+dataset_export(type="CHECKLIST", license = "CC0_1_0") 
+
+# Be aware that not all publishers fill in a subType  
+dataset_search(subType="TAXONOMIC_AUTHORITY")
+
+# Get datasets hosted by Norway 
+dataset_search(hostingCountry = "NO")
+# counts of datasets hosted by Norway but published by other countries
+dataset_search(facet="publishingCountry",hostingCountry = "NO",limit=0,facetLimit=100)$facets
+
+# get all datasets within the GRIIS porject 
+dataset_export(projectId = "GRIIS")
+
+# keywords used by the GRIIS project
+dataset_search(facet="keyword",projectId="GRIIS",limit=0,facetLimit=100)$facets
+
+# datasets with data collected between 1600 and 1800
+dataset_search(decade = "1600,1800")
+
+# group-by license counts of occurrence type datasets
+dataset_search(facet="license",type="OCCURRENCE",limit=0,facetLimit=10)$facets
+
+# search for dataset by doi of the dataset 
+dataset_search(doi="10.15468/aomfnb")
+
+# datasets hosted by Scandinavia 
+dataset_search(hostingCountry = "IS;FI;DK;NO;SE")
+dataset_search(facet="hostingCountry",hostingCountry = "IS;FI;DK;NO;SE",limit=0,facetLimit=5)$facets
+
+# all datasests in the VertNet network 
+dataset_export(networkKey = "99d66b6c-9087-452f-a9d4-f15f2c2d0e7e") 
+
+# all datasets with the keyword "DEPOBIO" hosted by France
+dataset_export(keyword="DEPOBIO",hostingCountry="FR")
+# number of occurrences
+dataset_export(keyword="DEPOBIO",hostingCountry="FR")$occurrenceRecordsCount |> sum()
+
+# datasets published by Cornell Lab of Ornithology
+dataset_search(publishingOrg = "e2e717bf-551a-4917-bdc9-4fa0f342c530") 
+```
+
+I haven't yet mentioned `dataset_suggest()`, which will return less data than `dataset_search()`, but is practically the same function. Most of the time you will be wanting to use `dataset_search()` and `dataset_export()` rather than `dataset_suggest()`. The endpoint for `dataset_suggest()` was designed for allowing the GBIF website to function efficiently, and isn't really that interesting for **rgbif** users, but there might be some edge cases where it is useful.
+
+## dataset
+
+`dataset()` returns other meta-data not necessarily found with a `dataset_search()`. Most of the time you will want to use `dataset_search()`, but there are times when you have to use `dataset()`. For example, when you want to search by **machine tag**. 
+
+``` r
+# return all datasets tagged as "citizen science"
+dataset(machineTagNamespace="citizenScience.gbif.org")
+```
+
+## Other functions
+
+There are various other dataset functions that you might find useful. Particularly if you know the datasetKey **uuid**, there are a group of functions that can be used. 
+
+```r 
+# get details of a single dataset 
+dataset_get("38b4c89f-584c-41bb-bd8f-cd1def33e92f")
+
+# get the details of how the dataset is being ingested by GBIF
+dataset_process("38b4c89f-584c-41bb-bd8f-cd1def33e92f",limit=3)
+
+# what networks does the dataset belong to? 
+dataset_networks("3dab037f-a520-4bc3-b888-508755c2eb52")
+
+# what datasets compose the dataset? Not many datasets have constituents. 
+dataset_constituents("7ddf754f-d193-4cc9-b351-99906754a03b",limit=3)
+
+# what contacts did the publishers give for the dataset? 
+dataset_contact("7ddf754f-d193-4cc9-b351-99906754a03b")
+
+# only works for CHECKLIST type datasets
+dataset_metrics("7ddf754f-d193-4cc9-b351-99906754a03b")
+```

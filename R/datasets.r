@@ -32,31 +32,50 @@
 #' # curl options
 #' datasets(data=c('deleted','duplicate'), curlopts = list(verbose=TRUE))
 #' }
-datasets <- function(data = 'all', type = NULL, uuid = NULL, query = NULL,
-                     id = NULL, limit = 100, start=NULL, curlopts = list()) {
-
+datasets <- function(data = 'all',
+                     type = NULL,
+                     uuid = NULL,
+                     query = NULL,
+                     id = NULL,
+                     limit = 100,
+                     start=NULL,
+                     curlopts = list()) {
+  .Deprecated(msg="datasets() is deprecated since rgbif 3.7.9.")
   if (!is.null(type)) type <- toupper(type)
-  args <- rgbif_compact(list(q = query, type = type, limit = as.integer(limit),
+  
+  args <- rgbif_compact(list(q = query,
+                             type = type,
+                             limit = as.integer(limit),
                              offset = start))
-
+  
   data <- match.arg(
-    data, choices = c('all', 'organization', 'contact', 'endpoint',
-                      'identifier', 'tag', 'machinetag', 'comment',
-                      'constituents', 'document', 'metadata',
-                      'deleted', 'duplicate', 'subDataset',
+    data, choices = c('all',
+                      'organization',
+                      'contact',
+                      'endpoint',
+                      'identifier',
+                      'tag',
+                      'machinetag',
+                      'comment',
+                      'constituents',
+                      'document',
+                      'metadata',
+                      'deleted',
+                      'duplicate',
+                      'subDataset',
                       'withNoEndpoint'), several.ok = TRUE)
-
+  
   # Define function to get data
   getdata <- function(x) {
     if (
-     any(!data %in% c('all','deleted','duplicate','subDataset','withNoEndpoint')) &&
-     is.null(uuid)
+      any(!data %in% c('all','deleted','duplicate','subDataset','withNoEndpoint')) &&
+      is.null(uuid)
     ) {
-     stop('You must specify a uuid if data does not equal all and
+      stop('You must specify a uuid if data does not equal all and
      data does not equal of deleted, duplicate, subDataset, or withNoEndpoint',
-          call. = FALSE)
+           call. = FALSE)
     }
-
+    
     url <- if (is.null(uuid)) {
       if (x == 'all') {
         paste0(gbif_base(), '/dataset')
@@ -78,7 +97,7 @@ datasets <- function(data = 'all', type = NULL, uuid = NULL, query = NULL,
     res <- gbif_GET(url, args, TRUE, curlopts)
     structure(list(meta = get_meta(res), data = parse_results(res, uuid)))
   }
-
+  
   # Get data
   if (length(data) == 1) getdata(data) else lapply(data, getdata)
 }
