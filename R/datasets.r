@@ -40,7 +40,7 @@ datasets <- function(data = 'all',
                      limit = 100,
                      start=NULL,
                      curlopts = list()) {
-  
+  .Deprecated(msg="datasets() is deprecated since rgbif 3.7.9.")
   if (!is.null(type)) type <- toupper(type)
   
   args <- rgbif_compact(list(q = query,
