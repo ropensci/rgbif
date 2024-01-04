@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.gbif.org/v1/species/match?name=Calopteryx&rank=species&strict=false&verbose=FALSE&limit=100
+    uri: https://api.gbif.org/v1/species/match?name=Calopteryx&rank=GENUS&strict=false&verbose=FALSE&limit=100
     body:
       encoding: ''
       string: ''
@@ -19,12 +19,12 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"usageKey":1427007,"scientificName":"Calopteryx Leach, 1815","canonicalName":"Calopteryx","rank":"GENUS","status":"ACCEPTED","confidence":92,"matchType":"HIGHERRANK","kingdom":"Animalia","phylum":"Arthropoda","order":"Odonata","family":"Calopterygidae","genus":"Calopteryx","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":789,"familyKey":4211,"genusKey":1427007,"synonym":false,"class":"Insecta"}'
-  recorded_at: 2023-08-29 13:20:12 GMT
+      string: '{"confidence":100,"note":"Multiple equal matches for Calopteryx","matchType":"NONE","synonym":false}'
+  recorded_at: 2024-01-04 12:44:08 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
-    uri: https://api.gbif.org/v1/species/match?name=Calopteryx&rank=species&strict=false&verbose=TRUE&limit=100
+    uri: https://api.gbif.org/v1/species/match?name=Calopteryx&rank=GENUS&strict=false&verbose=TRUE&limit=100
     body:
       encoding: ''
       string: ''
@@ -42,19 +42,20 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"usageKey":1427007,"scientificName":"Calopteryx Leach, 1815","canonicalName":"Calopteryx","rank":"GENUS","status":"ACCEPTED","confidence":92,"note":"Similarity:
-        name=100; classification=-2; rank=0; status=1; nextMatch=0","matchType":"HIGHERRANK","alternatives":[{"usageKey":3234109,"acceptedUsageKey":7763613,"scientificName":"Calopteryx
-        A.C.Sm.","canonicalName":"Calopteryx","rank":"GENUS","status":"SYNONYM","confidence":68,"note":"Similarity:
-        name=100; authorship=0; classification=-2; rank=-30; status=0","matchType":"EXACT","kingdom":"Plantae","phylum":"Tracheophyta","order":"Ericales","family":"Ericaceae","genus":"Thibaudia","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":1353,"familyKey":2505,"genusKey":7763613,"synonym":true,"class":"Magnoliopsida"},{"usageKey":8954339,"scientificName":"Calopteryx
-        Vander Linden, 1825","canonicalName":"Calopteryx","rank":"GENUS","status":"DOUBTFUL","confidence":63,"note":"Similarity:
-        name=100; authorship=0; classification=-2; rank=-30; status=-5","matchType":"EXACT","kingdom":"Animalia","phylum":"Arthropoda","order":"Odonata","family":"Calopterygidae","genus":"Calopteryx","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":789,"familyKey":4211,"genusKey":8954339,"synonym":false,"class":"Insecta"},{"usageKey":7236014,"scientificName":"Calopteryx
-        de Charpentier, 1839","canonicalName":"Calopteryx","rank":"GENUS","status":"DOUBTFUL","confidence":63,"note":"Similarity:
-        name=100; authorship=0; classification=-2; rank=-30; status=-5","matchType":"EXACT","kingdom":"Animalia","phylum":"Arthropoda","order":"Odonata","genus":"Calopteryx","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":789,"genusKey":7236014,"synonym":false,"class":"Insecta"},{"usageKey":3258025,"acceptedUsageKey":4405042,"scientificName":"Colopteryx
-        O.Hofmann, 1898","canonicalName":"Colopteryx","rank":"GENUS","status":"SYNONYM","confidence":43,"note":"Similarity:
-        name=75; authorship=0; classification=-2; rank=-30; status=0","matchType":"FUZZY","kingdom":"Animalia","phylum":"Arthropoda","order":"Lepidoptera","family":"Gelechiidae","genus":"Catatinagma","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":797,"familyKey":3553,"genusKey":4405042,"synonym":true,"class":"Insecta"},{"usageKey":4798148,"scientificName":"Calepteryx
-        Leach, 1815","canonicalName":"Calepteryx","rank":"GENUS","status":"DOUBTFUL","confidence":38,"note":"Similarity:
-        name=75; authorship=0; classification=-2; rank=-30; status=-5","matchType":"FUZZY","kingdom":"Animalia","phylum":"Arthropoda","order":"Odonata","family":"Calopterygidae","genus":"Calepteryx","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":789,"familyKey":4211,"genusKey":4798148,"synonym":false,"class":"Insecta"},{"usageKey":3241589,"scientificName":"Colopteryx
-        Ridgway, 1888","canonicalName":"Colopteryx","rank":"GENUS","status":"DOUBTFUL","confidence":38,"note":"Similarity:
-        name=75; authorship=0; classification=-2; rank=-30; status=-5","matchType":"FUZZY","kingdom":"Animalia","phylum":"Chordata","order":"Passeriformes","family":"Tyrannidae","genus":"Colopteryx","kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":729,"familyKey":5291,"genusKey":3241589,"synonym":false,"class":"Aves"}],"kingdom":"Animalia","phylum":"Arthropoda","order":"Odonata","family":"Calopterygidae","genus":"Calopteryx","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":789,"familyKey":4211,"genusKey":1427007,"synonym":false,"class":"Insecta"}'
-  recorded_at: 2023-08-29 13:20:13 GMT
+      string: '{"confidence":100,"note":"Multiple equal matches for Calopteryx","matchType":"NONE","alternatives":[{"usageKey":1427007,"scientificName":"Calopteryx
+        Leach, 1815","canonicalName":"Calopteryx","rank":"GENUS","status":"ACCEPTED","confidence":105,"note":"Similarity:
+        name=100; authorship=0; classification=-2; rank=6; status=1; score=105","matchType":"EXACT","kingdom":"Animalia","phylum":"Arthropoda","order":"Odonata","family":"Calopterygidae","genus":"Calopteryx","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":789,"familyKey":4211,"genusKey":1427007,"synonym":false,"class":"Insecta"},{"usageKey":3234109,"acceptedUsageKey":7763613,"scientificName":"Calopteryx
+        A.C.Sm.","canonicalName":"Calopteryx","rank":"GENUS","status":"SYNONYM","confidence":104,"note":"Similarity:
+        name=100; authorship=0; classification=-2; rank=6; status=0; score=104","matchType":"EXACT","kingdom":"Plantae","phylum":"Tracheophyta","order":"Ericales","family":"Ericaceae","genus":"Thibaudia","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":1353,"familyKey":2505,"genusKey":7763613,"synonym":true,"class":"Magnoliopsida"},{"usageKey":8954339,"scientificName":"Calopteryx
+        Vander Linden, 1825","canonicalName":"Calopteryx","rank":"GENUS","status":"DOUBTFUL","confidence":99,"note":"Similarity:
+        name=100; authorship=0; classification=-2; rank=6; status=-5; score=99","matchType":"EXACT","kingdom":"Animalia","phylum":"Arthropoda","order":"Odonata","family":"Calopterygidae","genus":"Calopteryx","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":789,"familyKey":4211,"genusKey":8954339,"synonym":false,"class":"Insecta"},{"usageKey":7236014,"scientificName":"Calopteryx
+        de Charpentier, 1839","canonicalName":"Calopteryx","rank":"GENUS","status":"DOUBTFUL","confidence":99,"note":"Similarity:
+        name=100; authorship=0; classification=-2; rank=6; status=-5; score=99","matchType":"EXACT","kingdom":"Animalia","phylum":"Arthropoda","order":"Odonata","genus":"Calopteryx","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":789,"genusKey":7236014,"synonym":false,"class":"Insecta"},{"usageKey":3258025,"acceptedUsageKey":4405042,"scientificName":"Colopteryx
+        O.Hofmann, 1898","canonicalName":"Colopteryx","rank":"GENUS","status":"SYNONYM","confidence":79,"note":"Similarity:
+        name=75; authorship=0; classification=-2; rank=6; status=0; score=79","matchType":"FUZZY","kingdom":"Animalia","phylum":"Arthropoda","order":"Lepidoptera","family":"Gelechiidae","genus":"Catatinagma","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":797,"familyKey":3553,"genusKey":4405042,"synonym":true,"class":"Insecta"},{"usageKey":4798148,"scientificName":"Calepteryx
+        Leach, 1815","canonicalName":"Calepteryx","rank":"GENUS","status":"DOUBTFUL","confidence":74,"note":"Similarity:
+        name=75; authorship=0; classification=-2; rank=6; status=-5; score=74","matchType":"FUZZY","kingdom":"Animalia","phylum":"Arthropoda","order":"Odonata","family":"Calopterygidae","genus":"Calepteryx","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":789,"familyKey":4211,"genusKey":4798148,"synonym":false,"class":"Insecta"},{"usageKey":3241589,"scientificName":"Colopteryx
+        Ridgway, 1888","canonicalName":"Colopteryx","rank":"GENUS","status":"DOUBTFUL","confidence":74,"note":"Similarity:
+        name=75; authorship=0; classification=-2; rank=6; status=-5; score=74","matchType":"FUZZY","kingdom":"Animalia","phylum":"Chordata","order":"Passeriformes","family":"Tyrannidae","genus":"Colopteryx","kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":729,"familyKey":5291,"genusKey":3241589,"synonym":false,"class":"Aves"}],"synonym":false}'
+  recorded_at: 2024-01-04 12:44:08 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0

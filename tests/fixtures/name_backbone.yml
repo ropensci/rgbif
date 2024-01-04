@@ -22,7 +22,7 @@ http_interactions:
       string: '{"usageKey":9206251,"scientificName":"Helianthus annuus L.","canonicalName":"Helianthus
         annuus","rank":"SPECIES","status":"ACCEPTED","confidence":99,"matchType":"EXACT","kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Helianthus","species":"Helianthus
         annuus","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3119134,"speciesKey":9206251,"synonym":false,"class":"Magnoliopsida"}'
-  recorded_at: 2023-08-29 13:20:12 GMT
+  recorded_at: 2024-01-04 12:44:07 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
@@ -46,10 +46,10 @@ http_interactions:
       file: no
       string: '{"usageKey":9206251,"scientificName":"Helianthus annuus L.","canonicalName":"Helianthus
         annuus","rank":"SPECIES","status":"ACCEPTED","confidence":99,"note":"Similarity:
-        name=110; authorship=0; classification=-2; rank=6; status=1; nextMatch=5","matchType":"EXACT","alternatives":[{"usageKey":4252034,"acceptedUsageKey":4250528,"scientificName":"Helianthus
+        name=110; authorship=0; classification=-2; rank=6; status=1; score=115; nextMatch=5","matchType":"EXACT","alternatives":[{"usageKey":4252034,"acceptedUsageKey":4250528,"scientificName":"Helianthus
         canus (Britton) Wooton & Standl.","canonicalName":"Helianthus canus","rank":"SPECIES","status":"SYNONYM","confidence":9,"note":"Similarity:
-        name=5; authorship=0; classification=-2; rank=6; status=0","matchType":"FUZZY","kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Helianthus","species":"Helianthus
+        name=5; authorship=0; classification=-2; rank=6; status=0; score=9","matchType":"FUZZY","kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Helianthus","species":"Helianthus
         petiolaris","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3119134,"speciesKey":3119225,"synonym":true,"class":"Magnoliopsida"}],"kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Helianthus","species":"Helianthus
         annuus","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3119134,"speciesKey":9206251,"synonym":false,"class":"Magnoliopsida"}'
-  recorded_at: 2023-08-29 13:20:12 GMT
+  recorded_at: 2024-01-04 12:44:07 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0

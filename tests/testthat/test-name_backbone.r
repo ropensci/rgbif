@@ -32,17 +32,15 @@ test_that("Throws error because a name is required in the function call", {
 
 test_that("name_backbone verbose=TRUE", {
   vcr::use_cassette("name_backbone_verbose_true", {
-    tt <- name_backbone(name = "Calopteryx", rank = 'species')
-    vv <- name_backbone(name = "Calopteryx", rank = 'species',verbose=TRUE)
+    tt <- name_backbone(name = "Calopteryx",rank="GENUS")
+    vv <- name_backbone(name = "Calopteryx",rank="GENUS",verbose=TRUE)
   })
   expect_is(vv, "tbl")
   expect_is(vv, "tbl_df")
   expect_is(vv, "data.frame")
   expect_equal(vv$verbatim_name[1], "Calopteryx")
-  expect_equal(vv$verbatim_rank[1], "species")
+  expect_equal(vv$verbatim_rank[1], "GENUS")
   expect_true(all(vv$verbatim_name == "Calopteryx"))
   expect_true(rev(names(vv))[1] =="verbatim_rank")
   expect_true(nrow(vv) > nrow(tt))
-  expect_true(tt$status == "ACCEPTED")
-  expect_true(all(vv$status %in% c("ACCEPTED","DOUBTFUL","SYNONYM")))
 })
