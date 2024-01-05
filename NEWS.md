@@ -1,3 +1,35 @@
+rgbif 3.7.9
+===========
+
+### NEW FEATURES
+
+There have been many additions for accessing dataset metadata. 
+
+* `dataset_export()` downloads all of the results of a `dataset_search()`. 
+
+* New functions for getting dataset metadata from a datasetkey (uuid) : `dataset_get()`, `dataset_process()`, `dataset_networks()`, `dataset_constituents()`, `dataset_comment()`, `dataset_contact()`, `dataset_endpoint()`, 
+`dataset_identifier()`,  `dataset_machinetag()`, `dataset_tag()`, `dataset_metrics()`. 
+
+* New function for getting more obscure dataset metadata, such as machineTags: `dataset()`.  
+
+* New functions for listing dataset metadata : `dataset_noendpoint()`, `dataset_duplicate()`. 
+ 
+* `dataset_doi()` gets dataset metadata from the dataset's doi. 
+
+### MINOR IMPROVEMENTS
+
+* Error message improvements for `occ_count()`. (#686)
+
+### Documentation 
+
+* New article [Getting Dataset Metadata From GBIF](https://docs.ropensci.org/rgbif/articles/getting_dataset_info.html)
+
+### DEPRECATED
+
+* There are no longer static data files in rgbif. This data is better fetched fresh from the appropriate endpoints. (#690) (#688)
+
+* `datasets()` is soft deprecated, since the interface was overloaded and confusing. See functional replacements above. 
+
 rgbif 3.7.8
 ===========
 
