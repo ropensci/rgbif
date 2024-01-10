@@ -111,7 +111,7 @@ nomenclaturalStatus are legal values but not yet implemented, so data will
 not yet be returned for them.}
 
 \item{facetMincount}{Used in combination with the facet parameter. Set
-facetMincount={#} to exclude facets with a count less than {#}, e.g.
+facetMincount to exclude facets with a count less than x, e.g.
 http://bit.ly/2osAUQB only shows the type values 'CHECKLIST' and 'OCCURRENCE'
 because the other types have counts less than 10000}
 
