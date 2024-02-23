@@ -732,7 +732,7 @@ check_email <- function(x) {
 check_inputs <- function(x) {
   if (is.character(x)) {
     # replace newlines
-    x <- gsub("\n|\r|\\s+", "", x)
+    x <- gsub("\n|\r", "", x)
     # validate
     tmp <- jsonlite::validate(x)
     if (!tmp) stop(attr(tmp, "err"))
