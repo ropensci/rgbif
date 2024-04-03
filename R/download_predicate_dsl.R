@@ -191,6 +191,7 @@
 #' - isInCluster (IS_IN_CLUSTER)
 #' - lifeStage (LIFE_STAGE)
 #' - distanceFromCentroidInMeters (DISTANCE_FROM_CENTROID_IN_METERS)
+#' - gbifId (GBIF_ID)
 #' 
 #' @references Download predicates docs:
 #' <https://www.gbif.org/developer/occurrence#predicates>
@@ -503,7 +504,9 @@ key_lkup <- list(
   LIFE_STAGE="LIFE_STAGE",
   distanceFromCentroidInMeters="DISTANCE_FROM_CENTROID_IN_METERS",
   DISTANCE_FROM_CENTROID_IN_METERS="DISTANCE_FROM_CENTROID_IN_METERS",
-  datasetName = "DATASET_NAME" # rgbif/issues/589
+  datasetName = "DATASET_NAME", # rgbif/issues/589
+  GBIF_ID = "GBIF_ID",
+  gbifId = "GBIF_ID"
   )
 
 parse_pred <- function(key, value, type = "and") {

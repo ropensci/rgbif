@@ -260,6 +260,7 @@ be supported that is not yet.
 \item isInCluster (IS_IN_CLUSTER)
 \item lifeStage (LIFE_STAGE)
 \item distanceFromCentroidInMeters (DISTANCE_FROM_CENTROID_IN_METERS)
+\item gbifId (GBIF_ID)
 }
 }
 
