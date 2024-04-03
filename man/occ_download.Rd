@@ -132,6 +132,7 @@ error on GBIF's side and you'll have to split your query into a few.
 # occ_download(pred("country", "US"))
 # occ_download(pred("institutionCode", "TLMF"))
 # occ_download(pred("catalogNumber", 217880))
+# occ_download(pred("gbifId", 142317604)) 
 
 # download format
 # z <- occ_download(pred_gte("decimalLatitude", 75),
