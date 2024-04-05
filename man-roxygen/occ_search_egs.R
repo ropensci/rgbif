@@ -161,16 +161,6 @@
 #' #### if WKT too long, with 'geom_big=bbox': makes into bounding box
 #' res <- occ_search(geometry = wkt, geom_big = "bbox")$data
 #'
-#' #### Or, use 'geom_big=axe'
-#' (res <- occ_search(geometry = wkt, geom_big = "axe"))
-#' ##### manipulate essentially number of polygons that result, so number of requests
-#' ###### default geom_size is 40
-#' ###### fewer calls
-#' (res <- occ_search(geometry = wkt, geom_big = "axe", geom_size=50))
-#' ###### more calls
-#' (res <- occ_search(geometry = wkt, geom_big = "axe", geom_size=30))
-#'
-#'
 #' # Search on country
 #' occ_search(country='US', fields=c('name','country'), limit=20)
 #' occ_search(country='FR', fields=c('name','country'), limit=20)

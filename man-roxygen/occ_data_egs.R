@@ -170,14 +170,6 @@
 #' res <- occ_data(geometry = wkt, geom_big = "bbox")
 #' }
 #'
-#' #### Or, use 'geom_big=axe'
-#' (res <- occ_data(geometry = wkt, geom_big = "axe"))
-#' ##### manipulate essentially number of polygons that result, so number of requests
-#' ###### default geom_size is 40
-#' ###### fewer calls
-#' (res <- occ_data(geometry = wkt, geom_big = "axe", geom_size=50))
-#' ###### more calls
-#' (res <- occ_data(geometry = wkt, geom_big = "axe", geom_size=30))
 #'
 #' # Search on country
 #' occ_data(country='US', limit=20)

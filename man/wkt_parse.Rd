@@ -4,12 +4,12 @@
 \alias{wkt_parse}
 \title{parse wkt into smaller bits}
 \usage{
-wkt_parse(wkt, geom_big, geom_size = 40, geom_n = 10)
+wkt_parse(wkt, geom_big = "bbox", geom_size = 40, geom_n = 10)
 }
 \arguments{
 \item{wkt}{(character) A WKT string. Required.}
 
-\item{geom_big}{(character) One of "axe" or "bbox". Required.}
+\item{geom_big}{(character) Only "bbox" works since rgbif 3.8.0.}
 
 \item{geom_size}{(integer) An integer indicating size of the cell.
 Default: 40.}
@@ -56,12 +56,5 @@ if (requireNamespace("sf", quietly=TRUE)) {
 # to a bounding box in wkt format
 wkt_parse(wkt, geom_big = "bbox")
 
-# to many wkt strings, chopped up from input
-wkt_parse(wkt, geom_big = "axe")
-wkt_parse(wkt, geom_big = "axe", 60)
-wkt_parse(wkt, geom_big = "axe", 30)
-wkt_parse(wkt, geom_big = "axe", 20)
-wkt_parse(wkt, geom_big = "axe", 10)
-wkt_parse(wkt, geom_big = "axe", 5)
 }
 }
