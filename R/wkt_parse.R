@@ -2,7 +2,7 @@
 #'
 #' @export
 #' @param wkt (character) A WKT string. Required.
-#' @param geom_big (character) One of "axe" or "bbox". Required.
+#' @param geom_big (character) Only "bbox" works since rgbif 3.8.0. 
 #' @param geom_size (integer) An integer indicating size of the cell.
 #' Default: 40.
 #' @param geom_n (integer) An integer indicating number of cells in
@@ -43,14 +43,7 @@
 #' # to a bounding box in wkt format
 #' wkt_parse(wkt, geom_big = "bbox")
 #'
-#' # to many wkt strings, chopped up from input
-#' wkt_parse(wkt, geom_big = "axe")
-#' wkt_parse(wkt, geom_big = "axe", 60)
-#' wkt_parse(wkt, geom_big = "axe", 30)
-#' wkt_parse(wkt, geom_big = "axe", 20)
-#' wkt_parse(wkt, geom_big = "axe", 10)
-#' wkt_parse(wkt, geom_big = "axe", 5)
 #' }
-wkt_parse <- function(wkt, geom_big, geom_size=40, geom_n=10) {
+wkt_parse <- function(wkt, geom_big = "bbox", geom_size=40, geom_n=10) {
   geometry_handler(wkt, geom_big, geom_size, geom_n, FALSE)
 }

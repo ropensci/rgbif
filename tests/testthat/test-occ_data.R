@@ -254,24 +254,18 @@ test_that("geometry inputs work as expected", {
   7.81427800655365 54.5245591562317,10.97834050655365 51.89375191441792,10.97834050655365
   55.43241335888528,13.26349675655365 52.53991761181831))"
   wkt <- gsub("\n", " ", wkt)
-
+  
   # if WKT too long, with 'geom_big=bbox': makes into bounding box
   vcr::use_cassette("occ_data_geometry_dd", {
     dd <- occ_data(geometry = wkt, geom_big = "bbox", limit = 30)
   }, preserve_exact_body_bytes = TRUE)
-  
+
   expect_lt(nchar(attr(dd, "args")$geometry), nchar(wkt))
   expect_message(occ_data(geometry = wkt, geom_big = "bbox", limit = 1),
                  "geometry is big, querying BBOX, then pruning results to polygon")
 
-  # use 'geom_big=axe'
-  vcr::use_cassette("occ_data_geometry_ee_gg", {
-    ee <- occ_data(geometry = wkt, geom_big = "axe", limit = 30)
-    ## more calls
-    gg <- occ_data(geometry = wkt, geom_big = "axe", geom_size = 30, limit = 5)
-
-    expect_gt(length(names(ee)), length(names(gg)))
-  }, preserve_exact_body_bytes = TRUE)
+  # use 'geom_big=axe', which is deprecated since rgbif 3.8.0
+  expect_warning(expect_error(occ_data(geometry = wkt, geom_big = "axe", limit = 30)))
 
   # bad wkt is caught and handled appropriately
   vcr::use_cassette("occ_data_geometry_errors", {
@@ -292,9 +286,9 @@ test_that("geometry inputs work as expected", {
 # many args
 test_that("works with parameters that allow many inputs", {
   vcr::use_cassette("occ_data_args_with_many_inputs", {
-    ## separate requests: use a vector of strings
+    # separate requests: use a vector of strings
     aa <- occ_data(recordedBy=c("smith","BJ Stacey"), limit=10)
-    ## one request, many instances of same parameter: use semi-colon sep. string
+    # one request, many instances of same parameter: use semi-colon sep. string
     bb <- occ_data(recordedBy="smith;BJ Stacey", limit=10)
   }, preserve_exact_body_bytes = TRUE, match_requests_on = c("path", "query"))
 
@@ -306,7 +300,7 @@ test_that("works with parameters that allow many inputs", {
 
   expect_true(all(grepl("smith",unique(tolower(aa[[1]]$data$recordedBy)))))
   expect_true(all(grepl("bj stacey",unique(tolower(aa[[2]]$data$recordedBy)))))
-  
+
   expect_true(all(grepl('smith|bj stacey',unique(tolower(bb$data$recordedBy)))))
 })
 
@@ -507,16 +501,16 @@ test_that("speciesKey works correctly", {
 test_that("identifiedBy works correctly", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_data_identifiedBy", {
-    ww <- occ_data(identifiedBy="John Waller", limit=2)
-    bb <- occ_data(identifiedBy="John Waller;Matthew Blissett", limit=2)
-    cc <- occ_data(identifiedBy=c("John Waller", "Matthew Blissett"), limit=2)
-    dd <- occ_data(country="DK",identifiedBy="John Waller", limit=2)
+    ww <- occ_data(identifiedBy="Tim Robertson", limit=2)
+    bb <- occ_data(identifiedBy="Tim Robertson;Matthew Blissett", limit=2)
+    cc <- occ_data(identifiedBy=c("Tim Robertson", "Matthew Blissett"), limit=2)
+    dd <- occ_data(country="DK",identifiedBy="Tim Robertson", limit=2)
   }, preserve_exact_body_bytes = TRUE)
 
-  expect_equal(ww$data$identifiedBy[1],"John Waller")
-  expect_true(all(bb$data$identifiedBy %in% c("John Waller", "Matthew Blissett")))
-  expect_true(all(cc$data$identifiedBy %in% c("John Waller", "Matthew Blissett")))
-  expect_equal(dd$data$identifiedBy[1],"John Waller")
+  expect_equal(ww$data$identifiedBy[1],"Tim Robertson")
+  expect_true(all(bb$data$identifiedBy %in% c("Tim Robertson", "Matthew Blissett")))
+  expect_true(all(cc$data$identifiedBy %in% c("Tim Robertson", "Matthew Blissett")))
+  expect_equal(dd$data$identifiedBy[1],"Tim Robertson")
   expect_equal(dd$data$countryCode[1], "DK")
 })
 
@@ -597,7 +591,7 @@ test_that("distanceFromCentroidInMeters works correctly", {
     rr <- occ_data(distanceFromCentroidInMeters="2000,*",limit=2)
     dd <- occ_data(distanceFromCentroidInMeters="0,2000",limit=2)
   }, preserve_exact_body_bytes = TRUE)
-  
+
   expect_equal(nrow(ee$data),2)
   expect_equal(nrow(rr$data),2)
   expect_equal(nrow(dd$data),2)

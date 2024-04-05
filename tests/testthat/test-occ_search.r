@@ -282,16 +282,16 @@ test_that("speciesKey works correctly", {
 test_that("identifiedBy works correctly", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_search_identifiedBy", {
-    ww <- occ_search(identifiedBy="John Waller",limit=2)
-    bb <- occ_search(identifiedBy="John Waller;Matthew Blissett",limit=2)
-    cc <- occ_search(identifiedBy=c("John Waller", "Matthew Blissett"),limit=2)
-    dd <- occ_search(country="DK",identifiedBy="John Waller",limit=2)
+    ww <- occ_search(identifiedBy="Tim Robertson",limit=2)
+    bb <- occ_search(identifiedBy="Tim Robertson;Matthew Blissett",limit=2)
+    cc <- occ_search(identifiedBy=c("Tim Robertson", "Matthew Blissett"),limit=2)
+    dd <- occ_search(country="DK",identifiedBy="Tim Robertson",limit=2)
   }, preserve_exact_body_bytes = TRUE)
   
-  expect_equal(ww$data$identifiedBy[1],"John Waller")
-  expect_true(all(bb$data$identifiedBy %in% c("John Waller", "Matthew Blissett")))
-  expect_true(all(cc$data$identifiedBy %in% c("John Waller", "Matthew Blissett")))
-  expect_equal(dd$data$identifiedBy[1],"John Waller")
+  expect_equal(ww$data$identifiedBy[1],"Tim Robertson")
+  expect_true(all(bb$data$identifiedBy %in% c("Tim Robertson", "Matthew Blissett")))
+  expect_true(all(cc$data$identifiedBy %in% c("Tim Robertson", "Matthew Blissett")))
+  expect_equal(dd$data$identifiedBy[1],"Tim Robertson")
   expect_equal(dd$data$countryCode[1], "DK")
 })
 
@@ -569,12 +569,8 @@ test_that("geometry inputs work as expected", {
                    "geometry is big, querying BBOX, then pruning results to polygon")
   }, preserve_exact_body_bytes = TRUE)
   
-  vcr::use_cassette("occ_search_geometry_ee_gg", {
-    # use 'geom_big=axe'
-    ee <- occ_search(geometry = wkt, geom_big = "axe", limit = 30)
-    ## more calls
-    gg <- occ_search(geometry = wkt, geom_big = "axe", geom_size = 30, limit = 5)
-  }, preserve_exact_body_bytes = TRUE)
+  # use 'geom_big=axe', which is deprecated since rgbif 3.8.0
+  expect_warning(expect_error(occ_search(geometry = wkt, geom_big = "axe", limit = 30)))
 
   vcr::use_cassette("occ_search_geometry_errors", {
     # bad wkt is caught and handled appropriately
@@ -613,7 +609,6 @@ test_that("geometry inputs work as expected", {
 
   expect_lt(nchar(attr(dd, "args")$geometry), nchar(wkt))
 
-  expect_gt(length(names(ee)), length(names(gg)))
 })
 
 

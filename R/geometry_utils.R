@@ -31,6 +31,9 @@ geometry_handler <- function(x, geom_big = "asis", size = 40, n = 10, verbose = 
           }
         },
         axe = {
+          .Deprecated(msg = "Using 'axe=' is deprecated Since rgbif v3.8.0. Please 
+                      use occ_download(pred_within('...')) instead for complex polygons.")
+          warning("This might return error or not work correctly, because of new polygon interpretation by GBIF.")
           check_for_a_pkg("sf")
           xsf <- sf::st_as_sfc(x[i])
           gt <- sf::st_make_grid(xsf, cellsize = rep(size, 2), n = rep(n, 2))

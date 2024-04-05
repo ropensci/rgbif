@@ -141,7 +141,7 @@ Well Known Text (WKT) format. A WKT shape written as either
 For Example, "POLYGON((37.08 46.86,38.06 46.86,38.06 47.28,37.08 47.28,
 37.0 46.8))". See also the section \strong{WKT} below.}
 
-\item{geom_big}{(character) One of "axe", "bbox", or "asis" (default).}
+\item{geom_big}{(character) One"bbox" or "asis" (default).}
 
 \item{geom_size}{(integer) An integer indicating size of the cell. Default:
 40.}
@@ -478,14 +478,8 @@ set one of these three via the parameter \code{geom_big}:
 \itemize{
 \item asis - the default setting. This means we don't do anything internally. That is,
 we just pass on your WKT string just as we've done before in this package.
-\item axe - this option uses the \pkg{sf} package to chop up your WKT string in
-to many polygons, which then leads to a separate data request for each polygon piece,
-then we combine all dat back together to give to you. Note that if your WKT string
-is not of type polygon, we drop back to \code{asis}as there's no way to chop up
-linestrings, etc. This option will in most cases be slower than the other two options.
-However, this polygon splitting approach won't have the problem of
-the disconnect between how many records you want and what you actually get back as
-with the bbox option.
+\item axe - this option is deprecated since rgbif v3.8.0. Might return error,
+since the GBIF's polygon interpretation has changed.
 
 This method uses \code{sf::st_make_grid} and \code{sf::st_intersection}, which has
 two parameters \code{cellsize} and \code{n}. You can tweak those parameters here by
@@ -679,16 +673,6 @@ wkt <- gsub("\n", " ", wkt)
 
 #### if WKT too long, with 'geom_big=bbox': makes into bounding box
 res <- occ_search(geometry = wkt, geom_big = "bbox")$data
-
-#### Or, use 'geom_big=axe'
-(res <- occ_search(geometry = wkt, geom_big = "axe"))
-##### manipulate essentially number of polygons that result, so number of requests
-###### default geom_size is 40
-###### fewer calls
-(res <- occ_search(geometry = wkt, geom_big = "axe", geom_size=50))
-###### more calls
-(res <- occ_search(geometry = wkt, geom_big = "axe", geom_size=30))
-
 
 # Search on country
 occ_search(country='US', fields=c('name','country'), limit=20)
