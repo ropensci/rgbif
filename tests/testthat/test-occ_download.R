@@ -86,11 +86,11 @@ test_that("occ_download: real requests work", {
     pred_gte("year", 1900),
     pred_not(pred("basisOfRecord", "FOSSIL_SPECIMEN")),
     pred_or(
-    pred_not(pred_in("establishmentMeans",c("MANAGED","INTRODUCED"))),
-    pred_isnull("establishmentMeans"),
-    pred_lt("coordinateUncertaintyInMeters",10000),
-    pred_isnull("coordinateUncertaintyInMeters"),
-    pred_like("catalogNumber","PAPS5-560*")
+      pred_not(pred_in("establishmentMeans",c("MANAGED","INTRODUCED"))),
+      pred_isnull("establishmentMeans"),
+      pred_lt("coordinateUncertaintyInMeters",10000),
+      pred_isnull("coordinateUncertaintyInMeters"),
+      pred_like("catalogNumber","PAPS5-560*")
     ),
     format = "SIMPLE_CSV"
     )
@@ -107,7 +107,7 @@ test_that("occ_download: real requests work", {
   expect_is(attr(ccc,"downloadLink"),"character")
   expect_output(print.occ_download(ccc),"<<gbif download>>")
   expect_equal(length(capture.output(print(ccc))),22)
-
+  
   # test new key
   vcr::use_cassette("occ_download_5", {
     vvv <- occ_download(
@@ -149,7 +149,7 @@ test_that("occ_download: real requests work", {
   expect_is(attr(ooo,"downloadLink"),"character")
   expect_output(print.occ_download(ooo),"<<gbif download>>")
   expect_equal(length(capture.output(print(ooo))),22)
-
+  
   # test new key
   vcr::use_cassette("occ_download_7", {
     sss <- occ_download(
@@ -190,6 +190,34 @@ test_that("occ_download: real requests work", {
   expect_is(attr(ddd,"downloadLink"),"character")
   expect_output(print.occ_download(ddd),"<<gbif download>>")
   expect_equal(length(capture.output(print(ddd))),22)
+  
+  # check that verbatim_extensions work as expected  
+  vcr::use_cassette("occ_download_9", {
+    v <- occ_download(
+      pred("taxonKey",5052020),
+      verbatim_extensions(
+        "http://rs.tdwg.org/chrono/terms/ChronometricAge",
+        "http://rs.gbif.org/terms/1.0/DNADerivedData"
+      ),
+      format = "DWCA"
+    )
+  }, match_requests_on = c("method", "uri", "body"))
+  
+  expect_is(unclass(v), "character")
+  expect_match(unclass(v)[1], "^[0-9]{7}-[0-9]{15}$")
+  expect_equal(attr(v, "user"), Sys.getenv("GBIF_USER"))
+  expect_equal(attr(v, "email"), Sys.getenv("GBIF_EMAIL"))
+  expect_equal(attr(v, "format"), "DWCA")
+  expect_is(attr(v,"doi"),"character")
+  expect_is(attr(v,"citation"),"character")
+  expect_is(attr(v,"downloadLink"),"character")
+  expect_output(print.occ_download(v),"<<gbif download>>")
+  expect_equal(length(capture.output(print(v))),22)
+  expect_equal(occ_download_meta(v)$request$verbatimExtensions[[1]],
+               "http://rs.tdwg.org/chrono/terms/ChronometricAge")
+  expect_equal(occ_download_meta(v)$request$verbatimExtensions[[2]],
+               "http://rs.gbif.org/terms/1.0/DNADerivedData")
+  expect_equal(length(occ_download_meta(v)$request$verbatimExtensions),2)
   
 })
 
