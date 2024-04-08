@@ -243,6 +243,25 @@ large_wkt <- "POLYGON ((127.0171 4.9391, 124.5973 4.7960, 121.7968 3.7617,
 occ_download(pred_within(large_wkt),format = "SIMPLE_CSV"))
 ```
 
+## Downloading verbatim DWCA extensions
+
+Additional Darwin Core extension data can also be included in a DWCA download. These data tables are not processed by GBIF. They are as-published.
+
+The extension tables available for download are provided using this [API call](https://api.gbif.org/v1/occurrence/download/describe/dwca)
+, under **verbatimExtensions**. They can be requested by adding a `verbatim_extensions()` expression to the `occ_download()` request. The format has to be "DWCA" for `verbatim_extensions()` to work. 
+
+
+```r
+occ_download(
+    pred("country", "USA"),
+    verbatim_extensions(
+    "http://rs.tdwg.org/chrono/terms/ChronometricAge",
+    "http://rs.gbif.org/terms/1.0/DNADerivedData"
+    ),
+    format = "DWCA"
+    )
+```
+
 ## Filter Country Centroids
 
 > Sometimes GBIF data publishers will not know the exact lat-lon location of a record and will enter the lat-long center of the country instead. This is a data issue because users might be unaware that an observation is pinned to a country center and assume it is a precise location.
