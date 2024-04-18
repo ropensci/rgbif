@@ -247,8 +247,7 @@ occ_download(pred_within(large_wkt),format = "SIMPLE_CSV"))
 
 Additional Darwin Core extension data can also be included in a DWCA download. These data tables are not processed by GBIF. They are as-published.
 
-The extension tables available for download are provided using this [API call](https://api.gbif.org/v1/occurrence/download/describe/dwca)
-, under **verbatimExtensions**. They can be requested by adding a `verbatim_extensions()` expression to the `occ_download()` request. The format has to be "DWCA" for `verbatim_extensions()` to work. 
+The extension tables available for download are provided using `occ_download_describe("dwca")$verbatimExtensions`. They can be requested by adding a `verbatim_extensions()` expression to the `occ_download()` request. The format has to be "DWCA" for `verbatim_extensions()` to work. 
 
 
 ```r
