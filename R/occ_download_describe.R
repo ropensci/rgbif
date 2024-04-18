@@ -25,7 +25,6 @@ occ_download_describe <- function(x="dwca") {
   out <- list(
     multimediaFields = out$multimedia$fields,
     verbatimFields = out$verbatim$fields,
-    verbatimFields = out$interpreted$fields,
     interpretedFields = out$interpreted$fields,
     verbatimExtensions = out$verbatimExtensions
   )
