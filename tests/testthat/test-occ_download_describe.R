@@ -1,0 +1,21 @@
+test_that("occ_download_describe works as expected", {
+  vcr::use_cassette("occ_download_describe", {
+    dwca <- occ_download_describe("dwca") 
+    simpleCsv <- occ_download_describe("simpleCsv") 
+    simpleParquet <- occ_download_describe("simpleParquet") 
+    speciesList <- occ_download_describe("speciesList") 
+  })
+  expect_is(dwca, "occ_download_describe")
+  expect_is(dwca$multimediaFields, "data.frame")
+  expect_is(dwca$verbatimFields, "data.frame")
+  expect_is(dwca$interpretedFields, "data.frame")
+  expect_is(dwca$verbatimExtensions, "character")
+  expect_is(dwca, "occ_download_describe")
+  
+  expect_is(simpleCsv, "occ_download_describe")
+  expect_is(simpleCsv$fields, "data.frame")
+  expect_is(simpleParquet, "occ_download_describe")
+  expect_is(simpleParquet$fields, "data.frame")
+  expect_is(speciesList, "occ_download_describe")
+  expect_is(speciesList$fields, "data.frame")
+})
