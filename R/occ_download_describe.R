@@ -10,7 +10,7 @@
 #' @return a list. 
 #' @export
 #'
-#' @examples /dontrun{
+#' @examples \dontrun{
 #' occ_download_describe("dwca")$verbatimFields
 #' occ_download_describe("dwca")$verbatimExtensions
 #' occ_download_describe("simpleCsv")$fields
