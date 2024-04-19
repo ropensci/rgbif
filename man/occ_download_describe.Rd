@@ -21,11 +21,9 @@ The function returns a list with the fields available in GBIF downloads. It
 is considered experimental by GBIF, so the output might change in the future.
 }
 \examples{
-{
 \dontrun{
 occ_download_describe("dwca")$verbatimFields
 occ_download_describe("dwca")$verbatimExtensions
 occ_download_describe("simpleCsv")$fields
-}
 }
 }
