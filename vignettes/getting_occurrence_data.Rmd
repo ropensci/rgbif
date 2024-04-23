@@ -243,7 +243,7 @@ large_wkt <- "POLYGON ((127.0171 4.9391, 124.5973 4.7960, 121.7968 3.7617,
 occ_download(pred_within(large_wkt),format = "SIMPLE_CSV"))
 ```
 
-Due to changes in GBIF's polygon interpretation, you might get an error when using polygon's wound in the "wrong direction" (clockwise). For example the R package `sf` returns WKT polygons clockwise by default. One solution is to use the `wk` package to reorient the polygon prior to feeding it to `occ_download()`. 
+Due to changes in GBIF's polygon interpretation, you might get an error when using polygons wound in the "wrong direction" (clockwise). For example, the R package `sf` returns WKT polygons clockwise by default. One solution is to use the `wk` package to reorient the polygon prior to feeding it to `occ_download()`. 
 
 ```r
 wkt %>%
