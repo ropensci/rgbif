@@ -43,7 +43,6 @@ geometry_handler <- function(x, geom_big = "asis", size = 40, n = 10, verbose = 
           }))
         }
       )
-
     }
     unlist(out, recursive = FALSE)
 
