@@ -595,7 +595,10 @@ sub_str <- function(str, max = 100) {
 }
 parse_predicates <- function(user, email, type, format, ...) {
   tmp <- list(...)
-  clzzs <- vapply(tmp,
+  if(length(tmp) == 0) { 
+    stop("You are requesting a full download. Please use a predicate to filter the data. For example, pred_default().")
+  }  
+clzzs <- vapply(tmp,
     function(z) inherits(z, c("verbatim_extensions","occ_predicate", "occ_predicate_list")),
     logical(1)
   )

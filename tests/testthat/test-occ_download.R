@@ -219,6 +219,9 @@ test_that("occ_download: real requests work", {
                "http://rs.gbif.org/terms/1.0/DNADerivedData")
   expect_equal(length(occ_download_meta(v)$request$verbatimExtensions),2)
   
+  # check that full downloads fail well 
+  expect_error(occ_download(), "You are requesting a full download. Please use a predicate to filter the data. For example, pred_default().")
+  
 })
 
 
