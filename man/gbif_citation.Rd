@@ -7,9 +7,7 @@
 gbif_citation(x)
 }
 \arguments{
-\item{x}{(character) Result of call to \code{\link[=occ_search]{occ_search()}}, \code{\link[=occ_data]{occ_data()}},
-\code{\link[=occ_download_get]{occ_download_get()}}, \code{\link[=occ_download_meta]{occ_download_meta()}}, a dataset key, or occurrence key
-(character or numeric)}
+\item{x}{(character) Result of call to \code{\link[=occ_download_get]{occ_download_get()}}, \code{\link[=occ_download_meta]{occ_download_meta()}}.}
 }
 \value{
 list with S3 class assigned, used by a print method to pretty print
