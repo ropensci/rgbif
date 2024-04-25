@@ -5,14 +5,12 @@
 #' @return list with S3 class assigned, used by a print method to pretty print
 #' citation information. Though you can unclass the output or just index to the
 #' named items as needed.
-#' @details Returns a set of citations, one for each dataset. We pull out
-#' unique dataset keys and get citations, so the length of citations may not
-#' be equal to the number of records you pass in.
-#'
-#' Currently, this function gives back citations at the dataset level, not
-#' at the individual occurrence level. If occurrence keys are passed in, then
-#' we track down the dataset the key is from, and get the citation for
-#' the dataset.
+#' @details 
+#' The function is deprecated for use with [occ_search()] and [occ_data()] 
+#' results, and is deprecated for use with datasetKeys and gbifids. Instead,
+#' we encourage you to use [derived_dataset()] instead. 
+#' 
+#' [occ_download_get()] and [occ_download_meta()] results are still supported.
 #' 
 #' @examples \dontrun{
 #' # Downloads
@@ -89,6 +87,7 @@ gbif_citation.character <- function(x) {
 
 #' @export
 gbif_citation.numeric <- function(x) {
+  .Deprecated(msg="gbif_citation() for gbifids is deprecated since rgbif 3.8.0. \nUse rgbif::derived_dataset() instead.")
   tmp <- as_occ_d_key(x)
   cit <- list(
     title = tmp$title,
