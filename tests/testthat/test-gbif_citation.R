@@ -40,17 +40,17 @@ test_that("gbif_citation w/ downloadkey", {
   expect_equal(kk$download, "GBIF Occurrence Download https://doi.org/10.15468/dl.yghxj7 Accessed from R via rgbif (https://github.com/ropensci/rgbif) on 2017-10-20")
 })
 
-test_that("gbif_citation w/ datasetkey", {
-  vcr::use_cassette("gbif_citation_datasetkey", {
-    vv <- gbif_citation("b124e1e0-4755-430f-9eab-894f25a9b59c")
-  }, preserve_exact_body_bytes = TRUE)
-  expect_equal(class(vv$citation),"list")
-  expect_equal(class(vv$citation$title),"character")
-  expect_equal(class(vv$citation$text),"character")
-  expect_equal(class(vv$citation$accessed),"character")
-  expect_equal(class(vv$citation$citation),"character")
-  expect_equal(class(vv$rights),"character")
-})
+# test_that("gbif_citation w/ datasetkey", {
+#   vcr::use_cassette("gbif_citation_datasetkey", {
+#     vv <- gbif_citation("b124e1e0-4755-430f-9eab-894f25a9b59c")
+#   }, preserve_exact_body_bytes = TRUE)
+#   expect_equal(class(vv$citation),"list")
+#   expect_equal(class(vv$citation$title),"character")
+#   expect_equal(class(vv$citation$text),"character")
+#   expect_equal(class(vv$citation$accessed),"character")
+#   expect_equal(class(vv$citation$citation),"character")
+#   expect_equal(class(vv$rights),"character")
+# })
 
 test_that("gbif_citation fails correctly", {
   expect_error(gbif_citation(), "no applicable method")

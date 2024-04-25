@@ -144,33 +144,6 @@ source_url = "https://zenodo.org/record/4246090#.YPGS2OgzZPY"
 Check your derived-dataset [user page](https://www.gbif.org/derived-dataset)
  to see if it worked.
 
-
-## Citing a Single Dataset or Occurrence Record
-
-There might be **rare cases** where you need to cite and individual dataset mediated by GBIF. 
-
-```r
-gbif_citation("0ec3229f-2b53-484e-817a-de8ceb1fce2b")
-```
-
-In even more rare cases, you might want to cite one **individual occurrence record**. 
-
-```r
-gbif_citation(1101144669)
-```
-
-If you want to cite **even two records**, I would suggest using `occ_download()` instead.
-
-It is no longer considered good practice to use `gbif_citation()` with `occ_search()`. With newer versions of rgbif, running this should give this message. 
-
-```r
-gbif_citation(occ_search())
-```
-```
-gbif_citation() for occ_search() and occ_data() is deprecated.
-Use rgbif::occ_download() or rgbif::derived_dataset() instead.
-```
-
 ## Further Reading
 
 https://www.gbif.org/citation-guidelines<br>
