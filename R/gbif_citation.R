@@ -1,9 +1,8 @@
 #' Get citation for datasets used
 #'
 #' @export
-#' @param x (character) Result of call to [occ_search()], [occ_data()],
-#' [occ_download_get()], [occ_download_meta()], a dataset key, or occurrence key
-#' (character or numeric)
+#' @param x (character) Result of call to [occ_download_get()], [occ_download_meta()], 
+#' a dataset key, or occurrence key (character or numeric)
 #' @return list with S3 class assigned, used by a print method to pretty print
 #' citation information. Though you can unclass the output or just index to the
 #' named items as needed.
@@ -15,6 +14,7 @@
 #' at the individual occurrence level. If occurrence keys are passed in, then
 #' we track down the dataset the key is from, and get the citation for
 #' the dataset.
+#' 
 #' @examples \dontrun{
 #' 
 #' # character class inputs
@@ -59,15 +59,15 @@ gbif_citation.gbif <- function(x) {
   }
   
   lapply(dkeys, function(z) {
-    tmp <- datasets(uuid = z)
-    cit <- list(title = tmp$data$title,
-                text = tmp$data$citation$text,
+    tmp <- dataset_get(uuid = z)
+    cit <- list(title = tmp$title,
+                text = tmp$citation$text,
                 accessed =
                   paste0(
                     "Accessed from R via rgbif (https://github.com/ropensci/rgbif) on ",
                     Sys.Date()))
     cit$citation <- paste(cit$text, cit$accessed, sep = ". ")
-    structure(list(citation = cit, rights = tmp$data$rights %||% tmp$data$license),
+    structure(list(citation = cit, rights = tmp$rights %||% tmp$license),
               class = "gbif_citation")
   })
 }
@@ -80,17 +80,18 @@ gbif_citation.character <- function(x) {
   if (is_download_key(x)) {
     gbif_citation.occ_download_meta(occ_download_meta(x))
   } else {
+    .Deprecated(msg="gbif_citation() for datasetKeys is deprecated since rgbif 3.8.0. \nUse rgbif::derived_dataset() instead.")
     tmp <- as_occ_d_key(x)
-    
+    print(tmp$citation)
     cit <- list(
-      title = tmp$data$title,
-      text = tmp$data$citation$text,
+      title = tmp$title,
+      text = tmp$citation$text,
       accessed =
         paste0(
           "Accessed from R via rgbif (https://github.com/ropensci/rgbif) on ",
           Sys.Date()))
     cit$citation <- paste(cit$text, cit$accessed, sep = ". ")
-    structure(list(citation = cit, rights = tmp$data$rights %||% tmp$data$license),
+    structure(list(citation = cit, rights = tmp$rights %||% tmp$license),
               class = "gbif_citation")
     
   }
@@ -101,14 +102,14 @@ gbif_citation.character <- function(x) {
 gbif_citation.numeric <- function(x) {
   tmp <- as_occ_d_key(x)
   cit <- list(
-    title = tmp$data$title,
-    text = tmp$data$citation$text,
+    title = tmp$title,
+    text = tmp$citation$text,
     accessed =
       paste0(
         "Accessed from R via rgbif (https://github.com/ropensci/rgbif) on ",
         Sys.Date()))
   cit$citation <- paste(cit$text, cit$accessed, sep = ". ")
-  structure(list(citation = cit, rights = tmp$data$rights %||% tmp$data$license),
+  structure(list(citation = cit, rights = tmp$rights %||% tmp$license),
             class = "gbif_citation")
 }
 
@@ -179,13 +180,13 @@ print.gbif_citation <- function(x, indent = 3, width = 80, ...) {
 }
 
 as_occ_d_key <- function(x) {
-  if (is_dataset_key_pattern(x)) {
-    datasets(uuid = x)
+  if (is_uuid(x)) {
+    dataset_get(x)
   }
   else {
     if (is_occ_key(x)) {
       key <- occ_get(as.numeric(x), fields = "all")[[1]]$data$datasetKey
-      datasets(uuid = key)
+      dataset_get(key)
     } else {
       stop("Pass in either an occurrence key or dataset key", call. = FALSE)
     }
@@ -200,8 +201,3 @@ is_occ_key <- function(x) {
   temp$status_code <= 201
 }
 
-is_dataset_key_pattern <- function(x) {
-  grepl(
-"^[A-Za-z0-9]{8}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{12}$",
-x)
-}
