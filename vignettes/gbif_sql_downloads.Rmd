@@ -1,0 +1,133 @@
+---
+title: GBIF SQL Downloads
+author: John Waller
+date: "2024-04-26"
+output: rmarkdown::html_vignette
+vignette: >
+    %\VignetteIndexEntry{gbif_sql_download}
+    %\VignetteEngine{knitr::rmarkdown}
+    %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+> GBIF has an experimental feature that allows users to download data from the GBIF database in SQL format. <https://techdocs.gbif.org/en/data-use/api-sql-downloads>
+
+The experimental Occurrence SQL Download API allows users to query GBIF occurrences using SQL. In contrast to the [Predicate Download API](https://techdocs.gbif.org/en/data-use/api-sql-downloads), the SQL API allows selection of the columns of interest and generation of summary views of GBIF data.
+
+SQL downloads, like regular downloads, required you to set up your **GBIF credentials**. I suggest that you follow this [short tutorial](https://docs.ropensci.org/rgbif/articles/gbif_credentials.html) before continuing.
+
+``` r
+# test if your download is set up correctly 
+# occ_download_sql_prep("SELECT datasetKey, countryCode, COUNT(*) FROM occurrence WHERE continent = 'EUROPE' GROUP BY datasetKey, countryCode")
+
+occ_download_sql("SELECT datasetKey, countryCode, COUNT(*) FROM occurrence WHERE continent = 'EUROPE' GROUP BY datasetKey, countryCode")
+```
+
+`occ_download_get()`and `occ_download_import()` still work with SQL downloads.
+
+``` r
+occ_download_get("0000967-240425142415019") %>%
+  occ_download_import()
+```
+
+## Supported SQL
+
+Only `SELECT` queries are supported, and only queries against a single table named `occurrence`. `JOIN` queries and sub-queries are not allowed. Selecting `*` is also not allowed. One must explicitly select the columns needed.
+
+`GROUP BY` queries are supported, as are basic SQL window functions (`OVER` and `PARTITION BY`). `ORDER BY` is supported. 
+
+Most common SQL operators and functions are supported, such as `AND`, `OR`, `NOT`, `IS NULL`, `RAND()`, `ROUND(…)`, `LOWER(…)`, etc. Case is ignored by the GBIF SQL parser, and all column names are returned as lowercase.
+
+You can use `occ_download_prep()` to check if your query is valid.
+
+``` r
+occ_download_prep("SELECT * FROM occurrence WHERE year = 2000") 
+# Should return an ERROR since "*" is not allowed
+```
+
+If you need **all** occurrence columns, most of the time you can use the regular [download interface](https://docs.ropensci.org/rgbif/articles/getting_occurrence_data.html) `occ_download(pred("year", "2000"))` instead of the SQL interface.
+
+Note that if you doing `GROUP BY` `COUNT(*)` type queries for a single dimension, then `occ_count(facet="x")` is usually going to be a much faster option. See article [Getting Occurrence Counts From GBIF](https://docs.ropensci.org/rgbif/articles/occ_counts.html). 
+
+To get a list of all +400 columns and definitions in the **occurrence** table, you can use `occ_download_describe("sql")$fields`.
+
+## SQL examples - Species Counts 
+
+One common query that is difficult to do with the regular download interface is to get a count of species by some other dimension. Keep in mind that if you only need species counts for one dimension, then `occ_count(facet="x")` is usually going to be a much faster option.
+
+**Countries with the most species published to GBIF.** 
+
+```r
+sql <-
+"
+SELECT publishingcountry, specieskey, COUNT(*) as occurrence_count
+FROM occurrence
+WHERE publishingcountry IS NOT NULL AND specieskey IS NOT NULL
+GROUP BY country, specieskey
+ORDER BY occurrence_count DESC;
+"
+
+```
+
+
+
+## SQL examples - Grid Functions
+
+Making a global map of unique species counts per grid cell is a common task, but because it requires a spatial join with the chosen spatial grid, it can be difficult to do without working with un-aggregated and therefore BIG data. 
+
+For this reason GBIF's SQL downloads provide support for a few pre-defined [grid functions](https://techdocs.gbif.org/en/data-use/api-sql-download-functions). 
+
+download the EEA grid 
+https://sdi.eea.europa.eu/data/3792c53b-1944-444a-a317-2fc478abc664
+
+https://earth-info.nga.mil/php/download.php?file=MGRS_100kmSQ_ID_32U
+
+
+
+```r
+library(sf)
+library(rgbif)
+library(ggplot2)
+
+sql <-
+"
+SELECT 
+  GBIF_MGRSCode(
+    100000,
+    decimalLatitude,
+    decimalLongitude,
+    COALESCE(coordinateUncertaintyInMeters, 0)
+  ) AS mgrs,
+  COUNT(DISTINCT speciesKey) AS unique_species_count
+FROM
+  occurrence
+GROUP BY
+  mgrs
+"
+
+# occ_download_sql(sql) 
+
+d <- occ_download_get('0007780-240425142415019') %>%
+  occ_download_import() %>%
+  filter(!mgrs == "") %>%
+  mutate()
+
+mgrs_grid <- st_read("C:/Users/ftw712/Desktop/MGRS_100kmSQ_ID_32M/")
+
+
+
+library(sf)
+library(dplyr)
+
+# st_read("C:/Users/ftw712/Desktop/MGRS_100kmSQ_ID_32M/") 
+
+# st_read("C:/Users/ftw712/Desktop/MGRS_100kmSQ_ID_32M/") %>%
+# glimpse()
+
+```
+
+
+
