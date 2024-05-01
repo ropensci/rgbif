@@ -23,6 +23,7 @@ name_lookup(
   type = NULL,
   hl = NULL,
   issue = NULL,
+  constituentKey = NULL,
   verbose = FALSE,
   return = NULL,
   curlopts = list()
@@ -134,6 +135,8 @@ response.}
 
 \item{issue}{Filters by issue. Issue has to be related to names. Type
 \code{gbif_issues()} to get complete list of issues.}
+
+\item{constituentKey}{Filters by the dataset's constituent key (a uuid).}
 
 \item{verbose}{(logical) If \code{TRUE}, all data is returned as a list for each
 element. If \code{FALSE} (default) a subset of the data that is thought to be most

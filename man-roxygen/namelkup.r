@@ -86,10 +86,10 @@
 #' @param limit Number of records to return.
 #' Hard maximum limit set by GBIF API: 99999.
 #' @param start Record number to start at. Default: 0.
+#' @param constituentKey Filters by the dataset's constituent key (a uuid). 
 #' @param verbose (logical) If \code{TRUE}, all data is returned as a list for each
 #' element. If \code{FALSE} (default) a subset of the data that is thought to be most
 #' essential is organized into a data.frame.
-#'
 #' @param return Defunct. All components are returned; index to the
 #' one(s) you want
 #'
