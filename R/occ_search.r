@@ -109,6 +109,7 @@ occ_search <- function(taxonKey = NULL,
                        islandGroup = NULL,
                        recordedById = NULL,
                        taxonId = NULL,
+                       taxonConceptId = NULL,
                        limit = 500,
                        start = 0,
                        fields = 'all',
@@ -223,7 +224,8 @@ occ_search <- function(taxonKey = NULL,
       convmany(publishedByGbifRegion),
       convmany(island),
       convmany(islandGroup),
-      convmany(taxonId)
+      convmany(taxonId),
+      convmany(taxonConceptId)
     )
     argscoll <<- args
     
@@ -349,7 +351,8 @@ occ_search <- function(taxonKey = NULL,
     publishedByGbifRegion=publishedByGbifRegion,
     island=island,
     islandGroup=islandGroup,
-    taxonId=taxonId
+    taxonId=taxonId,
+    taxonConceptId=taxonConceptId
     )
   if (!any(sapply(params, length) > 0)) {
     stop(sprintf("At least one of these parameters must have a value:\n%s",

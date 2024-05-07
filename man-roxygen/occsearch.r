@@ -230,6 +230,9 @@
 #' location occurs.
 #' @param taxonId (character) The taxon identifier provided to GBIF by the data 
 #' publisher. Example : urn:lsid:dyntaxa.se:Taxon:103026
+#' @param taxonConceptId (character) An identifier for the taxonomic concept to 
+#' which the record refers - not for the nomenclatural details of a taxon. 
+#' Example : 8fa58e08-08de-4ac1-b69c-1235340b7001
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'

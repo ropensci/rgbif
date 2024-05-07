@@ -145,9 +145,8 @@ dimension. Default: 10.}
 
 \item{recordedBy}{(character) The person who recorded the occurrence.}
 
-\item{recordedByID}{(character) identifier (e.g. ORCID) for the person who
-recorded the occurrence. Parameter may be repeated.
-Example : https://orcid.org/0000-0003-0623-6682}
+\item{recordedByID}{(character) Identifier (e.g. ORCID) for the person who
+recorded the occurrence}
 
 \item{identifiedByID}{(character) Identifier (e.g. ORCID) for the person who
 provided the taxonomic identification of the occurrence.}
@@ -400,6 +399,9 @@ location occurs.}
 
 \item{islandGroup}{(character) The name of the island group in which the
 location occurs.}
+
+\item{taxonId}{(character) The taxon identifier provided to GBIF by the data
+publisher. Example : urn:lsid:dyntaxa.se:Taxon:103026}
 }
 \value{
 An object of class \code{gbif_data}, which is a S3 class list, with
