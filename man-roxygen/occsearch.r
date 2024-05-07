@@ -245,6 +245,9 @@
 #' in the Global Registry of Scientific Collections.
 #' @param otherCatalogNumbers (character) Previous or alternate fully qualified 
 #' catalog numbers.
+#' @param georeferencedBy (character) Name of a person, group, or organization
+#' who determined the georeference (spatial representation) for the location. 
+#' Example : Brad Millen
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'
