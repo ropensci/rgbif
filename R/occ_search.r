@@ -96,6 +96,7 @@ occ_search <- function(taxonKey = NULL,
                        isInCluster = NULL,
                        distanceFromCentroidInMeters=NULL,
                        sex = NULL,
+                       dwcaExtension = NULL,
                        limit = 500,
                        start = 0,
                        fields = 'all',
@@ -198,7 +199,8 @@ occ_search <- function(taxonKey = NULL,
       convmany(iucnRedListCategory),
       convmany(lifeStage),
       convmany(distanceFromCentroidInMeters),
-      convmany(sex)
+      convmany(sex),
+      convmany(dwcaExtension)
     )
     argscoll <<- args
     
@@ -312,7 +314,8 @@ occ_search <- function(taxonKey = NULL,
     lifeStage=lifeStage,
     coordinateUncertaintyInMeters=coordinateUncertaintyInMeters,
     distanceFromCentroidInMeters=distanceFromCentroidInMeters,
-    sex=sex
+    sex=sex,
+    dwcaExtension=dwcaExtension
   )
   if (!any(sapply(params, length) > 0)) {
     stop(sprintf("At least one of these parameters must have a value:\n%s",

@@ -209,6 +209,9 @@
 #' exactly on known centroids. A value of "0,2000" would mean within 2km of 
 #' centroids. Max value is 5000. 
 #' @param sex (character) The sex of the biological individual(s) represented in the occurrence.
+#' @param dwcaExtension (character) A known Darwin Core Archive extension RowType. 
+#' Limits the search to occurrences which have this extension, although they will 
+#' not necessarily have any useful data recorded using the extension.
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'
