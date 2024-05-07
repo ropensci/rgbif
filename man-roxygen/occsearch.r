@@ -208,6 +208,7 @@
 #' means at least 2km from known centroids. A value of "0" would mean occurrences 
 #' exactly on known centroids. A value of "0,2000" would mean within 2km of 
 #' centroids. Max value is 5000. 
+#' @param sex (character) The sex of the biological individual(s) represented in the occurrence.
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'
