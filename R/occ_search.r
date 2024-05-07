@@ -112,6 +112,7 @@ occ_search <- function(taxonKey = NULL,
                        taxonConceptId = NULL,
                        taxonomicStatus = NULL,
                        acceptedTaxonKey = NULL,
+                       collectionKey = NULL,
                        limit = 500,
                        start = 0,
                        fields = 'all',
@@ -229,7 +230,8 @@ occ_search <- function(taxonKey = NULL,
       convmany(taxonId),
       convmany(taxonConceptId),
       convmany(taxonomicStatus),
-      convmany(acceptedTaxonKey)
+      convmany(acceptedTaxonKey),
+      convmany(collectionKey)
     )
     argscoll <<- args
     
@@ -358,7 +360,8 @@ occ_search <- function(taxonKey = NULL,
     taxonId=taxonId,
     taxonConceptId=taxonConceptId,
     taxonomicStatus=taxonomicStatus,
-    acceptedTaxonKey=acceptedTaxonKey
+    acceptedTaxonKey=acceptedTaxonKey,
+    collectionKey=collectionKey
     )
   if (!any(sapply(params, length) > 0)) {
     stop(sprintf("At least one of these parameters must have a value:\n%s",
