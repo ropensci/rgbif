@@ -233,6 +233,7 @@
 #' @param taxonConceptId (character) An identifier for the taxonomic concept to 
 #' which the record refers - not for the nomenclatural details of a taxon. 
 #' Example : 8fa58e08-08de-4ac1-b69c-1235340b7001
+#' @param taxonomicStatus (character) A taxonomic status. Example : SYNONYM
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'
