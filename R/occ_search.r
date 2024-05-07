@@ -105,6 +105,7 @@ occ_search <- function(taxonKey = NULL,
                        datasetId = NULL,
                        datasetName = NULL,
                        publishedByGbifRegion = NULL,
+                       island = NULL,
                        limit = 500,
                        start = 0,
                        fields = 'all',
@@ -216,7 +217,8 @@ occ_search <- function(taxonKey = NULL,
       convmany(preparations),
       convmany(datasetId),
       convmany(datasetName),
-      convmany(publishedByGbifRegion)
+      convmany(publishedByGbifRegion),
+      convmany(island)
     )
     argscoll <<- args
     
@@ -339,7 +341,8 @@ occ_search <- function(taxonKey = NULL,
     preparations=preparations,
     datasetId=datasetId,
     datasetName=datasetName,
-    publishedByGbifRegion=publishedByGbifRegion
+    publishedByGbifRegion=publishedByGbifRegion,
+    island=island
   )
   if (!any(sapply(params, length) > 0)) {
     stop(sprintf("At least one of these parameters must have a value:\n%s",
