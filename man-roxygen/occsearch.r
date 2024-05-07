@@ -250,6 +250,9 @@
 #' Example : Brad Millen
 #' @param installationKey (character) The occurrence installation key (a UUID).
 #' Example : 17a83780-3060-4851-9d6f-029d5fcb81c9
+#' @param hostingOrganizationKey (character) The key (UUID) of the publishing 
+#' organization whose installation (server) hosts the original dataset. 
+#' Example : fbca90e3-8aed-48b1-84e3-369afbd000ce
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'

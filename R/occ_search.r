@@ -117,6 +117,7 @@ occ_search <- function(taxonKey = NULL,
                        otherCatalogNumbers = NULL,
                        georeferencedBy = NULL,
                        installationKey = NULL,
+                       hostingOrganizationKey = NULL,
                        limit = 500,
                        start = 0,
                        fields = 'all',
@@ -239,7 +240,8 @@ occ_search <- function(taxonKey = NULL,
       convmany(institutionKey),
       convmany(otherCatalogNumbers),
       convmany(georeferencedBy),
-      convmany(installationKey)
+      convmany(installationKey),
+      convmany(hostingOrganizationKey)
     )
     argscoll <<- args
     
@@ -373,7 +375,8 @@ occ_search <- function(taxonKey = NULL,
     institutionKey=institutionKey,
     otherCatalogNumbers=otherCatalogNumbers,
     georeferencedBy=georeferencedBy,
-    installationKey=installationKey
+    installationKey=installationKey,
+    hostingOrganizationKey=hostingOrganizationKey
     )
   if (!any(sapply(params, length) > 0)) {
     stop(sprintf("At least one of these parameters must have a value:\n%s",
