@@ -238,9 +238,11 @@
 #' synonym taxa are included in the search, so a search for Aves with 
 #' acceptedTaxonKey=212 will match occurrences identified as birds, but not 
 #' any known family, genus or species of bird.
-#' @param collectionKey (numeric) A key (UUID) for a collection registered in 
+#' @param collectionKey (character) A key (UUID) for a collection registered in 
 #' the Global Registry of Scientific Collections. 
 #' Example : dceb8d52-094c-4c2c-8960-75e0097c6861
+#' @param institutionKey (character) A key (UUID) for an institution registered 
+#' in the Global Registry of Scientific Collections.
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'
