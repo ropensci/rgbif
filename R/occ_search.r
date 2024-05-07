@@ -101,6 +101,7 @@ occ_search <- function(taxonKey = NULL,
                        gbifRegion = NULL,
                        projectId = NULL,
                        programme = NULL,
+                       preparations = NULL,
                        limit = 500,
                        start = 0,
                        fields = 'all',
@@ -208,7 +209,8 @@ occ_search <- function(taxonKey = NULL,
       convmany(gbifId),
       convmany(gbifRegion),
       convmany(projectId),
-      convmany(programme)
+      convmany(programme),
+      convmany(preparations)
     )
     argscoll <<- args
     
@@ -327,7 +329,8 @@ occ_search <- function(taxonKey = NULL,
     gbifId=gbifId,
     gbifRegion=gbifRegion,
     projectId=projectId,
-    programme=programme
+    programme=programme,
+    preparations=preparations
   )
   if (!any(sapply(params, length) > 0)) {
     stop(sprintf("At least one of these parameters must have a value:\n%s",
