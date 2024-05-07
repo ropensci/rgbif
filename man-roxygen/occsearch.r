@@ -253,6 +253,7 @@
 #' @param hostingOrganizationKey (character) The key (UUID) of the publishing 
 #' organization whose installation (server) hosts the original dataset. 
 #' Example : fbca90e3-8aed-48b1-84e3-369afbd000ce
+#' @param crawlId (numeric) Crawl attempt that harvested this record.
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'
