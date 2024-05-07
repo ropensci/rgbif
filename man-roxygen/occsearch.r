@@ -234,6 +234,10 @@
 #' which the record refers - not for the nomenclatural details of a taxon. 
 #' Example : 8fa58e08-08de-4ac1-b69c-1235340b7001
 #' @param taxonomicStatus (character) A taxonomic status. Example : SYNONYM
+#' @param acceptedTaxonKey (numeric) A taxon key from the GBIF backbone. Only 
+#' synonym taxa are included in the search, so a search for Aves with 
+#' acceptedTaxonKey=212 will match occurrences identified as birds, but not 
+#' any known family, genus or species of bird.
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'

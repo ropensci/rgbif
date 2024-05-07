@@ -85,6 +85,9 @@ occ_search(
   islandGroup = NULL,
   recordedById = NULL,
   taxonId = NULL,
+  taxonConceptId = NULL,
+  taxonomicStatus = NULL,
+  previousIdentifications = NULL,
   limit = 500,
   start = 0,
   fields = "all",
@@ -405,6 +408,15 @@ location occurs.}
 
 \item{taxonId}{(character) The taxon identifier provided to GBIF by the data
 publisher. Example : urn:lsid:dyntaxa.se:Taxon:103026}
+
+\item{taxonConceptId}{(character) An identifier for the taxonomic concept to
+which the record refers - not for the nomenclatural details of a taxon.
+Example : 8fa58e08-08de-4ac1-b69c-1235340b7001}
+
+\item{taxonomicStatus}{(character) A taxonomic status. Example : SYNONYM}
+
+\item{previousIdentifications}{(character) Previous assignment of name
+to the organism. Example : Chalepidae}
 
 \item{limit}{Number of records to return. Default: 500. Note that the per
 request maximum is 300, but since we set it at 500 for the function, we

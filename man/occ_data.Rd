@@ -402,6 +402,15 @@ location occurs.}
 
 \item{taxonId}{(character) The taxon identifier provided to GBIF by the data
 publisher. Example : urn:lsid:dyntaxa.se:Taxon:103026}
+
+\item{taxonConceptId}{(character) An identifier for the taxonomic concept to
+which the record refers - not for the nomenclatural details of a taxon.
+Example : 8fa58e08-08de-4ac1-b69c-1235340b7001}
+
+\item{taxonomicStatus}{(character) A taxonomic status. Example : SYNONYM}
+
+\item{previousIdentifications}{(character) Previous assignment of name
+to the organism. Example : Chalepidae}
 }
 \value{
 An object of class \code{gbif_data}, which is a S3 class list, with

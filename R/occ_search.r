@@ -111,6 +111,7 @@ occ_search <- function(taxonKey = NULL,
                        taxonId = NULL,
                        taxonConceptId = NULL,
                        taxonomicStatus = NULL,
+                       acceptedTaxonKey = NULL,
                        limit = 500,
                        start = 0,
                        fields = 'all',
@@ -227,7 +228,8 @@ occ_search <- function(taxonKey = NULL,
       convmany(islandGroup),
       convmany(taxonId),
       convmany(taxonConceptId),
-      convmany(taxonomicStatus)
+      convmany(taxonomicStatus),
+      convmany(acceptedTaxonKey)
     )
     argscoll <<- args
     
@@ -355,7 +357,8 @@ occ_search <- function(taxonKey = NULL,
     islandGroup=islandGroup,
     taxonId=taxonId,
     taxonConceptId=taxonConceptId,
-    taxonomicStatus=taxonomicStatus
+    taxonomicStatus=taxonomicStatus,
+    acceptedTaxonKey=acceptedTaxonKey
     )
   if (!any(sapply(params, length) > 0)) {
     stop(sprintf("At least one of these parameters must have a value:\n%s",
