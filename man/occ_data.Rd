@@ -145,8 +145,9 @@ dimension. Default: 10.}
 
 \item{recordedBy}{(character) The person who recorded the occurrence.}
 
-\item{recordedByID}{(character) Identifier (e.g. ORCID) for the person who
-recorded the occurrence}
+\item{recordedByID}{(character) identifier (e.g. ORCID) for the person who
+recorded the occurrence. Parameter may be repeated.
+Example : https://orcid.org/0000-0003-0623-6682}
 
 \item{identifiedByID}{(character) Identifier (e.g. ORCID) for the person who
 provided the taxonomic identification of the occurrence.}
@@ -368,6 +369,37 @@ centroids. Max value is 5000.}
 \item{curlopts}{list of named curl options passed on to
 \code{\link[crul]{HttpClient}}. see \code{curl::curl_options}
 for curl options}
+
+\item{sex}{(character) The sex of the biological individual(s) represented in the occurrence.}
+
+\item{dwcaExtension}{(character) A known Darwin Core Archive extension RowType.
+Limits the search to occurrences which have this extension, although they will
+not necessarily have any useful data recorded using the extension.}
+
+\item{gbifId}{(numeric) The unique GBIF key for a single occurrence.}
+
+\item{gbifRegion}{(character) Gbif region based on country code.}
+
+\item{projectId}{(character) The identifier for a project, which is often
+assigned by a funded programme.}
+
+\item{programme}{(character) A group of activities, often associated with a
+specific funding stream, such as the GBIF BID programme.}
+
+\item{preparations}{(character) Preparation or preservation method for
+a specimen.}
+
+\item{datasetId}{(character) The ID of the dataset. Parameter may be
+repeated. Example : https://doi.org/10.1594/PANGAEA.315492}
+
+\item{publishedByGbifRegion}{(character) GBIF region based on the owning
+organization's country.}
+
+\item{island}{(character) The name of the island on or near which the
+location occurs.}
+
+\item{islandGroup}{(character) The name of the island group in which the
+location occurs.}
 }
 \value{
 An object of class \code{gbif_data}, which is a S3 class list, with

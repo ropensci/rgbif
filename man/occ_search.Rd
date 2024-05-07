@@ -71,6 +71,19 @@ occ_search(
   lifeStage = NULL,
   isInCluster = NULL,
   distanceFromCentroidInMeters = NULL,
+  sex = NULL,
+  dwcaExtension = NULL,
+  gbifId = NULL,
+  gbifRegion = NULL,
+  projectId = NULL,
+  programme = NULL,
+  preparations = NULL,
+  datasetId = NULL,
+  datasetName = NULL,
+  publishedByGbifRegion = NULL,
+  island = NULL,
+  islandGroup = NULL,
+  recordedById = NULL,
   limit = 500,
   start = 0,
   fields = "all",
@@ -151,8 +164,9 @@ dimension. Default: 10.}
 
 \item{recordedBy}{(character) The person who recorded the occurrence.}
 
-\item{recordedByID}{(character) Identifier (e.g. ORCID) for the person who
-recorded the occurrence}
+\item{recordedByID}{(character) identifier (e.g. ORCID) for the person who
+recorded the occurrence. Parameter may be repeated.
+Example : https://orcid.org/0000-0003-0623-6682}
 
 \item{identifiedByID}{(character) Identifier (e.g. ORCID) for the person who
 provided the taxonomic identification of the occurrence.}
@@ -357,6 +371,37 @@ quantity of the organism (a number between 0-1). Supports range queries,
 means at least 2km from known centroids. A value of "0" would mean occurrences
 exactly on known centroids. A value of "0,2000" would mean within 2km of
 centroids. Max value is 5000.}
+
+\item{sex}{(character) The sex of the biological individual(s) represented in the occurrence.}
+
+\item{dwcaExtension}{(character) A known Darwin Core Archive extension RowType.
+Limits the search to occurrences which have this extension, although they will
+not necessarily have any useful data recorded using the extension.}
+
+\item{gbifId}{(numeric) The unique GBIF key for a single occurrence.}
+
+\item{gbifRegion}{(character) Gbif region based on country code.}
+
+\item{projectId}{(character) The identifier for a project, which is often
+assigned by a funded programme.}
+
+\item{programme}{(character) A group of activities, often associated with a
+specific funding stream, such as the GBIF BID programme.}
+
+\item{preparations}{(character) Preparation or preservation method for
+a specimen.}
+
+\item{datasetId}{(character) The ID of the dataset. Parameter may be
+repeated. Example : https://doi.org/10.1594/PANGAEA.315492}
+
+\item{publishedByGbifRegion}{(character) GBIF region based on the owning
+organization's country.}
+
+\item{island}{(character) The name of the island on or near which the
+location occurs.}
+
+\item{islandGroup}{(character) The name of the island group in which the
+location occurs.}
 
 \item{limit}{Number of records to return. Default: 500. Note that the per
 request maximum is 300, but since we set it at 500 for the function, we
