@@ -266,6 +266,9 @@
 #' @param samplingProtocol (character) The name of, reference to, or description
 #' of the method or protocol used during a sampling event. 
 #' Example : malaise trap
+#' @param sampleSizeUnit (character) The unit of measurement of the size 
+#' (time duration, length, area, or volume) of a sample in a sampling event. 
+#' Example : hectares
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'

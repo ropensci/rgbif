@@ -124,6 +124,7 @@ occ_search <- function(taxonKey = NULL,
                        fieldNumber = NULL,
                        parentEventId = NULL,
                        samplingProtocol = NULL,
+                       sampleSizeUnit = NULL, 
                        limit = 500,
                        start = 0,
                        fields = 'all',
@@ -253,7 +254,8 @@ occ_search <- function(taxonKey = NULL,
       convmany(higherGeography),
       convmany(fieldNumber),
       convmany(parentEventId),
-      convmany(samplingProtocol)
+      convmany(samplingProtocol),
+      convmany(sampleSizeUnit)
     )
     argscoll <<- args
     
@@ -394,7 +396,8 @@ occ_search <- function(taxonKey = NULL,
     higherGeography=higherGeography,
     fieldNumber=fieldNumber,
     parentEventId=parentEventId,
-    samplingProtocol=samplingProtocol
+    samplingProtocol=samplingProtocol,
+    sampleSizeUnit=sampleSizeUnit
     )
   if (!any(sapply(params, length) > 0)) {
     stop(sprintf("At least one of these parameters must have a value:\n%s",
