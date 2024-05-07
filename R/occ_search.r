@@ -103,6 +103,7 @@ occ_search <- function(taxonKey = NULL,
                        programme = NULL,
                        preparations = NULL,
                        datasetId = NULL,
+                       datasetName = NULL,
                        limit = 500,
                        start = 0,
                        fields = 'all',
@@ -212,7 +213,8 @@ occ_search <- function(taxonKey = NULL,
       convmany(projectId),
       convmany(programme),
       convmany(preparations),
-      convmany(datasetId)
+      convmany(datasetId),
+      convmany(datasetName)
     )
     argscoll <<- args
     
@@ -333,7 +335,8 @@ occ_search <- function(taxonKey = NULL,
     projectId=projectId,
     programme=programme,
     preparations=preparations,
-    datasetId=datasetId
+    datasetId=datasetId,
+    datasetName=datasetName
   )
   if (!any(sapply(params, length) > 0)) {
     stop(sprintf("At least one of these parameters must have a value:\n%s",
