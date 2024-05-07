@@ -259,6 +259,10 @@
 #' Example : 2023-02-20
 #' @param higherGeography (character) Geographic name less specific than the 
 #' information captured in the locality term.
+#' @param fieldNumber (character) An identifier given to the event in the field.
+#' Often serves as a link between field notes and the event.
+#' @param parentEventId (character) An identifier for the information associated
+#'  with a sampling event.
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'
