@@ -98,6 +98,7 @@ occ_search <- function(taxonKey = NULL,
                        sex = NULL,
                        dwcaExtension = NULL,
                        gbifId = NULL,
+                       gbifRegion = NULL,
                        limit = 500,
                        start = 0,
                        fields = 'all',
@@ -202,7 +203,8 @@ occ_search <- function(taxonKey = NULL,
       convmany(distanceFromCentroidInMeters),
       convmany(sex),
       convmany(dwcaExtension),
-      convmany(gbifId)
+      convmany(gbifId),
+      convmany(gbifRegion)
     )
     argscoll <<- args
     
@@ -318,7 +320,8 @@ occ_search <- function(taxonKey = NULL,
     distanceFromCentroidInMeters=distanceFromCentroidInMeters,
     sex=sex,
     dwcaExtension=dwcaExtension,
-    gbifId=gbifId
+    gbifId=gbifId,
+    gbifRegion=gbifRegion
   )
   if (!any(sapply(params, length) > 0)) {
     stop(sprintf("At least one of these parameters must have a value:\n%s",
