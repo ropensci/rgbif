@@ -257,6 +257,8 @@
 #' @param modified (character) The most recent date-time on which the 
 #' occurrence was changed, according to the publisher. Can be a range. 
 #' Example : 2023-02-20
+#' @param higherGeography (character) Geographic name less specific than the 
+#' information captured in the locality term.
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'
