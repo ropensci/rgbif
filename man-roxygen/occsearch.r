@@ -226,6 +226,8 @@
 #' organization's country.
 #' @param island (character) The name of the island on or near which the 
 #' location occurs.
+#' @param islandGroup (character) The name of the island group in which the 
+#' location occurs.
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'
