@@ -269,6 +269,9 @@
 #' @param sampleSizeUnit (character) The unit of measurement of the size 
 #' (time duration, length, area, or volume) of a sample in a sampling event. 
 #' Example : hectares
+#' @param pathway (character) The process by which an organism came to be in a 
+#' given place at a given time, as defined in the GBIF Pathway vocabulary. 
+#' Example : Agriculture
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'
