@@ -243,6 +243,8 @@
 #' Example : dceb8d52-094c-4c2c-8960-75e0097c6861
 #' @param institutionKey (character) A key (UUID) for an institution registered 
 #' in the Global Registry of Scientific Collections.
+#' @param otherCatalogNumbers (character) Previous or alternate fully qualified 
+#' catalog numbers.
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'
