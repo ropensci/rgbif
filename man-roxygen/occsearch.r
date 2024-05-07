@@ -216,7 +216,8 @@
 #' @param gbifRegion (character) Gbif region based on country code.
 #' @param projectId (character) The identifier for a project, which is often 
 #' assigned by a funded programme.
-#' 
+#' @param programme (character) A group of activities, often associated with a 
+#' specific funding stream, such as the GBIF BID programme.
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'
