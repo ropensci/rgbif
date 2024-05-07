@@ -254,6 +254,9 @@
 #' organization whose installation (server) hosts the original dataset. 
 #' Example : fbca90e3-8aed-48b1-84e3-369afbd000ce
 #' @param crawlId (numeric) Crawl attempt that harvested this record.
+#' @param modified (character) The most recent date-time on which the 
+#' occurrence was changed, according to the publisher. Can be a range. 
+#' Example : 2023-02-20
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'
