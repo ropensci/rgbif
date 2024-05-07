@@ -228,6 +228,9 @@
 #' location occurs.
 #' @param islandGroup (character) The name of the island group in which the 
 #' location occurs.
+#' @param recordedByID (character) identifier (e.g. ORCID) for the person who 
+#' recorded the occurrence. Parameter may be repeated. 
+#' Example : https://orcid.org/0000-0003-0623-6682
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'
