@@ -95,6 +95,7 @@ occ_search <- function(taxonKey = NULL,
                        lifeStage = NULL,
                        isInCluster = NULL,
                        distanceFromCentroidInMeters=NULL,
+                       geoDistance = NULL,
                        sex = NULL,
                        dwcaExtension = NULL,
                        gbifId = NULL,
@@ -305,7 +306,8 @@ occ_search <- function(taxonKey = NULL,
       convmany(bed),
       convmany(associatedSequences),
       convmany(startDayOfYear),
-      convmany(endDayOfYear)
+      convmany(endDayOfYear),
+      convmany(geoDistance)
     )
     argscoll <<- args
     
@@ -472,7 +474,8 @@ occ_search <- function(taxonKey = NULL,
     associatedSequences=associatedSequences,
     isSequenced=isSequenced,
     startDayOfYear=startDayOfYear,
-    endDayOfYear=endDayOfYear
+    endDayOfYear=endDayOfYear,
+    geoDistance=geoDistance
     )
   if (!any(sapply(params, length) > 0)) {
     stop(sprintf("At least one of these parameters must have a value:\n%s",

@@ -207,7 +207,10 @@
 #' @param distanceFromCentroidInMeters A number or range. A value of "2000,*"
 #' means at least 2km from known centroids. A value of "0" would mean occurrences 
 #' exactly on known centroids. A value of "0,2000" would mean within 2km of 
-#' centroids. Max value is 5000. 
+#' centroids. Max value is 5000.
+#' @param geoDistance (character) Filters to match occurrence records with coordinate values
+#' within a specified distance of a coordinate. Distance may be specified in 
+#' kilometres (km) or metres (m). Example : "90,100,5km"
 #' @param sex (character) The sex of the biological individual(s) represented in the occurrence.
 #' @param dwcaExtension (character) A known Darwin Core Archive extension RowType. 
 #' Limits the search to occurrences which have this extension, although they will 
