@@ -369,6 +369,10 @@ centroids. Max value is 5000.}
 \code{\link[crul]{HttpClient}}. see \code{curl::curl_options}
 for curl options}
 
+\item{geoDistance}{(character) Filters to match occurrence records with coordinate values
+within a specified distance of a coordinate. Distance may be specified in
+kilometres (km) or metres (m). Example : "90,100,5km"}
+
 \item{sex}{(character) The sex of the biological individual(s) represented in the occurrence.}
 
 \item{dwcaExtension}{(character) A known Darwin Core Archive extension RowType.
@@ -473,6 +477,55 @@ level, for example AFG.1.1_1.}
 
 \item{gadmLevel3Gid}{(character) A GADM geographic identifier at the third
 level, for example AFG.1.1.1_1.}
+
+\item{earliestEonOrLowestEonothem}{(character) geochronologic era term.}
+
+\item{latestEonOrHighestEonothem}{(character) geochronologic era term.}
+
+\item{earliestEraOrLowestErathem}{(character) geochronologic era term.}
+
+\item{latestEraOrHighestErathem}{(character) geochronologic era term.}
+
+\item{earliestPeriodOrLowestSystem}{(character) geochronologic era term.}
+
+\item{latestPeriodOrHighestSystem}{(character) geochronologic era term.}
+
+\item{earliestEpochOrLowestSeries}{(character) geochronologic era term.}
+
+\item{latestEpochOrHighestSeries}{(character) geochronologic era term.}
+
+\item{earliestAgeOrLowestStage}{(character) geochronologic era term.}
+
+\item{latestAgeOrHighestStage}{(character) geochronologic era term.}
+
+\item{lowestBiostratigraphicZone}{(character) geochronologic era term.}
+
+\item{highestBiostratigraphicZone}{(character) geochronologic era term.}
+
+\item{group}{(character) The full name of the lithostratigraphic group from
+which the material entity was collected.}
+
+\item{formation}{(character) The full name of the lithostratigraphic
+formation from which the material entity was collected.}
+
+\item{member}{(character) The full name of the lithostratigraphic member
+from which the material entity was collected.}
+
+\item{bed}{(character) The full name of the lithostratigraphic bed from
+which the material entity was collected.}
+
+\item{associatedSequences}{(character) Identifier (publication, global unique
+identifier, URI) of genetic sequence information associated with the
+material entity. Example : http://www.ncbi.nlm.nih.gov/nuccore/U34853.1}
+
+\item{isSequenced}{(logical) Indicates whether \code{associatedSequences} genetic
+sequence information exists.}
+
+\item{startDayOfYear}{(numeric) The earliest integer day of the year on
+which the event occurred.}
+
+\item{endDayOfYear}{(numeric) The latest integer day of the year on
+which the event occurred.}
 }
 \value{
 An object of class \code{gbif_data}, which is a S3 class list, with

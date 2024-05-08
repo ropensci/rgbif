@@ -71,6 +71,7 @@ occ_search(
   lifeStage = NULL,
   isInCluster = NULL,
   distanceFromCentroidInMeters = NULL,
+  geoDistance = NULL,
   sex = NULL,
   dwcaExtension = NULL,
   gbifId = NULL,
@@ -106,6 +107,26 @@ occ_search(
   gadmLevel1Gid = NULL,
   gadmLevel2Gid = NULL,
   gadmLevel3Gid = NULL,
+  earliestEonOrLowestEonothem = NULL,
+  latestEonOrHighestEonothem = NULL,
+  earliestEraOrLowestErathem = NULL,
+  latestEraOrHighestErathem = NULL,
+  earliestPeriodOrLowestSystem = NULL,
+  latestPeriodOrHighestSystem = NULL,
+  earliestEpochOrLowestSeries = NULL,
+  latestEpochOrHighestSeries = NULL,
+  earliestAgeOrLowestStage = NULL,
+  latestAgeOrHighestStage = NULL,
+  lowestBiostratigraphicZone = NULL,
+  highestBiostratigraphicZone = NULL,
+  group = NULL,
+  formation = NULL,
+  member = NULL,
+  bed = NULL,
+  associatedSequences = NULL,
+  isSequenced = NULL,
+  startDayOfYear = NULL,
+  endDayOfYear = NULL,
   limit = 500,
   start = 0,
   fields = "all",
@@ -393,6 +414,10 @@ means at least 2km from known centroids. A value of "0" would mean occurrences
 exactly on known centroids. A value of "0,2000" would mean within 2km of
 centroids. Max value is 5000.}
 
+\item{geoDistance}{(character) Filters to match occurrence records with coordinate values
+within a specified distance of a coordinate. Distance may be specified in
+kilometres (km) or metres (m). Example : "90,100,5km"}
+
 \item{sex}{(character) The sex of the biological individual(s) represented in the occurrence.}
 
 \item{dwcaExtension}{(character) A known Darwin Core Archive extension RowType.
@@ -497,6 +522,55 @@ level, for example AFG.1.1_1.}
 
 \item{gadmLevel3Gid}{(character) A GADM geographic identifier at the third
 level, for example AFG.1.1.1_1.}
+
+\item{earliestEonOrLowestEonothem}{(character) geochronologic era term.}
+
+\item{latestEonOrHighestEonothem}{(character) geochronologic era term.}
+
+\item{earliestEraOrLowestErathem}{(character) geochronologic era term.}
+
+\item{latestEraOrHighestErathem}{(character) geochronologic era term.}
+
+\item{earliestPeriodOrLowestSystem}{(character) geochronologic era term.}
+
+\item{latestPeriodOrHighestSystem}{(character) geochronologic era term.}
+
+\item{earliestEpochOrLowestSeries}{(character) geochronologic era term.}
+
+\item{latestEpochOrHighestSeries}{(character) geochronologic era term.}
+
+\item{earliestAgeOrLowestStage}{(character) geochronologic era term.}
+
+\item{latestAgeOrHighestStage}{(character) geochronologic era term.}
+
+\item{lowestBiostratigraphicZone}{(character) geochronologic era term.}
+
+\item{highestBiostratigraphicZone}{(character) geochronologic era term.}
+
+\item{group}{(character) The full name of the lithostratigraphic group from
+which the material entity was collected.}
+
+\item{formation}{(character) The full name of the lithostratigraphic
+formation from which the material entity was collected.}
+
+\item{member}{(character) The full name of the lithostratigraphic member
+from which the material entity was collected.}
+
+\item{bed}{(character) The full name of the lithostratigraphic bed from
+which the material entity was collected.}
+
+\item{associatedSequences}{(character) Identifier (publication, global unique
+identifier, URI) of genetic sequence information associated with the
+material entity. Example : http://www.ncbi.nlm.nih.gov/nuccore/U34853.1}
+
+\item{isSequenced}{(logical) Indicates whether \code{associatedSequences} genetic
+sequence information exists.}
+
+\item{startDayOfYear}{(numeric) The earliest integer day of the year on
+which the event occurred.}
+
+\item{endDayOfYear}{(numeric) The latest integer day of the year on
+which the event occurred.}
 
 \item{limit}{Number of records to return. Default: 500. Note that the per
 request maximum is 300, but since we set it at 500 for the function, we
