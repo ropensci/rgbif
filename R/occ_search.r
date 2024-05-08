@@ -126,6 +126,10 @@ occ_search <- function(taxonKey = NULL,
                        samplingProtocol = NULL,
                        sampleSizeUnit = NULL,
                        pathway = NULL,
+                       gadmLevel0Gid = NULL,
+                       gadmLevel1Gid = NULL,
+                       gadmLevel2Gid = NULL,
+                       gadmLevel3Gid = NULL,
                        limit = 500,
                        start = 0,
                        fields = 'all',
@@ -257,7 +261,11 @@ occ_search <- function(taxonKey = NULL,
       convmany(parentEventId),
       convmany(samplingProtocol),
       convmany(sampleSizeUnit),
-      convmany(pathway)
+      convmany(pathway),
+      convmany(gadmLevel0Gid),
+      convmany(gadmLevel1Gid),
+      convmany(gadmLevel2Gid),
+      convmany(gadmLevel3Gid)
     )
     argscoll <<- args
     
@@ -400,7 +408,11 @@ occ_search <- function(taxonKey = NULL,
     parentEventId=parentEventId,
     samplingProtocol=samplingProtocol,
     sampleSizeUnit=sampleSizeUnit,
-    pathway=pathway
+    pathway=pathway,
+    gadmLevel0Gid=gadmLevel0Gid,
+    gadmLevel1Gid=gadmLevel1Gid,
+    gadmLevel2Gid=gadmLevel2Gid,
+    gadmLevel3Gid=gadmLevel3Gid
     )
   if (!any(sapply(params, length) > 0)) {
     stop(sprintf("At least one of these parameters must have a value:\n%s",

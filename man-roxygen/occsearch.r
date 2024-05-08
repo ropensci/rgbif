@@ -272,6 +272,14 @@
 #' @param pathway (character) The process by which an organism came to be in a 
 #' given place at a given time, as defined in the GBIF Pathway vocabulary. 
 #' Example : Agriculture
+#' @param gadmLevel0Gid (character) A GADM geographic identifier at the zero 
+#' level, for example AGO.
+#' @param gadmLevel1Gid (character) A GADM geographic identifier at the first 
+#' level, for example AGO.1_1.
+#' @param gadmLevel2Gid (character) A GADM geographic identifier at the second 
+#' level, for example AFG.1.1_1.
+#' @param gadmLevel3Gid (character) A GADM geographic identifier at the third 
+#' level, for example AFG.1.1.1_1.
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'
