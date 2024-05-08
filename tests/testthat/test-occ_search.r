@@ -660,4 +660,14 @@ test_that("multiple values for parameters fails", {
     "You can have multiple values for only one of")
 })
 
+test_that("geoDistance works as expected", {
+  vcr::use_cassette("occ_search_geoDistance", {
+    aa <- occ_search(geoDistance = "50.0,10.0,10km", limit = 2)
+  }, preserve_exact_body_bytes = TRUE)
+  expect_is(aa, "gbif")
+  expect_is(aa$data, "data.frame")
+  expect_equal(attr(aa, "args")$geoDistance, "50.0,10.0,10km")
+  expect_equal(nrow(aa$data), 2)
+})
+
 
