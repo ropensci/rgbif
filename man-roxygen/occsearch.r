@@ -305,6 +305,10 @@
 #' material entity. Example : http://www.ncbi.nlm.nih.gov/nuccore/U34853.1
 #' @param isSequenced (logical) Indicates whether `associatedSequences` genetic 
 #' sequence information exists.
+#' @param startDayOfYear (numeric) The earliest integer day of the year on 
+#' which the event occurred.
+#' @param endDayOfYear (numeric) The latest integer day of the year on 
+#' which the event occurred.
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'

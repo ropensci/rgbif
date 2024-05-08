@@ -148,6 +148,8 @@ occ_search <- function(taxonKey = NULL,
                        bed = NULL,
                        associatedSequences = NULL,
                        isSequenced = NULL,
+                       startDayOfYear = NULL,
+                       endDayOfYear = NULL,
                        limit = 500,
                        start = 0,
                        fields = 'all',
@@ -301,7 +303,9 @@ occ_search <- function(taxonKey = NULL,
       convmany(formation),
       convmany(member),
       convmany(bed),
-      convmany(associatedSequences)
+      convmany(associatedSequences),
+      convmany(startDayOfYear),
+      convmany(endDayOfYear)
     )
     argscoll <<- args
     
@@ -466,7 +470,9 @@ occ_search <- function(taxonKey = NULL,
     member=member,
     bed=bed,
     associatedSequences=associatedSequences,
-    isSequenced=isSequenced
+    isSequenced=isSequenced,
+    startDayOfYear=startDayOfYear,
+    endDayOfYear=endDayOfYear
     )
   if (!any(sapply(params, length) > 0)) {
     stop(sprintf("At least one of these parameters must have a value:\n%s",
