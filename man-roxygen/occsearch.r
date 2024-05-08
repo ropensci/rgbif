@@ -280,6 +280,26 @@
 #' level, for example AFG.1.1_1.
 #' @param gadmLevel3Gid (character) A GADM geographic identifier at the third 
 #' level, for example AFG.1.1.1_1.
+#' @param earliestEonOrLowestEonothem (character) geochronologic era term.
+#' @param latestEonOrHighestEonothem (character) geochronologic era term.
+#' @param earliestEraOrLowestErathem (character) geochronologic era term.
+#' @param latestEraOrHighestErathem (character) geochronologic era term.
+#' @param earliestPeriodOrLowestSystem (character) geochronologic era term.
+#' @param latestPeriodOrHighestSystem (character) geochronologic era term.
+#' @param earliestEpochOrLowestSeries (character) geochronologic era term.
+#' @param latestEpochOrHighestSeries (character) geochronologic era term.
+#' @param earliestAgeOrLowestStage (character) geochronologic era term.
+#' @param latestAgeOrHighestStage (character) geochronologic era term.
+#' @param lowestBiostratigraphicZone (character) geochronologic era term.
+#' @param highestBiostratigraphicZone (character) geochronologic era term.
+#' @param group (character) The full name of the lithostratigraphic group from 
+#' which the material entity was collected.
+#' @param formation (character) The full name of the lithostratigraphic 
+#' formation from which the material entity was collected.
+#' @param member (character) The full name of the lithostratigraphic member 
+#' from which the material entity was collected.
+#' @param bed (character) The full name of the lithostratigraphic bed from 
+#' which the material entity was collected.
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'

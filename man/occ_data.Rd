@@ -409,8 +409,70 @@ Example : 8fa58e08-08de-4ac1-b69c-1235340b7001}
 
 \item{taxonomicStatus}{(character) A taxonomic status. Example : SYNONYM}
 
-\item{previousIdentifications}{(character) Previous assignment of name
-to the organism. Example : Chalepidae}
+\item{acceptedTaxonKey}{(numeric) A taxon key from the GBIF backbone. Only
+synonym taxa are included in the search, so a search for Aves with
+acceptedTaxonKey=212 will match occurrences identified as birds, but not
+any known family, genus or species of bird.}
+
+\item{collectionKey}{(character) A key (UUID) for a collection registered in
+the Global Registry of Scientific Collections.
+Example : dceb8d52-094c-4c2c-8960-75e0097c6861}
+
+\item{institutionKey}{(character) A key (UUID) for an institution registered
+in the Global Registry of Scientific Collections.}
+
+\item{otherCatalogNumbers}{(character) Previous or alternate fully qualified
+catalog numbers.}
+
+\item{georeferencedBy}{(character) Name of a person, group, or organization
+who determined the georeference (spatial representation) for the location.
+Example : Brad Millen}
+
+\item{installationKey}{(character) The occurrence installation key (a UUID).
+Example : 17a83780-3060-4851-9d6f-029d5fcb81c9}
+
+\item{hostingOrganizationKey}{(character) The key (UUID) of the publishing
+organization whose installation (server) hosts the original dataset.
+Example : fbca90e3-8aed-48b1-84e3-369afbd000ce}
+
+\item{crawlId}{(numeric) Crawl attempt that harvested this record.}
+
+\item{modified}{(character) The most recent date-time on which the
+occurrence was changed, according to the publisher. Can be a range.
+Example : 2023-02-20}
+
+\item{higherGeography}{(character) Geographic name less specific than the
+information captured in the locality term.}
+
+\item{fieldNumber}{(character) An identifier given to the event in the field.
+Often serves as a link between field notes and the event.}
+
+\item{parentEventId}{(character) An identifier for the information associated
+with a sampling event.}
+
+\item{samplingProtocol}{(character) The name of, reference to, or description
+of the method or protocol used during a sampling event.
+Example : malaise trap}
+
+\item{sampleSizeUnit}{(character) The unit of measurement of the size
+(time duration, length, area, or volume) of a sample in a sampling event.
+Example : hectares}
+
+\item{pathway}{(character) The process by which an organism came to be in a
+given place at a given time, as defined in the GBIF Pathway vocabulary.
+Example : Agriculture}
+
+\item{gadmLevel0Gid}{(character) A GADM geographic identifier at the zero
+level, for example AGO.}
+
+\item{gadmLevel1Gid}{(character) A GADM geographic identifier at the first
+level, for example AGO.1_1.}
+
+\item{gadmLevel2Gid}{(character) A GADM geographic identifier at the second
+level, for example AFG.1.1_1.}
+
+\item{gadmLevel3Gid}{(character) A GADM geographic identifier at the third
+level, for example AFG.1.1.1_1.}
 }
 \value{
 An object of class \code{gbif_data}, which is a S3 class list, with
