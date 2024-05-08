@@ -300,6 +300,9 @@
 #' from which the material entity was collected.
 #' @param bed (character) The full name of the lithostratigraphic bed from 
 #' which the material entity was collected.
+#' @param associatedSequences (character) Identifier (publication, global unique
+#' identifier, URI) of genetic sequence information associated with the 
+#' material entity. Example : http://www.ncbi.nlm.nih.gov/nuccore/U34853.1
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'
