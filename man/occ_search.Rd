@@ -84,7 +84,6 @@ occ_search(
   publishedByGbifRegion = NULL,
   island = NULL,
   islandGroup = NULL,
-  recordedById = NULL,
   taxonId = NULL,
   taxonConceptId = NULL,
   taxonomicStatus = NULL,
@@ -439,6 +438,9 @@ a specimen.}
 
 \item{datasetId}{(character) The ID of the dataset. Parameter may be
 repeated. Example : https://doi.org/10.1594/PANGAEA.315492}
+
+\item{datasetName}{(character) The exact name of the dataset. Not the same as
+dataset title.}
 
 \item{publishedByGbifRegion}{(character) GBIF region based on the owning
 organization's country.}

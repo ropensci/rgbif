@@ -225,7 +225,6 @@ occ_count <- function(...,occurrenceStatus="PRESENT", curlopts = list()) {
              publishedByGbifRegion = args$publishedByGbifRegion,
              island = args$island,
              islandGroup = args$islandGroup,
-             recordedById = args$recordedById,
              taxonId = args$taxonId,
              taxonConceptId = args$taxonConceptId,
              taxonomicStatus = args$taxonomicStatus,

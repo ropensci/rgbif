@@ -225,6 +225,8 @@
 #' a specimen.
 #' @param datasetId (character) The ID of the dataset. Parameter may be 
 #' repeated. Example : https://doi.org/10.1594/PANGAEA.315492
+#' @param datasetName (character) The exact name of the dataset. Not the same as
+#' dataset title. 
 #' @param publishedByGbifRegion (character) GBIF region based on the owning 
 #' organization's country.
 #' @param island (character) The name of the island on or near which the 
