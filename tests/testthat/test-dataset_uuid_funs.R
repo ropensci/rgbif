@@ -72,6 +72,7 @@ test_that("dataset_uuid_funs work as expected", {
 })
 
 test_that("dataset_uuid_funs fail well", {
+  skip_on_cran()
   
   expect_error(dataset_metrics("4fa7b334-ce0d-4e88-aaae-2e0c138d049e"),
                "Dataset should be a checklist.")
