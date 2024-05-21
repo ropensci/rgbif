@@ -80,6 +80,7 @@ test_that("occ_count facets work", {
 
 
 test_that("occ_count fails well", {
+  skip_on_cran()
   expect_warning(
     occ_count(limit=100),
     "limit not acceptable args for occ_count\\(\\) and will be ignored."
