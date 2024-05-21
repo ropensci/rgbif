@@ -554,16 +554,16 @@ test_that("lifeStage works correctly", {
 test_that("degreeOfEstablishment works correctly", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_data_degreeOfEstablishment", {
-    ee <- occ_data(degreeOfEstablishment="Established", limit=2)
-    ii <- occ_data(degreeOfEstablishment="Established;Invasive", limit=2)
-    cc <- occ_data(degreeOfEstablishment=c("Established", "Invasive"), limit=2)
-    tt <- occ_data(taxonKey=1,degreeOfEstablishment="Established", limit=2)
+    ee <- occ_data(degreeOfEstablishment="established", limit=2)
+    ii <- occ_data(degreeOfEstablishment="established;Invasive", limit=2)
+    cc <- occ_data(degreeOfEstablishment=c("established", "invasive"), limit=2)
+    tt <- occ_data(taxonKey=1,degreeOfEstablishment="established", limit=2)
   }, preserve_exact_body_bytes = TRUE)
 
-  expect_equal(ee$data$degreeOfEstablishment[1],"Established")
-  expect_true(all(ii$data$degreeOfEstablishment %in% c("Established", "Invasive")))
-  expect_true(all(cc$data$degreeOfEstablishment %in% c("Established", "Invasive")))
-  expect_equal(tt$data$degreeOfEstablishment[1],"Established")
+  expect_equal(ee$data$degreeOfEstablishment[1],"established")
+  expect_true(all(ii$data$degreeOfEstablishment %in% c("established", "invasive")))
+  expect_true(all(cc$data$degreeOfEstablishment %in% c("established", "invasive")))
+  expect_equal(tt$data$degreeOfEstablishment[1],"established")
   expect_equal(tt$data$kingdomKey[1], 1)
 })
 

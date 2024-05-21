@@ -104,7 +104,7 @@ occ_search(stateProvince="CA")) # will return different number of records
 occ_search(stateProvince="CA;California")) # search both variants at the same time  
 ```
 
-A usually better choice than searching by `stateProvince` is to search by `gadmGid`. The term `gadmGid` is a GBIF interpreted field that is filled by GBIF when coordinates are available. Looking up the `gadmGid`s can be done of the GBIF [occurrence search page](https://www.gbif.org/occurrence/map?continent=NORTH_AMERICA&has_coordinate=true&has_geospatial_issue=false&gadm_gid=USA.5_1).
+A usually better choice than searching by `stateProvince` is to search by `gadmGid`. The term `gadmGid` is a GBIF interpreted field that is filled by GBIF when coordinates are available. Looking up the `gadmGid`s can be done on the GBIF [occurrence search page](https://www.gbif.org/occurrence/map?continent=NORTH_AMERICA&has_coordinate=true&has_geospatial_issue=false&gadm_gid=USA.5_1).
 
 ``` r
 occ_search(gadmGid="USA.5_1") # search for California 
@@ -114,7 +114,7 @@ occ_search(gadmGid="PHL.10_1") # Bataan Philippines
 occ_search(gadmGid="USA") # United States "just land" without EEZ area
 ```
 
-Searching by `country` is typically straightforward because the field is standardized and filled by GBIF when coordinates are available. Two letter country codes are used when searching occurrences. These codes can be looked up using `enumeration_country()`.
+Searching by `country` is typically straightforward because the field is standardized and filled in by GBIF when coordinates are available. Two letter country codes are used when searching occurrences. These codes can be looked up using `enumeration_country()`.
 
 ``` r
 occ_search(country="US") # search for United States
@@ -168,7 +168,6 @@ Sometimes users are coming to GBIF looking for a specific museum record, but the
 ```r
 occ_search(institutionCode="KU")
 occ_search(catalogNumber="KU 110")
-
 ```
 
 ## DWCA extensions
