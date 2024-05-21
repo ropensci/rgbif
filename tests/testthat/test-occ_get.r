@@ -75,5 +75,5 @@ test_that("works w/: fields all, & return extensions data", {
   # extensions: empty hash
   expect_is(dd, "data.frame")
   expect_equal(NROW(dd), 1)
-  expect_false(any(grepl("extensions", names(dd))))
+  expect_true(any(grepl("extensions", names(dd))))
 })

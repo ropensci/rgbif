@@ -24,6 +24,11 @@ on:
         type: string
 
 jobs:
+  env:
+    GEONAMES_USER: ${{ secrets.GEONAMES_USER }}
+    GBIF_EMAIL: ${{ secrets.GBIF_EMAIL }}
+    GBIF_USER: ${{ secrets.GBIF_USER }}
+    GBIF_PWD: ${{ secrets.GBIF_PWD }}
 
   setup:
     runs-on: ubuntu-latest
