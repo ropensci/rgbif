@@ -3,7 +3,6 @@ rgbif 3.8.0
 
 ### NEW FEATURES
 
-* New function for downloading `verbatim_extensions()` with `occ_download()`. (#710)
 * Added many missing `occ_search()` terms. (#698)
 * New function `occ_download_describe()` for getting information about download formats. (#721)
 

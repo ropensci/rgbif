@@ -1,0 +1,36 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/withNoEndpoint/?limit=3
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: '{"offset":0,"limit":3,"endOfRecords":true,"count":3,"results":[{"key":"c94ada4c-39a6-4860-95ab-c283964dfe07","installationKey":"e44d0fd7-0edf-477f-aa82-50a81836ab46","publishingOrganizationKey":"1928bdf0-f5d2-11dc-8c12-b8a03c50a862","networkKeys":[],"doi":"10.15468/ybybmf","external":false,"numConstituents":0,"type":"OCCURRENCE","title":"Dataset
+        4ca0e3ae-5814-4cf4-8d6e-ae835f50ccac","description":"Dataset 4ca0e3ae-5814-4cf4-8d6e-ae835f50ccac","language":"eng","citation":{"text":"UMS
+        PatriNat (OFB-CNRS-MNHN), Paris: Dataset 4ca0e3ae-5814-4cf4-8d6e-ae835f50ccac","citationProvidedBySource":false},"contactsCitation":[],"lockedForAutoUpdate":false,"createdBy":"connexion_gbif_france","modifiedBy":"connexion_gbif_france","created":"2023-04-20T12:55:37.108+00:00","modified":"2023-04-20T12:55:37.108+00:00","contacts":[],"endpoints":[],"machineTags":[],"tags":[],"identifiers":[],"comments":[],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[],"temporalCoverages":[],"keywordCollections":[],"countryCoverage":[],"collections":[],"dataDescriptions":[],"license":"http://creativecommons.org/licenses/by/4.0/legalcode"},{"key":"2538a3c6-92e1-4e3b-ad7d-8606531dc508","installationKey":"e44d0fd7-0edf-477f-aa82-50a81836ab46","publishingOrganizationKey":"1928bdf0-f5d2-11dc-8c12-b8a03c50a862","networkKeys":[],"doi":"10.15468/2u9jks","external":false,"numConstituents":0,"type":"OCCURRENCE","title":"Dataset
+        894c75f6-efcb-4907-a309-960c74ce986a","description":"Dataset 894c75f6-efcb-4907-a309-960c74ce986a","language":"eng","citation":{"text":"UMS
+        PatriNat (OFB-CNRS-MNHN), Paris: Dataset 894c75f6-efcb-4907-a309-960c74ce986a","citationProvidedBySource":false},"contactsCitation":[],"lockedForAutoUpdate":false,"createdBy":"connexion_gbif_france","modifiedBy":"connexion_gbif_france","created":"2023-04-20T11:29:00.229+00:00","modified":"2023-04-20T11:29:00.229+00:00","contacts":[],"endpoints":[],"machineTags":[],"tags":[],"identifiers":[],"comments":[],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[],"temporalCoverages":[],"keywordCollections":[],"countryCoverage":[],"collections":[],"dataDescriptions":[],"license":"http://creativecommons.org/licenses/by/4.0/legalcode"},{"key":"680c12e3-6440-4559-8add-b263cb48f31a","installationKey":"600586fe-f762-11e1-a439-00145eb45e9a","publishingOrganizationKey":"d5778510-eb28-11da-8629-b8a03c50a862","networkKeys":[],"doi":"10.15468/wxypq4","external":false,"numConstituents":0,"type":"OCCURRENCE","title":"(Table
+        2) Fossil record of foraminifera and ostracoda from Muldsberg clay pit, north
+        Germany","language":"eng","citation":{"text":"PANGAEA - Data Publisher for
+        Earth & Environmental Science: (Table 2) Fossil record of foraminifera and
+        ostracoda from Muldsberg clay pit, north Germany","citationProvidedBySource":false},"contactsCitation":[],"lockedForAutoUpdate":false,"createdBy":"crawler.gbif.org","modifiedBy":"huberrob","created":"2013-12-17T14:36:50.092+00:00","modified":"2022-03-01T14:05:04.360+00:00","contacts":[{"key":1049132,"type":"ORIGINATOR","primary":true,"userId":[],"firstName":"H","lastName":"Woszidlo","position":[],"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-10-04T15:24:48.607+00:00","modified":"2018-10-04T15:24:48.607+00:00"},{"key":1049133,"type":"METADATA_AUTHOR","primary":true,"userId":[],"position":[],"email":["info@pangaea.de"],"phone":[],"homepage":["https://www.pangaea.de"],"organization":"PANGAEA
+        - Data Publisher for Earth & Environmental Science","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-10-04T15:24:48.625+00:00","modified":"2018-10-04T15:24:48.625+00:00"},{"key":1049134,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":true,"userId":[],"position":[],"email":["info@pangaea.de"],"phone":[],"homepage":["http://www.pangaea.de"],"organization":"PANGAEA
+        - Data Publisher for Earth &  Environmental Science","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-10-04T15:24:48.628+00:00","modified":"2018-10-04T15:24:48.628+00:00"}],"endpoints":[],"machineTags":[{"key":10655120,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"164","createdBy":"crawler.gbif.org","created":"2022-02-23T18:22:22.841+00:00"},{"key":75872,"namespace":"metasync.gbif.org","name":"declaredCount","value":"348","createdBy":"crawler.gbif.org","created":"2014-01-13T11:14:51.298+00:00"},{"key":75873,"namespace":"metasync.gbif.org","name":"maxSearchResponseRecords","value":"1000","createdBy":"crawler.gbif.org","created":"2014-01-13T11:14:51.374+00:00"},{"key":75871,"namespace":"metasync.gbif.org","name":"code","value":"doi:10.1594/PANGAEA.782447","createdBy":"crawler.gbif.org","created":"2014-01-13T11:14:51.228+00:00"},{"key":75875,"namespace":"metasync.gbif.org","name":"conceptualSchema","value":"http://www.iobis.org/obis/obis.xsd","createdBy":"crawler.gbif.org","created":"2014-01-13T11:14:51.510+00:00"},{"key":75876,"namespace":"metasync.gbif.org","name":"conceptualSchema","value":"http://digir.net/schema/conceptual/darwin/2003/1.0/darwin2.xsd","createdBy":"crawler.gbif.org","created":"2014-01-13T11:14:51.584+00:00"},{"key":75874,"namespace":"metasync.gbif.org","name":"dateLastUpdated","value":"1962-05-14T12:35:16.000+01:00","createdBy":"crawler.gbif.org","created":"2014-01-13T11:14:51.442+00:00"}],"tags":[],"identifiers":[{"key":287075,"type":"DOI","identifier":"10.1594/pangaea.782447","createdBy":"huberrob","created":"2022-03-01T14:05:04.360+00:00"},{"key":115272,"type":"DOI","identifier":"https://doi.org/10.1594/PANGAEA.782447","createdBy":"crawler.gbif.org","created":"2018-06-19T12:40:26.409+00:00"}],"comments":[{"key":3288,"content":"Import
+        script set license to CC_BY_4_0","createdBy":"License Import script","modifiedBy":"License
+        Import script","created":"2016-08-18T12:36:25.225+00:00","modified":"2016-08-18T12:36:25.225+00:00"}],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[],"temporalCoverages":[],"keywordCollections":[],"countryCoverage":[],"collections":[],"dataDescriptions":[],"license":"http://creativecommons.org/licenses/by/4.0/legalcode"}]}'
+  recorded_at: 2024-05-22 09:20:33 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0

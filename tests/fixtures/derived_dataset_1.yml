@@ -21,9 +21,9 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"doi":"10.15468/dd.f3v9an","description":"This data was filtered using
-        a fake protocol","citation":"Derived dataset GBIF.org (29 August 2023) Filtered
-        export of GBIF occurrence data https://doi.org/10.15468/dd.f3v9an","title":"Test
+      string: '{"doi":"10.15468/dd.26rgks","description":"This data was filtered using
+        a fake protocol","citation":"Derived dataset GBIF.org (22 May 2024) Filtered
+        export of GBIF occurrence data https://doi.org/10.15468/dd.26rgks","title":"Test
         for derived dataset","sourceUrl":"https://zenodo.org/record/4246090#.YPGS2OgzZPY","createdBy":"<gbif_user>","modifiedBy":"<gbif_user>"}'
-  recorded_at: 2023-08-29 13:19:02 GMT
+  recorded_at: 2024-05-22 09:20:41 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0

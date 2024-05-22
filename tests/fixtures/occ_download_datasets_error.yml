@@ -10,16 +10,15 @@ http_interactions:
       Accept: application/json, text/xml, application/xml, */*
   response:
     status:
-      status_code: '500'
-      message: Internal Server Error
-      explanation: Server got itself in trouble
+      status_code: '404'
+      message: Not Found
+      explanation: Nothing matches the given URI
     headers:
-      status: HTTP/1.1 500 Internal Server Error
-      content-type: application/json
+      status: HTTP/1.1 404 Not Found
+      content-type: text/plain
     body:
       encoding: ''
       file: no
-      string: '{"timestamp":"2023-08-29T14:03:51.309+00:00","status":500,"error":"Internal
-        Server Error","message":"","path":"/occurrence/download/foo-bar/datasets"}'
-  recorded_at: 2023-08-29 14:03:51 GMT
+      string: Download was not found
+  recorded_at: 2024-05-22 09:25:23 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0

@@ -67,42 +67,5 @@ test_that("occ_download_prep long print", {
 })
 
 
-test_that("occ_download_prep verbatim_extensions work fail well", {
-  skip_on_cran()
-  
-  expect_error(
-  occ_download_prep(
-    pred_in("taxonKey", 1),
-    verbatim_extensions("http://rs.gbif.org/terms/1.0/DNADerivedData",
-                        "http://rs.tdwg.org/dwc/terms/MeasurementOrFact"),
-    verbatim_extensions("http://rs.gbif.org/terms/1.0/DNADerivedData",
-                        "http://rs.tdwg.org/dwc/terms/MeasurementOrFact"),
-    user = "foo", 
-    pwd = "bar", 
-    email = "foo@bar.com"
-  ),"Please supply only one verbatim_extensions\\(\\) expression.")
-  
-  expect_error(
-    occ_download_prep(
-      pred_in("taxonKey", 1),
-      verbatim_extensions("http://rs.gbif.org/terms/1.0/DNADerivedData",
-                          "http://rs.tdwg.org/dwc/terms/MeasurementOrFact"),
-      user = "foo", 
-      pwd = "bar", 
-      email = "foo@bar.com",
-      format = "SIMPLE_CSV"
-    ),"verbatim_extensions only work with format='DWCA'")
-  
-  expect_error(
-    occ_download_prep(
-      pred_in("taxonKey", 1),
-      verbatim_extensions(12321),
-      user = "foo", 
-      pwd = "bar", 
-      email = "foo@bar.com",
-      format = "DWCA"
-    ),"x must be of class character")
-  
-})
 
 

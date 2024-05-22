@@ -20,12 +20,12 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: 0001343-230828120925497
-  recorded_at: 2023-08-29 14:03:12 GMT
+      string: 0030295-240506114902167
+  recorded_at: 2024-05-22 09:45:53 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/download/0001343-230828120925497
+    uri: https://api.gbif.org/v1/occurrence/download/0030295-240506114902167
     body:
       encoding: ''
       string: ''
@@ -43,6 +43,6 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"key":"0001343-230828120925497","doi":"10.15468/dl.bpuzsu","license":"unspecified","request":{"predicate":{"type":"greaterThan","key":"ORGANISM_QUANTITY","value":"1","matchCase":false},"sendNotification":false,"format":"SIMPLE_CSV","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2023-08-29T14:03:12.738+00:00","modified":"2023-08-29T14:03:12.738+00:00","eraseAfter":"2024-02-29T14:03:12.589+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0001343-230828120925497.zip","size":0,"totalRecords":0,"numberDatasets":0}'
-  recorded_at: 2023-08-29 14:03:12 GMT
+      string: '{"key":"0030295-240506114902167","doi":"10.15468/dl.z8am8z","license":"unspecified","request":{"predicate":{"type":"greaterThan","key":"ORGANISM_QUANTITY","value":"1","matchCase":false},"sendNotification":false,"format":"SIMPLE_CSV","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2024-05-22T09:45:53.548+00:00","modified":"2024-05-22T09:45:53.548+00:00","eraseAfter":"2024-11-22T09:45:53.471+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0030295-240506114902167.zip","size":0,"totalRecords":0,"numberDatasets":0}'
+  recorded_at: 2024-05-22 09:45:53 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0

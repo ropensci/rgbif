@@ -1,0 +1,109 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/search?limit=0&facetLimit=5&facet=doi
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MTA1MTI5LCJy
+        ZXN1bHRzIjpbXSwiZmFjZXRzIjpbeyJmaWVsZCI6IkRPSSIsImNvdW50cyI6W3sibmFtZSI6IjEwLjUy
+        ODEvemVub2RvLjI5MTk3MSIsImNvdW50IjoyNn0seyJuYW1lIjoiMTAuNTUzOS9lbnJyLnYybjNwMTE1
+        IiwiY291bnQiOjZ9LHsibmFtZSI6IjEwLjEwMDcvczEwNzUwLTAwNy05MjM1LTYiLCJjb3VudCI6M30s
+        eyJuYW1lIjoiMTAuMTE2NDYvem9vdGF4YS40MDA2LjIuMTAiLCJjb3VudCI6M30seyJuYW1lIjoiMTAu
+        MTU0NjgvMjhwN2hjIiwiY291bnQiOjN9XX1dfQ==
+  recorded_at: 2024-05-22 09:20:37 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/search?limit=0&facetLimit=5&facet=type
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MTA1MTI5LCJy
+        ZXN1bHRzIjpbXSwiZmFjZXRzIjpbeyJmaWVsZCI6IlRZUEUiLCJjb3VudHMiOlt7Im5hbWUiOiJDSEVD
+        S0xJU1QiLCJjb3VudCI6NTIzNjh9LHsibmFtZSI6Ik9DQ1VSUkVOQ0UiLCJjb3VudCI6NDkxMzB9LHsi
+        bmFtZSI6IlNBTVBMSU5HX0VWRU5UIiwiY291bnQiOjMyMzJ9LHsibmFtZSI6Ik1FVEFEQVRBIiwiY291
+        bnQiOjM5OX1dfV19
+  recorded_at: 2024-05-22 09:20:37 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/search?limit=0&facetLimit=5&facet=publishingCountry
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MTA1MTI5LCJy
+        ZXN1bHRzIjpbXSwiZmFjZXRzIjpbeyJmaWVsZCI6IlBVQkxJU0hJTkdfQ09VTlRSWSIsImNvdW50cyI6
+        W3sibmFtZSI6IkNIIiwiY291bnQiOjQ5NzMxfSx7Im5hbWUiOiJGUiIsImNvdW50IjoyNTYwNn0seyJu
+        YW1lIjoiREUiLCJjb3VudCI6OTAxM30seyJuYW1lIjoiQ08iLCJjb3VudCI6MjkyOX0seyJuYW1lIjoi
+        VVMiLCJjb3VudCI6MjYzOH1dfV19
+  recorded_at: 2024-05-22 09:20:37 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/search?limit=0&facetLimit=5&facetMincount=10000&facet=license
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MTA1MTI5LCJy
+        ZXN1bHRzIjpbXSwiZmFjZXRzIjpbeyJmaWVsZCI6IkxJQ0VOU0UiLCJjb3VudHMiOlt7Im5hbWUiOiJD
+        QzBfMV8wIiwiY291bnQiOjUyMzExfSx7Im5hbWUiOiJDQ19CWV80XzAiLCJjb3VudCI6NDU0NTR9XX1d
+        fQ==
+  recorded_at: 2024-05-22 09:20:37 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
