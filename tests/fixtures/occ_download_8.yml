@@ -20,12 +20,12 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: 0001378-230828120925497
-  recorded_at: 2023-08-29 14:18:20 GMT
+      string: 0030495-240506114902167
+  recorded_at: 2024-05-22 11:20:13 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/download/0001378-230828120925497
+    uri: https://api.gbif.org/v1/occurrence/download/0030495-240506114902167
     body:
       encoding: ''
       string: ''
@@ -43,6 +43,6 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"key":"0001378-230828120925497","doi":"10.15468/dl.3n248b","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"and","predicates":[{"type":"equals","key":"HAS_GEOSPATIAL_ISSUE","value":"false","matchCase":false},{"type":"equals","key":"HAS_COORDINATE","value":"true","matchCase":false},{"type":"equals","key":"OCCURRENCE_STATUS","value":"PRESENT","matchCase":false},{"type":"not","predicate":{"type":"in","key":"BASIS_OF_RECORD","values":["FOSSIL_SPECIMEN","LIVING_SPECIMEN"],"matchCase":false}}]},{"type":"equals","key":"TYPE_STATUS","value":"ALLOLECTOTYPE","matchCase":false}]},"sendNotification":false,"format":"SIMPLE_CSV","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2023-08-29T14:18:20.060+00:00","modified":"2023-08-29T14:18:20.060+00:00","eraseAfter":"2024-02-29T14:18:20.004+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0001378-230828120925497.zip","size":0,"totalRecords":0,"numberDatasets":0}'
-  recorded_at: 2023-08-29 14:18:20 GMT
+      string: '{"key":"0030495-240506114902167","doi":"10.15468/dl.2gcf4n","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"and","predicates":[{"type":"equals","key":"HAS_GEOSPATIAL_ISSUE","value":"false","matchCase":false},{"type":"equals","key":"HAS_COORDINATE","value":"true","matchCase":false},{"type":"equals","key":"OCCURRENCE_STATUS","value":"PRESENT","matchCase":false},{"type":"not","predicate":{"type":"in","key":"BASIS_OF_RECORD","values":["FOSSIL_SPECIMEN","LIVING_SPECIMEN"],"matchCase":false}}]},{"type":"equals","key":"TYPE_STATUS","value":"ALLOLECTOTYPE","matchCase":false}]},"sendNotification":false,"format":"SIMPLE_CSV","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2024-05-22T11:20:13.525+00:00","modified":"2024-05-22T11:20:13.525+00:00","eraseAfter":"2024-11-22T11:20:13.471+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0030495-240506114902167.zip","size":0,"totalRecords":0,"numberDatasets":0}'
+  recorded_at: 2024-05-22 11:20:13 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0

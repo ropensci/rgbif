@@ -278,13 +278,6 @@ pred_default <- function() {
   pred_not(pred_in("BASIS_OF_RECORD",c("FOSSIL_SPECIMEN","LIVING_SPECIMEN")))
   )
 }
-#' @rdname download_predicate_dsl
-#' @export
-verbatim_extensions <- function(...) {
-  x <- unlist(list(...))
-  assert(x,"character")
-  structure(x, class = "verbatim_extensions")
-}
 
 #' @export
 print.occ_predicate <- function(x, ...) {
@@ -305,14 +298,6 @@ print.occ_predicate_list <- function(x, ...) {
   }
 }
 
-#' @export
-print.verbatim_extensions <- function(...) {
-  x <- unlist(list(...))
-  cat("<<gbif download - verbatim_extensions>>", sep = "\n")
-  for(i in seq_along(x)) {
-  cat("  ", x[i], "\n", sep = "")
-  }
-}
 
 # helpers
 pred_factory <- function(type) {
@@ -599,7 +584,7 @@ parse_predicates <- function(user, email, type, format, ...) {
     stop("You are requesting a full download. Please use a predicate to filter the data. For example, pred_default().")
   }  
 clzzs <- vapply(tmp,
-    function(z) inherits(z, c("verbatim_extensions","occ_predicate", "occ_predicate_list")),
+    function(z) inherits(z, c("occ_predicate", "occ_predicate_list")),
     logical(1)
   )
   if (!all(clzzs))
@@ -611,20 +596,6 @@ clzzs <- vapply(tmp,
     format = unbox(format),
     predicate = list()
   )
-  # handle verbatim_extensions 
-  if(any(sapply(tmp,class) %in% "verbatim_extensions")) {
-    if(!format == "DWCA") stop("verbatim_extensions only work with format='DWCA'")
-    ve_idx <- which(sapply(tmp,class) == "verbatim_extensions")
-    if(!length(ve_idx) == 1) stop("Please supply only one verbatim_extensions() expression.")
-    payload <- list(
-      creator = unbox(user),
-      notification_address = email,
-      format = unbox(format),
-      predicate = list(),
-      verbatimExtensions = unclass(tmp[[ve_idx]])
-    )
-    tmp[ve_idx] <- NULL
-  }
   if (any(vapply(tmp, function(w) "predicates" %in% names(w), logical(1)))) {
     payload$predicate <- list(unclass(tmp[[1]]))
   } else {

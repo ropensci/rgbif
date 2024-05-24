@@ -20,12 +20,12 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: 0001344-230828120925497
-  recorded_at: 2023-08-29 14:03:14 GMT
+      string: 0030494-240506114902167
+  recorded_at: 2024-05-22 11:20:11 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/download/0001344-230828120925497
+    uri: https://api.gbif.org/v1/occurrence/download/0030494-240506114902167
     body:
       encoding: ''
       string: ''
@@ -43,6 +43,6 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"key":"0001344-230828120925497","doi":"10.15468/dl.vbgk6c","license":"unspecified","request":{"predicate":{"type":"equals","key":"LIFE_STAGE","value":"Adult","matchCase":false},"sendNotification":false,"format":"SIMPLE_CSV","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2023-08-29T14:03:14.728+00:00","modified":"2023-08-29T14:03:14.728+00:00","eraseAfter":"2024-02-29T14:03:14.595+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0001344-230828120925497.zip","size":0,"totalRecords":0,"numberDatasets":0}'
-  recorded_at: 2023-08-29 14:03:14 GMT
+      string: '{"key":"0030494-240506114902167","doi":"10.15468/dl.frmead","license":"unspecified","request":{"predicate":{"type":"equals","key":"LIFE_STAGE","value":"Adult","matchCase":false},"sendNotification":false,"format":"SIMPLE_CSV","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2024-05-22T11:20:11.323+00:00","modified":"2024-05-22T11:20:11.323+00:00","eraseAfter":"2024-11-22T11:20:11.236+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0030494-240506114902167.zip","size":0,"totalRecords":0,"numberDatasets":0}'
+  recorded_at: 2024-05-22 11:20:11 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0

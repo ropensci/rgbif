@@ -20,12 +20,12 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: 0001342-230828120925497
-  recorded_at: 2023-08-29 14:03:10 GMT
+      string: 0030294-240506114902167
+  recorded_at: 2024-05-22 09:45:51 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
-    uri: https://api.gbif.org/v1/occurrence/download/0001342-230828120925497
+    uri: https://api.gbif.org/v1/occurrence/download/0030294-240506114902167
     body:
       encoding: ''
       string: ''
@@ -43,6 +43,6 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '{"key":"0001342-230828120925497","doi":"10.15468/dl.e8eh8a","license":"unspecified","request":{"predicate":{"type":"equals","key":"VERBATIM_SCIENTIFIC_NAME","value":"Calopteryx","matchCase":false},"sendNotification":false,"format":"SIMPLE_CSV","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2023-08-29T14:03:10.819+00:00","modified":"2023-08-29T14:03:10.819+00:00","eraseAfter":"2024-02-29T14:03:10.742+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0001342-230828120925497.zip","size":0,"totalRecords":0,"numberDatasets":0}'
-  recorded_at: 2023-08-29 14:03:10 GMT
+      string: '{"key":"0030294-240506114902167","doi":"10.15468/dl.4z6qfa","license":"unspecified","request":{"predicate":{"type":"equals","key":"VERBATIM_SCIENTIFIC_NAME","value":"Calopteryx","matchCase":false},"sendNotification":false,"format":"SIMPLE_CSV","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2024-05-22T09:45:51.671+00:00","modified":"2024-05-22T09:45:51.671+00:00","eraseAfter":"2024-11-22T09:45:51.615+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0030294-240506114902167.zip","size":0,"totalRecords":0,"numberDatasets":0}'
+  recorded_at: 2024-05-22 09:45:51 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0

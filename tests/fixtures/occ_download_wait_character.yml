@@ -20,5 +20,5 @@ http_interactions:
       encoding: ''
       file: no
       string: '{"key":"0000066-140928181241064","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"equals","key":"ELEVATION","value":"9500","matchCase":false},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2014-09-29T06:00:16.704+00:00","modified":"2014-09-29T06:01:29.520+00:00","eraseAfter":"2015-03-29T06:00:16.704+00:00","status":"SUCCEEDED","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0000066-140928181241064.zip","size":143097,"totalRecords":470,"numberDatasets":26}'
-  recorded_at: 2023-03-22 12:56:26 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.8.2
+  recorded_at: 2024-05-22 12:31:23 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0

@@ -1,3 +1,30 @@
+rgbif 3.8.0
+===========
+
+### NEW FEATURES
+
+* Added many missing `occ_search()` terms. (#698)
+* New function `occ_download_describe()` for getting information about download formats. (#721)
+
+### MINOR IMPROVEMENTS
+
+* Added `constituentKey` to `name_lookup()`. (#729)
+* Added support for `gbifId` downloads (#711)
+
+## BUG FIXES
+* `check_inputs()`bug fixed. (#706)
+
+### DOCUMENTATION
+
+* New article [Effectively using occ_search](https://docs.ropensci.org/rgbif/articles/effectively_using_occ_search.html)
+* Guidance for reversing WKT winding order. (#724)
+
+### DEPRECATED
+
+* `gbif_citation()` datasetKey methods no longer supported (#716)
+* "axe" feature in `occ_data()` is no longer supported. (#718)
+* `occ_data()` is soft deprecated and supported for legacy reasons only, and will no longer add new features. 
+
 rgbif 3.7.9
 ===========
 

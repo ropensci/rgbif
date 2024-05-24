@@ -55,6 +55,7 @@ test_that("args that support many repeated uses in one request", {
 })
 
 test_that("name_suggest limit is 100", {
+    skip_on_cran()
     expect_warning(name_suggest(limit=101),"Max limit is 100.")
     expect_no_warning(name_suggest(limit=10))
 })

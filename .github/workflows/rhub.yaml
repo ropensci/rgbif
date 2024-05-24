@@ -24,7 +24,6 @@ on:
         type: string
 
 jobs:
-
   setup:
     runs-on: ubuntu-latest
     outputs:

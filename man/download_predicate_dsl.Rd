@@ -16,7 +16,6 @@
 \alias{pred_and}
 \alias{pred_in}
 \alias{pred_default}
-\alias{verbatim_extensions}
 \title{Download predicate DSL (domain specific language)}
 \usage{
 pred(key, value)
@@ -46,8 +45,6 @@ pred_and(..., .list = list())
 pred_in(key, value)
 
 pred_default()
-
-verbatim_extensions(...)
 }
 \arguments{
 \item{key}{(character) the key for the predicate. See "Keys" below}

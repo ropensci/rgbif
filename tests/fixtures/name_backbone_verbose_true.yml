@@ -20,7 +20,7 @@ http_interactions:
       encoding: ''
       file: no
       string: '{"confidence":100,"note":"Multiple equal matches for Calopteryx","matchType":"NONE","synonym":false}'
-  recorded_at: 2024-01-04 12:44:08 GMT
+  recorded_at: 2024-05-22 09:22:12 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
@@ -57,5 +57,5 @@ http_interactions:
         name=75; authorship=0; classification=-2; rank=6; status=-5; score=74","matchType":"FUZZY","kingdom":"Animalia","phylum":"Arthropoda","order":"Odonata","family":"Calopterygidae","genus":"Calepteryx","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":789,"familyKey":4211,"genusKey":4798148,"synonym":false,"class":"Insecta"},{"usageKey":3241589,"scientificName":"Colopteryx
         Ridgway, 1888","canonicalName":"Colopteryx","rank":"GENUS","status":"DOUBTFUL","confidence":74,"note":"Similarity:
         name=75; authorship=0; classification=-2; rank=6; status=-5; score=74","matchType":"FUZZY","kingdom":"Animalia","phylum":"Chordata","order":"Passeriformes","family":"Tyrannidae","genus":"Colopteryx","kingdomKey":1,"phylumKey":44,"classKey":212,"orderKey":729,"familyKey":5291,"genusKey":3241589,"synonym":false,"class":"Aves"}],"synonym":false}'
-  recorded_at: 2024-01-04 12:44:08 GMT
+  recorded_at: 2024-05-22 09:22:12 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0
