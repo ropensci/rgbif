@@ -194,7 +194,7 @@ DownloadMatch <- R6::R6Class(
     check_matches = function() {
       assert(self$age, c("integer", "numeric"))
       self$preds <- self$preds[tolower(self$preds$status) == "succeeded", ]
-      mtchs <- unclass(check_inputs(self$pred$request)) == self$preds$pred_str
+      mtchs <- unclass(check_inputs(self$pred$request)) == gsub(",\"matchCase\":\"FALSE\"", "", self$preds$pred_str)
       if (!any(mtchs)) {
         self$output <- self$pred_match()
       } else {
