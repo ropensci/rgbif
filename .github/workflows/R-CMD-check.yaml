@@ -71,8 +71,7 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           pak::local_install_dev_deps()
-          remotes::install_github("r-spatial/sf")
-          pak::pkg_install(c("rcmdcheck", "maps", "scales", "colorspace", "terra", "magick", "protolite"))
+          pak::pkg_install(c("sf","rcmdcheck", "maps", "scales", "colorspace", "terra", "magick", "protolite"))
         shell: Rscript {0}
 
       - name: Install dependencies macOS and Windows
