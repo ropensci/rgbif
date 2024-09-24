@@ -1,0 +1,23 @@
+http_interactions:
+- request:
+    method: delete
+    uri: https://api.gbif.org/v1/occurrence/download/request/0030224-240506114902167
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '204'
+      message: No Content
+      explanation: Request fulfilled, nothing follows
+    headers:
+      status: HTTP/1.1 204 No Content
+    body:
+      encoding: ''
+      file: no
+      string: ''
+  recorded_at: 2024-09-20 15:29:32 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
