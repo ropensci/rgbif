@@ -1,0 +1,186 @@
+---
+title: "Effectively using occ_search"
+author: "John Waller"
+date: "2024-05-08"
+output: rmarkdown::html_vignette
+vignette: >
+    %\VignetteIndexEntry{effectively_using_occ_search}
+    %\VignetteEngine{knitr::rmarkdown}
+    %\VignetteEncoding{UTF-8}
+---
+
+GBIF's [occurrence search](https://www.gbif.org/occurrence/search) is a powerful and versatile tool for accessing GBIF mediate data. This vignette will provide an overview of the `occ_search()` function and provide examples and advice of how to use it effectively and also when **not** to use it.
+
+> The function `occ_search()` (and related legacy function `occ_data()`) **should not** be used for serious research. Users sometimes find it easier to use `occ_search()` rather than `occ_download()` because they do not need to supply a username or password, and also do not need to wait for a download to finish. However, any serious research project should always use `occ_download()` instead.
+
+`occ_search()` is a quick way to get a non-random sample of occurrences from the GBIF mediated data. It is useful for quickly exploring the data, but it is not suitable for serious research because users are **limited to 100,000 records** per search combination.
+
+And, even if your search returns fewer than 100,000 records, it is **still** not recommended to use `occ_search()` to retrieve all the records for a serious research project. This is because it is not possible to [cite the data](https://docs.ropensci.org/rgbif/articles/gbif_citations.html) obtained this way in an easy way.
+
+Here are some examples of some **good** usages of `occ_search()`:
+
+-   Quickly exploring occurrence data
+-   Getting occurrence counts and statistics (see also `occ_count()` and article [here](https://docs.ropensci.org/rgbif/articles/occ_counts.html))
+-   Testing out search parameters before downloading data
+
+And here are some examples of **bad** usages of `occ_search()`:
+
+-   Looping through a large number of species to extract occurrence data (See article [here](https://docs.ropensci.org/rgbif/articles/downloading_a_long_species_list.html) instead)
+-   Treating the data as a random sample
+-   Using `occ_search()` data for citable research
+
+## basisOfRecord
+
+One of the more useful fields to search on is `basisOfRecord`, which gives roughly the origin of the occurrence record. Most records on GBIF are either `PRESERVED_SPECIMEN` (museum/herbarium records) or `HUMAN_OBSERVATION` (usually citizen science, but sometimes research observations).
+
+Other interesting `basisOfRecord` values are `FOSSIL_SPECIMEN` and `LIVING_SPECIMEN` (zoos or botanical gardens), because people typically want to exclude these from their downloads.
+
+Keep in mind that the `basisOfRecord` values are not guaranteed to be filled in accurately by the publisher. Sometimes records are misclassified or given a `basisOfRecord` that you would not expect or have a [complicated provenance](https://data-blog.gbif.org/post/living-specimen-to-preserved-specimen-understanding-basis-of-record/).
+
+``` r
+occ_search(basisOfRecord="PRESERVED_SPECIMEN") # museum and herbarium records
+occ_search(basisOfRecord="HUMAN_OBSERVATION") # citizen science and research observations
+occ_search(basisOfRecord="FOSSIL_SPECIMEN") # fossil records
+occ_search(basisOfRecord="LIVING_SPECIMEN") # zoo and botanical garden records
+occ_search(basisOfRecord="PRESERVED_SPECIMEN;HUMAN_OBSERVATION") # museum/herbarium and citizen science/research observations
+occ_search(basisOfRecord="MACHINE_OBSERVATION") # machine observations (e.g. camera traps, acoustic recorders, etc.)
+```
+
+## Searching with scientificName
+
+Users are sometimes attracted to `occ_search()` because it is possible to supply a `scientificName` rather than a `taxonKey`. Note, that in the background a call is made the species match service (similar `to name_backbone()`) in order to retrieve a GBIF taxonKey. Because of this, a user can sometimes rarely receive back poorly matched occurrences, particularly if authorship is not supplied.
+
+``` r
+occ_search(scientificName="Caloptery splendens")
+# Or better 
+occ_search(scientificName="Calopteryx splendens (Harris, 1780)")
+```
+
+Is equivalent to doing the following:
+
+``` r
+occ_search(taxonKey=name_backbone("Calopteryx splendens")$usageKey)
+# OR
+occ_search(taxonKey=1427067)
+```
+
+If your name happens to be a [homotypic synonym](https://docs.ropensci.org/rgbif/articles/taxonomic_names.html#too-many-choices-problem) of another name, you may get back occurrences for the other name or no results or a higher-rank match results. Therefore, it is usually safer to use the GBIF taxonKey.
+
+## Non-interpreted fields
+
+Some fields in the GBIF mediated data are "interpreted" by GBIF, meaning that they are standardized in some way. For example, the field `basisOfRecord` is standardized to a controlled vocabulary. Therefore, only a few values are returned no matter what the publisher has supplied. For instance, "pinned insect", "fish specimen", and "herbarium sheet", will all get mapped to `PRESERVED_SPECIMEN` by GBIF.
+
+Other fields are "non-interpreted", meaning that they are not standardized in any way. For example, the field `recordedBy` is a free text field. If you search for `recordedBy="John Smith"`, you may not get back occurrences where the `recordedBy` field is some variant such as `J. Smith`, `Smith, J.`, `Smith, John`, etc.
+
+One strategy for determining whether a search term is free text is by using `occ_count(facet=<"search term">)`. See article of `occ_count()` [here](https://docs.ropensci.org/rgbif/articles/occ_counts.html).
+
+``` r
+occ_count(facet="recordedBy")
+occ_count(facet="basisOfRecord")
+```
+
+If many unique values are returned, then it is likely that the field is free text.
+
+## Un-intentional mass data removal from NULL values
+
+Some search parameters are often `NULL` or not supplied from the publisher. In general, `occ_search()` terms that are not required fields or not filled by GBIF during interpretation are often `NULL`. For example, even though `coordinateUncertaintyInMeters` [theoretically applies](https://docs.gbif.org/georeferencing-best-practices/1.0/en/) to all occurrences with coordinates, it is often `NULL` because the publishers choose not to supply this information or it is unknown. Similarly, `sex` might often be left `NULL` more than what would be expected naively.
+
+Other columns with more `NULL`s than one might expect :
+
+-   `stateProvince`
+-   `elevation`
+-   `establishmentMeans`
+-   `coordinateUncertaintyInMeters`
+
+Keep in mind that specifying any filter will remove all records with `NULL` in the filter.
+
+## Searching for locations
+
+Location searching can sometimes be challenging for new users. Particularly, searching for `stateProvince` can be tricky because the field is free text when one might expect it to be from a controlled vocabulary. `stateProvince="California"` will not return occurrences where the publisher supplied has values such as `CA`, `Calif.`, or `Cal.`. Additionally, records with coordinates falling within California may not have been supplied with a `stateProvince` value by the publisher.
+
+``` r
+occ_search(stateProvince="California")
+occ_search(stateProvince="CA")) # will return different number of records  
+occ_search(stateProvince="CA;California")) # search both variants at the same time  
+```
+
+A usually better choice than searching by `stateProvince` is to search by `gadmGid`. The term `gadmGid` is a GBIF interpreted field that is filled by GBIF when coordinates are available. Looking up the `gadmGid`s can be done on the GBIF [occurrence search page](https://www.gbif.org/occurrence/map?continent=NORTH_AMERICA&has_coordinate=true&has_geospatial_issue=false&gadm_gid=USA.5_1).
+
+``` r
+occ_search(gadmGid="USA.5_1") # search for California 
+occ_search(gadmGid="JPN.12_1") # search for Hokkaido Japan
+occ_search(gadmGid="USA.5_1;USA.6_1") # search for California and Colorado 
+occ_search(gadmGid="PHL.10_1") # Bataan Philippines
+occ_search(gadmGid="USA") # United States "just land" without EEZ area
+```
+
+Searching by `country` is typically straightforward because the field is standardized and filled in by GBIF when coordinates are available. Two letter country codes are used when searching occurrences. These codes can be looked up using `enumeration_country()`.
+
+``` r
+occ_search(country="US") # search for United States
+occ_search(country="JP") # search for Japan
+occ_search(country="PH") # search for Philippines
+occ_search(country="SW") # search for Sweden
+occ_search(country="US;JP") # search for United States and Japan
+```
+
+Searching by `continent` is also possible, but unlike `country`, this value is **not** filled in when coordinates are available, and instead relies on the publisher filling in this field. So if the publisher has not filled in a value, then this field will be `NULL`, even if it obviously lies on a continent.
+
+The field is however standardized by GBIF, so that the values are mapped to supplied values are all mapped to a controlled vocabulary(e.g. "Europa, Euroopa,EUR,Eu" -\> EUROPE, "Afrique,"Afr.","AF" -\> AFRIKA).
+
+``` r
+occ_search(continent="EUROPE") # search for Europe
+occ_search(continent="AFRIKA") # search for Africa
+occ_search(continent="EUROPE;AFRIKA") # search for Europe and Africa
+```
+
+If you need to get all occurrences from a certain continent, I would use the `gadmGid` filter or supply a bounding box or WKT polygon to `geometry`. When using `geometry` make sure that your polygon is wound in the correct order (anti-clockwise). When in doubt, using the GBIF [web UI](https://www.gbif.org/occurrence/map) to draw and debug the polygon can be a good option. Only POLYGON and MULTIPOLYGON are accepted WKT types.
+
+``` r
+occ_search(geometry="POLYGON((13.42436 69.86167,4.6469 67.01976,-8.26114 67.2205,-19.62021 67.81281,-28.39768 64.25374,-27.88135 53.09437,-17.55493 44.99691,-16.52228 30.81969,3.61426 32.57676,19.62021 30.37524,38.72411 32.14062,54.21375 33.87246,66.60546 43.14228,72.80133 50.54193,70.21972 62.16009,38.20778 72.6752,23.23447 73.42765,13.42436 69.86167))") # rough polygon around Europe
+```
+
+Sometimes it can be useful to select everything **but** a [certain region](https://www.gbif.org/occurrence/map?has_coordinate=true&has_geospatial_issue=false&geometry=POLYGON((-180%20-90,-90%20-90,0%20-90,90%20-90,180%20-90,180%2090,90%2090,0%2090,-90%2090,-180%2090,-180%20-90),(-5%20-5,-5%205,5%205,5%20-5,-5%20-5))&occurrence_status=present), also known as a "polygon with hole in it". This can be done by formatting your WKT with enough interpolated points.
+
+```         
+POLYGON(
+(-180 -90,-90 -90,0 -90,90 -90,180 -90,180 90,90 90,0 90,-90 90,-180 90,-180 -90),
+(-5 -5,-5 5,5 5,5 -5,-5 -5)
+)
+```
+
+## Searching for dates
+
+Some records on GBIF can be quite old (1600s), so it is sometimes useful to filter by `year` to remove these records. Year is typically the collection event or the observation event of the record. Almost all occurrences on GBIF supply a `year` value. Therefore filtering by `year` is typically safe from un-intentional mass data filtering from `NULL` values. 
+
+
+```r
+occ_search(year=1998) # search for occurrences from 1998
+occ_search(year="1998,2024") # search for occurrences from 1998-2024
+occ_search(year="1900;2000") # search for occurrences from 1900 and 2000
+occ_search(year="1950,2024") # search for somewhat modern records
+```
+
+## Other record ids
+
+Sometimes users are coming to GBIF looking for a specific museum record, but they don't know the `gbifid` of the record. In these cases, searching by `occurrenceId`, `catalogNumber`, `recordNumber` or `institutionCode` can be useful. Keep in mind that many of these fields and may not be unique across all of GBIF. For example, a few institutions might use the same `institutionCode`, but actual be different institutions. Usually combining a few of these values can get you close to the record you are looking for. 
+
+```r
+occ_search(institutionCode="KU")
+occ_search(catalogNumber="KU 110")
+```
+
+## DWCA extensions
+
+New users might not be aware that some data publishers supply additional data beyond simple "when-what-where" data. Richer extra data usually comes in the form of `dwcaExtensions`. While `occ_search()` does not return the values from these extensions, it is possible to filter by extension type to see what dataset publishers have published extensions of interest. 
+
+```r
+occ_search(dwcaExtension="http://rs.gbif.org/terms/1.0/Multimedia")
+occ_search(dwcaExtension="http://rs.tdwg.org/dwc/terms/MeasurementOrFact")
+occ_search(dwcaExtension="http://rs.gbif.org/terms/1.0/DNADerivedData")
+```
+
+## Further reading
+
+[GBIF tech docs](https://techdocs.gbif.org/en/openapi/v1/occurrence#/Searching%20occurrences/searchOccurrence) 
+

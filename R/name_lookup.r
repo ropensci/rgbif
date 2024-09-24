@@ -75,11 +75,28 @@
 #'   curlopts = list(verbose = TRUE))
 #' }
 
-name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
-  isExtinct=NULL, habitat=NULL, nameType=NULL, datasetKey=NULL,
-  origin=NULL, nomenclaturalStatus=NULL, limit=100, start=0, facet=NULL,
-  facetMincount=NULL, facetMultiselect=NULL, type=NULL, hl=NULL, issue=NULL,
-  verbose=FALSE, return=NULL, curlopts = list()) {
+name_lookup <- function(query=NULL,
+                        rank=NULL,
+                        higherTaxonKey=NULL,
+                        status=NULL,
+                        isExtinct=NULL,
+                        habitat=NULL,
+                        nameType=NULL,
+                        datasetKey=NULL,
+                        origin=NULL,
+                        nomenclaturalStatus=NULL,
+                        limit=100,
+                        start=0,
+                        facet=NULL,
+                        facetMincount=NULL,
+                        facetMultiselect=NULL,
+                        type=NULL,
+                        hl=NULL,
+                        issue=NULL,
+                        constituentKey=NULL,
+                        verbose=FALSE,
+                        return=NULL,
+                        curlopts = list()) {
 
   pchk(return, "name_lookup")
   if (!is.null(facetMincount) && inherits(facetMincount, "numeric"))
@@ -99,15 +116,28 @@ name_lookup <- function(query=NULL, rank=NULL, higherTaxonKey=NULL, status=NULL,
   datasetKey <- as_many_args(datasetKey)
   origin <- as_many_args(origin)
   issue <- as_many_args(issue)
+  constituentKey <- as_many_args(constituentKey)
 
   url <- paste0(gbif_base(), '/species/search')
-  args <- rgbif_compact(list(q=query, isExtinct=as_log(isExtinct),
-            nomenclaturalStatus=nomenclaturalStatus, limit=limit, offset=start,
-            facetMincount=facetMincount,
-            facetMultiselect=as_log(facetMultiselect), hl=as_log(hl),
-            type=type))
-  args <- c(args, facetbyname, rank, higherTaxonKey, status,
-            habitat, nameType, datasetKey, origin, issue)
+  args <- rgbif_compact(list(q=query, 
+                             isExtinct=as_log(isExtinct),
+                             nomenclaturalStatus=nomenclaturalStatus, 
+                             limit=limit, offset=start,
+                             facetMincount=facetMincount,
+                             facetMultiselect=as_log(facetMultiselect), 
+                             hl=as_log(hl),
+                             type=type))
+  args <- c(args, 
+            facetbyname, 
+            rank, 
+            higherTaxonKey, 
+            status,
+            habitat, 
+            nameType, 
+            datasetKey, 
+            origin, 
+            issue,
+            constituentKey)
 
   # paging implementation
   if (limit > 1000) {

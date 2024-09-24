@@ -11,7 +11,8 @@ test_that("occ_download_cached utils", {
   skip_on_ci()
 
   # dl_user
-  # NOTE: do not delete or update this cassette
+  # NOTE: Remember to update the age and created values below to match
+  # your actual GBIF account downloads 
   vcr::use_cassette("dl_user", {
     user <- dl_user()
   })
@@ -39,29 +40,35 @@ test_that("occ_download_cached utils", {
 
   # dl_match
   ## not matched
-  dprep1 <- occ_download_prep(pred("catalogNumber", "Bird.27847588"),
+  dprep1 <- occ_download_prep(
+    pred("catalogNumber", "Bird.27847588"),
     pred("year", 1978))
   aa <- dl_match(pred = dprep1, preds)
   expect_is(aa, "DownloadMatch")
   expect_false(aa$matched)
   
   ## matched but expired
-  dprep2 <- occ_download_prep(pred("catalogNumber", "Bird.27847588"))
+  dprep2 <- occ_download_prep(pred("taxonKey", "9588263"))
   bb <- dl_match(pred = dprep2, preds)
   expect_is(bb, "DownloadMatch")
-  # expect_true(bb$matched)
-  # expect_true(bb$expired)
+  expect_true(bb$matched)
+  expect_true(bb$expired)
   
   ## matched and not expired
   # created: 2020-04-02, so set `age=(Sys.Date()-as.Date("2020-04-02"))+1`
-  dprep3 <- occ_download_prep(pred_within("POLYGON((-14 42, 9 38, -7 26, -14 42))"),
-    pred_gte("elevation", 5000))
-  age <- as.numeric((Sys.Date()-as.Date("2020-04-02"))+1)
+  dprep3 <- occ_download_prep(
+    pred("taxonKey", 1427067),
+    pred("hasGeospatialIssue", FALSE),
+    pred("hasCoordinate", TRUE),
+    pred_lte("coordinateUncertaintyInMeters", 5000)
+  )
+  age <- as.numeric((Sys.Date()-as.Date("2024-09-23")) + 1)
   cc <- dl_match(pred = dprep3, preds, age = age)
   expect_is(cc, "DownloadMatch")
-  # expect_true(cc$matched)
-  # expect_false(cc$expired)
+  expect_true(cc$matched)
+  expect_false(cc$expired)
 })
+
 
 context("occ_download_cached")
 test_that("occ_download_cached itself", {

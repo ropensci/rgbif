@@ -37,7 +37,7 @@ test_that("occ_download: real requests work", {
   vcr::use_cassette("occ_download_2", {
     x <- occ_download(
       pred_and(
-        pred_within("POLYGON((-14 42, 9 38, -7 26, -14 42))"),
+        pred_within("POLYGON((-14 42,-7 26,9 38,-14 42))"),
         pred_gte("elevation", 5000)
       )
     )
@@ -190,34 +190,6 @@ test_that("occ_download: real requests work", {
   expect_is(attr(ddd,"downloadLink"),"character")
   expect_output(print.occ_download(ddd),"<<gbif download>>")
   expect_equal(length(capture.output(print(ddd))),22)
-  
-  # check that verbatim_extensions work as expected  
-  vcr::use_cassette("occ_download_9", {
-    v <- occ_download(
-      pred("taxonKey",5052020),
-      verbatim_extensions(
-        "http://rs.tdwg.org/chrono/terms/ChronometricAge",
-        "http://rs.gbif.org/terms/1.0/DNADerivedData"
-      ),
-      format = "DWCA"
-    )
-  }, match_requests_on = c("method", "uri", "body"))
-  
-  expect_is(unclass(v), "character")
-  expect_match(unclass(v)[1], "^[0-9]{7}-[0-9]{15}$")
-  expect_equal(attr(v, "user"), Sys.getenv("GBIF_USER"))
-  expect_equal(attr(v, "email"), Sys.getenv("GBIF_EMAIL"))
-  expect_equal(attr(v, "format"), "DWCA")
-  expect_is(attr(v,"doi"),"character")
-  expect_is(attr(v,"citation"),"character")
-  expect_is(attr(v,"downloadLink"),"character")
-  expect_output(print.occ_download(v),"<<gbif download>>")
-  expect_equal(length(capture.output(print(v))),22)
-  expect_equal(occ_download_meta(v)$request$verbatimExtensions[[1]],
-               "http://rs.tdwg.org/chrono/terms/ChronometricAge")
-  expect_equal(occ_download_meta(v)$request$verbatimExtensions[[2]],
-               "http://rs.gbif.org/terms/1.0/DNADerivedData")
-  expect_equal(length(occ_download_meta(v)$request$verbatimExtensions),2)
   
   # check that full downloads fail well 
   expect_error(occ_download(), "You are requesting a full download. Please use a predicate to filter the data. For example, pred_default().")

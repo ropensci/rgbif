@@ -2,7 +2,7 @@
 % Please edit documentation in R/occ_data.R
 \name{occ_data}
 \alias{occ_data}
-\title{Search for GBIF occurrences - simplified for speed}
+\title{Legacy alternative to occ_search}
 \usage{
 occ_data(
   taxonKey = NULL,
@@ -55,9 +55,6 @@ occ_data(
   stateProvince = NULL,
   waterBody = NULL,
   locality = NULL,
-  limit = 500,
-  start = 0,
-  skip_validate = TRUE,
   occurrenceStatus = "PRESENT",
   gadmGid = NULL,
   coordinateUncertaintyInMeters = NULL,
@@ -74,6 +71,9 @@ occ_data(
   lifeStage = NULL,
   isInCluster = NULL,
   distanceFromCentroidInMeters = NULL,
+  skip_validate = TRUE,
+  limit = 500,
+  start = 0,
   curlopts = list(http_version = 2)
 )
 }
@@ -288,19 +288,6 @@ locations occur}
 
 \item{locality}{(character) The specific description of the place.}
 
-\item{limit}{Number of records to return. Default: 500. Note that the per
-request maximum is 300, but since we set it at 500 for the function, we
-do two requests to get you the 500 records (if there are that many).
-Note that there is a hard maximum of 100,000, which is calculated as the
-\code{limit+start}, so \code{start=99,000} and \code{limit=2000} won't work}
-
-\item{start}{Record number to start at. Use in combination with limit to
-page through results. Note that we do the paging internally for you, but
-you can manually set the \code{start} parameter}
-
-\item{skip_validate}{(logical) whether to skip \code{wellknown::validate_wkt}
-call or not. passed down to \code{\link[=check_wkt]{check_wkt()}}. Default: \code{TRUE}}
-
 \item{occurrenceStatus}{(character)  Default is "PRESENT". Specify whether
 search should return "PRESENT" or "ABSENT" data.}
 
@@ -365,9 +352,20 @@ means at least 2km from known centroids. A value of "0" would mean occurrences
 exactly on known centroids. A value of "0,2000" would mean within 2km of
 centroids. Max value is 5000.}
 
-\item{curlopts}{list of named curl options passed on to
-\code{\link[crul]{HttpClient}}. see \code{curl::curl_options}
-for curl options}
+\item{skip_validate}{(logical) whether to skip wellknown::validate_wkt call
+or not. passed down to check_wkt(). Default: TRUE}
+
+\item{limit}{Number of records to return. Default: 500. Note that the per
+request maximum is 300, but since we set it at 500 for the function, we
+do two requests to get you the 500 records (if there are that many).
+Note that there is a hard maximum of 100,000, which is calculated as the
+\code{limit+start}, so \code{start=99,000} and \code{limit=2000} won't work}
+
+\item{start}{Record number to start at. Use in combination with limit to
+page through results. Note that we do the paging internally for you, but
+you can manually set the \code{start} parameter}
+
+\item{curlopts}{(list)}
 }
 \value{
 An object of class \code{gbif_data}, which is a S3 class list, with
@@ -379,496 +377,11 @@ it's a "many". \code{meta} is a list of length four with offset, limit,
 endOfRecords and count fields. \code{data} is a tibble (aka data.frame)
 }
 \description{
-Search for GBIF occurrences - simplified for speed
+Legacy alternative to occ_search
 }
-\note{
-Maximum number of records you can get with this function is 100,000.
-See https://www.gbif.org/developer/occurrence
-}
-\section{Multiple values passed to a parameter}{
-
-There are some parameters you can pass multiple values to in a vector,
-each value of which produces a different request (multiple different
-requests = c("a","b")). Some parameters allow multiple values to be passed
-in the same request (multiple same request = "a;b") in a semicolon separated
-string (e.g., 'a;b'); if given we'll do a single request with that parameter
-repeated for each value given (e.g., \code{foo=a&foo=b} if the parameter
-is \code{foo}).
-
-See article \href{https://docs.ropensci.org/rgbif/articles/multiple_values.html}{Multiple Values}.
-}
-
-\section{Hierarchies}{
-
-Hierarchies are returned with each occurrence object. There is no
-option to return them from the API. However, within the \code{occ_search}
-function you can select whether to return just hierarchies, just data, all
-of data and hierarchies and metadata, or just metadata. If all hierarchies
-are the same we just return one for you.
-}
-
-\section{curl debugging}{
-
-You can pass parameters not defined in this function into the call to
-the GBIF API to control things about the call itself using \code{curlopts}.
-See an example below that passes in the \code{verbose} function to get
-details on the http call.
-}
-
-\section{WKT}{
-
-Examples of valid WKT objects:
-\itemize{
-\item 'POLYGON((-19.5 34.1, 27.8 34.1, 35.9 68.1, -25.3 68.1, -19.5 34.1))'
-\item 'MULTIPOLYGON(((-123 38,-116 38,-116 43,-123 43,-123 38)),((-97 41,-93 41,-93 45,-97 45,-97 41)))'
-\item 'POINT(-120 40)'
-\item 'LINESTRING(3 4,10 50,20 25)'
-}
-
-Note that GBIF expects counter-clockwise winding order for WKT. You can
-supply clockwise WKT, but GBIF treats it as an exclusion, so you get all
-data not inside the WKT area. \code{\link[=occ_download]{occ_download()}} behaves differently
-in that you should simply get no data back at all with clockwise WKT.
-}
-
-\section{Long WKT}{
-
-Options for handling long WKT strings:
-Note that long WKT strings are specially handled when using \code{\link{occ_search}} or
-\code{\link{occ_data}}. Here are the three options for long WKT strings (> 1500 characters),
-set one of these three via the parameter \code{geom_big}:
-\itemize{
-\item asis - the default setting. This means we don't do anything internally. That is,
-we just pass on your WKT string just as we've done before in this package.
-\item axe - this option is deprecated since rgbif v3.8.0. Might return error,
-since the GBIF's polygon interpretation has changed.
-
-This method uses \code{sf::st_make_grid} and \code{sf::st_intersection}, which has
-two parameters \code{cellsize} and \code{n}. You can tweak those parameters here by
-tweaking \code{geom_size} and \code{geom_n}. \code{geom_size} seems to be more useful in
-toggling the number of WKT strings you get back.
-
-See \code{\link{wkt_parse}} to manually break make WKT bounding box from a larger WKT
-string, or break a larger WKT string into many smaller ones.
-
-\item bbox - this option checks whether your WKT string is longer than 1500 characters,
-and if it is we create a bounding box from the WKT, do the GBIF search with that
-bounding box, then prune the resulting data to only those occurrences in your original
-WKT string. There is a big caveat however. Because we create a bounding box from the WKT,
-and the \code{limit} parameter determines some subset of records to get, then when we
-prune the resulting data to the WKT, the number of records you get could be less than
-what you set with your \code{limit} parameter. However, you could set the limit to be
-high enough so that you get all records back found in that bounding box, then you'll
-get all the records available within the WKT.
-}
-}
-
-\section{Counts}{
-
-There is a slight difference in the way records are counted here vs.
-results from \code{\link{occ_count}}. For equivalent outcomes, in this
-function use \code{hasCoordinate=TRUE}, and \code{hasGeospatialIssue=FALSE}
-to have the same outcome using \code{\link{occ_count}} with
-\code{isGeoreferenced=TRUE}
-}
-
-\section{occ_data vs. occ_search}{
-
-This does nearly the same thing as \code{\link[=occ_search]{occ_search()}}, but
-is simplified for speed, and is for the most common use case where
-user just wants occurrence data, and not other information like taxon
-hierarchies and media (e.g., images). Alot of time in \code{\link[=occ_search]{occ_search()}}
-is used parsing data to be more useable downstream. We do less of that
-in this function.
-
-There are a number of data fields GBIF returns that we drop to speed up
-processing time within R. These fields take extra time to process
-because they are deeply nested and so take extra time to check if
-they are empty or not, and if not, figure out how to parse them
-into a data.frame. The fields are:
-\itemize{
-\item \code{gadm}
-\item \code{media}
-\item \code{facts}
-\item \code{relations}
-\item \code{extensions}
-\item \code{identifiers}
-\item \code{recordedByIDs}
-\item \code{identifiedByIDs}
-}
-
-To get these fields use \code{\link[=occ_search]{occ_search()}} instead.
-}
-
-\examples{
-\dontrun{
-(key <- name_backbone(name='Encelia californica')$speciesKey)
-occ_data(taxonKey = key, limit = 4)
-(res <- occ_data(taxonKey = key, limit = 400))
-
-# Return 20 results, this is the default by the way
-(key <- name_suggest(q='Helianthus annuus', rank='species')$data$key[1])
-occ_data(taxonKey=key, limit=20)
-
-# Instead of getting a taxon key first, you can search for a name directly
-## However, note that using this approach (with \code{scientificName="..."})
-## you are getting synonyms too. The results for using \code{scientifcName}
-## and \code{taxonKey} parameters are the same in this case, but I wouldn't
-## be surprised if for some names they return different results
-occ_data(scientificName = 'Ursus americanus', curlopts=list(verbose=TRUE))
-key <- name_backbone(name = 'Ursus americanus', rank='species')$usageKey
-occ_data(taxonKey = key)
-
-# Search by dataset key
-occ_data(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a', limit=10)
-
-# Search by catalog number
-occ_data(catalogNumber="49366", limit=10)
-## separate requests: use a vector of strings
-occ_data(catalogNumber=c("49366","Bird.27847588"), limit=10)
-## one request, many instances of same parameter: use semi-colon sep. string
-occ_data(catalogNumber="49366;Bird.27847588", limit=10)
-
-# Use paging parameters (limit and start) to page. Note the different results
-# for the two queries below.
-occ_data(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a',start=10,limit=5)
-occ_data(datasetKey='7b5d6a48-f762-11e1-a439-00145eb45e9a',start=20,limit=5)
-
-# Many dataset keys
-## separate requests: use a vector of strings
-occ_data(datasetKey=c("50c9509d-22c7-4a22-a47d-8c48425ef4a7",
-   "7b5d6a48-f762-11e1-a439-00145eb45e9a"), limit=20)
-## one request, many instances of same parameter: use semi-colon sep. string
-v="50c9509d-22c7-4a22-a47d-8c48425ef4a7;7b5d6a48-f762-11e1-a439-00145eb45e9a"
-occ_data(datasetKey = v, limit=20)
-
-# Search by recorder
-occ_data(recordedBy="smith", limit=20)
-
-# Many collector names
-## separate requests: use a vector of strings
-occ_data(recordedBy=c("smith","BJ Stacey"), limit=10)
-## one request, many instances of same parameter: use semi-colon sep. string
-occ_data(recordedBy="smith;BJ Stacey", limit=10)
-
-# recordedByID
-occ_data(recordedByID="https://orcid.org/0000-0003-1691-239X", limit=20)
-## many at once
-### separate searches
-ids <- c("https://orcid.org/0000-0003-1691-239X",
-  "https://orcid.org/0000-0001-7569-1828",
-  "https://orcid.org/0000-0002-0596-5376")
-res <- occ_data(recordedByID=ids, limit=20)
-res[[1]]$data$recordedByIDs[[1]]
-res[[2]]$data$recordedByIDs[[1]]
-res[[3]]$data$recordedByIDs[[1]]
-### all in one search
-res <- occ_data(recordedByID=paste0(ids, collapse=";"), limit=20)
-unique(vapply(res$data$recordedByIDs, "[[", "", "value"))
-
-# identifiedByID
-occ_data(identifiedByID="https://orcid.org/0000-0003-4710-2648", limit=20)
-
-# Pass in curl options for extra fun
-occ_data(taxonKey=2433407, limit=20, curlopts=list(verbose=TRUE))
-occ_data(taxonKey=2433407, limit=20,
-  curlopts = list(
-    noprogress = FALSE,
-    progressfunction = function(down, up) {
-      cat(sprintf("up: \%d | down \%d\n", up, down))
-      return(TRUE)
-    }
-  )
-)
-# occ_data(taxonKey=2433407, limit=20, curlopts=list(timeout_ms=1))
-
-# Search for many species
-splist <- c('Cyanocitta stelleri', 'Junco hyemalis', 'Aix sponsa')
-keys <- sapply(splist, function(x) name_suggest(x)$data$key[1], USE.NAMES=FALSE)
-## separate requests: use a vector of strings
-occ_data(taxonKey = keys, limit=5)
-## one request, many instances of same parameter: use semi-colon sep. string
-occ_data(taxonKey = paste0(keys, collapse = ";"), limit=5)
-
-# Search using a synonym name
-#  Note that you'll see a message printing out that the accepted name will
-# be used
-occ_data(scientificName = 'Pulsatilla patens', limit=5)
-
-# Search on latitidue and longitude
-occ_data(decimalLatitude=40, decimalLongitude=-120, limit = 10)
-
-# Search on a bounding box
-## in well known text format
-### polygon
-occ_data(geometry='POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))',
-  limit=20)
-### multipolygon
-wkt <- 'MULTIPOLYGON(((-123 38,-116 38,-116 43,-123 43,-123 38)),
-   ((-97 41,-93 41,-93 45,-97 45,-97 41)))'
-occ_data(geometry = gsub("\n\\\\s+", "", wkt), limit = 20)
-### polygon and taxonkey
-key <- name_suggest(q='Aesculus hippocastanum')$data$key[1]
-occ_data(taxonKey=key,
- geometry='POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))',
- limit=20)
-## or using bounding box, converted to WKT internally
-occ_data(geometry=c(-125.0,38.4,-121.8,40.9), limit=20)
-
-## you can seaerch on many geometry objects
-### separate requests: use a vector of strings
-wkts <-
-c('POLYGON((-102.2 46,-102.2 43.7,-93.9 43.7,-93.9 46,-102.2 46))',
-'POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))')
-occ_data(geometry = wkts, limit=20)
-### one request, many instances of same parameter: use semi-colon sep. string
-occ_data(geometry = paste0(wkts, collapse = ";"), limit=20)
-
-
-# Search on a long WKT string - too long for a GBIF search API request
-## By default, a very long WKT string will likely cause a request failure as
-## GBIF only handles strings up to about 1500 characters long. You can leave as is, or
-##  - Alternatively, you can choose to break up your polygon into many, and do a
-##      data request on each piece, and the output is put back together (see below)
-##  - Or, 2nd alternatively, you could use the GBIF download API
-wkt <- "POLYGON((-9.178796777343678 53.22769021556159,
--12.167078027343678 51.56540789297837,
--12.958093652343678 49.78333685689162,-11.024499902343678 49.21251756301334,
--12.079187402343678 46.68179685941719,-15.067468652343678 45.83103608186854,
--15.770593652343678 43.58271629699817,-15.067468652343678 41.57676278827219,
--11.815515527343678 40.44938999172728,-12.958093652343678 37.72112962230871,
--11.639734277343678 36.52987439429357,-8.299890527343678 34.96062625095747,
--8.739343652343678 32.62357394385735,-5.223718652343678 30.90497915232165,
-1.1044063476563224 31.80562077746643,1.1044063476563224 30.754036557416256,
-6.905187597656322 32.02942785462211,5.147375097656322 32.99292810780193,
-9.629796972656322 34.164474406524725,10.860265722656322 32.91918014319603,
-14.551671972656322 33.72700959356651,13.409093847656322 34.888564192275204,
-16.748937597656322 35.104560368110114,19.561437597656322 34.81643887792552,
-18.594640722656322 36.38849705969625,22.989171972656322 37.162874858929854,
-19.825109472656322 39.50651757842751,13.760656347656322 38.89353140585116,
-14.112218847656322 42.36091601976124,10.596593847656322 41.11488736647705,
-9.366125097656322 43.70991402658437,5.059484472656322 42.62015372417812,
-2.3348750976563224 45.21526500321446,-0.7412967773436776 46.80225692528942,
-6.114171972656322 47.102229890207894,8.047765722656322 45.52399303437107,
-12.881750097656322 48.22681126957933,9.190343847656322 48.693079457106684,
-8.750890722656322 50.68283120621287,5.059484472656322 50.40356146487845,
-4.268468847656322 52.377558897655156,1.4559688476563224 53.28027243658647,
-0.8407344726563224 51.62000971578333,0.5770625976563224 49.32721423860726,
--2.5869999023436776 49.49875947592088,-2.4991092773436776 51.18135535408638,
--2.0596561523436776 52.53822562473851,-4.696374902343678 51.67454591918756,
--5.311609277343678 50.009802108095776,-6.629968652343678 48.75106196817059,
--7.684656152343678 50.12263634382465,-6.190515527343678 51.83776110910459,
--5.047937402343678 54.267098895684235,-6.893640527343678 53.69860705549198,
--8.915124902343678 54.77719740243195,-12.079187402343678 54.52294465763567,
--13.573328027343678 53.437631551347174,
--11.288171777343678 53.48995552517918,
--9.178796777343678 53.22769021556159))"
-wkt <- gsub("\n", " ", wkt)
-
-#### Default option with large WKT string fails
-# res <- occ_data(geometry = wkt)
-
-#### if WKT too long, with 'geom_big=bbox': makes into bounding box
-if (interactive()){
-res <- occ_data(geometry = wkt, geom_big = "bbox")
-}
-
-
-# Search on country
-occ_data(country='US', limit=20)
-occ_data(country='FR', limit=20)
-occ_data(country='DE', limit=20)
-### separate requests: use a vector of strings
-occ_data(country=c('US','DE'), limit=20)
-### one request, many instances of same parameter: use semi-colon sep. string
-occ_data(country = 'US;DE', limit=20)
-
-# Get only occurrences with lat/long data
-occ_data(taxonKey=key, hasCoordinate=TRUE, limit=20)
-
-# Get only occurrences that were recorded as living specimens
-occ_data(basisOfRecord="LIVING_SPECIMEN", hasCoordinate=TRUE, limit=20)
-## multiple values in a vector = a separate request for each value
-occ_data(taxonKey=key,
-  basisOfRecord=c("OBSERVATION", "HUMAN_OBSERVATION"), limit=20)
-## mutiple values in a single string, ";" separated = one request including all values
-occ_data(taxonKey=key,
-  basisOfRecord="OBSERVATION;HUMAN_OBSERVATION", limit=20)
-
-# Get occurrences for a particular eventDate
-occ_data(taxonKey=key, eventDate="2013", limit=20)
-occ_data(taxonKey=key, year="2013", limit=20)
-occ_data(taxonKey=key, month="6", limit=20)
-
-# Get occurrences based on depth
-key <- name_backbone(name='Salmo salar', kingdom='animals')$speciesKey
-occ_data(taxonKey=key, depth=1, limit=20)
-
-# Get occurrences based on elevation
-key <- name_backbone(name='Puma concolor', kingdom='animals')$speciesKey
-occ_data(taxonKey=key, elevation=50, hasCoordinate=TRUE, limit=20)
-
-# Get occurrences based on institutionCode
-occ_data(institutionCode="TLMF", limit=20)
-### separate requests: use a vector of strings
-occ_data(institutionCode=c("TLMF","ArtDatabanken"), limit=20)
-### one request, many instances of same parameter: use semi-colon sep. string
-occ_data(institutionCode = "TLMF;ArtDatabanken", limit=20)
-
-# Get occurrences based on collectionCode
-occ_data(collectionCode="Floristic Databases MV - Higher Plants", limit=20)
-### separate requests: use a vector of strings
-occ_data(collectionCode=c("Floristic Databases MV - Higher Plants",
-  "Artport"), limit = 20)
-### one request, many instances of same parameter: use semi-colon sep. string
-occ_data(collectionCode = "Floristic Databases MV - Higher Plants;Artport",
-  limit = 20)
-
-# Get only those occurrences with spatial issues
-occ_data(taxonKey=key, hasGeospatialIssue=TRUE, limit=20)
-
-# Search using a query string
-occ_data(search="kingfisher", limit=20)
-
-# search on repatriated - doesn't work right now
-# occ_data(repatriated = "")
-
-# search on phylumKey
-occ_data(phylumKey = 7707728, limit = 5)
-
-# search on kingdomKey
-occ_data(kingdomKey = 1, limit = 5)
-
-# search on classKey
-occ_data(classKey = 216, limit = 5)
-
-# search on orderKey
-occ_data(orderKey = 7192402, limit = 5)
-
-# search on familyKey
-occ_data(familyKey = 3925, limit = 5)
-
-# search on genusKey
-occ_data(genusKey = 1935496, limit = 5)
-
-# search on establishmentMeans
-occ_data(establishmentMeans = "INVASIVE", limit = 5)
-occ_data(establishmentMeans = "NATIVE", limit = 5)
-occ_data(establishmentMeans = "UNCERTAIN", limit = 5)
-### separate requests: use a vector of strings
-occ_data(establishmentMeans = c("INVASIVE", "NATIVE"), limit = 5)
-### one request, many instances of same parameter: use semi-colon sep. string
-occ_data(establishmentMeans = "INVASIVE;NATIVE", limit = 5)
-
-# search on protocol
-occ_data(protocol = "DIGIR", limit = 5)
-
-# search on license
-occ_data(license = "CC_BY_4_0", limit = 5)
-
-# search on organismId
-occ_data(organismId = "100", limit = 5)
-
-# search on publishingOrg
-occ_data(publishingOrg = "28eb1a3f-1c15-4a95-931a-4af90ecb574d", limit = 5)
-
-# search on stateProvince
-occ_data(stateProvince = "California", limit = 5)
-
-# search on waterBody
-occ_data(waterBody = "pacific ocean", limit = 5)
-
-# search on locality
-occ_data(locality = "Trondheim", limit = 5)
-### separate requests: use a vector of strings
-res <- occ_data(locality = c("Trondheim", "Hovekilen"), limit = 5)
-res$Trondheim$data
-res$Hovekilen$data
-### one request, many instances of same parameter: use semi-colon sep. string
-occ_data(locality = "Trondheim;Hovekilen", limit = 5)
-
-
-# Range queries
-## See Detail for parameters that support range queries
-occ_data(depth='50,100', limit = 20)
-### this is not a range search, but does two searches for each depth
-occ_data(depth=c(50,100), limit = 20)
-
-## Range search with year
-occ_data(year='1999,2000', limit=20)
-
-## Range search with latitude
-occ_data(decimalLatitude='29.59,29.6', limit = 20)
-
-## Range search with distanceFromCentroidInMeters 
-occ_data(distanceFromCentroidInMeters = "2000,*") # at least 2km from centroids
-occ_data(distanceFromCentroidInMeters = "0,2000") # close to centroids within 2km 
-occ_data(distanceFromCentroidInMeters = 0) # exactly on centroids
-
-# Search by specimen type status
-## Look for possible values of the typeStatus parameter looking at the typestatus dataset
-occ_data(typeStatus = 'allotype', limit = 20)$data[,c('name','typeStatus')]
-
-# Search by specimen record number
-## This is the record number of the person/group that submitted the data, not GBIF's numbers
-## You can see that many different groups have record number 1, so not super helpful
-occ_data(recordNumber = 1, limit = 20)$data[,c('name','recordNumber','recordedBy')]
-
-# Search by last time interpreted: Date the record was last modified in GBIF
-## The lastInterpreted parameter accepts ISO 8601 format dates, including
-## yyyy, yyyy-MM, yyyy-MM-dd, or MM-dd. Range queries are accepted for lastInterpreted
-occ_data(lastInterpreted = '2016-04-02', limit = 20)
-
-# Search for occurrences with images
-occ_data(mediaType = 'StillImage', limit = 20)
-occ_data(mediaType = 'MovingImage', limit = 20)
-occ_data(mediaType = 'Sound', limit = 20)
-
-# Search by continent
-## One of africa, antarctica, asia, europe, north_america, oceania, or
-## south_america
-occ_data(continent = 'south_america', limit = 20)$meta
-occ_data(continent = 'africa', limit = 20)$meta
-occ_data(continent = 'oceania', limit = 20)$meta
-occ_data(continent = 'antarctica', limit = 20)$meta
-### separate requests: use a vector of strings
-occ_data(continent = c('south_america', 'oceania'), limit = 20)
-### one request, many instances of same parameter: use semi-colon sep. string
-occ_data(continent = 'south_america;oceania', limit = 20)
-
-# Query based on issues - see Details for options
-## one issue
-x <- occ_data(taxonKey=1, issue='DEPTH_UNLIKELY', limit = 20)
-x$data[,c('name','key','decimalLatitude','decimalLongitude','depth')]
-## two issues
-occ_data(taxonKey=1, issue=c('DEPTH_UNLIKELY','COORDINATE_ROUNDED'), limit = 20)
-# Show all records in the Arizona State Lichen Collection that cant be matched to the GBIF
-# backbone properly:
-occ_data(datasetKey='84c0e1a0-f762-11e1-a439-00145eb45e9a',
-   issue=c('TAXON_MATCH_NONE','TAXON_MATCH_HIGHERRANK'), limit = 20)
-
-# Parsing output by issue
-(res <- occ_data(geometry='POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))', limit = 50))
-## what do issues mean, can print whole table, or search for matches
-head(gbif_issues())
-gbif_issues()[ gbif_issues()$code \%in\% c('cdround','cudc','gass84','txmathi'), ]
-## or parse issues in various ways
-### remove data rows with certain issue classes
-library('magrittr')
-res \%>\% occ_issues(gass84)
-### split issues into separate columns
-res \%>\% occ_issues(mutate = "split")
-### expand issues to more descriptive names
-res \%>\% occ_issues(mutate = "expand")
-### split and expand
-res \%>\% occ_issues(mutate = "split_expand")
-### split, expand, and remove an issue class
-res \%>\% occ_issues(-cudc, mutate = "split_expand")
-}
-}
-\references{
-https://www.gbif.org/developer/occurrence#search
-}
-\seealso{
-\code{\link[=downloads]{downloads()}}, \code{\link[=occ_search]{occ_search()}}
+\details{
+This function is a legacy alternative to \code{occ_search()}. It is not
+recommended to use \code{occ_data()} as it is not as flexible as \code{occ_search()}.
+New search terms will not be added to this function and it is only supported
+for legacy reasons.
 }

@@ -71,6 +71,61 @@ occ_search(
   lifeStage = NULL,
   isInCluster = NULL,
   distanceFromCentroidInMeters = NULL,
+  geoDistance = NULL,
+  sex = NULL,
+  dwcaExtension = NULL,
+  gbifId = NULL,
+  gbifRegion = NULL,
+  projectId = NULL,
+  programme = NULL,
+  preparations = NULL,
+  datasetId = NULL,
+  datasetName = NULL,
+  publishedByGbifRegion = NULL,
+  island = NULL,
+  islandGroup = NULL,
+  taxonId = NULL,
+  taxonConceptId = NULL,
+  taxonomicStatus = NULL,
+  acceptedTaxonKey = NULL,
+  collectionKey = NULL,
+  institutionKey = NULL,
+  otherCatalogNumbers = NULL,
+  georeferencedBy = NULL,
+  installationKey = NULL,
+  hostingOrganizationKey = NULL,
+  crawlId = NULL,
+  modified = NULL,
+  higherGeography = NULL,
+  fieldNumber = NULL,
+  parentEventId = NULL,
+  samplingProtocol = NULL,
+  sampleSizeUnit = NULL,
+  pathway = NULL,
+  gadmLevel0Gid = NULL,
+  gadmLevel1Gid = NULL,
+  gadmLevel2Gid = NULL,
+  gadmLevel3Gid = NULL,
+  earliestEonOrLowestEonothem = NULL,
+  latestEonOrHighestEonothem = NULL,
+  earliestEraOrLowestErathem = NULL,
+  latestEraOrHighestErathem = NULL,
+  earliestPeriodOrLowestSystem = NULL,
+  latestPeriodOrHighestSystem = NULL,
+  earliestEpochOrLowestSeries = NULL,
+  latestEpochOrHighestSeries = NULL,
+  earliestAgeOrLowestStage = NULL,
+  latestAgeOrHighestStage = NULL,
+  lowestBiostratigraphicZone = NULL,
+  highestBiostratigraphicZone = NULL,
+  group = NULL,
+  formation = NULL,
+  member = NULL,
+  bed = NULL,
+  associatedSequences = NULL,
+  isSequenced = NULL,
+  startDayOfYear = NULL,
+  endDayOfYear = NULL,
   limit = 500,
   start = 0,
   fields = "all",
@@ -357,6 +412,167 @@ quantity of the organism (a number between 0-1). Supports range queries,
 means at least 2km from known centroids. A value of "0" would mean occurrences
 exactly on known centroids. A value of "0,2000" would mean within 2km of
 centroids. Max value is 5000.}
+
+\item{geoDistance}{(character) Filters to match occurrence records with coordinate values
+within a specified distance of a coordinate. Distance may be specified in
+kilometres (km) or metres (m). Example : "90,100,5km"}
+
+\item{sex}{(character) The sex of the biological individual(s) represented in the occurrence.}
+
+\item{dwcaExtension}{(character) A known Darwin Core Archive extension RowType.
+Limits the search to occurrences which have this extension, although they will
+not necessarily have any useful data recorded using the extension.}
+
+\item{gbifId}{(numeric) The unique GBIF key for a single occurrence.}
+
+\item{gbifRegion}{(character) Gbif region based on country code.}
+
+\item{projectId}{(character) The identifier for a project, which is often
+assigned by a funded programme.}
+
+\item{programme}{(character) A group of activities, often associated with a
+specific funding stream, such as the GBIF BID programme.}
+
+\item{preparations}{(character) Preparation or preservation method for
+a specimen.}
+
+\item{datasetId}{(character) The ID of the dataset. Parameter may be
+repeated. Example : https://doi.org/10.1594/PANGAEA.315492}
+
+\item{datasetName}{(character) The exact name of the dataset. Not the same as
+dataset title.}
+
+\item{publishedByGbifRegion}{(character) GBIF region based on the owning
+organization's country.}
+
+\item{island}{(character) The name of the island on or near which the
+location occurs.}
+
+\item{islandGroup}{(character) The name of the island group in which the
+location occurs.}
+
+\item{taxonId}{(character) The taxon identifier provided to GBIF by the data
+publisher. Example : urn:lsid:dyntaxa.se:Taxon:103026}
+
+\item{taxonConceptId}{(character) An identifier for the taxonomic concept to
+which the record refers - not for the nomenclatural details of a taxon.
+Example : 8fa58e08-08de-4ac1-b69c-1235340b7001}
+
+\item{taxonomicStatus}{(character) A taxonomic status. Example : SYNONYM}
+
+\item{acceptedTaxonKey}{(numeric) A taxon key from the GBIF backbone. Only
+synonym taxa are included in the search, so a search for Aves with
+acceptedTaxonKey=212 will match occurrences identified as birds, but not
+any known family, genus or species of bird.}
+
+\item{collectionKey}{(character) A key (UUID) for a collection registered in
+the Global Registry of Scientific Collections.
+Example : dceb8d52-094c-4c2c-8960-75e0097c6861}
+
+\item{institutionKey}{(character) A key (UUID) for an institution registered
+in the Global Registry of Scientific Collections.}
+
+\item{otherCatalogNumbers}{(character) Previous or alternate fully qualified
+catalog numbers.}
+
+\item{georeferencedBy}{(character) Name of a person, group, or organization
+who determined the georeference (spatial representation) for the location.
+Example : Brad Millen}
+
+\item{installationKey}{(character) The occurrence installation key (a UUID).
+Example : 17a83780-3060-4851-9d6f-029d5fcb81c9}
+
+\item{hostingOrganizationKey}{(character) The key (UUID) of the publishing
+organization whose installation (server) hosts the original dataset.
+Example : fbca90e3-8aed-48b1-84e3-369afbd000ce}
+
+\item{crawlId}{(numeric) Crawl attempt that harvested this record.}
+
+\item{modified}{(character) The most recent date-time on which the
+occurrence was changed, according to the publisher. Can be a range.
+Example : 2023-02-20}
+
+\item{higherGeography}{(character) Geographic name less specific than the
+information captured in the locality term.}
+
+\item{fieldNumber}{(character) An identifier given to the event in the field.
+Often serves as a link between field notes and the event.}
+
+\item{parentEventId}{(character) An identifier for the information associated
+with a sampling event.}
+
+\item{samplingProtocol}{(character) The name of, reference to, or description
+of the method or protocol used during a sampling event.
+Example : malaise trap}
+
+\item{sampleSizeUnit}{(character) The unit of measurement of the size
+(time duration, length, area, or volume) of a sample in a sampling event.
+Example : hectares}
+
+\item{pathway}{(character) The process by which an organism came to be in a
+given place at a given time, as defined in the GBIF Pathway vocabulary.
+Example : Agriculture}
+
+\item{gadmLevel0Gid}{(character) A GADM geographic identifier at the zero
+level, for example AGO.}
+
+\item{gadmLevel1Gid}{(character) A GADM geographic identifier at the first
+level, for example AGO.1_1.}
+
+\item{gadmLevel2Gid}{(character) A GADM geographic identifier at the second
+level, for example AFG.1.1_1.}
+
+\item{gadmLevel3Gid}{(character) A GADM geographic identifier at the third
+level, for example AFG.1.1.1_1.}
+
+\item{earliestEonOrLowestEonothem}{(character) geochronologic era term.}
+
+\item{latestEonOrHighestEonothem}{(character) geochronologic era term.}
+
+\item{earliestEraOrLowestErathem}{(character) geochronologic era term.}
+
+\item{latestEraOrHighestErathem}{(character) geochronologic era term.}
+
+\item{earliestPeriodOrLowestSystem}{(character) geochronologic era term.}
+
+\item{latestPeriodOrHighestSystem}{(character) geochronologic era term.}
+
+\item{earliestEpochOrLowestSeries}{(character) geochronologic era term.}
+
+\item{latestEpochOrHighestSeries}{(character) geochronologic era term.}
+
+\item{earliestAgeOrLowestStage}{(character) geochronologic era term.}
+
+\item{latestAgeOrHighestStage}{(character) geochronologic era term.}
+
+\item{lowestBiostratigraphicZone}{(character) geochronologic era term.}
+
+\item{highestBiostratigraphicZone}{(character) geochronologic era term.}
+
+\item{group}{(character) The full name of the lithostratigraphic group from
+which the material entity was collected.}
+
+\item{formation}{(character) The full name of the lithostratigraphic
+formation from which the material entity was collected.}
+
+\item{member}{(character) The full name of the lithostratigraphic member
+from which the material entity was collected.}
+
+\item{bed}{(character) The full name of the lithostratigraphic bed from
+which the material entity was collected.}
+
+\item{associatedSequences}{(character) Identifier (publication, global unique
+identifier, URI) of genetic sequence information associated with the
+material entity. Example : http://www.ncbi.nlm.nih.gov/nuccore/U34853.1}
+
+\item{isSequenced}{(logical) Indicates whether \code{associatedSequences} genetic
+sequence information exists.}
+
+\item{startDayOfYear}{(numeric) The earliest integer day of the year on
+which the event occurred.}
+
+\item{endDayOfYear}{(numeric) The latest integer day of the year on
+which the event occurred.}
 
 \item{limit}{Number of records to return. Default: 500. Note that the per
 request maximum is 300, but since we set it at 500 for the function, we

@@ -146,6 +146,20 @@ test_that("paging: name_usage returns all records from dataset: limit > n_record
   expect_gte(nrow(cc$data), 1051)
 })
 
+test_that("name_lookup constituentKey works as expected.", {
+
+  vcr::use_cassette("name_lookup_constituentKey", {
+    aa <- name_lookup(constituentKey = "7ddf754f-d193-4cc9-b351-99906754a03b")
+  }, preserve_exact_body_bytes = TRUE)
+
+  expect_is(aa, "gbif")
+  expect_is(aa$data, "data.frame")
+  expect_is(aa$data, "tbl_df")
+  expect_is(aa$data, "tbl")
+  expect_equal(unique(tolower(aa$data$constituentKey)), "7ddf754f-d193-4cc9-b351-99906754a03b")
+})
+
+
 test_that("name_lookup handles no results without failing", {
   skip_on_cran() # because fixture in .Rbuildignore
 

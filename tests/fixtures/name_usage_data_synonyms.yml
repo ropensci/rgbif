@@ -28,7 +28,7 @@ http_interactions:
         genera, species, cum characteribus, differentiis, synonymis, locis. <em>Editio
         decima, reformata [10th revised edition], vol. 1: 824 pp. Laurentius Salvius:
         Holmiae.</em>","numDescendants":0,"lastCrawled":"2023-08-22T23:20:59.545+00:00","lastInterpreted":"2023-08-22T22:19:17.657+00:00","issues":[],"class":"Aves"}]}'
-  recorded_at: 2023-08-29 13:20:36 GMT
+  recorded_at: 2024-05-22 09:22:38 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0
 - request:
     method: get
@@ -57,5 +57,5 @@ http_interactions:
         johnstoni","kingdomKey":1,"phylumKey":54,"classKey":216,"orderKey":797,"familyKey":7017,"genusKey":1915529,"speciesKey":5135790,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":1915529,"parent":"Acraea","acceptedKey":5135790,"accepted":"Acraea
         johnstoni Godman, 1885","scientificName":"Planema telekiana Rogenhofer, 1891","canonicalName":"Planema
         telekiana","authorship":"Rogenhofer, 1891","nameType":"SCIENTIFIC","rank":"SPECIES","origin":"SOURCE","taxonomicStatus":"SYNONYM","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2023-08-22T23:20:59.545+00:00","lastInterpreted":"2023-08-22T22:24:33.134+00:00","issues":[],"class":"Insecta"}]}'
-  recorded_at: 2023-08-29 13:20:36 GMT
+  recorded_at: 2024-05-22 09:22:38 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0

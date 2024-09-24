@@ -157,5 +157,5 @@ http_interactions:
         67.14815 44.55851, 67.14504 44.60075, 67.20264 44.62072, 67.28562 44.60553,
         67.37978 44.55291, 67.47047 44.47832, 67.60944 44.40416, 67.75394 44.30938,
         67.86927 44.26326, 68.02426 44.14495))"},{"type":"equals","key":"HAS_COORDINATE","value":"true","matchCase":false},{"type":"equals","key":"HAS_GEOSPATIAL_ISSUE","value":"false","matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1900","matchCase":false}]},"sendNotification":false,"format":"SIMPLE_CSV","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2020-05-21T22:43:16.996+00:00","modified":"2020-05-21T22:45:33.050+00:00","eraseAfter":"2020-11-21T22:43:16.926+00:00","status":"CANCELLED","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0068181-200221144449610.zip","size":0,"totalRecords":2426,"numberDatasets":0}'
-  recorded_at: 2023-08-29 14:03:53 GMT
+  recorded_at: 2024-05-22 09:25:28 GMT
   recorded_with: vcr/1.2.0, webmockr/0.9.0

@@ -1,0 +1,35 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/download/0000122-171020152545675
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJrZXkiOiIwMDAwMTIyLTE3MTAyMDE1MjU0NTY3NSIsImRvaSI6IjEwLjE1NDY4L2RsLnlnaHhqNyIs
+        ImxpY2Vuc2UiOiJodHRwOi8vY3JlYXRpdmVjb21tb25zLm9yZy9saWNlbnNlcy9ieS80LjAvbGVnYWxj
+        b2RlIiwicmVxdWVzdCI6eyJwcmVkaWNhdGUiOnsidHlwZSI6ImFuZCIsInByZWRpY2F0ZXMiOlt7InR5
+        cGUiOiJlcXVhbHMiLCJrZXkiOiJDT1VOVFJZIiwidmFsdWUiOiJCRyIsIm1hdGNoQ2FzZSI6ZmFsc2V9
+        LHsidHlwZSI6Imxlc3NUaGFuT3JFcXVhbHMiLCJrZXkiOiJZRUFSIiwidmFsdWUiOiIyMDExIiwibWF0
+        Y2hDYXNlIjpmYWxzZX1dfSwic2VuZE5vdGlmaWNhdGlvbiI6ZmFsc2UsImZvcm1hdCI6IkRXQ0EiLCJ0
+        eXBlIjoiT0NDVVJSRU5DRSIsInZlcmJhdGltRXh0ZW5zaW9ucyI6W119LCJjcmVhdGVkIjoiMjAxNy0x
+        MC0yMFQxODoyMTo1Ni4zNDcrMDA6MDAiLCJtb2RpZmllZCI6IjIwMTctMTAtMjBUMTg6MjU6NTAuMjY5
+        KzAwOjAwIiwiZXJhc2VBZnRlciI6IjIwMTgtMDQtMjBUMTg6MjE6NTYuMzQ3KzAwOjAwIiwic3RhdHVz
+        IjoiU1VDQ0VFREVEIiwiZG93bmxvYWRMaW5rIjoiaHR0cHM6Ly9hcGkuZ2JpZi5vcmcvdjEvb2NjdXJy
+        ZW5jZS9kb3dubG9hZC9yZXF1ZXN0LzAwMDAxMjItMTcxMDIwMTUyNTQ1Njc1LnppcCIsInNpemUiOjgx
+        MzA0MjMsInRvdGFsUmVjb3JkcyI6OTg2MTAsIm51bWJlckRhdGFzZXRzIjozMjR9
+  recorded_at: 2024-05-22 09:20:45 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0

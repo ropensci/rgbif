@@ -207,7 +207,113 @@
 #' @param distanceFromCentroidInMeters A number or range. A value of "2000,*"
 #' means at least 2km from known centroids. A value of "0" would mean occurrences 
 #' exactly on known centroids. A value of "0,2000" would mean within 2km of 
-#' centroids. Max value is 5000. 
+#' centroids. Max value is 5000.
+#' @param geoDistance (character) Filters to match occurrence records with coordinate values
+#' within a specified distance of a coordinate. Distance may be specified in 
+#' kilometres (km) or metres (m). Example : "90,100,5km"
+#' @param sex (character) The sex of the biological individual(s) represented in the occurrence.
+#' @param dwcaExtension (character) A known Darwin Core Archive extension RowType. 
+#' Limits the search to occurrences which have this extension, although they will 
+#' not necessarily have any useful data recorded using the extension.
+#' @param gbifId (numeric) The unique GBIF key for a single occurrence.
+#' @param gbifRegion (character) Gbif region based on country code.
+#' @param projectId (character) The identifier for a project, which is often 
+#' assigned by a funded programme.
+#' @param programme (character) A group of activities, often associated with a 
+#' specific funding stream, such as the GBIF BID programme.
+#' @param preparations (character) Preparation or preservation method for 
+#' a specimen.
+#' @param datasetId (character) The ID of the dataset. Parameter may be 
+#' repeated. Example : https://doi.org/10.1594/PANGAEA.315492
+#' @param datasetName (character) The exact name of the dataset. Not the same as
+#' dataset title. 
+#' @param publishedByGbifRegion (character) GBIF region based on the owning 
+#' organization's country.
+#' @param island (character) The name of the island on or near which the 
+#' location occurs.
+#' @param islandGroup (character) The name of the island group in which the 
+#' location occurs.
+#' @param taxonId (character) The taxon identifier provided to GBIF by the data 
+#' publisher. Example : urn:lsid:dyntaxa.se:Taxon:103026
+#' @param taxonConceptId (character) An identifier for the taxonomic concept to 
+#' which the record refers - not for the nomenclatural details of a taxon. 
+#' Example : 8fa58e08-08de-4ac1-b69c-1235340b7001
+#' @param taxonomicStatus (character) A taxonomic status. Example : SYNONYM
+#' @param acceptedTaxonKey (numeric) A taxon key from the GBIF backbone. Only 
+#' synonym taxa are included in the search, so a search for Aves with 
+#' acceptedTaxonKey=212 will match occurrences identified as birds, but not 
+#' any known family, genus or species of bird.
+#' @param collectionKey (character) A key (UUID) for a collection registered in 
+#' the Global Registry of Scientific Collections. 
+#' Example : dceb8d52-094c-4c2c-8960-75e0097c6861
+#' @param institutionKey (character) A key (UUID) for an institution registered 
+#' in the Global Registry of Scientific Collections.
+#' @param otherCatalogNumbers (character) Previous or alternate fully qualified 
+#' catalog numbers.
+#' @param georeferencedBy (character) Name of a person, group, or organization
+#' who determined the georeference (spatial representation) for the location. 
+#' Example : Brad Millen
+#' @param installationKey (character) The occurrence installation key (a UUID).
+#' Example : 17a83780-3060-4851-9d6f-029d5fcb81c9
+#' @param hostingOrganizationKey (character) The key (UUID) of the publishing 
+#' organization whose installation (server) hosts the original dataset. 
+#' Example : fbca90e3-8aed-48b1-84e3-369afbd000ce
+#' @param crawlId (numeric) Crawl attempt that harvested this record.
+#' @param modified (character) The most recent date-time on which the 
+#' occurrence was changed, according to the publisher. Can be a range. 
+#' Example : 2023-02-20
+#' @param higherGeography (character) Geographic name less specific than the 
+#' information captured in the locality term.
+#' @param fieldNumber (character) An identifier given to the event in the field.
+#' Often serves as a link between field notes and the event.
+#' @param parentEventId (character) An identifier for the information associated
+#' with a sampling event.
+#' @param samplingProtocol (character) The name of, reference to, or description
+#' of the method or protocol used during a sampling event. 
+#' Example : malaise trap
+#' @param sampleSizeUnit (character) The unit of measurement of the size 
+#' (time duration, length, area, or volume) of a sample in a sampling event. 
+#' Example : hectares
+#' @param pathway (character) The process by which an organism came to be in a 
+#' given place at a given time, as defined in the GBIF Pathway vocabulary. 
+#' Example : Agriculture
+#' @param gadmLevel0Gid (character) A GADM geographic identifier at the zero 
+#' level, for example AGO.
+#' @param gadmLevel1Gid (character) A GADM geographic identifier at the first 
+#' level, for example AGO.1_1.
+#' @param gadmLevel2Gid (character) A GADM geographic identifier at the second 
+#' level, for example AFG.1.1_1.
+#' @param gadmLevel3Gid (character) A GADM geographic identifier at the third 
+#' level, for example AFG.1.1.1_1.
+#' @param earliestEonOrLowestEonothem (character) geochronologic era term.
+#' @param latestEonOrHighestEonothem (character) geochronologic era term.
+#' @param earliestEraOrLowestErathem (character) geochronologic era term.
+#' @param latestEraOrHighestErathem (character) geochronologic era term.
+#' @param earliestPeriodOrLowestSystem (character) geochronologic era term.
+#' @param latestPeriodOrHighestSystem (character) geochronologic era term.
+#' @param earliestEpochOrLowestSeries (character) geochronologic era term.
+#' @param latestEpochOrHighestSeries (character) geochronologic era term.
+#' @param earliestAgeOrLowestStage (character) geochronologic era term.
+#' @param latestAgeOrHighestStage (character) geochronologic era term.
+#' @param lowestBiostratigraphicZone (character) geochronologic era term.
+#' @param highestBiostratigraphicZone (character) geochronologic era term.
+#' @param group (character) The full name of the lithostratigraphic group from 
+#' which the material entity was collected.
+#' @param formation (character) The full name of the lithostratigraphic 
+#' formation from which the material entity was collected.
+#' @param member (character) The full name of the lithostratigraphic member 
+#' from which the material entity was collected.
+#' @param bed (character) The full name of the lithostratigraphic bed from 
+#' which the material entity was collected.
+#' @param associatedSequences (character) Identifier (publication, global unique
+#' identifier, URI) of genetic sequence information associated with the 
+#' material entity. Example : http://www.ncbi.nlm.nih.gov/nuccore/U34853.1
+#' @param isSequenced (logical) Indicates whether `associatedSequences` genetic 
+#' sequence information exists.
+#' @param startDayOfYear (numeric) The earliest integer day of the year on 
+#' which the event occurred.
+#' @param endDayOfYear (numeric) The latest integer day of the year on 
+#' which the event occurred.
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
 #'
