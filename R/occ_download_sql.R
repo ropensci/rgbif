@@ -5,22 +5,27 @@
 #' @param user your GBIF user name
 #' @param pwd your GBIF password
 #' @param email your email address
+#' @param validate should the query be validated before submission. Default is 
+#' TRUE.
 #' @param curlopts list of curl options
 #' 
 #' @details 
 #' This is an experimental feature, and the implementation may change throughout
 #' 2024. The feature is currently only available for preview by invited users. 
-#' Contact helpdesk@gbif.org to request access.  
+#' Contact `helpdesk@gbif.org` to request access.  
+#' 
+#' Please see the article here for more information:
+#' \url{https://docs.ropensci.org/rgbif/articles/getting_occurrence_data.html}
 #' 
 #' @return an object of class 'occ_download_sql'
 #' 
 #' @references
-#' https://techdocs.gbif.org/en/data-use/api-sql-downloads
+#' \url{https://techdocs.gbif.org/en/data-use/api-sql-downloads}
 #' 
 #' @name occ_download_sql 
 #' @export
 #'
-#' @examples /dontrun{
+#' @examples \dontrun{
 #' occ_download_sql("SELECT gbifid,countryCode FROM occurrence 
 #'                   WHERE genusKey = 2435098")
 #' }
@@ -29,7 +34,8 @@ occ_download_sql <- function(q = NULL,
                              format = "SQL_TSV_ZIP",
                              user = NULL, 
                              pwd = NULL, 
-                             email = NULL, 
+                             email = NULL,
+                             validate = TRUE,
                              curlopts = list()) {
   
   z <- occ_download_sql_prep(q=q,
@@ -37,6 +43,7 @@ occ_download_sql <- function(q = NULL,
                              user=user,
                              pwd=pwd,
                              email=email,
+                             validate=validate,
                              curlopts=curlopts)
   
   out <- rg_POST(z$url, req = z$request, user = z$user, pwd = z$pwd, curlopts=curlopts)
@@ -59,12 +66,14 @@ occ_download_sql <- function(q = NULL,
 
 #' @name occ_download_sql
 #' @export
-occ_download_sql_validate <- function(req = NULL, user = NULL, pwd = NULL) {
-  stopifnot(is.list(req))
+occ_download_sql_validate <- function(q = NULL,
+                                      user = NULL,
+                                      pwd = NULL) {
+  stopifnot(is.list(q))
   url <- "https://api.gbif.org/v1/occurrence/download/request/validate"
   user <- check_user(user)
   pwd <- check_pwd(pwd)
-  out <- rg_POST(url=url, req=req, user=user, pwd=pwd, curlopts=list())
+  out <- rg_POST(url=url, req=q, user=user, pwd=pwd, curlopts=list())
   out
 }
 
@@ -94,7 +103,7 @@ occ_download_sql_prep <- function(q=NULL,
     sql = unbox(q)
   )
   
-  if(validate) occ_download_sql_validate(req = req, user = user, pwd = pwd)
+  if(validate) occ_download_sql_validate(q = req, user = user, pwd = pwd)
   
   structure(list(
     url = url,
@@ -109,8 +118,6 @@ occ_download_sql_prep <- function(q=NULL,
 
 }
 
-#' @name occ_download_sql
-#' @export
 print.occ_download_sql <- function(x) {
   stopifnot(inherits(x, 'occ_download_sql'))
   cat_n("<<gbif download sql>>")
@@ -136,8 +143,7 @@ print.occ_download_sql <- function(x) {
   cat_n("  ", attr(x,"citation"))
 }
 
-#' @name occ_download_sql
-#' @export
+
 print.occ_download_sql_prep <- function(x) {
   stopifnot(inherits(x, 'occ_download_sql_prep'))
   cat_n("<<Occurrence Download SQL Prep>>")

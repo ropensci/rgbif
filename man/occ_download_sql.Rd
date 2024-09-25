@@ -4,8 +4,6 @@
 \alias{occ_download_sql}
 \alias{occ_download_sql_validate}
 \alias{occ_download_sql_prep}
-\alias{print.occ_download_sql}
-\alias{print.occ_download_sql_prep}
 \title{Download occurrence data using a SQL query}
 \usage{
 occ_download_sql(
@@ -14,10 +12,11 @@ occ_download_sql(
   user = NULL,
   pwd = NULL,
   email = NULL,
+  validate = TRUE,
   curlopts = list()
 )
 
-occ_download_sql_validate(req = NULL, user = NULL, pwd = NULL)
+occ_download_sql_validate(q = NULL, user = NULL, pwd = NULL)
 
 occ_download_sql_prep(
   q = NULL,
@@ -28,10 +27,6 @@ occ_download_sql_prep(
   validate = TRUE,
   curlopts = list()
 )
-
-\method{print}{occ_download_sql}(x)
-
-\method{print}{occ_download_sql_prep}(x)
 }
 \arguments{
 \item{q}{sql query}
@@ -44,6 +39,9 @@ occ_download_sql_prep(
 
 \item{email}{your email address}
 
+\item{validate}{should the query be validated before submission. Default is
+TRUE.}
+
 \item{curlopts}{list of curl options}
 }
 \value{
@@ -55,15 +53,18 @@ Download occurrence data using a SQL query
 \details{
 This is an experimental feature, and the implementation may change throughout
 2024. The feature is currently only available for preview by invited users.
-Contact helpdesk@gbif.org to request access.
+Contact \code{helpdesk@gbif.org} to request access.
+
+Please see the article here for more information:
+\url{https://docs.ropensci.org/rgbif/articles/getting_occurrence_data.html}
 }
 \examples{
-/dontrun{
+\dontrun{
 occ_download_sql("SELECT gbifid,countryCode FROM occurrence 
                   WHERE genusKey = 2435098")
 }
 
 }
 \references{
-https://techdocs.gbif.org/en/data-use/api-sql-downloads
+\url{https://techdocs.gbif.org/en/data-use/api-sql-downloads}
 }
