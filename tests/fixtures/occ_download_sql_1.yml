@@ -1,0 +1,76 @@
+http_interactions:
+- request:
+    method: post
+    uri: https://api.gbif.org/v1/occurrence/download/request/validate
+    body:
+      encoding: ''
+      string: '{"sendNotification":[true],"notificationAddresses":["<gbif_user>@gbif.org"],"format":"SQL_TSV_ZIP","sql":"SELECT
+        gbifid,countryCode FROM occurrence WHERE genusKey = 2435098"}'
+    headers:
+      Accept-Encoding: gzip, deflate
+      Content-Type: application/json
+      Accept: application/json
+  response:
+    status:
+      status_code: '201'
+      message: Created
+      explanation: Document created, URL follows
+    headers:
+      status: HTTP/1.1 201 Created
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: '{"sql":"SELECT gbifid, countrycode\nFROM occurrence\nWHERE occurrence.genuskey
+        = 2435098","notificationAddresses":["<gbif_user>@gbif.org"],"sendNotification":false,"type":"OCCURRENCE","format":"SQL_TSV_ZIP"}'
+  recorded_at: 2024-09-24 14:05:47 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: post
+    uri: https://api.gbif.org/v1/occurrence/download/request
+    body:
+      encoding: ''
+      string: '{"sendNotification":[true],"notificationAddresses":["<gbif_user>@gbif.org"],"format":"SQL_TSV_ZIP","sql":"SELECT
+        gbifid,countryCode FROM occurrence WHERE genusKey = 2435098"}'
+    headers:
+      Accept-Encoding: gzip, deflate
+      Content-Type: application/json
+      Accept: application/json
+  response:
+    status:
+      status_code: '201'
+      message: Created
+      explanation: Document created, URL follows
+    headers:
+      status: HTTP/1.1 201 Created
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: 0028400-240906103802322
+  recorded_at: 2024-09-24 14:05:47 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/download/0028400-240906103802322
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: '{"key":"0028400-240906103802322","doi":"10.15468/dl.fnrv3s","license":"unspecified","request":{"sql":"SELECT
+        gbifid,countryCode FROM occurrence WHERE genusKey = 2435098","creator":"<gbif_user>","notificationAddresses":["<gbif_user>@gbif.org"],"sendNotification":false,"type":"OCCURRENCE","format":"SQL_TSV_ZIP"},"created":"2024-09-24T14:05:47.599+00:00","modified":"2024-09-24T14:05:47.599+00:00","eraseAfter":"2025-03-24T14:05:47.552+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0028400-240906103802322.zip","size":0,"totalRecords":0,"numberDatasets":0,"source":"rgbif"}'
+  recorded_at: 2024-09-24 14:05:47 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0

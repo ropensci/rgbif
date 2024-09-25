@@ -6,13 +6,23 @@
 #' @param pwd your GBIF password
 #' @param email your email address
 #' @param curlopts list of curl options
-#'
+#' 
+#' @details 
+#' This is an experimental feature, and the implementation may change throughout
+#' 2024. The feature is currently only available for preview by invited users. 
+#' Contact helpdesk@gbif.org to request access.  
+#' 
 #' @return an object of class 'occ_download_sql'
 #' 
+#' @references
+#' https://techdocs.gbif.org/en/data-use/api-sql-downloads
+#' 
+#' @name occ_download_sql 
 #' @export
 #'
 #' @examples /dontrun{
-#' 
+#' occ_download_sql("SELECT gbifid,countryCode FROM occurrence 
+#'                   WHERE genusKey = 2435098")
 #' }
 #' 
 occ_download_sql <- function(q = NULL, 
@@ -47,6 +57,7 @@ occ_download_sql <- function(q = NULL,
   
 }
 
+#' @name occ_download_sql
 #' @export
 occ_download_sql_validate <- function(req = NULL, user = NULL, pwd = NULL) {
   stopifnot(is.list(req))
@@ -57,6 +68,7 @@ occ_download_sql_validate <- function(req = NULL, user = NULL, pwd = NULL) {
   out
 }
 
+#' @name occ_download_sql
 #' @export
 occ_download_sql_prep <- function(q=NULL, 
                                   format = "SQL_TSV_ZIP",
@@ -97,6 +109,7 @@ occ_download_sql_prep <- function(q=NULL,
 
 }
 
+#' @name occ_download_sql
 #' @export
 print.occ_download_sql <- function(x) {
   stopifnot(inherits(x, 'occ_download_sql'))
@@ -123,6 +136,7 @@ print.occ_download_sql <- function(x) {
   cat_n("  ", attr(x,"citation"))
 }
 
+#' @name occ_download_sql
 #' @export
 print.occ_download_sql_prep <- function(x) {
   stopifnot(inherits(x, 'occ_download_sql_prep'))
