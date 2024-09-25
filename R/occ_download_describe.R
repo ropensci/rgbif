@@ -16,7 +16,7 @@
 #' occ_download_describe("simpleCsv")$fields
 #' }
 occ_download_describe <- function(x="dwca") {
-  acc_args <- c("dwca","simpleCsv","simpleAvro","simpleParquet","speciesList")
+  acc_args <- c("dwca","simpleCsv","simpleAvro","simpleParquet","speciesList","sql")
   stopifnot(x %in% acc_args)
   url <- paste0(gbif_base(),"/occurrence/download/describe/",x)
   out <- gbif_GET(url,args=NULL,parse=TRUE)

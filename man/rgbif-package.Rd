@@ -28,7 +28,7 @@ names and metadata
 \item occurrences \url{https://www.gbif.org/developer/occurrence} -
 Occurrences
 \item maps \url{https://www.gbif.org/developer/maps} - Maps - these APIs
-are not implemented in \pkg{rgbif}, and are meant more for intergration
+are not implemented in \pkg{rgbif}, and are meant more for integration
 with web based maps.
 }
 }
