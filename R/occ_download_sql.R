@@ -119,7 +119,7 @@ occ_download_sql_prep <- function(q=NULL,
 }
 
 #' @export
-print.occ_download_sql <- function(x) {
+print.occ_download_sql <- function(x, ...) {
   stopifnot(inherits(x, 'occ_download_sql'))
   cat_n("<<gbif download sql>>")
   cat_n("  Your download is being processed by GBIF:")
@@ -145,7 +145,7 @@ print.occ_download_sql <- function(x) {
 }
 
 #' @export
-print.occ_download_sql_prep <- function(x) {
+print.occ_download_sql_prep <- function(x, ...) {
   stopifnot(inherits(x, 'occ_download_sql_prep'))
   cat_n("<<Occurrence Download SQL Prep>>")
   cat_n("Format: ", x$format)
