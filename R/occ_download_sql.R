@@ -118,6 +118,7 @@ occ_download_sql_prep <- function(q=NULL,
 
 }
 
+#' @export
 print.occ_download_sql <- function(x) {
   stopifnot(inherits(x, 'occ_download_sql'))
   cat_n("<<gbif download sql>>")
@@ -143,7 +144,7 @@ print.occ_download_sql <- function(x) {
   cat_n("  ", attr(x,"citation"))
 }
 
-
+#' @export
 print.occ_download_sql_prep <- function(x) {
   stopifnot(inherits(x, 'occ_download_sql_prep'))
   cat_n("<<Occurrence Download SQL Prep>>")
