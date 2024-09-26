@@ -1,3 +1,18 @@
+rgbif 3.8.1
+===========
+
+### NEW FEATURES
+
+* New function `occ_download_sql()` for downloading occurrence data using SQL queries. (#752)
+
+## BUG FIXES
+
+* `occ_download_cached()` bug fixed. (#748)
+
+### DOCUMENTATION
+
+* New article [GBIF SQL Downloads](https://docs.ropensci.org/rgbif/articles/gbif_sql_downloads.html)
+
 rgbif 3.8.0
 ===========
 
