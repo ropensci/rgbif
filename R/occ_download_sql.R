@@ -15,7 +15,7 @@
 #' Contact `helpdesk@gbif.org` to request access.  
 #' 
 #' Please see the article here for more information:
-#' \url{https://docs.ropensci.org/rgbif/articles/getting_occurrence_data.html}
+#' \url{https://docs.ropensci.org/rgbif/articles/gbif_sql_downloads.html}
 #' 
 #' @return an object of class 'occ_download_sql'
 #' 

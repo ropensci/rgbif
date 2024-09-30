@@ -55,11 +55,13 @@ If you need **all** occurrence columns, you can use the regular [download interf
 
 To get a list of all +400 columns and definitions in the **occurrence** table, you can use `occ_download_describe("sql")$fields`.
 
-## SQL examples - Species Counts
+## SQL examples - Multi-dimension Counts
 
-One common query that is difficult to do with the regular download interface is to get a count of species by some other dimension. Keep in mind that if you only need species counts for one dimension, then `occ_count(facet="x")` is usually going to be a much faster option.
+One common query that is difficult to do with the traditional downloads interface is to get a occurrence counts of species by multiple dimensions. This query gets a table with **countries and species with the most occurrences published to GBIF** without having to download a large table and do the aggregation locally.
 
-**Countries with the most species published to GBIF.**
+> Keep in mind that if you only need counts for one dimension, then `occ_count(facet="x")` is usually going to be a much faster option.
+
+**Countries and species with the most occurrences published to GBIF.**
 
 ``` r
 sql <-
@@ -67,11 +69,21 @@ sql <-
 SELECT publishingcountry, specieskey, COUNT(*) as occurrence_count
 FROM occurrence
 WHERE publishingcountry IS NOT NULL AND specieskey IS NOT NULL
-GROUP BY country, specieskey
+GROUP BY publishingcountry, specieskey
 ORDER BY occurrence_count DESC;
 "
 occ_download_sql(sql)
 ```
+
+| publishingcountry | specieskey | occurrence_count |
+|:------------------|-----------:|-----------------:|
+| US                |    2495347 |         23467566 |
+| US                |    2490384 |         21442333 |
+| US                |    9510564 |         20975419 |
+| US                |    2482507 |         20396610 |
+| US                |    2482593 |         17855746 |
+| US                |    9761484 |         17814101 |
+
 
 ## SQL examples - Time series
 
@@ -163,12 +175,13 @@ p <- ggplot(mgrs_grid) +
 geom_sf(aes(fill = log(unique_species_count))) +
 scale_fill_viridis_c() +
 theme_minimal()
-
 ```
-<!-- ggsave("C:/Users/ftw712/Desktop/plot.pdf",plot = p, width = 15, height = 10, dpi = 300) -->
-<!-- ggsave("C:/Users/ftw712/Desktop/plot.svg",plot = p, width = 15, height = 10, dpi = 300) -->
-<!-- ggsave("C:/Users/ftw712/Desktop/plot.png",plot = p, width = 15, height = 10, dpi = 600) -->
 
+<!-- ggsave("C:/Users/ftw712/Desktop/plot.pdf",plot = p, width = 15, height = 10, dpi = 300) -->
+
+<!-- ggsave("C:/Users/ftw712/Desktop/plot.svg",plot = p, width = 15, height = 10, dpi = 300) -->
+
+<!-- ggsave("C:/Users/ftw712/Desktop/plot.png",plot = p, width = 15, height = 10, dpi = 600) -->
 
 > Note, there is an open issue with the grid MGRS where certain codes are missing from the shapefile near Austrailia. <https://github.com/ngageoint/mgrs-java/issues/4>
 
@@ -221,11 +234,11 @@ p <- ggplot(eea_grid) +
 geom_sf(aes(fill = log(unique_species_count))) +
 scale_fill_viridis_c() +
 theme_minimal()
-
 ```
-<!-- ggsave("C:/Users/ftw712/Desktop/plot.pdf",plot = p, width = 15, height = 10, dpi = 300) -->
-<!-- ggsave("C:/Users/ftw712/Desktop/plot.jpg",plot = p, width = 15, height = 10, dpi = 600) -->
 
+<!-- ggsave("C:/Users/ftw712/Desktop/plot.pdf",plot = p, width = 15, height = 10, dpi = 300) -->
+
+<!-- ggsave("C:/Users/ftw712/Desktop/plot.jpg",plot = p, width = 15, height = 10, dpi = 600) -->
 
 ```{r, echo = FALSE,out.width="50%"}
 knitr::include_graphics("img/uk-grid.jpg")
