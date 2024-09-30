@@ -56,7 +56,7 @@ This is an experimental feature, and the implementation may change throughout
 Contact \code{helpdesk@gbif.org} to request access.
 
 Please see the article here for more information:
-\url{https://docs.ropensci.org/rgbif/articles/getting_occurrence_data.html}
+\url{https://docs.ropensci.org/rgbif/articles/gbif_sql_downloads.html}
 }
 \examples{
 \dontrun{
