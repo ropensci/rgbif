@@ -219,7 +219,9 @@ occ_download(pred_not("taxonKey", 212),format = "SIMPLE_CSV")
 
 ## Big Polygon Downloads
 
-Sometimes users will want to download records using a large polygon. It is worth noting that many land-based polygons can be captured using the [gadm filter](https://www.gbif.org/occurrence/map?gadm_gid=BWA&gadm_gid=VAT&gadm_gid=BHS.17_1&gadm_gid=TWN&gadm_gid=NZL.2_1). Here I will download all occurrences within this biodiversity hotspot known as [Wallacea](https://www.gbif.org/occurrence/map?has_geospatial_issue=false&geometry=POLYGON%20((127.0171%204.9391,%20124.5973%204.7960,%20121.7968%203.7617,%20119.0816%203.0776,%20119.1999%200.5229,%20117.3936%20-5.1010,%20116.4971%20-6.7425,%20115.9096%20-8.2031,%20115.5687%20-9.9150,%20117.2358%20-10.0975,%20120.9361%20-11.4096,%20122.5775%20-11.8123,%20123.5516%20-11.8544,%20125.5775%20-11.2832,%20128.6224%20-9.7196,%20131.1873%20-9.1914,%20132.1547%20-8.3925,%20133.4920%20-6.4151,%20133.6129%20-5.8375,%20133.5079%20-5.1369,%20133.1861%20-4.7011,%20131.4894%20-3.3231,%20129.8271%20-2.4649,%20129.3679%20-2.0044,%20129.1699%20-1.1486,%20129.7026%20-0.2859,%20129.7691%200.2902,%20129.4364%202.4420,%20128.9881%203.3626,%20128.3585%204.1683,%20127.7041%204.6918,%20127.0171%204.9391))).
+Sometimes users will want to download records using a large polygon. It is worth noting that many land-based polygons can be captured using a [GADM filter](https://www.gbif.org/occurrence/map?gadm_gid=BWA&gadm_gid=VAT&gadm_gid=BHS.17_1&gadm_gid=TWN&gadm_gid=NZL.2_1), and land+sea polygons using the [ISO country/area filter](https://www.gbif.org/occurrence/map?country=FO&country=IS&country=SJ&has_coordinate=true&has_geospatial_issue=false). A download using these filters will be faster and more accurate than one with a custom polygon.
+
+Here I will download all occurrences within this biodiversity hotspot known as [Wallacea](https://www.gbif.org/occurrence/map?has_geospatial_issue=false&geometry=POLYGON%20((127.0171%204.9391,%20124.5973%204.7960,%20121.7968%203.7617,%20119.0816%203.0776,%20119.1999%200.5229,%20117.3936%20-5.1010,%20116.4971%20-6.7425,%20115.9096%20-8.2031,%20115.5687%20-9.9150,%20117.2358%20-10.0975,%20120.9361%20-11.4096,%20122.5775%20-11.8123,%20123.5516%20-11.8544,%20125.5775%20-11.2832,%20128.6224%20-9.7196,%20131.1873%20-9.1914,%20132.1547%20-8.3925,%20133.4920%20-6.4151,%20133.6129%20-5.8375,%20133.5079%20-5.1369,%20133.1861%20-4.7011,%20131.4894%20-3.3231,%20129.8271%20-2.4649,%20129.3679%20-2.0044,%20129.1699%20-1.1486,%20129.7026%20-0.2859,%20129.7691%200.2902,%20129.4364%202.4420,%20128.9881%203.3626,%20128.3585%204.1683,%20127.7041%204.6918,%20127.0171%204.9391))).
 
 A polygon may contain a **maximum of 10,000 points**, but in practice this number might be less depending the complexity of the polygon. You also have to make sure your polygons are in "anticlockwise" ordering of points. See downloads [documentation](https://www.gbif.org/developer/occurrence#download).
 
@@ -250,6 +252,8 @@ wkt %>%
   wk::wkt() %>% 
   wk::wk_orient()
 ```
+
+When generating polygons from public data sources, check the WKT is what you want using a site like [WKT Geometry Plotter](https://www.geometrymapper.com/).  A common mistake is requesting a polygon for the United Kingdom, but finding it includes the UK's territories of Bermuda, Pitcairn and so on.  (`pred("country", "GB")` or `pred_in("country", c("GB", "IM", "GG", "JE"))` is much faster anyway.)
 
 ## Filter Country Centroids
 
