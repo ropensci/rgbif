@@ -74,7 +74,14 @@ occ_download_import <- function(x=NULL, key=NULL, path=".", fill = FALSE,
     path <- sprintf("%s/%s.zip", path, key)
   }
   if (!file.exists(path)) stop("file does not exist", call. = FALSE)
-  tmpdir <- file.path(tempdir(), "gbifdownload", key)
+  if(is.null(key) | key == "unknown") {
+    file_name <- tools::file_path_sans_ext(basename(x))
+    file_path <- file.path(tempdir(), "gbifdownload", file_name)
+    tmpdir <- file.path(file_path)
+  } else {
+    tmpdir <- file.path(tempdir(), "gbifdownload", key)
+  }
+
   utils::unzip(path, exdir = tmpdir, overwrite = TRUE)
   xx <- list.files(tmpdir)
   if (any(grepl("occurrence.txt", xx))) {
@@ -82,6 +89,9 @@ occ_download_import <- function(x=NULL, key=NULL, path=".", fill = FALSE,
   } else if (any(grepl("\\.csv", xx))) {
     tpath <- grep("\\.csv", xx, value = TRUE)
     if (length(tpath) > 1) stop("more than one .csv file found", call. = FALSE)
+    if (length(tpath) > 1) {
+      tpath <- tpath[grepl(tpath,xx)]
+    }
   }
   targetpath <- file.path(tmpdir, tpath)
   if (!file.exists(tmpdir)) stop("appropriate file not found", call. = FALSE)
