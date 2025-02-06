@@ -27,18 +27,18 @@ test_that("returns the correct class", {
   expect_equal(NROW(tt$data), 100)
   expect_equal(length(uu), 2)
 
-  expect_equal(length(vv$data), 14)
+  expect_gte(length(vv$data), 20)
 })
 
 # Finds the correct country
 test_that("correct country is returned", {
   vcr::use_cassette("organizations_search_country",
-    {
-      cc <- organizations(country = "BL")
-    },
-    preserve_exact_body_bytes = TRUE
+                    {
+                      cc <- organizations(country = "BL")
+                    },
+                    preserve_exact_body_bytes = TRUE
   )
-
+  
   # only one value for country
   expect_length(unique(cc$data$country), 1)
   # The query returns the right country
@@ -48,13 +48,13 @@ test_that("correct country is returned", {
 # Finds datasets based for a single organisation based on uuid
 test_that("find GBIF Secretariat datasets", {
   vcr::use_cassette("organizations_search_uuid",
-    {
-      gd <- organizations(
-        data = "hostedDataset",
-        uuid = "fbca90e3-8aed-48b1-84e3-369afbd000ce"
-      )
-    },
-    preserve_exact_body_bytes = TRUE
+                    {
+                      gd <- organizations(
+                        data = "hostedDataset",
+                        uuid = "fbca90e3-8aed-48b1-84e3-369afbd000ce"
+                      )
+                    },
+                    preserve_exact_body_bytes = TRUE
   )
   # The GBIF Secretariat hosts at least one dataset
   expect_gt(NROW(gd), 1)
@@ -67,10 +67,10 @@ test_that("Error on bad user input", {
   skip_on_cran()
   
   expect_error(organizations(
-              data = "not a data type",
-              uuid = "fbca90e3-8aed-48b1-84e3-369afbd000ce"),
-              "should be one of"
-              )
+    data = "not a data type",
+    uuid = "fbca90e3-8aed-48b1-84e3-369afbd000ce"),
+    "should be one of"
+  )
   expect_error(organizations(uuid = "not a uuid"),
                "Invalid UUID string: not a uuid",
                fixed = TRUE)

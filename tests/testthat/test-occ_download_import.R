@@ -41,7 +41,7 @@ test_that("occ_download_import key arg works as expected", {
   
   system_file <- system.file("examples/0000066-140928181241064.zip", package = "rgbif")
   temp_path <- file.path(tempdir(), basename(system_file))
-
+  
   file.copy(system_file, temp_path)
   setwd(tempdir())
   ii <- occ_download_import(key = "0000066-140928181241064")
@@ -76,7 +76,7 @@ test_that("occ_download_import double import works", {
   expect_is(ii2, "data.frame")
   expect_equal(attr(ii2, "type"), "single")
   expect_gt(NROW(ii2), 10)
-
+  
 })
 
 test_that("occ_download_import works with occ_download_get", {

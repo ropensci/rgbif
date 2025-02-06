@@ -78,7 +78,7 @@ jobs:
         if: runner.os == 'macOS' || runner.os == 'Windows'
         run: |
           pak::local_install_dev_deps()
-          pak::pkg_install(c("sf","rcmdcheck", "maps", "scales", "colorspace", "terra", "magick", "protolite"))
+          pak::pkg_install(c("sf","rcmdcheck", "maps", "scales", "colorspace", "terra", "magick", "protolite",","bit64""))
         shell: Rscript {0}
 
       - name: Session info

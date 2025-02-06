@@ -5,7 +5,7 @@ test_that("occ_download_get", {
   # not using vcr here because it fails too often with this test
   temp_path <- tempdir()
   expect_message((zzz=occ_download_get("0000066-140928181241064", path = temp_path,
-                                         overwrite=TRUE)),"On disk at") 
+                                       overwrite=TRUE)),"On disk at") 
   expect_is(zzz, "occ_download_get")
   expect_is(unclass(zzz), "character")
   expect_match(unclass(zzz)[1], "[0-9]+-[0-9]+\\.zip")
@@ -19,7 +19,7 @@ test_that("occ_download_get", {
   
   # do not re-download if already present
   expect_message(occ_download_get("0000066-140928181241064", path = temp_path,
-          overwrite=FALSE),"file exists & overwrite=FALSE, not overwriting...")
+                                  overwrite=FALSE),"file exists & overwrite=FALSE, not overwriting...")
   unlink(zzz)
 })  
 
