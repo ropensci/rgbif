@@ -89,9 +89,6 @@ occ_download_import <- function(x=NULL, key=NULL, path=".", fill = FALSE,
   } else if (any(grepl("\\.csv", xx))) {
     tpath <- grep("\\.csv", xx, value = TRUE)
     if (length(tpath) > 1) stop("more than one .csv file found", call. = FALSE)
-    if (length(tpath) > 1) {
-      tpath <- tpath[grepl(tpath,xx)]
-    }
   }
   targetpath <- file.path(tmpdir, tpath)
   if (!file.exists(tmpdir)) stop("appropriate file not found", call. = FALSE)
