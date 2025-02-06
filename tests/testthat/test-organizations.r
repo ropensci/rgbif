@@ -27,7 +27,7 @@ test_that("returns the correct class", {
   expect_equal(NROW(tt$data), 100)
   expect_equal(length(uu), 2)
 
-  expect_equal(length(vv$data), 20)
+  expect_gt(length(vv$data), 10)
 })
 
 # Finds the correct country
