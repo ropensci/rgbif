@@ -13,7 +13,7 @@ vignette: >
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-> This is an experimental feature, and the implementation may change throughout 2024. The feature is currently only available for preview by invited users. Contact [**helpdesk\@gbif.org**](mailto:helpdesk@gbif.org){.email} to request access. <https://techdocs.gbif.org/en/data-use/api-sql-downloads>
+> This is an experimental feature, and the implementation may change. 
 
 > If your download can be formulated using the traditional predicate downloads, it is usually going to be **much** faster to use `occ_download()`. See article [Getting Occurrence Counts From GBIF](https://docs.ropensci.org/rgbif/articles/occ_counts.html).
 
