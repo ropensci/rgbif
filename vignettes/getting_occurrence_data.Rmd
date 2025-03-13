@@ -162,6 +162,25 @@ format = "SIMPLE_CSV"
 )
 ```
 
+## Downoad formats 
+
+`occ_download()` can fetch data from GBIF in a few formats:
+
+1. `DWCA` is the default format. This is the most complete format and contains all of the data and meta-data available from GBIF. When using `occ_download_get() %>% occ_download_import()` will still return only the occurrence.txt file. The other files can be accessed by unzipping the download.  
+
+2. `SIMPLE_CSV` format contains only a selection of commonly used terms. 
+
+3. `SPECIES_LIST` format is a simple list of species names. This is useful for getting a list of species names from a download. This format will not work with `occ_download_import()`.
+
+4. `SIMPLE_PARQUET` format is a compressed Apache Parquet file. This format is useful for large downloads because it is more efficient than CSV. This format will not work with `occ_download_import()`. You will need to use a package like `arrow` to read the data.
+
+Users can see the columns included in a download by using `occ_download_describe()`.
+
+```r
+occ_download_describe("simpleCsv")$fields$name                                           
+occ_download_describe("dwca")$interpretedFields$name
+```
+
 ## Long species list downloads 
 
 Another common download pattern is **long species list downloads**. There is a tutorial about downloading from a long list of species [here](https://docs.ropensci.org/rgbif/articles/downloading_a_long_species_list.html).
