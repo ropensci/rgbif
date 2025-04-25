@@ -144,10 +144,10 @@ Map of all country centroid locations.
 map_fetch(distanceFromCentroidInMeters=0,base_style="osm-bright")
 ```
 
-In general, adhoc maps are harder to make look nice, but usually picking a non-point style and tuning `hexPerTile` and perhaps also `squareSize`, will make a nice map.
+In general, adhoc maps are harder to make look nice, but usually picking a non-point style and tuning `hexPerTile` and perhaps also `squareSize`, will make a nice map. Also usually using a `z<0`, will help make maps look nicer. 
 
 ```R 
-map_fetch(source="adhoc",project_id="BID-AF2015-0134-REG",style="green2.poly",hexPerTile=50)
+map_fetch(z=1,x=0:3,y=0:1,ource="adhoc",project_id="BID-AF2015-0134-REG",style="green2.poly",hexPerTile=50)
 ```
 
 A tip for getting the un-named adhoc parameters is to pull them from the occurrence search URL after looking them up via the [web interface](https://www.gbif.org/occurrence/map?advanced=1&project_id=BID-AF2015-0134-REG).
