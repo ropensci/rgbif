@@ -244,6 +244,72 @@ theme_minimal()
 knitr::include_graphics("img/uk-grid.jpg")
 ```
 
+## Occurrence CUBE example
+
+The SQL download API was originally designed to be used for creating [species occurrence cubes](https://b-cubed.eu/data-and-evidence). The example below shows how to create a occurrence cube using `occ_download_sql()`.
+
+``` r
+occ_download_sql(
+"
+SELECT 
+  -- Dimensions: 
+  PRINTF('%04d-%02d', \"year\", \"month\") AS yearMonth,
+  GBIF_EEARGCode(
+    1000,
+    decimalLatitude,
+    decimalLongitude,
+    COALESCE(coordinateUncertaintyInMeters, 1000)
+  ) AS eeaCellCode,
+  familyKey,
+  family,
+  speciesKey,
+  species,
+  COALESCE(sex, 'NOT_SUPPLIED') AS sex,
+  COALESCE(occurrence.lifestage.concept, 'NOT_SUPPLIED') AS lifestage,
+  -- Measurements 
+  COUNT(*) AS occurrences, 
+  MIN(COALESCE(coordinateUncertaintyInMeters, 1000)) AS minCoordinateUncertaintyInMeters,
+  MIN(GBIF_TemporalUncertainty(eventDate)) AS minTemporalUncertainty,
+  -- Higher taxon measurement
+  IF(ISNULL(familyKey), 
+     NULL, 
+       SUM(COUNT(*)) 
+       OVER (PARTITION BY familyKey, 
+                          PRINTF('%04d-%02d', \"year\", \"month\"),
+                          GBIF_EEARGCode(1000, decimalLatitude, decimalLongitude, COALESCE(coordinateUncertaintyInMeters, 1000)))
+  ) AS familyCount
+FROM
+  occurrence
+WHERE occurrenceStatus = 'PRESENT'
+  AND countryCode = 'PL'
+  AND \"year\" >= 2000
+  AND kingdomKey = 1
+  AND hasCoordinate = TRUE
+  AND (coordinateUncertaintyInMeters <= 1000 OR coordinateUncertaintyInMeters IS NULL)
+  AND speciesKey IS NOT NULL
+  AND NOT ARRAY_CONTAINS(issue, 'ZERO_COORDINATE')
+  AND NOT ARRAY_CONTAINS(issue, 'COORDINATE_OUT_OF_RANGE')
+  AND NOT ARRAY_CONTAINS(issue, 'COORDINATE_INVALID')
+  AND NOT ARRAY_CONTAINS(issue, 'COUNTRY_COORDINATE_MISMATCH')
+  AND \"month\" IS NOT NULL
+GROUP BY
+  yearMonth,
+  eeaCellCode,
+  familyKey,
+  family,
+  speciesKey,
+  species,
+  sex,
+  lifestage
+ORDER BY 
+  yearMonth DESC,
+  eeaCellCode ASC,
+  speciesKey ASC;
+"
+)
+
+```
+
 ## Further reading
 
 -   <https://data-blog.gbif.org/post/2024-06-24-gbif-sql-downloads/>
