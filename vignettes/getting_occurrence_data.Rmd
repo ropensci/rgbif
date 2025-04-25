@@ -274,6 +274,22 @@ wkt %>%
 
 When generating polygons from public data sources, check the WKT is what you want using a site like [WKT Geometry Plotter](https://www.geometrymapper.com/).  A common mistake is requesting a polygon for the United Kingdom, but finding it includes the UK's territories of Bermuda, Pitcairn and so on.  (`pred("country", "GB")` or `pred_in("country", c("GB", "IM", "GG", "JE"))` is much faster anyway.)
 
+## Get just the EEZ waters of a country/area 
+
+Sometimes GBIF users just want the **EEZ** (Exclusive Economic Zone) waters of a country. This is possible using the `gadm` filter and `pred_not`.  
+
+``` r
+# download all occurrences in the EEZ of the UK
+
+occ_download(
+pred("country","GB"),
+pred_or(pred_not(pred("gadm","GBR")),
+pred_isnull("gadm")),
+format = "SIMPLE_CSV")
+```
+
+This works because the "country" includes the EEZ whereas the gadm filter include only the land area.
+
 ## Filter Country Centroids
 
 > Sometimes GBIF data publishers will not know the exact lat-lon location of a record and will enter the lat-long center of the country instead. This is a data issue because users might be unaware that an observation is pinned to a country center and assume it is a precise location.

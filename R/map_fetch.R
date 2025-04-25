@@ -334,6 +334,7 @@ get_map_png <- function(source,z,x,y,format,query,return,srs,curlopts) {
   path <- file.path('v2/map/occurrence', source, z, x, paste0(y, format))
   cli <- crul::HttpClient$new(url = 'https://api.gbif.org', opts = curlopts)
   res <- cli$get(path, query = query)
+
   if(length(res$content) == 0) {
     if(return == "png") {
       # get size of tile map tile to make blank tile
