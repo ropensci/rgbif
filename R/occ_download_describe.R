@@ -1,7 +1,7 @@
 #' Describes the fields available in GBIF downloads
 #'
 #' @param x a character string (default: "dwca"). Accepted values: 
-#' "simpleCsv", "simpleAvro", "simpleParquet","speciesList".
+#' "simpleCsv", "simpleAvro", "simpleParquet","speciesList", "sql".
 #' 
 #' @details
 #' The function returns a list with the fields available in GBIF downloads. It 
@@ -14,6 +14,7 @@
 #' occ_download_describe("dwca")$verbatimFields
 #' occ_download_describe("dwca")$verbatimExtensions
 #' occ_download_describe("simpleCsv")$fields
+#' occ_download_describe("sql")$fields
 #' }
 occ_download_describe <- function(x="dwca") {
   acc_args <- c("dwca","simpleCsv","simpleAvro","simpleParquet","speciesList","sql")
