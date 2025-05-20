@@ -69,7 +69,7 @@ referenced in publication.}
 \item{journalPublisher}{(character) Publisher of journal.}
 
 \item{flatten}{(logical) should any lists in the resulting data be flattened
-into comma-seperated strings?}
+into comma-separated strings?}
 
 \item{limit}{how many records to return. limit=NULL will fetch up to 10,000.}
 

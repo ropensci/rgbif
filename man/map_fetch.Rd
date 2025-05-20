@@ -63,7 +63,7 @@ squares or hexagons. Points by default.}
 (the number horizontally across a tile).}
 
 \item{squareSize}{(integer) sets the size of the squares. Choose a factor
-of 4096 so they tessalate correctly: probably from 8, 16, 32, 64, 128,
+of 4096 so they tesselate correctly: probably from 8, 16, 32, 64, 128,
 256, 512.}
 
 \item{style}{(character) for raster tiles, choose from the available styles.
@@ -113,7 +113,7 @@ mapping api can be found at https://www.gbif.org/developer/maps
 }
 \details{
 The default settings, \code{return='png'}, will return a \code{magick-image}
-png. This image will be a composite image of the the occurrence tiles fetched
+png. This image will be a composite image of the occurrence tiles fetched
 and a base map. This map is primarily useful as a high quality image of
 occurrence records.
 
@@ -133,14 +133,14 @@ See the article
 
 # all occurrences
 map_fetch()
-# get artic map
+# get arctic map
 map_fetch(srs='EPSG:3031') 
 # only preserved specimens
 map_fetch(basisOfRecord="PRESERVED_SPECIMEN")
 
 # Map of occ in Great Britain
 map_fetch(z=3,y=1,x=7:8,country="GB")
-# Peguins with artic projection
+# Peguins with arctic projection
 map_fetch(srs='EPSG:3031',taxonKey=2481660,style='glacier.point', 
 base_style="gbif-dark")
 

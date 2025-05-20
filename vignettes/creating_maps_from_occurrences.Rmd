@@ -57,7 +57,7 @@ knitr::include_graphics("img/artic-peguins-glacier-point-gbif-dark.png")
 
 It is also possible to get views other than just the global map, by zooming in and selecting only certain map tiles with `z`, `x`, `y`. 
 
-Seleting tiles can be tricky to get right, but with a little trial-and-error, you can usually get close to the map you want to have. One trick for getting the right tiles, is to look at this [demo page](https://api.gbif.org/v2/map/demo13.html#map=3/0/0/0), where the `z,x,y` values are printed on the center of each tile. 
+Selecting tiles can be tricky to get right, but with a little trial-and-error, you can usually get close to the map you want to have. One trick for getting the right tiles, is to look at this [demo page](https://api.gbif.org/v2/map/demo13.html#map=3/0/0/0), where the `z,x,y` values are printed on the center of each tile. 
 
 For example, you can see what the tile values for a zoomed in map of Australia would be [here](https://api.gbif.org/v2/map/demo13.html#map=5/134.01/-21.64/0).
 
@@ -92,9 +92,9 @@ map_fetch(z=12,x=4419:4420,y=1124:1125)
 
 I suggest using this [interactive page](https://api.gbif.org/v2/map/demo13.html#map=3/0/0/0) for getting the tile numbers. 
 
-Keep in mind that the the GBIF maps API wasn't designed to make high quality static maps, like it is being used for in `map_fetch()`. It was designed for interactive use on the [GBIF website](https://www.gbif.org/occurrence/map?), so the API design reflects this reality. 
+Keep in mind that the GBIF maps API wasn't designed to make high quality static maps, like it is being used for in `map_fetch()`. It was designed for interactive use on the [GBIF website](https://www.gbif.org/occurrence/map?), so the API design reflects this reality. 
 
-When making maps, the **named paramters**, `taxonKey`, `datasetKey`, `country`, `publishingOrg`,  `publishingCountry`, `year`, and `basisOfRecord` are going to be the easiest to use.  However, It is also possible to make "any" map (any [search filter](https://www.gbif.org/occurrence/map?recorded_by=John%20Waller&advanced=1&occurrence_status=present)) using `source=adhoc`. 
+When making maps, the **named parameters**, `taxonKey`, `datasetKey`, `country`, `publishingOrg`,  `publishingCountry`, `year`, and `basisOfRecord` are going to be the easiest to use.  However, It is also possible to make "any" map (any [search filter](https://www.gbif.org/occurrence/map?recorded_by=John%20Waller&advanced=1&occurrence_status=present)) using `source=adhoc`. 
 
 ```R 
 # all occurrences with iucn status critically endangered 
@@ -106,11 +106,11 @@ map_fetch(z=1,x=0:3,y=0:1,source="adhoc",iucn_red_list_category="CR",
 knitr::include_graphics("img/adhoc-iucn.png")
 ```
 
-`map_fetch()` can also tell when you have used a parameter that is no a default parameter and automatically switch to `source="adhoc"` for you. I have found that point style don't work well with `source="adhoc"`, so `map_fetch()` will give a warning if you try to use a point style with `source="adhoc"`. 
+`map_fetch()` can also tell when you have used a parameter that is not a default parameter and automatically switch to `source="adhoc"` for you. I have found that point style don't work well with `source="adhoc"`, so `map_fetch()` will give a warning if you try to use a point style with `source="adhoc"`. 
 
 Here are some examples of maps with different parameters and styles. 
 
-`adhoc` is needed here  because `recordedBy` isn't one of the named paramters. `map_fetch()` automatically detects this and switches source to "adhoc". 
+`adhoc` is needed here because `recordedBy` isn't one of the named parameters. `map_fetch()` automatically detects this and switches source to "adhoc". 
 
 ```R 
 map_fetch(recordedBy="John Waller")
@@ -159,7 +159,7 @@ map_fetch(source="adhoc",project_id="BID-AF2015-0134-REG")
 
 ## Using geom_sf()
 
-The GBIF maps API is powerful and useful, but can be frustrating if your plot needs a some custom styling or legends. If you don't have a **large** dataset, then using `ggplot::geom_sf()` can be a good option.  
+The GBIF maps API is powerful and useful, but can be frustrating if your plot needs some custom styling or legends. If you don't have a **large** dataset, then using `ggplot::geom_sf()` can be a good option.  
 
 ```R 
 library(ggplot2)
