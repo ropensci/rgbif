@@ -12,7 +12,10 @@
 #' https://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/OccurrenceIssue.html
 #' https://gbif.github.io/gbif-api/apidocs/org/gbif/api/vocabulary/NameUsageIssue.html
 #'
-gbif_issues <- function() gbifissues
+gbif_issues <- function() {
+  .Deprecated(msg= "gbif_issues() is deprecated since v3.8.2.") 
+  gbifissues
+}
 
 gbifissues <- structure(list(
   code = c(
