@@ -1221,12 +1221,12 @@ rgbif 0.2.0
 ### NEW FEATURES
 
 * occurrencelist() now handles scientific notation when maxresults are given in that form.
-* occurencelist() now can retrieve any number of records; was previously a max of 1000 records.
+* occurrencelist() now can retrieve any number of records; was previously a max of 1000 records.
 
 ### BUG FIXES
 
 * Demo "List" was returning incorrect taxon names - corrected now.
-* Removed unused parameter 'latlongdf' in occurencelist().
+* Removed unused parameter 'latlongdf' in occurrencelist().
 
 
 rgbif 0.1.5

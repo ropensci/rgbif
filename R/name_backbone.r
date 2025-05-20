@@ -55,7 +55,7 @@
 #' name_backbone_verbose(name='Helianthus annuus', kingdom='plants',
 #'   strict=TRUE)
 #'
-#' # Non-existent name - returns list of lenght 3 stating no match
+#' # Non-existent name - returns list of length 3 stating no match
 #' name_backbone(name='Aso')
 #' name_backbone(name='Oenante')
 #'

@@ -64,7 +64,7 @@
 #' @return a `magick-image` or `terra::SpatRaster ` object.
 #'
 #' @details The default settings, `return='png'`, will return a `magick-image` 
-#' png. This image will be a composite image of the the occurrence tiles fetched 
+#' png. This image will be a composite image of the occurrence tiles fetched 
 #' and a base map. This map is primarily useful as a high quality image of 
 #' occurrence records.   
 #' 
@@ -88,14 +88,14 @@
 #' 
 #' # all occurrences
 #' map_fetch()
-#' # get artic map
+#' # get arctic map
 #' map_fetch(srs='EPSG:3031') 
 #' # only preserved specimens
 #' map_fetch(basisOfRecord="PRESERVED_SPECIMEN")
 #' 
 #' # Map of occ in Great Britain
 #' map_fetch(z=3,y=1,x=7:8,country="GB")
-#' # Peguins with artic projection
+#' # Peguins with arctic projection
 #' map_fetch(srs='EPSG:3031',taxonKey=2481660,style='glacier.point', 
 #' base_style="gbif-dark")
 #' 
@@ -321,7 +321,7 @@ switch_extent <- function(srs,x,y,z) {
     # extents <- c(x_3857,y_3857)
   # }
   
-  # only supporting terra rasters for the these right now. Although these might 
+  # only supporting terra rasters for these right now. Although these might 
   # work too. 
   # 'EPSG:3575' = c(-6371007.2 * sqrt(2), 6371007.2 * sqrt(2),
   #                 -6371007.2 * sqrt(2), 6371007.2 * sqrt(2)),
