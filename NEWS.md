@@ -7,7 +7,7 @@ rgbif 3.8.2
 
 ## BUG FIXES
 
-Fixed double import but in `occ_download_import()`. (#765)
+Fixed double import bug in `occ_download_import()`. (#765)
 
 ### DOCUMENTATION
 
