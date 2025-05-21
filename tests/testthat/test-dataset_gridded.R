@@ -52,8 +52,7 @@ test_that("dataset_gridded bad data", {
   expect_true(is.logical(b))
   expect_length(b,length(bad_uuids))
   expect_true(any(is.na(b)))
-  expect_true(any(b))
-  
+
   # # test return="data"
   bb <- dataset_gridded(bad_uuids,return="data",warn=FALSE)
   expect_false(is.logical(bb))

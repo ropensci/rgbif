@@ -1,3 +1,18 @@
+rgbif 3.8.2
+===========
+
+### NEW FEATURES
+
+`occ_download_doi()` accepts a GBIF download DOI and returns the download key. (#743)
+
+## BUG FIXES
+
+Fixed double import but in `occ_download_import()`. (#765)
+
+### DOCUMENTATION
+
+Several small improvements to the docs. (#777) (#776) (#773) (#763) (#758)
+
 rgbif 3.8.1
 ===========
 
