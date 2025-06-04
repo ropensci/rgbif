@@ -8,6 +8,7 @@ rgbif 3.8.2
 ## BUG FIXES
 
 Fixed double import bug in `occ_download_import()`. (#765)
+Fixed URL encoding bug in `name_backbone_checklist()`. (#784)
 
 ### DOCUMENTATION
 
