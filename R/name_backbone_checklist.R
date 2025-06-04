@@ -242,7 +242,7 @@ make_async_urls <- function(x,verbose=FALSE,strict=FALSE) {
   url_base <- paste0(gbif_base(), '/species/match')
   x <- lapply(x, function(x) x[!is.na(x)]) # remove potential missing values
   x <- lapply(x, function(sublist) {
-    lapply(sublist, function(element) URLencode(element, reserved = TRUE))
+    lapply(sublist, function(element) utils::URLencode(element, reserved = TRUE))
   })
   queries <- lapply(x,function(x) paste0(names(x),"=",x,collapse="&"))
   urls <- paste0(url_base,"?",queries)
