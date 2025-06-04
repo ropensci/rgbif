@@ -241,11 +241,13 @@ default_value_handler <- function(name_data=NULL,rank=NULL,kingdom=NULL,phylum=N
 make_async_urls <- function(x,verbose=FALSE,strict=FALSE) {
   url_base <- paste0(gbif_base(), '/species/match')
   x <- lapply(x, function(x) x[!is.na(x)]) # remove potential missing values
+  x <- lapply(x, function(sublist) {
+    lapply(sublist, function(element) utils::URLencode(element, reserved = TRUE))
+  })
   queries <- lapply(x,function(x) paste0(names(x),"=",x,collapse="&"))
   urls <- paste0(url_base,"?",queries)
   if(verbose) urls <- paste0(urls,"&verbose=true")
   if(strict) urls <- paste0(urls,"&strict=true")
-  urls <- sapply(urls,function(x) utils::URLencode(x))
   urls <- sapply(urls,function(x) gsub("\\[|\\]","",x)) # remove any square brackets
   urls
 }
