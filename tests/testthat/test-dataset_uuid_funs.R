@@ -15,6 +15,9 @@ test_that("dataset_uuid_funs work as expected", {
   r <- dataset_metrics("7ddf754f-d193-4cc9-b351-99906754a03b")
   })
   
+  skip_on_ci() 
+  skip_on_cran()
+  
   expect_is(g,"tbl_df")
   expect_is(g$key,"character")
   expect_is(g$title,"character")

@@ -45,7 +45,7 @@ test_that("name_usage fails correctly", {
 })
 
 test_that("works w/: fields all, & return extensions data", {
-  keys <- c(1315970632, 1261282041, 1807810811, 1807914841)
+  keys <- c(1315970632, 1261282041, 5052049326, 4920745995)
 
   vcr::use_cassette("occ_get_other", {
     aa <- occ_get_verbatim(keys[1], fields = "all")
