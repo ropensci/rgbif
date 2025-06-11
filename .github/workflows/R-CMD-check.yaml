@@ -114,7 +114,7 @@ jobs:
           remotes::install_cran("covr")
           # covr::codecov()
           covr::package_coverage()
-        # shell: Rscript {0}
+        shell: Rscript {0}
       
       # 
       # - name: Test coverage
