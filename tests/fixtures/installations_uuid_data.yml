@@ -1,0 +1,25 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/installation/2e029a0c-87af-42e6-87d7-f38a50b78201/contact?limit=100
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: '[{"key":19952,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Biodiversity
+        Informatics Manager","position":[],"email":["bdim@ansp.org"],"phone":[],"homepage":[],"address":[],"createdBy":"registry-migration.gbif.org","modifiedBy":"2e029a0c-87af-42e6-87d7-f38a50b78201","created":"2013-07-22T18:17:06.000+00:00","modified":"2014-11-10T14:00:07.894+00:00"}]'
+  recorded_at: 2025-06-10 14:16:41 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0

@@ -1,0 +1,25 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/species/3119195/verbatim?offset=0&limit=100
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '404'
+      message: Not Found
+      explanation: Nothing matches the given URI
+    headers:
+      status: HTTP/1.1 404 Not Found
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: '{"timestamp":"2025-06-10T14:18:28.001+00:00","status":404,"error":"","message":"Entity
+        not found for uri: /species/3119195/verbatim"}'
+  recorded_at: 2025-06-10 14:18:29 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0

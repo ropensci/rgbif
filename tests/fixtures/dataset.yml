@@ -1,0 +1,1073 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/?limit=3
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: '{"offset":0,"limit":3,"endOfRecords":false,"count":114385,"results":[{"key":"76187bdd-48a7-4fa6-9d05-ef5684225bd3","installationKey":"7ce8aef1-9e92-11dc-8740-b8a03c50a999","publishingOrganizationKey":"7ce8aef0-9e92-11dc-8738-b8a03c50a862","doi":"10.15468/w34t2q","external":false,"numConstituents":0,"type":"CHECKLIST","title":"Late
+        Eocene-early Oligocene snakes from the Transylvanian Basin (Romania)","description":"<p>This
+        dataset contains the digitized treatments in Plazi based on the original journal
+        article Venczel, Márton, Codrea, Vlad A., Solomon, Alexandru A., Fărcaș, Cristina,
+        Bordeianu, Marian (2025): Late Eocene-early Oligocene snakes from the Transylvanian
+        Basin (Romania). Comptes Rendus Palevol 24 (13): 229-240, DOI: 10.5852/cr-palevol2025v24a13,
+        URL: https://doi.org/10.5852/cr-palevol2025v24a13</p>","language":"eng","homepage":"https://tb.plazi.org/GgServer/summary/FF8EFFC7FFA9FFE7FF88FF9EFFB2FFF9","citation":{"text":"Venczel
+        M, Codrea V A, Solomon A A, Fărcaș C, Bordeianu M, felipe (2025). Late Eocene-early
+        Oligocene snakes from the Transylvanian Basin (Romania). Plazi.org taxonomic
+        treatments database. Checklist dataset https://doi.org/10.15468/w34t2q accessed
+        via GBIF.org on 2025-06-10.","citationProvidedBySource":false},"contactsCitation":[{"key":6134131,"abbreviatedName":"Venczel
+        M","firstName":"Márton","lastName":"Venczel","roles":["ORIGINATOR"],"userId":[]},{"key":6134132,"abbreviatedName":"Codrea
+        V A","firstName":"Vlad A.","lastName":"Codrea","roles":["ORIGINATOR"],"userId":[]},{"key":6134133,"abbreviatedName":"Solomon
+        A A","firstName":"Alexandru A.","lastName":"Solomon","roles":["ORIGINATOR"],"userId":[]},{"key":6134134,"abbreviatedName":"Fărcaș
+        C","firstName":"Cristina","lastName":"Fărcaș","roles":["ORIGINATOR"],"userId":[]},{"key":6134135,"abbreviatedName":"Bordeianu
+        M","firstName":"Marian","lastName":"Bordeianu","roles":["ORIGINATOR"],"userId":[]},{"key":6134138,"abbreviatedName":"felipe","lastName":"felipe","roles":["METADATA_AUTHOR"],"userId":[]}],"lockedForAutoUpdate":false,"createdBy":"plazi","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:44:20.591+00:00","modified":"2025-06-10T13:59:29.825+00:00","contacts":[{"key":6134131,"type":"ORIGINATOR","primary":true,"userId":[],"firstName":"Márton","lastName":"Venczel","position":[],"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:59:29.790+00:00","modified":"2025-06-10T13:59:29.790+00:00"},{"key":6134132,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Vlad
+        A.","lastName":"Codrea","position":[],"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:59:29.793+00:00","modified":"2025-06-10T13:59:29.793+00:00"},{"key":6134133,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Alexandru
+        A.","lastName":"Solomon","position":[],"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:59:29.794+00:00","modified":"2025-06-10T13:59:29.794+00:00"},{"key":6134134,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Cristina","lastName":"Fărcaș","position":[],"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:59:29.796+00:00","modified":"2025-06-10T13:59:29.796+00:00"},{"key":6134135,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Marian","lastName":"Bordeianu","position":[],"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:59:29.797+00:00","modified":"2025-06-10T13:59:29.797+00:00"},{"key":6134136,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Guido","lastName":"Sautter","position":[],"email":["sautter@plazi.org"],"phone":[],"homepage":["https://plazi.org"],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:59:29.798+00:00","modified":"2025-06-10T13:59:29.798+00:00"},{"key":6134137,"type":"PUBLISHER","primary":false,"userId":[],"position":[],"email":["info@plazi.org"],"phone":[],"homepage":["https://plazi.org/"],"organization":"Plazi","address":[],"city":"Bern","country":"CH","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:59:29.800+00:00","modified":"2025-06-10T13:59:29.800+00:00"},{"key":6134138,"type":"METADATA_AUTHOR","primary":true,"userId":[],"lastName":"felipe","position":[],"email":[],"phone":[],"homepage":[],"organization":"Plazi","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:59:29.801+00:00","modified":"2025-06-10T13:59:29.801+00:00"}],"endpoints":[{"key":1114965,"type":"DWC_ARCHIVE","url":"https://tb.plazi.org/GgServer/dwca/FF8EFFC7FFA9FFE7FF88FF9EFFB2FFF9.zip","createdBy":"plazi","modifiedBy":"plazi","created":"2025-06-10T13:44:20.828+00:00","modified":"2025-06-10T13:44:20.828+00:00","machineTags":[]}],"machineTags":[{"key":25634312,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"2","createdBy":"crawler.gbif.org","created":"2025-06-10T13:59:29.044+00:00"}],"tags":[],"identifiers":[{"key":442543,"type":"UUID","identifier":"FF8EFFC7FFA9FFE7FF88FF9EFFB2FFF9","createdBy":"plazi","created":"2025-06-10T13:44:20.752+00:00","primary":false}],"comments":[],"bibliographicCitations":[{"text":"Venczel,
+        Márton, Codrea, Vlad A., Solomon, Alexandru A., Fărcaș, Cristina, Bordeianu,
+        Marian (2025): Late Eocene-early Oligocene snakes from the Transylvanian Basin
+        (Romania). Comptes Rendus Palevol 24 (13): 229-240, DOI: 10.5852/cr-palevol2025v24a13,
+        URL: https://doi.org/10.5852/cr-palevol2025v24a13","citationProvidedBySource":false}],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[],"temporalCoverages":[],"keywordCollections":[],"countryCoverage":[],"collections":[],"dataDescriptions":[],"dataLanguage":"eng","pubDate":"2025-05-14T00:00:00.000+00:00","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode"},{"key":"ef787402-b1fd-44d4-853d-1680553ebb50","installationKey":"7ce8aef1-9e92-11dc-8740-b8a03c50a999","publishingOrganizationKey":"7ce8aef0-9e92-11dc-8738-b8a03c50a862","doi":"10.15468/z7xr2m","external":false,"numConstituents":0,"type":"CHECKLIST","title":"A
+        new bullfrog from southern Africa (Pyxicephalidae, Pyxicephalus Tschudi, 1838)","description":"<p>This
+        dataset contains the digitized treatments in Plazi based on the original journal
+        article Preez, Louis H du, Netherlands, Edward C, and, Mark-Oliver Rödel,
+        Channing, Alan (2024): A new bullfrog from southern Africa (Pyxicephalidae,
+        Pyxicephalus Tschudi, 1838). African Journal of Herpetology 73 (1): 61-89,
+        DOI: 10.1080/21564574.2023.2296654, URL: https://doi.org/10.1080/21564574.2023.2296654</p>","language":"eng","homepage":"https://tb.plazi.org/GgServer/summary/4F71FF91B71CD545FFF9F745B22CFFA7","citation":{"text":"Preez
+        L H D, Netherlands E C, and M R, Channing A, felipe (2024). A new bullfrog
+        from southern Africa (Pyxicephalidae, Pyxicephalus Tschudi, 1838). Plazi.org
+        taxonomic treatments database. Checklist dataset https://doi.org/10.15468/z7xr2m
+        accessed via GBIF.org on 2025-06-10.","citationProvidedBySource":false},"contactsCitation":[{"key":6134112,"abbreviatedName":"Preez
+        L H D","firstName":"Louis H du","lastName":"Preez","roles":["ORIGINATOR"],"userId":[]},{"key":6134113,"abbreviatedName":"Netherlands
+        E C","firstName":"Edward C","lastName":"Netherlands","roles":["ORIGINATOR"],"userId":[]},{"key":6134114,"abbreviatedName":"and
+        M R","firstName":"Mark-Oliver Rödel","lastName":"and","roles":["ORIGINATOR"],"userId":[]},{"key":6134115,"abbreviatedName":"Channing
+        A","firstName":"Alan","lastName":"Channing","roles":["ORIGINATOR"],"userId":[]},{"key":6134118,"abbreviatedName":"felipe","lastName":"felipe","roles":["METADATA_AUTHOR"],"userId":[]}],"lockedForAutoUpdate":false,"createdBy":"plazi","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:30:58.361+00:00","modified":"2025-06-10T13:41:10.378+00:00","contacts":[{"key":6134112,"type":"ORIGINATOR","primary":true,"userId":[],"firstName":"Louis
+        H du","lastName":"Preez","position":[],"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:41:10.354+00:00","modified":"2025-06-10T13:41:10.354+00:00"},{"key":6134113,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Edward
+        C","lastName":"Netherlands","position":[],"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:41:10.356+00:00","modified":"2025-06-10T13:41:10.356+00:00"},{"key":6134114,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Mark-Oliver
+        Rödel","lastName":"and","position":[],"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:41:10.356+00:00","modified":"2025-06-10T13:41:10.356+00:00"},{"key":6134115,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Alan","lastName":"Channing","position":[],"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:41:10.357+00:00","modified":"2025-06-10T13:41:10.357+00:00"},{"key":6134116,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Guido","lastName":"Sautter","position":[],"email":["sautter@plazi.org"],"phone":[],"homepage":["https://plazi.org"],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:41:10.358+00:00","modified":"2025-06-10T13:41:10.358+00:00"},{"key":6134117,"type":"PUBLISHER","primary":false,"userId":[],"position":[],"email":["info@plazi.org"],"phone":[],"homepage":["https://plazi.org/"],"organization":"Plazi","address":[],"city":"Bern","country":"CH","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:41:10.359+00:00","modified":"2025-06-10T13:41:10.359+00:00"},{"key":6134118,"type":"METADATA_AUTHOR","primary":true,"userId":[],"lastName":"felipe","position":[],"email":[],"phone":[],"homepage":[],"organization":"Plazi","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:41:10.360+00:00","modified":"2025-06-10T13:41:10.360+00:00"}],"endpoints":[{"key":1114958,"type":"DWC_ARCHIVE","url":"https://tb.plazi.org/GgServer/dwca/4F71FF91B71CD545FFF9F745B22CFFA7.zip","createdBy":"plazi","modifiedBy":"plazi","created":"2025-06-10T13:30:58.583+00:00","modified":"2025-06-10T13:30:58.583+00:00","machineTags":[]}],"machineTags":[{"key":25634307,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"2","createdBy":"crawler.gbif.org","created":"2025-06-10T13:41:09.447+00:00"}],"tags":[],"identifiers":[{"key":442542,"type":"UUID","identifier":"4F71FF91B71CD545FFF9F745B22CFFA7","createdBy":"plazi","created":"2025-06-10T13:30:58.516+00:00","primary":false}],"comments":[],"bibliographicCitations":[{"text":"Preez,
+        Louis H du, Netherlands, Edward C, and, Mark-Oliver Rödel, Channing, Alan
+        (2024): A new bullfrog from southern Africa (Pyxicephalidae, Pyxicephalus
+        Tschudi, 1838). African Journal of Herpetology 73 (1): 61-89, DOI: 10.1080/21564574.2023.2296654,
+        URL: https://doi.org/10.1080/21564574.2023.2296654","citationProvidedBySource":false}],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[],"temporalCoverages":[],"keywordCollections":[],"countryCoverage":[],"collections":[],"dataDescriptions":[],"dataLanguage":"eng","pubDate":"2024-03-12T00:00:00.000+00:00","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode"},{"key":"fed5236f-4434-4e20-8909-91ceac5e1396","installationKey":"7ce8aef1-9e92-11dc-8740-b8a03c50a999","publishingOrganizationKey":"7ce8aef0-9e92-11dc-8738-b8a03c50a862","doi":"10.15468/29y5sr","external":false,"numConstituents":0,"type":"CHECKLIST","title":"A
+        new species of Macaria Curtis (Lepidoptera: Geometridae: Ennominae) from the
+        Andes of northern Chile","description":"<p>This dataset contains the digitized
+        treatments in Plazi based on the original journal article Vargas, Héctor A.,
+        Hausmann, Axel, Parra, Luis E. (2020): A new species of Macaria Curtis (Lepidoptera:
+        Geometridae: Ennominae) from the Andes of northern Chile. Revista Brasileira
+        de Entomologia (e 20200016) 64 (2): 1-6, DOI: 10.1590/1806-9665-RBENT-2020-0016,
+        URL: http://dx.doi.org/10.1590/1806-9665-rbent-2020-0016</p>","language":"eng","homepage":"https://tb.plazi.org/GgServer/summary/FFBFFFA9A5482E67D352FFB6FFBB1813","citation":{"text":"Vargas
+        H A, Hausmann A, Parra L E, felipe (2020). A new species of Macaria Curtis
+        (Lepidoptera: Geometridae: Ennominae) from the Andes of northern Chile. Plazi.org
+        taxonomic treatments database. Checklist dataset https://doi.org/10.15468/29y5sr
+        accessed via GBIF.org on 2025-06-10.","citationProvidedBySource":false},"contactsCitation":[{"key":6134083,"abbreviatedName":"Vargas
+        H A","firstName":"Héctor A.","lastName":"Vargas","roles":["ORIGINATOR"],"userId":[]},{"key":6134084,"abbreviatedName":"Hausmann
+        A","firstName":"Axel","lastName":"Hausmann","roles":["ORIGINATOR"],"userId":[]},{"key":6134085,"abbreviatedName":"Parra
+        L E","firstName":"Luis E.","lastName":"Parra","roles":["ORIGINATOR"],"userId":[]},{"key":6134088,"abbreviatedName":"felipe","lastName":"felipe","roles":["METADATA_AUTHOR"],"userId":[]}],"lockedForAutoUpdate":false,"createdBy":"plazi","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:09:55.810+00:00","modified":"2025-06-10T13:20:00.496+00:00","contacts":[{"key":6134083,"type":"ORIGINATOR","primary":true,"userId":[],"firstName":"Héctor
+        A.","lastName":"Vargas","position":[],"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:20:00.462+00:00","modified":"2025-06-10T13:20:00.462+00:00"},{"key":6134084,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Axel","lastName":"Hausmann","position":[],"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:20:00.465+00:00","modified":"2025-06-10T13:20:00.465+00:00"},{"key":6134085,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Luis
+        E.","lastName":"Parra","position":[],"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:20:00.466+00:00","modified":"2025-06-10T13:20:00.466+00:00"},{"key":6134086,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Guido","lastName":"Sautter","position":[],"email":["sautter@plazi.org"],"phone":[],"homepage":["https://plazi.org"],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:20:00.468+00:00","modified":"2025-06-10T13:20:00.468+00:00"},{"key":6134087,"type":"PUBLISHER","primary":false,"userId":[],"position":[],"email":["info@plazi.org"],"phone":[],"homepage":["https://plazi.org/"],"organization":"Plazi","address":[],"city":"Bern","country":"CH","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:20:00.469+00:00","modified":"2025-06-10T13:20:00.469+00:00"},{"key":6134088,"type":"METADATA_AUTHOR","primary":true,"userId":[],"lastName":"felipe","position":[],"email":[],"phone":[],"homepage":[],"organization":"Plazi","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:20:00.470+00:00","modified":"2025-06-10T13:20:00.470+00:00"}],"endpoints":[{"key":1114947,"type":"DWC_ARCHIVE","url":"https://tb.plazi.org/GgServer/dwca/FFBFFFA9A5482E67D352FFB6FFBB1813.zip","createdBy":"plazi","modifiedBy":"plazi","created":"2025-06-10T13:09:56.054+00:00","modified":"2025-06-10T13:09:56.054+00:00","machineTags":[]}],"machineTags":[{"key":25634299,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"2","createdBy":"crawler.gbif.org","created":"2025-06-10T13:19:59.346+00:00"}],"tags":[],"identifiers":[{"key":442539,"type":"UUID","identifier":"FFBFFFA9A5482E67D352FFB6FFBB1813","createdBy":"plazi","created":"2025-06-10T13:09:55.963+00:00","primary":false}],"comments":[],"bibliographicCitations":[{"text":"Vargas,
+        Héctor A., Hausmann, Axel, Parra, Luis E. (2020): A new species of Macaria
+        Curtis (Lepidoptera: Geometridae: Ennominae) from the Andes of northern Chile.
+        Revista Brasileira de Entomologia (e 20200016) 64 (2): 1-6, DOI: 10.1590/1806-9665-RBENT-2020-0016,
+        URL: http://dx.doi.org/10.1590/1806-9665-rbent-2020-0016","citationProvidedBySource":false}],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[],"temporalCoverages":[],"keywordCollections":[],"countryCoverage":[],"collections":[],"dataDescriptions":[],"dataLanguage":"eng","pubDate":"2020-07-20T00:00:00.000+00:00","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode"}]}'
+  recorded_at: 2025-06-10 14:15:59 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/?limit=3&country=US
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: '{"offset":0,"limit":3,"endOfRecords":false,"count":2775,"results":[{"key":"96338c07-256a-4853-bab3-86dd7794b218","installationKey":"a957a663-2f17-415f-b1c8-5cf6398df8ed","publishingOrganizationKey":"0dea2b07-16e2-4604-9f50-36a4dd81d0e0","doi":"10.15468/3hrurp","external":false,"numConstituents":0,"type":"CHECKLIST","subtype":"INVENTORY_THEMATIC","title":"A
+        Checklist of Prosimian Species Represented at The Duke Lemur Center, Durham,
+        NC.","description":"\n            The Duke Lemur Center, an internationally
+        acclaimed non-invasive research center, houses the world’s most\ndiverse population
+        of lemurs outside their native Madagascar. This dataset is a\nchecklist of
+        species housed at the Duke Lemur Center since its establishment in\n1966.\n        ","language":"eng","homepage":"http://lemur.duke.edu","logoUrl":"https://ipt.vertnet.org/logo.do?r=dlc_checklist","citation":{"text":"Mazza
+        A (2025). A Checklist of Prosimian Species Represented at The Duke Lemur Center,
+        Durham, NC.. Duke Lemur Center. Checklist dataset https://doi.org/10.15468/3hrurp
+        accessed via GBIF.org on 2025-06-10.","citationProvidedBySource":false},"contactsCitation":[{"key":6133281,"abbreviatedName":"Mazza
+        A","firstName":"Amanda","lastName":"Mazza","roles":["METADATA_AUTHOR","ORIGINATOR"],"userId":[]}],"lockedForAutoUpdate":false,"createdBy":"0dea2b07-16e2-4604-9f50-36a4dd81d0e0","modifiedBy":"crawler.gbif.org","created":"2025-06-09T17:21:22.581+00:00","modified":"2025-06-09T21:27:35.291+00:00","contacts":[{"key":6133281,"type":"ORIGINATOR","primary":true,"userId":[],"firstName":"Amanda","lastName":"Mazza","position":[],"email":["amanda.mazza@duke.edu"],"phone":[],"homepage":[],"organization":"Duke
+        Lemur Center","address":[],"city":"Durham","province":"NC","country":"US","postalCode":"27705","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-09T21:27:35.249+00:00","modified":"2025-06-09T21:27:35.249+00:00"},{"key":6133282,"type":"METADATA_AUTHOR","primary":true,"userId":[],"firstName":"Amanda","lastName":"Mazza","position":[],"email":["amanda.mazza@duke.edu"],"phone":[],"homepage":[],"organization":"Duke
+        Lemur Center","address":[],"city":"Durham","province":"NC","country":"US","postalCode":"27705","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-09T21:27:35.251+00:00","modified":"2025-06-09T21:27:35.251+00:00"},{"key":6133283,"type":"PROGRAMMER","primary":false,"userId":[],"firstName":"David","lastName":"Bloom","position":[],"email":["dbloom@vertnet.org"],"phone":[],"homepage":[],"organization":"VertNet","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-09T21:27:35.253+00:00","modified":"2025-06-09T21:27:35.253+00:00"},{"key":6133284,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Amanda","lastName":"Mazza","position":[],"email":["amanda.mazza@duke.edu"],"phone":[],"homepage":[],"organization":"Duke
+        Lemur Center","address":[],"city":"Durham","province":"NC","country":"US","postalCode":"27705","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-09T21:27:35.257+00:00","modified":"2025-06-09T21:27:35.257+00:00"}],"endpoints":[{"key":1114739,"type":"DWC_ARCHIVE","url":"https://ipt.vertnet.org/archive.do?r=dlc_checklist","createdBy":"0dea2b07-16e2-4604-9f50-36a4dd81d0e0","modifiedBy":"0dea2b07-16e2-4604-9f50-36a4dd81d0e0","created":"2025-06-09T17:21:22.745+00:00","modified":"2025-06-09T17:21:22.745+00:00","machineTags":[]},{"key":1114738,"type":"EML","url":"https://ipt.vertnet.org/eml.do?r=dlc_checklist","createdBy":"0dea2b07-16e2-4604-9f50-36a4dd81d0e0","modifiedBy":"0dea2b07-16e2-4604-9f50-36a4dd81d0e0","created":"2025-06-09T17:21:22.708+00:00","modified":"2025-06-09T17:21:22.708+00:00","machineTags":[]}],"machineTags":[{"key":25634156,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"2","createdBy":"crawler.gbif.org","created":"2025-06-10T12:06:13.842+00:00"}],"tags":[],"identifiers":[{"key":442512,"type":"CLB_DATASET_KEY","identifier":"310352","createdBy":"clb-bot","created":"2025-06-09T21:30:51.349+00:00","primary":false},{"key":442509,"type":"URL","identifier":"https://ipt.vertnet.org/resource?r=dlc_checklist","createdBy":"crawler.gbif.org","created":"2025-06-09T21:27:35.259+00:00","primary":false}],"comments":[],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[{"coverages":[{"scientificName":"Mammalia","commonName":"Mammals","rank":{"verbatim":"class","interpreted":"CLASS"}},{"scientificName":"Primates","commonName":"Primates","rank":{"verbatim":"order","interpreted":"ORDER"}},{"scientificName":"Strepsirrhini","commonName":"Strepsirrhines","rank":{"verbatim":"suborder","interpreted":"SUBORDER"}}]}],"geographicCoverages":[{"description":"The
+        species listed have been historically cared for or are currently housed at
+        the Duke Lemur Center.","boundingBox":{"minLatitude":35.991,"maxLatitude":35.998,"minLongitude":-78.962,"maxLongitude":-78.958,"globalCoverage":false}}],"temporalCoverages":[],"keywordCollections":[{"thesaurus":"GBIF
+        Dataset Type Vocabulary: http://rs.gbif.org/vocabulary/gbif/dataset_type_2015-07-10.xml","keywords":["Checklist"]},{"thesaurus":"GBIF
+        Dataset Subtype Vocabulary: http://rs.gbif.org/vocabulary/gbif/dataset_subtype.xml","keywords":["Inventorythematic"]}],"project":{"title":"DLC
+        Checklist Metadata","contacts":[{"type":"PUBLISHER","primary":false,"userId":[],"firstName":"Amanda","lastName":"Mazza","position":[],"email":[],"phone":[],"homepage":[],"address":[]}],"awards":[],"relatedProjects":[]},"samplingDescription":{"methodSteps":[]},"countryCoverage":[],"collections":[],"dataDescriptions":[],"dataLanguage":"eng","additionalInfo":"Please
+        adhere to the VertNet Norms when using these data - https://vertnet.org/resources/norms.html","pubDate":"2025-06-09T00:00:00.000+00:00","maintenanceUpdateFrequency":"AS_NEEDED","maintenanceDescription":"","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode"},{"key":"6789ac99-6532-4f2b-85bb-cb1e5add7a95","installationKey":"1de87984-ce7c-407c-988c-a28014ae53ad","publishingOrganizationKey":"e794e60e-e558-4549-99f8-cfb241cdce24","doi":"10.15468/wqp57u","external":false,"numConstituents":0,"type":"OCCURRENCE","title":"NEON
+        Biorepository Benthic Macroinvertebrate Collection (Fluid Preserved Oligochaetes)","description":"<p>Identified
+        oligochaete contained within fluid-preserved oligochaete subsample from the
+        taxonomy laboratory. Benthic macroinvertebrate samples are collected three
+        times per year at wadeable stream, river, and lake sites during aquatic biology
+        bout windows, roughly in spring, summer, and fall. Samples are collected using
+        the most appropriate sampler for the habitat type, including Surber, Hess,
+        hand corer, modified kicknet, D-frame sweep, and petite ponar samplers. Macroinvertebrates
+        are sampled using a percent-based macrohabitat approach. In wadeable streams,
+        samples are collected in the two most dominant habitat types (e.g. riffles,
+        runs, pools, step pools) within each 1 km-long wadeable stream site. In lakes,
+        samples are collected near the buoy, inlet, and outlet sensors using a petite
+        ponar, and in littoral areas using a D-frame sweep. In rivers, samples are
+        collected near the buoy and two other deep-water locations using a petite
+        ponar sampler, and in littoral areas using a D-frame sweep or large-woody
+        debris sampler. Field protocols differ depending on the habitat and substrate
+        being sampled, but all samples are collected from the surface of the natural
+        substratum in each habitat. Samples are preserved in ethanol in the field,
+        returned to the domain support facility for a preservative change where a
+        small volume of glycerol is added to help keep invertebrates from becoming
+        brittle. Samples are shipped to a taxonomy lab for sorting and identification,
+        including count of each taxon per size class (to nearest mm) and identification
+        to lowest practical taxon (typically, genus or species). Records in this collection
+        represent identified taxa contained within samples in the&amp;nbsp;Benthic
+        Macroinvertebrate Collection (Fluid Preserved Oligochaetes) (NEON-BMIC-OL).
+        These organisms are preserved in bulk in 70-95% ethanol and archived in a
+        temperature (17-18&amp;deg;C) and humidity controlled environment. See related
+        links below for protocols and NEON related data products.</p>","language":"eng","citation":{"text":"National
+        Ecological Observatory Network (2025). NEON Biorepository Benthic Macroinvertebrate
+        Collection (Fluid Preserved Oligochaetes). Occurrence dataset https://doi.org/10.15468/wqp57u
+        accessed via GBIF.org on 2025-06-10.","citationProvidedBySource":false},"contactsCitation":[],"lockedForAutoUpdate":false,"createdBy":"symb_neon","modifiedBy":"crawler.gbif.org","created":"2025-06-06T21:09:45.840+00:00","modified":"2025-06-06T21:09:53.675+00:00","contacts":[{"key":6130979,"type":"ORIGINATOR","primary":true,"userId":[],"position":[],"email":["biorepo@asu.edu"],"phone":[],"homepage":["https://biorepo.neonscience.org/portal/index.php"],"organization":"NEON
+        Biorepository Data Portal","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-06T21:09:53.655+00:00","modified":"2025-06-06T21:09:53.655+00:00"},{"key":6130980,"type":"METADATA_AUTHOR","primary":true,"userId":[],"position":[],"email":["biorepo@asu.edu"],"phone":[],"homepage":["https://biorepo.neonscience.org/portal/index.php"],"organization":"NEON
+        Biorepository Data Portal","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-06T21:09:53.658+00:00","modified":"2025-06-06T21:09:53.658+00:00"},{"key":6130981,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":true,"userId":["https://orcid.org/0000-0003-3873-0693"],"position":[],"email":["isbetanc@asu.edu"],"phone":[],"homepage":["https://data.neonscience.org/data-products/DP1.20120.001"],"organization":"NEON
+        Biorepository Benthic Macroinvertebrate Collection (Fluid Preserved Oligochaetes)","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-06T21:09:53.659+00:00","modified":"2025-06-06T21:09:53.659+00:00"},{"key":6130982,"type":"CONTENT_PROVIDER","primary":false,"userId":["https://orcid.org/0000-0003-3873-0693"],"firstName":"Isa","lastName":"Betancourt","position":["Collection
+        Manager"],"email":["isbetanc@asu.edu"],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-06T21:09:53.661+00:00","modified":"2025-06-06T21:09:53.661+00:00"}],"endpoints":[{"key":1114247,"type":"DWC_ARCHIVE","url":"https://biorepo.neonscience.org/portal/content/dwca/NEON-BMIC-OLI_DwC-A.zip","createdBy":"symb_neon","modifiedBy":"symb_neon","created":"2025-06-06T21:09:46.775+00:00","modified":"2025-06-06T21:09:46.775+00:00","machineTags":[]}],"machineTags":[{"key":25633829,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"2","createdBy":"crawler.gbif.org","created":"2025-06-10T12:06:03.852+00:00"}],"tags":[],"identifiers":[{"key":442395,"type":"URL","identifier":"https://biorepo.neonscience.org/portal/collections/misc/collprofiles.php?collid=101","createdBy":"crawler.gbif.org","created":"2025-06-06T21:09:53.662+00:00","primary":false}],"comments":[],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[],"temporalCoverages":[],"keywordCollections":[],"countryCoverage":[],"collections":[],"dataDescriptions":[],"dataLanguage":"eng","pubDate":"2025-06-06T00:00:00.000+00:00","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode"},{"key":"d22f507d-f2c7-4668-8bc9-0099d578879f","installationKey":"1de87984-ce7c-407c-988c-a28014ae53ad","publishingOrganizationKey":"e794e60e-e558-4549-99f8-cfb241cdce24","doi":"10.15468/7fy83d","external":false,"numConstituents":0,"type":"OCCURRENCE","title":"NEON
+        Biorepository Aquatic Plant, Bryophyte, Lichen and Macroalgae Collection (Herbarium
+        Vouchers [Standard Sampling])","description":"<p>This collections contains
+        identifications of aquatic plant, bryophyte, and macroalgae specimens collected
+        as vouchers during standard sampling. Occurrence records in this collection
+        represent taxonomic identifications of organisms within samples published
+        in the Aquatic Plant, Bryophyte, and Macroalgae Collection (Herbarium Vouchers
+        [Standard Sampling]) (NEON-APLC-HVSS). These samples are archived dry in herbarium
+        voucher packets. See related links below for protocols and NEON related data
+        products.&#13;\n</p>","language":"eng","citation":{"text":"National Ecological
+        Observatory Network (2025). NEON Biorepository Aquatic Plant, Bryophyte, Lichen
+        and Macroalgae Collection (Herbarium Vouchers [Standard Sampling]). Occurrence
+        dataset https://doi.org/10.15468/7fy83d accessed via GBIF.org on 2025-06-10.","citationProvidedBySource":false},"contactsCitation":[],"lockedForAutoUpdate":false,"createdBy":"symb_neon","modifiedBy":"crawler.gbif.org","created":"2025-06-06T20:45:06.302+00:00","modified":"2025-06-10T12:10:59.042+00:00","contacts":[{"key":6133797,"type":"ORIGINATOR","primary":true,"userId":[],"position":[],"email":["biorepo@asu.edu"],"phone":[],"homepage":["https://biorepo.neonscience.org/portal/index.php"],"organization":"NEON
+        Biorepository Data Portal","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T12:10:59.026+00:00","modified":"2025-06-10T12:10:59.026+00:00"},{"key":6133798,"type":"METADATA_AUTHOR","primary":true,"userId":[],"position":[],"email":["biorepo@asu.edu"],"phone":[],"homepage":["https://biorepo.neonscience.org/portal/index.php"],"organization":"NEON
+        Biorepository Data Portal","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T12:10:59.027+00:00","modified":"2025-06-10T12:10:59.027+00:00"},{"key":6133799,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":true,"userId":["https://orcid.org/0000-0002-0878-4132"],"position":[],"email":["lsteger@asu.edu"],"phone":[],"homepage":["https://data.neonscience.org/data-products/DP1.20072.001"],"organization":"NEON
+        Biorepository Aquatic Plant, Bryophyte, Lichen and Macroalgae Collection (Herbarium
+        Vouchers [Standard Sampling])","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T12:10:59.028+00:00","modified":"2025-06-10T12:10:59.028+00:00"},{"key":6133800,"type":"CONTENT_PROVIDER","primary":false,"userId":["https://orcid.org/0000-0002-0878-4132"],"firstName":"Laura","lastName":"Steger","position":["Collection
+        Manager"],"email":["lsteger@asu.edu"],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T12:10:59.029+00:00","modified":"2025-06-10T12:10:59.029+00:00"},{"key":6133801,"type":"CONTENT_PROVIDER","primary":false,"userId":["https://orcid.org/0000-0001-8676-0817"],"firstName":"Christopher","lastName":"Livingston","position":["Specimen
+        Imaging (2021-2022)"],"email":["calivin3@asu.edu"],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T12:10:59.030+00:00","modified":"2025-06-10T12:10:59.030+00:00"},{"key":6133802,"type":"CONTENT_PROVIDER","primary":false,"userId":["https://orcid.org/0000-0001-9632-9721"],"firstName":"Annessa","lastName":"Lyle","position":["Voucher
+        Mounting (2021-2022)"],"email":["amfoss1@asu.edu"],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T12:10:59.030+00:00","modified":"2025-06-10T12:10:59.030+00:00"},{"key":6133803,"type":"CONTENT_PROVIDER","primary":false,"userId":["https://orcid.org/0009-0003-4944-688X"],"firstName":"Ava","lastName":"Claus","position":["Mounting
+        and Imaging (2024)"],"email":["alclaus@asu.edu"],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T12:10:59.031+00:00","modified":"2025-06-10T12:10:59.031+00:00"}],"endpoints":[{"key":1114240,"type":"DWC_ARCHIVE","url":"https://biorepo.neonscience.org/portal/content/dwca/NEON-APLC-HVSSI_DwC-A.zip","createdBy":"symb_neon","modifiedBy":"symb_neon","created":"2025-06-06T20:45:07.086+00:00","modified":"2025-06-06T20:45:07.086+00:00","machineTags":[]}],"machineTags":[{"key":25633830,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"2","createdBy":"crawler.gbif.org","created":"2025-06-10T12:06:03.853+00:00"}],"tags":[],"identifiers":[{"key":442392,"type":"URL","identifier":"https://biorepo.neonscience.org/portal/collections/misc/collprofiles.php?collid=109","createdBy":"crawler.gbif.org","created":"2025-06-06T20:45:12.140+00:00","primary":false}],"comments":[],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[],"temporalCoverages":[],"keywordCollections":[],"countryCoverage":[],"collections":[],"dataDescriptions":[],"dataLanguage":"eng","pubDate":"2025-06-06T00:00:00.000+00:00","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode"}]}'
+  recorded_at: 2025-06-10 14:15:59 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/?limit=3&type=CHECKLIST
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: '{"offset":0,"limit":3,"endOfRecords":false,"count":59472,"results":[{"key":"76187bdd-48a7-4fa6-9d05-ef5684225bd3","installationKey":"7ce8aef1-9e92-11dc-8740-b8a03c50a999","publishingOrganizationKey":"7ce8aef0-9e92-11dc-8738-b8a03c50a862","doi":"10.15468/w34t2q","external":false,"numConstituents":0,"type":"CHECKLIST","title":"Late
+        Eocene-early Oligocene snakes from the Transylvanian Basin (Romania)","description":"<p>This
+        dataset contains the digitized treatments in Plazi based on the original journal
+        article Venczel, Márton, Codrea, Vlad A., Solomon, Alexandru A., Fărcaș, Cristina,
+        Bordeianu, Marian (2025): Late Eocene-early Oligocene snakes from the Transylvanian
+        Basin (Romania). Comptes Rendus Palevol 24 (13): 229-240, DOI: 10.5852/cr-palevol2025v24a13,
+        URL: https://doi.org/10.5852/cr-palevol2025v24a13</p>","language":"eng","homepage":"https://tb.plazi.org/GgServer/summary/FF8EFFC7FFA9FFE7FF88FF9EFFB2FFF9","citation":{"text":"Venczel
+        M, Codrea V A, Solomon A A, Fărcaș C, Bordeianu M, felipe (2025). Late Eocene-early
+        Oligocene snakes from the Transylvanian Basin (Romania). Plazi.org taxonomic
+        treatments database. Checklist dataset https://doi.org/10.15468/w34t2q accessed
+        via GBIF.org on 2025-06-10.","citationProvidedBySource":false},"contactsCitation":[{"key":6134131,"abbreviatedName":"Venczel
+        M","firstName":"Márton","lastName":"Venczel","roles":["ORIGINATOR"],"userId":[]},{"key":6134132,"abbreviatedName":"Codrea
+        V A","firstName":"Vlad A.","lastName":"Codrea","roles":["ORIGINATOR"],"userId":[]},{"key":6134133,"abbreviatedName":"Solomon
+        A A","firstName":"Alexandru A.","lastName":"Solomon","roles":["ORIGINATOR"],"userId":[]},{"key":6134134,"abbreviatedName":"Fărcaș
+        C","firstName":"Cristina","lastName":"Fărcaș","roles":["ORIGINATOR"],"userId":[]},{"key":6134135,"abbreviatedName":"Bordeianu
+        M","firstName":"Marian","lastName":"Bordeianu","roles":["ORIGINATOR"],"userId":[]},{"key":6134138,"abbreviatedName":"felipe","lastName":"felipe","roles":["METADATA_AUTHOR"],"userId":[]}],"lockedForAutoUpdate":false,"createdBy":"plazi","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:44:20.591+00:00","modified":"2025-06-10T13:59:29.825+00:00","contacts":[{"key":6134131,"type":"ORIGINATOR","primary":true,"userId":[],"firstName":"Márton","lastName":"Venczel","position":[],"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:59:29.790+00:00","modified":"2025-06-10T13:59:29.790+00:00"},{"key":6134132,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Vlad
+        A.","lastName":"Codrea","position":[],"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:59:29.793+00:00","modified":"2025-06-10T13:59:29.793+00:00"},{"key":6134133,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Alexandru
+        A.","lastName":"Solomon","position":[],"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:59:29.794+00:00","modified":"2025-06-10T13:59:29.794+00:00"},{"key":6134134,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Cristina","lastName":"Fărcaș","position":[],"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:59:29.796+00:00","modified":"2025-06-10T13:59:29.796+00:00"},{"key":6134135,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Marian","lastName":"Bordeianu","position":[],"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:59:29.797+00:00","modified":"2025-06-10T13:59:29.797+00:00"},{"key":6134136,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Guido","lastName":"Sautter","position":[],"email":["sautter@plazi.org"],"phone":[],"homepage":["https://plazi.org"],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:59:29.798+00:00","modified":"2025-06-10T13:59:29.798+00:00"},{"key":6134137,"type":"PUBLISHER","primary":false,"userId":[],"position":[],"email":["info@plazi.org"],"phone":[],"homepage":["https://plazi.org/"],"organization":"Plazi","address":[],"city":"Bern","country":"CH","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:59:29.800+00:00","modified":"2025-06-10T13:59:29.800+00:00"},{"key":6134138,"type":"METADATA_AUTHOR","primary":true,"userId":[],"lastName":"felipe","position":[],"email":[],"phone":[],"homepage":[],"organization":"Plazi","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:59:29.801+00:00","modified":"2025-06-10T13:59:29.801+00:00"}],"endpoints":[{"key":1114965,"type":"DWC_ARCHIVE","url":"https://tb.plazi.org/GgServer/dwca/FF8EFFC7FFA9FFE7FF88FF9EFFB2FFF9.zip","createdBy":"plazi","modifiedBy":"plazi","created":"2025-06-10T13:44:20.828+00:00","modified":"2025-06-10T13:44:20.828+00:00","machineTags":[]}],"machineTags":[{"key":25634312,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"2","createdBy":"crawler.gbif.org","created":"2025-06-10T13:59:29.044+00:00"}],"tags":[],"identifiers":[{"key":442543,"type":"UUID","identifier":"FF8EFFC7FFA9FFE7FF88FF9EFFB2FFF9","createdBy":"plazi","created":"2025-06-10T13:44:20.752+00:00","primary":false}],"comments":[],"bibliographicCitations":[{"text":"Venczel,
+        Márton, Codrea, Vlad A., Solomon, Alexandru A., Fărcaș, Cristina, Bordeianu,
+        Marian (2025): Late Eocene-early Oligocene snakes from the Transylvanian Basin
+        (Romania). Comptes Rendus Palevol 24 (13): 229-240, DOI: 10.5852/cr-palevol2025v24a13,
+        URL: https://doi.org/10.5852/cr-palevol2025v24a13","citationProvidedBySource":false}],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[],"temporalCoverages":[],"keywordCollections":[],"countryCoverage":[],"collections":[],"dataDescriptions":[],"dataLanguage":"eng","pubDate":"2025-05-14T00:00:00.000+00:00","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode"},{"key":"ef787402-b1fd-44d4-853d-1680553ebb50","installationKey":"7ce8aef1-9e92-11dc-8740-b8a03c50a999","publishingOrganizationKey":"7ce8aef0-9e92-11dc-8738-b8a03c50a862","doi":"10.15468/z7xr2m","external":false,"numConstituents":0,"type":"CHECKLIST","title":"A
+        new bullfrog from southern Africa (Pyxicephalidae, Pyxicephalus Tschudi, 1838)","description":"<p>This
+        dataset contains the digitized treatments in Plazi based on the original journal
+        article Preez, Louis H du, Netherlands, Edward C, and, Mark-Oliver Rödel,
+        Channing, Alan (2024): A new bullfrog from southern Africa (Pyxicephalidae,
+        Pyxicephalus Tschudi, 1838). African Journal of Herpetology 73 (1): 61-89,
+        DOI: 10.1080/21564574.2023.2296654, URL: https://doi.org/10.1080/21564574.2023.2296654</p>","language":"eng","homepage":"https://tb.plazi.org/GgServer/summary/4F71FF91B71CD545FFF9F745B22CFFA7","citation":{"text":"Preez
+        L H D, Netherlands E C, and M R, Channing A, felipe (2024). A new bullfrog
+        from southern Africa (Pyxicephalidae, Pyxicephalus Tschudi, 1838). Plazi.org
+        taxonomic treatments database. Checklist dataset https://doi.org/10.15468/z7xr2m
+        accessed via GBIF.org on 2025-06-10.","citationProvidedBySource":false},"contactsCitation":[{"key":6134112,"abbreviatedName":"Preez
+        L H D","firstName":"Louis H du","lastName":"Preez","roles":["ORIGINATOR"],"userId":[]},{"key":6134113,"abbreviatedName":"Netherlands
+        E C","firstName":"Edward C","lastName":"Netherlands","roles":["ORIGINATOR"],"userId":[]},{"key":6134114,"abbreviatedName":"and
+        M R","firstName":"Mark-Oliver Rödel","lastName":"and","roles":["ORIGINATOR"],"userId":[]},{"key":6134115,"abbreviatedName":"Channing
+        A","firstName":"Alan","lastName":"Channing","roles":["ORIGINATOR"],"userId":[]},{"key":6134118,"abbreviatedName":"felipe","lastName":"felipe","roles":["METADATA_AUTHOR"],"userId":[]}],"lockedForAutoUpdate":false,"createdBy":"plazi","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:30:58.361+00:00","modified":"2025-06-10T13:41:10.378+00:00","contacts":[{"key":6134112,"type":"ORIGINATOR","primary":true,"userId":[],"firstName":"Louis
+        H du","lastName":"Preez","position":[],"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:41:10.354+00:00","modified":"2025-06-10T13:41:10.354+00:00"},{"key":6134113,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Edward
+        C","lastName":"Netherlands","position":[],"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:41:10.356+00:00","modified":"2025-06-10T13:41:10.356+00:00"},{"key":6134114,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Mark-Oliver
+        Rödel","lastName":"and","position":[],"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:41:10.356+00:00","modified":"2025-06-10T13:41:10.356+00:00"},{"key":6134115,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Alan","lastName":"Channing","position":[],"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:41:10.357+00:00","modified":"2025-06-10T13:41:10.357+00:00"},{"key":6134116,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Guido","lastName":"Sautter","position":[],"email":["sautter@plazi.org"],"phone":[],"homepage":["https://plazi.org"],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:41:10.358+00:00","modified":"2025-06-10T13:41:10.358+00:00"},{"key":6134117,"type":"PUBLISHER","primary":false,"userId":[],"position":[],"email":["info@plazi.org"],"phone":[],"homepage":["https://plazi.org/"],"organization":"Plazi","address":[],"city":"Bern","country":"CH","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:41:10.359+00:00","modified":"2025-06-10T13:41:10.359+00:00"},{"key":6134118,"type":"METADATA_AUTHOR","primary":true,"userId":[],"lastName":"felipe","position":[],"email":[],"phone":[],"homepage":[],"organization":"Plazi","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:41:10.360+00:00","modified":"2025-06-10T13:41:10.360+00:00"}],"endpoints":[{"key":1114958,"type":"DWC_ARCHIVE","url":"https://tb.plazi.org/GgServer/dwca/4F71FF91B71CD545FFF9F745B22CFFA7.zip","createdBy":"plazi","modifiedBy":"plazi","created":"2025-06-10T13:30:58.583+00:00","modified":"2025-06-10T13:30:58.583+00:00","machineTags":[]}],"machineTags":[{"key":25634307,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"2","createdBy":"crawler.gbif.org","created":"2025-06-10T13:41:09.447+00:00"}],"tags":[],"identifiers":[{"key":442542,"type":"UUID","identifier":"4F71FF91B71CD545FFF9F745B22CFFA7","createdBy":"plazi","created":"2025-06-10T13:30:58.516+00:00","primary":false}],"comments":[],"bibliographicCitations":[{"text":"Preez,
+        Louis H du, Netherlands, Edward C, and, Mark-Oliver Rödel, Channing, Alan
+        (2024): A new bullfrog from southern Africa (Pyxicephalidae, Pyxicephalus
+        Tschudi, 1838). African Journal of Herpetology 73 (1): 61-89, DOI: 10.1080/21564574.2023.2296654,
+        URL: https://doi.org/10.1080/21564574.2023.2296654","citationProvidedBySource":false}],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[],"temporalCoverages":[],"keywordCollections":[],"countryCoverage":[],"collections":[],"dataDescriptions":[],"dataLanguage":"eng","pubDate":"2024-03-12T00:00:00.000+00:00","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode"},{"key":"fed5236f-4434-4e20-8909-91ceac5e1396","installationKey":"7ce8aef1-9e92-11dc-8740-b8a03c50a999","publishingOrganizationKey":"7ce8aef0-9e92-11dc-8738-b8a03c50a862","doi":"10.15468/29y5sr","external":false,"numConstituents":0,"type":"CHECKLIST","title":"A
+        new species of Macaria Curtis (Lepidoptera: Geometridae: Ennominae) from the
+        Andes of northern Chile","description":"<p>This dataset contains the digitized
+        treatments in Plazi based on the original journal article Vargas, Héctor A.,
+        Hausmann, Axel, Parra, Luis E. (2020): A new species of Macaria Curtis (Lepidoptera:
+        Geometridae: Ennominae) from the Andes of northern Chile. Revista Brasileira
+        de Entomologia (e 20200016) 64 (2): 1-6, DOI: 10.1590/1806-9665-RBENT-2020-0016,
+        URL: http://dx.doi.org/10.1590/1806-9665-rbent-2020-0016</p>","language":"eng","homepage":"https://tb.plazi.org/GgServer/summary/FFBFFFA9A5482E67D352FFB6FFBB1813","citation":{"text":"Vargas
+        H A, Hausmann A, Parra L E, felipe (2020). A new species of Macaria Curtis
+        (Lepidoptera: Geometridae: Ennominae) from the Andes of northern Chile. Plazi.org
+        taxonomic treatments database. Checklist dataset https://doi.org/10.15468/29y5sr
+        accessed via GBIF.org on 2025-06-10.","citationProvidedBySource":false},"contactsCitation":[{"key":6134083,"abbreviatedName":"Vargas
+        H A","firstName":"Héctor A.","lastName":"Vargas","roles":["ORIGINATOR"],"userId":[]},{"key":6134084,"abbreviatedName":"Hausmann
+        A","firstName":"Axel","lastName":"Hausmann","roles":["ORIGINATOR"],"userId":[]},{"key":6134085,"abbreviatedName":"Parra
+        L E","firstName":"Luis E.","lastName":"Parra","roles":["ORIGINATOR"],"userId":[]},{"key":6134088,"abbreviatedName":"felipe","lastName":"felipe","roles":["METADATA_AUTHOR"],"userId":[]}],"lockedForAutoUpdate":false,"createdBy":"plazi","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:09:55.810+00:00","modified":"2025-06-10T13:20:00.496+00:00","contacts":[{"key":6134083,"type":"ORIGINATOR","primary":true,"userId":[],"firstName":"Héctor
+        A.","lastName":"Vargas","position":[],"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:20:00.462+00:00","modified":"2025-06-10T13:20:00.462+00:00"},{"key":6134084,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Axel","lastName":"Hausmann","position":[],"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:20:00.465+00:00","modified":"2025-06-10T13:20:00.465+00:00"},{"key":6134085,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Luis
+        E.","lastName":"Parra","position":[],"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:20:00.466+00:00","modified":"2025-06-10T13:20:00.466+00:00"},{"key":6134086,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Guido","lastName":"Sautter","position":[],"email":["sautter@plazi.org"],"phone":[],"homepage":["https://plazi.org"],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:20:00.468+00:00","modified":"2025-06-10T13:20:00.468+00:00"},{"key":6134087,"type":"PUBLISHER","primary":false,"userId":[],"position":[],"email":["info@plazi.org"],"phone":[],"homepage":["https://plazi.org/"],"organization":"Plazi","address":[],"city":"Bern","country":"CH","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:20:00.469+00:00","modified":"2025-06-10T13:20:00.469+00:00"},{"key":6134088,"type":"METADATA_AUTHOR","primary":true,"userId":[],"lastName":"felipe","position":[],"email":[],"phone":[],"homepage":[],"organization":"Plazi","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T13:20:00.470+00:00","modified":"2025-06-10T13:20:00.470+00:00"}],"endpoints":[{"key":1114947,"type":"DWC_ARCHIVE","url":"https://tb.plazi.org/GgServer/dwca/FFBFFFA9A5482E67D352FFB6FFBB1813.zip","createdBy":"plazi","modifiedBy":"plazi","created":"2025-06-10T13:09:56.054+00:00","modified":"2025-06-10T13:09:56.054+00:00","machineTags":[]}],"machineTags":[{"key":25634299,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"2","createdBy":"crawler.gbif.org","created":"2025-06-10T13:19:59.346+00:00"}],"tags":[],"identifiers":[{"key":442539,"type":"UUID","identifier":"FFBFFFA9A5482E67D352FFB6FFBB1813","createdBy":"plazi","created":"2025-06-10T13:09:55.963+00:00","primary":false}],"comments":[],"bibliographicCitations":[{"text":"Vargas,
+        Héctor A., Hausmann, Axel, Parra, Luis E. (2020): A new species of Macaria
+        Curtis (Lepidoptera: Geometridae: Ennominae) from the Andes of northern Chile.
+        Revista Brasileira de Entomologia (e 20200016) 64 (2): 1-6, DOI: 10.1590/1806-9665-RBENT-2020-0016,
+        URL: http://dx.doi.org/10.1590/1806-9665-rbent-2020-0016","citationProvidedBySource":false}],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[],"temporalCoverages":[],"keywordCollections":[],"countryCoverage":[],"collections":[],"dataDescriptions":[],"dataLanguage":"eng","pubDate":"2020-07-20T00:00:00.000+00:00","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode"}]}'
+  recorded_at: 2025-06-10 14:15:59 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/?limit=3&identifierType=URL
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: '{"offset":0,"limit":3,"endOfRecords":false,"count":22924,"results":[{"key":"f4b2a37d-4a91-4c8f-bc49-5300cb7e724d","installationKey":"2a3f6a56-7591-4f05-8c4c-a1bb77aa4ea6","publishingOrganizationKey":"730cd32c-627f-44a8-9d93-fcfb23ade969","doi":"10.15470/eeyuuz","external":false,"numConstituents":0,"type":"OCCURRENCE","subtype":"SPECIMEN","shortName":"LEB-MUSCI","title":"Colección
+        de briófitos del herbario LEB \"Jaime Andrés Rodríguez\" LEB-MUSCI","description":"<p>Colección
+        de briófitos desarrollada mayoritariamente durante la década de los años 8
+        y 900, con algunos ejemplares de finales de los años 70 y otros pocos de la
+        década de los años 2000.</p><p>La colección está formada por ejemplares recolectados
+        mayoritariamente por el profesor de educación secundaria D. Basilio Llamas
+        Frade en la provincia de León. Este profesor estuvo vinculado, durante los
+        años 80 y 90, al área de botánica del antiguo departamento de Biodiversidad
+        Vegetal de la Universidad de León. Ese Departamento universitario, con una
+        reestructuración de áreas distinta, es el actual Departamento de Biodiversidad
+        y Gestión Ambiental.</p><p>La mayoría de las georreferenciaciones se han realizado
+        en base al campo localidad, asignado radio error a las coordenadas.</p>","language":"spa","logoUrl":"https://herbarioleb.unileon.es/wp-content/uploads/2020/11/LOGO-FINAL_baja2.png","citation":{"text":"Alonso
+        Felpete J I, Alfaro Saiz E (2025). Colección de briófitos del herbario LEB
+        \"Jaime Andrés Rodríguez\" LEB-MUSCI. Herbarium LEB Jaime Andrés Rodríguez.
+        Facultad de Ciencias Biológicas y Ambientales. Universidad de León.. Occurrence
+        dataset https://doi.org/10.15470/eeyuuz accessed via GBIF.org on 2025-06-10.","identifier":"https://doi.org/10.15470/eeyuuz","citationProvidedBySource":false},"contactsCitation":[{"key":6133439,"abbreviatedName":"Alonso
+        Felpete J I","firstName":"José Ignacio","lastName":"Alonso Felpete","roles":["METADATA_AUTHOR","ORIGINATOR"],"userId":[]},{"key":6133440,"abbreviatedName":"Alfaro
+        Saiz E","firstName":"Estrella","lastName":"Alfaro Saiz","roles":["ORIGINATOR"],"userId":[]}],"lockedForAutoUpdate":false,"createdBy":"730cd32c-627f-44a8-9d93-fcfb23ade969","modifiedBy":"crawler.gbif.org","created":"2025-06-10T10:49:39.825+00:00","modified":"2025-06-10T11:28:20.203+00:00","contacts":[{"key":6133439,"type":"ORIGINATOR","primary":true,"userId":[],"firstName":"José
+        Ignacio","lastName":"Alonso Felpete","position":["Técnico de Colecciones"],"email":["dbviaf@unileon.es"],"phone":["987291559"],"homepage":["https://herbarioleb.unileon.es/"],"organization":"Herbario
+        LEB \"Jaime Andrés Rodríguez\"","address":["Facultad de Ciencias Biológicas
+        y Ambientales. Herbario LEB \"Jaime Andrés Rodríguez\""],"city":"León","province":"León","country":"ES","postalCode":"24007","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T11:28:20.168+00:00","modified":"2025-06-10T11:28:20.168+00:00"},{"key":6133440,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Estrella","lastName":"Alfaro
+        Saiz","position":["Directora y Conservadora"],"email":["uleher@unileon.es"],"phone":[],"homepage":["https://herbarioleb.unileon.es/"],"organization":"LEB
+        \"Jaime Andrés Rodríguez\"","address":["Facultad de Ciencias Biológicas y
+        Ambientales. Herbario LEB \"Jaime Andrés Rodríguez\""],"city":"León","province":"León","country":"ES","postalCode":"24071","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T11:28:20.171+00:00","modified":"2025-06-10T11:28:20.171+00:00"},{"key":6133441,"type":"METADATA_AUTHOR","primary":true,"userId":[],"firstName":"José
+        Ignacio","lastName":"Alonso Felpete","position":["Técnico de Colecciones"],"email":["dbviaf@unileon.es"],"phone":["987291559"],"homepage":["https://herbarioleb.unileon.es/"],"organization":"Herbario
+        LEB \"Jaime Andrés Rodríguez\"","address":["Facultad de Ciencias Biológicas
+        y Ambientales. Herbario LEB \"Jaime Andrés Rodríguez\""],"city":"León","province":"León","country":"ES","postalCode":"24071","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T11:28:20.173+00:00","modified":"2025-06-10T11:28:20.173+00:00"},{"key":6133442,"type":"USER","primary":false,"userId":[],"firstName":"J.
+        Ignacio","lastName":"Alonso Felpete","position":[],"email":["dbviaf@unileon.es"],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T11:28:20.174+00:00","modified":"2025-06-10T11:28:20.174+00:00"},{"key":6133443,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Estrella","lastName":"Alfaro
+        Saiz","position":["Directora y Conservadora"],"email":["uleher@unileon.es"],"phone":[],"homepage":["https://herbarioleb.unileon.es/"],"organization":"LEB
+        \"Jaime Andrés Rodríguez\"","address":["Facultad de Ciencias Biológicas y
+        Ambientales. Herbario LEB \"Jaime Andrés Rodríguez\""],"city":"León","province":"León","country":"ES","postalCode":"24071","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T11:28:20.176+00:00","modified":"2025-06-10T11:28:20.176+00:00"}],"endpoints":[{"key":1114900,"type":"DWC_ARCHIVE","url":"https://ipt.gbif.es/archive.do?r=leb-musci","createdBy":"730cd32c-627f-44a8-9d93-fcfb23ade969","modifiedBy":"730cd32c-627f-44a8-9d93-fcfb23ade969","created":"2025-06-10T10:49:39.961+00:00","modified":"2025-06-10T10:49:39.961+00:00","machineTags":[]},{"key":1114899,"type":"EML","url":"https://ipt.gbif.es/eml.do?r=leb-musci","createdBy":"730cd32c-627f-44a8-9d93-fcfb23ade969","modifiedBy":"730cd32c-627f-44a8-9d93-fcfb23ade969","created":"2025-06-10T10:49:39.922+00:00","modified":"2025-06-10T10:49:39.922+00:00","machineTags":[]}],"machineTags":[{"key":25634259,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"2","createdBy":"crawler.gbif.org","created":"2025-06-10T12:06:18.412+00:00"}],"tags":[],"identifiers":[{"key":442523,"type":"URL","identifier":"https://ipt.gbif.es/resource?r=leb-musci","createdBy":"crawler.gbif.org","created":"2025-06-10T11:28:20.178+00:00","primary":false}],"comments":[],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[{"description":"Norte
+        y Noroeste de la Península Ibérica, con recolectas mayoritarias procedentes
+        de la provincia de León.","boundingBox":{"minLatitude":-90.0,"maxLatitude":90.0,"minLongitude":-180.0,"maxLongitude":180.0,"globalCoverage":true}}],"temporalCoverages":[{"@type":"range","start":"1974-01-19T00:00:00.000+00:00","end":"2022-07-28T00:00:00.000+00:00"}],"keywordCollections":[{"thesaurus":"GBIF
+        Dataset Type Vocabulary: http://rs.gbif.org/vocabulary/gbif/dataset_type_2015-07-10.xml","keywords":["Occurrence"]},{"thesaurus":"GBIF
+        Dataset Subtype Vocabulary: http://rs.gbif.org/vocabulary/gbif/dataset_subtype.xml","keywords":["Specimen"]},{"thesaurus":"n/a","keywords":["Musci","Bryophyta"]}],"countryCoverage":[],"collections":[{"name":"Colección
+        de Briófitos del herbario LEB \"Jaime Andrés Rodríguez\"","identifier":"LEB-MUSCI","specimenPreservationMethod":"DRIED","curatorialUnits":[]}],"dataDescriptions":[],"dataLanguage":"spa","acknowledgements":"<p>El
+        herbario LEB \"Jaime Andrés Rodríguez\" se constituye como un Servicio de
+        Apoyo a la Investigación y Docencia en el año 2018, dependiendo desde ese
+        momento para su financiación del Vicerrectorado de Investigación de la Universidad
+        de León.</p>","pubDate":"2025-06-10T00:00:00.000+00:00","maintenanceUpdateFrequency":"UNKNOWN","maintenanceDescription":"Se
+        prevé la actualización periódica de los datos de georreferenciación, que actualmente
+        no se ha depurado en detalle.","license":"http://creativecommons.org/licenses/by/4.0/legalcode"},{"key":"d16c66d2-b3c3-49bb-94ba-c8199d54cd49","installationKey":"68845aab-a453-4816-b36d-a3ec8455deb0","publishingOrganizationKey":"ad3f9c5f-5021-45a3-a7c4-3e64895f6f79","doi":"10.15472/vnerxf","external":false,"numConstituents":0,"type":"OCCURRENCE","title":"Cianobacterias
+        del Lago de Tota y su incidencia en la calidad hídrica y riesgo ambiental","description":"<p>El
+        presente proyecto tuvo como objetivo realizar una caracterización integral
+        del fitoplancton del Lago de Tota, entendida como una evaluación detallada
+        de su composición taxonómica, abundancia relativa y variabilidad espacio-temporal
+        a lo largo de diferentes periodos hidrológicos. Se prestó especial atención
+        al grupo de las cianobacterias, cuya presencia ha comenzado a evidenciarse
+        con mayor frecuencia en el sistema, generando alertas sobre posibles cambios
+        ecológicos en el lago.</p><p>Esta caracterización resulta fundamental debido
+        a que el Lago de Tota ha mostrado signos evidentes de deterioro ambiental
+        en los últimos años, reflejados principalmente en la disminución de la transparencia
+        del agua. Este parámetro es un indicador sensible a cambios en la productividad
+        primaria y en la estructura de la comunidad fitoplanctónica, y su reducción
+        sugiere un posible incremento en la biomasa algal, incluyendo especies oportunistas.</p><p>Dentro
+        de estas especies, las cianobacterias revisten particular interés por su capacidad
+        de proliferar bajo condiciones eutróficas, formar floraciones masivas (blooms)
+        y producir compuestos tóxicos conocidos como cianotoxinas, con potenciales
+        riesgos para la salud humana, la biodiversidad acuática y los usos del recurso
+        hídrico. Por tanto, la identificación temprana de cambios en la composición
+        del fitoplancton, especialmente de organismos potencialmente nocivos, es clave
+        para la gestión ambiental, la evaluación del estado ecológico del ecosistema
+        y la toma de decisiones informadas.</p><p>Para alcanzar estos objetivos, se
+        realizaron cuatro campañas de muestreo durante diferentes periodos hidroclimáticos
+        del año. Las muestras se recolectaron en ocho puntos representativos del lago,
+        seleccionados con base en criterios de accesibilidad, representatividad espacial
+        y presencia de actividades antrópicas. Posteriormente, el material fue transportado
+        al laboratorio, donde se llevó a cabo la identificación taxonómica utilizando
+        microscopía óptica, claves especializadas y literatura científica actualizada.
+        Este análisis permitió obtener información detallada sobre la diversidad fitoplanctónica
+        presente y sus patrones de distribución en el lago.</p><p>Como resultado,
+        se reporta un total de 2.378 registros, que incluyen 96 géneros de algas planctónicas,
+        lo que evidencia una notable diversidad fitoplanctónica en el sistema. Se
+        observaron altas abundancias de géneros como Staurastrum, Scenedesmus y Rhodomonas,
+        así como la presencia constante de cianobacterias del género Aphanocapsa y
+        Woronichinia, lo que refuerza la necesidad de un seguimiento continuo de este
+        grupo por su potencial impacto ecológico y sanitario.</p>","language":"spa","logoUrl":"https://raw.githubusercontent.com/SIB-Colombia/logos/main/socio-SiB-uptc.png","citation":{"text":"Pedroza
+        Ramos A (2025). Cianobacterias del Lago de Tota y su incidencia en la calidad
+        hídrica y riesgo ambiental. Universidad Pedagógica y Tecnológica de Colombia.
+        Occurrence dataset https://doi.org/10.15472/vnerxf accessed via GBIF.org on
+        2025-06-10.","identifier":"https://doi.org/10.15472/vnerxf","citationProvidedBySource":false},"contactsCitation":[{"key":6133393,"abbreviatedName":"Pedroza
+        Ramos A","firstName":"Adriana","lastName":"Pedroza Ramos","roles":["METADATA_AUTHOR","ORIGINATOR"],"userId":["http://orcid.org/0000-0002-9452-642X"]}],"lockedForAutoUpdate":false,"createdBy":"ad3f9c5f-5021-45a3-a7c4-3e64895f6f79","modifiedBy":"crawler.gbif.org","created":"2025-06-09T22:00:15.263+00:00","modified":"2025-06-10T01:11:01.077+00:00","contacts":[{"key":6133393,"type":"ORIGINATOR","primary":true,"userId":["http://orcid.org/0000-0002-9452-642X"],"firstName":"Adriana","lastName":"Pedroza
+        Ramos","position":["Co-Investigador"],"email":["adriana.pedroza@uptc.edu.co"],"phone":[],"homepage":[],"organization":"Universidad
+        Pedagógica y Tecnológica de Colombia","address":["Avenida central norte 39-115"],"city":"Tunja","province":"Boyacá","country":"CO","postalCode":"150001","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T01:11:01.056+00:00","modified":"2025-06-10T01:11:01.056+00:00"},{"key":6133394,"type":"METADATA_AUTHOR","primary":true,"userId":["http://orcid.org/0000-0002-9452-642X"],"firstName":"Adriana","lastName":"Pedroza
+        Ramos","position":["Co-Investigador"],"email":["adriana.pedroza@uptc.edu.co"],"phone":[],"homepage":[],"organization":"Universidad
+        Pedagógica y Tecnológica de Colombia","address":["Avenida central norte 39-115"],"city":"Tunja","province":"Boyacá","country":"CO","postalCode":"150001","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T01:11:01.059+00:00","modified":"2025-06-10T01:11:01.059+00:00"},{"key":6133395,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":true,"userId":["http://orcid.org/0000-0002-9452-642X"],"firstName":"Adriana","lastName":"Pedroza
+        Ramos","position":["Co-Investigador"],"email":["adriana.pedroza@uptc.edu.co"],"phone":[],"homepage":[],"organization":"Universidad
+        Pedagógica y Tecnológica de Colombia","address":["Avenida central norte 39-115"],"city":"Tunja","province":"Boyacá","country":"CO","postalCode":"150001","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-10T01:11:01.060+00:00","modified":"2025-06-10T01:11:01.060+00:00"}],"endpoints":[{"key":1114828,"type":"DWC_ARCHIVE","url":"https://ipt.biodiversidad.co/sib/archive.do?r=uptc_cianobacterias_tota","createdBy":"ad3f9c5f-5021-45a3-a7c4-3e64895f6f79","modifiedBy":"ad3f9c5f-5021-45a3-a7c4-3e64895f6f79","created":"2025-06-09T22:00:15.389+00:00","modified":"2025-06-09T22:00:15.389+00:00","machineTags":[]},{"key":1114826,"type":"EML","url":"https://ipt.biodiversidad.co/sib/eml.do?r=uptc_cianobacterias_tota","createdBy":"ad3f9c5f-5021-45a3-a7c4-3e64895f6f79","modifiedBy":"ad3f9c5f-5021-45a3-a7c4-3e64895f6f79","created":"2025-06-09T22:00:15.348+00:00","modified":"2025-06-09T22:00:15.348+00:00","machineTags":[]}],"machineTags":[{"key":25634221,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"2","createdBy":"crawler.gbif.org","created":"2025-06-10T12:06:16.151+00:00"}],"tags":[],"identifiers":[{"key":442520,"type":"URL","identifier":"https://ipt.biodiversidad.co/sib/resource?r=uptc_cianobacterias_tota","createdBy":"crawler.gbif.org","created":"2025-06-10T01:11:01.062+00:00","primary":false}],"comments":[],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[{"description":"Se
+        reportan registros pertenecientes a tres reinos: Bacteria, Plantae y Chromista,
+        este ultimo incluye los eucariotas fotosintéticos que presentan cloroplastos
+        secundarios.","coverages":[{"scientificName":"Bacteria","commonName":"Cianobacteria","rank":{"verbatim":"kingdom","interpreted":"KINGDOM"}},{"scientificName":"Plantae","commonName":"Microalgas","rank":{"verbatim":"kingdom","interpreted":"KINGDOM"}},{"scientificName":"Chromista","commonName":"Microalgas","rank":{"verbatim":"kingdom","interpreted":"KINGDOM"}}]},{"description":"Se
+        reporta un total de trece clases.","coverages":[{"scientificName":"Bacillariophyceae","commonName":"Diatomea","rank":{"verbatim":"class","interpreted":"CLASS"}}]},{"description":"Se
+        reportan un total de 96 géneros.","coverages":[{"scientificName":"Rhodomonas","commonName":"Microalgas","rank":{"verbatim":"genus","interpreted":"GENUS"}},{"scientificName":"Staurastrum","commonName":"Algas
+        verdes","rank":{"verbatim":"genus","interpreted":"GENUS"}}]}],"geographicCoverages":[{"description":"El
+        Lago de Tota, se encuentra ubicado a 3.015 m s. n. m., en el departamento
+        de Boyacá, bajo la jurisdicción de los municipios de Cuítiva, Tota y Aquitania.
+        El lago tiene una superficie aproximada de 55 km², siendo el lago natural
+        más grande y profundo del país. El cuerpo de agua se encuentra dividido por
+        la isla de San Pedro y algunos islotes menores en dos cubetas: una en el sector
+        conocido como Lago Chico, hacia el municipio de Aquitania, donde las profundidades
+        alcanzan aproximadamente los 30 metros; y la cubeta grande, ubicada hacia
+        el sector de Playa Blanca, donde se encuentra su profundidad máxima, de hasta
+        60 metros.","boundingBox":{"minLatitude":-90.0,"maxLatitude":90.0,"minLongitude":-180.0,"maxLongitude":180.0,"globalCoverage":true}}],"temporalCoverages":[{"@type":"single","date":"2024-06-26T00:00:00.000+00:00"},{"@type":"single","date":"2024-08-13T00:00:00.000+00:00"},{"@type":"single","date":"2024-10-29T00:00:00.000+00:00"},{"@type":"single","date":"2024-12-03T00:00:00.000+00:00"}],"keywordCollections":[{"thesaurus":"GBIF
+        Dataset Type Vocabulary: http://rs.gbif.org/vocabulary/gbif/dataset_type_2015-07-10.xml","keywords":["Occurrence"]},{"thesaurus":"GBIF
+        Dataset Subtype Vocabulary: http://rs.gbif.org/vocabulary/gbif/dataset_subtype.xml","keywords":["Specimen"]},{"thesaurus":"https://rs.gbif.org/vocabulary/iucn/habitat.xml","keywords":["Permanent
+        Freshwater Lakes"]}],"project":{"title":"Cianobacterias del Lago de Tota y
+        su incidencia en la calidad hídrica y riesgo ambiental","identifier":"SGI3695","contacts":[{"type":"PRINCIPAL_INVESTIGATOR","primary":false,"userId":["http://www.researcherid.com/rid/profile/Nelson-Aranguren-Riano"],"firstName":"Nelson  Javier","lastName":"Aranguren
+        Riaño","position":[],"email":[],"phone":[],"homepage":[],"address":[]},{"type":"CONTENT_PROVIDER","primary":false,"userId":[],"firstName":"Candy
+        Gabriela","lastName":"Burgos Camargo","position":[],"email":[],"phone":[],"homepage":[],"address":[]}],"funding":"Proyecto
+        aceptado y favorecido en la Convocatoria No.2 del 2024 - Conformación de un
+        banco de proyectos de investigación elegibles que fomenten la sostenibilidad
+        y fortalecimiento de los grupos de investigación institucionales de la UPTC.","awards":[],"relatedProjects":[],"abstract":"El
+        proyecto buscó actualizar el inventario de fitoplancton y crear una línea
+        base de conocimiento acerca de las cianobacterias del Lago de Tota, con especial
+        incidencia en calidad hídrica y riesgo ambiental."},"samplingDescription":{"studyExtent":"El
+        Lago de Tota es el cuerpo de agua continental más grande de Colombia y uno
+        de los más altos de América del Sur, ubicado a 3.015 metros sobre el nivel
+        del mar en el departamento de Boyacá. Con una superficie cercana a los 55
+        km², este lago representa una fuente estratégica de agua para varios municipios
+        del departamento de Boyacá, incluyendo Aquitania, Tota, Cuítiva y Sogamoso,
+        entre otros. Además de abastecer de agua para el consumo humano, cumple una
+        función crucial en el riego agrícola, particularmente en el cultivo de cebolla
+        larga, principal actividad económica en la región, así como en la acuicultura,
+        pesca artesanal y turismo ecológico y recreativo.","sampling":"Se estableció
+        un sistema de monitoreo en ocho puntos estratégicos, distribuidos entre las
+        cubetas grande y pequeña del Lago de Tota, con el propósito de capturar la
+        variabilidad espacial. La selección de estos sitios se basó en criterios ambientales,
+        hidrológicos y ecológicos, priorizando zonas con alta susceptibilidad a procesos
+        de eutrofización o a la proliferación de floraciones algales. En particular,
+        se consideraron áreas de entrada de afluentes superficiales, que pueden actuar
+        como vectores de nutrientes provenientes de la actividad agrícola, vertimientos
+        domésticos o escorrentía; así como sectores internos del lago donde se desarrollan
+        actividades productivas o turísticas con potencial de generar presión sobre
+        el ecosistema. También se incluyeron puntos próximos a cambios en el uso del
+        suelo en la zona de ribera, donde la sustitución de coberturas naturales por
+        áreas cultivadas o urbanizadas puede alterar los flujos de materia orgánica
+        y nutrientes hacia el cuerpo de agua.\nLas muestras se colectaron en cuatro
+        puntos de cada cubeta, para un total de ocho muestras por campaña de monitoreo.
+        En la cubeta pequeña, se muestreó en las zonas cercanas a los afluentes Los
+        Pozos y La Mugre, en el centro del Lago Chico hacia Santa Inés, y en La Custodia.
+        En la cubeta grande, los puntos de muestreo se localizaron cerca del afluente
+        Hato Laguna, en El Túnel, en proximidad a las pesqueras, y en el centro del
+        lago. Los muestreos se llevaron a cabo en cuatro momentos hidrológicos.","methodSteps":["La
+        toma de muestras en campo se realizó en cada uno de los puntos previamente
+        establecidos. Se efectuó el desplazamiento en lancha sobre el cuerpo de agua
+        y se utilizaron equipos especializados para la recolección de muestras, como
+        la botella Van Dorn y una red de arrastre fitoplanctónica, diseñada para capturar
+        células flotantes como Microcystis.","Las muestras destinadas a la identificación
+        microscópica fueron almacenadas en frascos de vidrio ámbar y fijadas con solución
+        Transeau. Todas las muestras fueron debidamente rotuladas y etiquetadas, incluyendo
+        información sobre el tipo de muestra, preservante, colector y coordenadas
+        geográficas del punto de colecta.","En laboratorio, se realizó la determinación
+        taxonómica utilizando un microscopio óptico, con base en la observación de
+        características morfológicas y siguiendo claves taxonómicas y literatura especializada.
+        El conteo se efectuó mediante microscopio invertido y cámaras de sedimentación,
+        aplicando el método de Utermöhl."]},"countryCoverage":[],"collections":[{"name":"Colección
+        de Limnología UPTC","identifier":"Registro Nacional de Colecciones Biológicas:
+        248","parentIdentifier":"UPTC-L","specimenPreservationMethod":"OTHER","curatorialUnits":[]}],"dataDescriptions":[],"dataLanguage":"spa","pubDate":"2025-06-09T00:00:00.000+00:00","maintenanceUpdateFrequency":"UNKOWN","maintenanceDescription":"","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode"},{"key":"96338c07-256a-4853-bab3-86dd7794b218","installationKey":"a957a663-2f17-415f-b1c8-5cf6398df8ed","publishingOrganizationKey":"0dea2b07-16e2-4604-9f50-36a4dd81d0e0","doi":"10.15468/3hrurp","external":false,"numConstituents":0,"type":"CHECKLIST","subtype":"INVENTORY_THEMATIC","title":"A
+        Checklist of Prosimian Species Represented at The Duke Lemur Center, Durham,
+        NC.","description":"\n            The Duke Lemur Center, an internationally
+        acclaimed non-invasive research center, houses the world’s most\ndiverse population
+        of lemurs outside their native Madagascar. This dataset is a\nchecklist of
+        species housed at the Duke Lemur Center since its establishment in\n1966.\n        ","language":"eng","homepage":"http://lemur.duke.edu","logoUrl":"https://ipt.vertnet.org/logo.do?r=dlc_checklist","citation":{"text":"Mazza
+        A (2025). A Checklist of Prosimian Species Represented at The Duke Lemur Center,
+        Durham, NC.. Duke Lemur Center. Checklist dataset https://doi.org/10.15468/3hrurp
+        accessed via GBIF.org on 2025-06-10.","citationProvidedBySource":false},"contactsCitation":[{"key":6133281,"abbreviatedName":"Mazza
+        A","firstName":"Amanda","lastName":"Mazza","roles":["METADATA_AUTHOR","ORIGINATOR"],"userId":[]}],"lockedForAutoUpdate":false,"createdBy":"0dea2b07-16e2-4604-9f50-36a4dd81d0e0","modifiedBy":"crawler.gbif.org","created":"2025-06-09T17:21:22.581+00:00","modified":"2025-06-09T21:27:35.291+00:00","contacts":[{"key":6133281,"type":"ORIGINATOR","primary":true,"userId":[],"firstName":"Amanda","lastName":"Mazza","position":[],"email":["amanda.mazza@duke.edu"],"phone":[],"homepage":[],"organization":"Duke
+        Lemur Center","address":[],"city":"Durham","province":"NC","country":"US","postalCode":"27705","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-09T21:27:35.249+00:00","modified":"2025-06-09T21:27:35.249+00:00"},{"key":6133282,"type":"METADATA_AUTHOR","primary":true,"userId":[],"firstName":"Amanda","lastName":"Mazza","position":[],"email":["amanda.mazza@duke.edu"],"phone":[],"homepage":[],"organization":"Duke
+        Lemur Center","address":[],"city":"Durham","province":"NC","country":"US","postalCode":"27705","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-09T21:27:35.251+00:00","modified":"2025-06-09T21:27:35.251+00:00"},{"key":6133283,"type":"PROGRAMMER","primary":false,"userId":[],"firstName":"David","lastName":"Bloom","position":[],"email":["dbloom@vertnet.org"],"phone":[],"homepage":[],"organization":"VertNet","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-09T21:27:35.253+00:00","modified":"2025-06-09T21:27:35.253+00:00"},{"key":6133284,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Amanda","lastName":"Mazza","position":[],"email":["amanda.mazza@duke.edu"],"phone":[],"homepage":[],"organization":"Duke
+        Lemur Center","address":[],"city":"Durham","province":"NC","country":"US","postalCode":"27705","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-06-09T21:27:35.257+00:00","modified":"2025-06-09T21:27:35.257+00:00"}],"endpoints":[{"key":1114739,"type":"DWC_ARCHIVE","url":"https://ipt.vertnet.org/archive.do?r=dlc_checklist","createdBy":"0dea2b07-16e2-4604-9f50-36a4dd81d0e0","modifiedBy":"0dea2b07-16e2-4604-9f50-36a4dd81d0e0","created":"2025-06-09T17:21:22.745+00:00","modified":"2025-06-09T17:21:22.745+00:00","machineTags":[]},{"key":1114738,"type":"EML","url":"https://ipt.vertnet.org/eml.do?r=dlc_checklist","createdBy":"0dea2b07-16e2-4604-9f50-36a4dd81d0e0","modifiedBy":"0dea2b07-16e2-4604-9f50-36a4dd81d0e0","created":"2025-06-09T17:21:22.708+00:00","modified":"2025-06-09T17:21:22.708+00:00","machineTags":[]}],"machineTags":[{"key":25634156,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"2","createdBy":"crawler.gbif.org","created":"2025-06-10T12:06:13.842+00:00"}],"tags":[],"identifiers":[{"key":442512,"type":"CLB_DATASET_KEY","identifier":"310352","createdBy":"clb-bot","created":"2025-06-09T21:30:51.349+00:00","primary":false},{"key":442509,"type":"URL","identifier":"https://ipt.vertnet.org/resource?r=dlc_checklist","createdBy":"crawler.gbif.org","created":"2025-06-09T21:27:35.259+00:00","primary":false}],"comments":[],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[{"coverages":[{"scientificName":"Mammalia","commonName":"Mammals","rank":{"verbatim":"class","interpreted":"CLASS"}},{"scientificName":"Primates","commonName":"Primates","rank":{"verbatim":"order","interpreted":"ORDER"}},{"scientificName":"Strepsirrhini","commonName":"Strepsirrhines","rank":{"verbatim":"suborder","interpreted":"SUBORDER"}}]}],"geographicCoverages":[{"description":"The
+        species listed have been historically cared for or are currently housed at
+        the Duke Lemur Center.","boundingBox":{"minLatitude":35.991,"maxLatitude":35.998,"minLongitude":-78.962,"maxLongitude":-78.958,"globalCoverage":false}}],"temporalCoverages":[],"keywordCollections":[{"thesaurus":"GBIF
+        Dataset Type Vocabulary: http://rs.gbif.org/vocabulary/gbif/dataset_type_2015-07-10.xml","keywords":["Checklist"]},{"thesaurus":"GBIF
+        Dataset Subtype Vocabulary: http://rs.gbif.org/vocabulary/gbif/dataset_subtype.xml","keywords":["Inventorythematic"]}],"project":{"title":"DLC
+        Checklist Metadata","contacts":[{"type":"PUBLISHER","primary":false,"userId":[],"firstName":"Amanda","lastName":"Mazza","position":[],"email":[],"phone":[],"homepage":[],"address":[]}],"awards":[],"relatedProjects":[]},"samplingDescription":{"methodSteps":[]},"countryCoverage":[],"collections":[],"dataDescriptions":[],"dataLanguage":"eng","additionalInfo":"Please
+        adhere to the VertNet Norms when using these data - https://vertnet.org/resources/norms.html","pubDate":"2025-06-09T00:00:00.000+00:00","maintenanceUpdateFrequency":"AS_NEEDED","maintenanceDescription":"","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode"}]}'
+  recorded_at: 2025-06-10 14:15:59 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/?limit=3&identifier=168
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: '{"offset":0,"limit":3,"endOfRecords":true,"count":1,"results":[{"key":"8324c0dc-f762-11e1-a439-00145eb45e9a","installationKey":"5ffa2bf6-f762-11e1-a439-00145eb45e9a","publishingOrganizationKey":"29817330-5d61-11d8-b9b2-b8a03c50a862","doi":"10.15468/bdayzp","external":false,"numConstituents":0,"type":"OCCURRENCE","title":"CABI
+        Bioscience Nematode Collection","language":"eng","citation":{"text":"CABI
+        (Centre for Agriculture and Biosciences International). CABI Bioscience Nematode
+        Collection. Occurrence dataset https://doi.org/10.15468/bdayzp accessed via
+        GBIF.org on 2025-06-10.","citationProvidedBySource":false},"contactsCitation":[],"lockedForAutoUpdate":false,"createdBy":"registry-migration.gbif.org","modifiedBy":"crawler.gbif.org","created":"2007-04-03T12:40:17.000+00:00","modified":"2018-03-01T13:49:10.540+00:00","contacts":[{"key":862087,"type":"TECHNICAL_POINT_OF_CONTACT","primary":false,"userId":[],"lastName":"Dr
+        Paul M. Kirk","position":[],"email":["p.kirk@cabi.org"],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-03-01T13:49:10.508+00:00","modified":"2018-03-01T13:49:10.508+00:00"},{"key":862088,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":true,"userId":[],"lastName":"Dr
+        David Hunt","position":[],"email":["d.hunt@cabi.org"],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-03-01T13:49:10.511+00:00","modified":"2018-03-01T13:49:10.511+00:00"}],"endpoints":[{"key":258744,"type":"DWC_ARCHIVE","url":"https://orphans.gbif.org/ed988a18-81f8-4d5f-a88d-f93ef592b2f2/8324c0dc-f762-11e1-a439-00145eb45e9a.zip","description":"Orphaned
+        dataset awaiting adoption.","createdBy":"MattBlissett","modifiedBy":"MattBlissett","created":"2018-03-01T13:48:07.893+00:00","modified":"2018-03-01T13:48:07.893+00:00","machineTags":[]}],"machineTags":[{"key":25591985,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"346","createdBy":"crawler.gbif.org","created":"2025-06-06T20:39:55.363+00:00"},{"key":6136,"namespace":"metasync.gbif.org","name":"code","value":"SQWORM","createdBy":"metasync-migration","created":"2013-10-24T09:05:37.959+00:00"},{"key":1314357,"namespace":"orphans.gbif.org","name":"download","value":"0012965-180131172636756","createdBy":"MattBlissett","created":"2018-03-01T01:18:35.247+00:00"},{"key":1314358,"namespace":"orphans.gbif.org","name":"status","value":"RESCUED","createdBy":"MattBlissett","created":"2018-03-01T01:18:35.328+00:00"},{"key":1314359,"namespace":"orphans.gbif.org","name":"orphanEndpoint","value":"http://cabidigir.cabi.org/digir/DiGIR.php","createdBy":"MattBlissett","created":"2018-03-01T01:18:35.394+00:00"}],"tags":[],"identifiers":[{"key":6871,"type":"GBIF_PORTAL","identifier":"168","createdBy":"registry-migration.gbif.org","created":"2012-09-05T14:03:47.000+00:00","primary":false}],"comments":[{"key":538,"content":"Import
+        script set license to CC_BY_4_0","createdBy":"License Import script","modifiedBy":"License
+        Import script","created":"2016-08-18T12:36:25.225+00:00","modified":"2016-08-18T12:36:25.225+00:00"}],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[],"temporalCoverages":[],"keywordCollections":[],"countryCoverage":[],"collections":[],"dataDescriptions":[{"name":"GBIF
+        Occurrence Download","charset":"UTF-8","url":"http://api.gbif.org/v1/occurrence/download/request/0012965-180131172636756.zip","format":"Darwin
+        Core Archive"}],"dataLanguage":"eng","maintenanceUpdateFrequency":"UNKOWN","maintenanceDescription":"","license":"http://creativecommons.org/licenses/by/4.0/legalcode"}]}'
+  recorded_at: 2025-06-10 14:15:59 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/?limit=3&machineTagNamespace=metasync.gbif.org
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: '{"offset":0,"limit":3,"endOfRecords":false,"count":10072,"results":[{"key":"94596968-b143-4622-9b66-01a733bccc33","installationKey":"60cbe0db-ba15-4a03-a0b9-0803d7a166ee","publishingOrganizationKey":"63ed155b-d511-4026-b474-8945d0a36b13","networkKeys":[],"doi":"10.15468/p5zhke","external":false,"numConstituents":0,"type":"OCCURRENCE","title":"Found
+        Animal Survey Germany, Tierfund-Kataster Deutschland (TFK-D)","description":"A
+        documentation of all vertebrates found dead. Mainly animal vehicle collisions
+        are reported. Animals are reportet by public especially by hunters and rangers
+        via smartphone app or web-service. Species in Dataset are Cervidae, badger,
+        foxes, racoon and racoon dog, squirrel, hedgehog and phasants","language":"eng","homepage":"https://www.tierfund-kataster.de/","logoUrl":"https://tierfund-kataster.de/files/tierfund-kataster.de/images/startseite/Logo-tfk.png","citation":{"text":"Deutscher
+        Jagdverband e.V.. Found Animal Survey Germany, Tierfund-Kataster Deutschland
+        (TFK-D). Occurrence dataset https://doi.org/10.15468/p5zhke accessed via GBIF.org
+        on 2025-06-10.","citationProvidedBySource":false},"contactsCitation":[],"lockedForAutoUpdate":false,"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-05-02T08:01:33.299+00:00","modified":"2025-05-02T08:01:33.299+00:00","contacts":[{"key":6089751,"type":"TECHNICAL_POINT_OF_CONTACT","primary":false,"userId":[],"firstName":"Andreas
+        Rinker","position":[],"email":["hschmuser@ecology.uni-kiel.de"],"phone":["+494318803454"],"homepage":[],"address":["DigSyLand"],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-05-02T08:01:34.113+00:00","modified":"2025-05-02T08:01:34.113+00:00"},{"key":6089752,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":false,"userId":[],"firstName":"Heiko
+        Schmüser","position":[],"email":["melden@tierfund-kataster.de"],"phone":["+49
+        431 880 3454"],"homepage":[],"address":["Institut für Natur- und Ressourcenschutz,
+        Christian-Albrechts-Universität zu Kiel, Olshausenstr. 75, 24118 Kiel"],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-05-02T08:01:34.151+00:00","modified":"2025-05-02T08:01:34.151+00:00"},{"key":6089753,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Heiko
+        Schmüser","position":[],"email":["melden@tierfund-kataster.de"],"phone":["+49
+        431 880 3454"],"homepage":[],"address":["Institut für Natur- und Ressourcenschutz,
+        Christian-Albrechts-Universität zu Kiel, Olshausenstr. 75, 24118 Kiel"],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-05-02T08:01:34.201+00:00","modified":"2025-05-02T08:01:34.201+00:00"}],"endpoints":[{"key":1104941,"type":"BIOCASE","url":"https://my.tierfund-kataster.de/biocase/pywrapper.cgi?dsa=tfk_dtl","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-05-02T08:01:34.333+00:00","modified":"2025-05-02T08:01:34.333+00:00","machineTags":[{"key":25012607,"namespace":"metasync.gbif.org","name":"conceptualSchema","value":"http://www.tdwg.org/schemas/abcd/2.06","createdBy":"crawler.gbif.org","created":"2025-05-02T08:01:34.333+00:00"}]},{"key":1104940,"type":"BIOCASE_XML_ARCHIVE","url":"https://my.tierfund-kataster.de//biocase/downloads/tfk_dtl/Found%20Animal%20Survey%20Germany%2C%20Tierfund-Kataster%20Deutschland%20%28TFK-D%29.ABCD_2.06.zip","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-05-02T08:01:34.270+00:00","modified":"2025-05-02T08:01:34.270+00:00","machineTags":[{"key":25012605,"namespace":"metasync.gbif.org","name":"archiveOrigin","value":"BIOCASE_INSTALLATION","createdBy":"crawler.gbif.org","created":"2025-05-02T08:01:34.270+00:00"},{"key":25012606,"namespace":"metasync.gbif.org","name":"conceptualSchema","value":"http://www.tdwg.org/schemas/abcd/2.06","createdBy":"crawler.gbif.org","created":"2025-05-02T08:01:34.270+00:00"}]}],"machineTags":[{"key":25592471,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"6","createdBy":"crawler.gbif.org","created":"2025-06-06T21:00:39.666+00:00"},{"key":25592470,"namespace":"metasync.gbif.org","name":"declaredCount","value":"119166","createdBy":"crawler.gbif.org","created":"2025-06-06T21:00:39.619+00:00"}],"tags":[],"identifiers":[],"comments":[],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[],"temporalCoverages":[],"keywordCollections":[],"countryCoverage":[],"collections":[],"dataDescriptions":[],"license":"http://creativecommons.org/licenses/by/4.0/legalcode"},{"key":"71d34a18-4dad-4d2d-9cb3-c1e91317faad","installationKey":"f0e191c4-2ef2-4e3d-9768-34d58d14ba2d","publishingOrganizationKey":"839f8ed0-bafb-11d9-8e53-b8a03c50a862","doi":"10.15468/npzg3v","external":false,"numConstituents":0,"type":"OCCURRENCE","title":"Österreichische
+        Mykologische Gesellschaft - Austrian Mycological Society Observations","description":"This
+        dataset contains observations of fungal occurrences mainly from Austria, but
+        also from adjacent areas. Findings were recorded beginning in the 1980ies
+        by members of the Austrian Mycological Society and Citizen Scientists of the
+        Pilzfinder.at project. Fungal observations from excursions published in literature
+        are also included. The mycological database is managed by the ÖMG. Initially,
+        the focus was on macrofungi but later on extended to microfungi, i.e. those
+        that can only be identified on the basis of microscopic characters. The plausibility
+        of species identification is checked by a team of experts of the ÖMG, which
+        also includes professional mycologists. The ÖMG is dedicated to improving
+        knowledge about and preserving Austria&#39;s fungi following the principle
+        of participative and community-based research for mapping the Austrian fungi.
+        New observations and pictures of Austrian fungi are always welcome.\n\nThe
+        taxonomic groups covered are Ascomycota, Basidiomycota, Oomycota (belonging
+        to the Stramenopiles), Mycetozoa and a few Zygomycota.","language":"eng","homepage":"https://www.myk.univie.ac.at/","logoUrl":"https://www.pilzdaten-austria.eu/img/logo.jpg","citation":{"text":"Österreichische
+        Mykologische Gesellschaft (2025). Österreichische Mykologische Gesellschaft
+        - Austrian Mycological Society Observations. Occurrence dataset https://doi.org/10.15468/npzg3v
+        accessed via GBIF.org on 2025-06-10.","citationProvidedBySource":false},"contactsCitation":[],"lockedForAutoUpdate":false,"createdBy":"crawler.gbif.org","modifiedBy":"mgrosjean","created":"2025-03-07T12:20:22.857+00:00","modified":"2025-03-10T13:16:12.407+00:00","contacts":[{"key":6007341,"type":"TECHNICAL_POINT_OF_CONTACT","primary":false,"userId":[],"firstName":"Philipp
+        Prelicz","position":[],"email":["philipp.prelicz@qc1.at"],"phone":["+43 (1)
+        4277-54050"],"homepage":[],"address":["Rennweg 14, A-1030 Vienna, Austria"],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-03-07T12:34:48.323+00:00","modified":"2025-03-07T12:34:48.323+00:00"},{"key":6007342,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":false,"userId":[],"firstName":"Irmgard
+        Greilhuber","position":[],"email":["irmgard.greilhuber@univie.ac.at"],"phone":["+43
+        (1) 4277-54050"],"homepage":[],"address":["Rennweg 14, A-1030 Vienna, Austria
+        / Europe"],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-03-07T12:34:48.377+00:00","modified":"2025-03-07T12:34:48.377+00:00"},{"key":6007343,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Irmgard
+        Greilhuber","position":[],"email":["irmgard.greilhuber@univie.ac.at"],"phone":["+43
+        (1) 4277-54050"],"homepage":[],"address":["Rennweg 14, A-1030 Vienna, Austria
+        / Europe"],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-03-07T12:34:48.430+00:00","modified":"2025-03-07T12:34:48.430+00:00"}],"endpoints":[{"key":1087003,"type":"BIOCASE","url":"https://access.jacq.org/biocase/pywrapper.cgi?dsa=gbif_oemyc_obs","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-03-07T12:34:48.867+00:00","modified":"2025-03-07T12:34:48.867+00:00","machineTags":[{"key":24103126,"namespace":"metasync.gbif.org","name":"conceptualSchema","value":"http://www.tdwg.org/schemas/abcd/2.06","createdBy":"crawler.gbif.org","created":"2025-03-07T12:34:48.867+00:00"}]},{"key":1087002,"type":"DWC_ARCHIVE","url":"https://access.jacq.org/biocase/downloads/gbif_oemyc_obs/Osterreichische%20Mykologische%20Gesellschaft%20-%20Austrian%20Mycological%20Society%20Observations.DwCA.zip","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-03-07T12:34:48.785+00:00","modified":"2025-03-07T12:34:48.785+00:00","machineTags":[{"key":24103125,"namespace":"metasync.gbif.org","name":"archiveOrigin","value":"BIOCASE_INSTALLATION","createdBy":"crawler.gbif.org","created":"2025-03-07T12:34:48.785+00:00"}]},{"key":1087001,"type":"BIOCASE_XML_ARCHIVE","url":"https://access.jacq.org/biocase/downloads/gbif_oemyc_obs/Osterreichische%20Mykologische%20Gesellschaft%20-%20Austrian%20Mycological%20Society%20Observations.ABCD_2.06.zip","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-03-07T12:34:48.696+00:00","modified":"2025-03-07T12:34:48.696+00:00","machineTags":[{"key":24103123,"namespace":"metasync.gbif.org","name":"archiveOrigin","value":"BIOCASE_INSTALLATION","createdBy":"crawler.gbif.org","created":"2025-03-07T12:34:48.696+00:00"},{"key":24103124,"namespace":"metasync.gbif.org","name":"conceptualSchema","value":"http://www.tdwg.org/schemas/abcd/2.06","createdBy":"crawler.gbif.org","created":"2025-03-07T12:34:48.696+00:00"}]}],"machineTags":[{"key":25596700,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"15","createdBy":"crawler.gbif.org","created":"2025-06-07T01:07:54.523+00:00"},{"key":25596699,"namespace":"metasync.gbif.org","name":"declaredCount","value":"537460","createdBy":"crawler.gbif.org","created":"2025-06-07T01:07:54.440+00:00"}],"tags":[],"identifiers":[],"comments":[],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[],"temporalCoverages":[],"keywordCollections":[],"countryCoverage":[],"collections":[],"dataDescriptions":[],"pubDate":"2025-01-01T00:00:00.000+00:00","license":"http://creativecommons.org/licenses/by/4.0/legalcode"},{"key":"26f90455-c94d-4c2d-8fbf-bb35ba50f6a4","installationKey":"603065ae-f762-11e1-a439-00145eb45e9a","publishingOrganizationKey":"6e1cad80-bdf5-11d8-84ea-b8a03c50a862","networkKeys":[],"doi":"10.15468/ut9fuy","external":false,"numConstituents":0,"type":"OCCURRENCE","title":"ZMH
+        Trichoptera collection","description":"The ZMH Trichoptera collection is one
+        of the most important collection of caddisflies in the world and counts with
+        ca. 479 type species, most of them described by Georg Ülmer, Herbert Holdsworth
+        Ross, and Fernand Schmid, including both dried-pinned and specimens preserved
+        in alcohol, as well part of specimens in slides. Species came mainly from
+        Asia and South America. In the early 20th century, the entomologist Georg
+        Ülmer ascended to eminence as a distinguished trichopterologist of global
+        acclaim. Due to his fragile health, he refrained from participating in the
+        audacious collecting expeditions that characterized the era, opting instead
+        to reside in his native Hamburg, where he explored the Eppendorf moor and
+        other bodies of water and wetlands. Nonetheless, his expertise resonated globally
+        through extensive correspondences with fellow specialists in Trichoptera,
+        with 128 publications solely on the group. He was regarded as a leading expert
+        on caddisflies and also worked on many foreign collections in worldwide correspondence.
+        Ülmer’s original sketches are also deposited in the Museum of Nature in Hamburg,
+        together with letters sent to collaborators through the world as well as his
+        field notebooks.","language":"eng","homepage":"https://hamburg.leibniz-lib.de/en/sammlungen/zoologie/entomologie.html","logoUrl":"https://leibniz-lib.de/wp-content/themes/lib-leibniz/img/logo-en.svg","citation":{"text":"Leibniz
+        Institute for the Analysis of Biodiversity Change (LIB). ZMH Trichoptera collection.
+        Occurrence dataset https://doi.org/10.15468/ut9fuy accessed via GBIF.org on
+        2025-06-10.","citationProvidedBySource":false},"contactsCitation":[],"lockedForAutoUpdate":false,"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-02-17T14:00:35.097+00:00","modified":"2025-02-17T14:00:35.097+00:00","contacts":[{"key":5988282,"type":"TECHNICAL_POINT_OF_CONTACT","primary":false,"userId":[],"firstName":"LIB
+        Biodiversity Datacenter","position":[],"email":["datacenter@leibniz-lib.de"],"phone":["+49
+        (0) 2289122342"],"homepage":[],"address":["Leibniz Institute for the Analysis
+        of Biodiversity Change - Adenauerallee 127, 53113 Bonn, Germany"],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-02-17T14:00:35.165+00:00","modified":"2025-02-17T14:00:35.165+00:00"},{"key":5988283,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":false,"userId":[],"firstName":"Dr.
+        Karina Brandao Lucas da Silva-Brandão","position":[],"email":["k.brandao@leibniz-lib.de"],"phone":[],"homepage":[],"address":["Martin-Luther-King-Platz
+        3 20146 Hamburg, Germany"],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-02-17T14:00:35.212+00:00","modified":"2025-02-17T14:00:35.212+00:00"},{"key":5988284,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Dr.
+        Karina Brandao Lucas da Silva-Brandão","position":[],"email":["k.brandao@leibniz-lib.de"],"phone":[],"homepage":[],"address":["Martin-Luther-King-Platz
+        3 20146 Hamburg, Germany"],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-02-17T14:00:35.248+00:00","modified":"2025-02-17T14:00:35.248+00:00"}],"endpoints":[{"key":1081034,"type":"BIOCASE","url":"https://biocase.zfmk.de/biocase/pywrapper.cgi?dsa=ZMH-Collections-v2","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-02-17T14:00:35.420+00:00","modified":"2025-02-17T14:00:35.420+00:00","machineTags":[{"key":23872860,"namespace":"metasync.gbif.org","name":"conceptualSchema","value":"http://www.tdwg.org/schemas/abcd/2.06","createdBy":"crawler.gbif.org","created":"2025-02-17T14:00:35.420+00:00"}]},{"key":1081033,"type":"BIOCASE_XML_ARCHIVE","url":"https://biocase.zfmk.de/biocase/downloads/ZMH-Collections-v2/ZMH%20Trichoptera%20collection.ABCD_2.06.zip","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-02-17T14:00:35.328+00:00","modified":"2025-02-17T14:00:35.328+00:00","machineTags":[{"key":23872858,"namespace":"metasync.gbif.org","name":"archiveOrigin","value":"BIOCASE_INSTALLATION","createdBy":"crawler.gbif.org","created":"2025-02-17T14:00:35.328+00:00"},{"key":23872859,"namespace":"metasync.gbif.org","name":"conceptualSchema","value":"http://www.tdwg.org/schemas/abcd/2.06","createdBy":"crawler.gbif.org","created":"2025-02-17T14:00:35.328+00:00"}]}],"machineTags":[{"key":25593105,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"18","createdBy":"crawler.gbif.org","created":"2025-06-06T21:31:29.883+00:00"},{"key":25593103,"namespace":"metasync.gbif.org","name":"declaredCount","value":"1333","createdBy":"crawler.gbif.org","created":"2025-06-06T21:31:29.815+00:00"}],"tags":[],"identifiers":[{"key":379243,"type":"UNKNOWN","identifier":"http://id.zfmk.de/dataset_ZFMK/300015","createdBy":"crawler.gbif.org","created":"2025-02-17T14:00:35.461+00:00","primary":false}],"comments":[],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[],"temporalCoverages":[],"keywordCollections":[],"countryCoverage":[],"collections":[],"dataDescriptions":[],"license":"http://creativecommons.org/licenses/by/4.0/legalcode"}]}'
+  recorded_at: 2025-06-10 14:15:59 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/?limit=3&machineTagName=datasetTitle
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: '{"offset":0,"limit":3,"endOfRecords":false,"count":1250,"results":[{"key":"06d3504c-a3bb-11e2-95b8-00145eb45e9a","installationKey":"603473a6-f762-11e1-a439-00145eb45e9a","publishingOrganizationKey":"f9912a00-84a9-11d9-8952-b8a03c50a862","doi":"10.15468/ufz7ht","external":false,"numConstituents":0,"type":"OCCURRENCE","title":"Landesmuseum
+        Kärnten","language":"eng","homepage":"http://www.tlmf.at","citation":{"text":"Tiroler
+        Landesmuseum Ferdinandeum. Landesmuseum Kärnten. Occurrence dataset https://doi.org/10.15468/ufz7ht
+        accessed via GBIF.org on 2025-06-10.","citationProvidedBySource":false},"contactsCitation":[],"lockedForAutoUpdate":false,"createdBy":"registry-migration.gbif.org","modifiedBy":"crawler.gbif.org","created":"2013-04-12T21:50:44.000+00:00","modified":"2018-02-28T14:39:56.630+00:00","contacts":[{"key":861372,"type":"TECHNICAL_POINT_OF_CONTACT","primary":false,"userId":[],"lastName":"Gerhard
+        Tarmann","position":[],"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-02-28T14:39:56.596+00:00","modified":"2018-02-28T14:39:56.596+00:00"}],"endpoints":[{"key":1072605,"type":"DWC_ARCHIVE","url":"https://kuechenschelle.info/GBIF/LMK/DwCA.zip","createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2025-01-10T10:51:54.584+00:00","modified":"2025-01-10T10:51:54.584+00:00","machineTags":[]}],"machineTags":[{"key":25583185,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"328","createdBy":"crawler.gbif.org","created":"2025-06-06T14:20:46.525+00:00"},{"key":9940,"namespace":"metasync.gbif.org","name":"datasetTitle","value":"Landesmuseum
+        Kärnten","createdBy":"metasync-migration","created":"2013-10-24T09:05:37.959+00:00"},{"key":1313091,"namespace":"orphans.gbif.org","name":"download","value":"0012087-180131172636756","createdBy":"MattBlissett","created":"2018-02-28T11:48:19.571+00:00"},{"key":1313092,"namespace":"orphans.gbif.org","name":"status","value":"RESCUED","createdBy":"MattBlissett","created":"2018-02-28T11:48:19.666+00:00"},{"key":1313093,"namespace":"orphans.gbif.org","name":"orphanEndpoint","value":"http://83.175.85.43:81/biocase/pywrapper.cgi?dsa=BioOffice20","createdBy":"MattBlissett","created":"2018-02-28T11:48:19.753+00:00"}],"tags":[],"identifiers":[{"key":13273,"type":"GBIF_PORTAL","identifier":"14839","createdBy":"registry-migration.gbif.org","created":"2013-04-22T12:24:27.000+00:00","primary":false}],"comments":[{"key":37531,"content":"Updated
+        the endpoint at the request of the former node, the old endpoint is https://orphans.gbif.org/AT/06d3504c-a3bb-11e2-95b8-00145eb45e9a.zip","createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2025-01-10T10:52:18.448+00:00","modified":"2025-01-10T10:52:18.448+00:00"},{"key":4994,"content":"Import
+        script set license to CC_BY_4_0","createdBy":"License Import script","modifiedBy":"License
+        Import script","created":"2016-08-18T12:36:25.225+00:00","modified":"2016-08-18T12:36:25.225+00:00"}],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[],"temporalCoverages":[],"keywordCollections":[],"countryCoverage":[],"collections":[],"dataDescriptions":[{"name":"GBIF
+        Occurrence Download","charset":"UTF-8","url":"http://api.gbif.org/v1/occurrence/download/request/0012087-180131172636756.zip","format":"Darwin
+        Core Archive"},{"name":"GBIF Occurrence Download","charset":"UTF-8","url":"http://api.gbif.org/v1/occurrence/download/request/0012087-180131172636756.zip","format":"Darwin
+        Core Archive"}],"dataLanguage":"eng","maintenanceUpdateFrequency":"UNKOWN","maintenanceDescription":"","license":"http://creativecommons.org/licenses/by/4.0/legalcode"},{"key":"7ba8437e-f762-11e1-a439-00145eb45e9a","installationKey":"8569325a-0cf5-45cf-a1b3-8f2abef355dd","publishingOrganizationKey":"ef69a030-3940-11dd-b168-b8a03c50a862","doi":"10.15468/nz9a27","external":false,"numConstituents":0,"type":"OCCURRENCE","title":"Landwehrbach","description":"This
+        dataset holds the observations recorded during the GEO Biodiversity Day &#34;Landwehrbach&#34;
+        in Castrop-Rauxel","language":"eng","citation":{"text":"GEO-Tag der Artenvielfalt.
+        Landwehrbach. Occurrence dataset https://doi.org/10.15468/nz9a27 accessed
+        via GBIF.org on 2025-06-10.","citationProvidedBySource":false},"contactsCitation":[],"lockedForAutoUpdate":false,"createdBy":"registry-migration.gbif.org","modifiedBy":"crawler.gbif.org","created":"2010-10-29T15:55:55.000+00:00","modified":"2018-03-09T10:42:07.566+00:00","contacts":[],"endpoints":[{"key":261390,"type":"DWC_ARCHIVE","url":"https://orphans.gbif.org/DE/7ba8437e-f762-11e1-a439-00145eb45e9a.zip","description":"Orphaned
+        dataset awaiting adoption.","createdBy":"MattBlissett","modifiedBy":"MattBlissett","created":"2018-03-09T10:41:07.026+00:00","modified":"2018-03-09T10:41:07.026+00:00","machineTags":[]}],"machineTags":[{"key":25584820,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"318","createdBy":"crawler.gbif.org","created":"2025-06-06T15:32:10.012+00:00"},{"key":4680,"namespace":"metasync.gbif.org","name":"datasetTitle","value":"Landwehrbach","createdBy":"metasync-migration","created":"2013-10-24T09:05:37.959+00:00"},{"key":1346050,"namespace":"orphans.gbif.org","name":"download","value":"0017698-180131172636756","createdBy":"MattBlissett","created":"2018-03-09T10:39:57.463+00:00"},{"key":1346051,"namespace":"orphans.gbif.org","name":"status","value":"RESCUED","createdBy":"MattBlissett","created":"2018-03-09T10:39:57.539+00:00"},{"key":1346052,"namespace":"orphans.gbif.org","name":"orphanEndpoint","value":"http://www.geo-artenvielfalt.de/biocase/pywrapper.cgi?dsa=geo-artenvielfalt","createdBy":"MattBlissett","created":"2018-03-09T10:39:57.604+00:00"}],"tags":[],"identifiers":[{"key":5377,"type":"GBIF_PORTAL","identifier":"12008","createdBy":"registry-migration.gbif.org","created":"2012-09-05T14:03:35.000+00:00","primary":false}],"comments":[{"key":3944,"content":"Import
+        script set license to CC_BY_4_0","createdBy":"License Import script","modifiedBy":"License
+        Import script","created":"2016-08-18T12:36:25.225+00:00","modified":"2016-08-18T12:36:25.225+00:00"}],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[],"temporalCoverages":[],"keywordCollections":[],"countryCoverage":[],"collections":[],"dataDescriptions":[{"name":"GBIF
+        Occurrence Download","charset":"UTF-8","url":"http://api.gbif.org/v1/occurrence/download/request/0017698-180131172636756.zip","format":"Darwin
+        Core Archive"}],"dataLanguage":"eng","maintenanceUpdateFrequency":"UNKOWN","maintenanceDescription":"","license":"http://creativecommons.org/licenses/by/4.0/legalcode"},{"key":"7ad99af6-f762-11e1-a439-00145eb45e9a","installationKey":"8569325a-0cf5-45cf-a1b3-8f2abef355dd","publishingOrganizationKey":"ef69a030-3940-11dd-b168-b8a03c50a862","doi":"10.15468/qd62od","external":false,"numConstituents":0,"type":"OCCURRENCE","title":"Wuhle
+        - Brücke/ Mosbacher Straße","description":"This dataset holds the observations
+        recorded during the GEO Biodiversity Day &#34;Wuhle - Brücke/ Mosbacher Straße&#34;
+        in Berlin, Mosbacher Str.","language":"eng","citation":{"text":"GEO-Tag der
+        Artenvielfalt. Wuhle - Brücke/ Mosbacher Straße. Occurrence dataset https://doi.org/10.15468/qd62od
+        accessed via GBIF.org on 2025-06-10.","citationProvidedBySource":false},"contactsCitation":[],"lockedForAutoUpdate":false,"createdBy":"registry-migration.gbif.org","modifiedBy":"crawler.gbif.org","created":"2010-06-13T21:26:12.000+00:00","modified":"2018-03-09T10:43:20.481+00:00","contacts":[{"key":873149,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":true,"userId":[],"lastName":"Tom
+        Müller","position":[],"email":["mueller.tom@geo.de"],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-03-09T10:43:20.441+00:00","modified":"2018-03-09T10:43:20.441+00:00"}],"endpoints":[{"key":261391,"type":"DWC_ARCHIVE","url":"https://orphans.gbif.org/DE/7ad99af6-f762-11e1-a439-00145eb45e9a.zip","description":"Orphaned
+        dataset awaiting adoption.","createdBy":"MattBlissett","modifiedBy":"MattBlissett","created":"2018-03-09T10:42:20.009+00:00","modified":"2018-03-09T10:42:20.009+00:00","machineTags":[]}],"machineTags":[{"key":25585060,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"319","createdBy":"crawler.gbif.org","created":"2025-06-06T15:42:24.230+00:00"},{"key":4572,"namespace":"metasync.gbif.org","name":"datasetTitle","value":"Wuhle
+        - Brücke/ Mosbacher Straße","createdBy":"metasync-migration","created":"2013-10-24T09:05:37.959+00:00"},{"key":1346054,"namespace":"orphans.gbif.org","name":"download","value":"0017699-180131172636756","createdBy":"MattBlissett","created":"2018-03-09T10:41:14.732+00:00"},{"key":1346055,"namespace":"orphans.gbif.org","name":"status","value":"RESCUED","createdBy":"MattBlissett","created":"2018-03-09T10:41:14.799+00:00"},{"key":1346056,"namespace":"orphans.gbif.org","name":"orphanEndpoint","value":"http://www.geo-artenvielfalt.de/biocase/pywrapper.cgi?dsa=geo-artenvielfalt","createdBy":"MattBlissett","created":"2018-03-09T10:41:14.859+00:00"}],"tags":[],"identifiers":[{"key":5200,"type":"GBIF_PORTAL","identifier":"11416","createdBy":"registry-migration.gbif.org","created":"2012-09-05T14:03:33.000+00:00","primary":false}],"comments":[{"key":5405,"content":"Import
+        script set license to CC_BY_4_0","createdBy":"License Import script","modifiedBy":"License
+        Import script","created":"2016-08-18T12:36:25.225+00:00","modified":"2016-08-18T12:36:25.225+00:00"}],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[],"temporalCoverages":[],"keywordCollections":[],"countryCoverage":[],"collections":[],"dataDescriptions":[{"name":"GBIF
+        Occurrence Download","charset":"UTF-8","url":"http://api.gbif.org/v1/occurrence/download/request/0017699-180131172636756.zip","format":"Darwin
+        Core Archive"}],"dataLanguage":"eng","maintenanceUpdateFrequency":"UNKOWN","maintenanceDescription":"","license":"http://creativecommons.org/licenses/by/4.0/legalcode"}]}'
+  recorded_at: 2025-06-10 14:15:59 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/?limit=3&machineTagValue=Borkhart
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: '{"offset":0,"limit":3,"endOfRecords":true,"count":1,"results":[{"key":"61447af2-f762-11e1-a439-00145eb45e9a","installationKey":"8569325a-0cf5-45cf-a1b3-8f2abef355dd","publishingOrganizationKey":"ef69a030-3940-11dd-b168-b8a03c50a862","doi":"10.15468/cqwqx0","external":false,"numConstituents":0,"type":"OCCURRENCE","title":"Borkhart","description":"This
+        dataset holds the observations recorded during the GEO Biodiversity Day &#34;Borkhart&#34;","language":"eng","citation":{"text":"GEO-Tag
+        der Artenvielfalt. Borkhart. Occurrence dataset https://doi.org/10.15468/cqwqx0
+        accessed via GBIF.org on 2025-06-10.","citationProvidedBySource":false},"contactsCitation":[],"lockedForAutoUpdate":false,"createdBy":"registry-migration.gbif.org","modifiedBy":"crawler.gbif.org","created":"2008-06-13T12:25:52.000+00:00","modified":"2018-03-09T12:22:10.931+00:00","contacts":[{"key":873361,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":true,"userId":[],"lastName":"Tom
+        Müller","position":[],"email":["mueller.tom@geo.de"],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2018-03-09T12:22:10.903+00:00","modified":"2018-03-09T12:22:10.903+00:00"}],"endpoints":[{"key":261594,"type":"DWC_ARCHIVE","url":"https://orphans.gbif.org/DE/61447af2-f762-11e1-a439-00145eb45e9a.zip","description":"Orphaned
+        dataset awaiting adoption.","createdBy":"MattBlissett","modifiedBy":"MattBlissett","created":"2018-03-09T12:21:10.521+00:00","modified":"2018-03-09T12:21:10.521+00:00","machineTags":[]}],"machineTags":[{"key":25591071,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"306","createdBy":"crawler.gbif.org","created":"2025-06-06T19:58:52.675+00:00"},{"key":55,"namespace":"metasync.gbif.org","name":"datasetTitle","value":"Borkhart","createdBy":"metasync-migration","created":"2013-10-24T09:05:37.959+00:00"},{"key":1346983,"namespace":"orphans.gbif.org","name":"download","value":"0017922-180131172636756","createdBy":"MattBlissett","created":"2018-03-09T12:20:36.025+00:00"},{"key":1346984,"namespace":"orphans.gbif.org","name":"status","value":"RESCUED","createdBy":"MattBlissett","created":"2018-03-09T12:20:36.098+00:00"},{"key":1346985,"namespace":"orphans.gbif.org","name":"orphanEndpoint","value":"http://www.geo-artenvielfalt.de/biocase/pywrapper.cgi?dsa=geo-artenvielfalt","createdBy":"MattBlissett","created":"2018-03-09T12:20:36.177+00:00"}],"tags":[],"identifiers":[{"key":151,"type":"GBIF_PORTAL","identifier":"2933","createdBy":"registry-migration.gbif.org","created":"2012-09-05T14:02:50.000+00:00","primary":false}],"comments":[{"key":6570,"content":"Import
+        script set license to CC_BY_4_0","createdBy":"License Import script","modifiedBy":"License
+        Import script","created":"2016-08-18T12:36:25.225+00:00","modified":"2016-08-18T12:36:25.225+00:00"}],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[],"temporalCoverages":[],"keywordCollections":[],"countryCoverage":[],"collections":[],"dataDescriptions":[{"name":"GBIF
+        Occurrence Download","charset":"UTF-8","url":"http://api.gbif.org/v1/occurrence/download/request/0017922-180131172636756.zip","format":"Darwin
+        Core Archive"}],"dataLanguage":"eng","maintenanceUpdateFrequency":"UNKOWN","maintenanceDescription":"","license":"http://creativecommons.org/licenses/by/4.0/legalcode"}]}'
+  recorded_at: 2025-06-10 14:15:59 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/?limit=3&modified=2023-04-01
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: '{"offset":0,"limit":3,"endOfRecords":false,"count":14,"results":[{"key":"dbd109ca-9353-4c15-982e-2ed05401f6e2","installationKey":"9a0789af-e49d-41c2-8f8a-ca77da95d820","publishingOrganizationKey":"bdee9e20-df5e-4ef8-a012-53d2e83010e4","doi":"10.15468/2dz5u4","version":"1.1","external":false,"numConstituents":0,"type":"CHECKLIST","title":"Checklist
+        of flora and fauna of Bayelsa State, Nigeria","description":"This is a record
+        of plants and animals found in Coastal Environments in Bayelsa state of Nigeria","language":"eng","citation":{"text":"Oyedeji
+        A (2023): Checklist of flora and fauna of Bayelsa State, Nigeria. v1.1. University
+        of Lagos. Dataset/Checklist. https://ipt-nigeria.gbif.fr/resource?r=checklistoffloraandfaunaofbayelsastatenigeria&v=1.1
+        https://doi.org/10.15468/2dz5u4 accessed via GBIF.org on 2025-06-10.","citationProvidedBySource":true},"contactsCitation":[],"lockedForAutoUpdate":false,"createdBy":"bdee9e20-df5e-4ef8-a012-53d2e83010e4","modifiedBy":"crawler.gbif.org","created":"2023-04-01T18:45:42.782+00:00","modified":"2023-04-01T18:58:06.804+00:00","contacts":[{"key":4292681,"type":"ORIGINATOR","primary":true,"userId":["https://scholar.google.com/citations?user=xq3yAyAAAAAJ&hl=en&oi=ao"],"firstName":"Ayodele","lastName":"Oyedeji","position":["Senior
+        Lecturer"],"email":["ayodele.oyedeji@ndu.edu.ng"],"phone":["+2348038085958"],"homepage":[],"organization":"Niger
+        Delta University","address":["Institute of Biodiversity, Climate Change &
+        Watersheds"],"city":"Wilberforce Island","province":"Bayelsa","country":"NG","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2023-04-01T18:58:06.774+00:00","modified":"2023-04-01T18:58:06.774+00:00"},{"key":4292682,"type":"METADATA_AUTHOR","primary":true,"userId":["https://scholar.google.com/citations?user=RXZrUZIAAAAJ&hl=en"],"firstName":"Temitope","lastName":"Onuminya","position":["Associate
+        Professor"],"email":["tadeyemi@unilag.edu.ng"],"phone":["+2347030241452"],"homepage":[],"organization":"University
+        of Lagos","address":["Department Of Botany"],"city":"Akoka","province":"Lagos","country":"NG","postalCode":"23401","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2023-04-01T18:58:06.781+00:00","modified":"2023-04-01T18:58:06.781+00:00"},{"key":4292683,"type":"POINT_OF_CONTACT","primary":false,"userId":["https://scholar.google.com/citations?user=xq3yAyAAAAAJ&hl=en&oi=ao"],"firstName":"Ayodele","lastName":"Oyedeji","position":["Senior
+        Lecturer"],"email":["ayodele.oyedeji@ndu.edu.ng"],"phone":["+2348038085958"],"homepage":[],"organization":"Niger
+        Delta University","address":["Institute of Biodiversity, Climate Change &
+        Watersheds"],"city":"Wilberforce Island","province":"Bayelsa","country":"NG","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2023-04-01T18:58:06.784+00:00","modified":"2023-04-01T18:58:06.784+00:00"},{"key":4292684,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":true,"userId":["https://scholar.google.com/citations?user=xq3yAyAAAAAJ&hl=en&oi=ao"],"firstName":"Ayodele","lastName":"Oyedeji","position":["Senior
+        Lecturer"],"email":["ayodele.oyedeji@ndu.edu.ng"],"phone":["+2348038085958"],"homepage":[],"organization":"Niger
+        Delta University","address":["Institute of Biodiversity, Climate Change &
+        Watersheds"],"city":"Wilberforce Island","province":"Bayelsa","country":"NG","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2023-04-01T18:58:06.785+00:00","modified":"2023-04-01T18:58:06.785+00:00"}],"endpoints":[{"key":849183,"type":"DWC_ARCHIVE","url":"https://ipt-nigeria.gbif.fr/archive.do?r=checklistoffloraandfaunaofbayelsastatenigeria","createdBy":"bdee9e20-df5e-4ef8-a012-53d2e83010e4","modifiedBy":"bdee9e20-df5e-4ef8-a012-53d2e83010e4","created":"2023-04-01T18:57:00.404+00:00","modified":"2023-04-01T18:57:00.404+00:00","machineTags":[]},{"key":849182,"type":"EML","url":"https://ipt-nigeria.gbif.fr/eml.do?r=checklistoffloraandfaunaofbayelsastatenigeria","createdBy":"bdee9e20-df5e-4ef8-a012-53d2e83010e4","modifiedBy":"bdee9e20-df5e-4ef8-a012-53d2e83010e4","created":"2023-04-01T18:57:00.286+00:00","modified":"2023-04-01T18:57:00.286+00:00","machineTags":[]}],"machineTags":[{"key":25622323,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"114","createdBy":"crawler.gbif.org","created":"2025-06-07T20:21:57.806+00:00"}],"tags":[],"identifiers":[{"key":391089,"type":"CLB_DATASET_KEY","identifier":"242754","createdBy":"clb-bot","created":"2025-02-21T09:05:26.225+00:00","primary":false},{"key":338290,"type":"UUID","identifier":"dbd109ca-9353-4c15-982e-2ed05401f6e2","createdBy":"crawler.gbif.org","created":"2023-04-01T18:58:06.788+00:00","primary":false},{"key":338289,"type":"URL","identifier":"https://ipt-nigeria.gbif.fr/resource?r=checklistoffloraandfaunaofbayelsastatenigeria","createdBy":"crawler.gbif.org","created":"2023-04-01T18:46:44.349+00:00","primary":false}],"comments":[],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[{"description":"Magnoliopsida,
+        Liliopsida, Crocodylia, Squamata, Testudines.","coverages":[{"scientificName":"Tracheophyta","rank":{"verbatim":"phylum","interpreted":"PHYLUM"}},{"scientificName":"Chordata","rank":{"verbatim":"phylum","interpreted":"PHYLUM"}}]}],"geographicCoverages":[{"description":"Samples
+        were recorded in Bayelsa State, Nigeria","boundingBox":{"minLatitude":-90.0,"maxLatitude":90.0,"minLongitude":-180.0,"maxLongitude":180.0,"globalCoverage":true}}],"temporalCoverages":[],"keywordCollections":[{"thesaurus":"GBIF
+        Dataset Type Vocabulary: http://rs.gbif.org/vocabulary/gbif/dataset_type_2015-07-10.xml","keywords":["floral","Bayelsa","fauna","Checklist","Nigeria","Niger
+        Delta"]},{"thesaurus":"GBIF Dataset Subtype Vocabulary: http://rs.gbif.org/vocabulary/gbif/dataset_subtype.xml","keywords":["Inventoryregional"]}],"project":{"title":"Implementation
+        of the Biodiversity Information and data System for Coastal Ecosystems in
+        Nigeria - BID-AF2020-022-NAC","identifier":"BID-AF2020-022-NAC","contacts":[{"type":"POINT_OF_CONTACT","primary":false,"userId":["https://scholar.google.com/citations?user=xq3yAyAAAAAJ&hl=en&oi=ao"],"firstName":"Ayodele","lastName":"Oyedeji","position":[],"email":[],"phone":[],"homepage":[],"address":[]},{"type":"PRINCIPAL_INVESTIGATOR","primary":false,"userId":["https://scholar.google.com/citations?user=VWQwLZgAAAAJ&hl=en"],"firstName":"Oluwatoyin","lastName":"Ogundipe","position":[],"email":[],"phone":[],"homepage":[],"address":[]},{"type":"PUBLISHER","primary":false,"userId":["https://scholar.google.com/citations?user=RXZrUZIAAAAJ&hl=en"],"firstName":"Temitope","lastName":"Onuminya","position":[],"email":[],"phone":[],"homepage":[],"address":[]},{"type":"PROCESSOR","primary":false,"userId":[],"firstName":"Victor","lastName":"Oroleke","position":[],"email":[],"phone":[],"homepage":[],"address":[]}],"funding":"GBIF-BID
+        Grant","awards":[],"studyAreaDescription":"Nigerian Coastal Environments","relatedProjects":[],"abstract":"Mobilization
+        of Nigerian Coastal Biodiversity Data"},"samplingDescription":{"methodSteps":[]},"countryCoverage":[],"collections":[],"dataDescriptions":[],"dataLanguage":"eng","pubDate":"2023-04-01T00:00:00.000+00:00","maintenanceUpdateFrequency":"AS_NEEDED","maintenanceDescription":"","license":"http://creativecommons.org/licenses/by/4.0/legalcode"},{"key":"9bb34d3b-3b67-4fee-857e-d62627e9b95e","installationKey":"9a0789af-e49d-41c2-8f8a-ca77da95d820","publishingOrganizationKey":"bdee9e20-df5e-4ef8-a012-53d2e83010e4","doi":"10.15468/pdxuz5","external":false,"numConstituents":0,"type":"CHECKLIST","title":"Checklist
+        of flora in Ogba Zoo, Edo State, Nigeria","description":"This is an inventory
+        of plants growing in Ogba Zoo, Edo State, Nigeria.","language":"eng","citation":{"text":"Aigbokhan
+        E (2023): Checklist of flora in Ogba Zoo, Edo State, Nigeria. v1.1. University
+        of Lagos. Dataset/Checklist. https://ipt-nigeria.gbif.fr/resource?r=ogbazoo&v=1.1
+        https://doi.org/10.15468/pdxuz5 accessed via GBIF.org on 2025-06-10.","citationProvidedBySource":true},"contactsCitation":[],"lockedForAutoUpdate":false,"createdBy":"bdee9e20-df5e-4ef8-a012-53d2e83010e4","modifiedBy":"crawler.gbif.org","created":"2023-04-01T18:16:34.656+00:00","modified":"2023-04-01T18:17:36.169+00:00","contacts":[{"key":4292669,"type":"ORIGINATOR","primary":true,"userId":["http://scholar.google.com/citations?user=https://scholar.google.com/citations?hl=en&user=U7cs_3UAAAAJ"],"firstName":"Emmanuel","lastName":"Aigbokhan","position":["Professor"],"email":["eaigbokhan@uniben.edu"],"phone":["+2348056627914"],"homepage":[],"organization":"University
+        of Benin","address":["Department of Plant Biology & Biotechnology, University
+        of Benin, PMB 1154"],"city":"Benin","province":"Edo","country":"NG","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2023-04-01T18:17:36.129+00:00","modified":"2023-04-01T18:17:36.129+00:00"},{"key":4292670,"type":"METADATA_AUTHOR","primary":true,"userId":["https://scholar.google.com/citations?user=RXZrUZIAAAAJ&hl=en"],"firstName":"Temitope","lastName":"Onuminya","position":["Associate
+        Professor"],"email":["tadeyemi@unilag.edu.ng"],"phone":["+2347030241452"],"homepage":[],"organization":"University
+        of Lagos","address":["Department Of Botany"],"city":"Akoka","province":"Lagos","country":"NG","postalCode":"23401","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2023-04-01T18:17:36.145+00:00","modified":"2023-04-01T18:17:36.145+00:00"},{"key":4292671,"type":"POINT_OF_CONTACT","primary":false,"userId":["http://scholar.google.com/citations?user=https://scholar.google.com/citations?hl=en&user=U7cs_3UAAAAJ"],"firstName":"Emmanuel","lastName":"Aigbokhan","position":["Professor"],"email":["eaigbokhan@uniben.edu"],"phone":["+2348056627914"],"homepage":[],"organization":"University
+        of Benin","address":["Department of Plant Biology & Biotechnology, University
+        of Benin, PMB 1154"],"city":"Benin","province":"Edo","country":"NG","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2023-04-01T18:17:36.148+00:00","modified":"2023-04-01T18:17:36.148+00:00"},{"key":4292672,"type":"PRINCIPAL_INVESTIGATOR","primary":false,"userId":["https://scholar.google.com/citations?user=VWQwLZgAAAAJ&hl=en"],"firstName":"Oluwatoyin","lastName":"Ogundipe","position":["Professor"],"email":["oogundipe@unilag.edu.ng"],"phone":["+2348023201618"],"homepage":[],"organization":"University
+        of Lagos","address":["DEPARTMENT OF BOTANY"],"city":"AKOKA","province":"LAGOS","country":"NG","postalCode":"23401","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2023-04-01T18:17:36.150+00:00","modified":"2023-04-01T18:17:36.150+00:00"},{"key":4292673,"type":"AUTHOR","primary":false,"userId":["http://scholar.google.com/citations?user=https://scholar.google.com/citations?hl=en&user=U7cs_3UAAAAJ"],"firstName":"Emmanuel","lastName":"Aigbokhan","position":["Professor"],"email":["eaigbokhan@uniben.edu"],"phone":["+2348056627914"],"homepage":[],"organization":"University
+        of Benin","address":["Department of Plant Biology & Biotechnology, University
+        of Benin, PMB 1154"],"city":"Benin","province":"Edo","country":"NG","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2023-04-01T18:17:36.152+00:00","modified":"2023-04-01T18:17:36.152+00:00"},{"key":4292674,"type":"PUBLISHER","primary":false,"userId":["https://scholar.google.com/citations?user=RXZrUZIAAAAJ&hl=en"],"firstName":"Temitope","lastName":"Onuminya","position":["Associate
+        Professor"],"email":["tadeyemi@unilag.edu.ng"],"phone":["+2347030241452"],"homepage":[],"organization":"University
+        of Lagos","address":["Department Of Botany"],"city":"Akoka","province":"Lagos","country":"NG","postalCode":"23401","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2023-04-01T18:17:36.153+00:00","modified":"2023-04-01T18:17:36.153+00:00"},{"key":4292675,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":true,"userId":["http://scholar.google.com/citations?user=https://scholar.google.com/citations?hl=en&user=U7cs_3UAAAAJ"],"firstName":"Emmanuel","lastName":"Aigbokhan","position":["Professor"],"email":["eaigbokhan@uniben.edu"],"phone":["+2348056627914"],"homepage":[],"organization":"University
+        of Benin","address":["Department of Plant Biology & Biotechnology, University
+        of Benin, PMB 1154"],"city":"Benin","province":"Edo","country":"NG","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2023-04-01T18:17:36.154+00:00","modified":"2023-04-01T18:17:36.154+00:00"}],"endpoints":[{"key":849179,"type":"DWC_ARCHIVE","url":"https://ipt-nigeria.gbif.fr/archive.do?r=ogbazoo","createdBy":"bdee9e20-df5e-4ef8-a012-53d2e83010e4","modifiedBy":"bdee9e20-df5e-4ef8-a012-53d2e83010e4","created":"2023-04-01T18:16:35.053+00:00","modified":"2023-04-01T18:16:35.053+00:00","machineTags":[]},{"key":849178,"type":"EML","url":"https://ipt-nigeria.gbif.fr/eml.do?r=ogbazoo","createdBy":"bdee9e20-df5e-4ef8-a012-53d2e83010e4","modifiedBy":"bdee9e20-df5e-4ef8-a012-53d2e83010e4","created":"2023-04-01T18:16:34.986+00:00","modified":"2023-04-01T18:16:34.986+00:00","machineTags":[]}],"machineTags":[{"key":25622331,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"112","createdBy":"crawler.gbif.org","created":"2025-06-07T20:21:58.038+00:00"}],"tags":[],"identifiers":[{"key":391090,"type":"CLB_DATASET_KEY","identifier":"242755","createdBy":"clb-bot","created":"2025-02-21T09:05:26.410+00:00","primary":false},{"key":338288,"type":"URL","identifier":"https://ipt-nigeria.gbif.fr/resource?r=ogbazoo","createdBy":"crawler.gbif.org","created":"2023-04-01T18:17:36.156+00:00","primary":false}],"comments":[],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[{"description":"Acanthaceae\nAchariaceae\nAmaranthaceae\nAmaryllidaceae\nAnacardiaceae\nAnnonaceae\nApocynaceae\nAraceae\nAraucariaceae\nArecaceae\nAristolochiaceae\nAsparagaceae\nAspleniaceae\nAsteraceae\nBegoniaceae\nBignoniaceae\nBurseraceae\nCactaceae\nCalophyllaceae\nCannabaceae\nCapparaceae\nCaricaceae\nCasuarinaceae\nCelastraceae\nChrysobalanaceae\nCleomaceae\nClusiaceae\nColchicaceae\nCombretaceae\nCommelinaceae\nConnaraceae\nConvolvulaceae\nCostaceae\nCrassulaceae\nCucurbitaceae\nCyperaceae\nDennstaedtiaceae\nDichapetalaceae\nDilleniaceae\nDioscoreaceae\nEbenaceae\nErythropalaceae\nEuphorbiaceae\nFabaceae\nGentianaceae\nGleicheniaceae\nHypericaceae\nIcacinaceae\nIrvingiaceae\nLamiaceae\nLauraceae\nLecythidaceae\nLinaceae\nLinderniaceae\nLoganiaceae\nLoranthaceae\nLycopodiaceae\nLygodiaceae\nMalvaceae\nMarantaceae\nMelastomataceae\nMeliaceae\nMenispermaceae\nMetteniusaceae\nMolluginaceae\nMoraceae\nMusaceae\nMyristicaceae\nMyrtaceae\nNephrolepidaceae\nNymphaeaceae\nOchnaceae\nOlacaceae\nOleaceae\nOnagraceae\nOpiliaceae\nOrchidaceae\nOxalidaceae\nPandaceae\nPassifloraceae\nPentadiplandraceae\nPeraceae\nPhyllanthaceae\nPinaceae\nPiperaceae\nPlantaginaceae\nPoaceae\nPolygalaceae\nPolygonaceae\nPolypodiaceae\nPortulacaceae\nPteridaceae\nPutranjivaceae\nRhizophoraceae\nRubiaceae\nRutaceae\nSalicaceae\nSapindaceae\nSapotaceae\nSelaginellaceae\nSimaroubaceae\nSmilacaceae\nSolanaceae\nSolanaceae\nStrombosiaceae\nTalinaceae\nUrticaceae\nVerbenaceae\nViolaceae\nVitaceae\nZingiberaceae","coverages":[{"scientificName":"Tracheophyta","rank":{"verbatim":"phylum","interpreted":"PHYLUM"}},{"scientificName":"Magnoliopsida","rank":{"verbatim":"class","interpreted":"CLASS"}},{"scientificName":"Liliopsida","rank":{"verbatim":"class","interpreted":"CLASS"}},{"scientificName":"Polypodiopsida","rank":{"verbatim":"class","interpreted":"CLASS"}}]}],"geographicCoverages":[{"description":"Collection
+        was recorded in Ogba Zoo, Edo state, Nigeria","boundingBox":{"minLatitude":-90.0,"maxLatitude":90.0,"minLongitude":-180.0,"maxLongitude":180.0,"globalCoverage":true}}],"temporalCoverages":[],"keywordCollections":[{"thesaurus":"GBIF
+        Dataset Type Vocabulary: http://rs.gbif.org/vocabulary/gbif/dataset_type_2015-07-10.xml","keywords":["Ogba
+        zoo","Edo state","Checklist","flora","Nigeria"]},{"thesaurus":"GBIF Dataset
+        Subtype Vocabulary: http://rs.gbif.org/vocabulary/gbif/dataset_subtype.xml","keywords":["Inventoryregional"]}],"project":{"title":"Implementation
+        of the Biodiversity Information and data System for Coastal Ecosystems in
+        Nigeria - BID-AF2020-022-NAC","identifier":"BID-AF2020-022-NAC","contacts":[{"type":"POINT_OF_CONTACT","primary":false,"userId":["http://scholar.google.com/citations?user=https://scholar.google.com/citations?hl=en&user=U7cs_3UAAAAJ"],"firstName":"Emmanuel","lastName":"Aigbokhan","position":[],"email":[],"phone":[],"homepage":[],"address":[]},{"type":"PRINCIPAL_INVESTIGATOR","primary":false,"userId":["https://scholar.google.com/citations?user=VWQwLZgAAAAJ&hl=en"],"firstName":"Oluwatoyin","lastName":"Ogundipe","position":[],"email":[],"phone":[],"homepage":[],"address":[]},{"type":"PUBLISHER","primary":false,"userId":["https://scholar.google.com/citations?user=RXZrUZIAAAAJ&hl=en"],"firstName":"Temitope","lastName":"Onuminya","position":[],"email":[],"phone":[],"homepage":[],"address":[]},{"type":"PROCESSOR","primary":false,"userId":[],"firstName":"Victor","lastName":"Oroleke","position":[],"email":[],"phone":[],"homepage":[],"address":[]}],"funding":"GBIF-BID
+        Grant","awards":[],"studyAreaDescription":"Nigerian Coastal Environments","relatedProjects":[],"abstract":"Mobilization
+        of Nigerian Coastal Biodiversity Data"},"samplingDescription":{"methodSteps":[]},"countryCoverage":[],"collections":[],"dataDescriptions":[],"dataLanguage":"eng","pubDate":"2023-04-01T00:00:00.000+00:00","maintenanceUpdateFrequency":"AS_NEEDED","maintenanceDescription":"","license":"http://creativecommons.org/licenses/by/4.0/legalcode"},{"key":"001eb4d0-e5f4-4b5c-9d88-c80d66a91aaf","installationKey":"9a0789af-e49d-41c2-8f8a-ca77da95d820","publishingOrganizationKey":"bdee9e20-df5e-4ef8-a012-53d2e83010e4","doi":"10.15468/u2crjj","external":false,"numConstituents":0,"type":"OCCURRENCE","title":"Macrobenthos
+        of Atlantic Ocean by Ikike, Akwa-Ibom State, Nigeria","description":"This
+        is an occurrence record of Macrobenthos of Atlantic Ocean by Ikike, Akwa-Ibom
+        State, Nigeria","language":"eng","citation":{"text":"Arimoro F, Ogundipe O
+        (2023): Macrobenthos of Atlantic Ocean by Ikike, Akwa-Ibom State, Nigeria.
+        v1.0. University of Lagos. Dataset/Occurrence. https://ipt-nigeria.gbif.fr/resource?r=atlanticoceanbenthos&v=1.0
+        https://doi.org/10.15468/u2crjj accessed via GBIF.org on 2025-06-10.","citationProvidedBySource":true},"contactsCitation":[],"lockedForAutoUpdate":false,"createdBy":"bdee9e20-df5e-4ef8-a012-53d2e83010e4","modifiedBy":"crawler.gbif.org","created":"2023-04-01T17:27:59.570+00:00","modified":"2023-04-01T17:29:21.331+00:00","contacts":[{"key":4292653,"type":"ORIGINATOR","primary":true,"userId":["https://scholar.google.com/citations?user=R6wTFqMAAAAJ&hl=en"],"firstName":"Francis","lastName":"Arimoro","position":["Professor"],"email":[],"phone":["+2348035615424"],"homepage":[],"organization":"Federal
+        University of Technology","address":[],"city":"Minna","province":"Niger","country":"NG","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2023-04-01T17:29:21.291+00:00","modified":"2023-04-01T17:29:21.291+00:00"},{"key":4292654,"type":"ORIGINATOR","primary":false,"userId":["https://scholar.google.com/citations?user=VWQwLZgAAAAJ&hl=en"],"firstName":"Oluwatoyin","lastName":"Ogundipe","position":["Professor"],"email":["oogundipe@unilag.edu.ng"],"phone":["+2348023201618"],"homepage":[],"organization":"University
+        of Lagos","address":["DEPARTMENT OF BOTANY"],"city":"AKOKA","province":"LAGOS","country":"NG","postalCode":"23401","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2023-04-01T17:29:21.294+00:00","modified":"2023-04-01T17:29:21.294+00:00"},{"key":4292655,"type":"METADATA_AUTHOR","primary":true,"userId":["https://scholar.google.com/citations?user=RXZrUZIAAAAJ&hl=en"],"firstName":"Temitope","lastName":"Onuminya","position":["Associate
+        Professor"],"email":["tadeyemi@unilag.edu.ng"],"phone":["+2347030241452"],"homepage":[],"organization":"University
+        of Lagos","address":["Department Of Botany"],"city":"Akoka","province":"Lagos","country":"NG","postalCode":"23401","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2023-04-01T17:29:21.296+00:00","modified":"2023-04-01T17:29:21.296+00:00"},{"key":4292656,"type":"POINT_OF_CONTACT","primary":false,"userId":["https://scholar.google.com/citations?user=R6wTFqMAAAAJ&hl=en"],"firstName":"Francis","lastName":"Arimoro","position":["Professor"],"email":[],"phone":["+2348035615424"],"homepage":[],"organization":"Federal
+        University of Technology","address":[],"city":"Minna","province":"Niger","country":"NG","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2023-04-01T17:29:21.299+00:00","modified":"2023-04-01T17:29:21.299+00:00"},{"key":4292657,"type":"PRINCIPAL_INVESTIGATOR","primary":false,"userId":["https://scholar.google.com/citations?user=VWQwLZgAAAAJ&hl=en"],"firstName":"Oluwatoyin","lastName":"Ogundipe","position":["Professor"],"email":["oogundipe@unilag.edu.ng"],"phone":["+2348023201618"],"homepage":[],"organization":"University
+        of Lagos","address":["DEPARTMENT OF BOTANY"],"city":"AKOKA","province":"LAGOS","country":"NG","postalCode":"23401","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2023-04-01T17:29:21.301+00:00","modified":"2023-04-01T17:29:21.301+00:00"},{"key":4292658,"type":"METADATA_AUTHOR","primary":false,"userId":["https://scholar.google.com/citations?user=RXZrUZIAAAAJ&hl=en"],"firstName":"Temitope","lastName":"Onuminya","position":["Associate
+        Professor"],"email":["tadeyemi@unilag.edu.ng"],"phone":["+2347030241452"],"homepage":[],"organization":"University
+        of Lagos","address":["Department Of Botany"],"city":"Akoka","province":"Lagos","country":"NG","postalCode":"23401","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2023-04-01T17:29:21.303+00:00","modified":"2023-04-01T17:29:21.303+00:00"},{"key":4292659,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":true,"userId":["https://scholar.google.com/citations?user=R6wTFqMAAAAJ&hl=en"],"firstName":"Francis","lastName":"Arimoro","position":["Professor"],"email":[],"phone":["+2348035615424"],"homepage":[],"organization":"Federal
+        University of Technology","address":[],"city":"Minna","province":"Niger","country":"NG","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2023-04-01T17:29:21.304+00:00","modified":"2023-04-01T17:29:21.304+00:00"}],"endpoints":[{"key":849171,"type":"DWC_ARCHIVE","url":"https://ipt-nigeria.gbif.fr/archive.do?r=atlanticoceanbenthos","createdBy":"bdee9e20-df5e-4ef8-a012-53d2e83010e4","modifiedBy":"bdee9e20-df5e-4ef8-a012-53d2e83010e4","created":"2023-04-01T17:28:03.907+00:00","modified":"2023-04-01T17:28:03.907+00:00","machineTags":[]},{"key":849170,"type":"EML","url":"https://ipt-nigeria.gbif.fr/eml.do?r=atlanticoceanbenthos","createdBy":"bdee9e20-df5e-4ef8-a012-53d2e83010e4","modifiedBy":"bdee9e20-df5e-4ef8-a012-53d2e83010e4","created":"2023-04-01T17:28:03.844+00:00","modified":"2023-04-01T17:28:03.844+00:00","machineTags":[]}],"machineTags":[{"key":25622326,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"112","createdBy":"crawler.gbif.org","created":"2025-06-07T20:21:57.919+00:00"}],"tags":[],"identifiers":[{"key":338286,"type":"URL","identifier":"https://ipt-nigeria.gbif.fr/resource?r=atlanticoceanbenthos","createdBy":"crawler.gbif.org","created":"2023-04-01T17:29:21.305+00:00","primary":false}],"comments":[],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[{"description":"Ampelisca\nArenicola\nBalanoglossus\nBittium\nBuccinum\nBulia\nCapitella\nCardium\nCerithium
+        \nChaetopterus\nCharonia\nCirratulus\nCorophium\nCucumaria\nCymbium\nDentalium\nDispio\nDonax\nEchinocardium\nEchiurus\nEnnucula\nEnsis\nEunice\nGlycemeris\nGlycera\nHeteromastus\nHolothuria\nLittorina\nLumbrineris\nMactra\nModiolus\nMurex\nNatica\nNephtys\nNereis\nOphiothrix\nPanopeus\nPlatynereis\nPortunus\nScala\nScrobicularia\nSipunculus\nThais\nVasula","coverages":[{"scientificName":"Athropoda","rank":{"verbatim":"phylum","interpreted":"PHYLUM"}},{"scientificName":"Annelida","rank":{"verbatim":"phylum","interpreted":"PHYLUM"}},{"scientificName":"Echinodermata","rank":{"verbatim":"phylum","interpreted":"PHYLUM"}},{"scientificName":"Hemichordata","rank":{"verbatim":"phylum","interpreted":"PHYLUM"}},{"scientificName":"Mollusca","rank":{"verbatim":"phylum","interpreted":"PHYLUM"}}]}],"geographicCoverages":[{"description":"Collection
+        was recorded in Akwa-Ibom State, Nigeria","boundingBox":{"minLatitude":-90.0,"maxLatitude":90.0,"minLongitude":-180.0,"maxLongitude":180.0,"globalCoverage":true}}],"temporalCoverages":[],"keywordCollections":[{"thesaurus":"GBIF
+        Dataset Type Vocabulary: http://rs.gbif.org/vocabulary/gbif/dataset_type_2015-07-10.xml","keywords":["Atlantic
+        Ocean","Ikike","Nigeria","Occurrence","Macrobenthos"]},{"thesaurus":"GBIF
+        Dataset Subtype Vocabulary: http://rs.gbif.org/vocabulary/gbif/dataset_subtype.xml","keywords":["Observation"]}],"project":{"title":"Implementation
+        of the Biodiversity Information and data System for Coastal Ecosystems in
+        Nigeria - BID-AF2020-022-NAC","identifier":"BID-AF2020-022-NAC","contacts":[{"type":"POINT_OF_CONTACT","primary":false,"userId":["https://scholar.google.com/citations?user=R6wTFqMAAAAJ&hl=en"],"firstName":"Francis","lastName":"Arimoro","position":[],"email":[],"phone":[],"homepage":[],"address":[]},{"type":"PRINCIPAL_INVESTIGATOR","primary":false,"userId":["https://scholar.google.com/citations?user=VWQwLZgAAAAJ&hl=en"],"firstName":"Oluwatoyin","lastName":"Ogundipe","position":[],"email":[],"phone":[],"homepage":[],"address":[]},{"type":"PUBLISHER","primary":false,"userId":["https://scholar.google.com/citations?user=RXZrUZIAAAAJ&hl=en"],"firstName":"Temitope","lastName":"Onuminya","position":[],"email":[],"phone":[],"homepage":[],"address":[]},{"type":"PROCESSOR","primary":false,"userId":[],"firstName":"Victor","lastName":"Oroleke","position":[],"email":[],"phone":[],"homepage":[],"address":[]}],"funding":"GBIF_BID
+        Grant","awards":[],"studyAreaDescription":"Nigerian Coastal Environments","relatedProjects":[],"abstract":"Mobilization
+        of Coastal Biodiversity data in Nigeria"},"samplingDescription":{"methodSteps":[]},"countryCoverage":[],"collections":[],"dataDescriptions":[],"dataLanguage":"eng","pubDate":"2023-04-01T00:00:00.000+00:00","maintenanceUpdateFrequency":"ANNUALLY","maintenanceDescription":"","license":"http://creativecommons.org/licenses/by/4.0/legalcode"}]}'
+  recorded_at: 2025-06-10 14:15:59 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/?q=dog&limit=3
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: '{"offset":0,"limit":3,"endOfRecords":false,"count":93,"results":[{"key":"27305adb-c2cc-4fef-9390-601604510794","installationKey":"842b6a28-624a-4ddc-a96e-04d0ce819fce","publishingOrganizationKey":"5ca9a113-2397-4540-84b4-41114a1404ef","doi":"10.15468/8a253t","version":"1.1","external":false,"numConstituents":0,"type":"OCCURRENCE","title":"Floristic
+        inventory of the classified forest of Dogo-Kétou in the year 2019","description":"\"A
+        systematic sampling of the Dogo-Kétou forest was carried out. This technique
+        allow to collect biodiversity data in the forest. It''s a good technique\nin
+        the forest because it has enormous advantages such as:\nEasier localization
+        of sounding points allowing quick identification;\ncheaper travel,\n The regular
+        distribution of points over the entire forest. This provides more\ninformation
+        per unit cost compared to random sampling\n(Rondeux, 1999)\nThe sampling device
+        to be used is a square mesh of 200 m x 200 m, i.e.\none sampling point over
+        4 hectares.\nThe spaces were installed at a minimum distance of 50 m from
+        the edge of the furthest track.\nclose to avoid edge effects.\nEach plot will
+        have an area of ​​one hectare subdivided into two sub-plots of\n0.5 ha. The
+        sampling area of ​​one ha makes it possible to integrate the maximum of\nbiodiversity
+        per plot.\"","language":"eng","citation":{"text":"AIKPON G, AYENON M, TABE
+        Z (2023). Floristic inventory of the classified forest of Dogo-Kétou in the
+        year 2019. Version 1.1. Laboratory of Forest Sciences (University of Abomey-Calavi).
+        Occurrence dataset https://doi.org/10.15468/8a253t accessed via GBIF.org on
+        2025-06-10.","citationProvidedBySource":false},"contactsCitation":[{"key":4350294,"abbreviatedName":"AIKPON
+        G","firstName":"Gorgias","lastName":"AIKPON","roles":["METADATA_AUTHOR","ORIGINATOR"],"userId":[]},{"key":4350295,"abbreviatedName":"AYENON
+        M","firstName":"Melkisédek","lastName":"AYENON","roles":["ORIGINATOR"],"userId":[]},{"key":4350296,"abbreviatedName":"TABE
+        Z","firstName":"Zoul-yadeini","lastName":"TABE","roles":["ORIGINATOR"],"userId":[]}],"lockedForAutoUpdate":false,"createdBy":"5ca9a113-2397-4540-84b4-41114a1404ef","modifiedBy":"crawler.gbif.org","created":"2022-06-28T16:48:27.508+00:00","modified":"2023-05-24T17:52:48.751+00:00","contacts":[{"key":4350294,"type":"ORIGINATOR","primary":true,"userId":[],"firstName":"Gorgias","lastName":"AIKPON","position":["Reseacher"],"email":["gorgiaspremier@yahoo.fr"],"phone":["61450451"],"homepage":[],"organization":"Laboratory
+        of Forest Sciences","address":[],"city":"Abomey-Calavi","province":"Atlantic","country":"BJ","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2023-05-24T17:52:48.730+00:00","modified":"2023-05-24T17:52:48.730+00:00"},{"key":4350295,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Melkisédek","lastName":"AYENON","position":["Reseacher"],"email":["melkiaffo@gmail.com"],"phone":["96945141"],"homepage":[],"organization":"Laboratory
+        of Forest Sciences","address":[],"city":"Abomey-Calavi","province":"Atlantic","country":"BJ","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2023-05-24T17:52:48.733+00:00","modified":"2023-05-24T17:52:48.733+00:00"},{"key":4350296,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Zoul-yadeini","lastName":"TABE","position":["Reseacher"],"email":["zoulyadeinit@gmail.com"],"phone":["66221817"],"homepage":[],"organization":"Laboratory
+        of Forest Sciences","address":[],"city":"Abomey-Calavi","province":"Atlantic","country":"BJ","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2023-05-24T17:52:48.734+00:00","modified":"2023-05-24T17:52:48.734+00:00"},{"key":4350297,"type":"METADATA_AUTHOR","primary":true,"userId":[],"firstName":"Gorgias","lastName":"AIKPON","position":["Reseacher"],"email":["gorgiaspremier@yahoo.fr"],"phone":["61450451"],"homepage":[],"organization":"Laboratory
+        of Forest Sciences","address":[],"city":"Abomey-Calavi","province":"Atlantic","country":"BJ","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2023-05-24T17:52:48.735+00:00","modified":"2023-05-24T17:52:48.735+00:00"},{"key":4350298,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Gorgias","lastName":"AIKPON","position":["Reseacher"],"email":["gorgiaspremier@yahoo.fr"],"phone":["61450451"],"homepage":[],"organization":"Laboratory
+        of Forest Sciences","address":[],"city":"Abomey-Calavi","province":"Atlantic","country":"BJ","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2023-05-24T17:52:48.736+00:00","modified":"2023-05-24T17:52:48.736+00:00"}],"endpoints":[{"key":863516,"type":"DWC_ARCHIVE","url":"https://ipt.gbifbenin.org/archive.do?r=gor","createdBy":"5ca9a113-2397-4540-84b4-41114a1404ef","modifiedBy":"5ca9a113-2397-4540-84b4-41114a1404ef","created":"2023-05-24T17:51:44.190+00:00","modified":"2023-05-24T17:51:44.190+00:00","machineTags":[]},{"key":863515,"type":"EML","url":"https://ipt.gbifbenin.org/eml.do?r=gor","createdBy":"5ca9a113-2397-4540-84b4-41114a1404ef","modifiedBy":"5ca9a113-2397-4540-84b4-41114a1404ef","created":"2023-05-24T17:51:44.148+00:00","modified":"2023-05-24T17:51:44.148+00:00","machineTags":[]}],"machineTags":[{"key":25524054,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"145","createdBy":"crawler.gbif.org","created":"2025-06-04T01:26:50.464+00:00"}],"tags":[],"identifiers":[{"key":339846,"type":"URL","identifier":"https://ipt.gbifbenin.org/resource?r=gor","createdBy":"crawler.gbif.org","created":"2023-05-24T17:52:48.740+00:00","primary":false},{"key":339845,"type":"UUID","identifier":"27305adb-c2cc-4fef-9390-601604510794","createdBy":"crawler.gbif.org","created":"2023-05-24T17:52:48.738+00:00","primary":false},{"key":306959,"type":"URL","identifier":"http://ipt.gbifbenin.org/resource?r=gor","createdBy":"crawler.gbif.org","created":"2022-06-28T16:49:28.285+00:00","primary":false}],"comments":[],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[{"description":"Plantae;
+        Tracheophyta; Magnoliopsida; Fabales; Fabaceae","coverages":[{"scientificName":"Acacia
+        campylacantha","rank":{"verbatim":"species","interpreted":"SPECIES"}}]},{"description":"Plantae;
+        Tracheophyta; Magnoliopsida; Malvales; Malvaceae","coverages":[{"scientificName":"Cola
+        cordifolia","rank":{"verbatim":"species","interpreted":"SPECIES"}}]},{"description":"Plantae;Tracheophyta;
+        Magnoliopsida; Rosales; Cannabaceae","coverages":[{"scientificName":"Celtis
+        mildbraedii","rank":{"verbatim":"species","interpreted":"SPECIES"}}]}],"geographicCoverages":[{"description":"South-East
+        of Benin","boundingBox":{"minLatitude":7.554,"maxLatitude":7.568,"minLongitude":2.581,"maxLongitude":2.593,"globalCoverage":false}}],"temporalCoverages":[{"@type":"range","start":"2019-03-22T00:00:00.000+00:00","end":"2019-04-06T00:00:00.000+00:00"}],"keywordCollections":[{"thesaurus":"GBIF
+        Dataset Type Vocabulary: http://rs.gbif.org/vocabulary/gbif/dataset_type_2015-07-10.xml","keywords":["2019","Benin","Dogo-Ketou","Classified
+        forest","Occurrence; Inventory"]}],"project":{"title":"Data use to inform
+        decisions on biodiversity conservation and public health in Benin","identifier":"BID-AF2020-083-USE","contacts":[{"type":"POINT_OF_CONTACT","primary":false,"userId":[],"firstName":"Jean
+        Cossi","lastName":"GANGLO","position":[],"email":[],"phone":[],"homepage":[],"address":[]}],"funding":"The
+        funding of this project is generously provided by European Union in the framework
+        of Biodiversity Information for Development program managed by GBIF Secretariat","awards":[],"studyAreaDescription":"The
+        data digitized and published in the framework of this project are gathered
+        throughout the whole country with respect to the data needs to inform decisions
+        in the three partner institutions","designDescription":"The design is detailed
+        according to the objectives of the project\nThe initial planning phase will
+        be achieved in the framework of workshops during which the consortium members
+        and their collaborators, students, and supervisors of theses of the master
+        program will be invited. The end-users from DGEFC, CENAGREF, and Hôpital Menontin
+        will present their needs of information and the decisions they wish to support.\nThe
+        needs of information will be reformulated into key questions to be answered
+        with respect to the decisions to be supported so as to identify the possible
+        information resources to be taken into account. They can be databases like
+        GBIF, Vertnet, species links etc. Any other relevant sources of information
+        (data holders, data users, resource persons etc.) will also be considered.
+        This will result in a plan of data mobilization, data publication, and data
+        uses to support decisions. This plan will be consolidated through partnership
+        agreements between parties.\nDuring data mobilization phase, taking into account
+        the key questions to be answered, research topics will be identified and attributed
+        to the students of the master program and other data users. Data will then
+        be downloaded from GBIF, Vertenet, species links etc. and data gap analysis
+        will be performed so as to find out the gaps of occurrences to be filled either
+        from complementary field surveys, data holders, and literature reviews etc.
+        Data collected to fill data gaps will be formatted, georeferenced, cleaned
+        up, and published on GBIF site.\nThe evaluation process will be carried out
+        in two phases: i) during the information development phase, under the umbrella
+        of their supervisors and the advisor of the program, students will process
+        data to provide relevant answers to the key questions in order to guide the
+        intended decision making of the partners; ii) in an evaluation phase, the
+        results obtained (answers to the key questions) will be scrutinized with respect
+        to their adequacy to support the intended decisions of end-users and, whenever
+        necessary, data mobilization and data analysis refinements will be reconsidered
+        to provide more relevant answers to the key questions to support decisions.","relatedProjects":[],"abstract":"This
+        project is designed to provide data solutions to support expressed decisions
+        making of three government institutions.\nThrough workshops, the desired decisions
+        the end-users are willing to make will be examined so as to clearly identify
+        the appropriated needs of information and related key research questions to
+        be answered. Data needs will then be adequately identified and, data mobilization
+        in free access databases like GBIF, data gap analysis on available data, and
+        complementary data mobilization in data holdings will be planned. Data mobilization,
+        data and checklist publications on GBIF site will then be achieved.\nUnder
+        the supervision of trainers and project advisor, students in the master program,
+        through their master research topics will achieve, in response to the key
+        research questions, adequate data analysis and address the required needs
+        of information to support decisions making of government institutions.\nFollowing
+        the evaluation process by end-users, a plan will be set in place through partnership
+        agreements between parties so as to enable the establishment of workflows
+        and refinement of data mobilization and data solutions to fit more conveniently
+        in decisions making during and beyond the project.\nData solutions will be
+        used in national biodiversity policy and international biodiversity platforms.
+        Indicators towards the achievements of SDG and CBD targets as well as information
+        on biodiversity assessments will be provided to end-users."},"samplingDescription":{"studyExtent":"South-East
+        of Benin","sampling":"\"A systematic sampling of the Dogo-Kétou forest was
+        carried out. This technique allow to collect biodiversity data in the forest.
+        It''s a good technique\nin the forest because it has enormous advantages such
+        as:\nEasier localization of sounding points allowing quick identification;\ncheaper
+        travel,\n The regular distribution of points over the entire forest. This
+        provides more\ninformation per unit cost compared to random sampling\n(Rondeux,
+        1999)\nThe sampling device to be used is a square mesh of 200 m x 200 m, i.e.\none
+        sampling point over 4 hectares.\nThe spaces were installed at a minimum distance
+        of 50 m from the edge of the furthest track.\nclose to avoid edge effects.\nEach
+        plot will have an area of ​​one hectare subdivided into two sub-plots of\n0.5
+        ha. The sampling area of ​​one ha makes it possible to integrate the maximum
+        of\nbiodiversity per plot.\"","methodSteps":["Recording of the presence of
+        the species at each observation"]},"countryCoverage":[],"collections":[],"dataDescriptions":[],"dataLanguage":"eng","pubDate":"2023-05-24T00:00:00.000+00:00","maintenanceUpdateFrequency":"UNKOWN","maintenanceDescription":"","license":"http://creativecommons.org/licenses/by/4.0/legalcode"},{"key":"6690ea02-c607-42a3-871b-da00586cbe54","installationKey":"842b6a28-624a-4ddc-a96e-04d0ce819fce","publishingOrganizationKey":"633602e8-4c6f-4619-b433-c4968da3ed08","doi":"10.15468/xbw6q6","external":false,"numConstituents":0,"type":"OCCURRENCE","title":"Wildlife
+        diversity of the Dogo-Kétou forest (Benin, West Africa)","description":"The
+        dataset is about the varety of the wildlife of the Dogo-Kétou forest in Benin","language":"eng","citation":{"text":"ATAYI
+        GUEDEGBE M A S (2021). Wildlife diversity of the Dogo-Kétou forest (Benin,
+        West Africa). Laboratoire d''Ecologie Appliquée/Université d’Abomey-Calavi
+        (LEA/UAC). Occurrence dataset https://doi.org/10.15468/xbw6q6 accessed via
+        GBIF.org on 2025-06-10.","citationProvidedBySource":false},"contactsCitation":[{"key":2828442,"abbreviatedName":"ATAYI
+        GUEDEGBE M A S","firstName":"Majoie A. S","lastName":"ATAYI GUEDEGBE","roles":["METADATA_AUTHOR","ORIGINATOR"],"userId":[]}],"lockedForAutoUpdate":false,"createdBy":"633602e8-4c6f-4619-b433-c4968da3ed08","modifiedBy":"crawler.gbif.org","created":"2021-12-13T14:16:31.482+00:00","modified":"2021-12-13T14:17:32.679+00:00","contacts":[{"key":2828442,"type":"ORIGINATOR","primary":true,"userId":[],"firstName":"Majoie
+        A. S","lastName":"ATAYI GUEDEGBE","position":["Searcher"],"email":["majoieguedegbe1994@gamil.com"],"phone":["67196041"],"homepage":[],"organization":"Laboratoire
+        d''Ecologie Appliquée","address":["Cotonou"],"city":"Cotonou","province":"Littoral","country":"BJ","postalCode":"00229","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2021-12-13T14:17:32.654+00:00","modified":"2021-12-13T14:17:32.654+00:00"},{"key":2828443,"type":"METADATA_AUTHOR","primary":true,"userId":[],"firstName":"Majoie
+        A. S","lastName":"ATAYI GUEDEGBE","position":["Searcher"],"email":["majoieguedegbe1994@gamil.com"],"phone":["67196041"],"homepage":[],"organization":"Laboratoire
+        d''Ecologie Appliquée","address":["Cotonou"],"city":"Cotonou","province":"Littoral","country":"BJ","postalCode":"00229","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2021-12-13T14:17:32.657+00:00","modified":"2021-12-13T14:17:32.657+00:00"},{"key":2828444,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Majoie
+        A. S","lastName":"ATAYI GUEDEGBE","position":["Searcher"],"email":["majoieguedegbe1994@gamil.com"],"phone":["67196041"],"homepage":[],"organization":"Laboratoire
+        d''Ecologie Appliquée","address":["Cotonou"],"city":"Cotonou","province":"Littoral","country":"BJ","postalCode":"00229","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2021-12-13T14:17:32.659+00:00","modified":"2021-12-13T14:17:32.659+00:00"},{"key":2828445,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":false,"userId":[],"firstName":"John","lastName":"HOUNTON","position":[],"email":["jonhhounton.92@gmail.com"],"phone":["97256894"],"homepage":[],"address":["Abomey-Calavi"],"city":"Abomey-Calavi","province":"Atlantique","country":"BJ","postalCode":"00229","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2021-12-13T14:17:32.662+00:00","modified":"2021-12-13T14:17:32.662+00:00"}],"endpoints":[{"key":657994,"type":"DWC_ARCHIVE","url":"http://ipt.gbifbenin.org/archive.do?r=wildlife_occ","createdBy":"633602e8-4c6f-4619-b433-c4968da3ed08","modifiedBy":"633602e8-4c6f-4619-b433-c4968da3ed08","created":"2021-12-13T14:16:31.619+00:00","modified":"2021-12-13T14:16:31.619+00:00","machineTags":[]},{"key":657993,"type":"EML","url":"http://ipt.gbifbenin.org/eml.do?r=wildlife_occ","createdBy":"633602e8-4c6f-4619-b433-c4968da3ed08","modifiedBy":"633602e8-4c6f-4619-b433-c4968da3ed08","created":"2021-12-13T14:16:31.591+00:00","modified":"2021-12-13T14:16:31.591+00:00","machineTags":[]}],"machineTags":[{"key":25529941,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"172","createdBy":"crawler.gbif.org","created":"2025-06-04T05:20:57.505+00:00"}],"tags":[],"identifiers":[{"key":279687,"type":"URL","identifier":"http://ipt.gbifbenin.org/resource?r=wildlife_occ","createdBy":"crawler.gbif.org","created":"2021-12-13T14:17:32.665+00:00","primary":false}],"comments":[],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[{"description":"The
+        classified forest of Dogo-Kétou is located in southern Benin. It is under
+        the influence of a Sudanoguinean climate marked by a bimodal regime.","coverages":[{"scientificName":"Animalia","commonName":"Animal","rank":{"verbatim":"kingdom","interpreted":"KINGDOM"}}]}],"geographicCoverages":[{"description":"Southern
+        Benin","boundingBox":{"minLatitude":7.39,"maxLatitude":7.546,"minLongitude":2.42,"maxLongitude":2.516,"globalCoverage":false}}],"temporalCoverages":[{"@type":"range","start":"2013-04-02T00:00:00.000+00:00","end":"2016-10-01T00:00:00.000+00:00"}],"keywordCollections":[{"thesaurus":"GBIF
+        Dataset Type Vocabulary: http://rs.gbif.org/vocabulary/gbif/dataset_type_2015-07-10.xml","keywords":["Occurence"]},{"thesaurus":"GBIF
+        Dataset Subtype Vocabulary: http://rs.gbif.org/vocabulary/gbif/dataset_subtype.xml","keywords":["Benin","null","Wildlife","Diversity","Forest"]}],"project":{"title":"Regional
+        graduate course for capacity development in biodiversity informatics in Africa","identifier":"http://jrsbiodiversity.org/jrs-supports-capacity-development-uac-oxford-2018/
+        http://jrsbiodiversity.org/grants/uac-2018/ ","contacts":[{"type":"PRINCIPAL_INVESTIGATOR","primary":false,"userId":[],"firstName":"Jean
+        Cossi","lastName":"GANGLO","position":[],"email":[],"phone":[],"homepage":[],"address":[]}],"funding":"The
+        funding of this project is generously provided by JRS Biodiversity Foundation
+        (http://jrsbiodiversity.org/)","awards":[],"studyAreaDescription":"Actually
+        in Benin, we estimate that there are 400 – 600 working biodiversity information
+        scientists in public and private agencies. With few exceptions, the situation
+        is not much different in the rest of African countries. Those biodiversity
+        information scientists usually base their decisions - of biodiversity conservation
+        - on floristic and faunistic compositions of ecosystems and related communities
+        as well as on ecology, ethology and habitat characteristics of different species.
+        This approach becomes limiting to conserve efficiently and sustainably biodiversity
+        in the actual threatening context of climate and global changes exacerbated
+        by diverse pressures on biodiversity. To overcome that limitation, we rather
+        need a critical mass of scientists with sound knowledge in biodiversity informatics
+        to achieve relevant results on spatial distributions, ecological niches… of
+        species and different biota to inform decisions on priority areas of biodiversity.\n
+        In order to develop a trained cohort to meet national needs, we believe that
+        Benin needs to train at least an additional 20 master students. Additionally,
+        training each year at least 10 other masters and advanced students from different
+        African countries, will result in progressive but efficient creation of homes
+        of biodiversity informatics to enhance biodiversity conservation and sustainable
+        uses throughout Africa.","designDescription":"Actually in Benin, we estimate
+        that there are 400 – 600 working biodiversity information scientists in public
+        and private agencies. With few exceptions, the situation is not much different
+        in the rest of African countries. Those biodiversity information scientists
+        usually base their decisions - of biodiversity conservation - on floristic
+        and faunistic compositions of ecosystems and related communities as well as
+        on ecology, ethology and habitat characteristics of different species. This
+        approach becomes limiting to conserve efficiently and sustainably biodiversity
+        in the actual threatening context of climate and global changes exacerbated
+        by diverse pressures on biodiversity. To overcome that limitation, we rather
+        need a critical mass of scientists with sound knowledge in biodiversity informatics
+        to achieve relevant results on spatial distributions, ecological niches… of
+        species and different biota to inform decisions on priority areas of biodiversity.\n
+        In order to develop a trained cohort to meet national needs, we believe that
+        Benin needs to train at least an additional 20 master students. Additionally,
+        training each year at least 10 other masters and advanced students from different
+        African countries, will result in progressive but efficient creation of homes
+        of biodiversity informatics to enhance biodiversity conservation and sustainable
+        uses throughout Africa.","relatedProjects":[],"abstract":"Through key objectives,
+        this project is designed to overcome the challenge of lack of capacities in
+        Africa: \nObjective 1: Build in-depth capacities in biodiversity informatics
+        to students in masters program:\nAt least 20 Beninese students and 10 students
+        of other nationalities will be yearly recruited and fully capacitated in the
+        program (Months 4, 16, 28 and beyond the project) (Output 1). The courses
+        will be recorded and shared worldwide (Outcome 4).\nObjective 2: Build capacities
+        in biodiversity informatics to other GBIF Benin partners (students and professionals):\nThrough
+        workshops, at least, each year, 50 other GBIF Benin partners will be trained
+        in relevant topics of biodiversity informatics (Months 6, 12, 18, 24, 30,
+        34 and beyond) (Output 5)\nObjective 3: Fill data gaps in priority thematic
+        areas of Benin and other countries involved in the project:\nTrained students
+        will achieve data gaps analysis in priority thematic areas (Months 12 – 36
+        and beyond) (Output 6) and contribute to fill data gaps (Months 12 – 36 and
+        beyond) (Output 7). \nObjective 4: Use data to develop appropriate products
+        to inform decisions on biodiversity conservation:\nTrained students will use
+        data to address needs of information (Months 12 – 36 and beyond) (Output 8)
+        and largely disseminate the results via multimedia (Months 12 – 36 and beyond)
+        (Output 9).\nProject Objective 5: Enhance staff development:\nWe will provide
+        internship opportunities to strengthen capacities of national trainers and
+        most brilliant students to enable them to sustainably carry on the training
+        of students in the program"},"samplingDescription":{"studyExtent":"Classified
+        forest of Dogo Ketou","sampling":"Observational data","qualityControl":"Field
+        control step.\n\nData entry and formatting.\n\nChecking for duplicates.","methodSteps":["Field
+        control step.\n\nData entry and formatting.\n\nChecking for duplicates."]},"countryCoverage":[],"collections":[],"dataDescriptions":[],"dataLanguage":"eng","pubDate":"2021-12-13T00:00:00.000+00:00","maintenanceUpdateFrequency":"UNKOWN","maintenanceDescription":"","license":"http://creativecommons.org/licenses/by/4.0/legalcode"},{"key":"56f75536-c949-4e69-bd3e-8ee878949f5c","installationKey":"7ce8aef1-9e92-11dc-8740-b8a03c50a999","publishingOrganizationKey":"7ce8aef0-9e92-11dc-8738-b8a03c50a862","doi":"10.11646/zootaxa.4114.1.5","external":false,"numConstituents":0,"type":"CHECKLIST","title":"Dogielophis,
+        a replacement name for Dogielina Sobolev 1950 (Nematoda) non Bogdanowicz &
+        Woloszynova 1949 (Foraminifera)","description":"<p>This dataset contains the
+        digitized treatments in Plazi based on the original journal article Doweld,
+        Alexander B. (2016): Dogielophis, a replacement name for Dogielina Sobolev
+        1950 (Nematoda) non Bogdanowicz &amp; Woloszynova 1949 (Foraminifera). Zootaxa
+        4114 (1): 81-82, DOI: 10.11646/zootaxa.4114.1.5</p>","language":"eng","homepage":"https://tb.plazi.org/GgServer/summary/FFBFFF87851EFF9EFF801A5CE8371B30","citation":{"text":"Doweld
+        A B, plazi (2016). Dogielophis, a replacement name for Dogielina Sobolev 1950
+        (Nematoda) non Bogdanowicz & Woloszynova 1949 (Foraminifera). Plazi.org taxonomic
+        treatments database. Checklist dataset https://doi.org/10.11646/zootaxa.4114.1.5
+        accessed via GBIF.org on 2025-06-10.","citationProvidedBySource":false},"contactsCitation":[{"key":5842640,"abbreviatedName":"Doweld
+        A B","firstName":"Alexander B.","lastName":"Doweld","roles":["ORIGINATOR"],"userId":[]},{"key":5842644,"abbreviatedName":"plazi","lastName":"plazi","roles":["METADATA_AUTHOR"],"userId":[]}],"lockedForAutoUpdate":false,"createdBy":"plazi","modifiedBy":"crawler.gbif.org","created":"2019-10-28T14:15:11.950+00:00","modified":"2024-11-29T12:17:00.084+00:00","contacts":[{"key":5842640,"type":"ORIGINATOR","primary":true,"userId":[],"firstName":"Alexander
+        B.","lastName":"Doweld","position":[],"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2024-11-29T12:17:00.044+00:00","modified":"2024-11-29T12:17:00.044+00:00"},{"key":5842641,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Guido","lastName":"Sautter","position":[],"email":["sautter@plazi.org"],"phone":[],"homepage":["https://plazi.org"],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2024-11-29T12:17:00.059+00:00","modified":"2024-11-29T12:17:00.059+00:00"},{"key":5842642,"type":"PUBLISHER","primary":false,"userId":[],"position":[],"email":["magnolia@mapress.com"],"phone":[],"homepage":["https://www.mapress.com/"],"organization":"Magnolia
+        Press","address":["St. Lukes 1346"],"city":"Auckland","country":"NZ","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2024-11-29T12:17:00.062+00:00","modified":"2024-11-29T12:17:00.062+00:00"},{"key":5842643,"type":"DISTRIBUTOR","primary":false,"userId":[],"position":[],"email":["info@plazi.org"],"phone":[],"homepage":["https://plazi.org/"],"organization":"Plazi","address":[],"city":"Bern","country":"CH","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2024-11-29T12:17:00.063+00:00","modified":"2024-11-29T12:17:00.063+00:00"},{"key":5842644,"type":"METADATA_AUTHOR","primary":true,"userId":[],"lastName":"plazi","position":[],"email":[],"phone":[],"homepage":[],"organization":"Plazi","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2024-11-29T12:17:00.064+00:00","modified":"2024-11-29T12:17:00.064+00:00"}],"endpoints":[{"key":927780,"type":"DWC_ARCHIVE","url":"https://tb.plazi.org/GgServer/dwca/FFBFFF87851EFF9EFF801A5CE8371B30.zip","createdBy":"plazi","modifiedBy":"plazi","created":"2023-10-30T10:23:28.321+00:00","modified":"2023-10-30T10:23:28.321+00:00","machineTags":[]}],"machineTags":[{"key":25547396,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"274","createdBy":"crawler.gbif.org","created":"2025-06-04T23:40:50.091+00:00"}],"tags":[],"identifiers":[{"key":408651,"type":"CLB_DATASET_KEY","identifier":"25116","createdBy":"clb-bot","created":"2025-02-21T09:54:28.207+00:00","primary":false},{"key":200830,"type":"UUID","identifier":"56f75536-c949-4e69-bd3e-8ee878949f5c","createdBy":"crawler.gbif.org","created":"2019-10-28T16:04:37.807+00:00","primary":false},{"key":200777,"type":"DOI","identifier":"10.15468/9yfbjc","createdBy":"crawler.gbif.org","created":"2019-10-28T14:16:13.131+00:00","primary":false},{"key":200776,"type":"UUID","identifier":"5F0FFCE1-2196-47FB-B16C-8DC82DD5CCED","createdBy":"crawler.gbif.org","created":"2019-10-28T14:16:13.108+00:00","primary":false},{"key":200775,"type":"UUID","identifier":"FFBFFF87851EFF9EFF801A5CE8371B30","createdBy":"plazi","created":"2019-10-28T14:15:12.168+00:00","primary":false}],"comments":[],"bibliographicCitations":[{"text":"Doweld,
+        Alexander B. (2016): Dogielophis, a replacement name for Dogielina Sobolev
+        1950 (Nematoda) non Bogdanowicz & Woloszynova 1949 (Foraminifera). Zootaxa
+        4114 (1): 81-82, DOI: 10.11646/zootaxa.4114.1.5","citationProvidedBySource":false}],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[],"temporalCoverages":[],"keywordCollections":[],"countryCoverage":[],"collections":[],"dataDescriptions":[],"dataLanguage":"eng","pubDate":"2016-05-20T00:00:00.000+00:00","license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode"}]}'
+  recorded_at: 2025-06-10 14:15:59 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/deleted/?limit=3
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: '{"offset":0,"limit":3,"endOfRecords":false,"count":12750,"results":[{"key":"709cd0dd-8f0e-4ac7-9cc4-72b29a8698da","installationKey":"0a14e644-0b5a-4b59-b9b2-64577a41f8ae","publishingOrganizationKey":"7de30ffe-19bb-489f-a1fb-5e291ad006d5","networkKeys":[],"doi":"10.15468/art6jb","external":false,"numConstituents":0,"type":"OCCURRENCE","subtype":"OBSERVATION","title":"NATURING_CS_Observation_Dataset_3","description":"<p>These
+        are verified observation records from the citizen science platform NATURING(www.naturing.net).
+        NATURING is South Korea’s first biodiversity citizen science platform, launched
+        in 2014. NATURING strives to ensure that citizens’ voluntary observations
+        and records contribute to biodiversity and ecosystem conservation.\n\n</p>","language":"eng","citation":{"text":"Kang
+        H G (2025). NATURING_CS_Observation_Dataset_3. NATURING. Occurrence dataset
+        https://doi.org/10.15468/art6jb accessed via GBIF.org on 2025-05-29.","citationProvidedBySource":false},"contactsCitation":[],"lockedForAutoUpdate":false,"createdBy":"7de30ffe-19bb-489f-a1fb-5e291ad006d5","modifiedBy":"7de30ffe-19bb-489f-a1fb-5e291ad006d5","created":"2025-05-29T06:51:01.155+00:00","modified":"2025-05-29T07:38:58.819+00:00","deleted":"2025-05-29T07:38:58.819+00:00","contacts":[{"key":6119546,"type":"ORIGINATOR","primary":true,"userId":[],"firstName":"Hong
+        Gu","lastName":"Kang","position":["Founder"],"email":["birchkang@gmail.com"],"phone":[],"homepage":["https://www.naturing.net/"],"organization":"NATURING","address":[],"country":"KR","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-05-29T06:52:11.357+00:00","modified":"2025-05-29T06:52:11.357+00:00"},{"key":6119547,"type":"METADATA_AUTHOR","primary":true,"userId":[],"firstName":"Hong
+        Gu","lastName":"Kang","position":["Founder"],"email":["birchkang@gmail.com"],"phone":[],"homepage":["https://www.naturing.net/"],"organization":"NATURING","address":[],"country":"KR","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-05-29T06:52:11.359+00:00","modified":"2025-05-29T06:52:11.359+00:00"},{"key":6119548,"type":"USER","primary":false,"userId":[],"firstName":"HongGu","lastName":"Kang","position":[],"email":["birchkang@gmail.com"],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-05-29T06:52:11.360+00:00","modified":"2025-05-29T06:52:11.360+00:00"},{"key":6119549,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Hong
+        Gu","lastName":"Kang","position":["Founder"],"email":["birchkang@gmail.com"],"phone":[],"homepage":["https://www.naturing.net/"],"organization":"NATURING","address":[],"country":"KR","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-05-29T06:52:11.362+00:00","modified":"2025-05-29T06:52:11.362+00:00"}],"endpoints":[{"key":1111259,"type":"DWC_ARCHIVE","url":"https://naris.science.go.kr/kbif/archive.do?r=naturing_cs_observation_dataset_3","createdBy":"7de30ffe-19bb-489f-a1fb-5e291ad006d5","modifiedBy":"7de30ffe-19bb-489f-a1fb-5e291ad006d5","created":"2025-05-29T06:51:01.310+00:00","modified":"2025-05-29T06:51:01.310+00:00","machineTags":[]},{"key":1111258,"type":"EML","url":"https://naris.science.go.kr/kbif/eml.do?r=naturing_cs_observation_dataset_3","createdBy":"7de30ffe-19bb-489f-a1fb-5e291ad006d5","modifiedBy":"7de30ffe-19bb-489f-a1fb-5e291ad006d5","created":"2025-05-29T06:51:01.272+00:00","modified":"2025-05-29T06:51:01.272+00:00","machineTags":[]}],"machineTags":[{"key":25431841,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"1","createdBy":"crawler.gbif.org","created":"2025-05-29T06:52:05.542+00:00"}],"tags":[],"identifiers":[{"key":441753,"type":"URL","identifier":"https://naris.science.go.kr/kbif/resource?r=naturing_cs_observation_dataset_3","createdBy":"crawler.gbif.org","created":"2025-05-29T06:52:11.364+00:00","primary":false}],"comments":[],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[],"temporalCoverages":[],"keywordCollections":[],"countryCoverage":[],"collections":[],"dataDescriptions":[],"maintenanceUpdateFrequency":"UNKOWN","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode"},{"key":"87ccc2b1-ee3f-4fc7-9adf-0ff66d7c0784","installationKey":"7ce8aef1-9e92-11dc-8740-b8a03c50a999","publishingOrganizationKey":"7ce8aef0-9e92-11dc-8738-b8a03c50a862","networkKeys":[],"doi":"10.15468/uegzpc","external":false,"numConstituents":0,"type":"CHECKLIST","title":"Description
+        of Prenolepis rinpoche sp. nov. from Nepal, with discussion of Asian Prenolepis
+        species biogeography","description":"<p>This dataset contains the digitized
+        treatments in Plazi based on the original journal article Williams, Jason
+        L. (2022): Description of Prenolepis rinpoche sp. nov. from Nepal, with discussion
+        of Asian Prenolepis species biogeography. Asian Myrmecology (e 015008) 15:
+        1-9, DOI: 10.20362/am.015008, URL: http://dx.doi.org/10.15468/ucfat2</p>","language":"eng","homepage":"https://tb.plazi.org/GgServer/summary/4C43C16B3F1F8116432E49747F57FFF2","citation":{"text":"Williams
+        J L, felipe (2022). Description of Prenolepis rinpoche sp. nov. from Nepal,
+        with discussion of Asian Prenolepis species biogeography. Plazi.org taxonomic
+        treatments database. Checklist dataset https://doi.org/10.15468/uegzpc accessed
+        via GBIF.org on 2025-06-04.","citationProvidedBySource":false},"contactsCitation":[],"lockedForAutoUpdate":false,"createdBy":"plazi","modifiedBy":"plazi","created":"2025-05-26T17:28:01.313+00:00","modified":"2025-06-04T20:15:30.041+00:00","deleted":"2025-06-04T20:15:30.041+00:00","contacts":[{"key":6116387,"type":"ORIGINATOR","primary":true,"userId":[],"firstName":"Jason
+        L.","lastName":"Williams","position":[],"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-05-26T17:38:05.771+00:00","modified":"2025-05-26T17:38:05.771+00:00"},{"key":6116388,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Guido","lastName":"Sautter","position":[],"email":["sautter@plazi.org"],"phone":[],"homepage":["https://plazi.org"],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-05-26T17:38:05.774+00:00","modified":"2025-05-26T17:38:05.774+00:00"},{"key":6116389,"type":"PUBLISHER","primary":false,"userId":[],"position":[],"email":["info@plazi.org"],"phone":[],"homepage":["https://plazi.org/"],"organization":"Plazi","address":[],"city":"Bern","country":"CH","createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-05-26T17:38:05.776+00:00","modified":"2025-05-26T17:38:05.776+00:00"},{"key":6116390,"type":"METADATA_AUTHOR","primary":true,"userId":[],"lastName":"felipe","position":[],"email":[],"phone":[],"homepage":[],"organization":"Plazi","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-05-26T17:38:05.778+00:00","modified":"2025-05-26T17:38:05.778+00:00"}],"endpoints":[{"key":1110469,"type":"DWC_ARCHIVE","url":"https://tb.plazi.org/GgServer/dwca/4C43C16B3F1F8116432E49747F57FFF2.zip","createdBy":"plazi","modifiedBy":"plazi","created":"2025-05-26T17:28:01.516+00:00","modified":"2025-05-26T17:28:01.516+00:00","machineTags":[]}],"machineTags":[{"key":25516932,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"3","createdBy":"crawler.gbif.org","created":"2025-06-02T18:32:24.254+00:00"}],"tags":[],"identifiers":[{"key":441610,"type":"CLB_DATASET_KEY","identifier":"310014","createdBy":"clb-bot","created":"2025-05-27T06:22:35.766+00:00","primary":false},{"key":441597,"type":"UUID","identifier":"4C43C16B3F1F8116432E49747F57FFF2","createdBy":"plazi","created":"2025-05-26T17:28:01.434+00:00","primary":false}],"comments":[],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[],"temporalCoverages":[],"keywordCollections":[],"countryCoverage":[],"collections":[],"dataDescriptions":[],"license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode"},{"key":"55d98951-7063-4f35-85ae-d53f10c7cc33","installationKey":"e6fc90b9-c84e-4e11-b235-aa8ffd1e0832","publishingOrganizationKey":"fbd85c04-ed37-4f1d-bc12-3ef8b64036a6","networkKeys":[],"doi":"10.15468/dbygnf","external":false,"numConstituents":0,"type":"METADATA","title":"Tick
+        and mosquito collection_OH SURVECTOR project_Slovakia","description":"<p>Data
+        set containing the records of ticks and mosquitoes collected under the OH
+        SURVECTOR project in Slovakia in 2024.</p>","language":"eng","citation":{"text":"Ondrejková
+        A, Loziaková Peňazziová K, Drážovská M, Prokeš M, Csank T, Petroušková P,
+        Vargová B, Pivka S, Barbušinová E, Korytár Ľ, Korytár Ľ K (2025). Tick and
+        mosquito collection_OH SURVECTOR project_Slovakia. University of Veterinary
+        Medicine and Pharmacy in Košice. Metadata dataset https://doi.org/10.15468/dbygnf
+        accessed via GBIF.org on 2025-05-23.","citationProvidedBySource":false},"contactsCitation":[],"lockedForAutoUpdate":false,"createdBy":"fbd85c04-ed37-4f1d-bc12-3ef8b64036a6","modifiedBy":"fbd85c04-ed37-4f1d-bc12-3ef8b64036a6","created":"2025-05-23T08:29:02.100+00:00","modified":"2025-05-23T10:44:07.521+00:00","deleted":"2025-05-23T10:44:07.521+00:00","contacts":[{"key":6113118,"type":"ORIGINATOR","primary":true,"userId":[],"firstName":"Anna","lastName":"Ondrejková","position":["Professor"],"email":["anna.ondrejkova@uvlf.sk"],"phone":[],"homepage":[],"organization":"University
+        of Veterinary Medicine and Pharmacy in Košice","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-05-23T08:37:33.844+00:00","modified":"2025-05-23T08:37:33.844+00:00"},{"key":6113119,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Katarína","lastName":"Loziaková
+        Peňazziová","position":["Researcher"],"email":[],"phone":[],"homepage":[],"organization":"University
+        of Veterinary Medicine and Pharmacy in Košice","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-05-23T08:37:33.847+00:00","modified":"2025-05-23T08:37:33.847+00:00"},{"key":6113120,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Monika","lastName":"Drážovská","position":["Assistant
+        Professor"],"email":[],"phone":[],"homepage":[],"organization":"University
+        of Veterinary Medicine and Pharmacy in Košice","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-05-23T08:37:33.849+00:00","modified":"2025-05-23T08:37:33.849+00:00"},{"key":6113121,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Marián","lastName":"Prokeš","position":["Associate
+        Professor"],"email":[],"phone":[],"homepage":[],"organization":"University
+        of Veterinary Medicine and Pharmacy in Košice","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-05-23T08:37:33.850+00:00","modified":"2025-05-23T08:37:33.850+00:00"},{"key":6113122,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Tomáš","lastName":"Csank","position":["Associate
+        Professor"],"email":[],"phone":[],"homepage":[],"organization":"University
+        of Veterinary Medicine and Pharmacy in Košice","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-05-23T08:37:33.851+00:00","modified":"2025-05-23T08:37:33.851+00:00"},{"key":6113123,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Patrícia","lastName":"Petroušková","position":["Researcher"],"email":[],"phone":[],"homepage":[],"organization":"University
+        of Veterinary Medicine and Pharmacy in Košice","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-05-23T08:37:33.852+00:00","modified":"2025-05-23T08:37:33.852+00:00"},{"key":6113124,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Blažena","lastName":"Vargová","position":["Researcher"],"email":[],"phone":[],"homepage":[],"organization":"University
+        of Veterinary Medicine and Pharmacy in Košice","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-05-23T08:37:33.854+00:00","modified":"2025-05-23T08:37:33.854+00:00"},{"key":6113125,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Soňa","lastName":"Pivka","position":["Researcher"],"email":[],"phone":[],"homepage":[],"organization":"University
+        of Veterinary Medicine and Pharmacy in Košice","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-05-23T08:37:33.855+00:00","modified":"2025-05-23T08:37:33.855+00:00"},{"key":6113126,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Eva","lastName":"Barbušinová","position":["Laboratory
+        Technician"],"email":[],"phone":[],"homepage":[],"organization":"University
+        of Veterinary Medicine and Pharmacy in Košice","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-05-23T08:37:33.856+00:00","modified":"2025-05-23T08:37:33.856+00:00"},{"key":6113127,"type":"ORIGINATOR","primary":false,"userId":[],"firstName":"Ľuboš","lastName":"Korytár","position":["Associate
+        Professor"],"email":[],"phone":[],"homepage":[],"organization":"University
+        of Veterinary Medicine and Pharmacy in Košice","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-05-23T08:37:33.858+00:00","modified":"2025-05-23T08:37:33.858+00:00"},{"key":6113128,"type":"METADATA_AUTHOR","primary":true,"userId":[],"firstName":"Anna","lastName":"Ondrejková","position":["Professor"],"email":["anna.ondrejkova@uvlf.sk"],"phone":[],"homepage":[],"organization":"University
+        of Veterinary Medicine and Pharmacy in Košice","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-05-23T08:37:33.859+00:00","modified":"2025-05-23T08:37:33.859+00:00"},{"key":6113129,"type":"METADATA_AUTHOR","primary":false,"userId":[],"firstName":"Ľuboš
+        Korytár","lastName":"Korytár","position":["Assistant Professor"],"email":["lubos.korytar@uvlf.sk"],"phone":[],"homepage":[],"organization":"University
+        of Veterinary Medicine and Pharmacy in Košice","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-05-23T08:37:33.860+00:00","modified":"2025-05-23T08:37:33.860+00:00"},{"key":6113130,"type":"METADATA_AUTHOR","primary":false,"userId":[],"firstName":"Katarína","lastName":"Loziaková
+        Peňazziová","position":["Researcher"],"email":["katarina.penazziova@uvlf.sk"],"phone":[],"homepage":[],"organization":"The
+        University of Veterinary Medicine and Pharmacy in Košice","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-05-23T08:37:33.861+00:00","modified":"2025-05-23T08:37:33.861+00:00"},{"key":6113131,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Anna","lastName":"Ondrejková","position":["Professor"],"email":["anna.ondrejkova@uvlf.sk"],"phone":[],"homepage":[],"organization":"University
+        of Veterinary Medicine and Pharmacy in Košice","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-05-23T08:37:33.862+00:00","modified":"2025-05-23T08:37:33.862+00:00"},{"key":6113132,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":false,"userId":[],"firstName":"Ľuboš","lastName":"Korytár","position":["Associate
+        Professor"],"email":["lubos.korytar@uvlf.sk"],"phone":[],"homepage":[],"organization":"University
+        of Veterinary Medicine and Pharmacy in Košice","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-05-23T08:37:33.864+00:00","modified":"2025-05-23T08:37:33.864+00:00"},{"key":6113133,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":false,"userId":[],"firstName":"Katarína","lastName":"Loziaková
+        Peňazziová","position":["Researcher"],"email":["katarina.penazziova@uvlf.sk"],"phone":[],"homepage":[],"organization":"The
+        University of Veterinary Medicine and Pharmacy in Košice","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-05-23T08:37:33.865+00:00","modified":"2025-05-23T08:37:33.865+00:00"}],"endpoints":[{"key":1109811,"type":"EML","url":"https://slovakia.ipt.gbif.no/eml.do?r=ohsurvectorprojectslovakia2024","createdBy":"fbd85c04-ed37-4f1d-bc12-3ef8b64036a6","modifiedBy":"fbd85c04-ed37-4f1d-bc12-3ef8b64036a6","created":"2025-05-23T08:29:11.872+00:00","modified":"2025-05-23T08:29:11.872+00:00","machineTags":[]}],"machineTags":[{"key":25346464,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"2","createdBy":"crawler.gbif.org","created":"2025-05-23T08:38:34.128+00:00"}],"tags":[],"identifiers":[{"key":441487,"type":"URL","identifier":"https://slovakia.ipt.gbif.no/resource?r=ohsurvectorprojectslovakia2024","createdBy":"crawler.gbif.org","created":"2025-05-23T08:37:33.867+00:00","primary":false}],"comments":[],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[],"temporalCoverages":[],"keywordCollections":[],"countryCoverage":[],"collections":[],"dataDescriptions":[],"maintenanceUpdateFrequency":"UNKOWN","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode"}]}'
+  recorded_at: 2025-06-10 14:15:59 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0

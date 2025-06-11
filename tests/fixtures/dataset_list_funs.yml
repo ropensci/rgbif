@@ -1,0 +1,36 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/dataset/withNoEndpoint/?limit=3
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: '{"offset":0,"limit":3,"endOfRecords":false,"count":8,"results":[{"key":"642e32fa-9593-4710-b45f-bbd3ebfc5e12","installationKey":"dc9d8bd0-3c20-4fba-b7ff-26d654817ea7","publishingOrganizationKey":"23e067c0-a255-11da-beae-b8a03c50a862","networkKeys":[],"doi":"10.15468/u3n99t","external":false,"numConstituents":0,"type":"METADATA","title":"SCN-122:
+        Rapid digitization of herbarium specimens by conveyor belt.","description":"Occurrences
+        : https://www.gbif.org/occurrence/search?dataset_name=https://doi.org/10.15468/u3n99t","language":"eng","citation":{"text":"GBIF
+        Swiss Node. SCN-122: Rapid digitization of herbarium specimens by conveyor
+        belt.. Metadata dataset https://doi.org/10.15468/u3n99t accessed via GBIF.org
+        on 2025-06-10.","citationProvidedBySource":false},"contactsCitation":[],"lockedForAutoUpdate":false,"createdBy":"sofiawyler","modifiedBy":"sofiawyler","created":"2025-06-10T10:08:29.321+00:00","modified":"2025-06-10T10:20:51.631+00:00","contacts":[{"key":6133437,"type":"AUTHOR","primary":false,"userId":[],"firstName":"Katja","lastName":"Rembold","position":["Curator"],"email":["katja.rembold@boga.unibe.ch"],"phone":["+41
+        31 684 49 38+41 31 684 49 82"],"homepage":[],"organization":"Herbarium of
+        the Botanical Garden of the University of Bern","address":[],"city":"Bern","province":"BE","country":"CH","postalCode":"3013","createdBy":"sofiawyler","modifiedBy":"sofiawyler","created":"2025-06-10T10:12:59.651+00:00","modified":"2025-06-10T10:12:59.651+00:00"}],"endpoints":[],"machineTags":[],"tags":[],"identifiers":[],"comments":[],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[],"temporalCoverages":[],"keywordCollections":[],"countryCoverage":[],"collections":[],"dataDescriptions":[],"maintenanceUpdateFrequency":"AS_NEEDED","license":"http://creativecommons.org/licenses/by/4.0/legalcode"},{"key":"8e374f0d-90b1-4654-9123-07e160db1794","installationKey":"7ce8aef1-9e92-11dc-8740-b8a03c50a999","publishingOrganizationKey":"7ce8aef0-9e92-11dc-8738-b8a03c50a862","networkKeys":[],"doi":"10.15468/ufsuh7","external":false,"numConstituents":0,"type":"CHECKLIST","title":"Typification
+        of the name Erodium soluntinum Tod. (Geraniaceae) and its taxonomic implications","language":"eng","citation":{"text":"Plazi.org
+        taxonomic treatments database: Typification of the name Erodium soluntinum
+        Tod. (Geraniaceae) and its taxonomic implications","citationProvidedBySource":false},"contactsCitation":[],"lockedForAutoUpdate":false,"createdBy":"plazi","modifiedBy":"plazi","created":"2024-09-07T02:12:04.095+00:00","modified":"2024-09-07T02:12:04.095+00:00","contacts":[],"endpoints":[],"machineTags":[],"tags":[],"identifiers":[],"comments":[],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[],"temporalCoverages":[],"keywordCollections":[],"countryCoverage":[],"collections":[],"dataDescriptions":[],"license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode"},{"key":"c94ada4c-39a6-4860-95ab-c283964dfe07","installationKey":"e44d0fd7-0edf-477f-aa82-50a81836ab46","publishingOrganizationKey":"1928bdf0-f5d2-11dc-8c12-b8a03c50a862","networkKeys":[],"doi":"10.15468/ybybmf","external":false,"numConstituents":0,"type":"OCCURRENCE","title":"Dataset
+        4ca0e3ae-5814-4cf4-8d6e-ae835f50ccac","description":"Dataset 4ca0e3ae-5814-4cf4-8d6e-ae835f50ccac","language":"eng","citation":{"text":"UMS
+        PatriNat (OFB-CNRS-MNHN), Paris: Dataset 4ca0e3ae-5814-4cf4-8d6e-ae835f50ccac","citationProvidedBySource":false},"contactsCitation":[],"lockedForAutoUpdate":false,"createdBy":"connexion_gbif_france","modifiedBy":"connexion_gbif_france","created":"2023-04-20T12:55:37.108+00:00","modified":"2023-04-20T12:55:37.108+00:00","contacts":[],"endpoints":[],"machineTags":[],"tags":[],"identifiers":[],"comments":[],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[],"temporalCoverages":[],"keywordCollections":[],"countryCoverage":[],"collections":[],"dataDescriptions":[],"license":"http://creativecommons.org/licenses/by/4.0/legalcode"}]}'
+  recorded_at: 2025-06-10 14:16:08 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0

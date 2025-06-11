@@ -1,0 +1,44 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/installation/deleted?limit=2
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjoyLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MTEyOCwicmVz
+        dWx0cyI6W3sia2V5IjoiODU3ODM3MTgtOWM4ZC00NDM0LTg5ZDgtZGE2YzBiOTcxNjA3Iiwib3JnYW5p
+        emF0aW9uS2V5IjoiZmNjYzY3NDAtYmJiMS0xMWQ5LTgzOWYtYjhhMDNjNTBhODYyIiwidHlwZSI6IkhU
+        VFBfSU5TVEFMTEFUSU9OIiwidGl0bGUiOiJJTkFUVVJBIGh0dHAgaW5zdGFsbGF0aW9uIiwiZGVzY3Jp
+        cHRpb24iOiJJTkFUVVJBIGh0dHAgaW5zdGFsbGF0aW9uIiwiY3JlYXRlZEJ5IjoiYW5kcmVhIiwibW9k
+        aWZpZWRCeSI6ImFuZHJlYSIsImNyZWF0ZWQiOiIyMDI1LTA1LTIzVDExOjAyOjM4LjA4MiswMDowMCIs
+        Im1vZGlmaWVkIjoiMjAyNS0wNS0yM1QxMTowNDo0Ni4wMjMrMDA6MDAiLCJkZWxldGVkIjoiMjAyNS0w
+        NS0yM1QxMTowNDo0Ni4wMjMrMDA6MDAiLCJkaXNhYmxlZCI6ZmFsc2UsImNvbnRhY3RzIjpbXSwiZW5k
+        cG9pbnRzIjpbXSwibWFjaGluZVRhZ3MiOltdLCJ0YWdzIjpbXSwiaWRlbnRpZmllcnMiOltdLCJjb21t
+        ZW50cyI6W119LHsia2V5IjoiNWIyNTc1NzQtNzhlNS00MDhjLTk0ZDUtNzJlMjQxZjAzYjhjIiwib3Jn
+        YW5pemF0aW9uS2V5IjoiOTY3MTBkYzgtZmVjYi00NDBkLWFlM2UtYzM0YWU4YTk2MTZmIiwidHlwZSI6
+        IlNZTUJJT1RBX0lOU1RBTExBVElPTiIsInRpdGxlIjoiQ29uc29ydGl1bSBvZiBNaWR3ZXN0IEhlcmJh
+        cmlhIiwiY3JlYXRlZEJ5Ijoic3ltYi1zZWluZXQiLCJtb2RpZmllZEJ5IjoiaHZhbGxpIiwiY3JlYXRl
+        ZCI6IjIwMjUtMDEtMjRUMTQ6Mzc6NTYuMTY4KzAwOjAwIiwibW9kaWZpZWQiOiIyMDI1LTAyLTI0VDEy
+        OjEyOjEyLjkwNCswMDowMCIsImRlbGV0ZWQiOiIyMDI1LTAyLTI0VDEyOjEyOjEyLjkwNCswMDowMCIs
+        ImRpc2FibGVkIjpmYWxzZSwiY29udGFjdHMiOltdLCJlbmRwb2ludHMiOltdLCJtYWNoaW5lVGFncyI6
+        W10sInRhZ3MiOltdLCJpZGVudGlmaWVycyI6W10sImNvbW1lbnRzIjpbeyJrZXkiOjM3NjE2LCJjb250
+        ZW50IjoiQ1NTOiBkZWxldGVkIHRoZSBpbnN0YWxsYXRpb24gdXBvbiBoZWxwZGVzayByZXF1ZXN0Iiwi
+        Y3JlYXRlZEJ5IjoiaHZhbGxpIiwibW9kaWZpZWRCeSI6Imh2YWxsaSIsImNyZWF0ZWQiOiIyMDI1LTAy
+        LTI0VDEyOjEzOjQ2LjE5OSswMDowMCIsIm1vZGlmaWVkIjoiMjAyNS0wMi0yNFQxMjoxMzo0Ni4xOTkr
+        MDA6MDAifV19XX0=
+  recorded_at: 2025-06-10 14:16:42 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0

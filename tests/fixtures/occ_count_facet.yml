@@ -1,0 +1,165 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?limit=0&offset=0&facet=year&facetLimit=
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MzE3NDkyMjU2
+        NywicmVzdWx0cyI6W10sImZhY2V0cyI6W3siZmllbGQiOiJZRUFSIiwiY291bnRzIjpbeyJuYW1lIjoi
+        MjAyMyIsImNvdW50IjoyODc2MzY1Njl9LHsibmFtZSI6IjIwMjIiLCJjb3VudCI6MjcwNjc1NjUxfSx7
+        Im5hbWUiOiIyMDIxIiwiY291bnQiOjI1Mzg0NDU0MX0seyJuYW1lIjoiMjAyMCIsImNvdW50IjoyMjI3
+        Mjc5MTJ9LHsibmFtZSI6IjIwMTkiLCJjb3VudCI6MTkzMDY4MjE1fSx7Im5hbWUiOiIyMDE4IiwiY291
+        bnQiOjE2NzUzMjczOX0seyJuYW1lIjoiMjAxNyIsImNvdW50IjoxNDI2OTM5MDR9LHsibmFtZSI6IjIw
+        MTYiLCJjb3VudCI6MTI2NzU1NDQ2fSx7Im5hbWUiOiIyMDE1IiwiY291bnQiOjExMTI2MjYxNn0seyJu
+        YW1lIjoiMjAxNCIsImNvdW50IjoxMDA4NjYwNDV9XX1dfQ==
+  recorded_at: 2025-06-10 14:18:41 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facet=year&facetLimit=&year=2000%2C2003&taxonKey=212
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6NDIwMjUxMzgs
+        InJlc3VsdHMiOltdLCJmYWNldHMiOlt7ImZpZWxkIjoiWUVBUiIsImNvdW50cyI6W3sibmFtZSI6IjIw
+        MDMiLCJjb3VudCI6MTE4NDM1NzF9LHsibmFtZSI6IjIwMDIiLCJjb3VudCI6MTA0ODE4ODZ9LHsibmFt
+        ZSI6IjIwMDEiLCJjb3VudCI6MTAxODI4ODd9LHsibmFtZSI6IjIwMDAiLCJjb3VudCI6OTUxNjc5NH1d
+        fV19
+  recorded_at: 2025-06-10 14:18:41 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facet=country&facetLimit=2
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MzExODMzMDk5
+        OCwicmVzdWx0cyI6W10sImZhY2V0cyI6W3siZmllbGQiOiJDT1VOVFJZIiwiY291bnRzIjpbeyJuYW1l
+        IjoiVVMiLCJjb3VudCI6MTA5NzQ2MDU2OH0seyJuYW1lIjoiRlIiLCJjb3VudCI6MTk1NjA5NjcwfV19
+        XX0=
+  recorded_at: 2025-06-10 14:18:41 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?limit=0&offset=0&facet=occurrenceStatus&facetLimit=
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MzE3NDkyMjU2
+        NywicmVzdWx0cyI6W10sImZhY2V0cyI6W3siZmllbGQiOiJPQ0NVUlJFTkNFX1NUQVRVUyIsImNvdW50
+        cyI6W3sibmFtZSI6IlBSRVNFTlQiLCJjb3VudCI6MzExODMzMDk5OH0seyJuYW1lIjoiQUJTRU5UIiwi
+        Y291bnQiOjU2NTkxNTY5fV19XX0=
+  recorded_at: 2025-06-10 14:18:41 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facet=basisOfRecord&facetLimit=&organismQuantity=5&basisOfRecord=MATERIAL_SAMPLE
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MTE1MTQwNiwi
+        cmVzdWx0cyI6W10sImZhY2V0cyI6W3siZmllbGQiOiJCQVNJU19PRl9SRUNPUkQiLCJjb3VudHMiOlt7
+        Im5hbWUiOiJNQVRFUklBTF9TQU1QTEUiLCJjb3VudCI6MTE1MTQwNn1dfV19
+  recorded_at: 2025-06-10 14:18:41 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facet=coordinateUncertaintyInMeters&facetLimit=&verbatimScientificName=Calopteryx%20splendens&verbatimScientificName=Calopteryx%20virgo
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6Mzc0ODEyLCJy
+        ZXN1bHRzIjpbXSwiZmFjZXRzIjpbeyJmaWVsZCI6IkNPT1JESU5BVEVfVU5DRVJUQUlOVFlfSU5fTUVU
+        RVJTIiwiY291bnRzIjpbeyJuYW1lIjoiNTAwMC4wIiwiY291bnQiOjEwNzMwN30seyJuYW1lIjoiNzAu
+        NyIsImNvdW50Ijo2ODgyMX0seyJuYW1lIjoiNzA3LjEiLCJjb3VudCI6MzI3NDJ9LHsibmFtZSI6Ijcu
+        MSIsImNvdW50IjoyMTg1OH0seyJuYW1lIjoiMjUwLjAiLCJjb3VudCI6MTU2NDR9LHsibmFtZSI6IjI1
+        LjAiLCJjb3VudCI6MTE1NDJ9LHsibmFtZSI6IjEwMC4wIiwiY291bnQiOjEwNDAzfSx7Im5hbWUiOiI1
+        LjAiLCJjb3VudCI6MTAyNTh9LHsibmFtZSI6IjcwNzEuMSIsImNvdW50Ijo3MDAwfSx7Im5hbWUiOiIx
+        MC4wIiwiY291bnQiOjUwOTV9XX1dfQ==
+  recorded_at: 2025-06-10 14:18:41 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
