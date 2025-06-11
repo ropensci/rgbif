@@ -52,3 +52,4 @@ readme_contributors.txt
 vignettes/
 ^LICENSE\.md$
 ^CRAN-SUBMISSION$
+^\.github$
