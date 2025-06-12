@@ -15,39 +15,40 @@
     "url": "https://r-project.org"
   },
   "runtimePlatform": "R version 4.2.3 (2023-03-15 ucrt)",
+  "provider": {
+    "@id": "https://cran.r-project.org",
+    "@type": "Organization",
+    "name": "Comprehensive R Archive Network (CRAN)",
+    "url": "https://cran.r-project.org"
+  },
   "author": [
     {
       "@type": "Person",
       "givenName": "Scott",
-      "familyName": "Chamberlain",
-      "@id": "https://orcid.org/0000-0003-1444-9135"
+      "familyName": "Chamberlain"
     },
     {
       "@type": "Person",
       "givenName": "Damiano",
-      "familyName": "Oldoni",
-      "@id": "https://orcid.org/0000-0003-3445-7562"
+      "familyName": "Oldoni"
     },
     {
       "@type": "Person",
       "givenName": "John",
       "familyName": "Waller",
-      "email": "jwaller@gbif.org",
-      "@id": "https://orcid.org/0000-0002-7302-5976"
+      "email": "jwaller@gbif.org"
     }
   ],
   "contributor": [
     {
       "@type": "Person",
       "givenName": "Vijay",
-      "familyName": "Barve",
-      "@id": "https://orcid.org/0000-0002-4852-2567"
+      "familyName": "Barve"
     },
     {
       "@type": "Person",
       "givenName": "Peter",
-      "familyName": "Desmet",
-      "@id": "https://orcid.org/0000-0002-8442-8025"
+      "familyName": "Desmet"
     },
     {
       "@type": "Person",
@@ -57,14 +58,12 @@
     {
       "@type": "Person",
       "givenName": "Dan",
-      "familyName": "Mcglinn",
-      "@id": "https://orcid.org/0000-0003-2359-3526"
+      "familyName": "Mcglinn"
     },
     {
       "@type": "Person",
       "givenName": "Karthik",
-      "familyName": "Ram",
-      "@id": "https://orcid.org/0000-0002-0233-1757"
+      "familyName": "Ram"
     }
   ],
   "funder": [
@@ -78,122 +77,268 @@
       "@type": "Person",
       "givenName": "John",
       "familyName": "Waller",
-      "email": "jwaller@gbif.org",
-      "@id": "https://orcid.org/0000-0002-7302-5976"
+      "email": "jwaller@gbif.org"
     }
   ],
   "softwareSuggestions": [
     {
       "@type": "SoftwareApplication",
       "identifier": "testthat",
-      "name": "testthat"
+      "name": "testthat",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=testthat"
     },
     {
       "@type": "SoftwareApplication",
       "identifier": "png",
-      "name": "png"
+      "name": "png",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=png"
     },
     {
       "@type": "SoftwareApplication",
       "identifier": "terra",
-      "name": "terra"
+      "name": "terra",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=terra"
     },
     {
       "@type": "SoftwareApplication",
       "identifier": "magick",
-      "name": "magick"
+      "name": "magick",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=magick"
     },
     {
       "@type": "SoftwareApplication",
       "identifier": "protolite",
       "name": "protolite",
-      "version": ">= 2.0"
+      "version": ">= 2.0",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=protolite"
     },
     {
       "@type": "SoftwareApplication",
       "identifier": "sf",
-      "name": "sf"
+      "name": "sf",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=sf"
     },
     {
       "@type": "SoftwareApplication",
       "identifier": "vcr",
       "name": "vcr",
-      "version": ">= 1.2.0"
+      "version": ">= 1.2.0",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=vcr"
     },
     {
       "@type": "SoftwareApplication",
       "identifier": "knitr",
-      "name": "knitr"
+      "name": "knitr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=knitr"
     },
     {
       "@type": "SoftwareApplication",
       "identifier": "rmarkdown",
-      "name": "rmarkdown"
+      "name": "rmarkdown",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
     },
     {
       "@type": "SoftwareApplication",
       "identifier": "bit64",
-      "name": "bit64"
+      "name": "bit64",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=bit64"
     }
   ],
   "softwareRequirements": {
     "1": {
       "@type": "SoftwareApplication",
       "identifier": "xml2",
-      "name": "xml2"
+      "name": "xml2",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=xml2"
     },
     "2": {
       "@type": "SoftwareApplication",
       "identifier": "ggplot2",
-      "name": "ggplot2"
+      "name": "ggplot2",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=ggplot2"
     },
     "3": {
       "@type": "SoftwareApplication",
       "identifier": "crul",
       "name": "crul",
-      "version": ">= 0.7.4"
+      "version": ">= 0.7.4",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=crul"
     },
     "4": {
       "@type": "SoftwareApplication",
       "identifier": "data.table",
-      "name": "data.table"
+      "name": "data.table",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=data.table"
     },
     "5": {
       "@type": "SoftwareApplication",
       "identifier": "whisker",
-      "name": "whisker"
+      "name": "whisker",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=whisker"
     },
     "6": {
       "@type": "SoftwareApplication",
       "identifier": "magrittr",
-      "name": "magrittr"
+      "name": "magrittr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=magrittr"
     },
     "7": {
       "@type": "SoftwareApplication",
       "identifier": "jsonlite",
       "name": "jsonlite",
-      "version": ">= 1.6"
+      "version": ">= 1.6",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=jsonlite"
     },
     "8": {
       "@type": "SoftwareApplication",
       "identifier": "oai",
       "name": "oai",
-      "version": ">= 0.2.2"
+      "version": ">= 0.2.2",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=oai"
     },
     "9": {
       "@type": "SoftwareApplication",
       "identifier": "tibble",
-      "name": "tibble"
+      "name": "tibble",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=tibble"
     },
     "10": {
       "@type": "SoftwareApplication",
       "identifier": "lazyeval",
-      "name": "lazyeval"
+      "name": "lazyeval",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=lazyeval"
     },
     "11": {
       "@type": "SoftwareApplication",
       "identifier": "R6",
-      "name": "R6"
+      "name": "R6",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=R6"
     },
     "12": {
       "@type": "SoftwareApplication",
@@ -203,14 +348,21 @@
     "13": {
       "@type": "SoftwareApplication",
       "identifier": "wk",
-      "name": "wk"
+      "name": "wk",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=wk"
     },
     "SystemRequirements": null
   },
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://ropensci.org",
-  "keywords": ["GBIF", "specimens", "API", "web-services", "occurrences", "species", "taxonomy"],
-  "fileSize": "11693.485KB",
+  "keywords": ["GBIF", "specimens", "API", "web-services", "occurrences", "species", "taxonomy", "gbif", "api", "data", "biodiversity", "rstats", "r", "spocc", "r-package", "lifewatch", "oscibio"],
+  "fileSize": "11693.442KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -284,6 +436,7 @@
     }
   ],
   "releaseNotes": "https://github.com/ropensci/rgbif/blob/master/NEWS.md",
+  "readme": "https://github.com/ropensci/rgbif/blob/master/README.md",
   "contIntegration": ["https://github.com/ropensci/rgbif/actions?query=workflow%3AR-CMD-check", "https://github.com/ropensci/rgbif/actions?query=workflow%3AR-check-real-requests", "https://codecov.io/github/ropensci/rgbif?branch=master"],
   "developmentStatus": "https://www.repostatus.org/#active"
 }
