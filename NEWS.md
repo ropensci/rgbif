@@ -1,3 +1,20 @@
+rgbif 3.8.2
+===========
+
+### NEW FEATURES
+
+`occ_download_doi()` accepts a GBIF download DOI and returns the download key. (#743)
+`occ_download()` now supports download via `institutionKey`. (#785)
+
+## BUG FIXES
+
+Fixed double import bug in `occ_download_import()`. (#765)
+Fixed URL encoding bug in `name_backbone_checklist()`. (#784)
+
+### DOCUMENTATION
+
+Several small improvements to the docs. (#777) (#776) (#773) (#763) (#758)
+
 rgbif 3.8.1
 ===========
 

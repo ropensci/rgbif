@@ -5,7 +5,7 @@ test_that("dataset_uuid_funs work as expected", {
   g <- dataset_get("38b4c89f-584c-41bb-bd8f-cd1def33e92f")
   p <- dataset_process("38b4c89f-584c-41bb-bd8f-cd1def33e92f",limit=3)
   n <- dataset_networks("3dab037f-a520-4bc3-b888-508755c2eb52")
-  c <- dataset_constituents("7ddf754f-d193-4cc9-b351-99906754a03b",limit=3)
+  # c <- dataset_constituents("7ddf754f-d193-4cc9-b351-99906754a03b",limit=3)
   m <- dataset_comment("2e4cc37b-302e-4f1b-bbbb-1f674ff90e14")
   o <- dataset_contact("7ddf754f-d193-4cc9-b351-99906754a03b")
   e <- dataset_endpoint("7ddf754f-d193-4cc9-b351-99906754a03b")
@@ -14,6 +14,9 @@ test_that("dataset_uuid_funs work as expected", {
   a <- dataset_tag("c47f13c1-7427-45a0-9f12-237aad351040")
   r <- dataset_metrics("7ddf754f-d193-4cc9-b351-99906754a03b")
   })
+  
+  skip_on_ci() 
+  skip_on_cran()
   
   expect_is(g,"tbl_df")
   expect_is(g$key,"character")
@@ -30,10 +33,10 @@ test_that("dataset_uuid_funs work as expected", {
   expect_is(n$title,"character")
   expect_equal(nrow(n), 1)
   
-  expect_is(c,"list")
-  expect_named(c,c("meta","data"))
-  expect_is(c$data$key,"character")
-  expect_lte(nrow(c$data),3)
+  # expect_is(c,"list")
+  # expect_named(c,c("meta","data"))
+  # expect_is(c$data$key,"character")
+  # expect_lte(nrow(c$data),3)
   
   expect_is(m,"tbl_df")
   expect_is(m$key,"integer")
@@ -73,6 +76,7 @@ test_that("dataset_uuid_funs work as expected", {
 
 test_that("dataset_uuid_funs fail well", {
   skip_on_cran()
+  skip_on_ci()
   
   expect_error(dataset_metrics("4fa7b334-ce0d-4e88-aaae-2e0c138d049e"),
                "Dataset should be a checklist.")

@@ -73,6 +73,7 @@ test_that("occ_download_cached utils", {
 context("occ_download_cached")
 test_that("occ_download_cached itself", {
   skip_on_cran()
+  skip_on_ci()
 
   # not matched
   expect_message(

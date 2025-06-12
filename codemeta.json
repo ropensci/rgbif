@@ -8,7 +8,7 @@
   "codeRepository": "https://github.com/ropensci/rgbif",
   "issueTracker": "https://github.com/ropensci/rgbif/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "3.8.1",
+  "version": "3.8.2",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -25,35 +25,30 @@
     {
       "@type": "Person",
       "givenName": "Scott",
-      "familyName": "Chamberlain",
-      "@id": "https://orcid.org/0000-0003-1444-9135"
+      "familyName": "Chamberlain"
     },
     {
       "@type": "Person",
       "givenName": "Damiano",
-      "familyName": "Oldoni",
-      "@id": "https://orcid.org/0000-0003-3445-7562"
+      "familyName": "Oldoni"
     },
     {
       "@type": "Person",
       "givenName": "John",
       "familyName": "Waller",
-      "email": "jwaller@gbif.org",
-      "@id": "https://orcid.org/0000-0002-7302-5976"
+      "email": "jwaller@gbif.org"
     }
   ],
   "contributor": [
     {
       "@type": "Person",
       "givenName": "Vijay",
-      "familyName": "Barve",
-      "@id": "https://orcid.org/0000-0002-4852-2567"
+      "familyName": "Barve"
     },
     {
       "@type": "Person",
       "givenName": "Peter",
-      "familyName": "Desmet",
-      "@id": "https://orcid.org/0000-0002-8442-8025"
+      "familyName": "Desmet"
     },
     {
       "@type": "Person",
@@ -63,14 +58,12 @@
     {
       "@type": "Person",
       "givenName": "Dan",
-      "familyName": "Mcglinn",
-      "@id": "https://orcid.org/0000-0003-2359-3526"
+      "familyName": "Mcglinn"
     },
     {
       "@type": "Person",
       "givenName": "Karthik",
-      "familyName": "Ram",
-      "@id": "https://orcid.org/0000-0002-0233-1757"
+      "familyName": "Ram"
     }
   ],
   "funder": [
@@ -84,8 +77,7 @@
       "@type": "Person",
       "givenName": "John",
       "familyName": "Waller",
-      "email": "jwaller@gbif.org",
-      "@id": "https://orcid.org/0000-0002-7302-5976"
+      "email": "jwaller@gbif.org"
     }
   ],
   "softwareSuggestions": [
@@ -198,6 +190,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "bit64",
+      "name": "bit64",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=bit64"
     }
   ],
   "softwareRequirements": {
@@ -358,11 +362,11 @@
   "applicationCategory": "Biodiversity",
   "isPartOf": "https://ropensci.org",
   "keywords": ["GBIF", "specimens", "API", "web-services", "occurrences", "species", "taxonomy", "gbif", "api", "data", "biodiversity", "rstats", "r", "spocc", "r-package", "lifewatch", "oscibio"],
-  "fileSize": "11403.838KB",
+  "fileSize": "11693.442KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
-      "datePublished": "2024",
+      "datePublished": "2025",
       "author": [
         {
           "@type": "Person",
@@ -402,7 +406,7 @@
       ],
       "name": "rgbif: Interface to the Global Biodiversity Information Facility API",
       "url": "https://CRAN.R-project.org/package=rgbif",
-      "description": "R package version 3.8.1"
+      "description": "R package version 3.8.2"
     },
     {
       "@type": "ScholarlyArticle",
