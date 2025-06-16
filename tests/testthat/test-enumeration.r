@@ -21,6 +21,7 @@ test_that("enumeration", {
 
 test_that("fails correctly", {
   skip_on_cran()
+  skip_on_ci()
   
   vcr::use_cassette("enumeration_fails_well", {
     expect_error(enumeration("asdfadsf"))

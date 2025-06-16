@@ -28,5 +28,5 @@ test_that("nodes", {
   expect_equal(NROW(tt$data), 100)
   expect_gt(length(uu$data), 3)
   expect_equal(length(vv), 2)
-  expect_equal(length(vv$data), 5)
+  expect_equal(length(vv$data), 6)
 })

@@ -474,6 +474,19 @@ test_that("name_backbone_checklist is_alternative works as expected", {
   
 })
 
+test_that("name_backbone_checklist returns the same as name_backbone", {
+  skip_on_cran()
+  skip_on_ci()
+  
+  bb <- name_backbone("Aeonium canariense (L.) Webb & Berthel. subsp. latifolium (Burchard) Bañares")$usageKey
+  cc <- name_backbone_checklist("Aeonium canariense (L.) Webb & Berthel. subsp. latifolium (Burchard) Bañares")$usageKey
+  
+  expect_equal(bb, cc)
+  
+})
+
+
+
 # test_that("test status codes", {
 #   skip_on_cran()
 #   skip_on_ci()

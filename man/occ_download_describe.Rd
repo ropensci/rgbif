@@ -8,7 +8,7 @@ occ_download_describe(x = "dwca")
 }
 \arguments{
 \item{x}{a character string (default: "dwca"). Accepted values:
-"simpleCsv", "simpleAvro", "simpleParquet","speciesList".}
+"simpleCsv", "simpleAvro", "simpleParquet","speciesList", "sql".}
 }
 \value{
 a list.
@@ -25,5 +25,6 @@ is considered experimental by GBIF, so the output might change in the future.
 occ_download_describe("dwca")$verbatimFields
 occ_download_describe("dwca")$verbatimExtensions
 occ_download_describe("simpleCsv")$fields
+occ_download_describe("sql")$fields
 }
 }
