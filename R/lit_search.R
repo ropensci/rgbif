@@ -28,7 +28,7 @@
 #' @param journalSource (character) Journal of publication.
 #' @param journalPublisher (character) Publisher of journal.
 #' @param flatten (logical) should any lists in the resulting data be flattened
-#' into comma-seperated strings?
+#' into comma-separated strings?
 #' @param limit how many records to return. limit=NULL will fetch up to 10,000. 
 #' @param curlopts list of named curl options passed on to HttpClient. 
 #' see curl::curl_options for curl options.
