@@ -7,7 +7,7 @@
 #' @param data (character) The type of data to get. One or more of:
 #' 'organization', 'contact', 'endpoint', 'identifier', 'tag', 'machineTag',
 #' 'comment', 'hostedDataset', 'ownedDataset', 'deleted', 'pending',
-#' 'nonPublishing', or the special 'all'. Default: `'all'`
+#' 'nonPublishing', 'installation' or the special 'all'. Default: `'all'`
 #' @param country (character) Filters by country. 
 #' @param uuid (character) UUID of the data node provider. This must be
 #' specified if data is anything other than 'all', 'deleted', 'pending', or
@@ -29,6 +29,7 @@
 #' organizations(data='pending')
 #' organizations(data=c('contact','endpoint'),
 #'   uuid="4b4b2111-ee51-45f5-bf5e-f535f4a1c9dc")
+#' organizations(data="installation", uuid="96710dc8-fecb-440d-ae3e-c34ae8a9616f")    
 #'
 #' # Pass on curl options
 #' organizations(query="spain", curlopts = list(verbose=TRUE))
@@ -53,7 +54,7 @@ organizations <- function(data = 'all', country = NULL, uuid = NULL,
                     choices = c('all', 'organization', 'contact', 'endpoint',
                               'identifier', 'tag', 'machineTag', 'comment',
                               'hostedDataset', 'ownedDataset', 'deleted',
-                              'pending', 'nonPublishing'), several.ok = TRUE)
+                              'pending', 'nonPublishing', 'installation'), several.ok = TRUE)
 
   # Define function to get data
   getdata <- function(x){

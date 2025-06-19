@@ -39,6 +39,8 @@ dataset_search(
   hostingCountry = NULL,
   networkKey = NULL,
   doi = NULL,
+  installationKey = NULL,
+  endpointType = NULL,
   facet = NULL,
   facetLimit = NULL,
   facetOffset = NULL,
@@ -116,6 +118,13 @@ country given as a ISO 639-1 (2 letter) country code.}
 
 \item{doi}{DOI of the dataset.}
 
+\item{installationKey}{Filters datasets by their installation UUID key.}
+
+\item{endpointType}{Filters datasets by their endpoint type.
+Available values : EML, FEED, WFS, WMS, TCS_RDF, TCS_XML, DWC_ARCHIVE, DIGIR,
+DIGIR_MANIS, TAPIR, BIOCASE, BIOCASE_XML_ARCHIVE, OAI_PMH, COLDP,
+CAMTRAP_DP, BIOM_1_0, BIOM_2_1, ACEF, TEXT_TREE, OTHER}
+
 \item{facet}{A facet name used to retrieve the most frequent values for a field.}
 
 \item{facetLimit}{Facet parameters allow paging requests using the parameters
@@ -185,6 +194,7 @@ dataset_search(doi='10.15468/aomfnb')
 dataset_search(projectId = "GRIIS;BID-AF2020-140-REG") 
 dataset_search(hostingCountry = "NO;SE")
 dataset_search(doi="10.15468/aomfnb;10.15468/igasai")
+dataset_search(installationKey = "d209e552-7e6e-4840-b13c-c0596ef36e55")
 
 # multiple filters
 dataset_search(license = "CC0_1_0",subtype = "TAXONOMIC_AUTHORITY")

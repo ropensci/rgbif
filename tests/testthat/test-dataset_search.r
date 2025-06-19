@@ -293,6 +293,15 @@ test_that("dataset_search works as expected", {
     expect_true(all(ii$data$doi=="10.15468/aomfnb"| 
                     ii$data$doi=="10.15468/igasai"))
     
+    
+    iii <- dataset_search(installationKey = "998fa743-e3d2-41bd-8cd3-754e22581224",limit=5)
+    
+    expect_is(iii, "list")
+    expect_is(iii$data, "tbl_df")
+    expect_is(iii$data$title, "character")
+    expect_equal(iii$data$publishingOrganizationTitle[1], "University of Minnesota Bell Museum")
+    expect_equal(nrow(iii$data), 5)
+    
     }, preserve_exact_body_bytes = TRUE)
 
 })
