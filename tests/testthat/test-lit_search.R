@@ -163,7 +163,7 @@ test_that("lit_export works as expected", {
   expect_true(ncol(yy) > 15) # don't expect columns to go down
   expect_true(all(c("title","id","gbifDownloadKey") %in% colnames(yy)))
   
-  # complex example using many arguements 
+  # complex example using many arguments 
   cc <- lit_export(year="2000,2020",countriesOfResearcher="US",
                    topics="BIODIVERSITY_SCIENCE",
                    relevance="GBIF_USED;GBIF_CITED")
