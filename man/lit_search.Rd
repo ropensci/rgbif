@@ -49,7 +49,7 @@ lit_export(
   flatten = NULL,
   abstract = FALSE,
   limit = NULL,
-  curlopts = NULL
+  curlopts = list()
 )
 }
 \arguments{
@@ -93,7 +93,7 @@ referenced in publication.}
 \item{journalPublisher}{(character) Publisher of journal.}
 
 \item{flatten}{(logical) should any lists in the resulting data be flattened
-into comma-separated strings? Ignored in lit_export.}
+into comma-seperated strings? Ignored in lit_export.}
 
 \item{abstract}{(logical) should the abstract be included in the results.
 Ignored for lit_search.}
