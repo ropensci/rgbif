@@ -3,6 +3,7 @@
 \name{lit_search}
 \alias{lit_search}
 \alias{lit_count}
+\alias{lit_export}
 \title{Search for literature that cites GBIF mediated data}
 \usage{
 lit_search(
@@ -22,11 +23,34 @@ lit_search(
   journalSource = NULL,
   journalPublisher = NULL,
   flatten = TRUE,
+  abstract = FALSE,
   limit = NULL,
   curlopts = list()
 )
 
 lit_count(...)
+
+lit_export(
+  q = NULL,
+  countriesOfResearcher = NULL,
+  countriesOfCoverage = NULL,
+  literatureType = NULL,
+  relevance = NULL,
+  year = NULL,
+  topics = NULL,
+  datasetKey = NULL,
+  publishingOrg = NULL,
+  peerReview = NULL,
+  openAccess = NULL,
+  downloadKey = NULL,
+  doi = NULL,
+  journalSource = NULL,
+  journalPublisher = NULL,
+  flatten = NULL,
+  abstract = FALSE,
+  limit = NULL,
+  curlopts = list()
+)
 }
 \arguments{
 \item{q}{(character) Simple full text search parameter. The value for this
@@ -69,7 +93,10 @@ referenced in publication.}
 \item{journalPublisher}{(character) Publisher of journal.}
 
 \item{flatten}{(logical) should any lists in the resulting data be flattened
-into comma-seperated strings?}
+into comma-seperated strings? Ignored in lit_export.}
+
+\item{abstract}{(logical) should the abstract be included in the results.
+Ignored for lit_search.}
 
 \item{limit}{how many records to return. limit=NULL will fetch up to 10,000.}
 

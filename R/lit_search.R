@@ -28,7 +28,9 @@
 #' @param journalSource (character) Journal of publication.
 #' @param journalPublisher (character) Publisher of journal.
 #' @param flatten (logical) should any lists in the resulting data be flattened
-#' into comma-seperated strings?
+#' into comma-seperated strings? Ignored in lit_export.
+#' @param abstract (logical) should the abstract be included in the results. 
+#' Ignored for lit_search. 
 #' @param limit how many records to return. limit=NULL will fetch up to 10,000. 
 #' @param curlopts list of named curl options passed on to HttpClient. 
 #' see curl::curl_options for curl options.
@@ -127,6 +129,7 @@ lit_search <- function(
     journalSource=NULL, 
     journalPublisher=NULL,
     flatten=TRUE,
+    abstract=FALSE,
     limit=NULL,
     curlopts = list()
 ) {
@@ -226,7 +229,7 @@ lit_search <- function(
   urls <- sapply(urls,function(x) gsub("\\[|\\]","",x)) # remove any square brackets
   # make request 
   ll <- gbif_async_get(urls,parse=TRUE)
-  data <- process_lit_async_results(ll,flatten=flatten)
+  data <- process_lit_async_results(ll,flatten=flatten,abstract=abstract)
   meta <- rgbif_compact(ll[[length(urls)]])
   # clean results
   meta$results <- NULL
@@ -282,12 +285,95 @@ lit_count <- function(...) {
   count
 }
 
-process_lit_async_results <- function(ll,flatten=TRUE) {
+
+#' @export
+#' @rdname lit_search
+lit_export <- function(
+    q=NULL, 
+    countriesOfResearcher=NULL, 
+    countriesOfCoverage=NULL, 
+    literatureType=NULL, 
+    relevance=NULL, 
+    year=NULL, 
+    topics=NULL, 
+    datasetKey=NULL, 
+    publishingOrg=NULL, 
+    peerReview=NULL, 
+    openAccess=NULL, 
+    downloadKey=NULL, 
+    doi=NULL, 
+    journalSource=NULL, 
+    journalPublisher=NULL,
+    flatten=NULL,
+    abstract=FALSE,
+    limit=NULL,
+    curlopts = list()
+  ) {
+  
+  if(!is_uuid(datasetKey) & !is.null(datasetKey)) stop("'datasetKey' should be a GBIF dataset uuid.")
+  if(!is_uuid(publishingOrg) & !is.null(publishingOrg)) stop("'publishingOrg' should be a GBIF publisher uuid.")
+  if(!is_download_key(downloadKey) & !is.null(downloadKey)) stop("'downloadKey' should be a GBIF downloadkey.")
+  
+  assert(q,"character")
+  assert(countriesOfResearcher,"character")
+  assert(countriesOfCoverage,"character")
+  assert(literatureType,"character")
+  assert(relevance,"character")
+  assert(topics,"character")
+  assert(peerReview,"logical")
+  assert(openAccess,"logical")
+  assert(doi,"character")
+  assert(journalSource,"character")
+  assert(journalPublisher,"character")
+  if(!is.null(flatten)) message("flatten argument is ignored for lit_export, results are returned flat.")
+  if(!is.null(limit)) message("limit argument is ignored for lit_export, all results are returned.")
+  if(length(curlopts) != 0) message("curlopts argument are ignored for lit_export") 
+  # https://api.gbif.org/v1/literature/export?format=TSV&gbifDownloadKey=0138953-210914110416597
+  
+  args <- rgbif_compact(
+    list(q = q,
+         year = year,
+         peerReview = peerReview,
+         openAccess = openAccess
+        ))
+  
+  args <- rgbif_compact(
+            c(args,
+            convmany(relevance),
+            convmany(countriesOfResearcher),
+            convmany(countriesOfCoverage),
+            convmany(literatureType),
+            convmany(topics),
+            convmany_rename(datasetKey,"gbifDatasetKey"),
+            convmany_rename(publishingOrg,"publishingOrganizationKey"),
+            convmany_rename(downloadKey,"gbifDownloadKey"), 
+            convmany(doi), 
+            convmany_rename(journalSource,"source"), 
+            convmany_rename(journalPublisher,"publisher")
+            ))
+  
+  url_query <- paste0(names(args),"=",args,collapse="&")
+  url_query <- utils::URLencode(url_query) 
+  url <- paste0(gbif_base(),"/literature/export?",url_query)
+  temp_file <- tempfile()
+  utils::download.file(url,destfile=temp_file,quiet=TRUE)
+  out <- tibble::as_tibble(data.table::fread(temp_file, showProgress=FALSE))
+  if(!abstract) out$abstract <- NULL
+  colnames(out) <- to_camel(colnames(out))
+  out[] <- lapply(out, as.character)
+  out$peerReview <- as.logical(out$peerReview)
+  out$openAccess <- as.logical(out$openAccess)
+  out[out == ""] <- NA
+  out
+}
+
+
+process_lit_async_results <- function(ll,flatten=TRUE,abstract=FALSE) {
   data_list <- lapply(ll,function(x) x$results)
   # handle complex identifiers
   data_list <- lapply(data_list,function(x) tibble::tibble(x,x$identifiers))
   for(i in 1:length(data_list)) data_list[[i]]$identifiers <- NULL
-  for(i in 1:length(data_list)) data_list[[i]]$abstract <- NULL
+  if(!abstract) for(i in 1:length(data_list)) data_list[[i]]$abstract <- NULL
   data <- bind_rows(data_list)
   # data
   if(flatten) {
