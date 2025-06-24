@@ -48,7 +48,8 @@ lit_export(
   journalPublisher = NULL,
   flatten = NULL,
   abstract = FALSE,
-  curlopts = list()
+  limit = NULL,
+  curlopts = NULL
 )
 }
 \arguments{

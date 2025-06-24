@@ -307,7 +307,7 @@ lit_export <- function(
     flatten=NULL,
     abstract=FALSE,
     limit=NULL,
-    curlopts = NULL
+    curlopts = list()
   ) {
   
   if(!is_uuid(datasetKey) & !is.null(datasetKey)) stop("'datasetKey' should be a GBIF dataset uuid.")
@@ -327,7 +327,7 @@ lit_export <- function(
   assert(journalPublisher,"character")
   if(!is.null(flatten)) message("flatten argument is ignored for lit_export, results are returned flat.")
   if(!is.null(limit)) message("limit argument is ignored for lit_export, all results are returned.")
-  if(!is.null(curlopts)) message("curlopts argument are ignored for lit_export") 
+  if(!length(curlopts)==0) message("curlopts argument are ignored for lit_export") 
   # https://api.gbif.org/v1/literature/export?format=TSV&gbifDownloadKey=0138953-210914110416597
   
   args <- rgbif_compact(
