@@ -139,4 +139,39 @@ test_that("lit_count works as expected", {
   
 })
 
+test_that("lit_export works as expected", {
+  skip_on_ci()
+  skip_on_cran()
+  
+  # export with no filters
+  ee <- lit_export(datasetKey="50c9509d-22c7-4a22-a47d-8c48425ef4a7")
+  expect_is(ee,"tbl_df")
+  expect_true(nrow(ee) > 6000) # don't expect citations to go down
+  expect_true(ncol(ee) > 15) # don't expect columns to go down
+  expect_true(all(c("title","id","gbifDownloadKey") %in% colnames(ee)))
+  
+  aa <- lit_export(year=2003,abstract=TRUE)
+  expect_is(aa,"tbl_df")
+  expect_true(nrow(aa) > 5) # don't expect citations to go down
+  expect_true(ncol(aa) > 15) # don't expect columns to go down
+  expect_true(all(c("title","id","gbifDownloadKey","abstract") %in% colnames(aa)))
+
+  yy <- lit_export(year="2011,2015")
+  expect_is(yy,"tbl_df")
+  expect_true(nrow(yy) > 3000) # don't expect citations to go down
+  expect_true(nrow(yy) < 57000) # shouldn't return a really large number
+  expect_true(ncol(yy) > 15) # don't expect columns to go down
+  expect_true(all(c("title","id","gbifDownloadKey") %in% colnames(yy)))
+  
+  # complex example using many arguements 
+  cc <- lit_export(year="2000,2020",countriesOfResearcher="US",
+                   topics="BIODIVERSITY_SCIENCE",
+                   relevance="GBIF_USED;GBIF_CITED")
+  expect_is(cc,"tbl_df")
+  expect_true(ncol(cc) > 15) # don't expect columns to go down
+  expect_true(all(c("title","id","gbifDownloadKey") %in% colnames(cc)))
+  expect_true(all(grepl("UNITED_STATES",cc$countriesOfResearcher)))
+
+})
+
 
