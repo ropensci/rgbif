@@ -5,7 +5,9 @@
 #' @param start The offset of the first result to return.
 #' @param curlopts A list of curl options to pass to the request.
 #' 
-#' @examples \dontrun {
+#' @return A `tibble` or a `list`. 
+#' 
+#' @examples \dontrun{
 #' # Get all datasets for a given installation 
 #' installation_dataset(uuid="d209e552-7e6e-4840-b13c-c0596ef36e55", limit=10)
 #' installation_comment(uuid="a0e05292-3d09-4eae-9f83-02ae3516283c")
@@ -16,7 +18,7 @@
 #' }
 #' 
 
-#' @name dataset_uuid_funs
+#' @name installation_uuid_funs
 #' @export
 installation_dataset <- function(uuid=NULL,limit=20, start = NULL, curlopts = list()) {
   installation_uuid_get_(uuid=uuid,endpoint="/dataset",limit=limit,start=start,curlopts,meta=TRUE)

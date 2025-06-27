@@ -1,0 +1,8 @@
+installation_deleted <- function(
+  
+  
+  ) {
+  
+  
+  
+}
