@@ -1,8 +1,0 @@
-installation_deleted <- function(
-  
-  
-  ) {
-  
-  
-  
-}
