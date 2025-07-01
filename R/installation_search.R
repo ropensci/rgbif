@@ -27,7 +27,7 @@
 #' 
 #' @export
 #'
-#' @examples /dontrun{
+#' @examples \dontrun{
 #' instllation_search() 
 #' installation_search(query="Estonia")
 #' installation_search(type="IPT_INSTALLATION") 
