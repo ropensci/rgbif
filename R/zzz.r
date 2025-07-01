@@ -54,34 +54,34 @@ gbifparser <- function(input, fields= "minimal") {
       names(media2) <- x$key
       x <- x[!names(x) %in% "media"] # remove images
     } else { media2 <- list() }
-
+    
     # extensions is a PITA, just remove
     x$extensions <- NULL
-
+    
     # remove any fields > length 1
     lgts <- unname(sapply(x, length))
     if (any(lgts > 1)) x[lgts > 1] <- NULL
-
+    
     # all other data
     x <- data.frame(x, stringsAsFactors=FALSE)
     if (any(fields == "minimal")) {
       if (all(c("decimalLatitude","decimalLongitude") %in% names(x))) {
         x <-
           x[c("key","datasetKey", "scientificName", "decimalLatitude",
-            "decimalLongitude", "issues")]
+              "decimalLongitude", "issues")]
       } else {
         x <- data.frame(x["key"], x["scientificName"],
-          decimalLatitude = NA, decimalLongitude = NA,
-          x["issues"], stringsAsFactors = FALSE)
+                        decimalLatitude = NA, decimalLongitude = NA,
+                        x["issues"], stringsAsFactors = FALSE)
       }
     } else if(any(fields == "all")) {
       # rearrange columns
       firstnames <- c("key", "scientificName", "decimalLatitude",
-        "decimalLongitude", "issues")
+                      "decimalLongitude", "issues")
       x <- x[c(firstnames[firstnames %in% names(x)],
-        names(x)[-unlist(rgbif_compact(sapply(firstnames, function(z) {
-        tmp <- grep(z, names(x)); if(!length(tmp) == 0) tmp
-        }, USE.NAMES = FALSE)))])]
+               names(x)[-unlist(rgbif_compact(sapply(firstnames, function(z) {
+                 tmp <- grep(z, names(x)); if(!length(tmp) == 0) tmp
+               }, USE.NAMES = FALSE)))])]
       # add name column, duplicate of scientificName, to not break downstream code
       if ("scientificName" %in% names(x)) {
         x$name <- x$scientificName
@@ -104,30 +104,30 @@ gbifparser <- function(input, fields= "minimal") {
 clean_data <- function(x){
   # collapse issues
   if (!identical(x, list())) x[names(x) %in% "issues"] <- collapse_issues_vec(x)
-
+  
   # drop media, facts, relations, etc.
   x$media <- x$facts <- x$relations <- x$identifiers <-
-  x$extensions <- x$gadm <- x$recordedByIDs <- x$identifiedByIDs <- NULL
-
+    x$extensions <- x$gadm <- x$recordedByIDs <- x$identifiedByIDs <- NULL
+  
   # drop any new columns that GBIF adds of which each element is not length 1
-   x[sapply(x, is.data.frame)] <- NULL
-
+  x[sapply(x, is.data.frame)] <- NULL
+  
   # add name column, duplicate of scientificName, to not break downstream code
   if ("scientificName" %in% names(x)) {
     x$name <- x$scientificName
   }
-
+  
   # move columns
   x <- move_col(x, "issues")
   x <- move_col(x, "decimalLongitude")
   x <- move_col(x, "decimalLatitude")
   x <- move_col(x, "scientificName")
   x <- move_col(x, "key")
-
+  
   # make key and gbifID character class
   if ("key" %in% names(x)) x$key <- as.character(x$key)
   if ("gbifID" %in% names(x)) x$gbifID <- as.character(x$gbifID)
-
+  
   return(x)
 }
 
@@ -143,15 +143,15 @@ gbifparser_verbatim <- function(input, fields="minimal") {
       tmp <- strsplit(z, "/")[[1]]
       tmp[length(tmp)]
     }, "", USE.NAMES = FALSE)
-
+    
     names(x) <- nn
-
+    
     if (any(fields == "minimal")) {
       if (all(c("decimalLatitude","decimalLongitude") %in% names(x))) {
         x <- x[c("key", "scientificName", "decimalLatitude", "decimalLongitude")]
       } else {
         x <- list(key = x[["key"]], scientificName = x[["scientificName"]],
-          decimalLatitude = NA, decimalLongitude = NA, stringsAsFactors = FALSE)
+                  decimalLatitude = NA, decimalLongitude = NA, stringsAsFactors = FALSE)
       }
     } else if (any(fields == "all")) {
       x[vapply(x, length, 0) == 0] <- "none"
@@ -165,10 +165,10 @@ gbifparser_verbatim <- function(input, fields="minimal") {
           for (i in seq_along(x$extensions)) {
             z <- x$extensions[[i]]
             names(z) <- sprintf("extensions_%s_%s",
-              basename(names(x$extensions)[i]), names(z))
+                                basename(names(x$extensions)[i]), names(z))
             m[[i]] <- as.list(z)
           }
-
+          
           x$extensions <- NULL
           x <- c(x, as.list(unlist(m)))
         }
@@ -181,12 +181,12 @@ gbifparser_verbatim <- function(input, fields="minimal") {
     if ("gbifID" %in% names(x)) x$gbifID <- as.character(x$gbifID)
     return(x)
   }
-
+  
   if (is.numeric(input[[1]])) {
     data.frame(parse(input), stringsAsFactors = FALSE)
   } else {
     setdfrbind(lapply(input, function(w) data.frame(parse(w),
-      stringsAsFactors = FALSE)))
+                                                    stringsAsFactors = FALSE)))
   }
 }
 
@@ -216,7 +216,7 @@ convert2df <- function(x){
 
 rbind_rows <- function(x, by) {
   tmp <- data.frame(names(x), count = unname(unlist(x)),
-    stringsAsFactors = FALSE)
+                    stringsAsFactors = FALSE)
   row.names(tmp) <- NULL
   names(tmp)[1] <- by
   return(tmp)
@@ -249,7 +249,7 @@ u_nit <- function() {
 # Capitalize the first letter of a character string.
 gbif_capwords <- function(s, strict = FALSE, onlyfirst = FALSE) {
   cap <- function(s) paste(toupper(substring(s,1,1)),
-  {s <- substring(s,2); if(strict) tolower(s) else s}, sep = "", collapse = " " )
+                           {s <- substring(s,2); if(strict) tolower(s) else s}, sep = "", collapse = " " )
   if(!onlyfirst){
     sapply(strsplit(s, split = " "), cap, USE.NAMES = !is.null(names(s)))
   } else {
