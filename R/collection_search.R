@@ -124,7 +124,6 @@ collection_search <- function(
   assert(gbifRegion,"character")
   assert(machineTagNamespace,"character")
   assert(machineTagName,"character")
-  assert(machineTagValue,"character")
   assert(identifierType,"character")
   assert(active,"logical")
   assert(displayOnNHCPortal,"logical")

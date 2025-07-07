@@ -134,14 +134,13 @@ a \code{list}
 Search GRSciColl collections
 }
 \examples{
-\dontrun {
+\dontrun{
   collection_search(query="insect",limit=2)
   collection_search(name="Insects;Entomology", limit=2)
   collection_search(numberSpecimens = "0,100", limit=1)
   collection_search(institutionKey = "6a6ac6c5-1b8a-48db-91a2-f8661274ff80"
   , limit = 1)
   collection_search(query = "insect", country = "US;GB", limit=1)
-
 } 
 }
 \references{
