@@ -269,10 +269,10 @@ institution_export <- function(
     assert(limit, "numeric")
     
     if(format != "TSV") {
-      warning("Only 'TSV' format is supported for collection_export")
+      warning("Only 'TSV' format is supported for institution_export")
     }
     if(!is.null(limit) | !is.null(offset)) {
-      warning("Limit and offset are ignored for collection_export. The full export
+      warning("Limit and offset are ignored for institution_export. The full export
             is returned.")
     }
     
