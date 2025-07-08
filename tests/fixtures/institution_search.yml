@@ -1,0 +1,222 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/grscicoll/institution?q=Kansas&limit=1
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":19,"results":[{"key":"956f3e1f-ebd2-48e3-a3ee-42bfb1950a47","code":"PECA","name":"Pratt
+        Education Center and Aquarium","description":"The emphasis of the Pratt Education
+        Center is to discover the wildlife of Kansas. Numerous displays, dioramas,
+        and exhibits provide close encounters with the native birds, fish, mammals,
+        and reptiles of Kansas.\n\nOur \"winter\" diorama provides a glimpse of how
+        wildlife deals with the snow and cold of Kansas winters.\n\nThe grassland
+        display depicts the three grasslands (short, mixed and tall) of Kansas and
+        wildlife common to each region; including a rare black-footed ferret. Our
+        raptor exhibit features owls, hawks, falcons, and kites; all with hooked beaks
+        and sharp talons. The wetland wall display includes Cheyenne Bottoms, one
+        of the five most important wetlands in North America.\n\nThe Aquarium Room
+        contains twelve, 400-600 gallon aquariums; each displaying fish species native
+        to Kansas or that have been successfully introduced into Kansas. On the east
+        wall are two wall panels. One featuring the early history of the Pratt Hatchery.
+        The other features the catfish rearing program along with a working model
+        of Seth Way''s ingenious incubating trough.  Over one hundred and twenty-eight
+        species of birds and their eggs","types":[],"active":true,"email":[],"phone":[],"homepage":"https://ksoutdoors.com/KDWP-Info/Locations/Museums-and-Nature-Centers/Pratt-Education-Center","catalogUrls":[],"apiUrls":[],"institutionalGovernances":[],"disciplines":[],"latitude":37.632106,"longitude":-98.693794,"mailingAddress":{"key":46553,"country":"US"},"address":{"key":46554,"province":"KS","country":"US"},"additionalNames":[],"createdBy":"GRBIO","modifiedBy":"gbif-collections","created":"2013-05-21T01:38:00.000+00:00","modified":"2024-05-23T12:37:31.514+00:00","tags":[],"identifiers":[{"key":350269,"type":"NCBI_BIOCOLLECTION","identifier":"945030","createdBy":"mgrosjean","created":"2023-08-15T11:08:06.053+00:00","primary":false},{"key":178149,"type":"GRSCICOLL_URI","identifier":"http://grscicoll.org/institution/pratt-education-center-and-aquarium","createdBy":"registry-migration-grbio.gbif.org","created":"2019-08-15T08:12:27.572+00:00","primary":false},{"key":169988,"type":"GRSCICOLL_URI","identifier":"http://grbio.org/institution/pratt-education-center-and-aquarium","createdBy":"registry-migration-grbio.gbif.org","created":"2019-08-15T08:12:20.362+00:00","primary":false},{"key":134524,"type":"GRSCICOLL_ID","identifier":"17487","createdBy":"registry-migration-grbio.gbif.org","created":"2018-11-15T10:23:01.527+00:00","primary":false},{"key":141621,"type":"GRSCICOLL_URI","identifier":"http://grbio.org/cool/sfj9-st9f","createdBy":"registry-migration-grbio.gbif.org","created":"2018-11-15T10:23:01.527+00:00","primary":false}],"contactPersons":[],"machineTags":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0}]}'
+  recorded_at: 2025-07-07 11:25:15 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/grscicoll/institution?numberSpecimens=1000%2C%2A&limit=2
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":2796,"results":[{"key":"200dfb5f-58ed-478d-8058-8ac565b509cf","code":"MEMZOO","name":"Memphis
+        Zoo","description":"The Memphis Zoo is a zoo in Midtown, Memphis, Tennessee,
+        United States. It is home to more than 3,500 animals representing over 500
+        different species. ","types":["ZooAquarium"],"active":true,"email":[],"phone":[],"homepage":"https://www.memphiszoo.org/","catalogUrls":[],"apiUrls":[],"institutionalGovernances":["NonProfit"],"disciplines":["Zoology","Biological"],"latitude":35.150331,"longitude":-89.993305,"mailingAddress":{"key":55998,"address":"2000
+        Prentiss Place","city":"Memphis","province":"Tennessee","postalCode":"38112","country":"US"},"address":{"key":55997,"address":"2000
+        Prentiss Place","city":"Memphis","province":"Tennessee","postalCode":"38112","country":"US"},"additionalNames":["Memphis
+        Zoological Society"],"foundingDate":1906,"numberSpecimens":3500,"logoUrl":"https://prod.speakcdn.com/sitefiles/2879/images/white-logo.svg","createdBy":"catchapman","modifiedBy":"catchapman","created":"2025-06-17T15:15:27.291+00:00","modified":"2025-06-17T15:15:27.291+00:00","tags":[],"identifiers":[],"contactPersons":[{"key":42822,"firstName":"Sinlan","lastName":"Poo","position":["Curator
+        of Research"],"phone":[],"fax":[],"email":["spoo@memphiszoo.org"],"address":[],"city":"Memphis","province":"Tennessee","country":"US","primary":true,"taxonomicExpertise":[],"userIds":[{"type":"ORCID","id":"https://orcid.org/0000-0002-7767-8173"}],"createdBy":"dbloom","modifiedBy":"dbloom","created":"2025-06-18T22:37:57.149+00:00","modified":"2025-06-18T22:37:57.149+00:00"}],"machineTags":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0},{"key":"5cb20aa6-74a7-4e48-ba22-9158f7f60b93","code":"HOKM","name":"Hokkaido
+        Museum","description":"Hokkaido museum, aka Mori no Charenga, is a museum
+        introducing the nature, history and culture of Hokkaido.\nThe museum investigates
+        and researches the relationship between the nature environment and people,
+        the culture of the Ainu people and their way of living, and the lives of immigrants
+        from Honshu.\nHokkaido Museum (nicknamed Mori no Charenga) was opened in April
+        2015 by integrating the Hokkaido Kaitaku Kinenkan (opened in 1971) and the
+        Hokkaido Ainu Cultural Research Center (opened in 1994). Inheriting the traditions
+        and outstanding achievements of the two institutions, the museum will celebrate
+        its 10th anniversary in 2025 (Reiwa 7) as a \"comprehensive museum\" representing
+        Hokkaido.\nAs a core museum in Hokkaido, the museum will collaborate with
+        local museums and other institutions, and as a research museum with approximately
+        30 curators and research staff, we will utilize the results of specialized
+        and comprehensive research to strengthen our functions to meet diverse learning
+        needs. In addition, as a comprehensive museum that can be proud of the world
+        for specialized research on Ainu history and tangible and intangible culture,
+        we will contribute to the promotion of Ainu culture and the realization of
+        a multicultural society. Furthermore, we will contribute to the revitalization
+        of the region while placing importance on our role as a cultural tourism base
+        facility.\nOur museum has a permanent comprehensive exhibition consisting
+        of five areas that tell the story of Hokkaido''s nature, history, and culture,
+        as well as special exhibitions and various planned exhibitions.","types":["Museum"],"active":true,"email":["hokkaido.museum@pref.hokkaido.lg.jp"],"phone":["+81-11-898-0456"],"homepage":"https://www.hm.pref.hokkaido.lg.jp","catalogUrls":["https://jmapps.ne.jp/hmcollection1/list.html?keywords=&kwd_and_or=and&f2%5B%5D=生物&title=&f3=&f4=&list_type=LLA001&list_count=10&title_query=yes"],"apiUrls":[],"institutionalGovernances":[],"disciplines":["Biological","Cultural"],"latitude":43.053000,"longitude":141.496500,"mailingAddress":{"key":55971,"address":"Atsubetsu-ku
+        Atsubetsu-cho Konopporo53-2","city":"Sapporo","province":"HOKKAIDO","postalCode":"004-0006","country":"JP"},"address":{"key":55970,"address":"Atsubetsu-ku
+        Atsubetsu-cho Konopporo53-2","city":"Sapporo","province":"HOKKAIDO","postalCode":"004-0006","country":"JP"},"additionalNames":["Historical
+        Museum of Hokkaido"],"foundingDate":2015,"numberSpecimens":2551,"createdBy":"cjk","modifiedBy":"cjk","created":"2025-06-12T02:43:13.348+00:00","modified":"2025-06-12T02:51:48.175+00:00","tags":[],"identifiers":[],"contactPersons":[],"machineTags":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0}]}'
+  recorded_at: 2025-07-07 11:25:15 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/grscicoll/institution?numberSpecimens=1000%2C%2A&occurrenceCount=10%2C%2A&limit=2
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":1353,"results":[{"key":"15b6b7e3-1d39-463b-9230-3f101fddc582","code":"CBSS","name":"Croatian
+        Biospeleological Society","description":"The Croatian Biospeleological Society
+        (CBSS) was founded in 1996 at the Croatian Natural History Museum in Zagreb.\nSince
+        its founding, CBSS has carried out numerous research projects, including those
+        aimed at promoting and popularizing cave fauna, bats, and cave habitats. Occurrence
+        data on cave-dwelling invertebrates from various projects and collecting trips
+        are compiled in the highly valuable CBSS Collection, which contains data from
+        more than 1,500 caves.","types":["OtherInstitutionalType"],"active":true,"email":["hbsd@hbsd.hr"],"phone":[],"homepage":"https://www.hbsd.hr/?lang=en","catalogUrls":[],"apiUrls":[],"institutionalGovernances":["NonProfit"],"disciplines":["Zoology","Taxonomy","EvolutionaryBiology","Ecology"],"latitude":45.809145,"longitude":15.967411,"mailingAddress":{"key":55675,"address":"Rooseveltov
+        trg 6","city":"Zagreb","province":"Grad Zagreb","postalCode":"10000","country":"HR"},"address":{"key":55674,"address":"Rooseveltov
+        trg 6","city":"Zagreb","province":"Grad Zagreb","postalCode":"10000","country":"HR"},"additionalNames":["Hrvatsko
+        biospeleološko društvo"],"foundingDate":1996,"numberSpecimens":30000,"logoUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgPy831C2dhxu7Z8hsyODPeaS082JvFCObIytOnAbXG695hG0oKaTYcpL5QnynE_YkJU4&usqp=CAU","createdBy":"ajesovnik","modifiedBy":"ajesovnik","created":"2025-04-20T06:44:44.168+00:00","modified":"2025-04-20T06:44:44.168+00:00","tags":[],"identifiers":[],"contactPersons":[],"machineTags":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":535,"typeSpecimenCount":6},{"key":"88b3fc90-a67e-44ad-9f4b-c265e7d6569e","code":"ETHOIKOS","name":"Fondazione
+        Ethoikos","description":"The foundation''s aim is to carry out scientific
+        research, education and promotion in the field of ethology and ecology, and
+        other related disciplines, as well as to protect natural heritage.","types":["OtherTypeResearchInstitutionBiorepository","MuseumHerbariumPrivateNonProfit"],"active":true,"email":["info@ethoikos.it"],"phone":[],"homepage":"https://ethoikos.it/english.html","catalogUrls":[],"apiUrls":[],"institutionalGovernances":["NonProfit"],"disciplines":["Ecology"],"latitude":43.257700,"longitude":11.043200,"mailingAddress":{"key":52414,"address":"Convento
+        dell’Osservanza","city":"Radicondoli","province":"[TOSCANA] Siena (SI)","postalCode":"IT-53030","country":"IT"},"address":{"key":52413,"address":"Convento
+        dell’Osservanza","city":"Radicondoli","province":"[TOSCANA] Siena (SI)","postalCode":"IT-53030","country":"IT"},"additionalNames":[],"numberSpecimens":8300,"createdBy":"tasmacetus","modifiedBy":"mgrosjean","created":"2024-12-18T17:12:26.852+00:00","modified":"2024-12-19T15:00:04.134+00:00","tags":[],"identifiers":[],"contactPersons":[],"machineTags":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":4868,"typeSpecimenCount":0,"featuredImageUrl":"https://ethoikos.it/images/corbaerea300.jpg","featuredImageLicense":"CC_BY_NC_4_0"}]}'
+  recorded_at: 2025-07-07 11:25:15 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/grscicoll/institution?limit=1&source=IH_IRN
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":3791,"results":[{"key":"473103ee-e47a-4656-8e08-d89be038999f","code":"PSGCASH","name":"PSG
+        College of Arts & Science","types":[],"active":true,"email":["aryasindu001@gmail.com"],"phone":[],"catalogUrls":[],"apiUrls":[],"institutionalGovernances":[],"disciplines":[],"address":{"key":55986,"address":"PSG
+        College of Arts & Science, Civil Aerodrome Post","city":"Coimbatore","province":"Tamil
+        Nadu","postalCode":"641014","country":"IN"},"additionalNames":[],"createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2025-06-13T07:36:09.626+00:00","modified":"2025-06-13T07:36:09.626+00:00","tags":[],"identifiers":[{"key":442779,"type":"IH_IRN","identifier":"gbif:ih:irn:267351","createdBy":"mgrosjean","created":"2025-06-13T07:36:09.637+00:00","primary":false}],"contactPersons":[{"key":42806,"firstName":"Arya","lastName":"Sindhu","position":["Assistant
+        Professor"],"phone":["8891017715"],"fax":[],"email":["aryasindu001@gmail.com"],"address":["Civil
+        aerodrome Post"],"city":"Coimbatore","province":"Tamil Nadu","country":"IN","postalCode":"695011","primary":false,"taxonomicExpertise":[],"userIds":[{"type":"IH_IRN","id":"267377"}],"createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2025-06-13T07:36:09.648+00:00","modified":"2025-06-13T07:36:09.648+00:00"}],"machineTags":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"IH","masterSourceMetadata":{"key":9834,"source":"IH_IRN","sourceId":"267351","createdBy":"mgrosjean","created":"2025-06-13T07:36:09.644+00:00"},"displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0}]}'
+  recorded_at: 2025-07-07 11:25:15 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/grscicoll/institution?limit=1&country=US&country=GB
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":2570,"results":[{"key":"200dfb5f-58ed-478d-8058-8ac565b509cf","code":"MEMZOO","name":"Memphis
+        Zoo","description":"The Memphis Zoo is a zoo in Midtown, Memphis, Tennessee,
+        United States. It is home to more than 3,500 animals representing over 500
+        different species. ","types":["ZooAquarium"],"active":true,"email":[],"phone":[],"homepage":"https://www.memphiszoo.org/","catalogUrls":[],"apiUrls":[],"institutionalGovernances":["NonProfit"],"disciplines":["Zoology","Biological"],"latitude":35.150331,"longitude":-89.993305,"mailingAddress":{"key":55998,"address":"2000
+        Prentiss Place","city":"Memphis","province":"Tennessee","postalCode":"38112","country":"US"},"address":{"key":55997,"address":"2000
+        Prentiss Place","city":"Memphis","province":"Tennessee","postalCode":"38112","country":"US"},"additionalNames":["Memphis
+        Zoological Society"],"foundingDate":1906,"numberSpecimens":3500,"logoUrl":"https://prod.speakcdn.com/sitefiles/2879/images/white-logo.svg","createdBy":"catchapman","modifiedBy":"catchapman","created":"2025-06-17T15:15:27.291+00:00","modified":"2025-06-17T15:15:27.291+00:00","tags":[],"identifiers":[],"contactPersons":[{"key":42822,"firstName":"Sinlan","lastName":"Poo","position":["Curator
+        of Research"],"phone":[],"fax":[],"email":["spoo@memphiszoo.org"],"address":[],"city":"Memphis","province":"Tennessee","country":"US","primary":true,"taxonomicExpertise":[],"userIds":[{"type":"ORCID","id":"https://orcid.org/0000-0002-7767-8173"}],"createdBy":"dbloom","modifiedBy":"dbloom","created":"2025-06-18T22:37:57.149+00:00","modified":"2025-06-18T22:37:57.149+00:00"}],"machineTags":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0}]}'
+  recorded_at: 2025-07-07 11:25:15 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/grscicoll/institution?typeSpecimenCount=10%2C100&limit=1
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":608,"results":[{"key":"29658e18-1cef-4773-b81a-92111c9d288f","code":"CBC","name":"Universidade
+        do Estado de Minas Gerais","types":[],"active":true,"email":["mcbp.passos@uemg.br"],"phone":["[55]
+        35 3526 8087","[55] 71 9 9207 9666"],"catalogUrls":[],"apiUrls":[],"institutionalGovernances":[],"disciplines":[],"latitude":-20.722195,"longitude":-46.605107,"mailingAddress":{"key":55656,"address":"Avenida
+        Expedicionários 333","city":"Passos","province":"Minas Gerais","postalCode":"37900-130","country":"BR"},"address":{"key":55651,"address":"Avenida
+        Expedicionários 333","city":"Passos","province":"Minas Gerais","postalCode":"37900-130","country":"BR"},"additionalNames":[],"foundingDate":2023,"createdBy":"clara_baringo","modifiedBy":"ih-sync","created":"2025-04-07T21:59:39.815+00:00","modified":"2025-04-09T11:05:38.271+00:00","tags":[],"identifiers":[{"key":439017,"type":"IH_IRN","identifier":"gbif:ih:irn:267802","createdBy":"clara_baringo","created":"2025-04-07T21:59:39.834+00:00","primary":false}],"contactPersons":[{"key":42416,"firstName":"Fernanda
+        Hurbath","lastName":"Brandão","position":["Professor"],"phone":["[55] 71 99207
+        9666"],"fax":[],"email":["fernanda.hurbath@uemg.br"],"address":["Rua Abolição
+        180"],"city":"Passos","province":"Minas Gerais","country":"BR","postalCode":"37904016","primary":false,"taxonomicExpertise":[],"userIds":[{"type":"IH_IRN","id":"267808"}],"createdBy":"clara_baringo","modifiedBy":"clara_baringo","created":"2025-04-07T21:59:39.862+00:00","modified":"2025-04-07T21:59:39.862+00:00"},{"key":42415,"firstName":"Vanessa
+        Leite","lastName":"Rezende","position":["Professor"],"phone":["[55]35991042537"],"fax":[],"email":["vanessa.leite.rezende@gmail.com"],"address":["Pastor
+        Pedro Ferreira Lima"],"city":"Passos","province":"Minas Gerais","country":"BR","postalCode":"37904146","primary":false,"taxonomicExpertise":[],"userIds":[{"type":"IH_IRN","id":"267809"}],"createdBy":"clara_baringo","modifiedBy":"clara_baringo","created":"2025-04-07T21:59:39.862+00:00","modified":"2025-04-07T21:59:39.862+00:00"}],"machineTags":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"IH","masterSourceMetadata":{"key":9793,"source":"IH_IRN","sourceId":"267802","createdBy":"clara_baringo","created":"2025-04-07T21:59:39.843+00:00"},"displayOnNHCPortal":true,"occurrenceCount":76,"typeSpecimenCount":14}]}'
+  recorded_at: 2025-07-07 11:25:15 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
