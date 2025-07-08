@@ -2,6 +2,7 @@
 % Please edit documentation in R/institution_search.R
 \name{institution_search}
 \alias{institution_search}
+\alias{institution_export}
 \title{Search GRSciColl institutions}
 \usage{
 institution_search(
@@ -36,6 +37,43 @@ institution_search(
   sortOrder = NULL,
   offset = NULL,
   limit = NULL,
+  format = NULL,
+  curlopts = list()
+)
+
+institution_export(
+  query = NULL,
+  type = NULL,
+  institutionalGovernance = NULL,
+  disciplines = NULL,
+  name = NULL,
+  fuzzyName = NULL,
+  numberSpecimens = NULL,
+  occurrenceCount = NULL,
+  typeSpecimenCount = NULL,
+  sourceId = NULL,
+  source = NULL,
+  code = NULL,
+  alternativeCode = NULL,
+  contact = NULL,
+  institutionKey = NULL,
+  country = NULL,
+  city = NULL,
+  gbifRegion = NULL,
+  machineTagNamespace = NULL,
+  machineTagName = NULL,
+  machineTagValue = NULL,
+  identifier = NULL,
+  identifierType = NULL,
+  active = NULL,
+  displayOnNHCPortal = NULL,
+  masterSourceType = NULL,
+  replacedBy = NULL,
+  sortBy = NULL,
+  sortOrder = NULL,
+  offset = NULL,
+  limit = NULL,
+  format = "TSV",
   curlopts = list()
 )
 }
@@ -138,6 +176,9 @@ Available values : ASC, DESC.}
 \item{limit}{(numeric) Controls the number of results in the page.
 Default 20.}
 
+\item{format}{(character) Format of the export. Default is "TSV". Only used
+for \link{institution_export}.}
+
 \item{curlopts}{(list) curlopts options passed on to \link[crul:HttpClient]{crul::HttpClient}.}
 }
 \value{
@@ -145,6 +186,11 @@ A \code{list}
 }
 \description{
 Search GRSciColl institutions
+}
+\details{
+Will return GRSciColl collections data. \link{institution_export} will
+return all of the results in a single \code{tibble}, while \link{institution_search} will
+return a sample of results.
 }
 \examples{
 \dontrun{

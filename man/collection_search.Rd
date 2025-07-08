@@ -2,6 +2,7 @@
 % Please edit documentation in R/collection_search.R
 \name{collection_search}
 \alias{collection_search}
+\alias{collection_export}
 \title{Search GRSciColl collections}
 \usage{
 collection_search(
@@ -35,6 +36,42 @@ collection_search(
   sortOrder = NULL,
   offset = NULL,
   limit = NULL,
+  format = NULL,
+  curlopts = list()
+)
+
+collection_export(
+  query = NULL,
+  name = NULL,
+  fuzzyName = NULL,
+  preservationType = NULL,
+  contentType = NULL,
+  numberSpecimens = NULL,
+  accessionStatus = NULL,
+  personalCollection = NULL,
+  sourceId = NULL,
+  source = NULL,
+  code = NULL,
+  alternativeCode = NULL,
+  contact = NULL,
+  institutionKey = NULL,
+  country = NULL,
+  city = NULL,
+  gbifRegion = NULL,
+  machineTagNamespace = NULL,
+  machineTagName = NULL,
+  machineTagValue = NULL,
+  identifier = NULL,
+  identifierType = NULL,
+  active = NULL,
+  displayOnNHCPortal = NULL,
+  masterSourceType = NULL,
+  replacedBy = NULL,
+  sortBy = NULL,
+  sortOrder = NULL,
+  offset = NULL,
+  limit = NULL,
+  format = "TSV",
   curlopts = list()
 )
 }
@@ -125,6 +162,9 @@ Available values : ASC, DESC.}
 
 \item{limit}{Controls the number of results in the page. Default 20.}
 
+\item{format}{(character) Format of the export. Default is "TSV".
+Only used for \link{collection_export}.}
+
 \item{curlopts}{curlopts options passed on to \link[crul:HttpClient]{crul::HttpClient}.}
 }
 \value{
@@ -132,6 +172,11 @@ a \code{list}
 }
 \description{
 Search GRSciColl collections
+}
+\details{
+Will return GRSciColl collections data. \link{collection_export} will
+return all of the results in a single \code{tibble}, while \link{collection_search} will
+return a sample of results.
 }
 \examples{
 \dontrun{

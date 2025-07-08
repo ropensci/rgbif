@@ -45,3 +45,36 @@ test_that("collection_search works as expected", {
   expect_gte(ncol(c$data), 30)
   
 })
+
+
+test_that("collection_export works as expected", {
+  skip_on_cran()
+  skip_on_ci()
+  
+  q <- collection_export(query = "insect")
+  i <- collection_export(name="Insects;Entomology")
+  s <- collection_export(numberSpecimens = "0,100")
+  c <- collection_export(query = "insect", country = "US;GB")
+  
+  expect_is(q, "tbl_df")
+  expect_gte(nrow(q), 400)
+  expect_gte(ncol(q), 30)
+  expect_true("key" %in% names(q))
+  
+  expect_is(i, "tbl_df")
+  expect_gte(nrow(i), 100)
+  expect_gte(ncol(i), 30)
+  expect_true("key" %in% names(i))
+  
+  expect_is(s, "tbl_df")
+  expect_gte(nrow(s), 1000)
+  expect_gte(ncol(s), 30)
+  expect_true("key" %in% names(s))
+  
+  expect_is(c, "tbl_df")
+  expect_gte(nrow(c), 100)
+  expect_gte(ncol(c), 30)
+  expect_true("key" %in% names(c))
+  
+})
+

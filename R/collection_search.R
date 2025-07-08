@@ -58,8 +58,14 @@
 #' Available values : ASC, DESC.
 #' @param offset Determines the offset for the search results.
 #' @param limit Controls the number of results in the page. Default 20. 
+#' @param format (character) Format of the export. Default is "TSV". 
+#' Only used for [collection_export].
 #' @param curlopts curlopts options passed on to [crul::HttpClient]. 
-#'
+#' 
+#' @details Will return GRSciColl collections data. [collection_export] will 
+#' return all of the results in a single `tibble`, while [collection_search] will 
+#' return a sample of results. 
+#' 
 #' @return a `list`
 #' @export
 #'  
@@ -104,6 +110,7 @@ collection_search <- function(
     sortOrder = NULL,
     offset = NULL,
     limit = NULL,
+    format = NULL,
     curlopts = list()  
   ) {
   
@@ -188,3 +195,126 @@ collection_search <- function(
   
   list(meta = as.data.frame(meta), data = data)
 }
+
+#' @export
+#' @rdname collection_search
+collection_export <- function(
+    query = NULL,
+    name = NULL,
+    fuzzyName = NULL,
+    preservationType = NULL,
+    contentType = NULL,
+    numberSpecimens = NULL,
+    accessionStatus = NULL,
+    personalCollection = NULL,
+    sourceId = NULL,
+    source = NULL,
+    code = NULL,
+    alternativeCode = NULL,
+    contact = NULL,
+    institutionKey = NULL,
+    country = NULL,
+    city = NULL,
+    gbifRegion = NULL,
+    machineTagNamespace = NULL,
+    machineTagName = NULL,
+    machineTagValue = NULL,
+    identifier = NULL,
+    identifierType = NULL,
+    active = NULL,
+    displayOnNHCPortal = NULL,
+    masterSourceType = NULL,
+    replacedBy = NULL,
+    sortBy = NULL,
+    sortOrder = NULL,
+    offset = NULL,
+    limit = NULL,
+    format = "TSV",
+    curlopts = list()  
+) {
+  
+  # https://api.gbif.org/v1/grscicoll/collection/export?format=TSV&displayOnNHCPortal=true
+  assert(query,"character")
+  assert(name,"character")
+  assert(fuzzyName,"character")
+  assert(preservationType,"character")
+  assert(contentType, "character")
+  assert(accessionStatus,"character")
+  assert(personalCollection,"logical")
+  assert(source,"character")
+  assert(code,"character")
+  assert(alternativeCode,"character")
+  assert(contact,"character")
+  assert(institutionKey,"character")
+  assert(country,"character")
+  assert(city,"character")
+  assert(gbifRegion,"character")
+  assert(machineTagNamespace,"character")
+  assert(machineTagName,"character")
+  assert(identifierType,"character")
+  assert(active,"logical")
+  assert(displayOnNHCPortal,"logical")
+  assert(alternativeCode,"character")
+  assert(masterSourceType,"character")
+  assert(replacedBy,"character")
+  assert(sortBy,"character")
+  assert(limit,"numeric")
+  assert(offset,"numeric")
+  
+  if(format != "TSV") {
+    warning("Only 'TSV' format is supported for collection_export")
+  }
+  if(!is.null(limit) | !is.null(offset)) {
+    warning("Limit and offset are ignored for collection_export. The full export
+            is returned.")
+  }
+    
+  args <- as.list(
+    rgbif_compact(c(
+      q = query,
+      numberSpecimens = numberSpecimens,
+      accessionStatus = accessionStatus,
+      active = active,
+      displayOnNHCPortal = displayOnNHCPortal,
+      replacedBy = replacedBy,
+      sortBy = sortBy,
+      sortOrder = sortOrder,
+      offset = offset,
+      limit = limit,
+      format = format
+    )))
+  
+  args <- rgbif_compact(c(
+    args,
+    convmany(name),
+    convmany(fuzzyName),
+    convmany(preservationType),
+    convmany(contentType),
+    convmany(personalCollection),
+    convmany(sourceId),
+    convmany(source),
+    convmany(code),
+    convmany(alternativeCode),
+    convmany(contact),
+    convmany(institutionKey),
+    convmany(country),
+    convmany(city),
+    convmany(gbifRegion),
+    convmany(machineTagNamespace),
+    convmany(machineTagName),
+    convmany(machineTagValue),
+    convmany(identifier),
+    convmany(identifierType),
+    convmany(masterSourceType)
+  ))
+  
+  url_query <- paste0(names(args),"=",args,collapse="&")
+  url_query <- utils::URLencode(url_query) 
+  url <- paste0(gbif_base(),"/grscicoll/collection/export?",url_query)
+  temp_file <- tempfile()
+  utils::download.file(url,destfile=temp_file,quiet=TRUE)
+  out <- tibble::as_tibble(data.table::fread(temp_file, showProgress=FALSE))
+  colnames(out) <- to_camel(colnames(out))
+  out 
+}
+

@@ -52,3 +52,28 @@ test_that("institution search works as expected", {
   expect_gte(ncol(t$data), 30)
   
   })
+
+test_that("institution_export works as expected", {
+  skip_on_cran()
+  skip_on_ci()
+  
+  q <- institution_export(query = "Kansas")
+  s <- institution_export(numberSpecimens = "1000,*")
+  o <- institution_export(numberSpecimens = "1000,*", occurrenceCount = "10,*")
+  
+  expect_is(q, "tbl_df")
+  expect_gte(nrow(q), 10)
+  expect_gte(ncol(q), 10)
+  expect_true("key" %in% names(q))
+  
+  expect_is(s, "tbl_df")
+  expect_gte(nrow(s), 1000)
+  expect_gte(ncol(s), 10)
+  expect_true("key" %in% names(s))
+  
+  expect_is(o, "tbl_df")
+  expect_gte(nrow(o), 1000)
+  expect_gte(ncol(o), 10)
+  expect_true("key" %in% names(o))
+  
+})

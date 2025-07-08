@@ -67,7 +67,13 @@
 #' @param offset (numeric) Determines the offset for the search results. 
 #' @param limit (numeric) Controls the number of results in the page. 
 #' Default 20.
+#' @param format (character) Format of the export. Default is "TSV". Only used 
+#' for [institution_export].
 #' @param curlopts (list) curlopts options passed on to [crul::HttpClient].
+#'
+#' @details Will return GRSciColl collections data. [institution_export] will 
+#' return all of the results in a single `tibble`, while [institution_search] will 
+#' return a sample of results. 
 #'
 #' @return A `list`
 #' @export
@@ -112,6 +118,7 @@ institution_search <- function(
     sortOrder = NULL,
     offset = NULL,
     limit = NULL,
+    format = NULL, 
     curlopts = list()  
     ) {
     assert(query, "character")
@@ -196,3 +203,127 @@ institution_search <- function(
     
     list(meta = as.data.frame(meta), data = data)
 }
+
+#' @export
+#' @rdname institution_search
+institution_export <- function(
+    query = NULL,
+    type = NULL,
+    institutionalGovernance = NULL,
+    disciplines = NULL,
+    name = NULL,
+    fuzzyName = NULL,
+    numberSpecimens = NULL,
+    occurrenceCount = NULL,
+    typeSpecimenCount = NULL,
+    sourceId = NULL,
+    source = NULL,
+    code = NULL,
+    alternativeCode = NULL,
+    contact = NULL,
+    institutionKey = NULL,
+    country = NULL,
+    city = NULL,
+    gbifRegion = NULL,
+    machineTagNamespace = NULL,
+    machineTagName = NULL,
+    machineTagValue = NULL,
+    identifier = NULL,
+    identifierType = NULL,
+    active = NULL,
+    displayOnNHCPortal = NULL,
+    masterSourceType = NULL,
+    replacedBy = NULL,
+    sortBy = NULL,
+    sortOrder = NULL,
+    offset = NULL,
+    limit = NULL,
+    format = "TSV", 
+    curlopts = list()  
+    ){
+    assert(query, "character")
+    assert(type, "character")
+    assert(institutionalGovernance, "character")
+    assert(disciplines, "character")
+    assert(name, "character")
+    assert(fuzzyName, "character")
+    assert(source, "character")
+    assert(sourceId, "character")
+    assert(code, "character")
+    assert(alternativeCode, "character")
+    assert(contact, "character")
+    assert(institutionKey, "character")
+    assert(country, "character")
+    assert(city, "character")
+    assert(gbifRegion, "character")
+    assert(machineTagNamespace, "character")
+    assert(machineTagName, "character")
+    assert(identifierType, "character")
+    assert(active, "logical")
+    assert(displayOnNHCPortal, "logical")
+    assert(masterSourceType, "character")
+    assert(replacedBy, "character")
+    assert(sortBy, "character")
+    assert(sortOrder, "character")
+    assert(offset, "numeric")
+    assert(limit, "numeric")
+    
+    if(format != "TSV") {
+      warning("Only 'TSV' format is supported for collection_export")
+    }
+    if(!is.null(limit) | !is.null(offset)) {
+      warning("Limit and offset are ignored for collection_export. The full export
+            is returned.")
+    }
+    
+    args <- as.list(
+      rgbif_compact(c(
+        q = query,
+        numberSpecimens = numberSpecimens,
+        occurrenceCount = occurrenceCount,
+        typeSpecimenCount = typeSpecimenCount,
+        active = active,
+        displayOnNHCPortal = displayOnNHCPortal,
+        replacedBy = replacedBy,
+        sortBy = sortBy,
+        sortOrder = sortOrder,
+        offset = offset,
+        limit = limit,
+        format = format
+      )))
+    
+    args <- rgbif_compact(
+      c(
+        args,
+        convmany(type),
+        convmany(institutionalGovernance),
+        convmany(disciplines),
+        convmany(name),
+        convmany(fuzzyName),
+        convmany(sourceId),
+        convmany(source),
+        convmany(code),
+        convmany(alternativeCode),
+        convmany(contact),
+        convmany(institutionKey),
+        convmany(country),
+        convmany(city),
+        convmany(gbifRegion),
+        convmany(machineTagNamespace),
+        convmany(machineTagName),
+        convmany(machineTagValue),
+        convmany(identifier),
+        convmany(identifierType)
+      ))
+    
+    url_query <- paste0(names(args),"=",args,collapse="&")
+    url_query <- utils::URLencode(url_query) 
+    url <- paste0(gbif_base(),"/grscicoll/institution/export?",url_query)
+    temp_file <- tempfile()
+    utils::download.file(url,destfile=temp_file,quiet=TRUE)
+    out <- tibble::as_tibble(data.table::fread(temp_file, showProgress=FALSE))
+    colnames(out) <- to_camel(colnames(out))
+    out 
+}
+
+
