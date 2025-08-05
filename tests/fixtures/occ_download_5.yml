@@ -1,48 +1,26 @@
 http_interactions:
 - request:
-    method: post
+    method: POST
     uri: https://api.gbif.org/v1/occurrence/download/request
     body:
-      encoding: ''
       string: '{"creator":"<gbif_user>","notification_address":["<gbif_user>@gbif.org"],"format":"SIMPLE_CSV","predicate":{"type":"equals","key":"VERBATIM_SCIENTIFIC_NAME","value":"Calopteryx"}}'
-    headers:
-      Accept-Encoding: gzip, deflate
-      Content-Type: application/json
-      Accept: application/json
   response:
-    status:
-      status_code: '201'
-      message: Created
-      explanation: Document created, URL follows
+    status: 201
     headers:
       status: HTTP/1.1 201 Created
       content-type: application/json
     body:
-      encoding: ''
-      file: no
-      string: 0030294-240506114902167
-  recorded_at: 2024-05-22 09:45:51 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+      string: 0014162-250802193616735
+  recorded_at: 2025-08-05 09:03:34
 - request:
-    method: get
-    uri: https://api.gbif.org/v1/occurrence/download/0030294-240506114902167
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/download/0014162-250802193616735
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: ''
-      file: no
-      string: '{"key":"0030294-240506114902167","doi":"10.15468/dl.4z6qfa","license":"unspecified","request":{"predicate":{"type":"equals","key":"VERBATIM_SCIENTIFIC_NAME","value":"Calopteryx","matchCase":false},"sendNotification":false,"format":"SIMPLE_CSV","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2024-05-22T09:45:51.671+00:00","modified":"2024-05-22T09:45:51.671+00:00","eraseAfter":"2024-11-22T09:45:51.615+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0030294-240506114902167.zip","size":0,"totalRecords":0,"numberDatasets":0}'
-  recorded_at: 2024-05-22 09:45:51 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+      string: '{"key":"0014162-250802193616735","license":"unspecified","request":{"predicate":{"type":"equals","key":"VERBATIM_SCIENTIFIC_NAME","value":"Calopteryx","matchCase":false},"sendNotification":false,"format":"SIMPLE_CSV","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2025-08-05T09:03:35.802+00:00","modified":"2025-08-05T09:03:35.802+00:00","eraseAfter":"2026-02-05T09:03:35.739+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0014162-250802193616735.zip","size":0,"totalRecords":4534,"numberDatasets":0}'
+  recorded_at: 2025-08-05 09:03:34
+recorded_with: VCR-vcr/2.0.0

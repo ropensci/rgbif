@@ -1,48 +1,26 @@
 http_interactions:
 - request:
-    method: post
+    method: POST
     uri: https://api.gbif.org/v1/occurrence/download/request
     body:
-      encoding: ''
       string: '{"creator":"<gbif_user>","notification_address":["<gbif_user>@gbif.org"],"format":"SIMPLE_CSV","predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"5052020"},{"type":"equals","key":"HAS_GEOSPATIAL_ISSUE","value":"false"},{"type":"equals","key":"HAS_COORDINATE","value":"true"},{"type":"greaterThanOrEquals","key":"YEAR","value":"1900"},{"type":"not","predicate":{"type":"equals","key":"BASIS_OF_RECORD","value":"FOSSIL_SPECIMEN"}},{"type":"or","predicates":[{"type":"not","predicate":{"type":"in","key":"ESTABLISHMENT_MEANS","values":["MANAGED","INTRODUCED"]}},{"type":"isNull","parameter":"ESTABLISHMENT_MEANS"},{"type":"lessThan","key":"COORDINATE_UNCERTAINTY_IN_METERS","value":"10000"},{"type":"isNull","parameter":"COORDINATE_UNCERTAINTY_IN_METERS"},{"type":"like","key":"CATALOG_NUMBER","value":"PAPS5-560*"}]}]}}'
-    headers:
-      Accept-Encoding: gzip, deflate
-      Content-Type: application/json
-      Accept: application/json
   response:
-    status:
-      status_code: '201'
-      message: Created
-      explanation: Document created, URL follows
+    status: 201
     headers:
       status: HTTP/1.1 201 Created
       content-type: application/json
     body:
-      encoding: ''
-      file: no
-      string: 0030293-240506114902167
-  recorded_at: 2024-05-22 09:45:49 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+      string: 0014161-250802193616735
+  recorded_at: 2025-08-05 09:03:32
 - request:
-    method: get
-    uri: https://api.gbif.org/v1/occurrence/download/0030293-240506114902167
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/download/0014161-250802193616735
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: ''
-      file: no
-      string: '{"key":"0030293-240506114902167","doi":"10.15468/dl.w5ykdd","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"5052020","matchCase":false},{"type":"equals","key":"HAS_GEOSPATIAL_ISSUE","value":"false","matchCase":false},{"type":"equals","key":"HAS_COORDINATE","value":"true","matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1900","matchCase":false},{"type":"not","predicate":{"type":"equals","key":"BASIS_OF_RECORD","value":"FOSSIL_SPECIMEN","matchCase":false}},{"type":"or","predicates":[{"type":"not","predicate":{"type":"in","key":"ESTABLISHMENT_MEANS","values":["MANAGED","INTRODUCED"],"matchCase":false}},{"type":"isNull","parameter":"ESTABLISHMENT_MEANS"},{"type":"lessThan","key":"COORDINATE_UNCERTAINTY_IN_METERS","value":"10000","matchCase":false},{"type":"isNull","parameter":"COORDINATE_UNCERTAINTY_IN_METERS"},{"type":"like","key":"CATALOG_NUMBER","value":"PAPS5-560*","matchCase":false}]}]},"sendNotification":false,"format":"SIMPLE_CSV","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2024-05-22T09:45:49.741+00:00","modified":"2024-05-22T09:45:49.741+00:00","eraseAfter":"2024-11-22T09:45:49.663+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0030293-240506114902167.zip","size":0,"totalRecords":0,"numberDatasets":0}'
-  recorded_at: 2024-05-22 09:45:49 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+      string: '{"key":"0014161-250802193616735","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"5052020","matchCase":false},{"type":"equals","key":"HAS_GEOSPATIAL_ISSUE","value":"false","matchCase":false},{"type":"equals","key":"HAS_COORDINATE","value":"true","matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1900","matchCase":false},{"type":"not","predicate":{"type":"equals","key":"BASIS_OF_RECORD","value":"FOSSIL_SPECIMEN","matchCase":false}},{"type":"or","predicates":[{"type":"not","predicate":{"type":"in","key":"ESTABLISHMENT_MEANS","values":["MANAGED","INTRODUCED"],"matchCase":false}},{"type":"isNull","parameter":"ESTABLISHMENT_MEANS"},{"type":"lessThan","key":"COORDINATE_UNCERTAINTY_IN_METERS","value":"10000","matchCase":false},{"type":"isNull","parameter":"COORDINATE_UNCERTAINTY_IN_METERS"},{"type":"like","key":"CATALOG_NUMBER","value":"PAPS5-560*","matchCase":false}]}]},"sendNotification":false,"format":"SIMPLE_CSV","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2025-08-05T09:03:33.252+00:00","modified":"2025-08-05T09:03:33.252+00:00","eraseAfter":"2026-02-05T09:03:33.132+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0014161-250802193616735.zip","size":0,"totalRecords":1437,"numberDatasets":0}'
+  recorded_at: 2025-08-05 09:03:32
+recorded_with: VCR-vcr/2.0.0

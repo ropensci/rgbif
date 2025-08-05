@@ -96,7 +96,7 @@ name_lookup <- function(query=NULL,
                         constituentKey=NULL,
                         verbose=FALSE,
                         return=NULL,
-                        curlopts = list()) {
+                        curlopts = list(http_version=2)) {
 
   pchk(return, "name_lookup")
   if (!is.null(facetMincount) && inherits(facetMincount, "numeric"))

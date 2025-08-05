@@ -1,76 +1,43 @@
 http_interactions:
 - request:
-    method: post
+    method: POST
     uri: https://api.gbif.org/v1/occurrence/download/request/validate
     body:
-      encoding: ''
       string: '{"sendNotification":[true],"notificationAddresses":["<gbif_user>@gbif.org"],"format":"SQL_TSV_ZIP","sql":"SELECT
         gbifid,countryCode FROM occurrence WHERE genusKey = 2435098"}'
-    headers:
-      Accept-Encoding: gzip, deflate
-      Content-Type: application/json
-      Accept: application/json
   response:
-    status:
-      status_code: '201'
-      message: Created
-      explanation: Document created, URL follows
+    status: 201
     headers:
-      status: HTTP/1.1 201 Created
+      status: 'HTTP/2 201 '
       content-type: application/json
     body:
-      encoding: ''
-      file: no
-      string: '{"sql":"SELECT gbifid, countrycode\nFROM occurrence\nWHERE occurrence.genuskey
-        = 2435098","notificationAddresses":["<gbif_user>@gbif.org"],"sendNotification":false,"type":"OCCURRENCE","format":"SQL_TSV_ZIP"}'
-  recorded_at: 2024-09-24 14:05:47 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+      string: '{"sql":"SELECT\n  gbifid,\n  countrycode\nFROM\n  occurrence\nWHERE\n  CAST(occurrence.genuskey
+        AS INTEGER) = 2435098","notificationAddresses":["<gbif_user>@gbif.org"],"sendNotification":false,"format":"SQL_TSV_ZIP","type":"OCCURRENCE"}'
+  recorded_at: 2025-08-05 12:06:11
 - request:
-    method: post
+    method: POST
     uri: https://api.gbif.org/v1/occurrence/download/request
     body:
-      encoding: ''
       string: '{"sendNotification":[true],"notificationAddresses":["<gbif_user>@gbif.org"],"format":"SQL_TSV_ZIP","sql":"SELECT
         gbifid,countryCode FROM occurrence WHERE genusKey = 2435098"}'
-    headers:
-      Accept-Encoding: gzip, deflate
-      Content-Type: application/json
-      Accept: application/json
   response:
-    status:
-      status_code: '201'
-      message: Created
-      explanation: Document created, URL follows
+    status: 201
     headers:
       status: HTTP/1.1 201 Created
       content-type: application/json
     body:
-      encoding: ''
-      file: no
-      string: 0028400-240906103802322
-  recorded_at: 2024-09-24 14:05:47 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+      string: 0014773-250802193616735
+  recorded_at: 2025-08-05 12:06:14
 - request:
-    method: get
-    uri: https://api.gbif.org/v1/occurrence/download/0028400-240906103802322
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/download/0014773-250802193616735
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: ''
-      file: no
-      string: '{"key":"0028400-240906103802322","doi":"10.15468/dl.fnrv3s","license":"unspecified","request":{"sql":"SELECT
-        gbifid,countryCode FROM occurrence WHERE genusKey = 2435098","creator":"<gbif_user>","notificationAddresses":["<gbif_user>@gbif.org"],"sendNotification":false,"type":"OCCURRENCE","format":"SQL_TSV_ZIP"},"created":"2024-09-24T14:05:47.599+00:00","modified":"2024-09-24T14:05:47.599+00:00","eraseAfter":"2025-03-24T14:05:47.552+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0028400-240906103802322.zip","size":0,"totalRecords":0,"numberDatasets":0,"source":"rgbif"}'
-  recorded_at: 2024-09-24 14:05:47 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+      string: '{"key":"0014773-250802193616735","license":"unspecified","request":{"sql":"SELECT
+        gbifid,countryCode FROM occurrence WHERE genusKey = 2435098","sendNotification":false,"format":"SQL_TSV_ZIP","type":"OCCURRENCE"},"created":"2025-08-05T12:06:15.405+00:00","modified":"2025-08-05T12:06:15.405+00:00","eraseAfter":"2026-02-05T12:06:15.378+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0014773-250802193616735.zip","size":0,"totalRecords":0,"numberDatasets":0}'
+  recorded_at: 2025-08-05 12:06:14
+recorded_with: VCR-vcr/2.0.0

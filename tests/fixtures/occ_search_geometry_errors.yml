@@ -1,73 +1,44 @@
 http_interactions:
 - request:
-    method: get
-    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=500&offset=0&geometry=POLYGON%28%2830.1%2010.1%2C40%2040%2C20%2040%2C10%2020%2C30.1%20a%29%29
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=500&offset=0&geometry=POLYGON%28%2830.1+10.1%2C40+40%2C20+40%2C10+20%2C30.1+a%29%29
   response:
-    status:
-      status_code: '400'
-      message: Bad Request
-      explanation: Bad request syntax or unsupported method
+    status: 400
     headers:
       status: HTTP/1.1 400 Bad Request
       content-type: text/plain
     body:
-      encoding: ''
-      file: no
-      base64_string: Q2Fubm90IHBhcnNlIHNpbXBsZSBXS1Q6IFBPTFlHT04oKDMwLjEgMTAuMSw0MCA0MCwyMCA0MCwxMCAy
-        MCwzMC4xIGEpKSBFeHBlY3RlZCBhIG51bWJlcg==
-  recorded_at: 2025-06-10 14:28:00 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+      raw_gzip: |-
+        eJxzTszLyy9RKEgsKk5VKM7MLchJVQj3DrFSCPD3iXT399PQMDbQM1QwBBI6JgYKJgY6RmDS
+        0EDByEA
+        HLJeoqangWlGQmlySmqKQqJBXmpuUWgQAWvsYRQ==
+  recorded_at: 2025-08-04 14:08:10
 - request:
-    method: get
-    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=500&offset=0&geometry=POLYGON%28%2830.1%2010.1%2C40%2040%2C20%2040%2C10%2020%2C30.1%20%2710.1%27%29%29
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=500&offset=0&geometry=POLYGON%28%2830.1+10.1%2C40+40%2C20+40%2C10+20%2C30.1+%2710.1%27%29%29
   response:
-    status:
-      status_code: '400'
-      message: Bad Request
-      explanation: Bad request syntax or unsupported method
+    status: 400
     headers:
       status: HTTP/1.1 400 Bad Request
       content-type: text/plain
     body:
-      encoding: ''
-      file: no
-      base64_string: Q2Fubm90IHBhcnNlIHNpbXBsZSBXS1Q6IFBPTFlHT04oKDMwLjEgMTAuMSw0MCA0MCwyMCA0MCwxMCAy
-        MCwzMC4xICcxMC4xJykpIEV4cGVjdGVkIGEgbnVtYmVy
-  recorded_at: 2025-06-10 14:28:00 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+      raw_gzip: |-
+        eJxzTszLyy9RKEgsKk5VKM7MLchJVQj3DrFSCPD3iXT399PQMDbQM1QwBBI6JgYKJgY6RmDS
+        0EDByEA
+        HLKcOklTX1FRwrShITS5JTVFIVMgrzU1KLQIAwT4Y8g==
+  recorded_at: 2025-08-04 14:08:10
 - request:
-    method: get
-    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=500&offset=0&geometry=POLYGON%28%2830.1%2010.1%2C40%2040%2C20%2040%2C10%2020%2C30.1%2010.1%29
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=500&offset=0&geometry=POLYGON%28%2830.1+10.1%2C40+40%2C20+40%2C10+20%2C30.1+10.1%29
   response:
-    status:
-      status_code: '400'
-      message: Bad Request
-      explanation: Bad request syntax or unsupported method
+    status: 400
     headers:
       status: HTTP/1.1 400 Bad Request
       content-type: text/plain
     body:
-      encoding: ''
-      file: no
-      base64_string: Q2Fubm90IHBhcnNlIHNpbXBsZSBXS1Q6IFBPTFlHT04oKDMwLjEgMTAuMSw0MCA0MCwyMCA0MCwxMCAy
-        MCwzMC4xIDEwLjEpIEV4cGVjdGVkIFspXSBmb3VuZCBFT0Y=
-  recorded_at: 2025-06-10 14:28:00 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+      raw_gzip: |-
+        eJxzTszLyy9RKEgsKk5VKM7MLchJVQj3DrFSCPD3iXT399PQMDbQM1QwBBI6JgYKJgY6RmDS
+        0EDByEA
+        HLqep4FpRkJpckpqiEK0Zq5CWX5qXouDq7wYA/T8ZiA==
+  recorded_at: 2025-08-04 14:08:10
+recorded_with: VCR-vcr/2.0.0

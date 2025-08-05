@@ -1,97 +1,58 @@
 http_interactions:
 - request:
-    method: get
+    method: GET
     uri: https://api.gbif.org/v1/occurrence/search?hasCoordinate=FALSE&hasGeospatialIssue=FALSE&occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: ''
-      file: no
-      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MTUxNTE2Njcw
-        LCJyZXN1bHRzIjpbXSwiZmFjZXRzIjpbXX0=
-  recorded_at: 2025-06-10 14:18:44 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+      raw_gzip: |-
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DShqbGpuaW
+        5qaWOkp
+        FqcWlOSVAFdGxOkppicmpEHYtALSAG5w=
+  recorded_at: 2025-08-04 13:50:39
 - request:
-    method: get
+    method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&eventDate=2010
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: ''
-      file: no
-      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6NTc0MTEzNzks
-        InJlc3VsdHMiOltdLCJmYWNldHMiOltdfQ==
-  recorded_at: 2025-06-10 14:18:44 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+      raw_gzip: |-
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSpuYWZgam
+        FkY6SkW
+        pxaU5JUAF0bE6SmmJyakQdi0Am/EbYg==
+  recorded_at: 2025-08-04 13:50:39
 - request:
-    method: get
+    method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: ''
-      file: no
-      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MzExODMzMDk5
-        OCwicmVzdWx0cyI6W10sImZhY2V0cyI6W119
-  recorded_at: 2025-06-10 14:18:44 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+      raw_gzip: |-
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSxoYmliaW
+        RiamQHV
+        FqcWlOSVAJdGxOkppicmpEHYtAMtCG8I=
+  recorded_at: 2025-08-04 13:50:39
 - request:
-    method: get
+    method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&year=2000%2C2001
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: ''
-      file: no
-      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6NDU4MTc0NzUs
-        InJlc3VsdHMiOltdLCJmYWNldHMiOltdfQ==
-  recorded_at: 2025-06-10 14:18:44 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+      raw_gzip: |-
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSJqaWphZG
+        ZqY6SkW
+        pxaU5JUAF0bE6SmmJyakQdi0AnEAbZQ==
+  recorded_at: 2025-08-04 13:50:40
+recorded_with: VCR-vcr/2.0.0

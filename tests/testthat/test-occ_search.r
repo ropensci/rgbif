@@ -499,7 +499,7 @@ test_that("scientificName basic use works - no synonyms", {
   expect_equal(attr(hh, "args")$scientificName, "Pipistrellus hesperus")
   expect_equal(hh$data$species[1], "Parastrellus hesperus")
   expect_equal(hh$data$scientificName[1],
-               "Pipistrellus hesperus (H.Allen, 1864)")
+               "Parastrellus hesperus (H.Allen, 1864)")
   expect_equal(hh$data$acceptedScientificName[1],
                "Parastrellus hesperus (H.Allen, 1864)")
 })

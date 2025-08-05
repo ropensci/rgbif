@@ -1,24 +1,13 @@
 http_interactions:
 - request:
-    method: get
+    method: GET
     uri: https://api.gbif.org/v1/occurrence/download/dataset/foo-bar?limit=20&offset=0
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
   response:
-    status:
-      status_code: '400'
-      message: Bad Request
-      explanation: Bad request syntax or unsupported method
+    status: 400
     headers:
-      status: HTTP/1.1 400 Bad Request
+      status: 'HTTP/2 400 '
       content-type: text/plain
     body:
-      encoding: ''
-      file: no
       string: 'Invalid UUID string: foo-bar'
-  recorded_at: 2024-05-22 09:25:19 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+  recorded_at: 2025-08-04 14:03:19
+recorded_with: VCR-vcr/2.0.0

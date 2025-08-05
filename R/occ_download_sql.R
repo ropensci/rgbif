@@ -36,7 +36,7 @@ occ_download_sql <- function(q = NULL,
                              pwd = NULL, 
                              email = NULL,
                              validate = TRUE,
-                             curlopts = list()) {
+                             curlopts = list(http_version=2)) {
   
   z <- occ_download_sql_prep(q=q,
                              format=format,
@@ -85,7 +85,7 @@ occ_download_sql_prep <- function(q=NULL,
                                   pwd = NULL, 
                                   email = NULL,
                                   validate = TRUE,
-                                  curlopts = list()) {
+                                  curlopts = list(http_version=2)) {
   
   url <- paste0(gbif_base(), '/occurrence/download/request')
   assert(q,"character")

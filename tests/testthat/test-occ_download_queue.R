@@ -1,7 +1,7 @@
 context("occ_download_queue")
 
 # set to dev GBIF API base url
-Sys.setenv(RGBIF_BASE_URL = "https://api.gbif-uat.org/v1")
+# Sys.setenv(RGBIF_BASE_URL = "https://api.gbif-uat.org/v1")
 
 # get original env vars/R options
 keys <- c("GBIF_USER", "GBIF_PWD", "GBIF_EMAIL")

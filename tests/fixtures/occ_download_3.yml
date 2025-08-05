@@ -1,48 +1,26 @@
 http_interactions:
 - request:
-    method: post
+    method: POST
     uri: https://api.gbif.org/v1/occurrence/download/request
     body:
-      encoding: ''
       string: '{"creator":"<gbif_user>","notification_address":["<gbif_user>@gbif.org"],"format":"SPECIES_LIST","predicate":{"type":"greaterThanOrEquals","key":"DECIMAL_LATITUDE","value":"75"}}'
-    headers:
-      Accept-Encoding: gzip, deflate
-      Content-Type: application/json
-      Accept: application/json
   response:
-    status:
-      status_code: '201'
-      message: Created
-      explanation: Document created, URL follows
+    status: 201
     headers:
       status: HTTP/1.1 201 Created
       content-type: application/json
     body:
-      encoding: ''
-      file: no
-      string: 0030286-240506114902167
-  recorded_at: 2024-05-22 09:42:01 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+      string: 0014160-250802193616735
+  recorded_at: 2025-08-05 09:03:29
 - request:
-    method: get
-    uri: https://api.gbif.org/v1/occurrence/download/0030286-240506114902167
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/download/0014160-250802193616735
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: ''
-      file: no
-      string: '{"key":"0030286-240506114902167","doi":"10.15468/dl.g92dwf","license":"unspecified","request":{"predicate":{"type":"greaterThanOrEquals","key":"DECIMAL_LATITUDE","value":"75","matchCase":false},"sendNotification":false,"format":"SPECIES_LIST","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2024-05-22T09:42:01.340+00:00","modified":"2024-05-22T09:42:01.340+00:00","eraseAfter":"2024-11-22T09:42:01.284+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0030286-240506114902167.zip","size":0,"totalRecords":0,"numberDatasets":0}'
-  recorded_at: 2024-05-22 09:42:01 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+      string: '{"key":"0014160-250802193616735","license":"unspecified","request":{"predicate":{"type":"greaterThanOrEquals","key":"DECIMAL_LATITUDE","value":"75","matchCase":false},"sendNotification":false,"format":"SPECIES_LIST","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2025-08-05T09:03:30.841+00:00","modified":"2025-08-05T09:03:30.841+00:00","eraseAfter":"2026-02-05T09:03:30.770+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0014160-250802193616735.zip","size":0,"totalRecords":1941170,"numberDatasets":0}'
+  recorded_at: 2025-08-05 09:03:29
+recorded_with: VCR-vcr/2.0.0

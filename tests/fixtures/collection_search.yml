@@ -1,25 +1,14 @@
 http_interactions:
 - request:
-    method: get
+    method: GET
     uri: https://api.gbif.org/v1/grscicoll/collection?q=insect&limit=2
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: ''
-      file: no
-      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":508,"results":[{"key":"5f024e8c-bbaa-400f-a9ae-b07b2a0ae45a","code":"PSUZC-INSECT","name":"Stock
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":518,"results":[{"key":"5f024e8c-bbaa-400f-a9ae-b07b2a0ae45a","code":"PSUZC-INSECT","name":"Stock
         of insect specimens","description":"Curator: Dr. Sophak Chantharit. Tailed
         bugs are small invertebrates. It is classified as a legged animal. It is the
         boundary between crustaceans and insects. The stingrays belong to the class
@@ -69,28 +58,16 @@ http_interactions:
         House, Opp Lion Gate, SBS Road, Fort","city":"Mumbai","province":"Maharashtra","postalCode":"400001","country":"IN"},"address":{"key":56144,"address":"Hornbill
         House, Opp Lion Gate, SBS Road, Fort","city":"Mumbai","province":"Maharashtra","postalCode":"400001","country":"IN"},"createdBy":"vijaybarve","modifiedBy":"vijaybarve","created":"2025-07-02T22:06:30.055+00:00","modified":"2025-07-02T22:06:30.055+00:00","tags":[],"identifiers":[],"contactPersons":[],"numberSpecimens":50000,"machineTags":[],"incorporatedCollections":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"institutionName":"Bombay
         Natural History Society","institutionCode":"BNHS"}]}'
-  recorded_at: 2025-07-04 12:37:27 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+  recorded_at: 2025-08-04 13:47:45
 - request:
-    method: get
-    uri: https://api.gbif.org/v1/grscicoll/collection?limit=2&name=Insects&name=Entomology
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
+    method: GET
+    uri: https://api.gbif.org/v1/grscicoll/collection?limit=2&name=Insects
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: ''
-      file: no
       string: '{"offset":0,"limit":2,"endOfRecords":false,"count":136,"results":[{"key":"40091655-14a3-4558-a7b8-640e2e156a92","code":"ENT","name":"Entomology","description":"Entomology
         collection (ENT) of the Museu Nacional de História Natural e da Ciência (MNHNC),
         Lisbon, PORTUGAL.","contentTypes":["PreservedOrganisms"],"active":true,"personalCollection":false,"email":["geral@museus.ulisboa.pt","rkeller@edu.ulisboa.pt"],"phone":[],"homepage":"https://www.museus.ulisboa.pt/","catalogUrls":[],"apiUrls":[],"preservationTypes":["SamplePinned","SampleFluidPreserved","SampleSlideMount"],"institutionKey":"0fdf8436-0060-4cc4-8235-90526026bccd","mailingAddress":{"key":52829,"address":"Museu
@@ -107,29 +84,17 @@ http_interactions:
         of butterflies of the canton (region) of Basel-Country","incorporatedCollections":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"temporalCoverage":"Formation
         period: 1835-ongoing","institutionName":"Archäologie und Museum Baselland
         - Museum.BL","institutionCode":"AMBL"}]}'
-  recorded_at: 2025-07-04 12:37:28 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+  recorded_at: 2025-08-04 13:47:45
 - request:
-    method: get
+    method: GET
     uri: https://api.gbif.org/v1/grscicoll/collection?numberSpecimens=0%2C100&limit=1
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: ''
-      file: no
-      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":1700,"results":[{"key":"4a5632b8-f86b-4d38-a0cb-12bef927b905","code":"FI-PBP","name":"Erbario
+      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":1696,"results":[{"key":"4a5632b8-f86b-4d38-a0cb-12bef927b905","code":"FI-PBP","name":"Erbario
         di Onorina Passerini Bargagli Petrucci | Onorina Passerini Bargagli Petrucci''s
         herbarium","description":"Contents: 99 specimens, including 42 lichens, 45
         bryophytes, 10 pteridophytes and 2 angiosperms.","contentTypes":["PreservedOrganisms"],"active":false,"personalCollection":true,"email":[],"phone":[],"catalogUrls":[],"apiUrls":[],"preservationTypes":["SamplePressed","SampleDried","StorageIndoors"],"institutionKey":"42038f96-5978-474c-9b0b-4e92450cd1d8","mailingAddress":{"key":56097,"address":"Via
@@ -138,31 +103,19 @@ http_interactions:
         is a sub-collection of https://registry.gbif.org/collection/19961847-31f6-4abb-9b92-18a391ba9b0d.
         Information originally retrieved from internal University of Florence Museal
         System (UNIFI-SMA) digitization dashboard, compiled in October 2021.","incorporatedCollections":[],"alternativeCodes":[{"code":"FI999941","description":"Herbarium
-        barcode"}],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"institutionName":"Sede
+        barcode"}],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":99,"typeSpecimenCount":0,"institutionName":"Sede
         di Via Giorgio La Pira del Museo di Storia naturale di Firenze |  Via Giorgio
         La Pira headquarter of the Natural History Museum in Florence","institutionCode":"MSNF-GLP"}]}'
-  recorded_at: 2025-07-04 12:37:28 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+  recorded_at: 2025-08-04 13:47:45
 - request:
-    method: get
+    method: GET
     uri: https://api.gbif.org/v1/grscicoll/collection?limit=1&institutionKey=6a6ac6c5-1b8a-48db-91a2-f8661274ff80
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: ''
-      file: no
       string: '{"offset":0,"limit":1,"endOfRecords":false,"count":27,"results":[{"key":"745ce2d0-a64b-4089-aae6-3712a39caa2a","code":"RS","name":"The
         Scorpiones collection (RS) of the Muséum national d''Histoire naturelle (MNHN
         - Paris)","description":"This dataset is the databased part of the Scorpiones
@@ -192,28 +145,16 @@ http_interactions:
         documentation of specimens may be provided on request.","contentTypes":[],"active":true,"personalCollection":false,"email":[],"phone":[],"catalogUrls":[],"apiUrls":[],"preservationTypes":[],"institutionKey":"6a6ac6c5-1b8a-48db-91a2-f8661274ff80","mailingAddress":{"key":43397},"address":{"key":43396,"address":"Muséum
         national d''Histoire naturelle 57, rue Cuvier","city":"Paris","postalCode":"75005","country":"FR"},"createdBy":"mgrosjean","modifiedBy":"s.pamerlon","created":"2022-03-25T12:36:16.984+00:00","modified":"2024-04-30T14:12:49.736+00:00","tags":[],"identifiers":[{"key":297946,"type":"DOI","identifier":"10.15468/podyc0","createdBy":"mgrosjean","created":"2022-03-25T12:36:16.984+00:00","primary":false}],"contactPersons":[{"key":38097,"lastName":"MNHN","position":["Provider"],"phone":[],"fax":[],"email":[],"address":[],"primary":true,"taxonomicExpertise":[],"userIds":[],"createdBy":"s.pamerlon","modifiedBy":"s.pamerlon","created":"2024-04-30T14:12:49.736+00:00","modified":"2024-04-30T14:12:49.736+00:00"},{"key":38098,"firstName":"Mark","lastName":"Judson","position":[],"phone":[],"fax":[],"email":[],"address":[],"primary":false,"taxonomicExpertise":[],"userIds":[],"createdBy":"s.pamerlon","modifiedBy":"s.pamerlon","created":"2024-04-30T14:12:49.736+00:00","modified":"2024-04-30T14:12:49.736+00:00"},{"key":38099,"firstName":"Élise-Anne","lastName":"Leguin","position":[],"phone":[],"fax":[],"email":[],"address":[],"primary":false,"taxonomicExpertise":[],"userIds":[],"createdBy":"s.pamerlon","modifiedBy":"s.pamerlon","created":"2024-04-30T14:12:49.736+00:00","modified":"2024-04-30T14:12:49.736+00:00"},{"key":38100,"firstName":"Laurent","lastName":"Albenga","position":["Correspondant"],"phone":[],"fax":[],"email":[],"address":[],"primary":true,"taxonomicExpertise":[],"userIds":[],"createdBy":"s.pamerlon","modifiedBy":"s.pamerlon","created":"2024-04-30T14:12:49.736+00:00","modified":"2024-04-30T14:12:49.736+00:00"}],"machineTags":[],"taxonomicCoverage":"","geographicCoverage":"","incorporatedCollections":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[{"key":50,"datasetKey":"2f23ac81-674e-4e4e-982f-73f49ccdb9df","createdBy":"mgrosjean","created":"2022-03-25T12:36:17.410+00:00"}],"masterSource":"GBIF_REGISTRY","masterSourceMetadata":{"key":8586,"source":"DATASET","sourceId":"2f23ac81-674e-4e4e-982f-73f49ccdb9df","createdBy":"mgrosjean","created":"2022-03-25T12:36:16.984+00:00"},"displayOnNHCPortal":true,"occurrenceCount":947,"typeSpecimenCount":691,"institutionName":"MNHN
         - Museum national d''Histoire naturelle","institutionCode":"MNHN"}]}'
-  recorded_at: 2025-07-04 12:37:28 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+  recorded_at: 2025-08-04 13:47:46
 - request:
-    method: get
-    uri: https://api.gbif.org/v1/grscicoll/collection?q=insect&limit=1&country=US&country=GB
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
+    method: GET
+    uri: https://api.gbif.org/v1/grscicoll/collection?q=insect&limit=1&country=US
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: ''
-      file: no
       string: '{"offset":0,"limit":1,"endOfRecords":false,"count":155,"results":[{"key":"e21440ee-0b58-4cfd-b763-5323cbe96ac8","code":"UAA:Ento","name":"University
         of Alaska Anchorage Insect Specimens (Arctos)","description":"The UAA Entomology
         Collection includes approximately 5,000 specimens with a focus on pollinating
@@ -231,5 +172,5 @@ http_interactions:
         and aquatic insects: Insecta, Insects","geographicCoverage":"Alaska, USA","incorporatedCollections":["University
         of Alaska Anchorage Entomology Collection"],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GBIF_REGISTRY","masterSourceMetadata":{"key":9304,"source":"DATASET","sourceId":"3658ba15-172d-459c-94ab-d565f6550dad","createdBy":"mgrosjean","created":"2023-10-09T06:59:23.626+00:00"},"displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"institutionName":"Alaska
         Center for Conservation Science","institutionCode":"UAA"}]}'
-  recorded_at: 2025-07-04 12:37:28 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+  recorded_at: 2025-08-04 13:47:46
+recorded_with: VCR-vcr/2.0.0

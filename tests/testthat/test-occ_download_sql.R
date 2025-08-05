@@ -9,7 +9,6 @@ test_that("occ_download_sql : real requests work", {
   expect_is(qqq, "occ_download_sql")
   expect_equal(attr(qqq, "status"), "PREPARING")
   expect_equal(attr(qqq, "format"), "SQL_TSV_ZIP")
-  print(qqq)
 
 })
 

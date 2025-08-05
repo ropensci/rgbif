@@ -22,14 +22,14 @@
 #' # curl options
 #' enumeration(curlopts = list(verbose=TRUE))
 #' }
-enumeration <- function(x = NULL, curlopts = list()) {
+enumeration <- function(x = NULL, curlopts = list(http_version=2)) {
   url <- paste0(gbif_base(), "/enumeration/basic/", x)
   gbif_GET(url, NULL, parse = TRUE, curlopts)
 }
 
 #' @export
 #' @rdname enumeration
-enumeration_country <- function(curlopts = list()) {
+enumeration_country <- function(curlopts = list(http_version=2)) {
   url <- paste0(gbif_base(), "/enumeration/country/")
   gbif_GET(url, NULL, parse = TRUE, curlopts = curlopts)
 }

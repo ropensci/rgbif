@@ -111,7 +111,7 @@ collection_search <- function(
     offset = NULL,
     limit = NULL,
     format = NULL,
-    curlopts = list()  
+    curlopts = list(http_version=2)  
   ) {
   
   assert(query,"character")

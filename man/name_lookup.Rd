@@ -26,7 +26,7 @@ name_lookup(
   constituentKey = NULL,
   verbose = FALSE,
   return = NULL,
-  curlopts = list()
+  curlopts = list(http_version = 2)
 )
 }
 \arguments{
