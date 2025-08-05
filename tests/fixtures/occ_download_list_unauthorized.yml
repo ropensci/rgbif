@@ -1,24 +1,12 @@
 http_interactions:
 - request:
-    method: get
+    method: GET
     uri: https://api.gbif.org/v1/occurrence/download/user/foobar?limit=20&offset=0
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Content-Type: application/json
-      Accept: application/json
   response:
-    status:
-      status_code: '401'
-      message: Unauthorized
-      explanation: No permission -- see authorization schemes
+    status: 401
     headers:
-      status: HTTP/1.1 401 Unauthorized
+      status: 'HTTP/2 401 '
     body:
-      encoding: ''
-      file: no
-      string: "Failed to authenticate user foobar\r\n"
-  recorded_at: 2024-05-22 09:25:27 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+      raw_gzip: eJxzS8zMSU1RKMlXSCwtyUjNK8lMTixJVSgtTi1SSMvPT0os4uUCAPecDPc=
+  recorded_at: 2025-08-04 14:03:27
+recorded_with: VCR-vcr/2.0.0

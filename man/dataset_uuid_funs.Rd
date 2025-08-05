@@ -15,27 +15,42 @@
 \alias{dataset_metrics}
 \title{Get dataset metadata using a datasetkey}
 \usage{
-dataset_get(uuid = NULL, curlopts = list())
+dataset_get(uuid = NULL, curlopts = list(http_version = 2))
 
-dataset_process(uuid = NULL, limit = 20, start = NULL, curlopts = list())
+dataset_process(
+  uuid = NULL,
+  limit = 20,
+  start = NULL,
+  curlopts = list(http_version = 2)
+)
 
-dataset_networks(uuid = NULL, limit = 20, start = NULL, curlopts = list())
+dataset_networks(
+  uuid = NULL,
+  limit = 20,
+  start = NULL,
+  curlopts = list(http_version = 2)
+)
 
-dataset_constituents(uuid = NULL, limit = 20, start = NULL, curlopts = list())
+dataset_constituents(
+  uuid = NULL,
+  limit = 20,
+  start = NULL,
+  curlopts = list(http_version = 2)
+)
 
-dataset_comment(uuid = NULL, curlopts = list())
+dataset_comment(uuid = NULL, curlopts = list(http_version = 2))
 
-dataset_contact(uuid = NULL, curlopts = list())
+dataset_contact(uuid = NULL, curlopts = list(http_version = 2))
 
-dataset_endpoint(uuid = NULL, curlopts = list())
+dataset_endpoint(uuid = NULL, curlopts = list(http_version = 2))
 
-dataset_identifier(uuid = NULL, curlopts = list())
+dataset_identifier(uuid = NULL, curlopts = list(http_version = 2))
 
-dataset_machinetag(uuid = NULL, curlopts = list())
+dataset_machinetag(uuid = NULL, curlopts = list(http_version = 2))
 
-dataset_tag(uuid = NULL, curlopts = list())
+dataset_tag(uuid = NULL, curlopts = list(http_version = 2))
 
-dataset_metrics(uuid = NULL, curlopts = list())
+dataset_metrics(uuid = NULL, curlopts = list(http_version = 2))
 }
 \arguments{
 \item{uuid}{A GBIF datasetkey uuid.}

@@ -37,7 +37,7 @@ collection_search(
   offset = NULL,
   limit = NULL,
   format = NULL,
-  curlopts = list()
+  curlopts = list(http_version = 2)
 )
 
 collection_export(

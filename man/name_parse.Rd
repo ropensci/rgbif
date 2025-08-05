@@ -4,7 +4,7 @@
 \alias{name_parse}
 \title{Parse taxon names using the GBIF name parser.}
 \usage{
-name_parse(scientificname, curlopts = list())
+name_parse(scientificname, curlopts = list(http_version = 2))
 }
 \arguments{
 \item{scientificname}{A character vector of scientific names.}

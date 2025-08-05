@@ -13,7 +13,7 @@ occ_download_sql(
   pwd = NULL,
   email = NULL,
   validate = TRUE,
-  curlopts = list()
+  curlopts = list(http_version = 2)
 )
 
 occ_download_sql_validate(q = NULL, user = NULL, pwd = NULL)
@@ -25,7 +25,7 @@ occ_download_sql_prep(
   pwd = NULL,
   email = NULL,
   validate = TRUE,
-  curlopts = list()
+  curlopts = list(http_version = 2)
 )
 }
 \arguments{

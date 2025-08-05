@@ -1,47 +1,22 @@
 http_interactions:
 - request:
-    method: get
+    method: GET
     uri: http://api.geonames.org/srtm3?lats=4&lngs=5&username=cheesemonkey
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
   response:
-    status:
-      status_code: '401'
-      message: Unauthorized
-      explanation: No permission -- see authorization schemes
+    status: 401
     headers:
-      status: HTTP/1.1 401 Unauthorized
+      status: HTTP/1.1 401 401
     body:
-      encoding: ''
-      file: no
-      string: |
-        ERR:10:user does not exist.
-  recorded_at: 2023-08-29 13:19:03 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+      raw_gzip: eJxzDQqyMjSwKi1OLVJIyU8tVsjLL1FIrcgsLtHjAgCDWAk/
+  recorded_at: 2025-08-04 13:48:29
 - request:
-    method: get
+    method: GET
     uri: http://api.geonames.org/srtm3?lats=a&lngs=a&username=<gbif_user>
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
-      status: HTTP/1.1 200 OK
+      status: HTTP/1.1 200 200
     body:
-      encoding: ''
-      file: no
-      string: |
-        ERR:14:invalid number
-  recorded_at: 2023-08-29 13:19:03 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+      raw_gzip: eJxzDQqyMjSxyswrS8zJTFHIK81NSi3iAgBRdwdd
+  recorded_at: 2025-08-04 13:48:29
+recorded_with: VCR-vcr/2.0.0

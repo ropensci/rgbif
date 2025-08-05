@@ -37,7 +37,7 @@
 
 organizations <- function(data = 'all', country = NULL, uuid = NULL,
                           query = NULL, limit = 100, start=NULL,
-                          curlopts = list()) {
+                          curlopts = list(http_version=2)) {
 
 
   args <-

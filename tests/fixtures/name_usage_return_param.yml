@@ -1,24 +1,13 @@
 http_interactions:
 - request:
-    method: get
+    method: GET
     uri: https://api.gbif.org/v1/species?offset=0&limit=100
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: ''
-      file: no
       string: '{"offset":0,"limit":100,"endOfRecords":false,"results":[{"key":0,"nubKey":0,"nameKey":130332213,"taxonID":"gbif:0","sourceTaxonKey":0,"kingdom":"incertae
         sedis","kingdomKey":0,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","scientificName":"incertae
         sedis","canonicalName":"incertae sedis","authorship":"","nameType":"PLACEHOLDER","rank":"KINGDOM","origin":"SOURCE","taxonomicStatus":"DOUBTFUL","nomenclaturalStatus":[],"remarks":"","numDescendants":3613,"lastCrawled":"2023-08-22T23:20:59.545+00:00","lastInterpreted":"2023-08-22T23:19:21.731+00:00","issues":[]},{"key":1,"nubKey":1,"nameKey":130188353,"taxonID":"gbif:1","sourceTaxonKey":1,"kingdom":"Animalia","kingdomKey":1,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","scientificName":"Animalia","canonicalName":"Animalia","vernacularName":"Animals","authorship":"","nameType":"SCIENTIFIC","rank":"KINGDOM","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":2981931,"lastCrawled":"2023-08-22T23:20:59.545+00:00","lastInterpreted":"2023-08-22T22:11:51.237+00:00","issues":[]},{"key":2,"nubKey":2,"nameKey":130277256,"taxonID":"gbif:2","sourceTaxonKey":170809364,"kingdom":"Archaea","kingdomKey":2,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","scientificName":"Archaea","canonicalName":"Archaea","vernacularName":"Archaea","authorship":"","nameType":"SCIENTIFIC","rank":"KINGDOM","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":4358,"lastCrawled":"2023-08-22T23:20:59.545+00:00","lastInterpreted":"2023-08-22T22:52:34.813+00:00","issues":[]},{"key":3,"nubKey":3,"nameKey":130277260,"taxonID":"gbif:3","sourceTaxonKey":3,"kingdom":"Bacteria","kingdomKey":3,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","scientificName":"Bacteria","canonicalName":"Bacteria","vernacularName":"Bacteria","authorship":"","nameType":"SCIENTIFIC","rank":"KINGDOM","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":67224,"lastCrawled":"2023-08-22T23:20:59.545+00:00","lastInterpreted":"2023-08-22T22:52:35.110+00:00","issues":[]},{"key":4,"nubKey":4,"nameKey":130277610,"taxonID":"gbif:4","sourceTaxonKey":172299416,"kingdom":"Chromista","kingdomKey":4,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","scientificName":"Chromista","canonicalName":"Chromista","vernacularName":"Kelp,
@@ -82,5 +71,5 @@ http_interactions:
         division en ordre, lu à la société d’Histoire Naturelle de Paris, le 11 prairial
         an troisième [30 May 1795]. Magazin Encyclopédique, ou Journal des Sciences,
         des Lettres et des Arts, 1795 [1. année] 2: 433-449. https://www.molluscabase.org/aphia.php?p=sourcedetails&id=66736","numDescendants":30925,"lastCrawled":"2023-08-22T23:20:59.545+00:00","lastInterpreted":"2023-08-22T22:17:13.560+00:00","issues":[],"class":"Cephalopoda"}]}'
-  recorded_at: 2025-06-10 14:18:19 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+  recorded_at: 2025-08-04 13:50:20
+recorded_with: VCR-vcr/2.0.0

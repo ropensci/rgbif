@@ -1,205 +1,110 @@
 http_interactions:
 - request:
-    method: get
+    method: GET
     uri: http://api.geonames.org/srtm3?lats=32.909436%2C38.540315%2C37.050632%2C31.913204%2C32.648646&lngs=-116.545853%2C-122.970018%2C-121.4302%2C-109.931659%2C-108.536463&username=<gbif_user>
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
-      status: HTTP/1.1 200 OK
+      status: HTTP/1.1 200 200
       content-type: text/html;charset=UTF-8
     body:
-      encoding: ''
-      file: no
       string: |
         1447
         340
         340
         1524
         1769
-  recorded_at: 2023-08-29 13:19:06 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+  recorded_at: 2025-08-04 13:48:31
 - request:
-    method: get
+    method: GET
     uri: http://api.geonames.org/srtm1?lats=32.909436%2C38.540315%2C37.050632%2C31.913204%2C32.648646&lngs=-116.545853%2C-122.970018%2C-121.4302%2C-109.931659%2C-108.536463&username=<gbif_user>
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
-      status: HTTP/1.1 200 OK
+      status: HTTP/1.1 200 200
       content-type: text/html;charset=UTF-8
     body:
-      encoding: ''
-      file: no
       string: |
         1447
         339
         339
         1521
         1769
-  recorded_at: 2023-08-29 13:19:06 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+  recorded_at: 2025-08-04 13:48:32
 - request:
-    method: get
+    method: GET
     uri: http://api.geonames.org/astergdem?lats=32.909436%2C38.540315%2C37.050632%2C31.913204%2C32.648646&lngs=-116.545853%2C-122.970018%2C-121.4302%2C-109.931659%2C-108.536463&username=<gbif_user>
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
-      status: HTTP/1.1 200 OK
+      status: HTTP/1.1 200 200
       content-type: text/html;charset=UTF-8
     body:
-      encoding: ''
-      file: no
       string: |
         1449
         349
         336
         1519
         1764
-  recorded_at: 2023-08-29 13:19:06 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+  recorded_at: 2025-08-04 13:48:33
 - request:
-    method: get
+    method: GET
     uri: http://api.geonames.org/gtopo30?lat=32.90944&lng=-116.5459&username=<gbif_user>
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
-      status: HTTP/1.1 200 OK
+      status: HTTP/1.1 200 200
       content-type: text/html;charset=UTF-8
     body:
-      encoding: ''
-      file: no
       string: |
         1460
-  recorded_at: 2023-08-29 13:19:06 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+  recorded_at: 2025-08-04 13:48:33
 - request:
-    method: get
+    method: GET
     uri: http://api.geonames.org/gtopo30?lat=38.54031&lng=-122.97&username=<gbif_user>
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
-      status: HTTP/1.1 200 OK
+      status: HTTP/1.1 200 200
       content-type: text/html;charset=UTF-8
     body:
-      encoding: ''
-      file: no
       string: |
         303
-  recorded_at: 2023-08-29 13:19:06 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+  recorded_at: 2025-08-04 13:48:33
 - request:
-    method: get
+    method: GET
     uri: http://api.geonames.org/gtopo30?lat=37.05063&lng=-121.4302&username=<gbif_user>
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
-      status: HTTP/1.1 200 OK
+      status: HTTP/1.1 200 200
       content-type: text/html;charset=UTF-8
     body:
-      encoding: ''
-      file: no
       string: |
         365
-  recorded_at: 2023-08-29 13:19:06 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+  recorded_at: 2025-08-04 13:48:34
 - request:
-    method: get
+    method: GET
     uri: http://api.geonames.org/gtopo30?lat=31.9132&lng=-109.9317&username=<gbif_user>
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
-      status: HTTP/1.1 200 OK
+      status: HTTP/1.1 200 200
       content-type: text/html;charset=UTF-8
     body:
-      encoding: ''
-      file: no
       string: |
         1515
-  recorded_at: 2023-08-29 13:19:06 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+  recorded_at: 2025-08-04 13:48:34
 - request:
-    method: get
+    method: GET
     uri: http://api.geonames.org/gtopo30?lat=32.64865&lng=-108.5365&username=<gbif_user>
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
-      status: HTTP/1.1 200 OK
+      status: HTTP/1.1 200 200
       content-type: text/html;charset=UTF-8
     body:
-      encoding: ''
-      file: no
       string: |
         1767
-  recorded_at: 2023-08-29 13:19:06 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+  recorded_at: 2025-08-04 13:48:34
+recorded_with: VCR-vcr/2.0.0

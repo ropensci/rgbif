@@ -49,7 +49,7 @@ dataset_search(
   limit = 100,
   start = NULL,
   description = FALSE,
-  curlopts = list()
+  curlopts = list(http_version = 2)
 )
 
 dataset_suggest(

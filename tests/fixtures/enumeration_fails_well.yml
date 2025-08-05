@@ -1,24 +1,13 @@
 http_interactions:
 - request:
-    method: get
+    method: GET
     uri: https://api.gbif.org/v1/enumeration/basic/asdfadsf
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
   response:
-    status:
-      status_code: '404'
-      message: Not Found
-      explanation: Nothing matches the given URI
+    status: 404
     headers:
       status: HTTP/1.1 404 Not Found
       content-type: text/plain
     body:
-      encoding: ''
-      file: no
       string: 'Entity not found for uri: /enumeration/basic/asdfadsf'
-  recorded_at: 2025-06-11 08:30:10 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+  recorded_at: 2025-08-04 13:48:36
+recorded_with: VCR-vcr/2.0.0

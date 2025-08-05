@@ -1,50 +1,28 @@
 http_interactions:
 - request:
-    method: post
+    method: POST
     uri: https://api.gbif.org/v1/occurrence/download/request
     body:
-      encoding: ''
       string: '{"creator":"<gbif_user>","notification_address":["<gbif_user>@gbif.org"],"format":"DWCA","predicate":{"type":"and","predicates":[{"type":"within","geometry":"POLYGON((-14
         42,-7 26,9 38,-14 42))"},{"type":"greaterThanOrEquals","key":"ELEVATION","value":"5000"}]}}'
-    headers:
-      Accept-Encoding: gzip, deflate
-      Content-Type: application/json
-      Accept: application/json
   response:
-    status:
-      status_code: '201'
-      message: Created
-      explanation: Document created, URL follows
+    status: 201
     headers:
       status: HTTP/1.1 201 Created
       content-type: application/json
     body:
-      encoding: ''
-      file: no
-      string: 0030285-240506114902167
-  recorded_at: 2024-05-22 09:41:58 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+      string: 0010077-250802193616735
+  recorded_at: 2025-08-04 13:51:39
 - request:
-    method: get
-    uri: https://api.gbif.org/v1/occurrence/download/0030285-240506114902167
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/download/0010077-250802193616735
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: ''
-      file: no
-      string: '{"key":"0030285-240506114902167","doi":"10.15468/dl.9ngyj6","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"within","geometry":"POLYGON((-14
-        42,-7 26,9 38,-14 42))"},{"type":"greaterThanOrEquals","key":"ELEVATION","value":"5000","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2024-05-22T09:41:59.022+00:00","modified":"2024-05-22T09:41:59.022+00:00","eraseAfter":"2024-11-22T09:41:58.968+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0030285-240506114902167.zip","size":0,"totalRecords":0,"numberDatasets":0}'
-  recorded_at: 2024-05-22 09:41:58 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+      string: '{"key":"0010077-250802193616735","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"within","geometry":"POLYGON((-14
+        42,-7 26,9 38,-14 42))"},{"type":"greaterThanOrEquals","key":"ELEVATION","value":"5000","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2025-08-04T13:51:39.166+00:00","modified":"2025-08-04T13:51:39.166+00:00","eraseAfter":"2026-02-04T13:51:38.918+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0010077-250802193616735.zip","size":0,"totalRecords":99,"numberDatasets":0}'
+  recorded_at: 2025-08-04 13:51:39
+recorded_with: VCR-vcr/2.0.0
