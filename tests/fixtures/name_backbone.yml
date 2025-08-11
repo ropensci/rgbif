@@ -1,32 +1,425 @@
 http_interactions:
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/species/match?name=Helianthus+annuus&rank=species&strict=false&verbose=FALSE&limit=100
+    uri: https://api.gbif.org/v2/species/match?scientificName=Helianthus+annuus&taxonRank=species&verbose=FALSE
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"usageKey":9206251,"scientificName":"Helianthus annuus L.","canonicalName":"Helianthus
-        annuus","rank":"SPECIES","status":"ACCEPTED","confidence":99,"matchType":"EXACT","kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Helianthus","species":"Helianthus
-        annuus","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3119134,"speciesKey":9206251,"class":"Magnoliopsida"}'
-  recorded_at: 2025-08-04 13:50:06
+      string: '{"usage":{"key":"9206251","name":"Helianthus annuus L.","canonicalName":"Helianthus
+        annuus","authorship":"L.","rank":"SPECIES","status":"ACCEPTED","genericName":"Helianthus","specificEpithet":"annuus","type":"SCIENTIFIC","formattedName":"<i>Helianthus</i>
+        <i>annuus</i> L."},"classification":[{"key":"6","name":"Plantae","rank":"KINGDOM"},{"key":"7707728","name":"Tracheophyta","rank":"PHYLUM"},{"key":"220","name":"Magnoliopsida","rank":"CLASS"},{"key":"414","name":"Asterales","rank":"ORDER"},{"key":"3065","name":"Asteraceae","rank":"FAMILY"},{"key":"3119134","name":"Helianthus","rank":"GENUS"},{"key":"9206251","name":"Helianthus
+        annuus","rank":"SPECIES"}],"diagnostics":{"matchType":"EXACT","confidence":99,"timeTaken":11,"timings":{"nameNRank":0,"sciNameMatch":11,"nameParse":0,"luceneMatch":11}},"additionalStatus":[{"clbDatasetKey":"53131","datasetAlias":"IUCN","datasetKey":"19491596-35ae-4a91-9a98-85cf505f1bd3","status":"LEAST_CONCERN","statusCode":"LC","sourceId":"19073408"}],"synonym":false,"left":219941,"right":219950}'
+  recorded_at: 2025-08-11 13:21:27
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/species/match?name=Helianthus+annuus&rank=species&strict=false&verbose=TRUE&limit=100
+    uri: https://api.gbif.org/v2/species/match?scientificName=Helianthus+annuus&taxonRank=species&verbose=TRUE
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"usageKey":9206251,"scientificName":"Helianthus annuus L.","canonicalName":"Helianthus
-        annuus","rank":"SPECIES","status":"ACCEPTED","confidence":99,"note":"Similarity:
-        name=110; authorship=0; classification=-2; rank=6; status=1; score=115; nextMatch=5","matchType":"EXACT","alternatives":[{"usageKey":4252034,"acceptedUsageKey":4250528,"scientificName":"Helianthus
-        canus (Britton) Wooton & Standl.","canonicalName":"Helianthus canus","rank":"SPECIES","status":"SYNONYM","confidence":9,"note":"Similarity:
-        name=5; authorship=0; classification=-2; rank=6; status=0; score=9","matchType":"FUZZY","kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Helianthus","species":"Helianthus
-        petiolaris","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3119134,"speciesKey":3119225,"class":"Magnoliopsida"}],"kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Helianthus","species":"Helianthus
-        annuus","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3119134,"speciesKey":9206251,"class":"Magnoliopsida"}'
-  recorded_at: 2025-08-04 13:50:06
+      string: '{"usage":{"key":"9206251","name":"Helianthus annuus L.","canonicalName":"Helianthus
+        annuus","authorship":"L.","rank":"SPECIES","status":"ACCEPTED","genericName":"Helianthus","specificEpithet":"annuus","type":"SCIENTIFIC","formattedName":"<i>Helianthus</i>
+        <i>annuus</i> L."},"classification":[{"key":"6","name":"Plantae","rank":"KINGDOM"},{"key":"7707728","name":"Tracheophyta","rank":"PHYLUM"},{"key":"220","name":"Magnoliopsida","rank":"CLASS"},{"key":"414","name":"Asterales","rank":"ORDER"},{"key":"3065","name":"Asteraceae","rank":"FAMILY"},{"key":"3119134","name":"Helianthus","rank":"GENUS"},{"key":"9206251","name":"Helianthus
+        annuus","rank":"SPECIES"}],"diagnostics":{"matchType":"EXACT","confidence":99,"note":"Similarity:
+        name=110; authorship=0; classification=-2; rank=6; status=1; score=115; nextMatch=5","timeTaken":12,"alternatives":[{"usage":{"key":"4252034","name":"Helianthus
+        canus (Britton) Wooton & Standl.","canonicalName":"Helianthus canus","authorship":"(Britton)
+        Wooton & Standl.","rank":"SPECIES","code":"BOTANICAL","status":"SYNONYM","genericName":"Helianthus","specificEpithet":"canus","type":"SCIENTIFIC","formattedName":"<i>Helianthus</i>
+        <i>canus</i> (Britton) Wooton & Standl."},"acceptedUsage":{"key":"4250528","name":"Helianthus
+        petiolaris var. canescens A.Gray","canonicalName":"Helianthus petiolaris canescens","authorship":"A.Gray","rank":"VARIETY","genericName":"Helianthus","specificEpithet":"petiolaris","infraspecificEpithet":"canescens","type":"SCIENTIFIC","formattedName":"<i>Helianthus</i>
+        <i>petiolaris</i> var. <i>canescens</i> A.Gray"},"classification":[{"key":"6","name":"Plantae","rank":"KINGDOM"},{"key":"7707728","name":"Tracheophyta","rank":"PHYLUM"},{"key":"220","name":"Magnoliopsida","rank":"CLASS"},{"key":"414","name":"Asterales","rank":"ORDER"},{"key":"3065","name":"Asteraceae","rank":"FAMILY"},{"key":"3119134","name":"Helianthus","rank":"GENUS"},{"key":"3119225","name":"Helianthus
+        petiolaris","rank":"SPECIES"},{"key":"4250528","name":"Helianthus petiolaris
+        canescens","rank":"VARIETY"}],"diagnostics":{"matchType":"VARIANT","confidence":9,"note":"Similarity:
+        name=5; authorship=0; classification=-2; rank=6; status=0; score=9","timeTaken":0},"synonym":true,"left":219980,"right":219980}],"timings":{"nameNRank":0,"sciNameMatch":12,"nameParse":1,"luceneMatch":11}},"additionalStatus":[{"clbDatasetKey":"53131","datasetAlias":"IUCN","datasetKey":"19491596-35ae-4a91-9a98-85cf505f1bd3","status":"LEAST_CONCERN","statusCode":"LC","sourceId":"19073408"}],"synonym":false,"left":219941,"right":219950}'
+  recorded_at: 2025-08-11 13:21:27
+- request:
+    method: GET
+    uri: https://api.gbif.org/v2/species/match?scientificName=Calopteryx+fakeus&verbose=FALSE
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '{"diagnostics":{"matchType":"NONE","issues":[],"confidence":100,"timeTaken":8,"timings":{"sciNameMatch":9}},"synonym":false}'
+  recorded_at: 2025-08-11 13:21:28
+- request:
+    method: GET
+    uri: https://api.gbif.org/v2/species/match?scientificName=Calopteryx+splendens&kingdom=Plantae&strict=FALSE&verbose=FALSE
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '{"usage":{"key":"3234109","name":"Calopteryx A.C.Sm.","canonicalName":"Calopteryx","authorship":"A.C.Sm.","rank":"GENUS","status":"SYNONYM","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        A.C.Sm."},"acceptedUsage":{"key":"7763613","name":"Thibaudia Ruiz & Pav. ex
+        J.St.-Hil.","canonicalName":"Thibaudia","authorship":"Ruiz & Pav. ex J.St.-Hil.","rank":"GENUS","type":"SCIENTIFIC","formattedName":"<i>Thibaudia</i>
+        Ruiz & Pav. ex J.St.-Hil."},"classification":[{"key":"6","name":"Plantae","rank":"KINGDOM"},{"key":"7707728","name":"Tracheophyta","rank":"PHYLUM"},{"key":"220","name":"Magnoliopsida","rank":"CLASS"},{"key":"1353","name":"Ericales","rank":"ORDER"},{"key":"2505","name":"Ericaceae","rank":"FAMILY"},{"key":"7763613","name":"Thibaudia","rank":"GENUS"}],"diagnostics":{"matchType":"HIGHERRANK","confidence":96,"timeTaken":24,"timings":{"sciNameMatch":24}},"synonym":true}'
+  recorded_at: 2025-08-11 13:21:28
+- request:
+    method: GET
+    uri: https://api.gbif.org/v2/species/match?scientificName=Calopteryx+splendens&kingdom=Plantae&strict=TRUE&verbose=FALSE
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '{"diagnostics":{"matchType":"NONE","issues":[],"processingFlags":["LOW_CONFIDENCE"],"confidence":99,"note":"No
+        match because of too little confidence","timeTaken":1,"timings":{"nameNRank":0,"sciNameMatch":2,"nameParse":1,"luceneMatch":1}},"synonym":false}'
+  recorded_at: 2025-08-11 13:21:28
+- request:
+    method: GET
+    uri: https://api.gbif.org/v2/species/match?scientificName=Calopteryx+splendens&kingdom=Plantae&verbose=TRUE
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '{"usage":{"key":"3234109","name":"Calopteryx A.C.Sm.","canonicalName":"Calopteryx","authorship":"A.C.Sm.","rank":"GENUS","status":"SYNONYM","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        A.C.Sm."},"acceptedUsage":{"key":"7763613","name":"Thibaudia Ruiz & Pav. ex
+        J.St.-Hil.","canonicalName":"Thibaudia","authorship":"Ruiz & Pav. ex J.St.-Hil.","rank":"GENUS","type":"SCIENTIFIC","formattedName":"<i>Thibaudia</i>
+        Ruiz & Pav. ex J.St.-Hil."},"classification":[{"key":"6","name":"Plantae","rank":"KINGDOM"},{"key":"7707728","name":"Tracheophyta","rank":"PHYLUM"},{"key":"220","name":"Magnoliopsida","rank":"CLASS"},{"key":"1353","name":"Ericales","rank":"ORDER"},{"key":"2505","name":"Ericaceae","rank":"FAMILY"},{"key":"7763613","name":"Thibaudia","rank":"GENUS"}],"diagnostics":{"matchType":"HIGHERRANK","confidence":96,"note":"Similarity:
+        name=100; classification=4; rank=0; status=0; score=104; nextMatch=5","timeTaken":22,"alternatives":[{"usage":{"key":"1427067","name":"Calopteryx
+        splendens (Harris, 1780)","canonicalName":"Calopteryx splendens","authorship":"(Harris,
+        1780)","rank":"SPECIES","code":"ZOOLOGICAL","status":"ACCEPTED","genericName":"Calopteryx","specificEpithet":"splendens","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>splendens</i> (Harris, 1780)"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427007","name":"Calopteryx","rank":"GENUS"},{"key":"1427067","name":"Calopteryx
+        splendens","rank":"SPECIES"}],"diagnostics":{"matchType":"EXACT","confidence":70,"note":"Similarity:
+        name=110; authorship=0; classification=-52; rank=6; status=1; score=65; singleMatch=5","timeTaken":0},"additionalStatus":[{"clbDatasetKey":"53131","datasetAlias":"IUCN","datasetKey":"19491596-35ae-4a91-9a98-85cf505f1bd3","status":"LEAST_CONCERN","statusCode":"LC","sourceId":"158701"}],"synonym":false},{"usage":{"key":"1427007","name":"Calopteryx
+        Leach, 1815","canonicalName":"Calopteryx","authorship":"Leach, 1815","rank":"GENUS","code":"ZOOLOGICAL","status":"ACCEPTED","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        Leach, 1815"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427007","name":"Calopteryx","rank":"GENUS"}],"diagnostics":{"matchType":"EXACT","confidence":49,"note":"Similarity:
+        name=100; classification=-52; rank=0; status=1; score=49","timeTaken":0},"synonym":false},{"usage":{"key":"7236014","name":"Calopteryx
+        de Charpentier, 1839","canonicalName":"Calopteryx","authorship":"de Charpentier,
+        1839","rank":"GENUS","code":"ZOOLOGICAL","status":"PROVISIONALLY_ACCEPTED","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        de Charpentier, 1839"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"7236014","name":"Calopteryx","rank":"GENUS"}],"diagnostics":{"matchType":"EXACT","confidence":43,"note":"Similarity:
+        name=100; classification=-52; rank=0; status=-5; score=43","timeTaken":0},"synonym":false},{"usage":{"key":"8954339","name":"Calopteryx
+        Vander Linden, 1825","canonicalName":"Calopteryx","authorship":"Vander Linden,
+        1825","rank":"GENUS","code":"ZOOLOGICAL","status":"PROVISIONALLY_ACCEPTED","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        Vander Linden, 1825"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"8954339","name":"Calopteryx","rank":"GENUS"}],"diagnostics":{"matchType":"EXACT","confidence":43,"note":"Similarity:
+        name=100; classification=-52; rank=0; status=-5; score=43","timeTaken":0},"synonym":false},{"usage":{"key":"5683656","name":"Calopteryx
+        insignis A.C.Sm.","canonicalName":"Calopteryx insignis","authorship":"A.C.Sm.","rank":"SPECIES","status":"SYNONYM","genericName":"Calopteryx","specificEpithet":"insignis","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>insignis</i> A.C.Sm."},"acceptedUsage":{"key":"8346016","name":"Thibaudia
+        insignis (A.C.Sm.) Luteyn & Pedraza","canonicalName":"Thibaudia insignis","authorship":"(A.C.Sm.)
+        Luteyn & Pedraza","rank":"SPECIES","code":"BOTANICAL","genericName":"Thibaudia","specificEpithet":"insignis","type":"SCIENTIFIC","formattedName":"<i>Thibaudia</i>
+        <i>insignis</i> (A.C.Sm.) Luteyn & Pedraza"},"classification":[{"key":"6","name":"Plantae","rank":"KINGDOM"},{"key":"7707728","name":"Tracheophyta","rank":"PHYLUM"},{"key":"220","name":"Magnoliopsida","rank":"CLASS"},{"key":"1353","name":"Ericales","rank":"ORDER"},{"key":"2505","name":"Ericaceae","rank":"FAMILY"},{"key":"7327778","name":"Thibaudia","rank":"GENUS"},{"key":"8346016","name":"Thibaudia
+        insignis","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":4,"note":"Similarity:
+        name=0; classification=4; rank=0; status=0; score=4","timeTaken":0},"synonym":true,"left":316720,"right":316720},{"usage":{"key":"5683653","name":"Calopteryx
+        sessiliflora A.C.Sm.","canonicalName":"Calopteryx sessiliflora","authorship":"A.C.Sm.","rank":"SPECIES","status":"SYNONYM","genericName":"Calopteryx","specificEpithet":"sessiliflora","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>sessiliflora</i> A.C.Sm."},"acceptedUsage":{"key":"4166369","name":"Thibaudia
+        sessiliflora (A.C.Sm.) Luteyn","canonicalName":"Thibaudia sessiliflora","authorship":"(A.C.Sm.)
+        Luteyn","rank":"SPECIES","code":"BOTANICAL","genericName":"Thibaudia","specificEpithet":"sessiliflora","type":"SCIENTIFIC","formattedName":"<i>Thibaudia</i>
+        <i>sessiliflora</i> (A.C.Sm.) Luteyn"},"classification":[{"key":"6","name":"Plantae","rank":"KINGDOM"},{"key":"7707728","name":"Tracheophyta","rank":"PHYLUM"},{"key":"220","name":"Magnoliopsida","rank":"CLASS"},{"key":"1353","name":"Ericales","rank":"ORDER"},{"key":"2505","name":"Ericaceae","rank":"FAMILY"},{"key":"7327778","name":"Thibaudia","rank":"GENUS"},{"key":"4166369","name":"Thibaudia
+        sessiliflora","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":4,"note":"Similarity:
+        name=0; classification=4; rank=0; status=0; score=4","timeTaken":0},"synonym":true,"left":316721,"right":316721},{"usage":{"key":"5052018","name":"Calopteryx
+        exul Selys, 1853","canonicalName":"Calopteryx exul","authorship":"Selys, 1853","rank":"SPECIES","code":"ZOOLOGICAL","status":"ACCEPTED","genericName":"Calopteryx","specificEpithet":"exul","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>exul</i> Selys, 1853"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427007","name":"Calopteryx","rank":"GENUS"},{"key":"5052018","name":"Calopteryx
+        exul","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=5; classification=-52; rank=0; status=1; score=-46","timeTaken":0},"additionalStatus":[{"clbDatasetKey":"53131","datasetAlias":"IUCN","datasetKey":"19491596-35ae-4a91-9a98-85cf505f1bd3","status":"ENDANGERED","statusCode":"EN","sourceId":"60287"}],"synonym":false},{"usage":{"key":"1427037","name":"Calopteryx
+        virgo (Linnaeus, 1758)","canonicalName":"Calopteryx virgo","authorship":"(Linnaeus,
+        1758)","rank":"SPECIES","code":"ZOOLOGICAL","status":"ACCEPTED","genericName":"Calopteryx","specificEpithet":"virgo","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>virgo</i> (Linnaeus, 1758)"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427007","name":"Calopteryx","rank":"GENUS"},{"key":"1427037","name":"Calopteryx
+        virgo","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=5; classification=-52; rank=0; status=1; score=-46","timeTaken":0},"additionalStatus":[{"clbDatasetKey":"53131","datasetAlias":"IUCN","datasetKey":"19491596-35ae-4a91-9a98-85cf505f1bd3","status":"LEAST_CONCERN","statusCode":"LC","sourceId":"165505"}],"synonym":false},{"usage":{"key":"11573960","name":"Calopteryx
+        aspasia (Hagen, 1862)","canonicalName":"Calopteryx aspasia","authorship":"(Hagen,
+        1862)","rank":"SPECIES","code":"ZOOLOGICAL","status":"ACCEPTED","genericName":"Calopteryx","specificEpithet":"aspasia","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>aspasia</i> (Hagen, 1862)"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4798079","name":"Isophlebiidae","rank":"FAMILY"},{"key":"4798082","name":"Isophlebia","rank":"GENUS"},{"key":"11573960","name":"Calopteryx
+        aspasia","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=1; score=-51","timeTaken":0},"synonym":false},{"usage":{"key":"5052043","name":"Calopteryx
+        cornelia Selys, 1853","canonicalName":"Calopteryx cornelia","authorship":"Selys,
+        1853","rank":"SPECIES","code":"ZOOLOGICAL","status":"ACCEPTED","genericName":"Calopteryx","specificEpithet":"cornelia","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>cornelia</i> Selys, 1853"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427007","name":"Calopteryx","rank":"GENUS"},{"key":"5052043","name":"Calopteryx
+        cornelia","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=1; score=-51","timeTaken":0},"additionalStatus":[{"clbDatasetKey":"53131","datasetAlias":"IUCN","datasetKey":"19491596-35ae-4a91-9a98-85cf505f1bd3","status":"LEAST_CONCERN","statusCode":"LC","sourceId":"168370"}],"synonym":false},{"usage":{"key":"5052044","name":"Calopteryx
+        dimidiata Burmeister, 1839","canonicalName":"Calopteryx dimidiata","authorship":"Burmeister,
+        1839","rank":"SPECIES","code":"ZOOLOGICAL","status":"ACCEPTED","genericName":"Calopteryx","specificEpithet":"dimidiata","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>dimidiata</i> Burmeister, 1839"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427007","name":"Calopteryx","rank":"GENUS"},{"key":"5052044","name":"Calopteryx
+        dimidiata","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=1; score=-51","timeTaken":0},"additionalStatus":[{"clbDatasetKey":"53131","datasetAlias":"IUCN","datasetKey":"19491596-35ae-4a91-9a98-85cf505f1bd3","status":"LEAST_CONCERN","statusCode":"LC","sourceId":"51293832"}],"synonym":false},{"usage":{"key":"5052017","name":"Calopteryx
+        hyalina Martin, 1909","canonicalName":"Calopteryx hyalina","authorship":"Martin,
+        1909","rank":"SPECIES","code":"ZOOLOGICAL","status":"ACCEPTED","genericName":"Calopteryx","specificEpithet":"hyalina","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>hyalina</i> Martin, 1909"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427007","name":"Calopteryx","rank":"GENUS"},{"key":"5052017","name":"Calopteryx
+        hyalina","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=1; score=-51","timeTaken":0},"additionalStatus":[{"clbDatasetKey":"53131","datasetAlias":"IUCN","datasetKey":"19491596-35ae-4a91-9a98-85cf505f1bd3","status":"ENDANGERED","statusCode":"EN","sourceId":"63105"}],"synonym":false},{"usage":{"key":"5052020","name":"Calopteryx
+        japonica Selys, 1869","canonicalName":"Calopteryx japonica","authorship":"Selys,
+        1869","rank":"SPECIES","code":"ZOOLOGICAL","status":"ACCEPTED","genericName":"Calopteryx","specificEpithet":"japonica","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>japonica</i> Selys, 1869"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427007","name":"Calopteryx","rank":"GENUS"},{"key":"5052020","name":"Calopteryx
+        japonica","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=1; score=-51","timeTaken":0},"additionalStatus":[{"clbDatasetKey":"53131","datasetAlias":"IUCN","datasetKey":"19491596-35ae-4a91-9a98-85cf505f1bd3","status":"LEAST_CONCERN","statusCode":"LC","sourceId":"138180332"}],"synonym":false},{"usage":{"key":"5052055","name":"Calopteryx
+        orientalis Selys, 1887","canonicalName":"Calopteryx orientalis","authorship":"Selys,
+        1887","rank":"SPECIES","code":"ZOOLOGICAL","status":"ACCEPTED","genericName":"Calopteryx","specificEpithet":"orientalis","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>orientalis</i> Selys, 1887"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427007","name":"Calopteryx","rank":"GENUS"},{"key":"5052055","name":"Calopteryx
+        orientalis","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=1; score=-51","timeTaken":0},"additionalStatus":[{"clbDatasetKey":"53131","datasetAlias":"IUCN","datasetKey":"19491596-35ae-4a91-9a98-85cf505f1bd3","status":"LEAST_CONCERN","statusCode":"LC","sourceId":"158717"}],"synonym":false},{"usage":{"key":"5052052","name":"Calopteryx
+        samarcandica Bartenev, 1912","canonicalName":"Calopteryx samarcandica","authorship":"Bartenev,
+        1912","rank":"SPECIES","code":"ZOOLOGICAL","status":"ACCEPTED","genericName":"Calopteryx","specificEpithet":"samarcandica","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>samarcandica</i> Bartenev, 1912"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427007","name":"Calopteryx","rank":"GENUS"},{"key":"5052052","name":"Calopteryx
+        samarcandica","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=1; score=-51","timeTaken":0},"additionalStatus":[{"clbDatasetKey":"53131","datasetAlias":"IUCN","datasetKey":"19491596-35ae-4a91-9a98-85cf505f1bd3","status":"LEAST_CONCERN","statusCode":"LC","sourceId":"138182402"}],"synonym":false},{"usage":{"key":"9243060","name":"Calopteryx
+        sannoisiensis (Meunier, 1914)","canonicalName":"Calopteryx sannoisiensis","authorship":"(Meunier,
+        1914)","rank":"SPECIES","code":"ZOOLOGICAL","status":"ACCEPTED","genericName":"Calopteryx","specificEpithet":"sannoisiensis","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>sannoisiensis</i> (Meunier, 1914)"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427294","name":"Sapho","rank":"GENUS"},{"key":"9243060","name":"Calopteryx
+        sannoisiensis","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=1; score=-51","timeTaken":0},"synonym":false},{"usage":{"key":"7215856","name":"Calopteryx
+        splendens splendens","canonicalName":"Calopteryx splendens splendens","rank":"SUBSPECIES","status":"ACCEPTED","genericName":"Calopteryx","specificEpithet":"splendens","infraspecificEpithet":"splendens","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>splendens</i> <i>splendens</i>"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427007","name":"Calopteryx","rank":"GENUS"},{"key":"1427067","name":"Calopteryx
+        splendens","rank":"SPECIES"},{"key":"7215856","name":"Calopteryx splendens
+        splendens","rank":"SUBSPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=1; score=-51","timeTaken":0},"synonym":false},{"usage":{"key":"7215858","name":"Calopteryx
+        virgo virgo","canonicalName":"Calopteryx virgo virgo","rank":"SUBSPECIES","status":"ACCEPTED","genericName":"Calopteryx","specificEpithet":"virgo","infraspecificEpithet":"virgo","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>virgo</i> <i>virgo</i>"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427007","name":"Calopteryx","rank":"GENUS"},{"key":"1427037","name":"Calopteryx
+        virgo","rank":"SPECIES"},{"key":"7215858","name":"Calopteryx virgo virgo","rank":"SUBSPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=1; score=-51","timeTaken":0},"synonym":false},{"usage":{"key":"1427020","name":"Calopteryx
+        xanthostoma (Charpentier, 1825)","canonicalName":"Calopteryx xanthostoma","authorship":"(Charpentier,
+        1825)","rank":"SPECIES","code":"ZOOLOGICAL","status":"ACCEPTED","genericName":"Calopteryx","specificEpithet":"xanthostoma","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>xanthostoma</i> (Charpentier, 1825)"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427007","name":"Calopteryx","rank":"GENUS"},{"key":"1427020","name":"Calopteryx
+        xanthostoma","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=1; score=-51","timeTaken":0},"synonym":false},{"usage":{"key":"5052032","name":"Calopteryx
+        anceps Stephens, 1836","canonicalName":"Calopteryx anceps","authorship":"Stephens,
+        1836","rank":"SPECIES","code":"ZOOLOGICAL","status":"SYNONYM","genericName":"Calopteryx","specificEpithet":"anceps","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>anceps</i> Stephens, 1836"},"acceptedUsage":{"key":"7215858","name":"Calopteryx
+        virgo virgo","canonicalName":"Calopteryx virgo virgo","rank":"SUBSPECIES","genericName":"Calopteryx","specificEpithet":"virgo","infraspecificEpithet":"virgo","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>virgo</i> <i>virgo</i>"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427007","name":"Calopteryx","rank":"GENUS"},{"key":"1427037","name":"Calopteryx
+        virgo","rank":"SPECIES"},{"key":"7215858","name":"Calopteryx virgo virgo","rank":"SUBSPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=0; score=-52","timeTaken":0},"synonym":true},{"usage":{"key":"9987960","name":"Calopteryx
+        auripennis Burmeister, 1839","canonicalName":"Calopteryx auripennis","authorship":"Burmeister,
+        1839","rank":"SPECIES","code":"ZOOLOGICAL","status":"SYNONYM","genericName":"Calopteryx","specificEpithet":"auripennis","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>auripennis</i> Burmeister, 1839"},"acceptedUsage":{"key":"1427175","name":"Hetaerina
+        auripennis (Burmeister, 1839)","canonicalName":"Hetaerina auripennis","authorship":"(Burmeister,
+        1839)","rank":"SPECIES","code":"ZOOLOGICAL","genericName":"Hetaerina","specificEpithet":"auripennis","type":"SCIENTIFIC","formattedName":"<i>Hetaerina</i>
+        <i>auripennis</i> (Burmeister, 1839)"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427106","name":"Hetaerina","rank":"GENUS"},{"key":"1427175","name":"Hetaerina
+        auripennis","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=0; score=-52","timeTaken":0},"synonym":true},{"usage":{"key":"5052046","name":"Calopteryx
+        cognata Rambur, 1842","canonicalName":"Calopteryx cognata","authorship":"Rambur,
+        1842","rank":"SPECIES","code":"ZOOLOGICAL","status":"SYNONYM","genericName":"Calopteryx","specificEpithet":"cognata","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>cognata</i> Rambur, 1842"},"acceptedUsage":{"key":"5052044","name":"Calopteryx
+        dimidiata Burmeister, 1839","canonicalName":"Calopteryx dimidiata","authorship":"Burmeister,
+        1839","rank":"SPECIES","code":"ZOOLOGICAL","genericName":"Calopteryx","specificEpithet":"dimidiata","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>dimidiata</i> Burmeister, 1839"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427007","name":"Calopteryx","rank":"GENUS"},{"key":"5052044","name":"Calopteryx
+        dimidiata","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=0; score=-52","timeTaken":0},"synonym":true},{"usage":{"key":"5791760","name":"Calopteryx
+        disparilis Rambur, 1842","canonicalName":"Calopteryx disparilis","authorship":"Rambur,
+        1842","rank":"SPECIES","code":"ZOOLOGICAL","status":"SYNONYM","genericName":"Calopteryx","specificEpithet":"disparilis","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>disparilis</i> Rambur, 1842"},"acceptedUsage":{"key":"1427219","name":"Neurobasis
+        chinensis (Linnaeus, 1758)","canonicalName":"Neurobasis chinensis","authorship":"(Linnaeus,
+        1758)","rank":"SPECIES","code":"ZOOLOGICAL","genericName":"Neurobasis","specificEpithet":"chinensis","type":"SCIENTIFIC","formattedName":"<i>Neurobasis</i>
+        <i>chinensis</i> (Linnaeus, 1758)"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427218","name":"Neurobasis","rank":"GENUS"},{"key":"1427219","name":"Neurobasis
+        chinensis","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=0; score=-52","timeTaken":0},"synonym":true},{"usage":{"key":"5814872","name":"Calopteryx
+        formosa Rambur, 1842","canonicalName":"Calopteryx formosa","authorship":"Rambur,
+        1842","rank":"SPECIES","code":"ZOOLOGICAL","status":"SYNONYM","genericName":"Calopteryx","specificEpithet":"formosa","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>formosa</i> Rambur, 1842"},"acceptedUsage":{"key":"1427190","name":"Vestalis
+        luctuosa (Burmeister, 1839)","canonicalName":"Vestalis luctuosa","authorship":"(Burmeister,
+        1839)","rank":"SPECIES","code":"ZOOLOGICAL","genericName":"Vestalis","specificEpithet":"luctuosa","type":"SCIENTIFIC","formattedName":"<i>Vestalis</i>
+        <i>luctuosa</i> (Burmeister, 1839)"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427180","name":"Vestalis","rank":"GENUS"},{"key":"1427190","name":"Vestalis
+        luctuosa","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=0; score=-52","timeTaken":0},"synonym":true},{"usage":{"key":"9420491","name":"Calopteryx
+        haemorrhoidalis haemorrhoidalis","canonicalName":"Calopteryx haemorrhoidalis
+        haemorrhoidalis","rank":"SUBSPECIES","status":"SYNONYM","genericName":"Calopteryx","specificEpithet":"haemorrhoidalis","infraspecificEpithet":"haemorrhoidalis","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>haemorrhoidalis</i> <i>haemorrhoidalis</i>"},"acceptedUsage":{"key":"1427008","name":"Calopteryx
+        haemorrhoidalis (Vander Linden, 1825)","canonicalName":"Calopteryx haemorrhoidalis","authorship":"(Vander
+        Linden, 1825)","rank":"SPECIES","code":"ZOOLOGICAL","genericName":"Calopteryx","specificEpithet":"haemorrhoidalis","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>haemorrhoidalis</i> (Vander Linden, 1825)"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427007","name":"Calopteryx","rank":"GENUS"},{"key":"1427008","name":"Calopteryx
+        haemorrhoidalis","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=0; score=-52","timeTaken":0},"synonym":true},{"usage":{"key":"5052006","name":"Calopteryx
+        holosericea Burmeister, 1839","canonicalName":"Calopteryx holosericea","authorship":"Burmeister,
+        1839","rank":"SPECIES","code":"ZOOLOGICAL","status":"SYNONYM","genericName":"Calopteryx","specificEpithet":"holosericea","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>holosericea</i> Burmeister, 1839"},"acceptedUsage":{"key":"5052005","name":"Calopteryx
+        maculata (Palisot de Beauvois, 1807)","canonicalName":"Calopteryx maculata","authorship":"(Palisot
+        de Beauvois, 1807)","rank":"SPECIES","code":"ZOOLOGICAL","genericName":"Calopteryx","specificEpithet":"maculata","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>maculata</i> (Palisot de Beauvois, 1807)"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427007","name":"Calopteryx","rank":"GENUS"},{"key":"5052005","name":"Calopteryx
+        maculata","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=0; score=-52","timeTaken":0},"synonym":true},{"usage":{"key":"5052022","name":"Calopteryx
+        hudsonica Hagen, 1877","canonicalName":"Calopteryx hudsonica","authorship":"Hagen,
+        1877","rank":"SPECIES","code":"ZOOLOGICAL","status":"SYNONYM","genericName":"Calopteryx","specificEpithet":"hudsonica","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>hudsonica</i> Hagen, 1877"},"acceptedUsage":{"key":"5052021","name":"Calopteryx
+        aequabilis Say, 1840","canonicalName":"Calopteryx aequabilis","authorship":"Say,
+        1840","rank":"SPECIES","code":"ZOOLOGICAL","genericName":"Calopteryx","specificEpithet":"aequabilis","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>aequabilis</i> Say, 1840"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427007","name":"Calopteryx","rank":"GENUS"},{"key":"5052021","name":"Calopteryx
+        aequabilis","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=0; score=-52","timeTaken":0},"synonym":true},{"usage":{"key":"5791763","name":"Calopteryx
+        iridipennis Burmeister, 1839","canonicalName":"Calopteryx iridipennis","authorship":"Burmeister,
+        1839","rank":"SPECIES","code":"ZOOLOGICAL","status":"SYNONYM","genericName":"Calopteryx","specificEpithet":"iridipennis","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>iridipennis</i> Burmeister, 1839"},"acceptedUsage":{"key":"5052076","name":"Phaon
+        iridipennis (Burmeister, 1839)","canonicalName":"Phaon iridipennis","authorship":"(Burmeister,
+        1839)","rank":"SPECIES","code":"ZOOLOGICAL","genericName":"Phaon","specificEpithet":"iridipennis","type":"SCIENTIFIC","formattedName":"<i>Phaon</i>
+        <i>iridipennis</i> (Burmeister, 1839)"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427210","name":"Phaon","rank":"GENUS"},{"key":"5052076","name":"Phaon
+        iridipennis","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=0; score=-52","timeTaken":0},"synonym":true},{"usage":{"key":"5052071","name":"Calopteryx
+        laosica Fraser, 1933","canonicalName":"Calopteryx laosica","authorship":"Fraser,
+        1933","rank":"SPECIES","code":"ZOOLOGICAL","status":"SYNONYM","genericName":"Calopteryx","specificEpithet":"laosica","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>laosica</i> Fraser, 1933"},"acceptedUsage":{"key":"10910507","name":"Atrocalopteryx
+        laosica (Fraser, 1933)","canonicalName":"Atrocalopteryx laosica","authorship":"(Fraser,
+        1933)","rank":"SPECIES","code":"ZOOLOGICAL","genericName":"Atrocalopteryx","specificEpithet":"laosica","type":"SCIENTIFIC","formattedName":"<i>Atrocalopteryx</i>
+        <i>laosica</i> (Fraser, 1933)"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427089","name":"Atrocalopteryx","rank":"GENUS"},{"key":"10910507","name":"Atrocalopteryx
+        laosica","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=0; score=-52","timeTaken":0},"synonym":true},{"usage":{"key":"5791774","name":"Calopteryx
+        longipennis Selys, 1854","canonicalName":"Calopteryx longipennis","authorship":"Selys,
+        1854","rank":"SPECIES","code":"ZOOLOGICAL","status":"SYNONYM","genericName":"Calopteryx","specificEpithet":"longipennis","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>longipennis</i> Selys, 1854"},"acceptedUsage":{"key":"1427091","name":"Atrocalopteryx
+        atrata (Selys, 1853)","canonicalName":"Atrocalopteryx atrata","authorship":"(Selys,
+        1853)","rank":"SPECIES","code":"ZOOLOGICAL","genericName":"Atrocalopteryx","specificEpithet":"atrata","type":"SCIENTIFIC","formattedName":"<i>Atrocalopteryx</i>
+        <i>atrata</i> (Selys, 1853)"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427089","name":"Atrocalopteryx","rank":"GENUS"},{"key":"1427091","name":"Atrocalopteryx
+        atrata","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=0; score=-52","timeTaken":0},"synonym":true},{"usage":{"key":"9905674","name":"Calopteryx
+        luctuosa Burmeister, 1839","canonicalName":"Calopteryx luctuosa","authorship":"Burmeister,
+        1839","rank":"SPECIES","code":"ZOOLOGICAL","status":"SYNONYM","genericName":"Calopteryx","specificEpithet":"luctuosa","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>luctuosa</i> Burmeister, 1839"},"acceptedUsage":{"key":"1427190","name":"Vestalis
+        luctuosa (Burmeister, 1839)","canonicalName":"Vestalis luctuosa","authorship":"(Burmeister,
+        1839)","rank":"SPECIES","code":"ZOOLOGICAL","genericName":"Vestalis","specificEpithet":"luctuosa","type":"SCIENTIFIC","formattedName":"<i>Vestalis</i>
+        <i>luctuosa</i> (Burmeister, 1839)"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427180","name":"Vestalis","rank":"GENUS"},{"key":"1427190","name":"Vestalis
+        luctuosa","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=0; score=-52","timeTaken":0},"synonym":true},{"usage":{"key":"11005856","name":"Calopteryx
+        ludoviciana Leach, 1815","canonicalName":"Calopteryx ludoviciana","authorship":"Leach,
+        1815","rank":"SPECIES","code":"ZOOLOGICAL","status":"SYNONYM","genericName":"Calopteryx","specificEpithet":"ludoviciana","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>ludoviciana</i> Leach, 1815"},"acceptedUsage":{"key":"1427067","name":"Calopteryx
+        splendens (Harris, 1780)","canonicalName":"Calopteryx splendens","authorship":"(Harris,
+        1780)","rank":"SPECIES","code":"ZOOLOGICAL","genericName":"Calopteryx","specificEpithet":"splendens","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>splendens</i> (Harris, 1780)"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427007","name":"Calopteryx","rank":"GENUS"},{"key":"1427067","name":"Calopteryx
+        splendens","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=0; score=-52","timeTaken":0},"synonym":true},{"usage":{"key":"10931524","name":"Calopteryx
+        oberthuri McLachlan, 1894","canonicalName":"Calopteryx oberthuri","authorship":"McLachlan,
+        1894","rank":"SPECIES","code":"ZOOLOGICAL","status":"SYNONYM","genericName":"Calopteryx","specificEpithet":"oberthuri","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>oberthuri</i> McLachlan, 1894"},"acceptedUsage":{"key":"10806551","name":"Atrocalopteryx
+        oberthuri (McLachlan, 1894)","canonicalName":"Atrocalopteryx oberthuri","authorship":"(McLachlan,
+        1894)","rank":"SPECIES","code":"ZOOLOGICAL","genericName":"Atrocalopteryx","specificEpithet":"oberthuri","type":"SCIENTIFIC","formattedName":"<i>Atrocalopteryx</i>
+        <i>oberthuri</i> (McLachlan, 1894)"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427089","name":"Atrocalopteryx","rank":"GENUS"},{"key":"10806551","name":"Atrocalopteryx
+        oberthuri","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=0; score=-52","timeTaken":0},"synonym":true},{"usage":{"key":"12350392","name":"Calopteryx
+        papyreti Selys, 1854","canonicalName":"Calopteryx papyreti","authorship":"Selys,
+        1854","rank":"SPECIES","code":"ZOOLOGICAL","status":"SYNONYM","genericName":"Calopteryx","specificEpithet":"papyreti","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>papyreti</i> Selys, 1854"},"acceptedUsage":{"key":"1427008","name":"Calopteryx
+        haemorrhoidalis (Vander Linden, 1825)","canonicalName":"Calopteryx haemorrhoidalis","authorship":"(Vander
+        Linden, 1825)","rank":"SPECIES","code":"ZOOLOGICAL","genericName":"Calopteryx","specificEpithet":"haemorrhoidalis","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>haemorrhoidalis</i> (Vander Linden, 1825)"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427007","name":"Calopteryx","rank":"GENUS"},{"key":"1427008","name":"Calopteryx
+        haemorrhoidalis","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=0; score=-52","timeTaken":0},"synonym":true},{"usage":{"key":"12357831","name":"Calopteryx
+        parthenias Burmeister, 1839","canonicalName":"Calopteryx parthenias","authorship":"Burmeister,
+        1839","rank":"SPECIES","code":"ZOOLOGICAL","status":"SYNONYM","genericName":"Calopteryx","specificEpithet":"parthenias","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>parthenias</i> Burmeister, 1839"},"acceptedUsage":{"key":"1427067","name":"Calopteryx
+        splendens (Harris, 1780)","canonicalName":"Calopteryx splendens","authorship":"(Harris,
+        1780)","rank":"SPECIES","code":"ZOOLOGICAL","genericName":"Calopteryx","specificEpithet":"splendens","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>splendens</i> (Harris, 1780)"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427007","name":"Calopteryx","rank":"GENUS"},{"key":"1427067","name":"Calopteryx
+        splendens","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=0; score=-52","timeTaken":0},"synonym":true},{"usage":{"key":"5791772","name":"Calopteryx
+        smaragdina Selys, 1853","canonicalName":"Calopteryx smaragdina","authorship":"Selys,
+        1853","rank":"SPECIES","code":"ZOOLOGICAL","status":"SYNONYM","genericName":"Calopteryx","specificEpithet":"smaragdina","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>smaragdina</i> Selys, 1853"},"acceptedUsage":{"key":"1427091","name":"Atrocalopteryx
+        atrata (Selys, 1853)","canonicalName":"Atrocalopteryx atrata","authorship":"(Selys,
+        1853)","rank":"SPECIES","code":"ZOOLOGICAL","genericName":"Atrocalopteryx","specificEpithet":"atrata","type":"SCIENTIFIC","formattedName":"<i>Atrocalopteryx</i>
+        <i>atrata</i> (Selys, 1853)"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427089","name":"Atrocalopteryx","rank":"GENUS"},{"key":"1427091","name":"Atrocalopteryx
+        atrata","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=0; score=-52","timeTaken":0},"synonym":true},{"usage":{"key":"5052019","name":"Calopteryx
+        transcaspica Bartenev, 1912","canonicalName":"Calopteryx transcaspica","authorship":"Bartenev,
+        1912","rank":"SPECIES","code":"ZOOLOGICAL","status":"SYNONYM","genericName":"Calopteryx","specificEpithet":"transcaspica","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>transcaspica</i> Bartenev, 1912"},"acceptedUsage":{"key":"5052055","name":"Calopteryx
+        orientalis Selys, 1887","canonicalName":"Calopteryx orientalis","authorship":"Selys,
+        1887","rank":"SPECIES","code":"ZOOLOGICAL","genericName":"Calopteryx","specificEpithet":"orientalis","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>orientalis</i> Selys, 1887"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427007","name":"Calopteryx","rank":"GENUS"},{"key":"5052055","name":"Calopteryx
+        orientalis","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=0; score=-52","timeTaken":0},"synonym":true},{"usage":{"key":"5814870","name":"Calopteryx
+        tricolor Burmeister, 1839","canonicalName":"Calopteryx tricolor","authorship":"Burmeister,
+        1839","rank":"SPECIES","code":"ZOOLOGICAL","status":"SYNONYM","genericName":"Calopteryx","specificEpithet":"tricolor","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>tricolor</i> Burmeister, 1839"},"acceptedUsage":{"key":"1427158","name":"Hetaerina
+        titia (Drury, 1773)","canonicalName":"Hetaerina titia","authorship":"(Drury,
+        1773)","rank":"SPECIES","code":"ZOOLOGICAL","genericName":"Hetaerina","specificEpithet":"titia","type":"SCIENTIFIC","formattedName":"<i>Hetaerina</i>
+        <i>titia</i> (Drury, 1773)"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427106","name":"Hetaerina","rank":"GENUS"},{"key":"1427158","name":"Hetaerina
+        titia","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=0; score=-52","timeTaken":0},"synonym":true},{"usage":{"key":"5052035","name":"Calopteryx
+        violacea Dziedzielewicz, 1902","canonicalName":"Calopteryx violacea","authorship":"Dziedzielewicz,
+        1902","rank":"SPECIES","code":"ZOOLOGICAL","status":"SYNONYM","genericName":"Calopteryx","specificEpithet":"violacea","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>violacea</i> Dziedzielewicz, 1902"},"acceptedUsage":{"key":"1427037","name":"Calopteryx
+        virgo (Linnaeus, 1758)","canonicalName":"Calopteryx virgo","authorship":"(Linnaeus,
+        1758)","rank":"SPECIES","code":"ZOOLOGICAL","genericName":"Calopteryx","specificEpithet":"virgo","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>virgo</i> (Linnaeus, 1758)"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427007","name":"Calopteryx","rank":"GENUS"},{"key":"1427037","name":"Calopteryx
+        virgo","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=0; score=-52","timeTaken":0},"synonym":true},{"usage":{"key":"11011808","name":"Calopteryx
+        virginica Selys, 1853","canonicalName":"Calopteryx virginica","authorship":"Selys,
+        1853","rank":"SPECIES","code":"ZOOLOGICAL","status":"SYNONYM","genericName":"Calopteryx","specificEpithet":"virginica","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>virginica</i> Selys, 1853"},"acceptedUsage":{"key":"5052021","name":"Calopteryx
+        aequabilis Say, 1840","canonicalName":"Calopteryx aequabilis","authorship":"Say,
+        1840","rank":"SPECIES","code":"ZOOLOGICAL","genericName":"Calopteryx","specificEpithet":"aequabilis","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>aequabilis</i> Say, 1840"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427007","name":"Calopteryx","rank":"GENUS"},{"key":"5052021","name":"Calopteryx
+        aequabilis","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=0; score=-52","timeTaken":0},"synonym":true},{"usage":{"key":"12292285","name":"Calopteryx
+        virgo (Harris, 1780)","canonicalName":"Calopteryx virgo","authorship":"(Harris,
+        1780)","rank":"SPECIES","code":"ZOOLOGICAL","status":"PROVISIONALLY_ACCEPTED","genericName":"Calopteryx","specificEpithet":"virgo","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>virgo</i> (Harris, 1780)"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427007","name":"Calopteryx","rank":"GENUS"},{"key":"12292285","name":"Calopteryx
+        virgo","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=5; classification=-52; rank=0; status=-5; score=-52","timeTaken":0},"synonym":false},{"usage":{"key":"12288920","name":"Calopteryx
+        angustipennis (Hagen, 1853)","canonicalName":"Calopteryx angustipennis","authorship":"(Hagen,
+        1853)","rank":"SPECIES","code":"ZOOLOGICAL","status":"PROVISIONALLY_ACCEPTED","genericName":"Calopteryx","specificEpithet":"angustipennis","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>angustipennis</i> (Hagen, 1853)"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427007","name":"Calopteryx","rank":"GENUS"},{"key":"12288920","name":"Calopteryx
+        angustipennis","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=0; classification=-52; rank=0; status=-5; score=-57","timeTaken":0},"additionalStatus":[{"clbDatasetKey":"53131","datasetAlias":"IUCN","datasetKey":"19491596-35ae-4a91-9a98-85cf505f1bd3","status":"LEAST_CONCERN","statusCode":"LC","sourceId":"3627"}],"synonym":false},{"usage":{"key":"8534281","name":"Archimylacris
+        calopteryx (Handlirsch, 1906)","canonicalName":"Archimylacris calopteryx","authorship":"(Handlirsch,
+        1906)","rank":"SPECIES","code":"ZOOLOGICAL","status":"ACCEPTED","genericName":"Archimylacris","specificEpithet":"calopteryx","type":"SCIENTIFIC","formattedName":"<i>Archimylacris</i>
+        <i>calopteryx</i> (Handlirsch, 1906)"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"800","name":"Blattodea","rank":"ORDER"},{"key":"3266546","name":"Archimylacridae","rank":"FAMILY"},{"key":"4711413","name":"Archimylacris","rank":"GENUS"},{"key":"8534281","name":"Archimylacris
+        calopteryx","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=-15; classification=-52; rank=0; status=1; score=-66","timeTaken":0},"synonym":false},{"usage":{"key":"4393320","name":"Chelisoches
+        calopteryx Günther, 1929","canonicalName":"Chelisoches calopteryx","authorship":"Günther,
+        1929","rank":"SPECIES","code":"ZOOLOGICAL","status":"ACCEPTED","genericName":"Chelisoches","specificEpithet":"calopteryx","type":"SCIENTIFIC","formattedName":"<i>Chelisoches</i>
+        <i>calopteryx</i> Günther, 1929"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"1224","name":"Dermaptera","rank":"ORDER"},{"key":"7860","name":"Chelisochidae","rank":"FAMILY"},{"key":"1419869","name":"Chelisoches","rank":"GENUS"},{"key":"4393320","name":"Chelisoches
+        calopteryx","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=-15; classification=-52; rank=0; status=1; score=-66","timeTaken":0},"synonym":false},{"usage":{"key":"6929327","name":"Polyetoblatta
+        calopteryx Handlirsch, 1906","canonicalName":"Polyetoblatta calopteryx","authorship":"Handlirsch,
+        1906","rank":"SPECIES","code":"ZOOLOGICAL","status":"ACCEPTED","genericName":"Polyetoblatta","specificEpithet":"calopteryx","type":"SCIENTIFIC","formattedName":"<i>Polyetoblatta</i>
+        <i>calopteryx</i> Handlirsch, 1906"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"800","name":"Blattodea","rank":"ORDER"},{"key":"4802352","name":"Necymylacridae","rank":"FAMILY"},{"key":"4802613","name":"Polyetoblatta","rank":"GENUS"},{"key":"6929327","name":"Polyetoblatta
+        calopteryx","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=-15; classification=-52; rank=0; status=1; score=-66","timeTaken":0},"synonym":false},{"usage":{"key":"8277829","name":"Astata
+        calopteryx Gussakovskij, 1952","canonicalName":"Astata calopteryx","authorship":"Gussakovskij,
+        1952","rank":"SPECIES","code":"ZOOLOGICAL","status":"SYNONYM","genericName":"Astata","specificEpithet":"calopteryx","type":"SCIENTIFIC","formattedName":"<i>Astata</i>
+        <i>calopteryx</i> Gussakovskij, 1952"},"acceptedUsage":{"key":"4494267","name":"Dryudella
+        tricolor (Vander Linden, 1829)","canonicalName":"Dryudella tricolor","authorship":"(Vander
+        Linden, 1829)","rank":"SPECIES","code":"ZOOLOGICAL","genericName":"Dryudella","specificEpithet":"tricolor","type":"SCIENTIFIC","formattedName":"<i>Dryudella</i>
+        <i>tricolor</i> (Vander Linden, 1829)"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"1457","name":"Hymenoptera","rank":"ORDER"},{"key":"7906","name":"Crabronidae","rank":"FAMILY"},{"key":"4298299","name":"Dryudella","rank":"GENUS"},{"key":"4494267","name":"Dryudella
+        tricolor","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=-15; classification=-52; rank=0; status=0; score=-67","timeTaken":0},"synonym":true},{"usage":{"key":"8607312","name":"Elcana
+        calopteryx Handlirsch, 1939","canonicalName":"Elcana calopteryx","authorship":"Handlirsch,
+        1939","rank":"SPECIES","code":"ZOOLOGICAL","status":"SYNONYM","genericName":"Elcana","specificEpithet":"calopteryx","type":"SCIENTIFIC","formattedName":"<i>Elcana</i>
+        <i>calopteryx</i> Handlirsch, 1939"},"acceptedUsage":{"key":"6543775","name":"Panorpidium
+        geinitzi (Heer, 1880)","canonicalName":"Panorpidium geinitzi","authorship":"(Heer,
+        1880)","rank":"SPECIES","code":"ZOOLOGICAL","genericName":"Panorpidium","specificEpithet":"geinitzi","type":"SCIENTIFIC","formattedName":"<i>Panorpidium</i>
+        <i>geinitzi</i> (Heer, 1880)"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"1458","name":"Orthoptera","rank":"ORDER"},{"key":"4713488","name":"Elcanidae","rank":"FAMILY"},{"key":"4713491","name":"Panorpidium","rank":"GENUS"},{"key":"6543775","name":"Panorpidium
+        geinitzi","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=-15; classification=-52; rank=0; status=0; score=-67","timeTaken":0},"synonym":true},{"usage":{"key":"1415476","name":"Kalocorinnis
+        calopteryx Günther, 1944","canonicalName":"Kalocorinnis calopteryx","authorship":"Günther,
+        1944","rank":"SPECIES","code":"ZOOLOGICAL","status":"SYNONYM","genericName":"Kalocorinnis","specificEpithet":"calopteryx","type":"SCIENTIFIC","formattedName":"<i>Kalocorinnis</i>
+        <i>calopteryx</i> Günther, 1944"},"acceptedUsage":{"key":"1415473","name":"Kalocorinnis
+        pulchella (de Haan, 1842)","canonicalName":"Kalocorinnis pulchella","authorship":"(de
+        Haan, 1842)","rank":"SPECIES","code":"ZOOLOGICAL","genericName":"Kalocorinnis","specificEpithet":"pulchella","type":"SCIENTIFIC","formattedName":"<i>Kalocorinnis</i>
+        <i>pulchella</i> (de Haan, 1842)"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"1460","name":"Phasmida","rank":"ORDER"},{"key":"3259900","name":"Lonchodidae","rank":"FAMILY"},{"key":"1415472","name":"Kalocorinnis","rank":"GENUS"},{"key":"1415473","name":"Kalocorinnis
+        pulchella","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=-15; classification=-52; rank=0; status=0; score=-67","timeTaken":0},"synonym":true},{"usage":{"key":"7950537","name":"Tachysphex
+        calopteryx Gussakovskij, 1933","canonicalName":"Tachysphex calopteryx","authorship":"Gussakovskij,
+        1933","rank":"SPECIES","code":"ZOOLOGICAL","status":"SYNONYM","genericName":"Tachysphex","specificEpithet":"calopteryx","type":"SCIENTIFIC","formattedName":"<i>Tachysphex</i>
+        <i>calopteryx</i> Gussakovskij, 1933"},"acceptedUsage":{"key":"4495132","name":"Tachysphex
+        schmiedeknechti Kohl, 1883","canonicalName":"Tachysphex schmiedeknechti","authorship":"Kohl,
+        1883","rank":"SPECIES","code":"ZOOLOGICAL","genericName":"Tachysphex","specificEpithet":"schmiedeknechti","type":"SCIENTIFIC","formattedName":"<i>Tachysphex</i>
+        <i>schmiedeknechti</i> Kohl, 1883"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"1457","name":"Hymenoptera","rank":"ORDER"},{"key":"7906","name":"Crabronidae","rank":"FAMILY"},{"key":"1346028","name":"Tachysphex","rank":"GENUS"},{"key":"4495132","name":"Tachysphex
+        schmiedeknechti","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
+        name=-15; classification=-52; rank=0; status=0; score=-67","timeTaken":0},"synonym":true}],"timings":{"sciNameMatch":23}},"synonym":true}'
+  recorded_at: 2025-08-11 13:21:28
+- request:
+    method: GET
+    uri: https://api.gbif.org/v2/species/match?scientificName=Calopteryx+splendens&kingdom=Plantae&strict=TRUE&verbose=TRUE
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '{"diagnostics":{"matchType":"NONE","issues":[],"processingFlags":["LOW_CONFIDENCE"],"confidence":99,"note":"No
+        match because of too little confidence","timeTaken":2,"alternatives":[{"usage":{"key":"1427067","name":"Calopteryx
+        splendens (Harris, 1780)","canonicalName":"Calopteryx splendens","authorship":"(Harris,
+        1780)","rank":"SPECIES","code":"ZOOLOGICAL","status":"ACCEPTED","genericName":"Calopteryx","specificEpithet":"splendens","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>splendens</i> (Harris, 1780)"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427007","name":"Calopteryx","rank":"GENUS"},{"key":"1427067","name":"Calopteryx
+        splendens","rank":"SPECIES"}],"diagnostics":{"matchType":"EXACT","confidence":22,"note":"Similarity:
+        name=110; authorship=0; kingdom=-100; rank=6; status=1; score=17; singleMatch=5","timeTaken":0},"additionalStatus":[{"clbDatasetKey":"53131","datasetAlias":"IUCN","datasetKey":"19491596-35ae-4a91-9a98-85cf505f1bd3","status":"LEAST_CONCERN","statusCode":"LC","sourceId":"158701"}],"synonym":false}],"timings":{"nameNRank":0,"sciNameMatch":2,"nameParse":1,"luceneMatch":1}},"synonym":false}'
+  recorded_at: 2025-08-11 13:21:28
 recorded_with: VCR-vcr/2.0.0

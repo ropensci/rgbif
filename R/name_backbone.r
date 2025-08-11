@@ -1,120 +1,271 @@
-#' Lookup names in the GBIF backbone taxonomy.
-#'
-#' @template otherlimstart
-#' @template occ
-#' @export
+#' Match names to GBIF backbone and other checklists.
 #'
 #' @param name (character) Full scientific name potentially with authorship
 #' (required)
-#' @param rank (character) The rank given as our rank enum. (optional)
-#' @param kingdom (character) If provided default matching will also try to
-#' match against this if no direct match is found for the name alone.
-#' (optional)
-#' @param phylum (character) If provided default matching will also try to
-#' match against this if no direct match is found for the name alone.
-#' (optional)
-#' @param class (character) If provided default matching will also try to
-#' match against this if no direct match is found for the name alone.
-#' (optional)
-#' @param order (character) If provided default matching will also try to
-#' match against this if no direct match is found for the name alone.
-#' (optional)
-#' @param family (character) If provided default matching will also try to
-#' match against this if no direct match is found for the name alone.
-#' (optional)
-#' @param genus (character) If provided default matching will also try to
-#' match against this if no direct match is found for the name alone.
-#' (optional)
-#' @param strict (logical) If `TRUE` it (fuzzy) matches only the given name,
-#' but never a taxon in the upper classification (optional)
-#' @param verbose (logical) should the function give back more (less reliable) 
-#' results. See function `name_backbone_verbose()`
+#' @param rank (character) Filter by taxonomic rank. See API reference for 
+#' available values. 
+#' @param usageKey (character) The usage key to look up. When provided, all 
+#' other fields are ignored.
+#' @param kingdom (character) Kingdom to match. 
+#' @param phylum (character) Phylum to match.
+#' @param class (character) Class to match.
+#' @param order (character) Order to match.
+#' @param superfamily (character) Superfamily to match.
+#' @param family (character) Family to match.
+#' @param subfamily (character) Subfamily to match.
+#' @param tribe (character) Tribe to match.
+#' @param subtribe (character) Subtribe to match.
+#' @param genus (character) Genus to match.
+#' @param subgenus (character) Subgenus to match.
+#' @param species (character) Species to match.
+#' @param taxonID (character) The taxon ID to look up. Matches to a taxonID 
+#' will take precedence over scientificName values supplied. A comparison of 
+#' the matched scientific and taxonID is performed tocheck for inconsistencies.
+#' @param taxonConceptID (character) The taxonConceptID to match. Matches to a 
+#' taxonConceptID will take precedence over scientificName values supplied. A 
+#' comparison of the matched scientific and taxonConceptID is performed to 
+#' check for inconsistencies.
+#' @param scientificNameID (character) Matches to a scientificNameID will take 
+#' precedence over scientificName values supplied. A comparison of the matched 
+#' scientific and scientificNameID is performed to check for inconsistencies.
+#' @param scientificNameAuthorship (character) The scientific name authorship 
+#' to match against.  
+#' @param genericName (character) Generic part of the name to match when given 
+#' as atomised parts instead of the full name parameter. 
+#' @param specificEpithet (character) Specific epithet to match. 
+#' @param infraspecificEpithet (character) Infraspecific epithet to match.
+#' @param verbatimTaxonRank (character) Filters by free text taxon rank.
+#' @param exclude (character) An array of usage keys to exclude from the match.
+#' @param strict (logical) If set to true, fuzzy matches only the given name, 
+#' but never a taxon in the upper classification.
+#' @param verbose (logical) If set to true, it shows alternative matches which 
+#' were considered but then rejected.
+#' @param checklistKey (character) The key of a checklist to use. The default is
+#' the GBIF Backbone taxanomy. 
+#' @param start (integer) Currently ignored.  
+#' @param limit (integer) Currently ignored. 
+#' @param curlopts A list of curl options passed on to [httr::GET()].
 #'
-#' @return For `name_backbone`, a data.frame for a single taxon with many
-#' columns. For `name_backbone_verbose`, a larger number of results in a 
-#' data.frame the results of resulting from fuzzy matching. 
-#' You will also get back your input name, rank, kingdom, phylum ect. as 
-#' columns input_name, input_rank, input_kingdom ect. so you can check the 
-#' results. 
 #'
 #' @details
 #' If you don't get a match, GBIF gives back a data.frame with columns
 #' `synonym`, `confidence`, and `matchType='NONE'`.
-#'
-#' @references <https://www.gbif.org/developer/species#searching>
-#'
+#' 
+#' `name_backbone_verbose()` is a legacy wrapper function that returns 
+#' returns alternatives in a separate `tibble`.
+#' 
+#' @returns A single row `tibble` of the best matched name. If `verbose=TRUE`, a
+#' longer `tibble` with all potential alternatives is returned. 
+#' 
+#' @export
+#' 
+#' @references 
+#' \url{https://techdocs.gbif.org/en/openapi/v1/species#/Searching%20names/matchNames}
+#'   
 #' @examples \dontrun{
-#' name_backbone(name='Helianthus annuus', kingdom='plants')
-#' name_backbone(name='Helianthus', rank='genus', kingdom='plants')
-#' name_backbone(name='Poa', rank='genus', family='Poaceae')
+#' name_backbone("Calopteryx splendens") 
+#' name_backbone("Calopteryx splendens", kingdom = "Animalia")
+#' name_backbone("Calopteryx splendens", kingdom = "Animalia", verbose = TRUE)
+#' name_backbone_verbose("Calopteryx splendens", kingdom = "Animalia")
+#' name_backbone("Calopteryx splendens", kingdom = "Plantae")
 #'
-#' # Verbose - gives back alternatives
-#' ## Strictness
-#' name_backbone_verbose(name='Poa', kingdom='plants',
-#'   strict=FALSE)
-#' name_backbone_verbose(name='Helianthus annuus', kingdom='plants',
-#'   strict=TRUE)
-#'
-#' # Non-existent name - returns list of lenght 3 stating no match
-#' name_backbone(name='Aso')
-#' name_backbone(name='Oenante')
-#'
-#' # Pass on curl options
-#' name_backbone(name='Oenante', curlopts = list(verbose=TRUE))
 #' }
-name_backbone <- function(name, rank=NULL, kingdom=NULL, phylum=NULL,
-  class=NULL, order=NULL, family=NULL, genus=NULL, strict=FALSE, verbose=FALSE,
-  start=NULL, limit=100, curlopts = list()) {
-
-  # pchk(verbose, "name_backbone")
-  url <- paste0(gbif_base(), '/species/match')
+name_backbone <- function(
+    name,
+    rank = NULL,
+    kingdom = NULL,
+    phylum = NULL,
+    class = NULL,
+    order = NULL,
+    superfamily = NULL,
+    family = NULL,
+    subfamily = NULL,
+    tribe = NULL,
+    subtribe = NULL,
+    genus = NULL,
+    subgenus = NULL,
+    species = NULL,
+    usageKey = NULL,
+    taxonID = NULL,
+    taxonConceptID = NULL,
+    scientificNameID = NULL,
+    scientificNameAuthorship = NULL,
+    genericName = NULL,
+    specificEpithet = NULL,
+    infraspecificEpithet = NULL,
+    verbatimTaxonRank = NULL,
+    exclude = NULL,
+    strict = NULL,
+    verbose = FALSE,
+    checklistKey = NULL,
+    start = NULL,
+    limit = NULL, 
+    curlopts = list(http_version=2)
+) {
+  url <- paste0('https://api.gbif.org/v2', '/species/match')
   args <- rgbif_compact(
-    list(name=name, rank=rank, kingdom=kingdom, phylum=phylum,
-         class=class, order=order, family=family, genus=genus,
-         strict=as_log(strict), verbose = verbose, offset=start, limit=limit))
+    list(
+      scientificName = name,
+      scientificNameAuthorship = scientificNameAuthorship,
+      genericName = genericName,
+      specificEpithet = specificEpithet,
+      infraspecificEpithet = infraspecificEpithet,
+      taxonRank = rank,
+      verbatimTaxonRank = verbatimTaxonRank,
+      kingdom = kingdom,
+      phylum = phylum,
+      class = class,
+      order = order,
+      superfamily = superfamily,
+      family = family,
+      subfamily = subfamily,
+      tribe = tribe,
+      subtribe = subtribe,
+      genus = genus,
+      subgenus = subgenus,
+      species = species,
+      exclude = exclude,
+      strict = strict,
+      verbose = verbose,
+      checklistKey = checklistKey,
+      start = start,
+      limit = limit
+    )
+  )
   tt <- gbif_GET(url, args, FALSE, curlopts)
-    input_args_clean <- args[!names(args) %in% c("strict","verbose","start","limit","curlopts")]
-    input_args_clean <- stats::setNames(input_args_clean,paste0("verbatim_",names(input_args_clean)))
-    tt <- c(tt,input_args_clean)
-  if(verbose) {
-    alternatives <- tt[["alternatives"]]
-    alternatives <- lapply(alternatives,function(x) c(x,input_args_clean))
-    alternatives <- bind_rows(lapply(alternatives,tibble::as_tibble))
-    accepted <- tibble::as_tibble(tt)
-    out <- bind_rows(list(accepted,alternatives))
-    out <- out[!colnames(out) %in% c("alternatives", "note")]
+  if(!verbose) {
+    out <- process_name_backbone_output(tt,args,checklistKey = checklistKey)
   } else {
-    out <- tibble::as_tibble(tt[!names(tt) %in% c("alternatives", "note")])
+    alternatives <- bind_rows(lapply(tt$diagnostics$alternatives, function(x)
+      process_name_backbone_output(x,args,checklistKey = checklistKey))
+    )
+    tt$diagnostics$alternatives <- NULL
+    accepted <- process_name_backbone_output(tt,args,checklistKey = checklistKey)
+    out <- bind_rows(list(accepted,alternatives))
   }
-  col_idx <- grep("verbatim_", names(out))
-  ordering <- c((1:ncol(out))[-col_idx],col_idx)
-  out <- unique(out[, ordering])
-  structure(out, args = args, note = tt$note, type = "single")
+  structure(out, args = args, note = tt$diagnostics$note, type = "single")
 }
-  
 
 #' @export
 #' @rdname name_backbone
-name_backbone_verbose <- function(name, rank=NULL, kingdom=NULL, phylum=NULL,
-                                  class=NULL, order=NULL, family=NULL, genus=NULL, strict=FALSE,
-                                  start=NULL, limit=100, curlopts = list()) {
-  
-  url <- paste0(gbif_base(), '/species/match')
+name_backbone_verbose <- function(name,
+                                  rank = NULL,
+                                  kingdom = NULL,
+                                  phylum = NULL,
+                                  class = NULL,
+                                  order = NULL,
+                                  superfamily = NULL,
+                                  family = NULL,
+                                  subfamily = NULL,
+                                  tribe = NULL,
+                                  subtribe = NULL,
+                                  genus = NULL,
+                                  subgenus = NULL,
+                                  species = NULL,
+                                  usageKey = NULL,
+                                  taxonID = NULL,
+                                  taxonConceptID = NULL,
+                                  scientificNameID = NULL,
+                                  scientificNameAuthorship = NULL,
+                                  genericName = NULL,
+                                  specificEpithet = NULL,
+                                  infraspecificEpithet = NULL,
+                                  verbatimTaxonRank = NULL,
+                                  exclude = NULL,
+                                  strict = NULL,
+                                  checklistKey = NULL,
+                                  start = NULL,
+                                  limit = NULL, 
+                                  curlopts = list(http_version=2)
+                                  ) {
+  url <- paste0('https://api.gbif.org/v2', '/species/match')
   args <- rgbif_compact(
-    list(name=name, rank=rank, kingdom=kingdom, phylum=phylum,
-         class=class, order=order, family=family, genus=genus,
-         strict=as_log(strict), verbose=TRUE, offset=start, limit=limit))
+    list(
+      scientificName = name,
+      scientificNameAuthorship = scientificNameAuthorship,
+      genericName = genericName,
+      specificEpithet = specificEpithet,
+      infraspecificEpithet = infraspecificEpithet,
+      taxonRank = rank,
+      verbatimTaxonRank = verbatimTaxonRank,
+      kingdom = kingdom,
+      phylum = phylum,
+      class = class,
+      order = order,
+      superfamily = superfamily,
+      family = family,
+      subfamily = subfamily,
+      tribe = tribe,
+      subtribe = subtribe,
+      genus = genus,
+      subgenus = subgenus,
+      species = species,
+      exclude = exclude,
+      strict = strict,
+      verbose = TRUE,
+      checklistKey = checklistKey,
+      start = start,
+      limit = limit
+    )
+  )
   tt <- gbif_GET(url, args, FALSE, curlopts)
-  alt <- tibble::as_tibble(data.table::setDF(
-    data.table::rbindlist(
-      lapply(tt$alternatives, function(x)
-        lapply(x, function(x) if (length(x) == 0) NA else x)),
-      use.names = TRUE, fill = TRUE)))
-  dat <- tibble::as_tibble(
-    data.frame(tt[!names(tt) %in% c("alternatives", "note")],
-               stringsAsFactors = FALSE))
+  alt <- bind_rows(lapply(tt$diagnostics$alternatives, function(x)
+    process_name_backbone_output(x, args, checklistKey = NULL))
+    )
+  tt$diagnostics$alternatives <- NULL
+  dat <- process_name_backbone_output(tt, args, checklistKey = checklistKey)
   out <- list(data = dat, alternatives = alt)
-  structure(out, args = args, note = tt$note, type = "single")
+  structure(out, args = args, note = tt$diagnostics$note, type = "single")
 }
 
+process_name_backbone_output <- function(tt, args, checklistKey = NULL) {
+  usage <- if (!is.null(tt$usage)) {
+    u <- tibble::as_tibble(tt$usage)
+    colnames(u)[colnames(u) == "key"] <- "usageKey"
+    colnames(u)[colnames(u) == "name"] <- "scientificName"
+    u
+  } else { 
+    NULL
+  }
+  diagnostics <- if (!is.null(tt$diagnostics)) {
+    tt$diagnostics["timings"] <- NULL
+    tt$diagnostics["issues"] <- NULL
+    d <- tibble::as_tibble(tt$diagnostics)
+    d
+  } else {
+    NULL
+  }
+  classification <- if (!is.null(tt$classification)) {
+    c <- bind_rows(lapply(tt$classification, tibble::as_tibble))
+    nv <- setNames(c$name, tolower(c$rank))
+    kv <- setNames(c$key,  paste0(tolower(c$rank), "Key"))
+    c <- tibble::as_tibble(as.list(c(nv, kv)))
+    c
+  } else {
+    NULL
+  }
+  synonym <- if (!is.null(tt$synonym)) {
+    tibble::as_tibble(tt$synonym)
+  } else {
+    NULL
+  }
+  verbatim <- if (!is.null(args)) {
+  input_args_clean <- args[!names(args) %in% 
+                             c("strict","verbose","start","limit","curlopts")]
+  v <- stats::setNames(input_args_clean,
+                                    paste0("verbatim_",names(input_args_clean)))
+  names(v)[names(v) == "verbatim_taxonRank"] <- "verbatim_rank"
+  names(v)[names(v) == "verbatim_scientificName"] <- "verbatim_name"
+  tibble::as_tibble(v)
+  } else {
+    NULL
+  }
+  
+  out <- do.call("cbind", rgbif_compact(list(usage, 
+                                             diagnostics, 
+                                             classification,
+                                             synonym,
+                                             verbatim)))
+  tibble::as_tibble(out)
+}
 
