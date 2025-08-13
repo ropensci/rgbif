@@ -71,7 +71,7 @@
 #'
 #' }
 name_backbone <- function(
-    name,
+    name = NULL,
     rank = NULL,
     kingdom = NULL,
     phylum = NULL,
@@ -124,6 +124,10 @@ name_backbone <- function(
       genus = genus,
       subgenus = subgenus,
       species = species,
+      usageKey = usageKey,
+      taxonID = taxonID,
+      taxonConceptID = taxonConceptID,
+      scientificNameID = scientificNameID,
       exclude = exclude,
       strict = strict,
       verbose = verbose,
@@ -134,13 +138,13 @@ name_backbone <- function(
   )
   tt <- gbif_GET(url, args, FALSE, curlopts)
   if(!verbose) {
-    out <- process_name_backbone_output(tt,args,checklistKey = checklistKey)
+    out <- process_name_backbone_output(tt,args)
   } else {
     alternatives <- bind_rows(lapply(tt$diagnostics$alternatives, function(x)
-      process_name_backbone_output(x,args,checklistKey = checklistKey))
+      process_name_backbone_output(x,args))
     )
     tt$diagnostics$alternatives <- NULL
-    accepted <- process_name_backbone_output(tt,args,checklistKey = checklistKey)
+    accepted <- process_name_backbone_output(tt,args)
     out <- bind_rows(list(accepted,alternatives))
   }
   structure(out, args = args, note = tt$diagnostics$note, type = "single")
@@ -148,7 +152,7 @@ name_backbone <- function(
 
 #' @export
 #' @rdname name_backbone
-name_backbone_verbose <- function(name,
+name_backbone_verbose <- function(name = NULL,
                                   rank = NULL,
                                   kingdom = NULL,
                                   phylum = NULL,
@@ -200,6 +204,11 @@ name_backbone_verbose <- function(name,
       genus = genus,
       subgenus = subgenus,
       species = species,
+      usageKey = usageKey,
+      taxonID = taxonID,
+      taxonConceptID = taxonConceptID,
+      scientificNameID = scientificNameID,
+      genericName = genericName,
       exclude = exclude,
       strict = strict,
       verbose = TRUE,
@@ -210,15 +219,15 @@ name_backbone_verbose <- function(name,
   )
   tt <- gbif_GET(url, args, FALSE, curlopts)
   alt <- bind_rows(lapply(tt$diagnostics$alternatives, function(x)
-    process_name_backbone_output(x, args, checklistKey = NULL))
+    process_name_backbone_output(x, args))
     )
   tt$diagnostics$alternatives <- NULL
-  dat <- process_name_backbone_output(tt, args, checklistKey = checklistKey)
+  dat <- process_name_backbone_output(tt, args)
   out <- list(data = dat, alternatives = alt)
   structure(out, args = args, note = tt$diagnostics$note, type = "single")
 }
 
-process_name_backbone_output <- function(tt, args, checklistKey = NULL) {
+process_name_backbone_output <- function(tt, args) {
   usage <- if (!is.null(tt$usage)) {
     u <- tibble::as_tibble(tt$usage)
     colnames(u)[colnames(u) == "key"] <- "usageKey"

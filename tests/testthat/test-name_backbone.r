@@ -13,6 +13,16 @@ test_that("name_backbone returns the correct class", {
                         verbose = TRUE)
     vvv <- name_backbone(name = "Calopteryx splendens", kingdom = "Plantae", 
                         verbose = TRUE, strict = TRUE)
+    
+    # test new args from species match v2
+    cc <- name_backbone(name = "Aves",
+                  checklistKey="7ddf754f-d193-4cc9-b351-99906754a03b")
+    bb <- name_backbone(name = "Calopteryx",
+                  checklistKey="7ddf754f-d193-4cc9-b351-99906754a03b",
+                  usageKey = "V2")
+    dd <- name_backbone(genericName = "Agra", 
+                    specificEpithet = "schwarzeneggeri",
+                    scientificNameAuthorship = "Erwin, 2002")
   })
 
   expect_is(tt, "tbl")
@@ -22,7 +32,7 @@ test_that("name_backbone returns the correct class", {
   expect_true(rev(names(tt))[1] =="verbatim_rank")
   expect_equal(tt$verbatim_name[1], "Helianthus annuus")
   expect_equal(tt$verbatim_rank[1], "species")
-  expect_gte(nrow(tt),1)
+  expect_equal(nrow(tt),1)
   
   expect_is(uu, "list")
   expect_is(uu$data, "tbl")
@@ -73,11 +83,35 @@ test_that("name_backbone returns the correct class", {
   expect_gte(nrow(vvv), 1)
   expect_false("HIGHERRANK" %in% unique(vvv$matchType))
   
-})
-
-test_that("Throws error because a name is required in the function call", {
-  skip_on_cran()
-  expect_error(name_backbone(kingdom = 'plants'), "argument \"name\" is missing")
+  expect_is(cc, "tbl")
+  expect_is(cc, "tbl_df")
+  expect_is(cc, "data.frame")
+  expect_equal(cc$verbatim_name[1], "Aves")
+  expect_equal(cc$verbatim_checklistKey[1], 
+               "7ddf754f-d193-4cc9-b351-99906754a03b")
+  expect_equal(nrow(cc), 1)
+  expect_equal(cc$usageKey,"V2")
+  expect_equal(cc$matchType[1], "HIGHERRANK")
+  
+  expect_is(bb, "tbl")
+  expect_is(bb, "tbl_df")
+  expect_is(bb, "data.frame")
+  expect_equal(bb$verbatim_name[1], "Calopteryx")
+  expect_equal(bb$verbatim_checklistKey[1], 
+               "7ddf754f-d193-4cc9-b351-99906754a03b")
+  expect_equal(nrow(bb), 1)
+  expect_equal(bb$usageKey,"V2")
+  expect_equal(bb$verbatim_usageKey, "V2")
+  
+  expect_is(dd, "tbl")
+  expect_is(dd, "tbl_df")
+  expect_is(dd, "data.frame")
+  expect_equal(dd$verbatim_genericName[1], "Agra")
+  expect_equal(dd$verbatim_specificEpithet[1], "schwarzeneggeri")
+  expect_equal(dd$verbatim_scientificNameAuthorship[1], "Erwin, 2002")
+  expect_equal(nrow(dd), 1)
+  expect_equal(dd$scientificName[1], "Agra schwarzeneggeri Erwin, 2002")
+  
 })
 
 test_that("name_backbone verbose=TRUE", {
@@ -93,3 +127,8 @@ test_that("name_backbone verbose=TRUE", {
   expect_true(all(vv$verbatim_name == "Calopteryx"))
   expect_true(nrow(vv) > nrow(tt))
 })
+
+
+
+
+
