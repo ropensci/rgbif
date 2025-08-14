@@ -1,4 +1,4 @@
-#' Lookup names in the GBIF backbone taxonomy in a checklist.
+#' Match names in the GBIF backbone taxonomy in a checklist.
 #'
 #' @param name_data name_data (data.frame or vector) see details. (required)
 #' @param rank (character) Filter by taxonomic rank. See API reference for 
@@ -41,7 +41,8 @@
 #' were considered but then rejected.
 #' @param checklistKey (character) The key of a checklist to use. The default is
 #' the GBIF Backbone taxanomy. 
-#'
+#' @param curlopts A list of curl options passed on to [httr::GET()].
+#' 
 #' @returns
 #' A \code{data.frame} of matched names.
 #' 
@@ -53,7 +54,7 @@
 #' input \code{name_data}. If only  one column is present, then that column is 
 #' assumed to be the scientificName' column.
 #' 
-#' The input columns will be returned as "verbatim_name","verbatim_rank",
+#' The input columns will be returned as "verbatim_scientificName","verbatim_rank",
 #' "verbatim_phylum" ect.  
 #' 
 #' If \code{verbose=TRUE}, a column called \code{is_alternative} will be returned, 

@@ -246,8 +246,8 @@ process_name_backbone_output <- function(tt, args) {
   }
   classification <- if (!is.null(tt$classification)) {
     c <- bind_rows(lapply(tt$classification, tibble::as_tibble))
-    nv <- setNames(c$name, tolower(c$rank))
-    kv <- setNames(c$key,  paste0(tolower(c$rank), "Key"))
+    nv <- stats::setNames(c$name, tolower(c$rank))
+    kv <- stats::setNames(c$key,  paste0(tolower(c$rank), "Key"))
     c <- tibble::as_tibble(as.list(c(nv, kv)))
     c
   } else {
