@@ -198,18 +198,9 @@ test_that("name_backbone_checklist bad or weird data", {
   expect_error(name_backbone_checklist(name_data = 1),"name_data should be class character.")
   expect_error(name_backbone_checklist(name_data = data.frame(1)),"The scientificName column should be class character.")
   
-  # name column is a factor
-  name_data_factor = name_data
-  name_data_factor$name<-as.factor(name_data_factor$name)
-  expect_error(name_backbone_checklist(name_data = name_data_factor),"All taxonomic columns should be character.")
-  name_data_factor$name<-as.numeric(name_data_factor$name)
-  expect_error(name_backbone_checklist(name_data = name_data_factor),"All taxonomic columns should be character.")
-  
   # just missing names
   ff <- name_backbone_checklist(name_data = c("fake name 1","fake name 2"))
   zz <- name_backbone_checklist(name_data = c("fake name 1","fake name 2"),verbose=TRUE)
-  # expect_equal(colnames(ff), c("confidence","matchType", "synonym", "verbatim_name","verbatim_index"))
-  # expect_equal(colnames(zz), c("confidence","matchType", "synonym", "is_alternative", "verbatim_name","verbatim_index"))
   expect_true(nrow(ff) == nrow(zz))
   expect_equal(unique(ff$matchType), "NONE")
   expect_equal(unique(zz$matchType), "NONE")
@@ -350,6 +341,42 @@ test_that("name_backbone_checklist returns the same as name_backbone", {
   
 })
 
+test_that("name_backbone_checklist works with v2 args", {
+  skip_on_cran()
+  skip_on_ci()
+  
+  cc <- name_backbone_checklist(name_data = 
+                      c("Aves","Calopteryx splendens", "Animalia"),
+                      checklistKey="7ddf754f-d193-4cc9-b351-99906754a03b")
+  
+  
+  bb <- name_backbone_checklist(name_data =  
+  data.frame(scientificName = 
+               c("Aves","Calopteryx splendens", "Animalia"),
+             checklistKey="7ddf754f-d193-4cc9-b351-99906754a03b"))
+  
+  
+  expect_is(cc, "tbl")
+  expect_is(cc, "tbl_df")
+  expect_is(cc, "data.frame")
+  expect_equal(nrow(cc), 3)
+  expect_equal(cc$matchType, c("HIGHERRANK", "EXACT", "HIGHERRANK"))
+  expect_equal(cc$verbatim_name, 
+               c("Aves", "Calopteryx splendens", "Animalia"))
+  expect_equal(cc$kingdom, c("Animalia", "Animalia", "Animalia"))
+  expect_equal(cc$rank, c("CLASS", "SPECIES", "KINGDOM"))
+  
+  expect_is(bb, "tbl")
+  expect_is(bb, "tbl_df")
+  expect_is(bb, "data.frame")
+  expect_equal(nrow(bb), 3)
+  expect_equal(cc$matchType, bb$matchType)
+  expect_equal(cc$verbatim_name, bb$verbatim_name)
+  expect_equal(cc$kingdom, bb$kingdom)
+  expect_equal(cc$rank, bb$rank)
+  expect_equal(cc$usageKey, bb$usageKey)
+  
+})
 
 
 # test_that("test status codes", {

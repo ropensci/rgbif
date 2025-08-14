@@ -1,64 +1,69 @@
 #' Lookup names in the GBIF backbone taxonomy in a checklist.
 #'
-#' @template occ
-#' @export
+#' @param name_data name_data (data.frame or vector) see details. (required)
+#' @param rank (character) Filter by taxonomic rank. See API reference for 
+#' available values. 
+#' @param usageKey (character) The usage key to look up. When provided, all 
+#' other fields are ignored.
+#' @param kingdom (character) Kingdom to match. 
+#' @param phylum (character) Phylum to match.
+#' @param class (character) Class to match.
+#' @param order (character) Order to match.
+#' @param superfamily (character) Superfamily to match.
+#' @param family (character) Family to match.
+#' @param subfamily (character) Subfamily to match.
+#' @param tribe (character) Tribe to match.
+#' @param subtribe (character) Subtribe to match.
+#' @param genus (character) Genus to match.
+#' @param subgenus (character) Subgenus to match.
+#' @param species (character) Species to match.
+#' @param taxonID (character) The taxon ID to look up. Matches to a taxonID 
+#' will take precedence over scientificName values supplied. A comparison of 
+#' the matched scientific and taxonID is performed tocheck for inconsistencies.
+#' @param taxonConceptID (character) The taxonConceptID to match. Matches to a 
+#' taxonConceptID will take precedence over scientificName values supplied. A 
+#' comparison of the matched scientific and taxonConceptID is performed to 
+#' check for inconsistencies.
+#' @param scientificNameID (character) Matches to a scientificNameID will take 
+#' precedence over scientificName values supplied. A comparison of the matched 
+#' scientific and scientificNameID is performed to check for inconsistencies.
+#' @param scientificNameAuthorship (character) The scientific name authorship 
+#' to match against.  
+#' @param genericName (character) Generic part of the name to match when given 
+#' as atomised parts instead of the full name parameter. 
+#' @param specificEpithet (character) Specific epithet to match. 
+#' @param infraspecificEpithet (character) Infraspecific epithet to match.
+#' @param verbatimTaxonRank (character) Filters by free text taxon rank.
+#' @param exclude (character) An array of usage keys to exclude from the match.
+#' @param strict (logical) If set to true, fuzzy matches only the given name, 
+#' but never a taxon in the upper classification.
+#' @param verbose (logical) If set to true, it shows alternative matches which 
+#' were considered but then rejected.
+#' @param checklistKey (character) The key of a checklist to use. The default is
+#' the GBIF Backbone taxanomy. 
 #'
-#' @param name_data (data.frame or vector) see details.
-#' @param rank (character) default value (optional).
-#' @param kingdom (character) default value (optional).
-#' @param phylum (character) default value (optional).
-#' @param class (character) default value (optional).
-#' @param order (character) default value (optional).
-#' @param family (character) default value (optional).
-#' @param genus (character) default value (optional).
-#' @param verbose (logical) If true it shows alternative matches which were 
-#' considered but then rejected.
-#' @param strict (logical) strict=TRUE will not attempt to fuzzy match or 
-#' return higherrankmatches.
-#' 
-#' @return
+#' @returns
 #' A \code{data.frame} of matched names.
 #' 
 #' @details
 #' This function is an alternative for  \code{name_backbone()}, which will work with 
-#' a list of names (a vector or a data.frame). The data.frame should have the 
-#' following column names, but \strong{only the 'name' column is required}. If only 
-#' one column is present, then that column is assumed to be the 'name' column.
+#' a list of names (a vector or a data.frame). The \code{data.frame} can have 
+#' any of the arguments as column names. The arguments can also be used as 
+#' default values, and then don't need to be repeated as values in the 
+#' input \code{name_data}. If only  one column is present, then that column is 
+#' assumed to be the scientificName' column.
 #' 
-#' - \strong{name} : (required)
-#' - \strong{rank} : (optional)
-#' - \strong{kingdom} : (optional)
-#' - \strong{phylum} : (optional)
-#' - \strong{class} : (optional)
-#' - \strong{order} : (optional)
-#' - \strong{family} : (optional)
-#' - \strong{genus} : (optional)
-#'
 #' The input columns will be returned as "verbatim_name","verbatim_rank",
-#' "verbatim_phylum" ect. A column of "verbatim_index" will also be returned
-#' giving the index of the input. 
-#'
-#' The following aliases for the 'name' column will work (any case or with '_'
-#' will work) :
-#' - "scientificName", "ScientificName", "scientific_name" ... 
-#' - "sci_name", "sciname", "SCI_NAME" ...
-#' - "names", "NAMES" ...
-#' - "species", "SPECIES" ... 
-#' - "species_name", "speciesname" ... 
-#' - "sp_name", "SP_NAME", "spname" ...
-#' - "taxon_name", "taxonname", "TAXON NAME" ...   
-#' 
-#' If more than one aliases is present and no column is named 'name', then the
-#' left-most column with an acceptable aliased name above is used.  
+#' "verbatim_phylum" ect.  
 #' 
 #' If \code{verbose=TRUE}, a column called \code{is_alternative} will be returned, 
 #' which species if a name was originally a first choice or not. 
 #' \code{is_alternative=TRUE} means the name was not is not considered to be
 #' the best match by GBIF.  
 #' 
-#' Default values for rank, kingdom, phylum, class, order, family, and genus can
-#' can be supplied. If a default value is supplied, the values for these fields 
-#' are ignored in name_data, and the default value is used instead. This is most 
+#' Default values for any of the other arguments can can be supplied. If a 
+#' default value is supplied, the values for these fields are ignored in 
+#' \code{name_data}, and the default value is used instead. This is most 
 #' useful if you have a list of names and you know they are all plants, insects,
 #' birds, ect. You can also input multiple values, if they are the same length as 
 #' list of names you are trying to match. 
@@ -70,15 +75,13 @@
 #' \href{https://www.gbif.org/tools/species-lookup}{https://www.gbif.org/tools/species-lookup}.
 #' 
 #' If you have 1000s of names to match, it can take some minutes to get back all
-#' of the matches. I have tested it with 60K names. Scientific names with author details
-#'  usually get better matches. 
+#' of the matches. I have tested it with 60K names. Scientific names with 
+#' author details usually get better matches. 
 #'  
 #' See also article \href{https://docs.ropensci.org/rgbif/articles/taxonomic_names.html}{Working With Taxonomic Names}.
-#' 
-#' @examples \dontrun{
-#' 
-#' library(rgbif)
+#' @export
 #'
+#' @examples \dontrun{
 #' name_data <- data.frame(
 #'  scientificName = c(
 #'    "Cirsium arvense (L.) Scop.", # a plant
@@ -133,7 +136,6 @@
 #' "Calopteryx splendens (Harris, 1780)"),kingdom=c("Plantae","Animalia"))
 #' 
 #' }
-#'
 name_backbone_checklist <- function(
     name_data,
     rank = NULL,
@@ -162,8 +164,6 @@ name_backbone_checklist <- function(
     strict = NULL,
     verbose = NULL,
     checklistKey = NULL,
-    start = NULL,
-    limit = NULL, 
     curlopts = list(http_version=2)
 ) {
   name_data <- check_name_data(name_data)
@@ -236,7 +236,6 @@ check_name_data = function(name_data) {
   if(is.vector(name_data)) {
     if(!is.character(name_data)) stop("name_data should be class character.")
     name_data <- data.frame(scientificName=name_data)
-    # name_data$index <- 1:nrow(name_data) # add id for sorting 
     return(name_data) # exit early if vector
   } 
   if(ncol(name_data) == 1) {
@@ -245,28 +244,19 @@ check_name_data = function(name_data) {
       colnames(name_data) <- "scientificName"
     } 
     if(!is.character(name_data$scientificName)) stop("The scientificName column should be class character.")
-    # name_data$index <- 1:nrow(name_data) # add id for sorting
     return(name_data) # exit early if only one column
   }
   
   # clean column names 
-  original_colnames <- colnames(name_data) 
-  colnames(name_data) <- tolower(colnames(name_data))
-  colnames(name_data) <- gsub("_","",colnames(name_data))
-  
+  original_colnames <- colnames(name_data)
   # check for aliases 
-  name_aliases <- c("name","scientificname","sciname","names","species","speciesname","spname","taxonname")
-  if((any(name_aliases %in% colnames(name_data))) & (!"scientificName" %in% colnames(name_data))) {
+  name_aliases <- c("name")
+  if((any(name_aliases %in% colnames(name_data))) & (!"scientificname" %in% colnames(name_data))) {
     left_most_index <- which(colnames(name_data) %in% name_aliases)[1]
     left_most_name <- colnames(name_data)[left_most_index]
     message("No 'scientificName' column found. Using leftmost '",original_colnames[left_most_index], "' as the 'scientificName' column.\nIf you do not want to use '", original_colnames[left_most_index], "' column, re-name the column you want to use 'scientificName'.")
-    colnames(name_data) <- gsub(left_most_name,"scientificName",colnames(name_data))
+    colnames(name_data) <- gsub(left_most_name,"scientificname",colnames(name_data))
   } 
-  # check columns are character
-  char_args <- c("scientificName","taxonRank","kingdom","phylum","class","order","family","genus")
-  if(!all(sapply(name_data[names(name_data) %in% char_args],is.character))) stop("All taxonomic columns should be character.")
-  name_data <- name_data[colnames(name_data) %in% char_args] # only keep needed columns
-  # name_data$index <- 1:nrow(name_data) # add id for sorting
   name_data
 }
 
