@@ -625,7 +625,7 @@ test_that("works with parameters that allow many inputs", {
   expect_is(bb, "gbif")
 
   expect_named(aa, c('smith', 'BJ Stacey'))
-  expect_named(bb, c('meta', 'hierarchy', 'data', 'media', 'facets'))
+  expect_named(bb, c('meta', 'hierarchy', 'data', 'media', 'classifications', 'facets'))
   
   expect_true(all(grepl("smith",unique(tolower(aa[[1]]$data$recordedBy)))))
   expect_true(all(grepl("bj stacey",unique(tolower(aa[[2]]$data$recordedBy)))))
