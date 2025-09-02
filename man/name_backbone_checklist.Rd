@@ -2,98 +2,133 @@
 % Please edit documentation in R/name_backbone_checklist.R
 \name{name_backbone_checklist}
 \alias{name_backbone_checklist}
-\title{Lookup names in the GBIF backbone taxonomy in a checklist.}
+\title{Match names in the GBIF backbone taxonomy in a checklist.}
 \usage{
 name_backbone_checklist(
-  name_data = NULL,
+  name_data,
   rank = NULL,
   kingdom = NULL,
   phylum = NULL,
   class = NULL,
   order = NULL,
+  superfamily = NULL,
   family = NULL,
+  subfamily = NULL,
+  tribe = NULL,
+  subtribe = NULL,
   genus = NULL,
-  strict = FALSE,
-  verbose = FALSE,
-  curlopts = list()
+  subgenus = NULL,
+  species = NULL,
+  usageKey = NULL,
+  taxonID = NULL,
+  taxonConceptID = NULL,
+  scientificNameID = NULL,
+  scientificNameAuthorship = NULL,
+  genericName = NULL,
+  specificEpithet = NULL,
+  infraspecificEpithet = NULL,
+  verbatimTaxonRank = NULL,
+  exclude = NULL,
+  strict = NULL,
+  verbose = NULL,
+  checklistKey = NULL,
+  curlopts = list(http_version = 2)
 )
 }
 \arguments{
-\item{name_data}{(data.frame or vector) see details.}
+\item{name_data}{name_data (data.frame or vector) see details. (required)}
 
-\item{rank}{(character) default value (optional).}
+\item{rank}{(character) Filter by taxonomic rank. See API reference for
+available values.}
 
-\item{kingdom}{(character) default value (optional).}
+\item{kingdom}{(character) Kingdom to match.}
 
-\item{phylum}{(character) default value (optional).}
+\item{phylum}{(character) Phylum to match.}
 
-\item{class}{(character) default value (optional).}
+\item{class}{(character) Class to match.}
 
-\item{order}{(character) default value (optional).}
+\item{order}{(character) Order to match.}
 
-\item{family}{(character) default value (optional).}
+\item{superfamily}{(character) Superfamily to match.}
 
-\item{genus}{(character) default value (optional).}
+\item{family}{(character) Family to match.}
 
-\item{strict}{(logical) strict=TRUE will not attempt to fuzzy match or
-return higherrankmatches.}
+\item{subfamily}{(character) Subfamily to match.}
 
-\item{verbose}{(logical) If true it shows alternative matches which were
-considered but then rejected.}
+\item{tribe}{(character) Tribe to match.}
 
-\item{curlopts}{list of named curl options passed on to
-\code{\link[crul]{HttpClient}}. see \code{curl::curl_options}
-for curl options}
+\item{subtribe}{(character) Subtribe to match.}
+
+\item{genus}{(character) Genus to match.}
+
+\item{subgenus}{(character) Subgenus to match.}
+
+\item{species}{(character) Species to match.}
+
+\item{usageKey}{(character) The usage key to look up. When provided, all
+other fields are ignored.}
+
+\item{taxonID}{(character) The taxon ID to look up. Matches to a taxonID
+will take precedence over scientificName values supplied. A comparison of
+the matched scientific and taxonID is performed tocheck for inconsistencies.}
+
+\item{taxonConceptID}{(character) The taxonConceptID to match. Matches to a
+taxonConceptID will take precedence over scientificName values supplied. A
+comparison of the matched scientific and taxonConceptID is performed to
+check for inconsistencies.}
+
+\item{scientificNameID}{(character) Matches to a scientificNameID will take
+precedence over scientificName values supplied. A comparison of the matched
+scientific and scientificNameID is performed to check for inconsistencies.}
+
+\item{scientificNameAuthorship}{(character) The scientific name authorship
+to match against.}
+
+\item{genericName}{(character) Generic part of the name to match when given
+as atomised parts instead of the full name parameter.}
+
+\item{specificEpithet}{(character) Specific epithet to match.}
+
+\item{infraspecificEpithet}{(character) Infraspecific epithet to match.}
+
+\item{verbatimTaxonRank}{(character) Filters by free text taxon rank.}
+
+\item{exclude}{(character) An array of usage keys to exclude from the match.}
+
+\item{strict}{(logical) If set to true, fuzzy matches only the given name,
+but never a taxon in the upper classification.}
+
+\item{verbose}{(logical) If set to true, it shows alternative matches which
+were considered but then rejected.}
+
+\item{checklistKey}{(character) The key of a checklist to use. The default is
+the GBIF Backbone taxanomy.}
 }
 \value{
 A \code{data.frame} of matched names.
 }
 \description{
-Lookup names in the GBIF backbone taxonomy in a checklist.
+Match names in the GBIF backbone taxonomy in a checklist.
 }
 \details{
 This function is an alternative for  \code{name_backbone()}, which will work with
-a list of names (a vector or a data.frame). The data.frame should have the
-following column names, but \strong{only the 'name' column is required}. If only
-one column is present, then that column is assumed to be the 'name' column.
-\itemize{
-\item \strong{name} : (required)
-\item \strong{rank} : (optional)
-\item \strong{kingdom} : (optional)
-\item \strong{phylum} : (optional)
-\item \strong{class} : (optional)
-\item \strong{order} : (optional)
-\item \strong{family} : (optional)
-\item \strong{genus} : (optional)
-}
+a list of names (a vector or a data.frame). The \code{data.frame} can have
+any of the arguments as column names. The arguments can also be used as
+default values, and then don't need to be repeated as values in the
+input \code{name_data}. If only  one column is present, then that column is
+assumed to be the scientificName' column.
 
-The input columns will be returned as "verbatim_name","verbatim_rank",
-"verbatim_phylum" ect. A column of "verbatim_index" will also be returned
-giving the index of the input.
-
-The following aliases for the 'name' column will work (any case or with '_'
-will work) :
-\itemize{
-\item "scientificName", "ScientificName", "scientific_name" ...
-\item "sci_name", "sciname", "SCI_NAME" ...
-\item "names", "NAMES" ...
-\item "species", "SPECIES" ...
-\item "species_name", "speciesname" ...
-\item "sp_name", "SP_NAME", "spname" ...
-\item "taxon_name", "taxonname", "TAXON NAME" ...
-}
-
-If more than one aliases is present and no column is named 'name', then the
-left-most column with an acceptable aliased name above is used.
+The input columns will be returned as "verbatim_scientificName","verbatim_rank",
+"verbatim_phylum" ect.
 
 If \code{verbose=TRUE}, a column called \code{is_alternative} will be returned,
 which species if a name was originally a first choice or not.
 \code{is_alternative=TRUE} means the name was not is not considered to be
 the best match by GBIF.
 
-Default values for rank, kingdom, phylum, class, order, family, and genus can
-can be supplied. If a default value is supplied, the values for these fields
-are ignored in name_data, and the default value is used instead. This is most
+Default values for any of the other arguments can can be supplied. If a
+default value is supplied, the values for these fields are ignored in
+\code{name_data}, and the default value is used instead. This is most
 useful if you have a list of names and you know they are all plants, insects,
 birds, ect. You can also input multiple values, if they are the same length as
 list of names you are trying to match.
@@ -105,16 +140,13 @@ This function is very similar to the GBIF species-lookup tool.
 \href{https://www.gbif.org/tools/species-lookup}{https://www.gbif.org/tools/species-lookup}.
 
 If you have 1000s of names to match, it can take some minutes to get back all
-of the matches. I have tested it with 60K names. Scientific names with author details
-usually get better matches.
+of the matches. I have tested it with 60K names. Scientific names with
+author details usually get better matches.
 
 See also article \href{https://docs.ropensci.org/rgbif/articles/taxonomic_names.html}{Working With Taxonomic Names}.
 }
 \examples{
 \dontrun{
-
-library(rgbif)
-
 name_data <- data.frame(
  scientificName = c(
    "Cirsium arvense (L.) Scop.", # a plant
@@ -169,5 +201,4 @@ name_backbone_checklist(c("Aloe arborecens Mill.",
 "Calopteryx splendens (Harris, 1780)"),kingdom=c("Plantae","Animalia"))
 
 }
-
 }

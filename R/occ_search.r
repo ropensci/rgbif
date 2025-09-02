@@ -94,7 +94,7 @@ occ_search <- function(taxonKey = NULL,
                        iucnRedListCategory = NULL,
                        lifeStage = NULL,
                        isInCluster = NULL,
-                       distanceFromCentroidInMeters=NULL,
+                       distanceFromCentroidInMeters = NULL,
                        geoDistance = NULL,
                        sex = NULL,
                        dwcaExtension = NULL,
@@ -150,6 +150,7 @@ occ_search <- function(taxonKey = NULL,
                        isSequenced = NULL,
                        startDayOfYear = NULL,
                        endDayOfYear = NULL,
+                       checklistKey = NULL,
                        limit = 500,
                        start = 0,
                        fields = 'all',
@@ -189,7 +190,8 @@ occ_search <- function(taxonKey = NULL,
         isSequenced = isSequenced,
         limit = check_limit(as.integer(limit)),
         isInCluster = isInCluster,
-        offset = check_limit(as.integer(start))
+        offset = check_limit(as.integer(start)),
+        checklistKey = checklistKey
       )
     )
     # args that can take multiple values 
@@ -342,7 +344,11 @@ occ_search <- function(taxonKey = NULL,
     
     meta <- outout[[length(outout)]][c('offset', 'limit', 'endOfRecords',
                                        'count')]
+    # print(outout[[1]]$results[[1]]$classifications)                                       
     data <- do.call(c, lapply(outout, "[[", "results"))
+    # remove classifications to return as separate object 
+    classifications <- do.call(c, lapply(data, "[[", "classifications"))
+    data <- lapply(data, function(x) { x[["classifications"]] <- NULL; x })
     facets <- do.call(c, lapply(outout, "[[", "facets"))
     if (identical(data, list())) {
       dat2 <- NULL
@@ -361,7 +367,8 @@ occ_search <- function(taxonKey = NULL,
       )
     }), vapply(facets, function(x) to_camel(x$field), ""))
     list(meta = meta, hierarchy = hier2, data = dat2,
-         media = media, facets = fac)
+         media = media, classifications = classifications, 
+         facets = fac)
   }
   
   params <- list(
@@ -474,7 +481,8 @@ occ_search <- function(taxonKey = NULL,
     isSequenced=isSequenced,
     startDayOfYear=startDayOfYear,
     endDayOfYear=endDayOfYear,
-    geoDistance=geoDistance
+    geoDistance=geoDistance,
+    checklistKey=checklistKey
     )
   if (!any(sapply(params, length) > 0)) {
     stop(sprintf("At least one of these parameters must have a value:\n%s",

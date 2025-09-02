@@ -3,120 +3,173 @@
 \name{name_backbone}
 \alias{name_backbone}
 \alias{name_backbone_verbose}
-\title{Lookup names in the GBIF backbone taxonomy.}
+\title{Match names to GBIF backbone and other checklists.}
 \usage{
 name_backbone(
-  name,
+  name = NULL,
   rank = NULL,
   kingdom = NULL,
   phylum = NULL,
   class = NULL,
   order = NULL,
+  superfamily = NULL,
   family = NULL,
+  subfamily = NULL,
+  tribe = NULL,
+  subtribe = NULL,
   genus = NULL,
-  strict = FALSE,
+  subgenus = NULL,
+  species = NULL,
+  usageKey = NULL,
+  taxonID = NULL,
+  taxonConceptID = NULL,
+  scientificNameID = NULL,
+  scientificNameAuthorship = NULL,
+  genericName = NULL,
+  specificEpithet = NULL,
+  infraspecificEpithet = NULL,
+  verbatimTaxonRank = NULL,
+  exclude = NULL,
+  strict = NULL,
   verbose = FALSE,
+  checklistKey = NULL,
   start = NULL,
-  limit = 100,
-  curlopts = list()
+  limit = NULL,
+  curlopts = list(http_version = 2)
 )
 
 name_backbone_verbose(
-  name,
+  name = NULL,
   rank = NULL,
   kingdom = NULL,
   phylum = NULL,
   class = NULL,
   order = NULL,
+  superfamily = NULL,
   family = NULL,
+  subfamily = NULL,
+  tribe = NULL,
+  subtribe = NULL,
   genus = NULL,
-  strict = FALSE,
+  subgenus = NULL,
+  species = NULL,
+  usageKey = NULL,
+  taxonID = NULL,
+  taxonConceptID = NULL,
+  scientificNameID = NULL,
+  scientificNameAuthorship = NULL,
+  genericName = NULL,
+  specificEpithet = NULL,
+  infraspecificEpithet = NULL,
+  verbatimTaxonRank = NULL,
+  exclude = NULL,
+  strict = NULL,
+  checklistKey = NULL,
   start = NULL,
-  limit = 100,
-  curlopts = list()
+  limit = NULL,
+  curlopts = list(http_version = 2)
 )
 }
 \arguments{
 \item{name}{(character) Full scientific name potentially with authorship
 (required)}
 
-\item{rank}{(character) The rank given as our rank enum. (optional)}
+\item{rank}{(character) Filter by taxonomic rank. See API reference for
+available values.}
 
-\item{kingdom}{(character) If provided default matching will also try to
-match against this if no direct match is found for the name alone.
-(optional)}
+\item{kingdom}{(character) Kingdom to match.}
 
-\item{phylum}{(character) If provided default matching will also try to
-match against this if no direct match is found for the name alone.
-(optional)}
+\item{phylum}{(character) Phylum to match.}
 
-\item{class}{(character) If provided default matching will also try to
-match against this if no direct match is found for the name alone.
-(optional)}
+\item{class}{(character) Class to match.}
 
-\item{order}{(character) If provided default matching will also try to
-match against this if no direct match is found for the name alone.
-(optional)}
+\item{order}{(character) Order to match.}
 
-\item{family}{(character) If provided default matching will also try to
-match against this if no direct match is found for the name alone.
-(optional)}
+\item{superfamily}{(character) Superfamily to match.}
 
-\item{genus}{(character) If provided default matching will also try to
-match against this if no direct match is found for the name alone.
-(optional)}
+\item{family}{(character) Family to match.}
 
-\item{strict}{(logical) If \code{TRUE} it (fuzzy) matches only the given name,
-but never a taxon in the upper classification (optional)}
+\item{subfamily}{(character) Subfamily to match.}
 
-\item{verbose}{(logical) should the function give back more (less reliable)
-results. See function \code{name_backbone_verbose()}}
+\item{tribe}{(character) Tribe to match.}
 
-\item{start}{Record number to start at. Default: 0. Use in combination
-with \code{limit} to page through results.}
+\item{subtribe}{(character) Subtribe to match.}
 
-\item{limit}{Number of records to return. Default: 100. Maximum: 1000.}
+\item{genus}{(character) Genus to match.}
 
-\item{curlopts}{list of named curl options passed on to
-\code{\link[crul]{HttpClient}}. see \code{curl::curl_options}
-for curl options}
+\item{subgenus}{(character) Subgenus to match.}
+
+\item{species}{(character) Species to match.}
+
+\item{usageKey}{(character) The usage key to look up. When provided, all
+other fields are ignored.}
+
+\item{taxonID}{(character) The taxon ID to look up. Matches to a taxonID
+will take precedence over scientificName values supplied. A comparison of
+the matched scientific and taxonID is performed tocheck for inconsistencies.}
+
+\item{taxonConceptID}{(character) The taxonConceptID to match. Matches to a
+taxonConceptID will take precedence over scientificName values supplied. A
+comparison of the matched scientific and taxonConceptID is performed to
+check for inconsistencies.}
+
+\item{scientificNameID}{(character) Matches to a scientificNameID will take
+precedence over scientificName values supplied. A comparison of the matched
+scientific and scientificNameID is performed to check for inconsistencies.}
+
+\item{scientificNameAuthorship}{(character) The scientific name authorship
+to match against.}
+
+\item{genericName}{(character) Generic part of the name to match when given
+as atomised parts instead of the full name parameter.}
+
+\item{specificEpithet}{(character) Specific epithet to match.}
+
+\item{infraspecificEpithet}{(character) Infraspecific epithet to match.}
+
+\item{verbatimTaxonRank}{(character) Filters by free text taxon rank.}
+
+\item{exclude}{(character) An array of usage keys to exclude from the match.}
+
+\item{strict}{(logical) If set to true, fuzzy matches only the given name,
+but never a taxon in the upper classification.}
+
+\item{verbose}{(logical) If set to true, it shows alternative matches which
+were considered but then rejected.}
+
+\item{checklistKey}{(character) The key of a checklist to use. The default is
+the GBIF Backbone taxanomy.}
+
+\item{start}{(integer) Currently ignored.}
+
+\item{limit}{(integer) Currently ignored.}
+
+\item{curlopts}{A list of curl options passed on to \code{\link[httr:GET]{httr::GET()}}.}
 }
 \value{
-For \code{name_backbone}, a data.frame for a single taxon with many
-columns. For \code{name_backbone_verbose}, a larger number of results in a
-data.frame the results of resulting from fuzzy matching.
-You will also get back your input name, rank, kingdom, phylum ect. as
-columns input_name, input_rank, input_kingdom ect. so you can check the
-results.
+A single row \code{tibble} of the best matched name. If \code{verbose=TRUE}, a
+longer \code{tibble} with all potential alternatives is returned.
 }
 \description{
-Lookup names in the GBIF backbone taxonomy.
+Match names to GBIF backbone and other checklists.
 }
 \details{
 If you don't get a match, GBIF gives back a data.frame with columns
 \code{synonym}, \code{confidence}, and \code{matchType='NONE'}.
+
+\code{name_backbone_verbose()} is a legacy wrapper function that returns
+returns alternatives in a separate \code{tibble}.
 }
 \examples{
 \dontrun{
-name_backbone(name='Helianthus annuus', kingdom='plants')
-name_backbone(name='Helianthus', rank='genus', kingdom='plants')
-name_backbone(name='Poa', rank='genus', family='Poaceae')
+name_backbone("Calopteryx splendens") 
+name_backbone("Calopteryx splendens", kingdom = "Animalia")
+name_backbone("Calopteryx splendens", kingdom = "Animalia", verbose = TRUE)
+name_backbone_verbose("Calopteryx splendens", kingdom = "Animalia")
+name_backbone("Calopteryx splendens", kingdom = "Plantae")
 
-# Verbose - gives back alternatives
-## Strictness
-name_backbone_verbose(name='Poa', kingdom='plants',
-  strict=FALSE)
-name_backbone_verbose(name='Helianthus annuus', kingdom='plants',
-  strict=TRUE)
-
-# Non-existent name - returns list of lenght 3 stating no match
-name_backbone(name='Aso')
-name_backbone(name='Oenante')
-
-# Pass on curl options
-name_backbone(name='Oenante', curlopts = list(verbose=TRUE))
 }
 }
 \references{
-\url{https://www.gbif.org/developer/species#searching}
+\url{https://techdocs.gbif.org/en/openapi/v1/species#/Searching\%20names/matchNames}
 }

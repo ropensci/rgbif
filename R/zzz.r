@@ -59,8 +59,8 @@ gbifparser <- function(input, fields= "minimal") {
     x$extensions <- NULL
 
     # remove any fields > length 1
-    lgts <- unname(sapply(x, length))
-    if (any(lgts > 1)) x[lgts > 1] <- NULL
+    # lgts <- unname(sapply(x, length))
+    # if (any(lgts > 1)) x[lgts > 1] <- NULL
 
     # all other data
     x <- data.frame(x, stringsAsFactors=FALSE)
@@ -94,6 +94,7 @@ gbifparser <- function(input, fields= "minimal") {
     if ("gbifID" %in% names(x)) x$gbifID <- as.character(x$gbifID)
     list(hierarchy = hier, media = media2, data = x)
   }
+
   if (is.numeric(input[[1]])) {
     parse(input)
   } else {
