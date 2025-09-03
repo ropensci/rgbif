@@ -76,7 +76,7 @@ installation_search <- function(
   }
   
   if (xor(is.null(identifierType), is.null(identifier))) {
-    stop("Both 'identifierType' and 'indentifier' must be provided 
+    stop("Both 'identifierType' and 'identifier' must be provided 
          together or both be NULL.")
   }
   
