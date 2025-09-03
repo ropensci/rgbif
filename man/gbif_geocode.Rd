@@ -14,6 +14,8 @@ gbif_geocode(
 \item{latitude}{a vector of numeric latitude values between -90 and 90.}
 
 \item{longitude}{a vector of numeric longitude values between -180 and 180.}
+
+\item{curlopts}{A list of curl options to pass to the request.}
 }
 \value{
 A data.frame of results from the GBIF gecoding service.
