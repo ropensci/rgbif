@@ -190,8 +190,8 @@ lit_search <- function(
   if(is.null(limit)) {
     limit <- count_limit
     if(length(args) == 0) {
-        message("No filters used, but 'limit=NULL' returning just the first 1000 results. If you actually just want the first 10,000 records, use 'limit=10000'.")
-        limit <- 1000
+      message("No filters used, but 'limit=NULL' returning just the first 1000 results. If you actually just want the first 10,000 records, use 'limit=10000'.")
+      limit <- 1000
     }
   }
   
@@ -261,9 +261,9 @@ lit_count <- function(...) {
                      "journalPublisher")
   if(!all(names(x) %in% accepted_args)) {
     stop(
-    paste0(
-    "Please use accepted argument from lit_search() :",toString(accepted_args)
-    ))}
+      paste0(
+        "Please use accepted argument from lit_search() :",toString(accepted_args)
+      ))}
   
   count <- lit_search(
     q=x$q,
@@ -308,7 +308,7 @@ lit_export <- function(
     abstract=FALSE,
     limit=NULL,
     curlopts = list()
-  ) {
+) {
   
   if(!is_uuid(datasetKey) & !is.null(datasetKey)) stop("'datasetKey' should be a GBIF dataset uuid.")
   if(!is_uuid(publishingOrg) & !is.null(publishingOrg)) stop("'publishingOrg' should be a GBIF publisher uuid.")
@@ -335,22 +335,22 @@ lit_export <- function(
          year = year,
          peerReview = peerReview,
          openAccess = openAccess
-        ))
+    ))
   
   args <- rgbif_compact(
-            c(args,
-            convmany(relevance),
-            convmany(countriesOfResearcher),
-            convmany(countriesOfCoverage),
-            convmany(literatureType),
-            convmany(topics),
-            convmany_rename(datasetKey,"gbifDatasetKey"),
-            convmany_rename(publishingOrg,"publishingOrganizationKey"),
-            convmany_rename(downloadKey,"gbifDownloadKey"), 
-            convmany(doi), 
-            convmany_rename(journalSource,"source"), 
-            convmany_rename(journalPublisher,"publisher")
-            ))
+    c(args,
+      convmany(relevance),
+      convmany(countriesOfResearcher),
+      convmany(countriesOfCoverage),
+      convmany(literatureType),
+      convmany(topics),
+      convmany_rename(datasetKey,"gbifDatasetKey"),
+      convmany_rename(publishingOrg,"publishingOrganizationKey"),
+      convmany_rename(downloadKey,"gbifDownloadKey"), 
+      convmany(doi), 
+      convmany_rename(journalSource,"source"), 
+      convmany_rename(journalPublisher,"publisher")
+    ))
   
   url_query <- paste0(names(args),"=",args,collapse="&")
   url_query <- utils::URLencode(url_query) 

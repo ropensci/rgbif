@@ -138,7 +138,6 @@ dataset_search <- function(query = NULL,
                            start = NULL,
                            description = FALSE,
                            curlopts = list(http_version=2)) {
-
   assert(query,"character")
   assert(type,"character")
   assert(subtype,"character")
@@ -165,7 +164,7 @@ dataset_search <- function(query = NULL,
                     facetOffset=facetOffset,
                     facetMincount=facetMincount,
                     facetMultiselect=facetMultiselect
-                    )))
+    )))
   
   args <- rgbif_compact(c(
     args,
@@ -192,7 +191,7 @@ dataset_search <- function(query = NULL,
   
   # metadata
   meta <- tt[c('offset','limit','endOfRecords','count')]
-
+  
   # facets
   facets <- tt$facets
   if (!length(facets) == 0) {

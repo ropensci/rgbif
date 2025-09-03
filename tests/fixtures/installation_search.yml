@@ -1,0 +1,115 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/installation?limit=1
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":698,"results":[{"key":"e5485242-aa1f-4aab-96a3-d33b2c9f7880","organizationKey":"948f0437-2242-4c2e-bb1e-d6e9e69d1d2a","type":"HTTP_INSTALLATION","title":"AGES
+        - Austrian Agency for Health and Food Safety - installation","createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2025-06-17T12:05:58.671+00:00","modified":"2025-06-17T12:05:58.671+00:00","disabled":false,"contacts":[],"endpoints":[],"machineTags":[],"tags":[],"identifiers":[],"comments":[]}]}'
+  recorded_at: 2025-07-01 08:08:40 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/installation?q=Estonia&limit=2
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":3,"results":[{"key":"896898e8-c0ac-47a0-8f38-0f792fbe3343","organizationKey":"0870a77b-587c-4369-a8ed-bc3d347b8e1c","type":"IPT_INSTALLATION","title":"GBIF
+        Estonia","description":"Integrated Publishing Toolkit for GBIF Estonia","createdBy":"0870a77b-587c-4369-a8ed-bc3d347b8e1c","modifiedBy":"0870a77b-587c-4369-a8ed-bc3d347b8e1c","created":"2025-05-30T13:17:32.720+00:00","modified":"2025-05-30T13:17:32.720+00:00","disabled":false,"contacts":[{"key":6120570,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Kristjan
+        Adojaan","position":[],"email":["kristjan.adojaan@ut.ee"],"phone":[],"homepage":[],"address":[],"createdBy":"0870a77b-587c-4369-a8ed-bc3d347b8e1c","modifiedBy":"0870a77b-587c-4369-a8ed-bc3d347b8e1c","created":"2025-05-30T13:17:32.737+00:00","modified":"2025-05-30T13:17:32.737+00:00"}],"endpoints":[{"key":1111486,"type":"FEED","url":"https://cloud.gbif.org/ee/rss.do","createdBy":"0870a77b-587c-4369-a8ed-bc3d347b8e1c","modifiedBy":"0870a77b-587c-4369-a8ed-bc3d347b8e1c","created":"2025-05-30T13:17:32.755+00:00","modified":"2025-05-30T13:17:32.755+00:00","machineTags":[]}],"machineTags":[],"tags":[],"identifiers":[],"comments":[]},{"key":"60433990-f762-11e1-a439-00145eb45e9a","organizationKey":"70488160-b003-11d8-a8af-b8a03c50a862","type":"BIOCASE_INSTALLATION","title":"BioCASe
+        Installation Geocollections of Estonia","description":"BioCASe Installation
+        Geocollections of Estonia","createdBy":"registry-migration.gbif.org","modifiedBy":"registry-migration.gbif.org","created":"2012-09-05T14:02:49.000+00:00","modified":"2012-09-05T14:02:49.000+00:00","disabled":false,"contacts":[],"endpoints":[{"key":2684,"type":"BIOCASE","url":"http://sarv.gi.ee/biocase/pywrapper.cgi?dsa=tug","createdBy":"registry-migration.gbif.org","modifiedBy":"registry-migration.gbif.org","created":"2011-10-06T09:47:31.000+00:00","modified":"2011-10-06T09:47:31.000+00:00","machineTags":[]},{"key":2683,"type":"BIOCASE","url":"http://sarv.gi.ee/biocase/pywrapper.cgi?dsa=elm","createdBy":"registry-migration.gbif.org","modifiedBy":"registry-migration.gbif.org","created":"2011-10-06T08:49:33.000+00:00","modified":"2011-10-06T08:49:33.000+00:00","machineTags":[]},{"key":2682,"type":"BIOCASE","url":"http://sarv.gi.ee/biocase/pywrapper.cgi?dsa=git","createdBy":"registry-migration.gbif.org","modifiedBy":"registry-migration.gbif.org","created":"2011-10-06T08:49:21.000+00:00","modified":"2011-10-06T08:49:21.000+00:00","machineTags":[]}],"machineTags":[],"tags":[],"identifiers":[],"comments":[]}]}'
+  recorded_at: 2025-07-01 08:08:40 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/installation?type=IPT_INSTALLATION&limit=2
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":374,"results":[{"key":"237a77da-d109-4d9a-a691-4b87464d2800","organizationKey":"25be1cbb-af76-44ea-8ff3-074799790dce","type":"IPT_INSTALLATION","title":"ICMBio
+        - IPT","description":"The ICMBio IPT (Integrated Publishing Toolkit) is a
+        data publishing platform managed by the Chico Mendes Institute for Biodiversity
+        Conservation (ICMBio), a federal agency responsible for managing Brazil''s
+        protected areas and biodiversity. Through the IPT, ICMBio provides open access
+        to species occurrence records, monitoring data, and biological collections
+        related to Brazilian protected areas.","createdBy":"25be1cbb-af76-44ea-8ff3-074799790dce","modifiedBy":"25be1cbb-af76-44ea-8ff3-074799790dce","created":"2025-06-16T19:25:58.135+00:00","modified":"2025-06-16T19:25:58.135+00:00","disabled":false,"contacts":[{"key":6142935,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Ivan
+        Salzo","position":[],"email":["ivan.salzo@icmbio.gov.br"],"phone":[],"homepage":[],"address":[],"createdBy":"25be1cbb-af76-44ea-8ff3-074799790dce","modifiedBy":"25be1cbb-af76-44ea-8ff3-074799790dce","created":"2025-06-16T19:25:58.148+00:00","modified":"2025-06-16T19:25:58.148+00:00"}],"endpoints":[{"key":1117163,"type":"FEED","url":"https://sisbio.sisicmbio.icmbio.gov.br/ipt/rss.do","createdBy":"25be1cbb-af76-44ea-8ff3-074799790dce","modifiedBy":"25be1cbb-af76-44ea-8ff3-074799790dce","created":"2025-06-16T19:25:58.165+00:00","modified":"2025-06-16T19:25:58.165+00:00","machineTags":[]}],"machineTags":[],"tags":[],"identifiers":[],"comments":[]},{"key":"896898e8-c0ac-47a0-8f38-0f792fbe3343","organizationKey":"0870a77b-587c-4369-a8ed-bc3d347b8e1c","type":"IPT_INSTALLATION","title":"GBIF
+        Estonia","description":"Integrated Publishing Toolkit for GBIF Estonia","createdBy":"0870a77b-587c-4369-a8ed-bc3d347b8e1c","modifiedBy":"0870a77b-587c-4369-a8ed-bc3d347b8e1c","created":"2025-05-30T13:17:32.720+00:00","modified":"2025-05-30T13:17:32.720+00:00","disabled":false,"contacts":[{"key":6120570,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Kristjan
+        Adojaan","position":[],"email":["kristjan.adojaan@ut.ee"],"phone":[],"homepage":[],"address":[],"createdBy":"0870a77b-587c-4369-a8ed-bc3d347b8e1c","modifiedBy":"0870a77b-587c-4369-a8ed-bc3d347b8e1c","created":"2025-05-30T13:17:32.737+00:00","modified":"2025-05-30T13:17:32.737+00:00"}],"endpoints":[{"key":1111486,"type":"FEED","url":"https://cloud.gbif.org/ee/rss.do","createdBy":"0870a77b-587c-4369-a8ed-bc3d347b8e1c","modifiedBy":"0870a77b-587c-4369-a8ed-bc3d347b8e1c","created":"2025-05-30T13:17:32.755+00:00","modified":"2025-05-30T13:17:32.755+00:00","machineTags":[]}],"machineTags":[],"tags":[],"identifiers":[],"comments":[]}]}'
+  recorded_at: 2025-07-01 08:08:40 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0
+- request:
+    method: get
+    uri: https://api.gbif.org/v1/installation?modified=2023-04-01%2C%2A&limit=2
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      encoding: ''
+      file: no
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":153,"results":[{"key":"e5485242-aa1f-4aab-96a3-d33b2c9f7880","organizationKey":"948f0437-2242-4c2e-bb1e-d6e9e69d1d2a","type":"HTTP_INSTALLATION","title":"AGES
+        - Austrian Agency for Health and Food Safety - installation","createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2025-06-17T12:05:58.671+00:00","modified":"2025-06-17T12:05:58.671+00:00","disabled":false,"contacts":[],"endpoints":[],"machineTags":[],"tags":[],"identifiers":[],"comments":[]},{"key":"237a77da-d109-4d9a-a691-4b87464d2800","organizationKey":"25be1cbb-af76-44ea-8ff3-074799790dce","type":"IPT_INSTALLATION","title":"ICMBio
+        - IPT","description":"The ICMBio IPT (Integrated Publishing Toolkit) is a
+        data publishing platform managed by the Chico Mendes Institute for Biodiversity
+        Conservation (ICMBio), a federal agency responsible for managing Brazil''s
+        protected areas and biodiversity. Through the IPT, ICMBio provides open access
+        to species occurrence records, monitoring data, and biological collections
+        related to Brazilian protected areas.","createdBy":"25be1cbb-af76-44ea-8ff3-074799790dce","modifiedBy":"25be1cbb-af76-44ea-8ff3-074799790dce","created":"2025-06-16T19:25:58.135+00:00","modified":"2025-06-16T19:25:58.135+00:00","disabled":false,"contacts":[{"key":6142935,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Ivan
+        Salzo","position":[],"email":["ivan.salzo@icmbio.gov.br"],"phone":[],"homepage":[],"address":[],"createdBy":"25be1cbb-af76-44ea-8ff3-074799790dce","modifiedBy":"25be1cbb-af76-44ea-8ff3-074799790dce","created":"2025-06-16T19:25:58.148+00:00","modified":"2025-06-16T19:25:58.148+00:00"}],"endpoints":[{"key":1117163,"type":"FEED","url":"https://sisbio.sisicmbio.icmbio.gov.br/ipt/rss.do","createdBy":"25be1cbb-af76-44ea-8ff3-074799790dce","modifiedBy":"25be1cbb-af76-44ea-8ff3-074799790dce","created":"2025-06-16T19:25:58.165+00:00","modified":"2025-06-16T19:25:58.165+00:00","machineTags":[]}],"machineTags":[],"tags":[],"identifiers":[],"comments":[]}]}'
+  recorded_at: 2025-07-01 08:08:40 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.9.0

@@ -22,7 +22,7 @@ test_that("dataset_search works as expected", {
     expect_lt(t$meta$count,tt$meta$count)
     expect_lte(nrow(tt$data),5)
     expect_true(all(tt$data$type == "OCCURRENCE" |
-                    tt$data$type == "CHECKLIST"))
+                      tt$data$type == "CHECKLIST"))
     
     k <- dataset_search(keyword = "bird",limit=5)
     kk <- dataset_search(keyword = "bird;insect",limit=5)
