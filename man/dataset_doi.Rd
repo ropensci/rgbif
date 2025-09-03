@@ -4,7 +4,12 @@
 \alias{dataset_doi}
 \title{Get a GBIF dataset from a doi}
 \usage{
-dataset_doi(doi = NULL, limit = 20, start = NULL, curlopts = list())
+dataset_doi(
+  doi = NULL,
+  limit = 20,
+  start = NULL,
+  curlopts = list(http_version = 2)
+)
 }
 \arguments{
 \item{doi}{the doi of the dataset you wish to lookup.}

@@ -27,7 +27,7 @@
 #' limit = 3, start = 10)
 #' }
 occ_download_dataset_activity <- function(dataset, limit = 20, start = 0,
-  curlopts = list()) {
+  curlopts = list(http_version = 2)) {
 
   assert(dataset, "character")
   assert(limit, c("integer", "numeric"))

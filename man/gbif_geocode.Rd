@@ -4,7 +4,11 @@
 \alias{gbif_geocode}
 \title{Geocode lat-lon point(s) with GBIF's set of geo-polygons (experimental)}
 \usage{
-gbif_geocode(latitude = NULL, longitude = NULL)
+gbif_geocode(
+  latitude = NULL,
+  longitude = NULL,
+  curlopts = list(http_version = 2)
+)
 }
 \arguments{
 \item{latitude}{a vector of numeric latitude values between -90 and 90.}

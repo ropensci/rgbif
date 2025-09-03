@@ -8,12 +8,12 @@
 occ_get(
   key,
   fields = "minimal",
-  curlopts = list(),
+  curlopts = list(http_version = 2),
   return = NULL,
   verbatim = NULL
 )
 
-occ_get_verbatim(key, fields = "minimal", curlopts = list())
+occ_get_verbatim(key, fields = "minimal", curlopts = list(http_version = 2))
 }
 \arguments{
 \item{key}{(numeric/integer) one or more occurrence keys. required}

@@ -12,7 +12,7 @@ elevation(
   elevation_model = "srtm3",
   username = Sys.getenv("GEONAMES_USER"),
   key,
-  curlopts,
+  curlopts = list(http_version = 2),
   ...
 )
 }

@@ -2,6 +2,8 @@
 #'
 #' @param x a character string (default: "dwca"). Accepted values: 
 #' "simpleCsv", "simpleAvro", "simpleParquet","speciesList", "sql".
+#' @param curlopts list of named curl options passed on to HttpClient. 
+#' see curl::curl_options for curl options.
 #' 
 #' @details
 #' The function returns a list with the fields available in GBIF downloads. It 
@@ -16,11 +18,11 @@
 #' occ_download_describe("simpleCsv")$fields
 #' occ_download_describe("sql")$fields
 #' }
-occ_download_describe <- function(x="dwca") {
+occ_download_describe <- function(x="dwca", curlopts = list(http_version=2)) {
   acc_args <- c("dwca","simpleCsv","simpleAvro","simpleParquet","speciesList","sql")
   stopifnot(x %in% acc_args)
   url <- paste0(gbif_base(),"/occurrence/download/describe/",x)
-  out <- gbif_GET(url,args=NULL,parse=TRUE)
+  out <- gbif_GET(url,args=NULL,parse=TRUE,curlopts=curlopts)
 
   if(x == "dwca") {
   out <- list(

@@ -14,7 +14,7 @@ occ_download_cached(
   email = NULL,
   refresh = FALSE,
   age = 30,
-  curlopts = list()
+  curlopts = list(http_version = 2)
 )
 }
 \arguments{

@@ -14,7 +14,7 @@ occ_count_pub_country(country = NULL)
 
 occ_count_year(year = NULL)
 
-occ_count_basis_of_record(curlopts = list())
+occ_count_basis_of_record(curlopts = list(http_version = 2))
 }
 \arguments{
 \item{publishingCountry}{The 2-letter country code (as per ISO-3166-1)

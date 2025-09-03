@@ -64,7 +64,7 @@
 #' }
 name_backbone <- function(name, rank=NULL, kingdom=NULL, phylum=NULL,
   class=NULL, order=NULL, family=NULL, genus=NULL, strict=FALSE, verbose=FALSE,
-  start=NULL, limit=100, curlopts = list()) {
+  start=NULL, limit=100, curlopts = list(http_version = 2)) {
 
   # pchk(verbose, "name_backbone")
   url <- paste0(gbif_base(), '/species/match')
@@ -97,7 +97,7 @@ name_backbone <- function(name, rank=NULL, kingdom=NULL, phylum=NULL,
 #' @rdname name_backbone
 name_backbone_verbose <- function(name, rank=NULL, kingdom=NULL, phylum=NULL,
                                   class=NULL, order=NULL, family=NULL, genus=NULL, strict=FALSE,
-                                  start=NULL, limit=100, curlopts = list()) {
+                                  start=NULL, limit=100, curlopts = list(http_version = 2)) {
   
   url <- paste0(gbif_base(), '/species/match')
   args <- rgbif_compact(

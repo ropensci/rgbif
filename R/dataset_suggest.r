@@ -17,7 +17,7 @@ dataset_suggest <- function(query = NULL,
                             limit = 100,
                             start = NULL,
                             description = FALSE,
-                            curlopts = list()) {
+                            curlopts = list(http_version = 2)) {
   
   assert(query,"character")
   assert(type,"character")

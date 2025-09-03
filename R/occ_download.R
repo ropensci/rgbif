@@ -178,7 +178,8 @@
 #' # sort(unique(df$year))
 #' }
 occ_download <- function(..., body = NULL, type = "and", format = "DWCA",
-                         user = NULL, pwd = NULL, email = NULL, curlopts = list()) {
+                         user = NULL, pwd = NULL, email = NULL, 
+                         curlopts = list(http_version = 2)) {
   
   z <- occ_download_prep(..., body = body, type = type, format = format,
                          user = user, pwd = pwd, email = email, curlopts = curlopts)
@@ -204,7 +205,7 @@ download_formats <- c("DWCA", "SIMPLE_CSV", "SPECIES_LIST", "SIMPLE_PARQUET")
 #' @export
 #' @rdname occ_download
 occ_download_prep <- function(..., body = NULL, type = "and", format = "DWCA",
-                              user = NULL, pwd = NULL, email = NULL, curlopts = list()) {
+                              user = NULL, pwd = NULL, email = NULL, curlopts = list(http_version = 2)) {
   
   url <- paste0(gbif_base(), '/occurrence/download/request')
   user <- check_user(user)
@@ -276,7 +277,7 @@ occ_download_exec <- function(x) {
   structure(out, class = "occ_download", user = x$user, email = x$email)
 }
 
-rg_POST <- function(url, req, user, pwd, curlopts) {
+rg_POST <- function(url, req, user, pwd, curlopts = list(http_version = 2)) {
   cli <- crul::HttpClient$new(url = url, opts = c(
     curlopts, httpauth = 1, userpwd = paste0(user, ":", pwd)),
     headers = c(

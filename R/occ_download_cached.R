@@ -24,7 +24,7 @@
 #' }
 occ_download_cached <- function(..., body = NULL, type = "and", format = "DWCA",
   user = NULL, pwd = NULL, email = NULL, refresh = FALSE, age = 30,
-  curlopts = list()) {
+  curlopts = list(http_version = 2)) {
 
   if (length(list(...)) == 0) stop("please pass in at least 1 predicate")
   z <- occ_download_prep(..., body = body, type = type, format = format,

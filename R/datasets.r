@@ -39,7 +39,7 @@ datasets <- function(data = 'all',
                      id = NULL,
                      limit = 100,
                      start=NULL,
-                     curlopts = list()) {
+                     curlopts = list(http_version = 2)) {
   .Deprecated(msg="datasets() is deprecated since rgbif 3.7.9.")
   if (!is.null(type)) type <- toupper(type)
   

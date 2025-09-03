@@ -23,7 +23,7 @@
 #' occ_download_list(user="sckott", start = 21)
 #' }
 occ_download_list <- function(user = NULL, pwd = NULL, limit = 20, start = 0,
-  curlopts = list()) {
+  curlopts = list(http_version = 2)) {
 
   out <- ocl_help(user, pwd, limit, start, curlopts, TRUE)
   out$results$size <- getsize(out$results$size)
@@ -31,7 +31,7 @@ occ_download_list <- function(user = NULL, pwd = NULL, limit = 20, start = 0,
 }
 
 ocl_help <- function(user = NULL, pwd = NULL, limit = 20, start = 0,
-  curlopts = list(), flatten = TRUE) {
+  curlopts = list(http_version = 2), flatten = TRUE) {
 
   assert(limit, c("integer", "numeric"))
   assert(start, c("integer", "numeric"))

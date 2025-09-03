@@ -99,7 +99,8 @@
 #' occ_count(facet="institutionCode",basisOfRecord="PRESERVED_SPECIMEN")
 #' 
 #' }
-occ_count <- function(...,occurrenceStatus="PRESENT", curlopts = list()) {
+occ_count <- function(...,occurrenceStatus="PRESENT", 
+curlopts = list(http_version = 2)) {
   args <- list(...)
   args <- rgbif_compact(c(args,occurrenceStatus=occurrenceStatus))
   arg_names <- names(args)

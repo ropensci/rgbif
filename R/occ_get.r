@@ -32,8 +32,8 @@
 #' # curl options, pass in a named list
 #' occ_get(key=855998194, curlopts = list(verbose=TRUE))
 #' }
-occ_get <- function(key, fields="minimal", curlopts=list(), return=NULL,
-  verbatim=NULL) {
+occ_get <- function(key, fields="minimal", 
+curlopts=list(http_version = 2), return=NULL, verbatim=NULL) {
   pchk(return, "occ_get")
   pchk(verbatim, "occ_get")
   occ_get_helper(FALSE, key, fields, curlopts)
@@ -41,11 +41,11 @@ occ_get <- function(key, fields="minimal", curlopts=list(), return=NULL,
 
 #' @export
 #' @rdname occ_get
-occ_get_verbatim <- function(key, fields="minimal", curlopts=list()) {
+occ_get_verbatim <- function(key, fields="minimal", curlopts=list(http_version = 2)) {
   occ_get_helper(TRUE, key, fields, curlopts)
 }
 
-occ_get_helper <- function(verbatim, key, fields, curlopts) {
+occ_get_helper <- function(verbatim, key, fields, curlopts = list(http_version = 2)) {
   stopifnot(is.numeric(key))
   assert(fields, "character")
   out <- lapply(key, function(w) {

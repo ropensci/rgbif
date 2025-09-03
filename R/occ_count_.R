@@ -94,7 +94,7 @@ occ_count_year <- function(year=NULL) {
 
 #' @export
 #' @rdname occ_count_
-occ_count_basis_of_record <- function(curlopts=list()) {
+occ_count_basis_of_record <- function(curlopts=list(http_version = 2)) {
   url <- paste0(gbif_base(),'/occurrence/counts/basisOfRecord')
   res <- tibble::as_tibble(gbif_GET(url,args=NULL))
   res <- data.table::transpose(res,keep.names="x")

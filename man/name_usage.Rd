@@ -16,7 +16,7 @@ name_usage(
   start = 0,
   limit = 100,
   return = NULL,
-  curlopts = list()
+  curlopts = list(http_version = 2)
 )
 }
 \arguments{

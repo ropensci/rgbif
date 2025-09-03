@@ -4,11 +4,14 @@
 \alias{occ_download_describe}
 \title{Describes the fields available in GBIF downloads}
 \usage{
-occ_download_describe(x = "dwca")
+occ_download_describe(x = "dwca", curlopts = list(http_version = 2))
 }
 \arguments{
 \item{x}{a character string (default: "dwca"). Accepted values:
 "simpleCsv", "simpleAvro", "simpleParquet","speciesList", "sql".}
+
+\item{curlopts}{list of named curl options passed on to HttpClient.
+see curl::curl_options for curl options.}
 }
 \value{
 a list.

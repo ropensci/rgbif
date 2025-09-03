@@ -11,7 +11,7 @@ name_suggest(
   fields = NULL,
   start = NULL,
   limit = 100,
-  curlopts = list()
+  curlopts = list(http_version = 2)
 )
 }
 \arguments{

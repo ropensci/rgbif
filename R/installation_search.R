@@ -47,7 +47,7 @@ installation_search <- function(
     modified = NULL,
     limit = 20,
     offset = NULL,
-    curlopts = list()
+    curlopts = list(http_version = 2)
   ) {
   
   assert(query,"character")

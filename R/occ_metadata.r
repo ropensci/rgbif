@@ -40,7 +40,7 @@
 #' }
 
 occ_metadata <- function(type = "catalogNumber", q=NULL, limit=5, pretty=TRUE,
-                         curlopts = list()) {
+                         curlopts = list(http_version = 2)) {
 
   type <- match.arg(type, c("catalogNumber", "collectionCode", "recordedBy",
                             "institutionCode"))

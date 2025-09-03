@@ -14,7 +14,8 @@
 #' @examples \dontrun{
 #' dataset_doi('10.15468/igasai')
 #' }
-dataset_doi <- function(doi=NULL, limit = 20, start=NULL, curlopts = list()) {
+dataset_doi <- function(doi=NULL, limit = 20, start=NULL, 
+curlopts = list(http_version=2)) {
   assert(doi,"character")
   is_doi <- grepl("^(10\\.\\d{4,9}/[-._;()/:A-Z0-9]+)$", doi, perl = TRUE, 
                   ignore.case = TRUE)

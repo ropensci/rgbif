@@ -13,7 +13,7 @@ nodes(
   limit = 100,
   start = NULL,
   isocode = NULL,
-  curlopts = list()
+  curlopts = list(http_version = 2)
 )
 }
 \arguments{

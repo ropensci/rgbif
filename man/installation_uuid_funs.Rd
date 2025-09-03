@@ -9,21 +9,26 @@
 \alias{installation_identifier}
 \alias{installation_machinetag}
 \alias{installation_tag}
-\title{Get installation metadata using a installationkey}
+\title{Get installation metadata using an installation key}
 \usage{
-installation_dataset(uuid = NULL, limit = 20, start = NULL, curlopts = list())
+installation_dataset(
+  uuid = NULL,
+  limit = 20,
+  start = NULL,
+  curlopts = list(http_version = 2)
+)
 
-installation_comment(uuid = NULL, curlopts = list())
+installation_comment(uuid = NULL, curlopts = list(http_version = 2))
 
-installation_contact(uuid = NULL, curlopts = list())
+installation_contact(uuid = NULL, curlopts = list(http_version = 2))
 
-installation_endpoint(uuid = NULL, curlopts = list())
+installation_endpoint(uuid = NULL, curlopts = list(http_version = 2))
 
-installation_identifier(uuid = NULL, curlopts = list())
+installation_identifier(uuid = NULL, curlopts = list(http_version = 2))
 
-installation_machinetag(uuid = NULL, curlopts = list())
+installation_machinetag(uuid = NULL, curlopts = list(http_version = 2))
 
-installation_tag(uuid = NULL, curlopts = list())
+installation_tag(uuid = NULL, curlopts = list(http_version = 2))
 }
 \arguments{
 \item{uuid}{A GBIF installationKey uuid.}
@@ -38,7 +43,7 @@ installation_tag(uuid = NULL, curlopts = list())
 A \code{tibble} or a \code{list}.
 }
 \description{
-Get installation metadata using a installationkey
+Get installation metadata using an installation key
 }
 \examples{
 \dontrun{
