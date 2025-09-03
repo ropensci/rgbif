@@ -1,4 +1,4 @@
-#' Get installation metadata using a installationkey
+#' Get installation metadata using an installation key
 #' 
 #' @param uuid A GBIF installationKey uuid.
 #' @param limit The number of results to return. Default is 20.
