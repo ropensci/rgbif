@@ -64,3 +64,21 @@ expect_equal(check_inputs('["json"]'),"[\"json\"]")
  
 })
 
+test_that("gbif_GET waits correctly", {
+  skip_on_cran()
+  skip_on_ci()
+
+  vcr::use_cassette("gbif_get_wait", {
+  ww <- lapply(
+  name_lookup(rank="SPECIES",limit=100)$data$nubKey, 
+  function(x) { occ_count(taxonKey=x) }
+  )
+  })
+
+  expect(length(ww), 100)
+  expect_is(ww, "list")
+  expect_is(unlist(ww),"numeric")
+
+})
+
+
