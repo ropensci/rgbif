@@ -9,7 +9,7 @@ occ_download_list(
   pwd = NULL,
   limit = 20,
   start = 0,
-  curlopts = list()
+  curlopts = list(http_version = 2)
 )
 }
 \arguments{

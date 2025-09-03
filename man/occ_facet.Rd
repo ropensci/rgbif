@@ -4,7 +4,7 @@
 \alias{occ_facet}
 \title{Facet GBIF occurrences}
 \usage{
-occ_facet(facet, facetMincount = NULL, curlopts = list(), ...)
+occ_facet(facet, facetMincount = NULL, curlopts = list(http_version = 2), ...)
 }
 \arguments{
 \item{facet}{(character) a character vector of length 1 or greater. Required.}

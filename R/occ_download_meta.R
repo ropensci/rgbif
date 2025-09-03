@@ -16,7 +16,7 @@
 #' occ_download_meta("0000066-140928181241064")
 #' }
 
-occ_download_meta <- function(key, curlopts = list()) {
+occ_download_meta <- function(key, curlopts = list(http_version = 2)) {
   stopifnot(!is.null(key))
   
   if(!is_download_key(key)) stop("key should be a downloadkey or 
@@ -75,5 +75,5 @@ sprintf_key_val <- function(x, ws_prefix = "\n          -") {
    }
    paste0("\n          - type: not", z)
  }
- 
+
 

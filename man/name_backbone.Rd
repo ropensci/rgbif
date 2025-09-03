@@ -18,7 +18,7 @@ name_backbone(
   verbose = FALSE,
   start = NULL,
   limit = 100,
-  curlopts = list()
+  curlopts = list(http_version = 2)
 )
 
 name_backbone_verbose(
@@ -33,7 +33,7 @@ name_backbone_verbose(
   strict = FALSE,
   start = NULL,
   limit = 100,
-  curlopts = list()
+  curlopts = list(http_version = 2)
 )
 }
 \arguments{

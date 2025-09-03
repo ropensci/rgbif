@@ -25,7 +25,7 @@
 
 networks <- function(data = 'all', uuid = NULL, query = NULL, identifier=NULL,
                      identifierType=NULL, limit=100, start=NULL,
-                     curlopts = list()) {
+                     curlopts = list(http_version = 2)) {
   .Deprecated(msg="rgbif::networks() is deprecated since rgbif 3.7.3, use rgbif::network() instead.")
   args <- rgbif_compact(list(q = query, limit = as.integer(limit),
                              offset = start))

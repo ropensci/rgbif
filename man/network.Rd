@@ -13,7 +13,7 @@ network(
   identifierType = NULL,
   limit = 100,
   start = NULL,
-  curlopts = list()
+  curlopts = list(http_version = 2)
 )
 
 network_constituents(uuid = NULL, limit = 100, start = 0)

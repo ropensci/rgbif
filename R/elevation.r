@@ -85,7 +85,7 @@
 #' }
 elevation <- function(input = NULL, latitude = NULL, longitude = NULL,
   latlong = NULL, elevation_model = "srtm3",
-  username = Sys.getenv("GEONAMES_USER"), key, curlopts,
+  username = Sys.getenv("GEONAMES_USER"), key, curlopts = list(http_version = 2),
   ...) {
 
   if (!missing(key))

@@ -17,7 +17,7 @@ dataset(
   deleted = FALSE,
   limit = NULL,
   start = NULL,
-  curlopts = list()
+  curlopts = list(http_version = 2)
 )
 }
 \arguments{

@@ -36,7 +36,7 @@
 
 network <- function(data = 'all', uuid = NULL, query = NULL, identifier=NULL,
                      identifierType=NULL, limit=100, start=NULL,
-                     curlopts = list()) {
+                     curlopts = list(http_version = 2)) {
   
   args <- rgbif_compact(list(q = query, limit = as.integer(limit),
                              offset = start))

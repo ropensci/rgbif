@@ -20,43 +20,43 @@
 
 #' @name installation_uuid_funs
 #' @export
-installation_dataset <- function(uuid=NULL, limit=20, start = NULL, curlopts = list()) {
+installation_dataset <- function(uuid=NULL, limit=20, start = NULL, curlopts = list(http_version = 2)) {
   installation_uuid_get_(uuid=uuid,endpoint="/dataset",limit=limit,start=start,curlopts,meta=TRUE)
 }
 
 #' @name installation_uuid_funs
 #' @export
-installation_comment <- function(uuid=NULL, curlopts = list()) {
+installation_comment <- function(uuid=NULL, curlopts = list(http_version = 2)) {
   installation_uuid_get_(uuid=uuid,endpoint="/comment",meta=FALSE)
 }
 
 #' @name installation_uuid_funs
 #' @export
-installation_contact <- function(uuid=NULL, curlopts = list()) {
+installation_contact <- function(uuid=NULL, curlopts = list(http_version = 2)) {
   installation_uuid_get_(uuid=uuid,endpoint="/contact",meta=FALSE)
 }
 
 #' @name installation_uuid_funs
 #' @export
-installation_endpoint <- function(uuid=NULL, curlopts = list()) {
+installation_endpoint <- function(uuid=NULL, curlopts = list(http_version = 2)) {
   installation_uuid_get_(uuid=uuid,endpoint="/endpoint",meta=FALSE)
 }
 
 #' @name installation_uuid_funs
 #' @export
-installation_identifier <- function(uuid=NULL, curlopts = list()) {
+installation_identifier <- function(uuid=NULL, curlopts = list(http_version = 2)) {
   installation_uuid_get_(uuid=uuid,endpoint="/identifier",meta=FALSE)
 }
 
 #' @name installation_uuid_funs
 #' @export
-installation_machinetag <- function(uuid=NULL, curlopts = list()) {
+installation_machinetag <- function(uuid=NULL, curlopts = list(http_version = 2)) {
   installation_uuid_get_(uuid=uuid,endpoint="/machineTag",meta=FALSE)
 }
 
 #' @name installation_uuid_funs
 #' @export
-installation_tag <- function(uuid=NULL, curlopts = list()) {
+installation_tag <- function(uuid=NULL, curlopts = list(http_version = 2)) {
   installation_uuid_get_(uuid=uuid,endpoint="/tag",meta=FALSE)
 }
 
@@ -81,9 +81,9 @@ installation_uuid_get_ <- function(uuid=NULL,endpoint,curlopts,limit=NULL, start
       tibble::as_tibble(tt)
     }
   }
-  
-  
-  
+
+
+
 
 
 

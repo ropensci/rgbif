@@ -4,7 +4,12 @@
 \alias{occ_download_datasets}
 \title{List datasets for a download}
 \usage{
-occ_download_datasets(key, limit = 20, start = 0, curlopts = list())
+occ_download_datasets(
+  key,
+  limit = 20,
+  start = 0,
+  curlopts = list(http_version = 2)
+)
 }
 \arguments{
 \item{key}{A key generated from a request, like that from \code{\link[=occ_download]{occ_download()}}}

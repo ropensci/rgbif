@@ -18,14 +18,14 @@
 
 #' @name dataset_list_funs
 #' @export
-dataset_duplicate <- function(limit=20,start=NULL,curlopts=list()) {
+dataset_duplicate <- function(limit=20,start=NULL,curlopts=list(http_version=2)) {
   dataset_list_get_(endpoint="duplicate/",limit=limit,start=start,
                     curlopts=curlopts,meta=TRUE) 
 }
 
 #' @name dataset_list_funs
 #' @export
-dataset_noendpoint <- function(limit=20,start=NULL,curlopts=list()) {
+dataset_noendpoint <- function(limit=20,start=NULL,curlopts=list(http_version=2)) {
   dataset_list_get_(endpoint="withNoEndpoint/",limit=limit,start=start,
                     curlopts=curlopts,meta=TRUE) 
 }

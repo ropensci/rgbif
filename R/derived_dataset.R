@@ -122,7 +122,7 @@ derived_dataset <- function(citation_data = NULL,
                             gbif_download_doi = NULL,
                             user = NULL,
                             pwd = NULL,
-                            curlopts = list()) {
+                            curlopts = list(http_version = 2)) {
   
   z <- derived_dataset_prep(citation_data = citation_data,
                             title=title,
@@ -153,7 +153,7 @@ derived_dataset_prep <- function(citation_data = NULL,
                                  gbif_download_doi = NULL,
                                  user = NULL,
                                  pwd = NULL,
-                                 curlopts = list()) {
+                                 curlopts = list(http_version = 2)) {
   
   url <- paste0(gbif_base(), '/derivedDataset')
   user <- check_user(user)

@@ -10,7 +10,7 @@ occ_metadata(
   q = NULL,
   limit = 5,
   pretty = TRUE,
-  curlopts = list()
+  curlopts = list(http_version = 2)
 )
 }
 \arguments{

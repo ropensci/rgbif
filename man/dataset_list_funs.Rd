@@ -6,9 +6,9 @@
 \alias{dataset_noendpoint}
 \title{List datasets that are deleted or have no endpoint.}
 \usage{
-dataset_duplicate(limit = 20, start = NULL, curlopts = list())
+dataset_duplicate(limit = 20, start = NULL, curlopts = list(http_version = 2))
 
-dataset_noendpoint(limit = 20, start = NULL, curlopts = list())
+dataset_noendpoint(limit = 20, start = NULL, curlopts = list(http_version = 2))
 }
 \arguments{
 \item{limit}{Controls the number of results in the page.}

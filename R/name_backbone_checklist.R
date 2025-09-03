@@ -145,7 +145,7 @@ name_backbone_checklist <- function(
   genus  = NULL,
   strict = FALSE,
   verbose = FALSE,
-  curlopts = list()
+  curlopts = list(http_version = 2)
 ) {
   name_data <- check_name_data(name_data)
   if(!is.null(c(rank,kingdom,phylum,class,order,family,genus))) 
@@ -252,7 +252,7 @@ make_async_urls <- function(x,verbose=FALSE,strict=FALSE) {
   urls
 }
 
-gbif_async_get <- function(urls, parse=FALSE, curlopts = list()) {
+gbif_async_get <- function(urls, parse=FALSE, curlopts = list(http_version = 2)) {
   cc <- crul::Async$new(urls = urls,headers = rgbif_ual, opts = curlopts)
   res <- process_async_get(cc$get(),parse=parse)
   return(res)

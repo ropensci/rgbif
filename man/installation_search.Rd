@@ -15,7 +15,7 @@ installation_search(
   modified = NULL,
   limit = 20,
   offset = NULL,
-  curlopts = list()
+  curlopts = list(http_version = 2)
 )
 }
 \arguments{

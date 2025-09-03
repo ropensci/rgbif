@@ -4,7 +4,7 @@
 \alias{occ_download_meta}
 \title{Retrieves the occurrence download metadata by its unique key.}
 \usage{
-occ_download_meta(key, curlopts = list())
+occ_download_meta(key, curlopts = list(http_version = 2))
 }
 \arguments{
 \item{key}{A key generated from a request, like that from

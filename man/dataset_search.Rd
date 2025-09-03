@@ -70,7 +70,7 @@ dataset_suggest(
   limit = 100,
   start = NULL,
   description = FALSE,
-  curlopts = list()
+  curlopts = list(http_version = 2)
 )
 }
 \arguments{

@@ -13,7 +13,7 @@ derived_dataset(
   gbif_download_doi = NULL,
   user = NULL,
   pwd = NULL,
-  curlopts = list()
+  curlopts = list(http_version = 2)
 )
 
 derived_dataset_prep(
@@ -24,7 +24,7 @@ derived_dataset_prep(
   gbif_download_doi = NULL,
   user = NULL,
   pwd = NULL,
-  curlopts = list()
+  curlopts = list(http_version = 2)
 )
 }
 \arguments{

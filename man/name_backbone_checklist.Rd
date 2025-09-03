@@ -15,7 +15,7 @@ name_backbone_checklist(
   genus = NULL,
   strict = FALSE,
   verbose = FALSE,
-  curlopts = list()
+  curlopts = list(http_version = 2)
 )
 }
 \arguments{

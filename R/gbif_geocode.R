@@ -1,9 +1,9 @@
-
 #' Geocode lat-lon point(s) with GBIF's set of geo-polygons (experimental)
 #'
 #' @param latitude  a vector of numeric latitude values between -90 and 90.
 #' @param longitude a vector of numeric longitude values between -180 and 180.
-#'
+#' @param curlopts A list of curl options to pass to the request.
+#' 
 #' @return
 #' A data.frame of results from the GBIF gecoding service. 
 #' 
@@ -41,7 +41,7 @@
 #' 
 #' 
 #' 
-gbif_geocode <- function(latitude = NULL, longitude = NULL) {
+gbif_geocode <- function(latitude = NULL, longitude = NULL, curlopts = list(http_version = 2)) {
   
   # check input 
   if(!is.numeric(latitude)) latitude <- as.numeric(as.character(latitude))

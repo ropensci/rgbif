@@ -60,7 +60,7 @@ dataset <- function(country = NULL,
                     deleted = FALSE,
                     limit = NULL, 
                     start = NULL,
-                    curlopts = list()) {
+                    curlopts = list(http_version = 2)) {
   
   assert(country, "character") 
   assert(type, "character")
@@ -108,7 +108,7 @@ dataset <- function(country = NULL,
     }
   
   list(meta = data.frame(meta), data = out)
-} 
+}
 
 
 

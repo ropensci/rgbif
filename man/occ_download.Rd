@@ -13,7 +13,7 @@ occ_download(
   user = NULL,
   pwd = NULL,
   email = NULL,
-  curlopts = list()
+  curlopts = list(http_version = 2)
 )
 
 occ_download_prep(
@@ -24,7 +24,7 @@ occ_download_prep(
   user = NULL,
   pwd = NULL,
   email = NULL,
-  curlopts = list()
+  curlopts = list(http_version = 2)
 )
 }
 \arguments{

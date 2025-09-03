@@ -4,7 +4,7 @@
 \alias{occ_count}
 \title{Get number of occurrence records.}
 \usage{
-occ_count(..., occurrenceStatus = "PRESENT", curlopts = list())
+occ_count(..., occurrenceStatus = "PRESENT", curlopts = list(http_version = 2))
 }
 \arguments{
 \item{...}{parameters passed to \code{occ_search()}.}

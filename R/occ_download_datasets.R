@@ -20,7 +20,7 @@
 #' occ_download_datasets(key="0003983-140910143529206", limit = 3, start = 10)
 #' }
 occ_download_datasets <- function(key, limit = 20, start = 0,
-  curlopts = list()) {
+  curlopts = list(http_version = 2)) {
 
   assert(key, "character")
   assert(limit, c("integer", "numeric"))

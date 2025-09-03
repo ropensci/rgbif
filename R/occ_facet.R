@@ -42,7 +42,12 @@
 #' occ_facet(facet = "country", country.facetLimit = 3,
 #'   curlopts = list(verbose = TRUE))
 #' }
-occ_facet <- function(facet, facetMincount = NULL, curlopts = list(), ...) {
+occ_facet <- function(
+  facet,
+  facetMincount = NULL,
+  curlopts = list(http_version = 2),
+  ...
+) {
   .Deprecated(msg="occ_facet() is deprecated since rgbif 3.7.6. Use occ_count(facet='x') instead.")
   args <- rgbif_compact(list(facetMincount = facetMincount, limit = 0))
   args <- c(args, collargs("facet"), yank_args(...))

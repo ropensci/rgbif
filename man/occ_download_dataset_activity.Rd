@@ -8,7 +8,7 @@ occ_download_dataset_activity(
   dataset,
   limit = 20,
   start = 0,
-  curlopts = list()
+  curlopts = list(http_version = 2)
 )
 }
 \arguments{

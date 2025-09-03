@@ -1,7 +1,8 @@
 #' Get download meta data from a doi 
 #'
 #' @param doi (character) the doi of the download you want to get metadata for.
-#'
+#' @param curlopts (list) named list of curl options passed on to [crul::HttpClient].
+#' 
 #' @return a list. 
 #' 
 #' @export
@@ -15,7 +16,7 @@
 #' 
 #' }
 #' 
-occ_download_doi <- function(doi = NULL) {
+occ_download_doi <- function(doi = NULL, curlopts = list(http_version = 2)) {
   # https://api.gbif.org/v1/occurrence/download/10.15468/dl.zdfkkf
   assert(doi,"character")
   is_doi <- grepl("^(10\\.\\d{4,9}/[-._;()/:A-Z0-9]+)$", doi, perl = TRUE, 
@@ -24,7 +25,7 @@ occ_download_doi <- function(doi = NULL) {
   
   url <- paste0("https://api.gbif.org/v1/occurrence/download/",doi)
 
-  out <- gbif_GET(url,args=NULL,parse=TRUE)
+  out <- gbif_GET(url,args=NULL,parse=TRUE, curlopts=curlopts)
   
   structure(out,class = "occ_download_doi")
 }

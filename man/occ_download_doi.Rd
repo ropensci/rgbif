@@ -4,10 +4,12 @@
 \alias{occ_download_doi}
 \title{Get download meta data from a doi}
 \usage{
-occ_download_doi(doi = NULL)
+occ_download_doi(doi = NULL, curlopts = list(http_version = 2))
 }
 \arguments{
 \item{doi}{(character) the doi of the download you want to get metadata for.}
+
+\item{curlopts}{(list) named list of curl options passed on to \link[crul:HttpClient]{crul::HttpClient}.}
 }
 \value{
 a list.

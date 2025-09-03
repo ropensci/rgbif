@@ -90,7 +90,8 @@
 
 name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
   datasetKey=NULL, uuid=NULL, rank=NULL, shortname=NULL,
-  start=0, limit=100, return=NULL, curlopts = list()) {
+  start=0, limit=100, return=NULL, 
+  curlopts = list(http_version = 2)) {
 
   pchk(return, "name_usage")
   # check limit and start params
@@ -169,7 +170,7 @@ get_meta_nu <- function(x) {
 
 has_meta <- function(x) any(c('offset','limit','endOfRecords') %in% names(x))
 
-getdata <- function(x, key, uuid, shortname, args, curlopts = list()){
+getdata <- function(x, key, uuid, shortname, args, curlopts = list(http_version = 2)){
   if (!x == 'all' && is.null(key)) {
     # data can == 'root' if uuid is not null
     if (x != 'root' && !is.null(uuid) || x != 'root' && !is.null(shortname)) {
