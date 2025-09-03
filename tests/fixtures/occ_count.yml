@@ -1,145 +1,86 @@
 http_interactions:
 - request:
-    method: get
+    method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: ''
-      file: no
-      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MzExODMzMDk5
-        OCwicmVzdWx0cyI6W10sImZhY2V0cyI6W119
-  recorded_at: 2025-06-10 14:18:37 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+      raw_gzip: |-
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSxoYmliaW
+        RiamQHV
+        FqcWlOSVAJdGxOkppicmpEHYtAMtCG8I=
+  recorded_at: 2025-08-04 13:50:32
 - request:
-    method: get
+    method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&year=2000%2C2011&taxonKey=212
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: ''
-      file: no
-      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MjM1NzA0MjQ1
-        LCJyZXN1bHRzIjpbXSwiZmFjZXRzIjpbXX0=
-  recorded_at: 2025-06-10 14:18:37 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+      raw_gzip: |-
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSRsam5maG
+        ZoamOkp
+        FqcWlOSVAFdGxOkppicmpEHYtALLZG40=
+  recorded_at: 2025-08-04 13:50:33
 - request:
-    method: get
+    method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&year=2012
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: ''
-      file: no
-      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6NzUzOTE2MTks
-        InJlc3VsdHMiOltdLCJmYWNldHMiOltdfQ==
-  recorded_at: 2025-06-10 14:18:37 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+      raw_gzip: |-
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DS5qam5gZm
+        BkY6SkW
+        pxaU5JUAF0bE6SmmJyakQdi0Amu8bWQ==
+  recorded_at: 2025-08-04 13:50:33
 - request:
-    method: get
+    method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=ABSENT&limit=0&offset=0&facetLimit=
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: ''
-      file: no
-      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6NTY1OTE1Njks
-        InJlc3VsdHMiOltdLCJmYWNldHMiOltdfQ==
-  recorded_at: 2025-06-10 14:18:37 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+      raw_gzip: |-
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSpmbG5paW
+        hkBVRan
+        FpTklQAXRsTpKaYnJqRB2LQCb1xth
+  recorded_at: 2025-08-04 13:50:33
 - request:
-    method: get
+    method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&organismQuantity=5&basisOfRecord=MATERIAL_SAMPLE
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: ''
-      file: no
-      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6MTE1MTQwNiwi
-        cmVzdWx0cyI6W10sImZhY2V0cyI6W119
-  recorded_at: 2025-06-10 14:18:37 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+      raw_gzip: |-
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DShkZmFhYG
+        xjpKRan
+        FpTklQPnoWB2ltMTkVAi7FgCC8xsl
+  recorded_at: 2025-08-04 13:50:34
 - request:
-    method: get
-    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&verbatimScientificName=Calopteryx%20splendens&verbatimScientificName=Calopteryx%20virgo
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&verbatimScientificName=Calopteryx+splendens
   response:
-    status:
-      status_code: '200'
-      message: OK
-      explanation: Request fulfilled, document follows
+    status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      encoding: ''
-      file: no
-      base64_string: eyJvZmZzZXQiOjAsImxpbWl0IjowLCJlbmRPZlJlY29yZHMiOmZhbHNlLCJjb3VudCI6Mzc0ODEyLCJy
-        ZXN1bHRzIjpbXSwiZmFjZXRzIjpbXX0=
-  recorded_at: 2025-06-10 14:18:37 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+      raw_gzip: |-
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSxpampoam
+        OkpFqcW
+        lOSVA6ehYHaW0xORUCLsWAGvQGvU=
+  recorded_at: 2025-08-04 13:50:34
+recorded_with: VCR-vcr/2.0.0

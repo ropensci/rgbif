@@ -131,7 +131,7 @@ lit_search <- function(
     flatten=TRUE,
     abstract=FALSE,
     limit=NULL,
-    curlopts = list()
+    curlopts = list(http_version=2)
 ) {
   step <- 1000 # max step size in 1000
   max_limit <- 10000 # max limit is 10,000

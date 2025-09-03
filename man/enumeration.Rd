@@ -5,9 +5,9 @@
 \alias{enumeration_country}
 \title{Enumerations.}
 \usage{
-enumeration(x = NULL, curlopts = list())
+enumeration(x = NULL, curlopts = list(http_version = 2))
 
-enumeration_country(curlopts = list())
+enumeration_country(curlopts = list(http_version = 2))
 }
 \arguments{
 \item{x}{A given enumeration.}

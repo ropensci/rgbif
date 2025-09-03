@@ -25,7 +25,7 @@ lit_search(
   flatten = TRUE,
   abstract = FALSE,
   limit = NULL,
-  curlopts = list()
+  curlopts = list(http_version = 2)
 )
 
 lit_count(...)

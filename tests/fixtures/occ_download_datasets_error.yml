@@ -1,24 +1,13 @@
 http_interactions:
 - request:
-    method: get
+    method: GET
     uri: https://api.gbif.org/v1/occurrence/download/foo-bar/datasets?limit=20&offset=0
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
   response:
-    status:
-      status_code: '404'
-      message: Not Found
-      explanation: Nothing matches the given URI
+    status: 404
     headers:
-      status: HTTP/1.1 404 Not Found
+      status: 'HTTP/2 404 '
       content-type: text/plain
     body:
-      encoding: ''
-      file: no
       string: Download was not found
-  recorded_at: 2024-05-22 09:25:23 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+  recorded_at: 2025-08-04 14:03:21
+recorded_with: VCR-vcr/2.0.0

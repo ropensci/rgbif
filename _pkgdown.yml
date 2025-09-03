@@ -59,6 +59,9 @@ reference:
     contents:
       - map_fetch
       - mvt_fetch
+  - title: "GRSciColl"
+      - institution_search
+      - collection_search
   - title: "Miscellaneous"
     contents:
       - rgb_country_codes

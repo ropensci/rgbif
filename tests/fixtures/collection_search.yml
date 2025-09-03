@@ -1,0 +1,176 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/grscicoll/collection?q=insect&limit=2
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":518,"results":[{"key":"5f024e8c-bbaa-400f-a9ae-b07b2a0ae45a","code":"PSUZC-INSECT","name":"Stock
+        of insect specimens","description":"Curator: Dr. Sophak Chantharit. Tailed
+        bugs are small invertebrates. It is classified as a legged animal. It is the
+        boundary between crustaceans and insects. The stingrays belong to the class
+        Collembola. Small in shape (0.2-8 mm), they are important in the ecosystem
+        as a helper for the decomposition of organic matter. At present, there are
+        more than 8,000 species of stinging insects that have been identified in the
+        world for Thailand. There are reports of at least 4 stinging tail insects,
+        14 families, 53 genera, 194 species. For an example of a flicker-tailed insect
+        in the Museum of Natural History, the 50th Anniversary of the Royal Highness
+        Six species of stinging insects were registered and model specimens, categorized
+        into 4 groups of spiny-tailed stingrays:  Cyphoderopsis phangnga  Jantarit
+        et al., 2013.  Cyphoderopsis thachana  Jantarit et al., 2013  Cyphoderopsis
+        khaophang  Jantarit et . al., 2013, and  Cyphoderopsis cavicola  Jantarit
+        et al., 2013, and two species of feather-tailed stingrays,  Cyphoderus songkhlaensis  Jantarit
+        et al., 2014, and  Cyphoderus khaochakanus  Jantarit et al., 2014. due to
+        knowledge of taxonomy The ecology of the tail bug in Thailand has not been
+        widely studied and limited knowledge. Classification and Expert Guide This
+        is why it is important that the number of registered stingray insects and
+        the prototypes are limited. This resulted in a large number of biodiversity
+        data of the stingrays in the cave. and many species tend to be new species.
+        which is in the process of reviewing and disseminating academic results As
+        a result, there are more than 9 families, 23 genera, and at least 61 species
+        of bugs waiting to be registered in the museum''s database.","contentTypes":["PreservedOrganisms"],"active":true,"personalCollection":false,"email":["psu.museum@gmail.com"],"phone":[],"homepage":"https://nhm.psu.ac.th/collection-th/insect-collection-th/","catalogUrls":[],"apiUrls":[],"preservationTypes":["StorageIndoors"],"institutionKey":"874ed64b-68f6-421a-a03b-5e64e67388a9","mailingAddress":{"key":44113,"address":"Museum
+        of Natural History 50th Anniversary of the Royal Highness Princess Maha Chakri
+        Sirindhorn Prince of Songkhla University 15 Kanchanavanit Road","city":"Hat
+        Yai","province":"Songkhla","postalCode":"90110","country":"TH"},"address":{"key":44112,"address":"Museum
+        of Natural History 50th Anniversary of the Royal Highness Princess Maha Chakri
+        Sirindhorn Prince of Songkhla University 15 Kanchanavanit Road","city":"Hat
+        Yai","province":"Songkhla","postalCode":"90110","country":"TH"},"createdBy":"cjk","modifiedBy":"gbif-collections","created":"2022-07-18T15:18:26.315+00:00","modified":"2024-05-23T13:14:58.268+00:00","tags":[],"identifiers":[],"contactPersons":[],"machineTags":[],"incorporatedCollections":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"institutionName":"Princess
+        Maha Chakri Sirindhorn Natural History Museum (PSU Museum, Prince of Songkla
+        University, Thailand)","institutionCode":"PSUZC"},{"key":"35de7962-b673-4f5e-b1f3-da3c5d2ac231","code":"BNHS-Insect","name":"BNHS
+        Insect Collection","description":"This is one of the important insect collections
+        in India. There are about 50,000 insects in the collection. \nThe geographical
+        areas covered are India, Pakistan and Myanmar. The major groups represented
+        in the \ncollection are Lepidoptera (Butterflies & Moths). Out of the 1500
+        species of butterflies found in India, \naround 730 species are present in
+        the collection. Some of the butterflies were collected from Myanmar \nand
+        are difficult to get in the present circumstances. There are also collection
+        of beetles (Coleoptera), \nbugs (Hemiptera), Wasps, bees and ants (Hymenoptera),
+        Grasshoppers and crickets (Orthoptera), \nMantodea (Prying mantids), Stick
+        and leaf-insects (Phasmatodea) and Cockroaches (Blattaria). The insects \nare
+        preserved and stored in wooden boxes and cabinets. The butterflies from Sri
+        Lanka collected by \nMr. Ormiston are also present in the collection. The
+        collection is referred by students/scientists from \nForest Research Institute
+        and was basis for the book “Butterflies of Sikkim Himalayas”.We have 245type
+        \nspecimens of insects in the collection.","contentTypes":[],"active":true,"personalCollection":false,"email":[],"phone":[],"catalogUrls":[],"apiUrls":[],"preservationTypes":[],"institutionKey":"b560d8ff-4e88-4cb0-99c9-7a43e6a315f0","mailingAddress":{"key":56145,"address":"Hornbill
+        House, Opp Lion Gate, SBS Road, Fort","city":"Mumbai","province":"Maharashtra","postalCode":"400001","country":"IN"},"address":{"key":56144,"address":"Hornbill
+        House, Opp Lion Gate, SBS Road, Fort","city":"Mumbai","province":"Maharashtra","postalCode":"400001","country":"IN"},"createdBy":"vijaybarve","modifiedBy":"vijaybarve","created":"2025-07-02T22:06:30.055+00:00","modified":"2025-07-02T22:06:30.055+00:00","tags":[],"identifiers":[],"contactPersons":[],"numberSpecimens":50000,"machineTags":[],"incorporatedCollections":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"institutionName":"Bombay
+        Natural History Society","institutionCode":"BNHS"}]}'
+  recorded_at: 2025-08-04 13:47:45
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/grscicoll/collection?limit=2&name=Insects
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":136,"results":[{"key":"40091655-14a3-4558-a7b8-640e2e156a92","code":"ENT","name":"Entomology","description":"Entomology
+        collection (ENT) of the Museu Nacional de História Natural e da Ciência (MNHNC),
+        Lisbon, PORTUGAL.","contentTypes":["PreservedOrganisms"],"active":true,"personalCollection":false,"email":["geral@museus.ulisboa.pt","rkeller@edu.ulisboa.pt"],"phone":[],"homepage":"https://www.museus.ulisboa.pt/","catalogUrls":[],"apiUrls":[],"preservationTypes":["SamplePinned","SampleFluidPreserved","SampleSlideMount"],"institutionKey":"0fdf8436-0060-4cc4-8235-90526026bccd","mailingAddress":{"key":52829,"address":"Museu
+        Nacional de História Natural e da Ciência, Rua da Escola Politécnica 56/58","city":"Lisbon","postalCode":"1250-102","country":"PT"},"address":{"key":52828,"address":"Museu
+        Nacional de História Natural e da Ciência, Rua da Escola Politécnica 56/58","city":"Lisbon","postalCode":"1250-102","country":"PT"},"createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2025-01-21T08:49:23.632+00:00","modified":"2025-01-21T15:13:10.506+00:00","tags":[],"identifiers":[],"contactPersons":[],"numberSpecimens":500000,"machineTags":[],"taxonomicCoverage":"Hexapoda","geographicCoverage":"Global","incorporatedCollections":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"temporalCoverage":"1858
+        - present","institutionName":"Museu Nacional de História Natural e da Ciência","institutionCode":"MNHNC"},{"key":"6d9fa861-1fba-47b5-a90a-735ee007776b","code":"AMBL-BL-ENT","name":"Entomology","description":"Estimated
+        number of specimens (individual specimen): 275´000. Formation period: 1835-ongoing.
+        Geologic period: Present. Estimated number of species: 20´000. Number of types:
+        unknown. SCSPS: 4 [Holger Frick, updated 2024-10-03]","contentTypes":["Biological","PreservedOrganisms","Exoskeletons"],"active":true,"personalCollection":false,"email":["holger.frick@bl.ch"],"phone":[],"catalogUrls":[],"apiUrls":[],"preservationTypes":["StorageControlledAtmosphere","SamplePinned"],"institutionKey":"58f0cf31-4c49-4568-87d5-60d51389230f","mailingAddress":{"key":52093},"address":{"key":52084,"address":"Amtshausgasse
+        7","city":"Liestal","postalCode":"CH-4410","country":"CH"},"createdBy":"tschudin","modifiedBy":"sofiawyler","created":"2024-11-27T19:43:26.388+00:00","modified":"2025-02-25T10:13:30.799+00:00","tags":[],"identifiers":[{"key":376510,"type":"UUID","identifier":"b394f0d1-dd46-452c-b2d5-4ffa6290ce37","createdBy":"sofiawyler","created":"2024-11-28T08:35:59.438+00:00","primary":false}],"contactPersons":[{"key":41476,"firstName":"Holger","lastName":"Frick","position":["Head
+        of Collections","creator","metadataProvider","contact"],"phone":[],"fax":[],"email":["holger.frick@bl.ch"],"address":["Amtshausgasse
+        7"],"city":"Liestal","country":"CH","postalCode":"CH-4410","primary":true,"taxonomicExpertise":[],"userIds":[{"type":"ORCID","id":"0000-0003-1971-310X"}],"createdBy":"sofiawyler","modifiedBy":"sofiawyler","created":"2025-02-25T10:13:31.555+00:00","modified":"2025-02-25T10:13:31.555+00:00"}],"numberSpecimens":275000,"machineTags":[],"taxonomicCoverage":"Insecta:
+        Insecta; Lepidoptera; Coleoptera","notes":"One of the largest collections
+        of butterflies of the canton (region) of Basel-Country","incorporatedCollections":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"temporalCoverage":"Formation
+        period: 1835-ongoing","institutionName":"Archäologie und Museum Baselland
+        - Museum.BL","institutionCode":"AMBL"}]}'
+  recorded_at: 2025-08-04 13:47:45
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/grscicoll/collection?numberSpecimens=0%2C100&limit=1
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":1696,"results":[{"key":"4a5632b8-f86b-4d38-a0cb-12bef927b905","code":"FI-PBP","name":"Erbario
+        di Onorina Passerini Bargagli Petrucci | Onorina Passerini Bargagli Petrucci''s
+        herbarium","description":"Contents: 99 specimens, including 42 lichens, 45
+        bryophytes, 10 pteridophytes and 2 angiosperms.","contentTypes":["PreservedOrganisms"],"active":false,"personalCollection":true,"email":[],"phone":[],"catalogUrls":[],"apiUrls":[],"preservationTypes":["SamplePressed","SampleDried","StorageIndoors"],"institutionKey":"42038f96-5978-474c-9b0b-4e92450cd1d8","mailingAddress":{"key":56097,"address":"Via
+        Giorgio La Pira, 4","city":"Firenze","province":"[TOSCANA] Firenze (FI)","postalCode":"IT-50121","country":"IT"},"address":{"key":56096,"address":"Via
+        Giorgio La Pira, 4","city":"Firenze","province":"[TOSCANA] Firenze (FI)","postalCode":"IT-50121","country":"IT"},"createdBy":"tasmacetus","modifiedBy":"tasmacetus","created":"2025-06-30T07:49:08.366+00:00","modified":"2025-06-30T07:49:08.366+00:00","tags":[],"identifiers":[],"contactPersons":[],"numberSpecimens":97,"machineTags":[],"notes":"This
+        is a sub-collection of https://registry.gbif.org/collection/19961847-31f6-4abb-9b92-18a391ba9b0d.
+        Information originally retrieved from internal University of Florence Museal
+        System (UNIFI-SMA) digitization dashboard, compiled in October 2021.","incorporatedCollections":[],"alternativeCodes":[{"code":"FI999941","description":"Herbarium
+        barcode"}],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":99,"typeSpecimenCount":0,"institutionName":"Sede
+        di Via Giorgio La Pira del Museo di Storia naturale di Firenze |  Via Giorgio
+        La Pira headquarter of the Natural History Museum in Florence","institutionCode":"MSNF-GLP"}]}'
+  recorded_at: 2025-08-04 13:47:45
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/grscicoll/collection?limit=1&institutionKey=6a6ac6c5-1b8a-48db-91a2-f8661274ff80
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":27,"results":[{"key":"745ce2d0-a64b-4089-aae6-3712a39caa2a","code":"RS","name":"The
+        Scorpiones collection (RS) of the Muséum national d''Histoire naturelle (MNHN
+        - Paris)","description":"This dataset is the databased part of the Scorpiones
+        from the terrestrial arthropods collections of the Muséum National d&#39;Histoire
+        Naturelle (Paris).\n \n\t\t\t\tThe MNHN scorpion collection is one of the
+        most important in the world, due to a long tradition of work on this group
+        at the museum. The collection began to be formed towards the middle of the
+        19th century and still contains types of some species described from this
+        period by authors like Audouin, Savigny, Gervais and Guérin-Ménéville. The
+        collection was considerably augmented during the period 1880‒1910 by E. Simon,
+        who described numerous species either collected by himself or received through
+        his extensive network of correspondents. During the 20th century scorpions
+        were studied at the museum by Fage and by his successor, M. Vachon. Since
+        the 1970s, systematic activity on the collection has continued intensively
+        through the work of W. Lourenço, who was a student of Vachon. As a result,
+        the collection is both large and rich, containing an unusually high proportion
+        of type material. In addition to material studied by authors working at the
+        museum, a significant part has come from outside sources, either through gift
+        or exchange. Thus it also contains material studied by authorities such as
+        R.I. Pocock, T. Thorell, K. Kraepelin, W.D. Sissom and V. Fet. The scorpion
+        collection is worldwide in scope, but the best represented regions are tropical
+        South America, North Africa, the Middle East, Western Africa, Madagascar and
+        Southeast Asia. It contains over 9000 lots, including about 700 types, preserved
+        in 80 % alcohol and stored in the museum’s Zoothèque. The collections are
+        made available to external researchers, either through loans or visits, at
+        the discretion of the curator. In cases where neither is feasible, photographic
+        documentation of specimens may be provided on request.","contentTypes":[],"active":true,"personalCollection":false,"email":[],"phone":[],"catalogUrls":[],"apiUrls":[],"preservationTypes":[],"institutionKey":"6a6ac6c5-1b8a-48db-91a2-f8661274ff80","mailingAddress":{"key":43397},"address":{"key":43396,"address":"Muséum
+        national d''Histoire naturelle 57, rue Cuvier","city":"Paris","postalCode":"75005","country":"FR"},"createdBy":"mgrosjean","modifiedBy":"s.pamerlon","created":"2022-03-25T12:36:16.984+00:00","modified":"2024-04-30T14:12:49.736+00:00","tags":[],"identifiers":[{"key":297946,"type":"DOI","identifier":"10.15468/podyc0","createdBy":"mgrosjean","created":"2022-03-25T12:36:16.984+00:00","primary":false}],"contactPersons":[{"key":38097,"lastName":"MNHN","position":["Provider"],"phone":[],"fax":[],"email":[],"address":[],"primary":true,"taxonomicExpertise":[],"userIds":[],"createdBy":"s.pamerlon","modifiedBy":"s.pamerlon","created":"2024-04-30T14:12:49.736+00:00","modified":"2024-04-30T14:12:49.736+00:00"},{"key":38098,"firstName":"Mark","lastName":"Judson","position":[],"phone":[],"fax":[],"email":[],"address":[],"primary":false,"taxonomicExpertise":[],"userIds":[],"createdBy":"s.pamerlon","modifiedBy":"s.pamerlon","created":"2024-04-30T14:12:49.736+00:00","modified":"2024-04-30T14:12:49.736+00:00"},{"key":38099,"firstName":"Élise-Anne","lastName":"Leguin","position":[],"phone":[],"fax":[],"email":[],"address":[],"primary":false,"taxonomicExpertise":[],"userIds":[],"createdBy":"s.pamerlon","modifiedBy":"s.pamerlon","created":"2024-04-30T14:12:49.736+00:00","modified":"2024-04-30T14:12:49.736+00:00"},{"key":38100,"firstName":"Laurent","lastName":"Albenga","position":["Correspondant"],"phone":[],"fax":[],"email":[],"address":[],"primary":true,"taxonomicExpertise":[],"userIds":[],"createdBy":"s.pamerlon","modifiedBy":"s.pamerlon","created":"2024-04-30T14:12:49.736+00:00","modified":"2024-04-30T14:12:49.736+00:00"}],"machineTags":[],"taxonomicCoverage":"","geographicCoverage":"","incorporatedCollections":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[{"key":50,"datasetKey":"2f23ac81-674e-4e4e-982f-73f49ccdb9df","createdBy":"mgrosjean","created":"2022-03-25T12:36:17.410+00:00"}],"masterSource":"GBIF_REGISTRY","masterSourceMetadata":{"key":8586,"source":"DATASET","sourceId":"2f23ac81-674e-4e4e-982f-73f49ccdb9df","createdBy":"mgrosjean","created":"2022-03-25T12:36:16.984+00:00"},"displayOnNHCPortal":true,"occurrenceCount":947,"typeSpecimenCount":691,"institutionName":"MNHN
+        - Museum national d''Histoire naturelle","institutionCode":"MNHN"}]}'
+  recorded_at: 2025-08-04 13:47:46
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/grscicoll/collection?q=insect&limit=1&country=US
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":155,"results":[{"key":"e21440ee-0b58-4cfd-b763-5323cbe96ac8","code":"UAA:Ento","name":"University
+        of Alaska Anchorage Insect Specimens (Arctos)","description":"The UAA Entomology
+        Collection includes approximately 5,000 specimens with a focus on pollinating
+        and aquatics insects of Alaska. Collections are managed under the Alaska Center
+        for Conservation Science, a research center within the University of Alaska
+        Anchorage. The collection officially joined the Arctos community in 2023.
+        The UAA Entomology collection is the primary repository of vouchers from the
+        Alaska Bee Atlas and aquatic insects originate from stream ecology studies
+        conducted by the Alaska Center for Conservation Science.","contentTypes":[],"active":true,"personalCollection":false,"email":[],"phone":[],"homepage":"https://arctos.database.museum/collection/UAA:Ento","catalogUrls":[],"apiUrls":[],"preservationTypes":["SamplePinned"],"institutionKey":"15e46ee2-f3b2-4723-a0e9-def248a239f8","mailingAddress":{"key":47981,"province":"Alaska"},"address":{"key":47980,"address":"3211
+        Providence Dr","city":"Anchorage","province":"AK","postalCode":"99508","country":"US"},"createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2023-10-09T06:59:13.816+00:00","modified":"2024-06-04T17:34:59.565+00:00","tags":[],"identifiers":[{"key":356526,"type":"DOI","identifier":"10.15468/ahk383","createdBy":"mgrosjean","created":"2023-10-09T06:59:23.626+00:00","primary":false}],"contactPersons":[{"key":36769,"firstName":"Justin","lastName":"Fulkerson","position":["Botany
+        Curator"],"phone":[],"fax":[],"email":["jrfulkerson@alaska.edu"],"address":[],"primary":true,"taxonomicExpertise":[],"userIds":[{"type":"ORCID","id":"http://orcid.org/0000-0003-2666-9979"}],"createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2023-10-09T06:59:23.626+00:00","modified":"2023-10-09T06:59:23.626+00:00"},{"key":36770,"firstName":"Matthew","lastName":"Carlson","position":["Curator"],"phone":[],"fax":[],"email":["mlcarlson@alaska.edu"],"address":["3211
+        Providence Dr"],"city":"Anchorage","province":"AK","country":"US","postalCode":"99508","primary":false,"taxonomicExpertise":[],"userIds":[],"createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2023-10-09T06:59:23.626+00:00","modified":"2023-10-09T06:59:23.626+00:00"},{"key":36771,"firstName":"Justin","lastName":"Fulkerson","position":["Collections
+        Manager"],"phone":[],"fax":[],"email":["jrfulkerson@alaska.edu"],"address":["3211
+        Providence Drive"],"city":"Anchorage","province":"Alaska","country":"US","postalCode":"99508","primary":true,"taxonomicExpertise":[],"userIds":[{"type":"ORCID","id":"http://orcid.org/0000-0003-2666-9979"}],"createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2023-10-09T06:59:23.626+00:00","modified":"2023-10-09T06:59:23.626+00:00"}],"machineTags":[],"taxonomicCoverage":"Pollinating
+        and aquatic insects: Insecta, Insects","geographicCoverage":"Alaska, USA","incorporatedCollections":["University
+        of Alaska Anchorage Entomology Collection"],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GBIF_REGISTRY","masterSourceMetadata":{"key":9304,"source":"DATASET","sourceId":"3658ba15-172d-459c-94ab-d565f6550dad","createdBy":"mgrosjean","created":"2023-10-09T06:59:23.626+00:00"},"displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"institutionName":"Alaska
+        Center for Conservation Science","institutionCode":"UAA"}]}'
+  recorded_at: 2025-08-04 13:47:46
+recorded_with: VCR-vcr/2.0.0

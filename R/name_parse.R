@@ -22,7 +22,7 @@
 #' #          'Secale cereale subsp. cereale', 'Secale cereale ssp. cereale',
 #' #          'Vanessa atalanta (Linnaeus, 1758)'), curlopts=list(verbose=TRUE))
 #' }
-name_parse <- function(scientificname, curlopts = list()) {
+name_parse <- function(scientificname, curlopts = list(http_version = 2)) {
   url <- paste0(gbif_base(), "/parser/name")
   cli <- crul::HttpClient$new(url = url, headers = c(
     rgbif_ual,

@@ -29,7 +29,7 @@
 
 #' @name dataset_uuid_funs
 #' @export
-dataset_get <- function(uuid = NULL, curlopts = list()) {
+dataset_get <- function(uuid = NULL, curlopts = list(http_version=2)) {
   if(!is_uuid(uuid)) stop("'uuid' should be a GBIF datasetkey uuid.")
   url <- paste0(gbif_base(),"/dataset/",uuid)
   res <- rgbif_compact(gbif_GET(url, args = NULL, TRUE, curlopts))
@@ -40,61 +40,61 @@ dataset_get <- function(uuid = NULL, curlopts = list()) {
 
 #' @name dataset_uuid_funs
 #' @export
-dataset_process <- function(uuid = NULL, limit=20, start = NULL, curlopts = list()) {
+dataset_process <- function(uuid = NULL, limit=20, start = NULL, curlopts = list(http_version=2)) {
   dataset_uuid_get_(uuid,"/process",limit=limit,start=start,curlopts,meta=TRUE)
 }
 
 #' @name dataset_uuid_funs
 #' @export
-dataset_networks <- function(uuid = NULL, limit = 20, start = NULL, curlopts = list()) {
+dataset_networks <- function(uuid = NULL, limit = 20, start = NULL, curlopts = list(http_version=2)) {
   dataset_uuid_get_(uuid,"/networks",curlopts=curlopts,meta=FALSE)
 }
 
 #' @name dataset_uuid_funs
 #' @export
-dataset_constituents <- function(uuid = NULL, limit = 20, start = NULL, curlopts = list()) {
+dataset_constituents <- function(uuid = NULL, limit = 20, start = NULL, curlopts = list(http_version=2)) {
   dataset_uuid_get_(uuid,"/constituents",limit=limit,start=start,curlopts=curlopts,meta=TRUE)
 }
 
 #' @name dataset_uuid_funs
 #' @export
-dataset_comment <- function(uuid = NULL, curlopts = list()) {
+dataset_comment <- function(uuid = NULL, curlopts = list(http_version=2)) {
   dataset_uuid_get_(uuid,"/comment",curlopts=curlopts,meta=FALSE)
 }
 
 #' @name dataset_uuid_funs
 #' @export
-dataset_contact <- function(uuid = NULL, curlopts = list()) {
+dataset_contact <- function(uuid = NULL, curlopts = list(http_version=2)) {
   dataset_uuid_get_(uuid,"/contact",curlopts=curlopts,meta=FALSE)
 }
 
 #' @name dataset_uuid_funs
 #' @export
-dataset_endpoint <- function(uuid = NULL, curlopts = list()) {
+dataset_endpoint <- function(uuid = NULL, curlopts = list(http_version=2)) {
   dataset_uuid_get_(uuid,"/endpoint",curlopts=curlopts,meta=FALSE)
 }
 
 #' @name dataset_uuid_funs
 #' @export
-dataset_identifier <- function(uuid = NULL, curlopts = list()) {
+dataset_identifier <- function(uuid = NULL, curlopts = list(http_version=2)) {
   dataset_uuid_get_(uuid,"/identifier",curlopts=curlopts,meta=FALSE)
 }
 
 #' @name dataset_uuid_funs
 #' @export
-dataset_machinetag <- function(uuid = NULL, curlopts = list()) {
+dataset_machinetag <- function(uuid = NULL, curlopts = list(http_version=2)) {
   dataset_uuid_get_(uuid,"/machineTag",curlopts=curlopts,meta=FALSE)
 }
 
 #' @name dataset_uuid_funs
 #' @export
-dataset_tag <- function(uuid = NULL, curlopts = list()) {
+dataset_tag <- function(uuid = NULL, curlopts = list(http_version=2)) {
   dataset_uuid_get_(uuid,"/tag",curlopts=curlopts,meta=FALSE)
 }
 
 #' @name dataset_uuid_funs
 #' @export
-dataset_metrics <- function(uuid = NULL, curlopts = list()) {
+dataset_metrics <- function(uuid = NULL, curlopts = list(http_version=2)) {
   if(!is_uuid(uuid)) stop("'uuid' should be a GBIF datasetkey uuid.")
   if(!dataset_get(uuid)$type == "CHECKLIST") stop("Dataset should be a checklist.")
   url <- paste0(gbif_base(),"/dataset/",uuid,"/metrics")

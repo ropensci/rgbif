@@ -5,14 +5,19 @@
 \alias{occ_download_cancel_staged}
 \title{Cancel a download creation process.}
 \usage{
-occ_download_cancel(key, user = NULL, pwd = NULL, curlopts = list())
+occ_download_cancel(
+  key,
+  user = NULL,
+  pwd = NULL,
+  curlopts = list(http_version = 2)
+)
 
 occ_download_cancel_staged(
   user = NULL,
   pwd = NULL,
   limit = 20,
   start = 0,
-  curlopts = list()
+  curlopts = list(http_version = 2)
 )
 }
 \arguments{

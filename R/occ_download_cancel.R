@@ -30,7 +30,7 @@
 #' # occ_download_cancel_staged()
 #' }
 occ_download_cancel <- function(key, user = NULL, pwd = NULL,
-  curlopts = list()) {
+  curlopts = list(http_version=2)) {
 
   assert(key, c("character", "occ_download"))
   user <- check_user(user)
@@ -48,7 +48,7 @@ occ_download_cancel <- function(key, user = NULL, pwd = NULL,
 #' @export
 #' @rdname occ_download_cancel
 occ_download_cancel_staged <- function(user = NULL, pwd = NULL, limit = 20,
-  start = 0, curlopts = list()) {
+  start = 0, curlopts = list(http_version=2)) {
 
   hh <- occ_download_list(user, pwd, limit, start, curlopts)$results
   run_or_prep <- hh[ hh$status %in% c("RUNNING","PREPARING"),]$key

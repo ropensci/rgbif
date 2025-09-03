@@ -1,80 +1,49 @@
 http_interactions:
 - request:
-    method: post
+    method: POST
     uri: https://api.gbif.org/v1/parser/name
     body:
-      encoding: ''
-      string: '["x Agropogon littoralis"]'
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
-      Content-Type: application/json
+      raw_gzip: eJyLVqpQcEwvyi/IT8/PU8jJLCnJL0rMySxWigUAfpEJqA==
   response:
-    status:
-      status_code: '201'
-      message: Created
-      explanation: Document created, URL follows
+    status: 201
     headers:
       status: HTTP/1.1 201 Created
       content-type: application/json
     body:
-      encoding: ''
-      file: no
-      base64_string: W3sic2NpZW50aWZpY05hbWUiOiJ4IEFncm9wb2dvbiBsaXR0b3JhbGlzIiwidHlwZSI6IlNDSUVOVElG
-        SUMiLCJnZW51c09yQWJvdmUiOiJBZ3JvcG9nb24iLCJzcGVjaWZpY0VwaXRoZXQiOiJsaXR0b3JhbGlz
-        Iiwibm90aG8iOiJHRU5FUklDIiwicGFyc2VkIjp0cnVlLCJwYXJzZWRQYXJ0aWFsbHkiOmZhbHNlLCJj
-        YW5vbmljYWxOYW1lIjoiQWdyb3BvZ29uIGxpdHRvcmFsaXMiLCJjYW5vbmljYWxOYW1lV2l0aE1hcmtl
-        ciI6IsOXQWdyb3BvZ29uIGxpdHRvcmFsaXMiLCJjYW5vbmljYWxOYW1lQ29tcGxldGUiOiLDl0Fncm9w
-        b2dvbiBsaXR0b3JhbGlzIiwicmFua01hcmtlciI6InNwLiJ9XQ==
-  recorded_at: 2025-06-10 14:18:15 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+      raw_gzip: |-
+        eJyNjkEKwjAQRa8iWYsH6E5KlC6sooILcTHGsQbTTJhMRRHP4YG8mKmo4EJxOf/N+/zlWUVj
+        0YvdWlN
+        CjSpTx06/YgpUke84K0IMzkbVVXIKLZ/lhS7nxaDIU1ahb+KY+2s6tOxtJhQDmrZW
+        Bys7lEQ/2jzJjl
+        I41KWeProCcMSNyoQbfF0TYLHg3EllW3Ax5QY8eWvAPed+GfvxtkgLRsB7
+        5CTcrv8oOdXBoeAvgcHv3
+        7Ux9NRldQcWanhh
+  recorded_at: 2025-08-04 13:50:18
 - request:
-    method: post
+    method: POST
     uri: https://api.gbif.org/v1/parser/name
     body:
-      encoding: ''
-      string: '["Arrhenatherum elatius var. elatius","Secale cereale subsp. cereale","Secale
-        cereale ssp. cereale","Vanessa atalanta (Linnaeus, 1758)"]'
-    headers:
-      Accept-Encoding: gzip, deflate
-      Accept: application/json, text/xml, application/xml, */*
-      Content-Type: application/json
+      raw_gzip: |-
+        eJyLVnIsKspIzUssyUgtKs1VSM1JLMksLVYoSyzSg3GUdJSCU5MTc1IVklOLUkF0cWlScYEe
+        jItFHlU
+        2LDEvtbg4USGxJDEnMa8kUUHDJzMvLzG1tFhHwdDc1EJTKRYA9xwu7Q==
   response:
-    status:
-      status_code: '201'
-      message: Created
-      explanation: Document created, URL follows
+    status: 201
     headers:
       status: HTTP/1.1 201 Created
       content-type: application/json
     body:
-      encoding: ''
-      file: no
-      base64_string: W3sic2NpZW50aWZpY05hbWUiOiJBcnJoZW5hdGhlcnVtIGVsYXRpdXMgdmFyLiBlbGF0aXVzIiwidHlw
-        ZSI6IlNDSUVOVElGSUMiLCJnZW51c09yQWJvdmUiOiJBcnJoZW5hdGhlcnVtIiwic3BlY2lmaWNFcGl0
-        aGV0IjoiZWxhdGl1cyIsImluZnJhU3BlY2lmaWNFcGl0aGV0IjoiZWxhdGl1cyIsInBhcnNlZCI6dHJ1
-        ZSwicGFyc2VkUGFydGlhbGx5IjpmYWxzZSwiY2Fub25pY2FsTmFtZSI6IkFycmhlbmF0aGVydW0gZWxh
-        dGl1cyBlbGF0aXVzIiwiY2Fub25pY2FsTmFtZVdpdGhNYXJrZXIiOiJBcnJoZW5hdGhlcnVtIGVsYXRp
-        dXMgdmFyLiBlbGF0aXVzIiwiY2Fub25pY2FsTmFtZUNvbXBsZXRlIjoiQXJyaGVuYXRoZXJ1bSBlbGF0
-        aXVzIHZhci4gZWxhdGl1cyIsInJhbmtNYXJrZXIiOiJ2YXIuIn0seyJzY2llbnRpZmljTmFtZSI6IlNl
-        Y2FsZSBjZXJlYWxlIHN1YnNwLiBjZXJlYWxlIiwidHlwZSI6IlNDSUVOVElGSUMiLCJnZW51c09yQWJv
-        dmUiOiJTZWNhbGUiLCJzcGVjaWZpY0VwaXRoZXQiOiJjZXJlYWxlIiwiaW5mcmFTcGVjaWZpY0VwaXRo
-        ZXQiOiJjZXJlYWxlIiwicGFyc2VkIjp0cnVlLCJwYXJzZWRQYXJ0aWFsbHkiOmZhbHNlLCJjYW5vbmlj
-        YWxOYW1lIjoiU2VjYWxlIGNlcmVhbGUgY2VyZWFsZSIsImNhbm9uaWNhbE5hbWVXaXRoTWFya2VyIjoi
-        U2VjYWxlIGNlcmVhbGUgc3Vic3AuIGNlcmVhbGUiLCJjYW5vbmljYWxOYW1lQ29tcGxldGUiOiJTZWNh
-        bGUgY2VyZWFsZSBzdWJzcC4gY2VyZWFsZSIsInJhbmtNYXJrZXIiOiJzdWJzcC4ifSx7InNjaWVudGlm
-        aWNOYW1lIjoiU2VjYWxlIGNlcmVhbGUgc3NwLiBjZXJlYWxlIiwidHlwZSI6IlNDSUVOVElGSUMiLCJn
-        ZW51c09yQWJvdmUiOiJTZWNhbGUiLCJzcGVjaWZpY0VwaXRoZXQiOiJjZXJlYWxlIiwiaW5mcmFTcGVj
-        aWZpY0VwaXRoZXQiOiJjZXJlYWxlIiwicGFyc2VkIjp0cnVlLCJwYXJzZWRQYXJ0aWFsbHkiOmZhbHNl
-        LCJjYW5vbmljYWxOYW1lIjoiU2VjYWxlIGNlcmVhbGUgY2VyZWFsZSIsImNhbm9uaWNhbE5hbWVXaXRo
-        TWFya2VyIjoiU2VjYWxlIGNlcmVhbGUgc3Vic3AuIGNlcmVhbGUiLCJjYW5vbmljYWxOYW1lQ29tcGxl
-        dGUiOiJTZWNhbGUgY2VyZWFsZSBzdWJzcC4gY2VyZWFsZSIsInJhbmtNYXJrZXIiOiJzdWJzcC4ifSx7
-        InNjaWVudGlmaWNOYW1lIjoiVmFuZXNzYSBhdGFsYW50YSAoTGlubmFldXMsIDE3NTgpIiwidHlwZSI6
-        IlNDSUVOVElGSUMiLCJnZW51c09yQWJvdmUiOiJWYW5lc3NhIiwic3BlY2lmaWNFcGl0aGV0IjoiYXRh
-        bGFudGEiLCJicmFja2V0QXV0aG9yc2hpcCI6Ikxpbm5hZXVzIiwiYnJhY2tldFllYXIiOiIxNzU4Iiwi
-        cGFyc2VkIjp0cnVlLCJwYXJzZWRQYXJ0aWFsbHkiOmZhbHNlLCJjYW5vbmljYWxOYW1lIjoiVmFuZXNz
-        YSBhdGFsYW50YSIsImNhbm9uaWNhbE5hbWVXaXRoTWFya2VyIjoiVmFuZXNzYSBhdGFsYW50YSIsImNh
-        bm9uaWNhbE5hbWVDb21wbGV0ZSI6IlZhbmVzc2EgYXRhbGFudGEgKExpbm5hZXVzLCAxNzU4KSIsInJh
-        bmtNYXJrZXIiOiJzcC4ifV0=
-  recorded_at: 2025-06-10 14:18:15 GMT
-  recorded_with: vcr/1.2.0, webmockr/0.9.0
+      raw_gzip: |
+        eJztkUFLAzEQhf9KyEmhFDyIsrdSKixoFVYUEQ/TOHVDs9kwSQpF/O8m1DVu7XaXgjdPYfIm
+        bzLfe37
+        nVkjUTi6lmEOFPOMTohI1uBLJVwwVOOktWwONm4KPuNuY2FtM89n8Pr/Kp+HuDbW3
+        tzRZ1OtfPkG2Bk
+        UcMzMy3LnQkeykXhIUBxoMkMVXnjny2FR3QE6CUhueLUHZcC9A11oKUAdX
+        Sa6t/scw9QZohTQUQuv5t
+        K6MQjeYIIFefY+LGv8Y7UmjwOCPTCBhPK1fWDNuymFBbC32JpB8
+        OhJIDcclsPP9ZNeNvm/jLup971rA
+        t+ow5P/A/xj4A2i0Fhg4UKAdsJNrqTWgtyN2dnF+eToM
+        +5fNXu6NdRAXBGKFbuJdWZMtpQlyMy/JTwj
+        x23H80Vns7nUwhb7mH+CH8GrDj+RfPgGgmBLR
+  recorded_at: 2025-08-04 13:50:18
+recorded_with: VCR-vcr/2.0.0
