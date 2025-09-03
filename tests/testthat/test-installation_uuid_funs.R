@@ -2,7 +2,7 @@ context("installation_uuid_funs")
 
 test_that("installation_uuid_funs work as expected", {
   vcr::use_cassette("installation_uuid_funs", {
-  d <- installation_dataset("d209e552-7e6e-4840-b13c-c0596ef36e55",limit=1)  
+  d <- installation_dataset("d209e552-7e6e-4840-b13c-c0596ef36e55", limit=1)  
   c <- installation_comment("a0e05292-3d09-4eae-9f83-02ae3516283c")
   t <- installation_contact("896898e8-c0ac-47a0-8f38-0f792fbe3343")
   e <- installation_endpoint("896898e8-c0ac-47a0-8f38-0f792fbe3343")
