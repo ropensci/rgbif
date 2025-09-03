@@ -32,8 +32,11 @@
 #' # curl options, pass in a named list
 #' occ_get(key=855998194, curlopts = list(verbose=TRUE))
 #' }
-occ_get <- function(key, fields="minimal", 
-curlopts=list(http_version = 2), return=NULL, verbatim=NULL) {
+occ_get <- function(key, 
+                    fields="minimal", 
+                    curlopts = list(http_version = 2), 
+                    return = NULL, 
+                    verbatim = NULL) {
   pchk(return, "occ_get")
   pchk(verbatim, "occ_get")
   occ_get_helper(FALSE, key, fields, curlopts)
