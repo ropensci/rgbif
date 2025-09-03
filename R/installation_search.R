@@ -28,7 +28,7 @@
 #' @export
 #'
 #' @examples \dontrun{
-#' instllation_search() 
+#' installation_search() 
 #' installation_search(query="Estonia")
 #' installation_search(type="IPT_INSTALLATION") 
 #' installation_search(modified="2023-04-01,*")
