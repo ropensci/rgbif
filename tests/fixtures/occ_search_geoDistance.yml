@@ -1,0 +1,97 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&geoDistance=50.0%2C10.0%2C10km
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+      x-rlr: '25'
+      x-grlr: '30'
+    body:
+      raw_gzip: |-
+        eJztWWlv4zgS/SuGPgx2sJZDUbcxPQtHVhKjHTvwkUzPoBFQFGVrI0teHenx9vR/3yJlW/KV
+        a3qxmO7
+        9ZpFVLLLqVZH1/FlKgiBjudRGTSkKFyH8wk2Jxf4wGDGapH4mtQMSZawp0aSIYdpU
+        dUNvSinLiiiH2d
+        8+Sw9sJbV1hDTb1hVLaUo+yQms+p6PSxaxDBVhWw40VZc1zSCyhRUmY1MP
+        tMDQFMXQpaa0LLwozOZhP
+        Bums1KTWr6pmgzJOAgsWcPMkj0roLLhWUj3sRFQPQDNMM5yEkUk
+        D5O4VCSIIR3bWFZ9ZMsaI0y2A0uV
+        ESZM1RUDWyoFxXmS5aU9Eof/rum/0HC1ZYf7JuWqgz6f
+        SJM8oUkE3907574zcq56ty5MRCTLnZR8ipg
+        PcxhhXYYNIjxRrDay2ordwrryd4TaCK2lb0ia
+        7QprE6S3dbOtWy3LxlthypftgaRiqBDB33MWZ3AgiN
+        DnL03JI1mYbWIKq11NrzuD++H52B3d
+        dia94UD40Q8fQ78gkVOGGiKZUFqkKYspG+ckL2A16Wbkjt3Bh
+        O8vDPjwjMHoNH6Ik08x3whs
+        OwuDkAqHcvuS6fuBqWuB7Cu2KmuU2rIHcZBt20YGTBCkelyuyMRia0RJ
+        l87VCBaMyYJb6KQ+
+        Iw0SeaTRD+OYsCJrNhRTt0AkJfEDiIxvXKfnjvkmEp/r/Doc9oeXPafDo0KKfJ6
+        kEK8lzBws
+        MWMxS0M6qBmD0WzJKD+LuwzzOc8TiW8AJoIkXZA8Z/5a4afwZ6Hz01n4cwM+uJj4vWcIYk
+        Eo
+        ZUvQnH4Xp83J70mcLEK6BVDHcdybids9wEpVTCRnrF9dVN5wiweSrpKcVKfvDq87vQFY2KgM
+        as6L
+        wwWJwpr0+97gEjRq4s4VrhQccBUvWpXCzdWH/rQub91qt2qlccvSnHnpjs54en5UTa/U
+        LmOS87KTLHY
+        0e4OLUeeI7u3deaU7zHIW0nk+X7GsttHO6PZA03beW3eV5oTlKVkmfs3itXvZ
+        cfqd8bimdVvzSOexbm
+        RfUh39WonesIhRqKAcJHWl4ajrjmpKxs35Lr5Dn7BK/KJz3et/qBvB
+        F1d7CVFJX7qDaX1Hp7LnMF2+f
+        IRSV9B4xPx+COWY5GyWpCunzKG+wythlhWM320fAcA+VC/f
+        CzQZ0wDJWqDasu1hInsesm1K4EYx6JHi
+        ZZs6NhTzG8zoE/Xr2z3w20qY8rp6pGmvKkdYeXGy
+        moqNbF19fcKqhqW/KmOxZiEb4xcn7ROQ+bN5uwm
+        beNCt7TSlB3ir+clCDMLrZjlfRUX5pWnr
+        UIov8C68fWAzqfhcexBARBZhtBJj3DkChMVapTz7GoEs2z
+        W8yZnJ4Z4ykI5zjqDB83mzK9x5
+        MkE2NsevMbD20C5oSz/tAlN45xiYSh/tAka4aT9LWbYf8VemtAjwa
+        L+SPJmtRwC0AY8PVuDA
+        fcjjvOCY0lELIWzoejWXxLP1pIJaiqpii8MmAV+EcLGzKbyT05yEcb7qxdcs
+        ZymYx1YLcSEI
+        Qcz4s1pyp6PhDW8HoG/J2U2aPIagCBPnZMVS/oaeEX/BK2vEHlmE+K9ZyJ/tXXdae0s
+        wqGjx
+        ilcoIafsyLXwfa0CrVfeiOI90Zal1aXHdP6JhXFQpPlWRT1UaWGzrnUHFhh9kHjurRgBcPCe
+        p
+        Skt4OhzkW8+4YkD3ckjOKILZ9/2NYqM1NIhKUyshsEHsYAqetHdgSrJ+dI+IKPWH/F1JorW
+        xip0RRA+
+        tNNM9WIIyTKFwLyko4pCCj0U3+M8z5ftszOaMgDHI/RQCzhT1krS2dlaKDvzVnJM
+        z7QWOovYjETiPuO
+        bHbN/Fbx/8reNdOiX6SjQAddF9c1rrmpo2MKaKerdgvmQgOKoAaH5+tQp
+        iza9Ff8Ms17sRAW8DtOtjV
+        Q0esw/5/CeZixtaEhVdF7OM7JYRpDlN1WTWmybNz8mmw33uuXy
+        MwZHyUMK8RI14O5ybGmbi6+6fGjZA
+        q/LcZfDu9pEr7vZ6+as9cGZF0JnOhPXZ5UcdNtTb4C+
+        7bi59uVRpTSczfPsKonK4jTO+YMZDtsYeuCE
+        R+G2hoBBLH6TSGqeCkBTeuRitIhIui5JlxwB
+        DXcGEOL8AfFCyOAdB0YJhaKZ822P7xq1RGr8rU9i/yF
+        lYfajtE6BSShWVXTAa20f5VMCOozt
+        76qULZdQLpjf+KMBxZ93EQCs0oM8XlLFwmxtrJaieajOL9Xbeq
+        HF8Z0BwJNKSIC79n1WA2Zz
+        S/koWDdsW9H3KB+DUDUwTU327cCTNdM2oN9n8G7GXmBQS6FIIOgI5eN5h
+        mb4QSATG3GyCKky
+        0WxPNnzVtCh/gfv2UcoHHuGEaTqVFdtSZc3ymGzTAJLbMDHViIEM8WA6Sfm80PAx
+        ykdgvUb5
+        nPeGTmd8iu6xZGxOFAWeGPxmUJH+FN1TCkMtw23VbKm6dUj3qJb9NrrnSWrn65E4Kh7sdNo
+        r
+        cDyUqqwB8UqLCN4ekBk7r5Af39QfHFlk9zmxtXz0SbHdzfFWYau8aRe28mLgwPjpNum79cf/
+        iaBvk
+        gjq1/pKiCG/tJ7jgbBxjuta6XNE0C8D60jGnO4rn8+x/xktBG2iaZn291gAThTE79gj
+        f3ViCduvTn5b
+        xeZrcr9Eh/6q9H8Jor4qv7Q2+HZ+Cds73BJ30h63xJ2wyy1tjR5yS9upA27p
+        hbn1BM10RPok0fRCa6/
+        nnPawtqWcKjxtGKeDlGbZSUC8tRj8l3kozW7ZFrI4ZI7zUEixOYCe
+        46E4n3WCiPqW+Sbut2OEk4Inm2
+        Zqn3ZS8D7vxEe22S85QyhrvUFn4t6PhtNBV4T00h123UnP
+        ue92JtPreyiV02u3e7+hS5zhYNIbQHd1D
+        wWxdwszF6Ph9X211Fj6eJqlOt0IpixgoovjCNs0
+        8iz+Z7ICJBQpa8UsP/vHjHkhy98pFtJsXTdN5Qef
+        0znvFNxCSgvrP4AD3mnQzmNkGOobyK8/
+        z3wVadyGu45Eyaw96JxP/xD7nxX0gaWHA9i2TDgKVPmvx5M
+        phq7rho3FPxh/dSZs7cpBsfCE
+        eyuHlfQJ1A/um/Uu9/27y2StM63ZcPM8Yh6LdymnDQskthpFjD618J
+        cyRqwM0pf/AC4SXWs=
+  recorded_at: 2025-09-04 12:15:26
+recorded_with: VCR-vcr/2.0.0

@@ -5,15 +5,23 @@ http_interactions:
     body:
       string: '{"creator":"<gbif_user>","notification_address":["<gbif_user>@gbif.org"],"format":"DWCA","predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"9206251"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1979"}]}}'
   response:
-    status: 420
+    status: 201
     headers:
-      status: HTTP/1.1 420 Unknown HTTP Status
+      status: HTTP/1.1 201 Created
       content-type: application/json
       content-encoding: gzip
     body:
-      string: |
-        A download limitation is exceeded:
-        User <gbif_user> has too many simultaneous downloads; the limit is 3.
-        Please wait for some to complete, or cancel any unwanted downloads.  See your user page.
-  recorded_at: 2025-09-04 07:34:51
+      string: 0025653-250827131500795
+  recorded_at: 2025-09-04 10:23:02
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/download/0025653-250827131500795
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '{"key":"0025653-250827131500795","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"9206251","matchCase":false},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1979","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2025-09-04T10:23:01.692+00:00","modified":"2025-09-04T10:23:01.692+00:00","eraseAfter":"2026-03-04T10:22:59.302+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0025653-250827131500795.zip","size":0,"totalRecords":21817,"numberDatasets":0}'
+  recorded_at: 2025-09-04 10:23:02
 recorded_with: VCR-vcr/2.0.0

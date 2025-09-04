@@ -1,0 +1,98 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search/catalogNumber?q=122&limit=5
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+      x-rlr: '25'
+      x-grlr: '30'
+    body:
+      string: '["122","122 (WSP iSOTYPE)","122 (WSP, isotype) San Martin, F. 8010S","122
+        E10","122 F"]'
+  recorded_at: 2025-09-04 12:14:23
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search/collectionCode?q=12&limit=5
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+      x-rlr: '25'
+      x-grlr: '30'
+    body:
+      string: '["12","12,699","12-00","12-1","12-82"]'
+  recorded_at: 2025-09-04 12:14:24
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search/institutionCode?q=GB&limit=5
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+      x-rlr: '25'
+      x-grlr: '30'
+    body:
+      string: '["GB","GB, C, P","GB, CORD","GB, GH, S","GB, H"]'
+  recorded_at: 2025-09-04 12:14:24
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search/catalogNumber?q=122&limit=5
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+      x-rlr: '25'
+      x-grlr: '30'
+    body:
+      string: '["122","122 (WSP iSOTYPE)","122 (WSP, isotype) San Martin, F. 8010S","122
+        E10","122 F"]'
+  recorded_at: 2025-09-04 12:14:24
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search/catalogNumber?q=122&limit=10
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+      x-rlr: '25'
+      x-grlr: '30'
+    body:
+      string: '["122","122 (WSP iSOTYPE)","122 (WSP, isotype) San Martin, F. 8010S","122
+        E10","122 F","122 RMCA 16981-M-","122 a","122 cyl","122 tauschii","122(4165)"]'
+  recorded_at: 2025-09-04 12:14:24
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search/catalogNumber?q=122&limit=5
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+      x-rlr: '25'
+      x-grlr: '30'
+    body:
+      string: '["122","122 (WSP iSOTYPE)","122 (WSP, isotype) San Martin, F. 8010S","122
+        E10","122 F"]'
+  recorded_at: 2025-09-04 12:14:24
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search/recordedBy?q=scott&limit=5
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+      x-rlr: '25'
+      x-grlr: '30'
+    body:
+      string: '["SCOTT","SCOTT  SUSAN","SCOTT A","SCOTT A.L. Amy","SCOTT AND DOUGLAS
+        MOODY"]'
+  recorded_at: 2025-09-04 12:14:24
+recorded_with: VCR-vcr/2.0.0

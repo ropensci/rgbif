@@ -1,0 +1,45 @@
+http_interactions:
+- request:
+    method: POST
+    uri: https://api.gbif.org/v1/occurrence/download/request/validate
+    body:
+      string: '{"sendNotification":[true],"notificationAddresses":["<gbif_user>@gbif.org"],"format":"SQL_TSV_ZIP","sql":"SELECT
+        gbifid,countryCode FROM occurrence WHERE genusKey = 2435098"}'
+  response:
+    status: 201
+    headers:
+      status: 'HTTP/2 201 '
+      content-type: application/json
+      content-encoding: gzip
+    body:
+      string: '{"sql":"SELECT\n  gbifid,\n  countrycode\nFROM\n  occurrence\nWHERE\n  CAST(occurrence.genuskey
+        AS INTEGER) = 2435098","notificationAddresses":["<gbif_user>@gbif.org"],"sendNotification":false,"format":"SQL_TSV_ZIP","type":"OCCURRENCE"}'
+  recorded_at: 2025-09-04 12:11:30
+- request:
+    method: POST
+    uri: https://api.gbif.org/v1/occurrence/download/request
+    body:
+      string: '{"sendNotification":[true],"notificationAddresses":["<gbif_user>@gbif.org"],"format":"SQL_TSV_ZIP","sql":"SELECT
+        gbifid,countryCode FROM occurrence WHERE genusKey = 2435098"}'
+  response:
+    status: 201
+    headers:
+      status: HTTP/1.1 201 Created
+      content-type: application/json
+      content-encoding: gzip
+    body:
+      string: 0026010-250827131500795
+  recorded_at: 2025-09-04 12:11:32
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/download/0026010-250827131500795
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '{"key":"0026010-250827131500795","license":"unspecified","request":{"sql":"SELECT
+        gbifid,countryCode FROM occurrence WHERE genusKey = 2435098","sendNotification":false,"format":"SQL_TSV_ZIP","type":"OCCURRENCE"},"created":"2025-09-04T12:11:32.306+00:00","modified":"2025-09-04T12:11:32.306+00:00","eraseAfter":"2026-03-04T12:11:32.282+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0026010-250827131500795.zip","size":0,"totalRecords":0,"numberDatasets":0}'
+  recorded_at: 2025-09-04 12:11:32
+recorded_with: VCR-vcr/2.0.0

@@ -60,6 +60,7 @@ reference:
       - map_fetch
       - mvt_fetch
   - title: "GRSciColl"
+    contents:
       - institution_search
       - collection_search
   - title: "Miscellaneous"
