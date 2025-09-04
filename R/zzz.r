@@ -340,6 +340,17 @@ rgbif_ual <- list(`User-Agent` = rgbif_ua(), `X-USER-AGENT` = rgbif_ua())
 gbif_GET <- function(url, args, parse=FALSE, curlopts = list(), mssg = NULL) {
   cli <- crul::HttpClient$new(url = url, headers = rgbif_ual, opts = curlopts)
   temp <- cli$get(query = args)
+  if(temp$status_code == 429) {
+    message("Too many requests! To download GBIF occurrence data in bulk, please use occ_download().")
+    seconds <- 5
+    for (i in 1:seconds) {
+      cat(sprintf("\rWaiting [%s%s] %d/%d sec", 
+      strrep("=", i), strrep(" ", seconds - i), i, seconds))
+      Sys.sleep(1)
+      flush.console()
+    }
+      return(gbif_GET(url, args, parse, curlopts, mssg)) 
+  }
   if (temp$status_code == 204)
     stop("Status: 204 - not found ", mssg, call. = FALSE)
   if (temp$status_code > 200) {

@@ -7,7 +7,9 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
+      x-rlr: '25'
+      x-grlr: '30'
     body:
       string: '{"offset":0,"limit":300,"endOfRecords":true,"count":0,"results":[],"facets":[]}'
-  recorded_at: 2025-08-04 14:07:06
+  recorded_at: 2025-09-03 13:41:09
 recorded_with: VCR-vcr/2.0.0

@@ -51,6 +51,8 @@ occ_search(taxonKey = taxonKey)
 
 GBIF **strongly recommends** the use of `occ_download()` rather than `occ_search()` for serious research projects. See article [Getting Occurrence Data From GBIF](https://docs.ropensci.org/rgbif/articles/getting_occurrence_data.html). 
 
+> If repeated requests are made to the GBIF search API via `occ_search()`, users will be temporatily paused for 5 seconds. Please use `occ_download()` for bulk downloads.
+
 It is required to set up your [GBIF credentials](https://docs.ropensci.org/rgbif/articles/gbif_credentials.html) to make downloads from GBIF. 
 
 ```r
