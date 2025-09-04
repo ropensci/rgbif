@@ -7,20 +7,21 @@ http_interactions:
   response:
     status: 201
     headers:
-      status: 'HTTP/2 201 '
+      status: HTTP/1.1 201 Created
       content-type: application/json
+      content-encoding: gzip
     body:
-      string: 0014177-250802193616735
-  recorded_at: 2025-08-05 09:07:06
+      string: 0025483-250827131500795
+  recorded_at: 2025-09-04 09:34:14
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0014177-250802193616735
+    uri: https://api.gbif.org/v1/occurrence/download/0025483-250827131500795
   response:
     status: 200
     headers:
-      status: 'HTTP/2 200 '
+      status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0014177-250802193616735","license":"unspecified","request":{"predicate":{"type":"equals","key":"LIFE_STAGE","value":"Adult","matchCase":false},"sendNotification":false,"format":"SIMPLE_CSV","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2025-08-05T09:07:07.917+00:00","modified":"2025-08-05T09:07:07.917+00:00","eraseAfter":"2026-02-05T09:07:07.849+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0014177-250802193616735.zip","size":0,"totalRecords":131241097,"numberDatasets":0}'
-  recorded_at: 2025-08-05 09:07:06
+      string: '{"key":"0025483-250827131500795","license":"unspecified","request":{"predicate":{"type":"equals","key":"LIFE_STAGE","value":"Adult","matchCase":false},"sendNotification":false,"format":"SIMPLE_CSV","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2025-09-04T09:34:13.803+00:00","modified":"2025-09-04T09:34:13.803+00:00","eraseAfter":"2026-03-04T09:34:13.712+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0025483-250827131500795.zip","size":0,"totalRecords":132530426,"numberDatasets":0}'
+  recorded_at: 2025-09-04 09:34:14
 recorded_with: VCR-vcr/2.0.0

@@ -5,7 +5,7 @@ http_interactions:
   response:
     status: 200
     headers:
-      status: 'HTTP/2 200 '
+      status: HTTP/1.1 200 OK
       content-type: application/json
     body:
       raw_gzip: |-
@@ -24,5 +24,5 @@ http_interactions:
         Vcl33iVNf1aAz0NdC/CjrtmX5wZeGr
         GnxX9YpDyvicxdEcZ6adaCu8JSMxykOWchaQfuz2YFbC4Wsc/
         p5H8eUPoYXWWA==
-  recorded_at: 2025-08-04 13:48:37
+  recorded_at: 2025-09-04 07:12:51
 recorded_with: VCR-vcr/2.0.0

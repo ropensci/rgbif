@@ -8,7 +8,7 @@ http_interactions:
       status: HTTP/1.1 401 401
     body:
       raw_gzip: eJxzDQqyMjSwKi1OLVJIyU8tVsjLL1FIrcgsLtHjAgCDWAk/
-  recorded_at: 2025-08-04 13:48:29
+  recorded_at: 2025-09-04 07:12:48
 - request:
     method: GET
     uri: http://api.geonames.org/srtm3?lats=a&lngs=a&username=<gbif_user>
@@ -18,5 +18,5 @@ http_interactions:
       status: HTTP/1.1 200 200
     body:
       raw_gzip: eJxzDQqyMjSxyswrS8zJTFHIK81NSi3iAgBRdwdd
-  recorded_at: 2025-08-04 13:48:29
+  recorded_at: 2025-09-04 07:12:48
 recorded_with: VCR-vcr/2.0.0

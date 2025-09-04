@@ -8,7 +8,7 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":518,"results":[{"key":"5f024e8c-bbaa-400f-a9ae-b07b2a0ae45a","code":"PSUZC-INSECT","name":"Stock
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":515,"results":[{"key":"5f024e8c-bbaa-400f-a9ae-b07b2a0ae45a","code":"PSUZC-INSECT","name":"Stock
         of insect specimens","description":"Curator: Dr. Sophak Chantharit. Tailed
         bugs are small invertebrates. It is classified as a legged animal. It is the
         boundary between crustaceans and insects. The stingrays belong to the class
@@ -58,7 +58,7 @@ http_interactions:
         House, Opp Lion Gate, SBS Road, Fort","city":"Mumbai","province":"Maharashtra","postalCode":"400001","country":"IN"},"address":{"key":56144,"address":"Hornbill
         House, Opp Lion Gate, SBS Road, Fort","city":"Mumbai","province":"Maharashtra","postalCode":"400001","country":"IN"},"createdBy":"vijaybarve","modifiedBy":"vijaybarve","created":"2025-07-02T22:06:30.055+00:00","modified":"2025-07-02T22:06:30.055+00:00","tags":[],"identifiers":[],"contactPersons":[],"numberSpecimens":50000,"machineTags":[],"incorporatedCollections":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"institutionName":"Bombay
         Natural History Society","institutionCode":"BNHS"}]}'
-  recorded_at: 2025-08-04 13:47:45
+  recorded_at: 2025-09-04 07:12:13
 - request:
     method: GET
     uri: https://api.gbif.org/v1/grscicoll/collection?limit=2&name=Insects
@@ -73,18 +73,19 @@ http_interactions:
         Lisbon, PORTUGAL.","contentTypes":["PreservedOrganisms"],"active":true,"personalCollection":false,"email":["geral@museus.ulisboa.pt","rkeller@edu.ulisboa.pt"],"phone":[],"homepage":"https://www.museus.ulisboa.pt/","catalogUrls":[],"apiUrls":[],"preservationTypes":["SamplePinned","SampleFluidPreserved","SampleSlideMount"],"institutionKey":"0fdf8436-0060-4cc4-8235-90526026bccd","mailingAddress":{"key":52829,"address":"Museu
         Nacional de História Natural e da Ciência, Rua da Escola Politécnica 56/58","city":"Lisbon","postalCode":"1250-102","country":"PT"},"address":{"key":52828,"address":"Museu
         Nacional de História Natural e da Ciência, Rua da Escola Politécnica 56/58","city":"Lisbon","postalCode":"1250-102","country":"PT"},"createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2025-01-21T08:49:23.632+00:00","modified":"2025-01-21T15:13:10.506+00:00","tags":[],"identifiers":[],"contactPersons":[],"numberSpecimens":500000,"machineTags":[],"taxonomicCoverage":"Hexapoda","geographicCoverage":"Global","incorporatedCollections":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"temporalCoverage":"1858
-        - present","institutionName":"Museu Nacional de História Natural e da Ciência","institutionCode":"MNHNC"},{"key":"6d9fa861-1fba-47b5-a90a-735ee007776b","code":"AMBL-BL-ENT","name":"Entomology","description":"Estimated
+        - present","institutionName":"Museu Nacional de História Natural e da Ciência","institutionCode":"MNHNC"},{"key":"6d9fa861-1fba-47b5-a90a-735ee007776b","code":"AMBL-ENT","name":"Entomology","description":"Estimated
         number of specimens (individual specimen): 275´000. Formation period: 1835-ongoing.
         Geologic period: Present. Estimated number of species: 20´000. Number of types:
         unknown. SCSPS: 4 [Holger Frick, updated 2024-10-03]","contentTypes":["Biological","PreservedOrganisms","Exoskeletons"],"active":true,"personalCollection":false,"email":["holger.frick@bl.ch"],"phone":[],"catalogUrls":[],"apiUrls":[],"preservationTypes":["StorageControlledAtmosphere","SamplePinned"],"institutionKey":"58f0cf31-4c49-4568-87d5-60d51389230f","mailingAddress":{"key":52093},"address":{"key":52084,"address":"Amtshausgasse
-        7","city":"Liestal","postalCode":"CH-4410","country":"CH"},"createdBy":"tschudin","modifiedBy":"sofiawyler","created":"2024-11-27T19:43:26.388+00:00","modified":"2025-02-25T10:13:30.799+00:00","tags":[],"identifiers":[{"key":376510,"type":"UUID","identifier":"b394f0d1-dd46-452c-b2d5-4ffa6290ce37","createdBy":"sofiawyler","created":"2024-11-28T08:35:59.438+00:00","primary":false}],"contactPersons":[{"key":41476,"firstName":"Holger","lastName":"Frick","position":["Head
+        7","city":"Liestal","postalCode":"CH-4410","country":"CH"},"createdBy":"tschudin","modifiedBy":"morel_anne","created":"2024-11-27T19:43:26.388+00:00","modified":"2025-08-20T08:02:22.108+00:00","tags":[],"identifiers":[{"key":376510,"type":"UUID","identifier":"b394f0d1-dd46-452c-b2d5-4ffa6290ce37","createdBy":"sofiawyler","created":"2024-11-28T08:35:59.438+00:00","primary":false}],"contactPersons":[{"key":41476,"firstName":"Holger","lastName":"Frick","position":["Head
         of Collections","creator","metadataProvider","contact"],"phone":[],"fax":[],"email":["holger.frick@bl.ch"],"address":["Amtshausgasse
         7"],"city":"Liestal","country":"CH","postalCode":"CH-4410","primary":true,"taxonomicExpertise":[],"userIds":[{"type":"ORCID","id":"0000-0003-1971-310X"}],"createdBy":"sofiawyler","modifiedBy":"sofiawyler","created":"2025-02-25T10:13:31.555+00:00","modified":"2025-02-25T10:13:31.555+00:00"}],"numberSpecimens":275000,"machineTags":[],"taxonomicCoverage":"Insecta:
         Insecta; Lepidoptera; Coleoptera","notes":"One of the largest collections
-        of butterflies of the canton (region) of Basel-Country","incorporatedCollections":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"temporalCoverage":"Formation
+        of butterflies of the canton (region) of Basel-Country","incorporatedCollections":[],"alternativeCodes":[{"code":"AMBL-BL-ENT","description":"previous
+        to August 2025"}],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"temporalCoverage":"Formation
         period: 1835-ongoing","institutionName":"Archäologie und Museum Baselland
         - Museum.BL","institutionCode":"AMBL"}]}'
-  recorded_at: 2025-08-04 13:47:45
+  recorded_at: 2025-09-04 07:12:13
 - request:
     method: GET
     uri: https://api.gbif.org/v1/grscicoll/collection?numberSpecimens=0%2C100&limit=1
@@ -106,7 +107,7 @@ http_interactions:
         barcode"}],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":99,"typeSpecimenCount":0,"institutionName":"Sede
         di Via Giorgio La Pira del Museo di Storia naturale di Firenze |  Via Giorgio
         La Pira headquarter of the Natural History Museum in Florence","institutionCode":"MSNF-GLP"}]}'
-  recorded_at: 2025-08-04 13:47:45
+  recorded_at: 2025-09-04 07:12:13
 - request:
     method: GET
     uri: https://api.gbif.org/v1/grscicoll/collection?limit=1&institutionKey=6a6ac6c5-1b8a-48db-91a2-f8661274ff80
@@ -145,7 +146,7 @@ http_interactions:
         documentation of specimens may be provided on request.","contentTypes":[],"active":true,"personalCollection":false,"email":[],"phone":[],"catalogUrls":[],"apiUrls":[],"preservationTypes":[],"institutionKey":"6a6ac6c5-1b8a-48db-91a2-f8661274ff80","mailingAddress":{"key":43397},"address":{"key":43396,"address":"Muséum
         national d''Histoire naturelle 57, rue Cuvier","city":"Paris","postalCode":"75005","country":"FR"},"createdBy":"mgrosjean","modifiedBy":"s.pamerlon","created":"2022-03-25T12:36:16.984+00:00","modified":"2024-04-30T14:12:49.736+00:00","tags":[],"identifiers":[{"key":297946,"type":"DOI","identifier":"10.15468/podyc0","createdBy":"mgrosjean","created":"2022-03-25T12:36:16.984+00:00","primary":false}],"contactPersons":[{"key":38097,"lastName":"MNHN","position":["Provider"],"phone":[],"fax":[],"email":[],"address":[],"primary":true,"taxonomicExpertise":[],"userIds":[],"createdBy":"s.pamerlon","modifiedBy":"s.pamerlon","created":"2024-04-30T14:12:49.736+00:00","modified":"2024-04-30T14:12:49.736+00:00"},{"key":38098,"firstName":"Mark","lastName":"Judson","position":[],"phone":[],"fax":[],"email":[],"address":[],"primary":false,"taxonomicExpertise":[],"userIds":[],"createdBy":"s.pamerlon","modifiedBy":"s.pamerlon","created":"2024-04-30T14:12:49.736+00:00","modified":"2024-04-30T14:12:49.736+00:00"},{"key":38099,"firstName":"Élise-Anne","lastName":"Leguin","position":[],"phone":[],"fax":[],"email":[],"address":[],"primary":false,"taxonomicExpertise":[],"userIds":[],"createdBy":"s.pamerlon","modifiedBy":"s.pamerlon","created":"2024-04-30T14:12:49.736+00:00","modified":"2024-04-30T14:12:49.736+00:00"},{"key":38100,"firstName":"Laurent","lastName":"Albenga","position":["Correspondant"],"phone":[],"fax":[],"email":[],"address":[],"primary":true,"taxonomicExpertise":[],"userIds":[],"createdBy":"s.pamerlon","modifiedBy":"s.pamerlon","created":"2024-04-30T14:12:49.736+00:00","modified":"2024-04-30T14:12:49.736+00:00"}],"machineTags":[],"taxonomicCoverage":"","geographicCoverage":"","incorporatedCollections":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[{"key":50,"datasetKey":"2f23ac81-674e-4e4e-982f-73f49ccdb9df","createdBy":"mgrosjean","created":"2022-03-25T12:36:17.410+00:00"}],"masterSource":"GBIF_REGISTRY","masterSourceMetadata":{"key":8586,"source":"DATASET","sourceId":"2f23ac81-674e-4e4e-982f-73f49ccdb9df","createdBy":"mgrosjean","created":"2022-03-25T12:36:16.984+00:00"},"displayOnNHCPortal":true,"occurrenceCount":947,"typeSpecimenCount":691,"institutionName":"MNHN
         - Museum national d''Histoire naturelle","institutionCode":"MNHN"}]}'
-  recorded_at: 2025-08-04 13:47:46
+  recorded_at: 2025-09-04 07:12:13
 - request:
     method: GET
     uri: https://api.gbif.org/v1/grscicoll/collection?q=insect&limit=1&country=US
@@ -172,5 +173,5 @@ http_interactions:
         and aquatic insects: Insecta, Insects","geographicCoverage":"Alaska, USA","incorporatedCollections":["University
         of Alaska Anchorage Entomology Collection"],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GBIF_REGISTRY","masterSourceMetadata":{"key":9304,"source":"DATASET","sourceId":"3658ba15-172d-459c-94ab-d565f6550dad","createdBy":"mgrosjean","created":"2023-10-09T06:59:23.626+00:00"},"displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"institutionName":"Alaska
         Center for Conservation Science","institutionCode":"UAA"}]}'
-  recorded_at: 2025-08-04 13:47:46
+  recorded_at: 2025-09-04 07:12:13
 recorded_with: VCR-vcr/2.0.0

@@ -5,11 +5,11 @@ http_interactions:
   response:
     status: 200
     headers:
-      status: 'HTTP/2 200 '
+      status: HTTP/1.1 200 OK
       content-disposition: inline;filename=f.txt
       content-type: application/json
     body:
       string: '{"key":"0108986-200613084148143","doi":"10.15468/dl.hx3uzz","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"within","geometry":"POLYGON((-14
         42, 9 38, -7 26, -14 42))"},{"type":"greaterThanOrEquals","key":"ELEVATION","value":"5400","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2020-11-11T16:47:40.736+00:00","modified":"2020-11-11T16:48:30.842+00:00","eraseAfter":"2021-05-11T16:47:40.654+00:00","status":"SUCCEEDED","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0108986-200613084148143.zip","size":38857,"totalRecords":21,"numberDatasets":8}'
-  recorded_at: 2025-08-04 14:03:23
+  recorded_at: 2025-09-04 08:30:30
 recorded_with: VCR-vcr/2.0.0

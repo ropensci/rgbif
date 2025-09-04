@@ -7,12 +7,14 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
+      x-rlr: '25'
+      x-grlr: '30'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSxoYmliaW
-        RiamQHV
-        FqcWlOSVAJdGxOkppicmpEHYtAMtCG8I=
-  recorded_at: 2025-08-04 13:50:32
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSxobmBuam
+        ZmaGpjp
+        KRanFpTklQCXRsTpKaYnJqRB2LQDLLBvC
+  recorded_at: 2025-09-04 07:14:57
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&year=2000%2C2011&taxonKey=212
@@ -21,12 +23,14 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
+      x-rlr: '25'
+      x-grlr: '30'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSRsam5maG
-        ZoamOkp
-        FqcWlOSVAFdGxOkppicmpEHYtALLZG40=
-  recorded_at: 2025-08-04 13:50:33
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSRsamFgaW
+        ZqbmOkp
+        FqcWlOSVAFdGxOkppicmpEHYtALPVG5Y=
+  recorded_at: 2025-09-04 07:15:07
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&year=2012
@@ -35,12 +39,14 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
+      x-rlr: '25'
+      x-grlr: '30'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DS5qam5gZm
-        BkY6SkW
-        pxaU5JUAF0bE6SmmJyakQdi0Amu8bWQ==
-  recorded_at: 2025-08-04 13:50:33
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DS5qaWJpYG
+        ZpY6SkW
+        pxaU5JUAF0bE6SmmJyakQdi0AnNcbag==
+  recorded_at: 2025-09-04 07:15:18
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=ABSENT&limit=0&offset=0&facetLimit=
@@ -49,12 +55,14 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
+      x-rlr: '25'
+      x-grlr: '30'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSpmbG5paW
-        hkBVRan
-        FpTklQAXRsTpKaYnJqRB2LQCb1xth
-  recorded_at: 2025-08-04 13:50:33
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSFsaGJgam
+        BoY6SkW
+        pxaU5JUAF0bE6SmmJyakQdi0AmbobTw==
+  recorded_at: 2025-09-04 07:15:31
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&organismQuantity=5&basisOfRecord=MATERIAL_SAMPLE
@@ -63,12 +71,14 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
+      x-rlr: '25'
+      x-grlr: '30'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DShkZmFhYG
-        xjpKRan
-        FpTklQPnoWB2ltMTkVAi7FgCC8xsl
-  recorded_at: 2025-08-04 13:50:34
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DShkbmpmaG
+        hjpKRan
+        FpTklQPnoWB2ltMTkVAi7FgCCZBsg
+  recorded_at: 2025-09-04 07:15:47
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&verbatimScientificName=Calopteryx+splendens
@@ -77,10 +87,12 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
+      x-rlr: '25'
+      x-grlr: '30'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSxpampoam
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSJgaG5haW
         OkpFqcW
-        lOSVA6ehYHaW0xORUCLsWAGvQGvU=
-  recorded_at: 2025-08-04 13:50:34
+        lOSVA6ehYHaW0xORUCLsWAGvLGvY=
+  recorded_at: 2025-09-04 07:16:26
 recorded_with: VCR-vcr/2.0.0

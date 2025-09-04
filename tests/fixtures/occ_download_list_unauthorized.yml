@@ -5,8 +5,9 @@ http_interactions:
   response:
     status: 401
     headers:
-      status: 'HTTP/2 401 '
+      status: HTTP/1.1 401 Unauthorized
+      content-encoding: gzip
     body:
       raw_gzip: eJxzS8zMSU1RKMlXSCwtyUjNK8lMTixJVSgtTi1SSMvPT0os4uUCAPecDPc=
-  recorded_at: 2025-08-04 14:03:27
+  recorded_at: 2025-09-04 08:30:36
 recorded_with: VCR-vcr/2.0.0

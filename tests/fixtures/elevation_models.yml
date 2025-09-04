@@ -14,7 +14,7 @@ http_interactions:
         340
         1524
         1769
-  recorded_at: 2025-08-04 13:48:31
+  recorded_at: 2025-09-04 07:12:48
 - request:
     method: GET
     uri: http://api.geonames.org/srtm1?lats=32.909436%2C38.540315%2C37.050632%2C31.913204%2C32.648646&lngs=-116.545853%2C-122.970018%2C-121.4302%2C-109.931659%2C-108.536463&username=<gbif_user>
@@ -30,7 +30,7 @@ http_interactions:
         339
         1521
         1769
-  recorded_at: 2025-08-04 13:48:32
+  recorded_at: 2025-09-04 07:12:49
 - request:
     method: GET
     uri: http://api.geonames.org/astergdem?lats=32.909436%2C38.540315%2C37.050632%2C31.913204%2C32.648646&lngs=-116.545853%2C-122.970018%2C-121.4302%2C-109.931659%2C-108.536463&username=<gbif_user>
@@ -46,7 +46,7 @@ http_interactions:
         336
         1519
         1764
-  recorded_at: 2025-08-04 13:48:33
+  recorded_at: 2025-09-04 07:12:50
 - request:
     method: GET
     uri: http://api.geonames.org/gtopo30?lat=32.90944&lng=-116.5459&username=<gbif_user>
@@ -58,7 +58,7 @@ http_interactions:
     body:
       string: |
         1460
-  recorded_at: 2025-08-04 13:48:33
+  recorded_at: 2025-09-04 07:12:50
 - request:
     method: GET
     uri: http://api.geonames.org/gtopo30?lat=38.54031&lng=-122.97&username=<gbif_user>
@@ -70,7 +70,7 @@ http_interactions:
     body:
       string: |
         303
-  recorded_at: 2025-08-04 13:48:33
+  recorded_at: 2025-09-04 07:12:50
 - request:
     method: GET
     uri: http://api.geonames.org/gtopo30?lat=37.05063&lng=-121.4302&username=<gbif_user>
@@ -82,7 +82,7 @@ http_interactions:
     body:
       string: |
         365
-  recorded_at: 2025-08-04 13:48:34
+  recorded_at: 2025-09-04 07:12:50
 - request:
     method: GET
     uri: http://api.geonames.org/gtopo30?lat=31.9132&lng=-109.9317&username=<gbif_user>
@@ -94,7 +94,7 @@ http_interactions:
     body:
       string: |
         1515
-  recorded_at: 2025-08-04 13:48:34
+  recorded_at: 2025-09-04 07:12:50
 - request:
     method: GET
     uri: http://api.geonames.org/gtopo30?lat=32.64865&lng=-108.5365&username=<gbif_user>
@@ -106,5 +106,5 @@ http_interactions:
     body:
       string: |
         1767
-  recorded_at: 2025-08-04 13:48:34
+  recorded_at: 2025-09-04 07:12:50
 recorded_with: VCR-vcr/2.0.0

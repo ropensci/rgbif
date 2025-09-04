@@ -53,7 +53,7 @@ http_interactions:
         BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165,"identifier":"https://images.naturalis.nl/original/189671.jpg"},{"type":"StillImage","format":"image/jpeg","source":"Checklist
         Dutch Species Register - Nederlands Soortenregister","created":"2012-07-02T00:00:00.000+00:00","license":"CC
         BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165,"identifier":"https://images.naturalis.nl/original/205609.jpg"}]}'
-  recorded_at: 2025-08-04 13:50:23
+  recorded_at: 2025-09-04 07:14:42
 - request:
     method: GET
     uri: https://api.gbif.org/v1/species/5231190/media?offset=0&limit=100
@@ -108,5 +108,5 @@ http_interactions:
         BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165,"identifier":"https://images.naturalis.nl/original/189671.jpg"},{"type":"StillImage","format":"image/jpeg","source":"Checklist
         Dutch Species Register - Nederlands Soortenregister","created":"2012-07-02T00:00:00.000+00:00","license":"CC
         BY-NC-ND","rightsHolder":"Annemieke Hoozemans","taxonKey":5231190,"sourceTaxonKey":152437165,"identifier":"https://images.naturalis.nl/original/205609.jpg"}]}'
-  recorded_at: 2025-08-04 13:50:24
+  recorded_at: 2025-09-04 07:14:42
 recorded_with: VCR-vcr/2.0.0

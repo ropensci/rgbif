@@ -31,7 +31,7 @@ http_interactions:
         MS3EdIcdN7k5/Rgk4dWWfRBd3n0J1dw1sut9VRnYDtCm/k1S6MD06rt3/kymcB7QnBwZsJ
         88
         6MOJEablktA7DNS6hZP+isuT1ijv/T//AZL+OkU=
-  recorded_at: 2025-08-04 13:48:35
+  recorded_at: 2025-09-04 07:12:51
 - request:
     method: GET
     uri: https://api.gbif.org/v1/enumeration/basic/NameType
@@ -45,7 +45,7 @@ http_interactions:
         eJwdylEKxDAIRdG95Hs2YaKhMlZLooVShtn/Lmr6o4fHvctsTOrcuZVPOXnEzL9ddTAmWLuN
         HSTZQpx
         PGIugyAj+tuaRFy2q91jhIdBoM0FardpfYadUzf0rPJ2w/B5eBh76
-  recorded_at: 2025-08-04 13:48:35
+  recorded_at: 2025-09-04 07:12:51
 - request:
     method: GET
     uri: https://api.gbif.org/v1/enumeration/basic/MetadataType
@@ -56,7 +56,7 @@ http_interactions:
       content-type: application/json
     body:
       raw_gzip: eJyLVnL19VHSUXJxVooFABKnAtI=
-  recorded_at: 2025-08-04 13:48:35
+  recorded_at: 2025-09-04 07:12:51
 - request:
     method: GET
     uri: https://api.gbif.org/v1/enumeration/basic/TypeStatus
@@ -74,7 +74,7 @@ http_interactions:
         WrteYPX9xpoQB+g4Q7ga+jlmp9jdVrOtmDpGi26ANt73zLOicm7eS/TF2l
         8wQUGiBYH+oFexl8cP2+Y
         UhmNnNqSTd+fks+nMM=
-  recorded_at: 2025-08-04 13:48:35
+  recorded_at: 2025-09-04 07:12:51
 - request:
     method: GET
     uri: https://api.gbif.org/v1/enumeration/country/
@@ -315,5 +315,5 @@ http_interactions:
         xoYoV74wfm5s0XpubAEC2AWZFkBtJIt8d
         6/uvxql5BfCt5g1Q67/C4hAvkyIWxi3KB0/KQ7F
         s1HlahLG4VST8X/7f/94XOg=
-  recorded_at: 2025-08-04 13:48:36
+  recorded_at: 2025-09-04 07:12:51
 recorded_with: VCR-vcr/2.0.0

@@ -5,9 +5,9 @@ http_interactions:
   response:
     status: 400
     headers:
-      status: 'HTTP/2 400 '
+      status: HTTP/1.1 400 Bad Request
       content-type: text/plain
     body:
       string: 'Invalid UUID string: foo-bar'
-  recorded_at: 2025-08-04 14:03:19
+  recorded_at: 2025-09-04 08:30:30
 recorded_with: VCR-vcr/2.0.0

@@ -7,12 +7,14 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
+      x-rlr: '25'
+      x-grlr: '30'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DShqbGpuaW
-        5qaWOkp
-        FqcWlOSVAFdGxOkppicmpEHYtALSAG5w=
-  recorded_at: 2025-08-04 13:50:39
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DShqYmhham
+        JhYmOkp
+        FqcWlOSVAFdGxOkppicmpEHYtALM+G5E=
+  recorded_at: 2025-09-04 07:17:43
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&eventDate=2010
@@ -21,12 +23,14 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
+      x-rlr: '25'
+      x-grlr: '30'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSpuYWZgam
-        FkY6SkW
-        pxaU5JUAF0bE6SmmJyakQdi0Am/EbYg==
-  recorded_at: 2025-08-04 13:50:39
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSpuaWxgam
+        hkBVRan
+        FpTklQAXRsTpKaYnJqRB2LQCauhtX
+  recorded_at: 2025-09-04 07:17:56
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=
@@ -35,12 +39,14 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
+      x-rlr: '25'
+      x-grlr: '30'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSxoYmliaW
-        RiamQHV
-        FqcWlOSVAJdGxOkppicmpEHYtAMtCG8I=
-  recorded_at: 2025-08-04 13:50:39
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSxobmBuam
+        ZmaGpjp
+        KRanFpTklQCXRsTpKaYnJqRB2LQDLLBvC
+  recorded_at: 2025-09-04 07:17:56
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&year=2000%2C2001
@@ -49,10 +55,12 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
+      x-rlr: '25'
+      x-grlr: '30'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSJqaWphZG
-        ZqY6SkW
-        pxaU5JUAF0bE6SmmJyakQdi0AnEAbZQ==
-  recorded_at: 2025-08-04 13:50:40
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSJqaWlmaW
+        JsY6SkW
+        pxaU5JUAF0bE6SmmJyakQdi0AnN0bag==
+  recorded_at: 2025-09-04 07:18:10
 recorded_with: VCR-vcr/2.0.0

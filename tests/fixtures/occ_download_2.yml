@@ -10,19 +10,20 @@ http_interactions:
     headers:
       status: HTTP/1.1 201 Created
       content-type: application/json
+      content-encoding: gzip
     body:
-      string: 0010077-250802193616735
-  recorded_at: 2025-08-04 13:51:39
+      string: 0025177-250827131500795
+  recorded_at: 2025-09-04 07:33:28
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0010077-250802193616735
+    uri: https://api.gbif.org/v1/occurrence/download/0025177-250827131500795
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0010077-250802193616735","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"within","geometry":"POLYGON((-14
-        42,-7 26,9 38,-14 42))"},{"type":"greaterThanOrEquals","key":"ELEVATION","value":"5000","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2025-08-04T13:51:39.166+00:00","modified":"2025-08-04T13:51:39.166+00:00","eraseAfter":"2026-02-04T13:51:38.918+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0010077-250802193616735.zip","size":0,"totalRecords":99,"numberDatasets":0}'
-  recorded_at: 2025-08-04 13:51:39
+      string: '{"key":"0025177-250827131500795","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"within","geometry":"POLYGON((-14
+        42,-7 26,9 38,-14 42))"},{"type":"greaterThanOrEquals","key":"ELEVATION","value":"5000","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2025-09-04T07:33:28.193+00:00","modified":"2025-09-04T07:33:28.193+00:00","eraseAfter":"2026-03-04T07:33:23.572+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0025177-250827131500795.zip","size":0,"totalRecords":104,"numberDatasets":0}'
+  recorded_at: 2025-09-04 07:33:28
 recorded_with: VCR-vcr/2.0.0

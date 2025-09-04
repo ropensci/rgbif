@@ -9,5 +9,5 @@ http_interactions:
       content-type: text/plain
     body:
       string: 'Entity not found for uri: /enumeration/basic/asdfadsf'
-  recorded_at: 2025-08-04 13:48:36
+  recorded_at: 2025-09-04 07:12:51
 recorded_with: VCR-vcr/2.0.0
