@@ -84,7 +84,7 @@ http_interactions:
         v7lp1017fN3rDKfj6GD
         YpeY7X9WwC+E4nrmYG9QmseEg5BvxjHmGa9o2sXw6w57/+cOudTbz
         dTp/+A8NTCjf
-  recorded_at: 2025-09-03 13:41:09
+  recorded_at: 2025-09-04 12:14:27
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&month=6&taxonKey=3189815
@@ -97,84 +97,84 @@ http_interactions:
       x-grlr: '30'
     body:
       raw_gzip: |-
-        eJztWeuS4sYVfhWVftkJAl3QjXJcxTDMDF4GMJdx1inXulG3oD1CUtQtZslmXyavkhfL6RaM
-        xMCOh/X
-        G2az5Q0nq8/XlXPt8vFOTMGSEqy29pkZ0ReHJrKkkxsNwTIIkw0xthShipKYGSR6L
-        Yd30mzU1IyyPOI
-        z+7Z16TzZqyzZcQ9dt34NBjDiCWV+J76qHPMcCkBY2LVtrNh2keaZBNNO1
-        w2boNA3DsdWamubziLIlj
-        RfDbFEgAw+7lkt0zQxDT2uaxNPmXhhoztzTbWw6YWCHgKQx4yiK
-        EKdJXACRTnTb9E3NwrqvNQkimh96
-        lqabiFi24ZieFQBwmTBerIdi+o8K/oULl1vuCN1kAjro
-        i4Es4UmQRPB++UPnTXvcuenddWEgQox3MvQ
-        QEQxjoEpb0z3NdKaG17Ltlm7VHd/6s663dH0r
-        PUIZ2xf2pobTsqyWadQt13kUDsS0PZCE44EF33ISMz
-        gQWOiduuQ8bTUaGatz/LCoJ9migYIG
-        J9mKNW7BjHRFMEXSllvRNM8iKYeDBonIisScNYy60eCblMBuJ
-        pxGUW+FFkToscDErI5wMif1
-        IFk13qIU5PVGRhdLgA4fYpJJHElTEqEYK5rSz/kCZZgol0S5yJL8AURq
-        v7qDICOIJx8/WXFs
-        imFCGlK5KyHFQCyZM5KtpSNI6XQJdoRVTV33PcdzygmPqhIFAWFsNu6dMGX9l3T
-        xgkMXatzO
-        C4JSCXQNIbpagZElJqIB2JywxnyjxYEW40YTDBCRBYqCBJNf2fwaZRTFvE/hFQnPvSCMK9
-        /n
-        KKJ884Idhkm2QpAfVCq8ovFLShbq+9rZoZ6zvvvpHcr9sh3qp/c1dY4YZbv6BOM3s9v24M3w
-        YtId
-        37WnveFA1gRM1xTDYp2ibBk1NQmCPMtIHJAJRzwXhx+Nu5PuYCpyLQ3F54XwxVl8HycP
-        sUiqkIIZGDW
-        Q+pa51MU4dO1mqGHDt7RmEPjaHGqK5vu+7sAA0q25kMuZnGxbHVXHvnj1I8wY
-        o5VYok1YkEc5U5Y0TZ
-        MAEj2K85XSr4NIhuJ74YyjbqfXnYhdCGWD/obT9qDXaYsKg3K+TDKo
-        PSkMSNSCQEDQYLA/PwywlATiC
-        N2U8qUo9eremiBRaJoTvAV/Q7/d4b9p0G8VeN+DyI+wKNhC
-        eGgKyNkf4rQcvU3iZEWDRwdqdzrd0bR7
-        eeAr5cVI7Uzsm6tSGd38HmWbhKPy8JfD23ZvINNl
-        ARmV4iNIRxyRUvhVb3ANgIp05/Z7b1JBQMBRyJs
-        0gdtNZZXJ7OIQO60sNc1QsCRJutxUNze6
-        ed2fVSG31yXkFi3iJKJJyiiuYDr99mRSgVy4d3/9rkRNUA
-        oBiiLCSshwfNkdVyBXr60DQECq
-        irhq3/b6ryuQ70ZeCbkpbZhAbq4CQREH2NH04tBfS8h1dzCrHuhFD
-        n7o3e9/gtSUB/GY4D6F
-        qyDiZJFkm07h8nczkbkYy4m4V4tUhyHb4HnY1Mwg1LVmaPmaPzeRNp/rvh8g
-        uM06wZFkYxme
-        7xn2Rwbg5xJtH8gtX8bhPi6VOCflBdfVXdf0Tg5w09RPjnDfOgzXZ+PbcWz31ACXpte
-        NUwL1
-        hd7yW0N1Z1HZP27XrKn30BriZCU/OtAWLjdRXrxtTbM1tfwEWoc7Clw4M/kKCgUHQysabQo8
-        6
-        Es6a87KRXRj66aE7a+8i53p4aYYSMub6lOXPxY/+8Ltg+DZrTM5ZdKtWvacuNDNoY9KhTx1
-        qUItB24j
-        lXMkhgl7zu6/If6lycdPU8yzoX3EpXbuhGG5FYr6EPQ8F15mm3XLLr8n8WI70Kzb
-        trgogXKgwnMygzt
-        txhGN+aYX3xKo/7Cqret6XRdiYJiYiEuw2p2NhyNBRMAROBllyZoCVNAW
-        Yi7tJolE8yOUgvBKpNyIrE
-        mki6cFxZLeuCxDaUBAL5lAMJHSpKyxJ1v331SidX+RHcJ8gqg7
-        VhX0I8iuAchVEWQbgjLJQcH5oU/hS
-        xlYGG3kDR+mi/klnOyRL3E0mS7guBkMbIbhazmBYRcs
-        19NPZUSL6bFo5/DeXIJ7MY2W0Kyu7xE1vRjU
-        nmag/JewNdvW6pT+66D5omxC/p6LfgY/knRl
-        F1pQc3tdqWVbvmHYvi6TW8n5HGvBj3VfgmQ6oVX+iDP
-        uekyRjmWDCs6CX9rnf1QHLttlUS7+
-        wEooSCjhEyEK+Nb9MxLtml7xSlkv7kBe5GLirbNlsgMn+EKksB
-        ksodhNT943GFqlEWT5UUmE
-        5o9NNY7RznF7l8XsCwIuzWkAsSuLwA/XE6+5uwgduYQEBd+6LcaScy030
-        7vc7Xmni+rHxZyG
-        Y7KQ96oyHwYlgVtJao8Ur5jh+ijwwEI0WApSWRmWOldkbojlM4qeGqmMypq6FmJQ
-        f1C2LUc3
-        UG6JBgWR8TjngjVBc8qlT1YUiji6FlUMRVsam+10qJRFgimLnQzBygPUNEX4NyzWUn6WYsp
+        eJztWeuS4sYVfhWVftkJAt2RKMdVDMPM4GUAcxlnnXKtm1YL2iMkRd1ilmz2ZfIqebGcbsFI
+        DOx4WK+
+        TzZo/lKQ+X1/Otc/HOzUJQ0a42tJrakRXFJ7MmkriYBiOCU6ygKmtEEWM1FSc5LEY
+        1k3frqkZYXnEYf
+        Rv79R7slFbjtE0dN3xPRgMEEcw6yvxXfWQ51oA0kLbcjTbdpHmmQbRzKYT
+        2qFrG4brqDU1zecRZUsaL
+        4bZokBiL2haTaJrZhh6mm0ST5t7Idbcuac7gemG2AkBSWPGURQh
+        TpO4ACKd6I7pm5oV6L5mE0Q0P/Qs
+        TTcRsRzDNT0LA3CZMF6sh2L6jwr+hQuXW+4I3WQCOuiL
+        gSzhCU4ieL/8ofOmPe7c9O66MBAhxjsZeoh
+        IAGOgSkeDDerm1PBautcy/LrpGH/W9Zaub6VH
+        KGP7wvZUt1um0zKNuuvpj8JYTNsDScO1wIJvOYkZHA
+        gs9E5dcp62Go2M1XnwsKgn2aKBcIOT
+        bMUat2BGuiIBRdKWW9E0zyIpF+AGiciKxJw1jLrR4JuUwG4mn
+        EZRb4UWROixwMSsjoJkTuo4
+        WTXeohTk9UZGF0uADh9ikkkcSVMSoThQNKWf8wXKAqJcEuUiS/IHEKn9
+        6g5wRhBPPn6y4tg0
+        gAlpSOWuhBQDsWTOSLaWjiCl0yXYEVY1dd33XM8tJzyqSoQxYWw27p0wZf2XdPG
+        CQxdq3M4L
+        glIJdA0hulqBkSUmohhsTlhjvtFirMVBwwYDRGSBIpwE5Fc2v0YZRTHvU3hFwnMvCOPK9z
+        mK
+        KN+8YIdhkq0Q5AeVCq9o/JKShfq+dnao56zf/PQO1fyyHeqn9zV1jhhlu/oE4zez2/bgzfBi
+        0h3f
+        tae94UDWhICuaQCLdYqyZdTUBOM8y0iMyYQjnovDj8bdSXcwFbmWhuLzQvjiLL6Pk4dY
+        JFVIwQyMiqW
+        +ZS5tBkHYdOxQCwzf0myMfW0ONUXzfV93YQDp1lzI5UxOtq2OqutcvPoRZozR
+        SizRJgznUc6UJU3TBE
+        OiR3G+Uvp1EMlQfC+ccdTt9LoTsQuhbNDfcNoe9DptUWFQzpdJBrUn
+        hQGJWhAICIoH+/PDAEsJFkfop
+        pQvRalX99YEiULTnARb8Df02x3+mwb9VoH3PYj8CIuCLYSH
+        poCc/SFOy9HbJE5WFD86ULvT6Y6m3csD
+        XykvRmpn4txclcro5vco2yQclYe/HN62ewOZLgvI
+        qBQfQTriiJTCr3qDawBUpDu333uTCgICjkLepAn
+        cbiqrTGYXh9hpZalphvCSJOlyU93c6OZ1
+        f1aF3F6XkFu0iJOIJimjQQXT6bcnkwrkonn31+9K1ASlEK
+        AoIqyEDMeX3XEFcvXaOgBgUlXE
+        Vfu2139dgXw38krITWnDBHJzFQiKOMCOpheH/lpCrruDWfVAL3LwQ
+        +9+/xOkphzHYxL0KVwF
+        ESeLJNt0Cpe/m4nMxVhOxL1apLoAsk0wD23NxKGu2aHla/7cRNp8rvs+RnCb
+        dfGRZGMZnu8Z
+        zkcG4OcSbR/ILV/G4T4ulbgn5YVmU282Te/kADdN/eQI963DcH02vl3XaZ4a4NL0unF
+        KoL7Q
+        W35rqO4sKvvH7Zo19R5awyBZyY8utIXLTZQXb1vTbE0tP4HW4Y4CF85MvoJCwcHQikabAg/6
+        k
+        s6as3IR3di6KWH7K+9iZ3q4KQbS8qb61OWPxc++cPsgeHbrTE6ZdKuWPScudHPoo1IhT12q
+        UMuB20jl
+        HIlhwp6z+2+If2ny8dMU82xoH3GpnTsFsNwKRX0Iep4LL3PMuuWU35N4sR2w644j
+        LkqgHKjwnMzgTpt
+        xRGO+6cW3BOo/rOroul7XhRgYJibiEqx2Z+PhSBARcARORlmypgAVtIWY
+        S7tJItH8CKWgYCVSbkTWJN
+        LF04IGkt64LENpQEAvmUAwkdKkrLEnW/ffVKJ1f5EdwnyCqLtW
+        FfQjyK4ByFURZBuCMslBwfmhT+FLG
+        VgB2sgbPkwX80s42SNf4moyXcBxMxjYDMPXcgLDKViu
+        p5/KiBbTB6KdC/bmmhpuyzRaQrO6vkfU9GJQ
+        e5qB8l/C1mxbq1P6r4Pmi7IJ+Xsu+pngkaQr
+        u9CCmtvrSi3H8g3D8XWZ3ErO51gLfqz7EiTTCa3yR5x
+        x12OKdCwbVHCW4KV9/kd14LJdFuXi
+        D6yEgoQSPhEizLfun5Fo1/SKV8p6cQfyIhcTb50tkx04CS5ECp
+        vBEopje/K+wdAqjSDLj0oi
+        NH9sqoMY7Ry3d1nMviDg0pxiiF1ZBH64nnj27iJ05BKCC751W4wl51pup
+        ne52/NOF9WPizkN
+        x2Qh71VlPsQlgVtJao8Ur5jh+ijwwEIULwWprAxLnSsyN8TyGUVPjVRGZU1dCzGo
+        PyjblqMb
+        KLdEg4LIeJxzwZqgOeXSJysKRRxdiyqGoi2NzXY6VMoiwZTFToYEygPUNEX4NyzWUn6WYsp
         f
         lDCCh6+Ktz8ppv610oDfn4UjQ+GTzA1c5WCba0JicMKLnHISpxFCnCndiD0kcpcyEU+pPILu
         QSGrH
-        Lq41N5Bzd09l3UyTaEkwe7+qXTfplDSxMNaAANZ38ECwmPU8r+Gx7WK6K0oXa0SPhL1
-        oWiovDcqKbJW
-        +WPDMCzH8s9/bPwOf2y4LdOv65b7kj82fg8y8CpKILOCKs504JkOPNOBZzrw
-        TAd+VrnlyzjcmQ4804F
-        nOvBMBz5LB1p18xgbaNfdT8wGXmWgpE/MBO6RelfZhkX//lf8IRLQ
-        qhvNN2Yp3yckfxBkR/yZsIBuy/
-        ZOZgEPWpv/GQvomH7T32MBPwH5Y7hNwz9O/sDSEVaSve78
-        TAN9wCz/LzRQGZSKprxC0f0aQXwpXy0JW
-        fGcxl8/IYIMH1LYyUQQFJkEblUEPyWACk7mv0EA
-        ldEBIUGKmHj/H6l39I4=
-  recorded_at: 2025-09-03 13:41:09
+        Lq41N5Bzd09l3UyTaEkwe7+qXTfplDSxMNaALGs72AB4TFq+V/D41pF9FaUrlYJH4n6
+        UDRU3huVFFmr
+        /LFhGJZr+ec/Nn7vPzagTtotx617rv+SPzb+G2TgVZRAZgVVnOnAMx14pgPP
+        dOCZDvyscsuXcbgzHXi
+        mA8904JkOfJYOtOrmMTbQqTc/MRt4lYGSPjETuEfqXWUbFv37X/GH
+        SECrbthvzFK+T0j+IMiO+DNhAZ
+        stxzuNBTzW2vzPWEDX9G1/jwX8BOSP0bQN/zj5A0tHgZLs
+        dednGugDZvl/oYHKoFQ05RWK7tcI4kv5a
+        knIiuc0/voJEWT4kMJOJoKgyCRwqyLBUwKo4GR+
+        DwKojA4ICVLExPv/AHgS9G4=
+  recorded_at: 2025-09-04 12:14:27
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=500&offset=0&year=1990%2C1991&taxonKey=3118771
@@ -1892,5 +1892,5 @@ http_interactions:
         UvY5nm/kqAY6iLeDDCuryyAq5D6fYqc0r8O3uo4YZ3uIkz2GdndhpHNWp/sHap8QPF4h+f
         Fk
         ELOqP/Se+cIKEEknMaKT6Boe37U8//x/kh7W4g==
-  recorded_at: 2025-09-03 13:41:10
+  recorded_at: 2025-09-04 12:14:28
 recorded_with: VCR-vcr/2.0.0

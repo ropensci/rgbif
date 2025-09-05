@@ -7,12 +7,14 @@ http_interactions:
     headers:
       status: HTTP/1.1 400 Bad Request
       content-type: text/plain
+      x-rlr: '25'
+      x-grlr: '30'
     body:
       raw_gzip: |-
         eJxzTszLyy9RKEgsKk5VKM7MLchJVQj3DrFSCPD3iXT399PQMDbQM1QwBBI6QFLByEAHiBVM
         gJQJhAL
         LJ2pqKrhWFKQml6SmKCQq5JXmJqUWAQCn4BjF
-  recorded_at: 2025-08-04 13:56:35
+  recorded_at: 2025-09-04 08:12:44
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=500&offset=0&geometry=POLYGON%28%2830.1+10.1%2C+10+20%2C+20+40%2C+40+40%2C+30.1+%2710.1%27%29%29
@@ -21,12 +23,14 @@ http_interactions:
     headers:
       status: HTTP/1.1 400 Bad Request
       content-type: text/plain
+      x-rlr: '25'
+      x-grlr: '30'
     body:
       raw_gzip: |-
         eJxzTszLyy9RKEgsKk5VKM7MLchJVQj3DrFSCPD3iXT399PQMDbQM1QwBBI6QFLByEAHiBVM
         gJQJhAL
         Lq4MUqGtqKrhWFKQml6SmKCQq5JXmJqUWAQAQshly
-  recorded_at: 2025-08-04 13:56:35
+  recorded_at: 2025-09-04 08:12:44
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=500&offset=0&geometry=POLYGON%28%2830.1+10.1%2C+10+20%2C+20+40%2C+40+40%2C+30.1+10.1%29
@@ -35,10 +39,12 @@ http_interactions:
     headers:
       status: HTTP/1.1 400 Bad Request
       content-type: text/plain
+      x-rlr: '25'
+      x-grlr: '30'
     body:
       raw_gzip: |-
         eJxzTszLyy9RKEgsKk5VKM7MLchJVQj3DrFSCPD3iXT399PQMDbQM1QwBBI6QFLByEAHiBVM
         gJQJhIL
         Layq4VhSkJpekpihEa8YqpOWX5qUouPq7AQBNsxoI
-  recorded_at: 2025-08-04 13:56:35
+  recorded_at: 2025-09-04 08:12:44
 recorded_with: VCR-vcr/2.0.0

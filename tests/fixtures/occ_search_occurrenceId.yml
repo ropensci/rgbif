@@ -15,7 +15,7 @@ http_interactions:
         AzmVp9j
         xN1B/lJ4BSYC31e5Gcm5vxMz0dE9Pd0+f3Td84vsZyfmW2ODDIArgl9zgSewN/THB
         SeplfMtHYUYaPE
-        6KGKY1S2vwKcmKMIe552/4G7LkW6qlGoqoKRrs46EcwZ6P6TiPNcP1sOEL
+        6KGKY1S2/wKcmKMIe552/4G7LkW6qlGoqoKRrs46EcwZ6P6TiPNcP1sOEL
         PkaKoJqaK7i6KAnEwq6kI
         g25hsU3+EXhhkE2D+LZMJ2VkkQXNV9XfUEWLUlQJVcXLNlTBRMb
         kiiaHpElAySDOMtRGKI8SOK1IPZN
@@ -91,8 +91,8 @@ http_interactions:
         5BKfY3UVk4z+pvw4JmWU0e8dB1CzQwrN
         Lf4ZSpGfzYGo4ZWakQY3TWdFznmwNA1w3uC2ZYdbbGpRjYI
         r4GTuDkMgn8o2pz25PMarDR6o
-        3QXPRT0oM+sOgpc0WWQhDHFLysB9+09JsX6P
-  recorded_at: 2025-09-03 13:41:22
+        3QXPRT0oM+sOgpc0WWQhDHFLysB9+09nvH6Q
+  recorded_at: 2025-09-04 12:14:41
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&occurrenceId=1
@@ -109,7 +109,7 @@ http_interactions:
         AzmVp9j
         xN1B/lJ4BSYC31e5Gcm5vxMz0dE9Pd0+f3Td84vsZyfmW2ODDIArgl9zgSewN/THB
         SeplfMtHYUYaPE
-        6KGKYlydIbfEqyIsxh8vkb/oYs+ZZqqYYiaooGG3koR7DpYzrOY81wPWz4
+        6KGKYlyTIbfEqyIsxh8vkb/oYs+ZZqqYYiaooGG3koR7DpYzrOY81wPWz4
         go+RIqim5gquLkoCsbArq
         UhDrmHxDX5RuGGQzYN4NkxnpSTRRc3XVV+QRUsSVMnVBUv2VMHE
         hiSKpkdkyQDJIM5yFIYoD5J4LYh9
@@ -185,8 +185,8 @@ http_interactions:
         0ZJLfI7VVUwy+pvy45iUUUa/dxxAzQ4p
         NLf4ZyhFfjYHooZXakYa3DSdFTnnwdI0wHmD25YdbrGpRTU
         KroCTuTsMgXwq25z25PIYrzZ4
-        oHYXPBf1oMysOwhe0mSRhTDELSkD9+0/AcFzfr0=
-  recorded_at: 2025-09-03 13:41:22
+        oHYXPBf1oMysOwhe0mSRhTDELSkD9+0/Af2Jfr8=
+  recorded_at: 2025-09-04 12:14:41
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&occurrenceId=1
@@ -203,7 +203,7 @@ http_interactions:
         AzmVp9j
         xN1B/lJ4BSYC31e5Gcm5vxMz0dE9Pd0+f3Td84vsZyfmW2ODDIArgl9zgSewN/THB
         SeplfMtHYUYaPE
-        6KGKY1S2vwKcmKMIe552/4G7LkW6qlGoqoKRrs46EcwZ6P6TiPNcP1sOEL
+        6KGKY1S2/wKcmKMIe552/4G7LkW6qlGoqoKRrs46EcwZ6P6TiPNcP1sOEL
         PkaKoJqaK7i6KAnEwq6kI
         g25hsU3+EXhhkE2D+LZMJ2VkkQXNV9XfUEWLUlQJVcXLNlTBRMb
         kiiaHpElAySDOMtRGKI8SOK1IPZN
@@ -279,8 +279,8 @@ http_interactions:
         5BKfY3UVk4z+pvw4JmWU0e8dB1CzQwrN
         Lf4ZSpGfzYGo4ZWakQY3TWdFznmwNA1w3uC2ZYdbbGpRjYI
         r4GTuDkMgn8o2pz25PMarDR6o
-        3QXPRT0oM+sOgpc0WWQhDHFLysB9+09JsX6P
-  recorded_at: 2025-09-03 13:41:22
+        3QXPRT0oM+sOgpc0WWQhDHFLysB9+09nvH6Q
+  recorded_at: 2025-09-04 12:14:41
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&occurrenceId=2
@@ -297,112 +297,90 @@ http_interactions:
         or+aNM8
         gv1HPkJJI3da7a7dBgwpYgDNzzsyZc5vznX3Lx76f0oxvoBofBosAvqQaTyOv7w8p
         iRMv5Rs+DlNa40
-        m8imBZQ2KNT2i6CjNY+/Ytf0vXfEMVDdOUkCzrNd7DGYY9n7J53tSp7okK
-        FnwXI0HxDV8wTR0LmuYj2
-        SPUp4rH1/jlyg2DdB5Es34yKziphlRfU3xBQqYoKKKrCabkKYJB
-        dBEhw6OSqANnEKUZDkOcBXG0ZSS+
-        4Yo6nGYYmqCYvie4FBHBMIlCVEI1rFFgnMdpVpyHo+BN
-        lf9+B5cit5lmEsY6+YYtJHEWkziEsXXTg4k
-        Qp1k7wd+F1IM5CUmqgDRBMsYINWStoUh1xRR/
-        CwOEttQDnKQVYl1A6hjpDSQ2JKOu6tKemLBtbaAU83
-        P/QEnGRnzbGg2AVxYQ0guRZgleLGiT
-        JHG0XmwpYIV+n9EohbuDMd++q/EuToN0Z3wgGwytkTV8ZnWmo
-        4HVtm8sB5hiQlZJQiNCRxnO
-        VumOzhkzkeACaeAHJFcp25bXPc/XVdCoJ5qyoBBiCq6siuAJJtJgASPZ
-        ZXSrFM8o+8h9ijee
-        K122Y4QXMMuPV2GwxFyvDlMJjm5hqms5kxE7M/YYRas/bjp2u8mUjlfZPE7APkt
-        YyHn8OFng
-        LKOeU+z3VfB1seVXV8HXbFu4PiaELoFk8otLkuHv4yheBGSv4ma7bQ3GVudEx2UY8u2Rev
-        2k
-        FNRa3eJkHWe4FLTTv2naDpywYxmU5IMQRxmmJfFT2+kCQ4W6ffM7Y1ThyGgSeLEbxBBLlVNG
-        k9Yp
-        77hy1DjBZE7j5XxdFW5w/aI3qbL0pF7J0wvCIF6mgVfhaPeao1GFQZPkzhELDmlaMvSH
-        HWt4wKCanSM
-        GQqtKeNK8sXsvKixnveHYFd69hNyUpivKsiQ/bv6+70xvmuP29fTa7l5bw2HT
-        ecq/BEN7EB2e6yuCRH
-        yWIWVTMF0JC66LTJNgTGWNnAkOSVchPcn3csrPGgv/+YMf5/rag/xY
-        15GuS8aDHVI0tYc5pCjq0kP8U
-        ddM82HueMEgj3TInf7zt3C7dY2/hWfOixf5pAbvyXwdrorR
-        VpFbw+RToCN4IxKPJsUQNACGx4sgXBcs
-        cMUaP6PRKj08Zedx41MBUhLQKGN2d0697nCxeeJ0
-        u31Hd22yveKB+xT3PPWO/HKH5izud2Sy/I5Vi+S
-        qHR4GyZ3uDsUUtb1C6l1FoAhIFiR9nBcB
-        RR3gURIscNiDoMhW7AWSzboqSvAr1+Jotl3UtLqu6oqksv
-        cKto4oq+z45shuMm2CGHSQxK8D
-        eOBZLscLnNziiNVpM+wtWCoI6WsaIvY1C7y88GmV/jd549LbALaJW
-        DTnpOIBaV1EU7Gkzw94
-        BQf8Zk8vHdMfsQzwGifBK56565pisAXTS41fwHXmcHumOOY+MAXbRVkHrlRV
-        nlLcM4GFdd9/
-        ke9gKHnlezRThky774xtB4qcKUSszUqiJ8P+zbTdhxC2nebYYsYcWm0W0Z1pByamtvO
-        s2bOZ
-        HS/EW423ndHYHk/G9n7Z6TsW/7IoBO0IHthlQrN7VYNhQKCYYxedZ9mycXVFEgoe8RqKuQVo
-        J
-        q3Hyewqr1sJeDoOoqs3NImvxDq6CukMh3nxwq48oq9WrLzz9tV/sPPBpKj6yzGTK08uC+oF
-        GBZfsmAg
-        OTp4yaBCuCsEv80zkB21w1WaMcbt3klebFKvxcJnNF/dJqswjN/EHuaGLDL3Z12k
-        8CK8Exm0nR80o3C
-        ZLCBg+TyCn3dHhrJ7P45zNykq+HZRvOVVfCmU3dnJXpFjPzlzA6iWZ/lb
-        xFuTYX9glRseBsMeM7ANum
-        f5ilOd1cLNFevHU4SkqgoKdYOp4+IBHFIWnOxCm79t3m9+2rz/
-        8MfNP+HrX5t/fPgT+/rwV27z8+aHz
-        Y/1Grf5+4e/wOzPH/68ec9BWla5zU81js1sfgC+95sf
-        ub12a9xBtDCcBemDnblVU5Ngjy7WXOxzeWIl
-        NGXf2ZxyQ1p4GRsfKICJHQYZU8w3OMF+OscR
-        B8/UjNa4STJbZZwHpElAshq3zzvccpeMCnUzE/Ml4sz
-        VHYYAfUrZxs3R9QFQyXmY4l7TxAXN
-        LSzIM9sSghcVFZUPqiqquoaQrJhHWFbV4WWTfSrIOgFgqQOWMX
-        SCBYKRqYpYcwFwnseyqmlQ
-        15Q9ARuKIiiSYQoG9lwB+YZqyB4mpkjPYlnTVFWJAJb1dU0SRJGKAlagQ
-        kQIZKYu/Jn4LiyL
-        dF8TdQ8JRDMM4PcMwfVhJ9cAzEVUhA1NuoBlu61DLNt53p42h+1ryHwXMK0hyGgs
-        oYYiN2Sp
-        Lqv6XZh2T6w0RKVumOgMptU/jk+vJzdNZ9pvMZDaZEn0vwdPW2a3Ugs2ZwkzQsoRvAzAhgl
-        8
-        VkviHD5b94aIUDkAstrVKbvN2au1hOccxLeWAUQae7bLA8/X1zvmvMKGcUn/8WL/V3XH/0Pq
-        R0Jq/
-        dlNRb74Y4Baf/L8gPxjcPrZuNs7dbIT/FK7t1OeeuQ58GN3oNQaT5/0J05ZoUGRx1zi
-        cPGTYDrSFBM9
-        JoZ++YC52AH4H77Tr6u5IGvm/SNTRrr8kMDM7SwrDwnN+7jG54/Oo55FLsIn
-        9ixAsQc9C6a7w55Frpu
-        tm9L08OhzjYzt0kkj42LwPLqrcXHHx7Q49k61b3CUjrNrbxxHLU0v
-        Wv6x4V5tnJTp5O7WyXFPRJXqpo
-        Z0TT3XExHEumLohsK8IobLw9ub0QnUkEkGQDlb29ENoHCG
-        fsF56uJh52SP3457J1Y0C+/unHRbw0rnJ
-        ArAoNzTrZ3OdE+AvC5WOyG7E850TnLauqRUyTsA
-        f9Z7YvmU+HD3Lfn5Lou267Lo57osmiDpZ7osom4e
-        t1nyqQf2We7IB7VzGeSOfsplJHKvfsqW
-        KL1y11fKp3ZSVBVgokJ0EEkiABRFLGAV8Jqh+whrpks0Tf6
-        czZYM+36Nc+rW5++i5Pjxs3VR
-        DgKDtRW6zBRcKwlYeHKsS+DECWSOJOJspoao8m/ly/2Whys/7yBEmK
-        wgM22zWDv3Bq7FcsE2
-        J7XjiCXnvOvgtJzRixHKf5Ims7Jg606r6DaKv4tyN0qC2TxLr+OwSLsOKDzBI
-        VcmED+Os2UC
-        qej50zHLwv3ei27f+eILlrhMVVY4lt5UTa4dTGiqVMwYSFYvzJwwwcSXX1a0U5RDzyBx
-        777L
-        fLt9hDiBg4QIjkATGIDRwfLZYb9m11U535fJ1XZeX+8KJ6eFl7/7NyIXMYk=
-  recorded_at: 2025-09-03 13:41:22
-- request:
-    method: GET
-    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&taxonKey=212&occurrenceId=1
-  response:
-    status: 429
-    headers:
-      status: HTTP/1.1 429 Too Many Requests
-      content-type: application/json
-      retry-after: '31'
-      x-cache: synth_synth
-    body:
-      raw_gzip: |-
-        eJyFkMtOxDAMRX/F6rpt9giNeEig2SGBYIFYuIk7iSYTh9ihv09bMe2SlSVL5/r4fjZvDI6n
-        FBkdPD8
-        cn4CtraVQsgQOFSEkGGo8t5AjoRAU+q4kCrhz6gvXk58nwUSDBCW49apZboyZpqk/
-        DWHsuZzMHm6EsF
-        h/aFfq/uW4E0rWO7ayY5TM4tJVIYM5dNfLMuNcYF6vKWMhglyHGCzYyNWt
-        Hwip/KvTScIsnvXQN23zQ
-        WAxAUZhyIV/gvsrAweuuj0u7XagBRsUNXASwORgBjkt3T2+vi+K
-        whcCniULjFwuqFuflpOiVfAUsyM5
-        313t+ubrF904lOA=
-  recorded_at: 2025-09-03 13:41:22
+        m8imBZQ0CQ0HQVZrD27Vv+lq75hioapikhWdZrvIczDHs+ZfO8qVPdExUs
+        +C5GguIbvmCaOhY0zUeyR
+        6hPFY+v8cuVGwbpPIhm/WRWcFINqb6m+IKETFFQRFcTTMlTBIPo
+        IkKGRyVRB84gSjMchjgL4mjLSHzD
+        FXU4zTA0QTF9T3ApIoJhEoWohGpYo8A4j9OsOA9HwZsq
+        //0OLkVuM80kjHXyDVtI4iwmcQhj66YHEyF
+        Os3aCvwupB3MSklQBaYJkjBFqyFpDkeqKKf4W
+        BghtqQc4SSvEuoDUMdIbSGxIRl3VpT0xYdvaQCnm5/
+        6BkoyN+LY1GgCvLCCkFyLNErxY0CZJ
+        4mi92FLACv0+o1EKdwdjvn1X412cBunO+EA2GFoja/jM6kxHA
+        6tt31gOMMWErJKERoSOMpyt
+        0h2dM2YiwQXSwA9IrlK2La97nq+roFFPNGVBIcQUXFkVwRNMpMECRrLL
+        6FYpnlH2kfsUbzxX
+        umzHCC9glh+vwmCJuV4dphIc3cJU13ImI3Zm7DGKVn/cdOx2kykdr7J5nIB9lrC
+        Q8/hxssBZ
+        Rj2n2O+r4Otiy6+ugq/ZtnB9TAhdAsnkF5ckw9/HUbwIyF7FzXbbGoytzomOyzDk2yP1+k
+        kp
+        qLW6xck6znApaKd/07QdOGHHMijJByGOMkxL4qe20wWGCnX75nfGqMKR0STwYjeIIZYqp4wm
+        rVPe
+        ceWocYLJnMbL+boq3OD6RW9SZelJvZKnF4RBvEwDr8LR7jVHowqDJsmdIxYc0rRk6A87
+        1vCAQTU7Rwy
+        EVpXwpHlj915UWM56w7ErvHsJuSlNV5RlSX7c/H3fmd40x+3r6bXdvbaGw6bz
+        lH8JhvYgOjzXVwSJ+C
+        xDyqZguhIWXBeZJsGYyho5ExySrkJ6ku/llJ81Fv7zBz/O9bUH+bGu
+        I12XjAc7pGhqD3NIUdSlh/ijr
+        pnmw9zxgkEe6ZA7/edv4XbrGn8Lz5wXL/JJDd6T+TpcFaOt
+        IreGyadAR/BGJB5NiiFoAAyPF0G4Lljg
+        ijV+RqNVenjKzuPGpwKkJKBRxuzunHrd4WLzxOl2
+        +47u2mR7xQP3Ke556h355Q7NWdzvyGT5HasWyVU
+        7PAySO90diilqe4XUu4pAEZAsSPo4LwKK
+        OsCjJFjgsAdBka3YCySbdVWU4FeuxdFsu6hpdV3VFUll7x
+        VsHVFW2fHNkd1k2gQx6CCJXwfw
+        wLNcjhc4ucURq9Nm2FuwVBDS1zRE7GsWeHnh0yr9b/LGpbcBbBOxa
+        M5JxQPSuoimYkmfH/AK
+        DvjNnl46pj9iGeA1ToJXPHPXNcVgC6aXGr+A68zh9kxxzH1gCraLsg5cqao8
+        pbhnAgvrvv8i
+        38FQ8sr3aKYMmXbfGdsOFDlTiFiblURPhv2babsPIWw7zbHFjDm02iyiO9MOTExt51m
+        zZzM7
+        Xoi3Gm87o7E9nozt/bLTdyz+ZVEI2hE8sMuEZveqBsOAQDHHLjrPsmXj6ookFDziNRRzC9BM
+        W
+        o+T2VVetxLwdBxEV29oEl+JdXQV0hkO8+KFXXlEX61Yeeftq/9g54NJUfWXYyZXnlwW1Asw
+        LL5kwUBy
+        dPCSQYVwVwh+m2cgO2qHqzRjjNu9k7zYpF6Lhc9ovrpNVmEYv4k9zA1ZZO7Pukjh
+        RXgnMmg7P2hG4TJ
+        ZQMDyeQQ/744MZfd+HOduUlTw7aJ4y6v4Uii7s5O9Isd+cuYGUC3P8reI
+        tybD/sAqNzwMhj1mYBt0z/
+        IVpzqrhZsr1o+nCElVFRTqBlPHxQM4pCw42YU2f9u83/y0ef/h
+        j5t/wte/Nv/48Cf29eGv3ObnzQ+bH
+        +s1bvP3D3+B2Z8//HnznoO0rHKbn2ocm9n8AHzvNz9y
+        e+3WuINoYTgL0gc7c6umJsEeXay52OfyxEpo
+        yr6zOeWGtPAyNj5QABM7DDKmmG9wgv10jiMO
+        nqkZrXGTZLbKOA9Ik4BkNW6fd7jlLhkV6mYm5kvEmas
+        7DAH6lLKNm6PrA6CS8zDFvaaJC5pb
+        WJBntiUELyoqKh9UVVR1DSFZMY+wrKrDyyb7VJB1AsBSByxj6A
+        QLBCNTFbHmAuA8j2VV06Cu
+        KXsCNhRFUCTDFAzsuQLyDdWQPUxMkZ7FsqapqhIBLOvrmiSIIhUFrECFi
+        BDITF34M/FdWBbp
+        vibqHhKIZhjA7xmC68NOrgGYi6gIG5p0Act2W4dYtvO8PW0O29eQ+S5gWkOQ0VhC
+        DUVuyFJd
+        VvW7MO2eWGmISt0w0RlMq38cn15PbprOtN9iILXJkuh/D562zG6lFmzOEmaElCN4GYANE/i
+        s
+        lsQ5fLbuDRGhcgBktatTdpuzV2sJzzmIby0DiDT2bJcHnq+vd8x5hQ3jkv7jxf6v6o7/h9SP
+        hNT6s
+        5uKfPHHALX+5PkB+cfg9LNxt3fqZCf4pXZvpzz1yHPgx+5AqTWePulPnLJCgyKPucTh
+        4ifBdKQpJnpM
+        DP3yAXOxA/A/fKdfV3NB1sz7R6aMdPkhgZnbWVYeEpr3cY3PH51HPYtchE/s
+        WYBiD3oWTHeHPYtcN1s
+        3penh0ecaGdulk0bGxeB5dFfj4o6PaXHsnWrf4CgdZ9feOI5aml60
+        /GPDvdo4KdPJ3a2T456IKtVNDe
+        maeq4nIoh1xdANhXlFDJeHtzejE6ghkwyAcra2oxtA4Qz9
+        gvPUxcPOyR6/HfdOrGgW3t056baGlc5JF
+        IBBuadbO53pngB5Xax2QnYnnOmc5LR1SamSdwD+
+        rPfE8inx4e5b8vNdFm3XZdHPdVk0QdLPdFlE3Txu
+        s+RTD+yz3JEPaucyyB39lMtI5F79lC1R
+        euWur5RP7aSoKsBEheggkkQAKIpYwCrgNUP3EdZMl2ia/Dm
+        bLRn2/Rrn1K3P30XJ8eNn66Ic
+        BAZrK3SZKbhWErDw5FiXwIkTyBxJxNlMDVHl38qX+y0PV37eQYgwWU
+        Fm2maxdu4NXIvlgm1O
+        ascRS85518FpOaMXI5T/JE1mZcHWnVbRbRR/F+VulASzeZZex2GRdh1QeIJDr
+        kwgfhxnywRS
+        0fOnY5aF+70X3b7zxRcscZmqrHAsvamaXDuY0FSpmDGQrF6YOWGCiS+/rGinKIeeQeLe
+        fZf5
+        dvsIcQIHCREcgSYwAKOD5bPDfs2uq3K+L5Or7by+3hVOTgsvf/dvQpcxig==
+  recorded_at: 2025-09-04 12:14:41
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&taxonKey=212&occurrenceId=1
@@ -508,5 +486,5 @@ http_interactions:
         vKAS5JmwuG4d8LtT2KsAi9dBKCcKUU1qXC4BVSZYBuPZvA3iRV4Q5Tdk1Imj5IE
         ihfGibRr1tinJnec
         4ylqUvoDTB6u+ltH7YrMxx+7L2UG8zKFv/wHe+EC5w==
-  recorded_at: 2025-09-03 13:41:27
+  recorded_at: 2025-09-04 12:14:42
 recorded_with: VCR-vcr/2.0.0

@@ -11,7 +11,7 @@ http_interactions:
       x-grlr: '30'
     body:
       string: Cannot parse asia,oceania into a known Continent
-  recorded_at: 2025-09-03 13:41:45
+  recorded_at: 2025-09-04 12:15:04
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=500&offset=0&decimalLatitude=334
@@ -24,5 +24,5 @@ http_interactions:
       x-grlr: '30'
     body:
       string: 334 is not valid value, latitude must be between -90 and 90.
-  recorded_at: 2025-09-03 13:41:45
+  recorded_at: 2025-09-04 12:15:04
 recorded_with: VCR-vcr/2.0.0

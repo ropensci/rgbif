@@ -5,9 +5,9 @@ http_interactions:
   response:
     status: 404
     headers:
-      status: 'HTTP/2 404 '
+      status: HTTP/1.1 404 Not Found
       content-type: text/plain
     body:
       string: Download was not found
-  recorded_at: 2025-08-04 14:03:21
+  recorded_at: 2025-09-04 08:30:30
 recorded_with: VCR-vcr/2.0.0

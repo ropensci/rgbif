@@ -1,12 +1,12 @@
 http_interactions:
 - request:
     method: DELETE
-    uri: https://api.gbif.org/v1/occurrence/download/request/0014507-250802193616735
+    uri: https://api.gbif.org/v1/occurrence/download/request/0025653-250827131500795
   response:
     status: 204
     headers:
-      status: 'HTTP/2 204 '
+      status: HTTP/1.1 204 No Content
     body:
       raw_gzip: eJwDAAAAAAE=
-  recorded_at: 2025-08-05 10:43:10
+  recorded_at: 2025-09-04 10:23:03
 recorded_with: VCR-vcr/2.0.0

@@ -7,16 +7,18 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
+      x-rlr: '25'
+      x-grlr: '30'
     body:
       raw_gzip: |-
-        eJxdzbGKwzAMBuB30ZxBki3ZznbDzYVuR+kQEhsCaQJNO5W++5n2uJMPLT/8n6QHbKXs+QY9
-        drDMl/m
-        d8jodyjGP23XaoS/DsucOxu2+1toxSgzstLpr3u/LrZLTuYMyjPmVH1DmvEzQw9fn
-        xxF+Nt/NOlxyLR
-        jZwe9JjslLqFefnRVsRGANAaO2gowQryqI0go0gl0UxxQbQelPUHIJJWD7
-        haIRGkVJpf1CwQjvyAtRa
-        oUawUHQqfwTYgSRRGSlVngjkJhVKTzPdb4Btvp+IQ==
-  recorded_at: 2025-08-04 13:50:35
+        eJxd0LGKwzAMBuB30ezBki3bytahc6FbOTqExIZAmkDTTqXvXnE9iH14Efyff2S/YC1lyw/o
+        rIF5uk3
+        fKS/jqZzzsN7HDbrSz1s2MKzPRWNH7JJExGDgnrfn/FDyczVQ+iH/zi8oU55H6OBy
+        PJzh7+Y3Wfpb1o
+        AsOdgrkZxPRPI2taBdUHTesvA/gZVgdhhSSq2wlSDPQZC4ESi7QPHBCiG2
+        IlVCCyyjja2IlfAuola0m
+        2KoBCV9ijC1giuhBdbqP7fCV0K3UiPufdXzAaryfgc=
+  recorded_at: 2025-09-04 07:50:55
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facet=year&facetLimit=&year=2000%2C2003&taxonKey=212
@@ -25,14 +27,16 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
+      x-rlr: '25'
+      x-grlr: '30'
     body:
       raw_gzip: |-
-        eJxVzT0LwyAQBuD/crODX2nVrUPnQrZSMoieIBgDMZlC/nulKa3hlhfe5+42mEIouIChBFIc
-        45Ew+0f
-        o0U2zL2CCTQUJuGnNtZacSqVpVTOWNS0VvAYCwTr85A1CxOTBwPN+6+G7dzTZjlgL
-        TqmA30HGlNRMyJ
-        20gDegPrwooc+AtYApfVX8DOgf6I4LJrt9qPMGEbNG4g==
-  recorded_at: 2025-08-04 13:50:36
+        eJxVzD0LgzAQBuD/cnOGy2c1W4fOglspDkEvEIgGjE7if2+opVXuhhfe526D5H2mBSwyiGEM
+        R6JpaHx
+        LfZqHDNa7mIlBn9ap1EqgEZXhDGbKa1wKeHUMvOvpkzfwgeIAFp6Pewvfu6OZ3Eil
+        EIgSfg85r3RZsb
+        MzECeAqkYpzRXwM+C14jd5BfgHtRZGI+5dmTcN1UbL
+  recorded_at: 2025-09-04 07:50:55
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facet=country&facetLimit=2
@@ -41,14 +45,16 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
+      x-rlr: '25'
+      x-grlr: '30'
     body:
       raw_gzip: |-
-        eJxNjLEKgzAURf/lzRl8JgrJWuhYQetQikNIXiAQEzA6if/eUIuUu1w4594dknOZVlAVg+Bn
-        fzaKtnM
-        9mbTYDMrpkImBSVssmKOQQtaiKd5CeQtrUd4TA6cNffsOzlOwoODWjY9n/4Lf+IRR
-        z1TYOMD1iVghYl
-        Nje7BLuPd/gmy5QC6bYyr5AExNN0Y=
-  recorded_at: 2025-08-04 13:50:36
+        eJxNjLEKwyAURf/lzQ5qqmldCx0bsM1QSgbRJwhGISZTyL9XmhLKXS6cc+8K2fuCMyhKIIYx
+        7A2T67x
+        GmydXQHkTCxKweUkVN6ylrZCSCQITliXOVXkPBLyx+O0r+IDRgYJr19+f+gW/8Q6T
+        GbGy/gHHJ2P0zD
+        k9cbGRQ7jpP+EiJaWNkNtQ8wFNHjdH
+  recorded_at: 2025-09-04 07:50:56
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?limit=0&offset=0&facet=occurrenceStatus&facetLimit=
@@ -57,14 +63,16 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
+      x-rlr: '25'
+      x-grlr: '30'
     body:
       raw_gzip: |-
-        eJxVzc0KgzAQBOB32XMO8b/xZkOuKomeihTRDQjRgNGT+O4NtbSUvQzMx+wBVmuHG+SUgJnm
-        6Uq4jJW
-        WONh1dJDr3jgkMNh98XUU0uSWhVHq3YpuN5snj46A7gd85wP0hGaEHCrOWylFycVT
-        NUXTKvjMXGzpZ/
-        SqlkKJsoHfiyBmMQvjhJ7kq4r7P0rSKGMsoGfn7wVuIDy8
-  recorded_at: 2025-08-04 13:50:37
+        eJxVzTELgzAQBeD/cnOGpDbRulnJqhJ1KlJELxCIBoxO4n9vqKWl3PLgfbzbwWntcYWUErBm
+        MmfCeSy
+        1wsEto4dU99YjgcFtc6ijC4+SW8yYILCg3+wayKMjoPsB33kHbdCOkEKZ561Sssjl
+        s26ypq3hM3OyuZ
+        8wqErJWhYN/F6wmMZcCMYP8lXZ/R8lEbtSTtnRhXsBcng8sw==
+  recorded_at: 2025-09-04 07:50:58
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facet=basisOfRecord&facetLimit=&organismQuantity=5&basisOfRecord=MATERIAL_SAMPLE
@@ -73,14 +81,16 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
+      x-rlr: '25'
+      x-grlr: '30'
     body:
       raw_gzip: |-
-        eJxdjbEKwyAURf/lzQ5pCyW42dZCIMGi3UoQ0ScIRiEmU+i/V5pO5S4H7uHeDbL3BRegDYEY
-        prATJie
-        8RJtnV4B6EwsSsHlNtT4cz23bnAjMWNa41P41EvDG4pc38AGjAwoXpjqlxV1LfhXy
-        Br+FXUpmwuoM7M
-        llx3qt2PDoOfy/vMeaD/hoM28=
-  recorded_at: 2025-08-04 13:50:38
+        eJxdjbEKwyAURf/lzQ610AbcbJtCIMGi3UoQ0ScIRiEmU+i/V5pO5S4H7uHeDbL3BRdgBwIx
+        TGEnTE5
+        4iTbPrgDzJhYkYPOaak2PzelMKYEZyxqX2r9GAt5Y/PIGPmB0wODCVae0uGvZXoW8
+        wW9hl5KZsDoDf7
+        ay471WfHj0Lfy/vMeaD/YeM2U=
+  recorded_at: 2025-09-04 07:50:58
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facet=coordinateUncertaintyInMeters&facetLimit=&verbatimScientificName=Calopteryx+splendens
@@ -89,15 +99,17 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
+      x-rlr: '25'
+      x-grlr: '30'
     body:
       raw_gzip: |-
-        eJxdz02LgzAQBuD/MucgMzFfeiutBw+rYN3DshQRTUCwCrU9lf73lXapScll4Mk7H3eYnVvs
-        FVJkMA7
-        n4VXZqS9dZbv50i+QunZcLINuvk0rx4mUJBlc7HIbryv/nhi4trPP+g5usGMPKezL
-        sjrkxa7Omu9in1
-        X1Li/qnyYvmq+szqoj/Hd8pab2bNeQRMQI4T2MKDZKP9j7g8ZIb6yM4TJQ
-        HdHGMdeC++wjJ6OMh1yGk
-        xVqEXCgHEXiaYiYCD9KHzehjD+WJn8xlRi/NQkSEd9YauKP0/r+
-        AL0WfuQ=
-  recorded_at: 2025-08-04 13:50:38
+        eJxdz02LgzAQBuD/MucgM6n58lasBw9VcN3DUoqIJiBYhdqeSv97pV3apMxl4Mk7M7nB7Nxi
+        L5Agg3E
+        4Da/OTn3pKtvN536BxLXjYhl083VaOUZS2jA42+U6XlY+HBm4trPP/gZusGMPCaRl
+        We3yYltnzW+RZl
+        W9zYv6r8mLZp/VWfUD/xNfqak92TUkEDFCeC8jEhw3d/Z+oDBSH5ZacxGo
+        iujDG65i7rOPnLTUHnIRb
+        pakVMCBciLpaYhEGHtIX39CISk8mvzDpNHG49jPCkPmflzrATWE
+        fjs=
+  recorded_at: 2025-09-04 07:50:58
 recorded_with: VCR-vcr/2.0.0

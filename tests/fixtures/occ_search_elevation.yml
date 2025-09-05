@@ -18,7 +18,7 @@ http_interactions:
         ewZHYT1CCzKD2M960FLRUnZo1CyA0FoEBh8eMfe1yQovLsRYRMO
         m0qvkqHKc/KuwLlQZftyEw9lke2u
         uqEuiyTbVP8s/eFX+f9PhLFk5hX0T9avbzgLiUA=
-  recorded_at: 2025-09-03 13:41:45
+  recorded_at: 2025-09-04 12:15:05
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?hasCoordinate=TRUE&occurrenceStatus=PRESENT&limit=500&offset=0&elevation=1000&taxonKey=2435099
@@ -210,5 +210,5 @@ http_interactions:
         jFVpLQw2yLasCwcv2GFLxwcOt3yxOdvyxeZoyxfbky1frA+2fIFWgUX50NQB2O7SgXbI
         HMY7rBvPXYi
         I6oqOa8uzNXffpbTsfMXiX7gQyCPfN0O+AIJVD10ue376f3SD1bU=
-  recorded_at: 2025-09-03 13:41:45
+  recorded_at: 2025-09-04 12:15:05
 recorded_with: VCR-vcr/2.0.0

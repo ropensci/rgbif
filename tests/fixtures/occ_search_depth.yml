@@ -11,7 +11,7 @@ http_interactions:
       string: '{"usageKey":7595433,"scientificName":"Salmo salar Linnaeus, 1758","canonicalName":"Salmo
         salar","rank":"SPECIES","status":"ACCEPTED","confidence":100,"matchType":"EXACT","kingdom":"Animalia","phylum":"Chordata","order":"Salmoniformes","family":"Salmonidae","genus":"Salmo","species":"Salmo
         salar","kingdomKey":1,"phylumKey":44,"orderKey":1313,"familyKey":8615,"genusKey":2347608,"speciesKey":7595433}'
-  recorded_at: 2025-09-03 13:41:45
+  recorded_at: 2025-09-04 12:15:04
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&depth=5&taxonKey=7595433
@@ -88,7 +88,7 @@ http_interactions:
         v2.14.0 (https://nf-co.re/ampliseq) DADA2:assignTaxonomy annotation against
         PR2 v5.1.0 (https://github.com/pr2database/pr2database/releases/tag/v5.1.0.0);
         confidence at lowest specified (ASV portal) taxon: 0.6"}],"facets":[]}'
-  recorded_at: 2025-09-03 13:41:45
+  recorded_at: 2025-09-04 12:15:04
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&depth=5&taxonKey=7595433
@@ -165,7 +165,7 @@ http_interactions:
         v2.14.0 (https://nf-co.re/ampliseq) DADA2:assignTaxonomy annotation against
         PR2 v5.1.0 (https://github.com/pr2database/pr2database/releases/tag/v5.1.0.0);
         confidence at lowest specified (ASV portal) taxon: 0.6"}],"facets":[]}'
-  recorded_at: 2025-09-03 13:41:45
+  recorded_at: 2025-09-04 12:15:04
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=500&offset=0&depth=5-10&taxonKey=7595433
@@ -178,5 +178,5 @@ http_interactions:
       x-grlr: '30'
     body:
       string: 'Invalid decimal range: 5-10'
-  recorded_at: 2025-09-03 13:41:45
+  recorded_at: 2025-09-04 12:15:05
 recorded_with: VCR-vcr/2.0.0

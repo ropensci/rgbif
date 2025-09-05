@@ -1,3 +1,15 @@
+rgbif 3.8.3
+===========
+
+### NEW FEATURES
+`installation_search()` and  `collection_search()` allow you to search for GRSciColl institutions and collections. (#554)
+
+### BUG FIXES 
+Fixed "Error in the HTTP2 framing layer" bug by setting `curlopts = list(http_version=2)` as the default for most functions. (#805)
+
+### MINOR IMPROVEMENTS
+The GBIF occurrence search API now actively discourages the use of bulk downloads via paging through occurrence records using `occ_search()` or related functions. When a user has exceeded a certain threshold of requests, they will be temporarily paused for 5 seconds. A message will be printed to the console when this happens. Users are strongly encouraged to use `occ_download()` for bulk downloads. (#804)
+
 rgbif 3.8.2
 ===========
 
