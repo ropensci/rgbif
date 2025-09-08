@@ -50,6 +50,8 @@ reference:
       - network
       - nodes
       - installations
+      - installation_search
+      - installation_uuid_funs
   - title: "OAI"
     contents:
       - starts_with("gbif_oai_")
