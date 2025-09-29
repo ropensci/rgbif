@@ -7,14 +7,14 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-rlr: '25'
-      x-grlr: '30'
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DShqYmhham
-        JhYmOkp
-        FqcWlOSVAFdGxOkppicmpEHYtALM+G5E=
-  recorded_at: 2025-09-04 07:17:43
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DShqYm5gYG
+        ZiYmOkp
+        FqcWlOSVAFdGxOkppicmpEHYtALI6G4g=
+  recorded_at: 2025-09-29 11:23:07
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&eventDate=2010
@@ -23,14 +23,14 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-rlr: '25'
-      x-grlr: '30'
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSpuaWxgam
-        hkBVRan
-        FpTklQAXRsTpKaYnJqRB2LQCauhtX
-  recorded_at: 2025-09-04 07:17:56
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSppaG5hbm
+        puY6SkW
+        pxaU5JUAF0bE6SmmJyakQdi0AnM8bag==
+  recorded_at: 2025-09-29 11:23:08
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=
@@ -39,14 +39,14 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-rlr: '25'
-      x-grlr: '30'
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSxobmBuam
-        ZmaGpjp
-        KRanFpTklQCXRsTpKaYnJqRB2LQDLLBvC
-  recorded_at: 2025-09-04 07:17:56
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSxqYGlmZA
+        aGSpo1S
+        UWlyaUwJUEh2ro5SWmJwKYdcCAM0uG9M=
+  recorded_at: 2025-09-29 11:23:08
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&year=2000%2C2001
@@ -55,12 +55,12 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-rlr: '25'
-      x-grlr: '30'
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSJqaWlmaW
-        JsY6SkW
-        pxaU5JUAF0bE6SmmJyakQdi0AnN0bag==
-  recorded_at: 2025-09-04 07:18:10
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSJuamFgam
+        RoY6SkW
+        pxaU5JUAF0bE6SmmJyakQdi0AmuobWQ==
+  recorded_at: 2025-09-29 11:23:08
 recorded_with: VCR-vcr/2.0.0
