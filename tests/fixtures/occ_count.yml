@@ -7,14 +7,14 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-rlr: '25'
-      x-grlr: '30'
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSxobmBuam
-        ZmaGpjp
-        KRanFpTklQCXRsTpKaYnJqRB2LQDLLBvC
-  recorded_at: 2025-09-04 07:14:57
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSxqYGlmZA
+        aGSpo1S
+        UWlyaUwJUEh2ro5SWmJwKYdcCAM0uG9M=
+  recorded_at: 2025-09-29 11:22:59
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&year=2000%2C2011&taxonKey=212
@@ -23,14 +23,14 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-rlr: '25'
-      x-grlr: '30'
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSRsamFgaW
-        ZqbmOkp
-        FqcWlOSVAFdGxOkppicmpEHYtALPVG5Y=
-  recorded_at: 2025-09-04 07:15:07
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSRsaWJmZG
+        RhbmOkp
+        FqcWlOSVAFdGxOkppicmpEHYtALOhG5Q=
+  recorded_at: 2025-09-29 11:22:59
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&year=2012
@@ -39,14 +39,14 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-rlr: '25'
-      x-grlr: '30'
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DS5qaWJpYG
-        ZpY6SkW
-        pxaU5JUAF0bE6SmmJyakQdi0AnNcbag==
-  recorded_at: 2025-09-04 07:15:18
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DS5hZmJsYW
+        xuY6SkW
+        pxaU5JUAF0bE6SmmJyakQdi0AnIQbZw==
+  recorded_at: 2025-09-29 11:22:59
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=ABSENT&limit=0&offset=0&facetLimit=
@@ -55,14 +55,14 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-rlr: '25'
-      x-grlr: '30'
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSFsaGJgam
-        BoY6SkW
-        pxaU5JUAF0bE6SmmJyakQdi0AmbobTw==
-  recorded_at: 2025-09-04 07:15:31
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DShoZGZoZG
+        BqZGOkp
+        FqcWlOSVAFdGxOkppicmpEHYtALDjG30=
+  recorded_at: 2025-09-29 11:22:59
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&organismQuantity=5&basisOfRecord=MATERIAL_SAMPLE
@@ -71,14 +71,14 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-rlr: '25'
-      x-grlr: '30'
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DShkbmpmaG
-        hjpKRan
-        FpTklQPnoWB2ltMTkVAi7FgCCZBsg
-  recorded_at: 2025-09-04 07:15:47
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSxkYm5oZG
+        RjpKRan
+        FpTklQPnoWB2ltMTkVAi7FgCCKxse
+  recorded_at: 2025-09-29 11:23:00
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&verbatimScientificName=Calopteryx+splendens
@@ -87,12 +87,12 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-rlr: '25'
-      x-grlr: '30'
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSJgaG5haW
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSJgamZhaW
         OkpFqcW
-        lOSVA6ehYHaW0xORUCLsWAGvLGvY=
-  recorded_at: 2025-09-04 07:16:26
+        lOSVA6ehYHaW0xORUCLsWAGwmGvk=
+  recorded_at: 2025-09-29 11:23:00
 recorded_with: VCR-vcr/2.0.0

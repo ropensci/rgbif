@@ -7,11 +7,11 @@ http_interactions:
     headers:
       status: HTTP/1.1 400 Bad Request
       content-type: text/plain
-      x-rlr: '25'
-      x-grlr: '30'
+      x-varnish-rli: '12'
+      x-varnish-rlg: '250'
     body:
       string: Cannot parse asia,oceania into a known Continent
-  recorded_at: 2025-09-04 08:12:33
+  recorded_at: 2025-09-29 11:23:18
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=500&offset=0&decimalLatitude=334
@@ -20,9 +20,9 @@ http_interactions:
     headers:
       status: HTTP/1.1 400 Bad Request
       content-type: text/plain
-      x-rlr: '25'
-      x-grlr: '30'
+      x-varnish-rli: '11'
+      x-varnish-rlg: '250'
     body:
       string: 334 is not valid value, latitude must be between -90 and 90.
-  recorded_at: 2025-09-04 08:12:33
+  recorded_at: 2025-09-29 11:23:18
 recorded_with: VCR-vcr/2.0.0

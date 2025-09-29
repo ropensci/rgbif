@@ -7,18 +7,18 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-rlr: '25'
-      x-grlr: '30'
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJxd0LGKwzAMBuB30ezBki3bytahc6FbOTqExIZAmkDTTqXvXnE9iH14Efyff2S/YC1lyw/o
-        rIF5uk3
-        fKS/jqZzzsN7HDbrSz1s2MKzPRWNH7JJExGDgnrfn/FDyczVQ+iH/zi8oU55H6OBy
-        PJzh7+Y3Wfpb1o
-        AsOdgrkZxPRPI2taBdUHTesvA/gZVgdhhSSq2wlSDPQZC4ESi7QPHBCiG2
-        IlVCCyyjja2IlfAuola0m
-        2KoBCV9ijC1giuhBdbqP7fCV0K3UiPufdXzAaryfgc=
-  recorded_at: 2025-09-04 07:50:55
+        eJxdzz2LwzAMBuD/ojmDvmzL2W64udDtODqExIZAmkDTTqX//cz1IPahRfA+EtITtpz3dIce
+        O1jm6/z
+        u0jqd8jmN223aoc/DsqcOxu2xllg8s6BFow5uaX8s90K+Lx3kYUy//RPynJYJevj6
+        /DjD3+Q7WYdrKg
+        EjKxwrWUwjK766WkglyKITNWsFH4KDD2xK0gqqhCenKhhagZXgiOZMuREU
+        K4HkAqP8E3YIChiJRX0rQ
+        iVcVC7/tHeQr4SIj4peW+EqQZ5JosPXpdQPq5N+IQ==
+  recorded_at: 2025-09-29 11:23:02
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facet=year&facetLimit=&year=2000%2C2003&taxonKey=212
@@ -27,16 +27,16 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-rlr: '25'
-      x-grlr: '30'
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJxVzD0LgzAQBuD/cnOGy2c1W4fOglspDkEvEIgGjE7if2+opVXuhhfe526D5H2mBSwyiGEM
-        R6JpaHx
-        LfZqHDNa7mIlBn9ap1EqgEZXhDGbKa1wKeHUMvOvpkzfwgeIAFp6Pewvfu6OZ3Eil
-        EIgSfg85r3RZsb
-        MzECeAqkYpzRXwM+C14jd5BfgHtRZGI+5dmTcN1UbL
-  recorded_at: 2025-09-04 07:50:55
+        eJxdzDELgzAQBeD/cnOG8xKicevQueBWioOYCwgxAaOT+N8bamnTcsuD973bITqXeIUWBfhp
+        ns7Ewd5
+        cx2NcbILWDT6xgDFuIdeKjK6l0gIWTptfM3j0Atww8ivv4Cb2Flq4Xy8dvHdnE4aZ
+        c0GIEj4PK0It0e
+        hDlIAKgNroBuUvqEqgkGr6A/gFpkFVkzr6fE8WFEba
+  recorded_at: 2025-09-29 11:23:03
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facet=country&facetLimit=2
@@ -45,16 +45,16 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-rlr: '25'
-      x-grlr: '30'
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJxNjLEKwyAURf/lzQ5qqmldCx0bsM1QSgbRJwhGISZTyL9XmhLKXS6cc+8K2fuCMyhKIIYx
-        7A2T67x
-        GmydXQHkTCxKweUkVN6ylrZCSCQITliXOVXkPBLyx+O0r+IDRgYJr19+f+gW/8Q6T
-        GbGy/gHHJ2P0zD
-        k9cbGRQ7jpP+EiJaWNkNtQ8wFNHjdH
-  recorded_at: 2025-09-04 07:50:56
+        eJxFjLEKgzAURf/lzRnMa6wkW3GvYOtQikNIXiAQEzA6if/eUIvlLhfOuXeD5FymBVTFIPjJ
+        H42i7Vx
+        PJs02g3I6ZGJg0hoLvtSVvJagZDBTXsNSlPfIwGlD376B8xQsKGi74f7sX/AbHzDq
+        iQobHnB+chS1kB
+        wl7uwU2ttfQF41UjSI+1jyAVWkN1A=
+  recorded_at: 2025-09-29 11:23:04
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?limit=0&offset=0&facet=occurrenceStatus&facetLimit=
@@ -63,16 +63,16 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-rlr: '25'
-      x-grlr: '30'
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJxVzTELgzAQBeD/cnOGpDbRulnJqhJ1KlJELxCIBoxO4n9vqKWl3PLgfbzbwWntcYWUErBm
-        MmfCeSy
-        1wsEto4dU99YjgcFtc6ijC4+SW8yYILCg3+wayKMjoPsB33kHbdCOkEKZ561Sssjl
-        s26ypq3hM3OyuZ
-        8wqErJWhYN/F6wmMZcCMYP8lXZ/R8lEbtSTtnRhXsBcng8sw==
-  recorded_at: 2025-09-04 07:50:58
+        eJxVzTELgzAQBeD/cnOGJGJQNytZtUSdihTRCwRiAkYn8b831NJS3vLgPt4d4LUOuEFBCViz
+        mKuhmxu
+        tcPLrHKDQow1IYPK7i+dEcJ7QLM8YgRXDbrdIHgMBPU747gdog3aGApqq6pWSdSWf
+        bVd2fQufmYu5cc
+        Go7kq2su7g9yKluYjh+Um+qrz9I8a4YJym/BxiXq8TPO8=
+  recorded_at: 2025-09-29 11:23:05
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facet=basisOfRecord&facetLimit=&organismQuantity=5&basisOfRecord=MATERIAL_SAMPLE
@@ -81,16 +81,16 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-rlr: '25'
-      x-grlr: '30'
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJxdjbEKwyAURf/lzQ610AbcbJtCIMGi3UoQ0ScIRiEmU+i/V5pO5S4H7uHeDbL3BRdgBwIx
+        eJxdjbEKwyAURf/lzQ6tLQTcbJtCIMGi3UoQ0ScIRiEmU+i/V5pO5S4H7uHeDbL3BRdgBwIx
         TGEnTE5
-        4iTbPrgDzJhYkYPOaak2PzelMKYEZyxqX2r9GAt5Y/PIGPmB0wODCVae0uGvZXoW8
+        4iTbPrgDzJhYkYPOaan2i5+ZIKYEZyxqX2r9GAt5Y/PIGPmB0wODCVae0uGvZXoW8
         wW9hl5KZsDoDf7
-        ay471WfHj0Lfy/vMeaD/YeM2U=
-  recorded_at: 2025-09-04 07:50:58
+        ay471WfHj0Lfy/vMeaD/U0M2E=
+  recorded_at: 2025-09-29 11:23:05
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facet=coordinateUncertaintyInMeters&facetLimit=&verbatimScientificName=Calopteryx+splendens
@@ -99,17 +99,17 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-rlr: '25'
-      x-grlr: '30'
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJxdz02LgzAQBuD/MucgM6n58lasBw9VcN3DUoqIJiBYhdqeSv97pV3apMxl4Mk7M7nB7Nxi
-        L5Agg3E
-        4Da/OTn3pKtvN536BxLXjYhl083VaOUZS2jA42+U6XlY+HBm4trPP/gZusGMPCaRl
-        We3yYltnzW+RZl
-        W9zYv6r8mLZp/VWfUD/xNfqak92TUkEDFCeC8jEhw3d/Z+oDBSH5ZacxGo
-        iujDG65i7rOPnLTUHnIRb
-        pakVMCBciLpaYhEGHtIX39CISk8mvzDpNHG49jPCkPmflzrATWE
-        fjs=
-  recorded_at: 2025-09-04 07:50:58
+        eJxdz82KgzAQAOB3mXOQmZiYxFuxHjxUwXUPy1JENAHBKtT2VPruK9ulJstcBr75fcDi3Gpv
+        kCKDaby
+        Mr8zOQ+Vq2y/XYYXUddNqGfTLfd5YoEy0YXC16326bfx9ZuC63v7mD3CjnQZIIauq
+        +liUhyZvP8ssr5
+        tDUTZfbVG2p7zJ6w/4m/jqmruL3ZokIkYI72VEUij1ZO8ChZHaOdFaYqAq
+        op1jrgT32UdO2ggPuQw3J
+        xxNwIFyirWnIRLnsYf07yeUyr+KBImI765ETOFP5N+dGG2e5y1+
+        ALkEfts=
+  recorded_at: 2025-09-29 11:23:06
 recorded_with: VCR-vcr/2.0.0
