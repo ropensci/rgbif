@@ -57,10 +57,11 @@ gbifparser <- function(input, fields= "minimal") {
 
     # extensions is a PITA, just remove
     x$extensions <- NULL
+    x$dnaSequenceID <- NULL
 
     # remove any fields > length 1
-    # lgts <- unname(sapply(x, length))
-    # if (any(lgts > 1)) x[lgts > 1] <- NULL
+    lgts <- unname(sapply(x, length))
+    if (any(lgts > 1)) x[lgts > 1] <- NULL
 
     # all other data
     x <- data.frame(x, stringsAsFactors=FALSE)
