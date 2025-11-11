@@ -11,6 +11,10 @@
 #' @param order (character) default value (optional).
 #' @param family (character) default value (optional).
 #' @param genus (character) default value (optional).
+#' @param bucket_size (integer) Number of requests to make in parallel.
+#' Default: 300. Lower this number if you get HTTP 0 errors.
+#' @param sleep (integer) Number of seconds to wait between batches of requests.
+#' Default: 1 second.
 #' @param verbose (logical) If true it shows alternative matches which were 
 #' considered but then rejected.
 #' @param strict (logical) strict=TRUE will not attempt to fuzzy match or 
@@ -145,6 +149,8 @@ name_backbone_checklist <- function(
   genus  = NULL,
   strict = FALSE,
   verbose = FALSE,
+  bucket_size = 300,
+  sleep = 1,
   curlopts = list(http_version = 2)
 ) {
   name_data <- check_name_data(name_data)
@@ -152,7 +158,11 @@ name_backbone_checklist <- function(
     name_data <- default_value_handler(name_data=name_data,rank=rank,kingdom=kingdom,phylum=phylum,class=class,order=order,family=family,genus=genus) 
   data_list <- lapply(data.table::transpose(name_data),function(x) stats::setNames(as.list(x),colnames(name_data)))
   urls <- make_async_urls(data_list,verbose=verbose,strict=strict)
-  matched_list <- gbif_async_get(urls)
+  matched_list <- gbif_async_get(urls,
+                                 parse=FALSE,
+                                 bucket_size = bucket_size,
+                                 sleep = sleep,
+                                 curlopts = curlopts)
   verbatim_list <- lapply(data_list,function(x) stats::setNames(x,paste0("verbatim_",names(x))))
   mvl <- mapply(function(x, y) c(x,y),verbatim_list,matched_list,SIMPLIFY = FALSE)
   matched_names <- bind_rows(mvl)
@@ -252,23 +262,27 @@ make_async_urls <- function(x,verbose=FALSE,strict=FALSE) {
   urls
 }
 
-gbif_async_get <- function(urls, parse=FALSE, curlopts = list(http_version = 2)) {
-  cc <- crul::Async$new(urls = urls,headers = rgbif_ual, opts = curlopts)
-  res <- process_async_get(cc$get(),parse=parse)
-  return(res)
-}
+gbif_async_get <- function(urls,
+                           parse = FALSE,
+                           bucket_size = 300,
+                           sleep = 1, 
+                           curlopts = list(http_version = 2)) {
 
-process_async_get <- function(res,parse=FALSE) {
-  status_codes <- sapply(res, function(z) z$status_code)
+  rr <- lapply(urls,function(x) crul::HttpRequest$new(x, opts = curlopts, headers = rgbif_ual)$get())
+  cc <- crul::AsyncQueue$new(.list = rr, 
+                             bucket_size = bucket_size, 
+                             sleep = sleep)
+  cc$request() # make the requests 
+  status_codes <- cc$status_code()
+  if(any(status_codes == 0)) {
+    stop("Status: 0 - try lower bucket_size or larger sleep.", call. = FALSE)
+  }
   if(any(status_codes == 204)) stop("Status: 204 - not found", call. = FALSE)
   if(any(status_codes > 200)) {
     if(any(status_codes == 500)) stop("500 - Server error", call. = FALSE)
     if(any(status_codes == 503)) stop("503 - Service Unavailable", call. = FALSE)
   }
-  # check content type
-  content_types <- sapply(res, function(z) z$response_headers$`content-type`)
-  stopifnot(any(content_types == 'application/json'))
-  
-  json_list <- lapply(res, function(z) jsonlite::fromJSON(z$parse("UTF-8"), parse)) 
+  res <- cc$parse("UTF-8")
+  json_list <- lapply(res, function(z) jsonlite::fromJSON(z, parse)) 
   return(json_list)
 }
