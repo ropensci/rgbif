@@ -7,7 +7,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '10'
+      x-varnish-rli: '12'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -2850,7 +2850,7 @@ http_interactions:
         3Fr1hwsV1T0PvbxY/ar69uCGSPnizdhVU7e6b+zU1H94sp+d94/LRfTKXNpq6
         XlTvNIPL6fm
         u3+k2PnCKL3Ezhcnb6WnV03r1tMRQUKLYv1N8wX47/8fPz2dnQ==
-  recorded_at: 2025-11-11 13:56:13
+  recorded_at: 2025-11-11 14:34:43
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=250&offset=250&taxonKey=3118771
@@ -5553,7 +5553,7 @@ http_interactions:
         EJC98qH9BfmO+Lr9Di2vXyhXr/eE4n62M/XKNWp5OvOyx2Vez9WSqmsu7Bup+uvtdvOy8X5a
         Kp
         t77+Ltx1fe7uGejTL1TwHse2P0ANj3F29VG1e2pRGwS8wEUb6724zLdDf++/8DHIJ3Zw==
-  recorded_at: 2025-11-11 13:56:19
+  recorded_at: 2025-11-11 14:34:48
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=250&offset=500&taxonKey=3118771
@@ -8344,5 +8344,5 @@ http_interactions:
         VRaaeuh6JfAdgrRXLtpf9B+Iuvvv0PP7mdL4ek8ozmc/mf9je464vi0ARVH66oxetmwLsIPE
         sRPA
         /5jcfF4l0auF+eg/TzOA/T33ULpkf/JWgD3lWw3NABhShGDKd3NukU26//7/MKwBOw==
-  recorded_at: 2025-11-11 13:56:24
+  recorded_at: 2025-11-11 14:34:53
 recorded_with: VCR-vcr/2.0.0

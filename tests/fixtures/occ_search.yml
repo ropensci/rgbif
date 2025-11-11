@@ -104,7 +104,7 @@ http_interactions:
         fe3mBbOvMR1o0KX8mXociAA0loyDgod7EGidUsBENHrTAk8aud7TAk8Lr7XlMC6
         ig+dEtAM3VwMhULw
         oGn0ePg/1wRYZw==
-  recorded_at: 2025-11-11 13:55:41
+  recorded_at: 2025-11-11 14:34:01
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=20&offset=0&taxonKey=3118771
@@ -415,5 +415,5 @@ http_interactions:
         gdSTd0ORVJv4RJ2fq//7Uk8IBr35uB6TeW
         //1IuvR8+ObUet0Qjj43SC04+vzmpXD0pFnTcXQKI9HA8
         7FnR4Pv5/8D+t9UiA==
-  recorded_at: 2025-11-11 13:55:41
+  recorded_at: 2025-11-11 14:34:01
 recorded_with: VCR-vcr/2.0.0
