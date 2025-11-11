@@ -15,6 +15,8 @@ name_backbone_checklist(
   genus = NULL,
   strict = FALSE,
   verbose = FALSE,
+  bucket_size = 300,
+  sleep = 1,
   curlopts = list(http_version = 2)
 )
 }
@@ -40,6 +42,12 @@ return higherrankmatches.}
 
 \item{verbose}{(logical) If true it shows alternative matches which were
 considered but then rejected.}
+
+\item{bucket_size}{(integer) Number of requests to make in parallel.
+Default: 300. Lower this number if you get HTTP 0 errors.}
+
+\item{sleep}{(integer) Number of seconds to wait between batches of requests.
+Default: 1 second.}
 
 \item{curlopts}{list of named curl options passed on to
 \code{\link[crul]{HttpClient}}. see \code{curl::curl_options}

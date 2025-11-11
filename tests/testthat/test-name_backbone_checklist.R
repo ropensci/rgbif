@@ -269,6 +269,32 @@ test_that("name_backbone_checklist bad or weird data", {
   
   })
 
+test_that("name_backbone_checklist bucket_size and sleep ", {
+  skip_on_cran()
+  skip_on_ci()
+
+  names <- name_lookup(limit=100)$canonicalName
+  start <- proc.time()
+  ss <- name_backbone_checklist(name_data = names,
+                                bucket_size = 10,
+                                sleep = 10)  
+  end <- proc.time()
+  time1 <- end - start
+
+  start <- proc.time()
+  mm <- name_backbone_checklist(name_data = names,
+                                bucket_size = 10,
+                                sleep = 1)  
+  end <- proc.time()
+  time2 <- end - start
+
+  expect_equal(nrow(ss), nrow(mm))
+  expect_is(ss, "data.frame")
+  expect_is(mm, "data.frame")
+  expect_true(time1['elapsed'] > time2['elapsed'] )
+
+})
+
 # strict arg might not work until switch to v2
 # test_that("name_backbone_checklist strict arg works as expected", {
 #   skip_on_cran()
