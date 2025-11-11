@@ -12,7 +12,7 @@ test_that("dataset_gridded good data", {
       "4fa7b334-ce0d-4e88-aaae-2e0c138d049e",
       NA
     )
-  
+
   # test return="logical"
   x <- dataset_gridded(uuids,warn=FALSE)
   expect_true(is.logical(x))
@@ -26,12 +26,12 @@ test_that("dataset_gridded good data", {
   expect_equal(nrow(xx),length(uuids))
   expect_equal(ncol(xx),8)
   expect_equal(class(xx),"data.frame")
-  
+
   # single datasetkey
   z <- dataset_gridded("9070a460-0c6e-11dd-84d2-b8a03c50a862",warn=FALSE)
   expect_true(is.logical(z))
   expect_length(z,1)
-  
+
   # single missing
   expect_error(dataset_gridded(NA),"'uuid' should be a GBIF datasetkey uuid.")
   })
@@ -59,7 +59,7 @@ test_that("dataset_gridded bad data", {
   expect_equal(nrow(bb),length(bad_uuids))
   expect_equal(ncol(bb),8)
   expect_equal(class(bb),"data.frame")
-  
+
   # other types of bad input
   expect_error(dataset_gridded(1),"'uuid' should be a GBIF datasetkey uuid.")
   expect_error(dataset_gridded(1,1),"'uuid' should be a GBIF datasetkey uuid.")
@@ -67,23 +67,22 @@ test_that("dataset_gridded bad data", {
   expect_error(dataset_gridded(NULL),"'uuid' should be a GBIF datasetkey uuid.")
   expect_error(dataset_gridded(FALSE),"'uuid' should be a GBIF datasetkey uuid.")
   expect_error(dataset_gridded(1,return="data"),"'uuid' should be a GBIF datasetkey uuid.")
-  
-  # test only non-gridded datasets 
+
+  # test only non-gridded datasets
   expect_false(dataset_gridded("13b70480-bd69-11dd-b15f-b8a03c50a862"))
   expect_false(dataset_gridded("13b70480-bd69-11dd-b15f-b8a03c50a862",return="data")$is_gridded)
-  
+
   nn <- dataset_gridded(c("4fa7b334-ce0d-4e88-aaae-2e0c138d049e","13b70480-bd69-11dd-b15f-b8a03c50a862"))
   expect_equal(length(nn),2)
   expect_false(any(nn))
   expect_equal(class(nn),"logical")
-  
+
   dd <- dataset_gridded(c("4fa7b334-ce0d-4e88-aaae-2e0c138d049e","13b70480-bd69-11dd-b15f-b8a03c50a862"),return="data")
-  expect_true(all(is.na(dd$min_distance))) 
+  expect_true(all(is.na(dd$min_distance)))
   expect_false(any(dd$is_gridded))
   expect_false(is.logical(dd))
   expect_equal(nrow(dd),2)
   expect_equal(ncol(dd),8)
   expect_equal(class(dd),"data.frame")
-  
-})
 
+})

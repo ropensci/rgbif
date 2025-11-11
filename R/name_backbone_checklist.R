@@ -1,68 +1,74 @@
-#' Lookup names in the GBIF backbone taxonomy in a checklist.
+#' Match names in the GBIF backbone taxonomy in a checklist.
 #'
-#' @template occ
-#' @export
-#'
-#' @param name_data (data.frame or vector) see details.
-#' @param rank (character) default value (optional).
-#' @param kingdom (character) default value (optional).
-#' @param phylum (character) default value (optional).
-#' @param class (character) default value (optional).
-#' @param order (character) default value (optional).
-#' @param family (character) default value (optional).
-#' @param genus (character) default value (optional).
-#' @param bucket_size (integer) Number of requests to make in parallel.
+#' @param name_data name_data (data.frame or vector) see details. (required)
+#' @param rank (character) Filter by taxonomic rank. See API reference for 
+#' available values. 
+#' @param usageKey (character) The usage key to look up. When provided, all 
+#' other fields are ignored.
+#' @param kingdom (character) Kingdom to match. 
+#' @param phylum (character) Phylum to match.
+#' @param class (character) Class to match.
+#' @param order (character) Order to match.
+#' @param superfamily (character) Superfamily to match.
+#' @param family (character) Family to match.
+#' @param subfamily (character) Subfamily to match.
+#' @param tribe (character) Tribe to match.
+#' @param subtribe (character) Subtribe to match.
+#' @param genus (character) Genus to match.
+#' @param subgenus (character) Subgenus to match.
+#' @param species (character) Species to match.
+#' @param taxonID (character) The taxon ID to look up. Matches to a taxonID 
+#' will take precedence over scientificName values supplied. A comparison of 
+#' the matched scientific and taxonID is performed tocheck for inconsistencies.
+#' @param taxonConceptID (character) The taxonConceptID to match. Matches to a 
+#' taxonConceptID will take precedence over scientificName values supplied. A 
+#' comparison of the matched scientific and taxonConceptID is performed to 
+#' check for inconsistencies.
+#' @param scientificNameID (character) Matches to a scientificNameID will take 
+#' precedence over scientificName values supplied. A comparison of the matched 
+#' scientific and scientificNameID is performed to check for inconsistencies.
+#' @param scientificNameAuthorship (character) The scientific name authorship 
+#' to match against.  
+#' @param genericName (character) Generic part of the name to match when given 
+#' as atomised parts instead of the full name parameter. 
+#' @param specificEpithet (character) Specific epithet to match. 
+#' @param infraspecificEpithet (character) Infraspecific epithet to match.
+#' @param verbatimTaxonRank (character) Filters by free text taxon rank.
+#' @param exclude (character) An array of usage keys to exclude from the match.
+#' @param checklistKey (character) The key of a checklist to use. The default is
+#' the GBIF Backbone taxanomy. 
 #' Default: 300. Lower this number if you get HTTP 0 errors.
+#' @param bucket_size (integer) Number of requests to make in parallel.
 #' @param sleep (integer) Number of seconds to wait between batches of requests.
 #' Default: 1 second.
 #' @param verbose (logical) If true it shows alternative matches which were 
 #' considered but then rejected.
-#' @param strict (logical) strict=TRUE will not attempt to fuzzy match or 
-#' return higherrankmatches.
+#' @param strict (logical) If set to true, fuzzy matches only the given name, 
+#' but never a taxon in the upper classification.
+#' @param curlopts A list of curl options passed on to [httr::GET()].#' 
 #' 
 #' @return
 #' A \code{data.frame} of matched names.
 #' 
 #' @details
 #' This function is an alternative for  \code{name_backbone()}, which will work with 
-#' a list of names (a vector or a data.frame). The data.frame should have the 
-#' following column names, but \strong{only the 'name' column is required}. If only 
-#' one column is present, then that column is assumed to be the 'name' column.
+#' a list of names (a vector or a data.frame). The \code{data.frame} can have 
+#' any of the arguments as column names. The arguments can also be used as 
+#' default values, and then don't need to be repeated as values in the 
+#' input \code{name_data}. If only  one column is present, then that column is 
+#' assumed to be the scientificName' column.
 #' 
-#' - \strong{name} : (required)
-#' - \strong{rank} : (optional)
-#' - \strong{kingdom} : (optional)
-#' - \strong{phylum} : (optional)
-#' - \strong{class} : (optional)
-#' - \strong{order} : (optional)
-#' - \strong{family} : (optional)
-#' - \strong{genus} : (optional)
-#'
-#' The input columns will be returned as "verbatim_name","verbatim_rank",
-#' "verbatim_phylum" ect. A column of "verbatim_index" will also be returned
-#' giving the index of the input. 
-#'
-#' The following aliases for the 'name' column will work (any case or with '_'
-#' will work) :
-#' - "scientificName", "ScientificName", "scientific_name" ... 
-#' - "sci_name", "sciname", "SCI_NAME" ...
-#' - "names", "NAMES" ...
-#' - "species", "SPECIES" ... 
-#' - "species_name", "speciesname" ... 
-#' - "sp_name", "SP_NAME", "spname" ...
-#' - "taxon_name", "taxonname", "TAXON NAME" ...   
-#' 
-#' If more than one aliases is present and no column is named 'name', then the
-#' left-most column with an acceptable aliased name above is used.  
+#' The input columns will be returned as "verbatim_scientificName","verbatim_rank",
+#' "verbatim_phylum" ect.  
 #' 
 #' If \code{verbose=TRUE}, a column called \code{is_alternative} will be returned, 
 #' which species if a name was originally a first choice or not. 
 #' \code{is_alternative=TRUE} means the name was not is not considered to be
 #' the best match by GBIF.  
 #' 
-#' Default values for rank, kingdom, phylum, class, order, family, and genus can
-#' can be supplied. If a default value is supplied, the values for these fields 
-#' are ignored in name_data, and the default value is used instead. This is most 
+#' Default values for any of the other arguments can can be supplied. If a 
+#' default value is supplied, the values for these fields are ignored in 
+#' \code{name_data}, and the default value is used instead. This is most 
 #' useful if you have a list of names and you know they are all plants, insects,
 #' birds, ect. You can also input multiple values, if they are the same length as 
 #' list of names you are trying to match. 
@@ -74,15 +80,13 @@
 #' \href{https://www.gbif.org/tools/species-lookup}{https://www.gbif.org/tools/species-lookup}.
 #' 
 #' If you have 1000s of names to match, it can take some minutes to get back all
-#' of the matches. I have tested it with 60K names. Scientific names with author details
-#'  usually get better matches. 
+#' of the matches. I have tested it with 60K names. Scientific names with 
+#' author details usually get better matches. 
 #'  
 #' See also article \href{https://docs.ropensci.org/rgbif/articles/taxonomic_names.html}{Working With Taxonomic Names}.
-#' 
-#' @examples \dontrun{
-#' 
-#' library(rgbif)
+#' @export
 #'
+#' @examples \dontrun{
 #' name_data <- data.frame(
 #'  scientificName = c(
 #'    "Cirsium arvense (L.) Scop.", # a plant
@@ -137,127 +141,152 @@
 #' "Calopteryx splendens (Harris, 1780)"),kingdom=c("Plantae","Animalia"))
 #' 
 #' }
-#'
 name_backbone_checklist <- function(
-  name_data = NULL,
+  name_data,
   rank = NULL,
   kingdom = NULL,
   phylum = NULL,
   class = NULL,
   order = NULL,
+  superfamily = NULL,
   family = NULL,
-  genus  = NULL,
-  strict = FALSE,
-  verbose = FALSE,
+  subfamily = NULL,
+  tribe = NULL,
+  subtribe = NULL,
+  genus = NULL,
+  subgenus = NULL,
+  species = NULL,
+  usageKey = NULL,
+  taxonID = NULL,
+  taxonConceptID = NULL,
+  scientificNameID = NULL,
+  scientificNameAuthorship = NULL,
+  genericName = NULL,
+  specificEpithet = NULL,
+  infraspecificEpithet = NULL,
+  verbatimTaxonRank = NULL,
+  exclude = NULL,
+  strict = NULL,
+  verbose = NULL,
+  checklistKey = NULL,
   bucket_size = 300,
   sleep = 1,
   curlopts = list(http_version = 2)
 ) {
   name_data <- check_name_data(name_data)
-  if(!is.null(c(rank,kingdom,phylum,class,order,family,genus))) 
-    name_data <- default_value_handler(name_data=name_data,rank=rank,kingdom=kingdom,phylum=phylum,class=class,order=order,family=family,genus=genus) 
-  data_list <- lapply(data.table::transpose(name_data),function(x) stats::setNames(as.list(x),colnames(name_data)))
-  urls <- make_async_urls(data_list,verbose=verbose,strict=strict)
-  matched_list <- gbif_async_get(urls,
-                                 parse=FALSE,
-                                 bucket_size = bucket_size,
-                                 sleep = sleep,
-                                 curlopts = curlopts)
-  verbatim_list <- lapply(data_list,function(x) stats::setNames(x,paste0("verbatim_",names(x))))
-  mvl <- mapply(function(x, y) c(x,y),verbatim_list,matched_list,SIMPLIFY = FALSE)
-  matched_names <- bind_rows(mvl)
-  if(verbose) {
-    a <- lapply(mvl,function(x) x[["alternatives"]])
-    alternatives <- process_alternatives(a,verbatim_list)
-    matched_names <- bind_rows(list(matched_names,alternatives))
+  default_args <- rgbif_compact(
+    list(
+      scientificNameAuthorship = scientificNameAuthorship,
+      genericName = genericName,
+      specificEpithet = specificEpithet,
+      infraspecificEpithet = infraspecificEpithet,
+      taxonRank = rank,
+      verbatimTaxonRank = verbatimTaxonRank,
+      kingdom = kingdom,
+      phylum = phylum,
+      class = class,
+      order = order,
+      superfamily = superfamily,
+      family = family,
+      subfamily = subfamily,
+      tribe = tribe,
+      subtribe = subtribe,
+      genus = genus,
+      subgenus = subgenus,
+      species = species,
+      usageKey = usageKey,
+      taxonID = taxonID,
+      taxonConceptID = taxonConceptID,
+      scientificNameID = scientificNameID,
+      genericName = genericName,
+      exclude = exclude,
+      strict = strict,
+      verbose = verbose,
+      checklistKey = checklistKey
+    )
+  )
+  
+  if(length(default_args) > 0) {
+    name_data <- default_value_handler(name_data = name_data, 
+                                       default_args = default_args)
   }
-  # post processing matched names
-  matched_names$verbatim_index <- as.numeric(matched_names$verbatim_index)
-  matched_names <- matched_names[order(matched_names$verbatim_index),]
-  matched_names <- matched_names[!names(matched_names) %in% c("alternatives", "note")]
-  col_idx <- grep("verbatim_", names(matched_names))
-  ordering <- c((1:ncol(matched_names))[-col_idx],col_idx)
-  matched_names <- unique(matched_names[, ordering])
-  if(verbose) matched_names$is_alternative[is.na(matched_names$is_alternative)] <- FALSE
-  return(matched_names)
+  data_list <- lapply(data.table::transpose(name_data),
+                      function(x) stats::setNames(as.list(x),colnames(name_data)))
+  urls <- make_async_urls(data_list)
+  tt <- gbif_async_get(urls,
+                       bucket_size = bucket_size,
+                       sleep = sleep,
+                       curlopts = curlopts)
+  out <- mapply(function(x, y) {
+    if(!isTRUE(as.logical(y$verbose))) {
+      out <- process_name_backbone_output(x,y)
+      out$is_alternative <- rep(FALSE,nrow(out))
+    } else {
+      alternatives <- bind_rows(
+      lapply(x$diagnostics$alternatives, function(xx)
+        process_name_backbone_output(xx,y))
+      )
+      alternatives$is_alternative <- rep(TRUE,nrow(alternatives))
+      x$diagnostics$alternatives <- NULL
+      accepted <- process_name_backbone_output(x,y)
+      accepted$is_alternative <- rep(FALSE,nrow(accepted))
+      out <- bind_rows(list(accepted,alternatives))
+    }
+    out
+  }, tt,data_list,SIMPLIFY = FALSE)
+  return(bind_rows(out))
 }
+
 
 bind_rows <- function(x) tibble::as_tibble(data.table::rbindlist(x,fill=TRUE))
 
-process_alternatives <- function(a,vl) {
-  is_empty <- sapply(a,is.null) 
-  a <- a[!is_empty] # alternatives
-  vl <- vl[!is_empty] # verbatim list
-  dl <- lapply(a,function(x) lapply(`[`(x), function(xx) tibble::as_tibble(xx)))
-  dl <- lapply(dl,function(x) bind_rows(`[`(x)))
-  vl <- lapply(vl,function(x) tibble::as_tibble(x))
-  n_times_list <- lapply(sapply(dl,nrow),function(x) rep(1,x))
-  vl <- mapply(function(x,y) x[y,],vl,n_times_list,SIMPLIFY = FALSE) # repeat data
-  alternatives <- bind_rows(mapply(function(x,y) cbind(x,y),dl,vl,SIMPLIFY = FALSE))
-  alternatives$is_alternative <- TRUE
-  alternatives
-}
-
 check_name_data = function(name_data) {
-  
-  if(is.null(name_data)) stop("You forgot to supply your checklist data.frame or vector to name_data.")
+  if(is.null(name_data)) {
+    stop("You forgot to supply your checklist data.frame or vector to name_data.")
+  }
   if(is.vector(name_data)) {
     if(!is.character(name_data)) stop("name_data should be class character.")
-    name_data <- data.frame(name=name_data)
-    name_data$index <- 1:nrow(name_data) # add id for sorting 
+    name_data <- data.frame(scientificName=name_data)
     return(name_data) # exit early if vector
   } 
   if(ncol(name_data) == 1) {
-    message("Assuming first column is 'name' column.")
-    colnames(name_data) <- "name"
-    if(!is.character(name_data$name)) stop("The name column should be class character.")
-    name_data$index <- 1:nrow(name_data) # add id for sorting
+    if(!"scientificName" %in% colnames(name_data)) {
+      message("Assuming first column is 'scientificName' column.")
+      colnames(name_data) <- "scientificName"
+    } 
+    if(!is.character(name_data$scientificName)) stop("The scientificName column should be class character.")
     return(name_data) # exit early if only one column
   }
   
   # clean column names 
-  original_colnames <- colnames(name_data) 
-  colnames(name_data) <- tolower(colnames(name_data)) 
-  colnames(name_data) <- gsub("_","",colnames(name_data))
-  
+  original_colnames <- colnames(name_data)
   # check for aliases 
-  name_aliases <- c("scientificname","sciname","names","species","speciesname","spname","taxonname")
-  if((any(name_aliases %in% colnames(name_data))) & (!"name" %in% colnames(name_data))) {
+  name_aliases <- c("name")
+  if((any(name_aliases %in% colnames(name_data))) & (!"scientificname" %in% colnames(name_data))) {
     left_most_index <- which(colnames(name_data) %in% name_aliases)[1]
     left_most_name <- colnames(name_data)[left_most_index]
-    message("No 'name' column found. Using leftmost '",original_colnames[left_most_index], "' as the 'name' column.\nIf you do not want to use '", original_colnames[left_most_index], "' column, re-name the column you want to use 'name'.")
-    colnames(name_data) <- gsub(left_most_name,"name",colnames(name_data))
+    message("No 'scientificName' column found. Using leftmost '",original_colnames[left_most_index], "' as the 'scientificName' column.\nIf you do not want to use '", original_colnames[left_most_index], "' column, re-name the column you want to use 'scientificName'.")
+    colnames(name_data) <- gsub(left_most_name,"scientificname",colnames(name_data))
   } 
-  # check columns are character
-  char_args <- c("name","rank","kingdom","phylum","class","order","family","genus")
-  if(!all(sapply(name_data[names(name_data) %in% char_args],is.character))) stop("All taxonomic columns should be character.")
-  name_data <- name_data[colnames(name_data) %in% char_args] # only keep needed columns
-  name_data$index <- 1:nrow(name_data) # add id for sorting 
   name_data
 }
 
-default_value_handler <- function(name_data=NULL,rank=NULL,kingdom=NULL,phylum=NULL,class=NULL,
-                                  order=NULL,family=NULL,genus=NULL) {
-  args <- rgbif_compact(list(rank=rank, kingdom=kingdom, phylum=phylum,
-                             class=class, order=order, family=family, genus=genus))
-  arg_names = names(args)
-  sapply(args,function(x) stopifnot(is.character(x))) 
+default_value_handler <- function(name_data=NULL, default_args=NULL) {
+  arg_names = names(default_args)
   if(any(arg_names %in% colnames(name_data))) message("Default values found, over-writing : ",paste0(arg_names[arg_names %in% colnames(name_data)],collapse=", "))
   # overwrite original names in name_data
-  for(i in 1:length(args)) name_data[,arg_names[i]] <- args[i]
+  for(i in 1:length(default_args)) name_data[,arg_names[i]] <- default_args[i]
   return(name_data)
 }
 
 make_async_urls <- function(x,verbose=FALSE,strict=FALSE) {
-  url_base <- paste0(gbif_base(), '/species/match')
+  url_base <-   url <- paste0('https://api.gbif.org/v2', '/species/match')
   x <- lapply(x, function(x) x[!is.na(x)]) # remove potential missing values
   x <- lapply(x, function(sublist) {
     lapply(sublist, function(element) utils::URLencode(element, reserved = TRUE))
   })
   queries <- lapply(x,function(x) paste0(names(x),"=",x,collapse="&"))
   urls <- paste0(url_base,"?",queries)
-  if(verbose) urls <- paste0(urls,"&verbose=true")
-  if(strict) urls <- paste0(urls,"&strict=true")
   urls <- sapply(urls,function(x) gsub("\\[|\\]","",x)) # remove any square brackets
   urls
 }
@@ -286,3 +315,111 @@ gbif_async_get <- function(urls,
   json_list <- lapply(res, function(z) jsonlite::fromJSON(z, parse)) 
   return(json_list)
 }
+
+# old code below - keep for reference
+################################################3
+
+# bind_rows <- function(x) tibble::as_tibble(data.table::rbindlist(x,fill=TRUE))
+
+# process_alternatives <- function(a,vl) {
+#   is_empty <- sapply(a,is.null) 
+#   a <- a[!is_empty] # alternatives
+#   vl <- vl[!is_empty] # verbatim list
+#   dl <- lapply(a,function(x) lapply(`[`(x), function(xx) tibble::as_tibble(xx)))
+#   dl <- lapply(dl,function(x) bind_rows(`[`(x)))
+#   vl <- lapply(vl,function(x) tibble::as_tibble(x))
+#   n_times_list <- lapply(sapply(dl,nrow),function(x) rep(1,x))
+#   vl <- mapply(function(x,y) x[y,],vl,n_times_list,SIMPLIFY = FALSE) # repeat data
+#   alternatives <- bind_rows(mapply(function(x,y) cbind(x,y),dl,vl,SIMPLIFY = FALSE))
+#   alternatives$is_alternative <- TRUE
+#   alternatives
+# }
+
+# check_name_data = function(name_data) {
+  
+#   if(is.null(name_data)) stop("You forgot to supply your checklist data.frame or vector to name_data.")
+#   if(is.vector(name_data)) {
+#     if(!is.character(name_data)) stop("name_data should be class character.")
+#     name_data <- data.frame(name=name_data)
+#     name_data$index <- 1:nrow(name_data) # add id for sorting 
+#     return(name_data) # exit early if vector
+#   } 
+#   if(ncol(name_data) == 1) {
+#     message("Assuming first column is 'name' column.")
+#     colnames(name_data) <- "name"
+#     if(!is.character(name_data$name)) stop("The name column should be class character.")
+#     name_data$index <- 1:nrow(name_data) # add id for sorting
+#     return(name_data) # exit early if only one column
+#   }
+  
+#   # clean column names 
+#   original_colnames <- colnames(name_data) 
+#   colnames(name_data) <- tolower(colnames(name_data)) 
+#   colnames(name_data) <- gsub("_","",colnames(name_data))
+  
+#   # check for aliases 
+#   name_aliases <- c("scientificname","sciname","names","species","speciesname","spname","taxonname")
+#   if((any(name_aliases %in% colnames(name_data))) & (!"name" %in% colnames(name_data))) {
+#     left_most_index <- which(colnames(name_data) %in% name_aliases)[1]
+#     left_most_name <- colnames(name_data)[left_most_index]
+#     message("No 'name' column found. Using leftmost '",original_colnames[left_most_index], "' as the 'name' column.\nIf you do not want to use '", original_colnames[left_most_index], "' column, re-name the column you want to use 'name'.")
+#     colnames(name_data) <- gsub(left_most_name,"name",colnames(name_data))
+#   } 
+#   # check columns are character
+#   char_args <- c("name","rank","kingdom","phylum","class","order","family","genus")
+#   if(!all(sapply(name_data[names(name_data) %in% char_args],is.character))) stop("All taxonomic columns should be character.")
+#   name_data <- name_data[colnames(name_data) %in% char_args] # only keep needed columns
+#   name_data$index <- 1:nrow(name_data) # add id for sorting 
+#   name_data
+# }
+
+# default_value_handler <- function(name_data=NULL,rank=NULL,kingdom=NULL,phylum=NULL,class=NULL,
+#                                   order=NULL,family=NULL,genus=NULL) {
+#   args <- rgbif_compact(list(rank=rank, kingdom=kingdom, phylum=phylum,
+#                              class=class, order=order, family=family, genus=genus))
+#   arg_names = names(args)
+#   sapply(args,function(x) stopifnot(is.character(x))) 
+#   if(any(arg_names %in% colnames(name_data))) message("Default values found, over-writing : ",paste0(arg_names[arg_names %in% colnames(name_data)],collapse=", "))
+#   # overwrite original names in name_data
+#   for(i in 1:length(args)) name_data[,arg_names[i]] <- args[i]
+#   return(name_data)
+# }
+
+# make_async_urls <- function(x,verbose=FALSE,strict=FALSE) {
+#   url_base <- paste0(gbif_base(), '/species/match')
+#   x <- lapply(x, function(x) x[!is.na(x)]) # remove potential missing values
+#   x <- lapply(x, function(sublist) {
+#     lapply(sublist, function(element) utils::URLencode(element, reserved = TRUE))
+#   })
+#   queries <- lapply(x,function(x) paste0(names(x),"=",x,collapse="&"))
+#   urls <- paste0(url_base,"?",queries)
+#   if(verbose) urls <- paste0(urls,"&verbose=true")
+#   if(strict) urls <- paste0(urls,"&strict=true")
+#   urls <- sapply(urls,function(x) gsub("\\[|\\]","",x)) # remove any square brackets
+#   urls
+# }
+
+# gbif_async_get <- function(urls,
+#                            parse = FALSE,
+#                            bucket_size = 300,
+#                            sleep = 1, 
+#                            curlopts = list(http_version = 2)) {
+
+#   rr <- lapply(urls,function(x) crul::HttpRequest$new(x, opts = curlopts, headers = rgbif_ual)$get())
+#   cc <- crul::AsyncQueue$new(.list = rr, 
+#                              bucket_size = bucket_size, 
+#                              sleep = sleep)
+#   cc$request() # make the requests 
+#   status_codes <- cc$status_code()
+#   if(any(status_codes == 0)) {
+#     stop("Status: 0 - try lower bucket_size or larger sleep.", call. = FALSE)
+#   }
+#   if(any(status_codes == 204)) stop("Status: 204 - not found", call. = FALSE)
+#   if(any(status_codes > 200)) {
+#     if(any(status_codes == 500)) stop("500 - Server error", call. = FALSE)
+#     if(any(status_codes == 503)) stop("503 - Service Unavailable", call. = FALSE)
+#   }
+#   res <- cc$parse("UTF-8")
+#   json_list <- lapply(res, function(z) jsonlite::fromJSON(z, parse)) 
+#   return(json_list)
+# }
