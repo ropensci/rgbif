@@ -37,8 +37,8 @@
 #' @param exclude (character) An array of usage keys to exclude from the match.
 #' @param checklistKey (character) The key of a checklist to use. The default is
 #' the GBIF Backbone taxanomy. 
-#' Default: 300. Lower this number if you get HTTP 0 errors.
 #' @param bucket_size (integer) Number of requests to make in parallel.
+#' Default: 300. Lower this number if you get HTTP 0 errors.
 #' @param sleep (integer) Number of seconds to wait between batches of requests.
 #' Default: 1 second.
 #' @param verbose (logical) If true it shows alternative matches which were 
