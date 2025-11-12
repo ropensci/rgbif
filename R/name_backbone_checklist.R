@@ -56,7 +56,7 @@
 #' any of the arguments as column names. The arguments can also be used as 
 #' default values, and then don't need to be repeated as values in the 
 #' input \code{name_data}. If only  one column is present, then that column is 
-#' assumed to be the scientificName' column.
+#' assumed to be the scientificName column.
 #' 
 #' The input columns will be returned as "verbatim_scientificName","verbatim_rank",
 #' "verbatim_phylum" ect.  
