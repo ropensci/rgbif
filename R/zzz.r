@@ -349,7 +349,7 @@ gbif_GET <- function(url, args, parse=FALSE, curlopts = list(), mssg = NULL) {
       cat(sprintf("\rWaiting [%s%s] %d/%d sec", 
       strrep("=", i), strrep(" ", seconds - i), i, seconds))
       Sys.sleep(1)
-      flush.console()
+      utils::flush.console()
     }
       return(gbif_GET(url, args, parse, curlopts, mssg)) 
   }
