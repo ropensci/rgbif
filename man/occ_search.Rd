@@ -126,6 +126,7 @@ occ_search(
   isSequenced = NULL,
   startDayOfYear = NULL,
   endDayOfYear = NULL,
+  checklistKey = NULL,
   limit = 500,
   start = 0,
   fields = "all",
@@ -573,6 +574,10 @@ which the event occurred.}
 
 \item{endDayOfYear}{(numeric) The latest integer day of the year on
 which the event occurred.}
+
+\item{checklistKey}{(character) The checklist uuid. This determines which taxonomy
+will be used for the search in conjunction with other taxon keys or scientificName.
+If this is not specified, the GBIF backbone taxonomy will be used.}
 
 \item{limit}{Number of records to return. Default: 500. Note that the per
 request maximum is 300, but since we set it at 500 for the function, we

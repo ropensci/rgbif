@@ -7,7 +7,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '17'
+      x-varnish-rli: '7'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -104,7 +104,7 @@ http_interactions:
         bcqnX4T66181XIfaeWHsDCw/3Eeg3nuDWxzw2mWAJJPuqzOo/AZwJbz8r9D0Ogg
         D1BCmJYY/vovz3Ue
         Pg==
-  recorded_at: 2025-11-11 14:34:22
+  recorded_at: 2025-11-12 10:31:03
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&occurrenceId=1
@@ -113,7 +113,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '16'
+      x-varnish-rli: '6'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -187,7 +187,7 @@ http_interactions:
         3M8MeboPVnZz55/tN7Z32L+YQjffv4hvs0/3uYf/9f5h/h9zj/Ey/MPWWzNP6S+dnb+
         URcXVBSuS+rr
         vwFmAWBd
-  recorded_at: 2025-11-11 14:34:22
+  recorded_at: 2025-11-12 10:31:03
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&occurrenceId=1
@@ -196,7 +196,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '17'
+      x-varnish-rli: '7'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -293,7 +293,7 @@ http_interactions:
         bcqnX4T66181XIfaeWHsDCw/3Eeg3nuDWxzw2mWAJJPuqzOo/AZwJbz8r9D0Ogg
         D1BCmJYY/vovz3Ue
         Pg==
-  recorded_at: 2025-11-11 14:34:22
+  recorded_at: 2025-11-12 10:31:03
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&occurrenceId=2
@@ -302,7 +302,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '18'
+      x-varnish-rli: '5'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -395,7 +395,7 @@ http_interactions:
         FyOXBCtGR/PCikmy5apTUqCMPdccUKG9L1CMvGQJJBWOqQVpcfN4kaWcC6LAf9MWt6s73O22
         GD
         HH+j6QnHIVs659UWO4OybaRFiBi5PYAc8FfagzmxaCl1RNzCEMuCUFcD/8B2/lCVg=
-  recorded_at: 2025-11-11 14:34:23
+  recorded_at: 2025-11-12 10:31:03
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&taxonKey=212&occurrenceId=1
@@ -404,7 +404,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '17'
+      x-varnish-rli: '4'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -501,5 +501,5 @@ http_interactions:
         dhNKgJOCpUk3N9jGfxOYgXeCWX7bFQJoiSB4oVxUtoua2zNPQ1LKyLaouh9E/Ie
         off71OSWczxFTZb+
         AJOHy97GUdsi8+HH7muVwaJK4a//AXI7Aow=
-  recorded_at: 2025-11-11 14:34:24
+  recorded_at: 2025-11-12 10:31:03
 recorded_with: VCR-vcr/2.0.0

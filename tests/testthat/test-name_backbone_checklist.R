@@ -401,7 +401,7 @@ test_that("name_backbone_checklist bucket_size and sleep ", {
   skip_on_cran()
   skip_on_ci()
 
-  names <- name_lookup(limit=100)$canonicalName
+  names <- name_lookup(limit=100)$data$canonicalName
   start <- proc.time()
   ss <- name_backbone_checklist(name_data = names,
                                 bucket_size = 10,

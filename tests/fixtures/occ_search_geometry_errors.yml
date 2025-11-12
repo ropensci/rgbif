@@ -14,7 +14,7 @@ http_interactions:
         eJxzTszLyy9RKEgsKk5VKM7MLchJVQj3DrFSCPD3iXT399PQMDbQM1QwBBI6JgYKJgY6RmDS
         0EDByEA
         HLJeoqangWlGQmlySmqKQqJBXmpuUWgQAWvsYRQ==
-  recorded_at: 2025-11-11 14:35:02
+  recorded_at: 2025-11-12 10:31:42
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=500&offset=0&geometry=POLYGON%28%2830.1+10.1%2C40+40%2C20+40%2C10+20%2C30.1+%2710.1%27%29%29
@@ -30,7 +30,7 @@ http_interactions:
         eJxzTszLyy9RKEgsKk5VKM7MLchJVQj3DrFSCPD3iXT399PQMDbQM1QwBBI6JgYKJgY6RmDS
         0EDByEA
         HLKcOklTX1FRwrShITS5JTVFIVMgrzU1KLQIAwT4Y8g==
-  recorded_at: 2025-11-11 14:35:02
+  recorded_at: 2025-11-12 10:31:42
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=500&offset=0&geometry=POLYGON%28%2830.1+10.1%2C40+40%2C20+40%2C10+20%2C30.1+10.1%29
@@ -46,5 +46,5 @@ http_interactions:
         eJxzTszLyy9RKEgsKk5VKM7MLchJVQj3DrFSCPD3iXT399PQMDbQM1QwBBI6JgYKJgY6RmDS
         0EDByEA
         HLqep4FpRkJpckpqiEK0Zq5CWX5qXouDq7wYA/T8ZiA==
-  recorded_at: 2025-11-11 14:35:02
+  recorded_at: 2025-11-12 10:31:42
 recorded_with: VCR-vcr/2.0.0

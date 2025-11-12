@@ -26,7 +26,7 @@ test_that("returns the correct class", {
   expect_equal(as.character(uu$hierarchy[[1]][1,1]), "Plantae")
   expect_equal(uu$meta$limit, 20)
 
-  expect_equal(length(tt), 5)
+  expect_equal(length(tt), 6)
   expect_equal(length(tt$meta), 4)
 })
 
@@ -59,7 +59,7 @@ test_that("returns the correct class", {
   expect_true(out$meta$endOfRecords)
 
   # returns the correct dimensions
-  expect_equal(length(out), 5)
+  expect_equal(length(out), 6)
 })
 
 # Occurrence data: lat/long data, and associated metadata with occurrences
@@ -625,7 +625,7 @@ test_that("works with parameters that allow many inputs", {
   expect_is(bb, "gbif")
 
   expect_named(aa, c('smith', 'BJ Stacey'))
-  expect_named(bb, c('meta', 'hierarchy', 'data', 'media', 'facets'))
+  expect_named(bb, c('meta', 'hierarchy', 'data', 'media', 'classifications', 'facets'))
   
   expect_true(all(grepl("smith",unique(tolower(aa[[1]]$data$recordedBy)))))
   expect_true(all(grepl("bj stacey",unique(tolower(aa[[2]]$data$recordedBy)))))
