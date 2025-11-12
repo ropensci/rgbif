@@ -316,7 +316,11 @@
 #' which the event occurred.
 #' @param skip_validate (logical) whether to skip `wellknown::validate_wkt`
 #' call or not. passed down to [check_wkt()]. Default: `TRUE`
-#'
+#' @param checklistKey (character) The checklist uuid. This determines which taxonomy 
+#' will be used for the search in conjunction with other taxon keys or scientificName. 
+#' If this is not specified, the GBIF backbone taxonomy will be used.
+
+#' 
 #' @section Multiple values passed to a parameter:
 #' There are some parameters you can pass multiple values to in a vector,
 #' each value of which produces a different request (multiple different

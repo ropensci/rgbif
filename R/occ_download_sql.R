@@ -68,12 +68,13 @@ occ_download_sql <- function(q = NULL,
 #' @export
 occ_download_sql_validate <- function(q = NULL,
                                       user = NULL,
-                                      pwd = NULL) {
+                                      pwd = NULL,
+                                      curlopts = list(http_version=2)) {
   stopifnot(is.list(q))
   url <- "https://api.gbif.org/v1/occurrence/download/request/validate"
   user <- check_user(user)
   pwd <- check_pwd(pwd)
-  out <- rg_POST(url=url, req=q, user=user, pwd=pwd, curlopts=list())
+  out <- rg_POST(url=url, req=q, user=user, pwd=pwd, curlopts=curlopts)
   out
 }
 

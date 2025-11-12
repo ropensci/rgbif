@@ -22,6 +22,9 @@ print.gbif <- function(x, ...) {
     if ("media" %in% names(x)) {
       cat(rgbif_wrap(sprintf("No. media records [%s]", length(x$media))), "\n")
     }
+    if("classifications" %in% names(x)) {
+      cat(rgbif_wrap(sprintf("No. classifications [%s]", length(x$classifications))), "\n")
+    }
     if ("facets" %in% names(x)) {
       cat(rgbif_wrap(sprintf("No. facets [%s]", length(x$facets))), "\n")
     }
