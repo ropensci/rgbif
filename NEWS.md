@@ -254,7 +254,7 @@ rgbif 3.7.1
 rgbif 3.7.0
 ===========
 
-There is a new rgbif maintainer: [John Waller](https://twitter.com/JohnTWaller).  
+There is a new rgbif maintainer: John Waller.  
 
 ### NEW FEATURES
 
