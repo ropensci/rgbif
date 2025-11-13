@@ -73,7 +73,7 @@ http_interactions:
         Seychelles","sourceTaxonKey":163289486},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
         Register of Introduced and Invasive Species - Saint Martin (French part)","sourceTaxonKey":163298147},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
         Register of Introduced and Invasive Species - French Guiana","sourceTaxonKey":163299142},{"taxonKey":5231190,"habitat":"terrestrial","source":"Global
-        Register of Introduced and Invasive Species - New Zealand","sourceTaxonKey":163300960},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
+        Register of Introduced and Invasive Species - New Zealand","sourceTaxonKey":163301487},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
         Register of Introduced and Invasive Species - Panama","sourceTaxonKey":163308125},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Global
         Register of Introduced and Invasive Species – Falkland Islands (Islas Malvinas)","sourceTaxonKey":163309167},{"taxonKey":5231190,"habitat":"Terrestrial","source":"Protected
         Areas - Global Register of Introduced and Invasive Species - Addo-Elephant
@@ -121,7 +121,7 @@ http_interactions:
         Register of Marine Species","sourceTaxonKey":167504516},{"taxonKey":5231190,"habitat":"Terrestrial","sourceTaxonKey":167581120},{"taxonKey":5231190,"habitat":"Terrestrial","source":"GRIIS
         Checklist of Introduced and Invasive Species - Ecuador","sourceTaxonKey":168211724},{"taxonKey":5231190,"livingPeriod":"0.0117
         to 0.0 Ma","extinct":false,"source":"The Paleobiology Database","sourceTaxonKey":185018081},{"taxonKey":5231190,"habitat":"Terrestrial","sourceTaxonKey":196381258},{"taxonKey":5231190,"habitat":"Terrestrial","sourceTaxonKey":196382217},{"taxonKey":5231190,"habitat":"Terrestrial","sourceTaxonKey":196383324},{"taxonKey":5231190,"habitat":"Terrestrial","sourceTaxonKey":196384193},{"taxonKey":5231190,"habitat":"Terrestrial","sourceTaxonKey":196388910},{"taxonKey":5231190,"habitat":"Terrestrial","sourceTaxonKey":196394382},{"taxonKey":5231190,"habitat":"Terrestrial","sourceTaxonKey":196394780},{"taxonKey":5231190,"habitat":"Terrestrial","sourceTaxonKey":196395058},{"taxonKey":5231190,"habitat":"Terrestrial","sourceTaxonKey":196395193},{"taxonKey":5231190,"habitat":"Terrestrial","sourceTaxonKey":196395871},{"taxonKey":5231190,"habitat":"Terrestrial","sourceTaxonKey":196397086},{"taxonKey":5231190,"habitat":"Terrestrial","sourceTaxonKey":196397540},{"taxonKey":5231190,"habitat":"Terrestrial","sourceTaxonKey":201278372}]}'
-  recorded_at: 2025-09-04 07:14:42
+  recorded_at: 2025-11-13 08:08:29
 - request:
     method: GET
     uri: https://api.gbif.org/v1/species/5136020/speciesProfiles?offset=0&limit=100
@@ -132,5 +132,5 @@ http_interactions:
       content-type: application/json
     body:
       string: '{"offset":0,"limit":100,"endOfRecords":true,"results":[]}'
-  recorded_at: 2025-09-04 07:14:42
+  recorded_at: 2025-11-13 08:08:30
 recorded_with: VCR-vcr/2.0.0

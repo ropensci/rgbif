@@ -10,5 +10,5 @@ http_interactions:
     body:
       string: '[{"key":19952,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Biodiversity
         Informatics Manager","position":[],"email":["bdim@ansp.org"],"phone":[],"homepage":[],"address":[],"createdBy":"registry-migration.gbif.org","modifiedBy":"2e029a0c-87af-42e6-87d7-f38a50b78201","created":"2013-07-22T18:17:06.000+00:00","modified":"2014-11-10T14:00:07.894+00:00"}]'
-  recorded_at: 2025-09-04 07:12:55
+  recorded_at: 2025-11-13 08:04:45
 recorded_with: VCR-vcr/2.0.0

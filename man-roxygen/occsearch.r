@@ -398,3 +398,4 @@
 #' \code{isGeoreferenced=TRUE}
 #'
 #' @references https://www.gbif.org/developer/occurrence#search
+

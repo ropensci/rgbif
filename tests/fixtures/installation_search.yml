@@ -8,9 +8,23 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":700,"results":[{"key":"122fe53a-3ec2-45b8-8b27-0e76863039e0","organizationKey":"23e067c0-a255-11da-beae-b8a03c50a862","type":"HTTP_INSTALLATION","title":"Swiss
-        Node : DXT","createdBy":"sofiawyler","modifiedBy":"sofiawyler","created":"2025-09-03T13:31:20.387+00:00","modified":"2025-09-03T13:31:20.387+00:00","disabled":false,"contacts":[],"endpoints":[],"machineTags":[],"tags":[],"identifiers":[],"comments":[]}]}'
-  recorded_at: 2025-09-04 07:12:54
+      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":708,"results":[{"key":"6e2e8392-924d-43b7-854a-67f6005092b2","organizationKey":"f5fd374b-89cb-4ab6-b3eb-794c65f232c3","type":"IPT_INSTALLATION","title":"Sistema
+        de Informação sobre a Biodiversidade Brasileira - OBIS Brasil","description":"O
+        IPT (Integrated Publishing Toolkit) do OBIS – Brasil é a principal ferramenta
+        de publicação e gestão de dados sobre biodiversidade marinha e costeira do
+        país. O sistema integra o Brasil à rede global do Ocean Biodiversity Information
+        System (OBIS), iniciativa coordenada pela Comissão Oceanográfica Intergovernamental
+        (COI/UNESCO). O OBIS – Brasil é administrado pelo SiBBr (Sistema de Informação
+        sobre a Biodiversidade Brasileira), que atua como o nó nacional responsável
+        por promover a integração, padronização e disseminação dos dados marinhos
+        produzidos por instituições de pesquisa, universidades e órgãos governamentais.
+        Por meio do IPT, o OBIS – Brasil, sob coordenação do SiBBr, assegura que os
+        dados marinhos nacionais sejam acessíveis, reutilizáveis e integrados à rede
+        global, fortalecendo a ciência aberta e subsidiando políticas públicas voltadas
+        à conservação da biodiversidade oceânica, à gestão de recursos pesqueiros
+        e ao monitoramento ambiental.","createdBy":"f5fd374b-89cb-4ab6-b3eb-794c65f232c3","modifiedBy":"f5fd374b-89cb-4ab6-b3eb-794c65f232c3","created":"2025-11-02T18:50:34.920+00:00","modified":"2025-11-02T18:50:34.920+00:00","disabled":false,"contacts":[{"key":6312340,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Equipe
+        de dados SiBBr","position":[],"email":["atendimento_sibbr@rnp.br"],"phone":[],"homepage":[],"address":[],"createdBy":"f5fd374b-89cb-4ab6-b3eb-794c65f232c3","modifiedBy":"f5fd374b-89cb-4ab6-b3eb-794c65f232c3","created":"2025-11-02T18:50:34.942+00:00","modified":"2025-11-02T18:50:34.942+00:00"}],"endpoints":[{"key":1158958,"type":"FEED","url":"https://ipt.sibbr.gov.br/obis-brasil/rss.do","createdBy":"f5fd374b-89cb-4ab6-b3eb-794c65f232c3","modifiedBy":"f5fd374b-89cb-4ab6-b3eb-794c65f232c3","created":"2025-11-02T18:50:34.961+00:00","modified":"2025-11-02T18:50:34.961+00:00","machineTags":[]}],"machineTags":[],"tags":[],"identifiers":[],"comments":[]}]}'
+  recorded_at: 2025-11-13 08:04:44
 - request:
     method: GET
     uri: https://api.gbif.org/v1/installation?q=Estonia&limit=2
@@ -25,7 +39,7 @@ http_interactions:
         Adojaan","position":[],"email":["kristjan.adojaan@ut.ee"],"phone":[],"homepage":[],"address":[],"createdBy":"0870a77b-587c-4369-a8ed-bc3d347b8e1c","modifiedBy":"0870a77b-587c-4369-a8ed-bc3d347b8e1c","created":"2025-05-30T13:17:32.737+00:00","modified":"2025-05-30T13:17:32.737+00:00"}],"endpoints":[{"key":1111486,"type":"FEED","url":"https://cloud.gbif.org/ee/rss.do","createdBy":"0870a77b-587c-4369-a8ed-bc3d347b8e1c","modifiedBy":"0870a77b-587c-4369-a8ed-bc3d347b8e1c","created":"2025-05-30T13:17:32.755+00:00","modified":"2025-05-30T13:17:32.755+00:00","machineTags":[]}],"machineTags":[],"tags":[],"identifiers":[],"comments":[]},{"key":"60433990-f762-11e1-a439-00145eb45e9a","organizationKey":"70488160-b003-11d8-a8af-b8a03c50a862","type":"BIOCASE_INSTALLATION","title":"BioCASe
         Installation Geocollections of Estonia","description":"BioCASe Installation
         Geocollections of Estonia","createdBy":"registry-migration.gbif.org","modifiedBy":"registry-migration.gbif.org","created":"2012-09-05T14:02:49.000+00:00","modified":"2012-09-05T14:02:49.000+00:00","disabled":false,"contacts":[],"endpoints":[{"key":2684,"type":"BIOCASE","url":"http://sarv.gi.ee/biocase/pywrapper.cgi?dsa=tug","createdBy":"registry-migration.gbif.org","modifiedBy":"registry-migration.gbif.org","created":"2011-10-06T09:47:31.000+00:00","modified":"2011-10-06T09:47:31.000+00:00","machineTags":[]},{"key":2683,"type":"BIOCASE","url":"http://sarv.gi.ee/biocase/pywrapper.cgi?dsa=elm","createdBy":"registry-migration.gbif.org","modifiedBy":"registry-migration.gbif.org","created":"2011-10-06T08:49:33.000+00:00","modified":"2011-10-06T08:49:33.000+00:00","machineTags":[]},{"key":2682,"type":"BIOCASE","url":"http://sarv.gi.ee/biocase/pywrapper.cgi?dsa=git","createdBy":"registry-migration.gbif.org","modifiedBy":"registry-migration.gbif.org","created":"2011-10-06T08:49:21.000+00:00","modified":"2011-10-06T08:49:21.000+00:00","machineTags":[]}],"machineTags":[],"tags":[],"identifiers":[],"comments":[]}]}'
-  recorded_at: 2025-09-04 07:12:54
+  recorded_at: 2025-11-13 08:04:44
 - request:
     method: GET
     uri: https://api.gbif.org/v1/installation?type=IPT_INSTALLATION&limit=2
@@ -35,15 +49,31 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":374,"results":[{"key":"7ae54f0b-d21b-47d4-bb81-9615861f4e73","organizationKey":"866b32c9-6990-4c4e-8dea-ec9a96c9f1a5","type":"IPT_INSTALLATION","title":"Wings
-        PF IPT installation","description":"The IPT installation is part of digitalization
-        and monitoring initiative by Wings Protection Fund, Kazakhstan. \r\nBirds
-        monitoring URL: https://wingeds.world/","createdBy":"866b32c9-6990-4c4e-8dea-ec9a96c9f1a5","modifiedBy":"866b32c9-6990-4c4e-8dea-ec9a96c9f1a5","created":"2025-08-28T13:34:23.564+00:00","modified":"2025-08-28T13:34:23.564+00:00","disabled":false,"contacts":[{"key":6221802,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Pavel
-        Adzhigildyaev","position":[],"email":["ogletix@gmail.com"],"phone":[],"homepage":[],"address":[],"createdBy":"866b32c9-6990-4c4e-8dea-ec9a96c9f1a5","modifiedBy":"866b32c9-6990-4c4e-8dea-ec9a96c9f1a5","created":"2025-08-28T13:34:23.580+00:00","modified":"2025-08-28T13:34:23.580+00:00"}],"endpoints":[{"key":1136270,"type":"FEED","url":"https://ipt.wingeds.world/rss.do","createdBy":"866b32c9-6990-4c4e-8dea-ec9a96c9f1a5","modifiedBy":"866b32c9-6990-4c4e-8dea-ec9a96c9f1a5","created":"2025-08-28T13:34:23.597+00:00","modified":"2025-08-28T13:34:23.597+00:00","machineTags":[]}],"machineTags":[],"tags":[],"identifiers":[],"comments":[]},{"key":"8a33eb75-1359-4763-8622-81e773a3675b","organizationKey":"1bfac9af-cc42-4b4f-9d9c-1b456dd804d3","type":"IPT_INSTALLATION","title":"DOC
-        provisional IPT instance","description":"This instance of IPT has been established
-        to support an initial publication of Weeds observations.","createdBy":"1bfac9af-cc42-4b4f-9d9c-1b456dd804d3","modifiedBy":"1bfac9af-cc42-4b4f-9d9c-1b456dd804d3","created":"2025-08-04T23:05:17.055+00:00","modified":"2025-08-04T23:05:17.055+00:00","disabled":false,"contacts":[{"key":6198827,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Burcu
-        Cakmak","position":[],"email":["bcakmak@doc.govt.nz"],"phone":[],"homepage":[],"address":[],"createdBy":"1bfac9af-cc42-4b4f-9d9c-1b456dd804d3","modifiedBy":"1bfac9af-cc42-4b4f-9d9c-1b456dd804d3","created":"2025-08-04T23:05:17.072+00:00","modified":"2025-08-04T23:05:17.072+00:00"}],"endpoints":[{"key":1131275,"type":"FEED","url":"https://dev.ipt.depcon.cloud/ipt-prod/rss.do","createdBy":"1bfac9af-cc42-4b4f-9d9c-1b456dd804d3","modifiedBy":"1bfac9af-cc42-4b4f-9d9c-1b456dd804d3","created":"2025-08-04T23:05:17.095+00:00","modified":"2025-08-04T23:05:17.095+00:00","machineTags":[]}],"machineTags":[],"tags":[],"identifiers":[],"comments":[]}]}'
-  recorded_at: 2025-09-04 07:12:54
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":376,"results":[{"key":"6e2e8392-924d-43b7-854a-67f6005092b2","organizationKey":"f5fd374b-89cb-4ab6-b3eb-794c65f232c3","type":"IPT_INSTALLATION","title":"Sistema
+        de Informação sobre a Biodiversidade Brasileira - OBIS Brasil","description":"O
+        IPT (Integrated Publishing Toolkit) do OBIS – Brasil é a principal ferramenta
+        de publicação e gestão de dados sobre biodiversidade marinha e costeira do
+        país. O sistema integra o Brasil à rede global do Ocean Biodiversity Information
+        System (OBIS), iniciativa coordenada pela Comissão Oceanográfica Intergovernamental
+        (COI/UNESCO). O OBIS – Brasil é administrado pelo SiBBr (Sistema de Informação
+        sobre a Biodiversidade Brasileira), que atua como o nó nacional responsável
+        por promover a integração, padronização e disseminação dos dados marinhos
+        produzidos por instituições de pesquisa, universidades e órgãos governamentais.
+        Por meio do IPT, o OBIS – Brasil, sob coordenação do SiBBr, assegura que os
+        dados marinhos nacionais sejam acessíveis, reutilizáveis e integrados à rede
+        global, fortalecendo a ciência aberta e subsidiando políticas públicas voltadas
+        à conservação da biodiversidade oceânica, à gestão de recursos pesqueiros
+        e ao monitoramento ambiental.","createdBy":"f5fd374b-89cb-4ab6-b3eb-794c65f232c3","modifiedBy":"f5fd374b-89cb-4ab6-b3eb-794c65f232c3","created":"2025-11-02T18:50:34.920+00:00","modified":"2025-11-02T18:50:34.920+00:00","disabled":false,"contacts":[{"key":6312340,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Equipe
+        de dados SiBBr","position":[],"email":["atendimento_sibbr@rnp.br"],"phone":[],"homepage":[],"address":[],"createdBy":"f5fd374b-89cb-4ab6-b3eb-794c65f232c3","modifiedBy":"f5fd374b-89cb-4ab6-b3eb-794c65f232c3","created":"2025-11-02T18:50:34.942+00:00","modified":"2025-11-02T18:50:34.942+00:00"}],"endpoints":[{"key":1158958,"type":"FEED","url":"https://ipt.sibbr.gov.br/obis-brasil/rss.do","createdBy":"f5fd374b-89cb-4ab6-b3eb-794c65f232c3","modifiedBy":"f5fd374b-89cb-4ab6-b3eb-794c65f232c3","created":"2025-11-02T18:50:34.961+00:00","modified":"2025-11-02T18:50:34.961+00:00","machineTags":[]}],"machineTags":[],"tags":[],"identifiers":[],"comments":[]},{"key":"09490f73-d156-445c-971e-f02b574f0320","organizationKey":"67b2263f-6990-4d9d-b32b-20aa72ef4fbc","type":"IPT_INSTALLATION","title":"OBIS-SEAMAP","description":"Ocean
+        Biodiversity Information System Spatial Ecological Analysis of Megavertebrate
+        Populations (OBIS-SEAMAP), a thematic node of the Ocean Biodiversity Information
+        System (OBIS), is aimed at augmenting our understanding of the distribution
+        and the ecology of marine mammals, seabirds, sea turtles and rays & sharks
+        by quantifying the global patterns of marine species distribution and biodiversity
+        and designing and implementing standard databases and innovative sampling
+        techniques.","createdBy":"67b2263f-6990-4d9d-b32b-20aa72ef4fbc","modifiedBy":"67b2263f-6990-4d9d-b32b-20aa72ef4fbc","created":"2025-10-06T13:42:43.973+00:00","modified":"2025-10-06T13:42:43.973+00:00","disabled":false,"contacts":[{"key":6276230,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Ei
+        Fujioka","position":[],"email":["efujioka@duke.edu"],"phone":[],"homepage":[],"address":[],"createdBy":"67b2263f-6990-4d9d-b32b-20aa72ef4fbc","modifiedBy":"67b2263f-6990-4d9d-b32b-20aa72ef4fbc","created":"2025-10-06T13:42:43.988+00:00","modified":"2025-10-06T13:42:43.988+00:00"}],"endpoints":[{"key":1150725,"type":"FEED","url":"https://ipt.env.duke.edu/rss.do","createdBy":"67b2263f-6990-4d9d-b32b-20aa72ef4fbc","modifiedBy":"67b2263f-6990-4d9d-b32b-20aa72ef4fbc","created":"2025-10-06T13:42:44.006+00:00","modified":"2025-10-06T13:42:44.006+00:00","machineTags":[]}],"machineTags":[],"tags":[],"identifiers":[],"comments":[]}]}'
+  recorded_at: 2025-11-13 08:04:44
 - request:
     method: GET
     uri: https://api.gbif.org/v1/installation?modified=2023-04-01%2C%2A&limit=2
@@ -53,11 +83,22 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":161,"results":[{"key":"122fe53a-3ec2-45b8-8b27-0e76863039e0","organizationKey":"23e067c0-a255-11da-beae-b8a03c50a862","type":"HTTP_INSTALLATION","title":"Swiss
-        Node : DXT","createdBy":"sofiawyler","modifiedBy":"sofiawyler","created":"2025-09-03T13:31:20.387+00:00","modified":"2025-09-03T13:31:20.387+00:00","disabled":false,"contacts":[],"endpoints":[],"machineTags":[],"tags":[],"identifiers":[],"comments":[]},{"key":"7ae54f0b-d21b-47d4-bb81-9615861f4e73","organizationKey":"866b32c9-6990-4c4e-8dea-ec9a96c9f1a5","type":"IPT_INSTALLATION","title":"Wings
-        PF IPT installation","description":"The IPT installation is part of digitalization
-        and monitoring initiative by Wings Protection Fund, Kazakhstan. \r\nBirds
-        monitoring URL: https://wingeds.world/","createdBy":"866b32c9-6990-4c4e-8dea-ec9a96c9f1a5","modifiedBy":"866b32c9-6990-4c4e-8dea-ec9a96c9f1a5","created":"2025-08-28T13:34:23.564+00:00","modified":"2025-08-28T13:34:23.564+00:00","disabled":false,"contacts":[{"key":6221802,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Pavel
-        Adzhigildyaev","position":[],"email":["ogletix@gmail.com"],"phone":[],"homepage":[],"address":[],"createdBy":"866b32c9-6990-4c4e-8dea-ec9a96c9f1a5","modifiedBy":"866b32c9-6990-4c4e-8dea-ec9a96c9f1a5","created":"2025-08-28T13:34:23.580+00:00","modified":"2025-08-28T13:34:23.580+00:00"}],"endpoints":[{"key":1136270,"type":"FEED","url":"https://ipt.wingeds.world/rss.do","createdBy":"866b32c9-6990-4c4e-8dea-ec9a96c9f1a5","modifiedBy":"866b32c9-6990-4c4e-8dea-ec9a96c9f1a5","created":"2025-08-28T13:34:23.597+00:00","modified":"2025-08-28T13:34:23.597+00:00","machineTags":[]}],"machineTags":[],"tags":[],"identifiers":[],"comments":[]}]}'
-  recorded_at: 2025-09-04 07:12:54
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":170,"results":[{"key":"6e2e8392-924d-43b7-854a-67f6005092b2","organizationKey":"f5fd374b-89cb-4ab6-b3eb-794c65f232c3","type":"IPT_INSTALLATION","title":"Sistema
+        de Informação sobre a Biodiversidade Brasileira - OBIS Brasil","description":"O
+        IPT (Integrated Publishing Toolkit) do OBIS – Brasil é a principal ferramenta
+        de publicação e gestão de dados sobre biodiversidade marinha e costeira do
+        país. O sistema integra o Brasil à rede global do Ocean Biodiversity Information
+        System (OBIS), iniciativa coordenada pela Comissão Oceanográfica Intergovernamental
+        (COI/UNESCO). O OBIS – Brasil é administrado pelo SiBBr (Sistema de Informação
+        sobre a Biodiversidade Brasileira), que atua como o nó nacional responsável
+        por promover a integração, padronização e disseminação dos dados marinhos
+        produzidos por instituições de pesquisa, universidades e órgãos governamentais.
+        Por meio do IPT, o OBIS – Brasil, sob coordenação do SiBBr, assegura que os
+        dados marinhos nacionais sejam acessíveis, reutilizáveis e integrados à rede
+        global, fortalecendo a ciência aberta e subsidiando políticas públicas voltadas
+        à conservação da biodiversidade oceânica, à gestão de recursos pesqueiros
+        e ao monitoramento ambiental.","createdBy":"f5fd374b-89cb-4ab6-b3eb-794c65f232c3","modifiedBy":"f5fd374b-89cb-4ab6-b3eb-794c65f232c3","created":"2025-11-02T18:50:34.920+00:00","modified":"2025-11-02T18:50:34.920+00:00","disabled":false,"contacts":[{"key":6312340,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Equipe
+        de dados SiBBr","position":[],"email":["atendimento_sibbr@rnp.br"],"phone":[],"homepage":[],"address":[],"createdBy":"f5fd374b-89cb-4ab6-b3eb-794c65f232c3","modifiedBy":"f5fd374b-89cb-4ab6-b3eb-794c65f232c3","created":"2025-11-02T18:50:34.942+00:00","modified":"2025-11-02T18:50:34.942+00:00"}],"endpoints":[{"key":1158958,"type":"FEED","url":"https://ipt.sibbr.gov.br/obis-brasil/rss.do","createdBy":"f5fd374b-89cb-4ab6-b3eb-794c65f232c3","modifiedBy":"f5fd374b-89cb-4ab6-b3eb-794c65f232c3","created":"2025-11-02T18:50:34.961+00:00","modified":"2025-11-02T18:50:34.961+00:00","machineTags":[]}],"machineTags":[],"tags":[],"identifiers":[],"comments":[]},{"key":"c11d18e9-858b-4013-9ebc-cd2bbe8df727","organizationKey":"47a779a6-a230-4edd-b787-19c3d2c80ab5","type":"HTTP_INSTALLATION","title":"Species
+        File Group installation","createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2025-10-24T15:40:18.751+00:00","modified":"2025-10-24T15:40:18.751+00:00","disabled":false,"contacts":[],"endpoints":[],"machineTags":[],"tags":[],"identifiers":[],"comments":[]}]}'
+  recorded_at: 2025-11-13 08:04:45
 recorded_with: VCR-vcr/2.0.0

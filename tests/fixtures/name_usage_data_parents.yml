@@ -42,7 +42,7 @@ http_interactions:
         h8nD080eUOsqSmWxEvG03nmmlTSJpvlS
         Cgtaa9fyfGudumacyKVr+SeEB0F4G+FhH/0H4X37
         B9voNLs=
-  recorded_at: 2025-09-04 07:14:40
+  recorded_at: 2025-11-13 08:08:28
 - request:
     method: GET
     uri: https://api.gbif.org/v1/species/5135783/parents?offset=0&limit=100
@@ -96,5 +96,5 @@ http_interactions:
         92x69+Y7nWlnea4W8Kc8azM7b7HjvymN0r/+NKgT9UMt9QP8MKWDgsEDJvFOf7r0xi5
         xgsD7
         d8y9/xtsIPm2
-  recorded_at: 2025-09-04 07:14:41
+  recorded_at: 2025-11-13 08:08:28
 recorded_with: VCR-vcr/2.0.0

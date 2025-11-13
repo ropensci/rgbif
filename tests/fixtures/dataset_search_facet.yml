@@ -9,14 +9,14 @@ http_interactions:
       content-type: application/json
     body:
       raw_gzip: |-
-        eJx1zM2qwjAQBeB3mXWaZNImabt240pwe3ER2gkWalKaKqLcdzfo5foDMpvDnG/mCtH7RAu0
-        ksE4HIZ
-        HotBv/Ja6OPcJWu/GRAy6eAy5RjTGKgYzpeO45Ppnx8C7ju75Cn6gsYcWVps1/B09
-        iuAOlPcouVY1ig
-        uF2EeuGmwswv97ZX7Zm9VlIyjMMz+pUE6I+mk/KEppRUJptSxyLBpV6sI8
-        efnB0VRGXGJc3NnxSkrDV
-        f7x3evK1ELVk913r2iX5wYBol8S
-  recorded_at: 2025-09-04 07:12:37
+        eJxdzMFuwyAMBuB38ZkAhgBJzr3sVGnXqQeUGC1SClFI16rV3n1ondYo8uWX/89+QAoh0wqd
+        ZDCN5/G
+        ZKA7H8E59WoYMXfBTJgZ9usRSIzbOaQYL5cu0lvrjxCD4nn7zA8JI0wAdHI5v8Hf0
+        LKI/U9mj5Mq0Cs
+        V1rqmaP5WE/9+qab7ZVhrVoLhTTEPiqsXW4QbbnTW6FRSXhX+pqGdE87I7
+        ilI6kVE6I6sSq1ZpU9kX1
+        zuOtrbintLqb57XUlquyo+tP5X5AQ0AYIs=
+  recorded_at: 2025-11-13 08:04:19
 - request:
     method: GET
     uri: https://api.gbif.org/v1/dataset/search?limit=0&facetLimit=5&facet=type
@@ -27,13 +27,13 @@ http_interactions:
       content-type: application/json
     body:
       raw_gzip: |-
-        eJxNjcsKgzAQRf9l1lk0rUbqTtLQSn2haaEUKaIJCFHB6Er894ZaVGZz4Zx7Z4JOSi0GcA8I
-        VN3USxJ
-        tFctUlF1faXBlobRAUHZjazDGhDhHBL3QoxoMfucIZFGKX55A1kJV4AJ/JQz+rYW0
-        RSMMoDdG74GfcV
-        g3CcY2mdGqxJQ+0pRFlG2ObR7bOyfzwiTwo+uHPVm02zqdD85OCxn3Lh73
-        NsGyrDk39wWhqkye
-  recorded_at: 2025-09-04 07:12:37
+        eJxNjMsKgzAURP/lrrOI1aq4C2lopb7QtFCKFNEbEHyAj5X475Va2jCbgXNmFuiVGnECjxJo
+        6rbeG3Z
+        VrFIs+6EawVNFMyKBsp+7DRuG6zgmgQHHuZk2/MwJqKLET19A1dhU4IF8JAK+q510
+        RYsb4BfBr4GfSf
+        h92gdK6Up+Ssz5LU1FxMXfORquYWpOxsIk8KPzS9xFpH1ZlmNpWigkOzHJ
+        NMG113zLG6AUTJ0=
+  recorded_at: 2025-11-13 08:04:19
 - request:
     method: GET
     uri: https://api.gbif.org/v1/dataset/search?limit=0&facetLimit=5&facet=publishingCountry
@@ -44,13 +44,13 @@ http_interactions:
       content-type: application/json
     body:
       raw_gzip: |-
-        eJxNzcsKgzAQBdB/mXUWJvW9rH0oFC1aF6VIEZ1AICoYXUn/vaEWDbO5cC53Fhg4VzhBaBGQ
-        ohNrwr7
-        NeI7NMLYKQl5LhQSaYe41U+q6HiMwoprlpPlVEeB1g7+8ABcoWwjhXh5vSREn6fUd
-        ZWX6yJ/w31h7fd
-        2hrkUxbNOOzXz2IZtd8t2Yr/8adjrvFlh2YFCU7XSwqWNQWRiLnn5W6fsC
-        ZxpPMg==
-  recorded_at: 2025-09-04 07:12:37
+        eJxNzMsKgzAUBNB/uessjFGMLmsfCkWL1kUpUkRvQIgKRlfivzfUomE2A2eYBQYhFE4QWARk
+        27Vbw75
+        JRYb1MDYKAlFJhQTqYe41U8o9jxEYUc1y0vwuCYiqxl9fQLQoGwjgUZzucR7Fye0T
+        pkXyzF7w/9h2fd
+        WhnoUR7Neu43F/Jbtds8NsbjPLsPPlMN9ymUFhehBzuGNQkRtEqbWWOl9s
+        SU8t
+  recorded_at: 2025-11-13 08:04:19
 - request:
     method: GET
     uri: https://api.gbif.org/v1/dataset/search?limit=0&facetLimit=5&facetMincount=10000&facet=license
@@ -61,10 +61,10 @@ http_interactions:
       content-type: application/json
     body:
       raw_gzip: |-
-        eJxNjLEKwyAURf/lzQ4qqaGOlQyF0EI7lRJE9AmCUYjJFPLvlaaUcJcL59y7Qva+4AySEohh
-        DHvD5O7
-        +gTZProD0JhYkYPOSKmZMiJYTmLAsca74PRDwxuK3r+ADRgcS+qvqbs8OfsMdJjNi
-        ZUpRzTSF/6lg/E
-        Q3chD05aWbo9K0lJ+3oeYDPlI3sg==
-  recorded_at: 2025-09-04 07:12:37
+        eJxNjLEKwyAURf/lzQ7aSkwdKxkKpYV2KiWI6BMEoxCTKeTfK00p4S4Xzrl3gex9wQkkJRDD
+        ELaGyd3
+        9A20eXQHpTSxIwOY5VcxYK8SRwIhljlPF756ANxa/fQEfMDqQcL2o7vbs4DfcYDID
+        VqYU1UxT+J82B3
+        6iK9kJ+vzSfK9w0bRs7Ws+QaI3wQ==
+  recorded_at: 2025-11-13 08:04:19
 recorded_with: VCR-vcr/2.0.0

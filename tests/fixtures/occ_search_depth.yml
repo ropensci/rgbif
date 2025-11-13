@@ -11,8 +11,8 @@ http_interactions:
       string: '{"usage":{"key":"7595433","name":"Salmo salar Linnaeus, 1758","canonicalName":"Salmo
         salar","authorship":"Linnaeus, 1758","rank":"SPECIES","code":"ZOOLOGICAL","status":"ACCEPTED","genericName":"Salmo","specificEpithet":"salar","type":"SCIENTIFIC","formattedName":"<i>Salmo</i>
         <i>salar</i> Linnaeus, 1758"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"44","name":"Chordata","rank":"PHYLUM"},{"key":"1313","name":"Salmoniformes","rank":"ORDER"},{"key":"8615","name":"Salmonidae","rank":"FAMILY"},{"key":"2347608","name":"Salmo","rank":"GENUS"},{"key":"7595433","name":"Salmo
-        salar","rank":"SPECIES"}],"diagnostics":{"matchType":"EXACT","confidence":100,"timeTaken":16,"timings":{"nameNRank":0,"sciNameMatch":16,"nameParse":0,"luceneMatch":16}},"additionalStatus":[{"clbDatasetKey":"53131","datasetAlias":"IUCN","datasetKey":"19491596-35ae-4a91-9a98-85cf505f1bd3","status":"NEAR_THREATENED","statusCode":"NT","sourceId":"19855"}],"synonym":false,"left":808747,"right":808754}'
-  recorded_at: 2025-11-12 10:31:23
+        salar","rank":"SPECIES"}],"diagnostics":{"matchType":"EXACT","confidence":100,"timeTaken":16,"timings":{"nameNRank":0,"sciNameMatch":16,"nameParse":1,"luceneMatch":15}},"additionalStatus":[{"clbDatasetKey":"53131","datasetAlias":"IUCN","datasetKey":"19491596-35ae-4a91-9a98-85cf505f1bd3","status":"NEAR_THREATENED","statusCode":"NT","sourceId":"19855"}],"synonym":false,"left":808747,"right":808754}'
+  recorded_at: 2025-11-13 08:17:35
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&depth=5&taxonKey=7595433
@@ -89,7 +89,7 @@ http_interactions:
         v2.14.0 (https://nf-co.re/ampliseq) DADA2:assignTaxonomy annotation against
         PR2 v5.1.0 (https://github.com/pr2database/pr2database/releases/tag/v5.1.0.0);
         confidence at lowest specified (ASV portal) taxon: 0.6"}],"facets":[]}'
-  recorded_at: 2025-11-12 10:31:23
+  recorded_at: 2025-11-13 08:17:35
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&depth=5&taxonKey=7595433
@@ -166,7 +166,7 @@ http_interactions:
         v2.14.0 (https://nf-co.re/ampliseq) DADA2:assignTaxonomy annotation against
         PR2 v5.1.0 (https://github.com/pr2database/pr2database/releases/tag/v5.1.0.0);
         confidence at lowest specified (ASV portal) taxon: 0.6"}],"facets":[]}'
-  recorded_at: 2025-11-12 10:31:23
+  recorded_at: 2025-11-13 08:17:35
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=500&offset=0&depth=5-10&taxonKey=7595433
@@ -175,9 +175,9 @@ http_interactions:
     headers:
       status: HTTP/1.1 400 Bad Request
       content-type: text/plain
-      x-varnish-rli: '12'
+      x-varnish-rli: '13'
       x-varnish-rlg: '250'
     body:
       string: 'Invalid decimal range: 5-10'
-  recorded_at: 2025-11-12 10:31:23
+  recorded_at: 2025-11-13 08:17:35
 recorded_with: VCR-vcr/2.0.0
