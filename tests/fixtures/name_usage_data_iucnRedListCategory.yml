@@ -10,7 +10,7 @@ http_interactions:
     body:
       string: '{"category":"NOT_EVALUATED","scientificName":"Calopteryx splendens
         Harris, 1780","taxonomicStatus":"ACCEPTED","code":"NE"}'
-  recorded_at: 2025-09-04 07:14:42
+  recorded_at: 2025-11-13 08:08:30
 - request:
     method: GET
     uri: https://api.gbif.org/v1/species/5097652/iucnRedListCategory?offset=0&limit=100
@@ -23,5 +23,5 @@ http_interactions:
       string: '{"category":"NOT_EVALUATED","scientificName":"Corycus praemorsus Krauss,
         1890","taxonomicStatus":"SYNONYM","acceptedName":"Corycoides karschi (Krauss,
         1890)","code":"NE"}'
-  recorded_at: 2025-09-04 07:14:42
+  recorded_at: 2025-11-13 08:08:30
 recorded_with: VCR-vcr/2.0.0

@@ -1,3 +1,14 @@
+rgbif 3.8.4
+===========
+
+### NEW FEATURES
+`occ_search()` now supports searching for occurrence by `checklistKey`. (#801) 
+`name_backbone()` and `name_backbone_checklist()` now use GBIF API v2 for matching. (#797)
+
+### BUG FIXES
+Fixed bug in `name_backbone_checklist()` where large numbers of async requests were not being handled properly. (#815)
+Fixed bug with `dnaSequenceID` in `occ_search()` results. (#810)
+
 rgbif 3.8.3
 ===========
 
@@ -243,7 +254,7 @@ rgbif 3.7.1
 rgbif 3.7.0
 ===========
 
-There is a new rgbif maintainer: [John Waller](https://twitter.com/JohnTWaller).  
+There is a new rgbif maintainer: John Waller.  
 
 ### NEW FEATURES
 

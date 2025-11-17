@@ -8,7 +8,7 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":515,"results":[{"key":"5f024e8c-bbaa-400f-a9ae-b07b2a0ae45a","code":"PSUZC-INSECT","name":"Stock
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":533,"results":[{"key":"5f024e8c-bbaa-400f-a9ae-b07b2a0ae45a","code":"PSUZC-INSECT","name":"Stock
         of insect specimens","description":"Curator: Dr. Sophak Chantharit. Tailed
         bugs are small invertebrates. It is classified as a legged animal. It is the
         boundary between crustaceans and insects. The stingrays belong to the class
@@ -58,7 +58,7 @@ http_interactions:
         House, Opp Lion Gate, SBS Road, Fort","city":"Mumbai","province":"Maharashtra","postalCode":"400001","country":"IN"},"address":{"key":56144,"address":"Hornbill
         House, Opp Lion Gate, SBS Road, Fort","city":"Mumbai","province":"Maharashtra","postalCode":"400001","country":"IN"},"createdBy":"vijaybarve","modifiedBy":"vijaybarve","created":"2025-07-02T22:06:30.055+00:00","modified":"2025-07-02T22:06:30.055+00:00","tags":[],"identifiers":[],"contactPersons":[],"numberSpecimens":50000,"machineTags":[],"incorporatedCollections":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"institutionName":"Bombay
         Natural History Society","institutionCode":"BNHS"}]}'
-  recorded_at: 2025-09-04 07:12:13
+  recorded_at: 2025-11-13 08:03:32
 - request:
     method: GET
     uri: https://api.gbif.org/v1/grscicoll/collection?limit=2&name=Insects
@@ -68,24 +68,32 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":136,"results":[{"key":"40091655-14a3-4558-a7b8-640e2e156a92","code":"ENT","name":"Entomology","description":"Entomology
-        collection (ENT) of the Museu Nacional de História Natural e da Ciência (MNHNC),
-        Lisbon, PORTUGAL.","contentTypes":["PreservedOrganisms"],"active":true,"personalCollection":false,"email":["geral@museus.ulisboa.pt","rkeller@edu.ulisboa.pt"],"phone":[],"homepage":"https://www.museus.ulisboa.pt/","catalogUrls":[],"apiUrls":[],"preservationTypes":["SamplePinned","SampleFluidPreserved","SampleSlideMount"],"institutionKey":"0fdf8436-0060-4cc4-8235-90526026bccd","mailingAddress":{"key":52829,"address":"Museu
-        Nacional de História Natural e da Ciência, Rua da Escola Politécnica 56/58","city":"Lisbon","postalCode":"1250-102","country":"PT"},"address":{"key":52828,"address":"Museu
-        Nacional de História Natural e da Ciência, Rua da Escola Politécnica 56/58","city":"Lisbon","postalCode":"1250-102","country":"PT"},"createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2025-01-21T08:49:23.632+00:00","modified":"2025-01-21T15:13:10.506+00:00","tags":[],"identifiers":[],"contactPersons":[],"numberSpecimens":500000,"machineTags":[],"taxonomicCoverage":"Hexapoda","geographicCoverage":"Global","incorporatedCollections":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"temporalCoverage":"1858
-        - present","institutionName":"Museu Nacional de História Natural e da Ciência","institutionCode":"MNHNC"},{"key":"6d9fa861-1fba-47b5-a90a-735ee007776b","code":"AMBL-ENT","name":"Entomology","description":"Estimated
-        number of specimens (individual specimen): 275´000. Formation period: 1835-ongoing.
-        Geologic period: Present. Estimated number of species: 20´000. Number of types:
-        unknown. SCSPS: 4 [Holger Frick, updated 2024-10-03]","contentTypes":["Biological","PreservedOrganisms","Exoskeletons"],"active":true,"personalCollection":false,"email":["holger.frick@bl.ch"],"phone":[],"catalogUrls":[],"apiUrls":[],"preservationTypes":["StorageControlledAtmosphere","SamplePinned"],"institutionKey":"58f0cf31-4c49-4568-87d5-60d51389230f","mailingAddress":{"key":52093},"address":{"key":52084,"address":"Amtshausgasse
-        7","city":"Liestal","postalCode":"CH-4410","country":"CH"},"createdBy":"tschudin","modifiedBy":"morel_anne","created":"2024-11-27T19:43:26.388+00:00","modified":"2025-08-20T08:02:22.108+00:00","tags":[],"identifiers":[{"key":376510,"type":"UUID","identifier":"b394f0d1-dd46-452c-b2d5-4ffa6290ce37","createdBy":"sofiawyler","created":"2024-11-28T08:35:59.438+00:00","primary":false}],"contactPersons":[{"key":41476,"firstName":"Holger","lastName":"Frick","position":["Head
-        of Collections","creator","metadataProvider","contact"],"phone":[],"fax":[],"email":["holger.frick@bl.ch"],"address":["Amtshausgasse
-        7"],"city":"Liestal","country":"CH","postalCode":"CH-4410","primary":true,"taxonomicExpertise":[],"userIds":[{"type":"ORCID","id":"0000-0003-1971-310X"}],"createdBy":"sofiawyler","modifiedBy":"sofiawyler","created":"2025-02-25T10:13:31.555+00:00","modified":"2025-02-25T10:13:31.555+00:00"}],"numberSpecimens":275000,"machineTags":[],"taxonomicCoverage":"Insecta:
-        Insecta; Lepidoptera; Coleoptera","notes":"One of the largest collections
-        of butterflies of the canton (region) of Basel-Country","incorporatedCollections":[],"alternativeCodes":[{"code":"AMBL-BL-ENT","description":"previous
-        to August 2025"}],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"temporalCoverage":"Formation
-        period: 1835-ongoing","institutionName":"Archäologie und Museum Baselland
-        - Museum.BL","institutionCode":"AMBL"}]}'
-  recorded_at: 2025-09-04 07:12:13
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":138,"results":[{"key":"fa140a6d-a1cd-46ea-95b9-1980418eb908","code":"ENT","name":"Entomology","description":"The
+        insect collection is one of the Museum’s most active collections, maintained
+        by a staff of about 15 scientists, curators, research students and volunteers.
+        The collection includes about three million items representing Israel’s insect
+        species, as well as tens of thousands of items from different regions around
+        the world. These provide a basis for taxonomic, phylogenetic and ecological
+        research for the Museum’s scientists and their students, as well as researchers
+        from other academic institutions in Israel and overseas. The collection also
+        includes a range of live insects, used for instruction purposes. Activities
+        aim to preserve, document and study Israel’s insect community, estimated to
+        include about 20,000 species, at least one thousand of which remain unknown
+        to science. In addition to their research and routine work, the collection’s
+        staff provides identification services to a range of government, academic,
+        commercial and private organizations.","contentTypes":["Exoskeletons"],"active":true,"personalCollection":false,"email":[],"phone":[],"catalogUrls":[],"apiUrls":[],"preservationTypes":[],"institutionKey":"0e972e6d-3b72-476d-ae05-f7de1c82d3c6","mailingAddress":{"key":56960},"address":{"key":56961,"address":"12
+        Klausner Street","city":"Tel Aviv","postalCode":"073-3802000","country":"IL"},"createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2025-09-29T10:06:17.068+00:00","modified":"2025-09-29T10:08:15.198+00:00","tags":[],"identifiers":[],"contactPersons":[],"numberSpecimens":3000000,"machineTags":[],"taxonomicCoverage":"Insecta","incorporatedCollections":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"institutionName":"Tel-Aviv
+        University - Steinhardt Museum","institutionCode":"TAU"},{"key":"7f6438b9-fe77-41f3-8858-155f3c18690b","code":"SMNS-E","name":"Entomology","description":"The
+        entomological collections include more than 5.5 million specimens from all
+        over the world, thus forming the largest part of the museum’s inventory. Its
+        major part holds about 4.8 million dried insects stored in more than 22,000
+        insect drawers. Additionally, a considerable amount of insects and other arthropods,
+        mainly Crustacea and Arachnida, are stored in ethanol. In recent years, specimens
+        are increasingly preserved in 100 % ethanol and stored in deep freezers at
+        -80° C for genetic studies.","contentTypes":["Exoskeletons","PreservedOrganisms"],"active":true,"personalCollection":false,"email":[],"phone":[],"homepage":"https://www.naturkundemuseum-bw.de/en/research/collection/entomology-collection","catalogUrls":[],"apiUrls":[],"preservationTypes":["SamplePinned","SampleFluidPreserved","StorageFrozenMinus80"],"accessionStatus":"Institutional","institutionKey":"57246550-fc3c-4056-a59b-5688a10274bd","mailingAddress":{"key":56953},"address":{"key":56952,"address":"Rosenstein
+        1, D-70191 Stuttgart","country":"DE"},"createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2025-09-29T08:57:46.050+00:00","modified":"2025-09-29T08:58:54.702+00:00","tags":[],"identifiers":[],"contactPersons":[],"numberSpecimens":5500000,"machineTags":[],"taxonomicCoverage":"Arthropoda","incorporatedCollections":[],"alternativeCodes":[{"code":"SMNS-E-neuropteracoll","description":"Neuroptera"},{"code":"SMNS-E-goldenwaspscoll","description":"Chrysididae"}],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"featuredImageUrl":"https://www.naturkundemuseum-bw.de/fileadmin/_processed_/6/1/csm_smns-entomologie-sammlung-header_4784d273b2.jpg","institutionName":"Staatliches
+        Museum für Naturkunde Stuttgart","institutionCode":"SMNS"}]}'
+  recorded_at: 2025-11-13 08:03:32
 - request:
     method: GET
     uri: https://api.gbif.org/v1/grscicoll/collection?numberSpecimens=0%2C100&limit=1
@@ -95,19 +103,17 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":1696,"results":[{"key":"4a5632b8-f86b-4d38-a0cb-12bef927b905","code":"FI-PBP","name":"Erbario
-        di Onorina Passerini Bargagli Petrucci | Onorina Passerini Bargagli Petrucci''s
-        herbarium","description":"Contents: 99 specimens, including 42 lichens, 45
-        bryophytes, 10 pteridophytes and 2 angiosperms.","contentTypes":["PreservedOrganisms"],"active":false,"personalCollection":true,"email":[],"phone":[],"catalogUrls":[],"apiUrls":[],"preservationTypes":["SamplePressed","SampleDried","StorageIndoors"],"institutionKey":"42038f96-5978-474c-9b0b-4e92450cd1d8","mailingAddress":{"key":56097,"address":"Via
-        Giorgio La Pira, 4","city":"Firenze","province":"[TOSCANA] Firenze (FI)","postalCode":"IT-50121","country":"IT"},"address":{"key":56096,"address":"Via
-        Giorgio La Pira, 4","city":"Firenze","province":"[TOSCANA] Firenze (FI)","postalCode":"IT-50121","country":"IT"},"createdBy":"tasmacetus","modifiedBy":"tasmacetus","created":"2025-06-30T07:49:08.366+00:00","modified":"2025-06-30T07:49:08.366+00:00","tags":[],"identifiers":[],"contactPersons":[],"numberSpecimens":97,"machineTags":[],"notes":"This
-        is a sub-collection of https://registry.gbif.org/collection/19961847-31f6-4abb-9b92-18a391ba9b0d.
-        Information originally retrieved from internal University of Florence Museal
-        System (UNIFI-SMA) digitization dashboard, compiled in October 2021.","incorporatedCollections":[],"alternativeCodes":[{"code":"FI999941","description":"Herbarium
-        barcode"}],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":99,"typeSpecimenCount":0,"institutionName":"Sede
-        di Via Giorgio La Pira del Museo di Storia naturale di Firenze |  Via Giorgio
-        La Pira headquarter of the Natural History Museum in Florence","institutionCode":"MSNF-GLP"}]}'
-  recorded_at: 2025-09-04 07:12:13
+      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":1694,"results":[{"key":"b3eb4812-87e2-4325-8f94-0736c9f541f0","code":"MUSE-VER-c021","name":"Collezione
+        micromammiferi A. Montolli | A. Montolli micromammal collection","description":"Soricomorpha
+        and Rodentia collected and determined by Attilio Montolli","contentTypes":["PreservedOrganisms"],"active":true,"personalCollection":false,"email":["collezioni@muse.it","mariachiara.deflorian@muse.it"],"phone":[],"homepage":"https://www.muse.it/","catalogUrls":["https://www.muse.it/home/ricerca-e-collezioni/le-collezioni-scientifiche/catalogo-digitale-collezioni-muse/"],"apiUrls":[],"preservationTypes":["SampleDried"],"accessionStatus":"Institutional","institutionKey":"f7a73987-a389-406f-84eb-bc5a0ca35835","mailingAddress":{"key":57015,"address":"Corso
+        del Lavoro e della Scienza, 3","city":"Trento","province":"[TRENTINO-ALTO
+        ADIGE/SUDTIROL] Trento (TN)","postalCode":"IT-38122","country":"IT"},"address":{"key":57014,"address":"Corso
+        del Lavoro e della Scienza, 3","city":"Trento","province":"[TRENTINO-ALTO
+        ADIGE/SUDTIROL] Trento (TN)","postalCode":"IT-38122","country":"IT"},"createdBy":"tasmacetus","modifiedBy":"tasmacetus","created":"2025-10-24T09:31:13.815+00:00","modified":"2025-10-26T06:35:50.799+00:00","tags":[],"identifiers":[],"contactPersons":[],"numberSpecimens":56,"machineTags":[],"taxonomicCoverage":"Soricomorpha,
+        Rodentia","geographicCoverage":"Trentino-Alto Adige","notes":"This is a subcollection
+        of https://registry.gbif.org/collection/e06d3605-eed3-43fe-9a31-dd18c4e0f9fe.","incorporatedCollections":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"temporalCoverage":"1985-1995","institutionName":"MUSE
+        - Museo delle Scienze","institutionCode":"MUSE"}]}'
+  recorded_at: 2025-11-13 08:03:33
 - request:
     method: GET
     uri: https://api.gbif.org/v1/grscicoll/collection?limit=1&institutionKey=6a6ac6c5-1b8a-48db-91a2-f8661274ff80
@@ -146,7 +152,7 @@ http_interactions:
         documentation of specimens may be provided on request.","contentTypes":[],"active":true,"personalCollection":false,"email":[],"phone":[],"catalogUrls":[],"apiUrls":[],"preservationTypes":[],"institutionKey":"6a6ac6c5-1b8a-48db-91a2-f8661274ff80","mailingAddress":{"key":43397},"address":{"key":43396,"address":"Muséum
         national d''Histoire naturelle 57, rue Cuvier","city":"Paris","postalCode":"75005","country":"FR"},"createdBy":"mgrosjean","modifiedBy":"s.pamerlon","created":"2022-03-25T12:36:16.984+00:00","modified":"2024-04-30T14:12:49.736+00:00","tags":[],"identifiers":[{"key":297946,"type":"DOI","identifier":"10.15468/podyc0","createdBy":"mgrosjean","created":"2022-03-25T12:36:16.984+00:00","primary":false}],"contactPersons":[{"key":38097,"lastName":"MNHN","position":["Provider"],"phone":[],"fax":[],"email":[],"address":[],"primary":true,"taxonomicExpertise":[],"userIds":[],"createdBy":"s.pamerlon","modifiedBy":"s.pamerlon","created":"2024-04-30T14:12:49.736+00:00","modified":"2024-04-30T14:12:49.736+00:00"},{"key":38098,"firstName":"Mark","lastName":"Judson","position":[],"phone":[],"fax":[],"email":[],"address":[],"primary":false,"taxonomicExpertise":[],"userIds":[],"createdBy":"s.pamerlon","modifiedBy":"s.pamerlon","created":"2024-04-30T14:12:49.736+00:00","modified":"2024-04-30T14:12:49.736+00:00"},{"key":38099,"firstName":"Élise-Anne","lastName":"Leguin","position":[],"phone":[],"fax":[],"email":[],"address":[],"primary":false,"taxonomicExpertise":[],"userIds":[],"createdBy":"s.pamerlon","modifiedBy":"s.pamerlon","created":"2024-04-30T14:12:49.736+00:00","modified":"2024-04-30T14:12:49.736+00:00"},{"key":38100,"firstName":"Laurent","lastName":"Albenga","position":["Correspondant"],"phone":[],"fax":[],"email":[],"address":[],"primary":true,"taxonomicExpertise":[],"userIds":[],"createdBy":"s.pamerlon","modifiedBy":"s.pamerlon","created":"2024-04-30T14:12:49.736+00:00","modified":"2024-04-30T14:12:49.736+00:00"}],"machineTags":[],"taxonomicCoverage":"","geographicCoverage":"","incorporatedCollections":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[{"key":50,"datasetKey":"2f23ac81-674e-4e4e-982f-73f49ccdb9df","createdBy":"mgrosjean","created":"2022-03-25T12:36:17.410+00:00"}],"masterSource":"GBIF_REGISTRY","masterSourceMetadata":{"key":8586,"source":"DATASET","sourceId":"2f23ac81-674e-4e4e-982f-73f49ccdb9df","createdBy":"mgrosjean","created":"2022-03-25T12:36:16.984+00:00"},"displayOnNHCPortal":true,"occurrenceCount":947,"typeSpecimenCount":691,"institutionName":"MNHN
         - Museum national d''Histoire naturelle","institutionCode":"MNHN"}]}'
-  recorded_at: 2025-09-04 07:12:13
+  recorded_at: 2025-11-13 08:03:33
 - request:
     method: GET
     uri: https://api.gbif.org/v1/grscicoll/collection?q=insect&limit=1&country=US
@@ -173,5 +179,5 @@ http_interactions:
         and aquatic insects: Insecta, Insects","geographicCoverage":"Alaska, USA","incorporatedCollections":["University
         of Alaska Anchorage Entomology Collection"],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GBIF_REGISTRY","masterSourceMetadata":{"key":9304,"source":"DATASET","sourceId":"3658ba15-172d-459c-94ab-d565f6550dad","createdBy":"mgrosjean","created":"2023-10-09T06:59:23.626+00:00"},"displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"institutionName":"Alaska
         Center for Conservation Science","institutionCode":"UAA"}]}'
-  recorded_at: 2025-09-04 07:12:13
+  recorded_at: 2025-11-13 08:03:33
 recorded_with: VCR-vcr/2.0.0

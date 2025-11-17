@@ -7,7 +7,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '15'
+      x-varnish-rli: '12'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -110,7 +110,7 @@ http_interactions:
         7yfarKvGKzJc4k24TrG9g6iucS8FcrQFew8J9S756z
         6Pwh58/lLRa8YGXlg8T1buZX3ptVz2emZuVdC
         V1RFDSrio//ARU79/c=
-  recorded_at: 2025-11-12 10:31:02
+  recorded_at: 2025-11-13 08:17:12
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&verbatimScientificName=Calopteryx+splendens
@@ -119,7 +119,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '14'
+      x-varnish-rli: '11'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -222,7 +222,7 @@ http_interactions:
         fDS75PVZlXbLbEmWSbcH0DW0fxXAL+agXoChb+U+rd
         cxadP+T8ubzFghesrHyQuN7N/Mp7s+r5zNSsv
         CuhK4qCZlXx8T/m7vgB
-  recorded_at: 2025-11-12 10:31:02
+  recorded_at: 2025-11-13 08:17:12
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&verbatimScientificName=Calopteryx+splendens
@@ -231,7 +231,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '15'
+      x-varnish-rli: '12'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -334,7 +334,7 @@ http_interactions:
         7yfarKvGKzJc4k24TrG9g6iucS8FcrQFew8J9S756z
         6Pwh58/lLRa8YGXlg8T1buZX3ptVz2emZuVdC
         V1RFDSrio//ARU79/c=
-  recorded_at: 2025-11-12 10:31:02
+  recorded_at: 2025-11-13 08:17:12
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&verbatimScientificName=Calopteryx+virgo
@@ -343,7 +343,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '13'
+      x-varnish-rli: '10'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -432,7 +432,7 @@ http_interactions:
         yR3/I34t5+PxRn+hfKzLn4VyLSe/25b145r9omstVTb7pwllwQK+APVaiafrt
         d1HoV4TcD+9
         /1/A8Az9/2Lxx/T/D8Cs7v83NR0hNU8qmmXV1/8A4nFatQ==
-  recorded_at: 2025-11-12 10:31:02
+  recorded_at: 2025-11-13 08:17:12
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&country=DK&verbatimScientificName=Calopteryx+splendens
@@ -441,7 +441,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '12'
+      x-varnish-rli: '9'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -528,5 +528,5 @@ http_interactions:
         2f1ecZ7xnaiD3NMdv/q/pQxOejebmafpgqx6HlcwWdOYK1ATriCph5
         wrKHwVWRBPt6VcsuCK
         BbON9FVMwO7sr8EE7BZ/FhOQQHeeCcBqparrlW060TifPv8Hlw51lw==
-  recorded_at: 2025-11-12 10:31:02
+  recorded_at: 2025-11-13 08:17:13
 recorded_with: VCR-vcr/2.0.0

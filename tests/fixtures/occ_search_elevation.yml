@@ -9,27 +9,27 @@ http_interactions:
       content-type: application/json
     body:
       raw_gzip: |-
-        eJx1U2GLm0AQ/SvBTy0kVE89NRwHYkwqZzREA72WUubWNVlO1+BqIRz5753V5LTN9dvuzJs3
-        u/PevCm
-        tgD1V5m/KKz0pc+XO0E3VcZSpwqHEuLJpS5iQipOqqOrJp5BxDrQV04lmWdpnxBHg
-        FWcEiuiDAsxD2x
-        yqWhzYEZMf1NfAXzGTbHwv8BNJWGWS53sch/Eq8NwQY6KBphUYdT3P36T+
-        AmN7ymnNyKitBB4pYTkj/
-        pE1B9pgYvSU5nSU0AQbRWmwDDyM5VVdQtPQ7MLzwB4l1cMX9jjB
-        87W6u9+8/oyvLUAI2REaVnFl/uM6
-        SW2YoctZCQWD4bdPQbRaxGskuMINY8B7OLAMmhF+8/U5
-        3I3hujnSaA3lP/xe6CbJCG7pdyN6qDn7XdU
-        jfLxd+NsR3rFUfShY0oJlQAf40l0H4fMI39vG
-        /ts2A37lR7vkBv4/l92a4vxzqmQM9rwSDSNC2hVFI4
-        e0F9T/5npp5xyes4xygkFNVVFwVtIU
-        XinqomndlfF9Vy77RtuuC+IEYVL+teTsoTK/gVrQLl+0BM32n
-        j6j7pBlTCoORXLxJipPipcF
-        6iZo89T909Q1Xfog64MuaiRNHOy8aIj2UM0xHM107me6CXRmgKPNHHDs
-        mW2S3FTNXHvJ9PEi
-        hL6bpL+8OPL8bfSe8PrdCaWzRdXWhAaZJLfte7ubojjhtp5KZZ5DISj+jOa4JJa
-        hG5aOY2f7
-        w+Vqq+c/JpdAnQ==
-  recorded_at: 2025-11-12 10:31:23
+        eJx1U2FvmzAQ/SsRnzYp0aBAA1FVCTkkQyUQBSKtm6bpakxiFUyEoVJU5b/vTJLBlu6bfffu
+        nX3v3bv
+        WStgxbfauvbKjNtPuLNPWXVcbawJKjGvrtoQRrQStiqoefQq5EMBaOR4Z06nxGXEU
+        RCU4hSL6oADz0D
+        b7qpZ7fsDkB/U1iFfMJGufBH6iCKtM8XyP4zBeBsQLMSYbaFqJUY8Qf536
+        c4ztmGA1p4O2CnhglOec+
+        gfe7FmDicFTmuNBQRNsFKXBIiAYy6u6hKZh2YXngT8qqocv/HGE
+        52t1d795/QlfW4CUqiM0vBLa7Md1
+        kkY/Q0/wEgoO/W+fgmg5j1dIcIVbVo8nOLAMmgF+/fU5
+        3A7hpj3QaAXlP/wk9JJkAJ+adwN6qAV/q+o
+        BPt7M/c0A7051sy9YsIJnwHr4wlsF4fMAf7aN
+        87dtevzSj7bJDfx/Lrs1xennWMs47EQlG06lsiuKRv
+        fpWVD/m0fSzjki5xkTFIOGrqPgvGQp
+        vDLUxe5uXOy6atU22nRNECYpV+qvFGWHVOk11JJ16aKlaLVr9
+        oSiQ5ZxJTcUycWYKDstXuYo
+        mmTNU/dJ2zRMZYLsHPRQIOXgYEuiPnqGGq7lGrZ7PzFtYBMLXGPigutM
+        HJvmtm7nxktmDrcg
+        9L0k/UXiiPib6E+CnBcnVLaWVVtTFmSK3HHunW6E8oireiy1WQ6FZPgxluOGTC3
+        Tmpo4c77b
+        X66OfvoNzG1AFg==
+  recorded_at: 2025-11-13 08:17:35
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?hasCoordinate=TRUE&occurrenceStatus=PRESENT&limit=500&offset=0&elevation=1000&taxonKey=2435099
@@ -38,7 +38,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '11'
+      x-varnish-rli: '12'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -224,5 +224,5 @@ http_interactions:
         zPIFWgUW1YNSR2C7Sw
         faI1cw3mHdeOpCRNRUdNxYnqe5+/KiZecrFv9rC4E8in0z5AsgWPXQ
         5bLn5/8HH0byUA==
-  recorded_at: 2025-11-12 10:31:24
+  recorded_at: 2025-11-13 08:17:35
 recorded_with: VCR-vcr/2.0.0

@@ -8,7 +8,7 @@ http_interactions:
       status: HTTP/1.1 404 Not Found
       content-type: application/json
     body:
-      string: '{"timestamp":"2025-09-04T07:14:42.922+00:00","status":404,"error":"","message":"Entity
+      string: '{"timestamp":"2025-11-13T08:08:30.147+00:00","status":404,"error":"","message":"Entity
         not found for uri: /species/3119195/verbatim"}'
-  recorded_at: 2025-09-04 07:14:43
+  recorded_at: 2025-11-13 08:08:30
 recorded_with: VCR-vcr/2.0.0

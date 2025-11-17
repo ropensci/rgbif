@@ -18,8 +18,8 @@ http_interactions:
         Biodiversity Foundation: University of Hargeisa Biodiversity Museum (Animal
         Images)","citationProvidedBySource":false},"contactsCitation":[],"lockedForAutoUpdate":false,"createdBy":"symbopenzooomuseum","modifiedBy":"crawler.gbif.org","created":"2024-12-11T15:18:26.005+00:00","modified":"2025-03-21T12:43:07.845+00:00","contacts":[{"key":6025724,"type":"ORIGINATOR","primary":true,"userId":[],"position":[],"email":["Mary.Barkworth@usu.edu"],"phone":[],"homepage":["https://openzoomuseum.org/index.php"],"organization":"OpenZooMuseum","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-03-21T12:43:07.828+00:00","modified":"2025-03-21T12:43:07.828+00:00"},{"key":6025725,"type":"METADATA_AUTHOR","primary":true,"userId":[],"position":[],"email":["Mary.Barkworth@usu.edu"],"phone":[],"homepage":["https://openzoomuseum.org/index.php"],"organization":"OpenZooMuseum","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-03-21T12:43:07.830+00:00","modified":"2025-03-21T12:43:07.830+00:00"},{"key":6025726,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":true,"userId":[],"position":[],"email":["mary.barkworth@usu.edu"],"phone":[],"homepage":[],"organization":"University
         of Hargeisa Biodiversity Museum (Animal Images)","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-03-21T12:43:07.831+00:00","modified":"2025-03-21T12:43:07.831+00:00"},{"key":6025727,"type":"CONTENT_PROVIDER","primary":false,"userId":[],"lastName":"Mary
-        Barkworth","position":[],"email":["mary.barkworth@usu.edu"],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-03-21T12:43:07.833+00:00","modified":"2025-03-21T12:43:07.833+00:00"}],"endpoints":[{"key":1063539,"type":"DWC_ARCHIVE","url":"https://openzoomuseum.org/content/dwca/HARG-HARGZ-I_DwC-A.zip","createdBy":"symbopenzooomuseum","modifiedBy":"symbopenzooomuseum","created":"2024-12-11T15:18:26.923+00:00","modified":"2024-12-11T15:18:26.923+00:00","machineTags":[]}],"machineTags":[{"key":26740093,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"38","createdBy":"crawler.gbif.org","created":"2025-08-30T22:46:15.380+00:00"}],"tags":[],"identifiers":[{"key":377042,"type":"URL","identifier":"https://openzoomuseum.org/collections/misc/collprofiles.php?collid=12","createdBy":"crawler.gbif.org","created":"2024-12-11T15:19:30.104+00:00","primary":false}],"comments":[],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[],"temporalCoverages":[],"keywordCollections":[],"countryCoverage":[],"collections":[],"dataDescriptions":[],"license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","dwca":{"coreType":"http://rs.tdwg.org/dwc/terms/Occurrence","extensions":["http://rs.tdwg.org/ac/terms/Multimedia","http://rs.tdwg.org/dwc/terms/Identification"],"modified":"2025-07-10T19:50:34.698+00:00"}}]}'
-  recorded_at: 2025-09-04 07:12:54
+        Barkworth","position":[],"email":["mary.barkworth@usu.edu"],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2025-03-21T12:43:07.833+00:00","modified":"2025-03-21T12:43:07.833+00:00"}],"endpoints":[{"key":1063539,"type":"DWC_ARCHIVE","url":"https://openzoomuseum.org/content/dwca/HARG-HARGZ-I_DwC-A.zip","createdBy":"symbopenzooomuseum","modifiedBy":"symbopenzooomuseum","created":"2024-12-11T15:18:26.923+00:00","modified":"2024-12-11T15:18:26.923+00:00","machineTags":[]}],"machineTags":[{"key":27818740,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"47","createdBy":"crawler.gbif.org","created":"2025-11-07T12:57:30.894+00:00"}],"tags":[],"identifiers":[{"key":377042,"type":"URL","identifier":"https://openzoomuseum.org/collections/misc/collprofiles.php?collid=12","createdBy":"crawler.gbif.org","created":"2024-12-11T15:19:30.104+00:00","primary":false}],"comments":[],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[],"temporalCoverages":[],"keywordCollections":[],"countryCoverage":[],"collections":[],"dataDescriptions":[],"license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","dwca":{"coreType":"http://rs.tdwg.org/dwc/terms/Occurrence","extensions":["http://rs.tdwg.org/ac/terms/Multimedia","http://rs.tdwg.org/dwc/terms/Identification"],"modified":"2025-07-10T19:50:34.698+00:00"}}]}'
+  recorded_at: 2025-11-13 08:04:45
 - request:
     method: GET
     uri: https://api.gbif.org/v1/installation/a0e05292-3d09-4eae-9f83-02ae3516283c/comment
@@ -31,7 +31,7 @@ http_interactions:
     body:
       string: '[{"key":35885,"content":"CSS: created installation and registered Observation.org
         dataset to be hosted by new installation upon request from the publisher","createdBy":"hvalli","modifiedBy":"hvalli","created":"2024-09-17T10:05:21.842+00:00","modified":"2024-09-17T10:05:21.842+00:00"}]'
-  recorded_at: 2025-09-04 07:12:54
+  recorded_at: 2025-11-13 08:04:45
 - request:
     method: GET
     uri: https://api.gbif.org/v1/installation/896898e8-c0ac-47a0-8f38-0f792fbe3343/contact
@@ -43,7 +43,7 @@ http_interactions:
     body:
       string: '[{"key":6120570,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Kristjan
         Adojaan","position":[],"email":["kristjan.adojaan@ut.ee"],"phone":[],"homepage":[],"address":[],"createdBy":"0870a77b-587c-4369-a8ed-bc3d347b8e1c","modifiedBy":"0870a77b-587c-4369-a8ed-bc3d347b8e1c","created":"2025-05-30T13:17:32.737+00:00","modified":"2025-05-30T13:17:32.737+00:00"}]'
-  recorded_at: 2025-09-04 07:12:54
+  recorded_at: 2025-11-13 08:04:45
 - request:
     method: GET
     uri: https://api.gbif.org/v1/installation/896898e8-c0ac-47a0-8f38-0f792fbe3343/endpoint
@@ -54,7 +54,7 @@ http_interactions:
       content-type: application/json
     body:
       string: '[{"key":1111486,"type":"FEED","url":"https://cloud.gbif.org/ee/rss.do","createdBy":"0870a77b-587c-4369-a8ed-bc3d347b8e1c","modifiedBy":"0870a77b-587c-4369-a8ed-bc3d347b8e1c","created":"2025-05-30T13:17:32.755+00:00","modified":"2025-05-30T13:17:32.755+00:00","machineTags":[]}]'
-  recorded_at: 2025-09-04 07:12:54
+  recorded_at: 2025-11-13 08:04:45
 - request:
     method: GET
     uri: https://api.gbif.org/v1/installation/896898e8-c0ac-47a0-8f38-0f792fbe3343/identifier
@@ -65,7 +65,7 @@ http_interactions:
       content-type: application/json
     body:
       string: '[]'
-  recorded_at: 2025-09-04 07:12:54
+  recorded_at: 2025-11-13 08:04:45
 - request:
     method: GET
     uri: https://api.gbif.org/v1/installation/896898e8-c0ac-47a0-8f38-0f792fbe3343/machineTag
@@ -76,7 +76,7 @@ http_interactions:
       content-type: application/json
     body:
       string: '[]'
-  recorded_at: 2025-09-04 07:12:54
+  recorded_at: 2025-11-13 08:04:45
 - request:
     method: GET
     uri: https://api.gbif.org/v1/installation/896898e8-c0ac-47a0-8f38-0f792fbe3343/tag
@@ -87,5 +87,5 @@ http_interactions:
       content-type: application/json
     body:
       string: '[]'
-  recorded_at: 2025-09-04 07:12:54
+  recorded_at: 2025-11-13 08:04:45
 recorded_with: VCR-vcr/2.0.0

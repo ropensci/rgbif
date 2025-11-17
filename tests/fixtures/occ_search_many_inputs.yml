@@ -220,7 +220,7 @@ http_interactions:
         GSuQoLMH91UYO2LeNfiw55hXVSkiEw4X8+aQ
         3STBbZ6zz/fFAE27D26Xd5b5GWDtfG3SYO3y
         Wias3QxZp6iTfRpkjY1yA2Sd2hWZGtZf/w/9zNus
-  recorded_at: 2025-11-12 10:31:43
+  recorded_at: 2025-11-13 08:17:55
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=10&offset=0&recordedBy=BJ+Stacey
@@ -450,7 +450,7 @@ http_interactions:
         d00oogGNmlC8GUIR2N+lPKHgKKzl5Q4H8YPtdCWAgqEjgIJDu9tVizCGIoCCxOVy
         AQpJWdqU
         7hnVj/8Hm7bhPQ==
-  recorded_at: 2025-11-12 10:31:43
+  recorded_at: 2025-11-13 08:17:55
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=10&offset=0&recordedBy=smith
@@ -459,7 +459,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '15'
+      x-varnish-rli: '16'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -680,5 +680,5 @@ http_interactions:
         QhENaNSE4s0QisD+LuUJBUdhLS93OIgfbKcrARQMHQEUnLC7XbUIYygCKEhcLheg
         kNWlTSHP
         qH78P54S4Tw=
-  recorded_at: 2025-11-12 10:31:43
+  recorded_at: 2025-11-13 08:17:55
 recorded_with: VCR-vcr/2.0.0

@@ -9,7 +9,7 @@ http_interactions:
       content-type: application/json
     body:
       string: '{"offset":0,"limit":100,"endOfRecords":true,"results":[]}'
-  recorded_at: 2025-09-04 07:14:42
+  recorded_at: 2025-11-13 08:08:30
 - request:
     method: GET
     uri: https://api.gbif.org/v1/species/5097652/typeSpecimens?offset=0&limit=100
@@ -20,5 +20,5 @@ http_interactions:
       content-type: application/json
     body:
       string: '{"offset":0,"limit":100,"endOfRecords":true,"results":[]}'
-  recorded_at: 2025-09-04 07:14:42
+  recorded_at: 2025-11-13 08:08:30
 recorded_with: VCR-vcr/2.0.0
