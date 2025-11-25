@@ -252,7 +252,7 @@ check_name_data = function(name_data) {
   if(ncol(name_data) == 1) {
     if(!"scientificName" %in% colnames(name_data)) {
       message("Assuming first column is 'scientificName' column.")
-      colnames(name_data) <- "scientificName"
+      colnames(name_data)[1] <- "scientificName"
     } 
     if(!is.character(name_data$scientificName)) stop("The scientificName column should be class character.")
     return(name_data) # exit early if only one column

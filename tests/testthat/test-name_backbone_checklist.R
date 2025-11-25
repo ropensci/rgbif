@@ -423,3 +423,43 @@ test_that("name_backbone_checklist bucket_size and sleep ", {
 
 })
 
+# https://github.com/ropensci/rgbif/issues/820
+test_that("works with species complexes", {
+  skip_on_cran()
+  skip_on_ci()
+  
+  xx <- name_backbone_checklist("Metarhizium",verbose=TRUE) 
+  
+  expect_is(xx, "tbl")
+  expect_is(xx, "tbl_df")
+  expect_is(xx, "data.frame")
+  expect_true(!is.null(xx$species.1Key))
+})
+
+
+
+
+df_sci <- data.frame(
+    scientificName    = "Operculina turpethum (L.) Silva Manso, 1836",
+    rank    = "SPECIES",
+    family  = "Convolvulaceae",
+    order   = "Solanales",
+    genus   = "Operculina",
+    kingdom = "Plantae",
+    stringsAsFactors = FALSE
+)
+
+
+df_name <- data.frame(
+    name    = "Operculina turpethum (L.) Silva Manso, 1836",
+    rank    = "SPECIES",
+    family  = "Convolvulaceae",
+    order   = "Solanales",
+    genus   = "Operculina",
+    kingdom = "Plantae",
+    stringsAsFactors = FALSE
+)
+
+name_backbone_checklist(df_name)
+
+name_backbone_checklist(df_sci)

@@ -9,8 +9,8 @@ http_interactions:
       content-type: application/json
     body:
       string: '{"diagnostics":{"matchType":"NONE","issues":[],"confidence":100,"note":"Multiple
-        equal matches for Calopteryx","timeTaken":36,"timings":{"sciNameMatch":37}},"synonym":false}'
-  recorded_at: 2025-11-13 08:06:23
+        equal matches for Calopteryx","timeTaken":30,"timings":{"sciNameMatch":30}},"synonym":false}'
+  recorded_at: 2025-11-24 15:28:53
 - request:
     method: GET
     uri: https://api.gbif.org/v2/species/match?scientificName=Calopteryx&taxonRank=GENUS&verbose=TRUE
@@ -21,7 +21,7 @@ http_interactions:
       content-type: application/json
     body:
       string: '{"diagnostics":{"matchType":"NONE","issues":[],"confidence":100,"note":"Multiple
-        equal matches for Calopteryx","timeTaken":45,"alternatives":[{"usage":{"key":"1427007","name":"Calopteryx
+        equal matches for Calopteryx","timeTaken":20,"alternatives":[{"usage":{"key":"1427007","name":"Calopteryx
         Leach, 1815","canonicalName":"Calopteryx","authorship":"Leach, 1815","rank":"GENUS","code":"ZOOLOGICAL","status":"ACCEPTED","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
         Leach, 1815"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427007","name":"Calopteryx","rank":"GENUS"}],"diagnostics":{"matchType":"EXACT","confidence":105,"note":"Similarity:
         name=100; authorship=0; classification=-2; rank=6; status=1; score=105","timeTaken":0},"synonym":false},{"usage":{"key":"3234109","name":"Calopteryx
@@ -344,6 +344,6 @@ http_interactions:
         1883","rank":"SPECIES","code":"ZOOLOGICAL","genericName":"Tachysphex","specificEpithet":"schmiedeknechti","type":"SCIENTIFIC","formattedName":"<i>Tachysphex</i>
         <i>schmiedeknechti</i> Kohl, 1883"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"1457","name":"Hymenoptera","rank":"ORDER"},{"key":"7906","name":"Crabronidae","rank":"FAMILY"},{"key":"1346028","name":"Tachysphex","rank":"GENUS"},{"key":"4495132","name":"Tachysphex
         schmiedeknechti","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":-47,"note":"Similarity:
-        name=-15; authorship=0; classification=-2; rank=-30; status=0; score=-47","timeTaken":0},"synonym":true}],"timings":{"sciNameMatch":45}},"synonym":false}'
-  recorded_at: 2025-11-13 08:06:23
+        name=-15; authorship=0; classification=-2; rank=-30; status=0; score=-47","timeTaken":0},"synonym":true}],"timings":{"sciNameMatch":21}},"synonym":false}'
+  recorded_at: 2025-11-24 15:28:53
 recorded_with: VCR-vcr/2.0.0
