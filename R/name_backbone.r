@@ -251,7 +251,6 @@ process_name_backbone_output <- function(tt, args) {
     }
     nv <- stats::setNames(c$name, tolower(c$rank))
     kv <- stats::setNames(c$key,  paste0(tolower(c$rank), "Key"))
-    nnn <- names(as.list(c(nv, kv)))
     
     c <- tibble::as_tibble(as.list(c(nv, kv)))
     c
