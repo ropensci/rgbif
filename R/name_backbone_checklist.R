@@ -266,7 +266,7 @@ check_name_data = function(name_data) {
     left_most_index <- which(colnames(name_data) %in% name_aliases)[1]
     left_most_name <- colnames(name_data)[left_most_index]
     message("No 'scientificName' column found. Using leftmost '",original_colnames[left_most_index], "' as the 'scientificName' column.\nIf you do not want to use '", original_colnames[left_most_index], "' column, re-name the column you want to use 'scientificName'.")
-    colnames(name_data) <- gsub(left_most_name,"scientificname",colnames(name_data))
+    colnames(name_data) <- gsub(left_most_name,"scientificName",colnames(name_data))
   } 
   name_data
 }

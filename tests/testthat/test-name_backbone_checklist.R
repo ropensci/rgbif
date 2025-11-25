@@ -182,15 +182,6 @@ test_that("name_backbone_checklist bad or weird data", {
         "Puma concuolor", 
         "Fake species",
         "Calopteryx"
-      ), scientificName = c(
-        NA,
-        "Cirsium arvense (L.) Scop.", # a plant
-        "Calopteryx splendens (Harris, 1780)", # an insect
-        "Puma concolor (Linnaeus, 1771)", # a big cat
-        "Ceylonosticta alwisi (Priyadarshana & Wijewardhane, 2016)", # newly discovered insect 
-        "Puma concuolor (Linnaeus, 1771)", # a mis-spelled big cat
-        "Fake species (John Waller 2021)", # a fake species
-        "Calopteryx" # Just a Genus   
       ))
     
   # bad data 
@@ -296,16 +287,6 @@ test_that("name_backbone_checklist default values works as expected", {
       "Fake species",
       "Calopteryx",
       "Calopteryx fake"
-    ), scientificName = c(
-      NA,
-      "Cirsium arvense (L.) Scop.", # a plant
-      "Calopteryx splendens (Harris, 1780)", # an insect
-      "Puma concolor (Linnaeus, 1771)", # a big cat
-      "Ceylonosticta alwisi (Priyadarshana & Wijewardhane, 2016)", # newly discovered insect 
-      "Puma concuolor (Linnaeus, 1771)", # a mis-spelled big cat
-      "Fake species (John Waller 2021)", # a fake species
-      "Calopteryx", # Just a Genus
-      "Calopteryx fake Waller 2022"
     ))
   
     expect_message((oo <- name_backbone_checklist(name_data,kingdom = "Animalia")),
@@ -420,6 +401,55 @@ test_that("name_backbone_checklist bucket_size and sleep ", {
   expect_is(ss, "data.frame")
   expect_is(mm, "data.frame")
   expect_true(time1['elapsed'] > time2['elapsed'] )
+
+})
+
+# https://github.com/ropensci/rgbif/issues/820
+test_that("works with species complexes", {
+  skip_on_cran()
+  skip_on_ci()
+  
+  xx <- name_backbone_checklist("Metarhizium",verbose=TRUE) 
+  
+  expect_is(xx, "tbl")
+  expect_is(xx, "tbl_df")
+  expect_is(xx, "data.frame")
+  expect_true(!is.null(xx$species.1Key))
+})
+
+
+# https://github.com/ropensci/rgbif/issues/819
+test_that("works with name column", {
+  skip_on_cran()
+  skip_on_ci()
+
+
+df_sci <- data.frame(
+    scientificName = "Operculina turpethum (L.) Silva Manso, 1836",
+    rank    = "SPECIES",
+    family  = "Convolvulaceae",
+    order   = "Solanales",
+    genus   = "Operculina",
+    kingdom = "Plantae",
+    stringsAsFactors = FALSE
+)
+
+df_name <- data.frame(
+    name    = "Operculina turpethum (L.) Silva Manso, 1836",
+    rank    = "SPECIES",
+    family  = "Convolvulaceae",
+    order   = "Solanales",
+    genus   = "Operculina",
+    kingdom = "Plantae",
+    stringsAsFactors = FALSE
+)
+
+nn <- name_backbone_checklist(df_name)
+ss <- name_backbone_checklist(df_sci)
+
+expect_equal(nn, ss)
+expect_is(nn, "data.frame")
+expect_is(ss, "data.frame")
 
 })
 
