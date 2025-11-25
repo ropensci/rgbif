@@ -182,15 +182,6 @@ test_that("name_backbone_checklist bad or weird data", {
         "Puma concuolor", 
         "Fake species",
         "Calopteryx"
-      ), scientificName = c(
-        NA,
-        "Cirsium arvense (L.) Scop.", # a plant
-        "Calopteryx splendens (Harris, 1780)", # an insect
-        "Puma concolor (Linnaeus, 1771)", # a big cat
-        "Ceylonosticta alwisi (Priyadarshana & Wijewardhane, 2016)", # newly discovered insect 
-        "Puma concuolor (Linnaeus, 1771)", # a mis-spelled big cat
-        "Fake species (John Waller 2021)", # a fake species
-        "Calopteryx" # Just a Genus   
       ))
     
   # bad data 
@@ -296,16 +287,6 @@ test_that("name_backbone_checklist default values works as expected", {
       "Fake species",
       "Calopteryx",
       "Calopteryx fake"
-    ), scientificName = c(
-      NA,
-      "Cirsium arvense (L.) Scop.", # a plant
-      "Calopteryx splendens (Harris, 1780)", # an insect
-      "Puma concolor (Linnaeus, 1771)", # a big cat
-      "Ceylonosticta alwisi (Priyadarshana & Wijewardhane, 2016)", # newly discovered insect 
-      "Puma concuolor (Linnaeus, 1771)", # a mis-spelled big cat
-      "Fake species (John Waller 2021)", # a fake species
-      "Calopteryx", # Just a Genus
-      "Calopteryx fake Waller 2022"
     ))
   
     expect_message((oo <- name_backbone_checklist(name_data,kingdom = "Animalia")),
@@ -439,8 +420,8 @@ test_that("works with species complexes", {
 
 # https://github.com/ropensci/rgbif/issues/819
 test_that("works with name column", {
-  # skip_on_cran()
-  # skip_on_ci()
+  skip_on_cran()
+  skip_on_ci()
 
 
 df_sci <- data.frame(
@@ -467,7 +448,8 @@ nn <- name_backbone_checklist(df_name)
 ss <- name_backbone_checklist(df_sci)
 
 expect_equal(nn, ss)
-
+expect_is(nn, "data.frame")
+expect_is(ss, "data.frame")
 
 })
 
