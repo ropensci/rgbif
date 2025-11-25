@@ -437,10 +437,14 @@ test_that("works with species complexes", {
 })
 
 
+# https://github.com/ropensci/rgbif/issues/819
+test_that("works with name column", {
+  # skip_on_cran()
+  # skip_on_ci()
 
 
 df_sci <- data.frame(
-    scientificName    = "Operculina turpethum (L.) Silva Manso, 1836",
+    scientificName = "Operculina turpethum (L.) Silva Manso, 1836",
     rank    = "SPECIES",
     family  = "Convolvulaceae",
     order   = "Solanales",
@@ -448,7 +452,6 @@ df_sci <- data.frame(
     kingdom = "Plantae",
     stringsAsFactors = FALSE
 )
-
 
 df_name <- data.frame(
     name    = "Operculina turpethum (L.) Silva Manso, 1836",
@@ -460,6 +463,11 @@ df_name <- data.frame(
     stringsAsFactors = FALSE
 )
 
-name_backbone_checklist(df_name)
+nn <- name_backbone_checklist(df_name)
+ss <- name_backbone_checklist(df_sci)
 
-name_backbone_checklist(df_sci)
+expect_equal(nn, ss)
+
+
+})
+
