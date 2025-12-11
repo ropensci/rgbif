@@ -148,4 +148,12 @@ test_that("name_backbone verbose=TRUE", {
   expect_equal(vv$verbatim_rank[1], "GENUS")
   expect_true(all(vv$verbatim_name == "Calopteryx"))
   expect_true(nrow(vv) > nrow(tt))
+  
+  # Test that alternatives with synonyms also have acceptedUsageKey
+  synonym_alts <- vv[vv$synonym == TRUE, ]
+  if (nrow(synonym_alts) > 0) {
+    expect_true("acceptedUsageKey" %in% names(synonym_alts))
+    # At least one synonym should have an acceptedUsageKey
+    expect_true(any(!is.na(synonym_alts$acceptedUsageKey)))
+  }
 })
