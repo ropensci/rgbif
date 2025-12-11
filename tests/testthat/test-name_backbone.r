@@ -112,7 +112,29 @@ test_that("name_backbone returns the correct class", {
   expect_equal(nrow(dd), 1)
   expect_equal(dd$scientificName[1], "Agra schwarzeneggeri Erwin, 2002")
   
+  # Test acceptedUsageKey for synonym case (kk is a synonym)
+  expect_true("acceptedUsageKey" %in% names(kk))
+  expect_equal(kk$acceptedUsageKey[1], "7763613")
+  
 })
+
+test_that("name_backbone returns acceptedUsageKey for synonyms", {
+  vcr::use_cassette("name_backbone", {
+    # This should return a synonym with acceptedUsageKey
+    syn_result <- name_backbone(name = "Calopteryx splendens", kingdom = "Plantae",
+                                strict = FALSE)
+  })
+  
+  # Test that acceptedUsageKey is present
+  expect_true("acceptedUsageKey" %in% names(syn_result))
+  expect_equal(syn_result$acceptedUsageKey[1], "7763613")
+  expect_true(syn_result$synonym[1])
+  
+  # Test that other accepted fields are present with accepted prefix
+  expect_true("acceptedCanonicalName" %in% names(syn_result))
+  expect_equal(syn_result$acceptedCanonicalName[1], "Thibaudia")
+})
+
 
 test_that("name_backbone verbose=TRUE", {
   vcr::use_cassette("name_backbone_verbose_true", {

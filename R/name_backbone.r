@@ -236,6 +236,18 @@ process_name_backbone_output <- function(tt, args) {
   } else { 
     NULL
   }
+  acceptedUsage <- if (!is.null(tt$acceptedUsage)) {
+    a <- tibble::as_tibble(tt$acceptedUsage)
+    # Rename key to acceptedUsageKey first
+    colnames(a)[colnames(a) == "key"] <- "acceptedUsageKey"
+    # Add "accepted" prefix to all other columns
+    non_key_cols <- colnames(a) != "acceptedUsageKey"
+    colnames(a)[non_key_cols] <- paste0("accepted", toupper(substring(colnames(a)[non_key_cols], 1, 1)), 
+                                         substring(colnames(a)[non_key_cols], 2))
+    a
+  } else { 
+    NULL
+  }
   diagnostics <- if (!is.null(tt$diagnostics)) {
     tt$diagnostics["timings"] <- NULL
     tt$diagnostics["issues"] <- NULL
@@ -274,6 +286,7 @@ process_name_backbone_output <- function(tt, args) {
     NULL
   }
   out <- do.call("cbind", rgbif_compact(list(usage, 
+                                             acceptedUsage,
                                              diagnostics, 
                                              classification,
                                              synonym,
