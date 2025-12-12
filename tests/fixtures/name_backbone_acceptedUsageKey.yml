@@ -1,0 +1,20 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.gbif.org/v2/species/match?scientificName=Anastrophyllum+minutum&verbose=FALSE
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '{"usage":{"key":"4277323","name":"Anastrophyllum minutum (Schreb. ex
+        Cranz) R.M.Schust.","canonicalName":"Anastrophyllum minutum","authorship":"(Schreb.
+        ex Cranz) R.M.Schust.","rank":"SPECIES","code":"BOTANICAL","status":"SYNONYM","genericName":"Anastrophyllum","specificEpithet":"minutum","type":"SCIENTIFIC","formattedName":"<i>Anastrophyllum</i>
+        <i>minutum</i> (Schreb. ex Cranz) R.M.Schust."},"acceptedUsage":{"key":"2689422","name":"Sphenolobus
+        minutus (Schreb. ex Cranz) Berggr.","canonicalName":"Sphenolobus minutus","authorship":"(Schreb.
+        ex Cranz) Berggr.","rank":"SPECIES","code":"BOTANICAL","genericName":"Sphenolobus","specificEpithet":"minutus","type":"SCIENTIFIC","formattedName":"<i>Sphenolobus</i>
+        <i>minutus</i> (Schreb. ex Cranz) Berggr."},"classification":[{"key":"6","name":"Plantae","rank":"KINGDOM"},{"key":"9","name":"Marchantiophyta","rank":"PHYLUM"},{"key":"126","name":"Jungermanniopsida","rank":"CLASS"},{"key":"381","name":"Jungermanniales","rank":"ORDER"},{"key":"2292","name":"Anastrophyllaceae","rank":"FAMILY"},{"key":"2689420","name":"Sphenolobus","rank":"GENUS"},{"key":"2689422","name":"Sphenolobus
+        minutus","rank":"SPECIES"}],"diagnostics":{"matchType":"EXACT","confidence":98,"timeTaken":17,"timings":{"nameNRank":0,"sciNameMatch":17,"nameParse":1,"luceneMatch":16}},"synonym":true,"left":37153,"right":37156}'
+  recorded_at: 2025-12-12 10:06:27
+recorded_with: VCR-vcr/2.0.0

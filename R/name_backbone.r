@@ -262,6 +262,14 @@ process_name_backbone_output <- function(tt, args) {
   } else {
     NULL
   }
+  acceptedUsage <- if (!is.null(tt$acceptedUsage)) {
+    a <- tibble::as_tibble(tt$acceptedUsage)[c("key","name")]
+    colnames(a)[colnames(a) == "key"] <- "acceptedUsageKey"
+    colnames(a)[colnames(a) == "name"] <- "acceptedScientificName"
+    a
+  } else {
+    NULL
+  }
   verbatim <- if (!is.null(args)) {
   input_args_clean <- args[!names(args) %in% 
                              c("strict","verbose","start","limit","curlopts")]
@@ -273,7 +281,8 @@ process_name_backbone_output <- function(tt, args) {
   } else {
     NULL
   }
-  out <- do.call("cbind", rgbif_compact(list(usage, 
+  out <- do.call("cbind", rgbif_compact(list(usage,
+                                             acceptedUsage, 
                                              diagnostics, 
                                              classification,
                                              synonym,
