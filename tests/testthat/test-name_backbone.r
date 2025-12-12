@@ -127,3 +127,14 @@ test_that("name_backbone verbose=TRUE", {
   expect_true(all(vv$verbatim_name == "Calopteryx"))
   expect_true(nrow(vv) > nrow(tt))
 })
+
+test_that("name_backbone returns acceptedUsageKey", {
+  vcr::use_cassette("name_backbone_acceptedUsageKey", {
+    aa <- name_backbone(name = 'Anastrophyllum minutum')
+  })
+  expect_is(aa, "tbl")
+  expect_is(aa, "tbl_df")
+  expect_is(aa, "data.frame")
+  expect_true("acceptedUsageKey" %in% colnames(aa))
+  expect_true("acceptedScientificName" %in% colnames(aa))
+})
