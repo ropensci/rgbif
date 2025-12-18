@@ -37,7 +37,7 @@ check_wkt <- function(wkt = NULL, skip_validate = FALSE){
     
     for (i in seq_along(wkt)) {
       if (!extracted_wkts[i] %in% accepted_wkts) stop(paste0("WKT must be one of the types: ",paste0(accepted_wkts, collapse = ", ")))
-      if (!skip_validate) { res <- wk::wk_problems(wk::new_wk_wkt(wkt[i]))
+      if (!skip_validate) { res <- wk_problems(wkt[i])
       if (!is.na(res)) stop(res) # print error 
       }
     }
@@ -46,3 +46,79 @@ check_wkt <- function(wkt = NULL, skip_validate = FALSE){
     NULL
   }
 }
+
+wk_problems <- function(wkt) {
+  if (!is.character(wkt) || length(wkt) != 1L) {
+    return("not_character_scalar")
+  }
+
+  wkt <- trimws(wkt)
+
+  if (is.na(wkt) || wkt == "") {
+    return("missing_or_empty")
+  }
+
+  problems <- character()
+
+  # 1. EMPTY keyword misuse
+  if (grepl("\\bEMPTY\\b", wkt, ignore.case = TRUE) &&
+      !grepl("\\b(POINT|LINESTRING|POLYGON|MULTI|GEOMETRYCOLLECTION)\\s+EMPTY\\b",
+             wkt, ignore.case = TRUE)) {
+    problems <- c(problems, "invalid_EMPTY_usage")
+  }
+
+  # 2. Unbalanced parentheses
+  n_open  <- lengths(regmatches(wkt, gregexpr("\\(", wkt)))
+  n_close <- lengths(regmatches(wkt, gregexpr("\\)", wkt)))
+  if (n_open != n_close) {
+    problems <- c(problems, "unbalanced_parentheses")
+  }
+
+  # 3. Geometry type missing or invalid
+  if (!grepl(
+    "^\\s*(SRID\\s*=\\s*\\d+\\s*;\\s*)?(POINT|LINESTRING|POLYGON|MULTIPOINT|MULTILINESTRING|MULTIPOLYGON|GEOMETRYCOLLECTION)\\b",
+    wkt, ignore.case = TRUE
+  )) {
+    problems <- c(problems, "invalid_or_missing_geometry_type")
+  }
+
+  # 4. Non-numeric coordinates
+  coord_text <- gsub(
+    "^[^\\(]*\\(|\\)[^\\)]*$", "", wkt
+  )
+  bad_nums <- grepl("[A-Za-z]", coord_text) &&
+              !grepl("\\b(Z|M|ZM)\\b", wkt, ignore.case = TRUE)
+  if (bad_nums) {
+    problems <- c(problems, "non_numeric_coordinates")
+  }
+
+  # 5. Comma / coordinate separator issues
+  if (grepl(",\\s*,", wkt)) {
+    problems <- c(problems, "double_comma")
+  }
+  if (grepl("\\(\\s*,|,\\s*\\)", wkt)) {
+    problems <- c(problems, "dangling_comma")
+  }
+
+  # 6. Odd number of coordinate values (XY expected)
+  nums <- regmatches(
+    wkt,
+    gregexpr("[-+]?(?:\\d+\\.?\\d*|\\.\\d+)(?:[eE][-+]?\\d+)?", wkt, perl = TRUE)
+  )[[1]]
+
+  if (length(nums) > 0 && length(nums) %% 2 != 0) {
+    problems <- c(problems, "odd_number_of_coordinates")
+  }
+
+  # 7. Empty coordinate lists
+  if (grepl("\\(\\s*\\)", wkt)) {
+    problems <- c(problems, "empty_coordinate_list")
+  }
+
+  if (!all(is.na(problems))) {
+  stop(paste(problems, collapse = "; "))
+}
+
+if (length(problems) == 0L) NA_character_ else problems
+}
+
