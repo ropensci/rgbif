@@ -44,6 +44,52 @@ gbif_bbox2wkt <- function(minx=NA, miny=NA, maxx=NA, maxy=NA, bbox=NULL){
 #' @export
 #' @rdname gbif_bbox2wkt
 gbif_wkt2bbox <- function(wkt = NULL){
-  stopifnot(!is.null(wkt))
-  as.numeric(wk::wk_bbox(wk::wkt(wkt)))
+  # legacy code using wk package
+  # stopifnot(!is.null(wkt))
+  # as.numeric(wk::wk_bbox(wk::wkt(wkt)))
+  stopifnot(is.character(wkt))
+
+    one <- function(s) {
+    if (is.na(s)) return(rep(NA_real_, 4))
+    s <- trimws(s)
+
+    # Handle EMPTY
+    if (grepl("\\bEMPTY\\b", s, ignore.case = TRUE)) return(rep(NA_real_, 4))
+
+    # Remove optional SRID=...; prefix
+    s <- sub("^\\s*SRID\\s*=\\s*\\d+\\s*;\\s*", "", s, ignore.case = TRUE)
+
+    # Extract all numbers (incl. scientific notation)
+    nums <- regmatches(
+      s,
+      gregexpr("[-+]?(?:\\d+\\.?\\d*|\\.\\d+)(?:[eE][-+]?\\d+)?", s, perl = TRUE)
+    )[[1]]
+
+    if (length(nums) < 2) return(rep(NA_real_, 4))
+
+    vals <- as.numeric(nums)
+
+    # WKT coordinates are grouped like (x y [z [m]]), repeated.
+    # We take the first two of each group; assume constant dimension across tuples.
+    # Try to detect dimension from tokens like "POINT Z", "LINESTRING ZM", etc.
+    dim_guess <- 2L
+    if (grepl("\\bZM\\b", s, ignore.case = TRUE)) dim_guess <- 4L
+    else if (grepl("\\bZ\\b", s, ignore.case = TRUE) || grepl("\\bM\\b", s, ignore.case = TRUE)) dim_guess <- 3L
+
+    if (length(vals) %% dim_guess != 0L) {
+      # Fallback if guess doesn't divide cleanly: assume XY pairs
+      dim_guess <- 2L
+    }
+
+    mat <- matrix(vals, ncol = dim_guess, byrow = TRUE)
+    x <- mat[, 1]
+    y <- mat[, 2]
+    c(min(x, na.rm = TRUE), min(y, na.rm = TRUE),
+      max(x, na.rm = TRUE), max(y, na.rm = TRUE))
+  }
+
+  res <- t(vapply(wkt, one, numeric(4)))
+  if (nrow(res) == 1) as.numeric(res[1, ]) else res
 }
+
+
