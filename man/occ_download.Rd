@@ -10,6 +10,7 @@ occ_download(
   body = NULL,
   type = "and",
   format = "DWCA",
+  verbatim_extensions = NULL,
   user = NULL,
   pwd = NULL,
   email = NULL,
@@ -21,6 +22,7 @@ occ_download_prep(
   body = NULL,
   type = "and",
   format = "DWCA",
+  verbatim_extensions = NULL,
   user = NULL,
   pwd = NULL,
   email = NULL,
@@ -46,6 +48,9 @@ within, not (!), like, isNotNull}
 
 \item{format}{(character) The download format. One of 'DWCA' (default),
 'SIMPLE_CSV', or 'SPECIES_LIST'}
+
+\item{verbatim_extensions}{(character vector) A character vector of verbatim
+extensions to include in the download.}
 
 \item{user}{(character) User name within GBIF's website. Required. See
 "Authentication" below}

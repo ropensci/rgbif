@@ -274,6 +274,20 @@ wkt %>%
 
 When generating polygons from public data sources, check the WKT is what you want using a site like [WKT Geometry Plotter](https://www.geometrymapper.com/).  A common mistake is requesting a polygon for the United Kingdom, but finding it includes the UK's territories of Bermuda, Pitcairn and so on.  (`pred("country", "GB")` or `pred_in("country", c("GB", "IM", "GG", "JE"))` is much faster anyway.)
 
+## Downloading verbatim DWCA extensions
+
+GBIF now allows users to download DWCA extensions. These tables are combined and returned to the user as-is ("verbatim"). The `verbatim_extensions` argument only works when `format="DWCA"`. Otherwise, you will get a warning. 
+
+```r
+occ_download(
+  pred("taxonKey",22),
+  format = "DWCA",
+  verbatim_extensions = "http://rs.tdwg.org/dwc/terms/MeasurementOrFact"
+)
+```
+
+To view all of the available extensions use `rgbif::occ_download_describe("dwca")$verbatimExtensions`.
+
 ## Get just the EEZ waters of a country/area 
 
 Sometimes GBIF users just want the **EEZ** (Exclusive Economic Zone) waters of a country. This is possible using the `gadm` filter and `pred_not`.  
