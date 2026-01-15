@@ -185,7 +185,7 @@ test_that("occ_download: real requests work", {
   # check that full downloads fail well 
   expect_error(occ_download(), "You are requesting a full download. Please use a predicate to filter the data. For example, pred_default().")
   
-   vcr::use_cassette("occ_download_9", {
+  vcr::use_cassette("occ_download_9", {
     bbb <- occ_download(
       pred("taxonKey",22),
       format = "DWCA",
