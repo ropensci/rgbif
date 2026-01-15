@@ -17,6 +17,9 @@
 #' within, not (!), like, isNotNull
 #' @param format (character) The download format. One of 'DWCA' (default),
 #' 'SIMPLE_CSV', or 'SPECIES_LIST'
+#' @param verbatim_extensions (character vector) A character vector of verbatim 
+#' extensions to include in the download. This parameter is only applied when
+#' \code{format = "DWCA"} and will be ignored for other formats.
 #' @param user (character) User name within GBIF's website. Required. See
 #' "Authentication" below
 #' @param pwd (character) User password within GBIF's website. Required. See
@@ -177,12 +180,19 @@
 #' # unique(df$countryCode)
 #' # sort(unique(df$year))
 #' }
-occ_download <- function(..., body = NULL, type = "and", format = "DWCA",
-                         user = NULL, pwd = NULL, email = NULL, 
+occ_download <- function(..., 
+                         body = NULL, 
+                         type = "and", 
+                         format = "DWCA",
+                         verbatim_extensions = NULL,
+                         user = NULL, 
+                         pwd = NULL, 
+                         email = NULL, 
                          curlopts = list(http_version = 2)) {
   
-  z <- occ_download_prep(..., body = body, type = type, format = format,
-                         user = user, pwd = pwd, email = email, curlopts = curlopts)
+  z <- occ_download_prep(..., body = body, type = type, format = format, 
+                         verbatim_extensions = verbatim_extensions, user = user, 
+                         pwd = pwd, email = email, curlopts = curlopts)
   out <- rg_POST(z$url, req = z$request, user = z$user, pwd = z$pwd, curlopts)
   md <- occ_download_meta(out) # get meta_data for printing
   citation <- gbif_citation(md)$download # get citation
@@ -204,8 +214,15 @@ download_formats <- c("DWCA", "SIMPLE_CSV", "SPECIES_LIST", "SIMPLE_PARQUET")
 
 #' @export
 #' @rdname occ_download
-occ_download_prep <- function(..., body = NULL, type = "and", format = "DWCA",
-                              user = NULL, pwd = NULL, email = NULL, curlopts = list(http_version = 2)) {
+occ_download_prep <- function(..., 
+                              body = NULL, 
+                              type = "and", 
+                              format = "DWCA",
+                              verbatim_extensions = NULL,
+                              user = NULL, 
+                              pwd = NULL, 
+                              email = NULL, 
+                              curlopts = list(http_version = 2)) {
   
   url <- paste0(gbif_base(), '/occurrence/download/request')
   user <- check_user(user)
@@ -220,7 +237,7 @@ occ_download_prep <- function(..., body = NULL, type = "and", format = "DWCA",
   if (!is.null(body)) {
     req <- body
   } else {
-    req <- parse_predicates(user, email, type, format, ...)
+    req <- parse_predicates(user, email, type, format, verbatim_extensions, ...)
   }
   structure(list(
     url = url,

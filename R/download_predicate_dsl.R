@@ -581,7 +581,7 @@ sub_str <- function(str, max = 100) {
   if (nchar(str) < max) return(str)
   paste0(substring(str, 1, max), " ... ", sprintf("(N chars: %s)", nchar(str)))
 }
-parse_predicates <- function(user, email, type, format, ...) {
+parse_predicates <- function(user, email, type, format, verbatim_extensions, ...) {
   tmp <- list(...)
   if(length(tmp) == 0) { 
     stop("You are requesting a full download. Please use a predicate to filter the data. For example, pred_default().")
@@ -593,12 +593,25 @@ clzzs <- vapply(tmp,
   if (!all(clzzs))
     stop("all inputs must be class occ_predicate/occ_predicate_list; ?occ_download",
       call. = FALSE)
-  payload <- list(
-    creator = unbox(user),
-    notification_address = email,
-    format = unbox(format),
-    predicate = list()
-  )
+  if (!is.null(verbatim_extensions)) {
+    if(format != "DWCA") {
+      warning("verbatim_extensions can only be used with format = 'DWCA'. Ignoring verbatim_extensions.")
+    }
+    payload <- list(
+      creator = unbox(user),
+      notification_address = email,
+      format = unbox(format),
+      verbatimExtensions = verbatim_extensions,
+      predicate = list()
+    )
+  } else {
+    payload <- list(
+      creator = unbox(user),
+      notification_address = email,
+      format = unbox(format),
+      predicate = list()
+    )
+  }
   if (any(vapply(tmp, function(w) "predicates" %in% names(w), logical(1)))) {
     payload$predicate <- list(unclass(tmp[[1]]))
   } else {
