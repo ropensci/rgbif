@@ -18,7 +18,8 @@
 #' @param format (character) The download format. One of 'DWCA' (default),
 #' 'SIMPLE_CSV', or 'SPECIES_LIST'
 #' @param verbatim_extensions (character vector) A character vector of verbatim 
-#' extensions to include in the download. 
+#' extensions to include in the download. This parameter is only applied when
+#' \code{format = "DWCA"} and will be ignored for other formats.
 #' @param user (character) User name within GBIF's website. Required. See
 #' "Authentication" below
 #' @param pwd (character) User password within GBIF's website. Required. See
