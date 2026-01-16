@@ -11,17 +11,17 @@ http_interactions:
       content-type: application/json
       content-encoding: gzip
     body:
-      string: 0008918-260108223611665
-  recorded_at: 2026-01-14 13:36:25
+      string: 0012310-260108223611665
+  recorded_at: 2026-01-15 17:21:42
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0008918-260108223611665
+    uri: https://api.gbif.org/v1/occurrence/download/0012310-260108223611665
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0008918-260108223611665","license":"unspecified","request":{"predicate":{"type":"equals","key":"TAXON_KEY","value":"22","matchCase":false},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":["http://rs.gbif.org/terms/1.0/DNADerivedData","http://rs.tdwg.org/dwc/terms/MeasurementOrFact"]},"created":"2026-01-14T13:36:25.023+00:00","modified":"2026-01-14T13:36:25.023+00:00","eraseAfter":"2026-07-14T13:36:24.751+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0008918-260108223611665.zip","size":0,"totalRecords":24850,"numberDatasets":0}'
-  recorded_at: 2026-01-14 13:36:25
+      string: '{"key":"0012310-260108223611665","license":"unspecified","request":{"predicate":{"type":"equals","key":"TAXON_KEY","value":"22","matchCase":false},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":["http://rs.gbif.org/terms/1.0/DNADerivedData","http://rs.tdwg.org/dwc/terms/MeasurementOrFact"]},"created":"2026-01-15T17:21:42.877+00:00","modified":"2026-01-15T17:21:42.877+00:00","eraseAfter":"2026-07-15T17:21:42.797+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0012310-260108223611665.zip","size":0,"totalRecords":24850,"numberDatasets":0}'
+  recorded_at: 2026-01-15 17:21:42
 recorded_with: VCR-vcr/2.0.0

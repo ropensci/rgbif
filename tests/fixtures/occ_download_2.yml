@@ -12,18 +12,18 @@ http_interactions:
       content-type: application/json
       content-encoding: gzip
     body:
-      string: 0025177-250827131500795
-  recorded_at: 2025-09-04 07:33:28
+      string: 0012151-260108223611665
+  recorded_at: 2026-01-15 15:05:55
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0025177-250827131500795
+    uri: https://api.gbif.org/v1/occurrence/download/0012151-260108223611665
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0025177-250827131500795","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"within","geometry":"POLYGON((-14
-        42,-7 26,9 38,-14 42))"},{"type":"greaterThanOrEquals","key":"ELEVATION","value":"5000","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2025-09-04T07:33:28.193+00:00","modified":"2025-09-04T07:33:28.193+00:00","eraseAfter":"2026-03-04T07:33:23.572+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0025177-250827131500795.zip","size":0,"totalRecords":104,"numberDatasets":0}'
-  recorded_at: 2025-09-04 07:33:28
+      string: '{"key":"0012151-260108223611665","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"within","geometry":"POLYGON((-14
+        42,-7 26,9 38,-14 42))"},{"type":"greaterThanOrEquals","key":"ELEVATION","value":"5000","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2026-01-15T15:05:55.618+00:00","modified":"2026-01-15T15:05:55.618+00:00","eraseAfter":"2026-07-15T15:05:55.346+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0012151-260108223611665.zip","size":0,"totalRecords":113,"numberDatasets":0}'
+  recorded_at: 2026-01-15 15:05:55
 recorded_with: VCR-vcr/2.0.0

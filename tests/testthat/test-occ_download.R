@@ -203,6 +203,30 @@ test_that("occ_download: real requests work", {
   expect_is(attr(bbb,"downloadLink"),"character")
   expect_output(print.occ_download(bbb),"<<gbif download>>")
   expect_equal(length(capture.output(print(bbb))),22)
+
+  vcr::use_cassette("occ_download_10", {
+    eee <- occ_download(
+      pred("taxonKey", "5WZLF",
+      checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b"),
+      format = "DWCA")
+  }, match_requests_on = c("method", "uri", "body"))
+  expect_is(unclass(eee), "character")
+  expect_match(unclass(eee)[1], "^[0-9]{7}-[0-9]{15}$")
+  expect_equal(attr(eee, "user"), Sys.getenv("GBIF_USER"))
+  expect_equal(attr(eee, "email"), Sys.getenv("GBIF_EMAIL"))
+  expect_equal(attr(eee, "format"), "DWCA")
+  expect_is(attr(eee,"citation"),"character")
+  expect_is(attr(eee,"downloadLink"),"character")
+  expect_output(print.occ_download(eee),"<<gbif download>>")
+  expect_equal(length(capture.output(print(eee))),22)
+
+  # test that invalid key value fails well
+  expect_error(
+    occ_download(
+      pred("country", "UA",
+      checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b"),
+      format = "SIMPLE_CSV")
+    )
 })
 
 

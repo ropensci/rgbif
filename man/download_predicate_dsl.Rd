@@ -18,7 +18,7 @@
 \alias{pred_default}
 \title{Download predicate DSL (domain specific language)}
 \usage{
-pred(key, value)
+pred(key, value, checklistKey = NULL)
 
 pred_gt(key, value)
 
@@ -50,6 +50,10 @@ pred_default()
 \item{key}{(character) the key for the predicate. See "Keys" below}
 
 \item{value}{(various) the value for the predicate}
+
+\item{checklistKey}{(character) A checklistKey to use for downloading using
+alternative taxonomies. The default is \code{NULL}, which means the GBIF backbone
+taxonomy will be used.}
 
 \item{..., .list}{For \code{pred_or()} or \code{pred_and()}, one or more objects of
 class \code{occ_predicate}, created by any \verb{pred*} function}
