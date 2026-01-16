@@ -309,8 +309,8 @@ pred_factory <- function(type) {
     if (!length(key) == 1) stop("'key' must be length 1", call. = FALSE)
     if (!length(value) == 1) stop("'value' must be length 1", call. = FALSE)
     if (!is.null(checklistKey)) {
-      if (key != "taxonKey") {
-        stop("`checklistKey` can only be used when `key` is 'taxonKey'", call. = FALSE)
+      if (!key %in% c("taxonKey", "TAXON_KEY")) {
+        stop("`checklistKey` can only be used when `key` is 'taxonKey' or 'TAXON_KEY'", call. = FALSE)
       }
       if (!is_uuid(checklistKey)) {
         stop("`checklistKey` must be a valid UUID", call. = FALSE)
