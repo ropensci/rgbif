@@ -302,8 +302,8 @@ name_backbone("Calopteryx splendens", checklistKey = "7ddf754f-d193-4cc9-b351-99
 # "Q2M4"
 
 occ_download(
-  pred("taxonKey", "Q2M4"),
-  checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b",
+  pred("taxonKey", "Q2M4",
+  checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b"),
   format = "SIMPLE_CSV"
 )
 ```
