@@ -98,3 +98,17 @@ test_that("parse_predicates verbatim_extensions works", {
   expect_named(aa, c("creator", "notification_address", "format", "verbatimExtensions", "predicate"))
   expect_equal(unclass(aa$verbatimExtensions), ve)
 })
+
+test_that("parse_predicates works with checklistKey", {
+  aa <- parse_predicates("john", "email", "equals", "DWCA", NULL, 
+  pred("taxonKey","5WZLF",checklistKey="7ddf754f-d193-4cc9-b351-99906754a03b"))
+  expect_is(aa, "list")
+  expect_named(aa, c("creator", "notification_address", "format", "predicate"))
+  expect_is(aa$predicate$type, "character")
+  expect_equal(aa$predicate$type[1], "equals")
+  expect_equal(unclass(aa$predicate$type), "equals")
+  expect_equal(unclass(aa$predicate$key), "TAXON_KEY")
+  expect_equal(unclass(aa$predicate$value), "5WZLF")
+  expect_equal(unclass(aa$predicate$checklistKey), "7ddf754f-d193-4cc9-b351-99906754a03b")
+  expect_null(aa$predicate$predicates)
+})

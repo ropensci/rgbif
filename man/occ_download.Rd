@@ -50,7 +50,8 @@ within, not (!), like, isNotNull}
 'SIMPLE_CSV', or 'SPECIES_LIST'}
 
 \item{verbatim_extensions}{(character vector) A character vector of verbatim
-extensions to include in the download.}
+extensions to include in the download. This parameter is only applied when
+\code{format = "DWCA"} and will be ignored for other formats.}
 
 \item{user}{(character) User name within GBIF's website. Required. See
 "Authentication" below}

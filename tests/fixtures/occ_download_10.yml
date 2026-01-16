@@ -1,0 +1,27 @@
+http_interactions:
+- request:
+    method: POST
+    uri: https://api.gbif.org/v1/occurrence/download/request
+    body:
+      string: '{"creator":"<gbif_user>","notification_address":["<gbif_user>@gbif.org"],"format":"DWCA","predicate":{"type":"equals","key":"TAXON_KEY","value":"5WZLF","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"}}'
+  response:
+    status: 201
+    headers:
+      status: HTTP/1.1 201 Created
+      content-type: application/json
+      content-encoding: gzip
+    body:
+      string: 0013630-260108223611665
+  recorded_at: 2026-01-16 08:25:37
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/download/0013630-260108223611665
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '{"key":"0013630-260108223611665","license":"unspecified","request":{"predicate":{"type":"equals","key":"TAXON_KEY","value":"5WZLF","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2026-01-16T08:25:38.464+00:00","modified":"2026-01-16T08:25:38.464+00:00","eraseAfter":"2026-07-16T08:25:38.338+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0013630-260108223611665.zip","size":0,"totalRecords":19070,"numberDatasets":0}'
+  recorded_at: 2026-01-16 08:25:37
+recorded_with: VCR-vcr/2.0.0

@@ -288,6 +288,26 @@ occ_download(
 
 To view all of the available extensions use `rgbif::occ_download_describe("dwca")$verbatimExtensions`.
 
+## Downloading using an alternative taxonomy 
+
+GBIF now allows users to download occurrences using an alternative taxonomy. This is done using the `checklistKey` parameter. Currently, you can only choose between two taxonomies:
+
+-   GBIF Backbone Taxonomy (default)
+-   Catalogue of Life XR (7ddf754f-d193-4cc9-b351-99906754a03b)
+
+You need to also use the corresponding taxonKey from the alternative taxonomy. You can find these keys using `name_backbone()` with the `checklistKey` parameter.
+
+```r
+name_backbone("Calopteryx splendens", checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b")$usageKey
+# "Q2M4"
+
+occ_download(
+  pred("taxonKey", "Q2M4",
+  checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b"),
+  format = "SIMPLE_CSV"
+)
+```
+
 ## Get just the EEZ waters of a country/area 
 
 Sometimes GBIF users just want the **EEZ** (Exclusive Economic Zone) waters of a country. This is possible using the `gadm` filter and `pred_not`.  
