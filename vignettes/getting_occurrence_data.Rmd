@@ -57,6 +57,8 @@ To make a download request, `occ_download()` uses [helper functions](https://doc
 | `pred_or()`      | a logical or of predicate functions   | `pred_or(pred_gt("elevation", 1000), pred_isnull("elevation"))` |
 | `pred_in()`      | values are in the column              | `pred_in("taxonKey",c(2977832,2977901,2977966))`                |
 
+**Note on license values:** When filtering by license, use underscores instead of spaces (e.g., `"CC_BY_4_0"` not `"CC BY 4.0"`). Valid license values include `"CC_BY_4_0"`, `"CC_BY_NC_4_0"`, `"CC0_1_0"`.
+
 ## A Very Simple Download
 
 It is required to set up your **GBIF credentials** to make downloads from GBIF. I suggest that you follow this [short tutorial](https://docs.ropensci.org/rgbif/articles/gbif_credentials.html) before continuing.
@@ -158,6 +160,26 @@ The code above is commonly used, but pretty long. This is why `pred_default()` w
 occ_download(
 pred_default(), 
 pred("taxonKey", 2436775), 
+format = "SIMPLE_CSV"
+)
+```
+
+## Filtering by License
+
+If you want to download only records with specific licenses, use `pred()` or `pred_in()` with the license key. **Important:** Always use underscores in license values, not spaces.
+
+``` r
+# Download records with CC_BY_4_0 license only
+occ_download(
+pred("taxonKey", 2436775), 
+pred("license", "CC_BY_4_0"),
+format = "SIMPLE_CSV"
+)
+
+# Download records with multiple acceptable licenses
+occ_download(
+pred("taxonKey", 2436775), 
+pred_in("license", c("CC_BY_4_0", "CC_BY_NC_4_0", "CC0_1_0")),
 format = "SIMPLE_CSV"
 )
 ```

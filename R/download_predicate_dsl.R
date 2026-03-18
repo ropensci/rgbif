@@ -171,7 +171,7 @@
 #' - parentEventId/parentEventID (PARENT_EVENT_ID)
 #' - identifiedBy (IDENTIFIED_BY)
 #' - identifiedById/identifiedByID (IDENTIFIED_BY_ID)
-#' - license (LICENSE)
+#' - license (LICENSE) - Note: Use underscores, not spaces (e.g., "CC_BY_4_0" not "CC BY 4.0")
 #' - locality(LOCALITY)
 #' - pathway (PATHWAY)
 #' - preparations (PREPARATIONS)
@@ -224,6 +224,8 @@
 #' pred_or(pred("taxonKey", 2977832), pred("taxonKey", 2977901),
 #'   pred("taxonKey", 2977966))
 #' pred_in("taxonKey", c(2977832, 2977901, 2977966, 2977835))
+#' pred("license", "CC_BY_4_0")
+#' pred_in("license", c("CC_BY_4_0", "CC_BY_NC_4_0"))
 
 #' @rdname download_predicate_dsl
 #' @export
