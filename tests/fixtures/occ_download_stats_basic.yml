@@ -1,0 +1,13 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/download/statistics
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '{"offset":0,"limit":20,"endOfRecords":false,"count":5327654,"results":[{"datasetKey":"0000e36f-d0e9-46b0-aa23-cc1980f00515","totalRecords":78236,"numberDownloads":536,"year":2026,"month":2},{"datasetKey":"0001480b-76ca-4f30-86bc-f4292481554b","totalRecords":959364,"numberDownloads":843,"year":2026,"month":2},{"datasetKey":"00024397-569d-43a8-9e08-9a1072e201df","totalRecords":443,"numberDownloads":89,"year":2026,"month":2},{"datasetKey":"00029085-9665-4ef8-8e1e-a61f48947d14","totalRecords":4270,"numberDownloads":215,"year":2026,"month":2},{"datasetKey":"0006eab9-7c26-4272-aa80-53c8e60db999","totalRecords":453,"numberDownloads":248,"year":2026,"month":2},{"datasetKey":"0008b72b-c47a-4ef1-a40f-2551a8ec555a","totalRecords":152,"numberDownloads":76,"year":2026,"month":2},{"datasetKey":"00095b29-567c-4d1a-9337-a19e0cbb8d55","totalRecords":48191,"numberDownloads":498,"year":2026,"month":2},{"datasetKey":"000a7240-3d12-4025-aa65-16abe083cea0","totalRecords":8730,"numberDownloads":111,"year":2026,"month":2},{"datasetKey":"000c326a-3188-45ea-ad58-6ef8757145b7","totalRecords":795,"numberDownloads":208,"year":2026,"month":2},{"datasetKey":"000c3d00-0f47-41e4-a0b8-99dfc8974da3","totalRecords":2622,"numberDownloads":337,"year":2026,"month":2},{"datasetKey":"000c7e0c-c7f4-4b18-8ab7-57ade1a89e30","totalRecords":1678,"numberDownloads":196,"year":2026,"month":2},{"datasetKey":"000cd5cb-2e92-4e53-9a56-825f57322dcb","totalRecords":696,"numberDownloads":178,"year":2026,"month":2},{"datasetKey":"000e5e3d-ee09-4d51-b106-d4ad23a37513","totalRecords":745,"numberDownloads":136,"year":2026,"month":2},{"datasetKey":"000eb746-df2d-4a16-b5e8-4c8e34b7231b","totalRecords":296,"numberDownloads":148,"year":2026,"month":2},{"datasetKey":"000f2084-a412-4d83-b455-0cf1357407e9","totalRecords":49686,"numberDownloads":438,"year":2026,"month":2},{"datasetKey":"000f8d2a-ab70-453d-95f2-59791930975c","totalRecords":1768,"numberDownloads":240,"year":2026,"month":2},{"datasetKey":"0010c4e6-f37b-40c6-a2fc-f03234cd0a1e","totalRecords":1946,"numberDownloads":196,"year":2026,"month":2},{"datasetKey":"00118f75-2c68-4a5f-9888-bea0fee27692","totalRecords":190,"numberDownloads":102,"year":2026,"month":2},{"datasetKey":"001248bd-d32c-45c4-add3-dfb17ab4e27c","totalRecords":58094,"numberDownloads":232,"year":2026,"month":2},{"datasetKey":"00129616-412b-4bf8-a221-e7910e263eb9","totalRecords":215771,"numberDownloads":347,"year":2026,"month":2}]}'
+  recorded_at: 2026-03-19 09:46:57
+recorded_with: VCR-vcr/2.0.0

@@ -1,0 +1,13 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/download/statistics?limit=5
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '{"offset":0,"limit":5,"endOfRecords":false,"count":5327654,"results":[{"datasetKey":"0000e36f-d0e9-46b0-aa23-cc1980f00515","totalRecords":78236,"numberDownloads":536,"year":2026,"month":2},{"datasetKey":"0001480b-76ca-4f30-86bc-f4292481554b","totalRecords":959364,"numberDownloads":843,"year":2026,"month":2},{"datasetKey":"00024397-569d-43a8-9e08-9a1072e201df","totalRecords":443,"numberDownloads":89,"year":2026,"month":2},{"datasetKey":"00029085-9665-4ef8-8e1e-a61f48947d14","totalRecords":4270,"numberDownloads":215,"year":2026,"month":2},{"datasetKey":"0006eab9-7c26-4272-aa80-53c8e60db999","totalRecords":453,"numberDownloads":248,"year":2026,"month":2}]}'
+  recorded_at: 2026-03-19 09:47:00
+recorded_with: VCR-vcr/2.0.0

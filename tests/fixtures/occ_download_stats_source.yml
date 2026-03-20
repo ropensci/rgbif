@@ -1,0 +1,46 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/download/statistics/downloadsBySource
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '{"2022":{"12":27136},"2023":{"1":27207,"2":43830,"3":111062,"4":61038,"5":58829,"6":53041,"7":70189,"8":61881,"9":26999,"10":33635,"11":46149,"12":25105},"2024":{"1":47148,"2":47362,"3":216351,"4":141959,"5":60145,"6":46590,"7":37222,"8":67049,"9":43286,"10":59162,"11":57808,"12":42710},"2025":{"1":41680,"2":42442,"3":51849,"4":49349,"5":52078,"6":68781,"7":143619,"8":110728,"9":101905,"10":95346,"11":53836,"12":49982},"2026":{"1":29,"2":66286}}'
+  recorded_at: 2026-03-19 17:23:20
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/download/statistics/downloadsBySource?fromDate=2023-01&toDate=2023-12
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '{"2023":{"1":27207,"2":43830,"3":111062,"4":61038,"5":58829,"6":53041,"7":70189,"8":61881,"9":26999,"10":33635,"11":46149,"12":25105}}'
+  recorded_at: 2026-03-19 17:23:20
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/download/statistics/downloadsBySource?source=pygbif
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '{"2022":{"12":13},"2023":{"1":13,"2":62,"3":145,"4":57,"5":56,"6":72,"7":209,"8":615,"9":176,"10":1870,"11":9109,"12":98},"2024":{"1":370,"2":889,"3":932,"4":139,"5":349,"6":3022,"7":517,"8":188,"9":126,"10":302,"11":1547,"12":190},"2025":{"1":2863,"2":1519,"3":478,"4":2052,"5":1427,"6":1364,"7":2829,"8":4075,"9":978,"10":496,"11":1015,"12":5547},"2026":{"2":2084}}'
+  recorded_at: 2026-03-19 17:23:20
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/download/statistics/downloadsBySource?fromDate=2023-01&toDate=2023-12&source=rgbif
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '{"2023":{"1":6956,"2":21772,"3":69808,"4":39130,"5":38969,"6":33116,"7":52012,"8":35848,"9":5166,"10":7078,"11":9409,"12":5499}}'
+  recorded_at: 2026-03-19 17:23:20
+recorded_with: VCR-vcr/2.0.0
