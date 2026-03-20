@@ -27,7 +27,7 @@
 #' @param institutionCode An identifier of any form assigned by the source to 
 #' identify the institution the record belongs to.
 #' @param basisOfRecord (character) The specific nature of the data record. See 
-#' [here](https://gbif.github.io/parsers/apidocs/org/gbif/api/vocabulary/BasisOfRecord.html).
+#' [here](https://dwc.tdwg.org/terms/#dwc:basisOfRecord).
 #'    
 #'    \itemize{
 #'      \item "FOSSIL_SPECIMEN" 
