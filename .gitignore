@@ -24,6 +24,7 @@ readme_contributors.txt
 tests/fixtures/dl_user.yml
 inst/doc
 docs/
+pkgdown/
 /cache/
 *_cache/
 /check/
