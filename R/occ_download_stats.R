@@ -181,7 +181,7 @@ occ_download_stats_export <- function(
 #' @return A tibble with download counts by user country and month
 #' 
 #' @examples \dontrun{
-#' # Get run with no args to get montly download counts for all of GBIF 
+#' # Get run with no args to get monthly download counts for all of GBIF 
 #' occ_download_stats_user_country()
 #' 
 #' # Filter by date range
@@ -393,6 +393,13 @@ occ_download_stats_dataset <- function(
         number_downloads = as.integer(year_data[[month]])
       )
     }
+  }
+  if (length(rows) == 0) {
+    return(tibble::tibble(
+      year = integer(),
+      month = integer(),
+      number_downloads = integer()
+    ))
   }
   result <- data.table::rbindlist(rows)
   tibble::as_tibble(result)
