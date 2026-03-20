@@ -394,6 +394,13 @@ occ_download_stats_dataset <- function(
       )
     }
   }
+  if (length(rows) == 0) {
+    return(tibble::tibble(
+      year = integer(),
+      month = integer(),
+      number_downloads = integer()
+    ))
+  }
   result <- data.table::rbindlist(rows)
   tibble::as_tibble(result)
 }
