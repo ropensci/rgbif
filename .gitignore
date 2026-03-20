@@ -9,6 +9,7 @@
 .Renviron
 .httr-oauth
 .aspell
+.github/copilot-instructions.md
 rgbif.Rproj
 *.Rproj
 gist_downloads.md
@@ -24,6 +25,7 @@ readme_contributors.txt
 tests/fixtures/dl_user.yml
 inst/doc
 docs/
+pkgdown/
 /cache/
 *_cache/
 /check/
