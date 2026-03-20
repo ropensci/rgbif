@@ -56,6 +56,12 @@ Other downloads:
 \code{\link{occ_download_list}()},
 \code{\link{occ_download_meta}()},
 \code{\link{occ_download_queue}()},
+\code{\link{occ_download_stats_dataset_records}()},
+\code{\link{occ_download_stats_dataset}()},
+\code{\link{occ_download_stats_export}()},
+\code{\link{occ_download_stats_source}()},
+\code{\link{occ_download_stats_user_country}()},
+\code{\link{occ_download_stats}()},
 \code{\link{occ_download_wait}()},
 \code{\link{occ_download}()}
 }
