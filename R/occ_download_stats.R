@@ -116,8 +116,8 @@ occ_download_stats_export <- function(
   datasetKey = NULL, 
   publishingOrgKey = NULL, 
   limit = NULL, 
-  offset = NULL,
-  curlopts = list(http_version = 2)) {
+  offset = NULL
+  ) {
   
   # Check required parameters
   if (missing(from)) {
@@ -398,9 +398,9 @@ occ_download_stats_dataset <- function(
   tibble::as_tibble(result)
 }
 
-#' Downloaded record totals by source
+#' Downloads by source
 #'
-#' Summarize downloaded record totals by source.
+#' Summarize downloads by source.
 #'
 #' @export
 #'
@@ -415,7 +415,7 @@ occ_download_stats_dataset <- function(
 #'   represents the total number of downloads for a given year and month.
 #' 
 #' @examples \dontrun{
-#' # Get downloaded records by source
+#' # Get downloads by source
 #' occ_download_stats_source()
 #' 
 #' # Filter by date range
