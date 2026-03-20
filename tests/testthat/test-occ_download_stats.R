@@ -123,11 +123,11 @@ test_that("occ_download_stats_export works", {
   expect_is(tt, "tbl_df")
   expect_gt(NROW(tt), 10)
   
-  # Check expected columns exist
-  expect_true("dataset_key" %in% names(tt) | "datasetKey" %in% names(tt))
-  expect_true(any(grepl("total.*record", names(tt), ignore.case = TRUE)))
+  # Check expected columns exist (now in camelCase)
+  expect_true("datasetKey" %in% names(tt))
+  expect_true(any(grepl("totalRecord", names(tt), ignore.case = TRUE)))
   expect_true(any(grepl("download", names(tt), ignore.case = TRUE)))
-  expect_true(any(grepl("number_downloads", names(tt), ignore.case = TRUE)))
+  expect_true(any(grepl("numberDownloads", names(tt), ignore.case = TRUE)))
   expect_true(any(grepl("year", names(tt), ignore.case = TRUE)))
   expect_true(any(grepl("month", names(tt), ignore.case = TRUE)))
   
@@ -146,6 +146,32 @@ test_that("occ_download_stats_export fails well", {
     "'to' is required")
   expect_error(occ_download_stats_export(from = "2023-01", to = "2023-12"),
     "'publishingCountry' is required")
+  
+  # NULL or NA checks
+  expect_error(occ_download_stats_export(
+      from = NULL, 
+      to = "2023-12", 
+      publishingCountry = "US"
+    ),
+    "from can not be NA or NULL")
+  expect_error(occ_download_stats_export(
+      from = NA, 
+      to = "2023-12", 
+      publishingCountry = "US"
+    ),
+    "from can not be NA or NULL")
+  expect_error(occ_download_stats_export(
+      from = "2023-01", 
+      to = NULL, 
+      publishingCountry = "US"
+    ),
+    "to can not be NA or NULL")
+  expect_error(occ_download_stats_export(
+      from = "2023-01", 
+      to = "2023-12", 
+      publishingCountry = NULL
+    ),
+    "publishingCountry can not be NA or NULL")
   
   # Type checking
   expect_error(occ_download_stats_export(

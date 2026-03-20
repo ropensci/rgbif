@@ -2,7 +2,7 @@
 % Please edit documentation in R/occ_download_stats.R
 \name{occ_download_stats_source}
 \alias{occ_download_stats_source}
-\title{Downloaded record totals by source}
+\title{Downloads by source}
 \usage{
 occ_download_stats_source(
   from = NULL,
@@ -26,14 +26,14 @@ A tibble with columns: \code{year}, \code{month}, \code{number_downloads}. Each 
 represents the total number of downloads for a given year and month.
 }
 \description{
-Summarize downloaded record totals by source.
+Summarize downloads by source.
 }
 \note{
 see \link{downloads} for an overview of GBIF downloads methods
 }
 \examples{
 \dontrun{
-# Get downloaded records by source
+# Get downloads by source
 occ_download_stats_source()
 
 # Filter by date range

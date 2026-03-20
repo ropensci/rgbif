@@ -99,8 +99,6 @@ occ_download_stats <- function(
 #' @param publishingOrgKey (character) Publishing organization UUID. Optional.
 #' @param limit (integer) Number of results to return. Optional.
 #' @param offset (integer) Offset for pagination. Optional.
-#' @param curlopts list of named curl options passed on to [crul::HttpClient].
-#'   See [curl::curl_options] for curl options
 #' @note see [downloads] for an overview of GBIF downloads methods
 #' @family downloads
 #' @return A tibble with download summary data
@@ -133,6 +131,11 @@ occ_download_stats_export <- function(
       "Provide an ISO 2-letter country code.", call. = FALSE)
   }
   
+  # Check for NULL or NA
+  check_vals(from, "from")
+  check_vals(to, "to")
+  check_vals(publishingCountry, "publishingCountry")
+  
   assert(from, "character")
   assert(to, "character")
   assert(publishingCountry, "character")
@@ -161,6 +164,7 @@ occ_download_stats_export <- function(
   temp_file <- tempfile()
   utils::download.file(url_full, destfile = temp_file, quiet = TRUE)
   out <- tibble::as_tibble(data.table::fread(temp_file, showProgress = FALSE))
+  colnames(out) <- to_camel(colnames(out))
   out
 }
 

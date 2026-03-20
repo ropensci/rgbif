@@ -11,8 +11,7 @@ occ_download_stats_export(
   datasetKey = NULL,
   publishingOrgKey = NULL,
   limit = NULL,
-  offset = NULL,
-  curlopts = list(http_version = 2)
+  offset = NULL
 )
 }
 \arguments{
@@ -29,9 +28,6 @@ occ_download_stats_export(
 \item{limit}{(integer) Number of results to return. Optional.}
 
 \item{offset}{(integer) Offset for pagination. Optional.}
-
-\item{curlopts}{list of named curl options passed on to \link[crul:HttpClient]{crul::HttpClient}.
-See \link[curl:curl_options]{curl::curl_options} for curl options}
 }
 \value{
 A tibble with download summary data
