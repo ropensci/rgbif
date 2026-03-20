@@ -238,6 +238,13 @@ occ_download_stats_user_country <- function(
       )
     }
   }
+  if (length(rows) == 0) {
+    return(tibble::tibble(
+      year = integer(),
+      month = integer(),
+      number_downloads = integer()
+    ))
+  }
   result <- data.table::rbindlist(rows)
   tibble::as_tibble(result)
 }
@@ -318,6 +325,13 @@ occ_download_stats_dataset_records <- function(
         number_records = as.numeric(year_data[[month]])
       )
     }
+  }
+  if (length(rows) == 0) {
+    return(tibble::tibble(
+      year = integer(),
+      month = integer(),
+      number_records = numeric()
+    ))
   }
   result <- data.table::rbindlist(rows)
   tibble::as_tibble(result)
@@ -475,6 +489,13 @@ occ_download_stats_source <- function(
         number_downloads = as.integer(year_data[[month]])
       )
     }
+  }
+  if (length(rows) == 0) {
+    return(tibble::tibble(
+      year = integer(),
+      month = integer(),
+      number_downloads = integer()
+    ))
   }
   result <- data.table::rbindlist(rows)
   tibble::as_tibble(result)
