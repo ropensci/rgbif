@@ -1,3 +1,33 @@
+rgbif 3.8.5
+===========
+
+### NEW FEATURES
+
+New functions for accessing GBIF occurrence download statistics (#837) (#823):
+
+* `occ_download_stats()` to retrieve summarized download statistics
+* `occ_download_stats_export()` to export download summaries
+* `occ_download_stats_user_country()` to get downloads by user country
+* `occ_download_stats_dataset_records()` to get downloaded records by dataset
+* `occ_download_stats_dataset()` to get downloads by dataset
+* `occ_download_stats_source()` to get downloads by source
+
+`occ_download()` now supports downloading multiple taxonomy downloads. (#830) (#832)
+`occ_download()` now supports downloading verbatim extension data. (#829) (#831)
+
+### BUG FIXES
+
+Fixed bug in `name_backbone_checklist()`. (#820) (#822)
+Fixed `name_backbone()` to include `acceptedUsageKey` and `acceptedScientificName` in output. (#824) (#826)
+
+### MINOR IMPROVEMENTS
+
+Removed `wk` package dependency and implemented internal WKT validation. (#827) (#828)
+
+### DOCUMENTATION
+
+Clarified license format in download predicates documentation. (#836)
+
 rgbif 3.8.4
 ===========
 

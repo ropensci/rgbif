@@ -152,7 +152,7 @@ recorded the occurrence}
 provided the taxonomic identification of the occurrence.}
 
 \item{basisOfRecord}{(character) The specific nature of the data record. See
-\href{https://gbif.github.io/parsers/apidocs/org/gbif/api/vocabulary/BasisOfRecord.html}{here}.
+\href{https://dwc.tdwg.org/terms/#dwc:basisOfRecord}{here}.
 
 \itemize{
 \item "FOSSIL_SPECIMEN"
