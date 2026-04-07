@@ -605,10 +605,27 @@ sub_str <- function(str, max = 100) {
 parse_predicates <- function(user, email, type, format, verbatim_extensions, 
   checklistKey = NULL, ...) {
   tmp <- list(...)
+  
+  # Handle case where predicates or invalid values are passed as checklistKey
+  if (!is.null(checklistKey)) {
+    # If it's a predicate object, move to tmp
+    if (inherits(checklistKey, c("occ_predicate", "occ_predicate_list"))) {
+      tmp <- c(list(checklistKey), tmp)
+      checklistKey <- NULL
+    # If it's a character but not a valid UUID, move to tmp for validation
+    } else if (is.character(checklistKey) && !is_uuid(checklistKey)) {
+      tmp <- c(list(checklistKey), tmp)
+      checklistKey <- NULL
+    # Validate remaining checklistKey (should be UUID string)
+    } else if (!is.character(checklistKey)) {
+      stop("checklistKey must be a character string (UUID)", call. = FALSE)
+    }
+  }
+  
   if(length(tmp) == 0) { 
     stop("You are requesting a full download. Please use a predicate to filter the data. For example, pred_default().")
   }  
-clzzs <- vapply(tmp,
+  clzzs <- vapply(tmp,
     function(z) inherits(z, c("occ_predicate", "occ_predicate_list")),
     logical(1)
   )

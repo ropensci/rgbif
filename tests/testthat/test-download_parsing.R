@@ -1,4 +1,5 @@
 # not testing the actual HTTP request
+# testthat::test_file("tests/testthat/test-download_parsing.R")
 context("occ_download parsing")
 
 user <- "sckott"
@@ -100,8 +101,9 @@ test_that("parse_predicates verbatim_extensions works", {
 })
 
 test_that("parse_predicates works with checklistKey", {
+  # Test predicate-level checklistKey (inside pred)
   aa <- parse_predicates("john", "email", "equals", "DWCA", NULL, 
-  pred("taxonKey","5WZLF",checklistKey="7ddf754f-d193-4cc9-b351-99906754a03b"))
+    pred("taxonKey","5WZLF",checklistKey="7ddf754f-d193-4cc9-b351-99906754a03b"))
   expect_is(aa, "list")
   expect_named(aa, c("creator", "notification_address", "format", "predicate"))
   expect_is(aa$predicate$type, "character")
@@ -111,4 +113,18 @@ test_that("parse_predicates works with checklistKey", {
   expect_equal(unclass(aa$predicate$value), "5WZLF")
   expect_equal(unclass(aa$predicate$checklistKey), "7ddf754f-d193-4cc9-b351-99906754a03b")
   expect_null(aa$predicate$predicates)
+  
+  # Test root-level checklistKey
+  bb <- parse_predicates("john", "email", "equals", "DWCA", NULL,
+    checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b",
+    pred("taxonKey","5WZLF"))
+  expect_is(bb, "list")
+  expect_named(bb, c("creator", "notification_address", "format", "predicate", "checklistKey"))
+  expect_equal(unclass(bb$checklistKey), "7ddf754f-d193-4cc9-b351-99906754a03b")
+  expect_is(bb$predicate$type, "character")
+  expect_equal(unclass(bb$predicate$type), "equals")
+  expect_equal(unclass(bb$predicate$key), "TAXON_KEY")
+  expect_equal(unclass(bb$predicate$value), "5WZLF")
+  expect_null(bb$predicate$checklistKey)  # No checklistKey at predicate level
 })
+
