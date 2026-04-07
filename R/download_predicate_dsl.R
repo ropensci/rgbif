@@ -602,7 +602,8 @@ sub_str <- function(str, max = 100) {
   if (nchar(str) < max) return(str)
   paste0(substring(str, 1, max), " ... ", sprintf("(N chars: %s)", nchar(str)))
 }
-parse_predicates <- function(user, email, type, format, verbatim_extensions, ...) {
+parse_predicates <- function(user, email, type, format, verbatim_extensions, 
+  checklistKey = NULL, ...) {
   tmp <- list(...)
   if(length(tmp) == 0) { 
     stop("You are requesting a full download. Please use a predicate to filter the data. For example, pred_default().")
@@ -632,6 +633,10 @@ clzzs <- vapply(tmp,
       format = unbox(format),
       predicate = list()
     )
+  }
+  # Add checklistKey to payload if provided
+  if (!is.null(checklistKey)) {
+    payload$checklistKey <- unbox(checklistKey)
   }
   if (any(vapply(tmp, function(w) "predicates" %in% names(w), logical(1)))) {
     payload$predicate <- list(unclass(tmp[[1]]))

@@ -20,6 +20,9 @@
 #' @param verbatim_extensions (character vector) A character vector of verbatim 
 #' extensions to include in the download. This parameter is only applied when
 #' \code{format = "DWCA"} and will be ignored for other formats.
+#' @param checklistKey (character) The UUID key for a checklist dataset to use
+#' for taxonomy in the download. By default, the GBIF Backbone Taxonomy will
+#' be used if no checklistKey is supplied. Optional
 #' @param user (character) User name within GBIF's website. Required. See
 #' "Authentication" below
 #' @param pwd (character) User password within GBIF's website. Required. See
@@ -47,6 +50,12 @@
 #' respect to WKT in that you can supply clockwise WKT to those
 #' functions but they treat it as an exclusion, so get all data not
 #' inside the WKT area.
+#'
+#' @section checklistKey:
+#' You can specify the taxonomy to be included in occurrence downloads by
+#' adding the `checklistKey` parameter to the download request. The value
+#' should be a UUID for a checklist dataset in GBIF. By default, the GBIF
+#' Backbone Taxonomy will be used if no `checklistKey` is supplied.
 #'
 #' @section Methods:
 #'
@@ -164,6 +173,13 @@
 #'   pred_or(pred_lte("year", 1989), pred("year", 2000))
 #' )
 #' 
+#' ## using a specific checklist for taxonomy
+#' # occ_download_prep(
+#' #   pred("basisOfRecord", "PRESERVED_SPECIMEN"),
+#' #   pred_in("country", c("VC", "GD")),
+#' #   checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b"
+#' # )
+#' 
 #' # x = occ_download(
 #' #   pred_in("basisOfRecord", c("MACHINE_OBSERVATION", "HUMAN_OBSERVATION")),
 #' #   pred_in("taxonKey", c(9206251, 3112648)),
@@ -185,13 +201,15 @@ occ_download <- function(...,
                          type = "and", 
                          format = "DWCA",
                          verbatim_extensions = NULL,
+                         checklistKey = NULL,
                          user = NULL, 
                          pwd = NULL, 
                          email = NULL, 
                          curlopts = list(http_version = 2)) {
   
   z <- occ_download_prep(..., body = body, type = type, format = format, 
-                         verbatim_extensions = verbatim_extensions, user = user, 
+                         verbatim_extensions = verbatim_extensions, 
+                         checklistKey = checklistKey, user = user, 
                          pwd = pwd, email = email, curlopts = curlopts)
   out <- rg_POST(z$url, req = z$request, user = z$user, pwd = z$pwd, curlopts)
   md <- occ_download_meta(out) # get meta_data for printing
@@ -219,6 +237,7 @@ occ_download_prep <- function(...,
                               type = "and", 
                               format = "DWCA",
                               verbatim_extensions = NULL,
+                              checklistKey = NULL,
                               user = NULL, 
                               pwd = NULL, 
                               email = NULL, 
@@ -234,10 +253,14 @@ occ_download_prep <- function(...,
          call. = FALSE)
   }
   stopifnot(!is.null(user), !is.null(email))
+  if (!is.null(checklistKey)) {
+    assert(checklistKey, "character")
+  }
   if (!is.null(body)) {
     req <- body
   } else {
-    req <- parse_predicates(user, email, type, format, verbatim_extensions, ...)
+    req <- parse_predicates(user, email, type, format, verbatim_extensions, 
+                           checklistKey, ...)
   }
   structure(list(
     url = url,

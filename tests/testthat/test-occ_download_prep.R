@@ -1,3 +1,6 @@
+# Run tests in this file: 
+# testthat::test_file("tests/testthat/test-occ_download_prep.R")
+
 test_that("occ_download_prep", {
   skip_on_cran()
 
@@ -65,6 +68,23 @@ test_that("occ_download_prep long print", {
   
   expect_output(print(pp),"OK. But too large to print.")
 })
+
+test_that("occ_download_prep with checklistKey", {
+  skip_on_cran()
+
+  z <- occ_download_prep(
+    pred("basisOfRecord", "PRESERVED_SPECIMEN"),
+    pred_in("country", c("VC", "GD")),
+    checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b",
+    user = "foo", pwd = "bar", email = "foo@bar.com"
+  )
+
+  expect_is(z, "occ_download_prep")
+  expect_is(z$request, "list")
+  expect_is(z$request$checklistKey, "scalar")
+  expect_equal(z$request$checklistKey[1], "7ddf754f-d193-4cc9-b351-99906754a03b")
+})
+
 
 
 
