@@ -602,12 +602,28 @@ sub_str <- function(str, max = 100) {
   if (nchar(str) < max) return(str)
   paste0(substring(str, 1, max), " ... ", sprintf("(N chars: %s)", nchar(str)))
 }
-parse_predicates <- function(user, email, type, format, verbatim_extensions, ...) {
+parse_predicates <- function(user, email, type, format, verbatim_extensions, 
+  checklistKey = NULL, ...) {
   tmp <- list(...)
+  
+  # Handle case where predicates are passed as positional args
+  if (!is.null(checklistKey)) {
+    # If it's a predicate object, move to tmp (was passed as positional arg)
+    if (inherits(checklistKey, c("occ_predicate", "occ_predicate_list"))) {
+      tmp <- c(list(checklistKey), tmp)
+      checklistKey <- NULL
+    # Validate checklistKey type and format
+    } else if (!is.character(checklistKey)) {
+      stop("'checklistKey' must be a character string (UUID)", call. = FALSE)
+    } else if (!is_uuid(checklistKey)) {
+      stop("'checklistKey' must be a valid UUID", call. = FALSE)
+    }
+  }
+  
   if(length(tmp) == 0) { 
     stop("You are requesting a full download. Please use a predicate to filter the data. For example, pred_default().")
   }  
-clzzs <- vapply(tmp,
+  clzzs <- vapply(tmp,
     function(z) inherits(z, c("occ_predicate", "occ_predicate_list")),
     logical(1)
   )
@@ -632,6 +648,10 @@ clzzs <- vapply(tmp,
       format = unbox(format),
       predicate = list()
     )
+  }
+  # Add checklistKey to payload if provided
+  if (!is.null(checklistKey)) {
+    payload$checklistKey <- unbox(checklistKey)
   }
   if (any(vapply(tmp, function(w) "predicates" %in% names(w), logical(1)))) {
     payload$predicate <- list(unclass(tmp[[1]]))

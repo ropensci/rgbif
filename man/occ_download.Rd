@@ -11,6 +11,7 @@ occ_download(
   type = "and",
   format = "DWCA",
   verbatim_extensions = NULL,
+  checklistKey = NULL,
   user = NULL,
   pwd = NULL,
   email = NULL,
@@ -23,6 +24,7 @@ occ_download_prep(
   type = "and",
   format = "DWCA",
   verbatim_extensions = NULL,
+  checklistKey = NULL,
   user = NULL,
   pwd = NULL,
   email = NULL,
@@ -52,6 +54,10 @@ within, not (!), like, isNotNull}
 \item{verbatim_extensions}{(character vector) A character vector of verbatim
 extensions to include in the download. This parameter is only applied when
 \code{format = "DWCA"} and will be ignored for other formats.}
+
+\item{checklistKey}{(character) The UUID key for a checklist dataset to use
+for taxonomy in the download. By default, the GBIF Backbone Taxonomy will
+be used if no checklistKey is supplied. Optional}
 
 \item{user}{(character) User name within GBIF's website. Required. See
 "Authentication" below}
@@ -91,6 +97,14 @@ also note that \code{\link[=occ_search]{occ_search()}}/\code{\link[=occ_data]{oc
 respect to WKT in that you can supply clockwise WKT to those
 functions but they treat it as an exclusion, so get all data not
 inside the WKT area.
+}
+
+\section{checklistKey}{
+
+You can specify the taxonomy to be included in occurrence downloads by
+adding the \code{checklistKey} parameter to the download request. The value
+should be a UUID for a checklist dataset in GBIF. By default, the GBIF
+Backbone Taxonomy will be used if no \code{checklistKey} is supplied.
 }
 
 \section{Methods}{
@@ -212,6 +226,13 @@ occ_download_prep(
   pred_in("country", c("GB", "IE")),
   pred_or(pred_lte("year", 1989), pred("year", 2000))
 )
+
+## using a specific checklist for taxonomy
+# occ_download_prep(
+#   pred("basisOfRecord", "PRESERVED_SPECIMEN"),
+#   pred_in("country", c("VC", "GD")),
+#   checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b"
+# )
 
 # x = occ_download(
 #   pred_in("basisOfRecord", c("MACHINE_OBSERVATION", "HUMAN_OBSERVATION")),
