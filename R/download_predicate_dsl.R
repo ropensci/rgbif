@@ -606,19 +606,17 @@ parse_predicates <- function(user, email, type, format, verbatim_extensions,
   checklistKey = NULL, ...) {
   tmp <- list(...)
   
-  # Handle case where predicates or invalid values are passed as checklistKey
+  # Handle case where predicates are passed as positional args
   if (!is.null(checklistKey)) {
-    # If it's a predicate object, move to tmp
+    # If it's a predicate object, move to tmp (was passed as positional arg)
     if (inherits(checklistKey, c("occ_predicate", "occ_predicate_list"))) {
       tmp <- c(list(checklistKey), tmp)
       checklistKey <- NULL
-    # If it's a character but not a valid UUID, move to tmp for validation
-    } else if (is.character(checklistKey) && !is_uuid(checklistKey)) {
-      tmp <- c(list(checklistKey), tmp)
-      checklistKey <- NULL
-    # Validate remaining checklistKey (should be UUID string)
+    # Validate checklistKey type and format
     } else if (!is.character(checklistKey)) {
-      stop("checklistKey must be a character string (UUID)", call. = FALSE)
+      stop("'checklistKey' must be a character string (UUID)", call. = FALSE)
+    } else if (!is_uuid(checklistKey)) {
+      stop("'checklistKey' must be a valid UUID", call. = FALSE)
     }
   }
   

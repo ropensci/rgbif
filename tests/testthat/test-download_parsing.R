@@ -85,7 +85,7 @@ test_that("occ_download input parsing", {
 test_that("parse_predicates fails well", {
   expect_error(
     parse_predicates(user, email, type, "DWCA", NULL, 'hasCoordinate = TRUE'),
-    "all inputs must be"
+    "'checklistKey' must be a valid UUID"
   )
 })
 

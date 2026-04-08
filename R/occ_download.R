@@ -255,6 +255,12 @@ occ_download_prep <- function(...,
   stopifnot(!is.null(user), !is.null(email))
   if (!is.null(checklistKey)) {
     assert(checklistKey, "character")
+    if (length(checklistKey) != 1) {
+      stop("'checklistKey' must be a single UUID string", call. = FALSE)
+    }
+    if (!is_uuid(checklistKey)) {
+      stop("'checklistKey' must be a valid UUID", call. = FALSE)
+    }
   }
   if (!is.null(body)) {
     req <- body
