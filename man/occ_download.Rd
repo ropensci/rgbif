@@ -145,7 +145,7 @@ error on GBIF's side and you'll have to split your query into a few.
 \examples{
 \dontrun{
 # occ_download(pred("basisOfRecord", "LITERATURE"))
-# occ_download(pred("taxonKey", 3119195), pred_gt("elevation", 5000))
+# occ_download(pred("taxonKey", 5231190), pred_gt("elevation", 5000))
 # occ_download(pred_gt("decimalLatitude", 50))
 # occ_download(pred_gte("elevation", 9000))
 # occ_download(pred_gte('decimalLatitude", 65))

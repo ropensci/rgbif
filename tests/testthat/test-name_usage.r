@@ -222,9 +222,9 @@ test_that("name_usage iucnRedListCategory route works", {
 test_that("name_usage fails correctly", {
   vcr::use_cassette("name_usage_fails_well", {
     ### verbatim not working right now for some unknown reason
-    expect_error(name_usage(key = 3119195, data = 'verbatim'))
+    expect_error(name_usage(key = 5231190, data = 'verbatim'))
     # Select many options, doesn't work
-    expect_error(name_usage(key = 3119195, data = c('media', 'synonyms')))
+    expect_error(name_usage(key = 5231190, data = c('media', 'synonyms')))
 
     # fails with more than 1 value
     keys <- c("73605f3a-af85-4ade-bbc5-522bfb90d847",

@@ -39,9 +39,9 @@
 #' if (interactive()) { # dont run in automated example runs, too costly
 #' # passing occ_download() requests via ...
 #' out <- occ_download_queue(
-#'   occ_download(pred('taxonKey', 3119195), pred("year", 1976)),
-#'   occ_download(pred('taxonKey', 3119195), pred("year", 2001)),
-#'   occ_download(pred('taxonKey', 3119195), pred("year", 2001),
+#'   occ_download(pred('taxonKey', 5231190), pred("year", 1976)),
+#'   occ_download(pred('taxonKey', 5231190), pred("year", 2001)),
+#'   occ_download(pred('taxonKey', 5231190), pred("year", 2001),
 #'     pred_lte("month", 8)),
 #'   occ_download(pred('taxonKey', 5229208), pred("year", 2011)),
 #'   occ_download(pred('taxonKey', 2480946), pred("year", 2015)),

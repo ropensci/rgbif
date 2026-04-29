@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/species/3119195/verbatim?offset=0&limit=100
+    uri: https://api.gbif.org/v1/species/5231190/verbatim?offset=0&limit=100
   response:
     status: 404
     headers:
@@ -9,6 +9,6 @@ http_interactions:
       content-type: application/json
     body:
       string: '{"timestamp":"2025-11-13T08:08:30.147+00:00","status":404,"error":"","message":"Entity
-        not found for uri: /species/3119195/verbatim"}'
+        not found for uri: /species/5231190/verbatim"}'
   recorded_at: 2025-11-13 08:08:30
 recorded_with: VCR-vcr/2.0.0

@@ -201,7 +201,7 @@
 #' <https://www.gbif.org/developer/occurrence#predicates>
 #' @family downloads
 #' @examples
-#' pred("taxonKey", 3119195)
+#' pred("taxonKey", 5231190)
 #' pred_gt("elevation", 5000)
 #' pred_gte("elevation", 5000)
 #' pred_lt("elevation", 1000)

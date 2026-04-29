@@ -2,9 +2,9 @@ library(rgbif)
 library(lazyeval)
 
 reqs <- gbif_queue(
-  occ_download('taxonKey = 3119195', "year = 1976"),
-  occ_download('taxonKey = 3119195', "year = 2001"),
-  occ_download('taxonKey = 3119195', "year = 2001", "month <= 8"),
+  occ_download('taxonKey = 5231190', "year = 1976"),
+  occ_download('taxonKey = 5231190', "year = 2001"),
+  occ_download('taxonKey = 5231190', "year = 2001", "month <= 8"),
   occ_download('taxonKey = 5229208', "year = 2011"),
   occ_download('taxonKey = 2480946', "year = 2015"),
   occ_download("country = NZ", "year = 1999", "month = 3"),

@@ -126,21 +126,21 @@ name_usage()
 name_usage(key=2435099, data='references')
 
 # Species profiles, descriptions
-name_usage(key=3119195, data='speciesProfiles')
-name_usage(key=3119195, data='descriptions')
+name_usage(key=5231190, data='speciesProfiles')
+name_usage(key=5231190, data='descriptions')
 name_usage(key=2435099, data='children')
 
 # Vernacular names for a name usage
-name_usage(key=3119195, data='vernacularNames')
+name_usage(key=5231190, data='vernacularNames')
 
 # Limit number of results returned
-name_usage(key=3119195, data='vernacularNames', limit=3)
+name_usage(key=5231190, data='vernacularNames', limit=3)
 
 # Search for names by dataset with datasetKey parameter
 name_usage(datasetKey="d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
 
 # Search for a particular language
-name_usage(key=3119195, language="FRENCH", data='vernacularNames')
+name_usage(key=5231190, language="FRENCH", data='vernacularNames')
 
 # get root usage with a uuid
 name_usage(data = "root", uuid = "73605f3a-af85-4ade-bbc5-522bfb90d847")
