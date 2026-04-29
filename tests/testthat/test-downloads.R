@@ -16,9 +16,9 @@ test_that("GbifQueue works with occ_download inputs", {
   skip_on_cran()
 
   x <- GbifQueue$new(
-    occ_download(pred('taxonKey', 3119195), pred("year", 1976)),
-    occ_download(pred('taxonKey', 3119195), pred("year", 2001)),
-    occ_download(pred('taxonKey', 3119195), pred("year", 2001),
+    occ_download(pred('taxonKey', 5231190), pred("year", 1976)),
+    occ_download(pred('taxonKey', 5231190), pred("year", 2001)),
+    occ_download(pred('taxonKey', 5231190), pred("year", 2001),
       pred_lte("month", 8))
   )
   
