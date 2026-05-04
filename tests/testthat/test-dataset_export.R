@@ -101,4 +101,10 @@ test_that("dataset_export works as expected", {
   expect_equal(names(ii)[1], "datasetKey")
   expect_is(ii,"tbl_df")
   
+  cat_r <- dataset_export(category = "eDNA")
+  expect_equal(ncol(cat_r), 17)
+  expect_lt(nrow(cat_r), total_ds)
+  expect_equal(names(cat_r)[1], "datasetKey")
+  expect_is(cat_r,"tbl_df")
+  
 })

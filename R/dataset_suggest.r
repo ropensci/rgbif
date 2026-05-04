@@ -14,6 +14,7 @@ dataset_suggest <- function(query = NULL,
                             hostingCountry = NULL,
                             networkKey = NULL,
                             doi = NULL, 
+                            category = NULL,
                             limit = 100,
                             start = NULL,
                             description = FALSE,
@@ -32,8 +33,7 @@ dataset_suggest <- function(query = NULL,
   assert(hostingCountry,"character")
   assert(networkKey,"character")
   assert(doi,"character")
-
-  # args with single value 
+  assert(category,"character") 
   args <- as.list(
     rgbif_compact(c(q=query,
                     limit=limit,
@@ -54,7 +54,8 @@ dataset_suggest <- function(query = NULL,
     convmany(projectId),
     convmany(hostingCountry),
     convmany(networkKey),
-    convmany(doi)
+    convmany(doi),
+    convmany(category)
   ))
   
   url <- paste0(gbif_base(), '/dataset/suggest')

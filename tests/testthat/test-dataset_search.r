@@ -306,6 +306,18 @@ test_that("dataset_search works as expected", {
 
 })
 
+test_that("dataset_search category works as expected", {
+  vcr::use_cassette("dataset_search_category", {
+    cat_r <- dataset_search(category = "eDNA", limit = 5)
+    
+    expect_is(cat_r, "list")
+    expect_named(cat_r, c('meta', 'data', 'facets'))
+    expect_is(cat_r$data, "tbl_df")
+    expect_is(cat_r$data$title, "character")
+    expect_lte(nrow(cat_r$data), 5)
+  }, preserve_exact_body_bytes = TRUE)
+})
+
 test_that("dataset_search facets work as expected", {
   vcr::use_cassette("dataset_search_facet", {
   

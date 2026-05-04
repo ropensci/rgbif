@@ -1,0 +1,23 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/dataset/search?limit=5&category=eDNA
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      raw_gzip: |-
+        eJzNlE1P3DAQhv9K5POaJM6Xs7d2WVpEu0i77Qlx8Mc4azUbo9gBbRH/veMFhCiLuPTQSxTN2ON3
+        3nnse+KM8RDIPJuR3u4s/lUzAoO+NGtQbtSezI3oPcyIctOAaVbWMzKCn/qAuat78gv2ZE4yljFe
+        q4KWUuIHCk5b2bS0VDmHTFVGQUlmJNjQAy6H09UnKoUHnezcYIMb7dAlziTG+m2i7S2M3oZ9Yock
+        bCFZb+0AuF07i5vz7CSvypqnQqqcFbHs/iZWvVwsfq7Xy9ViibGt8wGLXo6dGOxvEawbLg5SZd22
+        PGtrqniZRamatoIVtFalrIxuay3E8f0/ntR/+Xx+lmxAjRDEaEV4Wb2IJo3xlNMLjN5MsseGXieW
+        rxJv9ekKstKUjDbANfqZA1qJzjayUlzmhqHid0s8S/wGVmIsOR9QV5gCRHPPcG7bOxFgTJbK9a7b
+        k8OwHZo9dCun4VEBGN5AawAVCI4KCkVFxlsqhGGamVYXUJEIjILBx9O2IdzM0xQNQRG3CM4Op+pP
+        3NilT4t8KvdpeZKlPXSiV3gUiRhFxBaPYFVlwZAyVNe5aNTVARJy/TB7ZiwvdKVawygXucTBVYLK
+        Bo1hptQc9eaSqb8YS/w03sL+QNZL8wfIaLK5Aw1DguRmb9nSYMqq/j/Z2izfYWvzEVsielTokkJl
+        atrwNqN4iTQFk+FNwoYx9CFb0bfo4PfJw7SL3q5EmEbRJ1+tD3F4R6mSTaO5YBJpZvGdqNEbDNBC
+        4QBxmDUO859ThU3lR6m6nhEjFBweseuHP7vtojo=
+  recorded_at: 2025-11-13 09:00:00

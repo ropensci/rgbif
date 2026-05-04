@@ -36,6 +36,8 @@
 #' Available values : EML, FEED, WFS, WMS, TCS_RDF, TCS_XML, DWC_ARCHIVE, DIGIR, 
 #' DIGIR_MANIS, TAPIR, BIOCASE, BIOCASE_XML_ARCHIVE, OAI_PMH, COLDP, 
 #' CAMTRAP_DP, BIOM_1_0, BIOM_2_1, ACEF, TEXT_TREE, OTHER
+#' @param category Filters datasets by their dataset category tag. For example 
+#' "eDNA", "CitizenScience", "Tracking".
 #' @param facet A facet name used to retrieve the most frequent values for a field.
 #' @param facetLimit Facet parameters allow paging requests using the parameters 
 #' facetOffset and facetLimit.
@@ -98,6 +100,7 @@
 #' dataset_search(hostingCountry = "NO;SE")
 #' dataset_search(doi="10.15468/aomfnb;10.15468/igasai")
 #' dataset_search(installationKey = "d209e552-7e6e-4840-b13c-c0596ef36e55")
+#' dataset_search(category = "eDNA")
 #' 
 #' # multiple filters
 #' dataset_search(license = "CC0_1_0",subtype = "TAXONOMIC_AUTHORITY")
@@ -129,6 +132,7 @@ dataset_search <- function(query = NULL,
                            doi = NULL,
                            installationKey = NULL,
                            endpointType = NULL,
+                           category = NULL,
                            facet = NULL,
                            facetLimit = NULL, 
                            facetOffset = NULL, 
@@ -153,6 +157,7 @@ dataset_search <- function(query = NULL,
   assert(doi,"character")
   assert(installationKey,"character")
   assert(endpointType,"character")
+  assert(category,"character")
   assert(facet,"character")
   
   # args with single value 
@@ -183,6 +188,7 @@ dataset_search <- function(query = NULL,
     convmany(doi),
     convmany(installationKey),
     convmany(endpointType),
+    convmany(category),
     convmany(facet)
   ))
   
