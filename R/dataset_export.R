@@ -13,7 +13,8 @@ dataset_export <- function(query = NULL,
                            projectId = NULL,
                            hostingCountry = NULL,
                            networkKey = NULL,
-                           doi = NULL
+                           doi = NULL,
+                           category = NULL
                            ) {
   
   assert(query,"character")
@@ -29,6 +30,7 @@ dataset_export <- function(query = NULL,
   assert(hostingCountry,"character")
   assert(networkKey,"character")
   assert(doi,"character")
+  assert(category,"character")
   
   # args with single value 
   args <- rgbif_compact(list(
@@ -50,7 +52,8 @@ dataset_export <- function(query = NULL,
                 convmany(projectId),
                 convmany(hostingCountry),
                 convmany(networkKey),
-                convmany(doi)
+                convmany(doi),
+                convmany(category)
                 ))
   
   url_query <- paste0(names(args),"=",args,collapse="&")
