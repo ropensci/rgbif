@@ -212,6 +212,17 @@ test_that("dataset_suggest works as expected", {
   
 })
 
+test_that("dataset_suggest category works as expected", {
+  vcr::use_cassette("dataset_suggest_category", {
+    cat_r <- dataset_suggest(category = "eDNA", limit = 5)
+    
+    expect_is(cat_r, "tbl_df")
+    expect_named(cat_r, c('key', 'type', 'title'))
+    expect_is(cat_r$title, "character")
+    expect_lte(nrow(cat_r), 5)
+  }, preserve_exact_body_bytes = TRUE)
+})
+
 test_that("Return just descriptions", {
   vcr::use_cassette("dataset_suggest_description", {
     tt <- dataset_suggest(type="OCCURRENCE", description=TRUE)

@@ -1,0 +1,16 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/dataset/suggest?limit=5&category=eDNA
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      raw_gzip: |-
+        eJxtzzELwjAQBeC/cmQ20Katpm5SXRUqTuLQJBcb1FSS2FLE/25UXMTlpvd43+3v5IQjmZOEJYxP
+        ZUZzIeLBjNNSzEqay5RjIgstMScTEkw4Y4zjcr2govGo4NJZEzpn7BE6Ddr4FpTp0XkTRjAWQotQ
+        t8biqz5eX+1NVe3qerWuVuQx+QrSTBWy1IzyJhVRUDRUzCKI6VxxLHUqmPwRgL+5Hsf3rkPfDk1A
+        9yFQ2A6o0EL8K/m/fHgCDS9NVg==
+  recorded_at: 2025-11-13 09:00:00
