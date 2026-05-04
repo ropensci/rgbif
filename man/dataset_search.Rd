@@ -21,7 +21,8 @@ dataset_export(
   projectId = NULL,
   hostingCountry = NULL,
   networkKey = NULL,
-  doi = NULL
+  doi = NULL,
+  category = NULL
 )
 
 dataset_search(
@@ -41,6 +42,7 @@ dataset_search(
   doi = NULL,
   installationKey = NULL,
   endpointType = NULL,
+  category = NULL,
   facet = NULL,
   facetLimit = NULL,
   facetOffset = NULL,
@@ -67,6 +69,7 @@ dataset_suggest(
   hostingCountry = NULL,
   networkKey = NULL,
   doi = NULL,
+  category = NULL,
   limit = 100,
   start = NULL,
   description = FALSE,
@@ -117,6 +120,9 @@ country given as a ISO 639-1 (2 letter) country code.}
 \item{networkKey}{Filters network UUID associated to a dataset.}
 
 \item{doi}{DOI of the dataset.}
+
+\item{category}{Filters datasets by their dataset category tag. For example
+"eDNA", "CITIZEN_SCIENCE", "TAXONOMIC_BACKBONE".}
 
 \item{installationKey}{Filters datasets by their installation UUID key.}
 
@@ -195,6 +201,7 @@ dataset_search(projectId = "GRIIS;BID-AF2020-140-REG")
 dataset_search(hostingCountry = "NO;SE")
 dataset_search(doi="10.15468/aomfnb;10.15468/igasai")
 dataset_search(installationKey = "d209e552-7e6e-4840-b13c-c0596ef36e55")
+dataset_search(category = "eDNA")
 
 # multiple filters
 dataset_search(license = "CC0_1_0",subtype = "TAXONOMIC_AUTHORITY")

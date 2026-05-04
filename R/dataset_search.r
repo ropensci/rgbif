@@ -37,7 +37,7 @@
 #' DIGIR_MANIS, TAPIR, BIOCASE, BIOCASE_XML_ARCHIVE, OAI_PMH, COLDP, 
 #' CAMTRAP_DP, BIOM_1_0, BIOM_2_1, ACEF, TEXT_TREE, OTHER
 #' @param category Filters datasets by their dataset category tag. For example 
-#' "eDNA", "CITIZEN_SCIENCE", "TAXONOMIC_BACKBONE".
+#' "eDNA", "CitizenScience", "Tracking".
 #' @param facet A facet name used to retrieve the most frequent values for a field.
 #' @param facetLimit Facet parameters allow paging requests using the parameters 
 #' facetOffset and facetLimit.
