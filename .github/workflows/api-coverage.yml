@@ -154,34 +154,31 @@ jobs:
           # Prepare issue body
           REPORT_CONTENT=$(cat .github/coverage-reports/coverage-report.md)
           
-          cat > /tmp/issue-body.md << 'ISSUE_EOF'
-# API Coverage Report
-
-This issue contains the latest GBIF API coverage report with interactive checkboxes.
-
-## How to Use This Report
-
-1. **Review** the missing endpoints and parameters below
-2. **Check the boxes** for items you want to process:
-   - [ ] **Ignore** - Add to ignored list (will not be implemented)
-   - [ ] **Issue** - Create a GitHub issue to track implementation
-3. **Run the workflow**: Go to Actions > API Coverage Management > Run workflow
-   - Select action: `process-actions`
-   - The workflow will read this issue and take the checked actions
-4. **Review results**: The workflow will create issues and update the ignored lists
-
----
-
-ISSUE_EOF
-          
-          echo "$REPORT_CONTENT" >> /tmp/issue-body.md
-          
-          cat >> /tmp/issue-body.md << 'ISSUE_EOF'
-
----
-
-**Note:** This issue is automatically updated when the coverage check runs. To process checked boxes, run the `process-actions` workflow.
-ISSUE_EOF
+          # Build issue body using echo to avoid YAML parsing issues
+          {
+            echo "# API Coverage Report"
+            echo ""
+            echo "This issue contains the latest GBIF API coverage report with interactive checkboxes."
+            echo ""
+            echo "## How to Use This Report"
+            echo ""
+            echo "1. **Review** the missing endpoints and parameters below"
+            echo "2. **Check the boxes** for items you want to process:"
+            echo "   - [ ] **Ignore** - Add to ignored list (will not be implemented)"
+            echo "   - [ ] **Issue** - Create a GitHub issue to track implementation"
+            echo "3. **Run the workflow** - Go to Actions > API Coverage Management > Run workflow"
+            echo "   - Select action - process-actions"
+            echo "   - The workflow will read this issue and take the checked actions"
+            echo "4. **Review results** - The workflow will create issues and update the ignored lists"
+            echo ""
+            echo "---"
+            echo ""
+            echo "$REPORT_CONTENT"
+            echo ""
+            echo "---"
+            echo ""
+            echo "**Note:** This issue is automatically updated when the coverage check runs. To process checked boxes, run the process-actions workflow."
+          } > /tmp/issue-body.md
           
           if [ -n "$ISSUE_NUMBER" ] && [ "$ISSUE_NUMBER" != "null" ]; then
             # Update existing issue
@@ -298,54 +295,56 @@ ISSUE_EOF
               ENDPOINT=$(cat "$ACTIONS_FILE" | jq -r ".issues[$i].endpoint")
               API=$(cat "$ACTIONS_FILE" | jq -r ".issues[$i].api")
               
-              BODY="## Missing Endpoint
-              
-**Endpoint:** \`$ENDPOINT\`
-**API:** \`$API\`
-
-This endpoint was identified as missing in the API coverage report.
-
-### Implementation Steps
-1. Review the GBIF API documentation for this endpoint
-2. Create corresponding R function in rgbif
-3. Add tests for the new function
-4. Update api-mapping.json with the new mapping
-5. Update documentation
-
-### Resources
-- [GBIF API Docs](https://techdocs.gbif.org/)
-- [Coverage Report](.github/coverage-reports/coverage-report.md)
-
----
-*This issue was automatically created by the API Coverage workflow*"
+              printf -v BODY '%s\n' \
+                "## Missing Endpoint" \
+                "" \
+                "**Endpoint:** \`$ENDPOINT\`" \
+                "**API:** \`$API\`" \
+                "" \
+                "This endpoint was identified as missing in the API coverage report." \
+                "" \
+                "### Implementation Steps" \
+                "1. Review the GBIF API documentation for this endpoint" \
+                "2. Create corresponding R function in rgbif" \
+                "3. Add tests for the new function" \
+                "4. Update api-mapping.json with the new mapping" \
+                "5. Update documentation" \
+                "" \
+                "### Resources" \
+                "- [GBIF API Docs](https://techdocs.gbif.org/)" \
+                "- [Coverage Report](.github/coverage-reports/coverage-report.md)" \
+                "" \
+                "---" \
+                "*This issue was automatically created by the API Coverage workflow*"
             else
               FUNCTION=$(cat "$ACTIONS_FILE" | jq -r ".issues[$i].function_name")
               PARAMETER=$(cat "$ACTIONS_FILE" | jq -r ".issues[$i].parameter")
               ENDPOINT=$(cat "$ACTIONS_FILE" | jq -r ".issues[$i].endpoint")
               
-              BODY="## Missing Parameter
-
-**Function:** \`$FUNCTION\`
-**Parameter:** \`$PARAMETER\`
-**Endpoint:** \`$ENDPOINT\`
-
-This parameter was identified as missing in the API coverage report.
-
-### Implementation Steps
-1. Review the GBIF API documentation for this parameter
-2. Add parameter to the R function signature
-3. Update internal API call to include the parameter
-4. Add parameter documentation to roxygen comments
-5. Update api-mapping.json with the parameter
-6. Add tests for the new parameter
-
-### Resources
-- [GBIF API Docs](https://techdocs.gbif.org/)
-- [Coverage Report](.github/coverage-reports/coverage-report.md)
-- [Function Documentation](https://docs.ropensci.org/rgbif/reference/)
-
----
-*This issue was automatically created by the API Coverage workflow*"
+              printf -v BODY '%s\n' \
+                "## Missing Parameter" \
+                "" \
+                "**Function:** \`$FUNCTION\`" \
+                "**Parameter:** \`$PARAMETER\`" \
+                "**Endpoint:** \`$ENDPOINT\`" \
+                "" \
+                "This parameter was identified as missing in the API coverage report." \
+                "" \
+                "### Implementation Steps" \
+                "1. Review the GBIF API documentation for this parameter" \
+                "2. Add parameter to the R function signature" \
+                "3. Update internal API call to include the parameter" \
+                "4. Add parameter documentation to roxygen comments" \
+                "5. Update api-mapping.json with the parameter" \
+                "6. Add tests for the new parameter" \
+                "" \
+                "### Resources" \
+                "- [GBIF API Docs](https://techdocs.gbif.org/)" \
+                "- [Coverage Report](.github/coverage-reports/coverage-report.md)" \
+                "- [Function Documentation](https://docs.ropensci.org/rgbif/reference/)" \
+                "" \
+                "---" \
+                "*This issue was automatically created by the API Coverage workflow*"
             fi
             
             # Check if issue already exists
@@ -396,13 +395,13 @@ This parameter was identified as missing in the API coverage report.
               git add .github/coverage-reports/actions-to-take.json
             fi
             
-            git commit -m "chore: process API coverage actions
-
-- Updated ignored_parameters and ignored_endpoints in api-mapping.json
-- Reset checkboxes in coverage-report.md
-- Created GitHub issues for marked parameters/endpoints
-
-[skip ci]"
+            git commit -m "chore: process API coverage actions" \
+              -m "" \
+              -m "- Updated ignored_parameters and ignored_endpoints in api-mapping.json" \
+              -m "- Reset checkboxes in coverage-report.md" \
+              -m "- Created GitHub issues for marked parameters/endpoints" \
+              -m "" \
+              -m "[skip ci]"
             
             git push
             
