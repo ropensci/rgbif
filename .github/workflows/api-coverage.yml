@@ -163,8 +163,8 @@ This issue contains the latest GBIF API coverage report with interactive checkbo
 
 1. **Review** the missing endpoints and parameters below
 2. **Check the boxes** for items you want to process:
-   - [x] **Ignore** - Add to ignored list (will not be implemented)
-   - [x] **Issue** - Create a GitHub issue to track implementation
+   - [ ] **Ignore** - Add to ignored list (will not be implemented)
+   - [ ] **Issue** - Create a GitHub issue to track implementation
 3. **Run the workflow**: Go to Actions > API Coverage Management > Run workflow
    - Select action: `process-actions`
    - The workflow will read this issue and take the checked actions
