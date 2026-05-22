@@ -30,8 +30,8 @@ fetch_issue_body <- function(issue_number, repo) {
     return(NULL)
   }
   
-  # Use gh CLI to fetch issue
-  cmd <- sprintf('gh issue view %s --repo %s --json body --jq .body', issue_number, repo)
+  # Use gh CLI API to fetch issue (more reliable than issue view)
+  cmd <- sprintf('gh api repos/%s/issues/%s --jq .body', repo, issue_number)
   body <- tryCatch({
     system(cmd, intern = TRUE)
   }, error = function(e) {

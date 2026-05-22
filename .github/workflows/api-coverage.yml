@@ -155,11 +155,17 @@ jobs:
           echo "Checking for existing coverage report issue..."
           
           # Check if coverage report issue already exists
-          ISSUE_NUMBER=$(gh issue list \
+          ISSUE_URL=$(gh issue list \
             --label "api-coverage-report" \
             --state open \
-            --json number \
-            --jq '.[0].number' || echo "")
+            --limit 1 \
+            2>/dev/null | head -n 1 | awk '{print $1}' || echo "")
+          
+          if [ -n "$ISSUE_URL" ]; then
+            ISSUE_NUMBER="${ISSUE_URL##*/}"
+          else
+            ISSUE_NUMBER=""
+          fi
           
           echo "Existing issue number: $ISSUE_NUMBER"
           
@@ -213,16 +219,16 @@ jobs:
           else
             # Create new issue
             echo "Creating new coverage report issue..."
-            if ISSUE_NUMBER=$(gh issue create \
+            ISSUE_URL=$(gh issue create \
               --title "API Coverage Report - $(date +%Y-%m-%d)" \
               --body-file /tmp/issue-body.md \
               --label "api-coverage-report" \
-              --label "documentation" \
-              --json number \
-              --jq '.number'); then
-              
+              --label "documentation")
+            
+            if [ -n "$ISSUE_URL" ]; then
+              ISSUE_NUMBER="${ISSUE_URL##*/}"
               echo "[OK] Created coverage report issue #$ISSUE_NUMBER" >> $GITHUB_STEP_SUMMARY
-              echo "View issue: https://github.com/${{ github.repository }}/issues/$ISSUE_NUMBER" >> $GITHUB_STEP_SUMMARY
+              echo "View issue: $ISSUE_URL" >> $GITHUB_STEP_SUMMARY
               echo "issue_number=$ISSUE_NUMBER" >> $GITHUB_OUTPUT
             else
               echo "[ERROR] Failed to create issue" >> $GITHUB_STEP_SUMMARY
@@ -389,19 +395,27 @@ jobs:
             fi
             
             # Check if issue already exists
-            EXISTING=$(gh issue list --label "$LABELS" --search "$TITLE" --json number --jq '.[0].number')
+            EXISTING_URL=$(gh issue list --label "$LABELS" --search "$TITLE" --limit 1 2>/dev/null | head -n 1 | awk '{print $1}' || echo "")
             
-            if [ -n "$EXISTING" ] && [ "$EXISTING" != "null" ]; then
+            if [ -n "$EXISTING_URL" ]; then
+              EXISTING="${EXISTING_URL##*/}"
+            else
+              EXISTING=""
+            fi
+            
+            if [ -n "$EXISTING" ]; then
               echo "[SKIP] Issue already exists: #$EXISTING - $TITLE"
             else
               # Create the issue
-              ISSUE_NUMBER=$(gh issue create \
+              ISSUE_URL=$(gh issue create \
                 --title "$TITLE" \
                 --body "$BODY" \
-                --label "$LABELS" \
-                --json number --jq '.number')
+                --label "$LABELS")
               
-              echo "[OK] Created issue #$ISSUE_NUMBER: $TITLE"
+              if [ -n "$ISSUE_URL" ]; then
+                ISSUE_NUMBER="${ISSUE_URL##*/}"
+                echo "[OK] Created issue #$ISSUE_NUMBER: $TITLE"
+              fi
               echo "- Created issue #$ISSUE_NUMBER: $TITLE" >> $GITHUB_STEP_SUMMARY
             fi
           done
