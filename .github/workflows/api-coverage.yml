@@ -150,19 +150,26 @@ jobs:
       - name: Create or update coverage report issue
         if: always()
         run: |
+          set -e  # Exit on error
+          
+          echo "Checking for existing coverage report issue..."
+          
           # Check if coverage report issue already exists
           ISSUE_NUMBER=$(gh issue list \
             --label "api-coverage-report" \
             --state open \
             --json number \
-            --jq '.[0].number')
+            --jq '.[0].number' || echo "")
+          
+          echo "Existing issue number: $ISSUE_NUMBER"
           
           # Read the coverage report
           if [ ! -f .github/coverage-reports/coverage-report.md ]; then
-            echo "Coverage report not found"
+            echo "ERROR: Coverage report not found"
             exit 1
           fi
           
+          echo "Reading coverage report..."
           # Prepare issue body
           REPORT_CONTENT=$(cat .github/coverage-reports/coverage-report.md)
           
@@ -192,25 +199,36 @@ jobs:
             echo "**Note:** This issue is automatically updated when the coverage check runs. To process checked boxes, run the process-actions workflow."
           } > /tmp/issue-body.md
           
-          if [ -n "$ISSUE_NUMBER" ] && [ "$ISSUE_NUMBER" != "null" ]; then
+          if [ -n "$ISSUE_NUMBER" ] && [ "$ISSUE_NUMBER" != "null" ] && [ "$ISSUE_NUMBER" != "" ]; then
             # Update existing issue
-            gh issue edit "$ISSUE_NUMBER" --body-file /tmp/issue-body.md
-            echo "[OK] Updated coverage report issue #$ISSUE_NUMBER" >> $GITHUB_STEP_SUMMARY
-            echo "View issue: https://github.com/${{ github.repository }}/issues/$ISSUE_NUMBER" >> $GITHUB_STEP_SUMMARY
+            echo "Updating existing issue #$ISSUE_NUMBER..."
+            if gh issue edit "$ISSUE_NUMBER" --body-file /tmp/issue-body.md; then
+              echo "[OK] Updated coverage report issue #$ISSUE_NUMBER" >> $GITHUB_STEP_SUMMARY
+              echo "View issue: https://github.com/${{ github.repository }}/issues/$ISSUE_NUMBER" >> $GITHUB_STEP_SUMMARY
+              echo "issue_number=$ISSUE_NUMBER" >> $GITHUB_OUTPUT
+            else
+              echo "[ERROR] Failed to update issue #$ISSUE_NUMBER" >> $GITHUB_STEP_SUMMARY
+              exit 1
+            fi
           else
             # Create new issue
-            ISSUE_NUMBER=$(gh issue create \
+            echo "Creating new coverage report issue..."
+            if ISSUE_NUMBER=$(gh issue create \
               --title "API Coverage Report - $(date +%Y-%m-%d)" \
               --body-file /tmp/issue-body.md \
-              --label "api-coverage-report,documentation" \
+              --label "api-coverage-report" \
+              --label "documentation" \
               --json number \
-              --jq '.number')
-            
-            echo "[OK] Created coverage report issue #$ISSUE_NUMBER" >> $GITHUB_STEP_SUMMARY
-            echo "View issue: https://github.com/${{ github.repository }}/issues/$ISSUE_NUMBER" >> $GITHUB_STEP_SUMMARY
+              --jq '.number'); then
+              
+              echo "[OK] Created coverage report issue #$ISSUE_NUMBER" >> $GITHUB_STEP_SUMMARY
+              echo "View issue: https://github.com/${{ github.repository }}/issues/$ISSUE_NUMBER" >> $GITHUB_STEP_SUMMARY
+              echo "issue_number=$ISSUE_NUMBER" >> $GITHUB_OUTPUT
+            else
+              echo "[ERROR] Failed to create issue" >> $GITHUB_STEP_SUMMARY
+              exit 1
+            fi
           fi
-          
-          echo "issue_number=$ISSUE_NUMBER" >> $GITHUB_OUTPUT
           
           # Clean up temp file
           rm -f /tmp/issue-body.md
