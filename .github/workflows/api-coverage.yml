@@ -147,6 +147,19 @@ jobs:
             echo "[OK] Committed updated coverage report" >> $GITHUB_STEP_SUMMARY
           fi
           
+      - name: Ensure labels exist
+        if: always()
+        run: |
+          # Create labels if they don't exist
+          gh label create "api-coverage-report" --description "Automated API coverage report" --color "0E8A16" --force || true
+          gh label create "documentation" --description "Documentation related" --color "0075CA" --force || true
+          gh label create "api-coverage" --description "API coverage related" --color "1D76DB" --force || true
+          gh label create "enhancement" --description "New feature or request" --color "A2EEEF" --force || true
+          gh label create "endpoint" --description "Missing API endpoint" --color "D93F0B" --force || true
+          gh label create "parameter" --description "Missing parameter" --color "FBCA04" --force || true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
       - name: Create or update coverage report issue
         if: always()
         run: |
@@ -274,17 +287,35 @@ jobs:
           install.packages("jsonlite", repos = "https://cloud.r-project.org")
         shell: Rscript {0}
         
+      - name: Ensure labels exist
+        run: |
+          # Create labels if they don't exist (needed for issue creation)
+          gh label create "api-coverage-report" --description "Automated API coverage report" --color "0E8A16" --force || true
+          gh label create "documentation" --description "Documentation related" --color "0075CA" --force || true
+          gh label create "api-coverage" --description "API coverage related" --color "1D76DB" --force || true
+          gh label create "enhancement" --description "New feature or request" --color "A2EEEF" --force || true
+          gh label create "endpoint" --description "Missing API endpoint" --color "D93F0B" --force || true
+          gh label create "parameter" --description "Missing parameter" --color "FBCA04" --force || true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
       - name: Find coverage report issue
         id: find_issue
         run: |
           # Find the open coverage report issue
-          ISSUE_NUMBER=$(gh issue list \
+          ISSUE_URL=$(gh issue list \
             --label "api-coverage-report" \
             --state open \
-            --json number \
-            --jq '.[0].number')
+            --limit 1 \
+            2>/dev/null | head -n 1 | awk '{print $1}' || echo "")
           
-          if [ -z "$ISSUE_NUMBER" ] || [ "$ISSUE_NUMBER" = "null" ]; then
+          if [ -n "$ISSUE_URL" ]; then
+            ISSUE_NUMBER="${ISSUE_URL##*/}"
+          else
+            ISSUE_NUMBER=""
+          fi
+          
+          if [ -z "$ISSUE_NUMBER" ]; then
             echo "[ERROR] No open coverage report issue found" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             echo "Please run the 'check-coverage' action first to generate a coverage report issue." >> $GITHUB_STEP_SUMMARY
