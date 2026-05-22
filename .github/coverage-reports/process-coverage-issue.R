@@ -93,22 +93,28 @@ parse_issue_checkboxes <- function(issue_body) {
           }
         }
         
-        # Look ahead for Actions line with checkboxes
-        for (j in (i+1):min(i+5, length(lines))) {
-          if (grepl("^- \\*\\*Actions:\\*\\*", lines[j])) {
-            ignore_checked <- grepl("\\[x\\].*Ignore|\\[X\\].*Ignore", lines[j])
-            issue_checked <- grepl("\\[x\\].*Issue|\\[X\\].*Issue", lines[j])
-            
-            if (ignore_checked || issue_checked) {
-              endpoints[[length(endpoints) + 1]] <- list(
-                endpoint = current_endpoint,
-                api = current_api,
-                ignore = ignore_checked,
-                issue = issue_checked
-              )
-            }
-            break
+        # Look ahead for checkbox lines (new format: separate lines)
+        ignore_checked <- FALSE
+        issue_checked <- FALSE
+        for (j in (i+1):min(i+10, length(lines))) {
+          check_line <- lines[j]
+          if (grepl("- \\[x\\] Ignore|\\[X\\] Ignore", check_line, ignore.case = TRUE)) {
+            ignore_checked <- TRUE
           }
+          if (grepl("- \\[x\\] Issue|\\[X\\] Issue", check_line, ignore.case = TRUE)) {
+            issue_checked <- TRUE
+          }
+          # Stop at next section
+          if (grepl("^###", check_line)) break
+        }
+        
+        if (ignore_checked || issue_checked) {
+          endpoints[[length(endpoints) + 1]] <- list(
+            endpoint = current_endpoint,
+            api = current_api,
+            ignore = ignore_checked,
+            issue = issue_checked
+          )
         }
       }
     }
@@ -123,12 +129,26 @@ parse_issue_checkboxes <- function(issue_body) {
     }
     
     # Parse parameter lines with checkboxes
-    if (current_section == "parameters" && !is.null(current_function) && grepl("^  - `[^`]+`", line)) {
-      param_match <- regmatches(line, regexec("^  - `([^`]+)`", line))[[1]]
+    if (current_section == "parameters" && !is.null(current_function) && grepl("^  - \\*\\*`[^`]+`\\*\\*", line)) {
+      param_match <- regmatches(line, regexec("^  - \\*\\*`([^`]+)`\\*\\*", line))[[1]]
       if (length(param_match) > 1) {
         param_name <- param_match[2]
-        ignore_checked <- grepl("\\[x\\].*Ignore|\\[X\\].*Ignore", line)
-        issue_checked <- grepl("\\[x\\].*Issue|\\[X\\].*Issue", line)
+        
+        # Look ahead for checkbox lines (nested under parameter)
+        ignore_checked <- FALSE
+        issue_checked <- FALSE
+        for (j in (i+1):min(i+5, length(lines))) {
+          check_line <- lines[j]
+          # Check for nested checkboxes (4-space indent)
+          if (grepl("^    - \\[x\\] Ignore|^    - \\[X\\] Ignore", check_line, ignore.case = TRUE)) {
+            ignore_checked <- TRUE
+          }
+          if (grepl("^    - \\[x\\] Issue|^    - \\[X\\] Issue", check_line, ignore.case = TRUE)) {
+            issue_checked <- TRUE
+          }
+          # Stop at next parameter or section
+          if (grepl("^  - \\*\\*`|^###", check_line)) break
+        }
         
         if (ignore_checked || issue_checked) {
           parameters[[length(parameters) + 1]] <- list(

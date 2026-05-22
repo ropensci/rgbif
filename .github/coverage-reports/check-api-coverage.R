@@ -364,8 +364,6 @@ generate_reports <- function(results, all_endpoints) {
       "## Missing Endpoints",
       "",
       "> **Actions:** Check boxes below and run the `Process Coverage Actions` workflow to automatically update api-mapping.json and create GitHub issues.",
-      "> - `[x] Ignore` - Add endpoint to ignored_endpoints in api-mapping.json",
-      "> - `[x] Issue` - Create a GitHub issue to implement this endpoint",
       ""
     )
     for (endpoint_key in names(results$missing_endpoints)) {
@@ -375,7 +373,9 @@ generate_reports <- function(results, all_endpoints) {
         paste("- **API:**", endpoint$api),
         paste("- **Summary:**", endpoint$summary),
         paste("- **Operation ID:**", endpoint$operationId),
-        paste0("- **Actions:** [ ] Ignore [ ] Issue"),
+        "- **Actions:**",
+        "  - [ ] Ignore - Add endpoint to ignored_endpoints",
+        "  - [ ] Issue - Create a GitHub issue to implement this endpoint",
         ""
       )
     }
@@ -386,20 +386,20 @@ generate_reports <- function(results, all_endpoints) {
       "## Functions with Missing Parameters",
       "",
       "> **Actions:** Check boxes below and run the `Process Coverage Actions` workflow to automatically update api-mapping.json and create GitHub issues.",
-      "> - `[x] Ignore` - Add parameter to ignored_parameters for this function in api-mapping.json",
-      "> - `[x] Issue` - Create a GitHub issue to implement this parameter",
       ""
     )
     for (endpoint_key in names(results$missing_parameters)) {
       info <- results$missing_parameters[[endpoint_key]]
       md_content <- c(md_content,
         paste("###", info$function_name, "-", endpoint_key),
-        paste("- **Missing parameters:**")
+        "- **Missing parameters:**"
       )
-      # Add each parameter on its own line with checkboxes
+      # Add each parameter with separate checkboxes
       for (param in info$missing_parameters) {
         md_content <- c(md_content,
-          paste0("  - `", param, "` [ ] Ignore [ ] Issue")
+          paste0("  - **`", param, "`**"),
+          "    - [ ] Ignore - Add to ignored_parameters",
+          "    - [ ] Issue - Create issue to implement this parameter"
         )
       }
       md_content <- c(md_content, "")
