@@ -23,6 +23,7 @@ on:
     branches:
       - master
       - main
+      - feature/autocheck-missing-endpoints
     paths:
       - '.github/coverage-reports/api-mapping.json'
       - '.github/coverage-reports/check-api-coverage.R'
