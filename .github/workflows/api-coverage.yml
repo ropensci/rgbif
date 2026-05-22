@@ -110,11 +110,11 @@ jobs:
             echo "Current coverage: ${COVERAGE}%"
             echo "Threshold: ${THRESHOLD}%"
             if [ "$COVERAGE" -lt "$THRESHOLD" ]; then
-              echo "⚠️  Warning: Coverage (${COVERAGE}%) is below threshold (${THRESHOLD}%)"
+              echo "[WARNING] Coverage (${COVERAGE}%) is below threshold (${THRESHOLD}%)"
               # Uncomment to fail the workflow if below threshold:
               # exit 1
             else
-              echo "✅ Coverage is above threshold"
+              echo "[OK] Coverage is above threshold"
             fi
           fi
           
@@ -132,7 +132,7 @@ jobs:
             git add .github/coverage-reports/coverage-report.json
             git commit -m "chore: update API coverage report [skip ci]"
             git push
-            echo "✅ Committed updated coverage report" >> $GITHUB_STEP_SUMMARY
+            echo "[OK] Committed updated coverage report" >> $GITHUB_STEP_SUMMARY
           fi
           
       - name: Create or update coverage report issue
@@ -186,8 +186,8 @@ ISSUE_EOF
           if [ -n "$ISSUE_NUMBER" ] && [ "$ISSUE_NUMBER" != "null" ]; then
             # Update existing issue
             gh issue edit "$ISSUE_NUMBER" --body-file /tmp/issue-body.md
-            echo "✅ Updated coverage report issue #$ISSUE_NUMBER" >> $GITHUB_STEP_SUMMARY
-            echo "📋 View issue: https://github.com/${{ github.repository }}/issues/$ISSUE_NUMBER" >> $GITHUB_STEP_SUMMARY
+            echo "[OK] Updated coverage report issue #$ISSUE_NUMBER" >> $GITHUB_STEP_SUMMARY
+            echo "View issue: https://github.com/${{ github.repository }}/issues/$ISSUE_NUMBER" >> $GITHUB_STEP_SUMMARY
           else
             # Create new issue
             ISSUE_NUMBER=$(gh issue create \
@@ -197,8 +197,8 @@ ISSUE_EOF
               --json number \
               --jq '.number')
             
-            echo "✅ Created coverage report issue #$ISSUE_NUMBER" >> $GITHUB_STEP_SUMMARY
-            echo "📋 View issue: https://github.com/${{ github.repository }}/issues/$ISSUE_NUMBER" >> $GITHUB_STEP_SUMMARY
+            echo "[OK] Created coverage report issue #$ISSUE_NUMBER" >> $GITHUB_STEP_SUMMARY
+            echo "View issue: https://github.com/${{ github.repository }}/issues/$ISSUE_NUMBER" >> $GITHUB_STEP_SUMMARY
           fi
           
           echo "issue_number=$ISSUE_NUMBER" >> $GITHUB_OUTPUT
@@ -241,14 +241,14 @@ ISSUE_EOF
             --jq '.[0].number')
           
           if [ -z "$ISSUE_NUMBER" ] || [ "$ISSUE_NUMBER" = "null" ]; then
-            echo "❌ No open coverage report issue found" >> $GITHUB_STEP_SUMMARY
+            echo "[ERROR] No open coverage report issue found" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             echo "Please run the 'check-coverage' action first to generate a coverage report issue." >> $GITHUB_STEP_SUMMARY
             exit 1
           fi
           
           echo "issue_number=$ISSUE_NUMBER" >> $GITHUB_OUTPUT
-          echo "📋 Found coverage report issue: #$ISSUE_NUMBER" >> $GITHUB_STEP_SUMMARY
+          echo "Found coverage report issue: #$ISSUE_NUMBER" >> $GITHUB_STEP_SUMMARY
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
@@ -352,7 +352,7 @@ This parameter was identified as missing in the API coverage report.
             EXISTING=$(gh issue list --label "$LABELS" --search "$TITLE" --json number --jq '.[0].number')
             
             if [ -n "$EXISTING" ] && [ "$EXISTING" != "null" ]; then
-              echo "⏭️  Issue already exists: #$EXISTING - $TITLE"
+              echo "[SKIP] Issue already exists: #$EXISTING - $TITLE"
             else
               # Create the issue
               ISSUE_NUMBER=$(gh issue create \
@@ -361,7 +361,7 @@ This parameter was identified as missing in the API coverage report.
                 --label "$LABELS" \
                 --json number --jq '.number')
               
-              echo "✅ Created issue #$ISSUE_NUMBER: $TITLE"
+              echo "[OK] Created issue #$ISSUE_NUMBER: $TITLE"
               echo "- Created issue #$ISSUE_NUMBER: $TITLE" >> $GITHUB_STEP_SUMMARY
             fi
           done
@@ -373,7 +373,7 @@ This parameter was identified as missing in the API coverage report.
         run: |
           echo "### Dry Run Mode" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "⚠️ Running in dry run mode - no issues created and no changes committed" >> $GITHUB_STEP_SUMMARY
+          echo "[WARNING] Running in dry run mode - no issues created and no changes committed" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "Review the changes in api-mapping.json and actions-to-take.json" >> $GITHUB_STEP_SUMMARY
           
@@ -408,7 +408,7 @@ This parameter was identified as missing in the API coverage report.
             
             echo "### Changes Committed" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
-            echo "✅ Updated api-mapping.json and reset coverage-report.md" >> $GITHUB_STEP_SUMMARY
+            echo "[OK] Updated api-mapping.json and reset coverage-report.md" >> $GITHUB_STEP_SUMMARY
           fi
           
       - name: Upload artifacts
