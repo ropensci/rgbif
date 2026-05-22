@@ -22,21 +22,31 @@ The coverage system automatically:
 
 ## Workflows
 
-### API Coverage Check (`api-coverage.yml`)
-- **Triggers**: Weekly on Mondays, manual, or when mapping files change
-- **Actions**: 
-  - Downloads latest OpenAPI specs
-  - Generates coverage report with checkboxes
-  - Commits updated report to repository
+### API Coverage Management (`api-coverage.yml`)
 
-### Process Coverage Actions (`process-coverage-actions.yml`)
-- **Trigger**: Manual only (`workflow_dispatch`)
-- **Actions**:
-  - Parses checked boxes in coverage-report.md
-  - Updates api-mapping.json with ignored items
-  - Creates GitHub issues for items marked for implementation
-  - Commits all changes back to repository
-  - Resets checkboxes for next use
+This combined workflow handles both coverage checking and action processing.
+
+#### Automatic Triggers:
+- **Weekly**: Every Monday at 9 AM UTC - runs coverage check
+- **Push**: When mapping files change - runs coverage check
+- Commits updated coverage reports automatically
+
+#### Manual Trigger (`workflow_dispatch`):
+Choose which action to perform:
+
+**1. Check Coverage**
+- Downloads latest OpenAPI specs
+- Generates coverage report with checkboxes
+- Commits updated report to repository
+
+**2. Process Actions**
+- Parses checked boxes in coverage-report.md
+- Updates api-mapping.json with ignored items
+- Creates GitHub issues for items marked for implementation
+- Commits all changes back to repository
+- Resets checkboxes for next use
+- **Options:**
+  - `dry_run`: Preview changes without creating issues or committing
 
 ## Usage Guide
 
@@ -85,14 +95,18 @@ git push
 
 ### 4. Run the Workflow
 
-Go to **Actions** → **Process Coverage Actions** → **Run workflow**
+Go to **Actions** → **API Coverage Management** → **Run workflow**
 
-Options:
-- **Dry run**: Check this to preview changes without creating issues or committing
+**Select action:**
+- **check-coverage** - Regenerate coverage report with latest API specs
+- **process-actions** - Process checked boxes and take actions
+
+**Options (for process-actions only):**
+- **dry_run**: Check this to preview changes without creating issues or committing
 
 ### 5. Review Results
 
-The workflow will:
+When running **process-actions**, the workflow will:
 - ✅ Add checked "Ignore" items to api-mapping.json
 - ✅ Create GitHub issues for checked "Issue" items (with deduplication)
 - ✅ Reset all checkboxes in coverage-report.md
