@@ -1,5 +1,5 @@
 # GBIF API Coverage Report
-Generated: 2026-05-22 13:31:17.379247
+Generated: 2026-05-22 14:38:53.185884
 
 ## Summary
 
