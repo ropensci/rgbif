@@ -134,6 +134,70 @@ jobs:
             git push
             echo "✅ Committed updated coverage report" >> $GITHUB_STEP_SUMMARY
           fi
+          
+      - name: Create or update coverage report issue
+        if: always()
+        run: |
+          # Check if coverage report issue already exists
+          ISSUE_NUMBER=$(gh issue list \
+            --label "api-coverage-report" \
+            --state open \
+            --json number \
+            --jq '.[0].number')
+          
+          # Read the coverage report
+          if [ ! -f .github/coverage-reports/coverage-report.md ]; then
+            echo "Coverage report not found"
+            exit 1
+          fi
+          
+          # Prepare issue body
+          REPORT_CONTENT=$(cat .github/coverage-reports/coverage-report.md)
+          
+          ISSUE_BODY="# API Coverage Report
+
+This issue contains the latest GBIF API coverage report with interactive checkboxes.
+
+## How to Use This Report
+
+1. **Review** the missing endpoints and parameters below
+2. **Check the boxes** for items you want to process:
+   - ☑️ **Ignore** - Add to ignored list (won't be implemented)
+   - ☑️ **Issue** - Create a GitHub issue to track implementation
+3. **Run the workflow**: Go to Actions → API Coverage Management → Run workflow
+   - Select action: \`process-actions\`
+   - The workflow will read this issue and take the checked actions
+4. **Review results**: The workflow will create issues and update the ignored lists
+
+---
+
+$REPORT_CONTENT
+
+---
+
+**Note:** This issue is automatically updated when the coverage check runs. To process checked boxes, run the \`process-actions\` workflow."
+          
+          if [ -n "$ISSUE_NUMBER" ] && [ "$ISSUE_NUMBER" != "null" ]; then
+            # Update existing issue
+            echo "$ISSUE_BODY" | gh issue edit "$ISSUE_NUMBER" --body-file -
+            echo "✅ Updated coverage report issue #$ISSUE_NUMBER" >> $GITHUB_STEP_SUMMARY
+            echo "📋 View issue: https://github.com/${{ github.repository }}/issues/$ISSUE_NUMBER" >> $GITHUB_STEP_SUMMARY
+          else
+            # Create new issue
+            ISSUE_NUMBER=$(echo "$ISSUE_BODY" | gh issue create \
+              --title "API Coverage Report - $(date +%Y-%m-%d)" \
+              --body-file - \
+              --label "api-coverage-report,documentation" \
+              --json number \
+              --jq '.number')
+            
+            echo "✅ Created coverage report issue #$ISSUE_NUMBER" >> $GITHUB_STEP_SUMMARY
+            echo "📋 View issue: https://github.com/${{ github.repository }}/issues/$ISSUE_NUMBER" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "issue_number=$ISSUE_NUMBER" >> $GITHUB_OUTPUT
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   process-actions:
     runs-on: ubuntu-latest
@@ -157,10 +221,32 @@ jobs:
           install.packages("jsonlite", repos = "https://cloud.r-project.org")
         shell: Rscript {0}
         
-      - name: Process checkboxes
+      - name: Find coverage report issue
+        id: find_issue
+        run: |
+          # Find the open coverage report issue
+          ISSUE_NUMBER=$(gh issue list \
+            --label "api-coverage-report" \
+            --state open \
+            --json number \
+            --jq '.[0].number')
+          
+          if [ -z "$ISSUE_NUMBER" ] || [ "$ISSUE_NUMBER" = "null" ]; then
+            echo "❌ No open coverage report issue found" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Please run the 'check-coverage' action first to generate a coverage report issue." >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
+          
+          echo "issue_number=$ISSUE_NUMBER" >> $GITHUB_OUTPUT
+          echo "📋 Found coverage report issue: #$ISSUE_NUMBER" >> $GITHUB_STEP_SUMMARY
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+      - name: Process checkboxes from issue
         id: process
         run: |
-          Rscript .github/coverage-reports/process-coverage-checkboxes.R
+          Rscript .github/coverage-reports/process-coverage-issue.R
           
           # Capture statistics
           if [ -f .github/coverage-reports/actions-to-take.json ]; then
@@ -173,6 +259,10 @@ jobs:
             echo "num_issues=0" >> $GITHUB_OUTPUT
             echo "No actions file created - no checkboxes were checked" >> $GITHUB_STEP_SUMMARY
           fi
+        env:
+          ISSUE_NUMBER: ${{ steps.find_issue.outputs.issue_number }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
       - name: Create GitHub issues
         if: steps.process.outputs.num_issues > 0 && inputs.dry_run == false

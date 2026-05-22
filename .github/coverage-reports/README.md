@@ -50,15 +50,27 @@ Choose which action to perform:
 
 ## Usage Guide
 
-### 1. Review the Coverage Report
+### 1. Generate Coverage Report
 
-Open [coverage-report.md](coverage-report.md) to see missing endpoints and parameters.
+The coverage check runs automatically weekly or when you push changes to mapping files. You can also trigger it manually:
 
-### 2. Mark Items for Action
+Go to **Actions** → **API Coverage Management** → **Run workflow**
+- Select action: **check-coverage**
 
-For each missing item, check the appropriate box(es):
+This will create or update a GitHub issue labeled `api-coverage-report` with the latest coverage report.
 
-#### Endpoints
+### 2. Review the Coverage Report Issue
+
+Find the open issue labeled **api-coverage-report** in your repository's Issues tab. The issue contains:
+- Summary statistics (coverage percentage, missing items)
+- List of missing endpoints with checkboxes
+- List of functions with missing parameters and checkboxes
+
+### 3. Mark Items for Action
+
+In the coverage report **issue** (not the file), check the appropriate box(es) by editing the issue description:
+
+#### Example - Endpoints
 ```markdown
 ### GET /validation/sequence
 - **API:** validator
@@ -67,7 +79,7 @@ For each missing item, check the appropriate box(es):
 - **Actions:** [x] Ignore [ ] Issue
 ```
 
-#### Parameters
+#### Example - Parameters
 ```markdown
 ### occ_count - GET /occurrence/search
 - **Missing parameters:**
@@ -83,17 +95,11 @@ For each missing item, check the appropriate box(es):
 
 You can check both boxes if needed (ignore for now but track for future).
 
-### 3. Commit Your Changes
-
-After checking boxes in coverage-report.md:
-
-```bash
-git add .github/coverage-reports/coverage-report.md
-git commit -m "Mark API coverage items for processing"
-git push
-```
+**Important:** Edit the issue description directly using GitHub's edit button. The checkboxes are interactive in GitHub's markdown editor.
 
 ### 4. Run the Workflow
+
+After checking boxes in the coverage report issue:
 
 Go to **Actions** → **API Coverage Management** → **Run workflow**
 
@@ -107,12 +113,16 @@ Go to **Actions** → **API Coverage Management** → **Run workflow**
 ### 5. Review Results
 
 When running **process-actions**, the workflow will:
+- 📋 Find the open coverage report issue
+- ✅ Parse checked boxes from the issue
 - ✅ Add checked "Ignore" items to api-mapping.json
 - ✅ Create GitHub issues for checked "Issue" items (with deduplication)
-- ✅ Reset all checkboxes in coverage-report.md
-- ✅ Commit all changes with a summary message
+- ✅ Reset all checkboxes in the coverage report issue
+- ✅ Commit changes to api-mapping.json
 
 Check the workflow summary for statistics and links to created issues.
+
+**Note:** The coverage report issue remains open and gets updated with each coverage check. You can reuse it for multiple rounds of processing.
 
 ## Understanding api-mapping.json
 
@@ -186,13 +196,20 @@ Endpoints that won't be implemented in rgbif:
 1. **Review before checking** - Make sure the parameter/endpoint really isn't implemented
 2. **Check documentation** - Look at the R function documentation to verify
 3. **Add clear reasons** - While not required, manually editing api-mapping.json with descriptive reasons helps future maintainers
-4. **Batch processing** - Check multiple items at once, then run the workflow once
+4. **Batch processing** - Check multiple items at once in the issue, then run the workflow once
 5. **Regular reviews** - Run coverage checks regularly to catch new API additions
+6. **Use the issue** - Always check boxes in the GitHub issue, not in the repository files
 
 ## Troubleshooting
 
-### "No actions found"
-- Make sure you committed your checkbox changes to coverage-report.md before running the workflow
+### "No open coverage report issue found"
+- Run the workflow with action `check-coverage` first to create the coverage report issue
+- Make sure the issue has the label `api-coverage-report` and is still open
+
+### "No actions found" or "No checkboxes were checked"
+- Make sure you checked boxes in the GitHub **issue** (not the file in the repository)
+- Edit the issue description to check boxes: Click the "..." menu → Edit
+- In GitHub's issue editor, you can click checkboxes directly or manually type `[x]`
 
 ### "Issue already exists"
 - The workflow checks for existing issues with the same labels and title - this is expected behavior to prevent duplicates
@@ -200,6 +217,7 @@ Endpoints that won't be implemented in rgbif:
 ### Script fails to parse
 - Check that checkbox format is correct: `[ ]` (space between brackets) or `[x]` (lowercase x)
 - Make sure parameter names are wrapped in backticks: `` `parameter_name` ``
+- Verify you're editing the issue description, not adding a comment
 
 ### Changes not showing in api-mapping.json
 - Verify the script ran successfully in the workflow logs
@@ -210,16 +228,29 @@ Endpoints that won't be implemented in rgbif:
 
 ### Testing Locally
 
+#### Option 1: Test with file-based workflow (legacy)
 ```bash
 # Generate coverage report with checkboxes
 Rscript .github/coverage-reports/check-api-coverage.R
 
 # Manually check some boxes in coverage-report.md
 
-# Process the checkboxes
+# Process the checkboxes from file
 Rscript .github/coverage-reports/process-coverage-checkboxes.R
 
 # Review changes in api-mapping.json and actions-to-take.json
+```
+
+#### Option 2: Test with issue-based workflow (production)
+1. Run the `check-coverage` workflow action to create an issue
+2. Edit the issue to check some boxes
+3. Set environment variables and run the issue processing script:
+```bash
+export ISSUE_NUMBER=123  # Replace with actual issue number
+export GITHUB_REPOSITORY="owner/repo"
+export GH_TOKEN="your_token"
+
+Rscript .github/coverage-reports/process-coverage-issue.R
 ```
 
 ### Adding New Features
