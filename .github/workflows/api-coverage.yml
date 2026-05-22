@@ -1,0 +1,116 @@
+on:
+  # Run weekly on Mondays at 9 AM UTC
+  schedule:
+    - cron: '0 9 * * 1'
+  # Allow manual trigger
+  workflow_dispatch:
+  # Optional: run on pushes to specific branches
+  push:
+    branches:
+      - master
+      - main
+    paths:
+      - '.github/coverage-reports/api-mapping.json'
+      - '.github/coverage-reports/check-api-coverage.R'
+      - '.github/workflows/api-coverage.yml'
+
+name: API Coverage Check
+
+jobs:
+  check-coverage:
+    runs-on: ubuntu-latest
+    name: Check GBIF API Coverage
+    
+    env:
+      R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
+      
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: 'release'
+          
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev libssl-dev
+          
+      - name: Install R dependencies
+        run: |
+          install.packages(c("jsonlite", "httr"), repos = "https://cloud.r-project.org")
+        shell: Rscript {0}
+        
+      - name: Run API coverage check
+        id: coverage_check
+        run: |
+          Rscript .github/coverage-reports/check-api-coverage.R
+        continue-on-error: true
+        
+      - name: Upload coverage reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-coverage-reports
+          path: .github/coverage-reports/
+          retention-days: 90
+          
+      - name: Read coverage summary
+        if: always()
+        id: read_summary
+        run: |
+          if [ -f .github/coverage-reports/coverage-report-latest.json ]; then
+            COVERAGE=$(cat .github/coverage-reports/coverage-report-latest.json | grep -o '"coverage_percentage":[0-9.]*' | cut -d':' -f2)
+            MISSING=$(cat .github/coverage-reports/coverage-report-latest.json | grep -o '"missing_endpoints":[0-9]*' | cut -d':' -f2)
+            echo "coverage=$COVERAGE" >> $GITHUB_OUTPUT
+            echo "missing=$MISSING" >> $GITHUB_OUTPUT
+            echo "### API Coverage: ${COVERAGE}%" >> $GITHUB_STEP_SUMMARY
+            echo "Missing Endpoints: $MISSING" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "Coverage report not found" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+      - name: Comment coverage summary
+        if: github.event_name == 'push' && always()
+        run: |
+          if [ -f .github/coverage-reports/coverage-report-latest.md ]; then
+            echo "Coverage report generated successfully"
+            # Optionally: post as PR comment or issue comment
+            # This would require additional setup with GitHub token
+          fi
+          
+      - name: Check coverage threshold
+        if: always()
+        run: |
+          THRESHOLD=50
+          if [ -f .github/coverage-reports/coverage-report-latest.json ]; then
+            COVERAGE=$(cat .github/coverage-reports/coverage-report-latest.json | grep -o '"coverage_percentage":[0-9.]*' | cut -d':' -f2 | awk '{print int($1)}')
+            echo "Current coverage: ${COVERAGE}%"
+            echo "Threshold: ${THRESHOLD}%"
+            if [ "$COVERAGE" -lt "$THRESHOLD" ]; then
+              echo "⚠️  Warning: Coverage (${COVERAGE}%) is below threshold (${THRESHOLD}%)"
+              # Uncomment to fail the workflow if below threshold:
+              # exit 1
+            else
+              echo "✅ Coverage is above threshold"
+            fi
+          fi
+          
+      - name: Commit updated coverage report
+        if: github.event_name == 'push' || github.event_name == 'schedule'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          # Check if coverage report changed
+          if git diff --quiet .github/coverage-reports/coverage-report.md .github/coverage-reports/coverage-report.json; then
+            echo "Coverage report unchanged"
+          else
+            git add .github/coverage-reports/coverage-report.md
+            git add .github/coverage-reports/coverage-report.json
+            git commit -m "chore: update API coverage report [skip ci]"
+            git push
+            echo "✅ Committed updated coverage report" >> $GITHUB_STEP_SUMMARY
+          fi

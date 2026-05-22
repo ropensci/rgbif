@@ -1,0 +1,201 @@
+name: Process Coverage Actions
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (do not create issues or commit changes)'
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  process-actions:
+    runs-on: ubuntu-latest
+    name: Process Coverage Report Actions
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: 'release'
+          
+      - name: Install R dependencies
+        run: |
+          install.packages("jsonlite", repos = "https://cloud.r-project.org")
+        shell: Rscript {0}
+        
+      - name: Process checkboxes
+        id: process
+        run: |
+          Rscript .github/coverage-reports/process-coverage-checkboxes.R
+          
+          # Capture statistics
+          if [ -f .github/coverage-reports/actions-to-take.json ]; then
+            NUM_ISSUES=$(cat .github/coverage-reports/actions-to-take.json | grep -o '"type"' | wc -l)
+            echo "num_issues=$NUM_ISSUES" >> $GITHUB_OUTPUT
+            echo "### Processing Complete" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "- Issues to create: $NUM_ISSUES" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "num_issues=0" >> $GITHUB_OUTPUT
+            echo "No actions file created - no checkboxes were checked" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+      - name: Create GitHub issues
+        if: steps.process.outputs.num_issues > 0 && inputs.dry_run == false
+        run: |
+          # Read the actions file
+          ACTIONS_FILE=".github/coverage-reports/actions-to-take.json"
+          
+          if [ ! -f "$ACTIONS_FILE" ]; then
+            echo "No actions file found"
+            exit 0
+          fi
+          
+          # Parse JSON and create issues
+          NUM_ISSUES=$(cat "$ACTIONS_FILE" | jq '.issues | length')
+          echo "Creating $NUM_ISSUES issues..."
+          
+          for i in $(seq 0 $(($NUM_ISSUES - 1))); do
+            TITLE=$(cat "$ACTIONS_FILE" | jq -r ".issues[$i].title")
+            TYPE=$(cat "$ACTIONS_FILE" | jq -r ".issues[$i].type")
+            LABELS=$(cat "$ACTIONS_FILE" | jq -r ".issues[$i].labels | join(\",\")")
+            
+            # Build issue body based on type
+            if [ "$TYPE" = "endpoint" ]; then
+              ENDPOINT=$(cat "$ACTIONS_FILE" | jq -r ".issues[$i].endpoint")
+              API=$(cat "$ACTIONS_FILE" | jq -r ".issues[$i].api")
+              
+              BODY="## Missing Endpoint
+              
+**Endpoint:** \`$ENDPOINT\`
+**API:** \`$API\`
+
+This endpoint was identified as missing in the API coverage report.
+
+### Implementation Steps
+1. Review the GBIF API documentation for this endpoint
+2. Create corresponding R function in rgbif
+3. Add tests for the new function
+4. Update api-mapping.json with the new mapping
+5. Update documentation
+
+### Resources
+- [GBIF API Docs](https://techdocs.gbif.org/)
+- [Coverage Report](.github/coverage-reports/coverage-report.md)
+
+---
+*This issue was automatically created by the API Coverage workflow*"
+            else
+              FUNCTION=$(cat "$ACTIONS_FILE" | jq -r ".issues[$i].function_name")
+              PARAMETER=$(cat "$ACTIONS_FILE" | jq -r ".issues[$i].parameter")
+              ENDPOINT=$(cat "$ACTIONS_FILE" | jq -r ".issues[$i].endpoint")
+              
+              BODY="## Missing Parameter
+
+**Function:** \`$FUNCTION\`
+**Parameter:** \`$PARAMETER\`
+**Endpoint:** \`$ENDPOINT\`
+
+This parameter was identified as missing in the API coverage report.
+
+### Implementation Steps
+1. Review the GBIF API documentation for this parameter
+2. Add parameter to the R function signature
+3. Update internal API call to include the parameter
+4. Add parameter documentation to roxygen comments
+5. Update api-mapping.json with the parameter
+6. Add tests for the new parameter
+
+### Resources
+- [GBIF API Docs](https://techdocs.gbif.org/)
+- [Coverage Report](.github/coverage-reports/coverage-report.md)
+- [Function Documentation](https://docs.ropensci.org/rgbif/reference/)
+
+---
+*This issue was automatically created by the API Coverage workflow*"
+            fi
+            
+            # Check if issue already exists
+            EXISTING=$(gh issue list --label "$LABELS" --search "$TITLE" --json number --jq '.[0].number')
+            
+            if [ -n "$EXISTING" ] && [ "$EXISTING" != "null" ]; then
+              echo "⏭️  Issue already exists: #$EXISTING - $TITLE"
+            else
+              # Create the issue
+              ISSUE_NUMBER=$(gh issue create \
+                --title "$TITLE" \
+                --body "$BODY" \
+                --label "$LABELS" \
+                --json number --jq '.number')
+              
+              echo "✅ Created issue #$ISSUE_NUMBER: $TITLE"
+              echo "- Created issue #$ISSUE_NUMBER: $TITLE" >> $GITHUB_STEP_SUMMARY
+            fi
+          done
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Show dry run message
+        if: inputs.dry_run == true
+        run: |
+          echo "### Dry Run Mode" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "⚠️ Running in dry run mode - no issues created and no changes committed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Review the changes in api-mapping.json and actions-to-take.json" >> $GITHUB_STEP_SUMMARY
+          
+      - name: Commit changes
+        if: inputs.dry_run == false
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          # Check if there are changes
+          if git diff --quiet .github/coverage-reports/api-mapping.json .github/coverage-reports/coverage-report.md; then
+            echo "No changes to commit"
+            echo "No changes to commit" >> $GITHUB_STEP_SUMMARY
+          else
+            git add .github/coverage-reports/api-mapping.json
+            git add .github/coverage-reports/coverage-report.md
+            
+            # Add actions file if it exists
+            if [ -f .github/coverage-reports/actions-to-take.json ]; then
+              git add .github/coverage-reports/actions-to-take.json
+            fi
+            
+            git commit -m "chore: process API coverage actions
+
+- Updated ignored_parameters and ignored_endpoints in api-mapping.json
+- Reset checkboxes in coverage-report.md
+- Created GitHub issues for marked parameters/endpoints
+
+[skip ci]"
+            
+            git push
+            
+            echo "### Changes Committed" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "✅ Updated api-mapping.json and reset coverage-report.md" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-actions-results
+          path: |
+            .github/coverage-reports/actions-to-take.json
+            .github/coverage-reports/api-mapping.json
+            .github/coverage-reports/coverage-report.md
+          retention-days: 30

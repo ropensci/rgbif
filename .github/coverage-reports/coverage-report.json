@@ -1,0 +1,1739 @@
+{
+  "summary": {
+    "total_endpoints": 444,
+    "ignored_endpoints": 313,
+    "relevant_endpoints": 131,
+    "implemented_endpoints": 127,
+    "missing_endpoints": 0,
+    "coverage_percentage": 96.9,
+    "functions_with_missing_params": 22
+  },
+  "missing_endpoints": [],
+  "missing_parameters": {
+    "GET /occurrence/search": {
+      "function_name": "occ_count",
+      "missing_parameters": ["nucleotideSequence.nucleotideSequenceID", "nucleotideSequence.targetGene", "nucleotideSequence.sequence", "nucleotideSequence.sequenceLength", "nucleotideSequence.gcContent", "nucleotideSequence.nonIupacFraction", "nucleotideSequence.nonACGTNFraction", "nucleotideSequence.nFraction", "nucleotideSequence.nRunsCapped", "nucleotideSequence.naturalLanguageDetected", "nucleotideSequence.endsTrimmed", "nucleotideSequence.gapsOrWhitespaceRemoved", "nucleotideSequence.invalid"],
+      "api_parameters": ["acceptedTaxonKey", "associatedSequences", "basisOfRecord", "bed", "catalogNumber", "classKey", "checklistKey", "collectionCode", "collectionKey", "continent", "coordinateUncertaintyInMeters", "country", "crawlId", "datasetId", "datasetKey", "datasetName", "day", "decimalLatitude", "degreeOfEstablishment", "decimalLongitude", "depth", "distanceFromCentroidInMeters", "dwcaExtension", "earliestEonOrLowestEonothem", "earliestEraOrLowestErathem", "earliestPeriodOrLowestSystem", "earliestEpochOrLowestSeries", "earliestAgeOrLowestStage", "elevation", "endDayOfYear", "establishmentMeans", "eventDate", "eventId", "familyKey", "fieldNumber", "formation", "gadmGid", "gadmLevel0Gid", "gadmLevel1Gid", "gadmLevel2Gid", "gadmLevel3Gid", "gbifId", "gbifRegion", "genusKey", "geoDistance", "georeferencedBy", "geometry", "group", "hasCoordinate", "higherGeography", "highestBiostratigraphicZone", "hasGeospatialIssue", "hostingOrganizationKey", "identifiedBy", "identifiedByID", "installationKey", "institutionCode", "institutionKey", "issue", "isInCluster", "island", "islandGroup", "isSequenced", "iucnRedListCategory", "kingdomKey", "lastInterpreted", "latestEonOrHighestEonothem", "latestEraOrHighestErathem", "latestPeriodOrHighestSystem", "latestEpochOrHighestSeries", "latestAgeOrHighestStage", "license", "lifeStage", "locality", "lowestBiostratigraphicZone", "measurementType", "measurementTypeID", "mediaType", "member", "modified", "month", "networkKey", "nucleotideSequence.nucleotideSequenceID", "nucleotideSequence.targetGene", "nucleotideSequence.sequence", "nucleotideSequence.sequenceLength", "nucleotideSequence.gcContent", "nucleotideSequence.nonIupacFraction", "nucleotideSequence.nonACGTNFraction", "nucleotideSequence.nFraction", "nucleotideSequence.nRunsCapped", "nucleotideSequence.naturalLanguageDetected", "nucleotideSequence.endsTrimmed", "nucleotideSequence.gapsOrWhitespaceRemoved", "nucleotideSequence.invalid", "occurrenceId", "occurrenceStatus", "orderKey", "organismId", "organismQuantity", "organismQuantityType", "otherCatalogNumbers", "parentEventId", "pathway", "phylumKey", "preparations", "previousIdentifications", "programme", "projectId", "protocol", "publishingCountry", "publishedByGbifRegion", "publishingOrg", "recordedBy", "recordedByID", "recordNumber", "relativeOrganismQuantity", "repatriated", "sampleSizeUnit", "sampleSizeValue", "samplingProtocol", "sex", "scientificName", "speciesKey", "startDayOfYear", "stateProvince", "taxonConceptId", "taxonKey", "taxonId", "taxonomicIssue", "taxonomicStatus", "typeStatus", "verbatimScientificName", "waterBody", "year", "geologicalTime", "lithostratigraphy", "biostratigraphy", "matchCase", "shuffle", "hl", "q", "facet", "facetMincount", "facetMultiselect", "facetLimit", "facetOffset"],
+      "implemented_parameters": ["taxonKey", "scientificName", "country", "publishingCountry", "hasCoordinate", "typeStatus", "recordNumber", "lastInterpreted", "continent", "geometry", "recordedBy", "recordedByID", "identifiedByID", "basisOfRecord", "datasetKey", "eventDate", "catalogNumber", "year", "month", "decimalLatitude", "decimalLongitude", "elevation", "depth", "institutionCode", "collectionCode", "hasGeospatialIssue", "issue", "search", "mediaType", "subgenusKey", "repatriated", "phylumKey", "kingdomKey", "classKey", "orderKey", "familyKey", "genusKey", "speciesKey", "establishmentMeans", "degreeOfEstablishment", "protocol", "license", "organismId", "publishingOrg", "stateProvince", "waterBody", "locality", "occurrenceStatus", "gadmGid", "coordinateUncertaintyInMeters", "verbatimScientificName", "eventId", "identifiedBy", "networkKey", "verbatimTaxonId", "occurrenceId", "organismQuantity", "organismQuantityType", "relativeOrganismQuantity", "iucnRedListCategory", "lifeStage", "isInCluster", "distanceFromCentroidInMeters", "geoDistance", "sex", "dwcaExtension", "gbifId", "gbifRegion", "projectId", "programme", "preparations", "datasetId", "datasetName", "publishedByGbifRegion", "island", "islandGroup", "taxonId", "taxonConceptId", "taxonomicStatus", "acceptedTaxonKey", "collectionKey", "institutionKey", "otherCatalogNumbers", "georeferencedBy", "installationKey", "hostingOrganizationKey", "crawlId", "modified", "higherGeography", "fieldNumber", "parentEventId", "samplingProtocol", "sampleSizeUnit", "sampleSizeValue", "pathway", "gadmLevel0Gid", "gadmLevel1Gid", "gadmLevel2Gid", "gadmLevel3Gid", "earliestEonOrLowestEonothem", "latestEonOrHighestEonothem", "earliestEraOrLowestErathem", "latestEraOrHighestErathem", "earliestPeriodOrLowestSystem", "latestPeriodOrHighestSystem", "earliestEpochOrLowestSeries", "latestEpochOrHighestSeries", "earliestAgeOrLowestStage", "latestAgeOrHighestStage", "lowestBiostratigraphicZone", "highestBiostratigraphicZone", "group", "formation", "member", "bed", "associatedSequences", "isSequenced", "startDayOfYear", "endDayOfYear", "checklistKey", "previousIdentifications", "measurementType", "measurementTypeID", "matchCase", "shuffle", "hl", "q", "geologicalTime", "lithostratigraphy", "biostratigraphy", "taxonomicIssue", "day", "facet", "facetMincount", "facetMultiselect", "facetLimit", "facetOffset"]
+    },
+    "GET /occurrence/download/statistics": {
+      "function_name": "occ_download_stats",
+      "missing_parameters": ["fromDate", "toDate"],
+      "api_parameters": ["fromDate", "toDate", "publishingCountry", "datasetKey", "publishingOrgKey"],
+      "implemented_parameters": ["from", "to", "publishingCountry", "datasetKey", "publishingOrgKey", "limit", "offset"]
+    },
+    "GET /occurrence/download/statistics/export": {
+      "function_name": "occ_download_stats_export",
+      "missing_parameters": ["fromDate", "toDate"],
+      "api_parameters": ["format", "fromDate", "toDate", "publishingCountry", "datasetKey", "publishingOrgKey"],
+      "implemented_parameters": ["from", "to", "publishingCountry", "datasetKey", "publishingOrgKey", "limit", "offset"]
+    },
+    "GET /occurrence/download/statistics/downloadsByUserCountry": {
+      "function_name": "occ_download_stats_user_country",
+      "missing_parameters": ["fromDate", "toDate"],
+      "api_parameters": ["fromDate", "toDate", "userCountry"],
+      "implemented_parameters": ["from", "to", "userCountry", "publishingCountry"]
+    },
+    "GET /occurrence/download/statistics/downloadedRecordsByDataset": {
+      "function_name": "occ_download_stats_dataset_records",
+      "missing_parameters": ["fromDate", "toDate"],
+      "api_parameters": ["fromDate", "toDate", "publishingCountry", "datasetKey", "publishingOrgKey"],
+      "implemented_parameters": ["from", "to", "publishingCountry", "datasetKey", "publishingOrgKey"]
+    },
+    "GET /occurrence/download/statistics/downloadsByDataset": {
+      "function_name": "occ_download_stats_dataset",
+      "missing_parameters": ["fromDate", "toDate"],
+      "api_parameters": ["fromDate", "toDate", "publishingCountry", "datasetKey", "publishingOrgKey"],
+      "implemented_parameters": ["from", "to", "publishingCountry", "datasetKey", "publishingOrgKey"]
+    },
+    "GET /occurrence/download/statistics/downloadsBySource": {
+      "function_name": "occ_download_stats_source",
+      "missing_parameters": ["fromDate", "toDate"],
+      "api_parameters": ["fromDate", "toDate", "source"],
+      "implemented_parameters": ["from", "to", "source"]
+    },
+    "GET /dataset/search": {
+      "function_name": "dataset_search",
+      "missing_parameters": ["continent", "taxonKey", "recordCount", "modifiedDate", "createdDate", "contactUserId", "contactEmail", "facetMinCount"],
+      "api_parameters": ["type", "subtype", "publishingOrg", "hostingOrg", "keyword", "decade", "publishingCountry", "hostingCountry", "continent", "license", "projectId", "taxonKey", "recordCount", "modifiedDate", "createdDate", "doi", "networkKey", "endorsingNodeKey", "installationKey", "endpointType", "category", "contactUserId", "contactEmail", "q", "hl", "facet", "facetMinCount", "facetMultiselect", "facetLimit", "facetOffset"],
+      "implemented_parameters": ["query", "type", "publishingCountry", "subtype", "license", "keyword", "publishingOrg", "hostingOrg", "endorsingNodeKey", "decade", "projectId", "hostingCountry", "networkKey", "doi", "installationKey", "endpointType", "category", "facet", "facetLimit", "facetOffset", "facetMincount", "facetMultiselect", "limit", "start", "description"]
+    },
+    "GET /dataset/search/export": {
+      "function_name": "dataset_export",
+      "missing_parameters": ["continent", "taxonKey", "recordCount", "modifiedDate", "createdDate", "installationKey", "endpointType", "contactUserId", "contactEmail"],
+      "api_parameters": ["format", "type", "subtype", "publishingOrg", "hostingOrg", "keyword", "decade", "publishingCountry", "hostingCountry", "continent", "license", "projectId", "taxonKey", "recordCount", "modifiedDate", "createdDate", "doi", "networkKey", "endorsingNodeKey", "installationKey", "endpointType", "category", "contactUserId", "contactEmail", "q"],
+      "implemented_parameters": ["query", "type", "publishingCountry", "subtype", "license", "keyword", "publishingOrg", "hostingOrg", "endorsingNodeKey", "decade", "projectId", "hostingCountry", "networkKey", "doi", "category"]
+    },
+    "GET /dataset": {
+      "function_name": "datasets",
+      "missing_parameters": ["country", "identifierType", "identifier", "machineTagNamespace", "machineTagName", "machineTagValue", "modified", "created"],
+      "api_parameters": ["country", "type", "identifierType", "identifier", "machineTagNamespace", "machineTagName", "machineTagValue", "modified", "created", "q"],
+      "implemented_parameters": ["type", "limit", "offset"]
+    },
+    "GET /dataset/suggest": {
+      "function_name": "dataset_suggest",
+      "missing_parameters": ["continent", "taxonKey", "recordCount", "modifiedDate", "createdDate", "installationKey", "endpointType", "contactUserId", "contactEmail"],
+      "api_parameters": ["type", "subtype", "publishingOrg", "hostingOrg", "keyword", "decade", "publishingCountry", "hostingCountry", "continent", "license", "projectId", "taxonKey", "recordCount", "modifiedDate", "createdDate", "doi", "networkKey", "endorsingNodeKey", "installationKey", "endpointType", "category", "contactUserId", "contactEmail", "q"],
+      "implemented_parameters": ["query", "type", "publishingCountry", "subtype", "license", "keyword", "publishingOrg", "hostingOrg", "endorsingNodeKey", "decade", "projectId", "hostingCountry", "networkKey", "doi", "category", "limit", "start", "description"]
+    },
+    "GET /dataset/{uuid}/tag": {
+      "function_name": "dataset_tag",
+      "missing_parameters": "owner",
+      "api_parameters": ["key", "owner"],
+      "implemented_parameters": "uuid"
+    },
+    "GET /grscicoll/collection": {
+      "function_name": "collection_search",
+      "missing_parameters": ["institution", "occurrenceCount", "typeSpecimenCount", "contactUserId", "contactEmail"],
+      "api_parameters": ["institution", "contentType", "preservationType", "accessionStatus", "personalCollection", "sourceId", "source", "code", "name", "alternativeCode", "contact", "machineTagNamespace", "machineTagName", "machineTagValue", "identifierType", "identifier", "country", "gbifRegion", "city", "fuzzyName", "active", "masterSourceType", "numberSpecimens", "displayOnNHCPortal", "replacedBy", "occurrenceCount", "typeSpecimenCount", "institutionKey", "sortBy", "sortOrder", "contactUserId", "contactEmail", "q"],
+      "implemented_parameters": ["query", "name", "fuzzyName", "preservationType", "contentType", "numberSpecimens", "accessionStatus", "personalCollection", "sourceId", "source", "code", "alternativeCode", "contact", "institutionKey", "country", "city", "gbifRegion", "machineTagNamespace", "machineTagName", "machineTagValue", "identifier", "identifierType", "active", "displayOnNHCPortal", "masterSourceType", "replacedBy", "sortBy", "sortOrder", "offset", "limit", "format"]
+    },
+    "GET /grscicoll/collection/export": {
+      "function_name": "collection_export",
+      "missing_parameters": ["institution", "contentType", "preservationType", "accessionStatus", "personalCollection", "sourceId", "source", "machineTagNamespace", "machineTagName", "machineTagValue", "identifierType", "identifier", "gbifRegion", "active", "masterSourceType", "numberSpecimens", "displayOnNHCPortal", "replacedBy", "occurrenceCount", "typeSpecimenCount", "sortBy", "sortOrder", "contactUserId", "contactEmail"],
+      "api_parameters": ["format", "institution", "contentType", "preservationType", "accessionStatus", "personalCollection", "sourceId", "source", "code", "name", "alternativeCode", "contact", "machineTagNamespace", "machineTagName", "machineTagValue", "identifierType", "identifier", "country", "gbifRegion", "city", "fuzzyName", "active", "masterSourceType", "numberSpecimens", "displayOnNHCPortal", "replacedBy", "occurrenceCount", "typeSpecimenCount", "institutionKey", "sortBy", "sortOrder", "contactUserId", "contactEmail", "q"],
+      "implemented_parameters": ["query", "name", "fuzzyName", "code", "alternativeCode", "contact", "institutionKey", "country", "city"]
+    },
+    "GET /grscicoll/institution": {
+      "function_name": "institution_search",
+      "missing_parameters": ["discipline", "contactUserId", "contactEmail"],
+      "api_parameters": ["type", "institutionalGovernance", "discipline", "sourceId", "source", "code", "name", "alternativeCode", "contact", "machineTagNamespace", "machineTagName", "machineTagValue", "identifierType", "identifier", "country", "gbifRegion", "city", "fuzzyName", "active", "masterSourceType", "numberSpecimens", "displayOnNHCPortal", "replacedBy", "occurrenceCount", "typeSpecimenCount", "institutionKey", "sortBy", "sortOrder", "contactUserId", "contactEmail", "q"],
+      "implemented_parameters": ["query", "type", "institutionalGovernance", "disciplines", "name", "fuzzyName", "numberSpecimens", "occurrenceCount", "typeSpecimenCount", "sourceId", "source", "code", "alternativeCode", "contact", "institutionKey", "country", "city", "gbifRegion", "machineTagNamespace", "machineTagName", "machineTagValue", "identifier", "identifierType", "active", "displayOnNHCPortal", "masterSourceType", "replacedBy", "sortBy", "sortOrder", "offset", "limit", "format"]
+    },
+    "GET /grscicoll/institution/export": {
+      "function_name": "institution_export",
+      "missing_parameters": ["institution", "contentType", "preservationType", "accessionStatus", "personalCollection", "sourceId", "source", "machineTagNamespace", "machineTagName", "machineTagValue", "identifierType", "identifier", "gbifRegion", "active", "masterSourceType", "numberSpecimens", "displayOnNHCPortal", "replacedBy", "occurrenceCount", "typeSpecimenCount", "institutionKey", "sortBy", "sortOrder", "contactUserId", "contactEmail"],
+      "api_parameters": ["format", "institution", "contentType", "preservationType", "accessionStatus", "personalCollection", "sourceId", "source", "code", "name", "alternativeCode", "contact", "machineTagNamespace", "machineTagName", "machineTagValue", "identifierType", "identifier", "country", "gbifRegion", "city", "fuzzyName", "active", "masterSourceType", "numberSpecimens", "displayOnNHCPortal", "replacedBy", "occurrenceCount", "typeSpecimenCount", "institutionKey", "sortBy", "sortOrder", "contactUserId", "contactEmail", "q"],
+      "implemented_parameters": ["query", "type", "name", "fuzzyName", "code", "alternativeCode", "contact", "country", "city"]
+    },
+    "GET /literature/search": {
+      "function_name": "lit_count",
+      "missing_parameters": ["citationType", "doi", "gbifHigherTaxonKey", "gbifNetworkKey", "gbifOccurrenceKey", "gbifProjectIdentifier", "gbifProgrammeAcronym", "gbifTaxonKey", "publisher", "publishingCountry", "source", "websites", "language", "added", "published", "discovered", "modified"],
+      "api_parameters": ["citationType", "countriesOfCoverage", "countriesOfResearcher", "doi", "gbifHigherTaxonKey", "gbifNetworkKey", "gbifOccurrenceKey", "gbifProjectIdentifier", "gbifProgrammeAcronym", "gbifTaxonKey", "literatureType", "openAccess", "peerReview", "publisher", "publishingCountry", "relevance", "source", "topics", "websites", "year", "language", "added", "published", "discovered", "modified", "hl", "facet", "facetMinCount", "facetMultiselect", "facetLimit", "facetOffset", "q"],
+      "implemented_parameters": ["q", "countriesOfResearcher", "countriesOfCoverage", "literatureType", "relevance", "year", "topics", "datasetKey", "publishingOrg", "peerReview", "openAccess", "downloadKey"]
+    },
+    "GET /literature/export": {
+      "function_name": "lit_export",
+      "missing_parameters": ["citationType", "doi", "gbifDatasetKey", "gbifDownloadKey", "gbifHigherTaxonKey", "gbifNetworkKey", "gbifOccurrenceKey", "gbifProjectIdentifier", "gbifProgrammeAcronym", "gbifTaxonKey", "publisher", "publishingOrganizationKey", "publishingCountry", "source", "websites", "language", "added", "published", "discovered", "modified"],
+      "api_parameters": ["format", "citationType", "countriesOfCoverage", "countriesOfResearcher", "doi", "gbifDatasetKey", "gbifDownloadKey", "gbifHigherTaxonKey", "gbifNetworkKey", "gbifOccurrenceKey", "gbifProjectIdentifier", "gbifProgrammeAcronym", "gbifTaxonKey", "literatureType", "openAccess", "peerReview", "publisher", "publishingOrganizationKey", "publishingCountry", "relevance", "source", "topics", "websites", "year", "language", "added", "published", "discovered", "modified", "q"],
+      "implemented_parameters": ["q", "countriesOfResearcher", "countriesOfCoverage", "literatureType", "relevance", "year", "topics", "datasetKey", "publishingOrg", "peerReview", "openAccess", "downloadKey", "format"]
+    },
+    "GET /node/country/{countryCode}": {
+      "function_name": "nodes",
+      "missing_parameters": "countryCode",
+      "api_parameters": "countryCode",
+      "implemented_parameters": ["data", "isocode"]
+    },
+    "GET /v1/species/search": {
+      "function_name": "name_lookup",
+      "missing_parameters": ["threat", "facetLimit", "facetOffset"],
+      "api_parameters": ["arg0", "datasetKey", "constituentKey", "rank", "higherTaxonKey", "status", "isExtinct", "habitat", "threat", "nameType", "nomenclaturalStatus", "origin", "issue", "q", "hl", "facet", "facetMincount", "facetMultiselect", "facetLimit", "facetOffset"],
+      "implemented_parameters": ["query", "rank", "higherTaxonKey", "status", "isExtinct", "habitat", "nameType", "datasetKey", "origin", "nomenclaturalStatus", "limit", "start", "facet", "facetMincount", "facetMultiselect", "type", "hl", "issue", "constituentKey", "verbose"]
+    },
+    "GET /v1/species/suggest": {
+      "function_name": "name_suggest",
+      "missing_parameters": ["constituentKey", "higherTaxonKey", "status", "isExtinct", "habitat", "threat", "nameType", "nomenclaturalStatus", "origin", "issue"],
+      "api_parameters": ["arg0", "datasetKey", "constituentKey", "rank", "higherTaxonKey", "status", "isExtinct", "habitat", "threat", "nameType", "nomenclaturalStatus", "origin", "issue", "q"],
+      "implemented_parameters": ["q", "datasetKey", "rank", "fields", "start", "limit"]
+    },
+    "GET /v1/species": {
+      "function_name": "name_usage",
+      "missing_parameters": "sourceId",
+      "api_parameters": ["datasetKey", "sourceId", "name", "arg3", "Accept-Language"],
+      "implemented_parameters": ["name", "language", "datasetKey", "rank", "limit", "start"]
+    }
+  },
+  "implemented": {
+    "GET /occurrence/search": {
+      "function_name": "occ_count",
+      "parameters": [
+        "taxonKey",
+        "scientificName",
+        "country",
+        "publishingCountry",
+        "hasCoordinate",
+        "typeStatus",
+        "recordNumber",
+        "lastInterpreted",
+        "continent",
+        "geometry",
+        "recordedBy",
+        "recordedByID",
+        "identifiedByID",
+        "basisOfRecord",
+        "datasetKey",
+        "eventDate",
+        "catalogNumber",
+        "year",
+        "month",
+        "decimalLatitude",
+        "decimalLongitude",
+        "elevation",
+        "depth",
+        "institutionCode",
+        "collectionCode",
+        "hasGeospatialIssue",
+        "issue",
+        "search",
+        "mediaType",
+        "subgenusKey",
+        "repatriated",
+        "phylumKey",
+        "kingdomKey",
+        "classKey",
+        "orderKey",
+        "familyKey",
+        "genusKey",
+        "speciesKey",
+        "establishmentMeans",
+        "degreeOfEstablishment",
+        "protocol",
+        "license",
+        "organismId",
+        "publishingOrg",
+        "stateProvince",
+        "waterBody",
+        "locality",
+        "occurrenceStatus",
+        "gadmGid",
+        "coordinateUncertaintyInMeters",
+        "verbatimScientificName",
+        "eventId",
+        "identifiedBy",
+        "networkKey",
+        "verbatimTaxonId",
+        "occurrenceId",
+        "organismQuantity",
+        "organismQuantityType",
+        "relativeOrganismQuantity",
+        "iucnRedListCategory",
+        "lifeStage",
+        "isInCluster",
+        "distanceFromCentroidInMeters",
+        "geoDistance",
+        "sex",
+        "dwcaExtension",
+        "gbifId",
+        "gbifRegion",
+        "projectId",
+        "programme",
+        "preparations",
+        "datasetId",
+        "datasetName",
+        "publishedByGbifRegion",
+        "island",
+        "islandGroup",
+        "taxonId",
+        "taxonConceptId",
+        "taxonomicStatus",
+        "acceptedTaxonKey",
+        "collectionKey",
+        "institutionKey",
+        "otherCatalogNumbers",
+        "georeferencedBy",
+        "installationKey",
+        "hostingOrganizationKey",
+        "crawlId",
+        "modified",
+        "higherGeography",
+        "fieldNumber",
+        "parentEventId",
+        "samplingProtocol",
+        "sampleSizeUnit",
+        "sampleSizeValue",
+        "pathway",
+        "gadmLevel0Gid",
+        "gadmLevel1Gid",
+        "gadmLevel2Gid",
+        "gadmLevel3Gid",
+        "earliestEonOrLowestEonothem",
+        "latestEonOrHighestEonothem",
+        "earliestEraOrLowestErathem",
+        "latestEraOrHighestErathem",
+        "earliestPeriodOrLowestSystem",
+        "latestPeriodOrHighestSystem",
+        "earliestEpochOrLowestSeries",
+        "latestEpochOrHighestSeries",
+        "earliestAgeOrLowestStage",
+        "latestAgeOrHighestStage",
+        "lowestBiostratigraphicZone",
+        "highestBiostratigraphicZone",
+        "group",
+        "formation",
+        "member",
+        "bed",
+        "associatedSequences",
+        "isSequenced",
+        "startDayOfYear",
+        "endDayOfYear",
+        "checklistKey",
+        "previousIdentifications",
+        "measurementType",
+        "measurementTypeID",
+        "matchCase",
+        "shuffle",
+        "hl",
+        "q",
+        "geologicalTime",
+        "lithostratigraphy",
+        "biostratigraphy",
+        "taxonomicIssue",
+        "day",
+        "facet",
+        "facetMincount",
+        "facetMultiselect",
+        "facetLimit",
+        "facetOffset"
+      ],
+      "original_endpoint": "/occurrence/search",
+      "parameter_mappings": {}
+    },
+    "GET /occurrence/{key}": {
+      "function_name": "occ_get",
+      "parameters": [
+        "key",
+        "fields"
+      ],
+      "original_endpoint": "/occurrence/{key}",
+      "parameter_mappings": {
+        "gbifId": "key"
+      }
+    },
+    "GET /occurrence/{key}/verbatim": {
+      "function_name": "occ_get_verbatim",
+      "parameters": [
+        "key",
+        "fields"
+      ],
+      "original_endpoint": "/occurrence/{key}/verbatim",
+      "parameter_mappings": {
+        "gbifId": "key"
+      }
+    },
+    "GET /occurrence/counts/countries": {
+      "function_name": "occ_count_country",
+      "parameters": [
+        "publishingCountry"
+      ],
+      "original_endpoint": "/occurrence/counts/countries",
+      "parameter_mappings": {}
+    },
+    "GET /occurrence/counts/publishingCountries": {
+      "function_name": "occ_count_pub_country",
+      "parameters": [
+        "country"
+      ],
+      "original_endpoint": "/occurrence/counts/publishingCountries",
+      "parameter_mappings": {}
+    },
+    "GET /occurrence/counts/year": {
+      "function_name": "occ_count_year",
+      "parameters": [
+        "year"
+      ],
+      "original_endpoint": "/occurrence/counts/year",
+      "parameter_mappings": {}
+    },
+    "GET /occurrence/counts/basisOfRecord": {
+      "function_name": "occ_count_basis_of_record",
+      "parameters": [],
+      "original_endpoint": "/occurrence/counts/basisOfRecord",
+      "parameter_mappings": {}
+    },
+    "POST /occurrence/download/request": {
+      "function_name": "occ_download_sql",
+      "parameters": [
+        "q",
+        "format",
+        "user",
+        "pwd",
+        "email",
+        "validate"
+      ],
+      "original_endpoint": "/occurrence/download/request",
+      "parameter_mappings": {}
+    },
+    "GET /occurrence/download/user/{user}": {
+      "function_name": "occ_download_list",
+      "parameters": [
+        "user",
+        "pwd",
+        "limit",
+        "start",
+        "page",
+        "status",
+        "from",
+        "statistics"
+      ],
+      "original_endpoint": "/occurrence/download/user/{user}",
+      "parameter_mappings": {}
+    },
+    "GET /occurrence/download/{key}": {
+      "function_name": "occ_download_meta",
+      "parameters": [
+        "key",
+        "statistics"
+      ],
+      "original_endpoint": "/occurrence/download/{key}",
+      "parameter_mappings": {}
+    },
+    "GET /occurrence/download/request/{key}": {
+      "function_name": "occ_download_get",
+      "parameters": [
+        "key",
+        "path",
+        "overwrite"
+      ],
+      "original_endpoint": "/occurrence/download/request/{key}",
+      "parameter_mappings": {}
+    },
+    "DELETE /occurrence/download/request/{key}": {
+      "function_name": "occ_download_cancel",
+      "parameters": [
+        "key",
+        "user",
+        "pwd"
+      ],
+      "original_endpoint": "/occurrence/download/request/{key}",
+      "parameter_mappings": {}
+    },
+    "GET /occurrence/download/{key}/datasets": {
+      "function_name": "occ_download_datasets",
+      "parameters": [
+        "key",
+        "limit",
+        "start"
+      ],
+      "original_endpoint": "/occurrence/download/{key}/datasets",
+      "parameter_mappings": {}
+    },
+    "GET /occurrence/download/dataset/{datasetKey}": {
+      "function_name": "occ_download_dataset_activity",
+      "parameters": [
+        "dataset",
+        "limit",
+        "start"
+      ],
+      "original_endpoint": "/occurrence/download/dataset/{datasetKey}",
+      "parameter_mappings": {}
+    },
+    "GET /occurrence/download/describe/dwca": {
+      "function_name": "occ_download_describe",
+      "parameters": [
+        "x"
+      ],
+      "original_endpoint": "/occurrence/download/describe/dwca",
+      "parameter_mappings": {}
+    },
+    "GET /occurrence/download/describe/simpleCsv": {
+      "function_name": "occ_download_describe",
+      "parameters": [
+        "x"
+      ],
+      "original_endpoint": "/occurrence/download/describe/simpleCsv",
+      "parameter_mappings": {}
+    },
+    "GET /occurrence/download/describe/simpleAvro": {
+      "function_name": "occ_download_describe",
+      "parameters": [
+        "x"
+      ],
+      "original_endpoint": "/occurrence/download/describe/simpleAvro",
+      "parameter_mappings": {}
+    },
+    "GET /occurrence/download/describe/simpleParquet": {
+      "function_name": "occ_download_describe",
+      "parameters": [
+        "x"
+      ],
+      "original_endpoint": "/occurrence/download/describe/simpleParquet",
+      "parameter_mappings": {}
+    },
+    "GET /occurrence/download/describe/speciesList": {
+      "function_name": "occ_download_describe",
+      "parameters": [
+        "x"
+      ],
+      "original_endpoint": "/occurrence/download/describe/speciesList",
+      "parameter_mappings": {}
+    },
+    "GET /occurrence/download/describe/sql": {
+      "function_name": "occ_download_describe",
+      "parameters": [
+        "x"
+      ],
+      "original_endpoint": "/occurrence/download/describe/sql",
+      "parameter_mappings": {}
+    },
+    "GET /occurrence/download/{key}/citation": {
+      "function_name": "occ_download_doi",
+      "parameters": [
+        "key"
+      ],
+      "original_endpoint": "/occurrence/download/{key}/citation",
+      "parameter_mappings": {}
+    },
+    "GET /occurrence/download/{prefix}/{suffix}": {
+      "function_name": "occ_download_doi",
+      "parameters": [
+        "prefix",
+        "suffix"
+      ],
+      "original_endpoint": "/occurrence/download/{prefix}/{suffix}",
+      "parameter_mappings": {}
+    },
+    "GET /occurrence/download/{prefix}/{suffix}/citation": {
+      "function_name": "occ_download_doi",
+      "parameters": [
+        "prefix",
+        "suffix"
+      ],
+      "original_endpoint": "/occurrence/download/{prefix}/{suffix}/citation",
+      "parameter_mappings": {}
+    },
+    "GET /occurrence/download/statistics": {
+      "function_name": "occ_download_stats",
+      "parameters": [
+        "from",
+        "to",
+        "publishingCountry",
+        "datasetKey",
+        "publishingOrgKey",
+        "limit",
+        "offset"
+      ],
+      "original_endpoint": "/occurrence/download/statistics",
+      "parameter_mappings": {}
+    },
+    "GET /occurrence/download/statistics/export": {
+      "function_name": "occ_download_stats_export",
+      "parameters": [
+        "from",
+        "to",
+        "publishingCountry",
+        "datasetKey",
+        "publishingOrgKey",
+        "limit",
+        "offset"
+      ],
+      "original_endpoint": "/occurrence/download/statistics/export",
+      "parameter_mappings": {}
+    },
+    "GET /occurrence/download/statistics/downloadsByUserCountry": {
+      "function_name": "occ_download_stats_user_country",
+      "parameters": [
+        "from",
+        "to",
+        "userCountry",
+        "publishingCountry"
+      ],
+      "original_endpoint": "/occurrence/download/statistics/downloadsByUserCountry",
+      "parameter_mappings": {}
+    },
+    "GET /occurrence/download/statistics/downloadedRecordsByDataset": {
+      "function_name": "occ_download_stats_dataset_records",
+      "parameters": [
+        "from",
+        "to",
+        "publishingCountry",
+        "datasetKey",
+        "publishingOrgKey"
+      ],
+      "original_endpoint": "/occurrence/download/statistics/downloadedRecordsByDataset",
+      "parameter_mappings": {}
+    },
+    "GET /occurrence/download/statistics/downloadsByDataset": {
+      "function_name": "occ_download_stats_dataset",
+      "parameters": [
+        "from",
+        "to",
+        "publishingCountry",
+        "datasetKey",
+        "publishingOrgKey"
+      ],
+      "original_endpoint": "/occurrence/download/statistics/downloadsByDataset",
+      "parameter_mappings": {}
+    },
+    "GET /occurrence/download/statistics/downloadsBySource": {
+      "function_name": "occ_download_stats_source",
+      "parameters": [
+        "from",
+        "to",
+        "source"
+      ],
+      "original_endpoint": "/occurrence/download/statistics/downloadsBySource",
+      "parameter_mappings": {}
+    },
+    "GET /geocode/reverse": {
+      "function_name": "gbif_geocode",
+      "parameters": [
+        "latitude",
+        "longitude"
+      ],
+      "original_endpoint": "/geocode/reverse",
+      "parameter_mappings": {}
+    },
+    "GET /dataset/search": {
+      "function_name": "dataset_search",
+      "parameters": [
+        "query",
+        "type",
+        "publishingCountry",
+        "subtype",
+        "license",
+        "keyword",
+        "publishingOrg",
+        "hostingOrg",
+        "endorsingNodeKey",
+        "decade",
+        "projectId",
+        "hostingCountry",
+        "networkKey",
+        "doi",
+        "installationKey",
+        "endpointType",
+        "category",
+        "facet",
+        "facetLimit",
+        "facetOffset",
+        "facetMincount",
+        "facetMultiselect",
+        "limit",
+        "start",
+        "description"
+      ],
+      "original_endpoint": "/dataset/search",
+      "parameter_mappings": {}
+    },
+    "GET /dataset/search/export": {
+      "function_name": "dataset_export",
+      "parameters": [
+        "query",
+        "type",
+        "publishingCountry",
+        "subtype",
+        "license",
+        "keyword",
+        "publishingOrg",
+        "hostingOrg",
+        "endorsingNodeKey",
+        "decade",
+        "projectId",
+        "hostingCountry",
+        "networkKey",
+        "doi",
+        "category"
+      ],
+      "original_endpoint": "/dataset/search/export",
+      "parameter_mappings": {}
+    },
+    "GET /dataset": {
+      "function_name": "datasets",
+      "parameters": [
+        "type",
+        "limit",
+        "offset"
+      ],
+      "original_endpoint": "/dataset",
+      "parameter_mappings": {}
+    },
+    "GET /dataset/suggest": {
+      "function_name": "dataset_suggest",
+      "parameters": [
+        "query",
+        "type",
+        "publishingCountry",
+        "subtype",
+        "license",
+        "keyword",
+        "publishingOrg",
+        "hostingOrg",
+        "endorsingNodeKey",
+        "decade",
+        "projectId",
+        "hostingCountry",
+        "networkKey",
+        "doi",
+        "category",
+        "limit",
+        "start",
+        "description"
+      ],
+      "original_endpoint": "/dataset/suggest",
+      "parameter_mappings": {}
+    },
+    "GET /dataset/doi/{doi}": {
+      "function_name": "dataset_doi",
+      "parameters": [
+        "doi",
+        "limit",
+        "start"
+      ],
+      "original_endpoint": "/dataset/doi/{doi}",
+      "parameter_mappings": {}
+    },
+    "GET /dataset/doi/{prefix}/{suffix}": {
+      "function_name": "dataset_doi",
+      "parameters": [
+        "prefix",
+        "suffix",
+        "limit",
+        "start"
+      ],
+      "original_endpoint": "/dataset/doi/{prefix}/{suffix}",
+      "parameter_mappings": {}
+    },
+    "GET /dataset/{uuid}/gridded": {
+      "function_name": "dataset_gridded",
+      "parameters": [
+        "uuid",
+        "min_dis",
+        "min_per",
+        "return",
+        "min_dis_count",
+        "warn"
+      ],
+      "original_endpoint": "/dataset/{uuid}/gridded",
+      "parameter_mappings": {}
+    },
+    "GET /dataset/{uuid}": {
+      "function_name": "dataset_get",
+      "parameters": [
+        "uuid"
+      ],
+      "original_endpoint": "/dataset/{uuid}",
+      "parameter_mappings": {}
+    },
+    "GET /dataset/{uuid}/process": {
+      "function_name": "dataset_process",
+      "parameters": [
+        "uuid",
+        "limit",
+        "start"
+      ],
+      "original_endpoint": "/dataset/{uuid}/process",
+      "parameter_mappings": {}
+    },
+    "GET /dataset/{uuid}/networks": {
+      "function_name": "dataset_networks",
+      "parameters": [
+        "uuid",
+        "limit",
+        "start"
+      ],
+      "original_endpoint": "/dataset/{uuid}/networks",
+      "parameter_mappings": {}
+    },
+    "GET /dataset/{uuid}/constituents": {
+      "function_name": "dataset_constituents",
+      "parameters": [
+        "uuid",
+        "limit",
+        "start"
+      ],
+      "original_endpoint": "/dataset/{uuid}/constituents",
+      "parameter_mappings": {}
+    },
+    "GET /dataset/{uuid}/comment": {
+      "function_name": "dataset_comment",
+      "parameters": [
+        "uuid"
+      ],
+      "original_endpoint": "/dataset/{uuid}/comment",
+      "parameter_mappings": {}
+    },
+    "GET /dataset/{uuid}/contact": {
+      "function_name": "dataset_contact",
+      "parameters": [
+        "uuid"
+      ],
+      "original_endpoint": "/dataset/{uuid}/contact",
+      "parameter_mappings": {}
+    },
+    "GET /dataset/{uuid}/endpoint": {
+      "function_name": "dataset_endpoint",
+      "parameters": [
+        "uuid"
+      ],
+      "original_endpoint": "/dataset/{uuid}/endpoint",
+      "parameter_mappings": {}
+    },
+    "GET /dataset/{uuid}/identifier": {
+      "function_name": "dataset_identifier",
+      "parameters": [
+        "uuid"
+      ],
+      "original_endpoint": "/dataset/{uuid}/identifier",
+      "parameter_mappings": {}
+    },
+    "GET /dataset/{uuid}/machineTag": {
+      "function_name": "dataset_machinetag",
+      "parameters": [
+        "uuid"
+      ],
+      "original_endpoint": "/dataset/{uuid}/machineTag",
+      "parameter_mappings": {}
+    },
+    "GET /dataset/{uuid}/tag": {
+      "function_name": "dataset_tag",
+      "parameters": [
+        "uuid"
+      ],
+      "original_endpoint": "/dataset/{uuid}/tag",
+      "parameter_mappings": {}
+    },
+    "GET /dataset/{uuid}/metrics": {
+      "function_name": "dataset_metrics",
+      "parameters": [
+        "uuid"
+      ],
+      "original_endpoint": "/dataset/{uuid}/metrics",
+      "parameter_mappings": {}
+    },
+    "GET /dataset/duplicate": {
+      "function_name": "dataset_duplicate",
+      "parameters": [
+        "limit",
+        "start"
+      ],
+      "original_endpoint": "/dataset/duplicate",
+      "parameter_mappings": {}
+    },
+    "GET /dataset/withNoEndpoint": {
+      "function_name": "dataset_noendpoint",
+      "parameters": [
+        "limit",
+        "start"
+      ],
+      "original_endpoint": "/dataset/withNoEndpoint",
+      "parameter_mappings": {}
+    },
+    "GET /grscicoll/collection": {
+      "function_name": "collection_search",
+      "parameters": [
+        "query",
+        "name",
+        "fuzzyName",
+        "preservationType",
+        "contentType",
+        "numberSpecimens",
+        "accessionStatus",
+        "personalCollection",
+        "sourceId",
+        "source",
+        "code",
+        "alternativeCode",
+        "contact",
+        "institutionKey",
+        "country",
+        "city",
+        "gbifRegion",
+        "machineTagNamespace",
+        "machineTagName",
+        "machineTagValue",
+        "identifier",
+        "identifierType",
+        "active",
+        "displayOnNHCPortal",
+        "masterSourceType",
+        "replacedBy",
+        "sortBy",
+        "sortOrder",
+        "offset",
+        "limit",
+        "format"
+      ],
+      "original_endpoint": "/grscicoll/collection",
+      "parameter_mappings": {}
+    },
+    "GET /grscicoll/collection/export": {
+      "function_name": "collection_export",
+      "parameters": [
+        "query",
+        "name",
+        "fuzzyName",
+        "code",
+        "alternativeCode",
+        "contact",
+        "institutionKey",
+        "country",
+        "city"
+      ],
+      "original_endpoint": "/grscicoll/collection/export",
+      "parameter_mappings": {}
+    },
+    "GET /grscicoll/institution": {
+      "function_name": "institution_search",
+      "parameters": [
+        "query",
+        "type",
+        "institutionalGovernance",
+        "disciplines",
+        "name",
+        "fuzzyName",
+        "numberSpecimens",
+        "occurrenceCount",
+        "typeSpecimenCount",
+        "sourceId",
+        "source",
+        "code",
+        "alternativeCode",
+        "contact",
+        "institutionKey",
+        "country",
+        "city",
+        "gbifRegion",
+        "machineTagNamespace",
+        "machineTagName",
+        "machineTagValue",
+        "identifier",
+        "identifierType",
+        "active",
+        "displayOnNHCPortal",
+        "masterSourceType",
+        "replacedBy",
+        "sortBy",
+        "sortOrder",
+        "offset",
+        "limit",
+        "format"
+      ],
+      "original_endpoint": "/grscicoll/institution",
+      "parameter_mappings": {}
+    },
+    "GET /grscicoll/institution/export": {
+      "function_name": "institution_export",
+      "parameters": [
+        "query",
+        "type",
+        "name",
+        "fuzzyName",
+        "code",
+        "alternativeCode",
+        "contact",
+        "country",
+        "city"
+      ],
+      "original_endpoint": "/grscicoll/institution/export",
+      "parameter_mappings": {}
+    },
+    "GET /literature/search": {
+      "function_name": "lit_count",
+      "parameters": [
+        "q",
+        "countriesOfResearcher",
+        "countriesOfCoverage",
+        "literatureType",
+        "relevance",
+        "year",
+        "topics",
+        "datasetKey",
+        "publishingOrg",
+        "peerReview",
+        "openAccess",
+        "downloadKey"
+      ],
+      "original_endpoint": "/literature/search",
+      "parameter_mappings": {
+        "gbifDatasetKey": "datasetKey",
+        "gbifDownloadKey": "downloadKey",
+        "publishingOrganizationKey": "publishingOrg"
+      }
+    },
+    "GET /literature/export": {
+      "function_name": "lit_export",
+      "parameters": [
+        "q",
+        "countriesOfResearcher",
+        "countriesOfCoverage",
+        "literatureType",
+        "relevance",
+        "year",
+        "topics",
+        "datasetKey",
+        "publishingOrg",
+        "peerReview",
+        "openAccess",
+        "downloadKey",
+        "format"
+      ],
+      "original_endpoint": "/literature/export",
+      "parameter_mappings": {}
+    },
+    "GET /network": {
+      "function_name": "networks",
+      "parameters": [
+        "data",
+        "uuid",
+        "query",
+        "identifier",
+        "identifierType",
+        "limit",
+        "start"
+      ],
+      "original_endpoint": "/network",
+      "parameter_mappings": {}
+    },
+    "GET /network/{key}": {
+      "function_name": "network",
+      "parameters": [
+        "key"
+      ],
+      "original_endpoint": "/network/{key}",
+      "parameter_mappings": {}
+    },
+    "GET /network/{key}/constituents": {
+      "function_name": "network",
+      "parameters": [
+        "uuid",
+        "data",
+        "limit",
+        "start"
+      ],
+      "original_endpoint": "/network/{key}/constituents",
+      "parameter_mappings": {}
+    },
+    "GET /network/{key}/comment": {
+      "function_name": "network",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "original_endpoint": "/network/{key}/comment",
+      "parameter_mappings": {}
+    },
+    "GET /network/{key}/contact": {
+      "function_name": "network",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "original_endpoint": "/network/{key}/contact",
+      "parameter_mappings": {}
+    },
+    "GET /network/{key}/endpoint": {
+      "function_name": "network",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "original_endpoint": "/network/{key}/endpoint",
+      "parameter_mappings": {}
+    },
+    "GET /network/{key}/identifier": {
+      "function_name": "network",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "original_endpoint": "/network/{key}/identifier",
+      "parameter_mappings": {}
+    },
+    "GET /network/{key}/machineTag": {
+      "function_name": "network",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "original_endpoint": "/network/{key}/machineTag",
+      "parameter_mappings": {}
+    },
+    "GET /network/{key}/tag": {
+      "function_name": "network",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "original_endpoint": "/network/{key}/tag",
+      "parameter_mappings": {}
+    },
+    "GET /node": {
+      "function_name": "nodes",
+      "parameters": [
+        "data",
+        "uuid",
+        "query",
+        "identifier",
+        "identifierType",
+        "limit",
+        "start",
+        "isocode"
+      ],
+      "original_endpoint": "/node",
+      "parameter_mappings": {}
+    },
+    "GET /node/{key}": {
+      "function_name": "nodes",
+      "parameters": [
+        "uuid"
+      ],
+      "original_endpoint": "/node/{key}",
+      "parameter_mappings": {}
+    },
+    "GET /node/{key}/organization": {
+      "function_name": "nodes",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "original_endpoint": "/node/{key}/organization",
+      "parameter_mappings": {}
+    },
+    "GET /node/country/{countryCode}": {
+      "function_name": "nodes",
+      "parameters": [
+        "data",
+        "isocode"
+      ],
+      "original_endpoint": "/node/country/{countryCode}",
+      "parameter_mappings": {}
+    },
+    "GET /node/country": {
+      "function_name": "nodes",
+      "parameters": [
+        "data"
+      ],
+      "original_endpoint": "/node/country",
+      "parameter_mappings": {}
+    },
+    "GET /node/{key}/dataset": {
+      "function_name": "nodes",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "original_endpoint": "/node/{key}/dataset",
+      "parameter_mappings": {}
+    },
+    "GET /node/{key}/installation": {
+      "function_name": "nodes",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "original_endpoint": "/node/{key}/installation",
+      "parameter_mappings": {}
+    },
+    "GET /node/{key}/comment": {
+      "function_name": "nodes",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "original_endpoint": "/node/{key}/comment",
+      "parameter_mappings": {}
+    },
+    "GET /node/{key}/endpoint": {
+      "function_name": "nodes",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "original_endpoint": "/node/{key}/endpoint",
+      "parameter_mappings": {}
+    },
+    "GET /node/{key}/identifier": {
+      "function_name": "nodes",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "original_endpoint": "/node/{key}/identifier",
+      "parameter_mappings": {}
+    },
+    "GET /node/{key}/machineTag": {
+      "function_name": "nodes",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "original_endpoint": "/node/{key}/machineTag",
+      "parameter_mappings": {}
+    },
+    "GET /node/{key}/tag": {
+      "function_name": "nodes",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "original_endpoint": "/node/{key}/tag",
+      "parameter_mappings": {}
+    },
+    "GET /node/{key}/pendingEndorsement": {
+      "function_name": "nodes",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "original_endpoint": "/node/{key}/pendingEndorsement",
+      "parameter_mappings": {}
+    },
+    "GET /node/pendingEndorsement": {
+      "function_name": "nodes",
+      "parameters": [
+        "data"
+      ],
+      "original_endpoint": "/node/pendingEndorsement",
+      "parameter_mappings": {}
+    },
+    "GET /organization": {
+      "function_name": "organizations",
+      "parameters": [
+        "data",
+        "country",
+        "uuid",
+        "query",
+        "limit",
+        "start"
+      ],
+      "original_endpoint": "/organization",
+      "parameter_mappings": {}
+    },
+    "GET /organization/{key}": {
+      "function_name": "organizations",
+      "parameters": [
+        "uuid"
+      ],
+      "original_endpoint": "/organization/{key}",
+      "parameter_mappings": {}
+    },
+    "GET /organization/{key}/comment": {
+      "function_name": "organizations",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "original_endpoint": "/organization/{key}/comment",
+      "parameter_mappings": {}
+    },
+    "GET /organization/{key}/contact": {
+      "function_name": "organizations",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "original_endpoint": "/organization/{key}/contact",
+      "parameter_mappings": {}
+    },
+    "GET /organization/{key}/endpoint": {
+      "function_name": "organizations",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "original_endpoint": "/organization/{key}/endpoint",
+      "parameter_mappings": {}
+    },
+    "GET /organization/{key}/identifier": {
+      "function_name": "organizations",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "original_endpoint": "/organization/{key}/identifier",
+      "parameter_mappings": {}
+    },
+    "GET /organization/{key}/machineTag": {
+      "function_name": "organizations",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "original_endpoint": "/organization/{key}/machineTag",
+      "parameter_mappings": {}
+    },
+    "GET /organization/{key}/tag": {
+      "function_name": "organizations",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "original_endpoint": "/organization/{key}/tag",
+      "parameter_mappings": {}
+    },
+    "GET /organization/{key}/publishedDataset": {
+      "function_name": "organizations",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "original_endpoint": "/organization/{key}/publishedDataset",
+      "parameter_mappings": {}
+    },
+    "GET /organization/{key}/hostedDataset": {
+      "function_name": "organizations",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "original_endpoint": "/organization/{key}/hostedDataset",
+      "parameter_mappings": {}
+    },
+    "GET /organization/{key}/installation": {
+      "function_name": "organizations",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "original_endpoint": "/organization/{key}/installation",
+      "parameter_mappings": {}
+    },
+    "GET /organization/deleted": {
+      "function_name": "organizations",
+      "parameters": [
+        "data"
+      ],
+      "original_endpoint": "/organization/deleted",
+      "parameter_mappings": {}
+    },
+    "GET /organization/pending": {
+      "function_name": "organizations",
+      "parameters": [
+        "data"
+      ],
+      "original_endpoint": "/organization/pending",
+      "parameter_mappings": {}
+    },
+    "GET /organization/nonPublishing": {
+      "function_name": "organizations",
+      "parameters": [
+        "data"
+      ],
+      "original_endpoint": "/organization/nonPublishing",
+      "parameter_mappings": {}
+    },
+    "GET /installation": {
+      "function_name": "installation_search",
+      "parameters": [
+        "query",
+        "type",
+        "identifierType",
+        "identifier",
+        "machineTagNamespace",
+        "machineTagName",
+        "machineTagValue",
+        "modified",
+        "limit",
+        "offset"
+      ],
+      "original_endpoint": "/installation",
+      "parameter_mappings": {}
+    },
+    "GET /installation/{key}": {
+      "function_name": "installations",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "original_endpoint": "/installation/{key}",
+      "parameter_mappings": {}
+    },
+    "GET /installation/{key}/dataset": {
+      "function_name": "installations",
+      "parameters": [
+        "uuid",
+        "data",
+        "limit",
+        "start"
+      ],
+      "original_endpoint": "/installation/{key}/dataset",
+      "parameter_mappings": {}
+    },
+    "GET /installation/{key}/comment": {
+      "function_name": "installations",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "original_endpoint": "/installation/{key}/comment",
+      "parameter_mappings": {}
+    },
+    "GET /installation/{key}/contact": {
+      "function_name": "installations",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "original_endpoint": "/installation/{key}/contact",
+      "parameter_mappings": {}
+    },
+    "GET /installation/{key}/endpoint": {
+      "function_name": "installations",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "original_endpoint": "/installation/{key}/endpoint",
+      "parameter_mappings": {}
+    },
+    "GET /installation/{key}/identifier": {
+      "function_name": "installations",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "original_endpoint": "/installation/{key}/identifier",
+      "parameter_mappings": {}
+    },
+    "GET /installation/{key}/machineTag": {
+      "function_name": "installations",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "original_endpoint": "/installation/{key}/machineTag",
+      "parameter_mappings": {}
+    },
+    "GET /installation/{key}/tag": {
+      "function_name": "installations",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "original_endpoint": "/installation/{key}/tag",
+      "parameter_mappings": {}
+    },
+    "GET /installation/deleted": {
+      "function_name": "installations",
+      "parameters": [
+        "data",
+        "limit",
+        "start"
+      ],
+      "original_endpoint": "/installation/deleted",
+      "parameter_mappings": {}
+    },
+    "GET /installation/nonPublishing": {
+      "function_name": "installations",
+      "parameters": [
+        "data",
+        "limit",
+        "start"
+      ],
+      "original_endpoint": "/installation/nonPublishing",
+      "parameter_mappings": {}
+    },
+    "POST /derivedDataset": {
+      "function_name": "derived_dataset_prep",
+      "parameters": [
+        "citation_data",
+        "title",
+        "description",
+        "source_url",
+        "gbif_download_doi",
+        "user",
+        "pwd"
+      ],
+      "original_endpoint": "/derivedDataset",
+      "parameter_mappings": {}
+    },
+    "GET /derivedDataset/{key}": {
+      "function_name": "derived_dataset_get",
+      "parameters": [
+        "key"
+      ],
+      "original_endpoint": "/derivedDataset/{key}",
+      "parameter_mappings": {}
+    },
+    "GET /oai-pmh/registry": {
+      "function_name": "gbif_oai_identify",
+      "parameters": [
+        "prefix",
+        "from",
+        "until",
+        "set",
+        "token",
+        "as",
+        "id",
+        "ids"
+      ],
+      "original_endpoint": "/oai-pmh/registry",
+      "parameter_mappings": {}
+    },
+    "GET /v1/species/search": {
+      "function_name": "name_lookup",
+      "parameters": [
+        "query",
+        "rank",
+        "higherTaxonKey",
+        "status",
+        "isExtinct",
+        "habitat",
+        "nameType",
+        "datasetKey",
+        "origin",
+        "nomenclaturalStatus",
+        "limit",
+        "start",
+        "facet",
+        "facetMincount",
+        "facetMultiselect",
+        "type",
+        "hl",
+        "issue",
+        "constituentKey",
+        "verbose"
+      ],
+      "original_endpoint": "/v1/species/search",
+      "parameter_mappings": {}
+    },
+    "GET /v2/species/match": {
+      "function_name": "name_backbone_checklist",
+      "parameters": [
+        "name",
+        "rank",
+        "kingdom",
+        "phylum",
+        "class",
+        "order",
+        "superfamily",
+        "family",
+        "subfamily",
+        "tribe",
+        "subtribe",
+        "genus",
+        "subgenus",
+        "species",
+        "usageKey",
+        "taxonID",
+        "taxonConceptID",
+        "scientificNameID",
+        "scientificNameAuthorship",
+        "genericName",
+        "specificEpithet",
+        "infraspecificEpithet",
+        "verbatimTaxonRank",
+        "exclude",
+        "strict",
+        "verbose"
+      ],
+      "original_endpoint": "/v2/species/match",
+      "parameter_mappings": {
+        "taxonRank": "rank",
+        "scientificName": "name"
+      }
+    },
+    "GET /v1/species/suggest": {
+      "function_name": "name_suggest",
+      "parameters": [
+        "q",
+        "datasetKey",
+        "rank",
+        "fields",
+        "start",
+        "limit"
+      ],
+      "original_endpoint": "/v1/species/suggest",
+      "parameter_mappings": {}
+    },
+    "GET /v1/species": {
+      "function_name": "name_usage",
+      "parameters": [
+        "name",
+        "language",
+        "datasetKey",
+        "rank",
+        "limit",
+        "start"
+      ],
+      "original_endpoint": "/v1/species",
+      "parameter_mappings": {}
+    },
+    "GET /v1/species/{usageKey}": {
+      "function_name": "name_usage",
+      "parameters": [
+        "key",
+        "name",
+        "language",
+        "datasetKey",
+        "rank",
+        "limit",
+        "start"
+      ],
+      "original_endpoint": "/v1/species/{usageKey}",
+      "parameter_mappings": {}
+    },
+    "GET /v1/species/{usageKey}/verbatim": {
+      "function_name": "name_usage",
+      "parameters": [
+        "key"
+      ],
+      "original_endpoint": "/v1/species/{usageKey}/verbatim",
+      "parameter_mappings": {}
+    },
+    "GET /v1/species/{usageKey}/name": {
+      "function_name": "name_usage",
+      "parameters": [
+        "key"
+      ],
+      "original_endpoint": "/v1/species/{usageKey}/name",
+      "parameter_mappings": {}
+    },
+    "GET /v1/species/{usageKey}/parents": {
+      "function_name": "name_usage",
+      "parameters": [
+        "key"
+      ],
+      "original_endpoint": "/v1/species/{usageKey}/parents",
+      "parameter_mappings": {}
+    },
+    "GET /v1/species/{usageKey}/children": {
+      "function_name": "name_usage",
+      "parameters": [
+        "key",
+        "limit",
+        "start"
+      ],
+      "original_endpoint": "/v1/species/{usageKey}/children",
+      "parameter_mappings": {}
+    },
+    "GET /v1/species/{usageKey}/related": {
+      "function_name": "name_usage",
+      "parameters": [
+        "key",
+        "language",
+        "limit",
+        "start"
+      ],
+      "original_endpoint": "/v1/species/{usageKey}/related",
+      "parameter_mappings": {}
+    },
+    "GET /v1/species/{usageKey}/synonyms": {
+      "function_name": "name_usage",
+      "parameters": [
+        "key",
+        "language",
+        "limit",
+        "start"
+      ],
+      "original_endpoint": "/v1/species/{usageKey}/synonyms",
+      "parameter_mappings": {}
+    },
+    "GET /v1/species/{usageKey}/descriptions": {
+      "function_name": "name_usage",
+      "parameters": [
+        "key",
+        "language",
+        "limit",
+        "start"
+      ],
+      "original_endpoint": "/v1/species/{usageKey}/descriptions",
+      "parameter_mappings": {}
+    },
+    "GET /v1/species/{usageKey}/distributions": {
+      "function_name": "name_usage",
+      "parameters": [
+        "key",
+        "language",
+        "limit",
+        "start"
+      ],
+      "original_endpoint": "/v1/species/{usageKey}/distributions",
+      "parameter_mappings": {}
+    },
+    "GET /v1/species/{usageKey}/media": {
+      "function_name": "name_usage",
+      "parameters": [
+        "key",
+        "limit",
+        "start"
+      ],
+      "original_endpoint": "/v1/species/{usageKey}/media",
+      "parameter_mappings": {}
+    },
+    "GET /v1/species/{usageKey}/references": {
+      "function_name": "name_usage",
+      "parameters": [
+        "key",
+        "limit",
+        "start"
+      ],
+      "original_endpoint": "/v1/species/{usageKey}/references",
+      "parameter_mappings": {}
+    },
+    "GET /v1/species/{usageKey}/speciesProfiles": {
+      "function_name": "name_usage",
+      "parameters": [
+        "key",
+        "language",
+        "limit",
+        "start"
+      ],
+      "original_endpoint": "/v1/species/{usageKey}/speciesProfiles",
+      "parameter_mappings": {}
+    },
+    "GET /v1/species/{usageKey}/vernacularNames": {
+      "function_name": "name_usage",
+      "parameters": [
+        "key",
+        "language",
+        "limit",
+        "start"
+      ],
+      "original_endpoint": "/v1/species/{usageKey}/vernacularNames",
+      "parameter_mappings": {}
+    },
+    "GET /v1/species/{usageKey}/typeSpecimens": {
+      "function_name": "name_usage",
+      "parameters": [
+        "key",
+        "limit",
+        "start"
+      ],
+      "original_endpoint": "/v1/species/{usageKey}/typeSpecimens",
+      "parameter_mappings": {}
+    },
+    "GET /v1/species/{usageKey}/iucnRedListCategory": {
+      "function_name": "name_usage",
+      "parameters": [
+        "key"
+      ],
+      "original_endpoint": "/v1/species/{usageKey}/iucnRedListCategory",
+      "parameter_mappings": {}
+    },
+    "GET /v1/species/root/{datasetKey}": {
+      "function_name": "name_usage",
+      "parameters": [
+        "uuid"
+      ],
+      "original_endpoint": "/v1/species/root/{datasetKey}",
+      "parameter_mappings": {}
+    },
+    "GET /v1/parser/name": {
+      "function_name": "name_parse",
+      "parameters": [
+        "scientificname"
+      ],
+      "original_endpoint": "/v1/parser/name",
+      "parameter_mappings": {
+        "name": "scientificname"
+      }
+    },
+    "POST /v1/parser/name": {
+      "function_name": "name_parse",
+      "parameters": [
+        "scientificname"
+      ],
+      "original_endpoint": "/v1/parser/name",
+      "parameter_mappings": {
+        "name": "scientificname"
+      }
+    },
+    "GET /enumeration/basic/{type}": {
+      "function_name": "enumeration",
+      "parameters": [
+        "x"
+      ],
+      "original_endpoint": "/enumeration/basic/{type}",
+      "parameter_mappings": {
+        "name": "x"
+      }
+    },
+    "GET /enumeration/country": {
+      "function_name": "enumeration_country",
+      "parameters": [],
+      "original_endpoint": "/enumeration/country",
+      "parameter_mappings": {}
+    }
+  }
+}
