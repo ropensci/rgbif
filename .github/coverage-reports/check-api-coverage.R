@@ -394,15 +394,19 @@ generate_reports <- function(results, all_endpoints) {
         paste("###", info$function_name, "-", endpoint_key),
         "- **Missing parameters:**"
       )
-      # Add each parameter with separate checkboxes
+      # Add each parameter as a simple list item
       for (param in info$missing_parameters) {
         md_content <- c(md_content,
-          paste0("  - **`", param, "`**"),
-          "    - [ ] Ignore - Add to ignored_parameters",
-          "    - [ ] Issue - Create issue to implement this parameter"
+          paste0("  - `", param, "`")
         )
       }
-      md_content <- c(md_content, "")
+      # Add single pair of checkboxes for all parameters in this function
+      md_content <- c(md_content,
+        "- **Actions:**",
+        "  - [ ] Ignore - Add all parameters to ignored_parameters",
+        "  - [ ] Issue - Create issue to implement these parameters",
+        ""
+      )
     }
   }
   

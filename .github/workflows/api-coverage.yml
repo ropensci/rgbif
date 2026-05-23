@@ -396,25 +396,27 @@ jobs:
                 "*This issue was automatically created by the API Coverage workflow*"
             else
               FUNCTION=$(cat "$ACTIONS_FILE" | jq -r ".issues[$i].function_name")
-              PARAMETER=$(cat "$ACTIONS_FILE" | jq -r ".issues[$i].parameter")
               ENDPOINT=$(cat "$ACTIONS_FILE" | jq -r ".issues[$i].endpoint")
+              # Get parameters array and format as markdown list
+              PARAMS=$(cat "$ACTIONS_FILE" | jq -r ".issues[$i].parameters[]" | sed 's/^/- `/' | sed 's/$/`/')
               
               printf -v BODY '%s\n' \
-                "## Missing Parameter" \
+                "## Missing Parameters" \
                 "" \
                 "**Function:** \`$FUNCTION\`" \
-                "**Parameter:** \`$PARAMETER\`" \
                 "**Endpoint:** \`$ENDPOINT\`" \
                 "" \
-                "This parameter was identified as missing in the API coverage report." \
+                "The following parameters were identified as missing in the API coverage report:" \
+                "" \
+                "$PARAMS" \
                 "" \
                 "### Implementation Steps" \
-                "1. Review the GBIF API documentation for this parameter" \
-                "2. Add parameter to the R function signature" \
-                "3. Update internal API call to include the parameter" \
+                "1. Review the GBIF API documentation for these parameters" \
+                "2. Add parameters to the R function signature" \
+                "3. Update internal API call to include the parameters" \
                 "4. Add parameter documentation to roxygen comments" \
-                "5. Update api-mapping.json with the parameter" \
-                "6. Add tests for the new parameter" \
+                "5. Update api-mapping.json with the parameters" \
+                "6. Add tests for the new parameters" \
                 "" \
                 "### Resources" \
                 "- [GBIF API Docs](https://techdocs.gbif.org/)" \

@@ -125,36 +125,42 @@ parse_issue_checkboxes <- function(issue_body) {
       if (length(func_match) > 2) {
         current_function <- func_match[2]
         current_endpoint <- func_match[3]
-      }
-    }
-    
-    # Parse parameter lines with checkboxes
-    if (current_section == "parameters" && !is.null(current_function) && grepl("^  - \\*\\*`[^`]+`\\*\\*", line)) {
-      param_match <- regmatches(line, regexec("^  - \\*\\*`([^`]+)`\\*\\*", line))[[1]]
-      if (length(param_match) > 1) {
-        param_name <- param_match[2]
         
-        # Look ahead for checkbox lines (nested under parameter)
+        # Collect all parameters for this function
+        param_list <- c()
         ignore_checked <- FALSE
         issue_checked <- FALSE
-        for (j in (i+1):min(i+5, length(lines))) {
+        
+        # Look ahead to collect parameters and check Actions
+        for (j in (i+1):min(i+50, length(lines))) {
           check_line <- lines[j]
-          # Check for nested checkboxes (4-space indent)
-          if (grepl("^    - \\[x\\] Ignore|^    - \\[X\\] Ignore", check_line, ignore.case = TRUE)) {
+          
+          # Collect parameter names
+          if (grepl("^  - `[^`]+`$", check_line)) {
+            param_match <- regmatches(check_line, regexec("^  - `([^`]+)`$", check_line))[[1]]
+            if (length(param_match) > 1) {
+              param_list <- c(param_list, param_match[2])
+            }
+          }
+          
+          # Check for Actions checkboxes
+          if (grepl("- \\[x\\] Ignore|\\[X\\] Ignore", check_line, ignore.case = TRUE)) {
             ignore_checked <- TRUE
           }
-          if (grepl("^    - \\[x\\] Issue|^    - \\[X\\] Issue", check_line, ignore.case = TRUE)) {
+          if (grepl("- \\[x\\] Issue|\\[X\\] Issue", check_line, ignore.case = TRUE)) {
             issue_checked <- TRUE
           }
-          # Stop at next parameter or section
-          if (grepl("^  - \\*\\*`|^###", check_line)) break
+          
+          # Stop at next function section
+          if (grepl("^###", check_line) && j > i + 1) break
         }
         
-        if (ignore_checked || issue_checked) {
+        # If any action is checked, add entry for this function with all its parameters
+        if ((ignore_checked || issue_checked) && length(param_list) > 0) {
           parameters[[length(parameters) + 1]] <- list(
             function_name = current_function,
             endpoint = current_endpoint,
-            parameter = param_name,
+            parameters = param_list,
             ignore = ignore_checked,
             issue = issue_checked
           )
@@ -205,18 +211,23 @@ update_mapping_file <- function(actions, mapping_file) {
       }
       
       func_name <- param_action$function_name
-      param_name <- param_action$parameter
       
       # Initialize function entry if it doesn't exist
-      if (is.null(mapping$ignored_parameters[[func_name]])) {
-        mapping$ignored_parameters[[func_name]] <- list()
+      if (is.null(mapping$ignored_parameters$function_specific[[func_name]])) {
+        if (is.null(mapping$ignored_parameters$function_specific)) {
+          mapping$ignored_parameters$function_specific <- list()
+        }
+        mapping$ignored_parameters$function_specific[[func_name]] <- list()
       }
       
-      # Check if already ignored
-      if (is.null(mapping$ignored_parameters[[func_name]][[param_name]])) {
-        mapping$ignored_parameters[[func_name]][[param_name]] <- 
-          sprintf("Not implemented - marked for ignore on %s", Sys.Date())
-        cat_success(sprintf("Added ignored parameter: %s for %s", param_name, func_name))
+      # Add all parameters from the list
+      for (param_name in param_action$parameters) {
+        # Check if already ignored
+        if (!param_name %in% mapping$ignored_parameters$function_specific[[func_name]]) {
+          mapping$ignored_parameters$function_specific[[func_name]] <- 
+            c(mapping$ignored_parameters$function_specific[[func_name]], param_name)
+          cat_success(sprintf("Added ignored parameter: %s for %s", param_name, func_name))
+        }
       }
     }
   }
@@ -248,10 +259,18 @@ create_actions_file <- function(actions, actions_file) {
   # Create issues for parameters
   for (param_action in actions$parameters) {
     if (param_action$issue) {
+      # Create a single issue for all parameters
+      param_list <- paste(sprintf("`%s`", param_action$parameters), collapse = ", ")
       issues_to_create[[length(issues_to_create) + 1]] <- list(
         type = "parameter",
-        title = sprintf("API Coverage: Implement parameter %s for %s", 
-                       param_action$parameter, param_action$function_name),
+        title = sprintf("API Coverage: Implement parameters for %s", param_action$function_name),
+        function_name = param_action$function_name,
+        endpoint = param_action$endpoint,
+        parameters = param_action$parameters,
+        labels = c("enhancement", "api-coverage", "parameter")
+      )
+    }
+  }
         function_name = param_action$function_name,
         endpoint = param_action$endpoint,
         parameter = param_action$parameter,
