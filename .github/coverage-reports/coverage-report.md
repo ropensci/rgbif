@@ -1,5 +1,5 @@
 # GBIF API Coverage Report
-Generated: 2026-05-22 19:06:25.193047
+Generated: 2026-05-23 05:23:29.481861
 
 ## Summary
 
@@ -17,574 +17,302 @@ Generated: 2026-05-22 19:06:25.193047
 
 ### occ_count - GET /occurrence/search
 - **Missing parameters:**
-  - **`nucleotideSequence.nucleotideSequenceID`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`nucleotideSequence.targetGene`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`nucleotideSequence.sequence`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`nucleotideSequence.sequenceLength`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`nucleotideSequence.gcContent`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`nucleotideSequence.nonIupacFraction`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`nucleotideSequence.nonACGTNFraction`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`nucleotideSequence.nFraction`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`nucleotideSequence.nRunsCapped`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`nucleotideSequence.naturalLanguageDetected`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`nucleotideSequence.endsTrimmed`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`nucleotideSequence.gapsOrWhitespaceRemoved`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`nucleotideSequence.invalid`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
+  - `nucleotideSequence.nucleotideSequenceID`
+  - `nucleotideSequence.targetGene`
+  - `nucleotideSequence.sequence`
+  - `nucleotideSequence.sequenceLength`
+  - `nucleotideSequence.gcContent`
+  - `nucleotideSequence.nonIupacFraction`
+  - `nucleotideSequence.nonACGTNFraction`
+  - `nucleotideSequence.nFraction`
+  - `nucleotideSequence.nRunsCapped`
+  - `nucleotideSequence.naturalLanguageDetected`
+  - `nucleotideSequence.endsTrimmed`
+  - `nucleotideSequence.gapsOrWhitespaceRemoved`
+  - `nucleotideSequence.invalid`
+- **Actions:**
+  - [ ] Ignore - Add all parameters to ignored_parameters
+  - [ ] Issue - Create issue to implement these parameters
 
 ### occ_download_stats - GET /occurrence/download/statistics
 - **Missing parameters:**
-  - **`fromDate`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`toDate`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
+  - `fromDate`
+  - `toDate`
+- **Actions:**
+  - [ ] Ignore - Add all parameters to ignored_parameters
+  - [ ] Issue - Create issue to implement these parameters
 
 ### occ_download_stats_export - GET /occurrence/download/statistics/export
 - **Missing parameters:**
-  - **`fromDate`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`toDate`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
+  - `fromDate`
+  - `toDate`
+- **Actions:**
+  - [ ] Ignore - Add all parameters to ignored_parameters
+  - [ ] Issue - Create issue to implement these parameters
 
 ### occ_download_stats_user_country - GET /occurrence/download/statistics/downloadsByUserCountry
 - **Missing parameters:**
-  - **`fromDate`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`toDate`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
+  - `fromDate`
+  - `toDate`
+- **Actions:**
+  - [ ] Ignore - Add all parameters to ignored_parameters
+  - [ ] Issue - Create issue to implement these parameters
 
 ### occ_download_stats_dataset_records - GET /occurrence/download/statistics/downloadedRecordsByDataset
 - **Missing parameters:**
-  - **`fromDate`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`toDate`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
+  - `fromDate`
+  - `toDate`
+- **Actions:**
+  - [ ] Ignore - Add all parameters to ignored_parameters
+  - [ ] Issue - Create issue to implement these parameters
 
 ### occ_download_stats_dataset - GET /occurrence/download/statistics/downloadsByDataset
 - **Missing parameters:**
-  - **`fromDate`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`toDate`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
+  - `fromDate`
+  - `toDate`
+- **Actions:**
+  - [ ] Ignore - Add all parameters to ignored_parameters
+  - [ ] Issue - Create issue to implement these parameters
 
 ### occ_download_stats_source - GET /occurrence/download/statistics/downloadsBySource
 - **Missing parameters:**
-  - **`fromDate`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`toDate`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
+  - `fromDate`
+  - `toDate`
+- **Actions:**
+  - [ ] Ignore - Add all parameters to ignored_parameters
+  - [ ] Issue - Create issue to implement these parameters
 
 ### dataset_search - GET /dataset/search
 - **Missing parameters:**
-  - **`continent`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`taxonKey`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`recordCount`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`modifiedDate`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`createdDate`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`contactUserId`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`contactEmail`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`facetMinCount`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
+  - `continent`
+  - `taxonKey`
+  - `recordCount`
+  - `modifiedDate`
+  - `createdDate`
+  - `contactUserId`
+  - `contactEmail`
+  - `facetMinCount`
+- **Actions:**
+  - [ ] Ignore - Add all parameters to ignored_parameters
+  - [ ] Issue - Create issue to implement these parameters
 
 ### dataset_export - GET /dataset/search/export
 - **Missing parameters:**
-  - **`continent`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`taxonKey`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`recordCount`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`modifiedDate`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`createdDate`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`installationKey`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`endpointType`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`contactUserId`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`contactEmail`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
+  - `continent`
+  - `taxonKey`
+  - `recordCount`
+  - `modifiedDate`
+  - `createdDate`
+  - `installationKey`
+  - `endpointType`
+  - `contactUserId`
+  - `contactEmail`
+- **Actions:**
+  - [ ] Ignore - Add all parameters to ignored_parameters
+  - [ ] Issue - Create issue to implement these parameters
 
 ### datasets - GET /dataset
 - **Missing parameters:**
-  - **`country`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`identifierType`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`identifier`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`machineTagNamespace`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`machineTagName`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`machineTagValue`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`modified`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`created`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
+  - `country`
+  - `identifierType`
+  - `identifier`
+  - `machineTagNamespace`
+  - `machineTagName`
+  - `machineTagValue`
+  - `modified`
+  - `created`
+- **Actions:**
+  - [ ] Ignore - Add all parameters to ignored_parameters
+  - [ ] Issue - Create issue to implement these parameters
 
 ### dataset_suggest - GET /dataset/suggest
 - **Missing parameters:**
-  - **`continent`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`taxonKey`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`recordCount`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`modifiedDate`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`createdDate`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`installationKey`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`endpointType`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`contactUserId`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`contactEmail`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
+  - `continent`
+  - `taxonKey`
+  - `recordCount`
+  - `modifiedDate`
+  - `createdDate`
+  - `installationKey`
+  - `endpointType`
+  - `contactUserId`
+  - `contactEmail`
+- **Actions:**
+  - [ ] Ignore - Add all parameters to ignored_parameters
+  - [ ] Issue - Create issue to implement these parameters
 
 ### dataset_tag - GET /dataset/{uuid}/tag
 - **Missing parameters:**
-  - **`owner`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
+  - `owner`
+- **Actions:**
+  - [ ] Ignore - Add all parameters to ignored_parameters
+  - [ ] Issue - Create issue to implement these parameters
 
 ### collection_search - GET /grscicoll/collection
 - **Missing parameters:**
-  - **`institution`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`occurrenceCount`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`typeSpecimenCount`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`contactUserId`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`contactEmail`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
+  - `institution`
+  - `occurrenceCount`
+  - `typeSpecimenCount`
+  - `contactUserId`
+  - `contactEmail`
+- **Actions:**
+  - [ ] Ignore - Add all parameters to ignored_parameters
+  - [ ] Issue - Create issue to implement these parameters
 
 ### collection_export - GET /grscicoll/collection/export
 - **Missing parameters:**
-  - **`institution`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`contentType`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`preservationType`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`accessionStatus`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`personalCollection`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`sourceId`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`source`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`machineTagNamespace`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`machineTagName`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`machineTagValue`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`identifierType`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`identifier`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`gbifRegion`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`active`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`masterSourceType`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`numberSpecimens`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`displayOnNHCPortal`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`replacedBy`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`occurrenceCount`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`typeSpecimenCount`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`sortBy`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`sortOrder`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`contactUserId`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`contactEmail`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
+  - `institution`
+  - `contentType`
+  - `preservationType`
+  - `accessionStatus`
+  - `personalCollection`
+  - `sourceId`
+  - `source`
+  - `machineTagNamespace`
+  - `machineTagName`
+  - `machineTagValue`
+  - `identifierType`
+  - `identifier`
+  - `gbifRegion`
+  - `active`
+  - `masterSourceType`
+  - `numberSpecimens`
+  - `displayOnNHCPortal`
+  - `replacedBy`
+  - `occurrenceCount`
+  - `typeSpecimenCount`
+  - `sortBy`
+  - `sortOrder`
+  - `contactUserId`
+  - `contactEmail`
+- **Actions:**
+  - [ ] Ignore - Add all parameters to ignored_parameters
+  - [ ] Issue - Create issue to implement these parameters
 
 ### institution_search - GET /grscicoll/institution
 - **Missing parameters:**
-  - **`discipline`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`contactUserId`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`contactEmail`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
+  - `discipline`
+  - `contactUserId`
+  - `contactEmail`
+- **Actions:**
+  - [ ] Ignore - Add all parameters to ignored_parameters
+  - [ ] Issue - Create issue to implement these parameters
 
 ### institution_export - GET /grscicoll/institution/export
 - **Missing parameters:**
-  - **`institution`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`contentType`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`preservationType`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`accessionStatus`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`personalCollection`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`sourceId`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`source`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`machineTagNamespace`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`machineTagName`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`machineTagValue`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`identifierType`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`identifier`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`gbifRegion`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`active`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`masterSourceType`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`numberSpecimens`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`displayOnNHCPortal`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`replacedBy`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`occurrenceCount`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`typeSpecimenCount`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`institutionKey`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`sortBy`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`sortOrder`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`contactUserId`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`contactEmail`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
+  - `institution`
+  - `contentType`
+  - `preservationType`
+  - `accessionStatus`
+  - `personalCollection`
+  - `sourceId`
+  - `source`
+  - `machineTagNamespace`
+  - `machineTagName`
+  - `machineTagValue`
+  - `identifierType`
+  - `identifier`
+  - `gbifRegion`
+  - `active`
+  - `masterSourceType`
+  - `numberSpecimens`
+  - `displayOnNHCPortal`
+  - `replacedBy`
+  - `occurrenceCount`
+  - `typeSpecimenCount`
+  - `institutionKey`
+  - `sortBy`
+  - `sortOrder`
+  - `contactUserId`
+  - `contactEmail`
+- **Actions:**
+  - [ ] Ignore - Add all parameters to ignored_parameters
+  - [ ] Issue - Create issue to implement these parameters
 
 ### lit_count - GET /literature/search
 - **Missing parameters:**
-  - **`citationType`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`doi`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`gbifHigherTaxonKey`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`gbifNetworkKey`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`gbifOccurrenceKey`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`gbifProjectIdentifier`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`gbifProgrammeAcronym`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`gbifTaxonKey`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`publisher`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`publishingCountry`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`source`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`websites`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`language`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`added`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`published`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`discovered`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`modified`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
+  - `citationType`
+  - `doi`
+  - `gbifHigherTaxonKey`
+  - `gbifNetworkKey`
+  - `gbifOccurrenceKey`
+  - `gbifProjectIdentifier`
+  - `gbifProgrammeAcronym`
+  - `gbifTaxonKey`
+  - `publisher`
+  - `publishingCountry`
+  - `source`
+  - `websites`
+  - `language`
+  - `added`
+  - `published`
+  - `discovered`
+  - `modified`
+- **Actions:**
+  - [ ] Ignore - Add all parameters to ignored_parameters
+  - [ ] Issue - Create issue to implement these parameters
 
 ### lit_export - GET /literature/export
 - **Missing parameters:**
-  - **`citationType`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`doi`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`gbifDatasetKey`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`gbifDownloadKey`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`gbifHigherTaxonKey`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`gbifNetworkKey`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`gbifOccurrenceKey`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`gbifProjectIdentifier`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`gbifProgrammeAcronym`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`gbifTaxonKey`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`publisher`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`publishingOrganizationKey`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`publishingCountry`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`source`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`websites`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`language`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`added`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`published`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`discovered`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`modified`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
+  - `citationType`
+  - `doi`
+  - `gbifDatasetKey`
+  - `gbifDownloadKey`
+  - `gbifHigherTaxonKey`
+  - `gbifNetworkKey`
+  - `gbifOccurrenceKey`
+  - `gbifProjectIdentifier`
+  - `gbifProgrammeAcronym`
+  - `gbifTaxonKey`
+  - `publisher`
+  - `publishingOrganizationKey`
+  - `publishingCountry`
+  - `source`
+  - `websites`
+  - `language`
+  - `added`
+  - `published`
+  - `discovered`
+  - `modified`
+- **Actions:**
+  - [ ] Ignore - Add all parameters to ignored_parameters
+  - [ ] Issue - Create issue to implement these parameters
 
 ### nodes - GET /node/country/{countryCode}
 - **Missing parameters:**
-  - **`countryCode`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
+  - `countryCode`
+- **Actions:**
+  - [ ] Ignore - Add all parameters to ignored_parameters
+  - [ ] Issue - Create issue to implement these parameters
 
 ### name_lookup - GET /v1/species/search
 - **Missing parameters:**
-  - **`threat`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`facetLimit`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`facetOffset`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
+  - `threat`
+  - `facetLimit`
+  - `facetOffset`
+- **Actions:**
+  - [ ] Ignore - Add all parameters to ignored_parameters
+  - [ ] Issue - Create issue to implement these parameters
 
 ### name_suggest - GET /v1/species/suggest
 - **Missing parameters:**
-  - **`constituentKey`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`higherTaxonKey`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`status`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`isExtinct`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`habitat`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`threat`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`nameType`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`nomenclaturalStatus`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`origin`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
-  - **`issue`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
+  - `constituentKey`
+  - `higherTaxonKey`
+  - `status`
+  - `isExtinct`
+  - `habitat`
+  - `threat`
+  - `nameType`
+  - `nomenclaturalStatus`
+  - `origin`
+  - `issue`
+- **Actions:**
+  - [ ] Ignore - Add all parameters to ignored_parameters
+  - [ ] Issue - Create issue to implement these parameters
 
 ### name_usage - GET /v1/species
 - **Missing parameters:**
-  - **`sourceId`**
-    - [ ] Ignore - Add to ignored_parameters
-    - [ ] Issue - Create issue to implement this parameter
+  - `sourceId`
+- **Actions:**
+  - [ ] Ignore - Add all parameters to ignored_parameters
+  - [ ] Issue - Create issue to implement these parameters
 
