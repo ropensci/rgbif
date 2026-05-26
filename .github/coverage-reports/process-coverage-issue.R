@@ -271,13 +271,6 @@ create_actions_file <- function(actions, actions_file) {
       )
     }
   }
-        function_name = param_action$function_name,
-        endpoint = param_action$endpoint,
-        parameter = param_action$parameter,
-        labels = c("enhancement", "api-coverage", "parameter")
-      )
-    }
-  }
   
   # Write actions file
   actions_data <- list(issues = issues_to_create)
