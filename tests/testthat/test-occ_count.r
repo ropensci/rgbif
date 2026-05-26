@@ -107,6 +107,15 @@ test_that("occ_count fails well", {
   )
 })
 
+test_that("occ_count accepts nucleotideSequence parameters", {
+  expect_no_warning(
+    expect_error(
+      occ_count(nucleotideSequence.sequence = c("ACTG", "TGCA")),
+      "Multiple values of the form c\\('a','b'\\) are not supported."
+    )
+  )
+})
+
 test_that("occ_count legacy params", {
   vcr::use_cassette("occ_count_legacy_params", {
   expect_warning(occ_count(georeferenced = TRUE),  

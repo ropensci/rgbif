@@ -670,4 +670,26 @@ test_that("geoDistance works as expected", {
   expect_equal(nrow(aa$data), 2)
 })
 
+test_that("nucleotideSequence parameters are supported", {
+  nucleotide_params <- c(
+    "nucleotideSequence.nucleotideSequenceID",
+    "nucleotideSequence.targetGene",
+    "nucleotideSequence.sequence",
+    "nucleotideSequence.sequenceLength",
+    "nucleotideSequence.gcContent",
+    "nucleotideSequence.nonIupacFraction",
+    "nucleotideSequence.nonACGTNFraction",
+    "nucleotideSequence.nFraction",
+    "nucleotideSequence.nRunsCapped",
+    "nucleotideSequence.naturalLanguageDetected",
+    "nucleotideSequence.endsTrimmed",
+    "nucleotideSequence.gapsOrWhitespaceRemoved",
+    "nucleotideSequence.invalid"
+  )
+  expect_true(all(nucleotide_params %in% names(formals(occ_search))))
+  expect_error(
+    occ_search(nucleotideSequence.sequence = "ACTG", limit = 1e6 + 1),
+    "Maximum request size is 1 million."
+  )
+})
 

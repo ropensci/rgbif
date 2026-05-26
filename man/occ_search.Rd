@@ -123,6 +123,19 @@ occ_search(
   member = NULL,
   bed = NULL,
   associatedSequences = NULL,
+  nucleotideSequence.nucleotideSequenceID = NULL,
+  nucleotideSequence.targetGene = NULL,
+  nucleotideSequence.sequence = NULL,
+  nucleotideSequence.sequenceLength = NULL,
+  nucleotideSequence.gcContent = NULL,
+  nucleotideSequence.nonIupacFraction = NULL,
+  nucleotideSequence.nonACGTNFraction = NULL,
+  nucleotideSequence.nFraction = NULL,
+  nucleotideSequence.nRunsCapped = NULL,
+  nucleotideSequence.naturalLanguageDetected = NULL,
+  nucleotideSequence.endsTrimmed = NULL,
+  nucleotideSequence.gapsOrWhitespaceRemoved = NULL,
+  nucleotideSequence.invalid = NULL,
   isSequenced = NULL,
   startDayOfYear = NULL,
   endDayOfYear = NULL,
@@ -565,6 +578,43 @@ which the material entity was collected.}
 \item{associatedSequences}{(character) Identifier (publication, global unique
 identifier, URI) of genetic sequence information associated with the
 material entity. Example : http://www.ncbi.nlm.nih.gov/nuccore/U34853.1}
+
+\item{nucleotideSequence.nucleotideSequenceID}{(character) Identifier for the
+nucleotide sequence associated with the occurrence.}
+
+\item{nucleotideSequence.targetGene}{(character) Gene targeted by the
+nucleotide sequence.}
+
+\item{nucleotideSequence.sequence}{(character) Nucleotide sequence string.}
+
+\item{nucleotideSequence.sequenceLength}{(numeric) Length of the nucleotide
+sequence.}
+
+\item{nucleotideSequence.gcContent}{(numeric) GC content fraction or range.}
+
+\item{nucleotideSequence.nonIupacFraction}{(numeric) Fraction or range of
+non-IUPAC characters in the sequence.}
+
+\item{nucleotideSequence.nonACGTNFraction}{(numeric) Fraction or range of
+characters outside A, C, G, T, and N.}
+
+\item{nucleotideSequence.nFraction}{(numeric) Fraction or range of N
+characters in the sequence.}
+
+\item{nucleotideSequence.nRunsCapped}{(numeric) Count or range of capped N
+runs in the sequence.}
+
+\item{nucleotideSequence.naturalLanguageDetected}{(logical) Whether natural
+language was detected in the sequence.}
+
+\item{nucleotideSequence.endsTrimmed}{(logical) Whether sequence ends were
+trimmed.}
+
+\item{nucleotideSequence.gapsOrWhitespaceRemoved}{(logical) Whether gaps or
+whitespace were removed from the sequence.}
+
+\item{nucleotideSequence.invalid}{(logical) Whether the sequence is marked as
+invalid.}
 
 \item{isSequenced}{(logical) Indicates whether \code{associatedSequences} genetic
 sequence information exists.}
