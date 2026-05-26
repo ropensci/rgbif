@@ -670,26 +670,129 @@ test_that("geoDistance works as expected", {
   expect_equal(nrow(aa$data), 2)
 })
 
-test_that("nucleotideSequence parameters are supported", {
-  nucleotide_params <- c(
-    "nucleotideSequence.nucleotideSequenceID",
-    "nucleotideSequence.targetGene",
-    "nucleotideSequence.sequence",
-    "nucleotideSequence.sequenceLength",
-    "nucleotideSequence.gcContent",
-    "nucleotideSequence.nonIupacFraction",
-    "nucleotideSequence.nonACGTNFraction",
-    "nucleotideSequence.nFraction",
-    "nucleotideSequence.nRunsCapped",
-    "nucleotideSequence.naturalLanguageDetected",
-    "nucleotideSequence.endsTrimmed",
-    "nucleotideSequence.gapsOrWhitespaceRemoved",
-    "nucleotideSequence.invalid"
-  )
-  expect_true(all(nucleotide_params %in% names(formals(occ_search))))
-  expect_error(
-    occ_search(nucleotideSequence.sequence = "ACTG", limit = 1e6 + 1),
-    "Maximum request size is 1 million."
-  )
+test_that("nucleotideSequence.targetGene works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_search_nucleotideSequence_targetGene", {
+    aa <- occ_search(nucleotideSequence.targetGene = "ITS1", limit = 2)
+    bb <- occ_search(nucleotideSequence.targetGene = "COI", limit = 2)
+    cc <- occ_search(nucleotideSequence.targetGene = "ITS1;COI", limit = 2)
+    dd <- occ_search(taxonKey = 212, nucleotideSequence.targetGene = "ITS1", limit = 2)
+  }, preserve_exact_body_bytes = TRUE)
+  
+  expect_is(aa, "gbif")
+  expect_is(aa$data, "data.frame")
+  expect_equal(attr(aa, "args")$nucleotideSequence.targetGene, "ITS1")
+  
+  expect_is(bb, "gbif")
+  expect_equal(attr(bb, "args")$nucleotideSequence.targetGene, "COI")
+  
+  expect_is(cc, "gbif")
+  expect_equal(attr(cc, "args")$nucleotideSequence.targetGene, "ITS1;COI")
+  
+  expect_is(dd, "gbif")
+  expect_equal(attr(dd, "args")$nucleotideSequence.targetGene, "ITS1")
+  expect_equal(dd$data$classKey[1], 212)
+})
+
+test_that("nucleotideSequence.sequenceLength works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_search_nucleotideSequence_sequenceLength", {
+    aa <- occ_search(nucleotideSequence.sequenceLength = 500, limit = 2)
+    bb <- occ_search(nucleotideSequence.sequenceLength = "500,1000", limit = 2)
+    cc <- occ_search(taxonKey = 212, nucleotideSequence.sequenceLength = "500,1000", limit = 2)
+  }, preserve_exact_body_bytes = TRUE)
+  
+  expect_is(aa, "gbif")
+  expect_is(aa$data, "data.frame")
+  expect_equal(attr(aa, "args")$nucleotideSequence.sequenceLength, "500")
+  
+  expect_is(bb, "gbif")
+  expect_equal(attr(bb, "args")$nucleotideSequence.sequenceLength, "500,1000")
+  
+  expect_is(cc, "gbif")
+  expect_equal(cc$data$classKey[1], 212)
+})
+
+test_that("nucleotideSequence.gcContent works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_search_nucleotideSequence_gcContent", {
+    aa <- occ_search(nucleotideSequence.gcContent = "0.4,0.6", limit = 2)
+    bb <- occ_search(taxonKey = 212, nucleotideSequence.gcContent = "0.4,0.6", limit = 2)
+  }, preserve_exact_body_bytes = TRUE)
+  
+  expect_is(aa, "gbif")
+  expect_is(aa$data, "data.frame")
+  expect_equal(attr(aa, "args")$nucleotideSequence.gcContent, "0.4,0.6")
+  
+  expect_is(bb, "gbif")
+  expect_equal(bb$data$classKey[1], 212)
+})
+
+test_that("nucleotideSequence boolean filters work correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_search_nucleotideSequence_booleans", {
+    aa <- occ_search(nucleotideSequence.invalid = FALSE, limit = 2)
+    bb <- occ_search(nucleotideSequence.endsTrimmed = TRUE, limit = 2)
+    cc <- occ_search(nucleotideSequence.gapsOrWhitespaceRemoved = TRUE, limit = 2)
+    dd <- occ_search(nucleotideSequence.naturalLanguageDetected = FALSE, limit = 2)
+  }, preserve_exact_body_bytes = TRUE)
+  
+  expect_is(aa, "gbif")
+  expect_equal(attr(aa, "args")$nucleotideSequence.invalid, "false")
+  
+  expect_is(bb, "gbif")
+  expect_equal(attr(bb, "args")$nucleotideSequence.endsTrimmed, "true")
+  
+  expect_is(cc, "gbif")
+  expect_equal(attr(cc, "args")$nucleotideSequence.gapsOrWhitespaceRemoved, "true")
+  
+  expect_is(dd, "gbif")
+  expect_equal(attr(dd, "args")$nucleotideSequence.naturalLanguageDetected, "false")
+})
+
+test_that("isSequenced parameter works correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_search_isSequenced", {
+    aa <- occ_search(isSequenced = TRUE, limit = 2)
+    bb <- occ_search(isSequenced = FALSE, limit = 2)
+    cc <- occ_search(taxonKey = 212, isSequenced = TRUE, limit = 2)
+  }, preserve_exact_body_bytes = TRUE)
+  
+  expect_is(aa, "gbif")
+  expect_equal(attr(aa, "args")$isSequenced, "true")
+  
+  expect_is(bb, "gbif")
+  expect_equal(attr(bb, "args")$isSequenced, "false")
+  
+  expect_is(cc, "gbif")
+  expect_equal(cc$data$classKey[1], 212)
+})
+
+test_that("combined nucleotideSequence filters work correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_search_nucleotideSequence_combined", {
+    aa <- occ_search(
+      nucleotideSequence.targetGene = "ITS1",
+      nucleotideSequence.sequenceLength = "500,1000",
+      nucleotideSequence.invalid = FALSE,
+      limit = 2
+    )
+    bb <- occ_search(
+      taxonKey = 212,
+      nucleotideSequence.targetGene = "COI",
+      nucleotideSequence.gcContent = "0.4,0.6",
+      limit = 2
+    )
+  }, preserve_exact_body_bytes = TRUE)
+  
+  expect_is(aa, "gbif")
+  expect_equal(attr(aa, "args")$nucleotideSequence.targetGene, "ITS1")
+  expect_equal(attr(aa, "args")$nucleotideSequence.sequenceLength, "500,1000")
+  expect_equal(attr(aa, "args")$nucleotideSequence.invalid, "false")
+  
+  expect_is(bb, "gbif")
+  expect_equal(bb$data$classKey[1], 212)
+  expect_equal(attr(bb, "args")$nucleotideSequence.targetGene, "COI")
+  expect_equal(attr(bb, "args")$nucleotideSequence.gcContent, "0.4,0.6")
 })
 

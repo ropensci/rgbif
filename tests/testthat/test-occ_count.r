@@ -108,11 +108,43 @@ test_that("occ_count fails well", {
 })
 
 test_that("occ_count accepts nucleotideSequence parameters", {
-  expect_no_warning(
-    expect_error(
-      occ_count(nucleotideSequence.sequence = c("ACTG", "TGCA")),
-      "Multiple values of the form c\\('a','b'\\) are not supported."
+  vcr::use_cassette("occ_count_nucleotideSequence", {
+    aa <- occ_count(nucleotideSequence.targetGene = "ITS1")
+    bb <- occ_count(nucleotideSequence.sequenceLength = "500,1000")
+    cc <- occ_count(nucleotideSequence.gcContent = "0.4,0.6")
+    dd <- occ_count(nucleotideSequence.invalid = FALSE)
+    ee <- occ_count(isSequenced = TRUE)
+    ff <- occ_count(
+      taxonKey = 212,
+      nucleotideSequence.targetGene = "COI",
+      nucleotideSequence.invalid = FALSE
     )
+  }, preserve_exact_body_bytes = TRUE)
+  
+  # returns the correct class
+  expect_is(aa, "numeric")
+  expect_is(bb, "numeric")
+  expect_is(cc, "numeric")
+  expect_is(dd, "numeric")
+  expect_is(ee, "numeric")
+  expect_is(ff, "numeric")
+  
+  # returns the correct dimensions
+  expect_equal(length(aa), 1)
+  expect_equal(length(bb), 1)
+  expect_equal(length(cc), 1)
+  expect_equal(length(dd), 1)
+  expect_equal(length(ee), 1)
+  expect_equal(length(ff), 1)
+  
+  # filtered counts should be positive
+  expect_gt(aa, 0)
+  expect_gt(ee, 0)
+  
+  # error on multiple values
+  expect_error(
+    occ_count(nucleotideSequence.sequence = c("ACTG", "TGCA")),
+    "Multiple values of the form c\\('a','b'\\) are not supported."
   )
 })
 
