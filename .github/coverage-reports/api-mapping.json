@@ -1,0 +1,4570 @@
+{
+  "metadata": {
+    "version": "1.30.0",
+    "last_updated": "2026-05-15",
+    "description": "Complete mapping between rgbif R functions and GBIF API endpoints",
+    "maintainer": "rgbif maintainers",
+    "total_functions": 72,
+    "note": "Some functions map to multiple API endpoints. occ_download_describe covers 6 format-specific endpoints; name_usage covers 17 endpoints via the data parameter; name_parse supports both GET and POST methods.",
+    "priority_field": "Optional 'priority' field can be added to mappings and ignored_endpoints. Values: 'high' (critical/commonly used), 'low' (nice-to-have), 'unclassified' (new/not yet prioritized). Field can be omitted if not classified.",
+    "parameter_mappings_field": "Optional 'parameter_mappings' object maps GBIF API parameter names to rgbif parameter names when they differ (e.g., {'gbifId': 'key'}). Used to avoid false positives in missing parameter detection."
+  },
+  "mappings": [
+    {
+      "function_name": "occ_search",
+      "endpoint": "/occurrence/search",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": [
+        "taxonKey",
+        "scientificName",
+        "country",
+        "publishingCountry",
+        "hasCoordinate",
+        "typeStatus",
+        "recordNumber",
+        "lastInterpreted",
+        "continent",
+        "geometry",
+        "recordedBy",
+        "recordedByID",
+        "identifiedByID",
+        "basisOfRecord",
+        "datasetKey",
+        "eventDate",
+        "catalogNumber",
+        "year",
+        "month",
+        "decimalLatitude",
+        "decimalLongitude",
+        "elevation",
+        "depth",
+        "institutionCode",
+        "collectionCode",
+        "hasGeospatialIssue",
+        "issue",
+        "search",
+        "mediaType",
+        "subgenusKey",
+        "repatriated",
+        "phylumKey",
+        "kingdomKey",
+        "classKey",
+        "orderKey",
+        "familyKey",
+        "genusKey",
+        "speciesKey",
+        "establishmentMeans",
+        "degreeOfEstablishment",
+        "protocol",
+        "license",
+        "organismId",
+        "publishingOrg",
+        "stateProvince",
+        "waterBody",
+        "locality",
+        "occurrenceStatus",
+        "gadmGid",
+        "coordinateUncertaintyInMeters",
+        "verbatimScientificName",
+        "eventId",
+        "identifiedBy",
+        "networkKey",
+        "verbatimTaxonId",
+        "occurrenceId",
+        "organismQuantity",
+        "organismQuantityType",
+        "relativeOrganismQuantity",
+        "iucnRedListCategory",
+        "lifeStage",
+        "isInCluster",
+        "distanceFromCentroidInMeters",
+        "geoDistance",
+        "sex",
+        "dwcaExtension",
+        "gbifId",
+        "gbifRegion",
+        "projectId",
+        "programme",
+        "preparations",
+        "datasetId",
+        "datasetName",
+        "publishedByGbifRegion",
+        "island",
+        "islandGroup",
+        "taxonId",
+        "taxonConceptId",
+        "taxonomicStatus",
+        "acceptedTaxonKey",
+        "collectionKey",
+        "institutionKey",
+        "otherCatalogNumbers",
+        "georeferencedBy",
+        "installationKey",
+        "hostingOrganizationKey",
+        "crawlId",
+        "modified",
+        "higherGeography",
+        "fieldNumber",
+        "parentEventId",
+        "samplingProtocol",
+        "sampleSizeUnit",
+        "pathway",
+        "gadmLevel0Gid",
+        "gadmLevel1Gid",
+        "gadmLevel2Gid",
+        "gadmLevel3Gid",
+        "earliestEonOrLowestEonothem",
+        "latestEonOrHighestEonothem",
+        "earliestEraOrLowestErathem",
+        "latestEraOrHighestErathem",
+        "earliestPeriodOrLowestSystem",
+        "latestPeriodOrHighestSystem",
+        "earliestEpochOrLowestSeries",
+        "latestEpochOrHighestSeries",
+        "earliestAgeOrLowestStage",
+        "latestAgeOrHighestStage",
+        "lowestBiostratigraphicZone",
+        "highestBiostratigraphicZone",
+        "group",
+        "formation",
+        "member",
+        "bed",
+        "associatedSequences",
+        "isSequenced",
+        "startDayOfYear",
+        "endDayOfYear",
+        "checklistKey",
+        "limit",
+        "start",
+        "fields",
+        "facet",
+        "facetMincount",
+        "facetMultiselect",
+        "skip_validate"
+      ],
+      "notes": "Main occurrence search endpoint - returns hierarchical data, media, and facets",
+      "priority": "high"
+    },
+    {
+      "function_name": "occ_data",
+      "endpoint": "/occurrence/search",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": [
+        "taxonKey",
+        "scientificName",
+        "country",
+        "publishingCountry",
+        "hasCoordinate",
+        "typeStatus",
+        "recordNumber",
+        "lastInterpreted",
+        "continent",
+        "geometry",
+        "recordedBy",
+        "recordedByID",
+        "identifiedByID",
+        "basisOfRecord",
+        "datasetKey",
+        "eventDate",
+        "catalogNumber",
+        "year",
+        "month",
+        "decimalLatitude",
+        "decimalLongitude",
+        "elevation",
+        "depth",
+        "institutionCode",
+        "collectionCode",
+        "hasGeospatialIssue",
+        "issue",
+        "search",
+        "mediaType",
+        "subgenusKey",
+        "repatriated",
+        "phylumKey",
+        "kingdomKey",
+        "classKey",
+        "orderKey",
+        "familyKey",
+        "genusKey",
+        "speciesKey",
+        "establishmentMeans",
+        "degreeOfEstablishment",
+        "protocol",
+        "license",
+        "organismId",
+        "publishingOrg",
+        "stateProvince",
+        "waterBody",
+        "locality",
+        "occurrenceStatus",
+        "gadmGid",
+        "coordinateUncertaintyInMeters",
+        "verbatimScientificName",
+        "eventId",
+        "identifiedBy",
+        "networkKey",
+        "verbatimTaxonId",
+        "occurrenceId",
+        "organismQuantity",
+        "organismQuantityType",
+        "relativeOrganismQuantity",
+        "iucnRedListCategory",
+        "lifeStage",
+        "isInCluster",
+        "distanceFromCentroidInMeters",
+        "skip_validate",
+        "limit",
+        "start"
+      ],
+      "notes": "Simplified occurrence search - returns only data component"
+    },
+    {
+      "function_name": "occ_get",
+      "endpoint": "/occurrence/{key}",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": [
+        "key",
+        "fields"
+      ],
+      "parameter_mappings": {
+        "gbifId": "key"
+      },
+      "notes": "Get individual occurrence by GBIF key"
+    },
+    {
+      "function_name": "occ_get_verbatim",
+      "endpoint": "/occurrence/{key}/verbatim",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": [
+        "key",
+        "fields"
+      ],
+      "parameter_mappings": {
+        "gbifId": "key"
+      },
+      "notes": "Get verbatim occurrence record without interpretation"
+    },
+    {
+      "function_name": "occ_facet",
+      "endpoint": "/occurrence/search",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": [
+        "taxonKey",
+        "scientificName",
+        "country",
+        "publishingCountry",
+        "hasCoordinate",
+        "typeStatus",
+        "recordNumber",
+        "lastInterpreted",
+        "continent",
+        "geometry",
+        "recordedBy",
+        "recordedByID",
+        "identifiedByID",
+        "basisOfRecord",
+        "datasetKey",
+        "eventDate",
+        "catalogNumber",
+        "year",
+        "month",
+        "day",
+        "decimalLatitude",
+        "decimalLongitude",
+        "elevation",
+        "depth",
+        "institutionCode",
+        "collectionCode",
+        "hasGeospatialIssue",
+        "issue",
+        "search",
+        "mediaType",
+        "subgenusKey",
+        "repatriated",
+        "phylumKey",
+        "kingdomKey",
+        "classKey",
+        "orderKey",
+        "familyKey",
+        "genusKey",
+        "speciesKey",
+        "establishmentMeans",
+        "degreeOfEstablishment",
+        "protocol",
+        "license",
+        "organismId",
+        "publishingOrg",
+        "stateProvince",
+        "waterBody",
+        "locality",
+        "occurrenceStatus",
+        "gadmGid",
+        "coordinateUncertaintyInMeters",
+        "verbatimScientificName",
+        "eventId",
+        "identifiedBy",
+        "networkKey",
+        "verbatimTaxonId",
+        "occurrenceId",
+        "organismQuantity",
+        "organismQuantityType",
+        "relativeOrganismQuantity",
+        "iucnRedListCategory",
+        "lifeStage",
+        "isInCluster",
+        "distanceFromCentroidInMeters",
+        "geoDistance",
+        "sex",
+        "dwcaExtension",
+        "gbifId",
+        "gbifRegion",
+        "projectId",
+        "programme",
+        "preparations",
+        "datasetId",
+        "datasetName",
+        "publishedByGbifRegion",
+        "island",
+        "islandGroup",
+        "taxonId",
+        "taxonConceptId",
+        "taxonomicStatus",
+        "acceptedTaxonKey",
+        "collectionKey",
+        "institutionKey",
+        "otherCatalogNumbers",
+        "georeferencedBy",
+        "installationKey",
+        "hostingOrganizationKey",
+        "crawlId",
+        "modified",
+        "higherGeography",
+        "fieldNumber",
+        "parentEventId",
+        "samplingProtocol",
+        "sampleSizeUnit",
+        "sampleSizeValue",
+        "pathway",
+        "gadmLevel0Gid",
+        "gadmLevel1Gid",
+        "gadmLevel2Gid",
+        "gadmLevel3Gid",
+        "earliestEonOrLowestEonothem",
+        "latestEonOrHighestEonothem",
+        "earliestEraOrLowestErathem",
+        "latestEraOrHighestErathem",
+        "earliestPeriodOrLowestSystem",
+        "latestPeriodOrHighestSystem",
+        "earliestEpochOrLowestSeries",
+        "latestEpochOrHighestSeries",
+        "earliestAgeOrLowestStage",
+        "latestAgeOrHighestStage",
+        "lowestBiostratigraphicZone",
+        "highestBiostratigraphicZone",
+        "group",
+        "formation",
+        "member",
+        "bed",
+        "associatedSequences",
+        "isSequenced",
+        "startDayOfYear",
+        "endDayOfYear",
+        "checklistKey",
+        "facet",
+        "facetMincount",
+        "facetMultiselect",
+        "facetLimit",
+        "facetOffset",
+        "previousIdentifications",
+        "measurementType",
+        "measurementTypeID",
+        "matchCase",
+        "shuffle",
+        "hl",
+        "q",
+        "geologicalTime",
+        "lithostratigraphy",
+        "biostratigraphy",
+        "taxonomicIssue"
+      ],
+      "notes": "Get occurrence facets - wraps occ_search with limit=0. DEPRECATED since rgbif 3.7.6, use occ_count(facet='x') instead."
+    },
+    {
+      "function_name": "occ_count",
+      "endpoint": "/occurrence/search",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": [
+        "taxonKey",
+        "scientificName",
+        "country",
+        "publishingCountry",
+        "hasCoordinate",
+        "typeStatus",
+        "recordNumber",
+        "lastInterpreted",
+        "continent",
+        "geometry",
+        "recordedBy",
+        "recordedByID",
+        "identifiedByID",
+        "basisOfRecord",
+        "datasetKey",
+        "eventDate",
+        "catalogNumber",
+        "year",
+        "month",
+        "decimalLatitude",
+        "decimalLongitude",
+        "elevation",
+        "depth",
+        "institutionCode",
+        "collectionCode",
+        "hasGeospatialIssue",
+        "issue",
+        "search",
+        "mediaType",
+        "subgenusKey",
+        "repatriated",
+        "phylumKey",
+        "kingdomKey",
+        "classKey",
+        "orderKey",
+        "familyKey",
+        "genusKey",
+        "speciesKey",
+        "establishmentMeans",
+        "degreeOfEstablishment",
+        "protocol",
+        "license",
+        "organismId",
+        "publishingOrg",
+        "stateProvince",
+        "waterBody",
+        "locality",
+        "occurrenceStatus",
+        "gadmGid",
+        "coordinateUncertaintyInMeters",
+        "verbatimScientificName",
+        "eventId",
+        "identifiedBy",
+        "networkKey",
+        "verbatimTaxonId",
+        "occurrenceId",
+        "organismQuantity",
+        "organismQuantityType",
+        "relativeOrganismQuantity",
+        "iucnRedListCategory",
+        "lifeStage",
+        "isInCluster",
+        "distanceFromCentroidInMeters",
+        "geoDistance",
+        "sex",
+        "dwcaExtension",
+        "gbifId",
+        "gbifRegion",
+        "projectId",
+        "programme",
+        "preparations",
+        "datasetId",
+        "datasetName",
+        "publishedByGbifRegion",
+        "island",
+        "islandGroup",
+        "taxonId",
+        "taxonConceptId",
+        "taxonomicStatus",
+        "acceptedTaxonKey",
+        "collectionKey",
+        "institutionKey",
+        "otherCatalogNumbers",
+        "georeferencedBy",
+        "installationKey",
+        "hostingOrganizationKey",
+        "crawlId",
+        "modified",
+        "higherGeography",
+        "fieldNumber",
+        "parentEventId",
+        "samplingProtocol",
+        "sampleSizeUnit",
+        "sampleSizeValue",
+        "pathway",
+        "gadmLevel0Gid",
+        "gadmLevel1Gid",
+        "gadmLevel2Gid",
+        "gadmLevel3Gid",
+        "earliestEonOrLowestEonothem",
+        "latestEonOrHighestEonothem",
+        "earliestEraOrLowestErathem",
+        "latestEraOrHighestErathem",
+        "earliestPeriodOrLowestSystem",
+        "latestPeriodOrHighestSystem",
+        "earliestEpochOrLowestSeries",
+        "latestEpochOrHighestSeries",
+        "earliestAgeOrLowestStage",
+        "latestAgeOrHighestStage",
+        "lowestBiostratigraphicZone",
+        "highestBiostratigraphicZone",
+        "group",
+        "formation",
+        "member",
+        "bed",
+        "associatedSequences",
+        "isSequenced",
+        "startDayOfYear",
+        "endDayOfYear",
+        "checklistKey",
+        "previousIdentifications",
+        "measurementType",
+        "measurementTypeID",
+        "matchCase",
+        "shuffle",
+        "hl",
+        "q",
+        "geologicalTime",
+        "lithostratigraphy",
+        "biostratigraphy",
+        "taxonomicIssue",
+        "day",
+        "facet",
+        "facetMincount",
+        "facetMultiselect",
+        "facetLimit",
+        "facetOffset"
+      ],
+      "notes": "Count occurrences matching criteria - wraps occ_search with limit=0. Since rgbif 3.7.6, uses /occurrence/search endpoint."
+    },
+    {
+      "function_name": "occ_count_country",
+      "endpoint": "/occurrence/counts/countries",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": [
+        "publishingCountry"
+      ],
+      "notes": "Pre-computed occurrence counts by country"
+    },
+    {
+      "function_name": "occ_count_pub_country",
+      "endpoint": "/occurrence/counts/publishingCountries",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": [
+        "country"
+      ],
+      "notes": "Pre-computed occurrence counts by publishing country"
+    },
+    {
+      "function_name": "occ_count_year",
+      "endpoint": "/occurrence/counts/year",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": [
+        "year"
+      ],
+      "notes": "Pre-computed occurrence counts by year"
+    },
+    {
+      "function_name": "occ_count_basis_of_record",
+      "endpoint": "/occurrence/counts/basisOfRecord",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": [],
+      "notes": "Pre-computed occurrence counts by basis of record"
+    },
+    {
+      "function_name": "occ_download",
+      "endpoint": "/occurrence/download/request",
+      "method": "POST",
+      "api": "occurrence",
+      "parameters": [
+        "body",
+        "type",
+        "format",
+        "verbatim_extensions",
+        "checklistKey",
+        "user",
+        "pwd",
+        "email"
+      ],
+      "notes": "Request occurrence download using predicate JSON or SQL"
+    },
+    {
+      "function_name": "occ_download_prep",
+      "endpoint": "/occurrence/download/request",
+      "method": "POST",
+      "api": "occurrence",
+      "parameters": [
+        "body",
+        "type",
+        "format",
+        "verbatim_extensions",
+        "checklistKey",
+        "user",
+        "pwd",
+        "email"
+      ],
+      "notes": "Prepare download request - returns JSON without executing"
+    },
+    {
+      "function_name": "occ_download_sql",
+      "endpoint": "/occurrence/download/request",
+      "method": "POST",
+      "api": "occurrence",
+      "parameters": [
+        "q",
+        "format",
+        "user",
+        "pwd",
+        "email",
+        "validate"
+      ],
+      "notes": "Request SQL-based occurrence download"
+    },
+    {
+      "function_name": "occ_download_list",
+      "endpoint": "/occurrence/download/user/{user}",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": [
+        "user",
+        "pwd",
+        "limit",
+        "start",
+        "page",
+        "status",
+        "from",
+        "statistics"
+      ],
+      "notes": "List user downloads"
+    },
+    {
+      "function_name": "occ_download_meta",
+      "endpoint": "/occurrence/download/{key}",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": [
+        "key",
+        "statistics"
+      ],
+      "notes": "Get download metadata by key"
+    },
+    {
+      "function_name": "occ_download_get",
+      "endpoint": "/occurrence/download/request/{key}",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": [
+        "key",
+        "path",
+        "overwrite"
+      ],
+      "notes": "Download occurrence file to disk"
+    },
+    {
+      "function_name": "occ_download_cancel",
+      "endpoint": "/occurrence/download/request/{key}",
+      "method": "DELETE",
+      "api": "occurrence",
+      "parameters": [
+        "key",
+        "user",
+        "pwd"
+      ],
+      "notes": "Cancel running download"
+    },
+    {
+      "function_name": "occ_download_datasets",
+      "endpoint": "/occurrence/download/{key}/datasets",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": [
+        "key",
+        "limit",
+        "start"
+      ],
+      "notes": "List datasets included in download"
+    },
+    {
+      "function_name": "occ_download_dataset_activity",
+      "endpoint": "/occurrence/download/dataset/{datasetKey}",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": [
+        "dataset",
+        "limit",
+        "start"
+      ],
+      "notes": "Downloads that include a specific dataset"
+    },
+    {
+      "function_name": "occ_download_describe",
+      "endpoint": "/occurrence/download/describe/dwca",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": [
+        "x"
+      ],
+      "notes": "Describes fields in Darwin Core Archive downloads (x='dwca')"
+    },
+    {
+      "function_name": "occ_download_describe",
+      "endpoint": "/occurrence/download/describe/simpleCsv",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": [
+        "x"
+      ],
+      "notes": "Describes fields in simple CSV downloads (x='simpleCsv')"
+    },
+    {
+      "function_name": "occ_download_describe",
+      "endpoint": "/occurrence/download/describe/simpleAvro",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": [
+        "x"
+      ],
+      "notes": "Describes fields in simple Avro downloads (x='simpleAvro')"
+    },
+    {
+      "function_name": "occ_download_describe",
+      "endpoint": "/occurrence/download/describe/simpleParquet",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": [
+        "x"
+      ],
+      "notes": "Describes fields in simple Parquet downloads (x='simpleParquet')"
+    },
+    {
+      "function_name": "occ_download_describe",
+      "endpoint": "/occurrence/download/describe/speciesList",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": [
+        "x"
+      ],
+      "notes": "Describes fields in species list downloads (x='speciesList')"
+    },
+    {
+      "function_name": "occ_download_describe",
+      "endpoint": "/occurrence/download/describe/sql",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": [
+        "x"
+      ],
+      "notes": "Describes fields in SQL downloads (x='sql')"
+    },
+    {
+      "function_name": "occ_download_doi",
+      "endpoint": "/occurrence/download/{key}/citation",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": [
+        "key"
+      ],
+      "notes": "Get DOI for download"
+    },
+    {
+      "function_name": "occ_download_doi",
+      "endpoint": "/occurrence/download/{prefix}/{suffix}",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": [
+        "prefix",
+        "suffix"
+      ],
+      "notes": "Get download metadata by DOI (prefix/suffix format)"
+    },
+    {
+      "function_name": "occ_download_doi",
+      "endpoint": "/occurrence/download/{prefix}/{suffix}/citation",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": [
+        "prefix",
+        "suffix"
+      ],
+      "notes": "Get download citation by DOI (prefix/suffix format)",
+      "priority": "high"
+    },
+    {
+      "function_name": "occ_download_stats",
+      "endpoint": "/occurrence/download/statistics",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": [
+        "from",
+        "to",
+        "publishingCountry",
+        "datasetKey",
+        "publishingOrgKey",
+        "limit",
+        "offset"
+      ],
+      "notes": "Download statistics by month and dataset"
+    },
+    {
+      "function_name": "occ_download_stats_export",
+      "endpoint": "/occurrence/download/statistics/export",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": [
+        "from",
+        "to",
+        "publishingCountry",
+        "datasetKey",
+        "publishingOrgKey",
+        "limit",
+        "offset"
+      ],
+      "notes": "Export download statistics"
+    },
+    {
+      "function_name": "occ_download_stats_user_country",
+      "endpoint": "/occurrence/download/statistics/downloadsByUserCountry",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": [
+        "from",
+        "to",
+        "userCountry",
+        "publishingCountry"
+      ],
+      "notes": "Downloads by user country"
+    },
+    {
+      "function_name": "occ_download_stats_dataset_records",
+      "endpoint": "/occurrence/download/statistics/downloadedRecordsByDataset",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": [
+        "from",
+        "to",
+        "publishingCountry",
+        "datasetKey",
+        "publishingOrgKey"
+      ],
+      "notes": "Downloaded records by dataset"
+    },
+    {
+      "function_name": "occ_download_stats_dataset",
+      "endpoint": "/occurrence/download/statistics/downloadsByDataset",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": [
+        "from",
+        "to",
+        "publishingCountry",
+        "datasetKey",
+        "publishingOrgKey"
+      ],
+      "notes": "Downloads by dataset"
+    },
+    {
+      "function_name": "occ_download_stats_source",
+      "endpoint": "/occurrence/download/statistics/downloadsBySource",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": [
+        "from",
+        "to",
+        "source"
+      ],
+      "notes": "Downloads by source (API, web, etc)"
+    },
+    {
+      "function_name": "gbif_geocode",
+      "endpoint": "/geocode/reverse",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": [
+        "latitude",
+        "longitude"
+      ],
+      "notes": "Reverse geocode coordinates to location"
+    },
+    {
+      "function_name": "dataset_search",
+      "endpoint": "/dataset/search",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "query",
+        "type",
+        "publishingCountry",
+        "subtype",
+        "license",
+        "keyword",
+        "publishingOrg",
+        "hostingOrg",
+        "endorsingNodeKey",
+        "decade",
+        "projectId",
+        "hostingCountry",
+        "networkKey",
+        "doi",
+        "installationKey",
+        "endpointType",
+        "category",
+        "facet",
+        "facetLimit",
+        "facetOffset",
+        "facetMincount",
+        "facetMultiselect",
+        "limit",
+        "start",
+        "description"
+      ],
+      "notes": "Search dataset metadata"
+    },
+    {
+      "function_name": "dataset_export",
+      "endpoint": "/dataset/search/export",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "query",
+        "type",
+        "publishingCountry",
+        "subtype",
+        "license",
+        "keyword",
+        "publishingOrg",
+        "hostingOrg",
+        "endorsingNodeKey",
+        "decade",
+        "projectId",
+        "hostingCountry",
+        "networkKey",
+        "doi",
+        "category"
+      ],
+      "notes": "Export full dataset search results"
+    },
+    {
+      "function_name": "dataset",
+      "endpoint": "/dataset",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "country",
+        "type",
+        "identifierType",
+        "identifier",
+        "machineTagNamespace",
+        "machineTagName",
+        "machineTagValue",
+        "modified",
+        "query",
+        "deleted",
+        "limit",
+        "start"
+      ],
+      "notes": "List all datasets or deleted datasets"
+    },
+    {
+      "function_name": "dataset_suggest",
+      "endpoint": "/dataset/suggest",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "query",
+        "type",
+        "publishingCountry",
+        "subtype",
+        "license",
+        "keyword",
+        "publishingOrg",
+        "hostingOrg",
+        "endorsingNodeKey",
+        "decade",
+        "projectId",
+        "hostingCountry",
+        "networkKey",
+        "doi",
+        "category",
+        "limit",
+        "start",
+        "description"
+      ],
+      "notes": "Suggest datasets for autocomplete"
+    },
+    {
+      "function_name": "dataset_doi",
+      "endpoint": "/dataset/doi/{doi}",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "doi",
+        "limit",
+        "start"
+      ],
+      "notes": "Get dataset by DOI"
+    },
+    {
+      "function_name": "dataset_doi",
+      "endpoint": "/dataset/doi/{prefix}/{suffix}",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "prefix",
+        "suffix",
+        "limit",
+        "start"
+      ],
+      "notes": "Get dataset by DOI (prefix/suffix format)"
+    },
+    {
+      "function_name": "dataset_gridded",
+      "endpoint": "/dataset/{uuid}/gridded",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "min_dis",
+        "min_per",
+        "return",
+        "min_dis_count",
+        "warn"
+      ],
+      "notes": "Check if dataset is gridded/systematically sampled"
+    },
+    {
+      "function_name": "dataset_get",
+      "endpoint": "/dataset/{uuid}",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid"
+      ],
+      "notes": "Get dataset by UUID"
+    },
+    {
+      "function_name": "dataset_process",
+      "endpoint": "/dataset/{uuid}/process",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "limit",
+        "start"
+      ],
+      "notes": "Get dataset processing history"
+    },
+    {
+      "function_name": "dataset_networks",
+      "endpoint": "/dataset/{uuid}/networks",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "limit",
+        "start"
+      ],
+      "notes": "Get networks associated with dataset"
+    },
+    {
+      "function_name": "dataset_constituents",
+      "endpoint": "/dataset/{uuid}/constituents",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "limit",
+        "start"
+      ],
+      "notes": "Get constituent datasets"
+    },
+    {
+      "function_name": "dataset_comment",
+      "endpoint": "/dataset/{uuid}/comment",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid"
+      ],
+      "notes": "Get dataset comments"
+    },
+    {
+      "function_name": "dataset_contact",
+      "endpoint": "/dataset/{uuid}/contact",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid"
+      ],
+      "notes": "Get dataset contacts"
+    },
+    {
+      "function_name": "dataset_endpoint",
+      "endpoint": "/dataset/{uuid}/endpoint",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid"
+      ],
+      "notes": "Get dataset endpoints"
+    },
+    {
+      "function_name": "dataset_identifier",
+      "endpoint": "/dataset/{uuid}/identifier",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid"
+      ],
+      "notes": "Get dataset identifiers"
+    },
+    {
+      "function_name": "dataset_machinetag",
+      "endpoint": "/dataset/{uuid}/machineTag",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid"
+      ],
+      "notes": "Get dataset machine tags"
+    },
+    {
+      "function_name": "dataset_tag",
+      "endpoint": "/dataset/{uuid}/tag",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid"
+      ],
+      "notes": "Get dataset tags"
+    },
+    {
+      "function_name": "dataset_metrics",
+      "endpoint": "/dataset/{uuid}/metrics",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid"
+      ],
+      "notes": "Get dataset metrics/counts"
+    },
+    {
+      "function_name": "datasets",
+      "endpoint": "/dataset",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "type",
+        "limit",
+        "offset"
+      ],
+      "notes": "List all datasets with paging"
+    },
+    {
+      "function_name": "dataset_duplicate",
+      "endpoint": "/dataset/duplicate",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "limit",
+        "start"
+      ],
+      "notes": "List duplicate datasets"
+    },
+    {
+      "function_name": "dataset_noendpoint",
+      "endpoint": "/dataset/withNoEndpoint",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "limit",
+        "start"
+      ],
+      "notes": "List datasets without endpoints"
+    },
+    {
+      "function_name": "collection_search",
+      "endpoint": "/grscicoll/collection",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "query",
+        "name",
+        "fuzzyName",
+        "preservationType",
+        "contentType",
+        "numberSpecimens",
+        "accessionStatus",
+        "personalCollection",
+        "sourceId",
+        "source",
+        "code",
+        "alternativeCode",
+        "contact",
+        "institutionKey",
+        "country",
+        "city",
+        "gbifRegion",
+        "machineTagNamespace",
+        "machineTagName",
+        "machineTagValue",
+        "identifier",
+        "identifierType",
+        "active",
+        "displayOnNHCPortal",
+        "masterSourceType",
+        "replacedBy",
+        "sortBy",
+        "sortOrder",
+        "offset",
+        "limit",
+        "format"
+      ],
+      "notes": "Search GRSciColl collections"
+    },
+    {
+      "function_name": "collection_export",
+      "endpoint": "/grscicoll/collection/export",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "query",
+        "name",
+        "fuzzyName",
+        "code",
+        "alternativeCode",
+        "contact",
+        "institutionKey",
+        "country",
+        "city"
+      ],
+      "notes": "Export full collection search results"
+    },
+    {
+      "function_name": "institution_search",
+      "endpoint": "/grscicoll/institution",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "query",
+        "type",
+        "institutionalGovernance",
+        "disciplines",
+        "name",
+        "fuzzyName",
+        "numberSpecimens",
+        "occurrenceCount",
+        "typeSpecimenCount",
+        "sourceId",
+        "source",
+        "code",
+        "alternativeCode",
+        "contact",
+        "institutionKey",
+        "country",
+        "city",
+        "gbifRegion",
+        "machineTagNamespace",
+        "machineTagName",
+        "machineTagValue",
+        "identifier",
+        "identifierType",
+        "active",
+        "displayOnNHCPortal",
+        "masterSourceType",
+        "replacedBy",
+        "sortBy",
+        "sortOrder",
+        "offset",
+        "limit",
+        "format"
+      ],
+      "notes": "Search GRSciColl institutions"
+    },
+    {
+      "function_name": "institution_export",
+      "endpoint": "/grscicoll/institution/export",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "query",
+        "type",
+        "name",
+        "fuzzyName",
+        "code",
+        "alternativeCode",
+        "contact",
+        "country",
+        "city"
+      ],
+      "notes": "Export full institution search results"
+    },
+    {
+      "function_name": "lit_search",
+      "endpoint": "/literature/search",
+      "method": "GET",
+      "api": "literature",
+      "parameters": [
+        "q",
+        "countriesOfResearcher",
+        "countriesOfCoverage",
+        "literatureType",
+        "relevance",
+        "year",
+        "topics",
+        "datasetKey",
+        "publishingOrg",
+        "peerReview",
+        "openAccess",
+        "downloadKey",
+        "doi",
+        "journalSource",
+        "journalPublisher",
+        "flatten",
+        "abstract",
+        "limit"
+      ],
+      "notes": "Search scientific literature citing GBIF"
+    },
+    {
+      "function_name": "lit_count",
+      "endpoint": "/literature/search",
+      "method": "GET",
+      "api": "literature",
+      "parameters": [
+        "q",
+        "countriesOfResearcher",
+        "countriesOfCoverage",
+        "literatureType",
+        "relevance",
+        "year",
+        "topics",
+        "datasetKey",
+        "publishingOrg",
+        "peerReview",
+        "openAccess",
+        "downloadKey"
+      ],
+      "parameter_mappings": {
+        "gbifDatasetKey": "datasetKey",
+        "gbifDownloadKey": "downloadKey",
+        "publishingOrganizationKey": "publishingOrg"
+      },
+      "notes": "Count literature records - wraps lit_search with limit=0"
+    },
+    {
+      "function_name": "lit_export",
+      "endpoint": "/literature/export",
+      "method": "GET",
+      "api": "literature",
+      "parameters": [
+        "q",
+        "countriesOfResearcher",
+        "countriesOfCoverage",
+        "literatureType",
+        "relevance",
+        "year",
+        "topics",
+        "datasetKey",
+        "publishingOrg",
+        "peerReview",
+        "openAccess",
+        "downloadKey",
+        "format"
+      ],
+      "notes": "Export full literature search results"
+    },
+    {
+      "function_name": "networks",
+      "endpoint": "/network",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "data",
+        "uuid",
+        "query",
+        "identifier",
+        "identifierType",
+        "limit",
+        "start"
+      ],
+      "notes": "List networks or get specific network"
+    },
+    {
+      "function_name": "network",
+      "endpoint": "/network/{key}",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "key"
+      ],
+      "notes": "Get network by UUID"
+    },
+    {
+      "function_name": "network",
+      "endpoint": "/network/{key}/constituents",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data",
+        "limit",
+        "start"
+      ],
+      "notes": "List network constituents via network(data='constituents', uuid='xxx')"
+    },
+    {
+      "function_name": "network",
+      "endpoint": "/network/{key}/comment",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "notes": "Get network comments via network(data='comment', uuid='xxx')"
+    },
+    {
+      "function_name": "network",
+      "endpoint": "/network/{key}/contact",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "notes": "Get network contacts via network(data='contact', uuid='xxx')"
+    },
+    {
+      "function_name": "network",
+      "endpoint": "/network/{key}/endpoint",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "notes": "Get network endpoints via network(data='endpoint', uuid='xxx')"
+    },
+    {
+      "function_name": "network",
+      "endpoint": "/network/{key}/identifier",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "notes": "Get network identifiers via network(data='identifier', uuid='xxx')"
+    },
+    {
+      "function_name": "network",
+      "endpoint": "/network/{key}/machineTag",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "notes": "Get network machine tags via network(data='machineTag', uuid='xxx')"
+    },
+    {
+      "function_name": "network",
+      "endpoint": "/network/{key}/tag",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "notes": "Get network tags via network(data='tag', uuid='xxx')"
+    },
+    {
+      "function_name": "nodes",
+      "endpoint": "/node",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "data",
+        "uuid",
+        "query",
+        "identifier",
+        "identifierType",
+        "limit",
+        "start",
+        "isocode"
+      ],
+      "notes": "List GBIF nodes or get specific node"
+    },
+    {
+      "function_name": "nodes",
+      "endpoint": "/node/{key}",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid"
+      ],
+      "notes": "Get specific node by UUID via nodes(uuid='xxx')"
+    },
+    {
+      "function_name": "nodes",
+      "endpoint": "/node/{key}/organization",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "notes": "List node's organizations via nodes(data='organization', uuid='xxx')"
+    },
+    {
+      "function_name": "nodes",
+      "endpoint": "/node/country/{countryCode}",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "data",
+        "isocode"
+      ],
+      "notes": "Get node by country code via nodes(data='country', isocode='XX')"
+    },
+    {
+      "function_name": "nodes",
+      "endpoint": "/node/country",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "data"
+      ],
+      "notes": "List all GBIF member countries via nodes(data='country')"
+    },
+    {
+      "function_name": "nodes",
+      "endpoint": "/node/{key}/dataset",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "notes": "List node's datasets via nodes(data='dataset', uuid='xxx')"
+    },
+    {
+      "function_name": "nodes",
+      "endpoint": "/node/{key}/installation",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "notes": "List node's installations via nodes(data='installation', uuid='xxx')"
+    },
+    {
+      "function_name": "nodes",
+      "endpoint": "/node/{key}/comment",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "notes": "Get node comments via nodes(data='comment', uuid='xxx')"
+    },
+    {
+      "function_name": "nodes",
+      "endpoint": "/node/{key}/endpoint",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "notes": "Get node endpoints via nodes(data='endpoint', uuid='xxx')"
+    },
+    {
+      "function_name": "nodes",
+      "endpoint": "/node/{key}/identifier",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "notes": "Get node identifiers via nodes(data='identifier', uuid='xxx')"
+    },
+    {
+      "function_name": "nodes",
+      "endpoint": "/node/{key}/machineTag",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "notes": "Get node machine tags via nodes(data='machineTag', uuid='xxx')"
+    },
+    {
+      "function_name": "nodes",
+      "endpoint": "/node/{key}/tag",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "notes": "Get node tags via nodes(data='tag', uuid='xxx')"
+    },
+    {
+      "function_name": "nodes",
+      "endpoint": "/node/{key}/pendingEndorsement",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "notes": "Get node pending endorsements via nodes(data='pendingEndorsement', uuid='xxx')"
+    },
+    {
+      "function_name": "nodes",
+      "endpoint": "/node/pendingEndorsement",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "data"
+      ],
+      "notes": "List all pending endorsements via nodes(data='pendingEndorsement')"
+    },
+    {
+      "function_name": "organizations",
+      "endpoint": "/organization",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "data",
+        "country",
+        "uuid",
+        "query",
+        "limit",
+        "start"
+      ],
+      "notes": "List organizations or get specific organization"
+    },
+    {
+      "function_name": "organizations",
+      "endpoint": "/organization/{key}",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid"
+      ],
+      "notes": "Get specific organization by UUID via organizations(uuid='xxx')"
+    },
+    {
+      "function_name": "organizations",
+      "endpoint": "/organization/{key}/comment",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "notes": "Get organization comments via organizations(data='comment', uuid='xxx')"
+    },
+    {
+      "function_name": "organizations",
+      "endpoint": "/organization/{key}/contact",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "notes": "Get organization contacts via organizations(data='contact', uuid='xxx')"
+    },
+    {
+      "function_name": "organizations",
+      "endpoint": "/organization/{key}/endpoint",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "notes": "Get organization endpoints via organizations(data='endpoint', uuid='xxx')"
+    },
+    {
+      "function_name": "organizations",
+      "endpoint": "/organization/{key}/identifier",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "notes": "Get organization identifiers via organizations(data='identifier', uuid='xxx')"
+    },
+    {
+      "function_name": "organizations",
+      "endpoint": "/organization/{key}/machineTag",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "notes": "Get organization machine tags via organizations(data='machineTag', uuid='xxx')"
+    },
+    {
+      "function_name": "organizations",
+      "endpoint": "/organization/{key}/tag",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "notes": "Get organization tags via organizations(data='tag', uuid='xxx')"
+    },
+    {
+      "function_name": "organizations",
+      "endpoint": "/organization/{key}/publishedDataset",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "notes": "List organization's published datasets via organizations(data='ownedDataset', uuid='xxx')"
+    },
+    {
+      "function_name": "organizations",
+      "endpoint": "/organization/{key}/hostedDataset",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "notes": "List organization's hosted datasets via organizations(data='hostedDataset', uuid='xxx')"
+    },
+    {
+      "function_name": "organizations",
+      "endpoint": "/organization/{key}/installation",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "notes": "List organization's installations via organizations(data='installation', uuid='xxx')"
+    },
+    {
+      "function_name": "organizations",
+      "endpoint": "/organization/deleted",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "data"
+      ],
+      "notes": "List deleted organizations via organizations(data='deleted')"
+    },
+    {
+      "function_name": "organizations",
+      "endpoint": "/organization/pending",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "data"
+      ],
+      "notes": "List pending organizations via organizations(data='pending')"
+    },
+    {
+      "function_name": "organizations",
+      "endpoint": "/organization/nonPublishing",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "data"
+      ],
+      "notes": "List non-publishing organizations via organizations(data='nonPublishing')"
+    },
+    {
+      "function_name": "installations",
+      "endpoint": "/installation",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "data",
+        "uuid",
+        "query",
+        "identifier",
+        "identifierType",
+        "limit",
+        "start"
+      ],
+      "notes": "List installations or get specific installation"
+    },
+    {
+      "function_name": "installations",
+      "endpoint": "/installation/{key}",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "notes": "Get installation by UUID via installations(data='all', uuid='xxx')"
+    },
+    {
+      "function_name": "installations",
+      "endpoint": "/installation/{key}/dataset",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data",
+        "limit",
+        "start"
+      ],
+      "notes": "Get installation datasets via installations(data='dataset', uuid='xxx')"
+    },
+    {
+      "function_name": "installations",
+      "endpoint": "/installation/{key}/comment",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "notes": "Get installation comments via installations(data='comment', uuid='xxx')"
+    },
+    {
+      "function_name": "installations",
+      "endpoint": "/installation/{key}/contact",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "notes": "Get installation contacts via installations(data='contact', uuid='xxx')"
+    },
+    {
+      "function_name": "installations",
+      "endpoint": "/installation/{key}/endpoint",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "notes": "Get installation endpoints via installations(data='endpoint', uuid='xxx')"
+    },
+    {
+      "function_name": "installations",
+      "endpoint": "/installation/{key}/identifier",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "notes": "Get installation identifiers via installations(data='identifier', uuid='xxx')"
+    },
+    {
+      "function_name": "installations",
+      "endpoint": "/installation/{key}/machineTag",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "notes": "Get installation machine tags via installations(data='machineTag', uuid='xxx')"
+    },
+    {
+      "function_name": "installations",
+      "endpoint": "/installation/{key}/tag",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "uuid",
+        "data"
+      ],
+      "notes": "Get installation tags via installations(data='tag', uuid='xxx')"
+    },
+    {
+      "function_name": "installations",
+      "endpoint": "/installation/deleted",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "data",
+        "limit",
+        "start"
+      ],
+      "notes": "List deleted installations via installations(data='deleted')"
+    },
+    {
+      "function_name": "installations",
+      "endpoint": "/installation/nonPublishing",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "data",
+        "limit",
+        "start"
+      ],
+      "notes": "List non-publishing installations via installations(data='nonPublishing')"
+    },
+    {
+      "function_name": "installation_search",
+      "endpoint": "/installation",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "query",
+        "type",
+        "identifierType",
+        "identifier",
+        "machineTagNamespace",
+        "machineTagName",
+        "machineTagValue",
+        "modified",
+        "limit",
+        "offset"
+      ],
+      "notes": "Search installations"
+    },
+    {
+      "function_name": "derived_dataset",
+      "endpoint": "/derivedDataset",
+      "method": "POST",
+      "api": "registry",
+      "parameters": [
+        "citation_data",
+        "title",
+        "description",
+        "source_url",
+        "gbif_download_doi",
+        "user",
+        "pwd"
+      ],
+      "notes": "Register derived dataset for DOI"
+    },
+    {
+      "function_name": "derived_dataset_prep",
+      "endpoint": "/derivedDataset",
+      "method": "POST",
+      "api": "registry",
+      "parameters": [
+        "citation_data",
+        "title",
+        "description",
+        "source_url",
+        "gbif_download_doi",
+        "user",
+        "pwd"
+      ],
+      "notes": "Prepare derived dataset registration - returns JSON without executing"
+    },
+    {
+      "function_name": "derived_dataset_get",
+      "endpoint": "/derivedDataset/{key}",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "key"
+      ],
+      "notes": "Get derived dataset citation by DOI"
+    },
+    {
+      "function_name": "gbif_oai_identify",
+      "endpoint": "/oai-pmh/registry",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "prefix",
+        "from",
+        "until",
+        "set",
+        "token",
+        "as",
+        "id",
+        "ids"
+      ],
+      "notes": "GBIF registry OAI-PMH endpoint - covers gbif_oai_identify(), gbif_oai_list_identifiers(), gbif_oai_list_records(), gbif_oai_list_metadataformats(), gbif_oai_list_sets(), gbif_oai_get_records()"
+    },
+    {
+      "function_name": "name_lookup",
+      "endpoint": "/v1/species/search",
+      "method": "GET",
+      "api": "checklistbank",
+      "parameters": [
+        "query",
+        "rank",
+        "higherTaxonKey",
+        "status",
+        "isExtinct",
+        "habitat",
+        "nameType",
+        "datasetKey",
+        "origin",
+        "nomenclaturalStatus",
+        "limit",
+        "start",
+        "facet",
+        "facetMincount",
+        "facetMultiselect",
+        "type",
+        "hl",
+        "issue",
+        "constituentKey",
+        "verbose"
+      ],
+      "priority": "high",
+      "notes": "Search taxonomic names/species"
+    },
+    {
+      "function_name": "name_backbone",
+      "endpoint": "/v2/species/match",
+      "method": "GET",
+      "api": "checklistbank",
+      "parameters": [
+        "name",
+        "rank",
+        "kingdom",
+        "phylum",
+        "class",
+        "order",
+        "superfamily",
+        "family",
+        "subfamily",
+        "tribe",
+        "subtribe",
+        "genus",
+        "subgenus",
+        "species",
+        "usageKey",
+        "taxonID",
+        "taxonConceptID",
+        "scientificNameID",
+        "scientificNameAuthorship",
+        "genericName",
+        "specificEpithet",
+        "infraspecificEpithet",
+        "verbatimTaxonRank",
+        "exclude",
+        "strict",
+        "verbose",
+        "checklistKey",
+        "start",
+        "limit"
+      ],
+      "priority": "high",
+      "notes": "Match name to GBIF backbone taxonomy (v2 API)"
+    },
+    {
+      "function_name": "name_backbone_checklist",
+      "endpoint": "/v2/species/match",
+      "method": "GET",
+      "api": "checklistbank",
+      "parameters": [
+        "name",
+        "rank",
+        "kingdom",
+        "phylum",
+        "class",
+        "order",
+        "superfamily",
+        "family",
+        "subfamily",
+        "tribe",
+        "subtribe",
+        "genus",
+        "subgenus",
+        "species",
+        "usageKey",
+        "taxonID",
+        "taxonConceptID",
+        "scientificNameID",
+        "scientificNameAuthorship",
+        "genericName",
+        "specificEpithet",
+        "infraspecificEpithet",
+        "verbatimTaxonRank",
+        "exclude",
+        "strict",
+        "verbose"
+      ],
+      "parameter_mappings": {
+        "taxonRank": "rank",
+        "scientificName": "name"
+      },
+      "priority": "high",
+      "notes": "Match names from checklist to backbone (v2 API)"
+    },
+    {
+      "function_name": "name_suggest",
+      "endpoint": "/v1/species/suggest",
+      "method": "GET",
+      "api": "checklistbank",
+      "parameters": [
+        "q",
+        "datasetKey",
+        "rank",
+        "fields",
+        "start",
+        "limit"
+      ],
+      "priority": "high",
+      "notes": "Suggest taxonomic names for autocomplete"
+    },
+    {
+      "function_name": "name_usage",
+      "endpoint": "/v1/species",
+      "method": "GET",
+      "api": "checklistbank",
+      "parameters": [
+        "name",
+        "language",
+        "datasetKey",
+        "rank",
+        "limit",
+        "start"
+      ],
+      "priority": "high",
+      "notes": "List all name usages (data='all' with no key specified)"
+    },
+    {
+      "function_name": "name_usage",
+      "endpoint": "/v1/species/{usageKey}",
+      "method": "GET",
+      "api": "checklistbank",
+      "parameters": [
+        "key",
+        "name",
+        "language",
+        "datasetKey",
+        "rank",
+        "limit",
+        "start"
+      ],
+      "priority": "high",
+      "notes": "Get name usage by key (data='all')"
+    },
+    {
+      "function_name": "name_usage",
+      "endpoint": "/v1/species/{usageKey}/verbatim",
+      "method": "GET",
+      "api": "checklistbank",
+      "parameters": [
+        "key"
+      ],
+      "priority": "high",
+      "notes": "Get verbatim name usage (data='verbatim')"
+    },
+    {
+      "function_name": "name_usage",
+      "endpoint": "/v1/species/{usageKey}/name",
+      "method": "GET",
+      "api": "checklistbank",
+      "parameters": [
+        "key"
+      ],
+      "priority": "high",
+      "notes": "Get parsed name (data='name')"
+    },
+    {
+      "function_name": "name_usage",
+      "endpoint": "/v1/species/{usageKey}/parents",
+      "method": "GET",
+      "api": "checklistbank",
+      "parameters": [
+        "key"
+      ],
+      "priority": "high",
+      "notes": "Get parent name usages (data='parents')"
+    },
+    {
+      "function_name": "name_usage",
+      "endpoint": "/v1/species/{usageKey}/children",
+      "method": "GET",
+      "api": "checklistbank",
+      "parameters": [
+        "key",
+        "limit",
+        "start"
+      ],
+      "priority": "high",
+      "notes": "Get children name usages (data='children')"
+    },
+    {
+      "function_name": "name_usage",
+      "endpoint": "/v1/species/{usageKey}/related",
+      "method": "GET",
+      "api": "checklistbank",
+      "parameters": [
+        "key",
+        "language",
+        "limit",
+        "start"
+      ],
+      "priority": "high",
+      "notes": "Get related name usages (data='related')"
+    },
+    {
+      "function_name": "name_usage",
+      "endpoint": "/v1/species/{usageKey}/synonyms",
+      "method": "GET",
+      "api": "checklistbank",
+      "parameters": [
+        "key",
+        "language",
+        "limit",
+        "start"
+      ],
+      "priority": "high",
+      "notes": "Get synonyms (data='synonyms')"
+    },
+    {
+      "function_name": "name_usage",
+      "endpoint": "/v1/species/{usageKey}/descriptions",
+      "method": "GET",
+      "api": "checklistbank",
+      "parameters": [
+        "key",
+        "language",
+        "limit",
+        "start"
+      ],
+      "priority": "high",
+      "notes": "Get descriptions (data='descriptions')"
+    },
+    {
+      "function_name": "name_usage",
+      "endpoint": "/v1/species/{usageKey}/distributions",
+      "method": "GET",
+      "api": "checklistbank",
+      "parameters": [
+        "key",
+        "language",
+        "limit",
+        "start"
+      ],
+      "priority": "high",
+      "notes": "Get distributions (data='distributions')"
+    },
+    {
+      "function_name": "name_usage",
+      "endpoint": "/v1/species/{usageKey}/media",
+      "method": "GET",
+      "api": "checklistbank",
+      "parameters": [
+        "key",
+        "limit",
+        "start"
+      ],
+      "priority": "high",
+      "notes": "Get media (data='media')"
+    },
+    {
+      "function_name": "name_usage",
+      "endpoint": "/v1/species/{usageKey}/references",
+      "method": "GET",
+      "api": "checklistbank",
+      "parameters": [
+        "key",
+        "limit",
+        "start"
+      ],
+      "priority": "high",
+      "notes": "Get references (data='references')"
+    },
+    {
+      "function_name": "name_usage",
+      "endpoint": "/v1/species/{usageKey}/speciesProfiles",
+      "method": "GET",
+      "api": "checklistbank",
+      "parameters": [
+        "key",
+        "language",
+        "limit",
+        "start"
+      ],
+      "priority": "high",
+      "notes": "Get species profiles (data='speciesProfiles')"
+    },
+    {
+      "function_name": "name_usage",
+      "endpoint": "/v1/species/{usageKey}/vernacularNames",
+      "method": "GET",
+      "api": "checklistbank",
+      "parameters": [
+        "key",
+        "language",
+        "limit",
+        "start"
+      ],
+      "priority": "high",
+      "notes": "Get vernacular names (data='vernacularNames')"
+    },
+    {
+      "function_name": "name_usage",
+      "endpoint": "/v1/species/{usageKey}/typeSpecimens",
+      "method": "GET",
+      "api": "checklistbank",
+      "parameters": [
+        "key",
+        "limit",
+        "start"
+      ],
+      "priority": "high",
+      "notes": "Get type specimens (data='typeSpecimens')"
+    },
+    {
+      "function_name": "name_usage",
+      "endpoint": "/v1/species/{usageKey}/iucnRedListCategory",
+      "method": "GET",
+      "api": "checklistbank",
+      "parameters": [
+        "key"
+      ],
+      "priority": "high",
+      "notes": "Get IUCN Red List category (data='iucnRedListCategory')"
+    },
+    {
+      "function_name": "name_usage",
+      "endpoint": "/v1/species/root/{datasetKey}",
+      "method": "GET",
+      "api": "checklistbank",
+      "parameters": [
+        "uuid"
+      ],
+      "priority": "high",
+      "notes": "Get root name usages (data='root')"
+    },
+    {
+      "function_name": "name_parse",
+      "endpoint": "/v1/parser/name",
+      "method": "GET",
+      "api": "checklistbank",
+      "parameters": [
+        "scientificname"
+      ],
+      "parameter_mappings": {
+        "name": "scientificname"
+      },
+      "priority": "high",
+      "notes": "Parse a single scientific name (via GET)"
+    },
+    {
+      "function_name": "name_parse",
+      "endpoint": "/v1/parser/name",
+      "method": "POST",
+      "api": "checklistbank",
+      "parameters": [
+        "scientificname"
+      ],
+      "parameter_mappings": {
+        "name": "scientificname"
+      },
+      "priority": "high",
+      "notes": "Parse scientific names in batch (via POST)"
+    },
+    {
+      "function_name": "enumeration",
+      "endpoint": "/enumeration/basic/{type}",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [
+        "x"
+      ],
+      "parameter_mappings": {
+        "name": "x"
+      },
+      "notes": "Get enumeration values for controlled vocabularies"
+    },
+    {
+      "function_name": "enumeration_country",
+      "endpoint": "/enumeration/country",
+      "method": "GET",
+      "api": "registry",
+      "parameters": [],
+      "notes": "Get country enumeration"
+    }
+  ],
+  "ignored_endpoints": [
+    {
+      "endpoint": "GET /",
+      "api": "occurrence",
+      "reason": "API index/root endpoint - informational only, not a data endpoint",
+      "date_added": "2026-05-08",
+      "priority": "low"
+    },
+    {
+      "endpoint": "/occurrence/experimental",
+      "api": "occurrence",
+      "reason": "Experimental endpoints not yet stable for package inclusion",
+      "date_added": "2026-05-05"
+    },
+    {
+      "endpoint": "/species/root/{id}",
+      "api": "checklistbank",
+      "reason": "Internal API used for backbone taxonomy management",
+      "date_added": "2026-05-05"
+    },
+    {
+      "endpoint": "GET /v1/species/{usageKey}/toc",
+      "api": "checklistbank",
+      "reason": "Name usage descriptions table of contents - specialized metadata",
+      "date_added": "2026-05-08",
+      "priority": "high"
+    },
+    {
+      "endpoint": "GET /v1/species/{usageKey}/metrics",
+      "api": "checklistbank",
+      "reason": "Name usage metrics endpoint - specialized analytics",
+      "date_added": "2026-05-08",
+      "priority": "high"
+    },
+    {
+      "endpoint": "GET /v1/species/{usageKey}/identifier",
+      "api": "checklistbank",
+      "reason": "Name usage identifiers endpoint - specialized use case",
+      "date_added": "2026-05-08",
+      "priority": "high"
+    },
+    {
+      "endpoint": "GET /v1/species/{usageKey}/combinations",
+      "api": "checklistbank",
+      "reason": "Name usage recombinations endpoint - specialized use case",
+      "date_added": "2026-05-08",
+      "priority": "high"
+    },
+    {
+      "endpoint": "GET /v1/species/{usageKey}/childrenAll",
+      "api": "checklistbank",
+      "reason": "All name usage children endpoint - specialized use case",
+      "date_added": "2026-05-08",
+      "priority": "high"
+    },
+    {
+      "endpoint": "GET /v2/species/match/metadata",
+      "api": "checklistbank",
+      "reason": "Matching service metadata endpoint - specialized use case",
+      "date_added": "2026-05-08",
+      "priority": "high"
+    },
+    {
+      "endpoint": "GET /v2/species/match/joins/{identifier}",
+      "api": "checklistbank",
+      "reason": "ID join lookup service - specialized use case",
+      "date_added": "2026-05-08",
+      "priority": "high"
+    },
+    {
+      "endpoint": "GET /v2/species/match/id/{identifier}",
+      "api": "checklistbank",
+      "reason": "ID lookup service - specialized use case",
+      "date_added": "2026-05-08",
+      "priority": "high"
+    },
+    {
+      "endpoint": "GET /v2/species/match/id/{datasetId}/{identifier}",
+      "api": "checklistbank",
+      "reason": "ID lookup service by dataset - specialized use case",
+      "date_added": "2026-05-08",
+      "priority": "high"
+    },
+    {
+      "endpoint": "GET /v1/species/match",
+      "api": "checklistbank",
+      "reason": "Legacy v1 endpoint - replaced by v2 API (/v2/species/match) which provides enhanced matching",
+      "date_added": "2026-05-08",
+      "priority": "low"
+    },
+    {
+      "endpoint": "/organization/{key}/endorsedNode",
+      "api": "registry",
+      "reason": "Administrative endpoint not relevant for R users",
+      "date_added": "2026-05-05"
+    },
+    {
+      "endpoint": "POST /occurrence/download/request/sql",
+      "api": "occurrence",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /occurrence/search/predicate",
+      "api": "occurrence",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /occurrence/download/request/predicate",
+      "api": "occurrence",
+      "reason": "Query conversion helper endpoint - specialized use case",
+      "date_added": "2026-05-08",
+      "priority": "high"
+    },
+    {
+      "endpoint": "GET /occurrence/download/request/sql",
+      "api": "occurrence",
+      "reason": "Query conversion helper endpoint - specialized use case",
+      "date_added": "2026-05-08",
+      "priority": "high"
+    },
+    {
+      "endpoint": "GET /occurrence/{datasetKey}/{occurrenceId}",
+      "api": "occurrence",
+      "reason": "Alternative occurrence lookup endpoint - niche use case",
+      "date_added": "2026-05-08",
+      "priority": "high"
+    },
+    {
+      "endpoint": "GET /occurrence/term",
+      "api": "occurrence",
+      "reason": "Metadata endpoint for occurrence terms - specialized use case",
+      "date_added": "2026-05-08",
+      "priority": "high"
+    },
+    {
+      "endpoint": "GET /occurrence/download/user/{user}/count",
+      "api": "occurrence",
+      "reason": "User download count endpoint - specialized analytics",
+      "date_added": "2026-05-08",
+      "priority": "high"
+    },
+    {
+      "endpoint": "GET /occurrence/download/{prefix}/{suffix}/datasets",
+      "api": "occurrence",
+      "reason": "Download dataset listing by DOI - specialized analytics",
+      "date_added": "2026-05-08",
+      "priority": "high"
+    },
+    {
+      "endpoint": "GET /occurrence/download/{key}/countries",
+      "api": "occurrence",
+      "reason": "Download country analysis endpoint - specialized analytics",
+      "date_added": "2026-05-08",
+      "priority": "high"
+    },
+    {
+      "endpoint": "GET /occurrence/download/{key}/organizations",
+      "api": "occurrence",
+      "reason": "Download organization analysis endpoint - specialized analytics",
+      "date_added": "2026-05-08",
+      "priority": "high"
+    },
+    {
+      "endpoint": "POST /grscicoll/collection",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /grscicoll/collection/latimerCore",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /dataset",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /installation",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /grscicoll/institution",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /grscicoll/institution/latimerCore",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /network",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /organization",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /derivedDataset/{doiPrefix}/{doiSuffix}",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /dataset/{key}",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /dataset/{key}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /grscicoll/collection/{key}",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /grscicoll/collection/{key}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /grscicoll/collection/latimerCore/{key}",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /installation/{key}",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /installation/{key}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /grscicoll/institution/{key}",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /grscicoll/institution/{key}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /grscicoll/institution/latimerCore/{key}",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /network/{key}",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /network/{key}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /organization/{key}",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /organization/{key}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /dataset/{key}/crawl",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /dataset/{key}/document",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /grscicoll/collection/{collectionKey}/descriptorGroup/suggestion/{key}",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /grscicoll/collection/{collectionKey}/descriptorGroup/suggestion/{key}/apply",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /dataset/metadata/{metadataKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /grscicoll/collection/{collectionKey}/descriptorGroup/suggestion/{key}/discard",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /grscicoll/collection/{collectionKey}/descriptorGroup/suggestion",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /organization/{key}/comment",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /node/{key}/comment",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /network/{key}/comment",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /installation/{key}/comment",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /grscicoll/institution/{key}/comment",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /grscicoll/collection/{key}/comment",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /dataset/{key}/comment",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /organization/{key}/comment/{commentKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /node/{key}/comment/{commentKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /network/{key}/comment/{commentKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /installation/{key}/comment/{commentKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /dataset/{key}/comment/{commentKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /grscicoll/institution/{key}/comment/{commentKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /grscicoll/collection/{key}/comment/{commentKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /network/{key}/constituents/{datasetKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /network/{key}/constituents/{datasetKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /organization/{key}/contact",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /organization/{key}/contact",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /network/{key}/contact",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /network/{key}/contact",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /installation/{key}/contact",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /installation/{key}/contact",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /dataset/{key}/contact",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /dataset/{key}/contact",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /grscicoll/institution/{key}/contactPerson/{contactKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /grscicoll/institution/{key}/contactPerson/{contactKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /grscicoll/collection/{key}/contactPerson/{contactKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /grscicoll/collection/{key}/contactPerson/{contactKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /organization/{key}/contact/{contactKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /organization/{key}/contact/{contactKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /node/{key}/contact",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /node/{key}/contact/{contactKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /network/{key}/contact/{contactKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /network/{key}/contact/{contactKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /installation/{key}/contact/{contactKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /installation/{key}/contact/{contactKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /dataset/{key}/contact/{contactKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /dataset/{key}/contact/{contactKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /organization/{key}/endpoint",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /node/{key}/endpoint",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /network/{key}/endpoint",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /installation/{key}/endpoint",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /dataset/{key}/endpoint",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /organization/{key}/endpoint/{endpointKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /node/{key}/endpoint/{endpointKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /network/{key}/endpoint/{endpointKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /installation/{key}/endpoint/{endpointKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /dataset/{key}/endpoint/{endpointKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /organization/{key}/identifier",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /node/{key}/identifier",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /network/{key}/identifier",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /installation/{key}/identifier",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /grscicoll/institution/{key}/identifier",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /grscicoll/collection/{key}/identifier",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /dataset/{key}/identifier",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /organization/{key}/identifier/{identifierKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /node/{key}/identifier/{identifierKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /network/{key}/identifier/{identifierKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /installation/{key}/identifier/{identifierKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /dataset/{key}/identifier/{identifierKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /grscicoll/institution/{key}/identifier/{identifierKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /grscicoll/institution/{key}/identifier/{identifierKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /grscicoll/collection/{key}/identifier/{identifierKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /grscicoll/collection/{key}/identifier/{identifierKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /organization/{key}/machineTag",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /node/{key}/machineTag",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /network/{key}/machineTag",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /installation/{key}/machineTag",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /grscicoll/institution/{key}/machineTag",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /grscicoll/collection/{key}/machineTag",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /dataset/{key}/machineTag",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /organization/{key}/machineTag/{machineTagKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /node/{key}/machineTag/{machineTagKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /network/{key}/machineTag/{machineTagKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /installation/{key}/machineTag/{machineTagKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /grscicoll/institution/{key}/machineTag/{machineTagKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /grscicoll/collection/{key}/machineTag/{machineTagKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /dataset/{key}/machineTag/{machineTagKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /organization/{key}/machineTag/{namespace}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /node/{key}/machineTag/{namespace}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /network/{key}/machineTag/{namespace}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /installation/{key}/machineTag/{namespace}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /grscicoll/institution/{key}/machineTag/{namespace}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /grscicoll/collection/{key}/machineTag/{namespace}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /dataset/{key}/machineTag/{namespace}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /organization/{key}/machineTag/{namespace}/{name}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /node/{key}/machineTag/{namespace}/{name}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /network/{key}/machineTag/{namespace}/{name}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /installation/{key}/machineTag/{namespace}/{name}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /grscicoll/institution/{key}/machineTag/{namespace}/{name}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /grscicoll/collection/{key}/machineTag/{namespace}/{name}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /dataset/{key}/machineTag/{namespace}/{name}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /grscicoll/institution/{key}/masterSourceMetadata",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /grscicoll/institution/{key}/masterSourceMetadata",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /grscicoll/collection/{key}/masterSourceMetadata",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /grscicoll/collection/{key}/masterSourceMetadata",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /organization/{key}/tag",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /node/{key}/tag",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /network/{key}/tag",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /installation/{key}/tag",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /dataset/{key}/tag",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /organization/{key}/tag/{tagKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /node/{key}/tag/{tagKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /network/{key}/tag/{tagKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /installation/{key}/tag/{tagKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /dataset/{key}/tag/{tagKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /grscicoll/institution/{key}/occurrenceMapping",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /grscicoll/collection/{key}/occurrenceMapping",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /grscicoll/institution/{key}/contactPerson",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /grscicoll/collection/{key}/contactPerson",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /grscicoll/institution/{key}/occurrenceMapping/{occurrenceMappingKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /grscicoll/collection/{key}/occurrenceMapping/{occurrenceMappingKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /grscicoll/institution/{key}/tag",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /grscicoll/collection/{key}/tag",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /grscicoll/institution/{key}/tag/{tagKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /grscicoll/collection/{key}/tag/{tagKey}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /grscicoll/institution/changeSuggestion",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /grscicoll/collection/changeSuggestion",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /grscicoll/institution/changeSuggestion/{key}",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /grscicoll/collection/changeSuggestion/{key}",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /grscicoll/institution/changeSuggestion/{key}/discard",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /grscicoll/collection/changeSuggestion/{key}/discard",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /grscicoll/institution/changeSuggestion/{key}/apply",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /grscicoll/collection/changeSuggestion/{key}/apply",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /grscicoll/institution/{key}/merge",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /grscicoll/collection/{key}/merge",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /grscicoll/institution/{key}/convertToCollection",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /grscicoll/collection/import",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /grscicoll/institution/import",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /grscicoll/collection/{collectionKey}/descriptorGroup/{key}",
+      "api": "registry",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /grscicoll/collection/{collectionKey}/descriptorGroup/{key}",
+      "api": "registry",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /grscicoll/collection/{collectionKey}/descriptorGroup",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /grscicoll/collection/reinterpretAllDescriptorGroups",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /grscicoll/collection/{collectionKey}/descriptorGroup/{key}/reinterpret",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /grscicoll/collection/{collectionKey}/descriptorGroup/reinterpretAll",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /grscicoll/institution/batch",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /grscicoll/collection/batch",
+      "api": "registry",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /occurrence/download/request/validate",
+      "api": "occurrence",
+      "reason": "Experimental validation endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /occurrence/search/catalogNumber",
+      "api": "occurrence",
+      "reason": "Autocomplete/suggest helper endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /occurrence/search/collectionCode",
+      "api": "occurrence",
+      "reason": "Autocomplete/suggest helper endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /occurrence/search/datasetName",
+      "api": "occurrence",
+      "reason": "Autocomplete/suggest helper endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /occurrence/search/eventId",
+      "api": "occurrence",
+      "reason": "Autocomplete/suggest helper endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /occurrence/search/identifiedBy",
+      "api": "occurrence",
+      "reason": "Autocomplete/suggest helper endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /occurrence/search/institutionCode",
+      "api": "occurrence",
+      "reason": "Autocomplete/suggest helper endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /occurrence/search/locality",
+      "api": "occurrence",
+      "reason": "Autocomplete/suggest helper endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /occurrence/search/occurrenceId",
+      "api": "occurrence",
+      "reason": "Autocomplete/suggest helper endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /occurrence/search/organismId",
+      "api": "occurrence",
+      "reason": "Autocomplete/suggest helper endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /occurrence/search/otherCatalogNumbers",
+      "api": "occurrence",
+      "reason": "Autocomplete/suggest helper endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /occurrence/search/parentEventId",
+      "api": "occurrence",
+      "reason": "Autocomplete/suggest helper endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /occurrence/search/recordNumber",
+      "api": "occurrence",
+      "reason": "Autocomplete/suggest helper endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /occurrence/search/recordedBy",
+      "api": "occurrence",
+      "reason": "Autocomplete/suggest helper endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /occurrence/search/samplingProtocol",
+      "api": "occurrence",
+      "reason": "Autocomplete/suggest helper endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /occurrence/search/stateProvince",
+      "api": "occurrence",
+      "reason": "Autocomplete/suggest helper endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /occurrence/search/waterBody",
+      "api": "occurrence",
+      "reason": "Autocomplete/suggest helper endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /occurrence/search/experimental/term/{*}",
+      "api": "occurrence",
+      "reason": "Experimental autocomplete/suggest helper endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/collection/suggest",
+      "api": "registry",
+      "reason": "Autocomplete/suggest helper endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /installation/suggest",
+      "api": "registry",
+      "reason": "Autocomplete/suggest helper endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/institution/suggest",
+      "api": "registry",
+      "reason": "Autocomplete/suggest helper endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /network/suggest",
+      "api": "registry",
+      "reason": "Autocomplete/suggest helper endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /node/suggest",
+      "api": "registry",
+      "reason": "Autocomplete/suggest helper endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /organization/suggest",
+      "api": "registry",
+      "reason": "Autocomplete/suggest helper endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /geocode/gadm/{gid}/subdivisions",
+      "api": "occurrence",
+      "reason": "GADM geocoding endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /geocode/gadm/{gid}",
+      "api": "occurrence",
+      "reason": "GADM geocoding endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /geocode/gadm/search",
+      "api": "occurrence",
+      "reason": "GADM geocoding endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /geocode/gadm/browse/{level0}/{level1}/{level2}",
+      "api": "occurrence",
+      "reason": "GADM geocoding endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /geocode/gadm/browse/{level0}/{level1}",
+      "api": "occurrence",
+      "reason": "GADM geocoding endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /geocode/gadm/browse/{level0}",
+      "api": "occurrence",
+      "reason": "GADM geocoding endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /geocode/gadm/browse",
+      "api": "occurrence",
+      "reason": "GADM geocoding endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/collection/latimerCore",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/institution/latimerCore",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/institution/geojson",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/search",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/collection/exportForInstitution",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/collection/listForInstitution",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/institution/search",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/collection/search",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/collection/{key}",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/collection/latimerCore/{key}",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/institution/{key}",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/institution/latimerCore/{key}",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/collection/{collectionKey}/descriptorGroup/suggestion/{key}/file",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/collection/{collectionKey}/descriptorGroup/suggestion/{key}",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/collection/{collectionKey}/descriptorGroup/suggestion",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/collection/descriptorGroup/suggestion",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/institution/{key}/comment",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/collection/{key}/comment",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/institution/{key}/identifier",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/collection/{key}/identifier",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/institution/{key}/machineTag",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/collection/{key}/machineTag",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/institution/{key}/masterSourceMetadata",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/collection/{key}/masterSourceMetadata",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/institution/{key}/occurrenceMapping",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/collection/{key}/occurrenceMapping",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/institution/{key}/contactPerson",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/collection/{key}/contactPerson",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/institution/{key}/tag",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/collection/{key}/tag",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/institution/changeSuggestion",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/collection/changeSuggestion",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/institution/changeSuggestion/{key}",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/collection/changeSuggestion/{key}",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/collection/{collectionKey}/descriptorGroup/{key}",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/collection/{collectionKey}/descriptorGroup",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/institution/deleted",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/collection/deleted",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/institution/possibleDuplicates",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/collection/possibleDuplicates",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/collection/{collectionKey}/descriptorGroup/{key}/export",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/collection/{collectionKey}/descriptorGroup/{key}/descriptor",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/collection/{collectionKey}/descriptorGroup/{descriptorGroupKey}/descriptor/{key}",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/institution/batch/{key}",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/collection/batch/{key}",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/institution/batch/{key}/resultFile",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/collection/batch/{key}/resultFile",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/lookup",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /grscicoll/auditLog",
+      "api": "registry",
+      "reason": "GRSciColl endpoint - not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /occurrence/{gbifId}/experimental/related",
+      "api": "occurrence",
+      "reason": "Experimental endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /occurrence/experimental/multimedia/species/{taxonKey}",
+      "api": "occurrence",
+      "reason": "Experimental endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /occurrence/experimental/multimedia/species/{checklistKey}/{taxonKey}",
+      "api": "occurrence",
+      "reason": "Experimental endpoint not implemented in rgbif",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /literature/{uuid}",
+      "api": "literature",
+      "reason": "Literature item retrieval by ID - specialized use case",
+      "date_added": "2026-05-08",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /validation/{key}",
+      "api": "validator",
+      "reason": "Validator API - specialized dataset validation tool",
+      "date_added": "2026-05-08",
+      "priority": "low"
+    },
+    {
+      "endpoint": "PUT /validation/{key}",
+      "api": "validator",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "DELETE /validation/{key}",
+      "api": "validator",
+      "reason": "Data modification endpoint (DELETE) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "PUT /validation/{key}/cancel",
+      "api": "validator",
+      "reason": "Data modification endpoint (PUT) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /validation",
+      "api": "validator",
+      "reason": "Validator API - specialized dataset validation tool",
+      "date_added": "2026-05-08",
+      "priority": "low"
+    },
+    {
+      "endpoint": "POST /validation",
+      "api": "validator",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /validation/url",
+      "api": "validator",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "POST /validation/eml",
+      "api": "validator",
+      "reason": "Data modification endpoint (POST) - rgbif implements read-only operations",
+      "date_added": "2026-05-08"
+    },
+    {
+      "endpoint": "GET /validation/{key}/eml",
+      "api": "validator",
+      "reason": "Validator API - specialized dataset validation tool",
+      "date_added": "2026-05-08",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /validation/running",
+      "api": "validator",
+      "reason": "Validator API - specialized dataset validation tool",
+      "date_added": "2026-05-08",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /validation/enumeration",
+      "api": "validator",
+      "reason": "Validator API - specialized dataset validation tool",
+      "date_added": "2026-05-08",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /validation/enumeration/ValidationStatus",
+      "api": "validator",
+      "reason": "Validator API - specialized dataset validation tool",
+      "date_added": "2026-05-08",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /validation/enumeration/FileFormat",
+      "api": "validator",
+      "reason": "Validator API - specialized dataset validation tool",
+      "date_added": "2026-05-08",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /validation/enumeration/EvaluationType",
+      "api": "validator",
+      "reason": "Validator API - specialized dataset validation tool",
+      "date_added": "2026-05-08",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /validation/enumeration/EvaluationCategory",
+      "api": "validator",
+      "reason": "Validator API - specialized dataset validation tool",
+      "date_added": "2026-05-08",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /validation/enumeration/EvaluationCategory/{evaluationCategory}",
+      "api": "validator",
+      "reason": "Validator API - specialized dataset validation tool",
+      "date_added": "2026-05-08",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /validation/enumeration/DwcFileType",
+      "api": "validator",
+      "reason": "Validator API - specialized dataset validation tool",
+      "date_added": "2026-05-08",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /validation/eml/schemas",
+      "api": "validator",
+      "reason": "Validator API - specialized dataset validation tool",
+      "date_added": "2026-05-08",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /occurrence/count",
+      "api": "occurrence",
+      "reason": "Legacy count endpoint - rgbif uses /occurrence/search with limit=0 instead",
+      "date_added": "2026-05-15",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /occurrence/{gbifId}/fragment",
+      "api": "occurrence",
+      "reason": "Occurrence fragment data - specialized use case",
+      "date_added": "2026-05-09",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /occurrence/{datasetKey}/{occurrenceId}/fragment",
+      "api": "occurrence",
+      "reason": "Occurrence fragment by dataset - specialized use case",
+      "date_added": "2026-05-09",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /occurrence/{datasetKey}/{occurrenceId}/verbatim",
+      "api": "occurrence",
+      "reason": "Verbatim occurrence by dataset - specialized use case",
+      "date_added": "2026-05-09",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /occurrence/download/{key}/datasets/export",
+      "api": "occurrence",
+      "reason": "Download dataset export - specialized export format",
+      "date_added": "2026-05-09",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /occurrence/count/schema",
+      "api": "occurrence",
+      "reason": "Occurrence count schema metadata - specialized use case",
+      "date_added": "2026-05-09",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /occurrence/counts/datasets",
+      "api": "occurrence",
+      "reason": "Occurrence inventory by dataset - specialized analytics",
+      "date_added": "2026-05-09",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /enumeration/basic",
+      "api": "registry",
+      "reason": "Enumeration inventory - specialized metadata",
+      "date_added": "2026-05-09",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /enumeration/extension",
+      "api": "registry",
+      "reason": "Extension enumeration - specialized metadata",
+      "date_added": "2026-05-09",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /enumeration/interpretationRemark",
+      "api": "registry",
+      "reason": "Interpretation remark enumeration - specialized metadata",
+      "date_added": "2026-05-09",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /enumeration/language",
+      "api": "registry",
+      "reason": "Language enumeration - specialized metadata",
+      "date_added": "2026-05-09",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /enumeration/license",
+      "api": "registry",
+      "reason": "License enumeration - specialized metadata",
+      "date_added": "2026-05-09",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /derivedDataset/{doiPrefix}/{doiSuffix}",
+      "api": "registry",
+      "reason": "Derived dataset by DOI - specialized use case",
+      "date_added": "2026-05-09",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /derivedDataset/dataset/{key}",
+      "api": "registry",
+      "reason": "Derived datasets by dataset key - specialized use case",
+      "date_added": "2026-05-09",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /derivedDataset/dataset/{doiPrefix}/{doiSuffix}",
+      "api": "registry",
+      "reason": "Derived datasets by dataset DOI - specialized use case",
+      "date_added": "2026-05-09",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /derivedDataset/user/{user}",
+      "api": "registry",
+      "reason": "Derived datasets by user - specialized use case",
+      "date_added": "2026-05-09",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /derivedDataset/{doiPrefix}/{doiSuffix}/citation",
+      "api": "registry",
+      "reason": "Derived dataset citation - specialized use case",
+      "date_added": "2026-05-09",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /derivedDataset/{doiPrefix}/{doiSuffix}/datasets",
+      "api": "registry",
+      "reason": "Derived dataset related datasets - specialized use case",
+      "date_added": "2026-05-09",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /dataset/{key}/process/{attempt}",
+      "api": "registry",
+      "reason": "Dataset crawl attempt details - specialized diagnostics",
+      "date_added": "2026-05-09",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /dataset/{key}/document",
+      "api": "registry",
+      "reason": "GBIF metadata document - specialized metadata",
+      "date_added": "2026-05-09",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /dataset/{key}/metadata",
+      "api": "registry",
+      "reason": "Dataset source metadata - specialized metadata",
+      "date_added": "2026-05-09",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /dataset/metadata/{metadataKey}",
+      "api": "registry",
+      "reason": "Source metadata document info - specialized metadata",
+      "date_added": "2026-05-09",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /dataset/metadata/{metadataKey}/document",
+      "api": "registry",
+      "reason": "Source metadata document - specialized metadata",
+      "date_added": "2026-05-09",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /dataset/deleted",
+      "api": "registry",
+      "reason": "Deleted datasets list - specialized use case",
+      "date_added": "2026-05-09",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /node/activeCountries",
+      "api": "registry",
+      "reason": "Active GBIF member countries - specialized use case",
+      "date_added": "2026-05-09",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /organization/geojson",
+      "api": "registry",
+      "reason": "Organizations as GeoJSON - specialized format",
+      "date_added": "2026-05-09",
+      "priority": "low"
+    },
+    {
+      "endpoint": "GET /validation/sequence",
+      "api": "validator",
+      "reason": "Not implemented - marked for ignore on 2026-05-22",
+      "date_added": "2026-05-22"
+    }
+  ],
+  "ignored_parameters": {
+    "general": {
+      "curlopts": "Internal parameter for curl options - accepted by all functions",
+      "...": "Variadic arguments - accepted by some functions for flexibility",
+      "arg0": "Generic/placeholder parameter in OpenAPI spec - not a real parameter",
+      "arg1": "Generic/placeholder parameter in OpenAPI spec - not a real parameter",
+      "arg3": "Generic/placeholder parameter in OpenAPI spec - not a real parameter",
+      "Accept-Language": "HTTP header for language preference - not implemented in rgbif"
+    },
+    "occ_download_datasets": {
+      "datasetTitle": "Dataset title filter - not implemented",
+      "sortBy": "Sort field - not implemented",
+      "sortOrder": "Sort order - not implemented",
+      "page": "Page number - use limit/start instead"
+    },
+    "occ_download_dataset_activity": {
+      "datasetKey": "Dataset key is passed as path parameter 'dataset' - already implemented",
+      "showDownloadDetails": "Flag to show download details - not implemented"
+    },
+    "dataset_search": {
+      "q": "Covered by 'query' parameter in R function",
+      "hl": "Highlighting parameter - not implemented"
+    },
+    "dataset_export": {
+      "q": "Covered by 'query' parameter in R function",
+      "format": "Export format parameter - not implemented"
+    },
+    "datasets": {
+      "q": "Covered by 'query' parameter in R function"
+    },
+    "dataset_suggest": {
+      "q": "Covered by 'query' parameter in R function"
+    },
+    "dataset_get": {
+      "key": "Covered by 'uuid' parameter in R function"
+    },
+    "dataset_process": {
+      "key": "Covered by 'uuid' parameter in R function"
+    },
+    "dataset_networks": {
+      "key": "Covered by 'uuid' parameter in R function"
+    },
+    "dataset_constituents": {
+      "key": "Covered by 'uuid' parameter in R function"
+    },
+    "dataset_comment": {
+      "key": "Covered by 'uuid' parameter in R function"
+    },
+    "dataset_contact": {
+      "key": "Covered by 'uuid' parameter in R function"
+    },
+    "dataset_endpoint": {
+      "key": "Covered by 'uuid' parameter in R function"
+    },
+    "dataset_identifier": {
+      "key": "Covered by 'uuid' parameter in R function"
+    },
+    "dataset_machinetag": {
+      "key": "Covered by 'uuid' parameter in R function"
+    },
+    "dataset_tag": {
+      "key": "Covered by 'uuid' parameter in R function"
+    },
+    "dataset_metrics": {
+      "key": "Covered by 'uuid' parameter in R function"
+    },
+    "collection_search": {
+      "q": "Covered by 'query' parameter in R function"
+    },
+    "collection_export": {
+      "format": "Export format parameter - not implemented",
+      "q": "Covered by 'query' parameter in R function"
+    },
+    "institution_search": {
+      "q": "Covered by 'query' parameter in R function"
+    },
+    "institution_export": {
+      "format": "Export format parameter - not implemented",
+      "q": "Covered by 'query' parameter in R function"
+    },
+    "lit_count": {
+      "gbifDatasetKey": "Covered by 'datasetKey' parameter in lit_search",
+      "gbifDownloadKey": "Covered by 'downloadKey' parameter in lit_search",
+      "publishingOrganizationKey": "Covered by 'publishingOrg' parameter in lit_search",
+      "hl": "Highlighting parameter - not implemented",
+      "facet": "Covered by lit_search implementation",
+      "facetMinCount": "Covered by lit_search implementation",
+      "facetMultiselect": "Covered by lit_search implementation",
+      "facetLimit": "Covered by lit_search implementation",
+      "facetOffset": "Covered by lit_search implementation"
+    },
+    "network": {
+      "key": "Covered by parameter name mapping (key→uuid)",
+      "owner": "Not implemented"
+    },
+    "networks": {
+      "q": "Covered by parameter name mapping (q→query)",
+      "machineTagNamespace": "Not implemented",
+      "machineTagName": "Not implemented",
+      "machineTagValue": "Not implemented",
+      "modified": "Not implemented",
+      "created": "Not implemented"
+    },
+    "nodes": {
+      "key": "Covered by parameter name mapping (key→uuid)",
+      "owner": "Not implemented",
+      "machineTagNamespace": "Not implemented",
+      "machineTagName": "Not implemented",
+      "machineTagValue": "Not implemented",
+      "modified": "Not implemented",
+      "created": "Not implemented",
+      "q": "Covered by parameter name mapping (q→query)"
+    },
+    "installations": {
+      "key": "Covered by parameter name mapping (key→uuid)",
+      "owner": "Not implemented",
+      "searchParams": "Not implemented",
+      "type": "Not implemented",
+      "identifierType": "Not implemented",
+      "identifier": "Not implemented",
+      "machineTagNamespace": "Not implemented",
+      "machineTagName": "Not implemented",
+      "machineTagValue": "Not implemented",
+      "modified": "Not implemented",
+      "created": "Not implemented",
+      "q": "Covered by parameter name mapping (q→query)"
+    },
+    "installation_search": {
+      "created": "Not implemented",
+      "q": "Covered by parameter name mapping (q→query)"
+    },
+    "organizations": {
+      "key": "Covered by parameter name mapping (key→uuid)",
+      "owner": "Not implemented",
+      "isEndorsed": "Not implemented",
+      "networkKey": "Not implemented",
+      "numPublishedDatasets": "Not implemented",
+      "canModify": "Not implemented",
+      "identifierType": "Not implemented",
+      "identifier": "Not implemented",
+      "machineTagNamespace": "Not implemented",
+      "machineTagName": "Not implemented",
+      "machineTagValue": "Not implemented",
+      "modified": "Not implemented",
+      "created": "Not implemented",
+      "q": "Covered by parameter name mapping (q→query)",
+      "searchParams": "Not implemented",
+      "contactUserId": "Not implemented",
+      "contactEmail": "Not implemented"
+    },
+    "gbif_oai_identify": {
+      "params": "OAI-PMH protocol parameter - handled internally by function logic"
+    },
+    "name_lookup": {
+      "q": "Covered by parameter name mapping (q→query)"
+    },
+    "name_usage": {
+      "usageKey": "Covered by 'key' parameter in R function",
+      "datasetKey": "Covered by 'uuid' parameter in R function"
+    },
+    "occ_download_stats_export": {
+      "format": "Not implemented - marked for ignore on 2026-05-22"
+    }
+  },
+  "notes": [
+    "This mapping includes all 72 API-calling functions in rgbif",
+    "Some functions like dataset, nodes, organizations, installations, networks use a 'data' parameter that modifies behavior",
+    "Export functions (collection_export, institution_export, lit_export, dataset_export) use the same base endpoints as search",
+    "Prep functions (occ_download_prep, derived_dataset_prep) validate but don't execute API calls",
+    "Count functions (occ_count, lit_count) are wrappers that set limit=0",
+    "",
+    "Parameter name mappings:",
+    "- Some rgbif functions use more R-friendly parameter names than the GBIF API",
+    "- The 'parameter_mappings' field tracks these differences (e.g., 'gbifId' -> 'key')",
+    "- When checking for missing parameters, mapped parameters are considered covered",
+    "- Common mappings: gbifId->key, query->q, Accept-Language->language",
+    "",
+    "Update this file when:",
+    "1. New GBIF API endpoints are released",
+    "2. New rgbif functions are added",
+    "3. Function parameters change to match API updates",
+    "4. Parameter name mappings change or new ones are added"
+  ]
+}

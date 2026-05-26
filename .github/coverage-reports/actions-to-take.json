@@ -1,0 +1,12 @@
+{
+  "issues": [
+    {
+      "type": "parameter",
+      "title": "API Coverage: Implement parameter format for occ_download_stats_export",
+      "function_name": "occ_download_stats_export",
+      "endpoint": "GET /occurrence/download/statistics/export",
+      "parameter": "format",
+      "labels": ["enhancement", "api-coverage", "parameter"]
+    }
+  ]
+}
