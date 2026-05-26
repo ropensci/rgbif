@@ -683,14 +683,14 @@ test_that("nucleotideSequence.targetGene works correctly", {
   expect_is(aa, "gbif")
   expect_is(aa$data, "data.frame")
   expect_equal(attr(aa, "args")$nucleotideSequence.targetGene, "ITS1")
-  
+
   expect_is(bb, "gbif")
   expect_equal(attr(bb, "args")$nucleotideSequence.targetGene, "COI")
-  
+
   expect_is(cc, "gbif")
   # semicolon-separated values get processed and first value stored
   expect_true(!is.null(attr(cc, "args")$nucleotideSequence.targetGene))
-  
+
   expect_is(dd, "gbif")
   expect_equal(attr(dd, "args")$nucleotideSequence.targetGene, "ITS1")
   expect_equal(dd$data$classKey[1], 212)
@@ -725,9 +725,10 @@ test_that("nucleotideSequence.gcContent works correctly", {
   expect_is(aa, "gbif")
   expect_is(aa$data, "data.frame")
   expect_equal(attr(aa, "args")$nucleotideSequence.gcContent, "0.4,0.6")
-  
+
   expect_is(bb, "gbif")
   expect_equal(bb$data$classKey[1], 212)
+  expect_equal(attr(bb, "args")$nucleotideSequence.gcContent, "0.4,0.6")
 })
 
 test_that("nucleotideSequence boolean filters work correctly", {
@@ -741,13 +742,13 @@ test_that("nucleotideSequence boolean filters work correctly", {
   
   expect_is(aa, "gbif")
   expect_equal(attr(aa, "args")$nucleotideSequence.invalid, FALSE)
-  
+
   expect_is(bb, "gbif")
   expect_equal(attr(bb, "args")$nucleotideSequence.endsTrimmed, TRUE)
-  
+
   expect_is(cc, "gbif")
   expect_equal(attr(cc, "args")$nucleotideSequence.gapsOrWhitespaceRemoved, TRUE)
-  
+
   expect_is(dd, "gbif")
   expect_equal(attr(dd, "args")$nucleotideSequence.naturalLanguageDetected, FALSE)
 })
