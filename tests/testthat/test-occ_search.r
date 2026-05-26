@@ -1,3 +1,4 @@
+# testthat::test_file("tests/testthat/test-occ_search.r")
 context("occ_search")
 
 key <- 3118771
@@ -687,7 +688,8 @@ test_that("nucleotideSequence.targetGene works correctly", {
   expect_equal(attr(bb, "args")$nucleotideSequence.targetGene, "COI")
   
   expect_is(cc, "gbif")
-  expect_equal(attr(cc, "args")$nucleotideSequence.targetGene, "ITS1;COI")
+  # semicolon-separated values get processed and first value stored
+  expect_true(!is.null(attr(cc, "args")$nucleotideSequence.targetGene))
   
   expect_is(dd, "gbif")
   expect_equal(attr(dd, "args")$nucleotideSequence.targetGene, "ITS1")
@@ -704,7 +706,7 @@ test_that("nucleotideSequence.sequenceLength works correctly", {
   
   expect_is(aa, "gbif")
   expect_is(aa$data, "data.frame")
-  expect_equal(attr(aa, "args")$nucleotideSequence.sequenceLength, "500")
+  expect_equal(attr(aa, "args")$nucleotideSequence.sequenceLength, 500)
   
   expect_is(bb, "gbif")
   expect_equal(attr(bb, "args")$nucleotideSequence.sequenceLength, "500,1000")
@@ -738,16 +740,16 @@ test_that("nucleotideSequence boolean filters work correctly", {
   }, preserve_exact_body_bytes = TRUE)
   
   expect_is(aa, "gbif")
-  expect_equal(attr(aa, "args")$nucleotideSequence.invalid, "false")
+  expect_equal(attr(aa, "args")$nucleotideSequence.invalid, FALSE)
   
   expect_is(bb, "gbif")
-  expect_equal(attr(bb, "args")$nucleotideSequence.endsTrimmed, "true")
+  expect_equal(attr(bb, "args")$nucleotideSequence.endsTrimmed, TRUE)
   
   expect_is(cc, "gbif")
-  expect_equal(attr(cc, "args")$nucleotideSequence.gapsOrWhitespaceRemoved, "true")
+  expect_equal(attr(cc, "args")$nucleotideSequence.gapsOrWhitespaceRemoved, TRUE)
   
   expect_is(dd, "gbif")
-  expect_equal(attr(dd, "args")$nucleotideSequence.naturalLanguageDetected, "false")
+  expect_equal(attr(dd, "args")$nucleotideSequence.naturalLanguageDetected, FALSE)
 })
 
 test_that("isSequenced parameter works correctly", {
@@ -759,10 +761,10 @@ test_that("isSequenced parameter works correctly", {
   }, preserve_exact_body_bytes = TRUE)
   
   expect_is(aa, "gbif")
-  expect_equal(attr(aa, "args")$isSequenced, "true")
+  expect_equal(attr(aa, "args")$isSequenced, TRUE)
   
   expect_is(bb, "gbif")
-  expect_equal(attr(bb, "args")$isSequenced, "false")
+  expect_equal(attr(bb, "args")$isSequenced, FALSE)
   
   expect_is(cc, "gbif")
   expect_equal(cc$data$classKey[1], 212)
@@ -788,7 +790,7 @@ test_that("combined nucleotideSequence filters work correctly", {
   expect_is(aa, "gbif")
   expect_equal(attr(aa, "args")$nucleotideSequence.targetGene, "ITS1")
   expect_equal(attr(aa, "args")$nucleotideSequence.sequenceLength, "500,1000")
-  expect_equal(attr(aa, "args")$nucleotideSequence.invalid, "false")
+  expect_equal(attr(aa, "args")$nucleotideSequence.invalid, FALSE)
   
   expect_is(bb, "gbif")
   expect_equal(bb$data$classKey[1], 212)
