@@ -1,0 +1,71 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facet=nucleotideSequence.targetGene&facetLimit=
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
+    body:
+      raw_gzip: |-
+        eJx9kEGLwjAQhf9Lzj0kaZO23sQNIuzW3baeFgnddqph00TSeljE/75hXTSCyFwG5n1vZt4J
+        2b4fYUI
+        zHCGtBnXpwHTrvoTWum5Es77RI0SotUfjx3FK8yRhPGERcjAe9eQln9sI9U0Lf/0J
+        9Qp0h2ao2Cxexb
+        pevQhZiY+NKBZC1vNyKWq5FIVA/6YXyDQDeKZUX3a0Q6NlWczRdS2hJCWE
+        Y3aOrtJ3ZydQRra2U2Ynd
+        2DgBtA4zzljJNC/qcm2e2s6p7z94TnNccZIuG2xXoVzhtOYxMG8
+        qjbS3d+cYuZ9HokkySoJx+/G/dhJ
+        tQHDeUKzHAfMqq6kg52yJpAlGeMp4Q+taSWH8NUblhDs
+        Uwyf2mvr7EE34/Q8kJjTnLL7q0iQB00zgs9
+        bX7+FLLyR
+  recorded_at: 2026-05-26 14:29:21
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facet=nucleotideSequence.targetGene&facetLimit=5&taxonKey=212
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
+    body:
+      raw_gzip: |-
+        eJx9jctqwzAQRf9l1lr4GSfeBUeEQGK3fqxKEK40SgWyVCRnFfLvFU1J3U2ZzYV7zp0bWCk9
+        zlBGBLS
+        a1COhEY1skVsnPJRy1B4JcHs1oU7SLM/SdRHHBBz6q54D8nYmIEeO3/kGUqEWUEI9
+        VEfa9IcdZR19HW
+        hdUdZv2z3t2Z7WFH5GH5IZJwzOi7MzKsO4Fcpc2AUNwvP5qkjy/E6e8EnN
+        ln9YI5waNfv8X42i1UKtm
+        sOijJMoXZSterfeTmGzrbe/WJxFxWaBdd3A3F8iLdab+zncF8Wk
+        bxI=
+  recorded_at: 2026-05-26 14:29:23
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facet=nucleotideSequence.targetGene&facetLimit=&nucleotideSequence.invalid=FALSE
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
+    body:
+      raw_gzip: |-
+        eJx9kM1qwzAQhN9FZx8kWX/OLbgiBFqntZ1TKcK15URUloLsHErIu9c0pVEgBF0Wdr7R7JyA
+        7/tRT2A
+        BE2DNYC6Tdt2mL3XrQzeCRd/YUSeg9Uc3rxGhFBGY8QQEPR7tNCvePxLQN63+nU+g
+        N9p2YAGKbf4sN/
+        X6SapKvm1lkUtVL8uVrNVKFhL8eV4g1wx6Zkrz6Uc/NFaVxRJcf8WQZzxl
+        +Jz8S1+Dn7RxqvWdcTu10
+        05fAZxmlDIKI/2LmXy7964LZrY/PKYp4wyRiM4363hPGIc3aapq
+        q8JtZpYhRLC4I1JIVEofv5rw7SfT
+        xgxNBWUxs64rFfTOeBfJiEgFyeBda1ypIT71iqUcCxp7
+        53vrgz/YZpweFzI3n2F6mwpFfWAuEDx/zO8
+        HHYe8hQ==
+  recorded_at: 2026-05-26 14:29:24
+recorded_with: VCR-vcr/2.0.0

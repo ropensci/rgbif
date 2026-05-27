@@ -583,7 +583,8 @@ material entity. Example : http://www.ncbi.nlm.nih.gov/nuccore/U34853.1}
 nucleotide sequence associated with the occurrence.}
 
 \item{nucleotideSequence.targetGene}{(character) Gene targeted by the
-nucleotide sequence.}
+nucleotide sequence. See possible values at
+\url{https://registry.gbif.org/vocabulary/target_gene/concepts}}
 
 \item{nucleotideSequence.sequence}{(character) Nucleotide sequence string.}
 
