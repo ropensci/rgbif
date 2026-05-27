@@ -311,7 +311,8 @@
 #' @param nucleotideSequence.nucleotideSequenceID (character) Identifier for the
 #' nucleotide sequence associated with the occurrence.
 #' @param nucleotideSequence.targetGene (character) Gene targeted by the
-#' nucleotide sequence.
+#' nucleotide sequence. See possible values at
+#' \url{https://registry.gbif.org/vocabulary/target_gene/concepts}
 #' @param nucleotideSequence.sequence (character) Nucleotide sequence string.
 #' @param nucleotideSequence.sequenceLength (numeric) Length of the nucleotide
 #' sequence.
