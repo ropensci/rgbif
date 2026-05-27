@@ -683,17 +683,21 @@ test_that("nucleotideSequence.targetGene works correctly", {
   expect_is(aa, "gbif")
   expect_is(aa$data, "data.frame")
   expect_equal(attr(aa, "args")$nucleotideSequence.targetGene, "ITS1")
+  expect_true(all(grepl("ITS1", aa$data$nucleotideSequence.targetGene)))
 
   expect_is(bb, "gbif")
   expect_equal(attr(bb, "args")$nucleotideSequence.targetGene, "COI")
+  expect_true(all(grepl("COI", bb$data$nucleotideSequence.targetGene)))
 
   expect_is(cc, "gbif")
   # semicolon-separated values get processed and first value stored
   expect_true(!is.null(attr(cc, "args")$nucleotideSequence.targetGene))
+  expect_true(all(grepl("ITS1|COI", cc$data$nucleotideSequence.targetGene)))
 
   expect_is(dd, "gbif")
   expect_equal(attr(dd, "args")$nucleotideSequence.targetGene, "ITS1")
   expect_equal(dd$data$classKey[1], 212)
+  expect_true(all(grepl("ITS1", dd$data$nucleotideSequence.targetGene)))
 })
 
 test_that("nucleotideSequence.sequenceLength works correctly", {
@@ -725,10 +729,14 @@ test_that("nucleotideSequence.gcContent works correctly", {
   expect_is(aa, "gbif")
   expect_is(aa$data, "data.frame")
   expect_equal(attr(aa, "args")$nucleotideSequence.gcContent, "0.4,0.6")
+  expect_true(all(aa$data$nucleotideSequence.gcContent <= 0.6))
+  expect_true(all(aa$data$nucleotideSequence.gcContent >= 0.4))
 
   expect_is(bb, "gbif")
   expect_equal(bb$data$classKey[1], 212)
   expect_equal(attr(bb, "args")$nucleotideSequence.gcContent, "0.4,0.6")
+  expect_true(all(bb$data$nucleotideSequence.gcContent <= 0.6))
+  expect_true(all(bb$data$nucleotideSequence.gcContent >= 0.4))
 })
 
 test_that("nucleotideSequence boolean filters work correctly", {
@@ -742,15 +750,19 @@ test_that("nucleotideSequence boolean filters work correctly", {
   
   expect_is(aa, "gbif")
   expect_equal(attr(aa, "args")$nucleotideSequence.invalid, FALSE)
+  expect_true(all(aa$data$nucleotideSequence.invalid == FALSE))
 
   expect_is(bb, "gbif")
   expect_equal(attr(bb, "args")$nucleotideSequence.endsTrimmed, TRUE)
+  expect_true(all(bb$data$nucleotideSequence.endsTrimmed == TRUE))
 
   expect_is(cc, "gbif")
   expect_equal(attr(cc, "args")$nucleotideSequence.gapsOrWhitespaceRemoved, TRUE)
+  expect_true(all(cc$data$nucleotideSequence.gapsOrWhitespaceRemoved == TRUE))
 
   expect_is(dd, "gbif")
   expect_equal(attr(dd, "args")$nucleotideSequence.naturalLanguageDetected, FALSE)
+  expect_true(all(dd$data$nucleotideSequence.naturalLanguageDetected == FALSE))
 })
 
 test_that("isSequenced parameter works correctly", {
@@ -763,39 +775,14 @@ test_that("isSequenced parameter works correctly", {
   
   expect_is(aa, "gbif")
   expect_equal(attr(aa, "args")$isSequenced, TRUE)
-  
+  expect_true(all(aa$data$isSequenced == TRUE))
+
   expect_is(bb, "gbif")
   expect_equal(attr(bb, "args")$isSequenced, FALSE)
-  
+  expect_equal(all(bb$data$isSequenced == FALSE), TRUE)
+
   expect_is(cc, "gbif")
   expect_equal(cc$data$classKey[1], 212)
 })
 
-test_that("combined nucleotideSequence filters work correctly", {
-  skip_on_cran() # because fixture in .Rbuildignore
-  vcr::use_cassette("occ_search_nucleotideSequence_combined", {
-    aa <- occ_search(
-      nucleotideSequence.targetGene = "ITS1",
-      nucleotideSequence.sequenceLength = "500,1000",
-      nucleotideSequence.invalid = FALSE,
-      limit = 2
-    )
-    bb <- occ_search(
-      taxonKey = 212,
-      nucleotideSequence.targetGene = "COI",
-      nucleotideSequence.gcContent = "0.4,0.6",
-      limit = 2
-    )
-  }, preserve_exact_body_bytes = TRUE)
-  
-  expect_is(aa, "gbif")
-  expect_equal(attr(aa, "args")$nucleotideSequence.targetGene, "ITS1")
-  expect_equal(attr(aa, "args")$nucleotideSequence.sequenceLength, "500,1000")
-  expect_equal(attr(aa, "args")$nucleotideSequence.invalid, FALSE)
-  
-  expect_is(bb, "gbif")
-  expect_equal(bb$data$classKey[1], 212)
-  expect_equal(attr(bb, "args")$nucleotideSequence.targetGene, "COI")
-  expect_equal(attr(bb, "args")$nucleotideSequence.gcContent, "0.4,0.6")
-})
 
