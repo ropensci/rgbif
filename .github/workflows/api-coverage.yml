@@ -196,26 +196,13 @@ jobs:
           {
             echo "# API Coverage Report"
             echo ""
-            echo "This issue contains the latest GBIF API coverage report with interactive checkboxes."
-            echo ""
-            echo "## How to Use This Report"
-            echo ""
-            echo "1. **Review** the missing endpoints and parameters below"
-            echo "2. **Check the boxes** for items you want to process:"
-            echo "   - [ ] **Ignore** - Add to ignored list (will not be implemented)"
-            echo "   - [ ] **Issue** - Create a GitHub issue to track implementation"
-            echo "3. **Run the workflow** - Go to Actions > API Coverage Management > Run workflow"
-            echo "   - Select action - process-actions"
-            echo "   - The workflow will read this issue and take the checked actions"
-            echo "4. **Review results** - The workflow will create issues and update the ignored lists"
-            echo ""
             echo "---"
             echo ""
             echo "$REPORT_CONTENT"
             echo ""
             echo "---"
             echo ""
-            echo "**Note:** This issue is automatically updated when the coverage check runs. To process checked boxes, run the process-actions workflow."
+            echo "**Note:** This issue is automatically updated when the coverage check runs."
           } > /tmp/issue-body.md
           
           if [ -n "$ISSUE_NUMBER" ] && [ "$ISSUE_NUMBER" != "null" ] && [ "$ISSUE_NUMBER" != "" ]; then

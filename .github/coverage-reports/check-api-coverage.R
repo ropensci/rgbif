@@ -362,8 +362,6 @@ generate_reports <- function(results, all_endpoints) {
   if (length(results$missing_endpoints) > 0) {
     md_content <- c(md_content,
       "## Missing Endpoints",
-      "",
-      "> **Actions:** Check boxes below and run the `Process Coverage Actions` workflow to automatically update api-mapping.json and create GitHub issues.",
       ""
     )
     for (endpoint_key in names(results$missing_endpoints)) {
@@ -373,9 +371,6 @@ generate_reports <- function(results, all_endpoints) {
         paste("- **API:**", endpoint$api),
         paste("- **Summary:**", endpoint$summary),
         paste("- **Operation ID:**", endpoint$operationId),
-        "- **Actions:**",
-        "  - [ ] Ignore - Add endpoint to ignored_endpoints",
-        "  - [ ] Issue - Create a GitHub issue to implement this endpoint",
         ""
       )
     }
@@ -384,8 +379,6 @@ generate_reports <- function(results, all_endpoints) {
   if (length(results$missing_parameters) > 0) {
     md_content <- c(md_content,
       "## Functions with Missing Parameters",
-      "",
-      "> **Actions:** Check boxes below and run the `Process Coverage Actions` workflow to automatically update api-mapping.json and create GitHub issues.",
       ""
     )
     for (endpoint_key in names(results$missing_parameters)) {
@@ -400,13 +393,7 @@ generate_reports <- function(results, all_endpoints) {
           paste0("  - `", param, "`")
         )
       }
-      # Add single pair of checkboxes for all parameters in this function
-      md_content <- c(md_content,
-        "- **Actions:**",
-        "  - [ ] Ignore - Add all parameters to ignored_parameters",
-        "  - [ ] Issue - Create issue to implement these parameters",
-        ""
-      )
+      md_content <- c(md_content, "")
     }
   }
   
