@@ -371,6 +371,8 @@ generate_reports <- function(results, all_endpoints) {
         paste("- **API:**", endpoint$api),
         paste("- **Summary:**", endpoint$summary),
         paste("- **Operation ID:**", endpoint$operationId),
+        "- [ ] Ignore",
+        "- [ ] Issue",
         ""
       )
     }
@@ -393,7 +395,11 @@ generate_reports <- function(results, all_endpoints) {
           paste0("  - `", param, "`")
         )
       }
-      md_content <- c(md_content, "")
+      md_content <- c(md_content,
+        "- [ ] Ignore",
+        "- [ ] Issue",
+        ""
+      )
     }
   }
   
