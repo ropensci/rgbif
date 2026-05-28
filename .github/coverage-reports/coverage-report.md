@@ -1,5 +1,5 @@
 # GBIF API Coverage Report
-Generated: 2026-05-23 05:23:29.481861
+Generated: 2026-05-28 08:57:31.581251
 
 ## Summary
 
@@ -9,30 +9,11 @@ Generated: 2026-05-23 05:23:29.481861
 - **Implemented endpoints:** 127
 - **Missing endpoints:** 0
 - **Coverage:** 96.9%
-- **Functions with missing parameters:** 22
+- **Functions with missing parameters:** 21
 
 ## Functions with Missing Parameters
 
 > **Actions:** Check boxes below and run the `Process Coverage Actions` workflow to automatically update api-mapping.json and create GitHub issues.
-
-### occ_count - GET /occurrence/search
-- **Missing parameters:**
-  - `nucleotideSequence.nucleotideSequenceID`
-  - `nucleotideSequence.targetGene`
-  - `nucleotideSequence.sequence`
-  - `nucleotideSequence.sequenceLength`
-  - `nucleotideSequence.gcContent`
-  - `nucleotideSequence.nonIupacFraction`
-  - `nucleotideSequence.nonACGTNFraction`
-  - `nucleotideSequence.nFraction`
-  - `nucleotideSequence.nRunsCapped`
-  - `nucleotideSequence.naturalLanguageDetected`
-  - `nucleotideSequence.endsTrimmed`
-  - `nucleotideSequence.gapsOrWhitespaceRemoved`
-  - `nucleotideSequence.invalid`
-- **Actions:**
-  - [ ] Ignore - Add all parameters to ignored_parameters
-  - [ ] Issue - Create issue to implement these parameters
 
 ### occ_download_stats - GET /occurrence/download/statistics
 - **Missing parameters:**

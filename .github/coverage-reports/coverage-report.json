@@ -6,16 +6,10 @@
     "implemented_endpoints": 127,
     "missing_endpoints": 0,
     "coverage_percentage": 96.9,
-    "functions_with_missing_params": 22
+    "functions_with_missing_params": 21
   },
   "missing_endpoints": [],
   "missing_parameters": {
-    "GET /occurrence/search": {
-      "function_name": "occ_count",
-      "missing_parameters": ["nucleotideSequence.nucleotideSequenceID", "nucleotideSequence.targetGene", "nucleotideSequence.sequence", "nucleotideSequence.sequenceLength", "nucleotideSequence.gcContent", "nucleotideSequence.nonIupacFraction", "nucleotideSequence.nonACGTNFraction", "nucleotideSequence.nFraction", "nucleotideSequence.nRunsCapped", "nucleotideSequence.naturalLanguageDetected", "nucleotideSequence.endsTrimmed", "nucleotideSequence.gapsOrWhitespaceRemoved", "nucleotideSequence.invalid"],
-      "api_parameters": ["acceptedTaxonKey", "associatedSequences", "basisOfRecord", "bed", "catalogNumber", "classKey", "checklistKey", "collectionCode", "collectionKey", "continent", "coordinateUncertaintyInMeters", "country", "crawlId", "datasetId", "datasetKey", "datasetName", "day", "decimalLatitude", "degreeOfEstablishment", "decimalLongitude", "depth", "distanceFromCentroidInMeters", "dwcaExtension", "earliestEonOrLowestEonothem", "earliestEraOrLowestErathem", "earliestPeriodOrLowestSystem", "earliestEpochOrLowestSeries", "earliestAgeOrLowestStage", "elevation", "endDayOfYear", "establishmentMeans", "eventDate", "eventId", "familyKey", "fieldNumber", "formation", "gadmGid", "gadmLevel0Gid", "gadmLevel1Gid", "gadmLevel2Gid", "gadmLevel3Gid", "gbifId", "gbifRegion", "genusKey", "geoDistance", "georeferencedBy", "geometry", "group", "hasCoordinate", "higherGeography", "highestBiostratigraphicZone", "hasGeospatialIssue", "hostingOrganizationKey", "identifiedBy", "identifiedByID", "installationKey", "institutionCode", "institutionKey", "issue", "isInCluster", "island", "islandGroup", "isSequenced", "iucnRedListCategory", "kingdomKey", "lastInterpreted", "latestEonOrHighestEonothem", "latestEraOrHighestErathem", "latestPeriodOrHighestSystem", "latestEpochOrHighestSeries", "latestAgeOrHighestStage", "license", "lifeStage", "locality", "lowestBiostratigraphicZone", "measurementType", "measurementTypeID", "mediaType", "member", "modified", "month", "networkKey", "nucleotideSequence.nucleotideSequenceID", "nucleotideSequence.targetGene", "nucleotideSequence.sequence", "nucleotideSequence.sequenceLength", "nucleotideSequence.gcContent", "nucleotideSequence.nonIupacFraction", "nucleotideSequence.nonACGTNFraction", "nucleotideSequence.nFraction", "nucleotideSequence.nRunsCapped", "nucleotideSequence.naturalLanguageDetected", "nucleotideSequence.endsTrimmed", "nucleotideSequence.gapsOrWhitespaceRemoved", "nucleotideSequence.invalid", "occurrenceId", "occurrenceStatus", "orderKey", "organismId", "organismQuantity", "organismQuantityType", "otherCatalogNumbers", "parentEventId", "pathway", "phylumKey", "preparations", "previousIdentifications", "programme", "projectId", "protocol", "publishingCountry", "publishedByGbifRegion", "publishingOrg", "recordedBy", "recordedByID", "recordNumber", "relativeOrganismQuantity", "repatriated", "sampleSizeUnit", "sampleSizeValue", "samplingProtocol", "sex", "scientificName", "speciesKey", "startDayOfYear", "stateProvince", "taxonConceptId", "taxonKey", "taxonId", "taxonomicIssue", "taxonomicStatus", "typeStatus", "verbatimScientificName", "waterBody", "year", "geologicalTime", "lithostratigraphy", "biostratigraphy", "matchCase", "shuffle", "hl", "q", "facet", "facetMincount", "facetMultiselect", "facetLimit", "facetOffset"],
-      "implemented_parameters": ["taxonKey", "scientificName", "country", "publishingCountry", "hasCoordinate", "typeStatus", "recordNumber", "lastInterpreted", "continent", "geometry", "recordedBy", "recordedByID", "identifiedByID", "basisOfRecord", "datasetKey", "eventDate", "catalogNumber", "year", "month", "decimalLatitude", "decimalLongitude", "elevation", "depth", "institutionCode", "collectionCode", "hasGeospatialIssue", "issue", "search", "mediaType", "subgenusKey", "repatriated", "phylumKey", "kingdomKey", "classKey", "orderKey", "familyKey", "genusKey", "speciesKey", "establishmentMeans", "degreeOfEstablishment", "protocol", "license", "organismId", "publishingOrg", "stateProvince", "waterBody", "locality", "occurrenceStatus", "gadmGid", "coordinateUncertaintyInMeters", "verbatimScientificName", "eventId", "identifiedBy", "networkKey", "verbatimTaxonId", "occurrenceId", "organismQuantity", "organismQuantityType", "relativeOrganismQuantity", "iucnRedListCategory", "lifeStage", "isInCluster", "distanceFromCentroidInMeters", "geoDistance", "sex", "dwcaExtension", "gbifId", "gbifRegion", "projectId", "programme", "preparations", "datasetId", "datasetName", "publishedByGbifRegion", "island", "islandGroup", "taxonId", "taxonConceptId", "taxonomicStatus", "acceptedTaxonKey", "collectionKey", "institutionKey", "otherCatalogNumbers", "georeferencedBy", "installationKey", "hostingOrganizationKey", "crawlId", "modified", "higherGeography", "fieldNumber", "parentEventId", "samplingProtocol", "sampleSizeUnit", "sampleSizeValue", "pathway", "gadmLevel0Gid", "gadmLevel1Gid", "gadmLevel2Gid", "gadmLevel3Gid", "earliestEonOrLowestEonothem", "latestEonOrHighestEonothem", "earliestEraOrLowestErathem", "latestEraOrHighestErathem", "earliestPeriodOrLowestSystem", "latestPeriodOrHighestSystem", "earliestEpochOrLowestSeries", "latestEpochOrHighestSeries", "earliestAgeOrLowestStage", "latestAgeOrHighestStage", "lowestBiostratigraphicZone", "highestBiostratigraphicZone", "group", "formation", "member", "bed", "associatedSequences", "isSequenced", "startDayOfYear", "endDayOfYear", "checklistKey", "previousIdentifications", "measurementType", "measurementTypeID", "matchCase", "shuffle", "hl", "q", "geologicalTime", "lithostratigraphy", "biostratigraphy", "taxonomicIssue", "day", "facet", "facetMincount", "facetMultiselect", "facetLimit", "facetOffset"]
-    },
     "GET /occurrence/download/statistics": {
       "function_name": "occ_download_stats",
       "missing_parameters": ["fromDate", "toDate"],
@@ -263,6 +257,19 @@
         "member",
         "bed",
         "associatedSequences",
+        "nucleotideSequence.nucleotideSequenceID",
+        "nucleotideSequence.targetGene",
+        "nucleotideSequence.sequence",
+        "nucleotideSequence.sequenceLength",
+        "nucleotideSequence.gcContent",
+        "nucleotideSequence.nonIupacFraction",
+        "nucleotideSequence.nonACGTNFraction",
+        "nucleotideSequence.nFraction",
+        "nucleotideSequence.nRunsCapped",
+        "nucleotideSequence.naturalLanguageDetected",
+        "nucleotideSequence.endsTrimmed",
+        "nucleotideSequence.gapsOrWhitespaceRemoved",
+        "nucleotideSequence.invalid",
         "isSequenced",
         "startDayOfYear",
         "endDayOfYear",
