@@ -1,14 +1,4 @@
-{
-  "metadata": {
-    "version": "1.30.0",
-    "last_updated": "2026-05-15",
-    "description": "Complete mapping between rgbif R functions and GBIF API endpoints",
-    "maintainer": "rgbif maintainers",
-    "total_functions": 72,
-    "note": "Some functions map to multiple API endpoints. occ_download_describe covers 6 format-specific endpoints; name_usage covers 17 endpoints via the data parameter; name_parse supports both GET and POST methods.",
-    "priority_field": "Optional 'priority' field can be added to mappings and ignored_endpoints. Values: 'high' (critical/commonly used), 'low' (nice-to-have), 'unclassified' (new/not yet prioritized). Field can be omitted if not classified.",
-    "parameter_mappings_field": "Optional 'parameter_mappings' object maps GBIF API parameter names to rgbif parameter names when they differ (e.g., {'gbifId': 'key'}). Used to avoid false positives in missing parameter detection."
-  },
+﻿{
   "mappings": [
     {
       "function_name": "occ_search",
@@ -155,9 +145,7 @@
         "facetMincount",
         "facetMultiselect",
         "skip_validate"
-      ],
-      "notes": "Main occurrence search endpoint - returns hierarchical data, media, and facets",
-      "priority": "high"
+      ]
     },
     {
       "function_name": "occ_data",
@@ -231,8 +219,7 @@
         "skip_validate",
         "limit",
         "start"
-      ],
-      "notes": "Simplified occurrence search - returns only data component"
+      ]
     },
     {
       "function_name": "occ_get",
@@ -245,8 +232,7 @@
       ],
       "parameter_mappings": {
         "gbifId": "key"
-      },
-      "notes": "Get individual occurrence by GBIF key"
+      }
     },
     {
       "function_name": "occ_get_verbatim",
@@ -259,8 +245,7 @@
       ],
       "parameter_mappings": {
         "gbifId": "key"
-      },
-      "notes": "Get verbatim occurrence record without interpretation"
+      }
     },
     {
       "function_name": "occ_facet",
@@ -405,8 +390,7 @@
         "lithostratigraphy",
         "biostratigraphy",
         "taxonomicIssue"
-      ],
-      "notes": "Get occurrence facets - wraps occ_search with limit=0. DEPRECATED since rgbif 3.7.6, use occ_count(facet='x') instead."
+      ]
     },
     {
       "function_name": "occ_count",
@@ -564,8 +548,7 @@
         "facetMultiselect",
         "facetLimit",
         "facetOffset"
-      ],
-      "notes": "Count occurrences matching criteria - wraps occ_search with limit=0. Since rgbif 3.7.6, uses /occurrence/search endpoint."
+      ]
     },
     {
       "function_name": "occ_count_country",
@@ -574,8 +557,7 @@
       "api": "occurrence",
       "parameters": [
         "publishingCountry"
-      ],
-      "notes": "Pre-computed occurrence counts by country"
+      ]
     },
     {
       "function_name": "occ_count_pub_country",
@@ -584,8 +566,7 @@
       "api": "occurrence",
       "parameters": [
         "country"
-      ],
-      "notes": "Pre-computed occurrence counts by publishing country"
+      ]
     },
     {
       "function_name": "occ_count_year",
@@ -594,16 +575,14 @@
       "api": "occurrence",
       "parameters": [
         "year"
-      ],
-      "notes": "Pre-computed occurrence counts by year"
+      ]
     },
     {
       "function_name": "occ_count_basis_of_record",
       "endpoint": "/occurrence/counts/basisOfRecord",
       "method": "GET",
       "api": "occurrence",
-      "parameters": [],
-      "notes": "Pre-computed occurrence counts by basis of record"
+      "parameters": []
     },
     {
       "function_name": "occ_download",
@@ -619,8 +598,7 @@
         "user",
         "pwd",
         "email"
-      ],
-      "notes": "Request occurrence download using predicate JSON or SQL"
+      ]
     },
     {
       "function_name": "occ_download_prep",
@@ -636,8 +614,7 @@
         "user",
         "pwd",
         "email"
-      ],
-      "notes": "Prepare download request - returns JSON without executing"
+      ]
     },
     {
       "function_name": "occ_download_sql",
@@ -651,8 +628,7 @@
         "pwd",
         "email",
         "validate"
-      ],
-      "notes": "Request SQL-based occurrence download"
+      ]
     },
     {
       "function_name": "occ_download_list",
@@ -668,8 +644,7 @@
         "status",
         "from",
         "statistics"
-      ],
-      "notes": "List user downloads"
+      ]
     },
     {
       "function_name": "occ_download_meta",
@@ -679,8 +654,7 @@
       "parameters": [
         "key",
         "statistics"
-      ],
-      "notes": "Get download metadata by key"
+      ]
     },
     {
       "function_name": "occ_download_get",
@@ -691,8 +665,7 @@
         "key",
         "path",
         "overwrite"
-      ],
-      "notes": "Download occurrence file to disk"
+      ]
     },
     {
       "function_name": "occ_download_cancel",
@@ -703,8 +676,7 @@
         "key",
         "user",
         "pwd"
-      ],
-      "notes": "Cancel running download"
+      ]
     },
     {
       "function_name": "occ_download_datasets",
@@ -715,8 +687,7 @@
         "key",
         "limit",
         "start"
-      ],
-      "notes": "List datasets included in download"
+      ]
     },
     {
       "function_name": "occ_download_dataset_activity",
@@ -727,8 +698,7 @@
         "dataset",
         "limit",
         "start"
-      ],
-      "notes": "Downloads that include a specific dataset"
+      ]
     },
     {
       "function_name": "occ_download_describe",
@@ -737,8 +707,7 @@
       "api": "occurrence",
       "parameters": [
         "x"
-      ],
-      "notes": "Describes fields in Darwin Core Archive downloads (x='dwca')"
+      ]
     },
     {
       "function_name": "occ_download_describe",
@@ -747,8 +716,7 @@
       "api": "occurrence",
       "parameters": [
         "x"
-      ],
-      "notes": "Describes fields in simple CSV downloads (x='simpleCsv')"
+      ]
     },
     {
       "function_name": "occ_download_describe",
@@ -757,8 +725,7 @@
       "api": "occurrence",
       "parameters": [
         "x"
-      ],
-      "notes": "Describes fields in simple Avro downloads (x='simpleAvro')"
+      ]
     },
     {
       "function_name": "occ_download_describe",
@@ -767,8 +734,7 @@
       "api": "occurrence",
       "parameters": [
         "x"
-      ],
-      "notes": "Describes fields in simple Parquet downloads (x='simpleParquet')"
+      ]
     },
     {
       "function_name": "occ_download_describe",
@@ -777,8 +743,7 @@
       "api": "occurrence",
       "parameters": [
         "x"
-      ],
-      "notes": "Describes fields in species list downloads (x='speciesList')"
+      ]
     },
     {
       "function_name": "occ_download_describe",
@@ -787,8 +752,7 @@
       "api": "occurrence",
       "parameters": [
         "x"
-      ],
-      "notes": "Describes fields in SQL downloads (x='sql')"
+      ]
     },
     {
       "function_name": "occ_download_doi",
@@ -797,8 +761,7 @@
       "api": "occurrence",
       "parameters": [
         "key"
-      ],
-      "notes": "Get DOI for download"
+      ]
     },
     {
       "function_name": "occ_download_doi",
@@ -808,8 +771,7 @@
       "parameters": [
         "prefix",
         "suffix"
-      ],
-      "notes": "Get download metadata by DOI (prefix/suffix format)"
+      ]
     },
     {
       "function_name": "occ_download_doi",
@@ -819,9 +781,7 @@
       "parameters": [
         "prefix",
         "suffix"
-      ],
-      "notes": "Get download citation by DOI (prefix/suffix format)",
-      "priority": "high"
+      ]
     },
     {
       "function_name": "occ_download_stats",
@@ -836,8 +796,7 @@
         "publishingOrgKey",
         "limit",
         "offset"
-      ],
-      "notes": "Download statistics by month and dataset"
+      ]
     },
     {
       "function_name": "occ_download_stats_export",
@@ -852,8 +811,7 @@
         "publishingOrgKey",
         "limit",
         "offset"
-      ],
-      "notes": "Export download statistics"
+      ]
     },
     {
       "function_name": "occ_download_stats_user_country",
@@ -865,8 +823,7 @@
         "to",
         "userCountry",
         "publishingCountry"
-      ],
-      "notes": "Downloads by user country"
+      ]
     },
     {
       "function_name": "occ_download_stats_dataset_records",
@@ -879,8 +836,7 @@
         "publishingCountry",
         "datasetKey",
         "publishingOrgKey"
-      ],
-      "notes": "Downloaded records by dataset"
+      ]
     },
     {
       "function_name": "occ_download_stats_dataset",
@@ -893,8 +849,7 @@
         "publishingCountry",
         "datasetKey",
         "publishingOrgKey"
-      ],
-      "notes": "Downloads by dataset"
+      ]
     },
     {
       "function_name": "occ_download_stats_source",
@@ -905,8 +860,7 @@
         "from",
         "to",
         "source"
-      ],
-      "notes": "Downloads by source (API, web, etc)"
+      ]
     },
     {
       "function_name": "gbif_geocode",
@@ -916,8 +870,7 @@
       "parameters": [
         "latitude",
         "longitude"
-      ],
-      "notes": "Reverse geocode coordinates to location"
+      ]
     },
     {
       "function_name": "dataset_search",
@@ -950,8 +903,7 @@
         "limit",
         "start",
         "description"
-      ],
-      "notes": "Search dataset metadata"
+      ]
     },
     {
       "function_name": "dataset_export",
@@ -974,8 +926,7 @@
         "networkKey",
         "doi",
         "category"
-      ],
-      "notes": "Export full dataset search results"
+      ]
     },
     {
       "function_name": "dataset",
@@ -995,8 +946,7 @@
         "deleted",
         "limit",
         "start"
-      ],
-      "notes": "List all datasets or deleted datasets"
+      ]
     },
     {
       "function_name": "dataset_suggest",
@@ -1022,8 +972,7 @@
         "limit",
         "start",
         "description"
-      ],
-      "notes": "Suggest datasets for autocomplete"
+      ]
     },
     {
       "function_name": "dataset_doi",
@@ -1034,8 +983,7 @@
         "doi",
         "limit",
         "start"
-      ],
-      "notes": "Get dataset by DOI"
+      ]
     },
     {
       "function_name": "dataset_doi",
@@ -1047,8 +995,7 @@
         "suffix",
         "limit",
         "start"
-      ],
-      "notes": "Get dataset by DOI (prefix/suffix format)"
+      ]
     },
     {
       "function_name": "dataset_gridded",
@@ -1062,8 +1009,7 @@
         "return",
         "min_dis_count",
         "warn"
-      ],
-      "notes": "Check if dataset is gridded/systematically sampled"
+      ]
     },
     {
       "function_name": "dataset_get",
@@ -1072,8 +1018,7 @@
       "api": "registry",
       "parameters": [
         "uuid"
-      ],
-      "notes": "Get dataset by UUID"
+      ]
     },
     {
       "function_name": "dataset_process",
@@ -1084,8 +1029,7 @@
         "uuid",
         "limit",
         "start"
-      ],
-      "notes": "Get dataset processing history"
+      ]
     },
     {
       "function_name": "dataset_networks",
@@ -1096,8 +1040,7 @@
         "uuid",
         "limit",
         "start"
-      ],
-      "notes": "Get networks associated with dataset"
+      ]
     },
     {
       "function_name": "dataset_constituents",
@@ -1108,8 +1051,7 @@
         "uuid",
         "limit",
         "start"
-      ],
-      "notes": "Get constituent datasets"
+      ]
     },
     {
       "function_name": "dataset_comment",
@@ -1118,8 +1060,7 @@
       "api": "registry",
       "parameters": [
         "uuid"
-      ],
-      "notes": "Get dataset comments"
+      ]
     },
     {
       "function_name": "dataset_contact",
@@ -1128,8 +1069,7 @@
       "api": "registry",
       "parameters": [
         "uuid"
-      ],
-      "notes": "Get dataset contacts"
+      ]
     },
     {
       "function_name": "dataset_endpoint",
@@ -1138,8 +1078,7 @@
       "api": "registry",
       "parameters": [
         "uuid"
-      ],
-      "notes": "Get dataset endpoints"
+      ]
     },
     {
       "function_name": "dataset_identifier",
@@ -1148,8 +1087,7 @@
       "api": "registry",
       "parameters": [
         "uuid"
-      ],
-      "notes": "Get dataset identifiers"
+      ]
     },
     {
       "function_name": "dataset_machinetag",
@@ -1158,8 +1096,7 @@
       "api": "registry",
       "parameters": [
         "uuid"
-      ],
-      "notes": "Get dataset machine tags"
+      ]
     },
     {
       "function_name": "dataset_tag",
@@ -1168,8 +1105,7 @@
       "api": "registry",
       "parameters": [
         "uuid"
-      ],
-      "notes": "Get dataset tags"
+      ]
     },
     {
       "function_name": "dataset_metrics",
@@ -1178,8 +1114,7 @@
       "api": "registry",
       "parameters": [
         "uuid"
-      ],
-      "notes": "Get dataset metrics/counts"
+      ]
     },
     {
       "function_name": "datasets",
@@ -1190,8 +1125,7 @@
         "type",
         "limit",
         "offset"
-      ],
-      "notes": "List all datasets with paging"
+      ]
     },
     {
       "function_name": "dataset_duplicate",
@@ -1201,8 +1135,7 @@
       "parameters": [
         "limit",
         "start"
-      ],
-      "notes": "List duplicate datasets"
+      ]
     },
     {
       "function_name": "dataset_noendpoint",
@@ -1212,8 +1145,7 @@
       "parameters": [
         "limit",
         "start"
-      ],
-      "notes": "List datasets without endpoints"
+      ]
     },
     {
       "function_name": "collection_search",
@@ -1252,8 +1184,7 @@
         "offset",
         "limit",
         "format"
-      ],
-      "notes": "Search GRSciColl collections"
+      ]
     },
     {
       "function_name": "collection_export",
@@ -1270,8 +1201,7 @@
         "institutionKey",
         "country",
         "city"
-      ],
-      "notes": "Export full collection search results"
+      ]
     },
     {
       "function_name": "institution_search",
@@ -1311,8 +1241,7 @@
         "offset",
         "limit",
         "format"
-      ],
-      "notes": "Search GRSciColl institutions"
+      ]
     },
     {
       "function_name": "institution_export",
@@ -1329,8 +1258,7 @@
         "contact",
         "country",
         "city"
-      ],
-      "notes": "Export full institution search results"
+      ]
     },
     {
       "function_name": "lit_search",
@@ -1356,8 +1284,7 @@
         "flatten",
         "abstract",
         "limit"
-      ],
-      "notes": "Search scientific literature citing GBIF"
+      ]
     },
     {
       "function_name": "lit_count",
@@ -1376,14 +1303,18 @@
         "publishingOrg",
         "peerReview",
         "openAccess",
-        "downloadKey"
+        "downloadKey",
+        "doi",
+        "journalSource",
+        "journalPublisher"
       ],
       "parameter_mappings": {
         "gbifDatasetKey": "datasetKey",
         "gbifDownloadKey": "downloadKey",
-        "publishingOrganizationKey": "publishingOrg"
-      },
-      "notes": "Count literature records - wraps lit_search with limit=0"
+        "publishingOrganizationKey": "publishingOrg",
+        "source": "journalSource",
+        "publisher": "journalPublisher"
+      }
     },
     {
       "function_name": "lit_export",
@@ -1403,9 +1334,18 @@
         "peerReview",
         "openAccess",
         "downloadKey",
+        "doi",
+        "journalSource",
+        "journalPublisher",
         "format"
       ],
-      "notes": "Export full literature search results"
+      "parameter_mappings": {
+        "gbifDatasetKey": "datasetKey",
+        "gbifDownloadKey": "downloadKey",
+        "publishingOrganizationKey": "publishingOrg",
+        "source": "journalSource",
+        "publisher": "journalPublisher"
+      }
     },
     {
       "function_name": "networks",
@@ -1420,8 +1360,7 @@
         "identifierType",
         "limit",
         "start"
-      ],
-      "notes": "List networks or get specific network"
+      ]
     },
     {
       "function_name": "network",
@@ -1430,8 +1369,7 @@
       "api": "registry",
       "parameters": [
         "key"
-      ],
-      "notes": "Get network by UUID"
+      ]
     },
     {
       "function_name": "network",
@@ -1443,8 +1381,7 @@
         "data",
         "limit",
         "start"
-      ],
-      "notes": "List network constituents via network(data='constituents', uuid='xxx')"
+      ]
     },
     {
       "function_name": "network",
@@ -1454,8 +1391,7 @@
       "parameters": [
         "uuid",
         "data"
-      ],
-      "notes": "Get network comments via network(data='comment', uuid='xxx')"
+      ]
     },
     {
       "function_name": "network",
@@ -1465,8 +1401,7 @@
       "parameters": [
         "uuid",
         "data"
-      ],
-      "notes": "Get network contacts via network(data='contact', uuid='xxx')"
+      ]
     },
     {
       "function_name": "network",
@@ -1476,8 +1411,7 @@
       "parameters": [
         "uuid",
         "data"
-      ],
-      "notes": "Get network endpoints via network(data='endpoint', uuid='xxx')"
+      ]
     },
     {
       "function_name": "network",
@@ -1487,8 +1421,7 @@
       "parameters": [
         "uuid",
         "data"
-      ],
-      "notes": "Get network identifiers via network(data='identifier', uuid='xxx')"
+      ]
     },
     {
       "function_name": "network",
@@ -1498,8 +1431,7 @@
       "parameters": [
         "uuid",
         "data"
-      ],
-      "notes": "Get network machine tags via network(data='machineTag', uuid='xxx')"
+      ]
     },
     {
       "function_name": "network",
@@ -1509,8 +1441,7 @@
       "parameters": [
         "uuid",
         "data"
-      ],
-      "notes": "Get network tags via network(data='tag', uuid='xxx')"
+      ]
     },
     {
       "function_name": "nodes",
@@ -1526,8 +1457,7 @@
         "limit",
         "start",
         "isocode"
-      ],
-      "notes": "List GBIF nodes or get specific node"
+      ]
     },
     {
       "function_name": "nodes",
@@ -1536,8 +1466,7 @@
       "api": "registry",
       "parameters": [
         "uuid"
-      ],
-      "notes": "Get specific node by UUID via nodes(uuid='xxx')"
+      ]
     },
     {
       "function_name": "nodes",
@@ -1547,8 +1476,7 @@
       "parameters": [
         "uuid",
         "data"
-      ],
-      "notes": "List node's organizations via nodes(data='organization', uuid='xxx')"
+      ]
     },
     {
       "function_name": "nodes",
@@ -1558,8 +1486,7 @@
       "parameters": [
         "data",
         "isocode"
-      ],
-      "notes": "Get node by country code via nodes(data='country', isocode='XX')"
+      ]
     },
     {
       "function_name": "nodes",
@@ -1568,8 +1495,7 @@
       "api": "registry",
       "parameters": [
         "data"
-      ],
-      "notes": "List all GBIF member countries via nodes(data='country')"
+      ]
     },
     {
       "function_name": "nodes",
@@ -1579,8 +1505,7 @@
       "parameters": [
         "uuid",
         "data"
-      ],
-      "notes": "List node's datasets via nodes(data='dataset', uuid='xxx')"
+      ]
     },
     {
       "function_name": "nodes",
@@ -1590,8 +1515,7 @@
       "parameters": [
         "uuid",
         "data"
-      ],
-      "notes": "List node's installations via nodes(data='installation', uuid='xxx')"
+      ]
     },
     {
       "function_name": "nodes",
@@ -1601,8 +1525,7 @@
       "parameters": [
         "uuid",
         "data"
-      ],
-      "notes": "Get node comments via nodes(data='comment', uuid='xxx')"
+      ]
     },
     {
       "function_name": "nodes",
@@ -1612,8 +1535,7 @@
       "parameters": [
         "uuid",
         "data"
-      ],
-      "notes": "Get node endpoints via nodes(data='endpoint', uuid='xxx')"
+      ]
     },
     {
       "function_name": "nodes",
@@ -1623,8 +1545,7 @@
       "parameters": [
         "uuid",
         "data"
-      ],
-      "notes": "Get node identifiers via nodes(data='identifier', uuid='xxx')"
+      ]
     },
     {
       "function_name": "nodes",
@@ -1634,8 +1555,7 @@
       "parameters": [
         "uuid",
         "data"
-      ],
-      "notes": "Get node machine tags via nodes(data='machineTag', uuid='xxx')"
+      ]
     },
     {
       "function_name": "nodes",
@@ -1645,8 +1565,7 @@
       "parameters": [
         "uuid",
         "data"
-      ],
-      "notes": "Get node tags via nodes(data='tag', uuid='xxx')"
+      ]
     },
     {
       "function_name": "nodes",
@@ -1656,8 +1575,7 @@
       "parameters": [
         "uuid",
         "data"
-      ],
-      "notes": "Get node pending endorsements via nodes(data='pendingEndorsement', uuid='xxx')"
+      ]
     },
     {
       "function_name": "nodes",
@@ -1666,8 +1584,7 @@
       "api": "registry",
       "parameters": [
         "data"
-      ],
-      "notes": "List all pending endorsements via nodes(data='pendingEndorsement')"
+      ]
     },
     {
       "function_name": "organizations",
@@ -1681,8 +1598,7 @@
         "query",
         "limit",
         "start"
-      ],
-      "notes": "List organizations or get specific organization"
+      ]
     },
     {
       "function_name": "organizations",
@@ -1691,8 +1607,7 @@
       "api": "registry",
       "parameters": [
         "uuid"
-      ],
-      "notes": "Get specific organization by UUID via organizations(uuid='xxx')"
+      ]
     },
     {
       "function_name": "organizations",
@@ -1702,8 +1617,7 @@
       "parameters": [
         "uuid",
         "data"
-      ],
-      "notes": "Get organization comments via organizations(data='comment', uuid='xxx')"
+      ]
     },
     {
       "function_name": "organizations",
@@ -1713,8 +1627,7 @@
       "parameters": [
         "uuid",
         "data"
-      ],
-      "notes": "Get organization contacts via organizations(data='contact', uuid='xxx')"
+      ]
     },
     {
       "function_name": "organizations",
@@ -1724,8 +1637,7 @@
       "parameters": [
         "uuid",
         "data"
-      ],
-      "notes": "Get organization endpoints via organizations(data='endpoint', uuid='xxx')"
+      ]
     },
     {
       "function_name": "organizations",
@@ -1735,8 +1647,7 @@
       "parameters": [
         "uuid",
         "data"
-      ],
-      "notes": "Get organization identifiers via organizations(data='identifier', uuid='xxx')"
+      ]
     },
     {
       "function_name": "organizations",
@@ -1746,8 +1657,7 @@
       "parameters": [
         "uuid",
         "data"
-      ],
-      "notes": "Get organization machine tags via organizations(data='machineTag', uuid='xxx')"
+      ]
     },
     {
       "function_name": "organizations",
@@ -1757,8 +1667,7 @@
       "parameters": [
         "uuid",
         "data"
-      ],
-      "notes": "Get organization tags via organizations(data='tag', uuid='xxx')"
+      ]
     },
     {
       "function_name": "organizations",
@@ -1768,8 +1677,7 @@
       "parameters": [
         "uuid",
         "data"
-      ],
-      "notes": "List organization's published datasets via organizations(data='ownedDataset', uuid='xxx')"
+      ]
     },
     {
       "function_name": "organizations",
@@ -1779,8 +1687,7 @@
       "parameters": [
         "uuid",
         "data"
-      ],
-      "notes": "List organization's hosted datasets via organizations(data='hostedDataset', uuid='xxx')"
+      ]
     },
     {
       "function_name": "organizations",
@@ -1790,8 +1697,7 @@
       "parameters": [
         "uuid",
         "data"
-      ],
-      "notes": "List organization's installations via organizations(data='installation', uuid='xxx')"
+      ]
     },
     {
       "function_name": "organizations",
@@ -1800,8 +1706,7 @@
       "api": "registry",
       "parameters": [
         "data"
-      ],
-      "notes": "List deleted organizations via organizations(data='deleted')"
+      ]
     },
     {
       "function_name": "organizations",
@@ -1810,8 +1715,7 @@
       "api": "registry",
       "parameters": [
         "data"
-      ],
-      "notes": "List pending organizations via organizations(data='pending')"
+      ]
     },
     {
       "function_name": "organizations",
@@ -1820,8 +1724,7 @@
       "api": "registry",
       "parameters": [
         "data"
-      ],
-      "notes": "List non-publishing organizations via organizations(data='nonPublishing')"
+      ]
     },
     {
       "function_name": "installations",
@@ -1836,8 +1739,7 @@
         "identifierType",
         "limit",
         "start"
-      ],
-      "notes": "List installations or get specific installation"
+      ]
     },
     {
       "function_name": "installations",
@@ -1847,8 +1749,7 @@
       "parameters": [
         "uuid",
         "data"
-      ],
-      "notes": "Get installation by UUID via installations(data='all', uuid='xxx')"
+      ]
     },
     {
       "function_name": "installations",
@@ -1860,8 +1761,7 @@
         "data",
         "limit",
         "start"
-      ],
-      "notes": "Get installation datasets via installations(data='dataset', uuid='xxx')"
+      ]
     },
     {
       "function_name": "installations",
@@ -1871,8 +1771,7 @@
       "parameters": [
         "uuid",
         "data"
-      ],
-      "notes": "Get installation comments via installations(data='comment', uuid='xxx')"
+      ]
     },
     {
       "function_name": "installations",
@@ -1882,8 +1781,7 @@
       "parameters": [
         "uuid",
         "data"
-      ],
-      "notes": "Get installation contacts via installations(data='contact', uuid='xxx')"
+      ]
     },
     {
       "function_name": "installations",
@@ -1893,8 +1791,7 @@
       "parameters": [
         "uuid",
         "data"
-      ],
-      "notes": "Get installation endpoints via installations(data='endpoint', uuid='xxx')"
+      ]
     },
     {
       "function_name": "installations",
@@ -1904,8 +1801,7 @@
       "parameters": [
         "uuid",
         "data"
-      ],
-      "notes": "Get installation identifiers via installations(data='identifier', uuid='xxx')"
+      ]
     },
     {
       "function_name": "installations",
@@ -1915,8 +1811,7 @@
       "parameters": [
         "uuid",
         "data"
-      ],
-      "notes": "Get installation machine tags via installations(data='machineTag', uuid='xxx')"
+      ]
     },
     {
       "function_name": "installations",
@@ -1926,8 +1821,7 @@
       "parameters": [
         "uuid",
         "data"
-      ],
-      "notes": "Get installation tags via installations(data='tag', uuid='xxx')"
+      ]
     },
     {
       "function_name": "installations",
@@ -1938,8 +1832,7 @@
         "data",
         "limit",
         "start"
-      ],
-      "notes": "List deleted installations via installations(data='deleted')"
+      ]
     },
     {
       "function_name": "installations",
@@ -1950,8 +1843,7 @@
         "data",
         "limit",
         "start"
-      ],
-      "notes": "List non-publishing installations via installations(data='nonPublishing')"
+      ]
     },
     {
       "function_name": "installation_search",
@@ -1969,8 +1861,7 @@
         "modified",
         "limit",
         "offset"
-      ],
-      "notes": "Search installations"
+      ]
     },
     {
       "function_name": "derived_dataset",
@@ -1985,8 +1876,7 @@
         "gbif_download_doi",
         "user",
         "pwd"
-      ],
-      "notes": "Register derived dataset for DOI"
+      ]
     },
     {
       "function_name": "derived_dataset_prep",
@@ -2001,8 +1891,7 @@
         "gbif_download_doi",
         "user",
         "pwd"
-      ],
-      "notes": "Prepare derived dataset registration - returns JSON without executing"
+      ]
     },
     {
       "function_name": "derived_dataset_get",
@@ -2011,8 +1900,7 @@
       "api": "registry",
       "parameters": [
         "key"
-      ],
-      "notes": "Get derived dataset citation by DOI"
+      ]
     },
     {
       "function_name": "gbif_oai_identify",
@@ -2028,8 +1916,7 @@
         "as",
         "id",
         "ids"
-      ],
-      "notes": "GBIF registry OAI-PMH endpoint - covers gbif_oai_identify(), gbif_oai_list_identifiers(), gbif_oai_list_records(), gbif_oai_list_metadataformats(), gbif_oai_list_sets(), gbif_oai_get_records()"
+      ]
     },
     {
       "function_name": "name_lookup",
@@ -2057,9 +1944,7 @@
         "issue",
         "constituentKey",
         "verbose"
-      ],
-      "priority": "high",
-      "notes": "Search taxonomic names/species"
+      ]
     },
     {
       "function_name": "name_backbone",
@@ -2096,9 +1981,7 @@
         "checklistKey",
         "start",
         "limit"
-      ],
-      "priority": "high",
-      "notes": "Match name to GBIF backbone taxonomy (v2 API)"
+      ]
     },
     {
       "function_name": "name_backbone_checklist",
@@ -2136,9 +2019,7 @@
       "parameter_mappings": {
         "taxonRank": "rank",
         "scientificName": "name"
-      },
-      "priority": "high",
-      "notes": "Match names from checklist to backbone (v2 API)"
+      }
     },
     {
       "function_name": "name_suggest",
@@ -2152,9 +2033,7 @@
         "fields",
         "start",
         "limit"
-      ],
-      "priority": "high",
-      "notes": "Suggest taxonomic names for autocomplete"
+      ]
     },
     {
       "function_name": "name_usage",
@@ -2168,9 +2047,7 @@
         "rank",
         "limit",
         "start"
-      ],
-      "priority": "high",
-      "notes": "List all name usages (data='all' with no key specified)"
+      ]
     },
     {
       "function_name": "name_usage",
@@ -2185,9 +2062,7 @@
         "rank",
         "limit",
         "start"
-      ],
-      "priority": "high",
-      "notes": "Get name usage by key (data='all')"
+      ]
     },
     {
       "function_name": "name_usage",
@@ -2196,9 +2071,7 @@
       "api": "checklistbank",
       "parameters": [
         "key"
-      ],
-      "priority": "high",
-      "notes": "Get verbatim name usage (data='verbatim')"
+      ]
     },
     {
       "function_name": "name_usage",
@@ -2207,9 +2080,7 @@
       "api": "checklistbank",
       "parameters": [
         "key"
-      ],
-      "priority": "high",
-      "notes": "Get parsed name (data='name')"
+      ]
     },
     {
       "function_name": "name_usage",
@@ -2218,9 +2089,7 @@
       "api": "checklistbank",
       "parameters": [
         "key"
-      ],
-      "priority": "high",
-      "notes": "Get parent name usages (data='parents')"
+      ]
     },
     {
       "function_name": "name_usage",
@@ -2231,9 +2100,7 @@
         "key",
         "limit",
         "start"
-      ],
-      "priority": "high",
-      "notes": "Get children name usages (data='children')"
+      ]
     },
     {
       "function_name": "name_usage",
@@ -2245,9 +2112,7 @@
         "language",
         "limit",
         "start"
-      ],
-      "priority": "high",
-      "notes": "Get related name usages (data='related')"
+      ]
     },
     {
       "function_name": "name_usage",
@@ -2259,9 +2124,7 @@
         "language",
         "limit",
         "start"
-      ],
-      "priority": "high",
-      "notes": "Get synonyms (data='synonyms')"
+      ]
     },
     {
       "function_name": "name_usage",
@@ -2273,9 +2136,7 @@
         "language",
         "limit",
         "start"
-      ],
-      "priority": "high",
-      "notes": "Get descriptions (data='descriptions')"
+      ]
     },
     {
       "function_name": "name_usage",
@@ -2287,9 +2148,7 @@
         "language",
         "limit",
         "start"
-      ],
-      "priority": "high",
-      "notes": "Get distributions (data='distributions')"
+      ]
     },
     {
       "function_name": "name_usage",
@@ -2300,9 +2159,7 @@
         "key",
         "limit",
         "start"
-      ],
-      "priority": "high",
-      "notes": "Get media (data='media')"
+      ]
     },
     {
       "function_name": "name_usage",
@@ -2313,9 +2170,7 @@
         "key",
         "limit",
         "start"
-      ],
-      "priority": "high",
-      "notes": "Get references (data='references')"
+      ]
     },
     {
       "function_name": "name_usage",
@@ -2327,9 +2182,7 @@
         "language",
         "limit",
         "start"
-      ],
-      "priority": "high",
-      "notes": "Get species profiles (data='speciesProfiles')"
+      ]
     },
     {
       "function_name": "name_usage",
@@ -2341,9 +2194,7 @@
         "language",
         "limit",
         "start"
-      ],
-      "priority": "high",
-      "notes": "Get vernacular names (data='vernacularNames')"
+      ]
     },
     {
       "function_name": "name_usage",
@@ -2354,9 +2205,7 @@
         "key",
         "limit",
         "start"
-      ],
-      "priority": "high",
-      "notes": "Get type specimens (data='typeSpecimens')"
+      ]
     },
     {
       "function_name": "name_usage",
@@ -2365,9 +2214,7 @@
       "api": "checklistbank",
       "parameters": [
         "key"
-      ],
-      "priority": "high",
-      "notes": "Get IUCN Red List category (data='iucnRedListCategory')"
+      ]
     },
     {
       "function_name": "name_usage",
@@ -2376,9 +2223,7 @@
       "api": "checklistbank",
       "parameters": [
         "uuid"
-      ],
-      "priority": "high",
-      "notes": "Get root name usages (data='root')"
+      ]
     },
     {
       "function_name": "name_parse",
@@ -2390,9 +2235,7 @@
       ],
       "parameter_mappings": {
         "name": "scientificname"
-      },
-      "priority": "high",
-      "notes": "Parse a single scientific name (via GET)"
+      }
     },
     {
       "function_name": "name_parse",
@@ -2404,9 +2247,7 @@
       ],
       "parameter_mappings": {
         "name": "scientificname"
-      },
-      "priority": "high",
-      "notes": "Parse scientific names in batch (via POST)"
+      }
     },
     {
       "function_name": "enumeration",
@@ -2418,16 +2259,14 @@
       ],
       "parameter_mappings": {
         "name": "x"
-      },
-      "notes": "Get enumeration values for controlled vocabularies"
+      }
     },
     {
       "function_name": "enumeration_country",
       "endpoint": "/enumeration/country",
       "method": "GET",
       "api": "registry",
-      "parameters": [],
-      "notes": "Get country enumeration"
+      "parameters": []
     }
   ],
   "ignored_endpoints": [
@@ -2435,8 +2274,7 @@
       "endpoint": "GET /",
       "api": "occurrence",
       "reason": "API index/root endpoint - informational only, not a data endpoint",
-      "date_added": "2026-05-08",
-      "priority": "low"
+      "date_added": "2026-05-08"
     },
     {
       "endpoint": "/occurrence/experimental",
@@ -2454,71 +2292,13 @@
       "endpoint": "GET /v1/species/{usageKey}/toc",
       "api": "checklistbank",
       "reason": "Name usage descriptions table of contents - specialized metadata",
-      "date_added": "2026-05-08",
-      "priority": "high"
-    },
-    {
-      "endpoint": "GET /v1/species/{usageKey}/metrics",
-      "api": "checklistbank",
-      "reason": "Name usage metrics endpoint - specialized analytics",
-      "date_added": "2026-05-08",
-      "priority": "high"
-    },
-    {
-      "endpoint": "GET /v1/species/{usageKey}/identifier",
-      "api": "checklistbank",
-      "reason": "Name usage identifiers endpoint - specialized use case",
-      "date_added": "2026-05-08",
-      "priority": "high"
-    },
-    {
-      "endpoint": "GET /v1/species/{usageKey}/combinations",
-      "api": "checklistbank",
-      "reason": "Name usage recombinations endpoint - specialized use case",
-      "date_added": "2026-05-08",
-      "priority": "high"
-    },
-    {
-      "endpoint": "GET /v1/species/{usageKey}/childrenAll",
-      "api": "checklistbank",
-      "reason": "All name usage children endpoint - specialized use case",
-      "date_added": "2026-05-08",
-      "priority": "high"
-    },
-    {
-      "endpoint": "GET /v2/species/match/metadata",
-      "api": "checklistbank",
-      "reason": "Matching service metadata endpoint - specialized use case",
-      "date_added": "2026-05-08",
-      "priority": "high"
-    },
-    {
-      "endpoint": "GET /v2/species/match/joins/{identifier}",
-      "api": "checklistbank",
-      "reason": "ID join lookup service - specialized use case",
-      "date_added": "2026-05-08",
-      "priority": "high"
-    },
-    {
-      "endpoint": "GET /v2/species/match/id/{identifier}",
-      "api": "checklistbank",
-      "reason": "ID lookup service - specialized use case",
-      "date_added": "2026-05-08",
-      "priority": "high"
-    },
-    {
-      "endpoint": "GET /v2/species/match/id/{datasetId}/{identifier}",
-      "api": "checklistbank",
-      "reason": "ID lookup service by dataset - specialized use case",
-      "date_added": "2026-05-08",
-      "priority": "high"
+      "date_added": "2026-05-08"
     },
     {
       "endpoint": "GET /v1/species/match",
       "api": "checklistbank",
       "reason": "Legacy v1 endpoint - replaced by v2 API (/v2/species/match) which provides enhanced matching",
-      "date_added": "2026-05-08",
-      "priority": "low"
+      "date_added": "2026-05-08"
     },
     {
       "endpoint": "/organization/{key}/endorsedNode",
@@ -2542,57 +2322,19 @@
       "endpoint": "GET /occurrence/download/request/predicate",
       "api": "occurrence",
       "reason": "Query conversion helper endpoint - specialized use case",
-      "date_added": "2026-05-08",
-      "priority": "high"
+      "date_added": "2026-05-08"
     },
     {
       "endpoint": "GET /occurrence/download/request/sql",
       "api": "occurrence",
       "reason": "Query conversion helper endpoint - specialized use case",
-      "date_added": "2026-05-08",
-      "priority": "high"
+      "date_added": "2026-05-08"
     },
     {
       "endpoint": "GET /occurrence/{datasetKey}/{occurrenceId}",
       "api": "occurrence",
       "reason": "Alternative occurrence lookup endpoint - niche use case",
-      "date_added": "2026-05-08",
-      "priority": "high"
-    },
-    {
-      "endpoint": "GET /occurrence/term",
-      "api": "occurrence",
-      "reason": "Metadata endpoint for occurrence terms - specialized use case",
-      "date_added": "2026-05-08",
-      "priority": "high"
-    },
-    {
-      "endpoint": "GET /occurrence/download/user/{user}/count",
-      "api": "occurrence",
-      "reason": "User download count endpoint - specialized analytics",
-      "date_added": "2026-05-08",
-      "priority": "high"
-    },
-    {
-      "endpoint": "GET /occurrence/download/{prefix}/{suffix}/datasets",
-      "api": "occurrence",
-      "reason": "Download dataset listing by DOI - specialized analytics",
-      "date_added": "2026-05-08",
-      "priority": "high"
-    },
-    {
-      "endpoint": "GET /occurrence/download/{key}/countries",
-      "api": "occurrence",
-      "reason": "Download country analysis endpoint - specialized analytics",
-      "date_added": "2026-05-08",
-      "priority": "high"
-    },
-    {
-      "endpoint": "GET /occurrence/download/{key}/organizations",
-      "api": "occurrence",
-      "reason": "Download organization analysis endpoint - specialized analytics",
-      "date_added": "2026-05-08",
-      "priority": "high"
+      "date_added": "2026-05-08"
     },
     {
       "endpoint": "POST /grscicoll/collection",
@@ -4098,15 +3840,13 @@
       "endpoint": "GET /literature/{uuid}",
       "api": "literature",
       "reason": "Literature item retrieval by ID - specialized use case",
-      "date_added": "2026-05-08",
-      "priority": "low"
+      "date_added": "2026-05-08"
     },
     {
       "endpoint": "GET /validation/{key}",
       "api": "validator",
       "reason": "Validator API - specialized dataset validation tool",
-      "date_added": "2026-05-08",
-      "priority": "low"
+      "date_added": "2026-05-08"
     },
     {
       "endpoint": "PUT /validation/{key}",
@@ -4130,8 +3870,7 @@
       "endpoint": "GET /validation",
       "api": "validator",
       "reason": "Validator API - specialized dataset validation tool",
-      "date_added": "2026-05-08",
-      "priority": "low"
+      "date_added": "2026-05-08"
     },
     {
       "endpoint": "POST /validation",
@@ -4155,253 +3894,217 @@
       "endpoint": "GET /validation/{key}/eml",
       "api": "validator",
       "reason": "Validator API - specialized dataset validation tool",
-      "date_added": "2026-05-08",
-      "priority": "low"
+      "date_added": "2026-05-08"
     },
     {
       "endpoint": "GET /validation/running",
       "api": "validator",
       "reason": "Validator API - specialized dataset validation tool",
-      "date_added": "2026-05-08",
-      "priority": "low"
+      "date_added": "2026-05-08"
     },
     {
       "endpoint": "GET /validation/enumeration",
       "api": "validator",
       "reason": "Validator API - specialized dataset validation tool",
-      "date_added": "2026-05-08",
-      "priority": "low"
+      "date_added": "2026-05-08"
     },
     {
       "endpoint": "GET /validation/enumeration/ValidationStatus",
       "api": "validator",
       "reason": "Validator API - specialized dataset validation tool",
-      "date_added": "2026-05-08",
-      "priority": "low"
+      "date_added": "2026-05-08"
     },
     {
       "endpoint": "GET /validation/enumeration/FileFormat",
       "api": "validator",
       "reason": "Validator API - specialized dataset validation tool",
-      "date_added": "2026-05-08",
-      "priority": "low"
+      "date_added": "2026-05-08"
     },
     {
       "endpoint": "GET /validation/enumeration/EvaluationType",
       "api": "validator",
       "reason": "Validator API - specialized dataset validation tool",
-      "date_added": "2026-05-08",
-      "priority": "low"
+      "date_added": "2026-05-08"
     },
     {
       "endpoint": "GET /validation/enumeration/EvaluationCategory",
       "api": "validator",
       "reason": "Validator API - specialized dataset validation tool",
-      "date_added": "2026-05-08",
-      "priority": "low"
+      "date_added": "2026-05-08"
     },
     {
       "endpoint": "GET /validation/enumeration/EvaluationCategory/{evaluationCategory}",
       "api": "validator",
       "reason": "Validator API - specialized dataset validation tool",
-      "date_added": "2026-05-08",
-      "priority": "low"
+      "date_added": "2026-05-08"
     },
     {
       "endpoint": "GET /validation/enumeration/DwcFileType",
       "api": "validator",
       "reason": "Validator API - specialized dataset validation tool",
-      "date_added": "2026-05-08",
-      "priority": "low"
+      "date_added": "2026-05-08"
     },
     {
       "endpoint": "GET /validation/eml/schemas",
       "api": "validator",
       "reason": "Validator API - specialized dataset validation tool",
-      "date_added": "2026-05-08",
-      "priority": "low"
+      "date_added": "2026-05-08"
     },
     {
       "endpoint": "GET /occurrence/count",
       "api": "occurrence",
       "reason": "Legacy count endpoint - rgbif uses /occurrence/search with limit=0 instead",
-      "date_added": "2026-05-15",
-      "priority": "low"
+      "date_added": "2026-05-15"
     },
     {
       "endpoint": "GET /occurrence/{gbifId}/fragment",
       "api": "occurrence",
       "reason": "Occurrence fragment data - specialized use case",
-      "date_added": "2026-05-09",
-      "priority": "low"
+      "date_added": "2026-05-09"
     },
     {
       "endpoint": "GET /occurrence/{datasetKey}/{occurrenceId}/fragment",
       "api": "occurrence",
       "reason": "Occurrence fragment by dataset - specialized use case",
-      "date_added": "2026-05-09",
-      "priority": "low"
+      "date_added": "2026-05-09"
     },
     {
       "endpoint": "GET /occurrence/{datasetKey}/{occurrenceId}/verbatim",
       "api": "occurrence",
       "reason": "Verbatim occurrence by dataset - specialized use case",
-      "date_added": "2026-05-09",
-      "priority": "low"
+      "date_added": "2026-05-09"
     },
     {
       "endpoint": "GET /occurrence/download/{key}/datasets/export",
       "api": "occurrence",
       "reason": "Download dataset export - specialized export format",
-      "date_added": "2026-05-09",
-      "priority": "low"
+      "date_added": "2026-05-09"
     },
     {
       "endpoint": "GET /occurrence/count/schema",
       "api": "occurrence",
       "reason": "Occurrence count schema metadata - specialized use case",
-      "date_added": "2026-05-09",
-      "priority": "low"
+      "date_added": "2026-05-09"
     },
     {
       "endpoint": "GET /occurrence/counts/datasets",
       "api": "occurrence",
       "reason": "Occurrence inventory by dataset - specialized analytics",
-      "date_added": "2026-05-09",
-      "priority": "low"
+      "date_added": "2026-05-09"
     },
     {
       "endpoint": "GET /enumeration/basic",
       "api": "registry",
       "reason": "Enumeration inventory - specialized metadata",
-      "date_added": "2026-05-09",
-      "priority": "low"
+      "date_added": "2026-05-09"
     },
     {
       "endpoint": "GET /enumeration/extension",
       "api": "registry",
       "reason": "Extension enumeration - specialized metadata",
-      "date_added": "2026-05-09",
-      "priority": "low"
+      "date_added": "2026-05-09"
     },
     {
       "endpoint": "GET /enumeration/interpretationRemark",
       "api": "registry",
       "reason": "Interpretation remark enumeration - specialized metadata",
-      "date_added": "2026-05-09",
-      "priority": "low"
+      "date_added": "2026-05-09"
     },
     {
       "endpoint": "GET /enumeration/language",
       "api": "registry",
       "reason": "Language enumeration - specialized metadata",
-      "date_added": "2026-05-09",
-      "priority": "low"
+      "date_added": "2026-05-09"
     },
     {
       "endpoint": "GET /enumeration/license",
       "api": "registry",
       "reason": "License enumeration - specialized metadata",
-      "date_added": "2026-05-09",
-      "priority": "low"
+      "date_added": "2026-05-09"
     },
     {
       "endpoint": "GET /derivedDataset/{doiPrefix}/{doiSuffix}",
       "api": "registry",
       "reason": "Derived dataset by DOI - specialized use case",
-      "date_added": "2026-05-09",
-      "priority": "low"
+      "date_added": "2026-05-09"
     },
     {
       "endpoint": "GET /derivedDataset/dataset/{key}",
       "api": "registry",
       "reason": "Derived datasets by dataset key - specialized use case",
-      "date_added": "2026-05-09",
-      "priority": "low"
+      "date_added": "2026-05-09"
     },
     {
       "endpoint": "GET /derivedDataset/dataset/{doiPrefix}/{doiSuffix}",
       "api": "registry",
       "reason": "Derived datasets by dataset DOI - specialized use case",
-      "date_added": "2026-05-09",
-      "priority": "low"
+      "date_added": "2026-05-09"
     },
     {
       "endpoint": "GET /derivedDataset/user/{user}",
       "api": "registry",
       "reason": "Derived datasets by user - specialized use case",
-      "date_added": "2026-05-09",
-      "priority": "low"
+      "date_added": "2026-05-09"
     },
     {
       "endpoint": "GET /derivedDataset/{doiPrefix}/{doiSuffix}/citation",
       "api": "registry",
       "reason": "Derived dataset citation - specialized use case",
-      "date_added": "2026-05-09",
-      "priority": "low"
+      "date_added": "2026-05-09"
     },
     {
       "endpoint": "GET /derivedDataset/{doiPrefix}/{doiSuffix}/datasets",
       "api": "registry",
       "reason": "Derived dataset related datasets - specialized use case",
-      "date_added": "2026-05-09",
-      "priority": "low"
+      "date_added": "2026-05-09"
     },
     {
       "endpoint": "GET /dataset/{key}/process/{attempt}",
       "api": "registry",
       "reason": "Dataset crawl attempt details - specialized diagnostics",
-      "date_added": "2026-05-09",
-      "priority": "low"
+      "date_added": "2026-05-09"
     },
     {
       "endpoint": "GET /dataset/{key}/document",
       "api": "registry",
       "reason": "GBIF metadata document - specialized metadata",
-      "date_added": "2026-05-09",
-      "priority": "low"
+      "date_added": "2026-05-09"
     },
     {
       "endpoint": "GET /dataset/{key}/metadata",
       "api": "registry",
       "reason": "Dataset source metadata - specialized metadata",
-      "date_added": "2026-05-09",
-      "priority": "low"
+      "date_added": "2026-05-09"
     },
     {
       "endpoint": "GET /dataset/metadata/{metadataKey}",
       "api": "registry",
       "reason": "Source metadata document info - specialized metadata",
-      "date_added": "2026-05-09",
-      "priority": "low"
+      "date_added": "2026-05-09"
     },
     {
       "endpoint": "GET /dataset/metadata/{metadataKey}/document",
       "api": "registry",
       "reason": "Source metadata document - specialized metadata",
-      "date_added": "2026-05-09",
-      "priority": "low"
+      "date_added": "2026-05-09"
     },
     {
       "endpoint": "GET /dataset/deleted",
       "api": "registry",
       "reason": "Deleted datasets list - specialized use case",
-      "date_added": "2026-05-09",
-      "priority": "low"
+      "date_added": "2026-05-09"
     },
     {
       "endpoint": "GET /node/activeCountries",
       "api": "registry",
       "reason": "Active GBIF member countries - specialized use case",
-      "date_added": "2026-05-09",
-      "priority": "low"
+      "date_added": "2026-05-09"
     },
     {
       "endpoint": "GET /organization/geojson",
       "api": "registry",
       "reason": "Organizations as GeoJSON - specialized format",
-      "date_added": "2026-05-09",
-      "priority": "low"
+      "date_added": "2026-05-09"
     },
     {
       "endpoint": "GET /validation/sequence",
@@ -4494,47 +4197,96 @@
       "gbifDatasetKey": "Covered by 'datasetKey' parameter in lit_search",
       "gbifDownloadKey": "Covered by 'downloadKey' parameter in lit_search",
       "publishingOrganizationKey": "Covered by 'publishingOrg' parameter in lit_search",
+      "source": "Covered by 'journalSource' parameter in lit_search",
+      "publisher": "Covered by 'journalPublisher' parameter in lit_search",
       "hl": "Highlighting parameter - not implemented",
       "facet": "Covered by lit_search implementation",
       "facetMinCount": "Covered by lit_search implementation",
       "facetMultiselect": "Covered by lit_search implementation",
       "facetLimit": "Covered by lit_search implementation",
-      "facetOffset": "Covered by lit_search implementation"
+      "facetOffset": "Covered by lit_search implementation",
+      "citationType": "Citation type filter - not implemented",
+      "gbifHigherTaxonKey": "Higher taxon key filter - not implemented",
+      "gbifNetworkKey": "Network key filter - not implemented",
+      "gbifOccurrenceKey": "Occurrence key filter - not implemented",
+      "gbifProjectIdentifier": "Project identifier filter - not implemented",
+      "gbifProgrammeAcronym": "Programme acronym filter - not implemented",
+      "gbifTaxonKey": "Taxon key filter - not implemented",
+      "publishingCountry": "Publishing country filter - not implemented",
+      "websites": "Website filter - not implemented",
+      "language": "Language filter - not implemented",
+      "added": "Date added filter - not implemented",
+      "published": "Publication date filter - not implemented",
+      "discovered": "Discovery date filter - not implemented",
+      "modified": "Modification date filter - not implemented"
+    },
+    "lit_search": {
+      "gbifDatasetKey": "Covered by 'datasetKey' parameter",
+      "gbifDownloadKey": "Covered by 'downloadKey' parameter",
+      "publishingOrganizationKey": "Covered by 'publishingOrg' parameter",
+      "source": "Covered by 'journalSource' parameter",
+      "publisher": "Covered by 'journalPublisher' parameter",
+      "hl": "Highlighting parameter - not implemented",
+      "facet": "Facet parameter - not implemented",
+      "facetMinCount": "Facet min count parameter - not implemented",
+      "facetMultiselect": "Facet multiselect parameter - not implemented",
+      "facetLimit": "Facet limit parameter - not implemented",
+      "facetOffset": "Facet offset parameter - not implemented",
+      "citationType": "Citation type filter - not implemented",
+      "gbifHigherTaxonKey": "Higher taxon key filter - not implemented",
+      "gbifNetworkKey": "Network key filter - not implemented",
+      "gbifOccurrenceKey": "Occurrence key filter - not implemented",
+      "gbifProjectIdentifier": "Project identifier filter - not implemented",
+      "gbifProgrammeAcronym": "Programme acronym filter - not implemented",
+      "gbifTaxonKey": "Taxon key filter - not implemented",
+      "publishingCountry": "Publishing country filter - not implemented",
+      "websites": "Website filter - not implemented",
+      "language": "Language filter - not implemented",
+      "added": "Date added filter - not implemented",
+      "published": "Publication date filter - not implemented",
+      "discovered": "Discovery date filter - not implemented",
+      "modified": "Modification date filter - not implemented"
+    },
+    "lit_export": {
+      "gbifDatasetKey": "Covered by 'datasetKey' parameter",
+      "gbifDownloadKey": "Covered by 'downloadKey' parameter",
+      "publishingOrganizationKey": "Covered by 'publishingOrg' parameter",
+      "source": "Covered by 'journalSource' parameter",
+      "publisher": "Covered by 'journalPublisher' parameter",
+      "hl": "Highlighting parameter - not implemented",
+      "facet": "Not applicable for export endpoint",
+      "facetMinCount": "Not applicable for export endpoint",
+      "facetMultiselect": "Not applicable for export endpoint",
+      "facetLimit": "Not applicable for export endpoint",
+      "facetOffset": "Not applicable for export endpoint",
+      "citationType": "Citation type filter - not implemented",
+      "gbifHigherTaxonKey": "Higher taxon key filter - not implemented",
+      "gbifNetworkKey": "Network key filter - not implemented",
+      "gbifOccurrenceKey": "Occurrence key filter - not implemented",
+      "gbifProjectIdentifier": "Project identifier filter - not implemented",
+      "gbifProgrammeAcronym": "Programme acronym filter - not implemented",
+      "gbifTaxonKey": "Taxon key filter - not implemented",
+      "publishingCountry": "Publishing country filter - not implemented",
+      "websites": "Website filter - not implemented",
+      "language": "Language filter - not implemented",
+      "added": "Date added filter - not implemented",
+      "published": "Publication date filter - not implemented",
+      "discovered": "Discovery date filter - not implemented",
+      "modified": "Modification date filter - not implemented"
     },
     "network": {
       "key": "Covered by parameter name mapping (key→uuid)",
       "owner": "Not implemented"
     },
     "networks": {
-      "q": "Covered by parameter name mapping (q→query)",
-      "machineTagNamespace": "Not implemented",
-      "machineTagName": "Not implemented",
-      "machineTagValue": "Not implemented",
-      "modified": "Not implemented",
-      "created": "Not implemented"
+      "q": "Covered by parameter name mapping (q→query)"
     },
     "nodes": {
       "key": "Covered by parameter name mapping (key→uuid)",
-      "owner": "Not implemented",
-      "machineTagNamespace": "Not implemented",
-      "machineTagName": "Not implemented",
-      "machineTagValue": "Not implemented",
-      "modified": "Not implemented",
-      "created": "Not implemented",
       "q": "Covered by parameter name mapping (q→query)"
     },
     "installations": {
       "key": "Covered by parameter name mapping (key→uuid)",
-      "owner": "Not implemented",
-      "searchParams": "Not implemented",
-      "type": "Not implemented",
-      "identifierType": "Not implemented",
-      "identifier": "Not implemented",
-      "machineTagNamespace": "Not implemented",
-      "machineTagName": "Not implemented",
-      "machineTagValue": "Not implemented",
-      "modified": "Not implemented",
-      "created": "Not implemented",
       "q": "Covered by parameter name mapping (q→query)"
     },
     "installation_search": {
@@ -4543,22 +4295,7 @@
     },
     "organizations": {
       "key": "Covered by parameter name mapping (key→uuid)",
-      "owner": "Not implemented",
-      "isEndorsed": "Not implemented",
-      "networkKey": "Not implemented",
-      "numPublishedDatasets": "Not implemented",
-      "canModify": "Not implemented",
-      "identifierType": "Not implemented",
-      "identifier": "Not implemented",
-      "machineTagNamespace": "Not implemented",
-      "machineTagName": "Not implemented",
-      "machineTagValue": "Not implemented",
-      "modified": "Not implemented",
-      "created": "Not implemented",
-      "q": "Covered by parameter name mapping (q→query)",
-      "searchParams": "Not implemented",
-      "contactUserId": "Not implemented",
-      "contactEmail": "Not implemented"
+      "q": "Covered by parameter name mapping (q→query)"
     },
     "gbif_oai_identify": {
       "params": "OAI-PMH protocol parameter - handled internally by function logic"
@@ -4573,24 +4310,5 @@
     "occ_download_stats_export": {
       "format": "Not implemented - marked for ignore on 2026-05-22"
     }
-  },
-  "notes": [
-    "This mapping includes all 72 API-calling functions in rgbif",
-    "Some functions like dataset, nodes, organizations, installations, networks use a 'data' parameter that modifies behavior",
-    "Export functions (collection_export, institution_export, lit_export, dataset_export) use the same base endpoints as search",
-    "Prep functions (occ_download_prep, derived_dataset_prep) validate but don't execute API calls",
-    "Count functions (occ_count, lit_count) are wrappers that set limit=0",
-    "",
-    "Parameter name mappings:",
-    "- Some rgbif functions use more R-friendly parameter names than the GBIF API",
-    "- The 'parameter_mappings' field tracks these differences (e.g., 'gbifId' -> 'key')",
-    "- When checking for missing parameters, mapped parameters are considered covered",
-    "- Common mappings: gbifId->key, query->q, Accept-Language->language",
-    "",
-    "Update this file when:",
-    "1. New GBIF API endpoints are released",
-    "2. New rgbif functions are added",
-    "3. Function parameters change to match API updates",
-    "4. Parameter name mappings change or new ones are added"
-  ]
+  }
 }

@@ -213,19 +213,16 @@ update_mapping_file <- function(actions, mapping_file) {
       func_name <- param_action$function_name
       
       # Initialize function entry if it doesn't exist
-      if (is.null(mapping$ignored_parameters$function_specific[[func_name]])) {
-        if (is.null(mapping$ignored_parameters$function_specific)) {
-          mapping$ignored_parameters$function_specific <- list()
-        }
-        mapping$ignored_parameters$function_specific[[func_name]] <- list()
+      if (is.null(mapping$ignored_parameters[[func_name]])) {
+        mapping$ignored_parameters[[func_name]] <- list()
       }
       
       # Add all parameters from the list
       for (param_name in param_action$parameters) {
-        # Check if already ignored
-        if (!param_name %in% mapping$ignored_parameters$function_specific[[func_name]]) {
-          mapping$ignored_parameters$function_specific[[func_name]] <- 
-            c(mapping$ignored_parameters$function_specific[[func_name]], param_name)
+        # Check if already ignored (parameters are stored as object keys)
+        if (is.null(mapping$ignored_parameters[[func_name]][[param_name]])) {
+          mapping$ignored_parameters[[func_name]][[param_name]] <- 
+            sprintf("Not implemented - marked for ignore on %s", Sys.Date())
           cat_success(sprintf("Added ignored parameter: %s for %s", param_name, func_name))
         }
       }
