@@ -1,3 +1,4 @@
+# testthat::test_file("tests/testthat/test-occ_count.r")
 context("occ_count")
 
 test_that("occ_count", {
@@ -105,6 +106,139 @@ test_that("occ_count fails well", {
     occ_count(facet="search",taxonKey=212),
     "Bad facet arg."
   )
+})
+
+test_that("occ_count accepts nucleotideSequence parameters", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_count_nucleotideSequence", {
+    # Basic nucleotideSequence parameters
+    aa <- occ_count(nucleotideSequence.targetGene = "ITS1")
+    bb <- occ_count(nucleotideSequence.sequenceLength = "500,1000")
+    cc <- occ_count(nucleotideSequence.gcContent = "0.4,0.6")
+    dd <- occ_count(nucleotideSequence.invalid = FALSE)
+    ee <- occ_count(isSequenced = TRUE)
+    
+    # Additional nucleotideSequence parameters
+    gg <- occ_count(nucleotideSequence.nonIupacFraction = "0,0.1")
+    hh <- occ_count(nucleotideSequence.nonACGTNFraction = "0,0.05")
+    ii <- occ_count(nucleotideSequence.nFraction = "0,0.1")
+    jj <- occ_count(nucleotideSequence.nRunsCapped = 5)
+    
+    # Boolean nucleotideSequence parameters
+    kk <- occ_count(nucleotideSequence.naturalLanguageDetected = FALSE)
+    ll <- occ_count(nucleotideSequence.endsTrimmed = TRUE)
+    mm <- occ_count(nucleotideSequence.gapsOrWhitespaceRemoved = TRUE)
+    
+    # Combined filters
+    nn <- occ_count(
+      taxonKey = 212,
+      nucleotideSequence.targetGene = "COI",
+      nucleotideSequence.invalid = FALSE
+    )
+    
+  }, preserve_exact_body_bytes = TRUE)
+  
+  # returns the correct class
+  expect_is(aa, "numeric")
+  expect_is(bb, "numeric")
+  expect_is(cc, "numeric")
+  expect_is(dd, "numeric")
+  expect_is(ee, "numeric")
+  expect_is(gg, "numeric")
+  expect_is(hh, "numeric")
+  expect_is(ii, "numeric")
+  expect_is(jj, "numeric")
+  expect_is(kk, "numeric")
+  expect_is(ll, "numeric")
+  expect_is(mm, "numeric")
+  expect_is(nn, "numeric")
+  
+  # returns the correct dimensions
+  expect_equal(length(aa), 1)
+  expect_equal(length(bb), 1)
+  expect_equal(length(cc), 1)
+  expect_equal(length(dd), 1)
+  expect_equal(length(ee), 1)
+  expect_equal(length(gg), 1)
+  expect_equal(length(hh), 1)
+  expect_equal(length(ii), 1)
+  expect_equal(length(jj), 1)
+  expect_equal(length(kk), 1)
+  expect_equal(length(ll), 1)
+  expect_equal(length(mm), 1)
+  expect_equal(length(nn), 1)
+  
+  # filtered counts should be positive
+  expect_gt(aa, 0)
+  expect_gt(ee, 0)
+  
+  # filtered counts should be less than total GBIF count (~2 billion)
+  # if count >= 2 billion, filter is not working
+  expect_lt(aa, 2e9)
+  expect_lt(bb, 2e9)
+  expect_lt(cc, 2e9)
+  expect_lt(dd, 2e9)
+  expect_lt(ee, 2e9)
+  expect_lt(gg, 2e9)
+  expect_lt(hh, 2e9)
+  expect_lt(ii, 2e9)
+  expect_lt(jj, 2e9)
+  expect_lt(kk, 2e9)
+  expect_lt(ll, 2e9)
+  expect_lt(mm, 2e9)
+  expect_lt(nn, 2e9)
+  
+  # error on multiple values
+  expect_error(
+    occ_count(nucleotideSequence.sequence = c("ACTG", "TGCA")),
+    "Multiple values of the form c\\('a','b'\\) are not supported."
+  )
+})
+
+test_that("occ_count nucleotideSequence facets work", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_count_nucleotideSequence_facet", {
+    aa <- occ_count(facet = "nucleotideSequence.targetGene")
+    bb <- occ_count(
+      facet = "nucleotideSequence.targetGene",
+      taxonKey = 212,
+      facetLimit = 5
+    )
+    cc <- occ_count(
+      facet = "nucleotideSequence.targetGene",
+      nucleotideSequence.invalid = FALSE
+    )
+  }, preserve_exact_body_bytes = TRUE)
+  
+  # returns the correct class
+  expect_is(aa, "data.frame")
+  expect_is(bb, "data.frame")
+  expect_is(cc, "data.frame")
+  
+  # colnames are correct
+  expect_equal(colnames(aa), c("nucleotideSequence.targetGene", "count"))
+  expect_equal(colnames(bb), c("nucleotideSequence.targetGene", "count"))
+  expect_equal(colnames(cc), c("nucleotideSequence.targetGene", "count"))
+  
+  # returns reasonable amounts of rows
+  expect_equal(nrow(aa), 10) # default facetLimit
+  expect_equal(nrow(bb), 5)  # facetLimit = 5
+  expect_lte(nrow(cc), 10)
+  
+  # returns the correct dimensions
+  expect_equal(ncol(aa), 2)
+  expect_equal(ncol(bb), 2)
+  expect_equal(ncol(cc), 2)
+  
+  # counts should be positive
+  expect_true(all(aa$count > 0))
+  expect_true(all(bb$count > 0))
+  expect_true(all(cc$count > 0))
+  
+  # targetGene values should be character strings
+  expect_is(aa$nucleotideSequence.targetGene, "character")
+  expect_is(bb$nucleotideSequence.targetGene, "character")
+  expect_is(cc$nucleotideSequence.targetGene, "character")
 })
 
 test_that("occ_count legacy params", {

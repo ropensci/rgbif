@@ -308,6 +308,31 @@
 #' @param associatedSequences (character) Identifier (publication, global unique
 #' identifier, URI) of genetic sequence information associated with the 
 #' material entity. Example : http://www.ncbi.nlm.nih.gov/nuccore/U34853.1
+#' @param nucleotideSequence.nucleotideSequenceID (character) Identifier for the
+#' nucleotide sequence associated with the occurrence.
+#' @param nucleotideSequence.targetGene (character) Gene targeted by the
+#' nucleotide sequence. See possible values at
+#' \url{https://registry.gbif.org/vocabulary/target_gene/concepts}
+#' @param nucleotideSequence.sequence (character) Nucleotide sequence string.
+#' @param nucleotideSequence.sequenceLength (numeric) Length of the nucleotide
+#' sequence.
+#' @param nucleotideSequence.gcContent (numeric) GC content fraction or range.
+#' @param nucleotideSequence.nonIupacFraction (numeric) Fraction or range of
+#' non-IUPAC characters in the sequence.
+#' @param nucleotideSequence.nonACGTNFraction (numeric) Fraction or range of
+#' characters outside A, C, G, T, and N.
+#' @param nucleotideSequence.nFraction (numeric) Fraction or range of N
+#' characters in the sequence.
+#' @param nucleotideSequence.nRunsCapped (numeric) Count or range of capped N
+#' runs in the sequence.
+#' @param nucleotideSequence.naturalLanguageDetected (logical) Whether natural
+#' language was detected in the sequence.
+#' @param nucleotideSequence.endsTrimmed (logical) Whether sequence ends were
+#' trimmed.
+#' @param nucleotideSequence.gapsOrWhitespaceRemoved (logical) Whether gaps or
+#' whitespace were removed from the sequence.
+#' @param nucleotideSequence.invalid (logical) Whether the sequence is marked as
+#' invalid.
 #' @param isSequenced (logical) Indicates whether `associatedSequences` genetic 
 #' sequence information exists.
 #' @param startDayOfYear (numeric) The earliest integer day of the year on 
@@ -398,4 +423,3 @@
 #' \code{isGeoreferenced=TRUE}
 #'
 #' @references https://www.gbif.org/developer/occurrence#search
-

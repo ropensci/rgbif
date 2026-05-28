@@ -122,7 +122,7 @@ country given as a ISO 639-1 (2 letter) country code.}
 \item{doi}{DOI of the dataset.}
 
 \item{category}{Filters datasets by their dataset category tag. For example
-"eDNA", "CITIZEN_SCIENCE", "TAXONOMIC_BACKBONE".}
+"eDNA", "CitizenScience", "Tracking".}
 
 \item{installationKey}{Filters datasets by their installation UUID key.}
 

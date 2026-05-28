@@ -1,0 +1,226 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&nucleotideSequence.targetGene=ITS1
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
+    body:
+      raw_gzip: |-
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSRkbmFoZA
+        NUWpxaU
+        5JUDp6FgdpbTE5FQIuxYAauMa7Q==
+  recorded_at: 2026-05-26 14:22:30
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&nucleotideSequence.sequence=500%2C1000&nucleotideSequence.sequenceLength=500%2C1000
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
+    body:
+      raw_gzip: |-
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlaxKikpTdZSS80vzILJFqcWlOSVA
+        iehYHaW
+        0xORUCLsWAN92GZ4=
+  recorded_at: 2026-05-26 14:22:30
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&nucleotideSequence.gcContent=0.4%2C0.6
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
+    body:
+      raw_gzip: |-
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DShgbmZmYW
+        FoamOkp
+        FqcWlOSVAFdGxOkppicmpEHYtALN+G5M=
+  recorded_at: 2026-05-26 14:22:30
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&nucleotideSequence.invalid=FALSE
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
+    body:
+      raw_gzip: |-
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DShiampoYm
+        BpbmOkp
+        FqcWlOSVAFdGxOkppicmpEHYtALK/G40=
+  recorded_at: 2026-05-26 14:22:31
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&isSequenced=TRUE&limit=0&offset=0&facetLimit=
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
+    body:
+      raw_gzip: |-
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DShmaGxqaW
+        xmZmOkp
+        FqcWlOSVAFdGxOkppicmpEHYtALM5G5E=
+  recorded_at: 2026-05-26 14:22:31
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&nucleotideSequence.nonIupacFraction=0%2C0.1
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
+    body:
+      raw_gzip: |-
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DShiamJpYG
+        FsbGOkp
+        FqcWlOSVAFdGxOkppicmpEHYtALLzG44=
+  recorded_at: 2026-05-26 14:22:32
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&nucleotideSequence.nonACGTNFraction=0%2C0.05
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
+    body:
+      raw_gzip: |-
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DShiamJhaW
+        phZAZUW
+        pxaU5JUAV0bE6SmmJyakQdi0As8YblQ==
+  recorded_at: 2026-05-26 14:22:32
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&nucleotideSequence.nFraction=0%2C0.1
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
+    body:
+      raw_gzip: |-
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DShiamJpYG
+        RpamOkp
+        FqcWlOSVAFdGxOkppicmpEHYtALMjG5A=
+  recorded_at: 2026-05-26 14:22:33
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&nucleotideSequence.nRunsCapped=5
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
+    body:
+      raw_gzip: |-
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DShsYmOkpF
+        qcWlOSV
+        AuehYHaW0xORUCLsWACUsGlE=
+  recorded_at: 2026-05-26 14:22:33
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&nucleotideSequence.naturalLanguageDetected=FALSE
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
+    body:
+      raw_gzip: |-
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DShiampoYm
+        hsaGOkp
+        FqcWlOSVAFdGxOkppicmpEHYtALGSG4I=
+  recorded_at: 2026-05-26 14:22:34
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&nucleotideSequence.endsTrimmed=TRUE
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
+    body:
+      raw_gzip: |-
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSRsbGhubm
+        OkpFqcW
+        lOSVA6ehYHaW0xORUCLsWAGskGvA=
+  recorded_at: 2026-05-26 14:22:34
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&nucleotideSequence.gapsOrWhitespaceRemoved=TRUE
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
+    body:
+      raw_gzip: |-
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSxuZm5gam
+        hjpKRan
+        FpTklQPnoWB2ltMTkVAi7FgCDJRsm
+  recorded_at: 2026-05-26 14:22:34
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&taxonKey=212&nucleotideSequence.targetGene=COI&nucleotideSequence.invalid=FALSE
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
+    body:
+      raw_gzip: |-
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSZoaGRsY6
+        SkWpxaU
+        5JUDZ6FgdpbTE5FQIuxYAUx0atg==
+  recorded_at: 2026-05-26 14:22:35
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&nucleotideSequence.targetGene=COI&nucleotideSequence.sequence=500%2C1000&nucleotideSequence.sequenceLength=500%2C1000&nucleotideSequence.gcContent=0.4%2C0.6
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
+    body:
+      raw_gzip: |-
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlaxKikpTdZSS80vzILJFqcWlOSVA
+        iehYHaW
+        0xORUCLsWAN92GZ4=
+  recorded_at: 2026-05-26 14:22:35
+recorded_with: VCR-vcr/2.0.0
