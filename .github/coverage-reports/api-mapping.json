@@ -863,6 +863,13 @@
       ]
     },
     {
+      "function_name": "occ_term",
+      "endpoint": "/occurrence/term",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": []
+    },
+    {
       "function_name": "gbif_geocode",
       "endpoint": "/geocode/reverse",
       "method": "GET",
