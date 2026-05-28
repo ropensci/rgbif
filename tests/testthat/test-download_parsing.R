@@ -89,6 +89,56 @@ test_that("parse_predicates fails well", {
   )
 })
 
+test_that("parse_predicates supports nucleotideSequence keys", {
+  key_map <- c(
+    "nucleotideSequence.nucleotideSequenceID" = "NUCLEOTIDE_SEQUENCE_ID",
+    "nucleotideSequence.targetGene" = "NUCLEOTIDE_SEQUENCE_TARGET_GENE",
+    "nucleotideSequence.sequence" = "NUCLEOTIDE_SEQUENCE_SEQUENCE",
+    "nucleotideSequence.sequenceLength" = "NUCLEOTIDE_SEQUENCE_SEQUENCE_LENGTH",
+    "nucleotideSequence.gcContent" = "NUCLEOTIDE_SEQUENCE_GC_CONTENT",
+    "nucleotideSequence.nonIupacFraction" = "NUCLEOTIDE_SEQUENCE_NON_IUPAC_FRACTION",
+    "nucleotideSequence.nonACGTNFraction" = "NUCLEOTIDE_SEQUENCE_NON_ACGTN_FRACTION",
+    "nucleotideSequence.nFraction" = "NUCLEOTIDE_SEQUENCE_N_FRACTION",
+    "nucleotideSequence.nRunsCapped" = "NUCLEOTIDE_SEQUENCE_N_RUNS_CAPPED",
+    "nucleotideSequence.naturalLanguageDetected" = "NUCLEOTIDE_SEQUENCE_NATURAL_LANGUAGE_DETECTED",
+    "nucleotideSequence.endsTrimmed" = "NUCLEOTIDE_SEQUENCE_ENDS_TRIMMED",
+    "nucleotideSequence.gapsOrWhitespaceRemoved" = "NUCLEOTIDE_SEQUENCE_GAPS_OR_WHITESPACE_REMOVED",
+    "nucleotideSequence.invalid" = "NUCLEOTIDE_SEQUENCE_INVALID",
+    "isSequenced" = "IS_SEQUENCED"
+  )
+  for (nm in names(key_map)) {
+    mapped <- parse_predicates(user, email, "equals", "DWCA", NULL, pred(nm, "x"))
+    expect_equal(unclass(mapped$predicate$key), unname(key_map[[nm]]))
+  }
+
+  aa <- parse_predicates(user, email, "equals", "DWCA", NULL,
+    pred("nucleotideSequence.targetGene", "COI"))
+  expect_equal(unclass(aa$predicate$type), "equals")
+  expect_equal(unclass(aa$predicate$key), "NUCLEOTIDE_SEQUENCE_TARGET_GENE")
+  expect_equal(unclass(aa$predicate$value), "COI")
+
+  bb <- parse_predicates(user, email, "and", "DWCA", NULL,
+    pred_gte("nucleotideSequence.gcContent", 0.4),
+    pred_lte("nucleotideSequence.gcContent", 0.6))
+  expect_equal(unclass(bb$predicate$type), "and")
+  expect_equal(unclass(bb$predicate$predicates[[1]]$type), "greaterThanOrEquals")
+  expect_equal(unclass(bb$predicate$predicates[[1]]$key), "NUCLEOTIDE_SEQUENCE_GC_CONTENT")
+  expect_equal(unclass(bb$predicate$predicates[[1]]$value), "0.4")
+  expect_equal(unclass(bb$predicate$predicates[[2]]$type), "lessThanOrEquals")
+  expect_equal(unclass(bb$predicate$predicates[[2]]$key), "NUCLEOTIDE_SEQUENCE_GC_CONTENT")
+  expect_equal(unclass(bb$predicate$predicates[[2]]$value), "0.6")
+
+  cc <- parse_predicates(user, email, "equals", "DWCA", NULL,
+    pred("nucleotideSequence.invalid", FALSE))
+  expect_equal(unclass(cc$predicate$key), "NUCLEOTIDE_SEQUENCE_INVALID")
+  expect_equal(unclass(cc$predicate$value), "false")
+
+  dd <- parse_predicates(user, email, "equals", "DWCA", NULL,
+    pred("isSequenced", TRUE))
+  expect_equal(unclass(dd$predicate$key), "IS_SEQUENCED")
+  expect_equal(unclass(dd$predicate$value), "true")
+})
+
 test_that("parse_predicates verbatim_extensions works", {
   ve <- c("http://rs.tdwg.org/dwc/terms/MeasurementOrFact",
           "http://rs.gbif.org/terms/1.0/Multimedia")
@@ -127,4 +177,3 @@ test_that("parse_predicates works with checklistKey", {
   expect_equal(unclass(bb$predicate$value), "5WZLF")
   expect_null(bb$predicate$checklistKey)  # No checklistKey at predicate level
 })
-
