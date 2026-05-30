@@ -1,11 +1,3 @@
-rgbif 3.8.5.4
-===========
-
-### NEW FEATURES
-
-`dataset_search()` now supports `continent`, `taxonKey`, `recordCount`, 
-`modifiedDate`, `createdDate`, `contactUserId`, and `contactEmail` parameters.
-
 rgbif 3.8.5
 ===========
 
