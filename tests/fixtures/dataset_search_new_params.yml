@@ -1,0 +1,141 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/dataset/search?limit=5&continent=EUROPE
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      raw_gzip: |-
+        H4sIAL54GmoC/9WUUU8cIRDHv8pmnx0LLBzgo6ttjImXnOdD05gLC4NSt7uG5dJY43cv7NlGE8+0
+        6VPfJvOfgT/DDx7r0fsJU31UkYOq7sO3UGKRYxzc0q/QjtFNOZXiFnPWjtuhVLAcR5y2fSril8f6
+        Dh9yUAtitSDaAWNWAjeMgeHSgbJccSbQcyPr3OvGUMopOaSCL9QH1x8mnBItWgqpx6Kuc6Y6Mclk
+        h9VOeriflWXbXq1WpxftaT3btjhMs9C2m+PPG74hJX87TikMN8t4Y4bww6QwDuc7m9KiMugJaNQM
+        KHUWlGwUdMqQxgpi1ILtWWH9y92n47OP1SXaiMnEYNKL+rZMKc47nZyX/P2268N0+7YZZCip7DwI
+        QQ1wTSV0zmrg3hDfcGZFQ/Yvsn41ray8Ln1pZR5WvtcxTlm5GB0+O3CMCIdegmK2AS6ZgQ55Bw11
+        ZTZOUO9K74Dp+xjvctd869dlpzh+RZvOHA4p+IAxC8O272c+CjztMzFUEEKeDqrfqOTjya5pOFgk
+        DjgqBcYYBIbE0kY5wjW+gwrbjwr7Q1TIhv5XoDCFHTWNB2qpyI9LC9BNQcZ4TdB2QnL3F6Ds5vQm
+        KleX+1BB32lLCIJXhAEXLr9txRZgBEPLRae09/+KykxK6fDG4u6DuX76CT4qpoyrBAAA
+  recorded_at: 2025-11-13 09:00:00
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/dataset/search?limit=5&taxonKey=212
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      raw_gzip: |-
+        H4sIAL54GmoC/9WUUU8cIRDHv8pmnx0LLBzgo6ttjImXnOdD05gLC4NSt7uG5dJY43cv7NlGE8+0
+        6VPfJvOfgT/DDx7r0fsJU31UkYOq7sO3UGKRYxzc0q/QjtFNOZXiFnPWjtuhVLAcR5y2fSril8f6
+        Dh9yUAtitSDaAWNWAjeMgeHSgbJccSbQcyPr3OvGUMopOaSCL9QH1x8mnBItWgqpx6Kuc6Y6Mclk
+        h9VOeriflWXbXq1WpxftaT3btjhMs9C2m+PPG74hJX87TikMN8t4Y4bww6QwDuc7m9KiMugJaNQM
+        KHUWlGwUdMqQxgpi1ILtWWH9y92n47OP1SXaiMnEYNKL+rZMKc47nZyX/P2268N0+7YZZCip7DwI
+        QQ1wTSV0zmrg3hDfcGZFQ/Yvsn41ray8Ln1pZR5WvtcxTlm5GB0+O3CMCIdegmK2AS6ZgQ55Bw11
+        ZTZOUO9K74Dp+xjvctd869dlpzh+RZvOHA4p+IAxC8O272c+CjztMzFUEEKeDqrfqOTjya5pOFgk
+        DjgqBcYYBIbE0kY5wjW+gwrbjwr7Q1TIhv5XoDCFHTWNB2qpyI9LC9BNQcZ4TdB2QnL3F6Ds5vQm
+        KleX+1BB32lLCIJXhAEXLr9txRZgBEPLRae09/+KykxK6fDG4u6DuX76CT4qpoyrBAAA
+  recorded_at: 2025-11-13 09:00:00
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/dataset/search?limit=5&recordCount=10000%2C100000
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      raw_gzip: |-
+        H4sIAL54GmoC/9WUUU8cIRDHv8pmnx0LLBzgo6ttjImXnOdD05gLC4NSt7uG5dJY43cv7NlGE8+0
+        6VPfJvOfgT/DDx7r0fsJU31UkYOq7sO3UGKRYxzc0q/QjtFNOZXiFnPWjtuhVLAcR5y2fSril8f6
+        Dh9yUAtitSDaAWNWAjeMgeHSgbJccSbQcyPr3OvGUMopOaSCL9QH1x8mnBItWgqpx6Kuc6Y6Mclk
+        h9VOeriflWXbXq1WpxftaT3btjhMs9C2m+PPG74hJX87TikMN8t4Y4bww6QwDuc7m9KiMugJaNQM
+        KHUWlGwUdMqQxgpi1ILtWWH9y92n47OP1SXaiMnEYNKL+rZMKc47nZyX/P2268N0+7YZZCip7DwI
+        QQ1wTSV0zmrg3hDfcGZFQ/Yvsn41ray8Ln1pZR5WvtcxTlm5GB0+O3CMCIdegmK2AS6ZgQ55Bw11
+        ZTZOUO9K74Dp+xjvctd869dlpzh+RZvOHA4p+IAxC8O272c+CjztMzFUEEKeDqrfqOTjya5pOFgk
+        DjgqBcYYBIbE0kY5wjW+gwrbjwr7Q1TIhv5XoDCFHTWNB2qpyI9LC9BNQcZ4TdB2QnL3F6Ds5vQm
+        KleX+1BB32lLCIJXhAEXLr9txRZgBEPLRae09/+KykxK6fDG4u6DuX76CT4qpoyrBAAA
+  recorded_at: 2025-11-13 09:00:00
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/dataset/search?limit=5&modifiedDate=2020-01-01%2C2021-01-01
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      raw_gzip: |-
+        H4sIAL54GmoC/9WUUU8cIRDHv8pmnx0LLBzgo6ttjImXnOdD05gLC4NSt7uG5dJY43cv7NlGE8+0
+        6VPfJvOfgT/DDx7r0fsJU31UkYOq7sO3UGKRYxzc0q/QjtFNOZXiFnPWjtuhVLAcR5y2fSril8f6
+        Dh9yUAtitSDaAWNWAjeMgeHSgbJccSbQcyPr3OvGUMopOaSCL9QH1x8mnBItWgqpx6Kuc6Y6Mclk
+        h9VOeriflWXbXq1WpxftaT3btjhMs9C2m+PPG74hJX87TikMN8t4Y4bww6QwDuc7m9KiMugJaNQM
+        KHUWlGwUdMqQxgpi1ILtWWH9y92n47OP1SXaiMnEYNKL+rZMKc47nZyX/P2268N0+7YZZCip7DwI
+        QQ1wTSV0zmrg3hDfcGZFQ/Yvsn41ray8Ln1pZR5WvtcxTlm5GB0+O3CMCIdegmK2AS6ZgQ55Bw11
+        ZTZOUO9K74Dp+xjvctd869dlpzh+RZvOHA4p+IAxC8O272c+CjztMzFUEEKeDqrfqOTjya5pOFgk
+        DjgqBcYYBIbE0kY5wjW+gwrbjwr7Q1TIhv5XoDCFHTWNB2qpyI9LC9BNQcZ4TdB2QnL3F6Ds5vQm
+        KleX+1BB32lLCIJXhAEXLr9txRZgBEPLRae09/+KykxK6fDG4u6DuX76CT4qpoyrBAAA
+  recorded_at: 2025-11-13 09:00:00
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/dataset/search?limit=5&createdDate=2015-01-01%2C2016-01-01
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      raw_gzip: |-
+        H4sIAL54GmoC/9WUUU8cIRDHv8pmnx0LLBzgo6ttjImXnOdD05gLC4NSt7uG5dJY43cv7NlGE8+0
+        6VPfJvOfgT/DDx7r0fsJU31UkYOq7sO3UGKRYxzc0q/QjtFNOZXiFnPWjtuhVLAcR5y2fSril8f6
+        Dh9yUAtitSDaAWNWAjeMgeHSgbJccSbQcyPr3OvGUMopOaSCL9QH1x8mnBItWgqpx6Kuc6Y6Mclk
+        h9VOeriflWXbXq1WpxftaT3btjhMs9C2m+PPG74hJX87TikMN8t4Y4bww6QwDuc7m9KiMugJaNQM
+        KHUWlGwUdMqQxgpi1ILtWWH9y92n47OP1SXaiMnEYNKL+rZMKc47nZyX/P2268N0+7YZZCip7DwI
+        QQ1wTSV0zmrg3hDfcGZFQ/Yvsn41ray8Ln1pZR5WvtcxTlm5GB0+O3CMCIdegmK2AS6ZgQ55Bw11
+        ZTZOUO9K74Dp+xjvctd869dlpzh+RZvOHA4p+IAxC8O272c+CjztMzFUEEKeDqrfqOTjya5pOFgk
+        DjgqBcYYBIbE0kY5wjW+gwrbjwr7Q1TIhv5XoDCFHTWNB2qpyI9LC9BNQcZ4TdB2QnL3F6Ds5vQm
+        KleX+1BB32lLCIJXhAEXLr9txRZgBEPLRae09/+KykxK6fDG4u6DuX76CT4qpoyrBAAA
+  recorded_at: 2025-11-13 09:00:00
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/dataset/search?limit=5&contactUserId=123
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      raw_gzip: |-
+        H4sIAL54GmoC/9WUUU8cIRDHv8pmnx0LLBzgo6ttjImXnOdD05gLC4NSt7uG5dJY43cv7NlGE8+0
+        6VPfJvOfgT/DDx7r0fsJU31UkYOq7sO3UGKRYxzc0q/QjtFNOZXiFnPWjtuhVLAcR5y2fSril8f6
+        Dh9yUAtitSDaAWNWAjeMgeHSgbJccSbQcyPr3OvGUMopOaSCL9QH1x8mnBItWgqpx6Kuc6Y6Mclk
+        h9VOeriflWXbXq1WpxftaT3btjhMs9C2m+PPG74hJX87TikMN8t4Y4bww6QwDuc7m9KiMugJaNQM
+        KHUWlGwUdMqQxgpi1ILtWWH9y92n47OP1SXaiMnEYNKL+rZMKc47nZyX/P2268N0+7YZZCip7DwI
+        QQ1wTSV0zmrg3hDfcGZFQ/Yvsn41ray8Ln1pZR5WvtcxTlm5GB0+O3CMCIdegmK2AS6ZgQ55Bw11
+        ZTZOUO9K74Dp+xjvctd869dlpzh+RZvOHA4p+IAxC8O272c+CjztMzFUEEKeDqrfqOTjya5pOFgk
+        DjgqBcYYBIbE0kY5wjW+gwrbjwr7Q1TIhv5XoDCFHTWNB2qpyI9LC9BNQcZ4TdB2QnL3F6Ds5vQm
+        KleX+1BB32lLCIJXhAEXLr9txRZgBEPLRae09/+KykxK6fDG4u6DuX76CT4qpoyrBAAA
+  recorded_at: 2025-11-13 09:00:00
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/dataset/search?limit=5&contactEmail=test%40gbif.org
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      raw_gzip: |-
+        H4sIAL54GmoC/9WUUU8cIRDHv8pmnx0LLBzgo6ttjImXnOdD05gLC4NSt7uG5dJY43cv7NlGE8+0
+        6VPfJvOfgT/DDx7r0fsJU31UkYOq7sO3UGKRYxzc0q/QjtFNOZXiFnPWjtuhVLAcR5y2fSril8f6
+        Dh9yUAtitSDaAWNWAjeMgeHSgbJccSbQcyPr3OvGUMopOaSCL9QH1x8mnBItWgqpx6Kuc6Y6Mclk
+        h9VOeriflWXbXq1WpxftaT3btjhMs9C2m+PPG74hJX87TikMN8t4Y4bww6QwDuc7m9KiMugJaNQM
+        KHUWlGwUdMqQxgpi1ILtWWH9y92n47OP1SXaiMnEYNKL+rZMKc47nZyX/P2268N0+7YZZCip7DwI
+        QQ1wTSV0zmrg3hDfcGZFQ/Yvsn41ray8Ln1pZR5WvtcxTlm5GB0+O3CMCIdegmK2AS6ZgQ55Bw11
+        ZTZOUO9K74Dp+xjvctd869dlpzh+RZvOHA4p+IAxC8O272c+CjztMzFUEEKeDqrfqOTjya5pOFgk
+        DjgqBcYYBIbE0kY5wjW+gwrbjwr7Q1TIhv5XoDCFHTWNB2qpyI9LC9BNQcZ4TdB2QnL3F6Ds5vQm
+        KleX+1BB32lLCIJXhAEXLr9txRZgBEPLRae09/+KykxK6fDG4u6DuX76CT4qpoyrBAAA
+  recorded_at: 2025-11-13 09:00:00
