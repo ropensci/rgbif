@@ -48,6 +48,13 @@ dataset_search(
   facetOffset = NULL,
   facetMincount = NULL,
   facetMultiselect = NULL,
+  continent = NULL,
+  taxonKey = NULL,
+  recordCount = NULL,
+  modifiedDate = NULL,
+  createdDate = NULL,
+  contactUserId = NULL,
+  contactEmail = NULL,
   limit = 100,
   start = NULL,
   description = FALSE,
@@ -143,6 +150,26 @@ parameters facetOffset and facetLimit}
 
 \item{facetMultiselect}{Used in combination with the facet parameter.}
 
+\item{continent}{Filters datasets by the continent of their spatial coverage.
+Available values: "AFRICA", "ANTARCTICA", "ASIA", "EUROPE",
+"NORTH_AMERICA", "OCEANIA", "SOUTH_AMERICA".}
+
+\item{taxonKey}{Filters datasets by a taxon key from the GBIF backbone.
+The dataset must index records linked to this taxon or any of its descendants.}
+
+\item{recordCount}{Filters datasets by number of occurrence records. Accepts
+ranges, e.g. "1000,5000".}
+
+\item{modifiedDate}{Filters datasets by their last modified date. Accepts
+date ranges, e.g. "2020-01-01,2021-01-01".}
+
+\item{createdDate}{Filters datasets by their created date. Accepts date
+ranges, e.g. "2020-01-01,2021-01-01".}
+
+\item{contactUserId}{Filters datasets by the user ID of a dataset contact.}
+
+\item{contactEmail}{Filters datasets by the email of a dataset contact.}
+
 \item{limit}{Controls the number of results in the page. Using too high a
 value will be overwritten with the default maximum threshold, depending on
 the service. Sensible defaults are used so this may be omitted.}
@@ -215,6 +242,14 @@ dataset_export(projectId="GRIIS")
 dataset_search(facet="type",limit=0,facetLimit=5)$facets 
 dataset_search(facet="publishingCountry",limit=0,facetLimit=5)$facets
 dataset_search(facet="license",limit=0,facetLimit=5, facetMincount=10000)
+
+dataset_search(continent = "EUROPE", limit = 5)
+dataset_search(taxonKey = 212, limit = 5)
+dataset_search(recordCount = "10000,100000", limit = 5)
+dataset_search(modifiedDate = "2020-01-01,2021-01-01", limit = 5)
+dataset_search(createdDate = "2015-01-01,2016-01-01", limit = 5)
+dataset_search(contactUserId = 123, limit = 5)
+dataset_search(contactEmail = "example@gbif.org", limit = 5)
 
 }
 }

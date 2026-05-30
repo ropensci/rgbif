@@ -306,7 +306,7 @@ test_that("dataset_search works as expected", {
 
 })
 
-test_that("dataset_search new parameters work as expected", {
+test_that("dataset_search filters by continent, taxonKey, recordCount, modifiedDate, createdDate, contactUserId, contactEmail", {
   vcr::use_cassette("dataset_search_new_params", {
     cont <- dataset_search(continent = "EUROPE", limit = 5)
     expect_is(cont, "list")
