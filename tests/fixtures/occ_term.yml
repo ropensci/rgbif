@@ -1,0 +1,15 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/term
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+      x-rlr: '25'
+      x-grlr: '30'
+    body:
+      string: '[{"simpleName":"catalogNumber","qualifiedName":"http://rs.tdwg.org/dwc/terms/catalogNumber","group":"Occurrence","source":"DwcTerm"},{"simpleName":"gbifID","qualifiedName":"http://gbif.org/terms/1.0/gbifID","group":"Occurrence","source":"GbifTerm"}]'
+  recorded_at: 2026-05-28 14:45:00
+recorded_with: VCR-vcr/2.0.0
