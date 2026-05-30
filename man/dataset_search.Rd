@@ -43,11 +43,6 @@ dataset_search(
   installationKey = NULL,
   endpointType = NULL,
   category = NULL,
-  facet = NULL,
-  facetLimit = NULL,
-  facetOffset = NULL,
-  facetMincount = NULL,
-  facetMultiselect = NULL,
   continent = NULL,
   taxonKey = NULL,
   recordCount = NULL,
@@ -55,6 +50,11 @@ dataset_search(
   createdDate = NULL,
   contactUserId = NULL,
   contactEmail = NULL,
+  facet = NULL,
+  facetLimit = NULL,
+  facetOffset = NULL,
+  facetMincount = NULL,
+  facetMultiselect = NULL,
   limit = 100,
   start = NULL,
   description = FALSE,
@@ -138,18 +138,6 @@ Available values : EML, FEED, WFS, WMS, TCS_RDF, TCS_XML, DWC_ARCHIVE, DIGIR,
 DIGIR_MANIS, TAPIR, BIOCASE, BIOCASE_XML_ARCHIVE, OAI_PMH, COLDP,
 CAMTRAP_DP, BIOM_1_0, BIOM_2_1, ACEF, TEXT_TREE, OTHER}
 
-\item{facet}{A facet name used to retrieve the most frequent values for a field.}
-
-\item{facetLimit}{Facet parameters allow paging requests using the parameters
-facetOffset and facetLimit.}
-
-\item{facetOffset}{Facet parameters allow paging requests using the
-parameters facetOffset and facetLimit}
-
-\item{facetMincount}{Used in combination with the facet parameter.}
-
-\item{facetMultiselect}{Used in combination with the facet parameter.}
-
 \item{continent}{Filters datasets by the continent of their spatial coverage.
 Available values: "AFRICA", "ANTARCTICA", "ASIA", "EUROPE",
 "NORTH_AMERICA", "OCEANIA", "SOUTH_AMERICA".}
@@ -169,6 +157,18 @@ ranges, e.g. "2020-01-01,2021-01-01".}
 \item{contactUserId}{Filters datasets by the user ID of a dataset contact.}
 
 \item{contactEmail}{Filters datasets by the email of a dataset contact.}
+
+\item{facet}{A facet name used to retrieve the most frequent values for a field.}
+
+\item{facetLimit}{Facet parameters allow paging requests using the parameters
+facetOffset and facetLimit.}
+
+\item{facetOffset}{Facet parameters allow paging requests using the
+parameters facetOffset and facetLimit}
+
+\item{facetMincount}{Used in combination with the facet parameter.}
+
+\item{facetMultiselect}{Used in combination with the facet parameter.}
 
 \item{limit}{Controls the number of results in the page. Using too high a
 value will be overwritten with the default maximum threshold, depending on
