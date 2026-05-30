@@ -22,7 +22,16 @@ dataset_export(
   hostingCountry = NULL,
   networkKey = NULL,
   doi = NULL,
-  category = NULL
+  installationKey = NULL,
+  endpointType = NULL,
+  category = NULL,
+  continent = NULL,
+  taxonKey = NULL,
+  recordCount = NULL,
+  modifiedDate = NULL,
+  createdDate = NULL,
+  contactUserId = NULL,
+  contactEmail = NULL
 )
 
 dataset_search(
