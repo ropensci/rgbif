@@ -107,4 +107,60 @@ test_that("dataset_export works as expected", {
   expect_equal(names(cat_r)[1], "datasetKey")
   expect_is(cat_r,"tbl_df")
   
+  # new parameters: continent, taxonKey, recordCount, modifiedDate, createdDate,
+  # installationKey, endpointType, contactUserId, contactEmail
+  # refs: https://github.com/ropensci/rgbif/issues/XXX
+  
+  cont_r <- dataset_export(continent = "EUROPE")
+  expect_equal(ncol(cont_r), 17)
+  expect_lt(nrow(cont_r), total_ds)
+  expect_equal(names(cont_r)[1], "datasetKey")
+  expect_is(cont_r,"tbl_df")
+  
+  tk_r <- dataset_export(taxonKey = 212)
+  expect_equal(ncol(tk_r), 17)
+  expect_lt(nrow(tk_r), total_ds)
+  expect_equal(names(tk_r)[1], "datasetKey")
+  expect_is(tk_r,"tbl_df")
+  
+  rc_r <- dataset_export(recordCount = "10000,100000")
+  expect_equal(ncol(rc_r), 17)
+  expect_lt(nrow(rc_r), total_ds)
+  expect_equal(names(rc_r)[1], "datasetKey")
+  expect_is(rc_r,"tbl_df")
+  
+  md_r <- dataset_export(modifiedDate = "2020-01-01,2021-01-01")
+  expect_equal(ncol(md_r), 17)
+  expect_lt(nrow(md_r), total_ds)
+  expect_equal(names(md_r)[1], "datasetKey")
+  expect_is(md_r,"tbl_df")
+  
+  cd_r <- dataset_export(createdDate = "2015-01-01,2016-01-01")
+  expect_equal(ncol(cd_r), 17)
+  expect_lt(nrow(cd_r), total_ds)
+  expect_equal(names(cd_r)[1], "datasetKey")
+  expect_is(cd_r,"tbl_df")
+  
+  ik_r <- dataset_export(installationKey = "d209e552-7e6e-4840-b13c-c0596ef36e55")
+  expect_equal(ncol(ik_r), 17)
+  expect_lt(nrow(ik_r), total_ds)
+  expect_equal(names(ik_r)[1], "datasetKey")
+  expect_is(ik_r,"tbl_df")
+  
+  et_r <- dataset_export(endpointType = "DWC_ARCHIVE")
+  expect_equal(ncol(et_r), 17)
+  expect_lt(nrow(et_r), total_ds)
+  expect_equal(names(et_r)[1], "datasetKey")
+  expect_is(et_r,"tbl_df")
+  
+  cu_r <- dataset_export(contactUserId = 123)
+  expect_equal(ncol(cu_r), 17)
+  expect_equal(names(cu_r)[1], "datasetKey")
+  expect_is(cu_r,"tbl_df")
+  
+  ce_r <- dataset_export(contactEmail = "helpdesk@gbif.org")
+  expect_equal(ncol(ce_r), 17)
+  expect_equal(names(ce_r)[1], "datasetKey")
+  expect_is(ce_r,"tbl_df")
+  
 })

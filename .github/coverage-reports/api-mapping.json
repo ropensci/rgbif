@@ -939,7 +939,16 @@
         "hostingCountry",
         "networkKey",
         "doi",
-        "category"
+        "installationKey",
+        "endpointType",
+        "category",
+        "continent",
+        "taxonKey",
+        "recordCount",
+        "modifiedDate",
+        "createdDate",
+        "contactUserId",
+        "contactEmail"
       ]
     },
     {
