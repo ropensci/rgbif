@@ -909,7 +909,14 @@
         "facetMultiselect",
         "limit",
         "start",
-        "description"
+        "description",
+        "continent",
+        "taxonKey",
+        "recordCount",
+        "modifiedDate",
+        "createdDate",
+        "contactUserId",
+        "contactEmail"
       ]
     },
     {

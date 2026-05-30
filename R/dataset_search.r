@@ -38,6 +38,19 @@
 #' CAMTRAP_DP, BIOM_1_0, BIOM_2_1, ACEF, TEXT_TREE, OTHER
 #' @param category Filters datasets by their dataset category tag. For example 
 #' "eDNA", "CitizenScience", "Tracking".
+#' @param continent Filters datasets by the continent of their spatial coverage.
+#' Available values: "AFRICA", "ANTARCTICA", "ASIA", "EUROPE", 
+#' "NORTH_AMERICA", "OCEANIA", "SOUTH_AMERICA".
+#' @param taxonKey Filters datasets by a taxon key from the GBIF backbone. 
+#' The dataset must index records linked to this taxon or any of its descendants.
+#' @param recordCount Filters datasets by number of occurrence records. Accepts 
+#' ranges, e.g. "1000,5000".
+#' @param modifiedDate Filters datasets by their last modified date. Accepts 
+#' date ranges, e.g. "2020-01-01,2021-01-01".
+#' @param createdDate Filters datasets by their created date. Accepts date 
+#' ranges, e.g. "2020-01-01,2021-01-01".
+#' @param contactUserId Filters datasets by the user ID of a dataset contact.
+#' @param contactEmail Filters datasets by the email of a dataset contact.
 #' @param facet A facet name used to retrieve the most frequent values for a field.
 #' @param facetLimit Facet parameters allow paging requests using the parameters 
 #' facetOffset and facetLimit.
@@ -101,6 +114,13 @@
 #' dataset_search(doi="10.15468/aomfnb;10.15468/igasai")
 #' dataset_search(installationKey = "d209e552-7e6e-4840-b13c-c0596ef36e55")
 #' dataset_search(category = "eDNA")
+#' dataset_search(continent = "EUROPE", limit = 5)
+#' dataset_search(taxonKey = 212, limit = 5)
+#' dataset_search(recordCount = "10000,100000", limit = 5)
+#' dataset_search(modifiedDate = "2020-01-01,2021-01-01", limit = 5)
+#' dataset_search(createdDate = "2015-01-01,2016-01-01", limit = 5)
+#' dataset_search(contactUserId = 123, limit = 5)
+#' dataset_search(contactEmail = "example@gbif.org", limit = 5)
 #' 
 #' # multiple filters
 #' dataset_search(license = "CC0_1_0",subtype = "TAXONOMIC_AUTHORITY")
@@ -133,6 +153,13 @@ dataset_search <- function(query = NULL,
                            installationKey = NULL,
                            endpointType = NULL,
                            category = NULL,
+                           continent = NULL,
+                           taxonKey = NULL,
+                           recordCount = NULL,
+                           modifiedDate = NULL,
+                           createdDate = NULL,
+                           contactUserId = NULL,
+                           contactEmail = NULL,
                            facet = NULL,
                            facetLimit = NULL, 
                            facetOffset = NULL, 
@@ -158,6 +185,13 @@ dataset_search <- function(query = NULL,
   assert(installationKey,"character")
   assert(endpointType,"character")
   assert(category,"character")
+  assert(continent,"character")
+  assert(taxonKey,"numeric")
+  assert(recordCount,"character")
+  assert(modifiedDate,"character")
+  assert(createdDate,"character")
+  assert(contactUserId,"numeric")
+  assert(contactEmail,"character")
   assert(facet,"character")
   
   # args with single value 
@@ -168,7 +202,11 @@ dataset_search <- function(query = NULL,
                     facetLimit=facetLimit,
                     facetOffset=facetOffset,
                     facetMincount=facetMincount,
-                    facetMultiselect=facetMultiselect
+                    facetMultiselect=facetMultiselect,
+                    recordCount=recordCount,
+                    modifiedDate=modifiedDate,
+                    createdDate=createdDate,
+                    contactEmail=contactEmail
     )))
   
   args <- rgbif_compact(c(
@@ -189,6 +227,9 @@ dataset_search <- function(query = NULL,
     convmany(installationKey),
     convmany(endpointType),
     convmany(category),
+    convmany(continent),
+    convmany(taxonKey),
+    convmany(contactUserId),
     convmany(facet)
   ))
   

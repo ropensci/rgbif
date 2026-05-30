@@ -306,6 +306,53 @@ test_that("dataset_search works as expected", {
 
 })
 
+test_that("dataset_search filters by continent, taxonKey, recordCount, modifiedDate, createdDate, contactUserId, contactEmail", {
+  vcr::use_cassette("dataset_search_new_params", {
+    cont <- dataset_search(continent = "EUROPE", limit = 5)
+    expect_is(cont, "list")
+    expect_named(cont, c('meta', 'data', 'facets'))
+    expect_is(cont$data, "tbl_df")
+    expect_is(cont$data$title, "character")
+    expect_lte(nrow(cont$data), 5)
+
+    tk <- dataset_search(taxonKey = 212, limit = 5)
+    expect_is(tk, "list")
+    expect_named(tk, c('meta', 'data', 'facets'))
+    expect_is(tk$data, "tbl_df")
+    expect_lte(nrow(tk$data), 5)
+
+    rc <- dataset_search(recordCount = "10000,100000", limit = 5)
+    expect_is(rc, "list")
+    expect_named(rc, c('meta', 'data', 'facets'))
+    expect_is(rc$data, "tbl_df")
+    expect_lte(nrow(rc$data), 5)
+
+    md <- dataset_search(modifiedDate = "2020-01-01,2021-01-01", limit = 5)
+    expect_is(md, "list")
+    expect_named(md, c('meta', 'data', 'facets'))
+    expect_is(md$data, "tbl_df")
+    expect_lte(nrow(md$data), 5)
+
+    cd <- dataset_search(createdDate = "2015-01-01,2016-01-01", limit = 5)
+    expect_is(cd, "list")
+    expect_named(cd, c('meta', 'data', 'facets'))
+    expect_is(cd$data, "tbl_df")
+    expect_lte(nrow(cd$data), 5)
+
+    cu <- dataset_search(contactUserId = 123, limit = 5)
+    expect_is(cu, "list")
+    expect_named(cu, c('meta', 'data', 'facets'))
+    expect_is(cu$data, "tbl_df")
+    expect_lte(nrow(cu$data), 5)
+
+    ce <- dataset_search(contactEmail = "test@gbif.org", limit = 5)
+    expect_is(ce, "list")
+    expect_named(ce, c('meta', 'data', 'facets'))
+    expect_is(ce$data, "tbl_df")
+    expect_lte(nrow(ce$data), 5)
+  }, preserve_exact_body_bytes = TRUE)
+})
+
 test_that("dataset_search category works as expected", {
   vcr::use_cassette("dataset_search_category", {
     cat_r <- dataset_search(category = "eDNA", limit = 5)
