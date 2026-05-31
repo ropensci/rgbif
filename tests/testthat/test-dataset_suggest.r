@@ -231,3 +231,46 @@ test_that("Return just descriptions", {
   expect_is(tt, "list")
   expect_is(tt[[1]], "character")
 })
+
+test_that("dataset_suggest new parameters work as expected", {
+  vcr::use_cassette("dataset_suggest_new_params", {
+
+    inst <- dataset_suggest(installationKey = "d209e552-7e6e-4840-b13c-c0596ef36e55", limit = 5)
+    ep   <- dataset_suggest(endpointType = "DWC_ARCHIVE", limit = 5)
+    cont <- dataset_suggest(continent = "EUROPE", limit = 5)
+    tk   <- dataset_suggest(taxonKey = 212, limit = 5)
+    rc   <- dataset_suggest(recordCount = "10000,100000", limit = 5)
+    md   <- dataset_suggest(modifiedDate = "2020-01-01,2021-01-01", limit = 5)
+    cd   <- dataset_suggest(createdDate = "2015-01-01,2016-01-01", limit = 5)
+    cu   <- dataset_suggest(contactUserId = 123, limit = 5)
+    ce   <- dataset_suggest(contactEmail = "helpdesk@gbif.org", limit = 5)
+
+    expect_is(inst, "tbl_df")
+    expect_named(inst, c('key', 'type', 'title'))
+
+    expect_is(ep, "tbl_df")
+    expect_named(ep, c('key', 'type', 'title'))
+
+    expect_is(cont, "tbl_df")
+    expect_named(cont, c('key', 'type', 'title'))
+
+    expect_is(tk, "tbl_df")
+    expect_named(tk, c('key', 'type', 'title'))
+
+    expect_is(rc, "tbl_df")
+    expect_named(rc, c('key', 'type', 'title'))
+
+    expect_is(md, "tbl_df")
+    expect_named(md, c('key', 'type', 'title'))
+
+    expect_is(cd, "tbl_df")
+    expect_named(cd, c('key', 'type', 'title'))
+
+    expect_is(cu, "tbl_df")
+    expect_named(cu, c('key', 'type', 'title'))
+
+    expect_is(ce, "tbl_df")
+    expect_named(ce, c('key', 'type', 'title'))
+
+  }, preserve_exact_body_bytes = TRUE)
+})
