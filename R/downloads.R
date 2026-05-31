@@ -47,6 +47,7 @@
 #' - [occ_download_get()] - Retrieve a download
 #' - [occ_download_import()] - Import a download from local file system
 #' - [occ_download_datasets()] - List datasets for a download
+#' - [occ_download_countries()] - List countries for a download
 #' - [occ_download_dataset_activity()] - Lists the downloads activity
 #' of a dataset
 #' 
