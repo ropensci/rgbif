@@ -2,8 +2,8 @@
 #'
 #' @export
 #'
-#' @param user (character) your GBIF user name, if left blank will default to
-#' user name found in `.Renviron` file.
+#' @param user (character) your or any other GBIF user name, if left blank
+#' will default to user name found in `.Renviron` file.
 #' @param from (character) Optional. Start date in format `YYYY-MM-DD`. Only
 #' downloads created on or after this date will be counted.
 #' @param status (character) Optional. Filter by download status. One of
