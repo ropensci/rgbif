@@ -2,8 +2,8 @@
 #'
 #' @export
 #'
-#' @param user (character) User name within GBIF's website. Required. See
-#' Details.
+#' @param user (character) your GBIF user name, if left blank will default to
+#' user name found in `.Renviron` file.
 #' @param from (character) Optional. Start date in format `YYYY-MM-DD`. Only
 #' downloads created on or after this date will be counted.
 #' @param status (character) Optional. Filter by download status. One of
@@ -13,8 +13,7 @@
 #' @return a single integer with the total number of downloads for the user.
 #'
 #' @details
-#' Username can be set in a number of ways. See [occ_download] for
-#' details.
+#' if left blank will default to user name found in `.Renviron` file.
 #'
 #' @examples \dontrun{
 #' occ_download_user_count(user="jwaller")
