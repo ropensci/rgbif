@@ -232,7 +232,7 @@ test_that("Return just descriptions", {
   expect_is(tt[[1]], "character")
 })
 
-test_that("dataset_suggest new parameters work as expected", {
+test_that("dataset_suggest filters by installationKey, endpointType, continent, taxonKey, recordCount, modifiedDate, createdDate, contactUserId, contactEmail", {
   vcr::use_cassette("dataset_suggest_new_params", {
 
     inst <- dataset_suggest(installationKey = "d209e552-7e6e-4840-b13c-c0596ef36e55", limit = 5)
