@@ -10,8 +10,6 @@
 #' `"PREPARING"`, `"RUNNING"`, `"SUCCEEDED"`, `"CANCELLED"`, `"KILLED"`,
 #' `"FAILED"`, `"SUSPENDED"`, or `"FILE_ERASED"`.
 #' @template occ
-#' @note see [downloads] for an overview of GBIF downloads methods
-#' @family downloads
 #' @return a single integer with the total number of downloads for the user.
 #'
 #' @details
@@ -19,9 +17,9 @@
 #' details.
 #'
 #' @examples \dontrun{
-#' occ_download_user_count(user="sckott")
-#' occ_download_user_count(user="sckott", from="2023-01-01")
-#' occ_download_user_count(user="sckott", status="SUCCEEDED")
+#' occ_download_user_count(user="jwaller")
+#' occ_download_user_count(user="jwaller", from="2023-01-01")
+#' occ_download_user_count(user="jwaller", status="SUCCEEDED")
 #' }
 occ_download_user_count <- function(user = NULL, from = NULL, status = NULL,
   curlopts = list(http_version = 2)) {

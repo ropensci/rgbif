@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/user/<gbif_user>/count
+    uri: https://api.gbif.org/v1/occurrence/download/user/jwaller/count
   response:
     status: 200
     headers:
