@@ -2325,7 +2325,7 @@
       "parameters": []
     },
     {
-      "function_name": "occ_download_count",
+      "function_name": "occ_download_user_count",
       "endpoint": "/occurrence/download/user/{user}/count",
       "method": "GET",
       "api": "occurrence",

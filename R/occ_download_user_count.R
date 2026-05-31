@@ -16,9 +16,9 @@
 #' details.
 #'
 #' @examples \dontrun{
-#' occ_download_count(user="sckott")
+#' occ_download_user_count(user="sckott")
 #' }
-occ_download_count <- function(user = NULL, pwd = NULL,
+occ_download_user_count <- function(user = NULL, pwd = NULL,
   curlopts = list(http_version = 2)) {
 
   user <- check_user(user)
