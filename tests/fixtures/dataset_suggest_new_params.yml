@@ -1,0 +1,118 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/dataset/suggest?limit=5&installationKey=d209e552-7e6e-4840-b13c-c0596ef36e55
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      raw_gzip: |-
+        eJyLrlbKTq1UslJQSkxKNjQyNjDQNTDAIKDAUElHQamksiAVpN7f2Tk0KMjVz9kVLJpZkgMWDkkt
+        LlFwSSxJLE4tUTBUqtVRIMUGI1JtMFKqjQUAn2Qx7w==
+  recorded_at: 2025-11-13 09:00:00
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/dataset/suggest?limit=5&endpointType=DWC_ARCHIVE
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      raw_gzip: |-
+        eJyLrlbKTq1UslJQSkxKNjQyNjDQNTDAIKDAUElHQamksiAVpN7f2Tk0KMjVz9kVLJpZkgMWDkkt
+        LlFwSSxJLE4tUTBUqtVRIMUGI1JtMFKqjQUAn2Qx7w==
+  recorded_at: 2025-11-13 09:00:00
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/dataset/suggest?limit=5&continent=EUROPE
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      raw_gzip: |-
+        eJyLrlbKTq1UslJQSkxKNjQyNjDQNTDAIKDAUElHQamksiAVpN7f2Tk0KMjVz9kVLJpZkgMWDkkt
+        LlFwSSxJLE4tUTBUqtVRIMUGI1JtMFKqjQUAn2Qx7w==
+  recorded_at: 2025-11-13 09:00:00
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/dataset/suggest?limit=5&taxonKey=212
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      raw_gzip: |-
+        eJyLrlbKTq1UslJQSkxKNjQyNjDQNTDAIKDAUElHQamksiAVpN7f2Tk0KMjVz9kVLJpZkgMWDkkt
+        LlFwSSxJLE4tUTBUqtVRIMUGI1JtMFKqjQUAn2Qx7w==
+  recorded_at: 2025-11-13 09:00:00
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/dataset/suggest?limit=5&recordCount=10000%2C100000
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      raw_gzip: |-
+        eJyLrlbKTq1UslJQSkxKNjQyNjDQNTDAIKDAUElHQamksiAVpN7f2Tk0KMjVz9kVLJpZkgMWDkkt
+        LlFwSSxJLE4tUTBUqtVRIMUGI1JtMFKqjQUAn2Qx7w==
+  recorded_at: 2025-11-13 09:00:00
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/dataset/suggest?limit=5&modifiedDate=2020-01-01%2C2021-01-01
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      raw_gzip: |-
+        eJyLrlbKTq1UslJQSkxKNjQyNjDQNTDAIKDAUElHQamksiAVpN7f2Tk0KMjVz9kVLJpZkgMWDkkt
+        LlFwSSxJLE4tUTBUqtVRIMUGI1JtMFKqjQUAn2Qx7w==
+  recorded_at: 2025-11-13 09:00:00
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/dataset/suggest?limit=5&createdDate=2015-01-01%2C2016-01-01
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      raw_gzip: |-
+        eJyLrlbKTq1UslJQSkxKNjQyNjDQNTDAIKDAUElHQamksiAVpN7f2Tk0KMjVz9kVLJpZkgMWDkkt
+        LlFwSSxJLE4tUTBUqtVRIMUGI1JtMFKqjQUAn2Qx7w==
+  recorded_at: 2025-11-13 09:00:00
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/dataset/suggest?limit=5&contactUserId=123
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      raw_gzip: |-
+        eJyLrlbKTq1UslJQSkxKNjQyNjDQNTDAIKDAUElHQamksiAVpN7f2Tk0KMjVz9kVLJpZkgMWDkkt
+        LlFwSSxJLE4tUTBUqtVRIMUGI1JtMFKqjQUAn2Qx7w==
+  recorded_at: 2025-11-13 09:00:00
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/dataset/suggest?limit=5&contactEmail=helpdesk%40gbif.org
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      raw_gzip: |-
+        eJyLrlbKTq1UslJQSkxKNjQyNjDQNTDAIKDAUElHQamksiAVpN7f2Tk0KMjVz9kVLJpZkgMWDkkt
+        LlFwSSxJLE4tUTBUqtVRIMUGI1JtMFKqjQUAn2Qx7w==
+  recorded_at: 2025-11-13 09:00:00
