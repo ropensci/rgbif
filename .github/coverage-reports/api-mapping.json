@@ -1,4 +1,4 @@
-﻿{
+{
   "mappings": [
     {
       "function_name": "occ_search",
@@ -796,7 +796,11 @@
         "publishingOrgKey",
         "limit",
         "offset"
-      ]
+      ],
+      "parameter_mappings": {
+        "fromDate": "from",
+        "toDate": "to"
+      }
     },
     {
       "function_name": "occ_download_stats_export",
@@ -811,7 +815,11 @@
         "publishingOrgKey",
         "limit",
         "offset"
-      ]
+      ],
+      "parameter_mappings": {
+        "fromDate": "from",
+        "toDate": "to"
+      }
     },
     {
       "function_name": "occ_download_stats_user_country",
@@ -823,7 +831,11 @@
         "to",
         "userCountry",
         "publishingCountry"
-      ]
+      ],
+      "parameter_mappings": {
+        "fromDate": "from",
+        "toDate": "to"
+      }
     },
     {
       "function_name": "occ_download_stats_dataset_records",
@@ -836,7 +848,11 @@
         "publishingCountry",
         "datasetKey",
         "publishingOrgKey"
-      ]
+      ],
+      "parameter_mappings": {
+        "fromDate": "from",
+        "toDate": "to"
+      }
     },
     {
       "function_name": "occ_download_stats_dataset",
@@ -849,7 +865,11 @@
         "publishingCountry",
         "datasetKey",
         "publishingOrgKey"
-      ]
+      ],
+      "parameter_mappings": {
+        "fromDate": "from",
+        "toDate": "to"
+      }
     },
     {
       "function_name": "occ_download_stats_source",
@@ -860,7 +880,11 @@
         "from",
         "to",
         "source"
-      ]
+      ],
+      "parameter_mappings": {
+        "fromDate": "from",
+        "toDate": "to"
+      }
     },
     {
       "function_name": "occ_term",
