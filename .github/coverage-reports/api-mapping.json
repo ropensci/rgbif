@@ -2331,7 +2331,7 @@
       "api": "occurrence",
       "parameters": [
         "user",
-        "pwd"
+        "from"
       ]
     }
   ],

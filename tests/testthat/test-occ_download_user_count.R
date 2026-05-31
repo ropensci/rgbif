@@ -19,6 +19,18 @@ test_that("occ_download_user_count", {
   expect_gt(tt, 0)
 })
 
+test_that("occ_download_user_count with from parameter", {
+  skip_on_cran()
+  skip_on_ci()
+
+  vcr::use_cassette("occ_download_user_count_from", {
+    tt <- occ_download_user_count(from = "2023-01-01")
+  })
+
+  expect_is(tt, "integer")
+  expect_equal(length(tt), 1)
+})
+
 test_that("occ_download_user_count fails well", {
   skip_on_cran()
 
@@ -27,9 +39,9 @@ test_that("occ_download_user_count fails well", {
   Sys.unsetenv("GBIF_USER"); Sys.unsetenv("GBIF_PWD"); Sys.unsetenv("GBIF_EMAIL")
   expect_error(occ_download_user_count(), "supply a username")
 
-  ## set username, run again
+  # wrong type for from
   Sys.setenv(GBIF_USER = "foobar")
-  expect_error(occ_download_user_count(), "supply a password", class = "error")
+  expect_error(occ_download_user_count(from = 123), "from must be of class character")
 })
 
 # set env vars/R options back to original
