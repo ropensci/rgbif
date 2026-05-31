@@ -107,10 +107,6 @@ test_that("dataset_export works as expected", {
   expect_equal(names(cat_r)[1], "datasetKey")
   expect_is(cat_r,"tbl_df")
   
-  # new parameters: continent, taxonKey, recordCount, modifiedDate, createdDate,
-  # installationKey, endpointType, contactUserId, contactEmail
-  # refs: https://github.com/ropensci/rgbif/issues/XXX
-  
   cont_r <- dataset_export(continent = "EUROPE")
   expect_equal(ncol(cont_r), 17)
   expect_lt(nrow(cont_r), total_ds)
