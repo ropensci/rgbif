@@ -14,7 +14,16 @@ dataset_export <- function(query = NULL,
                            hostingCountry = NULL,
                            networkKey = NULL,
                            doi = NULL,
-                           category = NULL
+                           installationKey = NULL,
+                           endpointType = NULL,
+                           category = NULL,
+                           continent = NULL,
+                           taxonKey = NULL,
+                           recordCount = NULL,
+                           modifiedDate = NULL,
+                           createdDate = NULL,
+                           contactUserId = NULL,
+                           contactEmail = NULL
                            ) {
   
   assert(query,"character")
@@ -30,12 +39,25 @@ dataset_export <- function(query = NULL,
   assert(hostingCountry,"character")
   assert(networkKey,"character")
   assert(doi,"character")
+  assert(installationKey,"character")
+  assert(endpointType,"character")
   assert(category,"character")
+  assert(continent,"character")
+  assert(taxonKey,"numeric")
+  assert(recordCount,"character")
+  assert(modifiedDate,"character")
+  assert(createdDate,"character")
+  assert(contactUserId,"numeric")
+  assert(contactEmail,"character")
   
   # args with single value 
   args <- rgbif_compact(list(
             format = "TSV",
-            q = query
+            q = query,
+            recordCount = recordCount,
+            modifiedDate = modifiedDate,
+            createdDate = createdDate,
+            contactEmail = contactEmail
             ))
   
   args <- rgbif_compact(c(
@@ -53,7 +75,12 @@ dataset_export <- function(query = NULL,
                 convmany(hostingCountry),
                 convmany(networkKey),
                 convmany(doi),
-                convmany(category)
+                convmany(installationKey),
+                convmany(endpointType),
+                convmany(category),
+                convmany(continent),
+                convmany(taxonKey),
+                convmany(contactUserId)
                 ))
   
   url_query <- paste0(names(args),"=",args,collapse="&")
