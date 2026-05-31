@@ -8,7 +8,6 @@ r_opts <- stats::setNames(lapply(lkeys, getOption), lkeys)
 
 test_that("occ_download_user_count", {
   skip_on_cran()
-  skip_on_ci()
 
   vcr::use_cassette("occ_download_user_count", {
     tt <- occ_download_user_count()
@@ -21,10 +20,20 @@ test_that("occ_download_user_count", {
 
 test_that("occ_download_user_count with from parameter", {
   skip_on_cran()
-  skip_on_ci()
 
   vcr::use_cassette("occ_download_user_count_from", {
     tt <- occ_download_user_count(from = "2023-01-01")
+  })
+
+  expect_is(tt, "integer")
+  expect_equal(length(tt), 1)
+})
+
+test_that("occ_download_user_count with status parameter", {
+  skip_on_cran()
+
+  vcr::use_cassette("occ_download_user_count_status", {
+    tt <- occ_download_user_count(status = "SUCCEEDED")
   })
 
   expect_is(tt, "integer")
@@ -42,6 +51,7 @@ test_that("occ_download_user_count fails well", {
   # wrong type for from
   Sys.setenv(GBIF_USER = "foobar")
   expect_error(occ_download_user_count(from = 123), "from must be of class character")
+  expect_error(occ_download_user_count(status = 123), "status must be of class character")
 })
 
 # set env vars/R options back to original

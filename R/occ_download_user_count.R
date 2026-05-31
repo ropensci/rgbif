@@ -6,6 +6,9 @@
 #' Details.
 #' @param from (character) Optional. Start date in format `YYYY-MM-DD`. Only
 #' downloads created on or after this date will be counted.
+#' @param status (character) Optional. Filter by download status. One of
+#' `"PREPARING"`, `"RUNNING"`, `"SUCCEEDED"`, `"CANCELLED"`, `"KILLED"`,
+#' `"FAILED"`, `"SUSPENDED"`, or `"FILE_ERASED"`.
 #' @template occ
 #' @note see [downloads] for an overview of GBIF downloads methods
 #' @family downloads
@@ -18,14 +21,16 @@
 #' @examples \dontrun{
 #' occ_download_user_count(user="sckott")
 #' occ_download_user_count(user="sckott", from="2023-01-01")
+#' occ_download_user_count(user="sckott", status="SUCCEEDED")
 #' }
-occ_download_user_count <- function(user = NULL, from = NULL,
+occ_download_user_count <- function(user = NULL, from = NULL, status = NULL,
   curlopts = list(http_version = 2)) {
 
   user <- check_user(user)
   assert(from, "character")
+  assert(status, "character")
   url <- sprintf('%s/occurrence/download/user/%s/count', gbif_base(), user)
-  args <- rgbif_compact(list(from = from))
+  args <- rgbif_compact(list(from = from, status = status))
   cli <- crul::HttpClient$new(
     url = url, headers = rgbif_ual, opts = curlopts
   )

@@ -2331,7 +2331,8 @@
       "api": "occurrence",
       "parameters": [
         "user",
-        "from"
+        "from",
+        "status"
       ]
     }
   ],
