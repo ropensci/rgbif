@@ -37,6 +37,13 @@ test_that("occ_download_user_count with status parameter", {
 test_that("occ_download_user_count fails well", {
   skip_on_cran()
 
+  old_gbif_user_env <- Sys.getenv("GBIF_USER", unset = NA)
+  old_gbif_user_opt <- getOption("gbif_user")
+  on.exit({
+    if (is.na(old_gbif_user_env)) Sys.unsetenv("GBIF_USER") else Sys.setenv(GBIF_USER = old_gbif_user_env)
+    options(gbif_user = old_gbif_user_opt)
+  }, add = TRUE)
+
   options(gbif_user = NULL)
   Sys.unsetenv("GBIF_USER")
   expect_error(occ_download_user_count(), "supply a username")
