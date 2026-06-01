@@ -6,10 +6,12 @@
 #' @param sortBy (character) Sort field. One of `COUNTRY_CODE` or
 #' `RECORD_COUNT`. Optional.
 #' @param sortOrder (character) Sort order. One of `ASC` or `DESC`. Optional.
-#' @template occ
-#' @template downloadlimstart
-#' @note see [downloads] for an overview of GBIF downloads methods
-#' @family downloads
+#' @param limit (integer/numeric) Number of records to return. Default: 20,
+#' Max: 1000
+#' @param start (integer/numeric) Record number to start at. Default: 0
+#' @param curlopts list of named curl options passed on to
+#' \code{\link[crul]{HttpClient}}. see \code{curl::curl_options}
+#' for curl options
 #' @return a list with two slots:
 #' 
 #' - meta: a single row data.frame with columns: `offset`, `limit`,
