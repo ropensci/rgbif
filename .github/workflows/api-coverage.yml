@@ -93,9 +93,9 @@ jobs:
         if: always()
         id: read_summary
         run: |
-          if [ -f .github/coverage-reports/coverage-report-latest.json ]; then
-            COVERAGE=$(cat .github/coverage-reports/coverage-report-latest.json | grep -o '"coverage_percentage":[0-9.]*' | cut -d':' -f2)
-            MISSING=$(cat .github/coverage-reports/coverage-report-latest.json | grep -o '"missing_endpoints":[0-9]*' | cut -d':' -f2)
+          if [ -f .github/coverage-reports/coverage-report.json ]; then
+            COVERAGE=$(cat .github/coverage-reports/coverage-report.json | grep -o '"coverage_percentage":[0-9.]*' | cut -d':' -f2)
+            MISSING=$(cat .github/coverage-reports/coverage-report.json | grep -o '"missing_endpoints":[0-9]*' | cut -d':' -f2)
             echo "coverage=$COVERAGE" >> $GITHUB_OUTPUT
             echo "missing=$MISSING" >> $GITHUB_OUTPUT
             echo "### API Coverage: ${COVERAGE}%" >> $GITHUB_STEP_SUMMARY
@@ -107,7 +107,7 @@ jobs:
       - name: Comment coverage summary
         if: github.event_name == 'push' && always()
         run: |
-          if [ -f .github/coverage-reports/coverage-report-latest.md ]; then
+          if [ -f .github/coverage-reports/coverage-report.md ]; then
             echo "Coverage report generated successfully"
             # Optionally: post as PR comment or issue comment
             # This would require additional setup with GitHub token
@@ -117,8 +117,8 @@ jobs:
         if: always()
         run: |
           THRESHOLD=50
-          if [ -f .github/coverage-reports/coverage-report-latest.json ]; then
-            COVERAGE=$(cat .github/coverage-reports/coverage-report-latest.json | grep -o '"coverage_percentage":[0-9.]*' | cut -d':' -f2 | awk '{print int($1)}')
+          if [ -f .github/coverage-reports/coverage-report.json ]; then
+            COVERAGE=$(cat .github/coverage-reports/coverage-report.json | grep -o '"coverage_percentage":[0-9.]*' | cut -d':' -f2 | awk '{print int($1)}')
             echo "Current coverage: ${COVERAGE}%"
             echo "Threshold: ${THRESHOLD}%"
             if [ "$COVERAGE" -lt "$THRESHOLD" ]; then
@@ -136,12 +136,21 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           
-          # Check if coverage report changed
-          if git diff --quiet .github/coverage-reports/coverage-report.md .github/coverage-reports/coverage-report.json; then
+          # Check if coverage report files exist and have changed
+          FILES_TO_COMMIT=""
+          if [ -f .github/coverage-reports/coverage-report.md ]; then
+            FILES_TO_COMMIT="$FILES_TO_COMMIT .github/coverage-reports/coverage-report.md"
+          fi
+          if [ -f .github/coverage-reports/coverage-report.json ]; then
+            FILES_TO_COMMIT="$FILES_TO_COMMIT .github/coverage-reports/coverage-report.json"
+          fi
+          
+          if [ -z "$FILES_TO_COMMIT" ]; then
+            echo "No coverage report files found to commit"
+          elif git diff --quiet HEAD -- $FILES_TO_COMMIT 2>/dev/null; then
             echo "Coverage report unchanged"
           else
-            git add .github/coverage-reports/coverage-report.md
-            git add .github/coverage-reports/coverage-report.json
+            git add $FILES_TO_COMMIT
             git commit -m "chore: update API coverage report [skip ci]"
             git push
             echo "[OK] Committed updated coverage report" >> $GITHUB_STEP_SUMMARY
