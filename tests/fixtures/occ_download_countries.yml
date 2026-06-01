@@ -1,0 +1,13 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/download/0003983-140910143529206/countries?limit=20&offset=0
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '{"offset":0,"limit":20,"endOfRecords":false,"count":15,"results":[{"downloadKey":"0003983-140910143529206","countryCode":"US","numberRecords":12345},{"downloadKey":"0003983-140910143529206","countryCode":"GB","numberRecords":4321},{"downloadKey":"0003983-140910143529206","countryCode":"DE","numberRecords":3210},{"downloadKey":"0003983-140910143529206","countryCode":"FI","numberRecords":2109},{"downloadKey":"0003983-140910143529206","countryCode":"SE","numberRecords":1987},{"downloadKey":"0003983-140910143529206","countryCode":"AU","numberRecords":1765},{"downloadKey":"0003983-140910143529206","countryCode":"BE","numberRecords":1543},{"downloadKey":"0003983-140910143529206","countryCode":"PL","numberRecords":1321},{"downloadKey":"0003983-140910143529206","countryCode":"NO","numberRecords":1109},{"downloadKey":"0003983-140910143529206","countryCode":"DK","numberRecords":987},{"downloadKey":"0003983-140910143529206","countryCode":"NL","numberRecords":876},{"downloadKey":"0003983-140910143529206","countryCode":"FR","numberRecords":765},{"downloadKey":"0003983-140910143529206","countryCode":"CA","numberRecords":654},{"downloadKey":"0003983-140910143529206","countryCode":"ZZ","numberRecords":543},{"downloadKey":"0003983-140910143529206","countryCode":"CH","numberRecords":432}]}'
+  recorded_at: 2025-09-04 08:30:30
+recorded_with: VCR-vcr/2.0.0

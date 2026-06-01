@@ -146,15 +146,15 @@ country given as a ISO 639-1 (2 letter) country code.}
 
 \item{doi}{DOI of the dataset.}
 
-\item{category}{Filters datasets by their dataset category tag. For example
-"eDNA", "CitizenScience", "Tracking".}
-
 \item{installationKey}{Filters datasets by their installation UUID key.}
 
 \item{endpointType}{Filters datasets by their endpoint type.
 Available values : EML, FEED, WFS, WMS, TCS_RDF, TCS_XML, DWC_ARCHIVE, DIGIR,
 DIGIR_MANIS, TAPIR, BIOCASE, BIOCASE_XML_ARCHIVE, OAI_PMH, COLDP,
 CAMTRAP_DP, BIOM_1_0, BIOM_2_1, ACEF, TEXT_TREE, OTHER}
+
+\item{category}{Filters datasets by their dataset category tag. For example
+"eDNA", "CitizenScience", "Tracking".}
 
 \item{continent}{Filters datasets by the continent of their spatial coverage.
 Available values: "AFRICA", "ANTARCTICA", "ASIA", "EUROPE",
@@ -247,6 +247,13 @@ dataset_search(hostingCountry = "NO;SE")
 dataset_search(doi="10.15468/aomfnb;10.15468/igasai")
 dataset_search(installationKey = "d209e552-7e6e-4840-b13c-c0596ef36e55")
 dataset_search(category = "eDNA")
+dataset_search(continent = "EUROPE", limit = 5)
+dataset_search(taxonKey = 212, limit = 5)
+dataset_search(recordCount = "10000,100000", limit = 5)
+dataset_search(modifiedDate = "2020-01-01,2021-01-01", limit = 5)
+dataset_search(createdDate = "2015-01-01,2016-01-01", limit = 5)
+dataset_search(contactUserId = 123, limit = 5)
+dataset_search(contactEmail = "example@gbif.org", limit = 5)
 
 # multiple filters
 dataset_search(license = "CC0_1_0",subtype = "TAXONOMIC_AUTHORITY")
@@ -260,14 +267,6 @@ dataset_export(projectId="GRIIS")
 dataset_search(facet="type",limit=0,facetLimit=5)$facets 
 dataset_search(facet="publishingCountry",limit=0,facetLimit=5)$facets
 dataset_search(facet="license",limit=0,facetLimit=5, facetMincount=10000)
-
-dataset_search(continent = "EUROPE", limit = 5)
-dataset_search(taxonKey = 212, limit = 5)
-dataset_search(recordCount = "10000,100000", limit = 5)
-dataset_search(modifiedDate = "2020-01-01,2021-01-01", limit = 5)
-dataset_search(createdDate = "2015-01-01,2016-01-01", limit = 5)
-dataset_search(contactUserId = 123, limit = 5)
-dataset_search(contactEmail = "example@gbif.org", limit = 5)
 
 }
 }

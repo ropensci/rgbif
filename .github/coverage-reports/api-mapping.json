@@ -690,6 +690,19 @@
       ]
     },
     {
+      "function_name": "occ_download_countries",
+      "endpoint": "/occurrence/download/{key}/countries",
+      "method": "GET",
+      "api": "occurrence",
+      "parameters": [
+        "key",
+        "sortBy",
+        "sortOrder",
+        "limit",
+        "start"
+      ]
+    },
+    {
       "function_name": "occ_download_dataset_activity",
       "endpoint": "/occurrence/download/dataset/{datasetKey}",
       "method": "GET",
