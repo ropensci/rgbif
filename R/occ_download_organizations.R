@@ -13,8 +13,6 @@
 #' @param curlopts list of named curl options passed on to
 #' \code{\link[crul]{HttpClient}}. see \code{curl::curl_options}
 #' for curl options
-#' @note see [downloads] for an overview of GBIF downloads methods
-#' @family downloads
 #' @return a list with two slots:
 #' 
 #' - meta: a single row data.frame with columns: `offset`, `limit`,
