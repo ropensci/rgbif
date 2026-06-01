@@ -696,6 +696,8 @@
       "api": "occurrence",
       "parameters": [
         "key",
+        "sortBy",
+        "sortOrder",
         "limit",
         "start"
       ]

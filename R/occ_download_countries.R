@@ -3,6 +3,9 @@
 #' @export
 #'
 #' @param key A key generated from a request, like that from [occ_download()]
+#' @param sortBy (character) Sort field. One of `COUNTRY_CODE` or
+#' `RECORD_COUNT`. Optional.
+#' @param sortOrder (character) Sort order. One of `ASC` or `DESC`. Optional.
 #' @template occ
 #' @template downloadlimstart
 #' @note see [downloads] for an overview of GBIF downloads methods
@@ -18,17 +21,22 @@
 #' occ_download_countries(key="0003983-140910143529206")
 #' occ_download_countries(key="0003983-140910143529206", limit = 3)
 #' occ_download_countries(key="0003983-140910143529206", limit = 3, start = 10)
+#' occ_download_countries(key="0003983-140910143529206", sortBy = "RECORD_COUNT",
+#'   sortOrder = "DESC")
 #' }
-occ_download_countries <- function(key, limit = 20, start = 0,
-  curlopts = list(http_version = 2)) {
+occ_download_countries <- function(key, sortBy = NULL, sortOrder = NULL,
+  limit = 20, start = 0, curlopts = list(http_version = 2)) {
 
   assert(key, "character")
+  assert(sortBy, "character")
+  assert(sortOrder, "character")
   assert(limit, c("integer", "numeric"))
   assert(start, c("integer", "numeric"))
   stopifnot(!is.null(key))
   url <- sprintf('%s/occurrence/download/%s/countries', gbif_base(), key)
   cli <- crul::HttpClient$new(url = url, headers = rgbif_ual, opts = curlopts)
-  args <- rgbif_compact(list(limit = limit, offset = start))
+  args <- rgbif_compact(list(sortBy = sortBy, sortOrder = sortOrder,
+                             limit = limit, offset = start))
   tmp <- cli$get(query = args)
   if (tmp$status_code > 203) {
   	if (length(tmp$content) == 0) tmp$raise_for_status()

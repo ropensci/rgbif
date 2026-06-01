@@ -2,7 +2,6 @@ context("occ_download_countries")
 
 test_that("occ_download_countries", {
   skip_on_cran()
-  skip_on_ci()
 
   vcr::use_cassette("occ_download_countries", {
     tt <- occ_download_countries("0003983-140910143529206")
@@ -32,8 +31,12 @@ test_that("occ_download_countries fails well", {
   # type checking
   expect_error(occ_download_countries(5),
     "key must be of class character")
-  expect_error(occ_download_countries("x", "x"),
+  expect_error(occ_download_countries("x", sortBy = 1),
+    "sortBy must be of class character")
+  expect_error(occ_download_countries("x", sortOrder = 1),
+    "sortOrder must be of class character")
+  expect_error(occ_download_countries("x", limit = "x"),
     "limit must be of class integer, numeric")
-  expect_error(occ_download_countries("x", 5, "x"),
+  expect_error(occ_download_countries("x", start = "x"),
     "start must be of class integer, numeric")
 })
