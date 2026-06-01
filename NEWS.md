@@ -14,6 +14,7 @@ New functions for accessing GBIF occurrence download statistics (#837) (#823):
 
 `occ_download()` now supports downloading multiple taxonomy downloads. (#830) (#832)
 `occ_download()` now supports downloading verbatim extension data. (#829) (#831)
+Added `occ_download_organizations()` for `GET /occurrence/download/{key}/organizations`. (#874)
 
 ### BUG FIXES
 

@@ -1,0 +1,13 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/download/0024953-260519110011954/organizations?limit=20&offset=0
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '{"offset":0,"limit":20,"endOfRecords":true,"count":1,"results":[{"downloadKey":"0024953-260519110011954","organizationKey":"d9699a79-4736-45c2-925c-f4033ac67d52","organizationTitle":"University of Alaska Museum of the North","numberRecords":426582,"publishingCountryCode":"US"}]}'
+  recorded_at: 2026-06-01 09:53:50
+recorded_with: VCR-vcr/2.0.0

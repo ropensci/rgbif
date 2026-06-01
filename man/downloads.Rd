@@ -60,6 +60,7 @@ or \code{PREPARING}
 \item \code{\link[=occ_download_import]{occ_download_import()}} - Import a download from local file system
 \item \code{\link[=occ_download_datasets]{occ_download_datasets()}} - List datasets for a download
 \item \code{\link[=occ_download_countries]{occ_download_countries()}} - List countries for a download
+\item \code{\link[=occ_download_organizations]{occ_download_organizations()}} - List organizations for a download
 \item \code{\link[=occ_download_dataset_activity]{occ_download_dataset_activity()}} - Lists the downloads activity
 of a dataset
 }
@@ -91,4 +92,3 @@ phase
 see https://www.gbif.org/faq?question=for-how-long-will-does-gbif-store-downloads
 }
 }
-
