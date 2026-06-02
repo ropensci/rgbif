@@ -53,7 +53,7 @@ test_that("institution search works as expected", {
   
   })
 
-test_that("institution_search validates new filter parameter types", {
+test_that("institution_search validates discipline, contactEmail, contactUserId parameter types", {
   expect_error(institution_search(discipline = 1), "discipline must be of class")
   expect_error(institution_search(contactUserId = "1"), "contactUserId must be of class")
   expect_error(institution_search(contactEmail = 1), "contactEmail must be of class")
