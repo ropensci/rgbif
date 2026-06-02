@@ -53,6 +53,12 @@ test_that("institution search works as expected", {
   
   })
 
+test_that("institution_search validates new filter parameter types", {
+  expect_error(institution_search(discipline = 1), "discipline must be of class")
+  expect_error(institution_search(contactUserId = "1"), "contactUserId must be of class")
+  expect_error(institution_search(contactEmail = 1), "contactEmail must be of class")
+})
+
 test_that("institution_export works as expected", {
   skip_on_cran()
   skip_on_ci()

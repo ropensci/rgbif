@@ -15,6 +15,8 @@
 #' @param disciplines (character) Discipline of a GrSciColl institution. 
 #' Check available values : 
 #' https://techdocs.gbif.org/en/openapi/v1/registry#/Institutions/listInstitutions
+#' @param discipline (character) Discipline of a GrSciColl institution.
+#' Optional parameter for filtering results.
 #' @param name (character) Name of a GrSciColl institution or collection
 #' @param fuzzyName (character) It searches by name fuzzily so the parameter 
 #' doesn't have to be the exact name.
@@ -31,6 +33,10 @@
 #' @param alternativeCode (character) Alternative code of a GrSciColl institution.
 #' @param contact (character) Filters collections and institutions whose 
 #' contacts contain the person key specified.
+#' @param contactUserId (numeric) Filters institutions by the user ID of a
+#' contact. Optional parameter for filtering results.
+#' @param contactEmail (character) Filters institutions by the email of a
+#' contact. Optional parameter for filtering results.
 #' @param institutionKey (character) Keys of institutions to filter by.
 #' @param country (character) Filters by country given as a ISO 639-1 (2 letter) 
 #' country code.
@@ -91,6 +97,7 @@ institution_search <- function(
     type = NULL,
     institutionalGovernance = NULL,
     disciplines = NULL,
+    discipline = NULL,
     name = NULL,
     fuzzyName = NULL,
     numberSpecimens = NULL,
@@ -101,6 +108,8 @@ institution_search <- function(
     code = NULL,
     alternativeCode = NULL,
     contact = NULL,
+    contactUserId = NULL,
+    contactEmail = NULL,
     institutionKey = NULL,
     country = NULL,
     city = NULL,
@@ -125,6 +134,7 @@ institution_search <- function(
     assert(type, "character")
     assert(institutionalGovernance, "character")
     assert(disciplines, "character")
+    assert(discipline, "character")
     assert(name, "character")
     assert(fuzzyName, "character")
     assert(source, "character")
@@ -132,6 +142,8 @@ institution_search <- function(
     assert(code, "character")
     assert(alternativeCode, "character")
     assert(contact, "character")
+    assert(contactUserId, "numeric")
+    assert(contactEmail, "character")
     assert(institutionKey, "character")
     assert(country, "character")
     assert(city, "character")
@@ -162,6 +174,7 @@ institution_search <- function(
         numberSpecimens = numberSpecimens,
         occurrenceCount = occurrenceCount,
         typeSpecimenCount = typeSpecimenCount,
+        contactEmail = contactEmail,
         active = active,
         displayOnNHCPortal = displayOnNHCPortal,
         replacedBy = replacedBy,
@@ -177,6 +190,7 @@ institution_search <- function(
         convmany(type),
         convmany(institutionalGovernance),
         convmany(disciplines),
+        convmany(discipline),
         convmany(name),
         convmany(fuzzyName),
         convmany(sourceId),
@@ -184,6 +198,7 @@ institution_search <- function(
         convmany(code),
         convmany(alternativeCode),
         convmany(contact),
+        convmany(contactUserId),
         convmany(institutionKey),
         convmany(country),
         convmany(city),
@@ -325,5 +340,4 @@ institution_export <- function(
     colnames(out) <- to_camel(colnames(out))
     out 
 }
-
 
