@@ -77,7 +77,6 @@ test_that("institution_search validates discipline, contactEmail, contactUserId 
 
 test_that("institution_export works as expected", {
   skip_on_cran()
-  skip_on_ci()
   
   q <- institution_export(query = "Kansas")
   s <- institution_export(numberSpecimens = "1000,*")
