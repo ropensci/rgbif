@@ -93,9 +93,9 @@ jobs:
         if: always()
         id: read_summary
         run: |
-          if [ -f .github/coverage-reports/coverage-report-latest.json ]; then
-            COVERAGE=$(cat .github/coverage-reports/coverage-report-latest.json | grep -o '"coverage_percentage":[0-9.]*' | cut -d':' -f2)
-            MISSING=$(cat .github/coverage-reports/coverage-report-latest.json | grep -o '"missing_endpoints":[0-9]*' | cut -d':' -f2)
+          if [ -f .github/coverage-reports/coverage-report.json ]; then
+            COVERAGE=$(cat .github/coverage-reports/coverage-report.json | grep -o '"coverage_percentage":[0-9.]*' | cut -d':' -f2)
+            MISSING=$(cat .github/coverage-reports/coverage-report.json | grep -o '"missing_endpoints":[0-9]*' | cut -d':' -f2)
             echo "coverage=$COVERAGE" >> $GITHUB_OUTPUT
             echo "missing=$MISSING" >> $GITHUB_OUTPUT
             echo "### API Coverage: ${COVERAGE}%" >> $GITHUB_STEP_SUMMARY
@@ -107,7 +107,7 @@ jobs:
       - name: Comment coverage summary
         if: github.event_name == 'push' && always()
         run: |
-          if [ -f .github/coverage-reports/coverage-report-latest.md ]; then
+          if [ -f .github/coverage-reports/coverage-report.md ]; then
             echo "Coverage report generated successfully"
             # Optionally: post as PR comment or issue comment
             # This would require additional setup with GitHub token
@@ -117,8 +117,8 @@ jobs:
         if: always()
         run: |
           THRESHOLD=50
-          if [ -f .github/coverage-reports/coverage-report-latest.json ]; then
-            COVERAGE=$(cat .github/coverage-reports/coverage-report-latest.json | grep -o '"coverage_percentage":[0-9.]*' | cut -d':' -f2 | awk '{print int($1)}')
+          if [ -f .github/coverage-reports/coverage-report.json ]; then
+            COVERAGE=$(cat .github/coverage-reports/coverage-report.json | grep -o '"coverage_percentage":[0-9.]*' | cut -d':' -f2 | awk '{print int($1)}')
             echo "Current coverage: ${COVERAGE}%"
             echo "Threshold: ${THRESHOLD}%"
             if [ "$COVERAGE" -lt "$THRESHOLD" ]; then
@@ -136,12 +136,21 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           
-          # Check if coverage report changed
-          if git diff --quiet .github/coverage-reports/coverage-report.md .github/coverage-reports/coverage-report.json; then
+          # Check if coverage report files exist and have changed
+          FILES_TO_COMMIT=""
+          if [ -f .github/coverage-reports/coverage-report.md ]; then
+            FILES_TO_COMMIT="$FILES_TO_COMMIT .github/coverage-reports/coverage-report.md"
+          fi
+          if [ -f .github/coverage-reports/coverage-report.json ]; then
+            FILES_TO_COMMIT="$FILES_TO_COMMIT .github/coverage-reports/coverage-report.json"
+          fi
+          
+          if [ -z "$FILES_TO_COMMIT" ]; then
+            echo "No coverage report files found to commit"
+          elif git diff --quiet HEAD -- $FILES_TO_COMMIT 2>/dev/null; then
             echo "Coverage report unchanged"
           else
-            git add .github/coverage-reports/coverage-report.md
-            git add .github/coverage-reports/coverage-report.json
+            git add $FILES_TO_COMMIT
             git commit -m "chore: update API coverage report [skip ci]"
             git push
             echo "[OK] Committed updated coverage report" >> $GITHUB_STEP_SUMMARY
@@ -359,56 +368,188 @@ jobs:
             if [ "$TYPE" = "endpoint" ]; then
               ENDPOINT=$(cat "$ACTIONS_FILE" | jq -r ".issues[$i].endpoint")
               API=$(cat "$ACTIONS_FILE" | jq -r ".issues[$i].api")
+              METHOD=$(echo "$ENDPOINT" | awk '{print $1}')
+              PATH=$(echo "$ENDPOINT" | awk '{$1=""; print $0}' | sed 's/^ //')
+              
+              # Fetch endpoint details from the mapping file if available
+              ENDPOINT_SCHEMA=$(cat .github/coverage-reports/api-mapping.json | jq -r --arg api "$API" --arg endpoint "$ENDPOINT" \
+                '.api_definitions[$api].endpoints[$endpoint] // "Not available"')
               
               printf -v BODY '%s\n' \
-                "## Missing Endpoint" \
+                "## Missing Endpoint Implementation" \
                 "" \
                 "**Endpoint:** \`$ENDPOINT\`" \
                 "**API:** \`$API\`" \
+                "**Method:** \`$METHOD\`" \
+                "**Path:** \`$PATH\`" \
                 "" \
                 "This endpoint was identified as missing in the API coverage report." \
                 "" \
-                "### Implementation Steps" \
-                "1. Review the GBIF API documentation for this endpoint" \
-                "2. Create corresponding R function in rgbif" \
-                "3. Add tests for the new function" \
-                "4. Update api-mapping.json with the new mapping" \
-                "5. Update documentation" \
+                "### API Endpoint Details" \
+                "\`\`\`" \
+                "$ENDPOINT_SCHEMA" \
+                "\`\`\`" \
+                "" \
+                "### Implementation Checklist" \
+                "- [ ] Review the GBIF API documentation for this endpoint" \
+                "- [ ] **Bump dev version** in DESCRIPTION file (e.g., 3.7.9.91 → 3.7.9.92)" \
+                "- [ ] Create corresponding R function following rgbif conventions:" \
+                "  - Use snake_case for function name" \
+                "  - Include \`curlopts = list(http_version = 2)\` parameter" \
+                "  - Add proper parameter validation with \`assert()\`" \
+                "  - Use helper functions from zzz.R (e.g., \`rgbif_compact()\`, \`gbif_GET()\`)" \
+                "  - Format arguments with each on its own line" \
+                "- [ ] Add complete roxygen2 documentation:" \
+                "  - \`@export\` tag" \
+                "  - \`@param\` for each parameter" \
+                "  - \`@return\` describing return value" \
+                "  - \`@examples\` with runnable code" \
+                "  - \`@family\` tag for function grouping" \
+                "- [ ] Add comprehensive tests in tests/testthat/" \
+                "- [ ] Update .github/coverage-reports/api-mapping.json with new mapping" \
+                "- [ ] Add entry to NEWS.md under \"NEW FEATURES\"" \
+                "- [ ] **Reference this issue number (#ISSUE_NUMBER) in your PR title or description**" \
+                "" \
+                "### Code Template" \
+                "\`\`\`r" \
+                "# Example structure (adjust as needed)" \
+                "function_name <- function(param1 = NULL," \
+                "  param2 = NULL," \
+                "  curlopts = list(http_version = 2)) {" \
+                "  " \
+                "  # Validate parameters" \
+                "  assert(param1, \"character\")" \
+                "  " \
+                "  # Build URL" \
+                "  url <- paste0(gbif_base(), '$PATH')" \
+                "  " \
+                "  # Compact arguments" \
+                "  args <- rgbif_compact(list(" \
+                "    param1 = param1," \
+                "    param2 = param2" \
+                "  ))" \
+                "  " \
+                "  # Make request" \
+                "  tt <- gbif_GET(url, args, TRUE, curlopts)" \
+                "  " \
+                "  # Return structured data" \
+                "  return(tt)" \
+                "}" \
+                "\`\`\`" \
                 "" \
                 "### Resources" \
                 "- [GBIF API Docs](https://techdocs.gbif.org/)" \
                 "- [Coverage Report](.github/coverage-reports/coverage-report.md)" \
+                "- [OpenAPI Spec](https://techdocs.gbif.org/openapi/$API.json)" \
+                "- [Copilot Instructions](.github/copilot-instructions.md)" \
+                "" \
+                "### Important Reminders for Copilot" \
+                "⚠️ **Always bump the dev version in DESCRIPTION before implementing**" \
+                "⚠️ **Reference this issue (#ISSUE_NUMBER) in your PR**" \
+                "⚠️ **Follow the code style in copilot-instructions.md**" \
                 "" \
                 "---" \
                 "*This issue was automatically created by the API Coverage workflow*"
             else
               FUNCTION=$(cat "$ACTIONS_FILE" | jq -r ".issues[$i].function_name")
               ENDPOINT=$(cat "$ACTIONS_FILE" | jq -r ".issues[$i].endpoint")
-              # Get parameters array and format as markdown list
-              PARAMS=$(cat "$ACTIONS_FILE" | jq -r ".issues[$i].parameters[]" | sed 's/^/- `/' | sed 's/$/`/')
+              API=$(cat "$ACTIONS_FILE" | jq -r ".issues[$i].api // \"unknown\"")
+              
+              # Get parameters array with details
+              PARAMS_LIST=$(cat "$ACTIONS_FILE" | jq -r ".issues[$i].parameters[]")
+              PARAMS_MD=$(echo "$PARAMS_LIST" | sed 's/^/- `/' | sed 's/$/`/')
+              
+              # Try to fetch parameter schema details from OpenAPI
+              PARAM_DETAILS=""
+              for param in $PARAMS_LIST; do
+                PARAM_INFO=$(cat .github/coverage-reports/api-mapping.json | jq -r \
+                  --arg api "$API" --arg endpoint "$ENDPOINT" --arg param "$param" \
+                  '.api_definitions[$api].endpoints[$endpoint].parameters[$param] // "No schema available"' 2>/dev/null || echo "")
+                if [ -n "$PARAM_INFO" ] && [ "$PARAM_INFO" != "No schema available" ]; then
+                  PARAM_DETAILS="${PARAM_DETAILS}\n**$param**: $PARAM_INFO"
+                fi
+              done
               
               printf -v BODY '%s\n' \
-                "## Missing Parameters" \
+                "## Missing Parameters Implementation" \
                 "" \
                 "**Function:** \`$FUNCTION\`" \
                 "**Endpoint:** \`$ENDPOINT\`" \
+                "**API:** \`$API\`" \
                 "" \
-                "The following parameters were identified as missing in the API coverage report:" \
+                "The following parameters were identified as missing from the rgbif function:" \
                 "" \
-                "$PARAMS" \
+                "$PARAMS_MD" \
                 "" \
-                "### Implementation Steps" \
-                "1. Review the GBIF API documentation for these parameters" \
-                "2. Add parameters to the R function signature" \
-                "3. Update internal API call to include the parameters" \
-                "4. Add parameter documentation to roxygen comments" \
-                "5. Update api-mapping.json with the parameters" \
-                "6. Add tests for the new parameters" \
+                "### Parameter Details" \
+                "$(echo -e \"$PARAM_DETAILS\")" \
+                "" \
+                "### Implementation Checklist" \
+                "- [ ] Review the GBIF API documentation for these parameters" \
+                "- [ ] **Bump dev version** in DESCRIPTION file (e.g., 3.7.9.91 → 3.7.9.92)" \
+                "- [ ] Add parameters to the function signature:" \
+                "  - Use camelCase for parameter names (e.g., \`publishingCountry\`, \`datasetKey\`)" \
+                "  - Set default to \`NULL\` for optional parameters" \
+                "  - Format with each parameter on its own line" \
+                "- [ ] Add parameter validation with \`assert()\` if needed" \
+                "- [ ] Update the API call to include new parameters in \`rgbif_compact()\` list" \
+                "- [ ] Add complete roxygen2 \`@param\` documentation for each parameter:" \
+                "  - Include parameter type" \
+                "  - Describe what the parameter does" \
+                "  - Mention if it's optional or required" \
+                "  - Note any valid values or constraints" \
+                "- [ ] Update .github/coverage-reports/api-mapping.json with parameter mappings" \
+                "- [ ] Add/update tests to cover the new parameters" \
+                "- [ ] Add entry to NEWS.md under \"MINOR IMPROVEMENTS\"" \
+                "- [ ] **Reference this issue number (#ISSUE_NUMBER) in your PR title or description**" \
+                "" \
+                "### Example Parameter Addition" \
+                "\`\`\`r" \
+                "# Before" \
+                "$FUNCTION <- function(param1 = NULL," \
+                "  curlopts = list(http_version = 2)) {" \
+                "  ..." \
+                "}" \
+                "" \
+                "# After - add new parameters" \
+                "$FUNCTION <- function(param1 = NULL," \
+                "  newParam1 = NULL,  # Add new parameters here" \
+                "  newParam2 = NULL," \
+                "  curlopts = list(http_version = 2)) {" \
+                "  " \
+                "  # Add validation if needed" \
+                "  assert(newParam1, \"character\")" \
+                "  " \
+                "  # Add to args list" \
+                "  args <- rgbif_compact(list(" \
+                "    param1 = param1," \
+                "    newParam1 = newParam1,  # Include in API call" \
+                "    newParam2 = newParam2" \
+                "  ))" \
+                "  ..." \
+                "}" \
+                "\`\`\`" \
+                "" \
+                "### Roxygen2 Documentation Example" \
+                "\`\`\`r" \
+                "#' @param newParam1 (character) Description of what this parameter does." \
+                "#'   Optional parameter for filtering results." \
+                "#' @param newParam2 (integer) Description of this parameter. Must be" \
+                "#'   between 1 and 100." \
+                "\`\`\`" \
                 "" \
                 "### Resources" \
                 "- [GBIF API Docs](https://techdocs.gbif.org/)" \
                 "- [Coverage Report](.github/coverage-reports/coverage-report.md)" \
-                "- [Function Documentation](https://docs.ropensci.org/rgbif/reference/)" \
+                "- [OpenAPI Spec](https://techdocs.gbif.org/openapi/$API.json)" \
+                "- [Function Documentation](https://docs.ropensci.org/rgbif/reference/$FUNCTION.html)" \
+                "- [Copilot Instructions](.github/copilot-instructions.md)" \
+                "" \
+                "### Important Reminders for Copilot" \
+                "⚠️ **Always bump the dev version in DESCRIPTION before implementing**" \
+                "⚠️ **Reference this issue (#ISSUE_NUMBER) in your PR**" \
+                "⚠️ **Follow the code style in copilot-instructions.md**" \
+                "⚠️ **Use camelCase for parameter names, not snake_case**" \
                 "" \
                 "---" \
                 "*This issue was automatically created by the API Coverage workflow*"
@@ -435,8 +576,13 @@ jobs:
               if [ -n "$ISSUE_URL" ]; then
                 ISSUE_NUMBER="${ISSUE_URL##*/}"
                 echo "[OK] Created issue #$ISSUE_NUMBER: $TITLE"
+                
+                # Update the issue body to replace placeholder with actual issue number
+                UPDATED_BODY=$(echo "$BODY" | sed "s/#ISSUE_NUMBER/#$ISSUE_NUMBER/g")
+                gh issue edit "$ISSUE_NUMBER" --body "$UPDATED_BODY" 2>/dev/null || echo "[WARNING] Could not update issue #$ISSUE_NUMBER with actual issue number"
+                
+                echo "- Created issue #$ISSUE_NUMBER: $TITLE" >> $GITHUB_STEP_SUMMARY
               fi
-              echo "- Created issue #$ISSUE_NUMBER: $TITLE" >> $GITHUB_STEP_SUMMARY
             fi
           done
         env:
