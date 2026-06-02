@@ -4372,33 +4372,33 @@
       "modified": "Modification date filter - not implemented"
     },
     "network": {
-      "key": "Covered by parameter name mapping (key\u2192uuid)",
+      "key": "Covered by parameter name mapping (key→uuid)",
       "owner": "Not implemented"
     },
     "networks": {
-      "q": "Covered by parameter name mapping (q\u2192query)"
+      "q": "Covered by parameter name mapping (q→query)"
     },
     "nodes": {
-      "key": "Covered by parameter name mapping (key\u2192uuid)",
-      "q": "Covered by parameter name mapping (q\u2192query)"
+      "key": "Covered by parameter name mapping (key→uuid)",
+      "q": "Covered by parameter name mapping (q→query)"
     },
     "installations": {
-      "key": "Covered by parameter name mapping (key\u2192uuid)",
-      "q": "Covered by parameter name mapping (q\u2192query)"
+      "key": "Covered by parameter name mapping (key→uuid)",
+      "q": "Covered by parameter name mapping (q→query)"
     },
     "installation_search": {
       "created": "Not implemented",
-      "q": "Covered by parameter name mapping (q\u2192query)"
+      "q": "Covered by parameter name mapping (q→query)"
     },
     "organizations": {
-      "key": "Covered by parameter name mapping (key\u2192uuid)",
-      "q": "Covered by parameter name mapping (q\u2192query)"
+      "key": "Covered by parameter name mapping (key→uuid)",
+      "q": "Covered by parameter name mapping (q→query)"
     },
     "gbif_oai_identify": {
       "params": "OAI-PMH protocol parameter - handled internally by function logic"
     },
     "name_lookup": {
-      "q": "Covered by parameter name mapping (q\u2192query)"
+      "q": "Covered by parameter name mapping (q→query)"
     },
     "name_usage": {
       "usageKey": "Covered by 'key' parameter in R function",
