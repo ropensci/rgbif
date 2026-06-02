@@ -603,18 +603,27 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           
-          # Check if there are changes
-          if git diff --quiet .github/coverage-reports/api-mapping.json .github/coverage-reports/coverage-report.md; then
+          # Build list of files to check and commit
+          FILES_TO_CHECK=""
+          if [ -f .github/coverage-reports/api-mapping.json ]; then
+            FILES_TO_CHECK="$FILES_TO_CHECK .github/coverage-reports/api-mapping.json"
+          fi
+          if [ -f .github/coverage-reports/coverage-report.md ]; then
+            FILES_TO_CHECK="$FILES_TO_CHECK .github/coverage-reports/coverage-report.md"
+          fi
+          if [ -f .github/coverage-reports/actions-to-take.json ]; then
+            FILES_TO_CHECK="$FILES_TO_CHECK .github/coverage-reports/actions-to-take.json"
+          fi
+          
+          if [ -z "$FILES_TO_CHECK" ]; then
+            echo "No files to check for changes"
+            echo "No files to check for changes" >> $GITHUB_STEP_SUMMARY
+          elif git diff --quiet HEAD -- $FILES_TO_CHECK 2>/dev/null; then
             echo "No changes to commit"
             echo "No changes to commit" >> $GITHUB_STEP_SUMMARY
           else
-            git add .github/coverage-reports/api-mapping.json
-            git add .github/coverage-reports/coverage-report.md
-            
-            # Add actions file if it exists
-            if [ -f .github/coverage-reports/actions-to-take.json ]; then
-              git add .github/coverage-reports/actions-to-take.json
-            fi
+            # Add all files that exist and have changes
+            git add $FILES_TO_CHECK
             
             git commit -m "chore: process API coverage actions" \
               -m "" \
