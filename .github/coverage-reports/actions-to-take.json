@@ -2,10 +2,10 @@
   "issues": [
     {
       "type": "parameter",
-      "title": "API Coverage: Implement parameters for institution_search",
-      "function_name": "institution_search",
-      "endpoint": "GET /grscicoll/institution",
-      "parameters": ["discipline", "contactUserId", "contactEmail"],
+      "title": "API Coverage: Implement parameters for collection_search",
+      "function_name": "collection_search",
+      "endpoint": "GET /grscicoll/collection",
+      "parameters": ["institution", "occurrenceCount", "typeSpecimenCount", "contactUserId", "contactEmail"],
       "labels": ["enhancement", "api-coverage", "parameter"]
     }
   ]
