@@ -391,24 +391,24 @@ jobs:
                 "\`\`\`" \
                 "" \
                 "### Implementation Checklist" \
-                "- [ ] Review the GBIF API documentation for this endpoint" \
-                "- [ ] **Bump dev version** in DESCRIPTION file (e.g., 3.7.9.91 → 3.7.9.92)" \
-                "- [ ] Create corresponding R function following rgbif conventions:" \
+                "- Review the GBIF API documentation for this endpoint" \
+                "- **Bump dev version** in DESCRIPTION file (e.g., 3.7.9.91 → 3.7.9.92)" \
+                "- Create corresponding R function following rgbif conventions:" \
                 "  - Use snake_case for function name" \
                 "  - Include \`curlopts = list(http_version = 2)\` parameter" \
                 "  - Add proper parameter validation with \`assert()\`" \
                 "  - Use helper functions from zzz.R (e.g., \`rgbif_compact()\`, \`gbif_GET()\`)" \
                 "  - Format arguments with each on its own line" \
-                "- [ ] Add complete roxygen2 documentation:" \
+                "- Add complete roxygen2 documentation:" \
                 "  - \`@export\` tag" \
                 "  - \`@param\` for each parameter" \
                 "  - \`@return\` describing return value" \
                 "  - \`@examples\` with runnable code" \
                 "  - \`@family\` tag for function grouping" \
-                "- [ ] Add comprehensive tests in tests/testthat/" \
-                "- [ ] Update .github/coverage-reports/api-mapping.json with new mapping" \
-                "- [ ] Add entry to NEWS.md under \"NEW FEATURES\"" \
-                "- [ ] **Reference this issue number (#ISSUE_NUMBER) in your PR title or description**" \
+                "- Add comprehensive tests in tests/testthat/" \
+                "- Update .github/coverage-reports/api-mapping.json with new mapping" \
+                "- **Reference this issue number (#ISSUE_NUMBER) in your PR title or description**" \
+                "- **Do NOT update NEWS.md** - maintainers will handle this" \
                 "" \
                 "### Code Template" \
                 "\`\`\`r" \
@@ -438,9 +438,14 @@ jobs:
                 "\`\`\`" \
                 "" \
                 "### Resources" \
-                "- [GBIF API Docs](https://techdocs.gbif.org/)" \
-                "- [Coverage Report](.github/coverage-reports/coverage-report.md)" \
-                "- [OpenAPI Spec](https://techdocs.gbif.org/openapi/$API.json)" \
+                "- [GBIF API Docs](https://techdocs.gbif.org/)"
+              
+              # Add OpenAPI spec link only if API is known
+              if [ "$API" != "unknown" ] && [ -n "$API" ]; then
+                printf -v BODY '%s\n%s\n' "$BODY" "- [OpenAPI Spec](https://techdocs.gbif.org/openapi/$API.json)"
+              fi
+              
+              printf -v BODY '%s\n' "$BODY" \
                 "- [Copilot Instructions](.github/copilot-instructions.md)" \
                 "" \
                 "### Important Reminders for Copilot" \
@@ -459,23 +464,47 @@ jobs:
               PARAMS_LIST=$(cat "$ACTIONS_FILE" | jq -r ".issues[$i].parameters[]")
               PARAMS_MD=$(echo "$PARAMS_LIST" | sed 's/^/- `/' | sed 's/$/`/')
               
+              # Build parameter list for code example
+              PARAMS_FOR_EXAMPLE=""
+              PARAMS_FOR_ARGS=""
+              for param in $PARAMS_LIST; do
+                PARAMS_FOR_EXAMPLE="${PARAMS_FOR_EXAMPLE}  $param = NULL,  # Add this parameter\\n"
+                PARAMS_FOR_ARGS="${PARAMS_FOR_ARGS}    $param = $param,\\n"
+              done
+              # Remove trailing comma and newline
+              PARAMS_FOR_EXAMPLE=$(echo -e "$PARAMS_FOR_EXAMPLE" | sed '$ s/,$//')
+              PARAMS_FOR_ARGS=$(echo -e "$PARAMS_FOR_ARGS" | sed '$ s/,$//')
+              
               # Try to fetch parameter schema details from OpenAPI
               PARAM_DETAILS=""
+              HAS_DETAILS=false
               for param in $PARAMS_LIST; do
                 PARAM_INFO=$(cat .github/coverage-reports/api-mapping.json | jq -r \
                   --arg api "$API" --arg endpoint "$ENDPOINT" --arg param "$param" \
-                  '.api_definitions[$api].endpoints[$endpoint].parameters[$param] // "No schema available"' 2>/dev/null || echo "")
-                if [ -n "$PARAM_INFO" ] && [ "$PARAM_INFO" != "No schema available" ]; then
-                  PARAM_DETAILS="${PARAM_DETAILS}\n**$param**: $PARAM_INFO"
+                  '.api_definitions[$api].endpoints[$endpoint].parameters[$param] // empty' 2>/dev/null || echo "")
+                if [ -n "$PARAM_INFO" ]; then
+                  PARAM_DETAILS="${PARAM_DETAILS}\n- **\`$param\`**: $PARAM_INFO"
+                  HAS_DETAILS=true
                 fi
               done
+              
+              # Set default message if no details found
+              if [ "$HAS_DETAILS" = false ]; then
+                PARAM_DETAILS="*Parameter schema details not available in mapping file. Please check the OpenAPI specification linked below for parameter types, descriptions, and constraints.*"
+              fi
               
               printf -v BODY '%s\n' \
                 "## Missing Parameters Implementation" \
                 "" \
                 "**Function:** \`$FUNCTION\`" \
-                "**Endpoint:** \`$ENDPOINT\`" \
-                "**API:** \`$API\`" \
+                "**Endpoint:** \`$ENDPOINT\`"
+              
+              # Only show API if it's not unknown
+              if [ "$API" != "unknown" ] && [ -n "$API" ]; then
+                printf -v BODY '%s\n' "$BODY" "**API:** \`$API\`"
+              fi
+              
+              printf -v BODY '%s\n' "$BODY" \
                 "" \
                 "The following parameters were identified as missing from the rgbif function:" \
                 "" \
@@ -485,46 +514,44 @@ jobs:
                 "$(echo -e \"$PARAM_DETAILS\")" \
                 "" \
                 "### Implementation Checklist" \
-                "- [ ] Review the GBIF API documentation for these parameters" \
-                "- [ ] **Bump dev version** in DESCRIPTION file (e.g., 3.7.9.91 → 3.7.9.92)" \
-                "- [ ] Add parameters to the function signature:" \
+                "- Review the GBIF API documentation for these parameters" \
+                "- **Bump dev version** in DESCRIPTION file (e.g., 3.7.9.91 → 3.7.9.92)" \
+                "- Add parameters to the function signature:" \
                 "  - Use camelCase for parameter names (e.g., \`publishingCountry\`, \`datasetKey\`)" \
                 "  - Set default to \`NULL\` for optional parameters" \
                 "  - Format with each parameter on its own line" \
-                "- [ ] Add parameter validation with \`assert()\` if needed" \
-                "- [ ] Update the API call to include new parameters in \`rgbif_compact()\` list" \
-                "- [ ] Add complete roxygen2 \`@param\` documentation for each parameter:" \
+                "- Add parameter validation with \`assert()\` if needed" \
+                "- Update the API call to include new parameters in \`rgbif_compact()\` list" \
+                "- Add complete roxygen2 \`@param\` documentation for each parameter:" \
                 "  - Include parameter type" \
                 "  - Describe what the parameter does" \
                 "  - Mention if it's optional or required" \
                 "  - Note any valid values or constraints" \
-                "- [ ] Update .github/coverage-reports/api-mapping.json with parameter mappings" \
-                "- [ ] Add/update tests to cover the new parameters" \
-                "- [ ] Add entry to NEWS.md under \"MINOR IMPROVEMENTS\"" \
-                "- [ ] **Reference this issue number (#ISSUE_NUMBER) in your PR title or description**" \
+                "- Update .github/coverage-reports/api-mapping.json with parameter mappings" \
+                "- Add/update tests to cover the new parameters" \
+                "- **Reference this issue number (#ISSUE_NUMBER) in your PR title or description**" \
+                "- **Do NOT update NEWS.md** - maintainers will handle this" \
                 "" \
                 "### Example Parameter Addition" \
                 "\`\`\`r" \
                 "# Before" \
-                "$FUNCTION <- function(param1 = NULL," \
+                "$FUNCTION <- function(existingParam = NULL," \
                 "  curlopts = list(http_version = 2)) {" \
                 "  ..." \
                 "}" \
                 "" \
-                "# After - add new parameters" \
-                "$FUNCTION <- function(param1 = NULL," \
-                "  newParam1 = NULL,  # Add new parameters here" \
-                "  newParam2 = NULL," \
+                "# After - add the missing parameters" \
+                "$FUNCTION <- function(existingParam = NULL," \
+                "$PARAMS_FOR_EXAMPLE" \
                 "  curlopts = list(http_version = 2)) {" \
                 "  " \
                 "  # Add validation if needed" \
-                "  assert(newParam1, \"character\")" \
+                "  # assert(paramName, \"character\")" \
                 "  " \
                 "  # Add to args list" \
                 "  args <- rgbif_compact(list(" \
-                "    param1 = param1," \
-                "    newParam1 = newParam1,  # Include in API call" \
-                "    newParam2 = newParam2" \
+                "    existingParam = existingParam," \
+                "$PARAMS_FOR_ARGS" \
                 "  ))" \
                 "  ..." \
                 "}" \
@@ -532,16 +559,19 @@ jobs:
                 "" \
                 "### Roxygen2 Documentation Example" \
                 "\`\`\`r" \
-                "#' @param newParam1 (character) Description of what this parameter does." \
-                "#'   Optional parameter for filtering results." \
-                "#' @param newParam2 (integer) Description of this parameter. Must be" \
-                "#'   between 1 and 100." \
+                "#' @param paramName (type) Description of what this parameter does." \
+                "#'   Optional/Required parameter for filtering/sorting results." \
                 "\`\`\`" \
                 "" \
                 "### Resources" \
-                "- [GBIF API Docs](https://techdocs.gbif.org/)" \
-                "- [Coverage Report](.github/coverage-reports/coverage-report.md)" \
-                "- [OpenAPI Spec](https://techdocs.gbif.org/openapi/$API.json)" \
+                "- [GBIF API Docs](https://techdocs.gbif.org/)"
+              
+              # Add OpenAPI spec link only if API is known
+              if [ "$API" != "unknown" ] && [ -n "$API" ]; then
+                printf -v BODY '%s\n' "$BODY" "- [OpenAPI Spec](https://techdocs.gbif.org/openapi/$API.json)"
+              fi
+              
+              printf -v BODY '%s\n' "$BODY" \
                 "- [Function Documentation](https://docs.ropensci.org/rgbif/reference/$FUNCTION.html)" \
                 "- [Copilot Instructions](.github/copilot-instructions.md)" \
                 "" \
