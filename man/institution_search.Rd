@@ -10,6 +10,7 @@ institution_search(
   type = NULL,
   institutionalGovernance = NULL,
   disciplines = NULL,
+  discipline = NULL,
   name = NULL,
   fuzzyName = NULL,
   numberSpecimens = NULL,
@@ -20,6 +21,8 @@ institution_search(
   code = NULL,
   alternativeCode = NULL,
   contact = NULL,
+  contactUserId = NULL,
+  contactEmail = NULL,
   institutionKey = NULL,
   country = NULL,
   city = NULL,
@@ -97,6 +100,9 @@ FEDERAL, FOR_PROFIT, LOCAL, NON_PROFIT, OTHER, STATE.}
 Check available values :
 https://techdocs.gbif.org/en/openapi/v1/registry#/Institutions/listInstitutions}
 
+\item{discipline}{(character) Discipline of a GrSciColl institution.
+Optional parameter for filtering results.}
+
 \item{name}{(character) Name of a GrSciColl institution or collection}
 
 \item{fuzzyName}{(character) It searches by name fuzzily so the parameter
@@ -122,6 +128,12 @@ Available values : DATASET, ORGANIZATION, IH_IRN}
 
 \item{contact}{(character) Filters collections and institutions whose
 contacts contain the person key specified.}
+
+\item{contactUserId}{(numeric) Filters institutions by the user ID of a
+contact. Optional parameter for filtering results.}
+
+\item{contactEmail}{(character) Filters institutions by the email of a
+contact. Optional parameter for filtering results.}
 
 \item{institutionKey}{(character) Keys of institutions to filter by.}
 
