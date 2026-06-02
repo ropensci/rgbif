@@ -7,6 +7,9 @@ test_that("institution search works as expected", {
   e <- institution_search(source = "IH_IRN", limit=1)
   c <- institution_search(country = "US;GB", limit=1)
   t <- institution_search(typeSpecimenCount = "10,100",limit=1)
+  d <- institution_search(discipline = "Paleontology", limit = 1)
+  u <- institution_search(contactUserId = 1, limit = 1)
+  m <- institution_search(contactEmail = "info@ynhm.org", limit = 1)
   })
   
   expect_is(q, "list")
@@ -50,6 +53,19 @@ test_that("institution search works as expected", {
   expect_true(nrow(t$data) > 0)
   expect_gte(t$meta$count, 500)
   expect_gte(ncol(t$data), 30)
+
+  expect_is(d, "list")
+  expect_is(d$data, "tbl_df")
+  expect_is(d$meta, "data.frame")
+  expect_gte(d$meta$count, 1)
+
+  expect_is(u, "list")
+  expect_is(u$data, "tbl_df")
+  expect_is(u$meta, "data.frame")
+
+  expect_is(m, "list")
+  expect_is(m$data, "tbl_df")
+  expect_is(m$meta, "data.frame")
   
   })
 

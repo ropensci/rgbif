@@ -168,4 +168,46 @@ http_interactions:
         from space.\"","types":[],"active":true,"email":[],"phone":[],"homepage":"https://www.sfcollege.edu/academics/las/natsci/science-resource-areas/museum.html","catalogUrls":[],"apiUrls":[],"institutionalGovernances":[],"disciplines":["Geological","Paleontology"],"mailingAddress":{"key":56581},"address":{"key":56580,"address":"3000
         N.W. 83rd Street, X-201","city":"Gainesville","province":"Florida","postalCode":"32606","country":"US"},"additionalNames":[],"createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2025-09-05T13:15:57.233+00:00","modified":"2025-09-05T13:15:57.233+00:00","tags":[],"identifiers":[],"contactPersons":[],"machineTags":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":91,"typeSpecimenCount":91}]}'
   recorded_at: 2025-11-13 08:04:46
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/grscicoll/institution?limit=1&discipline=Paleontology
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":3779,"results":[{"key":"c7ef73ef-d78d-4a08-a189-9b576b9eff06","code":"HAB","name":"Herzog
+        August Library Wolfenbüttel","types":[],"active":false,"email":["auskunft@hab.de"],"phone":["+49
+        (0)5331 808 114","+49 (0)5331 808 129"],"catalogUrls":[],"apiUrls":[],"institutionalGovernances":[],"disciplines":[],"address":{"key":56948,"address":"Lessingplatz
+        1","city":"Wolfenbüttel","province":"Lower Saxony","postalCode":"38304","country":"DE"},"additionalNames":[],"createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2025-09-29T08:21:51.171+00:00","modified":"2025-09-29T08:21:51.171+00:00","tags":[],"identifiers":[{"key":449529,"type":"IH_IRN","identifier":"gbif:ih:irn:268202","createdBy":"mgrosjean","created":"2025-09-29T08:21:51.192+00:00","primary":false}],"contactPersons":[],"machineTags":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"IH","masterSourceMetadata":{"key":9871,"source":"IH_IRN","sourceId":"268202","createdBy":"mgrosjean","created":"2025-09-29T08:21:51.202+00:00"},"displayOnNHCPortal":true,"occurrenceCount":5,"typeSpecimenCount":3}]}'
+  recorded_at: 2025-11-13 08:04:46
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/grscicoll/institution?limit=1&contactUserId=1
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":3779,"results":[{"key":"c7ef73ef-d78d-4a08-a189-9b576b9eff06","code":"HAB","name":"Herzog
+        August Library Wolfenbüttel","types":[],"active":false,"email":["auskunft@hab.de"],"phone":["+49
+        (0)5331 808 114","+49 (0)5331 808 129"],"catalogUrls":[],"apiUrls":[],"institutionalGovernances":[],"disciplines":[],"address":{"key":56948,"address":"Lessingplatz
+        1","city":"Wolfenbüttel","province":"Lower Saxony","postalCode":"38304","country":"DE"},"additionalNames":[],"createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2025-09-29T08:21:51.171+00:00","modified":"2025-09-29T08:21:51.171+00:00","tags":[],"identifiers":[{"key":449529,"type":"IH_IRN","identifier":"gbif:ih:irn:268202","createdBy":"mgrosjean","created":"2025-09-29T08:21:51.192+00:00","primary":false}],"contactPersons":[],"machineTags":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"IH","masterSourceMetadata":{"key":9871,"source":"IH_IRN","sourceId":"268202","createdBy":"mgrosjean","created":"2025-09-29T08:21:51.202+00:00"},"displayOnNHCPortal":true,"occurrenceCount":5,"typeSpecimenCount":3}]}'
+  recorded_at: 2025-11-13 08:04:46
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/grscicoll/institution?contactEmail=info%40ynhm.org&limit=1
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":3779,"results":[{"key":"c7ef73ef-d78d-4a08-a189-9b576b9eff06","code":"HAB","name":"Herzog
+        August Library Wolfenbüttel","types":[],"active":false,"email":["auskunft@hab.de"],"phone":["+49
+        (0)5331 808 114","+49 (0)5331 808 129"],"catalogUrls":[],"apiUrls":[],"institutionalGovernances":[],"disciplines":[],"address":{"key":56948,"address":"Lessingplatz
+        1","city":"Wolfenbüttel","province":"Lower Saxony","postalCode":"38304","country":"DE"},"additionalNames":[],"createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2025-09-29T08:21:51.171+00:00","modified":"2025-09-29T08:21:51.171+00:00","tags":[],"identifiers":[{"key":449529,"type":"IH_IRN","identifier":"gbif:ih:irn:268202","createdBy":"mgrosjean","created":"2025-09-29T08:21:51.192+00:00","primary":false}],"contactPersons":[],"machineTags":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"IH","masterSourceMetadata":{"key":9871,"source":"IH_IRN","sourceId":"268202","createdBy":"mgrosjean","created":"2025-09-29T08:21:51.202+00:00"},"displayOnNHCPortal":true,"occurrenceCount":5,"typeSpecimenCount":3}]}'
+  recorded_at: 2025-11-13 08:04:46
 recorded_with: VCR-vcr/2.0.0
