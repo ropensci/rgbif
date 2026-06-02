@@ -46,6 +46,13 @@ test_that("collection_search works as expected", {
   
 })
 
+test_that("collection_search validates new parameter types", {
+  expect_error(collection_search(occurrenceCount = 1), "occurrenceCount must be of class")
+  expect_error(collection_search(typeSpecimenCount = 1), "typeSpecimenCount must be of class")
+  expect_error(collection_search(contactUserId = "1"), "contactUserId must be of class")
+  expect_error(collection_search(contactEmail = 1), "contactEmail must be of class")
+})
+
 
 test_that("collection_export works as expected", {
   skip_on_cran()
@@ -77,4 +84,3 @@ test_that("collection_export works as expected", {
   expect_true("key" %in% names(c))
   
 })
-
