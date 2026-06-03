@@ -12,6 +12,12 @@
 #' https://techdocs.gbif.org/en/openapi/v1/registry#/Collections/listCollections
 #' @param numberSpecimens Number of specimens. It supports ranges and a `*` can 
 #' be used as a wildcard.
+#' @param occurrenceCount (character) Count of occurrences linked. It supports
+#' ranges and a `*` can be used as a wildcard. Optional parameter for filtering
+#' results.
+#' @param typeSpecimenCount (character) Count of type specimens linked. It
+#' supports ranges and a `*` can be used as a wildcard. Optional parameter for
+#' filtering results.
 #' @param accessionStatus Accession status of a GrSciColl collection. Accepted 
 #' values : INSTITUTIONAL, PROJECT
 #' @param personalCollection Flag for personal GRSciColl collections.
@@ -23,6 +29,10 @@
 #' collection.
 #' @param contact Filters collections and institutions whose contacts contain 
 #' the person key specified.
+#' @param contactUserId (numeric) Filters collections by the user ID of a
+#' contact. Optional parameter for filtering results.
+#' @param contactEmail (character) Filters collections by the email of a
+#' contact. Optional parameter for filtering results.
 #' @param institutionKey Keys of institutions to filter by.
 #' @param country Filters by country given as a ISO 639-1 (2 letter) country 
 #' code.
@@ -86,6 +96,8 @@ collection_search <- function(
     preservationType = NULL,
     contentType = NULL,
     numberSpecimens = NULL,
+    occurrenceCount = NULL,
+    typeSpecimenCount = NULL,
     accessionStatus = NULL,
     personalCollection = NULL,
     sourceId = NULL,
@@ -93,6 +105,8 @@ collection_search <- function(
     code = NULL,
     alternativeCode = NULL,
     contact = NULL,
+    contactUserId = NULL,
+    contactEmail = NULL,
     institutionKey = NULL,
     country = NULL,
     city = NULL,
@@ -119,12 +133,16 @@ collection_search <- function(
   assert(fuzzyName,"character")
   assert(preservationType,"character")
   assert(contentType, "character")
+  assert(occurrenceCount, "character")
+  assert(typeSpecimenCount, "character")
   assert(accessionStatus,"character")
   assert(personalCollection,"logical")
   assert(source,"character")
   assert(code,"character")
   assert(alternativeCode,"character")
   assert(contact,"character")
+  assert(contactUserId, "numeric")
+  assert(contactEmail, "character")
   assert(institutionKey,"character")
   assert(country,"character")
   assert(city,"character")
@@ -153,6 +171,9 @@ collection_search <- function(
     rgbif_compact(c(
       q = query,
       numberSpecimens = numberSpecimens,
+      occurrenceCount = occurrenceCount,
+      typeSpecimenCount = typeSpecimenCount,
+      contactEmail = contactEmail,
       accessionStatus = accessionStatus,
       active = active,
       displayOnNHCPortal = displayOnNHCPortal,
@@ -175,6 +196,7 @@ collection_search <- function(
       convmany(code),
       convmany(alternativeCode),
       convmany(contact),
+      convmany(contactUserId),
       convmany(institutionKey),
       convmany(country),
       convmany(city),
@@ -317,4 +339,3 @@ collection_export <- function(
   colnames(out) <- to_camel(colnames(out))
   out 
 }
-
