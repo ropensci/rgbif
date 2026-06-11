@@ -4212,6 +4212,12 @@
       "api": "validator",
       "reason": "Not implemented - marked for ignore on 2026-05-22",
       "date_added": "2026-05-22"
+    },
+    {
+      "endpoint": "GET /v2/species/match/id/{datasetId}/{identifier}",
+      "api": "checklistbank",
+      "reason": "Not implemented - marked for ignore on 2026-06-11",
+      "date_added": "2026-06-11"
     }
   ],
   "ignored_parameters": {
