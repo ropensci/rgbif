@@ -75,6 +75,16 @@ test_that("institution_search validates discipline, contactEmail, contactUserId 
   expect_error(institution_search(contactEmail = 1), "contactEmail must be of class")
 })
 
+test_that("institution_export validates new parameter types", {
+  expect_error(institution_export(institution = 1), "institution must be of class")
+  expect_error(institution_export(contentType = 1), "contentType must be of class")
+  expect_error(institution_export(preservationType = 1), "preservationType must be of class")
+  expect_error(institution_export(accessionStatus = 1), "accessionStatus must be of class")
+  expect_error(institution_export(personalCollection = "yes"), "personalCollection must be of class")
+  expect_error(institution_export(contactUserId = "1"), "contactUserId must be of class")
+  expect_error(institution_export(contactEmail = 1), "contactEmail must be of class")
+})
+
 test_that("institution_export works as expected", {
   skip_on_cran()
   

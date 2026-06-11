@@ -37,6 +37,20 @@
 #' contact. Optional parameter for filtering results.
 #' @param contactEmail (character) Filters institutions by the email of a
 #' contact. Optional parameter for filtering results.
+#' @param institution (character) Filters collections by institution key or 
+#' name. Optional parameter for filtering results. Only used for 
+#' [institution_export].
+#' @param contentType (character) Content type of a GrSciColl collection.
+#' Optional parameter for filtering results. Only used for [institution_export].
+#' @param preservationType (character) Preservation type of a GrSciColl 
+#' collection. Optional parameter for filtering results. Only used for 
+#' [institution_export].
+#' @param accessionStatus (character) Accession status of a GrSciColl 
+#' collection. Optional parameter for filtering results. Only used for 
+#' [institution_export].
+#' @param personalCollection (logical) Whether the collection is a personal 
+#' collection. Optional parameter for filtering results. Only used for 
+#' [institution_export].
 #' @param institutionKey (character) Keys of institutions to filter by.
 #' @param country (character) Filters by country given as a ISO 639-1 (2 letter) 
 #' country code.
@@ -231,11 +245,18 @@ institution_export <- function(
     numberSpecimens = NULL,
     occurrenceCount = NULL,
     typeSpecimenCount = NULL,
+    institution = NULL,
+    contentType = NULL,
+    preservationType = NULL,
+    accessionStatus = NULL,
+    personalCollection = NULL,
     sourceId = NULL,
     source = NULL,
     code = NULL,
     alternativeCode = NULL,
     contact = NULL,
+    contactUserId = NULL,
+    contactEmail = NULL,
     institutionKey = NULL,
     country = NULL,
     city = NULL,
@@ -264,9 +285,16 @@ institution_export <- function(
     assert(fuzzyName, "character")
     assert(source, "character")
     assert(sourceId, "character")
+    assert(institution, "character")
+    assert(contentType, "character")
+    assert(preservationType, "character")
+    assert(accessionStatus, "character")
+    assert(personalCollection, "logical")
     assert(code, "character")
     assert(alternativeCode, "character")
     assert(contact, "character")
+    assert(contactUserId, "numeric")
+    assert(contactEmail, "character")
     assert(institutionKey, "character")
     assert(country, "character")
     assert(city, "character")
@@ -297,6 +325,9 @@ institution_export <- function(
         numberSpecimens = numberSpecimens,
         occurrenceCount = occurrenceCount,
         typeSpecimenCount = typeSpecimenCount,
+        personalCollection = personalCollection,
+        contactUserId = contactUserId,
+        contactEmail = contactEmail,
         active = active,
         displayOnNHCPortal = displayOnNHCPortal,
         replacedBy = replacedBy,
@@ -315,6 +346,10 @@ institution_export <- function(
         convmany(disciplines),
         convmany(name),
         convmany(fuzzyName),
+        convmany(institution),
+        convmany(contentType),
+        convmany(preservationType),
+        convmany(accessionStatus),
         convmany(sourceId),
         convmany(source),
         convmany(code),
