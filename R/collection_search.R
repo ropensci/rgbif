@@ -33,6 +33,7 @@
 #' contact. Optional parameter for filtering results.
 #' @param contactEmail (character) Filters collections by the email of a
 #' contact. Optional parameter for filtering results.
+#' @param institution Name of institutions hosting collections.
 #' @param institutionKey Keys of institutions to filter by.
 #' @param country Filters by country given as a ISO 639-1 (2 letter) country 
 #' code.
@@ -227,6 +228,8 @@ collection_export <- function(
     preservationType = NULL,
     contentType = NULL,
     numberSpecimens = NULL,
+    occurrenceCount = NULL,
+    typeSpecimenCount = NULL,
     accessionStatus = NULL,
     personalCollection = NULL,
     sourceId = NULL,
@@ -234,6 +237,9 @@ collection_export <- function(
     code = NULL,
     alternativeCode = NULL,
     contact = NULL,
+    contactUserId = NULL,
+    contactEmail = NULL,
+    institution = NULL,
     institutionKey = NULL,
     country = NULL,
     city = NULL,
@@ -261,18 +267,27 @@ collection_export <- function(
   assert(fuzzyName,"character")
   assert(preservationType,"character")
   assert(contentType, "character")
+  assert(numberSpecimens, "character")
+  assert(occurrenceCount, "character")
+  assert(typeSpecimenCount, "character")
   assert(accessionStatus,"character")
   assert(personalCollection,"logical")
+  assert(sourceId, "character")
   assert(source,"character")
   assert(code,"character")
   assert(alternativeCode,"character")
   assert(contact,"character")
+  assert(contactUserId, "numeric")
+  assert(contactEmail, "character")
+  assert(institution, "character")
   assert(institutionKey,"character")
   assert(country,"character")
   assert(city,"character")
   assert(gbifRegion,"character")
   assert(machineTagNamespace,"character")
   assert(machineTagName,"character")
+  assert(machineTagValue, "character")
+  assert(identifier, "character")
   assert(identifierType,"character")
   assert(active,"logical")
   assert(displayOnNHCPortal,"logical")
@@ -280,6 +295,7 @@ collection_export <- function(
   assert(masterSourceType,"character")
   assert(replacedBy,"character")
   assert(sortBy,"character")
+  assert(sortOrder, "character")
   assert(limit,"numeric")
   assert(offset,"numeric")
   
@@ -295,6 +311,9 @@ collection_export <- function(
     rgbif_compact(c(
       q = query,
       numberSpecimens = numberSpecimens,
+      occurrenceCount = occurrenceCount,
+      typeSpecimenCount = typeSpecimenCount,
+      contactEmail = contactEmail,
       accessionStatus = accessionStatus,
       active = active,
       displayOnNHCPortal = displayOnNHCPortal,
@@ -318,6 +337,8 @@ collection_export <- function(
     convmany(code),
     convmany(alternativeCode),
     convmany(contact),
+    convmany(contactUserId),
+    convmany(institution),
     convmany(institutionKey),
     convmany(country),
     convmany(city),
