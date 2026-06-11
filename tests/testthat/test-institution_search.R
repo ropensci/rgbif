@@ -109,7 +109,7 @@ test_that("institution_export works as expected", {
   
 })
 
-test_that("institution_export new parameters work as expected", {
+test_that("institution_export filters by active status, source, gbifRegion, contactEmail, and contactUserId", {
   skip_on_cran()
   
   a <- institution_export(active = TRUE)
