@@ -1,3 +1,12 @@
 {
-  "issues": []
+  "issues": [
+    {
+      "type": "parameter",
+      "title": "API Coverage: Implement parameters for collection_export",
+      "function_name": "collection_export",
+      "endpoint": "GET /grscicoll/collection/export",
+      "parameters": ["institution", "contentType", "preservationType", "accessionStatus", "personalCollection", "sourceId", "source", "machineTagNamespace", "machineTagName", "machineTagValue", "identifierType", "identifier", "gbifRegion", "active", "masterSourceType", "numberSpecimens", "displayOnNHCPortal", "replacedBy", "occurrenceCount", "typeSpecimenCount", "sortBy", "sortOrder", "contactUserId", "contactEmail"],
+      "labels": ["enhancement", "api-coverage", "parameter"]
+    }
+  ]
 }
