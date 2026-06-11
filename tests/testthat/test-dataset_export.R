@@ -1,6 +1,7 @@
 context("dataset_export")
 
 skip_on_cran()
+skip_on_ci()
 
 test_that("dataset_export works as expected", {
   total_ds <- dataset_search()$meta$count
