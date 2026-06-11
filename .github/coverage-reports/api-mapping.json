@@ -1282,12 +1282,37 @@
         "query",
         "name",
         "fuzzyName",
+        "preservationType",
+        "contentType",
+        "numberSpecimens",
+        "institution",
+        "occurrenceCount",
+        "typeSpecimenCount",
+        "accessionStatus",
+        "personalCollection",
+        "sourceId",
+        "source",
         "code",
         "alternativeCode",
         "contact",
+        "contactUserId",
+        "contactEmail",
         "institutionKey",
         "country",
-        "city"
+        "city",
+        "gbifRegion",
+        "machineTagNamespace",
+        "machineTagName",
+        "machineTagValue",
+        "identifier",
+        "identifierType",
+        "active",
+        "masterSourceType",
+        "displayOnNHCPortal",
+        "replacedBy",
+        "sortBy",
+        "sortOrder",
+        "format"
       ]
     },
     {
@@ -4293,7 +4318,6 @@
       "q": "Covered by 'query' parameter in R function"
     },
     "collection_export": {
-      "format": "Export format parameter - not implemented",
       "q": "Covered by 'query' parameter in R function"
     },
     "institution_search": {

@@ -51,6 +51,8 @@ collection_export(
   preservationType = NULL,
   contentType = NULL,
   numberSpecimens = NULL,
+  occurrenceCount = NULL,
+  typeSpecimenCount = NULL,
   accessionStatus = NULL,
   personalCollection = NULL,
   sourceId = NULL,
@@ -58,6 +60,9 @@ collection_export(
   code = NULL,
   alternativeCode = NULL,
   contact = NULL,
+  contactUserId = NULL,
+  contactEmail = NULL,
+  institution = NULL,
   institutionKey = NULL,
   country = NULL,
   city = NULL,
@@ -129,6 +134,8 @@ contact. Optional parameter for filtering results.}
 
 \item{contactEmail}{(character) Filters collections by the email of a
 contact. Optional parameter for filtering results.}
+
+\item{institution}{Name of institutions hosting collections.}
 
 \item{institutionKey}{Keys of institutions to filter by.}
 
