@@ -1311,8 +1311,7 @@
         "displayOnNHCPortal",
         "replacedBy",
         "sortBy",
-        "sortOrder",
-        "format"
+        "sortOrder"
       ]
     },
     {
@@ -4318,6 +4317,7 @@
       "q": "Covered by 'query' parameter in R function"
     },
     "collection_export": {
+      "format": "Export format parameter - not implemented",
       "q": "Covered by 'query' parameter in R function"
     },
     "institution_search": {
