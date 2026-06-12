@@ -54,11 +54,18 @@ institution_export(
   numberSpecimens = NULL,
   occurrenceCount = NULL,
   typeSpecimenCount = NULL,
+  institution = NULL,
+  contentType = NULL,
+  preservationType = NULL,
+  accessionStatus = NULL,
+  personalCollection = NULL,
   sourceId = NULL,
   source = NULL,
   code = NULL,
   alternativeCode = NULL,
   contact = NULL,
+  contactUserId = NULL,
+  contactEmail = NULL,
   institutionKey = NULL,
   country = NULL,
   city = NULL,
@@ -128,6 +135,25 @@ Available values : DATASET, ORGANIZATION, IH_IRN}
 
 \item{contact}{(character) Filters collections and institutions whose
 contacts contain the person key specified.}
+
+\item{institution}{(character) Filters collections by institution key or
+name. Optional parameter for filtering results. Only used for
+\link{institution_export}.}
+
+\item{contentType}{(character) Content type of a GrSciColl collection.
+Optional parameter for filtering results. Only used for \link{institution_export}.}
+
+\item{preservationType}{(character) Preservation type of a GrSciColl
+collection. Optional parameter for filtering results. Only used for
+\link{institution_export}.}
+
+\item{accessionStatus}{(character) Accession status of a GrSciColl
+collection. Optional parameter for filtering results. Only used for
+\link{institution_export}.}
+
+\item{personalCollection}{(logical) Whether the collection is a personal
+collection. Optional parameter for filtering results. Only used for
+\link{institution_export}.}
 
 \item{contactUserId}{(numeric) Filters institutions by the user ID of a
 contact. Optional parameter for filtering results.}
