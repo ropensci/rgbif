@@ -75,3 +75,16 @@ test_that("Error on bad user input", {
                "Invalid UUID string: not a uuid",
                fixed = TRUE)
 })
+
+# New parameters type validation
+test_that("new parameters are validated correctly", {
+  expect_error(organizations(isEndorsed = "yes"), "isEndorsed must be of class logical")
+  expect_error(organizations(networkKey = 123), "networkKey must be of class character")
+  expect_error(organizations(canModify = "true"), "canModify must be of class logical")
+  expect_error(organizations(identifierType = 1L), "identifierType must be of class character")
+  expect_error(organizations(machineTagNamespace = TRUE), "machineTagNamespace must be of class character")
+  expect_error(organizations(machineTagName = TRUE), "machineTagName must be of class character")
+  expect_error(organizations(machineTagValue = TRUE), "machineTagValue must be of class character")
+  expect_error(organizations(modified = 123), "modified must be of class character")
+  expect_error(organizations(created = 123), "created must be of class character")
+})

@@ -4,6 +4,7 @@
 #'
 #' @template otherlimstart
 #' @template occ
+#' @template identifierargs
 #' @param data (character) The type of data to get. One or more of:
 #' 'organization', 'contact', 'endpoint', 'identifier', 'tag', 'machineTag',
 #' 'comment', 'hostedDataset', 'ownedDataset', 'deleted', 'pending',
@@ -13,6 +14,22 @@
 #' specified if data is anything other than 'all', 'deleted', 'pending', or
 #' 'nonPublishing'.
 #' @param query (character) Query nodes. Only used when `data='all'`
+#' @param isEndorsed (logical) Whether the organization is endorsed by a GBIF
+#'   node. Optional.
+#' @param networkKey (character) The UUID key of the network to filter
+#'   organizations by. Optional.
+#' @param numPublishedDatasets (integer) Filters by the number of published
+#'   datasets. Optional.
+#' @param canModify (logical) Whether the organization can be modified.
+#'   Optional.
+#' @param machineTagNamespace (character) Filters by machine tag namespace.
+#'   Optional.
+#' @param machineTagName (character) Filters by machine tag name. Optional.
+#' @param machineTagValue (character) Filters by machine tag value. Optional.
+#' @param modified (character) Filters by the date the organization was last
+#'   modified. Optional.
+#' @param created (character) Filters by the date the organization was created.
+#'   Optional.
 #'
 #' @return A list of length of two, consisting of a data.frame \code{meta} when
 #'  uuid is NULL, and \code{data} which can either be a list or a data.frame
@@ -30,15 +47,39 @@
 #' organizations(data=c('contact','endpoint'),
 #'   uuid="4b4b2111-ee51-45f5-bf5e-f535f4a1c9dc")
 #' organizations(data="installation", uuid="96710dc8-fecb-440d-ae3e-c34ae8a9616f")    
+#' organizations(isEndorsed=TRUE, limit=5)
+#' organizations(networkKey="99d66b6c-9087-452f-a9d4-f15f2c2d0e7e", limit=5)
 #'
 #' # Pass on curl options
 #' organizations(query="spain", curlopts = list(verbose=TRUE))
 #' }
 
 organizations <- function(data = 'all', country = NULL, uuid = NULL,
-                          query = NULL, limit = 100, start=NULL,
+                          query = NULL, limit = 100, start = NULL,
+                          isEndorsed = NULL,
+                          networkKey = NULL,
+                          numPublishedDatasets = NULL,
+                          canModify = NULL,
+                          identifierType = NULL,
+                          identifier = NULL,
+                          machineTagNamespace = NULL,
+                          machineTagName = NULL,
+                          machineTagValue = NULL,
+                          modified = NULL,
+                          created = NULL,
                           curlopts = list(http_version=2)) {
 
+  assert(isEndorsed, "logical")
+  assert(networkKey, "character")
+  assert(numPublishedDatasets, c("integer", "numeric"))
+  assert(canModify, "logical")
+  assert(identifierType, "character")
+  assert(identifier, c("character", "numeric"))
+  assert(machineTagNamespace, "character")
+  assert(machineTagName, "character")
+  assert(machineTagValue, "character")
+  assert(modified, "character")
+  assert(created, "character")
 
   args <-
     rgbif_compact(
@@ -46,7 +87,18 @@ organizations <- function(data = 'all', country = NULL, uuid = NULL,
         q = query,
         country = country,
         limit = as.integer(limit),
-        offset = start
+        offset = start,
+        isEndorsed = isEndorsed,
+        networkKey = networkKey,
+        numPublishedDatasets = numPublishedDatasets,
+        canModify = canModify,
+        identifierType = identifierType,
+        identifier = identifier,
+        machineTagNamespace = machineTagNamespace,
+        machineTagName = machineTagName,
+        machineTagValue = machineTagValue,
+        modified = modified,
+        created = created
         )
       )
 

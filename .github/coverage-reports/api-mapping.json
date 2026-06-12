@@ -1741,7 +1741,18 @@
         "uuid",
         "query",
         "limit",
-        "start"
+        "start",
+        "isEndorsed",
+        "networkKey",
+        "numPublishedDatasets",
+        "canModify",
+        "identifierType",
+        "identifier",
+        "machineTagNamespace",
+        "machineTagName",
+        "machineTagValue",
+        "modified",
+        "created"
       ]
     },
     {
@@ -4439,33 +4450,33 @@
       "modified": "Modification date filter - not implemented"
     },
     "network": {
-      "key": "Covered by parameter name mapping (key→uuid)",
+      "key": "Covered by parameter name mapping (key\u2192uuid)",
       "owner": "Not implemented"
     },
     "networks": {
-      "q": "Covered by parameter name mapping (q→query)"
+      "q": "Covered by parameter name mapping (q\u2192query)"
     },
     "nodes": {
-      "key": "Covered by parameter name mapping (key→uuid)",
-      "q": "Covered by parameter name mapping (q→query)"
+      "key": "Covered by parameter name mapping (key\u2192uuid)",
+      "q": "Covered by parameter name mapping (q\u2192query)"
     },
     "installations": {
-      "key": "Covered by parameter name mapping (key→uuid)",
-      "q": "Covered by parameter name mapping (q→query)"
+      "key": "Covered by parameter name mapping (key\u2192uuid)",
+      "q": "Covered by parameter name mapping (q\u2192query)"
     },
     "installation_search": {
       "created": "Not implemented",
-      "q": "Covered by parameter name mapping (q→query)"
+      "q": "Covered by parameter name mapping (q\u2192query)"
     },
     "organizations": {
-      "key": "Covered by parameter name mapping (key→uuid)",
-      "q": "Covered by parameter name mapping (q→query)"
+      "key": "Covered by parameter name mapping (key\u2192uuid)",
+      "q": "Covered by parameter name mapping (q\u2192query)"
     },
     "gbif_oai_identify": {
       "params": "OAI-PMH protocol parameter - handled internally by function logic"
     },
     "name_lookup": {
-      "q": "Covered by parameter name mapping (q→query)"
+      "q": "Covered by parameter name mapping (q\u2192query)"
     },
     "name_usage": {
       "usageKey": "Covered by 'key' parameter in R function",
