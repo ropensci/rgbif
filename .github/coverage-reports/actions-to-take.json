@@ -2,10 +2,10 @@
   "issues": [
     {
       "type": "parameter",
-      "title": "API Coverage: Implement parameters for institution_export",
-      "function_name": "institution_export",
-      "endpoint": "GET /grscicoll/institution/export",
-      "parameters": ["institution", "contentType", "preservationType", "accessionStatus", "personalCollection", "sourceId", "source", "machineTagNamespace", "machineTagName", "machineTagValue", "identifierType", "identifier", "gbifRegion", "active", "masterSourceType", "numberSpecimens", "displayOnNHCPortal", "replacedBy", "occurrenceCount", "typeSpecimenCount", "institutionKey", "sortBy", "sortOrder", "contactUserId", "contactEmail"],
+      "title": "API Coverage: Implement parameters for organizations",
+      "function_name": "organizations",
+      "endpoint": "GET /organization",
+      "parameters": ["isEndorsed", "networkKey", "numPublishedDatasets", "canModify", "identifierType", "identifier", "machineTagNamespace", "machineTagName", "machineTagValue", "modified", "created"],
       "labels": ["enhancement", "api-coverage", "parameter"]
     }
   ]
