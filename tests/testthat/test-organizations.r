@@ -76,8 +76,8 @@ test_that("Error on bad user input", {
                fixed = TRUE)
 })
 
-# New parameters type validation
-test_that("new parameters are validated correctly", {
+# Parameter type validation for new filter parameters
+test_that("isEndorsed, networkKey, machineTag*, identifier*, modified, created reject wrong types", {
   expect_error(organizations(isEndorsed = "yes"), "isEndorsed must be of class logical")
   expect_error(organizations(networkKey = 123), "networkKey must be of class character")
   expect_error(organizations(canModify = "true"), "canModify must be of class logical")

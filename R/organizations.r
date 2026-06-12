@@ -4,7 +4,12 @@
 #'
 #' @template otherlimstart
 #' @template occ
-#' @template identifierargs
+#' @param identifier (character) The value for this parameter can be a simple
+#'   string or integer, e.g. \code{identifier=120}. Optional.
+#' @param identifierType (character) Used in combination with the identifier
+#'   parameter to filter identifiers by identifier type. One of: DOI, FTP,
+#'   GBIF_NODE, GBIF_PARTICIPANT, GBIF_PORTAL, HANDLER, LSID, SOURCE_ID,
+#'   UNKNOWN, URI, URL, UUID. Optional.
 #' @param data (character) The type of data to get. One or more of:
 #' 'organization', 'contact', 'endpoint', 'identifier', 'tag', 'machineTag',
 #' 'comment', 'hostedDataset', 'ownedDataset', 'deleted', 'pending',
