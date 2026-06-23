@@ -266,6 +266,20 @@ be supported that is not yet.
 \item distanceFromCentroidInMeters (DISTANCE_FROM_CENTROID_IN_METERS)
 \item gbifId (GBIF_ID)
 \item institutionKey (INSTITUTION_KEY)
+\item nucleotideSequence.nucleotideSequenceID (NUCLEOTIDE_SEQUENCE_ID)
+\item nucleotideSequence.targetGene (NUCLEOTIDE_SEQUENCE_TARGET_GENE)
+\item nucleotideSequence.sequence (NUCLEOTIDE_SEQUENCE_SEQUENCE)
+\item nucleotideSequence.sequenceLength (NUCLEOTIDE_SEQUENCE_SEQUENCE_LENGTH)
+\item nucleotideSequence.gcContent (NUCLEOTIDE_SEQUENCE_GC_CONTENT)
+\item nucleotideSequence.nonIupacFraction (NUCLEOTIDE_SEQUENCE_NON_IUPAC_FRACTION)
+\item nucleotideSequence.nonACGTNFraction (NUCLEOTIDE_SEQUENCE_NON_ACGTN_FRACTION)
+\item nucleotideSequence.nFraction (NUCLEOTIDE_SEQUENCE_N_FRACTION)
+\item nucleotideSequence.nRunsCapped (NUCLEOTIDE_SEQUENCE_N_RUNS_CAPPED)
+\item nucleotideSequence.naturalLanguageDetected (NUCLEOTIDE_SEQUENCE_NATURAL_LANGUAGE_DETECTED)
+\item nucleotideSequence.endsTrimmed (NUCLEOTIDE_SEQUENCE_ENDS_TRIMMED)
+\item nucleotideSequence.gapsOrWhitespaceRemoved (NUCLEOTIDE_SEQUENCE_GAPS_OR_WHITESPACE_REMOVED)
+\item nucleotideSequence.invalid (NUCLEOTIDE_SEQUENCE_INVALID)
+\item isSequenced (IS_SEQUENCED)
 }
 }
 
