@@ -42,7 +42,7 @@ occ_download_cancel <- function(key, user = NULL, pwd = NULL,
   )
   res <- cli$delete(body = FALSE)
   res$raise_for_status()
-  if (res$status_code == 204) message("Download sucessfully deleted") else res
+  if (res$status_code == 204) message("Download successfully deleted") else res
 }
 
 #' @export
