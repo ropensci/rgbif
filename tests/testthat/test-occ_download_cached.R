@@ -42,13 +42,13 @@ test_that("occ_download_cached utils", {
   ## not matched
   dprep1 <- occ_download_prep(
     pred("catalogNumber", "Bird.27847588"),
-    pred("year", 1978))
+    pred("year", 1978), checklistKey = NULL)
   aa <- dl_match(pred = dprep1, preds)
   expect_is(aa, "DownloadMatch")
   expect_false(aa$matched)
   
   ## matched but expired
-  dprep2 <- occ_download_prep(pred("taxonKey", "9588263"))
+  dprep2 <- occ_download_prep(pred("taxonKey", "9588263"), checklistKey = NULL)
   bb <- dl_match(pred = dprep2, preds)
   expect_is(bb, "DownloadMatch")
   expect_true(bb$matched)
@@ -60,7 +60,8 @@ test_that("occ_download_cached utils", {
     pred("taxonKey", 1427067),
     pred("hasGeospatialIssue", FALSE),
     pred("hasCoordinate", TRUE),
-    pred_lte("coordinateUncertaintyInMeters", 5000)
+    pred_lte("coordinateUncertaintyInMeters", 5000),
+    checklistKey = NULL
   )
   age <- as.numeric((Sys.Date()-as.Date("2024-09-23")) + 1)
   cc <- dl_match(pred = dprep3, preds, age = age)

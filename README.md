@@ -29,9 +29,12 @@ install.packages("rgbif", repos="https://dev.ropensci.org") # dev version
 
 ## Getting Started 
 
+> **⚠️ Breaking Change in rgbif 3.9.0:** The default taxonomy changed from GBIF Backbone to COL (Catalogue of Life) Extended Release, which uses alpha-numeric taxon keys instead of numeric keys. See the **[Migration Guide](https://docs.ropensci.org/rgbif/articles/col_migration_guide.html)** for details on updating your code.
+
 There are several long-form articles that can help get you started:
 
 * [Getting Started](https://docs.ropensci.org/rgbif/articles/rgbif.html)
+* **[Migration Guide - COL Extended Release](https://docs.ropensci.org/rgbif/articles/col_migration_guide.html)** ⭐ **NEW**
 * [Getting Occurrence Data From GBIF](https://docs.ropensci.org/rgbif/articles/getting_occurrence_data.html)
 * [Working With Taxonomic Names](https://docs.ropensci.org/rgbif/articles/taxonomic_names.html)
 
@@ -56,7 +59,17 @@ GBIF **strongly recommends** the use of `occ_download()` rather than `occ_search
 It is required to set up your [GBIF credentials](https://docs.ropensci.org/rgbif/articles/gbif_credentials.html) to make downloads from GBIF. 
 
 ```r
-occ_download(pred("taxonKey", 5219534)) # 5219534 is the taxonKey for Pan troglodytes
+# By default, name_backbone() and occ_download() use COL (Catalogue of Life) Extended Release
+# which returns alpha-numeric taxon keys (e.g., "Q2M4" for Pan troglodytes)
+taxonKey <- name_backbone("Pan troglodytes")$usageKey
+occ_download(pred("taxonKey", taxonKey))
+
+# For GBIF Backbone Taxonomy, set checklistKey = NULL
+taxonKey_gbif <- name_backbone("Pan troglodytes", checklistKey = NULL)$usageKey  
+occ_download(pred("taxonKey", taxonKey_gbif), checklistKey = NULL)
+
+# Convert existing GBIF Backbone keys to COL XR keys
+gbif_to_col(5231190)  # Returns COL XR key for Calopteryx splendens
 ```
 
 ## Citation 

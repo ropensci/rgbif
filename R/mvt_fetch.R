@@ -35,6 +35,10 @@
 #' Defaults to classic.point. optional. THESE DON'T WORK YET.
 #' @param taxonKey (integer/numeric/character) search by taxon key, can only
 #' supply 1. optional
+#' @param checklistKey (character) The key of a checklist to use for taxonomy. 
+#' Defaults to COL (Catalogue of Life) Extended Release 
+#' (`"7ddf754f-d193-4cc9-b351-99906754a03b"`). Set to `NULL` to use the GBIF 
+#' Backbone Taxonomy. optional
 #' @param datasetKey (character) search by taxon key, can only supply 1.
 #' optional
 #' @param country (character) search by taxon key, can only supply 1.
@@ -72,7 +76,12 @@
 #'  requireNamespace("sf", quietly = TRUE) &&
 #'  requireNamespace("protolite", quietly = TRUE)
 #' ) {
-#'   x <- mvt_fetch(taxonKey = 2480498, year = 2007:2011)
+#'   # Using COL XR taxon key (default)
+#'   x <- mvt_fetch(taxonKey = "7T6MX", year = 2007:2011)
+#'   x
+#'   
+#'   # Using GBIF Backbone key
+#'   x <- mvt_fetch(taxonKey = 2480498, checklistKey = NULL, year = 2007:2011)
 #'   x
 #'   
 #'   # gives an sf object
@@ -113,6 +122,7 @@ mvt_fetch <- function(
   squareSize = NULL,
   style = 'classic.point',
   taxonKey = NULL,
+  checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b",
   datasetKey = NULL,
   country = NULL,
   publishingOrg = NULL,
@@ -135,6 +145,7 @@ mvt_fetch <- function(
   assert(squareSize, c('numeric', 'integer'))
   assert(style, "character")
   assert(taxonKey, c("numeric", "integer", "character"))
+  assert(checklistKey, "character")
   assert(datasetKey, "character")
   assert(country, "character")
   assert(publishingOrg, "character")
@@ -169,6 +180,7 @@ mvt_fetch <- function(
   }
   
   query <- rgbif_compact(list(srs = "EPSG:3857", taxonKey = taxonKey,
+    checklistKey = checklistKey,
     datasetKey = datasetKey, country, publishingOrg = publishingOrg,
     publishingCountry = publishingCountry, year = year,
     bin = bin, squareSize = squareSize, hexPerTile = hexPerTile,

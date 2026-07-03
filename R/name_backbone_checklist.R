@@ -36,7 +36,8 @@
 #' @param verbatimTaxonRank (character) Filters by free text taxon rank.
 #' @param exclude (character) An array of usage keys to exclude from the match.
 #' @param checklistKey (character) The key of a checklist to use. The default is
-#' the GBIF Backbone taxanomy. 
+#'   COL (Catalogue of Life) Extended Release with UUID
+#'   "7ddf754f-d193-4cc9-b351-99906754a03b". 
 #' @param bucket_size (integer) Number of requests to make in parallel.
 #' Default: 300. Lower this number if you get HTTP 0 errors.
 #' @param sleep (integer) Number of seconds to wait between batches of requests.
@@ -168,7 +169,7 @@ name_backbone_checklist <- function(
   exclude = NULL,
   strict = NULL,
   verbose = NULL,
-  checklistKey = NULL,
+  checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b",
   bucket_size = 300,
   sleep = 1,
   curlopts = list(http_version = 2)

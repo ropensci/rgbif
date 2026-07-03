@@ -9,27 +9,31 @@ vignette: >
     %\VignetteEncoding{UTF-8}
 ---
 
-In order to use GBIF mediated data effectively, you will often need to match a scientific name to the [GBIF Backbone Taxonomy](https://www.gbif.org/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c). 
+In order to use GBIF mediated data effectively, you will often need to match a scientific name to a taxonomy. By default, **rgbif** now uses the [COL (Catalogue of Life) Extended Release](https://www.catalogueoflife.org/), which returns alpha-numeric taxon keys. To use the [GBIF Backbone Taxonomy](https://www.gbif.org/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c) instead, set `checklistKey = NULL`.
 
-The goal of **name matching** is to get back an unambiguous taxonomic key (a number) of the scientific name you are interested in. Having a key makes it easy for GBIF to know what you mean. 
+The goal of **name matching** is to get back an unambiguous taxonomic key of the scientific name you are interested in. Having a key makes it easy for GBIF to know what you mean. 
 
-`name_backbone` or `name_backbone_checklist` are the **best ways** to go from **scientific name** to **GBIF taxonkey**. 
+`name_backbone` or `name_backbone_checklist` are the **best ways** to go from **scientific name** to **taxonkey**. 
 
 ```r
+# Returns COL (Catalogue of Life) Extended Release alpha-numeric keys
 name_backbone(name="Calopteryx splendens") 
 # name_backbone(name="Calopteryx splendens", verbose=TRUE)
+
+# To use GBIF Backbone Taxonomy, set checklistKey = NULL
+# name_backbone(name="Calopteryx splendens", checklistKey = NULL)
 ```
 
 This will return a `data.frame` of the **single best match** for the name you supplied.  
 
 The most interesting columns are: 
 
-* **usageKey**:  [Another name](https://discourse.gbif.org/t/understanding-gbif-taxonomic-keys-usagekey-taxonkey-specieskey/3045) for the GBIF taxonkey. 
+* **usageKey**:  [Another name](https://discourse.gbif.org/t/understanding-gbif-taxonomic-keys-usagekey-taxonkey-specieskey/3045) for the taxonkey. With COL XR this is an alpha-numeric key (e.g., "Q2M4").
 * **status** : `name_backbone` will always return only "ACCEPTED" names. 
 * **matchType** : "EXACT", "HIGHERRANK", "FUZZY", or "NONE" (see below).  
 * **verbatim_name** : The name you supplied to GBIF. Useful for matching back to your original data. 
 
-A matchType of **"HIGHERRANK"** usually means the name is not in the GBIF backbone or it is not a species-level name (a genus, family, order ...). A matchType of **"FUZZY"** means that the name you supplied may have been misspelled or is a variant not in the backbone. A matchType of **"Exact"** means the binomial name appears exactly as spelled by you in the GBIF backbone (note that it ignores authorship info).  
+A matchType of **"HIGHERRANK"** usually means the name is not in the taxonomy or it is not a species-level name (a genus, family, order ...). A matchType of **"FUZZY"** means that the name you supplied may have been misspelled or is a variant not in the taxonomy. A matchType of **"Exact"** means the binomial name appears exactly as spelled by you in the taxonomy (note that it ignores authorship info).  
 
 If you have **multiple names** to match, you can use `name_backbone_checklist`. 
 
@@ -95,9 +99,9 @@ name_backbone_checklist(name_data)
 ```
 ## Too many choices problem 
 
-When two or more names exist in the [GBIF Backbone Taxonomy](https://www.gbif.org/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c) that have the **same name** but **different authorship** (homotypic synonyms), supplying just the binomial name will result in `matchType : "HIGHERRANK"`. 
+When two or more names exist in the taxonomy that have the **same name** but **different authorship** (homotypic synonyms), supplying just the binomial name will result in `matchType : "HIGHERRANK"`. 
 
-For example, the binomial name "Glocianus punctiger" has two entries in the backbone taxonomy. Using the `verbose=TRUE` will return both names. 
+For example, the binomial name "Glocianus punctiger" has two entries in the taxonomy. Using the `verbose=TRUE` will return both names. 
 
 ```
 name_backbone("Glocianus punctiger",verbose=TRUE) # returns more names
@@ -115,21 +119,23 @@ Since `name_backbone` is designed to give back the best match, it's not possible
 
 ## Other name_* functions 
 
-There are several functions for finding taxonomic information. Typically, the function you want to use is `name_backbone` or `name_backbone_checklist`, but these other functions can also be useful in certain situations.
+There are several functions for finding taxonomic information. Typically, the function you want to use is `name_backbone` or `name_backbone_checklist`.
 
-`name_suggest` can be useful for looking up subspecies or partial names. It is the same service that lets [gbif.org](https://www.gbif.org) guess which name you are typing in the [occurrence search](https://www.gbif.org/occurrence/search).
+**⚠️ DEPRECATION NOTICE:** The following functions (`name_suggest`, `name_lookup`, `name_usage`) only work with the **out-of-date GBIF Backbone Taxonomy** and do **not** support the `checklistKey` parameter for COL (Catalogue of Life) Extended Release. These functions may be deprecated in a future version. Consider using the `rcol` package instead, which provides direct access to COL Extended Release via `col_search()`, `col_suggest()`, and `col_usage()` functions.
+
+`name_suggest` can be useful for looking up subspecies or partial names, but only searches the GBIF Backbone Taxonomy. It is the same service that lets [gbif.org](https://www.gbif.org) guess which name you are typing in the [occurrence search](https://www.gbif.org/occurrence/search).
 
 ```r
 name_suggest("Calopteryx splendens")
 ```
 
-`name_lookup` can be sometimes useful for seeing what is available in other checklists. 
+`name_lookup` can be sometimes useful for seeing what is available in other checklists, but only searches the GBIF Backbone Taxonomy.
 
 ```r
 name_lookup("Calopteryx splendens")$data
 ```
 
-`name_usage` is a catch all function that does a lot. `?name_usage` for more examples. 
+`name_usage` is a catch all function that does a lot, but only works with the GBIF Backbone Taxonomy. `?name_usage` for more examples. 
 
 For example, `name_usage` can be used for looking up all of the order, families, or genera in a higher-rank group. 
 

@@ -1,0 +1,469 @@
+---
+title: Migration Guide - COL Extended Release as Default
+author: rgbif development team
+date: "2026-07-02"
+output: rmarkdown::html_vignette
+vignette: >
+    %\VignetteIndexEntry{Migration Guide - COL Extended Release as Default}
+    %\VignetteEngine{knitr::rmarkdown}
+    %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  eval = FALSE
+)
+```
+
+# What Changed in rgbif 3.9.0
+
+Starting in **rgbif 3.9.0**, the default taxonomy has changed from the **GBIF Backbone Taxonomy** to the **COL (Catalogue of Life) Extended Release**.
+
+This is a **breaking change** that affects how taxonomic keys are returned and how you should structure your queries.
+
+## Key Differences
+
+The **GBIF Backbone Taxonomy** (the old default) uses **numeric** taxon keys such as `5231190` or `2977832`. While still accessible by setting `checklistKey = NULL`, this taxonomy is now out-of-date compared to COL Extended Release.
+
+The **COL Extended Release** (the new default) uses **alpha-numeric** taxon keys such as `"Q2M4"` or `"9WLSS"`. This is the default behavior with `checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b"`. COL Extended Release provides more up-to-date taxonomic information and is better maintained by the Catalogue of Life consortium, making it a more reliable choice for modern biodiversity research.
+
+## Affected Functions
+
+The following functions now return COL Extended Release keys by default:
+
+- `name_backbone()` - Name matching
+- `name_backbone_checklist()` - Batch name matching
+- `occ_search()` - Occurrence search
+- `occ_download()` - Download requests
+- `occ_download_prep()` - Download preparation
+- `pred()`, `pred_factory()`, `parse_pred()`, `parse_predicates()` - Download predicates
+- `map_fetch()` - Fetch occurrence maps
+- `mvt_fetch()` - Fetch map vector tiles
+
+## Migration Examples
+
+### Example 1: Name Matching
+
+**Before (rgbif 3.8.5 and earlier):**
+```{r}
+library(rgbif)
+
+# Returned GBIF Backbone numeric key
+result <- name_backbone(name = "Calopteryx splendens")
+result$usageKey
+# [1] 5231190  # numeric key
+```
+
+**After (rgbif 3.9.0):**
+```{r}
+library(rgbif)
+
+# Now returns COL XR alpha-numeric key
+result <- name_backbone(name = "Calopteryx splendens")
+result$usageKey
+# [1] "Q2M4"  # alpha-numeric key
+```
+
+**To continue using GBIF Backbone:**
+```{r}
+# Explicitly set checklistKey = NULL
+result <- name_backbone(name = "Calopteryx splendens", checklistKey = NULL)
+result$usageKey
+# [1] 5231190  # numeric key
+```
+
+### Example 2: Occurrence Search
+
+**Before (rgbif 3.8.5 and earlier):**
+```{r}
+# Using numeric GBIF Backbone key
+occ_search(taxonKey = 5231190, limit = 10)
+```
+
+**After (rgbif 3.9.0):**
+```{r}
+# Get COL XR key first
+key <- name_backbone(name = "Calopteryx splendens")$usageKey
+# key is "Q2M4"
+
+# Use alpha-numeric key
+occ_search(taxonKey = "Q2M4", limit = 10)
+```
+
+**To continue using GBIF Backbone:**
+```{r}
+# Use checklistKey = NULL
+occ_search(taxonKey = 5231190, checklistKey = NULL, limit = 10)
+```
+
+### Example 3: Occurrence Downloads
+
+**Before (rgbif 3.8.5 and earlier):**
+```{r}
+# Using numeric keys with pred()
+occ_download(
+  pred("taxonKey", 5231190),
+  pred("hasCoordinate", TRUE)
+)
+```
+
+**After (rgbif 3.9.0):**
+```{r}
+# Using alpha-numeric COL XR keys
+occ_download(
+  pred("taxonKey", "Q2M4"),
+  pred("hasCoordinate", TRUE)
+)
+
+# Or get the key dynamically
+key <- name_backbone(name = "Calopteryx splendens")$usageKey
+occ_download(
+  pred("taxonKey", key),
+  pred("hasCoordinate", TRUE)
+)
+```
+
+**To continue using GBIF Backbone:**
+```{r}
+# Set checklistKey = NULL in occ_download
+occ_download(
+  pred("taxonKey", 5231190),
+  pred("hasCoordinate", TRUE),
+  checklistKey = NULL
+)
+```
+
+### Example 4: Batch Name Matching
+
+**Before (rgbif 3.8.5 and earlier):**
+```{r}
+species_list <- c("Calopteryx splendens", "Puma concolor", "Quercus robur")
+
+# Returned numeric keys
+results <- name_backbone_checklist(species_list)
+results$usageKey
+# [1] 5231190 2435099 2877951  # numeric keys
+```
+
+**After (rgbif 3.9.0):**
+```{r}
+species_list <- c("Calopteryx splendens", "Puma concolor", "Quercus robur")
+
+# Returns alpha-numeric COL XR keys
+results <- name_backbone_checklist(species_list)
+results$usageKey
+# [1] "Q2M4" "9WLSS" "Q2N2"  # alpha-numeric keys
+```
+
+**To continue using GBIF Backbone:**
+```{r}
+results <- name_backbone_checklist(species_list, checklistKey = NULL)
+results$usageKey
+# [1] 5231190 2435099 2877951  # numeric keys
+```
+
+### Example 5: Maps
+
+**Before (rgbif 3.8.5 and earlier):**
+```{r}
+# Using numeric GBIF Backbone key for penguins
+map_fetch(srs='EPSG:3031', taxonKey=2481660, style='glacier.point')
+```
+
+**After (rgbif 3.9.0):**
+```{r}
+# Get COL XR key first
+key <- name_backbone(name = "Spheniscidae")$usageKey
+# key is "623RM"
+
+# Use alpha-numeric key
+map_fetch(srs='EPSG:3031', taxonKey="623RM", style='glacier.point')
+```
+
+**To continue using GBIF Backbone:**
+```{r}
+# Use checklistKey = NULL
+map_fetch(srs='EPSG:3031', taxonKey=2481660, checklistKey = NULL, 
+  style='glacier.point')
+```
+
+## Updating Your Existing Code
+
+### Step 1: Identify Hardcoded Taxon Keys
+
+Search your code for numeric taxon keys used in:
+- `occ_search(taxonKey = ...)`
+- `occ_download(pred("taxonKey", ...))`
+- Any other functions that accept `taxonKey` parameters
+
+### Step 2: Choose Your Migration Strategy
+
+**Option A: Migrate to COL Extended Release (Recommended)**
+
+Update your code to use COL XR alpha-numeric keys:
+
+```{r}
+# Old code with hardcoded numeric key
+# occ_search(taxonKey = 5231190, limit = 10)
+
+# New code - look up the COL XR key
+key <- name_backbone(name = "Calopteryx splendens")$usageKey
+occ_search(taxonKey = key, limit = 10)
+```
+
+**Option B: Continue Using GBIF Backbone**
+
+Add `checklistKey = NULL` to maintain existing behavior:
+
+```{r}
+# Keep using numeric keys
+occ_search(taxonKey = 5231190, checklistKey = NULL, limit = 10)
+
+occ_download(
+  pred("taxonKey", 5231190),
+  pred("hasCoordinate", TRUE),
+  checklistKey = NULL
+)
+```
+
+### Step 3: Update Tests and Validation
+
+If you have tests or validation scripts:
+
+- Update expected taxon keys from numeric to alpha-numeric (if migrating to COL)
+- Or add `checklistKey = NULL` to maintain numeric keys
+- Test that your queries return the expected species
+
+### Step 4: Update Documentation
+
+If you publish code examples or tutorials:
+
+- Update examples to show COL XR usage
+- Mention the alpha-numeric key format
+- Consider showing both options (COL XR default and GBIF Backbone alternative)
+
+## Converting GBIF Backbone Keys to COL XR
+
+If you have existing GBIF Backbone numeric taxon keys and want to convert them to COL XR alpha-numeric keys, use the `gbif_to_col()` convenience function:
+
+```{r}
+# Convert a single GBIF Backbone key
+gbif_to_col(5231190)
+#   gbif_key col_usageKey col_scientificName        matchType confidence status    rank
+# 1  5231190         Q2M4 Calopteryx splendens      EXACT     100        ACCEPTED  SPECIES
+
+# Convert multiple keys at once
+keys <- c(5231190, 2435099, 2877951)
+result <- gbif_to_col(keys)
+result$col_usageKey
+# [1] "Q2M4"  "9WLSS" "Q2N2"
+```
+
+This function uses the GBIF species matching API to resolve GBIF Backbone keys to their COL XR equivalents. The result includes the original GBIF key, the new COL XR key, and match quality information to help you assess the conversion.
+
+**Use case:** This is particularly helpful when you have:
+- Lists of taxon keys from older analyses
+- Hardcoded numeric keys in legacy code
+- Database records with GBIF Backbone keys that need updating
+
+```{r}
+# Example: Update a vector of keys
+old_keys <- c(5231190, 2435099, 2877951)
+conversion <- gbif_to_col(old_keys)
+
+# Use the converted keys in your queries
+occ_search(taxonKey = conversion$col_usageKey[1], limit = 10)
+```
+
+## Working with Species Keys vs Taxon Keys
+
+COL Extended Release distinguishes between different types of keys:
+
+```{r}
+# Get COL XR keys for a species
+result <- name_backbone(name = "Calopteryx splendens")
+
+# Different key types
+result$usageKey      # "Q2M4" - the specific taxon key
+result$speciesKey    # "9WLSS" - the species-level key  
+result$genusKey      # May have a different key for the genus
+result$familyKey     # May have a different key for the family
+```
+
+When querying occurrences:
+- Use `usageKey` for the specific taxon
+- Use `speciesKey` for all occurrences of that species (including subspecies)
+
+```{r}
+# Get all occurrences of the specific taxon
+occ_search(taxonKey = "Q2M4", limit = 10)
+
+# Get all occurrences at species level
+occ_search(taxonKey = "9WLSS", limit = 10)
+```
+
+## Deprecated Functions
+
+Three functions only work with the GBIF Backbone Taxonomy and will show deprecation warnings:
+
+- `name_lookup()` - Consider using `rcol::col_search()` for COL XR
+- `name_suggest()` - Consider using `rcol::col_suggest()` for COL XR
+- `name_usage()` - Consider using `rcol::col_usage()` for COL XR
+
+These functions cannot search COL Extended Release and may be removed in a future version.
+
+### Alternative: Use the rcol Package
+
+For direct access to COL (Catalogue of Life) data, use the **rcol** package:
+
+```{r}
+# Install rcol package
+# install.packages("rcol")
+library(rcol)
+
+# Search COL directly
+col_search(q = "Calopteryx splendens")
+
+# Get suggestions
+col_suggest(q = "Calopteryx splendens")
+
+# Look up a specific COL key
+col_usage("Q2M4")
+```
+
+## Common Issues and Solutions
+
+### Issue 1: "Invalid taxonKey" errors
+
+**Problem:** Using numeric keys without specifying `checklistKey = NULL`
+
+```{r}
+# This may fail or return unexpected results
+occ_search(taxonKey = 5231190, limit = 10)
+```
+
+**Solution:** Either use COL XR keys or set `checklistKey = NULL`
+
+```{r}
+# Option 1: Use COL XR by converting the key
+key <- gbif_to_col(5231190)$col_usageKey
+occ_search(taxonKey = key, limit = 10)
+
+# Option 2: Look up the species name to get COL XR key
+key <- name_backbone(name = "Calopteryx splendens")$usageKey
+occ_search(taxonKey = key, limit = 10)
+
+# Option 3: Explicitly use GBIF Backbone
+occ_search(taxonKey = 5231190, checklistKey = NULL, limit = 10)
+```
+
+### Issue 2: Downloaded data has different keys than expected
+
+**Problem:** Downloaded occurrence data includes COL XR keys instead of GBIF Backbone keys
+
+**Solution:** This is expected behavior. The keys will match the taxonomy you specified in your download request. To get GBIF Backbone keys in the data, use `checklistKey = NULL` in your download request.
+
+### Issue 3: Existing scripts break after updating rgbif
+
+**Problem:** Scripts with hardcoded numeric taxon keys fail
+
+**Solution:** Quick fix - add `checklistKey = NULL` to all affected function calls. Long-term - migrate to COL XR alpha-numeric keys.
+
+## Benefits of COL Extended Release
+
+### More Up-to-Date Taxonomy
+COL is actively maintained and updated more frequently than the GBIF Backbone
+
+### Better Integration with COL Ecosystem
+Using COL keys allows better integration with other COL-based tools and resources
+
+### Improved Taxonomic Coverage
+COL Extended Release often has better coverage for certain taxonomic groups
+
+### Standardization
+COL is becoming the standard backbone for biodiversity informatics
+
+## When to Use GBIF Backbone
+
+You might want to continue using GBIF Backbone (`checklistKey = NULL`) if:
+
+- You need exact reproducibility with older analyses
+- You're working with legacy code that's difficult to update
+- You need specific features only available in GBIF Backbone
+- You're collaborating with others using GBIF Backbone keys
+
+However, we recommend migrating to COL XR when possible to take advantage of improved and more current taxonomic information.
+
+## Getting Help
+
+- **rgbif documentation**: Run `?name_backbone` or `?occ_search` for function help
+- **COL resources**: Visit [https://www.catalogueoflife.org/](https://www.catalogueoflife.org/)
+- **rcol package**: For direct COL access, see the rcol package documentation
+- **Issues**: Report problems at [https://github.com/ropensci/rgbif/issues](https://github.com/ropensci/rgbif/issues)
+
+## Summary Checklist
+
+When migrating your code to rgbif 3.9.0:
+
+- [ ] Identify all hardcoded numeric taxon keys
+- [ ] Decide on migration strategy (COL XR or continue with GBIF Backbone)
+- [ ] Use `gbif_to_col()` to convert existing GBIF Backbone keys to COL XR (if migrating)
+- [ ] Update function calls to use alpha-numeric keys or add `checklistKey = NULL`
+- [ ] Update tests to expect correct key format
+- [ ] Update documentation and examples
+- [ ] Consider using `rcol` package for direct COL access
+- [ ] Test thoroughly with your specific workflows
+
+## Example: Complete Migration of a Workflow
+
+**Before (rgbif 3.8.5):**
+```{r}
+library(rgbif)
+
+# Define species list
+species <- c("Calopteryx splendens", "Puma concolor")
+
+# Get numeric keys
+keys_df <- name_backbone_checklist(species)
+keys <- keys_df$usageKey
+# [1] 5231190 2435099
+
+# Search occurrences
+occ1 <- occ_search(taxonKey = keys[1], limit = 100)
+occ2 <- occ_search(taxonKey = keys[2], limit = 100)
+
+# Create download request
+occ_download(
+  pred_in("taxonKey", keys),
+  pred("hasCoordinate", TRUE),
+  pred("country", "US")
+)
+```
+
+**After (rgbif 3.9.0):**
+```{r}
+library(rgbif)
+
+# Define species list
+species <- c("Calopteryx splendens", "Puma concolor")
+
+# Get COL XR alpha-numeric keys (default behavior)
+keys_df <- name_backbone_checklist(species)
+keys <- keys_df$usageKey
+# [1] "Q2M4" "9WLSS"
+
+# Search occurrences with COL XR keys
+occ1 <- occ_search(taxonKey = keys[1], limit = 100)
+occ2 <- occ_search(taxonKey = keys[2], limit = 100)
+
+# Create download request with COL XR keys
+occ_download(
+  pred_in("taxonKey", keys),
+  pred("hasCoordinate", TRUE),
+  pred("country", "US")
+)
+```
+
+The workflow structure remains the same, but the keys are now alpha-numeric strings instead of numbers.

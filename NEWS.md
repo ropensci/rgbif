@@ -1,3 +1,66 @@
+rgbif 3.9.0 (Development version)
+=================================
+
+### BREAKING CHANGES
+
+**Default taxonomy changed from GBIF Backbone to COL (Catalogue of Life) Extended Release** (#XXX)
+
+The following functions now use COL Extended Release (`checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b"`) as the default taxonomy:
+
+* `name_backbone()` - Returns COL XR alpha-numeric taxon keys (e.g., "Q2M4") instead of numeric GBIF Backbone keys
+* `name_backbone_checklist()` - Matches names against COL XR by default  
+* `occ_search()` - Searches using COL XR taxonomy
+* `occ_download()` - Creates downloads with COL XR taxonomy
+* `occ_download_prep()` - Prepares downloads with COL XR taxonomy
+* `pred()`, `pred_factory()`, `parse_pred()`, `parse_predicates()` - Download predicates use COL XR keys
+* `map_fetch()` - Fetches maps using COL XR taxonomy
+* `mvt_fetch()` - Fetches map vector tiles using COL XR taxonomy
+
+**Migration guide:**
+
+COL Extended Release uses alpha-numeric taxon keys (e.g., "Q2M4", "9WLSS") instead of numeric keys. Use `name_backbone()` to get the new keys for your species of interest.
+
+To continue using GBIF Backbone Taxonomy, set `checklistKey = NULL`:
+
+```r
+# Use GBIF Backbone
+name_backbone("Calopteryx splendens", checklistKey = NULL)
+occ_search(taxonKey = 5231190, checklistKey = NULL)
+occ_download(pred("taxonKey", 5231190), checklistKey = NULL)
+```
+
+**Deprecation warnings added:**
+
+The following functions only work with the **out-of-date GBIF Backbone Taxonomy** and do **not** support the `checklistKey` parameter. These functions now show a deprecation warning and may be removed in a future version. Consider using the `rcol` package instead for COL Extended Release support:
+
+* `name_lookup()` - Only searches GBIF Backbone, cannot search COL XR (use `rcol::col_search()` instead)
+* `name_suggest()` - Only searches GBIF Backbone, cannot search COL XR (use `rcol::col_suggest()` instead)
+* `name_usage()` - Only works with GBIF Backbone keys, cannot use COL XR keys (use `rcol::col_usage()` instead)
+
+### DOCUMENTATION
+
+Updated all examples and vignettes to use COL Extended Release alpha-numeric taxon keys. Added explanatory comments about the taxonomy change and how to use GBIF Backbone when needed.
+
+Added new vignette **"Migration Guide - COL Extended Release as Default"** (`vignette("col_migration_guide")`) with comprehensive guidance on updating existing code, including:
+
+* Before/after code examples for all affected functions
+* Step-by-step migration instructions
+* Common issues and solutions
+* Complete workflow migration examples
+* Guidance on when to use GBIF Backbone vs COL XR
+
+### NEW FEATURES
+
+**New function: `gbif_to_col()`** - Convert GBIF Backbone numeric taxon keys to COL Extended Release alpha-numeric keys. This convenience function helps migrate existing code that uses hardcoded GBIF Backbone keys:
+
+```r
+# Convert single or multiple keys
+gbif_to_col(5231190)  # Returns COL XR key "Q2M4"
+gbif_to_col(c(5231190, 2435099, 2877951))
+```
+
+The function uses the GBIF species matching API with `scientificNameID` to resolve keys and returns a tibble with match quality information.
+
 rgbif 3.8.5
 ===========
 

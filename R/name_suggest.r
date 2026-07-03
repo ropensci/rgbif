@@ -64,6 +64,8 @@ name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL,
                          start=NULL, limit=100, 
                          curlopts = list(http_version = 2)) {
   
+  warning("name_suggest() only works with the out-of-date GBIF Backbone Taxonomy and does not support COL (Catalogue of Life) Extended Release. Consider using rcol::col_suggest() instead for COL XR support.", call. = FALSE)
+  
   if(limit > 100) { warning("Max limit is 100."); limit <- 100} 
   url <- paste0(gbif_base(), '/species/suggest')
   rank <- as_many_args(rank)

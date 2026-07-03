@@ -7,7 +7,8 @@ skip_if_not_installed("magick")
 
 test_that("map_fetch png", {
   vcr::use_cassette("map_fetch_png",{
-  pp <- map_fetch(taxonKey = 212, year = 2010)
+  # Use GBIF Backbone numeric key for backward compatibility with VCR cassettes
+  pp <- map_fetch(taxonKey = 212, checklistKey = NULL, year = 2010)
   }, preserve_exact_body_bytes = TRUE)
   
   expect_is(pp, "magick-image")
@@ -15,7 +16,8 @@ test_that("map_fetch png", {
 
 test_that("map_fetch terra", {
   vcr::use_cassette("map_fetch_terra",{
-    tt <- map_fetch(taxonKey = 212, year = 2010,return="terra",plot_terra=FALSE)
+    # Use GBIF Backbone numeric key for backward compatibility with VCR cassettes
+    tt <- map_fetch(taxonKey = 212, checklistKey = NULL, year = 2010,return="terra",plot_terra=FALSE)
     ttt <- map_fetch(return="terra",x=0)
     tttt <- map_fetch(return="terra",x=0,y=0,z=1)
   }, preserve_exact_body_bytes = TRUE)

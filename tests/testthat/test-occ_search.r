@@ -1,14 +1,15 @@
 # testthat::test_file("tests/testthat/test-occ_search.r")
 context("occ_search")
 
+# Use GBIF Backbone numeric key for backward compatibility with VCR cassettes
 key <- 3118771
 
 # Search by key
 test_that("returns the correct class", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_search", {
-    tt <- occ_search(taxonKey=key, limit=2)
-    uu <- occ_search(taxonKey=key, limit=20)
+    tt <- occ_search(taxonKey=key, limit=2, checklistKey = NULL)
+    uu <- occ_search(taxonKey=key, limit=20, checklistKey = NULL)
   }, preserve_exact_body_bytes = TRUE)
 
   expect_is(tt, "gbif")
@@ -67,7 +68,7 @@ test_that("returns the correct class", {
 test_that("returns the correct class", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_search_taxonkey", {
-    out <- occ_search(taxonKey=key,limit=2)
+    out <- occ_search(taxonKey=key,limit=2, checklistKey = NULL)
   }, preserve_exact_body_bytes = TRUE)
 
   expect_is(out, "gbif")
@@ -83,7 +84,7 @@ test_that("returns the correct class", {
 # Taxonomic hierarchy data
 test_that("returns the correct class", {
   vcr::use_cassette("occ_search_hierarchy_data", {
-    out <- occ_search(taxonKey=key, limit=2)
+    out <- occ_search(taxonKey=key, limit=2, checklistKey = NULL)
   }, preserve_exact_body_bytes = TRUE)
 
   expect_is(out$hierarchy, "list")

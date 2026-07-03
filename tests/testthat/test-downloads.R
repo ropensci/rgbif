@@ -14,12 +14,12 @@ test_that("GbifQueue fails well", {
 
 test_that("GbifQueue works with occ_download inputs", {
   skip_on_cran()
-
+  # Use GBIF Backbone for test compatibility
   x <- GbifQueue$new(
-    occ_download(pred('taxonKey', 5231190), pred("year", 1976)),
-    occ_download(pred('taxonKey', 5231190), pred("year", 2001)),
+    occ_download(pred('taxonKey', 5231190), pred("year", 1976), checklistKey = NULL),
+    occ_download(pred('taxonKey', 5231190), pred("year", 2001), checklistKey = NULL),
     occ_download(pred('taxonKey', 5231190), pred("year", 2001),
-      pred_lte("month", 8))
+      pred_lte("month", 8), checklistKey = NULL)
   )
   
   expect_is(x, "GbifQueue")

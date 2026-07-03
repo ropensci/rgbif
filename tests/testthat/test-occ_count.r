@@ -4,7 +4,8 @@ context("occ_count")
 test_that("occ_count", {
   vcr::use_cassette("occ_count", {
     aa <- occ_count()
-    bb <- occ_count(taxonKey=212, year="2000,2011")
+    # Use GBIF Backbone for backward compatibility with VCR cassettes
+    bb <- occ_count(taxonKey=212, year="2000,2011", checklistKey = NULL)
     cc <- occ_count(year=2012)
     dd <- occ_count(occurrenceStatus = "ABSENT")
     ee <- occ_count(basisOfRecord="MATERIAL_SAMPLE",organismQuantity=5)
@@ -38,7 +39,8 @@ test_that("occ_count", {
 test_that("occ_count facets work", {
   vcr::use_cassette("occ_count_facet", {
     aa <- occ_count(facet="year",occurrenceStatus = NULL)
-    bb <- occ_count(facet="year",taxonKey=212, year="2000,2003")
+    # Use GBIF Backbone for backward compatibility with VCR cassettes
+    bb <- occ_count(facet="year",taxonKey=212, year="2000,2003", checklistKey = NULL)
     cc <- occ_count(facet="country",facetLimit=2)
     dd <- occ_count(facet="occurrenceStatus",occurrenceStatus=NULL)
     ee <- occ_count(facet="basisOfRecord",basisOfRecord="MATERIAL_SAMPLE",organismQuantity=5)

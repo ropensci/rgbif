@@ -7,7 +7,8 @@ email <- 'foo@bar.com'
 type <- 'and'
 
 test_that("occ_download input parsing", {
-  aa <- parse_predicates(user, email, type, "DWCA", NULL, pred("taxonKey", 7228682))
+  # Test with COL XR alpha-numeric key (new default behavior)
+  aa <- parse_predicates(user, email, type, "DWCA", NULL, pred("taxonKey", "Q2M4"))
   expect_is(aa, "list")
   expect_named(aa, c("creator", "notification_address", "format", "predicate"))
   expect_is(aa$predicate$type, "character")
@@ -15,7 +16,7 @@ test_that("occ_download input parsing", {
   expect_equal(aa$predicate$type[1], "equals")
   expect_equal(unclass(aa$predicate$type), "equals")
   expect_equal(unclass(aa$predicate$key), "TAXON_KEY")
-  expect_equal(unclass(aa$predicate$value), "7228682")
+  expect_equal(unclass(aa$predicate$value), "Q2M4")
   expect_null(aa$predicate$predicates)
 
   bb <- parse_predicates(user, email, type, "DWCA", NULL, pred("hasCoordinate", TRUE))
@@ -40,8 +41,9 @@ test_that("occ_download input parsing", {
     "POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))")
   expect_null(cc$predicate$predicates)
 
+  # Test with COL XR alpha-numeric key
   aa <- parse_predicates(user, email, type, "DWCA", NULL,
-    pred('taxonKey', 7228682),
+    pred('taxonKey', "Q2M4"),
     pred('hasCoordinate', TRUE),
     pred('hasGeospatialIssue', FALSE),
     pred_within('POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))')

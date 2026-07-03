@@ -5,7 +5,8 @@ test_that("mvt_fetch", {
   skip_if_not_installed("protolite")
   skip_if_not_installed("sf")
 
-  x <- mvt_fetch(taxonKey = 2480498, year = 2002)
+  # Use GBIF Backbone numeric key for backward compatibility with VCR cassettes
+  x <- mvt_fetch(taxonKey = 2480498, checklistKey = NULL, year = 2002)
   expect_is(x, "sf")
   expect_is(x$total, "numeric")
   expect_is(x$geometry, "sfc")

@@ -2,8 +2,9 @@ test_that("occ_download_cancel", {
   skip_on_cran()
 
   vcr::use_cassette("occ_download_cancel_prep", {
+    # Use GBIF Backbone for backward compatibility with VCR cassettes
     zzz <- occ_download(pred("taxonKey", 9206251),
-      pred_in("country", c("US", "CA")), pred_gte("year", 1979))
+      pred_in("country", c("US", "CA")), pred_gte("year", 1979), checklistKey = NULL)
   }, match_requests_on = c("method", "uri", "body"))
 
   Sys.sleep(1)

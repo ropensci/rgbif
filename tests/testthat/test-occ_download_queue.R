@@ -15,10 +15,11 @@ test_that("occ_download_queue: real request works", {
   skip_on_ci()
 
   vcr::use_cassette("occ_download_queue", {
+    # Use GBIF Backbone for backward compatibility with VCR cassettes
     tt <- occ_download_queue(
-      occ_download(pred("country", "NZ"), pred("year", 1993), pred("month", 1)),
-      occ_download(pred("catalogNumber", "Bird.27847588"), pred("year", 1971), pred("month", 4)),
-      occ_download(pred("taxonKey", 2435240), pred("year", 1974), pred("month", 2))
+      occ_download(pred("country", "NZ"), pred("year", 1993), pred("month", 1), checklistKey = NULL),
+      occ_download(pred("catalogNumber", "Bird.27847588"), pred("year", 1971), pred("month", 4), checklistKey = NULL),
+      occ_download(pred("taxonKey", 2435240), pred("year", 1974), pred("month", 2), checklistKey = NULL)
     )
   }, match_requests_on = c("method", "uri", "body"))
 

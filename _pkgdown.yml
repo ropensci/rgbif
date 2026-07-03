@@ -90,6 +90,32 @@ reference:
       - occ_facet
       - occ_issues
 
+articles:
+  - title: "Getting Started"
+    navbar: ~
+    contents:
+      - rgbif
+      - col_migration_guide
+  - title: "Taxonomic Names"
+    contents:
+      - taxonomic_names
+  - title: "Occurrences"
+    contents:
+      - getting_occurrence_data
+      - effectively_using_occ_search
+      - occ_counts
+      - downloading_a_long_species_list
+      - gbif_sql_downloads
+  - title: "Maps and Visualization"
+    contents:
+      - creating_maps_from_occurrences
+  - title: "Other Topics"
+    contents:
+      - gbif_citations
+      - gbif_credentials
+      - getting_dataset_info
+      - multiple_values
+
 development:
   mode: auto
   version_label: default
