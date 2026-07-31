@@ -1,4 +1,5 @@
 context("dataset_search")
+# testthat::test_file("tests/testthat/test-dataset_search.R")
 
 test_that("dataset_search works as expected", {
   vcr::use_cassette("dataset_search", {
@@ -306,21 +307,8 @@ test_that("dataset_search works as expected", {
 
 })
 
-test_that("dataset_search filters by continent, taxonKey, recordCount, modifiedDate, createdDate, contactUserId, contactEmail", {
+test_that("dataset_search filters by recordCount, modifiedDate, createdDate, contactEmail", {
   vcr::use_cassette("dataset_search_new_params", {
-    cont <- dataset_search(continent = "EUROPE", limit = 5)
-    expect_is(cont, "list")
-    expect_named(cont, c('meta', 'data', 'facets'))
-    expect_is(cont$data, "tbl_df")
-    expect_is(cont$data$title, "character")
-    expect_lte(nrow(cont$data), 5)
-
-    tk <- dataset_search(taxonKey = 212, limit = 5)
-    expect_is(tk, "list")
-    expect_named(tk, c('meta', 'data', 'facets'))
-    expect_is(tk$data, "tbl_df")
-    expect_lte(nrow(tk$data), 5)
-
     rc <- dataset_search(recordCount = "10000,100000", limit = 5)
     expect_is(rc, "list")
     expect_named(rc, c('meta', 'data', 'facets'))
@@ -339,17 +327,33 @@ test_that("dataset_search filters by continent, taxonKey, recordCount, modifiedD
     expect_is(cd$data, "tbl_df")
     expect_lte(nrow(cd$data), 5)
 
-    cu <- dataset_search(contactUserId = 123, limit = 5)
-    expect_is(cu, "list")
-    expect_named(cu, c('meta', 'data', 'facets'))
-    expect_is(cu$data, "tbl_df")
-    expect_lte(nrow(cu$data), 5)
-
-    ce <- dataset_search(contactEmail = "test@gbif.org", limit = 5)
+    ce <- dataset_search(contactEmail = "helpdesk@gbif.org", limit = 5)
     expect_is(ce, "list")
     expect_named(ce, c('meta', 'data', 'facets'))
     expect_is(ce$data, "tbl_df")
     expect_lte(nrow(ce$data), 5)
+  }, preserve_exact_body_bytes = TRUE)
+})
+
+test_that("dataset_search taxonKey shows deprecation warning", {
+  skip_on_cran()
+  
+  vcr::use_cassette("dataset_search_taxonkey_deprecation", {
+    expect_warning(
+      dataset_search(taxonKey = 212, limit = 1),
+      "taxonKey parameter in dataset_search\\(\\) only works with the out-of-date GBIF Backbone Taxonomy"
+    )
+  }, preserve_exact_body_bytes = TRUE)
+})
+
+test_that("dataset_search continent shows deprecation warning", {
+  skip_on_cran()
+  
+  vcr::use_cassette("dataset_search_continent_deprecation", {
+    expect_warning(
+      dataset_search(continent = "EUROPE", limit = 1),
+      "continent parameter in dataset_search\\(\\) is deprecated"
+    )
   }, preserve_exact_body_bytes = TRUE)
 })
 

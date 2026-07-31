@@ -1,4 +1,6 @@
 context("name_usage")
+# testthat::test_file("tests/testthat/test-name_usage.R")
+
 
 test_that("name_usage return parameter works", {
   skip_on_cran() # because fixture in .Rbuildignore
@@ -20,8 +22,8 @@ test_that("name_usage return parameter works", {
 
 test_that("name_usage works", {
   vcr::use_cassette("name_usage", {
-    tt <- name_usage(key = 1)
-    uu <- name_usage(key = 5231190, data = 'references')
+    tt <- suppressWarnings(name_usage(key = 1))
+    uu <- suppressWarnings(name_usage(key = 5231190, data = 'references'))
   }, preserve_exact_body_bytes = TRUE)
 
   expect_is(tt, "gbif")
@@ -47,8 +49,8 @@ test_that("name_usage works", {
 
 test_that("name_usage name route works", {
   vcr::use_cassette("name_usage_data_name", {
-    rte1 <- name_usage(key = 5231190, data = 'name')
-    rte1a <- name_usage(key = 5127291, data = 'name')
+    rte1 <- suppressWarnings(name_usage(key = 5231190, data = 'name'))
+    rte1a <- suppressWarnings(name_usage(key = 5127291, data = 'name'))
   })
   expect_is(rte1, "gbif")
   expect_is(rte1a, "gbif")
@@ -60,8 +62,8 @@ test_that("name_usage name route works", {
 
 test_that("name_usage parents route works", {
   vcr::use_cassette("name_usage_data_parents", {
-    rte2 <- name_usage(key = 5231190, data = 'parents')
-    rte2a <- name_usage(key = 5135783, data = 'parents')
+    rte2 <- suppressWarnings(name_usage(key = 5231190, data = 'parents'))
+    rte2a <- suppressWarnings(name_usage(key = 5135783, data = 'parents'))
   }, preserve_exact_body_bytes = TRUE)
 
   expect_is(rte2, "gbif")
@@ -74,8 +76,8 @@ test_that("name_usage parents route works", {
 
 test_that("name_usage children route works", {
   vcr::use_cassette("name_usage_data_children", {
-    rte3 <- name_usage(key = 5231190, data = 'children')
-    rte3a <- name_usage(key = 5135790, data = 'children')
+    rte3 <- suppressWarnings(name_usage(key = 5231190, data = 'children'))
+    rte3a <- suppressWarnings(name_usage(key = 5135790, data = 'children'))
   }, preserve_exact_body_bytes = TRUE)
 
   expect_is(rte3, "gbif")
@@ -88,8 +90,8 @@ test_that("name_usage children route works", {
 
 test_that("name_usage related route works", {
   vcr::use_cassette("name_usage_data_related", {
-    rte4 <- name_usage(key = 5231190, data = 'related')
-    rte4a <- name_usage(key = 5135787, data = 'related')
+    rte4 <- suppressWarnings(name_usage(key = 5231190, data = 'related'))
+    rte4a <- suppressWarnings(name_usage(key = 5135787, data = 'related'))
   }, preserve_exact_body_bytes = TRUE)
   expect_is(rte4, "gbif")
   expect_is(rte4a, "gbif")
@@ -101,8 +103,8 @@ test_that("name_usage related route works", {
 
 test_that("name_usage synonyms route works", {
   vcr::use_cassette("name_usage_data_synonyms", {
-    rte5 <- name_usage(key = 5231190, data = 'synonyms')
-    rte5a <- name_usage(key = 5135790, data = 'synonyms')
+    rte5 <- suppressWarnings(name_usage(key = 5231190, data = 'synonyms'))
+    rte5a <- suppressWarnings(name_usage(key = 5135790, data = 'synonyms'))
   })
   expect_is(rte5, "gbif")
   expect_is(rte5a, "gbif")
@@ -114,8 +116,8 @@ test_that("name_usage synonyms route works", {
 
 test_that("name_usage descriptions route works", {
   vcr::use_cassette("name_usage_data_descriptions", {
-    rte6 <- name_usage(key = 5231190, data = 'descriptions')
-    rte6a <- name_usage(key = 5127299, data = 'descriptions')
+    rte6 <- suppressWarnings(name_usage(key = 5231190, data = 'descriptions'))
+    rte6a <- suppressWarnings(name_usage(key = 5127299, data = 'descriptions'))
   }, preserve_exact_body_bytes = TRUE)
 
   expect_is(rte6, "gbif")
@@ -128,8 +130,8 @@ test_that("name_usage descriptions route works", {
 
 test_that("name_usage distributions route works", {
   vcr::use_cassette("name_usage_data_distributions", {
-    rte7 <- name_usage(key = 5231190, data = 'distributions')
-    rte7a <- name_usage(key = 5231190, data = 'distributions')
+    rte7 <- suppressWarnings(name_usage(key = 5231190, data = 'distributions'))
+    rte7a <- suppressWarnings(name_usage(key = 5231190, data = 'distributions'))
   }, preserve_exact_body_bytes = TRUE)
   expect_is(rte7, "gbif")
   expect_is(rte7a, "gbif")
@@ -141,8 +143,8 @@ test_that("name_usage distributions route works", {
 
 test_that("name_usage media route works", {
   vcr::use_cassette("name_usage_data_media", {
-    rte8 <- name_usage(key = 5231190, data = 'media')
-    rte8a <- name_usage(key = 5231190, data = 'media')
+    rte8 <- suppressWarnings(name_usage(key = 5231190, data = 'media'))
+    rte8a <- suppressWarnings(name_usage(key = 5231190, data = 'media'))
   })
   expect_is(rte8, "gbif")
   expect_is(rte8a, "gbif")
@@ -154,8 +156,8 @@ test_that("name_usage media route works", {
 
 test_that("name_usage references route works", {
   vcr::use_cassette("name_usage_data_references", {
-    rte9 <- name_usage(key = 5231190, data = 'references')
-    rte9a <- name_usage(key = 5231190, data = 'references')
+    rte9 <- suppressWarnings(name_usage(key = 5231190, data = 'references'))
+    rte9a <- suppressWarnings(name_usage(key = 5231190, data = 'references'))
   }, preserve_exact_body_bytes = TRUE)
 
   expect_is(rte9, "gbif")
@@ -168,8 +170,8 @@ test_that("name_usage references route works", {
 
 test_that("name_usage speciesProfiles route works", {
   vcr::use_cassette("name_usage_data_speciesProfiles", {
-    rte10 <- name_usage(key = 5231190, data = 'speciesProfiles')
-    rte10a <- name_usage(key = 5136020, data = 'speciesProfiles')
+    rte10 <- suppressWarnings(name_usage(key = 5231190, data = 'speciesProfiles'))
+    rte10a <- suppressWarnings(name_usage(key = 5136020, data = 'speciesProfiles'))
   })
   expect_is(rte10, "gbif")
   expect_is(rte10a, "gbif")
@@ -181,8 +183,8 @@ test_that("name_usage speciesProfiles route works", {
 
 test_that("name_usage vernacularNames route works", {
   vcr::use_cassette("name_usage_data_vernacularNames", {
-    rte11 <- name_usage(key = 5231190, data = 'vernacularNames')
-    rte11a <- name_usage(key = 5136034, data = 'vernacularNames')
+    rte11 <- suppressWarnings(name_usage(key = 5231190, data = 'vernacularNames'))
+    rte11a <- suppressWarnings(name_usage(key = 5136034, data = 'vernacularNames'))
   }, preserve_exact_body_bytes = TRUE)
   expect_is(rte11, "gbif")
   expect_is(rte11a, "gbif")
@@ -194,8 +196,8 @@ test_that("name_usage vernacularNames route works", {
 
 test_that("name_usage typeSpecimens route works", {
   vcr::use_cassette("name_usage_data_typeSpecimens", {
-    rte12 <- name_usage(key = 5231190, data = 'typeSpecimens')
-    rte12a <- name_usage(key = 5097652, data = 'typeSpecimens')
+    rte12 <- suppressWarnings(name_usage(key = 5231190, data = 'typeSpecimens'))
+    rte12a <- suppressWarnings(name_usage(key = 5097652, data = 'typeSpecimens'))
     })
   expect_is(rte12, "gbif")
   expect_is(rte12a, "gbif")
@@ -208,8 +210,8 @@ test_that("name_usage typeSpecimens route works", {
 
 test_that("name_usage iucnRedListCategory route works", {
   vcr::use_cassette("name_usage_data_iucnRedListCategory", {
-    iucn_a <- name_usage(key = 7412043, data = 'iucnRedListCategory')
-    iucn_b <- name_usage(key = 5097652, data = 'iucnRedListCategory')
+    iucn_a <- suppressWarnings(name_usage(key = 7412043, data = 'iucnRedListCategory'))
+    iucn_b <- suppressWarnings(name_usage(key = 5097652, data = 'iucnRedListCategory'))
   })
   expect_is(iucn_a, "gbif")
   expect_is(iucn_b, "gbif")
@@ -222,25 +224,36 @@ test_that("name_usage iucnRedListCategory route works", {
 test_that("name_usage fails correctly", {
   vcr::use_cassette("name_usage_fails_well", {
     ### verbatim not working right now for some unknown reason
-    expect_error(name_usage(key = 5231190, data = 'verbatim'))
+    expect_error(suppressWarnings(name_usage(key = 5231190, data = 'verbatim')))
     # Select many options, doesn't work
-    expect_error(name_usage(key = 5231190, data = c('media', 'synonyms')))
+    expect_error(suppressWarnings(name_usage(key = 5231190, data = c('media', 'synonyms'))))
 
     # fails with more than 1 value
     keys <- c("73605f3a-af85-4ade-bbc5-522bfb90d847",
       "d7c60346-44b6-400d-ba27-8d3fbeffc8a5")
-    expect_error(name_usage(datasetKey = keys),
+    expect_error(suppressWarnings(name_usage(datasetKey = keys)),
       "length\\(datasetKey\\) == 1 is not TRUE")
 
-    expect_error(name_usage(language = c('spanish', 'german')),
+    expect_error(suppressWarnings(name_usage(language = c('spanish', 'german'))),
       "length\\(language\\) == 1 is not TRUE")
 
-    expect_error(name_usage(name = c('Quercus', 'Puma')),
+    expect_error(suppressWarnings(name_usage(name = c('Quercus', 'Puma'))),
     "length\\(name\\) == 1 is not TRUE")
 
-    expect_error(name_usage(rank = c('GENUS', 'SPECIES')),
+    expect_error(suppressWarnings(name_usage(rank = c('GENUS', 'SPECIES'))),
     "length\\(rank\\) == 1 is not TRUE")
   })
+})
+
+test_that("name_usage shows deprecation warning", {
+  skip_on_cran() # because fixture in .Rbuildignore
+
+  vcr::use_cassette("name_usage_deprecation", {
+    expect_warning(
+      name_usage(key = 1),
+      "name_usage\\(\\) only works with the out-of-date GBIF Backbone Taxonomy"
+    )
+  }, preserve_exact_body_bytes = TRUE)
 })
 
 

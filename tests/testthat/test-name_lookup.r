@@ -1,11 +1,13 @@
 context("name_lookup")
+# testthat::test_file("tests/testthat/test-name_lookup.R")
+
 
 test_that("returns the correct class", {
   skip_on_cran() # because fixture in .Rbuildignore
   
   vcr::use_cassette("name_lookup", {
-    tt <- name_lookup(query='mammalia')
-    uu <- name_lookup(query='Cnaemidophorus', rank="genus")
+    tt <- suppressWarnings(name_lookup(query='mammalia'))
+    uu <- suppressWarnings(name_lookup(query='Cnaemidophorus', rank="genus"))
   }, preserve_exact_body_bytes = TRUE)
 
   expect_is(tt, "gbif")
@@ -29,15 +31,15 @@ test_that("returns the correct class", {
 test_that("works with habitat parameter", {
   vcr::use_cassette("name_lookup_habitat", {
     # with facet
-    fachab <- name_lookup(facet='habitat', limit=0)
+    fachab <- suppressWarnings(name_lookup(facet='habitat', limit=0))
 
     # with habitat parameter used
-    facet_terr <- name_lookup(habitat = "terrestrial", limit=2)
-    facet_mar <- name_lookup(habitat = "marine", limit=2)
-    facet_fresh <- name_lookup(habitat = "freshwater", limit=2)
+    facet_terr <- suppressWarnings(name_lookup(habitat = "terrestrial", limit=2))
+    facet_mar <- suppressWarnings(name_lookup(habitat = "marine", limit=2))
+    facet_fresh <- suppressWarnings(name_lookup(habitat = "freshwater", limit=2))
 
     # another test
-    out <- name_lookup(habitat = "terrestrial")
+    out <- suppressWarnings(name_lookup(habitat = "terrestrial"))
   }, preserve_exact_body_bytes = TRUE)
   
   expect_is(fachab, "gbif")
@@ -61,9 +63,9 @@ test_that("works with parameters that allow many inputs", {
   skip_on_cran() # because fixture in .Rbuildignore
 
   vcr::use_cassette("name_lookup_many_inputs", {
-    aa <- name_lookup(status = c("misapplied", "synonym"), limit = 200)
-    bb <- name_lookup(nameType = c("cultivar", "doubtful"), limit = 200)
-    cc <- name_lookup(origin = c("implicit_name", "proparte"), limit = 250)
+    aa <- suppressWarnings(name_lookup(status = c("misapplied", "synonym"), limit = 200))
+    bb <- suppressWarnings(name_lookup(nameType = c("cultivar", "doubtful"), limit = 200))
+    cc <- suppressWarnings(name_lookup(origin = c("implicit_name", "proparte"), limit = 250))
   }, preserve_exact_body_bytes = TRUE)
 
   expect_is(aa, "gbif")
@@ -98,8 +100,8 @@ test_that("paging: name_usage returns as many records as asked, limit > 1000", {
   vcr::use_cassette("name_lookup_paging1", {
     # https://www.gbif.org/dataset/a5224e5b-6379-4d33-a29d-14b56015893d
     # 1051 total records (any origin, i.e. SOURCE and DENORMED_CLASSIFICATION)
-    aa <- name_lookup(datasetKey = "a5224e5b-6379-4d33-a29d-14b56015893d",
-                                          limit = 1001)
+    aa <- suppressWarnings(name_lookup(datasetKey = "a5224e5b-6379-4d33-a29d-14b56015893d",
+                                          limit = 1001))
   }, preserve_exact_body_bytes = TRUE)
 
   expect_is(aa, "gbif")
@@ -115,10 +117,10 @@ test_that("paging: class data and meta not modified by paging", {
   skip_on_cran() # because fixture in .Rbuildignore
   
   vcr::use_cassette("name_lookup_paging2", {
-    bb1 <- name_lookup(datasetKey = "a5224e5b-6379-4d33-a29d-14b56015893d",
-                     limit = 1)
-    bb2 <- name_lookup(datasetKey = "a5224e5b-6379-4d33-a29d-14b56015893d",
-                      limit = 1002)
+    bb1 <- suppressWarnings(name_lookup(datasetKey = "a5224e5b-6379-4d33-a29d-14b56015893d",
+                     limit = 1))
+    bb2 <- suppressWarnings(name_lookup(datasetKey = "a5224e5b-6379-4d33-a29d-14b56015893d",
+                      limit = 1002))
   }, preserve_exact_body_bytes = TRUE)
 
   expect_true(all(class(bb1) == class(bb2)))
@@ -132,8 +134,8 @@ test_that("paging: name_usage returns all records from dataset: limit > n_record
   vcr::use_cassette("name_lookup_paging3", {
     #https://www.gbif.org/dataset/a5224e5b-6379-4d33-a29d-14b56015893d
     # 1051 total records (any origin, i.e. SOURCE and DENORMED_CLASSIFICATION)
-    cc <- name_lookup(datasetKey = "a5224e5b-6379-4d33-a29d-14b56015893d",
-                      limit = 5000)
+    cc <- suppressWarnings(name_lookup(datasetKey = "a5224e5b-6379-4d33-a29d-14b56015893d",
+                      limit = 5000))
   }, preserve_exact_body_bytes = TRUE)
 
   expect_gte(cc$meta$offset, 1000)
@@ -149,7 +151,7 @@ test_that("paging: name_usage returns all records from dataset: limit > n_record
 test_that("name_lookup constituentKey works as expected.", {
 
   vcr::use_cassette("name_lookup_constituentKey", {
-    aa <- name_lookup(constituentKey = "7ddf754f-d193-4cc9-b351-99906754a03b")
+    aa <- suppressWarnings(name_lookup(constituentKey = "7ddf754f-d193-4cc9-b351-99906754a03b"))
   }, preserve_exact_body_bytes = TRUE)
 
   expect_is(aa, "gbif")
@@ -164,11 +166,22 @@ test_that("name_lookup handles no results without failing", {
   skip_on_cran() # because fixture in .Rbuildignore
 
   vcr::use_cassette("name_lookup_no_results", {
-    cc <- name_lookup(query = "Zwartbuikrotgans", 
+    cc <- suppressWarnings(name_lookup(query = "Zwartbuikrotgans", 
       datasetKey = "4dd32523-a3a3-43b7-84df-4cda02f15cf7",
-      higherTaxonKey = 162310263)
+      higherTaxonKey = 162310263))
   }, preserve_exact_body_bytes = TRUE)
 
   expect_is(cc$data, "tbl_df")
   expect_gte(NROW(cc$data), 0)
+})
+
+test_that("name_lookup shows deprecation warning", {
+  skip_on_cran() # because fixture in .Rbuildignore
+
+  vcr::use_cassette("name_lookup_deprecation", {
+    expect_warning(
+      name_lookup(query = "Animalia", limit = 1),
+      "name_lookup\\(\\) only works with the out-of-date GBIF Backbone Taxonomy"
+    )
+  }, preserve_exact_body_bytes = TRUE)
 })

@@ -1,7 +1,7 @@
 #' @param taxonKey (numeric) A taxon key from the GBIF backbone. All included 
 #' and synonym taxa are included in the search, so a search for aves with 
 #' taxononKey=212 will match all birds, no matter which species. You can pass 
-#' many keys to \code{occ_search(taxonKey=c(1,212))}.
+#' many keys to \code{occ_search(taxonKey=c("N","V2"))}.
 #' @param scientificName A scientific name from the GBIF backbone. All included
 #' and synonym taxa are included in the search.
 #' @param country (character) The 2-letter country code (ISO-3166-1) 
@@ -241,7 +241,7 @@
 #' @param taxonomicStatus (character) A taxonomic status. Example : SYNONYM
 #' @param acceptedTaxonKey (numeric) A taxon key from the GBIF backbone. Only 
 #' synonym taxa are included in the search, so a search for Aves with 
-#' acceptedTaxonKey=212 will match occurrences identified as birds, but not 
+#' acceptedTaxonKey="V2" will match occurrences identified as birds, but not 
 #' any known family, genus or species of bird.
 #' @param collectionKey (character) A key (UUID) for a collection registered in 
 #' the Global Registry of Scientific Collections. 

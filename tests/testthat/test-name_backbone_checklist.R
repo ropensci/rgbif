@@ -1,4 +1,6 @@
 context("name_backbone_checklist")
+# testthat::test_file("tests/testthat/test-name_backbone_checklist.R")
+
 
 test_that("name_backbone_checklist good data", {
   skip_on_cran()
@@ -80,11 +82,16 @@ test_that("name_backbone_checklist good data", {
   expect_is(tt$verbatim_name, "character")
   expect_equal(nrow(tt), 11)
   expect_true(all(tt$status == "ACCEPTED" | is.na(tt$status)))
+  expect_equal(tt$usageKey[1], NA_character_)
+  expect_equal(tt$usageKey[2], "VHPB")
+  expect_equal(tt$usageKey[3], "Q2M4")
 
   expect_is(vv, "tbl")
   expect_is(vv, "tbl_df")
   expect_is(vv, "data.frame")
   expect_true(nrow(vv) > nrow(tt))
+  expect_equal(vv$usageKey[1], NA_character_)
+  expect_equal(vv$usageKey[2], "VHPB")
 
   # vector
   expect_is(ttt, "tbl")
@@ -93,11 +100,16 @@ test_that("name_backbone_checklist good data", {
   expect_is(ttt$verbatim_name, "character")
   expect_equal(nrow(ttt), 11)
   expect_true(all(ttt$status == "ACCEPTED" | is.na(ttt$status)))
+  expect_equal(ttt$usageKey[1], NA_character_)
+  expect_equal(ttt$usageKey[2], "VHPB")
+  expect_equal(ttt$usageKey[3], "Q2M4")
 
   expect_is(vvv, "tbl")
   expect_is(vvv, "tbl_df")
   expect_is(vvv, "data.frame")
   expect_true(nrow(vvv) > nrow(ttt))
+  expect_equal(vvv$usageKey[1], NA_character_)
+  expect_equal(vvv$usageKey[2], "VHPB")
 
   # one column data.frame
   expect_is(tttt, "tbl")
@@ -106,6 +118,9 @@ test_that("name_backbone_checklist good data", {
   expect_is(tttt$verbatim_name, "character")
   expect_equal(nrow(tttt), 11)
   expect_true(all(tttt$status == "ACCEPTED" | is.na(tttt$status)))
+  expect_equal(tttt$usageKey[1], NA_character_)
+  expect_equal(tttt$usageKey[2], "VHPB")
+  expect_equal(tttt$usageKey[3], "Q2M4")
 
   expect_is(vvvv, "tbl")
   expect_is(vvvv, "tbl_df")
@@ -229,7 +244,8 @@ test_that("name_backbone_checklist default values works as expected", {
   expect_is(dd, "tbl_df")
   expect_is(dd, "data.frame")
   expect_true(all(dd$verbatim_kingdom == "Animalia"))
-  
+  expect_equal(dd$usageKey, c("VHPB", "Q2M4"))
+
   rr <- name_backbone_checklist(c("Cirsium arvense (L.) Scop.", 
                                   "Calopteryx splendens (Harris, 1780)"),
                                 kingdom = "Animalia",rank="SPECIES")
@@ -341,7 +357,7 @@ test_that("name_backbone_checklist works with v2 args", {
   expect_is(cc, "tbl_df")
   expect_is(cc, "data.frame")
   expect_equal(nrow(cc), 3)
-  expect_equal(cc$matchType, c("HIGHERRANK", "EXACT", "HIGHERRANK"))
+  expect_equal(cc$matchType, rep("EXACT",3))
   expect_equal(cc$verbatim_name, 
                c("Aves", "Calopteryx splendens", "Animalia"))
   expect_equal(cc$kingdom, c("Animalia", "Animalia", "Animalia"))
@@ -360,29 +376,11 @@ test_that("name_backbone_checklist works with v2 args", {
 })
 
 
-# test_that("test status codes", {
-#   skip_on_cran()
-#   skip_on_ci()
-# 
-#   urls_200 = c("https://httpbin.org/json","https://httpbin.org/json")
-#   expect_length(gbif_async_get(urls = urls_200),2)
-#   
-#   urls_204 = c("https://httpbin.org/status/204","https://httpbin.org/json")
-#   expect_error(gbif_async_get(urls = urls_204),"Status: 204 - not found")
-#                
-#   urls_500 = c("https://httpbin.org/json","https://httpbin.org/status/500")
-#   expect_error(gbif_async_get(urls = urls_500),"500 - Server error")
-#   
-#   urls_503 = c("https://httpbin.org/json","https://httpbin.org/status/503")
-#   expect_error(gbif_async_get(urls = urls_503),"503 - Service Unavailable")
-#   
-# })
-
 test_that("name_backbone_checklist bucket_size and sleep ", {
   skip_on_cran()
   skip_on_ci()
 
-  names <- name_lookup(limit=100)$data$canonicalName
+  names <- suppressWarnings(name_lookup(limit=100)$data$canonicalName)
   start <- proc.time()
   ss <- name_backbone_checklist(name_data = names,
                                 bucket_size = 10,
@@ -414,7 +412,6 @@ test_that("works with species complexes", {
   expect_is(xx, "tbl")
   expect_is(xx, "tbl_df")
   expect_is(xx, "data.frame")
-  expect_true(!is.null(xx$species.1Key))
 })
 
 

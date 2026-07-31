@@ -68,13 +68,13 @@
 #' Internally, the input to `pred*` functions turns into JSON to be sent to
 #' GBIF. For example ...
 #' 
-#' `pred_in("taxonKey", c(2480946, 5229208))` gives:
+#' `pred_in("taxonKey", c("9WLSS", "Q2N2"))` gives:
 #'
 #' ```
 #' {
 #'    "type": "in",
 #'    "key": "TAXON_KEY",
-#'    "values": ["2480946", "5229208"]
+#'    "values": ["9WLSS", "Q2N2"]
 #'  }
 #' ```
 #' 
@@ -88,7 +88,7 @@
 #' }
 #' ```
 #' 
-#' `pred_or(pred("taxonKey", 2977832), pred("taxonKey", 2977901))` gives:
+#' `pred_or(pred("taxonKey", "Q2M4"), pred("taxonKey", "Q2KZ"))` gives:
 #' 
 #' ```
 #' {
@@ -97,12 +97,12 @@
 #'      {
 #'        "type": "equals",
 #'        "key": "TAXON_KEY",
-#'        "value": "2977832"
+#'        "value": "Q2M4"
 #'      },
 #'      {
 #'        "type": "equals",
 #'        "key": "TAXON_KEY",
-#'        "value": "2977901"
+#'        "value": "Q2KZ"
 #'      }
 #'   ]
 #' }
@@ -230,7 +230,7 @@
 
 #' @rdname download_predicate_dsl
 #' @export
-pred <- function(key, value, checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b") pred_factory("=")(key, value, checklistKey)
+pred <- function(key, value, checklistKey = NULL) pred_factory("=")(key, value, checklistKey)
 #' @rdname download_predicate_dsl
 #' @export
 pred_gt <- function(key, value) pred_factory(">")(key, value)
@@ -308,7 +308,7 @@ print.occ_predicate_list <- function(x, ...) {
 
 # helpers
 pred_factory <- function(type) {
-  function(key, value, checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b") {
+  function(key, value, checklistKey = NULL) {
     if (!length(key) == 1) stop("'key' must be length 1", call. = FALSE)
     if (!length(value) == 1) stop("'value' must be length 1", call. = FALSE)
     if (!is.null(checklistKey)) {
@@ -527,10 +527,12 @@ key_lkup <- list(
   INSTITUTION_KEY = "INSTITUTION_KEY"
   )
 
-parse_pred <- function(key, value, type = "and", checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b") {
+parse_pred <- function(key, value, type = "and", checklistKey = NULL) {
   assert(key, "character")
   assert(type, "character")
-  assert(checklistKey, "character")
+  if (!is.null(checklistKey)) {
+    assert(checklistKey, "character")
+  }
 
   ogkey <- key
   key <- key_lkup[[key]]
@@ -650,8 +652,22 @@ parse_predicates <- function(user, email, type, format, verbatim_extensions,
       predicate = list()
     )
   }
-  # Add checklistKey to payload if provided
-  if (!is.null(checklistKey)) {
+  
+  # Helper function to check if any predicate uses TAXON_KEY
+  has_taxon_key <- function(preds) {
+    for (p in preds) {
+      if (inherits(p, "occ_predicate")) {
+        if (!is.null(p$key) && p$key == "TAXON_KEY") return(TRUE)
+      } else if (inherits(p, "occ_predicate_list")) {
+        # Recursively check predicates in lists (for pred_or, pred_and, pred_not)
+        if (has_taxon_key(p)) return(TRUE)
+      }
+    }
+    return(FALSE)
+  }
+  
+  # Add checklistKey to payload only if there are taxonKey predicates
+  if (!is.null(checklistKey) && has_taxon_key(tmp)) {
     payload$checklistKey <- unbox(checklistKey)
   }
   if (any(vapply(tmp, function(w) "predicates" %in% names(w), logical(1)))) {

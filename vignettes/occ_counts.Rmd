@@ -35,7 +35,7 @@ It is usually better to use **taxonKeys** rather than scientific names. Note the
 # name_backbone("Aves")$usageKey
 occ_count(taxonKey=212)
 # total count of birds and insects
-occ_count(taxonKey="212;216")
+occ_count(taxonKey="V2;H6")
 ```
 
 It is possible to get counts by **country** or area using the appropriate 2-letter country code. See `enumeration_country()`.

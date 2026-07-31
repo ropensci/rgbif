@@ -60,7 +60,7 @@ It is required to set up your [GBIF credentials](https://docs.ropensci.org/rgbif
 
 ```r
 # By default, name_backbone() and occ_download() use COL (Catalogue of Life) Extended Release
-# which returns alpha-numeric taxon keys (e.g., "Q2M4" for Pan troglodytes)
+# which returns alpha-numeric taxon keys (e.g., "4C92G" for Pan troglodytes)
 taxonKey <- name_backbone("Pan troglodytes")$usageKey
 occ_download(pred("taxonKey", taxonKey))
 
@@ -68,8 +68,7 @@ occ_download(pred("taxonKey", taxonKey))
 taxonKey_gbif <- name_backbone("Pan troglodytes", checklistKey = NULL)$usageKey  
 occ_download(pred("taxonKey", taxonKey_gbif), checklistKey = NULL)
 
-# Convert existing GBIF Backbone keys to COL XR keys
-gbif_to_col(5231190)  # Returns COL XR key for Calopteryx splendens
+# 4C92G taxonKey for Pan troglodytes in COL Extended Release
 ```
 
 ## Citation 

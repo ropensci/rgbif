@@ -1,0 +1,13 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/species/match?checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&scientificNameID=gbif%3A999999999
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '{"confidence":100,"note":"No name given","matchType":"NONE","synonym":false}'
+  recorded_at: 2026-07-08 13:26:45
+recorded_with: VCR-vcr/2.0.0

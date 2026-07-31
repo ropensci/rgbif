@@ -48,6 +48,8 @@
 
 name_issues <- function(.data, ..., mutate = NULL) {
 
+  warning("name_issues() is deprecated because it depends on name_usage(), which only works with the out-of-date GBIF Backbone Taxonomy and does not support COL (Catalogue of Life) Extended Release.", call. = FALSE)
+
   assert(.data, c("gbif", "gbif_data", "data.frame", "tbl_df"))
 
   check_issues(type = "name", ...)

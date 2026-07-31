@@ -1,4 +1,5 @@
 context("dataset_export")
+# testthat::test_file("tests/testthat/test-dataset_export.R")
 
 skip_on_cran()
 
@@ -107,18 +108,6 @@ test_that("dataset_export works as expected", {
   expect_equal(names(cat_r)[1], "datasetKey")
   expect_is(cat_r,"tbl_df")
   
-  cont_r <- dataset_export(continent = "EUROPE")
-  expect_equal(ncol(cont_r), 17)
-  expect_lt(nrow(cont_r), total_ds)
-  expect_equal(names(cont_r)[1], "datasetKey")
-  expect_is(cont_r,"tbl_df")
-  
-  tk_r <- dataset_export(taxonKey = 212)
-  expect_equal(ncol(tk_r), 17)
-  expect_lt(nrow(tk_r), total_ds)
-  expect_equal(names(tk_r)[1], "datasetKey")
-  expect_is(tk_r,"tbl_df")
-  
   rc_r <- dataset_export(recordCount = "10000,100000")
   expect_equal(ncol(rc_r), 17)
   expect_lt(nrow(rc_r), total_ds)
@@ -149,14 +138,27 @@ test_that("dataset_export works as expected", {
   expect_equal(names(et_r)[1], "datasetKey")
   expect_is(et_r,"tbl_df")
   
-  cu_r <- dataset_export(contactUserId = 123)
-  expect_equal(ncol(cu_r), 17)
-  expect_equal(names(cu_r)[1], "datasetKey")
-  expect_is(cu_r,"tbl_df")
-  
   ce_r <- dataset_export(contactEmail = "helpdesk@gbif.org")
   expect_equal(ncol(ce_r), 17)
   expect_equal(names(ce_r)[1], "datasetKey")
   expect_is(ce_r,"tbl_df")
   
+})
+
+test_that("dataset_export taxonKey shows deprecation warning", {
+  skip_on_cran()
+  
+  expect_warning(
+    dataset_export(taxonKey = 212),
+    "taxonKey parameter in dataset_export\\(\\) only works with the out-of-date GBIF Backbone Taxonomy"
+  )
+})
+
+test_that("dataset_export continent shows deprecation warning", {
+  skip_on_cran()
+  
+  expect_warning(
+    dataset_export(continent = "EUROPE"),
+    "continent parameter in dataset_export\\(\\) is deprecated"
+  )
 })

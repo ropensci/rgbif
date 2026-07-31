@@ -69,7 +69,7 @@ test_that("occ_download_prep long print", {
   expect_output(print(pp),"OK. But too large to print.")
 })
 
-test_that("occ_download_prep with checklistKey", {
+test_that("occ_download_prep with checklistKey but no taxonKey", {
   skip_on_cran()
 
   z <- occ_download_prep(
@@ -81,8 +81,58 @@ test_that("occ_download_prep with checklistKey", {
 
   expect_is(z, "occ_download_prep")
   expect_is(z$request, "list")
-  expect_is(z$request$checklistKey, "scalar")
+  # checklistKey is ignored because no taxonKey predicates are present
+  expect_null(z$request$checklistKey)
+})
+
+test_that("occ_download_prep uses COL XR as default checklistKey", {
+  skip_on_cran()
+
+  # Test with taxonKey predicate - should include default checklistKey
+  z <- occ_download_prep(
+    pred("taxonKey", "Q2M4"),
+    pred("hasCoordinate", TRUE),
+    user = "foo", pwd = "bar", email = "foo@bar.com"
+  )
+
+  expect_is(z, "occ_download_prep")
+  expect_is(z$request, "list")
+  expect_is(z$request$checklistKey, "character")
+  # COL Extended Release UUID should be the default when taxonKey is used
   expect_equal(z$request$checklistKey[1], "7ddf754f-d193-4cc9-b351-99906754a03b")
+})
+
+test_that("occ_download_prep omits checklistKey when no taxonKey predicates", {
+  skip_on_cran()
+
+  # Test without taxonKey predicate - checklistKey should be omitted
+  z <- occ_download_prep(
+    pred("basisOfRecord", "PRESERVED_SPECIMEN"),
+    pred_in("country", c("US", "CA")),
+    user = "foo", pwd = "bar", email = "foo@bar.com"
+  )
+
+  expect_is(z, "occ_download_prep")
+  expect_is(z$request, "list")
+  # checklistKey should not be present when no taxonKey predicates
+  expect_null(z$request$checklistKey)
+})
+
+test_that("occ_download_prep can disable checklistKey with NULL", {
+  skip_on_cran()
+
+  # Test that setting checklistKey = NULL omits it from the request
+  z <- occ_download_prep(
+    pred("basisOfRecord", "PRESERVED_SPECIMEN"),
+    pred_in("country", c("US", "CA")),
+    checklistKey = NULL,
+    user = "foo", pwd = "bar", email = "foo@bar.com"
+  )
+
+  expect_is(z, "occ_download_prep")
+  expect_is(z$request, "list")
+  # checklistKey should not be present in the request when NULL
+  expect_null(z$request$checklistKey)
 })
 
 

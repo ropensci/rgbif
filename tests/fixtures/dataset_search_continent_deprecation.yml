@@ -1,0 +1,16 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/dataset/search?limit=1&continent=EUROPE
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      raw_gzip: |-
+        eJyrVspPSytOLVGyMtBRysnMzQSyDHWUUvNS/NOCUpPzi1KKlaxKikpTdZSS80vzIOqKUotL
+        c0qAEtG
+        xOkppicmpEHYtAN+vGZ8=
+  recorded_at: 2026-07-10 07:22:55
+recorded_with: VCR-vcr/2.0.0

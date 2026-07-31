@@ -1,0 +1,25 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/species/1?offset=0&limit=100
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      raw_gzip: |-
+        eJyVkM1OwzAQhN/FV5rKsRua5IaSgKKKFkE4IQ4bx2mtJHblH6BCvDtO21RCPXFbz3yzu95v
+        1PEDSsM
+        Zkq5eTSUM/FRTHMYxjegMWfhSssxRira1aNMQzZBRTjNejcaU7ITcNmrw1J0UA/QC
+        0EWcmAYsGG6PT9
+        Qsm6ap20VAWIuDRUuTIKkJBHWNk4QBcHrLfAumpLHCOi7/lzNM+IhoBVv7
+        P/1di4FUUjDor60PriUw1
+        4M+e3D0jLfA2Z3SZif2XkanW1WH/Qi9ZGWxrsr7MvO6Btl5bVWu
+        H/LNoxeUFlshR2zz+pwV6HxSNQj2
+        YsE6M66QZcVTVeRjXzVwyXpvaOgn4O3dN+YD6M6cp7sh
+        54Zx2YC0XiNJHCbUH7kHYzMNnz1vPEkwoQG
+        OA0IqQlOC0yiZR4voBuMUY3SiS2m53mturxIk
+        DcM0CueELi8JYYzjx41+fgHVU7H7
+  recorded_at: 2026-07-09 12:36:45
+recorded_with: VCR-vcr/2.0.0

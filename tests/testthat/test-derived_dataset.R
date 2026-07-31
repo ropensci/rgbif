@@ -1,3 +1,5 @@
+context("derived_dataset")
+# testthat::test_file("tests/testthat/test-derived_dataset.R")
 
 test_that("derived_dataset: real request", {
   skip_on_cran()

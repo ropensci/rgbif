@@ -1,0 +1,30 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.gbif.org/v2/species/match?scientificName=Calopteryx+splendens&verbose=FALSE&checklistKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '{"usage":{"key":"1427067","name":"Calopteryx splendens (Harris, 1780)","canonicalName":"Calopteryx
+        splendens","authorship":"(Harris, 1780)","rank":"SPECIES","code":"ZOOLOGICAL","status":"ACCEPTED","genericName":"Calopteryx","specificEpithet":"splendens","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>splendens</i> (Harris, 1780)"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427007","name":"Calopteryx","rank":"GENUS"},{"key":"1427067","name":"Calopteryx
+        splendens","rank":"SPECIES"}],"diagnostics":{"matchType":"EXACT","confidence":99,"timeTaken":12,"timings":{"nameNRank":0,"sciNameMatch":12,"nameParse":1,"luceneMatch":11}},"additionalStatus":[{"clbDatasetKey":"53131","datasetAlias":"IUCN","datasetKey":"19491596-35ae-4a91-9a98-85cf505f1bd3","status":"LEAST_CONCERN","statusCode":"LC","sourceId":"158701"}],"synonym":false,"left":1402212,"right":1402214}'
+  recorded_at: 2026-07-09 08:43:39
+- request:
+    method: GET
+    uri: https://api.gbif.org/v2/species/match?scientificName=Calopteryx+splendens&verbose=FALSE
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '{"usage":{"key":"1427067","name":"Calopteryx splendens (Harris, 1780)","canonicalName":"Calopteryx
+        splendens","authorship":"(Harris, 1780)","rank":"SPECIES","code":"ZOOLOGICAL","status":"ACCEPTED","genericName":"Calopteryx","specificEpithet":"splendens","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
+        <i>splendens</i> (Harris, 1780)"},"classification":[{"key":"1","name":"Animalia","rank":"KINGDOM"},{"key":"54","name":"Arthropoda","rank":"PHYLUM"},{"key":"216","name":"Insecta","rank":"CLASS"},{"key":"789","name":"Odonata","rank":"ORDER"},{"key":"4211","name":"Calopterygidae","rank":"FAMILY"},{"key":"1427007","name":"Calopteryx","rank":"GENUS"},{"key":"1427067","name":"Calopteryx
+        splendens","rank":"SPECIES"}],"diagnostics":{"matchType":"EXACT","confidence":99,"timeTaken":12,"timings":{"nameNRank":0,"sciNameMatch":12,"nameParse":1,"luceneMatch":11}},"additionalStatus":[{"clbDatasetKey":"53131","datasetAlias":"IUCN","datasetKey":"19491596-35ae-4a91-9a98-85cf505f1bd3","status":"LEAST_CONCERN","statusCode":"LC","sourceId":"158701"}],"synonym":false,"left":1402212,"right":1402214}'
+  recorded_at: 2026-07-09 08:43:39
+recorded_with: VCR-vcr/2.0.0

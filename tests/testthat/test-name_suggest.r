@@ -1,10 +1,11 @@
 context("name_suggest")
+# testthat::test_file("tests/testthat/test-name_suggest.R")
 
 test_that("name_suggest returns the correct", {
   vcr::use_cassette("name_suggest", {
-    a <- name_suggest(q='Puma concolor')
-    b <- name_suggest(q='Puma', limit=2)
-    d <- name_suggest(q='Puma', fields=c('key', 'higherClassificationMap'))
+    a <- suppressWarnings(name_suggest(q='Puma concolor'))
+    b <- suppressWarnings(name_suggest(q='Puma', limit=2))
+    d <- suppressWarnings(name_suggest(q='Puma', fields=c('key', 'higherClassificationMap')))
   }, preserve_exact_body_bytes = TRUE)
 
   # class
@@ -44,7 +45,7 @@ test_that("name_suggest returns the correct", {
 # many args
 test_that("args that support many repeated uses in one request", {
   vcr::use_cassette("name_suggest_many_args", {
-    aa <- name_suggest(rank = c("family", "genus"))
+    aa <- suppressWarnings(name_suggest(rank = c("family", "genus")))
   })
 
   expect_is(aa, "gbif")
@@ -56,8 +57,19 @@ test_that("args that support many repeated uses in one request", {
 
 test_that("name_suggest limit is 100", {
     skip_on_cran()
-    expect_warning(name_suggest(limit=101),"Max limit is 100.")
-    expect_no_warning(name_suggest(limit=10))
+    expect_warning(suppressWarnings(name_suggest(limit=101), classes = "deprecation"),"Max limit is 100.")
+    expect_no_warning(suppressWarnings(name_suggest(limit=10)))
+})
+
+test_that("name_suggest shows deprecation warning", {
+  skip_on_cran() # because fixture in .Rbuildignore
+
+  vcr::use_cassette("name_suggest_deprecation", {
+    expect_warning(
+      name_suggest(q='Puma'),
+      "name_suggest\\(\\) only works with the out-of-date GBIF Backbone Taxonomy"
+    )
+  }, preserve_exact_body_bytes = TRUE)
 })
 
 
