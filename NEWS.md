@@ -24,6 +24,7 @@ The following functions are deprecated because they use the GBIF Backbone taxono
 * `name_lookup()` - use `rcol::col_search()` instead
 * `name_suggest()` - use `rcol::col_suggest()` instead
 * `name_usage()` - use `rcol::col_usage()` instead
+* `name_issues()` - use `rcol::col_usage()` to parse and examine name issues
 
 ### NEW FEATURE
 

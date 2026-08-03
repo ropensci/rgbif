@@ -77,7 +77,7 @@
 #'  requireNamespace("protolite", quietly = TRUE)
 #' ) {
 #'   # Using COL XR taxon key (default)
-#'   x <- mvt_fetch(taxonKey = "7T6MX", year = 2007:2011)
+#'   x <- mvt_fetch(taxonKey = "V2", year = 2007:2011)
 #'   x
 #'   
 #'   # Using GBIF Backbone key
@@ -89,24 +89,24 @@
 #'   
 #'   # different srs
 #'   ## 3857
-#'   y <- mvt_fetch(taxonKey = 2480498, year = 2010, srs = "EPSG:3857")
+#'   y <- mvt_fetch(taxonKey = "V2", year = 2010, srs = "EPSG:3857")
 #'   y
 #'   ## 3031
-#'   z <- mvt_fetch(taxonKey = 2480498, year = 2010, srs = "EPSG:3031", verbose = TRUE)
+#'   z <- mvt_fetch(taxonKey = "V2", year = 2010, srs = "EPSG:3031", verbose = TRUE)
 #'   z
 #'   # 3575
-#'   z <- mvt_fetch(taxonKey = 2480498, year = 2010, srs = "EPSG:3575")
+#'   z <- mvt_fetch(taxonKey = "V2", year = 2010, srs = "EPSG:3575")
 #'   z
 #'
 #'   # bin
-#'   x <- mvt_fetch(taxonKey = 212, year = 1998, bin = "hex",
+#'   x <- mvt_fetch(taxonKey = "V2", year = 1998, bin = "hex",
 #'      hexPerTile = 30, style = "classic-noborder.poly")
 #'   x
 #'
 #'   # query with basisOfRecord
-#'   mvt_fetch(taxonKey = 2480498, year = 2010,
+#'   mvt_fetch(taxonKey = "V2", year = 2010,
 #'     basisOfRecord = "HUMAN_OBSERVATION")
-#'   mvt_fetch(taxonKey = 2480498, year = 2010,
+#'   mvt_fetch(taxonKey = "V2", year = 2010,
 #'     basisOfRecord = c("HUMAN_OBSERVATION", "LIVING_SPECIMEN"))
 #'  }
 #' }

@@ -1,5 +1,10 @@
 #' Lookup names in all taxonomies in GBIF.
 #'
+#' @section Deprecation Notice:
+#' **This function is deprecated.** It only works with the GBIF Backbone
+#' Taxonomy and does not support COL (Catalogue of Life) Extended Release.
+#' Use `rcol::col_search()` from the rcol package instead for COL XR support.
+#'
 #' @template namelkup
 #' @export
 #' @template occ

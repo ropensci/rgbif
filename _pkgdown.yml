@@ -80,8 +80,12 @@ reference:
     contents:
       - gbif_names
       - gbif_photos
-  - title: "Defunct functions"
+  - title: "Defunct and deprecated"
     contents:
+      - name_lookup
+      - name_suggest
+      - name_usage
+      - name_issues
       - datasets
       - rgbif-defunct
       - parsenames

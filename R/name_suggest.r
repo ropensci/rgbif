@@ -1,5 +1,10 @@
 #' Suggest up to 20 name usages.
 #'
+#' @section Deprecation Notice:
+#' **This function is deprecated.** It only works with the GBIF Backbone
+#' Taxonomy and does not support COL (Catalogue of Life) Extended Release.
+#' Use `rcol::col_suggest()` from the rcol package instead for COL XR support.
+#'
 #' A quick and simple autocomplete service that returns up to 20 name
 #' usages by doing prefix matching against the scientific name. Results
 #' are ordered by relevance.

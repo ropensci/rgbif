@@ -1,5 +1,10 @@
 #' Parse and examine further GBIF name issues on a dataset.
 #'
+#' @section Deprecation Notice:
+#' **This function is deprecated.** It depends on [name_usage()] which only
+#' works with the GBIF Backbone Taxonomy. Use `rcol::col_usage()` from the
+#' rcol package to parse and examine name issues with COL XR support.
+#'
 #' @export
 #'
 #' @param .data Output from a call to [name_usage()]
