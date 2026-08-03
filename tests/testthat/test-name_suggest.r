@@ -61,15 +61,17 @@ test_that("name_suggest limit is 100", {
     expect_no_warning(suppressWarnings(name_suggest(limit=10)))
 })
 
-test_that("name_suggest shows deprecation warning", {
-  skip_on_cran() # because fixture in .Rbuildignore
-
-  vcr::use_cassette("name_suggest_deprecation", {
-    expect_warning(
-      name_suggest(q='Puma'),
-      "name_suggest\\(\\) only works with the out-of-date GBIF Backbone Taxonomy"
-    )
-  }, preserve_exact_body_bytes = TRUE)
+test_that("name_suggest shows deprecation warning only when datasetKey is NULL", {
+  # Warning appears when datasetKey is NULL (default)
+  expect_warning(
+    suppressMessages(name_suggest(q='Puma')),
+    "name_suggest\\(\\) works by default with the out-of-date GBIF Backbone Taxonomy"
+  )
+  
+  # No warning when datasetKey is supplied
+  expect_no_warning(
+    suppressMessages(name_suggest(q='Puma', datasetKey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"))
+  )
 })
 
 

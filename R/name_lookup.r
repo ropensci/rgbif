@@ -98,7 +98,9 @@ name_lookup <- function(query=NULL,
                         return=NULL,
                         curlopts = list(http_version=2)) {
 
-  warning("name_lookup() only works with the out-of-date GBIF Backbone Taxonomy and does not support COL (Catalogue of Life) Extended Release. Consider using rcol::col_search() instead for COL XR support.", call. = FALSE)
+  if (is.null(datasetKey)) {
+    warning("name_lookup() works by default with the out-of-date GBIF Backbone Taxonomy. Consider using rcol::col_search() instead.", call. = FALSE)
+  }
   
   pchk(return, "name_lookup")
   if (!is.null(facetMincount) && inherits(facetMincount, "numeric"))

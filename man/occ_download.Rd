@@ -11,7 +11,7 @@ occ_download(
   type = "and",
   format = "DWCA",
   verbatim_extensions = NULL,
-  checklistKey = NULL,
+  checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b",
   user = NULL,
   pwd = NULL,
   email = NULL,
@@ -24,7 +24,7 @@ occ_download_prep(
   type = "and",
   format = "DWCA",
   verbatim_extensions = NULL,
-  checklistKey = NULL,
+  checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b",
   user = NULL,
   pwd = NULL,
   email = NULL,
@@ -56,8 +56,8 @@ extensions to include in the download. This parameter is only applied when
 \code{format = "DWCA"} and will be ignored for other formats.}
 
 \item{checklistKey}{(character) The UUID key for a checklist dataset to use
-for taxonomy in the download. By default, the GBIF Backbone Taxonomy will
-be used if no checklistKey is supplied. Optional}
+for taxonomy in the download. The default is COL (Catalogue of Life) Extended
+Release (7ddf754f-d193-4cc9-b351-99906754a03b). Optional}
 
 \item{user}{(character) User name within GBIF's website. Required. See
 "Authentication" below}
@@ -144,8 +144,9 @@ error on GBIF's side and you'll have to split your query into a few.
 
 \examples{
 \dontrun{
+# Uses COL (Catalogue of Life) Extended Release with alpha-numeric keys by default
 # occ_download(pred("basisOfRecord", "LITERATURE"))
-# occ_download(pred("taxonKey", 5231190), pred_gt("elevation", 5000))
+# occ_download(pred("taxonKey", "Q2M4"), pred_gt("elevation", 5000)) # Calopteryx splendens
 # occ_download(pred_gt("decimalLatitude", 50))
 # occ_download(pred_gte("elevation", 9000))
 # occ_download(pred_gte('decimalLatitude", 65))
@@ -158,7 +159,7 @@ error on GBIF's side and you'll have to split your query into a few.
 # z <- occ_download(pred_gte("decimalLatitude", 75),
 #  format = "SPECIES_LIST")
 
-# res <- occ_download(pred("taxonKey", 7264332), pred("hasCoordinate", TRUE))
+# res <- occ_download(pred("taxonKey", "9WLSS"), pred("hasCoordinate", TRUE))
 
 # pass output directly, or later, to occ_download_meta for more information
 # occ_download(pred_gt('decimalLatitude', 75)) \%>\% occ_download_meta
@@ -166,7 +167,7 @@ error on GBIF's side and you'll have to split your query into a few.
 # Multiple queries
 # occ_download(pred_gte("decimalLatitude", 65),
 #  pred_lte("decimalLatitude", -65), type="or")
-# gg <- occ_download(pred("depth", 80), pred("taxonKey", 2343454),
+# gg <- occ_download(pred("depth", 80), pred("taxonKey", "Q2M4"),
 #  type="or")
 # x <- occ_download(pred_and(pred_within("POLYGON((-14 42, 9 38, -7 26, -14 42))"),
 #  pred_gte("elevation", 5000)))
@@ -186,11 +187,11 @@ error on GBIF's side and you'll have to split your query into a few.
 # )
 
 # Using body parameter - pass in your own complete query
-## as JSON
+## as JSON (using COL XR alpha-numeric key)
 query1 <- '{"creator":"sckott",
   "notification_address":["stuff1@gmail.com"],
   "predicate":{"type":"and","predicates":[
-    {"type":"equals","key":"TAXON_KEY","value":"7264332"},
+    {"type":"equals","key":"TAXON_KEY","value":"Q2M4"},
     {"type":"equals","key":"HAS_COORDINATE","value":"TRUE"}]}
  }'
 # res <- occ_download(body = query1, curlopts=list(verbose=TRUE))
@@ -204,7 +205,7 @@ query <- list(
     type = unbox("and"),
     predicates = list(
       list(type = unbox("equals"), key = unbox("TAXON_KEY"),
-        value = unbox("7264332")),
+        value = unbox("Q2M4")),
       list(type = unbox("equals"), key = unbox("HAS_COORDINATE"),
         value = unbox("TRUE"))
     )
@@ -212,33 +213,34 @@ query <- list(
 )
 # res <- occ_download(body = query, curlopts = list(verbose = TRUE))
 
-# Prepared query
+# Prepared query (uses COL XR by default)
 occ_download_prep(pred("basisOfRecord", "LITERATURE"))
 occ_download_prep(pred("basisOfRecord", "LITERATURE"), format = "SIMPLE_CSV")
 occ_download_prep(pred("basisOfRecord", "LITERATURE"), format = "SPECIES_LIST")
-occ_download_prep(pred_in("taxonKey", c(2977832, 2977901, 2977966, 2977835)))
+occ_download_prep(pred_in("taxonKey", c("Q2M4", "9WLSS", "Q2N2", "Q2KZ")))
 occ_download_prep(pred_within("POLYGON((-14 42, 9 38, -7 26, -14 42))"))
 
-## a complicated example
+## a complicated example (using COL XR alpha-numeric keys)
 occ_download_prep(
   pred_in("basisOfRecord", c("MACHINE_OBSERVATION", "HUMAN_OBSERVATION")),
-  pred_in("taxonKey", c(2498343, 2481776, 2481890)),
+  pred_in("taxonKey", c("Q2M4", "9WLSS", "Q2N2")),
   pred_in("country", c("GB", "IE")),
   pred_or(pred_lte("year", 1989), pred("year", 2000))
 )
 
-## using a specific checklist for taxonomy
+## COL XR is now the default checklist
+# To use GBIF Backbone Taxonomy, set checklistKey = NULL
 # occ_download_prep(
 #   pred("basisOfRecord", "PRESERVED_SPECIMEN"),
 #   pred_in("country", c("VC", "GD")),
-#   checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b"
+#   checklistKey = NULL
 # )
 
 # x = occ_download(
-#   pred_in("basisOfRecord", c("MACHINE_OBSERVATION", "HUMAN_OBSERVATION")),
-#   pred_in("taxonKey", c(9206251, 3112648)),
-#   pred_in("country", c("US", "MX")),
-#   pred_and(pred_gte("year", 1989), pred_lte("year", 1991))
+  pred_in("basisOfRecord", c("MACHINE_OBSERVATION", "HUMAN_OBSERVATION")),
+  pred_in("taxonKey", c("Q2M4", "9WLSS")),
+  pred_in("country", c("US", "MX")),
+  pred_and(pred_gte("year", 1989), pred_lte("year", 1991))
 # )
 # occ_download_meta(x)
 # z <- occ_download_get(x)

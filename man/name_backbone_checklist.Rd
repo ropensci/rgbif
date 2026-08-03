@@ -31,7 +31,7 @@ name_backbone_checklist(
   exclude = NULL,
   strict = NULL,
   verbose = NULL,
-  checklistKey = NULL,
+  checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b",
   bucket_size = 300,
   sleep = 1,
   curlopts = list(http_version = 2)
@@ -104,7 +104,8 @@ but never a taxon in the upper classification.}
 considered but then rejected.}
 
 \item{checklistKey}{(character) The key of a checklist to use. The default is
-the GBIF Backbone taxanomy.}
+COL (Catalogue of Life) Extended Release with UUID
+"7ddf754f-d193-4cc9-b351-99906754a03b".}
 
 \item{bucket_size}{(integer) Number of requests to make in parallel.
 Default: 300. Lower this number if you get HTTP 0 errors.}

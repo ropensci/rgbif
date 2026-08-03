@@ -46,9 +46,6 @@ a list with two slots:
 \description{
 List organizations for a download
 }
-\note{
-see \code{\link[=downloads]{downloads}} for an overview of GBIF downloads methods
-}
 \examples{
 \dontrun{
 occ_download_organizations(key="0024953-260519110011954")

@@ -93,7 +93,9 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
   start=0, limit=100, return=NULL, 
   curlopts = list(http_version = 2)) {
 
-  warning("name_usage() only works with the out-of-date GBIF Backbone Taxonomy and does not support COL (Catalogue of Life) Extended Release. Consider using rcol::col_usage() instead for COL XR support.", call. = FALSE)
+  if (is.null(datasetKey)) {
+    warning("name_usage() works by default with the out-of-date GBIF Backbone Taxonomy. Consider using rcol::col_usage() instead.", call. = FALSE)
+  }
   
   pchk(return, "name_usage")
   # check limit and start params

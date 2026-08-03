@@ -15,6 +15,7 @@ mvt_fetch(
   squareSize = NULL,
   style = "classic.point",
   taxonKey = NULL,
+  checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b",
   datasetKey = NULL,
   country = NULL,
   publishingOrg = NULL,
@@ -58,6 +59,11 @@ Defaults to classic.point. optional. THESE DON'T WORK YET.}
 
 \item{taxonKey}{(integer/numeric/character) search by taxon key, can only
 supply 1. optional}
+
+\item{checklistKey}{(character) The key of a checklist to use for taxonomy.
+Defaults to COL (Catalogue of Life) Extended Release
+(\code{"7ddf754f-d193-4cc9-b351-99906754a03b"}). Set to \code{NULL} to use the GBIF
+Backbone Taxonomy. optional}
 
 \item{datasetKey}{(character) search by taxon key, can only supply 1.
 optional}
@@ -111,7 +117,12 @@ if (
  requireNamespace("sf", quietly = TRUE) &&
  requireNamespace("protolite", quietly = TRUE)
 ) {
-  x <- mvt_fetch(taxonKey = 2480498, year = 2007:2011)
+  # Using COL XR taxon key (default)
+  x <- mvt_fetch(taxonKey = "7T6MX", year = 2007:2011)
+  x
+  
+  # Using GBIF Backbone key
+  x <- mvt_fetch(taxonKey = 2480498, checklistKey = NULL, year = 2007:2011)
   x
   
   # gives an sf object

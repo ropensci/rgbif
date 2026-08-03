@@ -139,7 +139,7 @@ occ_search(
   isSequenced = NULL,
   startDayOfYear = NULL,
   endDayOfYear = NULL,
-  checklistKey = NULL,
+  checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b",
   limit = 500,
   start = 0,
   fields = "all",
@@ -156,7 +156,7 @@ occ_search(
 \item{taxonKey}{(numeric) A taxon key from the GBIF backbone. All included
 and synonym taxa are included in the search, so a search for aves with
 taxononKey=212 will match all birds, no matter which species. You can pass
-many keys to \code{occ_search(taxonKey=c(1,212))}.}
+many keys to \code{occ_search(taxonKey=c("N","V2"))}.}
 
 \item{scientificName}{A scientific name from the GBIF backbone. All included
 and synonym taxa are included in the search.}
@@ -476,7 +476,7 @@ Example : 8fa58e08-08de-4ac1-b69c-1235340b7001}
 
 \item{acceptedTaxonKey}{(numeric) A taxon key from the GBIF backbone. Only
 synonym taxa are included in the search, so a search for Aves with
-acceptedTaxonKey=212 will match occurrences identified as birds, but not
+acceptedTaxonKey="V2" will match occurrences identified as birds, but not
 any known family, genus or species of bird.}
 
 \item{collectionKey}{(character) A key (UUID) for a collection registered in
@@ -856,8 +856,8 @@ occ_search(recordedByID="https://orcid.org/0000-0003-1691-239X", limit=20)
 occ_search(identifiedByID="https://orcid.org/0000-0003-4710-2648", limit=20)
 
 # Pass in curl options for extra fun
-occ_search(taxonKey=2433407, limit=20, curlopts=list(verbose=TRUE))$hier
-occ_search(taxonKey=2433407, limit=20,
+occ_search(taxonKey="Q2M4", limit=20, curlopts=list(verbose=TRUE))$hier
+occ_search(taxonKey="Q2M4", limit=20,
   curlopts = list(
     noprogress = FALSE,
     progressfunction = function(down, up) {
@@ -866,7 +866,7 @@ occ_search(taxonKey=2433407, limit=20,
     }
   )
 )$hier
-# occ_search(taxonKey=2433407, limit=20,
+# occ_search(taxonKey="Q2M4", limit=20,
 #   curlopts = list(timeout_ms = 1))
 
 # Search for many species
@@ -1092,10 +1092,10 @@ occ_search(mediaType = 'Sound')$media
 
 # Query based on issues - see Details for options
 ## one issue
-occ_search(taxonKey=1, issue='DEPTH_UNLIKELY', fields =
+occ_search(taxonKey="N", issue='DEPTH_UNLIKELY', fields =
    c('name','key','decimalLatitude','decimalLongitude','depth'))
 ## two issues
-occ_search(taxonKey=1, issue=c('DEPTH_UNLIKELY','COORDINATE_ROUNDED'))
+occ_search(taxonKey="N", issue=c('DEPTH_UNLIKELY','COORDINATE_ROUNDED'))
 # Show all records in the Arizona State Lichen Collection that cant be matched to the GBIF
 # backbone properly:
 occ_search(datasetKey='84c0e1a0-f762-11e1-a439-00145eb45e9a',
@@ -1120,7 +1120,7 @@ res \%>\% occ_issues(mutate = "split_expand")
 res \%>\% occ_issues(-cudc, mutate = "split_expand")
 
 # If you try multiple values for two different parameters you are wacked on the hand
-# occ_search(taxonKey=c(2482598,2492010), recordedBy=c("smith","BJ Stacey"))
+# occ_search(taxonKey=c("N","Q2M4"), recordedBy=c("smith","BJ Stacey"))
 
 # Get a lot of data, here 1500 records for Helianthus annuus
 # out <- occ_search(taxonKey=key, limit=1500)

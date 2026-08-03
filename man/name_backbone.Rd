@@ -32,7 +32,7 @@ name_backbone(
   exclude = NULL,
   strict = NULL,
   verbose = FALSE,
-  checklistKey = NULL,
+  checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b",
   start = NULL,
   limit = NULL,
   curlopts = list(http_version = 2)
@@ -162,11 +162,15 @@ returns alternatives in a separate \code{tibble}.
 }
 \examples{
 \dontrun{
-name_backbone("Calopteryx splendens") 
+# Returns COL (Catalogue of Life) Extended Release alpha-numeric keys
+name_backbone("Calopteryx splendens") # Returns usageKey "Q2M4"
 name_backbone("Calopteryx splendens", kingdom = "Animalia")
 name_backbone("Calopteryx splendens", kingdom = "Animalia", verbose = TRUE)
 name_backbone_verbose("Calopteryx splendens", kingdom = "Animalia")
 name_backbone("Calopteryx splendens", kingdom = "Plantae")
+
+# Use GBIF Backbone Taxonomy by setting checklistKey = NULL
+name_backbone("Calopteryx splendens", checklistKey = NULL)
 
 }
 }

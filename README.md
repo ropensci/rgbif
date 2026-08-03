@@ -34,7 +34,6 @@ install.packages("rgbif", repos="https://dev.ropensci.org") # dev version
 There are several long-form articles that can help get you started:
 
 * [Getting Started](https://docs.ropensci.org/rgbif/articles/rgbif.html)
-* **[Migration Guide - COL Extended Release](https://docs.ropensci.org/rgbif/articles/col_migration_guide.html)** ⭐ **NEW**
 * [Getting Occurrence Data From GBIF](https://docs.ropensci.org/rgbif/articles/getting_occurrence_data.html)
 * [Working With Taxonomic Names](https://docs.ropensci.org/rgbif/articles/taxonomic_names.html)
 

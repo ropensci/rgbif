@@ -139,12 +139,12 @@ Using \code{pred_default()} is equivalent to running:
 Internally, the input to \verb{pred*} functions turns into JSON to be sent to
 GBIF. For example ...
 
-\code{pred_in("taxonKey", c(2480946, 5229208))} gives:
+\code{pred_in("taxonKey", c("9WLSS", "Q2N2"))} gives:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{\{
    "type": "in",
    "key": "TAXON_KEY",
-   "values": ["2480946", "5229208"]
+   "values": ["9WLSS", "Q2N2"]
  \}
 }\if{html}{\out{</div>}}
 
@@ -157,7 +157,7 @@ GBIF. For example ...
 \}
 }\if{html}{\out{</div>}}
 
-\code{pred_or(pred("taxonKey", 2977832), pred("taxonKey", 2977901))} gives:
+\code{pred_or(pred("taxonKey", "Q2M4"), pred("taxonKey", "Q2KZ"))} gives:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{\{
   "type": "or",
@@ -165,12 +165,12 @@ GBIF. For example ...
      \{
        "type": "equals",
        "key": "TAXON_KEY",
-       "value": "2977832"
+       "value": "Q2M4"
      \},
      \{
        "type": "equals",
        "key": "TAXON_KEY",
-       "value": "2977901"
+       "value": "Q2KZ"
      \}
   ]
 \}
@@ -270,7 +270,8 @@ be supported that is not yet.
 }
 
 \examples{
-pred("taxonKey", 5231190)
+# Uses COL (Catalogue of Life) Extended Release alpha-numeric keys by default
+pred("taxonKey", "Q2M4") # Calopteryx splendens
 pred_gt("elevation", 5000)
 pred_gte("elevation", 5000)
 pred_lt("elevation", 1000)
@@ -280,9 +281,9 @@ pred_and(pred_within("POLYGON((-14 42, 9 38, -7 26, -14 42))"),
   pred_gte("elevation", 5000))
 pred_or(pred_lte("year", 1989), pred("year", 2000))
 pred_and(pred_lte("year", 1989), pred("year", 2000))
-pred_in("taxonKey", c(2977832, 2977901, 2977966, 2977835))
+pred_in("taxonKey", c("Q2M4", "9WLSS", "Q2N2")) # COL XR alpha-numeric keys
 pred_in("basisOfRecord", c("MACHINE_OBSERVATION", "HUMAN_OBSERVATION"))
-pred_not(pred("taxonKey", 729))
+pred_not(pred("taxonKey", "Q2M4"))
 pred_like("catalogNumber", "PAPS5-560\%")
 pred_notnull("issue")
 pred("basisOfRecord", "LITERATURE")
@@ -290,9 +291,9 @@ pred("hasCoordinate", TRUE)
 pred("stateProvince", "California")
 pred("hasGeospatialIssue", FALSE)
 pred_within("POLYGON((-14 42, 9 38, -7 26, -14 42))")
-pred_or(pred("taxonKey", 2977832), pred("taxonKey", 2977901),
-  pred("taxonKey", 2977966))
-pred_in("taxonKey", c(2977832, 2977901, 2977966, 2977835))
+pred_or(pred("taxonKey", "Q2M4"), pred("taxonKey", "9WLSS"),
+  pred("taxonKey", "Q2N2"))
+pred_in("taxonKey", c("Q2M4", "9WLSS", "Q2N2", "Q2KZ"))
 pred("license", "CC_BY_4_0")
 pred_in("license", c("CC_BY_4_0", "CC_BY_NC_4_0"))
 }

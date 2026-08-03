@@ -16,6 +16,7 @@ map_fetch(
   squareSize = NULL,
   style = NULL,
   taxonKey = NULL,
+  checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b",
   datasetKey = NULL,
   country = NULL,
   publishingOrg = NULL,
@@ -71,6 +72,11 @@ Defaults to classic.point for source="density" and "scaled.circle" for source="a
 
 \item{taxonKey}{(integer/numeric/character) search by taxon key, can only
 supply 1.}
+
+\item{checklistKey}{(character) The key of a checklist to use for taxonomy.
+Defaults to COL (Catalogue of Life) Extended Release
+(\code{"7ddf754f-d193-4cc9-b351-99906754a03b"}). Set to \code{NULL} to use the GBIF
+Backbone Taxonomy.}
 
 \item{datasetKey}{(character) search by taxon key, can only supply 1.}
 
@@ -140,8 +146,11 @@ map_fetch(basisOfRecord="PRESERVED_SPECIMEN")
 
 # Map of occ in Great Britain
 map_fetch(z=3,y=1,x=7:8,country="GB")
-# Peguins with artic projection
-map_fetch(srs='EPSG:3031',taxonKey=2481660,style='glacier.point', 
+# Penguins with artic projection using COL XR key
+map_fetch(srs='EPSG:3031',taxonKey="623RM",style='glacier.point', 
+base_style="gbif-dark")
+# Same query using GBIF Backbone key
+map_fetch(srs='EPSG:3031',taxonKey=2481660,checklistKey=NULL,style='glacier.point', 
 base_style="gbif-dark")
 
 # occ from a long time ago

@@ -175,13 +175,16 @@ test_that("name_lookup handles no results without failing", {
   expect_gte(NROW(cc$data), 0)
 })
 
-test_that("name_lookup shows deprecation warning", {
-  skip_on_cran() # because fixture in .Rbuildignore
-
-  vcr::use_cassette("name_lookup_deprecation", {
-    expect_warning(
-      name_lookup(query = "Animalia", limit = 1),
-      "name_lookup\\(\\) only works with the out-of-date GBIF Backbone Taxonomy"
-    )
-  }, preserve_exact_body_bytes = TRUE)
+test_that("name_lookup shows deprecation warning only when datasetKey is NULL", {
+  # Warning appears when datasetKey is NULL (default)
+  expect_warning(
+    suppressMessages(name_lookup(query = "Animalia", limit = 1)),
+    "name_lookup\\(\\) works by default with the out-of-date GBIF Backbone Taxonomy"
+  )
+  
+  # No warning when datasetKey is supplied
+  expect_no_warning(
+    suppressMessages(name_lookup(query = "Animalia", limit = 1, 
+      datasetKey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"))
+  )
 })
