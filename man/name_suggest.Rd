@@ -49,10 +49,19 @@ then \code{hierarchy} is a list of data.frame's; if not included, \code{hierarch
 is an empty list.
 }
 \description{
+Suggest up to 20 name usages.
+}
+\section{Deprecation Notice}{
+
+\strong{This function is deprecated.} It only works with the GBIF Backbone
+Taxonomy and does not support COL (Catalogue of Life) Extended Release.
+Use \code{rcol::col_suggest()} from the rcol package instead for COL XR support.
+
 A quick and simple autocomplete service that returns up to 20 name
 usages by doing prefix matching against the scientific name. Results
 are ordered by relevance.
 }
+
 \section{Repeat parmeter inputs}{
 
 Some parameters can take many inputs, and treated as 'OR' (e.g., a or b or

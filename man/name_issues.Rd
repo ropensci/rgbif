@@ -26,6 +26,13 @@ For split and split_expand, values in cells become y ("yes") or n ("no")}
 \description{
 Parse and examine further GBIF name issues on a dataset.
 }
+\section{Deprecation Notice}{
+
+\strong{This function is deprecated.} It depends on \code{\link[=name_usage]{name_usage()}} which only
+works with the GBIF Backbone Taxonomy. Use \code{rcol::col_usage()} from the
+rcol package to parse and examine name issues with COL XR support.
+}
+
 \examples{
 \dontrun{
 # what do issues mean, can print whole table

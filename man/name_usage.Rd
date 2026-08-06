@@ -95,6 +95,13 @@ just use an \code{lapply} family function, or a for loop, etc.
 
 See \code{\link[=name_issues]{name_issues()}} for more information about issues in \code{issues} column.
 }
+\section{Deprecation Notice}{
+
+\strong{This function is deprecated.} It only works with the GBIF Backbone
+Taxonomy and does not support COL (Catalogue of Life) Extended Release.
+Use \code{rcol::col_usage()} from the rcol package instead for COL XR support.
+}
+
 \section{Repeat parameter inputs}{
 
 These parameters used to accept many inputs, but no longer do:

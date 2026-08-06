@@ -27,7 +27,10 @@ reference:
     desc: >
       Work with the GBIF taxonomic names API <https://www.gbif.org/developer/species>
     contents:
-      - starts_with("name_")
+      - name_backbone
+      - name_backbone_checklist
+      - name_parse
+      - gbif_to_col
   - title: "Citation"
     desc: >
       <https://docs.ropensci.org/rgbif/articles/gbif_citations.html>

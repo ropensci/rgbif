@@ -80,10 +80,6 @@
 #'   x <- mvt_fetch(taxonKey = "V2", year = 2007:2011)
 #'   x
 #'   
-#'   # Using GBIF Backbone key
-#'   x <- mvt_fetch(taxonKey = 2480498, checklistKey = NULL, year = 2007:2011)
-#'   x
-#'   
 #'   # gives an sf object
 #'   class(x)
 #'   

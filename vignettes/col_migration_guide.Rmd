@@ -62,16 +62,16 @@ If you have existing GBIF Backbone numeric taxon keys and want to convert them t
 
 ```r
 # Convert a single GBIF Backbone key
-gbif_to_col(5231190)
+result <- gbif_to_col(5231190)
+result$usage$key  # "Q2M4"
 
 # Convert multiple keys at once
-keys <- c(5231190, 2435099, 2877951)
-result <- gbif_to_col(keys)
-result$col_usageKey
+results <- gbif_to_col(c(5231190, 2435099, 2877951))
+sapply(results, function(x) x$usage$key)
 # [1] "Q2M4"  "9WLSS" "Q2N2"
 ```
 
-This function uses the GBIF species matching API to resolve GBIF Backbone keys to their COL XR equivalents. The result includes the original GBIF key, the new COL XR key, and match quality information to help you assess the conversion.
+This function uses the GBIF species matching API to resolve GBIF Backbone keys to their COL XR equivalents. The result includes the original GBIF key, the new COL XR key (in `$usage$key`), full taxonomic classification, and match quality information to help you assess the conversion.
 
 ### Occurrence Search
 

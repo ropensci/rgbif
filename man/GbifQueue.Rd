@@ -10,11 +10,11 @@ GBIF download queue
 \dontrun{
 if (interactive()) { # dont run in automated example runs, too costly
 x <- GbifQueue$new(
-  occ_download(pred('taxonKey', 5231190), pred("year", 1976)),
-  occ_download(pred('taxonKey', 5231190), pred("year", 2001)),
-  occ_download(pred('taxonKey', 5231190), pred("year", 2001), pred_lte("month", 8)),
-  occ_download(pred('taxonKey', 5231190), pred("year", 2004)),
-  occ_download(pred('taxonKey', 5231190), pred("year", 2005))
+  occ_download(pred('taxonKey', "Q2M4"), pred("year", 1976)),
+  occ_download(pred('taxonKey', "Q2M4"), pred("year", 2001)),
+  occ_download(pred('taxonKey', "Q2M4"), pred("year", 2001), pred_lte("month", 8)),
+  occ_download(pred('taxonKey', "Q2M4"), pred("year", 2004)),
+  occ_download(pred('taxonKey', "Q2M4"), pred("year", 2005))
 )
 x
 x$reqs

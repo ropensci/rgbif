@@ -149,9 +149,6 @@ map_fetch(z=3,y=1,x=7:8,country="GB")
 # Penguins with artic projection using COL XR key
 map_fetch(srs='EPSG:3031',taxonKey="623RM",style='glacier.point', 
 base_style="gbif-dark")
-# Same query using GBIF Backbone key
-map_fetch(srs='EPSG:3031',taxonKey=2481660,checklistKey=NULL,style='glacier.point', 
-base_style="gbif-dark")
 
 # occ from a long time ago
 map_fetch(year=1600) 

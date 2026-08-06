@@ -14,6 +14,8 @@ There are two ways to get occurrence data from GBIF:
 1.  [occ_download()](https://docs.ropensci.org/rgbif/reference/occ_download.html): unlimited records. Useful for research and citation.
 2.  [occ_search()](https://docs.ropensci.org/rgbif/reference/occ_search.html): limited to 100K records. Useful primarily for testing.
 
+For users interested in aggregating occurrence data or selecting specific columns, see the [GBIF SQL Downloads](https://docs.ropensci.org/rgbif/articles/gbif_sql_downloads.html) vignette.
+
 The function `occ_search()` (and related function `occ_data()`) **should not** be used for serious research. Users sometimes find it easier to use `occ_search()` rather than `occ_download()` because they do not need to supply a username or password, and also do not need to wait for a download to finish. However, any serious research project should always use `occ_download()` instead.
 
 ## occ_download()
@@ -182,7 +184,7 @@ format = "SIMPLE_CSV"
 
 # Download records with multiple acceptable licenses
 occ_download(
-pred("taxonKey", 2436775), 
+pred("taxonKey", "6Q225"), 
 pred_in("license", c("CC_BY_4_0", "CC_BY_NC_4_0", "CC0_1_0")),
 format = "SIMPLE_CSV"
 )
@@ -309,7 +311,7 @@ GBIF now allows users to download DWCA extensions. These tables are combined and
 
 ```r
 occ_download(
-  pred("taxonKey",22),
+  pred("taxonKey", "B8V3M"),
   format = "DWCA",
   verbatim_extensions = "http://rs.tdwg.org/dwc/terms/MeasurementOrFact"
 )
@@ -335,10 +337,10 @@ occ_download(
 
 # GBIF Backbone Taxonomy - returns numeric keys
 name_backbone("Calopteryx splendens", checklistKey = NULL)$usageKey
-# 5231190
+# 4DXXM
 
 occ_download(
-  pred("taxonKey", 5231190),  
+  pred("taxonKey", "4DXXM"),  
   checklistKey = NULL,  # Use GBIF Backbone
   format = "SIMPLE_CSV"
 )

@@ -52,8 +52,9 @@ pred_default()
 \item{value}{(various) the value for the predicate}
 
 \item{checklistKey}{(character) A checklistKey to use for downloading using
-alternative taxonomies. The default is \code{NULL}, which means the GBIF backbone
-taxonomy will be used.}
+alternative taxonomies. The default is COL (Catalogue of Life) Extended Release
+(\code{"7ddf754f-d193-4cc9-b351-99906754a03b"}). To use GBIF Backbone Taxonomy,
+pass \code{"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"}.}
 
 \item{..., .list}{For \code{pred_or()} or \code{pred_and()}, one or more objects of
 class \code{occ_predicate}, created by any \verb{pred*} function}

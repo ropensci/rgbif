@@ -219,19 +219,19 @@
 #' occ_search(phylumKey = 7707728, limit = 5)
 #'
 #' # search on kingdomKey
-#' occ_search(kingdomKey = 1, limit = 5)
+#' occ_search(kingdomKey = "N", limit = 5)
 #'
 #' # search on classKey
-#' occ_search(classKey = 216, limit = 5)
+#' occ_search(classKey = "H6", limit = 5)
 #'
 #' # search on orderKey
-#' occ_search(orderKey = 7192402, limit = 5)
+#' occ_search(orderKey = "X3", limit = 5)
 #'
 #' # search on familyKey
-#' occ_search(familyKey = 3925, limit = 5)
+#' occ_search(familyKey = "C7ZVG", limit = 5)
 #'
 #' # search on genusKey
-#' occ_search(genusKey = 1935496, limit = 5)
+#' occ_search(genusKey = "9WLSS", limit = 5)
 #'
 #' # search on establishmentMeans
 #' occ_search(establishmentMeans = "INVASIVE", limit = 5)

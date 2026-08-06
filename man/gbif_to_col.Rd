@@ -21,10 +21,20 @@ to COL Extended Release. Generally should not need to change this.}
 \item{curlopts}{A list of curl options passed on to \code{\link[httr:GET]{httr::GET()}}.}
 }
 \value{
-A tibble with columns for the input GBIF key and the corresponding
-COL Extended Release usageKey. If a match is not found, the COL key will be NA.
-Additional columns include matchType, confidence, and status to help assess
-the quality of the match.
+A list containing the full API response for each input key. Each element
+includes:
+\itemize{
+\item \code{gbif_key} - The input GBIF Backbone key
+\item \code{usage} - The matched COL taxon usage details (including the COL key)
+\item \code{classification} - Full taxonomic classification path
+\item \code{diagnostics} - Match quality information (matchType, confidence, etc.)
+\item \code{additionalStatus} - Additional status information (e.g., IUCN status)
+\item \code{synonym} - Whether the match is a synonym
+}
+If only one key is provided, returns an object of class \code{gbif_to_col} with a
+custom print method. If multiple keys are provided, returns an object of class
+\code{gbif_to_col_list}. The full API response data is always accessible in the
+returned list structure.
 }
 \description{
 Convert GBIF Backbone taxon keys to COL Extended Release keys
@@ -41,20 +51,34 @@ the GBIF identifier convention.
 \examples{
 \dontrun{
 # Convert a single GBIF Backbone key to COL XR
-gbif_to_col(5231190)  # Calopteryx splendens
+result <- gbif_to_col(5231190)  # Calopteryx splendens
+
+# The print method shows a clean summary:
+# <<GBIF to COL key conversion>>
+#   GBIF Backbone key: 5231190
+#   COL Extended Release key: Q2M4
+#   Scientific name: Calopteryx splendens
+#   Rank: SPECIES
+#   Match type: EXACT
+#   Confidence: 100
+
+# Access the full data structure:
+result$usage$key                # COL XR key: "Q2M4"
+result$usage$name               # Scientific name
+result$classification           # Full taxonomic hierarchy
+result$diagnostics$matchType    # Quality of match
+result$diagnostics$confidence   # Confidence score
 
 # Convert multiple keys at once
-gbif_to_col(c(5231190, 2435099, 2877951))
+results <- gbif_to_col(c(5231190, 2435099, 2877951))
+results  # Shows summary for all matches
 
-# The result includes match quality information
-result <- gbif_to_col(5231190)
-result$gbif_key      # Original GBIF key: 5231190
-result$col_usageKey  # COL XR key: "Q2M4"
-result$matchType     # Quality of match
-result$confidence    # Confidence score
+# Extract specific data from multiple results:
+sapply(results, function(x) x$usage$key)  # Extract all COL keys
+sapply(results, function(x) x$usage$name) # Extract all names
 }
 }
 \references{
-\url{https://techdocs.gbif.org/en/openapi/v1/species}
+\url{https://techdocs.gbif.org/en/openapi/v2/species}
 }
 \concept{name}

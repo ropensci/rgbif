@@ -25,10 +25,10 @@ map_fetch()
 knitr::include_graphics("img/dot_map.png")
 ```
 
-It is also possible to make static maps that look like default [occurrence search](https://www.gbif.org/occurrence/map?taxon_key=212) maps. See the maps api page for [available styles](https://tile.gbif.org/ui/). 
+It is also possible to make static maps that look like default [occurrence search](https://www.gbif.org/occurrence/map?taxon_key=V2) maps. See the maps api page for [available styles](https://tile.gbif.org/ui/). 
 
 ```R 
-map_fetch(taxonKey=212,style="scaled.circles",base_sytle="gbif-light")
+map_fetch(taxonKey="",style="scaled.circles",base_sytle="gbif-light")
 ```
 
 ```{r, echo = FALSE,out.width="50%"}
@@ -48,7 +48,7 @@ knitr::include_graphics("img/hexpertile.png")
 There is also the option to plot with polar or artic projections. For example, penguin records. 
 
 ```R 
-map_fetch(srs='EPSG:3031',taxonKey=7190978,style='glacier.point', base_style="gbif-dark")
+map_fetch(srs='EPSG:3031',taxonKey="44K",style='glacier.point', base_style="gbif-dark")
 ```
 
 ```{r, echo = FALSE,out.width="50%"}
@@ -57,7 +57,7 @@ knitr::include_graphics("img/artic-peguins-glacier-point-gbif-dark.png")
 
 It is also possible to get views other than just the global map, by zooming in and selecting only certain map tiles with `z`, `x`, `y`. 
 
-Seleting tiles can be tricky to get right, but with a little trial-and-error, you can usually get close to the map you want to have. One trick for getting the right tiles, is to look at this [demo page](https://api.gbif.org/v2/map/demo13.html#map=3/0/0/0), where the `z,x,y` values are printed on the center of each tile. 
+Selecting tiles can be tricky to get right, but with a little trial-and-error, you can usually get close to the map you want to have. One trick for getting the right tiles, is to look at this [demo page](https://api.gbif.org/v2/map/demo13.html#map=3/0/0/0), where the `z,x,y` values are printed on the center of each tile. 
 
 For example, you can see what the tile values for a zoomed in map of Australia would be [here](https://api.gbif.org/v2/map/demo13.html#map=5/134.01/-21.64/0).
 
@@ -94,7 +94,7 @@ I suggest using this [interactive page](https://api.gbif.org/v2/map/demo13.html#
 
 Keep in mind that the the GBIF maps API wasn't designed to make high quality static maps, like it is being used for in `map_fetch()`. It was designed for interactive use on the [GBIF website](https://www.gbif.org/occurrence/map?), so the API design reflects this reality. 
 
-When making maps, the **named paramters**, `taxonKey`, `datasetKey`, `country`, `publishingOrg`,  `publishingCountry`, `year`, and `basisOfRecord` are going to be the easiest to use.  However, It is also possible to make "any" map (any [search filter](https://www.gbif.org/occurrence/map?recorded_by=John%20Waller&advanced=1&occurrence_status=present)) using `source=adhoc`. 
+When making maps, the **named paramters**, `taxonKey`, `datasetKey`, `country`, `publishingOrg`,  `publishingCountry`, `year`, and `basisOfRecord` are going to be the easiest to use.  However, It is also possible to make "any" map any search filter using `source=adhoc`. 
 
 ```R 
 # all occurrences with iucn status critically endangered 
@@ -135,7 +135,7 @@ map_fetch(x=1:5) # no tiles exist past 2, so blank images are returned
 All specimen bird records from the year 2000.
 
 ```R 
-map_fetch(taxonKey=212, basisOfRecord="PRESERVED_SPECIMEN", year=2000,style="classic-noborder.poly")  
+map_fetch(taxonKey="V2", basisOfRecord="PRESERVED_SPECIMEN", year=2000,style="classic-noborder.poly")  
 ```
 
 Map of all country centroid locations.
@@ -156,50 +156,3 @@ A tip for getting the un-named adhoc parameters is to pull them from the occurre
 # https://www.gbif.org/occurrence/map?advanced=1&project_id=BID-AF2015-0134-REG
 map_fetch(source="adhoc",project_id="BID-AF2015-0134-REG") 
 ```
-
-## Using geom_sf()
-
-The GBIF maps API is powerful and useful, but can be frustrating if your plot needs a some custom styling or legends. If you don't have a **large** dataset, then using `ggplot::geom_sf()` can be a good option.  
-
-```R 
-library(ggplot2)
-library(sf)
-library(rnaturalearth)
-
-# occ_download(pred_default(),pred(taxonKey,"1427067"),format="SIMPLE_CSV")
-
-worldmap <- ne_countries(scale = 'medium', type = 'map_units',returnclass = 'sf')
-
-# a download I made of all Calopteryx splendens occurrences 
-d <- occ_download_get('0001707-230810091245214') %>%
-  occ_download_import()
-
-d_sf <- sf::st_as_sf(d, coords = c("decimalLongitude", "decimalLatitude"),
-        crs = "+proj=longlat +datum=WGS84")
-
-# color occurrences by basisOfRecord
-ggplot() + 
-  geom_sf(data = worldmap) + 
-  geom_sf(data = d_sf,aes(color=basisOfRecord))
-   
-```
-
-See [ggplot2](https://ggplot2.tidyverse.org/reference/ggsf.html) docs for more. 
-
-## Using leaflet
-
-Since the GBIF maps API was designed to work as an interactive map, it can be used with [leaflet](https://rstudio.github.io/leaflet/). 
-
-```R 
-library(leaflet)
-
-leaflet() %>% 
-  addTiles() %>%
-  addTiles(urlTemplate='https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?style=scaled.circles&taxonKey=5219404') 
-
-```
-
-See [leaflet](https://ggplot2.tidyverse.org/reference/ggsf.html) docs for more. 
-
-
-
