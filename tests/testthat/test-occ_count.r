@@ -5,7 +5,7 @@ test_that("occ_count", {
   vcr::use_cassette("occ_count", {
     aa <- occ_count()
     # Use GBIF Backbone for backward compatibility with VCR cassettes
-    bb <- occ_count(taxonKey=212, year="2000,2011", checklistKey = NULL)
+    bb <- suppressWarnings(occ_count(taxonKey=212, year="2000,2011", checklistKey = NULL))
     cc <- occ_count(year=2012)
     dd <- occ_count(occurrenceStatus = "ABSENT")
     ee <- occ_count(basisOfRecord="MATERIAL_SAMPLE",organismQuantity=5)
@@ -40,7 +40,7 @@ test_that("occ_count facets work", {
   vcr::use_cassette("occ_count_facet", {
     aa <- occ_count(facet="year",occurrenceStatus = NULL)
     # Use GBIF Backbone for backward compatibility with VCR cassettes
-    bb <- occ_count(facet="year",taxonKey=212, year="2000,2003", checklistKey = NULL)
+    bb <- suppressWarnings(occ_count(facet="year",taxonKey=212, year="2000,2003", checklistKey = NULL))
     cc <- occ_count(facet="country",facetLimit=2)
     dd <- occ_count(facet="occurrenceStatus",occurrenceStatus=NULL)
     ee <- occ_count(facet="basisOfRecord",basisOfRecord="MATERIAL_SAMPLE",organismQuantity=5)
@@ -105,7 +105,7 @@ test_that("occ_count fails well", {
     "Bad facet arg."
   )
   expect_error(
-    occ_count(facet="search",taxonKey=212),
+    suppressWarnings(occ_count(facet="search",taxonKey=212)),
     "Bad facet arg."
   )
 })
@@ -132,11 +132,11 @@ test_that("occ_count accepts nucleotideSequence parameters", {
     mm <- occ_count(nucleotideSequence.gapsOrWhitespaceRemoved = TRUE)
     
     # Combined filters
-    nn <- occ_count(
+    nn <- suppressWarnings(occ_count(
       taxonKey = 212,
       nucleotideSequence.targetGene = "COI",
       nucleotideSequence.invalid = FALSE
-    )
+    ))
     
   }, preserve_exact_body_bytes = TRUE)
   
@@ -201,11 +201,11 @@ test_that("occ_count nucleotideSequence facets work", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_count_nucleotideSequence_facet", {
     aa <- occ_count(facet = "nucleotideSequence.targetGene")
-    bb <- occ_count(
+    bb <- suppressWarnings(occ_count(
       facet = "nucleotideSequence.targetGene",
       taxonKey = 212,
       facetLimit = 5
-    )
+    ))
     cc <- occ_count(
       facet = "nucleotideSequence.targetGene",
       nucleotideSequence.invalid = FALSE
