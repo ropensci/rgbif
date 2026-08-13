@@ -1,0 +1,16 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/species/search?q=Zwartbuikrotgans&limit=100&offset=0&higherTaxonKey=162310263&datasetKey=4dd32523-a3a3-43b7-84df-4cda02f15cf7
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      raw_gzip: |-
+        eJyrVspPSytOLVGyMtBRysnMzQSyDA2A7NS8FP+0oNTk/KKUYiWrkqLSVB2l5PzSPIjKotTi
+        0pwSoER
+        0rI5SWmJyKoRdCwACpBn/
+  recorded_at: 2026-08-13 12:24:43
+recorded_with: VCR-vcr/2.0.0

@@ -1,0 +1,88 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/installation/d209e552-7e6e-4840-b13c-c0596ef36e55/dataset?limit=1
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":2,"results":[{"key":"05a6c7b1-3940-4e6e-9c2f-3eb92fcc7162","installationKey":"d209e552-7e6e-4840-b13c-c0596ef36e55","publishingOrganizationKey":"5fe4a5bb-1708-4046-8495-bb6a7c93aae6","networkKeys":[],"doi":"10.15468/4haywd","external":false,"numConstituents":0,"type":"OCCURRENCE","title":"University
+        of Hargeisa Biodiversity Museum - Zoology","language":"eng","citation":{"text":"University
+        of Hargeisa: University of Hargeisa Biodiversity Museum - Zoology","citationProvidedBySource":false},"contactsCitation":[],"lockedForAutoUpdate":false,"createdBy":"symbopenzooomuseum","modifiedBy":"crawler.gbif.org","created":"2026-04-10T23:01:25.202+00:00","modified":"2026-04-12T18:41:54.607+00:00","contacts":[{"key":6978930,"type":"ORIGINATOR","primary":true,"userId":[],"position":[],"email":["Mary.Barkworth@usu.edu"],"phone":[],"homepage":["https://openzoomuseum.org/portal/index.php"],"organization":"Open
+        Zoo Museum","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2026-04-12T18:41:54.585+00:00","modified":"2026-04-12T18:41:54.585+00:00"},{"key":6978931,"type":"METADATA_AUTHOR","primary":true,"userId":[],"position":[],"email":["Mary.Barkworth@usu.edu"],"phone":[],"homepage":["https://openzoomuseum.org/portal/index.php"],"organization":"Open
+        Zoo Museum","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2026-04-12T18:41:54.588+00:00","modified":"2026-04-12T18:41:54.588+00:00"},{"key":6978932,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":true,"userId":[],"position":[],"email":["mustafe.abdulkadiriya@gmail.com"],"phone":[],"homepage":[],"organization":"University
+        of Hargeisa Biodiversity Museum - Zoology","address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2026-04-12T18:41:54.589+00:00","modified":"2026-04-12T18:41:54.589+00:00"},{"key":6978933,"type":"CONTENT_PROVIDER","primary":false,"userId":[],"firstName":"Mustafe
+        Abdulkadir","lastName":"Abdurahman","position":["Curator"],"email":["mustafe.abdulkadiriya@gmail.com"],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2026-04-12T18:41:54.590+00:00","modified":"2026-04-12T18:41:54.590+00:00"},{"key":6978934,"type":"CONTENT_PROVIDER","primary":false,"userId":[],"firstName":"Hadia","lastName":"Axmed","position":["Collection
+        Manager"],"email":["hadiaaxmed135@gmail.com"],"phone":[],"homepage":[],"address":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2026-04-12T18:41:54.591+00:00","modified":"2026-04-12T18:41:54.591+00:00"}],"endpoints":[{"key":1264370,"type":"DWC_ARCHIVE","url":"https://openzoomuseum.org/portal/content/dwca/HARG-HARGZ_DwC-A.zip","createdBy":"symbopenzooomuseum","modifiedBy":"symbopenzooomuseum","created":"2026-04-10T23:01:25.917+00:00","modified":"2026-04-10T23:01:25.917+00:00","machineTags":[]}],"machineTags":[{"key":32368113,"namespace":"crawler.gbif.org","name":"crawl_attempt","value":"18","createdBy":"crawler.gbif.org","created":"2026-08-10T18:26:58.229+00:00"}],"tags":[],"identifiers":[{"key":466164,"type":"URL","identifier":"https://openzoomuseum.org/portal/collections/misc/collprofiles.php?collid=17","createdBy":"crawler.gbif.org","created":"2026-04-10T23:02:26.879+00:00","primary":false}],"comments":[],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[],"temporalCoverages":[],"keywordCollections":[],"countryCoverage":[],"collections":[],"dataDescriptions":[],"license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode","dwca":{"coreType":"http://rs.tdwg.org/dwc/terms/Occurrence","extensions":["http://rs.tdwg.org/ac/terms/Multimedia","http://rs.tdwg.org/dwc/terms/Identification","http://rs.gbif.org/terms/1.0/Identifier"],"modified":"2026-08-10T18:27:20.795+00:00"}}]}'
+  recorded_at: 2026-08-13 12:20:55
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/installation/a0e05292-3d09-4eae-9f83-02ae3516283c/comment
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '[{"key":35885,"content":"CSS: created installation and registered Observation.org
+        dataset to be hosted by new installation upon request from the publisher","createdBy":"hvalli","modifiedBy":"hvalli","created":"2024-09-17T10:05:21.842+00:00","modified":"2024-09-17T10:05:21.842+00:00"}]'
+  recorded_at: 2026-08-13 12:20:55
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/installation/896898e8-c0ac-47a0-8f38-0f792fbe3343/contact
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '[{"key":6120570,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Kristjan
+        Adojaan","position":[],"email":["kristjan.adojaan@ut.ee"],"phone":[],"homepage":[],"address":[],"createdBy":"0870a77b-587c-4369-a8ed-bc3d347b8e1c","modifiedBy":"0870a77b-587c-4369-a8ed-bc3d347b8e1c","created":"2025-05-30T13:17:32.737+00:00","modified":"2025-05-30T13:17:32.737+00:00"}]'
+  recorded_at: 2026-08-13 12:20:55
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/installation/896898e8-c0ac-47a0-8f38-0f792fbe3343/endpoint
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '[{"key":1111486,"type":"FEED","url":"https://cloud.gbif.org/ee/rss.do","createdBy":"0870a77b-587c-4369-a8ed-bc3d347b8e1c","modifiedBy":"0870a77b-587c-4369-a8ed-bc3d347b8e1c","created":"2025-05-30T13:17:32.755+00:00","modified":"2025-05-30T13:17:32.755+00:00","machineTags":[]}]'
+  recorded_at: 2026-08-13 12:20:55
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/installation/896898e8-c0ac-47a0-8f38-0f792fbe3343/identifier
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '[]'
+  recorded_at: 2026-08-13 12:20:55
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/installation/896898e8-c0ac-47a0-8f38-0f792fbe3343/machineTag
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '[]'
+  recorded_at: 2026-08-13 12:20:55
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/installation/896898e8-c0ac-47a0-8f38-0f792fbe3343/tag
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '[]'
+  recorded_at: 2026-08-13 12:20:55
+recorded_with: VCR-vcr/2.0.0

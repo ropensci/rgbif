@@ -1,15 +1,12 @@
 http_interactions:
 - request:
     method: GET
-    uri: http://api.geonames.org/srtm3?lats=50.01%2C51.01&lngs=10.2%2C11.2&username=<gbif_user>
+    uri: http://api.geonames.org/srtm3?lats=50.01%2C51.01&lngs=10.2%2C11.2&username=
   response:
-    status: 200
+    status: 401
     headers:
-      status: HTTP/1.1 200 200
-      content-type: text/html;charset=UTF-8
+      status: HTTP/1.1 401 401
     body:
-      string: |
-        206
-        239
-  recorded_at: 2025-09-04 07:12:47
+      raw_gzip: eJxzDQqyMjSwyswrS8zJTFEoLU4t4gIAQlMGjw==
+  recorded_at: 2026-08-13 12:43:12
 recorded_with: VCR-vcr/2.0.0

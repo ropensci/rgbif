@@ -1,0 +1,100 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/species/5231190/parents?offset=0&limit=100
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      raw_gzip: |-
+        eJzFl9+P2jgQx/+VKK9HItuxk5i3LdAe6napFlanquqD4zhgbeIgJ2lvdbr//ZyE8CvQO3qw
+        +4LsmbE
+        Zjz/fwXz9y34WL/YQDmxVRR+7IctEO/YADEOPeAO7ZH/majq2h/YykskQ2gO7yCvN
+        xaJ2dCufpVrGeW
+        ai7pTMWCqZvTV2MTErWSHKZmrHQRzHUYIdxBPg4MSjDo0Qc6IIUMoZE57P
+        zRY8V0Upy0qoy9YVXJolM
+        pH8wZzpMC3OVK4kZ2nf9V1oxXiVMr3xscZXGBerylWui5VcG7Pd
+        1mrxsq6D5qPp5GExfT8dGbtm6tnY
+        Pk4fPoxnn4wh13IpVR02e3ocTexNSfNM8nnJyqqoUxiN
+        Jp8Xk3G9b54JxVPj0CztAr5+MxuLjOnnYvP
+        tVTYWBRcqZqo0NkRDSD1T5JQV5UizH6mITSQC
+        yHNA6CC0QN4QgSGhLsHkNwCGANht9FSVQq+1KHsr0B
+        DCIYEu8oLtClkUlWgy+nuwYQjjHUTN
+        uKMIYUQpQT2GMD4FUYB8zw8QPgPTevWSVrVtZK6hRqkPWBuyz
+        eM6vDHGucDUiRDwHezTyAlj
+        jkx9SBBAmngsabJjulsCu9lh/j0i985xTOSeq0ckb33iF5j8/PuX+6fX
+        Q5JgStHViQzM3bqI
+        /pRIBNEOyXay7WzIIxSDHpMm6iSUEBLkw3Md7nIoTRmLYpfXGzFaZ7KFdC/3ftv
+        83oDWa5mt
+        uQdnJHV8OZej+7v5/LWwJKZV4qtTSYcgdEPin6Byc+dd1baQBojuIG0nHaQhotAnpAepiT
+        rd
+        OQOCUHgJpGYgdN0STGZCyyTXWXOjF8HbbLJL/yosm2VJQHDixOb3zMGcG6o9Ah1KKfCNgwEv
+        OmS5
+        SWXXcVsyeyAfH/SY6GN/D+210HxlqmP9GuOzx/Hk8fVeAxAGN2Ac+i4h4ALGTe/cexxs
+        ZgeUY9ijvA4
+        7iTkJaQhIeAXME5bJ9GXniJn4n/C3O+4d843U0CSzVcPxuc/Joj3/GU20zp4g
+        Zmls/ZFr8zk336fzH5
+        eL4v3dp+n9l9d7kIBbaCJwEbxEEwhT5KG9P147w54yAAj7/X8TeeY3
+        wDdPFXAzcSyFaq6hNV5bLc3uh
+        9V4IwG1+RwrqK3BGflY77S59lwNLBj44KyQTomoOC2d4w3/
+        RUcfJg9PN3tArasolcVKxNN655lW0iSa
+        5kspLGitXcvzrXXqmnEil67lnxAeBOFthId99B+E
+        9+0feyQ0+w==
+  recorded_at: 2026-08-13 12:24:45
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/species/5135783/parents?offset=0&limit=100
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      raw_gzip: |-
+        eJztl82O2zYQx1+F0KHYRS2FpD5pLBZYeJ3EyO4myDoogiAHiqIsYiXKoKSkbtE3660v1pG8
+        /oqUtG6
+        c5NKbyJmhZob/n0S++916kCtrTEaWbuIXm0deyPWzi0kUub47smr+a6ln19bYWsQq
+        HRNrZFVlY4Sct4
+        ZN5IPSi6QswOtKq4LnilvbyY1PwmteybobWkmYJEmcejYVKba91GU2iym3
+        4xgzJjiXbiBgCVHqqlZ1I
+        /VxcZVQEKJSJe6gpsO0BNelVoLnfdMHaTQXTc7No413tgpMvKmz
+        0lSZWsK0te7VfLVsne4ns+ndfPZ0
+        NoF5w/UDzL2Y3T27fnkLE6VRC6Vbt5dvXk+m1mNLy0KJ
+        +5rXTdWmMJlMX82n1+26ZSG1yMFgeL5xePc
+        eFpYFNw/V49ub4lpWQuqE6xrmKIsIc6HJOa/q
+        ieEfc5mAJ8XUtXFkUzqn7pjisc8c3/N/xniMsbX2nu
+        lamqWRdS+CjgkZ+8ShbriNUFXVyC6j
+        P0aPGvK9nYi6562KMGZR5Pc05HtDIiIeC1wcBJ8R0zJb5U03Z
+        +rMlMsyGZDY2mmbyWkUx7kQ
+        0mN2THFgewGL7SgRFDrkhyFhqcvTLj9uNiFkMzqsoK/J/Up6qtw39nW5
+        sR6vzFfP3968+WbC
+        XDZxrqpMJrN25Q+lRvdKxmWejNDEmTvoJwShWqumGqHnDrqRmYkbkaFEGgRVLnK
+        pRAaylhpd
+        aV5DMrKz/aJMLPO8rMAwz5Q0coSmpgLpwlCq3EHEDkKGzkjkRefOECIkjHDonhoRSsae51
+        Av
+        +hIilAQ7RtaDDSR+iJnn4R4k4DVESei1VeDPfXL/CyWwp1W1y+wHQdNmsqNmP/seNzNdSVEP
+        QbOz
+        9IhRnel4XCY3V/f334eWG6U1ly0ZEwfdr0DcBUe6W0KiJSjdyIXmqDZqOz1GUFWjk6ZA
+        3TZKCC5NonT
+        7sJBaGj5C1VJCC2FCtG4ZN1yAnlXcvilRaSrbrisFo2oF/VwV7WNeClW1VEXU
+        A6pCf5gqEhHXxyf/8b
+        RUhU4UkQGqHhW7t91bzkIW7jhbDzacBYQyl0U9zsBrgDNKMPVAtvQo
+        zqDz0rQbKZcqKZdQ3tH0dUvs0
+        v9BMHapbGncUdVD8bDST3E8tPaQLMo6Ox7Il6+vp6//B/Jz
+        QLpBhFvlnJ5H5lDiHskjJvtArkcbIsPA
+        xxH2+kSC2+Cvz6UUR+EpkEx5ofIWjbtVscxggYTL
+        ryR1veRenSdBF8LS0PdSO4Hjve0JARC7PrEZYzg
+        AA8dufIhul8wW3cOye/gelv8pvofWHr6x
+        aarMTssSBIPipoaXpNDUo4F+enU7u3n7fYi+UJevsva0eM
+        sXzsUTdYnOtFM55yN0EV+Siyfx
+        5Rk9HyMShUMnyKC7npyYLLeNCNnQ+fELZBFGfJ+yvev7dmJ7/QoYi
+        foHy0fHIcJY5LqeS71v
+        Rxh8AdfbKOBb+bU/xx5y3eqH3fhRFHb5bDE8bEL/Ith1Az3lsVGiuxrBxoVD
+        l8JN2w4Q68f9
+        A3HPpndvvtOZdpbnagF/yrM2s/MWO/6b0ij960+DOlE/1FI/wA9TOigYPGAS7/SnS2/
+        sEicI
+        vH/H3Pu/Aaz++dY=
+  recorded_at: 2026-08-13 12:24:45
+recorded_with: VCR-vcr/2.0.0

@@ -1,0 +1,29 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/download/0000122-171020152545675
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      raw_gzip: |-
+        eJx1Uk1vozAQ/S++lmCbQKDcsgT1skqkbKJVVfXg4CHxFmzWNtmmVf77DgkbbaWWm3kf82b0
+        3skLnEh
+        OGH48iiY85SxiPImSOJmlCQmINApxzkKexLOMyiY87Q+vv1KEGlWBdoDwwfsup7Sy
+        ILw6QmXa1mgXGr
+        unI8nR3YnGIaMN7EVTGQloYOF3D86T/J10FqSqhIfh4U/d4Cq0RNINcSR/
+        umGoFI1D+Jq/WG2Xm/Ujv
+        o+i6QfCtwd8tMJXh0IMGWukwzm4GTTg3OYg9MqWH60ey/n6Px+8
+        Bv/M6fkcEAdaLo1X9ZBPGT1iAamN
+        RQGqFz+LOarHmaui2K7X5bIohwFgd6hqy1ePB0L1sN9z
+        QJT2YHFpD/IjhAMvBwZ5jZVOOJtEbMOzPOJ
+        5MguncXrHWM7YkNdIjPUZNckTFkaz+xsVLK41
+        r3HqlZxNWPylr/PC9xiH/NgWRVkuysWlI390Y4T8rv
+        TL2AaHdRCdCvc7VV96cOTUVFVvLegK
+        6D8FHStAvyhg+Ka6Yap6w/tlfMriaIrnNF40a6yZlRjlPptxF
+        hDdtzuwC+FxG4+/p1F8/gv3
+        V+CQ
+  recorded_at: 2026-08-13 12:20:31
+recorded_with: VCR-vcr/2.0.0

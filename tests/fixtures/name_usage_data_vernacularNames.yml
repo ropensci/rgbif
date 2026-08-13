@@ -1,0 +1,97 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/species/5231190/vernacularNames?offset=0&limit=100
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      raw_gzip: |-
+        eJzFWs9v20YW/lcGuqwD2A1FiYqUm62osmrHDiw722CxhxE5Escazmjnh2S66KGnXvoP9LTI
+        oSiCXHa
+        xQBftBnth9lBgD9n/aN9QSmwxTCo2JnUwTFIkv2/ee/Pe94bzVU2Mx4ro2kNnt8Zo
+        ROGo7sAx4cHp+I
+        z4Qgaq9nCMmSK7NUmUYRrO//RVTeMrwY9IXHvouY16vQPPzInk2DcMyxMc
+        kdrD2n6AJYrRuajByzGfG
+        Dyxl/04ggtKGOnb0y7WmImJIUiM0TEdk3c/nr/DcDudRttrN5pf
+        724KTWTMtwm9nXEf4Bi//uvrv6Mh
+        kcmPZJ2ANrJ8AiTWdLqOO60CV5CIMIylioRSNDNyPK6A
+        gZGGT1CfSHKJ1+EpD0qH74ZU0ikTkq5jVwc
+        sqgameIrOTITDdeBI4fKxRRQJjg6FUQQNZ1hK
+        sVhnQfikdBaPsD9lyavkFV/HDoipAJsj9ev3kGV+/V
+        5lYg5fk/LxRYRff0vRXOIR9tfxQzmv
+        Ap8oTf3teb/HJwTqMnq8pYQH+IyqcKsGSAmoPAK30ftMjDBDA
+        z7His7thCU+JQo9AlYjrPLI
+        gApyXcdrOZuTuYb0TyrOgT19Rfb0lYArMoNNjKoWHm8B30gxI5CJtheD
+        KQOYhaGhKoK/7UZh
+        n2A2CsEgI8p5JiAmrPys3GeYKnBIFrn8itwXbA7j9sM4o7pF+Zlwha0puV4HH8k
+        KTJ6C720N
+        PHlxKTNTXxleAbKUFCSYL6LkF/7hWVcqeLASAR+RvpXMeksn+UfGClAWqzEEIKNujhsyBH
+        oX
+        J4MhOqAiADtIRXX8cSPU6+1Wu1mcCiiz5EWOVyq1x7Iu5DLwheFaxtYiXTjFtnLCsW9wICTE
+        M9eU
+        Ew7kbrM9pkpjdCYuMQoIYlih/TlEERyvHsxj73Ra7Xbdu1P2FdnPh6jIdpQZAgOuyURi
+        TQKUIooI1Pi
+        Aj4WMsLazcxgrTSK0MzgfDO/lhpgLUdZqFp5nm7B7hjmO4Wl0grWRkAEOwYNC
+        xugM1AKWfoj6UphZHq
+        16x216rlMKra17rQticSQk9sFDEMD7EZHUB1spNBRQsdKwzjVKs95w
+        3FarOKeQsi1b5bdzYzkEZPJcz
+        Yycp+tvt8DHWFQEnvyUgaaKVQH9g+0J5xmTL9b0UNnlKCVh
+        siSCVBvflIBHR7c5naSJC5JFNyT+FJpb
+        be2CGYMedykbhO8bCCs+QRQqHeERltMcug3nAeS2
+        RlGbvUe3fF+ZPOmCZfmdW99oTSQEgAyqbxv7JpY
+        YaTPDmcQ0kRVI59c/YjU2EsG790bkUmfW
+        T5kuncIhlnhEGEUUqVAnL2dUJS8z0/UvtAIaRkGm0JnOia
+        UXbibp8cWNTjs2VyQaAfB6kCzX
+        g0cQTIjDuxXKue9WNvE6D5otp/XgE4lWsdC7hCaS0XRefBi95IS6M
+        Y+tWOFWRu/dJpNConeZ
+        nNMIM4UWVIf2S1GE+SpcdhZCsmBBA3LP6oUZaJYAYY10CC3j45NhriRqPeh4
+        7fbGOnHzMRys
+        jeGAsAlNF9mWNcj2Ivlta7Pd8DpetTadEftfTsC2KlII5D8aPHlsbcdXyjtcKW9fMEZ
+        8W2HV
+        +zY+GR7k1dFG3enUXae98ZgEUVHyk7rMZBRa/rff3/wYdWPP/sFNQsuUu/P9L896n+fxcaEr
+        a
+        d8ln3eYj7HUIf6DQk+h840x5NC3csd/q4Ny21u35dTdAvG/MaHqW8stf0ncHL7sLL+5j067
+        6I82aaYS
+        Lk1Ku2iex6HlwRRuNArM4U05nODpFDrXQzoJFzheEhmCiCaxgj5/JqRGEKX1XIHu
+        esCrWS8hQG73Dk+
+        hyAiu3+buXPM4toyUEarnkFi7jESEa3XT0uRxgDzb9KB8lGCNitYbNmdU
+        4cpQAVct01xs28rPmbn6uL
+        scBxSs0yxonNzvtNnSdDG8KU12LRTil3J4HDXb6IJTm5KHGjLz
+        2sfF1SL7GZkAYWjqIPAhhUsRGN+We
+        B68v/6+t/42tNO1C68TA1D30A6M4DP3M2fXTl83L8G7
+        jlev1z2vYMQWNsE+w2qKP3msy9fsZse80TCd
+        Rqt0Tx/iBab0k4e5fM3vHKbnep07G+ZNiYAi
+        EO4NhQHF37UrgnaRf+cIsk5INN07EiN6D50JHKAnUly
+        CPLXeevKkd/Jo8CV6hk7PD3tnqNc9
+        PT7tD7r7x2h4cfa09yyvH2g4zXrbgyx694NY1TIQPlYrEz6nUv
+        Ao/UiBaDTDflpr7G+z1SAo
+        nws2t+tUGEQcvJjYzGLv4CYagT+tBwEZmIB31dvHF9ReFgu4YQZ0oGys9
+        Lk94+DSA5D5BA0G
+        g+WtYyyjD5qi4RSrrvd7kI6V7XTOJSmnwrWLTaT7A7Aw3XB/Q0EubrNRjAtw4Jvu
+        9ynKxXOL
+        cSGFPVVlj/E76FUi2u7TAuFUqcGKEKvGVKpAtFdqqiLESjeV3fS0pe2HKbbJ7LfirPyd1ps
+        A
+        l90lJ8+vKYLLyYvROo9wfetN6Tz+Zf2f2e8/lnH5Tkhe2QVxiTMrh+UD/+dlCmyqxv3vN+Ka
+        Zje3h
+        eVv8VoBgyx988P/vnvz7zf/fPO36ll8gRmL39tWWP427y8EW+DsTkqlFqUDH1ndHCY/
+        7/khTZ5XHW3H
+        ySu+le8sFnh6h7B//vr/WyMqXQ==
+  recorded_at: 2026-08-13 12:24:46
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/species/5136034/vernacularNames?offset=0&limit=100
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      raw_gzip: |-
+        eJyrVspPSytOLVGyMtBRysnMzQSyDA2A7NS8FP+0oNTk/KKUYiWrkqLSVB2lotTi0pwSIDc6
+        thYAGb8
+        TJA==
+  recorded_at: 2026-08-13 12:24:46
+recorded_with: VCR-vcr/2.0.0

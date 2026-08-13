@@ -1,0 +1,50 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/oai-pmh/registry?verb=GetRecord&metadataPrefix=oai_dc&identifier=9c4e36c1-d3f9-49ce-8ec1-8c434fa9e6eb
+  response:
+    status: 200
+    headers:
+      content-type: application/xml
+    body:
+      raw_gzip: |-
+        eJy9Vttu2zgQfc9XEFqgaLHW1ZdYjqyguTgNkDRF0qKLfQkoamRzI4takrKT/Zv9mP2vHepi
+        O5u08dM
+        GMCINzwxnDs8MFR0/LnOyAqm4KKaW73gWgYKJlBfzqfXt68weW8fxQXTz8dL+cv2J
+        ILpQU2uhdTlx3f
+        V67YgSCirZgq9AOULOXYS6geO5VgOePCr+zGHdr2GB5/nub9dXd2wBS2rz
+        QmlaMEAvxSeqNl4JRnWd1
+        z77kX1AbR3Oo0qtOJKgSlEoOKMa4sALRrY3tv3+Vz+YBIPJ0Ps9
+        cp9B0OHPCpQ2hCVT6wL0LTAhU4vw
+        FArNMw5yaoVsAP0R8+20n4X2IGRgjwFfx2zQH2Q0hBEk
+        FlmCpinV9IuEjD9OLUH5fcqsuK2CltyZJzy
+        rs1/5Li7b5XKB+cy50vLJZFbnEkebNEx+zf8F
+        0BRkHG3TivfJKnJ3HCLMDuPTZWmo6dfUeIaaYTjxfK
+        Rmux4p0HclsLg+xTyvT21yCJ6fYGw7
+        oP3MHuBudpj4YxvC0AvCIBwdBoPI7Vw3MQwp+Hyvn0qY3Jyef
+        ru9Pf98ev4KkomqQComZ7uL
+        bld7R3AcNdROUtYqsnnfT1UNdiPmHbeyknkNxWXIYYnEKdd3/P9d+G2K
+        e+m/wTbyPyDtX/0Q
+        IUOa6xziGWp+scbDlSTjagGKiIzcoeI5JbRIybUoNBQwlwI10Dm9DFZWSW7cZXz
+        CRR2zhm/N
+        L1121GeKUW01mz5opeHup+XnAV/upqrkD2A6ltzMvx5Zg86xPnzK6QOoOkCH+bE3FqdKLA
+        f2
+        xF8WZhPy3fCLW6G7pj1yXqy4FIURUY90x79nxOtW6HvCbxIFcrXXBqKSDNxXVlJQTPLSxIjf
+        5fqo
+        jC9A2DjJkAfUckpSM6R4UhkEMckZDWU/EdZ/lIVYsSQ0EZUm2DCkpCXSRd7htDkyP+IP
+        vSaI5BhnSQs
+        6r1uQlEhvC/xl5B+Rvj0geiEqZY6WKLTneLcRxXF4OSZ3t4wPmhpmQhKaptwk
+        TfPNhCYKYNJ1lzE420
+        ISjldlfX3qJwcqt/ZJ3CS7X6bJ/YrD2ikX5TGYOXV5tsnqZHZ/OvOD
+        dvv6GHYpfU74q6wPe/2gTwRjl
+        awpV28EqdsbJ2p81vRQ07rG8BLHJFAtZPwxhwdDG5XkE8wh
+        5f/8Xbt16z/xpPwByBmQ74DkvOGUNrev
+        f2h7Id4yTSHG9hKKZzuv8KRjaLS7ed9CDxrOnjPH
+        BKZhcJ9pe7idpcmtW36lom5pEDiBP+75Y2c89Il
+        LBiN8D3pB3/GGI/J+yYseyvCRXOEOukoB
+        IVubKOa18cNb22VCLqmOaYkqbYaAm64Z/fUvXtau7fqPej
+        W+yEWC1Z3syJJcFo2XacUZZTw3
+        xvcXJ5ezD+S1MdtMhSZeQ2Pkbq5QFOv2YnW77w135xuk+8aK/wU6G
+        Uy3
+  recorded_at: 2026-08-13 12:24:50
+recorded_with: VCR-vcr/2.0.0

@@ -1,0 +1,33 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/installation/deleted?limit=2
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      raw_gzip: |-
+        eJytkltP3DAQhf8K8mvXwY6dxM7bloJAXUEFUftQIeTLZHGby8rOVgK0/e11tmHFZVshtZIf
+        7DNnHOd
+        884D6ug4woJLMUONaF3fpDEFnL+pLML23AZW1agLMkOnXXSxTyosZ8hDWzRCLXx/Q
+        d7hDJcqlyLgGjX
+        UhGeZECCzzwmCe54KblKlCGTRDvV+qzt2rwfXdx21jLSVNFSFYcCUxpVZi
+        IbMUa6EIMxlRIk9j43C3g
+        ug+rapPN2fnV9V8sZhXZxfnY8kNzVirnO8b8AcL1VkI7TrAuj04
+        AW9dNyrxgA9cFwbVNNvvx1bjQQ1g
+        348PaZe+D99AjXrbW1e7PYWpIaopSXNM4mIVTcuUlqlM
+        BBfvCCkJeXLFKyvPSi6Tgsqd1UID+y7d43R
+        B6Wa07qh0gzJbEtdbcKvedY/HVplb10GllpMw
+        7HbOQjeM7/OTYPq2halzM3ukaotCGyo1tgIE5hQklo
+        wSTKXKmcpyraXaT1UbJQkwLBRYzIWm
+        kW88slyqWltCiIG3UT2Jz7Jwv1A6bKMKxrvVFl+JRnGqv4BZ7
+        9RnKOuX5t+ZZ3HuMCkqyiLF
+        khYJz8gfQD6xsrhEIp8wfwby7863g5xYUJoTyvNdZh++HN3ML49Ozz4f
+        x/vWvona7TCsQnl4
+        2MRckqV2dRLJHP6c/jrKfgkYepvcu9WrMI+183YerlS7aly3PP4Rx+F/pcpImRU
+        JYewNqb62
+        Ph/jzb9M9vXmF1r9e6A=
+  recorded_at: 2026-08-13 12:20:55
+recorded_with: VCR-vcr/2.0.0

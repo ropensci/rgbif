@@ -1,0 +1,66 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/species?offset=0&limit=100&name=Lupus
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      raw_gzip: |
+        eJztWW1u20YQvYrAH0WLapn9JpdAUDiyGgiRJddiCgRBYCyXS4uwRAokFdcNcoDepD1HLtah
+        LImS7Mh
+        K4zQJ4F+WhjP79d4bPq3fOXmSlLZyAtx2Juk0hU8Ew2ebxcPkzJq8iEsnqIq5bTuF
+        LeeTCr6+fudc2m
+        sn4MKTlEJ2No9ebAf01C4iUmCFJUQq/Uee9Y6dwLmI0mSV6bSdMp8Xxob1
+        40UF8YmHfYFp27lMs4s4n
+        0LNUZZO9STVkH9hszmswenPZ/B3nXRTu3y8vZhYVxr2uAg6sRfH
+        cZRwRE2CEU+YQiqiGkURVspobZk0
+        MKrJs7JKq7nNlnXGp9SLIo444QxxzhLkm4giQRIFE+kk
+        IRzqZrpYlZDVt+31lyaFWJqkZgCHtLERo7M
+        8S42e7MT1vBrnRTlOZxB0bs42vJ7VKaNOrzsI
+        e7/2OhAvdHYJsefdwcsRfM2L9CLN6qThy7NO11lCkE
+        9TM6p0tTjDo06nexp2j+tR86nNzAQe
+        FHqySnj9pkZ9qovLcjn3fHpsSwPs0FnNBNjjRJdVp9BXExtDD
+        sWUIewjSkPKAooDoVzBxc8Y
+        B7hGu87uZZUtZoWtblXQgNCASpcJvK5Iy3JuF2t5317yjgCnaoawg5i3
+        S5iGIRvjbHGEca2k
+        jSyyghjEKaVIxbBEYSjmzDAVW/M1kDzuDoZnJ93j807/aDSqk4/C3nDwn6E9HE0
+        eEh5gEnDA
+        hpK9aBKBsIeoCCEJKMA81/fpXjSJIExwdlgf2YNmM84jmg+GpkSYICIXaIKasSuJ2IsmJd
+        Tj
+        xBOf+FbgnqfUHe19A99m5C18DWPG0oQiwwzgy7RAmvkYJZYLKmPJYLbvsO/uwon3wykW4GC8
+        H07g
+        PlaIgDi9hTiVy4jcCycnDDMs6OeKsxnnUZwPJk4fYSiSISUBFgGWrsT7xSmpwsrD6n40
+        xaY450UWTMo
+        0DtJiml24eXERwMO6IiBMEd/jzkfc2mx8PZnXsQ7AUSO/OOTYFnVIF1n6Ni/q
+        WKKn6eR6EczSWNuNTl
+        BHbhk9SX1BJKOrGdZRKZiC3QAGZflivWePSH85cRP0fSFWMzdRJSXb
+        Yu5NUMkd5mLFwKnSCFHsS2g7y
+        iBN4hgZSkyEwVrYWOwYwmb4tTFstquNsTNAdnfSVXx1Eq1+
+        mmXazst2C3qh/1FxtIaXNoMcn8hDdbJV
+        8YDtbvRqMBy8Otmnj9k8mqTl2Ma9eqy+HReR2xrU
+        eRduu8VaP9Kf2nf4T1z708TCYZqa6s64qmZl8OT
+        J1dWVu+bqEz0bp9qdjWe/zJ7C6mJb6XRS
+        /pDGTxv23lKjrNUI2sKgRhxw3wUW7e+tGxVMBZS7zFe31e
+        gMhifdAbSV8OXZUf98FMKH0Xlv
+        8PtRv1e3kOawzwdHJ91zaD/dk2f9RXvZbkbng2F4fnR62u/BwzdLz
+        sNSTvT0Rn67uifyft3T
+        Q3VPqc/Uo+6/Pd0/00VV6Gmdptih0t8t+prqDwv91m0BS/KJ+yU0v2bul9A8
+        x+wb0Xxzj/JJ
+        RlxqHHvWU8gophE3mCLf4AjJKOaEJp7Umu736c3E2z79sBuUSJdpnl1Pt8ZiTXxjzu/
+        N0oOk
+        oRVBOwtzqDiF9pXaopVmrb42H/6Zffg7tu3WM1tkuohbz93Wh7/cVmxdeCNjcpcSyB1KACH8
+        m
+        ecRbGAhgwPRvKUEUTtLqsL6PoYFlLhU0f1K2KgQUOS7Au//ZdFA+0n8jFRsPKYo4hpD/6V+
+        hLSFH35J
+        FEUx44mVyWH83L31OZCf3xvpDmmfO6Q58Ii/CGkI2Uca6vtc8YPuiraMzG/Hnjr9
+        n70KVZJ5nNSuZMO
+        rUKUYvIFqM9B4FYYpkVgSuulVFkGCCdvyKlDPhVJ1d20ovQwyskNpL44T
+        T/AExUQBpY1RKGKCIAUDSH
+        igMYu2vcrG8Pd5lY1JH73Kx73KXSbDQwyHmNaXNoy4Ut1zP76u
+        UAH4DOq5IIM7VLLPDTAifHC+n33Ju
+        jHO4z3OQ93j1ABDkQiJCIQHwLiS3fkPkDfv/wUsfUbu
+  recorded_at: 2026-08-13 12:24:37
+recorded_with: VCR-vcr/2.0.0

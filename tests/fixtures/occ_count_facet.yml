@@ -1,0 +1,115 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search?limit=0&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&facet=year&facetLimit=
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
+    body:
+      raw_gzip: |-
+        eJxdz7GKwzAMBuB30exBki1bztah80G34+gQEhsCaQJNO5W++5nrQeygRfB/EtIL1py39IAO
+        DczTbfp
+        0aRm/8iUN633coMv9vCUDw/pcSmwjCpNTJQP3tD3nRyE/VwO5H9Jf/4I8pXmEDr7P
+        pwv8T36Spb+lEj
+        Cyg32lVbEx2PA2tbC1sCjWB98K3gVHEkVH1AqqROAYJOhBYCVsKFcQSSMo
+        VoJIWVEOQndBiqqC4SBCJ
+        Xz0zqNt7yBfCSnfoPPttySVYI7sPOn7WuoXtax+Mw==
+  recorded_at: 2026-08-13 12:24:55
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&checklistKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c&facet=year&facetLimit=&year=2000%2C2003&taxonKey=212
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
+    body:
+      raw_gzip: |-
+        eJxdjDELgzAQhf/LzRnO0xjj1qGz4FaKg8QLCDEBo5P43xtqKWm55R3f994BwdrIG7QowM3L
+        fCX2U2d
+        7NmGdIrR2dJEFmLD7hKuyqnSBUsDKcXdbEp6DADsafucD7MxughYe91sPn95F/Lhw
+        AoRYwnewSK+uGz
+        pFLlAmYFMqTfWvUOSCpEbS3wLmAirSSp5DuhdVmkcG
+  recorded_at: 2026-08-13 12:24:56
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&facet=country&facetLimit=2
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
+    body:
+      raw_gzip: |-
+        eJxFjLEKgzAYhN/l5gwxGmLcSvcK2gylOIT4B4SoYHQS372hFsstB993t2P2PtKKijOEYRzO
+        RlNf+4b
+        cvPQRlbchEoObtynhXCmdcVHonGGhuIU1Ke+OwVtH377DDxR6VLjX5vFsXviNTzjZ
+        kRIzLa7PTChV5E
+        pLfbBLuJm/IKQsOZelOrqUD1O7N2o=
+  recorded_at: 2026-08-13 12:24:58
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search?limit=0&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&facet=occurrenceStatus&facetLimit=
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+      x-varnish-rli: '18'
+      x-varnish-rlg: '250'
+    body:
+      raw_gzip: |-
+        eJxVzTELgzAQBeD/cnOGqFETNytZtUSdihTRCwSigtFJ/O8NtbSUWx68j3cHLFo73CCjBKyZ
+        zJVwHiu
+        tcFjW0UGme+uQwLDss68jQeOQMx5yAiu63W6ePDoCuh/wnQ/QBu0IGVRF0Soly0I+
+        6yZv2ho+Mxeb+w
+        m9uitZy7KB34s0FQGjPKYn+ar89o+CMAlYJJg4O38vsWA8+w==
+  recorded_at: 2026-08-13 12:25:00
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&facet=basisOfRecord&facetLimit=&organismQuantity=5&basisOfRecord=MATERIAL_SAMPLE
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+      x-varnish-rli: '17'
+      x-varnish-rlg: '250'
+    body:
+      raw_gzip: |-
+        eJxdjbEKwyAURf/lzQ4d2oa42dZCIMGi3UoQ0ScIRiEmU+i/V5pO5S4H7uHeDbL3BRegBwIx
+        TGEnTE5
+        4iTbPrgD1JhYkYPOaan0+tU17bAjMWNa41P41EvDG4pc38AGjAwoXpjqlxV1LfhXy
+        Br+FXUpmwuoM7M
+        llx3qt2PDoOfy/vMeaDwFlM5U=
+  recorded_at: 2026-08-13 12:25:00
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&facet=coordinateUncertaintyInMeters&facetLimit=&verbatimScientificName=Calopteryx+splendens
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+      x-varnish-rli: '17'
+      x-varnish-rlg: '250'
+    body:
+      raw_gzip: |-
+        eJxdz8GKgzAQBuB3mXOQTJJxqrfS9eBhFVz3sCxFRBMQrEJtT6XvXmmXmiy5DHz5509uMDu3
+        2AukUsA
+        4nIbXZKe+dJXt5nO/QOracbECuvk6rWwME2oBZ7tcx8vKv0cBru3sc76BG+zYQwqH
+        sqw+8mJfZ813cc
+        iqep8X9U+TF81nVmfVF/xtfKWm9mTXEEkpIwnvMlQGZXIX7wssI96YFbEK
+        lCPcWBNh7LOPyuxif7Ois
+        JkS9JnCZxFTkA1VK78W//1JojY+GzSR2jxBjR4bP8s7ju/H9TwA
+        OUt+OA==
+  recorded_at: 2026-08-13 12:25:01
+recorded_with: VCR-vcr/2.0.0
