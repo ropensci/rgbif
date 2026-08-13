@@ -7,7 +7,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '12'
+      x-varnish-rli: '14'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -119,7 +119,7 @@ http_interactions:
         fbAa0EZuLYNtVzjQSH1QBOVPSs6uy5aiHZAqXjIEmjisU3aTw98t9dmldwvF5cVZY
         xJei6Ub
         bGPdDdhlLiiXYLbaVhM2V/UdoG53ofmhTd3SVPijbxCIZBD0/t+uthga
-  recorded_at: 2026-08-13 10:40:49
+  recorded_at: 2026-08-13 11:08:32
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&verbatimScientificName=Calopteryx+splendens
@@ -128,7 +128,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '11'
+      x-varnish-rli: '13'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -240,7 +240,7 @@ http_interactions:
         AVgNaCO3lsG2KxxopD4ogvInJWc3FFvVD0gVLRkCTVzWKbvJ4e+WBOzSu4Xi8uKsM
         QmvxdIN
         trHuBuwyF5SHEVttqwmbq/oOULe70PzQlmHrGvwxNgiEMwh6/2/jWhgb
-  recorded_at: 2026-08-13 10:40:49
+  recorded_at: 2026-08-13 11:08:32
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&verbatimScientificName=Calopteryx+splendens
@@ -249,7 +249,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '12'
+      x-varnish-rli: '14'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -361,7 +361,7 @@ http_interactions:
         fbAa0EZuLYNtVzjQSH1QBOVPSs6uy5aiHZAqXjIEmjisU3aTw98t9dmldwvF5cVZY
         xJei6Ub
         bGPdDdhlLiiXYLbaVhM2V/UdoG53ofmhTd3SVPijbxCIZBD0/t+uthga
-  recorded_at: 2026-08-13 10:40:49
+  recorded_at: 2026-08-13 11:08:32
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&verbatimScientificName=Calopteryx+virgo
@@ -370,7 +370,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '10'
+      x-varnish-rli: '12'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -480,7 +480,7 @@ http_interactions:
         aAaC/kvqfeLtP/xH0fgj7zThbLtL5INNNvs7s/LcrELgkiPFBXPERQh8TC
         FxZn4WgIZWEYMg
         LKD1CoJQN30VRyvuJbwsoJ5o5oAh0jjjLCIamzIxKkYt1dh6Apq7gi//BWJwoLI=
-  recorded_at: 2026-08-13 10:40:49
+  recorded_at: 2026-08-13 11:08:32
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&country=DK&verbatimScientificName=Calopteryx+splendens
@@ -489,7 +489,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '9'
+      x-varnish-rli: '11'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -582,5 +582,5 @@ http_interactions:
         IfvkKNXb4ySfm/ezq95ycSHsp1arEMaMWk0+gt+KV02/2+VSCxeypjEJKDwsa5p670FY03Tx
         O7
         GmnDJhCewga6ooEjKVNLZJHNyf/gURXTTR
-  recorded_at: 2026-08-13 10:40:49
+  recorded_at: 2026-08-13 11:08:32
 recorded_with: VCR-vcr/2.0.0

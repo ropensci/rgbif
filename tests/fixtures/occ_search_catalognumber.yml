@@ -11,5 +11,5 @@ http_interactions:
       x-varnish-rlg: '250'
     body:
       string: '{"offset":0,"limit":300,"endOfRecords":true,"count":0,"results":[],"facets":[]}'
-  recorded_at: 2026-08-13 10:40:38
+  recorded_at: 2026-08-13 11:08:28
 recorded_with: VCR-vcr/2.0.0

@@ -402,7 +402,7 @@ test_that("networkKey works correctly", {
 test_that("make sure things that should throw errors do", {
   vcr::use_cassette("occ_search_fails_well", {
     # not allowed to do a range query on many variables, including contintent
-    expect_error(occ_search(taxonKey=3189815, continent = 'asia,oceania'))
+    expect_error(occ_search(taxonKey="V2", continent = 'asia,oceania'))
     # can't pass the wrong value to latitude
     expect_error(occ_search(decimalLatitude = 334))
   })
@@ -549,8 +549,7 @@ test_that("geometry inputs work as expected", {
 
   # with a taxon key
   vcr::use_cassette("occ_search_geometry_bb", {
-    key <- 3189815
-    bb <- occ_search(taxonKey=key, 
+    bb <- occ_search(taxonKey="65BKZ", 
       geometry='POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))',
       limit=2)
   }, preserve_exact_body_bytes = TRUE)
@@ -661,7 +660,7 @@ test_that("test check_limit 1 million limit exceeded", {
 
 test_that("multiple values for parameters fails", {
   expect_error(occ_search(
-    taxonKey=c(1,2),
+    taxonKey=c("N","V2"),
     basisOfRecord=c("PRESERVED_SPECIMEN","HUMANA_OBSERVATION")),
     "You can have multiple values for only one of")
 })
@@ -921,6 +920,40 @@ test_that("isSequenced parameter works correctly", {
 
   expect_is(cc, "gbif")
   expect_equal(cc$classifications$COL$classKey[1], "V2")
+})
+
+test_that("numeric taxonomic keys trigger warning and switch to backbone", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  
+  # Test with numeric speciesKey
+  expect_warning(
+    vcr::use_cassette("occ_search_numeric_key_warning", {
+      result <- occ_search(speciesKey = 2441176, limit = 2)
+    }, preserve_exact_body_bytes = TRUE),
+    "Numeric taxonomic keys detected.*speciesKey.*legacy GBIF Backbone.*gbif_to_col"
+  )
+  
+  # Test with numeric taxonKey
+  expect_warning(
+    occ_search(taxonKey = 123456, limit = 2),
+    "Numeric taxonomic keys detected.*taxonKey.*legacy GBIF Backbone.*gbif_to_col"
+  )
+  
+  # Test with multiple numeric keys
+  expect_warning(
+    occ_search(kingdomKey = 6, phylumKey = 44, limit = 2),
+    "Numeric taxonomic keys detected.*kingdomKey.*phylumKey.*legacy GBIF Backbone.*gbif_to_col"
+  )
+  
+  # Test that checklistKey is overridden to backbone UUID
+  suppressWarnings({
+    vcr::use_cassette("occ_search_numeric_key_backbone", {
+      result <- occ_search(speciesKey = 2441176, limit = 2)
+    }, preserve_exact_body_bytes = TRUE)
+  })
+  
+  # Check that backbone checklistKey was used
+  expect_equal(attr(result, "args")$checklistKey, "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
 })
 
 

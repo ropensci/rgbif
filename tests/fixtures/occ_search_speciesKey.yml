@@ -7,7 +7,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '0'
+      x-varnish-rli: '2'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -119,31 +119,7 @@ http_interactions:
         7wNqwBs5WgbboXCgkfqgE5RfKbm6LluKdsCqeMkYaOKwTtlNTn+31Geb3i0Ulwdnj
         Um4LZZ2
         sM11N4DL3FAuwWy0rSZs7uo7Qt3uQvNFm7qlqfBH3zAQySjo/b8BTK0YHQ==
-  recorded_at: 2026-08-13 10:40:51
-- request:
-    method: GET
-    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&speciesKey=9WP85
-  response:
-    status: 429
-    headers:
-      status: HTTP/1.1 429 Too Many Requests
-      content-type: application/json
-      access-control-expose-headers: Access-Control-Allow-Origin, Access-Control-Allow-Methods,
-        Access-Control-Allow-Headers
-      retry-after: '3'
-    body:
-      raw_gzip: |-
-        eJyFkMtqw0AMRX/l4rVj70sJfUBLdoWGdlG6kGeUeIg9ckeamPx9x6FJll0JBOfq6H5VWxGM
-        FE94fNs
-        g8U9mNUVPR0bHHOHZ2Bl77JKMOElOcEPgaA2wFXiZ4yDk8fq0eYE4l1Pi6BiejBAi
-        ujwc6ksw6AZYny
-        Tv+zIZM3cajHHfm01617bzPDf7LuwaSfv2ltoqU3L9uj5Ti/GVKJa9F6c3
-        jGO7SKyycktTWF0ua8Elo
-        azPKbvEjCl3Q3DlM8n+rK5cWvhPZ6WRJu3F1k1VV58MRxE0qGBK
-        cgz+rwXqJNv1ca2vB2q4YGRBooKi
-        RwElLqU9v38siiojQ4pkwk7SSFZjGrigcBKNnKHnYfKs
-        h4eLXVN9/wIsHqeT
-  recorded_at: 2026-08-13 10:40:51
+  recorded_at: 2026-08-13 11:08:33
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&speciesKey=9WP85
@@ -152,7 +128,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '17'
+      x-varnish-rli: '1'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -262,7 +238,7 @@ http_interactions:
         zn+h7liGjc6YAa94Ys9cTgw/bgFlTQO+w2POrjw45+HhaC/t4BBCDl4YnB
         yU4AjIAenwiWVE
         QsweRGBLKRyxDwf7L3oFrVc/URc7bFqGpiPT1HZQQHIs+Pg/kw5dQQ==
-  recorded_at: 2026-08-13 10:40:56
+  recorded_at: 2026-08-13 11:08:33
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&speciesKey=9WP85
@@ -271,7 +247,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '16'
+      x-varnish-rli: '0'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -362,7 +338,7 @@ http_interactions:
         ac90JRirbLDQd6wrMcaJ0MNbQTYEhn0hi5TCVW8iSAjeKMI/hq3JP4/v8SN6FT2I6osQ
         NLYV
         mhEhrOietyoeSufiD2xVFPT6/VsVhcWf1arYL0ke6TVYsmKDBWwrc2eS+vO3/wBhwMwn
-  recorded_at: 2026-08-13 10:40:57
+  recorded_at: 2026-08-13 11:08:33
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&speciesKey=Q2M4
@@ -371,7 +347,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '0'
+      x-varnish-rli: '2'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -483,7 +459,7 @@ http_interactions:
         7wNqwBs5WgbboXCgkfqgE5RfKbm6LluKdsCqeMkYaOKwTtlNTn+31Geb3i0Ulwdnj
         Um4LZZ2
         sM11N4DL3FAuwWy0rSZs7uo7Qt3uQvNFm7qlqfBH3zAQySjo/b8BTK0YHQ==
-  recorded_at: 2026-08-13 10:40:57
+  recorded_at: 2026-08-13 11:08:33
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&country=DK&speciesKey=Q2M4
@@ -492,7 +468,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '15'
+      x-varnish-rli: '17'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -585,5 +561,5 @@ http_interactions:
         FrJPjlK9PU6yuXk/u+ouFxfSfmq1DGHMqdX4I/iteNXku10sNEkuaxqRgNLDsqaJ9x6ENU0W
         vx
         NrKigTnsAOsqaqipGpJrFNo+D+9C8W5TT6
-  recorded_at: 2026-08-13 10:40:57
+  recorded_at: 2026-08-13 11:08:33
 recorded_with: VCR-vcr/2.0.0

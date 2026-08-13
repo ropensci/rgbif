@@ -525,7 +525,7 @@ http_interactions:
         SyfFM2Q9VXySVnYkyoLAHESNtfThiNFYPWuFYgTafnV
         xW8oUfmRSP2UNH7zC8Fu/mXy/eSHye+ykZtg
         u7d44EYq4YUSjCEO3Phsg32++e7/A0ghChc=
-  recorded_at: 2026-08-13 10:41:40
+  recorded_at: 2026-08-13 11:08:52
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=1&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&geometry=POLYGON%28%28-15.7404094934464+31.5836400571481%2C40.8611530065536+31.5836400571481%2C40.8611530065536+55.4324133588853%2C-15.7404094934464+55.4324133588853%2C-15.7404094934464+31.5836400571481%29%29
@@ -604,5 +604,5 @@ http_interactions:
         /idpgHqajfTup6pOxJRq6H2YIBHsAAVTiyHtQapqjJd8q+14icUxDf+i2w9Vy9KqZx/+AyZ
         U
         P08=
-  recorded_at: 2026-08-13 10:41:43
+  recorded_at: 2026-08-13 11:08:52
 recorded_with: VCR-vcr/2.0.0

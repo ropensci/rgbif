@@ -87,7 +87,7 @@ http_interactions:
         3QCUSmzWydvB9gv6rxdYD9YzelezDcsh7BcJPYZABwxlIs
         oiqm/mPD8L2rp4vC/a+Hwv0Mw/4JFN5O8
         m+AwhuU/DQKb5vyLAp/dAHcN3nMm0S+/w8aPLGg
-  recorded_at: 2026-08-13 10:41:45
+  recorded_at: 2026-08-13 11:08:54
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&nucleotideSequence.targetGene=COI
@@ -96,7 +96,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '17'
+      x-varnish-rli: '18'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -210,7 +210,7 @@ http_interactions:
         Jg0wi2bx8b8BDgHgd9D8dywFFFgzZNJXrJAGtQT7XbT9rup7lokHMWnQk6BSgaroUjp6H7UY
 
         +D0P/pSBP/TCMQG/28SzBPyJqvCzwDAmQOzzfwATQ2eZ
-  recorded_at: 2026-08-13 10:41:46
+  recorded_at: 2026-08-13 11:08:54
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&nucleotideSequence.targetGene=ITS1
@@ -333,7 +333,7 @@ http_interactions:
         TBpgFs3i438DHALA76D571gKKLBmyKSvWCENagn2u2j7XdX3LBMPYtKgJ0GlAlXRpXT0Pmox
 
         8Hse/CkDf+iFYwJ+t4lnCfgTVeFngWFMgNjn/wChJWec
-  recorded_at: 2026-08-13 10:41:48
+  recorded_at: 2026-08-13 11:08:54
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&taxonKey=V2&nucleotideSequence.targetGene=ITS1
@@ -424,5 +424,5 @@ http_interactions:
         OuSpZmabhqKKcuW8b5poqQpsq1JtmIpJlso/7jx
         YivG//z54mIMuGe+2BJl74BxN6k/NZFMmlB++h0A
         ISsv
-  recorded_at: 2026-08-13 10:41:48
+  recorded_at: 2026-08-13 11:08:54
 recorded_with: VCR-vcr/2.0.0

@@ -16,6 +16,11 @@
 #' @seealso [downloads()], [occ_data()]
 #' @note Maximum number of records you can get with this function is 100,000.
 #' See https://www.gbif.org/developer/occurrence
+#' 
+#' When numeric taxonomic keys (taxonKey, speciesKey, kingdomKey, etc.) are 
+#' detected, the function automatically switches to the GBIF Backbone taxonomy
+#' checklistKey and issues a warning. These numeric keys are legacy identifiers.
+#' Consider migrating to COL XR identifiers using [gbif_to_col()].
 #' @return An object of class `gbif`, which is a S3 class list, with
 #' slots for metadata (`meta`), the occurrence data itself (`data`),
 #' the taxonomic hierarchy data (`hier`), media metadata (`media`),
@@ -181,6 +186,40 @@ occ_search <- function(taxonKey = NULL,
                        ...) {
   
   pchk(return, "occ_search")
+  
+  # Check for numeric taxonomy keys and switch to backbone if detected
+  taxonomic_keys <- list(
+    taxonKey = taxonKey,
+    speciesKey = speciesKey,
+    kingdomKey = kingdomKey,
+    phylumKey = phylumKey,
+    classKey = classKey,
+    orderKey = orderKey,
+    familyKey = familyKey,
+    genusKey = genusKey,
+    subgenusKey = subgenusKey
+  )
+  
+  # Check if any taxonomic keys are numeric
+  numeric_keys <- sapply(taxonomic_keys, function(x) {
+    if (is.null(x)) return(FALSE)
+    all(suppressWarnings(!is.na(as.numeric(x))))
+  })
+  
+  if (any(numeric_keys)) {
+    warning(
+      "Numeric taxonomic keys detected (", 
+      paste(names(which(numeric_keys)), collapse = ", "), 
+      "). These are legacy GBIF Backbone identifiers. ",
+      "Switching to Backbone checklistKey (d7dddbf4-2cf0-4f39-9b2a-bb099caae36c). ",
+      "Please consider migrating to COL XR identifiers - ",
+      "use gbif_to_col() to look up the COL equivalents.",
+      call. = FALSE
+    )
+    # Override checklistKey to use backbone
+    checklistKey <- "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+  }
+  
   geometry <- geometry_handler(geometry, geom_big, geom_size, geom_n)
   url <- paste0(gbif_base(), '/occurrence/search')
   argscoll <- NULL

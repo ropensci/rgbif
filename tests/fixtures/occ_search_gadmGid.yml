@@ -136,7 +136,7 @@ http_interactions:
         XLMtEiVJlkxEuSgqjIlgDhz39g2zr0pdqd5zSeH0La6O22cl
         UGkoZo7CTEWrDedx9cP/AHgj
         K+I=
-  recorded_at: 2026-08-13 10:40:42
+  recorded_at: 2026-08-13 11:08:31
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&gadmGid=TWN
@@ -247,7 +247,7 @@ http_interactions:
         UWQPfj//5XcUnVoYoR9+9ezqj7/mFk
         E/VWSGfnOg31TfKeinSIYhGCuUtR3oN119K9AvMdcU
         9FsO1pmaLkAYJDGO4yB/8n9BCiLL
-  recorded_at: 2026-08-13 10:40:42
+  recorded_at: 2026-08-13 11:08:31
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&taxonKey=V2&gadmGid=USA
@@ -256,7 +256,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '17'
+      x-varnish-rli: '18'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -336,5 +336,5 @@ http_interactions:
         hgIwLHhfDgsc9CGAj504zYtpcIszQQFhHx/Log1iMJWE9z
         sSzD+4xt4YlH7qQJE3zPF9bp/rfpZbluV
         dfLLt+B83pZ7VT5miOK5ZD6+h+gEO8N
-  recorded_at: 2026-08-13 10:40:44
+  recorded_at: 2026-08-13 11:08:31
 recorded_with: VCR-vcr/2.0.0
