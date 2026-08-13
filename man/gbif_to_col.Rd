@@ -44,9 +44,6 @@ This function uses the GBIF species matching API with the \code{scientificNameID
 parameter to resolve GBIF Backbone taxonomy keys to COL Extended Release keys.
 This is useful when migrating existing code from numeric GBIF Backbone keys
 to the new COL XR alpha-numeric keys.
-
-The function prefixes each key with "gbif:" before querying the API, following
-the GBIF identifier convention.
 }
 \examples{
 \dontrun{

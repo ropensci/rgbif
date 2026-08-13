@@ -29,9 +29,6 @@
 #' This is useful when migrating existing code from numeric GBIF Backbone keys
 #' to the new COL XR alpha-numeric keys.
 #'
-#' The function prefixes each key with "gbif:" before querying the API, following
-#' the GBIF identifier convention.
-#'
 #' @references
 #' \url{https://techdocs.gbif.org/en/openapi/v2/species}
 #'
