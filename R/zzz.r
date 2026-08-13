@@ -17,6 +17,185 @@ get_hier <- function(x, h1, h2){
   }
 }
 
+# Flatten classifications into data frames grouped by checklistKey
+# param: classifications A list where each element contains occurrence-level classifications
+#        (a named list where names are checklistKeys and values contain $classification arrays)
+# @return A named list of tibbles, one per checklistKey, each with one row per occurrence
+flatten_classifications <- function(classifications) {
+  if (is.null(classifications) || length(classifications) == 0) {
+    return(NULL)
+  }
+  
+  # Map known checklist UUIDs to friendly names
+  checklist_names <- c(
+    "7ddf754f-d193-4cc9-b351-99906754a03b" = "COL",
+    "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c" = "backbone"
+  )
+  
+  # First pass: discover all unique ranks across all classifications
+  all_ranks <- character(0)
+  for (occ_cls in classifications) {
+    if (is.null(occ_cls) || length(occ_cls) == 0) next
+    
+    for (ckKey in names(occ_cls)) {
+      cls <- occ_cls[[ckKey]]$classification
+      if (!is.null(cls) && is.list(cls)) {
+        ranks_in_cls <- sapply(cls, function(x) {
+          if (is.list(x) && !is.null(x$rank)) tolower(as.character(x$rank)) else NA_character_
+        })
+        all_ranks <- c(all_ranks, ranks_in_cls[!is.na(ranks_in_cls)])
+      }
+    }
+  }
+  
+  # Get unique ranks, preserving order of appearance
+  ranks <- unique(all_ranks)
+  
+  if (length(ranks) == 0) {
+    return(NULL)
+  }
+  
+  # Process each occurrence's classifications
+  result <- lapply(classifications, function(occ_cls) {
+    # Skip NULL or empty items
+    if (is.null(occ_cls) || length(occ_cls) == 0) {
+      return(NULL)
+    }
+    
+    # occ_cls is a named list where names are checklistKeys
+    # e.g., occ_cls$`7ddf754f-d193-4cc9-b351-99906754a03b`$classification
+    checklistKeys <- names(occ_cls)
+    
+    if (is.null(checklistKeys) || length(checklistKeys) == 0) {
+      return(NULL)
+    }
+    
+    # Process each checklistKey for this occurrence
+    rows_by_checklist <- lapply(checklistKeys, function(ckKey) {
+      checklist_data <- occ_cls[[ckKey]]
+      
+      # Extract the classification array (note: singular "classification")
+      cls <- checklist_data$classification
+      
+      if (is.null(cls) || length(cls) == 0 || !is.list(cls)) {
+        # Return empty row with checklistKey (actual UUID)
+        output <- list(checklistKey = ckKey)
+        for (r in ranks) {
+          output[[to_camel(paste0(r, "_name"))]] <- NA_character_
+          output[[to_camel(paste0(r, "_key"))]] <- NA_character_
+        }
+        return(tibble::as_tibble(output))
+      }
+      
+      # Filter valid classification items
+      cls_items <- Filter(function(x) is.list(x) && length(x) > 0, cls)
+      
+      if (length(cls_items) == 0) {
+        # Return empty row with checklistKey (actual UUID)
+        output <- list(checklistKey = ckKey)
+        for (r in ranks) {
+          output[[to_camel(paste0(r, "_name"))]] <- NA_character_
+          output[[to_camel(paste0(r, "_key"))]] <- NA_character_
+        }
+        return(tibble::as_tibble(output))
+      }
+      
+      # Build output for this checklistKey (actual UUID)
+      tryCatch({
+        output <- list(checklistKey = ckKey)
+        
+        # Extract rank, name, and key for each taxonomic level
+        for (cls_item in cls_items) {
+          rank <- if (!is.null(cls_item$rank)) tolower(as.character(cls_item$rank)) else NA_character_
+          name <- if (!is.null(cls_item$name)) as.character(cls_item$name) else NA_character_
+          key <- if (!is.null(cls_item$key)) as.character(cls_item$key) else NA_character_
+          
+          # Process all ranks (not filtering to predefined list)
+          if (!is.na(rank)) {
+            output[[to_camel(paste0(rank, "_name"))]] <- name
+            output[[to_camel(paste0(rank, "_key"))]] <- key
+          }
+        }
+        
+        # Ensure all expected columns exist (fill missing with NA)
+        for (r in ranks) {
+          name_col <- to_camel(paste0(r, "_name"))
+          key_col <- to_camel(paste0(r, "_key"))
+          if (!name_col %in% names(output)) {
+            output[[name_col]] <- NA_character_
+          }
+          if (!key_col %in% names(output)) {
+            output[[key_col]] <- NA_character_
+          }
+        }
+        
+        # Order columns: checklistKey first, then rank pairs
+        ordered_cols <- c("checklistKey")
+        for (r in ranks) {
+          ordered_cols <- c(ordered_cols, to_camel(paste0(r, "_name")), to_camel(paste0(r, "_key")))
+        }
+        output <- output[ordered_cols]
+        
+        tibble::as_tibble(output)
+      }, error = function(e) {
+        NULL
+      })
+    })
+    
+    # Return named list with checklistKey as names
+    names(rows_by_checklist) <- checklistKeys
+    rows_by_checklist
+  })
+  
+  # Filter out NULL results
+  result <- Filter(Negate(is.null), result)
+  
+  if (length(result) == 0) {
+    return(NULL)
+  }
+  
+  # Now reorganize: collect all rows for each checklistKey across all occurrences
+  all_checklistKeys <- unique(unlist(lapply(result, names)))
+  
+  final_result <- lapply(all_checklistKeys, function(ckKey) {
+    # Collect all rows for this checklistKey
+    rows <- lapply(result, function(occ_result) {
+      if (ckKey %in% names(occ_result)) {
+        occ_result[[ckKey]]
+      } else {
+        NULL
+      }
+    })
+    rows <- Filter(Negate(is.null), rows)
+    
+    if (length(rows) == 0) {
+      return(NULL)
+    }
+    
+    # Combine into single tibble
+    tibble::as_tibble(data.table::rbindlist(rows, use.names = TRUE, fill = TRUE))
+  })
+  
+  names(final_result) <- all_checklistKeys
+  final_result <- Filter(Negate(is.null), final_result)
+  
+  # Convert checklist keys to friendly names
+  final_names <- names(final_result)
+  for (i in seq_along(final_names)) {
+    key <- final_names[i]
+    if (is.na(key) || key == "") {
+      final_names[i] <- "Unknown"
+    } else if (key %in% names(checklist_names)) {
+      # Replace with friendly name
+      final_names[i] <- checklist_names[key]
+    }
+    # Otherwise keep the UUID as-is (unknown checklist)
+  }
+  names(final_result) <- final_names
+  
+  final_result
+}
+
 # Parser for gbif data
 # param: input A list
 # @param: fields (character) Default ("minimal") will return just taxon name, key, latitude, and

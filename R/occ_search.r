@@ -18,8 +18,8 @@
 #' See https://www.gbif.org/developer/occurrence
 #' @return An object of class `gbif`, which is a S3 class list, with
 #' slots for metadata (`meta`), the occurrence data itself (`data`),
-#' the taxonomic hierarchy data (`hier`), and media metadata
-#' (`media`).
+#' the taxonomic hierarchy data (`hier`), media metadata (`media`),
+#' taxonomic classifications (`classifications`), and facets (`facets`).
 #' In addition, the object has attributes listing the user supplied arguments
 #' and whether it was a 'single' or 'many' search; that is, if you supply two
 #' values of the `datasetKey` parameter to searches are done, and it's a
@@ -28,7 +28,12 @@
 #' is a list of data.frames of the unique set of taxa found, where each
 #' data.frame is its taxonomic classification. `media` is a list of media
 #' objects, where each element holds a set of metadata about the media object.
-
+#' `classifications` is a named list of tibbles, with one tibble per checklistKey.
+#' Each tibble contains one row per occurrence with the full taxonomic classification
+#' path pivoted into camelCase columns: checklistKey, kingdomName, kingdomKey, phylumName,
+#' phylumKey, className, classKey, orderName, orderKey, familyName, familyKey,
+#' genusName, genusKey, subgenusName, subgenusKey, speciesName, speciesKey. The function
+#' dynamically discovers all taxonomic ranks from the API. If checklistKey is not available from the API, occurrences are grouped under "Unknown".
 occ_search <- function(taxonKey = NULL,
                        scientificName = NULL,
                        country = NULL,
@@ -370,10 +375,13 @@ occ_search <- function(taxonKey = NULL,
     
     meta <- outout[[length(outout)]][c('offset', 'limit', 'endOfRecords',
                                        'count')]
-    # print(outout[[1]]$results[[1]]$classifications)                                       
     data <- do.call(c, lapply(outout, "[[", "results"))
     # remove classifications to return as separate object 
-    classifications <- do.call(c, lapply(data, "[[", "classifications"))
+    classifications <- lapply(data, function(x) {
+      x[["classifications"]]
+    })
+    # flatten classifications into compact data frames
+    classifications <- flatten_classifications(classifications)
     data <- lapply(data, function(x) { x[["classifications"]] <- NULL; x })
     facets <- do.call(c, lapply(outout, "[[", "facets"))
     if (identical(data, list())) {

@@ -30,6 +30,10 @@ The following functions are deprecated because they use the GBIF Backbone taxono
 
 `gbif_to_col()` - Convert GBIF Backbone numeric taxon keys to COL Extended Release alpha-numeric keys. Returns the full API response including usage details, classification hierarchy, and match diagnostics. 
 
+### MINOR IMPROVEMENTS
+
+* `occ_search()` now returns `classifications` as a named list of tibbles, with one tibble per checklistKey (taxonomy source). Each tibble contains one row per occurrence with taxonomic ranks pivoted into camelCase columns (checklistKey, kingdomName, kingdomKey, phylumName, phylumKey, className, classKey, etc.). This structure makes it easy to work with occurrences from different taxonomies separately while keeping the checklistKey information with the data. Occurrences without a checklistKey are grouped under "Unknown". The function now dynamically discovers taxonomic ranks from the API response instead of filtering to a predefined set, ensuring all available taxonomic information is preserved. 
+
 rgbif 3.8.5
 ===========
 
