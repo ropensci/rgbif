@@ -24,7 +24,7 @@ occ_download_prep(
   type = "and",
   format = "DWCA",
   verbatim_extensions = NULL,
-  checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b",
+  checklistKey = NULL,
   user = NULL,
   pwd = NULL,
   email = NULL,

@@ -677,8 +677,8 @@ for curl options}
 \value{
 An object of class \code{gbif}, which is a S3 class list, with
 slots for metadata (\code{meta}), the occurrence data itself (\code{data}),
-the taxonomic hierarchy data (\code{hier}), and media metadata
-(\code{media}).
+the taxonomic hierarchy data (\code{hier}), media metadata (\code{media}),
+taxonomic classifications (\code{classifications}), and facets (\code{facets}).
 In addition, the object has attributes listing the user supplied arguments
 and whether it was a 'single' or 'many' search; that is, if you supply two
 values of the \code{datasetKey} parameter to searches are done, and it's a
@@ -687,6 +687,12 @@ endOfRecords and count fields. \code{data} is a tibble (aka data.frame). \code{h
 is a list of data.frames of the unique set of taxa found, where each
 data.frame is its taxonomic classification. \code{media} is a list of media
 objects, where each element holds a set of metadata about the media object.
+\code{classifications} is a named list of tibbles, with one tibble per checklistKey.
+Each tibble contains one row per occurrence with the full taxonomic classification
+path pivoted into camelCase columns: checklistKey, kingdomName, kingdomKey, phylumName,
+phylumKey, className, classKey, orderName, orderKey, familyName, familyKey,
+genusName, genusKey, subgenusName, subgenusKey, speciesName, speciesKey. The function
+dynamically discovers all taxonomic ranks from the API. If checklistKey is not available from the API, occurrences are grouped under "Unknown".
 }
 \description{
 Search for GBIF occurrences
@@ -694,6 +700,11 @@ Search for GBIF occurrences
 \note{
 Maximum number of records you can get with this function is 100,000.
 See https://www.gbif.org/developer/occurrence
+
+When numeric taxonomic keys (taxonKey, speciesKey, kingdomKey, etc.) are
+detected, the function automatically switches to the GBIF Backbone taxonomy
+checklistKey and issues a warning. These numeric keys are legacy identifiers.
+Consider migrating to COL XR identifiers using \code{\link[=gbif_to_col]{gbif_to_col()}}.
 }
 \section{Multiple values passed to a parameter}{
 

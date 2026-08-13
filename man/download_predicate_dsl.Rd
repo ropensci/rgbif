@@ -42,7 +42,7 @@ pred_or(..., .list = list())
 
 pred_and(..., .list = list())
 
-pred_in(key, value)
+pred_in(key, value, checklistKey = NULL)
 
 pred_default()
 }
@@ -52,8 +52,10 @@ pred_default()
 \item{value}{(various) the value for the predicate}
 
 \item{checklistKey}{(character) A checklistKey to use for downloading using
-alternative taxonomies. The default is COL (Catalogue of Life) Extended Release
-(\code{"7ddf754f-d193-4cc9-b351-99906754a03b"}). To use GBIF Backbone Taxonomy,
+alternative taxonomies. Can be used with any taxonomic rank key (taxonKey,
+classKey, phylumKey, orderKey, familyKey, genusKey, subgenusKey, speciesKey,
+acceptedTaxonKey, kingdomKey). The default is COL (Catalogue of Life) Extended
+Release (\code{"7ddf754f-d193-4cc9-b351-99906754a03b"}). To use GBIF Backbone Taxonomy,
 pass \code{"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"}.}
 
 \item{..., .list}{For \code{pred_or()} or \code{pred_and()}, one or more objects of
@@ -297,6 +299,12 @@ pred_or(pred("taxonKey", "Q2M4"), pred("taxonKey", "9WLSS"),
 pred_in("taxonKey", c("Q2M4", "9WLSS", "Q2N2", "Q2KZ"))
 pred("license", "CC_BY_4_0")
 pred_in("license", c("CC_BY_4_0", "CC_BY_NC_4_0"))
+
+# Using checklistKey with different taxonomic rank keys
+pred("classKey", "B8V3Z")  # Uses COL XR by default
+pred("orderKey", "C4PL")   # Uses COL XR by default
+# Override to use GBIF Backbone
+pred("classKey", "220", checklistKey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
 }
 \references{
 Download predicates docs:

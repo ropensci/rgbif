@@ -12,9 +12,9 @@ http_interactions:
       content-type: application/json
       content-encoding: gzip
     body:
-      string: '{"doi":"10.15468/dd.npreny","originalDownloadDOI":"10.15468/dl.hgc9gw","description":"This
+      string: '{"doi":"10.15468/dd.9xzpqp","originalDownloadDOI":"10.15468/dl.hgc9gw","description":"This
         data was filtered using a fake protocol","citation":"Derived dataset GBIF.org
-        (4 September 2025) Filtered export of GBIF occurrence data https://doi.org/10.15468/dd.npreny","title":"Test
+        (13 August 2026) Filtered export of GBIF occurrence data https://doi.org/10.15468/dd.9xzpqp","title":"Test
         for derived dataset","sourceUrl":"https://zenodo.org/record/4246090#.YPGS2OgzZPY","createdBy":"<gbif_user>","modifiedBy":"<gbif_user>"}'
-  recorded_at: 2025-09-04 07:12:47
+  recorded_at: 2026-08-13 12:10:34
 recorded_with: VCR-vcr/2.0.0
