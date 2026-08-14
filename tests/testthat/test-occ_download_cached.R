@@ -1,3 +1,4 @@
+# testthat::test_file("tests/testthat/test-occ_download_cached.R")
 context("occ_download_cached: utilities")
 
 # get original env vars/R options
@@ -42,28 +43,28 @@ test_that("occ_download_cached utils", {
   ## not matched
   dprep1 <- occ_download_prep(
     pred("catalogNumber", "Bird.27847588"),
-    pred("year", 1978), checklistKey = NULL)
+    pred("year", 1978), checklistKey = "")
   aa <- dl_match(pred = dprep1, preds)
   expect_is(aa, "DownloadMatch")
   expect_false(aa$matched)
   
   ## matched but expired
-  dprep2 <- occ_download_prep(pred("taxonKey", "9588263"), checklistKey = NULL)
+  # Download 0040044-251120083545085 created 2025-12-09 (8+ months old, expired)
+  # Uses numeric taxonKey without checklistKey (historical download)
+  dprep2 <- occ_download_prep(pred("taxonKey", 2431950), checklistKey = "")
   bb <- dl_match(pred = dprep2, preds)
   expect_is(bb, "DownloadMatch")
   expect_true(bb$matched)
   expect_true(bb$expired)
   
   ## matched and not expired
-  # created: 2020-04-02, so set `age=(Sys.Date()-as.Date("2020-04-02"))+1`
+  # Download 0011362-260806074905277 created 2026-08-12 (recent, not expired)
+  # Uses datasetKey without checklistKey (historical download)
   dprep3 <- occ_download_prep(
-    pred("taxonKey", 1427067),
-    pred("hasGeospatialIssue", FALSE),
-    pred("hasCoordinate", TRUE),
-    pred_lte("coordinateUncertaintyInMeters", 5000),
-    checklistKey = NULL
+    pred("datasetKey", "d3b6cb30-0a64-4f82-91ea-0bb14637ee17"),
+    checklistKey = ""
   )
-  age <- as.numeric((Sys.Date()-as.Date("2024-09-23")) + 1)
+  age <- as.numeric((Sys.Date()-as.Date("2026-08-12")) + 1)
   cc <- dl_match(pred = dprep3, preds, age = age)
   expect_is(cc, "DownloadMatch")
   expect_true(cc$matched)

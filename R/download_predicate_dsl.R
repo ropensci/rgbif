@@ -670,6 +670,9 @@ parse_predicates <- function(user, email, type, format, verbatim_extensions,
     if (inherits(checklistKey, c("occ_predicate", "occ_predicate_list"))) {
       tmp <- c(list(checklistKey), tmp)
       checklistKey <- NULL
+    # Allow empty string as sentinel for "omit checklistKey" (for cache matching)
+    } else if (identical(checklistKey, "")) {
+      # Empty string is valid - will be handled later to omit checklistKey
     # Validate checklistKey type and format
     } else if (!is.character(checklistKey)) {
       stop("'checklistKey' must be a character string (UUID)", call. = FALSE)
@@ -722,13 +725,32 @@ parse_predicates <- function(user, email, type, format, verbatim_extensions,
   }
   
   # Determine top-level checklistKey:
-  # 1. Explicit checklistKey parameter (user-supplied)
-  # 2. COL XR default (always, unless explicitly set to NULL)
+  # 1. Empty string "" means explicitly omit checklistKey (for cache matching)
+  # 2. NULL means use COL XR default
+  # 3. Otherwise use the explicit value provided
   # Note: Predicate-level checklistKey does NOT propagate to top level
-  final_checklistKey <- if (!is.null(checklistKey)) {
+  final_checklistKey <- if (identical(checklistKey, "")) {
+    NULL  # Empty string means explicitly omit
+  } else if (!is.null(checklistKey)) {
     checklistKey  # User explicitly supplied checklistKey parameter
   } else {
-    "7ddf754f-d193-4cc9-b351-99906754a03b"  # COL XR default (always)
+    "7ddf754f-d193-4cc9-b351-99906754a03b"  # COL XR default
+  }
+  
+  # When checklistKey = "" (explicitly omit), strip checklistKey from all predicates
+  # This is needed for matching against historical downloads that lack checklistKey
+  if (identical(checklistKey, "")) {
+    strip_checklistKey <- function(x) {
+      if (inherits(x, "occ_predicate")) {
+        x$checklistKey <- NULL
+      } else if (inherits(x, "occ_predicate_list")) {
+        x <- lapply(x, strip_checklistKey)
+        class(x) <- "occ_predicate_list"
+        attr(x, "type") <- attr(x, "type")  # preserve type attribute
+      }
+      return(x)
+    }
+    tmp <- lapply(tmp, strip_checklistKey)
   }
   
   # Add checklistKey to payload if present

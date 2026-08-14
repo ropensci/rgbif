@@ -137,7 +137,7 @@ test_that("occ_download_prep includes COL XR default even without taxonomic pred
 test_that("occ_download_prep defaults to COL XR with explicit NULL", {
   skip_on_cran()
 
-  # Test that setting checklistKey = NULL explicitly omits it from the request
+  # Test that setting checklistKey = NULL uses the COL XR default
   z <- occ_download_prep(
     pred("basisOfRecord", "PRESERVED_SPECIMEN"),
     pred_in("country", c("US", "CA")),
@@ -149,6 +149,23 @@ test_that("occ_download_prep defaults to COL XR with explicit NULL", {
   expect_is(z$request, "list")
   # When checklistKey is null it should be the COL XR default
   expect_equal(z$request$checklistKey[1], "7ddf754f-d193-4cc9-b351-99906754a03b")
+})
+
+test_that("occ_download_prep omits checklistKey with empty string", {
+  skip_on_cran()
+
+  # Test that setting checklistKey = "" explicitly omits it (for cache matching)
+  z <- occ_download_prep(
+    pred("basisOfRecord", "PRESERVED_SPECIMEN"),
+    pred_in("country", c("US", "CA")),
+    checklistKey = "",
+    user = "foo", pwd = "bar", email = "foo@bar.com"
+  )
+
+  expect_is(z, "occ_download_prep")
+  expect_is(z$request, "list")
+  # When checklistKey is empty string, it should be omitted entirely
+  expect_null(z$request$checklistKey)
 })
 
 test_that("occ_download_prep uses COL XR for classKey predicate", {

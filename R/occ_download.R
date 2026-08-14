@@ -260,7 +260,8 @@ occ_download_prep <- function(...,
     if (length(checklistKey) != 1) {
       stop("'checklistKey' must be a single UUID string", call. = FALSE)
     }
-    if (!is_uuid(checklistKey)) {
+    # Allow empty string as sentinel for "omit checklistKey" (for cache matching)
+    if (!identical(checklistKey, "") && !is_uuid(checklistKey)) {
       stop("'checklistKey' must be a valid UUID", call. = FALSE)
     }
   }
