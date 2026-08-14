@@ -1,3 +1,4 @@
+# testthat::test_file("tests/testthat/test-predicate_builders.R")
 context("predicate builders: supported keys")
 test_that("pred keys", {
   # allowed keys, i.e., anything in key_lkup
@@ -11,14 +12,14 @@ test_that("pred keys", {
 
 context("predicate builders: pred")
 test_that("pred", {
-  aa <- pred("taxonKey", 7228682)
+  aa <- pred("taxonKey", "V2")
   expect_is(aa, "occ_predicate")
   expect_is(unclass(aa), "list")
-  expect_named(aa, c("type", "key", "value"))
+  expect_named(aa, c("type", "key", "value", "checklistKey"))
   expect_is(aa$type, "character")
   expect_equal(unclass(aa$type), "equals")
   expect_equal(unclass(aa$key), "TAXON_KEY")
-  expect_equal(unclass(aa$value), "7228682")
+  expect_equal(unclass(aa$value), "V2")
 
   bb <- pred_gt("elevation", 5000)
   expect_is(bb, "occ_predicate")
@@ -66,55 +67,55 @@ test_that("pred fails well", {
 
 context("predicate builders: pred_and/pred_or")
 test_that("pred_and/pred_or", {
-  taxon_ids <- c(2977832, 2977901, 2977966, 2977835)
+  taxon_ids <- c("3QV3C", "3N64G", "3QV3D", "6NHPP")
   
   # or
   aa <- pred_or(.list = lapply(taxon_ids, function(z) pred("taxonKey", z)))
-  aa_sep <- pred_or(pred("taxonKey", 2977832), pred("taxonKey", 2977901),
-    pred("taxonKey", 2977966), pred("taxonKey", 2977835))
+  aa_sep <- pred_or(pred("taxonKey", "3QV3C"), pred("taxonKey", "3N64G"),
+    pred("taxonKey", "3QV3D"), pred("taxonKey", "6NHPP"))
   expect_is(aa, "occ_predicate_list")
   expect_is(unclass(aa), "list")
   expect_named(aa, NULL)
-  expect_named(aa[[1]], c("type", "key", "value"))
+  expect_named(aa[[1]], c("type", "key", "value", "checklistKey"))
   expect_equal(unclass(aa[[1]]$type), "equals")
   expect_equal(unclass(aa[[1]]$key), "TAXON_KEY")
-  expect_equal(unclass(aa[[1]]$value), "2977832")
+  expect_equal(unclass(aa[[1]]$value), "3QV3C")
   # pred_or outputs equivalent, using ... or .list
   expect_identical(aa, aa_sep)
 
   # and
   aa <- pred_and(.list = lapply(taxon_ids, function(z) pred("taxonKey", z)))
-  aa_sep <- pred_and(pred("taxonKey", 2977832), pred("taxonKey", 2977901),
-    pred("taxonKey", 2977966), pred("taxonKey", 2977835))
+  aa_sep <- pred_and(pred("taxonKey", "3QV3C"), pred("taxonKey", "3N64G"),
+    pred("taxonKey", "3QV3D"), pred("taxonKey", "6NHPP"))
   expect_is(aa, "occ_predicate_list")
   expect_is(unclass(aa), "list")
   expect_named(aa, NULL)
-  expect_named(aa[[1]], c("type", "key", "value"))
+  expect_named(aa[[1]], c("type", "key", "value", "checklistKey"))
   expect_equal(unclass(aa[[1]]$type), "equals")
   expect_equal(unclass(aa[[1]]$key), "TAXON_KEY")
-  expect_equal(unclass(aa[[1]]$value), "2977832")
+  expect_equal(unclass(aa[[1]]$value), "3QV3C")
   # pred_and outputs equivalent, using ... or .list
   expect_identical(aa, aa_sep)
 })
 test_that("pred_and/pred_or fails well", {
   expect_error(pred_or(), "nothing passed")
   expect_error(pred_and(), "nothing passed")
-  expect_error(pred_and(pred("taxonKey", 2977832)), "must pass more than 1")
+  expect_error(pred_and(pred("taxonKey", "3QV3C")), "must pass more than 1")
   expect_error(pred_or(4, 5), "not of class 'occ_predicate'")
   expect_error(pred_and(4, 5), "not of class 'occ_predicate'")
 })
 
 context("predicate builders: pred_not")
 test_that("pred_not", {
-  z <- pred("taxonKey", 1)
+  z <- pred("taxonKey", "N")
   aa <- pred_not(z)
   expect_is(aa, "occ_predicate_list")
   expect_is(unclass(aa), "list")
   expect_named(aa, NULL)
-  expect_named(aa[[1]], c("type", "key", "value"))
+  expect_named(aa[[1]], c("type", "key", "value", "checklistKey"))
   expect_equal(unclass(aa[[1]]$type), "equals")
   expect_equal(unclass(aa[[1]]$key), "TAXON_KEY")
-  expect_equal(unclass(aa[[1]]$value), "1")
+  expect_equal(unclass(aa[[1]]$value), "N")
   expect_equal(attr(aa, "type"), jsonlite::unbox("not"))
 })
 test_that("pred_not fails well", {
@@ -126,12 +127,12 @@ test_that("pred_not fails well", {
 
 context("predicate builders: pred_in")
 test_that("pred_in", {
-  taxon_ids <- c(2977832, 2977901, 2977966, 2977835)
+  taxon_ids <- c("3QV3C", "3N64G", "3QV3D", "6NHPP")
   
   aa <- pred_in("taxonKey", taxon_ids)
   expect_is(aa, "occ_predicate")
   expect_is(unclass(aa), "list")
-  expect_named(aa, c("type", "key", "values"))
+  expect_named(aa, c("type", "key", "values", "checklistKey"))
   expect_equal(unclass(aa$type), "in")
   expect_equal(unclass(aa$key), "TAXON_KEY")
   expect_is(unclass(aa$values), "character")

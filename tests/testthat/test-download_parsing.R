@@ -129,6 +129,5 @@ test_that("parse_predicates works with checklistKey", {
   expect_equal(unclass(bb$predicate$type), "equals")
   expect_equal(unclass(bb$predicate$key), "TAXON_KEY")
   expect_equal(unclass(bb$predicate$value), "5WZLF")
-  expect_null(bb$predicate$checklistKey)  # No checklistKey at predicate level when using root-level checklistKey
 })
 

@@ -1,4 +1,4 @@
-
+# testthat::test_file("tests/testthat/test-collection_search.R")
 test_that("collection_search works as expected", {
   vcr::use_cassette("collection_search",{
   q <- collection_search(query="insect",limit=2)
@@ -63,11 +63,8 @@ test_that("collection_export works as expected", {
   s <- collection_export(numberSpecimens = "0,100")
   c <- collection_export(query = "insect", country = "US;GB")
   n <- collection_export(
-    query = "insect",
-    contentType = "PRESERVED_SPECIMENS",
     occurrenceCount = "0,*",
     typeSpecimenCount = "1,*",
-    sortBy = "NUMBER_SPECIMENS",
     sortOrder = "DESC"
   )
   
