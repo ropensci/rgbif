@@ -63,9 +63,10 @@ It is required to set up your [GBIF credentials](https://docs.ropensci.org/rgbif
 taxonKey <- name_backbone("Pan troglodytes")$usageKey
 occ_download(pred("taxonKey", taxonKey))
 
-# For GBIF Backbone Taxonomy, set checklistKey = NULL
-taxonKey_gbif <- name_backbone("Pan troglodytes", checklistKey = NULL)$usageKey  
-occ_download(pred("taxonKey", taxonKey_gbif), checklistKey = NULL)
+# For GBIF Backbone Taxonomy, explicitly set checklistKey to the backbone UUID
+backbone_uuid <- "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+taxonKey_gbif <- name_backbone("Pan troglodytes", checklistKey = backbone_uuid)$usageKey  
+occ_download(pred("taxonKey", taxonKey_gbif), checklistKey = backbone_uuid)
 
 # 4C92G taxonKey for Pan troglodytes in COL Extended Release
 ```

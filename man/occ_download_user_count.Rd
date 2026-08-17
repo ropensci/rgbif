@@ -6,14 +6,18 @@
 \usage{
 occ_download_user_count(
   user = NULL,
+  pwd = NULL,
   from = NULL,
   status = NULL,
   curlopts = list(http_version = 2)
 )
 }
 \arguments{
-\item{user}{(character) your or any other GBIF user name, if left blank
-will default to user name found in \code{.Renviron} file.}
+\item{user}{(character) User name within GBIF's website. Required. See
+Details.}
+
+\item{pwd}{(character) User password within GBIF's website. Required. See
+Details.}
 
 \item{from}{(character) Optional. Start date in format \code{YYYY-MM-DD}. Only
 downloads created on or after this date will be counted.}
@@ -33,12 +37,20 @@ a single integer with the total number of downloads for the user.
 Count downloads for a user.
 }
 \details{
-if left blank will default to user name found in \code{.Renviron} file.
+For \code{user} and \code{pwd} parameters, you can set them in one of three ways:
+\itemize{
+\item Set them in your \code{.Rprofile} file with the names \code{gbif_user} and \code{gbif_pwd}
+\item Set them in your \code{.Renviron}/\code{.bash_profile} (or similar) file with the
+names \code{GBIF_USER} and \code{GBIF_PWD}
+\item Simply pass strings to each of the parameters in the function call
+}
+
+See \code{?Startup} for help.
 }
 \examples{
 \dontrun{
-occ_download_user_count(user="jwaller")
-occ_download_user_count(user="jwaller", from="2023-01-01")
-occ_download_user_count(user="jwaller", status="SUCCEEDED")
+occ_download_user_count(user="jwaller", pwd="your_password")
+occ_download_user_count(user="jwaller", pwd="your_password", from="2023-01-01")
+occ_download_user_count(user="jwaller", pwd="your_password", status="SUCCEEDED")
 }
 }

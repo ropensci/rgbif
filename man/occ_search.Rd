@@ -702,9 +702,11 @@ Maximum number of records you can get with this function is 100,000.
 See https://www.gbif.org/developer/occurrence
 
 When numeric taxonomic keys (taxonKey, speciesKey, kingdomKey, etc.) are
-detected, the function automatically switches to the GBIF Backbone taxonomy
-checklistKey and issues a warning. These numeric keys are legacy identifiers.
-Consider migrating to COL XR identifiers using \code{\link[=gbif_to_col]{gbif_to_col()}}.
+detected and checklistKey is set to COL XR (the default), the function
+automatically switches to the GBIF Backbone taxonomy checklistKey and issues
+a warning. These numeric keys are legacy identifiers. If you explicitly set
+checklistKey to Backbone or another taxonomy, no warning is issued. Consider
+migrating to COL XR identifiers using \code{\link[=gbif_to_col]{gbif_to_col()}}.
 }
 \section{Multiple values passed to a parameter}{
 

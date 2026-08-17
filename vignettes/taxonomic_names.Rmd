@@ -9,7 +9,7 @@ vignette: >
     %\VignetteEncoding{UTF-8}
 ---
 
-In order to use GBIF mediated data effectively, you will often need to match a scientific name to a taxonomy. By default, **rgbif** now uses the [COL (Catalogue of Life) Extended Release](https://www.catalogueoflife.org/), which returns alpha-numeric taxon keys. To use the [GBIF Backbone Taxonomy](https://www.gbif.org/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c) instead, set `checklistKey = NULL`.
+In order to use GBIF mediated data effectively, you will often need to match a scientific name to a taxonomy. By default, **rgbif** now uses the [COL (Catalogue of Life) Extended Release](https://www.catalogueoflife.org/), which returns alpha-numeric taxon keys. To use the [GBIF Backbone Taxonomy](https://www.gbif.org/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c) instead, explicitly set `checklistKey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"`.
 
 The goal of **name matching** is to get back an unambiguous taxonomic key of the scientific name you are interested in. Having a key makes it easy for GBIF to know what you mean. 
 
@@ -20,8 +20,8 @@ The goal of **name matching** is to get back an unambiguous taxonomic key of the
 name_backbone(name="Calopteryx splendens") 
 # name_backbone(name="Calopteryx splendens", verbose=TRUE)
 
-# To use legacy GBIF Backbone Taxonomy, set checklistKey = NULL
-# name_backbone(name="Calopteryx splendens", checklistKey = NULL)
+# To use legacy GBIF Backbone Taxonomy, explicitly set checklistKey
+# name_backbone(name="Calopteryx splendens", checklistKey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
 ```
 
 This will return a `data.frame` of the **single best match** for the name you supplied.  

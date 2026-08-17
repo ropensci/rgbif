@@ -17,7 +17,7 @@ This is a **breaking change** that affects how taxonomic keys are returned and h
 
 ## Key Differences
 
-The **GBIF Backbone Taxonomy** (the old default) uses **numeric** taxon keys such as `5231190` or `2977832`. While still accessible by setting `checklistKey = NULL`, this taxonomy is now out-of-date compared to COL XR.
+The **GBIF Backbone Taxonomy** (the old default) uses **numeric** taxon keys such as `5231190` or `2977832`. This taxonomy is now out-of-date compared to COL XR. To use the GBIF Backbone, explicitly set `checklistKey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"`.
 
 The **COL XR** (the new default) uses **alpha-numeric** taxon keys such as `"Q2M4"` or `"9WLSS"`. This is the default behavior with `checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b"`. 
 

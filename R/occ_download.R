@@ -175,11 +175,11 @@
 #' )
 #' 
 #' ## COL XR is now the default checklist
-#' # To use GBIF Backbone Taxonomy, set checklistKey = NULL
+#' # To use GBIF Backbone Taxonomy, explicitly set checklistKey to the backbone UUID
 #' # occ_download_prep(
 #' #   pred("basisOfRecord", "PRESERVED_SPECIMEN"),
 #' #   pred_in("country", c("VC", "GD")),
-#' #   checklistKey = NULL
+#' #   checklistKey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
 #' # )
 #' 
 #' # x = occ_download(

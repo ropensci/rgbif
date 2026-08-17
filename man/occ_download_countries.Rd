@@ -36,7 +36,7 @@ a list with two slots:
 \item meta: a single row data.frame with columns: \code{offset}, \code{limit},
 \code{endofrecords}, \code{count}
 \item results: a tibble with the results, with columns: \code{downloadKey},
-\code{countryCode}, \code{numberRecords}
+\code{publishingCountryCode}, \code{numberRecords}
 }
 }
 \description{

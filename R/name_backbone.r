@@ -70,8 +70,9 @@
 #' name_backbone_verbose("Calopteryx splendens", kingdom = "Animalia")
 #' name_backbone("Calopteryx splendens", kingdom = "Plantae")
 #'
-#' # Use GBIF Backbone Taxonomy by setting checklistKey = NULL
-#' name_backbone("Calopteryx splendens", checklistKey = NULL)
+#' # Use GBIF Backbone Taxonomy by explicitly setting checklistKey
+#' name_backbone("Calopteryx splendens", 
+#'   checklistKey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
 #'
 #' }
 name_backbone <- function(

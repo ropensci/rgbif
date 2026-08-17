@@ -257,7 +257,7 @@ This download will ...
 
 ## Not Downloads
 
-Another sometimes useful pattern is **downloading all occurrences except some group**. Birds make up a [large portion](https://www.gbif.org/occurrence/taxonomy) of GBIF occurrences. If you wanted to download everything but birds, you could use `pred_not()`. (Note: for GBIF Backbone numeric keys, you would need to set `checklistKey = NULL`)
+Another sometimes useful pattern is **downloading all occurrences except some group**. Birds make up a [large portion](https://www.gbif.org/occurrence/taxonomy) of GBIF occurrences. If you wanted to download everything but birds, you could use `pred_not()`. (Note: for GBIF Backbone numeric keys, you would need to set `checklistKey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"`)
 
 ``` r
 # Get COL XR alpha-numeric key for birds (class Aves)
@@ -321,9 +321,9 @@ To view all of the available extensions use `rgbif::occ_download_describe("dwca"
 
 ## Downloading using different taxonomies
 
-**rgbif** now uses the **Catalogue of Life Extended Release (COL XR)** as the default taxonomy, which returns alpha-numeric taxon keys. To use the original **GBIF Backbone Taxonomy** instead, set `checklistKey = NULL`.
+**rgbif** now uses the **Catalogue of Life Extended Release (COL XR)** as the default taxonomy, which returns alpha-numeric taxon keys. To use the original **GBIF Backbone Taxonomy** instead, explicitly set `checklistKey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"`.
 
-You need to use the corresponding taxonKey from the chosen taxonomy. You can find these keys using `name_backbone()` with or without the `checklistKey` parameter.
+You need to use the corresponding taxonKey from the chosen taxonomy. You can find these keys using `name_backbone()` with the appropriate `checklistKey` parameter.
 
 ```r
 # COL XR (default) - returns alpha-numeric keys
@@ -336,12 +336,13 @@ occ_download(
 )
 
 # GBIF Backbone Taxonomy - returns numeric keys
-name_backbone("Calopteryx splendens", checklistKey = NULL)$usageKey
+backbone_uuid <- "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+name_backbone("Calopteryx splendens", checklistKey = backbone_uuid)$usageKey
 # 4DXXM
 
 occ_download(
   pred("taxonKey", "4DXXM"),  
-  checklistKey = NULL,  # Use GBIF Backbone
+  checklistKey = backbone_uuid,  # Use GBIF Backbone
   format = "SIMPLE_CSV"
 )
 ```
