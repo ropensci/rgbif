@@ -57,6 +57,7 @@ test_that("collection_search validates occurrence/contact filter parameter types
 test_that("collection_export works as expected", {
   skip_on_cran()
   skip_on_ci()
+  skip("collection_export endpoint unreliable - downloads large TSV files that frequently timeout (60+ seconds)")
   
   q <- collection_export(query = "insect")
   i <- collection_export(name="Insects;Entomology")

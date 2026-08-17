@@ -1,0 +1,27 @@
+http_interactions:
+- request:
+    method: POST
+    uri: https://api.gbif.org/v1/occurrence/download/request
+    body:
+      string: '{"creator":"<gbif_user>","notification_address":["<gbif_user>@gbif.org"],"format":"SIMPLE_CSV","predicate":{"type":"and","predicates":[{"type":"isNotNull","parameter":"CATALOG_NUMBER"},{"type":"isNotNull","parameter":"SCIENTIFIC_NAME"},{"type":"isNotNull","parameter":"LIFE_STAGE"}]},"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"}'
+  response:
+    status: 201
+    headers:
+      status: HTTP/1.1 201 Created
+      content-type: application/json
+      content-encoding: gzip
+    body:
+      string: 0015383-260806074905277
+  recorded_at: 2026-08-14 12:09:18
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/download/0015383-260806074905277
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '{"key":"0015383-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"isNotNull","parameter":"CATALOG_NUMBER"},{"type":"isNotNull","parameter":"SCIENTIFIC_NAME"},{"type":"isNotNull","parameter":"LIFE_STAGE"}]},"sendNotification":false,"format":"SIMPLE_CSV","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-14T12:09:18.114+00:00","modified":"2026-08-14T12:09:18.114+00:00","eraseAfter":"2027-02-14T12:09:17.569+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0015383-260806074905277.zip","size":0,"totalRecords":91416364,"numberDatasets":0}'
+  recorded_at: 2026-08-14 12:09:18
+recorded_with: VCR-vcr/2.0.0

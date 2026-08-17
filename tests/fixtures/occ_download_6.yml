@@ -3,7 +3,7 @@ http_interactions:
     method: POST
     uri: https://api.gbif.org/v1/occurrence/download/request
     body:
-      string: '{"creator":"<gbif_user>","notification_address":["<gbif_user>@gbif.org"],"format":"SIMPLE_CSV","predicate":{"type":"greaterThan","key":"ORGANISM_QUANTITY","value":"1"}}'
+      string: '{"creator":"<gbif_user>","notification_address":["<gbif_user>@gbif.org"],"format":"SIMPLE_CSV","predicate":{"type":"greaterThan","key":"ORGANISM_QUANTITY","value":"1"},"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"}'
   response:
     status: 201
     headers:
@@ -11,17 +11,17 @@ http_interactions:
       content-type: application/json
       content-encoding: gzip
     body:
-      string: 0012246-260108223611665
-  recorded_at: 2026-01-15 16:16:11
+      string: 0015323-260806074905277
+  recorded_at: 2026-08-14 11:36:07
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0012246-260108223611665
+    uri: https://api.gbif.org/v1/occurrence/download/0015323-260806074905277
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0012246-260108223611665","license":"unspecified","request":{"predicate":{"type":"greaterThan","key":"ORGANISM_QUANTITY","value":"1","matchCase":false},"sendNotification":false,"format":"SIMPLE_CSV","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2026-01-15T16:16:12.165+00:00","modified":"2026-01-15T16:16:12.165+00:00","eraseAfter":"2026-07-15T16:16:11.960+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0012246-260108223611665.zip","size":0,"totalRecords":175518101,"numberDatasets":0}'
-  recorded_at: 2026-01-15 16:16:11
+      string: '{"key":"0015323-260806074905277","license":"unspecified","request":{"predicate":{"type":"greaterThan","key":"ORGANISM_QUANTITY","value":"1","matchCase":false},"sendNotification":false,"format":"SIMPLE_CSV","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-14T11:36:07.099+00:00","modified":"2026-08-14T11:36:07.099+00:00","eraseAfter":"2027-02-14T11:36:06.767+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0015323-260806074905277.zip","size":0,"totalRecords":207596313,"numberDatasets":0}'
+  recorded_at: 2026-08-14 11:36:07
 recorded_with: VCR-vcr/2.0.0

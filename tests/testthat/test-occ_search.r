@@ -935,7 +935,7 @@ test_that("numeric taxonomic keys trigger warning and switch to backbone", {
   
   # Test with numeric taxonKey
   expect_warning(
-    occ_search(taxonKey = 123456, limit = 2),
+    occ_search(taxonKey = 212, limit = 2),
     "Numeric taxonomic keys detected.*taxonKey.*legacy GBIF Backbone.*gbif_to_col"
   )
   

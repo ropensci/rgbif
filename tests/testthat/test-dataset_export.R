@@ -132,6 +132,7 @@ test_that("dataset_export works as expected", {
   expect_equal(names(ik_r)[1], "datasetKey")
   expect_is(ik_r,"tbl_df")
   
+  skip("dataset_export with endpointType times out downloading large TSV files - endpoint unreliable")
   et_r <- dataset_export(endpointType = "DWC_ARCHIVE")
   expect_equal(ncol(et_r), 19)
   expect_lt(nrow(et_r), total_ds)

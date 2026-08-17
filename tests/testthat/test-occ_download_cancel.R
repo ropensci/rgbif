@@ -1,9 +1,9 @@
-test_that("occ_download_cancel", {
+# testthat::test_file("tests/testthat/test-occ_download_cancel.R")
   skip_on_cran()
-
+test_that("occ_download_cancel works as expected", {
+  skip_on_cran()
   vcr::use_cassette("occ_download_cancel_prep", {
-    # Use GBIF Backbone for backward compatibility with VCR cassettes
-    zzz <- occ_download(pred("taxonKey", 9206251),
+    zzz <- occ_download(pred("taxonKey", "3K5TS"),
       pred_in("country", c("US", "CA")), pred_gte("year", 1979), checklistKey = NULL)
   }, match_requests_on = c("method", "uri", "body"))
 
@@ -15,6 +15,7 @@ test_that("occ_download_cancel", {
   }, match_requests_on = c("method", "uri", "body"))
   expect_null(out)
 })
+
 
 test_that("occ_download_cancel fails well", {
   skip_on_cran()
