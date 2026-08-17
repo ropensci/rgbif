@@ -588,4 +588,85 @@ test_that("numeric keys in nested predicates trigger warning", {
   expect_equal(z$request$checklistKey[1], "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
 })
 
+test_that("numeric keys get backbone checklistKey at predicate level", {
+  skip_on_cran()
+  
+  # Test simple numeric taxonKey - should inject backbone at predicate level
+  expect_warning(
+    z <- occ_download_prep(
+      pred("taxonKey", 2431950),
+      user = "foo", pwd = "bar", email = "foo@bar.com"
+    ),
+    "Numeric taxonomic keys detected"
+  )
+  
+  # Check that backbone checklistKey was injected at predicate level
+  expect_equal(z$request$predicate$checklistKey[1], "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
+  
+  # Test pred_in with numeric values - should inject backbone at predicate level
+  suppressWarnings({
+    z2 <- occ_download_prep(
+      pred_in("speciesKey", c(2441176, 2441177)),
+      user = "foo", pwd = "bar", email = "foo@bar.com"
+    )
+  })
+  
+  expect_equal(z2$request$predicate$checklistKey[1], "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
+})
+
+test_that("nested predicates with numeric keys get backbone checklistKey", {
+  skip_on_cran()
+  
+  # Test pred_and with numeric keys
+  suppressWarnings({
+    z <- occ_download_prep(
+      pred_and(
+        pred("taxonKey", 2431950),
+        pred("country", "US")
+      ),
+      user = "foo", pwd = "bar", email = "foo@bar.com"
+    )
+  })
+  
+  # Check that backbone was injected into the taxonKey predicate
+  predicates <- z$request$predicate$predicates
+  taxon_pred <- predicates[[1]]  # First predicate should be taxonKey
+  expect_equal(taxon_pred$checklistKey[1], "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
+  
+  # Second predicate (country) should not have checklistKey
+  country_pred <- predicates[[2]]
+  expect_null(country_pred$checklistKey)
+  
+  # Test pred_or with numeric keys
+  suppressWarnings({
+    z2 <- occ_download_prep(
+      pred_or(
+        pred("speciesKey", 2441176),
+        pred("genusKey", 2480946)
+      ),
+      user = "foo", pwd = "bar", email = "foo@bar.com"
+    )
+  })
+  
+  # Both predicates should have backbone checklistKey
+  predicates2 <- z2$request$predicate$predicates
+  expect_equal(predicates2[[1]]$checklistKey[1], "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
+  expect_equal(predicates2[[2]]$checklistKey[1], "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
+})
+
+test_that("explicit checklistKey in predicate is preserved", {
+  skip_on_cran()
+  
+  # User explicitly sets backbone checklistKey at predicate level with numeric key
+  # Should NOT trigger warning because explicit checklistKey respects user choice
+  z <- occ_download_prep(
+    pred("taxonKey", 2431950, checklistKey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"),
+    user = "foo", pwd = "bar", email = "foo@bar.com",
+    checklistKey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+  )
+  
+  # Should have backbone checklistKey at predicate level (from explicit parameter)
+  expect_equal(z$request$predicate$checklistKey[1], "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
+})
+
 

@@ -275,6 +275,7 @@ occ_download_prep <- function(...,
   
   # Check for numeric taxonomy keys in predicates and switch to backbone if detected
   # Only warn if user hasn't explicitly set checklistKey to a different taxonomy
+  preds <- NULL
   if (is.null(body)) {
     preds <- list(...)
     numeric_keys <- check_numeric_taxon_keys(preds)
@@ -282,25 +283,41 @@ occ_download_prep <- function(...,
     # Only warn and switch if checklistKey is NULL or COL XR default
     # If user explicitly set a different checklistKey, respect their choice
     col_xr_uuid <- "7ddf754f-d193-4cc9-b351-99906754a03b"
+    backbone_uuid <- "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+    
     if (length(numeric_keys) > 0 && (is.null(checklistKey) || identical(checklistKey, col_xr_uuid))) {
       warning(
         "Numeric taxonomic keys detected (", 
         paste(numeric_keys, collapse = ", "), 
         "). These are legacy GBIF Backbone identifiers. ",
-        "Switching to Backbone checklistKey (d7dddbf4-2cf0-4f39-9b2a-bb099caae36c). ",
+        "Switching to Backbone checklistKey (d7dddbf4-2cf0-4f39-9b2a-bb099caae36c) ",
+        "at both request and predicate level. ",
         "Please consider migrating to COL XR identifiers - ",
         "use gbif_to_col() to look up the COL equivalents.",
         call. = FALSE
       )
-      # Override checklistKey to use backbone
-      checklistKey <- "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+      # Override checklistKey to use backbone at request level
+      checklistKey <- backbone_uuid
+      
+      # Inject backbone checklistKey into predicates with numeric keys
+      preds <- inject_backbone_into_predicates(preds, backbone_uuid, col_xr_uuid)
     }
   }
+  
   if (!is.null(body)) {
     req <- body
   } else {
-    req <- parse_predicates(user, email, type, format, verbatim_extensions, 
-                           checklistKey, ...)
+    # Use do.call to properly pass predicates when they've been modified
+    if (!is.null(preds)) {
+      req <- do.call(parse_predicates, c(
+        list(user = user, email = email, type = type, format = format, 
+             verbatim_extensions = verbatim_extensions, checklistKey = checklistKey),
+        preds
+      ))
+    } else {
+      req <- parse_predicates(user, email, type, format, verbatim_extensions, 
+                             checklistKey, ...)
+    }
   }
   structure(list(
     url = url,
@@ -417,6 +434,56 @@ check_numeric_taxon_keys <- function(preds) {
   
   # Return unique key names
   unique(numeric_keys)
+}
+
+# Helper function to inject backbone checklistKey into predicates with numeric taxonomic keys
+# This ensures numeric keys use the correct taxonomy at the predicate level
+inject_backbone_into_predicates <- function(preds, backbone_uuid, col_xr_uuid) {
+  taxonomic_keys_gbif <- c("TAXON_KEY", "ACCEPTED_TAXON_KEY", "KINGDOM_KEY", 
+                           "PHYLUM_KEY", "CLASS_KEY", "ORDER_KEY", "FAMILY_KEY",
+                           "GENUS_KEY", "SUBGENUS_KEY", "SPECIES_KEY")
+  
+  # Recursive function to modify a single predicate or list of predicates
+  inject_pred <- function(pred) {
+    if (is.null(pred)) return(pred)
+    
+    # Handle list of predicates (e.g., from pred_and, pred_or)
+    if (inherits(pred, "occ_predicate_list")) {
+      # Preserve class and attributes
+      pred_type <- attr(pred, "type")
+      pred <- lapply(pred, inject_pred)
+      class(pred) <- "occ_predicate_list"
+      attr(pred, "type") <- pred_type
+      return(pred)
+    }
+    
+    # Check if this is a taxonomic key predicate with numeric value
+    if (inherits(pred, "occ_predicate") || is.list(pred)) {
+      if (!is.null(pred$key) && pred$key %in% taxonomic_keys_gbif) {
+        # Check if value is numeric
+        has_numeric <- FALSE
+        if (!is.null(pred$value) && all(suppressWarnings(!is.na(as.numeric(pred$value))))) {
+          has_numeric <- TRUE
+        }
+        # Also check values (for pred_in)
+        if (!is.null(pred$values) && all(suppressWarnings(!is.na(as.numeric(pred$values))))) {
+          has_numeric <- TRUE
+        }
+        
+        # If numeric and checklistKey is NULL or COL XR default, inject backbone
+        if (has_numeric) {
+          if (is.null(pred$checklistKey) || identical(pred$checklistKey[[1]], col_xr_uuid)) {
+            pred$checklistKey <- jsonlite::unbox(backbone_uuid)
+          }
+        }
+      }
+    }
+    
+    return(pred)
+  }
+  
+  # Process all predicates
+  lapply(preds, inject_pred)
 }
 
 catch_err <- function(x) {
