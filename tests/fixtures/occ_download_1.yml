@@ -24,4 +24,29 @@ http_interactions:
     body:
       string: '{"key":"0015279-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1979","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-14T11:13:07.141+00:00","modified":"2026-08-14T11:13:07.141+00:00","eraseAfter":"2027-02-14T11:13:07.063+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0015279-260806074905277.zip","size":0,"totalRecords":26426,"numberDatasets":0}'
   recorded_at: 2026-08-14 11:13:07
+- request:
+    method: POST
+    uri: https://api.gbif.org/v1/occurrence/download/request
+    body:
+      string: '{"creator":"<gbif_user>","notification_address":["<gbif_user>@gbif.org"],"format":"DWCA","predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1979"}]}}'
+  response:
+    status: 201
+    headers:
+      status: HTTP/1.1 201 Created
+      content-type: application/json
+      content-encoding: gzip
+    body:
+      string: 0019837-260806074905277
+  recorded_at: 2026-08-17 12:07:55
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/occurrence/download/0019837-260806074905277
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '{"key":"0019837-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1979","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[]},"created":"2026-08-17T12:07:54.610+00:00","modified":"2026-08-17T12:07:54.610+00:00","eraseAfter":"2027-02-17T12:07:53.099+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0019837-260806074905277.zip","size":0,"totalRecords":0,"numberDatasets":0}'
+  recorded_at: 2026-08-17 12:07:55
 recorded_with: VCR-vcr/2.0.0

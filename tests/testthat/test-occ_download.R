@@ -245,7 +245,8 @@ test_that("occ_download: real requests work", {
     fff <- occ_download(
       pred("taxonKey", 2431950,
       checklistKey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"),
-      format = "SIMPLE_CSV"
+      format = "SIMPLE_CSV",
+      checklistKey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
     )
   }, match_requests_on = c("method", "uri", "body"))
   expect_is(unclass(fff), "character")
