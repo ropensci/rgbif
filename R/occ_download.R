@@ -31,6 +31,13 @@
 #' email. Required. See "Authentication" below
 #' @template occ
 #' @note see [downloads] for an overview of GBIF downloads methods
+#' 
+#' When numeric taxonomic keys (taxonKey, speciesKey, kingdomKey, etc.) are 
+#' detected in predicates and checklistKey is set to COL XR (the default) or NULL, 
+#' the function automatically switches to the GBIF Backbone taxonomy checklistKey 
+#' and issues a warning. These numeric keys are legacy identifiers. If you 
+#' explicitly set checklistKey to Backbone or another taxonomy, no warning is 
+#' issued. Consider migrating to COL XR identifiers using [gbif_to_col()].
 #' @family downloads
 #' @section geometry:
 #' When using the geometry parameter, make sure that your well known text
@@ -265,6 +272,30 @@ occ_download_prep <- function(...,
       stop("'checklistKey' must be a valid UUID", call. = FALSE)
     }
   }
+  
+  # Check for numeric taxonomy keys in predicates and switch to backbone if detected
+  # Only warn if user hasn't explicitly set checklistKey to a different taxonomy
+  if (is.null(body)) {
+    preds <- list(...)
+    numeric_keys <- check_numeric_taxon_keys(preds)
+    
+    # Only warn and switch if checklistKey is NULL or COL XR default
+    # If user explicitly set a different checklistKey, respect their choice
+    col_xr_uuid <- "7ddf754f-d193-4cc9-b351-99906754a03b"
+    if (length(numeric_keys) > 0 && (is.null(checklistKey) || identical(checklistKey, col_xr_uuid))) {
+      warning(
+        "Numeric taxonomic keys detected (", 
+        paste(numeric_keys, collapse = ", "), 
+        "). These are legacy GBIF Backbone identifiers. ",
+        "Switching to Backbone checklistKey (d7dddbf4-2cf0-4f39-9b2a-bb099caae36c). ",
+        "Please consider migrating to COL XR identifiers - ",
+        "use gbif_to_col() to look up the COL equivalents.",
+        call. = FALSE
+      )
+      # Override checklistKey to use backbone
+      checklistKey <- "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+    }
+  }
   if (!is.null(body)) {
     req <- body
   } else {
@@ -339,6 +370,53 @@ rg_POST <- function(url, req, user, pwd, curlopts = list(http_version = 2)) {
   res$raise_for_status()
   stopifnot(res$response_headers$`content-type` == 'application/json')
   res$parse("UTF-8")
+}
+
+# Helper function to check for numeric taxonomic keys in predicates
+check_numeric_taxon_keys <- function(preds) {
+  numeric_keys <- character(0)
+  taxonomic_keys_gbif <- c("TAXON_KEY", "ACCEPTED_TAXON_KEY", "KINGDOM_KEY", 
+                           "PHYLUM_KEY", "CLASS_KEY", "ORDER_KEY", "FAMILY_KEY",
+                           "GENUS_KEY", "SUBGENUS_KEY", "SPECIES_KEY")
+  
+  # Recursive function to check a single predicate or list of predicates
+  check_pred <- function(pred) {
+    if (is.null(pred)) return(NULL)
+    
+    # Handle list of predicates (e.g., from pred_and, pred_or)
+    if (is.list(pred) && !inherits(pred, "occ_predicate")) {
+      if (!is.null(pred$predicates)) {
+        # This is a compound predicate with nested predicates
+        lapply(pred$predicates, check_pred)
+      } else if (!is.null(pred$predicate)) {
+        # This is a NOT predicate with a single nested predicate
+        check_pred(pred$predicate)
+      } else {
+        # Check all elements in the list
+        lapply(pred, check_pred)
+      }
+    } else if (inherits(pred, "occ_predicate") || is.list(pred)) {
+      # Check if this is a taxonomic key with numeric value
+      if (!is.null(pred$key) && pred$key %in% taxonomic_keys_gbif) {
+        # Check if value is numeric
+        if (!is.null(pred$value) && all(suppressWarnings(!is.na(as.numeric(pred$value))))) {
+          numeric_keys <<- c(numeric_keys, pred$key)
+        }
+        # Also check values (for pred_in)
+        if (!is.null(pred$values)) {
+          if (all(suppressWarnings(!is.na(as.numeric(pred$values))))) {
+            numeric_keys <<- c(numeric_keys, pred$key)
+          }
+        }
+      }
+    }
+  }
+  
+  # Check all predicates
+  lapply(preds, check_pred)
+  
+  # Return unique key names
+  unique(numeric_keys)
 }
 
 catch_err <- function(x) {

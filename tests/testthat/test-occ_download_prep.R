@@ -68,7 +68,8 @@ test_that("occ_download_prep print method", {
 test_that("occ_download_prep long print", {
   skip_on_cran()
   
-  long_taxonkey_list <- rep(22222222,200)
+  # Use alpha-numeric COL XR keys to avoid triggering numeric key warning
+  long_taxonkey_list <- rep("Q2M4",200)
   
   pp <- occ_download_prep(
     pred_in("taxonKey", long_taxonkey_list),
@@ -348,14 +349,20 @@ test_that("occ_download_prep allows GBIF Backbone override at predicate level", 
   backbone_uuid <- "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
   col_xr_uuid <- "7ddf754f-d193-4cc9-b351-99906754a03b"
   
-  z <- occ_download_prep(
-    pred("classKey", "220", checklistKey = backbone_uuid),
-    user = "foo", pwd = "bar", email = "foo@bar.com"
+  # When using numeric keys, the validation logic switches top-level to backbone
+  # This is expected behavior - predicate-level checklistKey is still respected
+  expect_warning(
+    z <- occ_download_prep(
+      pred("classKey", "220", checklistKey = backbone_uuid),
+      checklistKey = col_xr_uuid,
+      user = "foo", pwd = "bar", email = "foo@bar.com"
+    ),
+    "Numeric taxonomic keys detected.*CLASS_KEY"
   )
 
-  # Top-level checklistKey defaults to COL XR (predicate-level doesn't propagate up)
+  # Top-level checklistKey auto-switches to backbone when numeric keys detected
   expect_is(z$request$checklistKey, "character")
-  expect_equal(z$request$checklistKey[1], col_xr_uuid)
+  expect_equal(z$request$checklistKey[1], backbone_uuid)
   
   # Predicate-level checklistKey uses the explicit Backbone override
   expect_equal(z$request$predicate$checklistKey[1], backbone_uuid)
@@ -445,17 +452,23 @@ test_that("occ_download_prep handles mixed GBIF Backbone and COL XR predicates",
   backbone_uuid <- "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
   col_xr_uuid <- "7ddf754f-d193-4cc9-b351-99906754a03b"
   
-  z <- occ_download_prep(
-    pred("classKey", "212", checklistKey = backbone_uuid),  # Aves in GBIF Backbone
-    pred("genusKey", "B8V3Z"),  # COL XR key (default)
-    pred("country", "US"),  # Non-taxonomic
-    pred("basisOfRecord", "PRESERVED_SPECIMEN"),  # Non-taxonomic
-    user = "foo", pwd = "bar", email = "foo@bar.com"
+  # When using numeric keys, the validation logic switches top-level to backbone
+  # This is expected behavior - predicate-level checklistKey is still respected
+  expect_warning(
+    z <- occ_download_prep(
+      pred("classKey", "212", checklistKey = backbone_uuid),  # Aves in GBIF Backbone
+      pred("genusKey", "B8V3Z"),  # COL XR key (default)
+      pred("country", "US"),  # Non-taxonomic
+      pred("basisOfRecord", "PRESERVED_SPECIMEN"),  # Non-taxonomic
+      checklistKey = col_xr_uuid,
+      user = "foo", pwd = "bar", email = "foo@bar.com"
+    ),
+    "Numeric taxonomic keys detected.*CLASS_KEY"
   )
 
-  # Top-level checklistKey defaults to COL XR (predicate-level doesn't propagate)
+  # Top-level checklistKey auto-switches to backbone when numeric keys detected
   expect_is(z$request$checklistKey, "character")
-  expect_equal(z$request$checklistKey[1], col_xr_uuid)
+  expect_equal(z$request$checklistKey[1], backbone_uuid)
   
   # Should have an AND with multiple predicates
   expect_equal(z$request$predicate$type[1], "and")
@@ -482,6 +495,97 @@ test_that("occ_download_prep handles mixed GBIF Backbone and COL XR predicates",
   expect_equal(z$request$predicate$predicates[[4]]$type[1], "equals")
   expect_equal(z$request$predicate$predicates[[4]]$key[1], "BASIS_OF_RECORD")
   expect_null(z$request$predicate$predicates[[4]]$checklistKey)
+})
+
+test_that("numeric taxonomic keys trigger warning and switch to backbone", {
+  skip_on_cran()
+  
+  # Test with numeric taxonKey - should warn and switch to backbone
+  expect_warning(
+    z <- occ_download_prep(
+      pred("taxonKey", 2431950),
+      pred("country", "US"),
+      user = "foo", pwd = "bar", email = "foo@bar.com"
+    ),
+    "Numeric taxonomic keys detected.*TAXON_KEY.*legacy GBIF Backbone.*gbif_to_col"
+  )
+  
+  # Should have switched to backbone UUID
+  expect_equal(z$request$checklistKey[1], "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
+  
+  # Test with numeric speciesKey
+  expect_warning(
+    z2 <- occ_download_prep(
+      pred("speciesKey", 5231190),
+      pred("hasCoordinate", TRUE),
+      user = "foo", pwd = "bar", email = "foo@bar.com"
+    ),
+    "Numeric taxonomic keys detected.*SPECIES_KEY.*legacy GBIF Backbone.*gbif_to_col"
+  )
+  
+  expect_equal(z2$request$checklistKey[1], "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
+  
+  # Test with multiple numeric keys in pred_in
+  expect_warning(
+    z3 <- occ_download_prep(
+      pred_in("taxonKey", c(2431950, 5231190)),
+      user = "foo", pwd = "bar", email = "foo@bar.com"
+    ),
+    "Numeric taxonomic keys detected.*TAXON_KEY.*legacy GBIF Backbone.*gbif_to_col"
+  )
+  
+  expect_equal(z3$request$checklistKey[1], "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
+})
+
+test_that("numeric keys with explicit backbone checklistKey don't trigger warning", {
+  skip_on_cran()
+  
+  # When user explicitly sets checklistKey to backbone, no warning should be issued
+  expect_no_warning(
+    z <- occ_download_prep(
+      pred("taxonKey", 2431950),
+      pred("country", "US"),
+      checklistKey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+      user = "foo", pwd = "bar", email = "foo@bar.com"
+    )
+  )
+  
+  # Verify the backbone checklistKey was used
+  expect_equal(z$request$checklistKey[1], "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
+})
+
+test_that("alpha-numeric keys don't trigger warning", {
+  skip_on_cran()
+  
+  # COL XR alpha-numeric keys should not trigger any warning
+  expect_no_warning(
+    z <- occ_download_prep(
+      pred("taxonKey", "Q2M4"),
+      pred("country", "US"),
+      user = "foo", pwd = "bar", email = "foo@bar.com"
+    )
+  )
+  
+  # Should use COL XR default
+  expect_equal(z$request$checklistKey[1], "7ddf754f-d193-4cc9-b351-99906754a03b")
+})
+
+test_that("numeric keys in nested predicates trigger warning", {
+  skip_on_cran()
+  
+  # Test with pred_and containing numeric keys
+  expect_warning(
+    z <- occ_download_prep(
+      pred_and(
+        pred("taxonKey", 2431950),
+        pred("country", "US")
+      ),
+      user = "foo", pwd = "bar", email = "foo@bar.com"
+    ),
+    "Numeric taxonomic keys detected.*TAXON_KEY.*legacy GBIF Backbone.*gbif_to_col"
+  )
+  
+  expect_equal(z$request$checklistKey[1], "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
 })
 
 

@@ -77,6 +77,13 @@ Spin up a download request for GBIF occurrence data.
 }
 \note{
 see \link{downloads} for an overview of GBIF downloads methods
+
+When numeric taxonomic keys (taxonKey, speciesKey, kingdomKey, etc.) are
+detected in predicates and checklistKey is set to COL XR (the default) or NULL,
+the function automatically switches to the GBIF Backbone taxonomy checklistKey
+and issues a warning. These numeric keys are legacy identifiers. If you
+explicitly set checklistKey to Backbone or another taxonomy, no warning is
+issued. Consider migrating to COL XR identifiers using \code{\link[=gbif_to_col]{gbif_to_col()}}.
 }
 \section{geometry}{
 
