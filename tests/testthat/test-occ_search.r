@@ -956,4 +956,20 @@ test_that("numeric taxonomic keys trigger warning and switch to backbone", {
   expect_equal(attr(result, "args")$checklistKey, "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
 })
 
+test_that("numeric keys with explicit checklistKey don't trigger warning", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  
+  # When user explicitly sets checklistKey to backbone, no warning should be issued
+  # We can reuse the backbone cassette since the request is identical
+  expect_no_warning(
+    vcr::use_cassette("occ_search_numeric_key_backbone", {
+      result <- occ_search(speciesKey = 2441176, 
+                          checklistKey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c", 
+                          limit = 2)
+    }, preserve_exact_body_bytes = TRUE)
+  )
+  
+  # Verify the backbone checklistKey was used
+  expect_equal(attr(result, "args")$checklistKey, "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
+})
 

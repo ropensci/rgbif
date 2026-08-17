@@ -7,7 +7,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '18'
+      x-varnish-rli: '16'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -96,5 +96,5 @@ http_interactions:
         M/OQY22P75mHOMr/cx7CV/8fz0NEq+T4PETLWgZvfR6y31o5z0Pe1jwkK+k/a
         B7Ca+INzkOy
         Vr70o+chWSh+1Dwkk/698xDRKH3RPMTWdlhBMrB4/C/qF+Mn
-  recorded_at: 2026-08-14 09:14:04
+  recorded_at: 2026-08-17 07:08:13
 recorded_with: VCR-vcr/2.0.0

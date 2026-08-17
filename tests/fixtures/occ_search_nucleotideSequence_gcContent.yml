@@ -144,7 +144,7 @@ http_interactions:
         Xq9aKZ3dXimvt/MvUNeYC65ySZLbipuQIDyqnIE4Kr1xAiykR5XT86VJvixlVXjRJN9HKRdJ
         vpo
         qKSs43zLH95H4ljm+ecKPti7HV9NlRVOnWzrle/rX/wOyCmuD
-  recorded_at: 2026-08-14 09:13:57
+  recorded_at: 2026-08-17 07:08:04
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&taxonKey=V2&nucleotideSequence.gcContent=0.4%2C0.6
@@ -153,7 +153,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '18'
+      x-varnish-rli: '17'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -232,5 +232,5 @@ http_interactions:
         rOcR699kxPpVB/MnRqy6+lcesW
         o/OmJt1DiPWM9d47lrPI9Y/ydHrLtMfXLEevO3GbE2k85v
         j1h3av6SEWvzCLDmFfjyH0f08Ys=
-  recorded_at: 2026-08-14 09:13:57
+  recorded_at: 2026-08-17 07:08:04
 recorded_with: VCR-vcr/2.0.0

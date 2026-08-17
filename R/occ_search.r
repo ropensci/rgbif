@@ -18,9 +18,11 @@
 #' See https://www.gbif.org/developer/occurrence
 #' 
 #' When numeric taxonomic keys (taxonKey, speciesKey, kingdomKey, etc.) are 
-#' detected, the function automatically switches to the GBIF Backbone taxonomy
-#' checklistKey and issues a warning. These numeric keys are legacy identifiers.
-#' Consider migrating to COL XR identifiers using [gbif_to_col()].
+#' detected and checklistKey is set to COL XR (the default), the function 
+#' automatically switches to the GBIF Backbone taxonomy checklistKey and issues 
+#' a warning. These numeric keys are legacy identifiers. If you explicitly set 
+#' checklistKey to Backbone or another taxonomy, no warning is issued. Consider 
+#' migrating to COL XR identifiers using [gbif_to_col()].
 #' @return An object of class `gbif`, which is a S3 class list, with
 #' slots for metadata (`meta`), the occurrence data itself (`data`),
 #' the taxonomic hierarchy data (`hier`), media metadata (`media`),
@@ -188,6 +190,7 @@ occ_search <- function(taxonKey = NULL,
   pchk(return, "occ_search")
   
   # Check for numeric taxonomy keys and switch to backbone if detected
+  # Only warn if user hasn't explicitly set checklistKey to a different taxonomy
   taxonomic_keys <- list(
     taxonKey = taxonKey,
     speciesKey = speciesKey,
@@ -206,7 +209,10 @@ occ_search <- function(taxonKey = NULL,
     all(suppressWarnings(!is.na(as.numeric(x))))
   })
   
-  if (any(numeric_keys)) {
+  # Only warn and switch if checklistKey is still COL XR default
+  # If user explicitly set a different checklistKey, respect their choice
+  col_xr_uuid <- "7ddf754f-d193-4cc9-b351-99906754a03b"
+  if (any(numeric_keys) && (is.null(checklistKey) || identical(checklistKey, col_xr_uuid))) {
     warning(
       "Numeric taxonomic keys detected (", 
       paste(names(which(numeric_keys)), collapse = ", "), 

@@ -11,8 +11,8 @@ http_interactions:
       string: '{"usage":{"key":"6XCXT","name":"Salmo salar Linnaeus, 1758","canonicalName":"Salmo
         salar","authorship":"Linnaeus, 1758","rank":"SPECIES","code":"ZOOLOGICAL","status":"ACCEPTED","genericName":"Salmo","specificEpithet":"salar","type":"SCIENTIFIC","formattedName":"<i>Salmo</i>
         <i>salar</i> Linnaeus, 1758"},"classification":[{"key":"CS5HF","name":"Eukaryota","rank":"DOMAIN"},{"key":"N","name":"Animalia","rank":"KINGDOM"},{"key":"CH2","name":"Chordata","rank":"PHYLUM"},{"key":"8V4V3","name":"Vertebrata","rank":"SUBPHYLUM"},{"key":"8V4V5","name":"Gnathostomata","rank":"INFRAPHYLUM"},{"key":"8VVWB","name":"Osteichthyes","rank":"PARVPHYLUM"},{"key":"8VR36","name":"Actinopterygii","rank":"GIGACLASS"},{"key":"KTWM8","name":"Actinopteri","rank":"SUPERCLASS"},{"key":"8V4VD","name":"Teleostei","rank":"CLASS"},{"key":"3ZR","name":"Salmoniformes","rank":"ORDER"},{"key":"KVRVN","name":"Salmonidae","rank":"FAMILY"},{"key":"KVRVP","name":"Salmoninae","rank":"SUBFAMILY"},{"key":"KVRR8","name":"Salmo","rank":"GENUS"},{"key":"6XCXT","name":"Salmo
-        salar","rank":"SPECIES"}],"diagnostics":{"matchType":"EXACT","confidence":100,"timeTaken":8,"timings":{"nameNRank":0,"sciNameMatch":9,"nameParse":0,"luceneMatch":9}},"additionalStatus":[{"clbDatasetKey":"53131","datasetAlias":"IUCN","datasetKey":"19491596-35ae-4a91-9a98-85cf505f1bd3","status":"NEAR_THREATENED","statusCode":"NT","sourceId":"19855"}],"synonym":false}'
-  recorded_at: 2026-08-14 09:12:59
+        salar","rank":"SPECIES"}],"diagnostics":{"matchType":"EXACT","confidence":100,"timeTaken":10,"timings":{"nameNRank":0,"sciNameMatch":10,"nameParse":1,"luceneMatch":9}},"additionalStatus":[{"clbDatasetKey":"53131","datasetAlias":"IUCN","datasetKey":"19491596-35ae-4a91-9a98-85cf505f1bd3","status":"NEAR_THREATENED","statusCode":"NT","sourceId":"19855"}],"synonym":false}'
+  recorded_at: 2026-08-17 07:07:18
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&depth=5&taxonKey=6XCXT
@@ -21,7 +21,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '18'
+      x-varnish-rli: '15'
       x-varnish-rlg: '250'
     body:
       string: '{"offset":0,"limit":2,"endOfRecords":false,"count":44,"results":[{"key":6396167231,"datasetKey":"3f8c5321-4081-46fc-84ef-27c12735c3a5","publishingOrgKey":"ff265032-b806-411a-b4b8-15a27b767dce","networkKeys":["2b7c7b4f-4d4f-40d3-94de-c28b6fa054a6"],"installationKey":"56b3ccf5-ad40-433f-997e-1eeb565a5889","hostingOrganizationKey":"ff265032-b806-411a-b4b8-15a27b767dce","publishingCountry":"NO","protocol":"EML","lastCrawled":"2026-07-13T15:48:14.311+00:00","lastParsed":"2026-07-18T14:45:24.921+00:00","crawlId":10,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","individualCount":2,"occurrenceStatus":"PRESENT","classifications":{"7ddf754f-d193-4cc9-b351-99906754a03b":{"usage":{"key":"6XCXT","name":"Salmo
@@ -66,7 +66,7 @@ http_interactions:
         trawl nets","dnaSequenceID":[],"nucleotideSequence":[],"geodeticDatum":"WGS84","countryCode":"FO","recordedByIDs":[],"identifiedByIDs":[],"gbifRegion":"EUROPE","country":"Faroe
         Islands","publishedByGbifRegion":"EUROPE","rightsHolder":"https://ror.org/05vg74d16","eventID":"IMR2021817-37572","identifier":"IMR2021817-37572-127186","institutionID":"https://ror.org/05vg74d16","scientificNameID":"urn:lsid:marinespecies.org:taxname:127186","http://unknown.org/crawl_attempt":"10","footprintWKT":"LINESTRING(-2.1233333333333335
         62.94416666666667,-2.1911666666666667 62.9575)","gbifID":"6396382135","language":"en","occurrenceID":"IMR2021817-37572-127186","type":"Occurrence","taxonID":"127186","institutionCode":"IMR","parentEventID":"IMR2021817"}],"facets":[]}'
-  recorded_at: 2026-08-14 09:12:59
+  recorded_at: 2026-08-17 07:07:19
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&depth=5&taxonKey=6XCXT
@@ -75,7 +75,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '18'
+      x-varnish-rli: '15'
       x-varnish-rlg: '250'
     body:
       string: '{"offset":0,"limit":2,"endOfRecords":false,"count":44,"results":[{"key":6396167231,"datasetKey":"3f8c5321-4081-46fc-84ef-27c12735c3a5","publishingOrgKey":"ff265032-b806-411a-b4b8-15a27b767dce","networkKeys":["2b7c7b4f-4d4f-40d3-94de-c28b6fa054a6"],"installationKey":"56b3ccf5-ad40-433f-997e-1eeb565a5889","hostingOrganizationKey":"ff265032-b806-411a-b4b8-15a27b767dce","publishingCountry":"NO","protocol":"EML","lastCrawled":"2026-07-13T15:48:14.311+00:00","lastParsed":"2026-07-18T14:45:24.921+00:00","crawlId":10,"extensions":{},"basisOfRecord":"HUMAN_OBSERVATION","individualCount":2,"occurrenceStatus":"PRESENT","classifications":{"7ddf754f-d193-4cc9-b351-99906754a03b":{"usage":{"key":"6XCXT","name":"Salmo
@@ -120,7 +120,7 @@ http_interactions:
         trawl nets","dnaSequenceID":[],"nucleotideSequence":[],"geodeticDatum":"WGS84","countryCode":"FO","recordedByIDs":[],"identifiedByIDs":[],"gbifRegion":"EUROPE","country":"Faroe
         Islands","publishedByGbifRegion":"EUROPE","rightsHolder":"https://ror.org/05vg74d16","eventID":"IMR2021817-37572","identifier":"IMR2021817-37572-127186","institutionID":"https://ror.org/05vg74d16","scientificNameID":"urn:lsid:marinespecies.org:taxname:127186","http://unknown.org/crawl_attempt":"10","footprintWKT":"LINESTRING(-2.1233333333333335
         62.94416666666667,-2.1911666666666667 62.9575)","gbifID":"6396382135","language":"en","occurrenceID":"IMR2021817-37572-127186","type":"Occurrence","taxonID":"127186","institutionCode":"IMR","parentEventID":"IMR2021817"}],"facets":[]}'
-  recorded_at: 2026-08-14 09:12:59
+  recorded_at: 2026-08-17 07:07:19
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=500&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&depth=5-10&taxonKey=6XCXT
@@ -129,9 +129,9 @@ http_interactions:
     headers:
       status: HTTP/1.1 400 Bad Request
       content-type: text/plain
-      x-varnish-rli: '18'
+      x-varnish-rli: '17'
       x-varnish-rlg: '250'
     body:
       string: 'Invalid decimal range: 5-10'
-  recorded_at: 2026-08-14 09:12:59
+  recorded_at: 2026-08-17 07:07:19
 recorded_with: VCR-vcr/2.0.0

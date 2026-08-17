@@ -7,7 +7,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '18'
+      x-varnish-rli: '14'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -111,7 +111,7 @@ http_interactions:
         kL9fiG7JvlMFYoV/6iq9Gd5Cq6QsgfBNaZWVZ
         3NaBSHVtNAOtxzGq6xmP4hXSQ9mP68im4pk
         GVKWUUiSUj7/H/rx6G8=
-  recorded_at: 2026-08-14 09:12:37
+  recorded_at: 2026-08-17 07:06:58
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&identifiedBy=Tim+Robertson
@@ -120,7 +120,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '18'
+      x-varnish-rli: '13'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -224,7 +224,7 @@ http_interactions:
         kL9fiG7JvlMFYoV/6iq9Gd5Cq6QsgfBNaZWVZ
         3NaBSHVtNAOtxzGq6xmP4hXSQ9mP68im4pk
         GVKWUUiSUj7/H4Ug6KE=
-  recorded_at: 2026-08-14 09:12:38
+  recorded_at: 2026-08-17 07:06:58
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&identifiedBy=Tim+Robertson
@@ -233,7 +233,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '18'
+      x-varnish-rli: '14'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -337,7 +337,7 @@ http_interactions:
         kL9fiG7JvlMFYoV/6iq9Gd5Cq6QsgfBNaZWVZ
         3NaBSHVtNAOtxzGq6xmP4hXSQ9mP68im4pk
         GVKWUUiSUj7/H/rx6G8=
-  recorded_at: 2026-08-14 09:12:38
+  recorded_at: 2026-08-17 07:06:58
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&identifiedBy=Matthew+Blissett
@@ -346,7 +346,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '18'
+      x-varnish-rli: '12'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -452,7 +452,7 @@ http_interactions:
         1WWNgfOvRK20vJifhHBsCrb1Wrob5c/8y4//hgKDddRr
         hTf3rErBEnDPx6qwTi5YFc2QjROM
         1jW0Cjv4NbRKHqUfYKM6RauopmhJEFgzhxqcYs2H/wLVtIVS
-  recorded_at: 2026-08-14 09:12:38
+  recorded_at: 2026-08-17 07:06:58
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&country=DK&identifiedBy=Tim+Robertson
@@ -461,7 +461,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '18'
+      x-varnish-rli: '11'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -563,5 +563,5 @@ http_interactions:
         0jM458Bm/jtnRxtwVqOTL/+D8B/Aja
         ZUn/R03GjW3yk3qpmmo+7w1QHcaHbwg7jRRbReKepO
         btRSLN0pO3Z5WWdwUmg+/x+VNeMA
-  recorded_at: 2026-08-14 09:12:38
+  recorded_at: 2026-08-17 07:06:58
 recorded_with: VCR-vcr/2.0.0

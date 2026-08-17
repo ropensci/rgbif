@@ -114,8 +114,6 @@
 #' dataset_search(doi="10.15468/aomfnb;10.15468/igasai")
 #' dataset_search(installationKey = "d209e552-7e6e-4840-b13c-c0596ef36e55")
 #' dataset_search(category = "eDNA")
-#' # continent parameter is deprecated
-#' # dataset_search(continent = "EUROPE", limit = 5)
 #' dataset_search(recordCount = "10000,100000", limit = 5)
 #' dataset_search(modifiedDate = "2020-01-01,2021-01-01", limit = 5)
 #' dataset_search(createdDate = "2015-01-01,2016-01-01", limit = 5)
