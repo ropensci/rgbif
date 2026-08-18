@@ -31,6 +31,11 @@
 #' most of which require that you already have a taxon key, but there is one
 #' endpoint that allows name searches (see examples below).
 #'
+#' **Important:** When `key` is provided, the `datasetKey` parameter is ignored
+#' by the GBIF API. The API returns data based solely on the key, regardless of
+#' what `datasetKey` is set to. A warning will be issued if both parameters are
+#' provided.
+#'
 #' Note that `data="verbatim"` hasn't been working.
 #'
 #' Options for the data parameter are: 'all', 'verbatim', 'name', 'parents',
@@ -100,6 +105,11 @@ name_usage <- function(key=NULL, name=NULL, data='all', language=NULL,
 
   if (is.null(datasetKey)) {
     warning("name_usage() works by default with the out-of-date GBIF Backbone Taxonomy. Consider using rcol::col_usage() instead.", call. = FALSE)
+  }
+  
+  # Warn if datasetKey is ignored due to key being provided
+  if (!is.null(datasetKey) && !is.null(key)) {
+    warning("datasetKey is ignored when key is provided. The GBIF API returns data based on the key only, regardless of datasetKey.", call. = FALSE)
   }
   
   pchk(return, "name_usage")

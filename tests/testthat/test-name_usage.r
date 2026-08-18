@@ -258,6 +258,21 @@ test_that("name_usage shows deprecation warning only when datasetKey is NULL", {
   )
 })
 
+test_that("name_usage warns when datasetKey is ignored due to key", {
+  # Warning when both key and datasetKey are provided
+  expect_warning(
+    name_usage(key = 4528099, datasetKey = "7ddf754f-d193-4cc9-b351-99906754a03b"),
+    "datasetKey is ignored when key is provided"
+  )
+  
+  # No warning when only datasetKey is provided (with name)
+  expect_warning(
+    name_usage(name = "Passer domesticus", datasetKey = "7ddf754f-d193-4cc9-b351-99906754a03b"),
+    "name_usage\\(\\) works by default with the out-of-date GBIF Backbone Taxonomy",
+    fixed = FALSE
+  )
+})
+
 
 # paging
 # Commented:it takes too much time.
