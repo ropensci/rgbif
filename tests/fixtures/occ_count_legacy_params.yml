@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/search?hasCoordinate=FALSE&hasGeospatialIssue=FALSE&occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=
+    uri: https://api.gbif.org/v1/occurrence/search?hasCoordinate=FALSE&hasGeospatialIssue=FALSE&occurrenceStatus=PRESENT&limit=0&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&facetLimit=
   response:
     status: 200
     headers:
@@ -11,13 +11,13 @@ http_interactions:
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DShqYm5gYG
-        ZiYmOkp
-        FqcWlOSVAFdGxOkppicmpEHYtALI6G4g=
-  recorded_at: 2025-09-29 11:23:07
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DShmYGBibG
+        hqbGOkp
+        FqcWlOSVAFdGxOkppicmpEHYtALE+G4A=
+  recorded_at: 2026-08-13 12:25:16
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&eventDate=2010
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&facetLimit=&eventDate=2010
   response:
     status: 200
     headers:
@@ -27,13 +27,13 @@ http_interactions:
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSppaG5hbm
-        puY6SkW
-        pxaU5JUAF0bE6SmmJyakQdi0AnM8bag==
-  recorded_at: 2025-09-29 11:23:08
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSZkZGxsYW
+        JkY6SkW
+        pxaU5JUAF0bE6SmmJyakQdi0AmpIbVw==
+  recorded_at: 2026-08-13 12:25:17
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&facetLimit=
   response:
     status: 200
     headers:
@@ -43,24 +43,24 @@ http_interactions:
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSxqYGlmZA
-        aGSpo1S
-        UWlyaUwJUEh2ro5SWmJwKYdcCAM0uG9M=
-  recorded_at: 2025-09-29 11:23:08
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSxubmloYG
+        RiYmFjp
+        KRanFpTklQCXRsTpKaYnJqRB2LQDLvxvG
+  recorded_at: 2026-08-13 12:25:17
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facetLimit=&year=2000%2C2001
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&facetLimit=&year=2000%2C2001
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '18'
+      x-varnish-rli: '17'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSJuamFgam
-        RoY6SkW
-        pxaU5JUAF0bE6SmmJyakQdi0AmuobWQ==
-  recorded_at: 2025-09-29 11:23:08
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSJpZmRhYG
+        hkY6SkW
+        pxaU5JUAF0bE6SmmJyakQdi0AmvAbWQ==
+  recorded_at: 2026-08-13 12:25:17
 recorded_with: VCR-vcr/2.0.0

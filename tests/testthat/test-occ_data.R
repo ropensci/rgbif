@@ -1,5 +1,6 @@
 context("occ_data")
 
+# Use GBIF Backbone numeric key for backward compatibility with VCR cassettes
 key <- 3118771
 
 # Search by key

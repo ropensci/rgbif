@@ -139,14 +139,14 @@ data <- data.frame(
 ## Example with occ_search and dplyr
 # library(dplyr)
 
-# citation_data <- occ_search(taxonKey=212, limit=20)$data \%>\%
+# citation_data <- occ_search(taxonKey="Q2M4", limit=20)$data \%>\%
 #   group_by(datasetKey) \%>\% 
 #   count()
 
 # # You would still need to upload your data to Zenodo or something similar 
 # derived_dataset_prep(
 #   citation_data = citation_data,
-#   title="Bird data downloaded for test",
+#   title= "data downloaded for test",
 #   description="This data was downloaded using rgbif::occ_search and was 
 #   later uploaded to Zenodo.",
 #   source_url="https://zenodo.org/record/4246090#.YPGS2OgzZPY",

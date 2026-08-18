@@ -3,6 +3,11 @@
 #' Uses the GeoNames web service
 #'
 #' @export
+#' @section Deprecation Notice:
+#' This function is deprecated as of rgbif 3.9.0 and will be removed in a future 
+#' version. It relies on a non-GBIF web service (GeoNames) and is not core to 
+#' the package's purpose of interacting with GBIF data.
+#' 
 #' @param input A data.frame of lat/long data. There must be columns
 #' decimalLatitude and decimalLongitude.
 #' @param latitude A vector of latitude's. Must be the same length as the
@@ -87,6 +92,8 @@ elevation <- function(input = NULL, latitude = NULL, longitude = NULL,
   latlong = NULL, elevation_model = "srtm3",
   username = Sys.getenv("GEONAMES_USER"), key, curlopts = list(http_version = 2),
   ...) {
+
+  .Deprecated(msg = "elevation() is deprecated since rgbif 3.9.0. This function relies on a non-GBIF web service (GeoNames) and will be removed in a future version.")
 
   if (!missing(key))
     stop("'key' param defunct; use username and see docs")

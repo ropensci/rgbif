@@ -8,7 +8,49 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":533,"results":[{"key":"5f024e8c-bbaa-400f-a9ae-b07b2a0ae45a","code":"PSUZC-INSECT","name":"Stock
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":583,"results":[{"key":"7bc994e7-6839-4557-926e-fd57daf97de1","code":"Insects","name":"Insect
+        Collection at Vänersborg Museum","description":"<p>The insect collection at
+        Vänersborg Museum includes insects from several collectors. The largest part
+        of the collection comes from Gustaf Olof David von Hackwitz, lecturer in natural
+        history at Högre allmänna läroverket in Vänersborg and curator of the Vänersborg
+        Museum&#39;s natural history collections. His collection comes from several
+        parts of the world and was collected between 1870 and 1914. Another part of
+        the collection comes from the Vänersborg citizen Axel Wilhelm Eriksson (1846-1901),
+        a well-known ornithologist and donor of the Vänersborg Museum&#39;s extensive
+        collection of southwest African birds, a collection that also includes bird
+        eggs, mammals, insects and ethnographica. Eriksson studied at Högre allmänna
+        läroverket in Vänersborg from 1858 to 1862 and emigrated to southern Africa
+        where, during the period 1869 to 1901, he ran an extensive trading business
+        alongside zoological research. Most of the insects were collected by Eriksson
+        and often have provenance and sometimes collection dates. The collection area
+        is Namibia, Angola, South Africa and Botswana. Part of the collection was
+        collected by the officer&#39;s son Gustaf Kylberg (1837-1917) from Såtenäs,
+        Tun, Västergötland. He studied at Högre allmänna läroverket in Vänersborg
+        during the 1840s and later worked as an office manager and architect in Göteborg.
+        The insects come from Malacca, Malaysia. The date of collection is missing.
+        Part of the collection was collected by the founder of the Vänersborg Museum,
+        the merchant and philanthropist Adolf Andersohn (1820-1887). The provenance
+        and date of collection are missing. Karl Gottfrid Schagerström (1863-1896),
+        a student at Högre allmänna läroverket in Vänersborg 1873-1878, has donated
+        a collection from the Belgian Congo where he served as a naval officer on
+        the Congo River in the service of the Congo State during the years 1886-1896.
+        The date of collection is missing. Knut Knutsson (1857-1930), from Sjöryd,
+        Ås, Västergötland, student at Högre allmänna läroverket in Vänersborg 1867-1876,
+        donated a collection from Cameroon and Sierra Leone. Knutsson worked as a
+        businessman and acquired large areas of land in what is now Cameroon during
+        the 1880s-90s and founded the trading house Waldau &amp; Knutsson there. Knutsson
+        also made collections for Svenska Sällskapet för Antropologi och Geografi.
+        Knutsson has also donated a small collection of ethnographic items to the
+        Vänersborg Museum. The collection date is missing. Lund Zoological Institute,
+        a collection up to 1938. A small part was collected between 1996 and 1997
+        by biologist Torulf Greek, who was a project employee at Vänersborg Museum
+        during the collection period. Both the provenance and collection date are
+        included. It is also Torulf Greek who has identified all the insects in the
+        collection.</p>","contentTypes":[],"active":true,"personalCollection":false,"email":[],"phone":[],"catalogUrls":[],"apiUrls":[],"preservationTypes":[],"institutionKey":"02101916-9ccb-4a76-984d-ab664db606ad","mailingAddress":{"key":59348},"address":{"key":59347,"address":"Box
+        38","city":"Vänersborg","postalCode":"46221","country":"SE"},"createdBy":"lena_thole","modifiedBy":"lena_thole","created":"2026-06-24T06:38:21.036+00:00","modified":"2026-06-24T06:39:00.600+00:00","tags":[],"identifiers":[{"key":469539,"type":"DOI","identifier":"10.15468/pepfrf","createdBy":"lena_thole","created":"2026-06-24T06:38:21.036+00:00","primary":false}],"contactPersons":[{"key":48107,"firstName":"Ann-Charlott","lastName":"Öberg","position":["Curator"],"phone":[],"fax":[],"email":["ann-charlott.oberg@vgregion.se"],"address":[],"city":"Vänersborg","country":"SE","primary":true,"taxonomicExpertise":[],"userIds":[],"createdBy":"lena_thole","modifiedBy":"lena_thole","created":"2026-06-24T06:38:21.036+00:00","modified":"2026-06-24T06:38:21.036+00:00"},{"key":48108,"firstName":"Ann-Charlott","lastName":"Öberg","position":["Curator"],"phone":[],"fax":[],"email":["ann-charlott.oberg@vgregion.se"],"address":[],"city":"Vänersborg","country":"SE","primary":true,"taxonomicExpertise":[],"userIds":[],"createdBy":"lena_thole","modifiedBy":"lena_thole","created":"2026-06-24T06:38:21.036+00:00","modified":"2026-06-24T06:38:21.036+00:00"}],"machineTags":[],"taxonomicCoverage":"","geographicCoverage":"Namibia,
+        Angola , South Africa, Botswana ,Malacca, Malaysia , Congo, Cameroon, Sierra
+        Leone","incorporatedCollections":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GBIF_REGISTRY","masterSourceMetadata":{"key":10060,"source":"DATASET","sourceId":"76642fd9-81ca-4176-93af-cc64983f4229","createdBy":"lena_thole","created":"2026-06-24T06:38:21.036+00:00"},"displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"temporalCoverage":"","institutionName":"Vänersborgs
+        museum","institutionCode":"VM"},{"key":"5f024e8c-bbaa-400f-a9ae-b07b2a0ae45a","code":"PSUZC-INSECT","name":"Stock
         of insect specimens","description":"Curator: Dr. Sophak Chantharit. Tailed
         bugs are small invertebrates. It is classified as a legged animal. It is the
         boundary between crustaceans and insects. The stingrays belong to the class
@@ -39,26 +81,8 @@ http_interactions:
         Sirindhorn Prince of Songkhla University 15 Kanchanavanit Road","city":"Hat
         Yai","province":"Songkhla","postalCode":"90110","country":"TH"},"createdBy":"cjk","modifiedBy":"gbif-collections","created":"2022-07-18T15:18:26.315+00:00","modified":"2024-05-23T13:14:58.268+00:00","tags":[],"identifiers":[],"contactPersons":[],"machineTags":[],"incorporatedCollections":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"institutionName":"Princess
         Maha Chakri Sirindhorn Natural History Museum (PSU Museum, Prince of Songkla
-        University, Thailand)","institutionCode":"PSUZC"},{"key":"35de7962-b673-4f5e-b1f3-da3c5d2ac231","code":"BNHS-Insect","name":"BNHS
-        Insect Collection","description":"This is one of the important insect collections
-        in India. There are about 50,000 insects in the collection. \nThe geographical
-        areas covered are India, Pakistan and Myanmar. The major groups represented
-        in the \ncollection are Lepidoptera (Butterflies & Moths). Out of the 1500
-        species of butterflies found in India, \naround 730 species are present in
-        the collection. Some of the butterflies were collected from Myanmar \nand
-        are difficult to get in the present circumstances. There are also collection
-        of beetles (Coleoptera), \nbugs (Hemiptera), Wasps, bees and ants (Hymenoptera),
-        Grasshoppers and crickets (Orthoptera), \nMantodea (Prying mantids), Stick
-        and leaf-insects (Phasmatodea) and Cockroaches (Blattaria). The insects \nare
-        preserved and stored in wooden boxes and cabinets. The butterflies from Sri
-        Lanka collected by \nMr. Ormiston are also present in the collection. The
-        collection is referred by students/scientists from \nForest Research Institute
-        and was basis for the book “Butterflies of Sikkim Himalayas”.We have 245type
-        \nspecimens of insects in the collection.","contentTypes":[],"active":true,"personalCollection":false,"email":[],"phone":[],"catalogUrls":[],"apiUrls":[],"preservationTypes":[],"institutionKey":"b560d8ff-4e88-4cb0-99c9-7a43e6a315f0","mailingAddress":{"key":56145,"address":"Hornbill
-        House, Opp Lion Gate, SBS Road, Fort","city":"Mumbai","province":"Maharashtra","postalCode":"400001","country":"IN"},"address":{"key":56144,"address":"Hornbill
-        House, Opp Lion Gate, SBS Road, Fort","city":"Mumbai","province":"Maharashtra","postalCode":"400001","country":"IN"},"createdBy":"vijaybarve","modifiedBy":"vijaybarve","created":"2025-07-02T22:06:30.055+00:00","modified":"2025-07-02T22:06:30.055+00:00","tags":[],"identifiers":[],"contactPersons":[],"numberSpecimens":50000,"machineTags":[],"incorporatedCollections":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"institutionName":"Bombay
-        Natural History Society","institutionCode":"BNHS"}]}'
-  recorded_at: 2025-11-13 08:03:32
+        University, Thailand)","institutionCode":"PSUZC"}]}'
+  recorded_at: 2026-08-13 11:55:55
 - request:
     method: GET
     uri: https://api.gbif.org/v1/grscicoll/collection?limit=2&name=Insects
@@ -68,32 +92,17 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":138,"results":[{"key":"fa140a6d-a1cd-46ea-95b9-1980418eb908","code":"ENT","name":"Entomology","description":"The
-        insect collection is one of the Museum’s most active collections, maintained
-        by a staff of about 15 scientists, curators, research students and volunteers.
-        The collection includes about three million items representing Israel’s insect
-        species, as well as tens of thousands of items from different regions around
-        the world. These provide a basis for taxonomic, phylogenetic and ecological
-        research for the Museum’s scientists and their students, as well as researchers
-        from other academic institutions in Israel and overseas. The collection also
-        includes a range of live insects, used for instruction purposes. Activities
-        aim to preserve, document and study Israel’s insect community, estimated to
-        include about 20,000 species, at least one thousand of which remain unknown
-        to science. In addition to their research and routine work, the collection’s
-        staff provides identification services to a range of government, academic,
-        commercial and private organizations.","contentTypes":["Exoskeletons"],"active":true,"personalCollection":false,"email":[],"phone":[],"catalogUrls":[],"apiUrls":[],"preservationTypes":[],"institutionKey":"0e972e6d-3b72-476d-ae05-f7de1c82d3c6","mailingAddress":{"key":56960},"address":{"key":56961,"address":"12
-        Klausner Street","city":"Tel Aviv","postalCode":"073-3802000","country":"IL"},"createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2025-09-29T10:06:17.068+00:00","modified":"2025-09-29T10:08:15.198+00:00","tags":[],"identifiers":[],"contactPersons":[],"numberSpecimens":3000000,"machineTags":[],"taxonomicCoverage":"Insecta","incorporatedCollections":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"institutionName":"Tel-Aviv
-        University - Steinhardt Museum","institutionCode":"TAU"},{"key":"7f6438b9-fe77-41f3-8858-155f3c18690b","code":"SMNS-E","name":"Entomology","description":"The
-        entomological collections include more than 5.5 million specimens from all
-        over the world, thus forming the largest part of the museum’s inventory. Its
-        major part holds about 4.8 million dried insects stored in more than 22,000
-        insect drawers. Additionally, a considerable amount of insects and other arthropods,
-        mainly Crustacea and Arachnida, are stored in ethanol. In recent years, specimens
-        are increasingly preserved in 100 % ethanol and stored in deep freezers at
-        -80° C for genetic studies.","contentTypes":["Exoskeletons","PreservedOrganisms"],"active":true,"personalCollection":false,"email":[],"phone":[],"homepage":"https://www.naturkundemuseum-bw.de/en/research/collection/entomology-collection","catalogUrls":[],"apiUrls":[],"preservationTypes":["SamplePinned","SampleFluidPreserved","StorageFrozenMinus80"],"accessionStatus":"Institutional","institutionKey":"57246550-fc3c-4056-a59b-5688a10274bd","mailingAddress":{"key":56953},"address":{"key":56952,"address":"Rosenstein
-        1, D-70191 Stuttgart","country":"DE"},"createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2025-09-29T08:57:46.050+00:00","modified":"2025-09-29T08:58:54.702+00:00","tags":[],"identifiers":[],"contactPersons":[],"numberSpecimens":5500000,"machineTags":[],"taxonomicCoverage":"Arthropoda","incorporatedCollections":[],"alternativeCodes":[{"code":"SMNS-E-neuropteracoll","description":"Neuroptera"},{"code":"SMNS-E-goldenwaspscoll","description":"Chrysididae"}],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"featuredImageUrl":"https://www.naturkundemuseum-bw.de/fileadmin/_processed_/6/1/csm_smns-entomologie-sammlung-header_4784d273b2.jpg","institutionName":"Staatliches
-        Museum für Naturkunde Stuttgart","institutionCode":"SMNS"}]}'
-  recorded_at: 2025-11-13 08:03:32
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":142,"results":[{"key":"59a8755c-9ca4-47fa-a2e0-7b854714532e","code":"ENT","name":"Entomology","contentTypes":["PreservedOrganisms"],"active":true,"personalCollection":false,"email":[],"phone":[],"catalogUrls":[],"apiUrls":[],"preservationTypes":[],"institutionKey":"8ac34b4f-3119-47c1-8add-3d5704c78eae","mailingAddress":{"key":57976,"address":"Trg
+        Vojvode Bećir Bega Osmanagića 16","city":"Podgorica","postalCode":"81000","country":"ME"},"address":{"key":57975,"address":"Trg
+        Vojvode Bećir Bega Osmanagića 16","city":"Podgorica","postalCode":"81000","country":"ME"},"createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2026-02-10T13:35:30.641+00:00","modified":"2026-02-10T13:35:30.641+00:00","tags":[],"identifiers":[],"contactPersons":[],"machineTags":[],"incorporatedCollections":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"institutionName":"Natural
+        History Museum of Montenegro","institutionCode":"NHMM"},{"key":"d192e26e-6fc8-46d0-b295-da98474e93b9","code":"ENT","name":"Entomology","description":"Greece
+        and other countries in the Eastern Mediterranean. the taxonomic scope is focused
+        on flower visiting insects from Greece (mainly Hymenoptera, Diptera, Coleoptera
+        and some Lepidoptera).","contentTypes":["PreservedOrganisms"],"active":true,"personalCollection":false,"email":[],"phone":[],"catalogUrls":[],"apiUrls":[],"preservationTypes":[],"institutionKey":"64b864f7-17cb-440c-9493-00edeeb1a546","mailingAddress":{"key":57974,"address":"Laboratory
+        of Biogeography and Ecology, Department of Geography, University Hill","city":"Mytilene","postalCode":"81100","country":"GR"},"address":{"key":57973,"address":"Laboratory
+        of Biogeography and Ecology, Department of Geography, University Hill","city":"Mytilene","postalCode":"81100","country":"GR"},"createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2026-02-10T13:33:11.663+00:00","modified":"2026-02-10T13:33:11.663+00:00","tags":[],"identifiers":[],"contactPersons":[],"machineTags":[],"incorporatedCollections":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"institutionName":"University
+        of the Aegean","institutionCode":"UAEG"}]}'
+  recorded_at: 2026-08-13 11:55:55
 - request:
     method: GET
     uri: https://api.gbif.org/v1/grscicoll/collection?numberSpecimens=0%2C100&limit=1
@@ -103,17 +112,15 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":1694,"results":[{"key":"b3eb4812-87e2-4325-8f94-0736c9f541f0","code":"MUSE-VER-c021","name":"Collezione
-        micromammiferi A. Montolli | A. Montolli micromammal collection","description":"Soricomorpha
-        and Rodentia collected and determined by Attilio Montolli","contentTypes":["PreservedOrganisms"],"active":true,"personalCollection":false,"email":["collezioni@muse.it","mariachiara.deflorian@muse.it"],"phone":[],"homepage":"https://www.muse.it/","catalogUrls":["https://www.muse.it/home/ricerca-e-collezioni/le-collezioni-scientifiche/catalogo-digitale-collezioni-muse/"],"apiUrls":[],"preservationTypes":["SampleDried"],"accessionStatus":"Institutional","institutionKey":"f7a73987-a389-406f-84eb-bc5a0ca35835","mailingAddress":{"key":57015,"address":"Corso
-        del Lavoro e della Scienza, 3","city":"Trento","province":"[TRENTINO-ALTO
-        ADIGE/SUDTIROL] Trento (TN)","postalCode":"IT-38122","country":"IT"},"address":{"key":57014,"address":"Corso
-        del Lavoro e della Scienza, 3","city":"Trento","province":"[TRENTINO-ALTO
-        ADIGE/SUDTIROL] Trento (TN)","postalCode":"IT-38122","country":"IT"},"createdBy":"tasmacetus","modifiedBy":"tasmacetus","created":"2025-10-24T09:31:13.815+00:00","modified":"2025-10-26T06:35:50.799+00:00","tags":[],"identifiers":[],"contactPersons":[],"numberSpecimens":56,"machineTags":[],"taxonomicCoverage":"Soricomorpha,
-        Rodentia","geographicCoverage":"Trentino-Alto Adige","notes":"This is a subcollection
-        of https://registry.gbif.org/collection/e06d3605-eed3-43fe-9a31-dd18c4e0f9fe.","incorporatedCollections":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"temporalCoverage":"1985-1995","institutionName":"MUSE
-        - Museo delle Scienze","institutionCode":"MUSE"}]}'
-  recorded_at: 2025-11-13 08:03:33
+      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":1740,"results":[{"key":"c96aca21-6dd0-4cc4-a54e-2ff2f58253c8","code":"HR.7380","name":"KUO
+        Odonata collections","description":"<p>Odonata specimens mainly from Finland.
+        Both liquid and dry preserved.</p>","contentTypes":["Biological"],"active":true,"personalCollection":false,"email":["luonnontieteellinenmuseo@kuopio.fi"],"phone":["+358
+        01 718 2652"],"homepage":"https://tun.fi/HR.7380","catalogUrls":["https://laji.fi/en/observation/list?collectionId=HR.7380"],"apiUrls":["https://api.laji.fi/warehouse/query/unit/list?collectionId=HR.7380"],"preservationTypes":[],"accessionStatus":"Institutional","institutionKey":"1f322b47-5ece-4e82-927e-32114d08ebd6","mailingAddress":{"key":59697,"address":"Museokatu
+        4","city":"Kuopio","province":"North Savo","postalCode":"FI-70100","country":"FI"},"address":{"key":59696,"address":"Museokatu
+        4","city":"Kuopio","province":"North Savo","postalCode":"FI-70100","country":"FI"},"createdBy":"finbif","modifiedBy":"crawler.gbif.org","created":"2026-07-28T12:27:05.412+00:00","modified":"2026-08-12T22:35:42.889+00:00","tags":[],"identifiers":[{"key":471478,"type":"DOI","identifier":"10.15468/thwcyh","createdBy":"finbif","created":"2026-07-28T12:53:15.226+00:00","primary":false}],"contactPersons":[{"key":54199,"position":[],"phone":[],"fax":[],"email":[],"address":[],"primary":true,"taxonomicExpertise":[],"userIds":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2026-08-12T22:35:42.884+00:00","modified":"2026-08-12T22:35:42.884+00:00"},{"key":54200,"firstName":"Juuso","lastName":"Paappanen","position":[],"phone":[],"fax":[],"email":["juuso.paappanen@kuopio.fi"],"address":[],"primary":true,"taxonomicExpertise":[],"userIds":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2026-08-12T22:35:42.884+00:00","modified":"2026-08-12T22:35:42.884+00:00"},{"key":54201,"position":[],"phone":[],"fax":[],"email":["helpdesk@laji.fi"],"address":[],"primary":false,"taxonomicExpertise":[],"userIds":[],"createdBy":"crawler.gbif.org","modifiedBy":"crawler.gbif.org","created":"2026-08-12T22:35:42.884+00:00","modified":"2026-08-12T22:35:42.884+00:00"}],"numberSpecimens":10,"machineTags":[],"taxonomicCoverage":"Animalia","geographicCoverage":"Finland","incorporatedCollections":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GBIF_REGISTRY","masterSourceMetadata":{"key":10229,"source":"DATASET","sourceId":"8f2a6193-d750-446c-8616-329c4b38a562","createdBy":"finbif","created":"2026-07-28T12:53:15.226+00:00"},"displayOnNHCPortal":true,"occurrenceCount":2,"typeSpecimenCount":0,"featuredImageUrl":"https://upload.wikimedia.org/wikipedia/commons/2/2d/Kuopion_museo_ja_sen_Kantti-rakennus_%282021%29_-_Museokatu_1%2C_70100_Kuopio.jpg","featuredImageLicense":"UNSUPPORTED","temporalCoverage":"2011-08-23
+        - 2013-08-04","featuredImageAttribution":"Paju~commonswiki","institutionName":"Kuopio
+        Natural History Museum","institutionCode":"KUO"}]}'
+  recorded_at: 2026-08-13 11:55:55
 - request:
     method: GET
     uri: https://api.gbif.org/v1/grscicoll/collection?limit=1&institutionKey=6a6ac6c5-1b8a-48db-91a2-f8661274ff80
@@ -152,7 +159,7 @@ http_interactions:
         documentation of specimens may be provided on request.","contentTypes":[],"active":true,"personalCollection":false,"email":[],"phone":[],"catalogUrls":[],"apiUrls":[],"preservationTypes":[],"institutionKey":"6a6ac6c5-1b8a-48db-91a2-f8661274ff80","mailingAddress":{"key":43397},"address":{"key":43396,"address":"Muséum
         national d''Histoire naturelle 57, rue Cuvier","city":"Paris","postalCode":"75005","country":"FR"},"createdBy":"mgrosjean","modifiedBy":"s.pamerlon","created":"2022-03-25T12:36:16.984+00:00","modified":"2024-04-30T14:12:49.736+00:00","tags":[],"identifiers":[{"key":297946,"type":"DOI","identifier":"10.15468/podyc0","createdBy":"mgrosjean","created":"2022-03-25T12:36:16.984+00:00","primary":false}],"contactPersons":[{"key":38097,"lastName":"MNHN","position":["Provider"],"phone":[],"fax":[],"email":[],"address":[],"primary":true,"taxonomicExpertise":[],"userIds":[],"createdBy":"s.pamerlon","modifiedBy":"s.pamerlon","created":"2024-04-30T14:12:49.736+00:00","modified":"2024-04-30T14:12:49.736+00:00"},{"key":38098,"firstName":"Mark","lastName":"Judson","position":[],"phone":[],"fax":[],"email":[],"address":[],"primary":false,"taxonomicExpertise":[],"userIds":[],"createdBy":"s.pamerlon","modifiedBy":"s.pamerlon","created":"2024-04-30T14:12:49.736+00:00","modified":"2024-04-30T14:12:49.736+00:00"},{"key":38099,"firstName":"Élise-Anne","lastName":"Leguin","position":[],"phone":[],"fax":[],"email":[],"address":[],"primary":false,"taxonomicExpertise":[],"userIds":[],"createdBy":"s.pamerlon","modifiedBy":"s.pamerlon","created":"2024-04-30T14:12:49.736+00:00","modified":"2024-04-30T14:12:49.736+00:00"},{"key":38100,"firstName":"Laurent","lastName":"Albenga","position":["Correspondant"],"phone":[],"fax":[],"email":[],"address":[],"primary":true,"taxonomicExpertise":[],"userIds":[],"createdBy":"s.pamerlon","modifiedBy":"s.pamerlon","created":"2024-04-30T14:12:49.736+00:00","modified":"2024-04-30T14:12:49.736+00:00"}],"machineTags":[],"taxonomicCoverage":"","geographicCoverage":"","incorporatedCollections":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[{"key":50,"datasetKey":"2f23ac81-674e-4e4e-982f-73f49ccdb9df","createdBy":"mgrosjean","created":"2022-03-25T12:36:17.410+00:00"}],"masterSource":"GBIF_REGISTRY","masterSourceMetadata":{"key":8586,"source":"DATASET","sourceId":"2f23ac81-674e-4e4e-982f-73f49ccdb9df","createdBy":"mgrosjean","created":"2022-03-25T12:36:16.984+00:00"},"displayOnNHCPortal":true,"occurrenceCount":947,"typeSpecimenCount":691,"institutionName":"MNHN
         - Museum national d''Histoire naturelle","institutionCode":"MNHN"}]}'
-  recorded_at: 2025-11-13 08:03:33
+  recorded_at: 2026-08-13 11:55:55
 - request:
     method: GET
     uri: https://api.gbif.org/v1/grscicoll/collection?q=insect&limit=1&country=US
@@ -162,22 +169,19 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":155,"results":[{"key":"e21440ee-0b58-4cfd-b763-5323cbe96ac8","code":"UAA:Ento","name":"University
-        of Alaska Anchorage Insect Specimens (Arctos)","description":"The UAA Entomology
-        Collection includes approximately 5,000 specimens with a focus on pollinating
-        and aquatics insects of Alaska. Collections are managed under the Alaska Center
-        for Conservation Science, a research center within the University of Alaska
-        Anchorage. The collection officially joined the Arctos community in 2023.
-        The UAA Entomology collection is the primary repository of vouchers from the
-        Alaska Bee Atlas and aquatic insects originate from stream ecology studies
-        conducted by the Alaska Center for Conservation Science.","contentTypes":[],"active":true,"personalCollection":false,"email":[],"phone":[],"homepage":"https://arctos.database.museum/collection/UAA:Ento","catalogUrls":[],"apiUrls":[],"preservationTypes":["SamplePinned"],"institutionKey":"15e46ee2-f3b2-4723-a0e9-def248a239f8","mailingAddress":{"key":47981,"province":"Alaska"},"address":{"key":47980,"address":"3211
-        Providence Dr","city":"Anchorage","province":"AK","postalCode":"99508","country":"US"},"createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2023-10-09T06:59:13.816+00:00","modified":"2024-06-04T17:34:59.565+00:00","tags":[],"identifiers":[{"key":356526,"type":"DOI","identifier":"10.15468/ahk383","createdBy":"mgrosjean","created":"2023-10-09T06:59:23.626+00:00","primary":false}],"contactPersons":[{"key":36769,"firstName":"Justin","lastName":"Fulkerson","position":["Botany
-        Curator"],"phone":[],"fax":[],"email":["jrfulkerson@alaska.edu"],"address":[],"primary":true,"taxonomicExpertise":[],"userIds":[{"type":"ORCID","id":"http://orcid.org/0000-0003-2666-9979"}],"createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2023-10-09T06:59:23.626+00:00","modified":"2023-10-09T06:59:23.626+00:00"},{"key":36770,"firstName":"Matthew","lastName":"Carlson","position":["Curator"],"phone":[],"fax":[],"email":["mlcarlson@alaska.edu"],"address":["3211
-        Providence Dr"],"city":"Anchorage","province":"AK","country":"US","postalCode":"99508","primary":false,"taxonomicExpertise":[],"userIds":[],"createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2023-10-09T06:59:23.626+00:00","modified":"2023-10-09T06:59:23.626+00:00"},{"key":36771,"firstName":"Justin","lastName":"Fulkerson","position":["Collections
-        Manager"],"phone":[],"fax":[],"email":["jrfulkerson@alaska.edu"],"address":["3211
-        Providence Drive"],"city":"Anchorage","province":"Alaska","country":"US","postalCode":"99508","primary":true,"taxonomicExpertise":[],"userIds":[{"type":"ORCID","id":"http://orcid.org/0000-0003-2666-9979"}],"createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2023-10-09T06:59:23.626+00:00","modified":"2023-10-09T06:59:23.626+00:00"}],"machineTags":[],"taxonomicCoverage":"Pollinating
-        and aquatic insects: Insecta, Insects","geographicCoverage":"Alaska, USA","incorporatedCollections":["University
-        of Alaska Anchorage Entomology Collection"],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GBIF_REGISTRY","masterSourceMetadata":{"key":9304,"source":"DATASET","sourceId":"3658ba15-172d-459c-94ab-d565f6550dad","createdBy":"mgrosjean","created":"2023-10-09T06:59:23.626+00:00"},"displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"institutionName":"Alaska
-        Center for Conservation Science","institutionCode":"UAA"}]}'
-  recorded_at: 2025-11-13 08:03:33
+      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":163,"results":[{"key":"ddfcd903-0d30-4d66-abb1-9a170b877391","code":"UMMZ-Insects","name":"University
+        of Michigan Museum of Zoology, Insects Collection","description":"The University
+        of Michigan Museum of Zoology Insect Collection (UMMZI) endeavors to document
+        Earth’s incredibly diverse world of insects. We actively conduct research,
+        grow the collection, and facilitate entomological research of scientists from
+        our own and other institutions with the goal of discovery and understanding
+        of the organisms that live around us. The University of Michigan Museum of
+        Zoology Insect Collection currently houses approximately 4.5 million prepared
+        insect specimens from around the world as well as hundreds of historical field
+        notebooks and audio recordings related to specimens in the collection.","contentTypes":[],"active":true,"personalCollection":false,"email":[],"phone":[],"homepage":"https://lsa.umich.edu/ummz/insects.html","catalogUrls":["https://lsa.umich.edu/ummz/insects/collections/databases.html"],"apiUrls":[],"preservationTypes":[],"institutionKey":"2a508411-2acd-45df-8a8b-00094ac65f87","mailingAddress":{"key":41306,"address":"3600
+        Varsity Drive","city":"Ann Arbor","province":"Michigan","postalCode":"48108","country":"US"},"address":{"key":41305,"address":"3600
+        Varsity Drive","city":"Ann Arbor","province":"Michigan","postalCode":"48108","country":"US"},"createdBy":"iDigBio-import","modifiedBy":"gholman","created":"2020-11-09T13:22:12.134+00:00","modified":"2026-07-14T20:30:34.238+00:00","tags":[],"identifiers":[{"key":247609,"type":"UUID","identifier":"urn:uuid:f64ac2f3-e73a-4d36-b857-aff7ee422d7c","createdBy":"iDigBio-import","created":"2020-11-09T13:22:12.134+00:00","primary":false}],"contactPersons":[{"key":17851,"firstName":"Lacey
+        Knowles","position":["Curator"],"phone":[],"fax":[],"email":["knowlesl@umich.edu"],"address":[],"primary":false,"taxonomicExpertise":[],"userIds":[],"createdBy":"gbif-collections","modifiedBy":"gbif-collections","created":"2021-10-28T12:13:25.082+00:00","modified":"2021-10-28T12:13:25.082+00:00"}],"numberSpecimens":4500000,"machineTags":[{"key":7042955,"namespace":"iDigBio.org","name":"recordsets","value":"a47eacbb-22d0-4a8b-8853-989b26fd8290","createdBy":"iDigBio-import","created":"2020-11-09T13:22:12.134+00:00"},{"key":7042956,"namespace":"iDigBio.org","name":"recordsetQuery","value":"{\"recordset\":\"a47eacbb-22d0-4a8b-8853-989b26fd8290\"}","createdBy":"iDigBio-import","created":"2020-11-09T13:22:12.134+00:00"},{"key":7042957,"namespace":"iDigBio.org","name":"CollectionUUID","value":"urn:uuid:f64ac2f3-e73a-4d36-b857-aff7ee422d7c","createdBy":"iDigBio-import","created":"2020-11-09T13:22:12.134+00:00"}],"incorporatedCollections":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":424539,"typeSpecimenCount":6659,"institutionName":"University
+        of Michigan Museum of Zoology","institutionCode":"UMMZ"}]}'
+  recorded_at: 2026-08-13 11:55:55
 recorded_with: VCR-vcr/2.0.0

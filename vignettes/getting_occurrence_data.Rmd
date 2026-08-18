@@ -14,6 +14,8 @@ There are two ways to get occurrence data from GBIF:
 1.  [occ_download()](https://docs.ropensci.org/rgbif/reference/occ_download.html): unlimited records. Useful for research and citation.
 2.  [occ_search()](https://docs.ropensci.org/rgbif/reference/occ_search.html): limited to 100K records. Useful primarily for testing.
 
+For users interested in aggregating occurrence data or selecting specific columns, see the [GBIF SQL Downloads](https://docs.ropensci.org/rgbif/articles/gbif_sql_downloads.html) vignette.
+
 The function `occ_search()` (and related function `occ_data()`) **should not** be used for serious research. Users sometimes find it easier to use `occ_search()` rather than `occ_download()` because they do not need to supply a username or password, and also do not need to wait for a download to finish. However, any serious research project should always use `occ_download()` instead.
 
 ## occ_download()
@@ -41,21 +43,23 @@ The main functions related to downloads are:
 
 To make a download request, `occ_download()` uses [helper functions](https://docs.ropensci.org/rgbif/reference/download_predicate_dsl.html) starting with **pred**. These functions **define filters** on the large GBIF occurrence table, so that only a usable subset is returned. The predicate functions are named for the 'type' of operation they do, following the terminology [used by GBIF](https://www.gbif.org/developer/occurrence#predicates).
 
+**Note:** By default, **rgbif** now uses the COL (Catalogue of Life) Extended Release taxonomy, which returns alpha-numeric taxon keys (e.g., "Q2M4"). The examples below use these alpha-numeric keys.
+
 | function         | description                           | example                                                         |
 |:------------------------|:------------------------|:---------------------|
-| `pred()`         | key is equal to value                 | `pred("taxonKey",212)`                                          |
+| `pred()`         | key is equal to value                 | `pred("taxonKey","Q2M4")`                                       |
 | `pred_lt()`      | key is less than value.               | `pred_lt("coordinateUncertaintyInMeters",5000)`                 |
 | `pred_lte()`     | key is less than or equal to value    | `pred_lte("year", 1900)`                                        |
 | `pred_gt()`      | key is greater than value             | `pred_gt("elevation", 1000)`                                    |
 | `pred_gte()`     | key is greater than or equal to value | `pred_gte("depth", 1000)`                                       |
-| `pred_not()`     | key is not value                      | `pred_not("taxonKey",212)`                                      |
+| `pred_not()`     | key is not value                      | `pred_not("taxonKey","Q2M4")`                                   |
 | `pred_like()`    | key like pattern                      | `pred_like("catalogNumber","PAPS5-560*")`                       |
 | `pred_within()`  | lat-lon values within WKT polygon     | `pred_within('POLYGON((-14 42, 9 38, -7 26, -14 42))')`         |
 | `pred_notnull()` | column is not NULL                    | `pred_notnull("establishmentMeans")`                            |
 | `pred_isnull()`  | column is NULL                        | `pred_isnull("recordedBy")`                                     |
-| `pred_and()`     | a logical and of predicate functions  | `pred_and(pred_lte("elevation",5000),pred("taxonKey",212))`     |
+| `pred_and()`     | a logical and of predicate functions  | `pred_and(pred_lte("elevation",5000),pred("taxonKey","Q2M4"))`  |
 | `pred_or()`      | a logical or of predicate functions   | `pred_or(pred_gt("elevation", 1000), pred_isnull("elevation"))` |
-| `pred_in()`      | values are in the column              | `pred_in("taxonKey",c(2977832,2977901,2977966))`                |
+| `pred_in()`      | values are in the column              | `pred_in("taxonKey",c("Q2M4","9WLSS","Q2N2"))`                  |
 
 **Note on license values:** When filtering by license, use underscores instead of spaces (e.g., `"CC_BY_4_0"` not `"CC BY 4.0"`). Valid license values include `"CC_BY_4_0"`, `"CC_BY_NC_4_0"`, `"CC0_1_0"`.
 
@@ -63,11 +67,12 @@ To make a download request, `occ_download()` uses [helper functions](https://doc
 
 It is required to set up your **GBIF credentials** to make downloads from GBIF. I suggest that you follow this [short tutorial](https://docs.ropensci.org/rgbif/articles/gbif_credentials.html) before continuing.
 
-The following will download all occurrences of *Lepus saxatilis*. You can use `name_backbone("Lepus saxatilis")` to find the taxonKey (usageKey).
+The following will download all occurrences of *Calopteryx splendens*. You can use `name_backbone("Calopteryx splendens")` to find the taxonKey (usageKey), which returns "Q2M4" with COL XR.
 
 ``` r
 # remember to set up your GBIF credentials
-occ_download(pred("taxonKey", 2436775),format = "SIMPLE_CSV")
+# Uses COL (Catalogue of Life) Extended Release by default
+occ_download(pred("taxonKey", "Q2M4"),format = "SIMPLE_CSV")
 ```
 
     <<gbif download>>
@@ -109,7 +114,8 @@ d <- occ_download_get('0079311-210914110416597') %>%
 It is also possible save your download into an object and pass that into `occ_download_get()`.
 
 ``` r
-gbif_download <- occ_download(pred("taxonKey", 2436775),format = "SIMPLE_CSV")
+# Uses COL XR alpha-numeric key "Q2M4" for Calopteryx splendens
+gbif_download <- occ_download(pred("taxonKey", "Q2M4"),format = "SIMPLE_CSV")
 
 occ_download_wait(gbif_download)
 
@@ -139,7 +145,7 @@ pred("hasGeospatialIssue", FALSE),
 pred("hasCoordinate", TRUE),
 pred("occurrenceStatus","PRESENT"), 
 pred_not(pred_in("basisOfRecord",c("FOSSIL_SPECIMEN","LIVING_SPECIMEN"))),
-pred("taxonKey", 2436775),
+pred("taxonKey", "Q2M4"), # COL XR alpha-numeric key for Calopteryx splendens
 format = "SIMPLE_CSV"
 )
 ```
@@ -150,7 +156,7 @@ This download will ...
 -   Keep only records with coordinates.
 -   Remove absent records.
 -   Remove fossils and living specimens
--   Retrieve all *Lepus saxatilis*.
+-   Retrieve all *Calopteryx splendens*.
 
 
 The code above is commonly used, but pretty long. This is why `pred_default()` was created. 
@@ -159,7 +165,7 @@ The code above is commonly used, but pretty long. This is why `pred_default()` w
 # shorter equivalent to download above
 occ_download(
 pred_default(), 
-pred("taxonKey", 2436775), 
+pred("taxonKey", "Q2M4"), # COL XR alpha-numeric key
 format = "SIMPLE_CSV"
 )
 ```
@@ -171,14 +177,14 @@ If you want to download only records with specific licenses, use `pred()` or `pr
 ``` r
 # Download records with CC_BY_4_0 license only
 occ_download(
-pred("taxonKey", 2436775), 
+pred("taxonKey", "Q2M4"), # COL XR alpha-numeric key
 pred("license", "CC_BY_4_0"),
 format = "SIMPLE_CSV"
 )
 
 # Download records with multiple acceptable licenses
 occ_download(
-pred("taxonKey", 2436775), 
+pred("taxonKey", "6Q225"), 
 pred_in("license", c("CC_BY_4_0", "CC_BY_NC_4_0", "CC0_1_0")),
 format = "SIMPLE_CSV"
 )
@@ -214,7 +220,7 @@ Here I make an overly complex download to highlight some of the capabilities of 
 ``` r
 occ_download(
 type="and",
-    pred("taxonKey", 2436775),
+    pred("taxonKey", "Q2M4"), # COL XR alpha-numeric key for Calopteryx splendens
     pred("hasGeospatialIssue", FALSE),
     pred("hasCoordinate", TRUE),
     pred("occurrenceStatus","PRESENT"), 
@@ -238,7 +244,7 @@ format = "SIMPLE_CSV"
 
 This download will ...
 
--   `pred("taxonKey", 2436775)` : all *Lepus saxatilis* records
+-   `pred("taxonKey", "Q2M4")` : all *Calopteryx splendens* records
 -   `pred("hasGeospatialIssue", FALSE)` : remove default geospatial issues.
 -   `pred("hasCoordinate", TRUE)` : keep only records with coordinates.
 -   `pred("occurrenceStatus","PRESENT")` : remove absent records.
@@ -251,11 +257,14 @@ This download will ...
 
 ## Not Downloads
 
-Another sometimes useful pattern is **downloading all occurrences except some group**. Birds make up a [large portion](https://www.gbif.org/occurrence/taxonomy) of GBIF occurrences. If you wanted to download everything but birds, you could use `pred_not()`.
+Another sometimes useful pattern is **downloading all occurrences except some group**. Birds make up a [large portion](https://www.gbif.org/occurrence/taxonomy) of GBIF occurrences. If you wanted to download everything but birds, you could use `pred_not()`. (Note: for GBIF Backbone numeric keys, you would need to set `checklistKey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"`)
 
 ``` r
-# name_backbone("Aves")
-occ_download(pred_not("taxonKey", 212),format = "SIMPLE_CSV")
+# Get COL XR alpha-numeric key for birds (class Aves)
+# bird_key <- name_backbone("Aves")$usageKey
+# occ_download(pred_not("taxonKey", bird_key),format = "SIMPLE_CSV")
+# Example with Insecta (key "Q3F")
+occ_download(pred_not("taxonKey", "Q3F"),format = "SIMPLE_CSV") # Exclude all Insecta
 ```
 
 ## Big Polygon Downloads
@@ -302,7 +311,7 @@ GBIF now allows users to download DWCA extensions. These tables are combined and
 
 ```r
 occ_download(
-  pred("taxonKey",22),
+  pred("taxonKey", "B8V3M"),
   format = "DWCA",
   verbatim_extensions = "http://rs.tdwg.org/dwc/terms/MeasurementOrFact"
 )
@@ -310,22 +319,30 @@ occ_download(
 
 To view all of the available extensions use `rgbif::occ_download_describe("dwca")$verbatimExtensions`.
 
-## Downloading using an alternative taxonomy 
+## Downloading using different taxonomies
 
-GBIF now allows users to download occurrences using an alternative taxonomy. This is done using the `checklistKey` parameter. Currently, you can only choose between two taxonomies:
+**rgbif** now uses the **Catalogue of Life Extended Release (COL XR)** as the default taxonomy, which returns alpha-numeric taxon keys. To use the original **GBIF Backbone Taxonomy** instead, explicitly set `checklistKey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"`.
 
--   GBIF Backbone Taxonomy (default)
--   Catalogue of Life XR (7ddf754f-d193-4cc9-b351-99906754a03b)
-
-You need to also use the corresponding taxonKey from the alternative taxonomy. You can find these keys using `name_backbone()` with the `checklistKey` parameter.
+You need to use the corresponding taxonKey from the chosen taxonomy. You can find these keys using `name_backbone()` with the appropriate `checklistKey` parameter.
 
 ```r
-name_backbone("Calopteryx splendens", checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b")$usageKey
+# COL XR (default) - returns alpha-numeric keys
+name_backbone("Calopteryx splendens")$usageKey
 # "Q2M4"
 
 occ_download(
-  pred("taxonKey", "Q2M4",
-  checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b"),
+  pred("taxonKey", "Q2M4"),  # COL XR is now the default
+  format = "SIMPLE_CSV"
+)
+
+# GBIF Backbone Taxonomy - returns numeric keys
+backbone_uuid <- "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+name_backbone("Calopteryx splendens", checklistKey = backbone_uuid)$usageKey
+# 4DXXM
+
+occ_download(
+  pred("taxonKey", "4DXXM"),  
+  checklistKey = backbone_uuid,  # Use GBIF Backbone
   format = "SIMPLE_CSV"
 )
 ```

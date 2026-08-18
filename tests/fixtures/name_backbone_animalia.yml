@@ -1,0 +1,13 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.gbif.org/v2/species/match?scientificName=Animalia&verbose=FALSE&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      string: '{"usage":{"key":"N","name":"Animalia","canonicalName":"Animalia","rank":"KINGDOM","status":"ACCEPTED","type":"SCIENTIFIC","formattedName":"<i>Animalia</i>"},"classification":[{"key":"CS5HF","name":"Eukaryota","rank":"DOMAIN"},{"key":"N","name":"Animalia","rank":"KINGDOM"}],"diagnostics":{"matchType":"EXACT","confidence":94,"timeTaken":3,"timings":{"nameNRank":0,"sciNameMatch":3,"nameParse":0,"luceneMatch":3}},"synonym":false,"left":54014,"right":358148}'
+  recorded_at: 2026-08-13 12:22:48
+recorded_with: VCR-vcr/2.0.0

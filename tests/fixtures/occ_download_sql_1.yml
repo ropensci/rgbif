@@ -14,7 +14,7 @@ http_interactions:
     body:
       string: '{"sql":"SELECT\n  gbifid,\n  countrycode\nFROM\n  occurrence\nWHERE\n  CAST(occurrence.genuskey
         AS INTEGER) = 2435098","notificationAddresses":["<gbif_user>@gbif.org"],"sendNotification":false,"format":"SQL_TSV_ZIP","type":"OCCURRENCE"}'
-  recorded_at: 2025-11-12 10:47:46
+  recorded_at: 2026-08-14 12:45:22
 - request:
     method: POST
     uri: https://api.gbif.org/v1/occurrence/download/request
@@ -28,18 +28,18 @@ http_interactions:
       content-type: application/json
       content-encoding: gzip
     body:
-      string: 0028637-251025141854904
-  recorded_at: 2025-11-12 10:47:48
+      string: 0015458-260806074905277
+  recorded_at: 2026-08-14 12:45:24
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0028637-251025141854904
+    uri: https://api.gbif.org/v1/occurrence/download/0015458-260806074905277
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0028637-251025141854904","license":"unspecified","request":{"sql":"SELECT
-        gbifid,countryCode FROM occurrence WHERE genusKey = 2435098","sendNotification":false,"format":"SQL_TSV_ZIP","type":"OCCURRENCE"},"created":"2025-11-12T10:47:48.940+00:00","modified":"2025-11-12T10:47:48.940+00:00","eraseAfter":"2026-05-12T10:47:48.914+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0028637-251025141854904.zip","size":0,"totalRecords":0,"numberDatasets":0}'
-  recorded_at: 2025-11-12 10:47:48
+      string: '{"key":"0015458-260806074905277","license":"unspecified","request":{"sql":"SELECT
+        gbifid,countryCode FROM occurrence WHERE genusKey = 2435098","sendNotification":false,"format":"SQL_TSV_ZIP","type":"OCCURRENCE"},"created":"2026-08-14T12:45:25.005+00:00","modified":"2026-08-14T12:45:25.005+00:00","eraseAfter":"2027-02-14T12:45:24.976+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0015458-260806074905277.zip","size":0,"totalRecords":0,"numberDatasets":0}'
+  recorded_at: 2026-08-14 12:45:24
 recorded_with: VCR-vcr/2.0.0

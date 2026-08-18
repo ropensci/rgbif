@@ -1,0 +1,43 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://api.gbif.org/v1/dataset/search?limit=1&taxonKey=212
+  response:
+    status: 200
+    headers:
+      status: HTTP/1.1 200 OK
+      content-type: application/json
+    body:
+      raw_gzip: |-
+        eJzlVV+L3DYQ/yqDC6Wltlf+s+tdN6Rc7pbkyF0vXDaUUkKRpfGuGllyJe1e7kI+TJ5DnvLY
+        t9wX62j
+        32uQhFFr6UgrGjOeffprxb+ZVYvveY0haliZaDYqkIk3QyIv+EoV10idtz7XHNBF2
+        a6K5TBOHfqsDmX
+        56lbzA66RNSiZrLucyE6LBrO6qPlt0hcjm07KbTrtiuugxSZOggkZyv0Rv
+        9Vao2/cGJEJZxrdUQuHQO
+        dyrWFmmUdAcTpRDcXB+iAYd19FwzLWSXMI1LHdcb/nB4WjoFJrA
+        dQqjdTH61y2CR+itG7b0SY9Eobnj
+        fx6vhpGLYIH/EUtKDaOz1xjVH97CE81JTzmC3VkduBIc
+        NrfvOkcI4Jz/QiFHmlwpWV2lUzj/wQCaeBZ
+        l2SkjVDwVHm1R7zh8+C2nWkirqBIFy4tpPZtP
+        6s1VN59GPXrh1BiUNWS/N95fbZQHyQOnRoGwBEQZD2
+        ETK7ZWQd2ghOCQh4HAe1Amwr1R0FGA
+        BGv2rtaRryGcnbUvQGz4GNDBuTLKk6AsPKGKwBmHlePGq0Ntl
+        sLq2/freNsfYanhEumOJzjY
+        tbt90yth4avYp69b+N83FE5NC1VR5fB0pP608MBqDLfvDFxQodQdhKUP
+        XNoWiqwsUji5OCWR
+        5dNyXkxu0Fhp87KomwVbUKmeXZ61sAlh9O1kcnV1lXcWc/QTqTj162f6moSXIR8
+        343dKfvnF
+        rPj2wcUyO8piobOyrll9bzLep//nU/k/1qd/tU3UpViFOIauxziFjh8tjx+fnT5dkWpjfV
+        Bm
+        feHW3KgbHtn3eD/ZGoFzjj3LFrgos6KQNNSaap51c84qMWV8Pis/H7+6G3Z7NubWrSHwl9bY
+        QYlP
+        +RqZHan6MclxnLTueo+QtOO208pv/srwj2F/PsXfR77PI/bBJzzgfiPQb1iUWcVWRdky
+        Rk/OGPtmL1H
+        EYKXqFcqD6yxjDXFixZqW1W0xy6vqoyutI+s8YfzeSjxcr+871nQoslIWLKsX
+        pcwWomqyalb0yLpmUZ
+        dNEleaQOMjnEgk4pGI6NWOVtswWOPj3SYH7NIOxFuiobOTImcTjWuu
+        BR2YxH0XV+Hx3QKs08TwAZ95v
+        kZ/p1w0r5+nSc8F7tfi89e/AwVrf6c=
+  recorded_at: 2026-08-13 12:10:19
+recorded_with: VCR-vcr/2.0.0

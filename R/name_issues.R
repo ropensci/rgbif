@@ -1,5 +1,10 @@
 #' Parse and examine further GBIF name issues on a dataset.
 #'
+#' @section Deprecation Notice:
+#' **This function is deprecated.** It depends on [name_usage()] which only
+#' works with the GBIF Backbone Taxonomy. Use `rcol::col_usage()` from the
+#' rcol package to parse and examine name issues with COL XR support.
+#'
 #' @export
 #'
 #' @param .data Output from a call to [name_usage()]
@@ -47,6 +52,8 @@
 #' }
 
 name_issues <- function(.data, ..., mutate = NULL) {
+
+  warning("name_issues() is deprecated because it depends on name_usage(), which only works with the out-of-date GBIF Backbone Taxonomy and does not support COL (Catalogue of Life) Extended Release.", call. = FALSE)
 
   assert(.data, c("gbif", "gbif_data", "data.frame", "tbl_df"))
 

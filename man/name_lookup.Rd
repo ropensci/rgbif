@@ -182,6 +182,13 @@ Faceting: If \code{facet=FALSE} or left to the default (NULL), no faceting
 is done. And therefore, all parameters with facet in their name are
 ignored (facetOnly, facetMincount, facetMultiselect).
 }
+\section{Deprecation Notice}{
+
+\strong{This function is deprecated.} It only works with the GBIF Backbone
+Taxonomy and does not support COL (Catalogue of Life) Extended Release.
+Use \code{rcol::col_search()} from the rcol package instead for COL XR support.
+}
+
 \section{Repeat parameter inputs}{
 
 Some parameters can take many inputs, and treated as 'OR' (e.g., a or b or

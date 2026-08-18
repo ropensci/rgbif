@@ -1,3 +1,4 @@
+# testthat::test_file("tests/testthat/test-lit_search.R")
 context("lit_search")
 
 test_that("lit_search works as expected", {

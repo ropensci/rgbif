@@ -23,11 +23,15 @@ reference:
       - occ_search
       - occ_count
       - occ_count_
+      - occ_term
   - title: "Taxonomic names"
     desc: >
       Work with the GBIF taxonomic names API <https://www.gbif.org/developer/species>
     contents:
-      - starts_with("name_")
+      - name_backbone
+      - name_backbone_checklist
+      - name_parse
+      - gbif_to_col
   - title: "Citation"
     desc: >
       <https://docs.ropensci.org/rgbif/articles/gbif_citations.html>
@@ -80,8 +84,12 @@ reference:
     contents:
       - gbif_names
       - gbif_photos
-  - title: "Defunct functions"
+  - title: "Defunct and deprecated"
     contents:
+      - name_lookup
+      - name_suggest
+      - name_usage
+      - name_issues
       - datasets
       - rgbif-defunct
       - parsenames
@@ -89,6 +97,32 @@ reference:
       - count_facet
       - occ_facet
       - occ_issues
+
+articles:
+  - title: "Getting Started"
+    navbar: ~
+    contents:
+      - rgbif
+      - col_migration_guide
+  - title: "Taxonomic Names"
+    contents:
+      - taxonomic_names
+  - title: "Occurrences"
+    contents:
+      - getting_occurrence_data
+      - effectively_using_occ_search
+      - occ_counts
+      - downloading_a_long_species_list
+      - gbif_sql_downloads
+  - title: "Maps and Visualization"
+    contents:
+      - creating_maps_from_occurrences
+  - title: "Other Topics"
+    contents:
+      - gbif_citations
+      - gbif_credentials
+      - getting_dataset_info
+      - multiple_values
 
 development:
   mode: auto

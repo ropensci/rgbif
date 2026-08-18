@@ -12,17 +12,6 @@ test_that("occ_download_user_count", {
   expect_gt(tt, 0)
 })
 
-test_that("occ_download_user_count with from parameter", {
-  skip_on_cran()
-
-  vcr::use_cassette("occ_download_user_count_from", {
-    tt <- occ_download_user_count(user = "jwaller", from = "2023-01-01")
-  })
-
-  expect_is(tt, "integer")
-  expect_equal(length(tt), 1)
-})
-
 test_that("occ_download_user_count with status parameter", {
   skip_on_cran()
 

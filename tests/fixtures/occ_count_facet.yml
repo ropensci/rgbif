@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/search?limit=0&offset=0&facet=year&facetLimit=
+    uri: https://api.gbif.org/v1/occurrence/search?limit=0&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&facet=year&facetLimit=
   response:
     status: 200
     headers:
@@ -11,17 +11,17 @@ http_interactions:
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJxdzj1rwzAQBuD/crOH+5BOOm8dOgeylZLB2BIYHBviZAr57xVNwVK55eB97uMJW857ukOP
-        HSzzdX5
-        3aZ1O+ZzG7Tbt0Odh2VMH4/ZYSywaXORAXNwt7Y/lXsj3pYM8jOm3f0Ke0zJBD1+f
-        H2f4m3wn63BNJW
-        BkB8dKVlJyhq+uFlILUWWP1Ao+BAfznoxdK6gSKhGVg28FVkJQSBSlEWSV
-        wPKrp9heoXgICk59FLFWh
-        EooRfVmoRVaCVEzof9/+EpQDOzUyetS6geXCn4i
-  recorded_at: 2025-11-13 08:08:35
+        eJxdz7GKwzAMBuB30exBki1bztah80G34+gQEhsCaQJNO5W++5nrQeygRfB/EtIL1py39IAO
+        DczTbfp
+        0aRm/8iUN633coMv9vCUDw/pcSmwjCpNTJQP3tD3nRyE/VwO5H9Jf/4I8pXmEDr7P
+        pwv8T36Spb+lEj
+        Cyg32lVbEx2PA2tbC1sCjWB98K3gVHEkVH1AqqROAYJOhBYCVsKFcQSSMo
+        VoJIWVEOQndBiqqC4SBCJ
+        Xz0zqNt7yBfCSnfoPPttySVYI7sPOn7WuoXtax+Mw==
+  recorded_at: 2026-08-13 12:24:55
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facet=year&facetLimit=&year=2000%2C2003&taxonKey=212
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&checklistKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c&facet=year&facetLimit=&year=2000%2C2003&taxonKey=212
   response:
     status: 200
     headers:
@@ -31,15 +31,15 @@ http_interactions:
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJxVzDELgzAQBeD/cnOG85pE49ahs+BWikPQCwgxAaOT+N8bammVWx68790G0bnEC9QowI/T
-        eCQOQ+N
-        a7uM8JKid9YkF9HENuZZkKkVKC5g5rX7J4NUJcLbnT97AjewHqOH5uLfw3R1NsBPn
-        ghBv8HtYEJZSS7
-        OLM6ATwBIRjbyC4gwkStLFFeAfmAo1Kdq7fG8U1EbR
-  recorded_at: 2025-11-13 08:08:35
+        eJxdjDELgzAQhf/LzRnO0xjj1qGz4FaKg8QLCDEBo5P43xtqKWm55R3f994BwdrIG7QowM3L
+        fCX2U2d
+        7NmGdIrR2dJEFmLD7hKuyqnSBUsDKcXdbEp6DADsafucD7MxughYe91sPn95F/Lhw
+        AoRYwnewSK+uGz
+        pFLlAmYFMqTfWvUOSCpEbS3wLmAirSSp5DuhdVmkcG
+  recorded_at: 2026-08-13 12:24:56
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facet=country&facetLimit=2
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&facet=country&facetLimit=2
   response:
     status: 200
     headers:
@@ -49,15 +49,15 @@ http_interactions:
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJxFjLEKgzAURf/lzRnMixrJVtwr2DqU4hCSFwjECEYn8d8barHc5cI59+4wO5doBVUwCH7y
-        Z6NoO9e
-        TmRebQDkdEjEw8xYzFlWNBQpssrdQ2sKalffIwGlD376D8xQsKGi74f7sX/AbnzDq
-        iTIbHnB9cqxKrH
-        gt8WCX0N7+AnLRoCyFPMacD0fhNzQ=
-  recorded_at: 2025-11-13 08:08:36
+        eJxFjLEKgzAYhN/l5gwxGmLcSvcK2gylOIT4B4SoYHQS372hFsstB993t2P2PtKKijOEYRzO
+        RlNf+4b
+        cvPQRlbchEoObtynhXCmdcVHonGGhuIU1Ke+OwVtH377DDxR6VLjX5vFsXviNTzjZ
+        kRIzLa7PTChV5E
+        pLfbBLuJm/IKQsOZelOrqUD1O7N2o=
+  recorded_at: 2026-08-13 12:24:58
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/search?limit=0&offset=0&facet=occurrenceStatus&facetLimit=
+    uri: https://api.gbif.org/v1/occurrence/search?limit=0&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&facet=occurrenceStatus&facetLimit=
   response:
     status: 200
     headers:
@@ -67,49 +67,49 @@ http_interactions:
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJxVzc0KgzAQBOB32XMOMfEneLOSq5aopyIlxA0IUcHoSXz3hlpayl4G5mP2gMVajxvklIAb
-        p/FKOA+
-        1VWiWdfCQW+08EjDLPoeap1ksWBax4Fb0u9sCefQErDb4zgfYEd0AOdRl2Sklq1I+
-        m7ZouwY+Mxeb9Y
-        RB3ZVsZNXC70WSMso4E/QkX1Xc/lEUhZ6LmJ59uBepuTzZ
-  recorded_at: 2025-11-13 08:08:37
+        eJxVzTELgzAQBeD/cnOGqFETNytZtUSdihTRCwSigtFJ/O8NtbSUWx68j3cHLFo73CCjBKyZ
+        zJVwHiu
+        tcFjW0UGme+uQwLDss68jQeOQMx5yAiu63W6ePDoCuh/wnQ/QBu0IGVRF0Soly0I+
+        6yZv2ho+Mxeb+w
+        m9uitZy7KB34s0FQGjPKYn+ar89o+CMAlYJJg4O38vsWA8+w==
+  recorded_at: 2026-08-13 12:25:00
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facet=basisOfRecord&facetLimit=&organismQuantity=5&basisOfRecord=MATERIAL_SAMPLE
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&facet=basisOfRecord&facetLimit=&organismQuantity=5&basisOfRecord=MATERIAL_SAMPLE
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '18'
+      x-varnish-rli: '17'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSJoZmxhaW
-        QEVFqcW
-        lOSVA+ehYHaW0xORUMLtaKS0zNSdFyUrJyTHYMzje3y0+yNXZP8hFCWoCRFFeYm4q
-        UI2vY4hrkKejT3
-        ywo2+Aj6sSui21sUAIAPnMM3U=
-  recorded_at: 2025-11-13 08:08:37
+        eJxdjbEKwyAURf/lzQ4d2oa42dZCIMGi3UoQ0ScIRiEmU+i/V5pO5S4H7uHeDbL3BRegBwIx
+        TGEnTE5
+        4iTbPrgD1JhYkYPOaan0+tU17bAjMWNa41P41EvDG4pc38AGjAwoXpjqlxV1LfhXy
+        Br+FXUpmwuoM7M
+        llx3qt2PDoOfy/vMeaDwFlM5U=
+  recorded_at: 2026-08-13 12:25:00
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&facet=coordinateUncertaintyInMeters&facetLimit=&verbatimScientificName=Calopteryx+splendens
+    uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&facet=coordinateUncertaintyInMeters&facetLimit=&verbatimScientificName=Calopteryx+splendens
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '18'
+      x-varnish-rli: '17'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJxdz8GKgzAQBuB3mXOQmZhk1FvpevCwCq57WJYiogkIVqG2p9J3X9kuNVlyGfjy58/cYXFu
-        tVfIUMA
-        0nsfnZOehcrXtl8uwQua6abUC+uU2b6zQaJ0KuNj1Nl03/j4JcF1vf+c7uNFOA2Rw
-        rKr6rSgPTd5+ls
-        e8bg5F2Xy1Rdm+501ef8Dfi8/U3J3tFtKIGCG8yoi0NvwQrwuMEe9skkSb
-        QDminWPJSvrso6Qk9bNSh
-        81GxirgQCUp7WmIJDnxkP7thJr9YlKkIrk7q5jCncj/N6NMH6ft
-        /AC+GX7c
-  recorded_at: 2025-11-13 08:08:38
+        eJxdz8GKgzAQBuB3mXOQTJJxqrfS9eBhFVz3sCxFRBMQrEJtT6XvXmmXmiy5DHz5509uMDu3
+        2AukUsA
+        4nIbXZKe+dJXt5nO/QOracbECuvk6rWwME2oBZ7tcx8vKv0cBru3sc76BG+zYQwqH
+        sqw+8mJfZ813cc
+        iqep8X9U+TF81nVmfVF/xtfKWm9mTXEEkpIwnvMlQGZXIX7wssI96YFbEK
+        lCPcWBNh7LOPyuxif7Ois
+        JkS9JnCZxFTkA1VK78W//1JojY+GzSR2jxBjR4bP8s7ju/H9TwA
+        OUt+OA==
+  recorded_at: 2026-08-13 12:25:01
 recorded_with: VCR-vcr/2.0.0

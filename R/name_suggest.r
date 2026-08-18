@@ -1,5 +1,10 @@
 #' Suggest up to 20 name usages.
 #'
+#' @section Deprecation Notice:
+#' **This function is deprecated.** It only works with the GBIF Backbone
+#' Taxonomy and does not support COL (Catalogue of Life) Extended Release.
+#' Use `rcol::col_suggest()` from the rcol package instead for COL XR support.
+#'
 #' A quick and simple autocomplete service that returns up to 20 name
 #' usages by doing prefix matching against the scientific name. Results
 #' are ordered by relevance.
@@ -63,6 +68,10 @@
 name_suggest <- function(q=NULL, datasetKey=NULL, rank=NULL, fields=NULL,
                          start=NULL, limit=100, 
                          curlopts = list(http_version = 2)) {
+  
+  if (is.null(datasetKey)) {
+    warning("name_suggest() works by default with the out-of-date GBIF Backbone Taxonomy. Consider using rcol::col_suggest() instead.", call. = FALSE)
+  }
   
   if(limit > 100) { warning("Max limit is 100."); limit <- 100} 
   url <- paste0(gbif_base(), '/species/suggest')

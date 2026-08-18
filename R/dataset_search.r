@@ -114,13 +114,10 @@
 #' dataset_search(doi="10.15468/aomfnb;10.15468/igasai")
 #' dataset_search(installationKey = "d209e552-7e6e-4840-b13c-c0596ef36e55")
 #' dataset_search(category = "eDNA")
-#' dataset_search(continent = "EUROPE", limit = 5)
-#' dataset_search(taxonKey = 212, limit = 5)
 #' dataset_search(recordCount = "10000,100000", limit = 5)
 #' dataset_search(modifiedDate = "2020-01-01,2021-01-01", limit = 5)
 #' dataset_search(createdDate = "2015-01-01,2016-01-01", limit = 5)
-#' dataset_search(contactUserId = 123, limit = 5)
-#' dataset_search(contactEmail = "example@gbif.org", limit = 5)
+#' dataset_search(contactEmail = "helpdesk@gbif.org", limit = 5)
 #' 
 #' # multiple filters
 #' dataset_search(license = "CC0_1_0",subtype = "TAXONOMIC_AUTHORITY")
@@ -193,6 +190,16 @@ dataset_search <- function(query = NULL,
   assert(contactUserId,"numeric")
   assert(contactEmail,"character")
   assert(facet,"character")
+  
+  # Deprecation warning for taxonKey
+  if (!is.null(taxonKey)) {
+    warning("The taxonKey parameter in dataset_search() only works with the out-of-date GBIF Backbone Taxonomy and does not support COL (Catalogue of Life) Extended Release.", call. = FALSE)
+  }
+  
+  # Deprecation warning for continent
+  if (!is.null(continent)) {
+    warning("The continent parameter in dataset_search() is deprecated and may be removed in a future version.", call. = FALSE)
+  }
   
   # args with single value 
   args <- as.list(

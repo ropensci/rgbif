@@ -50,6 +50,16 @@ dataset_export <- function(query = NULL,
   assert(contactUserId,"numeric")
   assert(contactEmail,"character")
   
+  # Deprecation warning for taxonKey
+  if (!is.null(taxonKey)) {
+    warning("The taxonKey parameter in dataset_export() only works with the out-of-date GBIF Backbone Taxonomy and does not support COL (Catalogue of Life) Extended Release.", call. = FALSE)
+  }
+  
+  # Deprecation warning for continent
+  if (!is.null(continent)) {
+    warning("The continent parameter in dataset_export() is deprecated and may be removed in a future version.", call. = FALSE)
+  }
+  
   # args with single value 
   args <- rgbif_compact(list(
             format = "TSV",

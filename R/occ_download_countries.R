@@ -17,7 +17,7 @@
 #' - meta: a single row data.frame with columns: `offset`, `limit`,
 #' `endofrecords`, `count`
 #' - results: a tibble with the results, with columns: `downloadKey`,
-#' `countryCode`, `numberRecords`
+#' `publishingCountryCode`, `numberRecords`
 #' 
 #' @examples \dontrun{
 #' occ_download_countries(key="0003983-140910143529206")

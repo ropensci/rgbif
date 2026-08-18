@@ -71,8 +71,8 @@
 #' occ_search(identifiedByID="https://orcid.org/0000-0003-4710-2648", limit=20)
 #'
 #' # Pass in curl options for extra fun
-#' occ_search(taxonKey=2433407, limit=20, curlopts=list(verbose=TRUE))$hier
-#' occ_search(taxonKey=2433407, limit=20,
+#' occ_search(taxonKey="Q2M4", limit=20, curlopts=list(verbose=TRUE))$hier
+#' occ_search(taxonKey="Q2M4", limit=20,
 #'   curlopts = list(
 #'     noprogress = FALSE,
 #'     progressfunction = function(down, up) {
@@ -81,7 +81,7 @@
 #'     }
 #'   )
 #' )$hier
-#' # occ_search(taxonKey=2433407, limit=20,
+#' # occ_search(taxonKey="Q2M4", limit=20,
 #' #   curlopts = list(timeout_ms = 1))
 #'
 #' # Search for many species
@@ -219,19 +219,19 @@
 #' occ_search(phylumKey = 7707728, limit = 5)
 #'
 #' # search on kingdomKey
-#' occ_search(kingdomKey = 1, limit = 5)
+#' occ_search(kingdomKey = "N", limit = 5)
 #'
 #' # search on classKey
-#' occ_search(classKey = 216, limit = 5)
+#' occ_search(classKey = "H6", limit = 5)
 #'
 #' # search on orderKey
-#' occ_search(orderKey = 7192402, limit = 5)
+#' occ_search(orderKey = "X3", limit = 5)
 #'
 #' # search on familyKey
-#' occ_search(familyKey = 3925, limit = 5)
+#' occ_search(familyKey = "C7ZVG", limit = 5)
 #'
 #' # search on genusKey
-#' occ_search(genusKey = 1935496, limit = 5)
+#' occ_search(genusKey = "9WLSS", limit = 5)
 #'
 #' # search on establishmentMeans
 #' occ_search(establishmentMeans = "INVASIVE", limit = 5)
@@ -307,10 +307,10 @@
 #'
 #' # Query based on issues - see Details for options
 #' ## one issue
-#' occ_search(taxonKey=1, issue='DEPTH_UNLIKELY', fields =
+#' occ_search(taxonKey="N", issue='DEPTH_UNLIKELY', fields =
 #'    c('name','key','decimalLatitude','decimalLongitude','depth'))
 #' ## two issues
-#' occ_search(taxonKey=1, issue=c('DEPTH_UNLIKELY','COORDINATE_ROUNDED'))
+#' occ_search(taxonKey="N", issue=c('DEPTH_UNLIKELY','COORDINATE_ROUNDED'))
 #' # Show all records in the Arizona State Lichen Collection that cant be matched to the GBIF
 #' # backbone properly:
 #' occ_search(datasetKey='84c0e1a0-f762-11e1-a439-00145eb45e9a',
@@ -335,7 +335,7 @@
 #' res %>% occ_issues(-cudc, mutate = "split_expand")
 #'
 #' # If you try multiple values for two different parameters you are wacked on the hand
-#' # occ_search(taxonKey=c(2482598,2492010), recordedBy=c("smith","BJ Stacey"))
+#' # occ_search(taxonKey=c("N","Q2M4"), recordedBy=c("smith","BJ Stacey"))
 #'
 #' # Get a lot of data, here 1500 records for Helianthus annuus
 #' # out <- occ_search(taxonKey=key, limit=1500)

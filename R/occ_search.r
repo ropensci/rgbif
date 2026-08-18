@@ -16,10 +16,17 @@
 #' @seealso [downloads()], [occ_data()]
 #' @note Maximum number of records you can get with this function is 100,000.
 #' See https://www.gbif.org/developer/occurrence
+#' 
+#' When numeric taxonomic keys (taxonKey, speciesKey, kingdomKey, etc.) are 
+#' detected and checklistKey is set to COL XR (the default), the function 
+#' automatically switches to the GBIF Backbone taxonomy checklistKey and issues 
+#' a warning. These numeric keys are legacy identifiers. If you explicitly set 
+#' checklistKey to Backbone or another taxonomy, no warning is issued. Consider 
+#' migrating to COL XR identifiers using [gbif_to_col()].
 #' @return An object of class `gbif`, which is a S3 class list, with
 #' slots for metadata (`meta`), the occurrence data itself (`data`),
-#' the taxonomic hierarchy data (`hier`), and media metadata
-#' (`media`).
+#' the taxonomic hierarchy data (`hier`), media metadata (`media`),
+#' taxonomic classifications (`classifications`), and facets (`facets`).
 #' In addition, the object has attributes listing the user supplied arguments
 #' and whether it was a 'single' or 'many' search; that is, if you supply two
 #' values of the `datasetKey` parameter to searches are done, and it's a
@@ -28,7 +35,12 @@
 #' is a list of data.frames of the unique set of taxa found, where each
 #' data.frame is its taxonomic classification. `media` is a list of media
 #' objects, where each element holds a set of metadata about the media object.
-
+#' `classifications` is a named list of tibbles, with one tibble per checklistKey.
+#' Each tibble contains one row per occurrence with the full taxonomic classification
+#' path pivoted into camelCase columns: checklistKey, kingdomName, kingdomKey, phylumName,
+#' phylumKey, className, classKey, orderName, orderKey, familyName, familyKey,
+#' genusName, genusKey, subgenusName, subgenusKey, speciesName, speciesKey. The function
+#' dynamically discovers all taxonomic ranks from the API. Known checklists (COL, backbone) are shown with friendly names, while unknown checklists use their UUID.
 occ_search <- function(taxonKey = NULL,
                        scientificName = NULL,
                        country = NULL,
@@ -163,7 +175,7 @@ occ_search <- function(taxonKey = NULL,
                        isSequenced = NULL,
                        startDayOfYear = NULL,
                        endDayOfYear = NULL,
-                       checklistKey = NULL,
+                       checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b",
                        limit = 500,
                        start = 0,
                        fields = 'all',
@@ -176,6 +188,44 @@ occ_search <- function(taxonKey = NULL,
                        ...) {
   
   pchk(return, "occ_search")
+  
+  # Check for numeric taxonomy keys and switch to backbone if detected
+  # Only warn if user hasn't explicitly set checklistKey to a different taxonomy
+  taxonomic_keys <- list(
+    taxonKey = taxonKey,
+    speciesKey = speciesKey,
+    kingdomKey = kingdomKey,
+    phylumKey = phylumKey,
+    classKey = classKey,
+    orderKey = orderKey,
+    familyKey = familyKey,
+    genusKey = genusKey,
+    subgenusKey = subgenusKey
+  )
+  
+  # Check if any taxonomic keys are numeric
+  numeric_keys <- sapply(taxonomic_keys, function(x) {
+    if (is.null(x)) return(FALSE)
+    all(suppressWarnings(!is.na(as.numeric(x))))
+  })
+  
+  # Only warn and switch if checklistKey is still COL XR default
+  # If user explicitly set a different checklistKey, respect their choice
+  col_xr_uuid <- "7ddf754f-d193-4cc9-b351-99906754a03b"
+  if (any(numeric_keys) && (is.null(checklistKey) || identical(checklistKey, col_xr_uuid))) {
+    warning(
+      "Numeric taxonomic keys detected (", 
+      paste(names(which(numeric_keys)), collapse = ", "), 
+      "). These are legacy GBIF Backbone identifiers. ",
+      "Switching to Backbone checklistKey (d7dddbf4-2cf0-4f39-9b2a-bb099caae36c). ",
+      "Please consider migrating to COL XR identifiers - ",
+      "use gbif_to_col() to look up the COL equivalents.",
+      call. = FALSE
+    )
+    # Override checklistKey to use backbone
+    checklistKey <- "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+  }
+  
   geometry <- geometry_handler(geometry, geom_big, geom_size, geom_n)
   url <- paste0(gbif_base(), '/occurrence/search')
   argscoll <- NULL
@@ -370,10 +420,13 @@ occ_search <- function(taxonKey = NULL,
     
     meta <- outout[[length(outout)]][c('offset', 'limit', 'endOfRecords',
                                        'count')]
-    # print(outout[[1]]$results[[1]]$classifications)                                       
     data <- do.call(c, lapply(outout, "[[", "results"))
     # remove classifications to return as separate object 
-    classifications <- do.call(c, lapply(data, "[[", "classifications"))
+    classifications <- lapply(data, function(x) {
+      x[["classifications"]]
+    })
+    # flatten classifications into compact data frames
+    classifications <- flatten_classifications(classifications)
     data <- lapply(data, function(x) { x[["classifications"]] <- NULL; x })
     facets <- do.call(c, lapply(outout, "[[", "facets"))
     if (identical(data, list())) {

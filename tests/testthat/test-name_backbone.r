@@ -1,4 +1,5 @@
 context("name_backbone")
+# testthat::test_file("tests/testthat/test-name_backbone.R")
 
 test_that("name_backbone returns the correct class", {
   vcr::use_cassette("name_backbone", {
@@ -29,7 +30,7 @@ test_that("name_backbone returns the correct class", {
   expect_is(tt, "tbl_df")
   expect_is(tt, "data.frame")
   expect_true(all(tt$verbatim_name == "Helianthus annuus"))
-  expect_true(rev(names(tt))[1] =="verbatim_rank")
+  expect_true(rev(names(tt))[1] == "verbatim_checklistKey")
   expect_equal(tt$verbatim_name[1], "Helianthus annuus")
   expect_equal(tt$verbatim_rank[1], "species")
   expect_equal(nrow(tt),1)
@@ -91,7 +92,7 @@ test_that("name_backbone returns the correct class", {
                "7ddf754f-d193-4cc9-b351-99906754a03b")
   expect_equal(nrow(cc), 1)
   expect_equal(cc$usageKey,"V2")
-  expect_equal(cc$matchType[1], "HIGHERRANK")
+  expect_equal(cc$matchType[1], "EXACT")
   
   expect_is(bb, "tbl")
   expect_is(bb, "tbl_df")
@@ -137,4 +138,49 @@ test_that("name_backbone returns acceptedUsageKey", {
   expect_is(aa, "data.frame")
   expect_true("acceptedUsageKey" %in% colnames(aa))
   expect_true("acceptedScientificName" %in% colnames(aa))
+  expect_equal(aa$usageKey, "9KWYW")
 })
+
+test_that("name_backbone works with GBIF Backbone Taxonomy", {
+  vcr::use_cassette("name_backbone_gbif_backbone", {
+    # Test with GBIF Backbone Taxonomy UUID
+    bb <- name_backbone(name = "Calopteryx splendens",
+                        checklistKey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
+    
+    # Test with NULL checklistKey (should also use GBIF Backbone)
+    nn <- name_backbone(name = "Calopteryx splendens", 
+                        checklistKey = NULL)
+  })
+  
+  expect_is(bb, "tbl")
+  expect_is(bb, "tbl_df")
+  expect_is(bb, "data.frame")
+  expect_equal(bb$verbatim_name[1], "Calopteryx splendens")
+  expect_equal(bb$verbatim_checklistKey[1], "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
+  expect_equal(nrow(bb), 1)
+  expect_equal(bb$usageKey, "1427067")
+
+  expect_is(nn, "tbl")
+  expect_is(nn, "tbl_df")
+  expect_is(nn, "data.frame")
+  expect_equal(nn$verbatim_name[1], "Calopteryx splendens")
+  expect_equal(nrow(nn), 1)
+  expect_equal(bb$usageKey, "1427067")
+})
+
+test_that("name_backbone works with Animalia", {
+  vcr::use_cassette("name_backbone_animalia", {
+    aa <- name_backbone(name = "Animalia")
+  })
+  
+  expect_is(aa, "tbl")
+  expect_is(aa, "tbl_df")
+  expect_is(aa, "data.frame")
+  expect_equal(aa$verbatim_name[1], "Animalia")
+  expect_equal(nrow(aa), 1)
+  expect_equal(aa$matchType[1], "EXACT")
+  expect_equal(aa$usageKey, "N")
+  expect_equal(aa$rank, "KINGDOM")
+})
+
+

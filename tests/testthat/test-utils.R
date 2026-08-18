@@ -1,3 +1,4 @@
+# testthat::test_file("tests/testthat/test-utils.R")
 context("rgbif utils")
 
 test_that("last", {
@@ -69,9 +70,11 @@ test_that("gbif_GET waits correctly", {
   skip_on_ci()
 
   vcr::use_cassette("gbif_get_wait", {
+  suppressWarnings(
   ww <- lapply(
   name_lookup(rank="SPECIES",limit=100)$data$nubKey, 
   function(x) { occ_count(taxonKey=x) }
+  )
   )
   })
 

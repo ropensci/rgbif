@@ -9,8 +9,6 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-
-
 Data accessed through the GBIF network is free for all, **but not free of obligations**. 
 
 Under the terms of the GBIF data user agreement, users who download data agree to **cite a DOI**. Good citation also rewards data-publishing institutions and individuals by reinforcing the value of sharing open data and demonstrating its impact to their funders. 
@@ -22,7 +20,7 @@ Please do read GBIF's [citation guidelines](https://www.gbif.org/citation-guidel
 The best way to [get data from GBIF](https://docs.ropensci.org/rgbif/articles/getting_occurrence_data.html) is with `rgbif::occ_download()`.
 
 ```r
-occ_download(pred("taxonKey",7412043))
+occ_download(pred("taxonKey","6R3ZG"))
 ```
 The **newest version of rgbif** will give you the **DOI** you need to make a good citation. 
 

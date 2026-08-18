@@ -8,12 +8,101 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"offset":0,"limit":100,"endOfRecords":true,"count":17,"results":[{"key":"ab013f3a-3c00-42cb-9fdb-cb5f4ba20a4b","title":"Biologging","description":"Biologging
-        science is concerned with the use of miniature animal-borne electronic devices
-        for logging and/or relaying of data about an animal’s movements, behaviour,
-        physiology and/or environment. This network aims to increase the discoverability
-        of biologging datasets on GBIF.","language":"eng","numConstituents":78,"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"andrea","modifiedBy":"peterdesmet","created":"2025-06-18T10:00:41.043+00:00","modified":"2025-06-18T10:55:55.720+00:00","contacts":[{"key":6144210,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":["https://orcid.org/0000-0002-8442-8025"],"firstName":"Peter","lastName":"Desmet","position":[],"email":["peter.desmet@inbo.be"],"phone":[],"homepage":[],"organization":"Research
-        Institute for Nature and Forest (INBO)","address":[],"country":"BE","createdBy":"peterdesmet","modifiedBy":"peterdesmet","created":"2025-06-18T10:59:20.321+00:00","modified":"2025-06-19T07:53:04.393+00:00"}],"endpoints":[],"machineTags":[],"tags":[],"identifiers":[],"comments":[{"key":39047,"content":"[2025-06-18,
+      string: '{"offset":0,"limit":100,"endOfRecords":true,"count":23,"results":[{"key":"5e061a4a-d7d6-472f-95fe-a602b05e464a","title":"NBFC
+        - Italian National Biodiversity Future Center","description":"NBFC (National
+        Biodiversity Future Center) is Italy''s national research center dedicated
+        to biodiversity, with a strong focus on biodiversity conservation, ecological
+        restoration, and long-term monitoring. It brings together a network of more
+        than 3,000 researchers from public research institutions and universities,
+        complemented by industrial partners, research consortia, and regional and
+        local authorities. Through close collaboration with national parks, protected
+        areas, and Marine Protected Areas (MPAs), NBFC carries out concrete field
+        activities to assess and enhance biodiversity. These activities include monitoring
+        species richness, genetic diversity, and ecosystem components, while implementing
+        restoration and conservation actions aimed at strengthening ecosystem resilience.
+        NBFC hosts a large community of taxonomic experts covering a broad range of
+        plant, animal, fungal, and microbial groups. Their expertise supports the
+        continuous updating of floristic and faunistic inventories, the production
+        of high-quality taxonomic data, and the provision of authoritative information
+        on species distribution and biodiversity status.\n\nThe Center also operates
+        an advanced, multi-layered biodiversity data platform that integrates species
+        occurrence records with molecular information (e.g., DNA barcoding and genomic
+        data) and chemical data, including the characterization of secondary metabolites.
+        This integrated infrastructure enables comprehensive biodiversity analyses
+        across multiple levels of biological organization. In addition, NBFC coordinated
+        the national project for the digitization of Italian herbaria during its first
+        funding period and continues to support the national network connecting museums,
+        universities, botanical gardens, and private collections. This ongoing effort
+        contributes to the preservation, integration, and accessibility of Italy''s
+        botanical heritage, strengthening biodiversity research and data sharing at
+        both national and international levels.","language":"eng","numConstituents":8,"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"andrea","modifiedBy":"andrea","created":"2026-07-27T12:47:18.168+00:00","modified":"2026-07-27T12:47:18.168+00:00","contacts":[{"key":7090712,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":false,"userId":[],"firstName":"Sarah","lastName":"Rossi
+        de Gasperis","position":[],"email":["sarah.degasperis@nbfc.it"],"phone":[],"homepage":[],"address":[],"createdBy":"andrea","modifiedBy":"andrea","created":"2026-07-27T12:47:55.786+00:00","modified":"2026-07-27T12:47:55.786+00:00"}],"endpoints":[],"machineTags":[{"key":32115931,"namespace":"registry.gbif.org","name":"visibleOnDatasetPage","value":"true","createdBy":"andrea","created":"2026-07-27T12:49:16.383+00:00"}],"tags":[],"identifiers":[],"comments":[]},{"key":"2922a446-c86c-4263-ba3a-4dc470b7b5e4","title":"Récolnat
+        — Réseau national des collections naturalistes (France)","description":"Récolnat
+        is the French research infrastructure dedicated to facilitating access to
+        natural history collections for scientific research. Established in 2013 and
+        included since 2016 in the French Ministry of Higher Education and Research''s
+        national roadmap for research infrastructures, Récolnat supports the standardisation,
+        digitisation, and dissemination of collection data while fostering collaboration
+        and expertise across the natural history community.\nIts core missions include
+        improving data quality and curation, promoting best practices in collection
+        management, providing cataloguing tools and support to smaller institutions,
+        and contributing to the professionalisation of collection stewardship. Récolnat
+        also operates the national gateway to France’s natural history collections
+        through its online platform (https://recolnat.fr), which serves both as a
+        discovery portal and as a collaborative data production and management tool
+        for the broader community.\nAs a founding and active member of the Distributed
+        System of Scientific Collections (DiSSCo ERIC), Récolnat serves as the French
+        national node, contributing to the development of a unified European infrastructure
+        for natural science collections.","language":"eng","numConstituents":0,"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"andrea","modifiedBy":"andrea","created":"2026-06-08T06:21:02.857+00:00","modified":"2026-06-08T06:21:02.857+00:00","contacts":[{"key":7038051,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"François","lastName":"Dusoulier","position":["Director
+        of the Récolnat Research Infrastructure"],"email":["contact@recolnat.fr"],"phone":[],"homepage":[],"address":[],"createdBy":"andrea","modifiedBy":"andrea","created":"2026-06-08T06:21:53.382+00:00","modified":"2026-06-08T06:21:53.382+00:00"}],"endpoints":[],"machineTags":[],"tags":[],"identifiers":[],"comments":[]},{"key":"ef4860c5-2ddd-492c-b741-af05aa50b9e6","title":"LifeWatch
+        ERIC","description":"LifeWatch ERIC is a European Research Infrastructure
+        Consortium providing e-Science research facilities to scientists investigating
+        biodiversity and ecosystem functions and services in order to support society
+        in addressing key planetary challenges. LifeWatch ERIC provides scientists
+        and other users with access to biodiversity and ecosystem data, services and
+        other research products by using and contributing to its advanced infrastructure
+        to derive evidence-based knowledge for scientific and policy purposes.","language":"eng","numConstituents":1,"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"andrea","modifiedBy":"andrea","created":"2026-05-19T07:28:11.815+00:00","modified":"2026-05-19T07:28:11.815+00:00","contacts":[{"key":7017914,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Christos","lastName":"Arvanitidis","position":[],"email":["ceo@lifewatch.eu"],"phone":[],"homepage":[],"address":[],"createdBy":"andrea","modifiedBy":"andrea","created":"2026-05-19T07:29:10.542+00:00","modified":"2026-05-19T07:29:10.542+00:00"}],"endpoints":[],"machineTags":[{"key":30998431,"namespace":"registry.gbif.org","name":"visibleOnDatasetPage","value":"true","createdBy":"andrea","created":"2026-05-19T07:29:52.798+00:00"}],"tags":[],"identifiers":[],"comments":[]},{"key":"68e8e67a-43e6-44a3-8817-dc0e6b70f973","title":"iDigBio","language":"eng","numConstituents":833,"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2026-02-20T12:09:26.805+00:00","modified":"2026-02-20T12:09:26.805+00:00","contacts":[],"endpoints":[],"machineTags":[],"tags":[],"identifiers":[],"comments":[]},{"key":"80edc711-19b9-464c-a8b3-2cc15be80e26","title":"OSCA
+        – Open Scientific Collections Austria","description":"The Open Scientific
+        Collections Austria (OSCA) is a national consortium of 15 museums, universities,
+        and scientific institutions holding outstanding natural science collections
+        in Austria. OSCA aims to mobilize and harmonize collection data through a
+        shared digital infrastructure, ensuring that data are Findable, Accessible,
+        Interoperable, and Reusable (FAIR). By unlocking previously inaccessible collection
+        data, OSCA transforms fragmented scientific holdings into an interconnected
+        virtual information system, supporting research, collaboration, and the long-term
+        preservation of Austria’s natural science heritage. More information is available
+        at https://osca.science/.","language":"eng","numConstituents":14,"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"andrea","modifiedBy":"andrea","created":"2026-02-04T10:06:17.830+00:00","modified":"2026-02-19T11:48:56.684+00:00","contacts":[{"key":6917748,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":false,"userId":[],"firstName":"OSCA","position":[],"description":"OSCA
+        network contact","email":["osca@nhm.at"],"phone":[],"homepage":[],"address":[],"createdBy":"andrea","modifiedBy":"andrea","created":"2026-02-19T11:50:51.526+00:00","modified":"2026-02-19T11:50:51.526+00:00"}],"endpoints":[],"machineTags":[],"tags":[],"identifiers":[],"comments":[]},{"key":"ec4ad81b-77e2-465a-b339-4266c91bb7e6","title":"Rede
+        do Setor Empresarial & Licenciamento Ambiental do Brasil | Brazil’s Business
+        Sector & Environmental Licensing Network","description":"A Rede Setor Empresarial
+        & Licenciamento Ambiental é uma iniciativa articulada pelo SiBBr (nó do GBIF
+        no Brasil), em parceria com a Confederação Nacional de Industria (CNI), para
+        aproximar o setor produtivo da infraestrutura global do GBIF. Seu objetivo
+        é mobilizar, padronizar e publicar dados de biodiversidade gerados por empresas
+        e por estudos ligados ao licenciamento ambiental no Brasil. A Rede busca converter
+        dados hoje dispersos (relatórios técnicos, bases internas, inventários, monitoramentos,
+        resgates/afugentamentos, programas ambientais e séries históricas, entre outros)
+        em dados estruturados e interoperáveis, com metadados completos e regras claras
+        de licenciamento e atribuição. Isso viabiliza o reuso qualificado para gestão
+        ambiental, transparência, inovação e agendas de sustentabilidade. Além de
+        ampliar o acesso e a rastreabilidade, a iniciativa promove boas práticas de
+        qualidade e padronização, documentação de métodos e esforço amostral, bem
+        como diretrizes de governança para dados sensíveis quando aplicável, alinhadas
+        aos princípios FAIR e CARE. Com isso, fortalece a integração entre empresas,
+        consultorias e atores do licenciamento, reduzindo perda de informação, evitando
+        retrabalho e ampliando a base de evidências sobre a biodiversidade brasileira
+        em uma plataforma reconhecida globalmente.","language":"por","numConstituents":123,"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"andrea","modifiedBy":"clara_baringo","created":"2025-12-09T13:28:13.683+00:00","modified":"2025-12-09T17:04:06.874+00:00","contacts":[{"key":6429391,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Clara","lastName":"Baringo
+        Fonseca","position":[],"email":["clara.fonseca@consultores.rnp.br"],"phone":[],"homepage":[],"address":[],"createdBy":"andrea","modifiedBy":"andrea","created":"2025-12-09T13:32:20.232+00:00","modified":"2025-12-09T13:32:20.232+00:00"},{"key":6430114,"type":"POINT_OF_CONTACT","primary":false,"userId":[],"firstName":"Mário","lastName":"Cardoso","position":["Gerente
+        de Recursos Naturais"],"description":"Superintendência de Meio Ambiente e
+        Sustentabilidade","email":["mcardoso@cni.com.br"],"phone":[],"homepage":[],"organization":"Confederação
+        Nacional da Indústria - CNI","address":[],"city":"Brasília","province":"Distrito
+        Federal","country":"BR","createdBy":"clara_baringo","modifiedBy":"clara_baringo","created":"2025-12-09T17:03:17.237+00:00","modified":"2025-12-09T17:03:17.237+00:00"}],"endpoints":[],"machineTags":[],"tags":[],"identifiers":[],"comments":[]},{"key":"ab013f3a-3c00-42cb-9fdb-cb5f4ba20a4b","title":"Wild
+        Moves","description":"Wild Moves (https://moves.wildlabs.net) is a data portal
+        for animal tracking data. Want others to discover your animal tracking data
+        and use it for research and conservation? Publish your dataset to GBIF, assign
+        it to this network and it will automatically appear on Wild Moves.","language":"eng","numConstituents":497,"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"andrea","modifiedBy":"peterdesmet","created":"2025-06-18T10:00:41.043+00:00","modified":"2026-02-09T15:49:24.647+00:00","contacts":[{"key":6144210,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":["https://orcid.org/0000-0002-8442-8025"],"firstName":"Peter","lastName":"Desmet","position":[],"email":["peter.desmet@inbo.be"],"phone":[],"homepage":[],"organization":"Research
+        Institute for Nature and Forest (INBO)","address":[],"country":"BE","createdBy":"peterdesmet","modifiedBy":"peterdesmet","created":"2025-06-18T10:59:20.321+00:00","modified":"2025-06-19T07:53:04.393+00:00"}],"endpoints":[],"machineTags":[{"key":29478727,"namespace":"registry.gbif.org","name":"visibleOnDatasetPage","value":"true","createdBy":"andrea","created":"2026-02-10T09:29:01.212+00:00"}],"tags":[],"identifiers":[],"comments":[{"key":46216,"content":"[2026-02-10,
+        ah] earlier title was: \"Biologging\"","createdBy":"andrea","modifiedBy":"andrea","created":"2026-02-10T06:17:51.588+00:00","modified":"2026-02-10T06:17:51.588+00:00"},{"key":39047,"content":"[2025-06-18,
         ah] created on request from Peter Desmet (inbo.be) to support the upcoming
         Move BON initiative.","createdBy":"andrea","modifiedBy":"andrea","created":"2025-06-18T10:01:39.250+00:00","modified":"2025-06-18T10:01:39.250+00:00"}]},{"key":"0479d6b2-a4f4-4307-8346-0b80e8c88c66","title":"Symbiota
         Support Hub","description":"The Symbiota Support Hub provides accessible solutions
@@ -24,7 +113,7 @@ http_interactions:
         Many of these portals are GBIF installations; they can push datasets directly
         to GBIF without the use of an IPT. Most portals welcome new data providers
         within their theme. To learn more about joining the Symbiota network, contact
-        help@symbiota.org.","language":"eng","numConstituents":590,"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"andrea","modifiedBy":"andrea","created":"2025-03-18T10:20:49.047+00:00","modified":"2025-03-28T07:39:38.882+00:00","contacts":[],"endpoints":[],"machineTags":[{"key":24444326,"namespace":"registry.gbif.org","name":"visibleOnDatasetPage","value":"true","createdBy":"andrea","created":"2025-03-28T07:40:49.621+00:00"}],"tags":[],"identifiers":[],"comments":[]},{"key":"55d38654-7954-46c6-ad18-7730a6a7f586","title":"The
+        help@symbiota.org.","language":"eng","numConstituents":589,"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"andrea","modifiedBy":"andrea","created":"2025-03-18T10:20:49.047+00:00","modified":"2025-03-28T07:39:38.882+00:00","contacts":[],"endpoints":[],"machineTags":[{"key":24444326,"namespace":"registry.gbif.org","name":"visibleOnDatasetPage","value":"true","createdBy":"andrea","created":"2025-03-28T07:40:49.621+00:00"}],"tags":[],"identifiers":[],"comments":[]},{"key":"55d38654-7954-46c6-ad18-7730a6a7f586","title":"The
         Program for Biodiversity Research (PPBio)","description":"The Program for
         Biodiversity Research (PPBio) is an innovative program designed to integrate
         all biodiversity research stakeholders in the Brazilian territory. Since its
@@ -42,7 +131,7 @@ http_interactions:
         and supported the training of hundreds of undergraduate and graduate students.
         The main challenge is maintaining the long-term funding necessary to understand
         biodiversity patterns and processes under pressure from global environmental
-        changes. - http://memoria2.cnpq.br/web/guest/apresentacao-ppbio/","language":"eng","numConstituents":5,"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"andrea","modifiedBy":"andrea","created":"2024-12-16T14:22:43.630+00:00","modified":"2024-12-16T14:27:28.076+00:00","contacts":[{"key":5929513,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":false,"userId":[],"firstName":"Geraldo","lastName":"Wilson
+        changes. - http://memoria2.cnpq.br/web/guest/apresentacao-ppbio/","language":"eng","numConstituents":6,"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"andrea","modifiedBy":"andrea","created":"2024-12-16T14:22:43.630+00:00","modified":"2024-12-16T14:27:28.076+00:00","contacts":[{"key":5929513,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":false,"userId":[],"firstName":"Geraldo","lastName":"Wilson
         Fernandes","position":[],"email":["gw.fernandes@gmail.com"],"phone":[],"homepage":[],"organization":"Universidade
         Federal de Minas Gerais","address":[],"createdBy":"andrea","modifiedBy":"clara_baringo","created":"2024-12-16T14:23:37.889+00:00","modified":"2024-12-17T12:15:56.605+00:00"},{"key":5931072,"type":"POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Equipe","lastName":"SiBBr","position":[],"email":["atendimento_sibbr@rnp.br"],"phone":[],"homepage":[],"organization":"SiBBr
         GBIF Brazil","address":[],"createdBy":"clara_baringo","modifiedBy":"clara_baringo","created":"2024-12-17T12:15:12.466+00:00","modified":"2024-12-17T12:15:43.548+00:00"}],"endpoints":[],"machineTags":[{"key":23132466,"namespace":"registry.gbif.org","name":"visibleOnDatasetPage","value":"true","createdBy":"andrea","created":"2024-12-16T14:32:16.708+00:00"}],"tags":[],"identifiers":[],"comments":[]},{"key":"8e30b684-6a54-4aba-aa73-66201c2c736e","title":"Specify
@@ -61,7 +150,7 @@ http_interactions:
         research that can address environmental issues and point to solutions and
         practices for sustainable use of natural resources and ecosystem services,
         with important contributions to the proposition of public policies, promoting
-        biodiversity conservation and human welfare.\n\nhttps://www.gov.br/cnpq/pt-br/acesso-a-informacao/acoes-e-programas/programas/peld","language":"eng","numConstituents":49,"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"andrea","modifiedBy":"andrea","created":"2024-03-11T14:48:10.451+00:00","modified":"2024-03-11T14:54:56.037+00:00","contacts":[{"key":5179449,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":false,"userId":[],"firstName":"Conselho
+        biodiversity conservation and human welfare.\n\nhttps://www.gov.br/cnpq/pt-br/acesso-a-informacao/acoes-e-programas/programas/peld","language":"eng","numConstituents":50,"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"andrea","modifiedBy":"andrea","created":"2024-03-11T14:48:10.451+00:00","modified":"2024-03-11T14:54:56.037+00:00","contacts":[{"key":5179449,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":false,"userId":[],"firstName":"Conselho
         Nacional de Desenvolvimento Científico e Tecnológico (CNPq/MCTI)","position":[],"email":["peld@cnpq.br"],"phone":[],"homepage":[],"address":[],"createdBy":"andrea","modifiedBy":"andrea","created":"2024-03-11T14:48:56.732+00:00","modified":"2024-03-11T14:53:54.442+00:00"},{"key":5179450,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":false,"userId":[],"firstName":"Sistema
         de Informação sobre a biodiversidade Brasileira (SiBBr)","position":[],"email":["atendimento_sibbr@rnp.br"],"phone":[],"homepage":[],"address":[],"createdBy":"andrea","modifiedBy":"andrea","created":"2024-03-11T14:49:36.777+00:00","modified":"2024-03-11T14:54:04.531+00:00"}],"endpoints":[],"machineTags":[],"tags":[],"identifiers":[],"comments":[]},{"key":"0b00b924-016b-4954-96a7-2d9264b5d0ba","title":"SwissBIF
         (swissbif.ch) : Swiss Biodiversity Information Facility [Daten Biodiversität
@@ -93,8 +182,8 @@ http_interactions:
         sector productivo. Es una gran oportunidad para garantizar la participación
         del sector empresarial a nivel nacional e internacional, acelerando la generación
         de conocimiento de la biodiversidad a partir de la publicación de datos a
-        través del SiB Colombia y GBIF, de una manera organizada y sistemática.","language":"spa","numConstituents":606,"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"andrea","modifiedBy":"andrea","created":"2023-05-15T07:13:37.374+00:00","modified":"2023-05-15T07:13:37.374+00:00","contacts":[],"endpoints":[],"machineTags":[],"tags":[],"identifiers":[],"comments":[]},{"key":"8534dd20-c368-4a1f-bdaf-e6b390710f89","title":"SCAR
-        Scientific Committee on Antarctic Research","language":"eng","numConstituents":253,"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"andrea","modifiedBy":"andrea","created":"2022-02-18T13:27:40.670+00:00","modified":"2022-02-18T14:56:04.788+00:00","contacts":[{"key":3394109,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":false,"userId":[],"firstName":"Anton","lastName":"Van
+        través del SiB Colombia y GBIF, de una manera organizada y sistemática.","language":"spa","numConstituents":662,"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"andrea","modifiedBy":"andrea","created":"2023-05-15T07:13:37.374+00:00","modified":"2023-05-15T07:13:37.374+00:00","contacts":[],"endpoints":[],"machineTags":[],"tags":[],"identifiers":[],"comments":[]},{"key":"8534dd20-c368-4a1f-bdaf-e6b390710f89","title":"SCAR
+        Scientific Committee on Antarctic Research","language":"eng","numConstituents":265,"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"andrea","modifiedBy":"andrea","created":"2022-02-18T13:27:40.670+00:00","modified":"2022-02-18T14:56:04.788+00:00","contacts":[{"key":3394109,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":false,"userId":[],"firstName":"Anton","lastName":"Van
         de Putte","position":[],"email":["antonarctica@gmail.com","avandeputte@naturalsciences.be"],"phone":[],"homepage":[],"organization":"Royal
         Belgian Institute of Natural Sciences","address":["Vautierstraat 29"],"city":"Brussels","country":"BE","postalCode":"1000","createdBy":"andrea","modifiedBy":"andrea","created":"2022-03-01T14:06:23.259+00:00","modified":"2022-03-01T14:06:23.259+00:00"},{"key":3394209,"type":"POINT_OF_CONTACT","primary":false,"userId":[],"firstName":"Yi
         Ming","lastName":"Gan","position":[],"email":["ymgan@naturalsciences.be"],"phone":[],"homepage":[],"organization":"Royal
@@ -118,18 +207,18 @@ http_interactions:
         2018 to develop a comprehensive Construction Masterplan, which will be followed
         by a construction phase. The RI will become fully operational in 2025. More
         information is available at the https://dissco.eu. Information about the technical
-        architecture can be found at: https://blog.dissco.tech.","language":"eng","numConstituents":736,"email":[],"phone":[],"homepage":["https://www.dissco.eu"],"address":[],"createdBy":"mgrosjean","modifiedBy":"wouter.addink","created":"2021-04-09T13:02:15.137+00:00","modified":"2021-04-09T15:35:54.762+00:00","contacts":[{"key":2371590,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Wouter","lastName":"Addink","position":["GBIF
+        architecture can be found at: https://blog.dissco.tech.","language":"eng","numConstituents":781,"email":[],"phone":[],"homepage":["https://www.dissco.eu"],"address":[],"createdBy":"mgrosjean","modifiedBy":"wouter.addink","created":"2021-04-09T13:02:15.137+00:00","modified":"2021-04-09T15:35:54.762+00:00","contacts":[{"key":2371590,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Wouter","lastName":"Addink","position":["GBIF
         node manager for DiSSCo","Coordinator Research-data and E-infrastructure"],"email":["info@dissco.eu"],"phone":[],"homepage":["dissco.eu"],"organization":"Naturalis
         Biodiversity Center","address":[],"city":"Leiden","country":"NL","postalCode":"2300
         RA","createdBy":"mgrosjean","modifiedBy":"wouter.addink","created":"2021-04-09T13:04:41.842+00:00","modified":"2021-04-09T15:41:50.300+00:00"}],"endpoints":[],"machineTags":[],"tags":[],"identifiers":[],"comments":[]},{"key":"3aee7756-565e-4dc5-b22c-f997fbd7105c","title":"Virtuelles
-        Herbarium Deutschland / Virtual Herbarium Germany","language":"eng","numConstituents":23,"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"Andrea","modifiedBy":"Andrea","created":"2021-02-01T09:45:30.307+00:00","modified":"2021-02-01T09:45:30.307+00:00","contacts":[{"key":2301987,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":false,"userId":[],"firstName":"Jörg","lastName":"Holetschek","position":[],"email":["J.Holetschek@bgbm.org"],"phone":[],"homepage":[],"address":[],"city":"Berlin","country":"DE","createdBy":"Andrea","modifiedBy":"Andrea","created":"2021-02-01T10:36:10.175+00:00","modified":"2021-02-01T10:36:10.175+00:00"},{"key":2301988,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":false,"userId":[],"firstName":"Wolf-Henning","lastName":"Kusber","position":[],"email":["w.h.kusber@bgbm.org"],"phone":[],"homepage":[],"address":[],"city":"Berlin","country":"DE","createdBy":"Andrea","modifiedBy":"Andrea","created":"2021-02-01T10:37:11.523+00:00","modified":"2021-02-01T10:37:11.523+00:00"}],"endpoints":[],"machineTags":[],"tags":[],"identifiers":[],"comments":[]},{"key":"99d66b6c-9087-452f-a9d4-f15f2c2d0e7e","title":"VertNet","language":"eng","numConstituents":658,"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"Andrea","modifiedBy":"trobertson","created":"2021-01-08T13:40:19.570+00:00","modified":"2022-05-27T18:09:55.434+00:00","contacts":[],"endpoints":[],"machineTags":[],"tags":[],"identifiers":[],"comments":[]},{"key":"379a0de5-f377-4661-9a30-33dd844e7b9a","title":"Living
-        Norway Ecological Data Network","language":"eng","numConstituents":124,"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"Andrea","modifiedBy":"Andrea","created":"2020-11-10T09:03:56.148+00:00","modified":"2020-11-10T09:03:56.148+00:00","contacts":[],"endpoints":[],"machineTags":[{"key":7598721,"namespace":"registry.gbif.org","name":"visibleOnDatasetPage","value":"true","createdBy":"trobertson","created":"2021-01-20T15:43:23.755+00:00"}],"tags":[],"identifiers":[],"comments":[]},{"key":"b153643d-735a-440f-a0e9-428b4f9d1cd2","title":"TrIAS","description":"TrIAS
+        Herbarium Deutschland / Virtual Herbarium Germany","language":"eng","numConstituents":24,"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"Andrea","modifiedBy":"Andrea","created":"2021-02-01T09:45:30.307+00:00","modified":"2021-02-01T09:45:30.307+00:00","contacts":[{"key":2301987,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":false,"userId":[],"firstName":"Jörg","lastName":"Holetschek","position":[],"email":["J.Holetschek@bgbm.org"],"phone":[],"homepage":[],"address":[],"city":"Berlin","country":"DE","createdBy":"Andrea","modifiedBy":"Andrea","created":"2021-02-01T10:36:10.175+00:00","modified":"2021-02-01T10:36:10.175+00:00"},{"key":2301988,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":false,"userId":[],"firstName":"Wolf-Henning","lastName":"Kusber","position":[],"email":["w.h.kusber@bgbm.org"],"phone":[],"homepage":[],"address":[],"city":"Berlin","country":"DE","createdBy":"Andrea","modifiedBy":"Andrea","created":"2021-02-01T10:37:11.523+00:00","modified":"2021-02-01T10:37:11.523+00:00"}],"endpoints":[],"machineTags":[],"tags":[],"identifiers":[],"comments":[]},{"key":"99d66b6c-9087-452f-a9d4-f15f2c2d0e7e","title":"VertNet","language":"eng","numConstituents":678,"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"Andrea","modifiedBy":"trobertson","created":"2021-01-08T13:40:19.570+00:00","modified":"2022-05-27T18:09:55.434+00:00","contacts":[],"endpoints":[],"machineTags":[],"tags":[],"identifiers":[],"comments":[]},{"key":"379a0de5-f377-4661-9a30-33dd844e7b9a","title":"Living
+        Norway Ecological Data Network","language":"eng","numConstituents":136,"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"Andrea","modifiedBy":"Andrea","created":"2020-11-10T09:03:56.148+00:00","modified":"2020-11-10T09:03:56.148+00:00","contacts":[],"endpoints":[],"machineTags":[{"key":7598721,"namespace":"registry.gbif.org","name":"visibleOnDatasetPage","value":"true","createdBy":"trobertson","created":"2021-01-20T15:43:23.755+00:00"}],"tags":[],"identifiers":[],"comments":[]},{"key":"b153643d-735a-440f-a0e9-428b4f9d1cd2","title":"TrIAS","description":"TrIAS
         is Belgian project building an open data-driven framework to support policy
         on invasive species.","language":"eng","numConstituents":39,"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"Andrea","modifiedBy":"Andrea","created":"2019-06-17T10:59:35.820+00:00","modified":"2019-06-17T10:59:35.820+00:00","contacts":[],"endpoints":[],"machineTags":[{"key":7655748,"namespace":"registry.gbif.org","name":"visibleOnDatasetPage","value":"true","createdBy":"trobertson","created":"2021-01-26T15:55:48.505+00:00"}],"tags":[],"identifiers":[],"comments":[]},{"key":"1f2c0cbe-40df-43f6-ba07-e76133e78c31","title":"Arctos","description":"Arctos
         is a community, a collection management information system, and a provider
         of research-grade data. It provides fundamental research infrastructure and
         is intended for curators, collection managers, investigators, educators, and
-        anyone interested in natural and cultural history.","language":"eng","numConstituents":158,"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"trobertson","modifiedBy":"trobertson","created":"2019-04-30T09:05:56.259+00:00","modified":"2019-04-30T09:05:56.259+00:00","contacts":[{"key":1673408,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":false,"userId":[],"firstName":"Dusty
+        anyone interested in natural and cultural history.","language":"eng","numConstituents":161,"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"trobertson","modifiedBy":"trobertson","created":"2019-04-30T09:05:56.259+00:00","modified":"2019-04-30T09:05:56.259+00:00","contacts":[{"key":1673408,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":false,"userId":[],"firstName":"Dusty
         L.","lastName":"McDonald","position":[],"email":[],"phone":[],"homepage":[],"address":[],"createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2019-09-24T07:45:55.731+00:00","modified":"2019-09-24T07:45:55.731+00:00"},{"key":1673409,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Michelle","lastName":"Koo","position":["Staff
         Curator of Biodiversity Informatics"],"email":["mkoo@berkeley.edu"],"phone":["5106428547"],"homepage":[],"organization":"Museum
         of Vertebrate Zoology, University of California Berkeley","address":[],"city":"Berkeley","province":"CA","country":"US","postalCode":"94720-3160","createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2019-09-24T07:47:08.876+00:00","modified":"2019-09-24T07:47:08.876+00:00"},{"key":1673434,"type":"ADMINISTRATIVE_POINT_OF_CONTACT","primary":false,"userId":[],"firstName":"Mariel
@@ -142,6 +231,7 @@ http_interactions:
         BON","language":"eng","numConstituents":59,"email":[],"phone":[],"homepage":["http://www.freshwaterplatform.eu"],"address":[],"createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2019-02-28T10:57:05.677+00:00","modified":"2019-02-28T10:57:05.677+00:00","contacts":[],"endpoints":[],"machineTags":[{"key":7655747,"namespace":"registry.gbif.org","name":"visibleOnDatasetPage","value":"true","createdBy":"trobertson","created":"2021-01-26T15:55:08.507+00:00"}],"tags":[],"identifiers":[],"comments":[]},{"key":"2b7c7b4f-4d4f-40d3-94de-c28b6fa054a6","title":"Ocean
         Biodiversity Information System (OBIS)","description":"The Ocean Biodiversity
         Information System (OBIS) is a global open-access data and information clearing-house
-        on marine biodiversity for science, conservation and sustainable development.","language":"eng","numConstituents":2948,"email":[],"phone":[],"homepage":["https://obis.org"],"logoUrl":"https://obis.org/images/logo.png","address":[],"createdBy":"ADMIN","modifiedBy":"MattBlissett","created":"2007-04-03T08:31:37.000+00:00","modified":"2020-06-17T11:34:47.474+00:00","contacts":[],"endpoints":[],"machineTags":[{"key":7598741,"namespace":"registry.gbif.org","name":"visibleOnDatasetPage","value":"true","createdBy":"MattBlissett","created":"2021-01-20T15:54:18.923+00:00"}],"tags":[],"identifiers":[],"comments":[]}]}'
-  recorded_at: 2025-09-04 07:14:43
+        on marine biodiversity for science, conservation and sustainable development.","language":"eng","numConstituents":3505,"email":[],"phone":[],"homepage":["https://obis.org"],"logoUrl":"https://obis.org/images/logo.png","address":[],"createdBy":"ADMIN","modifiedBy":"MattBlissett","created":"2007-04-03T08:31:37.000+00:00","modified":"2020-06-17T11:34:47.474+00:00","contacts":[{"key":6954587,"type":"TECHNICAL_POINT_OF_CONTACT","primary":false,"userId":[],"firstName":"OBIS
+        helpdesk","position":[],"email":["helpdesk@obis.org"],"phone":[],"homepage":[],"address":[],"createdBy":"andrea","modifiedBy":"andrea","created":"2026-03-23T14:43:07.865+00:00","modified":"2026-03-23T14:43:07.865+00:00"}],"endpoints":[],"machineTags":[{"key":7598741,"namespace":"registry.gbif.org","name":"visibleOnDatasetPage","value":"true","createdBy":"MattBlissett","created":"2021-01-20T15:54:18.923+00:00"}],"tags":[],"identifiers":[],"comments":[]}]}'
+  recorded_at: 2026-08-13 12:24:46
 recorded_with: VCR-vcr/2.0.0

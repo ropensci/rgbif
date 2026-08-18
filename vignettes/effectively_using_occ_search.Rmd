@@ -61,7 +61,7 @@ Is equivalent to doing the following:
 ``` r
 occ_search(taxonKey=name_backbone("Calopteryx splendens")$usageKey)
 # OR
-occ_search(taxonKey=1427067)
+occ_search(taxonKey="Q2M4")
 ```
 
 If your name happens to be a [homotypic synonym](https://docs.ropensci.org/rgbif/articles/taxonomic_names.html#too-many-choices-problem) of another name, you may get back occurrences for the other name or no results or a higher-rank match results. Therefore, it is usually safer to use the GBIF taxonKey.

@@ -135,8 +135,6 @@ contact. Optional parameter for filtering results.}
 \item{contactEmail}{(character) Filters collections by the email of a
 contact. Optional parameter for filtering results.}
 
-\item{institution}{Name of institutions hosting collections.}
-
 \item{institutionKey}{Keys of institutions to filter by.}
 
 \item{country}{Filters by country given as a ISO 639-1 (2 letter) country
@@ -191,6 +189,8 @@ Available values : ASC, DESC.}
 Only used for \link{collection_export}.}
 
 \item{curlopts}{curlopts options passed on to \link[crul:HttpClient]{crul::HttpClient}.}
+
+\item{institution}{Name of institutions hosting collections.}
 }
 \value{
 a \code{list}

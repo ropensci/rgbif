@@ -1,3 +1,5 @@
+
+# devtools::test_file("tests/testthat/test-downloads.R")
 context("GbifQueue")
 test_that("GbifQueue fails well", {
   skip_on_cran()
@@ -14,11 +16,11 @@ test_that("GbifQueue fails well", {
 
 test_that("GbifQueue works with occ_download inputs", {
   skip_on_cran()
-
+  # Use GBIF Backbone for test compatibility
   x <- GbifQueue$new(
-    occ_download(pred('taxonKey', 5231190), pred("year", 1976)),
-    occ_download(pred('taxonKey', 5231190), pred("year", 2001)),
-    occ_download(pred('taxonKey', 5231190), pred("year", 2001),
+    occ_download(pred('taxonKey', '4DXXM'), pred("year", 1976)),
+    occ_download(pred('taxonKey', '4DXXM'), pred("year", 2001)),
+    occ_download(pred('taxonKey', '4DXXM'), pred("year", 2001),
       pred_lte("month", 8))
   )
   
@@ -101,12 +103,12 @@ test_that("occ_download fails well when user does not input predicates", {
   skip_on_cran()
 
   expect_error(
-    occ_download(taxonKey = 5039705, hasCoordinate = TRUE,
+    occ_download(taxonKey = "66NC2", hasCoordinate = TRUE,
       basisOfRecord = "Preserved_Specimen"),
     "all inputs must be"
   )
   expect_error(
-    occ_download('taxonKey = 5039705'),
+    occ_download("'taxonKey = '66NC2'"),
     "all inputs must be"
   )
 })
@@ -115,7 +117,7 @@ test_that("occ_download fails well when user does not input predicates", {
 test_that("type in works", {
   skip_on_cran()
 
-  z <- occ_download_prep(pred_in("taxonKey", c(2480946, 5229208)),
+  z <- occ_download_prep(pred_in("taxonKey", c("GCHR", "6DYQW")),
     format = "SIMPLE_CSV")
 
   expect_is(z, "occ_download_prep")
@@ -124,6 +126,6 @@ test_that("type in works", {
   # right type
   expect_equal(unclass(z$request$predicate$type), "in")
   # a vector of length two for each thing passed in
-  expect_equal(z$request$predicate$values, c("2480946", "5229208"))
+  expect_equal(z$request$predicate$values, c("GCHR", "6DYQW"))
 })
 

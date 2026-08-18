@@ -75,14 +75,14 @@ ORDER BY occurrence_count DESC;
 occ_download_sql(sql)
 ```
 
-| publishingcountry | specieskey | occurrence_count |
-|:------------------|-----------:|-----------------:|
-| US                |    2495347 |         23467566 |
-| US                |    2490384 |         21442333 |
-| US                |    9510564 |         20975419 |
-| US                |    2482507 |         20396610 |
-| US                |    2482593 |         17855746 |
-| US                |    9761484 |         17814101 |
+| publishingcountry | col_key | occurrence_count |
+|:------------------|:--------|------------------:|
+| US | 5D2BZ | 23467566 |
+| US | R56G | 21442333 |
+| US | 59PMB | 20975419 |
+| US | YNHD | 20396610 |
+| US | 32NKH | 17855746 |
+| US | DGP6 | 17814101 |
 
 
 ## SQL examples - Time series
@@ -124,7 +124,7 @@ For this reason GBIF's SQL downloads provide support for a few pre-defined [grid
 -   **EEA Reference Grid**, GBIF_EEARGCode
 -   **Military Grid Reference System**, GBIF_MGRSCode
 -   **Quarter degree cell code**, GBIF_QDGCCode
--   **ISEA3H Grid cell code GBIF_ISEA3HCode**, GBIF_ISEA3HCode
+-   **ISEA3H Grid cell code**, GBIF_ISEA3HCode ([shapefiles available](https://github.com/jhnwllr/ISEA3H-shapefiles))
 
 Below is an example of working with the **Military Grid Reference System** (MGRS) grid. This example uses shapefiles from [this repository](https://github.com/klaukh/MGRS). The example shows how to produce a simple map of species counts per grid cell, using `occ_download_sql()` and the custom sql function `GBIF_MGRSCode()`.
 
@@ -242,72 +242,6 @@ theme_minimal()
 
 ```{r, echo = FALSE,out.width="50%"}
 knitr::include_graphics("img/uk-grid.jpg")
-```
-
-## Occurrence CUBE example
-
-The SQL download API was originally designed to be used for creating [species occurrence cubes](https://b-cubed.eu/data-and-evidence). The example below shows how to create a occurrence cube using `occ_download_sql()`.
-
-``` r
-occ_download_sql(
-"
-SELECT 
-  -- Dimensions: 
-  PRINTF('%04d-%02d', \"year\", \"month\") AS yearMonth,
-  GBIF_EEARGCode(
-    1000,
-    decimalLatitude,
-    decimalLongitude,
-    COALESCE(coordinateUncertaintyInMeters, 1000)
-  ) AS eeaCellCode,
-  familyKey,
-  family,
-  speciesKey,
-  species,
-  COALESCE(sex, 'NOT_SUPPLIED') AS sex,
-  COALESCE(occurrence.lifestage.concept, 'NOT_SUPPLIED') AS lifestage,
-  -- Measurements 
-  COUNT(*) AS occurrences, 
-  MIN(COALESCE(coordinateUncertaintyInMeters, 1000)) AS minCoordinateUncertaintyInMeters,
-  MIN(GBIF_TemporalUncertainty(eventDate)) AS minTemporalUncertainty,
-  -- Higher taxon measurement
-  IF(ISNULL(familyKey), 
-     NULL, 
-       SUM(COUNT(*)) 
-       OVER (PARTITION BY familyKey, 
-                          PRINTF('%04d-%02d', \"year\", \"month\"),
-                          GBIF_EEARGCode(1000, decimalLatitude, decimalLongitude, COALESCE(coordinateUncertaintyInMeters, 1000)))
-  ) AS familyCount
-FROM
-  occurrence
-WHERE occurrenceStatus = 'PRESENT'
-  AND countryCode = 'PL'
-  AND \"year\" >= 2000
-  AND kingdomKey = 1
-  AND hasCoordinate = TRUE
-  AND (coordinateUncertaintyInMeters <= 1000 OR coordinateUncertaintyInMeters IS NULL)
-  AND speciesKey IS NOT NULL
-  AND NOT ARRAY_CONTAINS(issue, 'ZERO_COORDINATE')
-  AND NOT ARRAY_CONTAINS(issue, 'COORDINATE_OUT_OF_RANGE')
-  AND NOT ARRAY_CONTAINS(issue, 'COORDINATE_INVALID')
-  AND NOT ARRAY_CONTAINS(issue, 'COUNTRY_COORDINATE_MISMATCH')
-  AND \"month\" IS NOT NULL
-GROUP BY
-  yearMonth,
-  eeaCellCode,
-  familyKey,
-  family,
-  speciesKey,
-  species,
-  sex,
-  lifestage
-ORDER BY 
-  yearMonth DESC,
-  eeaCellCode ASC,
-  speciesKey ASC;
-"
-)
-
 ```
 
 ## Further reading

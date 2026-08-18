@@ -15,6 +15,8 @@ Search and retrieve data from the **Global Biodiversity Information Facility** (
 
 `rgbif` is an R package to search and retrieve data from **GBIF**. `rgbif` wraps R code around the [GBIF API](https://www.gbif.org/developer/summary) to allow you to use GBIF from R.
 
+> **⚠️ Important:** Starting in rgbif 3.9.0, the default taxonomy changed from GBIF Backbone to COL (Catalogue of Life) Extended Release. This affects taxonomic keys returned by functions like `name_backbone()` and `occ_search()`. See the [Migration Guide](col_migration_guide.html) (`vignette("col_migration_guide")`) for details on updating your code.
+
 ## Install rgbif
 
 ```r
@@ -46,7 +48,7 @@ The following will download all occurrences of _Lepus saxatilis_. You can use `n
 
 ```r 
 # name_backbone("Lepus saxatilis")$usageKey
-gbif_download <- occ_download(pred("taxonKey", 2436775),format = "SIMPLE_CSV")
+gbif_download <- occ_download(pred("taxonKey", "6Q225"),format = "SIMPLE_CSV")
 
 occ_download_wait(gbif_download)
 
@@ -80,7 +82,7 @@ Get occurrence counts in GBIF.
 occ_count() # total number in GBIF
 occ_count(georeferenced=TRUE) # all with coordinates
 occ_count(basisOfRecord='OBSERVATION') # with this basis of record
-occ_count(taxonKey=2435099, georeferenced=TRUE) # with coordinates
+occ_count(taxonKey="4QHKG", georeferenced=TRUE) # with coordinates
 occ_count(country="DK") # from Denmark 
 occ_count(datasetKey='9e7ea106-0bf8-4087-bb61-dfe4f29e0f17') # from a dataset
 occ_count(year=2012)

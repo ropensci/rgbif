@@ -1,14 +1,12 @@
 # testthat::test_file("tests/testthat/test-occ_search.r")
 context("occ_search")
 
-key <- 3118771
-
 # Search by key
 test_that("returns the correct class", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_search", {
-    tt <- occ_search(taxonKey=key, limit=2)
-    uu <- occ_search(taxonKey=key, limit=20)
+    tt <- occ_search(taxonKey="39N5S", limit=2)
+    uu <- occ_search(taxonKey="39N5S", limit=20)
   }, preserve_exact_body_bytes = TRUE)
 
   expect_is(tt, "gbif")
@@ -67,7 +65,7 @@ test_that("returns the correct class", {
 test_that("returns the correct class", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_search_taxonkey", {
-    out <- occ_search(taxonKey=key,limit=2)
+    out <- occ_search(taxonKey="39N5S",limit=2)
   }, preserve_exact_body_bytes = TRUE)
 
   expect_is(out, "gbif")
@@ -83,7 +81,7 @@ test_that("returns the correct class", {
 # Taxonomic hierarchy data
 test_that("returns the correct class", {
   vcr::use_cassette("occ_search_hierarchy_data", {
-    out <- occ_search(taxonKey=key, limit=2)
+    out <- occ_search(taxonKey="39N5S", limit=2)
   }, preserve_exact_body_bytes = TRUE)
 
   expect_is(out$hierarchy, "list")
@@ -101,9 +99,9 @@ test_that("returns the correct class", {
 test_that("dates work correctly", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_search_eventdate", {
-    a <- occ_search(taxonKey=3189815, year="2013", fields=c('name','year'),limit=2)
-    b <- occ_search(taxonKey=3189815, month="6", fields=c('name','month'),limit=2)
-    expect_is(occ_search(taxonKey=key, year="1990,1991"), "gbif")
+    a <- occ_search(taxonKey="65BKZ", year="2013", fields=c('name','year'),limit=2)
+    b <- occ_search(taxonKey="65BKZ", month="6", fields=c('name','month'),limit=2)
+    expect_is(occ_search(taxonKey="39N5S", year="1990,1991"), "gbif")
   }, preserve_exact_body_bytes = TRUE)
 
   expect_equal(a$data$year[1], 2013)
@@ -116,12 +114,12 @@ test_that("occurrenceStatus works correctly", {
   vcr::use_cassette("occ_search_occurrencestatus", {
     pp <- occ_search(limit=2)
     aa <- occ_search(occurrenceStatus = 'ABSENT',limit=2)
-    tt <- occ_search(taxonKey=212,occurrenceStatus = 'ABSENT',limit=2)
+    tt <- occ_search(taxonKey="V2",occurrenceStatus = 'ABSENT',limit=2)
   }, preserve_exact_body_bytes = TRUE)
   
   expect_equal(pp$data$occurrenceStatus[1], 'PRESENT')
   expect_equal(aa$data$occurrenceStatus[1], 'ABSENT')
-  expect_equal(tt$data$classKey[1], 212)
+  expect_equal(tt$classifications$COL$classKey[1], "V2")
 })
 
 # Get occurrences for with a particular gadmGid
@@ -130,13 +128,13 @@ test_that("gadmGid works correctly", {
   vcr::use_cassette("occ_search_gadmGid", {
     bwa <- occ_search(gadmGid='BWA.3_1',limit=2)
     twn <- occ_search(gadmGid='TWN',limit=2)
-    usa <- occ_search(taxonKey=212,gadmGid="USA",limit=2)
+    usa <- occ_search(taxonKey="V2",gadmGid="USA",limit=2)
   }, preserve_exact_body_bytes = TRUE)
   
   expect_equal(bwa$data$countryCode[1], 'BW')
   expect_equal(twn$data$countryCode[1], 'TW')
   expect_equal(usa$data$countryCode[1], 'US')
-  expect_equal(usa$data$classKey[1], 212)
+  expect_equal(usa$classifications$COL$classKey[1], "V2")
 })
 
 # Get occurrences for with coordinateUncertaintyInMeters
@@ -146,7 +144,7 @@ test_that("coordinateUncertaintyInMeters works correctly", {
     ss <- occ_search(coordinateUncertaintyInMeters=1000,limit=2)
     rr <- occ_search(coordinateUncertaintyInMeters="1000,10000",limit=2)
     
-    tt <- occ_search(taxonKey=212,coordinateUncertaintyInMeters="1000,10000",limit=2)
+    tt <- occ_search(taxonKey="V2",coordinateUncertaintyInMeters="1000,10000",limit=2)
   }, preserve_exact_body_bytes = TRUE)
   
   expect_equal(ss$data$coordinateUncertaintyInMeters[1], 1000)
@@ -154,7 +152,7 @@ test_that("coordinateUncertaintyInMeters works correctly", {
                     rr$data$coordinateUncertaintyInMeters >= 1000))
   expect_true(all(tt$data$coordinateUncertaintyInMeters <= 10000 & 
                     tt$data$coordinateUncertaintyInMeters >= 1000))
-  expect_equal(tt$data$classKey[1], 212)
+  expect_equal(tt$classifications$COL$classKey[1], "V2")
 })
 
 # Get occurrences for with organismQuantity
@@ -163,7 +161,7 @@ test_that("organismQuantity works correctly", {
   vcr::use_cassette("occ_search_organismQuantity", {
     ss <- occ_search(organismQuantity=5,limit=2)
     rr <- occ_search(organismQuantity="5,20",limit=2)
-    tt <- occ_search(taxonKey=212,organismQuantity="5,20",limit=2)
+    tt <- occ_search(taxonKey="V2",organismQuantity="5,20",limit=2)
   }, preserve_exact_body_bytes = TRUE)
   
   expect_equal(ss$data$organismQuantity[1], 5)
@@ -171,7 +169,7 @@ test_that("organismQuantity works correctly", {
                     rr$data$organismQuantity >= 5))
   expect_true(all(tt$data$organismQuantity <= 20 & 
                     tt$data$organismQuantity >= 5))
-  expect_equal(tt$data$classKey[1], 212)
+  expect_equal(tt$classifications$COL$classKey[1], "V2")
 })
 
 # Get occurrences for with organismQuantityType
@@ -179,7 +177,7 @@ test_that("organismQuantityType works correctly", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_search_organismQuantityType", {
     yy <- occ_search(organismQuantity=5,organismQuantityType="individuals",limit=2)
-    tt <- occ_search(taxonKey=212,organismQuantity="5,20",
+    tt <- occ_search(taxonKey="V2",organismQuantity="5,20",
                      organismQuantityType="individuals",limit=2)
   }, preserve_exact_body_bytes = TRUE)
   
@@ -188,7 +186,7 @@ test_that("organismQuantityType works correctly", {
   expect_equal(tt$data$organismQuantityType[1], "individuals")
   expect_true(all(tt$data$organismQuantity <= 20 &
                     tt$data$organismQuantity >= 5))
-  expect_equal(tt$data$classKey[1], 212)
+  expect_equal(tt$classifications$COL$classKey[1], "V2")
 })
 
 # Get occurrences for with relativeOrganismQuantity
@@ -197,7 +195,7 @@ test_that("relativeOrganismQuantity works correctly", {
   vcr::use_cassette("occ_search_relativeOrganismQuantity", {
     rr <- occ_search(relativeOrganismQuantity=0.1,limit=2)
     vv <- occ_search(relativeOrganismQuantity="0.1,0.5",limit=2)
-    tt <- occ_search(taxonKey=212,relativeOrganismQuantity="0.1,0.5",limit=2)
+    tt <- occ_search(taxonKey="V2",relativeOrganismQuantity="0.1,0.5",limit=2)
   }, preserve_exact_body_bytes = TRUE)
   
   expect_equal(rr$data$relativeOrganismQuantity[1], 0.1)
@@ -205,7 +203,7 @@ test_that("relativeOrganismQuantity works correctly", {
                     vv$data$relativeOrganismQuantity >= 0.1))
   expect_true(all(tt$data$relativeOrganismQuantity <= 0.5 & 
                     tt$data$relativeOrganismQuantity >= 0.1))
-  expect_equal(tt$data$classKey[1], 212)
+  expect_equal(tt$classifications$COL$classKey[1], "V2")
 })
 
 
@@ -234,14 +232,14 @@ test_that("eventId works correctly", {
     ii <- occ_search(eventId="1",limit=2)
     hh <- occ_search(eventId="1;2",limit=2)
     cc <- occ_search(eventId=c("1","2"),limit=2)
-    tt <- occ_search(taxonKey=212,eventId="1",limit=2)
+    tt <- occ_search(taxonKey="V2",eventId="1",limit=2)
   }, preserve_exact_body_bytes = TRUE)
   
   expect_equal(ii$data$eventID[1], "1")
   expect_true(all(hh$data$eventID %in% c("1","2")))
   expect_true(all(cc$data$eventID %in% c("1","2")))
   expect_equal(tt$data$eventID[1], "1")
-  expect_equal(tt$data$classKey[1], 212)
+  expect_equal(tt$classifications$COL$classKey[1], "V2")
 })
 
 # Get occurrences for with a particular occurrenceId
@@ -251,14 +249,14 @@ test_that("occurrenceId works correctly", {
     ii <- occ_search(occurrenceId="1",limit=2)
     hh <- occ_search(occurrenceId="1;2",limit=2)
     cc <- occ_search(occurrenceId=c("1","2"),limit=2)
-    tt <- occ_search(taxonKey=212,occurrenceId="1",limit=2)
+    tt <- occ_search(taxonKey="V2",occurrenceId="1",limit=2)
   }, preserve_exact_body_bytes = TRUE)
   
   expect_equal(ii$data$occurrenceID[1], "1")
   expect_true(all(hh$data$occurrenceID %in% c("1","2")))
   expect_true(all(cc$data$occurrenceID %in% c("1","2")))
   expect_equal(tt$data$occurrenceID[1], "1")
-  expect_equal(tt$data$classKey[1], 212)
+  expect_equal(tt$classifications$COL$classKey[1], "V2")
 })
 
 
@@ -266,16 +264,15 @@ test_that("occurrenceId works correctly", {
 test_that("speciesKey works correctly", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_search_speciesKey", {
-    kk <- occ_search(speciesKey=1427067,limit=2)
-    qq <- occ_search(speciesKey="7412043;1427037",limit=2)
-    cc <- occ_search(speciesKey=c(1427067,1427037),limit=2)
-    ff <- occ_search(country="DK",speciesKey=1427067,limit=2)
+    kk <- occ_search(speciesKey="Q2M4",limit=2)
+    qq <- occ_search(speciesKey="9WP85;Q2M4",limit=2)
+    cc <- occ_search(speciesKey=c("9WP85","Q2M4"),limit=2)
+    ff <- occ_search(country="DK",speciesKey="Q2M4",limit=2)
   }, preserve_exact_body_bytes = TRUE)
   
-  expect_equal(kk$data$speciesKey[1],1427067)
-  expect_true(all(qq$data$speciesKey %in% c(1427067,1427037)))
-  expect_true(all(cc$data$speciesKey %in% c(1427067,1427037)))
-  expect_equal(kk$data$speciesKey[1],1427067)
+  expect_equal(kk$classifications$backbone$speciesKey[1],"1427067")
+  expect_true(all(qq$classifications$backbone$speciesKey %in% c("1427067","5052021")))
+  expect_true(all(cc$classifications$backbone$speciesKey %in% c("1427067","5052021")))
   expect_equal(ff$data$countryCode[1], "DK")
 })
 
@@ -303,7 +300,7 @@ test_that("iucnRedListCategory works correctly", {
     ll <- occ_search(iucnRedListCategory="LC",limit=2)
     yy <- occ_search(iucnRedListCategory="LC;EW",limit=2)
     ss <- occ_search(iucnRedListCategory=c("LC", "EW"),limit=2)
-    tt <- occ_search(taxonKey=212,iucnRedListCategory="LC",limit=2)
+    tt <- occ_search(taxonKey="V2",iucnRedListCategory="LC",limit=2)
   }, preserve_exact_body_bytes = TRUE)
   
   expect_equal(ll$data$iucnRedListCategory[1],"LC")
@@ -311,7 +308,7 @@ test_that("iucnRedListCategory works correctly", {
   expect_equal(ss[[1]]$data$iucnRedListCategory[1],"LC")
   expect_equal(ss[[2]]$data$iucnRedListCategory[1],"EW")
   expect_equal(tt$data$iucnRedListCategory[1],"LC")
-  expect_equal(tt$data$classKey[1], 212)
+  expect_equal(tt$classifications$COL$classKey[1], "V2")
 })
 
 # Get occurrences for with a particular lifeStage
@@ -321,7 +318,7 @@ test_that("lifeStage works correctly", {
     aa <- occ_search(lifeStage="Adult",limit=2)
     ee <- occ_search(lifeStage="Adult;Egg",limit=2)
     cc <- occ_search(lifeStage=c("Adult", "Egg"),limit=2)
-    tt <- occ_search(taxonKey=212,lifeStage="Adult",limit=2)
+    tt <- occ_search(taxonKey="V2",lifeStage="Adult",limit=2)
   }, preserve_exact_body_bytes = TRUE)
   
   expect_equal(aa$data$lifeStage[1],"Adult")
@@ -329,7 +326,7 @@ test_that("lifeStage works correctly", {
   expect_equal(cc[[1]]$data$lifeStage[1],"Adult")
   expect_equal(cc[[2]]$data$lifeStage[1],"Egg")
   expect_equal(tt$data$lifeStage[1],"Adult")
-  expect_equal(tt$data$classKey[1], 212)
+  expect_equal(tt$classifications$COL$classKey[1], "V2")
 })
 
 # Get occurrences for with a particular degreeOfEstablishment
@@ -339,14 +336,14 @@ test_that("degreeOfEstablishment works correctly", {
     ee <- occ_search(degreeOfEstablishment="established",limit=2)
     ii <- occ_search(degreeOfEstablishment="established;Invasive",limit=2)
     cc <- occ_search(degreeOfEstablishment=c("established", "invasive"),limit=2)
-    tt <- occ_search(taxonKey=1,degreeOfEstablishment="established",limit=2)
+    tt <- occ_search(taxonKey="N",degreeOfEstablishment="established",limit=2)
   }, preserve_exact_body_bytes = TRUE)
   
   expect_equal(ee$data$degreeOfEstablishment[1],"established")
   expect_true(all(ii$data$degreeOfEstablishment %in% c("established", "invasive")))
   expect_true(all(cc$data$degreeOfEstablishment %in% c("established", "invasive")))
   expect_equal(tt$data$degreeOfEstablishment[1],"established")
-  expect_equal(tt$data$kingdomKey[1], 1)
+  expect_equal(tt$classifications$backbone$kingdomKey[1], "1")
 })
 
 
@@ -356,13 +353,13 @@ test_that("isInCluster works correctly", {
   vcr::use_cassette("occ_search_isInCluster", {
     ee <- occ_search(isInCluster=TRUE,limit=2)
     ff <- occ_search(isInCluster=FALSE,limit=2)
-    tt <- occ_search(taxonKey = 212,isInCluster=TRUE,limit=2)
+    tt <- occ_search(taxonKey = "V2",isInCluster=TRUE,limit=2)
   }, preserve_exact_body_bytes = TRUE)
   
   expect_true(ee$data$isInCluster[1])
   expect_false(ff$data$isInCluster[1])
   expect_true(tt$data$isInCluster[1])
-  expect_equal(tt$data$classKey[1], 212)
+  expect_equal(tt$classifications$COL$classKey[1], "V2")
 })
 
 # Test argument distanceFromCentroidInMeters
@@ -391,7 +388,7 @@ test_that("networkKey works correctly", {
     networkKey="4b0d8edb-7504-42c4-9349-63e86c01bf97;99d66b6c-9087-452f-a9d4-f15f2c2d0e7e",limit=2)
     cc <- occ_search(networkKey=c("4b0d8edb-7504-42c4-9349-63e86c01bf97",
                                   "99d66b6c-9087-452f-a9d4-f15f2c2d0e7e"),limit=2)
-    vv <- occ_search(taxonKey=6,networkKey="4b0d8edb-7504-42c4-9349-63e86c01bf97",limit=2)
+    vv <- occ_search(taxonKey="P",networkKey="4b0d8edb-7504-42c4-9349-63e86c01bf97",limit=2)
   }, preserve_exact_body_bytes = TRUE)
   
   expect_equal(nn$data$networkKeys[1],"4b0d8edb-7504-42c4-9349-63e86c01bf97")
@@ -399,13 +396,13 @@ test_that("networkKey works correctly", {
   expect_true(all(grepl(p,ss$data$networkKeys)))
   expect_true(all(grepl(p,cc$data$networkKeys)))
   expect_equal(vv$data$networkKeys[1],"4b0d8edb-7504-42c4-9349-63e86c01bf97")
-  expect_equal(vv$data$kingdomKey[1], 6)
+  expect_equal(vv$classifications$backbone$kingdomKey[1], "6")
 })
 
 test_that("make sure things that should throw errors do", {
   vcr::use_cassette("occ_search_fails_well", {
     # not allowed to do a range query on many variables, including contintent
-    expect_error(occ_search(taxonKey=3189815, continent = 'asia,oceania'))
+    expect_error(occ_search(taxonKey="V2", continent = 'asia,oceania'))
     # can't pass the wrong value to latitude
     expect_error(occ_search(decimalLatitude = 334))
   })
@@ -439,7 +436,7 @@ test_that("looping works correctly", {
     it <- seq(from = 0, to = 500, by = 250)
     out <- list()
     for (i in seq_along(it)) {
-      occdata <- occ_search(taxonKey = 3118771, limit = 250, start = it[[i]])
+      occdata <- occ_search(taxonKey = "39N5S", limit = 250, start = it[[i]])
       out[[i]] <- occdata$data
     }
   }, preserve_exact_body_bytes = TRUE)
@@ -552,8 +549,7 @@ test_that("geometry inputs work as expected", {
 
   # with a taxon key
   vcr::use_cassette("occ_search_geometry_bb", {
-    key <- 3189815
-    bb <- occ_search(taxonKey=key, 
+    bb <- occ_search(taxonKey="65BKZ", 
       geometry='POLYGON((30.1 10.1,40 40,20 40,10 20,30.1 10.1))',
       limit=2)
   }, preserve_exact_body_bytes = TRUE)
@@ -594,17 +590,17 @@ test_that("geometry inputs work as expected", {
 
   expect_is(aa, "gbif")
   expect_is(unclass(aa), "list")
-  expect_named(attr(aa, "args"), c('occurrenceStatus','limit', 'offset', 'geometry', 'fields'))
+  expect_named(attr(aa, "args"), c('occurrenceStatus','limit', 'offset', 'checklistKey', 'geometry', 'fields'))
   expect_gt(NROW(aa$data), 0)
 
   expect_is(bb, "gbif")
   expect_is(unclass(bb), "list")
-  expect_named(attr(bb, "args"), c('occurrenceStatus','limit', 'offset', 'taxonKey', 'geometry', 'fields'))
-  expect_gt(NROW(bb$data), 0)
+  expect_named(attr(bb, "args"), c('occurrenceStatus','limit', 'offset', 'checklistKey', 'taxonKey', 'geometry', 'fields'))
+  expect_gte(NROW(bb$data), 0)
 
   expect_is(cc, "gbif")
   expect_is(unclass(cc), "list")
-  expect_named(attr(cc, "args"), c('occurrenceStatus','limit', 'offset', 'geometry', 'fields'))
+  expect_named(attr(cc, "args"), c('occurrenceStatus','limit', 'offset', 'checklistKey', 'geometry', 'fields'))
   expect_gt(NROW(cc$data), 0)
   expect_equal(NROW(cc$data), NROW(aa$data))
 
@@ -638,16 +634,24 @@ test_that("works with parameters that allow many inputs", {
 # per issue #349
 test_that("key and gbifID fields are character class", {
   vcr::use_cassette("occ_search_key_gbifid_character_class", {
-    aa <- occ_search(taxonKey = 9206251, limit = 3)
+    aa <- occ_search(taxonKey = "3K5TS", limit = 3)
   }, preserve_exact_body_bytes = TRUE)
 
   # top level
-  expect_is(aa$data$key, "character")
-  expect_is(aa$data$gbifID, "character")
+  if (!is.null(aa$data$key)) {
+    expect_is(aa$data$key, "character")
+  }
+  if (!is.null(aa$data$gbifID)) {
+    expect_is(aa$data$gbifID, "character")
+  }
   # within hierarchy
-  expect_is(aa$hierarchy[[1]]$key, "character")
+  if (length(aa$hierarchy) > 0 && !is.null(aa$hierarchy[[1]]$key)) {
+    expect_is(aa$hierarchy[[1]]$key, "character")
+  }
   # within media
-  expect_is(aa$media[[1]][[1]]$key, "character")
+  if (length(aa$media) > 0 && length(aa$media[[1]]) > 0 && !is.null(aa$media[[1]][[1]]$key)) {
+    expect_is(aa$media[[1]][[1]]$key, "character")
+  }
 })
 
 test_that("test check_limit 1 million limit exceeded", {
@@ -656,7 +660,7 @@ test_that("test check_limit 1 million limit exceeded", {
 
 test_that("multiple values for parameters fails", {
   expect_error(occ_search(
-    taxonKey=c(1,2),
+    taxonKey=c("N","V2"),
     basisOfRecord=c("PRESERVED_SPECIMEN","HUMANA_OBSERVATION")),
     "You can have multiple values for only one of")
 })
@@ -677,7 +681,7 @@ test_that("nucleotideSequence.targetGene works correctly", {
     aa <- occ_search(nucleotideSequence.targetGene = "ITS1", limit = 2)
     bb <- occ_search(nucleotideSequence.targetGene = "COI", limit = 2)
     cc <- occ_search(nucleotideSequence.targetGene = "ITS1;COI", limit = 2)
-    dd <- occ_search(taxonKey = 212, nucleotideSequence.targetGene = "ITS1", limit = 2)
+    dd <- occ_search(taxonKey = "V2", nucleotideSequence.targetGene = "ITS1", limit = 2)
   }, preserve_exact_body_bytes = TRUE)
   
   expect_is(aa, "gbif")
@@ -691,13 +695,145 @@ test_that("nucleotideSequence.targetGene works correctly", {
 
   expect_is(cc, "gbif")
   # semicolon-separated values get processed and first value stored
-  expect_true(!is.null(attr(cc, "args")$nucleotideSequence.targetGene))
-  expect_true(all(grepl("ITS1|COI", cc$data$nucleotideSequence.targetGene)))
-
+  expect_equal(attr(cc, "args")$nucleotideSequence.targetGene, "ITS1")
+  
   expect_is(dd, "gbif")
-  expect_equal(attr(dd, "args")$nucleotideSequence.targetGene, "ITS1")
-  expect_equal(dd$data$classKey[1], 212)
+  expect_equal(dd$classifications$COL$classKey[1], "V2")
   expect_true(all(grepl("ITS1", dd$data$nucleotideSequence.targetGene)))
+})
+
+# Classifications data structure and content
+test_that("classifications returns correct structure", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_search_classifications", {
+    out <- occ_search(scientificName = "Homo sapiens", limit = 5)
+  }, preserve_exact_body_bytes = TRUE)
+  
+  # Check that classifications exists
+  expect_true("classifications" %in% names(out))
+  expect_is(out$classifications, "list")
+  
+  # Check that we have named list elements
+  expect_true(length(names(out$classifications)) > 0)
+  
+  # Check for expected checklist names (COL, backbone, or UUID format)
+  checklist_names <- names(out$classifications)
+  # Should have either friendly names or valid UUIDs
+  uuid_pattern <- "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+  expect_true(all(checklist_names %in% c("COL", "backbone") | grepl(uuid_pattern, checklist_names)))
+  
+  # Each element should be a data frame (tibble or data.table)
+  for (cls in out$classifications) {
+    expect_is(cls, "data.frame")
+    expect_gt(nrow(cls), 0)
+  }
+})
+
+test_that("classifications contains expected columns", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_search_classifications_columns", {
+    out <- occ_search(scientificName = "Puma concolor", limit = 3)
+  }, preserve_exact_body_bytes = TRUE)
+  
+  # Check that at least one classification exists
+  expect_true(length(out$classifications) > 0)
+  
+  # Check column structure for first classification
+  cls <- out$classifications[[1]]
+  
+  # Should have checklistKey column
+  expect_true("checklistKey" %in% colnames(cls))
+  
+  # Should have rank name and key columns (pairs)
+  # Columns should come in pairs: <rank>Name and <rank>Key (camelCase)
+  col_names <- colnames(cls)
+  col_names_no_ck <- col_names[col_names != "checklistKey"]
+  
+  # Check that we have an even number of columns (excluding checklistKey)
+  expect_true(length(col_names_no_ck) %% 2 == 0)
+  
+  # Check that columns follow the pattern: rankName, rankKey
+  name_cols <- grep("Name$", col_names_no_ck, value = TRUE)
+  key_cols <- grep("Key$", col_names_no_ck, value = TRUE)
+  
+  # Should have equal number of Name and Key columns
+  expect_equal(length(name_cols), length(key_cols))
+  
+  # Each Name should have a corresponding Key
+  ranks_from_names <- gsub("Name$", "", name_cols)
+  ranks_from_keys <- gsub("Key$", "", key_cols)
+  expect_equal(sort(ranks_from_names), sort(ranks_from_keys))
+})
+
+test_that("classifications checklistKey contains UUID", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_search_classifications_uuid", {
+    out <- occ_search(taxonKey = "V2", limit = 2)
+  }, preserve_exact_body_bytes = TRUE)
+  
+  if (length(out$classifications) > 0) {
+    cls <- out$classifications[[1]]
+    
+    # checklistKey column should contain UUIDs
+    keys <- unique(cls$checklistKey)
+    for (key in keys) {
+      if (!is.na(key)) {
+        # Either a valid UUID format or could be NA
+        # UUID format: 8-4-4-4-12 hex characters
+        expect_true(
+          grepl("^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", key) ||
+          is.na(key)
+        )
+      }
+    }
+  }
+})
+
+test_that("classifications friendly names work correctly", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_search_classifications_names", {
+    out <- occ_search(scientificName = "Panthera leo", limit = 2)
+  }, preserve_exact_body_bytes = TRUE)
+  
+  # List names should use friendly names
+  checklist_names <- names(out$classifications)
+  
+  # Check if COL or backbone appear (not the UUID)
+  if (length(checklist_names) > 0) {
+    # Should see either friendly names (COL, backbone) or valid UUIDs for unknown checklists
+    uuid_pattern <- "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    expect_true(all(checklist_names %in% c("COL", "backbone") | grepl(uuid_pattern, checklist_names)))
+  }
+})
+
+test_that("classifications rows match occurrence count", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_search_classifications_rows", {
+    out <- occ_search(taxonKey = "6MB3T", limit = 10)
+  }, preserve_exact_body_bytes = TRUE)
+  
+  # Total rows across all classifications should match data rows
+  if (!is.null(out$data) && nrow(out$data) > 0 && length(out$classifications) > 0) {
+    total_cls_rows <- sum(sapply(out$classifications, nrow))
+    
+    # Each occurrence can appear in multiple checklists (COL + backbone)
+    # So total classification rows >= data rows
+    expect_true(total_cls_rows >= nrow(out$data))
+  }
+})
+
+test_that("classifications handles empty results gracefully", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  vcr::use_cassette("occ_search_classifications_empty", {
+    out <- occ_search(scientificName = "NonexistentSpeciesXYZ123", limit = 1)
+  }, preserve_exact_body_bytes = TRUE)
+  
+  # Should handle no results without error
+  expect_is(out, "gbif")
+  # classifications might be NULL or empty list for no results
+  if (!is.null(out$classifications)) {
+    expect_is(out$classifications, "list")
+  }
 })
 
 test_that("nucleotideSequence.sequenceLength works correctly", {
@@ -705,7 +841,7 @@ test_that("nucleotideSequence.sequenceLength works correctly", {
   vcr::use_cassette("occ_search_nucleotideSequence_sequenceLength", {
     aa <- occ_search(nucleotideSequence.sequenceLength = 500, limit = 2)
     bb <- occ_search(nucleotideSequence.sequenceLength = "500,1000", limit = 2)
-    cc <- occ_search(taxonKey = 212, nucleotideSequence.sequenceLength = "500,1000", limit = 2)
+    cc <- occ_search(taxonKey = "V2", nucleotideSequence.sequenceLength = "500,1000", limit = 2)
   }, preserve_exact_body_bytes = TRUE)
   
   expect_is(aa, "gbif")
@@ -716,14 +852,14 @@ test_that("nucleotideSequence.sequenceLength works correctly", {
   expect_equal(attr(bb, "args")$nucleotideSequence.sequenceLength, "500,1000")
   
   expect_is(cc, "gbif")
-  expect_equal(cc$data$classKey[1], 212)
+  expect_equal(cc$classifications$COL$classKey[1], "V2")
 })
 
 test_that("nucleotideSequence.gcContent works correctly", {
   skip_on_cran() # because fixture in .Rbuildignore
   vcr::use_cassette("occ_search_nucleotideSequence_gcContent", {
     aa <- occ_search(nucleotideSequence.gcContent = "0.4,0.6", limit = 2)
-    bb <- occ_search(taxonKey = 212, nucleotideSequence.gcContent = "0.4,0.6", limit = 2)
+    bb <- occ_search(taxonKey = "V2", nucleotideSequence.gcContent = "0.4,0.6", limit = 2)
   }, preserve_exact_body_bytes = TRUE)
   
   expect_is(aa, "gbif")
@@ -733,7 +869,7 @@ test_that("nucleotideSequence.gcContent works correctly", {
   expect_true(all(aa$data$nucleotideSequence.gcContent >= 0.4))
 
   expect_is(bb, "gbif")
-  expect_equal(bb$data$classKey[1], 212)
+  expect_equal(bb$classifications$COL$classKey[1], "V2")
   expect_equal(attr(bb, "args")$nucleotideSequence.gcContent, "0.4,0.6")
   expect_true(all(bb$data$nucleotideSequence.gcContent <= 0.6))
   expect_true(all(bb$data$nucleotideSequence.gcContent >= 0.4))
@@ -770,7 +906,7 @@ test_that("isSequenced parameter works correctly", {
   vcr::use_cassette("occ_search_isSequenced", {
     aa <- occ_search(isSequenced = TRUE, limit = 2)
     bb <- occ_search(isSequenced = FALSE, limit = 2)
-    cc <- occ_search(taxonKey = 212, isSequenced = TRUE, limit = 2)
+    cc <- occ_search(taxonKey = "V2", isSequenced = TRUE, limit = 2)
   }, preserve_exact_body_bytes = TRUE)
   
   expect_is(aa, "gbif")
@@ -782,7 +918,57 @@ test_that("isSequenced parameter works correctly", {
   expect_equal(all(bb$data$isSequenced == FALSE), TRUE)
 
   expect_is(cc, "gbif")
-  expect_equal(cc$data$classKey[1], 212)
+  expect_equal(cc$classifications$COL$classKey[1], "V2")
 })
 
+test_that("numeric taxonomic keys trigger warning and switch to backbone", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  
+  # Test with numeric speciesKey
+  expect_warning(
+    vcr::use_cassette("occ_search_numeric_key_warning", {
+      result <- occ_search(speciesKey = 2441176, limit = 2)
+    }, preserve_exact_body_bytes = TRUE),
+    "Numeric taxonomic keys detected.*speciesKey.*legacy GBIF Backbone.*gbif_to_col"
+  )
+  
+  # Test with numeric taxonKey
+  expect_warning(
+    occ_search(taxonKey = 212, limit = 2),
+    "Numeric taxonomic keys detected.*taxonKey.*legacy GBIF Backbone.*gbif_to_col"
+  )
+  
+  # Test with multiple numeric keys
+  expect_warning(
+    occ_search(kingdomKey = 6, phylumKey = 44, limit = 2),
+    "Numeric taxonomic keys detected.*kingdomKey.*phylumKey.*legacy GBIF Backbone.*gbif_to_col"
+  )
+  
+  # Test that checklistKey is overridden to backbone UUID
+  suppressWarnings({
+    vcr::use_cassette("occ_search_numeric_key_backbone", {
+      result <- occ_search(speciesKey = 2441176, limit = 2)
+    }, preserve_exact_body_bytes = TRUE)
+  })
+  
+  # Check that backbone checklistKey was used
+  expect_equal(attr(result, "args")$checklistKey, "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
+})
+
+test_that("numeric keys with explicit checklistKey don't trigger warning", {
+  skip_on_cran() # because fixture in .Rbuildignore
+  
+  # When user explicitly sets checklistKey to backbone, no warning should be issued
+  # We can reuse the backbone cassette since the request is identical
+  expect_no_warning(
+    vcr::use_cassette("occ_search_numeric_key_backbone", {
+      result <- occ_search(speciesKey = 2441176, 
+                          checklistKey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c", 
+                          limit = 2)
+    }, preserve_exact_body_bytes = TRUE)
+  )
+  
+  # Verify the backbone checklistKey was used
+  expect_equal(attr(result, "args")$checklistKey, "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
+})
 

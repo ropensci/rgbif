@@ -33,9 +33,9 @@ It is usually better to use **taxonKeys** rather than scientific names. Note the
 
 ``` r
 # name_backbone("Aves")$usageKey
-occ_count(taxonKey=212)
+occ_count(taxonKey="V2")
 # total count of birds and insects
-occ_count(taxonKey="212;216")
+occ_count(taxonKey="V2;H6")
 ```
 
 It is possible to get counts by **country** or area using the appropriate 2-letter country code. See `enumeration_country()`.
@@ -60,7 +60,7 @@ occ_count(repatriated = TRUE,country="IN")
 occ_count(taxonKey=216,publishingCountry="JP") 
 
 # number of specimen insect occurrence records published by Japan between the years 1900-2000
-occ_count(publishingCountry="JP",basisOfRecord="PRESERVED_SPECIMEN",taxonKey=216,year="1900,2000")
+occ_count(publishingCountry="JP",basisOfRecord="PRESERVED_SPECIMEN",taxonKey="H6",year="1900,2000")
 ```
 
 Some `occ_search()` parameters accept a **range** of values, and these will also work for `occ_count()`. A `,` is used to define a range, such as `year="1900,2000"`.
@@ -148,7 +148,7 @@ Almost any `occ_search()` parameter can be used via the facets interface. Facets
 # top scientificNames from Japan
 occ_count(facet="scientificName",country="JP")
 # top countries publishing specimen bird records between 1850 and 1880
-occ_count(facet="scientificName",taxonKey=212,basisOfRecord="PRESERVED_SPECIMEN",year="1850,1880")
+occ_count(facet="scientificName",taxonKey="V2",basisOfRecord="PRESERVED_SPECIMEN",year="1850,1880")
 
 # Number of present or absence records of Elephants
 occ_count(facet="occurrenceStatus",scientificName="Elephantidae")
@@ -162,7 +162,7 @@ occ_count(facet="datasetKey",distanceFromCentroidInMeters="0")
 occ_count(facet="coordinateUncertaintyInMeters",basisOfRecord="PRESERVED_SPECIMEN")
 
 # number of iucn listed bird and insect occurrences in Mexico
-occ_count(facet="iucnRedListCategory",taxonKey="212;216",country="MX")
+occ_count(facet="iucnRedListCategory",taxonKey="V2;H2",country="MX")
 
 # most common latitude values mediated by GBIF
 occ_count(facet="decimalLatitude")

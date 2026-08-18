@@ -15,6 +15,7 @@ mvt_fetch(
   squareSize = NULL,
   style = "classic.point",
   taxonKey = NULL,
+  checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b",
   datasetKey = NULL,
   country = NULL,
   publishingOrg = NULL,
@@ -58,6 +59,11 @@ Defaults to classic.point. optional. THESE DON'T WORK YET.}
 
 \item{taxonKey}{(integer/numeric/character) search by taxon key, can only
 supply 1. optional}
+
+\item{checklistKey}{(character) The key of a checklist to use for taxonomy.
+Defaults to COL (Catalogue of Life) Extended Release
+(\code{"7ddf754f-d193-4cc9-b351-99906754a03b"}). Set to \code{NULL} to use the GBIF
+Backbone Taxonomy. optional}
 
 \item{datasetKey}{(character) search by taxon key, can only supply 1.
 optional}
@@ -111,7 +117,8 @@ if (
  requireNamespace("sf", quietly = TRUE) &&
  requireNamespace("protolite", quietly = TRUE)
 ) {
-  x <- mvt_fetch(taxonKey = 2480498, year = 2007:2011)
+  # Using COL XR taxon key (default)
+  x <- mvt_fetch(taxonKey = "V2", year = 2007:2011)
   x
   
   # gives an sf object
@@ -119,24 +126,24 @@ if (
   
   # different srs
   ## 3857
-  y <- mvt_fetch(taxonKey = 2480498, year = 2010, srs = "EPSG:3857")
+  y <- mvt_fetch(taxonKey = "V2", year = 2010, srs = "EPSG:3857")
   y
   ## 3031
-  z <- mvt_fetch(taxonKey = 2480498, year = 2010, srs = "EPSG:3031", verbose = TRUE)
+  z <- mvt_fetch(taxonKey = "V2", year = 2010, srs = "EPSG:3031", verbose = TRUE)
   z
   # 3575
-  z <- mvt_fetch(taxonKey = 2480498, year = 2010, srs = "EPSG:3575")
+  z <- mvt_fetch(taxonKey = "V2", year = 2010, srs = "EPSG:3575")
   z
 
   # bin
-  x <- mvt_fetch(taxonKey = 212, year = 1998, bin = "hex",
+  x <- mvt_fetch(taxonKey = "V2", year = 1998, bin = "hex",
      hexPerTile = 30, style = "classic-noborder.poly")
   x
 
   # query with basisOfRecord
-  mvt_fetch(taxonKey = 2480498, year = 2010,
+  mvt_fetch(taxonKey = "V2", year = 2010,
     basisOfRecord = "HUMAN_OBSERVATION")
-  mvt_fetch(taxonKey = 2480498, year = 2010,
+  mvt_fetch(taxonKey = "V2", year = 2010,
     basisOfRecord = c("HUMAN_OBSERVATION", "LIVING_SPECIMEN"))
  }
 }

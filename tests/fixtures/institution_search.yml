@@ -8,7 +8,7 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":19,"results":[{"key":"956f3e1f-ebd2-48e3-a3ee-42bfb1950a47","code":"PECA","name":"Pratt
+      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":20,"results":[{"key":"956f3e1f-ebd2-48e3-a3ee-42bfb1950a47","code":"PECA","name":"Pratt
         Education Center and Aquarium","description":"The emphasis of the Pratt Education
         Center is to discover the wildlife of Kansas. Numerous displays, dioramas,
         and exhibits provide close encounters with the native birds, fish, mammals,
@@ -25,7 +25,7 @@ http_interactions:
         The other features the catfish rearing program along with a working model
         of Seth Way''s ingenious incubating trough.  Over one hundred and twenty-eight
         species of birds and their eggs","types":[],"active":true,"email":[],"phone":[],"homepage":"https://ksoutdoors.com/KDWP-Info/Locations/Museums-and-Nature-Centers/Pratt-Education-Center","catalogUrls":[],"apiUrls":[],"institutionalGovernances":[],"disciplines":[],"latitude":37.632106,"longitude":-98.693794,"mailingAddress":{"key":46553,"country":"US"},"address":{"key":46554,"province":"KS","country":"US"},"additionalNames":[],"createdBy":"GRBIO","modifiedBy":"gbif-collections","created":"2013-05-21T01:38:00.000+00:00","modified":"2024-05-23T12:37:31.514+00:00","tags":[],"identifiers":[{"key":350269,"type":"NCBI_BIOCOLLECTION","identifier":"945030","createdBy":"mgrosjean","created":"2023-08-15T11:08:06.053+00:00","primary":false},{"key":178149,"type":"GRSCICOLL_URI","identifier":"http://grscicoll.org/institution/pratt-education-center-and-aquarium","createdBy":"registry-migration-grbio.gbif.org","created":"2019-08-15T08:12:27.572+00:00","primary":false},{"key":169988,"type":"GRSCICOLL_URI","identifier":"http://grbio.org/institution/pratt-education-center-and-aquarium","createdBy":"registry-migration-grbio.gbif.org","created":"2019-08-15T08:12:20.362+00:00","primary":false},{"key":134524,"type":"GRSCICOLL_ID","identifier":"17487","createdBy":"registry-migration-grbio.gbif.org","created":"2018-11-15T10:23:01.527+00:00","primary":false},{"key":141621,"type":"GRSCICOLL_URI","identifier":"http://grbio.org/cool/sfj9-st9f","createdBy":"registry-migration-grbio.gbif.org","created":"2018-11-15T10:23:01.527+00:00","primary":false}],"contactPersons":[],"machineTags":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0}]}'
-  recorded_at: 2025-11-13 08:04:46
+  recorded_at: 2026-08-13 12:20:56
 - request:
     method: GET
     uri: https://api.gbif.org/v1/grscicoll/institution?numberSpecimens=1000%2C%2A&limit=2
@@ -35,26 +35,55 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":2825,"results":[{"key":"00f93b00-a375-4c3b-b6a4-119f89b1b78d","code":"NSMUK","name":"Natural
-        Sciences Museum","description":"The Natural Sciences Museum is a relatively
-        new independent natural history museum located in at 149 Holme Lane, Sheffield
-        S6 4JR, and opened to the public on 13 August 2022.  The museum is focused
-        chiefly on palaeontological specimens. It has 12,000 specimens, a CT-scanner,
-        a public preparation lab, and a private conservation lab. ","types":["Museum"],"active":true,"email":["info@ynhm.org"],"phone":["01142216662‬"],"homepage":"https://ynhm.org","catalogUrls":[],"apiUrls":[],"institutionalGovernances":["NonProfit"],"disciplines":["Paleontology"],"latitude":53.401184,"longitude":-1.505363,"mailingAddress":{"key":57013,"address":"149
-        Holme Lane","city":"Sheffield","province":"South Yorkshire","postalCode":"S6
-        4JR","country":"GB"},"address":{"key":57012,"address":"149 Holme Lane","city":"Sheffield","province":"South
-        Yorkshire","postalCode":"S6 4JR","country":"GB"},"additionalNames":["Yorkshire
-        Natural History Museum"],"numberSpecimens":12000,"logoUrl":"https://img1.wsimg.com/isteam/ip/ecbcc640-26c4-4e77-8b4c-6215b27303ce/blob-0003.png/:/cr=t:0%25,l:0%25,w:100%25,h:100%25","createdBy":"taraw","modifiedBy":"taraw","created":"2025-10-21T09:59:25.632+00:00","modified":"2025-10-21T09:59:25.632+00:00","tags":[],"identifiers":[],"contactPersons":[],"machineTags":[],"alternativeCodes":[{"code":"YNHM","description":"Yorkshire
-        Natural History Museum"}],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"featuredImageUrl":"https://ynhm.org"},{"key":"65c860d6-866b-4b79-94b6-1fe20cfde100","code":"NBSBC","name":"Native
-        Bee Society of BC","description":"The Native Bee Society of BC is an incorporated
-        not-for-profit society, established in July 2019 in the province of British
-        Columbia under the Societies Act. As of May 2023, NBSBC is an affiliate club
-        of BC Nature.\nWe are a collective of native bee researchers, artists, land
-        managers, conservation practitioners, and enthusiasts working to promote the
-        conservation of native bees in British Columbia. ","types":["OtherInstitutionalType"],"active":true,"email":["bcnativebees@gmail.com"],"phone":[],"homepage":"https://www.bcnativebees.org/","catalogUrls":[],"apiUrls":[],"institutionalGovernances":["NonProfit"],"disciplines":[],"latitude":49.479000,"longitude":-124.803000,"mailingAddress":{"key":56963,"address":"1481
-        Park Ave","city":"Roberts Creek","postalCode":"V0N2W2","country":"CA"},"address":{"key":56962,"address":"1481
-        Park Ave","city":"Roberts Creek","postalCode":"V0N2W2","country":"CA"},"additionalNames":[],"foundingDate":2019,"numberSpecimens":5000,"createdBy":"canadensys","modifiedBy":"canadensys","created":"2025-09-29T13:04:46.472+00:00","modified":"2025-09-29T13:04:46.472+00:00","tags":[],"identifiers":[],"contactPersons":[],"machineTags":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0}]}'
-  recorded_at: 2025-11-13 08:04:46
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":2831,"results":[{"key":"2bc94e2f-c8ea-4c28-8b41-4ea859e31cec","code":"Q-Quatics","name":"Quantitative
+        Aquatics, Inc.","description":"Q-quatics was created to support the assembly
+        and dissemination of key data on living aquatic resources for the development
+        of research tools in collaboration with national and international partners.
+        As such, Q-quatics works closely with the global biodiversity information
+        systems FishBase, SeaLifeBase, and the Catalogue of Life and the global aquatic
+        biogeography initiative AquaMaps.\n\n \n\nQ-quatics also supports the cutting-edge
+        databases and research developed by the Sea Around Us, which provides policy
+        options for marine fisheries resources, their sustainable use and possible
+        responses to climate change. As such, it partners with the Sea Around Us in
+        identifying projects that would help initiate or maintain research on global
+        fisheries and biodiversity conservation.\n\n \n\nQ-quatics develops and maintains
+        mutually beneficial collaborations and partnerships with academic, conservation
+        and biodiversity research organizations.\n\n \n\nQ-quatics operates under
+        the scientific guidance of the FishBase Consortium and is subject to Philippine
+        national laws. Although its primary mission is not as a grant-making institution,
+        Q-quatics can receive and disburse funds for the exclusive use of its affiliated
+        projects, for which it allows indirect costs or overheads (institutional overheads)
+        to a maximum of 10% of direct costs.","types":["OtherTypeResearchInstitutionBiorepository","OtherInstitutionalType"],"active":true,"email":["info@q-quatics.org"],"phone":["(049)
+        536 2701"],"homepage":"https://www.q-quatics.org","catalogUrls":["https://fishbase.org","https://www.sealifebase.ca","https://aquamaps.org/"],"apiUrls":[],"institutionalGovernances":["NonProfit"],"disciplines":["MarineBiologyAndBiologicalOceanography","MarineGeologyAndPaleoceanography","FishingFisheriesScience"],"latitude":14.169781,"longitude":121.254820,"mailingAddress":{"key":59868,"address":"IRRI
+        G.S. Khush Hall, College, Los Banos 4031, Laguna, Philippines","city":"Los
+        Baños, Laguna","province":"Laguna","postalCode":"4031","country":"PH"},"address":{"key":59867,"address":"IRRI
+        G.S. Khush Hall, College, Los Banos 4031, Laguna, Philippines","city":"Los
+        Baños, Laguna","province":"Laguna","postalCode":"4031","country":"PH"},"additionalNames":["Aquamaps","Sealifebase","Fishbase"],"foundingDate":2023,"numberSpecimens":36700,"logoUrl":"https://www.q-quatics.org/wp-content/uploads/2026/03/banner_mid_sub_2026.png","createdBy":"cbelloran","modifiedBy":"cbelloran","created":"2026-08-13T11:27:26.244+00:00","modified":"2026-08-13T11:33:33.225+00:00","tags":[],"identifiers":[],"contactPersons":[],"machineTags":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"featuredImageUrl":"https://www.q-quatics.org/wp-content/uploads/2026/03/banner_mid_sub_2026.png","featuredImageLicense":"CC_BY_4_0","featuredImageAttribution":"https://www.q-quatics.org/wp-content/uploads/2026/03/banner_mid_sub_2026.png"},{"key":"47436bdb-611a-499c-ab41-f9c9b5368f33","code":"BOSCORF","name":"British
+        Ocean Sediment Core Research Facility","description":"BOSCORF is responsible
+        for the long-term storage and curation of sediment samples collected through
+        UKRI-NERC research programmes. We promote secondary usage of sediment samples
+        and analytical data relating to the sample collections.\nThe BOSCORF core
+        repository building consists of four inter-connected cold stores that hold
+        over 2500 unique samples from our global ocean. This makes BOSCORF the largest
+        deep ocean sediment core repository in the UK.\nMost sediment cores stored
+        at BOSCORF were collected over the past five decades, yet new expeditions
+        add to our collection every year. The core collection harbours unique geological
+        samples used by research scientists world-wide to investigate topics such
+        as geo-hazards, climate change, and marine ecosystems. In our cold stores
+        we keep cores under low light conditions and refrigerated at 4°C. These conditions,
+        in combination with the Marine Sediments Collection Management System, allow
+        optimum core preservation for analysis and future investigations.\nIn addition
+        to the physical collections, we provide online resources, and can help you
+        plan your expedition/fieldwork such that new material is suitable for storage
+        at BOSCORF. Please explore the online repository facilities to help you find
+        your sample, dataset, associate repository, software package, and/or tips
+        and advice for your next expedition or field trip.","types":["OtherTypeResearchInstitutionBiorepository"],"active":true,"email":["boscorf@noc.ac.uk"],"phone":["+44
+        (0)300 131 2452"],"homepage":"https://boscorf.org/","catalogUrls":[],"apiUrls":[],"institutionalGovernances":["Governmental"],"disciplines":["MarineGeologyAndPaleoceanography","Geology","Geochemistry","Biogeochemistry"],"latitude":50.892622,"longitude":-1.393147,"mailingAddress":{"key":59699,"address":"National
+        Oceanography Centre, European Way","city":"Southampton","province":"Hampshire","postalCode":"SO14
+        3ZH","country":"GB"},"address":{"key":59698,"address":"National Oceanography
+        Centre, European Way","city":"Southampton","province":"Hampshire","postalCode":"SO14
+        3ZH","country":"GB"},"additionalNames":[],"foundingDate":1997,"numberSpecimens":3608,"createdBy":"taraw","modifiedBy":"taraw","created":"2026-07-28T14:49:57.970+00:00","modified":"2026-07-30T14:14:33.521+00:00","tags":[],"identifiers":[],"contactPersons":[],"machineTags":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0}]}'
+  recorded_at: 2026-08-13 12:20:56
 - request:
     method: GET
     uri: https://api.gbif.org/v1/grscicoll/institution?numberSpecimens=1000%2C%2A&occurrenceCount=10%2C%2A&limit=2
@@ -64,59 +93,43 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":1405,"results":[{"key":"51c241b8-6086-4f34-bc63-a2e6a3dfceb0","code":"MCUC","name":"Science
-        Museum of the University of Coimbra","description":"The Science Museum of
-        the University of Coimbra holds the oldest Portuguese natural history and
-        scientific instruments collections, the first objects dating mostly from the
-        Century of Lights. These collections are yet associated with others that reveal
-        the evolution of the University of Coimbra and its influence in Portugal and
-        the world. The museum is included in the “University of Coimbra Alta and Sofia”,
-        classified by UNESCO as a World Heritage Site in 2013.The Science Museum assumes
-        the responsibility of ensuring the conditions for the preservation and use
-        of the collections, and aims to be as an inclusive reference center for the
-        dissemination of scientific and technological culture.As a modern museum is
-        must also respond to the demands of contemporary society, inspiring and motivating
-        citizens to science, by using its collections. Through research, production,
-        transmission and dissemination of the scientific knowledge and history of
-        the University of Coimbra it also assumes its role as an interface of the
-        University activity. The Museum’s mission regarding natural history collections
-        is in line with the Buffon Declaration agreed in Paris in 2007 by 93 natural
-        history institutions from around the world.","types":["Museum"],"active":true,"email":["collections@museudaciencia.uc.pt"],"phone":["+351
-        931 491 515"],"homepage":"http://www.museudaciencia.org/","catalogUrls":[],"apiUrls":[],"institutionalGovernances":["Academic"],"disciplines":[],"latitude":0.001221,"longitude":0.009025,"mailingAddress":{"key":56282},"address":{"key":56281,"address":"Museu
-        da Ciência Laboratorio Chimico Lar","city":"Coimbra","postalCode":"3000-272","country":"PT"},"additionalNames":["Universidade
-        de Coimbra"],"foundingDate":1772,"numberSpecimens":500000,"createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2025-07-25T08:52:08.819+00:00","modified":"2025-07-25T08:52:50.287+00:00","tags":[],"identifiers":[{"key":445097,"type":"NCBI_BIOCOLLECTION","identifier":"940494","createdBy":"mgrosjean","created":"2025-07-25T08:52:50.287+00:00","primary":false},{"key":445098,"type":"WIKIDATA","identifier":"http://www.wikidata.org/entity/Q368643","createdBy":"mgrosjean","created":"2025-07-25T08:52:50.287+00:00","primary":false},{"key":445099,"type":"ROR","identifier":"https://ror.org/04z8k9a98","createdBy":"mgrosjean","created":"2025-07-25T08:52:50.287+00:00","primary":false},{"key":445100,"type":"GRSCICOLL_ID","identifier":"16914","createdBy":"mgrosjean","created":"2025-07-25T08:52:50.287+00:00","primary":false},{"key":445101,"type":"UUID","identifier":"2f165ffa-7e44-46b9-aa56-3b3293cc623f","createdBy":"mgrosjean","created":"2025-07-25T08:52:50.287+00:00","primary":false},{"key":445102,"type":"GRSCICOLL_URI","identifier":"http://grbio.org/cool/kdnj-p7nx","createdBy":"mgrosjean","created":"2025-07-25T08:52:50.287+00:00","primary":false},{"key":445103,"type":"GRSCICOLL_URI","identifier":"http://grscicoll.org/institution/universidade-de-coimbra","createdBy":"mgrosjean","created":"2025-07-25T08:52:50.287+00:00","primary":false},{"key":445104,"type":"GRSCICOLL_URI","identifier":"http://grbio.org/institution/universidade-de-coimbra","createdBy":"mgrosjean","created":"2025-07-25T08:52:50.287+00:00","primary":false},{"key":445105,"type":"IH_IRN","identifier":"gbif:ih:irn:259694","createdBy":"mgrosjean","created":"2025-07-25T08:52:50.287+00:00","primary":false},{"key":445106,"type":"UUID","identifier":"92b86330-5223-4fde-8257-b27234b0c241","createdBy":"mgrosjean","created":"2025-07-25T08:52:50.287+00:00","primary":false}],"contactPersons":[],"machineTags":[],"alternativeCodes":[{"code":"MCUC","description":"Code
-        from replaced entity 92b86330-5223-4fde-8257-b27234b0c241"},{"code":"MUCUC","description":"herbarium
-        code"},{"code":"MZCP","description":"Code from replaced entity 2f165ffa-7e44-46b9-aa56-3b3293cc623f"}],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":439,"typeSpecimenCount":0},{"key":"e4cf34ea-6d63-4e05-a63a-ca62460f4a71","code":"TUR","name":"University
-        of Turku Natural History Museum","description":"The Natural History Museum
-        of the University of Turku maintains and develops the second largest natural
-        history collections in Finland. Approximately 5 million samples span a time
-        period from the late 18th / early 19th century to the present day. The museum
-        also contains the zoological and botanical collections of Åbo Akademi, and
-        both universities collaborate in studying the collections. The main focus
-        of the museum is to carry out research and teaching, based on the collections
-        and on fieldwork. Major research fields include taxonomy, systematics and
-        biogeography. Research projects run by the staff and PhD students of the museum
-        study the diversity of mosses and vascular plants, arthropods and vertebrates
-        throughout the world. We are especially interested in the evolutionary history
-        and classification of taxa. The collections contain specimens from all over
-        the world. Research currently focuses on Europe, Africa, South America and
-        Papua New Guinea.","types":["Museum"],"active":true,"email":["elainmuseo@utu.fi","kasvimuseu@utu.fi"],"phone":[],"homepage":"https://collections.utu.fi/en/","catalogUrls":[],"apiUrls":[],"institutionalGovernances":["Academic"],"disciplines":["Biological"],"latitude":60.455259,"longitude":22.283680,"mailingAddress":{"key":56274,"address":"Henrikinkatu
-        2","city":"Turku","province":"Southwest Finland","postalCode":"FI-20014","country":"FI"},"address":{"key":56273,"address":"Henrikinkatu
-        2","city":"Turku","province":"Southwest Finland","postalCode":"FI-20014","country":"FI"},"additionalNames":[],"foundingDate":1919,"numberSpecimens":5000000,"logoUrl":"https://upload.wikimedia.org/wikipedia/en/thumb/a/ab/University_of_Turku.svg/250px-University_of_Turku.svg.png","createdBy":"finbif","modifiedBy":"finbif","created":"2025-07-24T11:44:32.579+00:00","modified":"2025-07-24T11:44:32.579+00:00","tags":[],"identifiers":[],"contactPersons":[{"key":43196,"firstName":"Ilari","lastName":"Sääksjärvi","position":["Unit
-        Head"],"phone":["+358 29 450 3740"],"fax":[],"email":["ileesa@utu.fi"],"address":["Vesilinnantie
-        5"],"city":"Turku","province":"Southwest Finland","country":"FI","postalCode":"FI-20500","primary":true,"taxonomicExpertise":[],"userIds":[{"type":"ORCID","id":"https://orcid.org/0000-0002-8107-5607"}],"createdBy":"finbif","modifiedBy":"finbif","created":"2025-07-24T11:57:52.435+00:00","modified":"2025-07-24T11:57:52.435+00:00"},{"key":43197,"firstName":"Sanna","lastName":"Huttunen","position":["Unit
-        Vice Head"],"phone":["+358 29 450 4353"],"fax":[],"email":["shuttu@utu.fi"],"address":["    Vesilinnantie
-        5"],"city":"Turku","province":"Southwest Finland","country":"FI","postalCode":"FI-20500","primary":false,"taxonomicExpertise":[],"userIds":[{"type":"ORCID","id":"http://orcid.org/0000-0003-1374-9857"}],"createdBy":"finbif","modifiedBy":"finbif","created":"2025-07-24T12:01:27.856+00:00","modified":"2025-07-24T12:01:27.856+00:00"},{"key":43198,"firstName":"Anssi","lastName":"Teräs","position":["Senior
-        Museum Technician"],"phone":[],"fax":[],"email":["anssi.teras@abo.fi"],"address":[],"city":"Turku","province":"Southwest
-        Finland","country":"FI","primary":false,"taxonomicExpertise":[],"userIds":[],"createdBy":"finbif","modifiedBy":"finbif","created":"2025-07-24T12:05:04.219+00:00","modified":"2025-07-24T12:05:04.219+00:00"},{"key":43199,"firstName":"Seppo","lastName":"Huhtinen","position":["Museum
-        Manager"],"phone":[],"fax":[],"email":["sephuh@utu.fi"],"address":["Vesilinnantie
-        5"],"city":"Turku","province":"Southwest Finland","country":"FI","postalCode":"FI-20500","primary":false,"taxonomicExpertise":[],"userIds":[{"type":"ORCID","id":"https://orcid.org/0000-0002-6706-2092"}],"createdBy":"finbif","modifiedBy":"finbif","created":"2025-07-24T12:08:58.719+00:00","modified":"2025-07-24T12:10:20.708+00:00"},{"key":43200,"firstName":"Nelly","lastName":"Llerena
-        Martinez","position":["Museum Caretaker"],"phone":["+358 29 450 4355"],"fax":[],"email":["nellle@utu.fi"],"address":["Vesilinnantie
-        5"],"city":"Turku","province":"Southwest Finland","country":"FI","postalCode":"Fi-20500","primary":false,"taxonomicExpertise":[],"userIds":[],"createdBy":"finbif","modifiedBy":"finbif","created":"2025-07-24T12:13:06.682+00:00","modified":"2025-07-24T12:13:06.682+00:00"}],"machineTags":[],"alternativeCodes":[{"code":"TUR-A","description":"Used
-        for the botanical collections of Åbo Akademi University"},{"code":"ZMUT","description":"Used
-        for zoological collections"},{"code":"ZMAA","description":"Used for the zoological
-        collections of Åbo Akademi University"}],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":297907,"typeSpecimenCount":1175,"featuredImageUrl":"https://collections.utu.fi/wp-content/uploads/2019/10/MG_0668.jpg","featuredImageLicense":"UNSPECIFIED"}]}'
-  recorded_at: 2025-11-13 08:04:46
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":1485,"results":[{"key":"a2dc9223-d557-4fcf-9c86-c5d2aa34f198","code":"UQUH","name":"Umm
+        Al-Qura University","description":"Umm al-Qura University is a public university
+        in Mecca, Saudi Arabia, established in 1949","types":["UniversityCollege"],"active":true,"email":["herbarium@uqu.edu.sa"],"phone":["[+966]
+        12527000 ext. 3219"],"catalogUrls":[],"apiUrls":[],"institutionalGovernances":["State","Governmental","Academic"],"disciplines":[],"latitude":21.330547,"longitude":39.948273,"mailingAddress":{"key":59244,"address":"MDAA3581
+        Al Mashair","city":"Makkah","province":"Makkah","postalCode":"24381","country":"SA"},"address":{"key":59046,"address":"MDAA3581
+        Al Mashair","city":"Makkah","province":"Makkah","postalCode":"24381","country":"SA"},"additionalNames":[],"foundingDate":1994,"numberSpecimens":1500,"createdBy":"laban","modifiedBy":"ih-sync","created":"2026-04-24T04:45:38.150+00:00","modified":"2026-06-03T11:48:14.986+00:00","tags":[],"identifiers":[{"key":467353,"type":"IH_IRN","identifier":"gbif:ih:irn:269402","createdBy":"laban","created":"2026-04-24T04:45:38.164+00:00","primary":false}],"contactPersons":[{"key":47307,"firstName":"Widad
+        S.","lastName":"AL-Juhani","position":["Associate Professor of Taxonomy and
+        Plant Diversity"],"phone":[],"fax":[],"email":["wsjuhani@uqu.edu.sa"],"address":[],"city":"Makkah","province":"Makkah","country":"SA","primary":false,"taxonomicExpertise":[],"userIds":[{"type":"IH_IRN","id":"269425"}],"createdBy":"ih-sync","modifiedBy":"ih-sync","created":"2026-06-03T11:48:15.065+00:00","modified":"2026-06-17T14:07:38.108+00:00"},{"key":47308,"firstName":"Samah
+        Abdullah","lastName":"Alharbi","position":["Associate Professor of Taxonomy
+        and Plant Diversity"],"phone":["[+966] 12527000 ext. 3219"],"fax":[],"email":["sarehaily@uqu.edu.sa"],"address":["MDAA3581
+        Al Mashair"],"city":"Makkah","province":"Makkah","country":"SA","postalCode":"24341
+        3931","primary":false,"taxonomicExpertise":[],"userIds":[{"type":"IH_IRN","id":"269423"}],"createdBy":"ih-sync","modifiedBy":"ih-sync","created":"2026-06-03T11:48:15.106+00:00","modified":"2026-06-03T11:48:15.106+00:00"},{"key":47309,"firstName":"Aiman
+        Hamed","lastName":"Nawwab","position":[],"phone":["[+966] 12527000 ext. 3219"],"fax":[],"email":["ahnawwab@uqu.edu.sa"],"address":[],"primary":false,"taxonomicExpertise":[],"userIds":[{"type":"IH_IRN","id":"269426"}],"createdBy":"ih-sync","modifiedBy":"ih-sync","created":"2026-06-03T11:48:15.148+00:00","modified":"2026-06-03T11:48:15.148+00:00"}],"machineTags":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"IH","masterSourceMetadata":{"key":10025,"source":"IH_IRN","sourceId":"269402","createdBy":"laban","created":"2026-04-24T04:45:38.173+00:00"},"displayOnNHCPortal":true,"occurrenceCount":33,"typeSpecimenCount":0},{"key":"b1a5b244-b055-4178-ae4f-36fbaeb31620","code":"TCM","name":"Ţării
+        Crişurilor Museum","description":"Ţării Crişurilor Museum – museum complex,
+        subordinated to Bihor County Council – is an important cultural objective
+        in Romania, formed by Ţării Crişurilor Museum departments: Archaeology, History,
+        Natural Sciences, Ethnography, Art, Public Relations and Exhibitions), The
+        “Iosif Vulcan” Memorial Museum, the “Aurel Lazăr” Memorial Museum, the “Ady
+        Endre” Memorial Museum (museums that are part of the Memorial museums, social
+        groups, history of the minorities) and the Vadu Crișului Cave.\n\nThe Department
+        of Natural Sciences was founded in 1971. Its fundamental objective was the
+        preservation, research and development of the collections of geology, paleontology
+        and biology, owned by the History Department since 1952. The basis of these
+        collections was laid by Tiberiu Jurcsák and his collaborators in 1950 and
+        then enriched by the scientific staff of the department. The patrimony of
+        the department has increased to a number of 158.385 registered pieces, of
+        which over 84.000 in the field of geology-paleontology and over 48.000 in
+        the field of biology.\n\nThe collections are structured on two domains: paleontology
+        and geological evolution of the western part of Romania, with the Triassic
+        marine vertebrates, fossil plants from the Inferior Jurassic, dinosaurs from
+        the Cretaceous and Pleistocene vertebrates; and biology, botany and zoology,
+        with remarkable malacological and oological collections.","types":["Museum"],"active":true,"email":["contact@mtariicrisurilor.ro"],"phone":["0259/706101"],"homepage":"https://mtariicrisurilor.ro/en/","catalogUrls":[],"apiUrls":[],"institutionalGovernances":[],"disciplines":["Archaeology","Biological","Paleontology","Geology"],"latitude":47.050933,"longitude":21.923820,"mailingAddress":{"key":58122},"address":{"key":58121,"address":"1/A
+        Armatei Române Street","city":"Oradea","province":"Bihor","postalCode":"410087","country":"RO"},"additionalNames":["Muzeul
+        Ţării Crişurilor Oradea"],"foundingDate":1896,"numberSpecimens":450000,"logoUrl":"https://mtariicrisurilor.ro/wp-content/uploads/2020/03/Logo-Muzeu-Alb-nou.png","createdBy":"spalpurina","modifiedBy":"spalpurina","created":"2026-02-26T15:31:35.255+00:00","modified":"2026-02-26T15:31:35.255+00:00","tags":[],"identifiers":[],"contactPersons":[],"machineTags":[],"alternativeCodes":[{"code":"muzeul
+        ''tarii crisurilor'', oradea, romania","description":"Code used in this dataset:
+        https://doi.org/10.15468/9825yw"}],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":78,"typeSpecimenCount":0,"featuredImageUrl":"https://mtariicrisurilor.ro/wp-content/uploads/2017/07/DSC_2301.jpg"}]}'
+  recorded_at: 2026-08-13 12:20:56
 - request:
     method: GET
     uri: https://api.gbif.org/v1/grscicoll/institution?limit=1&source=IH_IRN
@@ -126,11 +139,12 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":3779,"results":[{"key":"c7ef73ef-d78d-4a08-a189-9b576b9eff06","code":"HAB","name":"Herzog
-        August Library Wolfenbüttel","types":[],"active":false,"email":["auskunft@hab.de"],"phone":["+49
-        (0)5331 808 114","+49 (0)5331 808 129"],"catalogUrls":[],"apiUrls":[],"institutionalGovernances":[],"disciplines":[],"address":{"key":56948,"address":"Lessingplatz
-        1","city":"Wolfenbüttel","province":"Lower Saxony","postalCode":"38304","country":"DE"},"additionalNames":[],"createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2025-09-29T08:21:51.171+00:00","modified":"2025-09-29T08:21:51.171+00:00","tags":[],"identifiers":[{"key":449529,"type":"IH_IRN","identifier":"gbif:ih:irn:268202","createdBy":"mgrosjean","created":"2025-09-29T08:21:51.192+00:00","primary":false}],"contactPersons":[],"machineTags":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"IH","masterSourceMetadata":{"key":9871,"source":"IH_IRN","sourceId":"268202","createdBy":"mgrosjean","created":"2025-09-29T08:21:51.202+00:00"},"displayOnNHCPortal":true,"occurrenceCount":5,"typeSpecimenCount":3}]}'
-  recorded_at: 2025-11-13 08:04:46
+      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":3817,"results":[{"key":"127e7036-7dd0-4311-b2e5-d56361d9800c","code":"SINAI","name":"Arish
+        University","description":"Herbarium of the Faculty of Science, El-Arish University,
+        North Sinai, Egypt","types":[],"active":true,"email":["nhegab@aru.edu.eg"],"phone":["+201017701744"],"catalogUrls":[],"apiUrls":[],"institutionalGovernances":[],"disciplines":[],"latitude":31.134933,"longitude":33.828770,"mailingAddress":{"key":59703,"city":"El-Arish","province":"North
+        Sinai","postalCode":"45511","country":"EG"},"address":{"key":59661,"city":"El-Arish","province":"North
+        Sinai","postalCode":"4511","country":"EG"},"additionalNames":[],"createdBy":"laban","modifiedBy":"ih-sync","created":"2026-07-23T12:01:55.994+00:00","modified":"2026-07-29T14:13:25.383+00:00","tags":[],"identifiers":[{"key":470844,"type":"IH_IRN","identifier":"gbif:ih:irn:269902","createdBy":"laban","created":"2026-07-23T12:01:56.007+00:00","primary":false}],"contactPersons":[],"machineTags":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"IH","masterSourceMetadata":{"key":10204,"source":"IH_IRN","sourceId":"269902","createdBy":"laban","created":"2026-07-23T12:01:56.019+00:00"},"displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0}]}'
+  recorded_at: 2026-08-13 12:20:56
 - request:
     method: GET
     uri: https://api.gbif.org/v1/grscicoll/institution?limit=1&country=US
@@ -140,18 +154,21 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":2570,"results":[{"key":"00f93b00-a375-4c3b-b6a4-119f89b1b78d","code":"NSMUK","name":"Natural
-        Sciences Museum","description":"The Natural Sciences Museum is a relatively
-        new independent natural history museum located in at 149 Holme Lane, Sheffield
-        S6 4JR, and opened to the public on 13 August 2022.  The museum is focused
-        chiefly on palaeontological specimens. It has 12,000 specimens, a CT-scanner,
-        a public preparation lab, and a private conservation lab. ","types":["Museum"],"active":true,"email":["info@ynhm.org"],"phone":["01142216662‬"],"homepage":"https://ynhm.org","catalogUrls":[],"apiUrls":[],"institutionalGovernances":["NonProfit"],"disciplines":["Paleontology"],"latitude":53.401184,"longitude":-1.505363,"mailingAddress":{"key":57013,"address":"149
-        Holme Lane","city":"Sheffield","province":"South Yorkshire","postalCode":"S6
-        4JR","country":"GB"},"address":{"key":57012,"address":"149 Holme Lane","city":"Sheffield","province":"South
-        Yorkshire","postalCode":"S6 4JR","country":"GB"},"additionalNames":["Yorkshire
-        Natural History Museum"],"numberSpecimens":12000,"logoUrl":"https://img1.wsimg.com/isteam/ip/ecbcc640-26c4-4e77-8b4c-6215b27303ce/blob-0003.png/:/cr=t:0%25,l:0%25,w:100%25,h:100%25","createdBy":"taraw","modifiedBy":"taraw","created":"2025-10-21T09:59:25.632+00:00","modified":"2025-10-21T09:59:25.632+00:00","tags":[],"identifiers":[],"contactPersons":[],"machineTags":[],"alternativeCodes":[{"code":"YNHM","description":"Yorkshire
-        Natural History Museum"}],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0,"featuredImageUrl":"https://ynhm.org"}]}'
-  recorded_at: 2025-11-13 08:04:46
+      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":2586,"results":[{"key":"063dec33-ee7a-4c38-accd-08d3ea6930de","code":"AUDUBON","name":"Audubon
+        Zoo","description":"Audubon Zoo, part of the Audubon Nature Institute, is
+        a 58-acre zoo located in uptown New Orleans, Louisiana, United States. ","types":["ZooAquarium"],"active":true,"email":[],"phone":[],"homepage":"https://audubonnatureinstitute.org/","catalogUrls":[],"apiUrls":[],"institutionalGovernances":[],"disciplines":["VeterinarySciences","Zoology","Ecology","EnvironmentalHealth","GeneticsGenomics"],"latitude":29.923653,"longitude":-90.132924,"mailingAddress":{"key":59862,"address":"6500
+        Magazine St","city":"New Orleans","province":"Louisiana","postalCode":"70118","country":"US"},"address":{"key":59861,"address":"6500
+        Magazine St","city":"New Orleans","province":"Louisiana","postalCode":"70118","country":"US"},"additionalNames":[],"foundingDate":1884,"createdBy":"dbloom","modifiedBy":"kdpearso","created":"2026-08-11T22:05:06.561+00:00","modified":"2026-08-12T13:38:04.078+00:00","tags":[],"identifiers":[],"contactPersons":[{"key":54111,"firstName":"Steven","lastName":"Whitfield","position":["Director
+        of Terrestrial and Wetlands Conservation"],"phone":[],"fax":[],"email":["swhitfield@auduboninstitute.org"],"address":["6500
+        Magazine Steet"],"city":"New Orleans","province":"Louisiana","postalCode":"70118","primary":true,"taxonomicExpertise":[],"notes":"","userIds":[],"createdBy":"kdpearso","modifiedBy":"kdpearso","created":"2026-08-12T13:37:17.329+00:00","modified":"2026-08-12T13:38:04.043+00:00"},{"key":54112,"position":[],"phone":[],"fax":[],"email":[],"address":[],"primary":false,"taxonomicExpertise":[],"userIds":[],"createdBy":"kdpearso","modifiedBy":"kdpearso","created":"2026-08-12T13:37:49.755+00:00","modified":"2026-08-12T13:38:04.052+00:00"},{"key":54113,"firstName":"Cherie","lastName":"Dumas","position":["Research
+        Manager"],"phone":[],"fax":[],"email":["cdumas@auduboninstitute.org"],"address":["6500
+        Magazine Steet"],"city":"New Orleans","province":"Louisiana","postalCode":"70118","primary":false,"taxonomicExpertise":[],"notes":"Point
+        of contact for research requests, including biological material requests and
+        research on living collections","userIds":[],"createdBy":"kdpearso","modifiedBy":"kdpearso","created":"2026-08-12T13:37:56.814+00:00","modified":"2026-08-12T13:38:04.060+00:00"},{"key":54114,"firstName":"Vickie","lastName":"Edel","position":["Registrar
+        Curator"],"phone":[],"fax":[],"email":["vedel@auduboninstitute.org"],"address":["6500
+        Magazine Steet"],"city":"New Orleans","province":"Louisiana","postalCode":"70118","primary":false,"taxonomicExpertise":[],"notes":"Point
+        of contact of inquiries surrounding collections and associated data","userIds":[],"createdBy":"kdpearso","modifiedBy":"kdpearso","created":"2026-08-12T13:38:04.068+00:00","modified":"2026-08-12T13:38:04.068+00:00"}],"machineTags":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0}]}'
+  recorded_at: 2026-08-13 12:20:56
 - request:
     method: GET
     uri: https://api.gbif.org/v1/grscicoll/institution?typeSpecimenCount=10%2C100&limit=1
@@ -161,13 +178,10 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":668,"results":[{"key":"acc160f3-8fb5-4e54-8a92-f428fb051a76","code":"SFC","name":"Santa
-        Fe College Museum of Earth Science","description":"Santa Fe College''s Museum
-        of Earth Science is home to over 1,700 mineral, fossil and rock samples around
-        the world. The museum also has martian and lunar meteorites and other \"rocks
-        from space.\"","types":[],"active":true,"email":[],"phone":[],"homepage":"https://www.sfcollege.edu/academics/las/natsci/science-resource-areas/museum.html","catalogUrls":[],"apiUrls":[],"institutionalGovernances":[],"disciplines":["Geological","Paleontology"],"mailingAddress":{"key":56581},"address":{"key":56580,"address":"3000
-        N.W. 83rd Street, X-201","city":"Gainesville","province":"Florida","postalCode":"32606","country":"US"},"additionalNames":[],"createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2025-09-05T13:15:57.233+00:00","modified":"2025-09-05T13:15:57.233+00:00","tags":[],"identifiers":[],"contactPersons":[],"machineTags":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":91,"typeSpecimenCount":91}]}'
-  recorded_at: 2025-11-13 08:04:46
+      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":772,"results":[{"key":"3060e3e2-133e-450d-b82d-0fb5a2978ddc","code":"KCMI","name":"Kashihara
+        City Museum Of Insect","types":["Museum"],"active":true,"email":[],"phone":["0744-24-7246"],"homepage":"https://www.city.kashihara.nara.jp/article?id=5c52229d65909e2ebea90610","catalogUrls":[],"apiUrls":[],"institutionalGovernances":[],"disciplines":[],"latitude":34.490596,"longitude":135.826787,"address":{"key":58816,"address":"Minamiyamacho","city":"Kashihara
+        Shi","province":"Nara Ken","postalCode":"634-0024","country":"JP"},"additionalNames":[],"createdBy":"mgrosjean","modifiedBy":"mhoefft","created":"2026-04-22T08:43:25.107+00:00","modified":"2026-04-23T13:16:45.726+00:00","tags":[],"identifiers":[{"key":467104,"type":"ISIL","identifier":"JP-2003268","createdBy":"mgrosjean","created":"2026-04-22T08:43:25.162+00:00","primary":false}],"contactPersons":[],"machineTags":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":55216,"typeSpecimenCount":37}]}'
+  recorded_at: 2026-08-13 12:20:56
 - request:
     method: GET
     uri: https://api.gbif.org/v1/grscicoll/institution?limit=1&discipline=Paleontology
@@ -177,11 +191,34 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":3779,"results":[{"key":"c7ef73ef-d78d-4a08-a189-9b576b9eff06","code":"HAB","name":"Herzog
-        August Library Wolfenbüttel","types":[],"active":false,"email":["auskunft@hab.de"],"phone":["+49
-        (0)5331 808 114","+49 (0)5331 808 129"],"catalogUrls":[],"apiUrls":[],"institutionalGovernances":[],"disciplines":[],"address":{"key":56948,"address":"Lessingplatz
-        1","city":"Wolfenbüttel","province":"Lower Saxony","postalCode":"38304","country":"DE"},"additionalNames":[],"createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2025-09-29T08:21:51.171+00:00","modified":"2025-09-29T08:21:51.171+00:00","tags":[],"identifiers":[{"key":449529,"type":"IH_IRN","identifier":"gbif:ih:irn:268202","createdBy":"mgrosjean","created":"2025-09-29T08:21:51.192+00:00","primary":false}],"contactPersons":[],"machineTags":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"IH","masterSourceMetadata":{"key":9871,"source":"IH_IRN","sourceId":"268202","createdBy":"mgrosjean","created":"2025-09-29T08:21:51.202+00:00"},"displayOnNHCPortal":true,"occurrenceCount":5,"typeSpecimenCount":3}]}'
-  recorded_at: 2025-11-13 08:04:46
+      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":96,"results":[{"key":"436964a5-f408-4922-8112-4783f768b934","code":"PGM","name":"Palanga
+        Amber Museum","description":"There are more than 5000 exhibits in the exposition
+        of Palanga Amber Museum. The beginning of exposition contains information
+        about amber formation. Diverse morphological forms of amber are exhibited
+        in the Museum – drops, icicles, trunk and soil amber bundle. More than 70
+        unique amber pieces valued not only for their impressive size (the largest
+        piece so-called ‘Sun Stone’) but also because of their forms, nuances of colour,
+        unique prints on the surfaces of ambers are exhibited in the Museum showcases.
+        This is entire scientific material about climate conditions, fauna and flora
+        on Earth during the formation time of amber (the Eocene period).\n\nPalanga
+        Amber Museum has one of the largest and most scientifically valuable collections
+        of inclusions worldwide (around 15 000 objects). In the showcases where exhibits
+        could be examined through magnifying glass are introduced the most marvellous
+        examples of amber inclusions, including one of the world’s rarest exhibits
+        – the Lizard (Lat. Lacertidae).\n\nThe unique archaeological artefacts are
+        exhibited in the museum: Neolithic amber articles which were found by archaeologist
+        Dr. Rimutė Rimantienė while excavating and researching the Neolithic campsites
+        complex of Šventoji. Juodkrantė Treasure’s (so-called collection of Richard
+        Klebs, excavated by German company ‘Stantien und Becker’ in the Curonian Lagoon
+        during 1862 and 1899) copies of the articles are also exhibited. These articles
+        are valuable examples of applied art that reflect the worldview of people
+        of the Baltic coast in the Neolithic period. In the museum it could be seen
+        amber articles of the Stone Age and the Bronze Age period, archaeological
+        material of the Baltic Sea coast’s burial sites.","types":["Museum"],"active":true,"email":["gintaro.muziejus@lndm.lt"],"phone":["+370
+        460 53 501"],"homepage":"https://www.lndm.lt/en/pgm/","catalogUrls":[],"apiUrls":[],"institutionalGovernances":[],"disciplines":["Paleontology","Archaeology"],"latitude":55.906910,"longitude":21.056078,"mailingAddress":{"key":59327,"address":"17
+        Vytauto st.","city":"Palanga","postalCode":"00101","country":"LT"},"address":{"key":59326,"address":"17
+        Vytauto st.","city":"Palanga","postalCode":"00101","country":"LT"},"additionalNames":[],"createdBy":"lena_thole","modifiedBy":"lena_thole","created":"2026-06-17T19:40:39.140+00:00","modified":"2026-06-17T19:40:39.140+00:00","tags":[],"identifiers":[],"contactPersons":[],"machineTags":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"GRSCICOLL","displayOnNHCPortal":true,"occurrenceCount":0,"typeSpecimenCount":0}]}'
+  recorded_at: 2026-08-13 12:20:56
 - request:
     method: GET
     uri: https://api.gbif.org/v1/grscicoll/institution?limit=1&contactUserId=1
@@ -191,11 +228,8 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":3779,"results":[{"key":"c7ef73ef-d78d-4a08-a189-9b576b9eff06","code":"HAB","name":"Herzog
-        August Library Wolfenbüttel","types":[],"active":false,"email":["auskunft@hab.de"],"phone":["+49
-        (0)5331 808 114","+49 (0)5331 808 129"],"catalogUrls":[],"apiUrls":[],"institutionalGovernances":[],"disciplines":[],"address":{"key":56948,"address":"Lessingplatz
-        1","city":"Wolfenbüttel","province":"Lower Saxony","postalCode":"38304","country":"DE"},"additionalNames":[],"createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2025-09-29T08:21:51.171+00:00","modified":"2025-09-29T08:21:51.171+00:00","tags":[],"identifiers":[{"key":449529,"type":"IH_IRN","identifier":"gbif:ih:irn:268202","createdBy":"mgrosjean","created":"2025-09-29T08:21:51.192+00:00","primary":false}],"contactPersons":[],"machineTags":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"IH","masterSourceMetadata":{"key":9871,"source":"IH_IRN","sourceId":"268202","createdBy":"mgrosjean","created":"2025-09-29T08:21:51.202+00:00"},"displayOnNHCPortal":true,"occurrenceCount":5,"typeSpecimenCount":3}]}'
-  recorded_at: 2025-11-13 08:04:46
+      string: '{"offset":0,"limit":1,"endOfRecords":true,"count":0,"results":[]}'
+  recorded_at: 2026-08-13 12:20:56
 - request:
     method: GET
     uri: https://api.gbif.org/v1/grscicoll/institution?contactEmail=info%40ynhm.org&limit=1
@@ -205,9 +239,6 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":3779,"results":[{"key":"c7ef73ef-d78d-4a08-a189-9b576b9eff06","code":"HAB","name":"Herzog
-        August Library Wolfenbüttel","types":[],"active":false,"email":["auskunft@hab.de"],"phone":["+49
-        (0)5331 808 114","+49 (0)5331 808 129"],"catalogUrls":[],"apiUrls":[],"institutionalGovernances":[],"disciplines":[],"address":{"key":56948,"address":"Lessingplatz
-        1","city":"Wolfenbüttel","province":"Lower Saxony","postalCode":"38304","country":"DE"},"additionalNames":[],"createdBy":"mgrosjean","modifiedBy":"mgrosjean","created":"2025-09-29T08:21:51.171+00:00","modified":"2025-09-29T08:21:51.171+00:00","tags":[],"identifiers":[{"key":449529,"type":"IH_IRN","identifier":"gbif:ih:irn:268202","createdBy":"mgrosjean","created":"2025-09-29T08:21:51.192+00:00","primary":false}],"contactPersons":[],"machineTags":[],"alternativeCodes":[],"comments":[],"occurrenceMappings":[],"masterSource":"IH","masterSourceMetadata":{"key":9871,"source":"IH_IRN","sourceId":"268202","createdBy":"mgrosjean","created":"2025-09-29T08:21:51.202+00:00"},"displayOnNHCPortal":true,"occurrenceCount":5,"typeSpecimenCount":3}]}'
-  recorded_at: 2025-11-13 08:04:46
+      string: '{"offset":0,"limit":1,"endOfRecords":true,"count":0,"results":[]}'
+  recorded_at: 2026-08-13 12:20:56
 recorded_with: VCR-vcr/2.0.0

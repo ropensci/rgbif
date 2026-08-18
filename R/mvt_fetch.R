@@ -35,6 +35,10 @@
 #' Defaults to classic.point. optional. THESE DON'T WORK YET.
 #' @param taxonKey (integer/numeric/character) search by taxon key, can only
 #' supply 1. optional
+#' @param checklistKey (character) The key of a checklist to use for taxonomy. 
+#' Defaults to COL (Catalogue of Life) Extended Release 
+#' (`"7ddf754f-d193-4cc9-b351-99906754a03b"`). Set to `NULL` to use the GBIF 
+#' Backbone Taxonomy. optional
 #' @param datasetKey (character) search by taxon key, can only supply 1.
 #' optional
 #' @param country (character) search by taxon key, can only supply 1.
@@ -72,7 +76,8 @@
 #'  requireNamespace("sf", quietly = TRUE) &&
 #'  requireNamespace("protolite", quietly = TRUE)
 #' ) {
-#'   x <- mvt_fetch(taxonKey = 2480498, year = 2007:2011)
+#'   # Using COL XR taxon key (default)
+#'   x <- mvt_fetch(taxonKey = "V2", year = 2007:2011)
 #'   x
 #'   
 #'   # gives an sf object
@@ -80,24 +85,24 @@
 #'   
 #'   # different srs
 #'   ## 3857
-#'   y <- mvt_fetch(taxonKey = 2480498, year = 2010, srs = "EPSG:3857")
+#'   y <- mvt_fetch(taxonKey = "V2", year = 2010, srs = "EPSG:3857")
 #'   y
 #'   ## 3031
-#'   z <- mvt_fetch(taxonKey = 2480498, year = 2010, srs = "EPSG:3031", verbose = TRUE)
+#'   z <- mvt_fetch(taxonKey = "V2", year = 2010, srs = "EPSG:3031", verbose = TRUE)
 #'   z
 #'   # 3575
-#'   z <- mvt_fetch(taxonKey = 2480498, year = 2010, srs = "EPSG:3575")
+#'   z <- mvt_fetch(taxonKey = "V2", year = 2010, srs = "EPSG:3575")
 #'   z
 #'
 #'   # bin
-#'   x <- mvt_fetch(taxonKey = 212, year = 1998, bin = "hex",
+#'   x <- mvt_fetch(taxonKey = "V2", year = 1998, bin = "hex",
 #'      hexPerTile = 30, style = "classic-noborder.poly")
 #'   x
 #'
 #'   # query with basisOfRecord
-#'   mvt_fetch(taxonKey = 2480498, year = 2010,
+#'   mvt_fetch(taxonKey = "V2", year = 2010,
 #'     basisOfRecord = "HUMAN_OBSERVATION")
-#'   mvt_fetch(taxonKey = 2480498, year = 2010,
+#'   mvt_fetch(taxonKey = "V2", year = 2010,
 #'     basisOfRecord = c("HUMAN_OBSERVATION", "LIVING_SPECIMEN"))
 #'  }
 #' }
@@ -113,6 +118,7 @@ mvt_fetch <- function(
   squareSize = NULL,
   style = 'classic.point',
   taxonKey = NULL,
+  checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b",
   datasetKey = NULL,
   country = NULL,
   publishingOrg = NULL,
@@ -135,6 +141,7 @@ mvt_fetch <- function(
   assert(squareSize, c('numeric', 'integer'))
   assert(style, "character")
   assert(taxonKey, c("numeric", "integer", "character"))
+  assert(checklistKey, "character")
   assert(datasetKey, "character")
   assert(country, "character")
   assert(publishingOrg, "character")
@@ -169,6 +176,7 @@ mvt_fetch <- function(
   }
   
   query <- rgbif_compact(list(srs = "EPSG:3857", taxonKey = taxonKey,
+    checklistKey = checklistKey,
     datasetKey = datasetKey, country, publishingOrg = publishingOrg,
     publishingCountry = publishingCountry, year = year,
     bin = bin, squareSize = squareSize, hexPerTile = hexPerTile,

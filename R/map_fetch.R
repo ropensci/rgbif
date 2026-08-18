@@ -42,6 +42,10 @@
 #' Defaults to classic.point for source="density" and "scaled.circle" for source="adhoc".
 #' @param taxonKey (integer/numeric/character) search by taxon key, can only
 #' supply 1. 
+#' @param checklistKey (character) The key of a checklist to use for taxonomy. 
+#' Defaults to COL (Catalogue of Life) Extended Release 
+#' (`"7ddf754f-d193-4cc9-b351-99906754a03b"`). Set to `NULL` to use the GBIF 
+#' Backbone Taxonomy.
 #' @param datasetKey (character) search by taxon key, can only supply 1.
 #' @param country (character) search by taxon key, can only supply 1.
 #' @param publishingOrg (character) search by taxon key, can only supply 1.
@@ -95,8 +99,8 @@
 #' 
 #' # Map of occ in Great Britain
 #' map_fetch(z=3,y=1,x=7:8,country="GB")
-#' # Peguins with artic projection
-#' map_fetch(srs='EPSG:3031',taxonKey=2481660,style='glacier.point', 
+#' # Penguins with artic projection using COL XR key
+#' map_fetch(srs='EPSG:3031',taxonKey="623RM",style='glacier.point', 
 #' base_style="gbif-dark")
 #' 
 #' # occ from a long time ago
@@ -132,6 +136,7 @@ map_fetch <- function(
   squareSize = NULL,
   style = NULL,
   taxonKey = NULL,
+  checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b",
   datasetKey = NULL,
   country = NULL,
   publishingOrg = NULL,
@@ -163,6 +168,7 @@ map_fetch <- function(
   assert(squareSize, c('numeric', 'integer'))
   assert(style, "character")
   assert(taxonKey, c("numeric", "integer", "character"))
+  assert(checklistKey, "character")
   assert(datasetKey, "character")
   assert(country, "character")
   assert(publishingOrg, "character")
@@ -241,6 +247,7 @@ map_fetch <- function(
   }
   
   query <- rgbif_compact(c(list(srs = srs, taxonKey = taxonKey,
+    checklistKey = checklistKey,
     datasetKey = datasetKey, country = country, publishingOrg = publishingOrg,
     publishingCountry = publishingCountry, year = year,
     bin = bin, squareSize = squareSize, hexPerTile = hexPerTile,

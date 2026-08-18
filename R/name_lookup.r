@@ -1,5 +1,10 @@
 #' Lookup names in all taxonomies in GBIF.
 #'
+#' @section Deprecation Notice:
+#' **This function is deprecated.** It only works with the GBIF Backbone
+#' Taxonomy and does not support COL (Catalogue of Life) Extended Release.
+#' Use `rcol::col_search()` from the rcol package instead for COL XR support.
+#'
 #' @template namelkup
 #' @export
 #' @template occ
@@ -98,6 +103,10 @@ name_lookup <- function(query=NULL,
                         return=NULL,
                         curlopts = list(http_version=2)) {
 
+  if (is.null(datasetKey)) {
+    warning("name_lookup() works by default with the out-of-date GBIF Backbone Taxonomy. Consider using rcol::col_search() instead.", call. = FALSE)
+  }
+  
   pchk(return, "name_lookup")
   if (!is.null(facetMincount) && inherits(facetMincount, "numeric"))
     stop("Make sure facetMincount is character")

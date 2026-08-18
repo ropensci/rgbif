@@ -4,8 +4,11 @@
 #' @param key (character) the key for the predicate. See "Keys" below
 #' @param value (various) the value for the predicate
 #' @param checklistKey (character) A checklistKey to use for downloading using 
-#' alternative taxonomies. The default is `NULL`, which means the GBIF backbone
-#' taxonomy will be used.
+#' alternative taxonomies. Can be used with any taxonomic rank key (taxonKey, 
+#' classKey, phylumKey, orderKey, familyKey, genusKey, subgenusKey, speciesKey, 
+#' acceptedTaxonKey, kingdomKey). The default is COL (Catalogue of Life) Extended 
+#' Release (`"7ddf754f-d193-4cc9-b351-99906754a03b"`). To use GBIF Backbone Taxonomy, 
+#' pass `"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"`.
 #' @param ...,.list For `pred_or()` or `pred_and()`, one or more objects of
 #' class `occ_predicate`, created by any `pred*` function
 #' @section predicate methods and their equivalent types:
@@ -68,13 +71,13 @@
 #' Internally, the input to `pred*` functions turns into JSON to be sent to
 #' GBIF. For example ...
 #' 
-#' `pred_in("taxonKey", c(2480946, 5229208))` gives:
+#' `pred_in("taxonKey", c("9WLSS", "Q2N2"))` gives:
 #'
 #' ```
 #' {
 #'    "type": "in",
 #'    "key": "TAXON_KEY",
-#'    "values": ["2480946", "5229208"]
+#'    "values": ["9WLSS", "Q2N2"]
 #'  }
 #' ```
 #' 
@@ -88,7 +91,7 @@
 #' }
 #' ```
 #' 
-#' `pred_or(pred("taxonKey", 2977832), pred("taxonKey", 2977901))` gives:
+#' `pred_or(pred("taxonKey", "Q2M4"), pred("taxonKey", "Q2KZ"))` gives:
 #' 
 #' ```
 #' {
@@ -97,12 +100,12 @@
 #'      {
 #'        "type": "equals",
 #'        "key": "TAXON_KEY",
-#'        "value": "2977832"
+#'        "value": "Q2M4"
 #'      },
 #'      {
 #'        "type": "equals",
 #'        "key": "TAXON_KEY",
-#'        "value": "2977901"
+#'        "value": "Q2KZ"
 #'      }
 #'   ]
 #' }
@@ -201,7 +204,8 @@
 #' <https://www.gbif.org/developer/occurrence#predicates>
 #' @family downloads
 #' @examples
-#' pred("taxonKey", 5231190)
+#' # Uses COL (Catalogue of Life) Extended Release alpha-numeric keys by default
+#' pred("taxonKey", "Q2M4") # Calopteryx splendens
 #' pred_gt("elevation", 5000)
 #' pred_gte("elevation", 5000)
 #' pred_lt("elevation", 1000)
@@ -211,9 +215,9 @@
 #'   pred_gte("elevation", 5000))
 #' pred_or(pred_lte("year", 1989), pred("year", 2000))
 #' pred_and(pred_lte("year", 1989), pred("year", 2000))
-#' pred_in("taxonKey", c(2977832, 2977901, 2977966, 2977835))
+#' pred_in("taxonKey", c("Q2M4", "9WLSS", "Q2N2")) # COL XR alpha-numeric keys
 #' pred_in("basisOfRecord", c("MACHINE_OBSERVATION", "HUMAN_OBSERVATION"))
-#' pred_not(pred("taxonKey", 729))
+#' pred_not(pred("taxonKey", "Q2M4"))
 #' pred_like("catalogNumber", "PAPS5-560%")
 #' pred_notnull("issue")
 #' pred("basisOfRecord", "LITERATURE")
@@ -221,11 +225,17 @@
 #' pred("stateProvince", "California")
 #' pred("hasGeospatialIssue", FALSE)
 #' pred_within("POLYGON((-14 42, 9 38, -7 26, -14 42))")
-#' pred_or(pred("taxonKey", 2977832), pred("taxonKey", 2977901),
-#'   pred("taxonKey", 2977966))
-#' pred_in("taxonKey", c(2977832, 2977901, 2977966, 2977835))
+#' pred_or(pred("taxonKey", "Q2M4"), pred("taxonKey", "9WLSS"),
+#'   pred("taxonKey", "Q2N2"))
+#' pred_in("taxonKey", c("Q2M4", "9WLSS", "Q2N2", "Q2KZ"))
 #' pred("license", "CC_BY_4_0")
 #' pred_in("license", c("CC_BY_4_0", "CC_BY_NC_4_0"))
+#' 
+#' # Using checklistKey with different taxonomic rank keys
+#' pred("classKey", "B8V3Z")  # Uses COL XR by default
+#' pred("orderKey", "C4PL")   # Uses COL XR by default
+#' # Override to use GBIF Backbone
+#' pred("classKey", "220", checklistKey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
 
 #' @rdname download_predicate_dsl
 #' @export
@@ -273,7 +283,7 @@ pred_or <- function(..., .list = list()) preds_factory("or")(.list, ...)
 pred_and <- function(..., .list = list()) preds_factory("and")(.list, ...)
 #' @rdname download_predicate_dsl
 #' @export
-pred_in <- function(key, value) pred_multi_factory("in")(key, value)
+pred_in <- function(key, value, checklistKey = NULL) pred_multi_factory("in")(key, value, checklistKey)
 #' @rdname download_predicate_dsl
 #' @export
 pred_default <- function() {
@@ -311,8 +321,10 @@ pred_factory <- function(type) {
     if (!length(key) == 1) stop("'key' must be length 1", call. = FALSE)
     if (!length(value) == 1) stop("'value' must be length 1", call. = FALSE)
     if (!is.null(checklistKey)) {
-      if (!key %in% c("taxonKey", "TAXON_KEY")) {
-        stop("`checklistKey` can only be used when `key` is 'taxonKey' or 'TAXON_KEY'", call. = FALSE)
+      # Convert key to uppercase format for checking
+      check_key <- key_lkup[[key]]
+      if (!check_key %in% taxonomic_keys) {
+        stop("`checklistKey` can only be used with taxonomic rank keys (taxonKey, classKey, phylumKey, etc.)", call. = FALSE)
       }
       if (!is_uuid(checklistKey)) {
         stop("`checklistKey` must be a valid UUID", call. = FALSE)
@@ -323,11 +335,21 @@ pred_factory <- function(type) {
   }
 }
 pred_multi_factory <- function(type) {
-  function(key, value) {
+  function(key, value, checklistKey = NULL) {
     if (!length(key) == 1) stop("'key' must be length 1", call. = FALSE)
     if (!type %in% c("or", "in"))
       stop("'type' must be one of: or, in", call. = FALSE)
-    z <- parse_pred(key, value, type)
+    if (!is.null(checklistKey)) {
+      # Convert key to uppercase format for checking
+      check_key <- key_lkup[[key]]
+      if (!check_key %in% taxonomic_keys) {
+        stop("`checklistKey` can only be used with taxonomic rank keys (taxonKey, classKey, phylumKey, etc.)", call. = FALSE)
+      }
+      if (!is_uuid(checklistKey)) {
+        stop("`checklistKey` must be a valid UUID", call. = FALSE)
+      }
+    }
+    z <- parse_pred(key, value, type, checklistKey)
     structure(z, class = "occ_predicate")
   }
 }
@@ -347,6 +369,11 @@ preds_factory <- function(type) {
     structure(pp, class = "occ_predicate_list", type = unbox(type))
   }
 }
+
+# Taxonomic rank keys that support checklistKey
+taxonomic_keys <- c("TAXON_KEY", "ACCEPTED_TAXON_KEY", "KINGDOM_KEY", 
+                    "PHYLUM_KEY", "CLASS_KEY", "ORDER_KEY", "FAMILY_KEY",
+                    "GENUS_KEY", "SUBGENUS_KEY", "SPECIES_KEY")
 
 operators_regex <- c("=", "\\&", "and", "<", "<=", ">", ">=", "not", "in",
                      "within", "like", "\\|", "or", "isNotNull","isNull")
@@ -529,7 +556,9 @@ key_lkup <- list(
 parse_pred <- function(key, value, type = "and", checklistKey = NULL) {
   assert(key, "character")
   assert(type, "character")
-  assert(checklistKey, "character")
+  if (!is.null(checklistKey)) {
+    assert(checklistKey, "character")
+  }
 
   ogkey <- key
   key <- key_lkup[[key]]
@@ -537,6 +566,11 @@ parse_pred <- function(key, value, type = "and", checklistKey = NULL) {
     stop(
       sprintf("'%s' not in acceptable set of keys; see ?download_predicate_dsl",
         ogkey), call.=FALSE)
+
+  # Apply COL XR default for all taxonomic keys when checklistKey is NULL
+  if (is.null(checklistKey) && key %in% taxonomic_keys) {
+    checklistKey <- "7ddf754f-d193-4cc9-b351-99906754a03b"
+  }
 
   if (!any(operators_regex %in% type))
     stop("'type' not in acceptable set of types; see param def. 'type'",
@@ -550,15 +584,24 @@ parse_pred <- function(key, value, type = "and", checklistKey = NULL) {
   ) {
     list(type = unbox("within"), geometry = unbox(as_c(value)))
   } else if (type == "in") {
-    list(type = unbox("in"), key = unbox(key), values = as_c(value))
+    if (!is.null(checklistKey) && key %in% taxonomic_keys) {
+      list(type = unbox("in"), key = unbox(key), values = as_c(value), checklistKey = unbox(checklistKey))
+    } else {
+      list(type = unbox("in"), key = unbox(key), values = as_c(value))
+    }
   } else if (type == "or") {
-    list(type = unbox("or"), predicates = lapply(value, function(w)
-      list(type = unbox("equals"), key = unbox(key), value = as_c(w))))
+    list(type = unbox("or"), predicates = lapply(value, function(w) {
+      base <- list(type = unbox("equals"), key = unbox(key), value = as_c(w))
+      if (!is.null(checklistKey) && key %in% taxonomic_keys) {
+        base$checklistKey <- unbox(checklistKey)
+      }
+      base
+    }))
   } else if (type == "isNotNull") {
     list(type = unbox(type), parameter = unbox(key))
   } else if (type == "isNull") {
     list(type = unbox(type), parameter = unbox(key))
-  } else if (type == "equals" & !is.null(checklistKey) & key == "TAXON_KEY") {
+  } else if (type == "equals" && !is.null(checklistKey) && key %in% taxonomic_keys) {
     list(
       type = unbox(type),
       key = unbox(key),
@@ -566,7 +609,12 @@ parse_pred <- function(key, value, type = "and", checklistKey = NULL) {
       checklistKey = unbox(checklistKey)
     )
   } else {
-    list(type = unbox(type), key = unbox(key), value = unbox(as_c(value)))
+    # Default case - include checklistKey for taxonomic keys
+    base <- list(type = unbox(type), key = unbox(key), value = unbox(as_c(value)))
+    if (!is.null(checklistKey) && key %in% taxonomic_keys) {
+      base$checklistKey <- unbox(checklistKey)
+    }
+    base
   }
 }
 pred_cat <- function(x) {
@@ -575,7 +623,12 @@ pred_cat <- function(x) {
     cat("type: or", sep = "\n")
     for (i in seq_along(x$predicates)) {
       z <- x$predicates[[i]]
-      cat(sprintf_key_val(z, "  >"), sep = "\n")
+      base_str <- sprintf_key_val(z, "  >")
+      if (!is.null(z$checklistKey)) {
+        cat(paste0(base_str, ", checklistKey: ", z$checklistKey), sep = "\n")
+      } else {
+        cat(base_str, sep = "\n")
+      }
     }
   } else if ("parameter" %in% names(x)) {
     sprintf_not_null(x, ">")
@@ -586,7 +639,7 @@ pred_cat <- function(x) {
       zz <- x$value %||% x$values
       if (!is.null(zz)) paste(zz, collapse = ",") else zz
     }
-    sprintf_key_val(
+    base_str <- sprintf_key_val(
       list(
         type = x$type,
         key = if ("geometry" %in% names(x)) "geometry" else x$key,
@@ -594,7 +647,12 @@ pred_cat <- function(x) {
       ),
       ">"
     )
-
+    # Append checklistKey if present
+    if (!is.null(x$checklistKey)) {
+      paste0(base_str, ", checklistKey: ", x$checklistKey)
+    } else {
+      base_str
+    }
   }
 }
 sub_str <- function(str, max = 100) {
@@ -612,6 +670,9 @@ parse_predicates <- function(user, email, type, format, verbatim_extensions,
     if (inherits(checklistKey, c("occ_predicate", "occ_predicate_list"))) {
       tmp <- c(list(checklistKey), tmp)
       checklistKey <- NULL
+    # Allow empty string as sentinel for "omit checklistKey" (for cache matching)
+    } else if (identical(checklistKey, "")) {
+      # Empty string is valid - will be handled later to omit checklistKey
     # Validate checklistKey type and format
     } else if (!is.character(checklistKey)) {
       stop("'checklistKey' must be a character string (UUID)", call. = FALSE)
@@ -649,9 +710,52 @@ parse_predicates <- function(user, email, type, format, verbatim_extensions,
       predicate = list()
     )
   }
-  # Add checklistKey to payload if provided
-  if (!is.null(checklistKey)) {
-    payload$checklistKey <- unbox(checklistKey)
+  
+  # Helper function to check if any predicate uses taxonomic rank keys
+  has_taxonomic_key <- function(preds) {
+    for (p in preds) {
+      if (inherits(p, "occ_predicate")) {
+        if (!is.null(p$key) && p$key %in% taxonomic_keys) return(TRUE)
+      } else if (inherits(p, "occ_predicate_list")) {
+        # Recursively check predicates in lists (for pred_or, pred_and, pred_not)
+        if (has_taxonomic_key(p)) return(TRUE)
+      }
+    }
+    return(FALSE)
+  }
+  
+  # Determine top-level checklistKey:
+  # 1. Empty string "" means explicitly omit checklistKey (for cache matching)
+  # 2. NULL means use COL XR default
+  # 3. Otherwise use the explicit value provided
+  # Note: Predicate-level checklistKey does NOT propagate to top level
+  final_checklistKey <- if (identical(checklistKey, "")) {
+    NULL  # Empty string means explicitly omit
+  } else if (!is.null(checklistKey)) {
+    checklistKey  # User explicitly supplied checklistKey parameter
+  } else {
+    "7ddf754f-d193-4cc9-b351-99906754a03b"  # COL XR default
+  }
+  
+  # When checklistKey = "" (explicitly omit), strip checklistKey from all predicates
+  # This is needed for matching against historical downloads that lack checklistKey
+  if (identical(checklistKey, "")) {
+    strip_checklistKey <- function(x) {
+      if (inherits(x, "occ_predicate")) {
+        x$checklistKey <- NULL
+      } else if (inherits(x, "occ_predicate_list")) {
+        x <- lapply(x, strip_checklistKey)
+        class(x) <- "occ_predicate_list"
+        attr(x, "type") <- attr(x, "type")  # preserve type attribute
+      }
+      return(x)
+    }
+    tmp <- lapply(tmp, strip_checklistKey)
+  }
+  
+  # Add checklistKey to payload if present
+  if (!is.null(final_checklistKey)) {
+    payload$checklistKey <- unbox(final_checklistKey)
   }
   if (any(vapply(tmp, function(w) "predicates" %in% names(w), logical(1)))) {
     payload$predicate <- list(unclass(tmp[[1]]))

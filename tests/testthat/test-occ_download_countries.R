@@ -12,7 +12,7 @@ test_that("occ_download_countries", {
   expect_equal(sort(names(tt$meta)), 
     c("count", "endofrecords", "limit", "offset"))
   expect_is(tt$results$downloadKey, "character")
-  expect_is(tt$results$countryCode, "character")
+  expect_is(tt$results$publishingCountryCode, "character")
   expect_type(tt$results$numberRecords, "integer")
   expect_equal(NROW(tt$meta), 1)
   expect_gt(NROW(tt$results), 3)

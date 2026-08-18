@@ -34,6 +34,18 @@ test_that("occ_download_prep", {
   expect_is(z$request$predicate$predicates[[1]], "list")
   expect_named(z$request$predicate$predicates[[1]],
     c("type", "key", "values"))
+  expect_equal(z$request$predicate$predicates[[1]]$type[1], "in")
+  expect_equal(z$request$predicate$predicates[[1]]$key[1], "BASIS_OF_RECORD")
+  expect_equal(z$request$predicate$predicates[[1]]$values, c("HUMAN_OBSERVATION", "OBSERVATION"))
+  expect_equal(z$request$predicate$predicates[[2]]$type[1], "equals")
+  expect_equal(z$request$predicate$predicates[[2]]$key[1], "HAS_COORDINATE")
+  expect_equal(z$request$predicate$predicates[[2]]$value[1], "true")
+
+  # checklistKey should default to COL XR
+  expect_is(z$request$checklistKey, "character")
+  expect_equal(z$request$checklistKey[1], "7ddf754f-d193-4cc9-b351-99906754a03b")
+
+  
 })
 
 test_that("occ_download_prep print method", {
@@ -56,7 +68,8 @@ test_that("occ_download_prep print method", {
 test_that("occ_download_prep long print", {
   skip_on_cran()
   
-  long_taxonkey_list <- rep(22222222,200)
+  # Use alpha-numeric COL XR keys to avoid triggering numeric key warning
+  long_taxonkey_list <- rep("Q2M4",200)
   
   pp <- occ_download_prep(
     pred_in("taxonKey", long_taxonkey_list),
@@ -69,23 +82,591 @@ test_that("occ_download_prep long print", {
   expect_output(print(pp),"OK. But too large to print.")
 })
 
-test_that("occ_download_prep with checklistKey", {
+test_that("occ_download_prep with explicit checklistKey but no taxonKey", {
   skip_on_cran()
 
+  col_xr_uuid <- "7ddf754f-d193-4cc9-b351-99906754a03b"
+  
   z <- occ_download_prep(
     pred("basisOfRecord", "PRESERVED_SPECIMEN"),
     pred_in("country", c("VC", "GD")),
-    checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b",
+    checklistKey = col_xr_uuid,
     user = "foo", pwd = "bar", email = "foo@bar.com"
   )
 
   expect_is(z, "occ_download_prep")
   expect_is(z$request, "list")
-  expect_is(z$request$checklistKey, "scalar")
+  # Explicit checklistKey should be included even without taxonomic predicates
+  expect_is(z$request$checklistKey, "character")
+  expect_equal(z$request$checklistKey[1], col_xr_uuid)
+})
+
+test_that("occ_download_prep uses COL XR as default checklistKey", {
+  skip_on_cran()
+
+  # Test with taxonKey predicate - should include default checklistKey
+  z <- occ_download_prep(
+    pred("taxonKey", "Q2M4"),
+    pred("hasCoordinate", TRUE),
+    user = "foo", pwd = "bar", email = "foo@bar.com"
+  )
+
+  expect_is(z, "occ_download_prep")
+  expect_is(z$request, "list")
+  expect_is(z$request$checklistKey, "character")
+  # COL Extended Release UUID should be the default when taxonKey is used
   expect_equal(z$request$checklistKey[1], "7ddf754f-d193-4cc9-b351-99906754a03b")
 })
 
+test_that("occ_download_prep includes COL XR default even without taxonomic predicates", {
+  skip_on_cran()
 
+  # Test without taxonKey predicate - checklistKey should default to COL XR
+  z <- occ_download_prep(
+    pred("basisOfRecord", "PRESERVED_SPECIMEN"),
+    pred_in("country", c("US", "CA")),
+    user = "foo", pwd = "bar", email = "foo@bar.com"
+  )
 
+  expect_is(z, "occ_download_prep")
+  expect_is(z$request, "list")
+  # checklistKey should default to COL XR even without taxonomic predicates
+  expect_is(z$request$checklistKey, "character")
+  expect_equal(z$request$checklistKey[1], "7ddf754f-d193-4cc9-b351-99906754a03b")
+})
+
+test_that("occ_download_prep defaults to COL XR with explicit NULL", {
+  skip_on_cran()
+
+  # Test that setting checklistKey = NULL uses the COL XR default
+  z <- occ_download_prep(
+    pred("basisOfRecord", "PRESERVED_SPECIMEN"),
+    pred_in("country", c("US", "CA")),
+    checklistKey = NULL,
+    user = "foo", pwd = "bar", email = "foo@bar.com"
+  )
+
+  expect_is(z, "occ_download_prep")
+  expect_is(z$request, "list")
+  # When checklistKey is null it should be the COL XR default
+  expect_equal(z$request$checklistKey[1], "7ddf754f-d193-4cc9-b351-99906754a03b")
+})
+
+test_that("occ_download_prep omits checklistKey with empty string", {
+  skip_on_cran()
+
+  # Test that setting checklistKey = "" explicitly omits it (for cache matching)
+  z <- occ_download_prep(
+    pred("basisOfRecord", "PRESERVED_SPECIMEN"),
+    pred_in("country", c("US", "CA")),
+    checklistKey = "",
+    user = "foo", pwd = "bar", email = "foo@bar.com"
+  )
+
+  expect_is(z, "occ_download_prep")
+  expect_is(z$request, "list")
+  # When checklistKey is empty string, it should be omitted entirely
+  expect_null(z$request$checklistKey)
+})
+
+test_that("occ_download_prep uses COL XR for classKey predicate", {
+  skip_on_cran()
+
+  z <- occ_download_prep(
+    pred("classKey", "B8V3Z"),
+    user = "foo", pwd = "bar", email = "foo@bar.com"
+  )
+
+  expect_is(z, "occ_download_prep")
+  expect_is(z$request, "list")
+  
+  # Check top-level checklistKey
+  expect_is(z$request$checklistKey, "character")
+  expect_equal(z$request$predicate$type[1], "equals")
+  expect_equal(z$request$predicate$key[1], "CLASS_KEY")
+  expect_equal(z$request$predicate$value[1], "B8V3Z")
+  expect_equal(z$request$checklistKey[1], "7ddf754f-d193-4cc9-b351-99906754a03b")
+  
+  # With single predicate, it's unwrapped to predicate level (not predicates[[1]])
+  expect_is(z$request$predicate$checklistKey, "character")
+  expect_equal(z$request$predicate$checklistKey[1], 
+    "7ddf754f-d193-4cc9-b351-99906754a03b")
+})
+
+test_that("occ_download_prep uses COL XR for phylumKey predicate", {
+  skip_on_cran()
+
+  z <- occ_download_prep(
+    pred("phylumKey", "C4PL"),
+    user = "foo", pwd = "bar", email = "foo@bar.com"
+  )
+
+  expect_is(z$request$checklistKey, "character")
+  expect_equal(z$request$checklistKey[1], "7ddf754f-d193-4cc9-b351-99906754a03b")
+  expect_equal(z$request$predicate$checklistKey[1], 
+    "7ddf754f-d193-4cc9-b351-99906754a03b")
+})
+
+test_that("occ_download_prep uses COL XR for orderKey predicate", {
+  skip_on_cran()
+
+  z <- occ_download_prep(
+    pred("orderKey", "XYZ123"),
+    user = "foo", pwd = "bar", email = "foo@bar.com"
+  )
+
+  expect_is(z$request$checklistKey, "character")
+  expect_equal(z$request$checklistKey[1], "7ddf754f-d193-4cc9-b351-99906754a03b")
+  expect_equal(z$request$predicate$checklistKey[1], 
+    "7ddf754f-d193-4cc9-b351-99906754a03b")
+})
+
+test_that("occ_download_prep uses COL XR for familyKey predicate", {
+  skip_on_cran()
+
+  z <- occ_download_prep(
+    pred("familyKey", "ABC789"),
+    user = "foo", pwd = "bar", email = "foo@bar.com"
+  )
+
+  expect_is(z$request$checklistKey, "character")
+  expect_equal(z$request$checklistKey[1], "7ddf754f-d193-4cc9-b351-99906754a03b")
+  expect_equal(z$request$predicate$checklistKey[1], 
+    "7ddf754f-d193-4cc9-b351-99906754a03b")
+})
+
+test_that("occ_download_prep uses COL XR for genusKey predicate", {
+  skip_on_cran()
+
+  z <- occ_download_prep(
+    pred("genusKey", "DEF456"),
+    user = "foo", pwd = "bar", email = "foo@bar.com"
+  )
+
+  expect_is(z$request$checklistKey, "character")
+  expect_equal(z$request$checklistKey[1], "7ddf754f-d193-4cc9-b351-99906754a03b")
+  expect_equal(z$request$predicate$checklistKey[1], 
+    "7ddf754f-d193-4cc9-b351-99906754a03b")
+})
+
+test_that("occ_download_prep uses COL XR for subgenusKey predicate", {
+  skip_on_cran()
+
+  z <- occ_download_prep(
+    pred("subgenusKey", "GHI012"),
+    user = "foo", pwd = "bar", email = "foo@bar.com"
+  )
+
+  expect_is(z$request$checklistKey, "character")
+  expect_equal(z$request$checklistKey[1], "7ddf754f-d193-4cc9-b351-99906754a03b")
+  expect_equal(z$request$predicate$checklistKey[1], 
+    "7ddf754f-d193-4cc9-b351-99906754a03b")
+})
+
+test_that("occ_download_prep uses COL XR for speciesKey predicate", {
+  skip_on_cran()
+
+  z <- occ_download_prep(
+    pred("speciesKey", "JKL345"),
+    user = "foo", pwd = "bar", email = "foo@bar.com"
+  )
+
+  expect_is(z$request$checklistKey, "character")
+  expect_equal(z$request$checklistKey[1], "7ddf754f-d193-4cc9-b351-99906754a03b")
+  expect_equal(z$request$predicate$checklistKey[1], 
+    "7ddf754f-d193-4cc9-b351-99906754a03b")
+})
+
+test_that("occ_download_prep uses COL XR for acceptedTaxonKey predicate", {
+  skip_on_cran()
+
+  z <- occ_download_prep(
+    pred("acceptedTaxonKey", "MNO678"),
+    user = "foo", pwd = "bar", email = "foo@bar.com"
+  )
+
+  expect_is(z$request$checklistKey, "character")
+  expect_equal(z$request$checklistKey[1], "7ddf754f-d193-4cc9-b351-99906754a03b")
+  expect_equal(z$request$predicate$checklistKey[1], 
+    "7ddf754f-d193-4cc9-b351-99906754a03b")
+})
+
+test_that("occ_download_prep uses COL XR for kingdomKey predicate", {
+  skip_on_cran()
+
+  z <- occ_download_prep(
+    pred("kingdomKey", "PQR901"),
+    user = "foo", pwd = "bar", email = "foo@bar.com"
+  )
+
+  expect_is(z$request$checklistKey, "character")
+  expect_equal(z$request$checklistKey[1], "7ddf754f-d193-4cc9-b351-99906754a03b")
+  expect_equal(z$request$predicate$checklistKey[1], 
+    "7ddf754f-d193-4cc9-b351-99906754a03b")
+})
+
+test_that("occ_download_prep uses COL XR with pred_in for taxonomic keys", {
+  skip_on_cran()
+
+  z <- occ_download_prep(
+    pred_in("classKey", c("B8V3Z", "XYZ", "ABC")),
+    user = "foo", pwd = "bar", email = "foo@bar.com"
+  )
+
+  expect_is(z$request$checklistKey, "character")
+  expect_equal(z$request$checklistKey[1], "7ddf754f-d193-4cc9-b351-99906754a03b")
+  # Single predicate is unwrapped
+  expect_equal(z$request$predicate$checklistKey[1], 
+    "7ddf754f-d193-4cc9-b351-99906754a03b")
+  expect_equal(z$request$predicate$type[1], "in")
+})
+
+test_that("occ_download_prep uses COL XR with pred_or for taxonomic keys", {
+  skip_on_cran()
+
+  z <- occ_download_prep(
+    pred_or(
+      pred("classKey", "B8V3Z"),
+      pred("classKey", "XYZ")
+    ),
+    user = "foo", pwd = "bar", email = "foo@bar.com"
+  )
+
+  expect_is(z$request$checklistKey, "character")
+  expect_equal(z$request$checklistKey[1], "7ddf754f-d193-4cc9-b351-99906754a03b")
+  
+  # Single pred_or is unwrapped - check predicates within the OR have checklistKey
+  expect_equal(z$request$predicate$type[1], "or")
+  expect_equal(z$request$predicate$predicates[[1]]$checklistKey[1], 
+    "7ddf754f-d193-4cc9-b351-99906754a03b")
+  expect_equal(z$request$predicate$predicates[[2]]$checklistKey[1], 
+    "7ddf754f-d193-4cc9-b351-99906754a03b")
+})
+
+test_that("occ_download_prep allows GBIF Backbone override at predicate level", {
+  skip_on_cran()
+
+  backbone_uuid <- "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+  col_xr_uuid <- "7ddf754f-d193-4cc9-b351-99906754a03b"
+  
+  # When using numeric keys, the validation logic switches top-level to backbone
+  # This is expected behavior - predicate-level checklistKey is still respected
+  expect_warning(
+    z <- occ_download_prep(
+      pred("classKey", "220", checklistKey = backbone_uuid),
+      checklistKey = col_xr_uuid,
+      user = "foo", pwd = "bar", email = "foo@bar.com"
+    ),
+    "Numeric taxonomic keys detected.*CLASS_KEY"
+  )
+
+  # Top-level checklistKey auto-switches to backbone when numeric keys detected
+  expect_is(z$request$checklistKey, "character")
+  expect_equal(z$request$checklistKey[1], backbone_uuid)
+  
+  # Predicate-level checklistKey uses the explicit Backbone override
+  expect_equal(z$request$predicate$checklistKey[1], backbone_uuid)
+})
+
+test_that("occ_download_prep allows top-level checklistKey override via parameter", {
+  skip_on_cran()
+
+  backbone_uuid <- "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+  col_xr_uuid <- "7ddf754f-d193-4cc9-b351-99906754a03b"
+  
+  z <- occ_download_prep(
+    pred("classKey", "B8V3Z"),
+    checklistKey = backbone_uuid,  # Override top-level with parameter
+    user = "foo", pwd = "bar", email = "foo@bar.com"
+  )
+
+  # Top-level checklistKey uses the parameter override
+  expect_is(z$request$checklistKey, "character")
+  expect_equal(z$request$checklistKey[1], backbone_uuid)
+  
+  # Predicate-level checklistKey still defaults to COL XR (independent of top-level)
+  expect_equal(z$request$predicate$checklistKey[1], col_xr_uuid)
+})
+
+test_that("occ_download_prep mixed predicates - only taxonomic get checklistKey", {
+  skip_on_cran()
+
+  z <- occ_download_prep(
+    pred("classKey", "B8V3Z"),
+    pred("basisOfRecord", "PRESERVED_SPECIMEN"),
+    pred("country", "US"),
+    user = "foo", pwd = "bar", email = "foo@bar.com"
+  )
+
+  expect_is(z$request$checklistKey, "character")
+  expect_equal(z$request$checklistKey[1], "7ddf754f-d193-4cc9-b351-99906754a03b")
+  
+  # With multiple predicates, they're in predicates array
+  # First predicate (classKey) should have checklistKey
+  expect_equal(z$request$predicate$predicates[[1]]$checklistKey[1], 
+    "7ddf754f-d193-4cc9-b351-99906754a03b")
+  
+  # Second predicate (basisOfRecord) should not have checklistKey
+  expect_null(z$request$predicate$predicates[[2]]$checklistKey)
+  
+  # Third predicate (country) should not have checklistKey
+  expect_null(z$request$predicate$predicates[[3]]$checklistKey)
+})
+
+test_that("occ_download_prep works with pred_default and taxonomic keys", {
+  skip_on_cran()
+
+  z <- occ_download_prep(
+    pred_default(),
+    pred("taxonKey", "V2"),
+    user = "foo", pwd = "bar", email = "foo@bar.com"
+  )
+
+  # Top-level checklistKey should be present
+  expect_is(z$request$checklistKey, "character")
+  expect_equal(z$request$checklistKey[1], "7ddf754f-d193-4cc9-b351-99906754a03b")
+  
+  # Should have an AND with two predicates at top level
+  expect_equal(z$request$predicate$type[1], "and")
+  expect_equal(length(z$request$predicate$predicates), 2)
+  
+  # First predicate is the nested AND from pred_default
+  expect_equal(z$request$predicate$predicates[[1]]$type[1], "and")
+  expect_equal(length(z$request$predicate$predicates[[1]]$predicates), 4)
+  
+  # Second predicate is the taxonKey with checklistKey
+  expect_equal(z$request$predicate$predicates[[2]]$type[1], "equals")
+  expect_equal(z$request$predicate$predicates[[2]]$key[1], "TAXON_KEY")
+  expect_equal(z$request$predicate$predicates[[2]]$value[1], "V2")
+  expect_equal(z$request$predicate$predicates[[2]]$checklistKey[1], 
+    "7ddf754f-d193-4cc9-b351-99906754a03b")
+  
+  # Predicates within pred_default should NOT have checklistKey
+  expect_null(z$request$predicate$predicates[[1]]$predicates[[1]]$checklistKey)
+  expect_null(z$request$predicate$predicates[[1]]$predicates[[2]]$checklistKey)
+})
+
+test_that("occ_download_prep handles mixed GBIF Backbone and COL XR predicates", {
+  skip_on_cran()
+
+  backbone_uuid <- "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+  col_xr_uuid <- "7ddf754f-d193-4cc9-b351-99906754a03b"
+  
+  # When using numeric keys, the validation logic switches top-level to backbone
+  # This is expected behavior - predicate-level checklistKey is still respected
+  expect_warning(
+    z <- occ_download_prep(
+      pred("classKey", "212", checklistKey = backbone_uuid),  # Aves in GBIF Backbone
+      pred("genusKey", "B8V3Z"),  # COL XR key (default)
+      pred("country", "US"),  # Non-taxonomic
+      pred("basisOfRecord", "PRESERVED_SPECIMEN"),  # Non-taxonomic
+      checklistKey = col_xr_uuid,
+      user = "foo", pwd = "bar", email = "foo@bar.com"
+    ),
+    "Numeric taxonomic keys detected.*CLASS_KEY"
+  )
+
+  # Top-level checklistKey auto-switches to backbone when numeric keys detected
+  expect_is(z$request$checklistKey, "character")
+  expect_equal(z$request$checklistKey[1], backbone_uuid)
+  
+  # Should have an AND with multiple predicates
+  expect_equal(z$request$predicate$type[1], "and")
+  expect_equal(length(z$request$predicate$predicates), 4)
+  
+  # First predicate: classKey with GBIF Backbone
+  expect_equal(z$request$predicate$predicates[[1]]$type[1], "equals")
+  expect_equal(z$request$predicate$predicates[[1]]$key[1], "CLASS_KEY")
+  expect_equal(z$request$predicate$predicates[[1]]$value[1], "212")
+  expect_equal(z$request$predicate$predicates[[1]]$checklistKey[1], backbone_uuid)
+  
+  # Second predicate: genusKey with COL XR (default)
+  expect_equal(z$request$predicate$predicates[[2]]$type[1], "equals")
+  expect_equal(z$request$predicate$predicates[[2]]$key[1], "GENUS_KEY")
+  expect_equal(z$request$predicate$predicates[[2]]$value[1], "B8V3Z")
+  expect_equal(z$request$predicate$predicates[[2]]$checklistKey[1], col_xr_uuid)
+  
+  # Third predicate: country (non-taxonomic, no checklistKey)
+  expect_equal(z$request$predicate$predicates[[3]]$type[1], "equals")
+  expect_equal(z$request$predicate$predicates[[3]]$key[1], "COUNTRY")
+  expect_null(z$request$predicate$predicates[[3]]$checklistKey)
+  
+  # Fourth predicate: basisOfRecord (non-taxonomic, no checklistKey)
+  expect_equal(z$request$predicate$predicates[[4]]$type[1], "equals")
+  expect_equal(z$request$predicate$predicates[[4]]$key[1], "BASIS_OF_RECORD")
+  expect_null(z$request$predicate$predicates[[4]]$checklistKey)
+})
+
+test_that("numeric taxonomic keys trigger warning and switch to backbone", {
+  skip_on_cran()
+  
+  # Test with numeric taxonKey - should warn and switch to backbone
+  expect_warning(
+    z <- occ_download_prep(
+      pred("taxonKey", 2431950),
+      pred("country", "US"),
+      user = "foo", pwd = "bar", email = "foo@bar.com"
+    ),
+    "Numeric taxonomic keys detected.*TAXON_KEY.*legacy GBIF Backbone.*gbif_to_col"
+  )
+  
+  # Should have switched to backbone UUID
+  expect_equal(z$request$checklistKey[1], "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
+  
+  # Test with numeric speciesKey
+  expect_warning(
+    z2 <- occ_download_prep(
+      pred("speciesKey", 5231190),
+      pred("hasCoordinate", TRUE),
+      user = "foo", pwd = "bar", email = "foo@bar.com"
+    ),
+    "Numeric taxonomic keys detected.*SPECIES_KEY.*legacy GBIF Backbone.*gbif_to_col"
+  )
+  
+  expect_equal(z2$request$checklistKey[1], "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
+  
+  # Test with multiple numeric keys in pred_in
+  expect_warning(
+    z3 <- occ_download_prep(
+      pred_in("taxonKey", c(2431950, 5231190)),
+      user = "foo", pwd = "bar", email = "foo@bar.com"
+    ),
+    "Numeric taxonomic keys detected.*TAXON_KEY.*legacy GBIF Backbone.*gbif_to_col"
+  )
+  
+  expect_equal(z3$request$checklistKey[1], "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
+})
+
+test_that("numeric keys with explicit backbone checklistKey don't trigger warning", {
+  skip_on_cran()
+  
+  # When user explicitly sets checklistKey to backbone, no warning should be issued
+  expect_no_warning(
+    z <- occ_download_prep(
+      pred("taxonKey", 2431950),
+      pred("country", "US"),
+      checklistKey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+      user = "foo", pwd = "bar", email = "foo@bar.com"
+    )
+  )
+  
+  # Verify the backbone checklistKey was used
+  expect_equal(z$request$checklistKey[1], "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
+})
+
+test_that("alpha-numeric keys don't trigger warning", {
+  skip_on_cran()
+  
+  # COL XR alpha-numeric keys should not trigger any warning
+  expect_no_warning(
+    z <- occ_download_prep(
+      pred("taxonKey", "Q2M4"),
+      pred("country", "US"),
+      user = "foo", pwd = "bar", email = "foo@bar.com"
+    )
+  )
+  
+  # Should use COL XR default
+  expect_equal(z$request$checklistKey[1], "7ddf754f-d193-4cc9-b351-99906754a03b")
+})
+
+test_that("numeric keys in nested predicates trigger warning", {
+  skip_on_cran()
+  
+  # Test with pred_and containing numeric keys
+  expect_warning(
+    z <- occ_download_prep(
+      pred_and(
+        pred("taxonKey", 2431950),
+        pred("country", "US")
+      ),
+      user = "foo", pwd = "bar", email = "foo@bar.com"
+    ),
+    "Numeric taxonomic keys detected.*TAXON_KEY.*legacy GBIF Backbone.*gbif_to_col"
+  )
+  
+  expect_equal(z$request$checklistKey[1], "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
+})
+
+test_that("numeric keys get backbone checklistKey at predicate level", {
+  skip_on_cran()
+  
+  # Test simple numeric taxonKey - should inject backbone at predicate level
+  expect_warning(
+    z <- occ_download_prep(
+      pred("taxonKey", 2431950),
+      user = "foo", pwd = "bar", email = "foo@bar.com"
+    ),
+    "Numeric taxonomic keys detected"
+  )
+  
+  # Check that backbone checklistKey was injected at predicate level
+  expect_equal(z$request$predicate$checklistKey[1], "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
+  
+  # Test pred_in with numeric values - should inject backbone at predicate level
+  suppressWarnings({
+    z2 <- occ_download_prep(
+      pred_in("speciesKey", c(2441176, 2441177)),
+      user = "foo", pwd = "bar", email = "foo@bar.com"
+    )
+  })
+  
+  expect_equal(z2$request$predicate$checklistKey[1], "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
+})
+
+test_that("nested predicates with numeric keys get backbone checklistKey", {
+  skip_on_cran()
+  
+  # Test pred_and with numeric keys
+  suppressWarnings({
+    z <- occ_download_prep(
+      pred_and(
+        pred("taxonKey", 2431950),
+        pred("country", "US")
+      ),
+      user = "foo", pwd = "bar", email = "foo@bar.com"
+    )
+  })
+  
+  # Check that backbone was injected into the taxonKey predicate
+  predicates <- z$request$predicate$predicates
+  taxon_pred <- predicates[[1]]  # First predicate should be taxonKey
+  expect_equal(taxon_pred$checklistKey[1], "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
+  
+  # Second predicate (country) should not have checklistKey
+  country_pred <- predicates[[2]]
+  expect_null(country_pred$checklistKey)
+  
+  # Test pred_or with numeric keys
+  suppressWarnings({
+    z2 <- occ_download_prep(
+      pred_or(
+        pred("speciesKey", 2441176),
+        pred("genusKey", 2480946)
+      ),
+      user = "foo", pwd = "bar", email = "foo@bar.com"
+    )
+  })
+  
+  # Both predicates should have backbone checklistKey
+  predicates2 <- z2$request$predicate$predicates
+  expect_equal(predicates2[[1]]$checklistKey[1], "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
+  expect_equal(predicates2[[2]]$checklistKey[1], "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
+})
+
+test_that("explicit checklistKey in predicate is preserved", {
+  skip_on_cran()
+  
+  # User explicitly sets backbone checklistKey at predicate level with numeric key
+  # Should NOT trigger warning because explicit checklistKey respects user choice
+  z <- occ_download_prep(
+    pred("taxonKey", 2431950, checklistKey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"),
+    user = "foo", pwd = "bar", email = "foo@bar.com",
+    checklistKey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+  )
+  
+  # Should have backbone checklistKey at predicate level (from explicit parameter)
+  expect_equal(z$request$predicate$checklistKey[1], "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
+})
 
 

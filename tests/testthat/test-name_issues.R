@@ -1,25 +1,27 @@
 context("name_issues")
+# testthat::test_file("tests/testthat/test-name_issues.R")
+
 
 test_that("name_issues", {
   vcr::use_cassette("name_issues", {
 
-    out <- name_usage(name = "Lupus", limit = 100)
+    out <- suppressWarnings(name_usage(name = "Lupus", limit = 100))
 
     # Parsing output by issue
-    aa <- out %>% name_issues(clasna)
+    aa <- suppressWarnings(out %>% name_issues(clasna))
 
     ### remove data rows with certain issue classes
-    bb <- out %>% name_issues(-bbmn, -clasna)
+    bb <- suppressWarnings(out %>% name_issues(-bbmn, -clasna))
 
     ### split issues into separate columns
-    cc <- out %>% name_issues(mutate = "split")
-    dd <- out %>% name_issues(-scina, mutate = "split")
+    cc <- suppressWarnings(out %>% name_issues(mutate = "split"))
+    dd <- suppressWarnings(out %>% name_issues(-scina, mutate = "split"))
 
     ### expand issues to more descriptive names
-    ff <- out %>% name_issues(mutate = "expand")
+    ff <- suppressWarnings(out %>% name_issues(mutate = "expand"))
 
     ### split and expand
-    gg <- out %>% name_issues(mutate = "split_expand")
+    gg <- suppressWarnings(out %>% name_issues(mutate = "split_expand"))
   }, preserve_exact_body_bytes = TRUE)
 
   # correct class
@@ -45,4 +47,16 @@ test_that("name_issues", {
   expect_false(any(grepl("issues", names(gg$data))))
   expect_true(any(grepl("CLASSIFICATION_NOT_APPLIED", names(gg$data))))
 
+})
+
+test_that("name_issues shows deprecation warning", {
+  skip_on_cran() # because fixture in .Rbuildignore
+
+  vcr::use_cassette("name_issues_deprecation", {
+    out <- suppressWarnings(name_usage(name = "Lupus", limit = 1))
+    expect_warning(
+      name_issues(out),
+      "name_issues\\(\\) is deprecated because it depends on name_usage\\(\\)"
+    )
+  }, preserve_exact_body_bytes = TRUE)
 })

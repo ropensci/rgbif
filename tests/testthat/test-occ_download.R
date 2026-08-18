@@ -1,3 +1,4 @@
+# testthat::test_file("tests/testthat/test-occ_download.R")
 # invisible(vcr::vcr_configure(
 #   dir = "tests/fixtures",
 #   filter_sensitive_data = list(
@@ -13,7 +14,7 @@ test_that("occ_download: real requests work", {
   skip_on_cran()
 
   vcr::use_cassette("occ_download_1", {
-    zzz <- occ_download(pred("taxonKey", 9206251),
+    zzz <- occ_download(pred("taxonKey", "3K5TS"),
       pred_in("country", c("US", "CA")), pred_gte("year", 1979))
   }, match_requests_on = c("method", "uri", "body"))
   
@@ -76,7 +77,7 @@ test_that("occ_download: real requests work", {
   vcr::use_cassette("occ_download_4", {
     ccc <- occ_download(
     type="and",
-    pred("taxonKey", 5052020),
+    pred("taxonKey", "Q2LG"),
     pred("hasGeospatialIssue", FALSE),
     pred("hasCoordinate", TRUE),
     pred_gte("year", 1900),
@@ -167,7 +168,7 @@ test_that("occ_download: real requests work", {
   vcr::use_cassette("occ_download_8", {
     ddd <- occ_download(
       pred_default(),
-      pred("typeStatus","ALLOLECTOTYPE"),
+      pred("typeStatus","Allolectotype"),
       format = "SIMPLE_CSV"
     )
   }, match_requests_on = c("method", "uri", "body"))
@@ -187,7 +188,7 @@ test_that("occ_download: real requests work", {
   
   vcr::use_cassette("occ_download_9", {
     bbb <- occ_download(
-      pred("taxonKey",22),
+      pred("taxonKey","B8V3M"),
       format = "DWCA",
       verbatim_extensions=
       c("http://rs.gbif.org/terms/1.0/DNADerivedData",
@@ -220,6 +221,64 @@ test_that("occ_download: real requests work", {
   expect_output(print.occ_download(eee),"<<gbif download>>")
   expect_equal(length(capture.output(print(eee))),22)
 
+  # test pred_notnull()
+  vcr::use_cassette("occ_download_11", {
+    nnn <- occ_download(
+      pred_notnull("catalogNumber"),
+      pred_notnull("scientificName"),
+      pred_notnull("lifeStage"),
+      format = "SIMPLE_CSV"
+    )
+  }, match_requests_on = c("method", "uri", "body"))
+  expect_is(unclass(nnn), "character")
+  expect_match(unclass(nnn)[1], "^[0-9]{7}-[0-9]{15}$")
+  expect_equal(attr(nnn, "user"), Sys.getenv("GBIF_USER"))
+  expect_equal(attr(nnn, "email"), Sys.getenv("GBIF_EMAIL"))
+  expect_equal(attr(nnn, "format"), "SIMPLE_CSV")
+  expect_is(attr(nnn,"citation"),"character")
+  expect_is(attr(nnn,"downloadLink"),"character")
+  expect_output(print.occ_download(nnn),"<<gbif download>>")
+  expect_equal(length(capture.output(print(nnn))),22)
+
+  # test GBIF Backbone taxonomy with numeric taxonKey
+  vcr::use_cassette("occ_download_12", {
+    fff <- occ_download(
+      pred("taxonKey", 2431950,
+      checklistKey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"),
+      format = "SIMPLE_CSV",
+      checklistKey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+    )
+  }, match_requests_on = c("method", "uri", "body"))
+  expect_is(unclass(fff), "character")
+  expect_match(unclass(fff)[1], "^[0-9]{7}-[0-9]{15}$")
+  expect_equal(attr(fff, "user"), Sys.getenv("GBIF_USER"))
+  expect_equal(attr(fff, "email"), Sys.getenv("GBIF_EMAIL"))
+  expect_equal(attr(fff, "format"), "SIMPLE_CSV")
+  expect_is(attr(fff,"citation"),"character")
+  expect_is(attr(fff,"downloadLink"),"character")
+  expect_output(print.occ_download(fff),"<<gbif download>>")
+  expect_equal(length(capture.output(print(fff))),22)
+
+  # test that checklistKey is automatically added when using a numeric taxonKey
+  expect_warning(
+    vcr::use_cassette("occ_download_13", {
+      nnn <- occ_download(
+        pred("taxonKey", 2431950),
+        format = "SIMPLE_CSV"
+      )
+    }, match_requests_on = c("method", "uri", "body")),
+    "Numeric taxonomic keys detected.*Switching to Backbone checklistKey"
+  )
+  expect_is(unclass(nnn), "character")
+  expect_match(unclass(nnn)[1], "^[0-9]{7}-[0-9]{15}$")
+  expect_equal(attr(nnn, "user"), Sys.getenv("GBIF_USER"))
+  expect_equal(attr(nnn, "email"), Sys.getenv("GBIF_EMAIL"))
+  expect_equal(attr(nnn, "format"), "SIMPLE_CSV")
+  expect_is(attr(nnn,"citation"),"character")
+  expect_is(attr(nnn,"downloadLink"),"character")
+  expect_output(print.occ_download(nnn),"<<gbif download>>")
+  expect_equal(length(capture.output(print(nnn))),22)
+
   # test that invalid key value fails well
   expect_error(
     occ_download(
@@ -227,7 +286,6 @@ test_that("occ_download: real requests work", {
       checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b"),
       format = "SIMPLE_CSV")
     )
+
+
 })
-
-
-

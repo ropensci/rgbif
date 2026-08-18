@@ -21,8 +21,8 @@
 #' extensions to include in the download. This parameter is only applied when
 #' \code{format = "DWCA"} and will be ignored for other formats.
 #' @param checklistKey (character) The UUID key for a checklist dataset to use
-#' for taxonomy in the download. By default, the GBIF Backbone Taxonomy will
-#' be used if no checklistKey is supplied. Optional
+#' for taxonomy in the download. The default is COL (Catalogue of Life) Extended
+#' Release (7ddf754f-d193-4cc9-b351-99906754a03b). Optional
 #' @param user (character) User name within GBIF's website. Required. See
 #' "Authentication" below
 #' @param pwd (character) User password within GBIF's website. Required. See
@@ -31,6 +31,13 @@
 #' email. Required. See "Authentication" below
 #' @template occ
 #' @note see [downloads] for an overview of GBIF downloads methods
+#' 
+#' When numeric taxonomic keys (taxonKey, speciesKey, kingdomKey, etc.) are 
+#' detected in predicates and checklistKey is set to COL XR (the default) or NULL, 
+#' the function automatically switches to the GBIF Backbone taxonomy checklistKey 
+#' and issues a warning. These numeric keys are legacy identifiers. If you 
+#' explicitly set checklistKey to Backbone or another taxonomy, no warning is 
+#' issued. Consider migrating to COL XR identifiers using [gbif_to_col()].
 #' @family downloads
 #' @section geometry:
 #' When using the geometry parameter, make sure that your well known text
@@ -90,8 +97,9 @@
 #' <https://www.gbif.org/developer/occurrence#predicates>
 #'
 #' @examples \dontrun{
+#' # Uses COL (Catalogue of Life) Extended Release with alpha-numeric keys by default
 #' # occ_download(pred("basisOfRecord", "LITERATURE"))
-#' # occ_download(pred("taxonKey", 5231190), pred_gt("elevation", 5000))
+#' # occ_download(pred("taxonKey", "Q2M4"), pred_gt("elevation", 5000)) # Calopteryx splendens
 #' # occ_download(pred_gt("decimalLatitude", 50))
 #' # occ_download(pred_gte("elevation", 9000))
 #' # occ_download(pred_gte('decimalLatitude", 65))
@@ -104,7 +112,7 @@
 #' # z <- occ_download(pred_gte("decimalLatitude", 75),
 #' #  format = "SPECIES_LIST")
 #'
-#' # res <- occ_download(pred("taxonKey", 7264332), pred("hasCoordinate", TRUE))
+#' # res <- occ_download(pred("taxonKey", "9WLSS"), pred("hasCoordinate", TRUE))
 #'
 #' # pass output directly, or later, to occ_download_meta for more information
 #' # occ_download(pred_gt('decimalLatitude', 75)) %>% occ_download_meta
@@ -112,7 +120,7 @@
 #' # Multiple queries
 #' # occ_download(pred_gte("decimalLatitude", 65),
 #' #  pred_lte("decimalLatitude", -65), type="or")
-#' # gg <- occ_download(pred("depth", 80), pred("taxonKey", 2343454),
+#' # gg <- occ_download(pred("depth", 80), pred("taxonKey", "Q2M4"),
 #' #  type="or")
 #' # x <- occ_download(pred_and(pred_within("POLYGON((-14 42, 9 38, -7 26, -14 42))"),
 #' #  pred_gte("elevation", 5000)))
@@ -132,11 +140,11 @@
 #' # )
 #'
 #' # Using body parameter - pass in your own complete query
-#' ## as JSON
+#' ## as JSON (using COL XR alpha-numeric key)
 #' query1 <- '{"creator":"sckott",
 #'   "notification_address":["stuff1@gmail.com"],
 #'   "predicate":{"type":"and","predicates":[
-#'     {"type":"equals","key":"TAXON_KEY","value":"7264332"},
+#'     {"type":"equals","key":"TAXON_KEY","value":"Q2M4"},
 #'     {"type":"equals","key":"HAS_COORDINATE","value":"TRUE"}]}
 #'  }'
 #' # res <- occ_download(body = query1, curlopts=list(verbose=TRUE))
@@ -150,7 +158,7 @@
 #'     type = unbox("and"),
 #'     predicates = list(
 #'       list(type = unbox("equals"), key = unbox("TAXON_KEY"),
-#'         value = unbox("7264332")),
+#'         value = unbox("Q2M4")),
 #'       list(type = unbox("equals"), key = unbox("HAS_COORDINATE"),
 #'         value = unbox("TRUE"))
 #'     )
@@ -158,33 +166,34 @@
 #' )
 #' # res <- occ_download(body = query, curlopts = list(verbose = TRUE))
 #'
-#' # Prepared query
+#' # Prepared query (uses COL XR by default)
 #' occ_download_prep(pred("basisOfRecord", "LITERATURE"))
 #' occ_download_prep(pred("basisOfRecord", "LITERATURE"), format = "SIMPLE_CSV")
 #' occ_download_prep(pred("basisOfRecord", "LITERATURE"), format = "SPECIES_LIST")
-#' occ_download_prep(pred_in("taxonKey", c(2977832, 2977901, 2977966, 2977835)))
+#' occ_download_prep(pred_in("taxonKey", c("Q2M4", "9WLSS", "Q2N2", "Q2KZ")))
 #' occ_download_prep(pred_within("POLYGON((-14 42, 9 38, -7 26, -14 42))"))
 #' 
-#' ## a complicated example
+#' ## a complicated example (using COL XR alpha-numeric keys)
 #' occ_download_prep(
 #'   pred_in("basisOfRecord", c("MACHINE_OBSERVATION", "HUMAN_OBSERVATION")),
-#'   pred_in("taxonKey", c(2498343, 2481776, 2481890)),
+#'   pred_in("taxonKey", c("Q2M4", "9WLSS", "Q2N2")),
 #'   pred_in("country", c("GB", "IE")),
 #'   pred_or(pred_lte("year", 1989), pred("year", 2000))
 #' )
 #' 
-#' ## using a specific checklist for taxonomy
+#' ## COL XR is now the default checklist
+#' # To use GBIF Backbone Taxonomy, explicitly set checklistKey to the backbone UUID
 #' # occ_download_prep(
 #' #   pred("basisOfRecord", "PRESERVED_SPECIMEN"),
 #' #   pred_in("country", c("VC", "GD")),
-#' #   checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b"
+#' #   checklistKey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
 #' # )
 #' 
 #' # x = occ_download(
-#' #   pred_in("basisOfRecord", c("MACHINE_OBSERVATION", "HUMAN_OBSERVATION")),
-#' #   pred_in("taxonKey", c(9206251, 3112648)),
-#' #   pred_in("country", c("US", "MX")),
-#' #   pred_and(pred_gte("year", 1989), pred_lte("year", 1991))
+#'   pred_in("basisOfRecord", c("MACHINE_OBSERVATION", "HUMAN_OBSERVATION")),
+#'   pred_in("taxonKey", c("Q2M4", "9WLSS")),
+#'   pred_in("country", c("US", "MX")),
+#'   pred_and(pred_gte("year", 1989), pred_lte("year", 1991))
 #' # )
 #' # occ_download_meta(x)
 #' # z <- occ_download_get(x)
@@ -201,7 +210,7 @@ occ_download <- function(...,
                          type = "and", 
                          format = "DWCA",
                          verbatim_extensions = NULL,
-                         checklistKey = NULL,
+                         checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b",
                          user = NULL, 
                          pwd = NULL, 
                          email = NULL, 
@@ -258,15 +267,57 @@ occ_download_prep <- function(...,
     if (length(checklistKey) != 1) {
       stop("'checklistKey' must be a single UUID string", call. = FALSE)
     }
-    if (!is_uuid(checklistKey)) {
+    # Allow empty string as sentinel for "omit checklistKey" (for cache matching)
+    if (!identical(checklistKey, "") && !is_uuid(checklistKey)) {
       stop("'checklistKey' must be a valid UUID", call. = FALSE)
     }
   }
+  
+  # Check for numeric taxonomy keys in predicates and switch to backbone if detected
+  # Only warn if user hasn't explicitly set checklistKey to a different taxonomy
+  preds <- NULL
+  if (is.null(body)) {
+    preds <- list(...)
+    numeric_keys <- check_numeric_taxon_keys(preds)
+    
+    # Only warn and switch if checklistKey is NULL or COL XR default
+    # If user explicitly set a different checklistKey, respect their choice
+    col_xr_uuid <- "7ddf754f-d193-4cc9-b351-99906754a03b"
+    backbone_uuid <- "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+    
+    if (length(numeric_keys) > 0 && (is.null(checklistKey) || identical(checklistKey, col_xr_uuid))) {
+      warning(
+        "Numeric taxonomic keys detected (", 
+        paste(numeric_keys, collapse = ", "), 
+        "). These are legacy GBIF Backbone identifiers. ",
+        "Switching to Backbone checklistKey (d7dddbf4-2cf0-4f39-9b2a-bb099caae36c) ",
+        "at both request and predicate level. ",
+        "Please consider migrating to COL XR identifiers - ",
+        "use gbif_to_col() to look up the COL equivalents.",
+        call. = FALSE
+      )
+      # Override checklistKey to use backbone at request level
+      checklistKey <- backbone_uuid
+      
+      # Inject backbone checklistKey into predicates with numeric keys
+      preds <- inject_backbone_into_predicates(preds, backbone_uuid, col_xr_uuid)
+    }
+  }
+  
   if (!is.null(body)) {
     req <- body
   } else {
-    req <- parse_predicates(user, email, type, format, verbatim_extensions, 
-                           checklistKey, ...)
+    # Use do.call to properly pass predicates when they've been modified
+    if (!is.null(preds)) {
+      req <- do.call(parse_predicates, c(
+        list(user = user, email = email, type = type, format = format, 
+             verbatim_extensions = verbatim_extensions, checklistKey = checklistKey),
+        preds
+      ))
+    } else {
+      req <- parse_predicates(user, email, type, format, verbatim_extensions, 
+                             checklistKey, ...)
+    }
   }
   structure(list(
     url = url,
@@ -336,6 +387,103 @@ rg_POST <- function(url, req, user, pwd, curlopts = list(http_version = 2)) {
   res$raise_for_status()
   stopifnot(res$response_headers$`content-type` == 'application/json')
   res$parse("UTF-8")
+}
+
+# Helper function to check for numeric taxonomic keys in predicates
+check_numeric_taxon_keys <- function(preds) {
+  numeric_keys <- character(0)
+  taxonomic_keys_gbif <- c("TAXON_KEY", "ACCEPTED_TAXON_KEY", "KINGDOM_KEY", 
+                           "PHYLUM_KEY", "CLASS_KEY", "ORDER_KEY", "FAMILY_KEY",
+                           "GENUS_KEY", "SUBGENUS_KEY", "SPECIES_KEY")
+  
+  # Recursive function to check a single predicate or list of predicates
+  check_pred <- function(pred) {
+    if (is.null(pred)) return(NULL)
+    
+    # Handle list of predicates (e.g., from pred_and, pred_or)
+    if (is.list(pred) && !inherits(pred, "occ_predicate")) {
+      if (!is.null(pred$predicates)) {
+        # This is a compound predicate with nested predicates
+        lapply(pred$predicates, check_pred)
+      } else if (!is.null(pred$predicate)) {
+        # This is a NOT predicate with a single nested predicate
+        check_pred(pred$predicate)
+      } else {
+        # Check all elements in the list
+        lapply(pred, check_pred)
+      }
+    } else if (inherits(pred, "occ_predicate") || is.list(pred)) {
+      # Check if this is a taxonomic key with numeric value
+      if (!is.null(pred$key) && pred$key %in% taxonomic_keys_gbif) {
+        # Check if value is numeric
+        if (!is.null(pred$value) && all(suppressWarnings(!is.na(as.numeric(pred$value))))) {
+          numeric_keys <<- c(numeric_keys, pred$key)
+        }
+        # Also check values (for pred_in)
+        if (!is.null(pred$values)) {
+          if (all(suppressWarnings(!is.na(as.numeric(pred$values))))) {
+            numeric_keys <<- c(numeric_keys, pred$key)
+          }
+        }
+      }
+    }
+  }
+  
+  # Check all predicates
+  lapply(preds, check_pred)
+  
+  # Return unique key names
+  unique(numeric_keys)
+}
+
+# Helper function to inject backbone checklistKey into predicates with numeric taxonomic keys
+# This ensures numeric keys use the correct taxonomy at the predicate level
+inject_backbone_into_predicates <- function(preds, backbone_uuid, col_xr_uuid) {
+  taxonomic_keys_gbif <- c("TAXON_KEY", "ACCEPTED_TAXON_KEY", "KINGDOM_KEY", 
+                           "PHYLUM_KEY", "CLASS_KEY", "ORDER_KEY", "FAMILY_KEY",
+                           "GENUS_KEY", "SUBGENUS_KEY", "SPECIES_KEY")
+  
+  # Recursive function to modify a single predicate or list of predicates
+  inject_pred <- function(pred) {
+    if (is.null(pred)) return(pred)
+    
+    # Handle list of predicates (e.g., from pred_and, pred_or)
+    if (inherits(pred, "occ_predicate_list")) {
+      # Preserve class and attributes
+      pred_type <- attr(pred, "type")
+      pred <- lapply(pred, inject_pred)
+      class(pred) <- "occ_predicate_list"
+      attr(pred, "type") <- pred_type
+      return(pred)
+    }
+    
+    # Check if this is a taxonomic key predicate with numeric value
+    if (inherits(pred, "occ_predicate") || is.list(pred)) {
+      if (!is.null(pred$key) && pred$key %in% taxonomic_keys_gbif) {
+        # Check if value is numeric
+        has_numeric <- FALSE
+        if (!is.null(pred$value) && all(suppressWarnings(!is.na(as.numeric(pred$value))))) {
+          has_numeric <- TRUE
+        }
+        # Also check values (for pred_in)
+        if (!is.null(pred$values) && all(suppressWarnings(!is.na(as.numeric(pred$values))))) {
+          has_numeric <- TRUE
+        }
+        
+        # If numeric and checklistKey is NULL or COL XR default, inject backbone
+        if (has_numeric) {
+          if (is.null(pred$checklistKey) || identical(pred$checklistKey[[1]], col_xr_uuid)) {
+            pred$checklistKey <- jsonlite::unbox(backbone_uuid)
+          }
+        }
+      }
+    }
+    
+    return(pred)
+  }
+  
+  # Process all predicates
+  lapply(preds, inject_pred)
 }
 
 catch_err <- function(x) {

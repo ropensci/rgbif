@@ -136,25 +136,6 @@ Available values : DATASET, ORGANIZATION, IH_IRN}
 \item{contact}{(character) Filters collections and institutions whose
 contacts contain the person key specified.}
 
-\item{institution}{(character) Filters collections by institution key or
-name. Optional parameter for filtering results. Only used for
-\link{institution_export}.}
-
-\item{contentType}{(character) Content type of a GrSciColl collection.
-Optional parameter for filtering results. Only used for \link{institution_export}.}
-
-\item{preservationType}{(character) Preservation type of a GrSciColl
-collection. Optional parameter for filtering results. Only used for
-\link{institution_export}.}
-
-\item{accessionStatus}{(character) Accession status of a GrSciColl
-collection. Optional parameter for filtering results. Only used for
-\link{institution_export}.}
-
-\item{personalCollection}{(logical) Whether the collection is a personal
-collection. Optional parameter for filtering results. Only used for
-\link{institution_export}.}
-
 \item{contactUserId}{(numeric) Filters institutions by the user ID of a
 contact. Optional parameter for filtering results.}
 
@@ -218,6 +199,25 @@ Default 20.}
 for \link{institution_export}.}
 
 \item{curlopts}{(list) curlopts options passed on to \link[crul:HttpClient]{crul::HttpClient}.}
+
+\item{institution}{(character) Filters collections by institution key or
+name. Optional parameter for filtering results. Only used for
+\link{institution_export}.}
+
+\item{contentType}{(character) Content type of a GrSciColl collection.
+Optional parameter for filtering results. Only used for \link{institution_export}.}
+
+\item{preservationType}{(character) Preservation type of a GrSciColl
+collection. Optional parameter for filtering results. Only used for
+\link{institution_export}.}
+
+\item{accessionStatus}{(character) Accession status of a GrSciColl
+collection. Optional parameter for filtering results. Only used for
+\link{institution_export}.}
+
+\item{personalCollection}{(logical) Whether the collection is a personal
+collection. Optional parameter for filtering results. Only used for
+\link{institution_export}.}
 }
 \value{
 A \code{list}

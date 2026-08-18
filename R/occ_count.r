@@ -39,7 +39,11 @@
 #' # number of repatriated eBird records in India
 #' occ_count(repatriated = TRUE,country="IN") 
 #'  
-#' occ_count(taxonKey=212) # number of bird occurrences
+#' # Use COL XR alpha-numeric taxonKey
+#' occ_count(taxonKey="Q2M4") # Calopteryx splendens occurrences
+#' # or use numeric keys with GBIF Backbone  
+#' occ_count(taxonKey=212, 
+#'   checklistKey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c") # bird occurrences
 #' # between years 1800-1900
 #' occ_count(basisOfRecord="PRESERVED_SPECIMEN", year="1800,1900") 
 #' occ_count(recordedBy="John Waller") # recorded by John Waller

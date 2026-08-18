@@ -52,6 +52,17 @@ dataset_suggest <- function(query = NULL,
   assert(createdDate,"character")
   assert(contactUserId,"numeric")
   assert(contactEmail,"character")
+  
+  # Deprecation warning for taxonKey
+  if (!is.null(taxonKey)) {
+    warning("The taxonKey parameter in dataset_suggest() only works with the out-of-date GBIF Backbone Taxonomy and does not support COL (Catalogue of Life) Extended Release.", call. = FALSE)
+  }
+  
+  # Deprecation warning for continent
+  if (!is.null(continent)) {
+    warning("The continent parameter in dataset_suggest() is deprecated and may be removed in a future version.", call. = FALSE)
+  }
+  
   args <- as.list(
     rgbif_compact(c(q=query,
                     limit=limit,

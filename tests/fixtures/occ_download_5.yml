@@ -3,7 +3,7 @@ http_interactions:
     method: POST
     uri: https://api.gbif.org/v1/occurrence/download/request
     body:
-      string: '{"creator":"<gbif_user>","notification_address":["<gbif_user>@gbif.org"],"format":"SIMPLE_CSV","predicate":{"type":"equals","key":"VERBATIM_SCIENTIFIC_NAME","value":"Calopteryx"}}'
+      string: '{"creator":"<gbif_user>","notification_address":["<gbif_user>@gbif.org"],"format":"SIMPLE_CSV","predicate":{"type":"equals","key":"VERBATIM_SCIENTIFIC_NAME","value":"Calopteryx"},"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"}'
   response:
     status: 201
     headers:
@@ -11,17 +11,17 @@ http_interactions:
       content-type: application/json
       content-encoding: gzip
     body:
-      string: 0012245-260108223611665
-  recorded_at: 2026-01-15 16:16:09
+      string: 0019906-260806074905277
+  recorded_at: 2026-08-17 12:51:17
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0012245-260108223611665
+    uri: https://api.gbif.org/v1/occurrence/download/0019906-260806074905277
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0012245-260108223611665","license":"unspecified","request":{"predicate":{"type":"equals","key":"VERBATIM_SCIENTIFIC_NAME","value":"Calopteryx","matchCase":false},"sendNotification":false,"format":"SIMPLE_CSV","type":"OCCURRENCE","verbatimExtensions":[]},"created":"2026-01-15T16:16:09.648+00:00","modified":"2026-01-15T16:16:09.648+00:00","eraseAfter":"2026-07-15T16:16:09.554+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0012245-260108223611665.zip","size":0,"totalRecords":4624,"numberDatasets":0}'
-  recorded_at: 2026-01-15 16:16:09
+      string: '{"key":"0019906-260806074905277","license":"unspecified","request":{"predicate":{"type":"equals","key":"VERBATIM_SCIENTIFIC_NAME","value":"Calopteryx","matchCase":false},"sendNotification":false,"format":"SIMPLE_CSV","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-17T12:51:17.232+00:00","modified":"2026-08-17T12:51:17.232+00:00","eraseAfter":"2027-02-17T12:51:16.914+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0019906-260806074905277.zip","size":0,"totalRecords":4665,"numberDatasets":0}'
+  recorded_at: 2026-08-17 12:51:17
 recorded_with: VCR-vcr/2.0.0

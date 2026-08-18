@@ -4,14 +4,14 @@ test_that("gbif_names", {
   skip_on_cran()
   skip_on_ci()
 
-  aa <- gbif_names(name_lookup(query='snake', hl=TRUE), browse=FALSE)
+  aa <- gbif_names(suppressWarnings(name_lookup(query='snake', hl=TRUE)), browse=FALSE)
   expect_is(aa, "character")
   expect_match(aa, "index.html")
 
-  out <- name_lookup(query='canada', hl=TRUE, limit=5)
+  out <- suppressWarnings(name_lookup(query='canada', hl=TRUE, limit=5))
   bb <- gbif_names(out, browse = FALSE)
-  cc <- gbif_names(name_lookup(query='snake', hl=TRUE), browse = FALSE)
-  dd <- gbif_names(name_lookup(query='bird', hl=TRUE), browse = FALSE)
+  cc <- gbif_names(suppressWarnings(name_lookup(query='snake', hl=TRUE)), browse = FALSE)
+  dd <- gbif_names(suppressWarnings(name_lookup(query='bird', hl=TRUE)), browse = FALSE)
 
   expect_is(bb, "character")
   expect_is(cc, "character")
@@ -28,7 +28,7 @@ test_that("fails correctly", {
   skip_on_cran()
   skip_on_ci()
 
-  nms <- name_lookup(query='snake', hl=TRUE)
+  nms <- suppressWarnings(name_lookup(query='snake', hl=TRUE))
   res <- gbif_names(nms, browse=FALSE)
 
   # input of wrong class fails well
