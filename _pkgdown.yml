@@ -23,6 +23,7 @@ reference:
       - occ_search
       - occ_count
       - occ_count_
+      - occ_term
   - title: "Taxonomic names"
     desc: >
       Work with the GBIF taxonomic names API <https://www.gbif.org/developer/species>
