@@ -1,11 +1,12 @@
+# testthat::test_file("tests/testthat/test-occ_download_wait.R")
 test_that("occ_download_wait: real request works", {
   skip_on_cran()
   skip_on_ci()
 
   vcr::use_cassette("occ_download_wait_request", {
     # Use GBIF Backbone for backward compatibility with VCR cassettes
-    downl_req <- occ_download(pred("taxonKey", 9206251),
-      pred_in("country", c("US", "CA")), pred_gte("year", 1975), checklistKey = NULL)
+    downl_req <- occ_download(pred("taxonKey", "3K5TS"),
+      pred_in("country", c("US", "CA")), pred_gte("year", 1975))
     ww <- occ_download_wait(downl_req, status_ping = 3)
   })
   

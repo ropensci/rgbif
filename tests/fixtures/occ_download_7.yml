@@ -11,17 +11,17 @@ http_interactions:
       content-type: application/json
       content-encoding: gzip
     body:
-      string: 0015324-260806074905277
-  recorded_at: 2026-08-14 11:36:09
+      string: 0019952-260806074905277
+  recorded_at: 2026-08-17 13:12:31
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0015324-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0019952-260806074905277
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0015324-260806074905277","license":"unspecified","request":{"predicate":{"type":"equals","key":"LIFE_STAGE","value":"Adult","matchCase":false},"sendNotification":false,"format":"SIMPLE_CSV","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-14T11:36:09.684+00:00","modified":"2026-08-14T11:36:09.684+00:00","eraseAfter":"2027-02-14T11:36:09.594+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0015324-260806074905277.zip","size":0,"totalRecords":145537269,"numberDatasets":0}'
-  recorded_at: 2026-08-14 11:36:09
+      string: '{"key":"0019952-260806074905277","license":"unspecified","request":{"predicate":{"type":"equals","key":"LIFE_STAGE","value":"Adult","matchCase":false},"sendNotification":false,"format":"SIMPLE_CSV","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-17T13:12:31.497+00:00","modified":"2026-08-17T13:12:31.497+00:00","eraseAfter":"2027-02-17T13:12:31.377+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0019952-260806074905277.zip","size":0,"totalRecords":145514862,"numberDatasets":0}'
+  recorded_at: 2026-08-17 13:12:31
 recorded_with: VCR-vcr/2.0.0

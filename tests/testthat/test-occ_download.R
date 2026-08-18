@@ -259,6 +259,26 @@ test_that("occ_download: real requests work", {
   expect_output(print.occ_download(fff),"<<gbif download>>")
   expect_equal(length(capture.output(print(fff))),22)
 
+  # test that checklistKey is automatically added when using a numeric taxonKey
+  expect_warning(
+    vcr::use_cassette("occ_download_13", {
+      nnn <- occ_download(
+        pred("taxonKey", 2431950),
+        format = "SIMPLE_CSV"
+      )
+    }, match_requests_on = c("method", "uri", "body")),
+    "Numeric taxonomic keys detected.*Switching to Backbone checklistKey"
+  )
+  expect_is(unclass(nnn), "character")
+  expect_match(unclass(nnn)[1], "^[0-9]{7}-[0-9]{15}$")
+  expect_equal(attr(nnn, "user"), Sys.getenv("GBIF_USER"))
+  expect_equal(attr(nnn, "email"), Sys.getenv("GBIF_EMAIL"))
+  expect_equal(attr(nnn, "format"), "SIMPLE_CSV")
+  expect_is(attr(nnn,"citation"),"character")
+  expect_is(attr(nnn,"downloadLink"),"character")
+  expect_output(print.occ_download(nnn),"<<gbif download>>")
+  expect_equal(length(capture.output(print(nnn))),22)
+
   # test that invalid key value fails well
   expect_error(
     occ_download(
