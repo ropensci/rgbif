@@ -21,6 +21,12 @@ The **GBIF Backbone Taxonomy** (the old default) uses **numeric** taxon keys suc
 
 The **COL XR** (the new default) uses **alpha-numeric** taxon keys such as `"Q2M4"` or `"9WLSS"`. This is the default behavior with `checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b"`. 
 
+## Backward Compatibility
+
+**Your existing code using numeric keys will continue to work!** Functions like `occ_search()` and `occ_download()` automatically detect numeric taxonomic keys and switch to the GBIF Backbone taxonomy with a warning message. This gives you time to migrate to COL XR at your own pace while ensuring your scripts don't break.
+
+However, we **strongly recommend** updating your code to use COL XR keys for the most up-to-date taxonomy. Use `gbif_to_col()` to convert your existing GBIF Backbone numeric keys to COL XR alpha-numeric keys.
+
 ## Affected Functions
 
 The following functions now use the COL XR by default:
@@ -87,6 +93,16 @@ occ_search(taxonKey = 5231190, limit = 10)
 occ_search(taxonKey = "Q2M4", limit = 10)
 ```
 
+If you provide a numeric taxonomic key (e.g., `taxonKey = 5231190`), rgbif will automatically switch to the GBIF Backbone taxonomy and issue a warning:
+
+```r
+occ_search(taxonKey = 5231190, limit = 10)
+# Warning: Numeric taxonomic keys detected (taxonKey).
+# These are legacy GBIF Backbone identifiers.
+# Switching to Backbone checklistKey: d7dddbf4-2cf0-4f39-9b2a-bb099caae36c
+# Consider migrating to COL XR identifiers using gbif_to_col().
+```
+
 ### Occurrence Downloads
 
 **Before (rgbif 3.8.5 and earlier):**
@@ -96,6 +112,7 @@ occ_download(
   pred("taxonKey", 5231190),
   pred("hasCoordinate", TRUE)
 )
+# With warning about numeric keys
 ```
 
 **After (rgbif 3.9.0):**
@@ -113,6 +130,22 @@ occ_download(
   pred("hasCoordinate", TRUE)
 )
 ```
+
+If you provide numeric taxonomic keys in your download predicates, rgbif will automatically inject the GBIF Backbone checklistKey into each predicate containing numeric keys and issue a warning:
+
+```r
+occ_download(
+  pred("taxonKey", 5231190),
+  pred("hasCoordinate", TRUE)
+)
+# Warning: Numeric taxonomic keys detected in predicates.
+# These are legacy GBIF Backbone identifiers.
+# Switching to Backbone checklistKey: d7dddbf4-2cf0-4f39-9b2a-bb099caae36c
+# at the predicate level.
+# Consider migrating to COL XR identifiers using gbif_to_col().
+```
+
+This works with nested predicates too (e.g., `pred_and()`, `pred_or()`), ensuring existing code continues to work while encouraging migration to COL XR.
 
 ### Batch Name Matching
 

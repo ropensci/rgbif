@@ -32,7 +32,7 @@ The following functions are deprecated because they use the GBIF Backbone taxono
 
 ### MINOR IMPROVEMENTS
 
-* `occ_search()` now returns `classifications` as a named list of tibbles, with one tibble per checklistKey (taxonomy source). Each tibble contains one row per occurrence with taxonomic ranks pivoted into camelCase columns (checklistKey, kingdomName, kingdomKey, phylumName, phylumKey, className, classKey, etc.). This structure makes it easy to work with occurrences from different taxonomies separately while keeping the checklistKey information with the data. Known checklists (COL, backbone) are shown with friendly names, while unknown checklists use their UUID. The function now dynamically discovers taxonomic ranks from the API response instead of filtering to a predefined set, ensuring all available taxonomic information is preserved. 
+* `occ_search()` now returns `classifications` as a named list of tibbles, with one tibble per checklistKey (taxonomy source). Each tibble contains one row per occurrence with taxonomic ranks pivoted into camelCase columns (checklistKey, kingdomName, kingdomKey, phylumName, phylumKey, className, classKey, etc.). This structure makes it easy to work with occurrences from different taxonomies separately while keeping the checklistKey information with the data. Known checklists (COL, backbone) are shown with friendly names, while unknown checklists use their UUID.  
 * `occ_search()` now detects numeric taxonomic keys (taxonKey, speciesKey, kingdomKey, etc.) and automatically switches to the GBIF Backbone taxonomy checklistKey with a warning message. These numeric keys are legacy identifiers from the GBIF Backbone taxonomy. Users are advised to migrate to COL XR identifiers using `gbif_to_col()`.
 
 rgbif 3.8.5
