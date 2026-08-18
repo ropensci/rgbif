@@ -80,6 +80,11 @@ searches for names. This function encompasses a bunch of API endpoints,
 most of which require that you already have a taxon key, but there is one
 endpoint that allows name searches (see examples below).
 
+\strong{Important:} When \code{key} is provided, the \code{datasetKey} parameter is ignored
+by the GBIF API. The API returns data based solely on the key, regardless of
+what \code{datasetKey} is set to. A warning will be issued if both parameters are
+provided.
+
 Note that \code{data="verbatim"} hasn't been working.
 
 Options for the data parameter are: 'all', 'verbatim', 'name', 'parents',

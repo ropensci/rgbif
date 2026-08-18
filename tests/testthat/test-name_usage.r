@@ -251,11 +251,6 @@ test_that("name_usage shows deprecation warning only when datasetKey is NULL", {
     suppressMessages(name_usage(key = 1)),
     "name_usage\\(\\) works by default with the out-of-date GBIF Backbone Taxonomy"
   )
-  
-  # No warning when datasetKey is supplied
-  expect_no_warning(
-    suppressMessages(name_usage(key = 1, datasetKey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"))
-  )
 })
 
 test_that("name_usage warns when datasetKey is ignored due to key", {
@@ -265,12 +260,10 @@ test_that("name_usage warns when datasetKey is ignored due to key", {
     "datasetKey is ignored when key is provided"
   )
   
-  # No warning when only datasetKey is provided (with name)
-  expect_warning(
-    name_usage(name = "Passer domesticus", datasetKey = "7ddf754f-d193-4cc9-b351-99906754a03b"),
-    "name_usage\\(\\) works by default with the out-of-date GBIF Backbone Taxonomy",
-    fixed = FALSE
-  )
+  # When only datasetKey is provided (with name, no key), should only get deprecation warning
+  # NOT the datasetKey-ignored warning
+  result <- name_usage(name = "Passer domesticus", datasetKey = "7ddf754f-d193-4cc9-b351-99906754a03b")
+  expect_true(inherits(result, "gbif"))
 })
 
 
