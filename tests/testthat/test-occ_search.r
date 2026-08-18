@@ -716,9 +716,11 @@ test_that("classifications returns correct structure", {
   # Check that we have named list elements
   expect_true(length(names(out$classifications)) > 0)
   
-  # Check for expected checklist names (COL and/or backbone)
+  # Check for expected checklist names (COL, backbone, or UUID format)
   checklist_names <- names(out$classifications)
-  expect_true(any(checklist_names %in% c("COL", "backbone", "Unknown")))
+  # Should have either friendly names or valid UUIDs
+  uuid_pattern <- "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+  expect_true(all(checklist_names %in% c("COL", "backbone") | grepl(uuid_pattern, checklist_names)))
   
   # Each element should be a data frame (tibble or data.table)
   for (cls in out$classifications) {
@@ -772,7 +774,7 @@ test_that("classifications checklistKey contains UUID", {
   if (length(out$classifications) > 0) {
     cls <- out$classifications[[1]]
     
-    # checklistKey column should contain UUIDs (unless it's "Unknown")
+    # checklistKey column should contain UUIDs
     keys <- unique(cls$checklistKey)
     for (key in keys) {
       if (!is.na(key)) {
@@ -798,12 +800,9 @@ test_that("classifications friendly names work correctly", {
   
   # Check if COL or backbone appear (not the UUID)
   if (length(checklist_names) > 0) {
-    # Should NOT see long UUIDs as names
-    expect_false(any(grepl("^[0-9a-f]{8}-[0-9a-f]{4}", checklist_names)))
-    
-    # Should see friendly names or "Unknown"
-    expect_true(all(checklist_names %in% c("COL", "backbone", "Unknown") | 
-                    !grepl("^[0-9a-f]{8}-[0-9a-f]{4}", checklist_names)))
+    # Should see either friendly names (COL, backbone) or valid UUIDs for unknown checklists
+    uuid_pattern <- "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    expect_true(all(checklist_names %in% c("COL", "backbone") | grepl(uuid_pattern, checklist_names)))
   }
 })
 

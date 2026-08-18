@@ -179,17 +179,15 @@ flatten_classifications <- function(classifications) {
   names(final_result) <- all_checklistKeys
   final_result <- Filter(Negate(is.null), final_result)
   
-  # Convert checklist keys to friendly names
+  # Convert known checklist keys to friendly names, keep UUIDs for unknown ones
   final_names <- names(final_result)
   for (i in seq_along(final_names)) {
     key <- final_names[i]
-    if (is.na(key) || key == "") {
-      final_names[i] <- "Unknown"
-    } else if (key %in% names(checklist_names)) {
-      # Replace with friendly name
+    # Only convert to friendly name if it's a known checklist
+    if (!is.na(key) && key != "" && key %in% names(checklist_names)) {
       final_names[i] <- checklist_names[key]
     }
-    # Otherwise keep the UUID as-is (unknown checklist)
+    # Otherwise keep the UUID as-is (including for NA or empty, though those shouldn't occur)
   }
   names(final_result) <- final_names
   

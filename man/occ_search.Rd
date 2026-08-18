@@ -692,7 +692,7 @@ Each tibble contains one row per occurrence with the full taxonomic classificati
 path pivoted into camelCase columns: checklistKey, kingdomName, kingdomKey, phylumName,
 phylumKey, className, classKey, orderName, orderKey, familyName, familyKey,
 genusName, genusKey, subgenusName, subgenusKey, speciesName, speciesKey. The function
-dynamically discovers all taxonomic ranks from the API. If checklistKey is not available from the API, occurrences are grouped under "Unknown".
+dynamically discovers all taxonomic ranks from the API. Known checklists (COL, backbone) are shown with friendly names, while unknown checklists use their UUID.
 }
 \description{
 Search for GBIF occurrences
