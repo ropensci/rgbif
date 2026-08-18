@@ -26,6 +26,10 @@ The following functions are deprecated because they use the GBIF Backbone taxono
 * `name_usage()` - use `rcol::col_usage()` instead
 * `name_issues()` - use `rcol::col_usage()` to parse and examine name issues
 
+Additionally:
+
+* `elevation()` - deprecated because it relies on a non-GBIF web service (GeoNames) and will be removed in a future version (#473)
+
 ### NEW FEATURE
 
 `gbif_to_col()` - Convert GBIF Backbone numeric taxon keys to COL Extended Release alpha-numeric keys. Returns the full API response including usage details, classification hierarchy, and match diagnostics. 

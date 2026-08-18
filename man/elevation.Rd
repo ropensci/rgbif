@@ -47,6 +47,13 @@ add is named differently.
 \description{
 Uses the GeoNames web service
 }
+\section{Deprecation Notice}{
+
+This function is deprecated as of rgbif 3.9.0 and will be removed in a future
+version. It relies on a non-GBIF web service (GeoNames) and is not core to
+the package's purpose of interacting with GBIF data.
+}
+
 \section{GeoNames user name}{
 
 To get a GeoNames user name, register for an account at
