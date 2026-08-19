@@ -14,7 +14,7 @@ http_interactions:
         domesticus","rank":"SPECIES"}],"diagnostics":{"matchType":"EXACT","confidence":100,"timeTaken":0,"timings":{"idMatchScientificNameID":1,"sciNameMatch":0,"checkScientificNameAndIDConsistencyScientificNameID":0,"checkConsistencyWithClassificationMatch":0},"matchedID":{"id":"5231190","mainIndexID":"4DXXM","datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","clbDatasetKey":"53147","datasetTitle":"GBIF
         Backbone Taxonomy","parentID":"2492321","scientificName":"Passer domesticus
         (Linnaeus, 1758)","rank":"SPECIES","status":"ACCEPTED","recognizedVariants":["gbif:5231190"]}},"additionalStatus":[{"clbDatasetKey":"53131","datasetAlias":"IUCN","datasetKey":"19491596-35ae-4a91-9a98-85cf505f1bd3","status":"LEAST_CONCERN","statusCode":"LC","sourceId":"103818789"}],"synonym":false}'
-  recorded_at: 2026-08-13 12:20:54
+  recorded_at: 2026-08-19 06:34:35
 - request:
     method: GET
     uri: https://api.gbif.org/v2/species/match?checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&scientificNameID=gbif%3A2435099
@@ -30,7 +30,7 @@ http_interactions:
         concolor","rank":"SPECIES"}],"diagnostics":{"matchType":"EXACT","confidence":100,"timeTaken":0,"timings":{"idMatchScientificNameID":1,"sciNameMatch":0,"checkScientificNameAndIDConsistencyScientificNameID":0,"checkConsistencyWithClassificationMatch":0},"matchedID":{"id":"2435099","mainIndexID":"4QHKG","datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","clbDatasetKey":"53147","datasetTitle":"GBIF
         Backbone Taxonomy","parentID":"2435098","scientificName":"Puma concolor (Linnaeus,
         1771)","rank":"SPECIES","status":"ACCEPTED","recognizedVariants":["gbif:2435099"]}},"additionalStatus":[{"clbDatasetKey":"53131","datasetAlias":"IUCN","datasetKey":"19491596-35ae-4a91-9a98-85cf505f1bd3","status":"LEAST_CONCERN","statusCode":"LC","sourceId":"18868"}],"synonym":false}'
-  recorded_at: 2026-08-13 12:20:54
+  recorded_at: 2026-08-19 06:34:35
 - request:
     method: GET
     uri: https://api.gbif.org/v2/species/match?checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&scientificNameID=gbif%3A2877951
@@ -41,7 +41,7 @@ http_interactions:
       content-type: application/json
     body:
       string: '{"usage":{"key":"8W2YL","name":"Quercus L.","canonicalName":"Quercus","authorship":"L.","rank":"GENUS","code":"BOTANICAL","status":"ACCEPTED","type":"SCIENTIFIC","formattedName":"<i>Quercus</i>
-        L."},"classification":[{"key":"CS5HF","name":"Eukaryota","rank":"DOMAIN"},{"key":"P","name":"Plantae","rank":"KINGDOM"},{"key":"CMQ8S","name":"Pteridobiotina","rank":"SUBKINGDOM"},{"key":"TP","name":"Tracheophyta","rank":"PHYLUM"},{"key":"MG","name":"Magnoliopsida","rank":"CLASS"},{"key":"384","name":"Fagales","rank":"ORDER"},{"key":"NPBN9","name":"Fagaceae","rank":"FAMILY"},{"key":"V58RW","name":"Quercoideae","rank":"SUBFAMILY"},{"key":"8W2YL","name":"Quercus","rank":"GENUS"}],"diagnostics":{"matchType":"EXACT","confidence":100,"timeTaken":0,"timings":{"idMatchScientificNameID":0,"sciNameMatch":0,"checkScientificNameAndIDConsistencyScientificNameID":0,"checkConsistencyWithClassificationMatch":0},"matchedID":{"id":"2877951","mainIndexID":"8W2YL","datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","clbDatasetKey":"53147","datasetTitle":"GBIF
+        L."},"classification":[{"key":"CS5HF","name":"Eukaryota","rank":"DOMAIN"},{"key":"P","name":"Plantae","rank":"KINGDOM"},{"key":"CMQ8S","name":"Pteridobiotina","rank":"SUBKINGDOM"},{"key":"TP","name":"Tracheophyta","rank":"PHYLUM"},{"key":"MG","name":"Magnoliopsida","rank":"CLASS"},{"key":"384","name":"Fagales","rank":"ORDER"},{"key":"NPBN9","name":"Fagaceae","rank":"FAMILY"},{"key":"V58RW","name":"Quercoideae","rank":"SUBFAMILY"},{"key":"8W2YL","name":"Quercus","rank":"GENUS"}],"diagnostics":{"matchType":"EXACT","confidence":100,"timeTaken":0,"timings":{"idMatchScientificNameID":1,"sciNameMatch":0,"checkScientificNameAndIDConsistencyScientificNameID":0,"checkConsistencyWithClassificationMatch":0},"matchedID":{"id":"2877951","mainIndexID":"8W2YL","datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","clbDatasetKey":"53147","datasetTitle":"GBIF
         Backbone Taxonomy","parentID":"4689","scientificName":"Quercus L.","rank":"GENUS","status":"ACCEPTED","recognizedVariants":["gbif:2877951"]}},"synonym":false,"left":1126185,"right":1127176}'
-  recorded_at: 2026-08-13 12:20:54
+  recorded_at: 2026-08-19 06:34:35
 recorded_with: VCR-vcr/2.0.0

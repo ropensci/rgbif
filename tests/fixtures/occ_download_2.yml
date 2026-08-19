@@ -12,18 +12,18 @@ http_interactions:
       content-type: application/json
       content-encoding: gzip
     body:
-      string: 0019894-260806074905277
-  recorded_at: 2026-08-17 12:47:53
+      string: 0023961-260806074905277
+  recorded_at: 2026-08-19 09:17:52
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0019894-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0023961-260806074905277
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0019894-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"within","geometry":"POLYGON((-14
-        42,-7 26,9 38,-14 42))"},{"type":"greaterThanOrEquals","key":"ELEVATION","value":"5000","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-17T12:47:53.270+00:00","modified":"2026-08-17T12:47:53.270+00:00","eraseAfter":"2027-02-17T12:47:49.931+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0019894-260806074905277.zip","size":0,"totalRecords":118,"numberDatasets":0}'
-  recorded_at: 2026-08-17 12:47:53
+      string: '{"key":"0023961-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"within","geometry":"POLYGON((-14
+        42,-7 26,9 38,-14 42))"},{"type":"greaterThanOrEquals","key":"ELEVATION","value":"5000","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-19T09:17:52.274+00:00","modified":"2026-08-19T09:17:52.274+00:00","eraseAfter":"2027-02-19T09:17:51.910+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0023961-260806074905277.zip","size":0,"totalRecords":118,"numberDatasets":0}'
+  recorded_at: 2026-08-19 09:17:52
 recorded_with: VCR-vcr/2.0.0

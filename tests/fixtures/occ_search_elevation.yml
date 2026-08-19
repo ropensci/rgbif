@@ -9,31 +9,31 @@ http_interactions:
       content-type: application/json
     body:
       raw_gzip: |-
-        eJx9lG1v2jAQx78KyqtNAo0AgQRVlVITICMERoCum6bJdQxYJA6KnUmo4rvvHNrFPGjvkrv/
-        784+392
-        bUQi8pUb/zdjTo9E3Ot/Gk5FRNzhOwWrMixTXSMZJlmR57VPAOMe0EPWa2euZn0FH
-        MM84IzgJ7wDgx4
-        XcZbnYsQM47/A55nvwRHMP+V6kAmaxivNjNgtmIx+5AdiExLIQYHUR8uZL
-        bwC2LeU0Z0RLq4QHStiGE
-        e/A5I5KcGhHkceDkkaQKFz6Qx+BbZPlKZaSxu9xHtijCvXwhT3W
-        4PuDLv9vTn+C0yZYCJURS5Zxo//z
-        o44ossbDqo5escf5MZO4uvJgNnX9EIJ8IGEldzlLccI0
-        9cQPR0BocjRuVQCCIsdYDz8fvwQrXW+vO+t
-        2RaxpLulrfsFEq6e7mFVhI47hQYXM0gvSD4cL
-        9w67fn6q2JmQlJGd3B2p0A7qLtY3pIMm9nNFLqnM8S
-        GLtYxTb+SiwI0ijeq2Wh2teac4vari
-        HaCLtDQ7aKnLelwTwUh/VHkFlGW4RtaR9k445+xPlmvMbDHwF
-        pq8Mwgq/ZAmTPXo1amumW6r
-        vZheUjGmFTJ0p37wogFfJ1dJuC6HDDdEzxo6l3uh0o+8cKXf+H9L5Hbm
-        T7/qRszwlkNbMSLU
-        LoLmIrvleV697y5alouBb1hMOQGj2WzCPLOULvGewtj1yj/GtyWt0oaLMgnIBGF
-        quKcqZKlU
-        7jnOhYpTN5KCwCZ593ZPMNM4jpmaZpxE73sHppokrwPoeEHlpLyi1TbbJpwqPhtdaDO1oP
-        wV
-        CivrWWo6Hce0nG6jbWHa6GDHbDjYsRu2RTZW09qYr3FbX3KB50bL32gWIm8R/nOg814MVLuK
-        rMgJ
-        9WMV3La7dllCcYRNfEyN/gYngp7+AloryDk=
-  recorded_at: 2026-08-17 07:07:19
+        eJx9lG1v2jAQx78KyqtNAo1AQgmqKqUmQEYIjABdN02T6xiwSBwUO5NQxXffOZTFPGjvkvP/
+        d3c+392
+        7UQi8oUbv3djRg9EzrG+j8dCoGxynYDVmRYprJOMkS7K89ilgnGNaiHrNfHgwP4OO
+        YJ5xRnAS3gHgHB
+        dym+Viy/ZweIfPMd/BSTTzkO9FymEWKz8/ptNgOvSRG4BNSCwLAVYXIW+2
+        8Ppg21BOc0a0sEq4p4StG
+        fH2TG6phAMtFXnYK2kEgcKFP/AR2NZZnmIpafzh55E9KVePX9hT
+        Db7PdPl/k/0Rsk2wECoilizjRu/n
+        uY4oskeDqo5escP5IZO4unJ/OnH9EJyckbCSu5ylOGGa
+        euyHQyA0ORq1KgBBkWOsu5+NXoOlru+urFW
+        7IlY0l/Qtv2Ci5fNdzK6wIcfwoEJm6QXph4O5
+        e4ddvTxX7FRIyshWbg9UaIm689UN6aBx96UiF1TmeJ
+        /FWsSJN3RR4EaRRnVaLUtr3glOr6p4
+        B+ggLcwWWuqyHtdEMNQfVV4BZRmukVWkvRPOOfuT5Roznfe9u
+        Sa3+kGlH9CEqR69yuqa6bTa
+        88klFWNaIQN34gevGvB1fBWE63KIcEM82APnci9U+qEXLvUb/2+J3M78
+        8VfdiBnecGgrRoTa
+        RdBcZLs4zav33UWLcjHwNYspJ2A0m02YZ5bSBd5RGDvTKn8Z35S4ihvOyyigE4S
+        p6Z4onyC1
+        T3nNcC6Up7qRFAR2yfnYOsJY4zhmaqBxEn2sHhhskrz1oekFlePylnbbbJuQWHwyutBpak
+        f5
+        SxRW1pPUdCzHtJ1Oo21j2rCwYzYc7HQbXZus7aa9Nt/itr7nAs+NFr/RNETePPx3gE6rMVAd
+        K7Ii
+        J9SPlfNut9MtqygOsIwPqdFb40TQ419Yr8jF
+  recorded_at: 2026-08-19 08:39:01
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?hasCoordinate=TRUE&occurrenceStatus=PRESENT&limit=500&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&elevation=1000&taxonKey=4QHKG
@@ -42,7 +42,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '17'
+      x-varnish-rli: '18'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -187,5 +187,5 @@ http_interactions:
         2PNS/tV6Ae5GWTpnifTF4O7XVOrSGIb8S4kYunMkGaaKFf49
         2oK2L7onkuZYqqI6irYZgWUt+nwQxVs
         59aMUb+XlbOXmP/8LSgPbIQ==
-  recorded_at: 2026-08-17 07:07:20
+  recorded_at: 2026-08-19 08:39:01
 recorded_with: VCR-vcr/2.0.0

@@ -11,8 +11,8 @@ http_interactions:
       string: '{"usage":{"key":"3K5TS","name":"Helianthus annuus L.","canonicalName":"Helianthus
         annuus","authorship":"L.","rank":"SPECIES","code":"BOTANICAL","status":"ACCEPTED","genericName":"Helianthus","specificEpithet":"annuus","type":"SCIENTIFIC","formattedName":"<i>Helianthus</i>
         <i>annuus</i> L."},"classification":[{"key":"CS5HF","name":"Eukaryota","rank":"DOMAIN"},{"key":"P","name":"Plantae","rank":"KINGDOM"},{"key":"CMQ8S","name":"Pteridobiotina","rank":"SUBKINGDOM"},{"key":"TP","name":"Tracheophyta","rank":"PHYLUM"},{"key":"MG","name":"Magnoliopsida","rank":"CLASS"},{"key":"ST","name":"Asterales","rank":"ORDER"},{"key":"622TP","name":"Asteraceae","rank":"FAMILY"},{"key":"J6T","name":"Asteroideae","rank":"SUBFAMILY"},{"key":"KVBCQ","name":"Heliantheae","rank":"TRIBE"},{"key":"KVBFN","name":"Helianthinae","rank":"SUBTRIBE"},{"key":"62TKF","name":"Helianthus","rank":"GENUS"},{"key":"3K5TS","name":"Helianthus
-        annuus","rank":"SPECIES"}],"diagnostics":{"matchType":"EXACT","confidence":98,"timeTaken":10,"timings":{"nameNRank":0,"sciNameMatch":11,"nameParse":0,"luceneMatch":11}},"additionalStatus":[{"clbDatasetKey":"53131","datasetAlias":"IUCN","datasetKey":"19491596-35ae-4a91-9a98-85cf505f1bd3","status":"LEAST_CONCERN","statusCode":"LC","sourceId":"19073408"}],"synonym":false,"left":958943,"right":958943}'
-  recorded_at: 2026-08-13 12:22:47
+        annuus","rank":"SPECIES"}],"diagnostics":{"matchType":"EXACT","confidence":98,"timeTaken":12,"timings":{"nameNRank":0,"sciNameMatch":13,"nameParse":1,"luceneMatch":12}},"additionalStatus":[{"clbDatasetKey":"53131","datasetAlias":"IUCN","datasetKey":"19491596-35ae-4a91-9a98-85cf505f1bd3","status":"LEAST_CONCERN","statusCode":"LC","sourceId":"19073408"}],"synonym":false,"left":958943,"right":958943}'
+  recorded_at: 2026-08-19 07:14:04
 - request:
     method: GET
     uri: https://api.gbif.org/v2/species/match?scientificName=Helianthus+annuus&taxonRank=species&verbose=TRUE
@@ -26,7 +26,7 @@ http_interactions:
         annuus","authorship":"L.","rank":"SPECIES","status":"ACCEPTED","genericName":"Helianthus","specificEpithet":"annuus","type":"SCIENTIFIC","formattedName":"<i>Helianthus</i>
         <i>annuus</i> L."},"classification":[{"key":"6","name":"Plantae","rank":"KINGDOM"},{"key":"7707728","name":"Tracheophyta","rank":"PHYLUM"},{"key":"220","name":"Magnoliopsida","rank":"CLASS"},{"key":"414","name":"Asterales","rank":"ORDER"},{"key":"3065","name":"Asteraceae","rank":"FAMILY"},{"key":"3119134","name":"Helianthus","rank":"GENUS"},{"key":"9206251","name":"Helianthus
         annuus","rank":"SPECIES"}],"diagnostics":{"matchType":"EXACT","confidence":99,"note":"Similarity:
-        name=110; authorship=0; classification=-2; rank=6; status=1; score=115; nextMatch=5","timeTaken":9,"alternatives":[{"usage":{"key":"4252034","name":"Helianthus
+        name=110; authorship=0; classification=-2; rank=6; status=1; score=115; nextMatch=5","timeTaken":6,"alternatives":[{"usage":{"key":"4252034","name":"Helianthus
         canus (Britton) Wooton & Standl.","canonicalName":"Helianthus canus","authorship":"(Britton)
         Wooton & Standl.","rank":"SPECIES","code":"BOTANICAL","status":"SYNONYM","genericName":"Helianthus","specificEpithet":"canus","type":"SCIENTIFIC","formattedName":"<i>Helianthus</i>
         <i>canus</i> (Britton) Wooton & Standl."},"acceptedUsage":{"key":"4250528","name":"Helianthus
@@ -34,8 +34,8 @@ http_interactions:
         <i>petiolaris</i> var. <i>canescens</i> A.Gray"},"classification":[{"key":"6","name":"Plantae","rank":"KINGDOM"},{"key":"7707728","name":"Tracheophyta","rank":"PHYLUM"},{"key":"220","name":"Magnoliopsida","rank":"CLASS"},{"key":"414","name":"Asterales","rank":"ORDER"},{"key":"3065","name":"Asteraceae","rank":"FAMILY"},{"key":"3119134","name":"Helianthus","rank":"GENUS"},{"key":"3119225","name":"Helianthus
         petiolaris","rank":"SPECIES"},{"key":"4250528","name":"Helianthus petiolaris
         canescens","rank":"VARIETY"}],"diagnostics":{"matchType":"VARIANT","confidence":9,"note":"Similarity:
-        name=5; authorship=0; classification=-2; rank=6; status=0; score=9","timeTaken":0},"synonym":true,"left":500424,"right":500424}],"timings":{"nameNRank":0,"sciNameMatch":9,"nameParse":1,"luceneMatch":8}},"additionalStatus":[{"clbDatasetKey":"53131","datasetAlias":"IUCN","datasetKey":"19491596-35ae-4a91-9a98-85cf505f1bd3","status":"LEAST_CONCERN","statusCode":"LC","sourceId":"19073408"}],"synonym":false,"left":500385,"right":500394}'
-  recorded_at: 2026-08-13 12:22:47
+        name=5; authorship=0; classification=-2; rank=6; status=0; score=9","timeTaken":0},"synonym":true,"left":500424,"right":500424}],"timings":{"nameNRank":0,"sciNameMatch":6,"nameParse":0,"luceneMatch":6}},"additionalStatus":[{"clbDatasetKey":"53131","datasetAlias":"IUCN","datasetKey":"19491596-35ae-4a91-9a98-85cf505f1bd3","status":"LEAST_CONCERN","statusCode":"LC","sourceId":"19073408"}],"synonym":false,"left":500385,"right":500394}'
+  recorded_at: 2026-08-19 07:14:04
 - request:
     method: GET
     uri: https://api.gbif.org/v2/species/match?scientificName=Calopteryx+fakeus&verbose=FALSE&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b
@@ -45,8 +45,8 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"diagnostics":{"matchType":"NONE","issues":[],"confidence":100,"timeTaken":16,"timings":{"sciNameMatch":16}},"synonym":false}'
-  recorded_at: 2026-08-13 12:22:47
+      string: '{"diagnostics":{"matchType":"NONE","issues":[],"confidence":100,"timeTaken":15,"timings":{"sciNameMatch":16}},"synonym":false}'
+  recorded_at: 2026-08-19 07:14:04
 - request:
     method: GET
     uri: https://api.gbif.org/v2/species/match?scientificName=Calopteryx+splendens&kingdom=Plantae&strict=FALSE&verbose=FALSE&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b
@@ -59,8 +59,8 @@ http_interactions:
       string: '{"usage":{"key":"5T74S","name":"Calopteryx A.C.Sm.","canonicalName":"Calopteryx","authorship":"A.C.Sm.","rank":"GENUS","code":"BOTANICAL","status":"SYNONYM","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
         A.C.Sm."},"acceptedUsage":{"key":"7VXL","name":"Thibaudia Ruiz & Pav.","canonicalName":"Thibaudia","authorship":"Ruiz
         & Pav.","rank":"GENUS","code":"BOTANICAL","type":"SCIENTIFIC","formattedName":"<i>Thibaudia</i>
-        Ruiz & Pav."},"classification":[{"key":"CS5HF","name":"Eukaryota","rank":"DOMAIN"},{"key":"P","name":"Plantae","rank":"KINGDOM"},{"key":"CMQ8S","name":"Pteridobiotina","rank":"SUBKINGDOM"},{"key":"TP","name":"Tracheophyta","rank":"PHYLUM"},{"key":"MG","name":"Magnoliopsida","rank":"CLASS"},{"key":"625QY","name":"Ericales","rank":"ORDER"},{"key":"623P8","name":"Ericaceae","rank":"FAMILY"},{"key":"KH2","name":"Vaccinioideae","rank":"SUBFAMILY"},{"key":"KVXTC","name":"Vaccinieae","rank":"TRIBE"},{"key":"7VXL","name":"Thibaudia","rank":"GENUS"}],"diagnostics":{"matchType":"HIGHERRANK","confidence":96,"timeTaken":16,"timings":{"sciNameMatch":16}},"synonym":true,"left":1069659,"right":1069743}'
-  recorded_at: 2026-08-13 12:22:47
+        Ruiz & Pav."},"classification":[{"key":"CS5HF","name":"Eukaryota","rank":"DOMAIN"},{"key":"P","name":"Plantae","rank":"KINGDOM"},{"key":"CMQ8S","name":"Pteridobiotina","rank":"SUBKINGDOM"},{"key":"TP","name":"Tracheophyta","rank":"PHYLUM"},{"key":"MG","name":"Magnoliopsida","rank":"CLASS"},{"key":"625QY","name":"Ericales","rank":"ORDER"},{"key":"623P8","name":"Ericaceae","rank":"FAMILY"},{"key":"KH2","name":"Vaccinioideae","rank":"SUBFAMILY"},{"key":"KVXTC","name":"Vaccinieae","rank":"TRIBE"},{"key":"7VXL","name":"Thibaudia","rank":"GENUS"}],"diagnostics":{"matchType":"HIGHERRANK","confidence":96,"timeTaken":8,"timings":{"sciNameMatch":8}},"synonym":true,"left":1069659,"right":1069743}'
+  recorded_at: 2026-08-19 07:14:04
 - request:
     method: GET
     uri: https://api.gbif.org/v2/species/match?scientificName=Calopteryx+splendens&kingdom=Plantae&strict=TRUE&verbose=FALSE&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b
@@ -72,7 +72,7 @@ http_interactions:
     body:
       string: '{"diagnostics":{"matchType":"NONE","issues":[],"processingFlags":["LOW_CONFIDENCE"],"confidence":99,"note":"No
         match because of too little confidence","timeTaken":1,"timings":{"nameNRank":0,"sciNameMatch":1,"nameParse":0,"luceneMatch":1}},"synonym":false}'
-  recorded_at: 2026-08-13 12:22:47
+  recorded_at: 2026-08-19 07:14:04
 - request:
     method: GET
     uri: https://api.gbif.org/v2/species/match?scientificName=Calopteryx+splendens&kingdom=Plantae&verbose=TRUE&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b
@@ -86,7 +86,7 @@ http_interactions:
         A.C.Sm."},"acceptedUsage":{"key":"7VXL","name":"Thibaudia Ruiz & Pav.","canonicalName":"Thibaudia","authorship":"Ruiz
         & Pav.","rank":"GENUS","code":"BOTANICAL","type":"SCIENTIFIC","formattedName":"<i>Thibaudia</i>
         Ruiz & Pav."},"classification":[{"key":"CS5HF","name":"Eukaryota","rank":"DOMAIN"},{"key":"P","name":"Plantae","rank":"KINGDOM"},{"key":"CMQ8S","name":"Pteridobiotina","rank":"SUBKINGDOM"},{"key":"TP","name":"Tracheophyta","rank":"PHYLUM"},{"key":"MG","name":"Magnoliopsida","rank":"CLASS"},{"key":"625QY","name":"Ericales","rank":"ORDER"},{"key":"623P8","name":"Ericaceae","rank":"FAMILY"},{"key":"KH2","name":"Vaccinioideae","rank":"SUBFAMILY"},{"key":"KVXTC","name":"Vaccinieae","rank":"TRIBE"},{"key":"7VXL","name":"Thibaudia","rank":"GENUS"}],"diagnostics":{"matchType":"HIGHERRANK","confidence":96,"note":"Similarity:
-        name=100; classification=4; rank=0; status=0; score=104; nextMatch=5","timeTaken":16,"alternatives":[{"usage":{"key":"Q2M4","name":"Calopteryx
+        name=100; classification=4; rank=0; status=0; score=104; nextMatch=5","timeTaken":8,"alternatives":[{"usage":{"key":"Q2M4","name":"Calopteryx
         splendens (Harris, 1780)","canonicalName":"Calopteryx splendens","authorship":"(Harris,
         1780)","rank":"SPECIES","code":"ZOOLOGICAL","status":"ACCEPTED","genericName":"Calopteryx","specificEpithet":"splendens","type":"SCIENTIFIC","formattedName":"<i>Calopteryx</i>
         <i>splendens</i> (Harris, 1780)"},"classification":[{"key":"CS5HF","name":"Eukaryota","rank":"DOMAIN"},{"key":"N","name":"Animalia","rank":"KINGDOM"},{"key":"RT","name":"Arthropoda","rank":"PHYLUM"},{"key":"L2655","name":"Hexapoda","rank":"SUBPHYLUM"},{"key":"H6","name":"Insecta","rank":"CLASS"},{"key":"B6LCL","name":"Odonata","rank":"ORDER"},{"key":"B6NHX","name":"Zygoptera","rank":"SUBORDER"},{"key":"V5BP3","name":"Calopterygoidea","rank":"SUPERFAMILY"},{"key":"9WKK3","name":"Calopterygidae","rank":"FAMILY"},{"key":"9WLSS","name":"Calopteryx","rank":"GENUS"},{"key":"Q2M4","name":"Calopteryx
@@ -439,8 +439,8 @@ http_interactions:
         1883","rank":"SPECIES","code":"ZOOLOGICAL","genericName":"Tachysphex","specificEpithet":"schmiedeknechti","type":"SCIENTIFIC","formattedName":"<i>Tachysphex</i>
         <i>schmiedeknechti</i> Kohl, 1883"},"classification":[{"key":"CS5HF","name":"Eukaryota","rank":"DOMAIN"},{"key":"N","name":"Animalia","rank":"KINGDOM"},{"key":"RT","name":"Arthropoda","rank":"PHYLUM"},{"key":"L2655","name":"Hexapoda","rank":"SUBPHYLUM"},{"key":"H6","name":"Insecta","rank":"CLASS"},{"key":"HYM","name":"Hymenoptera","rank":"ORDER"},{"key":"KZPW7","name":"Apocrita","rank":"SUBORDER"},{"key":"KZMNP","name":"Aculeata","rank":"INFRAORDER"},{"key":"625GP","name":"Apoidea","rank":"SUPERFAMILY"},{"key":"8ML","name":"Crabronidae","rank":"FAMILY"},{"key":"JDR","name":"Crabroninae","rank":"SUBFAMILY"},{"key":"KXK","name":"Larrini","rank":"TRIBE"},{"key":"LDF","name":"Gastrosericina","rank":"SUBTRIBE"},{"key":"645GD","name":"Tachysphex","rank":"GENUS"},{"key":"7BH8C","name":"Tachysphex
         schmiedeknechti","rank":"SPECIES"}],"diagnostics":{"matchType":"VARIANT","confidence":0,"note":"Similarity:
-        name=-15; classification=-52; rank=0; status=0; score=-67","timeTaken":0},"synonym":true}],"timings":{"sciNameMatch":16}},"synonym":true,"left":1069659,"right":1069743}'
-  recorded_at: 2026-08-13 12:22:47
+        name=-15; classification=-52; rank=0; status=0; score=-67","timeTaken":0},"synonym":true}],"timings":{"sciNameMatch":9}},"synonym":true,"left":1069659,"right":1069743}'
+  recorded_at: 2026-08-19 07:14:04
 - request:
     method: GET
     uri: https://api.gbif.org/v2/species/match?scientificName=Calopteryx+splendens&kingdom=Plantae&strict=TRUE&verbose=TRUE&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b
@@ -457,7 +457,7 @@ http_interactions:
         <i>splendens</i> (Harris, 1780)"},"classification":[{"key":"CS5HF","name":"Eukaryota","rank":"DOMAIN"},{"key":"N","name":"Animalia","rank":"KINGDOM"},{"key":"RT","name":"Arthropoda","rank":"PHYLUM"},{"key":"L2655","name":"Hexapoda","rank":"SUBPHYLUM"},{"key":"H6","name":"Insecta","rank":"CLASS"},{"key":"B6LCL","name":"Odonata","rank":"ORDER"},{"key":"B6NHX","name":"Zygoptera","rank":"SUBORDER"},{"key":"V5BP3","name":"Calopterygoidea","rank":"SUPERFAMILY"},{"key":"9WKK3","name":"Calopterygidae","rank":"FAMILY"},{"key":"9WLSS","name":"Calopteryx","rank":"GENUS"},{"key":"Q2M4","name":"Calopteryx
         splendens","rank":"SPECIES"}],"diagnostics":{"matchType":"EXACT","confidence":22,"note":"Similarity:
         name=110; authorship=0; kingdom=-100; rank=6; status=1; score=17; singleMatch=5","timeTaken":0},"additionalStatus":[{"clbDatasetKey":"53131","datasetAlias":"IUCN","datasetKey":"19491596-35ae-4a91-9a98-85cf505f1bd3","status":"ENDANGERED","statusCode":"EN","sourceId":"3628"}],"synonym":false}],"timings":{"nameNRank":0,"sciNameMatch":2,"nameParse":1,"luceneMatch":1}},"synonym":false}'
-  recorded_at: 2026-08-13 12:22:48
+  recorded_at: 2026-08-19 07:14:04
 - request:
     method: GET
     uri: https://api.gbif.org/v2/species/match?scientificName=Aves&verbose=FALSE&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b
@@ -467,8 +467,8 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"usage":{"key":"V2","name":"Aves","canonicalName":"Aves","rank":"CLASS","code":"ZOOLOGICAL","status":"ACCEPTED","type":"SCIENTIFIC","formattedName":"<i>Aves</i>"},"classification":[{"key":"CS5HF","name":"Eukaryota","rank":"DOMAIN"},{"key":"N","name":"Animalia","rank":"KINGDOM"},{"key":"CH2","name":"Chordata","rank":"PHYLUM"},{"key":"8V4V3","name":"Vertebrata","rank":"SUBPHYLUM"},{"key":"8V4V5","name":"Gnathostomata","rank":"INFRAPHYLUM"},{"key":"8VVWB","name":"Osteichthyes","rank":"PARVPHYLUM"},{"key":"9CK8W","name":"Tetrapoda","rank":"MEGACLASS"},{"key":"V2","name":"Aves","rank":"CLASS"}],"diagnostics":{"matchType":"EXACT","confidence":94,"timeTaken":5,"timings":{"nameNRank":0,"sciNameMatch":5,"nameParse":0,"luceneMatch":5}},"synonym":false}'
-  recorded_at: 2026-08-13 12:22:48
+      string: '{"usage":{"key":"V2","name":"Aves","canonicalName":"Aves","rank":"CLASS","code":"ZOOLOGICAL","status":"ACCEPTED","type":"SCIENTIFIC","formattedName":"<i>Aves</i>"},"classification":[{"key":"CS5HF","name":"Eukaryota","rank":"DOMAIN"},{"key":"N","name":"Animalia","rank":"KINGDOM"},{"key":"CH2","name":"Chordata","rank":"PHYLUM"},{"key":"8V4V3","name":"Vertebrata","rank":"SUBPHYLUM"},{"key":"8V4V5","name":"Gnathostomata","rank":"INFRAPHYLUM"},{"key":"8VVWB","name":"Osteichthyes","rank":"PARVPHYLUM"},{"key":"9CK8W","name":"Tetrapoda","rank":"MEGACLASS"},{"key":"V2","name":"Aves","rank":"CLASS"}],"diagnostics":{"matchType":"EXACT","confidence":94,"timeTaken":4,"timings":{"nameNRank":0,"sciNameMatch":4,"nameParse":0,"luceneMatch":4}},"synonym":false}'
+  recorded_at: 2026-08-19 07:14:04
 - request:
     method: GET
     uri: https://api.gbif.org/v2/species/match?scientificName=Calopteryx&usageKey=V2&verbose=FALSE&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b
@@ -480,7 +480,7 @@ http_interactions:
     body:
       string: '{"usage":{"key":"V2","name":"Aves","canonicalName":"Aves","rank":"CLASS","code":"ZOOLOGICAL","status":"ACCEPTED","type":"SCIENTIFIC","formattedName":"<i>Aves</i>"},"classification":[{"key":"CS5HF","name":"Eukaryota","rank":"DOMAIN"},{"key":"N","name":"Animalia","rank":"KINGDOM"},{"key":"CH2","name":"Chordata","rank":"PHYLUM"},{"key":"8V4V3","name":"Vertebrata","rank":"SUBPHYLUM"},{"key":"8V4V5","name":"Gnathostomata","rank":"INFRAPHYLUM"},{"key":"8VVWB","name":"Osteichthyes","rank":"PARVPHYLUM"},{"key":"9CK8W","name":"Tetrapoda","rank":"MEGACLASS"},{"key":"V2","name":"Aves","rank":"CLASS"}],"diagnostics":{"matchType":"EXACT","confidence":100,"note":"All
         provided names were ignored since the usageKey was provided","timeTaken":0,"timings":{"usageKeyMatch":0}},"synonym":false}'
-  recorded_at: 2026-08-13 12:22:48
+  recorded_at: 2026-08-19 07:14:04
 - request:
     method: GET
     uri: https://api.gbif.org/v2/species/match?scientificNameAuthorship=Erwin%2C+2002&genericName=Agra&specificEpithet=schwarzeneggeri&verbose=FALSE&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b
@@ -493,6 +493,6 @@ http_interactions:
       string: '{"usage":{"key":"B2X8","name":"Agra schwarzeneggeri Erwin, 2002","canonicalName":"Agra
         schwarzeneggeri","authorship":"Erwin, 2002","rank":"SPECIES","code":"ZOOLOGICAL","status":"ACCEPTED","genericName":"Agra","specificEpithet":"schwarzeneggeri","type":"SCIENTIFIC","formattedName":"<i>Agra</i>
         <i>schwarzeneggeri</i> Erwin, 2002"},"classification":[{"key":"CS5HF","name":"Eukaryota","rank":"DOMAIN"},{"key":"N","name":"Animalia","rank":"KINGDOM"},{"key":"RT","name":"Arthropoda","rank":"PHYLUM"},{"key":"L2655","name":"Hexapoda","rank":"SUBPHYLUM"},{"key":"H6","name":"Insecta","rank":"CLASS"},{"key":"C2L","name":"Coleoptera","rank":"ORDER"},{"key":"DDH7R","name":"Adephaga","rank":"SUBORDER"},{"key":"8KTL7","name":"Carabidae","rank":"FAMILY"},{"key":"8KTPM","name":"Lebiinae","rank":"SUBFAMILY"},{"key":"8KTVP","name":"Lebiini","rank":"TRIBE"},{"key":"8MLKR","name":"Agrina","rank":"SUBTRIBE"},{"key":"8KV2T","name":"Agra","rank":"GENUS"},{"key":"B2X8","name":"Agra
-        schwarzeneggeri","rank":"SPECIES"}],"diagnostics":{"matchType":"EXACT","confidence":100,"timeTaken":10,"timings":{"nameNRank":0,"sciNameMatch":10,"nameParse":0,"luceneMatch":10}},"synonym":false}'
-  recorded_at: 2026-08-13 12:22:48
+        schwarzeneggeri","rank":"SPECIES"}],"diagnostics":{"matchType":"EXACT","confidence":100,"timeTaken":10,"timings":{"nameNRank":1,"sciNameMatch":11,"nameParse":1,"luceneMatch":9}},"synonym":false}'
+  recorded_at: 2026-08-19 07:14:04
 recorded_with: VCR-vcr/2.0.0

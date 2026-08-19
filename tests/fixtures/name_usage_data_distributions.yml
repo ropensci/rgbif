@@ -98,7 +98,7 @@ http_interactions:
         nAi2+shi8v4oMT0gyqHgGYmUzRcUuW+gL1yq3w+5vpeVwpdxDbdZ1sbloDMOLxr9oK36r1yC
         Lo
         t9j8rQr33414f/A4AunBM=
-  recorded_at: 2026-08-13 12:24:45
+  recorded_at: 2026-08-19 07:16:03
 - request:
     method: GET
     uri: https://api.gbif.org/v1/species/5231190/distributions?offset=0&limit=100
@@ -198,5 +198,5 @@ http_interactions:
         nAi2+shi8v4oMT0gyqHgGYmUzRcUuW+gL1yq3w+5vpeVwpdxDbdZ1sbloDMOLxr9oK36r1yC
         Lo
         t9j8rQr33414f/A4AunBM=
-  recorded_at: 2026-08-13 12:24:45
+  recorded_at: 2026-08-19 07:16:03
 recorded_with: VCR-vcr/2.0.0

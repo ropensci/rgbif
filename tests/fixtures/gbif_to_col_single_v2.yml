@@ -14,5 +14,5 @@ http_interactions:
         domesticus","rank":"SPECIES"}],"diagnostics":{"matchType":"EXACT","confidence":100,"timeTaken":0,"timings":{"idMatchScientificNameID":1,"sciNameMatch":0,"checkScientificNameAndIDConsistencyScientificNameID":0,"checkConsistencyWithClassificationMatch":0},"matchedID":{"id":"5231190","mainIndexID":"4DXXM","datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","clbDatasetKey":"53147","datasetTitle":"GBIF
         Backbone Taxonomy","parentID":"2492321","scientificName":"Passer domesticus
         (Linnaeus, 1758)","rank":"SPECIES","status":"ACCEPTED","recognizedVariants":["gbif:5231190"]}},"additionalStatus":[{"clbDatasetKey":"53131","datasetAlias":"IUCN","datasetKey":"19491596-35ae-4a91-9a98-85cf505f1bd3","status":"LEAST_CONCERN","statusCode":"LC","sourceId":"103818789"}],"synonym":false}'
-  recorded_at: 2026-08-13 12:20:54
+  recorded_at: 2026-08-19 06:34:33
 recorded_with: VCR-vcr/2.0.0

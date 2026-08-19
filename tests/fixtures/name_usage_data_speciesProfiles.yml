@@ -120,7 +120,7 @@ http_interactions:
         2022)","sourceTaxonKey":205111558},{"taxonKey":5231190,"habitat":"terrestrial","source":"Protected
         Areas - Global Register of Introduced and Invasive Species - Prince Edward
         Island and Marion Island, South Africa","sourceTaxonKey":238440079}]}'
-  recorded_at: 2026-08-13 12:24:46
+  recorded_at: 2026-08-19 07:16:03
 - request:
     method: GET
     uri: https://api.gbif.org/v1/species/5136020/speciesProfiles?offset=0&limit=100
@@ -131,5 +131,5 @@ http_interactions:
       content-type: application/json
     body:
       string: '{"offset":0,"limit":100,"endOfRecords":true,"results":[]}'
-  recorded_at: 2026-08-13 12:24:46
+  recorded_at: 2026-08-19 07:16:03
 recorded_with: VCR-vcr/2.0.0
