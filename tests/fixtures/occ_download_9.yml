@@ -11,17 +11,17 @@ http_interactions:
       content-type: application/json
       content-encoding: gzip
     body:
-      string: 0019954-260806074905277
-  recorded_at: 2026-08-17 13:12:36
+      string: 0024306-260806074905277
+  recorded_at: 2026-08-19 11:53:20
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0019954-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0024306-260806074905277
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0019954-260806074905277","license":"unspecified","request":{"predicate":{"type":"equals","key":"TAXON_KEY","value":"B8V3M","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":["http://rs.tdwg.org/dwc/terms/MeasurementOrFact","http://rs.gbif.org/terms/1.0/DNADerivedData"],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-17T13:12:35.847+00:00","modified":"2026-08-17T13:12:35.847+00:00","eraseAfter":"2027-02-17T13:12:35.750+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0019954-260806074905277.zip","size":0,"totalRecords":31113,"numberDatasets":0}'
-  recorded_at: 2026-08-17 13:12:36
+      string: '{"key":"0024306-260806074905277","license":"unspecified","request":{"predicate":{"type":"equals","key":"TAXON_KEY","value":"B8V3M","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":["http://rs.tdwg.org/dwc/terms/MeasurementOrFact","http://rs.gbif.org/terms/1.0/DNADerivedData"],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-19T11:53:19.799+00:00","modified":"2026-08-19T11:53:19.799+00:00","eraseAfter":"2027-02-19T11:53:19.718+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0024306-260806074905277.zip","size":0,"totalRecords":31113,"numberDatasets":0}'
+  recorded_at: 2026-08-19 11:53:20
 recorded_with: VCR-vcr/2.0.0

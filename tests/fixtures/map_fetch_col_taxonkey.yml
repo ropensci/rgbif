@@ -7,7 +7,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: image/png
-      etag: W/"2026-08-12T05:00Z--gzip"
+      etag: W/"2026-08-18T05:00Z--gzip"
     body:
       raw_gzip: |-
         eJzrDPBz5+WS4mJgYOD19HAJYmBgYgBhDjYg9aXiyi8GBlZ2TxfHkIo5b+/m8jUZ8DAEvK9n
@@ -24,7 +24,7 @@ http_interactions:
         GCaEfK1IOAmMasV3DBOAVhU12TKU+BlBwuLlEWGm6P
         PsDD8E2ZkYHdJZasGiHst1/mezDlD0
         jIJRMCCg5D3L3GNyEYJ/te6AuJ6ufi7rnBKaAP6Jkxs=
-  recorded_at: 2026-08-13 12:22:32
+  recorded_at: 2026-08-19 07:13:49
 - request:
     method: GET
     uri: https://api.gbif.org/v2/map/occurrence/density/0/1/0@1x.png?srs=EPSG%3A4326&taxonKey=Q2M4&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&year=2010&style=classic.point
@@ -33,55 +33,55 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: image/png
-      etag: W/"2026-08-12T05:00Z--gzip"
+      etag: W/"2026-08-18T05:00Z--gzip"
     body:
       raw_gzip: |-
-        eJztlP9T0nccx1+ASFpImVmhpputL5duZXbTU8MvqGinmGbS2ZJmTR1kDK1Ipnz8kq2tlcuB
-        Rpp0ZXr
-        XEh2ViaKYKTPLWhnYxC9lYsNvuEBbIA7b7T/Y7fZDj7vXvV/v1/vudc973+v1PBUT
-        HY63JdoCAD6CQo
-        4FQMNCLLK2HHpOz1sAnDaCHLSLUzbRb3PmwmYHeNQwb8Ou0kfHRcV70Zmn
-        nzHbuLEOwXKfQ0+nRpKbm
-        +H/x5opo3Gs8agLIPmLxt9VWIufF80/THkCoHML0bm2sAcZHhCY
-        csdtn/0jbA68uh+r696G1ptQQx+m
-        WPfRpkjq7Y12iTdp68GnR7nvmLas19/MNF6vIkD8aYxO
-        SXcWbDkus+JAarTHch5n8ImfSoJDOu5qhhS
-        D5cf7JWIUkAsCjJXcabHYBWKurKUriHAT3Vxo
-        Dc70tBOynuZr+bUiAuC6sKrNneIOVkuaNVSLjoKjRc
-        HahnGzEEXT4ZD89t2D32W7pmOgvCsg
-        /VPDani1V5vrF+4xtxh21a5j8cJQA9NMXqsrpB+YuSGbTYij9
-        l+TDRWlESB9vWNvhzts0/YI
-        BZOFgDzIwtNlSif4htbYVHvRx/IlHqf6FUncPYNEFRbpo9lelXzwOu++
-        +Rx7xxWie2JXshNP
-        AytcDBU6Kp3K90vsTWn3zEmwwqEWIQqhR5PkebPxYYN40KtjxK6vOCMvNCdW5SC
-        yaJecODZg
-        JMLw3PCsrix+pMa/5kpzAh8LUUbzVluz2IBHan/V+ZLqMqeEKybYVCv/C5bBO7vlfEnShb
-        KV
-        1nN0vdusd8s5qc09YOXx3KHytTlkiKCZm88u4ZQdvlFG30Ufy2xd5u0NnB87HQJbTfMHJklb
-        9UlS
-        6Rpg/VxhLX/5uuhSRal9qWEyaVpOMpcJiRR+X1y+qEqKDnz8uCjnY6RKY8ZGQKqaE4B0
-        buol+a73UpN
-        8D4/unVdakydOFA5RzA/QVUKsadb7DUFRMMVQvhUf4SZVzxhQoo2d+3hMstvj
-        Rio/flRlUl7WWIpp+2
-        OStHOKrDd1e3N7fJ9PDyejkMXk0fEEvUkxylNiflHjl06W+LwZS2tZ
-        idwr7IO4+inPdVi7oOz2SKRzL
-        MUeU+8v2nCkXHYQ5IdCuaYf5BVZ+IMFI+232pLbktkG9R+N
-        kd2+eYU4iCISfj+5CdXNRu+2Mj9zz11p
-        jy3RZr78qlKBlk9ECdB23NH9wfT0TDdByObt9bqd
-        bc+kKVcdzzQ5gjpy1W2S8Q7i6mRDmeBSnZYWjzm
-        vKo07jgnnE6Ce76Q8u6Y41XmJQmnyvFmD
-        h8+ED4bD2ZjPbb5meBkYX0wzHCAwmHlxXkIqbaR+b+Uh8N
-        xDgN+KiTOE+sudOX4aQyL1BeOS
-        HbCEtKXUESiomD0wU+FCx7KAQos0dZVnROFHVQMZF8NQYEqQ6rrHB
-        a3f4vNiA56uAGFtD1Qn
-        Sry4YcuyjNehto9Z2aK65YzIgvRaGOjbEF6tyho837JctKOuMpeh2vhRw9FW
-        1JHDfx7DyIcP
-        7TkZyMItrDeSqJ2LyF/o9zeT6Q/zBYCcoQxgENyX2QdDQbSMuARY9kGO796ldIrru+Q
-        2xcdz
-        vxANxHqHnzJymzQvSMTVEEPRWUF0ZR0KCEPnLd5R54gWW6bUvzQMQH1XKNp+GlL/sZrAivtG
-        z
-        H9obe95z7+FbuwTkXynLibMk79wjQiNJtcE0/P+Ah4eN38=
-  recorded_at: 2026-08-13 12:22:32
+        eJztlPlP0wcYxt+2QqGltIpBR1SGWJ0IDpUih5WibNCBwMBNHGDFi0NFLCJH1/VbtnAoh4LC
+        EAdk4Cp
+        KAd0EnYUWG1PwgE4RprZQPLihxUIp9Jpz23+wLPvBT/LkzZM8P73J8+SGBvsTcHY4
+        ACDQA/zCANDwpy
+        zM357ptO55AOwQ3c93Z9rFCTm+qNppMUj7TLjrPAF15uqk3eNTH74gSpOv
+        hNHzVnYGPXydfLfhY/jfg
+        Uh0RuN8fTT2b68I8Sg1qeX6rbClnaSXNMiUdniQlrnmlC44wbUH
+        r58XC5LzgcqBm+1lbe49OqJPZXQ2
+        /6s6G1iWcLjBOyUocYUpVRcZYg9XlmIV/DYP5/1vMixV
+        IL0YsdqoauWl1scSIT/3YVshx1stiK3EQI4
+        FSxM4+4LB8IaqALqogAIJZl8TCOAheoRj1R7d
+        hY3xtQfrEnx9TBEjf+Cbx1YQ6jsBzlqMiM58aqBgGh
+        VEwJ6mIms0LO0HMBw1efx2rRJoQ2FE
+        mee+EQZUZVK4uk04VUGsDm+EJMfiPiNrOmGVondPUvsvWGi2Y
+        Y9PelcQVTtd5AQUlM/YiTL4
+        m4F07WR6DPX4249ELLpdKNRcb6V04qH52uKg2O2DZmUG8uuSAMqnTSUS
+        d+MDlJPXqM9ApajC
+        KbWpsetUpL7ewhpNgkLK7rRYMXu2cj+DczDv/vKtIQWWtnP0H8IRc6T4gW1fuvI
+        w5DUX9ov3
+        f3n+NlNYNL/nC1twm9AJP1dx+Mfgu/ysrqncS6zeurhS1krFUzeAtLwOgf7ZK4HrMLYae4
+        s3
+        d757R6g5YqMvgHOdOiLX5/tZk8FlyqM/zrPtsqhnJNMxLg5UHxWvRTLnTB0yzqFh4YkUKigO
+        +BCQ
+        jlmH7T4byK5jcuELLkdPpVDOODXzzH1DUsyQmksOhigIeWjAF4H05lQGFO9qZDODDtzk
+        MGWdt4x8Qs4
+        zPKHtrL7cLJiC1yrjVfYay/7euhnGmKY1dEKNoYUXtRh/z6HVpFY6Xe18on9S
+        PTiHqoqPCWWMGiQZ2m
+        tR3O4NA8aXbBSC9xsa3zWtl0g4PZh2GYGUWOqhHYrvxdMOio8itc9n
+        bYvR2VWt+8iiV3ObcrmRK0LPe
+        XX1bQRF049UY4AipCVr4503+yrFbDGbOSNjRpMly3zFGGR1
+        fva0+DzEeqLWoU3jZ0X43MzAFC+m8BEb
+        pdCsDkRlt6hdHVw3e5HuOyy1j9ReHjgi3xSO96/A
+        QyLZSlZ5NEZUmL+gpqmFR8jpSLe2elAr4FbfwyL
+        P7xHG/GfpbtZZ7MN7AvnJGFrpIbX2rAyJ
+        QPdfCDJc2K23M4MzpPIh0xHi4GS4I+r0wcAeDKKpyTKIu3
+        47IFyunuevmboRigWPHc45PCbc
+        UbI26rqsG9EesMqZbHxdcOunLHWy0jO4GsC4Njot9uT9vXfNfWsrR
+        nGwIyIBuvm7y6jVFi3R
+        62DcPXJEecMFu/cYqcULmXW/t3D0Rl/qoHLBcNiReMWzlM/o9dFJNHlkayKk
+        CVzGSBaT79qd
+        FNjiE9/I+xX9V9lF8ol06SKQLuxggYrGb6izALdt36IgeGX7uwRtidUI5l1yiSWPHBQ
+        OtJcl
+        mSnrz/RG6f0dMYCzrABRrZs7KFBbbADW92xTPHm7KNjHFoCUR9h0Zy8Ewj87M1yczvnvVu09
+        7
+        /n3MOqJXj0Bc2bzTmv+tPRPgv3qt+3N/APd9jYg
+  recorded_at: 2026-08-19 07:13:50
 - request:
     method: GET
     uri: https://tile.gbif.org/4326/omt/0/0/0@1x.png?style=gbif-classic
@@ -966,7 +966,7 @@ http_interactions:
         AKlOqf/qmhJyYX9mAJXnVwuzjyL3O2lf6JCSn7nMnwqS+7+OHP/Ek/C117AZOvauL
         hH2dqCt
         Vv5/1aenkPhT240rzG/3f4OQ/4z0zHSrtR3D/xcprInQ
-  recorded_at: 2026-08-13 12:22:32
+  recorded_at: 2026-08-19 07:13:50
 - request:
     method: GET
     uri: https://tile.gbif.org/4326/omt/0/1/0@1x.png?style=gbif-classic
@@ -1847,5 +1847,5 @@ http_interactions:
         N1yCLJgluqDabSe+eqBOrFfv1lWFS6HyfwkwfsQyE0nTFRZrVfU
         AF79nCqryxbJmgf8DXWG2
         Bg==
-  recorded_at: 2026-08-13 12:22:32
+  recorded_at: 2026-08-19 07:13:50
 recorded_with: VCR-vcr/2.0.0

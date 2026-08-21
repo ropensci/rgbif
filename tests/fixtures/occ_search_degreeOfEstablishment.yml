@@ -7,7 +7,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '17'
+      x-varnish-rli: '18'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -83,7 +83,7 @@ http_interactions:
         psfB8aIk8YKZ0xHEbdH2Oo56HUf9XuOogybvjx5HOa/jqN92HOV88TjK+SPG
         UeV86PcbR5U4A3DREl2
         f/wdzQz0q
-  recorded_at: 2026-08-17 07:07:08
+  recorded_at: 2026-08-19 08:38:52
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&degreeOfEstablishment=established
@@ -92,7 +92,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '16'
+      x-varnish-rli: '18'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -168,7 +168,7 @@ http_interactions:
         psfB8aIk8YKZ0xHEbdH2Oo56HUf9XuOogybvjx5HOa/jqN92HOV88TjK+SPG
         UeV86PcbR5U4A3DREl2
         f/wdzQz0q
-  recorded_at: 2026-08-17 07:07:08
+  recorded_at: 2026-08-19 08:38:52
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&degreeOfEstablishment=established
@@ -177,7 +177,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '15'
+      x-varnish-rli: '18'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -256,7 +256,7 @@ http_interactions:
         n0jrHHViPy2tI4vyL4nWKZ6Dnz
         GbQw3azubkM8dszt/338PvH/sPHfj7z/1f4OPD85xOUV/+
         7ykdhT+B0snP0qR0ctchue+8/w9fHQ06
-  recorded_at: 2026-08-17 07:07:08
+  recorded_at: 2026-08-19 08:38:52
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=2&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&taxonKey=N&degreeOfEstablishment=established
@@ -265,7 +265,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '14'
+      x-varnish-rli: '18'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
@@ -360,5 +360,5 @@ http_interactions:
         K4H8dUP9ZP8DotH2vyIV2B9+Zo/bc8xWq/+rX3GdA3nWwzdGzvcQw6FTr+X10G9/fYZKiU
         /TvoMVQRi
         lYh6sO/AZKsetQ=
-  recorded_at: 2026-08-17 07:07:08
+  recorded_at: 2026-08-19 08:38:52
 recorded_with: VCR-vcr/2.0.0

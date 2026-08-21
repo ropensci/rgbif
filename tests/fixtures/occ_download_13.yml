@@ -11,17 +11,17 @@ http_interactions:
       content-type: application/json
       content-encoding: gzip
     body:
-      string: 0021472-260806074905277
-  recorded_at: 2026-08-18 05:35:28
+      string: 0024364-260806074905277
+  recorded_at: 2026-08-19 12:23:27
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021472-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0024364-260806074905277
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021472-260806074905277","license":"unspecified","request":{"predicate":{"type":"equals","key":"TAXON_KEY","value":"2431950","matchCase":false,"checklistKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"},"sendNotification":false,"format":"SIMPLE_CSV","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"},"created":"2026-08-18T05:35:28.701+00:00","modified":"2026-08-18T05:35:28.701+00:00","eraseAfter":"2027-02-18T05:35:28.620+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021472-260806074905277.zip","size":0,"totalRecords":972,"numberDatasets":0}'
-  recorded_at: 2026-08-18 05:35:28
+      string: '{"key":"0024364-260806074905277","license":"unspecified","request":{"predicate":{"type":"equals","key":"TAXON_KEY","value":"2431950","matchCase":false,"checklistKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"},"sendNotification":false,"format":"SIMPLE_CSV","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"},"created":"2026-08-19T12:23:27.141+00:00","modified":"2026-08-19T12:23:27.141+00:00","eraseAfter":"2027-02-19T12:23:27.065+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0024364-260806074905277.zip","size":0,"totalRecords":973,"numberDatasets":0}'
+  recorded_at: 2026-08-19 12:23:27
 recorded_with: VCR-vcr/2.0.0

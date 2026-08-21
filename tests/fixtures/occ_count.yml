@@ -11,10 +11,10 @@ http_interactions:
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSxubmloYG
-        RiYmFjp
-        KRanFpTklQCXRsTpKaYnJqRB2LQDLvxvG
-  recorded_at: 2026-08-13 12:24:51
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSxuYWxuYG
+        JibGhjp
+        KRanFpTklQCXRsTpKaYnJqRB2LQDLPhvB
+  recorded_at: 2026-08-19 07:16:08
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&checklistKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c&facetLimit=&year=2000%2C2011&taxonKey=212
@@ -27,10 +27,10 @@ http_interactions:
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSRsaWhkYm
-        poZGOkp
-        FqcWlOSVAFdGxOkppicmpEHYtALING4Y=
-  recorded_at: 2026-08-13 12:24:52
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSRsYWlgam
+        BkZGOkp
+        FqcWlOSVAFdGxOkppicmpEHYtALJXG4g=
+  recorded_at: 2026-08-19 07:16:09
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&facetLimit=&year=2012
@@ -39,14 +39,14 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '17'
+      x-varnish-rli: '18'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSFsamlkaW
-        xuY6SkW
-        pxaU5JUAF0bE6SmmJyakQdi0AnHsbZw==
-  recorded_at: 2026-08-13 12:24:52
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSFsYmJsbm
+        lkBVRan
+        FpTklQAXRsTpKaYnJqRB2LQCbjxtf
+  recorded_at: 2026-08-19 07:16:10
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=ABSENT&limit=0&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&facetLimit=
@@ -55,14 +55,14 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '17'
+      x-varnish-rli: '18'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DShkZmhibG
-        liZmOkp
-        FqcWlOSVAFdGxOkppicmpEHYtALK5G40=
-  recorded_at: 2026-08-13 12:24:53
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DShkZmRqYG
+        hpYmOkp
+        FqcWlOSVAFdGxOkppicmpEHYtALIMG4c=
+  recorded_at: 2026-08-19 07:16:10
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&facetLimit=&organismQuantity=5&basisOfRecord=MATERIAL_SAMPLE
@@ -71,14 +71,14 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '17'
+      x-varnish-rli: '18'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
         eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSZqaW5pYm
         5jpKRan
         FpTklQPnoWB2ltMTkVAi7FgCFMBs4
-  recorded_at: 2026-08-13 12:24:53
+  recorded_at: 2026-08-19 07:16:11
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&facetLimit=&verbatimScientificName=Calopteryx+splendens
@@ -87,12 +87,12 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
-      x-varnish-rli: '16'
+      x-varnish-rli: '18'
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSJibmpobG
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSJqYGZham
         OkpFqcW
-        lOSVA6ehYHaW0xORUCLsWAGtbGvE=
-  recorded_at: 2026-08-13 12:24:53
+        lOSVA6ehYHaW0xORUCLsWAGu/GvU=
+  recorded_at: 2026-08-19 07:16:11
 recorded_with: VCR-vcr/2.0.0

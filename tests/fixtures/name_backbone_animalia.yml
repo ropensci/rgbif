@@ -8,6 +8,6 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"usage":{"key":"N","name":"Animalia","canonicalName":"Animalia","rank":"KINGDOM","status":"ACCEPTED","type":"SCIENTIFIC","formattedName":"<i>Animalia</i>"},"classification":[{"key":"CS5HF","name":"Eukaryota","rank":"DOMAIN"},{"key":"N","name":"Animalia","rank":"KINGDOM"}],"diagnostics":{"matchType":"EXACT","confidence":94,"timeTaken":3,"timings":{"nameNRank":0,"sciNameMatch":3,"nameParse":0,"luceneMatch":3}},"synonym":false,"left":54014,"right":358148}'
-  recorded_at: 2026-08-13 12:22:48
+      string: '{"usage":{"key":"N","name":"Animalia","canonicalName":"Animalia","rank":"KINGDOM","status":"ACCEPTED","type":"SCIENTIFIC","formattedName":"<i>Animalia</i>"},"classification":[{"key":"CS5HF","name":"Eukaryota","rank":"DOMAIN"},{"key":"N","name":"Animalia","rank":"KINGDOM"}],"diagnostics":{"matchType":"EXACT","confidence":94,"timeTaken":4,"timings":{"nameNRank":0,"sciNameMatch":4,"nameParse":0,"luceneMatch":4}},"synonym":false,"left":54014,"right":358148}'
+  recorded_at: 2026-08-19 07:14:05
 recorded_with: VCR-vcr/2.0.0

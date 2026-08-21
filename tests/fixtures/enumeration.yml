@@ -31,7 +31,7 @@ http_interactions:
         XtMDr3ajim4MWGHo9M6lmeyFErzGdD7TN2y5yc3pxyAJb7bciujypUyo5q7MrvdVZYi2hz
         b1
         b5JCB6ZX373zJzIl5h7N0ZEB+8lC74+MMF2ahOoVpNZdOemjuDxrjfK/xJ//n5dKrg==
-  recorded_at: 2026-08-13 12:20:30
+  recorded_at: 2026-08-19 06:34:08
 - request:
     method: GET
     uri: https://api.gbif.org/v1/enumeration/basic/NameType
@@ -45,7 +45,7 @@ http_interactions:
         eJwdylEKxDAIRdG95Hs2YaKhMlZLooVShtn/Lmr6o4fHvctsTOrcuZVPOXnEzL9ddTAmWLuN
         HSTZQpx
         PGIugyAj+tuaRFy2q91jhIdBoM0FardpfYadUzf0rPJ2w/B5eBh76
-  recorded_at: 2026-08-13 12:20:30
+  recorded_at: 2026-08-19 06:34:08
 - request:
     method: GET
     uri: https://api.gbif.org/v1/enumeration/basic/MetadataType
@@ -56,7 +56,7 @@ http_interactions:
       content-type: application/json
     body:
       raw_gzip: eJyLVnL19VHSUXJxBhHhzvEuAUCGs78PiBELAG1YB1Q=
-  recorded_at: 2026-08-13 12:20:30
+  recorded_at: 2026-08-19 06:34:08
 - request:
     method: GET
     uri: https://api.gbif.org/v1/enumeration/basic/TypeStatus
@@ -74,7 +74,7 @@ http_interactions:
         WrteYPX9xpoQB+g4Q7ga+jlmp9jdVrOtmDpGi26ANt73zLOicm7eS/TF2l
         8wQUGiBYH+oFexl8cP2+Y
         UhmNnNqSTd+fks+nMM=
-  recorded_at: 2026-08-13 12:20:30
+  recorded_at: 2026-08-19 06:34:08
 - request:
     method: GET
     uri: https://api.gbif.org/v1/enumeration/country/
@@ -315,5 +315,5 @@ http_interactions:
         xoYoV74wfm5s0XpubAEC2AWZFkBtJIt8d
         6/uvxql5BfCt5g1Q67/C4hAvkyIWxi3KB0/KQ7F
         s1HlahLG4VST8X/7f/94XOg=
-  recorded_at: 2026-08-13 12:20:30
+  recorded_at: 2026-08-19 06:34:08
 recorded_with: VCR-vcr/2.0.0

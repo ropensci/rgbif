@@ -172,7 +172,7 @@ gbifissues <- structure(list(
                   "At least one vernacular name extension record attached to this name usage is invalid.",
                   "Name usage could only be matched to a GBIF backbone species, but was in fact a broader species aggregate/complex."),
   type <- c(rep("occurrence", 63), rep("name", 36)
-  )), .Names = c("code", "issue", "description", "type"), class = "data.frame", row.names = c(NA, -99L))
+  )), names = c("code", "issue", "description", "type"), class = "data.frame", row.names = c(NA, -99L))
 
 collapse_issues <- function(x, issue_col = "issues") {
   tmp <- x[names(x) %in% issue_col][[1]]

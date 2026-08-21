@@ -7,6 +7,7 @@ http_interactions:
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
+      content-encoding: gzip
     body:
       raw_gzip: |-
         eJzFWs9v20YW/lcGuqwD2A1FiYqUm62osmrHDiw722CxhxE5Escazmjnh2S66KGnXvoP9LTI
@@ -79,7 +80,7 @@ http_interactions:
         eVv8VoBgyx988P/vnvz7zf/fPO36ll8gRmL39tWWP427y8EW+DsTkqlFqUDH1ndHCY/
         7/khTZ5XHW3H
         ySu+le8sFnh6h7B//vr/WyMqXQ==
-  recorded_at: 2026-08-13 12:24:46
+  recorded_at: 2026-08-19 07:16:03
 - request:
     method: GET
     uri: https://api.gbif.org/v1/species/5136034/vernacularNames?offset=0&limit=100
@@ -93,5 +94,5 @@ http_interactions:
         eJyrVspPSytOLVGyMtBRysnMzQSyDA2A7NS8FP+0oNTk/KKUYiWrkqLSVB2lotTi0pwSIDc6
         thYAGb8
         TJA==
-  recorded_at: 2026-08-13 12:24:46
+  recorded_at: 2026-08-19 07:16:03
 recorded_with: VCR-vcr/2.0.0

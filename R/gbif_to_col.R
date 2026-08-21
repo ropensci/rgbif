@@ -30,7 +30,7 @@
 #' to the new COL XR alpha-numeric keys.
 #'
 #' @references
-#' \url{https://techdocs.gbif.org/en/openapi/v2/species}
+#' \url{https://techdocs.gbif.org/en/openapi/v1/species}
 #'
 #' @family name
 #'

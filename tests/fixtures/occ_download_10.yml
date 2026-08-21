@@ -11,17 +11,17 @@ http_interactions:
       content-type: application/json
       content-encoding: gzip
     body:
-      string: 0021451-260806074905277
-  recorded_at: 2026-08-18 05:25:52
+      string: 0024326-260806074905277
+  recorded_at: 2026-08-19 12:06:32
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021451-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0024326-260806074905277
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021451-260806074905277","license":"unspecified","request":{"predicate":{"type":"equals","key":"TAXON_KEY","value":"5WZLF","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T05:25:52.715+00:00","modified":"2026-08-18T05:25:52.715+00:00","eraseAfter":"2027-02-18T05:25:52.603+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021451-260806074905277.zip","size":0,"totalRecords":19342,"numberDatasets":0}'
-  recorded_at: 2026-08-18 05:25:52
+      string: '{"key":"0024326-260806074905277","license":"unspecified","request":{"predicate":{"type":"equals","key":"TAXON_KEY","value":"5WZLF","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-19T12:06:31.832+00:00","modified":"2026-08-19T12:06:31.832+00:00","eraseAfter":"2027-02-19T12:06:31.665+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0024326-260806074905277.zip","size":0,"totalRecords":19342,"numberDatasets":0}'
+  recorded_at: 2026-08-19 12:06:32
 recorded_with: VCR-vcr/2.0.0
