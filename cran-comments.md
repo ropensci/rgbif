@@ -41,7 +41,7 @@ migrate at their own pace.
 
 Hello,
 
-This version includes a major taxonomy migration (GBIF Backbone to COL XR along with new features and bug fixes.
+This version includes a major taxonomy migration GBIF Backbone to COL XR along with new features and bug fixes.
 
 Thanks!
 John Waller
