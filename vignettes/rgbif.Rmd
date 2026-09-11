@@ -61,16 +61,16 @@ See the article [Getting Occurrence Data From GBIF](https://docs.ropensci.org/rg
 
 ## Look up taxonomic names 
 
-In order to use GBIF mediated data effectively, you will often need to match a scientific name to the [GBIF Backbone Taxonomy](https://www.gbif.org/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c). 
+In order to use GBIF mediated data effectively, you will often need to match a scientific name to a taxonomy — by default the [COL (Catalogue of Life) Extended Release](https://www.catalogueoflife.org/). To use the [GBIF Backbone Taxonomy](https://www.gbif.org/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c) instead, explicitly set `checklistKey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"`.
 
-The goal of **name matching** is to get back an unambiguous taxonomic key (a number) of the scientific name you are interested in. Having a key makes it easy for GBIF to know what you mean. 
+The goal of **name matching** is to get back an unambiguous taxonomic key of the scientific name you are interested in (with COL XR this is an alpha-numeric key such as `"Q2M4"`). Having a key makes it easy for GBIF to know what you mean.
 
 ```r
-name_backbone("Calopteryx") # get best match in the GBIF backbone
+name_backbone("Calopteryx") # get best match in the default taxonomy (COL XR)
 name_backbone_checklist(c("Calopteryx splendens","Fake species Waller 2022")) # look up multiple names
-name_suggest("Calopteryx splendens") # can be useful if you aren't sure which name to use
-name_lookup("mammalia") # look outside of the GBIF backbone too
 ```
+
+Note that `name_suggest()` and `name_lookup()` are deprecated as of rgbif 3.9.0 and primarily only work with the legacy GBIF Backbone Taxonomy. For COL XR support, consider using the `rcol` package instead. See the article [Working With Taxonomic Names](https://docs.ropensci.org/rgbif/articles/taxonomic_names.html).
 
 See the article [Working With Taxonomic Names](https://docs.ropensci.org/rgbif/articles/taxonomic_names.html). 
 
@@ -80,9 +80,9 @@ Get occurrence counts in GBIF.
 
 ```r
 occ_count() # total number in GBIF
-occ_count(georeferenced=TRUE) # all with coordinates
+occ_count(hasCoordinate=TRUE) # all with coordinates
 occ_count(basisOfRecord='OBSERVATION') # with this basis of record
-occ_count(taxonKey="4QHKG", georeferenced=TRUE) # with coordinates
+occ_count(taxonKey="4QHKG", hasCoordinate=TRUE) # with coordinates
 occ_count(country="DK") # from Denmark 
 occ_count(datasetKey='9e7ea106-0bf8-4087-bb61-dfe4f29e0f17') # from a dataset
 occ_count(year=2012)

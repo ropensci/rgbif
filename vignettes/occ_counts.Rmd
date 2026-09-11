@@ -57,7 +57,7 @@ occ_count(publishingCountry="US;JP")
 occ_count(repatriated = TRUE,country="IN") 
 
 # number of insect occurrence records published by Japan
-occ_count(taxonKey=216,publishingCountry="JP") 
+occ_count(taxonKey="H6",publishingCountry="JP")
 
 # number of specimen insect occurrence records published by Japan between the years 1900-2000
 occ_count(publishingCountry="JP",basisOfRecord="PRESERVED_SPECIMEN",taxonKey="H6",year="1900,2000")
@@ -88,7 +88,7 @@ Note that `occ_count()` will **ignore missing values**, so if a publisher has no
 
 ``` r
 occ_count(coordinateUncertaintyInMeters = "0,1000000")
-occ_count(hasCoordinates=TRUE)
+occ_count(hasCoordinate=TRUE)
 ```
 
 Here are some other interesting occurrence counts:
@@ -148,7 +148,7 @@ Almost any `occ_search()` parameter can be used via the facets interface. Facets
 # top scientificNames from Japan
 occ_count(facet="scientificName",country="JP")
 # top countries publishing specimen bird records between 1850 and 1880
-occ_count(facet="scientificName",taxonKey="V2",basisOfRecord="PRESERVED_SPECIMEN",year="1850,1880")
+occ_count(facet="publishingCountry",taxonKey="V2",basisOfRecord="PRESERVED_SPECIMEN",year="1850,1880")
 
 # Number of present or absence records of Elephants
 occ_count(facet="occurrenceStatus",scientificName="Elephantidae")
@@ -162,7 +162,7 @@ occ_count(facet="datasetKey",distanceFromCentroidInMeters="0")
 occ_count(facet="coordinateUncertaintyInMeters",basisOfRecord="PRESERVED_SPECIMEN")
 
 # number of iucn listed bird and insect occurrences in Mexico
-occ_count(facet="iucnRedListCategory",taxonKey="V2;H2",country="MX")
+occ_count(facet="iucnRedListCategory",taxonKey="V2;H6",country="MX")
 
 # most common latitude values mediated by GBIF
 occ_count(facet="decimalLatitude")

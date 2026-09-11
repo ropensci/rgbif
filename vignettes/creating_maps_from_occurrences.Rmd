@@ -28,7 +28,7 @@ knitr::include_graphics("img/dot_map.png")
 It is also possible to make static maps that look like default [occurrence search](https://www.gbif.org/occurrence/map?taxon_key=V2) maps. See the maps api page for [available styles](https://tile.gbif.org/ui/). 
 
 ```R 
-map_fetch(taxonKey="",style="scaled.circles",base_sytle="gbif-light")
+map_fetch(taxonKey="V2",style="scaled.circles",base_style="gbif-light")
 ```
 
 ```{r, echo = FALSE,out.width="50%"}
