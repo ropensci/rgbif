@@ -129,11 +129,10 @@ occ_count <- function(
   # handle legacy parameters 
   if("georeferenced" %in% arg_names) {
     .Deprecated(msg="arg 'georeferenced' is deprecated since rgbif 3.7.6, use 'hasCoordinate' and 'hasGeospatialIssue' instead.")
-    if(args$georeferenced) {
+    if(isTRUE(args$georeferenced)) {
       args$hasCoordinate <- TRUE
       args$hasGeospatialIssue <- FALSE
-    } 
-    if(is.null(args$georeferenced)) {
+    } else if(is.null(args$georeferenced)) {
       args$hasCoordinate <- NULL
       args$hasGeospatialIssue <- NULL
     } else {
@@ -208,7 +207,7 @@ occ_count <- function(
              gadmGid = args$gadmGid,
              coordinateUncertaintyInMeters = args$coordinateUncertaintyInMeters,
              verbatimScientificName = args$verbatimScientificName,
-             eventId = args$identifiedBy,
+             eventId = args$eventId,
              identifiedBy = args$identifiedBy,
              networkKey = args$networkKey,
              verbatimTaxonId = args$verbatimTaxonId,
@@ -228,7 +227,7 @@ occ_count <- function(
              projectId = args$projectId,
              programme = args$programme,
              preparations = args$preparations,
-             datasetId = args$datsetId,
+             datasetId = args$datasetId,
              datasetName = args$datasetName,
              publishedByGbifRegion = args$publishedByGbifRegion,
              island = args$island,
@@ -237,7 +236,7 @@ occ_count <- function(
              taxonConceptId = args$taxonConceptId,
              taxonomicStatus = args$taxonomicStatus,
              acceptedTaxonKey = args$acceptedTaxonKey,
-             collectionKey = args$collectionsKey,
+             collectionKey = args$collectionKey,
              institutionKey = args$institutionKey,
              otherCatalogNumbers = args$otherCatalogNumbers,
              georeferencedBy = args$georeferencedBy,
@@ -271,7 +270,7 @@ occ_count <- function(
              formation = args$formation,
              member = args$member,
              bed = args$bed,
-             associatedSequences = args$aassociatedSequences,
+             associatedSequences = args$associatedSequences,
              nucleotideSequence.nucleotideSequenceID = args$nucleotideSequence.nucleotideSequenceID,
              nucleotideSequence.targetGene = args$nucleotideSequence.targetGene,
              nucleotideSequence.sequence = args$nucleotideSequence.sequence,
