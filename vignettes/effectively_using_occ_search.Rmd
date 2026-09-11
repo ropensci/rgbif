@@ -100,8 +100,8 @@ Location searching can sometimes be challenging for new users. Particularly, sea
 
 ``` r
 occ_search(stateProvince="California")
-occ_search(stateProvince="CA")) # will return different number of records  
-occ_search(stateProvince="CA;California")) # search both variants at the same time  
+occ_search(stateProvince="CA") # will return different number of records
+occ_search(stateProvince="CA;California") # search both variants at the same time
 ```
 
 A usually better choice than searching by `stateProvince` is to search by `gadmGid`. The term `gadmGid` is a GBIF interpreted field that is filled by GBIF when coordinates are available. Looking up the `gadmGid`s can be done on the GBIF [occurrence search page](https://www.gbif.org/occurrence/map?continent=NORTH_AMERICA&has_coordinate=true&has_geospatial_issue=false&gadm_gid=USA.5_1).
@@ -120,18 +120,18 @@ Searching by `country` is typically straightforward because the field is standar
 occ_search(country="US") # search for United States
 occ_search(country="JP") # search for Japan
 occ_search(country="PH") # search for Philippines
-occ_search(country="SW") # search for Sweden
+occ_search(country="SE") # search for Sweden
 occ_search(country="US;JP") # search for United States and Japan
 ```
 
 Searching by `continent` is also possible, but unlike `country`, this value is **not** filled in when coordinates are available, and instead relies on the publisher filling in this field. So if the publisher has not filled in a value, then this field will be `NULL`, even if it obviously lies on a continent.
 
-The field is however standardized by GBIF, so that the values are mapped to supplied values are all mapped to a controlled vocabulary(e.g. "Europa, Euroopa,EUR,Eu" -\> EUROPE, "Afrique,"Afr.","AF" -\> AFRIKA).
+The field is however standardized by GBIF, so that supplied values are all mapped to a controlled vocabulary (e.g. "Europa", "Euroopa", "EUR", "Eu" -\> EUROPE; "Afrique", "Afr.", "AF" -\> AFRICA). Note that when **searching**, you must use the controlled vocabulary value itself (e.g. `AFRICA`); variants like "AFRIKA" are only mapped during interpretation of publisher-supplied data and will give an error in a search.
 
 ``` r
 occ_search(continent="EUROPE") # search for Europe
-occ_search(continent="AFRIKA") # search for Africa
-occ_search(continent="EUROPE;AFRIKA") # search for Europe and Africa
+occ_search(continent="AFRICA") # search for Africa
+occ_search(continent="EUROPE;AFRICA") # search for Europe and Africa
 ```
 
 If you need to get all occurrences from a certain continent, I would use the `gadmGid` filter or supply a bounding box or WKT polygon to `geometry`. When using `geometry` make sure that your polygon is wound in the correct order (anti-clockwise). When in doubt, using the GBIF [web UI](https://www.gbif.org/occurrence/map) to draw and debug the polygon can be a good option. Only POLYGON and MULTIPOLYGON are accepted WKT types.

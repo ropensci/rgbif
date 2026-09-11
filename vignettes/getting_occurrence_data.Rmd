@@ -263,8 +263,8 @@ Another sometimes useful pattern is **downloading all occurrences except some gr
 # Get COL XR alpha-numeric key for birds (class Aves)
 # bird_key <- name_backbone("Aves")$usageKey
 # occ_download(pred_not("taxonKey", bird_key),format = "SIMPLE_CSV")
-# Example with Insecta (key "Q3F")
-occ_download(pred_not("taxonKey", "Q3F"),format = "SIMPLE_CSV") # Exclude all Insecta
+# Example with Insecta (key "H6")
+occ_download(pred_not("taxonKey", "H6"),format = "SIMPLE_CSV") # Exclude all Insecta
 ```
 
 ## Big Polygon Downloads
@@ -292,7 +292,7 @@ large_wkt <- "POLYGON ((127.0171 4.9391, 124.5973 4.7960, 121.7968 3.7617,
 129.4364 2.4420, 128.9881 3.3626, 128.3585 4.1683, 127.7041 4.6918,
 127.0171 4.9391))" 
 
-occ_download(pred_within(large_wkt),format = "SIMPLE_CSV"))
+occ_download(pred_within(large_wkt),format = "SIMPLE_CSV")
 ```
 
 Due to changes in GBIF's polygon interpretation, you might get an error when using polygons wound in the "wrong direction" (clockwise). For example, the R package `sf` returns WKT polygons clockwise by default. One solution is to use the `wk` package to reorient the polygon prior to feeding it to `pred_within()`. 
@@ -338,10 +338,10 @@ occ_download(
 # GBIF Backbone Taxonomy - returns numeric keys
 backbone_uuid <- "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
 name_backbone("Calopteryx splendens", checklistKey = backbone_uuid)$usageKey
-# 4DXXM
+# 1427067
 
 occ_download(
-  pred("taxonKey", "4DXXM"),  
+  pred("taxonKey", 1427067),
   checklistKey = backbone_uuid,  # Use GBIF Backbone
   format = "SIMPLE_CSV"
 )

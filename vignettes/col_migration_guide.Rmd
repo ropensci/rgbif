@@ -49,7 +49,7 @@ library(rgbif)
 # Returned GBIF Backbone numeric key
 result <- name_backbone(name = "Calopteryx splendens")
 result$usageKey
-# [1] 5231190  # numeric key
+# [1] 1427067  # numeric key
 ```
 
 **After (rgbif 3.9.0):**
@@ -68,13 +68,13 @@ If you have existing GBIF Backbone numeric taxon keys and want to convert them t
 
 ```r
 # Convert a single GBIF Backbone key
-result <- gbif_to_col(5231190)
+result <- gbif_to_col(1427067)
 result$usage$key  # "Q2M4"
 
 # Convert multiple keys at once
-results <- gbif_to_col(c(5231190, 2435099, 2877951))
+results <- gbif_to_col(c(1427067, 2435099, 2878688))
 sapply(results, function(x) x$usage$key)
-# [1] "Q2M4"  "9WLSS" "Q2N2"
+# [1] "Q2M4"  "4QHKG" "4R5YN"
 ```
 
 This function uses the GBIF species matching API to resolve GBIF Backbone keys to their COL XR equivalents. The result includes the original GBIF key, the new COL XR key (in `$usage$key`), full taxonomic classification, and match quality information to help you assess the conversion.
@@ -156,7 +156,7 @@ species_list <- c("Calopteryx splendens", "Puma concolor", "Quercus robur")
 # Returned numeric keys
 results <- name_backbone_checklist(species_list)
 results$usageKey
-# [1] 5231190 2435099 2877951  # numeric keys
+# [1] 1427067 2435099 2878688  # numeric keys
 ```
 
 **After (rgbif 3.9.0):**
@@ -166,7 +166,7 @@ species_list <- c("Calopteryx splendens", "Puma concolor", "Quercus robur")
 # Returns alpha-numeric COL XR keys
 results <- name_backbone_checklist(species_list)
 results$usageKey
-# [1] "Q2M4" "9WLSS" "Q2N2"  # alpha-numeric keys
+# [1] "Q2M4"  "4QHKG" "4R5YN"  # alpha-numeric keys
 ```
 
 ### Maps
@@ -181,10 +181,10 @@ map_fetch(srs='EPSG:3031', taxonKey=2481660, style='glacier.point')
 ```r
 # Get COL XR key first
 key <- name_backbone(name = "Spheniscidae")$usageKey
-# key is "623RM"
+# key is "GHC"
 
 # Use alpha-numeric key
-map_fetch(srs='EPSG:3031', taxonKey="623RM", style='glacier.point')
+map_fetch(srs='EPSG:3031', taxonKey="GHC", style='glacier.point')
 ```
 
 ## Deprecated Functions

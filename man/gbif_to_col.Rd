@@ -48,11 +48,11 @@ to the new COL XR alpha-numeric keys.
 \examples{
 \dontrun{
 # Convert a single GBIF Backbone key to COL XR
-result <- gbif_to_col(5231190)  # Calopteryx splendens
+result <- gbif_to_col(1427067)  # Calopteryx splendens
 
 # The print method shows a clean summary:
 # <<GBIF to COL key conversion>>
-#   GBIF Backbone key: 5231190
+#   GBIF Backbone key: 1427067
 #   COL Extended Release key: Q2M4
 #   Scientific name: Calopteryx splendens
 #   Rank: SPECIES
@@ -67,7 +67,7 @@ result$diagnostics$matchType    # Quality of match
 result$diagnostics$confidence   # Confidence score
 
 # Convert multiple keys at once
-results <- gbif_to_col(c(5231190, 2435099, 2877951))
+results <- gbif_to_col(c(1427067, 2435099, 2878688))
 results  # Shows summary for all matches
 
 # Extract specific data from multiple results:
