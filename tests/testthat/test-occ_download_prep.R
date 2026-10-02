@@ -353,7 +353,7 @@ test_that("occ_download_prep allows GBIF Backbone override at predicate level", 
   # This is expected behavior - predicate-level checklistKey is still respected
   expect_warning(
     z <- occ_download_prep(
-      pred("classKey", "220", checklistKey = backbone_uuid),
+      pred("classKey", 220, checklistKey = backbone_uuid),
       checklistKey = col_xr_uuid,
       user = "foo", pwd = "bar", email = "foo@bar.com"
     ),
@@ -366,6 +366,21 @@ test_that("occ_download_prep allows GBIF Backbone override at predicate level", 
   
   # Predicate-level checklistKey uses the explicit Backbone override
   expect_equal(z$request$predicate$checklistKey[1], backbone_uuid)
+})
+
+test_that("character taxonomic keys do not switch checklist", {
+  skip_on_cran()
+
+  col_xr_uuid <- "7ddf754f-d193-4cc9-b351-99906754a03b"
+  expect_no_warning(
+    z <- occ_download_prep(
+      pred("taxonKey", "745"),
+      user = "foo", pwd = "bar", email = "foo@bar.com"
+    )
+  )
+
+  expect_equal(z$request$checklistKey[1], col_xr_uuid)
+  expect_equal(z$request$predicate$checklistKey[1], col_xr_uuid)
 })
 
 test_that("occ_download_prep allows top-level checklistKey override via parameter", {
@@ -456,7 +471,7 @@ test_that("occ_download_prep handles mixed GBIF Backbone and COL XR predicates",
   # This is expected behavior - predicate-level checklistKey is still respected
   expect_warning(
     z <- occ_download_prep(
-      pred("classKey", "212", checklistKey = backbone_uuid),  # Aves in GBIF Backbone
+      pred("classKey", 212, checklistKey = backbone_uuid),  # Aves in GBIF Backbone
       pred("genusKey", "B8V3Z"),  # COL XR key (default)
       pred("country", "US"),  # Non-taxonomic
       pred("basisOfRecord", "PRESERVED_SPECIMEN"),  # Non-taxonomic

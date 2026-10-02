@@ -1,3 +1,7 @@
+is_numeric_taxonomic_key <- function(x) {
+  is.numeric(x) && all(!is.na(x))
+}
+
 #' Search for GBIF occurrences
 #'
 #' @export
@@ -206,7 +210,7 @@ occ_search <- function(taxonKey = NULL,
   # Check if any taxonomic keys are numeric
   numeric_keys <- sapply(taxonomic_keys, function(x) {
     if (is.null(x)) return(FALSE)
-    all(suppressWarnings(!is.na(as.numeric(x))))
+    is_numeric_taxonomic_key(x)
   })
   
   # Only warn and switch if checklistKey is still COL XR default

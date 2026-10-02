@@ -955,6 +955,11 @@ test_that("numeric taxonomic keys trigger warning and switch to backbone", {
   expect_equal(attr(result, "args")$checklistKey, "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
 })
 
+test_that("numeric taxonomic key detection respects input type", {
+  expect_false(rgbif:::is_numeric_taxonomic_key("745"))
+  expect_true(rgbif:::is_numeric_taxonomic_key(745))
+})
+
 test_that("numeric keys with explicit checklistKey don't trigger warning", {
   skip_on_cran() # because fixture in .Rbuildignore
   
