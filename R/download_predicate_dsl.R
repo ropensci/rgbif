@@ -331,7 +331,12 @@ pred_factory <- function(type) {
       }
     }
     z <- parse_pred(key, value, type, checklistKey)
-    structure(z, class = "occ_predicate")
+    structure(
+      z,
+      class = "occ_predicate",
+      numeric_taxonomic_key = key_lkup[[key]] %in% taxonomic_keys &&
+        is.numeric(value) && all(!is.na(value))
+    )
   }
 }
 pred_multi_factory <- function(type) {
@@ -350,7 +355,12 @@ pred_multi_factory <- function(type) {
       }
     }
     z <- parse_pred(key, value, type, checklistKey)
-    structure(z, class = "occ_predicate")
+    structure(
+      z,
+      class = "occ_predicate",
+      numeric_taxonomic_key = key_lkup[[key]] %in% taxonomic_keys &&
+        is.numeric(value) && all(!is.na(value))
+    )
   }
 }
 preds_factory <- function(type) {

@@ -11,446 +11,446 @@ http_interactions:
       content-type: application/json
       content-encoding: gzip
     body:
-      string: 0021588-260806074905277
-  recorded_at: 2026-08-18 06:47:48
+      string: 0007689-260928105237408
+  recorded_at: 2026-10-02 09:10:06
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:48.314+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":0}'
-  recorded_at: 2026-08-18 06:47:48
+      string: '{"key":"0007689-260928105237408","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:06.379+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":0}'
+  recorded_at: 2026-10-02 09:10:06
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:48.314+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":0}'
-  recorded_at: 2026-08-18 06:47:48
+      string: '{"key":"0007689-260928105237408","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:06.379+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":0}'
+  recorded_at: 2026-10-02 09:10:06
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:48.314+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":0}'
-  recorded_at: 2026-08-18 06:47:51
+      string: '{"key":"0007689-260928105237408","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:06.379+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":0}'
+  recorded_at: 2026-10-02 09:10:09
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:48.314+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":0}'
-  recorded_at: 2026-08-18 06:47:54
+      string: '{"key":"0007689-260928105237408","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:06.379+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":0}'
+  recorded_at: 2026-10-02 09:10:13
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":0}'
-  recorded_at: 2026-08-18 06:47:57
+      string: '{"key":"0007689-260928105237408","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":0}'
+  recorded_at: 2026-10-02 09:10:16
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":0}'
-  recorded_at: 2026-08-18 06:48:00
+      string: '{"key":"0007689-260928105237408","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":0}'
+  recorded_at: 2026-10-02 09:10:19
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":0}'
-  recorded_at: 2026-08-18 06:48:03
+      string: '{"key":"0007689-260928105237408","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":0}'
+  recorded_at: 2026-10-02 09:10:22
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":0}'
-  recorded_at: 2026-08-18 06:48:06
+      string: '{"key":"0007689-260928105237408","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":0}'
+  recorded_at: 2026-10-02 09:10:25
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":0}'
-  recorded_at: 2026-08-18 06:48:10
+      string: '{"key":"0007689-260928105237408","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":0}'
+  recorded_at: 2026-10-02 09:10:28
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":0}'
-  recorded_at: 2026-08-18 06:48:13
+      string: '{"key":"0007689-260928105237408","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":0}'
+  recorded_at: 2026-10-02 09:10:31
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":0}'
-  recorded_at: 2026-08-18 06:48:16
+      string: '{"key":"0007689-260928105237408","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":0}'
+  recorded_at: 2026-10-02 09:10:34
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":0}'
-  recorded_at: 2026-08-18 06:48:19
+      string: '{"key":"0007689-260928105237408","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":0}'
+  recorded_at: 2026-10-02 09:10:38
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":0}'
-  recorded_at: 2026-08-18 06:48:22
+      string: '{"key":"0007689-260928105237408","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":0}'
+  recorded_at: 2026-10-02 09:10:41
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":0}'
-  recorded_at: 2026-08-18 06:48:25
+      string: '{"key":"0007689-260928105237408","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":0}'
+  recorded_at: 2026-10-02 09:10:44
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":0}'
-  recorded_at: 2026-08-18 06:48:28
+      string: '{"key":"0007689-260928105237408","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":0}'
+  recorded_at: 2026-10-02 09:10:47
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":0}'
-  recorded_at: 2026-08-18 06:48:31
+      string: '{"key":"0007689-260928105237408","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":0}'
+  recorded_at: 2026-10-02 09:10:50
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":0}'
-  recorded_at: 2026-08-18 06:48:34
+      string: '{"key":"0007689-260928105237408","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":0}'
+  recorded_at: 2026-10-02 09:10:53
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":0}'
-  recorded_at: 2026-08-18 06:48:38
+      string: '{"key":"0007689-260928105237408","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":0}'
+  recorded_at: 2026-10-02 09:10:56
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":0}'
-  recorded_at: 2026-08-18 06:48:41
+      string: '{"key":"0007689-260928105237408","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":0}'
+  recorded_at: 2026-10-02 09:10:59
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":0}'
-  recorded_at: 2026-08-18 06:48:44
+      string: '{"key":"0007689-260928105237408","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":0}'
+  recorded_at: 2026-10-02 09:11:03
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":0}'
-  recorded_at: 2026-08-18 06:48:47
+      string: '{"key":"0007689-260928105237408","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":0}'
+  recorded_at: 2026-10-02 09:11:06
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":0}'
-  recorded_at: 2026-08-18 06:48:50
+      string: '{"key":"0007689-260928105237408","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":0}'
+  recorded_at: 2026-10-02 09:11:09
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":0}'
-  recorded_at: 2026-08-18 06:48:53
+      string: '{"key":"0007689-260928105237408","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":0}'
+  recorded_at: 2026-10-02 09:11:12
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":0}'
-  recorded_at: 2026-08-18 06:48:56
+      string: '{"key":"0007689-260928105237408","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":0}'
+  recorded_at: 2026-10-02 09:11:15
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":0}'
-  recorded_at: 2026-08-18 06:49:00
+      string: '{"key":"0007689-260928105237408","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":0}'
+  recorded_at: 2026-10-02 09:11:18
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":0}'
-  recorded_at: 2026-08-18 06:49:03
+      string: '{"key":"0007689-260928105237408","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":0}'
+  recorded_at: 2026-10-02 09:11:21
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":0}'
-  recorded_at: 2026-08-18 06:49:06
+      string: '{"key":"0007689-260928105237408","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":0}'
+  recorded_at: 2026-10-02 09:11:24
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":0}'
-  recorded_at: 2026-08-18 06:49:09
+      string: '{"key":"0007689-260928105237408","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":0}'
+  recorded_at: 2026-10-02 09:11:27
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":0}'
-  recorded_at: 2026-08-18 06:49:12
+      string: '{"key":"0007689-260928105237408","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":0}'
+  recorded_at: 2026-10-02 09:11:31
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":0}'
-  recorded_at: 2026-08-18 06:49:15
+      string: '{"key":"0007689-260928105237408","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":0}'
+  recorded_at: 2026-10-02 09:11:34
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":0}'
-  recorded_at: 2026-08-18 06:49:18
+      string: '{"key":"0007689-260928105237408","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":0}'
+  recorded_at: 2026-10-02 09:11:37
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":224}'
-  recorded_at: 2026-08-18 06:49:22
+      string: '{"key":"0007689-260928105237408","license":"unspecified","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":0}'
+  recorded_at: 2026-10-02 09:11:40
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":224}'
-  recorded_at: 2026-08-18 06:49:25
+      string: '{"key":"0007689-260928105237408","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":226}'
+  recorded_at: 2026-10-02 09:11:43
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":224}'
-  recorded_at: 2026-08-18 06:49:28
+      string: '{"key":"0007689-260928105237408","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":226}'
+  recorded_at: 2026-10-02 09:11:46
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":224}'
-  recorded_at: 2026-08-18 06:49:31
+      string: '{"key":"0007689-260928105237408","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":226}'
+  recorded_at: 2026-10-02 09:11:49
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":224}'
-  recorded_at: 2026-08-18 06:49:34
+      string: '{"key":"0007689-260928105237408","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":226}'
+  recorded_at: 2026-10-02 09:11:52
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":224}'
-  recorded_at: 2026-08-18 06:49:37
+      string: '{"key":"0007689-260928105237408","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":226}'
+  recorded_at: 2026-10-02 09:11:55
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":224}'
-  recorded_at: 2026-08-18 06:49:40
+      string: '{"key":"0007689-260928105237408","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":226}'
+  recorded_at: 2026-10-02 09:11:59
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:47:53.184+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":0,"totalRecords":26869,"numberDatasets":224}'
-  recorded_at: 2026-08-18 06:49:43
+      string: '{"key":"0007689-260928105237408","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:10:10.768+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"RUNNING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":0,"totalRecords":27665,"numberDatasets":226}'
+  recorded_at: 2026-10-02 09:12:02
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0021588-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007689-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0021588-260806074905277","doi":"10.15468/dl.mxwn69","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","matchCase":false,"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"],"matchCase":false},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975","matchCase":false}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-08-18T06:47:48.314+00:00","modified":"2026-08-18T06:49:40.696+00:00","eraseAfter":"2027-02-18T06:47:48.232+00:00","status":"SUCCEEDED","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0021588-260806074905277.zip","size":9212103,"totalRecords":26869,"numberDatasets":224}'
-  recorded_at: 2026-08-18 06:49:47
+      string: '{"key":"0007689-260928105237408","doi":"10.15468/dl.ggkd6f","license":"http://creativecommons.org/licenses/by-nc/4.0/legalcode","request":{"predicate":{"type":"and","predicates":[{"type":"equals","key":"TAXON_KEY","value":"3K5TS","checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},{"type":"in","key":"COUNTRY","values":["US","CA"]},{"type":"greaterThanOrEquals","key":"YEAR","value":"1975"}]},"sendNotification":false,"format":"DWCA","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"7ddf754f-d193-4cc9-b351-99906754a03b"},"created":"2026-10-02T09:10:06.379+00:00","modified":"2026-10-02T09:11:58.927+00:00","eraseAfter":"2027-04-02T09:10:06.012+00:00","status":"SUCCEEDED","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007689-260928105237408.zip","size":9453540,"totalRecords":27665,"numberDatasets":226}'
+  recorded_at: 2026-10-02 09:12:05
 recorded_with: VCR-vcr/2.0.0

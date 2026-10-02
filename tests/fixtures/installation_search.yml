@@ -8,17 +8,11 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":726,"results":[{"key":"5d6d68bd-a9e4-4353-87b1-aefb71fad819","organizationKey":"4a19e429-8f13-478e-86d7-93adb7534524","type":"IPT_INSTALLATION","title":"Wildlife
-        Institute of India","description":"Wildlife Institute of India (WII) is an
-        Autonomous Institution of Ministry of Environment and Forests, Government
-        of India. Established in 1982, WII is an internationally acclaimed Institution,
-        which offers training program, academic courses and advisory in wildlife research
-        and management. The Institute is actively engaged in research across the breadth
-        of the country on biodiversity related issues. The Institute''s idyllic campus
-        that has been carefully developed to create state of the art infrastructure
-        encourages scholarly work.","createdBy":"4a19e429-8f13-478e-86d7-93adb7534524","modifiedBy":"5d6d68bd-a9e4-4353-87b1-aefb71fad819","created":"2026-08-12T06:05:45.320+00:00","modified":"2026-08-12T06:14:55.843+00:00","disabled":false,"contacts":[{"key":7104904,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Dr.
-        Gautam Talukdar","position":[],"email":["wii@wii.gov.in"],"phone":[],"homepage":[],"address":[],"createdBy":"4a19e429-8f13-478e-86d7-93adb7534524","modifiedBy":"5d6d68bd-a9e4-4353-87b1-aefb71fad819","created":"2026-08-12T06:05:45.356+00:00","modified":"2026-08-12T06:14:55.865+00:00"}],"endpoints":[{"key":1312618,"type":"FEED","url":"http://ibif.gov.in:8080/ipt/rss.do","createdBy":"5d6d68bd-a9e4-4353-87b1-aefb71fad819","modifiedBy":"5d6d68bd-a9e4-4353-87b1-aefb71fad819","created":"2026-08-12T06:14:55.896+00:00","modified":"2026-08-12T06:14:55.896+00:00","machineTags":[]}],"machineTags":[],"tags":[],"identifiers":[],"comments":[]}]}'
-  recorded_at: 2026-08-13 12:20:54
+      string: '{"offset":0,"limit":1,"endOfRecords":false,"count":732,"results":[{"key":"a3c51b22-e3ff-4ddf-a82e-13f442763e86","organizationKey":"f8dbeca7-3131-41ab-872f-bfad71041f3f","type":"HTTP_INSTALLATION","title":"ServCat
+        U.S. Fish and Wildlife Service","description":"USFWS HTTP installation for
+        ServCat","createdBy":"estebangbif","modifiedBy":"estebangbif","created":"2026-09-30T13:47:49.996+00:00","modified":"2026-09-30T13:47:49.996+00:00","disabled":false,"contacts":[],"endpoints":[],"machineTags":[],"tags":[],"identifiers":[],"comments":[{"key":47441,"content":"2026-09-30
+        [EMH] Created HTTP installation by publisher request","createdBy":"estebangbif","modifiedBy":"estebangbif","created":"2026-09-30T13:48:25.533+00:00","modified":"2026-09-30T13:48:25.533+00:00"}]}]}'
+  recorded_at: 2026-10-01 08:09:43
 - request:
     method: GET
     uri: https://api.gbif.org/v1/installation?q=Estonia&limit=2
@@ -33,7 +27,7 @@ http_interactions:
         Adojaan","position":[],"email":["kristjan.adojaan@ut.ee"],"phone":[],"homepage":[],"address":[],"createdBy":"0870a77b-587c-4369-a8ed-bc3d347b8e1c","modifiedBy":"0870a77b-587c-4369-a8ed-bc3d347b8e1c","created":"2025-05-30T13:17:32.737+00:00","modified":"2025-05-30T13:17:32.737+00:00"}],"endpoints":[{"key":1111486,"type":"FEED","url":"https://cloud.gbif.org/ee/rss.do","createdBy":"0870a77b-587c-4369-a8ed-bc3d347b8e1c","modifiedBy":"0870a77b-587c-4369-a8ed-bc3d347b8e1c","created":"2025-05-30T13:17:32.755+00:00","modified":"2025-05-30T13:17:32.755+00:00","machineTags":[]}],"machineTags":[],"tags":[],"identifiers":[],"comments":[]},{"key":"60433990-f762-11e1-a439-00145eb45e9a","organizationKey":"70488160-b003-11d8-a8af-b8a03c50a862","type":"BIOCASE_INSTALLATION","title":"BioCASe
         Installation Geocollections of Estonia","description":"BioCASe Installation
         Geocollections of Estonia","createdBy":"registry-migration.gbif.org","modifiedBy":"registry-migration.gbif.org","created":"2012-09-05T14:02:49.000+00:00","modified":"2012-09-05T14:02:49.000+00:00","disabled":false,"contacts":[],"endpoints":[{"key":2684,"type":"BIOCASE","url":"http://sarv.gi.ee/biocase/pywrapper.cgi?dsa=tug","createdBy":"registry-migration.gbif.org","modifiedBy":"registry-migration.gbif.org","created":"2011-10-06T09:47:31.000+00:00","modified":"2011-10-06T09:47:31.000+00:00","machineTags":[]},{"key":2683,"type":"BIOCASE","url":"http://sarv.gi.ee/biocase/pywrapper.cgi?dsa=elm","createdBy":"registry-migration.gbif.org","modifiedBy":"registry-migration.gbif.org","created":"2011-10-06T08:49:33.000+00:00","modified":"2011-10-06T08:49:33.000+00:00","machineTags":[]},{"key":2682,"type":"BIOCASE","url":"http://sarv.gi.ee/biocase/pywrapper.cgi?dsa=git","createdBy":"registry-migration.gbif.org","modifiedBy":"registry-migration.gbif.org","created":"2011-10-06T08:49:21.000+00:00","modified":"2011-10-06T08:49:21.000+00:00","machineTags":[]}],"machineTags":[],"tags":[],"identifiers":[],"comments":[]}]}'
-  recorded_at: 2026-08-13 12:20:55
+  recorded_at: 2026-10-01 08:09:43
 - request:
     method: GET
     uri: https://api.gbif.org/v1/installation?type=IPT_INSTALLATION&limit=2
@@ -43,19 +37,15 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":390,"results":[{"key":"5d6d68bd-a9e4-4353-87b1-aefb71fad819","organizationKey":"4a19e429-8f13-478e-86d7-93adb7534524","type":"IPT_INSTALLATION","title":"Wildlife
-        Institute of India","description":"Wildlife Institute of India (WII) is an
-        Autonomous Institution of Ministry of Environment and Forests, Government
-        of India. Established in 1982, WII is an internationally acclaimed Institution,
-        which offers training program, academic courses and advisory in wildlife research
-        and management. The Institute is actively engaged in research across the breadth
-        of the country on biodiversity related issues. The Institute''s idyllic campus
-        that has been carefully developed to create state of the art infrastructure
-        encourages scholarly work.","createdBy":"4a19e429-8f13-478e-86d7-93adb7534524","modifiedBy":"5d6d68bd-a9e4-4353-87b1-aefb71fad819","created":"2026-08-12T06:05:45.320+00:00","modified":"2026-08-12T06:14:55.843+00:00","disabled":false,"contacts":[{"key":7104904,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Dr.
-        Gautam Talukdar","position":[],"email":["wii@wii.gov.in"],"phone":[],"homepage":[],"address":[],"createdBy":"4a19e429-8f13-478e-86d7-93adb7534524","modifiedBy":"5d6d68bd-a9e4-4353-87b1-aefb71fad819","created":"2026-08-12T06:05:45.356+00:00","modified":"2026-08-12T06:14:55.865+00:00"}],"endpoints":[{"key":1312618,"type":"FEED","url":"http://ibif.gov.in:8080/ipt/rss.do","createdBy":"5d6d68bd-a9e4-4353-87b1-aefb71fad819","modifiedBy":"5d6d68bd-a9e4-4353-87b1-aefb71fad819","created":"2026-08-12T06:14:55.896+00:00","modified":"2026-08-12T06:14:55.896+00:00","machineTags":[]}],"machineTags":[],"tags":[],"identifiers":[],"comments":[]},{"key":"db712293-014a-4553-a2bb-8b183acd0779","organizationKey":"b94c4428-77c1-47e0-a8c2-2b08228d8dd8","type":"IPT_INSTALLATION","title":"OBIS
-        Panama IPT","description":"IPT for OBIS Panama","createdBy":"b94c4428-77c1-47e0-a8c2-2b08228d8dd8","modifiedBy":"b94c4428-77c1-47e0-a8c2-2b08228d8dd8","created":"2026-07-28T16:00:40.036+00:00","modified":"2026-07-28T16:00:40.036+00:00","disabled":false,"contacts":[{"key":7092320,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Celeste
-        Valle","position":[],"email":["celeste.valle@up.ac.pa"],"phone":[],"homepage":[],"address":[],"createdBy":"b94c4428-77c1-47e0-a8c2-2b08228d8dd8","modifiedBy":"b94c4428-77c1-47e0-a8c2-2b08228d8dd8","created":"2026-07-28T16:00:40.057+00:00","modified":"2026-07-28T16:00:40.057+00:00"}],"endpoints":[{"key":1309419,"type":"FEED","url":"https://ipt.obis.org/panama/rss.do","createdBy":"b94c4428-77c1-47e0-a8c2-2b08228d8dd8","modifiedBy":"b94c4428-77c1-47e0-a8c2-2b08228d8dd8","created":"2026-07-28T16:00:40.070+00:00","modified":"2026-07-28T16:00:40.070+00:00","machineTags":[]}],"machineTags":[],"tags":[],"identifiers":[],"comments":[]}]}'
-  recorded_at: 2026-08-13 12:20:55
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":392,"results":[{"key":"3585dc96-2b1f-476d-86dc-c11807f4ce79","organizationKey":"95c2411e-2dfb-435b-977a-3a51173f8eab","type":"IPT_INSTALLATION","title":"Atlanta
+        Botanical Garden Department of Conservation and Research","description":"IPT
+        Installation for the Atlanta Botanical Garden''s Department of Conservation
+        and Research.","createdBy":"95c2411e-2dfb-435b-977a-3a51173f8eab","modifiedBy":"95c2411e-2dfb-435b-977a-3a51173f8eab","created":"2026-09-03T23:31:37.087+00:00","modified":"2026-09-03T23:31:37.087+00:00","disabled":false,"contacts":[{"key":7126315,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Jonathan
+        Gore","position":[],"email":["jgore@atlantabg.org"],"phone":[],"homepage":[],"address":[],"createdBy":"95c2411e-2dfb-435b-977a-3a51173f8eab","modifiedBy":"95c2411e-2dfb-435b-977a-3a51173f8eab","created":"2026-09-03T23:31:37.101+00:00","modified":"2026-09-03T23:31:37.101+00:00"}],"endpoints":[{"key":1317557,"type":"FEED","url":"https://ipt.atlantabg.org/rss.do","createdBy":"95c2411e-2dfb-435b-977a-3a51173f8eab","modifiedBy":"95c2411e-2dfb-435b-977a-3a51173f8eab","created":"2026-09-03T23:31:37.121+00:00","modified":"2026-09-03T23:31:37.121+00:00","machineTags":[]}],"machineTags":[],"tags":[],"identifiers":[],"comments":[]},{"key":"fbebe43f-3638-4fe2-90a7-62068e8d485f","organizationKey":"00df2a91-d1fa-40d5-9380-649d909a8fe8","type":"IPT_INSTALLATION","title":"GBIF
+        Mongolia","description":"This IPT is hosted by GBIF to publish datasets from
+        Mongolia.","createdBy":"00df2a91-d1fa-40d5-9380-649d909a8fe8","modifiedBy":"00df2a91-d1fa-40d5-9380-649d909a8fe8","created":"2026-08-19T09:10:33.335+00:00","modified":"2026-08-19T09:10:33.335+00:00","disabled":false,"contacts":[{"key":7111949,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Emujin
+        Zolboo","position":[],"email":["emujinz@mas.ac.mn"],"phone":[],"homepage":[],"address":[],"createdBy":"00df2a91-d1fa-40d5-9380-649d909a8fe8","modifiedBy":"00df2a91-d1fa-40d5-9380-649d909a8fe8","created":"2026-08-19T09:10:33.348+00:00","modified":"2026-08-19T09:10:33.348+00:00"}],"endpoints":[{"key":1313743,"type":"FEED","url":"https://ipt.gbif.mn/rss.do","createdBy":"00df2a91-d1fa-40d5-9380-649d909a8fe8","modifiedBy":"00df2a91-d1fa-40d5-9380-649d909a8fe8","created":"2026-08-19T09:10:33.368+00:00","modified":"2026-08-19T09:10:33.368+00:00","machineTags":[]}],"machineTags":[],"tags":[],"identifiers":[],"comments":[]}]}'
+  recorded_at: 2026-10-01 08:09:43
 - request:
     method: GET
     uri: https://api.gbif.org/v1/installation?modified=2023-04-01%2C%2A&limit=2
@@ -65,17 +55,11 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":214,"results":[{"key":"5d6d68bd-a9e4-4353-87b1-aefb71fad819","organizationKey":"4a19e429-8f13-478e-86d7-93adb7534524","type":"IPT_INSTALLATION","title":"Wildlife
-        Institute of India","description":"Wildlife Institute of India (WII) is an
-        Autonomous Institution of Ministry of Environment and Forests, Government
-        of India. Established in 1982, WII is an internationally acclaimed Institution,
-        which offers training program, academic courses and advisory in wildlife research
-        and management. The Institute is actively engaged in research across the breadth
-        of the country on biodiversity related issues. The Institute''s idyllic campus
-        that has been carefully developed to create state of the art infrastructure
-        encourages scholarly work.","createdBy":"4a19e429-8f13-478e-86d7-93adb7534524","modifiedBy":"5d6d68bd-a9e4-4353-87b1-aefb71fad819","created":"2026-08-12T06:05:45.320+00:00","modified":"2026-08-12T06:14:55.843+00:00","disabled":false,"contacts":[{"key":7104904,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Dr.
-        Gautam Talukdar","position":[],"email":["wii@wii.gov.in"],"phone":[],"homepage":[],"address":[],"createdBy":"4a19e429-8f13-478e-86d7-93adb7534524","modifiedBy":"5d6d68bd-a9e4-4353-87b1-aefb71fad819","created":"2026-08-12T06:05:45.356+00:00","modified":"2026-08-12T06:14:55.865+00:00"}],"endpoints":[{"key":1312618,"type":"FEED","url":"http://ibif.gov.in:8080/ipt/rss.do","createdBy":"5d6d68bd-a9e4-4353-87b1-aefb71fad819","modifiedBy":"5d6d68bd-a9e4-4353-87b1-aefb71fad819","created":"2026-08-12T06:14:55.896+00:00","modified":"2026-08-12T06:14:55.896+00:00","machineTags":[]}],"machineTags":[],"tags":[],"identifiers":[],"comments":[]},{"key":"db712293-014a-4553-a2bb-8b183acd0779","organizationKey":"b94c4428-77c1-47e0-a8c2-2b08228d8dd8","type":"IPT_INSTALLATION","title":"OBIS
-        Panama IPT","description":"IPT for OBIS Panama","createdBy":"b94c4428-77c1-47e0-a8c2-2b08228d8dd8","modifiedBy":"b94c4428-77c1-47e0-a8c2-2b08228d8dd8","created":"2026-07-28T16:00:40.036+00:00","modified":"2026-07-28T16:00:40.036+00:00","disabled":false,"contacts":[{"key":7092320,"type":"TECHNICAL_POINT_OF_CONTACT","primary":true,"userId":[],"firstName":"Celeste
-        Valle","position":[],"email":["celeste.valle@up.ac.pa"],"phone":[],"homepage":[],"address":[],"createdBy":"b94c4428-77c1-47e0-a8c2-2b08228d8dd8","modifiedBy":"b94c4428-77c1-47e0-a8c2-2b08228d8dd8","created":"2026-07-28T16:00:40.057+00:00","modified":"2026-07-28T16:00:40.057+00:00"}],"endpoints":[{"key":1309419,"type":"FEED","url":"https://ipt.obis.org/panama/rss.do","createdBy":"b94c4428-77c1-47e0-a8c2-2b08228d8dd8","modifiedBy":"b94c4428-77c1-47e0-a8c2-2b08228d8dd8","created":"2026-07-28T16:00:40.070+00:00","modified":"2026-07-28T16:00:40.070+00:00","machineTags":[]}],"machineTags":[],"tags":[],"identifiers":[],"comments":[]}]}'
-  recorded_at: 2026-08-13 12:20:55
+      string: '{"offset":0,"limit":2,"endOfRecords":false,"count":221,"results":[{"key":"a3c51b22-e3ff-4ddf-a82e-13f442763e86","organizationKey":"f8dbeca7-3131-41ab-872f-bfad71041f3f","type":"HTTP_INSTALLATION","title":"ServCat
+        U.S. Fish and Wildlife Service","description":"USFWS HTTP installation for
+        ServCat","createdBy":"estebangbif","modifiedBy":"estebangbif","created":"2026-09-30T13:47:49.996+00:00","modified":"2026-09-30T13:47:49.996+00:00","disabled":false,"contacts":[],"endpoints":[],"machineTags":[],"tags":[],"identifiers":[],"comments":[{"key":47441,"content":"2026-09-30
+        [EMH] Created HTTP installation by publisher request","createdBy":"estebangbif","modifiedBy":"estebangbif","created":"2026-09-30T13:48:25.533+00:00","modified":"2026-09-30T13:48:25.533+00:00"}]},{"key":"b6afb377-af41-4206-b134-c5a39cbee292","organizationKey":"0cfd8405-febc-49c0-89c7-6c9ab073f92b","type":"HTTP_INSTALLATION","title":"OBSEA
+        underwater observatory","description":"HTTP server publishing OBSEA Darwin
+        Core Archives","createdBy":"enoc.martinez","modifiedBy":"enoc.martinez","created":"2026-09-17T12:59:26.238+00:00","modified":"2026-09-17T12:59:26.238+00:00","disabled":false,"contacts":[],"endpoints":[],"machineTags":[],"tags":[],"identifiers":[],"comments":[]}]}'
+  recorded_at: 2026-10-01 08:09:43
 recorded_with: VCR-vcr/2.0.0

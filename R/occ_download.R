@@ -415,15 +415,8 @@ check_numeric_taxon_keys <- function(preds) {
     } else if (inherits(pred, "occ_predicate") || is.list(pred)) {
       # Check if this is a taxonomic key with numeric value
       if (!is.null(pred$key) && pred$key %in% taxonomic_keys_gbif) {
-        # Check if value is numeric
-        if (!is.null(pred$value) && all(suppressWarnings(!is.na(as.numeric(pred$value))))) {
+        if (isTRUE(attr(pred, "numeric_taxonomic_key"))) {
           numeric_keys <<- c(numeric_keys, pred$key)
-        }
-        # Also check values (for pred_in)
-        if (!is.null(pred$values)) {
-          if (all(suppressWarnings(!is.na(as.numeric(pred$values))))) {
-            numeric_keys <<- c(numeric_keys, pred$key)
-          }
         }
       }
     }
@@ -460,18 +453,8 @@ inject_backbone_into_predicates <- function(preds, backbone_uuid, col_xr_uuid) {
     # Check if this is a taxonomic key predicate with numeric value
     if (inherits(pred, "occ_predicate") || is.list(pred)) {
       if (!is.null(pred$key) && pred$key %in% taxonomic_keys_gbif) {
-        # Check if value is numeric
-        has_numeric <- FALSE
-        if (!is.null(pred$value) && all(suppressWarnings(!is.na(as.numeric(pred$value))))) {
-          has_numeric <- TRUE
-        }
-        # Also check values (for pred_in)
-        if (!is.null(pred$values) && all(suppressWarnings(!is.na(as.numeric(pred$values))))) {
-          has_numeric <- TRUE
-        }
-        
         # If numeric and checklistKey is NULL or COL XR default, inject backbone
-        if (has_numeric) {
+        if (isTRUE(attr(pred, "numeric_taxonomic_key"))) {
           if (is.null(pred$checklistKey) || identical(pred$checklistKey[[1]], col_xr_uuid)) {
             pred$checklistKey <- jsonlite::unbox(backbone_uuid)
           }

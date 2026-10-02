@@ -1,3 +1,4 @@
+# testthat::test_file("tests/testthat/test-dataset_uuid_funs.R")
 context("dataset_uuid_funs")
 
 test_that("dataset_uuid_funs work as expected", {
@@ -8,7 +9,7 @@ test_that("dataset_uuid_funs work as expected", {
   # c <- dataset_constituents("7ddf754f-d193-4cc9-b351-99906754a03b",limit=3)
   m <- dataset_comment("2e4cc37b-302e-4f1b-bbbb-1f674ff90e14")
   o <- dataset_contact("7ddf754f-d193-4cc9-b351-99906754a03b")
-  e <- dataset_endpoint("7ddf754f-d193-4cc9-b351-99906754a03b")
+  e <- dataset_endpoint("4fa7b334-ce0d-4e88-aaae-2e0c138d049e")
   i <- dataset_identifier("7ddf754f-d193-4cc9-b351-99906754a03b")
   t <- dataset_machinetag("7ddf754f-d193-4cc9-b351-99906754a03b")
   a <- dataset_tag("c47f13c1-7427-45a0-9f12-237aad351040")
