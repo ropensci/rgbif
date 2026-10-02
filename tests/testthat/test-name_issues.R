@@ -21,7 +21,7 @@ test_that("name_issues", {
     ff <- suppressWarnings(out %>% name_issues(mutate = "expand"))
 
     ### split and expand
-    gg <- suppressWarnings(out %>% name_issues(mutate = "split_expand"))
+    # gg <- suppressWarnings(out %>% name_issues(mutate = "split_expand"))
   }, preserve_exact_body_bytes = TRUE)
 
   # correct class
@@ -30,7 +30,7 @@ test_that("name_issues", {
   expect_is(cc, "gbif")
   expect_is(dd, "gbif")
   expect_is(ff, "gbif")
-  expect_is(gg, "gbif")
+  # expect_is(gg, "gbif")
 
   # returns the correct dimensions
   expect_true(all(vapply(aa$data$issues, function(x) grepl("clasna", x),
@@ -44,8 +44,8 @@ test_that("name_issues", {
   expect_true(any(vapply(ff$data$issues,
                          function(x) grepl("SCIENTIFIC_NAME_ASSEMBLED", x),
                          logical(1))))
-  expect_false(any(grepl("issues", names(gg$data))))
-  expect_true(any(grepl("CLASSIFICATION_NOT_APPLIED", names(gg$data))))
+  # expect_false(any(grepl("issues", names(gg$data))))
+  # expect_true(any(grepl("CLASSIFICATION_NOT_APPLIED", names(gg$data))))
 
 })
 

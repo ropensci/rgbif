@@ -11,18 +11,18 @@ http_interactions:
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJx9kV1rgzAYhf9Lrr1oPky0d8WFUth0U3s1SnAa27CYlKgXo/S/L6yjTaGU3LxwznPyfpyA
-        7ftRTmC
-        5iIBWg7pU0nRFX8rWum4Ey77Ro4xAa2fjZcwSTAnCmEXAyXHWk7d87iLQN638q0+g
-        V1J3YAnybfbKi3
-        rzwkXFP7Y8z7ioV+Wa12LNcw7+Qy+QaQbpmVJ92dEOjRZlvgLXbyGCcYwW
-        CJ2jq/Xd2UkqI1rbKbMXe
-        2nkDUAxTBJEYeB/U5NtD9Z0Tvn441OasBQimgZ0VmxCnfo9IBro
-        VbUV7r5nBtOEEfzAJGBSCTl/N+7H
-        TqoNGBovKCLhmJu6Ek7ulTWBjWDEcBo/jEaVGMJRbxhN
-        EUnvhjpo6+xRN+P0fCGYUkrYfVcw2Ic/D0z
-        OO/9+AZfvvLk=
-  recorded_at: 2026-08-19 07:16:32
+        eJx9UE9rwyAc/S6ec4jGqOmtdFICW7Il6WkUyRLTyowWkx5G6XefrKO1UIqXH7x/vncCdhgm
+        OYNFHAG
+        tRnW5pOnLoZKddf0EFkOrJxmBzh6NhxMG44RQnNIIODkd9ewpn9sIDG0n/+4TGJTU
+        PViAYrN65WWTv3
+        BR848NL1ZcNMtqzRux5gUH/6YXkWlH6TWV+rKTHVstqmIJrrEQZgzRlLBz
+        dKW+OztLZURne2V2YieNv
+        AlQipKMsTjgv6nZdntreqe8/eGpGjOMGAvTVmUe4hRllGQBXtcb
+        4e7/jBmjaUYCUt7UwsmdsiakpTDG
+        ED7wEpDVQh6/W/djZ9WFmphCgh7lC4hqMYZVbzKS+Vlw
+        WGqvrbMH3U7z80ESQgim901gsAfyZfF5698
+        vs7W81A==
+  recorded_at: 2026-10-01 08:14:23
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&checklistKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c&facet=nucleotideSequence.targetGene&facetLimit=5&taxonKey=212
@@ -35,15 +35,15 @@ http_interactions:
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJx9jctqwzAQRf9l1lqkUpzY3gVXhEBrt36sShCuNEoFslQkZxXy7xVNSd1Nmc2Fe86dC3it
-        I85Qrgh
-        YM5lbQqca3aL0QUUo9WgjEpD+7FJNWUZpRlnBCASMZzsn5O1IQI8Sv/MFtEGroIR6
-        qJ540x8euej468
-        Driot+1+55L/a85vAzepPcOGFyXoKf0TghvTLuJE7oEO7PNznN11dyh5/N
-        7OWHdyqY0YrP/9UVyxZq1
-        RwWJaWMLsrWvPvop7TZ1rtf7GFb0HyBdd0gwl9iU2zX12O6L8iL
-        bx4=
-  recorded_at: 2026-08-19 07:16:34
+        eJx9jctuwjAQRf9l1l6AAzHJDgULIUHS5rGqkJXaY2rJsSs7rBD/3qhUNN1Us7nSPefODbzW
+        EUfIFwS
+        sGcwjoVOVrlH6oCLkurcRCUh/dVNNk/WGLRcsYwQCxqsdJ+TtTED3Er/zDbRBqyCH
+        siuOvGoPOy4a/t
+        rxsuCi3dZ73oo9Lzn8jD4k1w84OS/Bj2ickF4ZdxEXdAjP5+lmxdZ38oRP
+        ZvTywzsVTG/F5/8qpelML
+        arDrKQrmszK2rz76Idpsy63v9iSZZTNsKbpRPhLpBlL7ufpvgDZ
+        7G8v
+  recorded_at: 2026-10-01 08:14:26
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&facet=nucleotideSequence.targetGene&facetLimit=&nucleotideSequence.invalid=FALSE
@@ -56,16 +56,16 @@ http_interactions:
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJx9kc1qwzAQhN9FZx8k6ydObsEVIdA6re2cShGuLSeisjbIzqGEvHtFUxoFQtBlYeebnV2d
-        EPT9qCe
-        0wAmyZjCXSrtu05e6Bd+NaNE3dtQJauHoQpswITDJUpYgr8ejnYLi/SNBfdPq3/qE
-        eqNthxao2ObPcl
-        Ovn6Sq5NtWFrlU9bJcyVqtZCHRn+cFcs2gA1OaTxhhaKwqiyW6Tk2xoHPO
-        6Tn5l756mLRxqoXOuJ3aa
-        aevQMoJTwXjkf7FTNDuwXXeBPvDQ5rNOBc30/LNOu4LRqnAUb+q
-        tsrfZp5hnlHK74gUySqlj1+N/4bJ
-        tBEjGKZCxMy6rpTXOwMukjGK50Rkd63TSg3xqldM8PB5
-        MZTvLXg42GacHh8kZBJsdpuKRPdICSfZ+SO
-        8HwCGvHA=
-  recorded_at: 2026-08-19 07:16:36
+        eJx9kF9rgzAUxb9Lnn0wMcbYt+JCKWx2U/s0RnAa27CYW6J9GKXffWEdawql3JcL5/zO/XNC
+        MAyTmtE
+        ijpDRo750yvaboVIduH5Ci6E1k4pQB0frZUxpzhOWsQg5NR3N7B3vHxEa2k799ic0
+        aGV6tEDltngWm2
+        b9JGQt3raiLIRsltVKNHIlSoH+Mi+QbUflmUp/wgRja2RVLtF1KuY5TuOc
+        n6N/66uDWWkrO+i13cmds
+        uoKkJTElDAa+F/0DN0ebO+0jz88pCmPM5KRgC4261BnubckgV7X
+        W+lud6YZzTAPV143tXRqp8Gim4cS
+        zO9lScxrqY5frfuGWXcBk+Qsj1NylyG1HMNTrxhL/d7h
+        oGJvwMHBtNP8+CEJY4xmt5fg4B8EU07PH75
+        +ABskvJI=
+  recorded_at: 2026-10-01 08:14:32
 recorded_with: VCR-vcr/2.0.0

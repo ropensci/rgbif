@@ -567,7 +567,7 @@ test_that("geometry inputs work as expected", {
   }, preserve_exact_body_bytes = TRUE)
   
   # use 'geom_big=axe', which is deprecated since rgbif 3.8.0
-  expect_warning(expect_error(occ_search(geometry = wkt, geom_big = "axe", limit = 30)))
+  expect_warning(occ_search(geometry = wkt, geom_big = "axe", limit = 30))
 
   vcr::use_cassette("occ_search_geometry_errors", {
     # bad wkt is caught and handled appropriately

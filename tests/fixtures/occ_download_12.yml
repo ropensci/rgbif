@@ -11,17 +11,17 @@ http_interactions:
       content-type: application/json
       content-encoding: gzip
     body:
-      string: 0024328-260806074905277
-  recorded_at: 2026-08-19 12:06:36
+      string: 0007523-260928105237408
+  recorded_at: 2026-10-02 07:08:41
 - request:
     method: GET
-    uri: https://api.gbif.org/v1/occurrence/download/0024328-260806074905277
+    uri: https://api.gbif.org/v1/occurrence/download/0007523-260928105237408
   response:
     status: 200
     headers:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"key":"0024328-260806074905277","license":"unspecified","request":{"predicate":{"type":"equals","key":"TAXON_KEY","value":"2431950","matchCase":false,"checklistKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"},"sendNotification":false,"format":"SIMPLE_CSV","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"},"created":"2026-08-19T12:06:36.431+00:00","modified":"2026-08-19T12:06:36.431+00:00","eraseAfter":"2027-02-19T12:06:36.319+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0024328-260806074905277.zip","size":0,"totalRecords":973,"numberDatasets":0}'
-  recorded_at: 2026-08-19 12:06:36
+      string: '{"key":"0007523-260928105237408","license":"unspecified","request":{"predicate":{"type":"equals","key":"TAXON_KEY","value":"2431950","checklistKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"},"sendNotification":false,"format":"SIMPLE_CSV","type":"OCCURRENCE","verbatimExtensions":[],"interpretedExtensions":[],"checklistKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"},"created":"2026-10-02T07:08:41.453+00:00","modified":"2026-10-02T07:08:41.453+00:00","eraseAfter":"2027-04-02T07:08:41.407+00:00","status":"PREPARING","downloadLink":"https://api.gbif.org/v1/occurrence/download/request/0007523-260928105237408.zip","size":0,"totalRecords":1007,"numberDatasets":0}'
+  recorded_at: 2026-10-02 07:08:41
 recorded_with: VCR-vcr/2.0.0

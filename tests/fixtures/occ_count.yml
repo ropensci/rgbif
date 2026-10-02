@@ -11,10 +11,10 @@ http_interactions:
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSxuYWxuYG
-        JibGhjp
-        KRanFpTklQCXRsTpKaYnJqRB2LQDLPhvB
-  recorded_at: 2026-08-19 07:16:08
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSxhaGBsZm
+        5iam5jp
+        KRanFpTklQCXRsTpKaYnJqRB2LQDLfhvF
+  recorded_at: 2026-10-01 08:14:12
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&checklistKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c&facetLimit=&year=2000%2C2011&taxonKey=212
@@ -27,10 +27,10 @@ http_interactions:
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSRsYWlgam
-        BkZGOkp
-        FqcWlOSVAFdGxOkppicmpEHYtALJXG4g=
-  recorded_at: 2026-08-19 07:16:09
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSRsaWxpYG
+        5kbGOkp
+        FqcWlOSVAFdGxOkppicmpEHYtALMfG48=
+  recorded_at: 2026-10-01 08:14:12
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&facetLimit=&year=2012
@@ -43,10 +43,10 @@ http_interactions:
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSFsYmJsbm
-        lkBVRan
-        FpTklQAXRsTpKaYnJqRB2LQCbjxtf
-  recorded_at: 2026-08-19 07:16:10
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSFiaGBuaW
+        FiY6SkW
+        pxaU5JUAF0bE6SmmJyakQdi0Am9YbYg==
+  recorded_at: 2026-10-01 08:14:13
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=ABSENT&limit=0&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&facetLimit=
@@ -59,10 +59,10 @@ http_interactions:
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DShkZmRqYG
-        hpYmOkp
-        FqcWlOSVAFdGxOkppicmpEHYtALIMG4c=
-  recorded_at: 2026-08-19 07:16:10
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DShkaWxgaG
+        RkaGOkp
+        FqcWlOSVAFdGxOkppicmpEHYtALEaG34=
+  recorded_at: 2026-10-01 08:14:13
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&facetLimit=&organismQuantity=5&basisOfRecord=MATERIAL_SAMPLE
@@ -75,10 +75,10 @@ http_interactions:
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSZqaW5pYm
-        5jpKRan
-        FpTklQPnoWB2ltMTkVAi7FgCFMBs4
-  recorded_at: 2026-08-19 07:16:11
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSZuZmBmam
+        QEVFqcW
+        lOSVA+ehYHaW0xORUCLsWAINJGyc=
+  recorded_at: 2026-10-01 08:14:13
 - request:
     method: GET
     uri: https://api.gbif.org/v1/occurrence/search?occurrenceStatus=PRESENT&limit=0&offset=0&checklistKey=7ddf754f-d193-4cc9-b351-99906754a03b&facetLimit=&verbatimScientificName=Calopteryx+splendens
@@ -91,8 +91,8 @@ http_interactions:
       x-varnish-rlg: '250'
     body:
       raw_gzip: |-
-        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSJqYGZham
+        eJyrVspPSytOLVGyMtBRysnMzYSwUvNS/NOCUpPzi1KKlazSEnOKU3WUkvNL84DSJqZGpgZm
         OkpFqcW
-        lOSVA6ehYHaW0xORUCLsWAGu/GvU=
-  recorded_at: 2026-08-19 07:16:11
+        lOSVA6ehYHaW0xORUCLsWAGsZGu8=
+  recorded_at: 2026-10-01 08:14:13
 recorded_with: VCR-vcr/2.0.0

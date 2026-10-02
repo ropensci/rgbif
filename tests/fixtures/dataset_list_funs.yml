@@ -8,7 +8,7 @@ http_interactions:
       status: HTTP/1.1 200 OK
       content-type: application/json
     body:
-      string: '{"offset":0,"limit":3,"endOfRecords":false,"count":17,"results":[{"key":"6a0b482c-1f32-419d-a36d-a1aa4b4bdd6e","installationKey":"7ce8aef1-9e92-11dc-8740-b8a03c50a999","publishingOrganizationKey":"ac084e47-e95d-4e30-ab94-115d4dec59b2","networkKeys":[],"doi":"10.15468/ncvcu7","external":false,"numConstituents":0,"type":"CHECKLIST","title":"Uncovering
+      string: '{"offset":0,"limit":3,"endOfRecords":false,"count":18,"results":[{"key":"6a0b482c-1f32-419d-a36d-a1aa4b4bdd6e","installationKey":"7ce8aef1-9e92-11dc-8740-b8a03c50a999","publishingOrganizationKey":"ac084e47-e95d-4e30-ab94-115d4dec59b2","networkKeys":[],"doi":"10.15468/ncvcu7","external":false,"numConstituents":0,"type":"CHECKLIST","title":"Uncovering
         hidden diversity of Panorpidae (Insecta, Mecoptera) in the Himalayas and adjacent
         regions: New taxa and distributional records","language":"eng","citation":{"text":"Deutsche
         Entomologische Zeitschrift: Uncovering hidden diversity of Panorpidae (Insecta,
@@ -23,5 +23,5 @@ http_interactions:
         Entomologische Zeitschrift: Uncovering hidden diversity of Panorpidae (Insecta,
         Mecoptera) in the Himalayas and adjacent regions: New taxa and distributional
         records","citationProvidedBySource":false},"contactsCitation":[],"lockedForAutoUpdate":false,"createdBy":"plazi","modifiedBy":"plazi","created":"2026-06-10T18:39:20.727+00:00","modified":"2026-06-10T18:39:20.727+00:00","contacts":[],"endpoints":[],"machineTags":[],"tags":[],"identifiers":[],"comments":[],"bibliographicCitations":[],"curatorialUnits":[],"taxonomicCoverages":[],"geographicCoverages":[],"temporalCoverages":[],"keywordCollections":[],"countryCoverage":[],"collections":[],"dataDescriptions":[],"license":"http://creativecommons.org/publicdomain/zero/1.0/legalcode"}]}'
-  recorded_at: 2026-08-19 06:20:47
+  recorded_at: 2026-10-01 08:08:53
 recorded_with: VCR-vcr/2.0.0
