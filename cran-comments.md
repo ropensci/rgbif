@@ -12,14 +12,18 @@
 
 ## Reverse dependencies
 
-I have run R CMD check on 22 reverse dependencies (summary below).
-Reverse dependency check results: <https://github.com/ropensci/rgbif/actions/runs/32135299024>
+I have run R CMD check on 26 reverse dependencies, comparing the CRAN and
+development versions of rgbif. Results:
+<https://github.com/ropensci/rgbif/actions/runs/37003298289>
 
-* 21 packages: OK
-* 1 package with new issues: occCite (0.6.2)
-
-The occCite package has test failures due to changes in rgbif's data structure. I have contacted the 
-maintainer (Hannah Owens, hannah.owens@gmail.com) via email.
+* One package has a new test failure: intSDM (2.1.2). The failure is in
+  `test-species_model.R:317`, where intSDM's `workflow$biasFields()` test
+  encounters an error about a dataset not being included in the workflow.
+  This appears unrelated to changes in rgbif.
+* Six package checks timed out with both the CRAN and development versions:
+  caretSDM, geoflow, intSDM, RuHere, taxify, and tidysdm.
+* geoflow also reports an unused Imports NOTE for `lwgeom` and `smoothr` in
+  both versions.
 
 ## Breaking changes
 
