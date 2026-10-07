@@ -32,14 +32,41 @@ Additionally:
 
 ### NEW FEATURE
 
-`gbif_to_col()` - Convert GBIF Backbone numeric taxon keys to COL Extended Release alpha-numeric keys. Returns the full API response including usage details, classification hierarchy, and match diagnostics. 
+New functions for improved API coverage:
+
+* `gbif_to_col()` - Convert GBIF Backbone numeric taxon keys to COL Extended Release alpha-numeric keys. Returns the full API response including usage details, classification hierarchy, and match diagnostics. 
+* `occ_term()` - Get occurrence term definitions from GBIF API (#857)
+* `occ_download_countries()` - Get country breakdown for occurrence downloads (#876)
+* `occ_download_user_count()` - Count downloads by user with optional status and date filtering (#875)
+* `occ_download_organizations()` - Get organization breakdown for occurrence downloads (#877)
 
 ### MINOR IMPROVEMENTS
 
 * `occ_search()` now returns `classifications` as a named list of tibbles, with one tibble per checklistKey (taxonomy source). Each tibble contains one row per occurrence with taxonomic ranks pivoted into camelCase columns (checklistKey, kingdomName, kingdomKey, phylumName, phylumKey, className, classKey, etc.). This structure makes it easy to work with occurrences from different taxonomies separately while keeping the checklistKey information with the data. Known checklists (COL, backbone) are shown with friendly names, while unknown checklists use their UUID.  
 * `occ_search()` now detects numeric taxonomic keys (taxonKey, speciesKey, kingdomKey, etc.) and automatically switches to the GBIF Backbone taxonomy checklistKey with a warning message. These numeric keys are legacy identifiers from the GBIF Backbone taxonomy. Users are advised to migrate to COL XR identifiers using `gbif_to_col()`.
 * `occ_download()` and `occ_download_prep()` now detect numeric taxonomic keys in predicates and automatically inject the GBIF Backbone checklistKey at the predicate level with a warning message. This ensures existing code using numeric keys continues to work correctly.
+* `occ_download()` and `occ_download_prep()` now support `checklistKey` parameter at both the root level (as a top-level argument) and within predicates using `pred()`. This allows users to specify which taxonomy source to use for occurrence downloads (#841).
 * `name_usage()` now warns when `datasetKey` parameter is ignored. When a `key` is provided, the GBIF API ignores the `datasetKey` parameter and returns data based solely on the key. A warning is now issued to alert users of this behavior (#899).
+
+### API COVERAGE IMPROVEMENTS
+
+Added missing parameters to improve GBIF API coverage:
+
+* `dataset_search()`, `dataset_export()`, and `dataset_suggest()` - Added `category` parameter (#845)
+* `dataset_search()` - Added `continent`, `taxonKey`, `recordCount`, `modifiedDate`, `createdDate`, `contactUserId`, `contactEmail` parameters (#859)
+* `dataset_export()` - Added missing parameters for complete API coverage (#862)
+* `dataset_suggest()` - Added missing parameters (#870)
+* `occ_search()` and `occ_count()` - Added nucleotide sequence filtering parameters: `isSequenced`, `isInCluster`, `hasSequenceLink`, `sequenceLength`, `gcContent`, `targetGene` (#851)
+* `institution_search()` - Added missing filter parameters (#882)
+* `collection_search()` - Added missing API filters (#884)
+* `collection_export()` - Added missing parameters and fixed dataset_export CI test stability (#889)
+* `institution_export()` - Added missing parameters (#891)
+* `organizations()` - Added missing API parameters: `isEndorsed`, `networkKey`, `machineTagNamespace`, `machineTagName`, `machineTagValue`, `identifierType`, `identifier`, `modified`, `created` (#894)
+
+### BUG FIXES
+
+* Fixed ORCID and ROR syntax in DESCRIPTION file (#897)
+* Replaced deleted taxon key (3119195) with valid key (5231190) in test fixtures (#843)
 
 rgbif 3.8.5
 ===========

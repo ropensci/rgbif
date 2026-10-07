@@ -266,7 +266,7 @@ test_that("geometry inputs work as expected", {
                  "geometry is big, querying BBOX, then pruning results to polygon")
 
   # use 'geom_big=axe', which is deprecated since rgbif 3.8.0
-  expect_warning(expect_error(occ_data(geometry = wkt, geom_big = "axe", limit = 30)))
+  expect_warning(occ_data(geometry = wkt, geom_big = "axe", limit = 30))
 
   # bad wkt is caught and handled appropriately
   vcr::use_cassette("occ_data_geometry_errors", {

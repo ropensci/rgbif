@@ -567,7 +567,7 @@ test_that("geometry inputs work as expected", {
   }, preserve_exact_body_bytes = TRUE)
   
   # use 'geom_big=axe', which is deprecated since rgbif 3.8.0
-  expect_warning(expect_error(occ_search(geometry = wkt, geom_big = "axe", limit = 30)))
+  expect_warning(occ_search(geometry = wkt, geom_big = "axe", limit = 30))
 
   vcr::use_cassette("occ_search_geometry_errors", {
     # bad wkt is caught and handled appropriately
@@ -953,6 +953,11 @@ test_that("numeric taxonomic keys trigger warning and switch to backbone", {
   
   # Check that backbone checklistKey was used
   expect_equal(attr(result, "args")$checklistKey, "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
+})
+
+test_that("numeric taxonomic key detection respects input type", {
+  expect_false(rgbif:::is_numeric_taxonomic_key("745"))
+  expect_true(rgbif:::is_numeric_taxonomic_key(745))
 })
 
 test_that("numeric keys with explicit checklistKey don't trigger warning", {

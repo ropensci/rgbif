@@ -76,6 +76,6 @@ sapply(results, function(x) x$usage$name) # Extract all names
 }
 }
 \references{
-\url{https://techdocs.gbif.org/en/openapi/v2/species}
+\url{https://techdocs.gbif.org/en/openapi/v1/species}
 }
 \concept{name}
