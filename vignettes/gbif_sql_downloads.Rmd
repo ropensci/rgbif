@@ -55,6 +55,31 @@ If you need **all** occurrence columns, you can use the regular [download interf
 
 To get a list of all +400 columns and definitions in the **occurrence** table, you can use `occ_download_describe("sql")$fields`.
 
+## Taxonomy and taxon keys
+
+GBIF SQL downloads use the Catalogue of Life Extended Release (COL XR) as the default taxonomy, including for taxonomic key columns such as `specieskey`. COL XR taxon keys are alpha-numeric. If an existing SQL query uses numeric GBIF Backbone keys, update the keys to COL XR keys or explicitly use the GBIF Backbone classification fields.
+
+To continue using the legacy GBIF Backbone taxonomy, qualify each taxonomy field with `occurrence.gbif_classification`:
+
+``` r
+sql <-
+"
+SELECT
+  occurrence.gbif_classification.familykey AS familykey,
+  occurrence.gbif_classification.family AS family,
+  COUNT(DISTINCT occurrence.gbif_classification.specieskey) AS species_count
+FROM occurrence
+WHERE occurrence.gbif_classification.classkey = '212'
+  AND occurrence.gbif_classification.familykey IS NOT NULL
+  AND occurrence.gbif_classification.specieskey IS NOT NULL
+GROUP BY
+  occurrence.gbif_classification.familykey,
+  occurrence.gbif_classification.family
+ORDER BY species_count DESC
+"
+occ_download_sql(sql)
+```
+
 ## SQL examples - Multi-dimension Counts
 
 One common query that is difficult to do with the traditional downloads interface is to get a occurrence counts of species by multiple dimensions. This query gets a table with **countries and species with the most occurrences published to GBIF** without having to download a large table and do the aggregation locally.
