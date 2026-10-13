@@ -3,7 +3,7 @@
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![cran checks](https://badges.cranchecks.info/worst/rgbif.svg)](https://cran.r-project.org/web/checks/check_results_rgbif.html)
 [![R-CMD-check](https://github.com/ropensci/rgbif/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/rgbif/actions?query=workflow%3AR-CMD-check)
-[![real-requests](https://github.com/ropensci/rgbif/workflows/R-check-real-requests/badge.svg)](https://github.com/ropensci/rgbif/actions?query=workflow%3AR-check-real-requests)
+[![real-requests](https://github.com/ropensci/rgbif/actions/workflows/check-cron.yml/badge.svg)](https://github.com/ropensci/rgbif/actions?query=workflow%3AR-check-real-requests)
 [![codecov.io](https://codecov.io/github/ropensci/rgbif/coverage.svg?branch=master)](https://codecov.io/github/ropensci/rgbif?branch=master)
 [![rstudio mirror downloads](https://cranlogs.r-pkg.org/badges/rgbif)](https://github.com/r-hub/cranlogs.app)
 [![cran version](https://www.r-pkg.org/badges/version/rgbif)](https://cran.r-project.org/package=rgbif)
