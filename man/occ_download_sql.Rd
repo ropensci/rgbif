@@ -66,7 +66,7 @@ Please see the article here for more information:
 \examples{
 \dontrun{
 occ_download_sql("SELECT gbifid,countryCode FROM occurrence 
-                  WHERE genusKey = 2435098")
+                  WHERE genusKey = '9WLSS'")
 }
 
 }

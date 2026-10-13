@@ -27,7 +27,7 @@
 #'
 #' @examples \dontrun{
 #' occ_download_sql("SELECT gbifid,countryCode FROM occurrence 
-#'                   WHERE genusKey = 2435098")
+#'                   WHERE genusKey = '9WLSS'")
 #' }
 #' 
 occ_download_sql <- function(q = NULL, 
