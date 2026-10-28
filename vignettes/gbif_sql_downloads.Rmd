@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 The experimental **Occurrence SQL Download API** allows users to query GBIF occurrences using SQL. In contrast to the [Predicate Download API](https://techdocs.gbif.org/en/data-use/api-sql-downloads), the SQL API allows selection of the columns of interest and generation of summary views of GBIF data.
 
-SQL downloads, like regular downloads, required you to set up your **GBIF credentials**. I suggest that you follow this [short tutorial](https://docs.ropensci.org/rgbif/articles/gbif_credentials.html) before continuing. For the time being, SQL downloads are only available for preview by invited users. Contact **helpdesk\@gbif.org** to request access.
+SQL downloads, like regular downloads, require you to set up your **GBIF credentials**. I suggest that you follow this [short tutorial](https://docs.ropensci.org/rgbif/articles/gbif_credentials.html) before continuing.
 
 ``` r
 # test if your download is set up correctly 
