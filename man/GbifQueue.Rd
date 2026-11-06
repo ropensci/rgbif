@@ -42,179 +42,195 @@ out$reqs
 }
 \keyword{internal}
 \section{Public fields}{
-\if{html}{\out{<div class="r6-fields">}}
-\describe{
-\item{\code{reqs}}{(list) a named list of objects of class \code{\link[=occ_download]{occ_download()}}}
+  \if{html}{\out{<div class="r6-fields">}}
+  \describe{
+    \item{\code{reqs}}{(list) a named list of objects of class \code{\link[=occ_download]{occ_download()}}}
 
-\item{\code{queue}}{(list) holds the queued jobs}
-}
-\if{html}{\out{</div>}}
+    \item{\code{queue}}{(list) holds the queued jobs}
+  }
+  \if{html}{\out{</div>}}
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-GbifQueue-print}{\code{GbifQueue$print()}}
-\item \href{#method-GbifQueue-new}{\code{GbifQueue$new()}}
-\item \href{#method-GbifQueue-add}{\code{GbifQueue$add()}}
-\item \href{#method-GbifQueue-add_all}{\code{GbifQueue$add_all()}}
-\item \href{#method-GbifQueue-remove}{\code{GbifQueue$remove()}}
-\item \href{#method-GbifQueue-next_}{\code{GbifQueue$next_()}}
-\item \href{#method-GbifQueue-last_}{\code{GbifQueue$last_()}}
-\item \href{#method-GbifQueue-jobs}{\code{GbifQueue$jobs()}}
-\item \href{#method-GbifQueue-clone}{\code{GbifQueue$clone()}}
-}
+  \itemize{
+    \item \href{#method-GbifQueue-print}{\code{GbifQueue$print()}}
+    \item \href{#method-GbifQueue-initialize}{\code{GbifQueue$new()}}
+    \item \href{#method-GbifQueue-add}{\code{GbifQueue$add()}}
+    \item \href{#method-GbifQueue-add_all}{\code{GbifQueue$add_all()}}
+    \item \href{#method-GbifQueue-remove}{\code{GbifQueue$remove()}}
+    \item \href{#method-GbifQueue-next_}{\code{GbifQueue$next_()}}
+    \item \href{#method-GbifQueue-last_}{\code{GbifQueue$last_()}}
+    \item \href{#method-GbifQueue-jobs}{\code{GbifQueue$jobs()}}
+    \item \href{#method-GbifQueue-clone}{\code{GbifQueue$clone()}}
+  }
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-GbifQueue-print"></a>}}
 \if{latex}{\out{\hypertarget{method-GbifQueue-print}{}}}
-\subsection{Method \code{print()}}{
-print method for the \code{GbifQueue} class
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{GbifQueue$print(x, ...)}\if{html}{\out{</div>}}
+\subsection{\code{GbifQueue$print()}}{
+  print method for the \code{GbifQueue} class
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{GbifQueue$print(x, ...)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{x}}{self}
+      \item{\code{...}}{ignored}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{x}}{self}
-
-\item{\code{...}}{ignored}
-}
-\if{html}{\out{</div>}}
-}
-}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-GbifQueue-new"></a>}}
-\if{latex}{\out{\hypertarget{method-GbifQueue-new}{}}}
-\subsection{Method \code{new()}}{
-Create a new \code{GbifQueue} object
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{GbifQueue$new(..., .list = list())}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{...}}{any number of \code{\link[=occ_download]{occ_download()}} requests}
-
-\item{\code{.list}}{any number of \code{\link[=occ_download]{occ_download()}} requests as \code{lazy}
+\if{html}{\out{<a id="method-GbifQueue-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-GbifQueue-initialize}{}}}
+\subsection{\code{GbifQueue$new()}}{
+  Create a new \code{GbifQueue} object
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{GbifQueue$new(..., .list = list())}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{...}}{any number of \code{\link[=occ_download]{occ_download()}} requests}
+      \item{\code{.list}}{any number of \code{\link[=occ_download]{occ_download()}} requests as \code{lazy}
 objects, called with e.g., \code{lazyeval::lazy()}}
+    }
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    A new \code{GbifQueue} object
+  }
 }
-\if{html}{\out{</div>}}
-}
-\subsection{Returns}{
-A new \code{GbifQueue} object
-}
-}
+
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-GbifQueue-add"></a>}}
 \if{latex}{\out{\hypertarget{method-GbifQueue-add}{}}}
-\subsection{Method \code{add()}}{
-Add single jobs to the queue
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{GbifQueue$add(x)}\if{html}{\out{</div>}}
+\subsection{\code{GbifQueue$add()}}{
+  Add single jobs to the queue
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{GbifQueue$add(x)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{x}}{an \code{\link[=occ_download]{occ_download()}} object}
+    }
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    nothing returned; adds job (\code{x}) to the queue
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{x}}{an \code{\link[=occ_download]{occ_download()}} object}
-}
-\if{html}{\out{</div>}}
-}
-\subsection{Returns}{
-nothing returned; adds job (\code{x}) to the queue
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-GbifQueue-add_all"></a>}}
 \if{latex}{\out{\hypertarget{method-GbifQueue-add_all}{}}}
-\subsection{Method \code{add_all()}}{
-Add all jobs to the queue
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{GbifQueue$add_all()}\if{html}{\out{</div>}}
+\subsection{\code{GbifQueue$add_all()}}{
+  Add all jobs to the queue
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{GbifQueue$add_all()}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    nothing returned
+  }
 }
 
-\subsection{Returns}{
-nothing returned
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-GbifQueue-remove"></a>}}
 \if{latex}{\out{\hypertarget{method-GbifQueue-remove}{}}}
-\subsection{Method \code{remove()}}{
-Remove a job from the queue
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{GbifQueue$remove(x)}\if{html}{\out{</div>}}
+\subsection{\code{GbifQueue$remove()}}{
+  Remove a job from the queue
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{GbifQueue$remove(x)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{x}}{an \code{\link[=occ_download]{occ_download()}} object}
+    }
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    nothing returned
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{x}}{an \code{\link[=occ_download]{occ_download()}} object}
-}
-\if{html}{\out{</div>}}
-}
-\subsection{Returns}{
-nothing returned
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-GbifQueue-next_"></a>}}
 \if{latex}{\out{\hypertarget{method-GbifQueue-next_}{}}}
-\subsection{Method \code{next_()}}{
-Get the next job in the \code{queue}. if no more jobs,
+\subsection{\code{GbifQueue$next_()}}{
+  Get the next job in the \code{queue}. if no more jobs,
 returns empty list
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{GbifQueue$next_()}\if{html}{\out{</div>}}
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{GbifQueue$next_()}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    next job or empty list
+  }
 }
 
-\subsection{Returns}{
-next job or empty list
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-GbifQueue-last_"></a>}}
 \if{latex}{\out{\hypertarget{method-GbifQueue-last_}{}}}
-\subsection{Method \code{last_()}}{
-Get the last job in the \code{queue}. if no more jobs,
+\subsection{\code{GbifQueue$last_()}}{
+  Get the last job in the \code{queue}. if no more jobs,
 returns empty list
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{GbifQueue$last_()}\if{html}{\out{</div>}}
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{GbifQueue$last_()}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    last job or empty list
+  }
 }
 
-\subsection{Returns}{
-last job or empty list
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-GbifQueue-jobs"></a>}}
 \if{latex}{\out{\hypertarget{method-GbifQueue-jobs}{}}}
-\subsection{Method \code{jobs()}}{
-Get number of jobs in the \code{queue}
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{GbifQueue$jobs()}\if{html}{\out{</div>}}
+\subsection{\code{GbifQueue$jobs()}}{
+  Get number of jobs in the \code{queue}
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{GbifQueue$jobs()}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    (integer) number of jobs
+  }
 }
 
-\subsection{Returns}{
-(integer) number of jobs
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-GbifQueue-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-GbifQueue-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{GbifQueue$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{GbifQueue$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{GbifQueue$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }

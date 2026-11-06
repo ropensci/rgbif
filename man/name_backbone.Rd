@@ -106,7 +106,7 @@ other fields are ignored.}
 
 \item{taxonID}{(character) The taxon ID to look up. Matches to a taxonID
 will take precedence over scientificName values supplied. A comparison of
-the matched scientific and taxonID is performed tocheck for inconsistencies.}
+the matched scientific and taxonID is performed to check for inconsistencies.}
 
 \item{taxonConceptID}{(character) The taxonConceptID to match. Matches to a
 taxonConceptID will take precedence over scientificName values supplied. A
@@ -131,14 +131,17 @@ as atomised parts instead of the full name parameter.}
 
 \item{exclude}{(character) An array of usage keys to exclude from the match.}
 
-\item{strict}{(logical) If set to true, fuzzy matches only the given name,
-but never a taxon in the upper classification.}
+\item{strict}{(logical) If TRUE, requires an exact match of the scientific name.
+If FALSE, allows for fuzzy matching (minor differences in the scientific name).
+Note: This parameter controls exact vs. fuzzy matching of the name string itself,
+and does not prevent the API from returning a higher-rank match if an exact
+match is found in the upper classification.}
 
 \item{verbose}{(logical) If set to true, it shows alternative matches which
 were considered but then rejected.}
 
 \item{checklistKey}{(character) The key of a checklist to use. The default is
-the GBIF Backbone taxanomy.}
+the GBIF Backbone taxonomy.}
 
 \item{start}{(integer) Currently ignored.}
 
@@ -170,7 +173,7 @@ name_backbone_verbose("Calopteryx splendens", kingdom = "Animalia")
 name_backbone("Calopteryx splendens", kingdom = "Plantae")
 
 # Use GBIF Backbone Taxonomy by explicitly setting checklistKey
-name_backbone("Calopteryx splendens", 
+name_backbone("Calopteryx splendens",
   checklistKey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
 
 }

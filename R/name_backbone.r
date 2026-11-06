@@ -2,11 +2,11 @@
 #'
 #' @param name (character) Full scientific name potentially with authorship
 #' (required)
-#' @param rank (character) Filter by taxonomic rank. See API reference for 
-#' available values. 
-#' @param usageKey (character) The usage key to look up. When provided, all 
+#' @param rank (character) Filter by taxonomic rank. See API reference for
+#' available values.
+#' @param usageKey (character) The usage key to look up. When provided, all
 #' other fields are ignored.
-#' @param kingdom (character) Kingdom to match. 
+#' @param kingdom (character) Kingdom to match.
 #' @param phylum (character) Phylum to match.
 #' @param class (character) Class to match.
 #' @param order (character) Order to match.
@@ -18,50 +18,53 @@
 #' @param genus (character) Genus to match.
 #' @param subgenus (character) Subgenus to match.
 #' @param species (character) Species to match.
-#' @param taxonID (character) The taxon ID to look up. Matches to a taxonID 
-#' will take precedence over scientificName values supplied. A comparison of 
-#' the matched scientific and taxonID is performed tocheck for inconsistencies.
-#' @param taxonConceptID (character) The taxonConceptID to match. Matches to a 
-#' taxonConceptID will take precedence over scientificName values supplied. A 
-#' comparison of the matched scientific and taxonConceptID is performed to 
+#' @param taxonID (character) The taxon ID to look up. Matches to a taxonID
+#' will take precedence over scientificName values supplied. A comparison of
+#' the matched scientific and taxonID is performed to check for inconsistencies.
+#' @param taxonConceptID (character) The taxonConceptID to match. Matches to a
+#' taxonConceptID will take precedence over scientificName values supplied. A
+#' comparison of the matched scientific and taxonConceptID is performed to
 #' check for inconsistencies.
-#' @param scientificNameID (character) Matches to a scientificNameID will take 
-#' precedence over scientificName values supplied. A comparison of the matched 
+#' @param scientificNameID (character) Matches to a scientificNameID will take
+#' precedence over scientificName values supplied. A comparison of the matched
 #' scientific and scientificNameID is performed to check for inconsistencies.
-#' @param scientificNameAuthorship (character) The scientific name authorship 
-#' to match against.  
-#' @param genericName (character) Generic part of the name to match when given 
-#' as atomised parts instead of the full name parameter. 
-#' @param specificEpithet (character) Specific epithet to match. 
+#' @param scientificNameAuthorship (character) The scientific name authorship
+#' to match against. 
+#' @param genericName (character) Generic part of the name to match when given
+#' as atomised parts instead of the full name parameter.
+#' @param specificEpithet (character) Specific epithet to match.
 #' @param infraspecificEpithet (character) Infraspecific epithet to match.
 #' @param verbatimTaxonRank (character) Filters by free text taxon rank.
 #' @param exclude (character) An array of usage keys to exclude from the match.
-#' @param strict (logical) If set to true, fuzzy matches only the given name, 
-#' but never a taxon in the upper classification.
-#' @param verbose (logical) If set to true, it shows alternative matches which 
+#' @param strict (logical) If TRUE, requires an exact match of the scientific name.
+#'   If FALSE, allows for fuzzy matching (minor differences in the scientific name).
+#'   Note: This parameter controls exact vs. fuzzy matching of the name string itself,
+#'   and does not prevent the API from returning a higher-rank match if an exact
+#'   match is found in the upper classification.
+#' @param verbose (logical) If set to true, it shows alternative matches which
 #' were considered but then rejected.
 #' @param checklistKey (character) The key of a checklist to use. The default is
-#' the GBIF Backbone taxanomy. 
-#' @param start (integer) Currently ignored.  
-#' @param limit (integer) Currently ignored. 
+#' the GBIF Backbone taxonomy.
+#' @param start (integer) Currently ignored. 
+#' @param limit (integer) Currently ignored.
 #' @param curlopts A list of curl options passed on to [httr::GET()].
 #'
 #'
 #' @details
 #' If you don't get a match, GBIF gives back a data.frame with columns
 #' `synonym`, `confidence`, and `matchType='NONE'`.
-#' 
-#' `name_backbone_verbose()` is a legacy wrapper function that returns 
+#'
+#' `name_backbone_verbose()` is a legacy wrapper function that returns
 #' returns alternatives in a separate `tibble`.
-#' 
+#'
 #' @returns A single row `tibble` of the best matched name. If `verbose=TRUE`, a
-#' longer `tibble` with all potential alternatives is returned. 
-#' 
+#' longer `tibble` with all potential alternatives is returned.
+#'
 #' @export
-#' 
-#' @references 
+#'
+#' @references
 #' \url{https://techdocs.gbif.org/en/openapi/v1/species#/Searching%20names/matchNames}
-#'   
+#' 
 #' @examples \dontrun{
 #' # Returns COL (Catalogue of Life) Extended Release alpha-numeric keys
 #' name_backbone("Calopteryx splendens") # Returns usageKey "Q2M4"
@@ -71,7 +74,7 @@
 #' name_backbone("Calopteryx splendens", kingdom = "Plantae")
 #'
 #' # Use GBIF Backbone Taxonomy by explicitly setting checklistKey
-#' name_backbone("Calopteryx splendens", 
+#' name_backbone("Calopteryx splendens",
 #'   checklistKey = "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c")
 #'
 #' }
@@ -104,7 +107,7 @@ name_backbone <- function(
     verbose = FALSE,
     checklistKey = "7ddf754f-d193-4cc9-b351-99906754a03b",
     start = NULL,
-    limit = NULL, 
+    limit = NULL,
     curlopts = list(http_version=2)
 ) {
   url <- paste0('https://api.gbif.org/v2', '/species/match')
@@ -143,14 +146,14 @@ name_backbone <- function(
   )
   tt <- gbif_GET(url, args, FALSE, curlopts)
   if(!verbose) {
-    out <- process_name_backbone_output(tt,args)
+    out <- process_name_backbone_output(tt, args)
   } else {
     alternatives <- bind_rows(lapply(tt$diagnostics$alternatives, function(x)
-      process_name_backbone_output(x,args))
+      process_name_backbone_output(x, args))
     )
     tt$diagnostics$alternatives <- NULL
-    accepted <- process_name_backbone_output(tt,args)
-    out <- bind_rows(list(accepted,alternatives))
+    accepted <- process_name_backbone_output(tt, args)
+    out <- bind_rows(list(accepted, alternatives))
   }
   structure(out, args = args, note = tt$diagnostics$note, type = "single")
 }
@@ -167,7 +170,7 @@ name_backbone_verbose <- function(name = NULL,
                                   family = NULL,
                                   subfamily = NULL,
                                   tribe = NULL,
-                                  subtribe = NULL,
+                                  subtribe = NULL, 
                                   genus = NULL,
                                   subgenus = NULL,
                                   species = NULL,
@@ -184,9 +187,9 @@ name_backbone_verbose <- function(name = NULL,
                                   strict = NULL,
                                   checklistKey = NULL,
                                   start = NULL,
-                                  limit = NULL, 
+                                  limit = NULL,
                                   curlopts = list(http_version=2)
-                                  ) {
+) {
   url <- paste0('https://api.gbif.org/v2', '/species/match')
   args <- rgbif_compact(
     list(
@@ -218,14 +221,14 @@ name_backbone_verbose <- function(name = NULL,
       strict = strict,
       verbose = TRUE,
       checklistKey = checklistKey,
-      start = start,
+      start = start, 
       limit = limit
     )
   )
   tt <- gbif_GET(url, args, FALSE, curlopts)
   alt <- bind_rows(lapply(tt$diagnostics$alternatives, function(x)
     process_name_backbone_output(x, args))
-    )
+  )
   tt$diagnostics$alternatives <- NULL
   dat <- process_name_backbone_output(tt, args)
   out <- list(data = dat, alternatives = alt)
@@ -238,7 +241,7 @@ process_name_backbone_output <- function(tt, args) {
     colnames(u)[colnames(u) == "key"] <- "usageKey"
     colnames(u)[colnames(u) == "name"] <- "scientificName"
     u
-  } else { 
+  } else {
     NULL
   }
   diagnostics <- if (!is.null(tt$diagnostics)) {
@@ -255,8 +258,7 @@ process_name_backbone_output <- function(tt, args) {
       c$rank <- make.unique(c$rank)
     }
     nv <- stats::setNames(c$name, tolower(c$rank))
-    kv <- stats::setNames(c$key,  paste0(tolower(c$rank), "Key"))
-    
+    kv <- stats::setNames(c$key, paste0(tolower(c$rank), "Key"))
     c <- tibble::as_tibble(as.list(c(nv, kv)))
     c
   } else {
@@ -268,7 +270,7 @@ process_name_backbone_output <- function(tt, args) {
     NULL
   }
   acceptedUsage <- if (!is.null(tt$acceptedUsage)) {
-    a <- tibble::as_tibble(tt$acceptedUsage)[c("key","name")]
+    a <- tibble::as_tibble(tt$acceptedUsage)[c("key", "name")]
     colnames(a)[colnames(a) == "key"] <- "acceptedUsageKey"
     colnames(a)[colnames(a) == "name"] <- "acceptedScientificName"
     a
@@ -276,19 +278,19 @@ process_name_backbone_output <- function(tt, args) {
     NULL
   }
   verbatim <- if (!is.null(args)) {
-  input_args_clean <- args[!names(args) %in% 
-                             c("strict","verbose","start","limit","curlopts")]
-  v <- stats::setNames(input_args_clean,
-                                    paste0("verbatim_",names(input_args_clean)))
-  names(v)[names(v) == "verbatim_taxonRank"] <- "verbatim_rank"
-  names(v)[names(v) == "verbatim_scientificName"] <- "verbatim_name"
-  tibble::as_tibble(v)
+    input_args_clean <- args[!names(args) %in%
+                               c("strict", "verbose", "start", "limit", "curlopts")]
+    v <- stats::setNames(input_args_clean,
+                         paste0("verbatim_", names(input_args_clean)))
+    names(v)[names(v) == "verbatim_taxonRank"] <- "verbatim_rank"
+    names(v)[names(v) == "verbatim_scientificName"] <- "verbatim_name"
+    tibble::as_tibble(v)
   } else {
     NULL
   }
   out <- do.call("cbind", rgbif_compact(list(usage,
-                                             acceptedUsage, 
-                                             diagnostics, 
+                                             acceptedUsage,
+                                             diagnostics,
                                              classification,
                                              synonym,
                                              verbatim)))
