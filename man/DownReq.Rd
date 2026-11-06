@@ -20,108 +20,117 @@ res
 }
 \keyword{internal}
 \section{Public fields}{
-\if{html}{\out{<div class="r6-fields">}}
-\describe{
-\item{\code{req}}{(list) internal holder for the request}
+  \if{html}{\out{<div class="r6-fields">}}
+  \describe{
+    \item{\code{req}}{(list) internal holder for the request}
 
-\item{\code{type}}{(list) type, one of "lazy" (to be lazy evaluated) or "pre"
+    \item{\code{type}}{(list) type, one of "lazy" (to be lazy evaluated) or "pre"
 (run with \code{occ_download_exec} internal fxn)}
 
-\item{\code{result}}{(list) holds the result of the http request}
-}
-\if{html}{\out{</div>}}
+    \item{\code{result}}{(list) holds the result of the http request}
+  }
+  \if{html}{\out{</div>}}
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-DownReq-new}{\code{DownReq$new()}}
-\item \href{#method-DownReq-print}{\code{DownReq$print()}}
-\item \href{#method-DownReq-run}{\code{DownReq$run()}}
-\item \href{#method-DownReq-status}{\code{DownReq$status()}}
-\item \href{#method-DownReq-clone}{\code{DownReq$clone()}}
-}
+  \itemize{
+    \item \href{#method-DownReq-initialize}{\code{DownReq$new()}}
+    \item \href{#method-DownReq-print}{\code{DownReq$print()}}
+    \item \href{#method-DownReq-run}{\code{DownReq$run()}}
+    \item \href{#method-DownReq-status}{\code{DownReq$status()}}
+    \item \href{#method-DownReq-clone}{\code{DownReq$clone()}}
+  }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-DownReq-new"></a>}}
-\if{latex}{\out{\hypertarget{method-DownReq-new}{}}}
-\subsection{Method \code{new()}}{
-Create a new \code{DownReq} object
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{DownReq$new(x)}\if{html}{\out{</div>}}
+\if{html}{\out{<a id="method-DownReq-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-DownReq-initialize}{}}}
+\subsection{\code{DownReq$new()}}{
+  Create a new \code{DownReq} object
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{DownReq$new(x)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{x}}{either a lazy object with an object of class \code{occ_download}, or an
+object of class \code{occ_download_prep}}
+    }
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    A new \code{DownReq} object
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{x}}{either a lazy object with an object of class \code{occ_download}, or an
-object of class \code{occ_download_prep}}
-}
-\if{html}{\out{</div>}}
-}
-\subsection{Returns}{
-A new \code{DownReq} object
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-DownReq-print"></a>}}
 \if{latex}{\out{\hypertarget{method-DownReq-print}{}}}
-\subsection{Method \code{print()}}{
-print method for the \code{DownReq} class
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{DownReq$print(x, ...)}\if{html}{\out{</div>}}
+\subsection{\code{DownReq$print()}}{
+  print method for the \code{DownReq} class
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{DownReq$print(x, ...)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{x}}{self}
+      \item{\code{...}}{ignored}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{x}}{self}
-
-\item{\code{...}}{ignored}
-}
-\if{html}{\out{</div>}}
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-DownReq-run"></a>}}
 \if{latex}{\out{\hypertarget{method-DownReq-run}{}}}
-\subsection{Method \code{run()}}{
-execute http request
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{DownReq$run()}\if{html}{\out{</div>}}
+\subsection{\code{DownReq$run()}}{
+  execute http request
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{DownReq$run()}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    nothing, puts the http response in \verb{$result}
+  }
 }
 
-\subsection{Returns}{
-nothing, puts the http response in \verb{$result}
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-DownReq-status"></a>}}
 \if{latex}{\out{\hypertarget{method-DownReq-status}{}}}
-\subsection{Method \code{status()}}{
-check http request status
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{DownReq$status()}\if{html}{\out{</div>}}
+\subsection{\code{DownReq$status()}}{
+  check http request status
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{DownReq$status()}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    output of \code{\link[=occ_download_meta]{occ_download_meta()}}
+  }
 }
 
-\subsection{Returns}{
-output of \code{\link[=occ_download_meta]{occ_download_meta()}}
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-DownReq-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-DownReq-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{DownReq$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{DownReq$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{DownReq$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }

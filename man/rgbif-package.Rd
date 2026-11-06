@@ -33,6 +33,15 @@ with web based maps.
 }
 }
 
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/ropensci/rgbif} (devel)
+  \item \url{https://docs.ropensci.org/rgbif/} (documentation)
+  \item Report bugs at \url{https://github.com/ropensci/rgbif/issues}
+}
+
+}
 \author{
 Scott Chamberlain
 

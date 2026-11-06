@@ -53,7 +53,7 @@ Suggests:
     knitr,
     rmarkdown,
     bit64
-RoxygenNote: 7.2.3
 X-schema.org-applicationCategory: Biodiversity
 X-schema.org-keywords: GBIF, specimens, API, web-services, occurrences, species, taxonomy
 X-schema.org-isPartOf: https://ropensci.org
+Config/roxygen2/version: 8.1.1

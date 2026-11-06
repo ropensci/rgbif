@@ -165,36 +165,36 @@ export(suggestfields)
 export(taxrank)
 export(wkt_parse)
 importFrom(R6,R6Class)
-importFrom(data.table,fread)
-importFrom(data.table,rbindlist)
-importFrom(data.table,setDF)
-importFrom(ggplot2,aes)
-importFrom(ggplot2,coord_fixed)
-importFrom(ggplot2,element_blank)
-importFrom(ggplot2,geom_point)
-importFrom(ggplot2,geom_polygon)
-importFrom(ggplot2,ggplot)
-importFrom(ggplot2,guide_legend)
-importFrom(ggplot2,guides)
-importFrom(ggplot2,labs)
-importFrom(ggplot2,map_data)
-importFrom(ggplot2,position_jitter)
-importFrom(ggplot2,scale_color_brewer)
-importFrom(ggplot2,theme)
-importFrom(ggplot2,theme_bw)
-importFrom(jsonlite,fromJSON)
-importFrom(jsonlite,toJSON)
-importFrom(jsonlite,unbox)
-importFrom(lazyeval,lazy_dots)
-importFrom(lazyeval,lazy_eval)
+importFrom(data.table,
+  fread,
+  rbindlist,
+  setDF
+)
+importFrom(ggplot2,
+  geom_point,
+  ggplot,
+  map_data,
+  position_jitter
+)
+importFrom(jsonlite,
+  fromJSON,
+  toJSON,
+  unbox
+)
+importFrom(lazyeval,
+  lazy_dots,
+  lazy_eval
+)
 importFrom(magrittr,"%>%")
-importFrom(oai,get_records)
-importFrom(oai,id)
-importFrom(oai,list_identifiers)
-importFrom(oai,list_metadataformats)
-importFrom(oai,list_records)
-importFrom(oai,list_sets)
+importFrom(oai,
+  id,
+  list_identifiers,
+  list_metadataformats,
+  list_records
+)
 importFrom(whisker,whisker.render)
-importFrom(xml2,read_xml)
-importFrom(xml2,xml_find_all)
-importFrom(xml2,xml_text)
+importFrom(xml2,
+  read_xml,
+  xml_find_all,
+  xml_text
+)
